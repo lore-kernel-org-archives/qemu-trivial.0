@@ -1,67 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q11ex-0004dB-9p
-	for mharc-qemu-trivial@gnu.org; Mon, 22 May 2023 05:16:55 -0400
+	id 1q14Dh-0003u0-C7
+	for mharc-qemu-trivial@gnu.org; Mon, 22 May 2023 08:00:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q11et-0004cr-JF
- for qemu-trivial@nongnu.org; Mon, 22 May 2023 05:16:52 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1q11eg-0006kV-3c
- for qemu-trivial@nongnu.org; Mon, 22 May 2023 05:16:51 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-510d6b939bfso9942517a12.0
- for <qemu-trivial@nongnu.org>; Mon, 22 May 2023 02:16:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684746996; x=1687338996;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=L3pRn/axMfoLuOpEltPeWJPhUx3egcLdSBFz0Mhn4/M=;
- b=vK1ejSAKnVUb2Fu9xbuKUepN6BZuRRwq7h1+Y1rY2HitucdW3V1po8yhPTBUnEGYE/
- GshyYWSyYJa2fOZb192J/Vc+SrBc+nCSWJSHDguz7gv13BKOGKwuHWRmfPW/9A6QVG3H
- GsRIMadF8qnKZyj9U3h8N5K60bgj2CzOhh4+CZZTuFpSK/b7Ox1lUNEgNPzHqAKMfR91
- ULHNYvOUWYvWl8uMiIVhsmNnmgWjFPZz1hc1T3AOAa+nkqMxS13JhdmPuDMu0Iu9/0Dh
- BJU+ZfMG1wwpOfHyqKjG7eMRtAroe61VsNFgIYqqLtt6r/VrVss+LR8H5M7oIPvf1EKh
- DnCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684746996; x=1687338996;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=L3pRn/axMfoLuOpEltPeWJPhUx3egcLdSBFz0Mhn4/M=;
- b=hpuTcA5bk9v0M0EjkpYNqLBS+znxm05bsiPJdJR/HESY0SFuSBzT6w9PTrIHTUe+pZ
- lh7HWSPPAKKJXWefC1Hpb5rdestAke87HwTkQYvRDP2TuS5vUJ1OzTvxUCWcc181wybR
- d4wu1+QiVAbFtWr1gGR+cZAN4qOfwZU1ptnhRuTWqDRZ1p3PCPJCxEBN7PFkmsGL6BXD
- p2vRPjOpuoQ/uoMnaQkFPo99CBHgh+W7dDlLPBGOgmD3wIjSTCkhHLDHaS/p/n4FkHFO
- DfoqKI4Jhfu96tOB3bmDbXi9WdRJhogV7hZ0MuUgJjKCDjVTay5JbnV5IXoh9zEr6V3F
- FfyQ==
-X-Gm-Message-State: AC+VfDy6o6UnwjJ3kMjuVvRXfcpih3Q+140cb6tmsMM3Nhl06/niP0bI
- zdVkBa1zISPXl3dKWAm6+YtFba3MslK7YZZvlMFr3Q==
-X-Google-Smtp-Source: ACHHUZ4vHCu+sCNMLG0f6yE5bYSlbpRxmWriERJ1BEHfY7Vsy46mUt+kVU4cs1CBuC9cRGAnfPj4ZQ/d39GHO7czwoE=
-X-Received: by 2002:aa7:c157:0:b0:50a:276f:a3ba with SMTP id
- r23-20020aa7c157000000b0050a276fa3bamr7157859edp.34.1684746996080; Mon, 22
- May 2023 02:16:36 -0700 (PDT)
-MIME-Version: 1.0
-References: <20230520205444.887287457E7@zero.eik.bme.hu>
-In-Reply-To: <20230520205444.887287457E7@zero.eik.bme.hu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 22 May 2023 10:16:25 +0100
-Message-ID: <CAFEAcA9gAYPpOJ6VyPYwCVyOhMmJMEe4QyGzB57xCbK0MOED5A@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1q14Da-0003lc-7f; Mon, 22 May 2023 08:00:53 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1q14DX-0001YL-Mm; Mon, 22 May 2023 08:00:49 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 426B8747DF8;
+ Mon, 22 May 2023 14:00:45 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 0BD82747DCF; Mon, 22 May 2023 14:00:45 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 09FE3747D5D;
+ Mon, 22 May 2023 14:00:45 +0200 (CEST)
+Date: Mon, 22 May 2023 14:00:45 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Peter Maydell <peter.maydell@linaro.org>
+cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Subject: Re: [PATCH] bitops.h: Compile out asserts without --enable-debug
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+In-Reply-To: <CAFEAcA9gAYPpOJ6VyPYwCVyOhMmJMEe4QyGzB57xCbK0MOED5A@mail.gmail.com>
+Message-ID: <0ab99dea-dbe6-9b3c-37a1-0ad66c0573b2@eik.bme.hu>
+References: <20230520205444.887287457E7@zero.eik.bme.hu>
+ <CAFEAcA9gAYPpOJ6VyPYwCVyOhMmJMEe4QyGzB57xCbK0MOED5A@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,26 +48,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 May 2023 09:16:53 -0000
+X-List-Received-Date: Mon, 22 May 2023 12:00:56 -0000
 
-On Sat, 20 May 2023 at 21:55, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+On Mon, 22 May 2023, Peter Maydell wrote:
+> On Sat, 20 May 2023 at 21:55, BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>>
+>> The low level extract and deposit funtions provided by bitops.h are
+>> used in performance critical places. It crept into target/ppc via
+>> FIELD_EX64 and also used by softfloat so PPC code using a lot of FPU
+>> where hardfloat is also disabled is doubly affected.
+>>
+>> Normally asserts should be compiled out from release builds with
+>> -DNDEBUG but that cannot be used in QEMU because some places still
+>> rely on asserts instead of proper error checking. To resolve this,
+>> compile out asserts from deposit/extract functions in optimised builds
+>> which improves performance for target/ppc and possibly others too.
 >
-> The low level extract and deposit funtions provided by bitops.h are
-> used in performance critical places. It crept into target/ppc via
-> FIELD_EX64 and also used by softfloat so PPC code using a lot of FPU
-> where hardfloat is also disabled is doubly affected.
->
-> Normally asserts should be compiled out from release builds with
-> -DNDEBUG but that cannot be used in QEMU because some places still
-> rely on asserts instead of proper error checking. To resolve this,
-> compile out asserts from deposit/extract functions in optimised builds
-> which improves performance for target/ppc and possibly others too.
+> Can we have some figures for performance improvements,
+> please? General QEMU policy is that asserts remain,
+> even in non-debug builds, so exceptions from that policy
+> should come with justification with figures attached.
 
-Can we have some figures for performance improvements,
-please? General QEMU policy is that asserts remain,
-even in non-debug builds, so exceptions from that policy
-should come with justification with figures attached.
+Here are some figures converting a 10MB wav file to mp3 with lame on 
+AmigaOS pegasos2 which is using a lot of FPU operations (which is using
+softfloat on TCG target/ppc due to no hardfloat so it's very slow):
 
-thanks
--- PMM
+    8.0: 1:11 0.8264x, 1:11 0x8258x
+master: 1:12 0.8117x, 1:12 0.8103x
+  patch: 1:02 0.9541x, 1:02 0.9506x
+
+The numbers are time minute:seconds and speed compared to play speed (lame 
+calls this play/CPU). I did two runs, first after booting the guest and 
+another one after the first. Despite the second run should use more cache 
+and less compile overhead the first runs seem to be a bit faster. Real 
+hardware gets about 11x speed although that's with Altivec where on QEMU 
+Altivec does not help much so we're still much behind even on an Intel 
+Core i7 3.6GHz CPU for FPU ops where integer ops are much better. I got 
+similar reports from Apple silicon hardware with macOS too. Eventually 
+fixing hardfloat for target/ppc would help even more but this is 
+independent of that and significant enough to remove this overhead now. 
+I've never seen these asserts firing and unlikely to depend on run time 
+values so leaving them in non-debug builds seems unnecessary overkill that 
+also hurts performance.
+
+Regards,
+BALATON Zoltan
 
