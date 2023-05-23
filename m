@@ -1,61 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q1Wew-0002Zy-NJ
-	for mharc-qemu-trivial@gnu.org; Tue, 23 May 2023 14:22:58 -0400
+	id 1q1Wfo-0003Kt-Nb
+	for mharc-qemu-trivial@gnu.org; Tue, 23 May 2023 14:23:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q1Wev-0002W2-Qr
- for qemu-trivial@nongnu.org; Tue, 23 May 2023 14:22:57 -0400
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
+ id 1q1Wfm-0003IB-3o
+ for qemu-trivial@nongnu.org; Tue, 23 May 2023 14:23:50 -0400
+Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q1Weu-00031T-7n
- for qemu-trivial@nongnu.org; Tue, 23 May 2023 14:22:57 -0400
-Received: by mail-pl1-x629.google.com with SMTP id
- d9443c01a7336-1ae51b07338so53850485ad.0
- for <qemu-trivial@nongnu.org>; Tue, 23 May 2023 11:22:55 -0700 (PDT)
+ id 1q1Wfk-0003G6-EZ
+ for qemu-trivial@nongnu.org; Tue, 23 May 2023 14:23:49 -0400
+Received: by mail-pf1-x42f.google.com with SMTP id
+ d2e1a72fcca58-64d3bc502ddso115309b3a.0
+ for <qemu-trivial@nongnu.org>; Tue, 23 May 2023 11:23:45 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684866174; x=1687458174;
+ d=linaro.org; s=google; t=1684866224; x=1687458224;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ReuRMDWfkusmzpmqhmh61egEzQtaznz6WpdIV+WgyrQ=;
- b=iZzkR2gotaZIC4fm4CkvsIaHixJQJi4zrFq69RFPpqwYVrhEuoNR7WU1EOflLMENyx
- N4rkGjQiOCU659a7LlNTSuUS5O14aRdecXhbC777vSXADjQlrlhVtWxFP028tSE+446x
- qymqc5MExFClxYqVdu8H6wqepNqfIVd0kPapB4hh7UIN6MXIOphVdDKwfjdtF3bNTowT
- +IJUX7cgaxPzl+49uAV9VzTdGeptwXS/IcdMrJhAHGKSQ9Fd4L5Z9gvEq2zWrW4+lIoc
- yTMSfMecTqvCbrB8dcuTe7aw2qIajay8/EJhDDRCYPxmO37+1gu/07lxIAPN9km/2sfa
- BQkg==
+ bh=ZeUMxqK2a0mu+0TJQHf1Ip6p3nNOkf26yqQPPbHPByQ=;
+ b=Q97y8woPiLfMXj4qu1nr52H6yESJIndqAu4KXxkOky47RC/Kq4GFXh7ilLECmMC+18
+ ZgS6pT7GwG+b71Z13XkFNo3o0TDD0QSwlu7DsRtJo4uS+xZViKEgCHE6KeVtaP00bgeZ
+ SzHf6JSLuFajahRJ+FZOQaN9bqTgq/1oOtvw+Q5MxMIOdf36GMS/pyQKAspdHtRkX5G9
+ mL3gK4+EzkenMNT17UbGvCL8KPUzB7Fcftn9qrgSNs5WYe6Gix2PWct5gX/2aKn/hVpU
+ JaomVtvN39ELFIr5yX1e+xwlw/OT7PlI9P3xDNNExNLcTyzBGLKmIHdWQA1hG/Tlu468
+ XFPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684866175; x=1687458175;
+ d=1e100.net; s=20221208; t=1684866224; x=1687458224;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ReuRMDWfkusmzpmqhmh61egEzQtaznz6WpdIV+WgyrQ=;
- b=PxyD7JmbBp7V3WrjMJmXZ4/kaUrmbH2xqL73RGH8qJ2JRi4+OtWENMGtq78NNDL7NW
- mnCqz7v/Tcy0EWoQ7RJOzI8auuze7OOWBxdJfTO2g4/YFupAKEL095fn5HqtoA3P2GtD
- 3mT+EhzuxpEgrQSw6ppD2sQOk+n1z/TDgX3qOEKZ6VHhA6R411LN61Svj/7Zzft6SH9h
- KUOpJyhrWMaDO60VcEztcDzFifQHHiIUgxKyHe2K/UPkzhfR1jox+ccREXBwmgnftl9H
- tpp4jzTebxy95xyiIn65PSn6ouSK/65b5Rag/9FY2LWLPcYnszcfF1zW4JSgT0sUXLuE
- u11A==
-X-Gm-Message-State: AC+VfDxCrXD0eBLOmpHz57uUYnnDEGOaxuMKns2686gJiB17fYNlyNJB
- 1qnVgp7vnSYLgQyr988Xt+e84g==
-X-Google-Smtp-Source: ACHHUZ5bPmghIR1k/Tj7e6E2t1CAMC10j1iFgksIbq+j1VGk9DBtGzgEprcGOqk0JHTHqtJQKTcJeA==
-X-Received: by 2002:a17:902:e785:b0:1ad:dac0:5125 with SMTP id
- cp5-20020a170902e78500b001addac05125mr11743504plb.11.1684866174673; 
- Tue, 23 May 2023 11:22:54 -0700 (PDT)
+ bh=ZeUMxqK2a0mu+0TJQHf1Ip6p3nNOkf26yqQPPbHPByQ=;
+ b=RZvN6WFAqTfHocmcnOkewhUnn4WPu+vP4MBdqOBrja2aYBsP7N3oBY3qKRqAWuxkmj
+ c1+mwJzsq3QTtukxzZMY5YU6S+LnA3xFTMdkFxocYO6JwEgpwauzxEH9Y2bg+yvEIX+m
+ wWuM6rBUT6jg+Zu9hABkBrPLL4y6TmLFR+hl3xtSXmOQR8nnfcRxXJRC4eqcihRXnyL8
+ 64uYvlVC3gy+yq651Ulp/Wvx+itB7+lXQpEaLrY7zBwrYLE8TMkNl1B3BLSMGtU2HX7w
+ DsptlX3NuXkKdi7J0RzCriTPJBxwoZmu0f3GiHDLvPB7cJ2E3rmJM6oob7jRi/XTeHwf
+ Mnhg==
+X-Gm-Message-State: AC+VfDwVGwKpZ2mcN/cTFd4KgU+zzmmbl3v6wtKUiPgONV9yJ2r20U7F
+ 6CaBlIM9WOMcjaYYY8r1wnryYw==
+X-Google-Smtp-Source: ACHHUZ6rvQl2uTHmz6YVzvO1tbphNz7W9BlFxL1zKtQW+AHNfdrjYqfaRv8kDbxaXwCUjsgXoyzZpg==
+X-Received: by 2002:a05:6a21:6d9f:b0:10a:e388:fcb5 with SMTP id
+ wl31-20020a056a216d9f00b0010ae388fcb5mr14163944pzb.13.1684866224659; 
+ Tue, 23 May 2023 11:23:44 -0700 (PDT)
 Received: from ?IPV6:2602:ae:1598:4c01:c13a:d73:4f88:3654?
  ([2602:ae:1598:4c01:c13a:d73:4f88:3654])
  by smtp.gmail.com with ESMTPSA id
- f10-20020a170902ce8a00b001a64011899asm7101642plg.25.2023.05.23.11.22.53
+ bs5-20020a632805000000b0051eff0a70d7sm6245240pgb.94.2023.05.23.11.23.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 May 2023 11:22:54 -0700 (PDT)
-Message-ID: <abedf5b1-cfcb-7abd-7355-bfc62107eccd@linaro.org>
-Date: Tue, 23 May 2023 11:22:52 -0700
+ Tue, 23 May 2023 11:23:44 -0700 (PDT)
+Message-ID: <fb306418-0f6d-1b5d-6d48-16d8319f1eed@linaro.org>
+Date: Tue, 23 May 2023 11:23:42 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH 2/4] hw/i386/microvm: Simplify using object_dynamic_cast()
+Subject: Re: [PATCH 3/4] hw/pci/pci: Simplify pci_bar_address() using
+ MACHINE_GET_CLASS() macro
 Content-Language: en-US
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
@@ -65,13 +66,13 @@ Cc: Paolo Bonzini <pbonzini@redhat.com>, Sergio Lopez <slp@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 References: <20230523061207.48818-1-philmd@linaro.org>
- <20230523061207.48818-3-philmd@linaro.org>
+ <20230523061207.48818-4-philmd@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230523061207.48818-3-philmd@linaro.org>
+In-Reply-To: <20230523061207.48818-4-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x629.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42f.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -91,15 +92,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 May 2023 18:22:58 -0000
+X-List-Received-Date: Tue, 23 May 2023 18:23:51 -0000
 
 On 5/22/23 23:12, Philippe Mathieu-Daudé wrote:
-> Use object_dynamic_cast() to determine if 'dev' is a TYPE_VIRTIO_MMIO.
+> Remove unnecessary intermediate variables.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
 > ---
->   hw/i386/microvm.c | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
+>   hw/pci/pci.c | 4 +---
+>   1 file changed, 1 insertion(+), 3 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
