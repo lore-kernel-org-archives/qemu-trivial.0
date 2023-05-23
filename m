@@ -1,83 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q1WgH-0003Yl-Vx
-	for mharc-qemu-trivial@gnu.org; Tue, 23 May 2023 14:24:21 -0400
+	id 1q1Y7L-0000Ot-8g
+	for mharc-qemu-trivial@gnu.org; Tue, 23 May 2023 15:56:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q1WgF-0003V6-V8
- for qemu-trivial@nongnu.org; Tue, 23 May 2023 14:24:19 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1q1Y7J-0000NK-GN; Tue, 23 May 2023 15:56:21 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q1WgC-0003N6-Hq
- for qemu-trivial@nongnu.org; Tue, 23 May 2023 14:24:17 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-64d341bdedcso54443b3a.3
- for <qemu-trivial@nongnu.org>; Tue, 23 May 2023 11:24:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1q1Y7H-0006Rs-Rw; Tue, 23 May 2023 15:56:21 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-96f818c48fbso3549866b.0; 
+ Tue, 23 May 2023 12:56:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684866254; x=1687458254;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=gEkEiwKXF87W3JueIwS9vdfESkQLyxDf/zSDK0AeXfA=;
- b=oB1YvjrnCH8XJp+754WQEbvE7btEE4Wwbt9S/u5Ghhq14gh1tI9XRiavvfG9iijXgK
- 9duS/XmagwYQBGfZ0xk+BH/rmtERVWz94hdRmAHijadUKtLYjJigUQqx3yyT1NUtiiJP
- gOSCJK3tSSHP5MO0+Iz5cLtIAezwDdfp1c9aIh4vCEikx24oFcimI3ZZXntN0CQBAZYH
- NXSCoQD2xZzn7/mPYZ8VqNgt4Zz5pXediRHEVooNzXIr9MBp/21xSMnHW00CzvVp6sjQ
- aVhgHolLZ/ZS9BqLlWwDfAWsA6rVLmKt9CQ2FboWlq/NyD4a27Qy6FRtbJt/1UeHPswd
- kqQg==
+ d=gmail.com; s=20221208; t=1684871777; x=1687463777;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=TjoUGtEA0nlcsDiZadtRY2aihoK2mUP2djsEyFXTOOA=;
+ b=egL0lw1VBg26AAMDdm9J+ORUQdRSpBb7x+wJ8/CaZKWLRgyttmKAQz9yeWeCq65sTC
+ CrJk+i6Psj+5BLYSYam4D8drR/RENsRoeko4im320I6UT0YG0HfPC/uqMuKBOa/+ATBL
+ LpnRhbBzL8EgJcm1s974z3Hp64KhZplzTFCB5bpv+XpQFfTqMBEksrzNhNwEM0ED81tE
+ 72KUnMgSmQwfaZg93Y5JG1zxZ9xSs63cndQlZ5cqW3mLEzasNqsJRX+f9KhlnxVqE0P9
+ 4GffUcH51HzBHPo51OfTNEkS/HtaKA9SQfY6IxD2F/ydGAZkWNdK7VweQCJnbQqf1wxX
+ mx6w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684866254; x=1687458254;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gEkEiwKXF87W3JueIwS9vdfESkQLyxDf/zSDK0AeXfA=;
- b=kOiWAtPvk8jr2Bi2C7+YXdjM1ayXa1DIM5LW+WBtiXxROJtjCIadp8OmW+qbdnOUoD
- ljoZql+g1p6hyKfoDjsvJLIttELMfKdT+ZQnFIvJe+pFpMTb67oJO8dfCNVI/jcYPYIg
- D6Wexk5pBQaAtyzW4Ofx0aU63mw/gXLa26qIcEXY+eaEDabWFpKyrj5ELrM9WMleH6xn
- /Ln6j9WgyPzVcnGKRiYXoDgMIlQuN8qRsHMLlEo7qR2SrriOqicCWWgrSgR2yPOP1Rye
- NMLmYE5oql1GMB9cRFXOJMV6r/3b8tvuPbZ5TpDD6gmdnuaIjVP5lDLq418ui/X9eWF4
- SC/A==
-X-Gm-Message-State: AC+VfDz1RnbfM5hbF8uz9wIFjRunL+aN2iBvdUlK6hnEjZ2gZnIEzKKW
- 3Yj6xrvppPl57vMS53y2e4QHcg==
-X-Google-Smtp-Source: ACHHUZ6lc5Tw7YoIkbZeAbmMbupLpgeVMyIgZL2f2KDwSnGRaci5KvXbmh1OswC637xpdJGOW2lyNw==
-X-Received: by 2002:a05:6a00:2e1a:b0:63d:641f:5048 with SMTP id
- fc26-20020a056a002e1a00b0063d641f5048mr20405103pfb.16.1684866254018; 
- Tue, 23 May 2023 11:24:14 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1598:4c01:c13a:d73:4f88:3654?
- ([2602:ae:1598:4c01:c13a:d73:4f88:3654])
+ d=1e100.net; s=20221208; t=1684871777; x=1687463777;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=TjoUGtEA0nlcsDiZadtRY2aihoK2mUP2djsEyFXTOOA=;
+ b=BD1J60DwnSzHSYK/P1Rit5nY4JZfEXS2VLnRPh/crkvrgynAgHdefUqpSMX/KzXq9d
+ KOyMGhtKhHqpnMPDqUtbafMeB5FmuQIpMvU4b8EKzDyxlknAGzjh74JlCa9vpoMAb6Oz
+ pmB5aAfZY0HWLaRY1r81q7WAxZLmVbT++ri4y6AjKJVr23FnYl3aFHq1AA0HYboGgEzB
+ qmQwiJ7ww2TPHyyvj+TYbKzSSQrbBw12nY0zCDf7ZvyZoZWydB0ZxUbCqZhED0CGefm9
+ ikVJe+osatBtVdpkpVX9dsjfmuiBp3duRrEg47urEIvoXnndTMhskKVF98WzytChNk9q
+ Q1Qw==
+X-Gm-Message-State: AC+VfDwpM6y5+EnGchDTgLDC6tCU17weEMog08xE+EuXKIzY07DwZD3g
+ drohzbN5JginSC14HxStN3m3XsdLlgQ=
+X-Google-Smtp-Source: ACHHUZ6VcavKfRkHdNL3f79Zzi8Tvtjq7ObLR0BZ5P5W9MfsVLairTMGEoimwG7bvi3y7wcRw2RRYw==
+X-Received: by 2002:a17:907:7d9f:b0:96f:905e:6117 with SMTP id
+ oz31-20020a1709077d9f00b0096f905e6117mr12518386ejc.56.1684871776894; 
+ Tue, 23 May 2023 12:56:16 -0700 (PDT)
+Received: from Provence.localdomain
+ (dynamic-077-183-025-113.77.183.pool.telefonica.de. [77.183.25.113])
  by smtp.gmail.com with ESMTPSA id
- d18-20020aa78152000000b0062e0c39977csm6042249pfn.139.2023.05.23.11.24.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 May 2023 11:24:13 -0700 (PDT)
-Message-ID: <955953fa-a34f-01fd-4493-9af9ea369fc2@linaro.org>
-Date: Tue, 23 May 2023 11:24:11 -0700
+ dk13-20020a170906f0cd00b00965af4c7f07sm4737740ejb.20.2023.05.23.12.56.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 23 May 2023 12:56:16 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH v3 0/3] Trivial cleanups
+Date: Tue, 23 May 2023 21:56:05 +0200
+Message-Id: <20230523195608.125820-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH 4/4] hw/usb/hcd-ehci-pci: Simplify using
- DEVICE_GET_CLASS() macro
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Sergio Lopez <slp@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Eduardo Habkost
- <eduardo@habkost.net>, qemu-trivial@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-References: <20230523061207.48818-1-philmd@linaro.org>
- <20230523061207.48818-5-philmd@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230523061207.48818-5-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.089,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -92,15 +86,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 May 2023 18:24:20 -0000
+X-List-Received-Date: Tue, 23 May 2023 19:56:22 -0000
 
-On 5/22/23 23:12, Philippe Mathieu-Daudé wrote:
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
-> ---
->   hw/usb/hcd-ehci-pci.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-r~
+This series:=0D
+* Removes dead code from omap_uart and i82378=0D
+* Resolves redundant code in the i8254 timer devices=0D
+=0D
+v3:=0D
+* Drop TYPE_ISA_PARALLEL since they became obsolete by=0D
+  https://lore.kernel.org/qemu-devel/20230522115014.1110840-9-thuth@redhat.=
+com/=0D
+=0D
+v2:=0D
+* Export ParallelState and ISAParallelState (Mark)=0D
+=0D
+Testing done:=0D
+* `make check`=0D
+=0D
+Bernhard Beschow (3):=0D
+  hw/timer/i8254_common: Share "iobase" property via base class=0D
+  hw/arm/omap: Remove unused omap_uart_attach()=0D
+  hw/isa/i82378: Remove unused "io" attribute=0D
+=0D
+ include/hw/arm/omap.h   | 1 -=0D
+ hw/char/omap_uart.c     | 9 ---------=0D
+ hw/i386/kvm/i8254.c     | 1 -=0D
+ hw/isa/i82378.c         | 1 -=0D
+ hw/timer/i8254.c        | 6 ------=0D
+ hw/timer/i8254_common.c | 6 ++++++=0D
+ 6 files changed, 6 insertions(+), 18 deletions(-)=0D
+=0D
+-- =0D
+2.40.1=0D
+=0D
 
