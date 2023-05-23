@@ -1,52 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q1Y7L-0000Ot-8g
-	for mharc-qemu-trivial@gnu.org; Tue, 23 May 2023 15:56:23 -0400
+	id 1q1Y7N-0000QS-Qe
+	for mharc-qemu-trivial@gnu.org; Tue, 23 May 2023 15:56:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1q1Y7J-0000NK-GN; Tue, 23 May 2023 15:56:21 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ id 1q1Y7L-0000PL-Ie; Tue, 23 May 2023 15:56:23 -0400
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1q1Y7H-0006Rs-Rw; Tue, 23 May 2023 15:56:21 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-96f818c48fbso3549866b.0; 
- Tue, 23 May 2023 12:56:18 -0700 (PDT)
+ id 1q1Y7J-0006Sf-Pf; Tue, 23 May 2023 15:56:23 -0400
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-96f5d651170so1069796666b.1; 
+ Tue, 23 May 2023 12:56:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1684871777; x=1687463777;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=TjoUGtEA0nlcsDiZadtRY2aihoK2mUP2djsEyFXTOOA=;
- b=egL0lw1VBg26AAMDdm9J+ORUQdRSpBb7x+wJ8/CaZKWLRgyttmKAQz9yeWeCq65sTC
- CrJk+i6Psj+5BLYSYam4D8drR/RENsRoeko4im320I6UT0YG0HfPC/uqMuKBOa/+ATBL
- LpnRhbBzL8EgJcm1s974z3Hp64KhZplzTFCB5bpv+XpQFfTqMBEksrzNhNwEM0ED81tE
- 72KUnMgSmQwfaZg93Y5JG1zxZ9xSs63cndQlZ5cqW3mLEzasNqsJRX+f9KhlnxVqE0P9
- 4GffUcH51HzBHPo51OfTNEkS/HtaKA9SQfY6IxD2F/ydGAZkWNdK7VweQCJnbQqf1wxX
- mx6w==
+ d=gmail.com; s=20221208; t=1684871779; x=1687463779;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=iS6IllWr8xotqYJ+kDfnN1bLpimUHqJGv84Pvf7+lk4=;
+ b=noYpsQ38ZTHGFEc4EdG9nozXZHSKxaIFk5ZE03hFwGNk4fnAWEPS+Zri61YEBXBzIP
+ /c8FwTuQjSkUF9H9sV0LpGQMQ2S9jJP6JgBoqgS4Delf3Wn/2wLx9anYaXFb8pJAReir
+ X9pGmNn9yRwWmDXjslE/mYVXQj/qh0LVsQi0gEMZbxz2e8sbas7iw/mFoRraqvId2uEZ
+ nN2E6826CbhBgcDuMbFJ1835C23jYNK9GeTFa0R8wJ1SoiUj2NOxnm0qRKJUJohQSxhn
+ x5BHVyrm3f+EBgOlJ0yQF67xs3eByd2cqFLbwj8MR0ZlElMsJKoe3S1nLUquwI7NBzbL
+ Fv7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684871777; x=1687463777;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=TjoUGtEA0nlcsDiZadtRY2aihoK2mUP2djsEyFXTOOA=;
- b=BD1J60DwnSzHSYK/P1Rit5nY4JZfEXS2VLnRPh/crkvrgynAgHdefUqpSMX/KzXq9d
- KOyMGhtKhHqpnMPDqUtbafMeB5FmuQIpMvU4b8EKzDyxlknAGzjh74JlCa9vpoMAb6Oz
- pmB5aAfZY0HWLaRY1r81q7WAxZLmVbT++ri4y6AjKJVr23FnYl3aFHq1AA0HYboGgEzB
- qmQwiJ7ww2TPHyyvj+TYbKzSSQrbBw12nY0zCDf7ZvyZoZWydB0ZxUbCqZhED0CGefm9
- ikVJe+osatBtVdpkpVX9dsjfmuiBp3duRrEg47urEIvoXnndTMhskKVF98WzytChNk9q
- Q1Qw==
-X-Gm-Message-State: AC+VfDwpM6y5+EnGchDTgLDC6tCU17weEMog08xE+EuXKIzY07DwZD3g
- drohzbN5JginSC14HxStN3m3XsdLlgQ=
-X-Google-Smtp-Source: ACHHUZ6VcavKfRkHdNL3f79Zzi8Tvtjq7ObLR0BZ5P5W9MfsVLairTMGEoimwG7bvi3y7wcRw2RRYw==
-X-Received: by 2002:a17:907:7d9f:b0:96f:905e:6117 with SMTP id
- oz31-20020a1709077d9f00b0096f905e6117mr12518386ejc.56.1684871776894; 
- Tue, 23 May 2023 12:56:16 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1684871779; x=1687463779;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=iS6IllWr8xotqYJ+kDfnN1bLpimUHqJGv84Pvf7+lk4=;
+ b=GNz0pViaTbRL5YbzDQJPlcDhu9ah9Ki+De0pJrDoGTTf+/Jt6D73i1BA55yRfKZMAL
+ fSd78rgokRiHix4POCfcG/eW1dLBhCR8v+zsYzpFuYmDbz9IyRZt8DGnYQKgR+R2Ih2W
+ /Ndm9SoFoQQaG0BZia9I40S8WvNDpZlO19sELjXUx6KDmM7K1AuwInA3W9N6A+adq7Eu
+ 5+tXncdASQWkwmx1ihpbCpDr5WvN8pTIHHxgTOm1QBmQUIrSbDJNAqdfvo6n8ohxoWlE
+ /E2KrY0PiMUJxzjknTF3SeXjuVzDk00bIFE7afMvBNFBfEiaiiDTeVT9/hOPqTCVzq3L
+ nvdA==
+X-Gm-Message-State: AC+VfDzMe/J1rb0YyMCddAEZmVT6Gkldwb9Of9UGOBAC+iQv1DHh86N6
+ kT/a63rUFNLo50vEf5E8ROPWZKkSfmA=
+X-Google-Smtp-Source: ACHHUZ5ftlxumZm0nTwAfRd4UNE9Cbg4NAs/E0kx40xKu0kP60UAZIOWIPXln9ZLAXy3Af+H1wbeOg==
+X-Received: by 2002:a17:907:d15:b0:966:4669:7e8d with SMTP id
+ gn21-20020a1709070d1500b0096646697e8dmr15182949ejc.16.1684871779340; 
+ Tue, 23 May 2023 12:56:19 -0700 (PDT)
 Received: from Provence.localdomain
  (dynamic-077-183-025-113.77.183.pool.telefonica.de. [77.183.25.113])
  by smtp.gmail.com with ESMTPSA id
- dk13-20020a170906f0cd00b00965af4c7f07sm4737740ejb.20.2023.05.23.12.56.15
+ dk13-20020a170906f0cd00b00965af4c7f07sm4737740ejb.20.2023.05.23.12.56.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 May 2023 12:56:16 -0700 (PDT)
+ Tue, 23 May 2023 12:56:19 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
@@ -57,16 +58,20 @@ Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Eduardo Habkost <eduardo@habkost.net>, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v3 0/3] Trivial cleanups
-Date: Tue, 23 May 2023 21:56:05 +0200
-Message-Id: <20230523195608.125820-1-shentey@gmail.com>
+ Paolo Bonzini <pbonzini@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v3 2/3] hw/arm/omap: Remove unused omap_uart_attach()
+Date: Tue, 23 May 2023 21:56:07 +0200
+Message-Id: <20230523195608.125820-3-shentey@gmail.com>
 X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230523195608.125820-1-shentey@gmail.com>
+References: <20230523195608.125820-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x629.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,37 +91,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 May 2023 19:56:22 -0000
+X-List-Received-Date: Tue, 23 May 2023 19:56:23 -0000
 
-This series:=0D
-* Removes dead code from omap_uart and i82378=0D
-* Resolves redundant code in the i8254 timer devices=0D
-=0D
-v3:=0D
-* Drop TYPE_ISA_PARALLEL since they became obsolete by=0D
-  https://lore.kernel.org/qemu-devel/20230522115014.1110840-9-thuth@redhat.=
-com/=0D
-=0D
-v2:=0D
-* Export ParallelState and ISAParallelState (Mark)=0D
-=0D
-Testing done:=0D
-* `make check`=0D
-=0D
-Bernhard Beschow (3):=0D
-  hw/timer/i8254_common: Share "iobase" property via base class=0D
-  hw/arm/omap: Remove unused omap_uart_attach()=0D
-  hw/isa/i82378: Remove unused "io" attribute=0D
-=0D
- include/hw/arm/omap.h   | 1 -=0D
- hw/char/omap_uart.c     | 9 ---------=0D
- hw/i386/kvm/i8254.c     | 1 -=0D
- hw/isa/i82378.c         | 1 -=0D
- hw/timer/i8254.c        | 6 ------=0D
- hw/timer/i8254_common.c | 6 ++++++=0D
- 6 files changed, 6 insertions(+), 18 deletions(-)=0D
-=0D
--- =0D
-2.40.1=0D
-=0D
+The function is unused since commit
+bdad3654d3c55f478e538037d9eccd204e5fc8ee ('hw/arm/nseries: Remove
+invalid/unnecessary n8x0_uart_setup()').
+
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Acked-by: Michael S. Tsirkin <mst@redhat.com>
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ include/hw/arm/omap.h | 1 -
+ hw/char/omap_uart.c   | 9 ---------
+ 2 files changed, 10 deletions(-)
+
+diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+index c275d9b681..067e9419f7 100644
+--- a/include/hw/arm/omap.h
++++ b/include/hw/arm/omap.h
+@@ -724,7 +724,6 @@ struct omap_uart_s *omap2_uart_init(MemoryRegion *sysmem,
+                 qemu_irq txdma, qemu_irq rxdma,
+                 const char *label, Chardev *chr);
+ void omap_uart_reset(struct omap_uart_s *s);
+-void omap_uart_attach(struct omap_uart_s *s, Chardev *chr);
+ 
+ struct omap_mpuio_s;
+ qemu_irq *omap_mpuio_in_get(struct omap_mpuio_s *s);
+diff --git a/hw/char/omap_uart.c b/hw/char/omap_uart.c
+index 1c890b9201..6848bddb4e 100644
+--- a/hw/char/omap_uart.c
++++ b/hw/char/omap_uart.c
+@@ -175,12 +175,3 @@ struct omap_uart_s *omap2_uart_init(MemoryRegion *sysmem,
+ 
+     return s;
+ }
+-
+-void omap_uart_attach(struct omap_uart_s *s, Chardev *chr)
+-{
+-    /* TODO: Should reuse or destroy current s->serial */
+-    s->serial = serial_mm_init(get_system_memory(), s->base, 2, s->irq,
+-                               omap_clk_getrate(s->fclk) / 16,
+-                               chr ?: qemu_chr_new("null", "null", NULL),
+-                               DEVICE_NATIVE_ENDIAN);
+-}
+-- 
+2.40.1
+
 
