@@ -1,85 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q1hpy-0002uw-1X
-	for mharc-qemu-trivial@gnu.org; Wed, 24 May 2023 02:19:06 -0400
+	id 1q1jZs-0002Ha-Ow
+	for mharc-qemu-trivial@gnu.org; Wed, 24 May 2023 04:10:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q1hpp-0002qN-GN
- for qemu-trivial@nongnu.org; Wed, 24 May 2023 02:18:58 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q1hpm-0004OK-To
- for qemu-trivial@nongnu.org; Wed, 24 May 2023 02:18:57 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-3f6147227a7so1520545e9.1
- for <qemu-trivial@nongnu.org>; Tue, 23 May 2023 23:18:53 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1684909132; x=1687501132;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=zXP9bbbfnrujl2z83OZx0ev2hu3VaP9qwcc8H6TTGA0=;
- b=rh3iCj/WHxJvuwvSVx4YUSw8HaCMvtBI6hsxrjh9Gsef0+hPBA5cwkt3aIxXhaq9c3
- NJD5ICMCCI9RL5XDrCp6Xfv/ie4iqNJ+z8clvW2boPkVvilU7FPq9PIVJSjKghFQ7sVG
- eZ4Qj7vHVoG33Mx7GjzQDpa//6VxiWwcpoGgUJL3nh+2lGWN638MQzXY+j7BbnDmWocy
- OvkOx3pk1sYLl40lVQfw5/GChU4oEseYs3BpYoW0szd+459NLHqo9M/nMn6NkzfRbifY
- fGxI8ifEhUZ+jsl6aXx/mAFkz5TnJCIWkUrrrhzJIgw4w4fmkkJwTwFme/X7tUIE5Z9A
- /l5g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1684909132; x=1687501132;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=zXP9bbbfnrujl2z83OZx0ev2hu3VaP9qwcc8H6TTGA0=;
- b=disZAseFGkt6EcAN3lhvPPWEPBZBQA0IA93sdKwDItkjNrYyKeMwHxXJmQpL8Nqdqr
- CcQrw+PBdhNiR5Ek5tQSp8bnbFJNz46n3+XjbRotrlkkrR7jaJONd85uK1smyiq6B+hk
- tHTO24STpzck1e8sSnDxnpUKre2uzklBvrwZiwTPKqZ6mKvywhSree0ewMxgN42WQhX0
- Ey12p41P0yz5J71zaSvcPylx3dHfzKTN/ygIh5hwEjFrLa0TvvqA/RAoV0M7FEcqTE8r
- rbWP+aV/fsNtKuTmRR3dzBk3h57+cBX+adjTGBv5DqOHhaE6TBFGFLUPYk+JUqnIqagL
- DMMQ==
-X-Gm-Message-State: AC+VfDyCYbFt+FMX6QZ+6zomOFCfUBPaSUA7ojYu9h9jKmYfv/Dt301o
- Xf6EsnxhvcehJLfeTL2RVDjfrA==
-X-Google-Smtp-Source: ACHHUZ5I3TFqOw6PKkD+RMkkEsJ2IH3rrhc9rtmHTNqKYmYGpfaczk5SDqsUVy70bqlt6x9uOcXb6A==
-X-Received: by 2002:a5d:618d:0:b0:309:53f3:6e3e with SMTP id
- j13-20020a5d618d000000b0030953f36e3emr11707907wru.69.1684909132476; 
- Tue, 23 May 2023 23:18:52 -0700 (PDT)
-Received: from [192.168.215.175] (35.red-95-127-46.staticip.rima-tde.net.
- [95.127.46.35]) by smtp.gmail.com with ESMTPSA id
- j18-20020adff012000000b00304adbeeabbsm13197162wro.99.2023.05.23.23.18.50
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 May 2023 23:18:52 -0700 (PDT)
-Message-ID: <9be2cb0b-307f-2f33-8c7c-d8fad36a0b98@linaro.org>
-Date: Wed, 24 May 2023 08:18:49 +0200
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q1jZp-0002EO-8E
+ for qemu-trivial@nongnu.org; Wed, 24 May 2023 04:10:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q1jZn-0002cp-Tv
+ for qemu-trivial@nongnu.org; Wed, 24 May 2023 04:10:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1684915830;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=PuZ58S5AOi77T8cZKaaWDXvqyBaIpwEm7YYkRxtvZbI=;
+ b=BeC+kFt0Ur1hxLpv4w63JRHpm0pYFEKKtqHs7iWRXmYheceexneW8JJtxQ7/AoteMMgPHc
+ Q5UwO+WF6bwIOwJkiedNk8+F7IyiORwO5oU16YJMqzig77kUBFLZqH/PkWj71edtrx4w7z
+ VXt7w1Np5zWzhxweOaiM0Sc8P/Pg/XQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-101-Q7XdHpHTNCyQOZPrzKLVpQ-1; Wed, 24 May 2023 04:10:27 -0400
+X-MC-Unique: Q7XdHpHTNCyQOZPrzKLVpQ-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D266880231B;
+ Wed, 24 May 2023 08:10:26 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.194.109])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F2C4940CFD45;
+ Wed, 24 May 2023 08:10:25 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Corey Minyard <minyard@acm.org>
+Subject: [PATCH] tests/qtest: Run ipmi-bt-test only if CONFIG_IPMI_EXTERN is
+ set
+Date: Wed, 24 May 2023 10:10:24 +0200
+Message-Id: <20230524081024.1619273-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH v3 3/3] hw/isa/i82378: Remove unused "io" attribute
-Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Richard Henderson
- <richard.henderson@linaro.org>, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
- <hpoussin@reactos.org>, "Michael S. Tsirkin" <mst@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-References: <20230523195608.125820-1-shentey@gmail.com>
- <20230523195608.125820-4-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230523195608.125820-4-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.089,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,20 +64,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 24 May 2023 06:18:58 -0000
+X-List-Received-Date: Wed, 24 May 2023 08:10:33 -0000
 
-On 23/5/23 21:56, Bernhard Beschow wrote:
-> The attribute isn't used since commit 5c9736789b79ea49cd236ac326f0a414f63b1015
-> "i82378: Cleanup implementation".
-> 
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> Acked-by: Michael S. Tsirkin <mst@redhat.com>
-> Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> ---
->   hw/isa/i82378.c | 1 -
->   1 file changed, 1 deletion(-)
+The ipmi-bt-test uses "-device ipmi-bmc-extern", thus it should
+only be run if this device has been enabled in the configuration.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/qtest/meson.build | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 087f2dc9d7..1d8a53a669 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -49,7 +49,8 @@ qtests_i386 = \
+   (config_all_devices.has_key('CONFIG_SGA') ? ['boot-serial-test'] : []) +                  \
+   (config_all_devices.has_key('CONFIG_ISA_IPMI_KCS') ? ['ipmi-kcs-test'] : []) +            \
+   (config_host.has_key('CONFIG_LINUX') and                                                  \
+-   config_all_devices.has_key('CONFIG_ISA_IPMI_BT') ? ['ipmi-bt-test'] : []) +              \
++   config_all_devices.has_key('CONFIG_ISA_IPMI_BT') and
++   config_all_devices.has_key('CONFIG_IPMI_EXTERN') ? ['ipmi-bt-test'] : []) +              \
+   (config_all_devices.has_key('CONFIG_WDT_IB700') ? ['wdt_ib700-test'] : []) +              \
+   (config_all_devices.has_key('CONFIG_PVPANIC_ISA') ? ['pvpanic-test'] : []) +              \
+   (config_all_devices.has_key('CONFIG_PVPANIC_PCI') ? ['pvpanic-pci-test'] : []) +          \
+-- 
+2.31.1
 
 
