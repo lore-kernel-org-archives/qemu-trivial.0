@@ -1,89 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q4NqP-0002Lm-Ij
-	for mharc-qemu-trivial@gnu.org; Wed, 31 May 2023 11:34:37 -0400
+	id 1q4gjk-00086d-Kc
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Jun 2023 07:45:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q4NqM-0002LP-P4
- for qemu-trivial@nongnu.org; Wed, 31 May 2023 11:34:34 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q4NqK-0000zN-5B
- for qemu-trivial@nongnu.org; Wed, 31 May 2023 11:34:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1685547264;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=umgitms0WDA+J6n4PBGFnFBxJfVSSct62UU2xiE9bh8=;
- b=IsWQkVs53xoM6UIo27bjjEmiXCpkdyEeLy+zSBxA+Xx8mXLJ45lqEX6iG6sdpYEtb5a4Av
- LOWGusbGp4B68YKox97TN0jeB7lxk+bNIbMFlP5ClbijDVH9oxQwFQy/DDW1rOhUs7O1hj
- hicEBCnI0WthhcaIVRBwFPX1HaUtXeo=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-435-ii6vdtZxPBSXtH8jagb65Q-1; Wed, 31 May 2023 11:34:23 -0400
-X-MC-Unique: ii6vdtZxPBSXtH8jagb65Q-1
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-30af81cf4dbso910396f8f.2
- for <qemu-trivial@nongnu.org>; Wed, 31 May 2023 08:34:23 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1q4gjh-00086F-9h; Thu, 01 Jun 2023 07:44:57 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1q4gjf-00071C-Cy; Thu, 01 Jun 2023 07:44:56 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-5148f299105so1744075a12.1; 
+ Thu, 01 Jun 2023 04:44:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1685619892; x=1688211892;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=XxTgZtev+GfJl7H6W7VhwGN30lrR7QMJprT1vBAnGgk=;
+ b=lOPtH9t9JgWSU2PNf3IeQlXUkUKiYpnjsBG6b8BjB/OYQOnQ52GgxR/okG4hHR1R5f
+ j+WY7rgqxNNXR3GnmMT5qJ7JDVPiqHmyrDoqxwXbILLcSa3PsWOWJU0c8IvasH+9S/xP
+ yS+So5h/P0UgZ+pChIF4Ls3nqdUR6NIzfuwppfVI7exSn1LNgnqGAbKndc6FDUW3s+tp
+ Blk7Xv1jL32Hqph8m0XwdWiKdos52DagC+1U/ofNp+LcwNBdzLJVA9cdwnbySL3OqYlY
+ YQ2D76wLASRq5k7MPnw//DRSA1yv5zk9DEHdmdiasfEm1HbC+hD8imZgUUefrjDD5mP8
+ ZUuA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685547262; x=1688139262;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=umgitms0WDA+J6n4PBGFnFBxJfVSSct62UU2xiE9bh8=;
- b=KRX+K+G6I3Lb/3wmToONjdh+OnCtLhbVISTG08kWK825IwUL/RV5Ccap7yrIKqxz43
- Kjkg2B9yk2qKahZEJE0xW2yWRuT6vT63AL41Ran5+eGc9+6yqOu8w4MS+GSv+IV6igUB
- UFfQ4cdC8qZoJ05ID8FsNmOw4ebkgw38GOrID/0hiWSqLoiOcf63N9ostEuRkIpr7rkg
- Zq/01d2s3x6YlPvwQLa4BKOZWGS0oP5qE6w+4tp0CqtNq5KB3OJeFVq/ZvsnwKzCqsgD
- sNgTz29vLSpwAxcu3w1OpMlqBJDcUSNqqy9K0s0ZaY8hfflW1Tov0igr7XAYps22slX+
- PYCg==
-X-Gm-Message-State: AC+VfDwJ1kTRfiW0Aw+/P3fWMsuQCpfpkP5QmeH0SLsRgMXdJpJlJaOi
- 521tBAtX2RW68zWRnNlt92ryUOC7FUWMTbi1kojah3jk2usgs6JByshzoxfrORHPagFLpWNT6zu
- wdMVMp1DHkLe15uj23A==
-X-Received: by 2002:a5d:5083:0:b0:304:b967:956f with SMTP id
- a3-20020a5d5083000000b00304b967956fmr5865097wrt.8.1685547262114; 
- Wed, 31 May 2023 08:34:22 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ5qmRLaAjOTsTojZd4boW8sMOfJa3tWYmjYWLPBbJmPnX6Ii4n9FuX2unlbdZTYzRDECgLPjA==
-X-Received: by 2002:a5d:5083:0:b0:304:b967:956f with SMTP id
- a3-20020a5d5083000000b00304b967956fmr5865082wrt.8.1685547261861; 
- Wed, 31 May 2023 08:34:21 -0700 (PDT)
-Received: from [192.168.0.3] (ip-109-43-178-4.web.vodafone.de. [109.43.178.4])
- by smtp.gmail.com with ESMTPSA id
- l16-20020adffe90000000b0030ae93bd196sm7173571wrr.21.2023.05.31.08.34.20
+ d=1e100.net; s=20221208; t=1685619892; x=1688211892;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=XxTgZtev+GfJl7H6W7VhwGN30lrR7QMJprT1vBAnGgk=;
+ b=VOtCmj+h/N1celEsE6sbBKo1+dLKTGKhwrQAhP5XAWOplgHfE7Vc9FYuQriGh8h1go
+ hgLMn+19HmErhBzkMhTLpyYNi2jB97U1e0xElQGRt0Cyvd8UvcrCCJJhUJOLcpulGAgW
+ tlRvsMKpyP70F9z1uOyXpPlehwFDjvR2Za/Nf+UFVTiWqzV2WvQYdA3mSqcmYbGC8CxI
+ 0t0kujThOoJa/UmEmZyRwNVRfkqaXbyYVKD4JrOGTBoZo8yff2+dxNvZimNogGQz0uBQ
+ TgvoS8xcP+eEZn5vUqaRIR8WJL5aPR6K+iLiXpuRNeHUvnpFtYZWZQV9K/Jb5EZq4YsM
+ UvVg==
+X-Gm-Message-State: AC+VfDwzyf6cY0r+cQSW962gp4sw/G3NsriQknVYeVE8y8vV5/xjPLPT
+ rOQf1vQjeDUIKrX/EbEgMSU=
+X-Google-Smtp-Source: ACHHUZ66/T7Qd39BzTWoYK9OYRqGbybwmhwvj8qcAhP0uzFDAAsdlvGyfFM+EqTrse2H/y2W2vxriw==
+X-Received: by 2002:aa7:d047:0:b0:514:a016:9cd1 with SMTP id
+ n7-20020aa7d047000000b00514a0169cd1mr1518133edo.8.1685619892129; 
+ Thu, 01 Jun 2023 04:44:52 -0700 (PDT)
+Received: from [127.0.0.1] (business-90-187-110-129.pool2.vodafone-ip.de.
+ [90.187.110.129]) by smtp.gmail.com with ESMTPSA id
+ ca28-20020aa7cd7c000000b0050bc6d0e880sm7014762edb.61.2023.06.01.04.44.51
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 31 May 2023 08:34:21 -0700 (PDT)
-Message-ID: <035823a1-e5f9-0f4c-9732-d69a39cdef93@redhat.com>
-Date: Wed, 31 May 2023 17:34:19 +0200
+ Thu, 01 Jun 2023 04:44:51 -0700 (PDT)
+Date: Thu, 01 Jun 2023 11:44:46 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
+CC: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ =?ISO-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v3 0/3] Trivial cleanups
+In-Reply-To: <c138717c-5085-3b4b-5a46-0fa93179f6a8@ilande.co.uk>
+References: <20230523195608.125820-1-shentey@gmail.com>
+ <c138717c-5085-3b4b-5a46-0fa93179f6a8@ilande.co.uk>
+Message-ID: <25280221-A771-4D77-9B9F-2C3FE45CE38C@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH] meson.build: Use -Wno-undef only for SDL 2.0.8 and older
-From: Thomas Huth <thuth@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-trivial@nongnu.org
-References: <20230531093902.70695-1-thuth@redhat.com>
-In-Reply-To: <20230531093902.70695-1-thuth@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.163,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.091, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,45 +89,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 May 2023 15:34:35 -0000
-
-On 31/05/2023 11.39, Thomas Huth wrote:
-> There is no need to disable this useful compiler warning for
-> newer versions of the SDL anymore.
-> 
-> This also enables the printing of the version number with
-> newer versions of the SDL in the summary of the meson output
-> again.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   meson.build | 10 ++++++----
->   1 file changed, 6 insertions(+), 4 deletions(-)
-> 
-> diff --git a/meson.build b/meson.build
-> index bc76ea96bf..8ccd928dca 100644
-> --- a/meson.build
-> +++ b/meson.build
-> @@ -1273,10 +1273,12 @@ if not get_option('sdl').auto() or have_system
->     sdl_image = not_found
->   endif
->   if sdl.found()
-> -  # work around 2.0.8 bug
-> -  sdl = declare_dependency(compile_args: '-Wno-undef',
-> -                           dependencies: sdl,
-> -                           version: sdl.version())
-> +  if sdl.version().version_compare('<=2.0.8')
-> +    # work around 2.0.8 bug
-> +    sdl = declare_dependency(compile_args: '-Wno-undef',
-> +                             dependencies: sdl,
-> +                             version: sdl.version())
-> +  endif
-
-Drat, never mind, this still fails with the SDL2 from MinGW:
-
-  https://gitlab.com/thuth/qemu/-/jobs/4385862312#L3048
-
-  Thomas
+X-List-Received-Date: Thu, 01 Jun 2023 11:44:59 -0000
 
 
+
+Am 25=2E Mai 2023 16:03:15 UTC schrieb Mark Cave-Ayland <mark=2Ecave-aylan=
+d@ilande=2Eco=2Euk>:
+>On 23/05/2023 20:56, Bernhard Beschow wrote:
+>
+>> This series:
+>> * Removes dead code from omap_uart and i82378
+>> * Resolves redundant code in the i8254 timer devices
+>>=20
+>> v3:
+>> * Drop TYPE_ISA_PARALLEL since they became obsolete by
+>>    https://lore=2Ekernel=2Eorg/qemu-devel/20230522115014=2E1110840-9-th=
+uth@redhat=2Ecom/
+>
+>Oh I didn't see that this had already been merged :/
+>
+>It's not a reason to block this series, but I'd still like to see your ch=
+anges to ParallelState and ISAParallelState merged separately since they ar=
+e a better match for our QOM coding standards=2E
+>
+>> v2:
+>> * Export ParallelState and ISAParallelState (Mark)
+>>=20
+>> Testing done:
+>> * `make check`
+>>=20
+>> Bernhard Beschow (3):
+>>    hw/timer/i8254_common: Share "iobase" property via base class
+>>    hw/arm/omap: Remove unused omap_uart_attach()
+>>    hw/isa/i82378: Remove unused "io" attribute
+>>=20
+>>   include/hw/arm/omap=2Eh   | 1 -
+>>   hw/char/omap_uart=2Ec     | 9 ---------
+>>   hw/i386/kvm/i8254=2Ec     | 1 -
+>>   hw/isa/i82378=2Ec         | 1 -
+>>   hw/timer/i8254=2Ec        | 6 ------
+>>   hw/timer/i8254_common=2Ec | 6 ++++++
+>>   6 files changed, 6 insertions(+), 18 deletions(-)
+>
+>Do we know who is going to pick up these series? I can send a PR if no-on=
+e minds?
+
+I guess the silence means that no one minds ;)
+
+Perhaps we could queue these changes together with my VIA/PCI IDE cleanup =
+series once it is fully reviewed?
+
+Best regards,
+Bernhard
+>
+>
+>ATB,
+>
+>Mark=2E
 
