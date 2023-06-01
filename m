@@ -1,91 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q4jQc-0001lC-1N
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Jun 2023 10:37:26 -0400
+	id 1q4oR4-00007K-JN
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Jun 2023 15:58:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1q4jQa-0001kp-61
- for qemu-trivial@nongnu.org; Thu, 01 Jun 2023 10:37:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1q4jQT-0001Yr-7N
- for qemu-trivial@nongnu.org; Thu, 01 Jun 2023 10:37:23 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1685630235;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=CjWPm8/seOc+I32CVwyLov08i9XEn5i9AkTXXoaVIZE=;
- b=URzETI+TemUSTNC0r2PRY8tSpPd/xKog3kVR5eLZTzG+7AmzsgPtkk988eHY14MRWr0Ne8
- jVxxJ0K8xxmZQydOEq43RUJh8c6Pm2yoTiXeRQ6bTwYmsQgcqpIV41E/JA5JgDIdCtvy3C
- fHjT2QEms0OWSXPwrkI6EyyYSOsiyQw=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-108-WbEJxr-0N-mk_200I9DR4Q-1; Thu, 01 Jun 2023 10:37:14 -0400
-X-MC-Unique: WbEJxr-0N-mk_200I9DR4Q-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-3f6f58e269eso5710525e9.1
- for <qemu-trivial@nongnu.org>; Thu, 01 Jun 2023 07:37:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ld.adecy@gmail.com>)
+ id 1q4o4N-0007Es-9q
+ for qemu-trivial@nongnu.org; Thu, 01 Jun 2023 15:34:47 -0400
+Received: from mail-vk1-xa34.google.com ([2607:f8b0:4864:20::a34])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ld.adecy@gmail.com>)
+ id 1q4o4J-0006ln-Df
+ for qemu-trivial@nongnu.org; Thu, 01 Jun 2023 15:34:45 -0400
+Received: by mail-vk1-xa34.google.com with SMTP id
+ 71dfb90a1353d-4573e1e6cb9so1747569e0c.0
+ for <qemu-trivial@nongnu.org>; Thu, 01 Jun 2023 12:34:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1685648081; x=1688240081;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=/XH7A3bclhFEuC6OKNDlw0mHxGGHdj3sdsgvcI6KXX8=;
+ b=riUEVF31bAC6DPANCVSiLXHjwIkS56v73Bts08dT2FnUJdlIqmW4cAmWmC2+6GX/GM
+ QwbCxcD4Vj8bv1IRqOEoFTKkwP3akeNOfoDg0O8E9Cqe+X940fNH9VDcsM+cTV74+IpK
+ VXts/JnBBl3ok7FMzYCwR45MVN0ZiWSOd52NElPQcOBP1g6TX28bjbdaE0dhH+ben0VL
+ wmqZmcBEI1g3oHyR5l7zFZhaOymp79UufIF7MCrts1eKUsAozDsBRblVaiRuvJrSq32Q
+ DVIjAVjipx34JVRrU2D39S4JCi+NFX4YPKk5yPyKMioBwynaXHAZPs7BNGXIt12L9VpS
+ lqbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685630232; x=1688222232;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CjWPm8/seOc+I32CVwyLov08i9XEn5i9AkTXXoaVIZE=;
- b=RgzDNMqw0wroNS2V9vbLLUYr58AnRxy4aaqpCnUwVOPEL74q4yynOL0Gp4D1Z9WVmp
- hCNU1cj1mk+auQXjTl0J10TZbjhTFAkLB8luK34X8UbDSRLtbQN+u7DxxCqYeI/Vzq8L
- 2Fe3U7Oq5kviNP/CifxGOy51bDc97Le4kVHLhjDah2Av8l6jfwOBYtTvfOgkgVmIzWQn
- X0a0vK8GcxbbFoJ0IC4JLZPH4LkwcUaYoYWaD9EwDyxQ9K8W+RFG6iWTNHoRVKIRHO34
- yAD9gnkLBzKH3FvA7gEdediBoF/R2NucQPDhVVJ2jVGLUJ90/pgKLGr5bWfScHFDvoAV
- YzlQ==
-X-Gm-Message-State: AC+VfDyt3PRuMkStxVRK/GCO5EOKGLvz9w2oScfWuf+FpPPk/RBsLYrD
- JFY1HPac7J7UzK0kczVLAyr2Jy/pY8GT5LU74ayKlkLryuMUvz+kog2AHUh6zUAcI5R0gJbtycx
- MCDQAuqiYT7i9XQDTDQ==
-X-Received: by 2002:a7b:cd8a:0:b0:3f6:cfc7:8bd0 with SMTP id
- y10-20020a7bcd8a000000b003f6cfc78bd0mr2201299wmj.36.1685630231797; 
- Thu, 01 Jun 2023 07:37:11 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ6q4xlhj+jTaKwFhPwN/rlLUXKLSFDPubdwE79j2dHd5EhWOcCkRfE4Svxn8XYWNRD/oGM8dQ==
-X-Received: by 2002:a7b:cd8a:0:b0:3f6:cfc7:8bd0 with SMTP id
- y10-20020a7bcd8a000000b003f6cfc78bd0mr2201276wmj.36.1685630231361; 
- Thu, 01 Jun 2023 07:37:11 -0700 (PDT)
-Received: from redhat.com ([2.55.41.2]) by smtp.gmail.com with ESMTPSA id
- v4-20020a05600c214400b003f42328b5d9sm2558657wml.39.2023.06.01.07.37.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 01 Jun 2023 07:37:10 -0700 (PDT)
-Date: Thu, 1 Jun 2023 10:37:06 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- =?iso-8859-1?Q?Herv=E9?= Poussineau <hpoussin@reactos.org>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-arm@nongnu.org,
- Laurent Vivier <laurent@vivier.eu>, Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v3 0/3] Trivial cleanups
-Message-ID: <20230601103652-mutt-send-email-mst@kernel.org>
-References: <20230523195608.125820-1-shentey@gmail.com>
- <c138717c-5085-3b4b-5a46-0fa93179f6a8@ilande.co.uk>
- <20230601080655-mutt-send-email-mst@kernel.org>
- <5982629b-0ff1-2525-e16a-309257710a20@ilande.co.uk>
+ d=1e100.net; s=20221208; t=1685648081; x=1688240081;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=/XH7A3bclhFEuC6OKNDlw0mHxGGHdj3sdsgvcI6KXX8=;
+ b=U75AbaXhcTF7/UlfctXO5InZbjQww3bRXxCC53Wwvq+mvXVy1Rgy9azlfrAOQzosxn
+ p9QiGb4Uv05/YKcA9So/E7gqZ1VsfC7j5tiVTKKan/DyxBAQw293c7ldx7T6rmvY9FuD
+ t7Ewn7CBpU7Yu3QoxUWIXR3i+lMqBIoRdyCo2EEL4wdTF9oYHcMXbWiu/TDFXpTjH5PQ
+ zFimueovda3U5vJ6doG5FanxFOV8Qvk7JxBLwA5I5goL9RJPyQHFCeLeYpjJzNbnHKg0
+ HGJMwrVdIKasfGXAoxtLIxMkzpYeNz1pyclnRBMo/J98y+oysV1Bx6eLhOSyVWLUM/0e
+ XlaQ==
+X-Gm-Message-State: AC+VfDwjq2jZ9meIpqRLj6Xa499BOu6+bRQLg2bejiPJwq+ZctrbPy+R
+ FQZnHRkQg1ObzTJwlOpCK8se5ohH4g4fXiee7B6QHu5lIfZEKQ==
+X-Google-Smtp-Source: ACHHUZ4Hc32E/WiGsP1gVQ8AdshtPMuNYOWDiu2AUaH//seyiWRCuI28gx437w03HdNlWU1vpeYf9SUqZ9SILTLDGBA=
+X-Received: by 2002:a1f:7c02:0:b0:457:56a4:19e7 with SMTP id
+ x2-20020a1f7c02000000b0045756a419e7mr1468157vkc.0.1685648081593; Thu, 01 Jun
+ 2023 12:34:41 -0700 (PDT)
 MIME-Version: 1.0
-In-Reply-To: <5982629b-0ff1-2525-e16a-309257710a20@ilande.co.uk>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+From: Adecy <ld.adecy@gmail.com>
+Date: Thu, 1 Jun 2023 21:34:30 +0200
+Message-ID: <CAB295yB5cFSZpGE74EW5hDMSNGnZfw06UC5ydepUL0sdT96WGg@mail.gmail.com>
+Subject: QEMU AVR Patch - Correct handling of AVR interrupts
+To: qemu-trivial@nongnu.org
+Content-Type: multipart/mixed; boundary="0000000000001ece7505fd168791"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a34;
+ envelope-from=ld.adecy@gmail.com; helo=mail-vk1-xa34.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.166,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 01 Jun 2023 15:58:13 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,71 +71,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Jun 2023 14:37:24 -0000
+X-List-Received-Date: Thu, 01 Jun 2023 19:34:47 -0000
 
-On Thu, Jun 01, 2023 at 01:45:47PM +0100, Mark Cave-Ayland wrote:
-> On 01/06/2023 13:07, Michael S. Tsirkin wrote:
-> 
-> > On Thu, May 25, 2023 at 05:03:15PM +0100, Mark Cave-Ayland wrote:
-> > > On 23/05/2023 20:56, Bernhard Beschow wrote:
-> > > 
-> > > > This series:
-> > > > * Removes dead code from omap_uart and i82378
-> > > > * Resolves redundant code in the i8254 timer devices
-> > > > 
-> > > > v3:
-> > > > * Drop TYPE_ISA_PARALLEL since they became obsolete by
-> > > >     https://lore.kernel.org/qemu-devel/20230522115014.1110840-9-thuth@redhat.com/
-> > > 
-> > > Oh I didn't see that this had already been merged :/
-> > > 
-> > > It's not a reason to block this series, but I'd still like to see your
-> > > changes to ParallelState and ISAParallelState merged separately since they
-> > > are a better match for our QOM coding standards.
-> > > 
-> > > > v2:
-> > > > * Export ParallelState and ISAParallelState (Mark)
-> > > > 
-> > > > Testing done:
-> > > > * `make check`
-> > > > 
-> > > > Bernhard Beschow (3):
-> > > >     hw/timer/i8254_common: Share "iobase" property via base class
-> > > >     hw/arm/omap: Remove unused omap_uart_attach()
-> > > >     hw/isa/i82378: Remove unused "io" attribute
-> > > > 
-> > > >    include/hw/arm/omap.h   | 1 -
-> > > >    hw/char/omap_uart.c     | 9 ---------
-> > > >    hw/i386/kvm/i8254.c     | 1 -
-> > > >    hw/isa/i82378.c         | 1 -
-> > > >    hw/timer/i8254.c        | 6 ------
-> > > >    hw/timer/i8254_common.c | 6 ++++++
-> > > >    6 files changed, 6 insertions(+), 18 deletions(-)
-> > > 
-> > > Do we know who is going to pick up these series? I can send a PR if no-one minds?
-> > > 
-> > 
-> > 
-> > Go ahead:
-> > 
-> > Acked-by: Michael S. Tsirkin <mst@redhat.com>
-> 
-> Thanks Michael! Is there any objection to also including
-> https://patchew.org/QEMU/20230531211043.41724-1-shentey@gmail.com/ at the
-> same time?
+--0000000000001ece7505fd168791
+Content-Type: multipart/alternative; boundary="0000000000001ece7005fd16878f"
 
-I don't know, I wasn't copied on that one.
+--0000000000001ece7005fd16878f
+Content-Type: text/plain; charset="UTF-8"
 
-> Bernhard: if you are able to submit a rebased version of the ISA_PARALLEL
-> cleanups at
-> https://patchew.org/QEMU/20230521123049.312349-1-shentey@gmail.com/ I think
-> it is worth considering those for inclusion in the PR as well (note the
-> comments re: an updated commit message and register definitions, but I can't
-> really do this myself because of the missing SoB).
-> 
-> 
-> ATB,
-> 
-> Mark.
+Hello,
 
+I would like to submit the attached patch.
+
+Best regards
+
+--0000000000001ece7005fd16878f
+Content-Type: text/html; charset="UTF-8"
+
+<div dir="ltr"><div>Hello,</div><div><div><br></div><div>I would like to submit the attached patch.</div></div><div><br></div><div>Best regards</div></div>
+
+--0000000000001ece7005fd16878f--
+
+--0000000000001ece7505fd168791
+Content-Type: application/octet-stream; 
+	name="0001-Fix-handling-of-AVR-interrupts-above-33-by-switching.patch"
+Content-Disposition: attachment; 
+	filename="0001-Fix-handling-of-AVR-interrupts-above-33-by-switching.patch"
+Content-Transfer-Encoding: base64
+Content-ID: <f_lidjc0zs0>
+X-Attachment-Id: f_lidjc0zs0
+
+RnJvbSBjODcyYzBmMTY0YTVhYjU5NWNmMzQ3ZDA5ODQzMDMwMWU2MjhiNzQxIE1vbiBTZXAgMTcg
+MDA6MDA6MDAgMjAwMQpGcm9tOiBMdWNhcyBEaWV0cmljaCA8bGQuYWRlY3lAZ21haWwuY29tPgpE
+YXRlOiBUaHUsIDEgSnVuIDIwMjMgMjM6MjY6MzMgKzAyMDAKU3ViamVjdDogW1BBVENIXSBGaXgg
+aGFuZGxpbmcgb2YgQVZSIGludGVycnVwdHMgYWJvdmUgMzMgYnkgc3dpdGNoaW5nIGN0ejMyIHRv
+CiBjdHo2NAoKVGhpcyBjb21taXQgYWRkcmVzc2VzIGEgYnVnIGluIHRoZSBBVlIgaW50ZXJydXB0
+IGhhbmRsaW5nIGNvZGUuClRoZSBtb2RpZmljYXRpb24gaW52b2x2ZXMgcmVwbGFjaW5nIHRoZSB1
+c2FnZSBvZiB0aGUgY3R6MzIgZnVuY3Rpb24Kd2l0aCBjdHo2NCB0byBlbnN1cmUgcHJvcGVyIGhh
+bmRsaW5nIG9mIGludGVycnVwdHMgYWJvdmUgMzMgaW4gdGhlIEFWUgp0YXJnZXQuCgpQcmV2aW91
+c2x5LCB0aW1lcnMgMywgNCwgYW5kIDUgaW50ZXJydXB0cyB3ZXJlIG5vdCBmdW5jdGlvbmluZyBj
+b3JyZWN0bHkKYmVjYXVzZSBtb3N0IG9mIHRoZWlyIGludGVycnVwdCB2ZWN0b3JzIGFyZSBudW1i
+ZXJlZCBhYm92ZSAzMy4KClNpZ25lZC1vZmYtYnk6IEx1Y2FzIERpZXRyaWNoIDxsZC5hZGVjeUBn
+bWFpbC5jb20+Ci0tLQogdGFyZ2V0L2F2ci9oZWxwZXIuYyB8IDQgKystLQogMSBmaWxlIGNoYW5n
+ZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS90YXJnZXQv
+YXZyL2hlbHBlci5jIGIvdGFyZ2V0L2F2ci9oZWxwZXIuYwppbmRleCBjMjdmNzAyOTAxLi5kYjMz
+OGE4NzYxIDEwMDY0NAotLS0gYS90YXJnZXQvYXZyL2hlbHBlci5jCisrKyBiL3RhcmdldC9hdnIv
+aGVscGVyLmMKQEAgLTQ1LDcgKzQ1LDcgQEAgYm9vbCBhdnJfY3B1X2V4ZWNfaW50ZXJydXB0KENQ
+VVN0YXRlICpjcywgaW50IGludGVycnVwdF9yZXF1ZXN0KQogICAgIH0KICAgICBpZiAoaW50ZXJy
+dXB0X3JlcXVlc3QgJiBDUFVfSU5URVJSVVBUX0hBUkQpIHsKICAgICAgICAgaWYgKGNwdV9pbnRl
+cnJ1cHRzX2VuYWJsZWQoZW52KSAmJiBlbnYtPmludHNyYyAhPSAwKSB7Ci0gICAgICAgICAgICBp
+bnQgaW5kZXggPSBjdHozMihlbnYtPmludHNyYyk7CisgICAgICAgICAgICBpbnQgaW5kZXggPSBj
+dHo2NChlbnYtPmludHNyYyk7CiAgICAgICAgICAgICBjcy0+ZXhjZXB0aW9uX2luZGV4ID0gRVhD
+UF9JTlQoaW5kZXgpOwogICAgICAgICAgICAgY2MtPnRjZ19vcHMtPmRvX2ludGVycnVwdChjcyk7
+CiAKQEAgLTczLDcgKzczLDcgQEAgdm9pZCBhdnJfY3B1X2RvX2ludGVycnVwdChDUFVTdGF0ZSAq
+Y3MpCiAgICAgaWYgKGNzLT5leGNlcHRpb25faW5kZXggPT0gRVhDUF9SRVNFVCkgewogICAgICAg
+ICB2ZWN0b3IgPSAwOwogICAgIH0gZWxzZSBpZiAoZW52LT5pbnRzcmMgIT0gMCkgewotICAgICAg
+ICB2ZWN0b3IgPSBjdHozMihlbnYtPmludHNyYykgKyAxOworICAgICAgICB2ZWN0b3IgPSBjdHo2
+NChlbnYtPmludHNyYykgKyAxOwogICAgIH0KIAogICAgIGlmIChhdnJfZmVhdHVyZShlbnYsIEFW
+Ul9GRUFUVVJFXzNfQllURV9QQykpIHsKLS0gCjIuMzkuMQoK
+--0000000000001ece7505fd168791--
 
