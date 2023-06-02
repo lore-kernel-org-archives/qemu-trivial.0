@@ -1,74 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q516C-00020M-K4
-	for mharc-qemu-trivial@gnu.org; Fri, 02 Jun 2023 05:29:32 -0400
+	id 1q57jy-0003s5-Qg
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Jun 2023 12:35:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q516A-0001zR-1U
- for qemu-trivial@nongnu.org; Fri, 02 Jun 2023 05:29:30 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q5167-0005ec-Lr
- for qemu-trivial@nongnu.org; Fri, 02 Jun 2023 05:29:29 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-3f6d01d390bso18499245e9.2
- for <qemu-trivial@nongnu.org>; Fri, 02 Jun 2023 02:29:27 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1685698166; x=1688290166;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=zmiwOYn0i0/iKvf4fkVFlGDNR18MRHPNVR1RQ9Mxh2g=;
- b=G35OsOhRty8cyGuBFOd5TyKxyQZYuw8PyGo/JFRO9FK689vtV33YM4RG3+Qdh6Yvnb
- YsJ0Pw/hAFAcIhRT3ujDgOb3YlwOBinuFe/m8AdmxJIP6iXHiZhi7yF9OX4aK9559Gvj
- +b/P12hjCU/x7BPGTb1sxvewAzrfeBKPQVEwT5tERCjCNhTkk4JrfalpE6dvYs81Gbo6
- nBeSa+dhd2hdUZlJ3EEP2K9Go0hYxmqNzO5diBud62egX0KNXN0MoRG2mhmqnrB77LJ6
- /TVlPJNETPqDwuN5wOn69MSoWKWlTCEPuB0HUNt6B7H/Y+xFPW+2QSybe1ioC12H5eCZ
- TjzQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685698166; x=1688290166;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=zmiwOYn0i0/iKvf4fkVFlGDNR18MRHPNVR1RQ9Mxh2g=;
- b=kHQWGQmY9o/KZgRP4x/bFbMLy5iiaFefczGOqBf5xgbmzi1ZSfg0h51FffapVu7j9d
- +p6+XWQchQjoeJujrvWh1koNKMZzHFbwXFGbttf4267FESjjn+DRBFyPmNtEa0wyZU5/
- Spf6Wwf9+kscV/ezJ313SqIaS+4Cc0vTAMJ9OYVSWCa+YOVL+CobvzVpfoqjNo7vhID/
- kp5YO0BK4hJ3ENdL98Wc/r7IYOd/6xkIRbeh/DfzNjLaYJdU69b+8M/TBO5rBWvggHc6
- ucUHFyaJIMynlKsOJklVOwMFTpwYJVBPETRRmO62GrTzFP9dzkdYbbwgCyphOGsOz2l+
- qu2w==
-X-Gm-Message-State: AC+VfDx9FB5qStDKygngBE7qYvpzgMJjjIkNUbbTMmVLHLYdRMBkEyCo
- 2pYB2J0Q2OAbft+lJ5i+XHAjaqNRFZDqcw3Dkxk=
-X-Google-Smtp-Source: ACHHUZ7cB5AMq6c9+EOpkH8Q1qqVe95ig65/6Fxz2JFlOF7Ahp8uFhZtyBuNdc54QinibQTBZ+wr/g==
-X-Received: by 2002:a05:600c:ad8:b0:3f6:e6e3:3da7 with SMTP id
- c24-20020a05600c0ad800b003f6e6e33da7mr1586080wmr.24.1685698165847; 
- Fri, 02 Jun 2023 02:29:25 -0700 (PDT)
-Received: from [192.168.69.115] ([176.187.218.254])
- by smtp.gmail.com with ESMTPSA id
- o10-20020a1c750a000000b003f60101074dsm4960934wmc.33.2023.06.02.02.29.24
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 02 Jun 2023 02:29:25 -0700 (PDT)
-Message-ID: <5abf2227-36b5-9792-ea3d-ec4e3a75b86d@linaro.org>
-Date: Fri, 2 Jun 2023 11:29:24 +0200
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q57jx-0003rf-6o
+ for qemu-trivial@nongnu.org; Fri, 02 Jun 2023 12:35:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q57jv-0005Ck-DR
+ for qemu-trivial@nongnu.org; Fri, 02 Jun 2023 12:35:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1685723698;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=WGxFi1my92DPgiQnFv9wo12AG6gKB+d64Q9tnwnE/3g=;
+ b=MVgFSkCzyYoqi7cCO6AoeJaU4FdoWugHPO8fnk+KPPhAud82tW3kfMUCdx8kLoPDkhGJtx
+ hafAZiTGVyGTi/D8XsGK9hL2MxPEAqa14aGrgOgF3OO7UCoN1o/CNfTvG31ws6ocagVlrO
+ yE2D62R+wVb4JRQO57j8wE2MpsS5WjE=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-658-CUIYD2L2NX250QRTZ4oe4g-1; Fri, 02 Jun 2023 12:34:56 -0400
+X-MC-Unique: CUIYD2L2NX250QRTZ4oe4g-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6360B811E86;
+ Fri,  2 Jun 2023 16:34:56 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.35])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id A179E1121314;
+ Fri,  2 Jun 2023 16:34:54 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH v2] meson.build: Use -Wno-undef only for SDL2 versions that
+ need it
+Date: Fri,  2 Jun 2023 18:34:52 +0200
+Message-Id: <20230602163452.521305-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.0
-Subject: Re: [PATCH] hw/ppc/openpic: Do not open-code ROUND_UP() macro
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- qemu-trivial@nongnu.org, qemu-ppc <qemu-ppc@nongnu.org>
-References: <20230523061546.49031-1-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230523061546.49031-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.1,
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.171,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -83,38 +67,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 02 Jun 2023 09:29:30 -0000
+X-List-Received-Date: Fri, 02 Jun 2023 16:35:01 -0000
 
-There is no generic PPC section in MAINTAINERS covering include/hw/ppc/,
-so Cc'ing qemu-ppc@ manually.
+There is no need to disable this useful compiler warning for
+all versions of the SDL. Unfortunately, various versions are
+buggy (beside SDL 2.0.8, the version 2.26.0 and 2.26.1 are
+broken, too, see https://github.com/libsdl-org/SDL/issues/6619 ),
+but we can use a simple compiler check to see whether we need
+the -Wno-undef or not.
 
-Daniel, can you take this (reviewed) patch?
+This also enables the printing of the version number with
+good versions of the SDL in the summary of the meson output
+again.
 
-Thanks,
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v2: Compile test code instead of hard-coding the version number
 
-Phil.
+ meson.build | 14 ++++++++++----
+ 1 file changed, 10 insertions(+), 4 deletions(-)
 
-On 23/5/23 08:15, Philippe Mathieu-Daudé wrote:
-> While reviewing, the ROUND_UP() macro is easier to figure out.
-> Besides, the comment confirms we want to round up here.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   include/hw/ppc/openpic.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/ppc/openpic.h b/include/hw/ppc/openpic.h
-> index ebdaf8a493..bae8dafe16 100644
-> --- a/include/hw/ppc/openpic.h
-> +++ b/include/hw/ppc/openpic.h
-> @@ -55,7 +55,7 @@ typedef enum IRQType {
->    * Round up to the nearest 64 IRQs so that the queue length
->    * won't change when moving between 32 and 64 bit hosts.
->    */
-> -#define IRQQUEUE_SIZE_BITS ((OPENPIC_MAX_IRQ + 63) & ~63)
-> +#define IRQQUEUE_SIZE_BITS ROUND_UP(OPENPIC_MAX_IRQ, 64)
->   
->   typedef struct IRQQueue {
->       unsigned long *queue;
+diff --git a/meson.build b/meson.build
+index a61d3e9b06..a4c69616c3 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1273,10 +1273,16 @@ if not get_option('sdl').auto() or have_system
+   sdl_image = not_found
+ endif
+ if sdl.found()
+-  # work around 2.0.8 bug
+-  sdl = declare_dependency(compile_args: '-Wno-undef',
+-                           dependencies: sdl,
+-                           version: sdl.version())
++  # Some versions of SDL have problems with -Wundef
++  if not cc.compiles('''
++                     #include <SDL.h>
++                     #include <SDL_syswm.h>
++                     int main(int argc, char *argv[]) { return 0; }
++                     ''', dependencies: sdl, args: '-Wundef')
++    sdl = declare_dependency(compile_args: '-Wno-undef',
++                             dependencies: sdl,
++                             version: sdl.version())
++  endif
+   sdl_image = dependency('SDL2_image', required: get_option('sdl_image'),
+                          method: 'pkg-config')
+ else
+-- 
+2.31.1
 
 
