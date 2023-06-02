@@ -1,65 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q4oR4-00007K-JN
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Jun 2023 15:58:14 -0400
+	id 1q516C-00020M-K4
+	for mharc-qemu-trivial@gnu.org; Fri, 02 Jun 2023 05:29:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ld.adecy@gmail.com>)
- id 1q4o4N-0007Es-9q
- for qemu-trivial@nongnu.org; Thu, 01 Jun 2023 15:34:47 -0400
-Received: from mail-vk1-xa34.google.com ([2607:f8b0:4864:20::a34])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q516A-0001zR-1U
+ for qemu-trivial@nongnu.org; Fri, 02 Jun 2023 05:29:30 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ld.adecy@gmail.com>)
- id 1q4o4J-0006ln-Df
- for qemu-trivial@nongnu.org; Thu, 01 Jun 2023 15:34:45 -0400
-Received: by mail-vk1-xa34.google.com with SMTP id
- 71dfb90a1353d-4573e1e6cb9so1747569e0c.0
- for <qemu-trivial@nongnu.org>; Thu, 01 Jun 2023 12:34:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q5167-0005ec-Lr
+ for qemu-trivial@nongnu.org; Fri, 02 Jun 2023 05:29:29 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-3f6d01d390bso18499245e9.2
+ for <qemu-trivial@nongnu.org>; Fri, 02 Jun 2023 02:29:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1685648081; x=1688240081;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=/XH7A3bclhFEuC6OKNDlw0mHxGGHdj3sdsgvcI6KXX8=;
- b=riUEVF31bAC6DPANCVSiLXHjwIkS56v73Bts08dT2FnUJdlIqmW4cAmWmC2+6GX/GM
- QwbCxcD4Vj8bv1IRqOEoFTKkwP3akeNOfoDg0O8E9Cqe+X940fNH9VDcsM+cTV74+IpK
- VXts/JnBBl3ok7FMzYCwR45MVN0ZiWSOd52NElPQcOBP1g6TX28bjbdaE0dhH+ben0VL
- wmqZmcBEI1g3oHyR5l7zFZhaOymp79UufIF7MCrts1eKUsAozDsBRblVaiRuvJrSq32Q
- DVIjAVjipx34JVRrU2D39S4JCi+NFX4YPKk5yPyKMioBwynaXHAZPs7BNGXIt12L9VpS
- lqbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685648081; x=1688240081;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ d=linaro.org; s=google; t=1685698166; x=1688290166;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=/XH7A3bclhFEuC6OKNDlw0mHxGGHdj3sdsgvcI6KXX8=;
- b=U75AbaXhcTF7/UlfctXO5InZbjQww3bRXxCC53Wwvq+mvXVy1Rgy9azlfrAOQzosxn
- p9QiGb4Uv05/YKcA9So/E7gqZ1VsfC7j5tiVTKKan/DyxBAQw293c7ldx7T6rmvY9FuD
- t7Ewn7CBpU7Yu3QoxUWIXR3i+lMqBIoRdyCo2EEL4wdTF9oYHcMXbWiu/TDFXpTjH5PQ
- zFimueovda3U5vJ6doG5FanxFOV8Qvk7JxBLwA5I5goL9RJPyQHFCeLeYpjJzNbnHKg0
- HGJMwrVdIKasfGXAoxtLIxMkzpYeNz1pyclnRBMo/J98y+oysV1Bx6eLhOSyVWLUM/0e
- XlaQ==
-X-Gm-Message-State: AC+VfDwjq2jZ9meIpqRLj6Xa499BOu6+bRQLg2bejiPJwq+ZctrbPy+R
- FQZnHRkQg1ObzTJwlOpCK8se5ohH4g4fXiee7B6QHu5lIfZEKQ==
-X-Google-Smtp-Source: ACHHUZ4Hc32E/WiGsP1gVQ8AdshtPMuNYOWDiu2AUaH//seyiWRCuI28gx437w03HdNlWU1vpeYf9SUqZ9SILTLDGBA=
-X-Received: by 2002:a1f:7c02:0:b0:457:56a4:19e7 with SMTP id
- x2-20020a1f7c02000000b0045756a419e7mr1468157vkc.0.1685648081593; Thu, 01 Jun
- 2023 12:34:41 -0700 (PDT)
+ bh=zmiwOYn0i0/iKvf4fkVFlGDNR18MRHPNVR1RQ9Mxh2g=;
+ b=G35OsOhRty8cyGuBFOd5TyKxyQZYuw8PyGo/JFRO9FK689vtV33YM4RG3+Qdh6Yvnb
+ YsJ0Pw/hAFAcIhRT3ujDgOb3YlwOBinuFe/m8AdmxJIP6iXHiZhi7yF9OX4aK9559Gvj
+ +b/P12hjCU/x7BPGTb1sxvewAzrfeBKPQVEwT5tERCjCNhTkk4JrfalpE6dvYs81Gbo6
+ nBeSa+dhd2hdUZlJ3EEP2K9Go0hYxmqNzO5diBud62egX0KNXN0MoRG2mhmqnrB77LJ6
+ /TVlPJNETPqDwuN5wOn69MSoWKWlTCEPuB0HUNt6B7H/Y+xFPW+2QSybe1ioC12H5eCZ
+ TjzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685698166; x=1688290166;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=zmiwOYn0i0/iKvf4fkVFlGDNR18MRHPNVR1RQ9Mxh2g=;
+ b=kHQWGQmY9o/KZgRP4x/bFbMLy5iiaFefczGOqBf5xgbmzi1ZSfg0h51FffapVu7j9d
+ +p6+XWQchQjoeJujrvWh1koNKMZzHFbwXFGbttf4267FESjjn+DRBFyPmNtEa0wyZU5/
+ Spf6Wwf9+kscV/ezJ313SqIaS+4Cc0vTAMJ9OYVSWCa+YOVL+CobvzVpfoqjNo7vhID/
+ kp5YO0BK4hJ3ENdL98Wc/r7IYOd/6xkIRbeh/DfzNjLaYJdU69b+8M/TBO5rBWvggHc6
+ ucUHFyaJIMynlKsOJklVOwMFTpwYJVBPETRRmO62GrTzFP9dzkdYbbwgCyphOGsOz2l+
+ qu2w==
+X-Gm-Message-State: AC+VfDx9FB5qStDKygngBE7qYvpzgMJjjIkNUbbTMmVLHLYdRMBkEyCo
+ 2pYB2J0Q2OAbft+lJ5i+XHAjaqNRFZDqcw3Dkxk=
+X-Google-Smtp-Source: ACHHUZ7cB5AMq6c9+EOpkH8Q1qqVe95ig65/6Fxz2JFlOF7Ahp8uFhZtyBuNdc54QinibQTBZ+wr/g==
+X-Received: by 2002:a05:600c:ad8:b0:3f6:e6e3:3da7 with SMTP id
+ c24-20020a05600c0ad800b003f6e6e33da7mr1586080wmr.24.1685698165847; 
+ Fri, 02 Jun 2023 02:29:25 -0700 (PDT)
+Received: from [192.168.69.115] ([176.187.218.254])
+ by smtp.gmail.com with ESMTPSA id
+ o10-20020a1c750a000000b003f60101074dsm4960934wmc.33.2023.06.02.02.29.24
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 02 Jun 2023 02:29:25 -0700 (PDT)
+Message-ID: <5abf2227-36b5-9792-ea3d-ec4e3a75b86d@linaro.org>
+Date: Fri, 2 Jun 2023 11:29:24 +0200
 MIME-Version: 1.0
-From: Adecy <ld.adecy@gmail.com>
-Date: Thu, 1 Jun 2023 21:34:30 +0200
-Message-ID: <CAB295yB5cFSZpGE74EW5hDMSNGnZfw06UC5ydepUL0sdT96WGg@mail.gmail.com>
-Subject: QEMU AVR Patch - Correct handling of AVR interrupts
-To: qemu-trivial@nongnu.org
-Content-Type: multipart/mixed; boundary="0000000000001ece7505fd168791"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a34;
- envelope-from=ld.adecy@gmail.com; helo=mail-vk1-xa34.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.11.0
+Subject: Re: [PATCH] hw/ppc/openpic: Do not open-code ROUND_UP() macro
+Content-Language: en-US
+To: qemu-devel@nongnu.org
+Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ qemu-trivial@nongnu.org, qemu-ppc <qemu-ppc@nongnu.org>
+References: <20230523061546.49031-1-philmd@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230523061546.49031-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 01 Jun 2023 15:58:13 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,63 +83,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Jun 2023 19:34:47 -0000
+X-List-Received-Date: Fri, 02 Jun 2023 09:29:30 -0000
 
---0000000000001ece7505fd168791
-Content-Type: multipart/alternative; boundary="0000000000001ece7005fd16878f"
+There is no generic PPC section in MAINTAINERS covering include/hw/ppc/,
+so Cc'ing qemu-ppc@ manually.
 
---0000000000001ece7005fd16878f
-Content-Type: text/plain; charset="UTF-8"
+Daniel, can you take this (reviewed) patch?
 
-Hello,
+Thanks,
 
-I would like to submit the attached patch.
+Phil.
 
-Best regards
+On 23/5/23 08:15, Philippe Mathieu-Daudé wrote:
+> While reviewing, the ROUND_UP() macro is easier to figure out.
+> Besides, the comment confirms we want to round up here.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/hw/ppc/openpic.h | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/include/hw/ppc/openpic.h b/include/hw/ppc/openpic.h
+> index ebdaf8a493..bae8dafe16 100644
+> --- a/include/hw/ppc/openpic.h
+> +++ b/include/hw/ppc/openpic.h
+> @@ -55,7 +55,7 @@ typedef enum IRQType {
+>    * Round up to the nearest 64 IRQs so that the queue length
+>    * won't change when moving between 32 and 64 bit hosts.
+>    */
+> -#define IRQQUEUE_SIZE_BITS ((OPENPIC_MAX_IRQ + 63) & ~63)
+> +#define IRQQUEUE_SIZE_BITS ROUND_UP(OPENPIC_MAX_IRQ, 64)
+>   
+>   typedef struct IRQQueue {
+>       unsigned long *queue;
 
---0000000000001ece7005fd16878f
-Content-Type: text/html; charset="UTF-8"
-
-<div dir="ltr"><div>Hello,</div><div><div><br></div><div>I would like to submit the attached patch.</div></div><div><br></div><div>Best regards</div></div>
-
---0000000000001ece7005fd16878f--
-
---0000000000001ece7505fd168791
-Content-Type: application/octet-stream; 
-	name="0001-Fix-handling-of-AVR-interrupts-above-33-by-switching.patch"
-Content-Disposition: attachment; 
-	filename="0001-Fix-handling-of-AVR-interrupts-above-33-by-switching.patch"
-Content-Transfer-Encoding: base64
-Content-ID: <f_lidjc0zs0>
-X-Attachment-Id: f_lidjc0zs0
-
-RnJvbSBjODcyYzBmMTY0YTVhYjU5NWNmMzQ3ZDA5ODQzMDMwMWU2MjhiNzQxIE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQpGcm9tOiBMdWNhcyBEaWV0cmljaCA8bGQuYWRlY3lAZ21haWwuY29tPgpE
-YXRlOiBUaHUsIDEgSnVuIDIwMjMgMjM6MjY6MzMgKzAyMDAKU3ViamVjdDogW1BBVENIXSBGaXgg
-aGFuZGxpbmcgb2YgQVZSIGludGVycnVwdHMgYWJvdmUgMzMgYnkgc3dpdGNoaW5nIGN0ejMyIHRv
-CiBjdHo2NAoKVGhpcyBjb21taXQgYWRkcmVzc2VzIGEgYnVnIGluIHRoZSBBVlIgaW50ZXJydXB0
-IGhhbmRsaW5nIGNvZGUuClRoZSBtb2RpZmljYXRpb24gaW52b2x2ZXMgcmVwbGFjaW5nIHRoZSB1
-c2FnZSBvZiB0aGUgY3R6MzIgZnVuY3Rpb24Kd2l0aCBjdHo2NCB0byBlbnN1cmUgcHJvcGVyIGhh
-bmRsaW5nIG9mIGludGVycnVwdHMgYWJvdmUgMzMgaW4gdGhlIEFWUgp0YXJnZXQuCgpQcmV2aW91
-c2x5LCB0aW1lcnMgMywgNCwgYW5kIDUgaW50ZXJydXB0cyB3ZXJlIG5vdCBmdW5jdGlvbmluZyBj
-b3JyZWN0bHkKYmVjYXVzZSBtb3N0IG9mIHRoZWlyIGludGVycnVwdCB2ZWN0b3JzIGFyZSBudW1i
-ZXJlZCBhYm92ZSAzMy4KClNpZ25lZC1vZmYtYnk6IEx1Y2FzIERpZXRyaWNoIDxsZC5hZGVjeUBn
-bWFpbC5jb20+Ci0tLQogdGFyZ2V0L2F2ci9oZWxwZXIuYyB8IDQgKystLQogMSBmaWxlIGNoYW5n
-ZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS90YXJnZXQv
-YXZyL2hlbHBlci5jIGIvdGFyZ2V0L2F2ci9oZWxwZXIuYwppbmRleCBjMjdmNzAyOTAxLi5kYjMz
-OGE4NzYxIDEwMDY0NAotLS0gYS90YXJnZXQvYXZyL2hlbHBlci5jCisrKyBiL3RhcmdldC9hdnIv
-aGVscGVyLmMKQEAgLTQ1LDcgKzQ1LDcgQEAgYm9vbCBhdnJfY3B1X2V4ZWNfaW50ZXJydXB0KENQ
-VVN0YXRlICpjcywgaW50IGludGVycnVwdF9yZXF1ZXN0KQogICAgIH0KICAgICBpZiAoaW50ZXJy
-dXB0X3JlcXVlc3QgJiBDUFVfSU5URVJSVVBUX0hBUkQpIHsKICAgICAgICAgaWYgKGNwdV9pbnRl
-cnJ1cHRzX2VuYWJsZWQoZW52KSAmJiBlbnYtPmludHNyYyAhPSAwKSB7Ci0gICAgICAgICAgICBp
-bnQgaW5kZXggPSBjdHozMihlbnYtPmludHNyYyk7CisgICAgICAgICAgICBpbnQgaW5kZXggPSBj
-dHo2NChlbnYtPmludHNyYyk7CiAgICAgICAgICAgICBjcy0+ZXhjZXB0aW9uX2luZGV4ID0gRVhD
-UF9JTlQoaW5kZXgpOwogICAgICAgICAgICAgY2MtPnRjZ19vcHMtPmRvX2ludGVycnVwdChjcyk7
-CiAKQEAgLTczLDcgKzczLDcgQEAgdm9pZCBhdnJfY3B1X2RvX2ludGVycnVwdChDUFVTdGF0ZSAq
-Y3MpCiAgICAgaWYgKGNzLT5leGNlcHRpb25faW5kZXggPT0gRVhDUF9SRVNFVCkgewogICAgICAg
-ICB2ZWN0b3IgPSAwOwogICAgIH0gZWxzZSBpZiAoZW52LT5pbnRzcmMgIT0gMCkgewotICAgICAg
-ICB2ZWN0b3IgPSBjdHozMihlbnYtPmludHNyYykgKyAxOworICAgICAgICB2ZWN0b3IgPSBjdHo2
-NChlbnYtPmludHNyYykgKyAxOwogICAgIH0KIAogICAgIGlmIChhdnJfZmVhdHVyZShlbnYsIEFW
-Ul9GRUFUVVJFXzNfQllURV9QQykpIHsKLS0gCjIuMzkuMQoK
---0000000000001ece7505fd168791--
 
