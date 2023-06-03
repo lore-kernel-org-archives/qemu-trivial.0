@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q5Uw6-0007w0-FS
-	for mharc-qemu-trivial@gnu.org; Sat, 03 Jun 2023 13:21:06 -0400
+	id 1q5Uye-0008RV-IU
+	for mharc-qemu-trivial@gnu.org; Sat, 03 Jun 2023 13:23:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>) id 1q5Uw4-0007vp-IS
- for qemu-trivial@nongnu.org; Sat, 03 Jun 2023 13:21:04 -0400
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1q5Uyc-0008RC-Oz; Sat, 03 Jun 2023 13:23:42 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>) id 1q5Uw2-0002N3-Od
- for qemu-trivial@nongnu.org; Sat, 03 Jun 2023 13:21:04 -0400
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1q5Uyb-00036a-40; Sat, 03 Jun 2023 13:23:42 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id CD179A7DC;
- Sat,  3 Jun 2023 20:21:00 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 87163A7E0;
+ Sat,  3 Jun 2023 20:23:40 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 8B99D9376;
- Sat,  3 Jun 2023 20:20:59 +0300 (MSK)
-Received: (nullmailer pid 19503 invoked by uid 1000);
- Sat, 03 Jun 2023 17:20:59 -0000
+ by tsrv.corpit.ru (Postfix) with SMTP id 498D79377;
+ Sat,  3 Jun 2023 20:23:39 +0300 (MSK)
+Received: (nullmailer pid 19592 invoked by uid 1000);
+ Sat, 03 Jun 2023 17:23:39 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongu.org
+To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
 Subject: [PATCH] linux-user: add comments for TARGET_NR_[gs]etgroups{,32}
-Date: Sat,  3 Jun 2023 20:20:54 +0300
-Message-Id: <20230603172054.19489-1-mjt@tls.msk.ru>
+Date: Sat,  3 Jun 2023 20:23:38 +0300
+Message-Id: <20230603172338.19578-1-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -47,7 +47,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 03 Jun 2023 17:21:04 -0000
+X-List-Received-Date: Sat, 03 Jun 2023 17:23:43 -0000
 
 There are 2 paits of identical code (with different types)
 for TARGET_NR_setgroups and TARGET_NR_setgroups32, and
@@ -57,6 +57,8 @@ are done in two places.
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
+Please excuse me for double send, - I mistyped the qemu-devel@ address.
+
  linux-user/syscall.c | 8 ++++----
  1 file changed, 4 insertions(+), 4 deletions(-)
 
