@@ -1,94 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q66pO-0000Tb-7H
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Jun 2023 05:48:42 -0400
+	id 1q6ILM-00033Z-0E
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Jun 2023 18:06:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1q66pM-0000TG-Qa
- for qemu-trivial@nongnu.org; Mon, 05 Jun 2023 05:48:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1q6ILK-000337-Lh; Mon, 05 Jun 2023 18:06:26 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1q66pL-0006A3-69
- for qemu-trivial@nongnu.org; Mon, 05 Jun 2023 05:48:40 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1685958518;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=GYVYZuLvdZMl0iMLjQaUuztFa8CeN6BcnVxZhODyVEs=;
- b=LV8DvfAHT0Z5E8LIvIvIU0HGm40BQjs5z2v6FhHD3l40QB8hmIcJ6ppvHyEUTShp0zKi2z
- c0dtAVVOtTjCYel/JiVHj8Jo6nUJTmqKeIOnk9g+S0pGjt/cFFTSkx54di3s5MJbE/ExLp
- /aFD8WyQro6GeVjVW9t0C6PD2vEc7t0=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-552-t8dKisL7Nx25E7s8CMkXPA-1; Mon, 05 Jun 2023 05:48:35 -0400
-X-MC-Unique: t8dKisL7Nx25E7s8CMkXPA-1
-Received: by mail-ej1-f69.google.com with SMTP id
- a640c23a62f3a-97463348446so260287366b.2
- for <qemu-trivial@nongnu.org>; Mon, 05 Jun 2023 02:48:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1685958514; x=1688550514;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GYVYZuLvdZMl0iMLjQaUuztFa8CeN6BcnVxZhODyVEs=;
- b=FO7eKpJrhJWvpVEqg12cmHv9xWuzLVF5ln0cTdsWVJurXR68lutlcsS5hGX2NyBIvg
- Wl0fArd6wwksej3WPmcb/x0v/xIw74t/io3OBhdA+pZVQ6yP3RXcsPBZCgFXy+S4qS3v
- 2IHum6pltHwAlGjssc/ZJqK8pNfKrqJ0zuds5DW54fG3WeDcXgODGIX2t/cZ9lR1+Zmq
- vJ+Apqn71g27Rj0Y1TYthn/0brmEc9YC/fDM5S5c5iqzNpkyWUUOSlnIyqOmKTWMK9cG
- KOudXeL6laqGiAVmqfS6Z6fNpCYmWyOCdxD3fzIx825g4nyWOc7owKMVTXgPPGbL/R7w
- M80w==
-X-Gm-Message-State: AC+VfDyYnqaYiYwsunRJKuTcoApTLVkuirlDMfrGaqsFyNdqxegYtWK4
- SLYSruUL839BkY4fxa5dg/E8/nPID2g04l1A4yg42DNtODb93SPPVOlFTM3ITNIOzmCPkisDy0R
- cl/nYOu7h5pLpU1+Puw==
-X-Received: by 2002:a17:907:6e11:b0:94e:8559:b5c5 with SMTP id
- sd17-20020a1709076e1100b0094e8559b5c5mr5731903ejc.64.1685958514345; 
- Mon, 05 Jun 2023 02:48:34 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4YP4fOTDpkt+1MTHrAmqlM/3j3B5bE+GIHjRKKTDhSULcv9MZpWI2OQMK+iRToKoym1IrCTg==
-X-Received: by 2002:a17:907:6e11:b0:94e:8559:b5c5 with SMTP id
- sd17-20020a1709076e1100b0094e8559b5c5mr5731885ejc.64.1685958514028; 
- Mon, 05 Jun 2023 02:48:34 -0700 (PDT)
-Received: from ?IPV6:2001:b07:6468:f312:1c09:f536:3de6:228c?
- ([2001:b07:6468:f312:1c09:f536:3de6:228c])
- by smtp.googlemail.com with ESMTPSA id
- g15-20020a1709061c8f00b00965a52d2bf6sm4066978ejh.88.2023.06.05.02.48.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Jun 2023 02:48:33 -0700 (PDT)
-Message-ID: <c1227ef3-259d-0855-f02c-7d62dd574072@redhat.com>
-Date: Mon, 5 Jun 2023 11:48:32 +0200
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1q6ILI-0004ok-ET; Mon, 05 Jun 2023 18:06:26 -0400
+Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
+ by localhost (Postfix) with SMTP id 99FD2746369;
+ Tue,  6 Jun 2023 00:06:22 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 36771746361; Tue,  6 Jun 2023 00:06:22 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 3481074632B;
+ Tue,  6 Jun 2023 00:06:22 +0200 (CEST)
+Date: Tue, 6 Jun 2023 00:06:22 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Alex_Benn=E9e?= <alex.bennee@linaro.org>
+cc: Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org, 
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH] bitops.h: Compile out asserts without --enable-debug
+In-Reply-To: <87o7mb5xp9.fsf@linaro.org>
+Message-ID: <36428685-722e-ce1f-7061-61227cb36222@eik.bme.hu>
+References: <20230520205444.887287457E7@zero.eik.bme.hu>
+ <874jo47cnd.fsf@linaro.org> <aaa22b3f-d548-5a69-489a-5777a7e98cef@eik.bme.hu>
+ <87v8gk5m7p.fsf@linaro.org> <49c4781a-1e91-85ef-d9cb-6996e9bbb10c@eik.bme.hu>
+ <ec9cfe5a-d5f2-466d-34dc-c35817e7e010@linaro.org>
+ <87o7mb5xp9.fsf@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH v2] meson.build: Use -Wno-undef only for SDL2 versions
- that need it
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org, =?UTF-8?Q?Daniel_P_=2e_Berrang=c3=a9?=
- <berrange@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?=
- <philmd@linaro.org>, qemu-trivial@nongnu.org
-References: <20230605082748.53989-1-pbonzini@redhat.com>
- <4352552f-67ba-b964-7a7e-b13c9b19a27c@redhat.com>
- <a6fc91db-a4e3-e9b7-ee51-d07cd4982f02@redhat.com>
-In-Reply-To: <a6fc91db-a4e3-e9b7-ee51-d07cd4982f02@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-0.091, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Type: multipart/mixed;
+ boundary="3866299591-1434262903-1686002782=:78702"
+X-Spam-Probability: 9%
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -101,36 +53,189 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Jun 2023 09:48:41 -0000
+X-List-Received-Date: Mon, 05 Jun 2023 22:06:27 -0000
 
-On 6/5/23 11:05, Paolo Bonzini wrote:
-> 
->> On 05/06/2023 10.27, Paolo Bonzini wrote:
->>> Queued, thanks.
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
+
+--3866299591-1434262903-1686002782=:78702
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8BIT
+
+On Tue, 23 May 2023, Alex Bennée wrote:
+> Richard Henderson <richard.henderson@linaro.org> writes:
+>> On 5/22/23 15:26, BALATON Zoltan wrote:
+>>> On Mon, 22 May 2023, Alex Bennée wrote:
+>>>> (ajb: add Richard for his compiler-fu)
+>>>> BALATON Zoltan <balaton@eik.bme.hu> writes:
+>>>>> On Mon, 22 May 2023, Alex Bennée wrote:
+>>>>>> BALATON Zoltan <balaton@eik.bme.hu> writes:
+>>>>>>
+>>>>>>> The low level extract and deposit funtions provided by bitops.h are
+>>>>>>> used in performance critical places. It crept into target/ppc via
+>>>>>>> FIELD_EX64 and also used by softfloat so PPC code using a lot of FPU
+>>>>>>> where hardfloat is also disabled is doubly affected.
+>>>>>>
+>>>>>> Most of these asserts compile out to nothing if the compiler is able to
+>>>>>> verify the constants are in the range. For example examining
+>>>>>> the start of float64_add:
+>>>>>>
+>>>> <snip>
+>>>>>>
+>>>>>> I don't see any check and abort steps because all the shift and mask
+>>>>>> values are known at compile time. The softfloat compilation certainly
+>>>>>> does have some assert points though:
+>>>>>>
+>>>>>> readelf -s ./libqemu-ppc64-softmmu.fa.p/fpu_softfloat.c.o  |grep assert
+>>>>>>   136: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND g_assertion_mess[...]
+>>>>>>   138: 0000000000000000     0 NOTYPE  GLOBAL DEFAULT  UND __assert_fail
+>>>>>>
+>>>>>> but the references are for the ISRA segments so its tricky to know if
+>>>>>> they get used or are just there for LTO purposes.
+>>>>>>
+>>>>>> If there are hot-paths that show up the extract/deposit functions I
+>>>>>> suspect a better approach would be to implement _nocheck variants (or
+>>>>>> maybe _noassert?) and use them where required rather than turning off
+>>>>>> the assert checking for these utility functions.
+>>>>>
+>>>>> Just to clarify again, the asserts are still there when compiled with
+>>>>> --enable-debug. The patch only turns them off for optimised release
+>>>>> builds which I think makes sense if these asserts are to catch
+>>>>> programming errors.
+>>>>
+>>>> Well as Peter said the general policy is to keep asserts in but I
+>>>> appreciate this is a hotpath case.
+>>>>
+>>>>> I think I've also suggested adding noassert
+>>>>> versions of these but that wasn't a popular idea and it may also not
+>>>>> be easy to convert all places to use that like for example the
+>>>>> register fields related usage in target/ppc as that would also affect
+>>>>> other places.
+>>>>
+>>>> Is code generation or device emulation really on the hot-path. Generally
+>>>> a well predicted assert is in the noise for those operations.
+>>> They aren't in code generation but in helpers as you can also see in
+>>> the profile below and so they can be on hot path. Also I've noticed
+>>> that extract8 and extract16 just call extract32 after adding another
+>>> assert on their own in addition to the one in extract32 which is
+>>> double overhead for really no reason. I'd delete all these asserts
+>>> as the likelhood of bugs these could catch is very low anyway (how
+>>> often do you expect somebody to call these with out of bound values
+>>> that would not be obvious from the results otherwise?) but leaving
+>>> them in non-debug builds is totally useless in my opinion.
+>>>
+>>>>> So this seems to be the simplest and most effective
+>>>>> approach.
+>>>>>
+>>>>> The softfloat related usage in these tests I've done seem to mostly
+>>>>> come from unpacking and repacking floats in softfloat which is done
+>>>>> for every operation, e.g. muladd which mp3 encoding mostly uses does 3
+>>>>> unpacks and 1 pack for each call and each unpack is 3 extracts so even
+>>>>> small overheads add app quickly. Just 1 muladd will result in 9
+>>>>> extracts and 2 deposits at least plus updating PPC flags for each FPU
+>>>>> op adds a bunch more. I did some profiling with perf to find these.
+>>>>
+>>>> After some messing about trying to get lame to cross compile to a static
+>>>> binary I was able to replicate what you've seen:
+>>>>
+>>>>  11.44%  qemu-ppc64  qemu-ppc64               [.] unpack_raw64.isra.0
+>>>>  11.03%  qemu-ppc64  qemu-ppc64               [.] parts64_uncanon_normal
+>>>>   8.26%  qemu-ppc64  qemu-ppc64               [.] helper_compute_fprf_float64
+>>>>   6.75%  qemu-ppc64  qemu-ppc64               [.] do_float_check_status
+>>>>   5.34%  qemu-ppc64  qemu-ppc64               [.] parts64_muladd
+>>>>   4.75%  qemu-ppc64  qemu-ppc64               [.] pack_raw64.isra.0
+>>>>   4.38%  qemu-ppc64  qemu-ppc64               [.] parts64_canonicalize
+>>>>   3.62%  qemu-ppc64  qemu-ppc64               [.] float64r32_round_pack_canonical
+>>>>   3.32%  qemu-ppc64  qemu-ppc64               [.] helper_todouble
+>>>>   2.68%  qemu-ppc64  qemu-ppc64               [.] float64_add
+>>>>   2.51%  qemu-ppc64  qemu-ppc64               [.] float64_hs_compare
+>>>>   2.30%  qemu-ppc64  qemu-ppc64               [.] float64r32_muladd
+>>>>   1.80%  qemu-ppc64  qemu-ppc64               [.] float64r32_mul
+>>>>   1.40%  qemu-ppc64  qemu-ppc64               [.] float64r32_add
+>>>>   1.34%  qemu-ppc64  qemu-ppc64               [.] parts64_mul
+>>>>   1.16%  qemu-ppc64  qemu-ppc64               [.] parts64_addsub
+>>>>   1.14%  qemu-ppc64  qemu-ppc64               [.] helper_reset_fpstatus
+>>>>   1.06%  qemu-ppc64  qemu-ppc64               [.] helper_float_check_status
+>>>>   1.04%  qemu-ppc64  qemu-ppc64               [.] float64_muladd
+>>> I've run 32 bit PPC version in qemu-system-ppc so the profile is a
+>>> bit different (has more system related overhead that I plan to look
+>>> at separately) but this part is similar to the above. I also wonder
+>>> what makes helper_compute_fprf_float64 a bottleneck as that does not
+>>> seem to have much extract/deposit, only a call to clz but it's hard
+>>> to tell what it really does due to nested calls and macros. I've
+>>> also seen this function among the top contenders in my profiling.
+>>>
+>>>> what I find confusing is the fact the parts extraction and packing
+>>>> should all be known constants which should cause the asserts to
+>>>> disappear. However it looks like the compiler decided to bring in a copy
+>>>> of the whole inline function (ISRA = >interprocedural scalar replacement
+>>>> of aggregates) which obviously can't fold the constants and eliminate
+>>>> the assert.
+>>> Could it be related to that while the parts size and start are
+>>> marked const but pulled out of a struct field so the compiler may
+>>> not know their actual value until run time?
+>>>
+>>>> Richard,
+>>>>
+>>>> Any idea of why the compiler might decide to do something like this?
 >>
->> Please unqueue it again, I'm still seeing some issues with the patch 
->> (not sure why yet):
+>> Try this.
+>
+> That seems to have done the trick, translated code is now dominating the
+> profile:
+>
+> +   14.12%     0.00%  qemu-ppc64  [unknown]                [.] 0x0000004000619420
+> +   13.30%     0.00%  qemu-ppc64  [unknown]                [.] 0x0000004000616850
+> +   12.58%    12.19%  qemu-ppc64  qemu-ppc64               [.] parts64_uncanon_normal
+> +   10.62%     0.00%  qemu-ppc64  [unknown]                [.] 0x000000400061bf70
+> +    9.91%     9.73%  qemu-ppc64  qemu-ppc64               [.] helper_compute_fprf_float64
+> +    7.84%     7.82%  qemu-ppc64  qemu-ppc64               [.] do_float_check_status
+> +    6.47%     5.78%  qemu-ppc64  qemu-ppc64               [.] parts64_canonicalize.constprop.0
+> +    6.46%     0.00%  qemu-ppc64  [unknown]                [.] 0x0000004000620130
+> +    6.42%     0.00%  qemu-ppc64  [unknown]                [.] 0x0000004000619400
+> +    6.17%     6.04%  qemu-ppc64  qemu-ppc64               [.] parts64_muladd
+> +    5.85%     0.00%  qemu-ppc64  [unknown]                [.] 0x00000040006167e0
+> +    5.74%     0.00%  qemu-ppc64  [unknown]                [.] 0x0000b693fcffffd3
+> +    5.45%     4.78%  qemu-ppc64  qemu-ppc64               [.] float64r32_round_pack_canonical
+> +    4.79%     0.00%  qemu-ppc64  [unknown]                [.] 0xfaff203940fe8240
+> +    4.29%     3.82%  qemu-ppc64  qemu-ppc64               [.] float64r32_muladd
+> +    4.20%     3.87%  qemu-ppc64  qemu-ppc64               [.] helper_todouble
+> +    3.51%     2.98%  qemu-ppc64  qemu-ppc64               [.] float64r32_mul
+> +    3.12%     2.97%  qemu-ppc64  qemu-ppc64               [.] float64_hs_compare
+> +    3.06%     2.95%  qemu-ppc64  qemu-ppc64               [.] float64_add
+> +    2.88%     2.35%  qemu-ppc64  qemu-ppc64               [.] float64r32_add
+> +    2.65%     0.00%  qemu-ppc64  [unknown]                [.] 0x6c555e9100004039
+> +    2.55%     1.30%  qemu-ppc64  qemu-ppc64               [.] helper_float_check_status
+>
+> eyeballing the float functions and I can't see any asserts expressed.
+>
+> Before:
+>
+> Executed in  721.65 secs    fish           external
+>   usr time  721.38 secs  561.00 micros  721.38 secs
+>   sys time    0.20 secs  261.00 micros    0.20 secs
+>
+> After:
+>
+> Executed in  650.38 secs    fish           external
+>   usr time  650.11 secs    0.00 micros  650.11 secs
+>   sys time    0.20 secs  989.00 micros    0.20 secs
 >>
->> https://gitlab.com/thuth/qemu/-/jobs/4411089009
-> 
-> Yeah, noticed that myself now. 😄
+>>
+>> r~
+>>
+>> [2. text/x-patch; z.patch]...
 
-I think all you need is:
+Will this be submitted as a proper patch and merged? This improves 
+softfloat important for target/ppc where hardfloat is disabled. I guess 
+you can also add
 
-diff --git a/meson.build b/meson.build
-index 025523f2065..3ec35c96fea 100644
---- a/meson.build
-+++ b/meson.build
-@@ -1345,7 +1345,7 @@ if sdl.found()
-                       #include <SDL.h>
-                       #include <SDL_syswm.h>
-                       int main(int argc, char *argv[]) { return 0; }
--                     ''', dependencies: sdl, args: '-Wundef')
-+                     ''', dependencies: sdl, args: ['-Wundef', '-Werror'])
-      sdl = declare_dependency(compile_args: '-Wno-undef',
-                               dependencies: sdl,
-                               version: sdl.version())
+Tested-by: BALATON Zoltan <balaton@eik.bme.hu>
 
-Paolo
+and Alex also did testing above. This is just pinging it so it's not 
+forgotten. Thank you.
 
+Regards,
+BALATON Zoltan
+--3866299591-1434262903-1686002782=:78702--
 
