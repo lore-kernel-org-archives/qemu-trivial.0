@@ -1,70 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q635h-0001E3-GB
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Jun 2023 01:49:17 -0400
+	id 1q64BF-0006sk-1C
+	for mharc-qemu-trivial@gnu.org; Mon, 05 Jun 2023 02:59:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q635f-0001Dc-Gd; Mon, 05 Jun 2023 01:49:15 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q635d-0003S0-Ey; Mon, 05 Jun 2023 01:49:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=xbxIGkva9cM06+ZEWIu25Yil3KtZzhyxwMlRfrH9XiY=; b=OnTby6wmSqnQK4uCmrXW/yvuuT
- TpqjlGmLbmtid+UBlcyGqZ/8e5AtRHPJhqW83ZMtrZ+a9Hf5+jYWCjHZ1NAC1xbBObZEaFEB/0dAE
- A/eUIhm2tXa0TxH/epUOzuLO+OPwidypqHQn9OGwMPnd411GKASCqkeFPlCkWl6iNwb/JkBD65if4
- OtJ3+XuhXto2hZU2ZOCNGqRLP8ltbPHK2YSqfUe3NlGmgoDT3tz9CC3YyweUc0/da8PNYRxJigpB8
- 9hhfq8id2SQcAmjM1siQRB4HVI37FLS6iRLY3Yu7uEHJwrFC/B6rCK36KNrflsPJVjHPOqD3DlVkm
- GMoubGf+qn0UVwT2CnWO+TvQTJQKvE0BJNXhomeqMiMJTrUZjj3rLnua0joHJaq4UZXYwjTSn8q26
- E5sP3iEOvNWvuTS0M8B3yJqR6JUlEiS7vNWJcqAp7Z5bBDhoJVLHIHhpFAghmUzsIKrMuGNQ5snAp
- SgqG3NPU4TmEW0ZB+zDN9+O5KCatbrpoOIB8lvhRjbs+xW/lpE7y/LwbyrHtd21slO5elJMiVNR57
- R/4iYbJtmOUANIGn7c5KDI/p9iO0dTacXoXSVi/lDtDdePMMd1uB9SC9V4PYxFOnK9lEgT0GTnUl6
- Dp/tg6P61KVpBXVupMl156Yftj8jlbrQaQhwiVd3E=;
-Received: from [2a00:23c4:8bac:6900:b726:cf58:4c12:f013]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q635R-0003AC-6u; Mon, 05 Jun 2023 06:49:01 +0100
-Message-ID: <0ac53238-364a-aa85-c371-ba2051cbf546@ilande.co.uk>
-Date: Mon, 5 Jun 2023 06:49:01 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Content-Language: en-US
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1q64BD-0006s4-8U; Mon, 05 Jun 2023 02:59:03 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1q64BA-0006RA-LL; Mon, 05 Jun 2023 02:59:02 -0400
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-977d4a1cf0eso138936666b.1; 
+ Sun, 04 Jun 2023 23:58:59 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1685948338; x=1688540338;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=cWL8JhpuC2NXntSVDQeoU6AycbQ8o25DAL0aUorczPA=;
+ b=jFgl9bCUAMXIG17REV74pBeY6eO95h9S6G+HGaeAvVsYf0lIyj+aJax43+lklaYy5s
+ S6Vg29Yjr4RJCsF903aIjOlDbNrCMoBelBY3kuNTt5sL4tau1mzdWq/sd7+cd0rO0l4i
+ 1LB27mg+aBuftvZq6VNNhN9NnXjL+izb9phiH3TrT96VR0Z9FgZ+yh10f8U7eXQFE31J
+ v5cb+vcZSxiyW+Li161GcqWOajl7MxtWKZXNKnM8fSB3l0w6L453mI0+POgIZSGTgfTX
+ DAuchCk5H5gGbcrM1kXqjucS8i/rgjlQ/AtPCB634YUKByLMs5xn9sL6VLd2uDDF7Ffc
+ MGlw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1685948338; x=1688540338;
+ h=content-transfer-encoding:mime-version:message-id:references
+ :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=cWL8JhpuC2NXntSVDQeoU6AycbQ8o25DAL0aUorczPA=;
+ b=LQAX0H8KWR9+LDIFflTWbUyLBnPmiVNpRio9XicpGE13OKbLsGfxhxl6gTLKwGACC9
+ 9DXonR1mcRAAB1Cjb+URvojGSLHxkxO7/zp8ct4mBCtGWZH2BUhcj7oZylKVDLzSOLKd
+ oTH7PDc07zLSeyn8cTDFd7R29wBF194ATG8bjX8rsI/OVRLQ+WHLSVNlx12Xq8yHgpax
+ xtD5tCG1xpZq2MDwzAxwrcFadcnHOcnFr+flQfAydUNhOdFT7vX8iPYLNCbjbsVzW0Li
+ 2SoZyzKxUvF3qEgzy4O4cBwE40u9wbP+ZqWr71eoacEoDuO2qgJz8NgbBugs0lLeUHoB
+ tXYg==
+X-Gm-Message-State: AC+VfDw9Z93Pe2wXh1MpBrigS6oKk0cP/4i//XlYMuJpAKi95hY1dLY6
+ UmantLnaLuwUrEGPA4T/0J8=
+X-Google-Smtp-Source: ACHHUZ5K4hrVkIF5NFdTS8Fu4aSLo1PV9Y/tpCv3nkfKOrSWdswubizHZhf7Tp2umtMJ6KSb3ZxPDQ==
+X-Received: by 2002:a17:907:6d29:b0:977:d96c:4394 with SMTP id
+ sa41-20020a1709076d2900b00977d96c4394mr1937129ejc.73.1685948337813; 
+ Sun, 04 Jun 2023 23:58:57 -0700 (PDT)
+Received: from [127.0.0.1] (dynamic-089-014-188-226.89.14.pool.telefonica.de.
+ [89.14.188.226]) by smtp.gmail.com with ESMTPSA id
+ ks2-20020a170906f84200b009534211cc97sm3889832ejb.159.2023.06.04.23.58.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 04 Jun 2023 23:58:57 -0700 (PDT)
+Date: Mon, 05 Jun 2023 06:58:55 +0000
+From: Bernhard Beschow <shentey@gmail.com>
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+CC: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?ISO-8859-1?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>,
+ =?ISO-8859-1?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Eduardo Habkost <eduardo@habkost.net>, Michael Tokarev <mjt@tls.msk.ru>,
  qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
  Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH v3 0/3] Trivial cleanups
+In-Reply-To: <5982629b-0ff1-2525-e16a-309257710a20@ilande.co.uk>
 References: <20230523195608.125820-1-shentey@gmail.com>
  <c138717c-5085-3b4b-5a46-0fa93179f6a8@ilande.co.uk>
  <20230601080655-mutt-send-email-mst@kernel.org>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <20230601080655-mutt-send-email-mst@kernel.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bac:6900:b726:cf58:4c12:f013
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v3 0/3] Trivial cleanups
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+ <5982629b-0ff1-2525-e16a-309257710a20@ilande.co.uk>
+Message-ID: <8187BA4B-5031-4AC6-A94C-27AB714C850C@gmail.com>
+MIME-Version: 1.0
+Content-Type: text/plain;
+ charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,59 +92,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Jun 2023 05:49:16 -0000
-
-On 01/06/2023 13:07, Michael S. Tsirkin wrote:
-
-> On Thu, May 25, 2023 at 05:03:15PM +0100, Mark Cave-Ayland wrote:
->> On 23/05/2023 20:56, Bernhard Beschow wrote:
->>
->>> This series:
->>> * Removes dead code from omap_uart and i82378
->>> * Resolves redundant code in the i8254 timer devices
->>>
->>> v3:
->>> * Drop TYPE_ISA_PARALLEL since they became obsolete by
->>>     https://lore.kernel.org/qemu-devel/20230522115014.1110840-9-thuth@redhat.com/
->>
->> Oh I didn't see that this had already been merged :/
->>
->> It's not a reason to block this series, but I'd still like to see your
->> changes to ParallelState and ISAParallelState merged separately since they
->> are a better match for our QOM coding standards.
->>
->>> v2:
->>> * Export ParallelState and ISAParallelState (Mark)
->>>
->>> Testing done:
->>> * `make check`
->>>
->>> Bernhard Beschow (3):
->>>     hw/timer/i8254_common: Share "iobase" property via base class
->>>     hw/arm/omap: Remove unused omap_uart_attach()
->>>     hw/isa/i82378: Remove unused "io" attribute
->>>
->>>    include/hw/arm/omap.h   | 1 -
->>>    hw/char/omap_uart.c     | 9 ---------
->>>    hw/i386/kvm/i8254.c     | 1 -
->>>    hw/isa/i82378.c         | 1 -
->>>    hw/timer/i8254.c        | 6 ------
->>>    hw/timer/i8254_common.c | 6 ++++++
->>>    6 files changed, 6 insertions(+), 18 deletions(-)
->>
->> Do we know who is going to pick up these series? I can send a PR if no-one minds?
->>
-> 
-> 
-> Go ahead:
-> 
-> Acked-by: Michael S. Tsirkin <mst@redhat.com>
-
-Thanks! I've applied this series to my qemu-sparc branch.
+X-List-Received-Date: Mon, 05 Jun 2023 06:59:03 -0000
 
 
-ATB,
 
-Mark.
+Am 1=2E Juni 2023 12:45:47 UTC schrieb Mark Cave-Ayland <mark=2Ecave-aylan=
+d@ilande=2Eco=2Euk>:
+>On 01/06/2023 13:07, Michael S=2E Tsirkin wrote:
+>
+>> On Thu, May 25, 2023 at 05:03:15PM +0100, Mark Cave-Ayland wrote:
+>>> On 23/05/2023 20:56, Bernhard Beschow wrote:
+>>>=20
+>>>> This series:
+>>>> * Removes dead code from omap_uart and i82378
+>>>> * Resolves redundant code in the i8254 timer devices
+>>>>=20
+>>>> v3:
+>>>> * Drop TYPE_ISA_PARALLEL since they became obsolete by
+>>>>     https://lore=2Ekernel=2Eorg/qemu-devel/20230522115014=2E1110840-9=
+-thuth@redhat=2Ecom/
+>>>=20
+>>> Oh I didn't see that this had already been merged :/
+>>>=20
+>>> It's not a reason to block this series, but I'd still like to see your
+>>> changes to ParallelState and ISAParallelState merged separately since =
+they
+>>> are a better match for our QOM coding standards=2E
+>>>=20
+>>>> v2:
+>>>> * Export ParallelState and ISAParallelState (Mark)
+>>>>=20
+>>>> Testing done:
+>>>> * `make check`
+>>>>=20
+>>>> Bernhard Beschow (3):
+>>>>     hw/timer/i8254_common: Share "iobase" property via base class
+>>>>     hw/arm/omap: Remove unused omap_uart_attach()
+>>>>     hw/isa/i82378: Remove unused "io" attribute
+>>>>=20
+>>>>    include/hw/arm/omap=2Eh   | 1 -
+>>>>    hw/char/omap_uart=2Ec     | 9 ---------
+>>>>    hw/i386/kvm/i8254=2Ec     | 1 -
+>>>>    hw/isa/i82378=2Ec         | 1 -
+>>>>    hw/timer/i8254=2Ec        | 6 ------
+>>>>    hw/timer/i8254_common=2Ec | 6 ++++++
+>>>>    6 files changed, 6 insertions(+), 18 deletions(-)
+>>>=20
+>>> Do we know who is going to pick up these series? I can send a PR if no=
+-one minds?
+>>>=20
+>>=20
+>>=20
+>> Go ahead:
+>>=20
+>> Acked-by: Michael S=2E Tsirkin <mst@redhat=2Ecom>
+>
+>Thanks Michael! Is there any objection to also including https://patchew=
+=2Eorg/QEMU/20230531211043=2E41724-1-shentey@gmail=2Ecom/ at the same time?
+>
+>Bernhard: if you are able to submit a rebased version of the ISA_PARALLEL=
+ cleanups at https://patchew=2Eorg/QEMU/20230521123049=2E312349-1-shentey@g=
+mail=2Ecom/ I think it is worth considering those for inclusion in the PR a=
+s well (note the comments re: an updated commit message and register defini=
+tions, but I can't really do this myself because of the missing SoB)=2E
 
+What could I put into the commit message?
+
+I'm also wondering: Why export the structure but not the register definiti=
+ons? Are the register definitions not part of the interface? I think these =
+could be used in unittests -- if we had any -- to avoid magic numbers=2E
+
+Best regards,
+Bernhard
+
+>
+>
+>ATB,
+>
+>Mark=2E
+>
 
