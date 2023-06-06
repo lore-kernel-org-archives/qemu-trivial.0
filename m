@@ -1,54 +1,91 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q6TPm-0001AP-Pg
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Jun 2023 05:55:49 -0400
+	id 1q6XXV-0005iF-1t
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Jun 2023 10:20:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1q6TPe-000194-TP; Tue, 06 Jun 2023 05:55:39 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q6XXU-0005ht-00
+ for qemu-trivial@nongnu.org; Tue, 06 Jun 2023 10:20:00 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1q6TPb-0007U5-RQ; Tue, 06 Jun 2023 05:55:37 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 9A4A4748A56;
- Tue,  6 Jun 2023 11:55:32 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id C1FD6746377; Tue,  6 Jun 2023 11:55:31 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id BEDBB746361;
- Tue,  6 Jun 2023 11:55:31 +0200 (CEST)
-Date: Tue, 6 Jun 2023 11:55:31 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-cc: Bernhard Beschow <shentey@gmail.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-devel@nongnu.org, 
- qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- =?ISO-8859-15?Q?Herv=E9_Poussineau?= <hpoussin@reactos.org>, 
- =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>, 
- Peter Maydell <peter.maydell@linaro.org>, qemu-ppc@nongnu.org, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, 
- Eduardo Habkost <eduardo@habkost.net>, Michael Tokarev <mjt@tls.msk.ru>, 
- qemu-arm@nongnu.org, Laurent Vivier <laurent@vivier.eu>, 
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v3 0/3] Trivial cleanups
-In-Reply-To: <c753ab8b-4f9a-3309-ea16-3debaf2c4111@ilande.co.uk>
-Message-ID: <c9ab0d96-1723-4359-5c37-3164ebb44ab8@eik.bme.hu>
-References: <20230523195608.125820-1-shentey@gmail.com>
- <c138717c-5085-3b4b-5a46-0fa93179f6a8@ilande.co.uk>
- <20230601080655-mutt-send-email-mst@kernel.org>
- <5982629b-0ff1-2525-e16a-309257710a20@ilande.co.uk>
- <8187BA4B-5031-4AC6-A94C-27AB714C850C@gmail.com>
- <c753ab8b-4f9a-3309-ea16-3debaf2c4111@ilande.co.uk>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1q6XXS-00076u-KS
+ for qemu-trivial@nongnu.org; Tue, 06 Jun 2023 10:19:59 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1686061198;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=GLk2DYumS/fBSJ0k9e3ySyuc3BsI6QIzXl05sEIrU3k=;
+ b=g/U0a6tADEu9Nnt4z7oqXuuIxceJiyLljx6yNWRdXlvBjO2StE9RKG8pxgB40yumAzO+SW
+ mDIsHNLfHC8Zz+U/7l2t20cZdinHZb/viwjjHHcBBK2f15NUGjyp5DS0WFRwwoeerSmrly
+ aZoaSbRX1Ap8O21E+j6htDdrEIddRa0=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-623-pWNQYT2qPluB2llO-7Qqhw-1; Tue, 06 Jun 2023 10:19:53 -0400
+X-MC-Unique: pWNQYT2qPluB2llO-7Qqhw-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-3f603fed174so34496355e9.2
+ for <qemu-trivial@nongnu.org>; Tue, 06 Jun 2023 07:19:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1686061191; x=1688653191;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=GLk2DYumS/fBSJ0k9e3ySyuc3BsI6QIzXl05sEIrU3k=;
+ b=PDTTiAWOqjJ/9JTNb22qPB1QafMKP8wac6Un3e+pi656Z0GR9wY3GaEw7oK+r0jn+h
+ noRKfI2yjH3cCFtTiPneHPGMb0bz+kzUyNJeie2ksk4h++uJ7L2ZtsX6KXTI5U8+H0Ee
+ c9+c/Imk2F9fRaTRXgueIxGAI6vYpEqNhySaYGBIbVeJ2U6/CZWa3c8WjlGLjQ9k6B6W
+ 1i12rPYMOiABD83NaM/VhKI2zq92SLIXK2l6l0X/B4GaeEUmeK86ArCJhpe8z/S/js2s
+ nuGaDTYmDv+LL6aQ5j1CkqbDYmU6WpmA7JsQp05kUMobvc8Z9wwfe6kM3EHJjaHu9YxE
+ Yc8A==
+X-Gm-Message-State: AC+VfDzngY66B51cTEiurr2vOukUXCOCZmP7KSTDb9umrvXOoLEYnoCa
+ bWrwwdH5DLJilqL58GJaEvXbUYolxFYiJZz4ikdI/n0i9X7Bm9q2kgHMD/mCCKiSQo/AUt4/kUQ
+ 27MRkZm2qKzL66GvixA==
+X-Received: by 2002:adf:f74e:0:b0:30a:e92c:25fa with SMTP id
+ z14-20020adff74e000000b0030ae92c25famr1965957wrp.60.1686061190906; 
+ Tue, 06 Jun 2023 07:19:50 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7xt2HY226Iy0cb/gBSyOTyICtzgHB5q/+TaPI+PNJv3p2lveI2ozN+1sqg/jUSbnweRkuBwg==
+X-Received: by 2002:adf:f74e:0:b0:30a:e92c:25fa with SMTP id
+ z14-20020adff74e000000b0030ae92c25famr1965940wrp.60.1686061190642; 
+ Tue, 06 Jun 2023 07:19:50 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-42-114-92.web.vodafone.de.
+ [109.42.114.92]) by smtp.gmail.com with ESMTPSA id
+ h7-20020adff4c7000000b002f28de9f73bsm12688981wrp.55.2023.06.06.07.19.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 06 Jun 2023 07:19:50 -0700 (PDT)
+Message-ID: <b08eedaf-120a-8c05-c946-b65abe4741c9@redhat.com>
+Date: Tue, 6 Jun 2023 16:19:48 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-Spam-Probability: 9%
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.10.0
+Subject: Re: [PATCH] hw/remote/proxy: Remove dubious 'event_notifier-posix.c'
+ include
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Stefan Hajnoczi <stefanha@redhat.com>,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ Elena Ufimtseva <elena.ufimtseva@oracle.com>,
+ John G Johnson <john.g.johnson@oracle.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20230606134913.93724-1-philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230606134913.93724-1-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ NICE_REPLY_A=-0.094, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -61,117 +98,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Jun 2023 09:55:43 -0000
+X-List-Received-Date: Tue, 06 Jun 2023 14:20:00 -0000
 
-On Tue, 6 Jun 2023, Mark Cave-Ayland wrote:
-> On 05/06/2023 07:58, Bernhard Beschow wrote:
->> Am 1. Juni 2023 12:45:47 UTC schrieb Mark Cave-Ayland 
->> <mark.cave-ayland@ilande.co.uk>:
->>> On 01/06/2023 13:07, Michael S. Tsirkin wrote:
->>> 
->>>> On Thu, May 25, 2023 at 05:03:15PM +0100, Mark Cave-Ayland wrote:
->>>>> On 23/05/2023 20:56, Bernhard Beschow wrote:
->>>>> 
->>>>>> This series:
->>>>>> * Removes dead code from omap_uart and i82378
->>>>>> * Resolves redundant code in the i8254 timer devices
->>>>>> 
->>>>>> v3:
->>>>>> * Drop TYPE_ISA_PARALLEL since they became obsolete by
->>>>>>      https://lore.kernel.org/qemu-devel/20230522115014.1110840-9-thuth@redhat.com/
->>>>> 
->>>>> Oh I didn't see that this had already been merged :/
->>>>> 
->>>>> It's not a reason to block this series, but I'd still like to see your
->>>>> changes to ParallelState and ISAParallelState merged separately since 
->>>>> they
->>>>> are a better match for our QOM coding standards.
->>>>> 
->>>>>> v2:
->>>>>> * Export ParallelState and ISAParallelState (Mark)
->>>>>> 
->>>>>> Testing done:
->>>>>> * `make check`
->>>>>> 
->>>>>> Bernhard Beschow (3):
->>>>>>      hw/timer/i8254_common: Share "iobase" property via base class
->>>>>>      hw/arm/omap: Remove unused omap_uart_attach()
->>>>>>      hw/isa/i82378: Remove unused "io" attribute
->>>>>>
->>>>>>     include/hw/arm/omap.h   | 1 -
->>>>>>     hw/char/omap_uart.c     | 9 ---------
->>>>>>     hw/i386/kvm/i8254.c     | 1 -
->>>>>>     hw/isa/i82378.c         | 1 -
->>>>>>     hw/timer/i8254.c        | 6 ------
->>>>>>     hw/timer/i8254_common.c | 6 ++++++
->>>>>>     6 files changed, 6 insertions(+), 18 deletions(-)
->>>>> 
->>>>> Do we know who is going to pick up these series? I can send a PR if 
->>>>> no-one minds?
->>>>> 
->>>> 
->>>> 
->>>> Go ahead:
->>>> 
->>>> Acked-by: Michael S. Tsirkin <mst@redhat.com>
->>> 
->>> Thanks Michael! Is there any objection to also including 
->>> https://patchew.org/QEMU/20230531211043.41724-1-shentey@gmail.com/ at the 
->>> same time?
->>> 
->>> Bernhard: if you are able to submit a rebased version of the ISA_PARALLEL 
->>> cleanups at 
->>> https://patchew.org/QEMU/20230521123049.312349-1-shentey@gmail.com/ I 
->>> think it is worth considering those for inclusion in the PR as well (note 
->>> the comments re: an updated commit message and register definitions, but I 
->>> can't really do this myself because of the missing SoB).
->> 
->> What could I put into the commit message?
->
-> That comment came from Zoltan (see 
-> https://patchew.org/QEMU/20230521123049.312349-1-shentey@gmail.com/20230521123049.312349-5-shentey@gmail.com/#77413450-244e-287b-ad21-e57cb5e2abf5@eik.bme.hu). 
-> Zoltan, would you like to suggest some alternative wording?
->
-> If not, feel free to take my message at 
-> https://patchew.org/QEMU/20230604131450.428797-1-mark.cave-ayland@ilande.co.uk/20230604131450.428797-14-mark.cave-ayland@ilande.co.uk/ 
-> and tweak it accordingly.
+On 06/06/2023 15.49, Philippe Mathieu-Daudé wrote:
+> event_notifier-posix.c is registered in meson's util_ss[] source
+> set, which is built as libqemuutil.a.p library. Both tools and
+> system emulation binaries are linked with qemuutil, so there is
+> no point in including this source file.
+> 
+> Introduced in commit bd36adb8df ("multi-process: create IOHUB
+> object to handle irq").
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+> Note, --enable-multiprocess doesn't seem to be covered in CI.
+> ---
+>   hw/remote/proxy.c | 1 -
+>   1 file changed, 1 deletion(-)
+> 
+> diff --git a/hw/remote/proxy.c b/hw/remote/proxy.c
+> index 1c7786b52c..2052d721e5 100644
+> --- a/hw/remote/proxy.c
+> +++ b/hw/remote/proxy.c
+> @@ -22,7 +22,6 @@
+>   #include "qom/object.h"
+>   #include "qemu/event_notifier.h"
+>   #include "sysemu/kvm.h"
+> -#include "util/event_notifier-posix.c"
+>   
+>   static void probe_pci_info(PCIDevice *dev, Error **errp);
+>   static void proxy_device_reset(DeviceState *dev);
 
-I'm OK with your suggestion too or maybe something like:
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Export ParallelState to allow embedding it in other devices.
-
-If you just want the
-
-#define TYPE_ISA_PARALLEL "isa-parallel"
-OBJECT_DECLARE_SIMPLE_TYPE(ISAParallelState, ISA_PARALLEL)
-
-part to be in a header then moving the structure there as well is not 
-necessary, only when you also want to use the structure somewhere where 
-its size is needed like adding it to another structure.
-
->> I'm also wondering: Why export the structure but not the register 
->> definitions? Are the register definitions not part of the interface? I 
->> think these could be used in unittests -- if we had any -- to avoid magic 
->> numbers.
->
-> In theory that could be possible, but it's not something that people have 
-> requested (yet). From the QEMU perspective a device is something with memory 
-> regions and gpios that can be wired up within a board, so unless the #defines 
-> are used directly within ParallelState it doesn't make too much sense to 
-> export them currently.
-
-On the other hand keeping the structure and defines in the c file ensures 
-encapsulation so nothing else will mess with the internals of the object 
-and keep these as implementation detail (it's also easier to work with a 
-single file than having to look up struct definition elsewhere) so I'd 
-prefer keeping things together unless the struct is needed elsewhere. The 
-coding style does not clearly say which is preferred, in fact it only 
-mentions thet OBJECT_DECLARE_SIMPLE_TYPE ofthen goes in a header but the 
-struct is declared separately. The moving of structs to headers only 
-started with preferring embedded objects over allocating them so we don't 
-have to care about freeing them which needs the struct definition in the 
-header breaking encapsulation.
-
-Regards,
-BALATON Zoltan
 
