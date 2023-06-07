@@ -1,81 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q6p50-0002Pp-0B
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Jun 2023 05:03:46 -0400
+	id 1q6pAA-00061m-3J
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Jun 2023 05:09:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1q6p4z-0002N3-0l
- for qemu-trivial@nongnu.org; Wed, 07 Jun 2023 05:03:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1q6p4x-0008MX-Jc
- for qemu-trivial@nongnu.org; Wed, 07 Jun 2023 05:03:44 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1686128623;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=hogVfhhg00EJA/XGUN602uwS3PNVXGeY/2ZIORjD97s=;
- b=OBTw8VLFoZ9sJ+1ZbGKT5E8sZtVepX8SV3i0CsCBnXFlIO2hQ9ruwzR4DBiV+ueFaDQoG6
- 9Wc1iyPFbXH9wxCI/IGibD+srhT45EbXTXMhhRGnSszf38D5HLoGCqH+nQjtLbBKdICOuq
- zl+TlkyoPrltZXK7N0H3SYPnN/DLNv0=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-29-jsMSXacjP1uO_zWzbNCKJQ-1; Wed, 07 Jun 2023 05:03:40 -0400
-X-MC-Unique: jsMSXacjP1uO_zWzbNCKJQ-1
-Received: by mail-ej1-f70.google.com with SMTP id
- a640c23a62f3a-97455ea1c14so487123466b.2
- for <qemu-trivial@nongnu.org>; Wed, 07 Jun 2023 02:03:39 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6pA8-00061T-Lg
+ for qemu-trivial@nongnu.org; Wed, 07 Jun 2023 05:09:04 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6pA6-0000tu-Mk
+ for qemu-trivial@nongnu.org; Wed, 07 Jun 2023 05:09:04 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-3f60e536250so2668335e9.1
+ for <qemu-trivial@nongnu.org>; Wed, 07 Jun 2023 02:09:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1686128940; x=1688720940;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=EVxmJ0BKqMcVhtDQ/su8wRLKOoCDDlmBuHpFUcx1nnM=;
+ b=AIYFDfUSZ/lSdw+H8TOF9I/7C3lgGVskKhB0mDItvs8AbjbhlwyHcdso4HjGeN23K8
+ TDO8qBTWO1aenjTgY8nwrGha44d4ydAIcnoViIxrmGmW2H1QfB5As0OLVLK1EfOs/skj
+ m6giu2uSuImh+7RKvafXnqQVTY1gxKfKZdr7Xa20q8/rc/oRcEjq8VfhFqZ+2bOnIjSs
+ w//OKRR/o9lZMn4NLprPI1OwH64IqPrUCYjJf1e1Qt4Z2e6wUHnA1uy2cYw83Tky+L9l
+ /JIUTfzsM2kYqHU4ZEoMmAJnMauD2lGrrx8OUpJQw2hTOWt/W5wmmegzagNEvG/UQtPS
+ kh2w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686128618; x=1688720618;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=hogVfhhg00EJA/XGUN602uwS3PNVXGeY/2ZIORjD97s=;
- b=GHQ9kvnLTfW70NjMKog/om/expurlw94SgWBNJbFZZbPTgo2ofAgkX1G4z/EuHd/Ny
- d6Z+dbnnb0Ya9fUoCLPdI82G0pL5YuJO4daP2tI12vPWNkECel8ID6LdsU+58ZAS/7xa
- rPTWhBqTQF+SqlhaiLpxlwzDEo5ygis/atjFXWnWdc8U3+0JsYXYsk1jDjrP0SeYYu0e
- zg38/KE5eOpBMzU7bg5ILi+FoLvQLpZRzv+FuOLdf1D5JeeKtbABD3H5t3ulUAGKwidR
- paEN80cPsE9ExA5Vde6uW8O7ayhJoHMIb0yqSyeXUPSGMDDl3Uq8xO1xvpUG9a2zchex
- KfKw==
-X-Gm-Message-State: AC+VfDxrhJYuPku5RsAmXFjPrQ+5M77KMKKmgsvnOClH+1epqfStNLOv
- NZKAQ0APmPf792to1Yv/sZ6FOhXHBQMkHWscTMN+2nUadWjtYfvGoadAUMjJqw6FTQPLz3L1Rsd
- LMW41VJOg9Fu5zztFbPeaG3GYbw==
-X-Received: by 2002:a17:907:2d8c:b0:971:484:6392 with SMTP id
- gt12-20020a1709072d8c00b0097104846392mr5092628ejc.38.1686128618252; 
- Wed, 07 Jun 2023 02:03:38 -0700 (PDT)
-X-Google-Smtp-Source: ACHHUZ4MLVfDp3AXeUyYe1gqMH+zHAty91KQ1k3mbO+akkKOmZvwERjBQ8AfSxAwTuJ8U2VZFv7B3w==
-X-Received: by 2002:a17:907:2d8c:b0:971:484:6392 with SMTP id
- gt12-20020a1709072d8c00b0097104846392mr5092614ejc.38.1686128617991; 
- Wed, 07 Jun 2023 02:03:37 -0700 (PDT)
-Received: from [192.168.10.118] ([2001:b07:6468:f312:5e2c:eb9a:a8b6:fd3e])
- by smtp.gmail.com with ESMTPSA id
- w2-20020a1709062f8200b00977ecf6942bsm2828035eji.90.2023.06.07.02.03.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 07 Jun 2023 02:03:37 -0700 (PDT)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Subject: [PATCH] meson: fix "static build" entry in summary
-Date: Wed,  7 Jun 2023 11:03:36 +0200
-Message-Id: <20230607090336.59424-1-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.40.1
+ d=1e100.net; s=20221208; t=1686128940; x=1688720940;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=EVxmJ0BKqMcVhtDQ/su8wRLKOoCDDlmBuHpFUcx1nnM=;
+ b=XIGSzttfKHFsERTNLmLmNHTb+/1ESOC+AkdUt1HT+ltRtlaQvPZqrmzEd+EsRRbqTN
+ 8ieb/Pd8QTu/XqObL6vD24VGHKYHt7xLP17Xweu3gxYMYFlcWsIyoC0/vyW1+ONNp1Y+
+ 9YSwHTYYUqMF8nGgJPd1nIzWMTVOb2/DC46ANmH1Ia78vVDoW9oLn1c9z75wVtSL49Uu
+ Ea9IW9OSMvJVV7GVOKn1prmuyeDslsVCtaB8uZ48oaU995NJWhpTuOd8YAM6IXKvUJ7s
+ HUl5kSo/S1+WOti6lsMOZU4bAENRpxYb43vkEvmMsCPx4w7QsiPXaaCwOLv4ZUL/5e1o
+ JTkw==
+X-Gm-Message-State: AC+VfDz7nIm/V1J/mlKoYYyr43rDzvi5IktCEp5BM2PpkJnCIWuP/In+
+ E360uiQoDrPV43F84TfYWNZfjQ==
+X-Google-Smtp-Source: ACHHUZ552ht2q7lQZOaiXPccjqAbaud7jAAC4iUSIf2ekDQzkDaBVdfyB52U+BHSEGifXPTdpvvymg==
+X-Received: by 2002:a1c:4b0b:0:b0:3f6:1b7:11f0 with SMTP id
+ y11-20020a1c4b0b000000b003f601b711f0mr3708577wma.7.1686128940082; 
+ Wed, 07 Jun 2023 02:09:00 -0700 (PDT)
+Received: from [192.168.69.115] (bd137-h02-176-184-46-52.dsl.sta.abo.bbox.fr.
+ [176.184.46.52]) by smtp.gmail.com with ESMTPSA id
+ 3-20020a05600c028300b003f7eeec829asm1468292wmk.10.2023.06.07.02.08.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 07 Jun 2023 02:08:59 -0700 (PDT)
+Message-ID: <f1c785b1-beac-55e1-7da9-d9a5f1ab77ff@linaro.org>
+Date: Wed, 7 Jun 2023 11:08:58 +0200
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.11.2
+Subject: Re: [PATCH] meson: fix "static build" entry in summary
+Content-Language: en-US
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20230607090336.59424-1-pbonzini@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230607090336.59424-1-pbonzini@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.094,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,28 +82,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Jun 2023 09:03:45 -0000
+X-List-Received-Date: Wed, 07 Jun 2023 09:09:04 -0000
 
-Fixes: a0cbd2e8496 ("meson: use prefer_static option", 2023-05-18)
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On 7/6/23 11:03, Paolo Bonzini wrote:
+> Fixes: a0cbd2e8496 ("meson: use prefer_static option", 2023-05-18)
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+> ---
+>   meson.build | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/meson.build b/meson.build
+> index 553c8e0b9c5..34d0444ffbb 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -4088,7 +4088,7 @@ summary_info += {'QEMU_LDFLAGS':      ' '.join(qemu_ldflags)}
+>   summary_info += {'profiler':          get_option('profiler')}
+>   summary_info += {'link-time optimization (LTO)': get_option('b_lto')}
+>   summary_info += {'PIE':               get_option('b_pie')}
+> -summary_info += {'static build':      config_host.has_key('CONFIG_STATIC')}
+> +summary_info += {'static build':      get_optin('prefer_static')}
 
-diff --git a/meson.build b/meson.build
-index 553c8e0b9c5..34d0444ffbb 100644
---- a/meson.build
-+++ b/meson.build
-@@ -4088,7 +4088,7 @@ summary_info += {'QEMU_LDFLAGS':      ' '.join(qemu_ldflags)}
- summary_info += {'profiler':          get_option('profiler')}
- summary_info += {'link-time optimization (LTO)': get_option('b_lto')}
- summary_info += {'PIE':               get_option('b_pie')}
--summary_info += {'static build':      config_host.has_key('CONFIG_STATIC')}
-+summary_info += {'static build':      get_optin('prefer_static')}
- summary_info += {'malloc trim support': has_malloc_trim}
- summary_info += {'membarrier':        have_membarrier}
- summary_info += {'debug graph lock':  get_option('debug_graph_lock')}
--- 
-2.40.1
+Typo 'get_option'.
+
+>   summary_info += {'malloc trim support': has_malloc_trim}
+>   summary_info += {'membarrier':        have_membarrier}
+>   summary_info += {'debug graph lock':  get_option('debug_graph_lock')}
 
 
