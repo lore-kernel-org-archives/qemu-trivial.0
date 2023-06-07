@@ -1,73 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q6o2t-0003gS-Cw
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Jun 2023 03:57:31 -0400
+	id 1q6p47-0001kZ-88
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Jun 2023 05:02:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6o2s-0003gB-Dy
- for qemu-trivial@nongnu.org; Wed, 07 Jun 2023 03:57:30 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q6o2q-0005Cu-S3
- for qemu-trivial@nongnu.org; Wed, 07 Jun 2023 03:57:30 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-3f7368126a6so30480465e9.0
- for <qemu-trivial@nongnu.org>; Wed, 07 Jun 2023 00:57:28 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686124647; x=1688716647;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=J7HpCaY+DXPHysvUq6YT0veG8ke8Jzp5UZZMM2S/gNY=;
- b=pCl8Lu/DpzXCKm1wBu72diu2q2ob/oIGYdn1PF3O5S8YrohHk+BmNr/vF/dv2s7C9U
- RrZfgm+1IwHxt+X2/j71qmN+ZH8Bnz3SBgkBO0mUxYqC9XqtaukhK3aG2t3gKDSoqtRi
- bgkyho4DnC8igDBZK1q0wYE0tKhXHirIl/HvDCgnLRAKjPeBiZfihsEh+ncdVTz4n+Ua
- FFCekbKFqv4MlG6Wxb1UYAZ+tf75PRfak4Zr4+al1Ks7mSXbludsyDC0B+5BROjWJ1OJ
- hOjSrK/zK1JxixvR4Y3xizgQhW9yp4sSU3cCfoOuTAR+uYDLkWHWV8yIfP6C2hStwwx7
- Ei/Q==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1q6p45-0001jS-8L
+ for qemu-trivial@nongnu.org; Wed, 07 Jun 2023 05:02:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1q6p43-0008DT-Sg
+ for qemu-trivial@nongnu.org; Wed, 07 Jun 2023 05:02:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1686128567;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
+ b=YYiAnbjVZOLNlu/qNFDh/UPIwjMpTlny8CB0kphkW78437OlCWBxOg9774v++nL35HvgI/
+ +HDbZNjrS86neZwJaYJemc/q2GCzHMH+ZNPzI3oDNS3wEFnf0jwkHy8xKQBI5cVG806wm6
+ /cPZKTz6mXFuWZ1NiqSpPrD70JNLZoA=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-589-pP7WxFgUOzyjiVHNNGl5Gw-1; Wed, 07 Jun 2023 05:02:45 -0400
+X-MC-Unique: pP7WxFgUOzyjiVHNNGl5Gw-1
+Received: by mail-ej1-f69.google.com with SMTP id
+ a640c23a62f3a-95847b4b4e7so617784366b.3
+ for <qemu-trivial@nongnu.org>; Wed, 07 Jun 2023 02:02:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686124647; x=1688716647;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=J7HpCaY+DXPHysvUq6YT0veG8ke8Jzp5UZZMM2S/gNY=;
- b=JkinKISSkqHq0iXBG6EnA+//rVCk9CcpvJbQAdUtzEbuYAQ9yR1eqNhtYxEmndWbF+
- iajZ7Hn2jxOMhdZkyEfWfw8M/kZWzWjHDO4i1fQ9V4fvK90JiYv5k46GrgUSdvg2vafI
- 1zKwvSBlxs1oz3Qgq7b3p5+nhpkxYPaR2LMdi4Dgwb26u6j0HKMu1FpK48KQ/9WHkRAr
- MaPrnC+MuVIEhHtqR1m0uYjxp/bwzflh9IKkdEor9VNCWIQCYptdVbvtQu3C82ooPnPD
- GeI+Euos3qMBKUuuL7bqDPVu4e8CtBVgfVTxkcXKxnFyuSlxHaVMCC+lhJG2UirodeSe
- 6Rhw==
-X-Gm-Message-State: AC+VfDzaFTyes1s07P+mLvjlN6i4e3zqPAh0K9d1m616Hs34BrlSdtdp
- hElXuIOlrpauA04eS9cj0flXvg==
-X-Google-Smtp-Source: ACHHUZ74IF72zWJX64qXcQW8hTs1bOdB1+7ZA6RJphIavRTsHQKJIEuZWzh8KhYx1z7tvtAQrEh+cg==
-X-Received: by 2002:a7b:ce95:0:b0:3f7:e463:3cc8 with SMTP id
- q21-20020a7bce95000000b003f7e4633cc8mr3494985wmj.28.1686124647304; 
- Wed, 07 Jun 2023 00:57:27 -0700 (PDT)
-Received: from [192.168.69.115] (bd137-h02-176-184-46-52.dsl.sta.abo.bbox.fr.
- [176.184.46.52]) by smtp.gmail.com with ESMTPSA id
- p23-20020a1c7417000000b003f6f6a6e769sm1229931wmc.17.2023.06.07.00.57.26
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 07 Jun 2023 00:57:26 -0700 (PDT)
-Message-ID: <e33d63b9-2afd-44e6-127c-832581d81c82@linaro.org>
-Date: Wed, 7 Jun 2023 09:57:24 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.2
+ d=1e100.net; s=20221208; t=1686128565; x=1688720565;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
+ b=GQgzAEJaAYDiDakMaXm2Vd3GQ7VodA2MNQUUHqDT7bxxnc5OT8eaxCoD42dqvcPEfg
+ LcazZpdNC0EV4n54TG1hB6g0RyvX6WCMq9tsHOkqOGF04N68dlQlYYgbFGuCvcwJK4s/
+ 40lthIM7sYN1miLEt/WuC/iwbj/9N7CpV5kjhJH+SjJFMiRRcfLqWCwD77uGcGO2zFVC
+ esu8Wmw8AQlRt5oBKY2O/MoH1S2vD8yh1RzOFlLKHi0j1YUUmulYPhliLCD8XXxc4DKs
+ RZ6e7H/dUxp08bjEbz17jcjZEZz1hfhK1Wl/6NZZV/SJtfEp3R3N5OSLsn7qG7CcRwCK
+ HfNg==
+X-Gm-Message-State: AC+VfDxCGxf/wRD9Og0ntV2KI7ackZld+VjUC4NVlIdpFhCwsBSZYgY4
+ tI0pLxc5mUIfmTuIWZqWFQp1UaBAtNMcdGeKMlbh8L4038qIMv8WIFwphIKgzpzvXhJf2eUNMpR
+ YqfR8y2mgBn6cZyWaRA==
+X-Received: by 2002:a17:907:a0c8:b0:96f:4225:9009 with SMTP id
+ hw8-20020a170907a0c800b0096f42259009mr5551640ejc.0.1686128564916; 
+ Wed, 07 Jun 2023 02:02:44 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7nzNDzHTaR8heq2rhLkDDve/7gq2VGEPyQj0LM2x6T0/6YKxwUwV9RIW2+zbg8RL0nnyyQXA==
+X-Received: by 2002:a17:907:a0c8:b0:96f:4225:9009 with SMTP id
+ hw8-20020a170907a0c800b0096f42259009mr5551625ejc.0.1686128564637; 
+ Wed, 07 Jun 2023 02:02:44 -0700 (PDT)
+Received: from [192.168.10.118] ([2001:b07:6468:f312:5e2c:eb9a:a8b6:fd3e])
+ by smtp.gmail.com with ESMTPSA id
+ r6-20020a170906350600b00970f0e2dab2sm6612620eja.112.2023.06.07.02.02.43
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 07 Jun 2023 02:02:43 -0700 (PDT)
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: Michal Privoznik <mprivozn@redhat.com>
+Cc: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org,
+	pbonzini@redhat.com
 Subject: Re: [PATCH] configure: check for $download value properly
-Content-Language: en-US
-To: Michal Privoznik <mprivozn@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
-References: <3236bc555c76dcd561d38a3aea6e8489e917bc15.1686124161.git.mprivozn@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+Date: Wed,  7 Jun 2023 11:02:41 +0200
+Message-Id: <20230607090242.59095-1-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.40.1
 In-Reply-To: <3236bc555c76dcd561d38a3aea6e8489e917bc15.1686124161.git.mprivozn@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+References: 
+MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.094,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -82,25 +93,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Jun 2023 07:57:30 -0000
+X-List-Received-Date: Wed, 07 Jun 2023 09:02:49 -0000
 
-On 7/6/23 09:50, Michal Privoznik wrote:
-> If configure was invoked with --disable-download and git
-> submodules were not checked out a warning is produced and the
-> configure script fails. But the $download variable (which
-> reflects the enable/disable download argument) is checked for in
-> a weird fashion:
-> 
->    test -f "$download" = disabled
-> 
-> Drop the '-f' to check for the actual value of the variable.
-> 
-> Fixes: 2019cabfee0
-> Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
-> ---
->   configure | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+Queued, thanks.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Paolo
 
 
