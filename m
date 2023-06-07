@@ -1,77 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q6bVd-0007FU-NF
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Jun 2023 14:34:22 -0400
+	id 1q6nw4-0008VO-6H
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Jun 2023 03:50:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1q6bVc-0007F6-Bs; Tue, 06 Jun 2023 14:34:20 -0400
-Received: from mail-oa1-x29.google.com ([2001:4860:4864:20::29])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1q6bVX-0007VG-QJ; Tue, 06 Jun 2023 14:34:19 -0400
-Received: by mail-oa1-x29.google.com with SMTP id
- 586e51a60fabf-1a2ad8f4075so5052276fac.2; 
- Tue, 06 Jun 2023 11:34:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1686076453; x=1688668453;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=KLY6MFFh6tDHhJzCedCBIRvda4hLkfX9kp1LX3UaAVk=;
- b=RuUfpmsSwKL/SQjkKz0WgaCpP269lvFz5WEkJVKmAC0sB8vblJwu9LdtF2M5MwtZVH
- JEDHKSEAh9vGMh9LsEg1canIDZJh7uL3S5ytpE36Aumj8VoeiOSRJhVblVugtkoBOnry
- 3cpS0bvDq8gV+xQlBaj0lFJKPGrVDciiR8KBkh1lyKeXXDR/q2ome4Xef6XPNGXkqwg6
- 9TWQ2cMZ/6+R2IBA/ORrqIPjLXmCQ4gmALap9MyiuwEozCGkF8lu9HtJM0K4GCGl8IP+
- clp4NbDBS3CB4tmAc67/hpUAh3cY8zuHhy4lhIBiLYvi0El70n1MY6OlutExz3jVIaIh
- DDtw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686076453; x=1688668453;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KLY6MFFh6tDHhJzCedCBIRvda4hLkfX9kp1LX3UaAVk=;
- b=XCCjarJCkfFD9TxXZ4/zOCwa3T7a5pbKAh39rLJmqBjr0bzqyWZVpnu/6/cyfGeIb3
- EBkZJAMbTEYZOEfAO6Yy6TyRZzGBVHcKpQmTL7wGVRdRMjpZbQLefKuTI/bZ56J+04AY
- PhAFz2CEDIdrjnSIoKMmxzxBjsJKH+rqGysXQebioD6zQLGXxv65H+ZQsW2AQG4UE4m0
- SblV1Co/1lIO2k7k3c2KHjrGR/S58o4sqWjqOk24tsKjYkmmR2GyeNFnZedoZ1WNA4S8
- UEKlmke1DX273QJnuXwLpR+/2v/tWKQn8G4tNiZoiy+P+fIqkV1lvI2Y/CRD968yvxPk
- 3J/g==
-X-Gm-Message-State: AC+VfDzZX8oFkCMuxH25jMVIgpajz8WCeV45wW6lhRUQ+OSpoxfHyx0y
- Mb/Nk2xkXULbDjIEUvkMs/M=
-X-Google-Smtp-Source: ACHHUZ4WSmqyUh/kccZpDCawakCRQOCUm9c22u0yWBsbBY0wOwtKDzWILyh+PzstW0RZOWBWNFz8lw==
-X-Received: by 2002:a05:6870:6c0c:b0:19f:3db1:e2cd with SMTP id
- na12-20020a0568706c0c00b0019f3db1e2cdmr4020861oab.49.1686076452755; 
- Tue, 06 Jun 2023 11:34:12 -0700 (PDT)
-Received: from [192.168.68.107] ([177.170.117.52])
- by smtp.gmail.com with ESMTPSA id
- s10-20020a056870628a00b0019f44a07b35sm5058139oan.51.2023.06.06.11.34.11
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Jun 2023 11:34:12 -0700 (PDT)
-Message-ID: <70fa2599-bd62-6ad5-d592-2e16fa4970ef@gmail.com>
-Date: Tue, 6 Jun 2023 15:34:09 -0300
+ (Exim 4.90_1) (envelope-from <mprivozn@redhat.com>)
+ id 1q6nw2-0008Uu-PH
+ for qemu-trivial@nongnu.org; Wed, 07 Jun 2023 03:50:26 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mprivozn@redhat.com>)
+ id 1q6nw1-00047R-CI
+ for qemu-trivial@nongnu.org; Wed, 07 Jun 2023 03:50:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1686124224;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=g4yeAbUkfqDROXp7WZr3jaLIKaXa7y1xtLxoJAo6Ngc=;
+ b=eYdFZnOkRNEsasSenFH5bat4dByxlQOeID/edtNRpAk/A1syldFHZPtmOW4vkO19hwVhgY
+ PUpvib+Y5MSvC/s2D3PxbjbWhbW7yjKGrkvFO0JW4gq37C+oStRv2zUA4wr8ThYWYnxAP/
+ NQ1QPjDaMG242qO4Dr8nyRt64qpbgRQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-479-fvXU-YJ2O2-CECUecxbwFQ-1; Wed, 07 Jun 2023 03:50:21 -0400
+X-MC-Unique: fvXU-YJ2O2-CECUecxbwFQ-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DD2AA185A791;
+ Wed,  7 Jun 2023 07:50:20 +0000 (UTC)
+Received: from localhost.localdomain (unknown [10.43.2.36])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4F9AC140E954;
+ Wed,  7 Jun 2023 07:50:20 +0000 (UTC)
+From: Michal Privoznik <mprivozn@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	pbonzini@redhat.com
+Subject: [PATCH] configure: check for $download value properly
+Date: Wed,  7 Jun 2023 09:50:06 +0200
+Message-Id: <3236bc555c76dcd561d38a3aea6e8489e917bc15.1686124161.git.mprivozn@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
-Subject: Re: [PATCH] hw/ppc/openpic: Do not open-code ROUND_UP() macro
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-trivial@nongnu.org
-References: <20230523061546.49031-1-philmd@linaro.org>
-From: Daniel Henrique Barboza <danielhb413@gmail.com>
-In-Reply-To: <20230523061546.49031-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::29;
- envelope-from=danielhb413@gmail.com; helo=mail-oa1-x29.google.com
-X-Spam_score_int: 14
-X-Spam_score: 1.4
-X-Spam_bar: +
-X-Spam_report: (1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
- FREEMAIL_FROM=0.001, NICE_REPLY_A=-0.094, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mprivozn@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,37 +65,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Jun 2023 18:34:20 -0000
+X-List-Received-Date: Wed, 07 Jun 2023 07:50:27 -0000
 
+If configure was invoked with --disable-download and git
+submodules were not checked out a warning is produced and the
+configure script fails. But the $download variable (which
+reflects the enable/disable download argument) is checked for in
+a weird fashion:
 
+  test -f "$download" = disabled
 
-On 5/23/23 03:15, Philippe Mathieu-Daudé wrote:
-> While reviewing, the ROUND_UP() macro is easier to figure out.
-> Besides, the comment confirms we want to round up here.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
+Drop the '-f' to check for the actual value of the variable.
 
+Fixes: 2019cabfee0
+Signed-off-by: Michal Privoznik <mprivozn@redhat.com>
+---
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Queued in gitlab.com/danielhb/qemu/tree/ppc-next. Thanks,
+diff --git a/configure b/configure
+index 8765b88e12..8a638dd82a 100755
+--- a/configure
++++ b/configure
+@@ -767,7 +767,7 @@ if test "$plugins" = "yes" -a "$tcg" = "disabled"; then
+ fi
+ 
+ if ! test -f "$source_path/subprojects/keycodemapdb/README" \
+-    && test -f "$download" = disabled
++    && test "$download" = disabled
+ then
+     echo
+     echo "ERROR: missing subprojects"
+-- 
+2.39.3
 
-
-Daniel
-
->   include/hw/ppc/openpic.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/hw/ppc/openpic.h b/include/hw/ppc/openpic.h
-> index ebdaf8a493..bae8dafe16 100644
-> --- a/include/hw/ppc/openpic.h
-> +++ b/include/hw/ppc/openpic.h
-> @@ -55,7 +55,7 @@ typedef enum IRQType {
->    * Round up to the nearest 64 IRQs so that the queue length
->    * won't change when moving between 32 and 64 bit hosts.
->    */
-> -#define IRQQUEUE_SIZE_BITS ((OPENPIC_MAX_IRQ + 63) & ~63)
-> +#define IRQQUEUE_SIZE_BITS ROUND_UP(OPENPIC_MAX_IRQ, 64)
->   
->   typedef struct IRQQueue {
->       unsigned long *queue;
 
