@@ -1,37 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q7KQs-0003De-Fp
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Jun 2023 14:32:31 -0400
+	id 1q7KaH-0006L4-15
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Jun 2023 14:42:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7KQi-0003Cp-5H; Thu, 08 Jun 2023 14:32:16 -0400
+ id 1q7KaE-0006Kc-Dm; Thu, 08 Jun 2023 14:42:06 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7KQd-00076J-Fv; Thu, 08 Jun 2023 14:32:15 -0400
+ id 1q7KaC-00011Z-B6; Thu, 08 Jun 2023 14:42:05 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 17C22B9A0;
- Thu,  8 Jun 2023 21:31:58 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 58A05B9A5;
+ Thu,  8 Jun 2023 21:42:00 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id ED12AAA71;
- Thu,  8 Jun 2023 21:31:55 +0300 (MSK)
-Message-ID: <10ef6b88-0770-65bb-b6dd-217a5f731d14@tls.msk.ru>
-Date: Thu, 8 Jun 2023 21:31:55 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id E4534AA74;
+ Thu,  8 Jun 2023 21:41:58 +0300 (MSK)
+Message-ID: <78d99f7f-33f0-0007-10c7-c78278cde080@tls.msk.ru>
+Date: Thu, 8 Jun 2023 21:41:58 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH] hw/mips: Improve the default USB settings in the
- loongson3-virt machine
+Subject: Re: [PATCH 0/4] hw: Minor simplifications using proper QOM getter
+ macros
 Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Huacai Chen <chenhuacai@kernel.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20230525064731.1854107-1-thuth@redhat.com>
- <5795da20-a2f6-e606-27bd-a23fc72346fc@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Sergio Lopez <slp@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Eduardo Habkost
+ <eduardo@habkost.net>, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+References: <20230523061207.48818-1-philmd@linaro.org>
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <5795da20-a2f6-e606-27bd-a23fc72346fc@redhat.com>
+In-Reply-To: <20230523061207.48818-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -54,58 +56,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Jun 2023 18:32:25 -0000
+X-List-Received-Date: Thu, 08 Jun 2023 18:42:07 -0000
 
-07.06.2023 13:26, Thomas Huth wrote:
-> On 25/05/2023 08.47, Thomas Huth wrote:
->> It's possible to compile QEMU without the USB devices (e.g. when using
->> "--without-default-devices" as option for the "configure" script).
->> To be still able to run the loongson3-virt machine in default mode with
->> such a QEMU binary, we have to check here for the availability of the
->> devices first before instantiating them.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   The alternative would be to use a "#ifdef CONFIG_USB_OHCI_PCI" etc.
->>   ... not sure what is nicer ... what do you think?
->>
->>   hw/mips/loongson3_virt.c | 10 +++++++---
->>   1 file changed, 7 insertions(+), 3 deletions(-)
->>
->> diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
->> index 216812f660..a0afb17030 100644
->> --- a/hw/mips/loongson3_virt.c
->> +++ b/hw/mips/loongson3_virt.c
->> @@ -447,10 +447,14 @@ static inline void loongson3_virt_devices_init(MachineState *machine,
->>       pci_vga_init(pci_bus);
->> -    if (defaults_enabled()) {
->> +    if (defaults_enabled() && module_object_class_by_name("pci-ohci")) {
->>           pci_create_simple(pci_bus, -1, "pci-ohci");
->> -        usb_create_simple(usb_bus_find(-1), "usb-kbd");
->> -        usb_create_simple(usb_bus_find(-1), "usb-tablet");
->> +        if (module_object_class_by_name("usb-kbd")) {
->> +            usb_create_simple(usb_bus_find(-1), "usb-kbd");
->> +        }
->> +        if (module_object_class_by_name("usb-tablet")) {
->> +            usb_create_simple(usb_bus_find(-1), "usb-tablet");
->> +        }
+23.05.2023 09:12, Philippe Mathieu-Daudé wrote:
+> Enforce QOM style. Besides, using the proper QOM macros
+> slightly simplifies the code.
 
-It looks like kbd/tablet don't need to have an if around, because
-hw/usb/usb-hid.c is always compiled when CONFIG_USB is enabled,
-and enabling CONFIG_USB_OHCI automatically selects CONFIG_USB.
+Applied to my trivial-patches branch (Maybe it's time to resurrect it).
 
-I guess this whole code can be guarded by #if CONFIG_USB_OHCI..#endif,
-instead of using runtime checking of device availability.
-
-Notes:
-
-Other places don't check if ohci or other usb controllers are available.
-
-We have TYPE_PCI_OHCI #define which isn't used in places where pci-ohci
-is requested, - probably need to move it to a common header (it is
-defined in hw/usb/hcd-ohci-pci.c now).
-
-roms/config.seabios-128k turns USB_OHCI off.
+Thanks,
 
 /mjt
 
