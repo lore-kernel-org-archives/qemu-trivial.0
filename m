@@ -1,34 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q7ibq-0005nP-07
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Jun 2023 16:21:23 -0400
+	id 1q7ixr-0005Df-Gs
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Jun 2023 16:44:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7ibZ-0005A4-5t; Fri, 09 Jun 2023 16:21:05 -0400
+ id 1q7ixo-0005C6-GU; Fri, 09 Jun 2023 16:44:04 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7ibX-0000mW-CR; Fri, 09 Jun 2023 16:21:04 -0400
+ id 1q7ixg-0005gr-Mh; Fri, 09 Jun 2023 16:44:01 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 9365ABD4A;
- Fri,  9 Jun 2023 23:20:52 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id B0DDCBD5D;
+ Fri,  9 Jun 2023 23:43:54 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 4AE11B1DB;
- Fri,  9 Jun 2023 23:20:50 +0300 (MSK)
-Message-ID: <f0d91602-e41a-1e13-08a4-b6ff2565b4f1@tls.msk.ru>
-Date: Fri, 9 Jun 2023 23:20:50 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 28A79B1DE;
+ Fri,  9 Jun 2023 23:43:53 +0300 (MSK)
+Message-ID: <65f6b1ec-a1c8-1301-e4d1-dea21d473615@tls.msk.ru>
+Date: Fri, 9 Jun 2023 23:43:53 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH] vnc: move assert in vnc_worker_thread_loop
+Subject: Re: [PATCH 0/2] linux-user: Clarify error on failure to map guest
+ address space
 Content-Language: en-US
-To: Anastasia Belova <abelova@astralinux.ru>, qemu-devel@nongnu.org
-Cc: Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20230609092306.19836-1-abelova@astralinux.ru>
+To: Andrew Jeffery <andrew@aj.id.au>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, laurent@vivier.eu
+References: <20230327115524.1981482-1-andrew@aj.id.au>
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230609092306.19836-1-abelova@astralinux.ru>
+In-Reply-To: <20230327115524.1981482-1-andrew@aj.id.au>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -37,8 +36,8 @@ X-Spam_score_int: -69
 X-Spam_score: -7.0
 X-Spam_bar: -------
 X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.09,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -51,42 +50,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Jun 2023 20:21:17 -0000
+X-List-Received-Date: Fri, 09 Jun 2023 20:44:04 -0000
 
-09.06.2023 12:23, Anastasia Belova wrote:
-> job may be NULL if queue->exit is true. Check
-> it before dereference job.
+27.03.2023 14:55, Andrew Jeffery wrote:
+> Hello,
 > 
-> Fixes: f31f9c1080 ("vnc: add magic cookie to VncState")
-> Signed-off-by: Anastasia Belova <abelova@astralinux.ru>
-> ---
->   ui/vnc-jobs.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+> This series is a couple of trivial improvements to the error message from linux-user's ELF loader
+> when it fails to mmap() the guest's address space. Both issues caused me brief confusion when trying
+> to sort myself out after hitting https://gitlab.com/qemu-project/qemu/-/issues/447
 > 
-> diff --git a/ui/vnc-jobs.c b/ui/vnc-jobs.c
-> index 886f9bf611..fcca7ec632 100644
-> --- a/ui/vnc-jobs.c
-> +++ b/ui/vnc-jobs.c
-> @@ -250,12 +250,13 @@ static int vnc_worker_thread_loop(VncJobQueue *queue)
->       /* Here job can only be NULL if queue->exit is true */
->       job = QTAILQ_FIRST(&queue->jobs);
->       vnc_unlock_queue(queue);
-> -    assert(job->vs->magic == VNC_MAGIC);
->   
->       if (queue->exit) {
->           return -1;
->       }
->   
-> +    assert(job->vs->magic == VNC_MAGIC);
-> +
+> I've build tested the two as a sanity check.
 
-This is a good one, I like it :)
+Ping?  That seems like some nice rewording, but not my area..
 
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-
-It can be applied though -trivial queue.
-
-Thank you!
+Thanks!
 
 /mjt
 
