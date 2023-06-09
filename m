@@ -1,33 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q7fIO-0000oh-2K
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Jun 2023 12:49:04 -0400
+	id 1q7ibq-0005nP-07
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Jun 2023 16:21:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7fII-0000ma-JY; Fri, 09 Jun 2023 12:48:58 -0400
+ id 1q7ibZ-0005A4-5t; Fri, 09 Jun 2023 16:21:05 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7fIG-0006x8-SH; Fri, 09 Jun 2023 12:48:58 -0400
+ id 1q7ibX-0000mW-CR; Fri, 09 Jun 2023 16:21:04 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 86A1CBCFE;
- Fri,  9 Jun 2023 19:48:53 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 9365ABD4A;
+ Fri,  9 Jun 2023 23:20:52 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id C3E53B055;
- Fri,  9 Jun 2023 19:48:51 +0300 (MSK)
-Message-ID: <ad03bcc8-ae8f-021e-7590-8cf41b31c290@tls.msk.ru>
-Date: Fri, 9 Jun 2023 19:48:51 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 4AE11B1DB;
+ Fri,  9 Jun 2023 23:20:50 +0300 (MSK)
+Message-ID: <f0d91602-e41a-1e13-08a4-b6ff2565b4f1@tls.msk.ru>
+Date: Fri, 9 Jun 2023 23:20:50 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.11.0
-Subject: Re: [PATCH v2] linux-user: Return EINVAL for getgroups() with
- negative gidsetsize
+Subject: Re: [PATCH] vnc: move assert in vnc_worker_thread_loop
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20230609162915.175810-1-peter.maydell@linaro.org>
+To: Anastasia Belova <abelova@astralinux.ru>, qemu-devel@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20230609092306.19836-1-abelova@astralinux.ru>
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230609162915.175810-1-peter.maydell@linaro.org>
+In-Reply-To: <20230609092306.19836-1-abelova@astralinux.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -50,32 +51,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Jun 2023 16:49:02 -0000
+X-List-Received-Date: Fri, 09 Jun 2023 20:21:17 -0000
 
-09.06.2023 19:29, Peter Maydell wrote:
-> Coverity doesn't like the way we might end up calling getgroups()
-> with a NULL grouplist pointer. This is fine for the special case
-> of gidsetsize == 0, but we will also do it if the guest passes
-> us a negative gidsetsize. (CID 1512465)
+09.06.2023 12:23, Anastasia Belova wrote:
+> job may be NULL if queue->exit is true. Check
+> it before dereference job.
 > 
-> Explicitly fail the negative gidsetsize with EINVAL, as the kernel
-> does. This means we definitely only call the libc getgroups()
-> with valid parameters. It also brings the getgroups() code in
-> to line with the setgroups() code.
-> 
-> Possibly Coverity may still complain about getgroups(0, NULL), but
-> that would be a false positive.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Fixes: f31f9c1080 ("vnc: add magic cookie to VncState")
+> Signed-off-by: Anastasia Belova <abelova@astralinux.ru>
 > ---
-> v2: also change TARGET_NR_getgroups32 code
+>   ui/vnc-jobs.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/ui/vnc-jobs.c b/ui/vnc-jobs.c
+> index 886f9bf611..fcca7ec632 100644
+> --- a/ui/vnc-jobs.c
+> +++ b/ui/vnc-jobs.c
+> @@ -250,12 +250,13 @@ static int vnc_worker_thread_loop(VncJobQueue *queue)
+>       /* Here job can only be NULL if queue->exit is true */
+>       job = QTAILQ_FIRST(&queue->jobs);
+>       vnc_unlock_queue(queue);
+> -    assert(job->vs->magic == VNC_MAGIC);
+>   
+>       if (queue->exit) {
+>           return -1;
+>       }
+>   
+> +    assert(job->vs->magic == VNC_MAGIC);
+> +
+
+This is a good one, I like it :)
 
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 
-This can be applied to -trivial just fine, I think.  There's another
-change in there already in exactly this area.
+It can be applied though -trivial queue.
 
-Thank you Peter!
+Thank you!
 
 /mjt
 
