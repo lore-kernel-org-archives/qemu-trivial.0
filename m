@@ -1,29 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q7sYp-0002xs-FV
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Jun 2023 02:58:55 -0400
+	id 1q7sZ8-00038m-SL
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Jun 2023 02:59:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7sYk-0002td-OQ; Sat, 10 Jun 2023 02:58:50 -0400
+ id 1q7sZ7-00038P-Nv; Sat, 10 Jun 2023 02:59:13 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7sYj-00063s-6l; Sat, 10 Jun 2023 02:58:50 -0400
+ id 1q7sZ6-00064Y-5B; Sat, 10 Jun 2023 02:59:13 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id DF727BE2E;
- Sat, 10 Jun 2023 09:58:01 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 49930BE30;
+ Sat, 10 Jun 2023 09:58:02 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 80399B29B;
+ by tsrv.corpit.ru (Postfix) with SMTP id C7713B29D;
  Sat, 10 Jun 2023 09:58:01 +0300 (MSK)
-Received: (nullmailer pid 1107535 invoked by uid 1000);
+Received: (nullmailer pid 1107541 invoked by uid 1000);
  Sat, 10 Jun 2023 06:57:58 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Anastasia Belova <abelova@astralinux.ru>, qemu-trivial@nongnu.org,
+Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 14/16] vnc: move assert in vnc_worker_thread_loop
-Date: Sat, 10 Jun 2023 09:57:52 +0300
-Message-Id: <bdfca8a22f41e7ad47fd2dac71e4d1387e2c0d4e.1686379708.git.mjt@tls.msk.ru>
+Subject: [PULL 16/16] linux-user: elfload: Specify -R is an option for
+ qemu-user binaries
+Date: Sat, 10 Jun 2023 09:57:54 +0300
+Message-Id: <e928907105cfeb48b68cedce232bbd4784536707.1686379708.git.mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1686379708.git.mjt@tls.msk.ru>
 References: <cover.1686379708.git.mjt@tls.msk.ru>
@@ -49,40 +50,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Jun 2023 06:58:51 -0000
+X-List-Received-Date: Sat, 10 Jun 2023 06:59:14 -0000
 
-From: Anastasia Belova <abelova@astralinux.ru>
+From: Andrew Jeffery <andrew@aj.id.au>
 
-job may be NULL if queue->exit is true. Check
-it before dereference job.
+Given several different concepts are suggested for investigation, let's
+not confuse e.g. ulimit's -R with what was actually intended.
 
-Fixes: f31f9c1080 ("vnc: add magic cookie to VncState")
-Signed-off-by: Anastasia Belova <abelova@astralinux.ru>
+Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- ui/vnc-jobs.c | 3 ++-
+ linux-user/elfload.c | 3 ++-
  1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/ui/vnc-jobs.c b/ui/vnc-jobs.c
-index 886f9bf611..fcca7ec632 100644
---- a/ui/vnc-jobs.c
-+++ b/ui/vnc-jobs.c
-@@ -250,12 +250,13 @@ static int vnc_worker_thread_loop(VncJobQueue *queue)
-     /* Here job can only be NULL if queue->exit is true */
-     job = QTAILQ_FIRST(&queue->jobs);
-     vnc_unlock_queue(queue);
--    assert(job->vs->magic == VNC_MAGIC);
- 
-     if (queue->exit) {
-         return -1;
+diff --git a/linux-user/elfload.c b/linux-user/elfload.c
+index 76874833e3..9a2ec568b0 100644
+--- a/linux-user/elfload.c
++++ b/linux-user/elfload.c
+@@ -2799,7 +2799,8 @@ static void pgb_reserved_va(const char *image_name, abi_ulong guest_loaddr,
+         error_report("Unable to reserve 0x%lx bytes of virtual address "
+                      "space at %p (%s) for use as guest address space (check your "
+                      "virtual memory ulimit setting, mmap_min_addr or reserve less "
+-                     "using -R option)", reserved_va + 1, test, strerror(errno));
++                     "using qemu-user's -R option)",
++                     reserved_va + 1, test, strerror(errno));
+         exit(EXIT_FAILURE);
      }
  
-+    assert(job->vs->magic == VNC_MAGIC);
-+
-     vnc_lock_output(job->vs);
-     if (job->vs->ioc == NULL || job->vs->abort == true) {
-         vnc_unlock_output(job->vs);
 -- 
 2.39.2
 
