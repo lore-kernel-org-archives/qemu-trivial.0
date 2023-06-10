@@ -1,29 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q7sY5-0002f0-Th
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Jun 2023 02:58:09 -0400
+	id 1q7sY7-0002hK-36
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Jun 2023 02:58:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7sY1-0002bj-Tn; Sat, 10 Jun 2023 02:58:05 -0400
+ id 1q7sY5-0002ej-DB; Sat, 10 Jun 2023 02:58:09 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7sY0-0005tU-6K; Sat, 10 Jun 2023 02:58:05 -0400
+ id 1q7sY3-0005tv-Mc; Sat, 10 Jun 2023 02:58:09 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 75F0DBE21;
+ by isrv.corpit.ru (Postfix) with ESMTP id C26A4BE23;
  Sat, 10 Jun 2023 09:57:59 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id EFD39B28E;
- Sat, 10 Jun 2023 09:57:58 +0300 (MSK)
-Received: (nullmailer pid 1107496 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 618AEB290;
+ Sat, 10 Jun 2023 09:57:59 +0300 (MSK)
+Received: (nullmailer pid 1107502 invoked by uid 1000);
  Sat, 10 Jun 2023 06:57:58 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Milan Zamazal <mzamazal@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 01/16] docs: Fix trivial typos in vhost-user.rst
-Date: Sat, 10 Jun 2023 09:57:39 +0300
-Message-Id: <9c36407a4445de1f3e69d7a7a30e86dbb75a94e6.1686379708.git.mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Subject: [PULL 03/16] spelling: information
+Date: Sat, 10 Jun 2023 09:57:41 +0300
+Message-Id: <40b89515d026915a0593993712e322addac095b9.1686379708.git.mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1686379708.git.mjt@tls.msk.ru>
 References: <cover.1686379708.git.mjt@tls.msk.ru>
@@ -49,36 +48,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Jun 2023 06:58:06 -0000
+X-List-Received-Date: Sat, 10 Jun 2023 06:58:09 -0000
 
-From: Milan Zamazal <mzamazal@redhat.com>
+3 trivial fixes: 2 .json comments which goes to
+executables, and 1 .h file comment.
 
-Signed-off-by: Milan Zamazal <mzamazal@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- docs/system/devices/vhost-user.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ include/ui/clipboard.h | 2 +-
+ qapi/cryptodev.json    | 2 +-
+ qga/qapi-schema.json   | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/docs/system/devices/vhost-user.rst b/docs/system/devices/vhost-user.rst
-index 86128114fa..a80e95a48a 100644
---- a/docs/system/devices/vhost-user.rst
-+++ b/docs/system/devices/vhost-user.rst
-@@ -38,13 +38,13 @@ system memory as defined by the ``-m`` argument.
- Example
- =======
+diff --git a/include/ui/clipboard.h b/include/ui/clipboard.h
+index ce76aa451f..ab6acdbd8a 100644
+--- a/include/ui/clipboard.h
++++ b/include/ui/clipboard.h
+@@ -170,7 +170,7 @@ void qemu_clipboard_peer_release(QemuClipboardPeer *peer,
+  *
+  * @selection: clipboard selection.
+  *
+- * Return the current clipboard data & owner informations.
++ * Return the current clipboard data & owner information.
+  */
+ QemuClipboardInfo *qemu_clipboard_info(QemuClipboardSelection selection);
  
--First start you daemon.
-+First start your daemon.
- 
- .. parsed-literal::
- 
-   $ virtio-foo --socket-path=/var/run/foo.sock $OTHER_ARGS
- 
--The you start your QEMU instance specifying the device, chardev and
-+Then you start your QEMU instance specifying the device, chardev and
- memory objects.
- 
- .. parsed-literal::
+diff --git a/qapi/cryptodev.json b/qapi/cryptodev.json
+index 77f48a9c21..68289f4984 100644
+--- a/qapi/cryptodev.json
++++ b/qapi/cryptodev.json
+@@ -75,7 +75,7 @@
+ #
+ # @service: supported service types of a crypto device
+ #
+-# @client: the additional infomation of the crypto device
++# @client: the additional information of the crypto device
+ #
+ # Since: 8.0
+ ##
+diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
+index 42fb046eb7..b720dd4379 100644
+--- a/qga/qapi-schema.json
++++ b/qga/qapi-schema.json
+@@ -931,7 +931,7 @@
+ ##
+ # @GuestNVMeSmart:
+ #
+-# NVMe smart informations, based on NVMe specification, section
++# NVMe smart information, based on NVMe specification, section
+ # <SMART / Health Information (Log Identifier 02h)>
+ #
+ # Since: 7.1
 -- 
 2.39.2
 
