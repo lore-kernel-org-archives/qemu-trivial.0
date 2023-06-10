@@ -1,33 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q7sY9-0002i6-Ax
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Jun 2023 02:58:13 -0400
+	id 1q7sYA-0002ie-0V
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Jun 2023 02:58:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7sY6-0002gz-OX; Sat, 10 Jun 2023 02:58:10 -0400
+ id 1q7sY8-0002hl-DZ; Sat, 10 Jun 2023 02:58:12 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7sY4-0005to-GC; Sat, 10 Jun 2023 02:58:10 -0400
+ id 1q7sY6-0005uM-Qf; Sat, 10 Jun 2023 02:58:12 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id A7833BE22;
+ by isrv.corpit.ru (Postfix) with ESMTP id E7B35BE24;
  Sat, 10 Jun 2023 09:57:59 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 309AFB28F;
+ by tsrv.corpit.ru (Postfix) with SMTP id 83C50B291;
  Sat, 10 Jun 2023 09:57:59 +0300 (MSK)
-Received: (nullmailer pid 1107499 invoked by uid 1000);
+Received: (nullmailer pid 1107505 invoked by uid 1000);
  Sat, 10 Jun 2023 06:57:58 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Stefan Weil <sw@weilnetz.de>
-Subject: [PULL 02/16] hw/virtio/virtio-qmp.c: spelling: suppoted
-Date: Sat, 10 Jun 2023 09:57:40 +0300
-Message-Id: <46e75a77a9f5a5d88e4c8bb6de37f1531aa7d8b0.1686379708.git.mjt@tls.msk.ru>
+Cc: Mattias Nissler <mnissler@rivosinc.com>, qemu-trivial@nongnu.org,
+ Jagannathan Raman <jag.raman@oracle.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 04/16] hw/remote: Fix vfu_cfg trace offset format
+Date: Sat, 10 Jun 2023 09:57:42 +0300
+Message-Id: <5fb9e8295531f957cf7ac20e89736c8963a25e04.1686379708.git.mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1686379708.git.mjt@tls.msk.ru>
 References: <cover.1686379708.git.mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -49,28 +52,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Jun 2023 06:58:12 -0000
+X-List-Received-Date: Sat, 10 Jun 2023 06:58:13 -0000
 
-Fixes: f3034ad71fcd0a6a58bc37830f182b307f089159
+From: Mattias Nissler <mnissler@rivosinc.com>
+
+The printed offset value is prefixed with 0x, but was actually printed
+in decimal. To spare others the confusion, adjust the format specifier
+to hexadecimal.
+
+Signed-off-by: Mattias Nissler <mnissler@rivosinc.com>
+Reviewed-by: Jagannathan Raman <jag.raman@oracle.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
 ---
- hw/virtio/virtio-qmp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/remote/trace-events | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/virtio/virtio-qmp.c b/hw/virtio/virtio-qmp.c
-index b5e1835299..3528fc628d 100644
---- a/hw/virtio/virtio-qmp.c
-+++ b/hw/virtio/virtio-qmp.c
-@@ -331,7 +331,7 @@ static const qmp_virtio_feature_map_t virtio_net_feature_map[] = {
- static const qmp_virtio_feature_map_t virtio_scsi_feature_map[] = {
-     FEATURE_ENTRY(VIRTIO_SCSI_F_INOUT, \
-             "VIRTIO_SCSI_F_INOUT: Requests including read and writable data "
--            "buffers suppoted"),
-+            "buffers supported"),
-     FEATURE_ENTRY(VIRTIO_SCSI_F_HOTPLUG, \
-             "VIRTIO_SCSI_F_HOTPLUG: Reporting and handling hot-plug events "
-             "supported"),
+diff --git a/hw/remote/trace-events b/hw/remote/trace-events
+index c167b3c7a5..0d1b7d56a5 100644
+--- a/hw/remote/trace-events
++++ b/hw/remote/trace-events
+@@ -5,8 +5,8 @@ mpqemu_recv_io_error(int cmd, int size, int nfds) "failed to receive %d size %d,
+ 
+ # vfio-user-obj.c
+ vfu_prop(const char *prop, const char *val) "vfu: setting %s as %s"
+-vfu_cfg_read(uint32_t offset, uint32_t val) "vfu: cfg: 0x%u -> 0x%x"
+-vfu_cfg_write(uint32_t offset, uint32_t val) "vfu: cfg: 0x%u <- 0x%x"
++vfu_cfg_read(uint32_t offset, uint32_t val) "vfu: cfg: 0x%x -> 0x%x"
++vfu_cfg_write(uint32_t offset, uint32_t val) "vfu: cfg: 0x%x <- 0x%x"
+ vfu_dma_register(uint64_t gpa, size_t len) "vfu: registering GPA 0x%"PRIx64", %zu bytes"
+ vfu_dma_unregister(uint64_t gpa) "vfu: unregistering GPA 0x%"PRIx64""
+ vfu_bar_register(int i, uint64_t addr, uint64_t size) "vfu: BAR %d: addr 0x%"PRIx64" size 0x%"PRIx64""
 -- 
 2.39.2
 
