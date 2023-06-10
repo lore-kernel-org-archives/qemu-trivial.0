@@ -1,32 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q7sYl-0002uP-No
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Jun 2023 02:58:51 -0400
+	id 1q7sYn-0002vn-6g
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Jun 2023 02:58:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7sYh-0002pD-QU; Sat, 10 Jun 2023 02:58:48 -0400
+ id 1q7sYJ-0002lh-NW; Sat, 10 Jun 2023 02:58:25 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7sYg-0005xe-5d; Sat, 10 Jun 2023 02:58:47 -0400
+ id 1q7sYH-0005xD-54; Sat, 10 Jun 2023 02:58:22 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 95F7CBE2C;
+ by isrv.corpit.ru (Postfix) with ESMTP id 344FDBE2A;
  Sat, 10 Jun 2023 09:58:01 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 2E5F7B299;
- Sat, 10 Jun 2023 09:58:01 +0300 (MSK)
-Received: (nullmailer pid 1107529 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id C73FFB297;
+ Sat, 10 Jun 2023 09:58:00 +0300 (MSK)
+Received: (nullmailer pid 1107523 invoked by uid 1000);
  Sat, 10 Jun 2023 06:57:58 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Subject: [PULL 12/16] linux-user: add comments for TARGET_NR_[gs]etgroups{, 32}
-Date: Sat, 10 Jun 2023 09:57:50 +0300
-Message-Id: <725160fe56eb9f6b9b13214b9adf519c25b9d527.1686379708.git.mjt@tls.msk.ru>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 10/16] hw/pci/pci: Simplify pci_bar_address() using
+ MACHINE_GET_CLASS() macro
+Date: Sat, 10 Jun 2023 09:57:48 +0300
+Message-Id: <271233f21f66c10194a45c1bff1db61fe2694a22.1686379708.git.mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1686379708.git.mjt@tls.msk.ru>
 References: <cover.1686379708.git.mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -50,57 +54,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 10 Jun 2023 06:58:48 -0000
 
-There are 2 pairs of identical code (with different types)
-for TARGET_NR_setgroups & TARGET_NR_setgroups32, and
-for TARGET_NR_getgroups & TARGET_NR_getgroups32.  Add
-comments stating this fact, so that further modifications
-are done in two places.
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+Remove unnecessary intermediate variables.
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- linux-user/syscall.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/pci/pci.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 83685f0aa5..94256cc262 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -11670,7 +11670,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
-     case TARGET_NR_setregid:
-         return get_errno(setregid(low2highgid(arg1), low2highgid(arg2)));
-     case TARGET_NR_getgroups:
--        {
-+        { /* the same code as for TARGET_NR_getgroups32 */
-             int gidsetsize = arg1;
-             target_id *target_grouplist;
-             g_autofree gid_t *grouplist = NULL;
-@@ -11701,7 +11701,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
-             return ret;
-         }
-     case TARGET_NR_setgroups:
--        {
-+        { /* the same code as for TARGET_NR_setgroups32 */
-             int gidsetsize = arg1;
-             target_id *target_grouplist;
-             g_autofree gid_t *grouplist = NULL;
-@@ -12006,7 +12006,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
- #endif
- #ifdef TARGET_NR_getgroups32
-     case TARGET_NR_getgroups32:
--        {
-+        { /* the same code as for TARGET_NR_getgroups */
-             int gidsetsize = arg1;
-             uint32_t *target_grouplist;
-             g_autofree gid_t *grouplist = NULL;
-@@ -12038,7 +12038,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
- #endif
- #ifdef TARGET_NR_setgroups32
-     case TARGET_NR_setgroups32:
--        {
-+        { /* the same code as for TARGET_NR_setgroups */
-             int gidsetsize = arg1;
-             uint32_t *target_grouplist;
-             g_autofree gid_t *grouplist = NULL;
+diff --git a/hw/pci/pci.c b/hw/pci/pci.c
+index 9b7b4d7c18..bf38905b7d 100644
+--- a/hw/pci/pci.c
++++ b/hw/pci/pci.c
+@@ -1446,9 +1446,7 @@ pcibus_t pci_bar_address(PCIDevice *d,
+ {
+     pcibus_t new_addr, last_addr;
+     uint16_t cmd = pci_get_word(d->config + PCI_COMMAND);
+-    Object *machine = qdev_get_machine();
+-    ObjectClass *oc = object_get_class(machine);
+-    MachineClass *mc = MACHINE_CLASS(oc);
++    MachineClass *mc = MACHINE_GET_CLASS(qdev_get_machine());
+     bool allow_0_address = mc->pci_allow_0_address;
+ 
+     if (type & PCI_BASE_ADDRESS_SPACE_IO) {
 -- 
 2.39.2
 
