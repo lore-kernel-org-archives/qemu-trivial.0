@@ -1,42 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q7sZ8-00038m-SL
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Jun 2023 02:59:14 -0400
+	id 1q80ln-0002wb-GO
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Jun 2023 11:44:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7sZ7-00038P-Nv; Sat, 10 Jun 2023 02:59:13 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1q7sZ6-00064Y-5B; Sat, 10 Jun 2023 02:59:13 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 49930BE30;
- Sat, 10 Jun 2023 09:58:02 +0300 (MSK)
-Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id C7713B29D;
- Sat, 10 Jun 2023 09:58:01 +0300 (MSK)
-Received: (nullmailer pid 1107541 invoked by uid 1000);
- Sat, 10 Jun 2023 06:57:58 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Andrew Jeffery <andrew@aj.id.au>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 16/16] linux-user: elfload: Specify -R is an option for
- qemu-user binaries
-Date: Sat, 10 Jun 2023 09:57:54 +0300
-Message-Id: <e928907105cfeb48b68cedce232bbd4784536707.1686379708.git.mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cover.1686379708.git.mjt@tls.msk.ru>
-References: <cover.1686379708.git.mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q80ll-0002w3-GE
+ for qemu-trivial@nongnu.org; Sat, 10 Jun 2023 11:44:49 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1q80lj-0001my-Pv
+ for qemu-trivial@nongnu.org; Sat, 10 Jun 2023 11:44:49 -0400
+Received: by mail-pf1-x434.google.com with SMTP id
+ d2e1a72fcca58-652a6bf4e6aso2353977b3a.2
+ for <qemu-trivial@nongnu.org>; Sat, 10 Jun 2023 08:44:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1686411886; x=1689003886;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=xqO54wpGd3cshpXyp45gHaePm2/aagp21p7Hy3aYcX8=;
+ b=ZLENVdn+XFKdTxSs+tbFqXuMfh17SBoi3X7lHtgCfF/9z/1+8qswpGXdUvEzKw+a8k
+ UsLB3u71nz5YS+PlH3tafUGphkTJXmeHdmXagI+n6uh/waGCG/ne/gMaZumT3lFVKwaW
+ n24L9d5a2fUmv4cLtH6fkmT+37LEDCvyb2wZwIzl+RuDJLiYYXeFdZWIO9WTWfkHPHgo
+ yn72gTeQLAZiNsj1mTBuss1G1e6uZiy8+SR9zahoJqpoZoMd8aiyGqQSkIabocr5bEOP
+ 13ZuhOPGkvZTeeZBbIuQ+KMoJFkeNgWmM0a6pzBjVojUUH1BCXaJx650x9akyipLmPjE
+ tBig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1686411886; x=1689003886;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=xqO54wpGd3cshpXyp45gHaePm2/aagp21p7Hy3aYcX8=;
+ b=LD1swGVgo2C7UTioD+E1jzEmJZOLrw7zzsLRZ2cYag9nkfs4xw7Jvp3shdR9nnll8j
+ tEI99mFUfT3d46dWV2GxAakvs4eezz1cn3vgDFzHXc4DJK2HlJ3qhsTnxkOvDvGihxEw
+ EuJ5sBLRN2jdbvh/UZ6uSXN/Yz5cbH/RADPPqP2vzQ0D9nEk0vp9RUtewUxG5yFvHUDa
+ 8THXqw17P5e74zuq9SWIl9nKNj5cARulyh0fifHWjeKH1lD0HeMsIwyuRGaGI3etiRlQ
+ dfBDuwFboGefs/Xw2ChrXYIleARhKuQQdJ1RLLeq8Yh14UpzkZurED48VReT74oMzr+A
+ 0yRg==
+X-Gm-Message-State: AC+VfDxIDIkArSk51XQZV20kp8OxgfK/YLO5CI+JNbRK1+8KZiseqx4G
+ UyKrpIJ3GQ08yYLUhN3pwZVAXg==
+X-Google-Smtp-Source: ACHHUZ6PuLtWb1MSrsyEFFaHDUxx+XvkKb9C3xjOq0yOkDWSNIQcFYKpqeelZXqEiNqhoS2yvfBj5g==
+X-Received: by 2002:a05:6a00:14c2:b0:658:12ca:385b with SMTP id
+ w2-20020a056a0014c200b0065812ca385bmr5570946pfu.22.1686411886135; 
+ Sat, 10 Jun 2023 08:44:46 -0700 (PDT)
+Received: from ?IPV6:2602:ae:1598:4c01:2db6:3c02:bd87:f559?
+ ([2602:ae:1598:4c01:2db6:3c02:bd87:f559])
+ by smtp.gmail.com with ESMTPSA id
+ b21-20020aa78715000000b0064378c52398sm4338263pfo.25.2023.06.10.08.44.45
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 10 Jun 2023 08:44:45 -0700 (PDT)
+Message-ID: <ea6f67d0-fd97-4d00-ff94-eb79402c4b5e@linaro.org>
+Date: Sat, 10 Jun 2023 08:44:44 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PULL 00/16] trivial patches 2023-06-10
+Content-Language: en-US
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <cover.1686379708.git.mjt@tls.msk.ru>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <cover.1686379708.git.mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -50,35 +85,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Jun 2023 06:59:14 -0000
+X-List-Received-Date: Sat, 10 Jun 2023 15:44:49 -0000
 
-From: Andrew Jeffery <andrew@aj.id.au>
+On 6/9/23 23:57, Michael Tokarev wrote:
+> Hi here!
+> 
+> This is my first pullreq in quite some years.
+> 
+> It looks like there has been quite some trivial patches which were forgotten,
+> so I thought I'd give it a shot at least.
+> 
+> And since I haven't done a PR in a while, I basically forgot how to do it
+> properly :)
+> 
+> Please note: there are 2 patches in there which are*not*  reviewed.  Being
+> a trivial-patch collection, they're "obviously correct", - namely these are
+> spelling fixes ("information") and adding comments in linux-user/syscall.c.
+> If that's not okay, let's remove these 2 changes and apply the rest.
+> 
+> Thanks,
+> 
+> /mjt
+> 
+> The following changes since commit 5f9dd6a8ce3961db4ce47411ed2097ad88bdf5fc:
+> 
+>    Merge tag 'pull-9p-20230608' ofhttps://github.com/cschoenebeck/qemu  into staging (2023-06-08 08:47:35 -0700)
+> 
+> are available in the Git repository at:
+> 
+>    https://gitlab.com/mjt0k/qemu.git  tags/trivial-patches-20230610
+> 
+> for you to fetch changes up to e928907105cfeb48b68cedce232bbd4784536707:
+> 
+>    linux-user: elfload: Specify -R is an option for qemu-user binaries (2023-06-10 09:40:46 +0300)
+> 
+> ----------------------------------------------------------------
+> trivial-patches-20230610
 
-Given several different concepts are suggested for investigation, let's
-not confuse e.g. ulimit's -R with what was actually intended.
+Applied, thanks.  Please update https://wiki.qemu.org/ChangeLog/8.1 as appropriate.
 
-Signed-off-by: Andrew Jeffery <andrew@aj.id.au>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- linux-user/elfload.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/linux-user/elfload.c b/linux-user/elfload.c
-index 76874833e3..9a2ec568b0 100644
---- a/linux-user/elfload.c
-+++ b/linux-user/elfload.c
-@@ -2799,7 +2799,8 @@ static void pgb_reserved_va(const char *image_name, abi_ulong guest_loaddr,
-         error_report("Unable to reserve 0x%lx bytes of virtual address "
-                      "space at %p (%s) for use as guest address space (check your "
-                      "virtual memory ulimit setting, mmap_min_addr or reserve less "
--                     "using -R option)", reserved_va + 1, test, strerror(errno));
-+                     "using qemu-user's -R option)",
-+                     reserved_va + 1, test, strerror(errno));
-         exit(EXIT_FAILURE);
-     }
- 
--- 
-2.39.2
+r~
 
 
