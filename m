@@ -1,76 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q80ln-0002wb-GO
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Jun 2023 11:44:51 -0400
+	id 1q8Io3-0003Ns-56
+	for mharc-qemu-trivial@gnu.org; Sun, 11 Jun 2023 07:00:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q80ll-0002w3-GE
- for qemu-trivial@nongnu.org; Sat, 10 Jun 2023 11:44:49 -0400
-Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1q8Io0-0003My-SY; Sun, 11 Jun 2023 07:00:20 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q80lj-0001my-Pv
- for qemu-trivial@nongnu.org; Sat, 10 Jun 2023 11:44:49 -0400
-Received: by mail-pf1-x434.google.com with SMTP id
- d2e1a72fcca58-652a6bf4e6aso2353977b3a.2
- for <qemu-trivial@nongnu.org>; Sat, 10 Jun 2023 08:44:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1q8Inz-0004gJ-3E; Sun, 11 Jun 2023 07:00:20 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-5147e8972a1so5921573a12.0; 
+ Sun, 11 Jun 2023 04:00:17 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686411886; x=1689003886;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=xqO54wpGd3cshpXyp45gHaePm2/aagp21p7Hy3aYcX8=;
- b=ZLENVdn+XFKdTxSs+tbFqXuMfh17SBoi3X7lHtgCfF/9z/1+8qswpGXdUvEzKw+a8k
- UsLB3u71nz5YS+PlH3tafUGphkTJXmeHdmXagI+n6uh/waGCG/ne/gMaZumT3lFVKwaW
- n24L9d5a2fUmv4cLtH6fkmT+37LEDCvyb2wZwIzl+RuDJLiYYXeFdZWIO9WTWfkHPHgo
- yn72gTeQLAZiNsj1mTBuss1G1e6uZiy8+SR9zahoJqpoZoMd8aiyGqQSkIabocr5bEOP
- 13ZuhOPGkvZTeeZBbIuQ+KMoJFkeNgWmM0a6pzBjVojUUH1BCXaJx650x9akyipLmPjE
- tBig==
+ d=gmail.com; s=20221208; t=1686481216; x=1689073216;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ko+FFLYmdcftn0u1vmgRraBDi/dPXRFwCbTwUl5J2R0=;
+ b=C6KrpBFLQY7xK/VgSE+a2+I2jXHl80x1flx7Fn3REciOsX+nYs130niDySRDhbZgW/
+ 9cRajHp29dS1yADbgxpyajSm4aEbEH9UqVBaIvRxzQGbkcwifyj/vdPIWeWWMSotqbff
+ QZhBpZ3Us/rzzejoH8eXPZkPMJOBXQ/ahFgnsLp07RHgmqqPWdlo1QJ7jDrLokL1y8eH
+ BbI0dtFeTP4KF+3U56E9GboyP4mYPdu5mrHA5gjS6BtxE9QY5DYtwmmqpwvgrL7urbQ4
+ mrTDapZKf2k2IIRKm+gFQXf1aF4KCNOozEcA3dJqbczqbXJtXM9UyWiWmgdCKi9jvHWN
+ kmCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686411886; x=1689003886;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xqO54wpGd3cshpXyp45gHaePm2/aagp21p7Hy3aYcX8=;
- b=LD1swGVgo2C7UTioD+E1jzEmJZOLrw7zzsLRZ2cYag9nkfs4xw7Jvp3shdR9nnll8j
- tEI99mFUfT3d46dWV2GxAakvs4eezz1cn3vgDFzHXc4DJK2HlJ3qhsTnxkOvDvGihxEw
- EuJ5sBLRN2jdbvh/UZ6uSXN/Yz5cbH/RADPPqP2vzQ0D9nEk0vp9RUtewUxG5yFvHUDa
- 8THXqw17P5e74zuq9SWIl9nKNj5cARulyh0fifHWjeKH1lD0HeMsIwyuRGaGI3etiRlQ
- dfBDuwFboGefs/Xw2ChrXYIleARhKuQQdJ1RLLeq8Yh14UpzkZurED48VReT74oMzr+A
- 0yRg==
-X-Gm-Message-State: AC+VfDxIDIkArSk51XQZV20kp8OxgfK/YLO5CI+JNbRK1+8KZiseqx4G
- UyKrpIJ3GQ08yYLUhN3pwZVAXg==
-X-Google-Smtp-Source: ACHHUZ6PuLtWb1MSrsyEFFaHDUxx+XvkKb9C3xjOq0yOkDWSNIQcFYKpqeelZXqEiNqhoS2yvfBj5g==
-X-Received: by 2002:a05:6a00:14c2:b0:658:12ca:385b with SMTP id
- w2-20020a056a0014c200b0065812ca385bmr5570946pfu.22.1686411886135; 
- Sat, 10 Jun 2023 08:44:46 -0700 (PDT)
-Received: from ?IPV6:2602:ae:1598:4c01:2db6:3c02:bd87:f559?
- ([2602:ae:1598:4c01:2db6:3c02:bd87:f559])
- by smtp.gmail.com with ESMTPSA id
- b21-20020aa78715000000b0064378c52398sm4338263pfo.25.2023.06.10.08.44.45
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 10 Jun 2023 08:44:45 -0700 (PDT)
-Message-ID: <ea6f67d0-fd97-4d00-ff94-eb79402c4b5e@linaro.org>
-Date: Sat, 10 Jun 2023 08:44:44 -0700
+ d=1e100.net; s=20221208; t=1686481216; x=1689073216;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ko+FFLYmdcftn0u1vmgRraBDi/dPXRFwCbTwUl5J2R0=;
+ b=APImvnSzWfj/b2O29MF3wK+vMcekmQ2oT3NL4dr8XEi+nkyQAzmjr4QKO7X+nD8H35
+ 04qPDrg/Mt1ZAM5+QdjG9sFMmA9m/LY0VguXUJqYxwLQCySFREC1rILprXCemqXziGBR
+ D2lmKGl+SqCMYlESQInFz5cxSGM3dCr/+gqwsrSLe20slHXGwX6BhgXMPge3ZtEn8Uxl
+ 4WhcyBH/v2lOzYi1xgj1FEM4GCSDXzi7RkAZPSJbhHcG8XF5Y/69x2si+EO1B6/S7ARP
+ w3XujMwYVyp+HzkdO/MNf6uXtwrOObIf6YmHLzMmN+rnMpV2pvLha8CAxr8jwrUvscmM
+ aeWw==
+X-Gm-Message-State: AC+VfDx+OqNMBjAjRiqfGi8pGYK54Io4rQc371ME6+8CMXO7wp3PEc4e
+ s8yKQx3DyRr9bifDUuLUGEEJAkeNttA=
+X-Google-Smtp-Source: ACHHUZ6FEdKq75wpmWu3yzdKy63uSdBb5JPRH+z3BOZRsB/riAVFMQdLCUgDOoyJdgP9zctSS6Z1Zg==
+X-Received: by 2002:a17:907:7f0d:b0:974:9aa9:be3 with SMTP id
+ qf13-20020a1709077f0d00b009749aa90be3mr7536286ejc.28.1686481216326; 
+ Sun, 11 Jun 2023 04:00:16 -0700 (PDT)
+Received: from archlinux.. (ip5f5bd7c0.dynamic.kabel-deutschland.de.
+ [95.91.215.192]) by smtp.gmail.com with ESMTPSA id
+ n11-20020a1709062bcb00b00977eec7b7e8sm3708411ejg.68.2023.06.11.04.00.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 11 Jun 2023 04:00:15 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Artyom Tarasenko <atar4qemu@gmail.com>,
+ BALATON Zoltan <balaton@eik.bme.hu>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH 0/2] Export struct ISAParallelState
+Date: Sun, 11 Jun 2023 13:00:06 +0200
+Message-ID: <20230611110008.32638-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.41.0
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PULL 00/16] trivial patches 2023-06-10
-Content-Language: en-US
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <cover.1686379708.git.mjt@tls.msk.ru>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <cover.1686379708.git.mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x434.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x536.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -85,46 +88,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Jun 2023 15:44:49 -0000
+X-List-Received-Date: Sun, 11 Jun 2023 11:00:21 -0000
 
-On 6/9/23 23:57, Michael Tokarev wrote:
-> Hi here!
-> 
-> This is my first pullreq in quite some years.
-> 
-> It looks like there has been quite some trivial patches which were forgotten,
-> so I thought I'd give it a shot at least.
-> 
-> And since I haven't done a PR in a while, I basically forgot how to do it
-> properly :)
-> 
-> Please note: there are 2 patches in there which are*not*  reviewed.  Being
-> a trivial-patch collection, they're "obviously correct", - namely these are
-> spelling fixes ("information") and adding comments in linux-user/syscall.c.
-> If that's not okay, let's remove these 2 changes and apply the rest.
-> 
-> Thanks,
-> 
-> /mjt
-> 
-> The following changes since commit 5f9dd6a8ce3961db4ce47411ed2097ad88bdf5fc:
-> 
->    Merge tag 'pull-9p-20230608' ofhttps://github.com/cschoenebeck/qemu  into staging (2023-06-08 08:47:35 -0700)
-> 
-> are available in the Git repository at:
-> 
->    https://gitlab.com/mjt0k/qemu.git  tags/trivial-patches-20230610
-> 
-> for you to fetch changes up to e928907105cfeb48b68cedce232bbd4784536707:
-> 
->    linux-user: elfload: Specify -R is an option for qemu-user binaries (2023-06-10 09:40:46 +0300)
-> 
-> ----------------------------------------------------------------
-> trivial-patches-20230610
-
-Applied, thanks.  Please update https://wiki.qemu.org/ChangeLog/8.1 as appropriate.
-
-
-r~
-
+This series incorporates rebased versions of the ISAParallelState patches o=
+f=0D
+[1] as requested by Mark.=0D
+=0D
+Changes since [1]:=0D
+* Don't export register definitions (Phil)=0D
+* Rephrase commit message of second patch (Zoltan)=0D
+=0D
+[1] https://patchew.org/QEMU/20230521123049.312349-1-shentey@gmail.com/=0D
+=0D
+Bernhard Beschow (2):=0D
+  hw/char/parallel: Export struct ParallelState=0D
+  hw/char/parallel-isa: Export struct ISAParallelState=0D
+=0D
+ include/hw/char/parallel-isa.h | 46 ++++++++++++++++++++++++++++++++++=0D
+ include/hw/char/parallel.h     | 21 +++++++++++++++-=0D
+ hw/char/parallel-isa.c         |  1 +=0D
+ hw/char/parallel.c             | 32 +----------------------=0D
+ hw/i386/pc_piix.c              |  2 +-=0D
+ hw/i386/pc_q35.c               |  2 +-=0D
+ hw/isa/isa-superio.c           |  1 +=0D
+ hw/sparc64/sun4u.c             |  2 +-=0D
+ 8 files changed, 72 insertions(+), 35 deletions(-)=0D
+ create mode 100644 include/hw/char/parallel-isa.h=0D
+=0D
+-- =0D
+2.41.0=0D
+=0D
 
