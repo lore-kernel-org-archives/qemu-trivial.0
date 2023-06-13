@@ -1,82 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q90Un-0005dj-4i
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Jun 2023 05:39:25 -0400
+	id 1q90Xy-0006A4-Ec
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Jun 2023 05:42:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q90Ul-0005dB-4i
- for qemu-trivial@nongnu.org; Tue, 13 Jun 2023 05:39:23 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q90Xx-00068p-0e
+ for qemu-trivial@nongnu.org; Tue, 13 Jun 2023 05:42:41 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q90Ud-0005cN-Qk
- for qemu-trivial@nongnu.org; Tue, 13 Jun 2023 05:39:22 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-970028cfb6cso956707366b.1
- for <qemu-trivial@nongnu.org>; Tue, 13 Jun 2023 02:39:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q90Xu-0006GT-Di
+ for qemu-trivial@nongnu.org; Tue, 13 Jun 2023 05:42:40 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-977d0ee1736so758317166b.0
+ for <qemu-trivial@nongnu.org>; Tue, 13 Jun 2023 02:42:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686649153; x=1689241153;
+ d=linaro.org; s=google; t=1686649356; x=1689241356;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=NnrkfrminigaNKM7E3gR4tjgM3utFGWexpe+tZUxR6k=;
- b=pLOENij/HzNMCoxO1Kg9bARaNlGRJmK+xTDOrvMinW+BIa8mTT9zt8wpeS2gXaoqiI
- kl2I9+htktWuoqfOVSHot7sQUA4gVgxlDB/suRawP6JGaayanVL+rLoMnHMVfd38rbbV
- pUaV5rLFBL96pFmqLQJLJgCOCv+NMOANp3uAYlbGp4CmaRpB0AbnEW58/C7d7oanmbSb
- Sp6TpjHOpxGZqTy5JSD/8GaepjLQ2YIYbzfJ2+AF0csElPKKwRqH3Ud5jlPCajlJ5TMM
- 2M0dTGn4EVzIWnX5jsa6Njdj4c/hZcSDJVHR8qYoUPWwuOd/esTfDmQeDZxYl+9+rW0F
- X2pQ==
+ bh=QZrSbjS8RmVzW2fTCaSxM9/4oBvnEQ3KsZdf4odoGvk=;
+ b=dkREofThKfbGzZpQBLg0/WixVDcJkno8ZYlCvkpnFFzYzfw7NUlxdmnkv5UmqblNCW
+ 2g+co8E+Xkk+mTx56DYPOr9HS80BQkiu30UITnpsWPg5pFThU74t+qDkBVkQG97J++1w
+ d0/7lp0QgJnlob9LqzyUhjS3XJzFv4FobHvF/X9zQ5NiHdAH+tgwjwdAlvgOLpwCfzrz
+ S8JCP/dYvCPKrTlB/P1CgW6W+wtU479Rf3Gux0ZVh/iWqnd1GX3XTaqPmY208uBkOt83
+ EqDJ/La7CraVaKsZkdYehsK0iWIgM29GAgQ8mwY5SNEpQbEPRzFOGqW/c/pXn3A7XJQe
+ ToFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686649153; x=1689241153;
+ d=1e100.net; s=20221208; t=1686649356; x=1689241356;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=NnrkfrminigaNKM7E3gR4tjgM3utFGWexpe+tZUxR6k=;
- b=UVMS0orY7jx88lIZo51+N3aYZgSenkMpNd0+jSBaaF1M04fpitnWBq/pMfeYhwjMQy
- qJgdyQHRInolF+Aavi64MOeCJJ6+tpVL9PrOYzv/qWTT5GstunBYpWNVC0zAEL7pwl5D
- nCsxXdgTBuBfiD5UnGHX7ewbzr0kiEDnGXZ2KvvFa0J67Ih8x+KMsQseab9R+eDpaa3+
- PZZNx02dl4hkfSKydQARR/wQjtS07pzB6tuWHk9jot4GL36u5/rzYsyjzk/lj4Dc92JK
- iCJhVHgZQmHVx0/z7vpNYA6Uxddfmod2LAcWxfqNeuc2OA1vYb0CCunx9ivLiDknwNxW
- Vr2A==
-X-Gm-Message-State: AC+VfDwQun0IngJYcH6+QyLqF77sa7z1vbtvg1PTTMKi70ecEthfoKRv
- Q7RBfRA2SBDmdo/W4oL8Vs48sfoY9aQpSfwM/fRJ9A==
-X-Google-Smtp-Source: ACHHUZ4Pn0TOoTixQm4NDaBtehAH1yNGnXXHgm24Pd1daXRnjlD3qGNqXsqiUKZ7n/ezdraNcol7rA==
-X-Received: by 2002:a2e:a165:0:b0:2ae:e214:482f with SMTP id
- u5-20020a2ea165000000b002aee214482fmr4235888ljl.52.1686648727615; 
- Tue, 13 Jun 2023 02:32:07 -0700 (PDT)
+ bh=QZrSbjS8RmVzW2fTCaSxM9/4oBvnEQ3KsZdf4odoGvk=;
+ b=ZYsgLALrhewNA/oN85/T0gQfnwab4eWr6r9m8rZmlv7hi8ZfJaBXEc7m5Xv/Zhvrwv
+ zXJI1nU5vf/Cvfvgs5HImhM4ZEX85Qxx1wrkDT3gQORsZYHt3CO+RDLqHtO/VE+vgYCM
+ UD+vLg0rtOusDyZdy9cp+7N6CstIDbnOPG1PJUfTFvEYWgi1BZpFxIiUVyEzlj2vUTny
+ snVY0MN8OawZlW8mcw+PBKjqndKSCQQqwsx53ZRFP21XMIxY1ImH6CzMTUwMIb1gucAr
+ FIVVsSQqS3q2fwD5HTgfAc3DgoxovcazCxgjr4MQEgmV17Q2MKy7YFYNtqSbZbeb8MrE
+ ifVQ==
+X-Gm-Message-State: AC+VfDyhA9CLfGQNPT9FoNOvVOXUgPJ3TpnoP63F8UqStVaTc+GnP2/W
+ sNeYp9TNwiDqhRHJSPbabgyC1g==
+X-Google-Smtp-Source: ACHHUZ6ey5zZ3bmJ3LCqAmwiVtJ2aS52pmca3U7sKwaqzB7lPHKlGzdGenPx51HJrYBinMK5+VW0Xg==
+X-Received: by 2002:a17:906:7947:b0:969:e95e:e4f3 with SMTP id
+ l7-20020a170906794700b00969e95ee4f3mr12231431ejo.55.1686649356004; 
+ Tue, 13 Jun 2023 02:42:36 -0700 (PDT)
 Received: from [10.10.0.115] ([185.140.244.249])
  by smtp.gmail.com with ESMTPSA id
- i13-20020a50fc0d000000b0050bc6d0e880sm6115842edr.61.2023.06.13.02.32.06
+ k19-20020a170906129300b0097381fe7aaasm6373690ejb.180.2023.06.13.02.42.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Jun 2023 02:32:07 -0700 (PDT)
-Message-ID: <c664a85d-393c-0190-9a57-8ee9bb81cf35@linaro.org>
-Date: Tue, 13 Jun 2023 11:32:06 +0200
+ Tue, 13 Jun 2023 02:42:35 -0700 (PDT)
+Message-ID: <8a247db0-9072-cd80-fcea-4d89a1a4a6de@linaro.org>
+Date: Tue, 13 Jun 2023 11:42:34 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.11.2
-Subject: Re: [PATCH v2 0/2] Export struct ISAParallelState
+Subject: Re: Fwd: QEMU AVR Patch - Correct handling of AVR interrupts
 Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-trivial@nongnu.org,
- Artyom Tarasenko <atar4qemu@gmail.com>
-References: <20230612081238.1742-1-shentey@gmail.com>
+To: Adecy <ld.adecy@gmail.com>
+Cc: qemu-devel@nongnu.org, mrolnik@gmail.com, qemu-trivial@nongnu.org
+References: <CAB295yB5cFSZpGE74EW5hDMSNGnZfw06UC5ydepUL0sdT96WGg@mail.gmail.com>
+ <CAB295yAzhzPpKC7KtpKk6t6x4Dn7Bpam=Nwfx8z0wAkZRP-JSg@mail.gmail.com>
+ <268c1ca3-409f-bc43-0e88-c32f1eae71f9@linaro.org>
+ <CAB295yBBgRcUdBsP+DDiZU_WZAihdn8LQE_BAyHC=QRonHS8Sw@mail.gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230612081238.1742-1-shentey@gmail.com>
+In-Reply-To: <CAB295yBBgRcUdBsP+DDiZU_WZAihdn8LQE_BAyHC=QRonHS8Sw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x629.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.096,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,16 +85,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Jun 2023 09:39:23 -0000
+X-List-Received-Date: Tue, 13 Jun 2023 09:42:41 -0000
 
-On 12/6/23 10:12, Bernhard Beschow wrote:
-> This series incorporates rebased versions of the ISAParallelState patches of
-> [1] as requested by Mark.
+On 12/6/23 19:08, Adecy wrote:
+> Hello Phil,
+> 
+> I believe I have resolved the problem.
+> 
+> However, I didn't managed to make git send-email work yet. So please 
+> find the patch attached.
 
-> Bernhard Beschow (2):
->    hw/char/parallel: Export struct ParallelState
->    hw/char/parallel-isa: Export struct ISAParallelState
-
-Thanks, queued (updating MAINTAINERS in patch 2).
+Maybe sourcehut will be easier, its setup is well documented, see:
+https://www.qemu.org/docs/master/devel/submitting-a-patch.html#if-you-cannot-send-patch-emails
 
 
