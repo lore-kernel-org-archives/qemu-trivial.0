@@ -1,70 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q8msw-0003uJ-WC
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Jun 2023 15:07:27 -0400
+	id 1q8zIt-0005Bx-Il
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Jun 2023 04:23:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q8msu-0003pk-Jl; Mon, 12 Jun 2023 15:07:24 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q8mss-0000mM-1O; Mon, 12 Jun 2023 15:07:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=zKBWPFcKe/S1cIOaZb7Cs+Th8+MuEqDvGePqW+VvoDk=; b=oR+konLBcEbFgx6IBy0f04mEGg
- 3VBtjPEwJrB/TiSRVzEG52Ea4pAP3rQCC7NfPF6WGtK4xL1oFm2B8CUaJ1DTzdkhRQsdwPI3UYHeh
- HfLuaeToVSE3NEcUlGhR8daXzZuuO3u5FOEV2olfoE/wRXuv7ji0pP+hB+/BJASQM7NoEZZx2905c
- 5drW4ez2OEKb1nifIOw04cJ2If/JcTBvZd0xnWyQqf+NrnpHz0ECpbxb6UmH520llGnTQB5qUqBNW
- vm+3F33JB4vFbtsg1haxMcdKcdzEI6JMBjEifN+bQepCWNTH/w49txlDKTloEvVrBkvNBAav9Ggwn
- GHC6JkpBOMPNHfcMxtNcMdArnd+vVOsPdFmkYlDoobxD59+nuaujGxpxphJSJKLrEbVU2YnhLrr0E
- 8v744/Kv0XJx48UhoiHUoOI4T+Q0hze20hPRCvQHOscc0NqkvvFCWjXE4FMBYfy85AQ1DSzhPqQPX
- AdnDg7uuT8hXlsBf0p1ZGXbHywIIW/AE2rBPBhH+zGutAsnnvebdb0Cikn7J8LDRo32tdTnkqncpA
- GD4EjMi8Bmn206F6rTRmvAltCEpQdO8BBk83S4I03ceEV89P/4BY8QwUPs5UmkK1x9/iJz/SZOz6V
- GAyqEqoupUGUvEMsZT24gH4KgERLlBT296KcoRx+I=;
-Received: from [2a00:23c4:8bac:6900:b726:cf58:4c12:f013]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1q8mse-0009Jt-40; Mon, 12 Jun 2023 20:07:12 +0100
-Message-ID: <138a3e15-604b-7ea9-20ef-202c0d426f58@ilande.co.uk>
-Date: Mon, 12 Jun 2023 20:07:09 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8zIo-0005BE-Ir
+ for qemu-trivial@nongnu.org; Tue, 13 Jun 2023 04:22:58 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8zIm-0000NV-Tx
+ for qemu-trivial@nongnu.org; Tue, 13 Jun 2023 04:22:58 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-9786fc23505so768423066b.2
+ for <qemu-trivial@nongnu.org>; Tue, 13 Jun 2023 01:22:55 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1686644574; x=1689236574;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=7BW7xFLMLLmJrE+t3oSXmltAKMBD+9lAfZCZ8Bj9m08=;
+ b=DxVLDRc+azjKu8vRFQudTwsierb9J/QBHJjoyWn0308Hpfzt0cThR1xIdHFbF6AY+I
+ EXHcqwBDMePK89VSr94t/zilcJQsnlJf/qskq9Cp4z5gw1PB7xpYuNvOC1R/aizR7qBN
+ x5YuIT8ZTn9MVkjo1RWPyyOJ7SviAgoEPYrkGOC/tbG6bGkF8bckcv83cTElH59LH2zq
+ KbciP75L0W8EOtGEJnE2LIfO4zgyXTofky8FSGOAtWtADywiPGEeSWmEavUaH/raycv3
+ HybtCuxlS5MeZ8DHmLwMk4How8O5FCSFlb3F/80OaPxNeEkPceysYs0s12p+me3zHKAj
+ FPnA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1686644574; x=1689236574;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=7BW7xFLMLLmJrE+t3oSXmltAKMBD+9lAfZCZ8Bj9m08=;
+ b=Uy6ICKMgeQZrfMndp/jk8iIOrU2svLsDvQ9655lvfUnSCYHEKjWT7ipDmMfJIVwpjj
+ gsj4/Rc7NORgOyngep4cLh1IBrunp46mkP38Ql3dvbk8VyZwCsYqnxZuXeNX+nNw/tdF
+ o3NgvMXVFzV6ayDNMpdWClDspbcBOWk6DxhDLchEJweCHhO++ge7ZIg1KAweYQSdX/nJ
+ rYjHyvUVmF30TBlWXWoe2fO/ri3H56LJSUQ2HwVAzQEsxta0H+cuRh02Dc9BLyhidi2F
+ iModqDgGct73yh2WQ/1mbhg8vAAuolDajwzw5u9xnEyyZQA/ksb/f0suA4L3w0L9Ip3W
+ s91A==
+X-Gm-Message-State: AC+VfDw0RcnvHxjgRo28xfCkGFwzbfKRqtpzWMM7BwfjsqOW7ZORScUt
+ moThkbPldIzuOLpvbIcFh71NFQ==
+X-Google-Smtp-Source: ACHHUZ4afG/BujjBldqEZ2J34xUCPJIk4ETWHGQjihylBpbtDTjjcFBFluYKRl0WVeaAWnUME+iuCg==
+X-Received: by 2002:a17:907:9281:b0:962:46d7:c8fc with SMTP id
+ bw1-20020a170907928100b0096246d7c8fcmr11461411ejc.21.1686644574370; 
+ Tue, 13 Jun 2023 01:22:54 -0700 (PDT)
+Received: from [10.10.0.115] ([185.140.244.249])
+ by smtp.gmail.com with ESMTPSA id
+ o7-20020a170906358700b00969cbd5718asm6223234ejb.48.2023.06.13.01.22.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 13 Jun 2023 01:22:53 -0700 (PDT)
+Message-ID: <960a7253-8c14-a349-0a1c-d7b1f0a7405e@linaro.org>
+Date: Tue, 13 Jun 2023 10:22:53 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.10.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.11.2
+Subject: Re: [PATCH v2 0/2] Export struct ISAParallelState
 Content-Language: en-US
-To: BALATON Zoltan <balaton@eik.bme.hu>, Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
- <marcandre.lureau@redhat.com>, qemu-trivial@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin"
- <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Artyom Tarasenko <atar4qemu@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>
-References: <20230611110008.32638-1-shentey@gmail.com>
- <20230611110008.32638-3-shentey@gmail.com>
- <229b5f39-2a3e-e47b-5269-9ae2c43492ae@eik.bme.hu>
- <F47D47A6-B68A-46E7-BF36-C6447AC8E4CD@gmail.com>
- <24583ff5-542b-d645-378d-ce6a7b4affb7@eik.bme.hu>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-In-Reply-To: <24583ff5-542b-d645-378d-ce6a7b4affb7@eik.bme.hu>
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, BALATON Zoltan <balaton@eik.bme.hu>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-trivial@nongnu.org,
+ Artyom Tarasenko <atar4qemu@gmail.com>
+References: <20230612081238.1742-1-shentey@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230612081238.1742-1-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bac:6900:b726:cf58:4c12:f013
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH 2/2] hw/char/parallel-isa: Export struct ISAParallelState
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.096,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,51 +89,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Jun 2023 19:07:25 -0000
+X-List-Received-Date: Tue, 13 Jun 2023 08:22:59 -0000
 
-On 12/06/2023 11:06, BALATON Zoltan wrote:
+On 12/6/23 10:12, Bernhard Beschow wrote:
+> This series incorporates rebased versions of the ISAParallelState patches of
+> [1] as requested by Mark.
 
-> On Mon, 12 Jun 2023, Bernhard Beschow wrote:
->> Am 11. Juni 2023 13:15:58 UTC schrieb BALATON Zoltan <balaton@eik.bme.hu>:
->>> On Sun, 11 Jun 2023, Bernhard Beschow wrote:
->>>> Allows the struct to be embedded directly into device models without additional
->>>> allocation.
->>>>
->>>> Suggested-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
->>>
->>> Patches missing SoB, checkpatch should have cought this.
->>
->> Thanks for catching again. Fixed in v2.
->>
->>>
->>> I don't see any of the machines or device models actually embedding 
->>> ISAParallelState or ParallelState so don't know what this patch is trying to 
->>> achieve. Please post the whole series with the patches that this is a preparation 
->>> for so we can se where this leads.
->>
->> No further plans from my side.
-> 
-> Then IMO these patches are not needed. Keeping the struct definitions in parallel.c 
-> ensures they are not accessed by anything else and keeps the object encapsulation. I 
-> don't see a point for moving the defs to a header if nothing wants to use them. This 
-> is done for other devices to allow them to be embedded in other devices but if that's 
-> not the case here then why this series? (The TYPE_ISA_PARALLEL #define seems to be 
-> already in include/hw/chsr/parallel.h so if you only want to use that like in the 
-> series you've referenced in the cover letter then that can be done without these 
-> patches.)
+> Bernhard Beschow (2):
+>    hw/char/parallel: Export struct ParallelState
+>    hw/char/parallel-isa: Export struct ISAParallelState
 
-The TYPE_ISA_PARALLEL constant was only moved there in commit 963e94a97b 
-("hw/char/parallel: Move TYPE_ISA_PARALLEL to the header file") but having each 
-separate type defined in its own file is how we've done things for some time: there 
-is nothing new here.
-
-In particular it is done this way so that ParallelState could be used on a non-ISA 
-bus, and to allow users who are security conscious to compile out particular devices 
-as needed.
-
-
-ATB,
-
-Mark.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
