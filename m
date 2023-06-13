@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q8zIt-0005Bx-Il
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Jun 2023 04:23:03 -0400
+	id 1q90Un-0005dj-4i
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Jun 2023 05:39:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8zIo-0005BE-Ir
- for qemu-trivial@nongnu.org; Tue, 13 Jun 2023 04:22:58 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q90Ul-0005dB-4i
+ for qemu-trivial@nongnu.org; Tue, 13 Jun 2023 05:39:23 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q8zIm-0000NV-Tx
- for qemu-trivial@nongnu.org; Tue, 13 Jun 2023 04:22:58 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-9786fc23505so768423066b.2
- for <qemu-trivial@nongnu.org>; Tue, 13 Jun 2023 01:22:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q90Ud-0005cN-Qk
+ for qemu-trivial@nongnu.org; Tue, 13 Jun 2023 05:39:22 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-970028cfb6cso956707366b.1
+ for <qemu-trivial@nongnu.org>; Tue, 13 Jun 2023 02:39:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686644574; x=1689236574;
+ d=linaro.org; s=google; t=1686649153; x=1689241153;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=7BW7xFLMLLmJrE+t3oSXmltAKMBD+9lAfZCZ8Bj9m08=;
- b=DxVLDRc+azjKu8vRFQudTwsierb9J/QBHJjoyWn0308Hpfzt0cThR1xIdHFbF6AY+I
- EXHcqwBDMePK89VSr94t/zilcJQsnlJf/qskq9Cp4z5gw1PB7xpYuNvOC1R/aizR7qBN
- x5YuIT8ZTn9MVkjo1RWPyyOJ7SviAgoEPYrkGOC/tbG6bGkF8bckcv83cTElH59LH2zq
- KbciP75L0W8EOtGEJnE2LIfO4zgyXTofky8FSGOAtWtADywiPGEeSWmEavUaH/raycv3
- HybtCuxlS5MeZ8DHmLwMk4How8O5FCSFlb3F/80OaPxNeEkPceysYs0s12p+me3zHKAj
- FPnA==
+ bh=NnrkfrminigaNKM7E3gR4tjgM3utFGWexpe+tZUxR6k=;
+ b=pLOENij/HzNMCoxO1Kg9bARaNlGRJmK+xTDOrvMinW+BIa8mTT9zt8wpeS2gXaoqiI
+ kl2I9+htktWuoqfOVSHot7sQUA4gVgxlDB/suRawP6JGaayanVL+rLoMnHMVfd38rbbV
+ pUaV5rLFBL96pFmqLQJLJgCOCv+NMOANp3uAYlbGp4CmaRpB0AbnEW58/C7d7oanmbSb
+ Sp6TpjHOpxGZqTy5JSD/8GaepjLQ2YIYbzfJ2+AF0csElPKKwRqH3Ud5jlPCajlJ5TMM
+ 2M0dTGn4EVzIWnX5jsa6Njdj4c/hZcSDJVHR8qYoUPWwuOd/esTfDmQeDZxYl+9+rW0F
+ X2pQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686644574; x=1689236574;
+ d=1e100.net; s=20221208; t=1686649153; x=1689241153;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7BW7xFLMLLmJrE+t3oSXmltAKMBD+9lAfZCZ8Bj9m08=;
- b=Uy6ICKMgeQZrfMndp/jk8iIOrU2svLsDvQ9655lvfUnSCYHEKjWT7ipDmMfJIVwpjj
- gsj4/Rc7NORgOyngep4cLh1IBrunp46mkP38Ql3dvbk8VyZwCsYqnxZuXeNX+nNw/tdF
- o3NgvMXVFzV6ayDNMpdWClDspbcBOWk6DxhDLchEJweCHhO++ge7ZIg1KAweYQSdX/nJ
- rYjHyvUVmF30TBlWXWoe2fO/ri3H56LJSUQ2HwVAzQEsxta0H+cuRh02Dc9BLyhidi2F
- iModqDgGct73yh2WQ/1mbhg8vAAuolDajwzw5u9xnEyyZQA/ksb/f0suA4L3w0L9Ip3W
- s91A==
-X-Gm-Message-State: AC+VfDw0RcnvHxjgRo28xfCkGFwzbfKRqtpzWMM7BwfjsqOW7ZORScUt
- moThkbPldIzuOLpvbIcFh71NFQ==
-X-Google-Smtp-Source: ACHHUZ4afG/BujjBldqEZ2J34xUCPJIk4ETWHGQjihylBpbtDTjjcFBFluYKRl0WVeaAWnUME+iuCg==
-X-Received: by 2002:a17:907:9281:b0:962:46d7:c8fc with SMTP id
- bw1-20020a170907928100b0096246d7c8fcmr11461411ejc.21.1686644574370; 
- Tue, 13 Jun 2023 01:22:54 -0700 (PDT)
+ bh=NnrkfrminigaNKM7E3gR4tjgM3utFGWexpe+tZUxR6k=;
+ b=UVMS0orY7jx88lIZo51+N3aYZgSenkMpNd0+jSBaaF1M04fpitnWBq/pMfeYhwjMQy
+ qJgdyQHRInolF+Aavi64MOeCJJ6+tpVL9PrOYzv/qWTT5GstunBYpWNVC0zAEL7pwl5D
+ nCsxXdgTBuBfiD5UnGHX7ewbzr0kiEDnGXZ2KvvFa0J67Ih8x+KMsQseab9R+eDpaa3+
+ PZZNx02dl4hkfSKydQARR/wQjtS07pzB6tuWHk9jot4GL36u5/rzYsyjzk/lj4Dc92JK
+ iCJhVHgZQmHVx0/z7vpNYA6Uxddfmod2LAcWxfqNeuc2OA1vYb0CCunx9ivLiDknwNxW
+ Vr2A==
+X-Gm-Message-State: AC+VfDwQun0IngJYcH6+QyLqF77sa7z1vbtvg1PTTMKi70ecEthfoKRv
+ Q7RBfRA2SBDmdo/W4oL8Vs48sfoY9aQpSfwM/fRJ9A==
+X-Google-Smtp-Source: ACHHUZ4Pn0TOoTixQm4NDaBtehAH1yNGnXXHgm24Pd1daXRnjlD3qGNqXsqiUKZ7n/ezdraNcol7rA==
+X-Received: by 2002:a2e:a165:0:b0:2ae:e214:482f with SMTP id
+ u5-20020a2ea165000000b002aee214482fmr4235888ljl.52.1686648727615; 
+ Tue, 13 Jun 2023 02:32:07 -0700 (PDT)
 Received: from [10.10.0.115] ([185.140.244.249])
  by smtp.gmail.com with ESMTPSA id
- o7-20020a170906358700b00969cbd5718asm6223234ejb.48.2023.06.13.01.22.53
+ i13-20020a50fc0d000000b0050bc6d0e880sm6115842edr.61.2023.06.13.02.32.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Jun 2023 01:22:53 -0700 (PDT)
-Message-ID: <960a7253-8c14-a349-0a1c-d7b1f0a7405e@linaro.org>
-Date: Tue, 13 Jun 2023 10:22:53 +0200
+ Tue, 13 Jun 2023 02:32:07 -0700 (PDT)
+Message-ID: <c664a85d-393c-0190-9a57-8ee9bb81cf35@linaro.org>
+Date: Tue, 13 Jun 2023 11:32:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.11.2
@@ -67,9 +67,9 @@ References: <20230612081238.1742-1-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
 In-Reply-To: <20230612081238.1742-1-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
@@ -89,7 +89,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Jun 2023 08:22:59 -0000
+X-List-Received-Date: Tue, 13 Jun 2023 09:39:23 -0000
 
 On 12/6/23 10:12, Bernhard Beschow wrote:
 > This series incorporates rebased versions of the ISAParallelState patches of
@@ -99,6 +99,6 @@ On 12/6/23 10:12, Bernhard Beschow wrote:
 >    hw/char/parallel: Export struct ParallelState
 >    hw/char/parallel-isa: Export struct ISAParallelState
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Thanks, queued (updating MAINTAINERS in patch 2).
 
 
