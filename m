@@ -1,77 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q9IBf-00034e-5K
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Jun 2023 00:32:51 -0400
+	id 1q9PLT-0005qg-3m
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Jun 2023 08:11:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q9IBc-000347-Sn
- for qemu-trivial@nongnu.org; Wed, 14 Jun 2023 00:32:48 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <ld.adecy@gmail.com>)
+ id 1q9PLR-0005oc-7t; Wed, 14 Jun 2023 08:11:25 -0400
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1q9IBa-00017K-M2
- for qemu-trivial@nongnu.org; Wed, 14 Jun 2023 00:32:48 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-31109cd8d8cso130474f8f.2
- for <qemu-trivial@nongnu.org>; Tue, 13 Jun 2023 21:32:45 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ld.adecy@gmail.com>)
+ id 1q9PLP-0004WD-JW; Wed, 14 Jun 2023 08:11:24 -0400
+Received: by mail-lf1-x12e.google.com with SMTP id
+ 2adb3069b0e04-4f62cf9755eso8332176e87.1; 
+ Wed, 14 Jun 2023 05:11:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686717164; x=1689309164;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=yzejSnTugRMRaHNWGD6Unp0zRAuHslT4snDxbcb0Za8=;
- b=lZdOfcGz7uLxq0gdYhVyQ8Sr3rdPSXK6NFTvYWPxl+k/GLnfbuVVt7FG1PxgRBMqAa
- lR8j1ZkkHyo6VIG5sOcJBWRDXgGmlL7fJv3V6Z7ee6KSKyxIMN2UZG0B/F2q6cqgvgX5
- crTRTtxKZ5BlWIjJQbNPlPGrHO/aF5o3/3Xk0CWjCY61AR4yiYZtHvopWxY8vIjiPenh
- o7O916nCmzWQsTpmLDEBAGAnlDR2l/ETbRxndz0997nHTHihXBTc+ORBkuSz3UU2CklW
- /thSeLc6UQQdUQuIv/RBtT1eKt4A/HIf0HL8G/7jwdybqpOGCUtW87Vve1POsuLbEwoe
- Sx9w==
+ d=gmail.com; s=20221208; t=1686744681; x=1689336681;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=TcpuyNo7Cj05QxClzlMTZ9fXRZkmmq8aHpB9ZFFXheo=;
+ b=RJ52bJ90toDQXXwyzrh9atFfl/gRDgl8IbsqG1kZFny7tNtIvQhIx980BbVBFMaXxb
+ CfV2l8QYSDZFMit3RF/TCJaHlDQQQwbA6YYwqSytkIt+NRTheJeX/Brs4FqFK7X0wtjO
+ BLC00o8S/u2XOgHgFMOXsk1kRnGsGbd80/JFXNOu1fAFcUYpecZrr23ZsYfAK9VwYGhj
+ iZzyPf1NlwzG9aNlqadyHknB3sc+5yvGqTX7zApS4RvmMGKKwLuEwEuQF3Qj4fSKxL86
+ dSFROr1+iLCUdQCkiWfxQ09XiWJrHi4/M58AYVQHfx2nR+YXQ4iyM5hlH08Z3LM6IgDr
+ 0oqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686717164; x=1689309164;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=yzejSnTugRMRaHNWGD6Unp0zRAuHslT4snDxbcb0Za8=;
- b=MRLdnMxfJ+E8nyIxqNSKpmNIzfXRzqgY3Tfrlg32ba7CTfzNnAd5S7R6djqZ+2N7sz
- npyc6t3d8Ud1i/oYk9JF+1ttPKF8TzTFa/dioMGgM6Kw6OFTcFKeWRuH6dDv4/hjtLJ5
- lzfFc+GZ0L0qtu4tDjWPleFEH9DXNm8usVDIwWnVkcH7DYv1gUXEvPVd7ym6yDGgdPzD
- XtXymmNHTNBPKccCkFmgeZ3Dl2JShrBfVzdAZfM/4g6G5riSOyyfAEKHswjmfJ9RH3dw
- c5Hfmlf4OV5N8+WWlO1uczeDGr6iycsIi3mO129DtIFALkbVTKMjvnGzWSWyTSu5Wyd5
- w6+Q==
-X-Gm-Message-State: AC+VfDxbHOz6OzQkMWTFMET4GbQ2CfBfeOgX80WR6MrdgUPPDtlzJ1jz
- WuNsI8pyaaPxHnwz+fW9c3LWJA==
-X-Google-Smtp-Source: ACHHUZ5Gh7d6o4mX5Z5873/DtzTIK5KcOOQiIQesKC4ubfgxvtE4rqun7/uF5QyfrZZJGbPsey4+3g==
-X-Received: by 2002:adf:f385:0:b0:30f:cf93:4bb8 with SMTP id
- m5-20020adff385000000b0030fcf934bb8mr2412685wro.57.1686717164001; 
- Tue, 13 Jun 2023 21:32:44 -0700 (PDT)
-Received: from [192.168.4.112] (90-182-62-66.rcp.o2.cz. [90.182.62.66])
- by smtp.gmail.com with ESMTPSA id
- m1-20020a5d4a01000000b003062ad45243sm17039054wrq.14.2023.06.13.21.32.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Jun 2023 21:32:43 -0700 (PDT)
-Message-ID: <341999c5-2cac-7f25-441c-0e5bd9db4ee4@linaro.org>
-Date: Wed, 14 Jun 2023 06:32:41 +0200
+ d=1e100.net; s=20221208; t=1686744681; x=1689336681;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=TcpuyNo7Cj05QxClzlMTZ9fXRZkmmq8aHpB9ZFFXheo=;
+ b=Bz9oG7R52uehBmWiAJzbuVlUipQI2/lNmtzMaVrkg6m8upJ7iQMr6AG1oWOmC9FxDI
+ +F6zH0It12o1bKfkBB7umYBHZbNMfKAYeFUhxgkN62Nhv90H1JB3mU1zeH6bG6P/Dw7J
+ ycXB2kkonHNCuJzynw6FhbCtf2Pv1rU0ixQYCrScHGaUcrAavG1RmtlCRbpbtC9hZ2KX
+ VPQXOC/KXJ+RxLGyVGL79xcEJNcJODqlUGcYncyjJWrhqA0Q/nV12UStiAsJHVc9XXMU
+ Wtyfcx4GMaMTNLCVxgPNKY9mbibuzXNdrEp1RJlZtAqx02deLihVsxVK7FLHpu+nly84
+ DcOA==
+X-Gm-Message-State: AC+VfDwZjEcVUrULu6F0FJVOdA9fXEyNe9YIFl4gzdmygFbyn1JarSoA
+ Ss/qJbZ6IpXriU/4BAz5v6Y=
+X-Google-Smtp-Source: ACHHUZ7GO84e6JB9dBeo+QAT/FDl33GKDC03xc0UVJnwW6VAYC4ZVZzZIBMdiCdjSWr9QmFAElusOw==
+X-Received: by 2002:a2e:b0e2:0:b0:2b1:a8bb:99ab with SMTP id
+ h2-20020a2eb0e2000000b002b1a8bb99abmr6310911ljl.19.1686744681245; 
+ Wed, 14 Jun 2023 05:11:21 -0700 (PDT)
+Received: from fedora.local.lan (aamiens-551-1-4-122.w92-131.abo.wanadoo.fr.
+ [92.131.75.122]) by smtp.gmail.com with ESMTPSA id
+ a11-20020a05600c224b00b003f8126bcf34sm12918570wmm.48.2023.06.14.05.11.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 14 Jun 2023 05:11:20 -0700 (PDT)
+From: Lucas Dietrich <ld.adecy@gmail.com>
+To: philmd@linaro.org
+Cc: qemu-devel@nongnu.org, mrolnik@gmail.com, qemu-trivial@nongnu.org,
+ Lucas Dietrich <ld.adecy@gmail.com>
+Subject: [PATCH] Fix handling of AVR interrupts above 33.
+Date: Wed, 14 Jun 2023 16:07:49 +0200
+Message-Id: <20230614140748.3584-1-ld.adecy@gmail.com>
+X-Mailer: git-send-email 2.40.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Subject: Re: [PATCH] Fix handling of AVR interrupts above 33.
-Content-Language: en-US
-To: Lucas Dietrich <ld.adecy@gmail.com>, philmd@linaro.org
-Cc: qemu-devel@nongnu.org, mrolnik@gmail.com, qemu-trivial@nongnu.org
-References: <20230613193446.4372-1-ld.adecy@gmail.com>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20230613193446.4372-1-ld.adecy@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=richard.henderson@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
+ envelope-from=ld.adecy@gmail.com; helo=mail-lf1-x12e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.098,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,42 +77,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Jun 2023 04:32:49 -0000
+X-List-Received-Date: Wed, 14 Jun 2023 12:11:25 -0000
 
-On 6/13/23 21:34, Lucas Dietrich wrote:
-> This commit addresses a bug in the AVR interrupt handling code.
-> The modification involves replacing the usage of the ctz32 function
-> with ctz64 to ensure proper handling of interrupts above 33 in the AVR
-> target.
-> 
-> Previously, timers 3, 4, and 5 interrupts were not functioning correctly
-> because most of their interrupt vectors are numbered above 33.
-> 
-> Signed-off-by: Lucas Dietrich <ld.adecy@gmail.com>
+This commit addresses a bug in the AVR interrupt handling code.
+The modification involves replacing the usage of the ctz32 function
+with ctz64 to ensure proper handling of interrupts above 33 in the AVR
+target.
 
-The change to target/avr/ looks right, but you shouldn't have all the subproject changes.
+Previously, timers 3, 4, and 5 interrupts were not functioning correctly
+because most of their interrupt vectors are numbered above 33.
 
+Signed-off-by: Lucas Dietrich <ld.adecy@gmail.com>
+---
+ target/avr/helper.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-r~
-
-> ---
->   capstone                      | 1 +
->   dtc                           | 1 +
->   meson                         | 1 +
->   roms/sgabios                  | 1 +
->   slirp                         | 1 +
->   target/avr/helper.c           | 4 ++--
->   tests/fp/berkeley-softfloat-3 | 1 +
->   tests/fp/berkeley-testfloat-3 | 1 +
->   ui/keycodemapdb               | 1 +
->   9 files changed, 10 insertions(+), 2 deletions(-)
->   create mode 160000 capstone
->   create mode 160000 dtc
->   create mode 160000 meson
->   create mode 160000 roms/sgabios
->   create mode 160000 slirp
->   create mode 160000 tests/fp/berkeley-softfloat-3
->   create mode 160000 tests/fp/berkeley-testfloat-3
->   create mode 160000 ui/keycodemapdb
+diff --git a/target/avr/helper.c b/target/avr/helper.c
+index 2bad242a66..e6e7d51487 100644
+--- a/target/avr/helper.c
++++ b/target/avr/helper.c
+@@ -52,7 +52,7 @@ bool avr_cpu_exec_interrupt(CPUState *cs, int interrupt_request)
+     }
+     if (interrupt_request & CPU_INTERRUPT_HARD) {
+         if (cpu_interrupts_enabled(env) && env->intsrc != 0) {
+-            int index = ctz32(env->intsrc);
++            int index = ctz64(env->intsrc);
+             cs->exception_index = EXCP_INT(index);
+             avr_cpu_do_interrupt(cs);
+ 
+@@ -79,7 +79,7 @@ void avr_cpu_do_interrupt(CPUState *cs)
+     if (cs->exception_index == EXCP_RESET) {
+         vector = 0;
+     } else if (env->intsrc != 0) {
+-        vector = ctz32(env->intsrc) + 1;
++        vector = ctz64(env->intsrc) + 1;
+     }
+ 
+     if (avr_feature(env, AVR_FEATURE_3_BYTE_PC)) {
+-- 
+2.40.1
 
 
