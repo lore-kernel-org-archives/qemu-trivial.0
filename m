@@ -1,78 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1q9kBE-0001Fd-82
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Jun 2023 06:26:16 -0400
+	id 1q9n7T-00006P-Kl
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Jun 2023 09:34:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q9kB2-00014L-4s
- for qemu-trivial@nongnu.org; Thu, 15 Jun 2023 06:26:09 -0400
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1q9jBB-0003Gb-3a
+ for qemu-trivial@nongnu.org; Thu, 15 Jun 2023 05:22:09 -0400
+Received: from mail-ot1-x335.google.com ([2607:f8b0:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1q9kB0-000860-79
- for qemu-trivial@nongnu.org; Thu, 15 Jun 2023 06:26:03 -0400
-Received: by mail-lf1-x132.google.com with SMTP id
- 2adb3069b0e04-4f764e9295dso2928572e87.0
- for <qemu-trivial@nongnu.org>; Thu, 15 Jun 2023 03:26:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1q9jB8-0002dO-Le
+ for qemu-trivial@nongnu.org; Thu, 15 Jun 2023 05:22:08 -0400
+Received: by mail-ot1-x335.google.com with SMTP id
+ 46e09a7af769-6b2b7ca1c5eso5601405a34.0
+ for <qemu-trivial@nongnu.org>; Thu, 15 Jun 2023 02:22:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1686824760; x=1689416760;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=tWNh5l5zansgkYD8JM+QZqpVlxfmhmpr1H7kB5PRlzc=;
- b=OZBY5bTGLwXNlKlniFuBR+MU4SI5z0PtB1i3oWBTykgh9LmJD/q3UowGwIFi2sIc1z
- dnHb+uJRdV8KTRMrawf1flu6tZlPOcvdZVfxD1eEQ58fFDSVzFtybBKpVN79y1fKqPG6
- HYeTm0E9vVY0vpTU/p3WI2L90nsFIEeX/lu0UlM/XfKoMAf7wQbmR52/+aS3VH0rAb9p
- xqEEknGC4IcKMoMcUAwRy575B/tjCzup0tfrHBS5GvYt6AY9WQt0z3dGU8GBo0MpfZlw
- gvLJau/dCl4Icxl3i43x9HS/fSXQhAv8F4WWRu3vLk8AhRuBZgm7GqKybl0fZKzV+3qg
- DV0A==
+ d=ventanamicro.com; s=google; t=1686820925; x=1689412925;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=WEHITo7+8H3wYsbs6qFg2VqKn3O3Hw3sbjYP6T0WrgQ=;
+ b=FMXDHuaDf9ckZsgDeuaGbfVMvQN52RVCONTiqsT0eC5MuXS2UbkFG74aft0afjcs0e
+ M85sjiyK1JaHVidoSeTw+jlxMmQkfArv3B9ppTsBwPC8Tng5FmtsEukACCR7L0B1GwWG
+ bvimXUT/S6LfG0VONxl99+xr8SgPayfgAGXBGWzA8nQXMwrQhmpbfdbZ3+ZHXjv6Q0D8
+ MZzApIdH66UHs25MWipVZIBud6uZWo/vDBooXAHc5jE7mYyoG+CCFhaZFGty+P9UnLPR
+ KaEzAmegzcRBCea5s4LUH6OAaa6uK6+qf7L/AULsqdTPqjf35C6tVb+ueWQWKkE8KdgB
+ PURA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1686824760; x=1689416760;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tWNh5l5zansgkYD8JM+QZqpVlxfmhmpr1H7kB5PRlzc=;
- b=GbZB4HJJ0atnzlvgl8iPh/ye8E502jbW62abUCB8pYlCkQSfClXSM4a7s5UJO8SDCB
- vXDS1AzGAOwWqFM3TqGqRjN+LZ+E6wD/0pASXa6y/fmUuKFubOsaAKplP7BOoFS0Qpz8
- rbEjB5PJDucaDrX7g4HP3CgHDqbvDku6PBzU/tzYGcLXtYeBHn8xesfVDHrnlQ5NRw/7
- D1Z/Z1RoYrsvnLp4dkw+QNhmClxAUdZ081TOF2/EAhw/GWvrdMtPQtzSuK2v2IRR/bPH
- JWsLVqnlVgNreR1xpalvewN3eAuct2xXCYfU14Dhmx9r4yoQ5+sCIW8BDN7fB5NNaFpY
- lunw==
-X-Gm-Message-State: AC+VfDyULr9ZTIBnKcD/gVNkFydjTSQE/AAoCtQ2TsFXPnMLelTs6bOC
- 2E2gQIjURWb1xtrsz0C80TKceA==
-X-Google-Smtp-Source: ACHHUZ4nwkraB7Q2Yo9AZ6t9G0Wi7nRVdJ3LcoSvKUE1x+PpKP5+OsGTe9ImmmOIdJ4ytXHflma/EQ==
-X-Received: by 2002:ac2:5307:0:b0:4f4:b864:1da0 with SMTP id
- c7-20020ac25307000000b004f4b8641da0mr10462407lfh.15.1686824760445; 
- Thu, 15 Jun 2023 03:26:00 -0700 (PDT)
-Received: from [10.14.201.118] ([213.175.39.66])
- by smtp.gmail.com with ESMTPSA id
- jw23-20020a17090776b700b00974630b1e85sm9180146ejc.155.2023.06.15.03.25.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Jun 2023 03:26:00 -0700 (PDT)
-Message-ID: <8622a181-95e5-b2df-d09f-77c8c45718f1@linaro.org>
-Date: Thu, 15 Jun 2023 12:25:59 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.11.2
-Subject: Re: [PATCH] hw/riscv/virt.c: fix typo in 'aia' description
-Content-Language: en-US
-To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>, qemu-devel@nongnu.org
+ d=1e100.net; s=20221208; t=1686820925; x=1689412925;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=WEHITo7+8H3wYsbs6qFg2VqKn3O3Hw3sbjYP6T0WrgQ=;
+ b=NpmhL/7ZlIphrh1fMKdll2DCPQnbAgRT1lV92k98Y7qZ8daR0uN8g32L418BL47kiQ
+ 53phN6ScTgWcH7ty/M5EGM6qpOP83vgYvCnUgKfHIO/7H2oEiOhlRo3QMF4XiTAiCxHz
+ EDLfC37pdayusFfCuKWAMN0xGU3XURp5GDqPsQJ+nP1IWiJ6eR9AjiLiolujVk0KR7Fv
+ U5MVEFjL75bwuxpoMi+h/HICaD98j9C8sJX+5XoZTLyQuBrBEngJYMzsZEn5ZJ+u5Uld
+ HfLvGSKw7zSqWktcRdoK1lZOqqmnQs0ptHWefOPq3jyNUMBUw8rjg8nGag4+OZ3WzNXq
+ vesA==
+X-Gm-Message-State: AC+VfDz7eYBUXyvrJq/Fp01h7CbxGwyS8sYXtGzghGslK8jA+waBOokw
+ jgS/+RGyRH0YISzjcKNA3QpqgA==
+X-Google-Smtp-Source: ACHHUZ6WIiXZmCoYcUPHLRA6l97UE19vdEXWaJZQ/Gbk107hUnx4q4y9OIkbCT3g3SDnB4W35Nij5g==
+X-Received: by 2002:a05:6808:13c6:b0:39b:f548:3f6 with SMTP id
+ d6-20020a05680813c600b0039bf54803f6mr14744065oiw.13.1686820924792; 
+ Thu, 15 Jun 2023 02:22:04 -0700 (PDT)
+Received: from grind.. ([177.170.117.210]) by smtp.gmail.com with ESMTPSA id
+ e10-20020acab50a000000b003942036439dsm7214279oif.46.2023.06.15.02.22.01
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 Jun 2023 02:22:04 -0700 (PDT)
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+To: qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, alistair.francis@wdc.com, bmeng@tinylab.org,
  liweiwei@iscas.ac.cn, zhiwei_liu@linux.alibaba.com, palmer@rivosinc.com,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
  qemu-trivial@nongnu.org
-References: <20230615092148.612875-1-dbarboza@ventanamicro.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230615092148.612875-1-dbarboza@ventanamicro.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Subject: [PATCH] hw/riscv/virt.c: fix typo in 'aia' description
+Date: Thu, 15 Jun 2023 06:21:48 -0300
+Message-Id: <20230615092148.612875-1-dbarboza@ventanamicro.com>
+X-Mailer: git-send-email 2.40.1
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x132.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Received-SPF: pass client-ip=2607:f8b0:4864:20::335;
+ envelope-from=dbarboza@ventanamicro.com; helo=mail-ot1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.098,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 15 Jun 2023 09:34:34 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,15 +81,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Jun 2023 10:26:11 -0000
+X-List-Received-Date: Thu, 15 Jun 2023 09:22:09 -0000
 
-On 15/6/23 11:21, Daniel Henrique Barboza wrote:
-> Cc: qemu-trivial@nongnu.org
-> Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-> ---
->   hw/riscv/virt.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+---
+ hw/riscv/virt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index 95708d890e..3464abd226 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -1690,7 +1690,7 @@ static void virt_machine_class_init(ObjectClass *oc, void *data)
+                                   virt_set_aia);
+     object_class_property_set_description(oc, "aia",
+                                           "Set type of AIA interrupt "
+-                                          "conttoller. Valid values are "
++                                          "controller. Valid values are "
+                                           "none, aplic, and aplic-imsic.");
+ 
+     object_class_property_add_str(oc, "aia-guests",
+-- 
+2.40.1
 
 
