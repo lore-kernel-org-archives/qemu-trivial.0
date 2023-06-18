@@ -1,34 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qAmKP-00020d-Qa
-	for mharc-qemu-trivial@gnu.org; Sun, 18 Jun 2023 02:56:01 -0400
+	id 1qAmKt-000240-UX
+	for mharc-qemu-trivial@gnu.org; Sun, 18 Jun 2023 02:56:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qAmKN-0001zt-2X; Sun, 18 Jun 2023 02:55:59 -0400
+ id 1qAmKa-00021f-M6; Sun, 18 Jun 2023 02:56:13 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qAmKL-0000a4-BM; Sun, 18 Jun 2023 02:55:58 -0400
+ id 1qAmKV-0000gf-4m; Sun, 18 Jun 2023 02:56:10 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 71A12D1C2;
- Sun, 18 Jun 2023 09:55:42 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 9D046D1C4;
+ Sun, 18 Jun 2023 09:56:00 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id F3164DACC;
- Sun, 18 Jun 2023 09:55:41 +0300 (MSK)
-Message-ID: <9c2f07dd-880f-f332-5d26-cbfa2ef78d54@tls.msk.ru>
-Date: Sun, 18 Jun 2023 09:55:41 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 4FB39DACD;
+ Sun, 18 Jun 2023 09:56:00 +0300 (MSK)
+Message-ID: <41fa564a-6164-23c6-58e4-3d5d4854e5ce@tls.msk.ru>
+Date: Sun, 18 Jun 2023 09:56:00 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.12.0
-Subject: Re: [PATCH] hw/riscv/virt.c: fix typo in 'aia' description
+Subject: Re: [PATCH] Fix handling of AVR interrupts above 33.
 Content-Language: en-US
-To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>, qemu-devel@nongnu.org
-Cc: qemu-riscv@nongnu.org, alistair.francis@wdc.com, bmeng@tinylab.org,
- liweiwei@iscas.ac.cn, zhiwei_liu@linux.alibaba.com, palmer@rivosinc.com,
- qemu-trivial@nongnu.org
-References: <20230615092148.612875-1-dbarboza@ventanamicro.com>
+To: Lucas Dietrich <ld.adecy@gmail.com>, philmd@linaro.org
+Cc: qemu-devel@nongnu.org, mrolnik@gmail.com, qemu-trivial@nongnu.org
+References: <20230614140748.3584-1-ld.adecy@gmail.com>
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230615092148.612875-1-dbarboza@ventanamicro.com>
+In-Reply-To: <20230614140748.3584-1-ld.adecy@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -51,7 +49,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 18 Jun 2023 06:55:59 -0000
+X-List-Received-Date: Sun, 18 Jun 2023 06:56:27 -0000
 
 Applied to the trivial tree, thank you!
 
