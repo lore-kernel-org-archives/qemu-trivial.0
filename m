@@ -1,76 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qApdD-0002Rs-RS
-	for mharc-qemu-trivial@gnu.org; Sun, 18 Jun 2023 06:27:41 -0400
+	id 1qBXD7-0007WN-5U
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Jun 2023 04:59:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qApd5-0002LY-L0
- for qemu-trivial@nongnu.org; Sun, 18 Jun 2023 06:27:32 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qBXD5-0007W3-QQ
+ for qemu-trivial@nongnu.org; Tue, 20 Jun 2023 04:59:35 -0400
+Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qApd3-0002Xb-31
- for qemu-trivial@nongnu.org; Sun, 18 Jun 2023 06:27:31 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-988a2715b8cso3738266b.0
- for <qemu-trivial@nongnu.org>; Sun, 18 Jun 2023 03:27:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qBXD4-00063v-A5
+ for qemu-trivial@nongnu.org; Tue, 20 Jun 2023 04:59:35 -0400
+Received: by mail-ej1-x629.google.com with SMTP id
+ a640c23a62f3a-9786fc23505so539858866b.2
+ for <qemu-trivial@nongnu.org>; Tue, 20 Jun 2023 01:59:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687084047; x=1689676047;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1687251572; x=1689843572;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=7VfXhzk0ZVhtU4tQtcFHxFoxaWut3gHqGCduTsP5158=;
- b=pXs3iZE80Ttjr3xlMu62FQPhy3bfFuXV7j5vIFdxYyD2VEAr04NMZcI/JbEDmQa2hF
- FBTgjLpNfbT8iwk7PVd95dBQgoOAB1BgL7uAgP1YqWc4SnC1IdNJHE7BoN25ZlWygnZK
- gfbWu8cMEqMcJIAGyN1X+E4n06HEXCk9Z9jb7755ZqZpCmhHE7DIhPQgWdHRXaJFTJpX
- 0hTYdN5OZo8RceVMP5J+oCrh/0zOWjPfsLdlDM0JkPwryAQMvMVzCHsNWzycA/3MaIne
- PJy7y6VxfXoRvqVFiFHetV1/h8iAYqJTv584IUtxxwiV26km1HurodXvU1u4tGt9DNnE
- uPIQ==
+ bh=Bk1WWc2OsWTvabacK/WESYj8WKq3rwbdQ5NWHegaIDY=;
+ b=iscCA7albEx8EOQwttEgwKbjjM97wAUS8Z5fX5Fq1HJwB6VNGlyVjPcwmxUJrFS600
+ WiGwoACiKr9Qv+H3ubnroQWLJtvNsnzmJsPRWLASJbyUeZUC/a84XW1qVKUqoQcHnPhe
+ CCAmW5KRY0ahVRoaKRBGg9oQlHZ0y8kgHnf7ZhIvhGdB7rrFrYdgtYXw5S5oDa0D6UFZ
+ z2CpYlY6eYfVvCEpHwGSZAW7kIN/NIr5sg60MRmWdueXVbYz0W2rL+F634AUCvL+wneT
+ HQjhfX2GnAoXmgbNbu5UouzKrkOAZebNFNIDQ3zKVxQTkB8rYQewfoRt6lsnWKFEjUw1
+ yV3Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687084047; x=1689676047;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20221208; t=1687251572; x=1689843572;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7VfXhzk0ZVhtU4tQtcFHxFoxaWut3gHqGCduTsP5158=;
- b=PPDH0yoP9EddC7qxiLfYzISol1/ax9cqIrL5n0ihh2IPHJa3i0DdwXUqzvgNSLUYJs
- ZSqiRxiN7GEyMP1E7QVytFskP+nVpNQV5SCe2pppCGugylGsgMV5o77dIcU5unLsACOq
- CAHhdN4iKSexC9ij3megha79xv6ff7limhzj0FlC4Lb7Dye/K0YBOSREwjiXjaKRMODf
- Kl+c/hXFPZUySI+VNg191li2jMAJzFagg8x8VG/rgl/RfVt852b8MTfWIMACj69II19O
- Q5P4yLCyKb7NWFlMpAhy5LzDLA4m8nX3wm7LiBkmfM7AFNsvesbPGTANIt/WmWMrF9zN
- ijJg==
-X-Gm-Message-State: AC+VfDz81eARvFwcQ2hBdWiGYuoWOfxpqVRyY6lBpda6ItNmz+eF06E0
- /Ppb+cQwsKNR0SbkRfskqXQVKw==
-X-Google-Smtp-Source: ACHHUZ4LFfKzHHGJov2dqvQamWbLgoD02aU9C/jarRPLsYLBbfE8llSv37wO+awvC++SRCwYBxWVNw==
-X-Received: by 2002:a17:907:3d93:b0:988:6f63:e7c1 with SMTP id
- he19-20020a1709073d9300b009886f63e7c1mr1143482ejc.22.1687084047530; 
- Sun, 18 Jun 2023 03:27:27 -0700 (PDT)
-Received: from [192.168.69.115] (mon75-h03-176-184-51-101.dsl.sta.abo.bbox.fr.
- [176.184.51.101]) by smtp.gmail.com with ESMTPSA id
- kf12-20020a17090776cc00b009888eda6b0asm342881ejc.170.2023.06.18.03.27.26
+ bh=Bk1WWc2OsWTvabacK/WESYj8WKq3rwbdQ5NWHegaIDY=;
+ b=hBLGIiXDKlnse5w55sPpJO2HFEoPrQACyiod0g378XEtF3U1Nyb+T7TWUuEmPKbHC+
+ MDZ48v8iduVwIEEpIZBPY+26D+zyviMYeKWF6pTgzT7JemM5KUJ7PSuxWnMCX9sZqlMF
+ gDQWND8XP9v05dsoHS3aMMIlMVqCebdJQQ9tj4W8h17xV6xPNh8HV5KqWj4WT/CLavPL
+ ptrOBLQ6NKdk133h7i16V2tEUMxTyjsDA2dwxOqCdLJlEN3NFkt9kfCE7/+SKVEIyhd1
+ AnRCwddLQRqUpBUBUrNt6GL90JIyKq2ReezvL2VBB+OsFAKDM0owyZaCmk3i17B3syjp
+ i9Uw==
+X-Gm-Message-State: AC+VfDyW8QIQ6029D4LVWEFwwyV85vu+Mkc48pe5iaXhKZEnTFlT8b3t
+ oJ2XiN85ywsjaLnWR6PtzCgwdA==
+X-Google-Smtp-Source: ACHHUZ62z62OcJXgkOgoSdST5Eho5Shq66LOHBtKXj3VfzVfKhiFRAea/qYRbuIh1LOErigkEkUD6g==
+X-Received: by 2002:a17:906:5d0c:b0:988:71c8:9f42 with SMTP id
+ g12-20020a1709065d0c00b0098871c89f42mr5852440ejt.8.1687251572334; 
+ Tue, 20 Jun 2023 01:59:32 -0700 (PDT)
+Received: from [192.168.69.129] ([176.176.183.29])
+ by smtp.gmail.com with ESMTPSA id
+ h7-20020a1709067cc700b00988b86d6c7csm1006106ejp.132.2023.06.20.01.59.31
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 18 Jun 2023 03:27:27 -0700 (PDT)
-Message-ID: <45815e53-2e60-74a7-6399-a4334628193b@linaro.org>
-Date: Sun, 18 Jun 2023 12:27:20 +0200
+ Tue, 20 Jun 2023 01:59:32 -0700 (PDT)
+Message-ID: <28b351a9-49d2-bf5b-ab02-2f1425f0855b@linaro.org>
+Date: Tue, 20 Jun 2023 10:59:29 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.12.0
-Subject: Re: [PATCH] Fix handling of AVR interrupts above 33.
-To: Michael Tokarev <mjt@tls.msk.ru>, Lucas Dietrich <ld.adecy@gmail.com>
-Cc: qemu-devel@nongnu.org, mrolnik@gmail.com, qemu-trivial@nongnu.org
-References: <20230614140748.3584-1-ld.adecy@gmail.com>
- <41fa564a-6164-23c6-58e4-3d5d4854e5ce@tls.msk.ru>
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Subject: Re: [PATCH] x86_64/atomic128-ldst.h: fix arch include guard
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <41fa564a-6164-23c6-58e4-3d5d4854e5ce@tls.msk.ru>
+To: =?UTF-8?B?RnLDqWTDqXJpYyBQw6l0cm90?=
+ <frederic.petrot@univ-grenoble-alpes.fr>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+Cc: alex.bennee@linaro.org
+References: <20230620083918.9134-1-frederic.petrot@univ-grenoble-alpes.fr>
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230620083918.9134-1-frederic.petrot@univ-grenoble-alpes.fr>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x635.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::629;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ej1-x629.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,11 +86,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 18 Jun 2023 10:27:33 -0000
+X-List-Received-Date: Tue, 20 Jun 2023 08:59:36 -0000
 
-On 18/6/23 08:56, Michael Tokarev wrote:
-> Applied to the trivial tree, thank you!
+On 6/20/23 10:39, Frédéric Pétrot wrote:
+> Fix arch name in the define that prevents multiple inclusions.
+> 
+> Signed-off-by: Frédéric Pétrot <frederic.petrot@univ-grenoble-alpes.fr>
+> ---
+>   host/include/x86_64/host/atomic128-ldst.h | 6 +++---
+>   1 file changed, 3 insertions(+), 3 deletions(-)
 
-Thanks. Do you mind updating the patch subject to:
-"target/avr: Fix handling of interrupts above 33"?
+Whoopsie.
+
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~
+
+> 
+> diff --git a/host/include/x86_64/host/atomic128-ldst.h b/host/include/x86_64/host/atomic128-ldst.h
+> index adc9332f91..d0240d4212 100644
+> --- a/host/include/x86_64/host/atomic128-ldst.h
+> +++ b/host/include/x86_64/host/atomic128-ldst.h
+> @@ -8,8 +8,8 @@
+>    * atomic primitive is meant to provide.
+>    */
+>   
+> -#ifndef AARCH64_ATOMIC128_LDST_H
+> -#define AARCH64_ATOMIC128_LDST_H
+> +#ifndef X86_64_ATOMIC128_LDST_H
+> +#define X86_64_ATOMIC128_LDST_H
+>   
+>   #ifdef CONFIG_INT128_TYPE
+>   #include "host/cpuinfo.h"
+> @@ -65,4 +65,4 @@ static inline void atomic16_set(Int128 *ptr, Int128 val)
+>   #include "host/include/generic/host/atomic128-ldst.h"
+>   #endif
+>   
+> -#endif /* AARCH64_ATOMIC128_LDST_H */
+> +#endif /* X86_64_ATOMIC128_LDST_H */
+
 
