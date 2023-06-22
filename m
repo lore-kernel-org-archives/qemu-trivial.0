@@ -1,50 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qCIh8-0002E8-1Y
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Jun 2023 07:41:46 -0400
+	id 1qCQzT-0003Sb-Hp
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Jun 2023 16:33:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qCIh4-0002Dv-H2
- for qemu-trivial@nongnu.org; Thu, 22 Jun 2023 07:41:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qCQzR-0003SD-2v
+ for qemu-trivial@nongnu.org; Thu, 22 Jun 2023 16:33:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qCIh1-0007Eu-Gw
- for qemu-trivial@nongnu.org; Thu, 22 Jun 2023 07:41:42 -0400
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qCQzP-0000bq-OS
+ for qemu-trivial@nongnu.org; Thu, 22 Jun 2023 16:33:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1687434098;
+ s=mimecast20190719; t=1687465990;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=UoL844toXPkUkSMzhyTnXgIiRzdMSmR43RKGHRw1pQw=;
- b=cCKnwDQR5hq9njRBLlJpR3SoeYCLDt2ljwm8mpIGc5tFNGTEzslZafvYZaCSpPJ4fusjt0
- KyrN9spYxMvr1ktSdqlKZrB2ugmdcVdA11/y2DK528OXDEsJW7sBROZ8L7PqepyV2c6iis
- 1MuAQNgTH9Hv/5WFwC74wKDc78U1h1A=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-626-qB3trCfSPkaYnmPdq84MJg-1; Thu, 22 Jun 2023 07:41:36 -0400
-X-MC-Unique: qB3trCfSPkaYnmPdq84MJg-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3C2312812951;
- Thu, 22 Jun 2023 11:41:36 +0000 (UTC)
-Received: from thuth.com (dhcp-192-205.str.redhat.com [10.33.192.205])
- by smtp.corp.redhat.com (Postfix) with ESMTP id E113A200A3AD;
- Thu, 22 Jun 2023 11:41:34 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Jonathan Cameron <jonathan.cameron@huawei.com>
-Cc: qemu-trivial@nongnu.org,
-	Fan Ni <fan.ni@samsung.com>
-Subject: [PATCH] tests/qtest/cxl-test: Clean up temporary directories after
- testing
-Date: Thu, 22 Jun 2023 13:41:32 +0200
-Message-Id: <20230622114132.372898-1-thuth@redhat.com>
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=nRbqvlBWYGumQVqwLV4mZShX8anD9CsIPAc+LWpKOSQ=;
+ b=KiRAJrDGW4OueHFo2VE5aGb54kp9Wqjfkz6YF/Y0D7ZMaJDy+L8Ig3qe++pp2m/lLimaR0
+ Bxa1A9nv6PXGt/80o6mkEbBjB07TVUZO4SqV2iLRksHQNlUuxUbUCHdh/zJ0bJfv91OL3+
+ U1DFzQQc71uRcg9O24xa3aEZ6/3dcgo=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-457-TWV4VhjAPXKnkgmph9J_dw-1; Thu, 22 Jun 2023 16:33:07 -0400
+X-MC-Unique: TWV4VhjAPXKnkgmph9J_dw-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-3fa78e5c806so3021405e9.2
+ for <qemu-trivial@nongnu.org>; Thu, 22 Jun 2023 13:33:05 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1687465984; x=1690057984;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=nRbqvlBWYGumQVqwLV4mZShX8anD9CsIPAc+LWpKOSQ=;
+ b=ClcmZ4XQhZzQ9lXBi/35MGYlq0an+T4aDiQ+JChCsIGqGKIkUExGEPnXMkl0ZUgYSM
+ P34X5drafWEKX7OBBS+RtiI3Z7+LK0WMrK5VnKxXdplhaZehYvnbYeinEbmUF8h29RPn
+ rCHl01qZeEAUBwE5bzpn2TrmR9A4/IFb28yFskQ81nJbPwwdn8X+GPG0QuGKEtaLSP6Q
+ /Hl++eEldC23wnr/xcqeY4gMvBqQRxlU57zpoMLRs228ut+fNmhq+jkJU8hpjW7eJpcm
+ doXO78goFxg5Ht5FAyk5AB3HcwKWWA/l9kLbudQ8szfwrZPmgnHBJREQdC0vL4CT4rPF
+ RbGw==
+X-Gm-Message-State: AC+VfDxH59rRJFniS4U3OemD+fzoPcYdmTgmej8JFGhfqn4e0trUM+JD
+ 1s2bC3UEdzlkm289ZKQYGnLld8tJwujVnlyybMrRofDgipYK9cO8q6Bet/w37ZRcQWqQGSaarLW
+ ACbSQpSjVOANyt2blEA==
+X-Received: by 2002:a05:600c:ad4:b0:3f9:b8b8:20df with SMTP id
+ c20-20020a05600c0ad400b003f9b8b820dfmr6352009wmr.33.1687465984762; 
+ Thu, 22 Jun 2023 13:33:04 -0700 (PDT)
+X-Google-Smtp-Source: ACHHUZ7zVqUGvFVUQHhKjuoyNvDc9j7dYda9gO8Gqp60QsLnKyeOi3cB1JMJMqmKIiPZYSbDlfkpAg==
+X-Received: by 2002:a05:600c:ad4:b0:3f9:b8b8:20df with SMTP id
+ c20-20020a05600c0ad400b003f9b8b820dfmr6352002wmr.33.1687465984435; 
+ Thu, 22 Jun 2023 13:33:04 -0700 (PDT)
+Received: from redhat.com ([2.52.149.110]) by smtp.gmail.com with ESMTPSA id
+ e11-20020a05600c218b00b003f96d10eafbsm439765wme.12.2023.06.22.13.33.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 22 Jun 2023 13:33:03 -0700 (PDT)
+Date: Thu, 22 Jun 2023 16:33:00 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Sergio Lopez <slp@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
+Subject: Re: [PATCH 0/4] hw: Minor simplifications using proper QOM getter
+ macros
+Message-ID: <20230622163249-mutt-send-email-mst@kernel.org>
+References: <20230523061207.48818-1-philmd@linaro.org>
+ <78d99f7f-33f0-0007-10c7-c78278cde080@tls.msk.ru>
 MIME-Version: 1.0
+In-Reply-To: <78d99f7f-33f0-0007-10c7-c78278cde080@tls.msk.ru>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -66,37 +97,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Jun 2023 11:41:44 -0000
+X-List-Received-Date: Thu, 22 Jun 2023 20:33:14 -0000
 
-It's good style to clean up temporary directories when they
-are not needed anymore.
+On Thu, Jun 08, 2023 at 09:41:58PM +0300, Michael Tokarev wrote:
+> 23.05.2023 09:12, Philippe Mathieu-Daudé wrote:
+> > Enforce QOM style. Besides, using the proper QOM macros
+> > slightly simplifies the code.
+> 
+> Applied to my trivial-patches branch (Maybe it's time to resurrect it).
+> 
+> Thanks,
+> 
+> /mjt
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/qtest/cxl-test.c | 2 ++
- 1 file changed, 2 insertions(+)
+pci things:
 
-diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
-index edcad4a0ce..a600331843 100644
---- a/tests/qtest/cxl-test.c
-+++ b/tests/qtest/cxl-test.c
-@@ -124,6 +124,7 @@ static void cxl_t3d_deprecated(void)
- 
-     qtest_start(cmdline->str);
-     qtest_end();
-+    rmdir(tmpfs);
- }
- 
- static void cxl_t3d_persistent(void)
-@@ -138,6 +139,7 @@ static void cxl_t3d_persistent(void)
- 
-     qtest_start(cmdline->str);
-     qtest_end();
-+    rmdir(tmpfs);
- }
- 
- static void cxl_t3d_volatile(void)
--- 
-2.39.3
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
 
