@@ -1,83 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qCfZq-0003JV-GG
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Jun 2023 08:07:46 -0400
+	id 1qCgiR-0004Uu-MK
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Jun 2023 09:20:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1qCfZn-0003EF-MX
- for qemu-trivial@nongnu.org; Fri, 23 Jun 2023 08:07:43 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1qCfZi-0003uI-QC
- for qemu-trivial@nongnu.org; Fri, 23 Jun 2023 08:07:43 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-31121494630so660531f8f.3
- for <qemu-trivial@nongnu.org>; Fri, 23 Jun 2023 05:07:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1687522056; x=1690114056;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
- :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
- :message-id:reply-to;
- bh=2iorXlS8LHZdDIQFKq7cbqC1Drj4eqgJ051YcpBwHNU=;
- b=rljwzHnTODi4Rn5QypTx/Z+rG8+KXEZ5RMwnKmhMoeYe9W6l0HUaEp+bOzPlbsR5qE
- ZWObQT9C/IS6QLl7KorV1Dw6TWPksBCA3K6LnDYjAAY51DcQTA9gJzE5/310z8rsbSbR
- u4v2UGoeQDmqfBDSro5qro3ghLtejm4J+amvJMF9/utf9sHfYnKVeuwOzslueU2m8VEt
- m6nTe+LFcx5WJrr9XjsrdE18VMCrVzX/f1A8WqUDoJAqOzjYlduFmxXDYRM46G28KqIc
- iu/3rIuiLkIuv6HusB63sW95jNb4UF7AqqBZaZx3w2JCR/dRlW3Z0CrwxwSyWP844vAM
- B9hA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1687522056; x=1690114056;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
- :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=2iorXlS8LHZdDIQFKq7cbqC1Drj4eqgJ051YcpBwHNU=;
- b=L5NDPEhC6uB96sfZPVNzwzZWOzb9HuLOXpuCx9/wODkD6OzFMXY9lcTq/rQXV/OWk0
- I8TUeMBkNInsy5OXL+S7w2FcKHK0ftv8nckiOERH1k8k2K0I5ZrdH29iV6/wk3L06jyG
- 3CVZHGVj5Q18VzwPKRD7hmR3QeM7NuW++bKNAVoHvmvDxCLiDnodhltt7IehI5+xux5I
- tuyJUjWvc5Dyvelc8Oso/Tjn2jk3nvl0wIWxXXxrxS6pZeH+dY//AS/V3bc48nnVbpJJ
- v2zgKxyvusNbGgMlYr63spnxjdIuiCAloixo5tGroiLCW1w589LjTPRK8GL3Dw34fUlt
- vp4A==
-X-Gm-Message-State: AC+VfDwXSO/8kjAfprnQjzzAG2SvLUjuXSIcaPsmu+JV8LTJlgfgIAcp
- +8R4u3MP24XdfzaGMt5Gql6XgQ==
-X-Google-Smtp-Source: ACHHUZ46GwFKo4SRjUG+64Vai3p17JEd+6WiHg6vQsiyijh8CTXipFJiIymWkN78WXkcgOqOd/ENdA==
-X-Received: by 2002:adf:ef8d:0:b0:30d:f75c:4a68 with SMTP id
- d13-20020adfef8d000000b0030df75c4a68mr17283137wro.34.1687522056534; 
- Fri, 23 Jun 2023 05:07:36 -0700 (PDT)
-Received: from zen.linaroharston ([85.9.250.243])
- by smtp.gmail.com with ESMTPSA id
- y10-20020adff6ca000000b0030f9c3219aasm9343472wrp.47.2023.06.23.05.07.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 23 Jun 2023 05:07:36 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id C69701FFBB;
- Fri, 23 Jun 2023 13:07:35 +0100 (BST)
-References: <20230622101717.70468-1-philmd@linaro.org>
-User-agent: mu4e 1.11.6; emacs 29.0.92
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
- =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, Juan Quintela
- <quintela@redhat.com>, Mark
- Cave-Ayland <mark.cave-ayland@ilande.co.uk>, Paolo Bonzini
- <pbonzini@redhat.com>, qemu-trivial@nongnu.org, BALATON Zoltan
- <balaton@eik.bme.hu>
-Subject: Re: [PATCH] docs/devel/qom.rst: Correct code style
-Date: Fri, 23 Jun 2023 13:07:28 +0100
-In-reply-to: <20230622101717.70468-1-philmd@linaro.org>
-Message-ID: <87bkh6fkl4.fsf@linaro.org>
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1qCgiM-0004Ti-FD; Fri, 23 Jun 2023 09:20:39 -0400
+Received: from frasgout.his.huawei.com ([185.176.79.56])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1qCgiK-0008IZ-1L; Fri, 23 Jun 2023 09:20:38 -0400
+Received: from lhrpeml500005.china.huawei.com (unknown [172.18.147.200])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Qnd8G2VRGz6J7Xv;
+ Fri, 23 Jun 2023 21:17:50 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Fri, 23 Jun
+ 2023 14:20:31 +0100
+Date: Fri, 23 Jun 2023 14:20:30 +0100
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Thomas Huth <thuth@redhat.com>
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, Fan Ni
+ <fan.ni@samsung.com>
+Subject: Re: [PATCH] tests/qtest/cxl-test: Clean up temporary directories
+ after testing
+Message-ID: <20230623142030.00001c15@Huawei.com>
+In-Reply-To: <20230622114132.372898-1-thuth@redhat.com>
+References: <20230622114132.372898-1-thuth@redhat.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset="US-ASCII"
+Content-Transfer-Encoding: 7bit
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml500003.china.huawei.com (7.191.162.67) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+X-CFilter-Loop: Reflected
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,27 +55,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Jun 2023 12:07:44 -0000
+X-List-Received-Date: Fri, 23 Jun 2023 13:20:41 -0000
 
+On Thu, 22 Jun 2023 13:41:32 +0200
+Thomas Huth <thuth@redhat.com> wrote:
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+> It's good style to clean up temporary directories when they
+> are not needed anymore.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-> Per commit 067109a11c ("docs/devel: mention the spacing requirement
-> for QOM"):
->
->   For a storage structure the first declaration should always be
->   called =E2=80=9Cparent_obj=E2=80=9D and for a class structure the first=
- member
->   should always be called =E2=80=9Cparent_class=E2=80=9D
->
-> Adapt the QOM rST document accordingly.
->
-> Reported-by: BALATON Zoltan <balaton@eik.bme.hu>
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-Queued to docs/more-qom-docs, thanks.
+> ---
+>  tests/qtest/cxl-test.c | 2 ++
+>  1 file changed, 2 insertions(+)
+> 
+> diff --git a/tests/qtest/cxl-test.c b/tests/qtest/cxl-test.c
+> index edcad4a0ce..a600331843 100644
+> --- a/tests/qtest/cxl-test.c
+> +++ b/tests/qtest/cxl-test.c
+> @@ -124,6 +124,7 @@ static void cxl_t3d_deprecated(void)
+>  
+>      qtest_start(cmdline->str);
+>      qtest_end();
+> +    rmdir(tmpfs);
+>  }
+>  
+>  static void cxl_t3d_persistent(void)
+> @@ -138,6 +139,7 @@ static void cxl_t3d_persistent(void)
+>  
+>      qtest_start(cmdline->str);
+>      qtest_end();
+> +    rmdir(tmpfs);
+>  }
+>  
+>  static void cxl_t3d_volatile(void)
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 
