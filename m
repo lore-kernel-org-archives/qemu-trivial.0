@@ -1,51 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qF7j0-0007Et-Su
-	for mharc-qemu-trivial@gnu.org; Fri, 30 Jun 2023 02:35:23 -0400
+	id 1qFBDX-0006Mg-7j
+	for mharc-qemu-trivial@gnu.org; Fri, 30 Jun 2023 06:19:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qF7ix-0007EE-Hr; Fri, 30 Jun 2023 02:35:19 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qF7iv-00070e-J2; Fri, 30 Jun 2023 02:35:19 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 7448A103B9;
- Fri, 30 Jun 2023 09:35:14 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 0560510931;
- Fri, 30 Jun 2023 09:35:14 +0300 (MSK)
-Message-ID: <d8381a65-bdc2-e49e-722b-823ff42876af@tls.msk.ru>
-Date: Fri, 30 Jun 2023 09:35:13 +0300
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qFBDV-0006M2-PF
+ for qemu-trivial@nongnu.org; Fri, 30 Jun 2023 06:19:05 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qFBDT-0004JJ-TO
+ for qemu-trivial@nongnu.org; Fri, 30 Jun 2023 06:19:05 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-3fa8ce2307dso20999415e9.2
+ for <qemu-trivial@nongnu.org>; Fri, 30 Jun 2023 03:19:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1688120342; x=1690712342;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=RwsOk1LcYtlW3s2elbYLJBfUQOXv54vSQvUcpQcfEEk=;
+ b=pv0krMXQ85FJa1L200wZxhmWO8z8AuBhGEqsTFVTRV5LB06It7Immjv59ydIeS4Sks
+ BuOGN3rR4Nba+BTbh6S3ihzEIqotACGDtt4KQ6rlkCqmQ9fPvPW28fzqfkMAkfwt0Qzh
+ OPfrujhwtSIqY0HIcB1QVOubpCUTnkwja4dcLsyOBBW4D9nWWmESwhgNhajAjF4TrDvJ
+ 8+4D8cTQJYCjEMtkCfrASqJ3k6vPQ41LAtD7LoyGdL4jRIu202YL2DBIhJx5G9HZiQPT
+ mAcOBR3jhUeQhYV/EIqPYTAIK1OfHRbwvyyBYHeoUosqNCZE9w2jq5VNqstljxwxMNxu
+ /zYg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1688120342; x=1690712342;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=RwsOk1LcYtlW3s2elbYLJBfUQOXv54vSQvUcpQcfEEk=;
+ b=bwLbI6QBSkSDfMban2Pqh+bn71DiM6F/pzUq5EmYCuBZIzvsdqg/vPLVGe6gC9rjdF
+ gHQlB3xWZ6S9aaf3DpSe0U4TXPCb2buynND+SPocr3JvBOn835K25EtQfpYfoYXQlv3d
+ 5ihS/erpbhBEWkRSdhwzTLi7HtGwO7IRVgZTtiz7z4NjC/Y0BSmTUTCJLtYHbd3dBcHs
+ 1kVVLKCyDLVlJ6ZBCbxv38/dyCSY8b+pnL2IDjNwy+nKy5EAzZQVmuWwyk8oYkmGj9QO
+ VQ3MV6Qz0+/hWalaxo3Y1YTy3FrnO+IFVpGc04hE0MeEtE7plE0XmacsHqXNhVHvUaq+
+ E2kQ==
+X-Gm-Message-State: ABy/qLZfXJSCuGee25O35vFVfzR0UHlkajp0TG9VbP7KbaH0zb18v0A9
+ 4x4xZJIskgLO9gQvV3MWNRTyZg==
+X-Google-Smtp-Source: APBJJlHT/NbfvTxXbfg8EMKmcr4se/17C5deMjc04V1y/Q8jnx+Jo0LRCq6JV/JN25zlBJ0q8y/4wg==
+X-Received: by 2002:a5d:5304:0:b0:313:f157:7d58 with SMTP id
+ e4-20020a5d5304000000b00313f1577d58mr2116814wrv.38.1688120342036; 
+ Fri, 30 Jun 2023 03:19:02 -0700 (PDT)
+Received: from [192.168.69.115] ([176.187.211.104])
+ by smtp.gmail.com with ESMTPSA id
+ g6-20020a5d6986000000b003047dc162f7sm17910562wru.67.2023.06.30.03.19.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 30 Jun 2023 03:19:01 -0700 (PDT)
+Message-ID: <390ba84c-fdb7-19db-c317-a38ebe2466cd@linaro.org>
+Date: Fri, 30 Jun 2023 12:19:00 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.12.0
-Subject: Re: [PATCH] hw: Simplify calls to pci_nic_init_nofail()
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.12.0
+Subject: Re: [PATCH v2 1/2] vdpa: delete duplicated VIRTIO_NET_F_RSS in
+ vdpa_feature_bits
 Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Jason Wang <jasowang@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Radoslaw Biernacki <rad@semihalf.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Leif Lindholm <quic_llindhol@quicinc.com>,
- Marcin Juszkiewicz <marcin.juszkiewicz@linaro.org>,
- Xiaojuan Yang <yangxiaojuan@loongson.cn>, Song Gao <gaosong@loongson.cn>,
- Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- Max Filippov <jcmvbkbc@gmail.com>
-References: <20230629125449.234945-1-thuth@redhat.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230629125449.234945-1-thuth@redhat.com>
+To: Hawkins Jiawei <yin31149@gmail.com>, jasowang@redhat.com, mst@redhat.com, 
+ eperezma@redhat.com
+Cc: qemu-devel@nongnu.org, 18801353760@163.com,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <cover.1688112025.git.yin31149@gmail.com>
+ <ee4b5afc22e3db57ba40781089cd84c4d00632b3.1688112025.git.yin31149@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <ee4b5afc22e3db57ba40781089cd84c4d00632b3.1688112025.git.yin31149@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -69
-X-Spam_score: -7.0
-X-Spam_bar: -------
-X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.093,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.093,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -58,45 +86,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 Jun 2023 06:35:20 -0000
+X-List-Received-Date: Fri, 30 Jun 2023 10:19:06 -0000
 
-29.06.2023 15:54, Thomas Huth пишет:
-> pci_nic_init_nofail() calls qemu_find_nic_model(), and this function
-> sets nd->model = g_strdup(default_model) if it has not been initialized
-> yet. So we don't have to set nd->model to the default_nic in the
-> calling sites.
+On 30/6/23 10:54, Hawkins Jiawei wrote:
+> This entry was duplicated on referenced commit. Removing it.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Fixes: 402378407dbd ("vhost-vdpa: multiqueue support")
+> Signed-off-by: Hawkins Jiawei <yin31149@gmail.com>
 > ---
->   hw/arm/sbsa-ref.c        | 8 +-------
->   hw/arm/virt.c            | 8 +-------
->   hw/loongarch/virt.c      | 8 +-------
->   hw/mips/loongson3_virt.c | 8 +-------
->   hw/xtensa/virt.c         | 8 +-------
->   5 files changed, 5 insertions(+), 35 deletions(-)
-> 
-> diff --git a/hw/arm/sbsa-ref.c b/hw/arm/sbsa-ref.c
-> index b774d80291..d8e13ddbfe 100644
-> --- a/hw/arm/sbsa-ref.c
-> +++ b/hw/arm/sbsa-ref.c
-> @@ -683,13 +683,7 @@ static void create_pcie(SBSAMachineState *sms)
->       pci = PCI_HOST_BRIDGE(dev);
->       if (pci->bus) {
->           for (i = 0; i < nb_nics; i++) {
-> -            NICInfo *nd = &nd_table[i];
-> -
-> -            if (!nd->model) {
-> -                nd->model = g_strdup(mc->default_nic);
-> -            }
-> -
-> -            pci_nic_init_nofail(nd, pci->bus, nd->model, NULL);
-> +            pci_nic_init_nofail(&nd_table[i], pci->bus, mc->default_nic, NULL);
->           }
->       }
+>   net/vhost-vdpa.c | 1 -
+>   1 file changed, 1 deletion(-)
 
-What a wonderful copy-spagetti it was :)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Applied to my trivial-patches branch, thank you!
-
-/mjt
 
