@@ -1,58 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qGEQn-0001Tu-3G
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Jul 2023 03:57:13 -0400
+	id 1qGFBr-0003OL-An
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Jul 2023 04:45:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qGEQa-0001Rf-Sq
- for qemu-trivial@nongnu.org; Mon, 03 Jul 2023 03:56:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qGFBb-0003Lx-Q0; Mon, 03 Jul 2023 04:45:39 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qGEQY-0001C5-R4
- for qemu-trivial@nongnu.org; Mon, 03 Jul 2023 03:56:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1688371014;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=iuXf9Pot7qbYdSTiSonken0CccC9+gy5177FsvzHD2A=;
- b=DVA9sbSOCit/VKuzuJmMrsyVu+Glc1+53HSSZvv+v7BegI/PUiIs7zPeh6DOGUT8CYgN3A
- wUa0bcMcLFzpTvLkvXqTQ2AInGxll2+fqYZEri81Pa4o43QSCH8Tz3C92N9ZaYx2wd7SkL
- beq2i6U9LAoNkpVvMFu3AEK8XUXyQb0=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-646-DAsFUQ2XPtyouq1-9Kxx4g-1; Mon, 03 Jul 2023 03:56:50 -0400
-X-MC-Unique: DAsFUQ2XPtyouq1-9Kxx4g-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 24EA338294A2;
- Mon,  3 Jul 2023 07:56:50 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.193.20])
- by smtp.corp.redhat.com (Postfix) with ESMTP id DE6EF4087C6B;
- Mon,  3 Jul 2023 07:56:48 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH] qemu-options.hx: Fix indentation of some option descriptions
-Date: Mon,  3 Jul 2023 09:56:46 +0200
-Message-Id: <20230703075646.18354-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qGFBZ-0002yF-6W; Mon, 03 Jul 2023 04:45:31 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 8E9C210F76;
+ Mon,  3 Jul 2023 11:45:13 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 9B8851139E;
+ Mon,  3 Jul 2023 11:45:10 +0300 (MSK)
+Message-ID: <09c09f38-9dee-cf3e-e5da-425cbbd0eeba@tls.msk.ru>
+Date: Mon, 3 Jul 2023 11:45:10 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH] qemu-options.hx: Fix indentation of some option
+ descriptions
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?=
+ <marcandre.lureau@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>
+References: <20230703075646.18354-1-thuth@redhat.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <20230703075646.18354-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -69
+X-Spam_score: -7.0
+X-Spam_bar: -------
+X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -65,45 +51,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Jul 2023 07:56:58 -0000
+X-List-Received-Date: Mon, 03 Jul 2023 08:45:46 -0000
 
-The description of the options starts at column 16, so fix
-this in some runaway lines for a more uniform output.
+Applied to my trivial-patches tree, thank you!
 
-While we're at it, replace the capital "NOTE" with "Note"
-since this seems to be the more common capitalization in
-qemu-options.hx.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- qemu-options.hx | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
-
-diff --git a/qemu-options.hx b/qemu-options.hx
-index f49d4c0e3c..c714b3981a 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -652,7 +652,7 @@ DEF("m", HAS_ARG, QEMU_OPTION_m,
-     "                size: initial amount of guest memory\n"
-     "                slots: number of hotplug slots (default: none)\n"
-     "                maxmem: maximum amount of guest memory (default: none)\n"
--    "NOTE: Some architectures might enforce a specific granularity\n",
-+    "                Note: Some architectures might enforce a specific granularity\n",
-     QEMU_ARCH_ALL)
- SRST
- ``-m [size=]megs[,slots=n,maxmem=size]``
-@@ -2210,8 +2210,8 @@ DEF("spice", HAS_ARG, QEMU_OPTION_spice,
-     "       [,disable-agent-file-xfer=on|off][,agent-mouse=[on|off]]\n"
-     "       [,playback-compression=[on|off]][,seamless-migration=[on|off]]\n"
-     "       [,gl=[on|off]][,rendernode=<file>]\n"
--    "   enable spice\n"
--    "   at least one of {port, tls-port} is mandatory\n",
-+    "                enable spice\n"
-+    "                at least one of {port, tls-port} is mandatory\n",
-     QEMU_ARCH_ALL)
- #endif
- SRST
--- 
-2.39.3
-
+/mjt
 
