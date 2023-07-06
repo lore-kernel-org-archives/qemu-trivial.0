@@ -1,78 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qHNNo-0005T1-29
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jul 2023 07:42:48 -0400
+	id 1qHNk3-0006mC-TK
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jul 2023 08:05:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qHNNm-0005Sl-Kq
- for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 07:42:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1qHNk0-0006lU-7x
+ for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 08:05:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1qHNNi-0007Cp-5f
- for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 07:42:46 -0400
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1qHNjy-0005hT-KP
+ for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 08:05:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1688643760;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=vcf7QHKLpBXcPUjgGD0oUcQaTofe75gJXZKJMFB7UG8=;
- b=XAp5uyveZAnxE8mEcZgnnPNftNLpY6Od95kCz64ryhK0f7/p3n2BOrVHU1MsInKOzgoBai
- ri+p3g4Q1wiDPX2huA9npHEyj/JdEv4uCp38ogBkYJHm5YfFFEJH+MP3ZjQK4YN3hQmGKk
- aoROJTKwfBbhCZFPZIZRgnIo2xDsNig=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ s=mimecast20190719; t=1688645141;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=dpsrKkCdFTvbHEAcFl7IrATej5Z/ON7JWoq5B6JCjlY=;
+ b=DC2pvxH+Olem2GTjIJFZfmlhLKnRRDHdhQAgSvRM0hXj4WcqXXyPDTa01j+9wkYpj1A2h/
+ FD9E7DKyx7N07eDsoP7anhcGwhJ5Fhi1NaiwhNv8/41b6F3+bFZ1M8v4rkVMmL/eyTsflA
+ 7Ic9jjKGSg3kM/u6sEbRbVXmX+IzxuM=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-296-ezlw1oZyMWi3jinToUH-ZA-1; Thu, 06 Jul 2023 07:42:39 -0400
-X-MC-Unique: ezlw1oZyMWi3jinToUH-ZA-1
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-3143b999f6eso300432f8f.3
- for <qemu-trivial@nongnu.org>; Thu, 06 Jul 2023 04:42:39 -0700 (PDT)
+ us-mta-673-XiU3rKNkPO6O_xnmqPZ1HQ-1; Thu, 06 Jul 2023 08:05:39 -0400
+X-MC-Unique: XiU3rKNkPO6O_xnmqPZ1HQ-1
+Received: by mail-qt1-f200.google.com with SMTP id
+ d75a77b69052e-403838e9f4dso1979451cf.1
+ for <qemu-trivial@nongnu.org>; Thu, 06 Jul 2023 05:05:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688643758; x=1691235758;
- h=mime-version:message-id:date:reply-to:user-agent:references
- :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=vcf7QHKLpBXcPUjgGD0oUcQaTofe75gJXZKJMFB7UG8=;
- b=B7aj/1rlhWLbMbU6FaTStDfJfKEV9xfvQsghSjlFCsBGCdxo3yMFBfTwzhvtmfqiD1
- 10X4MUrQBlLUa8QQb+L/EcEJnRjoY7pXl6fHZaBiaO7LdqhoSA/1OzQ8sU/cb/fLjmSY
- fkLtCo3ryGSS9452UYPrlyut0jdO4aIpANlSzRELp94agIBH4wEjqQDjkwbLGOsGzTH+
- twEajWgpxJDIN4lGUeMdLxgnadP5JuMc5lEeGbQRA3ChMuQp6cJbjqX0O8/knC3o7TeJ
- h1gQnz5e4iRrNly8d84GOq58u3NvBasQt9Ay/zNuWAoWt36vq+MjUUHbWQVrJ0CGmZHz
- gSrQ==
-X-Gm-Message-State: ABy/qLb713awfl2nRns9isdPIRjGWlSfO7Zvlh/Xn1cM4GMIVTyu2o+6
- wW42pR1ZT+WAMC43Rs/wgPZigjb+HJw+9oKOhTxhH/LFyJ2NromQAmE2nz5vtFqx7L2fUE0TdTy
- AhDl6pY8BwW6HH65i4Q==
-X-Received: by 2002:adf:e34c:0:b0:314:3643:83b5 with SMTP id
- n12-20020adfe34c000000b00314364383b5mr1217712wrj.41.1688643758480; 
- Thu, 06 Jul 2023 04:42:38 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlHkF1wWNx/dq/ctP/3CQIYUFC/XB91GkFvtY5pJ7CDF0xg3ezRE13zqQbHeJsf1dfcgUsnF5g==
-X-Received: by 2002:adf:e34c:0:b0:314:3643:83b5 with SMTP id
- n12-20020adfe34c000000b00314364383b5mr1217699wrj.41.1688643758217; 
- Thu, 06 Jul 2023 04:42:38 -0700 (PDT)
-Received: from redhat.com (static-92-120-85-188.ipcom.comunitel.net.
- [188.85.120.92]) by smtp.gmail.com with ESMTPSA id
- k7-20020a5d6287000000b00314417f5272sm1674176wru.64.2023.07.06.04.42.37
+ d=1e100.net; s=20221208; t=1688645139; x=1689249939;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=dpsrKkCdFTvbHEAcFl7IrATej5Z/ON7JWoq5B6JCjlY=;
+ b=bgEAGCp84ieBGi19vAbvuVi022QqXq5Q5mlNz+8+UhlNNdPsuIjvNFEHxsC72zl1Vs
+ 4F9JaRHoUrK7wCtQeO5yAMbXSag1ge5ak+tmxEbgyWmpqH4W9KBcfFv51xe+eAMMN1Dy
+ E9wATo4sY7PmZfLXt2LY/6xwsmenSMnpaiJDQ9UB4MXpOTSF2DQ7600evGRj4ng7jDdK
+ 9DskPOYk3Y3z5uk9hNFxoKQuWAPIkoTGL0rypo+6ERlncy2sy6Z/jxTAVlixhTKdFJu7
+ ZjPPK6Ed46LsCW2uK13+dL7R7MZEvLmB6r4Vr14enx34tGkrshC+2/Di1sQwvRwyukXM
+ YJRA==
+X-Gm-Message-State: ABy/qLbj9Eb/lPdMjtSQ0gALh1Sz3rahwzUuOZTgzjsHbQOBOsY7LQik
+ qIy31FVhLbDwYTwP4dBqv+oR+Fe+RYiURM4DMcaHM8mWjJuqbGZnEwNeC/kwNzwEJA0L3F/zb6G
+ LSvkRturNaEROobTgRA==
+X-Received: by 2002:a05:6214:1c49:b0:635:e528:521a with SMTP id
+ if9-20020a0562141c4900b00635e528521amr1586990qvb.5.1688645139189; 
+ Thu, 06 Jul 2023 05:05:39 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlFlsxr6GMPcji8rAk4rAan61aATxlSig5GOGe0alNSt2WYJ6xtV+YjURmZ8yc0S3BEILUT6Uw==
+X-Received: by 2002:a05:6214:1c49:b0:635:e528:521a with SMTP id
+ if9-20020a0562141c4900b00635e528521amr1586970qvb.5.1688645138865; 
+ Thu, 06 Jul 2023 05:05:38 -0700 (PDT)
+Received: from x1n (cpe5c7695f3aee0-cm5c7695f3aede.cpe.net.cable.rogers.com.
+ [99.254.144.39]) by smtp.gmail.com with ESMTPSA id
+ f3-20020a0cf3c3000000b00635ef3a34ebsm798290qvm.48.2023.07.06.05.05.38
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Jul 2023 04:42:37 -0700 (PDT)
-From: Juan Quintela <quintela@redhat.com>
+ Thu, 06 Jul 2023 05:05:38 -0700 (PDT)
+Date: Thu, 6 Jul 2023 08:05:37 -0400
+From: Peter Xu <peterx@redhat.com>
 To: Laszlo Ersek <lersek@redhat.com>
-Cc: qemu-devel@nongnu.org,  Leonardo Bras <leobras@redhat.com>,  Peter Xu
- <peterx@redhat.com>,  qemu-trivial@nongnu.org
-Subject: Re: [PATCH 2/2] migration: unexport migrate_fd_error()
-In-Reply-To: <20230706102937.82490-3-lersek@redhat.com> (Laszlo Ersek's
- message of "Thu, 6 Jul 2023 12:29:37 +0200")
+Cc: qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>,
+ Leonardo Bras <leobras@redhat.com>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH 0/2] migration: trivialities
+Message-ID: <ZKauEVBEYTcRqR+p@x1n>
 References: <20230706102937.82490-1-lersek@redhat.com>
- <20230706102937.82490-3-lersek@redhat.com>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
-Reply-To: quintela@redhat.com
-Date: Thu, 06 Jul 2023 13:42:37 +0200
-Message-ID: <87wmzd9sgi.fsf@secure.mitica>
 MIME-Version: 1.0
+In-Reply-To: <20230706102937.82490-1-lersek@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -81,7 +76,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,22 +89,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jul 2023 11:42:46 -0000
+X-List-Received-Date: Thu, 06 Jul 2023 12:05:44 -0000
 
-Laszlo Ersek <lersek@redhat.com> wrote:
-> The only migrate_fd_error() call sites are in "migration/migration.c",
-> which is also where we define migrate_fd_error(). Make the function
-> static, and remove its declaration from "migration/migration.h".
->
+On Thu, Jul 06, 2023 at 12:29:35PM +0200, Laszlo Ersek wrote:
+> SSIA; originally for RHBZ#2018404 (hence the links in the commit
+> messages).
+> 
 > Cc: Juan Quintela <quintela@redhat.com> (maintainer:Migration)
 > Cc: Leonardo Bras <leobras@redhat.com> (reviewer:Migration)
 > Cc: Peter Xu <peterx@redhat.com> (reviewer:Migration)
 > Cc: qemu-trivial@nongnu.org
-> Bugzilla: https://bugzilla.redhat.com/show_bug.cgi?id=2018404
-> Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+> 
+> Laszlo Ersek (2):
+>   migration: factor out "resume_requested" in qmp_migrate()
+>   migration: unexport migrate_fd_error()
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
+Reviewed-by: Peter Xu <peterx@redhat.com>
 
-queued.
+-- 
+Peter Xu
 
 
