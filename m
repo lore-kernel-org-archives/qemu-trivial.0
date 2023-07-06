@@ -1,64 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qHQ6X-0002Hn-IK
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jul 2023 10:37:09 -0400
+	id 1qHS4E-0007iN-5W
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jul 2023 12:42:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1qHQ6W-0002HG-Bd
- for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 10:37:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1qHQ6U-0001VB-Iy
- for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 10:37:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1688654225;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=JulRSscV85NHMP3waIMTzCBOTHDxHIFUbW3bERmstcQ=;
- b=hprZ50VvlCABQ48hlXcUgicBrtJCCAx1YsH/z3UP9BZvMK5wpB94Ebx+E/ugTG53cPslK6
- ul5aLdIbE0HVjT4lVMNMtDYxzyABjZh3fjJSWIbTijR81+cBGTRhUhMr7uyu60HZNHOMUb
- JBWP3ItZpmOqy5CGV4L8l6YZK209hrw=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-139-GxhqQ43aNDCmrJZ0W57GVA-1; Thu, 06 Jul 2023 10:36:58 -0400
-X-MC-Unique: GxhqQ43aNDCmrJZ0W57GVA-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 28D2688D7F7;
- Thu,  6 Jul 2023 14:36:45 +0000 (UTC)
-Received: from [10.39.194.17] (unknown [10.39.194.17])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 285BB40C2063;
- Thu,  6 Jul 2023 14:36:44 +0000 (UTC)
-Message-ID: <8f579ca4-b51c-db7c-b76e-0de2d083af68@redhat.com>
-Date: Thu, 6 Jul 2023 16:36:42 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qHS4C-0007gt-JT
+ for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 12:42:52 -0400
+Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qHS4A-0004BQ-R3
+ for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 12:42:52 -0400
+Received: by mail-lj1-x22b.google.com with SMTP id
+ 38308e7fff4ca-2b69f958ef3so14314401fa.1
+ for <qemu-trivial@nongnu.org>; Thu, 06 Jul 2023 09:42:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1688661768; x=1691253768;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mCgMcmRBiPxG28jfyIvn98PIf7zhjIQFTtaUi8xKxC0=;
+ b=SdxpZasiKmpSDgjjXEaucPIx8UKEK1FCX/9NIhIkRH/H3hlj5QgW3UOvImPXcRRk64
+ OOBvaE/i4gMFyfGKYCHiFdbnSDeSRxIakEsMAmM+AQpKJx+JPN9IwvkUSEQa1ybDGTjW
+ U/dRkZkKSVTNLxGvdyymNrnAS8PZ6RoSbhTjuwgOVgzhN1AEHPcWVacf0SO2rftzWQPA
+ CKgcdkS//Ksw4MsCTMAqRDrrciIGjpkxwsYj345Ws4jE80qmhCC0z5cvHiJIrUruXCKh
+ KCeJW7J59JRaTz0iKP3nCfJl34yGNU+Xpdiq3xUZECS/I6iTIjxfpbhWRsZx7gi/BeVf
+ SD9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1688661768; x=1691253768;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mCgMcmRBiPxG28jfyIvn98PIf7zhjIQFTtaUi8xKxC0=;
+ b=SLl0RDv3RgpERH8Sug/7pFaSeZzlW8RXMEf3F1eDCsviYS1sNdERlrhS1oMG8df/GL
+ jGiDrcO5qkFefOBxU+v5C8ygCvEIu0HusnA7z6NwDIawz0t5wHoG2V3MNgltbl4ZjZiK
+ ikvxc9dxnfWsjiMvfsaRYwoQ49NOcWUmoqLNlX+ISOUo7mC8UH5Swg1X3bUfaU4pAov8
+ 3KCm7TMU9OXE7BMDi0yN4XpQOlHyyZ27gzFR/GT11XpzXDGOqEVHPdeZWtANOxUGJ616
+ 4c9ZNpI+tv5qLjhaFOzLmsTXkE22gz/vC3RMv0B8vuhThfN3DT53CWOqCzNrUwfnHd1E
+ z/+Q==
+X-Gm-Message-State: ABy/qLa9x0WIlWP0ySns3T1ZgXAg4owG3aZqkkqFrm/LSLAiYH6pK8+n
+ 5TXh3Yg+iF5Luz8X+xL88BjW0g==
+X-Google-Smtp-Source: APBJJlF6woPh8CiOT4XT4dSY7lj6SmpGxGfxjsMC4bR67y5qanQA9YFge13LGxVOJCtqK0YArjmkCA==
+X-Received: by 2002:a2e:8809:0:b0:2b6:fc84:4949 with SMTP id
+ x9-20020a2e8809000000b002b6fc844949mr1623402ljh.50.1688661768045; 
+ Thu, 06 Jul 2023 09:42:48 -0700 (PDT)
+Received: from [192.168.1.102] ([176.187.199.225])
+ by smtp.gmail.com with ESMTPSA id
+ qq2-20020a17090720c200b0098860721959sm1027127ejb.198.2023.07.06.09.42.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 06 Jul 2023 09:42:47 -0700 (PDT)
+Message-ID: <3ed74089-bfca-b779-3f21-a8e2f82d8741@linaro.org>
+Date: Thu, 6 Jul 2023 18:42:45 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.12.0
 Subject: Re: [PATCH 1/2] migration: factor out "resume_requested" in
  qmp_migrate()
 Content-Language: en-US
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+To: Laszlo Ersek <lersek@redhat.com>, qemu-devel@nongnu.org
 Cc: Juan Quintela <quintela@redhat.com>, Leonardo Bras <leobras@redhat.com>,
  Peter Xu <peterx@redhat.com>, qemu-trivial@nongnu.org
 References: <20230706102937.82490-1-lersek@redhat.com>
  <20230706102937.82490-2-lersek@redhat.com>
- <33088999-cc41-7dd6-b522-84af01913172@tls.msk.ru>
-From: Laszlo Ersek <lersek@redhat.com>
-In-Reply-To: <33088999-cc41-7dd6-b522-84af01913172@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230706102937.82490-2-lersek@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=lersek@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x22b.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -72,67 +85,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jul 2023 14:37:08 -0000
+X-List-Received-Date: Thu, 06 Jul 2023 16:42:52 -0000
 
-On 7/6/23 15:28, Michael Tokarev wrote:
-> 06.07.2023 13:29, Laszlo Ersek пишет:
->> It cuts back on those awkward, duplicated !(has_resume && resume)
->> expressions.
->>
->> Cc: Juan Quintela <quintela@redhat.com> (maintainer:Migration)
->> Cc: Leonardo Bras <leobras@redhat.com> (reviewer:Migration)
->> Cc: Peter Xu <peterx@redhat.com> (reviewer:Migration)
->> Cc: qemu-trivial@nongnu.org
->> Bugzilla: https://bugzilla.redhat.com/show_bug.cgi?id=2018404
->> Signed-off-by: Laszlo Ersek <lersek@redhat.com>
->> ---
->>   migration/migration.c | 10 ++++++----
->>   1 file changed, 6 insertions(+), 4 deletions(-)
->>
->> diff --git a/migration/migration.c b/migration/migration.c
->> index 096e8191d15c..a60a5acee533 100644
->> --- a/migration/migration.c
->> +++ b/migration/migration.c
->> @@ -1637,6 +1637,7 @@ void qmp_migrate(const char *uri, bool has_blk,
->> bool blk,
->>                    bool has_inc, bool inc, bool has_detach, bool detach,
->>                    bool has_resume, bool resume, Error **errp)
->>   {
->> +    bool resume_requested;
->>       Error *local_err = NULL;
->>       MigrationState *s = migrate_get_current();
->>       const char *p = NULL;
->> @@ -1646,13 +1647,14 @@ void qmp_migrate(const char *uri, bool
->> has_blk, bool blk,
->>           return;
->>       }
->>   +    resume_requested = has_resume && resume;
+On 6/7/23 12:29, Laszlo Ersek wrote:
+> It cuts back on those awkward, duplicated !(has_resume && resume)
+> expressions.
 > 
-> Dunno if it's worth it or cleaner, but it can be reduced to
-> 
->       if (!has_resume)  resume = false;
-> 
-> and checking for only resume below this point.
-> In other words, there's no need for an additional local var.
+> Cc: Juan Quintela <quintela@redhat.com> (maintainer:Migration)
+> Cc: Leonardo Bras <leobras@redhat.com> (reviewer:Migration)
+> Cc: Peter Xu <peterx@redhat.com> (reviewer:Migration)
+> Cc: qemu-trivial@nongnu.org
+> Bugzilla: https://bugzilla.redhat.com/show_bug.cgi?id=2018404
+> Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+> ---
+>   migration/migration.c | 10 ++++++----
+>   1 file changed, 6 insertions(+), 4 deletions(-)
 
-I vehemently disagree with overwriting (input) parameters. One situation
-where that practice is a disaster is single-stepping through the
-function in an interactive debugger. You won't see the actual argument
-the function was originally called with.
-
-I know it's sometimes comfortable to just reuse a "count" input
-paramater as a loop index that runs to zero -- I resist that too, it's a
-trap (for the same reason), IMO.
-
-> 
-> All other params (has_inc & inc, has_detach_detach etc) are like this
-> too.
-> 
-> Anyway,
-> 
-> Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-
-Thanks!
-Laszlo
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
