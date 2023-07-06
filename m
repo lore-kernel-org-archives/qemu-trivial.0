@@ -1,82 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qHNk3-0006mC-TK
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jul 2023 08:05:47 -0400
+	id 1qHP2F-00045D-4B
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jul 2023 09:28:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1qHNk0-0006lU-7x
- for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 08:05:44 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qHP1w-0003t3-3f; Thu, 06 Jul 2023 09:28:24 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1qHNjy-0005hT-KP
- for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 08:05:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1688645141;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=dpsrKkCdFTvbHEAcFl7IrATej5Z/ON7JWoq5B6JCjlY=;
- b=DC2pvxH+Olem2GTjIJFZfmlhLKnRRDHdhQAgSvRM0hXj4WcqXXyPDTa01j+9wkYpj1A2h/
- FD9E7DKyx7N07eDsoP7anhcGwhJ5Fhi1NaiwhNv8/41b6F3+bFZ1M8v4rkVMmL/eyTsflA
- 7Ic9jjKGSg3kM/u6sEbRbVXmX+IzxuM=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-673-XiU3rKNkPO6O_xnmqPZ1HQ-1; Thu, 06 Jul 2023 08:05:39 -0400
-X-MC-Unique: XiU3rKNkPO6O_xnmqPZ1HQ-1
-Received: by mail-qt1-f200.google.com with SMTP id
- d75a77b69052e-403838e9f4dso1979451cf.1
- for <qemu-trivial@nongnu.org>; Thu, 06 Jul 2023 05:05:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688645139; x=1689249939;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=dpsrKkCdFTvbHEAcFl7IrATej5Z/ON7JWoq5B6JCjlY=;
- b=bgEAGCp84ieBGi19vAbvuVi022QqXq5Q5mlNz+8+UhlNNdPsuIjvNFEHxsC72zl1Vs
- 4F9JaRHoUrK7wCtQeO5yAMbXSag1ge5ak+tmxEbgyWmpqH4W9KBcfFv51xe+eAMMN1Dy
- E9wATo4sY7PmZfLXt2LY/6xwsmenSMnpaiJDQ9UB4MXpOTSF2DQ7600evGRj4ng7jDdK
- 9DskPOYk3Y3z5uk9hNFxoKQuWAPIkoTGL0rypo+6ERlncy2sy6Z/jxTAVlixhTKdFJu7
- ZjPPK6Ed46LsCW2uK13+dL7R7MZEvLmB6r4Vr14enx34tGkrshC+2/Di1sQwvRwyukXM
- YJRA==
-X-Gm-Message-State: ABy/qLbj9Eb/lPdMjtSQ0gALh1Sz3rahwzUuOZTgzjsHbQOBOsY7LQik
- qIy31FVhLbDwYTwP4dBqv+oR+Fe+RYiURM4DMcaHM8mWjJuqbGZnEwNeC/kwNzwEJA0L3F/zb6G
- LSvkRturNaEROobTgRA==
-X-Received: by 2002:a05:6214:1c49:b0:635:e528:521a with SMTP id
- if9-20020a0562141c4900b00635e528521amr1586990qvb.5.1688645139189; 
- Thu, 06 Jul 2023 05:05:39 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlFlsxr6GMPcji8rAk4rAan61aATxlSig5GOGe0alNSt2WYJ6xtV+YjURmZ8yc0S3BEILUT6Uw==
-X-Received: by 2002:a05:6214:1c49:b0:635:e528:521a with SMTP id
- if9-20020a0562141c4900b00635e528521amr1586970qvb.5.1688645138865; 
- Thu, 06 Jul 2023 05:05:38 -0700 (PDT)
-Received: from x1n (cpe5c7695f3aee0-cm5c7695f3aede.cpe.net.cable.rogers.com.
- [99.254.144.39]) by smtp.gmail.com with ESMTPSA id
- f3-20020a0cf3c3000000b00635ef3a34ebsm798290qvm.48.2023.07.06.05.05.38
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 06 Jul 2023 05:05:38 -0700 (PDT)
-Date: Thu, 6 Jul 2023 08:05:37 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Laszlo Ersek <lersek@redhat.com>
-Cc: qemu-devel@nongnu.org, Juan Quintela <quintela@redhat.com>,
- Leonardo Bras <leobras@redhat.com>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH 0/2] migration: trivialities
-Message-ID: <ZKauEVBEYTcRqR+p@x1n>
-References: <20230706102937.82490-1-lersek@redhat.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qHP1s-0001wQ-Tj; Thu, 06 Jul 2023 09:28:19 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 4F59312092;
+ Thu,  6 Jul 2023 16:28:07 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id AC287133B3;
+ Thu,  6 Jul 2023 16:28:06 +0300 (MSK)
+Message-ID: <33088999-cc41-7dd6-b522-84af01913172@tls.msk.ru>
+Date: Thu, 6 Jul 2023 16:28:06 +0300
 MIME-Version: 1.0
-In-Reply-To: <20230706102937.82490-1-lersek@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH 1/2] migration: factor out "resume_requested" in
+ qmp_migrate()
+Content-Language: en-US
+To: Laszlo Ersek <lersek@redhat.com>, qemu-devel@nongnu.org
+Cc: Juan Quintela <quintela@redhat.com>, Leonardo Bras <leobras@redhat.com>,
+ Peter Xu <peterx@redhat.com>, qemu-trivial@nongnu.org
+References: <20230706102937.82490-1-lersek@redhat.com>
+ <20230706102937.82490-2-lersek@redhat.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <20230706102937.82490-2-lersek@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -69
+X-Spam_score: -7.0
+X-Spam_bar: -------
+X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.091,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,24 +52,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jul 2023 12:05:44 -0000
+X-List-Received-Date: Thu, 06 Jul 2023 13:28:33 -0000
 
-On Thu, Jul 06, 2023 at 12:29:35PM +0200, Laszlo Ersek wrote:
-> SSIA; originally for RHBZ#2018404 (hence the links in the commit
-> messages).
+06.07.2023 13:29, Laszlo Ersek пишет:
+> It cuts back on those awkward, duplicated !(has_resume && resume)
+> expressions.
 > 
 > Cc: Juan Quintela <quintela@redhat.com> (maintainer:Migration)
 > Cc: Leonardo Bras <leobras@redhat.com> (reviewer:Migration)
 > Cc: Peter Xu <peterx@redhat.com> (reviewer:Migration)
 > Cc: qemu-trivial@nongnu.org
+> Bugzilla: https://bugzilla.redhat.com/show_bug.cgi?id=2018404
+> Signed-off-by: Laszlo Ersek <lersek@redhat.com>
+> ---
+>   migration/migration.c | 10 ++++++----
+>   1 file changed, 6 insertions(+), 4 deletions(-)
 > 
-> Laszlo Ersek (2):
->   migration: factor out "resume_requested" in qmp_migrate()
->   migration: unexport migrate_fd_error()
+> diff --git a/migration/migration.c b/migration/migration.c
+> index 096e8191d15c..a60a5acee533 100644
+> --- a/migration/migration.c
+> +++ b/migration/migration.c
+> @@ -1637,6 +1637,7 @@ void qmp_migrate(const char *uri, bool has_blk, bool blk,
+>                    bool has_inc, bool inc, bool has_detach, bool detach,
+>                    bool has_resume, bool resume, Error **errp)
+>   {
+> +    bool resume_requested;
+>       Error *local_err = NULL;
+>       MigrationState *s = migrate_get_current();
+>       const char *p = NULL;
+> @@ -1646,13 +1647,14 @@ void qmp_migrate(const char *uri, bool has_blk, bool blk,
+>           return;
+>       }
+>   
+> +    resume_requested = has_resume && resume;
 
-Reviewed-by: Peter Xu <peterx@redhat.com>
+Dunno if it's worth it or cleaner, but it can be reduced to
 
--- 
-Peter Xu
+       if (!has_resume)  resume = false;
 
+and checking for only resume below this point.
+In other words, there's no need for an additional local var.
+
+All other params (has_inc & inc, has_detach_detach etc) are like this
+too.
+
+Anyway,
+
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+
+/mjt
 
