@@ -1,78 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qHS4E-0007iN-5W
-	for mharc-qemu-trivial@gnu.org; Thu, 06 Jul 2023 12:42:54 -0400
+	id 1qHS5U-0000Ig-D7
+	for mharc-qemu-trivial@gnu.org; Thu, 06 Jul 2023 12:44:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qHS4C-0007gt-JT
- for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 12:42:52 -0400
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qHS5S-0000Hf-DI
+ for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 12:44:10 -0400
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qHS4A-0004BQ-R3
- for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 12:42:52 -0400
-Received: by mail-lj1-x22b.google.com with SMTP id
- 38308e7fff4ca-2b69f958ef3so14314401fa.1
- for <qemu-trivial@nongnu.org>; Thu, 06 Jul 2023 09:42:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qHS5Q-0004nR-Ns
+ for qemu-trivial@nongnu.org; Thu, 06 Jul 2023 12:44:10 -0400
+Received: by mail-lf1-x136.google.com with SMTP id
+ 2adb3069b0e04-4fb41682472so1239252e87.2
+ for <qemu-trivial@nongnu.org>; Thu, 06 Jul 2023 09:44:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1688661768; x=1691253768;
+ d=linaro.org; s=google; t=1688661847; x=1691253847;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=mCgMcmRBiPxG28jfyIvn98PIf7zhjIQFTtaUi8xKxC0=;
- b=SdxpZasiKmpSDgjjXEaucPIx8UKEK1FCX/9NIhIkRH/H3hlj5QgW3UOvImPXcRRk64
- OOBvaE/i4gMFyfGKYCHiFdbnSDeSRxIakEsMAmM+AQpKJx+JPN9IwvkUSEQa1ybDGTjW
- U/dRkZkKSVTNLxGvdyymNrnAS8PZ6RoSbhTjuwgOVgzhN1AEHPcWVacf0SO2rftzWQPA
- CKgcdkS//Ksw4MsCTMAqRDrrciIGjpkxwsYj345Ws4jE80qmhCC0z5cvHiJIrUruXCKh
- KCeJW7J59JRaTz0iKP3nCfJl34yGNU+Xpdiq3xUZECS/I6iTIjxfpbhWRsZx7gi/BeVf
- SD9w==
+ bh=SdAqGi9meiuNIBsbd0w+Z2XLHwpHZx+PekJlmdeTDvU=;
+ b=kwkeymgtNhhmRpgRZb2WZ2+Ab2ywk9YeQbwyZ0jxSy9aAYPPxcITWX3PnGKjfAhKEv
+ j+iN3g1vV2h11PgYkO/OIszlURXhYgUX/CIChQz0XbaBavjyVNx+lnlTVYp6GzJCVjLO
+ OteaoyBtaClYdyX12pHuRAOe87oOEkrSTQ7kGwaWPpMxguKHiQyZYirJpaiL7rZtjCgj
+ EPL/AprQg7IseJ5QGrqXDY92GswVjIie+qfuNfr3FUDYQyW8r8oxTh1+F/us09RPbcrc
+ PJGCRPy5WDBeaNJotRJrcrn7C6ufFPLZ1tLKXHvgRcRzA3xTf3ApqhWkPaoLdTbSJk9a
+ 1Mnw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688661768; x=1691253768;
+ d=1e100.net; s=20221208; t=1688661847; x=1691253847;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mCgMcmRBiPxG28jfyIvn98PIf7zhjIQFTtaUi8xKxC0=;
- b=SLl0RDv3RgpERH8Sug/7pFaSeZzlW8RXMEf3F1eDCsviYS1sNdERlrhS1oMG8df/GL
- jGiDrcO5qkFefOBxU+v5C8ygCvEIu0HusnA7z6NwDIawz0t5wHoG2V3MNgltbl4ZjZiK
- ikvxc9dxnfWsjiMvfsaRYwoQ49NOcWUmoqLNlX+ISOUo7mC8UH5Swg1X3bUfaU4pAov8
- 3KCm7TMU9OXE7BMDi0yN4XpQOlHyyZ27gzFR/GT11XpzXDGOqEVHPdeZWtANOxUGJ616
- 4c9ZNpI+tv5qLjhaFOzLmsTXkE22gz/vC3RMv0B8vuhThfN3DT53CWOqCzNrUwfnHd1E
- z/+Q==
-X-Gm-Message-State: ABy/qLa9x0WIlWP0ySns3T1ZgXAg4owG3aZqkkqFrm/LSLAiYH6pK8+n
- 5TXh3Yg+iF5Luz8X+xL88BjW0g==
-X-Google-Smtp-Source: APBJJlF6woPh8CiOT4XT4dSY7lj6SmpGxGfxjsMC4bR67y5qanQA9YFge13LGxVOJCtqK0YArjmkCA==
-X-Received: by 2002:a2e:8809:0:b0:2b6:fc84:4949 with SMTP id
- x9-20020a2e8809000000b002b6fc844949mr1623402ljh.50.1688661768045; 
- Thu, 06 Jul 2023 09:42:48 -0700 (PDT)
+ bh=SdAqGi9meiuNIBsbd0w+Z2XLHwpHZx+PekJlmdeTDvU=;
+ b=I0U/LGxQlOa7gQaCeCyDerdeVXQwc8nsPoMdtDfMsQZ58AvI9T66ZfGxl2U8UBLZFP
+ o25MzIusNeKM3plmGawxU12NbjEDZQ/OIpYaBnQbxnm8GPs4sk1EBSEjLdJztneqNdag
+ 4JjV0YRXUfT9WJpKi0VUrjzHF6bm4xAPvV4eB5xQFtJik0LVpAfwpkR0mQpaMqHLft8n
+ lfAz79eYzjs7NUPce4Tg2iyM6gy2OvUB7vzvxuNYDabAhqhPhVAQq6x6D/DtRfE24cOS
+ V2EuFaWc0OVthDLWdaaEYyRv4YJn9MPZiGadVBJdVloS6MEGp2UTxE/MrC6XmawzPrjz
+ Ze3A==
+X-Gm-Message-State: ABy/qLah8o36WOIA8/ABmelCRfmZeWMk5bRR1XJ2NOprZfHvq3v0pb11
+ 4803nElIilzVHW+JS8U0egkcCw==
+X-Google-Smtp-Source: APBJJlFxBauAoOYjNSjh+Fain5RLPO1OBQfT044EV7Q0ZFRvz50dkjA3c8AnnkC5HiKnpES7EnFb/g==
+X-Received: by 2002:a2e:740a:0:b0:2b6:c4be:8397 with SMTP id
+ p10-20020a2e740a000000b002b6c4be8397mr405074ljc.20.1688661846976; 
+ Thu, 06 Jul 2023 09:44:06 -0700 (PDT)
 Received: from [192.168.1.102] ([176.187.199.225])
  by smtp.gmail.com with ESMTPSA id
- qq2-20020a17090720c200b0098860721959sm1027127ejb.198.2023.07.06.09.42.46
+ bi1-20020a170906a24100b00992aea2c55dsm1035665ejb.153.2023.07.06.09.44.05
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 06 Jul 2023 09:42:47 -0700 (PDT)
-Message-ID: <3ed74089-bfca-b779-3f21-a8e2f82d8741@linaro.org>
-Date: Thu, 6 Jul 2023 18:42:45 +0200
+ Thu, 06 Jul 2023 09:44:06 -0700 (PDT)
+Message-ID: <7cc2c3da-6ec1-7c4d-0c52-8752e79064cb@linaro.org>
+Date: Thu, 6 Jul 2023 18:44:04 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.12.0
-Subject: Re: [PATCH 1/2] migration: factor out "resume_requested" in
- qmp_migrate()
+Subject: Re: [PATCH 2/2] migration: unexport migrate_fd_error()
 Content-Language: en-US
 To: Laszlo Ersek <lersek@redhat.com>, qemu-devel@nongnu.org
 Cc: Juan Quintela <quintela@redhat.com>, Leonardo Bras <leobras@redhat.com>,
  Peter Xu <peterx@redhat.com>, qemu-trivial@nongnu.org
 References: <20230706102937.82490-1-lersek@redhat.com>
- <20230706102937.82490-2-lersek@redhat.com>
+ <20230706102937.82490-3-lersek@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230706102937.82490-2-lersek@redhat.com>
+In-Reply-To: <20230706102937.82490-3-lersek@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x22b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::136;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x136.google.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,11 +84,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 06 Jul 2023 16:42:52 -0000
+X-List-Received-Date: Thu, 06 Jul 2023 16:44:10 -0000
 
 On 6/7/23 12:29, Laszlo Ersek wrote:
-> It cuts back on those awkward, duplicated !(has_resume && resume)
-> expressions.
+> The only migrate_fd_error() call sites are in "migration/migration.c",
+> which is also where we define migrate_fd_error(). Make the function
+> static, and remove its declaration from "migration/migration.h".
 > 
 > Cc: Juan Quintela <quintela@redhat.com> (maintainer:Migration)
 > Cc: Leonardo Bras <leobras@redhat.com> (reviewer:Migration)
@@ -98,8 +98,9 @@ On 6/7/23 12:29, Laszlo Ersek wrote:
 > Bugzilla: https://bugzilla.redhat.com/show_bug.cgi?id=2018404
 > Signed-off-by: Laszlo Ersek <lersek@redhat.com>
 > ---
->   migration/migration.c | 10 ++++++----
->   1 file changed, 6 insertions(+), 4 deletions(-)
+>   migration/migration.h | 1 -
+>   migration/migration.c | 2 +-
+>   2 files changed, 1 insertion(+), 2 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
