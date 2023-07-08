@@ -1,36 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qI0GF-0006Qj-Vp
-	for mharc-qemu-trivial@gnu.org; Sat, 08 Jul 2023 01:13:35 -0400
+	id 1qI0GG-0006Qp-4B
+	for mharc-qemu-trivial@gnu.org; Sat, 08 Jul 2023 01:13:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qI0G0-0006GH-H5; Sat, 08 Jul 2023 01:13:21 -0400
+ id 1qI0G3-0006HQ-K8; Sat, 08 Jul 2023 01:13:23 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qI0Fy-0001ko-I7; Sat, 08 Jul 2023 01:13:20 -0400
+ id 1qI0G1-0001lR-Um; Sat, 08 Jul 2023 01:13:23 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id CA05F12684;
- Sat,  8 Jul 2023 08:13:08 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 4262812686;
+ Sat,  8 Jul 2023 08:13:09 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 03414139D2;
+ by tsrv.corpit.ru (Postfix) with SMTP id 6CC0A139D4;
  Sat,  8 Jul 2023 08:13:05 +0300 (MSK)
-Received: (nullmailer pid 3229991 invoked by uid 1000);
+Received: (nullmailer pid 3229997 invoked by uid 1000);
  Sat, 08 Jul 2023 05:13:04 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Hawkins Jiawei <yin31149@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 05/10] vdpa: Delete duplicated VIRTIO_NET_F_RSS in
- vdpa_feature_bits
-Date: Sat,  8 Jul 2023 08:12:45 +0300
-Message-Id: <aee9701729db62c01aa5927c1b690e9bc2b84460.1688793073.git.mjt@tls.msk.ru>
+Subject: [PULL 07/10] qemu-options.hx: Fix indentation of some option
+ descriptions
+Date: Sat,  8 Jul 2023 08:12:47 +0300
+Message-Id: <a635bcfc7a4c8d8589cff3e1cd22487ae561665e.1688793073.git.mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1688793073.git.mjt@tls.msk.ru>
 References: <cover.1688793073.git.mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -54,30 +52,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 08 Jul 2023 05:13:27 -0000
 
-From: Hawkins Jiawei <yin31149@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
 
-This entry was duplicated on referenced commit. Removing it.
+The description of the options starts at column 16, so fix
+this in some runaway lines for a more uniform output.
 
-Fixes: 402378407dbd ("vhost-vdpa: multiqueue support")
-Signed-off-by: Hawkins Jiawei <yin31149@gmail.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+While we're at it, replace the capital "NOTE" with "Note"
+since this seems to be the more common capitalization in
+qemu-options.hx.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- net/vhost-vdpa.c | 1 -
- 1 file changed, 1 deletion(-)
+ qemu-options.hx | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/net/vhost-vdpa.c b/net/vhost-vdpa.c
-index e19ab063fa..0479988a79 100644
---- a/net/vhost-vdpa.c
-+++ b/net/vhost-vdpa.c
-@@ -74,7 +74,6 @@ const int vdpa_feature_bits[] = {
-     VIRTIO_NET_F_CTRL_RX_EXTRA,
-     VIRTIO_NET_F_CTRL_VLAN,
-     VIRTIO_NET_F_CTRL_MAC_ADDR,
--    VIRTIO_NET_F_RSS,
-     VIRTIO_NET_F_MQ,
-     VIRTIO_NET_F_CTRL_VQ,
-     VIRTIO_F_IOMMU_PLATFORM,
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 80bd0252d9..96087505b2 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -652,7 +652,7 @@ DEF("m", HAS_ARG, QEMU_OPTION_m,
+     "                size: initial amount of guest memory\n"
+     "                slots: number of hotplug slots (default: none)\n"
+     "                maxmem: maximum amount of guest memory (default: none)\n"
+-    "NOTE: Some architectures might enforce a specific granularity\n",
++    "                Note: Some architectures might enforce a specific granularity\n",
+     QEMU_ARCH_ALL)
+ SRST
+ ``-m [size=]megs[,slots=n,maxmem=size]``
+@@ -2217,8 +2217,8 @@ DEF("spice", HAS_ARG, QEMU_OPTION_spice,
+     "       [,disable-agent-file-xfer=on|off][,agent-mouse=[on|off]]\n"
+     "       [,playback-compression=[on|off]][,seamless-migration=[on|off]]\n"
+     "       [,gl=[on|off]][,rendernode=<file>]\n"
+-    "   enable spice\n"
+-    "   at least one of {port, tls-port} is mandatory\n",
++    "                enable spice\n"
++    "                at least one of {port, tls-port} is mandatory\n",
+     QEMU_ARCH_ALL)
+ #endif
+ SRST
 -- 
 2.39.2
 
