@@ -1,66 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qInWu-0001z4-5Q
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Jul 2023 05:50:04 -0400
+	id 1qInn1-0002pV-SM
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Jul 2023 06:06:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qInWn-0001xT-HX
- for qemu-trivial@nongnu.org; Mon, 10 Jul 2023 05:50:01 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qInWm-0003aF-4e
- for qemu-trivial@nongnu.org; Mon, 10 Jul 2023 05:49:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1688982595;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=BY2rz2OYfJrKRqRVVQ6K7pqOp6frMppx8hSX/7UzocU=;
- b=CunDMsfaa8b61PVs7Gz/jsIm7ZDIau9Ju+fzNtXZ0zNVZ/bb8iKpIWKtDj8CG3drbwfE0J
- gKCU03sYo0be/563c1/797RLWeyTH1HR3a8hlffR8azA/2cFZtQCiJa6pZa3mdfit99G2k
- g2HmhnffDXFpYBk69fgnRJfMAc34asw=
-Received: from mimecast-mx02.redhat.com (mx3-rdu2.redhat.com
- [66.187.233.73]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-632-ZHCBKEpXNXa5AU3HHHBYQw-1; Mon, 10 Jul 2023 05:49:54 -0400
-X-MC-Unique: ZHCBKEpXNXa5AU3HHHBYQw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0BC3D1C28CE3;
- Mon, 10 Jul 2023 09:49:54 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id C590F2166B26;
- Mon, 10 Jul 2023 09:49:53 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id BD01C21E6A1F; Mon, 10 Jul 2023 11:49:49 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,
- qemu-trivial@nongnu.org,  Alex =?utf-8?Q?Benn=C3=A9e?=
- <alex.bennee@linaro.org>,  Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Juan Quintela
- <quintela@redhat.com>, Konstantin Kostiuk <kkostiuk@redhat.com>
-Subject: Re: [PATCH] docs/devel: Fix coding style in style.rst
-References: <20230710092638.161625-1-thuth@redhat.com>
-Date: Mon, 10 Jul 2023 11:49:49 +0200
-In-Reply-To: <20230710092638.161625-1-thuth@redhat.com> (Thomas Huth's message
- of "Mon, 10 Jul 2023 11:26:38 +0200")
-Message-ID: <87mt049juq.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qInmq-0002m4-L7
+ for qemu-trivial@nongnu.org; Mon, 10 Jul 2023 06:06:36 -0400
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qInml-0003DB-9x
+ for qemu-trivial@nongnu.org; Mon, 10 Jul 2023 06:06:30 -0400
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-3142a9ffa89so4935418f8f.0
+ for <qemu-trivial@nongnu.org>; Mon, 10 Jul 2023 03:06:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1688983586; x=1691575586;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=YTzpxqQ3tcZCyathxE1IsYFNxLxQSDOOexQYope2eqs=;
+ b=bym79lapWd+0Zyy8XxJzIP7fyCspr3/J4surZAtKdVEfjRvI8h+xDdBM1CAIj/DJFO
+ Sb0hGY8nEqstkvSVFamiEDSpX7TC6C8o7NWnxqUhCAkgvmBeXrvszGWwbUqf/riob/Or
+ kgUfftwjhIQ9Oo0nAJ0H6N3n9rYychpHp+VucqYbJMZjhqHB/IR8ov9pJhZKuh3aEIdP
+ FAmR1GFp0vNYyj/sTg+08b4fVcvYvj59zeTk6FlO+f9dfXHdW6XTEC6NpCXvDYLE3NDw
+ 54H0HBQmy205V3+JwAJ7AVhO3pbu6kaQrI/33Z3WwQaxsTbyL9L0a1Nb+oJ2ijKLB7sU
+ sGpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1688983586; x=1691575586;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=YTzpxqQ3tcZCyathxE1IsYFNxLxQSDOOexQYope2eqs=;
+ b=ImE+HMg4E6Khm3zbTkRgiZdTMyPHXnVaTU3fRGa6Go47w8Hya6Uew2A8AcmsfNjHSK
+ XhxwbUmrytkaJCVrf4MXYcWfNByiS3T9umOwFgsiNVRpPRaUcPXFP7F95ZjSgVlLF/k1
+ z6e/yOMbMqBHdh1DpRtjfurfEkapdUrrlNmwt1X0SPS8TfWTw9dl7Wdv3uXCQdn1yywr
+ Uqhc9Q44fSMJGqR79ryBxA4gi39+FOgGnPBADFaAPdPtqZsLan/whjyNNTB5z7zRTWj0
+ 3qnLvqUNXkqqFmlRVIz3Yrr8LGyk7gBBzwve/0G+WaE2Uqli+ni8BlSEINYSFpssHXAN
+ ulXA==
+X-Gm-Message-State: ABy/qLYG7NnqVOcIdWcfkXm0KIzWmvhe7PDEmwmb8yXv8cQmYj9nxblL
+ oYIiUugtr2+c0Rfs+sqnavAwWw==
+X-Google-Smtp-Source: APBJJlF5l7vEzNxca9/ndr6MlTs2MFlRwegaesLbGp7ScjPWEpibwgsD2uQQ3qTp4pvDor2yDZbfSQ==
+X-Received: by 2002:adf:ee07:0:b0:315:a190:d110 with SMTP id
+ y7-20020adfee07000000b00315a190d110mr329090wrn.28.1688983585966; 
+ Mon, 10 Jul 2023 03:06:25 -0700 (PDT)
+Received: from [192.168.229.175] (70.red-88-28-30.dynamicip.rima-tde.net.
+ [88.28.30.70]) by smtp.gmail.com with ESMTPSA id
+ o2-20020a5d4742000000b0031434936f0dsm11251899wrs.68.2023.07.10.03.06.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 10 Jul 2023 03:06:25 -0700 (PDT)
+Message-ID: <d12fc73a-1e8d-5234-9b3d-ad2005cff3db@linaro.org>
+Date: Mon, 10 Jul 2023 12:06:19 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.12.0
+Subject: Re: [PATCH] docs/devel: Fix coding style in style.rst
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2e_Berrang=c3=a9?= <berrange@redhat.com>
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Alex_Benn=c3=a9e?=
+ <alex.bennee@linaro.org>, Markus Armbruster <armbru@redhat.com>,
+ Juan Quintela <quintela@redhat.com>, Konstantin Kostiuk <kkostiuk@redhat.com>
+References: <20230710092638.161625-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230710092638.161625-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -74,55 +85,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Jul 2023 09:50:02 -0000
+X-List-Received-Date: Mon, 10 Jul 2023 10:06:41 -0000
 
-Thomas Huth <thuth@redhat.com> writes:
-
+On 10/7/23 11:26, Thomas Huth wrote:
 > As defined earlier in this file, the opening curly brace of
 > functions should be placed on a separate line. So we should
 > do it in the examples here, too.
->
+> 
 > Reported-by: Konstantin Kostiuk <kkostiuk@redhat.com>
 > Fixes: 821f296756 ("docs: document use of automatic cleanup functions in glib")
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  docs/devel/style.rst | 9 ++++++---
->  1 file changed, 6 insertions(+), 3 deletions(-)
->
-> diff --git a/docs/devel/style.rst b/docs/devel/style.rst
-> index aa5e083ff8..3cfcdeb9cd 100644
-> --- a/docs/devel/style.rst
-> +++ b/docs/devel/style.rst
-> @@ -567,7 +567,8 @@ For example, instead of
->  
->  .. code-block:: c
->  
-> -    int somefunc(void) {
-> +    int somefunc(void)
-> +    {
->          int ret = -1;
->          char *foo = g_strdup_printf("foo%", "wibble");
->          GList *bar = .....
-> @@ -588,7 +589,8 @@ Using g_autofree/g_autoptr enables the code to be written as:
->  
->  .. code-block:: c
->  
-> -    int somefunc(void) {
-> +    int somefunc(void)
-> +    {
->          g_autofree char *foo = g_strdup_printf("foo%", "wibble");
->          g_autoptr (GList) bar = .....
->  
-> @@ -613,7 +615,8 @@ are still some caveats to beware of
->  
->  .. code-block:: c
->  
-> -    char *somefunc(void) {
-> +    char *somefunc(void)
-> +    {
->          g_autofree char *foo = g_strdup_printf("foo%", "wibble");
->          g_autoptr (GList) bar = .....
+>   docs/devel/style.rst | 9 ++++++---
+>   1 file changed, 6 insertions(+), 3 deletions(-)
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
