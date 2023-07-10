@@ -1,83 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qIo9f-000753-NR
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Jul 2023 06:30:07 -0400
+	id 1qIrnC-0005QK-IX
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Jul 2023 10:23:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1qIo9d-00074n-Va
- for qemu-trivial@nongnu.org; Mon, 10 Jul 2023 06:30:06 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1qIo9c-000351-6i
- for qemu-trivial@nongnu.org; Mon, 10 Jul 2023 06:30:05 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-3090d3e9c92so5108852f8f.2
- for <qemu-trivial@nongnu.org>; Mon, 10 Jul 2023 03:30:02 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1688985001; x=1691577001;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
- :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1Ju58M6RIg840o2sMmJkivNvtXUXH4POnMnZDHHgGwk=;
- b=Iu2VngPyDYsH8Fiat1j+E2GTzKWM35ddh9y9/DLgpj3TTSQelONkonhWbNP1eRKFgX
- 2HQapWVE6uU1/ULuMoRydzgA7Z+Hc+dZPNmY5J/HcCWvRo+otWB/EK3yJpGHw1ygfczH
- VqozL0TyS4EK2jHLkkzyGXvaOdQ0z+p5V59MPfJU1Q0OvjI8YmiWEr/P1btd5sL7q6oc
- uMJNkPF0qHBhrDSaVj6ErbPslqcsbLIM7+UJ4eD1uAZ4RwkQi+fomWeEKK146ygh18zF
- YUbzUYUNzr3qiy9q4mgqPw9daBN4mP92T451ovDA1qdzkftdTEvUrkgvIPnmuI7oOmlP
- AfYQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1688985001; x=1691577001;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
- :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=1Ju58M6RIg840o2sMmJkivNvtXUXH4POnMnZDHHgGwk=;
- b=ERv73NWwITnYi0zTfnw6iomrSr5FiScKeJ3QUOPGYvqeAgpT5NZyyXMqmwy+Ow96RQ
- 7lreWFa00Vjzb7Cns+fJxfxpGJNdJmP3ZmNVDSZIVcGhOvMYEuwNaims22KHgvxONk5j
- hhFb+4hKz66FjIk1CVLsH91TEHx4jjCANw0XaXZTYq7zeAafXf5TZ8WBSITbgm2EMtoq
- JHSaAl6pi2ywLK+uRXrylWOh2kTry+5VDxKduVNGkcqBoKHgsELHPtDqv1sd8ZMoNWWb
- g7odXsxZPnxsnnTJmRfY8hwtZm5qwHRSCDN2pEgYEeu8LpggHoLRxbK5byijfuCF6/RY
- IN7w==
-X-Gm-Message-State: ABy/qLY57zr97aZraL0VLuG2+RoMoHAQP1Q0CiXI8dNrKkfe1tciiLyS
- k+C1eeIEV0V2FI2QCu2o9zwbzg==
-X-Google-Smtp-Source: APBJJlEYOo7o4Si4zHnw3PmaWAEJFXPxiDCd6RFOj6V5iT2j8BDvJGdv1eyAa5A5dRN+jRCB4es/XQ==
-X-Received: by 2002:adf:ec50:0:b0:315:9993:1caa with SMTP id
- w16-20020adfec50000000b0031599931caamr4293999wrn.12.1688985001697; 
- Mon, 10 Jul 2023 03:30:01 -0700 (PDT)
-Received: from zen.linaroharston ([85.9.250.243])
- by smtp.gmail.com with ESMTPSA id
- e7-20020a5d65c7000000b003159d2dabbasm1595581wrw.94.2023.07.10.03.30.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 10 Jul 2023 03:30:01 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id D3D941FFBB;
- Mon, 10 Jul 2023 11:30:00 +0100 (BST)
-References: <20230710092638.161625-1-thuth@redhat.com>
-User-agent: mu4e 1.11.9; emacs 29.0.92
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, =?utf-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>,
- qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>, Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Juan Quintela
- <quintela@redhat.com>, Konstantin Kostiuk <kkostiuk@redhat.com>
-Subject: Re: [PATCH] docs/devel: Fix coding style in style.rst
-Date: Mon, 10 Jul 2023 11:29:53 +0100
-In-reply-to: <20230710092638.161625-1-thuth@redhat.com>
-Message-ID: <87wmz8hxef.fsf@linaro.org>
+ (Exim 4.90_1) (envelope-from <Wilhelm.Golz@secunet.com>)
+ id 1qIrig-0003RJ-6L
+ for qemu-trivial@nongnu.org; Mon, 10 Jul 2023 10:18:30 -0400
+Received: from a.mx.secunet.com ([62.96.220.36])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <Wilhelm.Golz@secunet.com>)
+ id 1qIrie-0001vC-7Z
+ for qemu-trivial@nongnu.org; Mon, 10 Jul 2023 10:18:29 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by a.mx.secunet.com (Postfix) with ESMTP id 1D2BA2074F
+ for <qemu-trivial@nongnu.org>; Mon, 10 Jul 2023 16:18:24 +0200 (CEST)
+X-Virus-Scanned: by secunet
+Received: from a.mx.secunet.com ([127.0.0.1])
+ by localhost (a.mx.secunet.com [127.0.0.1]) (amavisd-new, port 10024)
+ with ESMTP id hYoShN41es16 for <qemu-trivial@nongnu.org>;
+ Mon, 10 Jul 2023 16:18:23 +0200 (CEST)
+Received: from mailout1.secunet.com (mailout1.secunet.com [62.96.220.44])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by a.mx.secunet.com (Postfix) with ESMTPS id A1408205CD
+ for <qemu-trivial@nongnu.org>; Mon, 10 Jul 2023 16:18:23 +0200 (CEST)
+Received: from cas-essen-02.secunet.de (unknown [10.53.40.202])
+ by mailout1.secunet.com (Postfix) with ESMTP id 991E480004A
+ for <qemu-trivial@nongnu.org>; Mon, 10 Jul 2023 16:18:23 +0200 (CEST)
+Received: from mbx-essen-02.secunet.de (10.53.40.198) by
+ cas-essen-02.secunet.de (10.53.40.202) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.27; Mon, 10 Jul 2023 16:18:23 +0200
+Received: from [172.18.156.217] (172.18.156.217) by mbx-essen-02.secunet.de
+ (10.53.40.198) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Mon, 10 Jul
+ 2023 16:18:22 +0200
+Message-ID: <12100964-f7c6-58fd-5f30-3394f1621df4@secunet.com>
+Date: Mon, 10 Jul 2023 16:18:11 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.11.0
+Content-Language: en-US
+From: Wilhelm Golz <wilhelm.golz@secunet.com>
+Organization: secunet Security Networks AG
+To: <qemu-trivial@nongnu.org>
+Subject: Ping to patch request "add option for a multislot usb ccid device"
+ (Klaus Ripke, 20.03.2023)
+Content-Type: text/plain; charset="UTF-8"; format=flowed
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: cas-essen-01.secunet.de (10.53.40.201) To
+ mbx-essen-02.secunet.de (10.53.40.198)
+X-EXCLAIMER-MD-CONFIG: 2c86f778-e09b-4440-8b15-867914633a10
+Received-SPF: pass client-ip=62.96.220.36;
+ envelope-from=Wilhelm.Golz@secunet.com; helo=a.mx.secunet.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 10 Jul 2023 10:23:08 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,23 +71,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Jul 2023 10:30:06 -0000
+X-List-Received-Date: Mon, 10 Jul 2023 14:18:30 -0000
 
+Hello,
 
-Thomas Huth <thuth@redhat.com> writes:
+I would like to remind the request of my former colleague
+Klaus Ripke, who posted a smaller patch-request to this list
 
-> As defined earlier in this file, the opening curly brace of
-> functions should be placed on a separate line. So we should
-> do it in the examples here, too.
->
-> Reported-by: Konstantin Kostiuk <kkostiuk@redhat.com>
-> Fixes: 821f296756 ("docs: document use of automatic cleanup functions in =
-glib")
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+"add option for a multislot usb ccid device"  by the 20th of March 2023.
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Are there any reasons to not take this patch upstream or
+do we have to improve things? Klaus is no longer working
+in our team, so I have taken over this topic.
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Thanks in advance for Your reply and kind regards
+
+Wilhelm
 
