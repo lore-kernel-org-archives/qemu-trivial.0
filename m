@@ -1,65 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qIrnC-0005QK-IX
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Jul 2023 10:23:10 -0400
+	id 1qJayI-0000kX-3f
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Jul 2023 10:37:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Wilhelm.Golz@secunet.com>)
- id 1qIrig-0003RJ-6L
- for qemu-trivial@nongnu.org; Mon, 10 Jul 2023 10:18:30 -0400
-Received: from a.mx.secunet.com ([62.96.220.36])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Wilhelm.Golz@secunet.com>)
- id 1qIrie-0001vC-7Z
- for qemu-trivial@nongnu.org; Mon, 10 Jul 2023 10:18:29 -0400
-Received: from localhost (localhost [127.0.0.1])
- by a.mx.secunet.com (Postfix) with ESMTP id 1D2BA2074F
- for <qemu-trivial@nongnu.org>; Mon, 10 Jul 2023 16:18:24 +0200 (CEST)
-X-Virus-Scanned: by secunet
-Received: from a.mx.secunet.com ([127.0.0.1])
- by localhost (a.mx.secunet.com [127.0.0.1]) (amavisd-new, port 10024)
- with ESMTP id hYoShN41es16 for <qemu-trivial@nongnu.org>;
- Mon, 10 Jul 2023 16:18:23 +0200 (CEST)
-Received: from mailout1.secunet.com (mailout1.secunet.com [62.96.220.44])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by a.mx.secunet.com (Postfix) with ESMTPS id A1408205CD
- for <qemu-trivial@nongnu.org>; Mon, 10 Jul 2023 16:18:23 +0200 (CEST)
-Received: from cas-essen-02.secunet.de (unknown [10.53.40.202])
- by mailout1.secunet.com (Postfix) with ESMTP id 991E480004A
- for <qemu-trivial@nongnu.org>; Mon, 10 Jul 2023 16:18:23 +0200 (CEST)
-Received: from mbx-essen-02.secunet.de (10.53.40.198) by
- cas-essen-02.secunet.de (10.53.40.202) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.1.2507.27; Mon, 10 Jul 2023 16:18:23 +0200
-Received: from [172.18.156.217] (172.18.156.217) by mbx-essen-02.secunet.de
- (10.53.40.198) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.27; Mon, 10 Jul
- 2023 16:18:22 +0200
-Message-ID: <12100964-f7c6-58fd-5f30-3394f1621df4@secunet.com>
-Date: Mon, 10 Jul 2023 16:18:11 +0200
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1qJayH-0000kO-Bb
+ for qemu-trivial@nongnu.org; Wed, 12 Jul 2023 10:37:37 -0400
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1qJayF-0005qY-Sn
+ for qemu-trivial@nongnu.org; Wed, 12 Jul 2023 10:37:37 -0400
+Received: by mail-ot1-x329.google.com with SMTP id
+ 46e09a7af769-6b9a2416b1cso427996a34.2
+ for <qemu-trivial@nongnu.org>; Wed, 12 Jul 2023 07:37:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google; t=1689172654; x=1691764654;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=XvA/EW8bgL9rBEB5uuntP1wRIt5rz95dfXHcblCouLk=;
+ b=HOyvcmOn0PvoikoQYkhLmnnyOjEm2NdTRFFCj9EkZUEjxCKVYXf3sDyuOuqDMsABQf
+ /BR3lmFvAKlBH9spBzcI+g+IM/84AXMXicpvA8Igmm9cCx5bBAORVKWLfZj+50GhAegt
+ 48v1+4wJ/S9GR9p6Q6JnmyrB/NucHaa4HngBiumbof1Cz2JmPR2dX6qkjTz4CaAC5jF+
+ WbWGRk1T0E5hrli8MW6Mu5R0yAfSpWFW80fETO3vEewSlUFds7v06dU7OfRynZEuWzKM
+ u67IPy8SDdGLSZhAI6DRL/Wsnt2/W1AYZ6KyiZCcbwdeMsPFIBdI4DBvLHEUjo4FUo3r
+ 8lqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1689172654; x=1691764654;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XvA/EW8bgL9rBEB5uuntP1wRIt5rz95dfXHcblCouLk=;
+ b=ani2KbtCOTouOMzp0yguw4zs1vusSpegKCdmB2eUydZ8IwT1tyL4wVmuG+47FY3WTu
+ m0x9CGMz4mSV9vqrAMmi08y7sVQA+nEvdUOIv5Q5HmkZuFbzhivWEiFPxi0EjEXkARws
+ upg55GuD14fNmAkwkwlHtWBqHpFqoTl8ahocM+so4/XAgghy+sMZnp+WQCH3TO075Pai
+ ApytuzFIjE0WBx78xPylLLcLunv1XD4Oewzdeky33FSfPBHbmX+ML8Ti47KnIbQ/Tcry
+ LEROW1AA+AVbt2ymyJaGiKL1PHjq4og6WrYsqFd2Ws/D5FseQGnHJwbjT+AhSUPJufqp
+ nwaQ==
+X-Gm-Message-State: ABy/qLbOJz0dCuogzM6qZbh4BUvibSKWCbeRO+h+56QOQuYun9gFROpW
+ Hxt43/95qGRcqOfjvAAhnA0DNQ==
+X-Google-Smtp-Source: APBJJlHMU/S80yWZsdYvRzBj9tKDMKxDb8D8kg/I8Lr7/ELbM5QZu6wD1UzcY84a6Wr9PK8RPvowsA==
+X-Received: by 2002:a05:6830:328e:b0:6b8:7e53:e7c3 with SMTP id
+ m14-20020a056830328e00b006b87e53e7c3mr17519659ott.31.1689172654308; 
+ Wed, 12 Jul 2023 07:37:34 -0700 (PDT)
+Received: from grind.. (201-69-66-19.dial-up.telesp.net.br. [201.69.66.19])
+ by smtp.gmail.com with ESMTPSA id
+ s5-20020a9d7585000000b006b29947160csm1953388otk.30.2023.07.12.07.37.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 12 Jul 2023 07:37:34 -0700 (PDT)
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, alistair.francis@wdc.com, bmeng@tinylab.org,
+ liweiwei@iscas.ac.cn, zhiwei_liu@linux.alibaba.com, palmer@rivosinc.com,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] docs/system/target-riscv.rst: tidy CPU firmware section
+Date: Wed, 12 Jul 2023 11:37:28 -0300
+Message-ID: <20230712143728.383528-1-dbarboza@ventanamicro.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.11.0
-Content-Language: en-US
-From: Wilhelm Golz <wilhelm.golz@secunet.com>
-Organization: secunet Security Networks AG
-To: <qemu-trivial@nongnu.org>
-Subject: Ping to patch request "add option for a multislot usb ccid device"
- (Klaus Ripke, 20.03.2023)
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: cas-essen-01.secunet.de (10.53.40.201) To
- mbx-essen-02.secunet.de (10.53.40.198)
-X-EXCLAIMER-MD-CONFIG: 2c86f778-e09b-4440-8b15-867914633a10
-Received-SPF: pass client-ip=62.96.220.36;
- envelope-from=Wilhelm.Golz@secunet.com; helo=a.mx.secunet.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::329;
+ envelope-from=dbarboza@ventanamicro.com; helo=mail-ot1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 10 Jul 2023 10:23:08 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,20 +81,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Jul 2023 14:18:30 -0000
+X-List-Received-Date: Wed, 12 Jul 2023 14:37:37 -0000
 
-Hello,
+This is how the content of the "RISC-V CPU firmware" section is
+displayed after the html is generated:
 
-I would like to remind the request of my former colleague
-Klaus Ripke, who posted a smaller patch-request to this list
+"When using the sifive_u or virt machine there are three different
+firmware boot options: 1. -bios default - This is the default behaviour
+if no -bios option is included. (...) 3. -bios <file> - Tells QEMU to
+load the specified file as the firmware."
 
-"add option for a multislot usb ccid device"  by the 20th of March 2023.
+It's all in the same paragraph, in a numbered list, and no special
+formatting for the options.
 
-Are there any reasons to not take this patch upstream or
-do we have to improve things? Klaus is no longer working
-in our team, so I have taken over this topic.
+Tidy it a bit by adding line breaks between items and its description.
+Remove the numbered list. And apply formatting for the options cited in
+the middle of the text.
 
-Thanks in advance for Your reply and kind regards
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+---
+ docs/system/target-riscv.rst | 24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
 
-Wilhelm
+diff --git a/docs/system/target-riscv.rst b/docs/system/target-riscv.rst
+index 89a866e4f4..ba195f1518 100644
+--- a/docs/system/target-riscv.rst
++++ b/docs/system/target-riscv.rst
+@@ -76,11 +76,19 @@ RISC-V CPU firmware
+ 
+ When using the ``sifive_u`` or ``virt`` machine there are three different
+ firmware boot options:
+-1. ``-bios default`` - This is the default behaviour if no -bios option
+-is included. This option will load the default OpenSBI firmware automatically.
+-The firmware is included with the QEMU release and no user interaction is
+-required. All a user needs to do is specify the kernel they want to boot
+-with the -kernel option
+-2. ``-bios none`` - QEMU will not automatically load any firmware. It is up
+-to the user to load all the images they need.
+-3. ``-bios <file>`` - Tells QEMU to load the specified file as the firmware.
++
++* ``-bios default``
++
++This is the default behaviour if no ``-bios`` option is included. This option
++will load the default OpenSBI firmware automatically. The firmware is included
++with the QEMU release and no user interaction is required. All a user needs to
++do is specify the kernel they want to boot with the ``-kernel`` option
++
++* ``-bios none``
++
++QEMU will not automatically load any firmware. It is up to the user to load all
++the images they need.
++
++* ``-bios <file>``
++
++Tells QEMU to load the specified file as the firmware.
+-- 
+2.41.0
+
 
