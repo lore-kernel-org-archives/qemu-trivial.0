@@ -1,73 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qJayI-0000kX-3f
-	for mharc-qemu-trivial@gnu.org; Wed, 12 Jul 2023 10:37:38 -0400
+	id 1qJq5y-0001UB-Rl
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2023 02:46:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1qJayH-0000kO-Bb
- for qemu-trivial@nongnu.org; Wed, 12 Jul 2023 10:37:37 -0400
-Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1qJayF-0005qY-Sn
- for qemu-trivial@nongnu.org; Wed, 12 Jul 2023 10:37:37 -0400
-Received: by mail-ot1-x329.google.com with SMTP id
- 46e09a7af769-6b9a2416b1cso427996a34.2
- for <qemu-trivial@nongnu.org>; Wed, 12 Jul 2023 07:37:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1689172654; x=1691764654;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=XvA/EW8bgL9rBEB5uuntP1wRIt5rz95dfXHcblCouLk=;
- b=HOyvcmOn0PvoikoQYkhLmnnyOjEm2NdTRFFCj9EkZUEjxCKVYXf3sDyuOuqDMsABQf
- /BR3lmFvAKlBH9spBzcI+g+IM/84AXMXicpvA8Igmm9cCx5bBAORVKWLfZj+50GhAegt
- 48v1+4wJ/S9GR9p6Q6JnmyrB/NucHaa4HngBiumbof1Cz2JmPR2dX6qkjTz4CaAC5jF+
- WbWGRk1T0E5hrli8MW6Mu5R0yAfSpWFW80fETO3vEewSlUFds7v06dU7OfRynZEuWzKM
- u67IPy8SDdGLSZhAI6DRL/Wsnt2/W1AYZ6KyiZCcbwdeMsPFIBdI4DBvLHEUjo4FUo3r
- 8lqw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689172654; x=1691764654;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=XvA/EW8bgL9rBEB5uuntP1wRIt5rz95dfXHcblCouLk=;
- b=ani2KbtCOTouOMzp0yguw4zs1vusSpegKCdmB2eUydZ8IwT1tyL4wVmuG+47FY3WTu
- m0x9CGMz4mSV9vqrAMmi08y7sVQA+nEvdUOIv5Q5HmkZuFbzhivWEiFPxi0EjEXkARws
- upg55GuD14fNmAkwkwlHtWBqHpFqoTl8ahocM+so4/XAgghy+sMZnp+WQCH3TO075Pai
- ApytuzFIjE0WBx78xPylLLcLunv1XD4Oewzdeky33FSfPBHbmX+ML8Ti47KnIbQ/Tcry
- LEROW1AA+AVbt2ymyJaGiKL1PHjq4og6WrYsqFd2Ws/D5FseQGnHJwbjT+AhSUPJufqp
- nwaQ==
-X-Gm-Message-State: ABy/qLbOJz0dCuogzM6qZbh4BUvibSKWCbeRO+h+56QOQuYun9gFROpW
- Hxt43/95qGRcqOfjvAAhnA0DNQ==
-X-Google-Smtp-Source: APBJJlHMU/S80yWZsdYvRzBj9tKDMKxDb8D8kg/I8Lr7/ELbM5QZu6wD1UzcY84a6Wr9PK8RPvowsA==
-X-Received: by 2002:a05:6830:328e:b0:6b8:7e53:e7c3 with SMTP id
- m14-20020a056830328e00b006b87e53e7c3mr17519659ott.31.1689172654308; 
- Wed, 12 Jul 2023 07:37:34 -0700 (PDT)
-Received: from grind.. (201-69-66-19.dial-up.telesp.net.br. [201.69.66.19])
- by smtp.gmail.com with ESMTPSA id
- s5-20020a9d7585000000b006b29947160csm1953388otk.30.2023.07.12.07.37.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Jul 2023 07:37:34 -0700 (PDT)
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-To: qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qJq5w-0001TY-76; Thu, 13 Jul 2023 02:46:32 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qJq5u-00022g-Cn; Thu, 13 Jul 2023 02:46:31 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 166931369F;
+ Thu, 13 Jul 2023 09:46:39 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 6DE45147CE;
+ Thu, 13 Jul 2023 09:46:25 +0300 (MSK)
+Message-ID: <b0ecaf6e-4639-bc29-fdc5-60a064986352@tls.msk.ru>
+Date: Thu, 13 Jul 2023 09:46:25 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH] docs/system/target-riscv.rst: tidy CPU firmware section
+Content-Language: en-US
+To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>, qemu-devel@nongnu.org
 Cc: qemu-riscv@nongnu.org, alistair.francis@wdc.com, bmeng@tinylab.org,
  liweiwei@iscas.ac.cn, zhiwei_liu@linux.alibaba.com, palmer@rivosinc.com,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
  qemu-trivial@nongnu.org
-Subject: [PATCH] docs/system/target-riscv.rst: tidy CPU firmware section
-Date: Wed, 12 Jul 2023 11:37:28 -0300
-Message-ID: <20230712143728.383528-1-dbarboza@ventanamicro.com>
-X-Mailer: git-send-email 2.41.0
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::329;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-ot1-x329.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+References: <20230712143728.383528-1-dbarboza@ventanamicro.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <20230712143728.383528-1-dbarboza@ventanamicro.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -69
+X-Spam_score: -7.0
+X-Spam_bar: -------
+X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.11,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -81,62 +51,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 12 Jul 2023 14:37:37 -0000
+X-List-Received-Date: Thu, 13 Jul 2023 06:46:34 -0000
 
-This is how the content of the "RISC-V CPU firmware" section is
-displayed after the html is generated:
+12.07.2023 17:37, Daniel Henrique Barboza wrote:
+> This is how the content of the "RISC-V CPU firmware" section is
+> displayed after the html is generated:
+> 
+> "When using the sifive_u or virt machine there are three different
+> firmware boot options: 1. -bios default - This is the default behaviour
+> if no -bios option is included. (...) 3. -bios <file> - Tells QEMU to
+> load the specified file as the firmware."
+> 
+> It's all in the same paragraph, in a numbered list, and no special
+> formatting for the options.
+> 
+> Tidy it a bit by adding line breaks between items and its description.
+> Remove the numbered list. And apply formatting for the options cited in
+> the middle of the text.
+> 
+> Cc: qemu-trivial@nongnu.org
+> Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 
-"When using the sifive_u or virt machine there are three different
-firmware boot options: 1. -bios default - This is the default behaviour
-if no -bios option is included. (...) 3. -bios <file> - Tells QEMU to
-load the specified file as the firmware."
+I'll pick this up for trivial-patches, but since it's the only patch there
+now, it's IMHO better to apply it together with other riscv changes if
+there will be any for 8.1.  So let's pick it to both trees and the first
+to apply wins.
 
-It's all in the same paragraph, in a numbered list, and no special
-formatting for the options.
+Thanks,
 
-Tidy it a bit by adding line breaks between items and its description.
-Remove the numbered list. And apply formatting for the options cited in
-the middle of the text.
-
-Cc: qemu-trivial@nongnu.org
-Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
----
- docs/system/target-riscv.rst | 24 ++++++++++++++++--------
- 1 file changed, 16 insertions(+), 8 deletions(-)
-
-diff --git a/docs/system/target-riscv.rst b/docs/system/target-riscv.rst
-index 89a866e4f4..ba195f1518 100644
---- a/docs/system/target-riscv.rst
-+++ b/docs/system/target-riscv.rst
-@@ -76,11 +76,19 @@ RISC-V CPU firmware
- 
- When using the ``sifive_u`` or ``virt`` machine there are three different
- firmware boot options:
--1. ``-bios default`` - This is the default behaviour if no -bios option
--is included. This option will load the default OpenSBI firmware automatically.
--The firmware is included with the QEMU release and no user interaction is
--required. All a user needs to do is specify the kernel they want to boot
--with the -kernel option
--2. ``-bios none`` - QEMU will not automatically load any firmware. It is up
--to the user to load all the images they need.
--3. ``-bios <file>`` - Tells QEMU to load the specified file as the firmware.
-+
-+* ``-bios default``
-+
-+This is the default behaviour if no ``-bios`` option is included. This option
-+will load the default OpenSBI firmware automatically. The firmware is included
-+with the QEMU release and no user interaction is required. All a user needs to
-+do is specify the kernel they want to boot with the ``-kernel`` option
-+
-+* ``-bios none``
-+
-+QEMU will not automatically load any firmware. It is up to the user to load all
-+the images they need.
-+
-+* ``-bios <file>``
-+
-+Tells QEMU to load the specified file as the firmware.
--- 
-2.41.0
+/mjt
 
 
