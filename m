@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qKH9I-0000fj-Pe
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 07:39:48 -0400
+	id 1qKH9J-0000hb-64
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 07:39:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKH94-0000Ws-8C; Fri, 14 Jul 2023 07:39:38 -0400
+ id 1qKH9B-0000ZM-I8; Fri, 14 Jul 2023 07:39:46 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKH90-0004Fo-Vt; Fri, 14 Jul 2023 07:39:33 -0400
+ id 1qKH96-0004Jl-RG; Fri, 14 Jul 2023 07:39:39 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id B63AF13D98;
- Fri, 14 Jul 2023 14:38:56 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 215E213D9A;
+ Fri, 14 Jul 2023 14:38:57 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id B0C3014BA7;
- Fri, 14 Jul 2023 14:38:40 +0300 (MSK)
-Received: (nullmailer pid 1186231 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 17CFF14BA9;
+ Fri, 14 Jul 2023 14:38:41 +0300 (MSK)
+Received: (nullmailer pid 1186237 invoked by uid 1000);
  Fri, 14 Jul 2023 11:38:38 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH, trivial 12/29] tree-wide spelling fixes in comments and some
- messages: riscv
-Date: Fri, 14 Jul 2023 14:38:17 +0300
-Message-Id: <20230714113834.1186117-14-mjt@tls.msk.ru>
+Subject: [PATCH, trivial 14/29] tree-wide spelling fixes in comments and some
+ messages: hexagon
+Date: Fri, 14 Jul 2023 14:38:19 +0300
+Message-Id: <20230714113834.1186117-16-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230714113834.1186117-1-mjt@tls.msk.ru>
 References: <20230714113834.1186117-1-mjt@tls.msk.ru>
@@ -53,165 +53,146 @@ X-List-Received-Date: Fri, 14 Jul 2023 11:39:46 -0000
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/riscv/microchip_pfsoc.c                |  2 +-
- hw/riscv/virt.c                           |  4 ++--
- include/hw/riscv/riscv_hart.h             |  2 +-
- target/riscv/cpu.h                        |  2 +-
- target/riscv/cpu_bits.h                   |  4 ++--
- target/riscv/csr.c                        |  4 ++--
- target/riscv/debug.c                      | 10 +++++-----
- target/riscv/insn_trans/trans_rvf.c.inc   |  4 ++--
- target/riscv/insn_trans/trans_rvv.c.inc   |  4 ++--
- target/riscv/insn_trans/trans_rvzfh.c.inc |  4 ++--
- target/riscv/monitor.c                    |  2 +-
- 11 files changed, 21 insertions(+), 21 deletions(-)
+ target/hexagon/README                       |  2 +-
+ target/hexagon/fma_emu.c                    |  2 +-
+ target/hexagon/idef-parser/README.rst       |  2 +-
+ target/hexagon/idef-parser/idef-parser.h    |  2 +-
+ target/hexagon/idef-parser/parser-helpers.c |  6 +++---
+ target/hexagon/imported/alu.idef            |  8 ++++----
+ target/hexagon/imported/macros.def          |  2 +-
+ target/hexagon/imported/mmvec/ext.idef      | 10 +++++-----
+ tests/tcg/hexagon/fpstuff.c                 |  2 +-
+ tests/tcg/hexagon/test_clobber.S            |  2 +-
+ 10 files changed, 19 insertions(+), 19 deletions(-)
 
-diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
-index e81bbd12df..b775aa8946 100644
---- a/hw/riscv/microchip_pfsoc.c
-+++ b/hw/riscv/microchip_pfsoc.c
-@@ -661,3 +661,3 @@ static void microchip_icicle_kit_machine_class_init(ObjectClass *oc, void *data)
-     /*
--     * Map 513 MiB high memory, the mimimum required high memory size, because
-+     * Map 513 MiB high memory, the minimum required high memory size, because
-      * HSS will do memory test against the high memory address range regardless
-diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
-index d90286dc46..a0c2cbce89 100644
---- a/hw/riscv/virt.c
-+++ b/hw/riscv/virt.c
-@@ -68,3 +68,3 @@
-     IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
--#error "Can't accomodate single IMSIC group in address space"
-+#error "Can't accommodate single IMSIC group in address space"
- #endif
-@@ -74,3 +74,3 @@
- #if 0x4000000 < VIRT_IMSIC_MAX_SIZE
--#error "Can't accomodate all IMSIC groups in address space"
-+#error "Can't accommodate all IMSIC groups in address space"
- #endif
-diff --git a/include/hw/riscv/riscv_hart.h b/include/hw/riscv/riscv_hart.h
-index bbc21cdc9a..912b4a2682 100644
---- a/include/hw/riscv/riscv_hart.h
-+++ b/include/hw/riscv/riscv_hart.h
-@@ -5,3 +5,3 @@
-  *
-- * Holds the state of a heterogenous array of RISC-V harts
-+ * Holds the state of a heterogeneous array of RISC-V harts
-  *
-diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-index 6ea22e0eea..6316cbcc23 100644
---- a/target/riscv/cpu.h
-+++ b/target/riscv/cpu.h
-@@ -351,3 +351,3 @@ struct CPUArchState {
+diff --git a/target/hexagon/README b/target/hexagon/README
+index 43811178e9..e757bcb64a 100644
+--- a/target/hexagon/README
++++ b/target/hexagon/README
+@@ -241,3 +241,3 @@ VLIW packet semantics differ from serial semantics in that all input operands
+ are read, then the operations are performed, then all the results are written.
+-For exmaple, this packet performs a swap of registers r0 and r1
++For example, this packet performs a swap of registers r0 and r1
+     { r0 = r1; r1 = r0 }
+diff --git a/target/hexagon/fma_emu.c b/target/hexagon/fma_emu.c
+index d3b45d494f..05a56d8c10 100644
+--- a/target/hexagon/fma_emu.c
++++ b/target/hexagon/fma_emu.c
+@@ -417,3 +417,3 @@ static SUFFIX accum_round_##SUFFIX(Accum a, float_status * fp_status) \
+      * shifted out lots of bits from B, or if we had no shift / 1 shift sticky \
+-     * shoudl be 0  \
++     * should be 0  \
+      */ \
+diff --git a/target/hexagon/idef-parser/README.rst b/target/hexagon/idef-parser/README.rst
+index debeddfde5..d0aa34309b 100644
+--- a/target/hexagon/idef-parser/README.rst
++++ b/target/hexagon/idef-parser/README.rst
+@@ -442,3 +442,3 @@ Run-time errors can be divided between lexing and parsing errors, lexing errors
+ are hard to detect, since the ``var`` token will catch everything which is not
+-catched by other tokens, but easy to fix, because most of the time a simple
++caught by other tokens, but easy to fix, because most of the time a simple
+ regex editing will be enough.
+diff --git a/target/hexagon/idef-parser/idef-parser.h b/target/hexagon/idef-parser/idef-parser.h
+index d23e71f13b..3faa1deecd 100644
+--- a/target/hexagon/idef-parser/idef-parser.h
++++ b/target/hexagon/idef-parser/idef-parser.h
+@@ -75,3 +75,3 @@ typedef struct HexTmp {
+ /**
+- * Enum of the possible immediated, an immediate is a value which is known
++ * Enum of the possible immediate, an immediate is a value which is known
+  * at tinycode generation time, e.g. an integer value, not a TCGv
+diff --git a/target/hexagon/idef-parser/parser-helpers.c b/target/hexagon/idef-parser/parser-helpers.c
+index 7b5ebafec2..ec43343801 100644
+--- a/target/hexagon/idef-parser/parser-helpers.c
++++ b/target/hexagon/idef-parser/parser-helpers.c
+@@ -461,3 +461,3 @@ static bool try_find_variable(Context *c, YYLTYPE *locp,
  
--    /* CSRs for execution enviornment configuration */
-+    /* CSRs for execution environment configuration */
-     uint64_t menvcfg;
-diff --git a/target/riscv/cpu_bits.h b/target/riscv/cpu_bits.h
-index 59f0ffd9e1..31a8d80990 100644
---- a/target/riscv/cpu_bits.h
-+++ b/target/riscv/cpu_bits.h
-@@ -658,3 +658,3 @@ typedef enum {
- 
--/* Default Reset Vector adress */
-+/* Default Reset Vector address */
- #define DEFAULT_RSTVEC      0x1000
-@@ -742,3 +742,3 @@ typedef enum RISCVException {
- 
--/* Execution enviornment configuration bits */
-+/* Execution environment configuration bits */
- #define MENVCFG_FIOM                       BIT(0)
-diff --git a/target/riscv/csr.c b/target/riscv/csr.c
-index ea7585329e..26bc1f0ff1 100644
---- a/target/riscv/csr.c
-+++ b/target/riscv/csr.c
-@@ -3218,3 +3218,3 @@ static int write_hvipriox(CPURISCVState *env, int first_index,
- 
--    /* Fill-up priority arrary */
-+    /* Fill-up priority array */
-     for (i = 0; i < num_irqs; i++) {
-@@ -3887,3 +3887,3 @@ static inline RISCVException riscv_csrrw_check(CPURISCVState *env,
-         /*
--         * We are in HS mode. Add 1 to the effective privledge level to
-+         * We are in HS mode. Add 1 to the effective privilege level to
-          * allow us to access the Hypervisor CSRs.
-diff --git a/target/riscv/debug.c b/target/riscv/debug.c
-index 75ee1c4971..211f5921b6 100644
---- a/target/riscv/debug.c
-+++ b/target/riscv/debug.c
-@@ -576,3 +576,3 @@ static void riscv_itrigger_update_count(CPURISCVState *env)
-      * Record last icount, so that we can evaluate the executed instructions
--     * since last priviledge mode change or timer expire.
-+     * since last privilege mode change or timer expire.
+-/* Calls `try_find_variable` and asserts succcess. */
++/* Calls `try_find_variable` and asserts success. */
+ static void find_variable(Context *c, YYLTYPE *locp,
+@@ -551,3 +551,3 @@ HexValue gen_bin_cmp(Context *c,
+     default:
+-        fprintf(stderr, "Error in evalutating immediateness!");
++        fprintf(stderr, "Error in evaluating immediateness!");
+         abort();
+@@ -1166,3 +1166,3 @@ void gen_rdeposit_op(Context *c,
+      * Otherwise if the width is not known, we fallback on reimplementing
+-     * desposit in TCG.
++     * deposit in TCG.
       */
-@@ -590,3 +590,3 @@ static void riscv_itrigger_update_count(CPURISCVState *env)
-         /*
--         * Only when priviledge is changed or itrigger timer expires,
-+         * Only when privilege is changed or itrigger timer expires,
-          * the count field in itrigger tdata1 register is updated.
-@@ -596,4 +596,4 @@ static void riscv_itrigger_update_count(CPURISCVState *env)
-             /*
--             * If itrigger enabled in this priviledge mode, the number of
--             * executed instructions since last priviledge change
-+             * If itrigger enabled in this privilege mode, the number of
-+             * executed instructions since last privilege change
-              * should be reduced from current itrigger count.
-@@ -607,3 +607,3 @@ static void riscv_itrigger_update_count(CPURISCVState *env)
-             /*
--             * If itrigger is not enabled in this priviledge mode,
-+             * If itrigger is not enabled in this privilege mode,
-              * the number of executed instructions will be discard and
-diff --git a/target/riscv/insn_trans/trans_rvf.c.inc b/target/riscv/insn_trans/trans_rvf.c.inc
-index a0da7391c7..e7ab84cd9a 100644
---- a/target/riscv/insn_trans/trans_rvf.c.inc
-+++ b/target/riscv/insn_trans/trans_rvf.c.inc
-@@ -302,3 +302,3 @@ static bool trans_fsgnjn_s(DisasContext *ctx, arg_fsgnjn_s *a)
-     }
--    /* signed-extended intead of nanboxing for result if enable zfinx */
-+    /* signed-extended instead of nanboxing for result if enable zfinx */
-     if (ctx->cfg_ptr->ext_zfinx) {
-@@ -347,3 +347,3 @@ static bool trans_fsgnjx_s(DisasContext *ctx, arg_fsgnjx_s *a)
-     }
--    /* signed-extended intead of nanboxing for result if enable zfinx */
-+    /* signed-extended instead of nanboxing for result if enable zfinx */
-     if (ctx->cfg_ptr->ext_zfinx) {
-diff --git a/target/riscv/insn_trans/trans_rvv.c.inc b/target/riscv/insn_trans/trans_rvv.c.inc
-index c2f7527f53..6ab63f4442 100644
---- a/target/riscv/insn_trans/trans_rvv.c.inc
-+++ b/target/riscv/insn_trans/trans_rvv.c.inc
-@@ -2242,3 +2242,3 @@ GEN_OPIWI_NARROW_TRANS(vnclip_wi, IMM_ZX, vnclip_wx)
-  * NaN-boxed value, in which case the least-significant SEW bits
-- * of the f regsiter are used, else the canonical NaN value is used.
-+ * of the f register are used, else the canonical NaN value is used.
-  */
-@@ -3284,3 +3284,3 @@ static void load_element(TCGv_i64 dest, TCGv_ptr base,
+diff --git a/target/hexagon/imported/alu.idef b/target/hexagon/imported/alu.idef
+index 58477ae40a..12d2aac5d4 100644
+--- a/target/hexagon/imported/alu.idef
++++ b/target/hexagon/imported/alu.idef
+@@ -294,12 +294,12 @@ Q6INSN(A4_combineii,"Rdd32=combine(#s8,#U6)",ATTRIBS(),"Set two small immediates
+ Q6INSN(A2_combine_hh,"Rd32=combine(Rt.H32,Rs.H32)",ATTRIBS(),
+-"Combine two halfs into a register", {RdV = (fGETUHALF(1,RtV)<<16) | fGETUHALF(1,RsV);})
++"Combine two halves into a register", {RdV = (fGETUHALF(1,RtV)<<16) | fGETUHALF(1,RsV);})
  
--/* offset of the idx element with base regsiter r */
-+/* offset of the idx element with base register r */
- static uint32_t endian_ofs(DisasContext *s, int r, int idx)
-diff --git a/target/riscv/insn_trans/trans_rvzfh.c.inc b/target/riscv/insn_trans/trans_rvzfh.c.inc
-index 8b1e2519bb..4b01812fd8 100644
---- a/target/riscv/insn_trans/trans_rvzfh.c.inc
-+++ b/target/riscv/insn_trans/trans_rvzfh.c.inc
-@@ -307,3 +307,3 @@ static bool trans_fsgnjn_h(DisasContext *ctx, arg_fsgnjn_h *a)
-     }
--    /* signed-extended intead of nanboxing for result if enable zfinx */
-+    /* signed-extended instead of nanboxing for result if enable zfinx */
-     if (ctx->cfg_ptr->ext_zfinx) {
-@@ -351,3 +351,3 @@ static bool trans_fsgnjx_h(DisasContext *ctx, arg_fsgnjx_h *a)
-     }
--    /* signed-extended intead of nanboxing for result if enable zfinx */
-+    /* signed-extended instead of nanboxing for result if enable zfinx */
-     if (ctx->cfg_ptr->ext_zfinx) {
-diff --git a/target/riscv/monitor.c b/target/riscv/monitor.c
-index f36ddfa967..f5b1ffe6c3 100644
---- a/target/riscv/monitor.c
-+++ b/target/riscv/monitor.c
-@@ -57,3 +57,3 @@ static void print_pte(Monitor *mon, int va_bits, target_ulong vaddr,
- {
--    /* santity check on vaddr */
-+    /* sanity check on vaddr */
-     if (vaddr >= (1UL << va_bits)) {
+ Q6INSN(A2_combine_hl,"Rd32=combine(Rt.H32,Rs.L32)",ATTRIBS(),
+-"Combine two halfs into a register", {RdV = (fGETUHALF(1,RtV)<<16) | fGETUHALF(0,RsV);})
++"Combine two halves into a register", {RdV = (fGETUHALF(1,RtV)<<16) | fGETUHALF(0,RsV);})
+ 
+ Q6INSN(A2_combine_lh,"Rd32=combine(Rt.L32,Rs.H32)",ATTRIBS(),
+-"Combine two halfs into a register", {RdV = (fGETUHALF(0,RtV)<<16) | fGETUHALF(1,RsV);})
++"Combine two halves into a register", {RdV = (fGETUHALF(0,RtV)<<16) | fGETUHALF(1,RsV);})
+ 
+ Q6INSN(A2_combine_ll,"Rd32=combine(Rt.L32,Rs.L32)",ATTRIBS(),
+-"Combine two halfs into a register", {RdV = (fGETUHALF(0,RtV)<<16) | fGETUHALF(0,RsV);})
++"Combine two halves into a register", {RdV = (fGETUHALF(0,RtV)<<16) | fGETUHALF(0,RsV);})
+ 
+diff --git a/target/hexagon/imported/macros.def b/target/hexagon/imported/macros.def
+index e23f91562e..4bbcfdd5e1 100755
+--- a/target/hexagon/imported/macros.def
++++ b/target/hexagon/imported/macros.def
+@@ -904,3 +904,3 @@ DEF_MACRO(
+ DEF_MACRO(
+-    fEA_GPI, /* Calculate EA with Global Poitner + Immediate */
++    fEA_GPI, /* Calculate EA with Global Pointer + Immediate */
+     do { EA=fREAD_GP()+IMM; fGP_DOCHKPAGECROSS(fREAD_GP(),EA); } while (0),
+diff --git a/target/hexagon/imported/mmvec/ext.idef b/target/hexagon/imported/mmvec/ext.idef
+index ead32c243b..98daabfb07 100644
+--- a/target/hexagon/imported/mmvec/ext.idef
++++ b/target/hexagon/imported/mmvec/ext.idef
+@@ -19,3 +19,3 @@
+  *
+- *     HOYA: MULTI MEDIA INSTRUCITONS
++ *     HOYA: MULTI MEDIA INSTRUCTIONS
+  *
+@@ -297,3 +297,3 @@ MMVEC_EACH_EA(vS32b_new,"Aligned Vector Store New",ATTRIBS(ATTR_VMEM,A_STORE,A_C
+ 
+-// V65 store relase, zero byte store
++// V65 store release, zero byte store
+ MMVEC_EACH_EA(vS32b_srls,"Aligned Vector Scatter Release",ATTRIBS(ATTR_VMEM,A_STORE,A_CVI_SCATTER_RELEASE,A_CVI_NEW,A_RESTRICT_SLOT0ONLY),,"vmem",":scatter_release",fSTORERELEASE(EA,0))
+@@ -2047,7 +2047,7 @@ VxV.uw[0] = RtV;)
+ 
+-ITERATOR_INSN_MPY_SLOT_LATE(32,lvsplatw, "Vd32=vsplat(Rt32)", "Replicates scalar accross words in vector", VdV.uw[i] = RtV)
++ITERATOR_INSN_MPY_SLOT_LATE(32,lvsplatw, "Vd32=vsplat(Rt32)", "Replicates scalar across words in vector", VdV.uw[i] = RtV)
+ 
+-ITERATOR_INSN_MPY_SLOT_LATE(16,lvsplath, "Vd32.h=vsplat(Rt32)", "Replicates scalar accross halves in vector", VdV.uh[i] = RtV)
++ITERATOR_INSN_MPY_SLOT_LATE(16,lvsplath, "Vd32.h=vsplat(Rt32)", "Replicates scalar across halves in vector", VdV.uh[i] = RtV)
+ 
+-ITERATOR_INSN_MPY_SLOT_LATE(8,lvsplatb, "Vd32.b=vsplat(Rt32)", "Replicates scalar accross bytes in vector", VdV.ub[i] = RtV)
++ITERATOR_INSN_MPY_SLOT_LATE(8,lvsplatb, "Vd32.b=vsplat(Rt32)", "Replicates scalar across bytes in vector", VdV.ub[i] = RtV)
+ 
+diff --git a/tests/tcg/hexagon/fpstuff.c b/tests/tcg/hexagon/fpstuff.c
+index 344b9f7772..6aadaccabd 100644
+--- a/tests/tcg/hexagon/fpstuff.c
++++ b/tests/tcg/hexagon/fpstuff.c
+@@ -54,3 +54,3 @@ static void check_compare_exception(void)
+ 
+-    /* Check that FP compares are quiet (don't raise any execptions) */
++    /* Check that FP compares are quiet (don't raise any exceptions) */
+     asm (CLEAR_FPSTATUS
+diff --git a/tests/tcg/hexagon/test_clobber.S b/tests/tcg/hexagon/test_clobber.S
+index a7aeb2b60c..10046c30d2 100644
+--- a/tests/tcg/hexagon/test_clobber.S
++++ b/tests/tcg/hexagon/test_clobber.S
+@@ -1,3 +1,3 @@
+ /*
+- * Purpose: demonstrate the succesful operation of the register save mechanism,
++ * Purpose: demonstrate the successful operation of the register save mechanism,
+  * in which the caller saves the registers that will be clobbered, and restores
 -- 
 2.39.2
 
