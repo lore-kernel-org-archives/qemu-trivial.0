@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qKH8i-0000PN-Oq
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 07:39:16 -0400
+	id 1qKH9I-0000fj-Pe
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 07:39:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKH8e-0000NG-Qb; Fri, 14 Jul 2023 07:39:09 -0400
+ id 1qKH94-0000Ws-8C; Fri, 14 Jul 2023 07:39:38 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKH8d-0004Eu-2b; Fri, 14 Jul 2023 07:39:08 -0400
+ id 1qKH90-0004Fo-Vt; Fri, 14 Jul 2023 07:39:33 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 5AFB713D96;
+ by isrv.corpit.ru (Postfix) with ESMTP id B63AF13D98;
  Fri, 14 Jul 2023 14:38:56 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 5BA1114BA5;
+ by tsrv.corpit.ru (Postfix) with SMTP id B0C3014BA7;
  Fri, 14 Jul 2023 14:38:40 +0300 (MSK)
-Received: (nullmailer pid 1186225 invoked by uid 1000);
+Received: (nullmailer pid 1186231 invoked by uid 1000);
  Fri, 14 Jul 2023 11:38:38 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH, trivial 10/29] tree-wide spelling fixes in comments and some
- messages: mips
-Date: Fri, 14 Jul 2023 14:38:15 +0300
-Message-Id: <20230714113834.1186117-12-mjt@tls.msk.ru>
+Subject: [PATCH, trivial 12/29] tree-wide spelling fixes in comments and some
+ messages: riscv
+Date: Fri, 14 Jul 2023 14:38:17 +0300
+Message-Id: <20230714113834.1186117-14-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230714113834.1186117-1-mjt@tls.msk.ru>
 References: <20230714113834.1186117-1-mjt@tls.msk.ru>
@@ -49,75 +49,169 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jul 2023 11:39:09 -0000
+X-List-Received-Date: Fri, 14 Jul 2023 11:39:46 -0000
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/mips/malta.c                 |  2 +-
- target/mips/cpu-defs.c.inc      |  2 +-
- target/mips/tcg/msa_helper.c    | 12 ++++++------
- target/mips/tcg/mxu_translate.c |  6 +++---
- 4 files changed, 11 insertions(+), 11 deletions(-)
+ hw/riscv/microchip_pfsoc.c                |  2 +-
+ hw/riscv/virt.c                           |  4 ++--
+ include/hw/riscv/riscv_hart.h             |  2 +-
+ target/riscv/cpu.h                        |  2 +-
+ target/riscv/cpu_bits.h                   |  4 ++--
+ target/riscv/csr.c                        |  4 ++--
+ target/riscv/debug.c                      | 10 +++++-----
+ target/riscv/insn_trans/trans_rvf.c.inc   |  4 ++--
+ target/riscv/insn_trans/trans_rvv.c.inc   |  4 ++--
+ target/riscv/insn_trans/trans_rvzfh.c.inc |  4 ++--
+ target/riscv/monitor.c                    |  2 +-
+ 11 files changed, 21 insertions(+), 21 deletions(-)
 
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index f9618fa5f5..16e9c4773f 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -629,3 +629,3 @@ static void bl_setup_gt64120_jump_kernel(void **p, uint64_t run_addr,
- 
--    /* Bus endianess is always reversed */
-+    /* Bus endianness is always reversed */
- #if TARGET_BIG_ENDIAN
-diff --git a/target/mips/cpu-defs.c.inc b/target/mips/cpu-defs.c.inc
-index 03185d9aa0..c0c389c59a 100644
---- a/target/mips/cpu-defs.c.inc
-+++ b/target/mips/cpu-defs.c.inc
-@@ -1047,3 +1047,3 @@ static void mvp_init(CPUMIPSState *env)
- 
--    /* MVPConf1 implemented, TLB sharable, no gating storage support,
-+    /* MVPConf1 implemented, TLB shareable, no gating storage support,
-        programmable cache partitioning implemented, number of allocatable
-diff --git a/target/mips/tcg/msa_helper.c b/target/mips/tcg/msa_helper.c
-index 29b31d70fe..6e93a19a93 100644
---- a/target/mips/tcg/msa_helper.c
-+++ b/target/mips/tcg/msa_helper.c
-@@ -804,5 +804,5 @@ void helper_msa_bset_d(CPUMIPSState *env, uint32_t wd, uint32_t ws, uint32_t wt)
-  * | HADD_S.D      | Vector Signed Horizontal Add (doubleword)                |
-- * | HADD_U.H      | Vector Unigned Horizontal Add (halfword)                 |
-- * | HADD_U.W      | Vector Unigned Horizontal Add (word)                     |
-- * | HADD_U.D      | Vector Unigned Horizontal Add (doubleword)               |
-+ * | HADD_U.H      | Vector Unsigned Horizontal Add (halfword)                |
-+ * | HADD_U.W      | Vector Unsigned Horizontal Add (word)                    |
-+ * | HADD_U.D      | Vector Unsigned Horizontal Add (doubleword)              |
-  * +---------------+----------------------------------------------------------+
-@@ -3453,5 +3453,5 @@ void helper_msa_mulv_d(CPUMIPSState *env,
-  * | HSUB_S.D      | Vector Signed Horizontal Subtract (doubleword)           |
-- * | HSUB_U.H      | Vector Unigned Horizontal Subtract (halfword)            |
-- * | HSUB_U.W      | Vector Unigned Horizontal Subtract (word)                |
-- * | HSUB_U.D      | Vector Unigned Horizontal Subtract (doubleword)          |
-+ * | HSUB_U.H      | Vector Unsigned Horizontal Subtract (halfword)           |
-+ * | HSUB_U.W      | Vector Unsigned Horizontal Subtract (word)               |
-+ * | HSUB_U.D      | Vector Unsigned Horizontal Subtract (doubleword)         |
-  * | SUBS_S.B      | Vector Signed Saturated Subtract (of Signed) (byte)      |
-diff --git a/target/mips/tcg/mxu_translate.c b/target/mips/tcg/mxu_translate.c
-index deb8060a17..993e1fca05 100644
---- a/target/mips/tcg/mxu_translate.c
-+++ b/target/mips/tcg/mxu_translate.c
-@@ -2965,3 +2965,3 @@ static void gen_mxu_Q8ADD(DisasContext *ctx)
-  *    into XRa and XRd.
-- *    aptn2 manages action add or subract of pairs of data.
-+ *    aptn2 manages action add or subtract of pairs of data.
+diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
+index e81bbd12df..b775aa8946 100644
+--- a/hw/riscv/microchip_pfsoc.c
++++ b/hw/riscv/microchip_pfsoc.c
+@@ -661,3 +661,3 @@ static void microchip_icicle_kit_machine_class_init(ObjectClass *oc, void *data)
+     /*
+-     * Map 513 MiB high memory, the mimimum required high memory size, because
++     * Map 513 MiB high memory, the minimum required high memory size, because
+      * HSS will do memory test against the high memory address range regardless
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index d90286dc46..a0c2cbce89 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -68,3 +68,3 @@
+     IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
+-#error "Can't accomodate single IMSIC group in address space"
++#error "Can't accommodate single IMSIC group in address space"
+ #endif
+@@ -74,3 +74,3 @@
+ #if 0x4000000 < VIRT_IMSIC_MAX_SIZE
+-#error "Can't accomodate all IMSIC groups in address space"
++#error "Can't accommodate all IMSIC groups in address space"
+ #endif
+diff --git a/include/hw/riscv/riscv_hart.h b/include/hw/riscv/riscv_hart.h
+index bbc21cdc9a..912b4a2682 100644
+--- a/include/hw/riscv/riscv_hart.h
++++ b/include/hw/riscv/riscv_hart.h
+@@ -5,3 +5,3 @@
   *
-@@ -2972,3 +2972,3 @@ static void gen_mxu_Q8ADD(DisasContext *ctx)
-  *    into XRa and XRd.
-- *    aptn2 manages action add or subract of pairs of data.
-+ *    aptn2 manages action add or subtract of pairs of data.
+- * Holds the state of a heterogenous array of RISC-V harts
++ * Holds the state of a heterogeneous array of RISC-V harts
+  *
+diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+index 6ea22e0eea..6316cbcc23 100644
+--- a/target/riscv/cpu.h
++++ b/target/riscv/cpu.h
+@@ -351,3 +351,3 @@ struct CPUArchState {
+ 
+-    /* CSRs for execution enviornment configuration */
++    /* CSRs for execution environment configuration */
+     uint64_t menvcfg;
+diff --git a/target/riscv/cpu_bits.h b/target/riscv/cpu_bits.h
+index 59f0ffd9e1..31a8d80990 100644
+--- a/target/riscv/cpu_bits.h
++++ b/target/riscv/cpu_bits.h
+@@ -658,3 +658,3 @@ typedef enum {
+ 
+-/* Default Reset Vector adress */
++/* Default Reset Vector address */
+ #define DEFAULT_RSTVEC      0x1000
+@@ -742,3 +742,3 @@ typedef enum RISCVException {
+ 
+-/* Execution enviornment configuration bits */
++/* Execution environment configuration bits */
+ #define MENVCFG_FIOM                       BIT(0)
+diff --git a/target/riscv/csr.c b/target/riscv/csr.c
+index ea7585329e..26bc1f0ff1 100644
+--- a/target/riscv/csr.c
++++ b/target/riscv/csr.c
+@@ -3218,3 +3218,3 @@ static int write_hvipriox(CPURISCVState *env, int first_index,
+ 
+-    /* Fill-up priority arrary */
++    /* Fill-up priority array */
+     for (i = 0; i < num_irqs; i++) {
+@@ -3887,3 +3887,3 @@ static inline RISCVException riscv_csrrw_check(CPURISCVState *env,
+         /*
+-         * We are in HS mode. Add 1 to the effective privledge level to
++         * We are in HS mode. Add 1 to the effective privilege level to
+          * allow us to access the Hypervisor CSRs.
+diff --git a/target/riscv/debug.c b/target/riscv/debug.c
+index 75ee1c4971..211f5921b6 100644
+--- a/target/riscv/debug.c
++++ b/target/riscv/debug.c
+@@ -576,3 +576,3 @@ static void riscv_itrigger_update_count(CPURISCVState *env)
+      * Record last icount, so that we can evaluate the executed instructions
+-     * since last priviledge mode change or timer expire.
++     * since last privilege mode change or timer expire.
+      */
+@@ -590,3 +590,3 @@ static void riscv_itrigger_update_count(CPURISCVState *env)
+         /*
+-         * Only when priviledge is changed or itrigger timer expires,
++         * Only when privilege is changed or itrigger timer expires,
+          * the count field in itrigger tdata1 register is updated.
+@@ -596,4 +596,4 @@ static void riscv_itrigger_update_count(CPURISCVState *env)
+             /*
+-             * If itrigger enabled in this priviledge mode, the number of
+-             * executed instructions since last priviledge change
++             * If itrigger enabled in this privilege mode, the number of
++             * executed instructions since last privilege change
+              * should be reduced from current itrigger count.
+@@ -607,3 +607,3 @@ static void riscv_itrigger_update_count(CPURISCVState *env)
+             /*
+-             * If itrigger is not enabled in this priviledge mode,
++             * If itrigger is not enabled in this privilege mode,
+              * the number of executed instructions will be discard and
+diff --git a/target/riscv/insn_trans/trans_rvf.c.inc b/target/riscv/insn_trans/trans_rvf.c.inc
+index a0da7391c7..e7ab84cd9a 100644
+--- a/target/riscv/insn_trans/trans_rvf.c.inc
++++ b/target/riscv/insn_trans/trans_rvf.c.inc
+@@ -302,3 +302,3 @@ static bool trans_fsgnjn_s(DisasContext *ctx, arg_fsgnjn_s *a)
+     }
+-    /* signed-extended intead of nanboxing for result if enable zfinx */
++    /* signed-extended instead of nanboxing for result if enable zfinx */
+     if (ctx->cfg_ptr->ext_zfinx) {
+@@ -347,3 +347,3 @@ static bool trans_fsgnjx_s(DisasContext *ctx, arg_fsgnjx_s *a)
+     }
+-    /* signed-extended intead of nanboxing for result if enable zfinx */
++    /* signed-extended instead of nanboxing for result if enable zfinx */
+     if (ctx->cfg_ptr->ext_zfinx) {
+diff --git a/target/riscv/insn_trans/trans_rvv.c.inc b/target/riscv/insn_trans/trans_rvv.c.inc
+index c2f7527f53..6ab63f4442 100644
+--- a/target/riscv/insn_trans/trans_rvv.c.inc
++++ b/target/riscv/insn_trans/trans_rvv.c.inc
+@@ -2242,3 +2242,3 @@ GEN_OPIWI_NARROW_TRANS(vnclip_wi, IMM_ZX, vnclip_wx)
+  * NaN-boxed value, in which case the least-significant SEW bits
+- * of the f regsiter are used, else the canonical NaN value is used.
++ * of the f register are used, else the canonical NaN value is used.
   */
-@@ -4044,3 +4044,3 @@ static void gen_mxu_s32sfl(DisasContext *ctx)
-  *  Q8SAD XRa, XRd, XRb, XRc
-- *    Typical SAD opration for motion estimation.
-+ *    Typical SAD operation for motion estimation.
-  */
+@@ -3284,3 +3284,3 @@ static void load_element(TCGv_i64 dest, TCGv_ptr base,
+ 
+-/* offset of the idx element with base regsiter r */
++/* offset of the idx element with base register r */
+ static uint32_t endian_ofs(DisasContext *s, int r, int idx)
+diff --git a/target/riscv/insn_trans/trans_rvzfh.c.inc b/target/riscv/insn_trans/trans_rvzfh.c.inc
+index 8b1e2519bb..4b01812fd8 100644
+--- a/target/riscv/insn_trans/trans_rvzfh.c.inc
++++ b/target/riscv/insn_trans/trans_rvzfh.c.inc
+@@ -307,3 +307,3 @@ static bool trans_fsgnjn_h(DisasContext *ctx, arg_fsgnjn_h *a)
+     }
+-    /* signed-extended intead of nanboxing for result if enable zfinx */
++    /* signed-extended instead of nanboxing for result if enable zfinx */
+     if (ctx->cfg_ptr->ext_zfinx) {
+@@ -351,3 +351,3 @@ static bool trans_fsgnjx_h(DisasContext *ctx, arg_fsgnjx_h *a)
+     }
+-    /* signed-extended intead of nanboxing for result if enable zfinx */
++    /* signed-extended instead of nanboxing for result if enable zfinx */
+     if (ctx->cfg_ptr->ext_zfinx) {
+diff --git a/target/riscv/monitor.c b/target/riscv/monitor.c
+index f36ddfa967..f5b1ffe6c3 100644
+--- a/target/riscv/monitor.c
++++ b/target/riscv/monitor.c
+@@ -57,3 +57,3 @@ static void print_pte(Monitor *mon, int va_bits, target_ulong vaddr,
+ {
+-    /* santity check on vaddr */
++    /* sanity check on vaddr */
+     if (vaddr >= (1UL << va_bits)) {
 -- 
 2.39.2
 
