@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qKH9n-0001B7-GZ
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 07:40:21 -0400
+	id 1qKH9s-0001dS-31
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 07:40:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKH9e-0000yp-B3; Fri, 14 Jul 2023 07:40:10 -0400
+ id 1qKH9j-00012u-4q; Fri, 14 Jul 2023 07:40:15 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKH9a-0004Li-HP; Fri, 14 Jul 2023 07:40:09 -0400
+ id 1qKH9g-0004ao-UA; Fri, 14 Jul 2023 07:40:14 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id A220613D9D;
+ by isrv.corpit.ru (Postfix) with ESMTP id F260413D9F;
  Fri, 14 Jul 2023 14:38:57 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 9C32614BAC;
+ by tsrv.corpit.ru (Postfix) with SMTP id ED34A14BAE;
  Fri, 14 Jul 2023 14:38:41 +0300 (MSK)
-Received: (nullmailer pid 1186246 invoked by uid 1000);
+Received: (nullmailer pid 1186252 invoked by uid 1000);
  Fri, 14 Jul 2023 11:38:38 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH, trivial 17/29] tree-wide spelling fixes in comments and some
- messages: hw/pci
-Date: Fri, 14 Jul 2023 14:38:22 +0300
-Message-Id: <20230714113834.1186117-19-mjt@tls.msk.ru>
+Subject: [PATCH, trivial 19/29] tree-wide spelling fixes in comments and some
+ messages: hw/usb hw/ide hw/i2c
+Date: Fri, 14 Jul 2023 14:38:24 +0300
+Message-Id: <20230714113834.1186117-21-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230714113834.1186117-1-mjt@tls.msk.ru>
 References: <20230714113834.1186117-1-mjt@tls.msk.ru>
@@ -49,160 +49,157 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jul 2023 11:40:14 -0000
+X-List-Received-Date: Fri, 14 Jul 2023 11:40:17 -0000
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/pci-bridge/cxl_downstream.c      | 2 +-
- hw/pci-bridge/pci_expander_bridge.c | 2 +-
- hw/pci-host/bonito.c                | 2 +-
- hw/pci-host/designware.c            | 4 ++--
- hw/pci-host/dino.c                  | 2 +-
- hw/pci-host/gpex-acpi.c             | 2 +-
- hw/pci-host/gt64120.c               | 4 ++--
- hw/pci-host/pnv_phb.c               | 2 +-
- hw/pci-host/pnv_phb3.c              | 2 +-
- hw/pci-host/pnv_phb3_msi.c          | 2 +-
- hw/pci-host/pnv_phb4.c              | 6 +++---
- hw/pci/pcie_aer.c                   | 2 +-
- hw/pci/shpc.c                       | 2 +-
- 13 files changed, 17 insertions(+), 17 deletions(-)
+ hw/i2c/pm_smbus.c           | 2 +-
+ hw/i2c/pmbus_device.c       | 2 +-
+ hw/i2c/smbus_slave.c        | 2 +-
+ hw/ide/ahci_internal.h      | 4 ++--
+ hw/ide/cmd646.c             | 2 +-
+ hw/ide/core.c               | 2 +-
+ hw/usb/ccid-card-emulated.c | 2 +-
+ hw/usb/hcd-ehci.c           | 6 +++---
+ hw/usb/hcd-ohci.c           | 2 +-
+ hw/usb/quirks.h             | 2 +-
+ hw/usb/redirect.c           | 2 +-
+ hw/usb/trace-events         | 2 +-
+ hw/usb/xen-usb.c            | 2 +-
+ 13 files changed, 16 insertions(+), 16 deletions(-)
 
-diff --git a/hw/pci-bridge/cxl_downstream.c b/hw/pci-bridge/cxl_downstream.c
-index 54f507318f..5a2b749c8e 100644
---- a/hw/pci-bridge/cxl_downstream.c
-+++ b/hw/pci-bridge/cxl_downstream.c
-@@ -44,3 +44,3 @@ static void latch_registers(CXLDownstreamPort *dsp)
+diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
+index d7eae548cb..9ad6a47739 100644
+--- a/hw/i2c/pm_smbus.c
++++ b/hw/i2c/pm_smbus.c
+@@ -2,3 +2,3 @@
+  * PC SMBus implementation
+- * splitted from acpi.c
++ * split from acpi.c
+  *
+diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+index 44fe4eddbb..426f72ac60 100644
+--- a/hw/i2c/pmbus_device.c
++++ b/hw/i2c/pmbus_device.c
+@@ -1625,3 +1625,3 @@ static int pmbus_write_data(SMBusDevice *smd, uint8_t *buf, uint8_t len)
+ passthrough:
+-    /* Unimplimented registers get passed to the device */
++    /* Unimplemented registers get passed to the device */
+     default:
+diff --git a/hw/i2c/smbus_slave.c b/hw/i2c/smbus_slave.c
+index feb3ec6333..2ef2c7c5f6 100644
+--- a/hw/i2c/smbus_slave.c
++++ b/hw/i2c/smbus_slave.c
+@@ -4,3 +4,3 @@
+  * This code is a helper for SMBus device emulation.  It implements an
+- * I2C device inteface and runs the SMBus protocol from the device
++ * I2C device interface and runs the SMBus protocol from the device
+  * point of view and maps those to simple calls to emulate.
+diff --git a/hw/ide/ahci_internal.h b/hw/ide/ahci_internal.h
+index 2480455372..c244bbd8be 100644
+--- a/hw/ide/ahci_internal.h
++++ b/hw/ide/ahci_internal.h
+@@ -63,3 +63,3 @@ enum AHCIHostReg {
+     AHCI_HOST_REG_PORTS_IMPL = 3,  /* PI: bitmap of implemented ports */
+-    AHCI_HOST_REG_VERSION    = 4,  /* VS: AHCI spec. version compliancy */
++    AHCI_HOST_REG_VERSION    = 4,  /* VS: AHCI spec. version compliance */
+     AHCI_HOST_REG_CCC_CTL    = 5,  /* CCC_CTL: CCC Control */
+@@ -69,3 +69,3 @@ enum AHCIHostReg {
+     AHCI_HOST_REG_CAP2       = 9,  /* CAP2: host capabilities, extended */
+-    AHCI_HOST_REG_BOHC       = 10, /* BOHC: firmare/os handoff ctrl & status */
++    AHCI_HOST_REG_BOHC       = 10, /* BOHC: firmware/os handoff ctrl & status */
+     AHCI_HOST_REG__COUNT     = 11
+diff --git a/hw/ide/cmd646.c b/hw/ide/cmd646.c
+index cabe9048b1..c0bcfa4414 100644
+--- a/hw/ide/cmd646.c
++++ b/hw/ide/cmd646.c
+@@ -259,3 +259,3 @@ static void pci_cmd646_ide_realize(PCIDevice *dev, Error **errp)
+     if (d->secondary) {
+-        /* XXX: if not enabled, really disable the seconday IDE controller */
++        /* XXX: if not enabled, really disable the secondary IDE controller */
+         pci_conf[CNTRL] |= CNTRL_EN_CH1; /* enable IDE1 */
+diff --git a/hw/ide/core.c b/hw/ide/core.c
+index de48ff9f86..ee116891ed 100644
+--- a/hw/ide/core.c
++++ b/hw/ide/core.c
+@@ -1700,3 +1700,3 @@ static bool cmd_set_features(IDEState *s, uint8_t cmd)
+                 break;
+-            case 0x02: /* sigle word dma mode*/
++            case 0x02: /* single word dma mode */
+                 put_le16(identify_data + 62, 0x07 | (1 << (val + 8)));
+diff --git a/hw/usb/ccid-card-emulated.c b/hw/usb/ccid-card-emulated.c
+index c328660075..3ee9c73b87 100644
+--- a/hw/usb/ccid-card-emulated.c
++++ b/hw/usb/ccid-card-emulated.c
+@@ -520,3 +520,3 @@ static void emulated_realize(CCIDCardState *base, Error **errp)
  
--/* TODO: Look at sharing this code acorss all CXL port types */
-+/* TODO: Look at sharing this code across all CXL port types */
- static void cxl_dsp_dvsec_write_config(PCIDevice *dev, uint32_t addr,
-diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
-index 613857b601..535889f7c2 100644
---- a/hw/pci-bridge/pci_expander_bridge.c
-+++ b/hw/pci-bridge/pci_expander_bridge.c
-@@ -265,3 +265,3 @@ static int pxb_map_irq_fn(PCIDevice *pci_dev, int pin)
-      * First carry out normal swizzle to handle
--     * multple root ports on a pxb instance.
-+     * multiple root ports on a pxb instance.
-      */
-diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
-index 4701481b9b..ee6cb85e97 100644
---- a/hw/pci-host/bonito.c
-+++ b/hw/pci-host/bonito.c
-@@ -64,3 +64,3 @@
- 
--/* from linux soure code. include/asm-mips/mips-boards/bonito64.h*/
-+/* from linux source code. include/asm-mips/mips-boards/bonito64.h*/
- #define BONITO_BOOT_BASE        0x1fc00000
-diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
-index 9e183caa48..77a1b66d50 100644
---- a/hw/pci-host/designware.c
-+++ b/hw/pci-host/designware.c
-@@ -490,3 +490,3 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
-      * If no inbound iATU windows are configured, HW defaults to
--     * letting inbound TLPs to pass in. We emulate that by exlicitly
-+     * letting inbound TLPs to pass in. We emulate that by explicitly
-      * configuring first inbound window to cover all of target's
-@@ -505,3 +505,3 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
+-    /* TODO: a passthru backened that works on local machine. third card type?*/
++    /* TODO: a passthru backend that works on local machine. third card type?*/
+     if (card->backend == BACKEND_CERTIFICATES) {
+diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
+index c930c60921..19b4534c20 100644
+--- a/hw/usb/hcd-ehci.c
++++ b/hw/usb/hcd-ehci.c
+@@ -1466,3 +1466,3 @@ static int ehci_process_itd(EHCIState *ehci,
+                 } else {
+-                    DPRINTF("ISOCH: attempt to addess non-iso endpoint\n");
++                    DPRINTF("ISOCH: attempt to address non-iso endpoint\n");
+                     ehci->ipacket.status = USB_RET_NAK;
+@@ -1515,3 +1515,3 @@ static int ehci_process_itd(EHCIState *ehci,
+ /*  This state is the entry point for asynchronous schedule
+- *  processing.  Entry here consitutes a EHCI start event state (4.8.5)
++ *  processing.  Entry here constitutes a EHCI start event state (4.8.5)
+  */
+@@ -2460,3 +2460,3 @@ static void usb_ehci_vm_state_change(void *opaque, bool running, RunState state)
+      * to miss a QH unlink, and fail to cancel packets, since the unlinked QH
+-     * will never have existed on the destination. Therefor we must flush the
++     * will never have existed on the destination. Therefore we must flush the
+      * async schedule on savevm to catch any not yet noticed unlinks.
+diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+index cc5cde6983..7ff1b65ced 100644
+--- a/hw/usb/hcd-ohci.c
++++ b/hw/usb/hcd-ohci.c
+@@ -1357,3 +1357,3 @@ static uint32_t ohci_get_frame_remaining(OHCIState *ohci)
+     }
+-    /* Being in USB operational state guarnatees sof_time was set already. */
++    /* Being in USB operational state guarantees sof_time was set already. */
+     tks = qemu_clock_get_ns(QEMU_CLOCK_VIRTUAL) - ohci->sof_time;
+diff --git a/hw/usb/quirks.h b/hw/usb/quirks.h
+index c3e595f40b..94b2c95341 100644
+--- a/hw/usb/quirks.h
++++ b/hw/usb/quirks.h
+@@ -69,3 +69,3 @@ static const struct usb_device_id usbredir_raw_serial_ids[] = {
+     { USB_DEVICE(0x10C4, 0x8044) }, /* Cygnal Debug Adapter */
+-    { USB_DEVICE(0x10C4, 0x804E) }, /* Software Bisque Paramount ME build-in converter */
++    { USB_DEVICE(0x10C4, 0x804E) }, /* Software Bisque Paramount ME built-in converter */
+     { USB_DEVICE(0x10C4, 0x8053) }, /* Enfora EDG1228 */
+diff --git a/hw/usb/redirect.c b/hw/usb/redirect.c
+index 39fbaaab16..0e256c1eca 100644
+--- a/hw/usb/redirect.c
++++ b/hw/usb/redirect.c
+@@ -473,3 +473,3 @@ static int bufp_alloc(USBRedirDevice *dev, uint8_t *data, uint16_t len,
+     }
+-    /* Since we're interupting the stream anyways, drop enough packets to get
++    /* Since we're interrupting the stream anyways, drop enough packets to get
+        back to our target buffer size */
+diff --git a/hw/usb/trace-events b/hw/usb/trace-events
+index 6bb9655c8d..ed7dc210d3 100644
+--- a/hw/usb/trace-events
++++ b/hw/usb/trace-events
+@@ -250,3 +250,3 @@ usb_set_device_feature(int addr, int feature, int ret) "dev %d, feature %d, ret
+ usb_hub_reset(int addr) "dev %d"
+-usb_hub_control(int addr, int request, int value, int index, int length) "dev %d, req 0x%x, value %d, index %d, langth %d"
++usb_hub_control(int addr, int request, int value, int index, int length) "dev %d, req 0x%x, value %d, index %d, length %d"
+ usb_hub_get_port_status(int addr, int nr, int status, int changed) "dev %d, port %d, status 0x%x, changed 0x%x"
+diff --git a/hw/usb/xen-usb.c b/hw/usb/xen-usb.c
+index 38ee660a30..09ec326aea 100644
+--- a/hw/usb/xen-usb.c
++++ b/hw/usb/xen-usb.c
+@@ -453,3 +453,3 @@ static int usbback_check_and_submit(struct usbback_req *usbback_req)
      /*
--     * We initially place MSI interrupt I/O region a adress 0 and
-+     * We initially place MSI interrupt I/O region a address 0 and
-      * disable it. It'll be later moved to correct offset and enabled
-diff --git a/hw/pci-host/dino.c b/hw/pci-host/dino.c
-index e8eaebca54..82503229fa 100644
---- a/hw/pci-host/dino.c
-+++ b/hw/pci-host/dino.c
-@@ -1,3 +1,3 @@
- /*
-- * HP-PARISC Dino PCI chipset emulation, as in B160L and similiar machines
-+ * HP-PARISC Dino PCI chipset emulation, as in B160L and similar machines
-  *
-diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
-index 7c7316bc96..87ba074254 100644
---- a/hw/pci-host/gpex-acpi.c
-+++ b/hw/pci-host/gpex-acpi.c
-@@ -179,3 +179,3 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
-             /*
--             * Resources defined for PXBs are composed by the folling parts:
-+             * Resources defined for PXBs are composed by the following parts:
-              * 1. The resources the pci-brige/pcie-root-port need.
-diff --git a/hw/pci-host/gt64120.c b/hw/pci-host/gt64120.c
-index 82c15edb46..143bf053d7 100644
---- a/hw/pci-host/gt64120.c
-+++ b/hw/pci-host/gt64120.c
-@@ -333,5 +333,5 @@ static void gt64120_update_pci_cfgdata_mapping(GT64120State *s)
-      * Command Register determines how data transactions from the CPU to/from
--     * PCI are handled along with the setting of the Endianess bit in the CPU
-+     * PCI are handled along with the setting of the Endianness bit in the CPU
-      * Configuration Register. See:
--     * - Table 16: 32-bit PCI Transaction Endianess
-+     * - Table 16: 32-bit PCI Transaction Endianness
-      * - Table 158: PCI_0 Command, Offset: 0xc00
-diff --git a/hw/pci-host/pnv_phb.c b/hw/pci-host/pnv_phb.c
-index 82332d7a05..157c00782c 100644
---- a/hw/pci-host/pnv_phb.c
-+++ b/hw/pci-host/pnv_phb.c
-@@ -27,3 +27,3 @@
-  *
-- * This helper does both operations at the same time because seting
-+ * This helper does both operations at the same time because setting
-  * a new QOM child will erase the bus parent of the device. This happens
-diff --git a/hw/pci-host/pnv_phb3.c b/hw/pci-host/pnv_phb3.c
-index 7a21497cf8..c5e58f4086 100644
---- a/hw/pci-host/pnv_phb3.c
-+++ b/hw/pci-host/pnv_phb3.c
-@@ -759,3 +759,3 @@ static void pnv_phb3_translate_tve(PnvPhb3DMASpace *ds, hwaddr addr,
-          * TODO: Venice/Murano support it on bottom window above 4G and
--         * Naples suports it on everything
-+         * Naples supports it on everything
-          */
-diff --git a/hw/pci-host/pnv_phb3_msi.c b/hw/pci-host/pnv_phb3_msi.c
-index 41e63b066f..dc8d8637f2 100644
---- a/hw/pci-host/pnv_phb3_msi.c
-+++ b/hw/pci-host/pnv_phb3_msi.c
-@@ -283,3 +283,3 @@ static void phb3_msi_instance_init(Object *obj)
- 
--    /* Will be overriden later */
-+    /* Will be overridden later */
-     ics->offset = 0;
-diff --git a/hw/pci-host/pnv_phb4.c b/hw/pci-host/pnv_phb4.c
-index 6232cbeee1..29cb11a5d9 100644
---- a/hw/pci-host/pnv_phb4.c
-+++ b/hw/pci-host/pnv_phb4.c
-@@ -209,3 +209,3 @@ static void pnv_phb4_check_mbt(PnvPHB4 *phb, uint32_t index)
- 
--    /* TODO: Figure out how to implemet/decode AOMASK */
-+    /* TODO: Figure out how to implement/decode AOMASK */
- 
-@@ -393,3 +393,3 @@ static void pnv_phb4_ioda_write(PnvPHB4 *phb, uint64_t val)
- 
--        /* Copy accross the valid bit to the other half */
-+        /* Copy across the valid bit to the other half */
-         phb->ioda_MBT[idx ^ 1] &= 0x7fffffffffffffffull;
-@@ -1410,3 +1410,3 @@ static void pnv_phb4_msi_write(void *opaque, hwaddr addr,
- 
--    /* TODO: check PE/MSI assignement */
-+    /* TODO: check PE/MSI assignment */
- 
-diff --git a/hw/pci/pcie_aer.c b/hw/pci/pcie_aer.c
-index 374d593ead..b68c7ecb49 100644
---- a/hw/pci/pcie_aer.c
-+++ b/hw/pci/pcie_aer.c
-@@ -326,3 +326,3 @@ static void pcie_aer_msg_root_port(PCIDevice *dev, const PCIEAERMsg *msg)
-          * OS which cares of aer would receive errors via
--         * native aer mechanims, so this wouldn't matter.
-+         * native aer mechanisms, so this wouldn't matter.
-          */
-diff --git a/hw/pci/shpc.c b/hw/pci/shpc.c
-index e7bc7192f1..df7f370111 100644
---- a/hw/pci/shpc.c
-+++ b/hw/pci/shpc.c
-@@ -617,3 +617,3 @@ int shpc_init(PCIDevice *d, PCIBus *sec_bus, MemoryRegion *bar,
-         SHPC_IDX_TO_PCI(nslots) > PCI_SLOT_MAX) {
--        /* TODO: report an error mesage that makes sense. */
-+        /* TODO: report an error message that makes sense. */
-         return -EINVAL;
+-     * When the device is first connected or resetted, USB device has no
++     * When the device is first connected or reset, USB device has no
+      * address. In this initial state, following requests are sent to device
 -- 
 2.39.2
 
