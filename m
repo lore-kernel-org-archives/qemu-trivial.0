@@ -1,72 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qK8cg-0003vX-Ap
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2023 22:33:34 -0400
+	id 1qKGML-0002vS-Ug
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 06:49:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qK8ce-0003sg-58; Thu, 13 Jul 2023 22:33:32 -0400
-Received: from mail-vs1-xe35.google.com ([2607:f8b0:4864:20::e35])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1qK8cc-0002nS-Om; Thu, 13 Jul 2023 22:33:31 -0400
-Received: by mail-vs1-xe35.google.com with SMTP id
- ada2fe7eead31-4438f623370so582704137.3; 
- Thu, 13 Jul 2023 19:33:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1689302009; x=1691894009;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=cGRniExqQC6zYFPnDBU4gori67Idx3tWnRYJj8sOyr0=;
- b=eeZWE+7mdQPLGwtqPqDx1JQwXWmTKKpQjz9c8zziWbDB6LgFXc8LA6BiWQJ3X+vMnN
- p8nUOa6mtvRF32Wr7IIM3z5mwW1lHNyEovw+H+B0PJdhLfsa2WMnwvsXQs3b5HsL+1lw
- vtJPdw9zyetxVlLacQkq6jhYwSxDWcdgkZ3nitipjCBTbqn7ykQvZwr+LUZcxW6ojjc5
- THepF68/BIoI/kr50wO+AtAefNtebBRvFaXsTvTcw/dRPRklE/wwYJJ0lgC39CN1m9a/
- guOqVG+eweQI5OTMOMptzHDIOsZ689PVNDiE/8bzFjj7G35c6coptjuompWcLNSeukSH
- V+ZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689302009; x=1691894009;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=cGRniExqQC6zYFPnDBU4gori67Idx3tWnRYJj8sOyr0=;
- b=lbwpNwiJLfoBrEk94IUVLhSU+uW9rC6YQYx/XNH7toT6CkvwaiiOHlPpY8rdp/74wF
- 6MOiKrvXmHlEgftKrayvdsqNDi/CeTtD5LwTKaecV2nrv2k2/PRpQo0P721nAVT+8BdE
- eCO3DplOP2lHNWI8R+xu1qq8jtRVmVSMRpH9buqaxpxA9PFG4NG64s8+wQy9aNe7nquT
- w/mSft4dsMyQd7ByjMn3IeLfHo3uiP8GZd4KS/WckILMAL21kjiT+KwjMQp40waCDU8D
- HQ31EbOzNGD8bOLQhi0vLCPQsghK6K3hrME6YaqFPSV4X9TnGPSWuuNHx7cNCH2HOchh
- Aj5A==
-X-Gm-Message-State: ABy/qLZ7F4J5ILbRdqthv4BuT2JIOf6CmapoMaeRaIpY6NSWluySHuyA
- 3WpQl3pg9DrA8cRmzyjBmq2Tf53He+1vZw5l3y0=
-X-Google-Smtp-Source: APBJJlFx80ki/W/6s/33saOED39SjlDuBe4PBIsCmG+wQp9L3FdUjcB6cEY410nITqJxptQlPXY5tAAo6sNaHA5jk0M=
-X-Received: by 2002:a05:6102:34c2:b0:443:67a0:fb79 with SMTP id
- a2-20020a05610234c200b0044367a0fb79mr2212960vst.21.1689302009033; Thu, 13 Jul
- 2023 19:33:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qKGMK-0002uc-MI
+ for qemu-trivial@nongnu.org; Fri, 14 Jul 2023 06:49:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qKGMJ-0005xe-9a
+ for qemu-trivial@nongnu.org; Fri, 14 Jul 2023 06:49:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1689331750;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=1EUpEPdGCMPna7btGH7N3m/vHp8//TkK2jHWAgDDhkw=;
+ b=LtnXvoJzcl/AFhFofCWjvbyvszyfEQ08pFfRZ2gBvHeBSsKkSRDBSK5OWIZzSwNCR/0mqP
+ rezQVKuHDcDQD7jhlAmfYj3brOjE3vxOAX7AfQVD/M+q9lF9cshM66yU39PT7/K5N0BASu
+ kWGRN1e5Ub3cD9Cq9sS6/l1E61Uqgx4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-113-6-hPFmKjPh-owNGBxrsvJA-1; Fri, 14 Jul 2023 06:49:07 -0400
+X-MC-Unique: 6-hPFmKjPh-owNGBxrsvJA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D1846185A792;
+ Fri, 14 Jul 2023 10:49:06 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.113])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CA26F40C6CCD;
+ Fri, 14 Jul 2023 10:49:05 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Huacai Chen <chenhuacai@kernel.org>, qemu-devel@nongnu.org
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	qemu-trivial@nongnu.org
+Subject: [PATCH v3] hw/mips: Improve the default USB settings in the
+ loongson3-virt machine
+Date: Fri, 14 Jul 2023 12:49:03 +0200
+Message-Id: <20230714104903.284845-1-thuth@redhat.com>
 MIME-Version: 1.0
-References: <20230712143728.383528-1-dbarboza@ventanamicro.com>
- <b0ecaf6e-4639-bc29-fdc5-60a064986352@tls.msk.ru>
-In-Reply-To: <b0ecaf6e-4639-bc29-fdc5-60a064986352@tls.msk.ru>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 14 Jul 2023 12:33:03 +1000
-Message-ID: <CAKmqyKPBEWRSAcwyeF5SQ7NR00ka7u_hyDgX5yREuP6xuvy6TA@mail.gmail.com>
-Subject: Re: [PATCH] docs/system/target-riscv.rst: tidy CPU firmware section
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Daniel Henrique Barboza <dbarboza@ventanamicro.com>, qemu-devel@nongnu.org,
- qemu-riscv@nongnu.org, 
- alistair.francis@wdc.com, bmeng@tinylab.org, liweiwei@iscas.ac.cn, 
- zhiwei_liu@linux.alibaba.com, palmer@rivosinc.com, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e35;
- envelope-from=alistair23@gmail.com; helo=mail-vs1-xe35.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,46 +66,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jul 2023 02:33:32 -0000
+X-List-Received-Date: Fri, 14 Jul 2023 10:49:12 -0000
 
-On Thu, Jul 13, 2023 at 4:47=E2=80=AFPM Michael Tokarev <mjt@tls.msk.ru> wr=
-ote:
->
-> 12.07.2023 17:37, Daniel Henrique Barboza wrote:
-> > This is how the content of the "RISC-V CPU firmware" section is
-> > displayed after the html is generated:
-> >
-> > "When using the sifive_u or virt machine there are three different
-> > firmware boot options: 1. -bios default - This is the default behaviour
-> > if no -bios option is included. (...) 3. -bios <file> - Tells QEMU to
-> > load the specified file as the firmware."
-> >
-> > It's all in the same paragraph, in a numbered list, and no special
-> > formatting for the options.
-> >
-> > Tidy it a bit by adding line breaks between items and its description.
-> > Remove the numbered list. And apply formatting for the options cited in
-> > the middle of the text.
-> >
-> > Cc: qemu-trivial@nongnu.org
-> > Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
->
-> I'll pick this up for trivial-patches, but since it's the only patch ther=
-e
-> now, it's IMHO better to apply it together with other riscv changes if
-> there will be any for 8.1.  So let's pick it to both trees and the first
-> to apply wins.
+It's possible to compile QEMU without the USB devices (e.g. when using
+"--without-default-devices" as option for the "configure" script).
+To be still able to run the loongson3-virt machine in default mode with
+such a QEMU binary, we have to check here for the availability of the
+OHCI controller first before instantiating the USB devices.
 
-Sounds good to me!
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v3: Back to runtime detection, but more simple this time compared to v1
+     (checking for OHCI should be enough, since this implies CONFIG_USB
+      which is the switch that usb-kbd and usb-tablet are depending on)
 
-Applied to riscv-to-apply.next
+ hw/mips/loongson3_virt.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Alistair
+diff --git a/hw/mips/loongson3_virt.c b/hw/mips/loongson3_virt.c
+index 4018b8c1d3..3ad0a223df 100644
+--- a/hw/mips/loongson3_virt.c
++++ b/hw/mips/loongson3_virt.c
+@@ -447,7 +447,7 @@ static inline void loongson3_virt_devices_init(MachineState *machine,
+ 
+     pci_vga_init(pci_bus);
+ 
+-    if (defaults_enabled()) {
++    if (defaults_enabled() && object_class_by_name("pci-ohci")) {
+         pci_create_simple(pci_bus, -1, "pci-ohci");
+         usb_create_simple(usb_bus_find(-1), "usb-kbd");
+         usb_create_simple(usb_bus_find(-1), "usb-tablet");
+-- 
+2.39.3
 
->
-> Thanks,
->
-> /mjt
->
->
 
