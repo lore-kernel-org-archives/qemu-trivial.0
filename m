@@ -1,61 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qKI9p-0003gD-Vp
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 08:44:26 -0400
+	id 1qKIFZ-0008A7-7S
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 08:50:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qKI9o-0003fl-3l
- for qemu-trivial@nongnu.org; Fri, 14 Jul 2023 08:44:24 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ id 1qKIFK-00088v-C8
+ for qemu-trivial@nongnu.org; Fri, 14 Jul 2023 08:50:08 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qKI9l-00045M-Ib
- for qemu-trivial@nongnu.org; Fri, 14 Jul 2023 08:44:23 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-51e619bcbf9so2383575a12.3
- for <qemu-trivial@nongnu.org>; Fri, 14 Jul 2023 05:44:20 -0700 (PDT)
+ id 1qKIFG-00009b-OK
+ for qemu-trivial@nongnu.org; Fri, 14 Jul 2023 08:50:05 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-51e29ede885so2280050a12.3
+ for <qemu-trivial@nongnu.org>; Fri, 14 Jul 2023 05:50:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1689338659; x=1691930659;
+ d=linaro.org; s=google; t=1689339001; x=1691931001;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=laZTEGQ5at+TRDg9ZEt2KmGtu2J/rpeFHjN2vms6jL8=;
- b=G8py4Q0XRwl12061AfQ9RGrSK522inpQGWs6Rm/ZRRQaUkufqtcCIOqNL0YZuZNPkV
- 2uPzCFoMXC7ETBmL0xJmCgrtmGFRXml7WPrsfPYkFyE5CyAz0tF1oOhow8AyTIrJBkQz
- SKk9W/gjYQ98jSMulE2xg54zo6LxX3JFa88bEtMJirpTtjS/TSRTG05Y+5v5FdZfdKEp
- S8w5tNiV6QlmOrnotpUkT6cDejfikMpFW1mzVezeLTguzmukXP+HxaGp53qcOx4LCtJ0
- pECHSYyZxwGKMTXDx/JioN79KMVZVclxtKFFIo6cX612U14EJ0maqrdTUd7PqupXkSa0
- fPig==
+ bh=YJ5Jujc82u0z5kH9rnsFbWWRI2Pb1ytEMqh9R3JffMs=;
+ b=tUF2nT78wZlDnVNSjvGonyKEPLTe7AZY7c40w3mcXFMGrJyOuAavE4oYJKg0QoMkDR
+ 9FB55b7uIWCb80a9+5MCEowOMlke2AslEjBwPYlrEmv7rtDgWC1AowvuLuzVyjQ3BFd3
+ UljcfRMotf0rg6Y1xv1stiS1r2Fv3zfBCw2UBwbPNogXibIQBdzw9DLRlMvmBZ3WUVaU
+ kwj2WkWrYNeMX0Bcx9nDcuGGzucxNPwW7b334H3mHcRAKdRFGF8CjtnDGg/1ZYSrzs7w
+ Jsp2D66nsS1UAAX3vbSQRgIWNtIV6t7Oh05iOWfwr17fmT6O1f9X/v95E9WLj5u1BtBP
+ pKtQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689338659; x=1691930659;
+ d=1e100.net; s=20221208; t=1689339001; x=1691931001;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=laZTEGQ5at+TRDg9ZEt2KmGtu2J/rpeFHjN2vms6jL8=;
- b=c3uRRgOp8O7RNElX7/wwbiVV2/PT/ifYa0hnNcidI7XegVH82KTgYDToM/zsMBuByf
- 3EqgC2FN/QKCcd6UYcx8BAQVXpREb5zrTEBMINmdb0O7Ey/FMHNAAv+a+hOegblKYEis
- JT37PbpMJvQxMB9iNhjeg800w5KLXYG57jRMxAcwU5FXSocafui6IztzdHy2rHaQGWvy
- 4yjkQ3FygsG84cEFvAqoCWRjiSF+LPRb/XfdLe0wlVpe4FskIYapdS4DqWA8HjObs5/+
- kILfcH0g06ATN9WTNs5o+uo2TtwvO2mEAGzBKwVDuczqRMkefDME/6TehNb210VY5IX4
- Dj2w==
-X-Gm-Message-State: ABy/qLZ4KLmIcBaTQnDKILQ2dasKCbSJsoTCVBxqVsq67UEM2/INhHpi
- /RUT1/SzJXTfeHXgfVs6tNa7KwZxq+30vXC4K9riccDTgzpsLQKM
-X-Google-Smtp-Source: APBJJlHNswA8/ljkQ3GU0geEOlc1GUGdFeJW3v5wdylSC0yVgr8BVKn6qCvrmkB3hOIVhEuim+VNU2fT+5sEVX9fc8s=
-X-Received: by 2002:aa7:c90f:0:b0:51e:54ad:ba8f with SMTP id
- b15-20020aa7c90f000000b0051e54adba8fmr5223876edt.24.1689338659367; Fri, 14
- Jul 2023 05:44:19 -0700 (PDT)
+ bh=YJ5Jujc82u0z5kH9rnsFbWWRI2Pb1ytEMqh9R3JffMs=;
+ b=Gf3P+xcriwFZmSURs+NKnz+yYFfL1SKSX1lvs2LWDoIoOk/Vs5yAfw01nAmr3b0A6s
+ lyU4r4OGMdW7M32dtm/FD7NXqnis42lyGtPAq+ZjpF+1Hmgt4BHx9rgj3JkQ+bZHGYze
+ 698tjKGoxMfWVPy+U1esqdbbCYUHdNwRqYLpt0jizzOrqocjhMfXsgkx/NwfT0me3Phh
+ p63XXlw5jQdyx5p1nruolfUJVjE9zKalMSksfk0v2RP5hjnftyEOfe+6zd55N8in1zmQ
+ j7jNnr5rSxysYzHLn1nGqcuvBHX2Y19YzqGjWS5SkMXR7A2Fqo+U8xpLfraDoS+84dKJ
+ Bn1Q==
+X-Gm-Message-State: ABy/qLbGnXikIgx0ymMk7gS7/GmfAU7ab6+7GIjC48WFQ39jo1xfjWbd
+ ITww7myO0k9xTHyyJDB6K77kLEmqAQo0u40KogMuVA==
+X-Google-Smtp-Source: APBJJlH4sJa/6DtqrPseH5U2GyKQdNfNJKQ7NzZJHM5cnyd48j2Jd0dEFXZhdsWvwtL91zxdhPaj63K844VWtt2CZJ0=
+X-Received: by 2002:aa7:d8d4:0:b0:51d:8ab1:5df4 with SMTP id
+ k20-20020aa7d8d4000000b0051d8ab15df4mr4087451eds.21.1689339000978; Fri, 14
+ Jul 2023 05:50:00 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230714113834.1186117-1-mjt@tls.msk.ru>
-In-Reply-To: <20230714113834.1186117-1-mjt@tls.msk.ru>
+ <20230714113834.1186117-17-mjt@tls.msk.ru>
+In-Reply-To: <20230714113834.1186117-17-mjt@tls.msk.ru>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 14 Jul 2023 13:44:08 +0100
-Message-ID: <CAFEAcA9RjLeu2pqFMaKzCOd7GeSwYbCs-E7kXwuvTEy59W70=Q@mail.gmail.com>
-Subject: Re: [PATCH, trivial 00/29] tree-wide spelling fixes in comments and
- some messages
+Date: Fri, 14 Jul 2023 13:49:50 +0100
+Message-ID: <CAFEAcA-VJG_Mt3AVtUeFPK+2sdg=kNabMijy0og9_fH=rQ92fw@mail.gmail.com>
+Subject: Re: [PATCH, trivial 15/29] tree-wide spelling fixes in comments and
+ some messages: other architectures
 To: Michael Tokarev <mjt@tls.msk.ru>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -75,36 +76,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jul 2023 12:44:24 -0000
+X-List-Received-Date: Fri, 14 Jul 2023 12:50:08 -0000
 
-On Fri, 14 Jul 2023 at 12:39, Michael Tokarev <mjt@tls.msk.ru> wrote:
+On Fri, 14 Jul 2023 at 12:40, Michael Tokarev <mjt@tls.msk.ru> wrote:
 >
-> This is a set of tree-wide spelling fixes, grouped a little bit, to be
-> a bit easier to manage.  Every change has been manually accepted, some
-> needed minor reformatting.
->
-> In order to reduce size of the emails, I used `git format-patch -U1' to
-> show less context in diffs.
->
-> This shuold be safe to apply for 8.1, as it does not touch actual code.
-> There are a few message texts touched, mostly error messages.
->
-> Michael Tokarev (29):
->   tree-wide spelling fixes in comments and some messages: block
->   tree-wide spelling fixes in comments and some messages: bsd-user
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  host/include/aarch64/host/cpuinfo.h              |  2 +-
 
-This would be easier to deal with if it followed our
-standard convention of putting the subsystem name at the
-front of the subject line, not the end. As it is, in
-my email client I have a whole series of emails that look
-like
+This...
 
- "[PATCH 02/29] tree-wide spelling fixes in comments and some m..."
- "[PATCH 03/29] tree-wide spelling fixes in comments and some m..."
+>  hw/misc/allwinner-r40-dramc.c                    |  2 +-
+>  hw/misc/exynos4210_rng.c                         |  2 +-
 
-and it's not possible to tell which I might care about
-reviewing from the list-of-emails pane without clicking
-through each time...
+...these...
+
+>  tests/tcg/aarch64/gdbstub/test-sve.py            |  2 +-
+>  tests/tcg/aarch64/sme-outprod1.c                 |  2 +-
+>  tests/tcg/aarch64/system/boot.S                  |  6 +++---
+>  tests/tcg/aarch64/system/semiheap.c              |  2 +-
+
+...and these are all arm, not "other".
+
+But anyway, for the whole patch
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
 -- PMM
