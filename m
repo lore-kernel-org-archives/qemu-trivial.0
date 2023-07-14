@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qKH9m-00019U-4Y
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 07:40:18 -0400
+	id 1qKH9n-0001B7-GZ
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 07:40:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKH9i-00012T-OX; Fri, 14 Jul 2023 07:40:14 -0400
+ id 1qKH9e-0000yp-B3; Fri, 14 Jul 2023 07:40:10 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKH9g-0004ap-SV; Fri, 14 Jul 2023 07:40:14 -0400
+ id 1qKH9a-0004Li-HP; Fri, 14 Jul 2023 07:40:09 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 260B913DA0;
- Fri, 14 Jul 2023 14:38:58 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id A220613D9D;
+ Fri, 14 Jul 2023 14:38:57 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 209F814BAF;
- Fri, 14 Jul 2023 14:38:42 +0300 (MSK)
-Received: (nullmailer pid 1186255 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 9C32614BAC;
+ Fri, 14 Jul 2023 14:38:41 +0300 (MSK)
+Received: (nullmailer pid 1186246 invoked by uid 1000);
  Fri, 14 Jul 2023 11:38:38 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH, trivial 20/29] tree-wide spelling fixes in comments and some
- messages: hw/display
-Date: Fri, 14 Jul 2023 14:38:25 +0300
-Message-Id: <20230714113834.1186117-22-mjt@tls.msk.ru>
+Subject: [PATCH, trivial 17/29] tree-wide spelling fixes in comments and some
+ messages: hw/pci
+Date: Fri, 14 Jul 2023 14:38:22 +0300
+Message-Id: <20230714113834.1186117-19-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230714113834.1186117-1-mjt@tls.msk.ru>
 References: <20230714113834.1186117-1-mjt@tls.msk.ru>
@@ -49,62 +49,160 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jul 2023 11:40:17 -0000
+X-List-Received-Date: Fri, 14 Jul 2023 11:40:14 -0000
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/display/bochs-display.c | 2 +-
- hw/display/qxl.c           | 2 +-
- hw/display/ssd0303.c       | 2 +-
- hw/display/ssd0323.c       | 2 +-
- hw/display/xlnx_dp.c       | 2 +-
- 5 files changed, 5 insertions(+), 5 deletions(-)
+ hw/pci-bridge/cxl_downstream.c      | 2 +-
+ hw/pci-bridge/pci_expander_bridge.c | 2 +-
+ hw/pci-host/bonito.c                | 2 +-
+ hw/pci-host/designware.c            | 4 ++--
+ hw/pci-host/dino.c                  | 2 +-
+ hw/pci-host/gpex-acpi.c             | 2 +-
+ hw/pci-host/gt64120.c               | 4 ++--
+ hw/pci-host/pnv_phb.c               | 2 +-
+ hw/pci-host/pnv_phb3.c              | 2 +-
+ hw/pci-host/pnv_phb3_msi.c          | 2 +-
+ hw/pci-host/pnv_phb4.c              | 6 +++---
+ hw/pci/pcie_aer.c                   | 2 +-
+ hw/pci/shpc.c                       | 2 +-
+ 13 files changed, 17 insertions(+), 17 deletions(-)
 
-diff --git a/hw/display/bochs-display.c b/hw/display/bochs-display.c
-index e7ec268184..9138e98c3b 100644
---- a/hw/display/bochs-display.c
-+++ b/hw/display/bochs-display.c
-@@ -166,3 +166,3 @@ static int bochs_display_get_mode(BochsDisplayState *s,
-     case 16:
--        /* best effort: support native endianess only */
-+        /* best effort: support native endianness only */
-         mode->format = PIXMAN_r5g6b5;
-diff --git a/hw/display/qxl.c b/hw/display/qxl.c
-index f1c0eb7dfc..af941fb0c2 100644
---- a/hw/display/qxl.c
-+++ b/hw/display/qxl.c
-@@ -1546,3 +1546,3 @@ static void qxl_create_guest_primary(PCIQXLDevice *qxl, int loadvm,
+diff --git a/hw/pci-bridge/cxl_downstream.c b/hw/pci-bridge/cxl_downstream.c
+index 54f507318f..5a2b749c8e 100644
+--- a/hw/pci-bridge/cxl_downstream.c
++++ b/hw/pci-bridge/cxl_downstream.c
+@@ -44,3 +44,3 @@ static void latch_registers(CXLDownstreamPort *dsp)
  
--/* return 1 if surface destoy was initiated (in QXL_ASYNC case) or
-+/* return 1 if surface destroy was initiated (in QXL_ASYNC case) or
-  * done (in QXL_SYNC case), 0 otherwise. */
-diff --git a/hw/display/ssd0303.c b/hw/display/ssd0303.c
-index d67b0ad7b5..32b32a3044 100644
---- a/hw/display/ssd0303.c
-+++ b/hw/display/ssd0303.c
-@@ -10,3 +10,3 @@
- /* The controller can support a variety of different displays, but we only
--   implement one.  Most of the commends relating to brightness and geometry
-+   implement one.  Most of the commands relating to brightness and geometry
-    setup are ignored. */
-diff --git a/hw/display/ssd0323.c b/hw/display/ssd0323.c
-index ab229d32b7..09b1bbed0a 100644
---- a/hw/display/ssd0323.c
-+++ b/hw/display/ssd0323.c
-@@ -10,3 +10,3 @@
- /* The controller can support a variety of different displays, but we only
--   implement one.  Most of the commends relating to brightness and geometry
-+   implement one.  Most of the commands relating to brightness and geometry
-    setup are ignored. */
-diff --git a/hw/display/xlnx_dp.c b/hw/display/xlnx_dp.c
-index b0828d65aa..822355ecc6 100644
---- a/hw/display/xlnx_dp.c
-+++ b/hw/display/xlnx_dp.c
-@@ -382,3 +382,3 @@ static void xlnx_dp_audio_callback(void *opaque, int avail)
+-/* TODO: Look at sharing this code acorss all CXL port types */
++/* TODO: Look at sharing this code across all CXL port types */
+ static void cxl_dsp_dvsec_write_config(PCIDevice *dev, uint32_t addr,
+diff --git a/hw/pci-bridge/pci_expander_bridge.c b/hw/pci-bridge/pci_expander_bridge.c
+index 613857b601..535889f7c2 100644
+--- a/hw/pci-bridge/pci_expander_bridge.c
++++ b/hw/pci-bridge/pci_expander_bridge.c
+@@ -265,3 +265,3 @@ static int pxb_map_irq_fn(PCIDevice *pci_dev, int pin)
+      * First carry out normal swizzle to handle
+-     * multple root ports on a pxb instance.
++     * multiple root ports on a pxb instance.
+      */
+diff --git a/hw/pci-host/bonito.c b/hw/pci-host/bonito.c
+index 4701481b9b..ee6cb85e97 100644
+--- a/hw/pci-host/bonito.c
++++ b/hw/pci-host/bonito.c
+@@ -64,3 +64,3 @@
+ 
+-/* from linux soure code. include/asm-mips/mips-boards/bonito64.h*/
++/* from linux source code. include/asm-mips/mips-boards/bonito64.h*/
+ #define BONITO_BOOT_BASE        0x1fc00000
+diff --git a/hw/pci-host/designware.c b/hw/pci-host/designware.c
+index 9e183caa48..77a1b66d50 100644
+--- a/hw/pci-host/designware.c
++++ b/hw/pci-host/designware.c
+@@ -490,3 +490,3 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
+      * If no inbound iATU windows are configured, HW defaults to
+-     * letting inbound TLPs to pass in. We emulate that by exlicitly
++     * letting inbound TLPs to pass in. We emulate that by explicitly
+      * configuring first inbound window to cover all of target's
+@@ -505,3 +505,3 @@ static void designware_pcie_root_realize(PCIDevice *dev, Error **errp)
      /*
--     * Get some data from the DPDMA and compute these datas.
-+     * Get some data from the DPDMA and compute these data.
-      * Then wait for QEMU's audio subsystem to call this callback.
+-     * We initially place MSI interrupt I/O region a adress 0 and
++     * We initially place MSI interrupt I/O region a address 0 and
+      * disable it. It'll be later moved to correct offset and enabled
+diff --git a/hw/pci-host/dino.c b/hw/pci-host/dino.c
+index e8eaebca54..82503229fa 100644
+--- a/hw/pci-host/dino.c
++++ b/hw/pci-host/dino.c
+@@ -1,3 +1,3 @@
+ /*
+- * HP-PARISC Dino PCI chipset emulation, as in B160L and similiar machines
++ * HP-PARISC Dino PCI chipset emulation, as in B160L and similar machines
+  *
+diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+index 7c7316bc96..87ba074254 100644
+--- a/hw/pci-host/gpex-acpi.c
++++ b/hw/pci-host/gpex-acpi.c
+@@ -179,3 +179,3 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+             /*
+-             * Resources defined for PXBs are composed by the folling parts:
++             * Resources defined for PXBs are composed by the following parts:
+              * 1. The resources the pci-brige/pcie-root-port need.
+diff --git a/hw/pci-host/gt64120.c b/hw/pci-host/gt64120.c
+index 82c15edb46..143bf053d7 100644
+--- a/hw/pci-host/gt64120.c
++++ b/hw/pci-host/gt64120.c
+@@ -333,5 +333,5 @@ static void gt64120_update_pci_cfgdata_mapping(GT64120State *s)
+      * Command Register determines how data transactions from the CPU to/from
+-     * PCI are handled along with the setting of the Endianess bit in the CPU
++     * PCI are handled along with the setting of the Endianness bit in the CPU
+      * Configuration Register. See:
+-     * - Table 16: 32-bit PCI Transaction Endianess
++     * - Table 16: 32-bit PCI Transaction Endianness
+      * - Table 158: PCI_0 Command, Offset: 0xc00
+diff --git a/hw/pci-host/pnv_phb.c b/hw/pci-host/pnv_phb.c
+index 82332d7a05..157c00782c 100644
+--- a/hw/pci-host/pnv_phb.c
++++ b/hw/pci-host/pnv_phb.c
+@@ -27,3 +27,3 @@
+  *
+- * This helper does both operations at the same time because seting
++ * This helper does both operations at the same time because setting
+  * a new QOM child will erase the bus parent of the device. This happens
+diff --git a/hw/pci-host/pnv_phb3.c b/hw/pci-host/pnv_phb3.c
+index 7a21497cf8..c5e58f4086 100644
+--- a/hw/pci-host/pnv_phb3.c
++++ b/hw/pci-host/pnv_phb3.c
+@@ -759,3 +759,3 @@ static void pnv_phb3_translate_tve(PnvPhb3DMASpace *ds, hwaddr addr,
+          * TODO: Venice/Murano support it on bottom window above 4G and
+-         * Naples suports it on everything
++         * Naples supports it on everything
+          */
+diff --git a/hw/pci-host/pnv_phb3_msi.c b/hw/pci-host/pnv_phb3_msi.c
+index 41e63b066f..dc8d8637f2 100644
+--- a/hw/pci-host/pnv_phb3_msi.c
++++ b/hw/pci-host/pnv_phb3_msi.c
+@@ -283,3 +283,3 @@ static void phb3_msi_instance_init(Object *obj)
+ 
+-    /* Will be overriden later */
++    /* Will be overridden later */
+     ics->offset = 0;
+diff --git a/hw/pci-host/pnv_phb4.c b/hw/pci-host/pnv_phb4.c
+index 6232cbeee1..29cb11a5d9 100644
+--- a/hw/pci-host/pnv_phb4.c
++++ b/hw/pci-host/pnv_phb4.c
+@@ -209,3 +209,3 @@ static void pnv_phb4_check_mbt(PnvPHB4 *phb, uint32_t index)
+ 
+-    /* TODO: Figure out how to implemet/decode AOMASK */
++    /* TODO: Figure out how to implement/decode AOMASK */
+ 
+@@ -393,3 +393,3 @@ static void pnv_phb4_ioda_write(PnvPHB4 *phb, uint64_t val)
+ 
+-        /* Copy accross the valid bit to the other half */
++        /* Copy across the valid bit to the other half */
+         phb->ioda_MBT[idx ^ 1] &= 0x7fffffffffffffffull;
+@@ -1410,3 +1410,3 @@ static void pnv_phb4_msi_write(void *opaque, hwaddr addr,
+ 
+-    /* TODO: check PE/MSI assignement */
++    /* TODO: check PE/MSI assignment */
+ 
+diff --git a/hw/pci/pcie_aer.c b/hw/pci/pcie_aer.c
+index 374d593ead..b68c7ecb49 100644
+--- a/hw/pci/pcie_aer.c
++++ b/hw/pci/pcie_aer.c
+@@ -326,3 +326,3 @@ static void pcie_aer_msg_root_port(PCIDevice *dev, const PCIEAERMsg *msg)
+          * OS which cares of aer would receive errors via
+-         * native aer mechanims, so this wouldn't matter.
++         * native aer mechanisms, so this wouldn't matter.
+          */
+diff --git a/hw/pci/shpc.c b/hw/pci/shpc.c
+index e7bc7192f1..df7f370111 100644
+--- a/hw/pci/shpc.c
++++ b/hw/pci/shpc.c
+@@ -617,3 +617,3 @@ int shpc_init(PCIDevice *d, PCIBus *sec_bus, MemoryRegion *bar,
+         SHPC_IDX_TO_PCI(nslots) > PCI_SLOT_MAX) {
+-        /* TODO: report an error mesage that makes sense. */
++        /* TODO: report an error message that makes sense. */
+         return -EINVAL;
 -- 
 2.39.2
 
