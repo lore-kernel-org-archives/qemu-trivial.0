@@ -1,77 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qKJuF-0008HA-Qz
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 10:36:27 -0400
+	id 1qKNQi-0005ct-P9
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 14:22:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qKJuD-0008GH-GI
- for qemu-trivial@nongnu.org; Fri, 14 Jul 2023 10:36:25 -0400
-Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qKJuB-0003eF-TL
- for qemu-trivial@nongnu.org; Fri, 14 Jul 2023 10:36:25 -0400
-Received: by mail-wr1-x432.google.com with SMTP id
- ffacd0b85a97d-3144bf65ce9so2078693f8f.3
- for <qemu-trivial@nongnu.org>; Fri, 14 Jul 2023 07:36:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1689345382; x=1691937382;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=5MAFPP3CPQuhIrr7QhKlJDUPZdFH6UcsW420s6L+m8E=;
- b=u/jFLY58VAqAGu4CIz0ZqiFXwbDZyCAnivc9DuebFN5UJ7EnvlHTTJTKV6zYS44K/V
- NzooLgEesHturhvEGwRHTvfr++M/W1M39ILjxWC43ZMrPQLAMVkXY+zfohHBC6fNULwV
- VDEI/BCUQ7hOPhilh7BwvP/RFI6oUwKj078tanaZCNkdW6uITlVsiKCS6e4aopnpxZ+9
- bI9qp4ryH9oqSauW42hCI++kAM48QOoOL977vNcAUxFXbmSDpRO02f3YSUfB10iWdjWJ
- rZV2ZaLX99lJwnGii+KXdhsi+HAn+UZrYswswkRHd94p4aSlUbrlddkb518J+P61pYpy
- bEog==
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1qKNQh-0005cb-IU
+ for qemu-trivial@nongnu.org; Fri, 14 Jul 2023 14:22:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alex.williamson@redhat.com>)
+ id 1qKNQg-0005v1-1x
+ for qemu-trivial@nongnu.org; Fri, 14 Jul 2023 14:22:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1689358927;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=O+ft7m9s37hv9i3QAFyrjiJCCvWdjKRNknZ1AUWG7XE=;
+ b=SQHsEjA2j7XTaNZidOZXEuifDkXj4sh4ljvMU2HcCHw7lBu2BOt04IgeU8C/2w5vlKokQH
+ C9NJHVc8brf/LGnX8iz35l6WaUzEmUzBPErfwNtribzBT2jpu5nH3ulixOI+d6zIAsQx+L
+ cda4LHoxxsUF314nHgd5hhIkFALz8+E=
+Received: from mail-il1-f198.google.com (mail-il1-f198.google.com
+ [209.85.166.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-344-tD_XgO6rOgOTbncVQ5G4Gw-1; Fri, 14 Jul 2023 14:22:04 -0400
+X-MC-Unique: tD_XgO6rOgOTbncVQ5G4Gw-1
+Received: by mail-il1-f198.google.com with SMTP id
+ e9e14a558f8ab-345e7434a79so11463875ab.1
+ for <qemu-trivial@nongnu.org>; Fri, 14 Jul 2023 11:22:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689345382; x=1691937382;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=5MAFPP3CPQuhIrr7QhKlJDUPZdFH6UcsW420s6L+m8E=;
- b=MHEuj6f93prbGBfphX7/JueJDYbfcuJpH1diHrNj5CQRDwoc1B6m0jrbfs2ciatSiz
- XkbdZqVX3YTlZostGlCUA/22SU100DcGKn8Jof6NHKcvU+1S9xkA9yXk+nM+2Lk7kQoL
- 0AP6iO1GcEKjIeH/iC+l77WZHBATknyjBhVaCRGNtKBdn9+yXp6AongFTzFu6vxC3/yY
- sCYNNanobLeL6mhkMkdheQr6IQ88uIwIYnyoqOwzFLDkpJ7S5IUzwbz/dlFdO28SEfsv
- 3yVS/tsVXv2fp0YeUEj/eWlPTV3Le4STW3yzPHoomQYXB2ZzAtl//eMYF0sbFfjoMaY9
- tZLg==
-X-Gm-Message-State: ABy/qLZIqU1XZwH73kNbNi37ojmbEaLdaf7dynea8NKfX5W+eJ2TnDy2
- PCwhw+KkwH0RIm8OhHQNcEfd6w==
-X-Google-Smtp-Source: APBJJlGNv0EFG8cC1vQacm/yBAsq9453Sk9wUkQvxor8R75aiZpWrDGQwLn+GqSSN1rj2RC3T72BBQ==
-X-Received: by 2002:a5d:400e:0:b0:313:f38f:1f4e with SMTP id
- n14-20020a5d400e000000b00313f38f1f4emr3928672wrp.27.1689345381909; 
- Fri, 14 Jul 2023 07:36:21 -0700 (PDT)
-Received: from [172.16.245.178] ([194.158.78.244])
- by smtp.gmail.com with ESMTPSA id
- z13-20020adfe54d000000b003143ac73fd0sm11159546wrm.1.2023.07.14.07.36.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 14 Jul 2023 07:36:21 -0700 (PDT)
-Message-ID: <f124ff80-f864-bfc7-e4ab-5696a1886ef9@linaro.org>
-Date: Fri, 14 Jul 2023 16:36:20 +0200
+ d=1e100.net; s=20221208; t=1689358923; x=1691950923;
+ h=content-transfer-encoding:mime-version:organization:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=O+ft7m9s37hv9i3QAFyrjiJCCvWdjKRNknZ1AUWG7XE=;
+ b=dr3YRGJnTeKBBG4fP0uAVQ94wiPIdLAUZ+nU1QxF/sAZEJuuTLtJqkihDxBNgJddBG
+ f/1sS2jDVlHix8h28OqN1gI5dKW+TfeBDQsVrhWYr6Czq03BAF3BeyzfJEL28M2auUo5
+ TZH5DIgRWav2khq8bnNdxecdJs7QjpZc98mmR3szK6UJEBprmRqtToyJ/Lz1zrS4Cv8Z
+ GSIbFce/f5XrahO2ncwD4MXcdbtZSY7Ly9bRlOYaO8ixH1HuzD9KXfumwl5iRd0MTCAp
+ P9q41N+0hO3Kjv4mjrsyoru825jTzNLGng1mXKBXf+KIs0A8+c1mlnbgppuaROH2FX/h
+ a8OA==
+X-Gm-Message-State: ABy/qLZ9xYr0XQy2kKdHC7crnoIz4kUv6RDjAfqsEl/SfV/QdfKoEa7C
+ uHuNOvOeyldOs/+hrBOBQWhoUELmP1NDcoZznpIUwIUKtmqvvFIYH4qyZqt2KZHxTrsucWSj6C6
+ mQaUKRyrTqnAg6fQ4/tGkxZuCYQ==
+X-Received: by 2002:a05:6e02:2183:b0:348:76eb:17d9 with SMTP id
+ j3-20020a056e02218300b0034876eb17d9mr54327ila.20.1689358923531; 
+ Fri, 14 Jul 2023 11:22:03 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlF+0w9kg8R6rQDSIzBI6WAfCQSswo6IbDamOYlunarjP2YlcMklz2+kgrngnGfR7IUUeYZXuA==
+X-Received: by 2002:a05:6e02:2183:b0:348:76eb:17d9 with SMTP id
+ j3-20020a056e02218300b0034876eb17d9mr54318ila.20.1689358923326; 
+ Fri, 14 Jul 2023 11:22:03 -0700 (PDT)
+Received: from redhat.com ([38.15.36.239]) by smtp.gmail.com with ESMTPSA id
+ g15-20020a05663811cf00b0042b14d9be7bsm2827154jas.22.2023.07.14.11.22.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 14 Jul 2023 11:22:02 -0700 (PDT)
+Date: Fri, 14 Jul 2023 12:22:01 -0600
+From: Alex Williamson <alex.williamson@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] treewide: spelling fixes in comments and some strings
+Message-ID: <20230714122201.3b118f40.alex.williamson@redhat.com>
+In-Reply-To: <20230714113834.1186117-3-mjt@tls.msk.ru>
+References: <20230714113834.1186117-1-mjt@tls.msk.ru>
+ <20230714113834.1186117-3-mjt@tls.msk.ru>
+Organization: Red Hat
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.13.0
-Subject: Re: [PATCH v3] hw/mips: Improve the default USB settings in the
- loongson3-virt machine
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, Huacai Chen <chenhuacai@kernel.org>,
- qemu-devel@nongnu.org
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org
-References: <20230714104903.284845-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230714104903.284845-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::432;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124;
+ envelope-from=alex.williamson@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-0.091,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,25 +93,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jul 2023 14:36:25 -0000
+X-List-Received-Date: Fri, 14 Jul 2023 18:22:11 -0000
 
-On 14/7/23 12:49, Thomas Huth wrote:
-> It's possible to compile QEMU without the USB devices (e.g. when using
-> "--without-default-devices" as option for the "configure" script).
-> To be still able to run the loongson3-virt machine in default mode with
-> such a QEMU binary, we have to check here for the availability of the
-> OHCI controller first before instantiating the USB devices.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   v3: Back to runtime detection, but more simple this time compared to v1
->       (checking for OHCI should be enough, since this implies CONFIG_USB
->        which is the switch that usb-kbd and usb-tablet are depending on)
-> 
->   hw/mips/loongson3_virt.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+On Fri, 14 Jul 2023 14:38:06 +0300
+Michael Tokarev <mjt@tls.msk.ru> wrote:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> diff --git a/hw/ppc/spapr_pci_vfio.c b/hw/ppc/spapr_pci_vfio.c
+> index d8aeee0b7e..12e7790cf6 100644
+> --- a/hw/ppc/spapr_pci_vfio.c
+> +++ b/hw/ppc/spapr_pci_vfio.c
+> @@ -39,7 +39,7 @@ static void spapr_phb_vfio_eeh_reenable(SpaprPhbState *sphb)
+>  void spapr_phb_vfio_reset(DeviceState *qdev)
+>  {
+>      /*
+> -     * The PE might be in frozen state. To reenable the EEH
+> +     * The PE might be in frozen state. To re-enable the EEH
+>       * functionality on it will clean the frozen state, which
+>       * ensures that the contained PCI devices will work properly
+>       * after reboot.
 
-And queued to mips-fixes, thanks!
+This looks like personal preference, I can't actually find a source
+that indicates "reenable" is anything other than a valid alternative of
+"re-enable".  Thanks,
+
+Alex
+
 
