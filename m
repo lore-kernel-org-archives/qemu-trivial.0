@@ -1,42 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qK2hn-0006kt-7C
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2023 16:14:27 -0400
+	id 1qK8cE-0003me-W5
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jul 2023 22:33:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qK2hj-0006kK-6k; Thu, 13 Jul 2023 16:14:24 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qK2hh-0004nv-5I; Thu, 13 Jul 2023 16:14:22 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 2E8FC138F2;
- Thu, 13 Jul 2023 23:14:31 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 6B72714A16;
- Thu, 13 Jul 2023 23:14:16 +0300 (MSK)
-Message-ID: <16d5654f-48d9-75b2-ce15-50d65a5afcc2@tls.msk.ru>
-Date: Thu, 13 Jul 2023 23:14:16 +0300
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1qK8cD-0003ky-OF; Thu, 13 Jul 2023 22:33:05 -0400
+Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1qK8cC-0002BG-09; Thu, 13 Jul 2023 22:33:05 -0400
+Received: by mail-ua1-x92f.google.com with SMTP id
+ a1e0cc1a2514c-78f36f37e36so477268241.3; 
+ Thu, 13 Jul 2023 19:33:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1689301982; x=1691893982;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=xFslRxqE5q+d32X1ErDUK6z2j03eeKUv2sRniazhIVE=;
+ b=D4m9Widjc0ZZ4qJehmxrJdP8qNLr/kdjvtqmEE1ByiF2Qqd9qvz2aqjcO2uSOOa0H2
+ wOf2V6PyNfAubj0vDA4xrpAEuuE5Agl8SwqOfRx/9/rxHFLw1VAqD/FVhhqxY/Cezw/L
+ 9255qf3qCeVIDDfJTOpra3qRyqQ73CxF/PGpvwX1Ehsghwf7SYbdAoB8DMSKMSR0ghv1
+ TJfJvMpxeDcplGgtgurwfoUP4pNzT1FIhAIEcdk/DTw09uWUsyzYwyjKnNivuhFbx8be
+ TsJMI0rH1oXPi1JoedpezNOgsXTX7SS4ddOB6RQMgzEKzCVY9iK5/4KMzbuPWpU1w3fs
+ 8aqQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1689301982; x=1691893982;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=xFslRxqE5q+d32X1ErDUK6z2j03eeKUv2sRniazhIVE=;
+ b=injvitaj1IZFIpo1L61J/79OLhm3pYuN2axWxRybd0mPTgKNyDn2PNVld4U6nqEu6Z
+ Njk+HDROW9wFR8lrLMIPvOHMZhxls2y3LR2QE+T4rSdD1Td9yXoriR8He36CEytjeBa+
+ 0lscqtkilkkR/CX4QwHsZMs71x0gQsE4sEWm89jXuf2mVrGjCcc5hQgYwI4p03ORHPW6
+ XK3RLjdMl3pQGPFrGInRxMxsWBSOde5r2Q55ZxFcIsCZjRNi1mNZk9kA47+vAA3dLWIy
+ OGkdj70nx7iCU39OmKo84er4+3e3YY5s+L2d3i+g1TUIadshNyr9OAIZhyskRiEOV384
+ fjtg==
+X-Gm-Message-State: ABy/qLbePmb9s1rJ0S3NX2nAEoh9tKvzPPnAJQo800kkFzK4Kgifjuo1
+ aMZxc9/uh2R0Ss/FEeoah47ytBtK8M7Wsl+wEXo=
+X-Google-Smtp-Source: APBJJlHSe6wZAlSvuFDmRmcKNs5R72Nc1DL7Wgwq2y8SqFGyivYHc+K8YkzAzuxBPz/RlGcKpLZ8AeztmRXqG1O3b1A=
+X-Received: by 2002:a1f:bf82:0:b0:46e:9f33:add1 with SMTP id
+ p124-20020a1fbf82000000b0046e9f33add1mr1986479vkf.6.1689301982011; Thu, 13
+ Jul 2023 19:33:02 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [RFC, PATCH, trivial, sample] treewide: spelling fixes in
- comments and some strings
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20230713192505.560468-1-mjt@tls.msk.ru>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230713192505.560468-1-mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -69
-X-Spam_score: -7.0
-X-Spam_bar: -------
-X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.096,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+References: <20230712143728.383528-1-dbarboza@ventanamicro.com>
+In-Reply-To: <20230712143728.383528-1-dbarboza@ventanamicro.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 14 Jul 2023 12:32:35 +1000
+Message-ID: <CAKmqyKPSa6J6RUfE5Di-+hHv5yd8wDe=wT4T1SaS9Q_6h-EQJw@mail.gmail.com>
+Subject: Re: [PATCH] docs/system/target-riscv.rst: tidy CPU firmware section
+To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, alistair.francis@wdc.com, 
+ bmeng@tinylab.org, liweiwei@iscas.ac.cn, zhiwei_liu@linux.alibaba.com, 
+ palmer@rivosinc.com, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::92f;
+ envelope-from=alistair23@gmail.com; helo=mail-ua1-x92f.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -50,58 +77,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jul 2023 20:14:25 -0000
+X-List-Received-Date: Fri, 14 Jul 2023 02:33:06 -0000
 
-..
->   include/standard-headers/drm/drm_fourcc.h     |  8 +++---
->   include/standard-headers/linux/ethtool.h      |  2 +-
->   .../standard-headers/linux/virtio_console.h   |  2 +-
->   include/standard-headers/linux/virtio_i2c.h   |  2 +-
->   include/standard-headers/linux/virtio_net.h   |  4 +--
+On Thu, Jul 13, 2023 at 12:38=E2=80=AFAM Daniel Henrique Barboza
+<dbarboza@ventanamicro.com> wrote:
+>
+> This is how the content of the "RISC-V CPU firmware" section is
+> displayed after the html is generated:
+>
+> "When using the sifive_u or virt machine there are three different
+> firmware boot options: 1. -bios default - This is the default behaviour
+> if no -bios option is included. (...) 3. -bios <file> - Tells QEMU to
+> load the specified file as the firmware."
+>
+> It's all in the same paragraph, in a numbered list, and no special
+> formatting for the options.
+>
+> Tidy it a bit by adding line breaks between items and its description.
+> Remove the numbered list. And apply formatting for the options cited in
+> the middle of the text.
+>
+> Cc: qemu-trivial@nongnu.org
+> Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 
-It looks like these should be dropped:
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-diff --git a/include/standard-headers/drm/drm_fourcc.h b/include/standard-headers/drm/drm_fourcc.h
-index 72279f4d25..b782802a34 100644
---- a/include/standard-headers/drm/drm_fourcc.h
-+++ b/include/standard-headers/drm/drm_fourcc.h
-@@ -55,3 +55,3 @@ extern "C" {
-   * vendor-namespaced, and as such the relationship between a fourcc code and a
-- * modifier is specific to the modifer being used. For example, some modifiers
-+ * modifier is specific to the modifier being used. For example, some modifiers
-   * may preserve meaning - such as number of planes - from the fourcc code,
-@@ -80,3 +80,3 @@ extern "C" {
-   *   see modifiers as opaque tokens they can check for equality and intersect.
-- *   These users musn't need to know to reason about the modifier value
-+ *   These users mustn't need to know to reason about the modifier value
-   *   (i.e. they are not expected to extract information out of the modifier).
-@@ -539,3 +539,3 @@ extern "C" {
-   * are arranged in four groups (two wide, two high) with column-major layout.
-- * Each group therefore consits out of four 256 byte units, which are also laid
-+ * Each group therefore consists out of four 256 byte units, which are also laid
-   * out as 2x2 column-major.
-@@ -1418,3 +1418,3 @@ drm_fourcc_canonicalize_nvidia_format_mod(uint64_t modifier)
-   * Indicates the storage is packed when pixel size is multiple of word
-- * boudaries, i.e. 8bit should be stored in this mode to save allocation
-+ * boundaries, i.e. 8bit should be stored in this mode to save allocation
-   * memory.
-diff --git a/include/standard-headers/linux/ethtool.h b/include/standard-headers/linux/ethtool.h
-index 99fcddf04f..e72ec42bf8 100644
---- a/include/standard-headers/linux/ethtool.h
-+++ b/include/standard-headers/linux/ethtool.h
-@@ -571,3 +571,3 @@ struct ethtool_channels {
-   * Drivers should reject a non-zero setting of @autoneg when
-- * autoneogotiation is disabled (or not supported) for the link.
-+ * autonegotiation is disabled (or not supported) for the link.
-   *
-diff --git a/include/standard-headers/linux/virtio_console.h b/include/standard-headers/linux/virtio_console.h
-index 71f5f648e3..8cba52198a 100644
---- a/include/standard-headers/linux/virtio_console.h
-+++ b/include/standard-headers/linux/virtio_console.h
-@@ -46,3 +46,3 @@
-  struct virtio_console_config {
--       /* colums of the screens */
-+       /* columns of the screens */
-         __virtio16 cols;
-...
+Alistair
+
+> ---
+>  docs/system/target-riscv.rst | 24 ++++++++++++++++--------
+>  1 file changed, 16 insertions(+), 8 deletions(-)
+>
+> diff --git a/docs/system/target-riscv.rst b/docs/system/target-riscv.rst
+> index 89a866e4f4..ba195f1518 100644
+> --- a/docs/system/target-riscv.rst
+> +++ b/docs/system/target-riscv.rst
+> @@ -76,11 +76,19 @@ RISC-V CPU firmware
+>
+>  When using the ``sifive_u`` or ``virt`` machine there are three differen=
+t
+>  firmware boot options:
+> -1. ``-bios default`` - This is the default behaviour if no -bios option
+> -is included. This option will load the default OpenSBI firmware automati=
+cally.
+> -The firmware is included with the QEMU release and no user interaction i=
+s
+> -required. All a user needs to do is specify the kernel they want to boot
+> -with the -kernel option
+> -2. ``-bios none`` - QEMU will not automatically load any firmware. It is=
+ up
+> -to the user to load all the images they need.
+> -3. ``-bios <file>`` - Tells QEMU to load the specified file as the firmw=
+are.
+> +
+> +* ``-bios default``
+> +
+> +This is the default behaviour if no ``-bios`` option is included. This o=
+ption
+> +will load the default OpenSBI firmware automatically. The firmware is in=
+cluded
+> +with the QEMU release and no user interaction is required. All a user ne=
+eds to
+> +do is specify the kernel they want to boot with the ``-kernel`` option
+> +
+> +* ``-bios none``
+> +
+> +QEMU will not automatically load any firmware. It is up to the user to l=
+oad all
+> +the images they need.
+> +
+> +* ``-bios <file>``
+> +
+> +Tells QEMU to load the specified file as the firmware.
+> --
+> 2.41.0
+>
+>
 
