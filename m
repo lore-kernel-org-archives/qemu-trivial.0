@@ -1,34 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qKIJY-0001ip-E1
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 08:54:28 -0400
+	id 1qKIVT-0007fM-Gx
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 09:06:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKIJS-0001ha-QC; Fri, 14 Jul 2023 08:54:22 -0400
+ id 1qKIVG-0007dr-Ls; Fri, 14 Jul 2023 09:06:37 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKIJQ-0002Ov-Fb; Fri, 14 Jul 2023 08:54:22 -0400
+ id 1qKIVE-0003PK-6N; Fri, 14 Jul 2023 09:06:34 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 57FE613E5D;
- Fri, 14 Jul 2023 15:54:25 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 78BAD13E6F;
+ Fri, 14 Jul 2023 16:06:44 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 464E114C0A;
- Fri, 14 Jul 2023 15:54:09 +0300 (MSK)
-Message-ID: <2250131a-3c06-ae3b-d3e3-8b0be13cfb32@tls.msk.ru>
-Date: Fri, 14 Jul 2023 15:54:09 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 6520B14C19;
+ Fri, 14 Jul 2023 16:06:28 +0300 (MSK)
+Message-ID: <da54c444-8066-9d06-faf5-f1484e899686@tls.msk.ru>
+Date: Fri, 14 Jul 2023 16:06:28 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.0
-Subject: Re: [PATCH, trivial 00/29] tree-wide spelling fixes in comments and
- some messages
+Subject: Re: [PATCH, trivial 01/29] tree-wide spelling fixes in comments and
+ some messages: block
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
 References: <20230714113834.1186117-1-mjt@tls.msk.ru>
- <CAFEAcA9RjLeu2pqFMaKzCOd7GeSwYbCs-E7kXwuvTEy59W70=Q@mail.gmail.com>
+ <20230714113834.1186117-2-mjt@tls.msk.ru>
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <CAFEAcA9RjLeu2pqFMaKzCOd7GeSwYbCs-E7kXwuvTEy59W70=Q@mail.gmail.com>
+In-Reply-To: <20230714113834.1186117-2-mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -51,37 +51,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jul 2023 12:54:24 -0000
+X-List-Received-Date: Fri, 14 Jul 2023 13:06:40 -0000
 
-14.07.2023 15:44, Peter Maydell wrote:
-..
->> Michael Tokarev (29):
->>    tree-wide spelling fixes in comments and some messages: block
->>    tree-wide spelling fixes in comments and some messages: bsd-user
-> 
-> This would be easier to deal with if it followed our
-> standard convention of putting the subsystem name at the
-> front of the subject line, not the end.
+14.07.2023 14:38, Michael Tokarev:
 
-Well, as usual, good thoughts come after the thing's done already :)
+> --- a/block/block-copy.c
+> +++ b/block/block-copy.c
+> @@ -69,3 +69,3 @@ typedef struct BlockCopyCallState {
+>       /*
+> -     * Fields that report information about return values and erros.
+> +     * Fields that report information about return values and errors.
+>        * Protected by lock in BlockCopyState.
+> @@ -464,3 +464,3 @@ static coroutine_fn int block_copy_task_run(AioTaskPool *pool,
+>    *
+> - * No sync here: nor bitmap neighter intersecting requests handling, only copy.
+> + * No sync here: nor bitmap neither intersecting requests handling, only copy.
 
-I pushed whole series to my qemu tree clone on gitlab:
+This should be reworded too. Fixed in git:
 
-  https://gitlab.com/mjt0k/qemu/-/commits/spelling
-
-Here, it is actually easier to review because gitlab diff highlights
-actually changed words in addition to lines.
-
-
-> and it's not possible to tell which I might care about
-> reviewing from the list-of-emails pane without clicking
-> through each time...
-
-I'm sorry about that.  Here I have such window layout so whole subject
-fits on the screen, and actual message is below the list of messages.
-I don't think re-sending it is a good idea though.. ;)
-
-Thank you!
+    No sync here: neither bitmap nor intersecting requests handling, only copy.
 
 /mjt
 
