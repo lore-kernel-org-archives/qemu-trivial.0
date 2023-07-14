@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qKHCG-0004Zx-NT
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 07:42:54 -0400
+	id 1qKHCL-0004dS-DL
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 07:42:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKHAD-0002VY-8U; Fri, 14 Jul 2023 07:40:47 -0400
+ id 1qKHAL-0002gG-Ac; Fri, 14 Jul 2023 07:40:54 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKHAB-0004fQ-Jz; Fri, 14 Jul 2023 07:40:45 -0400
+ id 1qKHAE-0004fs-M6; Fri, 14 Jul 2023 07:40:52 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id C481813DA4;
- Fri, 14 Jul 2023 14:38:58 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 2403B13DA6;
+ Fri, 14 Jul 2023 14:38:59 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id BC3F414BB3;
- Fri, 14 Jul 2023 14:38:42 +0300 (MSK)
-Received: (nullmailer pid 1186268 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 1949214BB5;
+ Fri, 14 Jul 2023 14:38:43 +0300 (MSK)
+Received: (nullmailer pid 1186274 invoked by uid 1000);
  Fri, 14 Jul 2023 11:38:38 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH, trivial 24/29] tree-wide spelling fixes in comments and some
- messages: migration/
-Date: Fri, 14 Jul 2023 14:38:29 +0300
-Message-Id: <20230714113834.1186117-26-mjt@tls.msk.ru>
+Subject: [PATCH, trivial 26/29] tree-wide spelling fixes in comments and some
+ messages: scripts/
+Date: Fri, 14 Jul 2023 14:38:31 +0300
+Message-Id: <20230714113834.1186117-28-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230714113834.1186117-1-mjt@tls.msk.ru>
 References: <20230714113834.1186117-1-mjt@tls.msk.ru>
@@ -53,83 +53,128 @@ X-List-Received-Date: Fri, 14 Jul 2023 11:41:38 -0000
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- migration/migration-stats.c | 2 +-
- migration/migration.h       | 4 ++--
- migration/multifd-zlib.c    | 2 +-
- migration/multifd-zstd.c    | 2 +-
- migration/multifd.c         | 2 +-
- migration/savevm.c          | 2 +-
- migration/trace-events      | 2 +-
- 7 files changed, 8 insertions(+), 8 deletions(-)
+ scripts/checkpatch.pl                             | 4 ++--
+ scripts/ci/gitlab-pipeline-status                 | 2 +-
+ scripts/codeconverter/codeconverter/qom_macros.py | 2 +-
+ scripts/oss-fuzz/minimize_qtest_trace.py          | 8 ++++----
+ scripts/performance/topN_callgrind.py             | 2 +-
+ scripts/performance/topN_perf.py                  | 2 +-
+ scripts/qapi/gen.py                               | 2 +-
+ scripts/qapi/pylintrc                             | 2 +-
+ scripts/replay-dump.py                            | 2 +-
+ scripts/simplebench/bench_block_job.py            | 2 +-
+ 10 files changed, 14 insertions(+), 14 deletions(-)
 
-diff --git a/migration/migration-stats.c b/migration/migration-stats.c
-index f98c8260be..f195e89732 100644
---- a/migration/migration-stats.c
-+++ b/migration/migration-stats.c
-@@ -50,3 +50,3 @@ void migration_rate_set(uint64_t limit)
-     /*
--     * 'limit' is per second.  But we check it each BUFER_DELAY miliseconds.
-+     * 'limit' is per second.  But we check it each BUFER_DELAY milliseconds.
-      */
-diff --git a/migration/migration.h b/migration/migration.h
-index b7c8b67542..6eea18db36 100644
---- a/migration/migration.h
-+++ b/migration/migration.h
-@@ -136,3 +136,3 @@ struct MigrationIncomingState {
-      * postcopy preempt thread.  "volatile" makes sure all reads will be
--     * uptodate across cores.
-+     * up-to-date across cores.
-      */
-@@ -411,3 +411,3 @@ struct MigrationState {
-      * - postcopy preempt channel will be created at the switching phase
--     *   from precopy -> postcopy (to avoid race condtion of misordered
-+     *   from precopy -> postcopy (to avoid race condition of misordered
-      *   creation of channels).
-diff --git a/migration/multifd-zlib.c b/migration/multifd-zlib.c
-index 81701250ad..37ce48621e 100644
---- a/migration/multifd-zlib.c
-+++ b/migration/multifd-zlib.c
-@@ -59,3 +59,3 @@ static int zlib_send_setup(MultiFDSendParams *p, Error **errp)
-     }
--    /* This is the maxium size of the compressed buffer */
-+    /* This is the maximum size of the compressed buffer */
-     z->zbuff_len = compressBound(MULTIFD_PACKET_SIZE);
-diff --git a/migration/multifd-zstd.c b/migration/multifd-zstd.c
-index d1d29e76cc..b471daadcd 100644
---- a/migration/multifd-zstd.c
-+++ b/migration/multifd-zstd.c
-@@ -70,3 +70,3 @@ static int zstd_send_setup(MultiFDSendParams *p, Error **errp)
-     }
--    /* This is the maxium size of the compressed buffer */
-+    /* This is the maximum size of the compressed buffer */
-     z->zbuff_len = ZSTD_compressBound(MULTIFD_PACKET_SIZE);
-diff --git a/migration/multifd.c b/migration/multifd.c
-index 3387d8277f..0e3ae87449 100644
---- a/migration/multifd.c
-+++ b/migration/multifd.c
-@@ -880,3 +880,3 @@ static void multifd_new_send_channel_cleanup(MultiFDSendParams *p,
-       * Although multifd_send_thread is not created, but main migration
--      * thread neet to judge whether it is running, so we need to mark
-+      * thread need to judge whether it is running, so we need to mark
-       * its status.
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 95c2abf47c..51e40e3a0b 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -119,3 +119,3 @@ static struct mig_cmd_args {
-  *   uint64_t host page size
-- *   uint64_t taget page size
-+ *   uint64_t target page size
-  *
-diff --git a/migration/trace-events b/migration/trace-events
-index 5259c1044b..4e43fe20fc 100644
---- a/migration/trace-events
-+++ b/migration/trace-events
-@@ -186,3 +186,3 @@ source_return_path_thread_switchover_acked(void) ""
- migration_thread_low_pending(uint64_t pending) "%" PRIu64
--migrate_transferred(uint64_t tranferred, uint64_t time_spent, uint64_t bandwidth, uint64_t size) "transferred %" PRIu64 " time_spent %" PRIu64 " bandwidth %" PRIu64 " max_size %" PRId64
-+migrate_transferred(uint64_t transferred, uint64_t time_spent, uint64_t bandwidth, uint64_t size) "transferred %" PRIu64 " time_spent %" PRIu64 " bandwidth %" PRIu64 " max_size %" PRId64
- process_incoming_migration_co_end(int ret, int ps) "ret=%d postcopy-state=%d"
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index eeaec436eb..2dda08a859 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -1623,3 +1623,3 @@ sub process {
+ 
+-				# don't consider groups splitted by [.:/ ], like 2A.20:12ab
++				# don't consider groups split by [.:/ ], like 2A.20:12ab
+ 				my $tmpline = $rawline;
+@@ -2031,3 +2031,3 @@ sub process {
+ 		if ($line =~ /\bstatic\s.*=\s*(0|NULL|false)\s*;/) {
+-			ERROR("do not initialise statics to 0 or NULL\n" .
++			ERROR("do not initialise statistics to 0 or NULL\n" .
+ 				$herecurr);
+diff --git a/scripts/ci/gitlab-pipeline-status b/scripts/ci/gitlab-pipeline-status
+index 924db327ff..e3343b0510 100755
+--- a/scripts/ci/gitlab-pipeline-status
++++ b/scripts/ci/gitlab-pipeline-status
+@@ -30,3 +30,3 @@ class CommunicationFailure(Exception):
+ class NoPipelineFound(Exception):
+-    """Communication is successfull but pipeline is not found."""
++    """Communication is successful but pipeline is not found."""
+ 
+diff --git a/scripts/codeconverter/codeconverter/qom_macros.py b/scripts/codeconverter/codeconverter/qom_macros.py
+index 2d2f2055a3..2b0c8224a1 100644
+--- a/scripts/codeconverter/codeconverter/qom_macros.py
++++ b/scripts/codeconverter/codeconverter/qom_macros.py
+@@ -144,3 +144,3 @@ def make_structname(self) -> str:
+     def strip_typedef(self) -> Patch:
+-        """generate patch that will strip typedef from the struct declartion
++        """generate patch that will strip typedef from the struct declaration
+ 
+diff --git a/scripts/oss-fuzz/minimize_qtest_trace.py b/scripts/oss-fuzz/minimize_qtest_trace.py
+index 20825768c2..d1f3990c16 100755
+--- a/scripts/oss-fuzz/minimize_qtest_trace.py
++++ b/scripts/oss-fuzz/minimize_qtest_trace.py
+@@ -4,3 +4,3 @@
+ """
+-This takes a crashing qtest trace and tries to remove superflous operations
++This takes a crashing qtest trace and tries to remove superfluous operations
+ """
+@@ -40,3 +40,3 @@ def usage():
+ -M1: enable a loop around the remove minimizer, which may help decrease some
+-     timing dependant instructions. Off by default.
++     timing dependent instructions. Off by default.
+ -M2: try setting bits in operand of write/out to zero. Off by default.
+@@ -179,3 +179,3 @@ def remove_lines(newtrace, outpath):
+         # to the right side, then add one to n, until length/2^n == 0. The idea
+-        # is to prune unneccessary bytes from long writes, while accommodating
++        # is to prune unnecessary bytes from long writes, while accommodating
+         # arbitrary MemoryRegion access sizes and alignments.
+@@ -294,3 +294,3 @@ def minimize_trace(inpath, outpath):
+         old_len = len(newtrace)
+-        print("trace lenth = ", old_len)
++        print("trace length = ", old_len)
+         remove_lines(newtrace, outpath)
+diff --git a/scripts/performance/topN_callgrind.py b/scripts/performance/topN_callgrind.py
+index 67c59197af..f3f05fce55 100755
+--- a/scripts/performance/topN_callgrind.py
++++ b/scripts/performance/topN_callgrind.py
+@@ -6,3 +6,3 @@
+ #           <qemu executable> [<qemu executable options>] \
+-#           <target executable> [<target execurable options>]
++#           <target executable> [<target executable options>]
+ #
+diff --git a/scripts/performance/topN_perf.py b/scripts/performance/topN_perf.py
+index 07be195fc8..7b19e6a742 100755
+--- a/scripts/performance/topN_perf.py
++++ b/scripts/performance/topN_perf.py
+@@ -6,3 +6,3 @@
+ #           <qemu executable> [<qemu executable options>] \
+-#           <target executable> [<target execurable options>]
++#           <target executable> [<target executable options>]
+ #
+diff --git a/scripts/qapi/gen.py b/scripts/qapi/gen.py
+index 70bc576a10..bf5716b5f3 100644
+--- a/scripts/qapi/gen.py
++++ b/scripts/qapi/gen.py
+@@ -83,3 +83,3 @@ def write(self, output_dir: str) -> None:
+ 
+-        # use os.open for O_CREAT to create and read a non-existant file
++        # use os.open for O_CREAT to create and read a non-existent file
+         fd = os.open(pathname, os.O_RDWR | os.O_CREAT, 0o666)
+diff --git a/scripts/qapi/pylintrc b/scripts/qapi/pylintrc
+index 90546df534..7f9686e578 100644
+--- a/scripts/qapi/pylintrc
++++ b/scripts/qapi/pylintrc
+@@ -13,3 +13,3 @@ ignore-patterns=schema.py,
+ # file where it should appear only once). You can also use "--disable=all" to
+-# disable everything first and then reenable specific checks. For example, if
++# disable everything first and then re-enable specific checks. For example, if
+ # you want to run only the similarities checker, you can use "--disable=all
+diff --git a/scripts/replay-dump.py b/scripts/replay-dump.py
+index 3ba97a6d30..b89dc29555 100755
+--- a/scripts/replay-dump.py
++++ b/scripts/replay-dump.py
+@@ -113,3 +113,3 @@ def print_event(eid, name, string=None, event_count=None):
+ def decode_unimp(eid, name, _unused_dumpfile):
+-    "Unimplimented decoder, will trigger exit"
++    "Unimplemented decoder, will trigger exit"
+     print("%s not handled - will now stop" % (name))
+diff --git a/scripts/simplebench/bench_block_job.py b/scripts/simplebench/bench_block_job.py
+index 56191db44b..e575a3af10 100755
+--- a/scripts/simplebench/bench_block_job.py
++++ b/scripts/simplebench/bench_block_job.py
+@@ -41,3 +41,3 @@ def bench_block_job(cmd, cmd_args, qemu_args):
+     Returns {'seconds': int} on success and {'error': str} on failure, dict may
+-    contain addional 'vm-log' field. Return value is compatible with
++    contain additional 'vm-log' field. Return value is compatible with
+     simplebench lib.
 -- 
 2.39.2
 
