@@ -1,45 +1,42 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qKOoe-0001h9-94
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jul 2023 15:51:00 -0400
+	id 1qL0OL-0004D6-On
+	for mharc-qemu-trivial@gnu.org; Sun, 16 Jul 2023 07:58:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKOoc-0001gX-V0; Fri, 14 Jul 2023 15:50:58 -0400
+ id 1qL0OJ-0004CX-Sn; Sun, 16 Jul 2023 07:58:19 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qKOob-0002gh-6Q; Fri, 14 Jul 2023 15:50:58 -0400
+ id 1qL0OI-0001r5-1o; Sun, 16 Jul 2023 07:58:19 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 56B0A13F64;
- Fri, 14 Jul 2023 22:51:08 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 9B53E14CA2;
- Fri, 14 Jul 2023 22:50:51 +0300 (MSK)
-Message-ID: <65ac6e0e-da5a-ed96-e5ff-1487e79ee22b@tls.msk.ru>
-Date: Fri, 14 Jul 2023 22:50:51 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH] treewide: spelling fixes in comments and some strings
-Content-Language: en-US
-To: Alex Williamson <alex.williamson@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20230714113834.1186117-1-mjt@tls.msk.ru>
- <20230714113834.1186117-3-mjt@tls.msk.ru>
- <20230714122201.3b118f40.alex.williamson@redhat.com>
- <849f5b3a-33cd-3406-4462-90ac11bcde96@tls.msk.ru>
- <20230714134028.2c987970.alex.williamson@redhat.com>
+ by isrv.corpit.ru (Postfix) with ESMTP id CCB4714246;
+ Sun, 16 Jul 2023 14:58:24 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id BE2DF14F2F;
+ Sun, 16 Jul 2023 14:58:04 +0300 (MSK)
+Received: (nullmailer pid 1505318 invoked by uid 1000);
+ Sun, 16 Jul 2023 11:58:04 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230714134028.2c987970.alex.williamson@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH 1/6] docs/system/target-riscv.rst: tidy CPU firmware section
+Date: Sun, 16 Jul 2023 14:57:56 +0300
+Message-Id: <20230716115801.1505288-2-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230716115801.1505288-1-mjt@tls.msk.ru>
+References: <20230716115801.1505288-1-mjt@tls.msk.ru>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
-X-Spam_score_int: -69
-X-Spam_score: -7.0
-X-Spam_bar: -------
-X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.091,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -53,23 +50,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jul 2023 19:50:59 -0000
+X-List-Received-Date: Sun, 16 Jul 2023 11:58:20 -0000
 
-14.07.2023 22:40, Alex Williamson wrote:
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 
->> $ git diff qemu-master..spelling | grep -c re-enable
->> 8
->>
->> I can drop those 8 out of 400 :)
-> 
-> If we consider codespell to be the authority I guess we can leave it,
-> but it seems a bit pedantic to me.  Thanks,
+This is how the content of the "RISC-V CPU firmware" section is
+displayed after the html is generated:
 
-Let's just drop this one.  Please if you consider reviewing the series or
-some patches from it, just omit the changes with re-enables. They're as good
-as gone, all 8 of them.
+"When using the sifive_u or virt machine there are three different
+firmware boot options: 1. -bios default - This is the default behaviour
+if no -bios option is included. (...) 3. -bios <file> - Tells QEMU to
+load the specified file as the firmware."
 
-Thank you for the feedback!
+It's all in the same paragraph, in a numbered list, and no special
+formatting for the options.
 
-/mjt
+Tidy it a bit by adding line breaks between items and its description.
+Remove the numbered list. And apply formatting for the options cited in
+the middle of the text.
+
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ docs/system/target-riscv.rst | 24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
+
+diff --git a/docs/system/target-riscv.rst b/docs/system/target-riscv.rst
+index 89a866e4f4..ba195f1518 100644
+--- a/docs/system/target-riscv.rst
++++ b/docs/system/target-riscv.rst
+@@ -76,11 +76,19 @@ RISC-V CPU firmware
+ 
+ When using the ``sifive_u`` or ``virt`` machine there are three different
+ firmware boot options:
+-1. ``-bios default`` - This is the default behaviour if no -bios option
+-is included. This option will load the default OpenSBI firmware automatically.
+-The firmware is included with the QEMU release and no user interaction is
+-required. All a user needs to do is specify the kernel they want to boot
+-with the -kernel option
+-2. ``-bios none`` - QEMU will not automatically load any firmware. It is up
+-to the user to load all the images they need.
+-3. ``-bios <file>`` - Tells QEMU to load the specified file as the firmware.
++
++* ``-bios default``
++
++This is the default behaviour if no ``-bios`` option is included. This option
++will load the default OpenSBI firmware automatically. The firmware is included
++with the QEMU release and no user interaction is required. All a user needs to
++do is specify the kernel they want to boot with the ``-kernel`` option
++
++* ``-bios none``
++
++QEMU will not automatically load any firmware. It is up to the user to load all
++the images they need.
++
++* ``-bios <file>``
++
++Tells QEMU to load the specified file as the firmware.
+-- 
+2.39.2
+
 
