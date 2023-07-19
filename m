@@ -1,43 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qLKrH-0003BH-KS
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Jul 2023 05:49:35 -0400
+	id 1qLz4Z-0001ny-FQ
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Jul 2023 00:45:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qLKrF-0003Av-Ui; Mon, 17 Jul 2023 05:49:34 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qLKrE-0007OX-03; Mon, 17 Jul 2023 05:49:33 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id D24D91446C;
- Mon, 17 Jul 2023 12:49:29 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id D4C6D1522F;
- Mon, 17 Jul 2023 12:49:26 +0300 (MSK)
-Message-ID: <c4f93386-688e-3e81-4da5-641b053aad35@tls.msk.ru>
-Date: Mon, 17 Jul 2023 12:49:26 +0300
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1qLz4X-0001nF-AR; Wed, 19 Jul 2023 00:45:57 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1qLz4T-0005KT-SP; Wed, 19 Jul 2023 00:45:57 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-1b8ad8383faso51477115ad.0; 
+ Tue, 18 Jul 2023 21:45:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1689741952; x=1692333952;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=ATO9Xwc/nXiXTWCBg94xeSj5Sbg9vHjnKWEy2MsvNyA=;
+ b=gtn95oqGKXIL7HRNsiKHYcM9D4NMhxcY1wquPI1ZMXBG7vnKYbnv1WfBnWrlxsfeTq
+ 2x61FXbodRUWRwEUam0ZpQj9+Tb/XEZGoODvlDe68a+S/ZTw6SWlVPsZ4ATcGaMW2+Za
+ zr3fzM39ETuQ71n3RbrgE3kPEtav32HO2JPDVuVO6mvMb3p67qopbe+F5d4qzsdqopRh
+ vz1Bj0EVymXXolqVPJm4+jDT0r5BlvD+xYIFJ3hp14pJ8+EhR5OGmZkc4o6RfxbRqVR0
+ LYykhBjwlxogsEF5pkqy/mJgOl5a7ilRxIRZFM32E2lm+lkqyw1NYX0HlYsJyfR3mxxG
+ Iepg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1689741952; x=1692333952;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ATO9Xwc/nXiXTWCBg94xeSj5Sbg9vHjnKWEy2MsvNyA=;
+ b=a/MCXVKj1HJkc/zLgE7nUtP6+ZxupwpTYS/qTumtMK99y2niGSr2ZVxfxQsWwgK2Ov
+ eJ8HFk/aDHcwHIYZBS1BwWUXOrozWJwpx/JcHc/Qw0ZIZjjskCVr1SZwGPlspZDyTyCK
+ cAIkhxp+COow1nVg71hM07XBqFNXlMr5qGY9QGJ4hEV1jCpZN80MA6qp9sl3EZTLlT2c
+ OHobBDWsARR0aETV8lby9iZElMvzMI736ZVLFekbUZWiJ6/N/eQIM+p8dyrUrKQ+NXo9
+ rjeM3oNoG4LeP4hvbBMMVuI9dz+3N7m/JFAK6ztm2EuV8LEvRf1LNroqwRITS4HgFV5J
+ TSeA==
+X-Gm-Message-State: ABy/qLawSA1/Ay4/DQ7GubBzsaV1DttsX/3IqtELoDyFyfv4FwCCUtF3
+ +XEZOeiixBG3zQ5Xg/irTlU2/GgV8XLkYLWZ
+X-Google-Smtp-Source: APBJJlFDcYjv0+PgpZPlyEILUuN/sRsmpUCpgO+puiIKk0KgerETMGVwohKSxVMPmQAgwL24VzkbFA==
+X-Received: by 2002:a17:902:bc8a:b0:1b3:cac7:19cd with SMTP id
+ bb10-20020a170902bc8a00b001b3cac719cdmr16477785plb.18.1689741951867; 
+ Tue, 18 Jul 2023 21:45:51 -0700 (PDT)
+Received: from toolbox.alistair23.me
+ (2403-580b-97e8-0-321-6fb2-58f1-a1b1.ip6.aussiebb.net.
+ [2403:580b:97e8:0:321:6fb2:58f1:a1b1])
+ by smtp.gmail.com with ESMTPSA id
+ e16-20020a17090301d000b001b890009634sm2731080plh.139.2023.07.18.21.45.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 Jul 2023 21:45:51 -0700 (PDT)
+From: Alistair Francis <alistair23@gmail.com>
+X-Google-Original-From: Alistair Francis <alistair.francis@wdc.com>
+To: qemu-devel@nongnu.org
+Cc: alistair23@gmail.com, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ qemu-trivial@nongnu.org, Alistair Francis <alistair.francis@wdc.com>
+Subject: [PULL 1/5] docs/system/target-riscv.rst: tidy CPU firmware section
+Date: Wed, 19 Jul 2023 14:45:34 +1000
+Message-Id: <20230719044538.2013401-2-alistair.francis@wdc.com>
+X-Mailer: git-send-email 2.40.1
+In-Reply-To: <20230719044538.2013401-1-alistair.francis@wdc.com>
+References: <20230719044538.2013401-1-alistair.francis@wdc.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 0/6] trivial-patches for 2023-07-16
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20230716115801.1505288-1-mjt@tls.msk.ru>
- <69ff1b09-a795-fcbe-ad0d-52f76f25eba7@linaro.org>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <69ff1b09-a795-fcbe-ad0d-52f76f25eba7@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -69
-X-Spam_score: -7.0
-X-Spam_bar: -------
-X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.091,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=alistair23@gmail.com; helo=mail-pl1-x62a.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -51,54 +84,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Jul 2023 09:49:34 -0000
+X-List-Received-Date: Wed, 19 Jul 2023 04:45:57 -0000
 
-16.07.2023 18:58, Philippe Mathieu-Daudé wrote:
-...
->> Michael Tokarev (5):
->>    tree-wide spelling fixes in comments and some messages: migration/
->>    tree-wide spelling fixes in comments and some messages: s390x
->>    tree-wide spelling fixes in comments and some messages: arm
->>    tree-wide spelling fixes in comments and some messages: other
->>      architectures
->>    tree-wide spelling fixes in comments and some messages: hw/9pfs
-> 
-> FYI patch subject is usually "subsystem: Topic", see
-> https://www.qemu.org/docs/master/devel/submitting-a-patch.html#write-a-meaningful-commit-message:
-> 
->    QEMU follows the usual standard for git commit messages: the first
->    line (which becomes the email subject line) is “subsystem: single
->    line summary of change”.
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 
-Yes Philippe, I know. In this case though, it really is "tree-wide". I tried
-to group them by subsystem but it doesn't work that well.  Especially having
-in mind how many changes there are (about 400 in total).
+This is how the content of the "RISC-V CPU firmware" section is
+displayed after the html is generated:
 
-This particular series is a pull request, not a review request (I just
-forgot to add --subject-prefix=PULL when generating this one).  This is
-the changes which has been reviewed by at least one person, out of the
-other pile. The others are here, for example:
+"When using the sifive_u or virt machine there are three different
+firmware boot options: 1. -bios default - This is the default behaviour
+if no -bios option is included. (...) 3. -bios <file> - Tells QEMU to
+load the specified file as the firmware."
 
-   https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg03006.html
+It's all in the same paragraph, in a numbered list, and no special
+formatting for the options.
 
-and see comments by Peter there:
+Tidy it a bit by adding line breaks between items and its description.
+Remove the numbered list. And apply formatting for the options cited in
+the middle of the text.
 
-  https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg03050.html
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Message-Id: <20230712143728.383528-1-dbarboza@ventanamicro.com>
+Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+---
+ docs/system/target-riscv.rst | 24 ++++++++++++++++--------
+ 1 file changed, 16 insertions(+), 8 deletions(-)
 
-My plan is to get the reviewed parts applied, and re-send the rest
-once again. This is a huge work already to create the changes to
-begin with, and to review them as well.
+diff --git a/docs/system/target-riscv.rst b/docs/system/target-riscv.rst
+index 89a866e4f4..ba195f1518 100644
+--- a/docs/system/target-riscv.rst
++++ b/docs/system/target-riscv.rst
+@@ -76,11 +76,19 @@ RISC-V CPU firmware
+ 
+ When using the ``sifive_u`` or ``virt`` machine there are three different
+ firmware boot options:
+-1. ``-bios default`` - This is the default behaviour if no -bios option
+-is included. This option will load the default OpenSBI firmware automatically.
+-The firmware is included with the QEMU release and no user interaction is
+-required. All a user needs to do is specify the kernel they want to boot
+-with the -kernel option
+-2. ``-bios none`` - QEMU will not automatically load any firmware. It is up
+-to the user to load all the images they need.
+-3. ``-bios <file>`` - Tells QEMU to load the specified file as the firmware.
++
++* ``-bios default``
++
++This is the default behaviour if no ``-bios`` option is included. This option
++will load the default OpenSBI firmware automatically. The firmware is included
++with the QEMU release and no user interaction is required. All a user needs to
++do is specify the kernel they want to boot with the ``-kernel`` option
++
++* ``-bios none``
++
++QEMU will not automatically load any firmware. It is up to the user to load all
++the images they need.
++
++* ``-bios <file>``
++
++Tells QEMU to load the specified file as the firmware.
+-- 
+2.40.1
 
-The initial RFC:
-
-  https://lists.nongnu.org/archive/html/qemu-devel/2023-07/msg02841.html
-
-> (not really a cosmetics comment, but various developers have mail
->   filters written using this pattern).
-
-It's hardly possible to reliable filter by subsystem, because there's
-no formal subsystems defined and the "subsystem:" prefix in emails is
-really arbitrary.
-
-/mjt
 
