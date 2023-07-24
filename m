@@ -1,91 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qMq4d-0004cK-R2
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Jul 2023 09:21:35 -0400
+	id 1qNpux-0008By-BK
+	for mharc-qemu-trivial@gnu.org; Mon, 24 Jul 2023 03:23:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1qMizF-0004mv-FX
- for qemu-trivial@nongnu.org; Fri, 21 Jul 2023 01:47:33 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qNpuu-00089c-Qu
+ for qemu-trivial@nongnu.org; Mon, 24 Jul 2023 03:23:41 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1qMizE-0006D6-1I
- for qemu-trivial@nongnu.org; Fri, 21 Jul 2023 01:47:33 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qNput-0005BF-0A
+ for qemu-trivial@nongnu.org; Mon, 24 Jul 2023 03:23:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1689918450;
+ s=mimecast20190719; t=1690183415;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Mn4XBVWBCL8ZIljSGr83Iab5k2j9NL4naaA37hvvN/g=;
- b=Yy7+lB2KqUeO+VThKDUNv5H1Spsu0+Ez5P3yb0MV0do24diyvD1LUqJYBMGvclM3XIbK8O
- +EHunwnjz8l5zjwSHidzG1ij32/K+hJdjqjMANe5TOHqXPWw/uw8s1ZuZulqb1KV+/Rv9T
- VdNo5YgS7igYhaSf/0/i6lK8/j4FzwA=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=4dBfsQWv6ZCZ8w44qchhHluCSarQNpAQrj8KDirrlpI=;
+ b=HBGCpQSVDy5luItdQS8hzdFPxJo6Qz94Dj/H7lU5zfP8vC2l4hJDvOOyXGMVdWOVB7sRmQ
+ hE2xlp6Aj9gYk+Wb5NuQ64+1O7qXPnumth+Mm1bxNphHTewO+gHjmAwtn+dYr9VI17ZM0a
+ JrtGdXFde1fQxkRyl8asVU3d1ZctRxU=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-34-2KwsuUC_Oq6-_TAtXhp0ow-1; Fri, 21 Jul 2023 01:47:28 -0400
-X-MC-Unique: 2KwsuUC_Oq6-_TAtXhp0ow-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-3fd0fa4d08cso8461165e9.1
- for <qemu-trivial@nongnu.org>; Thu, 20 Jul 2023 22:47:28 -0700 (PDT)
+ us-mta-376-TMAtTM4hORa73hocp1iwrQ-1; Mon, 24 Jul 2023 03:23:33 -0400
+X-MC-Unique: TMAtTM4hORa73hocp1iwrQ-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-31421c900b7so2441120f8f.3
+ for <qemu-trivial@nongnu.org>; Mon, 24 Jul 2023 00:23:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1689918447; x=1690523247;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=PRNKBCGIReEaFarTFdLZSDHOKOhDNS0oAM+2ebDglKo=;
- b=LOY1uqentoeifW+/5OF46TvWICjkgBgBD1PNCvC4QzJ7499yUbB58/S+4RPhwB2HGx
- QltkvWNyqha9jdcv/J8EKARlbG2PAOqKqvKXk32bEYoqsgMECG/zfwF9frylK+SVo+Ki
- LvvylpCD2M91sCKFUuwZY38Gb3MMOhrxuhoBwgV7s4U8Uma+9lO5+H9eAtX0i4eXeJHp
- 1GkPnN2c9/P6+9C1mV4RuJ7XcABwjfHBkCrsD1h7lnVU8GiLqTC5crQLnpElpSPCZ3k6
- 5xlOHUUKoVVEWiWGgx2H1GeshPzuAdohaynlbAoBHyi+CsF3Z1lEAX1sLqN78nWYuDiD
- 6R4Q==
-X-Gm-Message-State: ABy/qLZvJOUPRhXX3rKS5x0uD+AqeQA5dzaF+bqLXLLSyrJFp0OPDe81
- 39Ka5jCtO7I8kdZ3qL6WLswF1b/4QpEdwmWTbbzyTM7gSfCIxL5vpqNNu/7xlyDlB1qyKdiiKDy
- HUEV3vHWgWXrIemB6tg==
-X-Received: by 2002:a05:600c:22d7:b0:3f8:c9a4:4998 with SMTP id
- 23-20020a05600c22d700b003f8c9a44998mr504645wmg.28.1689918447516; 
- Thu, 20 Jul 2023 22:47:27 -0700 (PDT)
-X-Google-Smtp-Source: APBJJlECo47Q7fjrFq+JoPSPS3mlE/F7qaPvjvxX7yIfv4QBnyvD8AEZWYuVWwPFd1S+/HDOyPOyTg==
-X-Received: by 2002:a05:600c:22d7:b0:3f8:c9a4:4998 with SMTP id
- 23-20020a05600c22d700b003f8c9a44998mr504632wmg.28.1689918447231; 
- Thu, 20 Jul 2023 22:47:27 -0700 (PDT)
-Received: from smtpclient.apple ([115.96.204.236])
- by smtp.gmail.com with ESMTPSA id
- f2-20020a7bc8c2000000b003fb225d414fsm5330034wml.21.2023.07.20.22.47.24
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 20 Jul 2023 22:47:27 -0700 (PDT)
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3696.120.41.1.3\))
-Subject: Re: [PATCH RESEND] hw/pci: add comment to explain checking for
- available function 0 in pci hotplug
-From: Ani Sinha <anisinha@redhat.com>
-In-Reply-To: <20230711070301.4353-1-anisinha@redhat.com>
-Date: Fri, 21 Jul 2023 11:17:19 +0530
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel <qemu-devel@nongnu.org>,
- qemu-trivial@nongnu.org
-Message-Id: <6A006523-121B-439B-A322-246475C941CF@redhat.com>
-References: <20230711070301.4353-1-anisinha@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
-X-Mailer: Apple Mail (2.3696.120.41.1.3)
+ d=1e100.net; s=20221208; t=1690183412; x=1690788212;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=4dBfsQWv6ZCZ8w44qchhHluCSarQNpAQrj8KDirrlpI=;
+ b=JH8N3UuKSg8x2CEtchgCGxLmMwlORG15FghUXIs+3ph88r2TuyUZlJyhohVruQXQrL
+ x/wT5SFh/JIh1cUjBXfkDm0AC84yqQd/9rT36WtmJoyFZRqAmyAmIqA/nuiMvBhkJQcO
+ YpoOGXcHuU6ZRaWST6BdAYixydVixrNiwcHxVvbelGjXrmmtLp8hsMm7nzon5+JSMtPM
+ 12xzrA3la7ibQfGI4akHeF+h7W+mp5h1Q8dEuIFxBzp6mgCLGVkJTE4/An/38TwOwkaR
+ b2ieWls17tGKIEQ4so+9e9IJgEZj9KkMme7Dbgcsrh+WQn5MWT3hunTto2PG4Um2TZpQ
+ zVhg==
+X-Gm-Message-State: ABy/qLaOKoERo8XhTDUNMpwGbpftjjZw9sFr65DxLTiphS7nk+tE/q2K
+ 7yDqDPQW3PeluPogTTGlXng1230SmglNwec2LcrqfJG/Gs2BD2VFIMyaXd9aqURuUaYhW5fFeHl
+ f+CayoWlo5YCZpjkg5w==
+X-Received: by 2002:a5d:528d:0:b0:314:3985:b291 with SMTP id
+ c13-20020a5d528d000000b003143985b291mr7439270wrv.15.1690183412609; 
+ Mon, 24 Jul 2023 00:23:32 -0700 (PDT)
+X-Google-Smtp-Source: APBJJlE/X6IqGRIjKf+HbgW3dSd1ed7ZOAKQ8YFuj/OJOgIG2xoB0nLHsc7XWT0h+Oc+y1/MWBz85A==
+X-Received: by 2002:a5d:528d:0:b0:314:3985:b291 with SMTP id
+ c13-20020a5d528d000000b003143985b291mr7439259wrv.15.1690183412329; 
+ Mon, 24 Jul 2023 00:23:32 -0700 (PDT)
+Received: from [192.168.0.3] (ip-109-43-177-165.web.vodafone.de.
+ [109.43.177.165]) by smtp.gmail.com with ESMTPSA id
+ q4-20020a5d6584000000b002c70ce264bfsm11907288wru.76.2023.07.24.00.23.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 24 Jul 2023 00:23:31 -0700 (PDT)
+Message-ID: <57bab3e4-f7bb-de3d-d651-46c9d1cc6ea2@redhat.com>
+Date: Mon, 24 Jul 2023 09:23:30 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.12.0
+Subject: Re: [PATCH 0/6] trivial-patches for 2023-07-16
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+References: <20230716115801.1505288-1-mjt@tls.msk.ru>
+ <02d123c8-92c6-c7e2-02df-d9ed9d9ba980@tls.msk.ru>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <02d123c8-92c6-c7e2-02df-d9ed9d9ba980@tls.msk.ru>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain;
-	charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-0.093, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01,
+ RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 21 Jul 2023 09:21:34 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,54 +94,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Jul 2023 05:47:33 -0000
+X-List-Received-Date: Mon, 24 Jul 2023 07:23:41 -0000
 
+On 16/07/2023 14.05, Michael Tokarev wrote:
+> 16.07.2023 14:57, Michael Tokarev пишет:
+>> The following changes since commit 7d07a21ec003724475566073404c5893e36de5e5:
+>>
+>>    tree-wide spelling fixes in comments and some messages: hw/9pfs 
+>> (2023-07-16 13:59:17 +0300)
+>>
+>> are available in the Git repository at:
+>>
+>>    https://gitlab.com/mjt0k/qemu.git/ tags/trivial-patches-pull
+>>
+>> for you to fetch changes up to 7d07a21ec003724475566073404c5893e36de5e5:
+>>
+>>    tree-wide spelling fixes in comments and some messages: hw/9pfs 
+>> (2023-07-16 13:59:17 +0300)
+>>
+>> ----------------------------------------------------------------
+>> trivial-patches for 2023-07-16
+>>
+>> This contains a doc fix for riscv and reviewed spelling fixes.
+>> ----------------------------------------------------------------
+> 
+> This meant to be a PULL request, not PATCH series.. :)
 
+I guess you have to resend with a PULL in the subject?
 
-> On 11-Jul-2023, at 12:33 PM, Ani Sinha <anisinha@redhat.com> wrote:
->=20
-> This change is cosmetic. A comment is added explaining why we need to che=
-ck for
-> the availability of function 0 when we hotplug a device.
->=20
-> CC: mst@redhat.com
-> CC: mjt@tls.msk.ru
-> Signed-off-by: Ani Sinha <anisinha@redhat.com>
+  Thomas
 
-
-Can we merge this while we are still in rc0?
-
-> ---
-> hw/pci/pci.c | 11 ++++++++---
-> 1 file changed, 8 insertions(+), 3 deletions(-)
->=20
-> diff --git a/hw/pci/pci.c b/hw/pci/pci.c
-> index e2eb4c3b4a..6db18dfe46 100644
-> --- a/hw/pci/pci.c
-> +++ b/hw/pci/pci.c
-> @@ -1180,9 +1180,14 @@ static PCIDevice *do_pci_register_device(PCIDevice=
- *pci_dev,
->                    PCI_SLOT(devfn), PCI_FUNC(devfn), name,
->                    bus->devices[devfn]->name, bus->devices[devfn]->qdev.i=
-d);
->         return NULL;
-> -    } else if (dev->hotplugged &&
-> -               !pci_is_vf(pci_dev) &&
-> -               pci_get_function_0(pci_dev)) {
-> +    } /*
-> +       * Populating function 0 triggers a scan from the guest that
-> +       * exposes other non-zero functions. Hence we need to ensure that
-> +       * function 0 wasn't added yet.
-> +       */
-> +    else if (dev->hotplugged &&
-> +             !pci_is_vf(pci_dev) &&
-> +             pci_get_function_0(pci_dev)) {
->         error_setg(errp, "PCI: slot %d function 0 already occupied by %s,=
-"
->                    " new func %s cannot be exposed to guest.",
->                    PCI_SLOT(pci_get_function_0(pci_dev)->devfn),
-> --=20
-> 2.39.1
->=20
 
 
