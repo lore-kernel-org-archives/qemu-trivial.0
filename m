@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qOJSG-0002n8-ID
-	for mharc-qemu-trivial@gnu.org; Tue, 25 Jul 2023 10:56:04 -0400
+	id 1qOJSH-0002tI-Iq
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Jul 2023 10:56:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qOJS7-0002QZ-23; Tue, 25 Jul 2023 10:55:56 -0400
+ id 1qOJS0-0002Le-3t; Tue, 25 Jul 2023 10:55:49 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qOJS5-0000FC-Hk; Tue, 25 Jul 2023 10:55:54 -0400
+ id 1qOJRy-0000Bb-7K; Tue, 25 Jul 2023 10:55:47 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 5F119161C6;
- Tue, 25 Jul 2023 17:55:38 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id C60F2161C3;
+ Tue, 25 Jul 2023 17:55:37 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 0C62919541;
- Tue, 25 Jul 2023 17:55:36 +0300 (MSK)
-Received: (nullmailer pid 3375821 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 4B5C91953E;
+ Tue, 25 Jul 2023 17:55:35 +0300 (MSK)
+Received: (nullmailer pid 3375812 invoked by uid 1000);
  Tue, 25 Jul 2023 14:55:34 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 8/8] qapi: Correct "eg." to "e.g." in documentation
-Date: Tue, 25 Jul 2023 17:55:32 +0300
-Message-Id: <ff62c210165cf61b15f18c8a9835a5a5ce6c5a53.1690294956.git.mjt@tls.msk.ru>
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Christian Schoenebeck <qemu_oss@crudebyte.com>
+Subject: [PULL 5/8] hw/9pfs: spelling fixes
+Date: Tue, 25 Jul 2023 17:55:29 +0300
+Message-Id: <28cbbdd28e2979dbf9768a70754550b8e377fcc4.1690294956.git.mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1690294956.git.mjt@tls.msk.ru>
 References: <cover.1690294956.git.mjt@tls.msk.ru>
@@ -49,43 +49,133 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 25 Jul 2023 14:56:01 -0000
+X-List-Received-Date: Tue, 25 Jul 2023 14:55:51 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
-
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Christian Schoenebeck <qemu_oss@crudebyte.com>
 ---
- qapi/char.json | 2 +-
- qapi/misc.json | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ hw/9pfs/9p-local.c | 8 ++++----
+ hw/9pfs/9p-proxy.c | 2 +-
+ hw/9pfs/9p-synth.c | 2 +-
+ hw/9pfs/9p-util.h  | 2 +-
+ hw/9pfs/9p.c       | 4 ++--
+ hw/9pfs/9p.h       | 2 +-
+ 6 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/qapi/char.json b/qapi/char.json
-index e413ac2b70..52aaff25eb 100644
---- a/qapi/char.json
-+++ b/qapi/char.json
-@@ -18,7 +18,7 @@
- # @filename: the filename of the character device
- #
- # @frontend-open: shows whether the frontend device attached to this
--#     backend (eg. with the chardev=... option) is in open or closed
-+#     backend (e.g. with the chardev=... option) is in open or closed
- #     state (since 2.1)
- #
- # Notes: @filename is encoded using the QEMU command line character
-diff --git a/qapi/misc.json b/qapi/misc.json
-index ff070ec828..cda2effa81 100644
---- a/qapi/misc.json
-+++ b/qapi/misc.json
-@@ -18,7 +18,7 @@
- # fail and the FD will be closed.
- #
- # @protocol: protocol name.  Valid names are "vnc", "spice",
--#     "@dbus-display" or the name of a character device (eg. from
-+#     "@dbus-display" or the name of a character device (e.g. from
- #     -chardev id=XXXX)
- #
- # @fdname: file descriptor name previously passed via 'getfd' command
+diff --git a/hw/9pfs/9p-local.c b/hw/9pfs/9p-local.c
+index 9d07620235..1b1f3b9ec8 100644
+--- a/hw/9pfs/9p-local.c
++++ b/hw/9pfs/9p-local.c
+@@ -624,7 +624,7 @@ static ssize_t local_pwritev(FsContext *ctx, V9fsFidOpenState *fs,
+         /*
+          * Initiate a writeback. This is not a data integrity sync.
+          * We want to ensure that we don't leave dirty pages in the cache
+-         * after write when writeout=immediate is sepcified.
++         * after write when writeout=immediate is specified.
+          */
+         sync_file_range(fs->fd, offset, ret,
+                         SYNC_FILE_RANGE_WAIT_BEFORE | SYNC_FILE_RANGE_WRITE);
+@@ -843,7 +843,7 @@ static int local_open2(FsContext *fs_ctx, V9fsPath *dir_path, const char *name,
+         }
+         credp->fc_mode = credp->fc_mode | S_IFREG;
+         if (fs_ctx->export_flags & V9FS_SM_MAPPED) {
+-            /* Set cleint credentials in xattr */
++            /* Set client credentials in xattr */
+             err = local_set_xattrat(dirfd, name, credp);
+         } else {
+             err = local_set_mapped_file_attrat(dirfd, name, credp);
+@@ -912,7 +912,7 @@ static int local_symlink(FsContext *fs_ctx, const char *oldpath,
+         if (write_size != oldpath_size) {
+             goto err_end;
+         }
+-        /* Set cleint credentials in symlink's xattr */
++        /* Set client credentials in symlink's xattr */
+         credp->fc_mode = credp->fc_mode | S_IFLNK;
+ 
+         if (fs_ctx->export_flags & V9FS_SM_MAPPED) {
+@@ -1418,7 +1418,7 @@ static int local_ioc_getversion_init(FsContext *ctx, LocalData *data, Error **er
+     struct statfs stbuf;
+ 
+     /*
+-     * use ioc_getversion only if the ioctl is definied
++     * use ioc_getversion only if the ioctl is defined
+      */
+     if (fstatfs(data->mountfd, &stbuf) < 0) {
+         error_setg_errno(errp, errno,
+diff --git a/hw/9pfs/9p-proxy.c b/hw/9pfs/9p-proxy.c
+index 905cae6992..7aac49ad4a 100644
+--- a/hw/9pfs/9p-proxy.c
++++ b/hw/9pfs/9p-proxy.c
+@@ -767,7 +767,7 @@ static ssize_t proxy_pwritev(FsContext *ctx, V9fsFidOpenState *fs,
+         /*
+          * Initiate a writeback. This is not a data integrity sync.
+          * We want to ensure that we don't leave dirty pages in the cache
+-         * after write when writeout=immediate is sepcified.
++         * after write when writeout=immediate is specified.
+          */
+         sync_file_range(fs->fd, offset, ret,
+                         SYNC_FILE_RANGE_WAIT_BEFORE | SYNC_FILE_RANGE_WRITE);
+diff --git a/hw/9pfs/9p-synth.c b/hw/9pfs/9p-synth.c
+index f62c40b639..0ac79a500b 100644
+--- a/hw/9pfs/9p-synth.c
++++ b/hw/9pfs/9p-synth.c
+@@ -493,7 +493,7 @@ static int synth_name_to_path(FsContext *ctx, V9fsPath *dir_path,
+         node = dir_node;
+         goto out;
+     }
+-    /* search for the name in the childern */
++    /* search for the name in the children */
+     rcu_read_lock();
+     QLIST_FOREACH(node, &dir_node->child, sibling) {
+         if (!strcmp(node->name, name)) {
+diff --git a/hw/9pfs/9p-util.h b/hw/9pfs/9p-util.h
+index df1b583a5e..51c94b0116 100644
+--- a/hw/9pfs/9p-util.h
++++ b/hw/9pfs/9p-util.h
+@@ -48,7 +48,7 @@ static inline uint64_t makedev_dotl(uint32_t dev_major, uint32_t dev_minor)
+ /*
+  * Converts given device number from host's device number format to Linux
+  * device number format. As both the size of type dev_t and encoding of
+- * dev_t is system dependant, we have to convert them for Linux guests if
++ * dev_t is system dependent, we have to convert them for Linux guests if
+  * host is not running Linux.
+  */
+ static inline uint64_t host_dev_to_dotl_dev(dev_t dev)
+diff --git a/hw/9pfs/9p.c b/hw/9pfs/9p.c
+index 991645adca..323f042e65 100644
+--- a/hw/9pfs/9p.c
++++ b/hw/9pfs/9p.c
+@@ -644,7 +644,7 @@ static inline uint64_t mirror64bit(uint64_t value)
+ }
+ 
+ /*
+- * Parameter k for the Exponential Golomb algorihm to be used.
++ * Parameter k for the Exponential Golomb algorithm to be used.
+  *
+  * The smaller this value, the smaller the minimum bit count for the Exp.
+  * Golomb generated affixes will be (at lowest index) however for the
+@@ -1039,7 +1039,7 @@ static void coroutine_fn pdu_complete(V9fsPDU *pdu, ssize_t len)
+      * Sending a reply would confuse clients because they would
+      * assume that any EINTR is the actual result of the operation,
+      * rather than a consequence of the cancellation. However, if
+-     * the operation completed (succesfully or with an error other
++     * the operation completed (successfully or with an error other
+      * than caused be cancellation), we do send out that reply, both
+      * for efficiency and to avoid confusing the rest of the state machine
+      * that assumes passing a non-error here will mean a successful
+diff --git a/hw/9pfs/9p.h b/hw/9pfs/9p.h
+index 1b0d805b9c..a6f59abccb 100644
+--- a/hw/9pfs/9p.h
++++ b/hw/9pfs/9p.h
+@@ -304,7 +304,7 @@ typedef struct VariLenAffix {
+     AffixType_t type; /* Whether this affix is a suffix or a prefix. */
+     uint64_t value; /* Actual numerical value of this affix. */
+     /*
+-     * Lenght of the affix, that is how many (of the lowest) bits of ``value``
++     * Length of the affix, that is how many (of the lowest) bits of ``value``
+      * must be used for appending/prepending this affix to its final resulting,
+      * unique number.
+      */
 -- 
 2.39.2
 
