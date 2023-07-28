@@ -1,63 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qPTaE-00033M-1V
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2023 15:57:06 -0400
+	id 1qPTaG-00034W-0V
+	for mharc-qemu-trivial@gnu.org; Fri, 28 Jul 2023 15:57:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1qPTa8-00032U-VS; Fri, 28 Jul 2023 15:57:01 -0400
-Received: from mail-oa1-x2c.google.com ([2001:4860:4864:20::2c])
+ id 1qPTaC-000333-Kj; Fri, 28 Jul 2023 15:57:05 -0400
+Received: from mail-ot1-x330.google.com ([2607:f8b0:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <danielhb413@gmail.com>)
- id 1qPTa7-0004mO-EN; Fri, 28 Jul 2023 15:57:00 -0400
-Received: by mail-oa1-x2c.google.com with SMTP id
- 586e51a60fabf-1bbb8daeefaso1943220fac.2; 
- Fri, 28 Jul 2023 12:56:58 -0700 (PDT)
+ id 1qPTaA-0004nV-UM; Fri, 28 Jul 2023 15:57:04 -0400
+Received: by mail-ot1-x330.google.com with SMTP id
+ 46e09a7af769-6bc886d1504so709057a34.0; 
+ Fri, 28 Jul 2023 12:57:01 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20221208; t=1690574217; x=1691179017;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=cK0wTA84D1QgR8qLv8d4Bl7d3/e8HHOpy8GoO7L5fYM=;
- b=fdNO23fFc80aPsYKdfZsYGVO5oC5U5u1dSs9gQbEeQbFp8Qth524JECaVmcPrbMEdi
- FJ6qvDGQi8GjqFqoBCGD6u+o/K17pxPmmthN+YpZSSud8zqi7UzSSVgnFdBR87C54mvt
- jwew6BO7hBCmMWDVsXi3bFaW6X5PnGhqRcfIGBH0HO+BwARcnfEOLHEHoAi3EN3IEnA5
- rPxVxg7gBw/U5EoC7oLmANicfM0MgptE/99L+pPoC/T89zoge0NGf4fGKIP9B9T7bjyu
- YHSB5U4weiraRIe5eJ8883fIcRfQj6iSkwOBrCTilnZfAy+pUP5Rz2cTgPSH8HpGcjkJ
- wlqA==
+ d=gmail.com; s=20221208; t=1690574221; x=1691179021;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=MNd4lGcG2nXcrLV397u9c957Nllm0VNTbLBPXZQ7+Gw=;
+ b=pdKREY0ATDtTn4HZmksdgK0WYS7hNEwRPk8h+if7hpWPIudB69b4cJFPwXtDrGD1/p
+ tTjVYkxPtMK+8wQCVi1IHb/TbKWZT+ptOuC/MT24PH58RMdwQzx/EFWTolFuee0JDhKZ
+ T//7GYefLSX6SpAvUgse/+XI8yeTijynuse1PxPVCk5XOuCkXT/tiJxCCEMMwS6thcvc
+ Qb2hFjq4gVp3FmnaIJ09okgM980trCYtt4Z9q1Ko1pkFppCoSZTit5TNz86rFqClDpJL
+ jUnTx6O5p42XuRWy0WbofuBESUibxMnyL4Ww0ch5BPUHGf/QN11aVXrQvzKWTnPJToVl
+ hPzw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1690574217; x=1691179017;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=cK0wTA84D1QgR8qLv8d4Bl7d3/e8HHOpy8GoO7L5fYM=;
- b=DZKg+ZlR715MHFJIsJatr+zatfJYhC1qmqqLHfOXotcto/thnAfwTYdmzwAuWQyBNH
- MW2Ktsb312J9KP/C0Ai46JUrpDb3h19BK9BdgR97BFguY0Ljm1H9DrwYBIjSPlKF1K/d
- 7Yp1wz8j9EW86Dsl80jyOIRYbKZGn+lzLtqkEztysgf4VmrT4eK4A0enGJy2LC8VXCNF
- 6Hf8UJzEX45K9aX/57VrmyTKW7q9H2RQoi9D3VrRkvKmrV1E4+xgpz06r45XJViJWpd/
- 8Llj9P2X+ypxHrHDvrxdiwYtQYxYixkulAykm5boL1CGradJa2sLm93Ss1Ku+v674hRE
- 6K6Q==
-X-Gm-Message-State: ABy/qLYEB/OELJlax6qRyw2DETBhQhtr0lxtrYXHgfapFvYX6BGr64Xo
- IQgFrMDFrBipLoyt1c1H9b/Fz8hZqHs=
-X-Google-Smtp-Source: APBJJlGzzzskGRONZUrxQap8c9GPsRQQ2d3THy2eXKQohFmIi7nzq/XoDvTps9TMLuJUI2gHa6KL7g==
-X-Received: by 2002:a05:6870:f695:b0:1b7:60aa:43f1 with SMTP id
- el21-20020a056870f69500b001b760aa43f1mr5111884oab.11.1690574217180; 
- Fri, 28 Jul 2023 12:56:57 -0700 (PDT)
+ d=1e100.net; s=20221208; t=1690574221; x=1691179021;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=MNd4lGcG2nXcrLV397u9c957Nllm0VNTbLBPXZQ7+Gw=;
+ b=jILPpxXEQBBEZBjtQhpGK+q5H89NiDA39PuZHrJyc7tunnQ/SrG7KOafBNh7yvYm97
+ pVOOHTVrJ9/fG0kwWPcDWXlWz4dna0YFEP20HVvU55ASY7arO5XNgHRLt2w6xiJ8e5ki
+ mYnfl4x6gZ0Lud3hHCGDF24N0ppYpSFgcX5rec/hduSTqZXspsyZth5zI0msogivYX/S
+ mwevViVexZSZwUt32j+FYQQc1e/jfi8pzDcXkjsBLrDUfkU5EyM11L06QkFFR8W63iIw
+ 3JYkJnPldLte+F98F0lR7lcVD2DRT232ahFR/BzObJf3EK8jhktG2qpYtKn3CX9Yg7/z
+ 1yrw==
+X-Gm-Message-State: ABy/qLZ+RuKuQs0DLCER/pUxD7/PJjhfwJ/izve/tzp/O/QM7BKe3KID
+ 12DoEf7cUektbhz9iyr29kDhLcJgrXA=
+X-Google-Smtp-Source: APBJJlE/GMJXk1R5IKcJJ9t8wsRCtTHc/HaGImWwFMw7plcNBd7G/Nu/YyT+rl9OPhX16dn3wWTZwA==
+X-Received: by 2002:a05:6870:700d:b0:1b4:70dc:972 with SMTP id
+ u13-20020a056870700d00b001b470dc0972mr4152016oae.35.1690574220924; 
+ Fri, 28 Jul 2023 12:57:00 -0700 (PDT)
 Received: from grind.. (201-69-66-36.dial-up.telesp.net.br. [201.69.66.36])
  by smtp.gmail.com with ESMTPSA id
- t6-20020a056870180600b001b02a3426ddsm2087050oaf.14.2023.07.28.12.56.55
+ t6-20020a056870180600b001b02a3426ddsm2087050oaf.14.2023.07.28.12.56.59
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 28 Jul 2023 12:56:56 -0700 (PDT)
+ Fri, 28 Jul 2023 12:57:00 -0700 (PDT)
 From: Daniel Henrique Barboza <danielhb413@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
  Daniel Henrique Barboza <danielhb413@gmail.com>
-Subject: [PATCH for-8.2 0/2] ppc: get rid of free() (gitlab #1798)
-Date: Fri, 28 Jul 2023 16:56:44 -0300
-Message-ID: <20230728195646.168997-1-danielhb413@gmail.com>
+Subject: [PATCH for-8.2 2/2] target/ppc: use g_free() in test_opcode_table()
+Date: Fri, 28 Jul 2023 16:56:46 -0300
+Message-ID: <20230728195646.168997-3-danielhb413@gmail.com>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230728195646.168997-1-danielhb413@gmail.com>
+References: <20230728195646.168997-1-danielhb413@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::2c;
- envelope-from=danielhb413@gmail.com; helo=mail-oa1-x2c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::330;
+ envelope-from=danielhb413@gmail.com; helo=mail-ot1-x330.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -78,30 +81,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Jul 2023 19:57:03 -0000
+X-List-Received-Date: Fri, 28 Jul 2023 19:57:06 -0000
 
-Hello,
+Use g_free(table[i]) instead of free(table[i]) to comply with QEMU low
+level memory management guidelines.
 
-Here's some trivial changes following Peter's call to arms against
-free() and friends in gitlab issue #1798 in an attempt to enforce
-our memory management guidelines [1].
-
-We only have 2 "free()" occurences that needs fixing in the ppc tree.
-The hard part is to be dilligent to to not introduce new ones.
-
-Michael, feel free to take it via qemu-trivial.
-
-
-[1] https://www.qemu.org/docs/master/devel/style.html#low-level-memory-management 
-
-Daniel Henrique Barboza (2):
-  hw/ppc: use g_free() in spapr_tce_table_post_load()
-  target/ppc: use g_free() in test_opcode_table()
-
- hw/ppc/spapr_iommu.c   | 2 +-
+Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+---
  target/ppc/translate.c | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
+diff --git a/target/ppc/translate.c b/target/ppc/translate.c
+index e6a0709066..d90535266e 100644
+--- a/target/ppc/translate.c
++++ b/target/ppc/translate.c
+@@ -7129,7 +7129,7 @@ static int test_opcode_table(opc_handler_t **table, int len)
+                 tmp = test_opcode_table(ind_table(table[i]),
+                     PPC_CPU_INDIRECT_OPCODES_LEN);
+                 if (tmp == 0) {
+-                    free(table[i]);
++                    g_free(table[i]);
+                     table[i] = &invalid_handler;
+                 } else {
+                     count++;
 -- 
 2.41.0
 
