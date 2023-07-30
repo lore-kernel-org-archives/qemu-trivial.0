@@ -1,43 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qQAlp-0004o4-L1
-	for mharc-qemu-trivial@gnu.org; Sun, 30 Jul 2023 14:03:57 -0400
+	id 1qQBut-0003DO-5d
+	for mharc-qemu-trivial@gnu.org; Sun, 30 Jul 2023 15:17:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1qQAlg-0004lo-27; Sun, 30 Jul 2023 14:03:48 -0400
-Received: from mail.weilnetz.de ([37.120.169.71]
- helo=mail.v2201612906741603.powersrv.de)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1qQBur-0003D2-6A; Sun, 30 Jul 2023 15:17:21 -0400
+Received: from mail-qt1-x82d.google.com ([2607:f8b0:4864:20::82d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
- id 1qQAlc-0001Aj-IA; Sun, 30 Jul 2023 14:03:46 -0400
-Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id C379EDA02B6;
- Sun, 30 Jul 2023 20:03:38 +0200 (CEST)
-Received: by qemu.weilnetz.de (Postfix, from userid 1000)
- id 6E7064668B4; Sun, 30 Jul 2023 20:03:38 +0200 (CEST)
-From: Stefan Weil <sw@weilnetz.de>
-To: Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Keith Busch <kbusch@kernel.org>, Klaus Jensen <its@irrelevant.dk>,
- Peter Xu <peterx@redhat.com>, David Hildenbrand <david@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>
-Cc: libvir-list@redhat.com, qemu-block@nongnu.org, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: [PATCH] Fix some typos in documentation and comments
-Date: Sun, 30 Jul 2023 20:03:29 +0200
-Message-Id: <20230730180329.851576-1-sw@weilnetz.de>
-X-Mailer: git-send-email 2.39.2
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1qQBup-0002Pa-MX; Sun, 30 Jul 2023 15:17:20 -0400
+Received: by mail-qt1-x82d.google.com with SMTP id
+ d75a77b69052e-40849e69eb5so10580711cf.1; 
+ Sun, 30 Jul 2023 12:17:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1690744637; x=1691349437;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=IC9+2XmSwELvjjFh+s/lbhVTMpjfnGZKtH/c+xknbh0=;
+ b=VBQAkdFHlq7dHGBkAxioRf1wCQhWkh+ImCJ9qmFqviJ5GIxjNlVMhrr7uwis3Y+C8y
+ WxVw+xqBEtpD9mq+fbHmNfaD+lwEzXDHSgaZBlRA9loKPB9dHRUUVavaPv3xeDoxFIfB
+ H6OSwpGUWmyFtZqegsGn93ALzX6TJZDEbZqGgfxYZ3B+FVp0xe0Joh3rxzVVwFUsOGXT
+ Q0sjIxETv03RJaLYM03ufdKQkx0YCuLaFlDjOJu9j4EhLtkohBAPmKnSq+hdAoldEkTt
+ LcEZDPqAfMNo93GzHT1NdPyh9qRPiKn9nbhMiUtYGP0JCpgid5kP0Nvbmv+XpGJXi3SL
+ 0tiw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1690744637; x=1691349437;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=IC9+2XmSwELvjjFh+s/lbhVTMpjfnGZKtH/c+xknbh0=;
+ b=gJSky5ZaHUIaDSUxEf+kfCd0kaJYZGaYsYT+LBk++lvv0Kv7QSUhmYpYEC2C6m0f18
+ P9rfbO+6uWmZO3HKVOKNYl5QshY5QH/gTtmOjrpWURpHgwX4y1G2YCwTy3NN10xdtvZm
+ vSq+nPM2JtjbnURFGf5qEZaxUgtQcLr8Ll7KD98LWWjppyb740oZNBn9QiVjG9qQ0KWK
+ L2evJeP9NKDc2M7nAC2+XjIN63g+wQb6JvAx3f8s4niE2xSLMjrGNhaQSX3i1qJpAgU/
+ d5xFhvnTS1LFUG3XcjLkG5aALzjTCuGVEBO0k1r/UeUK/e1ckIA7RWNCzXpIwZxG8eil
+ Umuw==
+X-Gm-Message-State: ABy/qLZVML00RHWsQjbIFF+AYT6hrpKYadFhmyDem2a2ELCNZQOzKI+A
+ Hxac1DkCBs13dbY2JkFSN4PwQy7V1qh7afu3b6A=
+X-Google-Smtp-Source: APBJJlHk+k8RdMbKN4hUMkqYe8m53ghhUmgLDhEsiaF9g4+ySWP2kf1eOrtRO/nn9emu7OPxot3WZNAnuUyH06sxueU=
+X-Received: by 2002:a05:622a:3cf:b0:406:948b:1b29 with SMTP id
+ k15-20020a05622a03cf00b00406948b1b29mr9969473qtx.17.1690744637084; Sun, 30
+ Jul 2023 12:17:17 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+References: <TYCP286MB12667F4B46EE030F93FFDA47ED04A@TYCP286MB1266.JPNP286.PROD.OUTLOOK.COM>
+In-Reply-To: <TYCP286MB12667F4B46EE030F93FFDA47ED04A@TYCP286MB1266.JPNP286.PROD.OUTLOOK.COM>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Sun, 30 Jul 2023 23:17:05 +0400
+Message-ID: <CAJ+F1CLxhmRgtFetFrpTz8pJzYQCY6Y-xmR1FMOS4Zh+s9esPg@mail.gmail.com>
+Subject: Re: [PATCH] hda-audio: use log-scale for amplifier levels
+To: Yuanqing Li <liyq.yuanqing@outlook.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::82d;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-qt1-x82d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -50,118 +74,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 30 Jul 2023 18:03:56 -0000
+X-List-Received-Date: Sun, 30 Jul 2023 19:17:21 -0000
 
-Signed-off-by: Stefan Weil <sw@weilnetz.de>
----
+Hi
 
-This patch was triggered by a spelling check for the generated
-QEMU documentation using codespell. It does not try to fix all
-typos which still exist in the QEMU code, but has a focus on
-those required to fix the documentation. Nevertheless some code
-comments with the same typos were fixed, too.
+On Sun, Jul 30, 2023 at 5:52=E2=80=AFPM Yuanqing Li <liyq.yuanqing@outlook.=
+com> wrote:
+>
+> According Intel's High Definition Audio Specification (Revision 1.0a,
+> Section 7.3.4.10: Amplifier Capabilities), the amplifier gain levels
+> should be evenly spaced in dB, i.e. using a log scale instead of linear.
+>
+> Here, the hda-codec reports amplifier levels from 0 to -48 dB at 1-dB
+> steps matching the 8-bit dynamic range, and the -49 dB level is mapped
+> to 0 (muted).
+>
+> Signed-off-by: Yuanqing Li <liyq.yuanqing@outlook.com>
+> ---
+>  hw/audio/hda-codec.c | 14 +++++++++++---
+>  1 file changed, 11 insertions(+), 3 deletions(-)
+>
+> diff --git a/hw/audio/hda-codec.c b/hw/audio/hda-codec.c
+> index c51d8ba617..c2aa71624b 100644
+> --- a/hw/audio/hda-codec.c
+> +++ b/hw/audio/hda-codec.c
+> @@ -121,7 +121,7 @@ static void hda_codec_parse_fmt(uint32_t format, stru=
+ct audsettings *as)
+>  #define QEMU_HDA_PCM_FORMATS (AC_SUPPCM_BITS_16 |       \
+>                                0x1fc /* 16 -> 96 kHz */)
+>  #define QEMU_HDA_AMP_NONE    (0)
+> -#define QEMU_HDA_AMP_STEPS   0x4a
+> +#define QEMU_HDA_AMP_STEPS   0x31 /* 20 * log10(255) =3D 48 dB dynamic r=
+ange */
+>
+>  #define   PARAM mixemu
+>  #define   HDA_MIXER
+> @@ -433,6 +433,14 @@ static void hda_audio_set_running(HDAAudioStream *st=
+, bool running)
+>      }
+>  }
+>
+> +/* first muted; then from -48 dB to 0 dB */
+> +static const uint32_t hda_vol_table[] =3D {
+> +    0,   1,   1,   1,   1,   2,   2,   2,   2,   3,   3,   3,   4,   4, =
+  5,
+> +    5,   6,   6,   7,   8,   9,   10,  11,  13,  14,  16,  18,  20,  23,=
+  26,
+> +    29,  32,  36,  40,  45,  51,  57,  64,  72,  81,  90,  102, 114, 128=
+, 143,
+> +    161, 181, 203, 227, 255
+> +}
 
-I think the patch is trivial, so maybe it can still be included
-in the upcoming release, but that's not strictly necessary.
+It was not clear to me which scale is applied by the backend. I guess
+mixeng uses linear, and thus all others should too.
 
-Stefan
+> +
+>  static void hda_audio_set_amp(HDAAudioStream *st)
+>  {
+>      bool muted;
+> @@ -446,8 +454,8 @@ static void hda_audio_set_amp(HDAAudioStream *st)
+>      left  =3D st->mute_left  ? 0 : st->gain_left;
+>      right =3D st->mute_right ? 0 : st->gain_right;
+>
+> -    left =3D left * 255 / QEMU_HDA_AMP_STEPS;
+> -    right =3D right * 255 / QEMU_HDA_AMP_STEPS;
+> +    left =3D hda_vol_table[left];
+> +    right =3D hda_vol_table[right];
+>
 
- docs/about/deprecated.rst    | 2 +-
- docs/devel/qom.rst           | 2 +-
- docs/system/devices/nvme.rst | 2 +-
- hw/core/loader.c             | 4 ++--
- include/exec/memory.h        | 2 +-
- ui/vnc-enc-tight.c           | 2 +-
- 6 files changed, 7 insertions(+), 7 deletions(-)
+Whoo, better check bounds here. (value can go up to AC_AMP_GAIN 0x7f,
+reading the code)
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 1c35f55666..92a2bafd2b 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -369,7 +369,7 @@ mapping permissions et al by using its 'mapped' security model option.
- Nowadays it would make sense to reimplement the ``proxy`` backend by using
- QEMU's ``vhost`` feature, which would eliminate the high latency costs under
- which the 9p ``proxy`` backend currently suffers. However as of to date nobody
--has indicated plans for such kind of reimplemention unfortunately.
-+has indicated plans for such kind of reimplementation unfortunately.
- 
- 
- Block device options
-diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
-index 0b506426d7..9918fac7f2 100644
---- a/docs/devel/qom.rst
-+++ b/docs/devel/qom.rst
-@@ -30,7 +30,7 @@ user configuration.
- Creating a QOM class
- ====================
- 
--A simple minimal device implementation may look something like bellow:
-+A simple minimal device implementation may look something like below:
- 
- .. code-block:: c
-    :caption: Creating a minimal type
-diff --git a/docs/system/devices/nvme.rst b/docs/system/devices/nvme.rst
-index a8bb8d729c..2a3af268f7 100644
---- a/docs/system/devices/nvme.rst
-+++ b/docs/system/devices/nvme.rst
-@@ -232,7 +232,7 @@ parameters:
-   Set the number of Reclaim Groups.
- 
- ``fdp.nruh`` (default: ``0``)
--  Set the number of Reclaim Unit Handles. This is a mandatory paramater and
-+  Set the number of Reclaim Unit Handles. This is a mandatory parameter and
-   must be non-zero.
- 
- ``fdp.runs`` (default: ``96M``)
-diff --git a/hw/core/loader.c b/hw/core/loader.c
-index 8b7fd9e9e5..4dd5a71fb7 100644
---- a/hw/core/loader.c
-+++ b/hw/core/loader.c
-@@ -863,7 +863,7 @@ ssize_t load_image_gzipped(const char *filename, hwaddr addr, uint64_t max_sz)
- 
- /*
-  * The Linux header magic number for a EFI PE/COFF
-- * image targetting an unspecified architecture.
-+ * image targeting an unspecified architecture.
-  */
- #define EFI_PE_LINUX_MAGIC        "\xcd\x23\x82\x81"
- 
-@@ -1492,7 +1492,7 @@ RomGap rom_find_largest_gap_between(hwaddr base, size_t size)
-         if (rom->mr || rom->fw_file) {
-             continue;
-         }
--        /* ignore anything finishing bellow base */
-+        /* ignore anything finishing below base */
-         if (rom->addr + rom->romsize <= base) {
-             continue;
-         }
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 7f5c11a0cc..68284428f8 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -942,7 +942,7 @@ struct MemoryListener {
-      *
-      * @listener: The #MemoryListener.
-      * @last_stage: The last stage to synchronize the log during migration.
--     * The caller should gurantee that the synchronization with true for
-+     * The caller should guarantee that the synchronization with true for
-      * @last_stage is triggered for once after all VCPUs have been stopped.
-      */
-     void (*log_sync_global)(MemoryListener *listener, bool last_stage);
-diff --git a/ui/vnc-enc-tight.c b/ui/vnc-enc-tight.c
-index 09200d71b8..ee853dcfcb 100644
---- a/ui/vnc-enc-tight.c
-+++ b/ui/vnc-enc-tight.c
-@@ -77,7 +77,7 @@ static int tight_send_framebuffer_update(VncState *vs, int x, int y,
- 
- #ifdef CONFIG_VNC_JPEG
- static const struct {
--    double jpeg_freq_min;       /* Don't send JPEG if the freq is bellow */
-+    double jpeg_freq_min;       /* Don't send JPEG if the freq is below */
-     double jpeg_freq_threshold; /* Always send JPEG if the freq is above */
-     int jpeg_idx;               /* Allow indexed JPEG */
-     int jpeg_full;              /* Allow full color JPEG */
--- 
-2.39.2
+Definitely not trivial material imho
 
+--=20
+Marc-Andr=C3=A9 Lureau
 
