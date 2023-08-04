@@ -1,50 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qRpLl-0005yk-20
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Aug 2023 03:35:53 -0400
+	id 1qRpqW-0002hp-Sf
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Aug 2023 04:07:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qRpLS-0005rk-Tx
- for qemu-trivial@nongnu.org; Fri, 04 Aug 2023 03:35:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1qRpqV-0002h9-5r
+ for qemu-trivial@nongnu.org; Fri, 04 Aug 2023 04:07:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qRpLR-0007FP-10
- for qemu-trivial@nongnu.org; Fri, 04 Aug 2023 03:35:34 -0400
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1qRpqT-0001Kf-Qa
+ for qemu-trivial@nongnu.org; Fri, 04 Aug 2023 04:07:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1691134531;
+ s=mimecast20190719; t=1691136457;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=+kayrjiyC0ZO4pX9WhMUdrcmgMbn4j6eurZheNyDV1o=;
- b=UeMdecrl05NDVDtM8uBIbuiBMYhONNJN3GvYBUBsyKJhdE7YjLUf0GqouGm3WSywW5ikMX
- voR8tCpZXlgqJeVo3KxjivRYfPbS6yqXU3KGTtlBQsBLzebjJa9zA9/2Wu+a6gpu4523j4
- vUOMAhnX8LnNzOsYhddt9H47oQsMvDM=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-421-1eN_yI79PM6DYqARYkrM5A-1; Fri, 04 Aug 2023 03:35:28 -0400
-X-MC-Unique: 1eN_yI79PM6DYqARYkrM5A-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=2BPZ37OXbJ643jpjTI2tKOcZLiYPFQw0EhR+NrIxnbY=;
+ b=aL+gqwNMuvPCKeO1B0AMe3zikNslI5DPzF9GBAJyKUpUVe9YGGMRBT+qmUgt1Msn90BVeP
+ JMS8yphKd78k6zaiRRTI4UM6ha1Rmefumf+kLfGvfKiWkME07Bsf8Ak/YUB2HyvcK4QQzD
+ N/UBrFMIc15KHlA16V20VXWHuzwgZyU=
+Received: from mimecast-mx02.redhat.com (66.187.233.73 [66.187.233.73]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-508-0OcuT5oqMLKdo0iPl8vVnw-1; Fri, 04 Aug 2023 04:07:33 -0400
+X-MC-Unique: 0OcuT5oqMLKdo0iPl8vVnw-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3A2AD185A791;
- Fri,  4 Aug 2023 07:35:28 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.193.12])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 354A310E55;
- Fri,  4 Aug 2023 07:35:27 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-s390x@nongnu.org
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>
-Subject: [PATCH for-8.2] hw/s390x/s390-virtio-ccw: Remove superfluous code to
- set the NIC model
-Date: Fri,  4 Aug 2023 09:35:25 +0200
-Message-Id: <20230804073525.11857-1-thuth@redhat.com>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 57713280BC53;
+ Fri,  4 Aug 2023 08:07:33 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.251])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 15A04492B03;
+ Fri,  4 Aug 2023 08:07:32 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Thomas Huth <thuth@redhat.com>, qemu-s390x@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Christian Borntraeger
+ <borntraeger@linux.ibm.com>
+Subject: Re: [PATCH for-8.2] hw/s390x/s390-virtio-ccw: Remove superfluous
+ code to set the NIC model
+In-Reply-To: <20230804073525.11857-1-thuth@redhat.com>
+Organization: Red Hat GmbH
+References: <20230804073525.11857-1-thuth@redhat.com>
+User-Agent: Notmuch/0.37 (https://notmuchmail.org)
+Date: Fri, 04 Aug 2023 10:07:31 +0200
+Message-ID: <871qgj5iyk.fsf@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=cohuck@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -66,36 +69,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Aug 2023 07:35:46 -0000
+X-List-Received-Date: Fri, 04 Aug 2023 08:07:39 -0000
 
-The check for nd->model being NULL was originally required, but in
-commit e11f463295d95aba ("s390x/virtio: use qemu_check_nic_model()")
-the corresponding code had been replaced by a call to the function
-qemu_check_nic_model() - and this in turn calls qemu_find_nic_model()
-which contains the same check for nd->model being NULL again. So we
-can remove this from the calling site now.
+On Fri, Aug 04 2023, Thomas Huth <thuth@redhat.com> wrote:
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/s390x/s390-virtio-ccw.c | 4 ----
- 1 file changed, 4 deletions(-)
+> The check for nd->model being NULL was originally required, but in
+> commit e11f463295d95aba ("s390x/virtio: use qemu_check_nic_model()")
+> the corresponding code had been replaced by a call to the function
+> qemu_check_nic_model() - and this in turn calls qemu_find_nic_model()
+> which contains the same check for nd->model being NULL again. So we
+> can remove this from the calling site now.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/s390x/s390-virtio-ccw.c | 4 ----
+>  1 file changed, 4 deletions(-)
 
-diff --git a/hw/s390x/s390-virtio-ccw.c b/hw/s390x/s390-virtio-ccw.c
-index 4516d73ff5..b83187effb 100644
---- a/hw/s390x/s390-virtio-ccw.c
-+++ b/hw/s390x/s390-virtio-ccw.c
-@@ -222,10 +222,6 @@ static void s390_create_virtio_net(BusState *bus, const char *name)
-         NICInfo *nd = &nd_table[i];
-         DeviceState *dev;
- 
--        if (!nd->model) {
--            nd->model = g_strdup("virtio");
--        }
--
-         qemu_check_nic_model(nd, "virtio");
- 
-         dev = qdev_new(name);
--- 
-2.39.3
+Reviewed-by: Cornelia Huck <cohuck@redhat.com>
 
 
