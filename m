@@ -1,37 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qSBFg-0005PX-2c
-	for mharc-qemu-trivial@gnu.org; Sat, 05 Aug 2023 02:59:04 -0400
+	id 1qSHNK-0007um-3C
+	for mharc-qemu-trivial@gnu.org; Sat, 05 Aug 2023 09:31:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qSBFQ-0005E0-PL; Sat, 05 Aug 2023 02:58:53 -0400
+ id 1qSHNI-0007uK-8b; Sat, 05 Aug 2023 09:31:20 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qSBFN-0004Lu-0h; Sat, 05 Aug 2023 02:58:47 -0400
+ id 1qSHNG-0005QC-FN; Sat, 05 Aug 2023 09:31:20 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id B6B231858F;
- Sat,  5 Aug 2023 09:59:01 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 2D0FF185E4;
+ Sat,  5 Aug 2023 16:31:38 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 75B241B9A8;
- Sat,  5 Aug 2023 09:58:40 +0300 (MSK)
-Message-ID: <65176dab-b593-7191-1c10-7b474d44a08d@tls.msk.ru>
-Date: Sat, 5 Aug 2023 09:58:40 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 6C8031BA0A;
+ Sat,  5 Aug 2023 16:31:16 +0300 (MSK)
+Message-ID: <e1ed42de-c807-aea4-9a76-f1c96e73bc6b@tls.msk.ru>
+Date: Sat, 5 Aug 2023 16:31:16 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.13.1
-Subject: Re: [PATCH] Fixed incorrect LLONG alignment for openrisc and cris
+Subject: Re: [PATCH] Fix scripts/checkpatch.py style failures.
 Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, Luca Bonissi <qemu@bonslack.org>,
- Laurent Vivier <laurent@vivier.eu>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, Stafford Horne <shorne@gmail.com>,
- Jia Liu <proljc@gmail.com>, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <8cca5c06-4df8-b7d4-4aee-f52f956437f8@bonslack.org>
- <044ceb14-e5cc-6d78-deaf-254dc3d1e170@redhat.com>
+To: Nathan Egge <negge@xiph.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+Cc: Akihiko Odaki <akihiko.odaki@daynix.com>, Helge Deller <deller@gmx.de>,
+ qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20230805125124.42482-1-negge@xiph.org>
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <044ceb14-e5cc-6d78-deaf-254dc3d1e170@redhat.com>
+In-Reply-To: <20230805125124.42482-1-negge@xiph.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -39,7 +36,7 @@ Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
 X-Spam_score_int: -69
 X-Spam_score: -7.0
 X-Spam_bar: -------
-X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.093,
+X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.089,
  RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -54,22 +51,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 05 Aug 2023 06:59:01 -0000
+X-List-Received-Date: Sat, 05 Aug 2023 13:31:20 -0000
 
-03.08.2023 07:42, Thomas Huth wrote:
-> On 03/08/2023 02.29, Luca Bonissi wrote:
->> From: Luca Bonissi <qemu@bonslack.org>
->> Date: Thu, 3 Aug 2023 02:15:57 +0200
->> Subject: [PATCH] Fixed incorrect LLONG alignment for openrisc and cris
->>
->> OpenRISC (or1k) has long long alignment to 4 bytes, but currently not
->> defined in abitypes.h. This lead to incorrect packing of /epoll_event/
->> structure and eventually infinite loop while waiting for file
->> descriptor[s] event[s].
->>
->> Fixed also CRIS alignments (1 byte for all types).
-
-Applied to my trivial-patches tree, thanks!
+Applied to my trivial-patches tree (for 8.2).
 
 /mjt
 
