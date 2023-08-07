@@ -1,28 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qSxvH-000098-Io
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Aug 2023 06:57:15 -0400
+	id 1qSxvI-0000AO-Jk
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Aug 2023 06:57:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qSxvA-0008W8-Un; Mon, 07 Aug 2023 06:57:14 -0400
+ id 1qSxv8-0008VJ-SX; Mon, 07 Aug 2023 06:57:06 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qSxv9-0001zE-EI; Mon, 07 Aug 2023 06:57:08 -0400
+ id 1qSxv6-0001ya-2F; Mon, 07 Aug 2023 06:57:06 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 4762818A49;
+ by isrv.corpit.ru (Postfix) with ESMTP id 1E12518A48;
  Mon,  7 Aug 2023 13:57:01 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id D83FF1BFA4;
+ by tsrv.corpit.ru (Postfix) with SMTP id AF44E1BFA3;
  Mon,  7 Aug 2023 13:56:59 +0300 (MSK)
-Received: (nullmailer pid 206307 invoked by uid 1000);
+Received: (nullmailer pid 206304 invoked by uid 1000);
  Mon, 07 Aug 2023 10:56:59 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH trivial for-8.1 2/3] stubs/colo.c: spelling
-Date: Mon,  7 Aug 2023 13:56:50 +0300
-Message-Id: <beb1a91781f127c863740c94f865fa55a22e5c81.1691405748.git.mjt@tls.msk.ru>
+Cc: qemu-trivial@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH trivial for-8.1 1/3] hw/i2c: Fix bitbang_i2c_data trace event
+Date: Mon,  7 Aug 2023 13:56:49 +0300
+Message-Id: <8ada214a902225c90583b644cabd85bc89bf188c.1691405748.git.mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1691405748.git.mjt@tls.msk.ru>
 References: <cover.1691405748.git.mjt@tls.msk.ru>
@@ -47,26 +48,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Aug 2023 10:57:14 -0000
+X-List-Received-Date: Mon, 07 Aug 2023 10:57:08 -0000
 
+From: BALATON Zoltan <balaton@eik.bme.hu>
+
+The clock and data values were logged swapped. Correct the trace event
+text to match what is logged. Also fix a typo in a comment nearby.
+
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- stubs/colo.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/i2c/bitbang_i2c.c | 2 +-
+ hw/i2c/trace-events  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/stubs/colo.c b/stubs/colo.c
-index f33379d0fd..08c9f982d5 100644
---- a/stubs/colo.c
-+++ b/stubs/colo.c
-@@ -21,7 +21,7 @@ void colo_checkpoint_delay_set(void)
- 
- void migrate_start_colo_process(MigrationState *s)
- {
--    error_report("Impossible happend: trying to start COLO when COLO "
-+    error_report("Impossible happened: trying to start COLO when COLO "
-                  "module is not built in");
-     abort();
+diff --git a/hw/i2c/bitbang_i2c.c b/hw/i2c/bitbang_i2c.c
+index bb18954765..de5f5aacf5 100644
+--- a/hw/i2c/bitbang_i2c.c
++++ b/hw/i2c/bitbang_i2c.c
+@@ -70,7 +70,7 @@ static int bitbang_i2c_ret(bitbang_i2c_interface *i2c, int level)
+     return level & i2c->last_data;
  }
+ 
+-/* Leave device data pin unodified.  */
++/* Leave device data pin unmodified.  */
+ static int bitbang_i2c_nop(bitbang_i2c_interface *i2c)
+ {
+     return bitbang_i2c_ret(i2c, i2c->device_out);
+diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
+index 8e88aa24c1..d7b1e25858 100644
+--- a/hw/i2c/trace-events
++++ b/hw/i2c/trace-events
+@@ -5,7 +5,7 @@ bitbang_i2c_state(const char *old_state, const char *new_state) "state %s -> %s"
+ bitbang_i2c_addr(uint8_t addr) "Address 0x%02x"
+ bitbang_i2c_send(uint8_t byte) "TX byte 0x%02x"
+ bitbang_i2c_recv(uint8_t byte) "RX byte 0x%02x"
+-bitbang_i2c_data(unsigned dat, unsigned clk, unsigned old_out, unsigned new_out) "dat %u clk %u out %u -> %u"
++bitbang_i2c_data(unsigned clk, unsigned dat, unsigned old_out, unsigned new_out) "clk %u dat %u out %u -> %u"
+ 
+ # core.c
+ 
 -- 
 2.39.2
 
