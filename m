@@ -1,60 +1,100 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qVb7U-0004Ee-RL
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Aug 2023 13:12:44 -0400
+	id 1qViPJ-00051u-RB
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Aug 2023 20:59:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qVb7T-0004ET-S5
- for qemu-trivial@nongnu.org; Mon, 14 Aug 2023 13:12:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <pasic@linux.ibm.com>)
+ id 1qVgQo-0002Ut-Ir; Mon, 14 Aug 2023 18:53:02 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qVb7O-00025x-8g
- for qemu-trivial@nongnu.org; Mon, 14 Aug 2023 13:12:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1692033157;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=kpS03Xxlub/LkTWMEjYKZQonz77JApNQsbIObmdPUp0=;
- b=BBlVJgYYltrdvGs3P85r7FFDIN41coy9ttO3KoPJs8wsi4z8GmjY+uZ7Diq7DakkOxS/ma
- D8mcy0B/DQNaKUlzGJZvEpVgHKUAsMDAGYUn8W6huIGngbn0vBNUOWBZIyGgQy1w0w25HA
- q1O/B2kjknMkCr33yDQjXH0jGqyEdpo=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-263-JBFZWBZiNf2_EWMejEEUhg-1; Mon, 14 Aug 2023 13:12:34 -0400
-X-MC-Unique: JBFZWBZiNf2_EWMejEEUhg-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 625D3185A78B;
- Mon, 14 Aug 2023 17:12:33 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.193.9])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D0EAE492C13;
- Mon, 14 Aug 2023 17:12:30 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Warner Losh <imp@bsdimp.com>
-Cc: qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
- Jason Wang <jasowang@redhat.com>, Andrew Melnychenko <andrew@daynix.com>,
- Yuri Benditovich <yuri.benditovich@daynix.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-s390x@nongnu.org
-Subject: [PATCH] trace-events: Fix the name of the tracing.rst file
-Date: Mon, 14 Aug 2023 19:12:28 +0200
-Message-Id: <20230814171228.903273-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <pasic@linux.ibm.com>)
+ id 1qVgQm-0003hy-KB; Mon, 14 Aug 2023 18:53:02 -0400
+Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 37EMc9Y0025676; Mon, 14 Aug 2023 22:52:56 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=date : from : to : cc :
+ subject : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=Q/zwCImqH2+XMheVlDC1IpvG7XtuOgsorHO45KzoNlk=;
+ b=JgjxmCh55ljWCK5Df6z4mpm99/c8AOm3As+TD/dE5TJ/IeNxWQzGU0t3tBYmR/v0bSVz
+ NAo0aaWOCNIEBz7ZZf30ojiIq5v2v3vo9BcpVCrdKKfR9OPt8+OkvO1o9fJpb1bKFQpB
+ 49frSb9w7ENS894IIAiBp9aGuI3BvZpfJ8YD2BLAQ3CpvJCMVCWBIElbHah4vIyY7qhK
+ +2dI0LTL9Rw6qhjgFujCPXN4UP1WEz0V8s04O2d7qjjHJWvExYbTzLiylmRYjg82+e8R
+ 75LhrllIzQ/93repgFr4DBXJUPkiIA6ifRuZfI0HlFkR9WQ/W/ImUQPGxRQE6LDWtM1a 6g== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sfvmk94st-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 14 Aug 2023 22:52:56 +0000
+Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 37EMjLrc011592;
+ Mon, 14 Aug 2023 22:52:55 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3sfvmk94sk-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 14 Aug 2023 22:52:55 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 37EKRlNe001119; Mon, 14 Aug 2023 22:52:54 GMT
+Received: from smtprelay07.fra02v.mail.ibm.com ([9.218.2.229])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3semsy0k5p-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 14 Aug 2023 22:52:54 +0000
+Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com
+ [10.20.54.106])
+ by smtprelay07.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 37EMqoo846399948
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 14 Aug 2023 22:52:51 GMT
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id E3D5520043;
+ Mon, 14 Aug 2023 22:52:50 +0000 (GMT)
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6ACDE20040;
+ Mon, 14 Aug 2023 22:52:50 +0000 (GMT)
+Received: from li-ce58cfcc-320b-11b2-a85c-85e19b5285e0 (unknown [9.171.80.114])
+ by smtpav07.fra02v.mail.ibm.com (Postfix) with SMTP;
+ Mon, 14 Aug 2023 22:52:50 +0000 (GMT)
+Date: Tue, 15 Aug 2023 00:52:48 +0200
+From: Halil Pasic <pasic@linux.ibm.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-s390x@nongnu.org, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Christian Borntraeger <borntraeger@linux.ibm.com>, Cornelia Huck
+ <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>
+Subject: Re: [PATCH for-8.2] hw/s390x/s390-virtio-ccw: Remove superfluous
+ code to set the NIC model
+Message-ID: <20230815005248.3af4ca74.pasic@linux.ibm.com>
+In-Reply-To: <20230804073525.11857-1-thuth@redhat.com>
+References: <20230804073525.11857-1-thuth@redhat.com>
+Organization: IBM
+X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: j6KL-zv112iidQ7Axpn_Cr4LIx6nTppo
+X-Proofpoint-ORIG-GUID: sli1ixwQ1KCcrnJWoZNqQQaesYUNZtlL
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.591,FMLib:17.11.176.26
+ definitions=2023-08-14_18,2023-08-10_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ adultscore=0 spamscore=0
+ clxscore=1011 malwarescore=0 mlxlogscore=693 suspectscore=0 phishscore=0
+ priorityscore=1501 impostorscore=0 mlxscore=0 bulkscore=0
+ lowpriorityscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2306200000 definitions=main-2308140206
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=pasic@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H5=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 14 Aug 2023 20:59:36 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,61 +106,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Aug 2023 17:12:44 -0000
+X-List-Received-Date: Mon, 14 Aug 2023 22:53:03 -0000
 
-The file has been converted to .rst a while ago - make sure that the
-references in the trace-events files are pointing to the right location
-now.
+On Fri,  4 Aug 2023 09:35:25 +0200
+Thomas Huth <thuth@redhat.com> wrote:
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- bsd-user/trace-events         | 2 +-
- ebpf/trace-events             | 2 +-
- hw/nubus/trace-events         | 2 +-
- target/s390x/kvm/trace-events | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
+> The check for nd->model being NULL was originally required, but in
+> commit e11f463295d95aba ("s390x/virtio: use qemu_check_nic_model()")
+> the corresponding code had been replaced by a call to the function
+> qemu_check_nic_model() - and this in turn calls qemu_find_nic_model()
+> which contains the same check for nd->model being NULL again. So we
+> can remove this from the calling site now.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-diff --git a/bsd-user/trace-events b/bsd-user/trace-events
-index 843896f627..2c1cb66726 100644
---- a/bsd-user/trace-events
-+++ b/bsd-user/trace-events
-@@ -1,4 +1,4 @@
--# See docs/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.rst for syntax documentation.
- 
- # bsd-user/signal.c
- user_setup_frame(void *env, uint64_t frame_addr) "env=%p frame_addr=0x%"PRIx64
-diff --git a/ebpf/trace-events b/ebpf/trace-events
-index 411b1e2be3..b3ad1a35f2 100644
---- a/ebpf/trace-events
-+++ b/ebpf/trace-events
-@@ -1,4 +1,4 @@
--# See docs/devel/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.rst for syntax documentation.
- 
- # ebpf-rss.c
- ebpf_error(const char *s1, const char *s2) "error in %s: %s"
-diff --git a/hw/nubus/trace-events b/hw/nubus/trace-events
-index e31833d694..9259d66725 100644
---- a/hw/nubus/trace-events
-+++ b/hw/nubus/trace-events
-@@ -1,4 +1,4 @@
--# See docs/devel/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.rst for syntax documentation.
- 
- # nubus-bus.c
- nubus_slot_read(uint64_t addr, int size) "reading unassigned addr 0x%"PRIx64 " size %d"
-diff --git a/target/s390x/kvm/trace-events b/target/s390x/kvm/trace-events
-index 5289f5f675..380976b225 100644
---- a/target/s390x/kvm/trace-events
-+++ b/target/s390x/kvm/trace-events
-@@ -1,4 +1,4 @@
--# See docs/devel/tracing.txt for syntax documentation.
-+# See docs/devel/tracing.rst for syntax documentation.
- 
- # kvm.c
- kvm_enable_cmma(int rc) "CMMA: enabling with result code %d"
--- 
-2.39.3
-
+Reviewed-by: Halil Pasic <pasic@linux.ibm.com>
 
