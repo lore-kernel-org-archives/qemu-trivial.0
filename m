@@ -1,46 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qVmRy-0004Y8-4c
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Aug 2023 01:18:38 -0400
+	id 1qWcY3-0002rf-0L
+	for mharc-qemu-trivial@gnu.org; Thu, 17 Aug 2023 08:56:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qVmRt-0004XZ-QB; Tue, 15 Aug 2023 01:18:34 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qWcXu-0002Xk-Mv
+ for qemu-trivial@nongnu.org; Thu, 17 Aug 2023 08:56:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qVmRr-0003oV-Rd; Tue, 15 Aug 2023 01:18:33 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id A4C721A6A6;
- Tue, 15 Aug 2023 08:18:29 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 28C711F215;
- Tue, 15 Aug 2023 08:18:26 +0300 (MSK)
-Message-ID: <42102a5e-33b9-7073-3149-ee20c0fcf544@tls.msk.ru>
-Date: Tue, 15 Aug 2023 08:18:26 +0300
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qWcXr-0004Qi-UL
+ for qemu-trivial@nongnu.org; Thu, 17 Aug 2023 08:56:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1692276969;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=NulClmhtg8edh92qz/6RrfY5ldpjOFacH/0neZXmXWM=;
+ b=Pm/Dzg3KrHLejKBjdSgsXkKJ0szczjl8FWTGmEsJAGKYbiIr/6HRYweK/aYLU3VLQyMrL/
+ qY+PvzWx591n54jxUyeO2/4pHK76eeAQ2gJDCUekheRSPEsexax9VHOOe94hNgwYjz8ZLl
+ pnENofpWXP+olPg6s/2/7UvhKybl9vU=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-597-M_jABEMrPXq5TzoRjyrUmA-1; Thu, 17 Aug 2023 08:56:05 -0400
+X-MC-Unique: M_jABEMrPXq5TzoRjyrUmA-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5EFA78019DC;
+ Thu, 17 Aug 2023 12:56:05 +0000 (UTC)
+Received: from thuth.com (unknown [10.39.192.255])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 8030D492C13;
+ Thu, 17 Aug 2023 12:56:03 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Dmitry Fleytman <dmitry.fleytman@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, qemu-devel@nongnu.org
+Cc: pjp@fedoraproject.org,
+	qemu-trivial@nongnu.org,
+	qemu-stable@nongnu.org
+Subject: [PATCH] hw/net/vmxnet3: Fix guest-triggerable assert()
+Date: Thu, 17 Aug 2023 14:56:00 +0200
+Message-Id: <20230817125600.1440195-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Subject: Re: [PATCH] trace-events: Fix the name of the tracing.rst file
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Warner Losh <imp@bsdimp.com>
-Cc: qemu-trivial@nongnu.org, Kyle Evans <kevans@freebsd.org>,
- Jason Wang <jasowang@redhat.com>, Andrew Melnychenko <andrew@daynix.com>,
- Yuri Benditovich <yuri.benditovich@daynix.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-s390x@nongnu.org
-References: <20230814171228.903273-1-thuth@redhat.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230814171228.903273-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -91
-X-Spam_score: -9.2
-X-Spam_bar: ---------
-X-Spam_report: (-9.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.265,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.021,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -53,14 +65,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Aug 2023 05:18:34 -0000
+X-List-Received-Date: Thu, 17 Aug 2023 12:56:16 -0000
 
-14.08.2023 20:12, Thomas Huth wrote:
-> The file has been converted to .rst a while ago - make sure that the
-> references in the trace-events files are pointing to the right location
-> now.
+The assert() that checks for valid MTU sizes can be triggered by
+the guest (e.g. with the reproducer code from the bug ticket
+https://gitlab.com/qemu-project/qemu/-/issues/517 ). Let's avoid
+this problem by simply logging the error and refusing to activate
+the device instead.
 
-Applied to my trivial-patches tree, thanks!
+Fixes: d05dcd94ae ("net: vmxnet3: validate configuration values during activate")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/net/vmxnet3.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
 
-/mjt
+diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
+index 5dfacb1098..6674122a7e 100644
+--- a/hw/net/vmxnet3.c
++++ b/hw/net/vmxnet3.c
+@@ -1439,7 +1439,10 @@ static void vmxnet3_activate_device(VMXNET3State *s)
+     vmxnet3_setup_rx_filtering(s);
+     /* Cache fields from shared memory */
+     s->mtu = VMXNET3_READ_DRV_SHARED32(d, s->drv_shmem, devRead.misc.mtu);
+-    assert(VMXNET3_MIN_MTU <= s->mtu && s->mtu <= VMXNET3_MAX_MTU);
++    if (s->mtu < VMXNET3_MIN_MTU || s->mtu > VMXNET3_MAX_MTU) {
++        qemu_log_mask(LOG_GUEST_ERROR, "vmxnet3: Bad MTU size: %d\n", s->mtu);
++        return;
++    }
+     VMW_CFPRN("MTU is %u", s->mtu);
+ 
+     s->max_rx_frags =
+-- 
+2.39.3
+
 
