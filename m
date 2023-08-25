@@ -1,51 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qZZDj-0001SM-Ti
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Aug 2023 11:59:35 -0400
+	id 1qZZDm-0001To-JH
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Aug 2023 11:59:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qZZDi-0001Rf-Gf
- for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 11:59:34 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qZZDk-0001TG-M7
+ for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 11:59:36 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qZZDd-0004i4-Cp
- for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 11:59:34 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qZZDd-0004iG-MS
+ for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 11:59:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1692979167;
+ s=mimecast20190719; t=1692979168;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=oUbIr22MSsNuH1ZvogXQ24d9gyPr3Ubo6tttNYFFXGk=;
- b=ITRvE1+opKMs4LNEoOJ6xnoWuDWIxT/UXS+ofe1kNcJfURCNv5b+QopiXpiiO1X6A8lT+8
- LxRD7ZOCvrFbzqjgO7x/iH9ThWJT5ZBcw+kTgSZ2iWee10ov09PmD1yrQhTNrNKg6zKnSv
- ufvW4JNiS1lMTTpbS2ygU64vBzpP2fk=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=73p8xwR0d96Nyix6vnB3cwl7QN4+vXfcjkeK4cI/2ss=;
+ b=BzbhzUSHwOvuXkMcKzato9VskPyYWJBHPeAmM9iqkN4cm+N9b1sh+4lNgYqiTLOIiiBI9A
+ MiLEHcn1U7lw+u8qpJbPyMnVcfif9FvFuDgKtq6F0dQinTx86ygTnL88seGjzkzztZYHxB
+ G08TxFcp910eXmbd/v7qZorDumUi/xI=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-512-yIQdng-WNrWS0tvepXQqJw-1; Fri, 25 Aug 2023 11:59:25 -0400
-X-MC-Unique: yIQdng-WNrWS0tvepXQqJw-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
+ us-mta-460-urUrj2sUPHe1CAl-KlJE4Q-1; Fri, 25 Aug 2023 11:59:25 -0400
+X-MC-Unique: urUrj2sUPHe1CAl-KlJE4Q-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
  (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D4599108BF61;
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D4C8785D186;
  Fri, 25 Aug 2023 15:59:24 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.86])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A4BAC40D283A;
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A477B492C18;
  Fri, 25 Aug 2023 15:59:24 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 9AC6D21E690D; Fri, 25 Aug 2023 17:59:23 +0200 (CEST)
+ id 9E8DF21E692B; Fri, 25 Aug 2023 17:59:23 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: kwolf@redhat.com, hreitz@redhat.com, dave@treblig.org, thuth@redhat.com,
  qemu-block@nongnu.org, berrange@redhat.com, dgilbert@redhat.com,
  qemu-trivial@nongnu.org
-Subject: [PATCH 0/2] docs tests: Fix use of migrate_set_parameter
-Date: Fri, 25 Aug 2023 17:59:21 +0200
-Message-ID: <20230825155923.1983141-1-armbru@redhat.com>
+Subject: [PATCH 2/2] tests/qtest/test-hmp: Fix migrate_set_parameter
+ xbzrle-cache-size test
+Date: Fri, 25 Aug 2023 17:59:23 +0200
+Message-ID: <20230825155923.1983141-3-armbru@redhat.com>
+In-Reply-To: <20230825155923.1983141-1-armbru@redhat.com>
+References: <20230825155923.1983141-1-armbru@redhat.com>
 MIME-Version: 1.0
 Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -67,48 +71,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Aug 2023 15:59:34 -0000
+X-List-Received-Date: Fri, 25 Aug 2023 15:59:36 -0000
 
-I spotted a bad use of migrate_set_parameter in test-hmp.c, and looked
-for more.
+The command always fails with "Error: Parameter 'xbzrle_cache_size'
+expects a power of two no less than the target page size".  The test
+passes anyway.  Change the argument from 1 to 64k to make the test a
+bit more useful.
 
-I also looked for more failing HMP commands in test-hmp.c.  I found
-some, but they fail only on some machines, which feels okay.  They
-are:
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ tests/qtest/test-hmp.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-* device_add usb-mouse,id=mouse1
-  device_del mouse1
-
-  Fail when the device is not compiled in, and when the machine
-  doesn't provide USB.
-
-* memsave 0 4096 "/dev/null"
-
-  Fails when the machine doesn't have memory there.
-
-* screendump /dev/null
-
-  Fails when there is no console.
-
-* dump-guest-memory /dev/null 0 4096
-
-  Fails for targets that don't support dumping, and when the machine
-  doesn't have memory there.
-
-* nmi
-
-  Fails when the machine doesn't provide NMIs.
-
-Markus Armbruster (2):
-  docs tests: Fix use of migrate_set_parameter
-  tests/qtest/test-hmp: Fix migrate_set_parameter xbzrle-cache-size test
-
- docs/multi-thread-compression.txt | 12 ++++++------
- docs/rdma.txt                     |  2 +-
- tests/qtest/test-hmp.c            |  6 +++---
- tests/qemu-iotests/181            |  2 +-
- 4 files changed, 11 insertions(+), 11 deletions(-)
-
+diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
+index c0d2d70689..fc9125f8bb 100644
+--- a/tests/qtest/test-hmp.c
++++ b/tests/qtest/test-hmp.c
+@@ -45,7 +45,7 @@ static const char *hmp_cmds[] = {
+     "log all",
+     "log none",
+     "memsave 0 4096 \"/dev/null\"",
+-    "migrate_set_parameter xbzrle-cache-size 1",
++    "migrate_set_parameter xbzrle-cache-size 64k",
+     "migrate_set_parameter downtime-limit 1",
+     "migrate_set_parameter max-bandwidth 1",
+     "netdev_add user,id=net1",
 -- 
 2.41.0
 
