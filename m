@@ -1,64 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qZZDm-0001Tt-Nu
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Aug 2023 11:59:38 -0400
+	id 1qZZNx-0002um-EU
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Aug 2023 12:10:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qZZDk-0001TS-TS
- for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 11:59:36 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qZZNt-0002u0-9H
+ for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 12:10:05 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qZZDd-0004iI-PC
- for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 11:59:36 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qZZNo-0006lc-FU
+ for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 12:10:03 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1692979168;
+ s=mimecast20190719; t=1692979796;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=A/xw5TzRgtqL5gvcD+iF/MI8zm+z0eH+HQ+WE4j4vY0=;
- b=Bc/XgZo4NU6+iHlmK+y76vMFhqbxiEBnUpQxr87HODMPmp2QQ+PfZDL+Ia7PwQyHFV6XOx
- iWZ77mugzjgqqE+acQPaiY1D7qYxfTNIt7UYgNr/h2Du31s++eV8Knl3DyMtzemezVavrV
- Rtgs8HnEDT6Akd2OfuqB5ETdN/Ajy8I=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-460-F0c-GMIfMc24ml17CDjZ4w-1; Fri, 25 Aug 2023 11:59:25 -0400
-X-MC-Unique: F0c-GMIfMc24ml17CDjZ4w-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D5D4C85D187;
- Fri, 25 Aug 2023 15:59:24 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.86])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A41861121319;
- Fri, 25 Aug 2023 15:59:24 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 9C28321E692A; Fri, 25 Aug 2023 17:59:23 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: kwolf@redhat.com, hreitz@redhat.com, dave@treblig.org, thuth@redhat.com,
+ bh=u6JaF77xm8eS1JTMn6tJ8s/tT8+/+Worac655JTupZc=;
+ b=LeifZjWB9qmM4CElVJhpgAlls16UVvB9b4S5gayF9ZazQnara7MOvlwtb8lc5BsXohbxxk
+ PYBDiQ1Ihfu5M/IcXmBLhthudDgHSISuJwWmWWcleuM3khfd6x02hiJqlDyvnpd6tCjE8f
+ KRyUV4NbU5805j67B6uYDvihnRfwW/U=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-232-KRkcLAhBOCyAlTtI8JZajw-1; Fri, 25 Aug 2023 12:09:55 -0400
+X-MC-Unique: KRkcLAhBOCyAlTtI8JZajw-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-4011f56165eso11991135e9.0
+ for <qemu-trivial@nongnu.org>; Fri, 25 Aug 2023 09:09:55 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1692979794; x=1693584594;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=u6JaF77xm8eS1JTMn6tJ8s/tT8+/+Worac655JTupZc=;
+ b=cvO1v/wW7NAntnxGDTu7kZqVz/CvHrs8EhNYtv1aCIfqdUQmya8j628IIrKJIAZPSB
+ GZBxghbuKStpCbIgYcvznUhVwFlO1m5QpGMDuEToBaLrGo77A2y8PSQQI5GMZh3XQDfD
+ /YOkcN53r84wKHGvNL86MePfmg2vUUtOxccGky68oS+m86wHHQBywDu1qz5I1K0lPpFj
+ 6Y8WT2is/gDSmuHdQhLRkXMN/E9bDePVNADDBRMYVFK8iMk6lDau6wiBkDcK4NMkOwdv
+ LGzV+B1p8XeQSW4krL/2N2fAAppYRgXD5KWFQOpUs27jcfOUQVJ6FN3QaSo2CezPKppW
+ FfvQ==
+X-Gm-Message-State: AOJu0YxBVe5oOtdPm3hry+S861Wp3nsTaMCaqAZWbPWHFnRrrVSFAAWd
+ iwIi8B//s4/65/26iOaJytdjO6g1j3P9DWofVNWOa6qVrhZnHatBCPbZOHFuiO1YhLiXjQ5OJHY
+ EBDwUoKijcbFP7QdgiQ==
+X-Received: by 2002:a05:600c:1e85:b0:401:bcec:be3e with SMTP id
+ be5-20020a05600c1e8500b00401bcecbe3emr699629wmb.17.1692979794218; 
+ Fri, 25 Aug 2023 09:09:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHlgAeVwTjrb/2llpvAB/Z6uvQKxWAERXXexau6ALJEwfX1RSKfkNrJu2WHk9f7mwBcu2JFTw==
+X-Received: by 2002:a05:600c:1e85:b0:401:bcec:be3e with SMTP id
+ be5-20020a05600c1e8500b00401bcecbe3emr699614wmb.17.1692979793840; 
+ Fri, 25 Aug 2023 09:09:53 -0700 (PDT)
+Received: from [192.168.8.103] (tmo-099-164.customers.d1-online.com.
+ [80.187.99.164]) by smtp.gmail.com with ESMTPSA id
+ 21-20020a05600c231500b003fc0505be19sm2564312wmo.37.2023.08.25.09.09.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 25 Aug 2023 09:09:53 -0700 (PDT)
+Message-ID: <dc4980ae-1045-321c-cf65-0fef97bd8f05@redhat.com>
+Date: Fri, 25 Aug 2023 18:09:50 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 2/2] tests/qtest/test-hmp: Fix migrate_set_parameter
+ xbzrle-cache-size test
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: kwolf@redhat.com, hreitz@redhat.com, dave@treblig.org,
  qemu-block@nongnu.org, berrange@redhat.com, dgilbert@redhat.com,
  qemu-trivial@nongnu.org
-Subject: [PATCH 1/2] docs tests: Fix use of migrate_set_parameter
-Date: Fri, 25 Aug 2023 17:59:22 +0200
-Message-ID: <20230825155923.1983141-2-armbru@redhat.com>
-In-Reply-To: <20230825155923.1983141-1-armbru@redhat.com>
 References: <20230825155923.1983141-1-armbru@redhat.com>
-MIME-Version: 1.0
-Content-type: text/plain
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ <20230825155923.1983141-3-armbru@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230825155923.1983141-3-armbru@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- WEIRD_PORT=0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-1.57, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -71,104 +96,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Aug 2023 15:59:37 -0000
+X-List-Received-Date: Fri, 25 Aug 2023 16:10:05 -0000
 
-docs/multi-thread-compression.txt uses parameter names with
-underscores instead of dashes.  Wrong since day one.
+On 25/08/2023 17.59, Markus Armbruster wrote:
+> The command always fails with "Error: Parameter 'xbzrle_cache_size'
+> expects a power of two no less than the target page size".  The test
+> passes anyway.  Change the argument from 1 to 64k to make the test a
+> bit more useful.
+> 
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>   tests/qtest/test-hmp.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
+> index c0d2d70689..fc9125f8bb 100644
+> --- a/tests/qtest/test-hmp.c
+> +++ b/tests/qtest/test-hmp.c
+> @@ -45,7 +45,7 @@ static const char *hmp_cmds[] = {
+>       "log all",
+>       "log none",
+>       "memsave 0 4096 \"/dev/null\"",
+> -    "migrate_set_parameter xbzrle-cache-size 1",
+> +    "migrate_set_parameter xbzrle-cache-size 64k",
+>       "migrate_set_parameter downtime-limit 1",
+>       "migrate_set_parameter max-bandwidth 1",
+>       "netdev_add user,id=net1",
 
-docs/rdma.txt, tests/qemu-iotests/181, and tests/qtest/test-hmp.c are
-wrong the same way since commit cbde7be900d2 (v6.0.0).  Hard to see,
-as test-hmp doesn't check whether the commands work, and iotest 181
-appears to be unaffected.
-
-Fixes: 263170e679df (docs: Add a doc about multiple thread compression)
-Fixes: cbde7be900d2 (migrate: remove QMP/HMP commands for speed, downtime and cache size)
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
----
- docs/multi-thread-compression.txt | 12 ++++++------
- docs/rdma.txt                     |  2 +-
- tests/qtest/test-hmp.c            |  6 +++---
- tests/qemu-iotests/181            |  2 +-
- 4 files changed, 11 insertions(+), 11 deletions(-)
-
-diff --git a/docs/multi-thread-compression.txt b/docs/multi-thread-compression.txt
-index bb88c6bdf1..95b1556f67 100644
---- a/docs/multi-thread-compression.txt
-+++ b/docs/multi-thread-compression.txt
-@@ -117,13 +117,13 @@ to support the multiple thread compression migration:
-     {qemu} migrate_set_capability compress on
- 
- 3. Set the compression thread count on source:
--    {qemu} migrate_set_parameter compress_threads 12
-+    {qemu} migrate_set_parameter compress-threads 12
- 
- 4. Set the compression level on the source:
--    {qemu} migrate_set_parameter compress_level 1
-+    {qemu} migrate_set_parameter compress-level 1
- 
- 5. Set the decompression thread count on destination:
--    {qemu} migrate_set_parameter decompress_threads 3
-+    {qemu} migrate_set_parameter decompress-threads 3
- 
- 6. Start outgoing migration:
-     {qemu} migrate -d tcp:destination.host:4444
-@@ -133,9 +133,9 @@ to support the multiple thread compression migration:
- 
- The following are the default settings:
-     compress: off
--    compress_threads: 8
--    decompress_threads: 2
--    compress_level: 1 (which means best speed)
-+    compress-threads: 8
-+    decompress-threads: 2
-+    compress-level: 1 (which means best speed)
- 
- So, only the first two steps are required to use the multiple
- thread compression in migration. You can do more if the default
-diff --git a/docs/rdma.txt b/docs/rdma.txt
-index 2b4cdea1d8..bd8dd799a9 100644
---- a/docs/rdma.txt
-+++ b/docs/rdma.txt
-@@ -89,7 +89,7 @@ RUNNING:
- First, set the migration speed to match your hardware's capabilities:
- 
- QEMU Monitor Command:
--$ migrate_set_parameter max_bandwidth 40g # or whatever is the MAX of your RDMA device
-+$ migrate_set_parameter max-bandwidth 40g # or whatever is the MAX of your RDMA device
- 
- Next, on the destination machine, add the following to the QEMU command line:
- 
-diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
-index 6704be239b..c0d2d70689 100644
---- a/tests/qtest/test-hmp.c
-+++ b/tests/qtest/test-hmp.c
-@@ -45,9 +45,9 @@ static const char *hmp_cmds[] = {
-     "log all",
-     "log none",
-     "memsave 0 4096 \"/dev/null\"",
--    "migrate_set_parameter xbzrle_cache_size 1",
--    "migrate_set_parameter downtime_limit 1",
--    "migrate_set_parameter max_bandwidth 1",
-+    "migrate_set_parameter xbzrle-cache-size 1",
-+    "migrate_set_parameter downtime-limit 1",
-+    "migrate_set_parameter max-bandwidth 1",
-     "netdev_add user,id=net1",
-     "set_link net1 off",
-     "set_link net1 on",
-diff --git a/tests/qemu-iotests/181 b/tests/qemu-iotests/181
-index cb96d09ae5..dc90a10757 100755
---- a/tests/qemu-iotests/181
-+++ b/tests/qemu-iotests/181
-@@ -109,7 +109,7 @@ if [ ${QEMU_STATUS[$dest]} -lt 0 ]; then
-     _notrun 'Postcopy is not supported'
- fi
- 
--_send_qemu_cmd $src 'migrate_set_parameter max_bandwidth 4k' "(qemu)"
-+_send_qemu_cmd $src 'migrate_set_parameter max-bandwidth 4k' "(qemu)"
- _send_qemu_cmd $src 'migrate_set_capability postcopy-ram on' "(qemu)"
- _send_qemu_cmd $src "migrate -d unix:${MIG_SOCKET}" "(qemu)"
- _send_qemu_cmd $src 'migrate_start_postcopy' "(qemu)"
--- 
-2.41.0
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
