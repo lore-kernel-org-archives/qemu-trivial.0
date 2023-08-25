@@ -1,89 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qZZRp-0000HT-DK
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Aug 2023 12:14:10 -0400
+	id 1qZZqR-00067f-Or
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Aug 2023 12:39:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qZZRm-0000Az-6a
- for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 12:14:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qZZRi-0007XM-R0
- for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 12:14:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1692980041;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XsOOUFAnpZF8VlU2nxxredNfBuPurRki8fXFH46a8J4=;
- b=B7qr6eATKu9uu9yIOc2lQ6xk/euBe2EIzhvFX255BKp6rVPhZN0m8+gfe+9+XFumEAEmnn
- EOmNKSonQph5lStAYwIQCChw+AN+ezD4GR2IQe/rPx1kJdezbLOywnvtcu84mdyU5C2BR1
- 7zwhUBwLKGVIJtQyQZ6YJNnjX5sSWsg=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-630-an3ImTkDMHGvEZhywJbrMg-1; Fri, 25 Aug 2023 12:13:58 -0400
-X-MC-Unique: an3ImTkDMHGvEZhywJbrMg-1
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-31c4096874bso752657f8f.2
- for <qemu-trivial@nongnu.org>; Fri, 25 Aug 2023 09:13:57 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <sam.morgan44@gmail.com>)
+ id 1qZYf9-0005eU-9x
+ for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 11:23:51 -0400
+Received: from mail-yw1-x1132.google.com ([2607:f8b0:4864:20::1132])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <sam.morgan44@gmail.com>)
+ id 1qZYf7-0006lL-7y
+ for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 11:23:51 -0400
+Received: by mail-yw1-x1132.google.com with SMTP id
+ 00721157ae682-58e6c05f529so13057217b3.3
+ for <qemu-trivial@nongnu.org>; Fri, 25 Aug 2023 08:23:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20221208; t=1692977027; x=1693581827;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=JWxKtY9Y/BfbN+iSotpxkpFphtD54WK54TW1AXtdcFc=;
+ b=ZKmLDFFAsqHJ4+/v3+1Hqoj5gyT6pAu1BgbWBWzw3mlYsqlFjDzNmkimP5Y9nN9ZMg
+ qzlm8aGEKC9WRasBhxMDGreYjftV3+QNVxyjlYNKRFkBL9OdbXS874SAlVK1Fzcqr/yK
+ mEUSjaHKLSWEd2Ch2xKl85D1iWSNdoKJ6GPyKHep63tt7nrD5vIY54geu7W1ZoPcfkWd
+ ZR/7QIGrRZdjgwJbkeetTDeEsUQDvAk4fmS1giRIK1aq6uGcPXPUu+2TrrC4Gu4NpkjF
+ 0GNoiuF7PtTq3emfaDKNnZcjqa6tc5XywB7+VNEpG/CKs7XRXXB2nJykp0oXGH6YNLvy
+ HG9A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1692980037; x=1693584837;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=XsOOUFAnpZF8VlU2nxxredNfBuPurRki8fXFH46a8J4=;
- b=RpjVlO5mZsyVW5Iyv8k4VarWV0AQW0CTn9jKpDnaAkYs+A9WsYqoplFizeKhAG9ev2
- 0oKnCq8iyIfpdP2fGaV/CdJVdYwdnHQVNCqUF1fP8ohKyc6oif93sVyJbCPVQYdO2/CP
- 4thUBCM/5cOVKYY3Sfz8yJcqHygRoSbW1wTV6tOS/k6w6gRPfvZDwNIwDyPn6pUCXk89
- Uhr+U2hwRY/quSt0nzt6qekhayogFaWeMuwoHR8wPeFxuLIlgRthAR7r0x28tEMPTLF8
- +te1UYoS1J79FDpGr/pl4ojOemO/EToc4lMKJt4Y9R1wFK9VmcHzo6aio84jypiH44a8
- LrkQ==
-X-Gm-Message-State: AOJu0YwHqI5MkqmfYJZsOSersnIRECxKFFpp0KLl/oYcNf0PQHaPCtCk
- t7k+D7DDZL2Y39SiVofSy7KvPLFm12c/xrmREiIBBm4GBi3xQKFMXIhEuB7JU/zPHXXhv8SN0/A
- D5Zwu088njMLUpJKk1A==
-X-Received: by 2002:adf:e802:0:b0:317:e68d:f862 with SMTP id
- o2-20020adfe802000000b00317e68df862mr15512856wrm.37.1692980037139; 
- Fri, 25 Aug 2023 09:13:57 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFasDfYHvjI4F9KH3rGvaslFBp2qPP2Go9A6jeLI/Nw/aAa8Kila9x/Nf7FTPEfCNMROuP4RA==
-X-Received: by 2002:adf:e802:0:b0:317:e68d:f862 with SMTP id
- o2-20020adfe802000000b00317e68df862mr15512842wrm.37.1692980036842; 
- Fri, 25 Aug 2023 09:13:56 -0700 (PDT)
-Received: from [192.168.8.103] (tmo-099-164.customers.d1-online.com.
- [80.187.99.164]) by smtp.gmail.com with ESMTPSA id
- x3-20020a5d6503000000b00317c742ca9asm2584179wru.43.2023.08.25.09.13.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Aug 2023 09:13:56 -0700 (PDT)
-Message-ID: <2859aebf-f2a3-1c19-b5c3-efbd1ae14977@redhat.com>
-Date: Fri, 25 Aug 2023 18:13:54 +0200
+ d=1e100.net; s=20221208; t=1692977027; x=1693581827;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=JWxKtY9Y/BfbN+iSotpxkpFphtD54WK54TW1AXtdcFc=;
+ b=hXmyG5V134EuOPm0dcq2wMIT3O1ACdxkG9wqi1oHpuDvY7+68RH+e2Y1HAvmWKnCkU
+ 0UWzJDWmu9bQzWffEhhAv9IX7gJiot1YFveaLle0bZvO4p+7fyj1JY8N02/cZ+pCj4GW
+ NdEHXvMpdU5x2XmAimf8s+bXGSPTgs6mTHeu86amDW2YOZKuMIUSVdeHGdpRAC2wsofP
+ xWPpF7qKoYI0WmbHa2d4JR/Fj3xZPFruxuzonaEwrfSHNxAlYZuni2nMnT+Jn/qH42XO
+ lgJCjnspEEcRRxRNLGIrfYipmGaTwR/LfBoGmEiKmWodb5zGX7h024iHAHV9TX/AxYxB
+ lhcw==
+X-Gm-Message-State: AOJu0Yywrfpd/XySE/xt8dVkVf04qKaWMGOT0v+OJBjRPKB00b90SW/m
+ NyU/0qZ9/gdKoJNt0KKktPoihGVYzrg+IQ==
+X-Google-Smtp-Source: AGHT+IE7O0nV2orL0WpoY8maLZacu+HTNOqzWRRAHfBRMLAMNOctzwv0+M78VfzKShaJpEC5zcI/DQ==
+X-Received: by 2002:a05:690c:3384:b0:592:8b9d:e826 with SMTP id
+ fl4-20020a05690c338400b005928b9de826mr5338642ywb.35.1692977026994; 
+ Fri, 25 Aug 2023 08:23:46 -0700 (PDT)
+Received: from localhost.localdomain
+ (204-144-196-170.cgn.imoncommunications.net. [204.144.196.170])
+ by smtp.gmail.com with ESMTPSA id
+ fj3-20020a05690c330300b005925d7b62e0sm535883ywb.24.2023.08.25.08.23.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 25 Aug 2023 08:23:46 -0700 (PDT)
+From: sam.morgan44@gmail.com
+To: qemu-trivial@nongnu.org
+Cc: Sam Morgan <sam.morgan44@gmail.com>
+Subject: [PATCH 1/1] Fix addressing with ramp registers
+Date: Fri, 25 Aug 2023 10:23:42 -0500
+Message-Id: <20230825152342.1470-1-sam.morgan44@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 1/2] docs tests: Fix use of migrate_set_parameter
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: kwolf@redhat.com, hreitz@redhat.com, dave@treblig.org,
- qemu-block@nongnu.org, berrange@redhat.com, dgilbert@redhat.com,
- qemu-trivial@nongnu.org
-References: <20230825155923.1983141-1-armbru@redhat.com>
- <20230825155923.1983141-2-armbru@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230825155923.1983141-2-armbru@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -36
-X-Spam_score: -3.7
-X-Spam_bar: ---
-X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.57, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1132;
+ envelope-from=sam.morgan44@gmail.com; helo=mail-yw1-x1132.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 25 Aug 2023 12:39:33 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,23 +81,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Aug 2023 16:14:07 -0000
+X-List-Received-Date: Fri, 25 Aug 2023 15:23:51 -0000
 
-On 25/08/2023 17.59, Markus Armbruster wrote:
-> docs/multi-thread-compression.txt uses parameter names with
-> underscores instead of dashes.  Wrong since day one.
-> 
-> docs/rdma.txt, tests/qemu-iotests/181, and tests/qtest/test-hmp.c are
-> wrong the same way since commit cbde7be900d2 (v6.0.0).  Hard to see,
-> as test-hmp doesn't check whether the commands work, and iotest 181
-> appears to be unaffected.
-> 
-> Fixes: 263170e679df (docs: Add a doc about multiple thread compression)
-> Fixes: cbde7be900d2 (migrate: remove QMP/HMP commands for speed, downtime and cache size)
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> ---
+From: Sam Morgan <sam.morgan44@gmail.com>
 
+Signed-off-by: Sam Morgan <sam.morgan44@gmail.com>
+---
+ target/avr/translate.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+diff --git a/target/avr/translate.c b/target/avr/translate.c
+index ef2edd7415..b1c4bb17a1 100644
+--- a/target/avr/translate.c
++++ b/target/avr/translate.c
+@@ -1459,8 +1459,10 @@ static void gen_set_zaddr(TCGv addr)
+ static TCGv gen_get_addr(TCGv H, TCGv M, TCGv L)
+ {
+     TCGv addr = tcg_temp_new_i32();
++    TCGv shifted_H = tcg_temp_new_i32();
+ 
+-    tcg_gen_deposit_tl(addr, M, H, 8, 8);
++    tcg_gen_shri_tl(shifted_H, H, 16);
++    tcg_gen_deposit_tl(addr, M, shifted_H, 8, 8);
+     tcg_gen_deposit_tl(addr, L, addr, 8, 16);
+ 
+     return addr;
+-- 
+2.25.1
 
 
