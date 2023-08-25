@@ -1,63 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qZayG-0005Ny-S8
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Aug 2023 13:51:44 -0400
+	id 1qZeUY-0007fw-Vy
+	for mharc-qemu-trivial@gnu.org; Fri, 25 Aug 2023 17:37:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qZayF-0005Mz-17
- for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 13:51:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qZayC-0000ks-IW
- for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 13:51:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1692985900;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=HhoHjczvmdxo+GXe0dtUlDRMabBbHFNBo9Dag2DJ49k=;
- b=bEOoy6enxQCUWStXDF5LdlEVKzRLL+ocmp/GWPBLdNYx7m3yfiARukdCQx941HgWrCH+Fw
- 3ZrkZ7uiXolgNnmSpgAjQqjFkWtjUNIlTQnjswgeQZgXD6pf1vznXhj/vOBhiYtoAxIA3z
- rTsu7A47dtviDKsESNqxXOM8JUR5Nw8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-663-KX837bYyM0Sfi6ftAxNS7A-1; Fri, 25 Aug 2023 13:51:32 -0400
-X-MC-Unique: KX837bYyM0Sfi6ftAxNS7A-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.2 with cipher AECDH-AES256-SHA (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E9CAE8030B1;
- Fri, 25 Aug 2023 17:51:31 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.192.97])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8070C6B2B6;
- Fri, 25 Aug 2023 17:51:30 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH 2/3] hw/mips/jazz: Move the NIC init code into a separate
- function
-Date: Fri, 25 Aug 2023 19:51:22 +0200
-Message-Id: <20230825175123.624114-3-thuth@redhat.com>
-In-Reply-To: <20230825175123.624114-1-thuth@redhat.com>
-References: <20230825175123.624114-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qZeUX-0007fZ-7K
+ for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 17:37:17 -0400
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1qZeUS-0005XS-4E
+ for qemu-trivial@nongnu.org; Fri, 25 Aug 2023 17:37:15 -0400
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-1c0d0bf18d6so11844175ad.0
+ for <qemu-trivial@nongnu.org>; Fri, 25 Aug 2023 14:37:10 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1692999430; x=1693604230;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Eg4IN/Tm8P9aY2VZWhQPl+5fULwqejcAwG5HOa9DVdg=;
+ b=jnNarRhHe62F4q56hb6+2cc7nj26TP8Tsl81AsDdIxQ0hspSGewMHiLIijSqTsVG4w
+ sKLabYADA2XiG6xVkonlaNXdceGlDpLJ8xeX+cuEQqwWh5mk1iPMLG7UMaB0tO9B3EtR
+ iFbOMrSyc/mEkuCG2tkSdeJTaBqnr6bnnriYVw0weW06m1AFvE/saU6/aOFEFMlVdSPr
+ 0dcZitb1skkHPPhWt6nWBtYmsGl+dPOumnjIv25fEapQxjf7yn3806Fazg00npaN/SK1
+ DTpmb92DHruuuJ4+KlS3ckF7lSUp84x+szWs7FtTSSSvzFYAKrmdsCMCNGJn1+OerKTu
+ r3ww==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1692999430; x=1693604230;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Eg4IN/Tm8P9aY2VZWhQPl+5fULwqejcAwG5HOa9DVdg=;
+ b=GSOmxJby2qoQGvguTv2ytPx88AWcV0Ju9vN7oS3DCH3L+lzPlhcvKRdi6tnZt6eoSZ
+ Y7/C8tJLv5k/5FkoeD3g2TBIXd2ZsX8Qyxc/cac8b6Ag+phaKO2WS/ws5euMGnsWa/l2
+ tyKUGLa6YbduV1DD/oeFQybTX3YBvqYcWlZKu8DFYk+Y1GJmAmghNDMjfZaj5wwdVZh/
+ ys+2b/DM5FOBFqq/9Uk4sCwiS5woqCWsdDBUojJXNAAtbLlp/An0AxNwirqfCQgUQ9Z4
+ LZz8vTfvHQMbi/r11mgKD3cd0xvnyz6hro5z0A+BxabXCzdjiKkfZySQ0WC8FtXpcEkF
+ Gz/w==
+X-Gm-Message-State: AOJu0Yy+A0Wz0ANukoTIrQ+VqYlIEI5yDU9+FvDhUf6i7QwL/aVbmBd0
+ +J6A5FHHTnJD5YfJyw1af2rv0w==
+X-Google-Smtp-Source: AGHT+IGVF/BRLrdK10Zd3MGF3OleXILwtHm2aZZgiB1c3lhBluht50z852B2Zp3JQ6X9Ir2yhTLHaA==
+X-Received: by 2002:a17:903:1208:b0:1b6:6625:d3a8 with SMTP id
+ l8-20020a170903120800b001b66625d3a8mr22420841plh.16.1692999429721; 
+ Fri, 25 Aug 2023 14:37:09 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.131.115])
+ by smtp.gmail.com with ESMTPSA id
+ d12-20020a170902cecc00b001bf10059251sm2207775plg.239.2023.08.25.14.37.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 25 Aug 2023 14:37:08 -0700 (PDT)
+Message-ID: <f1f6327c-366a-5b7e-42ab-cfa90a3c7256@linaro.org>
+Date: Fri, 25 Aug 2023 14:37:05 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.13.0
+Subject: Re: [PATCH 1/3] hw/mips/jazz: Remove the big_endian variable
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org
+References: <20230825175123.624114-1-thuth@redhat.com>
+ <20230825175123.624114-2-thuth@redhat.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20230825175123.624114-2-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.57,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,100 +88,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Aug 2023 17:51:43 -0000
+X-List-Received-Date: Fri, 25 Aug 2023 21:37:17 -0000
 
-The mips_jazz_init() function is already quite big, so moving
-away some code here can help to make it more understandable.
-Additionally, by moving this code into a separate function, the
-next patch (that will refactor the for-loop around the NIC init
-code) will be much shorter and easier to understand.
+On 8/25/23 10:51, Thomas Huth wrote:
+> There is an easier way to get a value that can be used to decide
+> whether the target is big endian or not: Simply use the
+> target_words_bigendian() function instead.
+> 
+> Signed-off-by: Thomas Huth<thuth@redhat.com>
+> ---
+>   hw/mips/jazz.c | 10 ++--------
+>   1 file changed, 2 insertions(+), 8 deletions(-)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/mips/jazz.c | 62 ++++++++++++++++++++++++++++----------------------
- 1 file changed, 35 insertions(+), 27 deletions(-)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/hw/mips/jazz.c b/hw/mips/jazz.c
-index 358bb6f74f..a95a1bd743 100644
---- a/hw/mips/jazz.c
-+++ b/hw/mips/jazz.c
-@@ -114,6 +114,40 @@ static const MemoryRegionOps dma_dummy_ops = {
-     .endianness = DEVICE_NATIVE_ENDIAN,
- };
- 
-+static void mips_jazz_init_net(NICInfo *nd, IOMMUMemoryRegion *rc4030_dma_mr,
-+                               DeviceState *rc4030, MemoryRegion *dp8393x_prom)
-+{
-+    DeviceState *dev;
-+    SysBusDevice *sysbus;
-+    int checksum, i;
-+    uint8_t *prom;
-+
-+    qemu_check_nic_model(nd, "dp83932");
-+
-+    dev = qdev_new("dp8393x");
-+    qdev_set_nic_properties(dev, nd);
-+    qdev_prop_set_uint8(dev, "it_shift", 2);
-+    qdev_prop_set_bit(dev, "big_endian", target_words_bigendian());
-+    object_property_set_link(OBJECT(dev), "dma_mr",
-+                             OBJECT(rc4030_dma_mr), &error_abort);
-+    sysbus = SYS_BUS_DEVICE(dev);
-+    sysbus_realize_and_unref(sysbus, &error_fatal);
-+    sysbus_mmio_map(sysbus, 0, 0x80001000);
-+    sysbus_connect_irq(sysbus, 0, qdev_get_gpio_in(rc4030, 4));
-+
-+    /* Add MAC address with valid checksum to PROM */
-+    prom = memory_region_get_ram_ptr(dp8393x_prom);
-+    checksum = 0;
-+    for (i = 0; i < 6; i++) {
-+        prom[i] = nd->macaddr.a[i];
-+        checksum += prom[i];
-+        if (checksum > 0xff) {
-+            checksum = (checksum + 1) & 0xff;
-+        }
-+    }
-+    prom[7] = 0xff - checksum;
-+}
-+
- #define MAGNUM_BIOS_SIZE_MAX 0x7e000
- #define MAGNUM_BIOS_SIZE                                                       \
-         (BIOS_SIZE < MAGNUM_BIOS_SIZE_MAX ? BIOS_SIZE : MAGNUM_BIOS_SIZE_MAX)
-@@ -287,33 +321,7 @@ static void mips_jazz_init(MachineState *machine,
-             nd->model = g_strdup("dp83932");
-         }
-         if (strcmp(nd->model, "dp83932") == 0) {
--            int checksum, i;
--            uint8_t *prom;
--
--            qemu_check_nic_model(nd, "dp83932");
--
--            dev = qdev_new("dp8393x");
--            qdev_set_nic_properties(dev, nd);
--            qdev_prop_set_uint8(dev, "it_shift", 2);
--            qdev_prop_set_bit(dev, "big_endian", target_words_bigendian());
--            object_property_set_link(OBJECT(dev), "dma_mr",
--                                     OBJECT(rc4030_dma_mr), &error_abort);
--            sysbus = SYS_BUS_DEVICE(dev);
--            sysbus_realize_and_unref(sysbus, &error_fatal);
--            sysbus_mmio_map(sysbus, 0, 0x80001000);
--            sysbus_connect_irq(sysbus, 0, qdev_get_gpio_in(rc4030, 4));
--
--            /* Add MAC address with valid checksum to PROM */
--            prom = memory_region_get_ram_ptr(dp8393x_prom);
--            checksum = 0;
--            for (i = 0; i < 6; i++) {
--                prom[i] = nd->macaddr.a[i];
--                checksum += prom[i];
--                if (checksum > 0xff) {
--                    checksum = (checksum + 1) & 0xff;
--                }
--            }
--            prom[7] = 0xff - checksum;
-+            mips_jazz_init_net(nd, rc4030_dma_mr, rc4030, dp8393x_prom);
-             break;
-         } else if (is_help_option(nd->model)) {
-             error_report("Supported NICs: dp83932");
--- 
-2.39.3
-
+r~
 
