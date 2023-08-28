@@ -1,89 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qabZJ-0002Wv-2W
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Aug 2023 08:42:09 -0400
+	id 1qaeTz-0005uq-CO
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Aug 2023 11:48:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qabZG-0002WP-2N
- for qemu-trivial@nongnu.org; Mon, 28 Aug 2023 08:42:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qabZB-0002Ld-Tg
- for qemu-trivial@nongnu.org; Mon, 28 Aug 2023 08:42:05 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1693226520;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=pxRePpGQ1ARlX4BqxUlrQGpJseW19BniOJuIvH+eqXo=;
- b=Nx9mvzyyXum17j1LrS1MI0ZfsAaPUbJN9W6obLr3Jlr7+kMYlCmF9mlqjd7ktJI4BXlv22
- ccXfUSc1z9ko/k8Y7B+hfOsxZljSNFPh/k22L90gYbTHUXS55pRp55eVq2WrbyMsu1ABts
- 1K0Qpr/ar/zcKNExg0r2pWLLMZC0t0c=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-681-GKPmxk77M9CTbByKO1YLig-1; Mon, 28 Aug 2023 08:41:58 -0400
-X-MC-Unique: GKPmxk77M9CTbByKO1YLig-1
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-31c5c762f97so2161061f8f.1
- for <qemu-trivial@nongnu.org>; Mon, 28 Aug 2023 05:41:58 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qaeTx-0005tx-2o
+ for qemu-trivial@nongnu.org; Mon, 28 Aug 2023 11:48:49 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qaeTu-000488-LF
+ for qemu-trivial@nongnu.org; Mon, 28 Aug 2023 11:48:48 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-313e742a787so2105937f8f.1
+ for <qemu-trivial@nongnu.org>; Mon, 28 Aug 2023 08:48:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1693237725; x=1693842525;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=yGkbhu7L5tIW2RuSrStsNpoDWicOkl4ffRZJpNln4sE=;
+ b=Uy7CMmu6mAMEIs57SdhggS/HonujQtX8LGa3O2gDp2R7nJTxKqI4wHn3Z9KCIfYUU6
+ iRS6fBxFZlL+0002I43W37AWheUA1/UJbjIcnwpVhaExODJPRPKE+mfYqakZs2AVbrZu
+ sWmAcAGLn/1YyAt95Uzpc5TjEh0AjpagEgRKJcTvwcN4bhe+oFwIi7kkAoOZO+4g6F+A
+ K0G+/Zakq5TBcQhRMv4o73J6p3ha95/ke2nB/4ujc123JKZ2gufGG31oLUSIM47QnKoM
+ qbG4tXrC7rTydqXEkNCU4ip/3699DqqqFpGQat08kKXzUiSYnvACux7pDyE/cEOtuFOG
+ /Yfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1693226517; x=1693831317;
+ d=1e100.net; s=20221208; t=1693237725; x=1693842525;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=pxRePpGQ1ARlX4BqxUlrQGpJseW19BniOJuIvH+eqXo=;
- b=BjO1QKs1OxFcywpwXeaykrD7Bpw26yzBBbA5pAm9tPA/WVaC1ojmk1ULdV6j/xJ4Zm
- 5HptyQOeVenheYO3dpkwCK9tHm3G3kBNx5GK3ilWZP8ySX/FiMmEXk7O0Svu19Zug4Iq
- ByvBlgq1+AqmXt3Mg31Bm4FokxJ6/FpviNI3pf3ICUFixPdQJn4uv7guvbQMcpZgqJR4
- jL4yMeWOVIJzLjTwp23rTHP4iWLxTJsHAlyRXHMsQrDGJljGkpsNm9CdyXcrmccgCAUu
- gKujtHfcCpX6p8OnDZllmhqecn0aZQ0lWQJ4IfgxXMSCYr3D4C/o7wKaIWzdB3/4EZbq
- l6hw==
-X-Gm-Message-State: AOJu0Yw5kXRNjd8cfe82Oxhf0S0gNsq6JTuchck6lzi5/7GtQMtpGpEp
- 96T1JbTyT4Drek+oTrJljoD9blmukgCXdcLrOeTMrmBNBhiGgzAoDJ4aJQsj4G2YyzkwI26HsyY
- spHngWgDhogfO4eNX3g==
-X-Received: by 2002:adf:fc4a:0:b0:319:7656:3863 with SMTP id
- e10-20020adffc4a000000b0031976563863mr20160838wrs.47.1693226517441; 
- Mon, 28 Aug 2023 05:41:57 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF5n+cGvazPIhniE9qxS0jyL8I9Id6mWs5llt1k6HAs+9cLBE6+Iqt4cApiSe1oNQvGK7mtkQ==
-X-Received: by 2002:adf:fc4a:0:b0:319:7656:3863 with SMTP id
- e10-20020adffc4a000000b0031976563863mr20160822wrs.47.1693226517101; 
- Mon, 28 Aug 2023 05:41:57 -0700 (PDT)
-Received: from [192.168.8.103] (tmo-098-91.customers.d1-online.com.
- [80.187.98.91]) by smtp.gmail.com with ESMTPSA id
- m5-20020adffe45000000b00319756d5b80sm10492402wrs.29.2023.08.28.05.41.55
+ bh=yGkbhu7L5tIW2RuSrStsNpoDWicOkl4ffRZJpNln4sE=;
+ b=e72OGowLVpjdsr6wQ0oBR6OrMjpx/qgZnEP2OtmZ5ClylcR7+2trpC0KETl3nCq35e
+ VG38UDa3fr1yjncIGnYUkPH7tHXvWC7iFtUelzuhrKYDcLn3qbC3sfNj/OaK3GYH4Nof
+ f4Z73Qp6yJos/UNsRrWikst10Yf0Av76OA8s77Zk3CbM7NE7Q3NdxXCcrReSASYdyVaC
+ DTStQRRoMf4pqG4CkasNC1FyroyiGdw5vxqeSj6EJUJbbp2kJ3InFwzehl9CzeabIHq1
+ TZzxnBc2a3vtVflGrI7CEKiXVLgY9q27vlGz2mluENImWrJMuwxoA8krDp5hbKhS2Wip
+ xAlg==
+X-Gm-Message-State: AOJu0YxpPcAVKFYfXPSkGZ90OA6Jgwpmaug8f+IiyJWSPyZNKKBJhkuv
+ jKwQdhzYzP5cUCxh3fZF1pMy9A==
+X-Google-Smtp-Source: AGHT+IGIOkyPOnnRcNsKQGf40NbEmigr4TKrlTe79H8SqQYkQXl3jlLi+2JBIhJuxX0xDSQKdL5hjA==
+X-Received: by 2002:a5d:49cd:0:b0:317:5efa:c46a with SMTP id
+ t13-20020a5d49cd000000b003175efac46amr3451wrs.27.1693237724635; 
+ Mon, 28 Aug 2023 08:48:44 -0700 (PDT)
+Received: from [192.168.69.115] ([176.164.201.64])
+ by smtp.gmail.com with ESMTPSA id
+ z8-20020adff1c8000000b0031c612146f1sm10749369wro.100.2023.08.28.08.48.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Aug 2023 05:41:56 -0700 (PDT)
-Message-ID: <0b618261-b056-ff46-061c-7a0845e58ea9@redhat.com>
-Date: Mon, 28 Aug 2023 14:41:53 +0200
+ Mon, 28 Aug 2023 08:48:44 -0700 (PDT)
+Message-ID: <665924a0-dec5-cfe1-6d97-0021036b8723@linaro.org>
+Date: Mon, 28 Aug 2023 17:48:41 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.14.0
 Subject: Re: [PATCH 1/3] hw/mips/jazz: Remove the big_endian variable
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, =?UTF-8?Q?Herv=c3=a9_Poussineau?=
- <hpoussin@reactos.org>, Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
 Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org,
  Peter Maydell <peter.maydell@linaro.org>
 References: <20230825175123.624114-1-thuth@redhat.com>
  <20230825175123.624114-2-thuth@redhat.com>
  <94cb7c35-39f7-0108-d623-78435a5e7fee@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <94cb7c35-39f7-0108-d623-78435a5e7fee@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+ <0b618261-b056-ff46-061c-7a0845e58ea9@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <0b618261-b056-ff46-061c-7a0845e58ea9@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -42
 X-Spam_score: -4.3
 X-Spam_bar: ----
-X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-2.169, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.169,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -97,64 +88,146 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Aug 2023 12:42:07 -0000
+X-List-Received-Date: Mon, 28 Aug 2023 15:48:49 -0000
 
-On 28/08/2023 14.19, Philippe Mathieu-Daudé wrote:
-> Hi Thomas,
-> 
-> On 25/8/23 19:51, Thomas Huth wrote:
->> There is an easier way to get a value that can be used to decide
->> whether the target is big endian or not: Simply use the
->> target_words_bigendian() function instead.
+On 28/8/23 14:41, Thomas Huth wrote:
+> On 28/08/2023 14.19, Philippe Mathieu-Daudé wrote:
+>> Hi Thomas,
 >>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   hw/mips/jazz.c | 10 ++--------
->>   1 file changed, 2 insertions(+), 8 deletions(-)
+>> On 25/8/23 19:51, Thomas Huth wrote:
+>>> There is an easier way to get a value that can be used to decide
+>>> whether the target is big endian or not: Simply use the
+>>> target_words_bigendian() function instead.
+>>>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>   hw/mips/jazz.c | 10 ++--------
+>>>   1 file changed, 2 insertions(+), 8 deletions(-)
+>>
+>>
+>>> @@ -157,12 +157,6 @@ static void mips_jazz_init(MachineState *machine,
+>>>           [JAZZ_PICA61] = {33333333, 4},
+>>>       };
+>>> -#if TARGET_BIG_ENDIAN
+>>> -    big_endian = 1;
+>>> -#else
+>>> -    big_endian = 0;
+>>> -#endif
+>>> -
+>>>       if (machine->ram_size > 256 * MiB) {
+>>>           error_report("RAM size more than 256Mb is not supported");
+>>>           exit(EXIT_FAILURE);
+>>> @@ -301,7 +295,7 @@ static void mips_jazz_init(MachineState *machine,
+>>>               dev = qdev_new("dp8393x");
+>>>               qdev_set_nic_properties(dev, nd);
+>>>               qdev_prop_set_uint8(dev, "it_shift", 2);
+>>> -            qdev_prop_set_bit(dev, "big_endian", big_endian > 0);
+>>> +            qdev_prop_set_bit(dev, "big_endian", 
+>>> target_words_bigendian());
+>>
+>> IIRC last time I tried that Peter pointed me at the documentation:
+>>
+>> /**
+>>   * target_words_bigendian:
+>>   * Returns true if the (default) endianness of the target is big endian,
+>>   * false otherwise. Note that in target-specific code, you can use
+>>   * TARGET_BIG_ENDIAN directly instead. On the other hand, common
+>>   * code should normally never need to know about the endianness of the
+>>   * target, so please do *not* use this function unless you know very
+>>   * well what you are doing!
+>>   */
+>>
+>> (Commit c95ac10340 "cpu: Provide a proper prototype for
+>>   target_words_bigendian() in a header")
+>>
+>> Should we update the comment?
 > 
-> 
->> @@ -157,12 +157,6 @@ static void mips_jazz_init(MachineState *machine,
->>           [JAZZ_PICA61] = {33333333, 4},
->>       };
->> -#if TARGET_BIG_ENDIAN
->> -    big_endian = 1;
->> -#else
->> -    big_endian = 0;
->> -#endif
->> -
->>       if (machine->ram_size > 256 * MiB) {
->>           error_report("RAM size more than 256Mb is not supported");
->>           exit(EXIT_FAILURE);
->> @@ -301,7 +295,7 @@ static void mips_jazz_init(MachineState *machine,
->>               dev = qdev_new("dp8393x");
->>               qdev_set_nic_properties(dev, nd);
->>               qdev_prop_set_uint8(dev, "it_shift", 2);
->> -            qdev_prop_set_bit(dev, "big_endian", big_endian > 0);
->> +            qdev_prop_set_bit(dev, "big_endian", target_words_bigendian());
-> 
-> IIRC last time I tried that Peter pointed me at the documentation:
-> 
-> /**
->   * target_words_bigendian:
->   * Returns true if the (default) endianness of the target is big endian,
->   * false otherwise. Note that in target-specific code, you can use
->   * TARGET_BIG_ENDIAN directly instead. On the other hand, common
->   * code should normally never need to know about the endianness of the
->   * target, so please do *not* use this function unless you know very
->   * well what you are doing!
->   */
-> 
-> (Commit c95ac10340 "cpu: Provide a proper prototype for
->   target_words_bigendian() in a header")
-> 
-> Should we update the comment?
+> What would you change? My motivation here was mainly to decrease the 
+> size of the code - I think it's way more complicated via the #if + extra 
+> variable compared to simply calling target_words_bigendian(), isn't it? 
+> I think the diffstat says it all...
 
-What would you change? My motivation here was mainly to decrease the size of 
-the code - I think it's way more complicated via the #if + extra variable 
-compared to simply calling target_words_bigendian(), isn't it? I think the 
-diffstat says it all...
+Is the comment misleading then? Why not decrease the code
+size using target_words_bigendian() in all the similar cases?
 
-  Thomas
+$ git grep -A4 'if TARGET_BIG_ENDIAN' hw/
 
+hw/microblaze/boot.c:145:#if TARGET_BIG_ENDIAN
+hw/microblaze/boot.c-146-        big_endian = 1;
+hw/microblaze/boot.c-147-#endif
+--
+hw/mips/jazz.c:160:#if TARGET_BIG_ENDIAN
+hw/mips/jazz.c-161-    big_endian = 1;
+hw/mips/jazz.c-162-#else
+hw/mips/jazz.c-163-    big_endian = 0;
+hw/mips/jazz.c-164-#endif
+--
+hw/mips/malta.c:378:#if TARGET_BIG_ENDIAN
+hw/mips/malta.c-379-        val = 0x00000012;
+hw/mips/malta.c-380-#else
+hw/mips/malta.c-381-        val = 0x00000010;
+hw/mips/malta.c-382-#endif
+--
+hw/mips/malta.c:631:#if TARGET_BIG_ENDIAN
+hw/mips/malta.c-632-#define cpu_to_gt32(x) (x)
+hw/mips/malta.c-633-#else
+hw/mips/malta.c-634-#define cpu_to_gt32(x) bswap32(x)
+hw/mips/malta.c-635-#endif
+--
+hw/mips/malta.c:881:#if TARGET_BIG_ENDIAN
+hw/mips/malta.c-882-    big_endian = 1;
+hw/mips/malta.c-883-#else
+hw/mips/malta.c-884-    big_endian = 0;
+hw/mips/malta.c-885-#endif
+--
+hw/mips/malta.c:1147:#if TARGET_BIG_ENDIAN
+hw/mips/malta.c-1148-    be = 1;
+hw/mips/malta.c-1149-#else
+hw/mips/malta.c-1150-    be = 0;
+hw/mips/malta.c-1151-#endif
+--
+hw/mips/mipssim.c:67:#if TARGET_BIG_ENDIAN
+hw/mips/mipssim.c-68-    big_endian = 1;
+hw/mips/mipssim.c-69-#else
+hw/mips/mipssim.c-70-    big_endian = 0;
+hw/mips/mipssim.c-71-#endif
+--
+hw/nios2/boot.c:153:#if TARGET_BIG_ENDIAN
+hw/nios2/boot.c-154-        big_endian = 1;
+hw/nios2/boot.c-155-#endif
+--
+hw/xtensa/sim.c:99:#if TARGET_BIG_ENDIAN
+hw/xtensa/sim.c-100-    int big_endian = true;
+hw/xtensa/sim.c-101-#else
+hw/xtensa/sim.c-102-    int big_endian = false;
+hw/xtensa/sim.c-103-#endif
+--
+hw/xtensa/xtfpga.c:222:#if TARGET_BIG_ENDIAN
+hw/xtensa/xtfpga.c-223-    int be = 1;
+hw/xtensa/xtfpga.c-224-#else
+hw/xtensa/xtfpga.c-225-    int be = 0;
+hw/xtensa/xtfpga.c-226-#endif
 
+I'm just trying to be consistent. HW devices should be target
+agnostic, thus not use anything related to target endianness
+(TARGET_BIG_ENDIAN nor target_words_bigendian).
+
+Machines know about their target endianness, and can propagate
+that knowledge when creating their devices. Therefore using
+TARGET_BIG_ENDIAN / target_words_bigendian is accepted there.
+If TARGET_BIG_ENDIAN is too verbose, then let's use
+target_words_bigendian() in all machines. That said, if we
+use target_words_bigendian() in machine files, then some of
+these files can be moved from specific_ss[] to system_ss[].
+
+So within hw/ I'd restrict target_words_bigendian() use to
+MachineClass::init() handlers, and prohibit TARGET_BIG_ENDIAN
+from hw/. Only use in softmmu/, target, *-user/. If we agree
+we can rewrite the comment, removing the "do *not* use this
+function unless you know very well what you are doing!" which
+is hard to interpret IMHO.
+
+Regards,
+
+Phil.
 
