@@ -1,34 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qb2Xe-0007ci-88
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Aug 2023 13:30:14 -0400
+	id 1qb2aw-0001or-Ac
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Aug 2023 13:33:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qb2Xa-0007bu-Ed; Tue, 29 Aug 2023 13:30:10 -0400
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>) id 1qb2au-0001jA-W2
+ for qemu-trivial@nongnu.org; Tue, 29 Aug 2023 13:33:37 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qb2XW-0002Dd-Ci; Tue, 29 Aug 2023 13:30:10 -0400
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>) id 1qb2ar-0003XS-Sr
+ for qemu-trivial@nongnu.org; Tue, 29 Aug 2023 13:33:36 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 6F1C21DB20;
- Tue, 29 Aug 2023 20:30:19 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id B0A1D1DB26;
+ Tue, 29 Aug 2023 20:34:02 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id C8FBA243F9;
- Tue, 29 Aug 2023 20:29:48 +0300 (MSK)
-Message-ID: <60652c5d-75eb-14d7-01fa-7e4e27751bd6@tls.msk.ru>
-Date: Tue, 29 Aug 2023 20:29:48 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 21BB5243FA;
+ Tue, 29 Aug 2023 20:33:32 +0300 (MSK)
+Message-ID: <162b4238-1d33-e6d8-e9f3-e754510a4b4e@tls.msk.ru>
+Date: Tue, 29 Aug 2023 20:33:32 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
-Subject: Re: [PATCH] qemu-options.hx: Rephrase the descriptions of the -hd*
- and -cdrom options
+Subject: Re: [PATCH 1/1] Fix addressing with ramp registers
 Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org,
- Markus Armbruster <armbru@redhat.com>, John Snow <jsnow@redhat.com>
-References: <20230829132948.51053-1-thuth@redhat.com>
+To: sam.morgan44@gmail.com, qemu-trivial@nongnu.org
+References: <20230825152342.1470-1-sam.morgan44@gmail.com>
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230829132948.51053-1-thuth@redhat.com>
+In-Reply-To: <20230825152342.1470-1-sam.morgan44@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -51,14 +48,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Aug 2023 17:30:13 -0000
+X-List-Received-Date: Tue, 29 Aug 2023 17:33:37 -0000
 
-29.08.2023 16:29, Thomas Huth wrote:
-> The current description says that these options will create a device
-> on the IDE bus, which is only true on x86. So rephrase these sentences
-> a little bit to speak of "default bus" instead.
+25.08.2023 18:23, sam.morgan44@gmail.com wrote:
+> From: Sam Morgan <sam.morgan44@gmail.com>
+> 
+> Signed-off-by: Sam Morgan <sam.morgan44@gmail.com>
+> ---
+>   target/avr/translate.c | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/avr/translate.c b/target/avr/translate.c
+> index ef2edd7415..b1c4bb17a1 100644
+> --- a/target/avr/translate.c
+> +++ b/target/avr/translate.c
+> @@ -1459,8 +1459,10 @@ static void gen_set_zaddr(TCGv addr)
+>   static TCGv gen_get_addr(TCGv H, TCGv M, TCGv L)
+>   {
+>       TCGv addr = tcg_temp_new_i32();
+> +    TCGv shifted_H = tcg_temp_new_i32();
+>   
+> -    tcg_gen_deposit_tl(addr, M, H, 8, 8);
+> +    tcg_gen_shri_tl(shifted_H, H, 16);
+> +    tcg_gen_deposit_tl(addr, M, shifted_H, 8, 8);
+>       tcg_gen_deposit_tl(addr, L, addr, 8, 16);
+>   
+>       return addr;
 
-applied to my trivial tree, with the "See also" fix.
+Please re-send this to qemu-devel@, Cc'ing addresses from
+  ./scripts/get_maintainer.pl -f target/avr/translate.c
+the way you sent your submission, no one noticed it, and
+it is not a trivial change.
 
 /mjt
 
