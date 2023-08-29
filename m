@@ -1,31 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qb2aw-0001or-Ac
-	for mharc-qemu-trivial@gnu.org; Tue, 29 Aug 2023 13:33:38 -0400
+	id 1qb2en-00044u-HH
+	for mharc-qemu-trivial@gnu.org; Tue, 29 Aug 2023 13:37:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>) id 1qb2au-0001jA-W2
- for qemu-trivial@nongnu.org; Tue, 29 Aug 2023 13:33:37 -0400
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qb2eR-0003fe-4P; Tue, 29 Aug 2023 13:37:16 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>) id 1qb2ar-0003XS-Sr
- for qemu-trivial@nongnu.org; Tue, 29 Aug 2023 13:33:36 -0400
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qb2eO-00046P-1M; Tue, 29 Aug 2023 13:37:14 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id B0A1D1DB26;
- Tue, 29 Aug 2023 20:34:02 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id DE60E1DB2D;
+ Tue, 29 Aug 2023 20:37:39 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 21BB5243FA;
- Tue, 29 Aug 2023 20:33:32 +0300 (MSK)
-Message-ID: <162b4238-1d33-e6d8-e9f3-e754510a4b4e@tls.msk.ru>
-Date: Tue, 29 Aug 2023 20:33:32 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 41A0F243FE;
+ Tue, 29 Aug 2023 20:37:09 +0300 (MSK)
+Message-ID: <9a06f8ac-39ca-5f3b-de91-f73776793074@tls.msk.ru>
+Date: Tue, 29 Aug 2023 20:37:09 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.14.0
-Subject: Re: [PATCH 1/1] Fix addressing with ramp registers
+Subject: Re: [PATCH 0/2] docs tests: Fix use of migrate_set_parameter
 Content-Language: en-US
-To: sam.morgan44@gmail.com, qemu-trivial@nongnu.org
-References: <20230825152342.1470-1-sam.morgan44@gmail.com>
+To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
+Cc: kwolf@redhat.com, hreitz@redhat.com, dave@treblig.org, thuth@redhat.com,
+ qemu-block@nongnu.org, berrange@redhat.com, dgilbert@redhat.com,
+ qemu-trivial@nongnu.org
+References: <20230825155923.1983141-1-armbru@redhat.com>
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230825152342.1470-1-sam.morgan44@gmail.com>
+In-Reply-To: <20230825155923.1983141-1-armbru@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -48,37 +51,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 29 Aug 2023 17:33:37 -0000
+X-List-Received-Date: Tue, 29 Aug 2023 17:37:35 -0000
 
-25.08.2023 18:23, sam.morgan44@gmail.com wrote:
-> From: Sam Morgan <sam.morgan44@gmail.com>
-> 
-> Signed-off-by: Sam Morgan <sam.morgan44@gmail.com>
-> ---
->   target/avr/translate.c | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/avr/translate.c b/target/avr/translate.c
-> index ef2edd7415..b1c4bb17a1 100644
-> --- a/target/avr/translate.c
-> +++ b/target/avr/translate.c
-> @@ -1459,8 +1459,10 @@ static void gen_set_zaddr(TCGv addr)
->   static TCGv gen_get_addr(TCGv H, TCGv M, TCGv L)
->   {
->       TCGv addr = tcg_temp_new_i32();
-> +    TCGv shifted_H = tcg_temp_new_i32();
->   
-> -    tcg_gen_deposit_tl(addr, M, H, 8, 8);
-> +    tcg_gen_shri_tl(shifted_H, H, 16);
-> +    tcg_gen_deposit_tl(addr, M, shifted_H, 8, 8);
->       tcg_gen_deposit_tl(addr, L, addr, 8, 16);
->   
->       return addr;
+25.08.2023 18:59, Markus Armbruster wrote:
+> I spotted a bad use of migrate_set_parameter in test-hmp.c, and looked
+> for more.
 
-Please re-send this to qemu-devel@, Cc'ing addresses from
-  ./scripts/get_maintainer.pl -f target/avr/translate.c
-the way you sent your submission, no one noticed it, and
-it is not a trivial change.
+Applied to my trivial-patches tree. Thanks!
 
 /mjt
 
