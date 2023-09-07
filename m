@@ -1,61 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qeDI4-0006CF-Sm
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Sep 2023 07:35:16 -0400
+	id 1qeDKO-0001CT-MM
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Sep 2023 07:37:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qeDI3-0006By-BC
- for qemu-trivial@nongnu.org; Thu, 07 Sep 2023 07:35:15 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qeDKH-00011S-CA
+ for qemu-trivial@nongnu.org; Thu, 07 Sep 2023 07:37:33 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qeDHz-0001yJ-6l
- for qemu-trivial@nongnu.org; Thu, 07 Sep 2023 07:35:15 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qeDK9-0002bf-M4
+ for qemu-trivial@nongnu.org; Thu, 07 Sep 2023 07:37:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1694086510;
+ s=mimecast20190719; t=1694086643;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=b9ij7LsW+STaPO1h0sQsEpYrPpbU2qcXYJGH7zuHdl0=;
- b=CFF0h49bPxpeyOAY2KxrPBZoeXKEtXrVHW2O6Tci5tV8qz/EXX0+py8aQLwG/AQE5H+dPV
- qMB27wOWqaaIxh8dDDuKjPCR7q2s8dOn/8mJ/DKe799J4dJF9j75GyuYf/ftdPKgyXinpt
- LaFZMktUDX1e0/7Xcp7j9ceIIZg09Dk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-611-QXNTnTNbPUqxW9F1i93K9A-1; Thu, 07 Sep 2023 07:35:06 -0400
-X-MC-Unique: QXNTnTNbPUqxW9F1i93K9A-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 849EE817077;
- Thu,  7 Sep 2023 11:35:05 +0000 (UTC)
-Received: from thuth.com (unknown [10.39.192.196])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 45B6D2026D76;
- Thu,  7 Sep 2023 11:35:02 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-trivial@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH] trivial: Simplify the spots that use TARGET_BIG_ENDIAN as a
- numeric value
-Date: Thu,  7 Sep 2023 13:35:00 +0200
-Message-Id: <20230907113500.185276-1-thuth@redhat.com>
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=9kCVUSHAaoNdfu6EYfvddmbNEBHEyGVnH4OHsXNzpbo=;
+ b=BUWB6c9SpDocAZLTMXTaQ0PPttWv42jmbi2fxNWamZJr96gq0Le9UMcWyXaLee8cw8yj9D
+ sU8qNoF2Femr9vSrY4plIj1edBLJ20ufb6ubP7mi+tUf86Ei/tsZ0FXBGInspROSxvAe0t
+ xzk3CkPx1V+zKwuWOQYfPhEtXPXEiDM=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-609-l4B9iGOfPmS9rlhR_4Dqqw-1; Thu, 07 Sep 2023 07:37:22 -0400
+X-MC-Unique: l4B9iGOfPmS9rlhR_4Dqqw-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-317d5b38194so347174f8f.0
+ for <qemu-trivial@nongnu.org>; Thu, 07 Sep 2023 04:37:22 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20221208; t=1694086641; x=1694691441;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=9kCVUSHAaoNdfu6EYfvddmbNEBHEyGVnH4OHsXNzpbo=;
+ b=KbK/dbqQqvxfRMoKEC6UoxqcZaldzOweswg2RI3Yi2BcNcsCKwzXBXNM5PaRlLFDz9
+ Jqp35yZCOBHy5v8rjKS3qsOiLIf7VsbZ4vuo2bxMSYbSRL+KGqYDepTyrIBmmpumQZDf
+ 9M2QaAlapebYSIhtcYr/tqa0O2HXsLNisBmncIXvq6Akw4Mo8KDbhI5DieTrn/LqZB/d
+ VZ0yhhffMWe1NqeS3VR2jw31iwOFfVan8OdYkZi/nZJ1l4R4JlLjL6mfEykktNPgGDJd
+ ZEoVq5ks/QrvlNSo0wLNhUZlrtESv2NVURtNkkbkCrTicYTSJsqQgzHhb3xhaCop/2l3
+ OA6A==
+X-Gm-Message-State: AOJu0YwEvM0IbHCW1NNtYXfSxxwhv81pRCAOZxupTD7y3kGR6TXpaLJH
+ 0tD1hTiRi4Jkh0ISBhmn9SXLuitvjWclasEkG2E8XrvDpP7ggDCvU31XBqR/qqRIpmGOF697qZi
+ 9jowzOuq08Lg/MFEcjQ==
+X-Received: by 2002:adf:ed46:0:b0:30e:56b3:60fe with SMTP id
+ u6-20020adfed46000000b0030e56b360femr1916069wro.4.1694086641557; 
+ Thu, 07 Sep 2023 04:37:21 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGRLevAbeDIb/W6ZGXe/y1sn+h1t8m+oXEyZJ8wbfo6pJhzLHFGwG0qpyGDHb1Jga5RbTa48w==
+X-Received: by 2002:adf:ed46:0:b0:30e:56b3:60fe with SMTP id
+ u6-20020adfed46000000b0030e56b360femr1916057wro.4.1694086641287; 
+ Thu, 07 Sep 2023 04:37:21 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-43-176-5.web.vodafone.de. [109.43.176.5])
+ by smtp.gmail.com with ESMTPSA id
+ e12-20020adf9bcc000000b0031759e6b43fsm19964066wrc.39.2023.09.07.04.37.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 07 Sep 2023 04:37:20 -0700 (PDT)
+Message-ID: <96673508-be8a-d26b-a731-fd07580086eb@redhat.com>
+Date: Thu, 7 Sep 2023 13:37:19 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.14.0
+Subject: Re: [PATCH 0/3] hw/mips/jazz: Rework the NIC init code
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org
+References: <20230825175123.624114-1-thuth@redhat.com>
+ <a9aa3e9e-dbde-54ed-1df0-749f483806f6@tls.msk.ru>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <a9aa3e9e-dbde-54ed-1df0-749f483806f6@tls.msk.ru>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -68,322 +96,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Sep 2023 11:35:15 -0000
+X-List-Received-Date: Thu, 07 Sep 2023 11:37:34 -0000
 
-TARGET_BIG_ENDIAN is *always* defined, either as 0 for little endian
-targets or as 1 for big endian targets. So we can use this as a value
-directly in places that need such a 0 or 1 for some reason, instead
-of taking a detour through an additional local variable or something
-similar.
+On 01/09/2023 12.15, Michael Tokarev wrote:
+> 25.08.2023 20:51, Thomas Huth wrote:
+>> The NIC init code of the jazz machines is rather cumbersome, with
+>> a for-loop around it that is always left after the first iteration.
+>> This patch series reworks this a little bit to make the code more
+>> readable and shorter.
+>>
+>> Thomas Huth (3):
+>>    hw/mips/jazz: Remove the big_endian variable
+>>    hw/mips/jazz: Move the NIC init code into a separate function
+>>    hw/mips/jazz: Simplify the NIC setup code
+> 
+> Thomas, after comments for "hw/mips/jazz: Remove the big_endian variable",
+> will you respin?
 
-Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- target/arm/cpu.h     | 12 ++----------
- cpu.c                |  6 +-----
- hw/microblaze/boot.c |  9 ++-------
- hw/mips/jazz.c       | 10 ++--------
- hw/mips/malta.c      | 21 ++++-----------------
- hw/mips/mipssim.c    |  9 +--------
- hw/nios2/boot.c      |  9 ++-------
- hw/xtensa/sim.c      |  7 +------
- hw/xtensa/xtfpga.c   | 10 +++-------
- 9 files changed, 18 insertions(+), 75 deletions(-)
+I've now sent a patch to clean up that ugliness with TARGET_BIG_ENDIAN first:
 
-diff --git a/target/arm/cpu.h b/target/arm/cpu.h
-index 278cc135c2..d50cd91858 100644
---- a/target/arm/cpu.h
-+++ b/target/arm/cpu.h
-@@ -3208,11 +3208,7 @@ static inline bool bswap_code(bool sctlr_b)
-      * The invalid combination SCTLR.B=1/CPSR.E=1/TARGET_BIG_ENDIAN=0
-      * would also end up as a mixed-endian mode with BE code, LE data.
-      */
--    return
--#if TARGET_BIG_ENDIAN
--        1 ^
--#endif
--        sctlr_b;
-+    return TARGET_BIG_ENDIAN ^ sctlr_b;
- #else
-     /* All code access in ARM is little endian, and there are no loaders
-      * doing swaps that need to be reversed
-@@ -3224,11 +3220,7 @@ static inline bool bswap_code(bool sctlr_b)
- #ifdef CONFIG_USER_ONLY
- static inline bool arm_cpu_bswap_data(CPUARMState *env)
- {
--    return
--#if TARGET_BIG_ENDIAN
--       1 ^
--#endif
--       arm_cpu_data_is_big_endian(env);
-+    return TARGET_BIG_ENDIAN ^ arm_cpu_data_is_big_endian(env);
- }
- #endif
- 
-diff --git a/cpu.c b/cpu.c
-index 1c948d1161..0769b0b153 100644
---- a/cpu.c
-+++ b/cpu.c
-@@ -420,11 +420,7 @@ int cpu_memory_rw_debug(CPUState *cpu, vaddr addr,
- 
- bool target_words_bigendian(void)
- {
--#if TARGET_BIG_ENDIAN
--    return true;
--#else
--    return false;
--#endif
-+    return TARGET_BIG_ENDIAN;
- }
- 
- const char *target_name(void)
-diff --git a/hw/microblaze/boot.c b/hw/microblaze/boot.c
-index 25ad54754e..ed61e483ee 100644
---- a/hw/microblaze/boot.c
-+++ b/hw/microblaze/boot.c
-@@ -140,22 +140,17 @@ void microblaze_load_kernel(MicroBlazeCPU *cpu, hwaddr ddr_base,
-         int kernel_size;
-         uint64_t entry, high;
-         uint32_t base32;
--        int big_endian = 0;
--
--#if TARGET_BIG_ENDIAN
--        big_endian = 1;
--#endif
- 
-         /* Boots a kernel elf binary.  */
-         kernel_size = load_elf(kernel_filename, NULL, NULL, NULL,
-                                &entry, NULL, &high, NULL,
--                               big_endian, EM_MICROBLAZE, 0, 0);
-+                               TARGET_BIG_ENDIAN, EM_MICROBLAZE, 0, 0);
-         base32 = entry;
-         if (base32 == 0xc0000000) {
-             kernel_size = load_elf(kernel_filename, NULL,
-                                    translate_kernel_address, NULL,
-                                    &entry, NULL, NULL, NULL,
--                                   big_endian, EM_MICROBLAZE, 0, 0);
-+                                   TARGET_BIG_ENDIAN, EM_MICROBLAZE, 0, 0);
-         }
-         /* Always boot into physical ram.  */
-         boot_info.bootstrap_pc = (uint32_t)entry;
-diff --git a/hw/mips/jazz.c b/hw/mips/jazz.c
-index ca4426a92c..0081dcf921 100644
---- a/hw/mips/jazz.c
-+++ b/hw/mips/jazz.c
-@@ -125,7 +125,7 @@ static void mips_jazz_init(MachineState *machine,
- {
-     MemoryRegion *address_space = get_system_memory();
-     char *filename;
--    int bios_size, n, big_endian;
-+    int bios_size, n;
-     Clock *cpuclk;
-     MIPSCPU *cpu;
-     MIPSCPUClass *mcc;
-@@ -157,12 +157,6 @@ static void mips_jazz_init(MachineState *machine,
-         [JAZZ_PICA61] = {33333333, 4},
-     };
- 
--#if TARGET_BIG_ENDIAN
--    big_endian = 1;
--#else
--    big_endian = 0;
--#endif
--
-     if (machine->ram_size > 256 * MiB) {
-         error_report("RAM size more than 256Mb is not supported");
-         exit(EXIT_FAILURE);
-@@ -301,7 +295,7 @@ static void mips_jazz_init(MachineState *machine,
-             dev = qdev_new("dp8393x");
-             qdev_set_nic_properties(dev, nd);
-             qdev_prop_set_uint8(dev, "it_shift", 2);
--            qdev_prop_set_bit(dev, "big_endian", big_endian > 0);
-+            qdev_prop_set_bit(dev, "big_endian", TARGET_BIG_ENDIAN);
-             object_property_set_link(OBJECT(dev), "dma_mr",
-                                      OBJECT(rc4030_dma_mr), &error_abort);
-             sysbus = SYS_BUS_DEVICE(dev);
-diff --git a/hw/mips/malta.c b/hw/mips/malta.c
-index 16e9c4773f..dac27fad9d 100644
---- a/hw/mips/malta.c
-+++ b/hw/mips/malta.c
-@@ -870,7 +870,6 @@ static uint64_t load_kernel(void)
-     uint64_t kernel_entry, kernel_high, initrd_size;
-     long kernel_size;
-     ram_addr_t initrd_offset;
--    int big_endian;
-     uint32_t *prom_buf;
-     long prom_size;
-     int prom_index = 0;
-@@ -878,16 +877,10 @@ static uint64_t load_kernel(void)
-     char rng_seed_hex[sizeof(rng_seed) * 2 + 1];
-     size_t rng_seed_prom_offset;
- 
--#if TARGET_BIG_ENDIAN
--    big_endian = 1;
--#else
--    big_endian = 0;
--#endif
--
-     kernel_size = load_elf(loaderparams.kernel_filename, NULL,
-                            cpu_mips_kseg0_to_phys, NULL,
-                            &kernel_entry, NULL,
--                           &kernel_high, NULL, big_endian, EM_MIPS,
-+                           &kernel_high, NULL, TARGET_BIG_ENDIAN, EM_MIPS,
-                            1, 0);
-     if (kernel_size < 0) {
-         error_report("could not load kernel '%s': %s",
-@@ -1107,7 +1100,6 @@ void mips_malta_init(MachineState *machine)
-     I2CBus *smbus;
-     DriveInfo *dinfo;
-     int fl_idx = 0;
--    int be;
-     MaltaState *s;
-     PCIDevice *piix4;
-     DeviceState *dev;
-@@ -1144,12 +1136,6 @@ void mips_malta_init(MachineState *machine)
-                                     ram_low_postio);
-     }
- 
--#if TARGET_BIG_ENDIAN
--    be = 1;
--#else
--    be = 0;
--#endif
--
-     /* FPGA */
- 
-     /* The CBUS UART is attached to the MIPS CPU INT2 pin, ie interrupt 4 */
-@@ -1161,7 +1147,8 @@ void mips_malta_init(MachineState *machine)
-                                FLASH_SIZE,
-                                dinfo ? blk_by_legacy_dinfo(dinfo) : NULL,
-                                65536,
--                               4, 0x0000, 0x0000, 0x0000, 0x0000, be);
-+                               4, 0x0000, 0x0000, 0x0000, 0x0000,
-+                               TARGET_BIG_ENDIAN);
-     bios = pflash_cfi01_get_memory(fl);
-     fl_idx++;
-     if (kernel_filename) {
-@@ -1245,7 +1232,7 @@ void mips_malta_init(MachineState *machine)
- 
-     /* Northbridge */
-     dev = qdev_new("gt64120");
--    qdev_prop_set_bit(dev, "cpu-little-endian", !be);
-+    qdev_prop_set_bit(dev, "cpu-little-endian", !TARGET_BIG_ENDIAN);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(dev), &error_fatal);
-     pci_bus = PCI_BUS(qdev_get_child_bus(dev, "pci"));
-     pci_bus_map_irqs(pci_bus, malta_pci_slot_get_pirq);
-diff --git a/hw/mips/mipssim.c b/hw/mips/mipssim.c
-index 39f64448f2..2f951f7fc6 100644
---- a/hw/mips/mipssim.c
-+++ b/hw/mips/mipssim.c
-@@ -62,18 +62,11 @@ static uint64_t load_kernel(void)
-     uint64_t entry, kernel_high, initrd_size;
-     long kernel_size;
-     ram_addr_t initrd_offset;
--    int big_endian;
--
--#if TARGET_BIG_ENDIAN
--    big_endian = 1;
--#else
--    big_endian = 0;
--#endif
- 
-     kernel_size = load_elf(loaderparams.kernel_filename, NULL,
-                            cpu_mips_kseg0_to_phys, NULL,
-                            &entry, NULL,
--                           &kernel_high, NULL, big_endian,
-+                           &kernel_high, NULL, TARGET_BIG_ENDIAN,
-                            EM_MIPS, 1, 0);
-     if (kernel_size < 0) {
-         error_report("could not load kernel '%s': %s",
-diff --git a/hw/nios2/boot.c b/hw/nios2/boot.c
-index b30a7b1efb..cd75803fc2 100644
---- a/hw/nios2/boot.c
-+++ b/hw/nios2/boot.c
-@@ -148,16 +148,11 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base,
-     if (kernel_filename) {
-         int kernel_size, fdt_size;
-         uint64_t entry, high;
--        int big_endian = 0;
--
--#if TARGET_BIG_ENDIAN
--        big_endian = 1;
--#endif
- 
-         /* Boots a kernel elf binary. */
-         kernel_size = load_elf(kernel_filename, NULL, NULL, NULL,
-                                &entry, NULL, &high, NULL,
--                               big_endian, EM_ALTERA_NIOS2, 0, 0);
-+                               TARGET_BIG_ENDIAN, EM_ALTERA_NIOS2, 0, 0);
-         if ((uint32_t)entry == 0xc0000000) {
-             /*
-              * The Nios II processor reference guide documents that the
-@@ -168,7 +163,7 @@ void nios2_load_kernel(Nios2CPU *cpu, hwaddr ddr_base,
-             kernel_size = load_elf(kernel_filename, NULL,
-                                    translate_kernel_address, NULL,
-                                    &entry, NULL, NULL, NULL,
--                                   big_endian, EM_ALTERA_NIOS2, 0, 0);
-+                                   TARGET_BIG_ENDIAN, EM_ALTERA_NIOS2, 0, 0);
-             boot_info.bootstrap_pc = ddr_base + 0xc0000000 +
-                 (entry & 0x07ffffff);
-         } else {
-diff --git a/hw/xtensa/sim.c b/hw/xtensa/sim.c
-index 946c71cb5b..2160e61964 100644
---- a/hw/xtensa/sim.c
-+++ b/hw/xtensa/sim.c
-@@ -96,16 +96,11 @@ XtensaCPU *xtensa_sim_common_init(MachineState *machine)
- void xtensa_sim_load_kernel(XtensaCPU *cpu, MachineState *machine)
- {
-     const char *kernel_filename = machine->kernel_filename;
--#if TARGET_BIG_ENDIAN
--    int big_endian = true;
--#else
--    int big_endian = false;
--#endif
- 
-     if (kernel_filename) {
-         uint64_t elf_entry;
-         int success = load_elf(kernel_filename, NULL, translate_phys_addr, cpu,
--                               &elf_entry, NULL, NULL, NULL, big_endian,
-+                               &elf_entry, NULL, NULL, NULL, TARGET_BIG_ENDIAN,
-                                EM_XTENSA, 0, 0);
- 
-         if (success > 0) {
-diff --git a/hw/xtensa/xtfpga.c b/hw/xtensa/xtfpga.c
-index 2a5556a35f..fbad1c83a3 100644
---- a/hw/xtensa/xtfpga.c
-+++ b/hw/xtensa/xtfpga.c
-@@ -219,11 +219,6 @@ static const MemoryRegionOps xtfpga_io_ops = {
- 
- static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
- {
--#if TARGET_BIG_ENDIAN
--    int be = 1;
--#else
--    int be = 0;
--#endif
-     MemoryRegion *system_memory = get_system_memory();
-     XtensaCPU *cpu = NULL;
-     CPUXtensaState *env = NULL;
-@@ -316,7 +311,7 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
- 
-     dinfo = drive_get(IF_PFLASH, 0, 0);
-     if (dinfo) {
--        flash = xtfpga_flash_init(system_io, board, dinfo, be);
-+        flash = xtfpga_flash_init(system_io, board, dinfo, TARGET_BIG_ENDIAN);
-     }
- 
-     /* Use presence of kernel file name as 'boot from SRAM' switch. */
-@@ -412,7 +407,8 @@ static void xtfpga_init(const XtfpgaBoardDesc *board, MachineState *machine)
- 
-         uint64_t elf_entry;
-         int success = load_elf(kernel_filename, NULL, translate_phys_addr, cpu,
--                &elf_entry, NULL, NULL, NULL, be, EM_XTENSA, 0, 0);
-+                               &elf_entry, NULL, NULL, NULL, TARGET_BIG_ENDIAN,
-+                               EM_XTENSA, 0, 0);
-         if (success > 0) {
-             entry_point = elf_entry;
-         } else {
--- 
-2.39.3
+https://lore.kernel.org/qemu-devel/20230907113500.185276-1-thuth@redhat.com/
+
+Once that has been accepted, I'll respin the other patches.
+
+  Thomas
 
 
