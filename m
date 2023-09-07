@@ -1,88 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qeDKO-0001CT-MM
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Sep 2023 07:37:43 -0400
+	id 1qeDiw-0006gf-LE
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Sep 2023 08:03:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qeDKH-00011S-CA
- for qemu-trivial@nongnu.org; Thu, 07 Sep 2023 07:37:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qeDK9-0002bf-M4
- for qemu-trivial@nongnu.org; Thu, 07 Sep 2023 07:37:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1694086643;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=9kCVUSHAaoNdfu6EYfvddmbNEBHEyGVnH4OHsXNzpbo=;
- b=BUWB6c9SpDocAZLTMXTaQ0PPttWv42jmbi2fxNWamZJr96gq0Le9UMcWyXaLee8cw8yj9D
- sU8qNoF2Femr9vSrY4plIj1edBLJ20ufb6ubP7mi+tUf86Ei/tsZ0FXBGInspROSxvAe0t
- xzk3CkPx1V+zKwuWOQYfPhEtXPXEiDM=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-609-l4B9iGOfPmS9rlhR_4Dqqw-1; Thu, 07 Sep 2023 07:37:22 -0400
-X-MC-Unique: l4B9iGOfPmS9rlhR_4Dqqw-1
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-317d5b38194so347174f8f.0
- for <qemu-trivial@nongnu.org>; Thu, 07 Sep 2023 04:37:22 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qeDiv-0006gH-J6
+ for qemu-trivial@nongnu.org; Thu, 07 Sep 2023 08:03:01 -0400
+Received: from mail-ed1-x52f.google.com ([2a00:1450:4864:20::52f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qeDin-000471-Dk
+ for qemu-trivial@nongnu.org; Thu, 07 Sep 2023 08:02:58 -0400
+Received: by mail-ed1-x52f.google.com with SMTP id
+ 4fb4d7f45d1cf-52a23227567so1184602a12.0
+ for <qemu-trivial@nongnu.org>; Thu, 07 Sep 2023 05:02:52 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1694088171; x=1694692971; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=jLqQNsqhY0Y8Lz9dXWkAowjyYKyxSNZY8cuHuNL3H/Y=;
+ b=lG4AYdB1TY+iG/MnZ3a8HJc8ug2UI3TxrTQx1WwPW5SN/EKvR9XIniVfVnLnRqSVjc
+ cR5Wuu1KKzrK5l2wAJWXtA/XUgqjsELjL4heDFzi7Fnc/WLEXOYlL5GMDc8JyqAQL2kg
+ APnk/vuBuQGtWiTKUezu6pbYGvbsOaODsGnNvRMmSi02gQLXeQMgEFoMUgw8w4QPSz3b
+ v1wcS4jX5Ej6LnoGvebDXb2qHA/bXgvQzw6tAbr16CdBkXJa6NTBUQgH7SoOFXlq3pbn
+ u5vTW5Egzk3zcT6p6F/PQMakXkj5Gmq0Uogq1VcO+YoxWU3xhvTSE1OpXYXaDprpfFCI
+ g+xA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1694086641; x=1694691441;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=9kCVUSHAaoNdfu6EYfvddmbNEBHEyGVnH4OHsXNzpbo=;
- b=KbK/dbqQqvxfRMoKEC6UoxqcZaldzOweswg2RI3Yi2BcNcsCKwzXBXNM5PaRlLFDz9
- Jqp35yZCOBHy5v8rjKS3qsOiLIf7VsbZ4vuo2bxMSYbSRL+KGqYDepTyrIBmmpumQZDf
- 9M2QaAlapebYSIhtcYr/tqa0O2HXsLNisBmncIXvq6Akw4Mo8KDbhI5DieTrn/LqZB/d
- VZ0yhhffMWe1NqeS3VR2jw31iwOFfVan8OdYkZi/nZJ1l4R4JlLjL6mfEykktNPgGDJd
- ZEoVq5ks/QrvlNSo0wLNhUZlrtESv2NVURtNkkbkCrTicYTSJsqQgzHhb3xhaCop/2l3
- OA6A==
-X-Gm-Message-State: AOJu0YwEvM0IbHCW1NNtYXfSxxwhv81pRCAOZxupTD7y3kGR6TXpaLJH
- 0tD1hTiRi4Jkh0ISBhmn9SXLuitvjWclasEkG2E8XrvDpP7ggDCvU31XBqR/qqRIpmGOF697qZi
- 9jowzOuq08Lg/MFEcjQ==
-X-Received: by 2002:adf:ed46:0:b0:30e:56b3:60fe with SMTP id
- u6-20020adfed46000000b0030e56b360femr1916069wro.4.1694086641557; 
- Thu, 07 Sep 2023 04:37:21 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGRLevAbeDIb/W6ZGXe/y1sn+h1t8m+oXEyZJ8wbfo6pJhzLHFGwG0qpyGDHb1Jga5RbTa48w==
-X-Received: by 2002:adf:ed46:0:b0:30e:56b3:60fe with SMTP id
- u6-20020adfed46000000b0030e56b360femr1916057wro.4.1694086641287; 
- Thu, 07 Sep 2023 04:37:21 -0700 (PDT)
-Received: from [192.168.0.5] (ip-109-43-176-5.web.vodafone.de. [109.43.176.5])
- by smtp.gmail.com with ESMTPSA id
- e12-20020adf9bcc000000b0031759e6b43fsm19964066wrc.39.2023.09.07.04.37.20
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Sep 2023 04:37:20 -0700 (PDT)
-Message-ID: <96673508-be8a-d26b-a731-fd07580086eb@redhat.com>
-Date: Thu, 7 Sep 2023 13:37:19 +0200
+ d=1e100.net; s=20221208; t=1694088171; x=1694692971;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=jLqQNsqhY0Y8Lz9dXWkAowjyYKyxSNZY8cuHuNL3H/Y=;
+ b=D1KELViyncSl+UJHvp9tGc8r2RI1ZWwl7IVlQYDouDx6Cp5pciwLAiT47CbpbNbSnj
+ DaiAIBoFrYbEq5Vz+tsMkkYpWc6mky2TZDutjc7N6zDTvwsAUg0aYheOQ/S4zvVWbb2d
+ U4vlLvnhFH+Lm5TTjk005BFpKLcbt19SGSCVgPmyA/id5bfhcTd3D0R22p1U1EHcF/4H
+ moN9YrV4wZCvWAzOlIi+koZRGXK4Znnixrv7QH6u/jKDrxUV0qzUHFrVDQEd/AO1/pIH
+ 1H0Hlr/5MRsmdvxyXg1Q2I5QHmBVBZkevyTpLX9+cYpdX9cgDkF9my07xwMnAzIjJPrJ
+ /eZA==
+X-Gm-Message-State: AOJu0Yw/ErvIDLgLXjkzLSIYmwbh+tYuVh8Rrw7y680h+5BRkbkRfewX
+ MvhZ5HTl443YdQ45Esq3yfTfcA930BXqW8zGfhTDlg==
+X-Google-Smtp-Source: AGHT+IFmhYA6vsjvGxHmw13m9heHTCrsaOLOSKxO/ZQtqsHct4c4SVFMc9YKRyfau4z//xoFCIlfSe74C1/7veF0fcA=
+X-Received: by 2002:a05:6402:3d6:b0:525:6588:b624 with SMTP id
+ t22-20020a05640203d600b005256588b624mr4434960edw.37.1694088170805; Thu, 07
+ Sep 2023 05:02:50 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.14.0
-Subject: Re: [PATCH 0/3] hw/mips/jazz: Rework the NIC init code
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org
-References: <20230825175123.624114-1-thuth@redhat.com>
- <a9aa3e9e-dbde-54ed-1df0-749f483806f6@tls.msk.ru>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <a9aa3e9e-dbde-54ed-1df0-749f483806f6@tls.msk.ru>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-1.473, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+References: <20230907113500.185276-1-thuth@redhat.com>
+In-Reply-To: <20230907113500.185276-1-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 7 Sep 2023 13:02:39 +0100
+Message-ID: <CAFEAcA9MXyJN7=mYAydfU29NLzPUmU7F71m_2igP+NMSE5SQEw@mail.gmail.com>
+Subject: Re: [PATCH] trivial: Simplify the spots that use TARGET_BIG_ENDIAN as
+ a numeric value
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-trivial@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, 
+ =?UTF-8?Q?Herv=C3=A9_Poussineau?= <hpoussin@reactos.org>, 
+ Aurelien Jarno <aurelien@aurel32.net>, Michael Tokarev <mjt@tls.msk.ru>, 
+ Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -96,29 +80,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Sep 2023 11:37:34 -0000
+X-List-Received-Date: Thu, 07 Sep 2023 12:03:02 -0000
 
-On 01/09/2023 12.15, Michael Tokarev wrote:
-> 25.08.2023 20:51, Thomas Huth wrote:
->> The NIC init code of the jazz machines is rather cumbersome, with
->> a for-loop around it that is always left after the first iteration.
->> This patch series reworks this a little bit to make the code more
->> readable and shorter.
->>
->> Thomas Huth (3):
->>    hw/mips/jazz: Remove the big_endian variable
->>    hw/mips/jazz: Move the NIC init code into a separate function
->>    hw/mips/jazz: Simplify the NIC setup code
-> 
-> Thomas, after comments for "hw/mips/jazz: Remove the big_endian variable",
-> will you respin?
+On Thu, 7 Sept 2023 at 12:35, Thomas Huth <thuth@redhat.com> wrote:
+>
+> TARGET_BIG_ENDIAN is *always* defined, either as 0 for little endian
+> targets or as 1 for big endian targets. So we can use this as a value
+> directly in places that need such a 0 or 1 for some reason, instead
+> of taking a detour through an additional local variable or something
+> similar.
+>
+> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-I've now sent a patch to clean up that ugliness with TARGET_BIG_ENDIAN first:
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-https://lore.kernel.org/qemu-devel/20230907113500.185276-1-thuth@redhat.com/
-
-Once that has been accepted, I'll respin the other patches.
-
-  Thomas
-
+thanks
+-- PMM
 
