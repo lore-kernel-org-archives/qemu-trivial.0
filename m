@@ -1,80 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qeECC-00050t-8a
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Sep 2023 08:33:20 -0400
+	id 1qeEeZ-0005iP-Gn
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Sep 2023 09:02:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qeEBq-0004ru-2m
- for qemu-trivial@nongnu.org; Thu, 07 Sep 2023 08:32:57 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qeEBm-0000vv-8M
- for qemu-trivial@nongnu.org; Thu, 07 Sep 2023 08:32:53 -0400
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-9a6190af24aso110214966b.0
- for <qemu-trivial@nongnu.org>; Thu, 07 Sep 2023 05:32:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694089968; x=1694694768; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=o4J+x+9gFiEhafa+n0Udq8IEqpY37LD5jCgLsVyzpRo=;
- b=yi7sxtgvgS706NvMrVl8EoAkqwkBRu6JvwH+fDW3ft6FXlRTv33CBR25YZV4gcYb41
- MSQvCJBDCE3yMAiqq4EprPu20ToIuYar4pc0jUb4UFrCAhcfZiQs93FU1sPGGvue4SfE
- KfTOIgn5eqkp7/zcRjZ/sRhBb1srbtfLZM3PxeDCl/8FgpOGTtimW8tsWPo6w/FhDIIu
- T5ZVp/F01WhiKkMcUp6O7Joz5RCY2gJHlTe48x6YYZ295+UxS12sshjluQJzCNO2IrMs
- A1q5eTTledqRuJN1YhE7mK6Onwey5LYU5q3PVdTT/k4IVJ5laLIHNrvKaKyjTNWIUV85
- 2HXQ==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1qeEeK-00056d-DT
+ for qemu-trivial@nongnu.org; Thu, 07 Sep 2023 09:02:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1qeEeI-0007ZK-Bu
+ for qemu-trivial@nongnu.org; Thu, 07 Sep 2023 09:02:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1694091737;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=pKDzeQlctpkUAsMmGfN8p0M9I6HUXPerO0NUMxheatc=;
+ b=fhbj10FLBjRMLwgObkU7AbI7eMURscZNpIlMhpM1R4lLter3zliEv1A5/pW3ZXn65hVnjl
+ 9azuPj5KwLrKnoqsAjTaoiuKNoA0vXBDzu4SHKpgLSQk51uwOIz4qx8BjOXnZ2IeBm1loz
+ rE/S0iJDPyVU9VwxKVJ5RJV5buUdrmo=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-141-Lgr0v5nIP1218wyZD43eHg-1; Thu, 07 Sep 2023 09:02:05 -0400
+X-MC-Unique: Lgr0v5nIP1218wyZD43eHg-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-401db0c9d3eso6903655e9.3
+ for <qemu-trivial@nongnu.org>; Thu, 07 Sep 2023 06:02:04 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20221208; t=1694089968; x=1694694768;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=o4J+x+9gFiEhafa+n0Udq8IEqpY37LD5jCgLsVyzpRo=;
- b=ZoBicqjuVVWc6jCLlvJShAeN9/aI8/Pg0YSy+XgvjTVejRB7UMSO+hTnmrSRzc6WXg
- p517abWwrqSddRwE9VX8f0L6lUj18a0nAMLkiosxXaDBYjAatAZz7O3FktaZ4m5667pQ
- WsqpsjYWsyWTL7nXAq36XQCKDQ5FyH6jaGgPIuMxBlXF08gGB0HUuL6Chzcwz0LZGAdT
- hFm5iHTmkR7dbOBBLfj5uiaJlrI9lQG3p1bpizux7meIcaDgiF4kaRPQO8Rs8GkOK+Jh
- 8pwKnIQZxUhaxrZ//bNpqPaHvO97sc6WK7Q7blaFDJWwkndV9/pYRk/sSmey02ahPcFl
- 54IA==
-X-Gm-Message-State: AOJu0Yz4FQTQdMQXUB0Wc8AWNH97uMsw7plr+6JiAWEk8qAJaIGdVa1M
- nuGWsXtHqOOyXW0PZlZjjit6Sknz/cvRGDCb52g=
-X-Google-Smtp-Source: AGHT+IGztItOl3eFrW8RECsrQJg6GZmok9OSRRvWKbxsH07ySq2cPLsKwz+NQRsQF12df/U4CwXjnw==
-X-Received: by 2002:a17:906:3192:b0:9a1:bb8f:17d0 with SMTP id
- 18-20020a170906319200b009a1bb8f17d0mr4571364ejy.30.1694089968509; 
- Thu, 07 Sep 2023 05:32:48 -0700 (PDT)
-Received: from [192.168.69.115] (176-131-222-226.abo.bbox.fr.
- [176.131.222.226]) by smtp.gmail.com with ESMTPSA id
- a25-20020a1709064a5900b009a2202bfce5sm10293516ejv.118.2023.09.07.05.32.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 07 Sep 2023 05:32:48 -0700 (PDT)
-Message-ID: <9ced1089-3199-f19a-e89e-4fbdf647b234@linaro.org>
-Date: Thu, 7 Sep 2023 14:32:45 +0200
+ d=1e100.net; s=20221208; t=1694091723; x=1694696523;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=pKDzeQlctpkUAsMmGfN8p0M9I6HUXPerO0NUMxheatc=;
+ b=kcykOvSkwhXV1fziMft1MxNRW+xUCvR3OhtLXpLGjj02UVNUYXp5yHJZxy2jGaF4bS
+ 4v9Kk0e0cDQi60+dptfIHDBjPfX20U7ZWmGup5Wiv9Tfs+zsNcEPe78TbQ2auW3GpG1f
+ qU//eHWij0QR6wEQLVrVeq8no2gd5CFm73Ylt/r9j2tZMgs8DWsUL/spnFbCdfR4ttkX
+ OJoem9mTUxopDGTX9XrTGPMk0+MgztEOLOhPax8CWd/Ny8D4qn+a/gSzzcSVhpMi6pFC
+ HQORs54flSjDeXGYizdIOK4/w4SD/twQOeeZIhtYEAI+cLDmT+cfwUqDQG+x9FneI4IU
+ K+jQ==
+X-Gm-Message-State: AOJu0YzSO/lsrQp9GcszOeCACjjHWARtlUUegXxmI4JAWzPZ3zuMOo5b
+ 7jtiQDbclI7dA/yv6xd+nZ66YO5FoTeo+aekv2H7b95rETlSmH8dutI87SN6fk+PNxcP2r0WOSg
+ RdSfi8jwOxpVUhbYYQQ==
+X-Received: by 2002:a7b:c8d6:0:b0:401:4c61:90ac with SMTP id
+ f22-20020a7bc8d6000000b004014c6190acmr5058148wml.11.1694091723580; 
+ Thu, 07 Sep 2023 06:02:03 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IExU/oI2neSkm8bqrOHI8OYHRclQ7ocSMwwwxfuwHaaftKMd3OQVTpavSGuSEtvCgHI1wta5w==
+X-Received: by 2002:a7b:c8d6:0:b0:401:4c61:90ac with SMTP id
+ f22-20020a7bc8d6000000b004014c6190acmr5058128wml.11.1694091723314; 
+ Thu, 07 Sep 2023 06:02:03 -0700 (PDT)
+Received: from [192.168.1.174] ([151.48.237.81])
+ by smtp.gmail.com with ESMTPSA id
+ m18-20020a7bce12000000b003fc01189b0dsm2436081wmc.42.2023.09.07.06.02.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 07 Sep 2023 06:02:02 -0700 (PDT)
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PULL 51/51] docs/system/replay: do not show removed command line
+ option
+Date: Thu,  7 Sep 2023 15:00:00 +0200
+Message-ID: <20230907130004.500601-52-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20230907130004.500601-1-pbonzini@redhat.com>
+References: <20230907130004.500601-1-pbonzini@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.0
-Subject: Re: [PATCH] trivial: Simplify the spots that use TARGET_BIG_ENDIAN as
- a numeric value
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
- =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>
-References: <20230907113500.185276-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230907113500.185276-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x630.google.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.473,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,29 +94,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Sep 2023 12:33:04 -0000
+X-List-Received-Date: Thu, 07 Sep 2023 13:02:27 -0000
 
-On 7/9/23 13:35, Thomas Huth wrote:
-> TARGET_BIG_ENDIAN is *always* defined, either as 0 for little endian
-> targets or as 1 for big endian targets. So we can use this as a value
-> directly in places that need such a 0 or 1 for some reason, instead
-> of taking a detour through an additional local variable or something
-> similar.
-> 
-> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   target/arm/cpu.h     | 12 ++----------
->   cpu.c                |  6 +-----
->   hw/microblaze/boot.c |  9 ++-------
->   hw/mips/jazz.c       | 10 ++--------
->   hw/mips/malta.c      | 21 ++++-----------------
->   hw/mips/mipssim.c    |  9 +--------
->   hw/nios2/boot.c      |  9 ++-------
->   hw/xtensa/sim.c      |  7 +------
->   hw/xtensa/xtfpga.c   | 10 +++-------
->   9 files changed, 18 insertions(+), 75 deletions(-)
-
+Cc: qemu-trivial@nongnu.org
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ docs/system/replay.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/docs/system/replay.rst b/docs/system/replay.rst
+index 3105327423c..ca7c17c63da 100644
+--- a/docs/system/replay.rst
++++ b/docs/system/replay.rst
+@@ -181,7 +181,7 @@ Audio data is recorded and replay automatically. The command line for recording
+ and replaying must contain identical specifications of audio hardware, e.g.:
+ 
+ .. parsed-literal::
+-    -soundhw ac97
++    -audio pa,model=ac97
+ 
+ Serial ports
+ ------------
+-- 
+2.41.0
 
 
