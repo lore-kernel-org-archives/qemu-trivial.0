@@ -1,35 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qeKev-000658-T7
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Sep 2023 15:27:21 -0400
+	id 1qeKiw-00039R-U0
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Sep 2023 15:31:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qeKet-00064X-8y; Thu, 07 Sep 2023 15:27:19 -0400
+ id 1qeKiu-00034o-CQ; Thu, 07 Sep 2023 15:31:28 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qeKeq-0006fZ-MB; Thu, 07 Sep 2023 15:27:19 -0400
+ id 1qeKiq-0001mo-7u; Thu, 07 Sep 2023 15:31:28 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 830EF1FDFC;
- Thu,  7 Sep 2023 22:28:00 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id CAA891FE03;
+ Thu,  7 Sep 2023 22:32:08 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id A9B4B266E4;
- Thu,  7 Sep 2023 22:27:12 +0300 (MSK)
-Message-ID: <31abec70-e93d-a504-b084-6e1116e7362a@tls.msk.ru>
-Date: Thu, 7 Sep 2023 22:27:12 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id D8932266E5;
+ Thu,  7 Sep 2023 22:31:20 +0300 (MSK)
+Message-ID: <7d3615d0-d501-a28c-eebc-b3f7a599fc23@tls.msk.ru>
+Date: Thu, 7 Sep 2023 22:31:20 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH for-8.2 0/2] ppc: get rid of free() (gitlab #1798)
+Subject: Re: [PATCH] arm64: Restore trapless ptimer access
 Content-Language: en-US
-To: Daniel Henrique Barboza <danielhb413@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-References: <20230728195646.168997-1-danielhb413@gmail.com>
- <CAFEAcA-79hxq7Uxne1wRx_waWkCy75ObKw5+krtbp-aTbxFkoQ@mail.gmail.com>
- <6dc430f0-07d0-81d6-2639-5d03231f203b@gmail.com>
+To: Colton Lewis <coltonlewis@google.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org,
+ kvm@vger.kernel.org, Andrew Jones <andrew.jones@linux.dev>,
+ qemu-trivial@nongnu.org, qemu-stable <qemu-stable@nongnu.org>
+References: <20230831190052.129045-1-coltonlewis@google.com>
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <6dc430f0-07d0-81d6-2639-5d03231f203b@gmail.com>
+In-Reply-To: <20230831190052.129045-1-coltonlewis@google.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -52,42 +52,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Sep 2023 19:27:19 -0000
+X-List-Received-Date: Thu, 07 Sep 2023 19:31:29 -0000
 
-30.07.2023 20:13, Daniel Henrique Barboza wrote:
+31.08.2023 22:00, Colton Lewis wrote:
+> Due to recent KVM changes, QEMU is setting a ptimer offset resulting
+> in unintended trap and emulate access and a consequent performance
+> hit. Filter out the PTIMER_CNT register to restore trapless ptimer
+> access.
 > 
+> Quoting Andrew Jones:
 > 
-> On 7/29/23 12:35, Peter Maydell wrote:
->> On Fri, 28 Jul 2023 at 21:57, Daniel Henrique Barboza
->> <danielhb413@gmail.com> wrote:
->>> Here's some trivial changes following Peter's call to arms against
->>> free() and friends in gitlab issue #1798 in an attempt to enforce
->>> our memory management guidelines [1].
->>
->> To clarify, this isn't a "call to arms". The issue is marked up as
->> a "bite-sized task", which is to say that it's a potential easy
->> place to start for newcomers to the community who might be making
->> their first contribution to the codebase. The changes it suggests
->> aren't urgent; at most they're a nice-to-have, since glib
->> guarantees that you can mix malloc/free and g_malloc/g_free.
+> Simply reading the CNT register and writing back the same value is
+> enough to set an offset, since the timer will have certainly moved
+> past whatever value was read by the time it's written.  QEMU
+> frequently saves and restores all registers in the get-reg-list array,
+> unless they've been explicitly filtered out (with Linux commit
+> 680232a94c12, KVM_REG_ARM_PTIMER_CNT is now in the array). So, to
+> restore trapless ptimer accesses, we need a QEMU patch to filter out
+> the register.
 > 
-> I failed to realized it was a byte sized task :/ and my Coccinelle comment
-> in the bug makes me fell dumb hehe (given that Coccinelle is not newcomer
-> friendly).
+> See
+> https://lore.kernel.org/kvmarm/gsntttsonus5.fsf@coltonlewis-kvm.c.googlers.com/T/#m0770023762a821db2a3f0dd0a7dc6aa54e0d0da9
+> for additional context.
 > 
->>
->> We've had this sitting around as a suggestion on the wiki page
->> for bite-sized-tasks for years, and occasionally people come
->> through and have a go at it. I wanted to clean up and expand
->> on the description of what we had in mind for the change, to
->> give those people a better chance of successfully completing
->> the task.
+> Signed-off-by: Andrew Jones <andrew.jones@linux.dev>
+> ---
+>   target/arm/kvm64.c | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> What we can do then, since I already sent these, is perhaps link these patches
-> as example/template in the gitlab issue later on.
+> diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
+> index 4d904a1d11..2dd46e0a99 100644
+> --- a/target/arm/kvm64.c
+> +++ b/target/arm/kvm64.c
+> @@ -672,6 +672,7 @@ typedef struct CPRegStateLevel {
+>    */
+>   static const CPRegStateLevel non_runtime_cpregs[] = {
+>       { KVM_REG_ARM_TIMER_CNT, KVM_PUT_FULL_STATE },
+> +    { KVM_REG_ARM_PTIMER_CNT, KVM_PUT_FULL_STATE },
+>   };
+>   
+>   int kvm_arm_cpreg_level(uint64_t regidx)
 
-Applied to my trivial-patches branch adding suggested commit comment
-fixes while at it, hopefully there's nothing more to do :)
+While this patch itself is one-liner and trivial and all, I'd rather
+not apply this to the trivial-patches tree, - it requires a little
+bit more than trivial expertise in this area.
+
+So basically, ping for qemu-arm@ ? :)
 
 Thanks,
 
