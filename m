@@ -1,34 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qeYDt-00073C-Qk
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 05:56:21 -0400
+	id 1qeYDw-000742-4b
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 05:56:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qeYDs-00072s-9R; Fri, 08 Sep 2023 05:56:20 -0400
+ id 1qeYDu-00073V-3H; Fri, 08 Sep 2023 05:56:22 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qeYDo-0006cI-OI; Fri, 08 Sep 2023 05:56:20 -0400
+ id 1qeYDh-0006VD-CV; Fri, 08 Sep 2023 05:56:21 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 3CE8E200CE;
- Fri,  8 Sep 2023 12:56:46 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id D31E3200CC;
+ Fri,  8 Sep 2023 12:56:45 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 32B8226914;
- Fri,  8 Sep 2023 12:55:57 +0300 (MSK)
-Received: (nullmailer pid 275958 invoked by uid 1000);
- Fri, 08 Sep 2023 09:55:56 -0000
+ by tsrv.corpit.ru (Postfix) with SMTP id C909A26912;
+ Fri,  8 Sep 2023 12:55:56 +0300 (MSK)
+Received: (nullmailer pid 275952 invoked by uid 1000);
+ Fri, 08 Sep 2023 09:55:55 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 06/23] audio: spelling fixes
-Date: Fri,  8 Sep 2023 12:55:03 +0300
-Message-Id: <20230908095520.275866-7-mjt@tls.msk.ru>
+ Alistair Francis <alistair.francis@wdc.com>
+Subject: [PULL 04/23] riscv: spelling fixes
+Date: Fri,  8 Sep 2023 12:55:01 +0300
+Message-Id: <20230908095520.275866-5-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230908095520.275866-1-mjt@tls.msk.ru>
 References: <20230908095520.275866-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -49,128 +48,246 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Sep 2023 09:56:20 -0000
+X-List-Received-Date: Fri, 08 Sep 2023 09:56:22 -0000
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 ---
- audio/mixeng.h            | 2 +-
- hw/audio/fmopl.c          | 8 ++++----
- hw/audio/fmopl.h          | 2 +-
- hw/audio/gusemu_hal.c     | 4 ++--
- hw/audio/intel-hda-defs.h | 4 ++--
- 5 files changed, 10 insertions(+), 10 deletions(-)
+ hw/riscv/microchip_pfsoc.c                |  2 +-
+ hw/riscv/virt.c                           |  4 ++--
+ include/hw/riscv/riscv_hart.h             |  2 +-
+ target/riscv/cpu.h                        |  2 +-
+ target/riscv/cpu_bits.h                   |  4 ++--
+ target/riscv/csr.c                        |  4 ++--
+ target/riscv/debug.c                      | 10 +++++-----
+ target/riscv/insn_trans/trans_rvf.c.inc   |  4 ++--
+ target/riscv/insn_trans/trans_rvv.c.inc   |  4 ++--
+ target/riscv/insn_trans/trans_rvzfh.c.inc |  4 ++--
+ target/riscv/monitor.c                    |  2 +-
+ 11 files changed, 21 insertions(+), 21 deletions(-)
 
-diff --git a/audio/mixeng.h b/audio/mixeng.h
-index f9de7cffeb..a5f56d2c26 100644
---- a/audio/mixeng.h
-+++ b/audio/mixeng.h
-@@ -38,7 +38,7 @@ typedef struct st_sample st_sample;
- typedef void (t_sample) (struct st_sample *dst, const void *src, int samples);
- typedef void (f_sample) (void *dst, const struct st_sample *src, int samples);
+diff --git a/hw/riscv/microchip_pfsoc.c b/hw/riscv/microchip_pfsoc.c
+index e81bbd12df..b775aa8946 100644
+--- a/hw/riscv/microchip_pfsoc.c
++++ b/hw/riscv/microchip_pfsoc.c
+@@ -659,7 +659,7 @@ static void microchip_icicle_kit_machine_class_init(ObjectClass *oc, void *data)
+     mc->default_ram_id = "microchip.icicle.kit.ram";
  
--/* indices: [stereo][signed][swap endiannes][8, 16 or 32-bits] */
-+/* indices: [stereo][signed][swap endianness][8, 16 or 32-bits] */
- extern t_sample *mixeng_conv[2][2][2][3];
- extern f_sample *mixeng_clip[2][2][2][3];
+     /*
+-     * Map 513 MiB high memory, the mimimum required high memory size, because
++     * Map 513 MiB high memory, the minimum required high memory size, because
+      * HSS will do memory test against the high memory address range regardless
+      * of physical memory installed.
+      *
+diff --git a/hw/riscv/virt.c b/hw/riscv/virt.c
+index 99c4e6314b..a5ac3ab777 100644
+--- a/hw/riscv/virt.c
++++ b/hw/riscv/virt.c
+@@ -66,13 +66,13 @@
+ #define VIRT_IMSIC_GROUP_MAX_SIZE      (1U << IMSIC_MMIO_GROUP_MIN_SHIFT)
+ #if VIRT_IMSIC_GROUP_MAX_SIZE < \
+     IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
+-#error "Can't accomodate single IMSIC group in address space"
++#error "Can't accommodate single IMSIC group in address space"
+ #endif
  
-diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
-index 8a71a569fa..a63ad0f04d 100644
---- a/hw/audio/fmopl.c
-+++ b/hw/audio/fmopl.c
-@@ -355,7 +355,7 @@ static void set_algorithm( OPL_CH *CH)
- 	CH->connect2 = carrier;
+ #define VIRT_IMSIC_MAX_SIZE            (VIRT_SOCKETS_MAX * \
+                                         VIRT_IMSIC_GROUP_MAX_SIZE)
+ #if 0x4000000 < VIRT_IMSIC_MAX_SIZE
+-#error "Can't accomodate all IMSIC groups in address space"
++#error "Can't accommodate all IMSIC groups in address space"
+ #endif
+ 
+ static const MemMapEntry virt_memmap[] = {
+diff --git a/include/hw/riscv/riscv_hart.h b/include/hw/riscv/riscv_hart.h
+index bbc21cdc9a..912b4a2682 100644
+--- a/include/hw/riscv/riscv_hart.h
++++ b/include/hw/riscv/riscv_hart.h
+@@ -3,7 +3,7 @@
+  *
+  * Copyright (c) 2017 SiFive, Inc.
+  *
+- * Holds the state of a heterogenous array of RISC-V harts
++ * Holds the state of a heterogeneous array of RISC-V harts
+  *
+  * This program is free software; you can redistribute it and/or modify it
+  * under the terms and conditions of the GNU General Public License,
+diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+index 6ea22e0eea..6316cbcc23 100644
+--- a/target/riscv/cpu.h
++++ b/target/riscv/cpu.h
+@@ -349,7 +349,7 @@ struct CPUArchState {
+     target_ulong upmmask;
+     target_ulong upmbase;
+ 
+-    /* CSRs for execution enviornment configuration */
++    /* CSRs for execution environment configuration */
+     uint64_t menvcfg;
+     uint64_t mstateen[SMSTATEEN_MAX_COUNT];
+     uint64_t hstateen[SMSTATEEN_MAX_COUNT];
+diff --git a/target/riscv/cpu_bits.h b/target/riscv/cpu_bits.h
+index 59f0ffd9e1..31a8d80990 100644
+--- a/target/riscv/cpu_bits.h
++++ b/target/riscv/cpu_bits.h
+@@ -656,7 +656,7 @@ typedef enum {
+ /* Leaf page shift amount */
+ #define PGSHIFT             12
+ 
+-/* Default Reset Vector adress */
++/* Default Reset Vector address */
+ #define DEFAULT_RSTVEC      0x1000
+ 
+ /* Exception causes */
+@@ -740,7 +740,7 @@ typedef enum RISCVException {
+ #define PM_CURRENT      0x00000002ULL
+ #define PM_INSN         0x00000004ULL
+ 
+-/* Execution enviornment configuration bits */
++/* Execution environment configuration bits */
+ #define MENVCFG_FIOM                       BIT(0)
+ #define MENVCFG_CBIE                       (3UL << 4)
+ #define MENVCFG_CBCFE                      BIT(6)
+diff --git a/target/riscv/csr.c b/target/riscv/csr.c
+index de31818daa..ca95ae1527 100644
+--- a/target/riscv/csr.c
++++ b/target/riscv/csr.c
+@@ -3215,7 +3215,7 @@ static int write_hvipriox(CPURISCVState *env, int first_index,
+                RISCV_EXCP_VIRT_INSTRUCTION_FAULT : RISCV_EXCP_ILLEGAL_INST;
+     }
+ 
+-    /* Fill-up priority arrary */
++    /* Fill-up priority array */
+     for (i = 0; i < num_irqs; i++) {
+         if (riscv_cpu_hviprio_index2irq(first_index + i, &irq, &rdzero)) {
+             continue;
+@@ -3884,7 +3884,7 @@ static inline RISCVException riscv_csrrw_check(CPURISCVState *env,
+     if (riscv_has_ext(env, RVH) && env->priv == PRV_S &&
+         !env->virt_enabled) {
+         /*
+-         * We are in HS mode. Add 1 to the effective privledge level to
++         * We are in HS mode. Add 1 to the effective privilege level to
+          * allow us to access the Hypervisor CSRs.
+          */
+         effective_priv++;
+diff --git a/target/riscv/debug.c b/target/riscv/debug.c
+index 75ee1c4971..211f5921b6 100644
+--- a/target/riscv/debug.c
++++ b/target/riscv/debug.c
+@@ -574,7 +574,7 @@ static void riscv_itrigger_update_count(CPURISCVState *env)
+     int count, executed;
+     /*
+      * Record last icount, so that we can evaluate the executed instructions
+-     * since last priviledge mode change or timer expire.
++     * since last privilege mode change or timer expire.
+      */
+     int64_t last_icount = env->last_icount, current_icount;
+     current_icount = env->last_icount = icount_get_raw();
+@@ -588,14 +588,14 @@ static void riscv_itrigger_update_count(CPURISCVState *env)
+             continue;
+         }
+         /*
+-         * Only when priviledge is changed or itrigger timer expires,
++         * Only when privilege is changed or itrigger timer expires,
+          * the count field in itrigger tdata1 register is updated.
+          * And the count field in itrigger only contains remaining value.
+          */
+         if (check_itrigger_priv(env, i)) {
+             /*
+-             * If itrigger enabled in this priviledge mode, the number of
+-             * executed instructions since last priviledge change
++             * If itrigger enabled in this privilege mode, the number of
++             * executed instructions since last privilege change
+              * should be reduced from current itrigger count.
+              */
+             executed = current_icount - last_icount;
+@@ -605,7 +605,7 @@ static void riscv_itrigger_update_count(CPURISCVState *env)
+             }
+         } else {
+             /*
+-             * If itrigger is not enabled in this priviledge mode,
++             * If itrigger is not enabled in this privilege mode,
+              * the number of executed instructions will be discard and
+              * the count field in itrigger will not change.
+              */
+diff --git a/target/riscv/insn_trans/trans_rvf.c.inc b/target/riscv/insn_trans/trans_rvf.c.inc
+index a0da7391c7..e7ab84cd9a 100644
+--- a/target/riscv/insn_trans/trans_rvf.c.inc
++++ b/target/riscv/insn_trans/trans_rvf.c.inc
+@@ -300,7 +300,7 @@ static bool trans_fsgnjn_s(DisasContext *ctx, arg_fsgnjn_s *a)
+         tcg_gen_and_i64(dest, mask, rs1);
+         tcg_gen_or_i64(dest, dest, rs2);
+     }
+-    /* signed-extended intead of nanboxing for result if enable zfinx */
++    /* signed-extended instead of nanboxing for result if enable zfinx */
+     if (ctx->cfg_ptr->ext_zfinx) {
+         tcg_gen_ext32s_i64(dest, dest);
+     }
+@@ -345,7 +345,7 @@ static bool trans_fsgnjx_s(DisasContext *ctx, arg_fsgnjx_s *a)
+         tcg_gen_andi_i64(dest, rs2, MAKE_64BIT_MASK(31, 1));
+         tcg_gen_xor_i64(dest, rs1, dest);
+     }
+-    /* signed-extended intead of nanboxing for result if enable zfinx */
++    /* signed-extended instead of nanboxing for result if enable zfinx */
+     if (ctx->cfg_ptr->ext_zfinx) {
+         tcg_gen_ext32s_i64(dest, dest);
+     }
+diff --git a/target/riscv/insn_trans/trans_rvv.c.inc b/target/riscv/insn_trans/trans_rvv.c.inc
+index c2f7527f53..6ab63f4442 100644
+--- a/target/riscv/insn_trans/trans_rvv.c.inc
++++ b/target/riscv/insn_trans/trans_rvv.c.inc
+@@ -2240,7 +2240,7 @@ GEN_OPIWI_NARROW_TRANS(vnclip_wi, IMM_ZX, vnclip_wx)
+  *
+  * If SEW < FLEN, check whether input fp register is a valid
+  * NaN-boxed value, in which case the least-significant SEW bits
+- * of the f regsiter are used, else the canonical NaN value is used.
++ * of the f register are used, else the canonical NaN value is used.
+  */
+ static void do_nanbox(DisasContext *s, TCGv_i64 out, TCGv_i64 in)
+ {
+@@ -3282,7 +3282,7 @@ static void load_element(TCGv_i64 dest, TCGv_ptr base,
+     }
  }
  
--/* ---------- frequency counter for operater update ---------- */
-+/* ---------- frequency counter for operator update ---------- */
- static inline void CALC_FCSLOT(OPL_CH *CH,OPL_SLOT *SLOT)
+-/* offset of the idx element with base regsiter r */
++/* offset of the idx element with base register r */
+ static uint32_t endian_ofs(DisasContext *s, int r, int idx)
  {
- 	int ksr;
-@@ -640,7 +640,7 @@ static int OPLOpenTable( void )
- 		TL_TABLE[t] = TL_TABLE[TL_MAX+t] = 0;
- 	}
- 
--	/* make sinwave table (total level offet) */
-+	/* make sinwave table (total level offset) */
- 	/* degree 0 = degree 180                   = off */
- 	SIN_TABLE[0] = SIN_TABLE[SIN_ENT/2]         = &TL_TABLE[EG_ENT-1];
- 	for (s = 1;s <= SIN_ENT/4;s++){
-@@ -1075,7 +1075,7 @@ FM_OPL *OPLCreate(int clock, int rate)
- 	char *ptr;
- 	FM_OPL *OPL;
- 	int state_size;
--	int max_ch = 9; /* normaly 9 channels */
-+	int max_ch = 9; /* normally 9 channels */
- 
- 	if( OPL_LockTable() ==-1) return NULL;
- 	/* allocate OPL state space */
-@@ -1092,7 +1092,7 @@ FM_OPL *OPLCreate(int clock, int rate)
- 	OPL->clock = clock;
- 	OPL->rate  = rate;
- 	OPL->max_ch = max_ch;
--	/* init grobal tables */
-+	/* init global tables */
- 	OPL_initialize(OPL);
- 	/* reset chip */
- 	OPLResetChip(OPL);
-diff --git a/hw/audio/fmopl.h b/hw/audio/fmopl.h
-index e008e72d7a..89086b93f4 100644
---- a/hw/audio/fmopl.h
-+++ b/hw/audio/fmopl.h
-@@ -69,7 +69,7 @@ typedef struct fm_opl_f {
- 	/* FM channel slots */
- 	OPL_CH *P_CH;		/* pointer of CH                     */
- 	int	max_ch;			/* maximum channel                   */
--	/* Rhythm sention */
-+	/* Rhythm section */
- 	uint8_t rhythm;		/* Rhythm mode , key flag */
- 	/* time tables */
- 	int32_t AR_TABLE[76];	/* attack rate tables  */
-diff --git a/hw/audio/gusemu_hal.c b/hw/audio/gusemu_hal.c
-index 5b9a14ee21..f159978b49 100644
---- a/hw/audio/gusemu_hal.c
-+++ b/hw/audio/gusemu_hal.c
-@@ -154,7 +154,7 @@ unsigned int gus_read(GUSEmuState * state, int port, int size)
-         case 0x8d:
-             {
-                 int             offset = 2 * (GUSregb(FunkSelReg3x3) & 0x0f);
--                offset += ((int) GUSregb(VoiceSelReg3x2) & 0x1f) << 5; /* = Voice*32 + Funktion*2 */
-+                offset += ((int) GUSregb(VoiceSelReg3x2) & 0x1f) << 5; /* = Voice*32 + Function*2 */
-                 value_read = GUSregw(offset);
-             }
-             break;
-@@ -353,7 +353,7 @@ void gus_write(GUSEmuState * state, int port, int size, unsigned int data)
-                     if (!(GUSregb(GUS4cReset) & 0x01))
-                         break;  /* reset flag active? */
-                     offset = 2 * (GUSregb(FunkSelReg3x3) & 0x0f);
--                    offset += (GUSregb(VoiceSelReg3x2) & 0x1f) << 5; /*  = Voice*32 + Funktion*2 */
-+                    offset += (GUSregb(VoiceSelReg3x2) & 0x1f) << 5; /*  = Voice*32 + Function*2 */
-                     GUSregw(offset) = (uint16_t) ((GUSregw(offset) & readmask) | writedata);
-                 }
-                 break;
-diff --git a/hw/audio/intel-hda-defs.h b/hw/audio/intel-hda-defs.h
-index 2e37e5b874..261bdb48ff 100644
---- a/hw/audio/intel-hda-defs.h
-+++ b/hw/audio/intel-hda-defs.h
-@@ -418,7 +418,7 @@ enum {
- #define AC_UNSOL_RES_CP_STATE		(1<<1)	/* content protection */
- #define AC_UNSOL_RES_CP_READY		(1<<0)	/* content protection */
- 
--/* Pin widget capabilies */
-+/* Pin widget capabilities */
- #define AC_PINCAP_IMP_SENSE		(1<<0)	/* impedance sense capable */
- #define AC_PINCAP_TRIG_REQ		(1<<1)	/* trigger required */
- #define AC_PINCAP_PRES_DETECT		(1<<2)	/* presence detect capable */
-@@ -483,7 +483,7 @@ enum {
- #define AC_PWRST_D2			0x02
- #define AC_PWRST_D3			0x03
- 
--/* Processing capabilies */
-+/* Processing capabilities */
- #define AC_PCAP_BENIGN			(1<<0)
- #define AC_PCAP_NUM_COEF		(0xff<<8)
- #define AC_PCAP_NUM_COEF_SHIFT		8
+ #if HOST_BIG_ENDIAN
+diff --git a/target/riscv/insn_trans/trans_rvzfh.c.inc b/target/riscv/insn_trans/trans_rvzfh.c.inc
+index 8b1e2519bb..4b01812fd8 100644
+--- a/target/riscv/insn_trans/trans_rvzfh.c.inc
++++ b/target/riscv/insn_trans/trans_rvzfh.c.inc
+@@ -305,7 +305,7 @@ static bool trans_fsgnjn_h(DisasContext *ctx, arg_fsgnjn_h *a)
+         tcg_gen_and_i64(dest, mask, rs1);
+         tcg_gen_or_i64(dest, dest, rs2);
+     }
+-    /* signed-extended intead of nanboxing for result if enable zfinx */
++    /* signed-extended instead of nanboxing for result if enable zfinx */
+     if (ctx->cfg_ptr->ext_zfinx) {
+         tcg_gen_ext16s_i64(dest, dest);
+     }
+@@ -349,7 +349,7 @@ static bool trans_fsgnjx_h(DisasContext *ctx, arg_fsgnjx_h *a)
+         tcg_gen_andi_i64(dest, rs2, MAKE_64BIT_MASK(15, 1));
+         tcg_gen_xor_i64(dest, rs1, dest);
+     }
+-    /* signed-extended intead of nanboxing for result if enable zfinx */
++    /* signed-extended instead of nanboxing for result if enable zfinx */
+     if (ctx->cfg_ptr->ext_zfinx) {
+         tcg_gen_ext16s_i64(dest, dest);
+     }
+diff --git a/target/riscv/monitor.c b/target/riscv/monitor.c
+index f36ddfa967..f5b1ffe6c3 100644
+--- a/target/riscv/monitor.c
++++ b/target/riscv/monitor.c
+@@ -55,7 +55,7 @@ static void print_pte_header(Monitor *mon)
+ static void print_pte(Monitor *mon, int va_bits, target_ulong vaddr,
+                       hwaddr paddr, target_ulong size, int attr)
+ {
+-    /* santity check on vaddr */
++    /* sanity check on vaddr */
+     if (vaddr >= (1UL << va_bits)) {
+         return;
+     }
 -- 
 2.39.2
 
