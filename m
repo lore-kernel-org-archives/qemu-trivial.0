@@ -1,71 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qeY3a-00027A-Sk
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 05:45:42 -0400
+	id 1qeYDh-0006yS-Kc
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 05:56:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qeY3Z-00020m-6z
- for qemu-trivial@nongnu.org; Fri, 08 Sep 2023 05:45:41 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qeY3P-0003FO-AM
- for qemu-trivial@nongnu.org; Fri, 08 Sep 2023 05:45:40 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-52a250aa012so2526892a12.3
- for <qemu-trivial@nongnu.org>; Fri, 08 Sep 2023 02:45:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694166329; x=1694771129; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=xfuX/wtvWACG6RTooNCOtf7/3iq0sILbAKOhnwnHpbI=;
- b=YRuHyZi5JvqkOr0PKMjZjR9OirnZOAWBBRSHu7ywwZ78+hPb0iNVjo2MYcAQI1x6sU
- eAdqseqZ3Pxr20kkXyvGXH86UVimpYkyw++lxxQATQWasFmU+3WtPLIU9kLdT+bBGI5h
- 3cbaSzLlUZcfftEIGsm+UFV1lzgl+vIEoTnEeRVLe2RzADX+xNxqru4/vS43JrfX4CwJ
- iUvJfuP6/g8VZXEFmyggfxKFA+Lyl7Hu8askkeYoRQtWyfXaWruwwJqbKeKbjRqM0YE3
- mECzFUxJqBHarRb9iGdXmdfJKjBX6gad7H7ppheI6qT3Fmhu6CE7S5L+sNf37zr3Djvn
- d4GQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694166329; x=1694771129;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=xfuX/wtvWACG6RTooNCOtf7/3iq0sILbAKOhnwnHpbI=;
- b=EfoadiB82AJWJCSFy5BuvUp/w3PyEKCy+uB34da+KNR9BJVjVCgNvp9FtB3gCLFHT3
- UV5UnDke6gjr/7Pwa0cTV+vdQu4R8MdMeaKS13wwWiGEKY6aaM+01FbGK215GUrF4s0B
- gzSQ8eozTB6Ucw8Nhsw+ixKPbvOMI6ELBAW0nscm/C1ZkANMHLQT8ZwCvUerqppdcWl+
- Qzg+gF4OrsBs+tVNQMRyPCwLBbJxNcptOxsQlxMRadn9JKYvm/8NZUVP/n8GjZxaoAJC
- d1ru1xWG0Nf9VF4J75d/c0ykd+svA8dASqLjVYOjQ3Vl4aAGNJaw2IlCjj/RRrYUxhN1
- pw3w==
-X-Gm-Message-State: AOJu0YzHNXXsiMS3feXXNhz1/oXxKav3WnX6V0TMFNiaQr5Cg4N1oyFj
- DSZNe2m6HIu6pq0TMs+FOErwcdtxMSVLbo3VaGA78A==
-X-Google-Smtp-Source: AGHT+IFTzFGecBJEvO0UDNKNihi9f1Hf/rDRQMkqi6L3ByZkWRKhBL2nK+qFwLLs8yzZfX8EobuuCKedEHuxLQcaDsM=
-X-Received: by 2002:a05:6402:2023:b0:523:aef9:3b7b with SMTP id
- ay3-20020a056402202300b00523aef93b7bmr1490001edb.4.1694166329551; Fri, 08 Sep
- 2023 02:45:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qeYDZ-0006wt-Lu; Fri, 08 Sep 2023 05:56:01 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qeYDW-0006OG-VO; Fri, 08 Sep 2023 05:56:01 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 30CDD200C9;
+ Fri,  8 Sep 2023 12:56:45 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id 294FB2690F;
+ Fri,  8 Sep 2023 12:55:56 +0300 (MSK)
+Received: (nullmailer pid 275943 invoked by uid 1000);
+ Fri, 08 Sep 2023 09:55:55 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 01/23] qemu-img: omit errno value in error message
+Date: Fri,  8 Sep 2023 12:54:58 +0300
+Message-Id: <20230908095520.275866-2-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20230908095520.275866-1-mjt@tls.msk.ru>
+References: <20230908095520.275866-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-References: <20230831190052.129045-1-coltonlewis@google.com>
- <7d3615d0-d501-a28c-eebc-b3f7a599fc23@tls.msk.ru>
-In-Reply-To: <7d3615d0-d501-a28c-eebc-b3f7a599fc23@tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 8 Sep 2023 10:45:18 +0100
-Message-ID: <CAFEAcA-9kGf2SDs9Yp5K-AgqV-41G9YQL6OVzfke6eHNBFt7CA@mail.gmail.com>
-Subject: Re: [PATCH] arm64: Restore trapless ptimer access
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Colton Lewis <coltonlewis@google.com>, qemu-devel@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>, qemu-arm@nongnu.org, kvm@vger.kernel.org, 
- Andrew Jones <andrew.jones@linux.dev>, qemu-trivial@nongnu.org, 
- qemu-stable <qemu-stable@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,57 +47,116 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Sep 2023 09:45:41 -0000
+X-List-Received-Date: Fri, 08 Sep 2023 09:56:07 -0000
 
-On Thu, 7 Sept 2023 at 20:31, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
-> 31.08.2023 22:00, Colton Lewis wrote:
-> > Due to recent KVM changes, QEMU is setting a ptimer offset resulting
-> > in unintended trap and emulate access and a consequent performance
-> > hit. Filter out the PTIMER_CNT register to restore trapless ptimer
-> > access.
-> >
-> > Quoting Andrew Jones:
-> >
-> > Simply reading the CNT register and writing back the same value is
-> > enough to set an offset, since the timer will have certainly moved
-> > past whatever value was read by the time it's written.  QEMU
-> > frequently saves and restores all registers in the get-reg-list array,
-> > unless they've been explicitly filtered out (with Linux commit
-> > 680232a94c12, KVM_REG_ARM_PTIMER_CNT is now in the array). So, to
-> > restore trapless ptimer accesses, we need a QEMU patch to filter out
-> > the register.
-> >
-> > See
-> > https://lore.kernel.org/kvmarm/gsntttsonus5.fsf@coltonlewis-kvm.c.googlers.com/T/#m0770023762a821db2a3f0dd0a7dc6aa54e0d0da9
-> > for additional context.
-> >
-> > Signed-off-by: Andrew Jones <andrew.jones@linux.dev>
-> > ---
-> >   target/arm/kvm64.c | 1 +
-> >   1 file changed, 1 insertion(+)
-> >
-> > diff --git a/target/arm/kvm64.c b/target/arm/kvm64.c
-> > index 4d904a1d11..2dd46e0a99 100644
-> > --- a/target/arm/kvm64.c
-> > +++ b/target/arm/kvm64.c
-> > @@ -672,6 +672,7 @@ typedef struct CPRegStateLevel {
-> >    */
-> >   static const CPRegStateLevel non_runtime_cpregs[] = {
-> >       { KVM_REG_ARM_TIMER_CNT, KVM_PUT_FULL_STATE },
-> > +    { KVM_REG_ARM_PTIMER_CNT, KVM_PUT_FULL_STATE },
-> >   };
-> >
-> >   int kvm_arm_cpreg_level(uint64_t regidx)
->
-> While this patch itself is one-liner and trivial and all, I'd rather
-> not apply this to the trivial-patches tree, - it requires a little
-> bit more than trivial expertise in this area.
->
-> So basically, ping for qemu-arm@ ? :)
+I'm getting io-qcow2-244 test failure on mips*
+due to output mismatch:
 
-It is on my to-review/apply queue, yes.
+  Take an internal snapshot:
+ -qemu-img: Could not create snapshot 'test': -95 (Operation not supported)
+ +qemu-img: Could not create snapshot 'test': -122 (Operation not supported)
+  No errors were found on the image.
 
-thanks
--- PMM
+This is because errno values might be different across
+different architectures.
+
+This error message in qemu-img.c is the only one which
+prints errno directly, all the rest print strerror(errno)
+only.  Fix this error message and the expected output
+of the 3 test cases too.
+
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ qemu-img.c                 | 4 ++--
+ tests/qemu-iotests/080.out | 6 +++---
+ tests/qemu-iotests/112.out | 6 +++---
+ tests/qemu-iotests/244.out | 2 +-
+ 4 files changed, 9 insertions(+), 9 deletions(-)
+
+diff --git a/qemu-img.c b/qemu-img.c
+index 27f48051b0..0756dbb835 100644
+--- a/qemu-img.c
++++ b/qemu-img.c
+@@ -3468,8 +3468,8 @@ static int img_snapshot(int argc, char **argv)
+ 
+         ret = bdrv_snapshot_create(bs, &sn);
+         if (ret) {
+-            error_report("Could not create snapshot '%s': %d (%s)",
+-                snapshot_name, ret, strerror(-ret));
++            error_report("Could not create snapshot '%s': %s",
++                snapshot_name, strerror(-ret));
+         }
+         break;
+ 
+diff --git a/tests/qemu-iotests/080.out b/tests/qemu-iotests/080.out
+index 45ab01db8e..d8acb3e723 100644
+--- a/tests/qemu-iotests/080.out
++++ b/tests/qemu-iotests/080.out
+@@ -33,7 +33,7 @@ qemu-io: can't open device TEST_DIR/t.qcow2: Snapshot table offset invalid
+ 
+ == Hitting snapshot table size limit ==
+ Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864
+-qemu-img: Could not create snapshot 'test': -27 (File too large)
++qemu-img: Could not create snapshot 'test': File too large
+ read 512/512 bytes at offset 0
+ 512 bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
+ 
+@@ -56,8 +56,8 @@ qemu-io: can't open device TEST_DIR/t.qcow2: Backing file name too long
+ Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864
+ wrote 512/512 bytes at offset 0
+ 512 bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
+-qemu-img: Could not create snapshot 'test': -27 (File too large)
+-qemu-img: Could not create snapshot 'test': -11 (Resource temporarily unavailable)
++qemu-img: Could not create snapshot 'test': File too large
++qemu-img: Could not create snapshot 'test': Resource temporarily unavailable
+ 
+ == Invalid snapshot L1 table offset ==
+ Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864
+diff --git a/tests/qemu-iotests/112.out b/tests/qemu-iotests/112.out
+index dd3cc4383c..ebf426febc 100644
+--- a/tests/qemu-iotests/112.out
++++ b/tests/qemu-iotests/112.out
+@@ -32,7 +32,7 @@ Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864
+ refcount bits: 1
+ wrote 512/512 bytes at offset 0
+ 512 bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
+-qemu-img: Could not create snapshot 'foo': -22 (Invalid argument)
++qemu-img: Could not create snapshot 'foo': Invalid argument
+ Leaked cluster 6 refcount=1 reference=0
+ 
+ 1 leaked clusters were found on the image.
+@@ -44,7 +44,7 @@ Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864
+ refcount bits: 2
+ wrote 512/512 bytes at offset 0
+ 512 bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
+-qemu-img: Could not create snapshot 'baz': -22 (Invalid argument)
++qemu-img: Could not create snapshot 'baz': Invalid argument
+ Leaked cluster 7 refcount=1 reference=0
+ 
+ 1 leaked clusters were found on the image.
+@@ -75,7 +75,7 @@ Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864
+ refcount bits: 64
+ wrote 512/512 bytes at offset 0
+ 512 bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
+-qemu-img: Could not create snapshot 'foo': -22 (Invalid argument)
++qemu-img: Could not create snapshot 'foo': Invalid argument
+ Leaked cluster 5 refcount=18446744073709551615 reference=1
+ Leaked cluster 6 refcount=1 reference=0
+ 
+diff --git a/tests/qemu-iotests/244.out b/tests/qemu-iotests/244.out
+index 5e03add054..4815a489b0 100644
+--- a/tests/qemu-iotests/244.out
++++ b/tests/qemu-iotests/244.out
+@@ -41,7 +41,7 @@ write failed: Operation not supported
+ No errors were found on the image.
+ 
+ Take an internal snapshot:
+-qemu-img: Could not create snapshot 'test': -95 (Operation not supported)
++qemu-img: Could not create snapshot 'test': Operation not supported
+ No errors were found on the image.
+ 
+ === Standalone image with external data file (efficient) ===
+-- 
+2.39.2
+
 
