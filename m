@@ -1,76 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qeW2B-00015m-9a
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 03:36:07 -0400
+	id 1qeWMj-00055t-Vj
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 03:57:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qeW29-00014i-9s
- for qemu-trivial@nongnu.org; Fri, 08 Sep 2023 03:36:05 -0400
-Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qeW25-00012w-9n
- for qemu-trivial@nongnu.org; Fri, 08 Sep 2023 03:36:05 -0400
-Received: by mail-ed1-x530.google.com with SMTP id
- 4fb4d7f45d1cf-52bcb8b199aso2383660a12.3
- for <qemu-trivial@nongnu.org>; Fri, 08 Sep 2023 00:36:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694158559; x=1694763359; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=R1B5WzyLjhzRLrp2qu5a0XUbuPsS3q5x4g0m+DQga1I=;
- b=dLTM4bUDq8zm/7abm6frg6XF8D7tNNUEezzfHgM3qiBC96lO6dS0R/fi2VYT6H+0J8
- 2tYJy2DeSdoiKI3lGojczKXvf/8ekmdt/3SQW0mK7cKxb7kv1MnEpKcbLpJDCmAyh9GU
- qIe1pbtMhGl5/kaXU6PX/zfDEeVHt8SprQZ8ZfiEm6gSRuKbKUqJuTPziID3wluscZHD
- jDEWznZRQJ1Igknou7l+uUghMzcyDTiqjH8FbuX6F+ZF6xLb/zH5/iAQbzbOONqeeITM
- c9dPC/r0VIRkZ7t7A6mqhb/p8kCzPOR3v7DXX1qx+VY59C4KRHuQQHFYe9YGTS3rgNCE
- aIVQ==
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1qeWMi-00053A-6t
+ for qemu-trivial@nongnu.org; Fri, 08 Sep 2023 03:57:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1qeWMe-0007Mu-FB
+ for qemu-trivial@nongnu.org; Fri, 08 Sep 2023 03:57:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1694159835;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=85kh3TLzxvqW9aCAsaWAj32WwGP0cmTpAx49VzXkwGs=;
+ b=h8GWMMCUAaarnK7Avu/is3+19ZO/dSw6fk7ld+DnvAlnPv7D3oIioRZ5RNqfRHXimXRIZp
+ HmsNCsO1VkznFf8bkFPMTYdYwaaH6Q4wRAnWeD4d5JB5+I/TMcsVMwjqyastKWqgiA6Fs7
+ wU1ga0bDB9D9tKoc8hPLkXNkuBEZwcQ=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-517-jXKz0cxUM_qG9-OSblPvtQ-1; Fri, 08 Sep 2023 03:57:13 -0400
+X-MC-Unique: jXKz0cxUM_qG9-OSblPvtQ-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-401d9abf21cso14553435e9.0
+ for <qemu-trivial@nongnu.org>; Fri, 08 Sep 2023 00:57:13 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694158559; x=1694763359;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=R1B5WzyLjhzRLrp2qu5a0XUbuPsS3q5x4g0m+DQga1I=;
- b=dB37wPnydoWYPDE1RZSFJE7w43lZZQnJZT080i34++tw/NCPOQRviFEh59IC7UQPNu
- 7VWyz1WQoP0U46UcvJFTxdKG+8zwX+eLxnf0Lq4yyzihUnouyM5kgeC3PCk6hxRwHB13
- V9HkjDC5JMdfBR6c8W29l/0qv6IkTt/wjWiFUMs2+MtCkqRgqOLrMaOMjdQtA5VYqgL9
- HUQtNoDNJApsPjzPEXEpaau/r/LBsVvkjPFKNBYe51MCi9Y2kJIT33ojPmRgTl6JbZFT
- R7bTJ8KZUr8RmafXs+7pgeBSSo0Q1aD/MgMNGs2z0oAl9BtAejxBqEp2k1QPlOB/xTqD
- igIg==
-X-Gm-Message-State: AOJu0Yzr672fn50CcY7xflWVQPqVrNvAHAXV2s5PNZwkwoq1NkjNqtF/
- USbmQfam1RrC2DZ1OypuB+tK5Q==
-X-Google-Smtp-Source: AGHT+IHSUUIn+HcJmizUpSv8pCOH1qEoTyKtA+e2GAWjLYdi1CFgZ9zrq/uK5HIl8mboQTQve38ZLg==
-X-Received: by 2002:aa7:d158:0:b0:523:ba10:d795 with SMTP id
- r24-20020aa7d158000000b00523ba10d795mr1292491edo.11.1694158559541; 
- Fri, 08 Sep 2023 00:35:59 -0700 (PDT)
-Received: from [192.168.69.115]
- (lfb24-h01-176-173-167-175.dsl.sta.abo.bbox.fr. [176.173.167.175])
+ d=1e100.net; s=20230601; t=1694159832; x=1694764632;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=85kh3TLzxvqW9aCAsaWAj32WwGP0cmTpAx49VzXkwGs=;
+ b=IRsxSSGci2Fy2JT6Ype+gQ7h5wPmdET6NqKtTURizAWbJA6BzsORpzgDlYajuHmDlk
+ MOsf1IWfeFttZ24DQj3/ho1tIigo4F/zOMw/x15bVCsXrLe4D1VbULmLfw7up0bnJIXb
+ kzi74MkXjalgFcggIsoEIg9Uau5ImIVN+0XmGu+oUkHsmMMeBlLuJp9KuZeRd1MmBtYT
+ b/MLMgxLQ9Tw/URkBpIYbcQKv+SJhPwRmLqeOxju7XCYQlcqJfQzrk4TYCMdSQN5WQbE
+ MhSOAXchkN17tfKZx8TLvuTqSWbiL8sTV7BuGHO3hVm/zcGEdWkCT+D07CzulEWQg0WA
+ 8kTA==
+X-Gm-Message-State: AOJu0YxcQEpB+STKRWtKTm2u9HJlRdTffOT1wT/WpN8RzskxHejnepLe
+ 66GIKMOhA/YphO7k3gAzHog0ooT19YKFPd5gB0o5q+4yvHxoW6CLzfdNv8EIjPrRHVvakGDCPZx
+ Dig/vxnjgQ3ue4iPekA==
+X-Received: by 2002:a1c:f70b:0:b0:3fd:3006:410b with SMTP id
+ v11-20020a1cf70b000000b003fd3006410bmr1522840wmh.34.1694159832368; 
+ Fri, 08 Sep 2023 00:57:12 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF1bFDhyAcM/TpRX+nloRXki9u7ZRoGvlb2nayQtWsenrZqHA9/TumLkp/pgEY2PEQ/j3b2pQ==
+X-Received: by 2002:a1c:f70b:0:b0:3fd:3006:410b with SMTP id
+ v11-20020a1cf70b000000b003fd3006410bmr1522824wmh.34.1694159831825; 
+ Fri, 08 Sep 2023 00:57:11 -0700 (PDT)
+Received: from [192.168.10.118] ([93.56.171.164])
  by smtp.gmail.com with ESMTPSA id
- dy24-20020a05640231f800b00523a43f9b1dsm649039edb.22.2023.09.08.00.35.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 08 Sep 2023 00:35:59 -0700 (PDT)
-Message-ID: <5b9caa3a-865c-d1dd-8b1a-5d0e49bf3abb@linaro.org>
-Date: Fri, 8 Sep 2023 09:35:57 +0200
+ q12-20020a05600c040c00b003fe539b83f2sm4481946wmb.42.2023.09.08.00.57.10
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 08 Sep 2023 00:57:11 -0700 (PDT)
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] block: mark aio_poll as non-coroutine
+Date: Fri,  8 Sep 2023 09:54:58 +0200
+Message-ID: <20230908075458.527013-1-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.0
-Subject: Re: [PATCH] hw/display/xlnx_dp: update comments
-Content-Language: en-US
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20230907203440.257845-1-mjt@tls.msk.ru>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230907203440.257845-1-mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::530;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x530.google.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.473,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,18 +89,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Sep 2023 07:36:05 -0000
+X-List-Received-Date: Fri, 08 Sep 2023 07:57:20 -0000
 
-On 7/9/23 22:34, Michael Tokarev wrote:
-> From: Peter Maydell <peter.maydell@linaro.org>
-> 
-> Clarify somewhat misleading code comments.
-> 
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> ---
->   hw/display/xlnx_dp.c | 11 +++++++----
->   1 file changed, 7 insertions(+), 4 deletions(-)
+It is forbidden to block on the event loop during a coroutine, as that
+can cause deadlocks due to recursive locking.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ include/block/aio.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/block/aio.h b/include/block/aio.h
+index 32042e8905a..f1d0a37d68f 100644
+--- a/include/block/aio.h
++++ b/include/block/aio.h
+@@ -468,7 +468,7 @@ void aio_dispatch(AioContext *ctx);
+  * or more AIO events have completed, to ensure something has moved
+  * before returning.
+  */
+-bool aio_poll(AioContext *ctx, bool blocking);
++bool no_coroutine_fn aio_poll(AioContext *ctx, bool blocking);
+ 
+ /* Register a file descriptor and associated callbacks.  Behaves very similarly
+  * to qemu_set_fd_handler.  Unlike qemu_set_fd_handler, these callbacks will
+-- 
+2.41.0
 
 
