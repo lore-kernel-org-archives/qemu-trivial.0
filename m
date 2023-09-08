@@ -1,35 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qeYFS-0002nl-Tm
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 05:57:59 -0400
+	id 1qeYFT-0002oa-DS
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 05:58:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qeYF6-0002GI-8H; Fri, 08 Sep 2023 05:57:39 -0400
+ id 1qeYF6-0002GH-7Y; Fri, 08 Sep 2023 05:57:39 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qeYF2-00076X-Kr; Fri, 08 Sep 2023 05:57:36 -0400
+ id 1qeYF2-00076O-42; Fri, 08 Sep 2023 05:57:34 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 7DE98200DD;
+ by isrv.corpit.ru (Postfix) with ESMTP id 36A70200DC;
  Fri,  8 Sep 2023 12:56:49 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 8126826924;
+ by tsrv.corpit.ru (Postfix) with SMTP id 42A5F26923;
  Fri,  8 Sep 2023 12:56:00 +0300 (MSK)
-Received: (nullmailer pid 276003 invoked by uid 1000);
+Received: (nullmailer pid 276000 invoked by uid 1000);
  Fri, 08 Sep 2023 09:55:56 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+Cc: qemu-trivial@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 21/23] tests/qtest/usb-hcd: Remove the empty "init" tests
-Date: Fri,  8 Sep 2023 12:55:18 +0300
-Message-Id: <20230908095520.275866-22-mjt@tls.msk.ru>
+Subject: [PULL 20/23] target/ppc: use g_free() in test_opcode_table()
+Date: Fri,  8 Sep 2023 12:55:17 +0300
+Message-Id: <20230908095520.275866-21-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230908095520.275866-1-mjt@tls.msk.ru>
 References: <20230908095520.275866-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -50,69 +48,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Sep 2023 09:57:49 -0000
+X-List-Received-Date: Fri, 08 Sep 2023 09:57:54 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Daniel Henrique Barboza <danielhb413@gmail.com>
 
-These tests do nothing additional compared to the other test,
-so let's remove the empty functions to avoid wasting some few
-precious test cycles here.
+table[i] is allocated in create_new_table() using g_new().
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Use g_free(table[i]) instead of free(table[i]) to comply with QEMU low
+level memory management guidelines.
+
+Signed-off-by: Daniel Henrique Barboza <danielhb413@gmail.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+[Mjt: minor commit comment tweak]
 ---
- tests/qtest/usb-hcd-uhci-test.c | 5 -----
- tests/qtest/usb-hcd-xhci-test.c | 6 ------
- 2 files changed, 11 deletions(-)
+ target/ppc/translate.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/qtest/usb-hcd-uhci-test.c b/tests/qtest/usb-hcd-uhci-test.c
-index 28751f53da..4446555f08 100644
---- a/tests/qtest/usb-hcd-uhci-test.c
-+++ b/tests/qtest/usb-hcd-uhci-test.c
-@@ -17,10 +17,6 @@
- 
- static QOSState *qs;
- 
--static void test_uhci_init(void)
--{
--}
--
- static void test_port(int port)
- {
-     struct qhc uhci;
-@@ -71,7 +67,6 @@ int main(int argc, char **argv)
-         return 0;
-     }
- 
--    qtest_add_func("/uhci/pci/init", test_uhci_init);
-     qtest_add_func("/uhci/pci/port1", test_port_1);
-     qtest_add_func("/uhci/pci/hotplug", test_uhci_hotplug);
-     if (qtest_has_device("usb-storage")) {
-diff --git a/tests/qtest/usb-hcd-xhci-test.c b/tests/qtest/usb-hcd-xhci-test.c
-index 80bc039446..0cccfd85a6 100644
---- a/tests/qtest/usb-hcd-xhci-test.c
-+++ b/tests/qtest/usb-hcd-xhci-test.c
-@@ -11,11 +11,6 @@
- #include "libqtest-single.h"
- #include "libqos/usb.h"
- 
--
--static void test_xhci_init(void)
--{
--}
--
- static void test_xhci_hotplug(void)
- {
-     usb_test_hotplug(global_qtest, "xhci", "1", NULL);
-@@ -54,7 +49,6 @@ int main(int argc, char **argv)
- 
-     g_test_init(&argc, &argv, NULL);
- 
--    qtest_add_func("/xhci/pci/init", test_xhci_init);
-     qtest_add_func("/xhci/pci/hotplug", test_xhci_hotplug);
-     if (qtest_has_device("usb-uas")) {
-         qtest_add_func("/xhci/pci/hotplug/usb-uas", test_usb_uas_hotplug);
+diff --git a/target/ppc/translate.c b/target/ppc/translate.c
+index 6b242ae0a6..5c28afbbb8 100644
+--- a/target/ppc/translate.c
++++ b/target/ppc/translate.c
+@@ -7158,7 +7158,7 @@ static int test_opcode_table(opc_handler_t **table, int len)
+                 tmp = test_opcode_table(ind_table(table[i]),
+                     PPC_CPU_INDIRECT_OPCODES_LEN);
+                 if (tmp == 0) {
+-                    free(table[i]);
++                    g_free(table[i]);
+                     table[i] = &invalid_handler;
+                 } else {
+                     count++;
 -- 
 2.39.2
 
