@@ -1,39 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qeYSR-0006d6-WC
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 06:11:24 -0400
+	id 1qeb6N-0001dk-N2
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 09:00:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qeYSQ-0006cj-1k; Fri, 08 Sep 2023 06:11:22 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qeYSM-0001NC-Qy; Fri, 08 Sep 2023 06:11:21 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 0BBA620129;
- Fri,  8 Sep 2023 13:12:05 +0300 (MSK)
-Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 0D81326939;
- Fri,  8 Sep 2023 13:11:16 +0300 (MSK)
-Received: (nullmailer pid 276785 invoked by uid 1000);
- Fri, 08 Sep 2023 10:11:15 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Subject: [PULL v2 00/22] Trivial patches for 2023-09-08
-Date: Fri,  8 Sep 2023 13:11:09 +0300
-Message-Id: <20230908101109.276768-1-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.2
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qeb6L-0001dD-Vi
+ for qemu-trivial@nongnu.org; Fri, 08 Sep 2023 09:00:46 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qeb6J-000252-HB
+ for qemu-trivial@nongnu.org; Fri, 08 Sep 2023 09:00:45 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-31768ce2e81so1920610f8f.1
+ for <qemu-trivial@nongnu.org>; Fri, 08 Sep 2023 06:00:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1694178042; x=1694782842; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=vyqE/4f+pcS0/D+aGnrXy0k/CeoXT9vuXK8tKhXEawE=;
+ b=iuqDNhSeg7Q+aP5yj11+uWaU8R6w/4BZUPjCQv7SQXgysukZmRd78wtc0a1khbGyVg
+ QPP5o2a2W7wjr7HX4QAnE1Mf9DPXqkj0LuCKAJu9qyaXk5PHnQbe6Q/c+/QAKsSGJsGO
+ B5fwWcMJ8gqA7CXsxZ4BkQwlb2syWxPsExPNcyOW+keCNcxGA3I0OqUBItS1rBaORruO
+ YBEEpP/l8FxltAfx013BxByfkd3rlkBofK4voA//HIIC/7HtPh7Pa+KM5uNDc9SKRhja
+ ERvHpMi8Dac9Yvyb3EUoV6aPSZCHa0LJL64dZqsnr8X2OVMBbqO7hzIaaYutgVcqZmwO
+ zh3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1694178042; x=1694782842;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=vyqE/4f+pcS0/D+aGnrXy0k/CeoXT9vuXK8tKhXEawE=;
+ b=Hzn3533Gltdew+tfrq1H3d9MPRwpJdR3ffTLqt2ILmjvVL0iTt/nUh7D3uc0R7y6UV
+ PzaLKccYfVf13EPSe+rcenFL7AFf8HgVjSyfRhGXJIIYfkzzsXwtOnamnj+AiGLoKfi6
+ B3SuB2MklgtU9WEinRltG3jFcRuvV2lWm77mkTOmBoTGMPY/xB3LCP8n6wOy3qaHpUuS
+ ZB1uOUt0jf70l8RpLJngTIO5xeD0qqeuI4KY9mEAulU/q1fSrBGvr4jGDjs0ecunFebr
+ McKcoHH9IVZYJb9SxG4RBcXkxoPL5Ll8ndNQAQJrT0t6XTw435fvMa2zpQsz53Nj7ZbX
+ aJuQ==
+X-Gm-Message-State: AOJu0Yyvhv8cRH1nYhH1JDZpO1hYKPjjNU1JEntJmMKkaW9JyXByanBv
+ lx/txX6ubSK8MKJHIk5rt8HqOH/sF77YeAw9ddQSEA==
+X-Google-Smtp-Source: AGHT+IGW9nyZnH9/LAXQvfyESQ5rz0/Ne+K2IyHeGWmVYxfsDCQQt18T54SFEO3B2qNdfZRtsi6hXlRB7tzplt4nGCc=
+X-Received: by 2002:a5d:4b83:0:b0:313:dee2:e052 with SMTP id
+ b3-20020a5d4b83000000b00313dee2e052mr2020172wrt.26.1694178041770; Fri, 08 Sep
+ 2023 06:00:41 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20230831190052.129045-1-coltonlewis@google.com>
+In-Reply-To: <20230831190052.129045-1-coltonlewis@google.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 8 Sep 2023 14:00:30 +0100
+Message-ID: <CAFEAcA9x9OwCEd5s+q-Sk6mY2LcdmVv=9bCMtF_Ah7d5BmvMUg@mail.gmail.com>
+Subject: Re: [PATCH] arm64: Restore trapless ptimer access
+To: Colton Lewis <coltonlewis@google.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-arm@nongnu.org, 
+ kvm@vger.kernel.org, Andrew Jones <andrew.jones@linux.dev>,
+ qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -46,230 +77,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Sep 2023 10:11:22 -0000
+X-List-Received-Date: Fri, 08 Sep 2023 13:00:46 -0000
 
-The following changes since commit 03a3a62fbd0aa5227e978eef3c67d3978aec9e5f:
+On Thu, 31 Aug 2023 at 20:01, Colton Lewis <coltonlewis@google.com> wrote:
+>
+> Due to recent KVM changes, QEMU is setting a ptimer offset resulting
+> in unintended trap and emulate access and a consequent performance
+> hit. Filter out the PTIMER_CNT register to restore trapless ptimer
+> access.
+>
+> Quoting Andrew Jones:
+>
+> Simply reading the CNT register and writing back the same value is
+> enough to set an offset, since the timer will have certainly moved
+> past whatever value was read by the time it's written.  QEMU
+> frequently saves and restores all registers in the get-reg-list array,
+> unless they've been explicitly filtered out (with Linux commit
+> 680232a94c12, KVM_REG_ARM_PTIMER_CNT is now in the array). So, to
+> restore trapless ptimer accesses, we need a QEMU patch to filter out
+> the register.
+>
+> See
+> https://lore.kernel.org/kvmarm/gsntttsonus5.fsf@coltonlewis-kvm.c.googlers.com/T/#m0770023762a821db2a3f0dd0a7dc6aa54e0d0da9
+> for additional context.
+>
+> Signed-off-by: Andrew Jones <andrew.jones@linux.dev>
+> ---
 
-  Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into staging (2023-09-07 10:29:06 -0400)
 
-are available in the Git repository at:
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+Applied to target-arm.next, thanks.
 
-for you to fetch changes up to 95bef686e490bc3afc3f51f5fc6e20bf260b938c:
-
-  qxl: don't assert() if device isn't yet initialized (2023-09-08 13:08:52 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2023-09-08
-
-There are some more or less minor things here and there,
-and a bunch of spelling fixes (the ones which were reviewed,
-there are some which are pending still).
-
-v2: omit 01/23 "qemu-img: omit errno value in error message"
-which should go via the block tree.
-
-----------------------------------------------------------------
-Daniel Henrique Barboza (2):
-      hw/ppc: use g_free() in spapr_tce_table_post_load()
-      target/ppc: use g_free() in test_opcode_table()
-
-Marc-André Lureau (1):
-      qxl: don't assert() if device isn't yet initialized
-
-Markus Armbruster (2):
-      docs tests: Fix use of migrate_set_parameter
-      tests/qtest/test-hmp: Fix migrate_set_parameter xbzrle-cache-size test
-
-Michael Tokarev (10):
-      hexagon: spelling fixes
-      riscv: spelling fixes
-      xen: spelling fix
-      audio: spelling fixes
-      include/: spelling fixes
-      scripts/: spelling fixes
-      tests/: spelling fixes
-      qga/: spelling fixes
-      misc/other: spelling fixes
-      block: spelling fixes
-
-Peter Maydell (1):
-      hw/display/xlnx_dp: update comments
-
-Philippe Mathieu-Daudé (1):
-      accel/tcg: Fix typo in translator_io_start() description
-
-Thomas Huth (5):
-      trace-events: Fix the name of the tracing.rst file
-      qemu-options.hx: Rephrase the descriptions of the -hd* and -cdrom options
-      trivial: Simplify the spots that use TARGET_BIG_ENDIAN as a numeric value
-      tests/qtest/usb-hcd: Remove the empty "init" tests
-      hw/net/vmxnet3: Fix guest-triggerable assert()
-
- audio/mixeng.h                                    |  2 +-
- backends/tpm/tpm_ioctl.h                          |  2 +-
- block.c                                           |  2 +-
- block/block-copy.c                                |  4 ++--
- block/export/vduse-blk.c                          |  2 +-
- block/export/vhost-user-blk-server.c              |  2 +-
- block/export/vhost-user-blk-server.h              |  2 +-
- block/file-posix.c                                |  8 ++++----
- block/graph-lock.c                                |  2 +-
- block/io.c                                        |  2 +-
- block/linux-aio.c                                 |  2 +-
- block/mirror.c                                    |  2 +-
- block/qcow2-refcount.c                            |  2 +-
- block/vhdx.c                                      |  2 +-
- block/vhdx.h                                      |  4 ++--
- bsd-user/trace-events                             |  2 +-
- chardev/char-socket.c                             |  6 +++---
- chardev/char.c                                    |  2 +-
- cpu.c                                             |  6 +-----
- crypto/afalg.c                                    |  2 +-
- crypto/block-luks.c                               |  6 +++---
- crypto/der.c                                      |  2 +-
- crypto/der.h                                      |  6 +++---
- docs/multi-thread-compression.txt                 | 12 ++++++------
- docs/rdma.txt                                     |  2 +-
- ebpf/trace-events                                 |  2 +-
- hw/audio/fmopl.c                                  |  8 ++++----
- hw/audio/fmopl.h                                  |  2 +-
- hw/audio/gusemu_hal.c                             |  4 ++--
- hw/audio/intel-hda-defs.h                         |  4 ++--
- hw/display/qxl.c                                  |  5 ++++-
- hw/display/xlnx_dp.c                              |  9 ++++++---
- hw/microblaze/boot.c                              |  9 ++-------
- hw/mips/jazz.c                                    | 10 ++--------
- hw/mips/malta.c                                   | 21 ++++-----------------
- hw/mips/mipssim.c                                 |  9 +--------
- hw/net/vmxnet3.c                                  |  5 ++++-
- hw/nios2/boot.c                                   |  9 ++-------
- hw/nubus/trace-events                             |  2 +-
- hw/ppc/spapr_iommu.c                              |  2 +-
- hw/riscv/microchip_pfsoc.c                        |  2 +-
- hw/riscv/virt.c                                   |  4 ++--
- hw/xen/xen_pvdev.c                                |  2 +-
- hw/xtensa/sim.c                                   |  7 +------
- hw/xtensa/xtfpga.c                                | 10 +++-------
- include/block/block_int-common.h                  |  2 +-
- include/chardev/char-fe.h                         |  4 ++--
- include/crypto/akcipher.h                         |  2 +-
- include/crypto/ivgen.h                            |  4 ++--
- include/exec/translator.h                         |  2 +-
- include/hw/acpi/aml-build.h                       |  2 +-
- include/hw/acpi/pc-hotplug.h                      |  2 +-
- include/hw/acpi/vmgenid.h                         |  2 +-
- include/hw/boards.h                               |  6 +++---
- include/hw/char/avr_usart.h                       |  2 +-
- include/hw/clock.h                                |  2 +-
- include/hw/cxl/cxl_device.h                       |  2 +-
- include/hw/hyperv/vmbus.h                         |  2 +-
- include/hw/misc/macio/pmu.h                       |  2 +-
- include/hw/net/mii.h                              |  2 +-
- include/hw/pci-host/dino.h                        |  2 +-
- include/hw/pci/pcie_aer.h                         |  2 +-
- include/hw/riscv/riscv_hart.h                     |  2 +-
- include/hw/ssi/xilinx_spips.h                     |  2 +-
- include/hw/virtio/virtio-net.h                    |  2 +-
- include/sysemu/cryptodev-vhost.h                  |  2 +-
- include/sysemu/cryptodev.h                        |  6 +++---
- include/sysemu/iothread.h                         |  2 +-
- include/sysemu/stats.h                            |  2 +-
- include/sysemu/tpm_backend.h                      |  2 +-
- nbd/client-connection.c                           |  2 +-
- net/checksum.c                                    |  4 ++--
- net/filter.c                                      |  6 +++---
- net/vhost-vdpa.c                                  |  8 ++++----
- qemu-options.hx                                   | 20 ++++++++++++--------
- qga/channel-posix.c                               |  2 +-
- qga/commands-posix-ssh.c                          |  2 +-
- qga/commands-posix.c                              |  2 +-
- qga/commands-win32.c                              |  4 ++--
- qga/main.c                                        |  2 +-
- qga/vss-win32/install.cpp                         |  4 ++--
- scripts/checkpatch.pl                             |  2 +-
- scripts/ci/gitlab-pipeline-status                 |  2 +-
- scripts/codeconverter/codeconverter/qom_macros.py |  2 +-
- scripts/oss-fuzz/minimize_qtest_trace.py          |  8 ++++----
- scripts/performance/topN_callgrind.py             |  2 +-
- scripts/performance/topN_perf.py                  |  2 +-
- scripts/qapi/gen.py                               |  2 +-
- scripts/replay-dump.py                            |  2 +-
- scripts/simplebench/bench_block_job.py            |  2 +-
- target/arm/cpu.h                                  | 12 ++----------
- target/hexagon/README                             |  2 +-
- target/hexagon/fma_emu.c                          |  2 +-
- target/hexagon/idef-parser/README.rst             |  2 +-
- target/hexagon/idef-parser/idef-parser.h          |  2 +-
- target/hexagon/idef-parser/parser-helpers.c       |  6 +++---
- target/hexagon/imported/alu.idef                  |  8 ++++----
- target/hexagon/imported/macros.def                |  2 +-
- target/hexagon/imported/mmvec/ext.idef            | 10 +++++-----
- target/ppc/translate.c                            |  2 +-
- target/riscv/cpu.h                                |  2 +-
- target/riscv/cpu_bits.h                           |  4 ++--
- target/riscv/csr.c                                |  4 ++--
- target/riscv/debug.c                              | 10 +++++-----
- target/riscv/insn_trans/trans_rvf.c.inc           |  4 ++--
- target/riscv/insn_trans/trans_rvv.c.inc           |  4 ++--
- target/riscv/insn_trans/trans_rvzfh.c.inc         |  4 ++--
- target/riscv/monitor.c                            |  2 +-
- target/s390x/kvm/trace-events                     |  2 +-
- tests/avocado/acpi-bits.py                        |  4 ++--
- tests/avocado/acpi-bits/bits-tests/testacpi.py2   |  4 ++--
- tests/decode/err_pattern_group_ident2.decode      |  2 +-
- tests/docker/common.rc                            |  2 +-
- tests/migration/guestperf-batch.py                |  2 +-
- tests/migration/guestperf.py                      |  2 +-
- tests/plugin/mem.c                                |  2 +-
- tests/qapi-schema/bad-if-not.json                 |  2 +-
- tests/qemu-iotests/029                            |  2 +-
- tests/qemu-iotests/040                            |  8 ++++----
- tests/qemu-iotests/046                            |  2 +-
- tests/qemu-iotests/059                            |  2 +-
- tests/qemu-iotests/061                            |  2 +-
- tests/qemu-iotests/071                            |  2 +-
- tests/qemu-iotests/181                            |  2 +-
- tests/qemu-iotests/197                            |  2 +-
- tests/qemu-iotests/215                            |  2 +-
- tests/qemu-iotests/298                            |  4 ++--
- tests/qemu-iotests/pylintrc                       |  2 +-
- tests/qtest/ahci-test.c                           |  2 +-
- tests/qtest/bcm2835-dma-test.c                    |  2 +-
- tests/qtest/bios-tables-test.c                    |  2 +-
- tests/qtest/ds1338-test.c                         |  2 +-
- tests/qtest/fuzz/generic_fuzz.c                   |  6 +++---
- tests/qtest/libqos/qgraph.c                       |  4 ++--
- tests/qtest/libqos/qgraph_internal.h              |  2 +-
- tests/qtest/libqos/virtio-gpio.c                  |  2 +-
- tests/qtest/libqtest.c                            |  4 ++--
- tests/qtest/migration-test.c                      |  6 +++---
- tests/qtest/npcm7xx_timer-test.c                  |  2 +-
- tests/qtest/test-hmp.c                            |  6 +++---
- tests/qtest/tpm-emu.c                             |  2 +-
- tests/qtest/tpm-tests.c                           |  2 +-
- tests/qtest/tpm-tests.h                           |  2 +-
- tests/qtest/tpm-tis-i2c-test.c                    |  2 +-
- tests/qtest/tpm-tis-util.c                        |  2 +-
- tests/qtest/usb-hcd-uhci-test.c                   |  5 -----
- tests/qtest/usb-hcd-xhci-test.c                   |  6 ------
- tests/qtest/vhost-user-blk-test.c                 |  2 +-
- tests/qtest/virtio-net-test.c                     |  2 +-
- tests/qtest/vmgenid-test.c                        |  2 +-
- tests/tcg/hexagon/fpstuff.c                       |  2 +-
- tests/tcg/hexagon/test_clobber.S                  |  2 +-
- tests/tsan/suppressions.tsan                      |  2 +-
- tests/uefi-test-tools/Makefile                    |  2 +-
- tests/unit/check-qjson.c                          |  2 +-
- tests/unit/test-aio.c                             |  2 +-
- tests/unit/test-bdrv-graph-mod.c                  | 12 ++++++------
- tests/unit/test-crypto-secret.c                   |  2 +-
- tests/unit/test-qobject-input-visitor.c           |  2 +-
- tests/unit/test-throttle.c                        |  8 ++++----
- tests/unit/test-util-filemonitor.c                |  2 +-
- tests/unit/test-xs-node.c                         |  2 +-
- tests/vm/Makefile.include                         |  2 +-
- tests/vm/ubuntuvm.py                              |  2 +-
- 164 files changed, 272 insertions(+), 327 deletions(-)
+-- PMM
 
