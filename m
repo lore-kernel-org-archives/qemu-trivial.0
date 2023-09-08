@@ -1,28 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qeYDh-0006yS-Kc
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 05:56:09 -0400
+	id 1qeYDi-0006zD-M4
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 05:56:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qeYDZ-0006wt-Lu; Fri, 08 Sep 2023 05:56:01 -0400
+ id 1qeYDg-0006xs-03; Fri, 08 Sep 2023 05:56:08 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qeYDW-0006OG-VO; Fri, 08 Sep 2023 05:56:01 -0400
+ id 1qeYDc-0006Tp-2Z; Fri, 08 Sep 2023 05:56:07 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 30CDD200C9;
+ by isrv.corpit.ru (Postfix) with ESMTP id 6F774200CA;
  Fri,  8 Sep 2023 12:56:45 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 294FB2690F;
+ by tsrv.corpit.ru (Postfix) with SMTP id 54DF526910;
  Fri,  8 Sep 2023 12:55:56 +0300 (MSK)
-Received: (nullmailer pid 275943 invoked by uid 1000);
+Received: (nullmailer pid 275946 invoked by uid 1000);
  Fri, 08 Sep 2023 09:55:55 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 01/23] qemu-img: omit errno value in error message
-Date: Fri,  8 Sep 2023 12:54:58 +0300
-Message-Id: <20230908095520.275866-2-mjt@tls.msk.ru>
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 02/23] trace-events: Fix the name of the tracing.rst file
+Date: Fri,  8 Sep 2023 12:54:59 +0300
+Message-Id: <20230908095520.275866-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230908095520.275866-1-mjt@tls.msk.ru>
 References: <20230908095520.275866-1-mjt@tls.msk.ru>
@@ -47,115 +48,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Sep 2023 09:56:07 -0000
+X-List-Received-Date: Fri, 08 Sep 2023 09:56:09 -0000
 
-I'm getting io-qcow2-244 test failure on mips*
-due to output mismatch:
+From: Thomas Huth <thuth@redhat.com>
 
-  Take an internal snapshot:
- -qemu-img: Could not create snapshot 'test': -95 (Operation not supported)
- +qemu-img: Could not create snapshot 'test': -122 (Operation not supported)
-  No errors were found on the image.
+The file has been converted to .rst a while ago - make sure that the
+references in the trace-events files are pointing to the right location
+now.
 
-This is because errno values might be different across
-different architectures.
-
-This error message in qemu-img.c is the only one which
-prints errno directly, all the rest print strerror(errno)
-only.  Fix this error message and the expected output
-of the 3 test cases too.
-
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- qemu-img.c                 | 4 ++--
- tests/qemu-iotests/080.out | 6 +++---
- tests/qemu-iotests/112.out | 6 +++---
- tests/qemu-iotests/244.out | 2 +-
- 4 files changed, 9 insertions(+), 9 deletions(-)
+ bsd-user/trace-events         | 2 +-
+ ebpf/trace-events             | 2 +-
+ hw/nubus/trace-events         | 2 +-
+ target/s390x/kvm/trace-events | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/qemu-img.c b/qemu-img.c
-index 27f48051b0..0756dbb835 100644
---- a/qemu-img.c
-+++ b/qemu-img.c
-@@ -3468,8 +3468,8 @@ static int img_snapshot(int argc, char **argv)
+diff --git a/bsd-user/trace-events b/bsd-user/trace-events
+index 843896f627..2c1cb66726 100644
+--- a/bsd-user/trace-events
++++ b/bsd-user/trace-events
+@@ -1,4 +1,4 @@
+-# See docs/tracing.txt for syntax documentation.
++# See docs/devel/tracing.rst for syntax documentation.
  
-         ret = bdrv_snapshot_create(bs, &sn);
-         if (ret) {
--            error_report("Could not create snapshot '%s': %d (%s)",
--                snapshot_name, ret, strerror(-ret));
-+            error_report("Could not create snapshot '%s': %s",
-+                snapshot_name, strerror(-ret));
-         }
-         break;
+ # bsd-user/signal.c
+ user_setup_frame(void *env, uint64_t frame_addr) "env=%p frame_addr=0x%"PRIx64
+diff --git a/ebpf/trace-events b/ebpf/trace-events
+index 411b1e2be3..b3ad1a35f2 100644
+--- a/ebpf/trace-events
++++ b/ebpf/trace-events
+@@ -1,4 +1,4 @@
+-# See docs/devel/tracing.txt for syntax documentation.
++# See docs/devel/tracing.rst for syntax documentation.
  
-diff --git a/tests/qemu-iotests/080.out b/tests/qemu-iotests/080.out
-index 45ab01db8e..d8acb3e723 100644
---- a/tests/qemu-iotests/080.out
-+++ b/tests/qemu-iotests/080.out
-@@ -33,7 +33,7 @@ qemu-io: can't open device TEST_DIR/t.qcow2: Snapshot table offset invalid
+ # ebpf-rss.c
+ ebpf_error(const char *s1, const char *s2) "error in %s: %s"
+diff --git a/hw/nubus/trace-events b/hw/nubus/trace-events
+index e31833d694..9259d66725 100644
+--- a/hw/nubus/trace-events
++++ b/hw/nubus/trace-events
+@@ -1,4 +1,4 @@
+-# See docs/devel/tracing.txt for syntax documentation.
++# See docs/devel/tracing.rst for syntax documentation.
  
- == Hitting snapshot table size limit ==
- Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864
--qemu-img: Could not create snapshot 'test': -27 (File too large)
-+qemu-img: Could not create snapshot 'test': File too large
- read 512/512 bytes at offset 0
- 512 bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
+ # nubus-bus.c
+ nubus_slot_read(uint64_t addr, int size) "reading unassigned addr 0x%"PRIx64 " size %d"
+diff --git a/target/s390x/kvm/trace-events b/target/s390x/kvm/trace-events
+index 818f1a37a1..cdf2c4f8f2 100644
+--- a/target/s390x/kvm/trace-events
++++ b/target/s390x/kvm/trace-events
+@@ -1,4 +1,4 @@
+-# See docs/devel/tracing.txt for syntax documentation.
++# See docs/devel/tracing.rst for syntax documentation.
  
-@@ -56,8 +56,8 @@ qemu-io: can't open device TEST_DIR/t.qcow2: Backing file name too long
- Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864
- wrote 512/512 bytes at offset 0
- 512 bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
--qemu-img: Could not create snapshot 'test': -27 (File too large)
--qemu-img: Could not create snapshot 'test': -11 (Resource temporarily unavailable)
-+qemu-img: Could not create snapshot 'test': File too large
-+qemu-img: Could not create snapshot 'test': Resource temporarily unavailable
- 
- == Invalid snapshot L1 table offset ==
- Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864
-diff --git a/tests/qemu-iotests/112.out b/tests/qemu-iotests/112.out
-index dd3cc4383c..ebf426febc 100644
---- a/tests/qemu-iotests/112.out
-+++ b/tests/qemu-iotests/112.out
-@@ -32,7 +32,7 @@ Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864
- refcount bits: 1
- wrote 512/512 bytes at offset 0
- 512 bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
--qemu-img: Could not create snapshot 'foo': -22 (Invalid argument)
-+qemu-img: Could not create snapshot 'foo': Invalid argument
- Leaked cluster 6 refcount=1 reference=0
- 
- 1 leaked clusters were found on the image.
-@@ -44,7 +44,7 @@ Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864
- refcount bits: 2
- wrote 512/512 bytes at offset 0
- 512 bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
--qemu-img: Could not create snapshot 'baz': -22 (Invalid argument)
-+qemu-img: Could not create snapshot 'baz': Invalid argument
- Leaked cluster 7 refcount=1 reference=0
- 
- 1 leaked clusters were found on the image.
-@@ -75,7 +75,7 @@ Formatting 'TEST_DIR/t.IMGFMT', fmt=IMGFMT size=67108864
- refcount bits: 64
- wrote 512/512 bytes at offset 0
- 512 bytes, X ops; XX:XX:XX.X (XXX YYY/sec and XXX ops/sec)
--qemu-img: Could not create snapshot 'foo': -22 (Invalid argument)
-+qemu-img: Could not create snapshot 'foo': Invalid argument
- Leaked cluster 5 refcount=18446744073709551615 reference=1
- Leaked cluster 6 refcount=1 reference=0
- 
-diff --git a/tests/qemu-iotests/244.out b/tests/qemu-iotests/244.out
-index 5e03add054..4815a489b0 100644
---- a/tests/qemu-iotests/244.out
-+++ b/tests/qemu-iotests/244.out
-@@ -41,7 +41,7 @@ write failed: Operation not supported
- No errors were found on the image.
- 
- Take an internal snapshot:
--qemu-img: Could not create snapshot 'test': -95 (Operation not supported)
-+qemu-img: Could not create snapshot 'test': Operation not supported
- No errors were found on the image.
- 
- === Standalone image with external data file (efficient) ===
+ # kvm.c
+ kvm_enable_cmma(int rc) "CMMA: enabling with result code %d"
 -- 
 2.39.2
 
