@@ -1,42 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qfGbC-0007IG-7L
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Sep 2023 05:19:22 -0400
+	id 1qfKwc-0000Zj-0X
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Sep 2023 09:57:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qfGbA-0007Gn-8T; Sun, 10 Sep 2023 05:19:20 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qfKwa-0000Yr-5x
+ for qemu-trivial@nongnu.org; Sun, 10 Sep 2023 09:57:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qfGb7-0004ir-GR; Sun, 10 Sep 2023 05:19:19 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 5645A20855;
- Sun, 10 Sep 2023 12:20:05 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 840FF26F78;
- Sun, 10 Sep 2023 12:19:12 +0300 (MSK)
-Message-ID: <53b4cb3b-a249-f7b7-a45c-78069a6974f2@tls.msk.ru>
-Date: Sun, 10 Sep 2023 12:19:12 +0300
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1qfKwX-00057c-Bt
+ for qemu-trivial@nongnu.org; Sun, 10 Sep 2023 09:57:43 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1694354260;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=adZD2a+bxZsjg1H6PIYNkcuK9+gAqL8cWzUZOFQVnXQ=;
+ b=dS0FZSb7GL1nMdsxt/fRkSGCSZ7lEvkb9/pmGhYMqjYaLUfT9tVY+Pt9nZDLx/ShUuXTw9
+ Kf0wySlzPIeMh4Y7db58aV6gwM6Ny8nbYQApD+/xbBJbuqRpu1EDqSxcWecWQsRATO/MGC
+ wEatSE0NcRBQAxIk57+Km1CJNlRmlac=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-601-SBS0kjhoPdaQ76MppSRvMQ-1; Sun, 10 Sep 2023 09:57:36 -0400
+X-MC-Unique: SBS0kjhoPdaQ76MppSRvMQ-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5B60229AA3BE;
+ Sun, 10 Sep 2023 13:57:36 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.37])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E6A5D400F36F;
+ Sun, 10 Sep 2023 13:57:35 +0000 (UTC)
+Date: Fri, 8 Sep 2023 11:55:24 -0400
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PULL v2 00/22] Trivial patches for 2023-09-08
+Message-ID: <20230908155524.GA3575166@fedora>
+References: <20230908101109.276768-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.0
-Subject: Re: [PATCH] block: mark aio_poll as non-coroutine
-Content-Language: en-US
-To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org
-References: <20230908075458.527013-1-pbonzini@redhat.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230908075458.527013-1-pbonzini@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -83
-X-Spam_score: -8.4
-X-Spam_bar: --------
-X-Spam_report: (-8.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.473,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="JKfBEj2jyzRyFbxZ"
+Content-Disposition: inline
+In-Reply-To: <20230908101109.276768-1-mjt@tls.msk.ru>
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -7
+X-Spam_score: -0.8
+X-Spam_bar: /
+X-Spam_report: (-0.8 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_24_48=1.34,
+ DKIMWL_WL_HIGH=-0.001, DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -49,35 +70,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 10 Sep 2023 09:19:20 -0000
+X-List-Received-Date: Sun, 10 Sep 2023 13:57:44 -0000
 
-08.09.2023 10:54, Paolo Bonzini wrote:
-> It is forbidden to block on the event loop during a coroutine, as that
-> can cause deadlocks due to recursive locking.
-> 
-> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
-> ---
->   include/block/aio.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/include/block/aio.h b/include/block/aio.h
-> index 32042e8905a..f1d0a37d68f 100644
-> --- a/include/block/aio.h
-> +++ b/include/block/aio.h
-> @@ -468,7 +468,7 @@ void aio_dispatch(AioContext *ctx);
->    * or more AIO events have completed, to ensure something has moved
->    * before returning.
->    */
-> -bool aio_poll(AioContext *ctx, bool blocking);
-> +bool no_coroutine_fn aio_poll(AioContext *ctx, bool blocking);
->   
->   /* Register a file descriptor and associated callbacks.  Behaves very similarly
->    * to qemu_set_fd_handler.  Unlike qemu_set_fd_handler, these callbacks will
 
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+--JKfBEj2jyzRyFbxZ
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-While this is a no-op change for the code and trivial syntactically,
-I'm skeptical it should go through trivial-patches@.
+Applied, thanks.
 
-/mjt
+Please update the changelog at https://wiki.qemu.org/ChangeLog/8.2 for any user-visible changes.
+
+--JKfBEj2jyzRyFbxZ
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmT7Q+wACgkQnKSrs4Gr
+c8gkfQf+MzIj3cq7baCbuBhsBZ++dNDvtVcufjNl8fR4ToClQerosoFMwXM8vW+3
+KYzwM17KgRYE3n8GxD4BO0jZw9js9hq3av0v4ka6Jf8c3kItDshW2WYjBp7oHZs3
+kUk0KL+DDREZAkRXWcG2BpkNdOr940sS/wXQ237gG2er820UUf5yR2ZGXpoyIL3K
+rbJ/SqzCrofVlbQpOn2VcYTUAiuySumw0G2csOKVxG3qVhDqprtMnIafEltsUEJs
+N1afuo/R6+3IoQQhe1K/DoN7I2oN3PMx5vksKCUxSQPqtlFVKUa24qLsXxtLD9yb
+V/8mPFiFioQQit8bW4wILflzs1HB/Q==
+=CiJO
+-----END PGP SIGNATURE-----
+
+--JKfBEj2jyzRyFbxZ--
+
 
