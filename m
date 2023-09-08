@@ -1,34 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qeYEd-0000N1-Il
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 05:57:07 -0400
+	id 1qeYEe-0000TL-NQ
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Sep 2023 05:57:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qeYEb-0000IC-FW; Fri, 08 Sep 2023 05:57:05 -0400
+ id 1qeYEd-0000MR-6W; Fri, 08 Sep 2023 05:57:07 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qeYEZ-0006wn-6q; Fri, 08 Sep 2023 05:57:05 -0400
+ id 1qeYEa-0006xI-SD; Fri, 08 Sep 2023 05:57:06 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 8586C200D8;
+ by isrv.corpit.ru (Postfix) with ESMTP id B2AAD200D9;
  Fri,  8 Sep 2023 12:56:48 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 784372691E;
+ by tsrv.corpit.ru (Postfix) with SMTP id B4BD52691F;
  Fri,  8 Sep 2023 12:55:59 +0300 (MSK)
-Received: (nullmailer pid 275988 invoked by uid 1000);
+Received: (nullmailer pid 275991 invoked by uid 1000);
  Fri, 08 Sep 2023 09:55:56 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Thomas Huth <thuth@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 16/23] tests/qtest/test-hmp: Fix migrate_set_parameter
- xbzrle-cache-size test
-Date: Fri,  8 Sep 2023 12:55:13 +0300
-Message-Id: <20230908095520.275866-17-mjt@tls.msk.ru>
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 17/23] accel/tcg: Fix typo in translator_io_start() description
+Date: Fri,  8 Sep 2023 12:55:14 +0300
+Message-Id: <20230908095520.275866-18-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230908095520.275866-1-mjt@tls.msk.ru>
 References: <20230908095520.275866-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -49,35 +51,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Sep 2023 09:57:06 -0000
+X-List-Received-Date: Fri, 08 Sep 2023 09:57:07 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The command always fails with "Error: Parameter 'xbzrle_cache_size'
-expects a power of two no less than the target page size".  The test
-passes anyway.  Change the argument from 1 to 64k to make the test a
-bit more useful.
+Missed while reviewing commit dfd1b81274
+("accel/tcg: Introduce translator_io_start").
 
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- tests/qtest/test-hmp.c | 2 +-
+ include/exec/translator.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/qtest/test-hmp.c b/tests/qtest/test-hmp.c
-index c0d2d70689..fc9125f8bb 100644
---- a/tests/qtest/test-hmp.c
-+++ b/tests/qtest/test-hmp.c
-@@ -45,7 +45,7 @@ static const char *hmp_cmds[] = {
-     "log all",
-     "log none",
-     "memsave 0 4096 \"/dev/null\"",
--    "migrate_set_parameter xbzrle-cache-size 1",
-+    "migrate_set_parameter xbzrle-cache-size 64k",
-     "migrate_set_parameter downtime-limit 1",
-     "migrate_set_parameter max-bandwidth 1",
-     "netdev_add user,id=net1",
+diff --git a/include/exec/translator.h b/include/exec/translator.h
+index a53d3243d4..4e17c4f401 100644
+--- a/include/exec/translator.h
++++ b/include/exec/translator.h
+@@ -159,7 +159,7 @@ bool translator_use_goto_tb(DisasContextBase *db, vaddr dest);
+  * translator_io_start
+  * @db: Disassembly context
+  *
+- * If icount is enabled, set cpu->can_to_io, adjust db->is_jmp to
++ * If icount is enabled, set cpu->can_do_io, adjust db->is_jmp to
+  * DISAS_TOO_MANY if it is still DISAS_NEXT, and return true.
+  * Otherwise return false.
+  */
 -- 
 2.39.2
 
