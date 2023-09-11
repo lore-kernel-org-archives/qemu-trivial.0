@@ -1,61 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qfipN-0005ir-NZ
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2023 11:27:53 -0400
+	id 1qfiwM-0001B4-AO
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2023 11:35:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qfipM-0005iT-I9
- for qemu-trivial@nongnu.org; Mon, 11 Sep 2023 11:27:52 -0400
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ id 1qfiwB-00019A-Ci
+ for qemu-trivial@nongnu.org; Mon, 11 Sep 2023 11:34:59 -0400
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1qfipI-0000Td-F9
- for qemu-trivial@nongnu.org; Mon, 11 Sep 2023 11:27:52 -0400
-Received: by mail-lf1-x12b.google.com with SMTP id
- 2adb3069b0e04-50098cc8967so7316557e87.1
- for <qemu-trivial@nongnu.org>; Mon, 11 Sep 2023 08:27:46 -0700 (PDT)
+ id 1qfiw7-0002Bh-BB
+ for qemu-trivial@nongnu.org; Mon, 11 Sep 2023 11:34:54 -0400
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-403012f27e3so25592975e9.3
+ for <qemu-trivial@nongnu.org>; Mon, 11 Sep 2023 08:34:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694446065; x=1695050865; darn=nongnu.org;
+ d=linaro.org; s=google; t=1694446485; x=1695051285; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=9+2YE007+wC2u0xxh7DJ73XyeWm14R9tv5OegqhxoYs=;
- b=a9DDsDfrGJo8fkhX2qZ6j52U5Meaqf0e5hld6+a77mcK2ecBFFXYpOjHfyEGfofqn6
- RHOacVqvmxfbf+bwi0BBrXjtV51Nj1S/H2ZD7QXs1EhAVmd+nOrEreWeotH915/7TbXF
- ol909qHn0O7RKtibozmps9cywJgBPpWpTMgw5lQzGkyrrYi8bi54ko95IQWHqtWt43Ya
- zan8x7gmwwj1pV6IWXrIyTcKBaAg/rrF4BhtMoFONSpVrNNNfwG6YjEXVO4cUNyIyCnh
- P7lcYlzk1C9wxJX1+9LKwD2pqgUfkJZS2emuMXtguwzxhNzCi/d25isAByOqLkyUndCw
- nM/w==
+ bh=0Y6K0hTr2Md/Dr/243637rZyKNMssQ5d0pl3QgsQJQw=;
+ b=RTJ8Hb1bOc11Yo6OW3YUuBQgw3MybN1nhfzbkzuSBTzv1wOhS5XCwYlD1y4T8R6/t/
+ eCzpFgaZ9ZnBfkOvmGt0pSLZlSph/1W8NOyXcp9Nux9fvpT8/Iqju1fzBaLusy+JoKaI
+ IbVLCfj5rRakA97K0x/yY3omItb1ck/ur2NW5ogXtWNfTG5tYGdr6Ews9X84jxWDO14e
+ FKdpKLa742gB4iaWmIOUaXz+IvNRlTXiTJ0zDwfNbMvuHNS1YSwv8jZjRVvWNIdvUaFs
+ DUcu3fhW3YVADpbhv/UvjVi5NvydiCfJt9pn7/UvNhNBo2vmt52UBegWfuzSR4jsAqq7
+ kMKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694446065; x=1695050865;
+ d=1e100.net; s=20230601; t=1694446485; x=1695051285;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=9+2YE007+wC2u0xxh7DJ73XyeWm14R9tv5OegqhxoYs=;
- b=h0yr2uyp8hHm94TtgHGVQkOZ5CFO73tqCVUcImNdk5PZP+iYO2IUmAVTD/6XkSJA5E
- o70rjlfeBu50w/HbM4LH8tXenXvIxCF69SIxWLDfHEQY4db2GOFLJi8TMHhM5kxpbyGE
- zYc4XrlzKRgLyT6dtfIR1FTUSv2tEYHDH4HlTR/P2KfDPPVGfaP3SJ32E8jpW6ZG6MTy
- BO9m6dSM1bSiQ00s06V0kuisubV4Gujd3YR1W8ytmThO1XvDX1mvUFqrvpTNTe2TFh4u
- eO0OZuDCawiDuadUfmXM/A5SyVsBgV7O8yI9Sc6pGSu4c7gxBuVkQhYsnsfoBcnNrOBP
- zxpQ==
-X-Gm-Message-State: AOJu0Yw58I28FGLdP7hfn7f45yTff8Nsqw7qELW4f9Hgv934lx1zafbl
- 2wiscIxyhTVJP2mJBsTZ4sCI0zVMzw9CjFJvX1igDSzZdx+0XdHK
-X-Google-Smtp-Source: AGHT+IFSjc3rF756Md1buY33VNwgL+BIutt2Jo/N0PPJrNIQSwCfzhA88IZJAsMzbhKuP5i6HapSIItCwtdbnJvsCR4=
-X-Received: by 2002:a19:381c:0:b0:500:b3f2:73e2 with SMTP id
- f28-20020a19381c000000b00500b3f273e2mr7207546lfa.50.1694446065226; Mon, 11
- Sep 2023 08:27:45 -0700 (PDT)
+ bh=0Y6K0hTr2Md/Dr/243637rZyKNMssQ5d0pl3QgsQJQw=;
+ b=uEF8FOl/6Xo6ey88hnJoRzUW/4nqljOc9cc/eP1a/vu0erC4hzRkHmnRT5arMkmuQk
+ 8ZP/kifotX7JjdwBI2FOso/URW0LbE7iHJeTb0y3/jd3K7rq52zajwJknscCHarSsyQT
+ z787J+WaxEsNDWO0qV3diO0L43Wd+DYba3gVVAp9XR1JmL+Rot8RcntCvEb++Now/RKx
+ wkacnFtdpAWg53Y3V1cG5B49+q35EFGisd/Wb6JQFB51loCS9P7MTmklNDvW9NZORfB0
+ nfCisJ/9WT/IcinvmQ+1E3P0TEdVypfJ9vbk0JJkEGIoL+4GDP73zrzCDKxT3Dzp04Hw
+ U8AQ==
+X-Gm-Message-State: AOJu0YyKV21ePETKHT64UJaqwz3emtXWv5Fh/z2LYPceb3sLizBnHDuS
+ DG5WpIipggMg0H0J+0HomS66rhZfWnzUlsdYd2F5AA==
+X-Google-Smtp-Source: AGHT+IHyYax2ciKXizpEaEVmn3ZgUQ/IOYoew5jBKAT7h98ZpuWjV5EVjF20K10L2XFFu3c+u2trrF8iU78RTUdIaI4=
+X-Received: by 2002:adf:cf02:0:b0:313:eee0:89a4 with SMTP id
+ o2-20020adfcf02000000b00313eee089a4mr8025325wrj.12.1694446485327; Mon, 11 Sep
+ 2023 08:34:45 -0700 (PDT)
 MIME-Version: 1.0
 References: <20230909131258.354675-1-mjt@tls.msk.ru>
- <20230909131258.354675-3-mjt@tls.msk.ru>
-In-Reply-To: <20230909131258.354675-3-mjt@tls.msk.ru>
+ <20230909131258.354675-8-mjt@tls.msk.ru>
+In-Reply-To: <20230909131258.354675-8-mjt@tls.msk.ru>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Sep 2023 16:27:34 +0100
-Message-ID: <CAFEAcA9P-=rh1yj=i_s86Efj+3r1K3OJJ5BR24zio8KHRMarPQ@mail.gmail.com>
-Subject: Re: [PATCH 2/7] i386: spelling fixes
+Date: Mon, 11 Sep 2023 16:34:34 +0100
+Message-ID: <CAFEAcA9kJt7orFVFjdVy+KRo8YN5RfpQAhE+Ytx7MgYOdTGNPw@mail.gmail.com>
+Subject: Re: [PATCH 7/7] hw/other: spelling fixes
 To: Michael Tokarev <mjt@tls.msk.ru>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -75,76 +75,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Sep 2023 15:27:52 -0000
+X-List-Received-Date: Mon, 11 Sep 2023 15:35:01 -0000
 
-On Sat, 9 Sept 2023 at 14:17, Michael Tokarev <mjt@tls.msk.ru> wrote:
+On Sat, 9 Sept 2023 at 14:16, Michael Tokarev <mjt@tls.msk.ru> wrote:
 >
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> ---
->  host/include/i386/host/cpuinfo.h | 2 +-
->  hw/i386/acpi-build.c             | 4 ++--
->  hw/i386/amd_iommu.c              | 4 ++--
->  hw/i386/intel_iommu.c            | 4 ++--
->  hw/i386/kvm/xen_xenstore.c       | 2 +-
->  hw/i386/kvm/xenstore_impl.c      | 2 +-
->  hw/i386/pc.c                     | 4 ++--
->  include/hw/i386/topology.h       | 2 +-
->  target/i386/cpu.c                | 4 ++--
->  target/i386/cpu.h                | 4 ++--
->  target/i386/kvm/kvm.c            | 4 ++--
->  target/i386/kvm/xen-emu.c        | 2 +-
->  target/i386/machine.c            | 4 ++--
->  target/i386/tcg/translate.c      | 8 ++++----
->  tests/tcg/i386/system/boot.S     | 2 +-
->  tests/tcg/i386/x86.csv           | 2 +-
->  16 files changed, 27 insertions(+), 27 deletions(-)
 
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index bb12b0ad43..1afcef5937 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -779,7 +779,7 @@ static Aml *initialize_route(Aml *route, const char *link_name,
->   *
->   * Returns an array of 128 routes, one for each device,
->   * based on device location.
-> - * The main goal is to equaly distribute the interrupts
-> + * The main goal is to equally distribute the interrupts
->   * over the 4 existing ACPI links (works only for i440fx).
->   * The hash function is  (slot + pin) & 3 -> "LNK[D|A|B|C]".
->   *
-> @@ -2079,7 +2079,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
->  }
+
+> diff --git a/hw/misc/trace-events b/hw/misc/trace-events
+> index e8b2be14c0..bc87cd3670 100644
+> --- a/hw/misc/trace-events
+> +++ b/hw/misc/trace-events
+> @@ -155,7 +155,7 @@ stm32f4xx_syscfg_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
+>  stm32f4xx_syscfg_write(uint64_t addr, uint64_t data) "reg write: addr: 0x%" PRIx64 " val: 0x%" PRIx64 ""
 >
->  /*
-> - * Insert DMAR scope for PCI bridges and endpoint devcie
-> + * Insert DMAR scope for PCI bridges and endpoint device
+>  # stm32f4xx_exti.c
+> -stm32f4xx_exti_set_irq(int irq, int leve) "Set EXTI: %d to %d"
+> +stm32f4xx_exti_set_irq(int irq, int level) "Set EXTI: %d to %d"
+>  stm32f4xx_exti_read(uint64_t addr) "reg read: addr: 0x%" PRIx64 " "
+>  stm32f4xx_exti_write(uint64_t addr, uint64_t data) "reg write: addr: 0x%" PRIx64 " val: 0x%" PRIx64 ""
 
-I suspect this should be "devices" plural.
+Unlike all the other changes, this is a code change, not a
+comment change. But it's OK, so:
 
->   */
->  static void
->  insert_scope(PCIBus *bus, PCIDevice *dev, void *opaque)
-
->  static void ioportF0_write(void *opaque, hwaddr addr, uint64_t data,
->                             unsigned size)
->  {
-
-> --- a/target/i386/kvm/kvm.c
-> +++ b/target/i386/kvm/kvm.c
-> @@ -4729,7 +4729,7 @@ int kvm_arch_put_registers(CPUState *cpu, int level)
->      /*
->       * Put MSR_IA32_FEATURE_CONTROL first, this ensures the VM gets out of VMX
->       * root operation upon vCPU reset. kvm_put_msr_feature_control() should also
-> -     * preceed kvm_put_nested_state() when 'real' nested state is set.
-> +     * proceed kvm_put_nested_state() when 'real' nested state is set.
-
-Should be "precede".
-
->       */
->      if (level >= KVM_PUT_RESET_STATE) {
->          ret = kvm_put_msr_feature_control(x86_cpu);
-
-Otherwise
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
 thanks
