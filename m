@@ -1,92 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qfgXq-00041w-TK
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2023 09:01:43 -0400
+	id 1qfipN-0005ir-NZ
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2023 11:27:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1qfgXd-0003xj-Bi; Mon, 11 Sep 2023 09:01:28 -0400
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
- id 1qfgXa-0000Fe-Kf; Mon, 11 Sep 2023 09:01:25 -0400
-Received: from pps.filterd (m0353722.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 38BCxPDY017490; Mon, 11 Sep 2023 13:01:21 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- subject : to : cc : references : from : in-reply-to : content-type :
- content-transfer-encoding : mime-version; s=pp1;
- bh=0uZOb7Sjoljt5CRSiGv62irmLADsREfBvPHa4fLT/NI=;
- b=mtbjLBQCizPC7UiELrOSX/a0pzH/Elw1u0Pu9ZBltq5vxbdnCMrMxnXrM+G8fxegRb4B
- PZScDfh2tHVtXwT3pmBoPOkVlIk6Uf/x1aWHeKnaFhuLGo9L0modUjpF005Mgavb3hm6
- TqtCBvURICqyQ9Q/0sUlfxvV5ydFK+nZvurKENzJLqUKQvBztejgWaQQgufHxemHDQsi
- Iszkmmgijm0817aI3rObElmJQljFBRQa7cEdiD+rZb8mFuVjeJP3KsvCgZ6maO7mtF3y
- PCQWirXUYD9b/005j/KgfFNUxi4LYpe9TeMjBlehb2qDDb1Fd8H42RdlfnCFjnKXInEn iQ== 
-Received: from ppma21.wdc07v.mail.ibm.com
- (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3t23cq827v-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 11 Sep 2023 13:01:20 +0000
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma21.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 38BAP9hH022941; Mon, 11 Sep 2023 13:01:19 GMT
-Received: from smtprelay05.wdc07v.mail.ibm.com ([172.16.1.72])
- by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3t141nakg1-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 11 Sep 2023 13:01:19 +0000
-Received: from smtpav03.dal12v.mail.ibm.com (smtpav03.dal12v.mail.ibm.com
- [10.241.53.102])
- by smtprelay05.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 38BD1JgV2621976
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 11 Sep 2023 13:01:19 GMT
-Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id E77AA58056;
- Mon, 11 Sep 2023 13:01:18 +0000 (GMT)
-Received: from smtpav03.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id A1F8C5803F;
- Mon, 11 Sep 2023 13:01:18 +0000 (GMT)
-Received: from [9.47.158.152] (unknown [9.47.158.152])
- by smtpav03.dal12v.mail.ibm.com (Postfix) with ESMTPS;
- Mon, 11 Sep 2023 13:01:18 +0000 (GMT)
-Message-ID: <4d99d39a-c8f7-9531-61f6-2fdac8237eb8@linux.ibm.com>
-Date: Mon, 11 Sep 2023 09:01:17 -0400
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.13.0
-Subject: Re: [PATCH 6/7] hw/tpm: spelling fixes
-Content-Language: en-US
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Stefan Berger <stefanb@linux.vnet.ibm.com>
-References: <20230909131258.354675-1-mjt@tls.msk.ru>
- <20230909131258.354675-7-mjt@tls.msk.ru>
- <cc3e0b0f-e4e1-71d0-bddd-f68aa56aa658@tls.msk.ru>
-From: Stefan Berger <stefanb@linux.ibm.com>
-In-Reply-To: <cc3e0b0f-e4e1-71d0-bddd-f68aa56aa658@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: AiydzCq5PgUb6mwkGg9uTy6o90VDJktF
-X-Proofpoint-GUID: AiydzCq5PgUb6mwkGg9uTy6o90VDJktF
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-UnRewURL: 0 URL was un-rewritten
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qfipM-0005iT-I9
+ for qemu-trivial@nongnu.org; Mon, 11 Sep 2023 11:27:52 -0400
+Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qfipI-0000Td-F9
+ for qemu-trivial@nongnu.org; Mon, 11 Sep 2023 11:27:52 -0400
+Received: by mail-lf1-x12b.google.com with SMTP id
+ 2adb3069b0e04-50098cc8967so7316557e87.1
+ for <qemu-trivial@nongnu.org>; Mon, 11 Sep 2023 08:27:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1694446065; x=1695050865; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=9+2YE007+wC2u0xxh7DJ73XyeWm14R9tv5OegqhxoYs=;
+ b=a9DDsDfrGJo8fkhX2qZ6j52U5Meaqf0e5hld6+a77mcK2ecBFFXYpOjHfyEGfofqn6
+ RHOacVqvmxfbf+bwi0BBrXjtV51Nj1S/H2ZD7QXs1EhAVmd+nOrEreWeotH915/7TbXF
+ ol909qHn0O7RKtibozmps9cywJgBPpWpTMgw5lQzGkyrrYi8bi54ko95IQWHqtWt43Ya
+ zan8x7gmwwj1pV6IWXrIyTcKBaAg/rrF4BhtMoFONSpVrNNNfwG6YjEXVO4cUNyIyCnh
+ P7lcYlzk1C9wxJX1+9LKwD2pqgUfkJZS2emuMXtguwzxhNzCi/d25isAByOqLkyUndCw
+ nM/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1694446065; x=1695050865;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=9+2YE007+wC2u0xxh7DJ73XyeWm14R9tv5OegqhxoYs=;
+ b=h0yr2uyp8hHm94TtgHGVQkOZ5CFO73tqCVUcImNdk5PZP+iYO2IUmAVTD/6XkSJA5E
+ o70rjlfeBu50w/HbM4LH8tXenXvIxCF69SIxWLDfHEQY4db2GOFLJi8TMHhM5kxpbyGE
+ zYc4XrlzKRgLyT6dtfIR1FTUSv2tEYHDH4HlTR/P2KfDPPVGfaP3SJ32E8jpW6ZG6MTy
+ BO9m6dSM1bSiQ00s06V0kuisubV4Gujd3YR1W8ytmThO1XvDX1mvUFqrvpTNTe2TFh4u
+ eO0OZuDCawiDuadUfmXM/A5SyVsBgV7O8yI9Sc6pGSu4c7gxBuVkQhYsnsfoBcnNrOBP
+ zxpQ==
+X-Gm-Message-State: AOJu0Yw58I28FGLdP7hfn7f45yTff8Nsqw7qELW4f9Hgv934lx1zafbl
+ 2wiscIxyhTVJP2mJBsTZ4sCI0zVMzw9CjFJvX1igDSzZdx+0XdHK
+X-Google-Smtp-Source: AGHT+IFSjc3rF756Md1buY33VNwgL+BIutt2Jo/N0PPJrNIQSwCfzhA88IZJAsMzbhKuP5i6HapSIItCwtdbnJvsCR4=
+X-Received: by 2002:a19:381c:0:b0:500:b3f2:73e2 with SMTP id
+ f28-20020a19381c000000b00500b3f273e2mr7207546lfa.50.1694446065226; Mon, 11
+ Sep 2023 08:27:45 -0700 (PDT)
 MIME-Version: 1.0
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.267,Aquarius:18.0.957,Hydra:6.0.601,FMLib:17.11.176.26
- definitions=2023-09-11_06,2023-09-05_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 clxscore=1011
- phishscore=0 impostorscore=0 mlxscore=0 priorityscore=1501 malwarescore=0
- suspectscore=0 mlxlogscore=858 spamscore=0 lowpriorityscore=0 adultscore=0
- classifier=spam adjust=0 reason=mlx scancount=1 engine=8.12.0-2308100000
- definitions=main-2309110114
-Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
- helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -34
-X-Spam_score: -3.5
-X-Spam_bar: ---
-X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.473,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20230909131258.354675-1-mjt@tls.msk.ru>
+ <20230909131258.354675-3-mjt@tls.msk.ru>
+In-Reply-To: <20230909131258.354675-3-mjt@tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 11 Sep 2023 16:27:34 +0100
+Message-ID: <CAFEAcA9P-=rh1yj=i_s86Efj+3r1K3OJJ5BR24zio8KHRMarPQ@mail.gmail.com>
+Subject: Re: [PATCH 2/7] i386: spelling fixes
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,42 +75,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Sep 2023 13:01:28 -0000
+X-List-Received-Date: Mon, 11 Sep 2023 15:27:52 -0000
 
+On Sat, 9 Sept 2023 at 14:17, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  host/include/i386/host/cpuinfo.h | 2 +-
+>  hw/i386/acpi-build.c             | 4 ++--
+>  hw/i386/amd_iommu.c              | 4 ++--
+>  hw/i386/intel_iommu.c            | 4 ++--
+>  hw/i386/kvm/xen_xenstore.c       | 2 +-
+>  hw/i386/kvm/xenstore_impl.c      | 2 +-
+>  hw/i386/pc.c                     | 4 ++--
+>  include/hw/i386/topology.h       | 2 +-
+>  target/i386/cpu.c                | 4 ++--
+>  target/i386/cpu.h                | 4 ++--
+>  target/i386/kvm/kvm.c            | 4 ++--
+>  target/i386/kvm/xen-emu.c        | 2 +-
+>  target/i386/machine.c            | 4 ++--
+>  target/i386/tcg/translate.c      | 8 ++++----
+>  tests/tcg/i386/system/boot.S     | 2 +-
+>  tests/tcg/i386/x86.csv           | 2 +-
+>  16 files changed, 27 insertions(+), 27 deletions(-)
 
-On 9/11/23 05:54, Michael Tokarev wrote:
+> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
+> index bb12b0ad43..1afcef5937 100644
+> --- a/hw/i386/acpi-build.c
+> +++ b/hw/i386/acpi-build.c
+> @@ -779,7 +779,7 @@ static Aml *initialize_route(Aml *route, const char *link_name,
+>   *
+>   * Returns an array of 128 routes, one for each device,
+>   * based on device location.
+> - * The main goal is to equaly distribute the interrupts
+> + * The main goal is to equally distribute the interrupts
+>   * over the 4 existing ACPI links (works only for i440fx).
+>   * The hash function is  (slot + pin) & 3 -> "LNK[D|A|B|C]".
+>   *
+> @@ -2079,7 +2079,7 @@ build_srat(GArray *table_data, BIOSLinker *linker, MachineState *machine)
+>  }
 >
-> Stefan, can you take a quick look please?
->
-> https://patchew.org/QEMU/20230909131258.354675-1-mjt@tls.msk.ru/20230909131258.354675-7-mjt@tls.msk.ru/ 
->
+>  /*
+> - * Insert DMAR scope for PCI bridges and endpoint devcie
+> + * Insert DMAR scope for PCI bridges and endpoint device
 
+I suspect this should be "devices" plural.
 
-I lost subscription to the mailing list for some reason and missed the 
-patch, looks good, though.
+>   */
+>  static void
+>  insert_scope(PCIBus *bus, PCIDevice *dev, void *opaque)
 
-Thanks.
+>  static void ioportF0_write(void *opaque, hwaddr addr, uint64_t data,
+>                             unsigned size)
+>  {
 
-Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
+> --- a/target/i386/kvm/kvm.c
+> +++ b/target/i386/kvm/kvm.c
+> @@ -4729,7 +4729,7 @@ int kvm_arch_put_registers(CPUState *cpu, int level)
+>      /*
+>       * Put MSR_IA32_FEATURE_CONTROL first, this ensures the VM gets out of VMX
+>       * root operation upon vCPU reset. kvm_put_msr_feature_control() should also
+> -     * preceed kvm_put_nested_state() when 'real' nested state is set.
+> +     * proceed kvm_put_nested_state() when 'real' nested state is set.
 
+Should be "precede".
 
->
-> Most of this is s/Familiy/Family/ in a few places, I guess it's
-> some copy-paste error.
->
-> 09.09.2023 16:12, Michael Tokarev:
->> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->> ---
->>   hw/tpm/tpm_tis.h        | 2 +-
->>   hw/tpm/tpm_tis_common.c | 2 +-
->>   hw/tpm/tpm_tis_i2c.c    | 4 ++--
->>   hw/tpm/tpm_tis_isa.c    | 2 +-
->>   hw/tpm/tpm_tis_sysbus.c | 2 +-
->>   5 files changed, 6 insertions(+), 6 deletions(-)
->
-> Thanks,
->
-> /mjt
->
->
+>       */
+>      if (level >= KVM_PUT_RESET_STATE) {
+>          ret = kvm_put_msr_feature_control(x86_cpu);
+
+Otherwise
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+thanks
+-- PMM
 
