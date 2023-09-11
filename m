@@ -1,34 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qfcSU-0002bC-56
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2023 04:39:50 -0400
+	id 1qfcgt-0000uD-OA
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Sep 2023 04:54:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qfcSS-0002am-Pc; Mon, 11 Sep 2023 04:39:48 -0400
+ id 1qfcgs-0000sw-2h; Mon, 11 Sep 2023 04:54:42 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qfcSQ-0000g7-2k; Mon, 11 Sep 2023 04:39:48 -0400
+ id 1qfcgp-0003a2-Bj; Mon, 11 Sep 2023 04:54:41 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id A101920B55;
- Mon, 11 Sep 2023 11:39:41 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id E530D20B64;
+ Mon, 11 Sep 2023 11:54:36 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id E5AE42728D;
- Mon, 11 Sep 2023 11:39:39 +0300 (MSK)
-Message-ID: <adda04f3-d19b-a29f-6fbd-6d3d2ccf6357@tls.msk.ru>
-Date: Mon, 11 Sep 2023 11:39:39 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 3C58D2729D;
+ Mon, 11 Sep 2023 11:54:35 +0300 (MSK)
+Message-ID: <1a46e003-b009-4a89-f555-67277bcd3ce6@tls.msk.ru>
+Date: Mon, 11 Sep 2023 11:54:35 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
  Thunderbird/102.15.0
-Subject: Re: [PATCH 1/7] bsd-user: spelling fixes
+Subject: Re: [PATCH 2/7] i386: spelling fixes
 Content-Language: en-US
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Warner Losh <imp@bsdimp.com>,
- Kyle Evans <kevans@freebsd.org>
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>
 References: <20230909131258.354675-1-mjt@tls.msk.ru>
- <20230909131258.354675-2-mjt@tls.msk.ru>
+ <20230909131258.354675-3-mjt@tls.msk.ru>
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20230909131258.354675-2-mjt@tls.msk.ru>
+In-Reply-To: <20230909131258.354675-3-mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -51,23 +51,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Sep 2023 08:39:49 -0000
+X-List-Received-Date: Mon, 11 Sep 2023 08:54:42 -0000
 
-Warner, Kyle, can you take a look please?
+Paolo, Michael, can you take a quick look please?
 
-https://patchew.org/QEMU/20230909131258.354675-1-mjt@tls.msk.ru/20230909131258.354675-2-mjt@tls.msk.ru/
+https://patchew.org/QEMU/20230909131258.354675-1-mjt@tls.msk.ru/20230909131258.354675-3-mjt@tls.msk.ru/
 
 09.09.2023 16:12, Michael Tokarev:
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->   bsd-user/errno_defs.h                | 2 +-
->   bsd-user/freebsd/target_os_siginfo.h | 2 +-
->   bsd-user/freebsd/target_os_stack.h   | 4 ++--
->   bsd-user/freebsd/target_os_user.h    | 2 +-
->   bsd-user/qemu.h                      | 2 +-
->   bsd-user/signal-common.h             | 4 ++--
->   bsd-user/signal.c                    | 6 +++---
->   7 files changed, 11 insertions(+), 11 deletions(-)
+>   host/include/i386/host/cpuinfo.h | 2 +-
+>   hw/i386/acpi-build.c             | 4 ++--
+>   hw/i386/amd_iommu.c              | 4 ++--
+>   hw/i386/intel_iommu.c            | 4 ++--
+>   hw/i386/kvm/xen_xenstore.c       | 2 +-
+>   hw/i386/kvm/xenstore_impl.c      | 2 +-
+>   hw/i386/pc.c                     | 4 ++--
+>   include/hw/i386/topology.h       | 2 +-
+>   target/i386/cpu.c                | 4 ++--
+>   target/i386/cpu.h                | 4 ++--
+>   target/i386/kvm/kvm.c            | 4 ++--
+>   target/i386/kvm/xen-emu.c        | 2 +-
+>   target/i386/machine.c            | 4 ++--
+>   target/i386/tcg/translate.c      | 8 ++++----
+>   tests/tcg/i386/system/boot.S     | 2 +-
+>   tests/tcg/i386/x86.csv           | 2 +-
+>   16 files changed, 27 insertions(+), 27 deletions(-)
 
 Thanks,
 
