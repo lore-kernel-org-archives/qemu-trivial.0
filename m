@@ -1,78 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qg38b-0002ZR-Ug
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Sep 2023 09:09:06 -0400
+	id 1qg5d6-0002qG-9c
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Sep 2023 11:48:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qg38a-0002Yx-Rr
- for qemu-trivial@nongnu.org; Tue, 12 Sep 2023 09:09:04 -0400
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qg38Y-0003Tr-6m
- for qemu-trivial@nongnu.org; Tue, 12 Sep 2023 09:09:04 -0400
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-401da71b83cso63701845e9.2
- for <qemu-trivial@nongnu.org>; Tue, 12 Sep 2023 06:09:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1694524140; x=1695128940; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=vDbR0dDAWNI06kvkIawHO1H4PQm7Igpv7Hr2LCVZIDg=;
- b=zPs2FP0nwVCy8fvEAhU5euE77XTlRsVfP7/eJ9ZMxGCn5dy/0iylCYcc9xqhMrJkrx
- 57It5qzEaTGXh2bZfOCIOtS+lgk4f/5vqFfV0vQ/JWvuqoQKRpGB9UFYV5l5pfab6Ynx
- /VfDp3OqQyRkZQZ9V5Z/89aa4L8xmeMVturMMRL/Vfy4tbONPMCNiZY8vyy9c3CtyG9E
- 1GqzHa3f9WKZGPIiDP1ddQgr4LVzaYZBGo85GdF8U2KTLQqXmDY/bkeJYNYRJ5iF+uFu
- aSu+fLjZu+L17nvxl/M//s2hapRFSDW2uHqmAKJJs5otMtIKezn6Yy1EdR6qBHLO3FcV
- MTbg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1694524140; x=1695128940;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=vDbR0dDAWNI06kvkIawHO1H4PQm7Igpv7Hr2LCVZIDg=;
- b=g9NO5oJDsX9M2hpjmjqUB+Xo2Nxt+f90PhfcRphYWGw0ltuWICV6d3p7/lGvuLdeWa
- x+bg70aHn36IvlMFN59n815BDKEAtrmsAXyP0IuYoicyLJGbfzI7RNzBHzK/G09Ie1CD
- /iQDo6vJxfFRUIUxzjhls/d4XDEArjWff85OVhMzohCHKsIJrf1KsY6x+1uf7Ghx5tTa
- 4LFIj/uTPLaj3H+zV6UqiaTdrLZZB4ZkxaeF9DdEp0y3aXnzyKCOSza4sH6+R/aVfvvO
- SHWhzAcN5bS7jTHto4Qs1V6+k04VYYxZBnPMMgSQBISSgzRPdN+/MnLQBSqnX/pEvYZ7
- I3Zg==
-X-Gm-Message-State: AOJu0YzNXVjJgR3r9j5y+MKn+3LgIQot/0rB5TJ/Qouty4pRniklaPLy
- 7HXZS+g+wZHPowzW8XiwnhhPgw==
-X-Google-Smtp-Source: AGHT+IEr3lYZgB9ZBUBSiRKnuc978M7yGRVKQ3dOmwy2FRtMtNP7jo+3z5EYlPpzt+m8mSEIYgH9QA==
-X-Received: by 2002:a7b:cd17:0:b0:3f6:58ad:ed85 with SMTP id
- f23-20020a7bcd17000000b003f658aded85mr10493223wmj.10.1694524140131; 
- Tue, 12 Sep 2023 06:09:00 -0700 (PDT)
-Received: from [192.168.69.115] (cou50-h01-176-172-50-150.dsl.sta.abo.bbox.fr.
- [176.172.50.150]) by smtp.gmail.com with ESMTPSA id
- m15-20020a05600c4f4f00b00403bbe69629sm1901395wmq.31.2023.09.12.06.08.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Sep 2023 06:08:59 -0700 (PDT)
-Message-ID: <3244f20e-f2c8-4b46-0836-c6ac8e748938@linaro.org>
-Date: Tue, 12 Sep 2023 15:08:57 +0200
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1qg5d5-0002q6-6p
+ for qemu-trivial@nongnu.org; Tue, 12 Sep 2023 11:48:43 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lersek@redhat.com>) id 1qg5d2-0005a3-7D
+ for qemu-trivial@nongnu.org; Tue, 12 Sep 2023 11:48:42 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1694533718;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=3IGldxBfH68CFg9FGKJW4m9ne/VJK2zzCID5ax8z9+w=;
+ b=E62thWjXHI7HJcxh+BqFiDBvKL5jVsuJPfmlzIAyi4nWrDhxLt/LgY9xYu3zRGfoFN0Uc2
+ CgBNXb27S8gaJDtumGgIBfwV+F3gu1FenDt3rJBqH2xs5YL7d8Ab7UQYvcQZZhgDMuF7O3
+ HE5XQpN5f1Obb28RN7ayapX2uXNsZ5Q=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-626-AOge-AF8OB-sOD3SXR_Fiw-1; Tue, 12 Sep 2023 11:48:32 -0400
+X-MC-Unique: AOge-AF8OB-sOD3SXR_Fiw-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A30893822565;
+ Tue, 12 Sep 2023 15:48:28 +0000 (UTC)
+Received: from lacos-laptop-9.usersys.redhat.com (unknown [10.39.193.227])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 5777364671;
+ Tue, 12 Sep 2023 15:48:27 +0000 (UTC)
+From: Laszlo Ersek <lersek@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org
+Subject: [PATCH] hw/i386/pc: fix code comment on cumulative flash size
+Date: Tue, 12 Sep 2023 17:48:25 +0200
+Message-Id: <20230912154825.81568-1-lersek@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.0
-Subject: Re: [PATCH] subprojects: Use the correct .git suffix in the
- repository URLs
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
-References: <20230912130237.300014-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20230912130237.300014-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.473,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: base64
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=lersek@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ MIME_BASE64_TEXT=1.741, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,19 +67,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Sep 2023 13:09:05 -0000
+X-List-Received-Date: Tue, 12 Sep 2023 15:48:43 -0000
 
-On 12/9/23 15:02, Thomas Huth wrote:
-> This avoids the warnings à la:
-> "warning: redirecting to https://gitlab.com/qemu-project/xyz.git/"
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   subprojects/berkeley-softfloat-3.wrap | 2 +-
->   subprojects/berkeley-testfloat-3.wrap | 2 +-
->   subprojects/slirp.wrap                | 2 +-
->   3 files changed, 3 insertions(+), 3 deletions(-)
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+LSBUaGUgY29tbWVudCBpcyBpbmNvcnJlY3RseSBpbmRlbnRlZCAvIGZvcm1hdHRlZC4KCi0gVGhl
+IGNvbW1lbnQgc3RhdGVzIGEgOE1CIGxpbWl0LCBldmVuIHRob3VnaCB0aGUgY29kZSBlbmZvcmNl
+cyBhIDE2TUIKICBsaW1pdC4KCkJvdGggb2YgdGhlc2Ugd2FydHMgY29tZSBmcm9tIGNvbW1pdCAw
+NjU3YzY1N2ViMzcgKCJody9pMzg2L3BjOiBhZGQgbWF4CmNvbWJpbmVkIGZ3IHNpemUgYXMgbWFj
+aGluZSBjb25maWd1cmF0aW9uIG9wdGlvbiIsIDIwMjAtMTItMDkpOyBjbGVhbiB0aGVtCnVwLgoK
+QXJndWFibHksIGl0J3MgYWxzbyBiZXR0ZXIgdG8gYmUgY29uc2lzdGVudCB3aXRoIHRoZSAiTWlC
+IiB1bml0IHRoYXQgUUVNVQp1c2VzIG5vd2FkYXlzLgoKQ2M6ICJNaWNoYWVsIFMuIFRzaXJraW4i
+IDxtc3RAcmVkaGF0LmNvbT4gKHN1cHBvcnRlcjpQQykKQ2M6IE1hcmNlbCBBcGZlbGJhdW0gPG1h
+cmNlbC5hcGZlbGJhdW1AZ21haWwuY29tPiAoc3VwcG9ydGVyOlBDKQpDYzogUGFvbG8gQm9uemlu
+aSA8cGJvbnppbmlAcmVkaGF0LmNvbT4gKG1haW50YWluZXI6WDg2IFRDRyBDUFVzKQpDYzogUmlj
+aGFyZCBIZW5kZXJzb24gPHJpY2hhcmQuaGVuZGVyc29uQGxpbmFyby5vcmc+IChtYWludGFpbmVy
+Olg4NiBUQ0cgQ1BVcykKQ2M6IEVkdWFyZG8gSGFia29zdCA8ZWR1YXJkb0BoYWJrb3N0Lm5ldD4g
+KG1haW50YWluZXI6WDg2IFRDRyBDUFVzKQpDYzogcWVtdS10cml2aWFsQG5vbmdudS5vcmcKRml4
+ZXM6IDA2NTdjNjU3ZWIzNwpTaWduZWQtb2ZmLWJ5OiBMYXN6bG8gRXJzZWsgPGxlcnNla0ByZWRo
+YXQuY29tPgotLS0KIGh3L2kzODYvcGMuYyB8IDEyICsrKysrKy0tLS0tLQogMSBmaWxlIGNoYW5n
+ZWQsIDYgaW5zZXJ0aW9ucygrKSwgNiBkZWxldGlvbnMoLSkKCmRpZmYgLS1naXQgYS9ody9pMzg2
+L3BjLmMgYi9ody9pMzg2L3BjLmMKaW5kZXggNTQ4MzhjMGM0MTFkLi5kMDZiOGRhNDljYWUgMTAw
+NjQ0Ci0tLSBhL2h3L2kzODYvcGMuYworKysgYi9ody9pMzg2L3BjLmMKQEAgLTE3NDYsMTIgKzE3
+NDYsMTIgQEAgc3RhdGljIHZvaWQgcGNfbWFjaGluZV9zZXRfbWF4X2Z3X3NpemUoT2JqZWN0ICpv
+YmosIFZpc2l0b3IgKnYsCiAgICAgfQogCiAgICAgLyoKLSAgICAqIFdlIGRvbid0IGhhdmUgYSB0
+aGVvcmV0aWNhbGx5IGp1c3RpZmlhYmxlIGV4YWN0IGxvd2VyIGJvdW5kIG9uIHRoZSBiYXNlCi0g
+ICAgKiBhZGRyZXNzIG9mIGFueSBmbGFzaCBtYXBwaW5nLiBJbiBwcmFjdGljZSwgdGhlIElPLUFQ
+SUMgTU1JTyByYW5nZSBpcwotICAgICogWzB4RkVFMDAwMDAuLjB4RkVFMDEwMDBdIC0tIHNlZSBJ
+T19BUElDX0RFRkFVTFRfQUREUkVTUyAtLSwgbGVhdmluZyBmcmVlCi0gICAgKiBvbmx5IDE4TUIt
+NEtCIGJlbG93IDRHLiBGb3Igbm93LCByZXN0cmljdCB0aGUgY3VtdWxhdGl2ZSBtYXBwaW5nIHRv
+IDhNQiBpbgotICAgICogc2l6ZS4KLSAgICAqLworICAgICAqIFdlIGRvbid0IGhhdmUgYSB0aGVv
+cmV0aWNhbGx5IGp1c3RpZmlhYmxlIGV4YWN0IGxvd2VyIGJvdW5kIG9uIHRoZSBiYXNlCisgICAg
+ICogYWRkcmVzcyBvZiBhbnkgZmxhc2ggbWFwcGluZy4gSW4gcHJhY3RpY2UsIHRoZSBJTy1BUElD
+IE1NSU8gcmFuZ2UgaXMKKyAgICAgKiBbMHhGRUUwMDAwMC4uMHhGRUUwMTAwMF0gLS0gc2VlIElP
+X0FQSUNfREVGQVVMVF9BRERSRVNTIC0tLCBsZWF2aW5nIGZyZWUKKyAgICAgKiBvbmx5IDE4TUIt
+NEtCIGJlbG93IDRHLiBGb3Igbm93LCByZXN0cmljdCB0aGUgY3VtdWxhdGl2ZSBtYXBwaW5nIHRv
+IDE2TWlCCisgICAgICogaW4gc2l6ZS4KKyAgICAgKi8KICAgICBpZiAodmFsdWUgPiAxNiAqIE1p
+QikgewogICAgICAgICBlcnJvcl9zZXRnKGVycnAsCiAgICAgICAgICAgICAgICAgICAgIlVzZXIg
+c3BlY2lmaWVkIG1heCBhbGxvd2VkIGZpcm13YXJlIHNpemUgJSIgUFJJdTY0ICIgaXMgIgo=
 
 
