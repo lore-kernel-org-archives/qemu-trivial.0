@@ -1,59 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qg32k-0006Yg-LC
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Sep 2023 09:03:02 -0400
+	id 1qg38F-0002Ey-2F
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Sep 2023 09:08:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qg32g-0006Pl-TH
- for qemu-trivial@nongnu.org; Tue, 12 Sep 2023 09:02:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qg38C-0002BO-7F; Tue, 12 Sep 2023 09:08:40 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qg32V-0008J2-Nl
- for qemu-trivial@nongnu.org; Tue, 12 Sep 2023 09:02:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1694523762;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=MhK5ePKbVvcTPqNDbQxkzK12FuHL4I8462s3ywfXPFw=;
- b=ByI1T/hkmerEnwEtcZiHXT4+Jh1lU2x6NcAK6G1pYFNE3rRBmZJBDAMsTXF9mk+cZ8BWeN
- 9nHe5pq7+P4dCVZzDJlevatmM9C/jxYkALv20aH2aWfeZZRjJnjaY1O+4hfgp5ZNdSmcyb
- 2NVQbMNdJdnFe44xEsoMjwCN1Mzf4xI=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-137-sQ66z81SPwO0kB9dGzmpxw-1; Tue, 12 Sep 2023 09:02:40 -0400
-X-MC-Unique: sQ66z81SPwO0kB9dGzmpxw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A91893C0EAC2;
- Tue, 12 Sep 2023 13:02:39 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.161])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 961C22026D4B;
- Tue, 12 Sep 2023 13:02:38 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH] subprojects: Use the correct .git suffix in the repository
- URLs
-Date: Tue, 12 Sep 2023 15:02:37 +0200
-Message-ID: <20230912130237.300014-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qg389-0002pU-HE; Tue, 12 Sep 2023 09:08:39 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 048092121D;
+ Tue, 12 Sep 2023 16:08:35 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id CE5602786B;
+ Tue, 12 Sep 2023 16:08:30 +0300 (MSK)
+Message-ID: <bde0dace-f9e9-6e40-e8be-71457a0b3a0e@tls.msk.ru>
+Date: Tue, 12 Sep 2023 16:08:30 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.0
+Subject: Re: [PATCH] subprojects: Use the correct .git suffix in the
+ repository URLs
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Marc-Andr=c3=a9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?Q?Alex_Benn=c3=a9e?= <alex.bennee@linaro.org>
+References: <20230912130237.300014-1-thuth@redhat.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <20230912130237.300014-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -83
+X-Spam_score: -8.4
+X-Spam_bar: --------
+X-Spam_report: (-8.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.473,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -66,52 +52,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Sep 2023 13:02:59 -0000
+X-List-Received-Date: Tue, 12 Sep 2023 13:08:40 -0000
 
-This avoids the warnings à la:
-"warning: redirecting to https://gitlab.com/qemu-project/xyz.git/"
+12.09.2023 16:02, Thomas Huth wrote:
+> This avoids the warnings à la:
+> "warning: redirecting to https://gitlab.com/qemu-project/xyz.git/"
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- subprojects/berkeley-softfloat-3.wrap | 2 +-
- subprojects/berkeley-testfloat-3.wrap | 2 +-
- subprojects/slirp.wrap                | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+I wanted to do that for quite some time.. :)
 
-diff --git a/subprojects/berkeley-softfloat-3.wrap b/subprojects/berkeley-softfloat-3.wrap
-index a8fd87740b..c3e356d42f 100644
---- a/subprojects/berkeley-softfloat-3.wrap
-+++ b/subprojects/berkeley-softfloat-3.wrap
-@@ -1,5 +1,5 @@
- [wrap-git]
--url = https://gitlab.com/qemu-project/berkeley-softfloat-3
-+url = https://gitlab.com/qemu-project/berkeley-softfloat-3.git
- revision = b64af41c3276f97f0e181920400ee056b9c88037
- patch_directory = berkeley-softfloat-3
- depth = 1
-diff --git a/subprojects/berkeley-testfloat-3.wrap b/subprojects/berkeley-testfloat-3.wrap
-index c86dc078a8..b8b12e7629 100644
---- a/subprojects/berkeley-testfloat-3.wrap
-+++ b/subprojects/berkeley-testfloat-3.wrap
-@@ -1,5 +1,5 @@
- [wrap-git]
--url = https://gitlab.com/qemu-project/berkeley-testfloat-3
-+url = https://gitlab.com/qemu-project/berkeley-testfloat-3.git
- revision = e7af9751d9f9fd3b47911f51a5cfd08af256a9ab
- patch_directory = berkeley-testfloat-3
- depth = 1
-diff --git a/subprojects/slirp.wrap b/subprojects/slirp.wrap
-index 08291a4cf9..a93b048962 100644
---- a/subprojects/slirp.wrap
-+++ b/subprojects/slirp.wrap
-@@ -1,5 +1,5 @@
- [wrap-git]
--url = https://gitlab.freedesktop.org/slirp/libslirp
-+url = https://gitlab.freedesktop.org/slirp/libslirp.git
- revision = 26be815b86e8d49add8c9a8b320239b9594ff03d
- 
- [provide]
--- 
-2.41.0
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+
+Applied to my trivial-patches tree, thanks!
+
+/mjt
 
 
