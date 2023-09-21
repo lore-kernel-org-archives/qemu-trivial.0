@@ -1,40 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qjFA4-0006OX-CA
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Sep 2023 04:35:49 -0400
+	id 1qjFA6-0006U7-HE
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Sep 2023 04:35:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qjF9x-00069Z-9G; Thu, 21 Sep 2023 04:35:41 -0400
+ id 1qjF9g-0005vs-DV; Thu, 21 Sep 2023 04:35:24 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qjF9v-0001KL-IT; Thu, 21 Sep 2023 04:35:41 -0400
+ id 1qjF9d-0001CC-CP; Thu, 21 Sep 2023 04:35:24 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 124CC23DAC;
- Thu, 21 Sep 2023 11:35:35 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 7BEEA23DA5;
+ Thu, 21 Sep 2023 11:35:33 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id B3D9B29A06;
- Thu, 21 Sep 2023 11:35:13 +0300 (MSK)
-Received: (nullmailer pid 509109 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 2E11E299FF;
+ Thu, 21 Sep 2023 11:35:12 +0300 (MSK)
+Received: (nullmailer pid 509088 invoked by uid 1000);
  Thu, 21 Sep 2023 08:35:11 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Laszlo Ersek <lersek@redhat.com>, qemu-trivial@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 09/17] hw/i386/pc: fix code comment on cumulative flash size
-Date: Thu, 21 Sep 2023 11:34:58 +0300
-Message-Id: <20230921083506.509032-10-mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Kyle Evans <kevans@FreeBSD.org>, Warner Losh <imp@bsdimp.com>
+Subject: [PULL 02/17] bsd-user: spelling fixes
+Date: Thu, 21 Sep 2023 11:34:51 +0300
+Message-Id: <20230921083506.509032-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230921083506.509032-1-mjt@tls.msk.ru>
 References: <20230921083506.509032-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -55,60 +48,144 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Sep 2023 08:35:44 -0000
+X-List-Received-Date: Thu, 21 Sep 2023 08:35:29 -0000
 
-From: Laszlo Ersek <lersek@redhat.com>
-
-- The comment is incorrectly indented / formatted.
-
-- The comment states a 8MB limit, even though the code enforces a 16MB
-  limit.
-
-Both of these warts come from commit 0657c657eb37 ("hw/i386/pc: add max
-combined fw size as machine configuration option", 2020-12-09); clean them
-up.
-
-Arguably, it's also better to be consistent with the binary units (such as
-"MiB") that QEMU uses nowadays.
-
-Cc: "Michael S. Tsirkin" <mst@redhat.com> (supporter:PC)
-Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com> (supporter:PC)
-Cc: Paolo Bonzini <pbonzini@redhat.com> (maintainer:X86 TCG CPUs)
-Cc: Richard Henderson <richard.henderson@linaro.org> (maintainer:X86 TCG CPUs)
-Cc: Eduardo Habkost <eduardo@habkost.net> (maintainer:X86 TCG CPUs)
-Cc: qemu-trivial@nongnu.org
-Fixes: 0657c657eb37
-Signed-off-by: Laszlo Ersek <lersek@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Kyle Evans <kevans@FreeBSD.org>
+Reviewed-by: Warner Losh <imp@bsdimp.com>
 ---
- hw/i386/pc.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+ bsd-user/errno_defs.h                | 2 +-
+ bsd-user/freebsd/target_os_siginfo.h | 2 +-
+ bsd-user/freebsd/target_os_stack.h   | 4 ++--
+ bsd-user/freebsd/target_os_user.h    | 2 +-
+ bsd-user/qemu.h                      | 2 +-
+ bsd-user/signal-common.h             | 4 ++--
+ bsd-user/signal.c                    | 6 +++---
+ 7 files changed, 11 insertions(+), 11 deletions(-)
 
-diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-index 2872f60cdf..3db0743f31 100644
---- a/hw/i386/pc.c
-+++ b/hw/i386/pc.c
-@@ -1746,12 +1746,12 @@ static void pc_machine_set_max_fw_size(Object *obj, Visitor *v,
-     }
+diff --git a/bsd-user/errno_defs.h b/bsd-user/errno_defs.h
+index f3e8ac3488..abe70119d9 100644
+--- a/bsd-user/errno_defs.h
++++ b/bsd-user/errno_defs.h
+@@ -149,7 +149,7 @@
+ #define TARGET_ELAST            90              /* Must be equal largest errno */
  
+ /* Internal errors: */
+-#define TARGET_EJUSTRETURN      254             /* Just return without modifing regs */
++#define TARGET_EJUSTRETURN      254             /* Just return without modifying regs */
+ #define TARGET_ERESTART         255             /* Restart syscall */
+ 
+ #include "special-errno.h"
+diff --git a/bsd-user/freebsd/target_os_siginfo.h b/bsd-user/freebsd/target_os_siginfo.h
+index 4573738752..6c282d8502 100644
+--- a/bsd-user/freebsd/target_os_siginfo.h
++++ b/bsd-user/freebsd/target_os_siginfo.h
+@@ -72,7 +72,7 @@ typedef struct target_siginfo {
+             int32_t _mqd;
+         } _mesgp;
+ 
+-        /* SIGPOLL -- Not really genreated in FreeBSD ??? */
++        /* SIGPOLL -- Not really generated in FreeBSD ??? */
+         struct {
+             int _band;  /* POLL_IN, POLL_OUT, POLL_MSG */
+         } _poll;
+diff --git a/bsd-user/freebsd/target_os_stack.h b/bsd-user/freebsd/target_os_stack.h
+index 0590133291..d15fc3263f 100644
+--- a/bsd-user/freebsd/target_os_stack.h
++++ b/bsd-user/freebsd/target_os_stack.h
+@@ -25,7 +25,7 @@
+ #include "qemu/guest-random.h"
+ 
+ /*
+- * The inital FreeBSD stack is as follows:
++ * The initial FreeBSD stack is as follows:
+  * (see kern/kern_exec.c exec_copyout_strings() )
+  *
+  *  Hi Address -> char **ps_argvstr  (struct ps_strings for ps, w, etc.)
+@@ -59,7 +59,7 @@ static inline int setup_initial_stack(struct bsd_binprm *bprm,
+     /* Save some space for ps_strings. */
+     p -= sizeof(struct target_ps_strings);
+ 
+-    /* Add machine depedent sigcode. */
++    /* Add machine dependent sigcode. */
+     p -= TARGET_SZSIGCODE;
+     if (setup_sigtramp(p, (unsigned)offsetof(struct target_sigframe, sf_uc),
+             TARGET_FREEBSD_NR_sigreturn)) {
+diff --git a/bsd-user/freebsd/target_os_user.h b/bsd-user/freebsd/target_os_user.h
+index f036a32343..1ca7b5ab17 100644
+--- a/bsd-user/freebsd/target_os_user.h
++++ b/bsd-user/freebsd/target_os_user.h
+@@ -26,7 +26,7 @@
+ struct target_priority {
+     uint8_t     pri_class;      /* Scheduling class. */
+     uint8_t     pri_level;      /* Normal priority level. */
+-    uint8_t     pri_native;     /* Priority before propogation. */
++    uint8_t     pri_native;     /* Priority before propagation. */
+     uint8_t     pri_user;       /* User priority based on p_cpu and p_nice. */
+ };
+ 
+diff --git a/bsd-user/qemu.h b/bsd-user/qemu.h
+index d3158bc2ed..d9507137cc 100644
+--- a/bsd-user/qemu.h
++++ b/bsd-user/qemu.h
+@@ -116,7 +116,7 @@ extern const char *qemu_uname_release;
+ /*
+  * TARGET_ARG_MAX defines the number of bytes allocated for arguments
+  * and envelope for the new program. 256k should suffice for a reasonable
+- * maxiumum env+arg in 32-bit environments, bump it up to 512k for !ILP32
++ * maximum env+arg in 32-bit environments, bump it up to 512k for !ILP32
+  * platforms.
+  */
+ #if TARGET_ABI_BITS > 32
+diff --git a/bsd-user/signal-common.h b/bsd-user/signal-common.h
+index 6f90345bb2..c044e81165 100644
+--- a/bsd-user/signal-common.h
++++ b/bsd-user/signal-common.h
+@@ -49,11 +49,11 @@ void target_to_host_sigset(sigset_t *d, const target_sigset_t *s);
+  * union in target_siginfo is valid. This only applies between
+  * host_to_target_siginfo_noswap() and tswap_siginfo(); it does not appear
+  * either within host siginfo_t or in target_siginfo structures which we get
+- * from the guest userspace program. Linux kenrels use this internally, but BSD
++ * from the guest userspace program. Linux kernels use this internally, but BSD
+  * kernels don't do this, but its a useful abstraction.
+  *
+  * The linux-user version of this uses the top 16 bits, but FreeBSD's SI_USER
+- * and other signal indepenent SI_ codes have bit 16 set, so we only use the top
++ * and other signal independent SI_ codes have bit 16 set, so we only use the top
+  * byte instead.
+  *
+  * For FreeBSD, we have si_pid, si_uid, si_status, and si_addr always. Linux and
+diff --git a/bsd-user/signal.c b/bsd-user/signal.c
+index 4db85a3485..b6beab659e 100644
+--- a/bsd-user/signal.c
++++ b/bsd-user/signal.c
+@@ -44,7 +44,7 @@ static inline int sas_ss_flags(TaskState *ts, unsigned long sp)
+ }
+ 
+ /*
+- * The BSD ABIs use the same singal numbers across all the CPU architectures, so
++ * The BSD ABIs use the same signal numbers across all the CPU architectures, so
+  * (unlike Linux) these functions are just the identity mapping. This might not
+  * be true for XyzBSD running on AbcBSD, which doesn't currently work.
+  */
+@@ -241,7 +241,7 @@ static inline void host_to_target_siginfo_noswap(target_siginfo_t *tinfo,
+ #endif
+         /*
+          * Unsure that this can actually be generated, and our support for
+-         * capsicum is somewhere between weak and non-existant, but if we get
++         * capsicum is somewhere between weak and non-existent, but if we get
+          * one, then we know what to save.
+          */
+ #ifdef QEMU_SI_CAPSICUM
+@@ -319,7 +319,7 @@ int block_signals(void)
      /*
--    * We don't have a theoretically justifiable exact lower bound on the base
--    * address of any flash mapping. In practice, the IO-APIC MMIO range is
--    * [0xFEE00000..0xFEE01000] -- see IO_APIC_DEFAULT_ADDRESS --, leaving free
--    * only 18MB-4KB below 4G. For now, restrict the cumulative mapping to 8MB in
--    * size.
--    */
-+     * We don't have a theoretically justifiable exact lower bound on the base
-+     * address of any flash mapping. In practice, the IO-APIC MMIO range is
-+     * [0xFEE00000..0xFEE01000] -- see IO_APIC_DEFAULT_ADDRESS --, leaving free
-+     * only 18MiB-4KiB below 4GiB. For now, restrict the cumulative mapping to
-+     * 16MiB in size.
-+     */
-     if (value > 16 * MiB) {
-         error_setg(errp,
-                    "User specified max allowed firmware size %" PRIu64 " is "
+      * It's OK to block everything including SIGSEGV, because we won't run any
+      * further guest code before unblocking signals in
+-     * process_pending_signals(). We depend on the FreeBSD behaivor here where
++     * process_pending_signals(). We depend on the FreeBSD behavior here where
+      * this will only affect this thread's signal mask. We don't use
+      * pthread_sigmask which might seem more correct because that routine also
+      * does odd things with SIGCANCEL to implement pthread_cancel().
 -- 
 2.39.2
 
