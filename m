@@ -1,36 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qjFAL-00071p-F7
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Sep 2023 04:36:06 -0400
+	id 1qjFAN-00074V-5w
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Sep 2023 04:36:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qjF9t-00067B-QF; Thu, 21 Sep 2023 04:35:38 -0400
+ id 1qjF9p-00064V-Mm; Thu, 21 Sep 2023 04:35:35 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qjF9r-0001Jm-SG; Thu, 21 Sep 2023 04:35:37 -0400
+ id 1qjF9n-0001JB-Qe; Thu, 21 Sep 2023 04:35:33 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id CD79B23DAB;
+ by isrv.corpit.ru (Postfix) with ESMTP id 5D2EF23DA9;
  Thu, 21 Sep 2023 11:35:34 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 7D31A29A05;
+ by tsrv.corpit.ru (Postfix) with SMTP id 0A87D29A03;
  Thu, 21 Sep 2023 11:35:13 +0300 (MSK)
-Received: (nullmailer pid 509106 invoked by uid 1000);
+Received: (nullmailer pid 509100 invoked by uid 1000);
  Thu, 21 Sep 2023 08:35:11 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 08/17] subprojects: Use the correct .git suffix in the
- repository URLs
-Date: Thu, 21 Sep 2023 11:34:57 +0300
-Message-Id: <20230921083506.509032-9-mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Stefan Berger <stefanb@linux.ibm.com>
+Subject: [PULL 06/17] hw/tpm: spelling fixes
+Date: Thu, 21 Sep 2023 11:34:55 +0300
+Message-Id: <20230921083506.509032-7-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230921083506.509032-1-mjt@tls.msk.ru>
 References: <20230921083506.509032-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -51,56 +48,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Sep 2023 08:35:44 -0000
+X-List-Received-Date: Thu, 21 Sep 2023 08:35:43 -0000
 
-From: Thomas Huth <thuth@redhat.com>
-
-This avoids the warnings à la:
-"warning: redirecting to https://gitlab.com/qemu-project/xyz.git/"
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Stefan Berger <stefanb@linux.ibm.com>
 ---
- subprojects/berkeley-softfloat-3.wrap | 2 +-
- subprojects/berkeley-testfloat-3.wrap | 2 +-
- subprojects/slirp.wrap                | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ hw/tpm/tpm_tis.h        | 2 +-
+ hw/tpm/tpm_tis_common.c | 2 +-
+ hw/tpm/tpm_tis_i2c.c    | 4 ++--
+ hw/tpm/tpm_tis_isa.c    | 2 +-
+ hw/tpm/tpm_tis_sysbus.c | 2 +-
+ 5 files changed, 6 insertions(+), 6 deletions(-)
 
-diff --git a/subprojects/berkeley-softfloat-3.wrap b/subprojects/berkeley-softfloat-3.wrap
-index a8fd87740b..c3e356d42f 100644
---- a/subprojects/berkeley-softfloat-3.wrap
-+++ b/subprojects/berkeley-softfloat-3.wrap
-@@ -1,5 +1,5 @@
- [wrap-git]
--url = https://gitlab.com/qemu-project/berkeley-softfloat-3
-+url = https://gitlab.com/qemu-project/berkeley-softfloat-3.git
- revision = b64af41c3276f97f0e181920400ee056b9c88037
- patch_directory = berkeley-softfloat-3
- depth = 1
-diff --git a/subprojects/berkeley-testfloat-3.wrap b/subprojects/berkeley-testfloat-3.wrap
-index c86dc078a8..b8b12e7629 100644
---- a/subprojects/berkeley-testfloat-3.wrap
-+++ b/subprojects/berkeley-testfloat-3.wrap
-@@ -1,5 +1,5 @@
- [wrap-git]
--url = https://gitlab.com/qemu-project/berkeley-testfloat-3
-+url = https://gitlab.com/qemu-project/berkeley-testfloat-3.git
- revision = e7af9751d9f9fd3b47911f51a5cfd08af256a9ab
- patch_directory = berkeley-testfloat-3
- depth = 1
-diff --git a/subprojects/slirp.wrap b/subprojects/slirp.wrap
-index 08291a4cf9..a93b048962 100644
---- a/subprojects/slirp.wrap
-+++ b/subprojects/slirp.wrap
-@@ -1,5 +1,5 @@
- [wrap-git]
--url = https://gitlab.freedesktop.org/slirp/libslirp
-+url = https://gitlab.freedesktop.org/slirp/libslirp.git
- revision = 26be815b86e8d49add8c9a8b320239b9594ff03d
+diff --git a/hw/tpm/tpm_tis.h b/hw/tpm/tpm_tis.h
+index 6f29a508dd..6f14896b97 100644
+--- a/hw/tpm/tpm_tis.h
++++ b/hw/tpm/tpm_tis.h
+@@ -19,7 +19,7 @@
+  * specification.
+  *
+  * TPM TIS for TPM 2 implementation following TCG PC Client Platform
+- * TPM Profile (PTP) Specification, Familiy 2.0, Revision 00.43
++ * TPM Profile (PTP) Specification, Family 2.0, Revision 00.43
+  */
+ #ifndef TPM_TPM_TIS_H
+ #define TPM_TPM_TIS_H
+diff --git a/hw/tpm/tpm_tis_common.c b/hw/tpm/tpm_tis_common.c
+index c07c179dbc..279ce436b5 100644
+--- a/hw/tpm/tpm_tis_common.c
++++ b/hw/tpm/tpm_tis_common.c
+@@ -20,7 +20,7 @@
+  * specification.
+  *
+  * TPM TIS for TPM 2 implementation following TCG PC Client Platform
+- * TPM Profile (PTP) Specification, Familiy 2.0, Revision 00.43
++ * TPM Profile (PTP) Specification, Family 2.0, Revision 00.43
+  */
+ #include "qemu/osdep.h"
+ #include "hw/irq.h"
+diff --git a/hw/tpm/tpm_tis_i2c.c b/hw/tpm/tpm_tis_i2c.c
+index b695fd3a46..4ecea7fa3e 100644
+--- a/hw/tpm/tpm_tis_i2c.c
++++ b/hw/tpm/tpm_tis_i2c.c
+@@ -13,7 +13,7 @@
+  * Family 2.0, Level 00, Revision 1.00
+  *
+  * TPM TIS for TPM 2 implementation following TCG PC Client Platform
+- * TPM Profile (PTP) Specification, Familiy 2.0, Revision 00.43
++ * TPM Profile (PTP) Specification, Family 2.0, Revision 00.43
+  *
+  */
  
- [provide]
+@@ -507,7 +507,7 @@ static void tpm_tis_i2c_realizefn(DeviceState *dev, Error **errp)
+     }
+ 
+     /*
+-     * Get the backend pointer. It is not initialized propery during
++     * Get the backend pointer. It is not initialized properly during
+      * device_class_set_props
+      */
+     s->be_driver = qemu_find_tpm_be("tpm0");
+diff --git a/hw/tpm/tpm_tis_isa.c b/hw/tpm/tpm_tis_isa.c
+index 91e3792248..0367401586 100644
+--- a/hw/tpm/tpm_tis_isa.c
++++ b/hw/tpm/tpm_tis_isa.c
+@@ -19,7 +19,7 @@
+  * specification.
+  *
+  * TPM TIS for TPM 2 implementation following TCG PC Client Platform
+- * TPM Profile (PTP) Specification, Familiy 2.0, Revision 00.43
++ * TPM Profile (PTP) Specification, Family 2.0, Revision 00.43
+  */
+ 
+ #include "qemu/osdep.h"
+diff --git a/hw/tpm/tpm_tis_sysbus.c b/hw/tpm/tpm_tis_sysbus.c
+index 6724b3d4f6..2fc550f119 100644
+--- a/hw/tpm/tpm_tis_sysbus.c
++++ b/hw/tpm/tpm_tis_sysbus.c
+@@ -19,7 +19,7 @@
+  * specification.
+  *
+  * TPM TIS for TPM 2 implementation following TCG PC Client Platform
+- * TPM Profile (PTP) Specification, Familiy 2.0, Revision 00.43
++ * TPM Profile (PTP) Specification, Family 2.0, Revision 00.43
+  */
+ 
+ #include "qemu/osdep.h"
 -- 
 2.39.2
 
