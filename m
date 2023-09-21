@@ -1,31 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qjFAg-0007uc-1T
+	id 1qjFAg-0007xN-8R
 	for mharc-qemu-trivial@gnu.org; Thu, 21 Sep 2023 04:36:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qjFAQ-0007K9-G9; Thu, 21 Sep 2023 04:36:22 -0400
+ id 1qjFAP-0007Jj-UN; Thu, 21 Sep 2023 04:36:21 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qjFAN-0001Lm-Ut; Thu, 21 Sep 2023 04:36:10 -0400
+ id 1qjFAL-0001LJ-0j; Thu, 21 Sep 2023 04:36:09 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id EC3A123DB0;
+ by isrv.corpit.ru (Postfix) with ESMTP id AC85723DAF;
  Thu, 21 Sep 2023 11:35:35 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 93A7E29A0A;
+ by tsrv.corpit.ru (Postfix) with SMTP id 66E7A29A09;
  Thu, 21 Sep 2023 11:35:14 +0300 (MSK)
-Received: (nullmailer pid 509121 invoked by uid 1000);
+Received: (nullmailer pid 509118 invoked by uid 1000);
  Thu, 21 Sep 2023 08:35:11 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Li Zhijian <lizhijian@cn.fujitsu.com>, qemu-trivial@nongnu.org,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>, Fan Ni <fan.ni@samsung.com>,
+Cc: Fan Ni <fan.ni@samsung.com>, qemu-trivial@nongnu.org,
+ Davidlohr Bueso <dave@stgolabs.net>, Dave Jiang <dave.jiang@intel.com>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 13/17] docs/cxl: Change to lowercase as others
-Date: Thu, 21 Sep 2023 11:35:02 +0300
-Message-Id: <20230921083506.509032-14-mjt@tls.msk.ru>
+Subject: [PULL 12/17] hw/cxl/cxl_device: Replace magic number in CXLError
+ definition
+Date: Thu, 21 Sep 2023 11:35:01 +0300
+Message-Id: <20230921083506.509032-13-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230921083506.509032-1-mjt@tls.msk.ru>
 References: <20230921083506.509032-1-mjt@tls.msk.ru>
@@ -53,53 +55,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 21 Sep 2023 08:36:24 -0000
 
-From: Li Zhijian <lizhijian@cn.fujitsu.com>
+From: Fan Ni <fan.ni@samsung.com>
 
-Using the same style as elsewhere for topology / topo
+Replace the magic number 32 with CXL_RAS_ERR_HEADER_NUM for better code
+readability and maintainability.
 
-Signed-off-by: Li Zhijian <lizhijian@cn.fujitsu.com>
-Link: https://lore.kernel.org/r/20230519085802.2106900-2-lizhijian@cn.fujitsu.com
+Signed-off-by: Fan Ni <fan.ni@samsung.com>
+Reviewed-by: Davidlohr Bueso <dave@stgolabs.net>
+Reviewed-by: Dave Jiang <dave.jiang@intel.com>
 Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Reviewed-by: Fan Ni <fan.ni@samsung.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- docs/system/devices/cxl.rst | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ include/hw/cxl/cxl_device.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/system/devices/cxl.rst b/docs/system/devices/cxl.rst
-index f12011e230..b742120657 100644
---- a/docs/system/devices/cxl.rst
-+++ b/docs/system/devices/cxl.rst
-@@ -157,7 +157,7 @@ responsible for allocating appropriate ranges from within the CFMWs
- and exposing those via normal memory configurations as would be done
- for system RAM.
+diff --git a/include/hw/cxl/cxl_device.h b/include/hw/cxl/cxl_device.h
+index f717e3f384..51cd0d9ce3 100644
+--- a/include/hw/cxl/cxl_device.h
++++ b/include/hw/cxl/cxl_device.h
+@@ -300,7 +300,7 @@ REG64(CXL_MEM_DEV_STS, 0)
+ typedef struct CXLError {
+     QTAILQ_ENTRY(CXLError) node;
+     int type; /* Error code as per FE definition */
+-    uint32_t header[32];
++    uint32_t header[CXL_RAS_ERR_HEADER_NUM];
+ } CXLError;
  
--Example system Topology. x marks the match in each decoder level::
-+Example system topology. x marks the match in each decoder level::
- 
-   |<------------------SYSTEM PHYSICAL ADDRESS MAP (1)----------------->|
-   |    __________   __________________________________   __________    |
-@@ -187,8 +187,8 @@ Example system Topology. x marks the match in each decoder level::
-        ___________|___   __________|__   __|_________   ___|_________
-    (3)|  Root Port 0  | | Root Port 1 | | Root Port 2| | Root Port 3 |
-       |  Appears in   | | Appears in  | | Appears in | | Appear in   |
--      |  PCI topology | | PCI Topology| | PCI Topo   | | PCI Topo    |
--      |  As 0c:00.0   | | as 0c:01.0  | | as de:00.0 | | as de:01.0  |
-+      |  PCI topology | | PCI topology| | PCI topo   | | PCI topo    |
-+      |  as 0c:00.0   | | as 0c:01.0  | | as de:00.0 | | as de:01.0  |
-       |_______________| |_____________| |____________| |_____________|
-             |                  |               |              |
-             |                  |               |              |
-@@ -272,7 +272,7 @@ Example topology involving a switch::
-       |  Root Port 0  |
-       |  Appears in   |
-       |  PCI topology |
--      |  As 0c:00.0   |
-+      |  as 0c:00.0   |
-       |___________x___|
-                   |
-                   |
+ typedef QTAILQ_HEAD(, CXLError) CXLErrorList;
 -- 
 2.39.2
 
