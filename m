@@ -1,32 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qjFAm-0000Im-CL
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Sep 2023 04:36:32 -0400
+	id 1qjFAq-0000vO-JU
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Sep 2023 04:36:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qjFAh-0008Dk-UR; Thu, 21 Sep 2023 04:36:27 -0400
+ id 1qjFAm-0000Nr-S0; Thu, 21 Sep 2023 04:36:32 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qjFAW-0001Pe-4w; Thu, 21 Sep 2023 04:36:27 -0400
+ id 1qjFAj-0001R1-29; Thu, 21 Sep 2023 04:36:32 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 591A423DB2;
+ by isrv.corpit.ru (Postfix) with ESMTP id AB9D323DB4;
  Thu, 21 Sep 2023 11:35:36 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 17C9029A0C;
+ by tsrv.corpit.ru (Postfix) with SMTP id 641DE29A0E;
  Thu, 21 Sep 2023 11:35:15 +0300 (MSK)
-Received: (nullmailer pid 509127 invoked by uid 1000);
+Received: (nullmailer pid 509133 invoked by uid 1000);
  Thu, 21 Sep 2023 08:35:11 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Jonathan Cameron <Jonathan.Cameron@huawei.com>, qemu-trivial@nongnu.org,
+Cc: Akihiko Odaki <akihiko.odaki@daynix.com>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Dave Jiang <dave.jiang@intel.com>, Ira Weiny <ira.weiny@intel.com>,
- Fan Ni <fan.ni@samsung.com>, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 15/17] hw/mem/cxl_type3: Add missing copyright and license
- notice
-Date: Thu, 21 Sep 2023 11:35:04 +0300
-Message-Id: <20230921083506.509032-16-mjt@tls.msk.ru>
+ Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 17/17] docs/devel/reset.rst: Correct function names
+Date: Thu, 21 Sep 2023 11:35:06 +0300
+Message-Id: <20230921083506.509032-18-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20230921083506.509032-1-mjt@tls.msk.ru>
 References: <20230921083506.509032-1-mjt@tls.msk.ru>
@@ -35,11 +33,11 @@ Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -52,62 +50,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Sep 2023 08:36:29 -0000
+X-List-Received-Date: Thu, 21 Sep 2023 08:36:33 -0000
 
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-This has been missing from the start. Assume it should match
-with cxl/cxl-component-utils.c as both were part of early
-postings from Ben.
+resettable_class_set_parent_phases() was mistakenly called
+resettable_class_set_parent_reset_phases() in some places.
 
-Reported-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Acked-by: Dave Jiang <dave.jiang@intel.com>
-Acked-by: Ira Weiny <ira.weiny@intel.com>
-Reviewed-by: Fan Ni <fan.ni@samsung.com>
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/mem/cxl_type3.c       | 11 +++++++++++
- hw/mem/cxl_type3_stubs.c | 10 ++++++++++
- 2 files changed, 21 insertions(+)
+ docs/devel/reset.rst | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
 
-diff --git a/hw/mem/cxl_type3.c b/hw/mem/cxl_type3.c
-index a98a157065..4cdcb3f7e7 100644
---- a/hw/mem/cxl_type3.c
-+++ b/hw/mem/cxl_type3.c
-@@ -1,3 +1,14 @@
-+/*
-+ * CXL Type 3 (memory expander) device
-+ *
-+ * Copyright(C) 2020 Intel Corporation.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2. See the
-+ * COPYING file in the top-level directory.
-+ *
-+ * SPDX-License-Identifier: GPL-v2-only
-+ */
-+
- #include "qemu/osdep.h"
- #include "qemu/units.h"
- #include "qemu/error-report.h"
-diff --git a/hw/mem/cxl_type3_stubs.c b/hw/mem/cxl_type3_stubs.c
-index f3e4a9fa72..8ba5d3d1f7 100644
---- a/hw/mem/cxl_type3_stubs.c
-+++ b/hw/mem/cxl_type3_stubs.c
-@@ -1,3 +1,13 @@
-+/*
-+ * CXL Type 3 (memory expander) device QMP stubs
-+ *
-+ * Copyright(C) 2020 Intel Corporation.
-+ *
-+ * This work is licensed under the terms of the GNU GPL, version 2. See the
-+ * COPYING file in the top-level directory.
-+ *
-+ * SPDX-License-Identifier: GPL-v2-only
-+ */
+diff --git a/docs/devel/reset.rst b/docs/devel/reset.rst
+index 7cc6a6b314..38ed1790f7 100644
+--- a/docs/devel/reset.rst
++++ b/docs/devel/reset.rst
+@@ -184,21 +184,20 @@ in reset.
+     {
+         MyDevClass *myclass = MYDEV_CLASS(class);
+         ResettableClass *rc = RESETTABLE_CLASS(class);
+-        resettable_class_set_parent_reset_phases(rc,
+-                                                 mydev_reset_enter,
+-                                                 mydev_reset_hold,
+-                                                 mydev_reset_exit,
+-                                                 &myclass->parent_phases);
++        resettable_class_set_parent_phases(rc,
++                                           mydev_reset_enter,
++                                           mydev_reset_hold,
++                                           mydev_reset_exit,
++                                           &myclass->parent_phases);
+     }
  
- #include "qemu/osdep.h"
- #include "qapi/error.h"
+ In the above example, we override all three phases. It is possible to override
+ only some of them by passing NULL instead of a function pointer to
+-``resettable_class_set_parent_reset_phases()``. For example, the following will
++``resettable_class_set_parent_phases()``. For example, the following will
+ only override the *enter* phase and leave *hold* and *exit* untouched::
+ 
+-    resettable_class_set_parent_reset_phases(rc, mydev_reset_enter,
+-                                             NULL, NULL,
+-                                             &myclass->parent_phases);
++    resettable_class_set_parent_phases(rc, mydev_reset_enter, NULL, NULL,
++                                       &myclass->parent_phases);
+ 
+ This is equivalent to providing a trivial implementation of the hold and exit
+ phases which does nothing but call the parent class's implementation of the
 -- 
 2.39.2
 
