@@ -1,63 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qjLQT-000448-El
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Sep 2023 11:17:09 -0400
+	id 1qjgkk-0000U5-DG
+	for mharc-qemu-trivial@gnu.org; Fri, 22 Sep 2023 10:03:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1qjLQD-0003qy-AM
- for qemu-trivial@nongnu.org; Thu, 21 Sep 2023 11:16:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <estarriol@SSLAB-3090Ti>)
+ id 1qjauK-0007WT-SK; Fri, 22 Sep 2023 03:49:00 -0400
+Received: from [140.112.90.93] (helo=SSLAB-3090Ti)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1qjLQB-0006Bb-RE
- for qemu-trivial@nongnu.org; Thu, 21 Sep 2023 11:16:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695309411;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=rf4fQBTi41eXwGibyGah6AZbjsA4T8VWLKjUMXBFxpc=;
- b=WhEDZBaArWA/HZskBYLjcybtWIUA78k24zZnrIXBPJCBYeiTADgyNreoWwZ8ar0jMyuZah
- Tiq2IfWKFuh9INz7YzIA7v8AE/VFaXBTCr82Khnc4Vr9L95fsmBOiyj5yaaMwK5fhtYBRB
- 1SmcrvfUZHs7/ZsNFGKXD9a7HgT8dAM=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-116-dZ4e2kRgOKWMDPVUQ3Ohcw-1; Thu, 21 Sep 2023 11:16:45 -0400
-X-MC-Unique: dZ4e2kRgOKWMDPVUQ3Ohcw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3AB33101A529;
- Thu, 21 Sep 2023 15:16:44 +0000 (UTC)
-Received: from localhost (unknown [10.39.195.107])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C65E22156701;
- Thu, 21 Sep 2023 15:16:42 +0000 (UTC)
-Date: Thu, 21 Sep 2023 11:16:41 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org
-Subject: Re: [PULL 00/17] Trivial patches for 2023-09-21
-Message-ID: <20230921151641.GA1120616@fedora>
-References: <20230921083506.509032-1-mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <estarriol@SSLAB-3090Ti>)
+ id 1qjauE-00082R-MN; Fri, 22 Sep 2023 03:49:00 -0400
+Received: from SSLAB-3090Ti (localhost [127.0.0.1])
+ by SSLAB-3090Ti (8.15.2/8.15.2/Debian-18) with ESMTP id 38M7dq6Y520002;
+ Fri, 22 Sep 2023 15:39:52 +0800
+Received: (from estarriol@localhost)
+ by SSLAB-3090Ti (8.15.2/8.15.2/Submit) id 38M7dp5C519996;
+ Fri, 22 Sep 2023 15:39:51 +0800
+From: Jianlin Li <ljianlin99@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, thomas.lendacky@amd.com, dovmurik@linux.ibm.com, 
+ Jianlin Li <ljianlin99@gmail.com>
+Subject: [PATCH] Update AMD memory encryption document links.
+Date: Fri, 22 Sep 2023 15:38:35 +0800
+Message-Id: <20230922073834.519945-1-ljianlin99@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="VeUcQCU/fqKVyFId"
-Content-Disposition: inline
-In-Reply-To: <20230921083506.509032-1-mjt@tls.msk.ru>
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 140.112.90.93 (failed)
+Received-SPF: none client-ip=140.112.90.93;
+ envelope-from=estarriol@SSLAB-3090Ti; helo=SSLAB-3090Ti
+X-Spam_score_int: 15
+X-Spam_score: 1.5
+X-Spam_bar: +
+X-Spam_report: (1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_ADSP_CUSTOM_MED=0.001,
+ FORGED_GMAIL_RCVD=1, FREEMAIL_FORGED_FROMDOMAIN=0.25, FREEMAIL_FROM=0.001,
+ FSL_HELO_NON_FQDN_1=0.001, HEADER_FROM_DIFFERENT_DOMAINS=0.249,
+ HELO_NO_DOMAIN=0.178, NML_ADSP_CUSTOM_MED=0.9, RDNS_NONE=0.793, SPF_NONE=0.001,
+ SPOOFED_FREEMAIL=0.001, SPOOFED_FREEMAIL_NO_RDNS=0.001,
+ SPOOF_GMAIL_MID=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 22 Sep 2023 10:03:25 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,32 +50,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 21 Sep 2023 15:17:04 -0000
+X-List-Received-Date: Fri, 22 Sep 2023 07:49:01 -0000
 
+The previous links for the white paper and programmer's manual 
+are no longer available. Replace them with the new ones.
 
---VeUcQCU/fqKVyFId
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Signed-off-by: Jianlin Li <ljianlin99@gmail.com>
+---
+ docs/system/i386/amd-memory-encryption.rst | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/8.2 for any user-visible changes.
-
---VeUcQCU/fqKVyFId
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmUMXlkACgkQnKSrs4Gr
-c8iGGQgAnLgEBIHmclsFW9pifVUTkljAD+1i7oe81ehPnA788UFl67vmUv2MEskU
-huAGcZNKHwmFLM14ztQ7nSaG2qNlQnM62ANaEoYSkIux1kAcc0IIeIvb2eyB8njS
-7cmsARJyMypObE94xxfjgHmdeyzA2asio/8MxSzI6kPJzks+kP3yuFpp8E1lUF7I
-Xrj39NeOdDRw5xiwy6lBENRbhS+phfUXSIitU9ZFuMVs39fqekD1tELIe22ApqrB
-YYZvFh/sfr6EeLOq7dHlj8GrfpsZ7Lk16/CaiLyk703KBnNjbyWyO/sTFd5Z3q/S
-Rj3ty7cbr7SBFkKGE3YK00cVAo1PaA==
-=mUJ+
------END PGP SIGNATURE-----
-
---VeUcQCU/fqKVyFId--
+diff --git a/docs/system/i386/amd-memory-encryption.rst b/docs/system/i386/amd-memory-encryption.rst
+index dcf4add0e7..e9bc142bc1 100644
+--- a/docs/system/i386/amd-memory-encryption.rst
++++ b/docs/system/i386/amd-memory-encryption.rst
+@@ -183,13 +183,13 @@ References
+ ----------
+ 
+ `AMD Memory Encryption whitepaper
+-<https://developer.amd.com/wordpress/media/2013/12/AMD_Memory_Encryption_Whitepaper_v7-Public.pdf>`_
++<https://www.amd.com/content/dam/amd/en/documents/epyc-business-docs/white-papers/memory-encryption-white-paper.pdf>`_
+ 
+ .. [SEVAPI] `Secure Encrypted Virtualization API
+    <https://www.amd.com/system/files/TechDocs/55766_SEV-KM_API_Specification.pdf>`_
+ 
+ .. [APMVOL2] `AMD64 Architecture Programmer's Manual Volume 2: System Programming
+-   <https://www.amd.com/system/files/TechDocs/24593.pdf>`_
++   <https://www.amd.com/content/dam/amd/en/documents/processor-tech-docs/programmer-references/24593.pdf>`_
+ 
+ KVM Forum slides:
+ 
+@@ -199,7 +199,7 @@ KVM Forum slides:
+   <https://www.linux-kvm.org/images/9/94/Extending-Secure-Encrypted-Virtualization-with-SEV-ES-Thomas-Lendacky-AMD.pdf>`_
+ 
+ `AMD64 Architecture Programmer's Manual:
+-<http://support.amd.com/TechDocs/24593.pdf>`_
++<https://www.amd.com/content/dam/amd/en/documents/processor-tech-docs/programmer-references/24593.pdf>`_
+ 
+ * SME is section 7.10
+ * SEV is section 15.34
+-- 
+2.25.1
 
 
