@@ -1,50 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qk4M8-0000Wf-Do
-	for mharc-qemu-trivial@gnu.org; Sat, 23 Sep 2023 11:15:40 -0400
+	id 1qlrR6-0004Iy-Oo
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Sep 2023 09:52:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qk4M1-0000WH-Fz; Sat, 23 Sep 2023 11:15:39 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qk4Ly-0005Ba-Px; Sat, 23 Sep 2023 11:15:32 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 259E6247E5;
- Sat, 23 Sep 2023 18:15:45 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 41F5C2A32D;
- Sat, 23 Sep 2023 18:15:18 +0300 (MSK)
-Message-ID: <1054981c-e8ae-c676-3b04-eeb030e11f65@tls.msk.ru>
-Date: Sat, 23 Sep 2023 18:15:17 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH for-8.1] hw/rdma/vmw/pvrdma_cmd: Use correct struct in
- query_port()
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, Peter Maydell <peter.maydell@linaro.org>, 
- qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: Yuval Shaia <yuval.shaia.ml@gmail.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-References: <20230725113632.2386874-1-peter.maydell@linaro.org>
- <CAFEAcA-DXnmtfKYrOjrSRp=rjdV-Owqm+b0=oB6y-=H=VP9fLg@mail.gmail.com>
- <CAFEAcA8YxuRGp5sfXauWfiTsOE7H6hkbRKp1Pp0ampxsct5hQg@mail.gmail.com>
- <15dad0a8-e31f-3387-4ade-45d4a9b8a6c4@redhat.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <15dad0a8-e31f-3387-4ade-45d4a9b8a6c4@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -83
-X-Spam_score: -8.4
-X-Spam_bar: --------
-X-Spam_report: (-8.4 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-1.473,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from
+ <3IHgVZQgKDJUEAz0zIJI5DD5A3.1DBF3BJ-IG7K7zACDC5CJ.DG5@flex--plabatut.bounces.google.com>)
+ id 1qlqZp-00015F-LB
+ for qemu-trivial@nongnu.org; Thu, 28 Sep 2023 08:57:11 -0400
+Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from
+ <3IHgVZQgKDJUEAz0zIJI5DD5A3.1DBF3BJ-IG7K7zACDC5CJ.DG5@flex--plabatut.bounces.google.com>)
+ id 1qlqZo-00011u-7y
+ for qemu-trivial@nongnu.org; Thu, 28 Sep 2023 08:57:09 -0400
+Received: by mail-yb1-xb49.google.com with SMTP id
+ 3f1490d57ef6-d868842eda1so16076610276.0
+ for <qemu-trivial@nongnu.org>; Thu, 28 Sep 2023 05:57:05 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=google.com; s=20230601; t=1695905825; x=1696510625; darn=nongnu.org;
+ h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=Puu8I37xVpYahsOAAGkvd/Km2XPYF5T2bftP83WPWhM=;
+ b=ezEmi0u+rdxQYvvLxh885ECmaB6bNjW5cdcobvGrcq/LPYg/DjPPUPEsEpxx3s+iMF
+ 1BHOV1/fFIHePPQQCpqR1MJvXcI/vxCTzeN5PvZTmw5J+xVkYPGCaEkmcmuhf7+TFVMt
+ 4Rp3VEHRsNJQW0i1j2UeaZvaXQKpElKWfCyBG8GsBzaVPO8LQr+UE/LRbPUx19rWJJwv
+ BkcmBKuaGo+yOlOQLGnPIEx4koFNm8Xq5sUke46xbDqpWwR0kRfSzbsz8V8a0DUCVDS3
+ P9xObJPsKgiRKdN16OKvr/lh7LXU91Wp4afBMNc5PRv0Tb4g+o8vbl59HevCTj8VE9In
+ 5kAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1695905825; x=1696510625;
+ h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Puu8I37xVpYahsOAAGkvd/Km2XPYF5T2bftP83WPWhM=;
+ b=TKZllXZm/zLHuNEwk0S8r8VDO6oWLDKs5yNgeXB6z87OFLnPTejGsO+6AvDjRIYl7S
+ Efz2D5YTrrM3qOwy3mhIEEIzpm26lGhpNhvBartf28Nd1KKLfFmakXEJu8V4gGYJv95b
+ G7E78I12Jx6Ytk5cht3WO7dTjioSdmoutSlqLswmS4x97nrAUooL6QkRrCnGJ/aUVIxM
+ swPklT7JI1wOUBxK2Ra6VDiXSg6Z4za9NqMis434MU/7u8cfmCtoDmO1qZlm0XdFQBMa
+ 6eB9RWaW4GLHd+wu/pMPC6UKQwnYhIl0ZWQTkJ3BGmny1pzFDFPMsf1hN/phIsF4A/B0
+ VpXg==
+X-Gm-Message-State: AOJu0Yw+PgWzsyxSox9P4h3CIPFurdGkDyNjKv3ybzFhDKSrnxM6HSh8
+ rwkFjJVmIk3CX5luRw2gcKGhCBYA9h4qWizh3AOa2IzNfQVhe3zid15SEROHQvMaUORiJvAyj40
+ K+Mk5lnfCUJXF/Vi7zLm3ea2UVyA0wveCZWS3KO5v5XyLCG4GjLvLxprOB26s8Mue1BWX
+X-Google-Smtp-Source: AGHT+IG3qDWrWedhBeS1RRB0tQuAoGDsRZo1bc61MSsxdTmJsbgcNSxgKIFn6K9+qS2LjNnjopJsRCdTa+bwaw==
+X-Received: from plabatut.c.googlers.com
+ ([fda3:e722:ac3:cc00:28:9cb1:c0a8:7f2a])
+ (user=plabatut job=sendgmr) by 2002:a25:abaf:0:b0:d7b:9830:c172 with SMTP id
+ v44-20020a25abaf000000b00d7b9830c172mr18048ybi.0.1695905824694; Thu, 28 Sep
+ 2023 05:57:04 -0700 (PDT)
+Date: Thu, 28 Sep 2023 12:56:59 +0000
+Mime-Version: 1.0
+X-Mailer: git-send-email 2.42.0.515.g380fc7ccd1-goog
+Message-ID: <20230928125700.1504442-1-plabatut@google.com>
+Subject: [PATCH] Fix compilation when UFFDIO_REGISTER is not set.
+From: Pierre Labatut <plabatut@google.com>
+To: qemu-trivial@nongnu.org
+Cc: Pierre Labatut <plabatut@google.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
+ envelope-from=3IHgVZQgKDJUEAz0zIJI5DD5A3.1DBF3BJ-IG7K7zACDC5CJ.DG5@flex--plabatut.bounces.google.com;
+ helo=mail-yb1-xb49.google.com
+X-Spam_score_int: -95
+X-Spam_score: -9.6
+X-Spam_bar: ---------
+X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 28 Sep 2023 09:52:10 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,95 +80,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 23 Sep 2023 15:15:39 -0000
+X-List-Received-Date: Thu, 28 Sep 2023 12:57:12 -0000
 
-22.09.2023 18:05, Thomas Huth wrote:
-> 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> 
-> Maybe this could go via qemu-trivial?
-> 
-> On 12/09/2023 16.08, Peter Maydell wrote:
->> Ping^2 for review/pickup by the rdma folks, please?
-> 
-> Is anybody still using this subsystem? ... if not, then it's maybe time to set this on the deprecation list? ... just my 0.02 €.
+Signed-off-by: Pierre Labatut <plabatut@google.com>
+---
+ subprojects/libvhost-user/libvhost-user.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I applied this to my trivial-patches tree for now.
-
-There were several security issues in this area, I think
-one of them is still open with a patch posted to the list
-but no one were able to review it because the code is rather
-scary (iirc it was Phil who tried to review it but failed).
-
-Here's what I have in debian for quite some time:
-
-  # pvrdma is an extension/optimisation for vmxnet3 vmware virtual network
-  # adapter. This piece of code seems to be buggy and poorly maintained,
-  # resulting in numerous security issues which comes unfixed for long time.
-  # This device isn't native for qemu.  # Just disable it for now.
-  common_configure_opts += --disable-pvrdma
-
-So yes, it smells like deprecating it is a way to go.
-
-FWIW.
-
-/mjt
-
->> On Tue, 29 Aug 2023 at 16:49, Peter Maydell <peter.maydell@linaro.org> wrote:
->>>
->>> On Tue, 25 Jul 2023 at 12:36, Peter Maydell <peter.maydell@linaro.org> wrote:
->>>>
->>>> In query_port() we pass the address of a local pvrdma_port_attr
->>>> struct to the rdma_query_backend_port() function.  Unfortunately,
->>>> rdma_backend_query_port() wants a pointer to a struct ibv_port_attr,
->>>> and the two are not the same length.
->>>>
->>>> Coverity spotted this (CID 1507146): pvrdma_port_attr is 48 bytes
->>>> long, and ibv_port_attr is 52 bytes, because it has a few extra
->>>> fields at the end.
->>>>
->>>> Fortunately, all we do with the attrs struct after the call is to
->>>> read a few specific fields out of it which are all at the same
->>>> offsets in both structs, so we can simply make the local variable the
->>>> correct type.  This also lets us drop the cast (which should have
->>>> been a bit of a warning flag that we were doing something wrong
->>>> here).
->>>>
->>>> Cc: qemu-stable@nongnu.org
->>>> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->>>> ---
->>>> I don't know anything about the rdma code so this fix is based
->>>> purely on looking at the code, and is untested beyond just
->>>> make check/make check-avocado.
->>>> ---
->>>>   hw/rdma/vmw/pvrdma_cmd.c | 5 ++---
->>>>   1 file changed, 2 insertions(+), 3 deletions(-)
->>>>
->>>> diff --git a/hw/rdma/vmw/pvrdma_cmd.c b/hw/rdma/vmw/pvrdma_cmd.c
->>>> index c6ed0259821..d31c1875938 100644
->>>> --- a/hw/rdma/vmw/pvrdma_cmd.c
->>>> +++ b/hw/rdma/vmw/pvrdma_cmd.c
->>>> @@ -129,14 +129,13 @@ static int query_port(PVRDMADev *dev, union pvrdma_cmd_req *req,
->>>>   {
->>>>       struct pvrdma_cmd_query_port *cmd = &req->query_port;
->>>>       struct pvrdma_cmd_query_port_resp *resp = &rsp->query_port_resp;
->>>> -    struct pvrdma_port_attr attrs = {};
->>>> +    struct ibv_port_attr attrs = {};
->>>>
->>>>       if (cmd->port_num > MAX_PORTS) {
->>>>           return -EINVAL;
->>>>       }
->>>>
->>>> -    if (rdma_backend_query_port(&dev->backend_dev,
->>>> -                                (struct ibv_port_attr *)&attrs)) {
->>>> +    if (rdma_backend_query_port(&dev->backend_dev, &attrs)) {
->>>>           return -ENOMEM;
->>>>       }
->>>
->>> Ping for review/testing by the rdma folks, please ?
->>> Whose tree should this patch go through?
->>
-> 
-> 
+diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
+index 0469a50101..d4a2eab883 100644
+--- a/subprojects/libvhost-user/libvhost-user.c
++++ b/subprojects/libvhost-user/libvhost-user.c
+@@ -629,9 +629,9 @@ static bool
+ generate_faults(VuDev *dev) {
+     unsigned int i;
+     for (i = 0; i < dev->nregions; i++) {
++#ifdef UFFDIO_REGISTER
+         VuDevRegion *dev_region = &dev->regions[i];
+         int ret;
+-#ifdef UFFDIO_REGISTER
+         struct uffdio_register reg_struct;
+ 
+         /*
+-- 
+2.42.0.515.g380fc7ccd1-goog
 
 
