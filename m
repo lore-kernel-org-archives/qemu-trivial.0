@@ -1,87 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qmEdA-00052s-LM
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Sep 2023 10:38:12 -0400
+	id 1qmEvJ-0008QI-Cl
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Sep 2023 10:56:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qmEd8-0004zt-4v
- for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 10:38:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qmEd5-0001th-Ai
- for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 10:38:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695998286;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=dlZ92PaieIcAo0LulD7/aTcMzuq6A1g2LDknhLTBBBU=;
- b=dcd7NTZKyI7pHr+PyIAzJX6RDaDQR1IzkYIkFrKF8wLtKQZlcx6y05iAQRXT/fexupB59j
- jZJnz5TEONF0hBi8/1PQ2+JOczdmDFGz1MK4DXQEAdpRJEdALCqY/19wxhqmUyALPyWlf5
- amm9JS+z+WNMmcZCZnG8wkJa0hl131Y=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-32-iCyjVlLPP5q4Zf1D2syp-Q-1; Fri, 29 Sep 2023 10:38:05 -0400
-X-MC-Unique: iCyjVlLPP5q4Zf1D2syp-Q-1
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-774307520a2so2125562785a.2
- for <qemu-trivial@nongnu.org>; Fri, 29 Sep 2023 07:38:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1qmEvC-00081X-Oe
+ for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 10:56:52 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1qmEv0-00061I-HG
+ for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 10:56:50 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-3248aa5cf4eso1623956f8f.1
+ for <qemu-trivial@nongnu.org>; Fri, 29 Sep 2023 07:56:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1695999397; x=1696604197; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=vrml2Sn8uzGPxQd6lhoN85R1Upx7mYBA7z54epasSVA=;
+ b=E81LMBfLhONs5m7QunPrs6azXxJrSjw5Oq9yRa1cdhhCAHd9IIOZJrdO2RCPs0PJ7S
+ 5kyZ5iOzr0IS6LaAjrLTqvpq/wg9qmPtvPW3AFbi+e1HYENsFc1F6prfaqKpddu7xsfv
+ 7QY+VWLcn7KEsm8MoFaEL6BAANghrE8pdBGj9c3od82U1/r4UhSfRFWEVkW/7w80Pye5
+ FL/WodxoZ1SDZSToaqFVyjBX9ORt8rchsCrc5DqY+O1FaXSpxah2YGU8ZB5Xvs1o8Q1l
+ d/a9CuWDbzjWnZiPZehVqbBYEE3jUziQV273X3ikzmRKbj0CYnuY2udJgX/Pt6juVP7P
+ sXFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695998284; x=1696603084;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=dlZ92PaieIcAo0LulD7/aTcMzuq6A1g2LDknhLTBBBU=;
- b=IxBsE8vk5ez/5sOhLUsK1DvLixT933FN9Bv7JoSBhH8ME9OEX04Ep0hNRFpTxQ3+uY
- uu5y9zDGGmyyszwQIwDjMyrk0SAKVB0fzKue0UVyTgU/3EkIZpqtjaTagOkQym6X+p/O
- AcuXiOeNyGQkkfI61lmrweVq52+m2DUzJTxQ4bsDw/6Q3Sb8wVGwDf7ZVu+OrrNRwqon
- 4um3S5h7H9KIzuZ062ZBWbSxr2vZVEMEJnKTiCnwNaTXFKH/ClM/1EZfUjkRrOg3en/i
- nnMpWlnmTS1abYVMjsEQ2aWCWcdY5Eq3OeCJbm07YkCHpcQqHLBK4/MHsPFd58b1Eu0N
- fAlA==
-X-Gm-Message-State: AOJu0Yw50lIeVr812XM8ymWMR1Wi+rstxIrrz950uKx+si2enKr4hDOj
- 4p9QlATfTQjNiya4l45iEAZCm9aks7fqs10opa51di4JVcJDiXbtKGG2gFGuVDvpRGX45ib9N9G
- oEZ08JjTblL7fwNU/vg==
-X-Received: by 2002:a0c:b45e:0:b0:656:55f8:e82 with SMTP id
- e30-20020a0cb45e000000b0065655f80e82mr3897174qvf.32.1695998284358; 
- Fri, 29 Sep 2023 07:38:04 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGQdkHwyU2OMqeE9C/GSYdBGiZEm7bmnQx1JZUtprBmEEPv7Al5XOEuVljABL2WMTC9EDTIDA==
-X-Received: by 2002:a0c:b45e:0:b0:656:55f8:e82 with SMTP id
- e30-20020a0cb45e000000b0065655f80e82mr3897161qvf.32.1695998284104; 
- Fri, 29 Sep 2023 07:38:04 -0700 (PDT)
-Received: from [192.168.0.5] (ip-109-43-177-123.web.vodafone.de.
- [109.43.177.123]) by smtp.gmail.com with ESMTPSA id
- f23-20020ae9ea17000000b00767da9b6ae9sm6976845qkg.11.2023.09.29.07.38.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 29 Sep 2023 07:38:03 -0700 (PDT)
-Message-ID: <c7dbf14f-66bf-4180-a4fb-1e064b1581e2@redhat.com>
-Date: Fri, 29 Sep 2023 16:38:01 +0200
+ d=1e100.net; s=20230601; t=1695999397; x=1696604197;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=vrml2Sn8uzGPxQd6lhoN85R1Upx7mYBA7z54epasSVA=;
+ b=wJRVX7HcxjowQ17P0+qXhwexxj4oqngRle4LfiVU8imVQxiA+YVBC1zzu2D5DkxBoi
+ g6c+nbnx3S84iL2M+xKMe90Kmb7qhmo8HIEC1ZcebUHNHwGKdCEL3mfifdmIwh8EIxff
+ 1WuGtqFkU8HVBlWoxmQjeVojidfPdaN2Oh5O8rSDyJwZL+xpgGoT9LxaimYj/6GX/Sit
+ YqC6hAXvHbibG8byjmzGLBKTVOuiLGECrocXsGAEdXvCJ7pjCuevcKz4FPF92G29Tu7h
+ brXrRaG8IgWVgx44yCj7VQlNhuUpim+PdZR3K7rzRxwpgl2NWFQGla8geryI+WeM9Tmz
+ Q9hg==
+X-Gm-Message-State: AOJu0Yw7R24hSlDgvKxxT1ZB1La+PY29V2e8mCmeEMxryTRGPj3S7G3e
+ gO9HzmucYj52Xau3h/j8rT5a+w==
+X-Google-Smtp-Source: AGHT+IEd9ocee7rask/G1g8jMyMdr6z/tVJYuCmA575sv5D2bLRVYltfUWSaITw/XGCMU2mfqVqh2w==
+X-Received: by 2002:adf:dd91:0:b0:321:52fb:5703 with SMTP id
+ x17-20020adfdd91000000b0032152fb5703mr4299528wrl.13.1695999396659; 
+ Fri, 29 Sep 2023 07:56:36 -0700 (PDT)
+Received: from zen.linaroharston ([85.9.250.243])
+ by smtp.gmail.com with ESMTPSA id
+ c5-20020adfed85000000b0032196c508e3sm21692994wro.53.2023.09.29.07.56.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 29 Sep 2023 07:56:36 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id D5E641FFBB;
+ Fri, 29 Sep 2023 15:56:35 +0100 (BST)
+References: <20230929131636.394715-1-thuth@redhat.com>
+User-agent: mu4e 1.11.20; emacs 29.1.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+ qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
+Subject: Re: [PATCH] MAINTAINERS: Add the CI-related doc files to the CI
+ section
+Date: Fri, 29 Sep 2023 15:56:05 +0100
+In-reply-to: <20230929131636.394715-1-thuth@redhat.com>
+Message-ID: <87lecpni3g.fsf@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH] MAINTAINERS: add standard-headers to Hosts/LINUX
-To: Cornelia Huck <cohuck@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20230929143012.77128-1-cohuck@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-In-Reply-To: <20230929143012.77128-1-cohuck@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- NICE_REPLY_A=-3.295, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,29 +88,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Sep 2023 14:38:11 -0000
+X-List-Received-Date: Fri, 29 Sep 2023 14:56:53 -0000
 
-On 29/09/2023 16.30, Cornelia Huck wrote:
-> The files in there are updated via update-linux-headers.sh.
-> 
-> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+
+Thomas Huth <thuth@redhat.com> writes:
+
+> The docs/devel/ci* were not covered yet, add them to MAINTAINERS
+> so that the right people are put on CC: for related patches.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+
 > ---
->   MAINTAINERS | 1 +
->   1 file changed, 1 insertion(+)
-> 
+>  MAINTAINERS | 1 +
+>  1 file changed, 1 insertion(+)
+>
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 355b1960ce46..95df1f3d8884 100644
+> index 7ecf3fbc2d..3914bbd85b 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -556,6 +556,7 @@ M: Cornelia Huck <cohuck@redhat.com>
->   M: Paolo Bonzini <pbonzini@redhat.com>
->   S: Maintained
->   F: linux-headers/
-> +F: include/standard-headers/
->   F: scripts/update-linux-headers.sh
->   
->   POSIX
+> @@ -3888,6 +3888,7 @@ F: .github/workflows/lockdown.yml
+>  F: .gitlab-ci.yml
+>  F: .gitlab-ci.d/
+>  F: .travis.yml
+> +F: docs/devel/ci*
+>  F: scripts/ci/
+>  F: tests/docker/
+>  F: tests/vm/
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 
