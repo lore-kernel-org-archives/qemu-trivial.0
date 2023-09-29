@@ -1,74 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qlrR6-0004Iy-Oo
-	for mharc-qemu-trivial@gnu.org; Thu, 28 Sep 2023 09:52:12 -0400
+	id 1qmCku-0000wD-QQ
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Sep 2023 08:38:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <3IHgVZQgKDJUEAz0zIJI5DD5A3.1DBF3BJ-IG7K7zACDC5CJ.DG5@flex--plabatut.bounces.google.com>)
- id 1qlqZp-00015F-LB
- for qemu-trivial@nongnu.org; Thu, 28 Sep 2023 08:57:11 -0400
-Received: from mail-yb1-xb49.google.com ([2607:f8b0:4864:20::b49])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from
- <3IHgVZQgKDJUEAz0zIJI5DD5A3.1DBF3BJ-IG7K7zACDC5CJ.DG5@flex--plabatut.bounces.google.com>)
- id 1qlqZo-00011u-7y
- for qemu-trivial@nongnu.org; Thu, 28 Sep 2023 08:57:09 -0400
-Received: by mail-yb1-xb49.google.com with SMTP id
- 3f1490d57ef6-d868842eda1so16076610276.0
- for <qemu-trivial@nongnu.org>; Thu, 28 Sep 2023 05:57:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20230601; t=1695905825; x=1696510625; darn=nongnu.org;
- h=cc:to:from:subject:message-id:mime-version:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=Puu8I37xVpYahsOAAGkvd/Km2XPYF5T2bftP83WPWhM=;
- b=ezEmi0u+rdxQYvvLxh885ECmaB6bNjW5cdcobvGrcq/LPYg/DjPPUPEsEpxx3s+iMF
- 1BHOV1/fFIHePPQQCpqR1MJvXcI/vxCTzeN5PvZTmw5J+xVkYPGCaEkmcmuhf7+TFVMt
- 4Rp3VEHRsNJQW0i1j2UeaZvaXQKpElKWfCyBG8GsBzaVPO8LQr+UE/LRbPUx19rWJJwv
- BkcmBKuaGo+yOlOQLGnPIEx4koFNm8Xq5sUke46xbDqpWwR0kRfSzbsz8V8a0DUCVDS3
- P9xObJPsKgiRKdN16OKvr/lh7LXU91Wp4afBMNc5PRv0Tb4g+o8vbl59HevCTj8VE9In
- 5kAg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695905825; x=1696510625;
- h=cc:to:from:subject:message-id:mime-version:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Puu8I37xVpYahsOAAGkvd/Km2XPYF5T2bftP83WPWhM=;
- b=TKZllXZm/zLHuNEwk0S8r8VDO6oWLDKs5yNgeXB6z87OFLnPTejGsO+6AvDjRIYl7S
- Efz2D5YTrrM3qOwy3mhIEEIzpm26lGhpNhvBartf28Nd1KKLfFmakXEJu8V4gGYJv95b
- G7E78I12Jx6Ytk5cht3WO7dTjioSdmoutSlqLswmS4x97nrAUooL6QkRrCnGJ/aUVIxM
- swPklT7JI1wOUBxK2Ra6VDiXSg6Z4za9NqMis434MU/7u8cfmCtoDmO1qZlm0XdFQBMa
- 6eB9RWaW4GLHd+wu/pMPC6UKQwnYhIl0ZWQTkJ3BGmny1pzFDFPMsf1hN/phIsF4A/B0
- VpXg==
-X-Gm-Message-State: AOJu0Yw+PgWzsyxSox9P4h3CIPFurdGkDyNjKv3ybzFhDKSrnxM6HSh8
- rwkFjJVmIk3CX5luRw2gcKGhCBYA9h4qWizh3AOa2IzNfQVhe3zid15SEROHQvMaUORiJvAyj40
- K+Mk5lnfCUJXF/Vi7zLm3ea2UVyA0wveCZWS3KO5v5XyLCG4GjLvLxprOB26s8Mue1BWX
-X-Google-Smtp-Source: AGHT+IG3qDWrWedhBeS1RRB0tQuAoGDsRZo1bc61MSsxdTmJsbgcNSxgKIFn6K9+qS2LjNnjopJsRCdTa+bwaw==
-X-Received: from plabatut.c.googlers.com
- ([fda3:e722:ac3:cc00:28:9cb1:c0a8:7f2a])
- (user=plabatut job=sendgmr) by 2002:a25:abaf:0:b0:d7b:9830:c172 with SMTP id
- v44-20020a25abaf000000b00d7b9830c172mr18048ybi.0.1695905824694; Thu, 28 Sep
- 2023 05:57:04 -0700 (PDT)
-Date: Thu, 28 Sep 2023 12:56:59 +0000
-Mime-Version: 1.0
-X-Mailer: git-send-email 2.42.0.515.g380fc7ccd1-goog
-Message-ID: <20230928125700.1504442-1-plabatut@google.com>
-Subject: [PATCH] Fix compilation when UFFDIO_REGISTER is not set.
-From: Pierre Labatut <plabatut@google.com>
-To: qemu-trivial@nongnu.org
-Cc: Pierre Labatut <plabatut@google.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b49;
- envelope-from=3IHgVZQgKDJUEAz0zIJI5DD5A3.1DBF3BJ-IG7K7zACDC5CJ.DG5@flex--plabatut.bounces.google.com;
- helo=mail-yb1-xb49.google.com
-X-Spam_score_int: -95
-X-Spam_score: -9.6
-X-Spam_bar: ---------
-X-Spam_report: (-9.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qmCkg-0000Yx-PV
+ for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 08:37:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qmCkS-000560-1j
+ for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 08:37:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1695991055;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=jD9gt4KoNF5rjZ9B0XL2VB4HdR2ERaO4mqfMF27/wy8=;
+ b=aihtRIoe1su9enawnAMRiS7UZfhh8qc38Lv6hohKSIRHW1fLVU1j9tTEnM3IYwsiZ8UFdp
+ 6QHVPnImNJxSiDzkyIdmoCKnzSFPrGS90tZSjkJt6HZDoNfa41wg2ZiAEFefH8WWoINFIf
+ /Bn8uHoMASOA/HxK4A9xf87uDyblR7M=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-401-cT1FN10jPNe5i368wx__fw-1; Fri, 29 Sep 2023 08:37:31 -0400
+X-MC-Unique: cT1FN10jPNe5i368wx__fw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 87CF71C294CC;
+ Fri, 29 Sep 2023 12:37:30 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.194])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 051CC40C2064;
+ Fri, 29 Sep 2023 12:37:27 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, qemu-riscv@nongnu.org,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Christoph Muellner <christoph.muellner@vrull.eu>,
+ Philipp Tomsich <philipp.tomsich@vrull.eu>,
+ Vijai Kumar K <vijai@behindbytes.com>
+Subject: [PATCH] MAINTAINERS: Add unowned RISC-V related files to the right
+ sections
+Date: Fri, 29 Sep 2023 14:37:27 +0200
+Message-ID: <20230929123727.391346-1-thuth@redhat.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- USER_IN_DEF_DKIM_WL=-7.5 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 28 Sep 2023 09:52:10 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,29 +70,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 28 Sep 2023 12:57:12 -0000
+X-List-Received-Date: Fri, 29 Sep 2023 12:37:51 -0000
 
-Signed-off-by: Pierre Labatut <plabatut@google.com>
+There are a bunch of RISC-V files that are currently not covered
+by the "get_maintainers.pl" script. Add them to the right sections
+in MAINTAINERS to fix this problem.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- subprojects/libvhost-user/libvhost-user.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ MAINTAINERS | 10 +++++++++-
+ 1 file changed, 9 insertions(+), 1 deletion(-)
 
-diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
-index 0469a50101..d4a2eab883 100644
---- a/subprojects/libvhost-user/libvhost-user.c
-+++ b/subprojects/libvhost-user/libvhost-user.c
-@@ -629,9 +629,9 @@ static bool
- generate_faults(VuDev *dev) {
-     unsigned int i;
-     for (i = 0; i < dev->nregions; i++) {
-+#ifdef UFFDIO_REGISTER
-         VuDevRegion *dev_region = &dev->regions[i];
-         int ret;
--#ifdef UFFDIO_REGISTER
-         struct uffdio_register reg_struct;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 355b1960ce..1313257180 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -317,8 +317,11 @@ R: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+ R: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+ L: qemu-riscv@nongnu.org
+ S: Supported
++F: configs/targets/riscv*
++F: docs/system/target-riscv.rst
+ F: target/riscv/
+ F: hw/riscv/
++F: hw/intc/riscv*
+ F: include/hw/riscv/
+ F: linux-user/host/riscv32/
+ F: linux-user/host/riscv64/
+@@ -330,6 +333,7 @@ L: qemu-riscv@nongnu.org
+ S: Supported
+ F: target/riscv/insn_trans/trans_xthead.c.inc
+ F: target/riscv/xthead*.decode
++F: disas/riscv-xthead*
  
-         /*
+ RISC-V XVentanaCondOps extension
+ M: Philipp Tomsich <philipp.tomsich@vrull.eu>
+@@ -337,6 +341,7 @@ L: qemu-riscv@nongnu.org
+ S: Maintained
+ F: target/riscv/XVentanaCondOps.decode
+ F: target/riscv/insn_trans/trans_xventanacondops.c.inc
++F: disas/riscv-xventana*
+ 
+ RENESAS RX CPUs
+ R: Yoshinori Sato <ysato@users.sourceforge.jp>
+@@ -1518,6 +1523,7 @@ Microchip PolarFire SoC Icicle Kit
+ M: Bin Meng <bin.meng@windriver.com>
+ L: qemu-riscv@nongnu.org
+ S: Supported
++F: docs/system/riscv/microchip-icicle-kit.rst
+ F: hw/riscv/microchip_pfsoc.c
+ F: hw/char/mchp_pfsoc_mmuart.c
+ F: hw/misc/mchp_pfsoc_dmc.c
+@@ -1533,6 +1539,7 @@ Shakti C class SoC
+ M: Vijai Kumar K <vijai@behindbytes.com>
+ L: qemu-riscv@nongnu.org
+ S: Supported
++F: docs/system/riscv/shakti-c.rst
+ F: hw/riscv/shakti_c.c
+ F: hw/char/shakti_uart.c
+ F: include/hw/riscv/shakti_c.h
+@@ -1544,6 +1551,7 @@ M: Bin Meng <bin.meng@windriver.com>
+ M: Palmer Dabbelt <palmer@dabbelt.com>
+ L: qemu-riscv@nongnu.org
+ S: Supported
++F: docs/system/riscv/sifive_u.rst
+ F: hw/*/*sifive*.c
+ F: include/hw/*/*sifive*.h
+ 
+@@ -3543,7 +3551,7 @@ M: Alistair Francis <Alistair.Francis@wdc.com>
+ L: qemu-riscv@nongnu.org
+ S: Maintained
+ F: tcg/riscv/
+-F: disas/riscv.c
++F: disas/riscv.[ch]
+ 
+ S390 TCG target
+ M: Richard Henderson <richard.henderson@linaro.org>
 -- 
-2.42.0.515.g380fc7ccd1-goog
+2.41.0
 
 
