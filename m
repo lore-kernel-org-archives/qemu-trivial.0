@@ -1,82 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qmEvJ-0008QI-Cl
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Sep 2023 10:56:57 -0400
+	id 1qmOSu-0005eO-4B
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Sep 2023 21:08:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1qmEvC-00081X-Oe
- for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 10:56:52 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1qmEv0-00061I-HG
- for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 10:56:50 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-3248aa5cf4eso1623956f8f.1
- for <qemu-trivial@nongnu.org>; Fri, 29 Sep 2023 07:56:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1695999397; x=1696604197; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
- :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
- :message-id:reply-to;
- bh=vrml2Sn8uzGPxQd6lhoN85R1Upx7mYBA7z54epasSVA=;
- b=E81LMBfLhONs5m7QunPrs6azXxJrSjw5Oq9yRa1cdhhCAHd9IIOZJrdO2RCPs0PJ7S
- 5kyZ5iOzr0IS6LaAjrLTqvpq/wg9qmPtvPW3AFbi+e1HYENsFc1F6prfaqKpddu7xsfv
- 7QY+VWLcn7KEsm8MoFaEL6BAANghrE8pdBGj9c3od82U1/r4UhSfRFWEVkW/7w80Pye5
- FL/WodxoZ1SDZSToaqFVyjBX9ORt8rchsCrc5DqY+O1FaXSpxah2YGU8ZB5Xvs1o8Q1l
- d/a9CuWDbzjWnZiPZehVqbBYEE3jUziQV273X3ikzmRKbj0CYnuY2udJgX/Pt6juVP7P
- sXFQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1695999397; x=1696604197;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
- :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=vrml2Sn8uzGPxQd6lhoN85R1Upx7mYBA7z54epasSVA=;
- b=wJRVX7HcxjowQ17P0+qXhwexxj4oqngRle4LfiVU8imVQxiA+YVBC1zzu2D5DkxBoi
- g6c+nbnx3S84iL2M+xKMe90Kmb7qhmo8HIEC1ZcebUHNHwGKdCEL3mfifdmIwh8EIxff
- 1WuGtqFkU8HVBlWoxmQjeVojidfPdaN2Oh5O8rSDyJwZL+xpgGoT9LxaimYj/6GX/Sit
- YqC6hAXvHbibG8byjmzGLBKTVOuiLGECrocXsGAEdXvCJ7pjCuevcKz4FPF92G29Tu7h
- brXrRaG8IgWVgx44yCj7VQlNhuUpim+PdZR3K7rzRxwpgl2NWFQGla8geryI+WeM9Tmz
- Q9hg==
-X-Gm-Message-State: AOJu0Yw7R24hSlDgvKxxT1ZB1La+PY29V2e8mCmeEMxryTRGPj3S7G3e
- gO9HzmucYj52Xau3h/j8rT5a+w==
-X-Google-Smtp-Source: AGHT+IEd9ocee7rask/G1g8jMyMdr6z/tVJYuCmA575sv5D2bLRVYltfUWSaITw/XGCMU2mfqVqh2w==
-X-Received: by 2002:adf:dd91:0:b0:321:52fb:5703 with SMTP id
- x17-20020adfdd91000000b0032152fb5703mr4299528wrl.13.1695999396659; 
- Fri, 29 Sep 2023 07:56:36 -0700 (PDT)
-Received: from zen.linaroharston ([85.9.250.243])
- by smtp.gmail.com with ESMTPSA id
- c5-20020adfed85000000b0032196c508e3sm21692994wro.53.2023.09.29.07.56.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 29 Sep 2023 07:56:36 -0700 (PDT)
-Received: from zen (localhost [127.0.0.1])
- by zen.linaroharston (Postfix) with ESMTP id D5E641FFBB;
- Fri, 29 Sep 2023 15:56:35 +0100 (BST)
-References: <20230929131636.394715-1-thuth@redhat.com>
-User-agent: mu4e 1.11.20; emacs 29.1.50
-From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>,
- qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH] MAINTAINERS: Add the CI-related doc files to the CI
- section
-Date: Fri, 29 Sep 2023 15:56:05 +0100
-In-reply-to: <20230929131636.394715-1-thuth@redhat.com>
-Message-ID: <87lecpni3g.fsf@linaro.org>
+ (Exim 4.90_1) (envelope-from <zhiwei_liu@linux.alibaba.com>)
+ id 1qmNKe-0005RC-MA
+ for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 19:55:40 -0400
+Received: from out199-11.us.a.mail.aliyun.com ([47.90.199.11])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhiwei_liu@linux.alibaba.com>)
+ id 1qmNKa-0004UM-I7
+ for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 19:55:40 -0400
+X-Alimail-AntiSpam: AC=PASS; BC=-1|-1; BR=01201311R301e4; CH=green; DM=||false|;
+ DS=||; FP=0|-1|-1|-1|0|-1|-1|-1; HT=ay29a033018045176;
+ MF=zhiwei_liu@linux.alibaba.com; NM=1; PH=DS; RN=13; SR=0;
+ TI=SMTPD_---0Vt4vcbs_1696031397; 
+Received: from 192.168.3.95(mailfrom:zhiwei_liu@linux.alibaba.com
+ fp:SMTPD_---0Vt4vcbs_1696031397) by smtp.aliyun-inc.com;
+ Sat, 30 Sep 2023 07:49:58 +0800
+Message-ID: <73a4c943-23ea-c268-c13b-be26870a2df0@linux.alibaba.com>
+Date: Sat, 30 Sep 2023 07:49:06 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH] MAINTAINERS: Add unowned RISC-V related files to the
+ right sections
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ qemu-riscv@nongnu.org, Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, Weiwei Li <liweiwei@iscas.ac.cn>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Christoph Muellner <christoph.muellner@vrull.eu>,
+ Philipp Tomsich <philipp.tomsich@vrull.eu>,
+ Vijai Kumar K <vijai@behindbytes.com>
+References: <20230929123727.391346-1-thuth@redhat.com>
+From: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
+In-Reply-To: <20230929123727.391346-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=47.90.199.11;
+ envelope-from=zhiwei_liu@linux.alibaba.com;
+ helo=out199-11.us.a.mail.aliyun.com
+X-Spam_score_int: -131
+X-Spam_score: -13.2
+X-Spam_bar: -------------
+X-Spam_report: (-13.2 / 5.0 requ) BAYES_00=-1.9, ENV_AND_HDR_SPF_MATCH=-0.5,
+ NICE_REPLY_A=-3.295, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UNPARSEABLE_RELAY=0.001,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 29 Sep 2023 21:08:15 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,37 +63,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Sep 2023 14:56:53 -0000
+X-List-Received-Date: Fri, 29 Sep 2023 23:55:41 -0000
 
 
-Thomas Huth <thuth@redhat.com> writes:
-
-> The docs/devel/ci* were not covered yet, add them to MAINTAINERS
-> so that the right people are put on CC: for related patches.
+On 2023/9/29 20:37, Thomas Huth wrote:
+> There are a bunch of RISC-V files that are currently not covered
+> by the "get_maintainers.pl" script. Add them to the right sections
+> in MAINTAINERS to fix this problem.
 >
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Reviewed-by: LIU Zhiwei <zhiwei_liu@linux.alibaba.com>
+
+Zhiwei
 
 > ---
->  MAINTAINERS | 1 +
->  1 file changed, 1 insertion(+)
+>   MAINTAINERS | 10 +++++++++-
+>   1 file changed, 9 insertions(+), 1 deletion(-)
 >
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index 7ecf3fbc2d..3914bbd85b 100644
+> index 355b1960ce..1313257180 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -3888,6 +3888,7 @@ F: .github/workflows/lockdown.yml
->  F: .gitlab-ci.yml
->  F: .gitlab-ci.d/
->  F: .travis.yml
-> +F: docs/devel/ci*
->  F: scripts/ci/
->  F: tests/docker/
->  F: tests/vm/
-
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+> @@ -317,8 +317,11 @@ R: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+>   R: Liu Zhiwei <zhiwei_liu@linux.alibaba.com>
+>   L: qemu-riscv@nongnu.org
+>   S: Supported
+> +F: configs/targets/riscv*
+> +F: docs/system/target-riscv.rst
+>   F: target/riscv/
+>   F: hw/riscv/
+> +F: hw/intc/riscv*
+>   F: include/hw/riscv/
+>   F: linux-user/host/riscv32/
+>   F: linux-user/host/riscv64/
+> @@ -330,6 +333,7 @@ L: qemu-riscv@nongnu.org
+>   S: Supported
+>   F: target/riscv/insn_trans/trans_xthead.c.inc
+>   F: target/riscv/xthead*.decode
+> +F: disas/riscv-xthead*
+>   
+>   RISC-V XVentanaCondOps extension
+>   M: Philipp Tomsich <philipp.tomsich@vrull.eu>
+> @@ -337,6 +341,7 @@ L: qemu-riscv@nongnu.org
+>   S: Maintained
+>   F: target/riscv/XVentanaCondOps.decode
+>   F: target/riscv/insn_trans/trans_xventanacondops.c.inc
+> +F: disas/riscv-xventana*
+>   
+>   RENESAS RX CPUs
+>   R: Yoshinori Sato <ysato@users.sourceforge.jp>
+> @@ -1518,6 +1523,7 @@ Microchip PolarFire SoC Icicle Kit
+>   M: Bin Meng <bin.meng@windriver.com>
+>   L: qemu-riscv@nongnu.org
+>   S: Supported
+> +F: docs/system/riscv/microchip-icicle-kit.rst
+>   F: hw/riscv/microchip_pfsoc.c
+>   F: hw/char/mchp_pfsoc_mmuart.c
+>   F: hw/misc/mchp_pfsoc_dmc.c
+> @@ -1533,6 +1539,7 @@ Shakti C class SoC
+>   M: Vijai Kumar K <vijai@behindbytes.com>
+>   L: qemu-riscv@nongnu.org
+>   S: Supported
+> +F: docs/system/riscv/shakti-c.rst
+>   F: hw/riscv/shakti_c.c
+>   F: hw/char/shakti_uart.c
+>   F: include/hw/riscv/shakti_c.h
+> @@ -1544,6 +1551,7 @@ M: Bin Meng <bin.meng@windriver.com>
+>   M: Palmer Dabbelt <palmer@dabbelt.com>
+>   L: qemu-riscv@nongnu.org
+>   S: Supported
+> +F: docs/system/riscv/sifive_u.rst
+>   F: hw/*/*sifive*.c
+>   F: include/hw/*/*sifive*.h
+>   
+> @@ -3543,7 +3551,7 @@ M: Alistair Francis <Alistair.Francis@wdc.com>
+>   L: qemu-riscv@nongnu.org
+>   S: Maintained
+>   F: tcg/riscv/
+> -F: disas/riscv.c
+> +F: disas/riscv.[ch]
+>   
+>   S390 TCG target
+>   M: Richard Henderson <richard.henderson@linaro.org>
 
