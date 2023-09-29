@@ -1,59 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qmEBy-0008Vs-6Y
-	for mharc-qemu-trivial@gnu.org; Fri, 29 Sep 2023 10:10:06 -0400
+	id 1qmEdA-00052s-LM
+	for mharc-qemu-trivial@gnu.org; Fri, 29 Sep 2023 10:38:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qmEBm-0008NV-Kq
- for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 10:10:01 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qmEd8-0004zt-4v
+ for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 10:38:10 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qmEBf-0004Hb-9d
- for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 10:09:52 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qmEd5-0001th-Ai
+ for qemu-trivial@nongnu.org; Fri, 29 Sep 2023 10:38:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1695996584;
+ s=mimecast20190719; t=1695998286;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=IY9wdaAgHOZ2bmRxVoEvnMGYJyrhNSuENhH4aZmpEfo=;
- b=eESnAuGZXROZeo6R2tpl5R8psOn4zQTs+zgZOt1A+ABfXv6xcpq4Zt60qpUZc90p0bZvhM
- +lS+WlQRks53sCp1Zry2txXgMpL0/blLDSqYdJPxnu8Ahjna1bYqjalrj2PyRQb0ekkz19
- 01WKv98yToEU8XBtG2jEzKqxfd56DlA=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-210-k6AADj5YPB2HslKLDi636w-1; Fri, 29 Sep 2023 10:09:41 -0400
-X-MC-Unique: k6AADj5YPB2HslKLDi636w-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C47AB101A590;
- Fri, 29 Sep 2023 14:09:40 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.194])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 75A6040C2064;
- Fri, 29 Sep 2023 14:09:39 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
- =?UTF-8?q?Herv=C3=A9=20Poussineau?= <hpoussin@reactos.org>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH] MAINTAINERS: Add g364fb and ds1225y to the Jazz section
-Date: Fri, 29 Sep 2023 16:09:35 +0200
-Message-ID: <20230929140938.396565-1-thuth@redhat.com>
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=dlZ92PaieIcAo0LulD7/aTcMzuq6A1g2LDknhLTBBBU=;
+ b=dcd7NTZKyI7pHr+PyIAzJX6RDaDQR1IzkYIkFrKF8wLtKQZlcx6y05iAQRXT/fexupB59j
+ jZJnz5TEONF0hBi8/1PQ2+JOczdmDFGz1MK4DXQEAdpRJEdALCqY/19wxhqmUyALPyWlf5
+ amm9JS+z+WNMmcZCZnG8wkJa0hl131Y=
+Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
+ [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-32-iCyjVlLPP5q4Zf1D2syp-Q-1; Fri, 29 Sep 2023 10:38:05 -0400
+X-MC-Unique: iCyjVlLPP5q4Zf1D2syp-Q-1
+Received: by mail-qk1-f197.google.com with SMTP id
+ af79cd13be357-774307520a2so2125562785a.2
+ for <qemu-trivial@nongnu.org>; Fri, 29 Sep 2023 07:38:04 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1695998284; x=1696603084;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=dlZ92PaieIcAo0LulD7/aTcMzuq6A1g2LDknhLTBBBU=;
+ b=IxBsE8vk5ez/5sOhLUsK1DvLixT933FN9Bv7JoSBhH8ME9OEX04Ep0hNRFpTxQ3+uY
+ uu5y9zDGGmyyszwQIwDjMyrk0SAKVB0fzKue0UVyTgU/3EkIZpqtjaTagOkQym6X+p/O
+ AcuXiOeNyGQkkfI61lmrweVq52+m2DUzJTxQ4bsDw/6Q3Sb8wVGwDf7ZVu+OrrNRwqon
+ 4um3S5h7H9KIzuZ062ZBWbSxr2vZVEMEJnKTiCnwNaTXFKH/ClM/1EZfUjkRrOg3en/i
+ nnMpWlnmTS1abYVMjsEQ2aWCWcdY5Eq3OeCJbm07YkCHpcQqHLBK4/MHsPFd58b1Eu0N
+ fAlA==
+X-Gm-Message-State: AOJu0Yw50lIeVr812XM8ymWMR1Wi+rstxIrrz950uKx+si2enKr4hDOj
+ 4p9QlATfTQjNiya4l45iEAZCm9aks7fqs10opa51di4JVcJDiXbtKGG2gFGuVDvpRGX45ib9N9G
+ oEZ08JjTblL7fwNU/vg==
+X-Received: by 2002:a0c:b45e:0:b0:656:55f8:e82 with SMTP id
+ e30-20020a0cb45e000000b0065655f80e82mr3897174qvf.32.1695998284358; 
+ Fri, 29 Sep 2023 07:38:04 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGQdkHwyU2OMqeE9C/GSYdBGiZEm7bmnQx1JZUtprBmEEPv7Al5XOEuVljABL2WMTC9EDTIDA==
+X-Received: by 2002:a0c:b45e:0:b0:656:55f8:e82 with SMTP id
+ e30-20020a0cb45e000000b0065655f80e82mr3897161qvf.32.1695998284104; 
+ Fri, 29 Sep 2023 07:38:04 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-43-177-123.web.vodafone.de.
+ [109.43.177.123]) by smtp.gmail.com with ESMTPSA id
+ f23-20020ae9ea17000000b00767da9b6ae9sm6976845qkg.11.2023.09.29.07.38.02
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 29 Sep 2023 07:38:03 -0700 (PDT)
+Message-ID: <c7dbf14f-66bf-4180-a4fb-1e064b1581e2@redhat.com>
+Date: Fri, 29 Sep 2023 16:38:01 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH] MAINTAINERS: add standard-headers to Hosts/LINUX
+To: Cornelia Huck <cohuck@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20230929143012.77128-1-cohuck@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20230929143012.77128-1-cohuck@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ NICE_REPLY_A=-3.295, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -66,32 +94,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 29 Sep 2023 14:10:03 -0000
+X-List-Received-Date: Fri, 29 Sep 2023 14:38:11 -0000
 
-These devices are only used by the Jazz machine, so they
-should be listed in the corresponding section in MAINTAINERS.
+On 29/09/2023 16.30, Cornelia Huck wrote:
+> The files in there are updated via update-linux-headers.sh.
+> 
+> Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+> ---
+>   MAINTAINERS | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 355b1960ce46..95df1f3d8884 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -556,6 +556,7 @@ M: Cornelia Huck <cohuck@redhat.com>
+>   M: Paolo Bonzini <pbonzini@redhat.com>
+>   S: Maintained
+>   F: linux-headers/
+> +F: include/standard-headers/
+>   F: scripts/update-linux-headers.sh
+>   
+>   POSIX
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- MAINTAINERS | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 5b4ab7d142..874234cb7b 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1295,8 +1295,10 @@ M: Hervé Poussineau <hpoussin@reactos.org>
- R: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
- S: Maintained
- F: hw/mips/jazz.c
-+F: hw/display/g364fb.c
- F: hw/display/jazz_led.c
- F: hw/dma/rc4030.c
-+F: hw/nvram/ds1225y.c
- 
- Malta
- M: Philippe Mathieu-Daudé <philmd@linaro.org>
--- 
-2.41.0
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
