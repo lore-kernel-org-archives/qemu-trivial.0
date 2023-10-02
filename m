@@ -1,41 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qnHlD-000442-IY
-	for mharc-qemu-trivial@gnu.org; Mon, 02 Oct 2023 08:10:52 -0400
+	id 1qnI5m-0006Y2-DQ
+	for mharc-qemu-trivial@gnu.org; Mon, 02 Oct 2023 08:32:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qnHkv-00042o-Bx; Mon, 02 Oct 2023 08:10:34 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qnHki-0005D4-R6; Mon, 02 Oct 2023 08:10:33 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 8751D26BF0;
- Mon,  2 Oct 2023 15:11:00 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 9C6322C292;
- Mon,  2 Oct 2023 15:10:17 +0300 (MSK)
-Message-ID: <24df29be-eb3f-0783-335c-3a77cc957d57@tls.msk.ru>
-Date: Mon, 2 Oct 2023 15:10:17 +0300
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnI5k-0006XR-Au
+ for qemu-trivial@nongnu.org; Mon, 02 Oct 2023 08:32:04 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnI5i-0001T4-Ed
+ for qemu-trivial@nongnu.org; Mon, 02 Oct 2023 08:32:04 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-40572aeb73cso134969815e9.3
+ for <qemu-trivial@nongnu.org>; Mon, 02 Oct 2023 05:32:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1696249920; x=1696854720; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=cTWGFVavZxh7PssogSsuxHBwHAgLRCFhfA74ZbvKP/Q=;
+ b=bvgmm9JcxWp7/Gt+audOfdz18HR6h/K3YW2uGnewPtaEF9mqxbqaVwb3o9AEjBsicz
+ ey83I+TnbQuJLFCcrF28qBAxsWPwRomZynPve5jhwZR0Jkf/BS3kwFSgF6hLS1krzCch
+ KriIrmaPdvrA1uRzcDnrJJGwipd65cLJcSOxO1M7UttPLKEz0/wkVmwAlg4SGtXWpTHH
+ oxqg81qxyTGHu3uZ6NDXD231EA/1kSv5n/kqR6Hyvn/hUpHG1Z8bkIB+osbV04vN9j5i
+ np2pS7qcKX0q6LA/OWVamNgU2zQ6PwDAPLjf0PFg208JO7LIQ0Q8ZI60zOfoSoEpIMSt
+ x6iA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1696249920; x=1696854720;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=cTWGFVavZxh7PssogSsuxHBwHAgLRCFhfA74ZbvKP/Q=;
+ b=S7/cB3TmwRP01op5I0LQkJS/3HL3PxE4Uh3d0bvhezClGXM1+fCdzUmxih2MthTUUO
+ WpDCtiuOWzA2YPhqr//y4a5NNSmQW9l7brXw2ejpN06xDKeMrgrubTDOJezjOkd29d4j
+ 7BQ8OqWekJ1602SwF5L4QH552dB2631eH1Ia5P7TQuXWnMHoCl3+pIXW2SzOS27bu78P
+ uBC+yx5FcmKH9cBu8gutVQh+mggvBF8EnaR/AOuzlXV49YU2FixlYoufO94NpiZUVu+y
+ b+dl1oaOBdW2pVCTyUqLomMkZRdBQ5x+5HMRJ5c/hKftGFKYVHzvm8b7Nz8wPP3wxq2i
+ APEg==
+X-Gm-Message-State: AOJu0YyuV3E+khyphjbSaIqvZEVA+wj0m+i2QlAKfMSMdfyI1Krq32i5
+ 2i34JYM5itQYmTDCw8/S9uzjtA==
+X-Google-Smtp-Source: AGHT+IGJL9JWBBcbMWzt4BYp5rShVRqe44gmwWQhVYxa4K10/H15fp40L+P8WUeJrdWNgYCJsKZrRg==
+X-Received: by 2002:a7b:c851:0:b0:405:3252:fe2 with SMTP id
+ c17-20020a7bc851000000b0040532520fe2mr9560364wml.14.1696249920533; 
+ Mon, 02 Oct 2023 05:32:00 -0700 (PDT)
+Received: from [192.168.69.115] (sto93-h06-176-172-7-203.dsl.sta.abo.bbox.fr.
+ [176.172.7.203]) by smtp.gmail.com with ESMTPSA id
+ 9-20020a05600c234900b00401d8181f8bsm7187191wmq.25.2023.10.02.05.31.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Oct 2023 05:32:00 -0700 (PDT)
+Message-ID: <478a9f2b-e8ac-6078-f1dd-78c01137c25e@linaro.org>
+Date: Mon, 2 Oct 2023 14:31:58 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
- Thunderbird/102.15.1
-Subject: Re: [PATCH v1] roms: use PYTHON to invoke python
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH] MAINTAINERS: Add g364fb and ds1225y to the Jazz section
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ =?UTF-8?Q?Herv=c3=a9_Poussineau?= <hpoussin@reactos.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
+References: <20230929140938.396565-1-thuth@redhat.com>
 Content-Language: en-US
-To: Olaf Hering <olaf@aepfle.de>, qemu-devel@nongnu.org
-References: <20231002101844.13799-1-olaf@aepfle.de>
-Cc: QEMU Trivial <qemu-trivial@nongnu.org>
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20231002101844.13799-1-olaf@aepfle.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20230929140938.396565-1-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -41
-X-Spam_score: -4.2
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
 X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-2.321,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.321,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -48,27 +84,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 02 Oct 2023 12:10:39 -0000
+X-List-Received-Date: Mon, 02 Oct 2023 12:32:04 -0000
 
-02.10.2023 13:18, Olaf Hering:
-> python3 may not be the expected python version.
-> Use PYTHON to invoke python.
-
-Applied to my trivial-patches tree, thanks!
-
-/mjt
-
-> Fixes: 22e11539e1 ("edk2: replace build scripts")
+On 29/9/23 16:09, Thomas Huth wrote:
+> These devices are only used by the Jazz machine, so they
+> should be listed in the corresponding section in MAINTAINERS.
 > 
-> Signed-off-by: Olaf Hering <olaf@aepfle.de>
-> 
-> diff --git a/roms/Makefile b/roms/Makefile
->   
->   efi:
-> -	python3 edk2-build.py --config edk2-build.config \
-> +	$(PYTHON) edk2-build.py --config edk2-build.config \
->   		--version-override "edk2-stable202302-for-qemu" \
->   		--release-date "03/01/2023"
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   MAINTAINERS | 2 ++
+>   1 file changed, 2 insertions(+)
+
+Acked-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
 
