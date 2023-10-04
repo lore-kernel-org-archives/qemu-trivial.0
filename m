@@ -1,58 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qnyZ8-0008Tx-1T
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Oct 2023 05:53:14 -0400
+	id 1qnylm-0002XO-Lp
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Oct 2023 06:06:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qnyZ4-0008M0-Fn
- for qemu-trivial@nongnu.org; Wed, 04 Oct 2023 05:53:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qnyZ3-0005Uj-0r
- for qemu-trivial@nongnu.org; Wed, 04 Oct 2023 05:53:10 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1696413187;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=y9fV9VZLMEm2ANZcqWcxUohwIJzUh5ZeL5W/LBwPtik=;
- b=f9RisVfKWRS66qXhRTENoloK+BfzZP3mGuZjeCsVfAr8h58od2dVfAv2uWH0yxZUrNBpIO
- aoQlgrcs+DAmrYPXzhCto2M3Q5XutKOwLSwjiaO1x4pQE0uUDtvgvB84bF3hHf8vVbUenL
- +E3tkQgE0oBOw2+OCciGpUfMwLT4UC0=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-393-Zm9n1ecQMGG5eVhGoq7DOw-1; Wed, 04 Oct 2023 05:53:04 -0400
-X-MC-Unique: Zm9n1ecQMGG5eVhGoq7DOw-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DFCE1800888;
- Wed,  4 Oct 2023 09:53:03 +0000 (UTC)
-Received: from thuth-p1g4.str.redhat.com (dhcp-192-181.str.redhat.com
- [10.33.192.181])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 3656C1006B74;
- Wed,  4 Oct 2023 09:53:03 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH v2] hw/virtio/virtio-pci: Avoid compiler warning with -Wshadow
-Date: Wed,  4 Oct 2023 11:53:02 +0200
-Message-ID: <20231004095302.99037-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnylV-0002HE-SP
+ for qemu-trivial@nongnu.org; Wed, 04 Oct 2023 06:06:05 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qnylR-0002ZO-N2
+ for qemu-trivial@nongnu.org; Wed, 04 Oct 2023 06:06:00 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-406618d080eso19561355e9.2
+ for <qemu-trivial@nongnu.org>; Wed, 04 Oct 2023 03:05:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1696413956; x=1697018756; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Rbs7VzPQpg6YMMP8mDVhDNXZEE7p3sPPqe6A4FLvfPE=;
+ b=FqOfPsJWI1MtC0DO/VBfwI7l2WSiRaLq8jwenh6rdFNyFjO+zKHvKHJ3pKhIhCuz4g
+ wf58av5JVbbrGj/E4/Dyh3a/bmE7u9GoJoGUMcq58ZBQyKH3wdj7Oap0Yq0cPKoZFr+A
+ lt2YSIeBuaKHCmbOplO9tBmA3EnODzFtvXcjc/9FIEGN9+aLwA6MKaZ89+s3RmGQg/IU
+ IyPYPCjZX4kvuTWraM8eqNq0+GUU+ZSpspefSDsqtBblRZSuYNyy7D+FeTLSgn2eNGES
+ 517TFyPCs+JKoORHRbqX4Q9lV9x/oB3LNgL9TljrGRdNYk+XSAnNB08Hw/kvzFoP4GDM
+ 4FSA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1696413956; x=1697018756;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Rbs7VzPQpg6YMMP8mDVhDNXZEE7p3sPPqe6A4FLvfPE=;
+ b=MhCDnWjgIYDnQh/Rl+ON5bw7yqF/XA4qe0SIJUMDSNKirsyPBSuv/iho5RJEczy2NL
+ Natf8sPrboBhaDCwPHcNsn4Ox9UytxXIvpqKEjkXRKVASGCpic3GUczyjwOsuWZTnrdr
+ WNY/QzqmWxjzJDWheeIWbCaUUigRw9N/7DrJ8stycNU5zOq8jMSgESmUodIi6xlAWCbl
+ XPHmll8eohp/Y9TmcYXE6iQlSyXmIDfzlPPYc0vlECPQzGUeiUMckLvEpnSYkop0t6UF
+ CjwsOQzkMhnr0XoANUv8I00zYM0dm0O9d/SjalxW63Y6deUzpfWH4HhjPH28mQB9oswB
+ vv7Q==
+X-Gm-Message-State: AOJu0YzzTRCZw9QlKT43iHLhktnASuQXvKNwM/N5uAsZLKL1nn23J/N8
+ ayE+Bmf1FOWXN+JgAt3zBc62Vw==
+X-Google-Smtp-Source: AGHT+IFSFj65nG8ashhBv1itTK7AUVvUecoXwPzJDZiDkXbBx3y6LzUW91nME1ZE9O+VI2/FAQc3+g==
+X-Received: by 2002:adf:f80d:0:b0:31f:fedd:83ad with SMTP id
+ s13-20020adff80d000000b0031ffedd83admr1729745wrp.4.1696413955687; 
+ Wed, 04 Oct 2023 03:05:55 -0700 (PDT)
+Received: from [192.168.69.115] (5ep85-h01-176-173-163-52.dslam.bbox.fr.
+ [176.173.163.52]) by smtp.gmail.com with ESMTPSA id
+ p5-20020adfcc85000000b0031f300a4c26sm3603299wrj.93.2023.10.04.03.05.54
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 04 Oct 2023 03:05:55 -0700 (PDT)
+Message-ID: <943d5ab9-cb8e-71fe-f230-7be74dbb0b76@linaro.org>
+Date: Wed, 4 Oct 2023 12:05:53 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH v2] hw/virtio/virtio-pci: Avoid compiler warning with
+ -Wshadow
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
+References: <20231004095302.99037-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20231004095302.99037-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-1.09,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -65,68 +84,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Oct 2023 09:53:10 -0000
+X-List-Received-Date: Wed, 04 Oct 2023 10:06:08 -0000
 
-"len" is used as parameter of the functions virtio_write_config()
-and virtio_read_config(), and additionally as a local variable,
-so this causes a compiler warning when compiling with "-Wshadow"
-and can be confusing for the reader. Rename the local variables
-to "caplen" to avoid this problem.
+On 4/10/23 11:53, Thomas Huth wrote:
+> "len" is used as parameter of the functions virtio_write_config()
+> and virtio_read_config(), and additionally as a local variable,
+> so this causes a compiler warning when compiling with "-Wshadow"
+> and can be confusing for the reader. Rename the local variables
+> to "caplen" to avoid this problem.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   v2: Fix virtio_read_config() function as well
+> 
+>   hw/virtio/virtio-pci.c | 20 ++++++++++----------
+>   1 file changed, 10 insertions(+), 10 deletions(-)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v2: Fix virtio_read_config() function as well
-
- hw/virtio/virtio-pci.c | 20 ++++++++++----------
- 1 file changed, 10 insertions(+), 10 deletions(-)
-
-diff --git a/hw/virtio/virtio-pci.c b/hw/virtio/virtio-pci.c
-index edbc0daa18..abebd0075a 100644
---- a/hw/virtio/virtio-pci.c
-+++ b/hw/virtio/virtio-pci.c
-@@ -780,15 +780,15 @@ static void virtio_write_config(PCIDevice *pci_dev, uint32_t address,
-                                                                   pci_cfg_data),
-                        sizeof cfg->pci_cfg_data)) {
-         uint32_t off;
--        uint32_t len;
-+        uint32_t caplen;
- 
-         cfg = (void *)(proxy->pci_dev.config + proxy->config_cap);
-         off = le32_to_cpu(cfg->cap.offset);
--        len = le32_to_cpu(cfg->cap.length);
-+        caplen = le32_to_cpu(cfg->cap.length);
- 
--        if (len == 1 || len == 2 || len == 4) {
--            assert(len <= sizeof cfg->pci_cfg_data);
--            virtio_address_space_write(proxy, off, cfg->pci_cfg_data, len);
-+        if (caplen == 1 || caplen == 2 || caplen == 4) {
-+            assert(caplen <= sizeof cfg->pci_cfg_data);
-+            virtio_address_space_write(proxy, off, cfg->pci_cfg_data, caplen);
-         }
-     }
- }
-@@ -804,15 +804,15 @@ static uint32_t virtio_read_config(PCIDevice *pci_dev,
-                                                                   pci_cfg_data),
-                        sizeof cfg->pci_cfg_data)) {
-         uint32_t off;
--        uint32_t len;
-+        uint32_t caplen;
- 
-         cfg = (void *)(proxy->pci_dev.config + proxy->config_cap);
-         off = le32_to_cpu(cfg->cap.offset);
--        len = le32_to_cpu(cfg->cap.length);
-+        caplen = le32_to_cpu(cfg->cap.length);
- 
--        if (len == 1 || len == 2 || len == 4) {
--            assert(len <= sizeof cfg->pci_cfg_data);
--            virtio_address_space_read(proxy, off, cfg->pci_cfg_data, len);
-+        if (caplen == 1 || caplen == 2 || caplen == 4) {
-+            assert(caplen <= sizeof cfg->pci_cfg_data);
-+            virtio_address_space_read(proxy, off, cfg->pci_cfg_data, caplen);
-         }
-     }
- 
--- 
-2.41.0
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
