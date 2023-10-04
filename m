@@ -1,73 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qnxhR-0008Px-67
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Oct 2023 04:57:45 -0400
+	id 1qnyIz-0003ik-8P
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Oct 2023 05:36:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qnxhO-0008HJ-J4
- for qemu-trivial@nongnu.org; Wed, 04 Oct 2023 04:57:42 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qnyIw-0003VF-DP
+ for qemu-trivial@nongnu.org; Wed, 04 Oct 2023 05:36:31 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1qnxhN-0002AO-1D
- for qemu-trivial@nongnu.org; Wed, 04 Oct 2023 04:57:42 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qnyIt-0004Uf-9t
+ for qemu-trivial@nongnu.org; Wed, 04 Oct 2023 05:36:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1696409859;
+ s=mimecast20190719; t=1696412185;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=xABv1eu7kBKoAyjzNCC6eSzeLK84Y5zhYEDZCeq4Nos=;
- b=iq0BZu72h0tbnXKnBusKDEYpSx68J83mN4fe8pfzFMSfeiBDsBvaVuam7ACKuaru4zmIdN
- mYreBdBnE91uH48sMhiPZ0eLZk1e6pdaxn4o6ELEdEsrWsJBnDY3pu2WfcgO99zlzBQ1fU
- MGcKTjm8u5zyf+qpsB58hxlExeKq9Hk=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-237-s1b6pUaCP5agAn7VCGartw-1; Wed, 04 Oct 2023 04:57:38 -0400
-X-MC-Unique: s1b6pUaCP5agAn7VCGartw-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-3f41a04a297so13598455e9.3
- for <qemu-trivial@nongnu.org>; Wed, 04 Oct 2023 01:57:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696409857; x=1697014657;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=xABv1eu7kBKoAyjzNCC6eSzeLK84Y5zhYEDZCeq4Nos=;
- b=ox23N5ugXqSn+dNBc41UYVhhdnOkEJX1ivPhNQUr9xM92kudv7/TFjz2RqMEw5Wter
- HeizZonovkOcjyQQ3fBjqnr0z9woYiw3Bo5EUZo+7DiJS01xL7scgkf1eqsZpFTm+TtZ
- iL4LrUy5Ebf6Upe1aoPqvb0j0WbFEXo1IIqPJ9vx5Abq/lNA4Nxss+8nXIB9jiN3yOiA
- FSa/CQmTWP40p5JLnI3xpcoKUhdDzrAeSneu7MBzfmJZq62JgFqC/XJGrFu9P2yfv3wT
- U9BwLH9DwHjWFBEIay4sE02ZJpl1ahdG4MvMUOyUSDlfblD5Vtx5K01F86ZCw4b7TZWp
- huGA==
-X-Gm-Message-State: AOJu0Yy//JQi5LvCxQuWHAXEz2YLRr8mP2n1vht9uAcG8+GzwZmZed47
- TDSL1KYhYdIk7F5/Civ8m8ukOkypLJ20bYDCNtTl6Rj6ikNKSPPNXBURtoudxPxw4az4zOa5XMz
- o++cHYf4mxoiHjaE75kKgqIrtMw==
-X-Received: by 2002:a1c:791a:0:b0:406:5308:cfeb with SMTP id
- l26-20020a1c791a000000b004065308cfebmr1732782wme.11.1696409856813; 
- Wed, 04 Oct 2023 01:57:36 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFXhRfVkuxXF66F42JfMhbB01j8TaACY/gln6c/SABjFD6B1vG79mkKCpNQXx65tc+PXGi1qg==
-X-Received: by 2002:a1c:791a:0:b0:406:5308:cfeb with SMTP id
- l26-20020a1c791a000000b004065308cfebmr1732769wme.11.1696409856422; 
- Wed, 04 Oct 2023 01:57:36 -0700 (PDT)
-Received: from redhat.com ([2.52.137.96]) by smtp.gmail.com with ESMTPSA id
- a15-20020a5d570f000000b003217cbab88bsm3460601wrv.16.2023.10.04.01.57.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Oct 2023 01:57:35 -0700 (PDT)
-Date: Wed, 4 Oct 2023 04:57:32 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Jason Wang <jasowang@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/net/vhost_net: Silence compiler warning when
- compiling with -Wshadow
-Message-ID: <20231004045724-mutt-send-email-mst@kernel.org>
-References: <20231004084939.96349-1-thuth@redhat.com>
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=ligNa6l5VLv3GbjYat3IiPYE0gZ/FrJ8CZxSDLKEYUg=;
+ b=hYezrZQDN7j65+wzlG3FFQSJLv9d7ITq9EIN0w144BIk7kuG0T9kB7v74Tkpq3GY5vXfc+
+ YvH4iFWRol89xE0H5igceiHFnbHijNiF+bjyBoeJMgDfy2E+Rs8CszUmetJS6H04/B4A3O
+ 5C8pwuL0TsQQbgUw5gjDhT9Lr5u7K2E=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-93-dsyWXCPpNuaFINSey2nOlQ-1; Wed, 04 Oct 2023 05:36:22 -0400
+X-MC-Unique: dsyWXCPpNuaFINSey2nOlQ-1
+Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.8])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 1AC15811E86;
+ Wed,  4 Oct 2023 09:36:22 +0000 (UTC)
+Received: from thuth-p1g4.str.redhat.com (dhcp-192-181.str.redhat.com
+ [10.33.192.181])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 6D33BC15BB8;
+ Wed,  4 Oct 2023 09:36:21 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Gerd Hoffmann <kraxel@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] hw/usb: Silence compiler warnings in USB code when compiling
+ with -Wshadow
+Date: Wed,  4 Oct 2023 11:36:20 +0200
+Message-ID: <20231004093620.97906-1-thuth@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20231004084939.96349-1-thuth@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.8
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -75,7 +53,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,49 +66,125 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Oct 2023 08:57:43 -0000
+X-List-Received-Date: Wed, 04 Oct 2023 09:36:31 -0000
 
-On Wed, Oct 04, 2023 at 10:49:39AM +0200, Thomas Huth wrote:
-> Rename the innermost local variables to avoid compiler warnings
-> with "-Wshadow".
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Rename variables or remove nested definitions where it makes sense,
+so that we can finally compile the USB code with "-Wshadow", too.
 
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/usb/desc.c        |  2 +-
+ hw/usb/dev-hub.c     |  8 ++++----
+ hw/usb/dev-storage.c |  6 +++---
+ hw/usb/hcd-xhci.c    | 10 +++++-----
+ 4 files changed, 13 insertions(+), 13 deletions(-)
 
-feel free to merge
-
-> ---
->  hw/net/vhost_net.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/net/vhost_net.c b/hw/net/vhost_net.c
-> index 57427a3997..e8e1661646 100644
-> --- a/hw/net/vhost_net.c
-> +++ b/hw/net/vhost_net.c
-> @@ -313,8 +313,8 @@ fail:
->                  /* Queue might not be ready for start */
->                  continue;
->              }
-> -            int r = vhost_net_set_backend(&net->dev, &file);
-> -            assert(r >= 0);
-> +            int ret = vhost_net_set_backend(&net->dev, &file);
-> +            assert(ret >= 0);
->          }
->      }
->      if (net->nc->info->poll) {
-> @@ -629,8 +629,8 @@ err_start:
->      if (net->nc->info->type == NET_CLIENT_DRIVER_TAP) {
->          file.fd = VHOST_FILE_UNBIND;
->          file.index = idx;
-> -        int r = vhost_net_set_backend(&net->dev, &file);
-> -        assert(r >= 0);
-> +        int ret = vhost_net_set_backend(&net->dev, &file);
-> +        assert(ret >= 0);
->      }
->  
->      vhost_dev_stop(&net->dev, vdev, false);
-> -- 
-> 2.41.0
+diff --git a/hw/usb/desc.c b/hw/usb/desc.c
+index 7f6cc2f99b..f2bdc05a95 100644
+--- a/hw/usb/desc.c
++++ b/hw/usb/desc.c
+@@ -227,7 +227,7 @@ int usb_desc_endpoint(const USBDescEndpoint *ep, int flags,
+     }
+ 
+     if (superlen) {
+-        USBDescriptor *d = (void *)(dest + bLength);
++        d = (void *)(dest + bLength);
+ 
+         d->bLength                       = 0x06;
+         d->bDescriptorType               = USB_DT_ENDPOINT_COMPANION;
+diff --git a/hw/usb/dev-hub.c b/hw/usb/dev-hub.c
+index a6b50dbc8d..5703e0e826 100644
+--- a/hw/usb/dev-hub.c
++++ b/hw/usb/dev-hub.c
+@@ -402,7 +402,7 @@ static void usb_hub_handle_control(USBDevice *dev, USBPacket *p,
+         {
+             unsigned int n = index - 1;
+             USBHubPort *port;
+-            USBDevice *dev;
++            USBDevice *pdev;
+ 
+             trace_usb_hub_set_port_feature(s->dev.addr, index,
+                                            feature_name(value));
+@@ -411,7 +411,7 @@ static void usb_hub_handle_control(USBDevice *dev, USBPacket *p,
+                 goto fail;
+             }
+             port = &s->ports[n];
+-            dev = port->port.dev;
++            pdev = port->port.dev;
+             switch(value) {
+             case PORT_SUSPEND:
+                 port->wPortStatus |= PORT_STAT_SUSPEND;
+@@ -419,8 +419,8 @@ static void usb_hub_handle_control(USBDevice *dev, USBPacket *p,
+             case PORT_RESET:
+                 usb_hub_port_set(port, PORT_STAT_RESET);
+                 usb_hub_port_clear(port, PORT_STAT_RESET);
+-                if (dev && dev->attached) {
+-                    usb_device_reset(dev);
++                if (pdev && pdev->attached) {
++                    usb_device_reset(pdev);
+                     usb_hub_port_set(port, PORT_STAT_ENABLE);
+                 }
+                 usb_wakeup(s->intr, 0);
+diff --git a/hw/usb/dev-storage.c b/hw/usb/dev-storage.c
+index e3bcffb3e0..a496c811a7 100644
+--- a/hw/usb/dev-storage.c
++++ b/hw/usb/dev-storage.c
+@@ -403,7 +403,7 @@ static void usb_msd_handle_data(USBDevice *dev, USBPacket *p)
+     struct usb_msd_cbw cbw;
+     uint8_t devep = p->ep->nr;
+     SCSIDevice *scsi_dev;
+-    uint32_t len;
++    int len;
+ 
+     if (s->needs_reset) {
+         p->status = USB_RET_STALL;
+@@ -465,7 +465,7 @@ static void usb_msd_handle_data(USBDevice *dev, USBPacket *p)
+                 usb_msd_copy_data(s, p);
+             }
+             if (le32_to_cpu(s->csw.residue)) {
+-                int len = p->iov.size - p->actual_length;
++                len = p->iov.size - p->actual_length;
+                 if (len) {
+                     usb_packet_skip(p, len);
+                     if (len > s->data_len) {
+@@ -526,7 +526,7 @@ static void usb_msd_handle_data(USBDevice *dev, USBPacket *p)
+                 usb_msd_copy_data(s, p);
+             }
+             if (le32_to_cpu(s->csw.residue)) {
+-                int len = p->iov.size - p->actual_length;
++                len = p->iov.size - p->actual_length;
+                 if (len) {
+                     usb_packet_skip(p, len);
+                     if (len > s->data_len) {
+diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
+index 324177ad5d..4b60114207 100644
+--- a/hw/usb/hcd-xhci.c
++++ b/hw/usb/hcd-xhci.c
+@@ -217,10 +217,10 @@ enum {
+     (((data) >> field##_SHIFT) & field##_MASK)
+ 
+ #define set_field(data, newval, field) do {                     \
+-        uint32_t val = *data;                                   \
+-        val &= ~(field##_MASK << field##_SHIFT);                \
+-        val |= ((newval) & field##_MASK) << field##_SHIFT;      \
+-        *data = val;                                            \
++        uint32_t val_ = *data;                                  \
++        val_ &= ~(field##_MASK << field##_SHIFT);               \
++        val_ |= ((newval) & field##_MASK) << field##_SHIFT;     \
++        *data = val_;                                           \
+     } while (0)
+ 
+ typedef enum EPType {
+@@ -1894,7 +1894,7 @@ static void xhci_kick_epctx(XHCIEPContext *epctx, unsigned int streamid)
+     }
+ 
+     if (epctx->retry) {
+-        XHCITransfer *xfer = epctx->retry;
++        xfer = epctx->retry;
+ 
+         trace_usb_xhci_xfer_retry(xfer);
+         assert(xfer->running_retry);
+-- 
+2.41.0
 
 
