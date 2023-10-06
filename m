@@ -1,68 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qoiQe-00024Y-UJ
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2023 06:51:33 -0400
+	id 1qoijC-0004c2-Di
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2023 07:10:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qoiQS-00022K-PX
- for qemu-trivial@nongnu.org; Fri, 06 Oct 2023 06:51:22 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qoij3-0004Wr-Sk
+ for qemu-trivial@nongnu.org; Fri, 06 Oct 2023 07:10:34 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qoiQQ-0002H7-9x
- for qemu-trivial@nongnu.org; Fri, 06 Oct 2023 06:51:20 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qoij0-0007vJ-SM
+ for qemu-trivial@nongnu.org; Fri, 06 Oct 2023 07:10:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1696589477;
+ s=mimecast20190719; t=1696590630;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CfQF+6lGyHU4PIvOlXj6qa8eGad6k946XTl4XB2Q5+w=;
- b=Tyin41Pm3Z0XYnk9Gvd9SzcBfs/0l5K5N43IqsC1IvLRO0e6NqUsSCSs3v8MPMypTyoYRV
- jx5LmenE3rE06UiQHS742BtCN1c3CmDjnNohOkAX0s3gOyGSNicJtgX0JcQ4QmNfkfGd4A
- 774vL+R4MsjxL7Y5ontIpyGFDDuQbLw=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-507-yUwls0cYPnWNSSADioh2Cg-1; Fri, 06 Oct 2023 06:51:13 -0400
-X-MC-Unique: yUwls0cYPnWNSSADioh2Cg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 16BE1811E7E;
- Fri,  6 Oct 2023 10:51:13 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id EA011215670B;
- Fri,  6 Oct 2023 10:51:12 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id E0FD521E6904; Fri,  6 Oct 2023 12:51:11 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Thomas Huth <thuth@redhat.com>,  qemu-devel@nongnu.org,  "Michael S.
- Tsirkin" <mst@redhat.com>,  qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/virtio/vhost: Silence compiler warnings in vhost
- code when using -Wshadow
-References: <20231004114809.105672-1-thuth@redhat.com>
- <18f1faab-71f4-4dbd-a319-fcd65721f58b@tls.msk.ru>
- <87h6n4p1ts.fsf@pond.sub.org>
- <29a2a188-ec5b-452f-be63-92e8f0ec7110@tls.msk.ru>
-Date: Fri, 06 Oct 2023 12:51:11 +0200
-In-Reply-To: <29a2a188-ec5b-452f-be63-92e8f0ec7110@tls.msk.ru> (Michael
- Tokarev's message of "Fri, 6 Oct 2023 13:45:51 +0300")
-Message-ID: <87pm1sm3c0.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+ bh=L8YIUa85CNzgTidlzmc4oUaFxR6U/91xHhGBIeJDwXM=;
+ b=Hgfj49rTzD6k5S+XFiMq1I4rq5gVgKFdQwO6IAUZJVXfeEIDqdqMvebyk01+lqKbHqCuLq
+ t9TFaDBB5J45jQweIhuSsNcWbkS/RUv4GMNr8FSP81v133CvIudLpiiz0EbTiQ/8xs7Skb
+ igaayFWjsTH5qFTYVcHZSyih7S4BBhg=
+Received: from mail-io1-f69.google.com (mail-io1-f69.google.com
+ [209.85.166.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-679-nULDNa3mMParZhGEZKGnnA-1; Fri, 06 Oct 2023 07:10:29 -0400
+X-MC-Unique: nULDNa3mMParZhGEZKGnnA-1
+Received: by mail-io1-f69.google.com with SMTP id
+ ca18e2360f4ac-797f764a6faso123512839f.0
+ for <qemu-trivial@nongnu.org>; Fri, 06 Oct 2023 04:10:28 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1696590628; x=1697195428;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=L8YIUa85CNzgTidlzmc4oUaFxR6U/91xHhGBIeJDwXM=;
+ b=LwQ9aKhcJKAnxOMfXBlCB4MB9uXhpWDNRiKhbqpY2/bskvZuH/xpkjntBjsGHKegvn
+ d8GuBjabt96HCVjzPW4TL0hyLiMOrG+2qLtF0AkoowT9mXxLcgalhVqXRQWE+3sCWY04
+ eHlpTWWZl8hoCsPK9ItkYJfPaf+Vt1Pi9bUgcpFT4S20GYTfN1lEPiUvEQAHqW5eElUK
+ 84EPtGrocujbBthKmxR3K53SjOxsMHCO/tjZNpOFrN0hJvf+HwBvGNUCfbtplcPOf4Oa
+ Cwmxaxd6GqB1CXXsHLw5ldAXMyCHRXKy2qAw4xgm4lFkWiIcSlX67+4ic0ruVv43VHmS
+ hW+g==
+X-Gm-Message-State: AOJu0YxrKHKYTvo+rJjy0IDXc3Fv8gdpqcDeNZJvUp8uYDewf4OazEyx
+ hvkKMvdcNJgOXhOs2BPSos3E9s6hd+el1PCJ3uYZoUruuHEmbTIx6fwNS4+o7RwHX/bi6zwrlGH
+ Jx8eAgPPssDbZA79Yag==
+X-Received: by 2002:a6b:e819:0:b0:79f:cc7f:396f with SMTP id
+ f25-20020a6be819000000b0079fcc7f396fmr8471989ioh.1.1696590628385; 
+ Fri, 06 Oct 2023 04:10:28 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFsZ7+XPMQ6UlwhiIufP8puGpKdmkhpZqa2eithRL6yVixhdrSfgMYzb1jIDpVB8Yrl6MZWgw==
+X-Received: by 2002:a6b:e819:0:b0:79f:cc7f:396f with SMTP id
+ f25-20020a6be819000000b0079fcc7f396fmr8471971ioh.1.1696590628080; 
+ Fri, 06 Oct 2023 04:10:28 -0700 (PDT)
+Received: from [192.168.0.5] (ip-109-43-176-27.web.vodafone.de.
+ [109.43.176.27]) by smtp.gmail.com with ESMTPSA id
+ q6-20020a056638040600b0042b4f9ddecasm340129jap.85.2023.10.06.04.10.26
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 06 Oct 2023 04:10:27 -0700 (PDT)
+Message-ID: <7156d603-ec8f-002f-33d9-36f262b09057@redhat.com>
+Date: Fri, 6 Oct 2023 13:10:25 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
+Subject: Re: [PATCH v3 03/16] net/net: Clean up global variable shadowing
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-block@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ Jason Wang <jasowang@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20231004120019.93101-1-philmd@linaro.org>
+ <20231004120019.93101-4-philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+In-Reply-To: <20231004120019.93101-4-philmd@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -48
+X-Spam_score: -4.9
+X-Spam_bar: ----
+X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ NICE_REPLY_A=-2.797, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -75,35 +95,104 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2023 10:51:22 -0000
+X-List-Received-Date: Fri, 06 Oct 2023 11:10:37 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
+On 04/10/2023 14.00, Philippe Mathieu-Daudé wrote:
+> Fix:
+> 
+>    net/net.c:1680:35: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
+>    bool netdev_is_modern(const char *optarg)
+>                                      ^
+>    net/net.c:1714:38: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
+>    void netdev_parse_modern(const char *optarg)
+>                                         ^
+>    net/net.c:1728:60: error: declaration shadows a variable in the global scope [-Werror,-Wshadow]
+>    void net_client_parse(QemuOptsList *opts_list, const char *optarg)
+>                                                               ^
+>    /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/getopt.h:77:14: note: previous declaration is here
+>    extern char *optarg;                    /* getopt(3) external variables */
+>                 ^
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/net/net.h |  6 +++---
+>   net/net.c         | 14 +++++++-------
+>   2 files changed, 10 insertions(+), 10 deletions(-)
+> 
+> diff --git a/include/net/net.h b/include/net/net.h
+> index 330d285930..2fb1c9181c 100644
+> --- a/include/net/net.h
+> +++ b/include/net/net.h
+> @@ -247,9 +247,9 @@ extern const char *host_net_devices[];
+>   
+>   /* from net.c */
+>   extern NetClientStateList net_clients;
+> -bool netdev_is_modern(const char *optarg);
+> -void netdev_parse_modern(const char *optarg);
+> -void net_client_parse(QemuOptsList *opts_list, const char *str);
+> +bool netdev_is_modern(const char *optstr);
+> +void netdev_parse_modern(const char *optstr);
+> +void net_client_parse(QemuOptsList *opts_list, const char *optstr);
+>   void show_netdevs(void);
+>   void net_init_clients(void);
+>   void net_check_clients(void);
+> diff --git a/net/net.c b/net/net.c
+> index 1c0bfdaa6c..c0c0cbe99e 100644
+> --- a/net/net.c
+> +++ b/net/net.c
+> @@ -1677,7 +1677,7 @@ void net_init_clients(void)
+>    * Modern syntax is to be parsed with netdev_parse_modern().
+>    * Traditional syntax is to be parsed with net_client_parse().
+>    */
+> -bool netdev_is_modern(const char *optarg)
+> +bool netdev_is_modern(const char *optstr)
+>   {
+>       QemuOpts *opts;
+>       bool is_modern;
+> @@ -1689,13 +1689,13 @@ bool netdev_is_modern(const char *optarg)
+>           .desc = { { } },
+>       };
+>   
+> -    if (optarg[0] == '{') {
+> +    if (optstr[0] == '{') {
+>           /* This is JSON, which means it's modern syntax */
+>           return true;
+>       }
+>   
+>       opts = qemu_opts_create(&dummy_opts, NULL, false, &error_abort);
+> -    qemu_opts_do_parse(opts, optarg, dummy_opts.implied_opt_name,
+> +    qemu_opts_do_parse(opts, optstr, dummy_opts.implied_opt_name,
+>                          &error_abort);
+>       type = qemu_opt_get(opts, "type");
+>       is_modern = !g_strcmp0(type, "stream") || !g_strcmp0(type, "dgram");
+> @@ -1711,12 +1711,12 @@ bool netdev_is_modern(const char *optarg)
+>    * netdev_parse_modern() appends to @nd_queue, whereas net_client_parse()
+>    * appends to @qemu_netdev_opts.
+>    */
+> -void netdev_parse_modern(const char *optarg)
+> +void netdev_parse_modern(const char *optstr)
+>   {
+>       Visitor *v;
+>       NetdevQueueEntry *nd;
+>   
+> -    v = qobject_input_visitor_new_str(optarg, "type", &error_fatal);
+> +    v = qobject_input_visitor_new_str(optstr, "type", &error_fatal);
+>       nd = g_new(NetdevQueueEntry, 1);
+>       visit_type_Netdev(v, NULL, &nd->nd, &error_fatal);
+>       visit_free(v);
+> @@ -1725,9 +1725,9 @@ void netdev_parse_modern(const char *optarg)
+>       QSIMPLEQ_INSERT_TAIL(&nd_queue, nd, entry);
+>   }
+>   
+> -void net_client_parse(QemuOptsList *opts_list, const char *optarg)
+> +void net_client_parse(QemuOptsList *opts_list, const char *optstr)
+>   {
+> -    if (!qemu_opts_parse_noisily(opts_list, optarg, true)) {
+> +    if (!qemu_opts_parse_noisily(opts_list, optstr, true)) {
+>           exit(1);
+>       }
+>   }
 
-> 06.10.2023 11:55, Markus Armbruster =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
->> Michael Tokarev <mjt@tls.msk.ru> writes:
->>=20
->>> Applied to my trivial-patches tree, thanks!
->>>
->>> Marcus, you picked up previous patches of this theme, --
->>> you can continue this tradition if you like :)
->> I intend to post a pull request for the -Wshadow patches that have
->> R-bys.  I'm also tracking the unreviewed ones, and hope they get
->> reviewed.
->
-> Ahh, ok.
->
-> I've added my own R-bys for the ones I picked up, and for this one
-> by Thomas too:
->
-> Reviewed-By: Michael Tokarev <mjt@tls.msk.ru>
-
-Got it.
-
-I also got one for
-
-    target/ppc: Rename variables to avoid local variable shadowing in VUPKPX
-
-but that's all.  If you'd like me to add some more, please post them to
-the list.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
