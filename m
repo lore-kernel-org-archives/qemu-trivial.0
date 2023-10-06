@@ -1,61 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qojAV-000792-42
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2023 07:38:55 -0400
+	id 1qojdS-00068x-D7
+	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2023 08:08:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qojAN-0006fs-Ay
- for qemu-trivial@nongnu.org; Fri, 06 Oct 2023 07:38:47 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qojdF-000609-Sl
+ for qemu-trivial@nongnu.org; Fri, 06 Oct 2023 08:08:37 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qojAJ-0000YL-2I
- for qemu-trivial@nongnu.org; Fri, 06 Oct 2023 07:38:45 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qojdE-0000BB-1X
+ for qemu-trivial@nongnu.org; Fri, 06 Oct 2023 08:08:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1696592321;
+ s=mimecast20190719; t=1696594114;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6LGcRG6sW4PUvUKXRDEwQ2kbjhkASkPuGrdQBg6kcLE=;
- b=e8ipYQeiSOgtqj0meK98cr4cHRYBY73TZsVOFvCuaUZboMTs86/81qe8n41E6KT1yUACtC
- 0i69eLxlSYxiYk3bZpptr0thPVWVDFpbU64nGML1BjPcvpfYnwVLr7aeyrm8pFq9afFmsU
- /P6Jwzr+mg/rSmepPbTGtIY7MG1lsAQ=
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=a2K/+pzxjEif0f90GXAXVbfTZ7ejU3iGPBuVbj4FO9M=;
+ b=Wvd8BNRVpm50502LUA1rcal+XfzQ3XPwS22ytHbllH+II6JVu/30bnjqjmlEu5QHqH66BH
+ VNyxSQeONFCvJDwAgQLmSJS5zM34JPFqnkGINJZdGY7JiuVdXNRxHqSwZ3Wb47xf8Xtg+G
+ x9mVXuKNnrtD83TYVvaq9WRQ0ydE4lk=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-543-xnCDnnvZOx-LDSh_hFxBjA-1; Fri, 06 Oct 2023 07:38:28 -0400
-X-MC-Unique: xnCDnnvZOx-LDSh_hFxBjA-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
+ us-mta-31-W7xTujt0MlWweaUjGr6XTA-1; Fri, 06 Oct 2023 08:08:21 -0400
+X-MC-Unique: W7xTujt0MlWweaUjGr6XTA-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
  (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 61267811E8D;
- Fri,  6 Oct 2023 11:38:28 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3FA36492C37;
- Fri,  6 Oct 2023 11:38:28 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 43ECD21E6904; Fri,  6 Oct 2023 13:38:27 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: "Michael S. Tsirkin" <mst@redhat.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>,  Thomas Huth <thuth@redhat.com>,
- qemu-devel@nongnu.org,  qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/virtio/vhost: Silence compiler warnings in vhost
- code when using -Wshadow
-References: <20231004114809.105672-1-thuth@redhat.com>
- <18f1faab-71f4-4dbd-a319-fcd65721f58b@tls.msk.ru>
- <87h6n4p1ts.fsf@pond.sub.org>
- <29a2a188-ec5b-452f-be63-92e8f0ec7110@tls.msk.ru>
- <20231006072416-mutt-send-email-mst@kernel.org>
-Date: Fri, 06 Oct 2023 13:38:27 +0200
-In-Reply-To: <20231006072416-mutt-send-email-mst@kernel.org> (Michael
- S. Tsirkin's message of "Fri, 6 Oct 2023 07:24:34 -0400")
-Message-ID: <87v8bkj80c.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E1A9C101AA6D;
+ Fri,  6 Oct 2023 12:08:20 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.195.28])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 03CC22156711;
+ Fri,  6 Oct 2023 12:08:19 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Xie Yongji <xieyongji@bytedance.com>
+Cc: qemu-trivial@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>
+Subject: [PATCH] libvduse: Fix compiler warning with -Wshadow=local
+Date: Fri,  6 Oct 2023 14:08:19 +0200
+Message-ID: <20231006120819.480792-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -76,34 +64,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2023 11:38:50 -0000
+X-List-Received-Date: Fri, 06 Oct 2023 12:08:38 -0000
 
-"Michael S. Tsirkin" <mst@redhat.com> writes:
+No need to declare a new variable with the same name here,
+we can simple re-use the one from the top of the function.
+With this change, the file now compiles fine with -Wshadow=local.
 
-> On Fri, Oct 06, 2023 at 01:45:51PM +0300, Michael Tokarev wrote:
->> 06.10.2023 11:55, Markus Armbruster =D0=BF=D0=B8=D1=88=D0=B5=D1=82:
->> > Michael Tokarev <mjt@tls.msk.ru> writes:
->> >=20
->> > > Applied to my trivial-patches tree, thanks!
->> > >=20
->> > > Marcus, you picked up previous patches of this theme, --
->> > > you can continue this tradition if you like :)
->> >=20
->> > I intend to post a pull request for the -Wshadow patches that have
->> > R-bys.  I'm also tracking the unreviewed ones, and hope they get
->> > reviewed.
->>=20
->> Ahh, ok.
->>=20
->> I've added my own R-bys for the ones I picked up, and for this one
->> by Thomas too:
->>=20
->> Reviewed-By: Michael Tokarev <mjt@tls.msk.ru>
->>=20
->> /mjt
->
-> it would be better to deal with all of them in one place tbh.
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ subprojects/libvduse/libvduse.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-I just sent a pull request.  Thanks for all the reviews!
+diff --git a/subprojects/libvduse/libvduse.c b/subprojects/libvduse/libvduse.c
+index 377959a0b4..21ffbb5b8d 100644
+--- a/subprojects/libvduse/libvduse.c
++++ b/subprojects/libvduse/libvduse.c
+@@ -1031,7 +1031,7 @@ int vduse_dev_handler(VduseDev *dev)
+         /* The iova will be updated by iova_to_va() later, so just remove it */
+         vduse_iova_remove_region(dev, req.iova.start, req.iova.last);
+         for (i = 0; i < dev->num_queues; i++) {
+-            VduseVirtq *vq = &dev->vqs[i];
++            vq = &dev->vqs[i];
+             if (vq->ready) {
+                 if (vduse_queue_update_vring(vq, vq->vring.desc_addr,
+                                              vq->vring.avail_addr,
+-- 
+2.41.0
 
 
