@@ -1,57 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qojgD-00021F-Li
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Oct 2023 08:11:41 -0400
+	id 1qp3cB-00077E-EQ
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Oct 2023 05:28:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qojgA-00020r-Jo
- for qemu-trivial@nongnu.org; Fri, 06 Oct 2023 08:11:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qp3c3-00076U-SC; Sat, 07 Oct 2023 05:28:43 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qojg9-0000pq-6F
- for qemu-trivial@nongnu.org; Fri, 06 Oct 2023 08:11:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1696594295;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=v2gd5MpBU429xIonrfGZazNkQirLo+MNDAYB2mN1tbQ=;
- b=LUsae3YG4VWhysPrrdk0e2k5Od9DM3lLQK1qNHwE2CkXG6Sbn/WG9fh0o9S6fGT2XiuAyT
- wiDslVyLR/Vk/rOIAyQnNrisDPibzTnGyTrNXeSfe39TBXM2WQFn1UZ48vNi/QFg7J/U0w
- HHPXTBeykLDqQXa8verhZqHP8xA9P7M=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-124-t-4CD-DaMOCDCwxPpxof1Q-1; Fri, 06 Oct 2023 08:11:32 -0400
-X-MC-Unique: t-4CD-DaMOCDCwxPpxof1Q-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 03C3F3C108DD;
- Fri,  6 Oct 2023 12:11:32 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.195.28])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 1DC8D492C37;
- Fri,  6 Oct 2023 12:11:30 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-trivial@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH] libvhost-user: Fix compiler warning with -Wshadow=local
-Date: Fri,  6 Oct 2023 14:11:29 +0200
-Message-ID: <20231006121129.487251-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1qp3c2-0007Vh-76; Sat, 07 Oct 2023 05:28:43 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id A445328550;
+ Sat,  7 Oct 2023 12:28:33 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 106292D7E3;
+ Sat,  7 Oct 2023 12:28:27 +0300 (MSK)
+Message-ID: <88329105-bec2-461e-8c40-bbb5b66636b1@tls.msk.ru>
+Date: Sat, 7 Oct 2023 12:28:26 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/virtio/vhost: Silence compiler warnings in vhost code
+ when using -Wshadow
+Content-Language: en-US
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20231004114809.105672-1-thuth@redhat.com>
+ <18f1faab-71f4-4dbd-a319-fcd65721f58b@tls.msk.ru>
+ <87h6n4p1ts.fsf@pond.sub.org>
+ <29a2a188-ec5b-452f-be63-92e8f0ec7110@tls.msk.ru>
+ <20231006072416-mutt-send-email-mst@kernel.org>
+From: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <20231006072416-mutt-send-email-mst@kernel.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,49 +53,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Oct 2023 12:11:39 -0000
+X-List-Received-Date: Sat, 07 Oct 2023 09:28:49 -0000
 
-Rename shadowing variables to make this code compilable
-with -Wshadow=local.
+06.10.2023 14:24, Michael S. Tsirkin:
+> On Fri, Oct 06, 2023 at 01:45:51PM +0300, Michael Tokarev wrote:
+>> 06.10.2023 11:55, Markus Armbruster пишет:
+>>> Michael Tokarev <mjt@tls.msk.ru> writes:
+>>>
+>>>> Applied to my trivial-patches tree, thanks!
+>>>>
+>>>> Marcus, you picked up previous patches of this theme, --
+>>>> you can continue this tradition if you like :)
+>>>
+>>> I intend to post a pull request for the -Wshadow patches that have
+>>> R-bys.  I'm also tracking the unreviewed ones, and hope they get
+>>> reviewed.
+>>
+>> Ahh, ok.
+>>
+>> I've added my own R-bys for the ones I picked up, and for this one
+>> by Thomas too:
+>>
+>> Reviewed-By: Michael Tokarev <mjt@tls.msk.ru>
+> 
+> it would be better to deal with all of them in one place tbh.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- subprojects/libvhost-user/libvhost-user.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+This is exactly why I asked Marcus about this in the first place,
+being confused a bit with the stuff being especially sent to
+qemu-trivial@ :)
 
-diff --git a/subprojects/libvhost-user/libvhost-user.c b/subprojects/libvhost-user/libvhost-user.c
-index 051a611da3..ea2822a44c 100644
---- a/subprojects/libvhost-user/libvhost-user.c
-+++ b/subprojects/libvhost-user/libvhost-user.c
-@@ -870,10 +870,10 @@ vu_rem_mem_reg(VuDev *dev, VhostUserMsg *vmsg) {
-     for (i = 0; i < dev->nregions; i++) {
-         if (reg_equal(&dev->regions[i], msg_region)) {
-             VuDevRegion *r = &dev->regions[i];
--            void *m = (void *) (uintptr_t) r->mmap_addr;
-+            void *ma = (void *) (uintptr_t) r->mmap_addr;
- 
--            if (m) {
--                munmap(m, r->size + r->mmap_offset);
-+            if (ma) {
-+                munmap(ma, r->size + r->mmap_offset);
-             }
- 
-             /*
-@@ -1005,10 +1005,10 @@ vu_set_mem_table_exec(VuDev *dev, VhostUserMsg *vmsg)
- 
-     for (i = 0; i < dev->nregions; i++) {
-         VuDevRegion *r = &dev->regions[i];
--        void *m = (void *) (uintptr_t) r->mmap_addr;
-+        void *ma = (void *) (uintptr_t) r->mmap_addr;
- 
--        if (m) {
--            munmap(m, r->size + r->mmap_offset);
-+        if (ma) {
-+            munmap(ma, r->size + r->mmap_offset);
-         }
-     }
-     dev->nregions = memory->nregions;
--- 
-2.41.0
+/mjt
 
 
