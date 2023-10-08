@@ -1,72 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qp72y-0002nD-6j
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Oct 2023 09:08:44 -0400
+	id 1qpMKb-0003Lx-QD
+	for mharc-qemu-trivial@gnu.org; Sun, 08 Oct 2023 01:27:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xieyongji@bytedance.com>)
- id 1qp2Hx-00007R-0f
- for qemu-trivial@nongnu.org; Sat, 07 Oct 2023 04:03:53 -0400
-Received: from mail-pg1-x533.google.com ([2607:f8b0:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <xieyongji@bytedance.com>)
- id 1qp2Hu-00027Z-TC
- for qemu-trivial@nongnu.org; Sat, 07 Oct 2023 04:03:52 -0400
-Received: by mail-pg1-x533.google.com with SMTP id
- 41be03b00d2f7-578b4997decso2202705a12.0
- for <qemu-trivial@nongnu.org>; Sat, 07 Oct 2023 01:03:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bytedance.com; s=google; t=1696665824; x=1697270624; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=RjwOSRl5Moe97C0ux5uWNNaZO5PoXf/S90zPpk4KeIU=;
- b=WA7lgiTZkqBmwzM7qOJJdOQGyQsBb4RH9O2QpcdHbaPPyy9bhxmLRB64DAUeaEEOai
- V3Impo2uwZeZlQ8vVZun0o4zIMeZiOWSFQZn10uDbQCxmgpsDBEdb2losIuCvbpR/M0P
- hu8/WK8uIB/mICq1a1/N1X3wIiLtiqcwyHbASAI4gdaVN5s/XI/ylM0C4Z8GiVwWDP2o
- 8nb4VF/yYaBhS0Fki/XCUbXe5ilTXXNX0WzYKRsyAb2QI+gWcbttHFWqyhD4gtt/tJFK
- KaCxyWRpZTow+E3zDp3r11dO7a/UBsWudZOxU/aEuNO+jCg1iFasvT8RgEGOjrzhXyCN
- PBJA==
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1qpMKZ-0003Lj-3e
+ for qemu-trivial@nongnu.org; Sun, 08 Oct 2023 01:27:55 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
+ id 1qpMKX-0006VP-Ly
+ for qemu-trivial@nongnu.org; Sun, 08 Oct 2023 01:27:54 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1696742872;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Hr7T1ZkDawWvtjDrdIneKcvzMEjpeZm7SKe5BPaAeio=;
+ b=T/CHmtjcqBHKIJCCoVcZPp4ljbYB/7QU42LqR0+IQrOJh4RuxDt8ZRYxINZXE4kdO+pkUL
+ IC20AEE8AVzCIvslFQtlqxmWIjInQRzHq09OkIPHy1/C8Zpf43cwiJ2TOCG3P7muSu6ZH5
+ U6N9+UcS0BuOyC9vnsuahQ9xR3NJ9uM=
+Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
+ [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-586-f7CWOqMfO1-oVKMHZNyyXg-1; Sun, 08 Oct 2023 01:27:51 -0400
+X-MC-Unique: f7CWOqMfO1-oVKMHZNyyXg-1
+Received: by mail-lf1-f70.google.com with SMTP id
+ 2adb3069b0e04-5043307ec0bso3114907e87.2
+ for <qemu-trivial@nongnu.org>; Sat, 07 Oct 2023 22:27:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696665824; x=1697270624;
+ d=1e100.net; s=20230601; t=1696742869; x=1697347669;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=RjwOSRl5Moe97C0ux5uWNNaZO5PoXf/S90zPpk4KeIU=;
- b=iq9Sn0BBQHb3Kc5qXqT30uahkh5qBniLdLCQ7rEm81zsVCyC0/ksnKROSl+Ae8CgCf
- 6VEyQvQAQrS67+tMPnE3s/5PvIr6y6BAyu7NvQQLFymgFnDxv+Gb2oTPoQF8qOdzdN+I
- lZk/RmIixxtynjtKeM8mxS8UoVAG/EObmK7vrHtrpLNOxUqX+WzVMfxOVZ3oqgvMP1hH
- /UT8m4FzYBgCHL7noFXjX5yDUPeJeCCLfH5RLbSLVeiheeeLJuYUaax1rBuYHwjGztjC
- qMqTCSUv8BPiqJZNya+3FQIhIEYyuN2z1mWbIJ5wloLnEsjqO36O6Ks9pn4ga3JVS8/g
- Z7Yg==
-X-Gm-Message-State: AOJu0Yxe4Gz9dC/stS0jAC64VcPq3WS63tPUA2/npQPFQMJqVmrQwwxe
- bZxC8SLS9yedWMhVkygNl9bN+5k9PQzHSXbW2m6G
-X-Google-Smtp-Source: AGHT+IFL/k6tUIxcQhSfIFVcdaGaXP0LEAAmdhZlqNDatTninRBuBOg4JgeZlmLhdGaYoN69pJsp9nSIDHOY3eVj1Jo=
-X-Received: by 2002:a05:6a20:12c9:b0:15c:b7ba:6a4d with SMTP id
- v9-20020a056a2012c900b0015cb7ba6a4dmr12125143pzg.50.1696665823777; Sat, 07
- Oct 2023 01:03:43 -0700 (PDT)
+ bh=Hr7T1ZkDawWvtjDrdIneKcvzMEjpeZm7SKe5BPaAeio=;
+ b=D9vjvKO/kKxQTKHwSaPYBmEVWC04Se32qZnX5UPFVD8qDNwwsH9OzLc9+Uuxf1kSW4
+ 0zKwKcQawXsBiQRDGzdkRxsJFRou00LXqR78irDPipWo6rTWV42eSNKPinmo02fHXlxR
+ 9N7r590JwZPHPIJubSk4XQYl+BONOKZkAvtX4djUN5+6TLiO7ZEEM71jP9o8bEAyTPGW
+ A1Xsd2nuKJjDqRAtbe13qTEmsqiEcnqXW9Z2YPBpXsCmwiJ36tigdqbPzVZeRZVIXXcZ
+ TdyNq89nAv5W6mTmrLpUpNw2mgCThgvmfqrVRbseU2Wdkqvy/MC8uAc74eJ/9Phfqu8d
+ vK+g==
+X-Gm-Message-State: AOJu0YwwQ74cvDzH4oQ1cLXARCKaYnB7EX0xDRUTqL38zuS2rlxnJeF5
+ E2qQtyW2miKOD9D+cVD9/arJ49Z1tF/KH6eKlKgZgCgt/2mMaT4pIXGnfQcPrMxm7hgCPH24epn
+ pAtKf55diMgf1govsWqxqtl1BUzZAt9nbbGKsczVHGD+e
+X-Received: by 2002:a05:6512:39d0:b0:504:51e9:89a2 with SMTP id
+ k16-20020a05651239d000b0050451e989a2mr15625753lfu.32.1696742869638; 
+ Sat, 07 Oct 2023 22:27:49 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFRscR506okY7xwG1XImUKUol7kSiOvFx26DTqoqggKCVYoZybrCUD14IvLUIa7G2eL0QbAjoygf7Mvz0cMxPs=
+X-Received: by 2002:a05:6512:39d0:b0:504:51e9:89a2 with SMTP id
+ k16-20020a05651239d000b0050451e989a2mr15625748lfu.32.1696742869357; Sat, 07
+ Oct 2023 22:27:49 -0700 (PDT)
 MIME-Version: 1.0
-References: <20231006120819.480792-1-thuth@redhat.com>
-In-Reply-To: <20231006120819.480792-1-thuth@redhat.com>
-From: Yongji Xie <xieyongji@bytedance.com>
-Date: Sat, 7 Oct 2023 16:03:32 +0800
-Message-ID: <CACycT3vRayGGP2TfN5=Gm+KOkvpfp6iypcQScnj6t1Hs7bJppg@mail.gmail.com>
-Subject: Re: [PATCH] libvduse: Fix compiler warning with -Wshadow=local
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu devel list <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- Markus Armbruster <armbru@redhat.com>
+References: <20231004084939.96349-1-thuth@redhat.com>
+ <20231004045724-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20231004045724-mutt-send-email-mst@kernel.org>
+From: Jason Wang <jasowang@redhat.com>
+Date: Sun, 8 Oct 2023 13:27:38 +0800
+Message-ID: <CACGkMEvfUDzDvor6TjcF8-2wbymgNKxvn77gUM8KuiAb5Ndi7g@mail.gmail.com>
+Subject: Re: [PATCH] hw/net/vhost_net: Silence compiler warning when compiling
+ with -Wshadow
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, 
+ Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::533;
- envelope-from=xieyongji@bytedance.com; helo=mail-pg1-x533.google.com
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jasowang@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 07 Oct 2023 09:08:42 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,20 +88,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Oct 2023 08:03:53 -0000
+X-List-Received-Date: Sun, 08 Oct 2023 05:27:55 -0000
 
-On Fri, Oct 6, 2023 at 8:08=E2=80=AFPM Thomas Huth <thuth@redhat.com> wrote=
-:
+On Wed, Oct 4, 2023 at 4:57=E2=80=AFPM Michael S. Tsirkin <mst@redhat.com> =
+wrote:
 >
-> No need to declare a new variable with the same name here,
-> we can simple re-use the one from the top of the function.
-> With this change, the file now compiles fine with -Wshadow=3Dlocal.
+> On Wed, Oct 04, 2023 at 10:49:39AM +0200, Thomas Huth wrote:
+> > Rename the innermost local variables to avoid compiler warnings
+> > with "-Wshadow".
+> >
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
 >
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
+> Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
 
-Reviewed-by: Xie Yongji <xieyongji@bytedance.com>
+Acked-by: Jason Wang <jasowang@redhat.com>
 
-Thanks,
-Yongji
+Thanks
+
+>
+> feel free to merge
+>
+> > ---
+> >  hw/net/vhost_net.c | 8 ++++----
+> >  1 file changed, 4 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/hw/net/vhost_net.c b/hw/net/vhost_net.c
+> > index 57427a3997..e8e1661646 100644
+> > --- a/hw/net/vhost_net.c
+> > +++ b/hw/net/vhost_net.c
+> > @@ -313,8 +313,8 @@ fail:
+> >                  /* Queue might not be ready for start */
+> >                  continue;
+> >              }
+> > -            int r =3D vhost_net_set_backend(&net->dev, &file);
+> > -            assert(r >=3D 0);
+> > +            int ret =3D vhost_net_set_backend(&net->dev, &file);
+> > +            assert(ret >=3D 0);
+> >          }
+> >      }
+> >      if (net->nc->info->poll) {
+> > @@ -629,8 +629,8 @@ err_start:
+> >      if (net->nc->info->type =3D=3D NET_CLIENT_DRIVER_TAP) {
+> >          file.fd =3D VHOST_FILE_UNBIND;
+> >          file.index =3D idx;
+> > -        int r =3D vhost_net_set_backend(&net->dev, &file);
+> > -        assert(r >=3D 0);
+> > +        int ret =3D vhost_net_set_backend(&net->dev, &file);
+> > +        assert(ret >=3D 0);
+> >      }
+> >
+> >      vhost_dev_stop(&net->dev, vdev, false);
+> > --
+> > 2.41.0
+>
+
 
