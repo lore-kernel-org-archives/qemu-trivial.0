@@ -1,74 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qpmH1-0001ik-LR
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Oct 2023 05:09:59 -0400
+	id 1qptTl-0007jA-ID
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Oct 2023 12:51:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qpmH0-0001iO-Aa
- for qemu-trivial@nongnu.org; Mon, 09 Oct 2023 05:09:58 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1qptTk-0007im-5F; Mon, 09 Oct 2023 12:51:36 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qpmGy-0007PH-Li
- for qemu-trivial@nongnu.org; Mon, 09 Oct 2023 05:09:58 -0400
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-99357737980so746727866b.2
- for <qemu-trivial@nongnu.org>; Mon, 09 Oct 2023 02:09:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <luoyonggang@gmail.com>)
+ id 1qptTi-0005DU-AL; Mon, 09 Oct 2023 12:51:35 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-690fe10b6a4so3855314b3a.3; 
+ Mon, 09 Oct 2023 09:51:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1696842595; x=1697447395; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1696870291; x=1697475091; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=zDyH1gKuZJCM1RphwPpjmEjyYLrUqVd//97ztF5U5xs=;
- b=uoLTNra4SNhNVazNoDc6anpcRjmhiS10f6Wl5tAAMlE8w3MZ8WmHH50xGju2U/Vi3N
- hkeNd/pOjvxpL1ca+JLMJr+BEgJz9pak2OL4V+urszStkhJGj+by/Gqn4zSfmY9yF/Qo
- 7/le4Q0cuna+o94Fik16PegiYSe7JRYWh8tYRz7M15DwuW2PVsfCu7koJsG+s15pds5s
- PxMa/pRaX43vnNwprOkeGEApOidufFzGAFdn8RurZMZSIRu0jIah7c2eQRR0rgSIePcE
- J0rrNNt8/crPX/9xqJs8imapkR/+5vSP32hk7BfLisfmyu0riJks+L1Oq7bnZCKdwHki
- Zdhg==
+ bh=9YTlTK2ZJYbpojQknIylpsZ9v984f/ty25tpdC20tm0=;
+ b=lbyX2ivP5AZso7ces/Inaa8YZTiYJe+SlcysVbiXkUX/Y1Vtv+x1hHeyspFyk7Ysk8
+ sFSnTKeCc+qzyLd96aF+eP6rbksstDgXImrzmK//Q2U9hAAgA2zZPKL5PBbwhKHOogRG
+ ZeXRG8voS/HhEOM0FSp/gDUKX1VqE5n6llEH22336czeYmZfzDzbbgL8BKSiIgmq+b0B
+ tXz/tqoqfveTfNLvwsVKjk/+8wnLgascU/fGuM3F8pCEOcND6Ty/dFnw0xezqY924tab
+ PNNoKuY9j1TmRAOkaLlispczmqPDYjGdz0TsucKfe/o7ZVW9nsav6FufOrNy+W8pvxqL
+ ajNA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1696842595; x=1697447395;
+ d=1e100.net; s=20230601; t=1696870291; x=1697475091;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=zDyH1gKuZJCM1RphwPpjmEjyYLrUqVd//97ztF5U5xs=;
- b=EjUwaEMCZJe80o06A+DhBmozhsAQb7Xak4g0DNhS0DeIs6h9hZIOGSMoKFzIQGBTVs
- 8iFwcrR08jkb3hjNpWf6ZF+TSZpsG4I7QUr2l8JwbWC1Y2cPftmtfpOD97yPYyR/8kh8
- dh2hvB9wbI7fTkB7qMg2qJjJx2jt8ge8BxOzWYwwBJXA2xbxTJgJ8vWq/B9MZGtkimfU
- RHOt5Haxo2IS4syAJR2Ba8tGnlmpDSjEBP17cEBTFcDtVjPuqIHP1ZKlXy5idLf10u7I
- 8qjjTmNh3chRCbKjMi+w/SiIo5qhGtgOOXlbQY2yC/mCVUy4BFYz7Ng5LLhgUQk4dKDY
- 7eHw==
-X-Gm-Message-State: AOJu0YwyQylFc6uoy/ldacJ2NB2S7Fac86WoetLV8ytq8ST8XeY0DPBV
- gw/ol2Gub6K2fdmuRxJ2riOmsw==
-X-Google-Smtp-Source: AGHT+IHLpm0YUtvULY4qLlhf3SyegjYEGJcLOX1OQsvecCpmvkolRm32YwlSUpUyZXIALM4aVqaBJA==
-X-Received: by 2002:a17:906:5341:b0:9b8:7709:6360 with SMTP id
- j1-20020a170906534100b009b877096360mr14960773ejo.40.1696842594752; 
- Mon, 09 Oct 2023 02:09:54 -0700 (PDT)
-Received: from m1x-phil.lan (thr44-h01-176-170-217-185.dsl.sta.abo.bbox.fr.
- [176.170.217.185]) by smtp.gmail.com with ESMTPSA id
- p8-20020a170906b20800b009a1b857e3a5sm6469180ejz.54.2023.10.09.02.09.53
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 09 Oct 2023 02:09:54 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+ bh=9YTlTK2ZJYbpojQknIylpsZ9v984f/ty25tpdC20tm0=;
+ b=YBZ5IPWhlsmmLk4wm3qz+qm8h+BOPEP423DmgTClcVAD4Qb5HiI3sPVFc2qyr0yoad
+ hB/QDSOdehQ5cZI9J3xNZKOCbH2lP2GNPtSqoDDENcIyHLt+kvLYA3NOdJiMIAPNlZ5g
+ LE0YVP7EUvzwDlSSLJbBO5yG7lr/gBH9a52njZjXOh4yeLwTp7cQ/U64NfJL1OyZbokS
+ asFngY16nppsj/AdIIwdyy8pSWBVlDNALyugzrWro19ADXUBucxxkXcGvckrrlxeqqAY
+ slFG2jZCTnlW639s3o2J35WO5C0Zvoab63mhQtjjR1/RJ/jMrNNtyuxb0RBSb6DZUgkd
+ UFLg==
+X-Gm-Message-State: AOJu0Ywuu6MdAr835SUkyU/8L7jMscYjzrqbRbuy7rruaHghjASLiI0p
+ FIivX5xHsmX0WvsW/AuOnryldNTBa9vIMw==
+X-Google-Smtp-Source: AGHT+IGNn5nC5QkVDdOiKCY7S7ZZ4HSb2f9jP4W5yXq4uY+x5bHJPKwVf8v3tvymhFBUzmmY80Occg==
+X-Received: by 2002:a05:6a00:22c9:b0:690:2ecd:a593 with SMTP id
+ f9-20020a056a0022c900b006902ecda593mr20262127pfj.26.1696870291423; 
+ Mon, 09 Oct 2023 09:51:31 -0700 (PDT)
+Received: from localhost.localdomain ([103.94.185.75])
+ by smtp.googlemail.com with ESMTPSA id
+ a21-20020a62bd15000000b00693498a846esm6589539pff.80.2023.10.09.09.51.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 09 Oct 2023 09:51:29 -0700 (PDT)
+From: Yonggang Luo <luoyonggang@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Alistair Francis <alistair.francis@wdc.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- Like Xu <like.xu@linux.intel.com>, Eduardo Habkost <eduardo@habkost.net>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH] cpus: Remove unused smp_cores/smp_threads declarations
-Date: Mon,  9 Oct 2023 11:09:52 +0200
-Message-ID: <20231009090952.48207-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ John Snow <jsnow@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ qemu-trivial@nongnu.org, Yonggang Luo <luoyonggang@gmail.com>
+Subject: [PATCH] Revert "configure: Add workaround for ccache and clang"
+Date: Tue, 10 Oct 2023 00:51:13 +0800
+Message-Id: <20231009165113.498-1-luoyonggang@gmail.com>
+X-Mailer: git-send-email 2.39.0.windows.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=luoyonggang@gmail.com; helo=mail-pf1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,35 +79,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Oct 2023 09:09:58 -0000
+X-List-Received-Date: Mon, 09 Oct 2023 16:51:36 -0000
 
-Commit a5e0b33119 ("vl.c: Replace smp global variables
-with smp machine properties") removed the last uses of
-the smp_cores / smp_threads variables but forgot to
-remove their declarations. Do it now.
+This reverts commit fd0e60530f10078f488fa3e9591cc7db5732989c.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+According to https://peter.eisentraut.org/blog/2014/12/01/ccache-and-clang-part-3
+it's already fixed in new version of ccache
+
+According to https://ccache.dev/manual/4.8.html#config_run_second_cpp
+CCACHE_CPP2 are default to true for new version ccache
+
+Signed-off-by: Yonggang Luo <luoyonggang@gmail.com>
 ---
- include/sysemu/cpus.h | 7 -------
- 1 file changed, 7 deletions(-)
+ configure | 32 --------------------------------
+ 1 file changed, 32 deletions(-)
 
-diff --git a/include/sysemu/cpus.h b/include/sysemu/cpus.h
-index 0535a4c68a..b4a566cfe7 100644
---- a/include/sysemu/cpus.h
-+++ b/include/sysemu/cpus.h
-@@ -50,11 +50,4 @@ void cpu_synchronize_all_post_reset(void);
- void cpu_synchronize_all_post_init(void);
- void cpu_synchronize_all_pre_loadvm(void);
+diff --git a/configure b/configure
+index e08127045d..3f8dd94b50 100755
+--- a/configure
++++ b/configure
+@@ -1161,34 +1161,6 @@ EOF
+   fi
+ fi
  
--#ifndef CONFIG_USER_ONLY
--/* vl.c */
--/* *-user doesn't have configurable SMP topology */
--extern int smp_cores;
--extern int smp_threads;
--#endif
+-########################################
+-# check if ccache is interfering with
+-# semantic analysis of macros
 -
- #endif
+-unset CCACHE_CPP2
+-ccache_cpp2=no
+-cat > $TMPC << EOF
+-static const int Z = 1;
+-#define fn() ({ Z; })
+-#define TAUT(X) ((X) == Z)
+-#define PAREN(X, Y) (X == Y)
+-#define ID(X) (X)
+-int main(void)
+-{
+-    int x = 0, y = 0;
+-    x = ID(x);
+-    x = fn();
+-    fn();
+-    if (PAREN(x, y)) return 0;
+-    if (TAUT(Z)) return 0;
+-    return 0;
+-}
+-EOF
+-
+-if ! compile_object "-Werror"; then
+-    ccache_cpp2=yes
+-fi
+-
+ ##########################################
+ # functions to probe cross compilers
+ 
+@@ -1722,10 +1694,6 @@ if test "$default_targets" = "yes"; then
+   echo "CONFIG_DEFAULT_TARGETS=y" >> $config_host_mak
+ fi
+ 
+-if test "$ccache_cpp2" = "yes"; then
+-  echo "export CCACHE_CPP2=y" >> $config_host_mak
+-fi
+-
+ # contrib/plugins configuration
+ echo "# Automatically generated by configure - do not modify" > contrib/plugins/$config_host_mak
+ echo "SRC_PATH=$source_path/contrib/plugins" >> contrib/plugins/$config_host_mak
 -- 
-2.41.0
+2.39.0.windows.1
 
 
