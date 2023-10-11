@@ -1,42 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qqbDc-0002MQ-0x
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Oct 2023 11:33:52 -0400
+	id 1qqbIY-0000Xr-0C
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Oct 2023 11:38:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1qqbDZ-0002JB-7Q; Wed, 11 Oct 2023 11:33:49 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1qqbDW-0000qL-EP; Wed, 11 Oct 2023 11:33:48 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id ED06A748FF4;
- Wed, 11 Oct 2023 17:32:46 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id B46467456AA; Wed, 11 Oct 2023 17:32:46 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id B2B0C745681;
- Wed, 11 Oct 2023 17:32:46 +0200 (CEST)
-Date: Wed, 11 Oct 2023 17:32:46 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>
-Subject: Re: [PATCH] MAINTANERS: Split vt82c686 out of fuloong2e
-In-Reply-To: <669b7b69-a5d0-fef2-40a8-84a1805f1aad@linaro.org>
-Message-ID: <493cc9f6-2b23-76d9-bcfb-5830e7d0d54c@eik.bme.hu>
-References: <20231005181805.8EA7475723D@zero.eik.bme.hu>
- <669b7b69-a5d0-fef2-40a8-84a1805f1aad@linaro.org>
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1qqbIU-0000P4-Tq; Wed, 11 Oct 2023 11:38:56 -0400
+Received: from mail-oo1-xc2f.google.com ([2607:f8b0:4864:20::c2f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1qqbIT-0001je-69; Wed, 11 Oct 2023 11:38:54 -0400
+Received: by mail-oo1-xc2f.google.com with SMTP id
+ 006d021491bc7-57b6a7e0deeso4114901eaf.2; 
+ Wed, 11 Oct 2023 08:38:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1697038731; x=1697643531; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=jf7GpPCsEnly/lZZa9FVIoXSWQ7Np5F4jDc1RPG5f6I=;
+ b=ZU3/KO85TgAzXYol/xbwZ4XnYJSW312MMm+ctM7pJc56d/M9m7gByyn9td/CCSx47F
+ v0m0YK6cohENsqBz5vui57IliZi5SGUZ65H6hlfzW3wD5eEanLoWmSN7YdPf6Z5vA26H
+ mSesCHyudq5akHFA7M70u/j6M8z7AOCh4Zt0pC/UyF91N64wJc7bnIy/m2ENjk9aaGcb
+ vl/2T9C/6Drb42czjZStV+K6BGc6RJjupszL1iFyBL3C7wxuPzgse5F4+J4/RbHGOFnM
+ jRy5pvw8lxDRbAcu0WzNhsFukmTpJYJEM27Cv0TsB5JNhUlKT+AOa6qhiKhzoCdlzkiX
+ 1mkw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697038731; x=1697643531;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=jf7GpPCsEnly/lZZa9FVIoXSWQ7Np5F4jDc1RPG5f6I=;
+ b=lIzrqj196y2SyAIUpEf35iKWLHBQEDjP3u64kwef1HlQhJ7jsH4/r70eXSW4LhcTWe
+ nRuN8I7PxGOSMfm0uvQ6MB7qAhJMsEbcfjsDc0BtBKFgWqg/9lpHP3h/UyMjC7+vJ2sl
+ t+ZvZDFhAQqmSq72lW7CaSQjYDUhmDWMQ29QgN4GwUQ9vqXIDu4RuWr9Q8eExo16GqsG
+ JAXlZkhSCafTi11LQnRask7rr96QMkCGqlEX5rq5hdruQutfnpZ4eFuxd4nsj3tp3Y7u
+ MyMfJAMx1GInEpXOChl0bBHfFwwZ0bs1cMM6hUeau9B3NrMFFL0cuYv778BoEP8v7p3x
+ jzKg==
+X-Gm-Message-State: AOJu0YzYbYFx169pD4yx68uSmFM4SEt897CyIFe7LayrwnD8y6wy/5Cm
+ RBW2/E/ddf0MW03GssLRYlI0wfm0pl1EOEfHKHA=
+X-Google-Smtp-Source: AGHT+IG2fSoa4RI2xTP7/k4x0aAOvYPBBUql1FVFhgcRsJ3pgqxHmzlT4No3/sPL/I2qreEjBISYPcxOrR6iSq3/a+s=
+X-Received: by 2002:a4a:9d12:0:b0:56c:d297:164c with SMTP id
+ w18-20020a4a9d12000000b0056cd297164cmr21964901ooj.4.1697038731096; Wed, 11
+ Oct 2023 08:38:51 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-969946648-1697038366=:38453"
-X-Spam-Probability: 9%
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+References: <20231011112054.1031975-1-mjt@tls.msk.ru>
+ <20231011112054.1031975-3-mjt@tls.msk.ru>
+In-Reply-To: <20231011112054.1031975-3-mjt@tls.msk.ru>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+Date: Wed, 11 Oct 2023 11:38:38 -0400
+Message-ID: <CAJSP0QVkuu4EbW5gKmrN6Gotnhw1LG+ka=6vjuftPXBrKY+R3g@mail.gmail.com>
+Subject: Re: [PULL 02/13] hw/rdma/vmw/pvrdma_cmd: Use correct struct in
+ query_port()
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>, 
+ qemu-trivial@nongnu.org, qemu-stable@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Thomas Huth <thuth@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2f;
+ envelope-from=stefanha@gmail.com; helo=mail-oo1-xc2f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -50,71 +79,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Oct 2023 15:33:50 -0000
+X-List-Received-Date: Wed, 11 Oct 2023 15:38:56 -0000
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---3866299591-969946648-1697038366=:38453
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
-
-On Thu, 5 Oct 2023, Philippe Mathieu-Daudé wrote:
-> On 5/10/23 20:18, BALATON Zoltan wrote:
->> It is used by other machines not just fuloong2e so put it in a
->> separate section and add myself as reviewer.
-
-Forgot to cc qemu-trivial. I thought maybe Philippe takes this but there 
-were a bunch of these in trivial and Philippe submitted another 
-MAINTAINERS patch with trivial cc'd so just to make sure this isn't missed 
-I'm adding trivial as well.
-
-Regards,
-BALATON Zoltan
-
->> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
->> ---
->> By the way, PIIX4 already has a section just above where I've added
->> this but some files are still listed in Malta. You may want to have a
->> look at that.
->>
->>   MAINTAINERS | 11 ++++++++---
->>   1 file changed, 8 insertions(+), 3 deletions(-)
->> 
->> diff --git a/MAINTAINERS b/MAINTAINERS
->> index ea91f9e804..7f0e20fde6 100644
->> --- a/MAINTAINERS
->> +++ b/MAINTAINERS
->> @@ -1307,10 +1307,7 @@ M: Philippe Mathieu-Daudé <philmd@linaro.org>
->>   R: Jiaxun Yang <jiaxun.yang@flygoat.com>
->>   S: Odd Fixes
->>   F: hw/mips/fuloong2e.c
->> -F: hw/isa/vt82c686.c
->>   F: hw/pci-host/bonito.c
->> -F: hw/usb/vt82c686-uhci-pci.c
->> -F: include/hw/isa/vt82c686.h
->>   F: include/hw/pci-host/bonito.h
->>   F: tests/avocado/machine_mips_fuloong2e.py
->>   @@ -2462,6 +2459,14 @@ S: Maintained
->>   F: hw/isa/piix4.c
->>   F: include/hw/southbridge/piix.h
->>   +VIA south bridges (VT82C686B, VT8231)
->> +M: Philippe Mathieu-Daudé <philmd@linaro.org>
->> +R: Jiaxun Yang <jiaxun.yang@flygoat.com>
->> +R: BALATON Zoltan <balaton@eik.bme.hu>
+On Wed, 11 Oct 2023 at 07:23, Michael Tokarev <mjt@tls.msk.ru> wrote:
 >
-> Feel free to add yourself as maintainer if you rather.
+> From: Peter Maydell <peter.maydell@linaro.org>
 >
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> In query_port() we pass the address of a local pvrdma_port_attr
+> struct to the rdma_query_backend_port() function.  Unfortunately,
+> rdma_backend_query_port() wants a pointer to a struct ibv_port_attr,
+> and the two are not the same length.
 >
->> +F: hw/isa/vt82c686.c
->> +F: hw/usb/vt82c686-uhci-pci.c
->> +F: include/hw/isa/vt82c686.h
->> +
->>   Firmware configuration (fw_cfg)
->>   M: Philippe Mathieu-Daudé <philmd@linaro.org>
->>   R: Gerd Hoffmann <kraxel@redhat.com>
+> Coverity spotted this (CID 1507146): pvrdma_port_attr is 48 bytes
+> long, and ibv_port_attr is 52 bytes, because it has a few extra
+> fields at the end.
+>
+> Fortunately, all we do with the attrs struct after the call is to
+> read a few specific fields out of it which are all at the same
+> offsets in both structs, so we can simply make the local variable the
+> correct type.  This also lets us drop the cast (which should have
+> been a bit of a warning flag that we were doing something wrong
+> here).
+>
+> Cc: qemu-stable@nongnu.org
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  hw/rdma/vmw/pvrdma_cmd.c | 5 ++---
+>  1 file changed, 2 insertions(+), 3 deletions(-)
+
+The following CI failure has occurred:
+
+../hw/rdma/vmw/pvrdma_cmd.c:144:59: error: implicit conversion from
+enumeration type 'enum ibv_port_state' to different enumeration type
+'enum pvrdma_port_state' [-Werror,-Wenum-conversion]
+resp->attrs.state =3D dev->func0->device_active ? attrs.state :
+~ ~~~~~~^~~~~
+../hw/rdma/vmw/pvrdma_cmd.c:146:33: error: implicit conversion from
+enumeration type 'enum ibv_mtu' to different enumeration type 'enum
+pvrdma_mtu' [-Werror,-Wenum-conversion]
+resp->attrs.max_mtu =3D attrs.max_mtu;
+~ ~~~~~~^~~~~~~
+../hw/rdma/vmw/pvrdma_cmd.c:147:36: error: implicit conversion from
+enumeration type 'enum ibv_mtu' to different enumeration type 'enum
+pvrdma_mtu' [-Werror,-Wenum-conversion]
+resp->attrs.active_mtu =3D attrs.active_mtu;
+~ ~~~~~~^~~~~~~~~~
+
+https://gitlab.com/qemu-project/qemu/-/jobs/5270666420
+
+Please take a look.
+
+Thanks,
+Stefan
+
+>
+> diff --git a/hw/rdma/vmw/pvrdma_cmd.c b/hw/rdma/vmw/pvrdma_cmd.c
+> index c6ed025982..d31c187593 100644
+> --- a/hw/rdma/vmw/pvrdma_cmd.c
+> +++ b/hw/rdma/vmw/pvrdma_cmd.c
+> @@ -129,14 +129,13 @@ static int query_port(PVRDMADev *dev, union pvrdma_=
+cmd_req *req,
+>  {
+>      struct pvrdma_cmd_query_port *cmd =3D &req->query_port;
+>      struct pvrdma_cmd_query_port_resp *resp =3D &rsp->query_port_resp;
+> -    struct pvrdma_port_attr attrs =3D {};
+> +    struct ibv_port_attr attrs =3D {};
+>
+>      if (cmd->port_num > MAX_PORTS) {
+>          return -EINVAL;
+>      }
+>
+> -    if (rdma_backend_query_port(&dev->backend_dev,
+> -                                (struct ibv_port_attr *)&attrs)) {
+> +    if (rdma_backend_query_port(&dev->backend_dev, &attrs)) {
+>          return -ENOMEM;
+>      }
+>
+> --
+> 2.39.2
 >
 >
---3866299591-969946648-1697038366=:38453--
 
