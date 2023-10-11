@@ -1,41 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qqXHe-0007i4-70
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Oct 2023 07:21:46 -0400
+	id 1qqXHh-0007jp-IJ
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Oct 2023 07:21:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qqXHc-0007gD-0J; Wed, 11 Oct 2023 07:21:44 -0400
+ id 1qqXHg-0007jQ-9g; Wed, 11 Oct 2023 07:21:48 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qqXHa-0000zA-8k; Wed, 11 Oct 2023 07:21:43 -0400
+ id 1qqXHR-0000xe-PP; Wed, 11 Oct 2023 07:21:48 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id C022C2967B;
+ by isrv.corpit.ru (Postfix) with ESMTP id 4564229678;
  Wed, 11 Oct 2023 14:21:02 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 313B42E701;
- Wed, 11 Oct 2023 14:20:57 +0300 (MSK)
-Received: (nullmailer pid 1032049 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id AD3E22E6FE;
+ Wed, 11 Oct 2023 14:20:56 +0300 (MSK)
+Received: (nullmailer pid 1032040 invoked by uid 1000);
  Wed, 11 Oct 2023 11:20:55 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Olaf Hering <olaf@aepfle.de>, qemu-trivial@nongnu.org,
+Cc: Cornelia Huck <cohuck@redhat.com>, qemu-trivial@nongnu.org,
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 11/13] roms: use PYTHON to invoke python
-Date: Wed, 11 Oct 2023 14:20:52 +0300
-Message-Id: <20231011112054.1031975-12-mjt@tls.msk.ru>
+Subject: [PULL 08/13] MAINTAINERS: add standard-headers to Hosts/LINUX
+Date: Wed, 11 Oct 2023 14:20:49 +0300
+Message-Id: <20231011112054.1031975-9-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231011112054.1031975-1-mjt@tls.msk.ru>
 References: <20231011112054.1031975-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -48,34 +51,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Oct 2023 11:21:44 -0000
+X-List-Received-Date: Wed, 11 Oct 2023 11:21:48 -0000
 
-From: Olaf Hering <olaf@aepfle.de>
+From: Cornelia Huck <cohuck@redhat.com>
 
-python3 may not be the expected python version.
-Use PYTHON to invoke python.
+The files in there are updated via update-linux-headers.sh.
 
-Fixes: 22e11539e1 ("edk2: replace build scripts")
-
-Signed-off-by: Olaf Hering <olaf@aepfle.de>
+Signed-off-by: Cornelia Huck <cohuck@redhat.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- roms/Makefile | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/roms/Makefile b/roms/Makefile
-index 6859685290..67f709ba2d 100644
---- a/roms/Makefile
-+++ b/roms/Makefile
-@@ -147,7 +147,7 @@ skiboot:
- 	cp skiboot/skiboot.lid ../pc-bios/skiboot.lid
+diff --git a/MAINTAINERS b/MAINTAINERS
+index de2ef5add3..6f947ffccb 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -562,6 +562,7 @@ M: Cornelia Huck <cohuck@redhat.com>
+ M: Paolo Bonzini <pbonzini@redhat.com>
+ S: Maintained
+ F: linux-headers/
++F: include/standard-headers/
+ F: scripts/update-linux-headers.sh
  
- efi:
--	python3 edk2-build.py --config edk2-build.config \
-+	$(PYTHON) edk2-build.py --config edk2-build.config \
- 		--version-override "edk2-stable202302-for-qemu" \
- 		--release-date "03/01/2023"
- 	rm -f ../pc-bios/edk2-*.fd.bz2
+ POSIX
 -- 
 2.39.2
 
