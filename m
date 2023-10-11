@@ -1,32 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qqXHD-0007TJ-UZ
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Oct 2023 07:21:19 -0400
+	id 1qqXHR-0007Xl-BO
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Oct 2023 07:21:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qqXH9-0007Ry-IK; Wed, 11 Oct 2023 07:21:15 -0400
+ id 1qqXHI-0007UW-6Q; Wed, 11 Oct 2023 07:21:25 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1qqXH6-0000jY-MT; Wed, 11 Oct 2023 07:21:15 -0400
+ id 1qqXHC-0000sD-1G; Wed, 11 Oct 2023 07:21:23 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 5AC7129672;
+ by isrv.corpit.ru (Postfix) with ESMTP id A879B29674;
  Wed, 11 Oct 2023 14:21:01 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id C0F1F2E6F8;
- Wed, 11 Oct 2023 14:20:55 +0300 (MSK)
-Received: (nullmailer pid 1032022 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 19CF62E6FA;
+ Wed, 11 Oct 2023 14:20:56 +0300 (MSK)
+Received: (nullmailer pid 1032028 invoked by uid 1000);
  Wed, 11 Oct 2023 11:20:55 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- qemu-stable@nongnu.org,
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 02/13] hw/rdma/vmw/pvrdma_cmd: Use correct struct in
- query_port()
-Date: Wed, 11 Oct 2023 14:20:43 +0300
-Message-Id: <20231011112054.1031975-3-mjt@tls.msk.ru>
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 04/13] MAINTAINERS: Add g364fb and ds1225y to the Jazz section
+Date: Wed, 11 Oct 2023 14:20:45 +0300
+Message-Id: <20231011112054.1031975-5-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231011112054.1031975-1-mjt@tls.msk.ru>
 References: <20231011112054.1031975-1-mjt@tls.msk.ru>
@@ -52,56 +50,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Oct 2023 11:21:18 -0000
+X-List-Received-Date: Wed, 11 Oct 2023 11:21:27 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
 
-In query_port() we pass the address of a local pvrdma_port_attr
-struct to the rdma_query_backend_port() function.  Unfortunately,
-rdma_backend_query_port() wants a pointer to a struct ibv_port_attr,
-and the two are not the same length.
+These devices are only used by the Jazz machine, so they
+should be listed in the corresponding section in MAINTAINERS.
 
-Coverity spotted this (CID 1507146): pvrdma_port_attr is 48 bytes
-long, and ibv_port_attr is 52 bytes, because it has a few extra
-fields at the end.
-
-Fortunately, all we do with the attrs struct after the call is to
-read a few specific fields out of it which are all at the same
-offsets in both structs, so we can simply make the local variable the
-correct type.  This also lets us drop the cast (which should have
-been a bit of a warning flag that we were doing something wrong
-here).
-
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Acked-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/rdma/vmw/pvrdma_cmd.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ MAINTAINERS | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/hw/rdma/vmw/pvrdma_cmd.c b/hw/rdma/vmw/pvrdma_cmd.c
-index c6ed025982..d31c187593 100644
---- a/hw/rdma/vmw/pvrdma_cmd.c
-+++ b/hw/rdma/vmw/pvrdma_cmd.c
-@@ -129,14 +129,13 @@ static int query_port(PVRDMADev *dev, union pvrdma_cmd_req *req,
- {
-     struct pvrdma_cmd_query_port *cmd = &req->query_port;
-     struct pvrdma_cmd_query_port_resp *resp = &rsp->query_port_resp;
--    struct pvrdma_port_attr attrs = {};
-+    struct ibv_port_attr attrs = {};
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 9e7dec4a58..93756ec21a 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1286,8 +1286,10 @@ M: Hervé Poussineau <hpoussin@reactos.org>
+ R: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+ S: Maintained
+ F: hw/mips/jazz.c
++F: hw/display/g364fb.c
+ F: hw/display/jazz_led.c
+ F: hw/dma/rc4030.c
++F: hw/nvram/ds1225y.c
  
-     if (cmd->port_num > MAX_PORTS) {
-         return -EINVAL;
-     }
- 
--    if (rdma_backend_query_port(&dev->backend_dev,
--                                (struct ibv_port_attr *)&attrs)) {
-+    if (rdma_backend_query_port(&dev->backend_dev, &attrs)) {
-         return -ENOMEM;
-     }
- 
+ Malta
+ M: Philippe Mathieu-Daudé <philmd@linaro.org>
 -- 
 2.39.2
 
