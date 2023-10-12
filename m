@@ -1,76 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qqn4I-0004CS-NP
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Oct 2023 00:13:02 -0400
+	id 1qqorY-0000jx-6e
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Oct 2023 02:08:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qqn4G-0003vP-FE
- for qemu-trivial@nongnu.org; Thu, 12 Oct 2023 00:13:00 -0400
-Received: from mail-lj1-x22f.google.com ([2a00:1450:4864:20::22f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qqn4E-0002b2-N3
- for qemu-trivial@nongnu.org; Thu, 12 Oct 2023 00:13:00 -0400
-Received: by mail-lj1-x22f.google.com with SMTP id
- 38308e7fff4ca-2bffd6c1460so6111741fa.3
- for <qemu-trivial@nongnu.org>; Wed, 11 Oct 2023 21:12:58 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697083976; x=1697688776; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=gNXd/6GPgJXQ92iTYms/9+W0zMbeXRjR7NXBD4ayeB0=;
- b=K6fe6ow1AKWsQRm6YVZbqWKAtXTIHSR0MEEQFYV9ByChg2TpkqT56xUE88530pIb5k
- RiMGkPPuXzwR+Cz5OjFsKDkJLxHtBLEMltrolD30YbqnLOrOyqGxRzMb/c8zo+FbDURV
- hioa5bTZvB7Jc7dCgHGaT2bjioyhNVINoGliWMqXb1Viuvn11K/AnyjM/lW70srOZ/v3
- PEobqahMfrKnGqcE+H714auUp565LEp8v6EtECMg0eRLIIVg54HoO29fpUCvpQCCuDfr
- pfUAVA2QBtZqA7HbTEJSnkxB26BCNSPkWxfXyvdB9iqPfeHEj55V8jfNC3zS5OMktTG7
- 37ug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697083976; x=1697688776;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=gNXd/6GPgJXQ92iTYms/9+W0zMbeXRjR7NXBD4ayeB0=;
- b=JfUlEJFriD/1qxq90trshCwiPyOiai87qwxROSCAmO2+tqhpA8qmOcYWVTSQONQfxr
- bdddqPbu+t8X2SL3ZQeE72uGQOSJJpQUrUPumPooJPvUlj08DYPQV/WQJ5MCcLcO8h06
- R/Kq1VA7car0QhngQBWsGH9oF4qSd5zYTFJHfJpkGyNucx6Ar6wLHACp3U26f6f8yxX8
- EFfxYfnO8opLTbnahuTHMe8aR0et+QeIPjAPhBYWfkYTiq+eXJ/HfLjIuyxaXOer8e6Q
- 1McuAwWCC4y+CfGyjhZhqmty/+Iniy8v5Z1t7WxxF0/ucIH1blBfNvkbZEgr91GPQUm9
- gPBQ==
-X-Gm-Message-State: AOJu0Yx8+Ks191iyHRCxmQjtxwze5ty0pb8v4RdGqmp1h08+sdE4AKln
- UP3ISWA1Yp5pJWbpGoDrKdDKmA==
-X-Google-Smtp-Source: AGHT+IEnTQLk81ojBci2sWeVbUkUe+v9iLPUQ9kh+/8FbKhmY3QRypfcbu3LKAb25honpNMi3WeKKw==
-X-Received: by 2002:a2e:b165:0:b0:2c0:23d3:daee with SMTP id
- a5-20020a2eb165000000b002c023d3daeemr20366292ljm.39.1697083976706; 
- Wed, 11 Oct 2023 21:12:56 -0700 (PDT)
-Received: from m1x-phil.lan (dcs23-h01-176-173-173-31.dsl.sta.abo.bbox.fr.
- [176.173.173.31]) by smtp.gmail.com with ESMTPSA id
- qb40-20020a1709077ea800b009b9af27d98csm9145791ejc.132.2023.10.11.21.12.55
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 11 Oct 2023 21:12:56 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 3/3] hw/pci-host/sh_pcic: Replace magic value by proper
- definition
-Date: Thu, 12 Oct 2023 06:12:37 +0200
-Message-ID: <20231012041237.22281-4-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20231012041237.22281-1-philmd@linaro.org>
-References: <20231012041237.22281-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qqorX-0000jd-47
+ for qemu-trivial@nongnu.org; Thu, 12 Oct 2023 02:07:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1qqorT-0002hM-Ug
+ for qemu-trivial@nongnu.org; Thu, 12 Oct 2023 02:07:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697090873;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=3bVYs7BK9TXgO9ZJ4R5RrkonOd6u4gbrSVUz8PDU1rY=;
+ b=bs9+/7yPxuZuX/V3/83ug8Caw3n25gZ0tVVg/2AzDAPPmmAteWCpWzpRbzXnXMn+KckQrq
+ ccIP+miin9S7zPZr633NxkEhaYtxsjmza0F+jtycQoCdPXalMGNp8T0+Y8bGNUNbN2IBdi
+ +9nKu0lLrmiHfpcZ5x9r4OqhztkLTSw=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-611-tuGMZITqPpmE8B6Ab6o0bw-1; Thu, 12 Oct 2023 02:07:42 -0400
+X-MC-Unique: tuGMZITqPpmE8B6Ab6o0bw-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B61A92815E2D;
+ Thu, 12 Oct 2023 06:07:41 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.25])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 94E8B492B0C;
+ Thu, 12 Oct 2023 06:07:41 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 506E721E6904; Thu, 12 Oct 2023 08:07:40 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org,  Xie Yongji <xieyongji@bytedance.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] libvduse: Fix compiler warning with -Wshadow=local
+References: <20231006120819.480792-1-thuth@redhat.com>
+Date: Thu, 12 Oct 2023 08:07:40 +0200
+In-Reply-To: <20231006120819.480792-1-thuth@redhat.com> (Thomas Huth's message
+ of "Fri, 6 Oct 2023 14:08:19 +0200")
+Message-ID: <87bkd4nzkj.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.2 (gnu/linux)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22f;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x22f.google.com
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,37 +69,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Oct 2023 04:13:01 -0000
+X-List-Received-Date: Thu, 12 Oct 2023 06:07:59 -0000
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/pci-host/sh_pci.c | 5 +++--
- 1 file changed, 3 insertions(+), 2 deletions(-)
+Thomas Huth <thuth@redhat.com> writes:
 
-diff --git a/hw/pci-host/sh_pci.c b/hw/pci-host/sh_pci.c
-index 580e273d96..4edebced5e 100644
---- a/hw/pci-host/sh_pci.c
-+++ b/hw/pci-host/sh_pci.c
-@@ -40,7 +40,7 @@ struct SHPCIState {
-     PCIHostState parent_obj;
- 
-     PCIDevice *dev;
--    qemu_irq irq[4];
-+    qemu_irq irq[PCI_NUM_PINS];
-     MemoryRegion memconfig_p4;
-     MemoryRegion memconfig_a7;
-     MemoryRegion isa;
-@@ -131,7 +131,8 @@ static void sh_pcic_host_realize(DeviceState *dev, Error **errp)
-                                      s->irq,
-                                      get_system_memory(),
-                                      get_system_io(),
--                                     PCI_DEVFN(0, 0), 4, TYPE_PCI_BUS);
-+                                     PCI_DEVFN(0, 0), PCI_NUM_PINS,
-+                                     TYPE_PCI_BUS);
-     memory_region_init_io(&s->memconfig_p4, OBJECT(s), &sh_pci_reg_ops, s,
-                           "sh_pci", 0x224);
-     memory_region_init_alias(&s->memconfig_a7, OBJECT(s), "sh_pci.2",
--- 
-2.41.0
+> No need to declare a new variable with the same name here,
+> we can simple re-use the one from the top of the function.
+> With this change, the file now compiles fine with -Wshadow=local.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Queued.  Thanks!
 
 
