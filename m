@@ -1,69 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qqn47-00036R-VD
-	for mharc-qemu-trivial@gnu.org; Thu, 12 Oct 2023 00:12:52 -0400
+	id 1qqn4D-0003Uo-GH
+	for mharc-qemu-trivial@gnu.org; Thu, 12 Oct 2023 00:12:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qqn47-00034I-21
- for qemu-trivial@nongnu.org; Thu, 12 Oct 2023 00:12:51 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qqn4B-0003LL-QF
+ for qemu-trivial@nongnu.org; Thu, 12 Oct 2023 00:12:55 -0400
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qqn44-0002Xz-CP
- for qemu-trivial@nongnu.org; Thu, 12 Oct 2023 00:12:50 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-53d82bea507so972310a12.2
- for <qemu-trivial@nongnu.org>; Wed, 11 Oct 2023 21:12:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qqn49-0002ZY-0J
+ for qemu-trivial@nongnu.org; Thu, 12 Oct 2023 00:12:55 -0400
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-9ad810be221so77337866b.2
+ for <qemu-trivial@nongnu.org>; Wed, 11 Oct 2023 21:12:52 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697083965; x=1697688765; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697083971; x=1697688771; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=lWNq3KWxwESBCknmH6aQ2YVg3r1DMh4fTWxmynlFDM0=;
- b=fGopAv3tLuaBWtx+fTKUYshtGF3yoVhkRKO0jtTy/3qiEag4PemWkozISdXwtBazIE
- 4+5izvh9p5it7YhZj6Pit8tj7gP+API7oVmpuJwg2BcF1XhzXVVTr4Bc9EgEu5yK74k/
- vIMz2n77abK8NOmFNb8t3GvvcIJdZ+PHdVAz+/GtwpYuuKGE8vvaHieIYYSvG2F/Zrgl
- 5U59mcLX77PEpOenX0T8qHwX8tfuFARgj940wKJst9J1oEz3I7EHjve/+ljMUgTosuti
- agWjGRlEAW28qQdUv352gLBQN9Lux3Q8noUYM32wF8un1/tTdz+zrGqsWcloCAHA91/T
- FfsQ==
+ bh=WsX2DG2aDbsRhbntpTTVvqExibrPowqSUQlphKlY4n0=;
+ b=w18JCYRji2rvQmiWW8GXzoT4EX2JpQZXD/Ya2nScLFnKDoO90sVXRLuW7ejKXW8sif
+ 4K+miP1lnsG4MhfZyKDL6KySm5rj85VPMZbU1qqHD10Hf42UCzLvepCVf9Qnaz51nuED
+ ht5FwxTh50tT53IzEiP30Ok6WP5/8bqCNI5NyubnbFOnkNZ9QS4n2ot8aMZ+JpZPVs5L
+ sTGmYC94j+dGlpn6oYLDm5Mi6ewLi9Zgx9cwgtkmNWCjiPN1DHzvwmSqOyq+YvFncyd1
+ 0lJGr/2gsSwgATQ3NvViUvD8PfywvNq846/1ONv9VSsEVtIOzu7j5GfI/zDuLovqrzXI
+ DoMA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697083965; x=1697688765;
+ d=1e100.net; s=20230601; t=1697083971; x=1697688771;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=lWNq3KWxwESBCknmH6aQ2YVg3r1DMh4fTWxmynlFDM0=;
- b=LmvIKac/MnL11BIRZRPT6iRWCU4rX/yFUxdQzfoZaKf2rs9cEw3i2dKe04kQzEN3Se
- LA/mV4tomhv2KsnhxN83iBxZgeq8ibV5TLwGAtSO6IF1FFRqrxwobKi/EzecYNvf+6yi
- jaWkwlVZRVBfe9ubjXhDhEDI5cCJmDJmZOOxX9rIsxV6Y22RtJbE29wDJJl3zlcNR5if
- ojtJEgYc/NTVvZYTOM4+Ni36kO0fKOJes1gI/RUT6SkYERNXGhs1tnD3WJn0yJRx/7vi
- Z2duiLHwkNfKzvJ07z4CwyNHYyPtr+CE8OEd4KPcSkyRYDC+qnsCgGucdBC4BcvMpjEM
- 5ZNQ==
-X-Gm-Message-State: AOJu0Yyg83yp/uZRbfZLCZCAC8av7cUl6jvYRqG3h0r5Z5tKHmb4/7rG
- NYWzUXeSu7nfw+j5YtdNW+v1cw==
-X-Google-Smtp-Source: AGHT+IG2tU0448ksjArII5Kd//1AaxL71l31OdHDqsc/O4s1tuUe0RAXZGIlgfCPotow0D8tvVhFCQ==
-X-Received: by 2002:a05:6402:351:b0:533:87c9:4a83 with SMTP id
- r17-20020a056402035100b0053387c94a83mr20694022edw.37.1697083965369; 
- Wed, 11 Oct 2023 21:12:45 -0700 (PDT)
+ bh=WsX2DG2aDbsRhbntpTTVvqExibrPowqSUQlphKlY4n0=;
+ b=hsOnJG+Z75m3Np3VXfTvBSlmvcOXAZFHftiVRpOHr2XrS2NeF4fYEy1GPAZP8hrK5/
+ OZMmmRnhl3sLzYcWeFDQGDypJ8Hv2B2S4U3rc8nbMp8RMVVOAUkOX0yoL4b26hAnh+Cj
+ 0nQdcdaFhWe3FVW9Vgsq1ti55+SEOPATfFwclDRO0cPIZhN/6T24txgZ3LjfL1Vh8vME
+ QDWsx/kH/xB9ho0GeuYlmHcvVWhJlaXuoaTUQwKtfwnTy7SyuHQOFs3UWMatB1jdjh0J
+ dqUGJLLWAi6QOuZO1y2msA2+SKHwabmH8NaRIAwSWwe+SH1w6uILBeN5W6Eo8wZVACuJ
+ 9pNw==
+X-Gm-Message-State: AOJu0YyG3Q5rZfl09qm+IepcdSiQFRwRGN4ZUTcOTbiOiLIhiPq/GTd+
+ Kmxt52h+giuguvp+XCixZ4SfSA==
+X-Google-Smtp-Source: AGHT+IF8e2OVr0AmyGOyd8lQzUViJIBoIXYUNY7eTdC8zOQVNVNsOdl8UEGD9MMlKxhTFm/YFKUFBg==
+X-Received: by 2002:a17:906:8a64:b0:9b3:120:f319 with SMTP id
+ hy4-20020a1709068a6400b009b30120f319mr19483428ejc.51.1697083971231; 
+ Wed, 11 Oct 2023 21:12:51 -0700 (PDT)
 Received: from m1x-phil.lan (dcs23-h01-176-173-173-31.dsl.sta.abo.bbox.fr.
  [176.173.173.31]) by smtp.gmail.com with ESMTPSA id
- dm9-20020a05640222c900b0053db1ca293asm1993649edb.19.2023.10.11.21.12.43
+ r14-20020a170906364e00b009b65a698c16sm10513833ejb.220.2023.10.11.21.12.50
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 11 Oct 2023 21:12:45 -0700 (PDT)
+ Wed, 11 Oct 2023 21:12:50 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Yoshinori Sato <ysato@users.sourceforge.jp>,
  Magnus Damm <magnus.damm@gmail.com>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/3] hw/pci-host/sh_pcic: Declare CPU QOM types using
- DEFINE_TYPES() macro
-Date: Thu, 12 Oct 2023 06:12:35 +0200
-Message-ID: <20231012041237.22281-2-philmd@linaro.org>
+Subject: [PATCH 2/3] hw/pci-host/sh_pcic: Correct PCI host / devfn#0 function
+ names
+Date: Thu, 12 Oct 2023 06:12:36 +0200
+Message-ID: <20231012041237.22281-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231012041237.22281-1-philmd@linaro.org>
 References: <20231012041237.22281-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -83,75 +83,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 12 Oct 2023 04:12:51 -0000
+X-List-Received-Date: Thu, 12 Oct 2023 04:12:56 -0000
 
-When multiple QOM types are registered in the same file,
-it is simpler to use the the DEFINE_TYPES() macro. In
-particular because type array declared with such macro
-are easier to review.
+Host bridge device and PCI function #0 are inverted.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/pci-host/sh_pci.c | 40 +++++++++++++++++-----------------------
- 1 file changed, 17 insertions(+), 23 deletions(-)
+ hw/pci-host/sh_pci.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
 diff --git a/hw/pci-host/sh_pci.c b/hw/pci-host/sh_pci.c
-index 77e7bbc65f..41aed48c85 100644
+index 41aed48c85..580e273d96 100644
 --- a/hw/pci-host/sh_pci.c
 +++ b/hw/pci-host/sh_pci.c
-@@ -167,17 +167,6 @@ static void sh_pci_host_class_init(ObjectClass *klass, void *data)
+@@ -116,7 +116,7 @@ static void sh_pci_set_irq(void *opaque, int irq_num, int level)
+     qemu_set_irq(pic[irq_num], level);
+ }
+ 
+-static void sh_pci_device_realize(DeviceState *dev, Error **errp)
++static void sh_pcic_host_realize(DeviceState *dev, Error **errp)
+ {
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+     SHPCIState *s = SH_PCI_HOST_BRIDGE(dev);
+@@ -145,19 +145,19 @@ static void sh_pci_device_realize(DeviceState *dev, Error **errp)
+     s->dev = pci_create_simple(phb->bus, PCI_DEVFN(0, 0), "sh_pci_host");
+ }
+ 
+-static void sh_pci_host_realize(PCIDevice *d, Error **errp)
++static void sh_pcic_pci_realize(PCIDevice *d, Error **errp)
+ {
+     pci_set_word(d->config + PCI_COMMAND, PCI_COMMAND_WAIT);
+     pci_set_word(d->config + PCI_STATUS, PCI_STATUS_CAP_LIST |
+                  PCI_STATUS_FAST_BACK | PCI_STATUS_DEVSEL_MEDIUM);
+ }
+ 
+-static void sh_pci_host_class_init(ObjectClass *klass, void *data)
++static void sh_pcic_pci_class_init(ObjectClass *klass, void *data)
+ {
+     PCIDeviceClass *k = PCI_DEVICE_CLASS(klass);
+     DeviceClass *dc = DEVICE_CLASS(klass);
+ 
+-    k->realize = sh_pci_host_realize;
++    k->realize = sh_pcic_pci_realize;
+     k->vendor_id = PCI_VENDOR_ID_HITACHI;
+     k->device_id = PCI_DEVICE_ID_HITACHI_SH7751R;
+     /*
+@@ -167,11 +167,11 @@ static void sh_pci_host_class_init(ObjectClass *klass, void *data)
      dc->user_creatable = false;
  }
  
--static const TypeInfo sh_pci_host_info = {
--    .name          = "sh_pci_host",
--    .parent        = TYPE_PCI_DEVICE,
--    .instance_size = sizeof(PCIDevice),
--    .class_init    = sh_pci_host_class_init,
--    .interfaces = (InterfaceInfo[]) {
--        { INTERFACE_CONVENTIONAL_PCI_DEVICE },
--        { },
--    },
--};
--
- static void sh_pci_device_class_init(ObjectClass *klass, void *data)
+-static void sh_pci_device_class_init(ObjectClass *klass, void *data)
++static void sh_pcic_host_class_init(ObjectClass *klass, void *data)
  {
      DeviceClass *dc = DEVICE_CLASS(klass);
-@@ -185,17 +174,22 @@ static void sh_pci_device_class_init(ObjectClass *klass, void *data)
-     dc->realize = sh_pci_device_realize;
+ 
+-    dc->realize = sh_pci_device_realize;
++    dc->realize = sh_pcic_host_realize;
  }
  
--static const TypeInfo sh_pci_device_info = {
--    .name          = TYPE_SH_PCI_HOST_BRIDGE,
--    .parent        = TYPE_PCI_HOST_BRIDGE,
--    .instance_size = sizeof(SHPCIState),
--    .class_init    = sh_pci_device_class_init,
-+static const TypeInfo sh_pcic_types[] = {
-+    {
-+        .name           = TYPE_SH_PCI_HOST_BRIDGE,
-+        .parent         = TYPE_PCI_HOST_BRIDGE,
-+        .instance_size  = sizeof(SHPCIState),
-+        .class_init     = sh_pci_device_class_init,
-+    }, {
-+        .name           = "sh_pci_host",
-+        .parent         = TYPE_PCI_DEVICE,
-+        .instance_size  = sizeof(PCIDevice),
-+        .class_init     = sh_pci_host_class_init,
-+        .interfaces = (InterfaceInfo[]) {
-+            { INTERFACE_CONVENTIONAL_PCI_DEVICE },
-+            { },
-+        },
-+    },
- };
- 
--static void sh_pci_register_types(void)
--{
--    type_register_static(&sh_pci_device_info);
--    type_register_static(&sh_pci_host_info);
--}
--
--type_init(sh_pci_register_types)
-+DEFINE_TYPES(sh_pcic_types)
+ static const TypeInfo sh_pcic_types[] = {
+@@ -179,12 +179,12 @@ static const TypeInfo sh_pcic_types[] = {
+         .name           = TYPE_SH_PCI_HOST_BRIDGE,
+         .parent         = TYPE_PCI_HOST_BRIDGE,
+         .instance_size  = sizeof(SHPCIState),
+-        .class_init     = sh_pci_device_class_init,
++        .class_init     = sh_pcic_host_class_init,
+     }, {
+         .name           = "sh_pci_host",
+         .parent         = TYPE_PCI_DEVICE,
+         .instance_size  = sizeof(PCIDevice),
+-        .class_init     = sh_pci_host_class_init,
++        .class_init     = sh_pcic_pci_class_init,
+         .interfaces = (InterfaceInfo[]) {
+             { INTERFACE_CONVENTIONAL_PCI_DEVICE },
+             { },
 -- 
 2.41.0
 
