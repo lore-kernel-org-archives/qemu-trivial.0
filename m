@@ -1,35 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qs1uv-0001If-U6
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Oct 2023 10:16:29 -0400
+	id 1qs31b-0000eu-AD
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Oct 2023 11:27:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1qs1uu-0001IH-9N; Sun, 15 Oct 2023 10:16:28 -0400
+ id 1qs31X-0000eS-F5; Sun, 15 Oct 2023 11:27:23 -0400
 Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1qs1us-0001X7-0L; Sun, 15 Oct 2023 10:16:28 -0400
+ id 1qs31U-0004J4-Ue; Sun, 15 Oct 2023 11:27:23 -0400
 Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id 604DB757253;
- Sun, 15 Oct 2023 16:15:18 +0200 (CEST)
+ by localhost (Postfix) with SMTP id CA715757256;
+ Sun, 15 Oct 2023 17:26:12 +0200 (CEST)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 219317456A7; Sun, 15 Oct 2023 16:15:17 +0200 (CEST)
+ id 928D87456A7; Sun, 15 Oct 2023 17:26:12 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 90B0F745681;
+ Sun, 15 Oct 2023 17:26:12 +0200 (CEST)
+Date: Sun, 15 Oct 2023 17:26:12 +0200 (CEST)
 From: BALATON Zoltan <balaton@eik.bme.hu>
-Subject: [PATCH v2] MAINTANERS: Split vt82c686 out of fuloong2e
-To: qemu-devel@nongnu.org,
-    qemu-trivial@nongnu.org
-Cc: philmd@linaro.org,
-    Jiaxun Yang <jiaxun.yang@flygoat.com>
-Message-Id: <20231015141517.219317456A7@zero.eik.bme.hu>
-Date: Sun, 15 Oct 2023 16:15:17 +0200 (CEST)
-X-Spam-Probability: 8%
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+cc: philmd@linaro.org, Jiaxun Yang <jiaxun.yang@flygoat.com>
+Subject: Re: [PATCH v2] MAINTANERS: Split vt82c686 out of fuloong2e
+In-Reply-To: <20231015141517.219317456A7@zero.eik.bme.hu>
+Message-ID: <decfface-8d49-99ae-4295-f051208e9735@eik.bme.hu>
+References: <20231015141517.219317456A7@zero.eik.bme.hu>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+X-Spam-Probability: 9%
 Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
  helo=zero.eik.bme.hu
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, PP_MIME_FAKE_ASCII_TEXT=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -42,53 +47,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Oct 2023 14:16:28 -0000
+X-List-Received-Date: Sun, 15 Oct 2023 15:27:24 -0000
 
-The VIA south bridgges are now mostly used by other machines not just
-fuloong2e so split off into a separate section and take maintanership.
+On Sun, 15 Oct 2023, BALATON Zoltan wrote:
+> The VIA south bridgges are now mostly used by other machines not just
 
-Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
----
-v2:
-- Rebase on master
-- Take Philippe's offer and accept maintaining it (I hope Philippe can
-  still help with review and pull requests)
+Noticed typo bridgges -> bridges, hopefully can be fixed when merging and 
+don't need another version for it.
 
- MAINTAINERS | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+Regards,
+BALATON Zoltan
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index ca405bc1bc..6b15de530c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1324,10 +1324,7 @@ M: Philippe Mathieu-Daudé <philmd@linaro.org>
- R: Jiaxun Yang <jiaxun.yang@flygoat.com>
- S: Odd Fixes
- F: hw/mips/fuloong2e.c
--F: hw/isa/vt82c686.c
- F: hw/pci-host/bonito.c
--F: hw/usb/vt82c686-uhci-pci.c
--F: include/hw/isa/vt82c686.h
- F: include/hw/pci-host/bonito.h
- F: tests/avocado/machine_mips_fuloong2e.py
- 
-@@ -2491,6 +2488,15 @@ S: Maintained
- F: hw/isa/piix4.c
- F: include/hw/southbridge/piix.h
- 
-+VIA South Bridges (VT82C686B, VT8231)
-+M: BALATON Zoltan <balaton@eik.bme.hu>
-+S: Maintained
-+R: Philippe Mathieu-Daudé <philmd@linaro.org>
-+R: Jiaxun Yang <jiaxun.yang@flygoat.com>
-+F: hw/isa/vt82c686.c
-+F: hw/usb/vt82c686-uhci-pci.c
-+F: include/hw/isa/vt82c686.h
-+
- Firmware configuration (fw_cfg)
- M: Philippe Mathieu-Daudé <philmd@linaro.org>
- R: Gerd Hoffmann <kraxel@redhat.com>
--- 
-2.30.9
-
+> fuloong2e so split off into a separate section and take maintanership.
+>
+> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+> ---
+> v2:
+> - Rebase on master
+> - Take Philippe's offer and accept maintaining it (I hope Philippe can
+>  still help with review and pull requests)
+>
+> MAINTAINERS | 12 +++++++++---
+> 1 file changed, 9 insertions(+), 3 deletions(-)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index ca405bc1bc..6b15de530c 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1324,10 +1324,7 @@ M: Philippe Mathieu-Daud?? <philmd@linaro.org>
+> R: Jiaxun Yang <jiaxun.yang@flygoat.com>
+> S: Odd Fixes
+> F: hw/mips/fuloong2e.c
+> -F: hw/isa/vt82c686.c
+> F: hw/pci-host/bonito.c
+> -F: hw/usb/vt82c686-uhci-pci.c
+> -F: include/hw/isa/vt82c686.h
+> F: include/hw/pci-host/bonito.h
+> F: tests/avocado/machine_mips_fuloong2e.py
+>
+> @@ -2491,6 +2488,15 @@ S: Maintained
+> F: hw/isa/piix4.c
+> F: include/hw/southbridge/piix.h
+>
+> +VIA South Bridges (VT82C686B, VT8231)
+> +M: BALATON Zoltan <balaton@eik.bme.hu>
+> +S: Maintained
+> +R: Philippe Mathieu-Daud?? <philmd@linaro.org>
+> +R: Jiaxun Yang <jiaxun.yang@flygoat.com>
+> +F: hw/isa/vt82c686.c
+> +F: hw/usb/vt82c686-uhci-pci.c
+> +F: include/hw/isa/vt82c686.h
+> +
+> Firmware configuration (fw_cfg)
+> M: Philippe Mathieu-Daud?? <philmd@linaro.org>
+> R: Gerd Hoffmann <kraxel@redhat.com>
+>
 
