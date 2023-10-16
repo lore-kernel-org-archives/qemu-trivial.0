@@ -1,39 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qs31b-0000eu-AD
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Oct 2023 11:27:27 -0400
+	id 1qsJjh-00051e-74
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2023 05:18:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1qs31X-0000eS-F5; Sun, 15 Oct 2023 11:27:23 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1qs31U-0004J4-Ue; Sun, 15 Oct 2023 11:27:23 -0400
-Received: from zero.eik.bme.hu (blah.eik.bme.hu [152.66.115.182])
- by localhost (Postfix) with SMTP id CA715757256;
- Sun, 15 Oct 2023 17:26:12 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 928D87456A7; Sun, 15 Oct 2023 17:26:12 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 90B0F745681;
- Sun, 15 Oct 2023 17:26:12 +0200 (CEST)
-Date: Sun, 15 Oct 2023 17:26:12 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-cc: philmd@linaro.org, Jiaxun Yang <jiaxun.yang@flygoat.com>
-Subject: Re: [PATCH v2] MAINTANERS: Split vt82c686 out of fuloong2e
-In-Reply-To: <20231015141517.219317456A7@zero.eik.bme.hu>
-Message-ID: <decfface-8d49-99ae-4295-f051208e9735@eik.bme.hu>
-References: <20231015141517.219317456A7@zero.eik.bme.hu>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsJjf-00050K-L7
+ for qemu-trivial@nongnu.org; Mon, 16 Oct 2023 05:18:03 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsJje-0006N6-1A
+ for qemu-trivial@nongnu.org; Mon, 16 Oct 2023 05:18:03 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-313e742a787so2554524f8f.1
+ for <qemu-trivial@nongnu.org>; Mon, 16 Oct 2023 02:18:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1697447880; x=1698052680; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=J8HBoxwSOZi2fwOpU7PzOzC4cbtiKQcsj4DLLMwgC3Q=;
+ b=Vmz+wPDSe3SKf4dCyV/BFN2Jv9xUwBcew63hkoxACtXZAYPPWvAEISfcIgwz+qaKUB
+ dpuhv7P31hkRCkYkVMqo+fkTX2HLCJF3BIVX7zCshG7aLKIdO9A2FjdkBijn3k1AZxnS
+ HkpKLguvi9Tx1iGk8GvUeLh9psgWHf5MyWKvjwA08L8/sC0Mz86K1bHi3B77YiiUulpX
+ ttkD4lDdjokoe/ibal6gnaMd0069Vetq12rVKaLlv/ODRDa8AiNr2gfMDX5n7OKlfOXl
+ l7fwZXXYcobcN8fJgQNdRszF9OlLWBIJvqg+Bi0BgweI45cK30yl9bWCpRTILtmG06Ou
+ 9qZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697447880; x=1698052680;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=J8HBoxwSOZi2fwOpU7PzOzC4cbtiKQcsj4DLLMwgC3Q=;
+ b=rod6naEty7rd+bGgRm9IQGbNJCLykT2kguvXYgR9eqs9WIKLhOetprDqLPLGK9EQ5t
+ hV1zeEdohBk77V3GuIcv4rso1OR/F99nJbVkaoChIh2Ru98JW1yqRtb/rUv7BFaRP+uY
+ viHaK1SFwVMwIZJ4nak2gZViuEf3ZpIJ+FWq5Ay8ce9eePYLdVdETh1nDr7L/3iUDrzX
+ gfBk1OS6D23S4rc4cEXS0V6aswWKVUSE2IZ0Ya9fPb+VT4gv2VqcnqJDVsVy3cxPdmcY
+ CkXn6J3wNqDEu+/OjoyRtbsSURpHwZKyqCHNgJKxfO8EABZuLL9ms+GH6ZC/wVZGXmq9
+ HBmg==
+X-Gm-Message-State: AOJu0Yw240ci5S1VpwZsIiJkd9hfYRNjk9lUFMrkMH2B8l8/fcpJyCo9
+ HRz23/wzlg1S2DcqTI0A33OqeRZI3Jpp3J81TqY=
+X-Google-Smtp-Source: AGHT+IGYq5OTKWzaumcL2JmwbMiHJEbe0pmucPJB0hu30X9ZN4XCNuR7IyPnpgkBCX+AsCzbNi0Tmw==
+X-Received: by 2002:a05:6000:1c16:b0:32d:846a:e987 with SMTP id
+ ba22-20020a0560001c1600b0032d846ae987mr5537672wrb.6.1697447880522; 
+ Mon, 16 Oct 2023 02:18:00 -0700 (PDT)
+Received: from [192.168.69.115]
+ (9r679-h01-176-171-216-136.dsl.sta.abo.bbox.fr. [176.171.216.136])
+ by smtp.gmail.com with ESMTPSA id
+ w4-20020a5d5444000000b0032da87e32e2sm4330991wrv.4.2023.10.16.02.17.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 16 Oct 2023 02:18:00 -0700 (PDT)
+Message-ID: <bdac37d1-cd6a-d2da-3aca-9a4a8e46254f@linaro.org>
+Date: Mon, 16 Oct 2023 11:17:58 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-X-Spam-Probability: 9%
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH v2] MAINTANERS: Split vt82c686 out of fuloong2e
+Content-Language: en-US
+To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>
+References: <20231015141517.219317456A7@zero.eik.bme.hu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20231015141517.219317456A7@zero.eik.bme.hu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -47,59 +84,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Oct 2023 15:27:24 -0000
+X-List-Received-Date: Mon, 16 Oct 2023 09:18:04 -0000
 
-On Sun, 15 Oct 2023, BALATON Zoltan wrote:
+On 15/10/23 16:15, BALATON Zoltan wrote:
 > The VIA south bridgges are now mostly used by other machines not just
-
-Noticed typo bridgges -> bridges, hopefully can be fixed when merging and 
-don't need another version for it.
-
-Regards,
-BALATON Zoltan
-
 > fuloong2e so split off into a separate section and take maintanership.
->
+> 
 > Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 > ---
-> v2:
-> - Rebase on master
-> - Take Philippe's offer and accept maintaining it (I hope Philippe can
->  still help with review and pull requests)
->
-> MAINTAINERS | 12 +++++++++---
-> 1 file changed, 9 insertions(+), 3 deletions(-)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index ca405bc1bc..6b15de530c 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1324,10 +1324,7 @@ M: Philippe Mathieu-Daud?? <philmd@linaro.org>
-> R: Jiaxun Yang <jiaxun.yang@flygoat.com>
-> S: Odd Fixes
-> F: hw/mips/fuloong2e.c
-> -F: hw/isa/vt82c686.c
-> F: hw/pci-host/bonito.c
-> -F: hw/usb/vt82c686-uhci-pci.c
-> -F: include/hw/isa/vt82c686.h
-> F: include/hw/pci-host/bonito.h
-> F: tests/avocado/machine_mips_fuloong2e.py
->
+
+
 > @@ -2491,6 +2488,15 @@ S: Maintained
-> F: hw/isa/piix4.c
-> F: include/hw/southbridge/piix.h
->
+>   F: hw/isa/piix4.c
+>   F: include/hw/southbridge/piix.h
+>   
 > +VIA South Bridges (VT82C686B, VT8231)
 > +M: BALATON Zoltan <balaton@eik.bme.hu>
 > +S: Maintained
-> +R: Philippe Mathieu-Daud?? <philmd@linaro.org>
-> +R: Jiaxun Yang <jiaxun.yang@flygoat.com>
-> +F: hw/isa/vt82c686.c
-> +F: hw/usb/vt82c686-uhci-pci.c
-> +F: include/hw/isa/vt82c686.h
-> +
-> Firmware configuration (fw_cfg)
-> M: Philippe Mathieu-Daud?? <philmd@linaro.org>
-> R: Gerd Hoffmann <kraxel@redhat.com>
->
+> +R: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+Thanks, queued to mips-next, keeping a 'M:' tag here
+and fixing typos in subject / bridge.
 
