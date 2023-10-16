@@ -1,70 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qsJjh-00051e-74
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2023 05:18:05 -0400
+	id 1qsK9f-0006P2-DA
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2023 05:44:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsJjf-00050K-L7
- for qemu-trivial@nongnu.org; Mon, 16 Oct 2023 05:18:03 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsK9c-0006O6-IO
+ for qemu-trivial@nongnu.org; Mon, 16 Oct 2023 05:44:52 -0400
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsJje-0006N6-1A
- for qemu-trivial@nongnu.org; Mon, 16 Oct 2023 05:18:03 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-313e742a787so2554524f8f.1
- for <qemu-trivial@nongnu.org>; Mon, 16 Oct 2023 02:18:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsK9a-0003Ct-Dm
+ for qemu-trivial@nongnu.org; Mon, 16 Oct 2023 05:44:52 -0400
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-53e3e7e478bso4555766a12.0
+ for <qemu-trivial@nongnu.org>; Mon, 16 Oct 2023 02:44:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697447880; x=1698052680; darn=nongnu.org;
+ d=linaro.org; s=google; t=1697449488; x=1698054288; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=J8HBoxwSOZi2fwOpU7PzOzC4cbtiKQcsj4DLLMwgC3Q=;
- b=Vmz+wPDSe3SKf4dCyV/BFN2Jv9xUwBcew63hkoxACtXZAYPPWvAEISfcIgwz+qaKUB
- dpuhv7P31hkRCkYkVMqo+fkTX2HLCJF3BIVX7zCshG7aLKIdO9A2FjdkBijn3k1AZxnS
- HkpKLguvi9Tx1iGk8GvUeLh9psgWHf5MyWKvjwA08L8/sC0Mz86K1bHi3B77YiiUulpX
- ttkD4lDdjokoe/ibal6gnaMd0069Vetq12rVKaLlv/ODRDa8AiNr2gfMDX5n7OKlfOXl
- l7fwZXXYcobcN8fJgQNdRszF9OlLWBIJvqg+Bi0BgweI45cK30yl9bWCpRTILtmG06Ou
- 9qZw==
+ bh=Q6S2J0/OfQ9p9QV/tzIWrKCsuDsPgQkjMi3/xa90208=;
+ b=ouJEl02M8p4mQs+eZWGIqO4sT+fM3yAZbLlM57b9BzExbblqf18SHO5wRhEx9m2L2j
+ Wrda90zdU12tqml9bzg/J8SR7hW+hg5R+pf0l2naS7vH+W9+DsSCfkpp+vfLY+Ps4731
+ A7RvH2WGdgc6T7yXnWngmQZ9B/x7n7OkHTsAXFmQxGS9ASnGPPKTMBnWhtlSO+fzkS2H
+ DaEXvHpJ8ixYeD8C5SoymsRqGmsBvnOb2o66ovrPkO3fdYV9AxgMdXbaHk2cNrmrnk2b
+ +grKR3+DxtZNR80/H7yoTHl3Qby9Rjz0k+9GlJX7VPM0thTTUxdjQl8ZAMtuvFrvUul2
+ ZISA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697447880; x=1698052680;
+ d=1e100.net; s=20230601; t=1697449488; x=1698054288;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=J8HBoxwSOZi2fwOpU7PzOzC4cbtiKQcsj4DLLMwgC3Q=;
- b=rod6naEty7rd+bGgRm9IQGbNJCLykT2kguvXYgR9eqs9WIKLhOetprDqLPLGK9EQ5t
- hV1zeEdohBk77V3GuIcv4rso1OR/F99nJbVkaoChIh2Ru98JW1yqRtb/rUv7BFaRP+uY
- viHaK1SFwVMwIZJ4nak2gZViuEf3ZpIJ+FWq5Ay8ce9eePYLdVdETh1nDr7L/3iUDrzX
- gfBk1OS6D23S4rc4cEXS0V6aswWKVUSE2IZ0Ya9fPb+VT4gv2VqcnqJDVsVy3cxPdmcY
- CkXn6J3wNqDEu+/OjoyRtbsSURpHwZKyqCHNgJKxfO8EABZuLL9ms+GH6ZC/wVZGXmq9
- HBmg==
-X-Gm-Message-State: AOJu0Yw240ci5S1VpwZsIiJkd9hfYRNjk9lUFMrkMH2B8l8/fcpJyCo9
- HRz23/wzlg1S2DcqTI0A33OqeRZI3Jpp3J81TqY=
-X-Google-Smtp-Source: AGHT+IGYq5OTKWzaumcL2JmwbMiHJEbe0pmucPJB0hu30X9ZN4XCNuR7IyPnpgkBCX+AsCzbNi0Tmw==
-X-Received: by 2002:a05:6000:1c16:b0:32d:846a:e987 with SMTP id
- ba22-20020a0560001c1600b0032d846ae987mr5537672wrb.6.1697447880522; 
- Mon, 16 Oct 2023 02:18:00 -0700 (PDT)
+ bh=Q6S2J0/OfQ9p9QV/tzIWrKCsuDsPgQkjMi3/xa90208=;
+ b=juGZUeQVZuDz4+FYb1JYKO+iP53YtGDWH88BvBaUPAa7rdOdSNMFjcs1xyACScQw2f
+ czAIWfIb1OHSLkISgcPGHTPOCXitho8Bu1MpCIeQ4q0zNP8Vp6IJNx32DfQXhrGWsU5F
+ dLLAWXOU8OWsBzSr3yCwdde4/t9iS5YGV7iH0O6XDQmQZ/DPn6sIhIKBkFuVBYtMxUZg
+ Eb637kNlf9WCRjGa/e5swaaOCqsOWCBInSkflIU/XU6WWB50L7FJVzonfNxzSju3lqAa
+ d5Mzdx/kagRZzJneZMn6UR2zc/g3amV/5lm6MAqLyoKCSIg1pfwdlHGA5mnww898xOtm
+ ggRQ==
+X-Gm-Message-State: AOJu0Yzpf+2KKt6VYqvu3/E6SBLiCLI2k33FSieNSbe1veBsheEoFyq8
+ uosOEiY7a64slC1CXZTCAwPWV7tu/B6svkm25hI=
+X-Google-Smtp-Source: AGHT+IHcJPaE2MKgUFA9f2WK9pCxLurHRbJCkO0ucoc6pIWwiT/Ger+ImueFb7j2ixvd4+E5mlq0jQ==
+X-Received: by 2002:a17:907:7fa5:b0:9be:6ff7:128a with SMTP id
+ qk37-20020a1709077fa500b009be6ff7128amr5456761ejc.67.1697449488683; 
+ Mon, 16 Oct 2023 02:44:48 -0700 (PDT)
 Received: from [192.168.69.115]
  (9r679-h01-176-171-216-136.dsl.sta.abo.bbox.fr. [176.171.216.136])
  by smtp.gmail.com with ESMTPSA id
- w4-20020a5d5444000000b0032da87e32e2sm4330991wrv.4.2023.10.16.02.17.59
+ l11-20020a170906230b00b009adc7733f98sm3726197eja.97.2023.10.16.02.44.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Oct 2023 02:18:00 -0700 (PDT)
-Message-ID: <bdac37d1-cd6a-d2da-3aca-9a4a8e46254f@linaro.org>
-Date: Mon, 16 Oct 2023 11:17:58 +0200
+ Mon, 16 Oct 2023 02:44:48 -0700 (PDT)
+Message-ID: <60b9129b-9c7c-a4b5-6ff6-8de11388d376@linaro.org>
+Date: Mon, 16 Oct 2023 11:44:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
  Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH v2] MAINTANERS: Split vt82c686 out of fuloong2e
+Subject: Re: [PATCH 0/3] hw/pci-host/sh_pcic: Style cleanup
 Content-Language: en-US
-To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>
-References: <20231015141517.219317456A7@zero.eik.bme.hu>
+To: qemu-devel@nongnu.org
+Cc: Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>, qemu-trivial@nongnu.org
+References: <20231012041237.22281-1-philmd@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231015141517.219317456A7@zero.eik.bme.hu>
+In-Reply-To: <20231012041237.22281-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -53
 X-Spam_score: -5.4
 X-Spam_bar: -----
@@ -84,25 +84,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Oct 2023 09:18:04 -0000
+X-List-Received-Date: Mon, 16 Oct 2023 09:44:52 -0000
 
-On 15/10/23 16:15, BALATON Zoltan wrote:
-> The VIA south bridgges are now mostly used by other machines not just
-> fuloong2e so split off into a separate section and take maintanership.
-> 
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> ---
+On 12/10/23 06:12, Philippe Mathieu-Daudé wrote:
 
+> Philippe Mathieu-Daudé (3):
+>    hw/pci-host/sh_pcic: Declare CPU QOM types using DEFINE_TYPES() macro
+>    hw/pci-host/sh_pcic: Correct PCI host / devfn#0 function names
+>    hw/pci-host/sh_pcic: Replace magic value by proper definition
 
-> @@ -2491,6 +2488,15 @@ S: Maintained
->   F: hw/isa/piix4.c
->   F: include/hw/southbridge/piix.h
->   
-> +VIA South Bridges (VT82C686B, VT8231)
-> +M: BALATON Zoltan <balaton@eik.bme.hu>
-> +S: Maintained
-> +R: Philippe Mathieu-Daudé <philmd@linaro.org>
+Series queued, thanks.
 
-Thanks, queued to mips-next, keeping a 'M:' tag here
-and fixing typos in subject / bridge.
 
