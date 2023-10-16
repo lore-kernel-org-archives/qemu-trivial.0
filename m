@@ -1,77 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qsK9f-0006P2-DA
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2023 05:44:56 -0400
+	id 1qsKE9-0000o5-Ut
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Oct 2023 05:49:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsK9c-0006O6-IO
- for qemu-trivial@nongnu.org; Mon, 16 Oct 2023 05:44:52 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsK9a-0003Ct-Dm
- for qemu-trivial@nongnu.org; Mon, 16 Oct 2023 05:44:52 -0400
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-53e3e7e478bso4555766a12.0
- for <qemu-trivial@nongnu.org>; Mon, 16 Oct 2023 02:44:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697449488; x=1698054288; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Q6S2J0/OfQ9p9QV/tzIWrKCsuDsPgQkjMi3/xa90208=;
- b=ouJEl02M8p4mQs+eZWGIqO4sT+fM3yAZbLlM57b9BzExbblqf18SHO5wRhEx9m2L2j
- Wrda90zdU12tqml9bzg/J8SR7hW+hg5R+pf0l2naS7vH+W9+DsSCfkpp+vfLY+Ps4731
- A7RvH2WGdgc6T7yXnWngmQZ9B/x7n7OkHTsAXFmQxGS9ASnGPPKTMBnWhtlSO+fzkS2H
- DaEXvHpJ8ixYeD8C5SoymsRqGmsBvnOb2o66ovrPkO3fdYV9AxgMdXbaHk2cNrmrnk2b
- +grKR3+DxtZNR80/H7yoTHl3Qby9Rjz0k+9GlJX7VPM0thTTUxdjQl8ZAMtuvFrvUul2
- ZISA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697449488; x=1698054288;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Q6S2J0/OfQ9p9QV/tzIWrKCsuDsPgQkjMi3/xa90208=;
- b=juGZUeQVZuDz4+FYb1JYKO+iP53YtGDWH88BvBaUPAa7rdOdSNMFjcs1xyACScQw2f
- czAIWfIb1OHSLkISgcPGHTPOCXitho8Bu1MpCIeQ4q0zNP8Vp6IJNx32DfQXhrGWsU5F
- dLLAWXOU8OWsBzSr3yCwdde4/t9iS5YGV7iH0O6XDQmQZ/DPn6sIhIKBkFuVBYtMxUZg
- Eb637kNlf9WCRjGa/e5swaaOCqsOWCBInSkflIU/XU6WWB50L7FJVzonfNxzSju3lqAa
- d5Mzdx/kagRZzJneZMn6UR2zc/g3amV/5lm6MAqLyoKCSIg1pfwdlHGA5mnww898xOtm
- ggRQ==
-X-Gm-Message-State: AOJu0Yzpf+2KKt6VYqvu3/E6SBLiCLI2k33FSieNSbe1veBsheEoFyq8
- uosOEiY7a64slC1CXZTCAwPWV7tu/B6svkm25hI=
-X-Google-Smtp-Source: AGHT+IHcJPaE2MKgUFA9f2WK9pCxLurHRbJCkO0ucoc6pIWwiT/Ger+ImueFb7j2ixvd4+E5mlq0jQ==
-X-Received: by 2002:a17:907:7fa5:b0:9be:6ff7:128a with SMTP id
- qk37-20020a1709077fa500b009be6ff7128amr5456761ejc.67.1697449488683; 
- Mon, 16 Oct 2023 02:44:48 -0700 (PDT)
-Received: from [192.168.69.115]
- (9r679-h01-176-171-216-136.dsl.sta.abo.bbox.fr. [176.171.216.136])
- by smtp.gmail.com with ESMTPSA id
- l11-20020a170906230b00b009adc7733f98sm3726197eja.97.2023.10.16.02.44.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 16 Oct 2023 02:44:48 -0700 (PDT)
-Message-ID: <60b9129b-9c7c-a4b5-6ff6-8de11388d376@linaro.org>
-Date: Mon, 16 Oct 2023 11:44:46 +0200
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qsKE3-0000nG-BW
+ for qemu-trivial@nongnu.org; Mon, 16 Oct 2023 05:49:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qsKDz-0004Cw-0x
+ for qemu-trivial@nongnu.org; Mon, 16 Oct 2023 05:49:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697449762;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=X0933dFTmbrGRTptfCDLL34scvp6vuokXl4Hzz7r8W8=;
+ b=Ct25iF6tiKhr4a95+b5BWJyS8pR/Cm1Wi0jAyLiOOak3MA9QaIrsAnDSfHNaoEhWMz2+M9
+ prvQnEEt6HRqPGSCz0xZksci/YMCORSI/33QWCw9IQc2Z/pr77vY4V12MhobTcmtuyCY2K
+ 9wLdOlRaya8xTkW4ukM1WY9ZLP5dEy8=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-214-k68GJjoAP5aJcjuRHljpKw-1; Mon, 16 Oct 2023 05:49:20 -0400
+X-MC-Unique: k68GJjoAP5aJcjuRHljpKw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C235D85A5A8;
+ Mon, 16 Oct 2023 09:49:19 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.134])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id B083020296DB;
+ Mon, 16 Oct 2023 09:49:18 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-trivial@nongnu.org, Akihiko Odaki <akihiko.odaki@daynix.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH] scripts: Mark feature_to_c.py as non-executable to fix a
+ build issue
+Date: Mon, 16 Oct 2023 11:49:17 +0200
+Message-ID: <20231016094917.19044-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH 0/3] hw/pci-host/sh_pcic: Style cleanup
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>, qemu-trivial@nongnu.org
-References: <20231012041237.22281-1-philmd@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231012041237.22281-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x532.google.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,15 +65,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Oct 2023 09:44:52 -0000
+X-List-Received-Date: Mon, 16 Oct 2023 09:49:31 -0000
 
-On 12/10/23 06:12, Philippe Mathieu-Daudé wrote:
+Meson tries to run scripts via the shebang line if they files are
+marked as executable. If "python3" is not in the $PATH, or if it
+is a version that is too old, then the script execution fails.
+We should make sure to run scripts via the python3 interpreter
+that is used for Meson itself. For this, the files need to be marked
+as non-executable, then meson will use the python3 binary that has
+been used to run itself.
 
-> Philippe Mathieu-Daudé (3):
->    hw/pci-host/sh_pcic: Declare CPU QOM types using DEFINE_TYPES() macro
->    hw/pci-host/sh_pcic: Correct PCI host / devfn#0 function names
->    hw/pci-host/sh_pcic: Replace magic value by proper definition
+Fixes: 956af7daad ("gdbstub: Introduce GDBFeature structure")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ scripts/feature_to_c.py | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ mode change 100755 => 100644 scripts/feature_to_c.py
 
-Series queued, thanks.
+diff --git a/scripts/feature_to_c.py b/scripts/feature_to_c.py
+old mode 100755
+new mode 100644
+-- 
+2.41.0
 
 
