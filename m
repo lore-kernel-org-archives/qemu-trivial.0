@@ -1,57 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qsmDb-0002VZ-2m
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2023 11:42:51 -0400
+	id 1qsqc5-0006i4-7h
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2023 16:24:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qsmDZ-0002Tw-1C
- for qemu-trivial@nongnu.org; Tue, 17 Oct 2023 11:42:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1qsqc1-0006hU-VS; Tue, 17 Oct 2023 16:24:22 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qsmDX-0001i0-I2
- for qemu-trivial@nongnu.org; Tue, 17 Oct 2023 11:42:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1697557366;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=PeBNEg8nEJJb5i3FS1x/XYZ2iBeeWgNN3h8iLXdJvbQ=;
- b=BDL5R99P5sBvkHd5TrkwBIfB/wqtMTvK3o3vuJtrSRt2bqIrudZlaHG/J2Am132Dhia3YQ
- FIXy9exh/yiKQuWlAbRfubBerCm6H6+CofqDcLzXyWGnAwyi8WWlKsiE38EeE7QPmfwb5P
- kRmfh7iMLvKq0bPDYyEge0fnhHJtB28=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- us-mta-489-JJgY6wpsPZ6jmGx0Tdz7dA-1; Tue, 17 Oct 2023 11:42:44 -0400
-X-MC-Unique: JJgY6wpsPZ6jmGx0Tdz7dA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 746D2805B3E;
- Tue, 17 Oct 2023 15:42:44 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.155])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 8A4212026D6F;
- Tue, 17 Oct 2023 15:42:43 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Stafford Horne <shorne@gmail.com>
-Cc: qemu-trivial@nongnu.org,
-	Jia Liu <proljc@gmail.com>
-Subject: [PATCH] MAINTAINERS: Add include/hw/openrisc/ to the OpenRISC section
-Date: Tue, 17 Oct 2023 17:42:42 +0200
-Message-ID: <20231017154242.234133-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1qsqc0-00007x-Iw; Tue, 17 Oct 2023 16:24:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=suJBhlisOFA7AfQ0f3aNlSDaxHQ24RZK6lGB7WjVQTE=; b=m4AzUw4SirYnJ1Cd2wNSa/wQRG
+ n0KhclPAv+HzG+9pBpMy9QVThtUAxdHmUYlI/2ogHxO5pXnjUtmcFVNDj2YLW1/udnx3FiaSNHaS0
+ 8xeiQY9bxfL0tC4sr5L1gTM6YjGVXC0bSz2/6SP/l2cWqgfwYr4ny4nKfrwEGsaLgMlnl72rm8CKd
+ 803k9SRHW74NfsWEHg8GkM7JmQ16tRYAvN/JIBLOftQcx74C1JeDHEa/S/2Au9LybEv8EQnOZ1lAB
+ Ux3CDKC3Fj1BquG5yZkQmb/awRHRqy1Alz273mgG0zcvNsqYo7YbVInpuEhp2aw9JWAfXhuBqwrjO
+ TmF9nObikLgSwVXqIt1g9c9TEj23mQYfYRcQdBHIO8NUD73X8EQoJF28OXBKg6At2KPgBtBC2Ah2/
+ Lb8bZk0kVsgPmL5d2+INEVB+FDT8B2FZCyGTpGpCpNk/K0pNrnk5Yi3AWsEcU5iiAYCto7q2bQAfD
+ IsZxlIqsz4UfAmhhW35uWOPFifpZ+QtOAIkGTDWJnveVRAgT1bsPeQxmochM5iUgPgaL8H1Ol8HXw
+ i/8cphXaH6GvOHzwIuYc5yMVLI3WLUE8CWrfA6WJ2V4VYEKbWobkW8ddSTAYOs9SIkdXxd8ZbLcUd
+ afAEFsWg2rP70jjQZvGnsnT6yrElfLIV7SBWU1j9g=;
+Received: from [2a00:23c4:8bb0:3200:407d:a65c:9fb4:b9b4]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1qsqbr-0001qX-FH; Tue, 17 Oct 2023 21:24:15 +0100
+Message-ID: <edfb2af1-aacc-4549-aff9-bd08a85b12fe@ilande.co.uk>
+Date: Tue, 17 Oct 2023 21:24:13 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>
+Cc: qemu-trivial@nongnu.org
+References: <20231017151933.213780-1-thuth@redhat.com>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+In-Reply-To: <20231017151933.213780-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 2a00:23c4:8bb0:3200:407d:a65c:9fb4:b9b4
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH] MAINTAINERS: Add hw/input/lasips2.c to the HPPA machine
+ section
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,29 +92,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Oct 2023 15:42:49 -0000
+X-List-Received-Date: Tue, 17 Oct 2023 20:24:23 -0000
 
-hw/openrisc/ is already listed here, so we should mention
-the folder for the headers here, too.
+On 17/10/2023 16:19, Thomas Huth wrote:
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+> hw/input/lasips2.c and the corresponding header include/hw/input/lasips2.h
+> are only used by the HPPA machine, so add them to the corresponding section
+> in the MAINTAINERS file.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   MAINTAINERS | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index b0416d473e..a0ad23b9b5 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1199,9 +1199,11 @@ R: Helge Deller <deller@gmx.de>
+>   S: Odd Fixes
+>   F: configs/devices/hppa-softmmu/default.mak
+>   F: hw/hppa/
+> +F: hw/input/lasips2.c
+>   F: hw/net/*i82596*
+>   F: hw/misc/lasi.c
+>   F: hw/pci-host/dino.c
+> +F: include/hw/input/lasips2.h
+>   F: include/hw/misc/lasi.h
+>   F: include/hw/net/lasi_82596.h
+>   F: include/hw/pci-host/dino.h
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d9767b80f7..60cec3f701 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -309,6 +309,7 @@ S: Odd Fixes
- F: docs/system/openrisc/cpu-features.rst
- F: target/openrisc/
- F: hw/openrisc/
-+F: include/hw/openrisc/
- F: tests/tcg/openrisc/
- 
- PowerPC TCG CPUs
--- 
-2.41.0
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+
+
+ATB,
+
+Mark.
 
 
