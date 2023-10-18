@@ -1,85 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qsqc5-0006i4-7h
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Oct 2023 16:24:26 -0400
+	id 1qsyk1-0001io-81
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Oct 2023 01:05:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1qsqc1-0006hU-VS; Tue, 17 Oct 2023 16:24:22 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1qsqc0-00007x-Iw; Tue, 17 Oct 2023 16:24:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=suJBhlisOFA7AfQ0f3aNlSDaxHQ24RZK6lGB7WjVQTE=; b=m4AzUw4SirYnJ1Cd2wNSa/wQRG
- n0KhclPAv+HzG+9pBpMy9QVThtUAxdHmUYlI/2ogHxO5pXnjUtmcFVNDj2YLW1/udnx3FiaSNHaS0
- 8xeiQY9bxfL0tC4sr5L1gTM6YjGVXC0bSz2/6SP/l2cWqgfwYr4ny4nKfrwEGsaLgMlnl72rm8CKd
- 803k9SRHW74NfsWEHg8GkM7JmQ16tRYAvN/JIBLOftQcx74C1JeDHEa/S/2Au9LybEv8EQnOZ1lAB
- Ux3CDKC3Fj1BquG5yZkQmb/awRHRqy1Alz273mgG0zcvNsqYo7YbVInpuEhp2aw9JWAfXhuBqwrjO
- TmF9nObikLgSwVXqIt1g9c9TEj23mQYfYRcQdBHIO8NUD73X8EQoJF28OXBKg6At2KPgBtBC2Ah2/
- Lb8bZk0kVsgPmL5d2+INEVB+FDT8B2FZCyGTpGpCpNk/K0pNrnk5Yi3AWsEcU5iiAYCto7q2bQAfD
- IsZxlIqsz4UfAmhhW35uWOPFifpZ+QtOAIkGTDWJnveVRAgT1bsPeQxmochM5iUgPgaL8H1Ol8HXw
- i/8cphXaH6GvOHzwIuYc5yMVLI3WLUE8CWrfA6WJ2V4VYEKbWobkW8ddSTAYOs9SIkdXxd8ZbLcUd
- afAEFsWg2rP70jjQZvGnsnT6yrElfLIV7SBWU1j9g=;
-Received: from [2a00:23c4:8bb0:3200:407d:a65c:9fb4:b9b4]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1qsqbr-0001qX-FH; Tue, 17 Oct 2023 21:24:15 +0100
-Message-ID: <edfb2af1-aacc-4549-aff9-bd08a85b12fe@ilande.co.uk>
-Date: Tue, 17 Oct 2023 21:24:13 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsyk0-0001iY-0g
+ for qemu-trivial@nongnu.org; Wed, 18 Oct 2023 01:05:08 -0400
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qsyjv-0003cK-4s
+ for qemu-trivial@nongnu.org; Wed, 18 Oct 2023 01:05:07 -0400
+Received: by mail-lj1-x229.google.com with SMTP id
+ 38308e7fff4ca-2bfed7c4e6dso82637691fa.1
+ for <qemu-trivial@nongnu.org>; Tue, 17 Oct 2023 22:05:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1697605501; x=1698210301; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=K8H5PuQQvXrI1d+CuEbwAz8D/VlFoQM02yrWlgI0Rh8=;
+ b=S2yrDvSPSRoVwnsAAgnmOlFo7OZPWr1bB8kd7ShJCgkA+OoSbRcPsU/7BrsVKMwlLM
+ YdJkAvmSl3YHgz7kOM/iSl0jdMJMRZvwv6zy/bLDDRw5jQivuSGZTCRsHwZJYpkmJboD
+ Sq4Awn3wRgVqb8X4Fum+X/EDSeXZ/Z9OR44hr+iHLeS5UeRnzAs8rmS9lsPgfDf07AcJ
+ sU9EYswODk6Eai8yn2Qba0ivnBt1rBdkCosH3AFVxiEfrx9uBsVpwJ4PnyK0w6q8QM5E
+ UkJfhrw9Uv6SOEmexyBBGxDDCyXpTsuyE88MG3gdyCKc1/RoDIUqkN87VbPiVDSoV+sO
+ FiQQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1697605501; x=1698210301;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=K8H5PuQQvXrI1d+CuEbwAz8D/VlFoQM02yrWlgI0Rh8=;
+ b=pVDi0PrgVCnC/by4p+Y1iK1ceANAyjefo1ZBl1bzAMCWo1ZWeHmiv9pdcEdtpR+/oz
+ pjshEHx4YgAd7pFKhbE0LK2ZvdCSDe/DqaSsQWtLzBAYaEZ1viibg3e6WbYUKaZlOnb+
+ 0+fm+dlHCoeynkNGdspo75JpVZHrAlDVA3PavDpODq2JgT4Vp9e9ZA13C8SBpX5cI870
+ 7CPrzoUZJ/6QZdplQk2VBK6yXGw7H/g1r53Zo+bh6TrQ6NccOcqbfI3sNewDrs/to5Dj
+ T3xPpiqCb+GxIB+P3Qc7sGasKiz+6IqUFmXOQ5lGPJjuiG+LoFBWqGqtQ3TwAA9EwnEw
+ oOdg==
+X-Gm-Message-State: AOJu0YwxL+JUevKSuZwA73KLdiegmx6Mmojzjgk6SbY3VFyX94V5maoc
+ BkDaY0ynEW5V6B88k8alVE8gotKEu+f6ECZMELeF3A==
+X-Google-Smtp-Source: AGHT+IHuDu3zZKriGPd2n39pFM07GZWqhAFoZ9DIBU27CdFCvAAHtUht7nAnucJ80fKEeVmFKHY7Mw==
+X-Received: by 2002:a2e:9c51:0:b0:2c5:1bd3:5658 with SMTP id
+ t17-20020a2e9c51000000b002c51bd35658mr2814228ljj.28.1697605500868; 
+ Tue, 17 Oct 2023 22:05:00 -0700 (PDT)
+Received: from [192.168.69.115] ([176.172.118.33])
+ by smtp.gmail.com with ESMTPSA id
+ r9-20020a05600c320900b004083bc9ac90sm621641wmp.24.2023.10.17.22.04.59
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 17 Oct 2023 22:05:00 -0700 (PDT)
+Message-ID: <9f310f21-2d8d-91f9-bb25-486fc5e943b5@linaro.org>
+Date: Wed, 18 Oct 2023 07:04:58 +0200
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH] MAINTAINERS: Add hw/input/lasips2.c to the HPPA machine
+ section
 Content-Language: en-US
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>
 Cc: qemu-trivial@nongnu.org
 References: <20231017151933.213780-1-thuth@redhat.com>
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
- eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
 In-Reply-To: <20231017151933.213780-1-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-SA-Exim-Connect-IP: 2a00:23c4:8bb0:3200:407d:a65c:9fb4:b9b4
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH] MAINTAINERS: Add hw/input/lasips2.c to the HPPA machine
- section
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::229;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x229.google.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,10 +84,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Oct 2023 20:24:23 -0000
+X-List-Received-Date: Wed, 18 Oct 2023 05:05:08 -0000
 
-On 17/10/2023 16:19, Thomas Huth wrote:
-
+On 17/10/23 17:19, Thomas Huth wrote:
 > hw/input/lasips2.c and the corresponding header include/hw/input/lasips2.h
 > are only used by the HPPA machine, so add them to the corresponding section
 > in the MAINTAINERS file.
@@ -104,29 +95,7 @@ On 17/10/2023 16:19, Thomas Huth wrote:
 > ---
 >   MAINTAINERS | 2 ++
 >   1 file changed, 2 insertions(+)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index b0416d473e..a0ad23b9b5 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1199,9 +1199,11 @@ R: Helge Deller <deller@gmx.de>
->   S: Odd Fixes
->   F: configs/devices/hppa-softmmu/default.mak
->   F: hw/hppa/
-> +F: hw/input/lasips2.c
->   F: hw/net/*i82596*
->   F: hw/misc/lasi.c
->   F: hw/pci-host/dino.c
-> +F: include/hw/input/lasips2.h
->   F: include/hw/misc/lasi.h
->   F: include/hw/net/lasi_82596.h
->   F: include/hw/pci-host/dino.h
 
-Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-
-
-ATB,
-
-Mark.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
