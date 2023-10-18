@@ -1,46 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qt09D-0003ik-QZ
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Oct 2023 02:35:15 -0400
+	id 1qt0Ca-00071s-1G
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Oct 2023 02:38:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=IJBG=GA=kaod.org=clg@ozlabs.org>)
- id 1qt09C-0003Vj-7b; Wed, 18 Oct 2023 02:35:14 -0400
+ id 1qt0CW-00070J-2R; Wed, 18 Oct 2023 02:38:40 -0400
 Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <SRS0=IJBG=GA=kaod.org=clg@ozlabs.org>)
- id 1qt09A-00014u-Gh; Wed, 18 Oct 2023 02:35:13 -0400
-Received: from gandalf.ozlabs.org (mail.ozlabs.org
- [IPv6:2404:9400:2221:ea00::3])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4S9Lgd3RQnz4xPy;
- Wed, 18 Oct 2023 17:35:09 +1100 (AEDT)
+ id 1qt0CU-0001qI-Em; Wed, 18 Oct 2023 02:38:39 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4S9LlZ3s1cz4x80;
+ Wed, 18 Oct 2023 17:38:34 +1100 (AEDT)
 Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits))
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4S9LgS5FxJz4xPM;
- Wed, 18 Oct 2023 17:35:00 +1100 (AEDT)
-Message-ID: <77cbea17-f4c5-4058-9bc9-e51d14e08fca@kaod.org>
-Date: Wed, 18 Oct 2023 08:35:00 +0200
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4S9LlX4wHdz4x1v;
+ Wed, 18 Oct 2023 17:38:32 +1100 (AEDT)
+Message-ID: <746b3fa0-dff6-4db7-a07e-57228447d32a@kaod.org>
+Date: Wed, 18 Oct 2023 08:38:30 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] MAINTAINERS: Add unvalued folders in tests/tcg/ to the
- right sections
+Subject: Re: [PATCH 0/8] MAINTAINERS: Collect unmaintained files under PPC
+ entries
 Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Bin Meng <bin.meng@windriver.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: qemu-trivial@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
- Weiwei Li <liweiwei@iscas.ac.cn>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- qemu-riscv@nongnu.org, qemu-ppc@nongnu.org,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Artyom Tarasenko <atar4qemu@gmail.com>
-References: <20231018062401.20746-1-thuth@redhat.com>
+To: qemu-ppc@nongnu.org, qemu-devel@nongnu.org
+Cc: Daniel Henrique Barboza <danielhb413@gmail.com>,
+ Nicholas Piggin <npiggin@gmail.com>, qemu-trivial@nongnu.org,
+ Thomas Huth <thuth@redhat.com>
+References: <20231002122326.365368-1-clg@kaod.org>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20231018062401.20746-1-thuth@redhat.com>
+In-Reply-To: <20231002122326.365368-1-clg@kaod.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=150.107.74.76;
@@ -63,79 +54,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Oct 2023 06:35:15 -0000
+X-List-Received-Date: Wed, 18 Oct 2023 06:38:41 -0000
 
-On 10/18/23 08:24, Thomas Huth wrote:
-> Some subfolders in tests/tcg/ are already listed in the MAINTAINERS
-> file, some others aren't listed yet. Add the missing ones now to the
-> MAINTAINERS file, too, to make sure that get_maintainers.pl reports
-> the correct maintainer.
+
+Adding Cc: qemu-trivial@nongnu.org because these changes don't need to go
+through the ppc tree.
+
+On 10/2/23 14:23, Cédric Le Goater wrote:
+> Hello,
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> All PPC files should now be correctly assigned to some entry.
+> 
+> Cheers,
 
+Last patch should be dropped though. It is replaced by:
 
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+  https://lore.kernel.org/qemu-devel/20231018062401.20746-1-thuth@redhat.com/
 
 Thanks,
 
 C.
 
 
-> ---
->   MAINTAINERS | 6 ++++++
->   1 file changed, 6 insertions(+)
+
+> C.
 > 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index b3599746c4..b80124f60f 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -257,6 +257,7 @@ M: Richard Henderson <richard.henderson@linaro.org>
->   S: Maintained
->   F: target/hppa/
->   F: disas/hppa.c
-> +F: tests/tcg/hppa/
->   
->   LoongArch TCG CPUs
->   M: Song Gao <gaosong@loongson.cn>
-> @@ -270,6 +271,7 @@ M: Laurent Vivier <laurent@vivier.eu>
->   S: Maintained
->   F: target/m68k/
->   F: disas/m68k.c
-> +F: tests/tcg/m68k/
->   
->   MicroBlaze TCG CPUs
->   M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
-> @@ -327,6 +329,7 @@ F: hw/ppc/trace*
->   F: configs/devices/ppc*
->   F: docs/system/ppc/embedded.rst
->   F: docs/system/target-ppc.rst
-> +F: tests/tcg/ppc*/*
->   
->   RISC-V TCG CPUs
->   M: Palmer Dabbelt <palmer@dabbelt.com>
-> @@ -345,6 +348,7 @@ F: hw/intc/riscv*
->   F: include/hw/riscv/
->   F: linux-user/host/riscv32/
->   F: linux-user/host/riscv64/
-> +F: tests/tcg/riscv64/
->   
->   RISC-V XThead* extensions
->   M: Christoph Muellner <christoph.muellner@vrull.eu>
-> @@ -386,6 +390,7 @@ F: target/sh4/
->   F: hw/sh4/
->   F: disas/sh4.c
->   F: include/hw/sh4/
-> +F: tests/tcg/sh4/
->   
->   SPARC TCG CPUs
->   M: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-> @@ -396,6 +401,7 @@ F: hw/sparc/
->   F: hw/sparc64/
->   F: include/hw/sparc/sparc64.h
->   F: disas/sparc.c
-> +F: tests/tcg/sparc64/
->   
->   X86 TCG CPUs
->   M: Paolo Bonzini <pbonzini@redhat.com>
+> Cédric Le Goater (8):
+>    ppc/{bamboo, virtex_ml507}: Remove useless dependency on ppc405.h
+>      header
+>    MAINTAINERS: Adjust file list for PPC ref405ep machine
+>    MAINTAINERS: Adjust file list for PPC 4xx CPUs
+>    MAINTAINERS: Adjust file list for PPC e500 machines
+>    MAINTAINERS: Adjust file list for PPC pseries machine
+>    MAINTAINERS: Add fw_cfg.c to PPC mac99 machine
+>    MAINTAINERS: Add PPC common files to PowerPC TCG CPUs
+>    MAINTAINERS: Update PPC TCG target with tests
+> 
+>   MAINTAINERS            | 19 +++++++++++++++++--
+>   hw/ppc/ppc440_bamboo.c |  1 -
+>   hw/ppc/virtex_ml507.c  |  1 -
+>   3 files changed, 17 insertions(+), 4 deletions(-)
+> 
 
 
