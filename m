@@ -1,79 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qt6e5-0007si-GL
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Oct 2023 09:31:33 -0400
+	id 1qtUDO-0006Yq-Ae
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2023 10:41:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qt6e0-0007hw-1y
- for qemu-trivial@nongnu.org; Wed, 18 Oct 2023 09:31:31 -0400
-Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qtUDL-0006UM-Vz
+ for qemu-trivial@nongnu.org; Thu, 19 Oct 2023 10:41:32 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qt6dx-0004kI-Ie
- for qemu-trivial@nongnu.org; Wed, 18 Oct 2023 09:31:27 -0400
-Received: by mail-lf1-x136.google.com with SMTP id
- 2adb3069b0e04-507c5249d55so1788125e87.3
- for <qemu-trivial@nongnu.org>; Wed, 18 Oct 2023 06:31:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1qtUDJ-0001wu-Ux
+ for qemu-trivial@nongnu.org; Thu, 19 Oct 2023 10:41:31 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-53db3811d8fso1890701a12.1
+ for <qemu-trivial@nongnu.org>; Thu, 19 Oct 2023 07:41:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697635884; x=1698240684; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=fBk/AjaKXtg/3Cadooq/dQVl7/DOz/dAP5kScFSNmWc=;
- b=of69JM1oVBiO75ATbpKdHXA4eBv8VaJ0MisgGaLLOjgvy29uhJf3v3wQbLowpJ/WsY
- 6/n5leuYZzvut3E3Myb+fk60/Gcb9ReYCsrSW6KS/Q20BEW/9y4EQHgBhUnkuk1eo31O
- vGu37exCPbgtoGNnVqrh684Z9IO2Z36Pu4D14o3M4Mq9PbWjG6GieIDJbj0WXrLhIx7+
- yeDa3Dv4PMptbIUj6bq3rcGP7MntbVf/wEZ31LgiRXpTbNIeRNuQpeDGu+BcHWdVspOw
- a00Y6/YkggN6wSnX5qETBhpvqXEVGOLQTKEkWpI8qFTmaJrWpIgSk1TrlawKUdR6ND0O
- MgfQ==
+ d=linaro.org; s=google; t=1697726488; x=1698331288; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=/WMTinwmL9s4fI/yOTGl9SR1J6Ly62/viPWfABjxWiI=;
+ b=Tcb+DH8UZ4VItM7yib2wK2zZXSSMJi6pfAPhs2PRdpAJjV62RRyUiZB8ih6ZOwxly2
+ ZkcOK3YuP1z774dZsVXs2sTlMRvuZsdk/NtDD62fppOF34FsH+KzzdfaCkVz8Cjddo+V
+ ram/ES+jXeOoPAH4YVh7XaqPqR1uR+iQfH6VFi6WsHY+bYavXRtsWUt2eeiv9QM0MI4m
+ mbN7Ypp7zpD68qAjrnOItqy/wN6N3KMg2goHtkin2Xu1rAjQAPrLW4z/cZR7k4NS/ysi
+ qIesLxsNBJ4fTtwCib58gnWHuVAaTDn5xfJYK2nm3UkVePnt4HYgYklwKuUc4NOjEPRg
+ n1Fw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697635884; x=1698240684;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=fBk/AjaKXtg/3Cadooq/dQVl7/DOz/dAP5kScFSNmWc=;
- b=daT7ZFxgvY7Pjn4q1jZYF4r7nexV/wLLdcHNiFXnpIfPvMp8FsFfd4+pMfqRwB03fE
- M1dVm5ydL1mWs0jclEjtS0qD4k5/iDAqFgQsb69snwhbHSIRGh7BMhvexln+ETLvx9VC
- U7K+mqbCBkaG7Ncy8ULWDWr14ou91ZW2NnbM232/2Q90MOFViJ1Y9dlAWi+6mC4F/nun
- wqcho92qBkgW6x5VZoM4htaG78Zr52RUVhSRIiWn2TRaKCCM4+mCSkKO+TFBD5m4ajfe
- +D2hTgSCjWpN3aOrtMUBzrIvGD96nGMayMEAOkxKu03WIqM3EWMF2I7zYImEjEs/PqQ6
- n+2g==
-X-Gm-Message-State: AOJu0Ywt8vJVr9aOU69fccA+n/0CZ+z3eYmMEy7D2UK9KY+Og+Oc7ExY
- Pt7+OjPVhArDb/mx+U+kXK0t3g==
-X-Google-Smtp-Source: AGHT+IEjkU6WOf7I/JW3FatBUlF6eEuhf0csyBXUSIjcfWng9BiI7tYYPpRIY56LttAFzQ7ddcNbAw==
-X-Received: by 2002:a05:6512:3195:b0:503:34b8:20b with SMTP id
- i21-20020a056512319500b0050334b8020bmr5379788lfe.65.1697635884004; 
- Wed, 18 Oct 2023 06:31:24 -0700 (PDT)
-Received: from [192.168.69.115]
- (gyl59-h01-176-171-218-149.dsl.sta.abo.bbox.fr. [176.171.218.149])
- by smtp.gmail.com with ESMTPSA id
- f19-20020adfb613000000b003232380ffd7sm2105895wre.102.2023.10.18.06.31.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 18 Oct 2023 06:31:23 -0700 (PDT)
-Message-ID: <fc662ca4-9d74-ca37-f65b-4d852f1eb1ee@linaro.org>
-Date: Wed, 18 Oct 2023 15:31:21 +0200
+ d=1e100.net; s=20230601; t=1697726488; x=1698331288;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=/WMTinwmL9s4fI/yOTGl9SR1J6Ly62/viPWfABjxWiI=;
+ b=f6GiwneQ4qHpeiaW7pVA+jrqVW1PCKUVRoG1oIjSCKBNnncggAiquv3bYnJCjc9D8i
+ 7N30OeECJn8c8PYzZULChBb/A/9muZNbPaErJJJTPG5LQnirLtTFMUc81Zp03DY8VJnX
+ 7k1LeWkFPOWBFg4h9kAmULYc/d1kJRwWI0eptfp+DmkVZI4N64j6tT4XUHFx0RRUhjos
+ KwIjOS1vNy7wfmaBGv8GwWtcRUe8wWA+k91koMNXkBF0YYKy4ne2PjM1fdPh5QkENxFT
+ NijNn9ONW9RXq6zlKSYHNMpzKDT1JzGfNHRNpOBSDTvXIzi1OdffKLaWRDdKhBeZC0eq
+ 0J+w==
+X-Gm-Message-State: AOJu0YwZFQyC49UMPH/kzHCWcLvciu5ebMgJZcaqQ/B7HsRGe9Ao5JUc
+ n7N5YlwGetkvG+9J8uUKT05G405/yoWiBm8mojrXYA==
+X-Google-Smtp-Source: AGHT+IFaFLNTdcj+69gUmdCXU1Dn29Sb9AdHVtXsUnuNnN1WX90XImGGl3c5f5FjGqa14x3atgGXEUh6XIzQRoZ47Z8=
+X-Received: by 2002:a05:6402:5148:b0:53d:bf72:d586 with SMTP id
+ n8-20020a056402514800b0053dbf72d586mr1868414edd.16.1697726487969; Thu, 19 Oct
+ 2023 07:41:27 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH] MAINTAINERS: Add docs/devel/ebpf_rss.rst to the EBPF
- section
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Jason Wang <jasowang@redhat.com>
-Cc: qemu-trivial@nongnu.org, Andrew Melnychenko <andrew@daynix.com>,
- Yuri Benditovich <yuri.benditovich@daynix.com>
-References: <20231017151740.213679-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231017151740.213679-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::136;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x136.google.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
+References: <20231011112054.1031975-1-mjt@tls.msk.ru>
+ <20231011112054.1031975-3-mjt@tls.msk.ru>
+ <CAJSP0QVkuu4EbW5gKmrN6Gotnhw1LG+ka=6vjuftPXBrKY+R3g@mail.gmail.com>
+ <3f804d1f-cb72-452c-83b2-80f57331d170@redhat.com>
+In-Reply-To: <3f804d1f-cb72-452c-83b2-80f57331d170@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 19 Oct 2023 15:41:15 +0100
+Message-ID: <CAFEAcA-Fu1SrkYzo_2A3R+QRcZsmeFt_zsj45dfSKJM3DyniVA@mail.gmail.com>
+Subject: Re: [PULL 02/13] hw/rdma/vmw/pvrdma_cmd: Use correct struct in
+ query_port()
+To: Thomas Huth <thuth@redhat.com>
+Cc: Stefan Hajnoczi <stefanha@gmail.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-stable@nongnu.org, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x534.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,17 +80,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Oct 2023 13:31:32 -0000
+X-List-Received-Date: Thu, 19 Oct 2023 14:41:32 -0000
 
-On 17/10/23 17:17, Thomas Huth wrote:
-> This doc file obviously belongs to the EBPF section.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   MAINTAINERS | 1 +
->   1 file changed, 1 insertion(+)
+On Wed, 11 Oct 2023 at 17:29, Thomas Huth <thuth@redhat.com> wrote:
+>
+> On 11/10/2023 17.38, Stefan Hajnoczi wrote:
+> > The following CI failure has occurred:
+> >
+> > ../hw/rdma/vmw/pvrdma_cmd.c:144:59: error: implicit conversion from
+> > enumeration type 'enum ibv_port_state' to different enumeration type
+> > 'enum pvrdma_port_state' [-Werror,-Wenum-conversion]
+> > resp->attrs.state = dev->func0->device_active ? attrs.state :
+> > ~ ~~~~~~^~~~~
+> > ../hw/rdma/vmw/pvrdma_cmd.c:146:33: error: implicit conversion from
+> > enumeration type 'enum ibv_mtu' to different enumeration type 'enum
+> > pvrdma_mtu' [-Werror,-Wenum-conversion]
+> > resp->attrs.max_mtu = attrs.max_mtu;
+> > ~ ~~~~~~^~~~~~~
+> > ../hw/rdma/vmw/pvrdma_cmd.c:147:36: error: implicit conversion from
+> > enumeration type 'enum ibv_mtu' to different enumeration type 'enum
+> > pvrdma_mtu' [-Werror,-Wenum-conversion]
+> > resp->attrs.active_mtu = attrs.active_mtu;
+> > ~ ~~~~~~^~~~~~~~~~
+> >
+> > https://gitlab.com/qemu-project/qemu/-/jobs/5270666420
+> >
+> > Please take a look.
+>
+> That pvrdma patch unfortunately does not work with Clang, see also:
+>
+>
+> https://lore.kernel.org/qemu-devel/781330fc-85b3-4ef1-8f07-1cc5fc5e4ad2@redhat.com/T/#t
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Explicitly casting to the new enum type is OK and fixes the clang
+warnings; I'll send out a v2 of the patch in a moment.
 
-
+thanks
+-- PMM
 
