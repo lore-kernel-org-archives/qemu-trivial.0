@@ -1,77 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qtalL-0004Lj-Ha
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Oct 2023 17:41:03 -0400
+	id 1qtitM-0004SY-MF
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Oct 2023 02:21:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtalK-0004Hz-33
- for qemu-trivial@nongnu.org; Thu, 19 Oct 2023 17:41:02 -0400
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtalI-0000Mk-KC
- for qemu-trivial@nongnu.org; Thu, 19 Oct 2023 17:41:01 -0400
-Received: by mail-lf1-x12e.google.com with SMTP id
- 2adb3069b0e04-507973f3b65so156288e87.3
- for <qemu-trivial@nongnu.org>; Thu, 19 Oct 2023 14:41:00 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697751659; x=1698356459; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Zr55r2AeBcnjH3tOVL5JBchW9ADcgy5ONzknaHE7wsM=;
- b=dBCxYAOd0TgnUuWy5qd9dbxdgq1GijQAbzpxDUnyhhY2TplNktpbGI6RJBtFUVj49a
- YN7uuxgGt9cuGjUfkeDetugnIokyf6nWx4GeKfE0A7iVYcNspuImG1dHrl2dsDOZiqpY
- DCoW4UqwVEBSfXfYg4ETIJ3FDWyo0DQV/lUdJ44OCKyYvP43qV51nx7HpSycpe3RfjS/
- 5oGTzIkZHfpTKaVlJFJxl0V886O0rfHET1cc7a3BAkuE94/0VpL9NNggOiZQCpapXhnq
- Ud9kFkCtxpwvz+e2zttqVm08YjE/aFyelBBdqfThrl4gjGb+GksfuKZhTueqXS8iN8fr
- XRwg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697751659; x=1698356459;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Zr55r2AeBcnjH3tOVL5JBchW9ADcgy5ONzknaHE7wsM=;
- b=xLdJoVUX31nH4loudLcShJKCo90rJs3spMGhOsbXJsuBHwKCumowwkTU8XghK1/0bk
- k+IuJFjX3sm5juhSTQjYR3AR0/SBziMqJoXpWOyScWwXWjJ7xHAJhatEIhzhI5FcKpfU
- L3/UwAvA87dzQAKLa9cPGcJOe8OpLJghut1/HkTB0V5DJBaGtLPOKq+um+m70kCEji21
- q8YiXPoYKD4wXd1EIb7s/MTCKKmzzvI0R8R+/UzBdA4IFSLzE/chSLEGctpWxZhtpicJ
- bfruEpzBzOK3Lcm8mZg6unmOI3G1RDEgUNADIc+mQK1/XsQaOEMptgTwqpPuObgcLGav
- hYDA==
-X-Gm-Message-State: AOJu0YygTDfTOtDhc4SjTfX9eCpIlgmj6uEr7O4wEwXQoGhv3wGUlRys
- ri3iQYp9v5KxqbRTTrnDJKZ+bw==
-X-Google-Smtp-Source: AGHT+IFYe5cNFsa9gqi9uksRIG2tEg57YcUKM+qVrbDsL9LuIpkPhm1xHu4XZzkMvqr/dP6NXVmlrg==
-X-Received: by 2002:a05:6512:612:b0:507:9787:6776 with SMTP id
- b18-20020a056512061200b0050797876776mr2393552lfe.5.1697751658872; 
- Thu, 19 Oct 2023 14:40:58 -0700 (PDT)
-Received: from [192.168.69.115] (176-131-216-177.abo.bbox.fr.
- [176.131.216.177]) by smtp.gmail.com with ESMTPSA id
- mb8-20020a170906eb0800b009ae57888718sm215110ejb.207.2023.10.19.14.40.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Oct 2023 14:40:58 -0700 (PDT)
-Message-ID: <53d5ddf4-20c0-bdb4-5fd2-82555990a6f7@linaro.org>
-Date: Thu, 19 Oct 2023 23:40:56 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH] MAINTAINERS: Add hw/input/lasips2.c to the HPPA machine
- section
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtitK-0004S6-62
+ for qemu-trivial@nongnu.org; Fri, 20 Oct 2023 02:21:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qtitI-0000Fv-RX
+ for qemu-trivial@nongnu.org; Fri, 20 Oct 2023 02:21:49 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1697782908;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=38tZ1dNDZZhAFvvxYb+RcrQ8meQPRpMGUjFtvjz0Dlo=;
+ b=OGSLM8+OjQqcE5L4JWYohqCqouLBtuDRBbwqWSqP4hW21gJZsn5jiQSgylTFmpTm9f4Tbz
+ U6SKaIYTRjtTuaMc6BYDHyqe/GouWThQkdCr1/fUlFB9g+5wIzybzqBlS+STflP0UABIbd
+ J09MEM54ZfDgLDUm05xx8tml9PM7gIk=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ us-mta-138-BtOwHUIcNASPth7T0gdz7A-1; Fri, 20 Oct 2023 02:21:44 -0400
+X-MC-Unique: BtOwHUIcNASPth7T0gdz7A-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 44A6E185A795;
+ Fri, 20 Oct 2023 06:21:44 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.54])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 83F1C2026D4C;
+ Fri, 20 Oct 2023 06:21:43 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-References: <20231017151933.213780-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231017151933.213780-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12e.google.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Subject: [PATCH] MAINTAINERS: Extend entry to cover util/qemu-timer-common.c,
+ too
+Date: Fri, 20 Oct 2023 08:21:42 +0200
+Message-ID: <20231020062142.525405-1-thuth@redhat.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,17 +64,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Oct 2023 21:41:02 -0000
+X-List-Received-Date: Fri, 20 Oct 2023 06:21:50 -0000
 
-On 17/10/23 17:19, Thomas Huth wrote:
-> hw/input/lasips2.c and the corresponding header include/hw/input/lasips2.h
-> are only used by the HPPA machine, so add them to the corresponding section
-> in the MAINTAINERS file.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   MAINTAINERS | 2 ++
->   1 file changed, 2 insertions(+)
+We already cover util/qemu-timer.c in MAINTAINERS - change this entry
+to util/qemu-timer*.c so that it covers util/qemu-timer-common.c, too.
 
-Thanks, queued to hw-misc.
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ MAINTAINERS | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 4cc71d1675..efd3eda7d1 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -2968,7 +2968,7 @@ F: include/qemu/main-loop.h
+ F: include/sysemu/runstate.h
+ F: include/sysemu/runstate-action.h
+ F: util/main-loop.c
+-F: util/qemu-timer.c
++F: util/qemu-timer*.c
+ F: system/vl.c
+ F: system/main.c
+ F: system/cpus.c
+-- 
+2.41.0
+
 
