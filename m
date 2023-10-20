@@ -1,77 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qtouC-0006wr-0S
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Oct 2023 08:47:08 -0400
+	id 1qtp2k-0005si-QX
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Oct 2023 08:55:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtouA-0006wR-BH
- for qemu-trivial@nongnu.org; Fri, 20 Oct 2023 08:47:06 -0400
-Received: from mail-lj1-x22b.google.com ([2a00:1450:4864:20::22b])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1qtp2i-0005ml-7u
+ for qemu-trivial@nongnu.org; Fri, 20 Oct 2023 08:55:56 -0400
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qtou8-0007At-L5
- for qemu-trivial@nongnu.org; Fri, 20 Oct 2023 08:47:06 -0400
-Received: by mail-lj1-x22b.google.com with SMTP id
- 38308e7fff4ca-2c4fdf94666so10760051fa.2
- for <qemu-trivial@nongnu.org>; Fri, 20 Oct 2023 05:47:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1qtp2g-0002Kp-Jp
+ for qemu-trivial@nongnu.org; Fri, 20 Oct 2023 08:55:55 -0400
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-4084095722aso6493165e9.1
+ for <qemu-trivial@nongnu.org>; Fri, 20 Oct 2023 05:55:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1697806023; x=1698410823; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=0FNRC0svb6rvM15Q2zxeoZxKzreTl2F1zaLcQ30MTs8=;
- b=ToUcAtFZ4B/lwUol1OGNaP/A86VBWDcN1GghwJDOCF7Ub189/jwpj9kQtAuTfpYAxS
- fzf74HPCOjGJH/XXQ07eul3K0yJo4nrmiPB15q6aIda5+1LM7ltczxMOScXZUU1zPqS5
- EoJ3W9MHLLmyBsu4c3fuyew4yAlum2AVOWZm3KcsV8j4vcuPAU3HZfoe7NWNuNVGv7Vd
- pTb08Y0p23On6VK1FcRYMNGUIMopVIBwId83Suj0Rjl3lIHyfTPTk76qnJTlBCxjaxNG
- CBBLKuBHtCUHqXB6yS89NZQD8URuOUrLSsam12T8ExU7xcaRDbdA1sa34gHjfGwJu+pw
- qjHQ==
+ d=linaro.org; s=google; t=1697806553; x=1698411353; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=CX4U+uk7SDNCHYIVuyqb9/SPEskI3t8eK5YtSxuAUyw=;
+ b=pfXNd0exOBlKxe1Q7/v4clcgT/M9VegN4le+g5acRZRVFlFNCot96rfckoEalUPXZU
+ pLeZWqo1YCaXJdG/tFLb93whhZ0U1akgFjwWXodmZSoQlKo/5F4Ad4t78/F1ggXXk2fH
+ vBmEK6HDGuhjrxJwwo3S6yM/8OLJMiiOTIGPo/M/r05KmEkDuA2cgqcTkIVmKJzAoqFh
+ dhYO47i4Ke7R4w1/PrZ6QI7LAcGy+3qIfEtM8WrFXZf4jSL8mIzQAXqTo1Ofn4ciJ836
+ d+r3emY/xxrtzs/VQdhadfdjjt7QzXkniiNTVbYLzLS2BzzAwUl14ObZPdYYxHMqJm+o
+ ivEQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1697806023; x=1698410823;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=0FNRC0svb6rvM15Q2zxeoZxKzreTl2F1zaLcQ30MTs8=;
- b=DcCxWBb/hbaLU6sE7nh3bJBax6WhAdIAEgsq7IPS68YUVOoToiGyz/9kuIb38mq+iV
- 9modJXcer9AR/yrw0GJs5TQGFPL3/2wrVUN47JOX+qJKMcjhFafuOxMqkfOVZmuVVgfi
- jRrCOb2HiD2M+MwQwurwqWZfRLy3u2DJHNWLSKrs4FVEhCN1bdClxyViVg6p1DDIYD+H
- BrOFcmtFfnjHa0q+Xzv3p42n35xR4CMbniwfwqFbRLM1dreYwGkGwIsoR6tavXOYByG2
- ub0L1Npe0fhWjvvCFwTC//RDi3gnunYWY5zVaa9dlrgRJ//4HgVrYsBWnwMPDpWgUp+R
- ztEg==
-X-Gm-Message-State: AOJu0YxWNBTvd3cDxV5XZMfK2pnSuLfPO6jY3m1S+2c0z4bM596Kd1rw
- iIlpRPYQObWFVLqSrYvmIgMIXA==
-X-Google-Smtp-Source: AGHT+IFiAGbe1+WgTHkQ1avcGtrt4nXIfL1PSUTufWaZ6H9aSbEyGN2nOvdufohWOgAAituJIprApQ==
-X-Received: by 2002:a05:651c:a0f:b0:2c5:31de:6c07 with SMTP id
- k15-20020a05651c0a0f00b002c531de6c07mr1998438ljq.14.1697806022811; 
- Fri, 20 Oct 2023 05:47:02 -0700 (PDT)
-Received: from [192.168.69.115] (tbo33-h01-176-171-212-97.dsl.sta.abo.bbox.fr.
- [176.171.212.97]) by smtp.gmail.com with ESMTPSA id
- y34-20020a05600c342200b004063977eccesm6870780wmp.42.2023.10.20.05.47.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 20 Oct 2023 05:47:02 -0700 (PDT)
-Message-ID: <85dd082f-6068-9a8e-f10b-9e3011176fb8@linaro.org>
-Date: Fri, 20 Oct 2023 14:47:00 +0200
+ d=1e100.net; s=20230601; t=1697806553; x=1698411353;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to:date
+ :subject:cc:to:from:user-agent:references:x-gm-message-state:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=CX4U+uk7SDNCHYIVuyqb9/SPEskI3t8eK5YtSxuAUyw=;
+ b=i94yl35lJNFGHPUbJbfJHO8pNszgPGL1RnROLb+uZpDuKX07bJuATRx+9bCnnJ8BQs
+ qvtggxs2O1PgtKvhKm1MGvQ5yws625gHLSdoa11k5hqVy8kBUXmRuFoDQnCDjVldrvcq
+ GRQ0DBuK+eGFWDntUiisWZd5eiM9elbcLGyK+BvhpK7Vtgg+4BuChYJbKWKrBlE3b65m
+ qa86YHdNm8RhFavqMqo6fwp5OgzKvlMKYRA5e0PjLghH7/1DpSRXL+4C8PPUF2uQCwPF
+ 7o9HrkbJXB+g+8NRYOwZSKQZ+HC4CJeI7IxyHuxV5DtqXvjlC4M5zwG7iBYHSw2mNhW6
+ uTgw==
+X-Gm-Message-State: AOJu0YzhNK3YP04wElexSAow0peqX1dJXCmT9hBOILuISFQaJSymrh+6
+ wZf2Gkrqc5jKJDl+yLD6hZZaA4eRNO3itiep41s=
+X-Google-Smtp-Source: AGHT+IH53KkF8XvbedvTQIoE2UN2tt4ieUPon6/afuuLpd3gj2fN1FTADrX9pJTW28DgkD0WJXYJHw==
+X-Received: by 2002:a05:600c:5128:b0:405:3a3d:6f53 with SMTP id
+ o40-20020a05600c512800b004053a3d6f53mr1427777wms.3.1697806552846; 
+ Fri, 20 Oct 2023 05:55:52 -0700 (PDT)
+Received: from zen.linaroharston ([85.9.250.243])
+ by smtp.gmail.com with ESMTPSA id
+ l8-20020a05600c1d0800b0040531f5c51asm2149013wms.5.2023.10.20.05.55.52
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 20 Oct 2023 05:55:52 -0700 (PDT)
+Received: from zen (localhost [127.0.0.1])
+ by zen.linaroharston (Postfix) with ESMTP id CEE2E1FFBB;
+ Fri, 20 Oct 2023 13:55:51 +0100 (BST)
+References: <03d81c56bfc3d08224e4106efca5949d8894cfa5.1697801632.git.quic_mathbern@quicinc.com>
+User-agent: mu4e 1.11.22; emacs 29.1.50
+From: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+Cc: qemu-devel@nongnu.org, bcain@quicinc.com, qemu-trivial@nongnu.org,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: Re: [PATCH v2] semihosting: fix memleak at semihosting_arg_fallback
+Date: Fri, 20 Oct 2023 13:55:42 +0100
+In-reply-to: <03d81c56bfc3d08224e4106efca5949d8894cfa5.1697801632.git.quic_mathbern@quicinc.com>
+Message-ID: <87zg0d78rs.fsf@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
- Gecko/20100101 Thunderbird/102.15.1
-Subject: Re: [PATCH] MAINTAINERS: Extend entry to cover
- util/qemu-timer-common.c, too
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20231020062142.525405-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
-In-Reply-To: <20231020062142.525405-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22b;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x22b.google.com
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.339,
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,17 +86,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Oct 2023 12:47:06 -0000
+X-List-Received-Date: Fri, 20 Oct 2023 12:55:57 -0000
 
-On 20/10/23 08:21, Thomas Huth wrote:
-> We already cover util/qemu-timer.c in MAINTAINERS - change this entry
-> to util/qemu-timer*.c so that it covers util/qemu-timer-common.c, too.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   MAINTAINERS | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks, patch queued.
+Matheus Tavares Bernardino <quic_mathbern@quicinc.com> writes:
 
+> We duplicate "cmd" as strtok may modify its argument, but we forgot
+> to free it later. Furthermore, add_semihosting_arg doesn't take
+> responsibility for this memory either (it strdup's the argument).
+>
+> Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+
+Queued to semihosting/next, thanks.
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 
