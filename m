@@ -1,34 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1quAjf-00032A-Nr
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Oct 2023 08:05:45 -0400
+	id 1quAjh-00032S-L0
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Oct 2023 08:05:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1quAjV-0002zf-Ph; Sat, 21 Oct 2023 08:05:34 -0400
+ id 1quAjZ-00030E-As; Sat, 21 Oct 2023 08:05:37 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1quAjT-0000u5-CI; Sat, 21 Oct 2023 08:05:33 -0400
+ id 1quAjX-0000za-4e; Sat, 21 Oct 2023 08:05:36 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 1534F2C32F;
+ by isrv.corpit.ru (Postfix) with ESMTP id D42342C331;
  Sat, 21 Oct 2023 15:05:51 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id D1A093067D;
- Sat, 21 Oct 2023 15:05:25 +0300 (MSK)
-Received: (nullmailer pid 220778 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id A9BF23067F;
+ Sat, 21 Oct 2023 15:05:26 +0300 (MSK)
+Received: (nullmailer pid 220784 invoked by uid 1000);
  Sat, 21 Oct 2023 12:05:25 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- qemu-stable@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 01/17] hw/rdma/vmw/pvrdma_cmd: Use correct struct in
- query_port()
-Date: Sat, 21 Oct 2023 15:05:03 +0300
-Message-Id: <20231021120519.220720-2-mjt@tls.msk.ru>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org, BALATON Zoltan <balaton@eik.bme.hu>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 03/17] MAINTAINERS: Cover hw/ppc/ppc440_uc.c with Sam460ex board
+Date: Sat, 21 Oct 2023 15:05:05 +0300
+Message-Id: <20231021120519.220720-4-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231021120519.220720-1-mjt@tls.msk.ru>
 References: <20231021120519.220720-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -49,76 +50,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Oct 2023 12:05:38 -0000
+X-List-Received-Date: Sat, 21 Oct 2023 12:05:39 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-In query_port() we pass the address of a local pvrdma_port_attr
-struct to the rdma_query_backend_port() function.  Unfortunately,
-rdma_backend_query_port() wants a pointer to a struct ibv_port_attr,
-and the two are not the same length.
+hw/ppc/ppc440_uc.c implements the TYPE_PPC460EX_PCIE_HOST
+device, which is used by the aCube Sam460ex board.
 
-Coverity spotted this (CID 1507146): pvrdma_port_attr is 48 bytes
-long, and ibv_port_attr is 52 bytes, because it has a few extra
-fields at the end.
-
-Fortunately, all we do with the attrs struct after the call is to
-read a few specific fields out of it which are all at the same
-offsets in both structs, so we can simply make the local variable the
-correct type.  This also lets us drop the cast (which should have
-been a bit of a warning flag that we were doing something wrong
-here).
-
-We do however need to add extra casts for the fields of the
-struct that are enums: clang will complain about the implicit
-cast to a different enum type otherwise.
-
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Acked-by: BALATON Zoltan <balaton@eik.bme.hu>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/rdma/vmw/pvrdma_cmd.c | 18 +++++++++++-------
- 1 file changed, 11 insertions(+), 7 deletions(-)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/rdma/vmw/pvrdma_cmd.c b/hw/rdma/vmw/pvrdma_cmd.c
-index c6ed025982..d385d18d9c 100644
---- a/hw/rdma/vmw/pvrdma_cmd.c
-+++ b/hw/rdma/vmw/pvrdma_cmd.c
-@@ -129,23 +129,27 @@ static int query_port(PVRDMADev *dev, union pvrdma_cmd_req *req,
- {
-     struct pvrdma_cmd_query_port *cmd = &req->query_port;
-     struct pvrdma_cmd_query_port_resp *resp = &rsp->query_port_resp;
--    struct pvrdma_port_attr attrs = {};
-+    struct ibv_port_attr attrs = {};
- 
-     if (cmd->port_num > MAX_PORTS) {
-         return -EINVAL;
-     }
- 
--    if (rdma_backend_query_port(&dev->backend_dev,
--                                (struct ibv_port_attr *)&attrs)) {
-+    if (rdma_backend_query_port(&dev->backend_dev, &attrs)) {
-         return -ENOMEM;
-     }
- 
-     memset(resp, 0, sizeof(*resp));
- 
--    resp->attrs.state = dev->func0->device_active ? attrs.state :
--                                                    PVRDMA_PORT_DOWN;
--    resp->attrs.max_mtu = attrs.max_mtu;
--    resp->attrs.active_mtu = attrs.active_mtu;
-+    /*
-+     * The state, max_mtu and active_mtu fields are enums; the values
-+     * for pvrdma_port_state and pvrdma_mtu match those for
-+     * ibv_port_state and ibv_mtu, so we can cast them safely.
-+     */
-+    resp->attrs.state = dev->func0->device_active ?
-+        (enum pvrdma_port_state)attrs.state : PVRDMA_PORT_DOWN;
-+    resp->attrs.max_mtu = (enum pvrdma_mtu)attrs.max_mtu;
-+    resp->attrs.active_mtu = (enum pvrdma_mtu)attrs.active_mtu;
-     resp->attrs.phys_state = attrs.phys_state;
-     resp->attrs.gid_tbl_len = MIN(MAX_PORT_GIDS, attrs.gid_tbl_len);
-     resp->attrs.max_msg_sz = 1024;
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 7f9912baa0..c814ed04c4 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -1495,6 +1495,7 @@ M: BALATON Zoltan <balaton@eik.bme.hu>
+ L: qemu-ppc@nongnu.org
+ S: Maintained
+ F: hw/ppc/sam460ex.c
++F: hw/ppc/ppc440_uc.c
+ F: hw/ppc/ppc440_pcix.c
+ F: hw/display/sm501*
+ F: hw/ide/sii3112.c
 -- 
 2.39.2
 
