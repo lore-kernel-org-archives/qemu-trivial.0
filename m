@@ -1,31 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1quAjv-00039f-TE
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Oct 2023 08:05:59 -0400
+	id 1quAjw-0003AL-LM
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Oct 2023 08:06:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1quAji-00034e-L8; Sat, 21 Oct 2023 08:05:47 -0400
+ id 1quAjm-00035v-Cu; Sat, 21 Oct 2023 08:05:51 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1quAje-000112-4X; Sat, 21 Oct 2023 08:05:44 -0400
+ id 1quAjk-000123-2E; Sat, 21 Oct 2023 08:05:49 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id CDD5A2C335;
- Sat, 21 Oct 2023 15:05:52 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 55ED62C337;
+ Sat, 21 Oct 2023 15:05:53 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id BD38C30683;
- Sat, 21 Oct 2023 15:05:27 +0300 (MSK)
-Received: (nullmailer pid 220796 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 2AB5830685;
+ Sat, 21 Oct 2023 15:05:28 +0300 (MSK)
+Received: (nullmailer pid 220802 invoked by uid 1000);
  Sat, 21 Oct 2023 12:05:25 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Eric Farman <farman@linux.ibm.com>, qemu-trivial@nongnu.org,
- Claudio Imbrenda <imbrenda@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+Cc: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
+ qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 07/17] MAINTAINERS: Fix a couple s390 paths
-Date: Sat, 21 Oct 2023 15:05:09 +0300
-Message-Id: <20231021120519.220720-8-mjt@tls.msk.ru>
+Subject: [PULL 09/17] MAINTAINERS: Adjust file list for PPC ref405ep machine
+Date: Sat, 21 Oct 2023 15:05:11 +0300
+Message-Id: <20231021120519.220720-10-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231021120519.220720-1-mjt@tls.msk.ru>
 References: <20231021120519.220720-1-mjt@tls.msk.ru>
@@ -51,45 +52,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Oct 2023 12:05:50 -0000
+X-List-Received-Date: Sat, 21 Oct 2023 12:05:53 -0000
 
-From: Eric Farman <farman@linux.ibm.com>
+From: Cédric Le Goater <clg@kaod.org>
 
-These are simple typos, since the directories don't exist but the
-files themselves do in hw/s390x/
-
-Fixes: 56e3483402 ("MAINTAINERS: split out s390x sections")
-Signed-off-by: Eric Farman <farman@linux.ibm.com>
-Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Daniel Henrique Barboza <danielhb413@gmail.com>
+Signed-off-by: Cédric Le Goater <clg@kaod.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- MAINTAINERS | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ MAINTAINERS | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
 diff --git a/MAINTAINERS b/MAINTAINERS
-index 27e5b882ae..167f0fe3ac 100644
+index 167f0fe3ac..af1fc5d76d 100644
 --- a/MAINTAINERS
 +++ b/MAINTAINERS
-@@ -2602,7 +2602,7 @@ M: Halil Pasic <pasic@linux.ibm.com>
- M: Christian Borntraeger <borntraeger@linux.ibm.com>
- S: Supported
- F: hw/s390x/storage-keys.h
--F: hw/390x/s390-skeys*.c
-+F: hw/s390x/s390-skeys*.c
- L: qemu-s390x@nongnu.org
+@@ -1367,7 +1367,8 @@ PowerPC Machines
+ 405 (ref405ep)
+ L: qemu-ppc@nongnu.org
+ S: Orphan
+-F: hw/ppc/ppc405_boards.c
++F: hw/ppc/ppc405*
++F: tests/avocado/ppc_405.py
  
- S390 storage attribute device
-@@ -2610,7 +2610,7 @@ M: Halil Pasic <pasic@linux.ibm.com>
- M: Christian Borntraeger <borntraeger@linux.ibm.com>
- S: Supported
- F: hw/s390x/storage-attributes.h
--F: hw/s390/s390-stattrib*.c
-+F: hw/s390x/s390-stattrib*.c
- L: qemu-s390x@nongnu.org
- 
- S390 floating interrupt controller
+ Bamboo
+ L: qemu-ppc@nongnu.org
 -- 
 2.39.2
 
