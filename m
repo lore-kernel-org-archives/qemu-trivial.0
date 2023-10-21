@@ -1,33 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1quACy-0000v0-67
-	for mharc-qemu-trivial@gnu.org; Sat, 21 Oct 2023 07:31:56 -0400
+	id 1quAHB-0003Gs-FB
+	for mharc-qemu-trivial@gnu.org; Sat, 21 Oct 2023 07:36:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1quACw-0000uH-0O; Sat, 21 Oct 2023 07:31:54 -0400
+ id 1quAH9-0003G9-5Y; Sat, 21 Oct 2023 07:36:15 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1quACt-0000xu-Jm; Sat, 21 Oct 2023 07:31:53 -0400
+ id 1quAH7-0002ul-Gx; Sat, 21 Oct 2023 07:36:14 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 1B8122C322;
- Sat, 21 Oct 2023 14:32:11 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 54A492C325;
+ Sat, 21 Oct 2023 14:36:35 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 21D3530676;
- Sat, 21 Oct 2023 14:31:46 +0300 (MSK)
-Message-ID: <78323369-f211-4281-b365-7de1fc5788f8@tls.msk.ru>
-Date: Sat, 21 Oct 2023 14:31:46 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 535F430677;
+ Sat, 21 Oct 2023 14:36:10 +0300 (MSK)
+Message-ID: <72293a33-2a18-4845-aee6-47ff0a405823@tls.msk.ru>
+Date: Sat, 21 Oct 2023 14:36:10 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] MAINTAINERS: Add unvalued folders in tests/tcg/ to the
- right sections
+Subject: Re: [PATCH] MAINTAINERS: Fix typo in openpic_kvm.c entry
 Content-Language: en-US
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
- <clg@kaod.org>, qemu-ppc@nongnu.org
-References: <20231018062401.20746-1-thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+References: <20231019155822.499027-1-thuth@redhat.com>
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20231018062401.20746-1-thuth@redhat.com>
+In-Reply-To: <20231019155822.499027-1-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -49,31 +48,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 21 Oct 2023 11:31:54 -0000
+X-List-Received-Date: Sat, 21 Oct 2023 11:36:15 -0000
 
-[Trim recipient list]
-
-18.10.2023 09:24, Thomas Huth:
-> Some subfolders in tests/tcg/ are already listed in the MAINTAINERS
-> file, some others aren't listed yet. Add the missing ones now to the
-> MAINTAINERS file, too, to make sure that get_maintainers.pl reports
-> the correct maintainer.
-
+19.10.2023 18:58, Thomas Huth :
+> It's a .c file, not a header!
+> 
+> Fixes: ff8cdbbd7e ("MAINTAINERS: Add information for OpenPIC")
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   MAINTAINERS | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
 > diff --git a/MAINTAINERS b/MAINTAINERS
-> index b3599746c4..b80124f60f 100644
+> index c12511c73b..a110a0c7a4 100644
 > --- a/MAINTAINERS
 > +++ b/MAINTAINERS
-> @@ -327,6 +329,7 @@ F: hw/ppc/trace*
->   F: configs/devices/ppc*
->   F: docs/system/ppc/embedded.rst
->   F: docs/system/target-ppc.rst
-> +F: tests/tcg/ppc*/*
+> @@ -1418,7 +1418,7 @@ F: hw/pci-host/ppce500.c
+>   F: include/hw/ppc/ppc_e500.h
+>   F: include/hw/pci-host/ppce500.h
+>   F: pc-bios/u-boot.e500
+> -F: hw/intc/openpic_kvm.h
+> +F: hw/intc/openpic_kvm.c
+>   F: include/hw/ppc/openpic_kvm.h
+>   F: docs/system/ppc/ppce500.rst
 
-FWIW, this hunk needs earlier series "MAINTAINERS: Collect unmaintained files
-under PPC entries", in particular "MAINTAINERS: Add PPC common files to PowerPC
-TCG CPUs", which is still not in master.  Maybe it's better to fold this change
-to the PPC series.
+This change is also based on the same "MAINTAINERS: Collect unmaintained files
+under PPC entries", namely "Adjust file list for PPC e500 machines" patch.
+Maybe it can be folded into the same series?
+
+Thanks,
 
 /mjt
-
 
