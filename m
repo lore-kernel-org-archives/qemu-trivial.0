@@ -1,63 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qv6EO-00030u-EY
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Oct 2023 21:29:16 -0400
+	id 1qvDqf-0001tx-0T
+	for mharc-qemu-trivial@gnu.org; Tue, 24 Oct 2023 05:37:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1qv6EL-0002zZ-9n
- for qemu-trivial@nongnu.org; Mon, 23 Oct 2023 21:29:13 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <SRS0=1ohf=GG=kaod.org=clg@ozlabs.org>)
+ id 1qvDqd-0001r7-4c; Tue, 24 Oct 2023 05:37:15 -0400
+Received: from gandalf.ozlabs.org ([150.107.74.76])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1qv6EH-0006oM-H0
- for qemu-trivial@nongnu.org; Mon, 23 Oct 2023 21:29:12 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1698110947;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=cOTj3wk2I5RFcIqVSxmwNWJdZoCHUUzCjFoATmqQvzY=;
- b=NycOC4ZP3F+Or5fx041UUFUJNB6zFoNB4tnGZxOTYZdaI5a1Ix4toTZ2gWqlEnQz6QHCKq
- jh+U2wGp8Co5EY9XOYIoidcRz1nrA0KE3n3fQPm1f6OugWTf9FvZd8HPhM0Xk3rPjV0yNq
- 38htVy5NUoWGYPy/olT+vsG8Y3PEUbA=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-345-tp63UQrzP1OjImfCpKI30g-1; Mon, 23 Oct 2023 21:29:00 -0400
-X-MC-Unique: tp63UQrzP1OjImfCpKI30g-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
+ (Exim 4.90_1) (envelope-from <SRS0=1ohf=GG=kaod.org=clg@ozlabs.org>)
+ id 1qvDqb-00082R-4N; Tue, 24 Oct 2023 05:37:14 -0400
+Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
+ by gandalf.ozlabs.org (Postfix) with ESMTP id 4SF6Qp74F5z4xF4;
+ Tue, 24 Oct 2023 20:37:06 +1100 (AEDT)
+Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8F66580F8F5;
- Tue, 24 Oct 2023 01:29:00 +0000 (UTC)
-Received: from localhost (unknown [10.39.192.42])
- by smtp.corp.redhat.com (Postfix) with ESMTP id D232B2166B26;
- Tue, 24 Oct 2023 01:28:58 +0000 (UTC)
-Date: Tue, 24 Oct 2023 09:15:23 +0800
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org
-Subject: Re: [PULL 00/17] Trivial patches for 2023-10-21
-Message-ID: <20231024011523.GA499224@fedora>
-References: <20231021120519.220720-1-mjt@tls.msk.ru>
+ by mail.ozlabs.org (Postfix) with ESMTPSA id 4SF6Ql3NZkz4x7V;
+ Tue, 24 Oct 2023 20:37:03 +1100 (AEDT)
+Message-ID: <aaa71ccc-e7d4-46f4-b902-22a422ff895a@kaod.org>
+Date: Tue, 24 Oct 2023 11:36:59 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="fv0Vd539fxm1yCtZ"
-Content-Disposition: inline
-In-Reply-To: <20231021120519.220720-1-mjt@tls.msk.ru>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] MAINTAINERS: aspeed: Update Andrew's email address
+Content-Language: en-US
+To: Andrew Jeffery <andrew@codeconstruct.com.au>, andrew@aj.id.au
+Cc: joel@jms.id.au, peter.maydell@linaro.org, qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Laurent Vivier <lvivier@redhat.com>
+References: <20230925062212.66112-1-andrew@codeconstruct.com.au>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+In-Reply-To: <20230925062212.66112-1-andrew@codeconstruct.com.au>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=150.107.74.76;
+ envelope-from=SRS0=1ohf=GG=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,32 +53,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Oct 2023 01:29:14 -0000
+X-List-Received-Date: Tue, 24 Oct 2023 09:37:15 -0000
+
+On 9/25/23 08:22, Andrew Jeffery wrote:
+> I've changed employers, have company email that deals with patch-based
+> workflows without too much of a headache, and am trying to steer some
+> content out of my personal mail.
+> 
+> Signed-off-by: Andrew Jeffery <andrew@codeconstruct.com.au>
+> ---
+> 
+> Hi Cédric, do you mind including this in your Aspeed queue?
 
 
---fv0Vd539fxm1yCtZ
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+I am not sure to send an Aspeed PR. May be this change could go
+through qemu-trivial ?
 
-Applied, thanks.
+Thanks,
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/8.2 for any user-visible changes.
+C.
 
---fv0Vd539fxm1yCtZ
-Content-Type: application/pgp-signature; name="signature.asc"
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmU3GqsACgkQnKSrs4Gr
-c8gkYwgArJjK1T5JpRIAlMU7o2XDoETO8zfH2TLJF3IkupwR3MNWnFxoRyi58lT3
-zRceV9ENBezlfsHwIHx3gd7985k8qYU5e+AAywinBtAonmrgs2uApx8DaQemGX4v
-yZ0tYQe3N/THd73PpmMiwkG9yD2ksfcjf/NYGhlbjTax2WTtNhRkS7ckVLv5yIyP
-xXh9dUUO5Ca9p4ZEMWhp+Yzg0/OdHSfxj02lMZ0/Kbf987HGNxwRhJ4kBQ8/aUJ6
-csu2iHm811OtFYR6Bb73fC1wa1nulISzwemw4kolekddrkPUD+bZXaNEy/aXP34g
-UIfLY3ywhEUqlqhhv3bsKC5a6i0xFg==
-=NNym
------END PGP SIGNATURE-----
-
---fv0Vd539fxm1yCtZ--
+> 
+>   MAINTAINERS | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 355b1960ce46..b142c09628b9 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -1108,7 +1108,7 @@ F: docs/system/arm/emcraft-sf2.rst
+>   ASPEED BMCs
+>   M: Cédric Le Goater <clg@kaod.org>
+>   M: Peter Maydell <peter.maydell@linaro.org>
+> -R: Andrew Jeffery <andrew@aj.id.au>
+> +R: Andrew Jeffery <andrew@codeconstruct.com.au>
+>   R: Joel Stanley <joel@jms.id.au>
+>   L: qemu-arm@nongnu.org
+>   S: Maintained
 
 
