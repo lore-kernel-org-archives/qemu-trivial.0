@@ -1,46 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qvDqf-0001tx-0T
-	for mharc-qemu-trivial@gnu.org; Tue, 24 Oct 2023 05:37:17 -0400
+	id 1qvXle-0008E4-QI
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Oct 2023 02:53:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=1ohf=GG=kaod.org=clg@ozlabs.org>)
- id 1qvDqd-0001r7-4c; Tue, 24 Oct 2023 05:37:15 -0400
-Received: from gandalf.ozlabs.org ([150.107.74.76])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <SRS0=1ohf=GG=kaod.org=clg@ozlabs.org>)
- id 1qvDqb-00082R-4N; Tue, 24 Oct 2023 05:37:14 -0400
-Received: from gandalf.ozlabs.org (gandalf.ozlabs.org [150.107.74.76])
- by gandalf.ozlabs.org (Postfix) with ESMTP id 4SF6Qp74F5z4xF4;
- Tue, 24 Oct 2023 20:37:06 +1100 (AEDT)
-Received: from authenticated.ozlabs.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.ozlabs.org (Postfix) with ESMTPSA id 4SF6Ql3NZkz4x7V;
- Tue, 24 Oct 2023 20:37:03 +1100 (AEDT)
-Message-ID: <aaa71ccc-e7d4-46f4-b902-22a422ff895a@kaod.org>
-Date: Tue, 24 Oct 2023 11:36:59 +0200
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qvXlb-0008DQ-Js
+ for qemu-trivial@nongnu.org; Wed, 25 Oct 2023 02:53:23 -0400
+Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qvXla-0006qi-2J
+ for qemu-trivial@nongnu.org; Wed, 25 Oct 2023 02:53:23 -0400
+Received: by mail-lj1-x230.google.com with SMTP id
+ 38308e7fff4ca-2b9d07a8d84so71005601fa.3
+ for <qemu-trivial@nongnu.org>; Tue, 24 Oct 2023 23:53:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1698216800; x=1698821600; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=6Qda9vsigsp4Gwj6hYyFf7vLPkt//7koKT5q0vZ3TIc=;
+ b=i9dt7AJ66JYyhgtt4yJ79m4dMK163+XcIyWX8Lt9o4YMifVbjydH2vY6TWn0GsHuWt
+ G5c1at9hnmgRyNFgCZpA8GUeusnGc9ROTtlUradrb1GnM4pTNvrZy3ZNcHei6tR82rSg
+ e+YSeZy3gqH+2wRDiDINurQJ8DayLI9ovCj+G99FYkZd25aO57Crcx2ZbNDCWHOiIIAv
+ 738kZwRFe5Fynjh38bL2tvi0gJzFQwCIw+/zboFXLtnvIAxqUM93pxgwIkniEceiS+fk
+ U/rJCB907uq+cMLQ2J85HdJGb9p43P48z0Hv5zPlHYfdjvShhCBs0KSF8UK1FESM5jf6
+ JWyw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698216800; x=1698821600;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=6Qda9vsigsp4Gwj6hYyFf7vLPkt//7koKT5q0vZ3TIc=;
+ b=d1mjxAJGlel5/cfl8JVSU9HU0D3poA72LJp1hwMQqIkpMchyzJOyiRLUtYsJdT1w5P
+ 9mW1+F7GA9QFDGS/b3wmdmgc2TBDUTatY5OOto3xlzmte98B94upqlUQnARzShnvB4fi
+ EA6L8MItj9G2lwC6tn3AxRuqDrAkD0RGz4Zhf2x1ckB2b6Gkap+O/vALHacFgOjc8dzh
+ CwQXKqEy74HSMr9sIzOV2rqctMao+KCPrBxF63I9TPjoxwuJdjlyRH4x0gXC5Xhp/Px0
+ i4bHvlzd7MnVBhucNmcoyDEYOHpQzWZdTrI2lurM5MMVloRgl0AbbE2SoZDvKpMhYYR1
+ kCZQ==
+X-Gm-Message-State: AOJu0YymbrZms+zWyqEOD1wBgY2XO7nnCLO5UWJSTTE4HRGNrAr3bixJ
+ HdyMBCxcL26F5XDZFW4GTKDLWg==
+X-Google-Smtp-Source: AGHT+IHww6a84AycyO4oYX3Hn04+7bG5UiEuKvc/7ov4x8IU10viTu/x1LAcYrV9h8DVyUZ0DPlWXw==
+X-Received: by 2002:a05:651c:2123:b0:2c4:ff2e:d6cd with SMTP id
+ a35-20020a05651c212300b002c4ff2ed6cdmr12267173ljq.2.1698216800095; 
+ Tue, 24 Oct 2023 23:53:20 -0700 (PDT)
+Received: from m1x-phil.lan (ghy59-h01-176-171-219-76.dsl.sta.abo.bbox.fr.
+ [176.171.219.76]) by smtp.gmail.com with ESMTPSA id
+ j6-20020a05600c190600b0040641a9d49bsm13795790wmq.17.2023.10.24.23.53.18
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 24 Oct 2023 23:53:19 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+ qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 00/10] hw/arm: Move 'hw/arm/boot.h' from header to source
+Date: Wed, 25 Oct 2023 08:53:06 +0200
+Message-ID: <20231025065316.56817-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] MAINTAINERS: aspeed: Update Andrew's email address
-Content-Language: en-US
-To: Andrew Jeffery <andrew@codeconstruct.com.au>, andrew@aj.id.au
-Cc: joel@jms.id.au, peter.maydell@linaro.org, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>
-References: <20230925062212.66112-1-andrew@codeconstruct.com.au>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
-In-Reply-To: <20230925062212.66112-1-andrew@codeconstruct.com.au>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=150.107.74.76;
- envelope-from=SRS0=1ohf=GG=kaod.org=clg@ozlabs.org; helo=gandalf.ozlabs.org
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.25, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::230;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x230.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -53,43 +79,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 24 Oct 2023 09:37:15 -0000
+X-List-Received-Date: Wed, 25 Oct 2023 06:53:25 -0000
 
-On 9/25/23 08:22, Andrew Jeffery wrote:
-> I've changed employers, have company email that deals with patch-based
-> workflows without too much of a headache, and am trying to steer some
-> content out of my personal mail.
-> 
-> Signed-off-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-> ---
-> 
-> Hi Cédric, do you mind including this in your Aspeed queue?
+Almost no ARM board header requires "hw/arm/boot.h".
+Move this header inclusion to the source.
 
+Philippe Mathieu-Daudé (10):
+  hw/arm/allwinner-a10: Remove 'hw/arm/boot.h' from header
+  hw/arm/allwinner-h3: Remove 'hw/arm/boot.h' from header
+  hw/arm/allwinner-r40: Remove 'hw/arm/boot.h' from header
+  hw/arm/fsl-imx25: Remove 'hw/arm/boot.h' from header
+  hw/arm/fsl-imx31: Remove 'hw/arm/boot.h' from header
+  hw/arm/fsl-imx6: Remove 'hw/arm/boot.h' from header
+  hw/arm/fsl-imx6ul: Remove 'hw/arm/boot.h' from header
+  hw/arm/fsl-imx7: Remove 'hw/arm/boot.h' from header
+  hw/arm/xlnx-versal: Remove 'hw/arm/boot.h' from header
+  hw/arm/xlnx-zynqmp: Remove 'hw/arm/boot.h' from header
 
-I am not sure to send an Aspeed PR. May be this change could go
-through qemu-trivial ?
+ include/hw/arm/allwinner-a10.h | 1 -
+ include/hw/arm/allwinner-h3.h  | 1 -
+ include/hw/arm/allwinner-r40.h | 1 -
+ include/hw/arm/fsl-imx25.h     | 1 -
+ include/hw/arm/fsl-imx31.h     | 1 -
+ include/hw/arm/fsl-imx6.h      | 1 -
+ include/hw/arm/fsl-imx6ul.h    | 1 -
+ include/hw/arm/fsl-imx7.h      | 1 -
+ include/hw/arm/xlnx-versal.h   | 1 -
+ include/hw/arm/xlnx-zynqmp.h   | 1 -
+ hw/arm/bananapi_m2u.c          | 1 +
+ hw/arm/cubieboard.c            | 1 +
+ hw/arm/imx25_pdk.c             | 1 +
+ hw/arm/kzm.c                   | 1 +
+ hw/arm/mcimx6ul-evk.c          | 1 +
+ hw/arm/mcimx7d-sabre.c         | 1 +
+ hw/arm/orangepi.c              | 1 +
+ hw/arm/sabrelite.c             | 1 +
+ hw/arm/xlnx-versal-virt.c      | 1 +
+ hw/arm/xlnx-zcu102.c           | 1 +
+ 20 files changed, 10 insertions(+), 10 deletions(-)
 
-Thanks,
-
-C.
-
-
-> 
->   MAINTAINERS | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index 355b1960ce46..b142c09628b9 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -1108,7 +1108,7 @@ F: docs/system/arm/emcraft-sf2.rst
->   ASPEED BMCs
->   M: Cédric Le Goater <clg@kaod.org>
->   M: Peter Maydell <peter.maydell@linaro.org>
-> -R: Andrew Jeffery <andrew@aj.id.au>
-> +R: Andrew Jeffery <andrew@codeconstruct.com.au>
->   R: Joel Stanley <joel@jms.id.au>
->   L: qemu-arm@nongnu.org
->   S: Maintained
+-- 
+2.41.0
 
 
