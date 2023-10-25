@@ -1,73 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qveVU-0000E4-OC
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Oct 2023 10:05:12 -0400
+	id 1qvgic-0001oW-DY
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Oct 2023 12:26:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1qveVL-0000CB-TB; Wed, 25 Oct 2023 10:05:06 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <carwynellis@gmail.com>)
- id 1qveVG-0006Rh-QG; Wed, 25 Oct 2023 10:05:02 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-31fa15f4cc6so4004422f8f.2; 
- Wed, 25 Oct 2023 07:04:55 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1698242694; x=1698847494; darn=nongnu.org;
- h=content-transfer-encoding:signed-off-by:mime-version:message-id
- :date:subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=wHe83ByeV2XV4KcSh7weGirooP3OeflYjgrtiBprCbg=;
- b=HRzOOj6RHgL7HSfVwJInF9XxOhVQKJ6wH59r4QQb84lPwpyWm8EmvRc18+HoYEMH8A
- SgE1fPsLWgEY4vzg1vHgu8+V8oG9jFnffrgeB5rv5vSpffdFk1eWvmrnQdfo5DSrrD6K
- 2hK6woGd0qLQ2L/RggUQVLaE1OcqHGXNNk0K6JoJrNQY3IM7WVUP0JzMaDjQ2CgoyEm4
- L/mfmuKOc4Q5FsKr5v11n+vdAipiY8rQAlvMSOGbBTcfJuQamCz0cGcNfgWPF/oeLU9y
- LMcdeb6GudEFBz/OYeA0TR3h2xjEddekuv3/zrlhDJuXoWCwO0lYtORaFia5Sdp+c/+h
- apkQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698242694; x=1698847494;
- h=content-transfer-encoding:signed-off-by:mime-version:message-id
- :date:subject:cc:to:from:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=wHe83ByeV2XV4KcSh7weGirooP3OeflYjgrtiBprCbg=;
- b=NOwzYXdN4odGRfLBoaxdhitHU6fy/4mTiAFQosHHmW5O2OGzCKjAbFfue2Erl6bju4
- c4TO55sAWLrE9LyAp6xDUJLGKe3cMmcMusqyDfL2+DKt2GR7kH5G86Lae9zpeYdcsGWs
- NnE7ewk+gcf6Wk6nPGO7NKwrxoiYSXpGsabvkovxMdZhP5KOocyYl23CVt4BLtC3SsF/
- G+XNZ1tFDjBI3PpXrZS49tVRGyv5as7giNjPaMBlJYi9/fCPyVUfqCsoRzyiMUwwmHPs
- L4TbNJnzB26XPkxWfBAvs29HvITrA55UmMEQFjMozoY4KpgByUcAbYpAUasakoV6GdS7
- +FFg==
-X-Gm-Message-State: AOJu0YxgHTaQjr/y8KJcCT7sa3nTiLXai39CZQLcrLJtkzLHB0lpFDRf
- fGRs501lubIcEWOIFu8LVz2ehA6EAKg=
-X-Google-Smtp-Source: AGHT+IHKCpm0KV3kIaF2dzlmRoweqCLTrLrJ0HZ33EVaRR4JM5KVNkKDpkvhmEt4jXGuN0PztxQYbw==
-X-Received: by 2002:a05:6000:1c05:b0:32d:89ca:1761 with SMTP id
- ba5-20020a0560001c0500b0032d89ca1761mr16923730wrb.43.1698242694173; 
- Wed, 25 Oct 2023 07:04:54 -0700 (PDT)
-Received: from localhost.localdomain
- (host86-185-6-213.range86-185.btcentralplus.com. [86.185.6.213])
- by smtp.googlemail.com with ESMTPSA id
- d17-20020a5d6451000000b0032da022855fsm12103044wrw.111.2023.10.25.07.04.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 25 Oct 2023 07:04:53 -0700 (PDT)
-From: carwynellis@gmail.com
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, philmd@linaro.org,
- akihiko.odaki@daynix.com, Carwyn Ellis <carwynellis@gmail.com>
-Subject: [PATCH 0/1] ui/cocoa: add full-screen-scaling display option
-Date: Wed, 25 Oct 2023 15:04:42 +0100
-Message-ID: <20231025140443.68520-1-carwynellis@gmail.com>
-X-Mailer: git-send-email 2.42.0
+ (Exim 4.90_1) (envelope-from <alexeikaptur@yandex.ru>)
+ id 1qvetp-0005pP-Qp; Wed, 25 Oct 2023 10:30:23 -0400
+Received: from forward400c.mail.yandex.net ([2a02:6b8:c03:500:1:45:d181:db01])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <alexeikaptur@yandex.ru>)
+ id 1qvetk-0003GZ-SX; Wed, 25 Oct 2023 10:30:21 -0400
+Received: from mail-nwsmtp-mxback-production-main-30.sas.yp-c.yandex.net
+ (mail-nwsmtp-mxback-production-main-30.sas.yp-c.yandex.net
+ [IPv6:2a02:6b8:c08:5328:0:640:d21c:0])
+ by forward400c.mail.yandex.net (Yandex) with ESMTP id A1F336ED11;
+ Wed, 25 Oct 2023 17:30:08 +0300 (MSK)
+Received: from mail.yandex.ru (2a02:6b8:c14:521b:0:640:6829:0
+ [2a02:6b8:c14:521b:0:640:6829:0])
+ by mail-nwsmtp-mxback-production-main-30.sas.yp-c.yandex.net (mxback/Yandex)
+ with HTTP id 0UQQHv1U50U0-TX1Ar9yT; Wed, 25 Oct 2023 17:30:08 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
+ t=1698244208; bh=ut59wcUMGfOTobDaoQJjaCmRPrli6dBzBpwf+wbwSa4=;
+ h=Message-Id:Date:Subject:To:From:Cc;
+ b=SUGhHbC8Rjpypyo7JMNPQQP2wrZKQI/rU2bLv5UHjuIMfNkQ9eEJ2uXXTgr5gAciY
+ 6obu3G6oQYW6PxIuGlQ/CvWvVvL7Q7nQi1paTam86PtpHEzqb/ule0BP7Dn3Yg5+HP
+ +osWWWQsTIPMpL0oZD10q3cMYAKEa0xORGfE4MpA=
+Authentication-Results: mail-nwsmtp-mxback-production-main-30.sas.yp-c.yandex.net;
+ dkim=pass header.i=@yandex.ru
+Received: by wghtu3g6gefsiaug.sas.yp-c.yandex.net with HTTP;
+ Wed, 25 Oct 2023 17:30:08 +0300
+From: =?utf-8?B?0JDQu9C10LrRgdC10Lkg0JrQsNC/0YLRg9GA?= <alexeikaptur@yandex.ru>
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: Alexey Kaptur <alexey.kaptur@kaspersky.com>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Subject: [PATCH] net,can: fix sja1000 IER behavior
 MIME-Version: 1.0
-Signed-off-by: Carwyn Ellis <carwynellis@gmail.com>
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=carwynellis@gmail.com; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+X-Mailer: Yamail [ http://yandex.ru ] 5.0
+Date: Wed, 25 Oct 2023 17:30:08 +0300
+Message-Id: <239631698240490@mail.yandex.ru>
+Content-Transfer-Encoding: base64
+Content-Type: text/html; charset=utf-8
+Received-SPF: pass client-ip=2a02:6b8:c03:500:1:45:d181:db01;
+ envelope-from=alexeikaptur@yandex.ru; helo=forward400c.mail.yandex.net
+X-Spam_score_int: -15
+X-Spam_score: -1.6
+X-Spam_bar: -
+X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ HTML_MESSAGE=0.001, HTML_MIME_NO_HTML_TAG=0.377, MIME_HTML_ONLY=0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 25 Oct 2023 12:26:52 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,23 +62,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Oct 2023 14:05:07 -0000
+X-List-Received-Date: Wed, 25 Oct 2023 14:30:27 -0000
 
-From: Carwyn Ellis <carwynellis@gmail.com>
-
-The intention here is to allow fullscreen scaling of the display to be
-enabled by setting the display option `full-screen-scaling` to on,
-allowing this to be set from the command line without having to interact
-with the ui menu.
-
-Carwyn Ellis (1):
-  ui/cocoa: add full-screen-scaling display option
-
- qapi/ui.json |  6 +++++-
- ui/cocoa.m   | 33 ++++++++++++++++++++-------------
- 2 files changed, 25 insertions(+), 14 deletions(-)
-
--- 
-2.42.0
-
+PGRpdj48ZGl2PjxkaXY+V2l0aG91dCB0aGlzIHBhdGNoIGRpc2FibGluZyBpbnRlcnJ1cHRzIHRo
+cm91Z2g8L2Rpdj48ZGl2PklFUiAoSW50ZXJydXB0IEVuYWJsZSBSZWdpc3RlcikgZG9lc24ndCB3
+b3JrLDwvZGl2PjxkaXY+YmVjYXVzZSBpbnRlcnJ1cHQgc3RhdHVzIGlzIGNoYW5nZWQgb25seSBv
+bjwvZGl2PjxkaXY+bmV4dCBTSkFfQ01SIHdyaXRlIG9yIFNKQV9JUiByZWFkaW5nLjwvZGl2Pjxk
+aXY+VGhpcyBiZWhhdmlvciBkb2Vzbid0IGFmZmVjdCBMaW51eCBrZXJuZWw8L2Rpdj48ZGl2PmJl
+Y2F1c2UgaGFuZGxpbmcgaXMgZG9uZSBpbnRvIGludGVycnVwdDwvZGl2PjxkaXY+Y29udGV4dCwg
+bm90IGluIGJvdHRvbSBoYWxmLjwvZGl2PjxkaXY+SSB0cmllZCB0byB1c2UgYm90dG9tIGhhbGYg
+YW5kIGdvdCBpbnRlcnJ1cHQ8L2Rpdj48ZGl2PnN0b3JtIGFmdGVyIG1hc2tpbmcgSVJRLjwvZGl2
+PjxkaXY+U28gdGhpcyBwYXRjaCBmaXhlcyB0aGF0IGJlaGF2aW9yLjwvZGl2PjxkaXY+wqA8L2Rp
+dj48ZGl2PlNpZ25lZC1vZmYtYnk6IEFsZXhleSBLYXB0dXIgJmx0O0FsZXhleS5LYXB0dXJAa2Fz
+cGVyc2t5LmNvbSZndDs8L2Rpdj48ZGl2Pi0tLS08L2Rpdj48L2Rpdj7CoGh3L25ldC9jYW4vY2Fu
+X3NqYTEwMDAuYyB8IDEgKzxkaXY+wqAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyk8L2Rp
+dj48ZGl2PsKgPC9kaXY+PGRpdj5kaWZmIC0tZ2l0IGEvaHcvbmV0L2Nhbi9jYW5fc2phMTAwMC5j
+IGIvaHcvbmV0L2Nhbi9jYW5fc2phMTAwMC5jPC9kaXY+PGRpdj5pbmRleCA3MzIwMWY5MTM5Li5i
+ZmFiMTRkZTEwIDEwMDY0NDwvZGl2PjxkaXY+LS0tIGEvaHcvbmV0L2Nhbi9jYW5fc2phMTAwMC5j
+PC9kaXY+PGRpdj4rKysgYi9ody9uZXQvY2FuL2Nhbl9zamExMDAwLmM8L2Rpdj48ZGl2PkBAIC01
+NDEsNiArNTQxLDcgQEAgdm9pZCBjYW5fc2phX21lbV93cml0ZShDYW5TSkExMDAwU3RhdGUgKnMs
+IGh3YWRkciBhZGRyLCB1aW50NjRfdCB2YWwsPC9kaXY+PGRpdj7CoMKgwqDCoMKgwqDCoMKgwqDC
+oMKgwqAgYnJlYWs7IC8qIERvIG5vdGhpbmcgKi88L2Rpdj48ZGl2PsKgwqDCoMKgwqDCoMKgwqAg
+Y2FzZSBTSkFfSUVSOiAvKiBJbnRlcnJ1cHQgZW5hYmxlIHJlZ2lzdGVyICovPC9kaXY+PGRpdj7C
+oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcy0mZ3Q7aW50ZXJydXB0X2VuID0gdmFsOzwvZGl2Pjxk
+aXY+K8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY2FuX3NqYV91cGRhdGVfcGVsX2lycShzKTs8L2Rp
+dj48ZGl2PsKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBicmVhazs8L2Rpdj48ZGl2PsKgwqDCoMKg
+wqDCoMKgwqAgY2FzZSAxNjogLyogUlggZnJhbWUgaW5mb3JtYXRpb24gYWRkcjE2LTI4LiAqLzwv
+ZGl2PjxkaXY+wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHMtJmd0O3N0YXR1c19wZWwgfD0gKDEg
+Jmx0OyZsdDsgNSk7IC8qIFNldCB0cmFuc21pdCBzdGF0dXMuICovPC9kaXY+PGRpdj4tLTwvZGl2
+PjxkaXY+Mi4yNS4xPC9kaXY+PGRpdj7CoDwvZGl2PjxkaXY+wqA8L2Rpdj48ZGl2PsKgPC9kaXY+
+PC9kaXY+
 
