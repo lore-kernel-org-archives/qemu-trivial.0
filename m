@@ -1,41 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qvk2s-0003nK-GG
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Oct 2023 16:00:02 -0400
+	id 1qvk30-0003sE-2k
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Oct 2023 16:00:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1qvhEn-0005s2-Eb; Wed, 25 Oct 2023 13:00:09 -0400
-Received: from mail-co1nam11on20611.outbound.protection.outlook.com
- ([2a01:111:f400:7eab::611]
+ id 1qvhFO-0006VW-Og; Wed, 25 Oct 2023 13:00:48 -0400
+Received: from mail-co1nam11on20627.outbound.protection.outlook.com
+ ([2a01:111:f400:7eab::627]
  helo=NAM11-CO1-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1qvhEk-0006dH-0A; Wed, 25 Oct 2023 13:00:08 -0400
+ id 1qvhFM-0006tG-OY; Wed, 25 Oct 2023 13:00:46 -0400
 ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=V/CNBO45BQNgGVb2kYRyVT6KGY7sUj+UVM6p3AQN0Gd2qXE182eni7H5ow9QDEAEFB0HmPyNHYD+PGh39ZX2PoTmUEV0vXugLAvpEskc2T2Q2JIeiUWSjme/0lFpMo8LeGtFZ4b+H9KWf7ZxXqJtx0WeTuQC95Hilb1nm7SHaMfSoQdHei247pFHgtHirkt5NTq+jPLyZtM9OzuH2DUGDJWxU0+yUxGdiqSwSn9qvsaPHZ2cefjeEu2ms88A5wpyEsrqQN9crBfX66CnfvF+MxzJ5hP8xXm8ZiGLM+igKElYFF5h+SvAwEvCO0U0eCgP01Yl3bklcIDMg7L7BHNWEg==
+ b=QkxCc/yu4U9O2LS/ivIIABmIaQoMvksMD4aSnyWhWRnJnhyBWSCfwukkiaa+arFfCQ96uIGHaH1PAYpj6HSQQJyl6yo/xWgIVEtd4/pz6POiFd4tgkjFX3y0KPbDU/+9aM760dFtQIP28DjIgqk974q0RttMfg2ktOOh30Wu651BvjxYFIRsAkt7f67xOXnFsQKPBgJFwbPv2hF8jOJaS6ho86eKC+bEUvq9MaECQXAhuZEI7/LEWnSCu9IVVqXI8tL+QgGQ0q0Y3jBVPGf+l0Y4t6buoH8oQ64pWzs3XXM16TmkMMpZdfKiCFegNb25ErgVJ3nG+OsMkZ03y89brA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
  s=arcselector9901;
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=inezvdS3qp40pfvZlKMFKproKbv5wuHkwgGfz25fuQc=;
- b=T5Fe+oGwwBsVivQJzoqpYHEaAk6H7KtoJq4Hl7Ew64/8qlKHRyy68A9A6X/UM5HLaIpUsK9qdZ65vna5lgz02GE9G5k3FuguTQMcexplW+Lg6sECWiE1p3KILnlSyioCFs3lLdavG7uiSEhgw0sFrhD31eN8xiHKDBMT2TegJH3wlnpm+Gp1qX4U0tfK110lricD0pA74wGcQE/o5j64QNMSzr1sWiqoWo+/U+zb5cvNJNlZ4UYyxrPPZwONkgXtYPvkkziBOruP6YH0bSLrUUsSB1cQ80iYUitOGeLhRErANgn/HJDhtfAD2GUOPiOJ5k9XjFb9VyDKX7da1wsWGQ==
+ bh=YQNTs9efJ4tpvuyuYTkf0bAvDZawGUcxwp/7Xpms6N8=;
+ b=mTp+Qn8rH5sDyckxLUTsRQcRZU6bsGgn6jS6L+4R3TQXqzECoJ89mLOIgVQabtuQXcSvJpYfPeSgiU40s+4mpf/F39ho64S7jPEJiaAjpzwHpor6TPrX5AhjoY6F400KQU8q/g/is771tZZLhWrb2Pn9H9JIAFLYLO2RXw43m8/i3N4VCxxrbnty3fJQXMMciQ9ydtPENanDVhAnw+tVZBoqqlJou1iMNK24qqahbgAS2d37NivOK9NgMMgjYYaxJR9KcZGDuM5x6l7QZ+QzMeMOB9DaKd7ge5M22WLTA/zFxzVL97hVvQ8jKHdv5c2E2wHF4q173l93zfP4WyxPyA==
 ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
  165.204.84.17) smtp.rcpttodomain=linaro.org smtp.mailfrom=amd.com; dmarc=pass
  (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
  dkim=none (message not signed); arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
  h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=inezvdS3qp40pfvZlKMFKproKbv5wuHkwgGfz25fuQc=;
- b=TA8cIcU4ebTA9MwJAq4pZy56Cdhg0YdQy7OA3bEZ9ySNMOtB5zbKnfLEnd5jdsW8Z2FBYW2cCeMSALZpgtmv6n/oikDqF1cPQtVbtR9jKKP+tejUXN2fFJx2E9eNrglt1U14PdljYpKnl6VkcVB/vcP+Epjo2jFX/zjpCILODko=
-Received: from DM6PR14CA0043.namprd14.prod.outlook.com (2603:10b6:5:18f::20)
- by SA1PR12MB7248.namprd12.prod.outlook.com (2603:10b6:806:2be::12) with
+ bh=YQNTs9efJ4tpvuyuYTkf0bAvDZawGUcxwp/7Xpms6N8=;
+ b=BzDAGdXRdnPPsOXkkbRei/VsPT4V+pJCyQqa9P6uAjO7loUQtVv1qp6/pfyvH8nwaX4eoMeWpZ4MX7PQYEcF8lkZSPthKRjPw3vEA/RRshCJQnntahHDMGhxD65VWL4p99Jv9GPy9XtUZx4S1un2wgrK/w5xFiSX2fLLdeJpjDY=
+Received: from CY5PR22CA0032.namprd22.prod.outlook.com (2603:10b6:930:1d::20)
+ by DM4PR12MB7646.namprd12.prod.outlook.com (2603:10b6:8:106::10) with
  Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.29; Wed, 25 Oct
- 2023 17:00:00 +0000
-Received: from CY4PEPF0000EE38.namprd03.prod.outlook.com
- (2603:10b6:5:18f:cafe::92) by DM6PR14CA0043.outlook.office365.com
- (2603:10b6:5:18f::20) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.35 via Frontend
- Transport; Wed, 25 Oct 2023 17:00:00 +0000
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6907.33; Wed, 25 Oct
+ 2023 17:00:40 +0000
+Received: from CY4PEPF0000EE3B.namprd03.prod.outlook.com
+ (2603:10b6:930:1d:cafe::6) by CY5PR22CA0032.outlook.office365.com
+ (2603:10b6:930:1d::20) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6933.19 via Frontend
+ Transport; Wed, 25 Oct 2023 17:00:40 +0000
 X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
  smtp.mailfrom=amd.com; dkim=none (message not signed)
  header.d=none;dmarc=pass action=none header.from=amd.com;
@@ -43,58 +43,56 @@ Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
  165.204.84.17 as permitted sender) receiver=protection.outlook.com;
  client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
 Received: from SATLEXMB04.amd.com (165.204.84.17) by
- CY4PEPF0000EE38.mail.protection.outlook.com (10.167.242.12) with Microsoft
+ CY4PEPF0000EE3B.mail.protection.outlook.com (10.167.242.15) with Microsoft
  SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.6933.15 via Frontend Transport; Wed, 25 Oct 2023 16:59:59 +0000
+ 15.20.6933.15 via Frontend Transport; Wed, 25 Oct 2023 17:00:39 +0000
 Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB04.amd.com
  (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32; Wed, 25 Oct
- 2023 11:59:59 -0500
+ 2023 12:00:39 -0500
 Received: from luc-work-vm (10.180.168.240) by SATLEXMB03.amd.com
  (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
  cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32 via Frontend
- Transport; Wed, 25 Oct 2023 11:59:57 -0500
-Date: Wed, 25 Oct 2023 18:59:55 +0200
+ Transport; Wed, 25 Oct 2023 12:00:37 -0500
+Date: Wed, 25 Oct 2023 19:00:35 +0200
 From: Luc Michel <luc.michel@amd.com>
 To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 CC: <qemu-devel@nongnu.org>, Thomas Huth <thuth@redhat.com>,
  <qemu-trivial@nongnu.org>, <qemu-arm@nongnu.org>, Markus Armbruster
- <armbru@redhat.com>, Niek Linnenbank <nieklinnenbank@gmail.com>, Peter
- Maydell <peter.maydell@linaro.org>, Beniamino Galvani <b.galvani@gmail.com>,
- Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: Re: [PATCH 02/10] hw/arm/allwinner-h3: Remove 'hw/arm/boot.h' from
- header
-Message-ID: <ZTlJi6BfkpK3pTc4@luc-work-vm>
+ <armbru@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>
+Subject: Re: [PATCH 04/10] hw/arm/fsl-imx25: Remove 'hw/arm/boot.h' from header
+Message-ID: <ZTlJs3zoXqtrmaAh@luc-work-vm>
 References: <20231025065316.56817-1-philmd@linaro.org>
- <20231025065316.56817-3-philmd@linaro.org>
+ <20231025065316.56817-5-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20231025065316.56817-3-philmd@linaro.org>
+In-Reply-To: <20231025065316.56817-5-philmd@linaro.org>
 X-EOPAttributedMessage: 0
 X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: CY4PEPF0000EE38:EE_|SA1PR12MB7248:EE_
-X-MS-Office365-Filtering-Correlation-Id: 3511055a-9a3d-4f71-3783-08dbd57bd2ed
+X-MS-TrafficTypeDiagnostic: CY4PEPF0000EE3B:EE_|DM4PR12MB7646:EE_
+X-MS-Office365-Filtering-Correlation-Id: 442a544c-5e83-4aef-0eda-08dbd57beac8
 X-MS-Exchange-SenderADCheck: 1
 X-MS-Exchange-AntiSpam-Relay: 0
 X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: Pg/axBrGd7BEb5dUo/JEGRRH6GeeSbQZwAyeFrIYUWHh9yhLGpnM4hZw+61If8lJy8YDf7hMXtjo1u1RJ73zZoUPCbxLQ2ZhP0jyCrBoOllRYmpaF4+Gs2k6XqyacyfyTQG3dVtC00ZALjhhHcS/IjooJPX3nIoZOP4AoavULIDW/pB0ES5gGypFxn2bI3A5ChHqP2qdKnveCv6O1FYm5GkeODFVS7gvduUbo47c6y4hVBOTFP9+JLkB6nJR5SeMq2+aMLq01OpnDkuRp3b4bXohD03W7ThUX+uoRo+RtVdbZ1yqpLTM0frS7bXzRs9FC3B010lWs+NIEk8vrJjltx/VnMBtKgvX3Mimwrq9KbhioMTG6fcGjnH2xe/wy/CaUd61mH96TvankEliD0EGyY0iGJfSHIHMfWLYsm8hPpG1S+RojdpRmyVghBaRc1o0767H/gfqfz8OgUhSoSDDyZT2o1K9EfLIsBweJd0al1ZJsS24Xq3ekNzIQLGuXwxCzqIxGCuHeu7cThp3uok5tmN4DxcmguBJAbNtWF5ERbVVLJeA5MJeLunFiYpAJXLLNS1wMR77BCniH4mwWRzc6qEy/6NxzI4O9Mks1Rlpj/9OGLg8C1+7VO2BGq/CHF5dvlOndkKtKNe74lMdcpk8JfaNdA9IAGx2AarEU6l3vE3SJdPwXH6CEeiTNgDIJEHbwZKFDF0o2TRstuY4olHQrCsoeJtPmxUgCSiQpNKN/b39cqKozWiSjXWFuKnD9vNKw4D3TAr6VbJQ+s8+tPcOow==
+X-Microsoft-Antispam-Message-Info: soxlEPOn4gNoQmZCe6PQ3qK7Tg3Bda3S1YVQTj1mW+8FajMuAKFM+5p7YPNpjeYOeLhb+hrw4dk8UE04pSIz5Z5AtlwH5ap+GUhk8P6RubAErHBl/72uvuXjrSEt49VVyXpzsNrMiPveamjVIizgpAeLHo1ATSiuhR28bfIf4qxiB2vkHnJGubUegL6kQhQGMe+d4+Sd1b1snMFlCSG9zBqeCqsbVDiVL6sieRWcDIzHdAtgVZ+Z67LuxNAleGjIbT/O2+8j89KdFb4+AGbGiFJiVMmp3irZvBTU+sn+js6U3us69p5hB9m8OJQ5izFFvViBJCusc018kdqRpTb/8SUheiWBILGx1AR5zpStPx0RiLgJUdUIxjZvkZKDXQrcSXk8C2DO5I5gQesoo0tvQKpfDlUAC978g5Xppj5iSCji7rnIjygufgoixu3th5+bcddEGAGN3/cMgyDXqAomhJ1sQskH5S41eVTWq2bh6glkOybXnY13zJ5o/7KyLkBVTxM5FIafwzUM3r4Rgn2f2ul5f7G1gGow1rgHP1omXrwgVIw3opH3b7kTx1OZgO9VuIzLL46GEikxXaQVrbW3PqcxNLQoAiyUK5uv7YJzlbBt84IctcGGP+hsMuPcyP64S4GJ8GusUP6mLdxA3dfTQ10OrxTkMyMK8JDqu3yJINrMGtgGWYL3Yn0Q1vz4/eyR68yhtvBEhzYO8nqom9F7LOIMV+gfDhh8vRiEYdNU/cpprWbHAODVNsRkVWpEpAEnvVjksULaNQH8bdwhcFCNWQ==
 X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
  IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(136003)(376002)(39860400002)(346002)(396003)(230922051799003)(1800799009)(186009)(64100799003)(82310400011)(451199024)(36840700001)(40470700004)(46966006)(33716001)(26005)(2906002)(55016003)(36860700001)(70206006)(41300700001)(44832011)(5660300002)(86362001)(40460700003)(7416002)(4326008)(8936002)(8676002)(82740400003)(70586007)(478600001)(6916009)(54906003)(81166007)(356005)(316002)(83380400001)(9686003)(336012)(40480700001)(426003)(47076005)(36900700001);
+ SFS:(13230031)(4636009)(346002)(39860400002)(136003)(376002)(396003)(230922051799003)(1800799009)(64100799003)(82310400011)(451199024)(186009)(40470700004)(36840700001)(46966006)(55016003)(44832011)(2906002)(86362001)(41300700001)(54906003)(6916009)(82740400003)(81166007)(316002)(70586007)(478600001)(70206006)(426003)(9686003)(47076005)(83380400001)(356005)(336012)(40480700001)(36860700001)(40460700003)(5660300002)(4326008)(8676002)(8936002)(26005)(33716001)(36900700001);
  DIR:OUT; SFP:1101; 
 X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Oct 2023 16:59:59.8574 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 3511055a-9a3d-4f71-3783-08dbd57bd2ed
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 25 Oct 2023 17:00:39.8636 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 442a544c-5e83-4aef-0eda-08dbd57beac8
 X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
 X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
  Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000EE38.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthSource: CY4PEPF0000EE3B.namprd03.prod.outlook.com
 X-MS-Exchange-CrossTenant-AuthAs: Anonymous
 X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: SA1PR12MB7248
-Received-SPF: softfail client-ip=2a01:111:f400:7eab::611;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB7646
+Received-SPF: softfail client-ip=2a01:111:f400:7eab::627;
  envelope-from=Luc.Michel@amd.com;
  helo=NAM11-CO1-obe.outbound.protection.outlook.com
 X-Spam_score_int: -20
@@ -116,7 +114,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Oct 2023 17:00:10 -0000
+X-List-Received-Date: Wed, 25 Oct 2023 17:01:02 -0000
 
 On 08:53 Wed 25 Oct     , Philippe Mathieu-Daudé wrote:
 > "hw/arm/boot.h" is only required on the source file.
@@ -126,34 +124,34 @@ On 08:53 Wed 25 Oct     , Philippe Mathieu-Daudé wrote:
 Reviewed-by: Luc Michel <luc.michel@amd.com>
 
 > ---
->  include/hw/arm/allwinner-h3.h | 1 -
->  hw/arm/orangepi.c             | 1 +
+>  include/hw/arm/fsl-imx25.h | 1 -
+>  hw/arm/imx25_pdk.c         | 1 +
 >  2 files changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
-> index f15d6d7cc7..24ba4e1bf4 100644
-> --- a/include/hw/arm/allwinner-h3.h
-> +++ b/include/hw/arm/allwinner-h3.h
-> @@ -36,7 +36,6 @@
->  #define HW_ARM_ALLWINNER_H3_H
+> diff --git a/include/hw/arm/fsl-imx25.h b/include/hw/arm/fsl-imx25.h
+> index 1b1086e945..df2f83980f 100644
+> --- a/include/hw/arm/fsl-imx25.h
+> +++ b/include/hw/arm/fsl-imx25.h
+> @@ -17,7 +17,6 @@
+>  #ifndef FSL_IMX25_H
+>  #define FSL_IMX25_H
 > 
->  #include "qom/object.h"
 > -#include "hw/arm/boot.h"
->  #include "hw/timer/allwinner-a10-pit.h"
->  #include "hw/intc/arm_gic.h"
->  #include "hw/misc/allwinner-h3-ccu.h"
-> diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
-> index 10653361ed..d0eca54cd9 100644
-> --- a/hw/arm/orangepi.c
-> +++ b/hw/arm/orangepi.c
-> @@ -25,6 +25,7 @@
->  #include "hw/boards.h"
+>  #include "hw/intc/imx_avic.h"
+>  #include "hw/misc/imx25_ccm.h"
+>  #include "hw/char/imx_serial.h"
+> diff --git a/hw/arm/imx25_pdk.c b/hw/arm/imx25_pdk.c
+> index b4f7f4e8a7..7dfddd49e2 100644
+> --- a/hw/arm/imx25_pdk.c
+> +++ b/hw/arm/imx25_pdk.c
+> @@ -27,6 +27,7 @@
+>  #include "qapi/error.h"
 >  #include "hw/qdev-properties.h"
->  #include "hw/arm/allwinner-h3.h"
+>  #include "hw/arm/fsl-imx25.h"
 > +#include "hw/arm/boot.h"
-> 
->  static struct arm_boot_info orangepi_binfo;
-> 
+>  #include "hw/boards.h"
+>  #include "qemu/error-report.h"
+>  #include "sysemu/qtest.h"
 > --
 > 2.41.0
 > 
