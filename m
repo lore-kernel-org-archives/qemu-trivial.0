@@ -1,71 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qvXlp-0008G1-Md
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Oct 2023 02:53:39 -0400
+	id 1qvXly-0008Hn-BH
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Oct 2023 02:53:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qvXlh-0008EW-TL
- for qemu-trivial@nongnu.org; Wed, 25 Oct 2023 02:53:31 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qvXln-0008Fq-V4
+ for qemu-trivial@nongnu.org; Wed, 25 Oct 2023 02:53:36 -0400
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qvXlf-0006rZ-Vh
- for qemu-trivial@nongnu.org; Wed, 25 Oct 2023 02:53:29 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-40906fc54fdso19071425e9.0
- for <qemu-trivial@nongnu.org>; Tue, 24 Oct 2023 23:53:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qvXlm-0006sY-8p
+ for qemu-trivial@nongnu.org; Wed, 25 Oct 2023 02:53:35 -0400
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-307d58b3efbso3570255f8f.0
+ for <qemu-trivial@nongnu.org>; Tue, 24 Oct 2023 23:53:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698216806; x=1698821606; darn=nongnu.org;
+ d=linaro.org; s=google; t=1698216812; x=1698821612; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=liQUfBw2vuT84lDsRH1NnEhHpPgK8Ag3m+jx8pbJ8Jk=;
- b=h2jCsW7lEkfzhHS/255OJ4nM/SRPKiYh7pAzjIfmzf47Y05lUX08Bid35oGGcJiohR
- pE1FoSGkMjBWhiHFTx1ffM2gLzbEV8KlDyZly6/VmzojUr04mgUgBKD1Hz97fbIKsP3z
- MdOEJGOUhQ5poITKv68uAX4z88f7pSEawaqlDzS85PxxAeRD9+Wh0QhLMQbazdY5IGSF
- M67mphoFb/KZddzaXpcbN5DvbK8ifLGumgbCGECpJW/vcqROjHU9xIJQHkJD8E42aPg5
- A2jks3dSxTcQL1nEoBi9SvMjydyuRvcbryyfg/85oeHl5wyFePqk+40TXJpMnqqWhBpQ
- Za6g==
+ bh=iag5xExHVGQuFMGcLhmFmnPUkDT4Uig/AV7ZGJNpQIE=;
+ b=BA3yWVn0dXHCOU+167OnnN3CSy0i/l77YLNk4MrvZa3w8QTzSqKJU2pJ+tisoeHRdG
+ 06XeZz/w5zY/lqLIMWG7VZKZCkvldMHz9chHEfUNYyk137rxfndNcqTAfLKV4w4bN2ih
+ gY3OKM4qU4KVNOs21Q2JnkXyfoVqqmxkeJVNo760a9/mgaut65wkIhK3yTtWDFEKgaGT
+ L7Yh5bb0nY5O/k6NKNdwc8rysEWn8uRudMnEsIPZ2B1MHWwRZpf65gxLacXNDo0K+BnB
+ cEWTWE1/Tr0TgpPYjsxidjCtlmsNUubAsrAtcmfX5Cnn0kQa470wV6svQCmictoRi2HT
+ Tqag==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698216806; x=1698821606;
+ d=1e100.net; s=20230601; t=1698216812; x=1698821612;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=liQUfBw2vuT84lDsRH1NnEhHpPgK8Ag3m+jx8pbJ8Jk=;
- b=q0+XhgPg/Iwy8EhDav7kR8PtOJjMWcbHld44irEQl28x+MAcGc21pLCLhdFhdcfB84
- qZlSf/JLOj5uDkIgKAjQnl5ajQwD5Cwqihc2NEMofx1dlPxsGsT9yKUxARDX7RkSyt1g
- Sq9WlgAzY6OuS9iebPNwOqcyFq8Yr1dqpeZ/aQ6x+tLtPOIofcO3VNXj2UgrGctxxuMP
- I+XNa8/Vj7eFIRRQrBPS2D8CaW9o/D/Bb9BvKAoKzVJ8KMusny3mjGCwcMoxmHZ0qmIM
- JLhRcn3D1CrdgPbx7FyWYOKP9CI50Zg3wppj+QpglhW0Hkgr+s6VLsvmnM4TES0P04J7
- C/LQ==
-X-Gm-Message-State: AOJu0YwBCGpsJrqkf4h961MWaMo/c+WL4HGEgCyaA8xjdf7R9a4/jjXu
- 56zZN+MTgg6/vfmbbTrXA4rvsA==
-X-Google-Smtp-Source: AGHT+IFobtS7uum76Yh/zJuMcq+0R4SW1bW/dluGqRkhF3CLkjt+ASEIYhHgQGlcAk/8D+VVjQ0fWA==
-X-Received: by 2002:a05:600c:46cc:b0:409:2c5:b2cd with SMTP id
- q12-20020a05600c46cc00b0040902c5b2cdmr5715576wmo.14.1698216806466; 
- Tue, 24 Oct 2023 23:53:26 -0700 (PDT)
+ bh=iag5xExHVGQuFMGcLhmFmnPUkDT4Uig/AV7ZGJNpQIE=;
+ b=HCUa3K6oBaJGgJPLFRWQC7KgESmtfTIzvsBdC0dPE4AvhGdrjt3xOoAoVqZMNTz89R
+ MtNzeI7n5/zk7g+bZd8Q67symRsL1bXlmY+2RCoBbpZVYoy3yYdF4/rajJx2Wg7jtJ4U
+ 00G7gt4c5UH2XsDz54UBoKKU5bZ5D5LoenQ36/XnnReIegJTez8RUYbZSlzK+0WNMU9H
+ 5CiGOU9YnjdGruFe4bnZJ+/rAyiP4l8JNOUEn17shz+45wLIeNwFSTnoCBdbmaspRSRk
+ 3tzUWJYGiHTlLtHgWbUoOcOYIGsnhm0tF1xnf5NJCplSQ99T3cqSspfvES6OIaPTHZax
+ PYaQ==
+X-Gm-Message-State: AOJu0YzDMerZrcavpfMRVEHp835j0I68cGb5FURmjaR/iGCH1+ExKEUd
+ Up0/CRwGksUoFKAMA5+xN+VmSA==
+X-Google-Smtp-Source: AGHT+IH+BU0dWueSE4ZrLIp8WrBp+5g1OMZ3M/5P+UXCvqGv0+qqWom5rW1a/LJSYnzt45QdxMIWfw==
+X-Received: by 2002:a5d:6705:0:b0:32d:d2ef:b0c1 with SMTP id
+ o5-20020a5d6705000000b0032dd2efb0c1mr9119519wru.33.1698216812658; 
+ Tue, 24 Oct 2023 23:53:32 -0700 (PDT)
 Received: from m1x-phil.lan (ghy59-h01-176-171-219-76.dsl.sta.abo.bbox.fr.
  [176.171.219.76]) by smtp.gmail.com with ESMTPSA id
- l23-20020a1c7917000000b004063cced50bsm13579078wme.23.2023.10.24.23.53.24
+ w10-20020adfec4a000000b0032d2f09d991sm11343022wrn.33.2023.10.24.23.53.31
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 24 Oct 2023 23:53:26 -0700 (PDT)
+ Tue, 24 Oct 2023 23:53:32 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
  qemu-arm@nongnu.org, Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Beniamino Galvani <b.galvani@gmail.com>,
+ Niek Linnenbank <nieklinnenbank@gmail.com>,
  Peter Maydell <peter.maydell@linaro.org>,
+ Beniamino Galvani <b.galvani@gmail.com>,
  Strahinja Jankovic <strahinja.p.jankovic@gmail.com>
-Subject: [PATCH 01/10] hw/arm/allwinner-a10: Remove 'hw/arm/boot.h' from header
-Date: Wed, 25 Oct 2023 08:53:07 +0200
-Message-ID: <20231025065316.56817-2-philmd@linaro.org>
+Subject: [PATCH 02/10] hw/arm/allwinner-h3: Remove 'hw/arm/boot.h' from header
+Date: Wed, 25 Oct 2023 08:53:08 +0200
+Message-ID: <20231025065316.56817-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20231025065316.56817-1-philmd@linaro.org>
 References: <20231025065316.56817-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -85,40 +86,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Oct 2023 06:53:33 -0000
+X-List-Received-Date: Wed, 25 Oct 2023 06:53:39 -0000
 
 "hw/arm/boot.h" is only required on the source file.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- include/hw/arm/allwinner-a10.h | 1 -
- hw/arm/cubieboard.c            | 1 +
+ include/hw/arm/allwinner-h3.h | 1 -
+ hw/arm/orangepi.c             | 1 +
  2 files changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/arm/allwinner-a10.h b/include/hw/arm/allwinner-a10.h
-index cd1465c613..2eb83a17ea 100644
---- a/include/hw/arm/allwinner-a10.h
-+++ b/include/hw/arm/allwinner-a10.h
-@@ -1,7 +1,6 @@
- #ifndef HW_ARM_ALLWINNER_A10_H
- #define HW_ARM_ALLWINNER_A10_H
+diff --git a/include/hw/arm/allwinner-h3.h b/include/hw/arm/allwinner-h3.h
+index f15d6d7cc7..24ba4e1bf4 100644
+--- a/include/hw/arm/allwinner-h3.h
++++ b/include/hw/arm/allwinner-h3.h
+@@ -36,7 +36,6 @@
+ #define HW_ARM_ALLWINNER_H3_H
  
+ #include "qom/object.h"
 -#include "hw/arm/boot.h"
  #include "hw/timer/allwinner-a10-pit.h"
- #include "hw/intc/allwinner-a10-pic.h"
- #include "hw/net/allwinner_emac.h"
-diff --git a/hw/arm/cubieboard.c b/hw/arm/cubieboard.c
-index 8c7fa91529..29146f5018 100644
---- a/hw/arm/cubieboard.c
-+++ b/hw/arm/cubieboard.c
-@@ -21,6 +21,7 @@
+ #include "hw/intc/arm_gic.h"
+ #include "hw/misc/allwinner-h3-ccu.h"
+diff --git a/hw/arm/orangepi.c b/hw/arm/orangepi.c
+index 10653361ed..d0eca54cd9 100644
+--- a/hw/arm/orangepi.c
++++ b/hw/arm/orangepi.c
+@@ -25,6 +25,7 @@
  #include "hw/boards.h"
  #include "hw/qdev-properties.h"
- #include "hw/arm/allwinner-a10.h"
+ #include "hw/arm/allwinner-h3.h"
 +#include "hw/arm/boot.h"
- #include "hw/i2c/i2c.h"
  
- static struct arm_boot_info cubieboard_binfo = {
+ static struct arm_boot_info orangepi_binfo;
+ 
 -- 
 2.41.0
 
