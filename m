@@ -1,78 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qvzm8-0002As-RD
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Oct 2023 08:47:48 -0400
+	id 1qvzm8-0002Ax-WD
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Oct 2023 08:47:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1qvqTa-00034f-ED
- for qemu-trivial@nongnu.org; Wed, 25 Oct 2023 22:52:03 -0400
-Received: from mail-ot1-x32a.google.com ([2607:f8b0:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1qvqTX-0007s1-TV
- for qemu-trivial@nongnu.org; Wed, 25 Oct 2023 22:52:02 -0400
-Received: by mail-ot1-x32a.google.com with SMTP id
- 46e09a7af769-6d261cb07dcso238453a34.3
- for <qemu-trivial@nongnu.org>; Wed, 25 Oct 2023 19:51:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1qvsl3-0001vE-C5; Thu, 26 Oct 2023 01:18:13 -0400
+Received: from pi.codeconstruct.com.au ([203.29.241.158]
+ helo=codeconstruct.com.au)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
+ id 1qvsl1-0004Rg-N5; Thu, 26 Oct 2023 01:18:13 -0400
+Received: from [192.168.13.88]
+ (ppp118-210-136-142.adl-adc-lon-bras33.tpg.internode.on.net
+ [118.210.136.142])
+ by mail.codeconstruct.com.au (Postfix) with ESMTPSA id EDDAA20174;
+ Thu, 26 Oct 2023 13:18:05 +0800 (AWST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1698288718; x=1698893518;
- darn=nongnu.org; 
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=DTa1hWAss41rdi8M/7WpcSe6hTI05krwXDqPtBKgtQw=;
- b=TKFnPrIv9nQSDWJzLujsexFnGE7Da2SfptOW8K/A7E3ldu+Om6TxOkrWDQ0FPK4Iy0
- es+jBuOPqxA/hlI0aadYYy2l9a9YE2Es2jg1hNJlQIbhQIo1g6M57xojz3y94tTDKt66
- NWRiuC23VVMmGiEMfiKy2uMjXImwzY61isVPxuJRnb17NG6gsBhpCTH1W76KF+b2Kt4e
- Z84gyvBB7Jf5NnIiHvErP00d7Te/FqVSJ6ciOC5KhcYhDfjOyQy0vVgK50XZ+QQtTE8y
- cCzN0lffPvwxuj/Rc1ah4HK5esPlpc+kEZOlnfWEQVN6jWamI3h18RjmA/piu0Zvh+My
- hxyw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698288718; x=1698893518;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=DTa1hWAss41rdi8M/7WpcSe6hTI05krwXDqPtBKgtQw=;
- b=Rupfy7ux1Yvp1nAX/Y9C1r2zl0v0gRpxVVP9t37L2M/bfaVBLlfEJoynU3vIEqmSsP
- AwhRPwiLsNKzauZEgXXekZdYgndCbhYsgUueyAz5PcdPkS4vT4KWjuBKUI5pHoB7DACA
- 2iVZRlhwN1uBYVZjrI+7gR3Bai1EY7LGF6m83gOAInkKFuzRppiAMpeEA8Qv6zeeAe0j
- kcMQkm2oiwrToAEb+Ntk/IlJVrRz4qRtaXNxqPfbpNdoLKTK08ALINiWXkIG3g1fuWHI
- P3I/Wj3GQ9dVY4k7sb1Lihz/AyxrX6Y+reFtZoZonKZC90Ja+Im21A6KUiQ2VeDGzgUi
- IeCw==
-X-Gm-Message-State: AOJu0Yzdm2EYlKbi5GRuR2gWDEkN6MYvjxokXCAh87wCbj+dXn3QMh//
- MvE8+AoaNGyjROHZDiTc5QyEug==
-X-Google-Smtp-Source: AGHT+IEr2RS0SXPOB7aLGjhv82G5iCQmsUcFG8U0CWhJgjiBn9SvKKOIVYyQbSjaGy/jz9OJ7lU9hg==
-X-Received: by 2002:a9d:7d09:0:b0:6c4:c151:8ebe with SMTP id
- v9-20020a9d7d09000000b006c4c1518ebemr14956933otn.22.1698288718697; 
- Wed, 25 Oct 2023 19:51:58 -0700 (PDT)
-Received: from ?IPV6:2400:4050:a840:1e00:78d2:b862:10a7:d486?
- ([2400:4050:a840:1e00:78d2:b862:10a7:d486])
- by smtp.gmail.com with ESMTPSA id
- y15-20020aa79aef000000b0068883728c16sm10416368pfp.144.2023.10.25.19.51.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 25 Oct 2023 19:51:58 -0700 (PDT)
-Message-ID: <ef3994e1-6989-41c6-8648-f6c943d6fe64@daynix.com>
-Date: Thu, 26 Oct 2023 11:51:55 +0900
+ d=codeconstruct.com.au; s=2022a; t=1698297488;
+ bh=dAHfECnoFvXcqfIQIqID4USTey8MMaNynUgTIYo+GaI=;
+ h=Subject:From:To:Cc:Date:In-Reply-To:References;
+ b=EPKrh0djUxCHCZi8sBE7mhllzGodTnw+dPQ0ZL3kII7ETzL6Ix4WmXkp9cdBh5DcZ
+ X/mpw4hojMWKtc4PDby3sOlz8gELdkmEpMsalWE940N4sYxf5Shy7JKzU1IYJkGVd3
+ hgnSdJBvYI9gfxFmXg20ah9tKmCax3knJx0Knhw/A6/ZlKZLddrO3ZCHaqG7WaJTXo
+ ytlqARk2G0BBVMI9jFjbDPTp+KWmchjjO1VIFH0zp/tO9Ct36jLJyUGaJKYMgGPBRE
+ de0TAANYs6KPL6PMjhaFMidNQUrygYGzSYsJKoq1OL+D1n2vBvAECtd0ZyEtamWRSj
+ RDLFAKLP7g4tQ==
+Message-ID: <6a3d71264cc7e771cf1988ac4a73ef23d142a895.camel@codeconstruct.com.au>
+Subject: Re: [PATCH] MAINTAINERS: aspeed: Update Andrew's email address
+From: Andrew Jeffery <andrew@codeconstruct.com.au>
+To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, andrew@aj.id.au
+Cc: joel@jms.id.au, peter.maydell@linaro.org, qemu-devel@nongnu.org, 
+ qemu-arm@nongnu.org, qemu-trivial@nongnu.org, Laurent Vivier
+ <lvivier@redhat.com>
+Date: Thu, 26 Oct 2023 15:48:05 +1030
+In-Reply-To: <255f59a0-6666-44c5-9b21-2435c82e17e2@kaod.org>
+References: <20230925062212.66112-1-andrew@codeconstruct.com.au>
+ <aaa71ccc-e7d4-46f4-b902-22a422ff895a@kaod.org>
+ <255f59a0-6666-44c5-9b21-2435c82e17e2@kaod.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.46.4-2 
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] ui/cocoa: add full-screen-scaling display option
-To: carwynellis@gmail.com, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, peter.maydell@linaro.org, philmd@linaro.org
-References: <20231025140443.68520-1-carwynellis@gmail.com>
- <20231025140443.68520-2-carwynellis@gmail.com>
-Content-Language: en-US
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <20231025140443.68520-2-carwynellis@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::32a;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-ot1-x32a.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=203.29.241.158;
+ envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Thu, 26 Oct 2023 08:47:47 -0400
 X-BeenThere: qemu-trivial@nongnu.org
@@ -86,105 +62,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Oct 2023 02:52:04 -0000
+X-List-Received-Date: Thu, 26 Oct 2023 05:18:16 -0000
 
-On 2023/10/25 23:04, carwynellis@gmail.com wrote:
-> From: Carwyn Ellis <carwynellis@gmail.com>
-> 
-> Provides a display option, full-screen-scaling, that enables scaling of
-> the display when full-screen mode is enabled.
-> 
-> Also ensures that the corresponding menu item is marked as enabled when
-> the option is set to on.
+On Wed, 2023-10-25 at 10:57 +0200, C=C3=A9dric Le Goater wrote:
+> On 10/24/23 11:36, C=C3=A9dric Le Goater wrote:
+> > On 9/25/23 08:22, Andrew Jeffery wrote:
+> > > I've changed employers, have company email that deals with patch-base=
+d
+> > > workflows without too much of a headache, and am trying to steer some
+> > > content out of my personal mail.
+> > >=20
+> > > Signed-off-by: Andrew Jeffery <andrew@codeconstruct.com.au>
+> > > ---
+> > >=20
+> > > Hi C=C3=A9dric, do you mind including this in your Aspeed queue?
+> >=20
+> >=20
+> > I am not sure to send an Aspeed PR. May be this change could go
+> > through qemu-trivial ?
+>=20
+> After all, I will send an Aspeed PR. Don't bother.
 
-Hi,
-
-Thank you for your contribution.
-
-Please drop qemu-trivial@nongnu.org. This change is not that trivial.
-Instead add "Graphics maintainers" listed in MAINTAINERS file to CC.
-
-Please also add Signed-off-by tag. See docs/devel/submitting-a-patch.rst 
-to know what the tag means.
-
-> ---
->   qapi/ui.json |  6 +++++-
->   ui/cocoa.m   | 33 ++++++++++++++++++++-------------
->   2 files changed, 25 insertions(+), 14 deletions(-)
-> 
-> diff --git a/qapi/ui.json b/qapi/ui.json
-> index 006616aa77..9035b230ce 100644
-> --- a/qapi/ui.json
-> +++ b/qapi/ui.json
-> @@ -1409,13 +1409,17 @@
->   #     codes match their position on non-Mac keyboards and you can use
->   #     Meta/Super and Alt where you expect them.  (default: off)
->   #
-> +# @full-screen-scaling: Scale display to fit when full-screen enabled.
-> +#     Defaults to "off".
-> +#
-
-I think it's better to name zoom-to-fit to align with DisplayGTK.
-It should also have "(Since 8.2)".
-
->   # Since: 7.0
->   ##
->   { 'struct': 'DisplayCocoa',
->     'data': {
->         '*left-command-key': 'bool',
->         '*full-grab': 'bool',
-> -      '*swap-opt-cmd': 'bool'
-> +      '*swap-opt-cmd': 'bool',
-> +      '*full-screen-scaling': 'bool'
->     } }
->   
->   ##
-> diff --git a/ui/cocoa.m b/ui/cocoa.m
-> index d95276013c..7ddc4de174 100644
-> --- a/ui/cocoa.m
-> +++ b/ui/cocoa.m
-> @@ -1671,7 +1671,9 @@ static void create_initial_menus(void)
->       // View menu
->       menu = [[NSMenu alloc] initWithTitle:@"View"];
->       [menu addItem: [[[NSMenuItem alloc] initWithTitle:@"Enter Fullscreen" action:@selector(doToggleFullScreen:) keyEquivalent:@"f"] autorelease]]; // Fullscreen
-> -    [menu addItem: [[[NSMenuItem alloc] initWithTitle:@"Zoom To Fit" action:@selector(zoomToFit:) keyEquivalent:@""] autorelease]];
-> +    menuItem = [[[NSMenuItem alloc] initWithTitle:@"Zoom To Fit" action:@selector(zoomToFit:) keyEquivalent:@""] autorelease];
-> +    [menuItem setState: (stretch_video) ? NSControlStateValueOn : NSControlStateValueOff];
-
-nit: You don't need parentheses around strech_video.
-
-> +    [menu addItem: menuItem];
->       menuItem = [[[NSMenuItem alloc] initWithTitle:@"View" action:nil keyEquivalent:@""] autorelease];
->       [menuItem setSubmenu:menu];
->       [[NSApp mainMenu] addItem:menuItem];
-> @@ -2041,18 +2043,6 @@ static void cocoa_display_init(DisplayState *ds, DisplayOptions *opts)
->   
->       [QemuApplication sharedApplication];
->   
-> -    create_initial_menus();
-> -
-> -    /*
-> -     * Create the menu entries which depend on QEMU state (for consoles
-> -     * and removable devices). These make calls back into QEMU functions,
-> -     * which is OK because at this point we know that the second thread
-> -     * holds the iothread lock and is synchronously waiting for us to
-> -     * finish.
-> -     */
-> -    add_console_menu_entries();
-> -    addRemovableDevicesMenuItems();
-> -
->       // Create an Application controller
->       QemuCocoaAppController *controller = [[QemuCocoaAppController alloc] init];
-
-QemuCocoaAppController also has code to initialize stretch_video; it's 
-not OK to have code to initialize a same variable in two different places.
-
->       [NSApp setDelegate:controller];
-> @@ -2062,6 +2052,7 @@ static void cocoa_display_init(DisplayState *ds, DisplayOptions *opts)
->           [NSApp activateIgnoringOtherApps: YES];
->           [controller toggleFullScreen: nil];
->       }
-> +
-
-Don't add a blank line here. It's irrelevant from this change.
+Thanks!
 
