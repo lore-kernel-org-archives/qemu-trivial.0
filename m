@@ -1,56 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qvzm8-0002Ax-WD
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Oct 2023 08:47:49 -0400
+	id 1qwG08-0003WN-V9
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Oct 2023 02:07:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1qvsl3-0001vE-C5; Thu, 26 Oct 2023 01:18:13 -0400
-Received: from pi.codeconstruct.com.au ([203.29.241.158]
- helo=codeconstruct.com.au)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qwG08-0003WC-98
+ for qemu-trivial@nongnu.org; Fri, 27 Oct 2023 02:07:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <andrew@codeconstruct.com.au>)
- id 1qvsl1-0004Rg-N5; Thu, 26 Oct 2023 01:18:13 -0400
-Received: from [192.168.13.88]
- (ppp118-210-136-142.adl-adc-lon-bras33.tpg.internode.on.net
- [118.210.136.142])
- by mail.codeconstruct.com.au (Postfix) with ESMTPSA id EDDAA20174;
- Thu, 26 Oct 2023 13:18:05 +0800 (AWST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=codeconstruct.com.au; s=2022a; t=1698297488;
- bh=dAHfECnoFvXcqfIQIqID4USTey8MMaNynUgTIYo+GaI=;
- h=Subject:From:To:Cc:Date:In-Reply-To:References;
- b=EPKrh0djUxCHCZi8sBE7mhllzGodTnw+dPQ0ZL3kII7ETzL6Ix4WmXkp9cdBh5DcZ
- X/mpw4hojMWKtc4PDby3sOlz8gELdkmEpMsalWE940N4sYxf5Shy7JKzU1IYJkGVd3
- hgnSdJBvYI9gfxFmXg20ah9tKmCax3knJx0Knhw/A6/ZlKZLddrO3ZCHaqG7WaJTXo
- ytlqARk2G0BBVMI9jFjbDPTp+KWmchjjO1VIFH0zp/tO9Ct36jLJyUGaJKYMgGPBRE
- de0TAANYs6KPL6PMjhaFMidNQUrygYGzSYsJKoq1OL+D1n2vBvAECtd0ZyEtamWRSj
- RDLFAKLP7g4tQ==
-Message-ID: <6a3d71264cc7e771cf1988ac4a73ef23d142a895.camel@codeconstruct.com.au>
-Subject: Re: [PATCH] MAINTAINERS: aspeed: Update Andrew's email address
-From: Andrew Jeffery <andrew@codeconstruct.com.au>
-To: =?ISO-8859-1?Q?C=E9dric?= Le Goater <clg@kaod.org>, andrew@aj.id.au
-Cc: joel@jms.id.au, peter.maydell@linaro.org, qemu-devel@nongnu.org, 
- qemu-arm@nongnu.org, qemu-trivial@nongnu.org, Laurent Vivier
- <lvivier@redhat.com>
-Date: Thu, 26 Oct 2023 15:48:05 +1030
-In-Reply-To: <255f59a0-6666-44c5-9b21-2435c82e17e2@kaod.org>
-References: <20230925062212.66112-1-andrew@codeconstruct.com.au>
- <aaa71ccc-e7d4-46f4-b902-22a422ff895a@kaod.org>
- <255f59a0-6666-44c5-9b21-2435c82e17e2@kaod.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.46.4-2 
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1qwG05-00088h-Tu
+ for qemu-trivial@nongnu.org; Fri, 27 Oct 2023 02:07:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1698386837;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=vzLepVbCar0JkiTW9XVwgKL2r1EV7yOeGtAAEZPis0Q=;
+ b=i6qvFrUM8DSm3KnVh74uQmKFf2qVxHezMCxexEY8S4BBDGSXQXFpZ+DGvfAP05vudk+BYE
+ Hn0NeAAJyFJ8L7jkCTCBcl0P8b+zmBXJKqp/VsHBJTw7J4g6mOn+vIq2wkNLn56SxMjJmQ
+ 6L182KIRZK0Zxzu2aOXvDCG7hgwpq7U=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-124-tplu8pV3NviObdC7dTL7CQ-1; Fri,
+ 27 Oct 2023 02:07:11 -0400
+X-MC-Unique: tplu8pV3NviObdC7dTL7CQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 122253C0C899;
+ Fri, 27 Oct 2023 06:07:11 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.196])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 24C142166B26;
+ Fri, 27 Oct 2023 06:07:09 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-arm@nongnu.org,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] MAINTAINERS: Make sure that gicv3_internal.h is covered, too
+Date: Fri, 27 Oct 2023 08:07:09 +0200
+Message-ID: <20231027060709.242388-1-thuth@redhat.com>
 MIME-Version: 1.0
-Received-SPF: pass client-ip=203.29.241.158;
- envelope-from=andrew@codeconstruct.com.au; helo=codeconstruct.com.au
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 26 Oct 2023 08:47:47 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -62,26 +65,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Oct 2023 05:18:16 -0000
+X-List-Received-Date: Fri, 27 Oct 2023 06:07:20 -0000
 
-On Wed, 2023-10-25 at 10:57 +0200, C=C3=A9dric Le Goater wrote:
-> On 10/24/23 11:36, C=C3=A9dric Le Goater wrote:
-> > On 9/25/23 08:22, Andrew Jeffery wrote:
-> > > I've changed employers, have company email that deals with patch-base=
-d
-> > > workflows without too much of a headache, and am trying to steer some
-> > > content out of my personal mail.
-> > >=20
-> > > Signed-off-by: Andrew Jeffery <andrew@codeconstruct.com.au>
-> > > ---
-> > >=20
-> > > Hi C=C3=A9dric, do you mind including this in your Aspeed queue?
-> >=20
-> >=20
-> > I am not sure to send an Aspeed PR. May be this change could go
-> > through qemu-trivial ?
->=20
-> After all, I will send an Aspeed PR. Don't bother.
+gic_internal.h is already covered by the "ARM cores" section.
+Let's adapt the entry with a wildcard to cover gicv3_internal.h, too.
 
-Thanks!
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ MAINTAINERS | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 4d54c6fc2b..2c4126b63d 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -700,7 +700,7 @@ M: Peter Maydell <peter.maydell@linaro.org>
+ L: qemu-arm@nongnu.org
+ S: Maintained
+ F: hw/intc/arm*
+-F: hw/intc/gic_internal.h
++F: hw/intc/gic*_internal.h
+ F: hw/misc/a9scu.c
+ F: hw/misc/arm11scu.c
+ F: hw/misc/arm_l2x0.c
+-- 
+2.41.0
+
 
