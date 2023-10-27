@@ -1,71 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qwMCm-0007Ee-Er
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Oct 2023 08:44:48 -0400
+	id 1qwN6G-0003QU-UP
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Oct 2023 09:42:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qwGDY-0004jH-Mt
- for qemu-trivial@nongnu.org; Fri, 27 Oct 2023 02:21:12 -0400
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qwN6E-0003Pq-Qr
+ for qemu-trivial@nongnu.org; Fri, 27 Oct 2023 09:42:06 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1qwGDX-0004kB-54
- for qemu-trivial@nongnu.org; Fri, 27 Oct 2023 02:21:12 -0400
-Received: by mail-lf1-x12a.google.com with SMTP id
- 2adb3069b0e04-508126afb9bso2378360e87.0
- for <qemu-trivial@nongnu.org>; Thu, 26 Oct 2023 23:21:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qwN6D-0000I0-Aw
+ for qemu-trivial@nongnu.org; Fri, 27 Oct 2023 09:42:06 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-9ba1eb73c27so331539266b.3
+ for <qemu-trivial@nongnu.org>; Fri, 27 Oct 2023 06:42:04 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1698387668; x=1698992468; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to
- :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=fWiot1xxhS30niO6atC+EfWIbbTfv5hFa4dJhCJq2rs=;
- b=E13SNPQfCbhwBWuCwkyXjBHBkSo2UZ0i1+8QdnQtWEIWHtanIeqyirxx0auZR+PfRB
- P2kp1aKHmzuXFM72bVu/hA2hEwxTlIG4XvMZL7KRQE2JO1GjIyzffChtv6LkQkmPuSTT
- 7huZod/w9xYBFszWOIERvKcv54tEQQuKBKtfmtFvIxdAq4j8C2u/xKcHcy0bTCBbxNzo
- eFa0pw4iCOJZV9ADOT/5eKrYAPAv7xgdr9NBjrMDRbOYQZMNa5Flm3PukHN9M73eo4AE
- Axf91XDtyEm9jO7DTPUfyYk7OM5vj/ks/wEW6W83IlJLMaeTWtA3ccm/ovmidx/LfC39
- B8tA==
+ d=linaro.org; s=google; t=1698414123; x=1699018923; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=pJwLySfUF35zlxa5YOPsnj4pWWz4vwyKayb5dbl6BxU=;
+ b=CkxAnJ+jndz9+lFtKAyo6cPzz4naivMtJ8SL1YlVEL+bbIyd/rtnP4DuhKjtUER2Cs
+ sP5UzeJw/GXO5uYUWVd2Wn7KdYOT34u3kdSMnWHeA/iqwyOzVYYyellPatWCGsMNwN0Q
+ S8d3TRi5MNrouuJthAlWEv6G+I05gQy9ruV4/l2bjjGvko0NqwnACZLr8VnYTQWdyPZW
+ SGnpEdyGmp6W/ma8HveC9EmLtxbD03v/Gvp0Wtn39/5EIsGxaKKm25bKWnvSazofYm8S
+ uxpUV0u9uYxQaYmXRPq9whE9f90gQMdqxLwB00BKR56a/7TLu9xLWDbUI06C/50gHd+t
+ 8VWw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698387668; x=1698992468;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to
- :references:user-agent:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=fWiot1xxhS30niO6atC+EfWIbbTfv5hFa4dJhCJq2rs=;
- b=ryfjkZUCP7t/fD2zKO8YfZq9ABn06Z6yY7Sh7JbdhmzwM8ZL1QwXYnON9AE45l7XjP
- mzdMQGFUaKzy8iv19yRJS3ciiduGWQZJNc/IitcEHbIri1pa5AJwuEB1SjBL78Q+oJE1
- eSo1nDr3lmaT1p9QcNRN3iAMttPtIaL6ucm8MFIa2HUS8jrzjbaXm8OoBW4X8ufI7Gkp
- lNWTPD8D6EveOs+nyTiF9u/s9Y7aQ3TorRyP+Sk9Z5tYQBAWl4Fy+4Lf+gHmYuG9dGgq
- KC4B4e+k7KQsPRbHGHB6mxybnWOD25fj53YtWq87QeLEPDdc5ZtN/EnovJgCEpVRLkgE
- fu1w==
-X-Gm-Message-State: AOJu0YxLMV6K8V3wXa6zpHgTCkVuwkcMRD9aOfolaMiHyi6jnb7bNuJD
- CHyHwn61NNGCRicsgKAOlDLjzQ==
-X-Google-Smtp-Source: AGHT+IHAJe2ua7nhLWFRobxwuxA5Ea9jKVaWBpC0EOc6jpmifbw021zviHsn8lkN3Vbr5qsFENpxrg==
-X-Received: by 2002:ac2:4ac1:0:b0:507:a58f:79b0 with SMTP id
- m1-20020ac24ac1000000b00507a58f79b0mr935937lfp.9.1698387668144; 
- Thu, 26 Oct 2023 23:21:08 -0700 (PDT)
-Received: from meli.delivery (adsl-141.37.6.2.tellas.gr. [37.6.2.141])
+ d=1e100.net; s=20230601; t=1698414123; x=1699018923;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=pJwLySfUF35zlxa5YOPsnj4pWWz4vwyKayb5dbl6BxU=;
+ b=U3u5mULBlTrXLnsZOvsfvKSdWtVwS7D7Mu6DBaBwk7XfLDJFIUHecNBILHN8UQIpJR
+ JxNFC1vU2cppxomvevZGUgqz07o3z4P+wwsiQRrkpFvPVVXbRAi/oPZ1QMp1n/KPTEBf
+ zkG00dIhP3NL2abaBi7M/NHYuuTTdqzTxlnBxoUcmGZevx2vpVydkI7AK39Gvm37yPQF
+ fbYdIeHO/Kc14FnFLXgE7xZ/l+Hs2VQfSxOZUd5Z9PLnkwXWmzSsxNgSMODmzQj49Tfg
+ smUzsb6yzWi3cPMHbYL/1VXjbpp/ZjMtkH3ky0KYpib5PZ+nKiig603aXkhIIJ341Zlo
+ 9Atw==
+X-Gm-Message-State: AOJu0Yy+ZsRC3/MaZdPCiLF81UI8uUwoMQT5aP2ekvCzylm+IBEj1BYk
+ K1e5gGWxdXpYWEfCF89z+cxybg==
+X-Google-Smtp-Source: AGHT+IHqvgyWMTNBQ3jZO134+fVbmX/Nv6XxmsrDVpQaBhllf7BoJndpMT+7syHF3aGtxG/c7NybGw==
+X-Received: by 2002:a17:907:360a:b0:9c7:dc4e:1a22 with SMTP id
+ bk10-20020a170907360a00b009c7dc4e1a22mr2305798ejc.48.1698414123642; 
+ Fri, 27 Oct 2023 06:42:03 -0700 (PDT)
+Received: from m1x-phil.lan ([176.171.220.131])
  by smtp.gmail.com with ESMTPSA id
- z9-20020a5d44c9000000b0032d9caeab0fsm1013790wrr.77.2023.10.26.23.21.07
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Thu, 26 Oct 2023 23:21:07 -0700 (PDT)
-Date: Fri, 27 Oct 2023 09:20:36 +0300
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: qemu-devel@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-Cc: qemu-trivial@nongnu.org
-Bcc: 
-Subject: Re: [PATCH] MAINTAINERS: Add the virtio-gpu documentation to the
- corresponding section
-User-Agent: meli 0.8.2
-References: <20231027060808.242442-1-thuth@redhat.com>
-In-Reply-To: <20231027060808.242442-1-thuth@redhat.com>
-Message-ID: <36cb5.zjk9zvxmauvb@linaro.org>
+ mf19-20020a170906cb9300b0099ddc81903asm1222768ejb.221.2023.10.27.06.42.02
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 27 Oct 2023 06:42:03 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Joel Stanley <joel@jms.id.au>, qemu-trivial@nongnu.org,
+ Andrew Jeffery <andrew@aj.id.au>, Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-arm@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] hw/watchdog/wdt_aspeed: Remove unused 'hw/misc/aspeed_scu.h'
+ header
+Date: Fri, 27 Oct 2023 15:42:00 +0200
+Message-ID: <20231027134200.29906-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset=utf-8; format=flowed
-Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-lf1-x12a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -74,7 +70,6 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 27 Oct 2023 08:44:46 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,14 +81,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Oct 2023 06:21:12 -0000
+X-List-Received-Date: Fri, 27 Oct 2023 13:42:07 -0000
 
-On Fri, 27 Oct 2023 09:08, Thomas Huth <thuth@redhat.com> wrote:
->Add virtio-gpu.rst to the corresponding section in MAINTAINERS, so that
->the maintainers gets CC:-ed on corresponding patches.
->
->Signed-off-by: Thomas Huth <thuth@redhat.com>
->---
+Aspeed watchdog doesn't use anything from the System Control Unit.
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/watchdog/wdt_aspeed.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
+index d267aa185c..273a49d360 100644
+--- a/hw/watchdog/wdt_aspeed.c
++++ b/hw/watchdog/wdt_aspeed.c
+@@ -14,7 +14,6 @@
+ #include "qemu/module.h"
+ #include "qemu/timer.h"
+ #include "sysemu/watchdog.h"
+-#include "hw/misc/aspeed_scu.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/sysbus.h"
+ #include "hw/watchdog/wdt_aspeed.h"
+-- 
+2.41.0
+
 
