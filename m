@@ -1,52 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qwiMq-0006QV-Sv
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Oct 2023 08:24:40 -0400
+	id 1qwiMr-0006Qg-1t
+	for mharc-qemu-trivial@gnu.org; Sat, 28 Oct 2023 08:24:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1qwiMo-0006OT-Rq; Sat, 28 Oct 2023 08:24:38 -0400
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ id 1qwiMo-0006OW-Vg; Sat, 28 Oct 2023 08:24:38 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1qwiMj-0006m0-Jo; Sat, 28 Oct 2023 08:24:38 -0400
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-9d10f94f70bso130853866b.3; 
- Sat, 28 Oct 2023 05:24:32 -0700 (PDT)
+ id 1qwiMn-0006ma-6v; Sat, 28 Oct 2023 08:24:38 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-53e08e439c7so4972035a12.0; 
+ Sat, 28 Oct 2023 05:24:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1698495871; x=1699100671; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1698495874; x=1699100674; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=p98LzR4A98wQ5ZfYaKYuefbwebJ7vVfonZaSMKgh8fI=;
- b=Ltxrwo8fo+ppBxo9soWE1pFE66G33G1uPSN7E0VdVwWEIdwUMfDg7tmcVr4UNf0Wjw
- zcCM+BqCjcz6vDU1IAOK3ago39QHmbxys+eiHqbDIdBxQTothuVVX9yL7cU2wd2KHmbc
- MMKkfQWDklaBPkh5JP2Tp4TEecDos78nP7QOJIgTh7lxPlab0iQMFiEbqEraCeLbZaJ8
- 5Jah9VuuK08WVe2BHdyHbV/WjO1uR0prJMoz5J1MDL1QGjU23sB/oUSCDfnOxKCMxA5H
- kjVrbPUPbkzufi8CYQGuLxi9S3MH1zWqdpKa1ULrLtWw9WvSzdwJRGvRCsGasHJsPG3v
- fsgw==
+ bh=fjgdUkcWnddjAoJazRvwcvImmvBOY1raY1kEKMOKf0U=;
+ b=kLlozT/wxisgJdu9nNPJ2Doc10Dlgu+5O/FsYU54yO/l+8bd1PCJaKaRAd6/68BTRu
+ dC2/IVL3muAlXZ5CKqkqSFSwgi06cDxrc88TxfnE9Dw6Wt1VzijkFBmWuJG5jBVzx296
+ h1Bn+ygTpCN3f5aIrFDZwzjZ8/FcS5cDoQ5m9Ev4AGm6lzE2qwfU6fq8h9ZBF1RUL6N+
+ GoSNBauJRKyP106U1PHQt8thOVVaa7zOxoPfEytVckIbr8xh6qNG9LaJUiumnJ0zA+s3
+ ZCr9w+lGBAV7j2kywTKJIx6ybVkqNeTdZsIVz6Km+Vg0r+XFVt+UIAaR7o1litvnkBXw
+ T67g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1698495871; x=1699100671;
+ d=1e100.net; s=20230601; t=1698495874; x=1699100674;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=p98LzR4A98wQ5ZfYaKYuefbwebJ7vVfonZaSMKgh8fI=;
- b=rKgMTWjAnGr2lakIhdOq0G+zPGcQnoNnbAQwBRQhhjEf9KcjYWDPvfvv82Y07qu1aA
- uZeLVsKVXiJ/0dIAvOO25aXjfIyoI3K8zO+j7UBQeGrdfM2mTfKluL5aknAGUK86NLih
- OH7SGHeM0k0rU6hgkHbT8pWpWbx6OCmdHzgB5U+JsOtwq61iGjx8+V0JqI8Ly3WH0Ds2
- 3qPSPTpLAZjS4ByOIbaqvJ34hrn0CPHp62aBVvx3po7spRiPlvd/mNKUimeNKWp8Mu+S
- Ft4NXAb71i2BRLFODYXnpjZpTuRW5nFySA3QqWZmKWpThw3QGSu8qCMpVPGFDHTsyGd1
- LKNg==
-X-Gm-Message-State: AOJu0YxPZRQSngoXkXSLNvejUWDhRA09/p9LLnofqYvFExWNA892xUEC
- JB9oekUq5sRSzHeKhm4uoHwibFNF9Qc=
-X-Google-Smtp-Source: AGHT+IE9lMcNenzXtmCdyFljehhaORXwfWkm/tchOl2CQVJyxQEDCoTdkbHWTRhAw91FZLlC9MDfxA==
-X-Received: by 2002:a17:907:3f1f:b0:9ae:4878:1172 with SMTP id
- hq31-20020a1709073f1f00b009ae48781172mr4123125ejc.7.1698495870679; 
- Sat, 28 Oct 2023 05:24:30 -0700 (PDT)
+ bh=fjgdUkcWnddjAoJazRvwcvImmvBOY1raY1kEKMOKf0U=;
+ b=drvM+RN+6mkbBFkI1YBwoMSr+Nbyy202YyHMq2EyONVOrN522rz0Ht/P7uSXN2No38
+ nDHnGb4c2pgy1Qf+3J6DNdSdjfvN+qXTicBQpQd1XwKCeoeaUmkVgLgEy6wpJACufe/n
+ erkNSwZ2sil7tdnRif/Y+pNgehCrZLzSUCtzrMEO/XB6V3lKeO3A8D7jmNuA8elHlSAm
+ Sprh4Y7XyfFig0RjFuD/Oq87Gzutcn1y5FbLykR9J59AfvD2jedu2TDY+dlrOL1oe0q7
+ M/Kj8eVx8U7akGtvf5M5Dkak3MrrBMHDymahO1X6IXnbkw9GFc0iJEUq1/K5J+shEgd3
+ iSQg==
+X-Gm-Message-State: AOJu0YxE5D/+Ij4VcJrNBl+4dvxsLDmu55ktPLOeAxLG6XWaVrwZAi2z
+ tPeNV9Cw7e8OnTycuu3tji8W9b7Jy6A=
+X-Google-Smtp-Source: AGHT+IGOSUYtIgWsA3aFhpnqbGAIgU9Hq/uj5HdoxIXee0RFUX3nzS4IbTyvCi7cbMOImsLF/RAteQ==
+X-Received: by 2002:a17:907:3603:b0:9be:40ba:5f1 with SMTP id
+ bk3-20020a170907360300b009be40ba05f1mr4436765ejc.60.1698495874201; 
+ Sat, 28 Oct 2023 05:24:34 -0700 (PDT)
 Received: from archlinux.. (dynamic-089-012-044-170.89.12.pool.telefonica.de.
  [89.12.44.170]) by smtp.gmail.com with ESMTPSA id
- a13-20020a170906190d00b009ae3d711fd9sm2706687eje.69.2023.10.28.05.24.29
+ a13-20020a170906190d00b009ae3d711fd9sm2706687eje.69.2023.10.28.05.24.32
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 28 Oct 2023 05:24:30 -0700 (PDT)
+ Sat, 28 Oct 2023 05:24:33 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
@@ -58,16 +58,16 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 3/6] hw/misc/imx7_snvs: Trace MMIO access
-Date: Sat, 28 Oct 2023 14:24:12 +0200
-Message-ID: <20231028122415.14869-4-shentey@gmail.com>
+Subject: [PATCH 5/6] hw/i2c/pm_smbus: Convert DPRINTF to trace events
+Date: Sat, 28 Oct 2023 14:24:14 +0200
+Message-ID: <20231028122415.14869-6-shentey@gmail.com>
 X-Mailer: git-send-email 2.42.0
 In-Reply-To: <20231028122415.14869-1-shentey@gmail.com>
 References: <20231028122415.14869-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x533.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -89,53 +89,90 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 28 Oct 2023 12:24:39 -0000
 
+Let the trace messages slightly deviate from the function names
+("smb" -> "smbus") being traced in order to avoid conflights with the SMB
+protocol.
+
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/misc/imx7_snvs.c  | 5 +++++
- hw/misc/trace-events | 4 ++++
- 2 files changed, 9 insertions(+)
+ hw/i2c/pm_smbus.c   | 18 ++++--------------
+ hw/i2c/trace-events |  6 ++++++
+ 2 files changed, 10 insertions(+), 14 deletions(-)
 
-diff --git a/hw/misc/imx7_snvs.c b/hw/misc/imx7_snvs.c
-index ee7698bd9c..a245f96cd4 100644
---- a/hw/misc/imx7_snvs.c
-+++ b/hw/misc/imx7_snvs.c
-@@ -16,9 +16,12 @@
- #include "hw/misc/imx7_snvs.h"
- #include "qemu/module.h"
- #include "sysemu/runstate.h"
+diff --git a/hw/i2c/pm_smbus.c b/hw/i2c/pm_smbus.c
+index 4e1b8a5182..78e7c229a8 100644
+--- a/hw/i2c/pm_smbus.c
++++ b/hw/i2c/pm_smbus.c
+@@ -23,6 +23,7 @@
+ #include "hw/i2c/pm_smbus.h"
+ #include "hw/i2c/smbus_master.h"
+ #include "migration/vmstate.h"
 +#include "trace.h"
  
- static uint64_t imx7_snvs_read(void *opaque, hwaddr offset, unsigned size)
+ #define SMBHSTSTS       0x00
+ #define SMBHSTCNT       0x02
+@@ -64,15 +65,6 @@
+ #define AUX_BLK       (1 << 1)
+ #define AUX_MASK      0x3
+ 
+-/*#define DEBUG*/
+-
+-#ifdef DEBUG
+-# define SMBUS_DPRINTF(format, ...)     printf(format, ## __VA_ARGS__)
+-#else
+-# define SMBUS_DPRINTF(format, ...)     do { } while (0)
+-#endif
+-
+-
+ static void smb_transaction(PMSMBus *s)
  {
-+    trace_imx7_snvs_read(offset, 0);
-+
-     return 0;
- }
+     uint8_t prot = (s->smb_ctl >> 2) & 0x07;
+@@ -82,7 +74,7 @@ static void smb_transaction(PMSMBus *s)
+     I2CBus *bus = s->smbus;
+     int ret;
  
-@@ -28,6 +31,8 @@ static void imx7_snvs_write(void *opaque, hwaddr offset,
-     const uint32_t value = v;
-     const uint32_t mask  = SNVS_LPCR_TOP | SNVS_LPCR_DP_EN;
+-    SMBUS_DPRINTF("SMBus trans addr=0x%02x prot=0x%02x\n", addr, prot);
++    trace_smbus_transaction(addr, prot);
+     /* Transaction isn't exec if STS_DEV_ERR bit set */
+     if ((s->smb_stat & STS_DEV_ERR) != 0)  {
+         goto error;
+@@ -258,8 +250,7 @@ static void smb_ioport_writeb(void *opaque, hwaddr addr, uint64_t val,
+     PMSMBus *s = opaque;
+     uint8_t clear_byte_done;
  
-+    trace_imx7_snvs_write(offset, value);
-+
-     if (offset == SNVS_LPCR && ((value & mask) == mask)) {
-         qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+-    SMBUS_DPRINTF("SMB writeb port=0x%04" HWADDR_PRIx
+-                  " val=0x%02" PRIx64 "\n", addr, val);
++    trace_smbus_ioport_writeb(addr, val);
+     switch(addr) {
+     case SMBHSTSTS:
+         clear_byte_done = s->smb_stat & val & STS_BYTE_DONE;
+@@ -429,8 +420,7 @@ static uint64_t smb_ioport_readb(void *opaque, hwaddr addr, unsigned width)
+         val = 0;
+         break;
      }
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index 24ba7cc4d0..426a8472b6 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -115,6 +115,10 @@ msf2_sysreg_write_pll_status(void) "Invalid write to read only PLL status regist
- imx7_gpr_read(uint64_t offset) "addr 0x%08" PRIx64
- imx7_gpr_write(uint64_t offset, uint64_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx64
+-    SMBUS_DPRINTF("SMB readb port=0x%04" HWADDR_PRIx " val=0x%02x\n",
+-                  addr, val);
++    trace_smbus_ioport_readb(addr, val);
  
-+# imx7_snvs.c
-+imx7_snvs_read(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
-+imx7_snvs_write(uint64_t offset, uint32_t value) "addr 0x%08" PRIx64 "value 0x%08" PRIx32
+     if (s->set_irq) {
+         s->set_irq(s, smb_irq_value(s));
+diff --git a/hw/i2c/trace-events b/hw/i2c/trace-events
+index d7b1e25858..6900e06eda 100644
+--- a/hw/i2c/trace-events
++++ b/hw/i2c/trace-events
+@@ -15,6 +15,12 @@ i2c_send_async(uint8_t address, uint8_t data) "send_async(addr:0x%02x) data:0x%0
+ i2c_recv(uint8_t address, uint8_t data) "recv(addr:0x%02x) data:0x%02x"
+ i2c_ack(void) ""
+ 
++# pm_smbus.c
 +
- # mos6522.c
- mos6522_set_counter(int index, unsigned int val) "T%d.counter=%d"
- mos6522_get_next_irq_time(uint16_t latch, int64_t d, int64_t delta) "latch=%d counter=0x%"PRIx64 " delta_next=0x%"PRIx64
++smbus_ioport_readb(uint16_t addr, uint8_t data) "[0x%04" PRIx16 "] -> val=0x%02x"
++smbus_ioport_writeb(uint16_t addr, uint8_t data) "[0x%04" PRIx16 "] <- val=0x%02x"
++smbus_transaction(uint8_t addr, uint8_t prot) "addr=0x%02x prot=0x%02x"
++
+ # allwinner_i2c.c
+ 
+ allwinner_i2c_read(const char* reg_name, uint64_t offset, uint64_t value) "read %s [0x%" PRIx64 "]: -> 0x%" PRIx64
 -- 
 2.42.0
 
