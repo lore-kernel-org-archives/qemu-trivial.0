@@ -1,66 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1qxGZM-0000Tc-91
-	for mharc-qemu-trivial@gnu.org; Sun, 29 Oct 2023 20:55:52 -0400
+	id 1qxImq-0005RT-7z
+	for mharc-qemu-trivial@gnu.org; Sun, 29 Oct 2023 23:17:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pisa@fel.cvut.cz>)
- id 1qxFSW-00085p-Os; Sun, 29 Oct 2023 19:44:45 -0400
-Received: from smtpx.feld.cvut.cz ([147.32.210.153] helo=smtpx.fel.cvut.cz)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pisa@fel.cvut.cz>)
- id 1qxFSU-0007En-Ev; Sun, 29 Oct 2023 19:44:44 -0400
-Received: from localhost (styx2022 [192.168.200.17])
- by smtpx.fel.cvut.cz (Postfix) with ESMTP id DF9951D3FB;
- Mon, 30 Oct 2023 00:43:37 +0100 (CET)
-X-Virus-Scanned: IMAP STYX AMAVIS
-Received: from smtpx.fel.cvut.cz ([192.168.200.2])
- by localhost (styx2022.feld.cvut.cz [192.168.200.17]) (amavisd-new, port 10060)
- with ESMTP id jF2ncdxRdMz8; Mon, 30 Oct 2023 00:43:36 +0100 (CET)
-Received: from baree.pikron.com (ip-78-102-109-231.bb.vodafone.cz
- [78.102.109.231])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested) (Authenticated sender: pisa)
- by smtpx.fel.cvut.cz (Postfix) with ESMTPSA id AC2461D7A2;
- Mon, 30 Oct 2023 00:43:35 +0100 (CET)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=fel.cvut.cz;
- s=felmail; t=1698623016;
- bh=2MybkgFprZ5xt5OSjJ1gn407cF4sR/3fl1/kcWreZxY=;
- h=From:To:Subject:Date:Cc:References:In-Reply-To:From;
- b=gOwSKppYZzGiou4UG6+MyXAOe+RzahUa9phinrCmFT1yYFqi+NV5S/SHLNbyLs+D0
- N/ObrLZi1vFGg9PvtjSKUGd2+dZ0vMmHMgWbN1yVj49fqg47YAiuq+P4ca76KtSXmT
- 81TJq7l84g8PO632KVHwUaiy4xkmfr703NqKurmaEwbfFQ77DU1YoZy4KL+Rbxtk27
- iuMYDA2agIElwhisijjq96JJN+C9auz16nCoIRoDDTkuYscMx9ltcEpUSY7WoKUZAy
- H0+4k0xOEcL114Mg1lyKG1NMnvgjadJkgZjWSI0wfG5KuZuicJm3mutM4iLvksqonm
- +1dBpvnyKgmFA==
-From: Pavel Pisa <pisa@fel.cvut.cz>
-To: Thomas Huth <thuth@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH] MAINTAINERS: Add the can documenation file to the CAN
- section
-Date: Mon, 30 Oct 2023 00:43:40 +0100
-User-Agent: KMail/1.9.10
-Cc: qemu-devel@nongnu.org, Vikram Garhwal <fnu.vikram@xilinx.com>,
- qemu-trivial@nongnu.org
-References: <20231027060931.242491-1-thuth@redhat.com>
-In-Reply-To: <20231027060931.242491-1-thuth@redhat.com>
-X-KMail-QuotePrefix: > 
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qxIml-0005Qp-0c
+ for qemu-trivial@nongnu.org; Sun, 29 Oct 2023 23:17:53 -0400
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1qxImi-00067t-8H
+ for qemu-trivial@nongnu.org; Sun, 29 Oct 2023 23:17:50 -0400
+Received: by mail-lj1-x232.google.com with SMTP id
+ 38308e7fff4ca-2c5056059e0so58022481fa.3
+ for <qemu-trivial@nongnu.org>; Sun, 29 Oct 2023 20:17:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1698635864; x=1699240664; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=EZDWAj1ykkJn4R5/rp3f1Fz3f3ygHodsmieKmcp466M=;
+ b=zmIiWTzD8gWWWFWNxjeQ/ZypjDUCDodRCTDY8nKLHBiSWJ1erJncw8LUPkVR3eijC/
+ 2JnjdorEqTUoaP3KZEK/DkrA8h5MomO87YBUs8DhzN4Nq9Xw3mmUDMbcaRUMQTM+dMsg
+ 1gGiRtCPSHhmentt/AcOPUR+IFmYXspmYI0wFT5rSbeyJHJbdYq9ixl9nQ3fnsz58KT7
+ q08HsCYHfMHo1A7EGhWIO3yPJrPxU/nvC9NOxFzCVDF28m2oyvv0NSVbiFlPMzNR6e9n
+ +xRDVbCKr96beN0EIJdNxP4A+27Zs5D4eaLKOQkSLbREu8YuV2VX6FccwCpJcwfghV1l
+ Bgsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1698635864; x=1699240664;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=EZDWAj1ykkJn4R5/rp3f1Fz3f3ygHodsmieKmcp466M=;
+ b=d9e2Sztu84tVNvA3Ms+iiS2EYsBYy7VFC05RUEHdCt/Ff8u9AKoEpOFX2/adzwpGF7
+ oPzqocGk74qy26EoB4/TITQHtvXGEhulbQe5hxKz0eUQ6Bb88uw/vLjoqE6mePXr4Twi
+ 3vjqA1eUKN++REY2xgbR0Z8V3uCitR+jysor/2oCCSO9BvHwt+uCcJpVbagO4z0K2SA2
+ wjVGPmegEUIEUjUlhG/u+CJbSkBGJa3hLgUiDVIfGkvnILRA64DN5g94coAYqHJ1Z6L+
+ GohnTa66fw7bUrhMaBUBQGr4oKIYSahFQnlY4NYhmhMBRPkx1pE5irHcc31I8oKL7nWd
+ wXwA==
+X-Gm-Message-State: AOJu0Yxx0mXk8c+qHXtKjS9yG2rJUOHUoLbAplN+2szENXXXrD9rdFUj
+ a646ejhMa523PrN25/rnLEubxg==
+X-Google-Smtp-Source: AGHT+IEOpLAOzm7qSabmM28Vo5aaKS60C5sH2RgBNpS1Fm6uCguOrTMCS610koiYqVQ1a2x08Rzogw==
+X-Received: by 2002:a2e:bc83:0:b0:2c3:3c0b:d747 with SMTP id
+ h3-20020a2ebc83000000b002c33c0bd747mr7670151ljf.17.1698635864024; 
+ Sun, 29 Oct 2023 20:17:44 -0700 (PDT)
+Received: from [192.168.69.115] ([176.170.212.50])
+ by smtp.gmail.com with ESMTPSA id
+ t10-20020a1c770a000000b00405bbfd5d16sm8002419wmi.7.2023.10.29.20.17.42
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 29 Oct 2023 20:17:43 -0700 (PDT)
+Message-ID: <2fe346f1-c76f-7b37-32cf-b9118037b235@linaro.org>
+Date: Mon, 30 Oct 2023 04:17:40 +0100
 MIME-Version: 1.0
-Content-Type: Text/Plain;
-  charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Content-Disposition: inline
-Message-Id: <202310300043.40642.pisa@fel.cvut.cz>
-Received-SPF: pass client-ip=147.32.210.153; envelope-from=pisa@fel.cvut.cz;
- helo=smtpx.fel.cvut.cz
-X-Spam_score_int: -49
-X-Spam_score: -5.0
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:102.0)
+ Gecko/20100101 Thunderbird/102.15.1
+Subject: Re: [PATCH 1/6] hw/watchdog/wdt_imx2: Trace MMIO access
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org,
+ Andrey Smirnov <andrew.smirnov@gmail.com>, Peter Xu <peterx@redhat.com>,
+ David Hildenbrand <david@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Mads Ynddal <mads@ynddal.dk>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20231028122415.14869-1-shentey@gmail.com>
+ <20231028122415.14869-2-shentey@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=c3=a9?= <philmd@linaro.org>
+In-Reply-To: <20231028122415.14869-2-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::232;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x232.google.com
+X-Spam_score_int: -50
+X-Spam_score: -5.1
 X-Spam_bar: -----
-X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, NICE_REPLY_A=-2.972, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-5.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-2.972,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 29 Oct 2023 20:55:49 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,51 +88,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 29 Oct 2023 23:44:46 -0000
+X-List-Received-Date: Mon, 30 Oct 2023 03:17:53 -0000
 
-Hello Thomas and others,
-
-On Friday 27 of October 2023 08:09:31 Thomas Huth wrote:
-> Add can.rst to the corresponding section in MAINTAINERS, so that
-> the maintainers get CC:-ed on corresponding patches.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 28/10/23 14:24, Bernhard Beschow wrote:
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->  MAINTAINERS | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/MAINTAINERS b/MAINTAINERS
-> index cce6feff35..48d45b958f 100644
-> --- a/MAINTAINERS
-> +++ b/MAINTAINERS
-> @@ -2606,6 +2606,7 @@ W: https://canbus.pages.fel.cvut.cz/
->  F: net/can/*
->  F: hw/net/can/*
->  F: include/net/can_*.h
-> +F: docs/system/devices/can.rst
+>   hw/watchdog/wdt_imx2.c   | 24 ++++++++++++++++++------
+>   hw/watchdog/trace-events |  4 ++++
+>   2 files changed, 22 insertions(+), 6 deletions(-)
 
-Acked-by: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-I do not have commit right to the Qemu Git.
-Please, Paolo or somebody else commit the patch
-into mainline.
-
-Best wishes,
-
-                Pavel
-
--- 
-                Pavel Pisa
-    phone:      +420 603531357
-    e-mail:     pisa@cmp.felk.cvut.cz
-    Department of Control Engineering FEE CVUT
-    Karlovo namesti 13, 121 35, Prague 2
-    university: http://control.fel.cvut.cz/
-    personal:   http://cmp.felk.cvut.cz/~pisa
-    social:     https://social.kernel.org/ppisa
-    projects:   https://www.openhub.net/accounts/ppisa
-    CAN related:http://canbus.pages.fel.cvut.cz/
-    RISC-V education: https://comparch.edu.cvut.cz/
-    Open Technologies Research Education and Exchange Services
-    https://gitlab.fel.cvut.cz/otrees/org/-/wikis/home
 
