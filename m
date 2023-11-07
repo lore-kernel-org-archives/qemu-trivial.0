@@ -1,76 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r0Jtq-0002lb-25
-	for mharc-qemu-trivial@gnu.org; Tue, 07 Nov 2023 06:05:38 -0500
+	id 1r0K5I-0005VG-Vm
+	for mharc-qemu-trivial@gnu.org; Tue, 07 Nov 2023 06:17:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r0Jtm-0002ec-Vp
- for qemu-trivial@nongnu.org; Tue, 07 Nov 2023 06:05:34 -0500
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r0Jtk-00057V-SL
- for qemu-trivial@nongnu.org; Tue, 07 Nov 2023 06:05:34 -0500
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-53d9f001b35so9281802a12.2
- for <qemu-trivial@nongnu.org>; Tue, 07 Nov 2023 03:05:31 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699355129; x=1699959929; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=4K2J9d83ldHFiX6Kit/m94EXtSLO8C4qjHADXq627NQ=;
- b=wk00VyBPoaAaFn9iPGPm3sAEZhAso1uRQRgh5KrXrC7MNL+0SXiszp79mGL0GYLoT1
- VZpC/fkd/Ra7GUjhPOfashMB3hAH6yEx83b/Y95bdaQBNnek6K99rQ/N3bwVNmmW4eWx
- NWN6zqlhAgwl1M4pVNiPhbgIWsMPwrALAfkBCV8KPfyubZDerW3t9hPVm3JfcY6AoHUi
- IdBQJ/7c0UNHOJNzZesRfxw7HeN7/4kRHjcrCbf7823nGlntqScLWp8gUlsjpejsxCMA
- dPT2NdVCzNAJnMq/VwNLSZ1m5c7YVHgLc/2N5N0v1ro+MnNqy/HUSWjGb07UC2wmt+Ss
- zdKg==
+ (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
+ id 1r0K5H-0005Sp-HD
+ for qemu-trivial@nongnu.org; Tue, 07 Nov 2023 06:17:27 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
+ id 1r0K5F-0006ur-OP
+ for qemu-trivial@nongnu.org; Tue, 07 Nov 2023 06:17:27 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1699355844;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=hlI7k+PDq1EDJS3rGJFrP+0qAFzPftcQEHkWaVkweTw=;
+ b=hM4vgQF7cGNpSmB/gen+oIInP4nA24Qd/e3Dy5FygWfBct5+PZ1s61A8XinDD0MBXatTwo
+ nCt+ziFszvHnqP9FPgLbe8GX35fYtbuY25T+1A0poVSCYZKWk4BZorrIlpYEbyGS4w3F+9
+ k//zZh9F8LWjEyTk6n/dPn68MWWyTnE=
+Received: from mail-lf1-f69.google.com (mail-lf1-f69.google.com
+ [209.85.167.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-317-OTSFjj8qOcy3Lcy6ukBxtQ-1; Tue, 07 Nov 2023 06:17:23 -0500
+X-MC-Unique: OTSFjj8qOcy3Lcy6ukBxtQ-1
+Received: by mail-lf1-f69.google.com with SMTP id
+ 2adb3069b0e04-50798a259c7so5296740e87.1
+ for <qemu-trivial@nongnu.org>; Tue, 07 Nov 2023 03:17:22 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699355129; x=1699959929;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4K2J9d83ldHFiX6Kit/m94EXtSLO8C4qjHADXq627NQ=;
- b=NSNMWsvyW1kPlMklVu9/ZOJ89mD8LC1lyiPvtLT/claydHdaPQMeZsd+591wpHY/CU
- jVLKg794BjEJFkyULLI9B11Zhaq+CibCOIPtJ4uDRqqVrV75YrRixcCxLauGWP0bkRoQ
- P5MeVdVM9b83OuIqoJF3vN5C08V1X+OO4f5cJAWgeT3BeT25bQcTpZRpkCgMz6jltBx8
- H2wMU8LumQKLgd90wu9FyQ3NDVOTTg1GIkh18CJwlLh86PuiG+ZP44o6zu7b8QsSb94L
- S2eofv6hIrHXyGCrtme3usHsPHfbFpOP8XKUKHh1pnkUhr0fgpE0vB0+YWAa/ImeyGlJ
- jf6g==
-X-Gm-Message-State: AOJu0YzXEAJ4YNegNIlsjZ11eepFgd30Gju6UVT4W86azqvXRz69FTLI
- j0Ncl/Fkbic90WFYL606Vkqn7QSHLQTZZ95jhd4=
-X-Google-Smtp-Source: AGHT+IHdj4JD+/zmbDoIA9CZVqdIJr/0qRTTxmo6ciyHTf8vMWCb7Al7WF0Exn65824ExmRGsJr1aw==
-X-Received: by 2002:a50:bb08:0:b0:530:77e6:849f with SMTP id
- y8-20020a50bb08000000b0053077e6849fmr26925586ede.27.1699355129400; 
- Tue, 07 Nov 2023 03:05:29 -0800 (PST)
-Received: from [192.168.69.115] ([176.187.216.69])
- by smtp.gmail.com with ESMTPSA id
- u24-20020a50d518000000b0053e07fe8d98sm5455414edi.79.2023.11.07.03.05.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 07 Nov 2023 03:05:29 -0800 (PST)
-Message-ID: <0f0b4c0e-63c5-4388-8b21-f13594f03094@linaro.org>
-Date: Tue, 7 Nov 2023 12:05:28 +0100
+ d=1e100.net; s=20230601; t=1699355841; x=1699960641;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=hlI7k+PDq1EDJS3rGJFrP+0qAFzPftcQEHkWaVkweTw=;
+ b=iYikwjpogEReRgjCjHcDkr4JA4CaAkp5ADKGgi/bcuSlvssBbqKPqIS2UB3NwdEUg4
+ M9OlY9Vd2eIx6LJ/sj2bKJD6eRX7yW7aXs6zlNX8sxZBMlE9SYIJu7NLNXJezQs6XMmx
+ GN7Nt264Nw/m95yHXDaMNHdZK3H1EsheQdmE/e1P57l3pD9Qb54K5N5FEd7AxFA5LoF2
+ 3iHyaaUgOwLJnXxUTJ/LJZNnzEcukfE64dv3SGGl4GwxJwPNUEpX5sgFsO88DwSf1K7z
+ i6TvGTWbpc7+qit8JzgCMw0xQgFQ3UB0VMBQ+RoGJhofYZHeTcNYzIJR5wcmoIoSTVio
+ Ni4Q==
+X-Gm-Message-State: AOJu0YzHgpS1GK6SZEVYU/CAV7eaB2W74j6y100JllxHaawJJ0fTXL/B
+ MdZ0wBeM2Rg8qQUUZ+IF9WPjBPe3cvLwZyxfyvGTpOnsSaz+9wktxWUV8RCDFj5Ak4Eaw83t0Qj
+ sgOv4Dr6Up+h1lXfQ9aC9GQDU2Yv5brPJOA==
+X-Received: by 2002:ac2:4c2d:0:b0:509:46fb:1fe3 with SMTP id
+ u13-20020ac24c2d000000b0050946fb1fe3mr11728008lfq.42.1699355841637; 
+ Tue, 07 Nov 2023 03:17:21 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEERKFUcIL7AKjvN+kgzEgMP5AKiOmx+EnCqNPKO1JfchnHTIp3ugJHEkEn2LJUbsv19dG68Ty3XzTuHuGQa7k=
+X-Received: by 2002:ac2:4c2d:0:b0:509:46fb:1fe3 with SMTP id
+ u13-20020ac24c2d000000b0050946fb1fe3mr11727999lfq.42.1699355841313; Tue, 07
+ Nov 2023 03:17:21 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] MAINTAINERS: Add include/hw/xtensa/mx_pic.h to the XTFPAG
- machine section
-Content-Language: en-US
-To: Max Filippov <jcmvbkbc@gmail.com>, Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20231107102104.14342-1-thuth@redhat.com>
- <CAMo8BfKAwHJLK44FjJ_bCK7tkQjvM=USpu_jL+0jAk2ou+Bscg@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAMo8BfKAwHJLK44FjJ_bCK7tkQjvM=USpu_jL+0jAk2ou+Bscg@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+References: <20231107101811.14189-1-thuth@redhat.com>
+In-Reply-To: <20231107101811.14189-1-thuth@redhat.com>
+From: Konstantin Kostiuk <kkostiuk@redhat.com>
+Date: Tue, 7 Nov 2023 13:17:10 +0200
+Message-ID: <CAPMcbCo3oNo6UO0zJp0=vuywX8cR5ucz3GB+XJVTJRAvK-Be+Q@mail.gmail.com>
+Subject: Re: [PATCH] MAINTAINERS: Add more guest-agent related files to the
+ corresponding section
+To: Thomas Huth <thuth@redhat.com>
+Cc: Michael Roth <michael.roth@amd.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/alternative; boundary="00000000000044cfe406098e1d82"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kkostiuk@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HTML_IMAGE_ONLY_20=1.546, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_REMOTE_IMAGE=0.01,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,26 +87,98 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 07 Nov 2023 11:05:35 -0000
+X-List-Received-Date: Tue, 07 Nov 2023 11:17:27 -0000
 
-On 7/11/23 11:44, Max Filippov wrote:
-> On Tue, Nov 7, 2023 at 2:21 AM Thomas Huth <thuth@redhat.com> wrote:
->>
->> These machines are the only user of the mx_pic code, so the
->> header (which is currently "unmaintained" according to the
->> MAINTAINERS file) should be added to this section.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   MAINTAINERS | 1 +
->>   1 file changed, 1 insertion(+)
-> 
-> Typo in subject: s/XTFPAG/XTFPGA/
-> Otherwise:
-> Acked-by: Max Filippov <jcmvbkbc@gmail.com>
+--00000000000044cfe406098e1d82
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Konstantin Kostiuk <kkostiuk@redhat.com>
 
-And queued with typo fixed, thanks!
+On Tue, Nov 7, 2023 at 12:18=E2=80=AFPM Thomas Huth <thuth@redhat.com> wrot=
+e:
+
+> contrib/systemd/qemu-guest-agent.service , tests/data/test-qga-config
+> and tests/data/test-qga-os-release belong to the guest agent, so make
+> sure that these files are covered here, too.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  MAINTAINERS | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index b7be61119f..48a6507759 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -3144,10 +3144,11 @@ M: Michael Roth <michael.roth@amd.com>
+>  M: Konstantin Kostiuk <kkostiuk@redhat.com>
+>  S: Maintained
+>  F: qga/
+> +F: contrib/systemd/qemu-guest-agent.service
+>  F: docs/interop/qemu-ga.rst
+>  F: docs/interop/qemu-ga-ref.rst
+>  F: scripts/qemu-guest-agent/
+> -F: tests/unit/test-qga.c
+> +F: tests/*/test-qga*
+>  T: git https://github.com/mdroth/qemu.git qga
+>
+>  QEMU Guest Agent Win32
+> --
+> 2.41.0
+>
+>
+
+--00000000000044cfe406098e1d82
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr">Reviewed-by: Konstantin Kostiuk &lt;<a hr=
+ef=3D"mailto:kkostiuk@redhat.com" target=3D"_blank">kkostiuk@redhat.com</a>=
+&gt;</div><div class=3D"gmail-yj6qo gmail-ajU"><div id=3D"gmail-:10i" class=
+=3D"gmail-ajR" role=3D"button" tabindex=3D"0" aria-label=3D"Show trimmed co=
+ntent" aria-expanded=3D"false"><img class=3D"gmail-ajT" src=3D"https://ssl.=
+gstatic.com/ui/v1/icons/mail/images/cleardot.gif"></div></div></div><br><di=
+v class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Nov 7=
+, 2023 at 12:18=E2=80=AFPM Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.c=
+om">thuth@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quo=
+te" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204=
+);padding-left:1ex">contrib/systemd/qemu-guest-agent.service , tests/data/t=
+est-qga-config<br>
+and tests/data/test-qga-os-release belong to the guest agent, so make<br>
+sure that these files are covered here, too.<br>
+<br>
+Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=
+=3D"_blank">thuth@redhat.com</a>&gt;<br>
+---<br>
+=C2=A0MAINTAINERS | 3 ++-<br>
+=C2=A01 file changed, 2 insertions(+), 1 deletion(-)<br>
+<br>
+diff --git a/MAINTAINERS b/MAINTAINERS<br>
+index b7be61119f..48a6507759 100644<br>
+--- a/MAINTAINERS<br>
++++ b/MAINTAINERS<br>
+@@ -3144,10 +3144,11 @@ M: Michael Roth &lt;<a href=3D"mailto:michael.roth@=
+amd.com" target=3D"_blank">michael.roth@amd.com</a>&gt;<br>
+=C2=A0M: Konstantin Kostiuk &lt;<a href=3D"mailto:kkostiuk@redhat.com" targ=
+et=3D"_blank">kkostiuk@redhat.com</a>&gt;<br>
+=C2=A0S: Maintained<br>
+=C2=A0F: qga/<br>
++F: contrib/systemd/qemu-guest-agent.service<br>
+=C2=A0F: docs/interop/qemu-ga.rst<br>
+=C2=A0F: docs/interop/qemu-ga-ref.rst<br>
+=C2=A0F: scripts/qemu-guest-agent/<br>
+-F: tests/unit/test-qga.c<br>
++F: tests/*/test-qga*<br>
+=C2=A0T: git <a href=3D"https://github.com/mdroth/qemu.git" rel=3D"noreferr=
+er" target=3D"_blank">https://github.com/mdroth/qemu.git</a> qga<br>
+<br>
+=C2=A0QEMU Guest Agent Win32<br>
+-- <br>
+2.41.0<br>
+<br>
+</blockquote></div>
+
+--00000000000044cfe406098e1d82--
 
 
