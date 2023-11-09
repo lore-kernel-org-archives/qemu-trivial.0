@@ -1,66 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r19iI-0000dt-SD
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Nov 2023 13:25:15 -0500
+	id 1r1AQb-0000uu-D1
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Nov 2023 14:10:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1r19iE-0000Z5-4X
- for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 13:25:06 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1r19iB-0006QS-UL
- for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 13:25:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699554301;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=9aYS8PRQJzwaMldZUYdXrNORYOaQft4dib7nCpLtvZs=;
- b=Tzj/f9lRIwAs9ou0+6DXz/esFAkc1Q2HPx1TlINnQJztBrizHUUJCr4+rjNfb+xvTCLVJN
- hZoFaJo7g/06Goyr+Pf1MVmYi4K1rDgmw6APxwrp6n14bqZYD0Pag7jhyXly1lEGfl7v/u
- UFPX/+jZtZIq3q+k3Po804Ws81PYTWg=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-673-3cljltXENoO-x4DwzTc50A-1; Thu, 09 Nov 2023 13:22:00 -0500
-X-MC-Unique: 3cljltXENoO-x4DwzTc50A-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 83109185A783;
- Thu,  9 Nov 2023 18:21:30 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.94])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A3D512027019;
- Thu,  9 Nov 2023 18:21:29 +0000 (UTC)
-Date: Thu, 9 Nov 2023 18:21:27 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/audio/es1370: Avoid four-letter word
-Message-ID: <ZU0jJ8sD5FtVWaTu@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20231109173544.375129-1-thuth@redhat.com>
- <CAFEAcA_MK9-jzQx-po06-CnLLBHQSA2_VB3g7UFVCCiJskyCeg@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r1AQY-0000uQ-VZ
+ for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 14:10:55 -0500
+Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r1AQX-0001s1-IH
+ for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 14:10:54 -0500
+Received: by mail-ed1-x532.google.com with SMTP id
+ 4fb4d7f45d1cf-53de0d1dc46so2045235a12.3
+ for <qemu-trivial@nongnu.org>; Thu, 09 Nov 2023 11:10:53 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1699557051; x=1700161851; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mdoA4bCOHV2xbFNH5vfe2cP2TsA1ItA50LkkszW2hqI=;
+ b=iRS3CuV9GNmC6YyIAvgnMy5KcA5u5DMcfbbO1bZgkWURt/erhhwbV3yTMeNmO1+/gI
+ YBHelgzomVE7+YSLVCW4nzdZ/anZ4mv88UG+rWKDcBbx0l5xay07q013xIBbZLcrVevg
+ vsGw/RaV1eoICL1bdDaFqhYYjlvsXJ36fUJPUr5JgJJVqy7LmVdzXpvL6FZQhYCIWI1S
+ T7g6Rlt38F1EM71nYBTWyu9km2KjNu93opsHqwwzPtYa0dlFFLloS3rRO4B/LWL6+ilC
+ y6xMVTvRmk3mcN9g+uGI41SD1uNA2kWLEzVwKeitKFw+dc8bD6G7aKz/ZMmqFcs99rQG
+ gD3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1699557051; x=1700161851;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mdoA4bCOHV2xbFNH5vfe2cP2TsA1ItA50LkkszW2hqI=;
+ b=b91sHAVKMxcTO3q3UiIvMMGt/XxlSQakrfH8hS25uLD/nvusmoMMqgHEqnFmckz51K
+ OnCCJkbW3ooKiyc0lS9v/Ya4hXA945bS1x5FNuaPw9tTVDw/fSRAUSPGJ+cX8rhucxtL
+ TnvbFyoNPrk2jxrHSA9DVvCzYKgGU+expwKwYvrLoOTr7rBWpRNPBg9UZJmcHTXCFVIF
+ +wmY8GOoIMephfMaC3qroYmuF7vj5SmbvOy/Pw/sZ/olJTWgp0q8QTvSqunOS1n5cHvj
+ /7H7kgG2Tke99MK+bpLlgjhyUTOf86VXXblQlNrTj5E70C43+QMMuw2S4uiylR3TmDXl
+ Vt8Q==
+X-Gm-Message-State: AOJu0YxWAJBp4FVcbAPcloYDm96kmYVoDhjjcuWc/FcpGOKy6m+Tz8eP
+ ei9EvVFN/PxkquyXyVUIltsjNaZ04CFsop0lym/dOg==
+X-Google-Smtp-Source: AGHT+IGQWLbS6fjT5uskXK5uqeX2dyiUo9uxOjYP+c47qUmCU1v4YNvZ6Y3IS8TXn8wbpntUm+aJhg==
+X-Received: by 2002:a50:9508:0:b0:543:8391:a19a with SMTP id
+ u8-20020a509508000000b005438391a19amr4551354eda.40.1699557051247; 
+ Thu, 09 Nov 2023 11:10:51 -0800 (PST)
+Received: from [192.168.69.115] ([176.187.199.161])
+ by smtp.gmail.com with ESMTPSA id
+ d4-20020a056402516400b0052febc781bfsm166756ede.36.2023.11.09.11.10.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 09 Nov 2023 11:10:50 -0800 (PST)
+Message-ID: <d66214c1-fea9-418d-8497-4a3f2da1e734@linaro.org>
+Date: Thu, 9 Nov 2023 20:10:49 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <CAFEAcA_MK9-jzQx-po06-CnLLBHQSA2_VB3g7UFVCCiJskyCeg@mail.gmail.com>
-User-Agent: Mutt/2.2.9 (2022-11-12)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] include/hw/xen: Use more inclusive language in comment
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>
+Cc: xen-devel@lists.xenproject.org, qemu-trivial@nongnu.org
+References: <20231109174034.375392-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20231109174034.375392-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::532;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x532.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,81 +83,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Nov 2023 18:25:07 -0000
+X-List-Received-Date: Thu, 09 Nov 2023 19:10:55 -0000
 
-On Thu, Nov 09, 2023 at 06:01:13PM +0000, Peter Maydell wrote:
-> On Thu, 9 Nov 2023 at 17:36, Thomas Huth <thuth@redhat.com> wrote:
-> >
-> > Using certain four-letter words is not good style in source code,
-> > so let's avoid that.
-> >
-> > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> > ---
-> >  hw/audio/es1370.c | 3 +--
-> >  1 file changed, 1 insertion(+), 2 deletions(-)
-> >
-> > diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
-> > index 91c47330ad..bd460c810e 100644
-> > --- a/hw/audio/es1370.c
-> > +++ b/hw/audio/es1370.c
-> > @@ -670,8 +670,7 @@ static void es1370_transfer_audio (ES1370State *s, struct chan *d, int loop_sel,
-> >      cnt += (transferred + d->leftover) >> 2;
-> >
-> >      if (s->sctl & loop_sel) {
-> > -        /* Bah, how stupid is that having a 0 represent true value?
-> > -           i just spent few hours on this shit */
-> > +        /* Bah, how stupid is that having a 0 represent true value? */
-> >          AUD_log ("es1370: warning", "non looping mode\n");
-> >      } else {
-> >          d->frame_cnt = size;
-> > --
-> > 2.41.0
+On 9/11/23 18:40, Thomas Huth wrote:
+> Let's improve the wording here.
 > 
-> We could be more usefully clear here anyway:
-> 
-> /*
->  * loop_sel tells us which bit in the SCTL register to look at
->  * (either P1_LOOP_SEL, P2_LOOP_SEL or R1_LOOP_SEL). The sense
->  * of these bits is 0 for loop mode (set interrupt and keep recording
->  * when the sample count reaches zero) or 1 for stop mode (set
->  * interrupt and stop recording).
->  */
-> 
-> PS: while we are cleaning up comments in this source file,
-> how about the bit marked /* Start blatant GPL violation */ ?
-> 
-> I think what that comment is trying to say is "most of this
-> source file is under the MIT license per the comment at the top
-> of the file, but these register constants are from the Linux
-> kernel sources and so they are GPL2". Both these licenses are
-> fine for QEMU, but we should have the commentary at the top
-> say "file is this license except for the GPL2-only macros etc"
-> rather than misleadingly claiming this is a GPL violation...
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   include/hw/xen/interface/hvm/params.h | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
-Mere definitions of constants aren't generally considered to be
-copyrightable material. They're simply data needed for the purposes
-of any implementation. The accompanying text could potentially
-become copyrightable if it had non-trivial prose, but the stuff
-there is essentially just more specification of values.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-IOW, I would likley not consider this copying to be a GPL
-violation, even if GPL were not otherwise fine for QEMU.
-
-It is still poor etiquette to not acknowledge the source
-of the constants though. So in addition to simply mentioning
-the GPL soruce as you suggest,  I would suggest we replace
-the "GPL violation" comment with:
-
-  /*
-   * These constants were copied from the linux kernel
-   * sources at /the/file/path
-   */
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
