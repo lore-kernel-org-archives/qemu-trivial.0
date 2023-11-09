@@ -1,50 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r191S-0002C4-7M
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Nov 2023 12:40:54 -0500
+	id 1r197k-0003SG-Oe
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Nov 2023 12:47:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r191Q-000297-2e
- for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 12:40:52 -0500
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1r197i-0003Ru-Nn
+ for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 12:47:24 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r191N-0004UZ-U5
- for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 12:40:51 -0500
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1r197g-0005v2-5I
+ for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 12:47:22 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699551644;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=eKl6/4hR8zE/zb1SF9S/dcAaIWjFtbCJnudDKpnfbyc=;
- b=G+CR3sj/XXKvYbpW4wQdOTwUEiWBKuFvAFQqVw/MRR0gcOyx9z7V3aPkyva15ueXivUoYX
- d1zocF0OlFRWNGi1t074Ki8Vi705zQ8noO1xoj/Gxdfjge2OgRMUe8YtTZaPmf8AqqHQa3
- Tg8+rQS0SIg5EEqj182BruGPZkX+93o=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-381-5L460Km6PnyedQrezQIKcA-1; Thu, 09 Nov 2023 12:40:37 -0500
-X-MC-Unique: 5L460Km6PnyedQrezQIKcA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
+ s=mimecast20190719; t=1699552039;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=1/aKnz+cLm76rsGM493XBc81wW5GTMNFhQApD2Wg+qg=;
+ b=NDGadp/drPVqHyrOdpQCE3AI9YI415LDywW+XHexzCW670FI21JdIUP1PpxIxxyo12LBEh
+ zuPOjg1WxWqd3eo6xIJmVixKv7r50QHSjlZiiPeHOryVo65vbpUj2Sdwz7RyVKpvNQb/3T
+ 4mP8Ur3y35rfUODNbLGhzi5dzfs4Pvw=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-53-EZ6tHlzwPby_7c0cJBLdmg-1; Thu,
+ 09 Nov 2023 12:47:15 -0500
+X-MC-Unique: EZ6tHlzwPby_7c0cJBLdmg-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 301F8185A784;
- Thu,  9 Nov 2023 17:40:37 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.49])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 401981C060BA;
- Thu,  9 Nov 2023 17:40:34 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>
-Cc: xen-devel@lists.xenproject.org,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] include/hw/xen: Use more inclusive language in comment
-Date: Thu,  9 Nov 2023 18:40:34 +0100
-Message-ID: <20231109174034.375392-1-thuth@redhat.com>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4C40D3C02B66;
+ Thu,  9 Nov 2023 17:47:15 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.94])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 38B0140C6EBB;
+ Thu,  9 Nov 2023 17:47:13 +0000 (UTC)
+Date: Thu, 9 Nov 2023 17:47:11 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>,
+ Paul Durrant <paul@xen.org>, xen-devel@lists.xenproject.org,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] include/hw/xen: Use more inclusive language in comment
+Message-ID: <ZU0bH6smC7hF3kk5@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20231109174034.375392-1-thuth@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+In-Reply-To: <20231109174034.375392-1-thuth@redhat.com>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -66,29 +77,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Nov 2023 17:40:52 -0000
+X-List-Received-Date: Thu, 09 Nov 2023 17:47:24 -0000
 
-Let's improve the wording here.
+On Thu, Nov 09, 2023 at 06:40:34PM +0100, Thomas Huth wrote:
+> Let's improve the wording here.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  include/hw/xen/interface/hvm/params.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- include/hw/xen/interface/hvm/params.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 
-diff --git a/include/hw/xen/interface/hvm/params.h b/include/hw/xen/interface/hvm/params.h
-index a22b4ed45d..9bcb40284c 100644
---- a/include/hw/xen/interface/hvm/params.h
-+++ b/include/hw/xen/interface/hvm/params.h
-@@ -255,7 +255,7 @@
-  * Note that 'mixed' mode has not been evaluated for safety from a
-  * security perspective.  Before using this mode in a
-  * security-critical environment, each subop should be evaluated for
-- * safety, with unsafe subops blacklisted in XSM.
-+ * safety, with unsafe subops blocked in XSM.
-  */
- #define HVM_PARAM_ALTP2M       35
- #define XEN_ALTP2M_disabled      0
+
+With regards,
+Daniel
 -- 
-2.41.0
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
