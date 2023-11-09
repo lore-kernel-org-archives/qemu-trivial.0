@@ -1,51 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r197s-0003Xb-3A
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Nov 2023 12:47:32 -0500
+	id 1r197y-0003ZH-VJ
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Nov 2023 12:47:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r197r-0003UZ-53
- for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 12:47:31 -0500
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1r197w-0003Yz-V1
+ for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 12:47:37 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r197p-0005wu-GX
- for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 12:47:30 -0500
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1r197v-0005y5-HU
+ for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 12:47:36 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699552048;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=pgQIatA30Rx8gBQVH2FCDGHn510tnTxiAPrvHrnYkt8=;
- b=MHMEoku7s1EggGH467MZHwryYn2xV2xlDY7QEkG6/bqVlOlNRk0l47pTBAP9Id4Z4leftF
- vEgCJF3bBfvtZ5SJI4h9yvbLpLIyV5a+C/M7RQ6ZrYBXY73qxzia9oEZ1OkCuL0yebf+JR
- H7N2rzWBHyZ9BtEietQqL+JgJzn+omg=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-451-OlRi5YHrOaCT_jnMPSTwOA-1; Thu,
- 09 Nov 2023 12:47:23 -0500
-X-MC-Unique: OlRi5YHrOaCT_jnMPSTwOA-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
+ s=mimecast20190719; t=1699552054;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=fmZw/HW/VjQz7zptqa8EY+5r6yPQF+mp3mWXhK4oDfw=;
+ b=cwG407GC35vrV9I4uK5BhJIdV9hG0THUbA/hWIQI7xF8H/Efj1IDY1nLP96KCVtTZ6h5Z7
+ wH1x/wvmSGkUBBhSbTtNFbvXjRcb5o9RI84tXtbzNfiOZiHTgSMRfyHd4gdnTDZb9q/50k
+ B2RnSBwBi0Q1Q7IMF+lYegBCkSf0GRY=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-425-f0KaIOLfO6mThwaYzoXMMQ-1; Thu, 09 Nov 2023 12:47:33 -0500
+X-MC-Unique: f0KaIOLfO6mThwaYzoXMMQ-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D452829AA3B1;
- Thu,  9 Nov 2023 17:47:22 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.49])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 852B31C060AE;
- Thu,  9 Nov 2023 17:47:21 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Subject: [PATCH] tests/tsan: Rename the file with the entries that should be
- ignored
-Date: Thu,  9 Nov 2023 18:47:20 +0100
-Message-ID: <20231109174720.375873-1-thuth@redhat.com>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 18354848161;
+ Thu,  9 Nov 2023 17:47:33 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.94])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 5D60C10F45;
+ Thu,  9 Nov 2023 17:47:32 +0000 (UTC)
+Date: Thu, 9 Nov 2023 17:47:30 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] hw/audio/es1370: Avoid four-letter word
+Message-ID: <ZU0bMvrhD9JoPKzo@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20231109173544.375129-1-thuth@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+In-Reply-To: <20231109173544.375129-1-thuth@redhat.com>
+User-Agent: Mutt/2.2.9 (2022-11-12)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -67,53 +75,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Nov 2023 17:47:31 -0000
+X-List-Received-Date: Thu, 09 Nov 2023 17:47:37 -0000
 
-Let's use a better file name here.
+On Thu, Nov 09, 2023 at 06:35:44PM +0100, Thomas Huth wrote:
+> Using certain four-letter words is not good style in source code,
+> so let's avoid that.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/audio/es1370.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- docs/devel/testing.rst                     | 4 ++--
- tests/tsan/{blacklist.tsan => ignore.tsan} | 6 +++---
- 2 files changed, 5 insertions(+), 5 deletions(-)
- rename tests/tsan/{blacklist.tsan => ignore.tsan} (57%)
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 
-diff --git a/docs/devel/testing.rst b/docs/devel/testing.rst
-index b0680cbb22..fef64accc1 100644
---- a/docs/devel/testing.rst
-+++ b/docs/devel/testing.rst
-@@ -668,11 +668,11 @@ suppressing it.  More information on the file format can be found here:
- 
- https://github.com/google/sanitizers/wiki/ThreadSanitizerSuppressions
- 
--tests/tsan/blacklist.tsan - Has TSan warnings we wish to disable
-+tests/tsan/ignore.tsan - Has TSan warnings we wish to disable
- at compile time for test or debug.
- Add flags to configure to enable:
- 
--"--extra-cflags=-fsanitize-blacklist=<src path>/tests/tsan/blacklist.tsan"
-+"--extra-cflags=-fsanitize-blacklist=<src path>/tests/tsan/ignore.tsan"
- 
- More information on the file format can be found here under "Blacklist Format":
- 
-diff --git a/tests/tsan/blacklist.tsan b/tests/tsan/ignore.tsan
-similarity index 57%
-rename from tests/tsan/blacklist.tsan
-rename to tests/tsan/ignore.tsan
-index 75e444f5dc..423e482d2f 100644
---- a/tests/tsan/blacklist.tsan
-+++ b/tests/tsan/ignore.tsan
-@@ -1,6 +1,6 @@
--# This is an example blacklist.
--# To enable use of the blacklist add this to configure:
--# "--extra-cflags=-fsanitize-blacklist=<src path>/tests/tsan/blacklist.tsan"
-+# This is an example ignore list.
-+# To enable use of the ignore list add this to configure:
-+# "--extra-cflags=-fsanitize-blacklist=<src path>/tests/tsan/ignore.tsan"
- # The eventual goal would be to fix these warnings.
- 
- # TSan is not happy about setting/getting of dirty bits,
+
+With regards,
+Daniel
 -- 
-2.41.0
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
