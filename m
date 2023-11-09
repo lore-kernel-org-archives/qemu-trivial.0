@@ -1,77 +1,121 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r1AV4-0004Tt-0Z
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Nov 2023 14:15:34 -0500
+	id 1r1GSE-0004wX-0L
+	for mharc-qemu-trivial@gnu.org; Thu, 09 Nov 2023 20:37:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r1AV2-0004Os-E8
- for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 14:15:32 -0500
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ (Exim 4.90_1) (envelope-from <andrew.cooper@cloud.com>)
+ id 1r1ER9-0002HT-9f
+ for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 18:27:47 -0500
+Received: from mail-lf1-x136.google.com ([2a00:1450:4864:20::136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r1AV0-0002in-RN
- for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 14:15:32 -0500
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-5431614d90eso1961775a12.1
- for <qemu-trivial@nongnu.org>; Thu, 09 Nov 2023 11:15:30 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <andrew.cooper@cloud.com>)
+ id 1r1ER5-0008Pe-KN
+ for qemu-trivial@nongnu.org; Thu, 09 Nov 2023 18:27:46 -0500
+Received: by mail-lf1-x136.google.com with SMTP id
+ 2adb3069b0e04-507bd19eac8so1837447e87.0
+ for <qemu-trivial@nongnu.org>; Thu, 09 Nov 2023 15:27:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699557329; x=1700162129; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=citrix.com; s=google; t=1699572461; x=1700177261; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=VtnShdIIpSWeTV7LQyH2ProJzswg83OfEbm1H/Bze3g=;
- b=jCYdwN2hvPXw3V+Wjp6VudrXuimIOBQGr8btG0CQOHlTMydw+BawmSV27la9RcNLnt
- S/SDUXEIDx+9TvCo0INeRz0liGF8KK2YHFIX25b5jEC7RMWdvsK0q27BB3t4AaPfxtU5
- bOa5pBn2A1JuWQLFcyY40MDDewR8PztuNhT3eqKQmvo64P58U5JZJ7MgpvBsw8EziqDb
- O8z4x0TjYLSoOeTGz/TtANKddHFViRzxWKQOyLVpQnikkj3eDlPna6MSGtKlfsLDregy
- u+Y4aTwEAYx4eMQv+TwncQebNlnaiV7l1nGHupsFTEsDus1eiB3Omdup2Ycj7dEymcvw
- iDtg==
+ bh=veKVb2RA9uHNpeekgCTX4pevrSJkI6gh2i+pfB5WCqc=;
+ b=DR7Xypjm5phy3R9c9GyvN268BrNuurbnHvv+AbivcbYiZ5JjayyFAmc1msJqYKUA8O
+ QhPjd29S8ibsEHZplp/jkuZePqSSl5i0LtNOkyOANtUaq9NF1Sq74Kpe8LNf4+JrHaBJ
+ gbyQD77p/SoFtckO9mIm0G5KYeSNWMUvN5OVU=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699557329; x=1700162129;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1699572461; x=1700177261;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=VtnShdIIpSWeTV7LQyH2ProJzswg83OfEbm1H/Bze3g=;
- b=WyFH8w9cMSCG6ML1U20gcS9ekpeJcG3KUWG7+w0rtrlDweEndQP8vSeShZ2PYfpfDn
- 9fJFaypefNWTmf6zgqUqRagOi68nKm32JAMcW3UswTKaSEBuREzP6qWZuR9inwDKvxCg
- a1DnGnkpPBJrbRVULzxKQGi7eiRaNlBJxeOOp2bcyIM2/h6Lk49E+tpK1yeqpO4kBya9
- ueKL1ZebzcJwgQrHZjbyz7JGsTmoqI6yJqT64LtWoPLU4WNvclxQfcOzADnYFt34bflc
- B1lSWWMMijHXehEWGeW2bn7u47gW8RDvcWJDafI+EP4XsdCsjdDIPiHKLJBMWMnlTD3U
- ngAg==
-X-Gm-Message-State: AOJu0Yytt6DfAligEKhLxIvTRNA6aOh7ocsFqVCYy8Y42A/GmJ2fQ952
- vbKep+CzH6PcxmiAhiRxg+xQ3Q==
-X-Google-Smtp-Source: AGHT+IFv6MBJbvHODwNPBnEGO4aJViTzKPZIE04DVa9kCYGJ+8f42Jo4F2er38Ncq6lalTX/OYxoEA==
-X-Received: by 2002:a50:9b0a:0:b0:540:3c85:14b3 with SMTP id
- o10-20020a509b0a000000b005403c8514b3mr5337337edi.36.1699557329146; 
- Thu, 09 Nov 2023 11:15:29 -0800 (PST)
-Received: from [192.168.69.115] ([176.187.199.161])
+ bh=veKVb2RA9uHNpeekgCTX4pevrSJkI6gh2i+pfB5WCqc=;
+ b=Tuyj5dBiVJlZ2szDbDRG5ulx0qgjpr/rS4Gvi4fhMWhZhZ07Ulr90/K3UQZyW3lWdE
+ tEzdWnJoVnPIxlJ+/V6HCr31xQxXPeGDxePWBFFJoYkans1qsPlF/ryjC6g1qdikkYiT
+ 6ZT8yGxkL7TpeG8kGA7PEdjDIxJh2T7dqznyaap3WQtSbY4pFGgLMwySsO5dHxR6MtdH
+ HARxl2fzZclMDqmVniFc0CIZVCWMQTTIg2EUXCzOSDTDKJYEg8MXchi/gYFAgLWcfmkt
+ lA2cJD2HFbHbTuS52trVCJS2gvddiBPPNjQ2W3R4YlJkLt1N7PYPsXOXmshyH5pygPYv
+ F9Rw==
+X-Gm-Message-State: AOJu0YzbSUBjRUnG9gEp8YNln0VSsvpIqXwQaCvavnMHreVQ3u8QJTuU
+ 46Yr3ahUYf6B+EI0GouhOMBE6w==
+X-Google-Smtp-Source: AGHT+IEEmksdZX9vdnZTlT503S4/enEoX/QKneG+S884wd5FXfNZeCxefGhIUNEqmpY/uSBwbU6TAg==
+X-Received: by 2002:a05:6512:3dab:b0:4fe:af1:c3ae with SMTP id
+ k43-20020a0565123dab00b004fe0af1c3aemr3147783lfv.15.1699572460951; 
+ Thu, 09 Nov 2023 15:27:40 -0800 (PST)
+Received: from [192.168.1.10] (host-92-26-107-252.as13285.net. [92.26.107.252])
  by smtp.gmail.com with ESMTPSA id
- d4-20020a056402516400b0052febc781bfsm166756ede.36.2023.11.09.11.15.28
+ t6-20020adfe446000000b0032dcb08bf94sm694149wrm.60.2023.11.09.15.27.40
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 09 Nov 2023 11:15:28 -0800 (PST)
-Message-ID: <29a93950-9479-4895-b1ce-8006c3e4c7c4@linaro.org>
-Date: Thu, 9 Nov 2023 20:15:27 +0100
+ Thu, 09 Nov 2023 15:27:40 -0800 (PST)
+Message-ID: <06fb67ef-45ad-43ba-9f7a-0ef565fb182e@citrix.com>
+Date: Thu, 9 Nov 2023 23:27:39 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] tests/tsan: Rename the file with the entries that should
- be ignored
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20231109174720.375873-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231109174720.375873-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Subject: Re: [PATCH] include/hw/xen: Use more inclusive language in comment
+Content-Language: en-GB
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>
+Cc: xen-devel@lists.xenproject.org, qemu-trivial@nongnu.org
+References: <20231109174034.375392-1-thuth@redhat.com>
+From: Andrew Cooper <andrew.cooper3@citrix.com>
+Autocrypt: addr=andrew.cooper3@citrix.com; keydata=
+ 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
+ 6+ahAA==
+In-Reply-To: <20231109174034.375392-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::136;
+ envelope-from=andrew.cooper@cloud.com; helo=mail-lf1-x136.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.25, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 09 Nov 2023 20:36:57 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,18 +127,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Nov 2023 19:15:32 -0000
+X-List-Received-Date: Thu, 09 Nov 2023 23:27:47 -0000
 
-On 9/11/23 18:47, Thomas Huth wrote:
-> Let's use a better file name here.
-> 
+On 09/11/2023 5:40 pm, Thomas Huth wrote:
+> Let's improve the wording here.
+>
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   docs/devel/testing.rst                     | 4 ++--
->   tests/tsan/{blacklist.tsan => ignore.tsan} | 6 +++---
->   2 files changed, 5 insertions(+), 5 deletions(-)
->   rename tests/tsan/{blacklist.tsan => ignore.tsan} (57%)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Thankyou for the patch, but this is a verbatim copy of a set of Xen headers.
 
+Would you mind submitting a correction to
+xen.git:xen/include/public/hvm/params.h first, and then syncing the
+result back into Qemu?
+
+~Andrew
 
