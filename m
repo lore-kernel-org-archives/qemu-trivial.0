@@ -1,58 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r1SI2-0000zB-Va
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Nov 2023 09:15:19 -0500
+	id 1r1SI4-00011O-G8
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Nov 2023 09:15:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+29e7849af3f7cdd1dde9+7383+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r1NZN-0008Fg-Eq; Fri, 10 Nov 2023 04:12:53 -0500
-Received: from casper.infradead.org ([90.155.50.34])
+ id 1r1Oiv-0007ai-N7; Fri, 10 Nov 2023 05:26:50 -0500
+Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from
  <BATV+29e7849af3f7cdd1dde9+7383+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r1NZK-0001cQ-De; Fri, 10 Nov 2023 04:12:53 -0500
+ id 1r1Oit-0000UW-8u; Fri, 10 Nov 2023 05:26:49 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
  In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
  Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=szkSQPoIKoP5lekOfNB3Z458Rwwk6eknWfne+IEJkEE=; b=Pv2rjFyeMN96myZ5+P3qknMwO3
- J4/A/Bx2Ch0OSmgI/U1DzLssEEOtbm8tuKLymw4fdG9NbVDLZM4xMfqGYG9YjjtjsPplcw2M7X1dd
- Q7a+qeDokhWEgvpN0DC71y6xk6fxLS6O5AvW9+jvaj17YjcK3Z0uglHBMbr4G450lTLp4GULIEMjd
- RoDMW1K5Ou8SvKs6gnzwCZ+8lMnuXUYKHdTqPaSyDCClqrer4u52qAppl/F+mBaSDisKYDEhbA6+5
- iGENGfDfxT6SkJZ2/QzSK/pH+jzAq0OlVqqTH/igJABIITgjnjUCsM2Oc0LLKL4KpHosXxaHEC2bo
- hdOmojdQ==;
+ bh=4+Hn0zBQZsp/ac5h90RP82v3Hqyf+fiySldJFcYYJeA=; b=iy+4bcZ8+5uaWYtZQjqfrw5oU4
+ PTF4O4wNBRVeVA/6N8bCLQz9XXt0cMxwW+sJ5h0Wdvmb6t3xAas+NJ/Qso/uqw7/UxnxONE3UWOqg
+ k2yMPWuxGH8XxiYyAxYJB9D8RqhsWmlHzQdJIYCycIarhBDcL8GbWxSoirKwk0ypxk3C0fMfs03ud
+ CUKH9+/muNHBjm7RdDcLM2XkohjeXPwa/MFpQW3suYuAHZBuMp7oKEVAhyvaeY9AnGIRuMk8cNpTF
+ 4J2EOesLsv1Flz8r3Ik53s6xipHAhtnV4uN9qByFz0LZVriFddvRSazkfuHi15zdwQO+CJws4OeZa
+ 0HWXcitw==;
 Received: from [2001:8b0:10b:5:18d3:34d5:5849:7b74]
  (helo=u3832b3a9db3152.ant.amazon.com)
  by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1r1NYq-00CWNe-0e; Fri, 10 Nov 2023 09:12:20 +0000
-Message-ID: <d81446693e0a82201807bc3c1a9d2a307135df72.camel@infradead.org>
+ id 1r1Oil-00CrIo-06; Fri, 10 Nov 2023 10:26:39 +0000
+Message-ID: <f3faed177c8ecff3b1e37056b77e02af3596e9ff.camel@infradead.org>
 Subject: Re: [PATCH] include/hw/xen: Use more inclusive language in comment
 From: David Woodhouse <dwmw2@infradead.org>
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, Stefano
- Stabellini <sstabellini@kernel.org>, Anthony Perard
- <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>
-Cc: xen-devel@lists.xenproject.org, qemu-trivial@nongnu.org
-Date: Fri, 10 Nov 2023 09:12:20 +0000
-In-Reply-To: <20231109174034.375392-1-thuth@redhat.com>
+To: Jan Beulich <jbeulich@suse.com>, Thomas Huth <thuth@redhat.com>
+Cc: xen-devel@lists.xenproject.org, qemu-trivial@nongnu.org, Anthony Perard
+ <anthony.perard@citrix.com>, qemu-devel@nongnu.org, Stefano Stabellini
+ <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>
+Date: Fri, 10 Nov 2023 10:26:39 +0000
+In-Reply-To: <2ae66eda-3560-2930-4bbb-87345a719f32@suse.com>
 References: <20231109174034.375392-1-thuth@redhat.com>
+ <2ae66eda-3560-2930-4bbb-87345a719f32@suse.com>
 Content-Type: multipart/signed; micalg="sha-256";
  protocol="application/pkcs7-signature"; 
- boundary="=-I7CDt+ABG3lJwgraqKn9"
+ boundary="=-RQmUnTN/hWX3t9XovVIe"
 User-Agent: Evolution 3.44.4-0ubuntu2 
 MIME-Version: 1.0
 X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
  casper.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=90.155.50.34;
+Received-SPF: none client-ip=2001:8b0:10b:1236::1;
  envelope-from=BATV+29e7849af3f7cdd1dde9+7383+infradead.org+dwmw2@casper.srs.infradead.org;
  helo=casper.infradead.org
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 10 Nov 2023 09:15:04 -0500
+X-Mailman-Approved-At: Fri, 10 Nov 2023 09:15:10 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -64,45 +66,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Nov 2023 09:12:53 -0000
+X-List-Received-Date: Fri, 10 Nov 2023 10:26:50 -0000
 
 
---=-I7CDt+ABG3lJwgraqKn9
+--=-RQmUnTN/hWX3t9XovVIe
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
 
-On Thu, 2023-11-09 at 18:40 +0100, Thomas Huth wrote:
-> Let's improve the wording here.
+On Fri, 2023-11-10 at 10:30 +0100, Jan Beulich wrote:
+> On 09.11.2023 18:40, Thomas Huth wrote:
+> > --- a/include/hw/xen/interface/hvm/params.h
+> > +++ b/include/hw/xen/interface/hvm/params.h
+> > @@ -255,7 +255,7 @@
+> > =C2=A0 * Note that 'mixed' mode has not been evaluated for safety from =
+a
+> > =C2=A0 * security perspective.=C2=A0 Before using this mode in a
+> > =C2=A0 * security-critical environment, each subop should be evaluated =
+for
+> > - * safety, with unsafe subops blacklisted in XSM.
+> > + * safety, with unsafe subops blocked in XSM.
 >=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> To avoid another round trip when you send the patch against xen.git, as
+> already asked for by others, I'd like to point out that the wording
+> change isn't describing things sufficiently similarly: "blocked" reads
+> as if XSM would do so all by itself, whereas "blacklisted" has an
+> indication that something needs to be done for XSM to behave in the
+> intended way. Minimally I'd suggest "suitably blocked via", but perhaps
+> yet better wording can be thought of.
 
-Absolutely, but please can we change it in Xen first because these
-headers are a direct import.
-
-Acked-by: David Woodhouse <dwmw@amazon.co.uk>
-
-> ---
-> =C2=A0include/hw/xen/interface/hvm/params.h | 2 +-
-> =C2=A01 file changed, 1 insertion(+), 1 deletion(-)
->=20
-> diff --git a/include/hw/xen/interface/hvm/params.h
-> b/include/hw/xen/interface/hvm/params.h
-> index a22b4ed45d..9bcb40284c 100644
-> --- a/include/hw/xen/interface/hvm/params.h
-> +++ b/include/hw/xen/interface/hvm/params.h
-> @@ -255,7 +255,7 @@
-> =C2=A0 * Note that 'mixed' mode has not been evaluated for safety from a
-> =C2=A0 * security perspective.=C2=A0 Before using this mode in a
-> =C2=A0 * security-critical environment, each subop should be evaluated fo=
-r
-> - * safety, with unsafe subops blacklisted in XSM.
-> + * safety, with unsafe subops blocked in XSM.
-> =C2=A0 */
-> =C2=A0#define HVM_PARAM_ALTP2M=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 35
-> =C2=A0#define XEN_ALTP2M_disabled=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 0
+"denylist" is often used and works as a suitable replacement in most
+use cases.
 
 
---=-I7CDt+ABG3lJwgraqKn9
+--=-RQmUnTN/hWX3t9XovVIe
 Content-Type: application/pkcs7-signature; name="smime.p7s"
 Content-Disposition: attachment; filename="smime.p7s"
 Content-Transfer-Encoding: base64
@@ -194,25 +190,25 @@ IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
 dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
 NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
 xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
-DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEwMDkxMjIwWjAvBgkqhkiG9w0BCQQxIgQgE585freP
-iaP3/NA96uMrl7A88q81bvZ2+JjcbxRDat4wgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
+DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEwMTAyNjM5WjAvBgkqhkiG9w0BCQQxIgQgPMB2vmMr
+TK9JW6TPpSGpWQ6GF1m8Cqi/p4VtpJQY+0Ewgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
 BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
 A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
 dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
 DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
 MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
 Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
-lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgCLZXfUD3/Hzdx6qJWlJriNlDpvSuKPvoCh
-WsDqYa0XOHoFAcRrwytQZvsaHoG1beG60lXFifayItczSJWF2dOpADSqd25GdqI3KfteLsI5As0M
-OD6tpLaR41pJixVO3uFWr774BkC4IAGVkC6PZCZIww+dkPEWX4LJcQFoYuebuFOkPK9ai+vrIsuq
-fuKaGrN/9z3U4zdqwLxaSt0hU3007ath7JFqrsP4FY6jY89czXTrrjhZa5ea1mxJ0a5nB6i3Yd75
-aB7kTu2jhaOU+ljK56u/CAlIK6rUEqCCrhqlco7kv/0771Hxf7feIT8DmAmc/prrV2LhCVyXYYen
-GIM2sCiZ5/VlnfadcscGYSX/1iw2H+1LXi9y4q02bEb8Wgt3oiyU1QPFwCp7f1lb8oka7VERmuor
-Kg5yKvx1bTG+4yKjUPaEA7/BB7uYtTvdWrrCLXuHP35z5rZv4OQIlJQcZjMhWSZz9osnybHFodd6
-a2GFGkMnUJuTdsWEUZo7SzV/vzIkNkixgJc6mX0af7tM05K+vUJUmRh13a9froXtjUztvFoOl8i5
-MZBfe6Fp6bCXA8sKnW5R1XdgZCCyNcEUQMuKSDPee5uu5hVdTCaA4DvbVxxWcW1Aib1HhD65gh9d
-p44mX+czucnlkAQem2VUYgv9KifWRDT6G1wXxGLPbgAAAAAAAA==
+lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgCcJ8h2jZNhjHHiF7xvteqYrOXyI6J0y94Q
+gui0GOtU67eRf7WQcEWxJEUQSE6klV85cp07ipeq+a+oG4mRLTF81LLsyX7WboO5L4610IMsotrt
+9uNHnMEcSA7jEsKxcLGQ3B53jn1CaKl/ZxZaAv4KEnfBT8nygpYMH780FZr2pV2jwvkXTqGPZJ2i
+toNwYypqtjH295VDqKnynCnOhMw2spWpjBlSjDrl0HH/7lf7AlaO5TZ3Rcs/ztQu4cqe0vbaJP4c
++fgJYbVvb7TK6n+n6DFxG9tRrTEI1UWuqb5K7QNgoUS76LS+qHKVjGwfLTx7++uWKWO9mLjPApVj
+s5gJ9kwYnHTzIJkihQEc24Qt+494pKMpEIvS9fvUggsBzhoAbm72e+MkMoLn1H8ZMHPAN0irZ0BN
+Qg5LYHlj41q3yf4Lf9+EZxQ0csEUaKbTgfxB4FLTh58t1B5oFYt2iUS9ddTf8zDJu+CH4vN282RO
+C8uyGWR2PsycnvGG1UlpWCA3dY+MR5zyQjNNcsaBU/5Oi17HKMrhWtpjDQz4b2IbKqv4mhpElSjN
+wAQKaLWhWgH2wWTgVzT7Guffm+L733PGWIRzyBwGYJvvNqmxRzT1Nw6rnfnCuKos23Enhai6QmB+
+svKfOdn6QeDeyN+zpYGY4O/XMzZGTCNoll5RidF95QAAAAAAAA==
 
 
---=-I7CDt+ABG3lJwgraqKn9--
+--=-RQmUnTN/hWX3t9XovVIe--
 
