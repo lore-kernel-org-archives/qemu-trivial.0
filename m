@@ -1,60 +1,130 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r1SI4-00011O-G8
-	for mharc-qemu-trivial@gnu.org; Fri, 10 Nov 2023 09:15:23 -0500
+	id 1r1SI9-00014w-Ol
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Nov 2023 09:15:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <BATV+29e7849af3f7cdd1dde9+7383+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r1Oiv-0007ai-N7; Fri, 10 Nov 2023 05:26:50 -0500
-Received: from casper.infradead.org ([2001:8b0:10b:1236::1])
+ (Exim 4.90_1) (envelope-from <JBeulich@suse.com>)
+ id 1r1NqO-0001EO-QZ; Fri, 10 Nov 2023 04:30:29 -0500
+Received: from mail-he1eur01on0630.outbound.protection.outlook.com
+ ([2a01:111:f400:fe1e::630]
+ helo=EUR01-HE1-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from
- <BATV+29e7849af3f7cdd1dde9+7383+infradead.org+dwmw2@casper.srs.infradead.org>)
- id 1r1Oit-0000UW-8u; Fri, 10 Nov 2023 05:26:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=infradead.org; s=casper.20170209; h=MIME-Version:Content-Type:References:
- In-Reply-To:Date:Cc:To:From:Subject:Message-ID:Sender:Reply-To:
- Content-Transfer-Encoding:Content-ID:Content-Description;
- bh=4+Hn0zBQZsp/ac5h90RP82v3Hqyf+fiySldJFcYYJeA=; b=iy+4bcZ8+5uaWYtZQjqfrw5oU4
- PTF4O4wNBRVeVA/6N8bCLQz9XXt0cMxwW+sJ5h0Wdvmb6t3xAas+NJ/Qso/uqw7/UxnxONE3UWOqg
- k2yMPWuxGH8XxiYyAxYJB9D8RqhsWmlHzQdJIYCycIarhBDcL8GbWxSoirKwk0ypxk3C0fMfs03ud
- CUKH9+/muNHBjm7RdDcLM2XkohjeXPwa/MFpQW3suYuAHZBuMp7oKEVAhyvaeY9AnGIRuMk8cNpTF
- 4J2EOesLsv1Flz8r3Ik53s6xipHAhtnV4uN9qByFz0LZVriFddvRSazkfuHi15zdwQO+CJws4OeZa
- 0HWXcitw==;
-Received: from [2001:8b0:10b:5:18d3:34d5:5849:7b74]
- (helo=u3832b3a9db3152.ant.amazon.com)
- by casper.infradead.org with esmtpsa (Exim 4.94.2 #2 (Red Hat Linux))
- id 1r1Oil-00CrIo-06; Fri, 10 Nov 2023 10:26:39 +0000
-Message-ID: <f3faed177c8ecff3b1e37056b77e02af3596e9ff.camel@infradead.org>
+ (Exim 4.90_1) (envelope-from <JBeulich@suse.com>)
+ id 1r1NqM-0005Cy-JD; Fri, 10 Nov 2023 04:30:28 -0500
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=g/1smTd/U5W/l897e/zpPXNFQ/9KyD5+HpvdEJH4zKYvagtLMVt3fcG19zRVPTf0YrV28gbu+3jkPkypwEtyClYTx1tyOBp4qFdAhTQEjMR4aXOeNqa5cYiUz+majaELYrB54fojYOHAPIsJMaJbXtNCwpAkxz3tbR3WvHiyajjIFkDZmF1eXZsoHSvaCsbkkFO/+jmvbVmI7/k8sDfWfcKLOXfMVM9Xt70VXULD99n3RQoH4MgtcNYt2IqyLNYojYTO4ekmXiLJF31/dgqcnQBIBtfOLISqUfJIRYOyi+L7pawea9Q1/gTkUe+1OF2exPb0tXPVH25WBiD2a11eYw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=IvEW3lHlPjDqZW6RjabtN6gmhKE3xf1ZYztQzCTecSo=;
+ b=DMVRjHnJRa0ZNzXrSnBdp0aXbjQ+nx+erMJVyrFnbqtn2eiIOFbITOYxHkgbdfEy03dvdBR7iU532E2Z8fkuCi6BPg/ubwFQ7aG5/GCJDXn5OGTju0HHq4E6Hh7aLx6S5iOrRl3NYdlN37EjedH1lo++H5ZU0jrEhC3bqDhdInCjjX6evXtgYqae3RqTqgiO3BdeVtDOyQQ0AknFGBSCZGRYyrgWRVzmpaWEpSVFxsJp+9oJTJIIQZcrX8+sTWZrQtNCQRu2a0Y4iqzDqzZ1jfY4D5BXm8kyNW9nF0fFGNnHR8U6ZfT/NZFGdscdKjZ2QLE5fmtCOM/GggPZmaeYhA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=suse.com; dmarc=pass action=none header.from=suse.com;
+ dkim=pass header.d=suse.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=IvEW3lHlPjDqZW6RjabtN6gmhKE3xf1ZYztQzCTecSo=;
+ b=tZ5kR+UgL7on0ejo9CTbXtT95VY8kwnbgQFbgMmlZNnQtfCl2dV6e/cpbKtVybD47QSQZR9kbEk+MHL8mbICCM2uJ7QFVtE5epSDQq1hU/fGSM8NcnKgk+qskSK17aeFCPEYwHzX8TSVkMhf4r6SuokfGQMUmQ92s2Sxl6v+QWwCJozJR/pBhBTDLYc/d+jJjGkYXwycWx/tN+fVDO8p8uceC3G1JvZwAbDFWuVZpvWFIzUeJcI69vRF9Oqc7Z7W6gryNPCZxfw40NtShUYCnhGvwHyj19Ma+bLs7/41j7hgpEc1+XI+OU3OCQhMep7myhg/GOE5dZwVPsRtLPDXAA==
+Authentication-Results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=suse.com;
+Received: from DU2PR04MB8790.eurprd04.prod.outlook.com (2603:10a6:10:2e1::23)
+ by GVXPR04MB9974.eurprd04.prod.outlook.com (2603:10a6:150:11a::16)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6977.16; Fri, 10 Nov
+ 2023 09:30:19 +0000
+Received: from DU2PR04MB8790.eurprd04.prod.outlook.com
+ ([fe80::eb8e:fa24:44c1:5d44]) by DU2PR04MB8790.eurprd04.prod.outlook.com
+ ([fe80::eb8e:fa24:44c1:5d44%3]) with mapi id 15.20.7002.010; Fri, 10 Nov 2023
+ 09:30:18 +0000
+Message-ID: <2ae66eda-3560-2930-4bbb-87345a719f32@suse.com>
+Date: Fri, 10 Nov 2023 10:30:16 +0100
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:102.0) Gecko/20100101
+ Thunderbird/102.15.1
 Subject: Re: [PATCH] include/hw/xen: Use more inclusive language in comment
-From: David Woodhouse <dwmw2@infradead.org>
-To: Jan Beulich <jbeulich@suse.com>, Thomas Huth <thuth@redhat.com>
-Cc: xen-devel@lists.xenproject.org, qemu-trivial@nongnu.org, Anthony Perard
- <anthony.perard@citrix.com>, qemu-devel@nongnu.org, Stefano Stabellini
- <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>
-Date: Fri, 10 Nov 2023 10:26:39 +0000
-In-Reply-To: <2ae66eda-3560-2930-4bbb-87345a719f32@suse.com>
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>
+Cc: xen-devel@lists.xenproject.org, qemu-trivial@nongnu.org,
+ Anthony Perard <anthony.perard@citrix.com>, qemu-devel@nongnu.org,
+ Stefano Stabellini <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>
 References: <20231109174034.375392-1-thuth@redhat.com>
- <2ae66eda-3560-2930-4bbb-87345a719f32@suse.com>
-Content-Type: multipart/signed; micalg="sha-256";
- protocol="application/pkcs7-signature"; 
- boundary="=-RQmUnTN/hWX3t9XovVIe"
-User-Agent: Evolution 3.44.4-0ubuntu2 
+From: Jan Beulich <jbeulich@suse.com>
+In-Reply-To: <20231109174034.375392-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 7bit
+X-ClientProxiedBy: FR4P281CA0222.DEUP281.PROD.OUTLOOK.COM
+ (2603:10a6:d10:e4::8) To DU2PR04MB8790.eurprd04.prod.outlook.com
+ (2603:10a6:10:2e1::23)
 MIME-Version: 1.0
-X-SRS-Rewrite: SMTP reverse-path rewritten from <dwmw2@infradead.org> by
- casper.infradead.org. See http://www.infradead.org/rpr.html
-Received-SPF: none client-ip=2001:8b0:10b:1236::1;
- envelope-from=BATV+29e7849af3f7cdd1dde9+7383+infradead.org+dwmw2@casper.srs.infradead.org;
- helo=casper.infradead.org
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: DU2PR04MB8790:EE_|GVXPR04MB9974:EE_
+X-MS-Office365-Filtering-Correlation-Id: f3e3923f-52ca-4884-8217-08dbe1cfa75a
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+X-Microsoft-Antispam-Message-Info: d5/xI2/rrcWpsxMxR6o0Rn/QFMZhk1/PFwfISIaMi62ypc5dE6E5l7gEoNoo5njvBPXfRu5RAW7L/G4r/NDbmaMSb/10jH0EHjgXbArxthFlru6Uweh9uRK6zHSG8rgyM6VzcU+vko2ItzaBz1JBT0E5BQWXXHFiUyl3Hq92YDnEtDDomVrK6dysQZGXT+OzmcX1gthOu6eDIb0/9SyTAhviYSoxIYREGTY6FnxjcqfQcFXv9X8xVT9oOCAxI76SAj/Sn8TIaABsu07IkgytYnKpqmMEDzyeC20yDQeeueW8c41RWOnhrmM6MrwajMwI8jdnBtqCG5zmmJ6xtl9jUDXWbBqVv9KI4vMQxIISvdAkGy9gr/iRLlxQmROVX/BglH20Ll6K8nvqQmTRdsQE5LgpU5sAzQ7yAp7ggj0zU//1rWLCss7PTmeHuTSPPOlVw11A0bvDtsAhA5lUgaPX0myVyyw4JElcwx1kOI2dy6/UFnxhRgRM8ryvGQLA93sQPcGJw6/L1YD2rD6+kNijqpYv45Y0ColgFojidusoPFkQVIllRO0LiW24oPjF16PTsVY9Fco4fVQOcUGCYhc1fODLNm2xrgxrJl0+75a10rBIhbI2tBggzIg31WrBiF0brM5xFcfKNcOgQQF4UpqSiw==
+X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:DU2PR04MB8790.eurprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(39860400002)(376002)(346002)(366004)(136003)(396003)(230922051799003)(186009)(64100799003)(451199024)(1800799009)(36756003)(31686004)(86362001)(31696002)(38100700002)(53546011)(26005)(6506007)(2616005)(6486002)(316002)(66476007)(8676002)(66946007)(83380400001)(66556008)(8936002)(54906003)(4326008)(6916009)(478600001)(2906002)(5660300002)(6512007)(41300700001)(45980500001)(43740500002);
+ DIR:OUT; SFP:1101; 
+X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?dmVkS2hBMEJnNGZpNEt2Z1E2NFh0c1FaVlBpRHFPQk96QlZTZnNFdFQ5Q1Zh?=
+ =?utf-8?B?Rk1YR05vUEQ2QjRzbzZYVnY1OFpWTmNmazBDbG9paGQ2bDY3RDduTFh4UnRM?=
+ =?utf-8?B?VzVnVXZYdWxncXhGeFEyTXhHSzBhaFhNRGhXRmlPNDF5dktVcTdmN2RKT05N?=
+ =?utf-8?B?MTFjL3N4dkpZV2hjZTlKS0R6U24wbWp0K2JCYWRVeVJPRHh5NFJxT3AxNWZj?=
+ =?utf-8?B?bFFVb245Y2U4TDZ4YVczcVBlU1laaW5pMk5XL0hkSm1RbHZUTDhTemxlUEZP?=
+ =?utf-8?B?MHlQOXRKNDBXYnU3U1drcVcrNktIN3RGOERjNEZoN09CTHVFbXo3OTI2OWFM?=
+ =?utf-8?B?T0lUT2NxZmVsMEZaWTV5VlVXZHU1elRzTUV6d3E5SnY5SDJDQWc5YzlaZ2sr?=
+ =?utf-8?B?U1VHb3hLNEM3ZVEvWFNGVzlSSWIzN2JNYkdYTVUwM203ZUlnbHpGQ2FMNXZp?=
+ =?utf-8?B?dWRkSlo5ZlYzdlhmY1FPMlJlTjRNNDA1OU5JRytaN2QzQ3FsZWxqQi9FZS92?=
+ =?utf-8?B?ZDBEQ0xSZ2JvaE55c3FIanlsOVJNVkc2VFhONm5jOThrSkFUdld3YjRjVDdr?=
+ =?utf-8?B?byswN1RLM0UyWHFKcG9kSFdxTEszSG9IeVFsY0FDVXJTTXRwTU1EbjF4UEt4?=
+ =?utf-8?B?QTJ6Vy94dFJMeGtZWTJiQWhxMVFCNHErTHBKWXBuOEJ6Rzc1VkxLckJXbXpq?=
+ =?utf-8?B?SkN6ckg3UE1pNXdWSmg3cWNtQmM4RTQzTER6blBDS3FsVm90NnJkSjhuVUxh?=
+ =?utf-8?B?clBqR09vSFJkUEUwSGNKTGlhTVNOTEJkMWhaMTl0dkRFVW9SUkc0bTJmQkpN?=
+ =?utf-8?B?cGsxMUVQaFJWQmdmVVRhbnQ1eUQ4czExbmtJcXk3dU5hYUNNRHl5emNybUw1?=
+ =?utf-8?B?cW82TGdnMGZKMlhWV2c1dGtNenZza1VRcnhlRTFjT2pTdm42dFA2M0NqRnFY?=
+ =?utf-8?B?Uy9WSXRHZ0pDN0hDN2hWOGc4N1I4SFBjSVVTUzFUcTM1UTJUcUM1U3VkOEVB?=
+ =?utf-8?B?eEx1U2RoM2NjSGxwMk5vQWEwUHdBWWlCWGsvMFBlUm1zdnFMSkhsaHZLNGd3?=
+ =?utf-8?B?YWRoT0Uwamg3NlNkR2NYRW9wcGMxOWpjTkJadDJRb2JQYXVQeWV2MXpSRUZL?=
+ =?utf-8?B?TVFjbm05dkhQKzBEdTZVMDBZWXBFSk5pb2thSWNVM1F6SUNXYXZKek1PTS9M?=
+ =?utf-8?B?UVhIRFl0S0gvVzBJeitnMHdkTTV4eDJRRDZQVlExK0x0bStVdS85NDNiODdP?=
+ =?utf-8?B?V1NLUjM2c3V0a25JbC9MOTN6WURtMXdFNk1YamlrcEFNWVNjU3pSZDVidUtR?=
+ =?utf-8?B?di9INENVY09lSVdINnFvWDFGY2Q0RVZ6b2tyTGFLVFUyT0pSRkhCeTFVL3B1?=
+ =?utf-8?B?U0ljMG5vRDlkWVdEQVNOVVNyejBVa25LL1VRODJuelFKMDN1UUhwdFNRdGxX?=
+ =?utf-8?B?R1FxNFJiRlNxd2tQRkhyVDJRTHBFVU0wdE9UWmxuWllHUUNtRTA4WEF6STJX?=
+ =?utf-8?B?eVQ3Y0wvTFRUczRTM2xnTmxack1aMUYxTTc5VDRBYWtJSTE1U2JMcWp5MWp1?=
+ =?utf-8?B?LytHbkcvbmJUbktuaW56NDZMMytCYXV4YXV0RVlIZUZDanlZNG5zRXAvbEty?=
+ =?utf-8?B?OE9zRGJGaWM2K1BRSnhoSG04aHNMS3pxNmY5czRsSHpMdlpQbjJaZ1E2WU1s?=
+ =?utf-8?B?SXE4b0R6aUFlaG1ZdXNJWjVQYlppaVEvbzFRMW9neXFIOW5FQ3FRV05xRzVa?=
+ =?utf-8?B?dkR5dEJIVmpSKzVQblVUNmp2cVF0S0F4bE16c3VmU09ZT2tBYVRvQWd2dkpX?=
+ =?utf-8?B?cVRLSDhoL1dpdHJMZHJaSkNOY09mcGZJdmRhZVRIUVM2L1h4YWZrZ2g3a0p0?=
+ =?utf-8?B?RTF6VnZrYmZ4Z0xjS2g2dWdkMWRwZkovNEc5eWZlbXdzeXJ4MmRxai95QWY1?=
+ =?utf-8?B?YWQwZlZOSmE3YkhTZ0l5cm9WWFMwamNvUTVxK1NGQWptcDg3OXJuckxjenFp?=
+ =?utf-8?B?Y0dhUFpoZHp0NVRmZUFaYUw2aUI3TnZhaHFRVms0UFBvUm5wUFh1bGRrVm1k?=
+ =?utf-8?B?RitiS0g5M0x3TUVFSFNXVzhiQ1RFbk1MV2Q4ZlRsUXl4T0pwOVZ4SndUT3B2?=
+ =?utf-8?Q?583b0gsY50cBUtiQhcn+RS3m9?=
+X-OriginatorOrg: suse.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: f3e3923f-52ca-4884-8217-08dbe1cfa75a
+X-MS-Exchange-CrossTenant-AuthSource: DU2PR04MB8790.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 10 Nov 2023 09:30:18.6388 (UTC)
+X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
+X-MS-Exchange-CrossTenant-Id: f7a17af6-1c5c-4a36-aa8b-f5be247aa4ba
+X-MS-Exchange-CrossTenant-MailboxType: HOSTED
+X-MS-Exchange-CrossTenant-UserPrincipalName: K4Rkptm/ieZtSmM50ebRLskeisBlan4OFSpwa5Jx7P7IW8UYJrMyzonyr/uvrOm8nmFtZu+ovCrMju8ybtFVmg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: GVXPR04MB9974
+Received-SPF: pass client-ip=2a01:111:f400:fe1e::630;
+ envelope-from=JBeulich@suse.com;
+ helo=EUR01-HE1-obe.outbound.protection.outlook.com
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, NICE_REPLY_A=-3.265,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 10 Nov 2023 09:15:10 -0500
+X-Mailman-Approved-At: Fri, 10 Nov 2023 09:15:12 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,149 +136,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 Nov 2023 10:26:50 -0000
+X-List-Received-Date: Fri, 10 Nov 2023 09:30:29 -0000
 
+On 09.11.2023 18:40, Thomas Huth wrote:
+> --- a/include/hw/xen/interface/hvm/params.h
+> +++ b/include/hw/xen/interface/hvm/params.h
+> @@ -255,7 +255,7 @@
+>   * Note that 'mixed' mode has not been evaluated for safety from a
+>   * security perspective.  Before using this mode in a
+>   * security-critical environment, each subop should be evaluated for
+> - * safety, with unsafe subops blacklisted in XSM.
+> + * safety, with unsafe subops blocked in XSM.
 
---=-RQmUnTN/hWX3t9XovVIe
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+To avoid another round trip when you send the patch against xen.git, as
+already asked for by others, I'd like to point out that the wording
+change isn't describing things sufficiently similarly: "blocked" reads
+as if XSM would do so all by itself, whereas "blacklisted" has an
+indication that something needs to be done for XSM to behave in the
+intended way. Minimally I'd suggest "suitably blocked via", but perhaps
+yet better wording can be thought of.
 
-On Fri, 2023-11-10 at 10:30 +0100, Jan Beulich wrote:
-> On 09.11.2023 18:40, Thomas Huth wrote:
-> > --- a/include/hw/xen/interface/hvm/params.h
-> > +++ b/include/hw/xen/interface/hvm/params.h
-> > @@ -255,7 +255,7 @@
-> > =C2=A0 * Note that 'mixed' mode has not been evaluated for safety from =
-a
-> > =C2=A0 * security perspective.=C2=A0 Before using this mode in a
-> > =C2=A0 * security-critical environment, each subop should be evaluated =
-for
-> > - * safety, with unsafe subops blacklisted in XSM.
-> > + * safety, with unsafe subops blocked in XSM.
->=20
-> To avoid another round trip when you send the patch against xen.git, as
-> already asked for by others, I'd like to point out that the wording
-> change isn't describing things sufficiently similarly: "blocked" reads
-> as if XSM would do so all by itself, whereas "blacklisted" has an
-> indication that something needs to be done for XSM to behave in the
-> intended way. Minimally I'd suggest "suitably blocked via", but perhaps
-> yet better wording can be thought of.
+Jan
 
-"denylist" is often used and works as a suitable replacement in most
-use cases.
-
-
---=-RQmUnTN/hWX3t9XovVIe
-Content-Type: application/pkcs7-signature; name="smime.p7s"
-Content-Disposition: attachment; filename="smime.p7s"
-Content-Transfer-Encoding: base64
-
-MIAGCSqGSIb3DQEHAqCAMIACAQExDzANBglghkgBZQMEAgEFADCABgkqhkiG9w0BBwEAAKCCEkQw
-ggYQMIID+KADAgECAhBNlCwQ1DvglAnFgS06KwZPMA0GCSqGSIb3DQEBDAUAMIGIMQswCQYDVQQG
-EwJVUzETMBEGA1UECBMKTmV3IEplcnNleTEUMBIGA1UEBxMLSmVyc2V5IENpdHkxHjAcBgNVBAoT
-FVRoZSBVU0VSVFJVU1QgTmV0d29yazEuMCwGA1UEAxMlVVNFUlRydXN0IFJTQSBDZXJ0aWZpY2F0
-aW9uIEF1dGhvcml0eTAeFw0xODExMDIwMDAwMDBaFw0zMDEyMzEyMzU5NTlaMIGWMQswCQYDVQQG
-EwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYD
-VQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50
-aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKC
-AQEAyjztlApB/975Rrno1jvm2pK/KxBOqhq8gr2+JhwpKirSzZxQgT9tlC7zl6hn1fXjSo5MqXUf
-ItMltrMaXqcESJuK8dtK56NCSrq4iDKaKq9NxOXFmqXX2zN8HHGjQ2b2Xv0v1L5Nk1MQPKA19xeW
-QcpGEGFUUd0kN+oHox+L9aV1rjfNiCj3bJk6kJaOPabPi2503nn/ITX5e8WfPnGw4VuZ79Khj1YB
-rf24k5Ee1sLTHsLtpiK9OjG4iQRBdq6Z/TlVx/hGAez5h36bBJMxqdHLpdwIUkTqT8se3ed0PewD
-ch/8kHPo5fZl5u1B0ecpq/sDN/5sCG52Ds+QU5O5EwIDAQABo4IBZDCCAWAwHwYDVR0jBBgwFoAU
-U3m/WqorSs9UgOHYm8Cd8rIDZsswHQYDVR0OBBYEFAnA8vwL2pTbX/4r36iZQs/J4K0AMA4GA1Ud
-DwEB/wQEAwIBhjASBgNVHRMBAf8ECDAGAQH/AgEAMB0GA1UdJQQWMBQGCCsGAQUFBwMCBggrBgEF
-BQcDBDARBgNVHSAECjAIMAYGBFUdIAAwUAYDVR0fBEkwRzBFoEOgQYY/aHR0cDovL2NybC51c2Vy
-dHJ1c3QuY29tL1VTRVJUcnVzdFJTQUNlcnRpZmljYXRpb25BdXRob3JpdHkuY3JsMHYGCCsGAQUF
-BwEBBGowaDA/BggrBgEFBQcwAoYzaHR0cDovL2NydC51c2VydHJ1c3QuY29tL1VTRVJUcnVzdFJT
-QUFkZFRydXN0Q0EuY3J0MCUGCCsGAQUFBzABhhlodHRwOi8vb2NzcC51c2VydHJ1c3QuY29tMA0G
-CSqGSIb3DQEBDAUAA4ICAQBBRHUAqznCFfXejpVtMnFojADdF9d6HBA4kMjjsb0XMZHztuOCtKF+
-xswhh2GqkW5JQrM8zVlU+A2VP72Ky2nlRA1GwmIPgou74TZ/XTarHG8zdMSgaDrkVYzz1g3nIVO9
-IHk96VwsacIvBF8JfqIs+8aWH2PfSUrNxP6Ys7U0sZYx4rXD6+cqFq/ZW5BUfClN/rhk2ddQXyn7
-kkmka2RQb9d90nmNHdgKrwfQ49mQ2hWQNDkJJIXwKjYA6VUR/fZUFeCUisdDe/0ABLTI+jheXUV1
-eoYV7lNwNBKpeHdNuO6Aacb533JlfeUHxvBz9OfYWUiXu09sMAviM11Q0DuMZ5760CdO2VnpsXP4
-KxaYIhvqPqUMWqRdWyn7crItNkZeroXaecG03i3mM7dkiPaCkgocBg0EBYsbZDZ8bsG3a08LwEsL
-1Ygz3SBsyECa0waq4hOf/Z85F2w2ZpXfP+w8q4ifwO90SGZZV+HR/Jh6rEaVPDRF/CEGVqR1hiuQ
-OZ1YL5ezMTX0ZSLwrymUE0pwi/KDaiYB15uswgeIAcA6JzPFf9pLkAFFWs1QNyN++niFhsM47qod
-x/PL+5jR87myx5uYdBEQkkDc+lKB1Wct6ucXqm2EmsaQ0M95QjTmy+rDWjkDYdw3Ms6mSWE3Bn7i
-5ZgtwCLXgAIe5W8mybM2JzCCBhQwggT8oAMCAQICEQDGvhmWZ0DEAx0oURL6O6l+MA0GCSqGSIb3
-DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVyMRAwDgYD
-VQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNlY3RpZ28g
-UlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBMB4XDTIyMDEwNzAw
-MDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJARYTZHdtdzJAaW5mcmFkZWFkLm9y
-ZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3GpC2bomUqk+91wLYBzDMcCj5C9m6
-oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZHh7htyAkWYVoFsFPrwHounto8xTsy
-SSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT9YgcBqKCo65pTFmOnR/VVbjJk4K2
-xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNjP+qDrh0db7PAjO1D4d5ftfrsf+kd
-RR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy2U+eITZ5LLE5s45mX2oPFknWqxBo
-bQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3BgBEmfsYWlBXO8rVXfvPgLs32VdV
-NZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/7auNVRmPB3v5SWEsH8xi4Bez2V9U
-KxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmdlFYhAflWKQ03Ufiu8t3iBE3VJbc2
-5oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9aelIl6vtbhMA+l0nfrsORMa4kobqQ5
-C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMBAAGjggHMMIIByDAfBgNVHSMEGDAW
-gBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeDMcimo0oz8o1R1Nver3ZVpSkwDgYD
-VR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYwFAYIKwYBBQUHAwQGCCsGAQUFBwMC
-MEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYBBQUHAgEWF2h0dHBzOi8vc2VjdGln
-by5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9jcmwuc2VjdGlnby5jb20vU2VjdGln
-b1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1haWxDQS5jcmwwgYoGCCsGAQUFBwEB
-BH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdvLmNvbS9TZWN0aWdvUlNBQ2xpZW50
-QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAjBggrBgEFBQcwAYYXaHR0cDovL29j
-c3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5mcmFkZWFkLm9yZzANBgkqhkiG9w0B
-AQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQvQ/fzPXmtR9t54rpmI2TfyvcKgOXp
-qa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvIlSPrzIB4Z2wyIGQpaPLlYflrrVFK
-v9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9ChWFfgSXvrWDZspnU3Gjw/rMHrGnql
-Htlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0whpBtXdyDjzBtQTaZJ7zTT/vlehc/
-tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9IzCCBhQwggT8oAMCAQICEQDGvhmW
-Z0DEAx0oURL6O6l+MA0GCSqGSIb3DQEBCwUAMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3Jl
-YXRlciBNYW5jaGVzdGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0
-ZWQxPjA8BgNVBAMTNVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJl
-IEVtYWlsIENBMB4XDTIyMDEwNzAwMDAwMFoXDTI1MDEwNjIzNTk1OVowJDEiMCAGCSqGSIb3DQEJ
-ARYTZHdtdzJAaW5mcmFkZWFkLm9yZzCCAiIwDQYJKoZIhvcNAQEBBQADggIPADCCAgoCggIBALQ3
-GpC2bomUqk+91wLYBzDMcCj5C9m6oZaHwvmIdXftOgTbCJXADo6G9T7BBAebw2JV38EINgKpy/ZH
-h7htyAkWYVoFsFPrwHounto8xTsySSePMiPlmIdQ10BcVSXMUJ3Juu16GlWOnAMJY2oYfEzmE7uT
-9YgcBqKCo65pTFmOnR/VVbjJk4K2xE34GC2nAdUQkPFuyaFisicc6HRMOYXPuF0DuwITEKnjxgNj
-P+qDrh0db7PAjO1D4d5ftfrsf+kdRR4gKVGSk8Tz2WwvtLAroJM4nXjNPIBJNT4w/FWWc/5qPHJy
-2U+eITZ5LLE5s45mX2oPFknWqxBobQZ8a9dsZ3dSPZBvE9ZrmtFLrVrN4eo1jsXgAp1+p7bkfqd3
-BgBEmfsYWlBXO8rVXfvPgLs32VdVNZxb/CDWPqBsiYv0Hv3HPsz07j5b+/cVoWqyHDKzkaVbxfq/
-7auNVRmPB3v5SWEsH8xi4Bez2V9UKxfYCnqsjp8RaC2/khxKt0A552Eaxnz/4ly/2C7wkwTQnBmd
-lFYhAflWKQ03Ufiu8t3iBE3VJbc25oMrglj7TRZrmKq3CkbFnX0fyulB+kHimrt6PIWn7kgyl9ae
-lIl6vtbhMA+l0nfrsORMa4kobqQ5C5rveVgmcIad67EDa+UqEKy/GltUwlSh6xy+TrK1tzDvAgMB
-AAGjggHMMIIByDAfBgNVHSMEGDAWgBQJwPL8C9qU21/+K9+omULPyeCtADAdBgNVHQ4EFgQUzMeD
-Mcimo0oz8o1R1Nver3ZVpSkwDgYDVR0PAQH/BAQDAgWgMAwGA1UdEwEB/wQCMAAwHQYDVR0lBBYw
-FAYIKwYBBQUHAwQGCCsGAQUFBwMCMEAGA1UdIAQ5MDcwNQYMKwYBBAGyMQECAQEBMCUwIwYIKwYB
-BQUHAgEWF2h0dHBzOi8vc2VjdGlnby5jb20vQ1BTMFoGA1UdHwRTMFEwT6BNoEuGSWh0dHA6Ly9j
-cmwuc2VjdGlnby5jb20vU2VjdGlnb1JTQUNsaWVudEF1dGhlbnRpY2F0aW9uYW5kU2VjdXJlRW1h
-aWxDQS5jcmwwgYoGCCsGAQUFBwEBBH4wfDBVBggrBgEFBQcwAoZJaHR0cDovL2NydC5zZWN0aWdv
-LmNvbS9TZWN0aWdvUlNBQ2xpZW50QXV0aGVudGljYXRpb25hbmRTZWN1cmVFbWFpbENBLmNydDAj
-BggrBgEFBQcwAYYXaHR0cDovL29jc3Auc2VjdGlnby5jb20wHgYDVR0RBBcwFYETZHdtdzJAaW5m
-cmFkZWFkLm9yZzANBgkqhkiG9w0BAQsFAAOCAQEAyW6MUir5dm495teKqAQjDJwuFCi35h4xgnQv
-Q/fzPXmtR9t54rpmI2TfyvcKgOXpqa7BGXNFfh1JsqexVkIqZP9uWB2J+uVMD+XZEs/KYNNX2PvI
-lSPrzIB4Z2wyIGQpaPLlYflrrVFKv9CjT2zdqvy2maK7HKOQRt3BiJbVG5lRiwbbygldcALEV9Ch
-WFfgSXvrWDZspnU3Gjw/rMHrGnqlHtlyebp3pf3fSS9kzQ1FVtVIDrL6eqhTwJxe+pXSMMqFiN0w
-hpBtXdyDjzBtQTaZJ7zTT/vlehc/tDuqZwGHm/YJy883Ll+GP3NvOkgaRGWEuYWJJ6hFCkXYjyR9
-IzGCBMcwggTDAgEBMIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVz
-dGVyMRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMT
-NVNlY3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEA
-xr4ZlmdAxAMdKFES+jupfjANBglghkgBZQMEAgEFAKCCAeswGAYJKoZIhvcNAQkDMQsGCSqGSIb3
-DQEHATAcBgkqhkiG9w0BCQUxDxcNMjMxMTEwMTAyNjM5WjAvBgkqhkiG9w0BCQQxIgQgPMB2vmMr
-TK9JW6TPpSGpWQ6GF1m8Cqi/p4VtpJQY+0Ewgb0GCSsGAQQBgjcQBDGBrzCBrDCBljELMAkGA1UE
-BhMCR0IxGzAZBgNVBAgTEkdyZWF0ZXIgTWFuY2hlc3RlcjEQMA4GA1UEBxMHU2FsZm9yZDEYMBYG
-A1UEChMPU2VjdGlnbyBMaW1pdGVkMT4wPAYDVQQDEzVTZWN0aWdvIFJTQSBDbGllbnQgQXV0aGVu
-dGljYXRpb24gYW5kIFNlY3VyZSBFbWFpbCBDQQIRAMa+GZZnQMQDHShREvo7qX4wgb8GCyqGSIb3
-DQEJEAILMYGvoIGsMIGWMQswCQYDVQQGEwJHQjEbMBkGA1UECBMSR3JlYXRlciBNYW5jaGVzdGVy
-MRAwDgYDVQQHEwdTYWxmb3JkMRgwFgYDVQQKEw9TZWN0aWdvIExpbWl0ZWQxPjA8BgNVBAMTNVNl
-Y3RpZ28gUlNBIENsaWVudCBBdXRoZW50aWNhdGlvbiBhbmQgU2VjdXJlIEVtYWlsIENBAhEAxr4Z
-lmdAxAMdKFES+jupfjANBgkqhkiG9w0BAQEFAASCAgCcJ8h2jZNhjHHiF7xvteqYrOXyI6J0y94Q
-gui0GOtU67eRf7WQcEWxJEUQSE6klV85cp07ipeq+a+oG4mRLTF81LLsyX7WboO5L4610IMsotrt
-9uNHnMEcSA7jEsKxcLGQ3B53jn1CaKl/ZxZaAv4KEnfBT8nygpYMH780FZr2pV2jwvkXTqGPZJ2i
-toNwYypqtjH295VDqKnynCnOhMw2spWpjBlSjDrl0HH/7lf7AlaO5TZ3Rcs/ztQu4cqe0vbaJP4c
-+fgJYbVvb7TK6n+n6DFxG9tRrTEI1UWuqb5K7QNgoUS76LS+qHKVjGwfLTx7++uWKWO9mLjPApVj
-s5gJ9kwYnHTzIJkihQEc24Qt+494pKMpEIvS9fvUggsBzhoAbm72e+MkMoLn1H8ZMHPAN0irZ0BN
-Qg5LYHlj41q3yf4Lf9+EZxQ0csEUaKbTgfxB4FLTh58t1B5oFYt2iUS9ddTf8zDJu+CH4vN282RO
-C8uyGWR2PsycnvGG1UlpWCA3dY+MR5zyQjNNcsaBU/5Oi17HKMrhWtpjDQz4b2IbKqv4mhpElSjN
-wAQKaLWhWgH2wWTgVzT7Guffm+L733PGWIRzyBwGYJvvNqmxRzT1Nw6rnfnCuKos23Enhai6QmB+
-svKfOdn6QeDeyN+zpYGY4O/XMzZGTCNoll5RidF95QAAAAAAAA==
-
-
---=-RQmUnTN/hWX3t9XovVIe--
+PS: Personally I'm against such avoiding of certain words. Them being
+misused is not really a justification. New wording (perhaps not
+specifically here, but considering the underlying wider theme) is going
+to be misused as well, leading to the need to come up with yet different
+wording, and so on.
 
