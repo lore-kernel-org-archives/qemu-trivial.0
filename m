@@ -1,57 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r2Zoh-0000ZD-BH
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2023 11:29:39 -0500
+	id 1r2eMQ-0008BK-2w
+	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2023 16:20:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r2Zof-0000Yu-6m
- for qemu-trivial@nongnu.org; Mon, 13 Nov 2023 11:29:37 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1r2eML-0008AZ-Ct; Mon, 13 Nov 2023 16:20:41 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r2Zod-0006Ra-Ij
- for qemu-trivial@nongnu.org; Mon, 13 Nov 2023 11:29:36 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699892972;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=vGgybPJ+iHUFFtwNgOyMGMw7qVJDoU7xjqnoePoJmgQ=;
- b=hnUjs6Iq4oaRv+GKTO1OTk+nDYwyS9VEQzXqDzwqdJiC/iwm/iLI3T7ZafBonAp6ADfiAN
- o5Lq5vg79/rYzyeRqq/LcxtSfmjzTIw1C85HvjRnxXCkanhIKdJdbIjYiMc4Sr+h1bO6tw
- mEB91pfpMB14dZ0hhlNYwlzKIQYBL7g=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-659-KNxr0bGxNruBZBY3tjLzDA-1; Mon, 13 Nov 2023 11:29:31 -0500
-X-MC-Unique: KNxr0bGxNruBZBY3tjLzDA-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 27EBB811E7D;
- Mon, 13 Nov 2023 16:29:31 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.105])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BBA8D492BE0;
- Mon, 13 Nov 2023 16:29:29 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
- Eric Blake <eblake@redhat.com>
-Cc: qemu-trivial@nongnu.org
-Subject: [PATCH] qapi/pragma.json: Improve the comment about the lists of QAPI
- rule exceptions
-Date: Mon, 13 Nov 2023 17:29:28 +0100
-Message-ID: <20231113162928.54551-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1r2eMJ-0006ol-Ej; Mon, 13 Nov 2023 16:20:41 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 7700832DDA;
+ Tue, 14 Nov 2023 00:20:51 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id 26E4034E7A;
+ Tue, 14 Nov 2023 00:20:34 +0300 (MSK)
+Received: (nullmailer pid 2457381 invoked by uid 1000);
+ Mon, 13 Nov 2023 21:20:34 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH] spelling: hw/audio/virtio-snd.c: initalize
+Date: Tue, 14 Nov 2023 00:20:32 +0300
+Message-Id: <20231113212033.2457365-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -66,31 +48,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Nov 2023 16:29:37 -0000
+X-List-Received-Date: Mon, 13 Nov 2023 21:20:43 -0000
 
-Let's use more inclusive language here.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Fixes: eb9ad377bb94 "virtio-sound: handle control messages and streams"
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- qapi/pragma.json | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/audio/virtio-snd.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/qapi/pragma.json b/qapi/pragma.json
-index 7f810b0e97..0aa4eeddd3 100644
---- a/qapi/pragma.json
-+++ b/qapi/pragma.json
-@@ -3,8 +3,8 @@
- 
- { 'pragma': { 'doc-required': true } }
- 
--# Whitelists to permit QAPI rule violations; think twice before you
--# add to them!
-+# Entries in these lists are allowed to violate the QAPI rules (for
-+# historical reasons); think twice before you add to them!
- { 'pragma': {
-     # Command names containing '_'
-     'command-name-exceptions': [
+diff --git a/hw/audio/virtio-snd.c b/hw/audio/virtio-snd.c
+index a18a9949a7..2fe966e311 100644
+--- a/hw/audio/virtio-snd.c
++++ b/hw/audio/virtio-snd.c
+@@ -1126,7 +1126,7 @@ static void virtio_snd_realize(DeviceState *dev, Error **errp)
+         status = virtio_snd_set_pcm_params(vsnd, i, &default_params);
+         if (status != cpu_to_le32(VIRTIO_SND_S_OK)) {
+             error_setg(errp,
+-                       "Can't initalize stream params, device responded with %s.",
++                       "Can't initialize stream params, device responded with %s.",
+                        print_code(status));
+             return;
+         }
 -- 
-2.41.0
+2.39.2
 
 
