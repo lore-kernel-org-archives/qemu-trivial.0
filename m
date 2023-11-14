@@ -1,91 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r2wyv-0002Ku-LY
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 12:13:45 -0500
+	id 1r2xJU-0003NN-SB
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 12:35:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1r2wyu-0002KX-9i
- for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 12:13:44 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eric.auger@redhat.com>)
- id 1r2wys-00088N-JY
- for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 12:13:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699982021;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ChLaxQpTaN/ipJnuh8jYkBNezYnnWFz964ifrrqwoZM=;
- b=i+7Inb3jc3HOeX5njM+tGrZ8XAdbDPsXvZQdbQ02POzO6sXqNFBaWsLvILcfZZdTiHHhcF
- XWppKmWCQ9mV2h/+Nnpu2RuWIL6ih0jJp+VPTz0YOETwlMmkfHnlBVmY0BgiqfV4JyhKhY
- AxLL7Oyadm+7X9IgqMvkfTgTIWaRRwU=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-88-rwQyEbh6MRyayTrcoUwylQ-1; Tue, 14 Nov 2023 12:13:40 -0500
-X-MC-Unique: rwQyEbh6MRyayTrcoUwylQ-1
-Received: by mail-qv1-f72.google.com with SMTP id
- 6a1803df08f44-67049a2c8b3so76401876d6.0
- for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 09:13:40 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1r2xJQ-0003Kn-Rc
+ for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 12:34:57 -0500
+Received: from mail-lj1-x233.google.com ([2a00:1450:4864:20::233])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <wlosh@bsdimp.com>) id 1r2xJO-0003fd-3M
+ for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 12:34:56 -0500
+Received: by mail-lj1-x233.google.com with SMTP id
+ 38308e7fff4ca-2c5028e5b88so83426871fa.3
+ for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 09:34:51 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=bsdimp-com.20230601.gappssmtp.com; s=20230601; t=1699983290; x=1700588090;
+ darn=nongnu.org; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=blsyRk39V/ANlXxzQcBkYSMkazcipaoOsxaydtw1nng=;
+ b=l98XDbMIfZp5vQFs2Oj9dKCwDWt7EpyqGLkkC6YZ3WbpsspmyEVJXHRbHWsyOod7Em
+ 7mT3x2949kilr8kBBDNDRSzWqlkoCMk9Jgp8qOkdcM6+ZVmfatRoDKgeqRLch5EeujyZ
+ gwhA83X8y12J608WddXhLAqvzNqrrcIPQiuMdYM1DtutP1CMGqr77AxpdPTqXXQPsmuF
+ aWfM/Xk4GwJODE0SzEDuToyJxNCvhuGDtZMlWkl/q3KckHx3d3bZ5L7y/xJSjeUkWwLF
+ 0LE12GXdtvu8nmqrQUUkJ0S2SNY9yAkoYI16yy2yCB5eG4cFuSyv/B30xDXVG2qcOGrE
+ cnOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699982019; x=1700586819;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:reply-to:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1699983290; x=1700588090;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=ChLaxQpTaN/ipJnuh8jYkBNezYnnWFz964ifrrqwoZM=;
- b=dt6Wa/p9u8BtT8M7/NVA1ukaw5QfNq7ZR92sW9UkFB4steUX+4zeXeApFR9IRAA/pj
- ++p6dfDcK8HaRf5Y2NcBqPB0AYoIVwrzUg/QmN/wk7imK6K77V5DloNAx75lru3swtNK
- tbMUdkxE591TIajLjDPVMX8SxT3/UbrstWnnT7a4ZW5TrWLrjoTiu4PyGkE8rufzDc+B
- mbHW3onfWbTOIXQ3zFZrszF6VOCZWqlk/aTfJ5ZWx5fLKdl8ZPfDVtkqKUYrzXlkDUAM
- 3SxYff5LtEgxJ04rcuNO0CrVQ1nzHOEoGrhOTg7SFObepMQ2jSinqQlRLr0fBaCjW+oM
- FPgQ==
-X-Gm-Message-State: AOJu0YxLqC7ZzCxdoygEnwaaSW1xD7B+uCydjWCOdqIpS9jDDz4s5AOq
- vSynQYesCR9PGai40ua6ZI1dCGwhqLxJfQYjZCHYLLG+MnpMlPuCSzYad9LrVoBkMf/KpfRKVPq
- BG7QsFEA+PEdNx/ZVpg==
-X-Received: by 2002:ad4:5846:0:b0:66d:4191:91ee with SMTP id
- de6-20020ad45846000000b0066d419191eemr2931319qvb.51.1699982019591; 
- Tue, 14 Nov 2023 09:13:39 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEl4jqGKzbUznpN0ZoFavBM8erB55HSL9TOcXRDxKOhpoPYGf3er4dLiDxEFlJ2E6Vb1OtGPA==
-X-Received: by 2002:ad4:5846:0:b0:66d:4191:91ee with SMTP id
- de6-20020ad45846000000b0066d419191eemr2931308qvb.51.1699982019357; 
- Tue, 14 Nov 2023 09:13:39 -0800 (PST)
-Received: from ?IPV6:2a01:e0a:59e:9d80:527b:9dff:feef:3874?
- ([2a01:e0a:59e:9d80:527b:9dff:feef:3874])
- by smtp.gmail.com with ESMTPSA id
- o13-20020a0ceccd000000b006624e9d51d9sm3036318qvq.76.2023.11.14.09.13.37
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Nov 2023 09:13:38 -0800 (PST)
-Message-ID: <24f9d094-f6a4-4510-9a2b-75949e96bf1d@redhat.com>
-Date: Tue, 14 Nov 2023 18:13:36 +0100
+ bh=blsyRk39V/ANlXxzQcBkYSMkazcipaoOsxaydtw1nng=;
+ b=ISm7Pi7akH3CMv8IH4wBlaCgdUa6F7CwbCp/6UDHNeac0UkNQ6dvWMdrfQOMrIGNdg
+ X0pHkt+SA1bGPie8sNi7MhvP5wc35k9qB1cRZeR/hNq2stISz+gOdV0NajiWB1eQUrq/
+ kZQByxZcX2kmIzVV+A+3aACV67J7rjHsGAvrLuyF4kNOuQryBPFd9zAlI1N3jxRDxJcH
+ mJ0O0E2xAlHHs5kZg0kvo5UNfhY3vhcQ9GgpieAt2KC5UL1WtvtDfh8rS2cw79yQyEUT
+ dfXN5t4zPhkThWdzPAxvaZH9B4+o09OdvHd5k6JOZzM5Mb4iQdrg4Uyn+bWkdNQtjqsi
+ v/9Q==
+X-Gm-Message-State: AOJu0Yy/5z3LXBPnzsHqK0uNHg+JsjgQulPsxhnyqdeF5Ofq/HkoJcrU
+ duwUpYWwVjjd97k84fySP8CQwuwLBtijTidCxXJ8Mw==
+X-Google-Smtp-Source: AGHT+IHK6dnSnbGOaVeKbIONgPltaOnsR6Wiy2HhR6hn5PUttjgwFtTGrdyJVUlaGMHUcdQWWTjmsqb+bvCiexFndjc=
+X-Received: by 2002:a05:6512:234c:b0:500:7685:83d with SMTP id
+ p12-20020a056512234c00b005007685083dmr10143345lfu.48.1699983289725; Tue, 14
+ Nov 2023 09:34:49 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Reply-To: eric.auger@redhat.com
-Subject: Re: [PATCH trivial 21/21] util/range.c: spelling fix: inbetween
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-22-mjt@tls.msk.ru>
-From: Eric Auger <eric.auger@redhat.com>
-In-Reply-To: <20231114165834.2949011-22-mjt@tls.msk.ru>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124;
- envelope-from=eric.auger@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ <20231114165834.2949011-2-mjt@tls.msk.ru>
+In-Reply-To: <20231114165834.2949011-2-mjt@tls.msk.ru>
+From: Warner Losh <imp@bsdimp.com>
+Date: Tue, 14 Nov 2023 10:34:38 -0700
+Message-ID: <CANCZdfr09Ej9rPVUvrUQwqSY97G7-kmyf8Zi8L3PKKpOo9A+Ww@mail.gmail.com>
+Subject: Re: [PATCH trivial 01/21] bsd-user: spelling fixes: necesary,
+ agrument, undocummented
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ Stacey Son <sson@freebsd.org>, Kyle Evans <kevans@freebsd.org>
+Content-Type: multipart/alternative; boundary="0000000000001bcb45060a2034b6"
+Received-SPF: none client-ip=2a00:1450:4864:20::233;
+ envelope-from=wlosh@bsdimp.com; helo=mail-lj1-x233.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,35 +76,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Nov 2023 17:13:44 -0000
+X-List-Received-Date: Tue, 14 Nov 2023 17:34:58 -0000
 
+--0000000000001bcb45060a2034b6
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
+On Tue, Nov 14, 2023 at 9:58=E2=80=AFAM Michael Tokarev <mjt@tls.msk.ru> wr=
+ote:
 
-On 11/14/23 17:58, Michael Tokarev wrote:
-> Fixes: b439595a08d7 "range: Introduce range_inverse_array()"
-> Cc: Eric Auger <eric.auger@redhat.com>
-> Cc: Cédric Le Goater <clg@redhat.com>
+> Fixes: a99d74034754 "bsd-user: Implement do_obreak function"
+> Fixes: 8632729060bf "bsd-user: Implement freebsd_exec_common, used in
+> implementing execve/fexecve."
+> Fixes: bf14f13d8be8 "bsd-user: Implement stat related syscalls"
+> Cc: Stacey Son <sson@FreeBSD.org>
+> Cc: Warner Losh <imp@bsdimp.com>
+> Cc: Kyle Evans <kevans@freebsd.org>
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-
-Eric
-
 > ---
->  util/range.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/util/range.c b/util/range.c
-> index 9605ccfcbe..f3f40098d5 100644
-> --- a/util/range.c
-> +++ b/util/range.c
-> @@ -98,7 +98,7 @@ void range_inverse_array(GList *in, GList **rev,
->          out = append_new_range(out, low, MIN(range_lob(r) - 1, high));
->      }
->  
-> -    /* insert a range inbetween each original range until we reach high */
-> +    /* insert a range in between each original range until we reach high */
->      for (; l->next; l = l->next) {
->          r = (Range *)l->data;
->          rn = (Range *)l->next->data;
+>  bsd-user/bsd-mem.h         | 2 +-
+>  bsd-user/freebsd/os-proc.c | 2 +-
+>  bsd-user/freebsd/os-stat.h | 6 +++---
+>  3 files changed, 5 insertions(+), 5 deletions(-)
 
+
+Reviewed-by: Warner Losh <imp@bsdimp.com>
+
+These changes are fine, and won't have any hassles with merging to our
+not-yet-merged branch.
+
+--0000000000001bcb45060a2034b6
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote">=
+<div dir=3D"ltr" class=3D"gmail_attr">On Tue, Nov 14, 2023 at 9:58=E2=80=AF=
+AM Michael Tokarev &lt;<a href=3D"mailto:mjt@tls.msk.ru">mjt@tls.msk.ru</a>=
+&gt; wrote:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0px =
+0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);padding-left:1ex">Fixe=
+s: a99d74034754 &quot;bsd-user: Implement do_obreak function&quot;<br>
+Fixes: 8632729060bf &quot;bsd-user: Implement freebsd_exec_common, used in =
+implementing execve/fexecve.&quot;<br>
+Fixes: bf14f13d8be8 &quot;bsd-user: Implement stat related syscalls&quot;<b=
+r>
+Cc: Stacey Son &lt;sson@FreeBSD.org&gt;<br>
+Cc: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.com" target=3D"_blank">imp=
+@bsdimp.com</a>&gt;<br>
+Cc: Kyle Evans &lt;<a href=3D"mailto:kevans@freebsd.org" target=3D"_blank">=
+kevans@freebsd.org</a>&gt;<br>
+Signed-off-by: Michael Tokarev &lt;<a href=3D"mailto:mjt@tls.msk.ru" target=
+=3D"_blank">mjt@tls.msk.ru</a>&gt;<br>
+---<br>
+=C2=A0bsd-user/bsd-mem.h=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0| 2 +-<br>
+=C2=A0bsd-user/freebsd/os-proc.c | 2 +-<br>
+=C2=A0bsd-user/freebsd/os-stat.h | 6 +++---<br>
+=C2=A03 files changed, 5 insertions(+), 5 deletions(-)</blockquote><div><br=
+></div><div>Reviewed-by: Warner Losh &lt;<a href=3D"mailto:imp@bsdimp.com">=
+imp@bsdimp.com</a>&gt;</div><div><br></div><div>These changes are fine, and=
+ won&#39;t have any hassles with merging to our not-yet-merged branch.</div=
+></div></div>
+
+--0000000000001bcb45060a2034b6--
 
