@@ -1,30 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r2wkw-0006ne-0B
+	id 1r2wkw-0006nx-5v
 	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 11:59:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r2wkh-0006h7-9S; Tue, 14 Nov 2023 11:59:06 -0500
+ id 1r2wkl-0006hw-SD; Tue, 14 Nov 2023 11:59:09 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r2wkd-0004q8-GN; Tue, 14 Nov 2023 11:59:03 -0500
+ id 1r2wki-0004up-NC; Tue, 14 Nov 2023 11:59:06 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 7C00233268;
+ by isrv.corpit.ru (Postfix) with ESMTP id BA5CB3326B;
  Tue, 14 Nov 2023 19:59:00 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 4893C351EF;
+ by tsrv.corpit.ru (Postfix) with SMTP id 85973351F2;
  Tue, 14 Nov 2023 19:58:42 +0300 (MSK)
-Received: (nullmailer pid 2949078 invoked by uid 1000);
+Received: (nullmailer pid 2949087 invoked by uid 1000);
  Tue, 14 Nov 2023 16:58:42 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Richard Henderson <richard.henderson@linaro.org>, Helge Deller <deller@gmx.de>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH trivial 02/21] linux-user: spelling fixes: othe, necesary
-Date: Tue, 14 Nov 2023 19:58:15 +0300
-Message-Id: <20231114165834.2949011-3-mjt@tls.msk.ru>
+ Juan Quintela <quintela@redhat.com>
+Subject: [PATCH trivial 05/21] docs/about/deprecated.rst: spelling fix: becase
+Date: Tue, 14 Nov 2023 19:58:18 +0300
+Message-Id: <20231114165834.2949011-6-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231114165834.2949011-1-mjt@tls.msk.ru>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
@@ -50,45 +49,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Nov 2023 16:59:12 -0000
+X-List-Received-Date: Tue, 14 Nov 2023 16:59:13 -0000
 
-Fixes: e34136d93059 "linux-user/ppc: Add vdso"
-Fixes: 86f04735ac20 "linux-user: Fix brk() to release pages"
-Cc: Richard Henderson <richard.henderson@linaro.org>
-Cc: Helge Deller <deller@gmx.de>
-Cc: Laurent Vivier <laurent@vivier.eu>
+Fixes: 864128df465a "migration: Deprecate old compression method"
+Cc: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- linux-user/ppc/vdso.S | 2 +-
- linux-user/syscall.c  | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ docs/about/deprecated.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/linux-user/ppc/vdso.S b/linux-user/ppc/vdso.S
-index 689010db13..2e79ea9808 100644
---- a/linux-user/ppc/vdso.S
-+++ b/linux-user/ppc/vdso.S
-@@ -227,7 +227,7 @@ endf	__kernel_sigtramp_rt
- #ifndef _ARCH_PPC64
- 	/*
- 	 * The non-rt sigreturn has the same layout at a different offset.
--	 * Move the CFA and leave all othe other descriptions the same.
-+	 * Move the CFA and leave all the other descriptions the same.
- 	 */
- 	.cfi_def_cfa	1, SIGNAL_FRAMESIZE + offsetof_sigframe_mcontext
- 	nop
-diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 65ac3ac796..16ca5ea7b6 100644
---- a/linux-user/syscall.c
-+++ b/linux-user/syscall.c
-@@ -831,7 +831,7 @@ abi_long do_brk(abi_ulong brk_val)
-         return target_brk;
-     }
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 78550c07bf..6c84db90b5 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -514,5 +514,5 @@ old compression method (since 8.2)
  
--    /* Release heap if necesary */
-+    /* Release heap if necessary */
-     if (new_brk < old_brk) {
-         target_munmap(new_brk, old_brk - new_brk);
- 
+ Compression method fails too much.  Too many races.  We are going to
+ remove it if nobody fixes it.  For starters, migration-test
+-compression tests are disabled becase they fail randomly.  If you need
++compression tests are disabled because they fail randomly.  If you need
+ compression, use multifd compression methods.
 -- 
 2.39.2
 
