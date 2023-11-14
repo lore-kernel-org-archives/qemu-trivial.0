@@ -1,69 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r2yjd-00036V-Ux
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 14:06:05 -0500
+	id 1r2ykF-0004CN-BQ
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 14:06:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r2yjb-00034K-O2
- for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 14:06:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r2yk7-00044a-9e
+ for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 14:06:39 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r2yjV-0003T1-Kt
- for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 14:06:01 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r2yk5-0003YN-Tt
+ for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 14:06:35 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699988751;
+ s=mimecast20190719; t=1699988793;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=XFOFy9r63m2i+j81IdSH56o+snCvefJ4Tzma01gmTIQ=;
- b=euthGGAJmE6yVL5R9xq5jvvvetOeXt9XtHgHoZQqfqv7eKFC/fopVxNgwjN8D0UQ7I3sDn
- grWD12YNchD23FHHAhz4ehGTjHJLbnCOQ7SdRN2cLWTSj05buZvBTC5/TvR0rPo89qKHkb
- lq7iYAnLhcmryK5HTZZNKby3llkJ5D4=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=odwvCCpP8x9B6FvGge1QmxE5Q/XZUA+46yQJ21H7LTc=;
+ b=c26NqgVVYfWizkHobz107LEU0ducriHGwabmXT41R8CzqhguJXgTWLn5I0V/SGDkhekgfa
+ XYXn8/NL8qzs76G+x/IrUq8Y3J9lKDUO+X6J5bYHZCsCzUzMeX38H0RqiQBYVf3o68S9Lg
+ dyVvbqzRFAHlpl4B0XjvkZzCtuRfkQc=
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-656-gDE9ZZkpOFStz6wMEcuWDw-1; Tue, 14 Nov 2023 14:05:49 -0500
-X-MC-Unique: gDE9ZZkpOFStz6wMEcuWDw-1
-Received: by mail-qt1-f198.google.com with SMTP id
- d75a77b69052e-41cb47713f7so65378651cf.1
- for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 11:05:49 -0800 (PST)
+ us-mta-645-xJ71bgjnOCudQa8DKQeLUg-1; Tue, 14 Nov 2023 14:06:31 -0500
+X-MC-Unique: xJ71bgjnOCudQa8DKQeLUg-1
+Received: by mail-qt1-f197.google.com with SMTP id
+ d75a77b69052e-41cd433742dso76990301cf.2
+ for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 11:06:31 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699988749; x=1700593549;
+ d=1e100.net; s=20230601; t=1699988791; x=1700593591;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=XFOFy9r63m2i+j81IdSH56o+snCvefJ4Tzma01gmTIQ=;
- b=BuyTPK2hF12dCRERNFUiDNPJYtBavjx8weDcmzI9x/Q6v97ZCBVCkutLGk0ZyQWt3H
- aS1tQQZwpecrnIFbnAmRotIp9Ogx7GawpjdD3vEavMh8H8bFqMy2AHT/ML6hoIlG2+qE
- TZV7AfMUslaxMgeJlslTjKUJVxNrrTFFIFFFwBueDddAjqKdnMfAmulVwOXCydIYl1t7
- qKuq+6HRbEKLhbJUqFdztKnSdfBEc+yNgYJ99ms4UWMhjfMt6/r0gT5sP3DIgRtg8YFF
- jvPIuoH00CH2Df2+uchj7R82NzChJZjzbEryYRVpDk7etg/AsiHK3jqB7mINt8W+srf+
- l6Yg==
-X-Gm-Message-State: AOJu0YzB6yZ1U+7KoJMPiSA7lqaGZjq82E1iMwKJRPUm91qT/EG2x0L2
- Vh9otGLIrAZwzhon0kZglOm9cHN3TBRAbDF7bvC2Jq3hUKhaQtllqUmTvZkosfOwloKSlFU3mRl
- sU7r6Xh4mmZFA39pJcg==
-X-Received: by 2002:ac8:5e10:0:b0:421:b37c:43d with SMTP id
- h16-20020ac85e10000000b00421b37c043dmr3798535qtx.10.1699988749416; 
- Tue, 14 Nov 2023 11:05:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFODuh/r18fp5DcqWBE+9BIrJEyGJb2qbstmGX2faavaCVuy8UrIfXdxvhe1lH1UeO3z3FwDg==
-X-Received: by 2002:ac8:5e10:0:b0:421:b37c:43d with SMTP id
- h16-20020ac85e10000000b00421b37c043dmr3798515qtx.10.1699988749140; 
- Tue, 14 Nov 2023 11:05:49 -0800 (PST)
+ bh=odwvCCpP8x9B6FvGge1QmxE5Q/XZUA+46yQJ21H7LTc=;
+ b=E+YxqxG9jGCxrfUpZt95Od7mNSdDYqY0Z7LrfOC3+qDJk+R7124X1XNvacpciaS0dM
+ liwnmabS1N/r/iSY704WCZGIhSAESfCu0efmmxGmlRSC6cfeDCZ3S/H6WS2+y1d5jyvY
+ rl0YwrktmY7Us98HF2VEwumfGpKwRPtaDp8aFfcmU/OJGPXIkRp0Kapf6iFEgD6VBgkQ
+ H98NNZiQ5D5T0Jh8mp4Q5H6obXFYOOM0RjreRhkDqw5/OubI0EFVVBW/rQGoUabqYwGz
+ lCDtlycBsiou3eI0CadtMKvTSKXxwXLQorwv8wqd22dLMTylvEEkYLe1ehiQPuCa/3Kp
+ P06Q==
+X-Gm-Message-State: AOJu0Yxf+cc2E94q0ZGyLqTfhUbxVC0+KBx/E/d8snhG8yw1p36s+vly
+ gfJdcqG1KDU+JqRIoKRxje/KiImLbkpF3UIbX7k7cHQLMxi1bBktEwtWX7vYAugSF2n++bidoPv
+ r2MIVyNCOiEpOAtrMIUQ3M4VCBQ==
+X-Received: by 2002:a05:622a:1891:b0:41e:23e6:baaf with SMTP id
+ v17-20020a05622a189100b0041e23e6baafmr3548400qtc.68.1699988791473; 
+ Tue, 14 Nov 2023 11:06:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE/XAl2Ft+i/L7pl9S8s0J8hmk5xiwpg/bg9zTYrxf1cyEmihsiY6CQ6O5k7mEnozKT0X3WvA==
+X-Received: by 2002:a05:622a:1891:b0:41e:23e6:baaf with SMTP id
+ v17-20020a05622a189100b0041e23e6baafmr3548387qtc.68.1699988791205; 
+ Tue, 14 Nov 2023 11:06:31 -0800 (PST)
 Received: from [192.168.0.6] (ip-109-43-176-122.web.vodafone.de.
  [109.43.176.122]) by smtp.gmail.com with ESMTPSA id
- s23-20020ac85297000000b00419c39dd28fsm2918316qtn.20.2023.11.14.11.05.47
+ s23-20020ac85297000000b00419c39dd28fsm2918316qtn.20.2023.11.14.11.06.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Nov 2023 11:05:48 -0800 (PST)
-Message-ID: <f2bfef4a-3a2c-4d32-adf6-52317f85a045@redhat.com>
-Date: Tue, 14 Nov 2023 20:05:47 +0100
+ Tue, 14 Nov 2023 11:06:30 -0800 (PST)
+Message-ID: <2fbb05d2-dae5-47be-903f-3c0172b5c3df@redhat.com>
+Date: Tue, 14 Nov 2023 20:06:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial 06/21] docs/devel/migration.rst: spelling fix:
- doen't
+Subject: Re: [PATCH trivial 07/21] docs/system/arm/emulation.rst: spelling
+ fix: Enhacements
 To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Juan Quintela <quintela@redhat.com>
+Cc: qemu-trivial@nongnu.org, Aaron Lindsay <aaron@os.amperecomputing.com>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-7-mjt@tls.msk.ru>
+ <20231114165834.2949011-8-mjt@tls.msk.ru>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -107,20 +107,20 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231114165834.2949011-7-mjt@tls.msk.ru>
+In-Reply-To: <20231114165834.2949011-8-mjt@tls.msk.ru>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -135,29 +135,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Nov 2023 19:06:05 -0000
+X-List-Received-Date: Tue, 14 Nov 2023 19:06:40 -0000
 
 On 14/11/2023 17.58, Michael Tokarev wrote:
-> Fixes: 1aefe2ca1423 "migration/doc: Add documentation for backwards compatiblity"
-> Cc: Juan Quintela <quintela@redhat.com>
+> Fixes: c7c807f6dd6d "target/arm: Implement FEAT_Pauth2"
+> Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->   docs/devel/migration.rst | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
+>   docs/system/arm/emulation.rst | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
-> index 5adf4f12f7..51b1f61f5e 100644
-> --- a/docs/devel/migration.rst
-> +++ b/docs/devel/migration.rst
-> @@ -1061,7 +1061,7 @@ QEMU version, in this case pc-5.1.
->   
->   4 - qemu-5.1 -M pc-5.2  -> migrates to -> qemu-5.1 -M pc-5.2
->   
-> -  This combination is not possible as the qemu-5.1 doen't understand
-> +  This combination is not possible as the qemu-5.1 does't understand
+> diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
+> index 47fd648035..0b604f9005 100644
+> --- a/docs/system/arm/emulation.rst
+> +++ b/docs/system/arm/emulation.rst
+> @@ -70,7 +70,7 @@ the following architecture extensions:
+>   - FEAT_PAN2 (AT S1E1R and AT S1E1W instruction variants affected by PSTATE.PAN)
+>   - FEAT_PAN3 (Support for SCTLR_ELx.EPAN)
+>   - FEAT_PAuth (Pointer authentication)
+> -- FEAT_PAuth2 (Enhacements to pointer authentication)
+> +- FEAT_PAuth2 (Enhancements to pointer authentication)
+>   - FEAT_PMULL (PMULL, PMULL2 instructions)
+>   - FEAT_PMUv3p1 (PMU Extensions v3.1)
+>   - FEAT_PMUv3p4 (PMU Extensions v3.4)
 
-You replaced one typo with another one :-)
-
-  Thomas
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
