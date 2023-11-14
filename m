@@ -1,70 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r2ykn-0005Bz-Ry
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 14:07:17 -0500
+	id 1r2yl6-0005XD-3w
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 14:07:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r2ykm-00055Z-3z
- for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 14:07:16 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r2yl5-0005Wv-1P
+ for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 14:07:35 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r2ykk-0003bQ-Lw
- for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 14:07:15 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r2yl3-0003cM-Ka
+ for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 14:07:34 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699988834;
+ s=mimecast20190719; t=1699988853;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=GJ9P4bZU599CPIGZ4VMZwOAZo+xXvg0cNV4rt8Ouasg=;
- b=dnKKQlTGy9fDgwo/o/tBlu6IsVIxTo/aI+lc4fd4iX/VVq38VzGmawr1uqoAIT3oBxH9dg
- NNFuF4G5nmLxfeiJHACCtmS8P8XhO/qNTHB6ktZE8PfoDPf2DSMEexjTEuSSMf96kuURHZ
- Xxuud8rUhQPzUIPpkgcbHWwu1olp6Ig=
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=PbTr8bGa+7XGbfVM/u2qsnAyUjw6yXcPzhLsqzfHOvQ=;
+ b=DsELYBlit/rUp9UjBjO+SAoXqMkqTNXQQVYtzGmNhjVjlNuAfeaqcuIwBz5cWHsbklLUfe
+ Z6AN+WZrvZMjDU3W/h/YOzSoe5GHcD+Z1h3RIwYDKn1LygvLv9vdXhW1nEJMzjcIUynIli
+ O03FLhmRUVgd5aV1NXTTJhBIfmoyLYg=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-395-zk7vRl0RN-OIqTno7Ihvhg-1; Tue, 14 Nov 2023 14:07:10 -0500
-X-MC-Unique: zk7vRl0RN-OIqTno7Ihvhg-1
-Received: by mail-qt1-f197.google.com with SMTP id
- d75a77b69052e-41e58a33efaso72458431cf.2
- for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 11:07:10 -0800 (PST)
+ us-mta-381-sZoEfnHsPQmpX9gAvp9dmw-1; Tue, 14 Nov 2023 14:07:31 -0500
+X-MC-Unique: sZoEfnHsPQmpX9gAvp9dmw-1
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-67012b06439so70428686d6.1
+ for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 11:07:31 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699988830; x=1700593630;
+ d=1e100.net; s=20230601; t=1699988851; x=1700593651;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GJ9P4bZU599CPIGZ4VMZwOAZo+xXvg0cNV4rt8Ouasg=;
- b=dm3OLSHBmSkn1mz5k3Jm3BwofOsMvn6Itxq+oLtVNmf+X+3kQpZLSK4Ehd7V+S8Itf
- 6hG4nm+JEpjLz3roTaBj3fQwQYa/53pIjhpljXECK7GU2Bx7kqffsYitIXwnxv/mIOjb
- E4jRNnEmKtP6SfmXuI3z8NiUDb0L2VQSaDnIO5TbWOJ5aqxz6y9YaVZWpCmPhtXRcnUs
- sowRXhHkznnYofBCXDmTCdkdNErq8uYuOjUCGTqL2Yy9ruq/JMaXwhjYUZYt/NBgg6W9
- kGemmEVdUULPUXt71YZM0r/apM8Td/F76rQet35FOjxdFUZIQzh1yW4hq+XFeQHvbLGt
- LiTA==
-X-Gm-Message-State: AOJu0Yx+GkjR1FxNzwExFYOSt9SgJpGv+YjpGrVqWyNLGLfxxFGapIsP
- PyAH58/WYnn6Mac1RPB6B69lppgYKT70Z2V+2+Bi50AnN5pinTCf7uFZQgLqHDFJ5K0uPf/nYjz
- 7SjZFIZPKOwBldTvQSiTzK29eXQ==
-X-Received: by 2002:a05:622a:4d2:b0:421:b1ad:ea33 with SMTP id
- q18-20020a05622a04d200b00421b1adea33mr3345659qtx.37.1699988830039; 
- Tue, 14 Nov 2023 11:07:10 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHp+SV+md39ooFZkQspg5xsi/CZKzMCnRDJT28gnT+Rq+GNRhYpOyZ3qgL655qNB7+iYBew1g==
-X-Received: by 2002:a05:622a:4d2:b0:421:b1ad:ea33 with SMTP id
- q18-20020a05622a04d200b00421b1adea33mr3345644qtx.37.1699988829772; 
- Tue, 14 Nov 2023 11:07:09 -0800 (PST)
+ bh=PbTr8bGa+7XGbfVM/u2qsnAyUjw6yXcPzhLsqzfHOvQ=;
+ b=Mop4qZrUt1D5deq6mys48PcXNnQ2oX8MATLDnoW04rTl3nxifgXI0xztNo+szZXENz
+ TP4el7yXI8TDodynATY6pWPX7CaeMY7Zs7r7L9UxZkLJYKiPd+6jyL8Iq83pucVoI9jA
+ 8PHIWEBQt3sehdTFmnBR7p3btNJhH7/EDcJa81aD7f9yZDmHiCw5qcChPqiYRnhY6/5E
+ 3sDmlhavA+oOBjIdUuju/hdrVLhqM99MLwmh7wWgKuSx/iYXqczjzUIE+mFSmcGgoBre
+ zjFJxvonI/bz57CqbrwNoRp57UvtX6UKSgQ5bdgCk0GS4u3UIXwCTi3uN4jnMt6RHxQa
+ uiRQ==
+X-Gm-Message-State: AOJu0Yx8O8ok3ueg7I1Vw9s9nMF3kqY9ZdPjSrMrTQsr70DSi7NTesok
+ OiyOM8m7SKAfRAH7ZgTIgF+JYn0urgPcYthGfyNYRS5+2NyD3H+yvRd+kbRMzplECyVwc6txK/S
+ itsT+Omkz0KNXNksK/g==
+X-Received: by 2002:a0c:f908:0:b0:66d:1fcf:e1c9 with SMTP id
+ v8-20020a0cf908000000b0066d1fcfe1c9mr3198865qvn.35.1699988851369; 
+ Tue, 14 Nov 2023 11:07:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHAwjdHRiw05Quj6MwECDvYzjE61iIk/d7ISZ83ZdNX4zkfj0EVNHXMWzbNkUCW0yVmBg7EXw==
+X-Received: by 2002:a0c:f908:0:b0:66d:1fcf:e1c9 with SMTP id
+ v8-20020a0cf908000000b0066d1fcfe1c9mr3198847qvn.35.1699988851103; 
+ Tue, 14 Nov 2023 11:07:31 -0800 (PST)
 Received: from [192.168.0.6] (ip-109-43-176-122.web.vodafone.de.
  [109.43.176.122]) by smtp.gmail.com with ESMTPSA id
- s23-20020ac85297000000b00419c39dd28fsm2918316qtn.20.2023.11.14.11.07.08
+ s23-20020ac85297000000b00419c39dd28fsm2918316qtn.20.2023.11.14.11.07.29
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Nov 2023 11:07:09 -0800 (PST)
-Message-ID: <9a5ab8cc-a495-4168-b7a0-8971386b19c7@redhat.com>
-Date: Tue, 14 Nov 2023 20:07:07 +0100
+ Tue, 14 Nov 2023 11:07:30 -0800 (PST)
+Message-ID: <994027da-7eb8-4916-bad0-9f43ec5f9af2@redhat.com>
+Date: Tue, 14 Nov 2023 20:07:29 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial 18/21] tests/qtest/migration-test.c: spelling fix:
- bandwith
+Subject: Re: [PATCH trivial 19/21] tests/qtest/ufs-test.c: spelling fix:
+ tranfer
 To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Hyman Huang <yong.huang@smartx.com>,
- Juan Quintela <quintela@redhat.com>
+Cc: qemu-trivial@nongnu.org, Jeuk Kim <jeuk20.kim@samsung.com>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-19-mjt@tls.msk.ru>
+ <20231114165834.2949011-20-mjt@tls.msk.ru>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -108,7 +107,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231114165834.2949011-19-mjt@tls.msk.ru>
+In-Reply-To: <20231114165834.2949011-20-mjt@tls.msk.ru>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -116,14 +115,14 @@ Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,30 +135,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Nov 2023 19:07:16 -0000
+X-List-Received-Date: Tue, 14 Nov 2023 19:07:35 -0000
 
 On 14/11/2023 17.58, Michael Tokarev wrote:
-> Fixes: 17257b90be4f "tests: Add migration dirty-limit capability test"
-> Cc: Hyman Huang <yong.huang@smartx.com>
-> Cc: Juan Quintela <quintela@redhat.com>
+> Fixes: 631c872614ac "tests/qtest: Introduce tests for UFS"
+> Cc: Jeuk Kim <jeuk20.kim@samsung.com>
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->   tests/qtest/migration-test.c | 2 +-
+>   tests/qtest/ufs-test.c | 2 +-
 >   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/tests/qtest/migration-test.c b/tests/qtest/migration-test.c
-> index 5752412b64..0fbaa6a90f 100644
-> --- a/tests/qtest/migration-test.c
-> +++ b/tests/qtest/migration-test.c
-> @@ -3138,7 +3138,7 @@ static void test_migrate_dirty_limit(void)
->       uint64_t throttle_us_per_full;
->       /*
->        * We want the test to be stable and as fast as possible.
-> -     * E.g., with 1Gb/s bandwith migration may pass without dirty limit,
-> +     * E.g., with 1Gb/s bandwidth migration may pass without dirty limit,
->        * so we need to decrease a bandwidth.
->        */
->       const int64_t dirtylimit_period = 1000, dirtylimit_value = 50;
+> diff --git a/tests/qtest/ufs-test.c b/tests/qtest/ufs-test.c
+> index 5daf8c9c49..95e82f9472 100644
+> --- a/tests/qtest/ufs-test.c
+> +++ b/tests/qtest/ufs-test.c
+> @@ -319,7 +319,7 @@ static void ufs_init(QUfs *ufs, QGuestAllocator *alloc)
+>       ufs_wreg(ufs, A_IE, ie);
+>       ufs_wreg(ufs, A_UTRIACR, 0);
+>   
+> -    /* Enable tranfer request and task management request */
+> +    /* Enable transfer request and task management request */
+>       cap = ufs_rreg(ufs, A_CAP);
+>       nutrs = FIELD_EX32(cap, CAP, NUTRS) + 1;
+>       nutmrs = FIELD_EX32(cap, CAP, NUTMRS) + 1;
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
