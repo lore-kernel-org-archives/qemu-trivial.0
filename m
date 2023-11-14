@@ -1,62 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r2wRl-0006yy-RK
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 11:39:29 -0500
+	id 1r2wkn-0006iK-MF
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 11:59:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1r2wRl-0006yi-0a
- for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 11:39:29 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1r2wkc-0006bz-1V; Tue, 14 Nov 2023 11:58:58 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1r2wRT-0008Nm-AY
- for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 11:39:28 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1699979950;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=8ntwUqa+yZKEr3xlptMcWegZ363x3+nDLix3V4MTy+A=;
- b=N6PARweMiaIDp3Baz4GPCa14TKP4qfLjBhAs2kIG1HqKRZar1ICmbIXfmsD4rZfRq0xXs8
- kaqmJ8xzwtwL2+GdJnd/BNtT/3HIT4INk8W9GisxmEHtMN/uaTN2/VSsuRU/UhzzFtBGVQ
- Kup7MwwSPDGZTpwuza/APnMd2KuvVXs=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-628-zdFcaccZPj2fq6Xg2qsniQ-1; Tue,
- 14 Nov 2023 11:39:05 -0500
-X-MC-Unique: zdFcaccZPj2fq6Xg2qsniQ-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id ADB741C29EAD;
- Tue, 14 Nov 2023 16:39:04 +0000 (UTC)
-Received: from redhat.com (unknown [10.2.16.137])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 456CE1121307;
- Tue, 14 Nov 2023 16:39:04 +0000 (UTC)
-Date: Tue, 14 Nov 2023 10:39:02 -0600
-From: Eric Blake <eblake@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org, 
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] qapi/pragma.json: Improve the comment about the lists of
- QAPI rule exceptions
-Message-ID: <ph2xihgmr6abip3e4q4d2nvo7pglj2j43i7j733ikdoavj6bek@hwge4eifu2h6>
-References: <20231113162928.54551-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1r2wkR-0004m0-Kj; Tue, 14 Nov 2023 11:58:50 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 684EE33267;
+ Tue, 14 Nov 2023 19:59:00 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id 3563E351EE;
+ Tue, 14 Nov 2023 19:58:42 +0300 (MSK)
+Received: (nullmailer pid 2949075 invoked by uid 1000);
+ Tue, 14 Nov 2023 16:58:42 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Stacey Son <sson@FreeBSD.org>, Warner Losh <imp@bsdimp.com>,
+ Kyle Evans <kevans@freebsd.org>
+Subject: [PATCH trivial 01/21] bsd-user: spelling fixes: necesary, agrument,
+ undocummented
+Date: Tue, 14 Nov 2023 19:58:14 +0300
+Message-Id: <20231114165834.2949011-2-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20231114165834.2949011-1-mjt@tls.msk.ru>
+References: <20231114165834.2949011-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231113162928.54551-1-thuth@redhat.com>
-User-Agent: NeoMutt/20231103
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -69,41 +51,79 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Nov 2023 16:39:29 -0000
+X-List-Received-Date: Tue, 14 Nov 2023 16:59:02 -0000
 
-On Mon, Nov 13, 2023 at 05:29:28PM +0100, Thomas Huth wrote:
-> Let's use more inclusive language here.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  qapi/pragma.json | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+Fixes: a99d74034754 "bsd-user: Implement do_obreak function"
+Fixes: 8632729060bf "bsd-user: Implement freebsd_exec_common, used in implementing execve/fexecve."
+Fixes: bf14f13d8be8 "bsd-user: Implement stat related syscalls"
+Cc: Stacey Son <sson@FreeBSD.org>
+Cc: Warner Losh <imp@bsdimp.com>
+Cc: Kyle Evans <kevans@freebsd.org>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ bsd-user/bsd-mem.h         | 2 +-
+ bsd-user/freebsd/os-proc.c | 2 +-
+ bsd-user/freebsd/os-stat.h | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
-
-> 
-> diff --git a/qapi/pragma.json b/qapi/pragma.json
-> index 7f810b0e97..0aa4eeddd3 100644
-> --- a/qapi/pragma.json
-> +++ b/qapi/pragma.json
-> @@ -3,8 +3,8 @@
->  
->  { 'pragma': { 'doc-required': true } }
->  
-> -# Whitelists to permit QAPI rule violations; think twice before you
-> -# add to them!
-> +# Entries in these lists are allowed to violate the QAPI rules (for
-> +# historical reasons); think twice before you add to them!
->  { 'pragma': {
->      # Command names containing '_'
->      'command-name-exceptions': [
-> -- 
-> 2.41.0
-> 
-
+diff --git a/bsd-user/bsd-mem.h b/bsd-user/bsd-mem.h
+index c3e72e3b86..21d9bab889 100644
+--- a/bsd-user/bsd-mem.h
++++ b/bsd-user/bsd-mem.h
+@@ -235,7 +235,7 @@ static inline abi_long do_obreak(abi_ulong brk_val)
+         return target_brk;
+     }
+ 
+-    /* Release heap if necesary */
++    /* Release heap if necessary */
+     if (new_brk < old_brk) {
+         target_munmap(new_brk, old_brk - new_brk);
+ 
+diff --git a/bsd-user/freebsd/os-proc.c b/bsd-user/freebsd/os-proc.c
+index 4e67ae4d56..e0203e259b 100644
+--- a/bsd-user/freebsd/os-proc.c
++++ b/bsd-user/freebsd/os-proc.c
+@@ -115,7 +115,7 @@ abi_long freebsd_exec_common(abi_ulong path_or_fd, abi_ulong guest_argp,
+     }
+ 
+     qarg0 = argp = g_new0(char *, argc + 9);
+-    /* save the first agrument for the emulator */
++    /* save the first argument for the emulator */
+     *argp++ = (char *)getprogname();
+     qargp = argp;
+     *argp++ = (char *)getprogname();
+diff --git a/bsd-user/freebsd/os-stat.h b/bsd-user/freebsd/os-stat.h
+index b20e270774..3bdc66aa98 100644
+--- a/bsd-user/freebsd/os-stat.h
++++ b/bsd-user/freebsd/os-stat.h
+@@ -146,7 +146,7 @@ static inline abi_long do_freebsd_fstatat(abi_long arg1, abi_long arg2,
+     return ret;
+ }
+ 
+-/* undocummented nstat(char *path, struct nstat *ub) syscall */
++/* undocumented nstat(char *path, struct nstat *ub) syscall */
+ static abi_long do_freebsd11_nstat(abi_long arg1, abi_long arg2)
+ {
+     abi_long ret;
+@@ -162,7 +162,7 @@ static abi_long do_freebsd11_nstat(abi_long arg1, abi_long arg2)
+     return ret;
+ }
+ 
+-/* undocummented nfstat(int fd, struct nstat *sb) syscall */
++/* undocumented nfstat(int fd, struct nstat *sb) syscall */
+ static abi_long do_freebsd11_nfstat(abi_long arg1, abi_long arg2)
+ {
+     abi_long ret;
+@@ -175,7 +175,7 @@ static abi_long do_freebsd11_nfstat(abi_long arg1, abi_long arg2)
+     return ret;
+ }
+ 
+-/* undocummented nlstat(char *path, struct nstat *ub) syscall */
++/* undocumented nlstat(char *path, struct nstat *ub) syscall */
+ static abi_long do_freebsd11_nlstat(abi_long arg1, abi_long arg2)
+ {
+     abi_long ret;
 -- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.
-Virtualization:  qemu.org | libguestfs.org
+2.39.2
 
 
