@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r2wkw-0006oz-Mr
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 11:59:19 -0500
+	id 1r2wl5-0006rB-Ei
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 11:59:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r2wkq-0006jD-70; Tue, 14 Nov 2023 11:59:12 -0500
+ id 1r2wkt-0006kX-Im; Tue, 14 Nov 2023 11:59:15 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r2wkn-0004wc-CJ; Tue, 14 Nov 2023 11:59:11 -0500
+ id 1r2wkr-0004x4-HB; Tue, 14 Nov 2023 11:59:15 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id CB9973326C;
- Tue, 14 Nov 2023 19:59:00 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 0040E3326E;
+ Tue, 14 Nov 2023 19:59:01 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 9B2B2351F3;
+ by tsrv.corpit.ru (Postfix) with SMTP id C26A6351F5;
  Tue, 14 Nov 2023 19:58:42 +0300 (MSK)
-Received: (nullmailer pid 2949090 invoked by uid 1000);
+Received: (nullmailer pid 2949096 invoked by uid 1000);
  Tue, 14 Nov 2023 16:58:42 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Juan Quintela <quintela@redhat.com>
-Subject: [PATCH trivial 06/21] docs/devel/migration.rst: spelling fix: doen't
-Date: Tue, 14 Nov 2023 19:58:19 +0300
-Message-Id: <20231114165834.2949011-7-mjt@tls.msk.ru>
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH trivial 08/21] target/arm/tcg: spelling fixes: alse, addreses
+Date: Tue, 14 Nov 2023 19:58:21 +0300
+Message-Id: <20231114165834.2949011-9-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231114165834.2949011-1-mjt@tls.msk.ru>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
@@ -49,52 +49,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Nov 2023 16:59:14 -0000
+X-List-Received-Date: Tue, 14 Nov 2023 16:59:17 -0000
 
-Fixes: 1aefe2ca1423 "migration/doc: Add documentation for backwards compatiblity"
-Cc: Juan Quintela <quintela@redhat.com>
+Fixes: 179e9a3baccc "target/arm: Define new TB flag for ATA0"
+Fixes: 5d7b37b5f675 "target/arm: Implement the CPY* instructions"
+Cc: Peter Maydell <peter.maydell@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- docs/devel/migration.rst | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ target/arm/tcg/helper-a64.c | 2 +-
+ target/arm/tcg/hflags.c     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
-index 5adf4f12f7..51b1f61f5e 100644
---- a/docs/devel/migration.rst
-+++ b/docs/devel/migration.rst
-@@ -1061,7 +1061,7 @@ QEMU version, in this case pc-5.1.
- 
- 4 - qemu-5.1 -M pc-5.2  -> migrates to -> qemu-5.1 -M pc-5.2
- 
--  This combination is not possible as the qemu-5.1 doen't understand
-+  This combination is not possible as the qemu-5.1 does't understand
-   pc-5.2 machine type.  So nothing to worry here.
- 
- Now it comes the interesting ones, when both QEMU processes are
-@@ -1214,7 +1214,7 @@ machine types to have the right value::
-          ...
-      };
- 
--A device with diferent features on both sides
-+A device with different features on both sides
- ---------------------------------------------
- 
- Let's assume that we are using the same QEMU binary on both sides,
-@@ -1294,12 +1294,12 @@ Host B:
- 
- $ qemu-system-x86_64 -cpu host,taa-no=off
- 
--And you would be able to migrate between them.  It is responsability
-+And you would be able to migrate between them.  It is responsibility
- of the management application or of the user to make sure that the
- configuration is correct.  QEMU doesn't know how to look at this kind
- of features in general.
- 
--Notice that we don't recomend to use -cpu host for migration.  It is
-+Notice that we don't recommend to use -cpu host for migration.  It is
- used in this example because it makes the example simpler.
- 
- Other devices have worse control about individual features.  If they
+diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+index ce4800b8d1..8ad84623d3 100644
+--- a/target/arm/tcg/helper-a64.c
++++ b/target/arm/tcg/helper-a64.c
+@@ -1414,7 +1414,7 @@ void HELPER(setge)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
+ /*
+  * Perform part of a memory copy from the guest memory at fromaddr
+  * and extending for copysize bytes, to the guest memory at
+- * toaddr. Both addreses are dirty.
++ * toaddr. Both addresses are dirty.
+  *
+  * Returns the number of bytes actually set, which might be less than
+  * copysize; the caller should loop until the whole copy has been done.
+diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+index 3d7fdce5c3..a6ebd7571a 100644
+--- a/target/arm/tcg/hflags.c
++++ b/target/arm/tcg/hflags.c
+@@ -327,7 +327,7 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+             DP_TBFLAG_A64(flags, MTE0_ACTIVE, 1);
+         }
+         /*
+-         * For unpriv tag-setting accesses we alse need ATA0. Again, in
++         * For unpriv tag-setting accesses we also need ATA0. Again, in
+          * contexts where unpriv and normal insns are the same we
+          * duplicate the ATA bit to save effort for translate-a64.c.
+          */
 -- 
 2.39.2
 
