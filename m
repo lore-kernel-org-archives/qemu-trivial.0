@@ -1,35 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r2wkv-0006nM-Oh
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 11:59:17 -0500
+	id 1r2wkw-0006ne-0B
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 11:59:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r2wkl-0006hx-SO; Tue, 14 Nov 2023 11:59:09 -0500
+ id 1r2wkh-0006h7-9S; Tue, 14 Nov 2023 11:59:06 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r2wki-0004uq-NK; Tue, 14 Nov 2023 11:59:06 -0500
+ id 1r2wkd-0004q8-GN; Tue, 14 Nov 2023 11:59:03 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id A2F943326A;
+ by isrv.corpit.ru (Postfix) with ESMTP id 7C00233268;
  Tue, 14 Nov 2023 19:59:00 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 6F850351F1;
+ by tsrv.corpit.ru (Postfix) with SMTP id 4893C351EF;
  Tue, 14 Nov 2023 19:58:42 +0300 (MSK)
-Received: (nullmailer pid 2949084 invoked by uid 1000);
+Received: (nullmailer pid 2949078 invoked by uid 1000);
  Tue, 14 Nov 2023 16:58:42 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Matheus Branco Borella <dark.ryu.550@gmail.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH trivial 04/21] gdbstub: spelling fix: respectivelly
-Date: Tue, 14 Nov 2023 19:58:17 +0300
-Message-Id: <20231114165834.2949011-5-mjt@tls.msk.ru>
+ Richard Henderson <richard.henderson@linaro.org>, Helge Deller <deller@gmx.de>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH trivial 02/21] linux-user: spelling fixes: othe, necesary
+Date: Tue, 14 Nov 2023 19:58:15 +0300
+Message-Id: <20231114165834.2949011-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231114165834.2949011-1-mjt@tls.msk.ru>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -53,28 +52,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 14 Nov 2023 16:59:12 -0000
 
-Fixes: 761e3c10881b "gdbstub: fixes cases where wrong threads were reported to GDB on SIGINT"
-Cc: Matheus Branco Borella <dark.ryu.550@gmail.com>
-Cc: "Alex Bennée" <alex.bennee@linaro.org
-Cc: "Philippe Mathieu-Daudé" <philmd@linaro.org>
+Fixes: e34136d93059 "linux-user/ppc: Add vdso"
+Fixes: 86f04735ac20 "linux-user: Fix brk() to release pages"
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: Helge Deller <deller@gmx.de>
+Cc: Laurent Vivier <laurent@vivier.eu>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- gdbstub/gdbstub.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ linux-user/ppc/vdso.S | 2 +-
+ linux-user/syscall.c  | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
-index ebb912da1b..46d752bbc2 100644
---- a/gdbstub/gdbstub.c
-+++ b/gdbstub/gdbstub.c
-@@ -692,7 +692,7 @@ static int gdb_handle_vcont(const char *p)
-     /*
-      * target_count and last_target keep track of how many CPUs we are going to
-      * step or resume, and a pointer to the state structure of one of them,
--     * respectivelly
-+     * respectively
-      */
-     int target_count = 0;
-     CPUState *last_target = NULL;
+diff --git a/linux-user/ppc/vdso.S b/linux-user/ppc/vdso.S
+index 689010db13..2e79ea9808 100644
+--- a/linux-user/ppc/vdso.S
++++ b/linux-user/ppc/vdso.S
+@@ -227,7 +227,7 @@ endf	__kernel_sigtramp_rt
+ #ifndef _ARCH_PPC64
+ 	/*
+ 	 * The non-rt sigreturn has the same layout at a different offset.
+-	 * Move the CFA and leave all othe other descriptions the same.
++	 * Move the CFA and leave all the other descriptions the same.
+ 	 */
+ 	.cfi_def_cfa	1, SIGNAL_FRAMESIZE + offsetof_sigframe_mcontext
+ 	nop
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 65ac3ac796..16ca5ea7b6 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -831,7 +831,7 @@ abi_long do_brk(abi_ulong brk_val)
+         return target_brk;
+     }
+ 
+-    /* Release heap if necesary */
++    /* Release heap if necessary */
+     if (new_brk < old_brk) {
+         target_munmap(new_brk, old_brk - new_brk);
+ 
 -- 
 2.39.2
 
