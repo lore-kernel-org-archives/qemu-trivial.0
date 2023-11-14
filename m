@@ -1,82 +1,100 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r31uo-0004fK-LT
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 17:29:50 -0500
+	id 1r357Q-0006qU-Es
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 20:55:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mail@maciej.szmigiero.name>)
- id 1r31um-0004f8-SU; Tue, 14 Nov 2023 17:29:48 -0500
-Received: from vps-vb.mhejs.net ([37.28.154.113])
+ (Exim 4.90_1) (envelope-from <jeuk20.kim@samsung.com>)
+ id 1r33C8-0006tn-BT
+ for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 18:51:48 -0500
+Received: from mailout4.samsung.com ([203.254.224.34])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mail@maciej.szmigiero.name>)
- id 1r31ul-0007Wv-8Q; Tue, 14 Nov 2023 17:29:48 -0500
-Received: from MUA by vps-vb.mhejs.net with esmtps (TLS1.2) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
- (envelope-from <mail@maciej.szmigiero.name>)
- id 1r31uZ-0002eM-Kq; Tue, 14 Nov 2023 23:29:35 +0100
-Message-ID: <0276785e-94cf-4416-b2c7-0c798cc95ec9@maciej.szmigiero.name>
-Date: Tue, 14 Nov 2023 23:29:30 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial 15/21] include/hw/hyperv/dynmem-proto.h: spelling
- fix: nunber
-Content-Language: en-US, pl-PL
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-16-mjt@tls.msk.ru>
-From: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>
-Autocrypt: addr=mail@maciej.szmigiero.name; keydata=
- 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
-In-Reply-To: <20231114165834.2949011-16-mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=37.28.154.113;
- envelope-from=mail@maciej.szmigiero.name; helo=vps-vb.mhejs.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <jeuk20.kim@samsung.com>)
+ id 1r33Br-0005cI-7a
+ for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 18:51:47 -0500
+Received: from epcas2p4.samsung.com (unknown [182.195.41.56])
+ by mailout4.samsung.com (KnoxPortal) with ESMTP id
+ 20231114235126epoutp04a6c5c420a346433619b65ad58864a387~XoljQr86A2667726677epoutp04d
+ for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 23:51:26 +0000 (GMT)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mailout4.samsung.com
+ 20231114235126epoutp04a6c5c420a346433619b65ad58864a387~XoljQr86A2667726677epoutp04d
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samsung.com;
+ s=mail20170921; t=1700005886;
+ bh=HaxbAImOVQDm8kclM8kj+yTJNgVbSDal5jQDjh6AqaQ=;
+ h=Subject:Reply-To:From:To:CC:In-Reply-To:Date:References:From;
+ b=K+5HIIe+iAkVdD9qqohrVs5hmob1EjEGC7R/Mmt26D1UuhvxWM+agn+DXXXV/lMdS
+ 8eIDuBpSxQeuu06qo3dDMkFFv6UC4+1MUZLXwWKhzb1Pf0wJCLzGK4zMPADr1bhUAF
+ JafsOdJ9p/pQKDW338C5oaQUx/yANv+hb/CRwUVM=
+Received: from epsnrtp2.localdomain (unknown [182.195.42.163]) by
+ epcas2p4.samsung.com (KnoxPortal) with ESMTP id
+ 20231114235126epcas2p48150599e1a5246be5d23b36dff4b8a4d~XoljEMuT50583905839epcas2p4k;
+ Tue, 14 Nov 2023 23:51:26 +0000 (GMT)
+Received: from epsmgec2p1.samsung.com (unknown [182.195.36.99]) by
+ epsnrtp2.localdomain (Postfix) with ESMTP id 4SVNNs5XKxz4x9Pw; Tue, 14 Nov
+ 2023 23:51:25 +0000 (GMT)
+X-AuditID: b6c32a43-4b3ff700000021c8-eb-655407fd045e
+Received: from epcas2p3.samsung.com ( [182.195.41.55]) by
+ epsmgec2p1.samsung.com (Symantec Messaging Gateway) with SMTP id
+ 92.17.08648.DF704556; Wed, 15 Nov 2023 08:51:25 +0900 (KST)
+Mime-Version: 1.0
+Subject: Re: [PATCH trivial 19/21] tests/qtest/ufs-test.c: spelling fix:
+ tranfer
+Reply-To: jeuk20.kim@samsung.com
+Sender: Jeuk Kim <jeuk20.kim@samsung.com>
+From: Jeuk Kim <jeuk20.kim@samsung.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+X-Priority: 3
+X-Content-Kind-Code: NORMAL
+In-Reply-To: <20231114165834.2949011-20-mjt@tls.msk.ru>
+X-CPGS-Detection: blocking_info_exchange
+X-Drm-Type: N,general
+X-Msg-Generator: Mail
+X-Msg-Type: PERSONAL
+X-Reply-Demand: N
+Message-ID: <20231114235125epcms2p7995fc4cff29a1dadf464ed9ec38489dc@epcms2p7>
+Date: Wed, 15 Nov 2023 08:51:25 +0900
+X-CMS-MailID: 20231114235125epcms2p7995fc4cff29a1dadf464ed9ec38489dc
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset="utf-8"
+X-Sendblock-Type: AUTO_CONFIDENTIAL
+CMS-TYPE: 102P
+X-CPGSPASS: Y
+X-CPGSPASS: Y
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFnrFKsWRmVeSWpSXmKPExsWy7bCmue5f9pBUgx1rtCxeHtK0ePLvO6PF
+ 8d4dLBZrz8xldWDxeHJtM5NH35ZVjB4Tpi5lCWCOyrbJSE1MSS1SSM1Lzk/JzEu3VfIOjneO
+ NzUzMNQ1tLQwV1LIS8xNtVVy8QnQdcvMAdqmpFCWmFMKFApILC5W0rezKcovLUlVyMgvLrFV
+ Si1IySkwL9ArTswtLs1L18tLLbEyNDAwMgUqTMjOmD7lA2PBcu6KjxeXszQwvuDqYuTkkBAw
+ kTj08wZjFyMXh5DADkaJ6fdfsXQxcnDwCghK/N0hDFIjLBAk8WPXQxYQW0hAQWLOtg52iLim
+ xPT1E5lAytkE1CVOLzQHMUUEwiUu79UBqWAWMJdYue82G8QmXokZ7U9ZIGxpie3LtzKClHMC
+ 1TRucYAIa0j8WNbLDGGLStxc/ZYdxn5/bD4jhC0i0XrvLFSNoMSDn7uh4pISp749ZoWwpzNK
+ LPhvCvKUhMACRolfzdOhGvQlrnVsBLuBV8BX4s+qTUwgNouAqsTRndOgml0kjl15xQxxv7bE
+ soWvmUHuZAb6dv0ufRBTQkBZ4sgtFogKPomOw3/ZYT5s2PgbK3vHvCdMELaKxOLmw6wTGJVn
+ IUJ5FpJdsxB2LWBkXsUollpQnJuemmxUYAiP2OT83E2M4ESn5byD8cr8f3qHGJk4GA8xSnAw
+ K4nw5mkGpArxpiRWVqUW5ccXleakFh9iNAX6ciKzlGhyPjDV5pXEG5pYGpiYmRmaG5kamCuJ
+ 895rnZsiJJCeWJKanZpakFoE08fEwSnVwHQr8Iipq2RT7LQSi+2un2ui15+bn772jwsra0T1
+ mv/pTvHXu/5WyHC4Gz/S7935qenGWa0jn/Iq6v3ZV9uYyrHdV2W4GSCm9GypcViD1oLV/wTf
+ X+vjeyMvP+tgTfMb815l1vXKRcbF949tSWk3vaN9wGlvy3wflRZ7balXC/Q9H5pYi9+QrLii
+ e8n/d1e7s6hM85pnvEEe/47VfprZap5g5fBxt8a6lSs4J98zvbqz5Hc+q+L93FuNWfdmz3vJ
+ t8N70rS7n7aL9GXeiDlj8ftH2iIG74jm+ncpe5Ys1XsadD7892SZi4vvSr9/nJz/muV14hmb
+ tSvLbmlec2WYq/uEX61kfmhhRUK20bX0NUosxRmJhlrMRcWJAGaQgmT9AwAA
+DLP-Filter: Pass
+X-CFilter-Loop: Reflected
+X-CMS-RootMailID: 20231114165850epcas2p379e2e74b30942ab0216fd87b5c22470d
+References: <20231114165834.2949011-20-mjt@tls.msk.ru>
+ <20231114165834.2949011-1-mjt@tls.msk.ru>
+ <CGME20231114165850epcas2p379e2e74b30942ab0216fd87b5c22470d@epcms2p7>
+Received-SPF: pass client-ip=203.254.224.34;
+ envelope-from=jeuk20.kim@samsung.com; helo=mailout4.samsung.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 14 Nov 2023 20:55:03 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -88,17 +106,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Nov 2023 22:29:49 -0000
+X-List-Received-Date: Tue, 14 Nov 2023 23:51:48 -0000
 
-On 14.11.2023 17:58, Michael Tokarev wrote:
-> Fixes: 4f80cd2f033e "Add Hyper-V Dynamic Memory Protocol definitions"
-> Cc: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+On 14/11/2023 17.58, Michael Tokarev wrote:
+> Fixes: 631c872614ac =22tests/qtest: Introduce tests for UFS=22
+> Cc: Jeuk Kim <jeuk20.kim=40samsung.com>
+> Signed-off-by: Michael Tokarev <mjt=40tls.msk.ru>
 > ---
-
-Acked-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
-
-Thanks,
-Maciej
-
+>=C2=A0=20=C2=A0tests/qtest/ufs-test.c=20=7C=202=20+-=0D=0A>=C2=A0=20=C2=A0=
+1=20file=20changed,=201=20insertion(+),=201=20deletion(-)=0D=0A>=C2=A0=0D=
+=0A>=20diff=20--git=20a/tests/qtest/ufs-test.c=20b/tests/qtest/ufs-test.c=
+=0D=0A>=20index=205daf8c9c49..95e82f9472=20100644=0D=0A>=20---=20a/tests/qt=
+est/ufs-test.c=0D=0A>=20+++=20b/tests/qtest/ufs-test.c=0D=0A>=20=40=40=20-3=
+19,7=20+319,7=20=40=40=20static=20void=20ufs_init(QUfs=20*ufs,=20QGuestAllo=
+cator=20*alloc)=0D=0A>=C2=A0=20=C2=A0=20=C2=A0=20=C2=A0ufs_wreg(ufs,=20A_IE=
+,=20ie);=0D=0A>=C2=A0=20=C2=A0=20=C2=A0=20=C2=A0ufs_wreg(ufs,=20A_UTRIACR,=
+=200);=0D=0A>=C2=A0=20=C2=A0=0D=0A>=20-=C2=A0=20=C2=A0=20/*=20Enable=20tran=
+fer=20request=20and=20task=20management=20request=20*/=0D=0A>=20+=C2=A0=20=
+=C2=A0=20/*=20Enable=20transfer=20request=20and=20task=20management=20reque=
+st=20*/=0D=0A>=C2=A0=20=C2=A0=20=C2=A0=20=C2=A0cap=20=3D=20ufs_rreg(ufs,=20=
+A_CAP);=0D=0A>=C2=A0=20=C2=A0=20=C2=A0=20=C2=A0nutrs=20=3D=20FIELD_EX32(cap=
+,=20CAP,=20NUTRS)=20+=201;=0D=0A>=C2=A0=20=C2=A0=20=C2=A0=20=C2=A0nutmrs=20=
+=3D=20FIELD_EX32(cap,=20CAP,=20NUTMRS)=20+=201;=0D=0A=0D=0AReviewed-by:=20J=
+euk=20Kim=20<jeuk20.kim=40samsung.com>=0D=0A=0D=0AThanks,=0D=0AJeuk
 
