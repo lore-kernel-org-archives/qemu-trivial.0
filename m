@@ -1,35 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r2wkn-0006iK-MF
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 11:59:10 -0500
+	id 1r2wkq-0006is-1c
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 11:59:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r2wkc-0006bz-1V; Tue, 14 Nov 2023 11:58:58 -0500
+ id 1r2wkc-0006by-1O; Tue, 14 Nov 2023 11:58:58 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r2wkR-0004m0-Kj; Tue, 14 Nov 2023 11:58:50 -0500
+ id 1r2wkR-0004m1-Mw; Tue, 14 Nov 2023 11:58:50 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 684EE33267;
+ by isrv.corpit.ru (Postfix) with ESMTP id 5B3A133266;
  Tue, 14 Nov 2023 19:59:00 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 3563E351EE;
+ by tsrv.corpit.ru (Postfix) with SMTP id 26D43351ED;
  Tue, 14 Nov 2023 19:58:42 +0300 (MSK)
-Received: (nullmailer pid 2949075 invoked by uid 1000);
+Received: (nullmailer pid 2949071 invoked by uid 1000);
  Tue, 14 Nov 2023 16:58:42 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Stacey Son <sson@FreeBSD.org>, Warner Losh <imp@bsdimp.com>,
- Kyle Evans <kevans@freebsd.org>
-Subject: [PATCH trivial 01/21] bsd-user: spelling fixes: necesary, agrument,
- undocummented
-Date: Tue, 14 Nov 2023 19:58:14 +0300
-Message-Id: <20231114165834.2949011-2-mjt@tls.msk.ru>
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH trivial 00/21] spelling fixes for 8.2
+Date: Tue, 14 Nov 2023 19:58:13 +0300
+Message-Id: <20231114165834.2949011-1-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231114165834.2949011-1-mjt@tls.msk.ru>
-References: <20231114165834.2949011-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -53,76 +49,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 14 Nov 2023 16:59:02 -0000
 
-Fixes: a99d74034754 "bsd-user: Implement do_obreak function"
-Fixes: 8632729060bf "bsd-user: Implement freebsd_exec_common, used in implementing execve/fexecve."
-Fixes: bf14f13d8be8 "bsd-user: Implement stat related syscalls"
-Cc: Stacey Son <sson@FreeBSD.org>
-Cc: Warner Losh <imp@bsdimp.com>
-Cc: Kyle Evans <kevans@freebsd.org>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- bsd-user/bsd-mem.h         | 2 +-
- bsd-user/freebsd/os-proc.c | 2 +-
- bsd-user/freebsd/os-stat.h | 6 +++---
- 3 files changed, 5 insertions(+), 5 deletions(-)
+For newly added lines after 8.1.
 
-diff --git a/bsd-user/bsd-mem.h b/bsd-user/bsd-mem.h
-index c3e72e3b86..21d9bab889 100644
---- a/bsd-user/bsd-mem.h
-+++ b/bsd-user/bsd-mem.h
-@@ -235,7 +235,7 @@ static inline abi_long do_obreak(abi_ulong brk_val)
-         return target_brk;
-     }
- 
--    /* Release heap if necesary */
-+    /* Release heap if necessary */
-     if (new_brk < old_brk) {
-         target_munmap(new_brk, old_brk - new_brk);
- 
-diff --git a/bsd-user/freebsd/os-proc.c b/bsd-user/freebsd/os-proc.c
-index 4e67ae4d56..e0203e259b 100644
---- a/bsd-user/freebsd/os-proc.c
-+++ b/bsd-user/freebsd/os-proc.c
-@@ -115,7 +115,7 @@ abi_long freebsd_exec_common(abi_ulong path_or_fd, abi_ulong guest_argp,
-     }
- 
-     qarg0 = argp = g_new0(char *, argc + 9);
--    /* save the first agrument for the emulator */
-+    /* save the first argument for the emulator */
-     *argp++ = (char *)getprogname();
-     qargp = argp;
-     *argp++ = (char *)getprogname();
-diff --git a/bsd-user/freebsd/os-stat.h b/bsd-user/freebsd/os-stat.h
-index b20e270774..3bdc66aa98 100644
---- a/bsd-user/freebsd/os-stat.h
-+++ b/bsd-user/freebsd/os-stat.h
-@@ -146,7 +146,7 @@ static inline abi_long do_freebsd_fstatat(abi_long arg1, abi_long arg2,
-     return ret;
- }
- 
--/* undocummented nstat(char *path, struct nstat *ub) syscall */
-+/* undocumented nstat(char *path, struct nstat *ub) syscall */
- static abi_long do_freebsd11_nstat(abi_long arg1, abi_long arg2)
- {
-     abi_long ret;
-@@ -162,7 +162,7 @@ static abi_long do_freebsd11_nstat(abi_long arg1, abi_long arg2)
-     return ret;
- }
- 
--/* undocummented nfstat(int fd, struct nstat *sb) syscall */
-+/* undocumented nfstat(int fd, struct nstat *sb) syscall */
- static abi_long do_freebsd11_nfstat(abi_long arg1, abi_long arg2)
- {
-     abi_long ret;
-@@ -175,7 +175,7 @@ static abi_long do_freebsd11_nfstat(abi_long arg1, abi_long arg2)
-     return ret;
- }
- 
--/* undocummented nlstat(char *path, struct nstat *ub) syscall */
-+/* undocumented nlstat(char *path, struct nstat *ub) syscall */
- static abi_long do_freebsd11_nlstat(abi_long arg1, abi_long arg2)
- {
-     abi_long ret;
+Michael Tokarev (21):
+  bsd-user: spelling fixes: necesary, agrument, undocummented
+  linux-user: spelling fixes: othe, necesary
+  hw/cxl: spelling fixes: limitaions, potentialy, intialized
+  gdbstub: spelling fix: respectivelly
+  docs/about/deprecated.rst: spelling fix: becase
+  docs/devel/migration.rst: spelling fix: doen't
+  docs/system/arm/emulation.rst: spelling fix: Enhacements
+  target/arm/tcg: spelling fixes: alse, addreses
+  target/hppa: spelling fixes: Indicies, Truely
+  migration/rdma.c: spelling fix: asume
+  contrib/vhost-user-gpu/virgl.c: spelling fix: mesage
+  hw/mem/memory-device.c: spelling fix: ontaining
+  hw/net/cadence_gem.c: spelling fixes: Octects
+  include/block/ufs.h: spelling fix: setted
+  include/hw/hyperv/dynmem-proto.h: spelling fix: nunber
+  include/hw/virtio/vhost.h: spelling fix: sate
+  target/riscv/cpu.h: spelling fix: separatly
+  tests/qtest/migration-test.c: spelling fix: bandwith
+  tests/qtest/ufs-test.c: spelling fix: tranfer
+  util/filemonitor-inotify.c: spelling fix: kenel
+  util/range.c: spelling fix: inbetween
+
+ bsd-user/bsd-mem.h               | 2 +-
+ bsd-user/freebsd/os-proc.c       | 2 +-
+ bsd-user/freebsd/os-stat.h       | 6 +++---
+ contrib/vhost-user-gpu/virgl.c   | 2 +-
+ docs/about/deprecated.rst        | 2 +-
+ docs/devel/migration.rst         | 8 ++++----
+ docs/system/arm/emulation.rst    | 2 +-
+ gdbstub/gdbstub.c                | 2 +-
+ hw/cxl/cxl-component-utils.c     | 4 ++--
+ hw/cxl/cxl-mailbox-utils.c       | 2 +-
+ hw/mem/memory-device.c           | 2 +-
+ hw/net/cadence_gem.c             | 8 ++++----
+ include/block/ufs.h              | 2 +-
+ include/hw/cxl/cxl_device.h      | 2 +-
+ include/hw/hyperv/dynmem-proto.h | 6 +++---
+ include/hw/virtio/vhost.h        | 2 +-
+ linux-user/ppc/vdso.S            | 2 +-
+ linux-user/syscall.c             | 2 +-
+ migration/rdma.c                 | 2 +-
+ target/arm/tcg/helper-a64.c      | 2 +-
+ target/arm/tcg/hflags.c          | 2 +-
+ target/hppa/cpu.h                | 2 +-
+ target/hppa/machine.c            | 2 +-
+ target/riscv/cpu.h               | 4 ++--
+ tests/qtest/migration-test.c     | 2 +-
+ tests/qtest/ufs-test.c           | 2 +-
+ util/filemonitor-inotify.c       | 2 +-
+ util/range.c                     | 2 +-
+ 28 files changed, 40 insertions(+), 40 deletions(-)
+
 -- 
 2.39.2
 
