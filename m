@@ -1,30 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r2wl6-0006uI-RM
-	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 11:59:28 -0500
+	id 1r2wl7-0006we-6Y
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 11:59:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r2wkq-0006ik-N5; Tue, 14 Nov 2023 11:59:13 -0500
+ id 1r2wkw-0006oq-JE; Tue, 14 Nov 2023 11:59:18 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r2wkn-0004wa-B7; Tue, 14 Nov 2023 11:59:10 -0500
+ id 1r2wku-0004xr-W2; Tue, 14 Nov 2023 11:59:18 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id E0BE43326D;
- Tue, 14 Nov 2023 19:59:00 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 2A8B333270;
+ Tue, 14 Nov 2023 19:59:01 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id AE209351F4;
+ by tsrv.corpit.ru (Postfix) with SMTP id EE94F351F7;
  Tue, 14 Nov 2023 19:58:42 +0300 (MSK)
-Received: (nullmailer pid 2949093 invoked by uid 1000);
+Received: (nullmailer pid 2949102 invoked by uid 1000);
  Tue, 14 Nov 2023 16:58:42 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Aaron Lindsay <aaron@os.amperecomputing.com>
-Subject: [PATCH trivial 07/21] docs/system/arm/emulation.rst: spelling fix:
- Enhacements
-Date: Tue, 14 Nov 2023 19:58:20 +0300
-Message-Id: <20231114165834.2949011-8-mjt@tls.msk.ru>
+ Juan Quintela <quintela@redhat.com>
+Subject: [PATCH trivial 10/21] migration/rdma.c: spelling fix: asume
+Date: Tue, 14 Nov 2023 19:58:23 +0300
+Message-Id: <20231114165834.2949011-11-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231114165834.2949011-1-mjt@tls.msk.ru>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
@@ -50,28 +49,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 14 Nov 2023 16:59:15 -0000
+X-List-Received-Date: Tue, 14 Nov 2023 16:59:28 -0000
 
-Fixes: c7c807f6dd6d "target/arm: Implement FEAT_Pauth2"
-Cc: Aaron Lindsay <aaron@os.amperecomputing.com>
+Fixes: 67c31c9c1af1 "migration: Don't abuse qemu_file transferred for RDMA"
+Cc: Juan Quintela <quintela@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- docs/system/arm/emulation.rst | 2 +-
+ migration/rdma.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/system/arm/emulation.rst b/docs/system/arm/emulation.rst
-index 47fd648035..0b604f9005 100644
---- a/docs/system/arm/emulation.rst
-+++ b/docs/system/arm/emulation.rst
-@@ -70,7 +70,7 @@ the following architecture extensions:
- - FEAT_PAN2 (AT S1E1R and AT S1E1W instruction variants affected by PSTATE.PAN)
- - FEAT_PAN3 (Support for SCTLR_ELx.EPAN)
- - FEAT_PAuth (Pointer authentication)
--- FEAT_PAuth2 (Enhacements to pointer authentication)
-+- FEAT_PAuth2 (Enhancements to pointer authentication)
- - FEAT_PMULL (PMULL, PMULL2 instructions)
- - FEAT_PMUv3p1 (PMU Extensions v3.1)
- - FEAT_PMUv3p4 (PMU Extensions v3.4)
+diff --git a/migration/rdma.c b/migration/rdma.c
+index 6a29e53daf..04debab5d9 100644
+--- a/migration/rdma.c
++++ b/migration/rdma.c
+@@ -2204,7 +2204,7 @@ retry:
+     stat64_add(&mig_stats.normal_pages, sge.length / qemu_target_page_size());
+     /*
+      * We are adding to transferred the amount of data written, but no
+-     * overhead at all.  I will asume that RDMA is magicaly and don't
++     * overhead at all.  I will assume that RDMA is magicaly and don't
+      * need to transfer (at least) the addresses where it wants to
+      * write the pages.  Here it looks like it should be something
+      * like:
 -- 
 2.39.2
 
