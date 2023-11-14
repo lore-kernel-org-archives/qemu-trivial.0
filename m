@@ -1,76 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r2erl-0005eV-FA
-	for mharc-qemu-trivial@gnu.org; Mon, 13 Nov 2023 16:53:11 -0500
+	id 1r2wRl-0006yy-RK
+	for mharc-qemu-trivial@gnu.org; Tue, 14 Nov 2023 11:39:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r2eri-0005e2-6G
- for qemu-trivial@nongnu.org; Mon, 13 Nov 2023 16:53:06 -0500
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r2ere-0003jk-W7
- for qemu-trivial@nongnu.org; Mon, 13 Nov 2023 16:53:04 -0500
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-53e04b17132so7661547a12.0
- for <qemu-trivial@nongnu.org>; Mon, 13 Nov 2023 13:53:02 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1699912380; x=1700517180; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=1cfqOQxFSILDkSp2DTNj1jhl1bOT+HIOtitrRoDIf0k=;
- b=J0H0mk07PlzyJHH5VN2YNsECD/O+qREo33FhqQ7PvOZaPt4llYz4hdvKYlJV/awM4U
- reulD/xITWbydRWvRZ+/sIP53nrdSGgr/W5DAfkZIbu9psL8w+hT8cl8b2a06H33hydc
- WcywbnJXKiWjKl1TRoCfj4/xlkMqrS+wpSuSw6x+zggL0wyilFiwjk9djjUnopatBTaz
- rNONEFsfYEFlYHd+HG04oLKgOzWKn2KNk4PG71sR+X2tR7LZNYY6EMP0wa62f2S+amHv
- KZJz0q4qEsglgPHtBtnhOprMuC56BhfSktTAIeI85R/8ehYsRFunxdk/iuFZr5I2Lpp+
- wdSA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1699912380; x=1700517180;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=1cfqOQxFSILDkSp2DTNj1jhl1bOT+HIOtitrRoDIf0k=;
- b=KrIRs6xRn2RbuQFPrR5t6h8D6jpzp/Ekjlzwn57SmgWrnubi48835pLG8JDrNMSCRB
- DOtM5De+kFryYb5qohgrJ0d8N5iM/DN/V3R+HDZT4JvAWwtkBHaqLwim5HQvjq7Nd2Eb
- faViIHOLQqKb2PPgvacRjOUGdG7tQLWjcsLz1E+OeMKzD1EbjIomrLaEYKrY8g6Jd8BR
- RkWDLeNBJ4x0AGxAbe+dxnMxqNNQUzk6/wiX0qfMBR9dvy6Jzs+IfUpsSiWz0KvXZaED
- qLut4dm0Fj/9r51pKA2eBuwo+ILyPpVNyuFkSVEMnibQ7R5hqTATKomV/QOXd0/S9z/+
- ycag==
-X-Gm-Message-State: AOJu0Yxhxw//+WrLq1rT5VdACSp2D7eQ+654lzuE294+ovZTeXKM0INb
- 7caAfZd6iQTCFHSuruF4c+ebtg==
-X-Google-Smtp-Source: AGHT+IFgk0wOX3sN9GDkUC0DYL2DIEi8fIc5KpMCLkLhpgtd29TZ/sEwFdlJ7KwcEBLpHrAglSLFpA==
-X-Received: by 2002:aa7:d699:0:b0:543:f7f5:83e5 with SMTP id
- d25-20020aa7d699000000b00543f7f583e5mr5615282edr.29.1699912379812; 
- Mon, 13 Nov 2023 13:52:59 -0800 (PST)
-Received: from [192.168.69.100] ([176.164.221.204])
- by smtp.gmail.com with ESMTPSA id
- m20-20020a056402051400b005333922efb0sm4215687edv.78.2023.11.13.13.52.58
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Nov 2023 13:52:59 -0800 (PST)
-Message-ID: <cc03e6fb-a60f-44c0-ac74-3491128db420@linaro.org>
-Date: Mon, 13 Nov 2023 22:52:57 +0100
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1r2wRl-0006yi-0a
+ for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 11:39:29 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1r2wRT-0008Nm-AY
+ for qemu-trivial@nongnu.org; Tue, 14 Nov 2023 11:39:28 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1699979950;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=8ntwUqa+yZKEr3xlptMcWegZ363x3+nDLix3V4MTy+A=;
+ b=N6PARweMiaIDp3Baz4GPCa14TKP4qfLjBhAs2kIG1HqKRZar1ICmbIXfmsD4rZfRq0xXs8
+ kaqmJ8xzwtwL2+GdJnd/BNtT/3HIT4INk8W9GisxmEHtMN/uaTN2/VSsuRU/UhzzFtBGVQ
+ Kup7MwwSPDGZTpwuza/APnMd2KuvVXs=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-628-zdFcaccZPj2fq6Xg2qsniQ-1; Tue,
+ 14 Nov 2023 11:39:05 -0500
+X-MC-Unique: zdFcaccZPj2fq6Xg2qsniQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id ADB741C29EAD;
+ Tue, 14 Nov 2023 16:39:04 +0000 (UTC)
+Received: from redhat.com (unknown [10.2.16.137])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 456CE1121307;
+ Tue, 14 Nov 2023 16:39:04 +0000 (UTC)
+Date: Tue, 14 Nov 2023 10:39:02 -0600
+From: Eric Blake <eblake@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org, 
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] qapi/pragma.json: Improve the comment about the lists of
+ QAPI rule exceptions
+Message-ID: <ph2xihgmr6abip3e4q4d2nvo7pglj2j43i7j733ikdoavj6bek@hwge4eifu2h6>
+References: <20231113162928.54551-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] spelling: hw/audio/virtio-snd.c: initalize
-Content-Language: en-US
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Gerd Hoffmann <kraxel@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
-References: <20231113212033.2457365-1-mjt@tls.msk.ru>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231113212033.2457365-1-mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x533.google.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20231113162928.54551-1-thuth@redhat.com>
+User-Agent: NeoMutt/20231103
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=eblake@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,15 +69,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 Nov 2023 21:53:06 -0000
+X-List-Received-Date: Tue, 14 Nov 2023 16:39:29 -0000
 
-On 13/11/23 22:20, Michael Tokarev wrote:
-> Fixes: eb9ad377bb94 "virtio-sound: handle control messages and streams"
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+On Mon, Nov 13, 2023 at 05:29:28PM +0100, Thomas Huth wrote:
+> Let's use more inclusive language here.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->   hw/audio/virtio-snd.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>  qapi/pragma.json | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Eric Blake <eblake@redhat.com>
+
+> 
+> diff --git a/qapi/pragma.json b/qapi/pragma.json
+> index 7f810b0e97..0aa4eeddd3 100644
+> --- a/qapi/pragma.json
+> +++ b/qapi/pragma.json
+> @@ -3,8 +3,8 @@
+>  
+>  { 'pragma': { 'doc-required': true } }
+>  
+> -# Whitelists to permit QAPI rule violations; think twice before you
+> -# add to them!
+> +# Entries in these lists are allowed to violate the QAPI rules (for
+> +# historical reasons); think twice before you add to them!
+>  { 'pragma': {
+>      # Command names containing '_'
+>      'command-name-exceptions': [
+> -- 
+> 2.41.0
+> 
+
+-- 
+Eric Blake, Principal Software Engineer
+Red Hat, Inc.
+Virtualization:  qemu.org | libguestfs.org
 
 
