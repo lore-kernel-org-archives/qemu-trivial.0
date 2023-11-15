@@ -1,70 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r3A2Z-0005EL-VZ
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 02:10:23 -0500
+	id 1r3A3K-0005s7-6Z
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 02:11:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A2X-0005E8-Q4
- for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:10:21 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A3H-0005p6-PG
+ for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:11:07 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A2W-0008CA-8t
- for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:10:21 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A3D-0008Ox-Km
+ for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:11:07 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700032219;
+ s=mimecast20190719; t=1700032262;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=flZC1jGd2qIwjPU3k+ho7dYrB590xQ/X0T4Z/0ogCYE=;
- b=KT+Yl1epDQESEYvk/zWcpMrFcLGBwAhf8YhYp1Yy87urg1NY780GR/B2s753aB5UfitsTh
- jbFXtwQ5gY2c5aAT9azgdFqsKJeT+BcjWdoLrQCvZS8kixA4cwaWWEBVZW6pnzqTEE2YVF
- MYnRBr0E398j6CM0hLUNs3LHzK3EmXo=
+ bh=vyYvIwgoX8s2l9OAUxo0mdoe4rNc+RJ6+JP/2F1nBYM=;
+ b=aCUNYztewt7szpJp4VLU8LhwoACn5qNbx1+9IygdMZ57B8oDwHbUKpVV4F5VRqVIsoYEFW
+ 4csKFBMPHLubUeaoyMurpv8Qf+mLybF7i3fw/SpstqsmJlYSQ1k9tuj9miFHyvaY1hrO6I
+ NMq9hpklRnSE7j+O4vH+EazWPP7ZewM=
 Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
  [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-617-NEXQCRtbOA2JpUgkErZCiA-1; Wed, 15 Nov 2023 02:10:17 -0500
-X-MC-Unique: NEXQCRtbOA2JpUgkErZCiA-1
+ us-mta-374-qzDOB_g7OguK9_fYSX-yzQ-1; Wed, 15 Nov 2023 02:10:59 -0500
+X-MC-Unique: qzDOB_g7OguK9_fYSX-yzQ-1
 Received: by mail-ej1-f70.google.com with SMTP id
- a640c23a62f3a-9e15f05c3ceso454224666b.3
- for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 23:10:17 -0800 (PST)
+ a640c23a62f3a-9e6249e4fbbso339123466b.0
+ for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 23:10:59 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700032216; x=1700637016;
+ d=1e100.net; s=20230601; t=1700032258; x=1700637058;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=flZC1jGd2qIwjPU3k+ho7dYrB590xQ/X0T4Z/0ogCYE=;
- b=vyBsZaHeADWxmI3sO+wW3i/ctFP5JWI3mkm+hhqIgQTVHGZDlZKU8jw/AAP0rjVZq9
- lO+ISwbilRLNYGcGHQ+sk2Bb3Se+ej1eLnuQ+GuEwFll0oxgLmWnLwuuNUvylMPGWVQZ
- 4o1tPmrMSwWZPTrK0CyNILQbfnzVtYp+R4KYlKYB9d3oY0LHFYxZEv8t0alKUG1GgrmE
- HdnOZmS7QrlnHmYTWZdinWR/+FDzvBzBpJTOI+i29V1vf2emyiBYDcvDX7iPh87pHw3d
- qnieXphZQ9h8OAvhdJXDHbpFPJsbyBN7B1h9zZeRjBc0qYYInLHTzOdl4lczRd8Twqjf
- BtdA==
-X-Gm-Message-State: AOJu0YwJiI7LNYC4V4oTlwkfp3Bd7ChkThsUe0aspIxaK+BgR/9TcK+O
- FhkHmaSG7tE+rmVm/dG+TlmYlkmSLadW3vjA6oMOWvJ4hH89vpDTtijZ1xRwL9ET4snn2Ubcy0r
- RLsW1fGDvHZYyCdvgaA==
-X-Received: by 2002:a17:906:c409:b0:9dc:21c7:9ae5 with SMTP id
- u9-20020a170906c40900b009dc21c79ae5mr8448160ejz.26.1700032216454; 
- Tue, 14 Nov 2023 23:10:16 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IE4WhMgzAHnCPGmgjOuhPAyyKfopcztAw7qQrgNBWtv9p6aU3mx4fiFodSqXyXfOdbpuisQAw==
-X-Received: by 2002:a17:906:c409:b0:9dc:21c7:9ae5 with SMTP id
- u9-20020a170906c40900b009dc21c79ae5mr8448146ejz.26.1700032216133; 
- Tue, 14 Nov 2023 23:10:16 -0800 (PST)
+ bh=vyYvIwgoX8s2l9OAUxo0mdoe4rNc+RJ6+JP/2F1nBYM=;
+ b=JPeJTxnSzaYbOemvljAZSjn2BxnXzuHA3IYVXBsIWGeYFiSOo1WGsAfOzrI0yr8Ubw
+ juz8/6YgeeHET6V1kD1DKRKJ3Cbe0k+XO+ARHVARUxyCipW/qhFYHVOQ2Vo/DefLbJXf
+ il4Oput7WtUTUwtXAtSgeQiygNmzEecqu/zxvxu9bmx2eShoXlkaDspGpLLDKLIAEZR5
+ kCN2oL7NdXgbn787S8B5ppbGGgn10ePV5mTdfpLTQ5g0UYUTe8ip1YCj+LEnMWHYp3Zw
+ +YUqqdeWzJMHfHkoz4dc9mmxHogpd9LkdRij5BCTykiEMwVSjasHOBAXy38PK84zPOTZ
+ ARrA==
+X-Gm-Message-State: AOJu0YwOLzbBPmlOxBLb3unBKFfQ2UrQ4u+tsRb8orU52cSk2O96l9mI
+ Tkf+A465Q9xtTuLwP/uozsPTMaTLhe1HyjZT4Zj0jXidkz0uIjXbQxBtgz99KelpWnMJqR0uzjE
+ ADBDZHrRDO3IRXarylA==
+X-Received: by 2002:a17:906:cd1f:b0:9e6:9abb:d3cc with SMTP id
+ oz31-20020a170906cd1f00b009e69abbd3ccmr7838856ejb.1.1700032258241; 
+ Tue, 14 Nov 2023 23:10:58 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEB3d37s4Shg/qhLbVjkxg5vL9RW6a1sbYeRrS39YQb2zMz9vKF/24WdrlBAj90djpzpMAJIA==
+X-Received: by 2002:a17:906:cd1f:b0:9e6:9abb:d3cc with SMTP id
+ oz31-20020a170906cd1f00b009e69abbd3ccmr7838842ejb.1.1700032257993; 
+ Tue, 14 Nov 2023 23:10:57 -0800 (PST)
 Received: from [192.168.0.6] (ip-109-43-176-122.web.vodafone.de.
  [109.43.176.122]) by smtp.gmail.com with ESMTPSA id
- lt7-20020a170906fa8700b009a1a5a7ebacsm6554420ejb.201.2023.11.14.23.10.14
+ lt7-20020a170906fa8700b009a1a5a7ebacsm6554420ejb.201.2023.11.14.23.10.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Nov 2023 23:10:15 -0800 (PST)
-Message-ID: <71ad9c9d-be4b-4bc4-b8d5-1c3ad4662892@redhat.com>
-Date: Wed, 15 Nov 2023 08:10:03 +0100
+ Tue, 14 Nov 2023 23:10:57 -0800 (PST)
+Message-ID: <4f194a58-89ec-4991-acd1-445c0e8782e1@redhat.com>
+Date: Wed, 15 Nov 2023 08:10:57 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial 02/21] linux-user: spelling fixes: othe, necesary
+Subject: Re: [PATCH trivial 03/21] hw/cxl: spelling fixes: limitaions,
+ potentialy, intialized
 To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Richard Henderson
- <richard.henderson@linaro.org>, Helge Deller <deller@gmx.de>,
- Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org, Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Fan Ni <fan.ni@samsung.com>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-3-mjt@tls.msk.ru>
+ <20231114165834.2949011-4-mjt@tls.msk.ru>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -108,22 +108,22 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231114165834.2949011-3-mjt@tls.msk.ru>
+In-Reply-To: <20231114165834.2949011-4-mjt@tls.msk.ru>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,20 +136,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Nov 2023 07:10:22 -0000
+X-List-Received-Date: Wed, 15 Nov 2023 07:11:08 -0000
 
 On 14/11/2023 17.58, Michael Tokarev wrote:
-> Fixes: e34136d93059 "linux-user/ppc: Add vdso"
-> Fixes: 86f04735ac20 "linux-user: Fix brk() to release pages"
-> Cc: Richard Henderson <richard.henderson@linaro.org>
-> Cc: Helge Deller <deller@gmx.de>
-> Cc: Laurent Vivier <laurent@vivier.eu>
+> Fixes: 388d6b574e28 "hw/cxl: Use switch statements for read and write of cachemem registers"
+> Fixes: 3314efd276ad "hw/cxl/mbox: Add Physical Switch Identify command."
+> Fixes: 004e3a93b814 "hw/cxl: Add tunneled command support to mailbox for switch cci."
+> Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
+> Cc: Fan Ni <fan.ni@samsung.com>
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->   linux-user/ppc/vdso.S | 2 +-
->   linux-user/syscall.c  | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
+>   hw/cxl/cxl-component-utils.c | 4 ++--
+>   hw/cxl/cxl-mailbox-utils.c   | 2 +-
+>   include/hw/cxl/cxl_device.h  | 2 +-
+>   3 files changed, 4 insertions(+), 4 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
+
 
 
