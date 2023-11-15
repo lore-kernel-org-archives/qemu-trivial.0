@@ -1,70 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r3A5F-0000bi-Gz
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 02:13:09 -0500
+	id 1r3A5n-0001AW-5f
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 02:13:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A5E-0000b1-JL
- for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:13:08 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A5j-00018L-W1
+ for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:13:40 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A5D-0000JX-7Z
- for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:13:08 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A5h-0000ta-QJ
+ for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:13:38 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700032386;
+ s=mimecast20190719; t=1700032416;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=cwmJo69GXYinjup53/MlwMOFezpqDPgUlAvHtOQmixw=;
- b=bmwVdmZUzgzk1zmXRTfSmBYOcoaxh2LULRvycntkLpK1CFZblV2MpL8bcK6QSBs/yRqxt/
- xbXqGginfIWaDgV2Z8DJVVXBDspOFxtEfpslmJM/Q22Yv5ZU9zkR4HxAnfpIbaFfvT+XkH
- L3O+2bi58MW4TmxlKAhFHG9tp/TiVSo=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=UE6sKFHoc+s1S4PSm7WzfPJJdhJh90FOqiae8/ViGdw=;
+ b=Djf6vmiDRXsjX+rB9ppNkcIuW4ecJwB2X70jgCyQnZCowl2wigLNmAu6ti83ZDC7Is9Uru
+ ynbqymxe7jqjAcm02a2Jh1e+a8CUZ2tlWEI8WUVlqMlaVXeu7Mx4gfeFs3JSZRtJAT5Fcl
+ wQZloWN1xu0mqNrkcIsmVhO+nTK4e6E=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-576-83zYspDPNz60qppJ8LB3QA-1; Wed, 15 Nov 2023 02:13:05 -0500
-X-MC-Unique: 83zYspDPNz60qppJ8LB3QA-1
-Received: by mail-ej1-f70.google.com with SMTP id
- a640c23a62f3a-9e15f05c3ceso454423066b.3
- for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 23:13:05 -0800 (PST)
+ us-mta-207-02-odpAmNjOi4XnUUFwG2w-1; Wed, 15 Nov 2023 02:13:35 -0500
+X-MC-Unique: 02-odpAmNjOi4XnUUFwG2w-1
+Received: by mail-ej1-f69.google.com with SMTP id
+ a640c23a62f3a-9e623356e1fso348698566b.0
+ for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 23:13:34 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700032384; x=1700637184;
+ d=1e100.net; s=20230601; t=1700032414; x=1700637214;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=cwmJo69GXYinjup53/MlwMOFezpqDPgUlAvHtOQmixw=;
- b=pGe+vj3RZpD9IN8ZN8+6HsKWmEAXkiLS4Xh2+J5v7IiHCMLKNddC/5tvkcaQkB7+QE
- dNrHuVMNxyhtYDBNm4IaoVtiUMaJhV4yRgBBlfdwTQuk5LU76vI03gmOuHn7iFriko/g
- Q3nHn2b2eMTO2OvhW+LrbWKssLvj8QR4Jrxx0hqTletS6UyOpfb9lbnvUIimQKu22HMO
- xyWwCH0cS89T0BUMzlHkTzrm3lxwDjRCdIyEFKgxa4WBQs8wbil1xx1aS9FPG/flT4V0
- AlLMfnDRZySKNHPkl1wDcCb3D3P8G7XDYq1EfdwtubxY6iomMTG6h6vSXH+HWzPPOFq2
- aV7w==
-X-Gm-Message-State: AOJu0YzzQuwv0MVrFGJ+vOc3vy0mx4Y6r1hBp8T8Z0ciXXLFyWobKoFz
- yFVz0bNaW/W8Sewcr9zoveqE6BEI9OHM07hezszHs9YlQuL449WkMSayza9628DlFtTLOgGGwIE
- 7ZIbUSRuVEN8joVYstg==
-X-Received: by 2002:a17:906:2342:b0:9e6:7e6c:4de4 with SMTP id
- m2-20020a170906234200b009e67e6c4de4mr9110806eja.35.1700032384231; 
- Tue, 14 Nov 2023 23:13:04 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEcNrglsgOBkPEctAAt5w5UUQARuI1pivjil2bu5Eefxmjz4glUu29UI3XiQejqA9cJXHb4XA==
-X-Received: by 2002:a17:906:2342:b0:9e6:7e6c:4de4 with SMTP id
- m2-20020a170906234200b009e67e6c4de4mr9110796eja.35.1700032383966; 
- Tue, 14 Nov 2023 23:13:03 -0800 (PST)
+ bh=UE6sKFHoc+s1S4PSm7WzfPJJdhJh90FOqiae8/ViGdw=;
+ b=oc2jmCIiHuUBuIVk0XK+WzwNg/e3pDmJ/T+/Wc8Jv4NnQP2y98ZIUUHHir7CU1ApDR
+ +shDpU0E5KDmaDAPvHwKvKGh70pxKoVamUqUade5bHYz8gg6064bX4k/lmt7fxAo853J
+ 6uX04gdj52+Le3iaIiS83cw6TWGT22Ifa0SYVEcaIhyPGaCtyVnY7wTlK+Kmn/NxO41K
+ EPVFC4nZB5MXxJCzdU+nIc/P10dKL9uo95Q4PioXiWwCiygfGxhUYVUzh/NSZW/SrkOE
+ jseqIdtbPOqYA3Hcu3ZfQ71yePo1H+lGNbXT4dy7qyRFRxWCNi70LvmuYEABOgNDGcbu
+ B90w==
+X-Gm-Message-State: AOJu0YyGqOIJo0cBEhBG1gL13z5PlDUKcmKdbg464e5IG85aCMBTvwQZ
+ H2gjB7u962CmF8oOIFp8WVcTkP2VYacDsHX+nBFl6uGotOj5LN80Jbm1bqMrA0IihDuvIf+z1Ih
+ 0CBHfHhpqCT/WXzpgBoBtP4zIkQ==
+X-Received: by 2002:a17:906:f751:b0:9e5:f63c:f904 with SMTP id
+ jp17-20020a170906f75100b009e5f63cf904mr8151451ejb.67.1700032414050; 
+ Tue, 14 Nov 2023 23:13:34 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH8ECm+rMuGzDMTzEXOq1x+54viXZCMR+QMj8H8tYf02KBC0rGH9X/rmaxxUEIrwTWJP0rbvg==
+X-Received: by 2002:a17:906:f751:b0:9e5:f63c:f904 with SMTP id
+ jp17-20020a170906f75100b009e5f63cf904mr8151438ejb.67.1700032413732; 
+ Tue, 14 Nov 2023 23:13:33 -0800 (PST)
 Received: from [192.168.0.6] (ip-109-43-176-122.web.vodafone.de.
  [109.43.176.122]) by smtp.gmail.com with ESMTPSA id
- lt7-20020a170906fa8700b009a1a5a7ebacsm6554420ejb.201.2023.11.14.23.13.03
+ lt7-20020a170906fa8700b009a1a5a7ebacsm6554420ejb.201.2023.11.14.23.13.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Nov 2023 23:13:03 -0800 (PST)
-Message-ID: <a2325551-9c39-4596-bc08-d323cebdaf19@redhat.com>
-Date: Wed, 15 Nov 2023 08:13:02 +0100
+ Tue, 14 Nov 2023 23:13:33 -0800 (PST)
+Message-ID: <676198ea-5b20-493d-b9b0-74ec1e23fff7@redhat.com>
+Date: Wed, 15 Nov 2023 08:13:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial 13/21] hw/net/cadence_gem.c: spelling fixes:
- Octects
+Subject: Re: [PATCH trivial 14/21] include/block/ufs.h: spelling fix: setted
 To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Luc Michel <luc.michel@amd.com>,
- Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-trivial@nongnu.org, Jeuk Kim <jeuk20.kim@samsung.com>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-14-mjt@tls.msk.ru>
+ <20231114165834.2949011-15-mjt@tls.msk.ru>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -108,20 +106,20 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231114165834.2949011-14-mjt@tls.msk.ru>
+In-Reply-To: <20231114165834.2949011-15-mjt@tls.msk.ru>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -136,18 +134,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Nov 2023 07:13:08 -0000
+X-List-Received-Date: Wed, 15 Nov 2023 07:13:40 -0000
 
 On 14/11/2023 17.58, Michael Tokarev wrote:
-> Fixes: c755c943aa2e "hw/net/cadence_gem: use REG32 macro for register definitions"
-> Cc: Luc Michel <luc.michel@amd.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
+> Fixes: bc4e68d362ec "hw/ufs: Initial commit for emulated Universal-Flash-Storage"
+> Cc: Jeuk Kim <jeuk20.kim@samsung.com>
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->   hw/net/cadence_gem.c | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
+>   include/block/ufs.h | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/include/block/ufs.h b/include/block/ufs.h
+> index 0b6ec0814d..d61598b8f3 100644
+> --- a/include/block/ufs.h
+> +++ b/include/block/ufs.h
+> @@ -657,7 +657,7 @@ typedef struct QEMU_PACKED UtpTaskReqDesc {
+>   #define UFS_UPIU_MAX_WB_LUN_ID 8
+>   
+>   /*
+> - * WriteBooster buffer lifetime has a limit setted by vendor.
+> + * WriteBooster buffer lifetime has a limit set by vendor.
+>    * If it is over the limit, WriteBooster feature will be disabled.
+>    */
+>   #define UFS_WB_EXCEED_LIFETIME 0x0B
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-
 
 
