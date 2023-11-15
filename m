@@ -1,70 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r3A3K-0005s7-6Z
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 02:11:10 -0500
+	id 1r3A4A-0007HB-Sl
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 02:12:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A3H-0005p6-PG
- for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:11:07 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A49-0007DX-DA
+ for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:12:01 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A3D-0008Ox-Km
- for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:11:07 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A47-00009x-VB
+ for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:12:01 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700032262;
+ s=mimecast20190719; t=1700032319;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=vyYvIwgoX8s2l9OAUxo0mdoe4rNc+RJ6+JP/2F1nBYM=;
- b=aCUNYztewt7szpJp4VLU8LhwoACn5qNbx1+9IygdMZ57B8oDwHbUKpVV4F5VRqVIsoYEFW
- 4csKFBMPHLubUeaoyMurpv8Qf+mLybF7i3fw/SpstqsmJlYSQ1k9tuj9miFHyvaY1hrO6I
- NMq9hpklRnSE7j+O4vH+EazWPP7ZewM=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=+qGdi+kvAahtMTtdJnl3jkU3M2Mj4LL0j78oWdshVzU=;
+ b=VCtfXQYXtP1YqqKceKfE+bcvHA0N9Akq7Ln1AzMgmQLRkBZ+j64VYjngZ/UDXbCJgZjeJ9
+ oSJ6vvfdIlBlQeKD8UWVW2vXOSHE5ctCRlWxdoFDqOZWkfEFVMVDBHqZLIOVbFSUALq/xY
+ EKD+txz2j2fJ9/MUknfQ6zdgjKB4+i0=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-374-qzDOB_g7OguK9_fYSX-yzQ-1; Wed, 15 Nov 2023 02:10:59 -0500
-X-MC-Unique: qzDOB_g7OguK9_fYSX-yzQ-1
-Received: by mail-ej1-f70.google.com with SMTP id
- a640c23a62f3a-9e6249e4fbbso339123466b.0
- for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 23:10:59 -0800 (PST)
+ us-mta-461-N1yu4KBHN_GccI5e_Umk4w-1; Wed, 15 Nov 2023 02:11:58 -0500
+X-MC-Unique: N1yu4KBHN_GccI5e_Umk4w-1
+Received: by mail-ej1-f69.google.com with SMTP id
+ a640c23a62f3a-9e623356e1fso348567066b.0
+ for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 23:11:57 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700032258; x=1700637058;
+ d=1e100.net; s=20230601; t=1700032297; x=1700637097;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=vyYvIwgoX8s2l9OAUxo0mdoe4rNc+RJ6+JP/2F1nBYM=;
- b=JPeJTxnSzaYbOemvljAZSjn2BxnXzuHA3IYVXBsIWGeYFiSOo1WGsAfOzrI0yr8Ubw
- juz8/6YgeeHET6V1kD1DKRKJ3Cbe0k+XO+ARHVARUxyCipW/qhFYHVOQ2Vo/DefLbJXf
- il4Oput7WtUTUwtXAtSgeQiygNmzEecqu/zxvxu9bmx2eShoXlkaDspGpLLDKLIAEZR5
- kCN2oL7NdXgbn787S8B5ppbGGgn10ePV5mTdfpLTQ5g0UYUTe8ip1YCj+LEnMWHYp3Zw
- +YUqqdeWzJMHfHkoz4dc9mmxHogpd9LkdRij5BCTykiEMwVSjasHOBAXy38PK84zPOTZ
- ARrA==
-X-Gm-Message-State: AOJu0YwOLzbBPmlOxBLb3unBKFfQ2UrQ4u+tsRb8orU52cSk2O96l9mI
- Tkf+A465Q9xtTuLwP/uozsPTMaTLhe1HyjZT4Zj0jXidkz0uIjXbQxBtgz99KelpWnMJqR0uzjE
- ADBDZHrRDO3IRXarylA==
-X-Received: by 2002:a17:906:cd1f:b0:9e6:9abb:d3cc with SMTP id
- oz31-20020a170906cd1f00b009e69abbd3ccmr7838856ejb.1.1700032258241; 
- Tue, 14 Nov 2023 23:10:58 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEB3d37s4Shg/qhLbVjkxg5vL9RW6a1sbYeRrS39YQb2zMz9vKF/24WdrlBAj90djpzpMAJIA==
-X-Received: by 2002:a17:906:cd1f:b0:9e6:9abb:d3cc with SMTP id
- oz31-20020a170906cd1f00b009e69abbd3ccmr7838842ejb.1.1700032257993; 
- Tue, 14 Nov 2023 23:10:57 -0800 (PST)
+ bh=+qGdi+kvAahtMTtdJnl3jkU3M2Mj4LL0j78oWdshVzU=;
+ b=UbqRLhowFAGNvedjJSo57VSJ07f7WAPbWmsTzJOCe6ROOOvU2n5mKSU8Fk6NPvsJoS
+ IUCAczGecHAaBvsnEecEHpthvC3FiEJiwZmcJzN42qTL03a74HAaG01m+JPdfitg00gB
+ dEO6iljUlN2pl6e3N7r0HyDFVRgo1sOHASPadjv7BJ3c/mKa8i4k2Cow3Zlinn3pXvxt
+ M4mX3LPefVMG+0UW/Cc5T6uTV2N6vJZfNVx+nyu/5USnCVjvd/xcxzwdyogXxDu8SWgi
+ sm0QwgbjiN0apQzvQaumJpvL6NcO+K4I28H6/V5tMPcTaPX/9u8DTycFGjB19Pm8pPIU
+ Inag==
+X-Gm-Message-State: AOJu0YzRbaRPa45Ch7hVo0cMxivB8mPBNIzOZ5/qxq3kTjS2vjh5LEjQ
+ rFjsPhlYRu56rHYLG46YZJH3jp8TAIOLBHtk//anwo1CQeUoKSUKD9K4cvmqekSGYfB5u+OSpvb
+ RSjSqp+R2PgD94HEDbQ==
+X-Received: by 2002:a17:906:475a:b0:9c5:cfa3:d030 with SMTP id
+ j26-20020a170906475a00b009c5cfa3d030mr8798212ejs.54.1700032297448; 
+ Tue, 14 Nov 2023 23:11:37 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFCJdDZmIOC/vRiwtUvckyoO2lLBK76WHACtJFXBP9TPr0PYjcqiRclVj1phzlY5WcmGWGnig==
+X-Received: by 2002:a17:906:475a:b0:9c5:cfa3:d030 with SMTP id
+ j26-20020a170906475a00b009c5cfa3d030mr8798199ejs.54.1700032297246; 
+ Tue, 14 Nov 2023 23:11:37 -0800 (PST)
 Received: from [192.168.0.6] (ip-109-43-176-122.web.vodafone.de.
  [109.43.176.122]) by smtp.gmail.com with ESMTPSA id
- lt7-20020a170906fa8700b009a1a5a7ebacsm6554420ejb.201.2023.11.14.23.10.57
+ lt7-20020a170906fa8700b009a1a5a7ebacsm6554420ejb.201.2023.11.14.23.11.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Nov 2023 23:10:57 -0800 (PST)
-Message-ID: <4f194a58-89ec-4991-acd1-445c0e8782e1@redhat.com>
-Date: Wed, 15 Nov 2023 08:10:57 +0100
+ Tue, 14 Nov 2023 23:11:36 -0800 (PST)
+Message-ID: <2cfdcce2-00aa-4177-9cdc-e74fcc57763d@redhat.com>
+Date: Wed, 15 Nov 2023 08:11:35 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial 03/21] hw/cxl: spelling fixes: limitaions,
- potentialy, intialized
+Subject: Re: [PATCH trivial 04/21] gdbstub: spelling fix: respectivelly
 To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Jonathan Cameron <jonathan.cameron@huawei.com>,
- Fan Ni <fan.ni@samsung.com>
+Cc: qemu-trivial@nongnu.org, Matheus Branco Borella <dark.ryu.550@gmail.com>, 
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-4-mjt@tls.msk.ru>
+ <20231114165834.2949011-5-mjt@tls.msk.ru>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -108,22 +107,22 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231114165834.2949011-4-mjt@tls.msk.ru>
+In-Reply-To: <20231114165834.2949011-5-mjt@tls.msk.ru>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,22 +135,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Nov 2023 07:11:08 -0000
+X-List-Received-Date: Wed, 15 Nov 2023 07:12:01 -0000
 
 On 14/11/2023 17.58, Michael Tokarev wrote:
-> Fixes: 388d6b574e28 "hw/cxl: Use switch statements for read and write of cachemem registers"
-> Fixes: 3314efd276ad "hw/cxl/mbox: Add Physical Switch Identify command."
-> Fixes: 004e3a93b814 "hw/cxl: Add tunneled command support to mailbox for switch cci."
-> Cc: Jonathan Cameron <jonathan.cameron@huawei.com>
-> Cc: Fan Ni <fan.ni@samsung.com>
+> Fixes: 761e3c10881b "gdbstub: fixes cases where wrong threads were reported to GDB on SIGINT"
+> Cc: Matheus Branco Borella <dark.ryu.550@gmail.com>
+> Cc: "Alex Bennée" <alex.bennee@linaro.org
+> Cc: "Philippe Mathieu-Daudé" <philmd@linaro.org>
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->   hw/cxl/cxl-component-utils.c | 4 ++--
->   hw/cxl/cxl-mailbox-utils.c   | 2 +-
->   include/hw/cxl/cxl_device.h  | 2 +-
->   3 files changed, 4 insertions(+), 4 deletions(-)
+>   gdbstub/gdbstub.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/gdbstub/gdbstub.c b/gdbstub/gdbstub.c
+> index ebb912da1b..46d752bbc2 100644
+> --- a/gdbstub/gdbstub.c
+> +++ b/gdbstub/gdbstub.c
+> @@ -692,7 +692,7 @@ static int gdb_handle_vcont(const char *p)
+>       /*
+>        * target_count and last_target keep track of how many CPUs we are going to
+>        * step or resume, and a pointer to the state structure of one of them,
+> -     * respectivelly
+> +     * respectively
+>        */
+>       int target_count = 0;
+>       CPUState *last_target = NULL;
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-
 
 
