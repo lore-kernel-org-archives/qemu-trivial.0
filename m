@@ -1,108 +1,45 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r3BRp-0005xk-Be
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 03:40:34 -0500
+	id 1r3BkV-0000om-9v
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 03:59:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1r3BRk-0005ky-TP; Wed, 15 Nov 2023 03:40:29 -0500
-Received: from mail-bn8nam11on20600.outbound.protection.outlook.com
- ([2a01:111:f400:7eae::600]
- helo=NAM11-BN8-obe.outbound.protection.outlook.com)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1r3BkR-0000nb-Ty; Wed, 15 Nov 2023 03:59:49 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Luc.Michel@amd.com>)
- id 1r3BRh-0005HI-9f; Wed, 15 Nov 2023 03:40:28 -0500
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
- b=dvuH2njQ0+zfmoh2X+w3Nzn3xdowR33ZsXUWT/zj85Q8r98uOjXcE7mXcgC+2qrdd0P4yx+Q2ZRUMOjvN8T3JUUH4Ui5cyIUQ7Ih5Sz3Azv9CGSjSa1WqD8KGczSLBykGa6L9XyY5x5UYY0SJjCCf61fUIDwxAb5hRVdB4mdxRUiJZpZn9qldSaqoFfZI2lLXJdYYW3tJufaQ4J/JCvATUtfpO0VzQXsdLu3mHD3MiLNH7AkHswPHzVQLRqfS1eF6EtleJMZsAFafp1t47YNR0qrgIUVYcokieFz6/qQQoPk2TGKRqDckUvvj9EPol4ojlcauvRiMoGw4UHv1/Cn8A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector9901;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=CE3PQmkF4nGQZcDZDL1Z2CNDNOL9IDb9jheaYBS1GH0=;
- b=Jv0i2hJZ7tVQRAtQhD48nWH4HILpyEMzBXIXI4h9uyMkWzwoe7qSxEyAKhHI/7q3AxYbmVwbk6bKYY3lHy5FVuSjXS1xulE6yH4cqEPd5un/FXKhLfJKeOHBrFgx7JMagWLjSU3M49lPyP9NCS7dqpL7jS08tIbwVRHcg84IejWKt/Cm62Ehp9oRDr4xSw15MxcrDToVMfK7R1oe0UKcjN5YrQiTgQQoxfOnS9otpjk5X3Od6bbZ50debdWUytUfSZPs8Z8SuDV+oIRVlt9dASx7uhcWQJE5e+jQx7x1V6flbeKiH+J0kd/yQysI0FeWqZGZQ4gfIRIu+FGhykKQUQ==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=tls.msk.ru smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=CE3PQmkF4nGQZcDZDL1Z2CNDNOL9IDb9jheaYBS1GH0=;
- b=jt3xBL8YYT3EZGIZSHlW5YLCIX9fZBfxyqcJ2e85cPqL2pEf4OJhMmeRPa5OM/zko5mnvdG6QjgyUOTA2T0ljd9E+dWgLxCxRDoSG0k/bNhZRCrH5+sAvU4nWFYyOQvZ4NCbGCu2iwCeDdDDHnMoIJIMAMfjFhishDbvcEEZ9Hk=
-Received: from MN2PR14CA0019.namprd14.prod.outlook.com (2603:10b6:208:23e::24)
- by DM4PR12MB6663.namprd12.prod.outlook.com (2603:10b6:8:8f::13) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6977.31; Wed, 15 Nov
- 2023 08:40:17 +0000
-Received: from BL6PEPF0001AB4A.namprd04.prod.outlook.com
- (2603:10b6:208:23e:cafe::45) by MN2PR14CA0019.outlook.office365.com
- (2603:10b6:208:23e::24) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.6977.31 via Frontend
- Transport; Wed, 15 Nov 2023 08:40:17 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- BL6PEPF0001AB4A.mail.protection.outlook.com (10.167.242.68) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.7002.14 via Frontend Transport; Wed, 15 Nov 2023 08:40:16 +0000
-Received: from SATLEXMB05.amd.com (10.181.40.146) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32; Wed, 15 Nov
- 2023 02:40:14 -0600
-Received: from SATLEXMB03.amd.com (10.181.40.144) by SATLEXMB05.amd.com
- (10.181.40.146) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32; Wed, 15 Nov
- 2023 02:40:07 -0600
-Received: from luc-work-vm (10.180.168.240) by SATLEXMB03.amd.com
- (10.181.40.144) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.32 via Frontend
- Transport; Wed, 15 Nov 2023 02:40:06 -0600
-Date: Wed, 15 Nov 2023 09:40:04 +0100
-From: Luc Michel <luc.michel@amd.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>, Peter Maydell
- <peter.maydell@linaro.org>
-Subject: Re: [PATCH trivial 13/21] hw/net/cadence_gem.c: spelling fixes:
- Octects
-Message-ID: <ZVPHpE6wofkn1UMT@luc-work-vm>
-References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-14-mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1r3BkQ-000493-0p; Wed, 15 Nov 2023 03:59:47 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 89A38336B5;
+ Wed, 15 Nov 2023 12:00:00 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id ED1AE353A1;
+ Wed, 15 Nov 2023 11:59:40 +0300 (MSK)
+Message-ID: <6d464c16-6108-47c9-bd3d-81bd0944764f@tls.msk.ru>
+Date: Wed, 15 Nov 2023 11:59:40 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset="us-ascii"
-Content-Disposition: inline
-In-Reply-To: <20231114165834.2949011-14-mjt@tls.msk.ru>
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: BL6PEPF0001AB4A:EE_|DM4PR12MB6663:EE_
-X-MS-Office365-Filtering-Correlation-Id: 0ec3a6c0-78ec-4c60-2d82-08dbe5b67e28
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
-X-Microsoft-Antispam-Message-Info: 0LX0elu9O9sYrD5f/r8IwcUt0nzV/wFouPLN2wsPTp5sRGpREzmBn2WFSowwIuDGlUHXXjiAqpBmEDCWAqX5fR16UTxBKBpg5JctIDZN1InhlURdIjfbFzZmIK64OJIj3v+SZPRD0Q8bpbPVXixe9E3rNdbfKJKCTvF4pSWjqPCy5bocAhZcgOUUWTQY+DblfrxOhnUBAz4UBixWmSAnHDppkGVCD6X7fM2vetbFNtHtqIfTkf9WULs4NWtWOf3RbRH1dAsJWnkAgKZfeq9CXsEzbi6zYBuMEw+5mtvptfKyJFCOMjKmBZDbGgYo7A1dg+LRBTevdXPLydWOAhf6oKZzyg++Rv1ZiF8SzmEp33PLlo7T9gynmP8br5pm8j6PaNAc/mm4aX2MLWywihPpLZ3nZaM44IDaD9RzB4DOTJF1fvmY7p8MRXMI3tOH/zaaI98fAuEezLxHShOa6J4WulOD3ODec64cfnI2NPF+3xY4Y00Bif64CgSB3cVGHs/P8ux/0xVtjfY7lOx/E3q7aC7eEdyfwoF4AecW72f8fBetiPJZx8SfAVpVmc8ezOF5/lgQX7tW893QV00gvun95tjHK8lp/o5y9oURaOd/svJaBMLVJjooVQ//vtUnV9DK8nOv1mMb6s13JEVYWYgtZwfrOGrH3MElA3ZGYT8qoSDnV2Bq/PCDamHVPfXPvZ3eUljBvi1kcRBZPVnejoNhT3VN7EQyFoEJlzZi1TzTNv66KhiHok3xjs7qPm5pBwYSplC/WfurD85DBvlBzjN2Bg==
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230031)(4636009)(346002)(39860400002)(396003)(376002)(136003)(230922051799003)(82310400011)(451199024)(1800799009)(186009)(64100799003)(40470700004)(46966006)(36840700001)(40460700003)(36860700001)(426003)(26005)(33716001)(336012)(9686003)(83380400001)(8936002)(8676002)(44832011)(5660300002)(4326008)(2906002)(41300700001)(47076005)(478600001)(316002)(54906003)(70586007)(70206006)(6916009)(86362001)(82740400003)(81166007)(356005)(55016003)(40480700001)(36900700001);
- DIR:OUT; SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 15 Nov 2023 08:40:16.5959 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 0ec3a6c0-78ec-4c60-2d82-08dbe5b67e28
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: BL6PEPF0001AB4A.namprd04.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: DM4PR12MB6663
-Received-SPF: softfail client-ip=2a01:111:f400:7eae::600;
- envelope-from=Luc.Michel@amd.com;
- helo=NAM11-BN8-obe.outbound.protection.outlook.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH trivial 06/21] docs/devel/migration.rst: spelling fix:
+ doen't
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Juan Quintela <quintela@redhat.com>
+References: <20231114165834.2949011-1-mjt@tls.msk.ru>
+ <20231114165834.2949011-7-mjt@tls.msk.ru>
+ <f2bfef4a-3a2c-4d32-adf6-52317f85a045@redhat.com>
+ <7259b384-cc7f-4400-9891-83e656765ce2@tls.msk.ru>
+ <dcd5e473-7598-478e-8597-9efec38a4ba8@redhat.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <dcd5e473-7598-478e-8597-9efec38a4ba8@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -116,49 +53,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Nov 2023 08:40:31 -0000
+X-List-Received-Date: Wed, 15 Nov 2023 08:59:49 -0000
 
-On 19:58 Tue 14 Nov     , Michael Tokarev wrote:
-> Fixes: c755c943aa2e "hw/net/cadence_gem: use REG32 macro for register definitions"
-> Cc: Luc Michel <luc.michel@amd.com>
-> Cc: Peter Maydell <peter.maydell@linaro.org>
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+15.11.2023 09:46, Thomas Huth:
+..
+>> The "really-really-fixed" one (without resending):
+>>
+>> -  This combination is not possible as the qemu-5.1 doen't understand
+>> +  This combination is not possible as the qemu-5.1 doesn't understand
+>>     pc-5.2 machine type.  So nothing to worry here.
+>>
+>> ;)
 
-Reviewed-by: Luc Michel <luc.michel@amd.com>
+Actually there's more in there than this 1 fix: the change has
+other fixes too, and one of them is in heading, so "underline"
+in the next line should be fixed too.
 
-> ---
->  hw/net/cadence_gem.c | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-> index 5b989f5b52..19adbc0e19 100644
-> --- a/hw/net/cadence_gem.c
-> +++ b/hw/net/cadence_gem.c
-> @@ -225,8 +225,8 @@ REG32(WOLAN, 0xb8) /* Wake on LAN reg */
->  REG32(IPGSTRETCH, 0xbc) /* IPG Stretch reg */
->  REG32(SVLAN, 0xc0) /* Stacked VLAN reg */
->  REG32(MODID, 0xfc) /* Module ID reg */
-> -REG32(OCTTXLO, 0x100) /* Octects transmitted Low reg */
-> -REG32(OCTTXHI, 0x104) /* Octects transmitted High reg */
-> +REG32(OCTTXLO, 0x100) /* Octets transmitted Low reg */
-> +REG32(OCTTXHI, 0x104) /* Octets transmitted High reg */
->  REG32(TXCNT, 0x108) /* Error-free Frames transmitted */
->  REG32(TXBCNT, 0x10c) /* Error-free Broadcast Frames */
->  REG32(TXMCNT, 0x110) /* Error-free Multicast Frame */
-> @@ -245,8 +245,8 @@ REG32(EXCESSCOLLCNT, 0x140) /* Excessive Collision Frames */
->  REG32(LATECOLLCNT, 0x144) /* Late Collision Frames */
->  REG32(DEFERTXCNT, 0x148) /* Deferred Transmission Frames */
->  REG32(CSENSECNT, 0x14c) /* Carrier Sense Error Counter */
-> -REG32(OCTRXLO, 0x150) /* Octects Received register Low */
-> -REG32(OCTRXHI, 0x154) /* Octects Received register High */
-> +REG32(OCTRXLO, 0x150) /* Octets Received register Low */
-> +REG32(OCTRXHI, 0x154) /* Octets Received register High */
->  REG32(RXCNT, 0x158) /* Error-free Frames Received */
->  REG32(RXBROADCNT, 0x15c) /* Error-free Broadcast Frames RX */
->  REG32(RXMULTICNT, 0x160) /* Error-free Multicast Frames RX */
-> --
-> 2.39.2
-> 
+These spelling fixes are.. tough :)  Lemme see if I did multiple
+changes like this somewhere else, pretending there's just one fix..
 
--- 
+Actual commit (with your R-b tag still, as apparently you reviewed
+all changes).
+With updated Subject, new Fixes: tag, and a change in heading underlining):
+
+From: Michael Tokarev <mjt@tls.msk.ru>
+Date: Tue Nov 14 19:08:48 2023 +0300
+
+     docs/devel/migration.rst: spelling fixes: doen't, diferent, responsability, recomend
+
+     Fixes: 593c28c02c81 "migration/doc: How to migrate when hosts have different features"
+     Fixes: 1aefe2ca1423 "migration/doc: Add documentation for backwards compatiblity"
+     Reviewed-by: Thomas Huth <thuth@redhat.com>
+     Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+
+diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
+index 5adf4f12f7..ec55089b25 100644
+--- a/docs/devel/migration.rst
++++ b/docs/devel/migration.rst
+@@ -1061,7 +1061,7 @@ QEMU version, in this case pc-5.1.
+
+  4 - qemu-5.1 -M pc-5.2  -> migrates to -> qemu-5.1 -M pc-5.2
+
+-  This combination is not possible as the qemu-5.1 doen't understand
++  This combination is not possible as the qemu-5.1 doesn't understand
+    pc-5.2 machine type.  So nothing to worry here.
+
+  Now it comes the interesting ones, when both QEMU processes are
+@@ -1214,8 +1214,8 @@ machine types to have the right value::
+           ...
+       };
+
+-A device with diferent features on both sides
+----------------------------------------------
++A device with different features on both sides
++----------------------------------------------
+
+  Let's assume that we are using the same QEMU binary on both sides,
+  just to make the things easier.  But we have a device that has
+@@ -1294,12 +1294,12 @@ Host B:
+
+  $ qemu-system-x86_64 -cpu host,taa-no=off
+
+-And you would be able to migrate between them.  It is responsability
++And you would be able to migrate between them.  It is responsibility
+  of the management application or of the user to make sure that the
+  configuration is correct.  QEMU doesn't know how to look at this kind
+  of features in general.
+
+-Notice that we don't recomend to use -cpu host for migration.  It is
++Notice that we don't recommend to use -cpu host for migration.  It is
+  used in this example because it makes the example simpler.
+
+  Other devices have worse control about individual features.  If they
+
 
