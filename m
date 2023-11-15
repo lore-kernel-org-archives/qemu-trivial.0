@@ -1,70 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r3A6f-0002VQ-FU
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 02:14:39 -0500
+	id 1r3A7O-00049a-Pj
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 02:15:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A6Z-0002ES-3d
- for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:14:32 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A7M-00046o-P1
+ for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:15:21 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A6M-0001Ol-7G
- for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:14:30 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A7E-0001gU-OY
+ for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:15:20 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700032450;
+ s=mimecast20190719; t=1700032512;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=F//FlxVTpUdyQIQYOo8WvFnmGTu65xhpdiiqzfiX8VA=;
- b=h5jGOlT58oYSd70v5M1BjdrmqXlA6zN+UxPcj7OhwGkwCfOW3GFHrlp2g+Cq2kbthRpyoA
- qxsgVM/kmcE2SivdkyYowlq91/HIFXXh0Xv6tRCUQfn7l1JRBXi7jdqYan/ANGL7cItNn6
- ckA60yejxVRQ4LZs7K/Pr979ptNhdTg=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=lB6udpVYL4COw12qJTP2y8H2h3HHViZAGllMmJe3eSo=;
+ b=Ohs4Chb47yCajBg0i5WmcE6+nvn+0wz8t19uni0pLF3LXUNlsIXmdEpjSSXIcb6otux1/Z
+ mVtHotOddnaJa4eTldNUu/qOwSX7IVdaajngOLfVClqdA4fJgDkFHytbDuhEnUiHcHf53m
+ 596q6aUm/aPZQFg/hR7kJuxBEOoAR28=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-427-WYo2ArWyMvazAd4d32RPkA-1; Wed, 15 Nov 2023 02:14:09 -0500
-X-MC-Unique: WYo2ArWyMvazAd4d32RPkA-1
-Received: by mail-ej1-f69.google.com with SMTP id
- a640c23a62f3a-9dd58f582a0so454891866b.0
- for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 23:14:09 -0800 (PST)
+ us-mta-351-UEpnmfw5M6utYGXTcUdBGg-1; Wed, 15 Nov 2023 02:15:10 -0500
+X-MC-Unique: UEpnmfw5M6utYGXTcUdBGg-1
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-9e28d82339aso417689466b.2
+ for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 23:15:10 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700032448; x=1700637248;
+ d=1e100.net; s=20230601; t=1700032509; x=1700637309;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=F//FlxVTpUdyQIQYOo8WvFnmGTu65xhpdiiqzfiX8VA=;
- b=TEqk48okHUqoOzUiPOBcaqNDYbN9Q9ir9SL0G6Hie0DS4m5j/PfqoohIBFk2r3RXXr
- xA9Y6w4e57siN6FdJ7vNlJ6POd+0GvD0ZJpt9Zr/PFOo9bwf7Jzc22JtFepmus4pGVXt
- Oml1EuXB9tCXisvCuJKQO8TOyGUmal8b7UsMRgape+xiev9G3NFv+Zm2tdUG+pyMbpIB
- nyLLHr3I5HM2rkoDKYFej8mEw7nnv5WoG1qR6QvSngCx8F2/HeLcosjjlH4/8u3fa+NO
- efPK9cAbnimulSoDDDsXVokE08bC2EdZzPwVbbl3UzVw7dbmFOPkbzjQnWB/2DObBpME
- aa2Q==
-X-Gm-Message-State: AOJu0YxRLR+DnWIC0dcrtJOgEZUSonzonj5mALOoU34L/eyZGqMiqaT6
- yx56bEU1jjjZ68H3zuCvw+8y+JsXoQg0zmFLnK3HPPJnGedSlpmCQuJYxDBZRFaM4jExue9xiEf
- /rkjs0FMEgb5Ru/RvdA==
-X-Received: by 2002:a17:906:fc07:b0:9c7:5db4:c943 with SMTP id
- ov7-20020a170906fc0700b009c75db4c943mr8898051ejb.40.1700032448618; 
- Tue, 14 Nov 2023 23:14:08 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHRo5FXOTDE9LwrZhrzFtL7kqXbL7tgGSkX5nmTvwSkRgDRvQmxJPmPgg9k+SeE+T9gMvI4YA==
-X-Received: by 2002:a17:906:fc07:b0:9c7:5db4:c943 with SMTP id
- ov7-20020a170906fc0700b009c75db4c943mr8898034ejb.40.1700032448295; 
- Tue, 14 Nov 2023 23:14:08 -0800 (PST)
+ bh=lB6udpVYL4COw12qJTP2y8H2h3HHViZAGllMmJe3eSo=;
+ b=JrhXq9ZJl0vpD8XxC/efgdXxZEBocsCgDLPr8TomaILjFxNh5NgGeG631VseE9x1ev
+ Lfcq4/gzdCxCl0+9tl6BZkT08fr3oYuvuGiwK1bN7GC2JAdymQqNN0uK1G3ELzc5tJa9
+ NSny050ICgd1maKl7peaCgi+TF7wNeqtsT1Bpt53cVRF5JiDUdY+OVjvurbUJ/0aaROp
+ t963J6HYaeebXw+yZTciluVS4r4rhQ9GZtb6ToUIKxyfFMgMveOaOf2o3YIW/cC8VWgH
+ sdoRFzU5e+Pu9nUsVD8jqQa59NQntYzIXo7B6pfTP9uO31XJR8VqM+YZRNNq/K0pcuBB
+ RMww==
+X-Gm-Message-State: AOJu0YyBwwaSMFQFwceN3EvmSfsy4731+fTozche3PfGTWNoAYiQNrIH
+ I4zQoiZB7cQ13VJdO0qgqV+svDyb0FHOjk1LoTv5Mv6nZsCU3SPhKKudYPQFJusJSTLvpAFZ8vU
+ 4FGdfmJFqPpf24B5CxA==
+X-Received: by 2002:a17:906:4757:b0:9e7:192b:81a9 with SMTP id
+ j23-20020a170906475700b009e7192b81a9mr7675170ejs.45.1700032509616; 
+ Tue, 14 Nov 2023 23:15:09 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEgpiwCLNBOzv1ercXter90EHQ/8EhMr6HuBVCkVGp6jC+vuMQQC5LADv5yMCqy5HOACIaw+g==
+X-Received: by 2002:a17:906:4757:b0:9e7:192b:81a9 with SMTP id
+ j23-20020a170906475700b009e7192b81a9mr7675158ejs.45.1700032509339; 
+ Tue, 14 Nov 2023 23:15:09 -0800 (PST)
 Received: from [192.168.0.6] (ip-109-43-176-122.web.vodafone.de.
  [109.43.176.122]) by smtp.gmail.com with ESMTPSA id
- lt7-20020a170906fa8700b009a1a5a7ebacsm6554420ejb.201.2023.11.14.23.14.07
+ lt7-20020a170906fa8700b009a1a5a7ebacsm6554420ejb.201.2023.11.14.23.15.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Nov 2023 23:14:07 -0800 (PST)
-Message-ID: <1799c423-e7c1-4c1a-93e2-2eb8bd9c6d38@redhat.com>
-Date: Wed, 15 Nov 2023 08:14:07 +0100
+ Tue, 14 Nov 2023 23:15:08 -0800 (PST)
+Message-ID: <7b042607-6296-4693-9390-d3cd94770182@redhat.com>
+Date: Wed, 15 Nov 2023 08:15:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial 16/21] include/hw/virtio/vhost.h: spelling fix:
- sate
+Subject: Re: [PATCH trivial 17/21] target/riscv/cpu.h: spelling fix: separatly
 To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Hanna Czenczek <hreitz@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-trivial@nongnu.org, Rajnesh Kanwal <rkanwal@rivosinc.com>,
+ Alistair Francis <alistair.francis@wdc.com>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-17-mjt@tls.msk.ru>
+ <20231114165834.2949011-18-mjt@tls.msk.ru>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -108,7 +107,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231114165834.2949011-17-mjt@tls.msk.ru>
+In-Reply-To: <20231114165834.2949011-18-mjt@tls.msk.ru>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -135,30 +134,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Nov 2023 07:14:33 -0000
+X-List-Received-Date: Wed, 15 Nov 2023 07:15:21 -0000
 
 On 14/11/2023 17.58, Michael Tokarev wrote:
-> Fixes: 4a00d5d7f4b6 "vhost: Add high-level state save/load functions"
-> Cc: Hanna Czenczek <hreitz@redhat.com>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
+> Fixes: 40336d5b1d4c "target/riscv: Add HS-mode virtual interrupt and IRQ filtering support."
+> Cc: Rajnesh Kanwal <rkanwal@rivosinc.com>
+> Cc: Alistair Francis <alistair.francis@wdc.com>
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->   include/hw/virtio/vhost.h | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   target/riscv/cpu.h | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/include/hw/virtio/vhost.h b/include/hw/virtio/vhost.h
-> index 05d7204a08..02477788df 100644
-> --- a/include/hw/virtio/vhost.h
-> +++ b/include/hw/virtio/vhost.h
-> @@ -456,7 +456,7 @@ int vhost_save_backend_state(struct vhost_dev *dev, QEMUFile *f, Error **errp);
->    * Must only be called while the device and all its vrings are stopped
->    * (`VHOST_TRANSFER_STATE_PHASE_STOPPED`).
->    *
-> - * @dev: The vhost device to which to send the sate
-> + * @dev: The vhost device to which to send the state
->    * @f: Migration stream from which to load the state
->    * @errp: Potential error message
->    *
+> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+> index bf58b0f0b5..d74b361be6 100644
+> --- a/target/riscv/cpu.h
+> +++ b/target/riscv/cpu.h
+> @@ -214,13 +214,13 @@ struct CPUArchState {
+>   
+>       /*
+>        * When mideleg[i]=0 and mvien[i]=1, sie[i] is no more
+> -     * alias of mie[i] and needs to be maintained separatly.
+> +     * alias of mie[i] and needs to be maintained separately.
+>        */
+>       uint64_t sie;
+>   
+>       /*
+>        * When hideleg[i]=0 and hvien[i]=1, vsie[i] is no more
+> -     * alias of sie[i] (mie[i]) and needs to be maintained separatly.
+> +     * alias of sie[i] (mie[i]) and needs to be maintained separately.
+>        */
+>       uint64_t vsie;
+>   
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
