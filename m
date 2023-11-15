@@ -1,71 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r39fO-0002pd-8t
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 01:46:26 -0500
+	id 1r3A2Z-0005EL-VZ
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 02:10:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r39fJ-0002p4-Io
- for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 01:46:21 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A2X-0005E8-Q4
+ for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:10:21 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r39fG-0008IH-MF
- for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 01:46:20 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1r3A2W-0008CA-8t
+ for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 02:10:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700030777;
+ s=mimecast20190719; t=1700032219;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=ZapwmIlebruvgXiDo8uWbxWWecXJ+NJ4Glz+d9aLojc=;
- b=BceDB77qvD1ZwQFvamiFJAzGEVcHAp6zZipplcVhvzdB0gqhZa4NVI/gqwzLOKJPXmE6bu
- sMXnP7mpzm6peAd6vavGT9geYcosBDu+fCYARiryHetNUx1TeDDzpRpwvPtR0xKQdtJnE2
- wBvTHaq9oaya5wlXyEOfEpRGAD1VyBI=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=flZC1jGd2qIwjPU3k+ho7dYrB590xQ/X0T4Z/0ogCYE=;
+ b=KT+Yl1epDQESEYvk/zWcpMrFcLGBwAhf8YhYp1Yy87urg1NY780GR/B2s753aB5UfitsTh
+ jbFXtwQ5gY2c5aAT9azgdFqsKJeT+BcjWdoLrQCvZS8kixA4cwaWWEBVZW6pnzqTEE2YVF
+ MYnRBr0E398j6CM0hLUNs3LHzK3EmXo=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-14-UtEBGmn3MLSrEGOxMd_aUA-1; Wed, 15 Nov 2023 01:46:16 -0500
-X-MC-Unique: UtEBGmn3MLSrEGOxMd_aUA-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-408508aa81cso41517235e9.3
- for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 22:46:15 -0800 (PST)
+ us-mta-617-NEXQCRtbOA2JpUgkErZCiA-1; Wed, 15 Nov 2023 02:10:17 -0500
+X-MC-Unique: NEXQCRtbOA2JpUgkErZCiA-1
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-9e15f05c3ceso454224666b.3
+ for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 23:10:17 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700030775; x=1700635575;
+ d=1e100.net; s=20230601; t=1700032216; x=1700637016;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ZapwmIlebruvgXiDo8uWbxWWecXJ+NJ4Glz+d9aLojc=;
- b=idHAIi72S6VtpD4nKlutatDFwZGkXJmYd5HqtCPZNswvkQq/uOBnL7mKkjnGnl/9ZL
- rszj2FATYyP9RvGmwStS34MqxgVeqK3hNDOwe+FePV1rSMr73sreJQve7dRZ85DDR24y
- eo6oCNp2ZWnOU4vlquNTnGN339TtSr+8QCVPYZ5mJg7SCh2VZfQj5DyRnIfV09d2koY4
- H2JQGQ/xokxcUEOGOW64wbbe0H1t7Afm/jr/SrrGEyAuCia7CqJ1cEoIADRX6Ho+r3aX
- qAsR+IzAc/4o/ODd67vP+rOVbtA9T9WxOGOVNQfNdJ2EiU4/Km+Kyr5WQuvXWFUcqkvx
- JdMw==
-X-Gm-Message-State: AOJu0YzHEvICDqpUdejavsLur4bV5XfHarxisQmKHAIXkgHwEiZzRelP
- YJguA5uejKIpRjs4YQPKXrNnvoscLPwNAx12Hk88NY4NbCJ5axa7DgKZdMsk6lt11GouAuacXjR
- xdv0HZjmhNGQx9+8uug==
-X-Received: by 2002:a05:600c:1c82:b0:40a:4a5c:3af0 with SMTP id
- k2-20020a05600c1c8200b0040a4a5c3af0mr9609727wms.24.1700030774864; 
- Tue, 14 Nov 2023 22:46:14 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFLShATsi7T9cVbiP1Tn3JNWBol+woyqBS/WbyR9Szmpf++oNm/eT6wE0E25V4DLJbaI7/zsQ==
-X-Received: by 2002:a05:600c:1c82:b0:40a:4a5c:3af0 with SMTP id
- k2-20020a05600c1c8200b0040a4a5c3af0mr9609712wms.24.1700030774544; 
- Tue, 14 Nov 2023 22:46:14 -0800 (PST)
+ bh=flZC1jGd2qIwjPU3k+ho7dYrB590xQ/X0T4Z/0ogCYE=;
+ b=vyBsZaHeADWxmI3sO+wW3i/ctFP5JWI3mkm+hhqIgQTVHGZDlZKU8jw/AAP0rjVZq9
+ lO+ISwbilRLNYGcGHQ+sk2Bb3Se+ej1eLnuQ+GuEwFll0oxgLmWnLwuuNUvylMPGWVQZ
+ 4o1tPmrMSwWZPTrK0CyNILQbfnzVtYp+R4KYlKYB9d3oY0LHFYxZEv8t0alKUG1GgrmE
+ HdnOZmS7QrlnHmYTWZdinWR/+FDzvBzBpJTOI+i29V1vf2emyiBYDcvDX7iPh87pHw3d
+ qnieXphZQ9h8OAvhdJXDHbpFPJsbyBN7B1h9zZeRjBc0qYYInLHTzOdl4lczRd8Twqjf
+ BtdA==
+X-Gm-Message-State: AOJu0YwJiI7LNYC4V4oTlwkfp3Bd7ChkThsUe0aspIxaK+BgR/9TcK+O
+ FhkHmaSG7tE+rmVm/dG+TlmYlkmSLadW3vjA6oMOWvJ4hH89vpDTtijZ1xRwL9ET4snn2Ubcy0r
+ RLsW1fGDvHZYyCdvgaA==
+X-Received: by 2002:a17:906:c409:b0:9dc:21c7:9ae5 with SMTP id
+ u9-20020a170906c40900b009dc21c79ae5mr8448160ejz.26.1700032216454; 
+ Tue, 14 Nov 2023 23:10:16 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE4WhMgzAHnCPGmgjOuhPAyyKfopcztAw7qQrgNBWtv9p6aU3mx4fiFodSqXyXfOdbpuisQAw==
+X-Received: by 2002:a17:906:c409:b0:9dc:21c7:9ae5 with SMTP id
+ u9-20020a170906c40900b009dc21c79ae5mr8448146ejz.26.1700032216133; 
+ Tue, 14 Nov 2023 23:10:16 -0800 (PST)
 Received: from [192.168.0.6] (ip-109-43-176-122.web.vodafone.de.
  [109.43.176.122]) by smtp.gmail.com with ESMTPSA id
- o20-20020a05600c511400b004042dbb8925sm19823165wms.38.2023.11.14.22.46.13
+ lt7-20020a170906fa8700b009a1a5a7ebacsm6554420ejb.201.2023.11.14.23.10.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 14 Nov 2023 22:46:14 -0800 (PST)
-Message-ID: <dcd5e473-7598-478e-8597-9efec38a4ba8@redhat.com>
-Date: Wed, 15 Nov 2023 07:46:13 +0100
+ Tue, 14 Nov 2023 23:10:15 -0800 (PST)
+Message-ID: <71ad9c9d-be4b-4bc4-b8d5-1c3ad4662892@redhat.com>
+Date: Wed, 15 Nov 2023 08:10:03 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial 06/21] docs/devel/migration.rst: spelling fix:
- doen't
+Subject: Re: [PATCH trivial 02/21] linux-user: spelling fixes: othe, necesary
 To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Juan Quintela <quintela@redhat.com>
+Cc: qemu-trivial@nongnu.org, Richard Henderson
+ <richard.henderson@linaro.org>, Helge Deller <deller@gmx.de>,
+ Laurent Vivier <laurent@vivier.eu>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-7-mjt@tls.msk.ru>
- <f2bfef4a-3a2c-4d32-adf6-52317f85a045@redhat.com>
- <7259b384-cc7f-4400-9891-83e656765ce2@tls.msk.ru>
+ <20231114165834.2949011-3-mjt@tls.msk.ru>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -109,22 +108,22 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <7259b384-cc7f-4400-9891-83e656765ce2@tls.msk.ru>
+In-Reply-To: <20231114165834.2949011-3-mjt@tls.msk.ru>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,43 +136,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Nov 2023 06:46:21 -0000
+X-List-Received-Date: Wed, 15 Nov 2023 07:10:22 -0000
 
-On 15/11/2023 07.41, Michael Tokarev wrote:
-> 14.11.2023 22:05, Thomas Huth wrote:
->> On 14/11/2023 17.58, Michael Tokarev wrote:
->>> Fixes: 1aefe2ca1423 "migration/doc: Add documentation for backwards 
->>> compatiblity"
->>> Cc: Juan Quintela <quintela@redhat.com>
->>> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->>> ---
->>>   docs/devel/migration.rst | 8 ++++----
->>>   1 file changed, 4 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
->>> index 5adf4f12f7..51b1f61f5e 100644
->>> --- a/docs/devel/migration.rst
->>> +++ b/docs/devel/migration.rst
->>> @@ -1061,7 +1061,7 @@ QEMU version, in this case pc-5.1.
->>>   4 - qemu-5.1 -M pc-5.2  -> migrates to -> qemu-5.1 -M pc-5.2
->>> -  This combination is not possible as the qemu-5.1 doen't understand
->>> +  This combination is not possible as the qemu-5.1 does't understand
->>
->> You replaced one typo with another one :-)
-> 
-> Heh. Lovely! :)
-> 
-> The "really-really-fixed" one (without resending):
-> 
-> -  This combination is not possible as the qemu-5.1 doen't understand
-> +  This combination is not possible as the qemu-5.1 doesn't understand
->     pc-5.2 machine type.  So nothing to worry here.
-> 
-> ;)
-
-With that fix:
+On 14/11/2023 17.58, Michael Tokarev wrote:
+> Fixes: e34136d93059 "linux-user/ppc: Add vdso"
+> Fixes: 86f04735ac20 "linux-user: Fix brk() to release pages"
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Helge Deller <deller@gmx.de>
+> Cc: Laurent Vivier <laurent@vivier.eu>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>   linux-user/ppc/vdso.S | 2 +-
+>   linux-user/syscall.c  | 2 +-
+>   2 files changed, 2 insertions(+), 2 deletions(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-
 
 
