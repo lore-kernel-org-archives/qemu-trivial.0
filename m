@@ -1,82 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r39F3-0003gm-Ct
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 01:19:13 -0500
+	id 1r39b5-0001OH-Ry
+	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 01:41:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1r39F2-0003gV-Bg
- for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 01:19:12 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1r39b4-0001Nt-BZ; Wed, 15 Nov 2023 01:41:58 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1r39F0-0007Zb-QU
- for qemu-trivial@nongnu.org; Wed, 15 Nov 2023 01:19:12 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700029148;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=+o3aqznT+Kh7VljLpwAJ0RkHajkEkRRhvSPe7DX2m2g=;
- b=JsofFtY7wmf4adB9Y76+n7Yg7H2Q2388ar4bVhY1tnVxRvDrz6m4DgK3NIovXZbYneB9ls
- UryEzl8iuwfVXJeBFHEvLcs50M3lF8H7Ei3Ffdjhm/LfIP3oQE4G/vj5tVkB/uMtQeBcXs
- OAiTfRuDbN1Bzecsc2YGJ/YH4UKpytM=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-464-F0PZ8fAJPu6TJPci37lbXA-1; Wed, 15 Nov 2023 01:19:07 -0500
-X-MC-Unique: F0PZ8fAJPu6TJPci37lbXA-1
-Received: by mail-ed1-f71.google.com with SMTP id
- 4fb4d7f45d1cf-544c2881bf3so4570260a12.0
- for <qemu-trivial@nongnu.org>; Tue, 14 Nov 2023 22:19:06 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700029146; x=1700633946;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=+o3aqznT+Kh7VljLpwAJ0RkHajkEkRRhvSPe7DX2m2g=;
- b=E5cXCVbaluYKFHLzVpDXk1bAgxdVP3BvlULszmsEYmoQZD8c2rjl8qdg4dCEB8erGq
- Y+Y19gLTQROHEmfJsPlLLReDC80bi4yTlyGX+bLa7BeaAjyUgo6XYclIZylaG4d1Zjub
- tDKGP0vMYyoY1hzQUpWnJwpCq2161BVgypFQ8weuvN3xMj4ETcri9RvZ84O92sCH6jaj
- qTQe7DZZKuDlc+rKQvnr4QLCdGMINABbfsz6ZILpEIh6OfIT1Gt8L/IMD8zY/GOVbEa5
- YBH1k3g94qKB80Kpk5pFaqF3kq3JnXdCY4CklZ8XupHvraPqvNZJoNgrbdjus2XDOZUU
- PUcw==
-X-Gm-Message-State: AOJu0YyKLQnU7XD+xsjzfYHrVb0ThCvhQXd0KTo+jDh1B5B3PMhaFH28
- k3zUMOHf3phihZl4nFu06UwKdU0HOOnxTu4IPNep2Ftc7IHlBYNVGwNhonia3dzBgAmoV1ggW3Y
- vqRaEgGQ/UkBK/TNlS1DZh6asdYSg+xHUnA==
-X-Received: by 2002:a50:e709:0:b0:544:a153:cd19 with SMTP id
- a9-20020a50e709000000b00544a153cd19mr7731976edn.41.1700029145855; 
- Tue, 14 Nov 2023 22:19:05 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGb8KONTAVXxphS/pU2eK7HbpNh4Q8kCfvmb2Gy0JR1iQ3DoA+NYPS+GjXZZQ31ai7/WGgMVa+hr67MO5Rk3pE=
-X-Received: by 2002:a50:e709:0:b0:544:a153:cd19 with SMTP id
- a9-20020a50e709000000b00544a153cd19mr7731965edn.41.1700029145566; Tue, 14 Nov
- 2023 22:19:05 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1r39b1-0006fe-Qg; Wed, 15 Nov 2023 01:41:57 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 5DAAF33552;
+ Wed, 15 Nov 2023 09:42:05 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 3FD3635315;
+ Wed, 15 Nov 2023 09:41:45 +0300 (MSK)
+Message-ID: <7259b384-cc7f-4400-9891-83e656765ce2@tls.msk.ru>
+Date: Wed, 15 Nov 2023 09:41:45 +0300
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH trivial 06/21] docs/devel/migration.rst: spelling fix:
+ doen't
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Juan Quintela <quintela@redhat.com>
 References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-12-mjt@tls.msk.ru>
-In-Reply-To: <20231114165834.2949011-12-mjt@tls.msk.ru>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Wed, 15 Nov 2023 10:18:53 +0400
-Message-ID: <CAMxuvax5gv5zSRHf9vw_j7=q0Sx+VuHrX=nCJMrUNsocKCoH_g@mail.gmail.com>
-Subject: Re: [PATCH trivial 11/21] contrib/vhost-user-gpu/virgl.c: spelling
- fix: mesage
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- Erico Nunes <ernunes@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mlureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ <20231114165834.2949011-7-mjt@tls.msk.ru>
+ <f2bfef4a-3a2c-4d32-adf6-52317f85a045@redhat.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+In-Reply-To: <f2bfef4a-3a2c-4d32-adf6-52317f85a045@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,41 +51,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Nov 2023 06:19:12 -0000
+X-List-Received-Date: Wed, 15 Nov 2023 06:41:58 -0000
 
-On Tue, Nov 14, 2023 at 8:58=E2=80=AFPM Michael Tokarev <mjt@tls.msk.ru> wr=
-ote:
->
-> Fixes: e3c82fe04f31 "contrib/vhost-user-gpu: add support for sending dmab=
-uf modifiers"
-> Cc: Erico Nunes <ernunes@redhat.com>
-> Cc: "Marc-Andr=C3=A9 Lureau" <marcandre.lureau@redhat.com>
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+14.11.2023 22:05, Thomas Huth wrote:
+> On 14/11/2023 17.58, Michael Tokarev wrote:
+>> Fixes: 1aefe2ca1423 "migration/doc: Add documentation for backwards compatiblity"
+>> Cc: Juan Quintela <quintela@redhat.com>
+>> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+>> ---
+>>   docs/devel/migration.rst | 8 ++++----
+>>   1 file changed, 4 insertions(+), 4 deletions(-)
+>>
+>> diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
+>> index 5adf4f12f7..51b1f61f5e 100644
+>> --- a/docs/devel/migration.rst
+>> +++ b/docs/devel/migration.rst
+>> @@ -1061,7 +1061,7 @@ QEMU version, in this case pc-5.1.
+>>   4 - qemu-5.1 -M pc-5.2  -> migrates to -> qemu-5.1 -M pc-5.2
+>> -  This combination is not possible as the qemu-5.1 doen't understand
+>> +  This combination is not possible as the qemu-5.1 does't understand
+> 
+> You replaced one typo with another one :-)
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Heh. Lovely! :)
 
-> ---
->  contrib/vhost-user-gpu/virgl.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/contrib/vhost-user-gpu/virgl.c b/contrib/vhost-user-gpu/virg=
-l.c
-> index 1da6cc1588..d1ccdf7d06 100644
-> --- a/contrib/vhost-user-gpu/virgl.c
-> +++ b/contrib/vhost-user-gpu/virgl.c
-> @@ -401,7 +401,7 @@ virgl_cmd_set_scanout(VuGpu *g,
->
->          if (g->use_modifiers) {
->              /*
-> -             * The mesage uses all the fields set in dmabuf_scanout plus
-> +             * The message uses all the fields set in dmabuf_scanout plu=
-s
->               * modifiers which is appended after VhostUserGpuDMABUFScano=
-ut.
->               */
->              msg.request =3D VHOST_USER_GPU_DMABUF_SCANOUT2;
-> --
-> 2.39.2
->
+The "really-really-fixed" one (without resending):
+
+-  This combination is not possible as the qemu-5.1 doen't understand
++  This combination is not possible as the qemu-5.1 doesn't understand
+    pc-5.2 machine type.  So nothing to worry here.
+
+;)
+
+Thank you for the review and for spotting it!
+
+/mjt
 
 
