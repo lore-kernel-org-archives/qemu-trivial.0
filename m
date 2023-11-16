@@ -1,35 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r3X3X-0005l6-BF
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 02:44:55 -0500
+	id 1r3X3a-0005lx-FX
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 02:44:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r3X3V-0005k4-Od; Thu, 16 Nov 2023 02:44:53 -0500
+ id 1r3X3Y-0005lV-V9; Thu, 16 Nov 2023 02:44:56 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r3X3T-0004pN-90; Thu, 16 Nov 2023 02:44:53 -0500
+ id 1r3X3X-0004qV-7M; Thu, 16 Nov 2023 02:44:56 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id E407B33BDA;
- Thu, 16 Nov 2023 10:45:02 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 0DE3233BDC;
+ Thu, 16 Nov 2023 10:45:03 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 7AA3835840;
+ by tsrv.corpit.ru (Postfix) with SMTP id 98C3135842;
  Thu, 16 Nov 2023 10:44:41 +0300 (MSK)
-Received: (nullmailer pid 3202490 invoked by uid 1000);
+Received: (nullmailer pid 3202496 invoked by uid 1000);
  Thu, 16 Nov 2023 07:44:41 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 01/27] hw/watchdog/wdt_aspeed: Remove unused
- 'hw/misc/aspeed_scu.h' header
-Date: Thu, 16 Nov 2023 10:44:15 +0300
-Message-Id: <20231116074441.3202417-2-mjt@tls.msk.ru>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 03/27] tests/data/qobject/qdict.txt: Avoid non-inclusive words
+Date: Thu, 16 Nov 2023 10:44:17 +0300
+Message-Id: <20231116074441.3202417-4-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231116074441.3202417-1-mjt@tls.msk.ru>
 References: <20231116074441.3202417-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -51,31 +49,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Nov 2023 07:44:54 -0000
+X-List-Received-Date: Thu, 16 Nov 2023 07:44:57 -0000
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
 
-Aspeed watchdog doesn't use anything from the System Control Unit.
+qdict.txt only consists of more or less random test data. We
+can simply drop the lines with the problematic words here.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Cédric Le Goater <clg@kaod.org>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/watchdog/wdt_aspeed.c | 1 -
- 1 file changed, 1 deletion(-)
+ tests/data/qobject/qdict.txt | 4 ----
+ 1 file changed, 4 deletions(-)
 
-diff --git a/hw/watchdog/wdt_aspeed.c b/hw/watchdog/wdt_aspeed.c
-index d267aa185c..273a49d360 100644
---- a/hw/watchdog/wdt_aspeed.c
-+++ b/hw/watchdog/wdt_aspeed.c
-@@ -14,7 +14,6 @@
- #include "qemu/module.h"
- #include "qemu/timer.h"
- #include "sysemu/watchdog.h"
--#include "hw/misc/aspeed_scu.h"
- #include "hw/qdev-properties.h"
- #include "hw/sysbus.h"
- #include "hw/watchdog/wdt_aspeed.h"
+diff --git a/tests/data/qobject/qdict.txt b/tests/data/qobject/qdict.txt
+index 122fda4524..e2edc88161 100644
+--- a/tests/data/qobject/qdict.txt
++++ b/tests/data/qobject/qdict.txt
+@@ -1866,10 +1866,6 @@ blackfin: 4096
+ blackfin.c: 7552
+ blackfin.h: 1089
+ blackfin_sram.h: 1207
+-blacklist.c: 8658
+-blacklist.h: 108
+-blackstamp.c: 9838
+-BlackStamp_defconfig: 27434
+ blinken.h: 617
+ blizzard.c: 41338
+ blizzard.h: 249
 -- 
 2.39.2
 
