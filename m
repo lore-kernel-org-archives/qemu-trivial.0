@@ -1,37 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r3BkV-0000om-9v
-	for mharc-qemu-trivial@gnu.org; Wed, 15 Nov 2023 03:59:51 -0500
+	id 1r3X3W-0005ka-El
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 02:44:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r3BkR-0000nb-Ty; Wed, 15 Nov 2023 03:59:49 -0500
+ id 1r3X3V-0005jx-DT; Thu, 16 Nov 2023 02:44:53 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r3BkQ-000493-0p; Wed, 15 Nov 2023 03:59:47 -0500
+ id 1r3X3T-0004pM-4j; Thu, 16 Nov 2023 02:44:53 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 89A38336B5;
- Wed, 15 Nov 2023 12:00:00 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id ED1AE353A1;
- Wed, 15 Nov 2023 11:59:40 +0300 (MSK)
-Message-ID: <6d464c16-6108-47c9-bd3d-81bd0944764f@tls.msk.ru>
-Date: Wed, 15 Nov 2023 11:59:40 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial 06/21] docs/devel/migration.rst: spelling fix:
- doen't
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Juan Quintela <quintela@redhat.com>
-References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-7-mjt@tls.msk.ru>
- <f2bfef4a-3a2c-4d32-adf6-52317f85a045@redhat.com>
- <7259b384-cc7f-4400-9891-83e656765ce2@tls.msk.ru>
- <dcd5e473-7598-478e-8597-9efec38a4ba8@redhat.com>
+ by isrv.corpit.ru (Postfix) with ESMTP id D66E133BD9;
+ Thu, 16 Nov 2023 10:45:02 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id 5FE8C3583F;
+ Thu, 16 Nov 2023 10:44:41 +0300 (MSK)
+Received: (nullmailer pid 3202486 invoked by uid 1000);
+ Thu, 16 Nov 2023 07:44:41 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <dcd5e473-7598-478e-8597-9efec38a4ba8@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Subject: [PULL 00/27] Trivial patches for 2023-11-16
+Date: Thu, 16 Nov 2023 10:44:14 +0300
+Message-Id: <20231116074441.3202417-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.2
+MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -53,77 +47,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 15 Nov 2023 08:59:49 -0000
+X-List-Received-Date: Thu, 16 Nov 2023 07:44:54 -0000
 
-15.11.2023 09:46, Thomas Huth:
-..
->> The "really-really-fixed" one (without resending):
->>
->> -  This combination is not possible as the qemu-5.1 doen't understand
->> +  This combination is not possible as the qemu-5.1 doesn't understand
->>     pc-5.2 machine type.  So nothing to worry here.
->>
->> ;)
+The following changes since commit 9c673a41eefc50f1cb2fe3c083e7de842c7d276a:
 
-Actually there's more in there than this 1 fix: the change has
-other fixes too, and one of them is in heading, so "underline"
-in the next line should be fixed too.
+  Update version for v8.2.0-rc0 release (2023-11-14 12:35:47 -0500)
 
-These spelling fixes are.. tough :)  Lemme see if I did multiple
-changes like this somewhere else, pretending there's just one fix..
+are available in the Git repository at:
 
-Actual commit (with your R-b tag still, as apparently you reviewed
-all changes).
-With updated Subject, new Fixes: tag, and a change in heading underlining):
+  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
 
-From: Michael Tokarev <mjt@tls.msk.ru>
-Date: Tue Nov 14 19:08:48 2023 +0300
+for you to fetch changes up to f779357882b4758551ff30074b4b915d7d249d3d:
 
-     docs/devel/migration.rst: spelling fixes: doen't, diferent, responsability, recomend
+  util/range.c: spelling fix: inbetween (2023-11-15 12:06:05 +0300)
 
-     Fixes: 593c28c02c81 "migration/doc: How to migrate when hosts have different features"
-     Fixes: 1aefe2ca1423 "migration/doc: Add documentation for backwards compatiblity"
-     Reviewed-by: Thomas Huth <thuth@redhat.com>
-     Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+----------------------------------------------------------------
+trivial patches for 2023-11-16
 
-diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
-index 5adf4f12f7..ec55089b25 100644
---- a/docs/devel/migration.rst
-+++ b/docs/devel/migration.rst
-@@ -1061,7 +1061,7 @@ QEMU version, in this case pc-5.1.
+Mostly spelling fixes in various parts in code added since 8.1,
+plus a few other tiny things (comment rewording, removal of unused
+file, forgotten MAINTAINERS change).
 
-  4 - qemu-5.1 -M pc-5.2  -> migrates to -> qemu-5.1 -M pc-5.2
+----------------------------------------------------------------
+Michael Tokarev (23):
+      hw/audio/virtio-snd.c: spelling: initalize
+      qapi/migration.json: spelling: transfering
+      bsd-user: spelling fixes: necesary, agrument, undocummented
+      linux-user: spelling fixes: othe, necesary
+      hw/cxl: spelling fixes: limitaions, potentialy, intialized
+      gdbstub: spelling fix: respectivelly
+      docs/about/deprecated.rst: spelling fix: becase
+      docs/devel/migration.rst: spelling fixes: doen't, diferent, responsability, recomend
+      docs/system/arm/emulation.rst: spelling fix: Enhacements
+      target/arm/tcg: spelling fixes: alse, addreses
+      target/hppa: spelling fixes: Indicies, Truely
+      migration/rdma.c: spelling fix: asume
+      contrib/vhost-user-gpu/virgl.c: spelling fix: mesage
+      hw/mem/memory-device.c: spelling fix: ontaining
+      hw/net/cadence_gem.c: spelling fixes: Octects
+      include/block/ufs.h: spelling fix: setted
+      include/hw/hyperv/dynmem-proto.h: spelling fix: nunber, atleast
+      include/hw/virtio/vhost.h: spelling fix: sate
+      target/riscv/cpu.h: spelling fix: separatly
+      tests/qtest/migration-test.c: spelling fix: bandwith
+      tests/qtest/ufs-test.c: spelling fix: tranfer
+      util/filemonitor-inotify.c: spelling fix: kenel
+      util/range.c: spelling fix: inbetween
 
--  This combination is not possible as the qemu-5.1 doen't understand
-+  This combination is not possible as the qemu-5.1 doesn't understand
-    pc-5.2 machine type.  So nothing to worry here.
+Philippe Mathieu-Daudé (1):
+      hw/watchdog/wdt_aspeed: Remove unused 'hw/misc/aspeed_scu.h' header
 
-  Now it comes the interesting ones, when both QEMU processes are
-@@ -1214,8 +1214,8 @@ machine types to have the right value::
-           ...
-       };
+Thomas Huth (3):
+      MAINTAINERS: Add tests/decode/ to the "Overall TCG CPUs" section
+      tests/data/qobject/qdict.txt: Avoid non-inclusive words
+      qapi/pragma.json: Improve the comment about the lists of QAPI rule exceptions
 
--A device with diferent features on both sides
-----------------------------------------------
-+A device with different features on both sides
-+----------------------------------------------
-
-  Let's assume that we are using the same QEMU binary on both sides,
-  just to make the things easier.  But we have a device that has
-@@ -1294,12 +1294,12 @@ Host B:
-
-  $ qemu-system-x86_64 -cpu host,taa-no=off
-
--And you would be able to migrate between them.  It is responsability
-+And you would be able to migrate between them.  It is responsibility
-  of the management application or of the user to make sure that the
-  configuration is correct.  QEMU doesn't know how to look at this kind
-  of features in general.
-
--Notice that we don't recomend to use -cpu host for migration.  It is
-+Notice that we don't recommend to use -cpu host for migration.  It is
-  used in this example because it makes the example simpler.
-
-  Other devices have worse control about individual features.  If they
-
+ MAINTAINERS                      |  1 +
+ bsd-user/bsd-mem.h               |  2 +-
+ bsd-user/freebsd/os-proc.c       |  2 +-
+ bsd-user/freebsd/os-stat.h       |  6 +++---
+ contrib/vhost-user-gpu/virgl.c   |  2 +-
+ docs/about/deprecated.rst        |  2 +-
+ docs/devel/migration.rst         | 10 +++++-----
+ docs/system/arm/emulation.rst    |  2 +-
+ gdbstub/gdbstub.c                |  2 +-
+ hw/audio/virtio-snd.c            |  2 +-
+ hw/cxl/cxl-component-utils.c     |  4 ++--
+ hw/cxl/cxl-mailbox-utils.c       |  2 +-
+ hw/mem/memory-device.c           |  2 +-
+ hw/net/cadence_gem.c             |  8 ++++----
+ hw/watchdog/wdt_aspeed.c         |  1 -
+ include/block/ufs.h              |  2 +-
+ include/hw/cxl/cxl_device.h      |  2 +-
+ include/hw/hyperv/dynmem-proto.h |  6 +++---
+ include/hw/virtio/vhost.h        |  2 +-
+ linux-user/ppc/vdso.S            |  2 +-
+ linux-user/syscall.c             |  2 +-
+ migration/rdma.c                 |  2 +-
+ qapi/migration.json              |  2 +-
+ qapi/pragma.json                 |  4 ++--
+ target/arm/tcg/helper-a64.c      |  2 +-
+ target/arm/tcg/hflags.c          |  2 +-
+ target/hppa/cpu.h                |  2 +-
+ target/hppa/machine.c            |  2 +-
+ target/riscv/cpu.h               |  4 ++--
+ tests/data/qobject/qdict.txt     |  4 ----
+ tests/qtest/migration-test.c     |  2 +-
+ tests/qtest/ufs-test.c           |  2 +-
+ util/filemonitor-inotify.c       |  2 +-
+ util/range.c                     |  2 +-
+ 34 files changed, 46 insertions(+), 50 deletions(-)
 
