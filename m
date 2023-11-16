@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r3X56-0008BX-EP
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 02:46:32 -0500
+	id 1r3X59-0008Rq-Le
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 02:46:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r3X4s-0007Q8-LT; Thu, 16 Nov 2023 02:46:22 -0500
+ id 1r3X4v-0007Tr-Lo; Thu, 16 Nov 2023 02:46:24 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r3X4o-0005bC-TR; Thu, 16 Nov 2023 02:46:17 -0500
+ id 1r3X4t-0005gI-Td; Thu, 16 Nov 2023 02:46:21 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id E826833BEC;
- Thu, 16 Nov 2023 10:45:03 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 1D50533BEF;
+ Thu, 16 Nov 2023 10:45:04 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 800DE35852;
+ by tsrv.corpit.ru (Postfix) with SMTP id A942935855;
  Thu, 16 Nov 2023 10:44:42 +0300 (MSK)
-Received: (nullmailer pid 3202544 invoked by uid 1000);
+Received: (nullmailer pid 3202553 invoked by uid 1000);
  Thu, 16 Nov 2023 07:44:41 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Subject: [PULL 19/27] hw/net/cadence_gem.c: spelling fixes: Octects
-Date: Thu, 16 Nov 2023 10:44:33 +0300
-Message-Id: <20231116074441.3202417-20-mjt@tls.msk.ru>
+Subject: [PULL 22/27] include/hw/virtio/vhost.h: spelling fix: sate
+Date: Thu, 16 Nov 2023 10:44:36 +0300
+Message-Id: <20231116074441.3202417-23-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231116074441.3202417-1-mjt@tls.msk.ru>
 References: <20231116074441.3202417-1-mjt@tls.msk.ru>
@@ -48,42 +48,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Nov 2023 07:46:26 -0000
+X-List-Received-Date: Thu, 16 Nov 2023 07:46:25 -0000
 
-Fixes: c755c943aa2e "hw/net/cadence_gem: use REG32 macro for register definitions"
+Fixes: 4a00d5d7f4b6 "vhost: Add high-level state save/load functions"
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Luc Michel <luc.michel@amd.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/net/cadence_gem.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ include/hw/virtio/vhost.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
-index 5b989f5b52..19adbc0e19 100644
---- a/hw/net/cadence_gem.c
-+++ b/hw/net/cadence_gem.c
-@@ -225,8 +225,8 @@ REG32(WOLAN, 0xb8) /* Wake on LAN reg */
- REG32(IPGSTRETCH, 0xbc) /* IPG Stretch reg */
- REG32(SVLAN, 0xc0) /* Stacked VLAN reg */
- REG32(MODID, 0xfc) /* Module ID reg */
--REG32(OCTTXLO, 0x100) /* Octects transmitted Low reg */
--REG32(OCTTXHI, 0x104) /* Octects transmitted High reg */
-+REG32(OCTTXLO, 0x100) /* Octets transmitted Low reg */
-+REG32(OCTTXHI, 0x104) /* Octets transmitted High reg */
- REG32(TXCNT, 0x108) /* Error-free Frames transmitted */
- REG32(TXBCNT, 0x10c) /* Error-free Broadcast Frames */
- REG32(TXMCNT, 0x110) /* Error-free Multicast Frame */
-@@ -245,8 +245,8 @@ REG32(EXCESSCOLLCNT, 0x140) /* Excessive Collision Frames */
- REG32(LATECOLLCNT, 0x144) /* Late Collision Frames */
- REG32(DEFERTXCNT, 0x148) /* Deferred Transmission Frames */
- REG32(CSENSECNT, 0x14c) /* Carrier Sense Error Counter */
--REG32(OCTRXLO, 0x150) /* Octects Received register Low */
--REG32(OCTRXHI, 0x154) /* Octects Received register High */
-+REG32(OCTRXLO, 0x150) /* Octets Received register Low */
-+REG32(OCTRXHI, 0x154) /* Octets Received register High */
- REG32(RXCNT, 0x158) /* Error-free Frames Received */
- REG32(RXBROADCNT, 0x15c) /* Error-free Broadcast Frames RX */
- REG32(RXMULTICNT, 0x160) /* Error-free Multicast Frames RX */
+diff --git a/include/hw/virtio/vhost.h b/include/hw/virtio/vhost.h
+index 05d7204a08..02477788df 100644
+--- a/include/hw/virtio/vhost.h
++++ b/include/hw/virtio/vhost.h
+@@ -456,7 +456,7 @@ int vhost_save_backend_state(struct vhost_dev *dev, QEMUFile *f, Error **errp);
+  * Must only be called while the device and all its vrings are stopped
+  * (`VHOST_TRANSFER_STATE_PHASE_STOPPED`).
+  *
+- * @dev: The vhost device to which to send the sate
++ * @dev: The vhost device to which to send the state
+  * @f: Migration stream from which to load the state
+  * @errp: Potential error message
+  *
 -- 
 2.39.2
 
