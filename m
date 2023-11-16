@@ -1,92 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r3dLQ-0002QW-EX
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 09:27:48 -0500
+	id 1r3hAq-0004XI-4M
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 13:33:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1r3dLP-0002Pp-Dk
- for qemu-trivial@nongnu.org; Thu, 16 Nov 2023 09:27:47 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quintela@redhat.com>)
- id 1r3dLN-0005sW-TJ
- for qemu-trivial@nongnu.org; Thu, 16 Nov 2023 09:27:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1700144865;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=UYLo4a0ESgDT2HaWMJUpxhqOTvJ13Mlvod4yB+97huA=;
- b=NKO2EHFsUqE4AWAG3Eb0XVxkOLBTXPxaY+vcIyHAbWXOGpMIC275MAYRsu5qyahGnZP5ZZ
- 8uaPHDPVvnLDtZjK0STsDzyPdnV0xr9lzM3WWSsvfuu/b/PDJQR8m50oQhwAquLu7akaWL
- HUKIizhsTiVWGL6GVwDqAMuvZ4ZTVxs=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-524-2Cc1AjtnMbaN4ARECYfVDg-1; Thu, 16 Nov 2023 09:27:44 -0500
-X-MC-Unique: 2Cc1AjtnMbaN4ARECYfVDg-1
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-4084e4ce543so5100405e9.3
- for <qemu-trivial@nongnu.org>; Thu, 16 Nov 2023 06:27:44 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1r3hAk-0004IY-Jf
+ for qemu-trivial@nongnu.org; Thu, 16 Nov 2023 13:33:02 -0500
+Received: from mail-pg1-x536.google.com ([2607:f8b0:4864:20::536])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1r3hAi-0002ZE-Fh
+ for qemu-trivial@nongnu.org; Thu, 16 Nov 2023 13:33:02 -0500
+Received: by mail-pg1-x536.google.com with SMTP id
+ 41be03b00d2f7-5bdf5a025c1so847423a12.0
+ for <qemu-trivial@nongnu.org>; Thu, 16 Nov 2023 10:32:59 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google; t=1700159578; x=1700764378; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=VZ6GM2dKcS6mkSmOYBXd+y+aSuA3VKtwauyHooCA7zM=;
+ b=FYxPfUnaQbtD9nX6/3zIW1dZf74NYsSJKijLcfxmdBbgL4uogDy0UylSkt32HTcfvV
+ DRUcfNrjhiwK82DVdqyAFvvAG0tkuqbC0Bp6ZdUEprdPAEzXYQAcfoLL9UqUApGXyoNv
+ P3TDb5+4fSnE4IAmQLE+HWdvasp6bCDzQs6wFzG2JkGckFZRWaHGCgkScocSon6UaJxL
+ IlkCnPG9QbZLMNhaUq0icvw/2qki/eFkskaCk81pPv18NDsO6l5ARGbB78hZSrc5tISX
+ KQpSSbe1PDE8X1r0HGn/dQXPljCP5+GqoUjz7MARM/FODb04Q6/TwJaHHeHHenjE86c1
+ TTUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700144862; x=1700749662;
- h=content-transfer-encoding:mime-version:message-id:date:reply-to
- :user-agent:references:in-reply-to:subject:cc:to:from
+ d=1e100.net; s=20230601; t=1700159578; x=1700764378;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=VbNpAlf7TahvLQtqGdDwWUt1flVSQ/lOfjRYQbgGBYo=;
- b=k/zUnh6fpik9AZguroG+X1u/zrz8uWH9Hfv1U37DJah+tFlhnNU0fZOvTc+mBdU06I
- IMhpAG1JmGDLH19pk/tlx7UxJRLAL21NfwdKwV7oxzkE60PipRQlpL0WlVfzlnCXuS7s
- fHFPAQi0PFg9tqLjN6WT/sdLRysbUB0jLUsVhrtjfp/lQ080gbWmgCGQ3igludKJP4Ql
- W5svvMpLleiR+VtHQvweQCYvpgrMr2fjNNMU2qLJ7I6x7SaYMZYHu3ues8Yaf9CGW3hZ
- P66FCxA/GOIBTopMsTxyL3wBV4mQZqkeSsuYQtvnT0BdjEqCvB+jlXZ8bszCBz0HhE/C
- zjEg==
-X-Gm-Message-State: AOJu0Yz0oZuDXXfDRittr4qWNPejGxfRIadeoNjtfn71wAwmwChHjNa+
- OzKk807ILYLcxuFF7IaYLEfhkrErc8W1iD0JUGOGxsUFKXbXFIIDNC55Cqk7Y3WiwskEUf02VMv
- qUXdOO6D2rtGv+QyJeszIEv/rbQFv
-X-Received: by 2002:a05:600c:4708:b0:409:6edc:6e5c with SMTP id
- v8-20020a05600c470800b004096edc6e5cmr14337442wmo.0.1700144862627; 
- Thu, 16 Nov 2023 06:27:42 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IExIoNwzsud8c8ibhtly/HkKlHbk5ieviVV2vwvFv5UvThRpmRhMDjcSHT0VvXkwd0EqwVsdg==
-X-Received: by 2002:a05:600c:4708:b0:409:6edc:6e5c with SMTP id
- v8-20020a05600c470800b004096edc6e5cmr14337427wmo.0.1700144862246; 
- Thu, 16 Nov 2023 06:27:42 -0800 (PST)
-Received: from redhat.com (static-151-150-85-188.ipcom.comunitel.net.
- [188.85.150.151]) by smtp.gmail.com with ESMTPSA id
- u5-20020a05600c138500b003fee6e170f9sm3872406wmf.45.2023.11.16.06.27.41
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 16 Nov 2023 06:27:41 -0800 (PST)
-From: Juan Quintela <quintela@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Thomas Huth <thuth@redhat.com>,  qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH trivial 06/21] docs/devel/migration.rst: spelling fix:
- doen't
-In-Reply-To: <7259b384-cc7f-4400-9891-83e656765ce2@tls.msk.ru> (Michael
- Tokarev's message of "Wed, 15 Nov 2023 09:41:45 +0300")
-References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-7-mjt@tls.msk.ru>
- <f2bfef4a-3a2c-4d32-adf6-52317f85a045@redhat.com>
- <7259b384-cc7f-4400-9891-83e656765ce2@tls.msk.ru>
-User-Agent: Gnus/5.13 (Gnus v5.13) Emacs/28.3 (gnu/linux)
-Reply-To: quintela@redhat.com
-Date: Thu, 16 Nov 2023 15:27:41 +0100
-Message-ID: <87a5rdrcwy.fsf@secure.mitica>
+ bh=VZ6GM2dKcS6mkSmOYBXd+y+aSuA3VKtwauyHooCA7zM=;
+ b=YZ3OlY6DC2kCvLFrjiEMDrIucZMTa6DK0DFG3kdbmQaIj60c2KCHe5bbi8l4+Ekm/w
+ wIPgwROTTpHv7s+2QxaJ29oRTcFZrbVtu4jMuZDLLft86zZZnCmZgbwOsux67oznF6ne
+ GAKE0mfcBDBzUYYs9adIExmQnAhhztXe3s29AzW4r04GJgN9RDlYDk2ZCEL6staP9HBn
+ uapNaKqk1NPvp5I6y4EEpoRU4YIl+09WDGxWaDlnqAfm3ngAJxCTWsRC1g79b9m+1+Dk
+ sKId/+EvX+Z4aPe2aqL7/ezS+9ARUJA80yAWtoIjk70vhKEn5psejtddHfv4r01KCwyd
+ JLKg==
+X-Gm-Message-State: AOJu0YyWHKPIy4v8f5FmXc9ZMharG1XQwxKybPZSS7vNuFTX1p8lg7Wb
+ +srbe/9UVHocAFXT+pNGWdCKVg==
+X-Google-Smtp-Source: AGHT+IHRrtIFZTvM013J6SRW+W20a8RhF86w+Xx8dmb86TgIdCxmZSiyI5afZXbi8W3nE/c6z+sTPg==
+X-Received: by 2002:a05:6a20:1611:b0:188:39e:9054 with SMTP id
+ l17-20020a056a20161100b00188039e9054mr26520pzj.6.1700159578637; 
+ Thu, 16 Nov 2023 10:32:58 -0800 (PST)
+Received: from ?IPV6:2804:7f0:bdcd:fb00:6501:2693:db52:c621?
+ ([2804:7f0:bdcd:fb00:6501:2693:db52:c621])
+ by smtp.gmail.com with ESMTPSA id
+ m63-20020a625842000000b006bdd1ce6915sm36435pfb.193.2023.11.16.10.32.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 16 Nov 2023 10:32:58 -0800 (PST)
+Message-ID: <e97bf3de-12d8-42ca-b728-4f9edcbc50e2@ventanamicro.com>
+Date: Thu, 16 Nov 2023 15:32:54 -0300
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=quintela@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] Fix SiFive E CLINT clock frequency (#1978)
+Content-Language: en-US
+To: =?UTF-8?Q?Rom=C3=A1n_C=C3=A1rdenas?= <rcardenas.rod@gmail.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Alistair.Francis@wdc.com,
+ bin.meng@windriver.com, palmer@dabbelt.com, liwei1518@gmail.com,
+ zhiwei_liu@linux.alibaba.com, qemu-riscv@nongnu.org
+References: <20231116120702.53170-1-rcardenas.rod@gmail.com>
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+In-Reply-To: <20231116120702.53170-1-rcardenas.rod@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::536;
+ envelope-from=dbarboza@ventanamicro.com; helo=mail-pg1-x536.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.117,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -100,47 +87,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Nov 2023 14:27:47 -0000
+X-List-Received-Date: Thu, 16 Nov 2023 18:33:03 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> wrote:
-> 14.11.2023 22:05, Thomas Huth wrote:
->> On 14/11/2023 17.58, Michael Tokarev wrote:
->>> Fixes: 1aefe2ca1423 "migration/doc: Add documentation for backwards com=
-patiblity"
->>> Cc: Juan Quintela <quintela@redhat.com>
->>> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->>> ---
->>> =C2=A0 docs/devel/migration.rst | 8 ++++----
->>> =C2=A0 1 file changed, 4 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/docs/devel/migration.rst b/docs/devel/migration.rst
->>> index 5adf4f12f7..51b1f61f5e 100644
->>> --- a/docs/devel/migration.rst
->>> +++ b/docs/devel/migration.rst
->>> @@ -1061,7 +1061,7 @@ QEMU version, in this case pc-5.1.
->>> =C2=A0 4 - qemu-5.1 -M pc-5.2=C2=A0 -> migrates to -> qemu-5.1 -M pc-5.=
-2
->>> -=C2=A0 This combination is not possible as the qemu-5.1 doen't underst=
-and
->>> +=C2=A0 This combination is not possible as the qemu-5.1 does't underst=
-and
->> You replaced one typo with another one :-)
->
-> Heh. Lovely! :)
->
-> The "really-really-fixed" one (without resending):
->
-> -  This combination is not possible as the qemu-5.1 doen't understand
-> +  This combination is not possible as the qemu-5.1 doesn't understand
->    pc-5.2 machine type.  So nothing to worry here.
->
-> ;)
->
-> Thank you for the review and for spotting it!
->
-> /mjt
+I believe you forgot to add your Signed-off-by tag. Without it we can't accept
+the patch hehe
 
-Reviewed-by: Juan Quintela <quintela@redhat.com>
-with the change.
+Since you'll need to send another version with the S-o-b, please change the commit
+title to
 
+"riscv: Fix SiFive E CLINT clock frequency"
+
+That way other people will quickly identify which sub-tree this patch belongs. The Gitlab
+bug number you put it in the end of the commit msg in a tag:
+
+On 11/16/23 09:07, Román Cárdenas wrote:
+> If you check the manual of SiFive E310 (https://cdn.sparkfun.com/assets/7/f/0/2/7/fe310-g002-manual-v19p05.pdf?_gl=1*w2ieef*_ga*MTcyNDI2MjM0Ny4xNjk2ODcwNTM3*_ga_T369JS7J9N*MTY5Njg3MDUzNy4xLjAuMTY5Njg3MDUzNy42MC4wLjA.), you can see in Figure 1 that the CLINT is connected to the real time clock, which also feeds the AON peripheral (they share the same clock).
+> 
+> In page 43, the docs also say that the timer registers of the CLINT count ticks from the rtcclk.
+> 
+> I am currently playing with bare metal applications both in QEMU and a physical SiFive E310 board and I confirm that the CLINT clock in the physical board runs at 32.768 kHz. In QEMU, the same app produces a completely different outcome, as sometimes a new CLINT interrupt is triggered before finishing other tasks.
+> 
+> You can check issue #1978 on GitLab for more information.
+>
+
+Like this:
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1978
+
+
+The rest of the commit msg and the code looks good to me. Thanks,
+
+
+
+Daniel
+
+  
+> ---
+>   hw/riscv/sifive_e.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
+> index 0d37adc542..87d9602383 100644
+> --- a/hw/riscv/sifive_e.c
+> +++ b/hw/riscv/sifive_e.c
+> @@ -225,7 +225,7 @@ static void sifive_e_soc_realize(DeviceState *dev, Error **errp)
+>               RISCV_ACLINT_SWI_SIZE,
+>           RISCV_ACLINT_DEFAULT_MTIMER_SIZE, 0, ms->smp.cpus,
+>           RISCV_ACLINT_DEFAULT_MTIMECMP, RISCV_ACLINT_DEFAULT_MTIME,
+> -        RISCV_ACLINT_DEFAULT_TIMEBASE_FREQ, false);
+> +        SIFIVE_E_LFCLK_DEFAULT_FREQ, false);
+>       sifive_e_prci_create(memmap[SIFIVE_E_DEV_PRCI].base);
+>   
+>       /* AON */
 
