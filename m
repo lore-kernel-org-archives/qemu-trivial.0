@@ -1,43 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r3X5R-0001ql-7x
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 02:46:53 -0500
+	id 1r3cF5-0004fY-OZ
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 08:17:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r3X5P-0001hl-MW; Thu, 16 Nov 2023 02:46:51 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r3X5O-0005kr-0Z; Thu, 16 Nov 2023 02:46:51 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 6077033BF4;
- Thu, 16 Nov 2023 10:45:04 +0300 (MSK)
-Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id ECC133585A;
- Thu, 16 Nov 2023 10:44:42 +0300 (MSK)
-Received: (nullmailer pid 3202569 invoked by uid 1000);
- Thu, 16 Nov 2023 07:44:41 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <rcardenas.rod@gmail.com>)
+ id 1r3bCo-0006r8-Cg; Thu, 16 Nov 2023 07:10:46 -0500
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <rcardenas.rod@gmail.com>)
+ id 1r3bCa-0008ND-4d; Thu, 16 Nov 2023 07:10:43 -0500
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-32f7bd27c2aso581325f8f.2; 
+ Thu, 16 Nov 2023 04:10:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1700136629; x=1700741429; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=a+oK2BI5FX0kNdpxIq+ER+WDfFF2odsb7hqi+ZwJyoY=;
+ b=mgPFNwgPr+OXTwl2ruXnGt4xTApKFNkgEtXvRCC3oU8Q8YlKLnfJS4iEXOAVlxKhLr
+ bY51ZXvDkkVFotb/Ph4WPe5KYM9tD8FQnh0dEMsZ3uHbT84K5jxFJbABvAvQyTdTgMV6
+ 7qOG2aYoMEMWKdgNYVe/eT4rhy4HjRyL3+8KuWniTXgMgYvPAPhjwufzyFuDADZ2mcrC
+ opoaLJXKysNEjouLP2QaBgEfcYbdfgQvqFojssc17sPF+Ol81n9JurheBfDZYM7RWoNe
+ ufRUfsRCmjje0Ub7p0vFyODy1U/oqfQ7faxLy8YSSBXVIqNdk8+pwBl1Z3axSnAoj6cO
+ f73g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1700136629; x=1700741429;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=a+oK2BI5FX0kNdpxIq+ER+WDfFF2odsb7hqi+ZwJyoY=;
+ b=IDG1EaD0wXnsYgnHwHKKqq3UbidUkwba3v8i27aGma/35LdQ8wCnaRhdep2kkBTJF+
+ 7kYQ7PiHLAssyDVveoxjiT7pekAxWpjWKQTZXJwZwJFmRJnj7bGOskJljtrg5xA0SxLu
+ dV34StOgZaJktqtERCXzfxhe2NSYpIC/pUhc+WUY5ssX36M2JTUSeB7e7fgGNQL9fiYp
+ H+968b1GPLDXM4Q5gh5/H4PSyb+fThFHBvO6whDmA7RtQS/2owyYEJLiBtljSST28VBd
+ aL/ZF7Isa9D6j5LxW5nI0rNTgsnbK8YK+IHCQ/cS8qFY9zyPO1mqynutyY8hPBCKTm+K
+ eg9g==
+X-Gm-Message-State: AOJu0YymPJ9FnbnQiyNFegXd8XqHfc42bZW0P5nqoU5OGEm4ECBBPAez
+ /vQ1gQT4Rf4TYtjJo9Vgzn9WLuJHj2Rm6FLB
+X-Google-Smtp-Source: AGHT+IETD+tNjc5vnK8rxazPJV12t/pL8MZ/8NjniKNIuMG8D+QbfTOVkhW+yOem1nV+KasvJWOnqw==
+X-Received: by 2002:a5d:64c6:0:b0:32f:8920:48ab with SMTP id
+ f6-20020a5d64c6000000b0032f892048abmr11237215wri.65.1700136628859; 
+ Thu, 16 Nov 2023 04:10:28 -0800 (PST)
+Received: from localhost.localdomain ([213.94.54.170])
+ by smtp.gmail.com with ESMTPSA id
+ w7-20020adff9c7000000b0033130644c87sm13493243wrr.54.2023.11.16.04.10.26
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 16 Nov 2023 04:10:27 -0800 (PST)
+From: =?UTF-8?q?Rom=C3=A1n=20C=C3=A1rdenas?= <rcardenas.rod@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Subject: [PULL 27/27] util/range.c: spelling fix: inbetween
-Date: Thu, 16 Nov 2023 10:44:41 +0300
-Message-Id: <20231116074441.3202417-28-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20231116074441.3202417-1-mjt@tls.msk.ru>
-References: <20231116074441.3202417-1-mjt@tls.msk.ru>
+Cc: qemu-trivial@nongnu.org, Alistair.Francis@wdc.com, bin.meng@windriver.com,
+ palmer@dabbelt.com, liwei1518@gmail.com, dbarboza@ventanamicro.com,
+ zhiwei_liu@linux.alibaba.com, qemu-riscv@nongnu.org,
+ =?UTF-8?q?Rom=C3=A1n=20C=C3=A1rdenas?= <rcardenas.rod@gmail.com>
+Subject: [PATCH] Fix SiFive E CLINT clock frequency (#1978)
+Date: Thu, 16 Nov 2023 13:07:03 +0100
+Message-Id: <20231116120702.53170-1-rcardenas.rod@gmail.com>
+X-Mailer: git-send-email 2.39.3 (Apple Git-145)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=rcardenas.rod@gmail.com; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 16 Nov 2023 08:17:08 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -49,30 +80,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Nov 2023 07:46:52 -0000
+X-List-Received-Date: Thu, 16 Nov 2023 12:10:48 -0000
 
-Fixes: b439595a08d7 "range: Introduce range_inverse_array()"
-Reviewed-by: Eric Auger <eric.auger@redhat.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+If you check the manual of SiFive E310 (https://cdn.sparkfun.com/assets/7/f/0/2/7/fe310-g002-manual-v19p05.pdf?_gl=1*w2ieef*_ga*MTcyNDI2MjM0Ny4xNjk2ODcwNTM3*_ga_T369JS7J9N*MTY5Njg3MDUzNy4xLjAuMTY5Njg3MDUzNy42MC4wLjA.), you can see in Figure 1 that the CLINT is connected to the real time clock, which also feeds the AON peripheral (they share the same clock).
+
+In page 43, the docs also say that the timer registers of the CLINT count ticks from the rtcclk.
+
+I am currently playing with bare metal applications both in QEMU and a physical SiFive E310 board and I confirm that the CLINT clock in the physical board runs at 32.768 kHz. In QEMU, the same app produces a completely different outcome, as sometimes a new CLINT interrupt is triggered before finishing other tasks.
+
+You can check issue #1978 on GitLab for more information.
+
 ---
- util/range.c | 2 +-
+ hw/riscv/sifive_e.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/util/range.c b/util/range.c
-index 9605ccfcbe..f3f40098d5 100644
---- a/util/range.c
-+++ b/util/range.c
-@@ -98,7 +98,7 @@ void range_inverse_array(GList *in, GList **rev,
-         out = append_new_range(out, low, MIN(range_lob(r) - 1, high));
-     }
+diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
+index 0d37adc542..87d9602383 100644
+--- a/hw/riscv/sifive_e.c
++++ b/hw/riscv/sifive_e.c
+@@ -225,7 +225,7 @@ static void sifive_e_soc_realize(DeviceState *dev, Error **errp)
+             RISCV_ACLINT_SWI_SIZE,
+         RISCV_ACLINT_DEFAULT_MTIMER_SIZE, 0, ms->smp.cpus,
+         RISCV_ACLINT_DEFAULT_MTIMECMP, RISCV_ACLINT_DEFAULT_MTIME,
+-        RISCV_ACLINT_DEFAULT_TIMEBASE_FREQ, false);
++        SIFIVE_E_LFCLK_DEFAULT_FREQ, false);
+     sifive_e_prci_create(memmap[SIFIVE_E_DEV_PRCI].base);
  
--    /* insert a range inbetween each original range until we reach high */
-+    /* insert a range in between each original range until we reach high */
-     for (; l->next; l = l->next) {
-         r = (Range *)l->data;
-         rn = (Range *)l->next->data;
+     /* AON */
 -- 
-2.39.2
+2.39.3 (Apple Git-145)
 
 
