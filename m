@@ -1,29 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r3X4Q-0006bA-Rx
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 02:45:52 -0500
+	id 1r3X4V-0006o0-UW
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 02:45:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r3X3x-0005yp-IQ; Thu, 16 Nov 2023 02:45:25 -0500
+ id 1r3X4N-0006LA-P9; Thu, 16 Nov 2023 02:45:48 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r3X3g-00059H-N2; Thu, 16 Nov 2023 02:45:21 -0500
+ id 1r3X4L-0005VK-4h; Thu, 16 Nov 2023 02:45:47 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 61B6B33BE2;
+ by isrv.corpit.ru (Postfix) with ESMTP id A496633BE7;
  Thu, 16 Nov 2023 10:45:03 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id EDDC835848;
- Thu, 16 Nov 2023 10:44:41 +0300 (MSK)
-Received: (nullmailer pid 3202514 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 3CBCF3584D;
+ Thu, 16 Nov 2023 10:44:42 +0300 (MSK)
+Received: (nullmailer pid 3202529 invoked by uid 1000);
  Thu, 16 Nov 2023 07:44:41 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Subject: [PULL 09/27] hw/cxl: spelling fixes: limitaions, potentialy,
- intialized
-Date: Thu, 16 Nov 2023 10:44:23 +0300
-Message-Id: <20231116074441.3202417-10-mjt@tls.msk.ru>
+Subject: [PULL 14/27] target/arm/tcg: spelling fixes: alse, addreses
+Date: Thu, 16 Nov 2023 10:44:28 +0300
+Message-Id: <20231116074441.3202417-15-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231116074441.3202417-1-mjt@tls.msk.ru>
 References: <20231116074441.3202417-1-mjt@tls.msk.ru>
@@ -31,11 +30,12 @@ MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -48,67 +48,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 16 Nov 2023 07:45:47 -0000
+X-List-Received-Date: Thu, 16 Nov 2023 07:45:50 -0000
 
-Fixes: 388d6b574e28 "hw/cxl: Use switch statements for read and write of cachemem registers"
-Fixes: 3314efd276ad "hw/cxl/mbox: Add Physical Switch Identify command."
-Fixes: 004e3a93b814 "hw/cxl: Add tunneled command support to mailbox for switch cci."
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Fixes: 179e9a3baccc "target/arm: Define new TB flag for ATA0"
+Fixes: 5d7b37b5f675 "target/arm: Implement the CPY* instructions"
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/cxl/cxl-component-utils.c | 4 ++--
- hw/cxl/cxl-mailbox-utils.c   | 2 +-
- include/hw/cxl/cxl_device.h  | 2 +-
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ target/arm/tcg/helper-a64.c | 2 +-
+ target/arm/tcg/hflags.c     | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/cxl/cxl-component-utils.c b/hw/cxl/cxl-component-utils.c
-index d0245cc55d..29d477492b 100644
---- a/hw/cxl/cxl-component-utils.c
-+++ b/hw/cxl/cxl-component-utils.c
-@@ -81,7 +81,7 @@ static uint64_t cxl_cache_mem_read_reg(void *opaque, hwaddr offset,
-         return 0;
-     default:
+diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+index ce4800b8d1..8ad84623d3 100644
+--- a/target/arm/tcg/helper-a64.c
++++ b/target/arm/tcg/helper-a64.c
+@@ -1414,7 +1414,7 @@ void HELPER(setge)(CPUARMState *env, uint32_t syndrome, uint32_t mtedesc)
+ /*
+  * Perform part of a memory copy from the guest memory at fromaddr
+  * and extending for copysize bytes, to the guest memory at
+- * toaddr. Both addreses are dirty.
++ * toaddr. Both addresses are dirty.
+  *
+  * Returns the number of bytes actually set, which might be less than
+  * copysize; the caller should loop until the whole copy has been done.
+diff --git a/target/arm/tcg/hflags.c b/target/arm/tcg/hflags.c
+index 3d7fdce5c3..a6ebd7571a 100644
+--- a/target/arm/tcg/hflags.c
++++ b/target/arm/tcg/hflags.c
+@@ -327,7 +327,7 @@ static CPUARMTBFlags rebuild_hflags_a64(CPUARMState *env, int el, int fp_el,
+             DP_TBFLAG_A64(flags, MTE0_ACTIVE, 1);
+         }
          /*
--         * In line with specifiction limitaions on access sizes, this
-+         * In line with specification limitaions on access sizes, this
-          * routine is not called with other sizes.
+-         * For unpriv tag-setting accesses we alse need ATA0. Again, in
++         * For unpriv tag-setting accesses we also need ATA0. Again, in
+          * contexts where unpriv and normal insns are the same we
+          * duplicate the ATA bit to save effort for translate-a64.c.
           */
-         g_assert_not_reached();
-@@ -152,7 +152,7 @@ static void cxl_cache_mem_write_reg(void *opaque, hwaddr offset, uint64_t value,
-         return;
-     default:
-         /*
--         * In line with specifiction limitaions on access sizes, this
-+         * In line with specification limitaions on access sizes, this
-          * routine is not called with other sizes.
-          */
-         g_assert_not_reached();
-diff --git a/hw/cxl/cxl-mailbox-utils.c b/hw/cxl/cxl-mailbox-utils.c
-index b365575097..6eff56fb1b 100644
---- a/hw/cxl/cxl-mailbox-utils.c
-+++ b/hw/cxl/cxl-mailbox-utils.c
-@@ -431,7 +431,7 @@ static CXLRetCode cmd_identify_switch_device(const struct cxl_cmd *cmd,
-     out = (struct cxl_fmapi_ident_switch_dev_resp_pl *)payload_out;
-     *out = (struct cxl_fmapi_ident_switch_dev_resp_pl) {
-         .num_physical_ports = num_phys_ports + 1, /* 1 USP */
--        .num_vcss = 1, /* Not yet support multiple VCS - potentialy tricky */
-+        .num_vcss = 1, /* Not yet support multiple VCS - potentially tricky */
-         .active_vcs_bitmask[0] = 0x1,
-         .total_vppbs = num_phys_ports + 1,
-         .bound_vppbs = num_phys_ports + 1,
-diff --git a/include/hw/cxl/cxl_device.h b/include/hw/cxl/cxl_device.h
-index 61b7f897f7..befb5f884b 100644
---- a/include/hw/cxl/cxl_device.h
-+++ b/include/hw/cxl/cxl_device.h
-@@ -403,7 +403,7 @@ struct CXLType3Dev {
-     CXLComponentState cxl_cstate;
-     CXLDeviceState cxl_dstate;
-     CXLCCI cci; /* Primary PCI mailbox CCI */
--    /* Always intialized as no way to know if a VDM might show up */
-+    /* Always initialized as no way to know if a VDM might show up */
-     CXLCCI vdm_fm_owned_ld_mctp_cci;
-     CXLCCI ld0_cci;
- 
 -- 
 2.39.2
 
