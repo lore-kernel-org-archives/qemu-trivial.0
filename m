@@ -1,28 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r3X50-0007kz-Eq
-	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 02:46:26 -0500
+	id 1r3X54-00086d-8G
+	for mharc-qemu-trivial@gnu.org; Thu, 16 Nov 2023 02:46:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r3X4p-0007OB-7C; Thu, 16 Nov 2023 02:46:18 -0500
+ id 1r3X4s-0007Q7-Lf; Thu, 16 Nov 2023 02:46:22 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1r3X4m-0005ap-32; Thu, 16 Nov 2023 02:46:13 -0500
+ id 1r3X4q-0005fY-No; Thu, 16 Nov 2023 02:46:18 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id DA9B633BEB;
- Thu, 16 Nov 2023 10:45:03 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 020BA33BED;
+ Thu, 16 Nov 2023 10:45:04 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 72A1335851;
+ by tsrv.corpit.ru (Postfix) with SMTP id 8DC4835853;
  Thu, 16 Nov 2023 10:44:42 +0300 (MSK)
-Received: (nullmailer pid 3202541 invoked by uid 1000);
+Received: (nullmailer pid 3202547 invoked by uid 1000);
  Thu, 16 Nov 2023 07:44:41 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Subject: [PULL 18/27] hw/mem/memory-device.c: spelling fix: ontaining
-Date: Thu, 16 Nov 2023 10:44:32 +0300
-Message-Id: <20231116074441.3202417-19-mjt@tls.msk.ru>
+Subject: [PULL 20/27] include/block/ufs.h: spelling fix: setted
+Date: Thu, 16 Nov 2023 10:44:34 +0300
+Message-Id: <20231116074441.3202417-21-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20231116074441.3202417-1-mjt@tls.msk.ru>
 References: <20231116074441.3202417-1-mjt@tls.msk.ru>
@@ -50,26 +50,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 16 Nov 2023 07:46:25 -0000
 
-Fixes: 6c1b28e9e405 "memory-device: Support empty memory devices"
+Fixes: bc4e68d362ec "hw/ufs: Initial commit for emulated Universal-Flash-Storage"
+Reviewed-by: Jeuk Kim <jeuk20.kim@samsung.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/mem/memory-device.c | 2 +-
+ include/block/ufs.h | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/mem/memory-device.c b/hw/mem/memory-device.c
-index e0704b8dc3..a1b1af26bc 100644
---- a/hw/mem/memory-device.c
-+++ b/hw/mem/memory-device.c
-@@ -29,7 +29,7 @@ static bool memory_device_is_empty(const MemoryDeviceState *md)
-     /* dropping const here is fine as we don't touch the memory region */
-     mr = mdc->get_memory_region((MemoryDeviceState *)md, &local_err);
-     if (local_err) {
--        /* Not empty, we'll report errors later when ontaining the MR again. */
-+        /* Not empty, we'll report errors later when containing the MR again. */
-         error_free(local_err);
-         return false;
-     }
+diff --git a/include/block/ufs.h b/include/block/ufs.h
+index 0b6ec0814d..d61598b8f3 100644
+--- a/include/block/ufs.h
++++ b/include/block/ufs.h
+@@ -657,7 +657,7 @@ typedef struct QEMU_PACKED UtpTaskReqDesc {
+ #define UFS_UPIU_MAX_WB_LUN_ID 8
+ 
+ /*
+- * WriteBooster buffer lifetime has a limit setted by vendor.
++ * WriteBooster buffer lifetime has a limit set by vendor.
+  * If it is over the limit, WriteBooster feature will be disabled.
+  */
+ #define UFS_WB_EXCEED_LIFETIME 0x0B
 -- 
 2.39.2
 
