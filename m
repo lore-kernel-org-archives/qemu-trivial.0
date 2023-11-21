@@ -1,85 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r56En-0001Lv-67
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Nov 2023 10:31:01 -0500
+	id 1r5HSW-0001B2-Ax
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Nov 2023 22:29:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r56Eh-0001JP-CE
- for qemu-trivial@nongnu.org; Mon, 20 Nov 2023 10:30:56 -0500
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1r5HSU-0001Ac-FP; Mon, 20 Nov 2023 22:29:54 -0500
+Received: from mail-ua1-x92c.google.com ([2607:f8b0:4864:20::92c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1r56Ee-0000sj-FV
- for qemu-trivial@nongnu.org; Mon, 20 Nov 2023 10:30:54 -0500
-Received: by mail-lf1-x135.google.com with SMTP id
- 2adb3069b0e04-50a938dda08so6364878e87.3
- for <qemu-trivial@nongnu.org>; Mon, 20 Nov 2023 07:30:26 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1r5HST-0002Hp-1k; Mon, 20 Nov 2023 22:29:54 -0500
+Received: by mail-ua1-x92c.google.com with SMTP id
+ a1e0cc1a2514c-7ba8e3107c9so1371148241.1; 
+ Mon, 20 Nov 2023 19:29:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700494224; x=1701099024; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=nIMbg0XVBLHMnhj8zz3grmVEBjX3OWKcS/qB/Dct9ZY=;
- b=J32Su2+uXIf91BqbG40curMJT3t/+e/2B2obvCzPtcg0/v6m51We3y96F5YbqlVjA1
- WJtm4UcmtGDm6lC8VWK1C+Y8+dMoP2rwGChaLmbpku8fDe+zKEyVFSVA+ppZC160zdbe
- GRg0VnAWHQJaABMtuQ5Whz8kVVRGMPjS5l7RdufLIW6EL8OtWsX+l7yyvYCRS2WKmn6p
- qTxkHx5wym+B4gTj0+fSxWPf9gQ0ToOfHBvlzwsicBOuQf0qSJ1PqQV7m+l4pfKnvob9
- p1w4HOba4/BNvqRhYI/CDofJBllm0RfNWdjB/fXWOb77n4noZ+lGVwJMny04LTfhaTkz
- GNbA==
+ d=gmail.com; s=20230601; t=1700537391; x=1701142191; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=zykVAOMXGJBHBT79yO+o54z1GyNT2rEbl1aSnQgP3J4=;
+ b=kkr6vdGJFss3AyNePMNkjFU6LkcA7HUF5XU4dXGRTD5yVUqvmT6Y5OE3CbMP0KiXVa
+ 1zFiEk8E7IKXOAOikZgw3HG1P0K8OGLFPHhwwCB/FGYU21IlHu3qelGVi03RxV8iiJ/r
+ rV8PCTa9rpHXVMr6zWrUqTu4xnBAY2w+sVN8yeSuNjmTgzq4oJw1/K0AvUe+82W+SHpm
+ L/weCupMS03YWp4NtmRHxxP2RA7VztpPSg7kvq/yRLjeXqjQIXb3DbvGZqHT3CBUJOs8
+ ogwI7k8vUaF0FIH/sdI7jcwBS4I7t9QAXOvi6JJnQdlJrIFbVAm/Tl60w43bPOy1drxj
+ AOEA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700494224; x=1701099024;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=nIMbg0XVBLHMnhj8zz3grmVEBjX3OWKcS/qB/Dct9ZY=;
- b=t8UsyCdHG+jyB0K416T314fyWDjoKD2QDeXznwinRZS4QieSkCqknAI02X65HLF8z8
- XzIGDhcQQAtRUyl42K8VsqjuDTVeNQqjI5PIHB5tSp4mGz/Hnd53yKoQ9pEGYvnEj+ru
- J0qOoJKu66UDYkfMXAlo4NaYOYxXjWDTz8f27aFdUBzYfeSCD4KXoz9LFAu/ySfzAWxq
- ty9PL+1p6336Ce/xeHi8JapEXl8+yp9MTZAXCujfKf5fzVzcbdz3eoxO7ddHwhHrEsRf
- 1nlhOhnj8pwXBf/v3TbdaY5o7BAhJleOPhroiiVp9iiI32gZAHqwkdgV654M+zZnMMDG
- TayA==
-X-Gm-Message-State: AOJu0YyJL/9k+YkJyHRuCbp/wCvzh6oe68ZzrXIh6MZ/Ex7G8h01KhdP
- F29+r4ZfRYoOMdCy10xGWIdTYg==
-X-Google-Smtp-Source: AGHT+IEynmYQqMPuHO5sdxbAjhRTLUuf0bKcfkiOw8k/Hc5j2LMbOL1qQKnqhw71P/YpHJqmaGkr1A==
-X-Received: by 2002:ac2:4552:0:b0:50a:a242:b614 with SMTP id
- j18-20020ac24552000000b0050aa242b614mr4866945lfm.2.1700494224484; 
- Mon, 20 Nov 2023 07:30:24 -0800 (PST)
-Received: from [192.168.174.227] ([91.223.100.4])
- by smtp.gmail.com with ESMTPSA id
- y9-20020a197509000000b0050a5460e19fsm1203042lfe.119.2023.11.20.07.30.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Nov 2023 07:30:24 -0800 (PST)
-Message-ID: <54c7991d-7ba0-4d05-8653-b7218a3cb909@linaro.org>
-Date: Mon, 20 Nov 2023 07:30:12 -0800
+ d=1e100.net; s=20230601; t=1700537391; x=1701142191;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=zykVAOMXGJBHBT79yO+o54z1GyNT2rEbl1aSnQgP3J4=;
+ b=q7Bdj6BGKGDi2y7y5Kv35kZNFV21ihMbGJ23rQsP8348uHhh1+oybivwEa59F4ryXx
+ mPffaS43uUJPggn4cpVxbHbZJ8hsQSZlVWPBgz4TXSCRabEigzAs8v52brIP7L9ayRYh
+ Shg47FCu0XEQqhPnq6ml8LY8YeJ8O+rI+DZU48uU8MakJey1yNF1NNn530EU0ZNa4mmH
+ /f4I79rcQMiNYc894fSNWmTjWjvfoEvq6OXTEDHRudqDOy7s1yM+lUh6TXGULRgLXqnE
+ RDkOGefQhhU3LiIJr/qolKtwaKrFs+G8jQKm+nVh1fZMohtMZwcvVP3iMDlh9YqHRfsX
+ pCYg==
+X-Gm-Message-State: AOJu0YwRgIt9wTUIVxI06hkuonys3n0PQX9iJh6kvf6oy/SD1knlCHPY
+ oQbwvALKMYlLsksQN7iixreHidBL9sHEkcI6QBus9RivHdvscg==
+X-Google-Smtp-Source: AGHT+IGZo0g5rDhuYy8lxOVm3LSvnPUGVq68KCTWgsbknO/nE4IjQZ8BvJ86jRxJ2PdqoguuK2m5MHpeEeehdlatpUo=
+X-Received: by 2002:a67:c089:0:b0:462:71bd:b244 with SMTP id
+ x9-20020a67c089000000b0046271bdb244mr9105686vsi.18.1700537391380; Mon, 20 Nov
+ 2023 19:29:51 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] hw/i386: fix short-circuit logic with non-optimizing
- builds
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Dan Hoffman <dhoff749@gmail.com>
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>
-References: <20231119203116.3027230-1-dhoff749@gmail.com>
- <3c44d5a5-818b-46b6-a07f-af655a060032@linaro.org>
- <CAFXChKJrXAop188pTFcU0YNPocn_KyiAXiqWoES2F0_==VyO+Q@mail.gmail.com>
- <20231120042116-mutt-send-email-mst@kernel.org>
- <9282a606-794a-432c-8b56-fedf6af67768@linaro.org>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <9282a606-794a-432c-8b56-fedf6af67768@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::135;
- envelope-from=richard.henderson@linaro.org; helo=mail-lf1-x135.google.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+References: <20231114165834.2949011-1-mjt@tls.msk.ru>
+ <20231114165834.2949011-18-mjt@tls.msk.ru>
+In-Reply-To: <20231114165834.2949011-18-mjt@tls.msk.ru>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 21 Nov 2023 13:29:24 +1000
+Message-ID: <CAKmqyKN6Sj2G=CeMHR-JFfeR90RvgjujFf_tu=EJOG=P2=cpMg@mail.gmail.com>
+Subject: Re: [PATCH trivial 17/21] target/riscv/cpu.h: spelling fix: separatly
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ Rajnesh Kanwal <rkanwal@rivosinc.com>,
+ Alistair Francis <alistair.francis@wdc.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::92c;
+ envelope-from=alistair23@gmail.com; helo=mail-ua1-x92c.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,42 +78,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 20 Nov 2023 15:30:57 -0000
+X-List-Received-Date: Tue, 21 Nov 2023 03:29:54 -0000
 
-On 11/20/23 02:20, Philippe Mathieu-Daudé wrote:
-> (Cc'ing Eric)
-> 
-> On 20/11/23 10:28, Michael S. Tsirkin wrote:
->> On Sun, Nov 19, 2023 at 07:34:58PM -0600, Dan Hoffman wrote:
->>> As far as I can tell, yes. Any optimization level above O0 does not have this
->>> issue (on this version of Clang, at least)
->>
->> Aha, this is with -O0. That makes sense.
-> 
-> But then, why the other cases aren't problematic?
-> 
-> $ git grep -E ' (&&|\|\|) !?kvm_enabled'
-> hw/arm/boot.c:1228:    assert(!(info->secure_board_setup && kvm_enabled()));
-> hw/i386/microvm.c:270:        (mms->rtc == ON_OFF_AUTO_AUTO && !kvm_enabled())) {
-> hw/i386/x86.c:135:    if (x86ms->apic_id_limit > 255 && kvm_enabled() &&
-> hw/mips/cps.c:62:    return is_mt && !kvm_enabled();
-> system/physmem.c:760:    assert(asidx == 0 || !kvm_enabled());
-> target/arm/cpu64.c:288:    if (value && kvm_enabled() && !kvm_arm_sve_supported()) {
-> target/i386/cpu.c:7264:    if (requested_lbr_fmt && kvm_enabled()) {
-> target/ppc/kvm.c:345:    if (!cpu->hash64_opts || !kvm_enabled()) {
-> target/s390x/cpu_models.c:574:    if (xcc->kvm_required && !kvm_enabled()) {
-> target/s390x/cpu_models_sysemu.c:124:    if (S390_CPU_CLASS(oc)->kvm_required && 
-> !kvm_enabled()) {
-> 
+On Wed, Nov 15, 2023 at 3:04=E2=80=AFAM Michael Tokarev <mjt@tls.msk.ru> wr=
+ote:
+>
+> Fixes: 40336d5b1d4c "target/riscv: Add HS-mode virtual interrupt and IRQ =
+filtering support."
+> Cc: Rajnesh Kanwal <rkanwal@rivosinc.com>
+> Cc: Alistair Francis <alistair.francis@wdc.com>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 
-Because those are very simple tests that do not reference kvm-specific stuff, unlike...
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
->>>      > -    if (x86ms->apic_id_limit > 255 && kvm_enabled() &&
->>>      > +    if (kvm_enabled() && x86ms->apic_id_limit > 255 &&
->>>      >           (!kvm_irqchip_in_kernel() || !kvm_enable_x2apic())) {
+Alistair
 
-... these function calls.
-
-
-r~
+> ---
+>  target/riscv/cpu.h | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
+> index bf58b0f0b5..d74b361be6 100644
+> --- a/target/riscv/cpu.h
+> +++ b/target/riscv/cpu.h
+> @@ -214,13 +214,13 @@ struct CPUArchState {
+>
+>      /*
+>       * When mideleg[i]=3D0 and mvien[i]=3D1, sie[i] is no more
+> -     * alias of mie[i] and needs to be maintained separatly.
+> +     * alias of mie[i] and needs to be maintained separately.
+>       */
+>      uint64_t sie;
+>
+>      /*
+>       * When hideleg[i]=3D0 and hvien[i]=3D1, vsie[i] is no more
+> -     * alias of sie[i] (mie[i]) and needs to be maintained separatly.
+> +     * alias of sie[i] (mie[i]) and needs to be maintained separately.
+>       */
+>      uint64_t vsie;
+>
+> --
+> 2.39.2
+>
+>
 
