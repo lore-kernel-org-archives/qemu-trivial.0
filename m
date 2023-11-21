@@ -1,63 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r5HSW-0001B2-Ax
-	for mharc-qemu-trivial@gnu.org; Mon, 20 Nov 2023 22:29:56 -0500
+	id 1r5Hvs-0004Iz-3B
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Nov 2023 23:00:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1r5HSU-0001Ac-FP; Mon, 20 Nov 2023 22:29:54 -0500
-Received: from mail-ua1-x92c.google.com ([2607:f8b0:4864:20::92c])
+ id 1r5Hvp-0004IO-MM; Mon, 20 Nov 2023 23:00:13 -0500
+Received: from mail-ua1-x935.google.com ([2607:f8b0:4864:20::935])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1r5HST-0002Hp-1k; Mon, 20 Nov 2023 22:29:54 -0500
-Received: by mail-ua1-x92c.google.com with SMTP id
- a1e0cc1a2514c-7ba8e3107c9so1371148241.1; 
- Mon, 20 Nov 2023 19:29:52 -0800 (PST)
+ id 1r5Hvo-0002Jl-2T; Mon, 20 Nov 2023 23:00:13 -0500
+Received: by mail-ua1-x935.google.com with SMTP id
+ a1e0cc1a2514c-7b9c8706fc1so1881204241.0; 
+ Mon, 20 Nov 2023 20:00:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1700537391; x=1701142191; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1700539210; x=1701144010; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=zykVAOMXGJBHBT79yO+o54z1GyNT2rEbl1aSnQgP3J4=;
- b=kkr6vdGJFss3AyNePMNkjFU6LkcA7HUF5XU4dXGRTD5yVUqvmT6Y5OE3CbMP0KiXVa
- 1zFiEk8E7IKXOAOikZgw3HG1P0K8OGLFPHhwwCB/FGYU21IlHu3qelGVi03RxV8iiJ/r
- rV8PCTa9rpHXVMr6zWrUqTu4xnBAY2w+sVN8yeSuNjmTgzq4oJw1/K0AvUe+82W+SHpm
- L/weCupMS03YWp4NtmRHxxP2RA7VztpPSg7kvq/yRLjeXqjQIXb3DbvGZqHT3CBUJOs8
- ogwI7k8vUaF0FIH/sdI7jcwBS4I7t9QAXOvi6JJnQdlJrIFbVAm/Tl60w43bPOy1drxj
- AOEA==
+ bh=1AbIeXOiHU9CKTbjTLphB/Ft0S2Lxds3IsGzKHJP0TE=;
+ b=CCIpq2g3wEWTt+mMf+SglWLAMKpYz3VDSiEBdBBXrAOh1o3md9/7ThA8NDBDzPJm7z
+ 6rnsk+KQk4krp46r9fsUnB/H7UBVSfaPB6gSm+HrNqDXIMSzWSvBFjFCkfP1M1bSAMYH
+ X37x/IzsDoJzqjfDQ8ofvdMBHbwwq7/A0WB/3ybS/Nceecyc0Lf8oO2OexhnYMrmHAoS
+ czXTRIX3t6EUNZZWkR1d9oUBgIxxOFagb2u8hoEq7y6b6/ASTGp++Qjgb/Sbn4qoT5Tx
+ ZC5VfoGDNUlt53lOJlqrHo5deQLHW79LktlaerFJT/oCjOSrbqdjxOUNBS0pUeb7Phuq
+ 2Q7g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700537391; x=1701142191;
+ d=1e100.net; s=20230601; t=1700539210; x=1701144010;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=zykVAOMXGJBHBT79yO+o54z1GyNT2rEbl1aSnQgP3J4=;
- b=q7Bdj6BGKGDi2y7y5Kv35kZNFV21ihMbGJ23rQsP8348uHhh1+oybivwEa59F4ryXx
- mPffaS43uUJPggn4cpVxbHbZJ8hsQSZlVWPBgz4TXSCRabEigzAs8v52brIP7L9ayRYh
- Shg47FCu0XEQqhPnq6ml8LY8YeJ8O+rI+DZU48uU8MakJey1yNF1NNn530EU0ZNa4mmH
- /f4I79rcQMiNYc894fSNWmTjWjvfoEvq6OXTEDHRudqDOy7s1yM+lUh6TXGULRgLXqnE
- RDkOGefQhhU3LiIJr/qolKtwaKrFs+G8jQKm+nVh1fZMohtMZwcvVP3iMDlh9YqHRfsX
- pCYg==
-X-Gm-Message-State: AOJu0YwRgIt9wTUIVxI06hkuonys3n0PQX9iJh6kvf6oy/SD1knlCHPY
- oQbwvALKMYlLsksQN7iixreHidBL9sHEkcI6QBus9RivHdvscg==
-X-Google-Smtp-Source: AGHT+IGZo0g5rDhuYy8lxOVm3LSvnPUGVq68KCTWgsbknO/nE4IjQZ8BvJ86jRxJ2PdqoguuK2m5MHpeEeehdlatpUo=
-X-Received: by 2002:a67:c089:0:b0:462:71bd:b244 with SMTP id
- x9-20020a67c089000000b0046271bdb244mr9105686vsi.18.1700537391380; Mon, 20 Nov
- 2023 19:29:51 -0800 (PST)
+ bh=1AbIeXOiHU9CKTbjTLphB/Ft0S2Lxds3IsGzKHJP0TE=;
+ b=saQkaUcg1yTTDODoIzQcFf1GSyaWC1CpBWUYu/vgfbZhrcKUgrjyHowkvcAAq5e8Bk
+ broaTi/uyhZSAlDfMg28dlrsfqFh6haZWbQfJ3Sdxq1I6YJA7ACAZVGuiZOZf2nrqzTi
+ nzok33eXB+coQDyxk9lEp2mOEa4NfniFBmerVvLj2z7ZdX6mhJOfLbVORRMcbSosiqVB
+ nPnny2dQnANFarChyvql6nSUdwK6KpgA/gbHmK/8LWKLCbh+oQID3inLlMvHpat22fYb
+ 2eyIiMT3Mn8n4ClUznmi07Sa0Arq15t57rEc+b1psIbM898k6w80+VXuA9if0qSAO19W
+ +g2Q==
+X-Gm-Message-State: AOJu0YzpLu7aZPLwXzGthshg8E7pdufayoF2oDXbTpMzuy8snxoGEOaE
+ 1ZQTZq3CZbZGMFencyQWi1BLfsx4tnXtSerayNU=
+X-Google-Smtp-Source: AGHT+IGMCesZuRQQjpXbGpSfGp/ZAzPRwaYufv+BCXC6LaqEb+kKEKiwWRXeSggV7RAqbmwho6G23U/xYajs2vEQNEs=
+X-Received: by 2002:a05:6102:38d3:b0:462:ad95:e6b3 with SMTP id
+ k19-20020a05610238d300b00462ad95e6b3mr2995450vst.30.1700539210339; Mon, 20
+ Nov 2023 20:00:10 -0800 (PST)
 MIME-Version: 1.0
-References: <20231114165834.2949011-1-mjt@tls.msk.ru>
- <20231114165834.2949011-18-mjt@tls.msk.ru>
-In-Reply-To: <20231114165834.2949011-18-mjt@tls.msk.ru>
+References: <20231117082840.55705-1-rcardenas.rod@gmail.com>
+In-Reply-To: <20231117082840.55705-1-rcardenas.rod@gmail.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 21 Nov 2023 13:29:24 +1000
-Message-ID: <CAKmqyKN6Sj2G=CeMHR-JFfeR90RvgjujFf_tu=EJOG=P2=cpMg@mail.gmail.com>
-Subject: Re: [PATCH trivial 17/21] target/riscv/cpu.h: spelling fix: separatly
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- Rajnesh Kanwal <rkanwal@rivosinc.com>,
- Alistair Francis <alistair.francis@wdc.com>
+Date: Tue, 21 Nov 2023 13:59:43 +1000
+Message-ID: <CAKmqyKPha=CnU4fna+FXLHqzdvUsPpw8r7uoxUHerJ88av7=dQ@mail.gmail.com>
+Subject: Re: [PATCH] riscv: Fix SiFive E CLINT clock frequency
+To: =?UTF-8?B?Um9tw6FuIEPDoXJkZW5hcw==?= <rcardenas.rod@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Alistair.Francis@wdc.com, 
+ bin.meng@windriver.com, palmer@dabbelt.com, liwei1518@gmail.com, 
+ dbarboza@ventanamicro.com, zhiwei_liu@linux.alibaba.com, 
+ qemu-riscv@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::92c;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x92c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::935;
+ envelope-from=alistair23@gmail.com; helo=mail-ua1-x935.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -78,47 +78,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 Nov 2023 03:29:54 -0000
+X-List-Received-Date: Tue, 21 Nov 2023 04:00:14 -0000
 
-On Wed, Nov 15, 2023 at 3:04=E2=80=AFAM Michael Tokarev <mjt@tls.msk.ru> wr=
-ote:
+On Fri, Nov 17, 2023 at 6:31=E2=80=AFPM Rom=C3=A1n C=C3=A1rdenas <rcardenas=
+.rod@gmail.com> wrote:
 >
-> Fixes: 40336d5b1d4c "target/riscv: Add HS-mode virtual interrupt and IRQ =
-filtering support."
-> Cc: Rajnesh Kanwal <rkanwal@rivosinc.com>
-> Cc: Alistair Francis <alistair.francis@wdc.com>
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> If you check the manual of SiFive E310 (https://cdn.sparkfun.com/assets/7=
+/f/0/2/7/fe310-g002-manual-v19p05.pdf),
+> you can see in Figure 1 that the CLINT is connected to the real time cloc=
+k, which also feeds the AON peripheral (they share the same clock).
+> In page 43, the docs also say that the timer registers of the CLINT count=
+ ticks from the rtcclk.
+>
+> I am currently playing with bare metal applications both in QEMU and a ph=
+ysical SiFive E310 board and
+> I confirm that the CLINT clock in the physical board runs at 32.768 kHz.
+> In QEMU, the same app produces a completely different outcome, as sometim=
+es a new CLINT interrupt is triggered before finishing other tasks.
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1978
+>
+> Signed-off-by: Rom=C3=A1n C=C3=A1rdenas <rcardenas.rod@gmail.com>
 
 Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
 Alistair
 
 > ---
->  target/riscv/cpu.h | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>  hw/riscv/sifive_e.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/target/riscv/cpu.h b/target/riscv/cpu.h
-> index bf58b0f0b5..d74b361be6 100644
-> --- a/target/riscv/cpu.h
-> +++ b/target/riscv/cpu.h
-> @@ -214,13 +214,13 @@ struct CPUArchState {
+> diff --git a/hw/riscv/sifive_e.c b/hw/riscv/sifive_e.c
+> index 0d37adc542..87d9602383 100644
+> --- a/hw/riscv/sifive_e.c
+> +++ b/hw/riscv/sifive_e.c
+> @@ -225,7 +225,7 @@ static void sifive_e_soc_realize(DeviceState *dev, Er=
+ror **errp)
+>              RISCV_ACLINT_SWI_SIZE,
+>          RISCV_ACLINT_DEFAULT_MTIMER_SIZE, 0, ms->smp.cpus,
+>          RISCV_ACLINT_DEFAULT_MTIMECMP, RISCV_ACLINT_DEFAULT_MTIME,
+> -        RISCV_ACLINT_DEFAULT_TIMEBASE_FREQ, false);
+> +        SIFIVE_E_LFCLK_DEFAULT_FREQ, false);
+>      sifive_e_prci_create(memmap[SIFIVE_E_DEV_PRCI].base);
 >
->      /*
->       * When mideleg[i]=3D0 and mvien[i]=3D1, sie[i] is no more
-> -     * alias of mie[i] and needs to be maintained separatly.
-> +     * alias of mie[i] and needs to be maintained separately.
->       */
->      uint64_t sie;
->
->      /*
->       * When hideleg[i]=3D0 and hvien[i]=3D1, vsie[i] is no more
-> -     * alias of sie[i] (mie[i]) and needs to be maintained separatly.
-> +     * alias of sie[i] (mie[i]) and needs to be maintained separately.
->       */
->      uint64_t vsie;
->
+>      /* AON */
 > --
-> 2.39.2
+> 2.39.3 (Apple Git-145)
 >
 >
 
