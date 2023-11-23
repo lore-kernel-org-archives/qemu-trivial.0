@@ -1,80 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r6E32-00032I-Lk
-	for mharc-qemu-trivial@gnu.org; Thu, 23 Nov 2023 13:03:32 -0500
+	id 1r6Gxz-0002RJ-0U
+	for mharc-qemu-trivial@gnu.org; Thu, 23 Nov 2023 16:10:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dhoff749@gmail.com>)
- id 1r6E30-00031w-MR; Thu, 23 Nov 2023 13:03:30 -0500
-Received: from mail-qt1-x82f.google.com ([2607:f8b0:4864:20::82f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dhoff749@gmail.com>)
- id 1r6E2z-0005b6-1l; Thu, 23 Nov 2023 13:03:30 -0500
-Received: by mail-qt1-x82f.google.com with SMTP id
- d75a77b69052e-41feb963f60so8880231cf.1; 
- Thu, 23 Nov 2023 10:03:28 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1700762607; x=1701367407; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=x3XJBl20EhSzSFrg8sgHrnSzvjZjQxO6fEKvxKIdeWc=;
- b=Ytomhx9onR/FaNMJlEZfZq1djaXiPG312C7klSkVT/5f4qV7TRpCw5iH29jcj/E2vy
- DkEaNNdpW3c2jIb+itQQ8Gvt9ldgxkbHwWhbnZ6pym0krqw9eixQnkikTAnx7uuCka4+
- +k5WHUuONoxUnoW6Dx/oirM+ExKP1fWkV97hL8YUFktUw09DGIgNDaxzejPxQ6Ic+Mms
- dDpAyCO6bCOAtnGgO4Cy9rFAi2JGRViFGjIpaKzfEdfwxUzPMpLaBm+s1y50V30KNK5k
- JVRhlhmBMf3nbRYNkOnuedvnpdhzLS8GuoA94oshXpOIc58f5nftF+nma2yXJuZukSyh
- dqAQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700762607; x=1701367407;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=x3XJBl20EhSzSFrg8sgHrnSzvjZjQxO6fEKvxKIdeWc=;
- b=gXUdNJvKzvBRPkpiMnkAhunlNnAe9uFrBi6Q7MJXenSjb0yVZldOsI4jxlOykbfibe
- pC62WnFUVQtRvybuorCYw/N6NMY3YPGBgYpvCZvjUeeICowzTDJe793gjyRowyYxeTPf
- Rr6rkCg9TPVBA1RP2FFry11e40+2lL/4fFn38BP+uF9ndqSznPLlFGu5PwOt3DqfhD8x
- CBXqgufujQxiwWTolmYFir/pRk+RnpbvzwAtQib0Rb6ng9I7w9mED15as4Z2c9a4tHpA
- ZsH98K9YQ0Sx/J0Py5QrHAYkZrkYah5RBp7mlSmPdO6vph2v+kc7ZNqg1omkLtU/zYWX
- jHMw==
-X-Gm-Message-State: AOJu0YwW0ic6XY3JTcfzml+M2lTwwvMVWyqee1l6GyIS2oKsDjTYxQTG
- RCm6ohq2pfMttkRQkTmmaVpb1ZuKVTlyAdC13lw=
-X-Google-Smtp-Source: AGHT+IHHxIOirLOdhRnqjjwfItz8ixXfkNu3gox8iL1zmE6qhEnzsXFLh2/ZULzFISLNj+XKBGa0DJ6neMYzjGZvolM=
-X-Received: by 2002:a05:622a:13d0:b0:41c:c045:2c86 with SMTP id
- p16-20020a05622a13d000b0041cc0452c86mr6011717qtk.31.1700762607204; Thu, 23
- Nov 2023 10:03:27 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>) id 1r6Glz-00049Y-Vg
+ for qemu-trivial@nongnu.org; Thu, 23 Nov 2023 15:58:08 -0500
+Received: from zoidberg.rfc1149.net ([195.154.227.159])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>) id 1r6Gly-0007i6-8b
+ for qemu-trivial@nongnu.org; Thu, 23 Nov 2023 15:58:07 -0500
+Received: from buffy.. (buffy [192.168.147.6])
+ by zoidberg.rfc1149.net (Postfix) with ESMTP id 37B9680024;
+ Thu, 23 Nov 2023 21:57:56 +0100 (CET)
+Authentication-Results: zoidberg.rfc1149.net;
+ dmarc=fail (p=none dis=none) header.from=rfc1149.net
+Authentication-Results: zoidberg.rfc1149.net;
+ spf=fail smtp.mailfrom=rfc1149.net
+From: Samuel Tardieu <sam@rfc1149.net>
+To: qemu-trivial@nongnu.org
+Cc: Samuel Tardieu <sam@rfc1149.net>
+Subject: [PATCH] target/hexagon/idef-parser/prepare: use env to invoke bash
+Date: Thu, 23 Nov 2023 21:57:42 +0100
+Message-ID: <20231123205742.630004-1-sam@rfc1149.net>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-References: <20231119203116.3027230-1-dhoff749@gmail.com>
- <3c44d5a5-818b-46b6-a07f-af655a060032@linaro.org>
- <CAFXChKJrXAop188pTFcU0YNPocn_KyiAXiqWoES2F0_==VyO+Q@mail.gmail.com>
- <20231120042116-mutt-send-email-mst@kernel.org>
- <9282a606-794a-432c-8b56-fedf6af67768@linaro.org>
- <viiqn6gyn25xitens3ft4mp4lditlcrswstugct42t2kvpw6pi@3ftcrbxmuo3e>
- <CAFXChKKkRRNk72a57xSeJdYtXBss5W7KoEnQqUOVK9_xhc8NfQ@mail.gmail.com>
- <CAFXChK+OjteJ_rt5G5EWa+wexe8ZzL=8y+Z82mT_r3387h=0RQ@mail.gmail.com>
-In-Reply-To: <CAFXChK+OjteJ_rt5G5EWa+wexe8ZzL=8y+Z82mT_r3387h=0RQ@mail.gmail.com>
-From: Dan Hoffman <dhoff749@gmail.com>
-Date: Thu, 23 Nov 2023 12:03:16 -0600
-Message-ID: <CAFXChKLmVe34Qw21z_TvAV8PuDJfLMu7_2L+o1dXkA1WCLJ=Gg@mail.gmail.com>
-Subject: Re: [PATCH v3] hw/i386: fix short-circuit logic with non-optimizing
- builds
-To: Eric Blake <eblake@redhat.com>
-Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- "Michael S. Tsirkin" <mst@redhat.com>, Eduardo Habkost <eduardo@habkost.net>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
- qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82f;
- envelope-from=dhoff749@gmail.com; helo=mail-qt1-x82f.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
+ helo=zoidberg.rfc1149.net
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 23 Nov 2023 16:10:28 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -86,63 +45,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 Nov 2023 18:03:31 -0000
+X-List-Received-Date: Thu, 23 Nov 2023 20:58:08 -0000
 
-I went ahead and wrote a clang-tidy pass that attempts to find other
-cases of this behavior (i.e. compile-time short-circuit behavior that
-could lead to undefined references). All of these cases should also be
-caught by `-Wunreachable-code`, but that uncovers a lot and I'd like a
-green light before I pursue that path (also some legitimate patterns
-like file-local debug macro definitions will be flagged as warnings).
-This check is intentionally broad (whether a symbol is defined is more
-a property of the linker, so the compiler doesn't know).
+This file is the only one involved in the compilation process which
+still uses the /bin/bash path.
 
-I think this patch should be merged as-is (since it solves the
-immediate functional issue I'm having) and I may submit a more
-complete patch in the future that guards all references to
-potentially-undefined KVM functions with `CONFIG_KVM_IS_POSSIBLE` or
-something along those lines. Let me know what you think.
+Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+---
+ target/hexagon/idef-parser/prepare | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Here's some output from the clang-tidy pass against the current master branch.
+diff --git a/target/hexagon/idef-parser/prepare b/target/hexagon/idef-parser/prepare
+index 72d6fcbd21..cb3622d4f8 100755
+--- a/target/hexagon/idef-parser/prepare
++++ b/target/hexagon/idef-parser/prepare
+@@ -1,4 +1,4 @@
+-#!/bin/bash
++#!/usr/bin/env bash
+ 
+ #
+ #  Copyright(c) 2019-2021 rev.ng Labs Srl. All Rights Reserved.
+-- 
+2.42.0
 
-```
-../hw/i386/intel_iommu.c:4131:31: warning: function not declared in
-this file is called from a short-circutable context
-[misc-short-circuit-elision]
- 4131 |         if (kvm_enabled() && !kvm_enable_x2apic()) {
-      |                               ^
-../hw/i386/x86.c:136:39: warning: function not declared in this file
-is called from a short-circutable context [misc-short-circuit-elision]
-  136 |         (!kvm_irqchip_in_kernel() || !kvm_enable_x2apic())) {
-      |                                       ^
-../hw/i386/x86.c:422:27: warning: function not declared in this file
-is called from a short-circutable context [misc-short-circuit-elision]
-  422 |         kvm_enabled() && !kvm_hv_vpindex_settable()) {
-      |                           ^
-../hw/net/i82596.c:481:23: warning: function not declared in this file
-is called from a short-circutable context [misc-short-circuit-elision]
-  481 |     if (USE_TIMER && !timer_pending(s->flush_queue_timer)) {
-      |                       ^
-../hw/ppc/spapr.c:4543:27: warning: function not declared in this file
-is called from a short-circutable context [misc-short-circuit-elision]
- 4543 |     if (kvm_enabled() && !kvm_vcpu_id_is_valid(vcpu_id)) {
-      |                           ^
-../system/physmem.c:1913:27: warning: function not declared in this
-file is called from a short-circutable context
-[misc-short-circuit-elision]
- 1913 |     if (kvm_enabled() && !kvm_has_sync_mmu()) {
-      |                           ^
-../target/i386/cpu.c:7125:27: warning: function not declared in this
-file is called from a short-circutable context
-[misc-short-circuit-elision]
- 7125 |     if (kvm_enabled() && !kvm_hyperv_expand_features(cpu, errp)) {
-      |                           ^
-../target/s390x/diag.c:174:30: warning: function not declared in this
-file is called from a short-circutable context
-[misc-short-circuit-elision]
-  174 |         if (kvm_enabled() && kvm_s390_get_hpage_1m()) {
-      |                              ^
-```
-
-If any of you have any questions, feel free to let me know
 
