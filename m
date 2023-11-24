@@ -1,75 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r6Y8r-00051K-Fg
-	for mharc-qemu-trivial@gnu.org; Fri, 24 Nov 2023 10:30:53 -0500
+	id 1r6ZX5-0001m2-43
+	for mharc-qemu-trivial@gnu.org; Fri, 24 Nov 2023 11:59:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r6Y8c-0004vJ-2K
- for qemu-trivial@nongnu.org; Fri, 24 Nov 2023 10:30:41 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ (Exim 4.90_1) (envelope-from <dhoff749@gmail.com>)
+ id 1r6ZX3-0001k0-It; Fri, 24 Nov 2023 11:59:57 -0500
+Received: from mail-qv1-xf2a.google.com ([2607:f8b0:4864:20::f2a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r6Y8Z-0005qa-Dq
- for qemu-trivial@nongnu.org; Fri, 24 Nov 2023 10:30:37 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-40a4848c6e1so14006395e9.1
- for <qemu-trivial@nongnu.org>; Fri, 24 Nov 2023 07:30:32 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <dhoff749@gmail.com>)
+ id 1r6ZX1-000488-S6; Fri, 24 Nov 2023 11:59:57 -0500
+Received: by mail-qv1-xf2a.google.com with SMTP id
+ 6a1803df08f44-67a12079162so4686356d6.1; 
+ Fri, 24 Nov 2023 08:59:55 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1700839831; x=1701444631; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=4FeMLTTF9cDZ7eRRNAJVlSJwXuVI906lL/BAvJXNtHI=;
- b=ixZTzv0cbn3cro47XdZSypoFCaT+KlNGcA1FUHBf45ywQo3QaEWIsPJK6eTL8uINln
- 7atOoGEQXrDanV5HG76kLd7b8pW+/RlSL+Ig8wO0RlOy84fgYFvflbq2vW85UW/7RA9r
- ETdfWoAPRYO7MBwzbSLRdWV5jH52zthuFs+kxvzahWmDYYAFSLyOfGvf/Bd1pXIt8UWb
- RQbl8httiITJtT92iBP+JH9/gnsExjS6VUbf5TU/VcoXpmXd/YqlNAxKbzjwJsCZmt8G
- StSd6LmBC2FlrIw4UucFgkJUre67CjQq5By0gJnO3Xt8MMhoEXPyBXRqJ6Z+W4H2YrSS
- mOQw==
+ d=gmail.com; s=20230601; t=1700845194; x=1701449994; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=J6e2TglBi+lJq4NZlVYfJRw7pzIANBEwswwOaV+z0X0=;
+ b=GDT8uJ4y7h/aSc0kOl4u3q4N1sH7Vxs85v4q+vjcz5z0Q0r1Ol7ZhsaT1pMejOON4t
+ Vbxj0Xbol0BSpzffke0Z7tWDv+7xlqpD9bjsb0u7HthWy487CZEXaeFflhfcYC/Hn/Ip
+ NoTFnK0K7qdeen7kqhVEZCkfv3J4bS9OPqcCSt71UmYCP8cx0Ly9o15WbipSpIRvdH1p
+ vqf+wq/JVg3KWk97OR2hc47CUr7jJbR+bmNfUfsaxUdwQG8NCbXqMYw22iXjRI+Vtw6l
+ J13z917cmcxMYHu+0ycRYCE0QBCUCVb12dKZ7Hd02jRkix46YIocL3JJDImaSvyl7Sew
+ /VaQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1700839831; x=1701444631;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4FeMLTTF9cDZ7eRRNAJVlSJwXuVI906lL/BAvJXNtHI=;
- b=O4SdTu1H5sv6fB9rVf8IguI8O+MnX9yZvF+yLCr5NkPDWEDT+VVLiGB2dYLzsYUxXA
- V5u0T032UZWxzF5GQIk9FKvChjsCvvHHP9dDEXAiIgx/jAt899gTLtZGKvAKZmdSpBBW
- f3cRU26bf17KTXONLDqGZTndcJhvbSwUm0l/ghit+hQABUeF0Nw4vL384F3fAfJCCSaf
- ToOL4ll0tXaRAXy0z0EhxiEYkR6n69g5U/pIQBradjR6UaResezglRUKp5ggiiSsHKEZ
- QoV7qnsMFiVOsfoAtXvrk/c8bXV9HLCONvskf6mpyWp4B1pPt7Lura9YRkwcujrdmLQj
- rGTw==
-X-Gm-Message-State: AOJu0YybmRGBy+89Guyc7Nmg0y+g1WQua4kq56jdU+d2SmbIUCKQurKm
- huqVRwUYr1p866hH7lKKMB80iQ==
-X-Google-Smtp-Source: AGHT+IEdvKwGzQ/wXlNwk2E5C1YFSDLYQyUJLVmzBlj2vL37/sWPk9QDk4yhj0PqWgEtxUqUX2w2/A==
-X-Received: by 2002:a05:600c:45cf:b0:3f6:58ad:ed85 with SMTP id
- s15-20020a05600c45cf00b003f658aded85mr2796106wmo.10.1700839830677; 
- Fri, 24 Nov 2023 07:30:30 -0800 (PST)
-Received: from [192.168.69.100] ([176.187.218.17])
- by smtp.gmail.com with ESMTPSA id
- k24-20020a5d5258000000b00332d04514b9sm4513296wrc.95.2023.11.24.07.30.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 24 Nov 2023 07:30:30 -0800 (PST)
-Message-ID: <2ba80e3f-c13e-406b-a365-37841ff655b4@linaro.org>
-Date: Fri, 24 Nov 2023 16:30:28 +0100
+ d=1e100.net; s=20230601; t=1700845194; x=1701449994;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=J6e2TglBi+lJq4NZlVYfJRw7pzIANBEwswwOaV+z0X0=;
+ b=kqa1QopLsx5vgVTfpLtb3zKcmT9v9UzbPe2Br+XQcKioDGgm50w13OlG4MZAyAPHgs
+ hYO132XArhjBoQbIFlZPK4rfnL2xTgIzBdZBP+DjVgUWHFWxs/CeF1cDCHZowQWIbKaW
+ PdYJThxybXauvnC8SiVZsS9tLOJBDg2micmsAerwaHwtfcnDQfG6qo0+cVRurUWOeur+
+ UlN+jxzcpfTqZutZQqpaxfTqfN4VXRiuqWiCLICHaxQhkn8pk5YToXy3xWyAPFSl9qvR
+ z5LbXGSvSJ0zZ+V0qqcQeFlWliMUATIts/96741i69kKgk4XZq6JUL13YDGC2jty5D3C
+ gUlQ==
+X-Gm-Message-State: AOJu0YzlDu8cb/7d5Q4YQHPhU1fUfbM+MRFrL4R14Isnr4m1BpdAamnC
+ 3HG0VAC+kELEnPDaaVZbJD3FnfdTzWwbREP+r2E=
+X-Google-Smtp-Source: AGHT+IHuIPiaEbnXQ0d+efEaY39AIdz4cW9nEkh1G0jo4pimO74C4J/a5WsaTsZ13vSFEu3gobmgwZq7B29eIX6TSgs=
+X-Received: by 2002:a05:6214:19ef:b0:67a:21a6:75db with SMTP id
+ q15-20020a05621419ef00b0067a21a675dbmr1028543qvc.55.1700845194464; Fri, 24
+ Nov 2023 08:59:54 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] sh4: Coding style: Remove tabs
-Content-Language: en-US
-To: xun <xun794@gmail.com>, qemu-devel@nongnu.org,
- Thomas Huth <thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org
-References: <20231124044554.513752-1-xun794@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231124044554.513752-1-xun794@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20231124015312.544422-1-dhoff749@gmail.com>
+ <93f7ee3e-a92f-4b18-bf16-2169c8b2791d@linaro.org>
+ <87sf4vgtir.fsf@pond.sub.org> <87edgfgsg0.fsf@pond.sub.org>
+In-Reply-To: <87edgfgsg0.fsf@pond.sub.org>
+From: Dan Hoffman <dhoff749@gmail.com>
+Date: Fri, 24 Nov 2023 10:59:44 -0600
+Message-ID: <CAFXChKJ+OoxXH0Krvvc0-84VwTkat1CciOL=59+gyH+WYWEV_A@mail.gmail.com>
+Subject: Re: [PATCH] hw/core: define stack variable to NULL to fix qtest with
+ sanitizers
+To: Markus Armbruster <armbru@redhat.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, Kevin Wolf <kwolf@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f2a;
+ envelope-from=dhoff749@gmail.com; helo=mail-qv1-xf2a.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,66 +82,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 24 Nov 2023 15:30:47 -0000
+X-List-Received-Date: Fri, 24 Nov 2023 16:59:58 -0000
 
-Hi,
+Yes, that fixes my issue. I was receiving two errors with the sanitizers:
+1. UBsan complaining that the (garbage) value didn't have the required
+alignment of the type
+2. ASan complaining about some memory failure by read/write/accessing it
 
-On 24/11/23 05:45, xun wrote:
-> From: Yihuan Pan <xun794@gmail.com>
-> 
-> Replaces TABS with spaces to ensure have a consistent coding
-> style with an indentation of 4 spaces in the SH4 subsystem.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/376
-> Signed-off-by: Yihuan Pan <xun794@gmail.com>
-> ---
->   linux-user/sh4/termbits.h |  204 +++---
->   target/sh4/cpu.h          |   80 +-
->   target/sh4/helper.c       |  236 +++---
->   target/sh4/op_helper.c    |   70 +-
->   target/sh4/translate.c    | 1466 ++++++++++++++++++-------------------
->   5 files changed, 1028 insertions(+), 1028 deletions(-)
-
-
-> @@ -241,17 +241,17 @@ static int find_tlb_entry(CPUSH4State * env, target_ulong address,
->       asid = env->pteh & 0xff;
->   
->       for (i = 0; i < nbtlb; i++) {
-> -	if (!entries[i].v)
-> -	    continue;		/* Invalid entry */
-> -	if (!entries[i].sh && use_asid && entries[i].asid != asid)
-> -	    continue;		/* Bad ASID */
-> -	start = (entries[i].vpn << 10) & ~(entries[i].size - 1);
-> -	end = start + entries[i].size - 1;
-> -	if (address >= start && address <= end) {	/* Match */
-> -	    if (match != MMU_DTLB_MISS)
-> -		return MMU_DTLB_MULTIPLE;	/* Multiple match */
-> -	    match = i;
-> -	}
-> +        if (!entries[i].v)
-> +            continue; /* Invalid entry */
-
-Thomas, better fix the 'if { }' in this patch or a following one?
-
-> +        if (!entries[i].sh && use_asid && entries[i].asid != asid)
-> +            continue; /* Bad ASID */
-> +        start = (entries[i].vpn << 10) & ~(entries[i].size - 1);
-> +        end = start + entries[i].size - 1;
-> +        if (address >= start && address <= end) { /* Match */
-> +            if (match != MMU_DTLB_MISS)
-> +                return MMU_DTLB_MULTIPLE; /* Multiple match */
-> +            match = i;
-> +        }
->       }
->       return match;
->   }
-> @@ -265,7 +265,7 @@ static void increment_urc(CPUSH4State * env)
->       urc = ((env->mmucr) >> 10) & 0x3f;
->       urc++;
->       if ((urb > 0 && urc > urb) || urc > (UTLB_SIZE - 1))
-> -	urc = 0;
-> +        urc = 0;
->       env->mmucr = (env->mmucr & 0xffff03ff) | (urc << 10);
->   }
-
+On Fri, Nov 24, 2023 at 8:02=E2=80=AFAM Markus Armbruster <armbru@redhat.co=
+m> wrote:
+>
+> Daniel, please have a look at Kevin's patch:
+>
+>     Subject: [PATCH for-8.2 1/2] qdev: Fix crash in array property getter
+>     Date: Tue, 21 Nov 2023 18:34:15 +0100 (2 days, 20 hours, 26 minutes a=
+go)
+>     Message-ID: <20231121173416.346610-2-kwolf@redhat.com>
+>     https://lore.kernel.org/qemu-devel/20231121173416.346610-2-kwolf@redh=
+at.com/
+>
+> Does it fix your sanitizer run?
+>
 
