@@ -1,61 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r7vGV-0001pJ-1x
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Nov 2023 05:24:27 -0500
+	id 1r7xvS-0002uE-74
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Nov 2023 08:14:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r7vGQ-0001ow-OV
- for qemu-trivial@nongnu.org; Tue, 28 Nov 2023 05:24:22 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r7xvQ-0002tt-Gm
+ for qemu-trivial@nongnu.org; Tue, 28 Nov 2023 08:14:52 -0500
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1r7vGN-0001n4-KV
- for qemu-trivial@nongnu.org; Tue, 28 Nov 2023 05:24:22 -0500
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-548f0b7ab11so7101835a12.1
- for <qemu-trivial@nongnu.org>; Tue, 28 Nov 2023 02:24:18 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r7xvP-0002v4-3U
+ for qemu-trivial@nongnu.org; Tue, 28 Nov 2023 08:14:52 -0500
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-9ffb5a4f622so754709366b.0
+ for <qemu-trivial@nongnu.org>; Tue, 28 Nov 2023 05:14:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1701167057; x=1701771857; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=PLtMjpEjt957Y6uNi/prBFDVDdUpYxmByZfZDgExx38=;
- b=k2gUSI6wxrAUTaGDyKyQ02sOlNBHLt4Lbqig3YzkCwK3jQ/61lXh8Ot15BwY7/MatY
- Ty53fS+B3LhHclA6zY/gQmzjwJKlE+AiPorjBOEQf2QK+OmJGYQmV8pq5/rO8oajn70n
- VM12lqMJjkbxTNl+9nyp/HanJLIE8J1YhGkm4W8nzk93S0OcmjZqp9g+iox+4vn1Tpls
- vQlHdEMu+SFAROFKlnY7+o72Jl63ju/H598KtU6xcvjvqFTO+MSsz0BmvZ2WXQEWnd54
- zsV28pM5Ljdfws44wlGpRvRYXWjoaqW5GMjVLFHNqf0KOliLkNqha87S86HEjsC+9hSl
- oS9w==
+ d=linaro.org; s=google; t=1701177289; x=1701782089; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=6in//SQBjP9VE9IpQ2Qfw/3JXEDnJcufiZRfIQ08CVk=;
+ b=XwSl73UtXVlm3C/lV0n/0ffb8CRmNtwMGU8hiVsSGllBcc5Y2WpI4qazvOIkgMMENs
+ 6coCYBSRSSZmKxyQdk479NUt8+a6tO0MtJMN4MJ2En+h9Fe/io7cE+ieZP6tZS77ZIAa
+ IqOqNFzv4KWZrMYf8w6FJ25fO2JB0HGDsqO3Q+P7Zd3mrT7cSUSrfNLDn0Vs0d2cVAlk
+ SntEEScHVwY68MAUO5nJU/vfkYB+fQuW1vleELxXTZpsZItCruOVtkI5m9vT4TGIkgKm
+ iDRXMA+elCgkuOPYSZpGYdKgCST/DaBFrCHj3EyyUd9LRrLCD/gblb4EtMVNUX1ZFJ7q
+ 5rQg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701167057; x=1701771857;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=PLtMjpEjt957Y6uNi/prBFDVDdUpYxmByZfZDgExx38=;
- b=gO0ZwLpzqJNslbX22w1ik1bVgTX2AMvvFTZa0kvGiFLXcKQ2RmHZQJFmqLtE5nNFZR
- JPI4dBVWd3kTm9ITgvZhbxIkIEX88SmAm6tx5BugjfRsRuWIddqbaBVPYGOOxwrYGcJs
- Kiq0Gz08e8B6uv/1EZvGl8y4QhV+of/nrsjWuLaYrDfX3OpnvXix4aWQZsMTQDeMIllK
- uCz4f32af3j4opcm3igXlpLcZHa5SBNEVbpFhyn1jgOHrkOU6ggIa0Uquc/X7MW3ZauV
- gE4tie0V4F7NnK+6D3sRnQci6HUpXPvEr39tWnF9n4j45iz1JZbmgzFBb68bi2ylYSWN
- iWXg==
-X-Gm-Message-State: AOJu0YweKyxxa/xquX3f0zl9LeeWmlOYSOobpSJEa2atfHyZYYfz6P6O
- MoOqKWbw1HiVKQr88rs6qTkwZ7g2GhTmIMMkWqIMMA==
-X-Google-Smtp-Source: AGHT+IGQne7bMsx1OYZyFxt8JZi3hutMlQ0KnydGNXJgCmPJKTZhfV/HWuSeAFDeBCKleKZn02yD5lSFIoTBlJoH9pY=
-X-Received: by 2002:a05:6402:ca9:b0:54b:8a3:33d4 with SMTP id
- cn9-20020a0564020ca900b0054b08a333d4mr8313637edb.21.1701167057341; Tue, 28
- Nov 2023 02:24:17 -0800 (PST)
+ d=1e100.net; s=20230601; t=1701177289; x=1701782089;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=6in//SQBjP9VE9IpQ2Qfw/3JXEDnJcufiZRfIQ08CVk=;
+ b=h2ThRfLzCP1L5qQE5nCUDbOm1Jgb/ej7w030LCb1J1B/uUn9wSA1utZEFhCLrV9Ko0
+ ecHp5N2Eg4bw4s7AGNFKgd2yEbDgQLAtEp48HnN88fYepRRZVvyt9fy2bvxrzm7wQwiV
+ sGx0Ez6mltBbtOSGP2sBm3xQudElIn00ryOkX5C/9efoOY6GlE8oXbtzd4PWGekTApga
+ pHGgoPY8YUSS19XrFRL0dMSnDW1wvEs+LgmyRHsVB2D/5vLIduryDPVIHTKCPunJuuxe
+ W8IBZQMMFhqkejBwD4IaCqUysbYT+BmlXaCkgoZHAjs+msITo2MV94sHFvfNvRS8GY3D
+ Nzmw==
+X-Gm-Message-State: AOJu0YzWvfGnYxwzuMusoYDGFCXQopCP4KUQeuhM2e1EZe7iHhuZLSXG
+ z3tXOYbGPGsv83L9AfFOqL3XZQ==
+X-Google-Smtp-Source: AGHT+IHKkipjK3+WzXuiwPpkdrqvZ/wX6wLOBB6CQMVuNQj7aoYAcm/7pnvOYfqf1Ypz4FN5L+875w==
+X-Received: by 2002:a17:906:1358:b0:a00:7d00:66d7 with SMTP id
+ x24-20020a170906135800b00a007d0066d7mr10584143ejb.18.1701177289662; 
+ Tue, 28 Nov 2023 05:14:49 -0800 (PST)
+Received: from [192.168.69.100] (crb44-h02-176-184-13-61.dsl.sta.abo.bbox.fr.
+ [176.184.13.61]) by smtp.gmail.com with ESMTPSA id
+ j20-20020a1709064b5400b00a11e9036cffsm1202811ejv.195.2023.11.28.05.14.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 28 Nov 2023 05:14:49 -0800 (PST)
+Message-ID: <759b274c-bb58-4b3c-a504-9769e799e6e8@linaro.org>
+Date: Tue, 28 Nov 2023 14:14:47 +0100
 MIME-Version: 1.0
-References: <20231127194258.138603-1-arorajai2798@gmail.com>
-In-Reply-To: <20231127194258.138603-1-arorajai2798@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Nov 2023 10:24:06 +0000
-Message-ID: <CAFEAcA90WMfVxn8V5m730ggoOJhj=3-Wz5mt79ktZf==Pz7L1g@mail.gmail.com>
-Subject: Re: [PATCH] accel/kvm: Turn DPRINTF macro use into tracepoints
-To: Jai Arora <arorajai2798@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/hexagon/idef-parser/prepare: use env to invoke bash
+Content-Language: en-US
+To: Samuel Tardieu <sam@rfc1149.net>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Alessandro Di Federico <ale@rev.ng>,
+ Anton Johansson <anjo@rev.ng>
+References: <20231123211506.636533-1-sam@rfc1149.net>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20231123211506.636533-1-sam@rfc1149.net>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -75,67 +82,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Nov 2023 10:24:23 -0000
+X-List-Received-Date: Tue, 28 Nov 2023 13:14:52 -0000
 
-On Mon, 27 Nov 2023 at 19:44, Jai Arora <arorajai2798@gmail.com> wrote:
->
-> To remove DPRINTF macros and use tracepoints
-> for logging.
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1827
->
-> Signed-off-by: Jai Arora <arorajai2798@gmail.com>
+On 23/11/23 22:15, Samuel Tardieu wrote:
+> This file is the only one involved in the compilation process which
+> still uses the /bin/bash path.
+> 
+> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
 > ---
->  accel/kvm/kvm-all.c    | 32 ++++++++++----------------------
->  accel/kvm/trace-events |  2 +-
->  2 files changed, 11 insertions(+), 23 deletions(-)
+>   target/hexagon/idef-parser/prepare | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 
-Hi; thanks for sending in this patch.
+Patch queued, thanks!
 
-(I've CC'd the KVM maintainer.)
+Phil.
 
-> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-> index e39a810a4e..d0dd7e54c3 100644
-> --- a/accel/kvm/kvm-all.c
-> +++ b/accel/kvm/kvm-all.c
-> @@ -69,16 +69,6 @@
->  #define KVM_GUESTDBG_BLOCKIRQ 0
->  #endif
->
-> -//#define DEBUG_KVM
-> -
-> -#ifdef DEBUG_KVM
-> -#define DPRINTF(fmt, ...) \
-> -    do { fprintf(stderr, fmt, ## __VA_ARGS__); } while (0)
-> -#else
-> -#define DPRINTF(fmt, ...) \
-> -    do { } while (0)
-> -#endif
-> -
->  struct KVMParkedVcpu {
->      unsigned long vcpu_id;
->      int kvm_fd;
-> @@ -331,7 +321,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
->      struct KVMParkedVcpu *vcpu = NULL;
->      int ret = 0;
->
-> -    DPRINTF("kvm_destroy_vcpu\n");
-> +    trace_kvm_dprintf("kvm_destroy_vcpu\n");
-
-Rather than using a single tracepoint for every line
-that was previously a DPRINTF, it's preferable to
-use tracepoints whose name indicates what they're doing.
-Users can turn tracepoints on and off individually, and they
-might, for instance, only want to trace when the vcpu is
-destroyed and not also the very large number of events
-that will happen for kvm_cpu_exec entry/exits.
-
-If you look at the current set of events in accel/kvm/trace-events
-you can see the general style: the tracepoint name itself
-tells you the "what has happened", the arguments provide
-more info (eg which CPU did we just destroy), and it's
-rarely necessary to pass a string into the tracepoint function.
-
-thanks
--- PMM
 
