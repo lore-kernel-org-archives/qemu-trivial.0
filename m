@@ -1,73 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r7xvS-0002uE-74
-	for mharc-qemu-trivial@gnu.org; Tue, 28 Nov 2023 08:14:54 -0500
+	id 1r8OG5-0005A7-Or
+	for mharc-qemu-trivial@gnu.org; Wed, 29 Nov 2023 12:21:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r7xvQ-0002tt-Gm
- for qemu-trivial@nongnu.org; Tue, 28 Nov 2023 08:14:52 -0500
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ (Exim 4.90_1) (envelope-from <arorajai2798@gmail.com>)
+ id 1r8OG3-00059O-Hn; Wed, 29 Nov 2023 12:21:55 -0500
+Received: from mail-pf1-x435.google.com ([2607:f8b0:4864:20::435])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1r7xvP-0002v4-3U
- for qemu-trivial@nongnu.org; Tue, 28 Nov 2023 08:14:52 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-9ffb5a4f622so754709366b.0
- for <qemu-trivial@nongnu.org>; Tue, 28 Nov 2023 05:14:50 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <arorajai2798@gmail.com>)
+ id 1r8OG1-0006LS-78; Wed, 29 Nov 2023 12:21:55 -0500
+Received: by mail-pf1-x435.google.com with SMTP id
+ d2e1a72fcca58-6cbbfdf72ecso6710700b3a.2; 
+ Wed, 29 Nov 2023 09:21:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1701177289; x=1701782089; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=6in//SQBjP9VE9IpQ2Qfw/3JXEDnJcufiZRfIQ08CVk=;
- b=XwSl73UtXVlm3C/lV0n/0ffb8CRmNtwMGU8hiVsSGllBcc5Y2WpI4qazvOIkgMMENs
- 6coCYBSRSSZmKxyQdk479NUt8+a6tO0MtJMN4MJ2En+h9Fe/io7cE+ieZP6tZS77ZIAa
- IqOqNFzv4KWZrMYf8w6FJ25fO2JB0HGDsqO3Q+P7Zd3mrT7cSUSrfNLDn0Vs0d2cVAlk
- SntEEScHVwY68MAUO5nJU/vfkYB+fQuW1vleELxXTZpsZItCruOVtkI5m9vT4TGIkgKm
- iDRXMA+elCgkuOPYSZpGYdKgCST/DaBFrCHj3EyyUd9LRrLCD/gblb4EtMVNUX1ZFJ7q
- 5rQg==
+ d=gmail.com; s=20230601; t=1701278510; x=1701883310; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=CPup2Lz56b8vekq5Xhrf9CuVK3A8egjMIZB2EYYXxjo=;
+ b=KRwOqwrB5H2hn44oBZw6pBYXnAMXAFg9I3gPkNA8+0gC7agW6KhpZtz5i16gy3fBIq
+ swHgF2VcDrTVR6ZWPcXw7dAVOvhVxP50Vb2cEmzzCnTZagwLCvyvchian9Qc4iXg2kJT
+ tF98JDYMBLeUSnvxsRZHcnZ3DxoabgBFcU2E3wNflysw6CepbdFRFX8gKUG5niFdBw5m
+ /wcjPiGUW4y3bxx7wFSxnX5iAOyN3PAc4zAwP3yIFuur/K3Whoe5eJHE1EkF/wiYju9K
+ SeaQ/ZXbTsf63JClYpXuqcvdzW3ukAqvmwc1xreNhxbP49n2r39pfND2CcdZKhtSltUL
+ Mv1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701177289; x=1701782089;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=6in//SQBjP9VE9IpQ2Qfw/3JXEDnJcufiZRfIQ08CVk=;
- b=h2ThRfLzCP1L5qQE5nCUDbOm1Jgb/ej7w030LCb1J1B/uUn9wSA1utZEFhCLrV9Ko0
- ecHp5N2Eg4bw4s7AGNFKgd2yEbDgQLAtEp48HnN88fYepRRZVvyt9fy2bvxrzm7wQwiV
- sGx0Ez6mltBbtOSGP2sBm3xQudElIn00ryOkX5C/9efoOY6GlE8oXbtzd4PWGekTApga
- pHGgoPY8YUSS19XrFRL0dMSnDW1wvEs+LgmyRHsVB2D/5vLIduryDPVIHTKCPunJuuxe
- W8IBZQMMFhqkejBwD4IaCqUysbYT+BmlXaCkgoZHAjs+msITo2MV94sHFvfNvRS8GY3D
- Nzmw==
-X-Gm-Message-State: AOJu0YzWvfGnYxwzuMusoYDGFCXQopCP4KUQeuhM2e1EZe7iHhuZLSXG
- z3tXOYbGPGsv83L9AfFOqL3XZQ==
-X-Google-Smtp-Source: AGHT+IHKkipjK3+WzXuiwPpkdrqvZ/wX6wLOBB6CQMVuNQj7aoYAcm/7pnvOYfqf1Ypz4FN5L+875w==
-X-Received: by 2002:a17:906:1358:b0:a00:7d00:66d7 with SMTP id
- x24-20020a170906135800b00a007d0066d7mr10584143ejb.18.1701177289662; 
- Tue, 28 Nov 2023 05:14:49 -0800 (PST)
-Received: from [192.168.69.100] (crb44-h02-176-184-13-61.dsl.sta.abo.bbox.fr.
- [176.184.13.61]) by smtp.gmail.com with ESMTPSA id
- j20-20020a1709064b5400b00a11e9036cffsm1202811ejv.195.2023.11.28.05.14.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 28 Nov 2023 05:14:49 -0800 (PST)
-Message-ID: <759b274c-bb58-4b3c-a504-9769e799e6e8@linaro.org>
-Date: Tue, 28 Nov 2023 14:14:47 +0100
+ d=1e100.net; s=20230601; t=1701278510; x=1701883310;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=CPup2Lz56b8vekq5Xhrf9CuVK3A8egjMIZB2EYYXxjo=;
+ b=d+ccEMzJo17BNCIFaUPXO4OkaFu4bF7doghxsfRt/eZGls+H1yhssCGvDofbLAcWKO
+ fA4r03GUWOILgwNXU9QFWxD8KHpJS1Wsr8A95kv1KDCBzp2/u16IiicykZJtkv0fKwbG
+ cQQ4bOkEhiPb+kYVBw08OGcLYjnLYsBhx9gFEoGs3xJ/diHr3aRfMwlNLK5fwbyL4adP
+ fxbb5z/QtlI9yewEAFqZClB5iAEPpoWXGciRCo1+k02lXCT/rMQeGRMJe19ok+Fi1ykM
+ pyFNXiZU9+xXEPl5fnTxx4xvqq/1u4kVp7uFKcf/EweijIC1ixc1fMazgqLkp7hhPVZ7
+ 6qAA==
+X-Gm-Message-State: AOJu0Yz6C88fqBBcOdN9JTOMLpdEw2lkF9/YyZjVvsE4DXAUkpbAVdsI
+ rWSyNGQ1OK8POHni9jrn3BOEQv0AiryPSw==
+X-Google-Smtp-Source: AGHT+IEXa8fmxUmUt+9LjVr4G7QiE/bU6sxmLWeZI5u84fof1x0CGTzdo1t5zJvAJQLXzthG3EXFBw==
+X-Received: by 2002:a05:6a20:2446:b0:18c:23b0:3b16 with SMTP id
+ t6-20020a056a20244600b0018c23b03b16mr16677388pzc.60.1701278510313; 
+ Wed, 29 Nov 2023 09:21:50 -0800 (PST)
+Received: from localhost.localdomain ([2406:7400:56:9b9:dcc3:8696:be12:127c])
+ by smtp.gmail.com with ESMTPSA id
+ y2-20020aa78042000000b006cbbc07a1c0sm10989347pfm.156.2023.11.29.09.21.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 29 Nov 2023 09:21:49 -0800 (PST)
+From: Jai Arora <arorajai2798@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
+ Jai Arora <arorajai2798@gmail.com>
+Subject: [PATCH v2] accel/kvm: Turn DPRINTF macro use into tracepoints
+Date: Wed, 29 Nov 2023 22:51:10 +0530
+Message-Id: <20231129172109.207516-1-arorajai2798@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/hexagon/idef-parser/prepare: use env to invoke bash
-Content-Language: en-US
-To: Samuel Tardieu <sam@rfc1149.net>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Alessandro Di Federico <ale@rev.ng>,
- Anton Johansson <anjo@rev.ng>
-References: <20231123211506.636533-1-sam@rfc1149.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231123211506.636533-1-sam@rfc1149.net>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::435;
+ envelope-from=arorajai2798@gmail.com; helo=mail-pf1-x435.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -82,19 +78,159 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 Nov 2023 13:14:52 -0000
+X-List-Received-Date: Wed, 29 Nov 2023 17:21:56 -0000
 
-On 23/11/23 22:15, Samuel Tardieu wrote:
-> This file is the only one involved in the compilation process which
-> still uses the /bin/bash path.
-> 
-> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
-> ---
->   target/hexagon/idef-parser/prepare | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+Patch removes DRPINTF macro and adds multiple tracepoints
+to capture different kvm events.
 
-Patch queued, thanks!
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1827
 
-Phil.
+Signed-off-by: Jai Arora <arorajai2798@gmail.com>
+---
+ accel/kvm/kvm-all.c    | 33 +++++++++++----------------------
+ accel/kvm/trace-events |  8 +++++++-
+ 2 files changed, 18 insertions(+), 23 deletions(-)
+
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index e39a810a4e..0801ca7933 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -69,16 +69,6 @@
+ #define KVM_GUESTDBG_BLOCKIRQ 0
+ #endif
+ 
+-//#define DEBUG_KVM
+-
+-#ifdef DEBUG_KVM
+-#define DPRINTF(fmt, ...) \
+-    do { fprintf(stderr, fmt, ## __VA_ARGS__); } while (0)
+-#else
+-#define DPRINTF(fmt, ...) \
+-    do { } while (0)
+-#endif
+-
+ struct KVMParkedVcpu {
+     unsigned long vcpu_id;
+     int kvm_fd;
+@@ -331,7 +321,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
+     struct KVMParkedVcpu *vcpu = NULL;
+     int ret = 0;
+ 
+-    DPRINTF("kvm_destroy_vcpu\n");
++    trace_kvm_destroy_vcpu();
+ 
+     ret = kvm_arch_destroy_vcpu(cpu);
+     if (ret < 0) {
+@@ -341,7 +331,7 @@ static int do_kvm_destroy_vcpu(CPUState *cpu)
+     mmap_size = kvm_ioctl(s, KVM_GET_VCPU_MMAP_SIZE, 0);
+     if (mmap_size < 0) {
+         ret = mmap_size;
+-        DPRINTF("KVM_GET_VCPU_MMAP_SIZE failed\n");
++        trace_kvm_failed_get_vcpu_mmap_size();
+         goto err;
+     }
+ 
+@@ -443,7 +433,6 @@ int kvm_init_vcpu(CPUState *cpu, Error **errp)
+                                    PAGE_SIZE * KVM_DIRTY_LOG_PAGE_OFFSET);
+         if (cpu->kvm_dirty_gfns == MAP_FAILED) {
+             ret = -errno;
+-            DPRINTF("mmap'ing vcpu dirty gfns failed: %d\n", ret);
+             goto err;
+         }
+     }
+@@ -2821,7 +2810,7 @@ int kvm_cpu_exec(CPUState *cpu)
+     struct kvm_run *run = cpu->kvm_run;
+     int ret, run_ret;
+ 
+-    DPRINTF("kvm_cpu_exec()\n");
++    trace_kvm_cpu_exec();
+ 
+     if (kvm_arch_process_async_events(cpu)) {
+         qatomic_set(&cpu->exit_request, 0);
+@@ -2848,7 +2837,7 @@ int kvm_cpu_exec(CPUState *cpu)
+ 
+         kvm_arch_pre_run(cpu, run);
+         if (qatomic_read(&cpu->exit_request)) {
+-            DPRINTF("interrupt exit requested\n");
++	    trace_kvm_interrupt_exit_request();
+             /*
+              * KVM requires us to reenter the kernel after IO exits to complete
+              * instruction emulation. This self-signal will ensure that we
+@@ -2878,7 +2867,7 @@ int kvm_cpu_exec(CPUState *cpu)
+ 
+         if (run_ret < 0) {
+             if (run_ret == -EINTR || run_ret == -EAGAIN) {
+-                DPRINTF("io window exit\n");
++                trace_kvm_io_window_exit();
+                 kvm_eat_signals(cpu);
+                 ret = EXCP_INTERRUPT;
+                 break;
+@@ -2900,7 +2889,7 @@ int kvm_cpu_exec(CPUState *cpu)
+         trace_kvm_run_exit(cpu->cpu_index, run->exit_reason);
+         switch (run->exit_reason) {
+         case KVM_EXIT_IO:
+-            DPRINTF("handle_io\n");
++            trace_kvm_run_exit_reason("handle_io\n");
+             /* Called outside BQL */
+             kvm_handle_io(run->io.port, attrs,
+                           (uint8_t *)run + run->io.data_offset,
+@@ -2910,7 +2899,7 @@ int kvm_cpu_exec(CPUState *cpu)
+             ret = 0;
+             break;
+         case KVM_EXIT_MMIO:
+-            DPRINTF("handle_mmio\n");
++            trace_kvm_run_exit_reason("handle_mmio\n");
+             /* Called outside BQL */
+             address_space_rw(&address_space_memory,
+                              run->mmio.phys_addr, attrs,
+@@ -2920,11 +2909,11 @@ int kvm_cpu_exec(CPUState *cpu)
+             ret = 0;
+             break;
+         case KVM_EXIT_IRQ_WINDOW_OPEN:
+-            DPRINTF("irq_window_open\n");
++            trace_kvm_run_exit_reason("irq_window_open\n");
+             ret = EXCP_INTERRUPT;
+             break;
+         case KVM_EXIT_SHUTDOWN:
+-            DPRINTF("shutdown\n");
++            trace_kvm_run_exit_reason("shutdown\n");
+             qemu_system_reset_request(SHUTDOWN_CAUSE_GUEST_RESET);
+             ret = EXCP_INTERRUPT;
+             break;
+@@ -2976,14 +2965,14 @@ int kvm_cpu_exec(CPUState *cpu)
+                 ret = 0;
+                 break;
+             default:
+-                DPRINTF("kvm_arch_handle_exit\n");
++                trace_kvm_exit_system_event("kvm_arch_handle_exit\n");
+                 ret = kvm_arch_handle_exit(cpu, run);
+                 break;
+             }
+             break;
+         default:
+-            DPRINTF("kvm_arch_handle_exit\n");
+             ret = kvm_arch_handle_exit(cpu, run);
++            trace_kvm_run_exit_reason("kvm_arch_handle_exit\n");
+             break;
+         }
+     } while (ret == 0);
+diff --git a/accel/kvm/trace-events b/accel/kvm/trace-events
+index 399aaeb0ec..e7b9e9bcc1 100644
+--- a/accel/kvm/trace-events
++++ b/accel/kvm/trace-events
+@@ -25,4 +25,10 @@ kvm_dirty_ring_reaper(const char *s) "%s"
+ kvm_dirty_ring_reap(uint64_t count, int64_t t) "reaped %"PRIu64" pages (took %"PRIi64" us)"
+ kvm_dirty_ring_reaper_kick(const char *reason) "%s"
+ kvm_dirty_ring_flush(int finished) "%d"
+-
++kvm_destroy_vcpu(void) ""
++kvm_failed_get_vcpu_mmap_size(void) ""
++kvm_cpu_exec(void) ""
++kvm_interrupt_exit_request(void) ""
++kvm_io_window_exit(void) ""
++kvm_run_exit_reason(const char *s) "%s"
++kvm_exit_system_event(const char *s) "%s"
+-- 
+2.25.1
 
 
