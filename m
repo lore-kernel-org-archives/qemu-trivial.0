@@ -1,65 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1r92E6-0003ER-CH
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Dec 2023 07:02:34 -0500
+	id 1r9HwF-0003cU-2S
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Dec 2023 23:49:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <arorajai2798@gmail.com>)
- id 1r92Dx-0003Aw-BS; Fri, 01 Dec 2023 07:02:31 -0500
-Received: from mail-pf1-x432.google.com ([2607:f8b0:4864:20::432])
+ id 1r9HwD-0003c9-Lh; Fri, 01 Dec 2023 23:49:09 -0500
+Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <arorajai2798@gmail.com>)
- id 1r92Du-00022L-JX; Fri, 01 Dec 2023 07:02:25 -0500
-Received: by mail-pf1-x432.google.com with SMTP id
- d2e1a72fcca58-6cde14ff73bso1676947b3a.0; 
- Fri, 01 Dec 2023 04:02:21 -0800 (PST)
+ id 1r9HwB-0004hk-Pb; Fri, 01 Dec 2023 23:49:09 -0500
+Received: by mail-il1-x12d.google.com with SMTP id
+ e9e14a558f8ab-35c18e55633so11546855ab.2; 
+ Fri, 01 Dec 2023 20:49:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1701432138; x=1702036938; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1701492545; x=1702097345; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=wnoDGhP9G+NHTWo9Lu1gi4yoipKdVxcn/KXCttPxlvE=;
- b=cbXwryehjDe+rca8E2SX4i7B+5WqSExpSM0AEDXP8Gd8hfZ5CybkZFnZF5wDcHjO06
- 5Vls8w8RythU3TVoysWsVQ3QO8hfqpnw9RJPMsl3FGS2BrochRojNVT155G7thn+xaFf
- Yncxz39HYx78XKEIf0vOesn3fmURQ7EcV+UT/bnLVoTNsWlJ/5OGBtaKAca5Emo73wnt
- hBng2EsQVenKir+nPrhrOMoYVIfRn0I4V5sAaPbFmoOFqTERaZ0rL6ywxvznXJ1/vY+y
- 677kVmUxPviKm4v6E3zN3hKHPwMJTJuvpvglsaXW6IJGM0lyTkEDNeGxFbxa5gKLte81
- CA/A==
+ bh=Xvi4mRz2w/E5pz1gAepmyUvWL5xNH8ENXIxXh94Gg9Y=;
+ b=P9BVABsrKZQbNJuge+r/q2bbpy0w9Rycd6AvZWXWhpv+vDBquN+PGiDfQykzR216+Z
+ 1W65FuT2EFiB9hskUpC6bb+gPHWlQzFRXzUZ4H4sMlFp/8WSpAJ5DsVYmv2YhQoEcsIo
+ E46HFYe+s0M3FF4On6kLzhWSSQ/gvOhYnrLRz8wt88BzeYfJn7O8AEh7Rh8eOPsMP0Xn
+ jgx5gaYoWqI01l2/q6PE/tgLWxX0JR2Xe1ZVL0og0/ypTu+yBamevLHIqkOCrM5vHR2C
+ 5aTqPT4MOUWB1i8ZwMbdCH+u4GVSO4LVjq6ssUFgmZRbzfjY8ln/67a7meqWNvErVx7V
+ aWOw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701432138; x=1702036938;
+ d=1e100.net; s=20230601; t=1701492545; x=1702097345;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=wnoDGhP9G+NHTWo9Lu1gi4yoipKdVxcn/KXCttPxlvE=;
- b=w6p4zdlg6ckPFU2Tv55beDyTlFzjqwZ5Kf58w362ciLp0/lRz7ntusgauRzBEIKLEe
- K7VFOh20W1IoIj70E1a1oJDebI/+GIUc/NqJYcNaetk6ES4tz1tYiHzXn5chNsumY1Fk
- FlEvcIkVUlZP0GPtkq+l9OxZQO9hXpXrmeXQOun4AnlIcZ63dLdCUzzXIJ9jXTYa18cT
- birW375+uy8sFOeUlX1YbCz0d0GDe0pHuC1UeyEcba1AUD2RTgBAX2nbIw2gqXQjX+rP
- KpVgwQtcqB0eBwS5guej37UA+gQTGWjoShAGaOz6gk0YhjSk4ZjM90yk7CFCcvs9T9EB
- DLsw==
-X-Gm-Message-State: AOJu0Yxlxw1GI9caXULABYCBh42Nz5P+5fZDX4rXgPaCcQAKzNMNIRio
- owIfXBRvDSu0vuDs/RPzSwh0AA3d95S6wQ==
-X-Google-Smtp-Source: AGHT+IHvbIlWTJTURXTf83gZalpLRUgde98OM4weX7kXj1jCnrjFQsorIX8bzlCrJuwpfxbyxZ5SlA==
-X-Received: by 2002:a05:6a00:2190:b0:6cd:fda4:b57c with SMTP id
- h16-20020a056a00219000b006cdfda4b57cmr2310150pfi.15.1701432138436; 
- Fri, 01 Dec 2023 04:02:18 -0800 (PST)
-Received: from localhost.localdomain ([2406:7400:56:ba2b:dcc3:8696:be12:127c])
+ bh=Xvi4mRz2w/E5pz1gAepmyUvWL5xNH8ENXIxXh94Gg9Y=;
+ b=pmsvXWppxoX6m1ub1VWwvmE+aAJ2f+vpyUo2pw8KyAzmwfn8S3wdt7RVtDzWdPwx20
+ 0iaIprubiW+5r5/x0GbmAbMWx7t9wVgCj7eeCCHfHBZpWBBxGeKhHAgcSGgLJVbklSP3
+ 04Kx/9bysJ6cyYZj5uwPKv1Uu+MglXTbPhUkA4S9wRXifQxwtu6v3nOvumsIU5lyeWKm
+ 7q2/V27XTHmaaYg1f2nfZ9ERdt2uTKRXynh5uxJ6sXsPwyK4Ckz04HdyF70P/YkLjOn/
+ dloZdlmQUYs/0M4qTiBjwJuTu5FIN/uoC0h33c3jA5FgQqEvc125Kj0gxJ9NumHn1Poe
+ WGgw==
+X-Gm-Message-State: AOJu0YwxtWoOxIdlkXjLir4owjqkYApg1zkECU/0Dtqfv5xceRKAuelD
+ wzb2gLo9ZRyn+0WjimbAx58nN5yjAO9pQg==
+X-Google-Smtp-Source: AGHT+IHZ5O1iFckILdx3dWYnCSgSjxEgvXFf/xAWgPtFj0tK0gUkZHRVAZ4mRL35WgnZB4iQfx+iRA==
+X-Received: by 2002:a05:6e02:1d12:b0:35d:5995:798d with SMTP id
+ i18-20020a056e021d1200b0035d5995798dmr961284ila.39.1701492545307; 
+ Fri, 01 Dec 2023 20:49:05 -0800 (PST)
+Received: from localhost.localdomain ([2406:7400:56:4f3d:dcc3:8696:be12:127c])
  by smtp.gmail.com with ESMTPSA id
- q8-20020a632a08000000b0056606274e54sm2940215pgq.31.2023.12.01.04.02.15
+ t11-20020a170902e84b00b001d076c2e346sm149652plg.51.2023.12.01.20.49.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 01 Dec 2023 04:02:18 -0800 (PST)
+ Fri, 01 Dec 2023 20:49:04 -0800 (PST)
 From: Jai Arora <arorajai2798@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com, peter.maydell@linaro.org,
  alex.bennee@linaro.org, philmd@linaro.org,
  Jai Arora <arorajai2798@gmail.com>
 Subject: [PATCH v5] accel/kvm: Turn DPRINTF macro use into tracepoints
-Date: Fri,  1 Dec 2023 17:32:02 +0530
-Message-Id: <473931c9cd6191faa87533dc496fbfad7a0b9e17.1701431600.git.arorajai2798@gmail.com>
+Date: Sat,  2 Dec 2023 10:18:46 +0530
+Message-Id: <20231202044846.258855-1-arorajai2798@gmail.com>
 X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::432;
- envelope-from=arorajai2798@gmail.com; helo=mail-pf1-x432.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::12d;
+ envelope-from=arorajai2798@gmail.com; helo=mail-il1-x12d.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -80,7 +80,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Dec 2023 12:02:32 -0000
+X-List-Received-Date: Sat, 02 Dec 2023 04:49:10 -0000
 
 Patch removes DPRINTF macro and adds multiple tracepoints
 to capture different kvm events.
@@ -94,14 +94,16 @@ Signed-off-by: Jai Arora <arorajai2798@gmail.com>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
-v4: Addressed review comments by Philippe Mathieu-Daudé
+v5: Addressed review comments by Philippe Mathieu-Daudé
 Corrects typo DRPINTF in commit message
 Changed %d to PRIu32 in kvm_run_exit_system_event
-
+ 
 I am not sure what you meant by keeping previous tag.
 I think you meant to keep version tag same,
 so I will keep patch tag as v5 again this time.
- 
+
+Thank you for the feedback.
+
  accel/kvm/kvm-all.c    | 28 ++++++----------------------
  accel/kvm/trace-events |  7 ++++++-
  2 files changed, 12 insertions(+), 23 deletions(-)
