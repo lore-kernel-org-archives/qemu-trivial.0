@@ -1,67 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rAROx-0004CS-PT
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Dec 2023 04:07:36 -0500
+	id 1rBYxJ-0000WB-UD
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Dec 2023 06:23:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rAROu-0004Bq-Ee
- for qemu-trivial@nongnu.org; Tue, 05 Dec 2023 04:07:32 -0500
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ (Exim 4.90_1) (envelope-from <xun794@gmail.com>) id 1rBYxF-0000W0-Mf
+ for qemu-trivial@nongnu.org; Fri, 08 Dec 2023 06:23:38 -0500
+Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rAROs-00079Y-Nm
- for qemu-trivial@nongnu.org; Tue, 05 Dec 2023 04:07:32 -0500
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-54c5ed26cf6so5150656a12.3
- for <qemu-trivial@nongnu.org>; Tue, 05 Dec 2023 01:07:29 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <xun794@gmail.com>) id 1rBYxE-0004Gf-0y
+ for qemu-trivial@nongnu.org; Fri, 08 Dec 2023 06:23:37 -0500
+Received: by mail-pf1-x444.google.com with SMTP id
+ d2e1a72fcca58-6ceba6c4b8dso1164525b3a.1
+ for <qemu-trivial@nongnu.org>; Fri, 08 Dec 2023 03:23:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1701767248; x=1702372048; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=o4LUhuAQmdNvhNwoAmcjERPVwyQQTyUv0QlU/6hTOSo=;
- b=L5/mGBRQj40c6NPQiBPWNXbsYYZenXkm5ARO9YLnPPAus7tO99s1ACrzgZwE77CSie
- VPfMCNEXNHNXriBCGvRPspgdGj4UTl3JFVS2ov3RSHMAgwSXM0KsrSe1IsblObN0N3FM
- B54ddL827kDqEuJpc1GnQhrEoK0g3w/Fxx8UfT9vGk7BAidBMcxXAFo92bg0Axvm17ck
- W05IHWxG6gl81Y1B9RlbyYoIGszMooJaunmrhHIIHfoNbnecZxWdGlDFD6iADmWYE4CN
- w5pF/2NOMZpbk2xfzxcSuM7zQbSFPYU7VSTKuOsflCvUmYV2UdeCK8+KvLgUTTab8pR/
- EXhQ==
+ d=gmail.com; s=20230601; t=1702034609; x=1702639409; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ngRjKUqgr4ywvtmzRCL3isbRn4040f3HYtiH0MujBOQ=;
+ b=eNi5JTVHzJ55NrBI9V6X/3I3+62DC6SHYfz5GlPwiQtP40vkDC5f/hxjqaj7nVwvJ+
+ i9/za9AI0H5g7UoPCyYpmaPy6LIM74NFvfbi06HyX9x3kojoNN8y8vV9yvNQyVR/DWDc
+ vnqEuLhWXPX0M0OTP6tMQCRKgcD2jvwqQcw1W9IjbbP9bv27+NgcIEQp7ab0BzKje2bD
+ Ls7cll3ti5ixC6in9/zDNcJxUd4gDZC0ResiVRskbadSW5cAN3HMWGwXkiJ+KZCPEYiV
+ D0YlIjTGSwOlZlmGsVql61cRIIq47v9LNZh8Em8h6bBdDXjt54UMws2cvzk+4HUwEhR3
+ P4UA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1701767248; x=1702372048;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1702034609; x=1702639409;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=o4LUhuAQmdNvhNwoAmcjERPVwyQQTyUv0QlU/6hTOSo=;
- b=jLD8ZyAivgXpR8zp3WGu8ivYTAWhzsi1B/CnNcvoynJFe4rC/zsypZ3lgEFUPQUqV8
- 7x/rMzEV3oVl/3SyYJhxqTs4GjFVi4gdDv/XXc3xuva/RR9hu8tcNuk6omZ4UxJ4VpLD
- 2i8HAV2A9qs44uZEBzAqKrrALuBdwGgVw+o/Uya441VeO6bTkT1eMkXlnoUJV8dDgDUT
- LBokEk5CQV1uswnzSVMobH8nrjXUd7VLWxG3ZL/tmyL8LVTpdnGRvk//EMt6nMpjRPS1
- mvliQVlp1L2wnoVP5s0DMlYCC9sFW4iXgNoT6p2F6pXKqS7vEq0LyjVfYAacR61tfwDc
- 0NKw==
-X-Gm-Message-State: AOJu0YywO9ggrwKaKxx6N28Xt1KOi1kwSDsO3KLv0T0zMIcpq3z+Z0ih
- 6zwCJ4IsfH1fH0OkUT/gOsmgCv5MMdsu5EQoLm+ALg==
-X-Google-Smtp-Source: AGHT+IEsl7r/T66q/2nawImcw3+DWNafkP4WbX/oa2zzOTZAvYhNx6w3uF+tAesfb7vdto1EgJboRJa/t5cX/Hjb1Jw=
-X-Received: by 2002:a50:9b50:0:b0:54c:4837:81e2 with SMTP id
- a16-20020a509b50000000b0054c483781e2mr4056401edj.51.1701767248699; Tue, 05
- Dec 2023 01:07:28 -0800 (PST)
+ bh=ngRjKUqgr4ywvtmzRCL3isbRn4040f3HYtiH0MujBOQ=;
+ b=Lv48LDhqXbfE3VvCWLkBajq9SId0IvFsNTHsVRDUjQShY1fw2WCaGjVc0rXCsWgmJo
+ J6IZIgfBJQJ45l+2ii1erypSgh/2RRX+6F4hkSKnmm9yceoT5S9fNnGMjB2JwwbwtNhS
+ QRvXia5yGgbY2bXmZx05IQqkrV39hAiQGPJpq5AseURLGQrcmt4QbE5v9h4LPsL6l8Ry
+ niVe82XBrsKzkidMbrJPMPiczZig2/XMCTQf9K3oKRMoLKJuJ9vwFA+54Yh3S4GD9G2e
+ cjrEdjX18FH03MODUzXhbvnBldgSkuIPl1T5cZGD2PQaJGG5AmW5UvVO4RZJ4275jOoQ
+ PiOQ==
+X-Gm-Message-State: AOJu0YzooY+BXbMB3dYKABtqtwTeEMDjyxKWjPU56DIsUfDGus6waD9O
+ bfELqErkgptUvU6IZzXt6Kr3xeSUwcHtWw==
+X-Google-Smtp-Source: AGHT+IHt0oC6n8gGbh75uPPRXHAut1YVD4m9aYNuGMfjL63jbI1rO0jwUsB9LmGGjR+UZmOyXaGlxg==
+X-Received: by 2002:a05:6a00:1f13:b0:6ce:7d15:9a6c with SMTP id
+ be19-20020a056a001f1300b006ce7d159a6cmr4192546pfb.67.1702034609550; 
+ Fri, 08 Dec 2023 03:23:29 -0800 (PST)
+Received: from localhost ([2409:8a20:bc4:a9a0:40eb:1e14:5537:3084])
+ by smtp.gmail.com with ESMTPSA id
+ v21-20020a056a00149500b006cedd9d49f9sm968318pfu.46.2023.12.08.03.23.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 08 Dec 2023 03:23:29 -0800 (PST)
+From: Yihuan Pan <xun794@gmail.com>
+To: qemu-trivial@nongnu.org
+Cc: Yihuan Pan <xun794@gmail.com>
+Subject: [PATCH] qemu-options: Improve documentation for the fw_cfg option
+Date: Fri,  8 Dec 2023 19:23:25 +0800
+Message-ID: <20231208112325.64808-1-xun794@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20231202044846.258855-1-arorajai2798@gmail.com>
- <CA+9mx632wGOa2egPZBKLnr5UZLzeX74V8wF0=pkfO+jQg0dM2A@mail.gmail.com>
-In-Reply-To: <CA+9mx632wGOa2egPZBKLnr5UZLzeX74V8wF0=pkfO+jQg0dM2A@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 5 Dec 2023 09:07:17 +0000
-Message-ID: <CAFEAcA-Mpv_Braq_wPNb4nE_Bh5FFDsd7jC_R4QOwx=9BZVOAQ@mail.gmail.com>
-Subject: Re: [PATCH v5] accel/kvm: Turn DPRINTF macro use into tracepoints
-To: JAI ARORA <arorajai2798@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, pbonzini@redhat.com, 
- alex.bennee@linaro.org, philmd@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
+ envelope-from=xun794@gmail.com; helo=mail-pf1-x444.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -76,20 +77,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Dec 2023 09:07:33 -0000
+X-List-Received-Date: Fri, 08 Dec 2023 11:23:39 -0000
 
-On Tue, 5 Dec 2023 at 04:05, JAI ARORA <arorajai2798@gmail.com> wrote:
->
-> Hello maintainers,
->
-> This is a friendly ping.
-> Are there any other review comments for this patch?
+Enhance the documentation for the `fw_cfg` option in qemu-options.hx
+to provide clearer instructions on handling filenames and strings.
 
-Hi; the patch looks good and it's been reviewed; but we're
-in the middle of codefreeze for the upcoming 8.2 release
-at the moment, so the patch won't be applied until that
-has gone out the door (should be in a few weeks' time).
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1839
+Signed-off-by: Yihuan Pan <xun794@gmail.com>
+---
+ qemu-options.hx | 4 ++++
+ 1 file changed, 4 insertions(+)
 
-thanks
--- PMM
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 42fd09e4de..a935aaae44 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -4086,9 +4086,13 @@ DEF("fw_cfg", HAS_ARG, QEMU_OPTION_fwcfg,
+ SRST
+ ``-fw_cfg [name=]name,file=file``
+     Add named fw\_cfg entry with contents from file file.
++    If the filename contains comma, you must double it (for instance,
++    "file=my,,file" to use file "my,file").
+ 
+ ``-fw_cfg [name=]name,string=str``
+     Add named fw\_cfg entry with contents from string str.
++    If the string contains comma, you must double it (for instance,
++    "string=my,,string" to use file "my,string").
+ 
+     The terminating NUL character of the contents of str will not be
+     included as part of the fw\_cfg item data. To insert contents with
+-- 
+2.43.0
+
 
