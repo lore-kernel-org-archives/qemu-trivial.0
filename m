@@ -1,62 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rBYxJ-0000WB-UD
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Dec 2023 06:23:41 -0500
+	id 1rDQ3h-0005vE-82
+	for mharc-qemu-trivial@gnu.org; Wed, 13 Dec 2023 09:17:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xun794@gmail.com>) id 1rBYxF-0000W0-Mf
- for qemu-trivial@nongnu.org; Fri, 08 Dec 2023 06:23:38 -0500
-Received: from mail-pf1-x444.google.com ([2607:f8b0:4864:20::444])
+ (Exim 4.90_1) (envelope-from <xun794@gmail.com>)
+ id 1rDQ3f-0005v1-I1; Wed, 13 Dec 2023 09:17:55 -0500
+Received: from mail-pg1-x541.google.com ([2607:f8b0:4864:20::541])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <xun794@gmail.com>) id 1rBYxE-0004Gf-0y
- for qemu-trivial@nongnu.org; Fri, 08 Dec 2023 06:23:37 -0500
-Received: by mail-pf1-x444.google.com with SMTP id
- d2e1a72fcca58-6ceba6c4b8dso1164525b3a.1
- for <qemu-trivial@nongnu.org>; Fri, 08 Dec 2023 03:23:31 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <xun794@gmail.com>)
+ id 1rDQ3d-0005zf-GE; Wed, 13 Dec 2023 09:17:55 -0500
+Received: by mail-pg1-x541.google.com with SMTP id
+ 41be03b00d2f7-5c6b9583dcbso5860240a12.2; 
+ Wed, 13 Dec 2023 06:17:51 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702034609; x=1702639409; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1702477070; x=1703081870; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=ngRjKUqgr4ywvtmzRCL3isbRn4040f3HYtiH0MujBOQ=;
- b=eNi5JTVHzJ55NrBI9V6X/3I3+62DC6SHYfz5GlPwiQtP40vkDC5f/hxjqaj7nVwvJ+
- i9/za9AI0H5g7UoPCyYpmaPy6LIM74NFvfbi06HyX9x3kojoNN8y8vV9yvNQyVR/DWDc
- vnqEuLhWXPX0M0OTP6tMQCRKgcD2jvwqQcw1W9IjbbP9bv27+NgcIEQp7ab0BzKje2bD
- Ls7cll3ti5ixC6in9/zDNcJxUd4gDZC0ResiVRskbadSW5cAN3HMWGwXkiJ+KZCPEYiV
- D0YlIjTGSwOlZlmGsVql61cRIIq47v9LNZh8Em8h6bBdDXjt54UMws2cvzk+4HUwEhR3
- P4UA==
+ bh=lUKBpQvbb/yNq0i9RdFSePX/EMam/n8OGH7BjrR4+o8=;
+ b=SlS3C/LvyoYbh3X7ZdnO8IhfOHridUctRjDvlGeHs1Drbhd+NMqNx8xDSClqBBMbL1
+ im2nnjGRX2bha7hW7Vxu+MnmeAgGzI9Egd7PlkxcJ2XUNruEmU0SjJZURO4/lHXK1qS4
+ zOuCfn02gjYyFnGXuin1QqBUB0XBLIAryr2qiC9RqyckaRrJ56do3ddUPMauKLyTGaR6
+ bDrJHYpWfwyX1FNlW0LJxBev/P99w5GPpcPajZgv4oQRhb1ZLYxHGios8rzSPh71RJix
+ 8cc5H144xMlWJ1za+aKMZsQTT/hsn7Oc9IDE7Nnm0ahXoibtyhKq58mVkWitBgzHw44F
+ Bvww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702034609; x=1702639409;
+ d=1e100.net; s=20230601; t=1702477070; x=1703081870;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=ngRjKUqgr4ywvtmzRCL3isbRn4040f3HYtiH0MujBOQ=;
- b=Lv48LDhqXbfE3VvCWLkBajq9SId0IvFsNTHsVRDUjQShY1fw2WCaGjVc0rXCsWgmJo
- J6IZIgfBJQJ45l+2ii1erypSgh/2RRX+6F4hkSKnmm9yceoT5S9fNnGMjB2JwwbwtNhS
- QRvXia5yGgbY2bXmZx05IQqkrV39hAiQGPJpq5AseURLGQrcmt4QbE5v9h4LPsL6l8Ry
- niVe82XBrsKzkidMbrJPMPiczZig2/XMCTQf9K3oKRMoLKJuJ9vwFA+54Yh3S4GD9G2e
- cjrEdjX18FH03MODUzXhbvnBldgSkuIPl1T5cZGD2PQaJGG5AmW5UvVO4RZJ4275jOoQ
- PiOQ==
-X-Gm-Message-State: AOJu0YzooY+BXbMB3dYKABtqtwTeEMDjyxKWjPU56DIsUfDGus6waD9O
- bfELqErkgptUvU6IZzXt6Kr3xeSUwcHtWw==
-X-Google-Smtp-Source: AGHT+IHt0oC6n8gGbh75uPPRXHAut1YVD4m9aYNuGMfjL63jbI1rO0jwUsB9LmGGjR+UZmOyXaGlxg==
-X-Received: by 2002:a05:6a00:1f13:b0:6ce:7d15:9a6c with SMTP id
- be19-20020a056a001f1300b006ce7d159a6cmr4192546pfb.67.1702034609550; 
- Fri, 08 Dec 2023 03:23:29 -0800 (PST)
+ bh=lUKBpQvbb/yNq0i9RdFSePX/EMam/n8OGH7BjrR4+o8=;
+ b=lUTxbmK56Y94mHGEAmlk/uI2KdFAv/PLUkGuvgkOjzaSCyv7RW/OQeL+gXZIALmx04
+ 4R1pOvOYkQ74i42j0Q7Y5CeKJPly6mSSAOYDXxApek3kyz1vrai+aeVx5+HUBCz3bUAs
+ aIEpd1LuK8IP0Mu36HyMlmZfHLuCzSXYQh+6DAjaXdSh4BKl/Fh8Db+MgQUL7ftDQ/H+
+ zECdYRzJZFA2NqP8FUeMLHgHHjXmgfgpAZcAPmlEDDP9nghKoJ7wgAgXd+nBA2tYg3eh
+ P1IYYyz/3a5hqTsHGz47RUoOhbuwDVDOXZcz3TqotF/TRWXz/Zyd+LumJllWjMnVx/vu
+ 6jfg==
+X-Gm-Message-State: AOJu0YxZnA4xzEuvSSFBF1QcKf/MZjQBNzfgGFJkoWRA8Ab/ahwtSZs6
+ 49Nhq+ME/KPWXdHgCij9ILgYUpK+HXeZkBzL
+X-Google-Smtp-Source: AGHT+IF5NSOdWJgki6NTNqkOhfabHjltHl66o+7oL8Kt6hWmfCZO7LL4xwJ/XkGxo/N2mz2EaqASIw==
+X-Received: by 2002:a05:6a20:1450:b0:190:1246:7d20 with SMTP id
+ a16-20020a056a20145000b0019012467d20mr9781942pzi.87.1702477069696; 
+ Wed, 13 Dec 2023 06:17:49 -0800 (PST)
 Received: from localhost ([2409:8a20:bc4:a9a0:40eb:1e14:5537:3084])
  by smtp.gmail.com with ESMTPSA id
- v21-20020a056a00149500b006cedd9d49f9sm968318pfu.46.2023.12.08.03.23.28
+ s16-20020a056a00195000b006cb574445efsm10062993pfk.88.2023.12.13.06.17.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 08 Dec 2023 03:23:29 -0800 (PST)
+ Wed, 13 Dec 2023 06:17:49 -0800 (PST)
 From: Yihuan Pan <xun794@gmail.com>
 To: qemu-trivial@nongnu.org
-Cc: Yihuan Pan <xun794@gmail.com>
-Subject: [PATCH] qemu-options: Improve documentation for the fw_cfg option
-Date: Fri,  8 Dec 2023 19:23:25 +0800
-Message-ID: <20231208112325.64808-1-xun794@gmail.com>
+Cc: qemu-devel@nongnu.org,
+	Yihuan Pan <xun794@gmail.com>
+Subject: [PATCH] qemu-options: Clarify handling of commas in options parameters
+Date: Wed, 13 Dec 2023 22:17:07 +0800
+Message-ID: <20231213141706.629833-2-xun794@gmail.com>
 X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::444;
- envelope-from=xun794@gmail.com; helo=mail-pf1-x444.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::541;
+ envelope-from=xun794@gmail.com; helo=mail-pg1-x541.google.com
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
@@ -77,17 +78,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Dec 2023 11:23:39 -0000
+X-List-Received-Date: Wed, 13 Dec 2023 14:17:55 -0000
 
-Enhance the documentation for the `fw_cfg` option in qemu-options.hx
-to provide clearer instructions on handling filenames and strings.
+Provide explicit guidance on dealing with option parameters as arbitrary
+strings containing commas, such as in "file=my,file" and "string=a,b". The
+updated documentation emphasizes the need to double commas when they
+appear within such parameters.
 
 Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1839
 Signed-off-by: Yihuan Pan <xun794@gmail.com>
 ---
- qemu-options.hx | 4 ++++
- 1 file changed, 4 insertions(+)
+ docs/system/invocation.rst   | 5 +++++
+ docs/system/qemu-manpage.rst | 5 +++++
+ qemu-options.hx              | 4 ++++
+ 3 files changed, 14 insertions(+)
 
+Changes since the previous version:
+- Added a generic comment about doubling the commas to the
+  documentation.
+
+diff --git a/docs/system/invocation.rst b/docs/system/invocation.rst
+index 4ba38fc23d..14b7db1c10 100644
+--- a/docs/system/invocation.rst
++++ b/docs/system/invocation.rst
+@@ -10,6 +10,11 @@ Invocation
+ disk_image is a raw hard disk image for IDE hard disk 0. Some targets do
+ not need a disk image.
+ 
++When dealing with options parameters as arbitrary strings containing
++commas, such as in "file=my,file" and "string=a,b", it's necessary to
++double the commas. For instance,"-fw_cfg name=z,string=a,,b" will be
++parsed as "-fw_cfg name=z,string=a,b".
++
+ .. hxtool-doc:: qemu-options.hx
+ 
+ Device URL Syntax
+diff --git a/docs/system/qemu-manpage.rst b/docs/system/qemu-manpage.rst
+index c47a412758..3ade4ee45b 100644
+--- a/docs/system/qemu-manpage.rst
++++ b/docs/system/qemu-manpage.rst
+@@ -31,6 +31,11 @@ Options
+ disk_image is a raw hard disk image for IDE hard disk 0. Some targets do
+ not need a disk image.
+ 
++When dealing with options parameters as arbitrary strings containing
++commas, such as in "file=my,file" and "string=a,b", it's necessary to
++double the commas. For instance,"-fw_cfg name=z,string=a,,b" will be
++parsed as "-fw_cfg name=z,string=a,b".
++
+ .. hxtool-doc:: qemu-options.hx
+ 
+ .. include:: keys.rst.inc
 diff --git a/qemu-options.hx b/qemu-options.hx
 index 42fd09e4de..a935aaae44 100644
 --- a/qemu-options.hx
