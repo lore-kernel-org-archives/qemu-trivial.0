@@ -1,128 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rDim7-00037O-He
-	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2023 05:17:03 -0500
+	id 1rDua8-00068T-4R
+	for mharc-qemu-trivial@gnu.org; Thu, 14 Dec 2023 17:53:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rDim5-00036y-C7
- for qemu-trivial@nongnu.org; Thu, 14 Dec 2023 05:17:01 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rDua5-000685-Vj; Thu, 14 Dec 2023 17:53:25 -0500
+Received: from zoidberg.rfc1149.net ([195.154.227.159])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rDim3-0002fl-4Y
- for qemu-trivial@nongnu.org; Thu, 14 Dec 2023 05:17:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1702549017;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=eVsxdwSnhSBTVnkRkStkb4tnqQlrdDPUllcCzcZOG50=;
- b=cEHvbbcd2rC+U+wL7fAxj0em/eg131Ip831C5xbyCposk5r/ev/Wg8BaMIqwc5u8Tpc/lT
- y4JJ8DYnLH3bhChe5stgjL+K68WwH2puP2hulBwMQyUVLN69+hHkCKWnDJLTBrrb5ljMtC
- vhbOV/OIYczSow9ANUanNCR2N+08sts=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-325-nfoqm-2pNPSTwiUG-1wsPg-1; Thu, 14 Dec 2023 05:16:54 -0500
-X-MC-Unique: nfoqm-2pNPSTwiUG-1wsPg-1
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-77f515c2a5fso837040185a.1
- for <qemu-trivial@nongnu.org>; Thu, 14 Dec 2023 02:16:54 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702549014; x=1703153814;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eVsxdwSnhSBTVnkRkStkb4tnqQlrdDPUllcCzcZOG50=;
- b=p6P2aIPgVUErD4IsP+4R/2iAGuyYjBfvETdgZIP2vJRWKoWL4sd3r8ggwvdYzdWl23
- JuTd0JxkCvIyEaAEau6HKIRkJ31aaZjvEtIt2/4+LtbzTfllvWGBsNCVuelf1R6I9090
- TDzSbxz1eeHyMAHOPJuTZBdjwJFRz7JpjJiUdt6PltUquB9fezshuQtvdZApB1O/JT15
- rYfXuw5JIPY7TCUfxI7D7PsAZTTS+dp1NTiLgCAuonyH46L+tMfJk0T37VlkSR/miUNt
- tJcw+xjAHqWD4p8R0RWqFEfMklQoWQb/ZrQYI2DN40jH0HYUPCbYQgILOfg7qgHASbQJ
- EByQ==
-X-Gm-Message-State: AOJu0Yzus1BFp07PRIzw7+f2i8l/U5UhcrbGPAnFgivbfnuJNzYhXHRU
- WsLX6NiVyMihBgRaNuoj6wUPREqHes53f62NRHhdwifUsWWzbHo2oNvK7K3g2en75ZBlKlmfUZ3
- 0LUIKQAH7s74RzjUUIbOeYTPF8w==
-X-Received: by 2002:a05:620a:1004:b0:77f:3f0b:219d with SMTP id
- z4-20020a05620a100400b0077f3f0b219dmr9244807qkj.128.1702549014345; 
- Thu, 14 Dec 2023 02:16:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHbKcTJAxkGFBG/AANcU05rTEXnr9LCdxZwiSkHvHvwd24U2jpyZl4gesqUnQ/7b/Xj7+m5gQ==
-X-Received: by 2002:a05:620a:1004:b0:77f:3f0b:219d with SMTP id
- z4-20020a05620a100400b0077f3f0b219dmr9244799qkj.128.1702549014057; 
- Thu, 14 Dec 2023 02:16:54 -0800 (PST)
-Received: from [192.168.0.6] (ip-109-43-178-144.web.vodafone.de.
- [109.43.178.144]) by smtp.gmail.com with ESMTPSA id
- qg1-20020a05620a664100b0077f01c11e3bsm5187655qkn.61.2023.12.14.02.16.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 14 Dec 2023 02:16:53 -0800 (PST)
-Message-ID: <f0fa608f-5420-4438-875c-c65ac0e15e7a@redhat.com>
-Date: Thu, 14 Dec 2023 11:16:49 +0100
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rDua4-0000ea-5r; Thu, 14 Dec 2023 17:53:25 -0500
+Received: from buffy.. (buffy [192.168.147.6])
+ by zoidberg.rfc1149.net (Postfix) with ESMTP id 8E87B80025;
+ Thu, 14 Dec 2023 23:53:18 +0100 (CET)
+Authentication-Results: zoidberg.rfc1149.net;
+ dmarc=fail (p=none dis=none) header.from=rfc1149.net
+Authentication-Results: zoidberg.rfc1149.net;
+ spf=fail smtp.mailfrom=rfc1149.net
+From: Samuel Tardieu <sam@rfc1149.net>
+To: qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ Hanna Reitz <hreitz@redhat.com>, qemu-trivial@nongnu.org,
+ Samuel Tardieu <sam@rfc1149.net>
+Subject: [PATCH] docs: fix typo
+Date: Thu, 14 Dec 2023 23:53:18 +0100
+Message-ID: <20231214225318.2391800-1-sam@rfc1149.net>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] qemu-options: Clarify handling of commas in options
- parameters
-To: Yihuan Pan <xun794@gmail.com>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20231213141706.629833-2-xun794@gmail.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
- yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
- 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
- tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
- 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
- O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
- 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
- gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
- 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
- zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzR5UaG9tYXMgSHV0
- aCA8dGh1dGhAcmVkaGF0LmNvbT7CwXgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
- AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
- QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
- EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
- 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
- eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
- ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
- zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
- tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
- WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
- UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDzsFN
- BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
- 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
- +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
- 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
- gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
- WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
- VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
- knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
- cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
- X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABwsFfBBgBAgAJBQJR+3lM
- AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
- ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
- fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
- 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
- cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
- ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
- Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
- oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
- IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
- yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20231213141706.629833-2-xun794@gmail.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
+ helo=zoidberg.rfc1149.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,83 +46,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 14 Dec 2023 10:17:01 -0000
+X-List-Received-Date: Thu, 14 Dec 2023 22:53:26 -0000
 
-On 13/12/2023 15.17, Yihuan Pan wrote:
-> Provide explicit guidance on dealing with option parameters as arbitrary
-> strings containing commas, such as in "file=my,file" and "string=a,b". The
-> updated documentation emphasizes the need to double commas when they
-> appear within such parameters.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1839
-> Signed-off-by: Yihuan Pan <xun794@gmail.com>
-> ---
->   docs/system/invocation.rst   | 5 +++++
->   docs/system/qemu-manpage.rst | 5 +++++
->   qemu-options.hx              | 4 ++++
->   3 files changed, 14 insertions(+)
-> 
-> Changes since the previous version:
-> - Added a generic comment about doubling the commas to the
->    documentation.
-> 
-> diff --git a/docs/system/invocation.rst b/docs/system/invocation.rst
-> index 4ba38fc23d..14b7db1c10 100644
-> --- a/docs/system/invocation.rst
-> +++ b/docs/system/invocation.rst
-> @@ -10,6 +10,11 @@ Invocation
->   disk_image is a raw hard disk image for IDE hard disk 0. Some targets do
->   not need a disk image.
->   
-> +When dealing with options parameters as arbitrary strings containing
-> +commas, such as in "file=my,file" and "string=a,b", it's necessary to
-> +double the commas. For instance,"-fw_cfg name=z,string=a,,b" will be
-> +parsed as "-fw_cfg name=z,string=a,b".
-> +
->   .. hxtool-doc:: qemu-options.hx
->   
->   Device URL Syntax
-> diff --git a/docs/system/qemu-manpage.rst b/docs/system/qemu-manpage.rst
-> index c47a412758..3ade4ee45b 100644
-> --- a/docs/system/qemu-manpage.rst
-> +++ b/docs/system/qemu-manpage.rst
-> @@ -31,6 +31,11 @@ Options
->   disk_image is a raw hard disk image for IDE hard disk 0. Some targets do
->   not need a disk image.
->   
-> +When dealing with options parameters as arbitrary strings containing
-> +commas, such as in "file=my,file" and "string=a,b", it's necessary to
-> +double the commas. For instance,"-fw_cfg name=z,string=a,,b" will be
-> +parsed as "-fw_cfg name=z,string=a,b".
-> +
->   .. hxtool-doc:: qemu-options.hx
->   
->   .. include:: keys.rst.inc
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 42fd09e4de..a935aaae44 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -4086,9 +4086,13 @@ DEF("fw_cfg", HAS_ARG, QEMU_OPTION_fwcfg,
->   SRST
->   ``-fw_cfg [name=]name,file=file``
->       Add named fw\_cfg entry with contents from file file.
-> +    If the filename contains comma, you must double it (for instance,
-> +    "file=my,,file" to use file "my,file").
->   
->   ``-fw_cfg [name=]name,string=str``
->       Add named fw\_cfg entry with contents from string str.
-> +    If the string contains comma, you must double it (for instance,
-> +    "string=my,,string" to use file "my,string").
->   
->       The terminating NUL character of the contents of str will not be
->       included as part of the fw\_cfg item data. To insert contents with
+Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+---
+ docs/tools/qemu-img.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Looks fine to me, thanks!
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
-If nobody objects, I can queue it for my next pull request.
-
-  Thomas
+diff --git a/docs/tools/qemu-img.rst b/docs/tools/qemu-img.rst
+index 4459c065f1..3653adb963 100644
+--- a/docs/tools/qemu-img.rst
++++ b/docs/tools/qemu-img.rst
+@@ -406,7 +406,7 @@ Command description:
+   Compare exits with ``0`` in case the images are equal and with ``1``
+   in case the images differ. Other exit codes mean an error occurred during
+   execution and standard error output should contain an error message.
+-  The following table sumarizes all exit codes of the compare subcommand:
++  The following table summarizes all exit codes of the compare subcommand:
+ 
+   0
+     Images are identical (or requested help was printed)
+-- 
+2.42.0
 
 
