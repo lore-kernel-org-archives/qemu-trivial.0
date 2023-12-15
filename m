@@ -1,62 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rE0Ss-0004pF-Dg
-	for mharc-qemu-trivial@gnu.org; Fri, 15 Dec 2023 00:10:22 -0500
+	id 1rE5LI-0001k9-8T
+	for mharc-qemu-trivial@gnu.org; Fri, 15 Dec 2023 05:22:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rDyDu-0000U1-9Y; Thu, 14 Dec 2023 21:46:46 -0500
-Received: from mgamail.intel.com ([198.175.65.13])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rE5LD-0001ia-3K; Fri, 15 Dec 2023 05:22:48 -0500
+Received: from mgamail.intel.com ([192.55.52.136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rDyDs-0001sA-El; Thu, 14 Dec 2023 21:46:46 -0500
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rE5L9-0007SC-K4; Fri, 15 Dec 2023 05:22:45 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1702608404; x=1734144404;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=PQ4sktM+2+IAI/nSNMnL24ZHpp2LJ6Mxb2DMBxZImFc=;
- b=lmDorjrIgNeirH3ieb0TFP26q7xdBTEZbBEMFfGibeTLKS4WCoBSQmj8
- c7D9eidb0047ktDBzFh69JjZavX/srxyNI0M+ORcbdx95PdaJH1R0rbpV
- q9JnV5nodRu1zt5qgD3OF7PmSxMR4UZfKN/ovKPzowugKZwa7iqZuqxIk
- cN+O7reQozy6XZFIKk9tFvLpULeCjBpQuLcc+7aI5Ifig+FvMqNjNnddl
- kQRxdB90jeYLCA8dy2evzwvU8umawcGC9lWbdlbcljzLvqFpt+jMK9GcY
- bBlufO6v0lZOnzIgsS+0wl8CtW6zr991oR3OouDIap17RYLOGW6GfHfVH g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10924"; a="2310546"
-X-IronPort-AV: E=Sophos;i="6.04,277,1695711600"; 
-   d="scan'208";a="2310546"
-Received: from fmsmga001.fm.intel.com ([10.253.24.23])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 Dec 2023 18:46:39 -0800
+ t=1702635763; x=1734171763;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=cED3omeMfkmtHfI+qqwYCTn77LOOHUcnjKaygmKN5dk=;
+ b=kZshCvA4ZtKHFKEbpksjJHURKBbpViuuVu7ihV+cUFIOlUoZYFXGPVe3
+ hkr4zIz6RE2c+Wuw7F50jGcZetRb10TDHrIOMep9VX9K5Op3AZZFp0IF1
+ v4OOyopFcoqPR2TdxeKi5b8xCPhfY8oofGQzc2LD6RCqPDKlcCOYPT58P
+ 3FitEURXL6R/bvy6aPYK6ub14XYMGCEWN5q0IhfuPUT0BGfu6RXMSkrOh
+ 49I582hyooTdzxKNMeT9ti8frwocKOAxCS6FkqGnVbgmFbhAC8dxv3TlA
+ I21iCzYxJqhTQYPy1XwFOs7ba5X5eCM7Ear3UJxZyxHv8Jf1DVc5MH/2a g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10924"; a="374761826"
+X-IronPort-AV: E=Sophos;i="6.04,278,1695711600"; d="scan'208";a="374761826"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Dec 2023 02:22:38 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10924"; a="918277476"
-X-IronPort-AV: E=Sophos;i="6.04,277,1695711600"; d="scan'208";a="918277476"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by fmsmga001.fm.intel.com with ESMTP; 14 Dec 2023 18:46:36 -0800
-Date: Fri, 15 Dec 2023 10:59:00 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Samuel Tardieu <sam@rfc1149.net>
-Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- qemu-block@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] docs: fix typo
-Message-ID: <ZXvA9IlOEZfVNzuO@intel.com>
-References: <20231214225318.2391800-1-sam@rfc1149.net>
+X-IronPort-AV: E=McAfee;i="6600,9927,10924"; a="845079479"
+X-IronPort-AV: E=Sophos;i="6.04,278,1695711600"; d="scan'208";a="845079479"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
+ by fmsmga004.fm.intel.com with ESMTP; 15 Dec 2023 02:22:35 -0800
+From: Zhao Liu <zhao1.liu@linux.intel.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Darren Kenny <darren.kenny@oracle.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Zhenyu Wang <zhenyu.z.wang@intel.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Yongwei Ma <yongwei.ma@intel.com>
+Subject: [PATCH v2] scripts/checkpatch: Support codespell checking
+Date: Fri, 15 Dec 2023 18:34:48 +0800
+Message-Id: <20231215103448.3822284-1-zhao1.liu@linux.intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20231214225318.2391800-1-sam@rfc1149.net>
-Received-SPF: pass client-ip=198.175.65.13; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=192.55.52.136;
+ envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_MED=-2.3,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 15 Dec 2023 00:10:18 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -68,37 +68,208 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 15 Dec 2023 02:46:46 -0000
+X-List-Received-Date: Fri, 15 Dec 2023 10:22:48 -0000
 
-On Thu, Dec 14, 2023 at 11:53:18PM +0100, Samuel Tardieu wrote:
-> Date: Thu, 14 Dec 2023 23:53:18 +0100
-> From: Samuel Tardieu <sam@rfc1149.net>
-> Subject: [PATCH] docs: fix typo
-> X-Mailer: git-send-email 2.42.0
-> 
-> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
-> ---
+From: Zhao Liu <zhao1.liu@intel.com>
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Add two spelling check options (--codespell and --codespellfile) to
+enhance spelling check through dictionary, which copied the Linux
+kernel's implementation in checkpatch.pl.
 
->  docs/tools/qemu-img.rst | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/docs/tools/qemu-img.rst b/docs/tools/qemu-img.rst
-> index 4459c065f1..3653adb963 100644
-> --- a/docs/tools/qemu-img.rst
-> +++ b/docs/tools/qemu-img.rst
-> @@ -406,7 +406,7 @@ Command description:
->    Compare exits with ``0`` in case the images are equal and with ``1``
->    in case the images differ. Other exit codes mean an error occurred during
->    execution and standard error output should contain an error message.
-> -  The following table sumarizes all exit codes of the compare subcommand:
-> +  The following table summarizes all exit codes of the compare subcommand:
->  
->    0
->      Images are identical (or requested help was printed)
-> -- 
-> 2.42.0
-> 
-> 
+This check uses the dictionary at "/usr/share/codespell/dictionary.txt"
+by default, if there is no dictionary specified under this path, it
+will look for the dictionary of python3's codespell (This requires user
+to add python3's path in environment variable $PATH, and to install
+codespell by "pip install codespell").
+
+Tested-by: Yongwei Ma <yongwei.ma@intel.com>
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+---
+Changes since v1:
+* Drop the default dictionary "selling.text" and just support optional
+  spelling check via --codespell and --codespellfile. (Thomas)
+
+v1: https://lore.kernel.org/qemu-devel/20231204082917.2430223-1-zhao1.liu@linux.intel.com/
+
+(CC more maintainers who are suggested by get_maintainer.pl in v2.)
+---
+ scripts/checkpatch.pl | 125 +++++++++++++++++++++++++++++++++++-------
+ 1 file changed, 105 insertions(+), 20 deletions(-)
+
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index 6e4100d2a41c..45a5c66e3eab 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -35,6 +35,9 @@ my $summary_file = 0;
+ my $root;
+ my %debug;
+ my $help = 0;
++my $codespell = 0;
++my $codespellfile = "/usr/share/codespell/dictionary.txt";
++my $user_codespellfile = "";
+ 
+ sub help {
+ 	my ($exitcode) = @_;
+@@ -66,6 +69,9 @@ Options:
+                              is all off)
+   --test-only=WORD           report only warnings/errors containing WORD
+                              literally
++  --codespell                Use the codespell dictionary for spelling/typos
++                             (default:$codespellfile)
++  --codespellfile            Use this codespell dictionary
+   --color[=WHEN]             Use colors 'always', 'never', or only when output
+                              is a terminal ('auto'). Default is 'auto'.
+   -h, --help, --version      display this help and exit
+@@ -85,28 +91,50 @@ foreach (@ARGV) {
+ }
+ 
+ GetOptions(
+-	'q|quiet+'	=> \$quiet,
+-	'tree!'		=> \$tree,
+-	'signoff!'	=> \$chk_signoff,
+-	'patch!'	=> \$chk_patch,
+-	'branch!'	=> \$chk_branch,
+-	'emacs!'	=> \$emacs,
+-	'terse!'	=> \$terse,
+-	'f|file!'	=> \$file,
+-	'strict!'	=> \$no_warnings,
+-	'root=s'	=> \$root,
+-	'summary!'	=> \$summary,
+-	'mailback!'	=> \$mailback,
+-	'summary-file!'	=> \$summary_file,
+-
+-	'debug=s'	=> \%debug,
+-	'test-only=s'	=> \$tst_only,
+-	'color=s'       => \$color,
+-	'no-color'      => sub { $color = 'never'; },
+-	'h|help'	=> \$help,
+-	'version'	=> \$help
++	'q|quiet+'		=> \$quiet,
++	'tree!'			=> \$tree,
++	'signoff!'		=> \$chk_signoff,
++	'patch!'		=> \$chk_patch,
++	'branch!'		=> \$chk_branch,
++	'emacs!'		=> \$emacs,
++	'terse!'		=> \$terse,
++	'f|file!'		=> \$file,
++	'strict!'		=> \$no_warnings,
++	'root=s'		=> \$root,
++	'summary!'		=> \$summary,
++	'mailback!'		=> \$mailback,
++	'summary-file!'		=> \$summary_file,
++	'debug=s'		=> \%debug,
++	'test-only=s'		=> \$tst_only,
++	'codespell!'		=> \$codespell,
++	'codespellfile=s'	=> \$user_codespellfile,
++	'color=s'		=> \$color,
++	'no-color'		=> sub { $color = 'never'; },
++	'h|help'		=> \$help,
++	'version'		=> \$help
+ ) or help(1);
+ 
++if ($user_codespellfile) {
++	# Use the user provided codespell file unconditionally
++	$codespellfile = $user_codespellfile;
++} elsif (!(-f $codespellfile)) {
++	# If /usr/share/codespell/dictionary.txt is not present, try to find it
++	# under codespell's install directory: <codespell_root>/data/dictionary.txt
++	if (($codespell || $help) && which("python3") ne "") {
++		my $python_codespell_dict = << "EOF";
++
++import os.path as op
++import codespell_lib
++codespell_dir = op.dirname(codespell_lib.__file__)
++codespell_file = op.join(codespell_dir, 'data', 'dictionary.txt')
++print(codespell_file, end='')
++EOF
++
++		my $codespell_dict = `python3 -c "$python_codespell_dict" 2> /dev/null`;
++		$codespellfile = $codespell_dict if (-f $codespell_dict);
++	}
++}
++
+ help(0) if ($help);
+ 
+ my $exit = 0;
+@@ -337,6 +365,36 @@ our @typeList = (
+ 	qr{guintptr},
+ );
+ 
++# Load common spelling mistakes and build regular expression list.
++my $misspellings;
++my %spelling_fix;
++
++if ($codespell) {
++	if (open(my $spelling, '<', $codespellfile)) {
++		while (<$spelling>) {
++			my $line = $_;
++
++			$line =~ s/\s*\n?$//g;
++			$line =~ s/^\s*//g;
++
++			next if ($line =~ m/^\s*#/);
++			next if ($line =~ m/^\s*$/);
++			next if ($line =~ m/, disabled/i);
++
++			$line =~ s/,.*$//;
++
++			my ($suspect, $fix) = split(/->/, $line);
++
++			$spelling_fix{$suspect} = $fix;
++		}
++		close($spelling);
++	} else {
++		warn "No codespell typos will be found - file '$codespellfile': $!\n";
++	}
++}
++
++$misspellings = join("|", sort keys %spelling_fix) if keys %spelling_fix;
++
+ # This can be modified by sub possible.  Since it can be empty, be careful
+ # about regexes that always match, because they can cause infinite loops.
+ our @modifierList = (
+@@ -477,6 +535,18 @@ sub top_of_kernel_tree {
+ 	return 1;
+ }
+ 
++sub which {
++	my ($bin) = @_;
++
++	foreach my $path (split(/:/, $ENV{PATH})) {
++		if (-e "$path/$bin") {
++			return "$path/$bin";
++		}
++	}
++
++	return "";
++}
++
+ sub expand_tabs {
+ 	my ($str) = @_;
+ 
+@@ -1585,6 +1655,21 @@ sub process {
+ 			WARN("8-bit UTF-8 used in possible commit log\n" . $herecurr);
+ 		}
+ 
++# Check for various typo / spelling mistakes
++		if (defined($misspellings) &&
++		    ($in_commit_log || $line =~ /^(?:\+|Subject:)/i)) {
++			while ($rawline =~ /(?:^|[^\w\-'`])($misspellings)(?:[^\w\-'`]|$)/gi) {
++				my $typo = $1;
++				my $blank = copy_spacing($rawline);
++				my $ptr = substr($blank, 0, $-[1]) . "^" x length($typo);
++				my $hereptr = "$hereline$ptr\n";
++				my $typo_fix = $spelling_fix{lc($typo)};
++				$typo_fix = ucfirst($typo_fix) if ($typo =~ /^[A-Z]/);
++				$typo_fix = uc($typo_fix) if ($typo =~ /^[A-Z]+$/);
++				WARN("'$typo' may be misspelled - perhaps '$typo_fix'?\n" . $hereptr);
++			}
++		}
++
+ # ignore non-hunk lines and lines being removed
+ 		next if (!$hunk_line || $line =~ /^-/);
+ 
+-- 
+2.34.1
+
 
