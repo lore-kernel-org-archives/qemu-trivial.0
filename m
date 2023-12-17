@@ -1,39 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rEuSw-0005IL-Kb
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2023 11:58:10 -0500
+	id 1rEzFQ-0006WL-PR
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2023 17:04:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1rEuMf-00046s-5c; Sun, 17 Dec 2023 11:51:41 -0500
+ id 1rEzFN-0006Ti-6Y; Sun, 17 Dec 2023 17:04:29 -0500
 Received: from mail-b.sr.ht ([173.195.146.151])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1rEuMd-0007y4-D8; Sun, 17 Dec 2023 11:51:40 -0500
+ id 1rEzFJ-00033n-LS; Sun, 17 Dec 2023 17:04:28 -0500
 Authentication-Results: mail-b.sr.ht; dkim=none 
 Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 4A1CA11EF5A;
- Sun, 17 Dec 2023 16:51:36 +0000 (UTC)
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 783AF11EF81;
+ Sun, 17 Dec 2023 22:04:23 +0000 (UTC)
 From: ~jmbert <jmbert@git.sr.ht>
 Date: Sun, 17 Dec 2023 14:57:55 +0000
-Subject: [PATCH qemu] target/i386: Fix "info mem" when LA57 is enabled
-Message-ID: <170283189605.9199.2409575066500035536-0@git.sr.ht>
+Subject: [PATCH qemu v2] target/i386: Fix "info mem" when LA57 is enabled
+MIME-Version: 1.0
+Message-ID: <170285066337.23861.17596309977698945459-0@git.sr.ht>
 X-Mailer: git.sr.ht
 Reply-to: ~jmbert <joe2157b@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: quoted-printable
-MIME-Version: 1.0
 Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
  helo=mail-b.sr.ht
-X-Spam_score_int: 2
-X-Spam_score: 0.2
-X-Spam_bar: /
-X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_REPLYTO=2.095,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_score_int: 17
+X-Spam_score: 1.7
+X-Spam_bar: +
+X-Spam_report: (1.7 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_06_12=1.543,
+ FREEMAIL_FORGED_REPLYTO=2.095, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 17 Dec 2023 11:58:09 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -45,7 +44,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 Dec 2023 16:51:43 -0000
+X-List-Received-Date: Sun, 17 Dec 2023 22:04:30 -0000
 
 From: Joe Berthels <joe2157b@gmail.com>
 
@@ -54,19 +53,20 @@ and displaying nothing.
 
 Signed-off-by: Joe Berthels (joe2157b@gmail.com)
 ---
- target/i386/monitor.c | 138 +++++++++++++++++++++---------------------
- 1 file changed, 70 insertions(+), 68 deletions(-)
+'l0' should have been shifted 48 bits to form 'end', instead of 47 bits
+
+ target/i386/monitor.c | 136 +++++++++++++++++++++---------------------
+ 1 file changed, 69 insertions(+), 67 deletions(-)
 
 diff --git a/target/i386/monitor.c b/target/i386/monitor.c
-index 950ff9ccbc..02a781e563 100644
+index 950ff9ccbc..d632a93971 100644
 --- a/target/i386/monitor.c
 +++ b/target/i386/monitor.c
-@@ -466,83 +466,85 @@ static void mem_info_la57(Monitor *mon, CPUArchState *e=
+@@ -467,82 +467,84 @@ static void mem_info_la57(Monitor *mon, CPUArchState *e=
 nv)
-     for (l0 =3D 0; l0 < 512; l0++) {
          cpu_physical_memory_read(pml5_addr + l0 * 8, &pml5e, 8);
          pml5e =3D le64_to_cpu(pml5e);
--        end =3D l0 << 48;
+         end =3D l0 << 48;
 -        if (!(pml5e & PG_PRESENT_MASK)) {
 -            prot =3D 0;
 -            mem_print(mon, env, &start, &last_prot, end, prot);
@@ -133,20 +133,19 @@ nv)
 -                            prot =3D pte & (PG_USER_MASK | PG_RW_MASK |
 -                                    PG_PRESENT_MASK);
 -                            prot &=3D pml5e & pml4e & pdpe & pde;
-+        end =3D l0 << 47;
 +        if (pml5e & PG_PRESENT_MASK) {
 +            pml4_addr =3D pml5e & 0x3fffffffff000ULL;
 +            for (l1 =3D 0; l1 < 512; l1++) {
 +                cpu_physical_memory_read(pml4_addr + l1 * 8, &pml4e, 8);
 +                pml4e =3D le64_to_cpu(pml4e);
-+                end =3D (l0 << 47) + (l1 << 39);
++                end =3D (l0 << 48) + (l1 << 39);
 +                if (pml4e & PG_PRESENT_MASK) {
 +                    pdp_addr =3D pml4e & 0x3fffffffff000ULL;
 +                    for (l2 =3D 0; l2 < 512; l2++) {
 +                        cpu_physical_memory_read(pdp_addr + l2 * 8, &pdpe, 8=
 );
 +                        pdpe =3D le64_to_cpu(pdpe);
-+                        end =3D (l0 << 47) + (l1 << 39) + (l2 << 30);
++                        end =3D (l0 << 48) + (l1 << 39) + (l2 << 30);
 +                        if (pdpe & PG_PRESENT_MASK) {
 +                            if (pdpe & PG_PSE_MASK) {
 +                                prot =3D pdpe & (PG_USER_MASK | PG_RW_MASK |
@@ -160,7 +159,7 @@ nv)
 +                                    cpu_physical_memory_read(pd_addr + l3 * =
 8, &pde, 8);
 +                                    pde =3D le64_to_cpu(pde);
-+                                    end =3D (l0 << 47) + (l1 << 39) +
++                                    end =3D (l0 << 48) + (l1 << 39) +
 +                                            (l2 << 30) + (l3 << 21);
 +                                    if (pde & PG_PRESENT_MASK) {
 +                                        if (pde & PG_PSE_MASK) {
@@ -181,7 +180,7 @@ addr
 +                                                                         &pt=
 e, 8);
 +                                                pte =3D le64_to_cpu(pte);
-+                                                end =3D (l0 << 47) + (l1 << =
++                                                end =3D (l0 << 48) + (l1 << =
 39) +
 +                                                    (l2 << 30) +
 +                                                    (l3 << 21) + (l4 << 12);
