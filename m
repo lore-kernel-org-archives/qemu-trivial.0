@@ -1,75 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rEeo8-00060F-DA
-	for mharc-qemu-trivial@gnu.org; Sat, 16 Dec 2023 19:15:00 -0500
+	id 1rEuSw-0005IL-Kb
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2023 11:58:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dhoff749@gmail.com>)
- id 1rEeo0-0005xp-Qi; Sat, 16 Dec 2023 19:14:53 -0500
-Received: from mail-oa1-x32.google.com ([2001:4860:4864:20::32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dhoff749@gmail.com>)
- id 1rEenz-0006ym-An; Sat, 16 Dec 2023 19:14:52 -0500
-Received: by mail-oa1-x32.google.com with SMTP id
- 586e51a60fabf-203ae9903a6so18359fac.0; 
- Sat, 16 Dec 2023 16:14:50 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1702772089; x=1703376889; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=bvzLD6Vwnrwo/4f7Qk4uX9Y71nZI8dp7ZsmYIzGViqg=;
- b=Zcr5HYA4OROV00sAKzG43fV2QP6UrqeSZvXR/lbz6+VEdBfKS0zEOy/xIaqW0Bpp19
- G4QQjGde1EMsO8HOBBK3xENxxperMHfHFNfved4LtlejcwGS9lzLAuKteXHyHMaMTkyH
- MHLjJJ3icQSgH2qxtCYJob1mPeSNgXzfD8IULvE7L4VlexWXd+leHS/covJ8swViaQ4L
- Y0cLj5OX2qUCWo5/NG3IhSohU/kfNh7Dg4PGEfh9l0Tn4SvhqES8XCjG6wFkSxqTajDD
- 3JT1WR+aaAgexpZjN9wTyI3HXQwRrjKAnA/T+HWDo+pjvrmVz/JeSTowVQ7SC+SwdYRz
- 7i9Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702772089; x=1703376889;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=bvzLD6Vwnrwo/4f7Qk4uX9Y71nZI8dp7ZsmYIzGViqg=;
- b=uT47uRr9xO4LRu2wMvsXS5iFnGWeKrgepLS7Ei1vYHp3PV7aIw7NrFHl3vyl5Z3mAr
- wuyP/FXjE+kuxJ/77sWQxHohC0tBDRQ376f+y5CB2sTxtVA1dMy188MBDO7qNDfYEZBS
- wDYAMsx8waChJDjWHwJDu7/8FCRMC08CAVc4EsHuIkeHMmQ7CFfRKhKV8n5wUuD7YP39
- ZvTjJ8F33BdV/4CEzwtd4uuHNIoYLcUVfkIuvny5G6Nx/s13spQ+ZydL5GP4f/pjXkw3
- /0/9g9i4wpgW60TlxpreRqJr9fVGfMdMQvcy55OI6EDqHPxW2zOmgng5hLW7M7DAkD1C
- YvEw==
-X-Gm-Message-State: AOJu0YzXfNay4ekwpAy9p8uZxHkKaV5pUVP2y10u0SkKs0I69e3/auF2
- CtYKvqRSCoOa+6+Z95f7g8Y8fv6qc0I=
-X-Google-Smtp-Source: AGHT+IGsFDXoj7RvTv3CFkwjPc9MgfEgDnL3LIAIl9hpEht9Q1+G1VKJbvx7+KRuvR2BuVUpcXdrVw==
-X-Received: by 2002:a05:6808:f09:b0:3b8:9dec:1b7f with SMTP id
- m9-20020a0568080f0900b003b89dec1b7fmr14869606oiw.5.1702772088769; 
- Sat, 16 Dec 2023 16:14:48 -0800 (PST)
-Received: from dhoffman-NUC13RNGi9.hsd1.or.comcast.net
- ([2601:1c0:577f:e480:d340:aa97:1578:c53f])
- by smtp.gmail.com with ESMTPSA id
- i17-20020aa787d1000000b006d3b2008406sm1425873pfo.50.2023.12.16.16.14.48
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 16 Dec 2023 16:14:48 -0800 (PST)
-From: Daniel Hoffman <dhoff749@gmail.com>
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1rEuMf-00046s-5c; Sun, 17 Dec 2023 11:51:41 -0500
+Received: from mail-b.sr.ht ([173.195.146.151])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1rEuMd-0007y4-D8; Sun, 17 Dec 2023 11:51:40 -0500
+Authentication-Results: mail-b.sr.ht; dkim=none 
+Received: from git.sr.ht (unknown [173.195.146.142])
+ by mail-b.sr.ht (Postfix) with ESMTPSA id 4A1CA11EF5A;
+ Sun, 17 Dec 2023 16:51:36 +0000 (UTC)
+From: ~jmbert <jmbert@git.sr.ht>
+Date: Sun, 17 Dec 2023 14:57:55 +0000
+Subject: [PATCH qemu] target/i386: Fix "info mem" when LA57 is enabled
+Message-ID: <170283189605.9199.2409575066500035536-0@git.sr.ht>
+X-Mailer: git.sr.ht
+Reply-to: ~jmbert <joe2157b@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Daniel Hoffman <dhoff749@gmail.com>,
- Alexey Kardashevskiy <aik@ozlabs.ru>,
- David Gibson <david@gibson.dropbear.id.au>,
- qemu-ppc@nongnu.org (open list:Virtual Open Firm...)
-Subject: [PATCH] ppc/spapr: Fix ubsan warning with unaligned pointer access
-Date: Sat, 16 Dec 2023 16:14:40 -0800
-Message-Id: <20231217001441.146344-1-dhoff749@gmail.com>
-X-Mailer: git-send-email 2.40.1
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2001:4860:4864:20::32;
- envelope-from=dhoff749@gmail.com; helo=mail-oa1-x32.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
+ helo=mail-b.sr.ht
+X-Spam_score_int: 2
+X-Spam_score: 0.2
+X-Spam_bar: /
+X-Spam_report: (0.2 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FORGED_REPLYTO=2.095,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 17 Dec 2023 11:58:09 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,31 +45,193 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 Dec 2023 00:14:57 -0000
+X-List-Received-Date: Sun, 17 Dec 2023 16:51:43 -0000
 
-Found while running QTest with UBsan. Unaligned pointers appear to be
-valid, so moving the read to an explicit memcpy to an intermediate.
+From: Joe Berthels <joe2157b@gmail.com>
+
+"info mem" now correctly displays virtual address map instead of hanging
+and displaying nothing.
+
+Signed-off-by: Joe Berthels (joe2157b@gmail.com)
 ---
- hw/ppc/vof.c | 5 ++++-
- 1 file changed, 4 insertions(+), 1 deletion(-)
+ target/i386/monitor.c | 138 +++++++++++++++++++++---------------------
+ 1 file changed, 70 insertions(+), 68 deletions(-)
 
-diff --git a/hw/ppc/vof.c b/hw/ppc/vof.c
-index e3b430a81f4..609a51c645d 100644
---- a/hw/ppc/vof.c
-+++ b/hw/ppc/vof.c
-@@ -646,7 +646,10 @@ static void vof_dt_memory_available(void *fdt, GArray *claimed, uint64_t base)
-     mem0_reg = fdt_getprop(fdt, offset, "reg", &proplen);
-     g_assert(mem0_reg && proplen == sizeof(uint32_t) * (ac + sc));
-     if (sc == 2) {
--        mem0_end = be64_to_cpu(*(uint64_t *)(mem0_reg + sizeof(uint32_t) * ac));
-+        /* Pointer may be unaligned */
-+        uint64_t mem0_end_copy;
-+        memcpy(&mem0_end_copy, mem0_reg + sizeof(uint32_t) * ac, sizeof(mem0_end_copy));
-+        mem0_end = be64_to_cpu(mem0_end_copy);
-     } else {
-         mem0_end = be32_to_cpu(*(uint32_t *)(mem0_reg + sizeof(uint32_t) * ac));
+diff --git a/target/i386/monitor.c b/target/i386/monitor.c
+index 950ff9ccbc..02a781e563 100644
+--- a/target/i386/monitor.c
++++ b/target/i386/monitor.c
+@@ -466,83 +466,85 @@ static void mem_info_la57(Monitor *mon, CPUArchState *e=
+nv)
+     for (l0 =3D 0; l0 < 512; l0++) {
+         cpu_physical_memory_read(pml5_addr + l0 * 8, &pml5e, 8);
+         pml5e =3D le64_to_cpu(pml5e);
+-        end =3D l0 << 48;
+-        if (!(pml5e & PG_PRESENT_MASK)) {
+-            prot =3D 0;
+-            mem_print(mon, env, &start, &last_prot, end, prot);
+-            continue;
+-        }
+-
+-        pml4_addr =3D pml5e & 0x3fffffffff000ULL;
+-        for (l1 =3D 0; l1 < 512; l1++) {
+-            cpu_physical_memory_read(pml4_addr + l1 * 8, &pml4e, 8);
+-            pml4e =3D le64_to_cpu(pml4e);
+-            end =3D (l0 << 48) + (l1 << 39);
+-            if (!(pml4e & PG_PRESENT_MASK)) {
+-                prot =3D 0;
+-                mem_print(mon, env, &start, &last_prot, end, prot);
+-                continue;
+-            }
+-
+-            pdp_addr =3D pml4e & 0x3fffffffff000ULL;
+-            for (l2 =3D 0; l2 < 512; l2++) {
+-                cpu_physical_memory_read(pdp_addr + l2 * 8, &pdpe, 8);
+-                pdpe =3D le64_to_cpu(pdpe);
+-                end =3D (l0 << 48) + (l1 << 39) + (l2 << 30);
+-                if (pdpe & PG_PRESENT_MASK) {
+-                    prot =3D 0;
+-                    mem_print(mon, env, &start, &last_prot, end, prot);
+-                    continue;
+-                }
+-
+-                if (pdpe & PG_PSE_MASK) {
+-                    prot =3D pdpe & (PG_USER_MASK | PG_RW_MASK |
+-                            PG_PRESENT_MASK);
+-                    prot &=3D pml5e & pml4e;
+-                    mem_print(mon, env, &start, &last_prot, end, prot);
+-                    continue;
+-                }
+-
+-                pd_addr =3D pdpe & 0x3fffffffff000ULL;
+-                for (l3 =3D 0; l3 < 512; l3++) {
+-                    cpu_physical_memory_read(pd_addr + l3 * 8, &pde, 8);
+-                    pde =3D le64_to_cpu(pde);
+-                    end =3D (l0 << 48) + (l1 << 39) + (l2 << 30) + (l3 << 21=
+);
+-                    if (pde & PG_PRESENT_MASK) {
+-                        prot =3D 0;
+-                        mem_print(mon, env, &start, &last_prot, end, prot);
+-                        continue;
+-                    }
+-
+-                    if (pde & PG_PSE_MASK) {
+-                        prot =3D pde & (PG_USER_MASK | PG_RW_MASK |
+-                                PG_PRESENT_MASK);
+-                        prot &=3D pml5e & pml4e & pdpe;
+-                        mem_print(mon, env, &start, &last_prot, end, prot);
+-                        continue;
+-                    }
+-
+-                    pt_addr =3D pde & 0x3fffffffff000ULL;
+-                    for (l4 =3D 0; l4 < 512; l4++) {
+-                        cpu_physical_memory_read(pt_addr + l4 * 8, &pte, 8);
+-                        pte =3D le64_to_cpu(pte);
+-                        end =3D (l0 << 48) + (l1 << 39) + (l2 << 30) +
+-                            (l3 << 21) + (l4 << 12);
+-                        if (pte & PG_PRESENT_MASK) {
+-                            prot =3D pte & (PG_USER_MASK | PG_RW_MASK |
+-                                    PG_PRESENT_MASK);
+-                            prot &=3D pml5e & pml4e & pdpe & pde;
++        end =3D l0 << 47;
++        if (pml5e & PG_PRESENT_MASK) {
++            pml4_addr =3D pml5e & 0x3fffffffff000ULL;
++            for (l1 =3D 0; l1 < 512; l1++) {
++                cpu_physical_memory_read(pml4_addr + l1 * 8, &pml4e, 8);
++                pml4e =3D le64_to_cpu(pml4e);
++                end =3D (l0 << 47) + (l1 << 39);
++                if (pml4e & PG_PRESENT_MASK) {
++                    pdp_addr =3D pml4e & 0x3fffffffff000ULL;
++                    for (l2 =3D 0; l2 < 512; l2++) {
++                        cpu_physical_memory_read(pdp_addr + l2 * 8, &pdpe, 8=
+);
++                        pdpe =3D le64_to_cpu(pdpe);
++                        end =3D (l0 << 47) + (l1 << 39) + (l2 << 30);
++                        if (pdpe & PG_PRESENT_MASK) {
++                            if (pdpe & PG_PSE_MASK) {
++                                prot =3D pdpe & (PG_USER_MASK | PG_RW_MASK |
++                                               PG_PRESENT_MASK);
++                                prot &=3D pml5e & pml4e;
++                                mem_print(mon, env, &start, &last_prot, end,=
+ prot);
++                            } else {
++                                pd_addr =3D pdpe & 0x3fffffffff000ULL;
++                                for (l3 =3D 0; l3 < 512; l3++) {
++                                    cpu_physical_memory_read(pd_addr + l3 * =
+8, &pde, 8);
++                                    pde =3D le64_to_cpu(pde);
++                                    end =3D (l0 << 47) + (l1 << 39) +
++                                            (l2 << 30) + (l3 << 21);
++                                    if (pde & PG_PRESENT_MASK) {
++                                        if (pde & PG_PSE_MASK) {
++                                            prot =3D pde & (PG_USER_MASK | P=
+G_RW_MASK |
++                                                          PG_PRESENT_MASK);
++                                            prot &=3D pml5e & pml4e & pdpe;
++                                            mem_print(mon, env, &start,
++                                                      &last_prot, end, prot);
++                                        } else {
++                                            pt_addr =3D pde & 0x3fffffffff00=
+0ULL;
++                                            for (l4 =3D 0; l4 < 512; l4++) {
++                                                cpu_physical_memory_read(pt_=
+addr
++                                                                         + l=
+4 * 8,
++                                                                         &pt=
+e, 8);
++                                                pte =3D le64_to_cpu(pte);
++                                                end =3D (l0 << 47) + (l1 << =
+39) +
++                                                    (l2 << 30) +
++                                                    (l3 << 21) + (l4 << 12);
++                                                if (pte & PG_PRESENT_MASK) {
++                                                    prot =3D pte & (PG_USER_=
+MASK |
++                                                                  PG_RW_MASK=
+ |
++                                                                  PG_PRESENT=
+_MASK);
++                                                    prot &=3D pml5e & pml4e =
+& pdpe & pde;
++                                                } else {
++                                                    prot =3D 0;
++                                                }
++                                                mem_print(mon, env, &start,
++                                                          &last_prot, end, p=
+rot);
++                                            }
++                                        }
++                                    } else {
++                                        prot =3D 0;
++                                        mem_print(mon, env, &start,
++                                                  &last_prot, end, prot);
++                                    }
++                                }
++                            }
+                         } else {
+                             prot =3D 0;
++                            mem_print(mon, env, &start, &last_prot, end, pro=
+t);
+                         }
+-                        mem_print(mon, env, &start, &last_prot, end, prot);
+                     }
++                } else {
++                    prot =3D 0;
++                    mem_print(mon, env, &start, &last_prot, end, prot);
+                 }
+             }
++        }  else {
++            prot =3D 0;
++            mem_print(mon, env, &start, &last_prot, end, prot);
+         }
      }
--- 
-2.40.1
-
+     /* Flush last range */
+-    mem_print(mon, env, &start, &last_prot, (hwaddr)1 << 57, 0);
++    mem_print(mon, env, &start, &last_prot, (hwaddr)1 << 58, 0);
+ }
+ #endif /* TARGET_X86_64 */
+=20
+--=20
+2.38.5
 
