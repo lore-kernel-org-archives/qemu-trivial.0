@@ -1,79 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rFIRd-0001Xb-Pl
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Dec 2023 13:34:26 -0500
+	id 1rFKeF-0000rd-Rg
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Dec 2023 15:55:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1rFIRa-0001RC-4o
- for qemu-trivial@nongnu.org; Mon, 18 Dec 2023 13:34:22 -0500
-Received: from mail-pl1-x633.google.com ([2607:f8b0:4864:20::633])
+ id 1rFKeC-0000q7-0E
+ for qemu-trivial@nongnu.org; Mon, 18 Dec 2023 15:55:32 -0500
+Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1rFIRW-00053j-Sz
- for qemu-trivial@nongnu.org; Mon, 18 Dec 2023 13:34:21 -0500
-Received: by mail-pl1-x633.google.com with SMTP id
- d9443c01a7336-1d3ab37d0d1so7739245ad.0
- for <qemu-trivial@nongnu.org>; Mon, 18 Dec 2023 10:34:17 -0800 (PST)
+ id 1rFKe8-0003y0-MT
+ for qemu-trivial@nongnu.org; Mon, 18 Dec 2023 15:55:31 -0500
+Received: by mail-pg1-x52d.google.com with SMTP id
+ 41be03b00d2f7-53fa455cd94so1462215a12.2
+ for <qemu-trivial@nongnu.org>; Mon, 18 Dec 2023 12:55:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1702924456; x=1703529256; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=ventanamicro.com; s=google; t=1702932913; x=1703537713; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=brCmMKUOqELJNrt+/g0gPGDDmxUAXpsgyOedFbqgRi4=;
- b=CK6iKUg8uh1RO2r3eM34XzfBK7vNl0UwHzDW99WOUM5eZWu3ItlMmC/JYv2x9w4FAq
- M7PReDsTfNdlpdq6YEPx4hy3LJUpPYs5VynPP2JMd0aRI3py/iKNE/ol6zIJo4EzWd9N
- DBR/wqb/f2Q711LnbzC/Pt4n3HBrr0HMb9wQYqiZX+E9Gbe3025pF2G4tN8GBr/TGqs3
- ybUh8dw5iZdc+9DwzpfwGxgi4uRLm4/+SsGQwR5LjWV3T/h+Q0OMVlKXQqph+AKe/P76
- NOfb01ZD53Fr2ylJj4Y05eiBXY3AY+yw0IMZpOnWS1X+M/eYLfbfYjFb1Q7WGNlEcM5H
- 18HQ==
+ bh=qqGEFjsjfCaCTYZIR8UFcCe8X+bdKtw032QcRfWvd7U=;
+ b=EStDxgB/YkLyVVXj+tDqvQO3Dkyzi/QhxGBp/Rute5mynVqK3XHwodTOLu1qyMaXOD
+ eCE0Es4CrDMGaZKrXk4pHgUXpDWc7NUVS1ENvGaYS6Y7CJ0Ys6z0lp78yRhZEfVtKJeY
+ Tnjos2tZQmi/guVaGJ2NTMgJpqwODfGGByLM4WQ/2RfdZ+Dpq8a0VR2PznoukbCq18FH
+ LXbqy1DZyGK0rqnLAVXLDGzPzUPtv4a8vRsZkIeUSAMq1m/fyMMpbgQ47dta1qHRlUKd
+ BlNkWYycWPRP0tvMGWGsxZB6u5XV9Dt4vSy5i7dwB+bJUQMaqnAOmgyLGFsX4dBaCx4p
+ V2Cg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702924456; x=1703529256;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1702932913; x=1703537713;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=brCmMKUOqELJNrt+/g0gPGDDmxUAXpsgyOedFbqgRi4=;
- b=F8QWbY7ZJLX1ISDkCkENQUWomXKQ1ZVwPDzc3RbRP+gizbXHn/kA/R99977ZzGpRG4
- qydP8s9G9yss6Ac9P4Jlj+aHazp1HxL98begl82c9XP+s7wSYsM8rTNPGjac4wCmYkOU
- 36Sf2QW7kNIZ1UknuvfdAAvsU58OEHk+q9Nf5mR+EIkm07vk1WmcX3Ii4oEVsbkKPUUK
- wwCbMPyQ6sKDYV/7losXFkJLoZXRSUI63ugyvkGXJedn6Sxk1TShicI7i0vdLCW5vkdL
- SHsXH4mBb4ALIS4tVQtRUqRkH4CUqKsrgfLuSsnYr+iufUx35Mbto+Kd9EkIskG0x7r3
- HwsQ==
-X-Gm-Message-State: AOJu0Yybes0SjfFW7WIBjSbn7ronNmcDU+RbJBOIE2XtB3OluIkRF6P3
- LF7bYEhbTJCVRB9TYvqKJyINcA==
-X-Google-Smtp-Source: AGHT+IEnh7B8GDHEfwqshD3F4chT69yWI8zf6Z3tg8FvmSFilTqAxEqyVudUZkeWkxKQ4c3LsXbvxQ==
-X-Received: by 2002:a17:902:6544:b0:1d0:cfdc:10cb with SMTP id
- d4-20020a170902654400b001d0cfdc10cbmr7764279pln.72.1702924456112; 
- Mon, 18 Dec 2023 10:34:16 -0800 (PST)
-Received: from ?IPV6:2804:7f0:bcc0:ddec:9d1c:476f:1886:86ae?
- ([2804:7f0:bcc0:ddec:9d1c:476f:1886:86ae])
+ bh=qqGEFjsjfCaCTYZIR8UFcCe8X+bdKtw032QcRfWvd7U=;
+ b=a6fh6LB1H1xAKitFo9q2Xn7odiJ8SIUlPW8xjzF6a92tbe4zjsQGxAccXYwy7KMoJt
+ ruQSw4Bl8jq7mViu2oUCVhp7FP0bddPXeBbgF/QbzBij1nxV+rBwYnqxxKoutfirbU12
+ sf//Ukoe/WyjGTeh6e2ZOS3T4BqfUSGGpKwm2C6wW9d8utMgH5JPCXILHNmPSZ8P1GW+
+ UhBwh9HPcqbYNwXFeeKMEtE7QADMghczhXVFN23khPUjfXhXSf02TtOZ8S048ROrxxqe
+ 6jNFmGyjuDqjgz3Dyx21woP+csXY9YAakCNDPtFAEWTqBJ1ELMPx0WlWhQcsiK91c/ln
+ cCTA==
+X-Gm-Message-State: AOJu0YylDdXomYk62SOw1S4CcWIWZny8wHxWOgLpuHg2MVcYUls91ID1
+ IO+mKbkuR9aE3feKmzpzFFCKGg==
+X-Google-Smtp-Source: AGHT+IG6fgQQTVk72n9ibIMivQxw+zd3GKY7kgTWyVrLh8WXou20LaH/3XDirG9DmnUjEtqMxGQGGA==
+X-Received: by 2002:a05:6a21:7888:b0:194:7c1a:323e with SMTP id
+ bf8-20020a056a21788800b001947c1a323emr1185077pzc.37.1702932912689; 
+ Mon, 18 Dec 2023 12:55:12 -0800 (PST)
+Received: from [192.168.68.110] ([179.93.21.205])
  by smtp.gmail.com with ESMTPSA id
- b2-20020a170902bd4200b001d369beee67sm5029321plx.131.2023.12.18.10.34.12
+ d12-20020a056a0010cc00b006ce61c9495fsm18600372pfu.206.2023.12.18.12.55.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 Dec 2023 10:34:15 -0800 (PST)
-Message-ID: <941c9369-3cee-459b-ac28-4b5f1aecbe82@ventanamicro.com>
-Date: Mon, 18 Dec 2023 15:34:11 -0300
+ Mon, 18 Dec 2023 12:55:12 -0800 (PST)
+Message-ID: <15709fcb-79d5-4d96-a568-f4d1943b6290@ventanamicro.com>
+Date: Mon, 18 Dec 2023 17:55:08 -0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] target/riscv/kvm: do not use non-portable
  strerrorname_np()
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Natanael Copa <ncopa@alpinelinux.org>, qemu-devel@nongnu.org,
- qemu-stable@nongnu.org, qemu-trivial@nongnu.org,
+Content-Language: en-US
+To: Natanael Copa <ncopa@alpinelinux.org>, qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org, qemu-trivial@nongnu.org,
  Palmer Dabbelt <palmer@dabbelt.com>,
  Alistair Francis <alistair.francis@wdc.com>,
  Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>
 References: <20231218162301.14817-1-ncopa@alpinelinux.org>
- <dfb9bf4e-820a-4e7e-b62b-8df952099e7a@ventanamicro.com>
- <CAFEAcA_znj3yGXYB6OsTAwg5dT8kE154ZS=YRtye6dmy0TeKDQ@mail.gmail.com>
-Content-Language: en-US
 From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <CAFEAcA_znj3yGXYB6OsTAwg5dT8kE154ZS=YRtye6dmy0TeKDQ@mail.gmail.com>
+In-Reply-To: <20231218162301.14817-1-ncopa@alpinelinux.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::633;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-pl1-x633.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
+ envelope-from=dbarboza@ventanamicro.com; helo=mail-pg1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -93,81 +89,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Dec 2023 18:34:22 -0000
+X-List-Received-Date: Mon, 18 Dec 2023 20:55:33 -0000
 
 
 
-On 12/18/23 14:53, Peter Maydell wrote:
-> On Mon, 18 Dec 2023 at 17:22, Daniel Henrique Barboza
-> <dbarboza@ventanamicro.com> wrote:
->>
->>
->>
->> On 12/18/23 13:22, Natanael Copa wrote:
->>> strerrorname_np is non-portable and breaks building with musl libc.
->>>
->>> Use strerror(errno) instead, like we do other places.
->>>
->>> Cc: qemu-stable@nongnu.org
->>> Fixes: commit 082e9e4a58ba (target/riscv/kvm: improve 'init_multiext_cfg' error msg)
->>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2041
->>> Buglink: https://gitlab.alpinelinux.org/alpine/aports/-/issues/15541
->>> Signed-off-by: Natanael Copa <ncopa@alpinelinux.org>
->>> ---
->>>    target/riscv/kvm/kvm-cpu.c | 18 ++++++++----------
->>>    1 file changed, 8 insertions(+), 10 deletions(-)
->>>
->>> diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
->>> index 45b6cf1cfa..117e33cf90 100644
->>> --- a/target/riscv/kvm/kvm-cpu.c
->>> +++ b/target/riscv/kvm/kvm-cpu.c
->>> @@ -832,9 +832,8 @@ static void kvm_riscv_read_multiext_legacy(RISCVCPU *cpu,
->>>                    multi_ext_cfg->supported = false;
->>>                    val = false;
->>>                } else {
->>> -                error_report("Unable to read ISA_EXT KVM register %s, "
->>> -                             "error code: %s", multi_ext_cfg->name,
->>> -                             strerrorname_np(errno));
->>> +                error_report("Unable to read ISA_EXT KVM register %s: %s",
->>> +                             multi_ext_cfg->name, strerror(errno));
->>
->>
->> The reason I did this change, as described in 082e9e4a58ba mentioned in the commit
->> message, was precisely to avoid things like this:
->>
->> qemu-system-riscv64: Unable to read ISA_EXT KVM register ssaia, error: no such file or directory
->>
->> The generic description of the error works well with file descriptors and so on but it's
->> weird in the KVM context. This patch is re-introducing it.
+On 12/18/23 13:22, Natanael Copa wrote:
+> strerrorname_np is non-portable and breaks building with musl libc.
 > 
-> We don't seem to worry about that in any of the other
-> KVM code -- accel/kvm/ has lots of places that
-> use strerror() or error_setg_errno().
-
-I don't know how this is being used in other parts of accel/kvm, but in this particular
-instance we're handling the errors from get_one_reg. The kernel docs describes the errors
-the API may return as:
-
---------
-Errors include:
-
-ENOENT - no such register
-EINVAL - invalid register ID, or no such register (...)
-EPERM - (arm64) register access not allowed before vcpu finalization
----------
-
-
-The API interprets ENOENT as "no such register", but strerror(errno) in this case will output
-"no such file or directory". The generic description is forcing me to think "this error
-makes no sense ... oh, this might be the description of ENOENT". At this point having an
-"error code 2" instead is clearer to me.
-
-
-Thanks,
-
-Daniel
-
+> Use strerror(errno) instead, like we do other places.
 > 
-> thanks
-> -- PMM
+> Cc: qemu-stable@nongnu.org
+> Fixes: commit 082e9e4a58ba (target/riscv/kvm: improve 'init_multiext_cfg' error msg)
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2041
+> Buglink: https://gitlab.alpinelinux.org/alpine/aports/-/issues/15541
+> Signed-off-by: Natanael Copa <ncopa@alpinelinux.org>
+> ---
+
+Apart from my 'aesthetic preference' of using "error code %d" instead of
+strerror(errno), which I stand by, this patch is fixing a build break
+and it's an improvement from what we have now. Aesthetics can be dealt
+with later.
+
+
+Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+
+
+
+
+>   target/riscv/kvm/kvm-cpu.c | 18 ++++++++----------
+>   1 file changed, 8 insertions(+), 10 deletions(-)
+> 
+> diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
+> index 45b6cf1cfa..117e33cf90 100644
+> --- a/target/riscv/kvm/kvm-cpu.c
+> +++ b/target/riscv/kvm/kvm-cpu.c
+> @@ -832,9 +832,8 @@ static void kvm_riscv_read_multiext_legacy(RISCVCPU *cpu,
+>                   multi_ext_cfg->supported = false;
+>                   val = false;
+>               } else {
+> -                error_report("Unable to read ISA_EXT KVM register %s, "
+> -                             "error code: %s", multi_ext_cfg->name,
+> -                             strerrorname_np(errno));
+> +                error_report("Unable to read ISA_EXT KVM register %s: %s",
+> +                             multi_ext_cfg->name, strerror(errno));
+>                   exit(EXIT_FAILURE);
+>               }
+>           } else {
+> @@ -895,8 +894,8 @@ static void kvm_riscv_init_multiext_cfg(RISCVCPU *cpu, KVMScratchCPU *kvmcpu)
+>            *
+>            * Error out if we get any other errno.
+>            */
+> -        error_report("Error when accessing get-reg-list, code: %s",
+> -                     strerrorname_np(errno));
+> +        error_report("Error when accessing get-reg-list: %s",
+> +                     strerror(errno));
+>           exit(EXIT_FAILURE);
+>       }
+>   
+> @@ -905,8 +904,8 @@ static void kvm_riscv_init_multiext_cfg(RISCVCPU *cpu, KVMScratchCPU *kvmcpu)
+>       reglist->n = rl_struct.n;
+>       ret = ioctl(kvmcpu->cpufd, KVM_GET_REG_LIST, reglist);
+>       if (ret) {
+> -        error_report("Error when reading KVM_GET_REG_LIST, code %s ",
+> -                     strerrorname_np(errno));
+> +        error_report("Error when reading KVM_GET_REG_LIST: %s",
+> +                     strerror(errno));
+>           exit(EXIT_FAILURE);
+>       }
+>   
+> @@ -927,9 +926,8 @@ static void kvm_riscv_init_multiext_cfg(RISCVCPU *cpu, KVMScratchCPU *kvmcpu)
+>           reg.addr = (uint64_t)&val;
+>           ret = ioctl(kvmcpu->cpufd, KVM_GET_ONE_REG, &reg);
+>           if (ret != 0) {
+> -            error_report("Unable to read ISA_EXT KVM register %s, "
+> -                         "error code: %s", multi_ext_cfg->name,
+> -                         strerrorname_np(errno));
+> +            error_report("Unable to read ISA_EXT KVM register %s: %s",
+> +                         multi_ext_cfg->name, strerror(errno));
+>               exit(EXIT_FAILURE);
+>           }
+>   
 
