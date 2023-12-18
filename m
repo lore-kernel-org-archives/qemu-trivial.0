@@ -1,37 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rEzFQ-0006WL-PR
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Dec 2023 17:04:33 -0500
+	id 1rF6tY-0005RO-9T
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Dec 2023 01:14:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1rEzFN-0006Ti-6Y; Sun, 17 Dec 2023 17:04:29 -0500
-Received: from mail-b.sr.ht ([173.195.146.151])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rF6tV-0005R0-UJ
+ for qemu-trivial@nongnu.org; Mon, 18 Dec 2023 01:14:26 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1rEzFJ-00033n-LS; Sun, 17 Dec 2023 17:04:28 -0500
-Authentication-Results: mail-b.sr.ht; dkim=none 
-Received: from git.sr.ht (unknown [173.195.146.142])
- by mail-b.sr.ht (Postfix) with ESMTPSA id 783AF11EF81;
- Sun, 17 Dec 2023 22:04:23 +0000 (UTC)
-From: ~jmbert <jmbert@git.sr.ht>
-Date: Sun, 17 Dec 2023 14:57:55 +0000
-Subject: [PATCH qemu v2] target/i386: Fix "info mem" when LA57 is enabled
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rF6tU-0007HX-2X
+ for qemu-trivial@nongnu.org; Mon, 18 Dec 2023 01:14:25 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1702880062;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=bWvvNtDXuZtoAOIP+V5siuKIKQoPv9QOBorUbvVLIU4=;
+ b=fac31RAhiEyQCiaxxCtbnxTewciorp26xhmMPNsa5lXabmu+/bwAe3XG6AntWbgv3EI/x3
+ 1Gmt9VakNPvNg0nqNL06s590WwZPUa4PfFvhKkWV0pjTfa7OkMEjNppQpQHGmCxg81/9+T
+ 13r7GoEWbGiIQNyuHE0j6FH9UDFOFpA=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-376-dE3LwbdBO_OeHG28_GsIjw-1; Mon, 18 Dec 2023 01:14:19 -0500
+X-MC-Unique: dE3LwbdBO_OeHG28_GsIjw-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C948885A589;
+ Mon, 18 Dec 2023 06:14:18 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.129])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 8318C492BF0;
+ Mon, 18 Dec 2023 06:14:18 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 8F20F21E6920; Mon, 18 Dec 2023 07:14:17 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>
+Cc: Gerd Hoffmann <kraxel@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud?=
+ =?utf-8?Q?=C3=A9?=
+ <philmd@linaro.org>,  Eric Blake <eblake@redhat.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Carwyn Ellis <carwynellis@gmail.com>,
+ qemu-devel@nongnu.org,  BALATON Zoltan <balaton@eik.bme.hu>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH 0/2] qemu-options: Improve -display cocoa documentation
+In-Reply-To: <20231214-options-v1-0-113f347b0e3f@daynix.com> (Akihiko Odaki's
+ message of "Thu, 14 Dec 2023 15:31:34 +0900")
+References: <20231214-options-v1-0-113f347b0e3f@daynix.com>
+Date: Mon, 18 Dec 2023 07:14:17 +0100
+Message-ID: <877clcujeu.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Message-ID: <170285066337.23861.17596309977698945459-0@git.sr.ht>
-X-Mailer: git.sr.ht
-Reply-to: ~jmbert <joe2157b@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=173.195.146.151; envelope-from=outgoing@sr.ht;
- helo=mail-b.sr.ht
-X-Spam_score_int: 17
-X-Spam_score: 1.7
-X-Spam_bar: +
-X-Spam_report: (1.7 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_06_12=1.543,
- FREEMAIL_FORGED_REPLYTO=2.095, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.086,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -44,193 +75,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 Dec 2023 22:04:30 -0000
+X-List-Received-Date: Mon, 18 Dec 2023 06:14:26 -0000
 
-From: Joe Berthels <joe2157b@gmail.com>
+Could this go via qemu-trivial?
 
-"info mem" now correctly displays virtual address map instead of hanging
-and displaying nothing.
+Akihiko Odaki <akihiko.odaki@daynix.com> writes:
 
-Signed-off-by: Joe Berthels (joe2157b@gmail.com)
----
-'l0' should have been shifted 48 bits to form 'end', instead of 47 bits
+> For the context, see:
+> https://lore.kernel.org/all/e3839467-6d4c-e8e6-9247-a71fafe5505e@eik.bme.hu/
+>
+> Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
+> ---
+> Akihiko Odaki (2):
+>       qemu-options: Unify the help entries for cocoa
+>       qemu-options: Tell more for -display cocoa
+>
+>  qemu-options.hx | 21 ++++++++++++++++++---
+>  1 file changed, 18 insertions(+), 3 deletions(-)
+> ---
+> base-commit: 4705fc0c8511d073bee4751c3c974aab2b10a970
+> change-id: 20231214-options-386e48b6fa4c
+>
+> Best regards,
 
- target/i386/monitor.c | 136 +++++++++++++++++++++---------------------
- 1 file changed, 69 insertions(+), 67 deletions(-)
-
-diff --git a/target/i386/monitor.c b/target/i386/monitor.c
-index 950ff9ccbc..d632a93971 100644
---- a/target/i386/monitor.c
-+++ b/target/i386/monitor.c
-@@ -467,82 +467,84 @@ static void mem_info_la57(Monitor *mon, CPUArchState *e=
-nv)
-         cpu_physical_memory_read(pml5_addr + l0 * 8, &pml5e, 8);
-         pml5e =3D le64_to_cpu(pml5e);
-         end =3D l0 << 48;
--        if (!(pml5e & PG_PRESENT_MASK)) {
--            prot =3D 0;
--            mem_print(mon, env, &start, &last_prot, end, prot);
--            continue;
--        }
--
--        pml4_addr =3D pml5e & 0x3fffffffff000ULL;
--        for (l1 =3D 0; l1 < 512; l1++) {
--            cpu_physical_memory_read(pml4_addr + l1 * 8, &pml4e, 8);
--            pml4e =3D le64_to_cpu(pml4e);
--            end =3D (l0 << 48) + (l1 << 39);
--            if (!(pml4e & PG_PRESENT_MASK)) {
--                prot =3D 0;
--                mem_print(mon, env, &start, &last_prot, end, prot);
--                continue;
--            }
--
--            pdp_addr =3D pml4e & 0x3fffffffff000ULL;
--            for (l2 =3D 0; l2 < 512; l2++) {
--                cpu_physical_memory_read(pdp_addr + l2 * 8, &pdpe, 8);
--                pdpe =3D le64_to_cpu(pdpe);
--                end =3D (l0 << 48) + (l1 << 39) + (l2 << 30);
--                if (pdpe & PG_PRESENT_MASK) {
--                    prot =3D 0;
--                    mem_print(mon, env, &start, &last_prot, end, prot);
--                    continue;
--                }
--
--                if (pdpe & PG_PSE_MASK) {
--                    prot =3D pdpe & (PG_USER_MASK | PG_RW_MASK |
--                            PG_PRESENT_MASK);
--                    prot &=3D pml5e & pml4e;
--                    mem_print(mon, env, &start, &last_prot, end, prot);
--                    continue;
--                }
--
--                pd_addr =3D pdpe & 0x3fffffffff000ULL;
--                for (l3 =3D 0; l3 < 512; l3++) {
--                    cpu_physical_memory_read(pd_addr + l3 * 8, &pde, 8);
--                    pde =3D le64_to_cpu(pde);
--                    end =3D (l0 << 48) + (l1 << 39) + (l2 << 30) + (l3 << 21=
-);
--                    if (pde & PG_PRESENT_MASK) {
--                        prot =3D 0;
--                        mem_print(mon, env, &start, &last_prot, end, prot);
--                        continue;
--                    }
--
--                    if (pde & PG_PSE_MASK) {
--                        prot =3D pde & (PG_USER_MASK | PG_RW_MASK |
--                                PG_PRESENT_MASK);
--                        prot &=3D pml5e & pml4e & pdpe;
--                        mem_print(mon, env, &start, &last_prot, end, prot);
--                        continue;
--                    }
--
--                    pt_addr =3D pde & 0x3fffffffff000ULL;
--                    for (l4 =3D 0; l4 < 512; l4++) {
--                        cpu_physical_memory_read(pt_addr + l4 * 8, &pte, 8);
--                        pte =3D le64_to_cpu(pte);
--                        end =3D (l0 << 48) + (l1 << 39) + (l2 << 30) +
--                            (l3 << 21) + (l4 << 12);
--                        if (pte & PG_PRESENT_MASK) {
--                            prot =3D pte & (PG_USER_MASK | PG_RW_MASK |
--                                    PG_PRESENT_MASK);
--                            prot &=3D pml5e & pml4e & pdpe & pde;
-+        if (pml5e & PG_PRESENT_MASK) {
-+            pml4_addr =3D pml5e & 0x3fffffffff000ULL;
-+            for (l1 =3D 0; l1 < 512; l1++) {
-+                cpu_physical_memory_read(pml4_addr + l1 * 8, &pml4e, 8);
-+                pml4e =3D le64_to_cpu(pml4e);
-+                end =3D (l0 << 48) + (l1 << 39);
-+                if (pml4e & PG_PRESENT_MASK) {
-+                    pdp_addr =3D pml4e & 0x3fffffffff000ULL;
-+                    for (l2 =3D 0; l2 < 512; l2++) {
-+                        cpu_physical_memory_read(pdp_addr + l2 * 8, &pdpe, 8=
-);
-+                        pdpe =3D le64_to_cpu(pdpe);
-+                        end =3D (l0 << 48) + (l1 << 39) + (l2 << 30);
-+                        if (pdpe & PG_PRESENT_MASK) {
-+                            if (pdpe & PG_PSE_MASK) {
-+                                prot =3D pdpe & (PG_USER_MASK | PG_RW_MASK |
-+                                               PG_PRESENT_MASK);
-+                                prot &=3D pml5e & pml4e;
-+                                mem_print(mon, env, &start, &last_prot, end,=
- prot);
-+                            } else {
-+                                pd_addr =3D pdpe & 0x3fffffffff000ULL;
-+                                for (l3 =3D 0; l3 < 512; l3++) {
-+                                    cpu_physical_memory_read(pd_addr + l3 * =
-8, &pde, 8);
-+                                    pde =3D le64_to_cpu(pde);
-+                                    end =3D (l0 << 48) + (l1 << 39) +
-+                                            (l2 << 30) + (l3 << 21);
-+                                    if (pde & PG_PRESENT_MASK) {
-+                                        if (pde & PG_PSE_MASK) {
-+                                            prot =3D pde & (PG_USER_MASK | P=
-G_RW_MASK |
-+                                                          PG_PRESENT_MASK);
-+                                            prot &=3D pml5e & pml4e & pdpe;
-+                                            mem_print(mon, env, &start,
-+                                                      &last_prot, end, prot);
-+                                        } else {
-+                                            pt_addr =3D pde & 0x3fffffffff00=
-0ULL;
-+                                            for (l4 =3D 0; l4 < 512; l4++) {
-+                                                cpu_physical_memory_read(pt_=
-addr
-+                                                                         + l=
-4 * 8,
-+                                                                         &pt=
-e, 8);
-+                                                pte =3D le64_to_cpu(pte);
-+                                                end =3D (l0 << 48) + (l1 << =
-39) +
-+                                                    (l2 << 30) +
-+                                                    (l3 << 21) + (l4 << 12);
-+                                                if (pte & PG_PRESENT_MASK) {
-+                                                    prot =3D pte & (PG_USER_=
-MASK |
-+                                                                  PG_RW_MASK=
- |
-+                                                                  PG_PRESENT=
-_MASK);
-+                                                    prot &=3D pml5e & pml4e =
-& pdpe & pde;
-+                                                } else {
-+                                                    prot =3D 0;
-+                                                }
-+                                                mem_print(mon, env, &start,
-+                                                          &last_prot, end, p=
-rot);
-+                                            }
-+                                        }
-+                                    } else {
-+                                        prot =3D 0;
-+                                        mem_print(mon, env, &start,
-+                                                  &last_prot, end, prot);
-+                                    }
-+                                }
-+                            }
-                         } else {
-                             prot =3D 0;
-+                            mem_print(mon, env, &start, &last_prot, end, pro=
-t);
-                         }
--                        mem_print(mon, env, &start, &last_prot, end, prot);
-                     }
-+                } else {
-+                    prot =3D 0;
-+                    mem_print(mon, env, &start, &last_prot, end, prot);
-                 }
-             }
-+        }  else {
-+            prot =3D 0;
-+            mem_print(mon, env, &start, &last_prot, end, prot);
-         }
-     }
-     /* Flush last range */
--    mem_print(mon, env, &start, &last_prot, (hwaddr)1 << 57, 0);
-+    mem_print(mon, env, &start, &last_prot, (hwaddr)1 << 58, 0);
- }
- #endif /* TARGET_X86_64 */
-=20
---=20
-2.38.5
 
