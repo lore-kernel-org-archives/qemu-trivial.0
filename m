@@ -1,62 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rFKeF-0000rd-Rg
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Dec 2023 15:55:35 -0500
+	id 1rFLHE-0000zF-2B
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Dec 2023 16:35:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1rFKeC-0000q7-0E
- for qemu-trivial@nongnu.org; Mon, 18 Dec 2023 15:55:32 -0500
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1rFKe8-0003y0-MT
- for qemu-trivial@nongnu.org; Mon, 18 Dec 2023 15:55:31 -0500
-Received: by mail-pg1-x52d.google.com with SMTP id
- 41be03b00d2f7-53fa455cd94so1462215a12.2
- for <qemu-trivial@nongnu.org>; Mon, 18 Dec 2023 12:55:13 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1702932913; x=1703537713; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=qqGEFjsjfCaCTYZIR8UFcCe8X+bdKtw032QcRfWvd7U=;
- b=EStDxgB/YkLyVVXj+tDqvQO3Dkyzi/QhxGBp/Rute5mynVqK3XHwodTOLu1qyMaXOD
- eCE0Es4CrDMGaZKrXk4pHgUXpDWc7NUVS1ENvGaYS6Y7CJ0Ys6z0lp78yRhZEfVtKJeY
- Tnjos2tZQmi/guVaGJ2NTMgJpqwODfGGByLM4WQ/2RfdZ+Dpq8a0VR2PznoukbCq18FH
- LXbqy1DZyGK0rqnLAVXLDGzPzUPtv4a8vRsZkIeUSAMq1m/fyMMpbgQ47dta1qHRlUKd
- BlNkWYycWPRP0tvMGWGsxZB6u5XV9Dt4vSy5i7dwB+bJUQMaqnAOmgyLGFsX4dBaCx4p
- V2Cg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702932913; x=1703537713;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=qqGEFjsjfCaCTYZIR8UFcCe8X+bdKtw032QcRfWvd7U=;
- b=a6fh6LB1H1xAKitFo9q2Xn7odiJ8SIUlPW8xjzF6a92tbe4zjsQGxAccXYwy7KMoJt
- ruQSw4Bl8jq7mViu2oUCVhp7FP0bddPXeBbgF/QbzBij1nxV+rBwYnqxxKoutfirbU12
- sf//Ukoe/WyjGTeh6e2ZOS3T4BqfUSGGpKwm2C6wW9d8utMgH5JPCXILHNmPSZ8P1GW+
- UhBwh9HPcqbYNwXFeeKMEtE7QADMghczhXVFN23khPUjfXhXSf02TtOZ8S048ROrxxqe
- 6jNFmGyjuDqjgz3Dyx21woP+csXY9YAakCNDPtFAEWTqBJ1ELMPx0WlWhQcsiK91c/ln
- cCTA==
-X-Gm-Message-State: AOJu0YylDdXomYk62SOw1S4CcWIWZny8wHxWOgLpuHg2MVcYUls91ID1
- IO+mKbkuR9aE3feKmzpzFFCKGg==
-X-Google-Smtp-Source: AGHT+IG6fgQQTVk72n9ibIMivQxw+zd3GKY7kgTWyVrLh8WXou20LaH/3XDirG9DmnUjEtqMxGQGGA==
-X-Received: by 2002:a05:6a21:7888:b0:194:7c1a:323e with SMTP id
- bf8-20020a056a21788800b001947c1a323emr1185077pzc.37.1702932912689; 
- Mon, 18 Dec 2023 12:55:12 -0800 (PST)
-Received: from [192.168.68.110] ([179.93.21.205])
- by smtp.gmail.com with ESMTPSA id
- d12-20020a056a0010cc00b006ce61c9495fsm18600372pfu.206.2023.12.18.12.55.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 18 Dec 2023 12:55:12 -0800 (PST)
-Message-ID: <15709fcb-79d5-4d96-a568-f4d1943b6290@ventanamicro.com>
-Date: Mon, 18 Dec 2023 17:55:08 -0300
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rFLGo-0000s3-7d; Mon, 18 Dec 2023 16:35:26 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rFLGm-0001bK-9q; Mon, 18 Dec 2023 16:35:25 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 256DE3CDA9;
+ Tue, 19 Dec 2023 00:35:20 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 1D9384DD73;
+ Tue, 19 Dec 2023 00:35:09 +0300 (MSK)
+Message-ID: <3a159117-1f07-4d1d-911f-98e102959dab@tls.msk.ru>
+Date: Tue, 19 Dec 2023 00:35:08 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] target/riscv/kvm: do not use non-portable
  strerrorname_np()
 Content-Language: en-US
-To: Natanael Copa <ncopa@alpinelinux.org>, qemu-devel@nongnu.org
+To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Natanael Copa <ncopa@alpinelinux.org>, qemu-devel@nongnu.org
 Cc: qemu-stable@nongnu.org, qemu-trivial@nongnu.org,
  Palmer Dabbelt <palmer@dabbelt.com>,
  Alistair Francis <alistair.francis@wdc.com>,
@@ -64,19 +31,43 @@ Cc: qemu-stable@nongnu.org, qemu-trivial@nongnu.org,
  Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
  "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>
 References: <20231218162301.14817-1-ncopa@alpinelinux.org>
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <20231218162301.14817-1-ncopa@alpinelinux.org>
+ <dfb9bf4e-820a-4e7e-b62b-8df952099e7a@ventanamicro.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <dfb9bf4e-820a-4e7e-b62b-8df952099e7a@ventanamicro.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-pg1-x52d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,84 +80,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Dec 2023 20:55:33 -0000
+X-List-Received-Date: Mon, 18 Dec 2023 21:35:47 -0000
 
-
-
-On 12/18/23 13:22, Natanael Copa wrote:
-> strerrorname_np is non-portable and breaks building with musl libc.
+18.12.2023 20:20, Daniel Henrique Barboza wrote:
 > 
-> Use strerror(errno) instead, like we do other places.
 > 
-> Cc: qemu-stable@nongnu.org
-> Fixes: commit 082e9e4a58ba (target/riscv/kvm: improve 'init_multiext_cfg' error msg)
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2041
-> Buglink: https://gitlab.alpinelinux.org/alpine/aports/-/issues/15541
-> Signed-off-by: Natanael Copa <ncopa@alpinelinux.org>
-> ---
-
-Apart from my 'aesthetic preference' of using "error code %d" instead of
-strerror(errno), which I stand by, this patch is fixing a build break
-and it's an improvement from what we have now. Aesthetics can be dealt
-with later.
-
-
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-
-
-
-
->   target/riscv/kvm/kvm-cpu.c | 18 ++++++++----------
->   1 file changed, 8 insertions(+), 10 deletions(-)
+> On 12/18/23 13:22, Natanael Copa wrote:
+>> strerrorname_np is non-portable and breaks building with musl libc.
+>>
+>> Use strerror(errno) instead, like we do other places.
+>>
+>> Cc: qemu-stable@nongnu.org
+>> Fixes: commit 082e9e4a58ba (target/riscv/kvm: improve 'init_multiext_cfg' error msg)
+>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2041
+>> Buglink: https://gitlab.alpinelinux.org/alpine/aports/-/issues/15541
+>> Signed-off-by: Natanael Copa <ncopa@alpinelinux.org>
+>> ---
+>>   target/riscv/kvm/kvm-cpu.c | 18 ++++++++----------
+>>   1 file changed, 8 insertions(+), 10 deletions(-)
+>>
+>> diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
+>> index 45b6cf1cfa..117e33cf90 100644
+>> --- a/target/riscv/kvm/kvm-cpu.c
+>> +++ b/target/riscv/kvm/kvm-cpu.c
+>> @@ -832,9 +832,8 @@ static void kvm_riscv_read_multiext_legacy(RISCVCPU *cpu,
+>>                   multi_ext_cfg->supported = false;
+>>                   val = false;
+>>               } else {
+>> -                error_report("Unable to read ISA_EXT KVM register %s, "
+>> -                             "error code: %s", multi_ext_cfg->name,
+>> -                             strerrorname_np(errno));
+>> +                error_report("Unable to read ISA_EXT KVM register %s: %s",
+>> +                             multi_ext_cfg->name, strerror(errno));
 > 
-> diff --git a/target/riscv/kvm/kvm-cpu.c b/target/riscv/kvm/kvm-cpu.c
-> index 45b6cf1cfa..117e33cf90 100644
-> --- a/target/riscv/kvm/kvm-cpu.c
-> +++ b/target/riscv/kvm/kvm-cpu.c
-> @@ -832,9 +832,8 @@ static void kvm_riscv_read_multiext_legacy(RISCVCPU *cpu,
->                   multi_ext_cfg->supported = false;
->                   val = false;
->               } else {
-> -                error_report("Unable to read ISA_EXT KVM register %s, "
-> -                             "error code: %s", multi_ext_cfg->name,
-> -                             strerrorname_np(errno));
-> +                error_report("Unable to read ISA_EXT KVM register %s: %s",
-> +                             multi_ext_cfg->name, strerror(errno));
->                   exit(EXIT_FAILURE);
->               }
->           } else {
-> @@ -895,8 +894,8 @@ static void kvm_riscv_init_multiext_cfg(RISCVCPU *cpu, KVMScratchCPU *kvmcpu)
->            *
->            * Error out if we get any other errno.
->            */
-> -        error_report("Error when accessing get-reg-list, code: %s",
-> -                     strerrorname_np(errno));
-> +        error_report("Error when accessing get-reg-list: %s",
-> +                     strerror(errno));
->           exit(EXIT_FAILURE);
->       }
->   
-> @@ -905,8 +904,8 @@ static void kvm_riscv_init_multiext_cfg(RISCVCPU *cpu, KVMScratchCPU *kvmcpu)
->       reglist->n = rl_struct.n;
->       ret = ioctl(kvmcpu->cpufd, KVM_GET_REG_LIST, reglist);
->       if (ret) {
-> -        error_report("Error when reading KVM_GET_REG_LIST, code %s ",
-> -                     strerrorname_np(errno));
-> +        error_report("Error when reading KVM_GET_REG_LIST: %s",
-> +                     strerror(errno));
->           exit(EXIT_FAILURE);
->       }
->   
-> @@ -927,9 +926,8 @@ static void kvm_riscv_init_multiext_cfg(RISCVCPU *cpu, KVMScratchCPU *kvmcpu)
->           reg.addr = (uint64_t)&val;
->           ret = ioctl(kvmcpu->cpufd, KVM_GET_ONE_REG, &reg);
->           if (ret != 0) {
-> -            error_report("Unable to read ISA_EXT KVM register %s, "
-> -                         "error code: %s", multi_ext_cfg->name,
-> -                         strerrorname_np(errno));
-> +            error_report("Unable to read ISA_EXT KVM register %s: %s",
-> +                         multi_ext_cfg->name, strerror(errno));
->               exit(EXIT_FAILURE);
->           }
->   
+> 
+> The reason I did this change, as described in 082e9e4a58ba mentioned in the commit
+> message, was precisely to avoid things like this:
+> 
+> qemu-system-riscv64: Unable to read ISA_EXT KVM register ssaia, error: no such file or directory
+
+If KVM context puts its own unique meaning for ENOENT, maybe something like
+
+  "unable to read KVM register: %s\n", errno == ENOENT ? "no such register" : strerror(errno)
+
+would do it better?
+
+To me, "No such file or directory" already tells everything and does not look
+weird, but that's because I've seen this error message for all sorts of contexts
+and got used to this. It is definitely understandable.
+
+/mjt
 
