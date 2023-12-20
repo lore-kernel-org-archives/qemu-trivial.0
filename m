@@ -1,69 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rFYDt-0000D6-0J
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Dec 2023 06:25:17 -0500
+	id 1rFlf3-0001cU-9y
+	for mharc-qemu-trivial@gnu.org; Tue, 19 Dec 2023 20:46:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFYDr-0000CU-Nz
- for qemu-trivial@nongnu.org; Tue, 19 Dec 2023 06:25:15 -0500
-Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rFlf0-0001bh-Rl
+ for qemu-trivial@nongnu.org; Tue, 19 Dec 2023 20:46:10 -0500
+Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rFYDl-0005If-Jd
- for qemu-trivial@nongnu.org; Tue, 19 Dec 2023 06:25:13 -0500
-Received: by mail-lf1-x12e.google.com with SMTP id
- 2adb3069b0e04-50e18689828so4931238e87.2
- for <qemu-trivial@nongnu.org>; Tue, 19 Dec 2023 03:25:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1rFley-0005zf-Ge
+ for qemu-trivial@nongnu.org; Tue, 19 Dec 2023 20:46:10 -0500
+Received: by mail-qv1-xf36.google.com with SMTP id
+ 6a1803df08f44-67f2a5d8a05so29446656d6.3
+ for <qemu-trivial@nongnu.org>; Tue, 19 Dec 2023 17:46:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1702985106; x=1703589906; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=5SaXnUXmMqvm0EDM8x1yH11gCRyWV5uAr8hLy1MvP4A=;
- b=cKWoKZKTpSOSKVxhRSn9uc3v903KjaRRf45wsizh0kF6lbClr1KxvWS2t9GCg94+9r
- V9ae1cDevAMcQpQCCUDcPSOI3SsvcNwcoRnGrYP/EEBBlah3l6mMQQgy/d+HRgmtZF3T
- fjFBZ9148c4eWoU5UNtkpb0s366G71sTF1J942Y/s0SqAvwdccYtZug0RXux+gTtdpxS
- ABR8VHed9uWthwVZfoqNrMFwiniMwrxUIkPBWlJeVHek+XHihIo0xJTMke2JS7BqV+3T
- 5KIayA/5n61Ztzlu4PkpwfCETpSSDnmC7rmBpbmgEU6zbq+1gfFFTo9zp/083H0vNmka
- XUfg==
+ d=linaro.org; s=google; t=1703036767; x=1703641567; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=kqn3KMJ5g/VK+CZXLjmrErjc7rLMnYIMFlq297CCPAM=;
+ b=w3jRZJw+PMQijVmOM+JQCFSNGm+YNJY4sJJC/jy5cTQxuXdY51fgRscl9FbG8epL7d
+ 9DYQMLG0g9+8Pn+O+sos7o77SzEeYePBa6NKc4GQI5Qdpk3Ebl7wPXc39pup4532zxSa
+ pN7ALXbvyuauStqFcGMspKZgGrrSjhiw/VgpHENrtxZUw4VWcA2gcXdwRtYQ5LG54ELr
+ 4SVz0I7Zh1PvMmAy7PzO7pDNROVOTYRt4NbMDi3MuwFOEHNyTD1b+KXaGkolQ8cQe29p
+ M2F2M8gvc3CanKHLL9C5obg0LBwf0jnnSQMAAK+x+xcHR76XNhChPbmRa2gYFWEyNHPb
+ MA/g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1702985106; x=1703589906;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=5SaXnUXmMqvm0EDM8x1yH11gCRyWV5uAr8hLy1MvP4A=;
- b=vwmae3VGfkNaUL8YWC3Wprnd55W/Vfvz40P3t+APdzn514gpWySHMB3mC2UMOp7wtC
- Hq0Ksiv7B8F+JbfAoYSrCBl+4Mwd4zzg2ZW72A1uFW6hUdUn6q5KFdebPhudA5m5Y6nt
- 6GymiOoLmqhG0ZTHYLOTZegp/91K1rMdnlk31mUW5ZGASJuN+auvqnS+Yd+/qNoCEGPk
- mr5bUxUi+yXcfH8/srpjB08jrN507ys7t51AFoxVIGkRTfeM+HAfrOtFocHxWRsoJH1p
- fhS2GgYbi6o1bGGo+iP7hjQgBPXl3Z+dN5MqFWZ/YTN2GbvfTbOlM1neR00zIL6Ka2GK
- Ecvg==
-X-Gm-Message-State: AOJu0YzgS87bU4DSTq8at5JwGQKWoMFWM4YUekgYSpxeqK8EfloWIR6x
- Rfe0qkZtJ2WwIKWPCcw+6o1sQxtd3/uPM/DMr+WIdg==
-X-Google-Smtp-Source: AGHT+IHwOXRUzIuYEGCfhaj34x2jg/GeFRrqT1dJ7w4B8muWlNh0l8OR2Blf2DRFrKVLau2sfgkDefRQtRqGiRJOwUg=
-X-Received: by 2002:a05:6512:2386:b0:50b:e995:d9e6 with SMTP id
- c6-20020a056512238600b0050be995d9e6mr10571413lfv.93.1702985105799; Tue, 19
- Dec 2023 03:25:05 -0800 (PST)
+ d=1e100.net; s=20230601; t=1703036767; x=1703641567;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=kqn3KMJ5g/VK+CZXLjmrErjc7rLMnYIMFlq297CCPAM=;
+ b=cJ58cpVuDZVvzLMpq5ufdXCwXYVkDoEJY2tHSGqqPLxOGcFlzM4lK33B0VwCgilRru
+ ClGHfUf0OaEyNgnPkTaY6KPaYkQKp8v/8mpEiUOEMFZ3tcxHGZYeiYuG0a/W1EjdgCbm
+ BJs0aFmtMip0y8ao9o+9O4CQNg7u+XUlUoUrGWabk6LuARkTJJoyP935+ARut8IwKv5p
+ 2h0C9cAd7avjrtSfBuuf2AqF6v5Vks+s8QQOzabYOemm+ZzLauH5xMdmb7pX5d0Xke1p
+ PSTmegrmRxcxUjV7Y7quANhzEKDLvi+LeBKAKULMXikwmQyNURGFj5XruabfVrml20l8
+ uF4w==
+X-Gm-Message-State: AOJu0YzaYdpSeLDa4tr12G9dYpB70tR7noTinyzwCsujZsXhEIKivfgS
+ elEQsrzn1ijJwZou/p8pS0hhOw==
+X-Google-Smtp-Source: AGHT+IHlgBpPcwiizwD2l5zncernGUmljdLJcxnwmopKyCq41nlbCQnUyzFY+Dthlix4Qs3JMg95DA==
+X-Received: by 2002:a05:6214:2686:b0:67f:38c0:e97c with SMTP id
+ gm6-20020a056214268600b0067f38c0e97cmr7515004qvb.72.1703036766684; 
+ Tue, 19 Dec 2023 17:46:06 -0800 (PST)
+Received: from [192.168.44.231] ([172.58.160.19])
+ by smtp.gmail.com with ESMTPSA id
+ jx13-20020a0562142b0d00b0067f4f07587csm1725740qvb.69.2023.12.19.17.46.01
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 19 Dec 2023 17:46:05 -0800 (PST)
+Message-ID: <1c5f886a-821e-46ff-bcea-045b07ebf809@linaro.org>
+Date: Tue, 19 Dec 2023 17:45:53 -0800
 MIME-Version: 1.0
-References: <20231218162301.14817-1-ncopa@alpinelinux.org>
- <dfb9bf4e-820a-4e7e-b62b-8df952099e7a@ventanamicro.com>
- <CAFEAcA_znj3yGXYB6OsTAwg5dT8kE154ZS=YRtye6dmy0TeKDQ@mail.gmail.com>
- <941c9369-3cee-459b-ac28-4b5f1aecbe82@ventanamicro.com>
-In-Reply-To: <941c9369-3cee-459b-ac28-4b5f1aecbe82@ventanamicro.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 19 Dec 2023 11:24:53 +0000
-Message-ID: <CAFEAcA_EgQ1a9DGgFXoJ0AW2=51ECOR9juTB+S3v=xa0sMXNGw@mail.gmail.com>
-Subject: Re: [PATCH] target/riscv/kvm: do not use non-portable
- strerrorname_np()
-To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Cc: Natanael Copa <ncopa@alpinelinux.org>, qemu-devel@nongnu.org,
- qemu-stable@nongnu.org, 
- qemu-trivial@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, 
- Alistair Francis <alistair.francis@wdc.com>, Bin Meng <bin.meng@windriver.com>,
- Weiwei Li <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12e.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] ppc/spapr: Fix ubsan warning with unaligned pointer access
+To: Daniel Hoffman <dhoff749@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Alexey Kardashevskiy <aik@ozlabs.ru>,
+ David Gibson <david@gibson.dropbear.id.au>,
+ "open list:Virtual Open Firm..." <qemu-ppc@nongnu.org>
+References: <20231217001441.146344-1-dhoff749@gmail.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20231217001441.146344-1-dhoff749@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f36;
+ envelope-from=richard.henderson@linaro.org; helo=mail-qv1-xf36.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -83,26 +85,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 19 Dec 2023 11:25:16 -0000
+X-List-Received-Date: Wed, 20 Dec 2023 01:46:11 -0000
 
-On Mon, 18 Dec 2023 at 18:34, Daniel Henrique Barboza
-<dbarboza@ventanamicro.com> wrote:
-> On 12/18/23 14:53, Peter Maydell wrote:
-> > On Mon, 18 Dec 2023 at 17:22, Daniel Henrique Barboza
-> > <dbarboza@ventanamicro.com> wrote:
-> > We don't seem to worry about that in any of the other
-> > KVM code -- accel/kvm/ has lots of places that
-> > use strerror() or error_setg_errno().
->
-> I don't know how this is being used in other parts of accel/kvm, but in this particular
-> instance we're handling the errors from get_one_reg.
+On 12/16/23 16:14, Daniel Hoffman wrote:
+> Found while running QTest with UBsan. Unaligned pointers appear to be
+> valid, so moving the read to an explicit memcpy to an intermediate.
+> ---
+>   hw/ppc/vof.c | 5 ++++-
+>   1 file changed, 4 insertions(+), 1 deletion(-)
+> 
+> diff --git a/hw/ppc/vof.c b/hw/ppc/vof.c
+> index e3b430a81f4..609a51c645d 100644
+> --- a/hw/ppc/vof.c
+> +++ b/hw/ppc/vof.c
+> @@ -646,7 +646,10 @@ static void vof_dt_memory_available(void *fdt, GArray *claimed, uint64_t base)
+>       mem0_reg = fdt_getprop(fdt, offset, "reg", &proplen);
+>       g_assert(mem0_reg && proplen == sizeof(uint32_t) * (ac + sc));
+>       if (sc == 2) {
+> -        mem0_end = be64_to_cpu(*(uint64_t *)(mem0_reg + sizeof(uint32_t) * ac));
+> +        /* Pointer may be unaligned */
+> +        uint64_t mem0_end_copy;
+> +        memcpy(&mem0_end_copy, mem0_reg + sizeof(uint32_t) * ac, sizeof(mem0_end_copy));
+> +        mem0_end = be64_to_cpu(mem0_end_copy);
 
-Yep; compare accel/kvm/kvm-all.c:kvm_get_one_reg(), which does:
+mem0_end = ldq_be_p(mem0_reg + sizeof(uint32_t) * ac);
 
-    r = kvm_vcpu_ioctl(cs, KVM_GET_ONE_REG, &reg);
-    if (r) {
-        trace_kvm_failed_reg_get(id, strerror(-r));
-    }
 
--- PMM
+r~
 
