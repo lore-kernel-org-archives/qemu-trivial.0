@@ -1,78 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rFlf3-0001cU-9y
-	for mharc-qemu-trivial@gnu.org; Tue, 19 Dec 2023 20:46:13 -0500
+	id 1rGWVM-0004dC-Fn
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Dec 2023 22:47:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rFlf0-0001bh-Rl
- for qemu-trivial@nongnu.org; Tue, 19 Dec 2023 20:46:10 -0500
-Received: from mail-qv1-xf36.google.com ([2607:f8b0:4864:20::f36])
+ (Exim 4.90_1) (envelope-from <aik@ozlabs.ru>) id 1rGWVK-0004cO-0l
+ for qemu-trivial@nongnu.org; Thu, 21 Dec 2023 22:47:18 -0500
+Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rFley-0005zf-Ge
- for qemu-trivial@nongnu.org; Tue, 19 Dec 2023 20:46:10 -0500
-Received: by mail-qv1-xf36.google.com with SMTP id
- 6a1803df08f44-67f2a5d8a05so29446656d6.3
- for <qemu-trivial@nongnu.org>; Tue, 19 Dec 2023 17:46:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <aik@ozlabs.ru>) id 1rGWVH-0000RS-Ru
+ for qemu-trivial@nongnu.org; Thu, 21 Dec 2023 22:47:17 -0500
+Received: by mail-pl1-x62c.google.com with SMTP id
+ d9443c01a7336-1d420aaa2abso366225ad.3
+ for <qemu-trivial@nongnu.org>; Thu, 21 Dec 2023 19:47:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1703036767; x=1703641567; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=ozlabs-ru.20230601.gappssmtp.com; s=20230601; t=1703216833; x=1703821633;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=kqn3KMJ5g/VK+CZXLjmrErjc7rLMnYIMFlq297CCPAM=;
- b=w3jRZJw+PMQijVmOM+JQCFSNGm+YNJY4sJJC/jy5cTQxuXdY51fgRscl9FbG8epL7d
- 9DYQMLG0g9+8Pn+O+sos7o77SzEeYePBa6NKc4GQI5Qdpk3Ebl7wPXc39pup4532zxSa
- pN7ALXbvyuauStqFcGMspKZgGrrSjhiw/VgpHENrtxZUw4VWcA2gcXdwRtYQ5LG54ELr
- 4SVz0I7Zh1PvMmAy7PzO7pDNROVOTYRt4NbMDi3MuwFOEHNyTD1b+KXaGkolQ8cQe29p
- M2F2M8gvc3CanKHLL9C5obg0LBwf0jnnSQMAAK+x+xcHR76XNhChPbmRa2gYFWEyNHPb
- MA/g==
+ bh=FKXNCaPjPdX5YP2cT4EUHkNi6hUdJgX44eDFRq/dedE=;
+ b=Cv8jB1AWZrYOujBTHRodJb9VE71GvbCHahy49zcvY5CBGoW7b874S8kft+s67Q9gh7
+ 9/PEvcWayICm9Mjd7loPQbyTgkh+focciE1nWrsclDBLOQSHTCzi8QMzqs0B6Uy8RhTw
+ 5GREzhNC/bJpl74fTQzlqnrE3XqNnsvnczjGFkvuTEqvlVykkYtJVNw/l1yuemd0v7T/
+ kocJVrI4IQIozCOiHjroc/LRR0k1hNmeKKSN/nrzBWbh2H5VXxzVV+0IEL40f40ImMxJ
+ fn8kRRZ6yxnnl+SNGOwJWteKiP+eN32sAF8sERbsSFKuuuWPbTHOM13VR2du7k0QT+xU
+ GZgA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1703036767; x=1703641567;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1703216833; x=1703821633;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kqn3KMJ5g/VK+CZXLjmrErjc7rLMnYIMFlq297CCPAM=;
- b=cJ58cpVuDZVvzLMpq5ufdXCwXYVkDoEJY2tHSGqqPLxOGcFlzM4lK33B0VwCgilRru
- ClGHfUf0OaEyNgnPkTaY6KPaYkQKp8v/8mpEiUOEMFZ3tcxHGZYeiYuG0a/W1EjdgCbm
- BJs0aFmtMip0y8ao9o+9O4CQNg7u+XUlUoUrGWabk6LuARkTJJoyP935+ARut8IwKv5p
- 2h0C9cAd7avjrtSfBuuf2AqF6v5Vks+s8QQOzabYOemm+ZzLauH5xMdmb7pX5d0Xke1p
- PSTmegrmRxcxUjV7Y7quANhzEKDLvi+LeBKAKULMXikwmQyNURGFj5XruabfVrml20l8
- uF4w==
-X-Gm-Message-State: AOJu0YzaYdpSeLDa4tr12G9dYpB70tR7noTinyzwCsujZsXhEIKivfgS
- elEQsrzn1ijJwZou/p8pS0hhOw==
-X-Google-Smtp-Source: AGHT+IHlgBpPcwiizwD2l5zncernGUmljdLJcxnwmopKyCq41nlbCQnUyzFY+Dthlix4Qs3JMg95DA==
-X-Received: by 2002:a05:6214:2686:b0:67f:38c0:e97c with SMTP id
- gm6-20020a056214268600b0067f38c0e97cmr7515004qvb.72.1703036766684; 
- Tue, 19 Dec 2023 17:46:06 -0800 (PST)
-Received: from [192.168.44.231] ([172.58.160.19])
- by smtp.gmail.com with ESMTPSA id
- jx13-20020a0562142b0d00b0067f4f07587csm1725740qvb.69.2023.12.19.17.46.01
+ bh=FKXNCaPjPdX5YP2cT4EUHkNi6hUdJgX44eDFRq/dedE=;
+ b=c66mLpMuZCTOGF6QNIaIBd/8T2dH7EAaJRwl+Ii3f/sILfT7u879uduJekUJwaOMHz
+ TfPB/SkAWPspS5yubi3v5KrF0IJAgvDnyHhn/r98NBHfYNRtsFEgA+0vnqQ5I0diTwyQ
+ KMQEnKBppusRF8daB51Zz7rXsSwIL7cDlcsPcAanzt0ntwidRkjoB+7g7cpkPEEDRKXX
+ ZxJNdtubnm21UyTCERdcUAocDAVIWCn4diRx/+DhWTdWnkPKwGP0Hjl58sR1K5ajkV2j
+ 1+JkmBW6+qLgnTg6JzpVWhI+dj6O6sTBOVnIGi4vFOnm0/5qDZyfCwHtCVCbvBbQMHtb
+ 3i2A==
+X-Gm-Message-State: AOJu0Yy/dMGgqouLXWZQToJd9Pbjx5dyWbkQOXL7pIK/ZoB0KnpYGfG6
+ 0L8OAxuO9iL7vgz3WIj2PQqrZIVxKGEUuA==
+X-Google-Smtp-Source: AGHT+IHrnM1dP4rVtVw5+6wy6AZCeTGgQqVkwKjfB73ZQR5NIQ7vOx+fNKkr1E3HPx9yHGq0esF+HA==
+X-Received: by 2002:a17:902:a3c8:b0:1d3:ef94:7dae with SMTP id
+ q8-20020a170902a3c800b001d3ef947daemr510620plb.111.1703216832944; 
+ Thu, 21 Dec 2023 19:47:12 -0800 (PST)
+Received: from [192.168.10.153] (124-148-126-166.dyn.iinet.net.au.
+ [124.148.126.166]) by smtp.gmail.com with ESMTPSA id
+ b14-20020a170902d50e00b001d3dacffde3sm2373934plg.226.2023.12.21.19.47.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 Dec 2023 17:46:05 -0800 (PST)
-Message-ID: <1c5f886a-821e-46ff-bcea-045b07ebf809@linaro.org>
-Date: Tue, 19 Dec 2023 17:45:53 -0800
+ Thu, 21 Dec 2023 19:47:12 -0800 (PST)
+Message-ID: <5c32ffdd-b7d8-44b7-a9d4-363f47660626@ozlabs.ru>
+Date: Fri, 22 Dec 2023 14:47:06 +1100
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+User-Agent: Mozilla Thunderbird Beta
 Subject: Re: [PATCH] ppc/spapr: Fix ubsan warning with unaligned pointer access
-To: Daniel Hoffman <dhoff749@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Alexey Kardashevskiy <aik@ozlabs.ru>,
- David Gibson <david@gibson.dropbear.id.au>,
+Content-Language: en-US
+To: Richard Henderson <richard.henderson@linaro.org>,
+ Daniel Hoffman <dhoff749@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, David Gibson <david@gibson.dropbear.id.au>,
  "open list:Virtual Open Firm..." <qemu-ppc@nongnu.org>
 References: <20231217001441.146344-1-dhoff749@gmail.com>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20231217001441.146344-1-dhoff749@gmail.com>
+ <1c5f886a-821e-46ff-bcea-045b07ebf809@linaro.org>
+From: Alexey Kardashevskiy <aik@ozlabs.ru>
+In-Reply-To: <1c5f886a-821e-46ff-bcea-045b07ebf809@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f36;
- envelope-from=richard.henderson@linaro.org; helo=mail-qv1-xf36.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
+ envelope-from=aik@ozlabs.ru; helo=mail-pl1-x62c.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,31 +84,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Dec 2023 01:46:11 -0000
+X-List-Received-Date: Fri, 22 Dec 2023 03:47:18 -0000
 
-On 12/16/23 16:14, Daniel Hoffman wrote:
-> Found while running QTest with UBsan. Unaligned pointers appear to be
-> valid, so moving the read to an explicit memcpy to an intermediate.
-> ---
->   hw/ppc/vof.c | 5 ++++-
->   1 file changed, 4 insertions(+), 1 deletion(-)
+
+
+On 20/12/2023 12:45, Richard Henderson wrote:
+> On 12/16/23 16:14, Daniel Hoffman wrote:
+>> Found while running QTest with UBsan. Unaligned pointers appear to be
+>> valid, so moving the read to an explicit memcpy to an intermediate.
+>> ---
+>>   hw/ppc/vof.c | 5 ++++-
+>>   1 file changed, 4 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/ppc/vof.c b/hw/ppc/vof.c
+>> index e3b430a81f4..609a51c645d 100644
+>> --- a/hw/ppc/vof.c
+>> +++ b/hw/ppc/vof.c
+>> @@ -646,7 +646,10 @@ static void vof_dt_memory_available(void *fdt, 
+>> GArray *claimed, uint64_t base)
+>>       mem0_reg = fdt_getprop(fdt, offset, "reg", &proplen);
+>>       g_assert(mem0_reg && proplen == sizeof(uint32_t) * (ac + sc));
+>>       if (sc == 2) {
+>> -        mem0_end = be64_to_cpu(*(uint64_t *)(mem0_reg + 
+>> sizeof(uint32_t) * ac));
+>> +        /* Pointer may be unaligned */
+>> +        uint64_t mem0_end_copy;
+>> +        memcpy(&mem0_end_copy, mem0_reg + sizeof(uint32_t) * ac, 
+>> sizeof(mem0_end_copy));
+>> +        mem0_end = be64_to_cpu(mem0_end_copy);
 > 
-> diff --git a/hw/ppc/vof.c b/hw/ppc/vof.c
-> index e3b430a81f4..609a51c645d 100644
-> --- a/hw/ppc/vof.c
-> +++ b/hw/ppc/vof.c
-> @@ -646,7 +646,10 @@ static void vof_dt_memory_available(void *fdt, GArray *claimed, uint64_t base)
->       mem0_reg = fdt_getprop(fdt, offset, "reg", &proplen);
->       g_assert(mem0_reg && proplen == sizeof(uint32_t) * (ac + sc));
->       if (sc == 2) {
-> -        mem0_end = be64_to_cpu(*(uint64_t *)(mem0_reg + sizeof(uint32_t) * ac));
-> +        /* Pointer may be unaligned */
-> +        uint64_t mem0_end_copy;
-> +        memcpy(&mem0_end_copy, mem0_reg + sizeof(uint32_t) * ac, sizeof(mem0_end_copy));
-> +        mem0_end = be64_to_cpu(mem0_end_copy);
-
-mem0_end = ldq_be_p(mem0_reg + sizeof(uint32_t) * ac);
+> mem0_end = ldq_be_p(mem0_reg + sizeof(uint32_t) * ac);
 
 
-r~
++1 for ldq_be_p(). Or read lo&hi 32bit chunks and combine. Thanks,
+
+> 
+> 
+> r~
+
+-- 
+Alexey
+
 
