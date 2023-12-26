@@ -1,70 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rI9Go-0006Qx-8L
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Dec 2023 10:23:02 -0500
+	id 1rI9Wy-0002QB-KV
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Dec 2023 10:39:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rI9Gn-0006QC-1D
- for qemu-trivial@nongnu.org; Tue, 26 Dec 2023 10:23:01 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rI9Wx-0002Po-4d
+ for qemu-trivial@nongnu.org; Tue, 26 Dec 2023 10:39:43 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rI9Gk-0006iX-Nq
- for qemu-trivial@nongnu.org; Tue, 26 Dec 2023 10:23:00 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-336f2c88361so3672f8f.3
- for <qemu-trivial@nongnu.org>; Tue, 26 Dec 2023 07:22:58 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rI9Wq-0001DA-Bh
+ for qemu-trivial@nongnu.org; Tue, 26 Dec 2023 10:39:42 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-40d3ae326f6so51822675e9.3
+ for <qemu-trivial@nongnu.org>; Tue, 26 Dec 2023 07:39:35 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1703604177; x=1704208977; darn=nongnu.org;
+ d=linaro.org; s=google; t=1703605174; x=1704209974; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=b0nMFW6LMdE8Xm8hxjzwF8HIN5deAzqIfkDUxKLzdtM=;
- b=C5mmRIlgtuM+ad99TGMNS0fLS8hrbZGx9N9dQAksMCqKz0Y7Fzau5pDSPOn/4w1RUE
- aelRntmA4rMtLuldyOfa5Yw4N4uveqolZ39tffmGk1vk4dsalYUF/+0FF6NzTxYaPCPn
- 4mPdFeaJwe0saY4X7VDYw73aDePcWHT6PPCnw6LhjxQsebm1RXGRB2FiZx7vtydvc76B
- xfOfTXb7eKQZgS+zKOsrQ9kIyErK7Lz7nXyKp9Gz1dtN2v80bYNE+J3uEdCc6vq6mLGi
- m7dq4CJ6xITRKGpyRUai+E5JRc9poFralBA2mrchfxsFTK64UYZwkw+9feJPB2CdaPTS
- dkZA==
+ bh=mv3usI1oZYXHqHKRguWQGNokM6pPpcPITlS7hYttots=;
+ b=Y4XhpV2jpkhIVvorvt7bNUCLhbJCJwBu9W9IMdWoFS0RxaooQF4xUyYeOhfVOQpmeM
+ dWkzlhZNeiaJOAM0pYqbanExfXp8lrD7nS5V7osUEo6U9YdPqSUNLq2lRl4pgA9LoEJx
+ VJGKBac+EtuBmuQtlU7e+oxm98z41ylvKg+XaJ4lKleJSM3Y/WLq6pW2StjFemPICdB/
+ 8D38FUfE7V67JscccR8eCFDS8AbkXWTFFcrpRtkM6aJ1E4v7uaG0MiNhBZR/Z4J4N0/R
+ 3q1lu5VQUU5DItbDUXTcpTabrCrQlw6nSjnhG1ucPVpswNgqrPwXsPz754Wg4NxCzD5A
+ e0Eg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1703604177; x=1704208977;
+ d=1e100.net; s=20230601; t=1703605174; x=1704209974;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=b0nMFW6LMdE8Xm8hxjzwF8HIN5deAzqIfkDUxKLzdtM=;
- b=QetS1Wv+U+Hi4ajfA8bzoJCBqF7ZEyWw6OXK0ImgkKoyGfkbVlJw6KD8umHvGfsgu7
- 3TqU/ONxU5+oSL3Z+lOzye5zCab4HkCq4OnzYh0w9G0uhRBKWYzFepl1R7AELbIvr5J2
- +TgPj92ur4zNsJjuTR+HSzwQqja2K/wWMisnr2USQfgLT+avYqN88N3YBXZOGiwjbQCo
- C27stsYYfRiYH63JDu8RTSNYLIB/2Os2F6xwc4AeKJFi8FXtzimQXIehIDD7yoxl2aj2
- G7ocVyiZm70IIC3PnahGt9YHnzbWcNJ+z0uVAobPOizlSzOYZ3ID6evXtYHurQixDq8U
- ET8w==
-X-Gm-Message-State: AOJu0YymbXMIKcW+YJbJr9nYtSYSvECao5OvTqdjfFp0svC8Akm72t0k
- lM5yCo0AejICwCeoXvO29BLEYZfhOEDjrg==
-X-Google-Smtp-Source: AGHT+IExP0Zdvy4TtZJ8Vmtb44MBWw7RLrNTIr1Gav684fwRhmc86g2e4UaTkZUkLf5itUX37Whl+w==
-X-Received: by 2002:a5d:6511:0:b0:336:7357:acc5 with SMTP id
- x17-20020a5d6511000000b003367357acc5mr3226778wru.73.1703604177299; 
- Tue, 26 Dec 2023 07:22:57 -0800 (PST)
-Received: from [192.168.19.175] (131.red-88-29-190.dynamicip.rima-tde.net.
- [88.29.190.131]) by smtp.gmail.com with ESMTPSA id
- a4-20020adffb84000000b00336d24b4847sm2762191wrr.114.2023.12.26.07.22.56
+ bh=mv3usI1oZYXHqHKRguWQGNokM6pPpcPITlS7hYttots=;
+ b=df4zWFFoc0wZYyfQFIbvIDiiMBWdlZ/7qF9BCypK/nFvwWiqVOjak/gi311pAt7DVV
+ NxA+g/Flj/MflbRKotgCn6YGGmYLR5zdjvzfySxm+DXKGqgf78/1gGEfbQW1G8nnvAOE
+ eubPU0Q6GCkViHDv1QqmJF78K4C3gt9v2v7Yx76xq7eN3x+Ur9y4TGxwbNt4Y4p5sQQh
+ tebUF75VgMNqhzAlzm8FVmMWtn3Y9C3uylJAljN6z3uDx39rFZWiR/n46dXc55WRVdyW
+ YSzQySMaDUhvRdiNtvI97EjdHZN30KnFGs5StfX7vwGUVkEn3qtk2kbp4Kp/tQaLiAsj
+ RlWw==
+X-Gm-Message-State: AOJu0YyU+1PlPifgMUdvGuNpl2FaJ2pq7dTIk+ccC8ve1mKvYD88J6j9
+ a2eFkOMc4y9zY0hhee2rQZVneuLbcaQ4Uw==
+X-Google-Smtp-Source: AGHT+IEyDDHpxjGz79sT1/+ljs1fL42QOaz3uO3Fmlsm9L14bqGE0vAnuK8GC9oUFEhXCk1Hwhzl6g==
+X-Received: by 2002:a05:600c:2195:b0:40d:30c0:dda4 with SMTP id
+ e21-20020a05600c219500b0040d30c0dda4mr3947731wme.150.1703605174282; 
+ Tue, 26 Dec 2023 07:39:34 -0800 (PST)
+Received: from [192.168.111.175] (97.red-95-127-47.staticip.rima-tde.net.
+ [95.127.47.97]) by smtp.gmail.com with ESMTPSA id
+ j16-20020a05600c191000b0040c11fbe581sm21164634wmq.27.2023.12.26.07.39.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Dec 2023 07:22:56 -0800 (PST)
-Message-ID: <bbffef1f-0967-46d2-85b6-18c32f4c5e3a@linaro.org>
-Date: Tue, 26 Dec 2023 16:22:55 +0100
+ Tue, 26 Dec 2023 07:39:33 -0800 (PST)
+Message-ID: <a349160a-0f78-4947-9473-db2c28092277@linaro.org>
+Date: Tue, 26 Dec 2023 16:39:31 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] virtio-blk: Fix potential nullpointer read access in
- virtio_blk_data_plane_destroy
+Subject: Re: [PULL 0/7] Trivial patches for 2023-12-25
 Content-Language: en-US
-To: Stefan Weil <sw@weilnetz.de>, Stefan Hajnoczi <stefanha@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>
-Cc: Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20231224114314.420360-1-sw@weilnetz.de>
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20231225081007.78141-1-mjt@tls.msk.ru>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20231224114314.420360-1-sw@weilnetz.de>
+In-Reply-To: <20231225081007.78141-1-mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -84,16 +81,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Dec 2023 15:23:01 -0000
+X-List-Received-Date: Tue, 26 Dec 2023 15:39:43 -0000
 
-On 24/12/23 12:43, Stefan Weil via wrote:
-> Fixes: CID 1532828
-> Fixes: b6948ab01d ("virtio-blk: add iothread-vq-mapping parameter")
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> ---
->   hw/block/dataplane/virtio-blk.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+Hi,
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+On 25/12/23 09:10, Michael Tokarev wrote:
+
+> ----------------------------------------------------------------
+> trivial patches for 2023-12-25
+
+> ----------------------------------------------------------------
+> Akihiko Odaki (2):
+>        qemu-options: Unify the help entries for cocoa
+>        qemu-options: Tell more for -display cocoa
+> 
+> Elen Avan (1):
+>        include/ui/rect.h: fix qemu_rect_init() mis-assignment
+> 
+> Jai Arora (1):
+>        accel/kvm: Turn DPRINTF macro use into tracepoints
+> 
+> Natanael Copa (1):
+>        target/riscv/kvm: do not use non-portable strerrorname_np()
+> 
+> Samuel Tardieu (1):
+>        docs/tools/qemu-img.rst: fix typo (sumarizes)
+> 
+> Stefan Weil via (1):
+>        virtio-blk: Fix potential nullpointer read access in virtio_blk_data_plane_destroy
+
+This last patch has as author:
+
+From: Stefan Weil via <qemu-trivial@nongnu.org>
 
 
