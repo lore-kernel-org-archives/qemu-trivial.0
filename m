@@ -1,62 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rIAmB-0000TV-Dc
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Dec 2023 11:59:31 -0500
+	id 1rIDq0-0006Og-W1
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Dec 2023 15:15:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1rIAmA-0000TG-2F
- for qemu-trivial@nongnu.org; Tue, 26 Dec 2023 11:59:30 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rIDpt-0006O3-4P; Tue, 26 Dec 2023 15:15:33 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1rIAm8-0007UB-KK
- for qemu-trivial@nongnu.org; Tue, 26 Dec 2023 11:59:29 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1703609967;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=dvQ4qX56fyLLe7e1KineMbAG2h5U8oVC6sKQJXhtxeo=;
- b=EYYurWkAhMueRiY0fRFtQKrjDxiDv4/osgbNocTAwxVRIp8VSE/hdjhycCeTFQ4bMNHHmU
- +ywEFTWKDffg8+n7BU0nE+ButplrH3VqN2dMFzw/aRpbdGT36VLgWpFJMaQKaZVl/aG7Mt
- arD471wu+9JYWVIM26Fk4tQd+JFvDnM=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-249-p5hdEEZgM-atq_KcVSfq3A-1; Tue, 26 Dec 2023 11:59:24 -0500
-X-MC-Unique: p5hdEEZgM-atq_KcVSfq3A-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 7BBBA185A780;
- Tue, 26 Dec 2023 16:59:24 +0000 (UTC)
-Received: from localhost (unknown [10.39.192.41])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 25309C15968;
- Tue, 26 Dec 2023 16:59:23 +0000 (UTC)
-Date: Tue, 26 Dec 2023 09:14:58 -0500
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org
-Subject: Re: [PULL 0/7] Trivial patches for 2023-12-25
-Message-ID: <20231226141458.GA103337@fedora>
-References: <20231225081007.78141-1-mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rIDpr-0007PO-DX; Tue, 26 Dec 2023 15:15:32 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id D59713F02D;
+ Tue, 26 Dec 2023 23:15:53 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 712B053F5B;
+ Tue, 26 Dec 2023 23:15:26 +0300 (MSK)
+Message-ID: <18abc915-6e88-4ea1-9186-9872bf7050da@tls.msk.ru>
+Date: Tue, 26 Dec 2023 23:15:26 +0300
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="zOGVMzVRlCT2WN6n"
-Content-Disposition: inline
-In-Reply-To: <20231225081007.78141-1-mjt@tls.msk.ru>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -49
-X-Spam_score: -5.0
-X-Spam_bar: -----
-X-Spam_report: (-5.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.851,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PULL 0/7] Trivial patches for 2023-12-25
+Content-Language: en-US
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20231225081007.78141-1-mjt@tls.msk.ru>
+ <a349160a-0f78-4947-9473-db2c28092277@linaro.org>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <a349160a-0f78-4947-9473-db2c28092277@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -71,32 +74,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Dec 2023 16:59:30 -0000
+X-List-Received-Date: Tue, 26 Dec 2023 20:15:33 -0000
 
+26.12.2023 18:39, Philippe Mathieu-Daudé:
+..
+>> Stefan Weil via (1):
+>>        virtio-blk: Fix potential nullpointer read access in virtio_blk_data_plane_destroy
+> 
+> This last patch has as author:
+> 
+> From: Stefan Weil via <qemu-trivial@nongnu.org>
 
---zOGVMzVRlCT2WN6n
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Ugh. It's too late. And yes, that's my mishap, - I forgot to
+check for such stuff.  Sigh.  Will do the next time.
 
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/9.0 for any user-visible changes.
-
---zOGVMzVRlCT2WN6n
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmWK3+IACgkQnKSrs4Gr
-c8imGAgArO3CunEULHkNOXuK+9jyoXkJMMfOoM74y+JgoT3yXe0t6TQkOsWx2Tx2
-cWbe4wj7E24gLnRthFNqgvOjWqEqidHq3sQ2ouguoEXyoRCxwaY0frB9LL+zdbf+
-s/WVQVqQBkWXVbSXx7IgNCWfA2zPtxuE/T+ff2i67ND1cUW3hbsv7uVlnEYLHkcs
-+dLwA71VUGi8Ivvnki0vJG/349ONc2ZFmbL5lBUMMp5rRLwCw0EhGRWmVRWrb+Vu
-66tPSM+Usn6ySBVxLp/nJvMwk+lH2BbFceXKT9L/QjHpkF7/nFJke95ARNySRVo2
-3TqyA/U7JGdyXk8CiIIR574AX3/0jw==
-=NTlk
------END PGP SIGNATURE-----
-
---zOGVMzVRlCT2WN6n--
+/mjt
 
 
