@@ -1,67 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rKbjF-0000WH-Km
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Jan 2024 05:10:33 -0500
+	id 1rKgO5-0001hk-HQ
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Jan 2024 10:09:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1rKbjE-0000Vy-7Y
- for qemu-trivial@nongnu.org; Tue, 02 Jan 2024 05:10:32 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1rKbjC-0006zN-Fz
- for qemu-trivial@nongnu.org; Tue, 02 Jan 2024 05:10:31 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1704190228;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=doixIXZF34sW71X8vm+kL6i02zOfDTVx9IllcOBHrVU=;
- b=W+NgPqztXQKF6U3kZ2JGHounLwLX8REFFTRKDHBHIJadTScEthRmu+jpPGJFo9fD40L1VV
- sn85QAxYv1RW6XhNUIzDGDpDoXKDPTy3NB2LO4z8sJeH315EKcslObP6Zv6OVtxeDUALLb
- /E2DTbus76EWEbp4//Y9+fiJb+kYr40=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-61-P75IKJOvMJ6G0zFq798Rbg-1; Tue, 02 Jan 2024 05:10:25 -0500
-X-MC-Unique: P75IKJOvMJ6G0zFq798Rbg-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EBDC385A58E;
- Tue,  2 Jan 2024 10:10:24 +0000 (UTC)
-Received: from localhost (unknown [10.39.193.188])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 9604E2166B31;
- Tue,  2 Jan 2024 10:10:23 +0000 (UTC)
-Date: Tue, 2 Jan 2024 05:10:21 -0500
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
-Subject: Re: [PATCH] mailmap: Fix Stefan Weil author email again
-Message-ID: <20240102101021.GA423238@fedora>
-References: <20231227085934.18158-1-philmd@linaro.org>
- <92d0751b-fa39-4fc2-8e55-3b07aa3b3ed4@tls.msk.ru>
- <9d66b444-d0c8-495a-8555-5b70af07bea9@linaro.org>
- <9733fe6c-d9ea-4945-ba06-8d23890f22c7@linaro.org>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rKgO4-0001hA-D8
+ for qemu-trivial@nongnu.org; Tue, 02 Jan 2024 10:09:00 -0500
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rKgO1-0000wm-JX
+ for qemu-trivial@nongnu.org; Tue, 02 Jan 2024 10:09:00 -0500
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-50e7af5f618so6687565e87.1
+ for <qemu-trivial@nongnu.org>; Tue, 02 Jan 2024 07:08:57 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1704208135; x=1704812935; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=J7Tq9QtgITf1V5dEA4XQbNPEPX/yCoTUWLmNnJyV6yI=;
+ b=xNY8KlsCiKdR/dKI88opLPrm28l03/ZElUnU97UeTexmMT54aXcSSrKTWJ1bnqI0id
+ CbeIe6HadrhHOnVlPWRjsXgTfh4IQKleRJDeIGB4MKisQKKGhkmnZZhSkLPgqgnkg5gu
+ lNkm7h9iJfyX+gudtrahOusLSeLxwhx8gvraJX6HtaSMTkVljBWnE7BJjJWFuclLpqZn
+ FQ594P2swLbcfB+JggZ7ip2NtPgFVWOLeKwQTU1yn7n3PQq0rm96YpTmLrRq0uNJ/DFr
+ JnrTBHmtG6LoVb0l+FE83O2uqnjqltzjtNJfyB3fc24lEBMRsRM99wm01b5bFY/mb/Fr
+ D7sg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1704208135; x=1704812935;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=J7Tq9QtgITf1V5dEA4XQbNPEPX/yCoTUWLmNnJyV6yI=;
+ b=d/mpJRI/ZA5nNdhYxtGp12nkoi98wrhta2+284nfOEh3PLnZBh53d7Ny0xCr21BFHq
+ fWsrJk0qblbGnq6jYuduVw2LdVYwYI3MwZRy0bpEoKV4v8yM7C5dQN+j2w+v+XBfef9h
+ YdQpn7YefVUj0yz19IVp/YdjwbvkWesXrpLJMy6JrOb4avtjqNl/eT0BmFUxEDtGcGqz
+ vFh6RV2hAee7yLDt2FFe35Q/TnHfQiPBI65QCf7EOcuPMgaxL210AzhCAnUdOyZVufIG
+ zA7Ijqbng6HSYjCRflYfiEeQ5rQctb2v4LTA7YC6EfBQiTHM9oxcltsJdQnUQOiQpHW+
+ EvKQ==
+X-Gm-Message-State: AOJu0Yy6FHIXCaMj+Ie26e3u10ICvaUrMogzjZvQB5XYe8y2Uft4zI1S
+ IXDm5H8b9PdSD+YmAUrxS2JCXs0KJsVYDw==
+X-Google-Smtp-Source: AGHT+IGAByqF8gx3Q5Y/SXLiyjnnY7ZEYqkNG8ikWH782h3MP0VLzZWDbJ/rzZdLzn0ZuQaN+iGLKA==
+X-Received: by 2002:a05:6512:3b83:b0:50e:7b37:d110 with SMTP id
+ g3-20020a0565123b8300b0050e7b37d110mr5949366lfv.16.1704208135402; 
+ Tue, 02 Jan 2024 07:08:55 -0800 (PST)
+Received: from [192.168.69.100] (sal63-h02-176-184-16-71.dsl.sta.abo.bbox.fr.
+ [176.184.16.71]) by smtp.gmail.com with ESMTPSA id
+ qc28-20020a170906d8bc00b00a279b182e42sm4026491ejb.171.2024.01.02.07.08.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Jan 2024 07:08:55 -0800 (PST)
+Message-ID: <985e87d6-0f8c-4127-b425-f1efc6034879@linaro.org>
+Date: Tue, 2 Jan 2024 16:08:52 +0100
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha256;
- protocol="application/pgp-signature"; boundary="T6UvdHA0dXqprGcr"
-Content-Disposition: inline
-In-Reply-To: <9733fe6c-d9ea-4945-ba06-8d23890f22c7@linaro.org>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.246,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH for 8.2.1] hw/net: cadence_gem: Fix MDIO_OP_xxx values
+Content-Language: en-US
+To: Bin Meng <bmeng@tinylab.org>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Luc Michel <luc.michel@amd.com>
+Cc: Heinrich Schuchardt <xypron.glpk@gmx.de>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Jason Wang <jasowang@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, Sai Pavan Boddu <sai.pavan.boddu@amd.com>
+References: <20240102141803.117631-1-bmeng@tinylab.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240102141803.117631-1-bmeng@tinylab.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x12f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,65 +86,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Jan 2024 10:10:32 -0000
+X-List-Received-Date: Tue, 02 Jan 2024 15:09:00 -0000
 
+On 2/1/24 15:18, Bin Meng wrote:
+> Testing upstream U-Boot with 'sifive_u' machine we see:
+> 
+>    => dhcp
+>    ethernet@10090000: PHY present at 0
+>    Could not get PHY for ethernet@10090000: addr 0
+>    phy_connect failed
+> 
+> This has been working till QEMU 8.1 but broken since QEMU 8.2.
 
---T6UvdHA0dXqprGcr
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
+s/till/until/?
 
-On Wed, Dec 27, 2023 at 10:21:26AM +0100, Philippe Mathieu-Daud=E9 wrote:
-> On 27/12/23 10:12, Philippe Mathieu-Daud=E9 wrote:
-> > On 27/12/23 10:09, Michael Tokarev wrote:
-> > > 27.12.2023 11:59, Philippe Mathieu-Daud=E9:
-> > > > Commit 5204b499a6 ("mailmap: Fix Stefan Weil author email")
-> > > > corrected authorship for patch received at qemu-devel@nongnu.org,
-> > > > correct now for patch received at qemu-trivial@nongnu.org.
-> > > >=20
-> > > > Fixes: d819fc9516 ("virtio-blk: Fix potential nullptr read access")
-> > >=20
-> > > Do you think a single commit warrants an entry in mailmap?
-> >=20
-> > If I cared enough to write and post a patch, I suppose so...
-> >=20
-> > In the past the only limitation was whether someone was willing
-> > to do the work and send a patch, not the size of the .mailmap
-> > file.
->=20
-> A more useful use of our time would be a git pre-merge hook on
-> our CI, but that won't work because PR aren't merged on the CI
-> but externally, and the final commit is pushed.
->=20
-> The only place I can think of to automate that is to have a
-> script on the maintainer side. Remembering Peter had a such
-> script, I found a reference in the list:
-> https://git.linaro.org/people/pmaydell/misc-scripts.git/commit/?id=3Df9a3=
-17392e8
->=20
-> Stefan, do you mind using Peter's script for your merges?
+> Fixes: 1b09eeb122aa ("hw/net/cadence_gem: use FIELD to describe PHYMNTNC register fields")
+> Reported-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+> Signed-off-by: Bin Meng <bmeng@tinylab.org>
+> 
+> ---
+> 
+>   hw/net/cadence_gem.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+> index 296bba238e..472ce9c8cf 100644
+> --- a/hw/net/cadence_gem.c
+> +++ b/hw/net/cadence_gem.c
+> @@ -199,8 +199,8 @@ REG32(PHYMNTNC, 0x34) /* Phy Maintenance reg */
+>       FIELD(PHYMNTNC, PHY_ADDR, 23, 5)
+>       FIELD(PHYMNTNC, OP, 28, 2)
+>       FIELD(PHYMNTNC, ST, 30, 2)
+> -#define MDIO_OP_READ    0x3
+> -#define MDIO_OP_WRITE   0x2
+> +#define MDIO_OP_READ    0x2
+> +#define MDIO_OP_WRITE   0x1
+>   
+>   REG32(RXPAUSE, 0x38) /* RX Pause Time reg */
+>   REG32(TXPAUSE, 0x3c) /* TX Pause Time reg */
 
-Yes, in future releases. Peter is handling the QEMU 9.0 release so I
-will not be merging pull requests for the time being.
-
-Thanks,
-Stefan
-
---T6UvdHA0dXqprGcr
-Content-Type: application/pgp-signature; name="signature.asc"
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmWT4Q0ACgkQnKSrs4Gr
-c8gYlAf9FsqoycnIUg2yNZZ5pLwB0VMDe6zunHRQyjJVimA41+na/m6dmNsRZ11U
-oALLS9z6wXSPdg1RRX+N3p7QkAdvAstWQSNt8TAflMtFmmKUBfC7L29pqlYz0pV7
-ee6/XYFy1w+NA4SruJ5zz1xl+GqRXAc0XUOE6pcy93NMW8KjRFBhmHKUwCwabAEg
-goGvrdbgcv6SWB0hWoYGAB9ku0X738U6ls7QPtvkD5g6qMlwhdR2Yxf9KyBa58d7
-VoRcD9VCnSW7dPpbkgiE7sYmhbd1iwFk6FTR0ChwMg5lZZ8Zoxd0rl0S761QFXKP
-IO9ETIRlpv52DDXdYV1G0ENV0M+0BA==
-=bX4i
------END PGP SIGNATURE-----
-
---T6UvdHA0dXqprGcr--
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
