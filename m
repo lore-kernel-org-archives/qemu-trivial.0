@@ -1,85 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rIZBz-0001If-7X
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Dec 2023 14:03:47 -0500
+	id 1rKbjF-0000WH-Km
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Jan 2024 05:10:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1rIZBy-0001IS-3v; Wed, 27 Dec 2023 14:03:46 -0500
-Received: from mail.weilnetz.de ([37.120.169.71]
- helo=mail.v2201612906741603.powersrv.de)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1rIZBw-0005JP-4E; Wed, 27 Dec 2023 14:03:45 -0500
-Received: from [192.168.4.133] (p57806ba0.dip0.t-ipconnect.de [87.128.107.160])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1rKbjE-0000Vy-7Y
+ for qemu-trivial@nongnu.org; Tue, 02 Jan 2024 05:10:32 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1rKbjC-0006zN-Fz
+ for qemu-trivial@nongnu.org; Tue, 02 Jan 2024 05:10:31 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1704190228;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=doixIXZF34sW71X8vm+kL6i02zOfDTVx9IllcOBHrVU=;
+ b=W+NgPqztXQKF6U3kZ2JGHounLwLX8REFFTRKDHBHIJadTScEthRmu+jpPGJFo9fD40L1VV
+ sn85QAxYv1RW6XhNUIzDGDpDoXKDPTy3NB2LO4z8sJeH315EKcslObP6Zv6OVtxeDUALLb
+ /E2DTbus76EWEbp4//Y9+fiJb+kYr40=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-61-P75IKJOvMJ6G0zFq798Rbg-1; Tue, 02 Jan 2024 05:10:25 -0500
+X-MC-Unique: P75IKJOvMJ6G0zFq798Rbg-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id BDCB6DA0553;
- Wed, 27 Dec 2023 20:03:39 +0100 (CET)
-Message-ID: <441d7f0d-384f-46d0-bfec-b826ec964df1@weilnetz.de>
-Date: Wed, 27 Dec 2023 20:03:39 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EBDC385A58E;
+ Tue,  2 Jan 2024 10:10:24 +0000 (UTC)
+Received: from localhost (unknown [10.39.193.188])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9604E2166B31;
+ Tue,  2 Jan 2024 10:10:23 +0000 (UTC)
+Date: Tue, 2 Jan 2024 05:10:21 -0500
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Stefan Weil <sw@weilnetz.de>
 Subject: Re: [PATCH] mailmap: Fix Stefan Weil author email again
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
+Message-ID: <20240102101021.GA423238@fedora>
 References: <20231227085934.18158-1-philmd@linaro.org>
  <92d0751b-fa39-4fc2-8e55-3b07aa3b3ed4@tls.msk.ru>
  <9d66b444-d0c8-495a-8555-5b70af07bea9@linaro.org>
-From: Stefan Weil <sw@weilnetz.de>
-Autocrypt: addr=sw@weilnetz.de; keydata=
- xsFNBFXCNBcBEACUbHx9FWsS1ATrhLGAS+Nc6bFQHPR3CpUQ4v++RiMg25bF6Ov1RsYEcovI
- 0DXGh6Ma+l6dRlvUXV8tMvNwqghDUr5KY7LN6tgcFKjBbXdv9VlKiWiMLKBrARcFKxx1sfLp
- 1P8RiaUdKsgy2Hq4T1PPy9ENTL1/FBG6P/Rw0rO9zOB+yNHcRJ5diDnERbi3x7qoaPUra2Ig
- lmQk/uxXKC0aNIhpNLNiQ+YpwTUN9q3eG6B9/3CG8RGtFzH9vDPlLvtUX+01a2gCifTi3iH3
- 8EEK8ACXIRs2dszlxMneKTvflXfvyCM1O+59wGcICQxltxLLhHSCJjOQyWdR2JUtn//XjVWM
- mf6bBT7Imx3DhhfFRlA+/Lw9Zah66DJrZgiV0LqoN/2f031TzD3FCBiGQEMC072MvSQ1DdJN
- OiRE1iWO0teLOxaFSbvJS9ij8CFSQQTnSVZs0YXGBal+1kMeaKo9sO4tkaAR2190IlMNanig
- CTJfeFqxzZkoki378grSHdGUTGKfwNPflTOA6Pw6xuUcxW55LB3lBsPqb0289P8o9dTR7582
- e6XTkpzqe/z/fYmfI9YXIjGY8WBMRbsuQA30JLq1/n/zwxAOr2P9y4nqTMMgFOtQS8w4G46K
- UMY/5IspZp2VnPwvazUo2zpYiUSLo1hFHx2jrePYNu2KLROXpwARAQABzRxTdGVmYW4gV2Vp
- bCA8c3dAd2VpbG5ldHouZGU+wsF6BBMBCAAkAhsDBQsJCAcDBRUKCQgLBRYCAwEAAh4BAheA
- BQJV04LlAhkBAAoJEOCMIdVndFCtP5QP/1U8yWZzHeHufRFxtMsK1PERiLuKyGRH2oE5NWVc
- 5QQHZZ2ypXu53o2ZbZxmdy8+4lXiPWWwYVqto3V7bPaMTvQhIT0I3c3ZEZsvwyEEE6QdRs52
- haZwX+TzNMQ5mOePdM2m4WqO0oU7YHU2WFf54MBmAGtj3FAQEAlZAaMiJs2aApw/4t35ICL1
- Sb0FY8d8lKBbIFOAaFfrlQTC3y8eMTk1QxOVtdXpRrOl6OE0alWn97NRqeZlBm0P+BEvdgTP
- Qt+9rxbe4ulgKME2LkbDhLqf0m2+xMXb7T4LiHbQYnnWKGZyogpFaw3PuRVd9m8uxx1F8b4U
- jNzI9x2Ez5LDv8NHpSY0LGwvVmkgELYbcbyiftbuw81gJuM7k4IW5GR85kTH6y/Sq6JNaI4p
- 909IK8X4eeoCkAqEVmDOo1D5DytgxIV/PErrin82OIDXLENzOWfPPtUTO+H7qUe80NS2HLPG
- IveYSjuYKBB6n2JhPkUD7xxMEdh5Ukqi1WIBSV4Tuk3/ubHajP5bqg4QP3Wo1AyICX09A1QQ
- DajtMkyxXhYxr826EGcRD2WUUprGNYwaks4YiPuvOAJxSYprKWT6UDHzE3S8u4uZZm9H8cyg
- Fa3pysJwTmbmrBAP1lMolwXHky60dPnKPmFyArGC0utAH7QELXzBybnE/vSNttNT1D+HzsFN
- BFXcnj0BEAC32cCu2MWeqZEcvShjkoKsXk42mHrGbeuh/viVn8JOQbTO706GZtazoww2weAz
- uVEYhwqi7u9RATz9MReHf7R5F0KIRhc/2NhNNeixT/7L+E5jffH1LD+0IQdeLPoz6unvg7U/
- 7OpdKWbHzPM3Lfd0N1dRP5sXULpjtYQKEgiOU58sc4F5rM10KoPFEMz8Ip4j9RbH/CbTPUM0
- S4PxytRciB3Fjd0ECbVsErTjX7cZc/yBgs3ip7BPVWgbflhrc+utML/MwC6ZqCOIXf/U0ICY
- fp5I7PDbUSWgMFHvorWegMYJ9EzZ2nTvytL8E75C2U3j5RZAuQH5ysfGpdaTS76CRrYDtkEc
- ViTL+hRUgrX9qvqzCdNEePbQZr6u6TNx3FBEnaTAZ5GuosfUk7ynvam2+zAzLNU+GTywTZL2
- WU+tvOePp9z1/mbLnH2LkWHgy3bPu77AFJ1yTbBXl5OEQ/PtTOJeC1urvgeNru26hDFSFyk4
- gFcqXxswu2PGU7tWYffXZXN+IFipCS718eDcT8eL66ifZ8lqJ8Vu5WJmp9mr1spP9RYbT7Rw
- pzZ3iiz7e7AZyOtpSMIVJeYZTbtiqJbyN4zukhrTdCgCFYgf0CkA5UGpYXp2sXPr+gVxKX2p
- tj/gid4n95vR7KMeWV6DJ0YS4hKGtdhkuJCpJfjKP/e8TwARAQABwsFfBBgBCAAJBQJV3J49
- AhsMAAoJEOCMIdVndFCtYRoQAJOu3RZTEvUBPoFqsnd849VmOKKg77cs+HD3xyLtp95JwQrz
- hwa/4ouDFrC86jt1vARfpVx5C8nQtNnWhg+5h5kyOIbtB1/27CCTdXAd/hL2k3GyrJXEc+i0
- 31E9bCqgf2KGY7+aXu4LeAfRIWJT9FGVzdz1f+77pJuRIRRmtSs8VAond2l+OcDdEI9Mjd9M
- qvyPJwDkDkDvsNptrcv4xeNzvX+2foxkJmYru6dJ+leritsasiAxacUowGB5E41RZEUg6bmV
- F4SMseIAEKWLy3hPGvYBOzADhq2YLgnM/wn9Y9Z7bEMy+w5e75saBbkFI7TncxDPUnIl/UTE
- KU1ORi5WWbvXYkUTtfNzZyD0/v3oojcIoZvK1OlpOtXHdlqOodjXF9nLe8eiVHyl8ZnzFxhe
- EW2QPvX8FLKqmSs9W9saQtk6bhv9LNYIYINjH3EEH/+bbmV+ln4O7a73Wm8L3tnpC3LmdGn2
- Rm8B6J2ZK6ci1TRDiMpCUWefpnIuE+TibC5VJR5zx0Yh11rxxBFob8mWktRmLZyeEoCcZoBo
- sbJxD80QxWO03zPpkcJ7d4BrVsQ/BJkBtEe4Jn4iqHqA/OcrzwuEZSv+/MdgoqfblBZhDusm
- LYfVy7wFDeVClG6eQIiK2EnmDChLRkVIQzbkV0iG+NJVVJHLGK7/OsO47+zq
-In-Reply-To: <9d66b444-d0c8-495a-8555-5b70af07bea9@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ <9733fe6c-d9ea-4945-ba06-8d23890f22c7@linaro.org>
+MIME-Version: 1.0
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="T6UvdHA0dXqprGcr"
+Content-Disposition: inline
+In-Reply-To: <9733fe6c-d9ea-4945-ba06-8d23890f22c7@linaro.org>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.246,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,42 +74,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Dec 2023 19:03:46 -0000
+X-List-Received-Date: Tue, 02 Jan 2024 10:10:32 -0000
 
-Am 27.12.23 um 10:12 schrieb Philippe Mathieu-Daudé:
 
-> On 27/12/23 10:09, Michael Tokarev wrote:
->> 27.12.2023 11:59, Philippe Mathieu-Daudé:
->>> Commit 5204b499a6 ("mailmap: Fix Stefan Weil author email")
->>> corrected authorship for patch received at qemu-devel@nongnu.org,
->>> correct now for patch received at qemu-trivial@nongnu.org.
->>>
->>> Fixes: d819fc9516 ("virtio-blk: Fix potential nullptr read access")
->>
->> Do you think a single commit warrants an entry in mailmap?
->
-> If I cared enough to write and post a patch, I suppose so...
->
-> In the past the only limitation was whether someone was willing
-> to do the work and send a patch, not the size of the .mailmap
-> file.
+--T6UvdHA0dXqprGcr
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Thank you Philippe and Michael.
+On Wed, Dec 27, 2023 at 10:21:26AM +0100, Philippe Mathieu-Daud=E9 wrote:
+> On 27/12/23 10:12, Philippe Mathieu-Daud=E9 wrote:
+> > On 27/12/23 10:09, Michael Tokarev wrote:
+> > > 27.12.2023 11:59, Philippe Mathieu-Daud=E9:
+> > > > Commit 5204b499a6 ("mailmap: Fix Stefan Weil author email")
+> > > > corrected authorship for patch received at qemu-devel@nongnu.org,
+> > > > correct now for patch received at qemu-trivial@nongnu.org.
+> > > >=20
+> > > > Fixes: d819fc9516 ("virtio-blk: Fix potential nullptr read access")
+> > >=20
+> > > Do you think a single commit warrants an entry in mailmap?
+> >=20
+> > If I cared enough to write and post a patch, I suppose so...
+> >=20
+> > In the past the only limitation was whether someone was willing
+> > to do the work and send a patch, not the size of the .mailmap
+> > file.
+>=20
+> A more useful use of our time would be a git pre-merge hook on
+> our CI, but that won't work because PR aren't merged on the CI
+> but externally, and the final commit is pushed.
+>=20
+> The only place I can think of to automate that is to have a
+> script on the maintainer side. Remembering Peter had a such
+> script, I found a reference in the list:
+> https://git.linaro.org/people/pmaydell/misc-scripts.git/commit/?id=3Df9a3=
+17392e8
+>=20
+> Stefan, do you mind using Peter's script for your merges?
 
-It looks like I have some more identities. :-)
+Yes, in future releases. Peter is handling the QEMU 9.0 release so I
+will not be merging pull requests for the time being.
 
-    1 Author: Stefan Weil <stefan@kiwi.(none)>
-    1 Author: Stefan Weil <stefan@weilnetz.de>
-  697 Author: Stefan Weil <sw@weilnetz.de>
-  361 Author: Stefan Weil <weil@mail.berlios.de>
-    1 Author: Stefan Weil via <qemu-trivial@nongnu.org>
-
-My very old address weil@mail.berlios.de might be more interesting for 
-mailmap.
-
-Regards,
-
+Thanks,
 Stefan
 
+--T6UvdHA0dXqprGcr
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmWT4Q0ACgkQnKSrs4Gr
+c8gYlAf9FsqoycnIUg2yNZZ5pLwB0VMDe6zunHRQyjJVimA41+na/m6dmNsRZ11U
+oALLS9z6wXSPdg1RRX+N3p7QkAdvAstWQSNt8TAflMtFmmKUBfC7L29pqlYz0pV7
+ee6/XYFy1w+NA4SruJ5zz1xl+GqRXAc0XUOE6pcy93NMW8KjRFBhmHKUwCwabAEg
+goGvrdbgcv6SWB0hWoYGAB9ku0X738U6ls7QPtvkD5g6qMlwhdR2Yxf9KyBa58d7
+VoRcD9VCnSW7dPpbkgiE7sYmhbd1iwFk6FTR0ChwMg5lZZ8Zoxd0rl0S761QFXKP
+IO9ETIRlpv52DDXdYV1G0ENV0M+0BA==
+=bX4i
+-----END PGP SIGNATURE-----
+
+--T6UvdHA0dXqprGcr--
 
 
