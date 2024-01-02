@@ -1,36 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rKjZ4-0006PN-26
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Jan 2024 13:32:35 -0500
+	id 1rKk8g-0006re-Fj
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Jan 2024 14:09:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xypron.glpk@gmx.de>)
- id 1rKjZ0-0006Of-OL; Tue, 02 Jan 2024 13:32:31 -0500
-Received: from mout.gmx.net ([212.227.15.19])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xypron.glpk@gmx.de>)
- id 1rKjYx-0004I4-22; Tue, 02 Jan 2024 13:32:29 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=gmx.de; s=s31663417;
- t=1704220332; x=1704825132; i=xypron.glpk@gmx.de;
- bh=5ZSWH3wpkzPV65TxBNVdL/gu+vM8JlCQNGRe3viQK20=;
- h=X-UI-Sender-Class:Date:Subject:To:Cc:References:From:
- In-Reply-To;
- b=sJMIadbfeLj8rrRXaeB05U1BgwCu1j2ebsMGsJKQjZdQqP3U/Ex2O5aPkOxlP9oR
- KYa79LAcpstaVBGzEAEnUWEIeHh7xvzBGJx0eD4UJDG9wO3IWcWHTnLyyXPFoxtjo
- pV76poIh5cIzZVtEdGDZhhQ+eu7h+Yiww2I25QWZPj6ikLhEyi4Jq3nLd2wZVCMac
- RJsobKa824KCWxk/AfDQCuIcwButa/ZTnYlDaj6Zxopf5b7tUcRRuS4TP1Ya+NhSG
- 6WYOLszrbffVPiWyriy5GKQohydgmyiHBd3TiAQ91abFwEOJqqtnGbSqzAaW3YB+C
- 6ArLppAre/h4AN959A==
-X-UI-Sender-Class: 724b4f7f-cbec-4199-ad4e-598c01a50d3a
-Received: from [192.168.123.94] ([178.202.40.247]) by mail.gmx.net (mrgmx005
- [212.227.17.190]) with ESMTPSA (Nemesis) id 1MkHMZ-1qwzVy3Mgz-00kg6f; Tue, 02
- Jan 2024 19:32:11 +0100
-Message-ID: <f662a5cd-fa5b-4583-8864-6f1c1a1f6ec2@gmx.de>
-Date: Tue, 2 Jan 2024 19:32:00 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rKk8f-0006rE-Kq
+ for qemu-trivial@nongnu.org; Tue, 02 Jan 2024 14:09:21 -0500
+Received: from mail-lf1-x130.google.com ([2a00:1450:4864:20::130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rKk8c-0001lm-Pu
+ for qemu-trivial@nongnu.org; Tue, 02 Jan 2024 14:09:21 -0500
+Received: by mail-lf1-x130.google.com with SMTP id
+ 2adb3069b0e04-50e835800adso5802360e87.0
+ for <qemu-trivial@nongnu.org>; Tue, 02 Jan 2024 11:09:18 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1704222557; x=1704827357; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=P22KJd4xSMdDsULBNfpp2XHeqw0XeEFBkNPx7c8XCxM=;
+ b=gVIqQ7uIBrhf5q2Y+CPSF5RL4ptd9/BbLMat0tSSbFA+w+jjFdjfJkWtnuja9Iqr0M
+ 8tyLmwAlk+ZVjwYNAMM8s04aZ+/0VmggYLi3zX10NHX5ngFS6UVYtpHsKl7TKdm0+mft
+ MpBfTEKWYt+RuLKBzj2etpYQD3OquscAUdVe0kJaVwQGva4gFVg4ElPxdTFgToSTSvXy
+ 0mJN4uiW7ZbvmjxEc2/bOEdjo9B8abrKvSCbllCDI96pWbHE1d4DEBlLJzzIhXOMdMkV
+ ArKc86juj6PHyriQs8Av0Q4z0CToEr35sJbdMrRFW4RkFtLblnPphrb9cTahxTiu7++O
+ o58g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1704222557; x=1704827357;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=P22KJd4xSMdDsULBNfpp2XHeqw0XeEFBkNPx7c8XCxM=;
+ b=puBAwJ7PXs78AIy3uegFUXbxEfNT53U6Tbs3wt1a/6TLb2U/zu/5EB25jqXgtXIDST
+ 5EjhRBlVLkv1sOkYm3B5OEl1ZG1hgBjPLPvRb/eTBEvPa9Ep10s7S4t6KqhlXM57LT6l
+ Abtuaqf5jx3cYfmb4WVnB4fDcesE2fCywsbey8lBkljMBwR99EV1J+f9taR6E05G1VvW
+ d/SttqlkIb+VS8rwangMTnfZnotvkGt3Jy64nQPJ2KQgW4e27xcPts5InH+BYJb0zg+r
+ S3eKVrc/IguxrvmovGNzftbJ0+HYO0D9zoaYjQ0MJ3p0ppMglLKK4ZSz+swgD1ud6TPr
+ 51hg==
+X-Gm-Message-State: AOJu0YyZxunfaV4xCB3HigF+yOfx8dKQMq75VE+erOatIctYCM5gAyAT
+ COwB+yDdmk6FCmhGZfwv/ys/cRfxsnkwuQ==
+X-Google-Smtp-Source: AGHT+IHUWhpk9s36ngvS0fhj6eyzPq5uCEkEnCzUu2612vJcSF/PyQH8F5hUjMzd6zZ2nrAmoS82ow==
+X-Received: by 2002:a05:6512:505:b0:50e:3c22:9d8e with SMTP id
+ o5-20020a056512050500b0050e3c229d8emr5195420lfb.59.1704222556641; 
+ Tue, 02 Jan 2024 11:09:16 -0800 (PST)
+Received: from [192.168.69.100] (sal63-h02-176-184-16-71.dsl.sta.abo.bbox.fr.
+ [176.184.16.71]) by smtp.gmail.com with ESMTPSA id
+ lj3-20020a170906f9c300b00a26a80ac5fasm11565207ejb.120.2024.01.02.11.09.14
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Jan 2024 11:09:16 -0800 (PST)
+Message-ID: <0ff293e2-4155-4ec3-a078-41e4b022127f@linaro.org>
+Date: Tue, 2 Jan 2024 20:09:13 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH for 8.2.1] hw/net: cadence_gem: Fix MDIO_OP_xxx values
-To: Bin Meng <bmeng@tinylab.org>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
+Content-Language: en-US
+To: Heinrich Schuchardt <xypron.glpk@gmx.de>, Bin Meng <bmeng@tinylab.org>
 Cc: Alistair Francis <alistair@alistair23.me>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
  Jason Wang <jasowang@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
@@ -39,40 +62,20 @@ Cc: Alistair Francis <alistair@alistair23.me>,
  qemu-trivial@nongnu.org
 References: <20240102141803.117631-1-bmeng@tinylab.org>
  <985e87d6-0f8c-4127-b425-f1efc6034879@linaro.org>
-Content-Language: en-US, de-DE
-From: Heinrich Schuchardt <xypron.glpk@gmx.de>
-In-Reply-To: <985e87d6-0f8c-4127-b425-f1efc6034879@linaro.org>
+ <f662a5cd-fa5b-4583-8864-6f1c1a1f6ec2@gmx.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <f662a5cd-fa5b-4583-8864-6f1c1a1f6ec2@gmx.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:MkXgy5p95PN2giSDoOHisy5UNN9m+eM6ka72kbx7mp2ZDNicWgk
- PDczV5DsE0bvgriqmewg7SknrnrgK6p6XljHqABa28dRSURKa+nAZVaFqyBgJKcdN8Q8dM8
- 0DuCLvayaMiialqIkdZQ5KCbSOTwGbEbT1Ue2e6XupESrV6PpGY46tdTTp0B8/WDMbHxF34
- sk5HJ8d1k4K3SlwoNeeOg==
-UI-OutboundReport: notjunk:1;M01:P0:NsFWFYQ5lrs=;GEh9sdZDFasqhDd+B/2TVhcz+3P
- aGkkDP6cTnegGGme8Op+dSzeACNo6oj5/YAIxtuxExuC9ajGJJKi4Gqyk9fKcRZQ48HPm4ExX
- hsEAUxp2KUAehBNklnleNdGwNxhnKNDTy17cIcQ/t+R70RZ4g1eWl6KRLA0V63QwypwXFqGMg
- sqJgvwJXkejYYqjiNyCT5PX2yw13j6UtHKG4EVCRQNRwzaPIHXxjxg6nBq2S50R6qp+oTljwG
- vy9HNWti5AoySVcVPrkZWqMVrc5+x1Gq+GOyJvHdGdsoBaFrUkRTtxPTUr0v3OY2zpCp5xa6o
- 4BHPUYIJS1npkDwFZhEEXMMyAvdI0/y58cZaVVonrdlg2nn9Bnqh3zSWDWcjTDu3YLTiwEeWS
- 7KTjtSvEu2E7VlOiIe7GSuo7wrK2ZlY0XmE7Dq/hhjk/aACQtlcf+o52vtSfMOQsP4I9OVnpT
- vbaC+w7fSYLLc7kdmQ4Qne/bbtT8fp+EXkFgIqJu4+3eRse4w2V4y9XiQvTQgBSBL3fedY5cM
- 3WAjiKE/G6B5psJSEEjm23/BF21V/Xz/035TnH9Pg8MndTGwBwyWlh8+uNIHE+8cjrkoGyMsp
- FO63mxc5MIdA96vxtb4hUVMYzKlN6IQIFDoRUY2xbC+HxBRMGKjoXLiPwYkQMFNSYakfZaKYA
- Jf9S++1FhYZNiyBkJq79XhiDMhlyLRirT9n929POgfePRNQf8s/Dz1uF1XgzWGdM1ULj0f1Uz
- Nztd2rZFoxQxyX4fIs+4KNmasNnQIWxJD0TYMGPJFc8/G0anrbDyrNZ3gySwZ8JFAUFG7jq/q
- W+soH/fuYiMzw+bwIxJtY2O68BNf7fy4kuOXZmHyM9X+aAd60wuSBE1bJiAk/88PKpIOxRar1
- Oexv7CEplDVskK6AI/yDh3ZbTc0OPvJHLFJwMjNdDe2RPWiBfE7QFs1OEKM0u67oUomaHsvg1
- um9iGQlxz6i9X+/KE6sjSz8G7eo=
-Received-SPF: pass client-ip=212.227.15.19; envelope-from=xypron.glpk@gmx.de;
- helo=mout.gmx.net
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::130;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x130.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,57 +88,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Jan 2024 18:32:32 -0000
+X-List-Received-Date: Tue, 02 Jan 2024 19:09:21 -0000
 
-On 1/2/24 16:08, Philippe Mathieu-Daud=C3=A9 wrote:
-> On 2/1/24 15:18, Bin Meng wrote:
->> Testing upstream U-Boot with 'sifive_u' machine we see:
+On 2/1/24 19:32, Heinrich Schuchardt wrote:
+> On 1/2/24 16:08, Philippe Mathieu-Daudé wrote:
+>> On 2/1/24 15:18, Bin Meng wrote:
+>>> Testing upstream U-Boot with 'sifive_u' machine we see:
+>>>
+>>>    => dhcp
+>>>    ethernet@10090000: PHY present at 0
+>>>    Could not get PHY for ethernet@10090000: addr 0
+>>>    phy_connect failed
+>>>
+>>> This has been working till QEMU 8.1 but broken since QEMU 8.2.
 >>
->> =C2=A0=C2=A0 =3D> dhcp
->> =C2=A0=C2=A0 ethernet@10090000: PHY present at 0
->> =C2=A0=C2=A0 Could not get PHY for ethernet@10090000: addr 0
->> =C2=A0=C2=A0 phy_connect failed
+>> s/till/until/?
+> 
+> These are synonyms. Till is more informal. No need to change.
+
+Not obvious for non-native/fluent informal English speakers.
+
+> 
 >>
->> This has been working till QEMU 8.1 but broken since QEMU 8.2.
->
-> s/till/until/?
+>>> Fixes: 1b09eeb122aa ("hw/net/cadence_gem: use FIELD to describe
+>>> PHYMNTNC register fields")
+>>> Reported-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
+>>> Signed-off-by: Bin Meng <bmeng@tinylab.org>
+>>>
+>>> ---
+>>>
+>>>   hw/net/cadence_gem.c | 4 ++--
+>>>   1 file changed, 2 insertions(+), 2 deletions(-)
 
-These are synonyms. Till is more informal. No need to change.
-
->
->> Fixes: 1b09eeb122aa ("hw/net/cadence_gem: use FIELD to describe
->> PHYMNTNC register fields")
->> Reported-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
->> Signed-off-by: Bin Meng <bmeng@tinylab.org>
->>
->> ---
->>
->> =C2=A0 hw/net/cadence_gem.c | 4 ++--
->> =C2=A0 1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
->> index 296bba238e..472ce9c8cf 100644
->> --- a/hw/net/cadence_gem.c
->> +++ b/hw/net/cadence_gem.c
->> @@ -199,8 +199,8 @@ REG32(PHYMNTNC, 0x34) /* Phy Maintenance reg */
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 FIELD(PHYMNTNC, PHY_ADDR, 23, 5)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 FIELD(PHYMNTNC, OP, 28, 2)
->> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 FIELD(PHYMNTNC, ST, 30, 2)
->> -#define MDIO_OP_READ=C2=A0=C2=A0=C2=A0 0x3
->> -#define MDIO_OP_WRITE=C2=A0=C2=A0 0x2
->> +#define MDIO_OP_READ=C2=A0=C2=A0=C2=A0 0x2
->> +#define MDIO_OP_WRITE=C2=A0=C2=A0 0x1
->> =C2=A0 REG32(RXPAUSE, 0x38) /* RX Pause Time reg */
->> =C2=A0 REG32(TXPAUSE, 0x3c) /* TX Pause Time reg */
->
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->
-
-Thank you Bin for the fix.
-
-With the fix I was able to download a file via TFTP to U-Boot
-sifive_unleashed_defconfig on the emulated board. Cf.
-docs/system/riscv/sifive_u.rst.
-
-Tested-by: Heinrich Schuchardt <xypron.glpk@gmx.de>
 
