@@ -1,64 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rL2QH-0007WR-PD
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Jan 2024 09:40:46 -0500
+	id 1rL52Y-0000va-GD
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jan 2024 12:28:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <samuel.tardieu@telecom-paris.fr>)
- id 1rL2Q5-0007V3-Nd; Wed, 03 Jan 2024 09:40:33 -0500
-Received: from zproxy4.enst.fr ([2001:660:330f:2::df])
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rL52X-0000v8-0d; Wed, 03 Jan 2024 12:28:25 -0500
+Received: from zoidberg.rfc1149.net ([195.154.227.159])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <samuel.tardieu@telecom-paris.fr>)
- id 1rL2Py-0006lN-6o; Wed, 03 Jan 2024 09:40:30 -0500
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id 1D745206DF;
- Wed,  3 Jan 2024 15:40:17 +0100 (CET)
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id vHmJFdcbV1ZL; Wed,  3 Jan 2024 15:40:16 +0100 (CET)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id 7635B206F5;
- Wed,  3 Jan 2024 15:40:16 +0100 (CET)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 7635B206F5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1704292816;
- bh=8Bpi2UyXi9bDygv9v87FHzYkLF/eVApRysLUBHQGI/8=;
- h=From:To:Date:Message-ID:MIME-Version;
- b=QnCUkvGKnlmqtfXDEDq9Xie09Hi3eFjsYe5bffXaNzHVootKdxZ2vI+csRQxDdAAC
- utdzfamEL4wRp6DQiwcTvfgO9Hn1kjcBBiqB7m1oyWME0LUIvYzTlRmgi9zXDk6n0B
- JMg8ZcTewm9UoN56qGrMMn1JrhTfp1us0TcLF2q8=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id pCZ9mus-PDFd; Wed,  3 Jan 2024 15:40:16 +0100 (CET)
-Received: from buffy (unknown [IPv6:2a01:e34:ec63:e440:5c00:58bd:886:e993])
- by zproxy4.enst.fr (Postfix) with ESMTPSA id AD3E5206DF;
- Wed,  3 Jan 2024 15:40:15 +0100 (CET)
-References: <20231215103448.3822284-1-zhao1.liu@linux.intel.com>
-User-agent: mu4e 1.10.8; emacs 29.1
-From: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>
-To: Zhao Liu <zhao1.liu@linux.intel.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>, Paolo Bonzini
- <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>, Richard Henderson
- <richard.henderson@linaro.org>, Darren Kenny <darren.kenny@oracle.com>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-trivial@nongnu.org, Zhenyu Wang
- <zhenyu.z.wang@intel.com>, Zhao Liu <zhao1.liu@intel.com>, Yongwei Ma
- <yongwei.ma@intel.com>, qemu-devel@nongnu.org
-Subject: Re: [PATCH v2] scripts/checkpatch: Support codespell checking
-Date: Wed, 03 Jan 2024 15:36:59 +0100
-In-reply-to: <20231215103448.3822284-1-zhao1.liu@linux.intel.com>
-Message-ID: <87frze5vlc.fsf@telecom-paris.fr>
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rL52U-0000WM-RU; Wed, 03 Jan 2024 12:28:24 -0500
+Received: from buffy.. (buffy [192.168.147.6])
+ by zoidberg.rfc1149.net (Postfix) with ESMTP id 3A59C80024;
+ Wed,  3 Jan 2024 18:28:19 +0100 (CET)
+Authentication-Results: zoidberg.rfc1149.net;
+ dmarc=fail (p=none dis=none) header.from=rfc1149.net
+Authentication-Results: zoidberg.rfc1149.net;
+ spf=fail smtp.mailfrom=rfc1149.net
+From: Samuel Tardieu <sam@rfc1149.net>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Vikram Garhwal <fnu.vikram@xilinx.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Peter Maydell <peter.maydell@linaro.org>, Samuel Tardieu <sam@rfc1149.net>
+Subject: [PATCH] docs: use "buses" rather than "busses"
+Date: Wed,  3 Jan 2024 18:28:17 +0100
+Message-ID: <20240103172817.2197737-1-sam@rfc1149.net>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2001:660:330f:2::df;
- envelope-from=samuel.tardieu@telecom-paris.fr; helo=zproxy4.enst.fr
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
+ helo=zoidberg.rfc1149.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -72,28 +46,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Jan 2024 14:40:37 -0000
+X-List-Received-Date: Wed, 03 Jan 2024 17:28:25 -0000
 
-> +  --codespell                Use the codespell dictionary for=20
-> spelling/typos
-> +                             (default:$codespellfile)
+If "busses" might be encountered as a plural of "bus" (5 instances),
+the correct spelling is "buses" (26 instances). Fixing those 5
+instances makes the doc more consistent.
 
-Nitpick: I would have used a space after ":".
+Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+---
+ docs/system/arm/palm.rst    | 2 +-
+ docs/system/arm/xscale.rst  | 2 +-
+ docs/system/devices/can.rst | 6 +++---
+ 3 files changed, 5 insertions(+), 5 deletions(-)
 
-> +	# If /usr/share/codespell/dictionary.txt is not present,=20
-> try to find it
-> +	# under codespell's install directory:=20
-> <codespell_root>/data/dictionary.txt
+diff --git a/docs/system/arm/palm.rst b/docs/system/arm/palm.rst
+index 47ff9b36d4..61bc8d34f4 100644
+--- a/docs/system/arm/palm.rst
++++ b/docs/system/arm/palm.rst
+@@ -14,7 +14,7 @@ following elements:
+ -  On-chip Real Time Clock
+ 
+ -  TI TSC2102i touchscreen controller / analog-digital converter /
+-   Audio CODEC, connected through MicroWire and |I2S| busses
++   Audio CODEC, connected through MicroWire and |I2S| buses
+ 
+ -  GPIO-connected matrix keypad
+ 
+diff --git a/docs/system/arm/xscale.rst b/docs/system/arm/xscale.rst
+index d2d5949e10..e239136c3c 100644
+--- a/docs/system/arm/xscale.rst
++++ b/docs/system/arm/xscale.rst
+@@ -32,4 +32,4 @@ The clamshell PDA models emulation includes the following peripherals:
+ 
+ -  Three on-chip UARTs
+ 
+--  WM8750 audio CODEC on |I2C| and |I2S| busses
++-  WM8750 audio CODEC on |I2C| and |I2S| buses
+diff --git a/docs/system/devices/can.rst b/docs/system/devices/can.rst
+index 0af3d9912a..09121836fd 100644
+--- a/docs/system/devices/can.rst
++++ b/docs/system/devices/can.rst
+@@ -1,12 +1,12 @@
+ CAN Bus Emulation Support
+ =========================
+ The CAN bus emulation provides mechanism to connect multiple
+-emulated CAN controller chips together by one or multiple CAN busses
+-(the controller device "canbus"  parameter). The individual busses
++emulated CAN controller chips together by one or multiple CAN buses
++(the controller device "canbus"  parameter). The individual buses
+ can be connected to host system CAN API (at this time only Linux
+ SocketCAN is supported).
+ 
+-The concept of busses is generic and different CAN controllers
++The concept of buses is generic and different CAN controllers
+ can be implemented.
+ 
+ The initial submission implemented SJA1000 controller which
+-- 
+2.42.0
 
-This works correctly on my NixOS system using a non-FHS layout and=20
-properly locates the codespell file.
-
-This patch made me find a typo in one of my commit messages.
-
-Tested-by: Samuel Tardieu <sam@rfc1149.net>
-
-  Sam
---=20
-Samuel Tardieu
-T=C3=A9l=C3=A9com Paris - Institut Polytechnique de Paris
 
