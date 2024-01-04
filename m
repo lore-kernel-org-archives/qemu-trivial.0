@@ -1,66 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rLQGj-0005Ne-EF
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Jan 2024 11:08:29 -0500
+	id 1rLQRX-0007Zx-HI
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Jan 2024 11:19:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rLQGh-0005N4-Ti; Thu, 04 Jan 2024 11:08:28 -0500
-Received: from mgamail.intel.com ([134.134.136.20])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1rLQRS-0007Wt-F5; Thu, 04 Jan 2024 11:19:34 -0500
+Received: from mgamail.intel.com ([192.198.163.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rLQGf-0007rm-Av; Thu, 04 Jan 2024 11:08:27 -0500
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1rLQRQ-0005NO-0W; Thu, 04 Jan 2024 11:19:34 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1704384505; x=1735920505;
+ t=1704385172; x=1735921172;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=bP25CFmB5ICIWnAQeHR2h136ykKPR/ZLhxWl27+NbLU=;
- b=VgqCoJUa+F6T+yGEjeEak+1QxHK1reQ5vhzdc8pshTixFgkQOLQeFi6m
- MjwKtu8COjKcDVQarOBwSY3HfhZ69AvH4AqiySons5NZieZ6AC/eLI4Ls
- oeb5vIYwfddiqjTMfqIOyOpZMAhznl8Qok3cvjhaSOrhczsIN7MoA7Nyo
- twIMH/99xBrbWHk4Mws6k1gsriE53gWxPaYO5PQe6PY3TunlORNZOvjiw
- 9oWzBoCmvx8cH6O4NLDLX21xJ7060gQVhyfmEXQFZUS9Kh5PJv3aV28S4
- Btz/krqIqFYult1KP/4+vP+1joRYbY9AiTIR2zOQYnCX0P8VnQMYUAJLb g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10943"; a="387738508"
-X-IronPort-AV: E=Sophos;i="6.04,331,1695711600"; d="scan'208";a="387738508"
-Received: from fmsmga008.fm.intel.com ([10.253.24.58])
- by orsmga101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jan 2024 08:08:14 -0800
+ bh=ETWmTlJlHbaTTOuyM0EieSosO/J9p965d/zZA24U6F0=;
+ b=YE8GHgtaHG72Igeei+/wGoYWgP8VS5pv+mqCtUNyXBKLchpoHeAYjBjZ
+ /p++fpwYzto/ZwawnhFGJpmMbVs2QB0x2zPTTmneucdtjYo+jsK9/A4r9
+ DvVoBjpycuGhdm1tPnqJuMJojqdAp4H+dtOZ23ywSzb4sQAMusCbz8vwd
+ NfjAQD9TNjerFevHNdbDPrUaCCz/wWcB7DmiOq7bdiOmr42oNTXfqHQEa
+ hB9Vb0mCgk6TDw263NPY6VrfLseY354y8Rx/1wku8SkFoUS2eiv0IZuWr
+ MRVnR1Wx5K6gRpfLoJ6lGlsa5ygiTppKvr6jqvEAARD5263oWQuqvNkvK Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10943"; a="4103005"
+X-IronPort-AV: E=Sophos;i="6.04,331,1695711600"; 
+   d="scan'208";a="4103005"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 04 Jan 2024 08:19:27 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10943"; a="846293747"
-X-IronPort-AV: E=Sophos;i="6.04,331,1695711600"; d="scan'208";a="846293747"
+X-IronPort-AV: E=Sophos;i="6.04,331,1695711600"; d="scan'208";a="28838743"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.36])
- by fmsmga008.fm.intel.com with ESMTP; 04 Jan 2024 08:08:10 -0800
-Date: Fri, 5 Jan 2024 00:21:02 +0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Darren Kenny <darren.kenny@oracle.com>,
- Alex =?iso-8859-1?Q?Benn=E9e?= <alex.bennee@linaro.org>,
- qemu-trivial@nongnu.org, Zhenyu Wang <zhenyu.z.wang@intel.com>,
- Zhao Liu <zhao1.liu@intel.com>, Yongwei Ma <yongwei.ma@intel.com>,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH v2] scripts/checkpatch: Support codespell checking
-Message-ID: <ZZba7sAdGooq482x@intel.com>
-References: <20231215103448.3822284-1-zhao1.liu@linux.intel.com>
- <87frze5vlc.fsf@telecom-paris.fr>
+ by orviesa001.jf.intel.com with ESMTP; 04 Jan 2024 08:19:24 -0800
+Date: Fri, 5 Jan 2024 00:32:17 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Samuel Tardieu <sam@rfc1149.net>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Vikram Garhwal <fnu.vikram@xilinx.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH] docs: use "buses" rather than "busses"
+Message-ID: <ZZbdkTgmg3MsRjkv@intel.com>
+References: <20240103172817.2197737-1-sam@rfc1149.net>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <87frze5vlc.fsf@telecom-paris.fr>
-Received-SPF: none client-ip=134.134.136.20;
- envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -69
-X-Spam_score: -7.0
-X-Spam_bar: -------
-X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.691,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+In-Reply-To: <20240103172817.2197737-1-sam@rfc1149.net>
+Received-SPF: pass client-ip=192.198.163.9; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -47
+X-Spam_score: -4.8
+X-Spam_bar: ----
+X-Spam_report: (-4.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.691,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,40 +66,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Jan 2024 16:08:28 -0000
+X-List-Received-Date: Thu, 04 Jan 2024 16:19:35 -0000
 
-Hi Samuel,
+On Wed, Jan 03, 2024 at 06:28:17PM +0100, Samuel Tardieu wrote:
+> Date: Wed,  3 Jan 2024 18:28:17 +0100
+> From: Samuel Tardieu <sam@rfc1149.net>
+> Subject: [PATCH] docs: use "buses" rather than "busses"
+> X-Mailer: git-send-email 2.42.0
+> 
+> If "busses" might be encountered as a plural of "bus" (5 instances),
+> the correct spelling is "buses" (26 instances). Fixing those 5
+> instances makes the doc more consistent.
+> 
+> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+> ---
+>  docs/system/arm/palm.rst    | 2 +-
+>  docs/system/arm/xscale.rst  | 2 +-
+>  docs/system/devices/can.rst | 6 +++---
+>  3 files changed, 5 insertions(+), 5 deletions(-)
+> 
 
-On Wed, Jan 03, 2024 at 03:36:59PM +0100, Samuel Tardieu wrote:
-> Date: Wed, 03 Jan 2024 15:36:59 +0100
-> From: Samuel Tardieu <samuel.tardieu@telecom-paris.fr>
-> Subject: Re: [PATCH v2] scripts/checkpatch: Support codespell checking
-> 
-> > +  --codespell                Use the codespell dictionary for
-> > spelling/typos
-> > +                             (default:$codespellfile)
-> 
-> Nitpick: I would have used a space after ":".
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
-OK! I'll add it to improve the readability of the help printout.
-
-> 
-> > +	# If /usr/share/codespell/dictionary.txt is not present, try to find
-> > it
-> > +	# under codespell's install directory:
-> > <codespell_root>/data/dictionary.txt
-> 
-> This works correctly on my NixOS system using a non-FHS layout and properly
-> locates the codespell file.
-> 
-> This patch made me find a typo in one of my commit messages.
-> 
-> Tested-by: Samuel Tardieu <sam@rfc1149.net>
->
-
-Thanks! Good to know this enhancement can help you!
-
-Regards,
-Zhao
 
 
