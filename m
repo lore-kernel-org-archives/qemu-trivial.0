@@ -1,34 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rLpuV-0000Ne-N6
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Jan 2024 14:31:15 -0500
+	id 1rLpuO-0000KS-DC
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Jan 2024 14:31:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rLpuO-0000Jn-1r; Fri, 05 Jan 2024 14:31:08 -0500
+ id 1rLpuG-0000HL-AW; Fri, 05 Jan 2024 14:31:01 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rLpuL-00031a-Na; Fri, 05 Jan 2024 14:31:07 -0500
+ id 1rLpuB-000300-Ks; Fri, 05 Jan 2024 14:30:57 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 4482240D31;
- Fri,  5 Jan 2024 22:30:43 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 83D4840D2D;
+ Fri,  5 Jan 2024 22:30:42 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id DC8235B1F1;
+ by tsrv.corpit.ru (Postfix) with SMTP id 262175B1ED;
  Fri,  5 Jan 2024 22:30:39 +0300 (MSK)
-Received: (nullmailer pid 116622 invoked by uid 1000);
+Received: (nullmailer pid 116610 invoked by uid 1000);
  Fri, 05 Jan 2024 19:30:38 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Samuel Tardieu <sam@rfc1149.net>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 6/6] docs: use "buses" rather than "busses"
-Date: Fri,  5 Jan 2024 22:30:38 +0300
-Message-Id: <20240105193038.116576-7-mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Subject: [PULL 2/6] chardev/char.c: fix "abstract device type" error message
+Date: Fri,  5 Jan 2024 22:30:34 +0300
+Message-Id: <20240105193038.116576-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240105193038.116576-1-mjt@tls.msk.ru>
 References: <20240105193038.116576-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -50,68 +48,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Jan 2024 19:31:08 -0000
+X-List-Received-Date: Fri, 05 Jan 2024 19:31:02 -0000
 
-From: Samuel Tardieu <sam@rfc1149.net>
+Current error message:
 
-If "busses" might be encountered as a plural of "bus" (5 instances),
-the correct spelling is "buses" (26 instances). Fixing those 5
-instances makes the doc more consistent.
+ qemu-system-x86_64: -chardev spice,id=foo: Parameter 'driver' expects an abstract device type
 
-Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pavel Pisa <pisa@cmp.felk.cvut.cz>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+while in fact the meaning is in reverse, -chardev expects
+a non-abstract device type.
+
+Fixes: 777357d758d9 ("chardev: qom-ify" 2016-12-07)
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- docs/system/arm/palm.rst    | 2 +-
- docs/system/arm/xscale.rst  | 2 +-
- docs/system/devices/can.rst | 6 +++---
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ chardev/char.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/system/arm/palm.rst b/docs/system/arm/palm.rst
-index 47ff9b36d4..61bc8d34f4 100644
---- a/docs/system/arm/palm.rst
-+++ b/docs/system/arm/palm.rst
-@@ -14,7 +14,7 @@ following elements:
- -  On-chip Real Time Clock
+diff --git a/chardev/char.c b/chardev/char.c
+index 996a024c7a..119b548784 100644
+--- a/chardev/char.c
++++ b/chardev/char.c
+@@ -518,7 +518,7 @@ static const ChardevClass *char_get_class(const char *driver, Error **errp)
  
- -  TI TSC2102i touchscreen controller / analog-digital converter /
--   Audio CODEC, connected through MicroWire and |I2S| busses
-+   Audio CODEC, connected through MicroWire and |I2S| buses
+     if (object_class_is_abstract(oc)) {
+         error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "driver",
+-                   "an abstract device type");
++                   "a non-abstract device type");
+         return NULL;
+     }
  
- -  GPIO-connected matrix keypad
- 
-diff --git a/docs/system/arm/xscale.rst b/docs/system/arm/xscale.rst
-index d2d5949e10..e239136c3c 100644
---- a/docs/system/arm/xscale.rst
-+++ b/docs/system/arm/xscale.rst
-@@ -32,4 +32,4 @@ The clamshell PDA models emulation includes the following peripherals:
- 
- -  Three on-chip UARTs
- 
---  WM8750 audio CODEC on |I2C| and |I2S| busses
-+-  WM8750 audio CODEC on |I2C| and |I2S| buses
-diff --git a/docs/system/devices/can.rst b/docs/system/devices/can.rst
-index 0af3d9912a..09121836fd 100644
---- a/docs/system/devices/can.rst
-+++ b/docs/system/devices/can.rst
-@@ -1,12 +1,12 @@
- CAN Bus Emulation Support
- =========================
- The CAN bus emulation provides mechanism to connect multiple
--emulated CAN controller chips together by one or multiple CAN busses
--(the controller device "canbus"  parameter). The individual busses
-+emulated CAN controller chips together by one or multiple CAN buses
-+(the controller device "canbus"  parameter). The individual buses
- can be connected to host system CAN API (at this time only Linux
- SocketCAN is supported).
- 
--The concept of busses is generic and different CAN controllers
-+The concept of buses is generic and different CAN controllers
- can be implemented.
- 
- The initial submission implemented SJA1000 controller which
 -- 
 2.39.2
 
