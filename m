@@ -1,68 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rLoKG-0006eE-IH
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Jan 2024 12:49:44 -0500
+	id 1rLpuG-0000HZ-VF
+	for mharc-qemu-trivial@gnu.org; Fri, 05 Jan 2024 14:31:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rLoKF-0006dk-CJ
- for qemu-trivial@nongnu.org; Fri, 05 Jan 2024 12:49:43 -0500
-Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rLoKA-0007mX-JX
- for qemu-trivial@nongnu.org; Fri, 05 Jan 2024 12:49:43 -0500
-Received: by mail-lj1-x234.google.com with SMTP id
- 38308e7fff4ca-2ccbf8cbf3aso26947621fa.3
- for <qemu-trivial@nongnu.org>; Fri, 05 Jan 2024 09:49:37 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704476976; x=1705081776; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=+sXnJtWcjyBLOb2yW1MhZlclOJfsqSSZCQwvR/NIHrA=;
- b=N+MnHX/MO4x3+RFDyu5814V3teR4vZUK9qrnKwjz7Ks3yJz5hdoEugTXNWqegxMrlU
- 3ZZiVGqzXaBdGdwWauR80cQhuGT/jb16vmC2r49+Zmhq8MPLsK244HstFNLUDRcUGSyz
- xTewPEfaV5khOkEJUOBh5E9l5utknjRQ/HWVA8IIeINfgrXW+zPEWvrRzLzYyf1zSUWj
- P0mFya+iVBmYAJP0FS4zwNQeoyJD9IsnUqWbPmulhE6tTppWgxSG2wsFQnGes/Mwe/G9
- Gb8QIG5ZEePJxNVHWXOMneoWv/bLPQyE9xqhh+vHSZ3ucYV6ypSwE0d52EuUhvjQ1Vvy
- LBuw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704476976; x=1705081776;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=+sXnJtWcjyBLOb2yW1MhZlclOJfsqSSZCQwvR/NIHrA=;
- b=BDXJgyxDQodlqKUc/fahe2y/CrL2TYCxksZq11EZbGnmjQzfwJYkH7plMQPXt8s5EL
- bmgZ5tvydAgnsbyYJMqN+2/eA2iok8sNamXty/kI0EHu0TVFIKCxUVjtDO1vX6/+fKup
- O/6c/HzosrfrcbJb8gu9Mtikyh3b8bsAgoWc2U/zOwH8+knnpt+2YC17iFga+480npWh
- ybiPKtHiUyG/WTVLQ03jxUF3N6KgxMrO78qK4MPEnueoRQLkU6VhYposi3oYm04VweQe
- 6/AvCz2uieEUXsKwa8q7UMn9tfRbVhHM+/Iok8Q2pR0RNDi4LoG9WDqPDYYDcU3ceUov
- prHg==
-X-Gm-Message-State: AOJu0Yx0Tmp0rfq6QaF7y1e25tdBLp8wy2lo+j5VxPllElhmx7O3B2wI
- ohRdfXPKCfXrtCx/P8WMqqKoZFTRKi5595Gr4nONLA3Ighk6zg==
-X-Google-Smtp-Source: AGHT+IH5rG1gUpJoxmAV6+MY9zz3mfIdQY1bsoQxIgXHW1wKcJ5YzP/Tp3xbm2QILBt2fm8BBkHnJGJt5hA98kgvviE=
-X-Received: by 2002:a05:651c:1693:b0:2cc:f586:ce9a with SMTP id
- bd19-20020a05651c169300b002ccf586ce9amr1442366ljb.93.1704476976171; Fri, 05
- Jan 2024 09:49:36 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rLpu9-0000Gm-Iw; Fri, 05 Jan 2024 14:30:54 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rLpu7-0002xT-El; Fri, 05 Jan 2024 14:30:53 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 12F4040D2B;
+ Fri,  5 Jan 2024 22:30:42 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id AB73F5B1EB;
+ Fri,  5 Jan 2024 22:30:38 +0300 (MSK)
+Received: (nullmailer pid 116603 invoked by uid 1000);
+ Fri, 05 Jan 2024 19:30:38 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Subject: [PULL 0/6] Trivial patches for 2024-01-05
+Date: Fri,  5 Jan 2024 22:30:32 +0300
+Message-Id: <20240105193038.116576-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-References: <20240103172817.2197737-1-sam@rfc1149.net>
-In-Reply-To: <20240103172817.2197737-1-sam@rfc1149.net>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 5 Jan 2024 17:49:25 +0000
-Message-ID: <CAFEAcA_yoBEM-6cw5QOTcpO=TH+2=ySFu6=XRkBqGywxAi2SHA@mail.gmail.com>
-Subject: Re: [PATCH] docs: use "buses" rather than "busses"
-To: Samuel Tardieu <sam@rfc1149.net>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org, 
- Vikram Garhwal <fnu.vikram@xilinx.com>, Pavel Pisa <pisa@cmp.felk.cvut.cz>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::234;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x234.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -75,18 +47,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Jan 2024 17:49:43 -0000
+X-List-Received-Date: Fri, 05 Jan 2024 19:30:56 -0000
 
-On Wed, 3 Jan 2024 at 17:28, Samuel Tardieu <sam@rfc1149.net> wrote:
->
-> If "busses" might be encountered as a plural of "bus" (5 instances),
-> the correct spelling is "buses" (26 instances). Fixing those 5
-> instances makes the doc more consistent.
->
-> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+The following changes since commit 0c1eccd368af8805ec0fb11e6cf25d0684d37328:
 
-Applied to target-arm.next, thanks (since 2 out of 3 of these
-are arm related).
+  Merge tag 'hw-cpus-20240105' of https://github.com/philmd/qemu into staging (2024-01-05 16:08:58 +0000)
 
--- PMM
+are available in the Git repository at:
+
+  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+
+for you to fetch changes up to 8a780cd212647a6013c8ea59e0929dad996e2c54:
+
+  docs: use "buses" rather than "busses" (2024-01-05 22:28:54 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2024-01-05
+
+Random stuff here and there, plus a riscv bugfix.
+
+----------------------------------------------------------------
+Bin Meng (1):
+      hw/net: cadence_gem: Fix MDIO_OP_xxx values
+
+Max Erenberg (1):
+      edu: fix DMA range upper bound check
+
+Michael Tokarev (2):
+      chardev/char.c: fix "abstract device type" error message
+      audio/audio.c: remove trailing newline in error_setg
+
+Samuel Tardieu (1):
+      docs: use "buses" rather than "busses"
+
+Xu Lu (1):
+      target/riscv: Fix mcycle/minstret increment behavior
+
+ audio/audio.c               |  2 +-
+ chardev/char.c              |  2 +-
+ docs/system/arm/palm.rst    |  2 +-
+ docs/system/arm/xscale.rst  |  2 +-
+ docs/system/devices/can.rst |  6 +++---
+ hw/misc/edu.c               |  2 +-
+ hw/net/cadence_gem.c        |  4 ++--
+ target/riscv/csr.c          | 14 +++++++-------
+ 8 files changed, 17 insertions(+), 17 deletions(-)
 
