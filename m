@@ -1,42 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rMRHe-0003wv-3f
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Jan 2024 06:25:39 -0500
+	id 1rMTWO-0008Li-AV
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Jan 2024 08:49:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rMRHY-0003ud-Q9; Sun, 07 Jan 2024 06:25:34 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <deller@kernel.org>)
+ id 1rMNRJ-0002r0-UC; Sun, 07 Jan 2024 02:19:22 -0500
+Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rMRHT-0000Pd-Fp; Sun, 07 Jan 2024 06:25:31 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id D5D3341147;
- Sun,  7 Jan 2024 14:25:08 +0300 (MSK)
-Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 3B21F5C24E;
- Sun,  7 Jan 2024 14:25:01 +0300 (MSK)
-Received: (nullmailer pid 335608 invoked by uid 1000);
- Sun, 07 Jan 2024 11:25:01 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Zhang Chen <chen.zhang@intel.com>, Li Zhijian <lizhijian@fujitsu.com>
-Subject: [PATCH trivial] colo: examples: remove mentions of script= and
- (wrong) downscript=
-Date: Sun,  7 Jan 2024 14:24:59 +0300
-Message-Id: <20240107112459.335594-1-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.2
+ (Exim 4.90_1) (envelope-from <deller@kernel.org>)
+ id 1rMNRH-0002Vx-Tz; Sun, 07 Jan 2024 02:19:21 -0500
+Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
+ by sin.source.kernel.org (Postfix) with ESMTP id CA891CE0AE8;
+ Sun,  7 Jan 2024 07:19:08 +0000 (UTC)
+Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B233C433C7;
+ Sun,  7 Jan 2024 07:19:06 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
+ s=k20201202; t=1704611948;
+ bh=Bh7liYiHeIx3Vq6CFHeTZMdj0GWBysbr/3QXwBI9eg8=;
+ h=Date:From:To:Subject:From;
+ b=BeKZjLa6fSxcHsx6wAtabayxlu07/zH4MRP8cbRIpFBoZjhPT9lCLvaAMaG72WFeU
+ IRz1VYL7mxNIqLdxvHhLcK3GJRKW2NgO5VOUmIHldW3A8DK87GdMA7SahGhObeTVOy
+ QU1gUIdRCz0CrbVJfZpnzSp4yt29gz/dVlMVW3YceDJ0jgzpGZD1viCqwSeL86E23H
+ 9Tc5swWvkk7MZCItEaqj4Zd4+D/pUlhjRGvqOzKzF7O7TT1kCw2p9ZnvpwzZnc0Adu
+ 6mSFwLz3uPtchXoBd/O2QmHll4O2mfhw5/Kdi6gJAXv2GjdD4tfLQNjGWFE/VYV/Jk
+ eieGd5Ulqml0w==
+Date: Sun, 7 Jan 2024 08:19:03 +0100
+From: Helge Deller <deller@kernel.org>
+To: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: [PATCH] tcg/tci: Fix TCI on hppa host and update TCI test matrix
+Message-ID: <ZZpQZ77s2t81mXIT@p100>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=2604:1380:40e1:4800::1;
+ envelope-from=deller@kernel.org; helo=sin.source.kernel.org
+X-Spam_score_int: -69
+X-Spam_score: -7.0
+X-Spam_bar: -------
+X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.54,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 07 Jan 2024 08:48:58 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -48,91 +56,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 07 Jan 2024 11:25:34 -0000
+X-List-Received-Date: Sun, 07 Jan 2024 07:19:22 -0000
 
-There's no need to repeat script=/etc/qemu-ifup in examples,
-as it is already in there.  More, all examples uses incorrect
-"down script=" (which should be "downscript=").
----
-I'm not sure we need so many identical examples, and why it
-uses vnet=off, - it looks like vnet= should also be dropped.
+Update the TCI interpreter test matrix for big-endian hosts with
+big- (hppa, hppa64) and little-endian (x86,x96-64) targets.
+I used native ppc64 and hppa hosts for those tests.
 
- docs/colo-proxy.txt | 6 +++---
- qemu-options.hx     | 8 ++++----
- 2 files changed, 7 insertions(+), 7 deletions(-)
+Starting TCI on a hppa host crashed immediately, because hppa is
+the only archive left where the stack grows upwards.
+Write-protecting the stack guard page at the top of the stack
+fixes the crash.
 
-diff --git a/docs/colo-proxy.txt b/docs/colo-proxy.txt
-index 1fc38aed1b..e712c883db 100644
---- a/docs/colo-proxy.txt
-+++ b/docs/colo-proxy.txt
-@@ -162,7 +162,7 @@ Here is an example using demonstration IP and port addresses to more
- clearly describe the usage.
- 
- Primary(ip:3.3.3.3):
---netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown
-+-netdev tap,id=hn0,vhost=off
- -device e1000,id=e0,netdev=hn0,mac=52:a4:00:12:78:66
- -chardev socket,id=mirror0,host=3.3.3.3,port=9003,server=on,wait=off
- -chardev socket,id=compare1,host=3.3.3.3,port=9004,server=on,wait=off
-@@ -177,7 +177,7 @@ Primary(ip:3.3.3.3):
- -object colo-compare,id=comp0,primary_in=compare0-0,secondary_in=compare1,outdev=compare_out0,iothread=iothread1
- 
- Secondary(ip:3.3.3.8):
---netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,down script=/etc/qemu-ifdown
-+-netdev tap,id=hn0,vhost=off
- -device e1000,netdev=hn0,mac=52:a4:00:12:78:66
- -chardev socket,id=red0,host=3.3.3.3,port=9003
- -chardev socket,id=red1,host=3.3.3.3,port=9004
-@@ -202,7 +202,7 @@ Primary(ip:3.3.3.3):
- -object colo-compare,id=comp0,primary_in=compare0-0,secondary_in=compare1,outdev=compare_out0,vnet_hdr_support
- 
- Secondary(ip:3.3.3.8):
---netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,down script=/etc/qemu-ifdown
-+-netdev tap,id=hn0,vhost=off
- -device e1000,netdev=hn0,mac=52:a4:00:12:78:66
- -chardev socket,id=red0,host=3.3.3.3,port=9003
- -chardev socket,id=red1,host=3.3.3.3,port=9004
-diff --git a/qemu-options.hx b/qemu-options.hx
-index b66570ae00..d667bfa0c2 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -5500,7 +5500,7 @@ SRST
-             KVM COLO
- 
-             primary:
--            -netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown
-+            -netdev tap,id=hn0,vhost=off
-             -device e1000,id=e0,netdev=hn0,mac=52:a4:00:12:78:66
-             -chardev socket,id=mirror0,host=3.3.3.3,port=9003,server=on,wait=off
-             -chardev socket,id=compare1,host=3.3.3.3,port=9004,server=on,wait=off
-@@ -5515,7 +5515,7 @@ SRST
-             -object colo-compare,id=comp0,primary_in=compare0-0,secondary_in=compare1,outdev=compare_out0,iothread=iothread1
- 
-             secondary:
--            -netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,down script=/etc/qemu-ifdown
-+            -netdev tap,id=hn0,vhost=off
-             -device e1000,netdev=hn0,mac=52:a4:00:12:78:66
-             -chardev socket,id=red0,host=3.3.3.3,port=9003
-             -chardev socket,id=red1,host=3.3.3.3,port=9004
-@@ -5526,7 +5526,7 @@ SRST
-             Xen COLO
- 
-             primary:
--            -netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown
-+            -netdev tap,id=hn0,vhost=off
-             -device e1000,id=e0,netdev=hn0,mac=52:a4:00:12:78:66
-             -chardev socket,id=mirror0,host=3.3.3.3,port=9003,server=on,wait=off
-             -chardev socket,id=compare1,host=3.3.3.3,port=9004,server=on,wait=off
-@@ -5542,7 +5542,7 @@ SRST
-             -object colo-compare,id=comp0,primary_in=compare0-0,secondary_in=compare1,outdev=compare_out0,notify_dev=nofity_way,iothread=iothread1
- 
-             secondary:
--            -netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,down script=/etc/qemu-ifdown
-+            -netdev tap,id=hn0,vhost=off
-             -device e1000,netdev=hn0,mac=52:a4:00:12:78:66
-             -chardev socket,id=red0,host=3.3.3.3,port=9003
-             -chardev socket,id=red1,host=3.3.3.3,port=9004
--- 
-2.39.2
+Signed-off-by: Helge Deller <deller@gmx.de>
 
+diff --git a/tcg/tci/README b/tcg/tci/README
+index 4a8b5b5401..0c1e50779e 100644
+--- a/tcg/tci/README
++++ b/tcg/tci/README
+@@ -72,16 +72,16 @@ host and target with same or different endianness.
+             | host (le)                     host (be)
+             | 32             64             32             64
+ ------------+------------------------------------------------------------
+-target (le) | s0, u0         s1, u1         s?, u?         s?, u?
++target (le) | s0, u0         s1, u1         s2, u?         s2, u?
+ 32 bit      |
+             |
+-target (le) | sc, uc         s1, u1         s?, u?         s?, u?
++target (le) | sc, uc         s1, u1         s2, u?         s2, u?
+ 64 bit      |
+             |
+-target (be) | sc, u0         sc, uc         s?, u?         s?, u?
++target (be) | sc, u0         sc, uc         s2, u?         s2, u?
+ 32 bit      |
+             |
+-target (be) | sc, uc         sc, uc         s?, u?         s?, u?
++target (be) | sc, uc         sc, uc         s?, u?         s2, u?
+ 64 bit      |
+             |
+ 
+@@ -110,6 +115,10 @@ u1 = linux-user-test works
+   A cross compiled QEMU for ppc host works at least partially:
+   i386-linux-user/qemu-i386 can run a simple hello-world program
+   (tested in a ppc emulation).
++  The big-endian tests were run on native hppa (big-endian, 32-bit) and
++  ppc64 (big-endian, 64-bit) machines. Tested target machines were
++  x86 and x86-64 (little-endian, debian install ISO) and 32- and 64-bit
++  big-endian hppa (NetBSD and Debian install ISOs).
+ 
+ * Some TCG opcodes are either missing in the code generator and/or
+   in the interpreter. These opcodes raise a runtime exception, so it is
+diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+index e86fd64e09..e378b71641 100644
+--- a/util/oslib-posix.c
++++ b/util/oslib-posix.c
+@@ -585,11 +585,8 @@ char *qemu_get_pid_name(pid_t pid)
+ 
+ void *qemu_alloc_stack(size_t *sz)
+ {
+-    void *ptr;
++    void *ptr, *ptr2;
+     int flags;
+-#ifdef CONFIG_DEBUG_STACK_USAGE
+-    void *ptr2;
+-#endif
+     size_t pagesz = qemu_real_host_page_size();
+ #ifdef _SC_THREAD_STACK_MIN
+     /* avoid stacks smaller than _SC_THREAD_STACK_MIN */
+@@ -619,7 +616,12 @@ void *qemu_alloc_stack(size_t *sz)
+     }
+ 
+     /* Stack grows down -- guard page at the bottom. */
+-    if (mprotect(ptr, pagesz, PROT_NONE) != 0) {
++    ptr2 = ptr;
++#if defined(__hppa__)
++    /* but on hppa the stack grows up, so guard the top page instead */
++    ptr2 = ptr + *sz - pagesz;
++#endif
++    if (mprotect(ptr2, pagesz, PROT_NONE) != 0) {
+         perror("failed to set up stack guard page");
+         abort();
+     }
 
