@@ -1,50 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rMTWO-0008Li-AV
-	for mharc-qemu-trivial@gnu.org; Sun, 07 Jan 2024 08:49:00 -0500
+	id 1rMUz1-00072d-7A
+	for mharc-qemu-trivial@gnu.org; Sun, 07 Jan 2024 10:22:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <deller@kernel.org>)
- id 1rMNRJ-0002r0-UC; Sun, 07 Jan 2024 02:19:22 -0500
-Received: from sin.source.kernel.org ([2604:1380:40e1:4800::1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <deller@kernel.org>)
- id 1rMNRH-0002Vx-Tz; Sun, 07 Jan 2024 02:19:21 -0500
-Received: from smtp.kernel.org (transwarp.subspace.kernel.org [100.75.92.58])
- by sin.source.kernel.org (Postfix) with ESMTP id CA891CE0AE8;
- Sun,  7 Jan 2024 07:19:08 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 9B233C433C7;
- Sun,  7 Jan 2024 07:19:06 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=kernel.org;
- s=k20201202; t=1704611948;
- bh=Bh7liYiHeIx3Vq6CFHeTZMdj0GWBysbr/3QXwBI9eg8=;
- h=Date:From:To:Subject:From;
- b=BeKZjLa6fSxcHsx6wAtabayxlu07/zH4MRP8cbRIpFBoZjhPT9lCLvaAMaG72WFeU
- IRz1VYL7mxNIqLdxvHhLcK3GJRKW2NgO5VOUmIHldW3A8DK87GdMA7SahGhObeTVOy
- QU1gUIdRCz0CrbVJfZpnzSp4yt29gz/dVlMVW3YceDJ0jgzpGZD1viCqwSeL86E23H
- 9Tc5swWvkk7MZCItEaqj4Zd4+D/pUlhjRGvqOzKzF7O7TT1kCw2p9ZnvpwzZnc0Adu
- 6mSFwLz3uPtchXoBd/O2QmHll4O2mfhw5/Kdi6gJAXv2GjdD4tfLQNjGWFE/VYV/Jk
- eieGd5Ulqml0w==
-Date: Sun, 7 Jan 2024 08:19:03 +0100
-From: Helge Deller <deller@kernel.org>
-To: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>,
- Richard Henderson <richard.henderson@linaro.org>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: [PATCH] tcg/tci: Fix TCI on hppa host and update TCI test matrix
-Message-ID: <ZZpQZ77s2t81mXIT@p100>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rMUyz-000727-IP
+ for qemu-trivial@nongnu.org; Sun, 07 Jan 2024 10:22:37 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rMUyy-0005X1-0s
+ for qemu-trivial@nongnu.org; Sun, 07 Jan 2024 10:22:37 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-553ba2f0c8fso1157403a12.1
+ for <qemu-trivial@nongnu.org>; Sun, 07 Jan 2024 07:22:35 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1704640954; x=1705245754; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=UIdnjnI8BPcVjdkMDC1cdE6XJzt6wpy67pWVTElYz/o=;
+ b=PA+BohD8YUULVbG6FRgGhoG8pw76rVF7G0YiwJc64HmDqfuIcTJ340H0BzdJn7fRiW
+ 7yf6+lMASfBqoz3OEzO0KWbZl7g9eaw99lrTqEhtuUYuYKMDGK+8rqVOxTt6bHL1AP7b
+ GeEUlVayH6enhUyhuP4DYJSTZpSWPRmnf3Av9r0TMLXw9LeIlHtBGixjMJKjxV7VhtTy
+ vRDTAB0YUcUUei8sMDjtuWNRj819xXV6vzJT6ErIvrv07SaMN8HBC94r8SRTGip05qX9
+ QcOiLQGYNMZ4qVw+2A5Qh21eoqHUi4OIgyKORiP6dv+PhmPFho6Qia/Ui5XEYtKB9Z8R
+ zMrQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1704640954; x=1705245754;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UIdnjnI8BPcVjdkMDC1cdE6XJzt6wpy67pWVTElYz/o=;
+ b=GizrsytN5mxvabarOr1ZQPHsfSHys1s0dRIzyQss3b4j9XxjjX6/Lyse0WnzTmkaAc
+ M9D61EiPhSZW2ruXkTAs88yPaoMi0u1YH3+6GvuoueY7a+T0EuhhHtNzBjBbqVgX3qSi
+ dI724vxn5oshtvhTxSkMTy9HBi9/OrsOQujQsd/4NTVmrdPgrwodYqdVzbAxovoCZ7wa
+ u3ppezZgen7zG76lkVwCCZC9y44AUn78AORhQNT0NQpOMhNdSoQiYJDNIjJnjRX9Rcn6
+ NaRsKn9lkZ5Mw/kRdrZWj+xefjooHjvqToaOEeriWq7gPny+1PsrNHueFCK3GsZmGBFn
+ 1E6A==
+X-Gm-Message-State: AOJu0YyFPbmEoC589CYbldl4x+d0ziJRlq5KDmI9cGQu/NtbQ8lTvfX3
+ VNoJ11V+7byhZ+3bKYq6gceVw+wOlMpWhueY4sJ1Khbbhb3Mtw==
+X-Google-Smtp-Source: AGHT+IHmwq9gYIEyyT74GJJXQLIz9S4sHygYnl7UlZWKdXT//CYH/SBk3voK2eHv5XPI2afv/Kv+/mBs6HhSArfvbPk=
+X-Received: by 2002:a50:d6c8:0:b0:556:adb2:90a1 with SMTP id
+ l8-20020a50d6c8000000b00556adb290a1mr1008701edj.3.1704640953867; Sun, 07 Jan
+ 2024 07:22:33 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=2604:1380:40e1:4800::1;
- envelope-from=deller@kernel.org; helo=sin.source.kernel.org
-X-Spam_score_int: -69
-X-Spam_score: -7.0
-X-Spam_bar: -------
-X-Spam_report: (-7.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.54,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+References: <ZZpQZ77s2t81mXIT@p100>
+In-Reply-To: <ZZpQZ77s2t81mXIT@p100>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sun, 7 Jan 2024 15:22:00 +0000
+Message-ID: <CAFEAcA9K4GVcYNe2YvtDxiXC-HBvAXEZzNMA-z9xkpNY4Qf2EQ@mail.gmail.com>
+Subject: Re: [PATCH] tcg/tci: Fix TCI on hppa host and update TCI test matrix
+To: Helge Deller <deller@kernel.org>
+Cc: Laurent Vivier <laurent@vivier.eu>, Michael Tokarev <mjt@tls.msk.ru>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org, 
+ qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 07 Jan 2024 08:48:58 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,84 +76,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 07 Jan 2024 07:19:22 -0000
+X-List-Received-Date: Sun, 07 Jan 2024 15:22:37 -0000
 
-Update the TCI interpreter test matrix for big-endian hosts with
-big- (hppa, hppa64) and little-endian (x86,x96-64) targets.
-I used native ppc64 and hppa hosts for those tests.
+On Sun, 7 Jan 2024 at 07:20, Helge Deller <deller@kernel.org> wrote:
+>
+> Update the TCI interpreter test matrix for big-endian hosts with
+> big- (hppa, hppa64) and little-endian (x86,x96-64) targets.
+> I used native ppc64 and hppa hosts for those tests.
+>
+> Starting TCI on a hppa host crashed immediately, because hppa is
+> the only archive left where the stack grows upwards.
+> Write-protecting the stack guard page at the top of the stack
+> fixes the crash.
 
-Starting TCI on a hppa host crashed immediately, because hppa is
-the only archive left where the stack grows upwards.
-Write-protecting the stack guard page at the top of the stack
-fixes the crash.
+We deliberately dropped support for HPPA hosts, under
+commit a1eaa6281f8b and commit b1cef6d02f84bd8.
+Do we really care enough about trying to run on these
+ancient host CPUs to want to bring it back?
 
-Signed-off-by: Helge Deller <deller@gmx.de>
+My personal rule of thumb is that if a host CPU is supported
+only by TCI then we are better off saying it is entirely
+unsupported -- in practice the performance will be so
+terrible as to not be something anybody will want to use,
+especially for older architectures which are slow to
+start with.
 
-diff --git a/tcg/tci/README b/tcg/tci/README
-index 4a8b5b5401..0c1e50779e 100644
---- a/tcg/tci/README
-+++ b/tcg/tci/README
-@@ -72,16 +72,16 @@ host and target with same or different endianness.
-             | host (le)                     host (be)
-             | 32             64             32             64
- ------------+------------------------------------------------------------
--target (le) | s0, u0         s1, u1         s?, u?         s?, u?
-+target (le) | s0, u0         s1, u1         s2, u?         s2, u?
- 32 bit      |
-             |
--target (le) | sc, uc         s1, u1         s?, u?         s?, u?
-+target (le) | sc, uc         s1, u1         s2, u?         s2, u?
- 64 bit      |
-             |
--target (be) | sc, u0         sc, uc         s?, u?         s?, u?
-+target (be) | sc, u0         sc, uc         s2, u?         s2, u?
- 32 bit      |
-             |
--target (be) | sc, uc         sc, uc         s?, u?         s?, u?
-+target (be) | sc, uc         sc, uc         s?, u?         s2, u?
- 64 bit      |
-             |
- 
-@@ -110,6 +115,10 @@ u1 = linux-user-test works
-   A cross compiled QEMU for ppc host works at least partially:
-   i386-linux-user/qemu-i386 can run a simple hello-world program
-   (tested in a ppc emulation).
-+  The big-endian tests were run on native hppa (big-endian, 32-bit) and
-+  ppc64 (big-endian, 64-bit) machines. Tested target machines were
-+  x86 and x86-64 (little-endian, debian install ISO) and 32- and 64-bit
-+  big-endian hppa (NetBSD and Debian install ISOs).
- 
- * Some TCG opcodes are either missing in the code generator and/or
-   in the interpreter. These opcodes raise a runtime exception, so it is
-diff --git a/util/oslib-posix.c b/util/oslib-posix.c
-index e86fd64e09..e378b71641 100644
---- a/util/oslib-posix.c
-+++ b/util/oslib-posix.c
-@@ -585,11 +585,8 @@ char *qemu_get_pid_name(pid_t pid)
- 
- void *qemu_alloc_stack(size_t *sz)
- {
--    void *ptr;
-+    void *ptr, *ptr2;
-     int flags;
--#ifdef CONFIG_DEBUG_STACK_USAGE
--    void *ptr2;
--#endif
-     size_t pagesz = qemu_real_host_page_size();
- #ifdef _SC_THREAD_STACK_MIN
-     /* avoid stacks smaller than _SC_THREAD_STACK_MIN */
-@@ -619,7 +616,12 @@ void *qemu_alloc_stack(size_t *sz)
-     }
- 
-     /* Stack grows down -- guard page at the bottom. */
--    if (mprotect(ptr, pagesz, PROT_NONE) != 0) {
-+    ptr2 = ptr;
-+#if defined(__hppa__)
-+    /* but on hppa the stack grows up, so guard the top page instead */
-+    ptr2 = ptr + *sz - pagesz;
-+#endif
-+    if (mprotect(ptr2, pagesz, PROT_NONE) != 0) {
-         perror("failed to set up stack guard page");
-         abort();
-     }
+thanks
+-- PMM
 
