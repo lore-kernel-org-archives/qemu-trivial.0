@@ -1,67 +1,129 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rMpUv-0005q9-BJ
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Jan 2024 08:16:57 -0500
+	id 1rMrfZ-0005Ah-Fg
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Jan 2024 10:36:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rMpUn-0005p2-P5
- for qemu-trivial@nongnu.org; Mon, 08 Jan 2024 08:16:49 -0500
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rMpUZ-0000xW-ME
- for qemu-trivial@nongnu.org; Mon, 08 Jan 2024 08:16:47 -0500
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-555e07761acso2076145a12.0
- for <qemu-trivial@nongnu.org>; Mon, 08 Jan 2024 05:16:35 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704719794; x=1705324594; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=DwGLdKsVOai909TPhHnK9iYkIWEQ4kf4rhfYlHTtk9U=;
- b=IJ6G8DrrkJSI6hnTO1Nd/Z7BzM6aITsDWL8TShWAuVrbQqqZIOKMxbqALgkyaa9klN
- p0caIwKxsQ0FmA4PJsva2LD5gpDudwxNX8GgLr5e4bRL4gD3D+VpSgXE1iLlb/PIR/Xg
- bG168Ya1p6Bgwc1eKKxb3Nqjc50lyXhpmNCFV7NBbVxpP3Jk8CE5tjuGc4BVumBmo6TC
- +dIbYyChvUDJ9JP0jDhD/wlaaVOYTBC12MV3GSBjKA/YqkXNa3ZcthrOnB1JQ30+fZ7x
- QvDSxda9HznlvDVlBnol5KoKuXUrdffqu5ljQb1A0Rjd4bPhOrDGnQiodNAGHzjzZ4xL
- jC3Q==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rMrfX-0005AE-ND
+ for qemu-trivial@nongnu.org; Mon, 08 Jan 2024 10:36:03 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rMrfV-0005cn-Kp
+ for qemu-trivial@nongnu.org; Mon, 08 Jan 2024 10:36:03 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1704728160;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=LvwV0TOqkoGSlixMO7zV1TtypS8ZUFgPx4R8cAsUgY8=;
+ b=Oxt65Z2NfNl6EKNVrpg9cD/bYCB/OIVSXgW/uXslYNaGXy6KyjZmYeLfjPq6EYQxQCtOu4
+ x+YiKZ3Z++XQjQnF9R+lBpFLtGYHxsinCi/aObEOrKZw3cv4Ot5UfitgeI/g09p5+j7fH2
+ cwSp0+d4B9sCj4gcMuyA6SFm26tJOq4=
+Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
+ [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-595-xTVbBccENIKybW9Kh0SCJg-1; Mon, 08 Jan 2024 10:35:58 -0500
+X-MC-Unique: xTVbBccENIKybW9Kh0SCJg-1
+Received: by mail-qt1-f198.google.com with SMTP id
+ d75a77b69052e-4298a890584so27078311cf.2
+ for <qemu-trivial@nongnu.org>; Mon, 08 Jan 2024 07:35:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704719794; x=1705324594;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=DwGLdKsVOai909TPhHnK9iYkIWEQ4kf4rhfYlHTtk9U=;
- b=mZL7qbQp6OpLFZm2rV/bqg0+n6mZrgoXWFaowGOhFJdkgbC+Q3VlaWDB3faIl1E6Ek
- f6XtLCwrnOAGtUdzHeMAngk+HvFI/t9uivRC/26CaGkxNKh6tkS969UrqavvX7X9Bqsd
- Z+Dvixe0Hd7/irXF8YUr7V11osr79YlOtM86zOPHyyujCAtZxfsGfk0lGNeXz2NRTtrj
- Gx1prqVUioSp892XVizoBkQpxSXilhTQWdd6SNH6SiMlxg9LafVqrXpqZYcGBa1J7tlQ
- S+Al/sXjLj8fBMgt+JwiIV1mZNUhPbeCNsLqMD5pZd0gGfyGlotKnB6qMfLK6vXiql9a
- Arag==
-X-Gm-Message-State: AOJu0YzqLdKv08J+36+CoMIARdyqMnhio1BbILzJsyBCXrEMLsz+d0A2
- 9NCznAfUbgiqaw5W8SlHPOWiwlKDQWyyC4UBnm+wYHek16T5jA==
-X-Google-Smtp-Source: AGHT+IG2Aq7Aa2ZOrDN8uHKfLWpiXW2iH9M5FDkopxgal+IidSmmB5sZL2ZbwzntxjbaYQIxmPenvym0OlKxq0BpTxM=
-X-Received: by 2002:a50:9b4e:0:b0:557:8a58:ed34 with SMTP id
- a14-20020a509b4e000000b005578a58ed34mr1006730edj.121.1704719793950; Mon, 08
- Jan 2024 05:16:33 -0800 (PST)
+ d=1e100.net; s=20230601; t=1704728158; x=1705332958;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=LvwV0TOqkoGSlixMO7zV1TtypS8ZUFgPx4R8cAsUgY8=;
+ b=U5f2eDfuXXNIv2XjxLDmKTyxH27Nx9SlhL5Kq5P9R8JATEtAc6B2QqGE6okTEO2RsK
+ Q9wBD5UygFxj/qNYKfJLqeJYSJYqdZLduIK9M2ZY05f4JHJNy/2G332d9LfhyzveTfjQ
+ 0ENjHmdb6pi9LdsmUOnea8/TT0Ltf+IVhvVv9EzDz/WqdMTrRVt25oek9P9LykxEhZ9f
+ /kCDgUtY79R3Ik4bJaS+DDdfZRIAy8gURaGoqT4JON++eNHykn1B01y+z+B8FqUG8aL+
+ Mz7fcu8IbyrjOSa1/kla8E7wuXFmNZ7VGcb0GddFsVxnnOMOov1TfFuDRP6K6eBelcsm
+ E1QA==
+X-Gm-Message-State: AOJu0Yz0g3uwKwpN9Sxu+vGcAoVv/qSL3q/nAoJeUjLHzKdKuEc1TM5j
+ IPMyywAoX5pjqyV0Qzoru+ydu84av1Zf20vLnM0waxd5ft1PUlDUswmeQMnxQEPWh51Z54sdrjF
+ Nm3j+0II69QiBCoJeVs57mFUU1A==
+X-Received: by 2002:a05:622a:f:b0:429:9a0e:d2e9 with SMTP id
+ x15-20020a05622a000f00b004299a0ed2e9mr928492qtw.108.1704728158271; 
+ Mon, 08 Jan 2024 07:35:58 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFIX9u8APkn99XMPv3aCDrFDCFgt9BJ1yaFjx+MHPky41XCsjZNfe21lpg41z8VOGb4SzZceQ==
+X-Received: by 2002:a05:622a:f:b0:429:9a0e:d2e9 with SMTP id
+ x15-20020a05622a000f00b004299a0ed2e9mr928481qtw.108.1704728157955; 
+ Mon, 08 Jan 2024 07:35:57 -0800 (PST)
+Received: from [192.168.0.9] (ip-109-43-179-78.web.vodafone.de.
+ [109.43.179.78]) by smtp.gmail.com with ESMTPSA id
+ v21-20020ac87495000000b00429a0688f8fsm60292qtq.68.2024.01.08.07.35.55
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 08 Jan 2024 07:35:57 -0800 (PST)
+Message-ID: <ee980401-5640-418b-a9f1-dc03169f020b@redhat.com>
+Date: Mon, 8 Jan 2024 16:35:54 +0100
 MIME-Version: 1.0
-References: <20240105193038.116576-1-mjt@tls.msk.ru>
-In-Reply-To: <20240105193038.116576-1-mjt@tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Jan 2024 13:16:23 +0000
-Message-ID: <CAFEAcA8VqpRsU7mRm+wkPrVAkadYc2AAny1vasDDQqxH4Xjp4w@mail.gmail.com>
-Subject: Re: [PULL 0/6] Trivial patches for 2024-01-05
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] docs: use "buses" rather than "busses"
+To: Pavel Pisa <pisa@fel.cvut.cz>, Samuel Tardieu <sam@rfc1149.net>,
+ Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Vikram Garhwal <fnu.vikram@xilinx.com>, Jason Wang <jasowang@redhat.com>
+References: <20240103172817.2197737-1-sam@rfc1149.net>
+ <202401032234.12134.pisa@fel.cvut.cz>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
+ yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
+ 4CflIyFqjCpfDM4MuTmzTjXq4Uov1giGE9X6viNo1pxyEpd7PanlKNnf4PqEQp06X4IgUacW
+ tSGj6Gcns1bCuHV8OPWLkf4hkRnu8hdL6i60Yxz4E6TqlrpxsfYwLXgEeswPHOA6Mn4Cso9O
+ 0lewVYfFfsmokfAVMKWzOl1Sr0KGI5T9CpmRfAiSHpthhHWnECcJFwl72NTi6kUcUzG4se81
+ O6n9d/kTj7pzTmBdfwuOZ0YUSqcqs0W+l1NcASSYZQaDoD3/SLk+nqVeCBB4OnYOGhgmIHNW
+ 0CwMRO/GK+20alxzk//V9GmIM2ACElbfF8+Uug3pqiHkVnKqM7W9/S1NH2qmxB6zMiJUHlTH
+ gnVeZX0dgH27mzstcF786uPcdEqS0KJuxh2kk5IvUSL3Qn3ZgmgdxBMyCPciD/1cb7/Ahazr
+ 3ThHQXSHXkH/aDXdfLsKVuwDzHLVSkdSnZdt5HHh75/NFHxwaTlydgfHmFFwodK8y/TjyiGZ
+ zg2Kje38xnz8zKn9iesFBCcONXS7txENTzX0z80WKBhK+XSFJwARAQABzR5UaG9tYXMgSHV0
+ aCA8dGh1dGhAcmVkaGF0LmNvbT7CwXgEEwECACIFAlVgX6oCGwMGCwkIBwMCBhUIAgkKCwQW
+ AgMBAh4BAheAAAoJEC7Z13T+cC21EbIP/ii9cvT2HHGbFRl8HqGT6+7Wkb+XLMqJBMAIGiQK
+ QIP3xk1HPTsLfVG0ao4hy/oYkGNOP8+ubLnZen6Yq3zAFiMhQ44lvgigDYJo3Ve59gfe99KX
+ EbtB+X95ODARkq0McR6OAsPNJ7gpEUzfkQUUJTXRDQXfG/FX303Gvk+YU0spm2tsIKPl6AmV
+ 1CegDljzjycyfJbk418MQmMu2T82kjrkEofUO2a24ed3VGC0/Uz//XCR2ZTo+vBoBUQl41BD
+ eFFtoCSrzo3yPFS+w5fkH9NT8ChdpSlbNS32NhYQhJtr9zjWyFRf0Zk+T/1P7ECn6gTEkp5k
+ ofFIA4MFBc/fXbaDRtBmPB0N9pqTFApIUI4vuFPPO0JDrII9dLwZ6lO9EKiwuVlvr1wwzsgq
+ zJTPBU3qHaUO4d/8G+gD7AL/6T4zi8Jo/GmjBsnYaTzbm94lf0CjXjsOX3seMhaE6WAZOQQG
+ tZHAO1kAPWpaxne+wtgMKthyPLNwelLf+xzGvrIKvLX6QuLoWMnWldu22z2ICVnLQChlR9d6
+ WW8QFEpo/FK7omuS8KvvopFcOOdlbFMM8Y/8vBgVMSsK6fsYUhruny/PahprPbYGiNIhKqz7
+ UvgyZVl4pBFjTaz/SbimTk210vIlkDyy1WuS8Zsn0htv4+jQPgo9rqFE4mipJjy/iboDzsFN
+ BFH7eUwBEAC2nzfUeeI8dv0C4qrfCPze6NkryUflEut9WwHhfXCLjtvCjnoGqFelH/PE9NF4
+ 4VPSCdvD1SSmFVzu6T9qWdcwMSaC+e7G/z0/AhBfqTeosAF5XvKQlAb9ZPkdDr7YN0a1XDfa
+ +NgA+JZB4ROyBZFFAwNHT+HCnyzy0v9Sh3BgJJwfpXHH2l3LfncvV8rgFv0bvdr70U+On2XH
+ 5bApOyW1WpIG5KPJlDdzcQTyptOJ1dnEHfwnABEfzI3dNf63rlxsGouX/NFRRRNqkdClQR3K
+ gCwciaXfZ7ir7fF0u1N2UuLsWA8Ei1JrNypk+MRxhbvdQC4tyZCZ8mVDk+QOK6pyK2f4rMf/
+ WmqxNTtAVmNuZIwnJdjRMMSs4W4w6N/bRvpqtykSqx7VXcgqtv6eqoDZrNuhGbekQA0sAnCJ
+ VPArerAZGArm63o39me/bRUQeQVSxEBmg66yshF9HkcUPGVeC4B0TPwz+HFcVhheo6hoJjLq
+ knFOPLRj+0h+ZL+D0GenyqD3CyuyeTT5dGcNU9qT74bdSr20k/CklvI7S9yoQje8BeQAHtdV
+ cvO8XCLrpGuw9SgOS7OP5oI26a0548M4KldAY+kqX6XVphEw3/6U1KTf7WxW5zYLTtadjISB
+ X9xsRWSU+Yqs3C7oN5TIPSoj9tXMoxZkCIHWvnqGwZ7JhwARAQABwsFfBBgBAgAJBQJR+3lM
+ AhsMAAoJEC7Z13T+cC21hPAQAIsBL9MdGpdEpvXs9CYrBkd6tS9mbaSWj6XBDfA1AEdQkBOn
+ ZH1Qt7HJesk+qNSnLv6+jP4VwqK5AFMrKJ6IjE7jqgzGxtcZnvSjeDGPF1h2CKZQPpTw890k
+ fy18AvgFHkVk2Oylyexw3aOBsXg6ukN44vIFqPoc+YSU0+0QIdYJp/XFsgWxnFIMYwDpxSHS
+ 5fdDxUjsk3UBHZx+IhFjs2siVZi5wnHIqM7eK9abr2cK2weInTBwXwqVWjsXZ4tq5+jQrwDK
+ cvxIcwXdUTLGxc4/Z/VRH1PZSvfQxdxMGmNTGaXVNfdFZjm4fz0mz+OUi6AHC4CZpwnsliGV
+ ODqwX8Y1zic9viSTbKS01ZNp175POyWViUk9qisPZB7ypfSIVSEULrL347qY/hm9ahhqmn17
+ Ng255syASv3ehvX7iwWDfzXbA0/TVaqwa1YIkec+/8miicV0zMP9siRcYQkyTqSzaTFBBmqD
+ oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
+ IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
+ yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
+In-Reply-To: <202401032234.12134.pisa@fel.cvut.cz>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.243,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,32 +136,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Jan 2024 13:16:50 -0000
+X-List-Received-Date: Mon, 08 Jan 2024 15:36:03 -0000
 
-On Fri, 5 Jan 2024 at 19:32, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
-> The following changes since commit 0c1eccd368af8805ec0fb11e6cf25d0684d37328:
->
->   Merge tag 'hw-cpus-20240105' of https://github.com/philmd/qemu into staging (2024-01-05 16:08:58 +0000)
->
-> are available in the Git repository at:
->
->   https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
->
-> for you to fetch changes up to 8a780cd212647a6013c8ea59e0929dad996e2c54:
->
->   docs: use "buses" rather than "busses" (2024-01-05 22:28:54 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2024-01-05
->
-> Random stuff here and there, plus a riscv bugfix.
->
+On 03/01/2024 22.34, Pavel Pisa wrote:
+> On Wednesday 03 of January 2024 18:28:17 Samuel Tardieu wrote:
+>> If "busses" might be encountered as a plural of "bus" (5 instances),
+>> the correct spelling is "buses" (26 instances). Fixing those 5
+>> instances makes the doc more consistent.
+>>
+>> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+> Reviewed-by: Pavel Pisa <pisa@cmp.felk.cvut.cz>
+> 
+> PS: there is waiting my previous CAN FIX from December 14
+> and I have received any feedback if it will be taken
+> by somebody with commit rights
+> 
+>    https://gitlab.com/qemu-project/qemu/-/issues/2028
+>    https://patchew.org/QEMU/20231214104623.31147-1-pisa@fel.cvut.cz/
+> 
+> Should I resend it?
 
-Applied, thanks.
+Since you (and Vikram) are listed as a maintainer for the CAN subsystem,  so 
+if there were no objections, it's maybe easiest if you send a pull request 
+for it. See this page for some more information:
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/9.0
-for any user-visible changes.
+  https://www.qemu.org/docs/master/devel/submitting-a-pull-request.html
 
--- PMM
+Basically:
+- Stick your patch(es) in a branch on your public repository
+- Create a signed git tag ("git tag -s ...") and push it to your repo
+- git format-patch --cover-letter --subject-prefix=PULL ...
+- Use "git request-pull" to create the contents of the cover letter
+- Send them to the qemu-devel mailing list
+
+  HTH,
+   Thomas
+
+
+
 
