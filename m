@@ -1,80 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rMk0D-00015M-SU
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Jan 2024 02:24:53 -0500
+	id 1rMo96-00062T-6O
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Jan 2024 06:50:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1rMk0C-000155-KC
- for qemu-trivial@nongnu.org; Mon, 08 Jan 2024 02:24:52 -0500
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rMo94-000623-Au
+ for qemu-trivial@nongnu.org; Mon, 08 Jan 2024 06:50:18 -0500
+Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
- id 1rMk0B-00024a-18
- for qemu-trivial@nongnu.org; Mon, 08 Jan 2024 02:24:52 -0500
-Received: by mail-pj1-x102b.google.com with SMTP id
- 98e67ed59e1d1-28c0536806fso1398567a91.0
- for <qemu-trivial@nongnu.org>; Sun, 07 Jan 2024 23:24:50 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rMo90-0007jN-NC
+ for qemu-trivial@nongnu.org; Mon, 08 Jan 2024 06:50:18 -0500
+Received: by mail-wr1-x42f.google.com with SMTP id
+ ffacd0b85a97d-3367a304091so1706868f8f.3
+ for <qemu-trivial@nongnu.org>; Mon, 08 Jan 2024 03:50:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1704698689; x=1705303489;
- darn=nongnu.org; 
- h=content-transfer-encoding:in-reply-to:from:references:to
+ d=linaro.org; s=google; t=1704714612; x=1705319412; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=v6f7Q+DdgsijtuPqWcgW6WrwKIP/dbty9hWGfsSl3H0=;
- b=Mv2LUGKVFeyRewAcX7fpwCIFjCKJv75P0Op0DSDudu67wu1AOkPAksnn0Kh80A8HUP
- T4LBMH0MzkqDXqys8cVL3UM/k+LjbbW5on2Dc4mv9tgkKH7KXQYnlLU2SFG48SQLOl6+
- 3CWNIwHXgXDCOsUPaVJfzRCQZDZ0XZW62PbNO5r8No3EAAQytebCxXr942WZ/PWhCTiB
- DQf1140yUsuv8k66b7NcjcpSG1MgWV99mU/ACeqiz1Yzo3we2HVVsRPDihREMmD+r3z4
- 60utVqywPmISwUzavMWEVyWbgoxsW7E/HzuKjqcK+gqNqRjCS38z9ugflZZqhAkTLsMO
- du3Q==
+ bh=XOf8gGqS4dYN+pjWP3M18zUtXBMcAqxom+v6AMiL62Y=;
+ b=XP86o1A9fooXcxEzgcX/2Da3gr1Ngn83D+n8xJ9DL0c+/HBv0JQUaRerZfLEwNVicf
+ U2duFHS16D7pIGB0X19DUee+lvg8svBgv6Ttalt+gcU442LpWy76TQBbuP0KL17NaYWp
+ 3qrwqOYRxUQBuFdTnDG3DPyonHns8G5EOUIQLS1wvfUjd//R0izfDjZolOfZcnJyZZdS
+ z7Xa6zcUSH7vV0uaFUZBek8XSMJjPAZk0vkLx+U5eJVDyVW53MC7XZlcdujxP6yjrGC/
+ y3uxJjspMdhTeUaMYL+vcAsMhCbAODVpQ1QiY4INxAVTEPiJW21aFJ2XrvZBwalIDRO/
+ 2OWA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704698689; x=1705303489;
- h=content-transfer-encoding:in-reply-to:from:references:to
+ d=1e100.net; s=20230601; t=1704714612; x=1705319412;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=v6f7Q+DdgsijtuPqWcgW6WrwKIP/dbty9hWGfsSl3H0=;
- b=Ijkoh9gvOfsuPUnSt0YkQyyk8oxv4AwG+8ZzQ85qE+qPhCTpYSotr5c6kBYYO/Fhml
- GherY8Yoahqp/FmMpKlY4e5NpNJqCqc+vrQYPstMQfeet8wL5fiu86IIL5KIkgxDtlwQ
- /BNBVQbDyrbxXBY2dio9P1pdCt2u3KPtir6DL2VN2rhrKIMOOx9wjopUzBB8RKeoKjoj
- /FBA6Q8HAn+i21Xy+AmBSTO5Ru372aIK18N9TT+HvG9F2kVmCp/dOT04rjEMte5YsD7Z
- L5RzogzRpH6dKi82TLicaH2txA+JXBbRsGT2CNUiDdaI4K1txsI+Lv/pm/4h1+mm/4MY
- lm7A==
-X-Gm-Message-State: AOJu0YyXVjCkkGtxIRVPnlX6Aira6kjxKpPDZSxrPIZl1IYHD0g/oJLL
- H5svNAdfJi9Al7ECuJD9s3xY7EAeDjLI8Q==
-X-Google-Smtp-Source: AGHT+IHToq7z8/oGqdskFid37iUYmPDEdsrfyG/DP3WwoarQCe5DgBdRgReIxSHj9w9XZYcMFeXekw==
-X-Received: by 2002:a17:90a:4048:b0:28b:c860:fa59 with SMTP id
- k8-20020a17090a404800b0028bc860fa59mr1402522pjg.61.1704698689161; 
- Sun, 07 Jan 2024 23:24:49 -0800 (PST)
-Received: from [157.82.205.105] ([157.82.205.105])
+ bh=XOf8gGqS4dYN+pjWP3M18zUtXBMcAqxom+v6AMiL62Y=;
+ b=uHssVPGx1kF3k9nyvYEixwHuNYNlKMdqwny+SX6DaiFXZvNAJMgtGRYkzyz+7h+qs6
+ PuzjfsD5SmSZ3uUjaHTVgIGk+3wr4OpgOMcA3FgqEJIfA0h48RDdTEvEoumMn93EKiPW
+ 7q77D3xPSj2MA0XNa6uCuHdHhZJDm3JzWnvzMlsZ4rdty2ziAtahrjOmB8NLgfVYjohd
+ 8+mxgk+ZAF+ExtbXn+oMESH5V5AIOCNLEDfdFQjg3H48Uv2qqLKbakv3M0gJhHn94kWJ
+ BmPBW9Zc0ja+pijsOSRggh1V/8BfYzitkgKjibJ168ijvijKdHPv1c+m0mI8Xwc2maj/
+ lUHA==
+X-Gm-Message-State: AOJu0YwzGnF2gBrCIE8VoNzpTs+wUQLfPUP8r2SimGbM9DFxkWSdlvcI
+ 8edcS0VQgwCMdrUW6JChTb40622o7qRQwA==
+X-Google-Smtp-Source: AGHT+IELJSXMW9keoTF6MyBg9FUgJwZiOvkCs2H6LHiUEbXVb2U3tK+uMTHTbG7d9PfQ+mWr4xrwqA==
+X-Received: by 2002:a5d:488b:0:b0:336:5f9a:cea4 with SMTP id
+ g11-20020a5d488b000000b003365f9acea4mr1384243wrq.62.1704714611775; 
+ Mon, 08 Jan 2024 03:50:11 -0800 (PST)
+Received: from [192.168.1.102] ([176.176.175.62])
  by smtp.gmail.com with ESMTPSA id
- o17-20020a17090ac09100b0028bdb4cc5basm4679180pjs.0.2024.01.07.23.24.47
+ d7-20020adfe2c7000000b00336d24b4847sm7589164wrj.114.2024.01.08.03.50.10
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 07 Jan 2024 23:24:48 -0800 (PST)
-Message-ID: <37a58ca7-31e6-4d36-9ff2-16071992f43b@daynix.com>
-Date: Mon, 8 Jan 2024 16:24:45 +0900
+ Mon, 08 Jan 2024 03:50:11 -0800 (PST)
+Message-ID: <eea1905e-f2dc-4dfe-b40c-ed6c1f55cc7b@linaro.org>
+Date: Mon, 8 Jan 2024 12:50:09 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] tcg/tci: Fix TCI on hppa host and update TCI test matrix
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Helge Deller <deller@kernel.org>, Laurent Vivier <laurent@vivier.eu>,
- Michael Tokarev <mjt@tls.msk.ru>,
+To: Helge Deller <deller@gmx.de>, Peter Maydell <peter.maydell@linaro.org>,
+ Helge Deller <deller@kernel.org>, John David Anglin <dave.anglin@bell.net>,
+ Laurent Vivier <laurent@vivier.eu>
+Cc: Michael Tokarev <mjt@tls.msk.ru>,
  Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
 References: <ZZpQZ77s2t81mXIT@p100>
- <4ca9e87d-1123-408c-ad49-71c01e332828@linaro.org>
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-In-Reply-To: <4ca9e87d-1123-408c-ad49-71c01e332828@linaro.org>
+ <CAFEAcA9K4GVcYNe2YvtDxiXC-HBvAXEZzNMA-z9xkpNY4Qf2EQ@mail.gmail.com>
+ <7df97a8e-6bb2-482c-86cf-a9dbf2bd2e53@gmx.de>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <7df97a8e-6bb2-482c-86cf-a9dbf2bd2e53@gmx.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=2607:f8b0:4864:20::102b;
- envelope-from=akihiko.odaki@daynix.com; helo=mail-pj1-x102b.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,30 +87,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Jan 2024 07:24:52 -0000
+X-List-Received-Date: Mon, 08 Jan 2024 11:50:18 -0000
 
-On 2024/01/07 19:54, Philippe Mathieu-Daudé wrote:
-> Cc'ing Akihiko for commit a1eaa6281f.
-> 
-> On 7/1/24 08:19, Helge Deller wrote:
->> Update the TCI interpreter test matrix for big-endian hosts with
->> big- (hppa, hppa64) and little-endian (x86,x96-64) targets.
->> I used native ppc64 and hppa hosts for those tests.
+On 7/1/24 22:40, Helge Deller wrote:
+> On 1/7/24 16:22, Peter Maydell wrote:
+>> On Sun, 7 Jan 2024 at 07:20, Helge Deller <deller@kernel.org> wrote:
+>>>
+>>> Update the TCI interpreter test matrix for big-endian hosts with
+>>> big- (hppa, hppa64) and little-endian (x86,x96-64) targets.
+>>> I used native ppc64 and hppa hosts for those tests.
+>>>
+>>> Starting TCI on a hppa host crashed immediately, because hppa is
+>>> the only archive left where the stack grows upwards.
+>>> Write-protecting the stack guard page at the top of the stack
+>>> fixes the crash.
 >>
->> Starting TCI on a hppa host crashed immediately, because hppa is
->> the only archive left where the stack grows upwards.
->> Write-protecting the stack guard page at the top of the stack
->> fixes the crash.
+>> We deliberately dropped support for HPPA hosts, under
+>> commit a1eaa6281f8b and commit b1cef6d02f84bd8.
+>> Do we really care enough about trying to run on these
+>> ancient host CPUs to want to bring it back?
 >>
+>> My personal rule of thumb is that if a host CPU is supported
+>> only by TCI then we are better off saying it is entirely
+>> unsupported -- in practice the performance will be so
+>> terrible as to not be something anybody will want to use,
+>> especially for older architectures which are slow to
+>> start with.
 > 
-> Fixes: a1eaa6281f ("util: Delete checks for old host definitions")
+> I can see your point (and the performance is really horrible).
+> It's not my intention to make hppa a supported TCI platform,
+> but for me it's a good candidate to at least test TCI on
+> a big-endian machine, mostly because I have access to some of
+> such machines.
+> And, this patch is all what's needed and it's pretty trivial, so
+> it would be great if it could be accepted.
 
-The change is intentional. If you need HP-PA host support, please 
-explain why you need to run latest QEMU on HP-PA. You may also look at 
-commit b1cef6d02f ("Drop remaining bits of ia64 host support"), which is 
-mentioned in commit a1eaa6281f ("util: Delete checks for old host 
-definitions"), if you are going to restore HP-PA host support.
+I was also running linux-user tests under HPPA/TCI and Cc'ed
+Helge for HPPA host removal:
+https://lore.kernel.org/qemu-devel/f61ff7ff-44a2-14c3-da08-755c290c75b7@linaro.org/
+where he seemed to agree with the change so I didn't insist:
+https://lore.kernel.org/qemu-devel/9a5f4a80-0700-4261-f26d-ad86ad4209cd@gmx.de/
+
+Peter, in 2021 I had a go at implementing it (back then there
+were few more HW still alive). I hit 2 issues:
+
+- in compat32-bit user mode, signals are broken, see in
+   arch/parisc/kernel/signal32.h:
+
+   /* ELF32 signal handling */
+
+   /* In a deft move of uber-hackery, we decide to carry the top half of all
+    * 64-bit registers in a non-portable, non-ABI, hidden structure.
+    * Userspace can read the hidden structure if it *wants* but is never
+    * guaranteed to be in the same place. In fact the uc_sigmask from the
+    * ucontext_t structure may push the hidden register file downwards
+    */
+   struct compat_regfile {
+           /* Upper half of all the 64-bit registers that were truncated
+              on a copy to a 32-bit userspace */
+           compat_int_t rf_gr[32];
+           compat_int_t rf_iasq[2];
+           compat_int_t rf_iaoq[2];
+           compat_int_t rf_sar;
+   };
+
+- 64-bit userland is missing glibc (missing L3 TLB support for user
+   applications). John was working on it.
 
 Regards,
-Akihiko Odaki
+
+Phil.
 
