@@ -1,69 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rN4uX-0000vg-3L
-	for mharc-qemu-trivial@gnu.org; Tue, 09 Jan 2024 00:44:25 -0500
+	id 1rNH6W-000090-VN
+	for mharc-qemu-trivial@gnu.org; Tue, 09 Jan 2024 13:45:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rN4uU-0000rm-ON; Tue, 09 Jan 2024 00:44:22 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rNH6M-0008WG-AI; Tue, 09 Jan 2024 13:45:26 -0500
+Received: from zoidberg.rfc1149.net ([195.154.227.159])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rN4uS-0005fM-NH; Tue, 09 Jan 2024 00:44:22 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 2236341864;
- Tue,  9 Jan 2024 08:44:28 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 77C6A5DD89;
- Tue,  9 Jan 2024 08:44:17 +0300 (MSK)
-Message-ID: <6c043607-d5ba-41d3-94df-5618fc05c15f@tls.msk.ru>
-Date: Tue, 9 Jan 2024 08:44:17 +0300
+ (Exim 4.90_1) (envelope-from <sam@rfc1149.net>)
+ id 1rNH6F-0002Wn-Qb; Tue, 09 Jan 2024 13:45:24 -0500
+Received: from 127.0.0.1 (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ by zoidberg.rfc1149.net (Postfix) with ESMTPSA id 0725280024;
+ Tue,  9 Jan 2024 19:45:13 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=rfc1149.net; s=smtp;
+ t=1704825913; bh=0TINWY8HRlOV+mR0MYQncm2cL7XA3W+i5PPcGq//eIg=;
+ h=From:To:Cc:Subject:Date;
+ b=DVYTUKfxGhD1L0vgohE86GZiFC/NAMl9r3lePHihJyY2fUE/Ig3K8+c3qXFygAvH7
+ 4jKhRrAS1KIvTSe6Oeg0geqgTrvqf3jS+hQgNi3CQhKx4FrE87vYxKV3m0xORZEkK3
+ kwNAQWdf5f3VdeYggko9qSriYQZVdUT4N8HsVDmIgLg29hoMKqwWF4sHzsGMSVhA7F
+ U3aIHdxQun+P56r6Mdujp9wm5Ev+hwAIzbT5bM4nIi5zam/oovtp5+tqtirjNNEcXa
+ 8qltIgQJZKeLDtgdgOjYzLpZ7L21MuzCqvOydrlDFOaXONgbqlVhNoR84DvOLghFnu
+ RtEy6X8SZ/RfQ==
+From: Samuel Tardieu <sam@rfc1149.net>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ Samuel Tardieu <sam@rfc1149.net>
+Subject: [PATCH] hw/timer: fix systick trace message
+Date: Tue,  9 Jan 2024 19:45:08 +0100
+Message-ID: <20240109184508.3189599-1-sam@rfc1149.net>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial] colo: examples: remove mentions of script= and
- (wrong) downscript=
-Content-Language: en-US
-To: "Zhang, Chen" <chen.zhang@intel.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Li Zhijian <lizhijian@fujitsu.com>
-References: <20240107112459.335594-1-mjt@tls.msk.ru>
- <CYYPR11MB843238AD2090FC1B9B309DBA9B6A2@CYYPR11MB8432.namprd11.prod.outlook.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <CYYPR11MB843238AD2090FC1B9B309DBA9B6A2@CYYPR11MB8432.namprd11.prod.outlook.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=195.154.227.159; envelope-from=sam@rfc1149.net;
+ helo=zoidberg.rfc1149.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,38 +55,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 09 Jan 2024 05:44:23 -0000
+X-List-Received-Date: Tue, 09 Jan 2024 18:45:30 -0000
 
-09.01.2024 05:08, Zhang, Chen :
-> 
-> 
->> -----Original Message-----
->> From: Michael Tokarev <mjt@tls.msk.ru>
->> Sent: Sunday, January 7, 2024 7:25 PM
->> To: qemu-devel@nongnu.org
->> Cc: Michael Tokarev <mjt@tls.msk.ru>; qemu-trivial@nongnu.org; Zhang,
->> Chen <chen.zhang@intel.com>; Li Zhijian <lizhijian@fujitsu.com>
->> Subject: [PATCH trivial] colo: examples: remove mentions of script= and
->> (wrong) downscript=
->>
->> There's no need to repeat script=/etc/qemu-ifup in examples, as it is already
->> in there.  More, all examples uses incorrect "down script=" (which should be
->> "downscript=").
-> 
-> Yes, good catch.
-> Reviewed-by: Zhang Chen <chen.zhang@intel.com>
-> 
->> ---
->> I'm not sure we need so many identical examples, and why it uses vnet=off, -
->> it looks like vnet= should also be dropped.
-> 
-> Do you means the "vnet_hdr_support" in docs?
+Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+Fixes: ff68dacbc786 ("armv7m: Split systick out from NVIC")
+---
+ hw/timer/trace-events | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Nope, it was a thinko on my part, I mean vhost=off parameter - which is right next to script=.
-Why vhost is explicitly disabled here, while it isn't even enabled by default?
+diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+index 3eccef83858..8145e18e3da 100644
+--- a/hw/timer/trace-events
++++ b/hw/timer/trace-events
+@@ -35,7 +35,7 @@ aspeed_timer_read(uint64_t offset, unsigned size, uint64_t value) "From 0x%" PRI
+ 
+ # armv7m_systick.c
+ systick_reload(void) "systick reload"
+-systick_timer_tick(void) "systick reload"
++systick_timer_tick(void) "systick tick"
+ systick_read(uint64_t addr, uint32_t value, unsigned size) "systick read addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+ systick_write(uint64_t addr, uint32_t value, unsigned size) "systick write addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
+ 
+-- 
+2.42.0
 
-And do we really need that many examples like this, maybe it's a good idea to
-remove half of them and refer to the other place instead?
-
-/mjt
 
