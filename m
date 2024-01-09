@@ -1,127 +1,151 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rMrfZ-0005Ah-Fg
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Jan 2024 10:36:05 -0500
+	id 1rN1YZ-000353-PH
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Jan 2024 21:09:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rMrfX-0005AE-ND
- for qemu-trivial@nongnu.org; Mon, 08 Jan 2024 10:36:03 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <chen.zhang@intel.com>)
+ id 1rN1YY-00034c-8c; Mon, 08 Jan 2024 21:09:30 -0500
+Received: from mgamail.intel.com ([192.55.52.88])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rMrfV-0005cn-Kp
- for qemu-trivial@nongnu.org; Mon, 08 Jan 2024 10:36:03 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1704728160;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=LvwV0TOqkoGSlixMO7zV1TtypS8ZUFgPx4R8cAsUgY8=;
- b=Oxt65Z2NfNl6EKNVrpg9cD/bYCB/OIVSXgW/uXslYNaGXy6KyjZmYeLfjPq6EYQxQCtOu4
- x+YiKZ3Z++XQjQnF9R+lBpFLtGYHxsinCi/aObEOrKZw3cv4Ot5UfitgeI/g09p5+j7fH2
- cwSp0+d4B9sCj4gcMuyA6SFm26tJOq4=
-Received: from mail-qt1-f198.google.com (mail-qt1-f198.google.com
- [209.85.160.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-595-xTVbBccENIKybW9Kh0SCJg-1; Mon, 08 Jan 2024 10:35:58 -0500
-X-MC-Unique: xTVbBccENIKybW9Kh0SCJg-1
-Received: by mail-qt1-f198.google.com with SMTP id
- d75a77b69052e-4298a890584so27078311cf.2
- for <qemu-trivial@nongnu.org>; Mon, 08 Jan 2024 07:35:58 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704728158; x=1705332958;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=LvwV0TOqkoGSlixMO7zV1TtypS8ZUFgPx4R8cAsUgY8=;
- b=U5f2eDfuXXNIv2XjxLDmKTyxH27Nx9SlhL5Kq5P9R8JATEtAc6B2QqGE6okTEO2RsK
- Q9wBD5UygFxj/qNYKfJLqeJYSJYqdZLduIK9M2ZY05f4JHJNy/2G332d9LfhyzveTfjQ
- 0ENjHmdb6pi9LdsmUOnea8/TT0Ltf+IVhvVv9EzDz/WqdMTrRVt25oek9P9LykxEhZ9f
- /kCDgUtY79R3Ik4bJaS+DDdfZRIAy8gURaGoqT4JON++eNHykn1B01y+z+B8FqUG8aL+
- Mz7fcu8IbyrjOSa1/kla8E7wuXFmNZ7VGcb0GddFsVxnnOMOov1TfFuDRP6K6eBelcsm
- E1QA==
-X-Gm-Message-State: AOJu0Yz0g3uwKwpN9Sxu+vGcAoVv/qSL3q/nAoJeUjLHzKdKuEc1TM5j
- IPMyywAoX5pjqyV0Qzoru+ydu84av1Zf20vLnM0waxd5ft1PUlDUswmeQMnxQEPWh51Z54sdrjF
- Nm3j+0II69QiBCoJeVs57mFUU1A==
-X-Received: by 2002:a05:622a:f:b0:429:9a0e:d2e9 with SMTP id
- x15-20020a05622a000f00b004299a0ed2e9mr928492qtw.108.1704728158271; 
- Mon, 08 Jan 2024 07:35:58 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFIX9u8APkn99XMPv3aCDrFDCFgt9BJ1yaFjx+MHPky41XCsjZNfe21lpg41z8VOGb4SzZceQ==
-X-Received: by 2002:a05:622a:f:b0:429:9a0e:d2e9 with SMTP id
- x15-20020a05622a000f00b004299a0ed2e9mr928481qtw.108.1704728157955; 
- Mon, 08 Jan 2024 07:35:57 -0800 (PST)
-Received: from [192.168.0.9] (ip-109-43-179-78.web.vodafone.de.
- [109.43.179.78]) by smtp.gmail.com with ESMTPSA id
- v21-20020ac87495000000b00429a0688f8fsm60292qtq.68.2024.01.08.07.35.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 08 Jan 2024 07:35:57 -0800 (PST)
-Message-ID: <ee980401-5640-418b-a9f1-dc03169f020b@redhat.com>
-Date: Mon, 8 Jan 2024 16:35:54 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] docs: use "buses" rather than "busses"
-To: Pavel Pisa <pisa@fel.cvut.cz>, Samuel Tardieu <sam@rfc1149.net>,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Vikram Garhwal <fnu.vikram@xilinx.com>, Jason Wang <jasowang@redhat.com>
-References: <20240103172817.2197737-1-sam@rfc1149.net>
- <202401032234.12134.pisa@fel.cvut.cz>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <202401032234.12134.pisa@fel.cvut.cz>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+ (Exim 4.90_1) (envelope-from <chen.zhang@intel.com>)
+ id 1rN1YV-0004IK-EJ; Mon, 08 Jan 2024 21:09:30 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1704766167; x=1736302167;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-transfer-encoding:mime-version;
+ bh=KOzbGtrZGRtgBQ6+aw8ags0NCn65wTXkqSDpHflBN+k=;
+ b=Yu2XqdihjHFcgzCKTqKjlxxvHRenxr8s2yOD4RzabYgpe2k1/I4Dd5qz
+ jeNnkzqiGblcvdIUPkybXxoB5/mvOYxurH5cOU0XI0SYyBjau4HQq1sgU
+ 19BDYooz2uMHj9PhBckZLt7CGA/fiQ31vKb7SVzwAR7W8kZW9HT884N3Y
+ q148ojouymWFAD5g/tKojTg8CLHBEBCc1nJjFNJqZFa7LNWs8evzmGeFj
+ 2I4leg+9J9AUUrOqQK3GZB5ziZSuBL4PPKUHnFEON/tOURKp+r49whYtW
+ eZtKoxCJJHI5O08smW7hec+ftRbmi9D9sGcVkcuVoxgx3R6wlOJhZvq9p w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10947"; a="429246867"
+X-IronPort-AV: E=Sophos;i="6.04,181,1695711600"; d="scan'208";a="429246867"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmsmga101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jan 2024 18:09:22 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.04,181,1695711600"; d="scan'208";a="23383313"
+Received: from fmsmsx601.amr.corp.intel.com ([10.18.126.81])
+ by orviesa002.jf.intel.com with ESMTP/TLS/AES256-GCM-SHA384;
+ 08 Jan 2024 18:09:23 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx601.amr.corp.intel.com (10.18.126.81) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Mon, 8 Jan 2024 18:09:21 -0800
+Received: from fmsmsx610.amr.corp.intel.com (10.18.126.90) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35; Mon, 8 Jan 2024 18:09:21 -0800
+Received: from fmsedg602.ED.cps.intel.com (10.1.192.136) by
+ fmsmsx610.amr.corp.intel.com (10.18.126.90) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.1.2507.35 via Frontend Transport; Mon, 8 Jan 2024 18:09:21 -0800
+Received: from NAM10-BN7-obe.outbound.protection.outlook.com (104.47.70.101)
+ by edgegateway.intel.com (192.55.55.71) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.1.2507.35; Mon, 8 Jan 2024 18:09:00 -0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector9901; d=microsoft.com; cv=none;
+ b=kiGQdQaR6+TxwWNRt22I3CHfbCwRNpHDrZTyoqnPWQbi6ZuYLdKdmM/BCwH4FNi63cdA6dmrfM0thN2teot+FEaEZ5HRXtK8r7eL6G2zgRpoNIB4fWBTG/CTiQZc+TfPgLhW5BMSzXqO1GhZkqeyHWfhdFqsqJKg+RthLTf5ZOXacHFu5bjVo1xJy7CswmAxN4ekD+UHKjZx5dGS3LlOxr3lGHsH9rL4p5i4GR7YD7FojpVsgiV3xQ12ZBDu+44roqvqlN3HHGIDao3gus5Sn4H4E99aexOIWEZnFOjOvrVpAmM3zZ+uSPeMSPu9lMuBBrVgvMZTpObH5HvG9gymRA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector9901;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=eZTvX7rRH8ooeyP6mun0qcmqP5mUtpThyS24k7BnKzw=;
+ b=UE7q6r8aPLc4bTCQSomSCk/dEbbpiFlN4mxCLH6vM0aTb+VFIk+cZVFjJvep6K7Xj8eiTVlY6wjuiRG1ngzq6VXlyf5qIabgDCh3OyedbaMtnRthH+Ab4NhvFtOn1/emC5IiFqSVcwDPt0DKFK8cJc3IspjGnd+FzcRkyFWoMlJNFMBm7MKQU3GCuRFeGO5bnsteSgy/sp1l0rNLXOvgZ4HQFCg6hDlfEv1O1OpNKb/b3SFoveOUZGrvHI1AukUIS1eCPc/kZjxmdkX5LAa9PswNDthQxVSTH8fJ5S5KLeq8nfni/m58sXRi28hi2ydQWC+Jf6AGAUAn4dxBN9Iz5g==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=intel.com; dmarc=pass action=none header.from=intel.com;
+ dkim=pass header.d=intel.com; arc=none
+Received: from CYYPR11MB8432.namprd11.prod.outlook.com (2603:10b6:930:be::8)
+ by CH0PR11MB5473.namprd11.prod.outlook.com (2603:10b6:610:d4::17) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7159.23; Tue, 9 Jan
+ 2024 02:08:58 +0000
+Received: from CYYPR11MB8432.namprd11.prod.outlook.com
+ ([fe80::3a72:6cef:3265:65ca]) by CYYPR11MB8432.namprd11.prod.outlook.com
+ ([fe80::3a72:6cef:3265:65ca%5]) with mapi id 15.20.7159.020; Tue, 9 Jan 2024
+ 02:08:58 +0000
+From: "Zhang, Chen" <chen.zhang@intel.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, "qemu-devel@nongnu.org"
+ <qemu-devel@nongnu.org>
+CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>, Li Zhijian
+ <lizhijian@fujitsu.com>
+Subject: RE: [PATCH trivial] colo: examples: remove mentions of script= and
+ (wrong) downscript=
+Thread-Topic: [PATCH trivial] colo: examples: remove mentions of script= and
+ (wrong) downscript=
+Thread-Index: AQHaQVxb77ChPaUaZUGuO+6+/tz/B7DQuvNg
+Date: Tue, 9 Jan 2024 02:08:58 +0000
+Message-ID: <CYYPR11MB843238AD2090FC1B9B309DBA9B6A2@CYYPR11MB8432.namprd11.prod.outlook.com>
+References: <20240107112459.335594-1-mjt@tls.msk.ru>
+In-Reply-To: <20240107112459.335594-1-mjt@tls.msk.ru>
+Accept-Language: en-US
 Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.243,
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=intel.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: CYYPR11MB8432:EE_|CH0PR11MB5473:EE_
+x-ms-office365-filtering-correlation-id: 54e8a799-f738-42f8-984b-08dc10b7f0e1
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+x-microsoft-antispam-message-info: DF5b3p7drv1a0+bVa4qs5bP9ciTWi38uLxwVxOlfcmG1sz4hpIOlAw6B3wmthsBkTrEWtBTazEF6SbbqTugeb457OJ/y4aHlmrvCs5+ruXeV2md84caICfRNql5GSwkRVSfgUjun2pBg7Y7c1PeOCb02Lsy/vDMaPtXA9QBUv1DQQ8FiRP0eZcc6x0chdO4MS16KLHArrr9R9TXvXIPtueB53s/3s8pfUqU5BkXBsfNoOJSkM/KtJsL1a/TqUrFV44irkONULqew4QUampqNrEtJjiCvOAERD7W7C41p0/npFS5E2t2eUtY1kFnc6Y7wvZaRGBFdvPRwEbJoX1IXWJnMkWuK9GGydXOENGZ7sbP2J/htWdWaGzYeirBcnxN4E3t5XnS9CWHLTYrRubiSM21KeoqqJ/KuzKGF1r0fRcPlNzXVvskDl/fqqATV26Gs8GT5mDKg3ib5jL6B+7+8E4BYQmV3lCWI/mNFh0m8AtPig5K+g9vPUBS5qcrsp4mcMLOcGY/1yYULocVvctFDLaY/c8U7z/5MrKlDtkZ3m4Pi78XkqqnmquGrg+l3IcZewF1Oab1DdxUMwpiYQn3FLFZW8CfZ2B52Tv5V4SbjqUm5xlwzLsN5eYJgE1e5yXmM
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:CYYPR11MB8432.namprd11.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230031)(396003)(366004)(376002)(346002)(39860400002)(136003)(230922051799003)(451199024)(64100799003)(1800799012)(186009)(2906002)(38100700002)(5660300002)(38070700009)(82960400001)(86362001)(122000001)(41300700001)(316002)(110136005)(54906003)(8676002)(8936002)(55236004)(9686003)(55016003)(66946007)(76116006)(66556008)(26005)(66476007)(64756008)(66446008)(478600001)(83380400001)(7696005)(6506007)(71200400001)(53546011)(33656002)(52536014)(4326008);
+ DIR:OUT; SFP:1102; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?us-ascii?Q?4LP4uQ9T4Cby38NeEvLFvn7Pjj7JBxcBHYEaToyg4+xAay204ynbZ14wvYZR?=
+ =?us-ascii?Q?lSS/0Zf9DKoMx+kfAUIOZE075qLnNSdnTB+6LZH6bzuIVDrMoMSPazNFrQsm?=
+ =?us-ascii?Q?speiCVZxa6cSuRa1/8hW5WRCMzFyrXktvR2lsomy11jV685mdtPq0zdbptvB?=
+ =?us-ascii?Q?12migKW+clhJEJO16n+1IJeCEN7PCZthPktoAOoMfVSCn2+RMH/weJjgQuq7?=
+ =?us-ascii?Q?/M2T67+eAysxChCzknvUWF/YyPjvdYL3dbDCWRKmKASylAuZEkwJd4Ds4AuS?=
+ =?us-ascii?Q?4Abh0c2AvFXhSd29ZcDs81U3QEjygKhN5VgJG1xSYCNwWWLKk3+ZMdCrFibU?=
+ =?us-ascii?Q?eGdPIjcghMDfwcbX8mdFkmM/s9qESUYFgINozFCy0uiXB0VltImvdT4jPk0u?=
+ =?us-ascii?Q?r0ZLaVhGGcj6F4Gi6tad5sIWv7iyc18+NO/29l/AzD9rGLJCboZtc+FwOv8o?=
+ =?us-ascii?Q?MgU5rtwJ6zNCvdbQKZjhr0GHsJ0wj2jFx6tqpz19tRqONJecg/XVbyAIYlBk?=
+ =?us-ascii?Q?hzttYu2EQ5wbyHQxBXAuQSUI1CHrdfZwYG8up1cH3NGpP74EN/O2zLKQEU30?=
+ =?us-ascii?Q?5Vx75Jh47VNYkNRNsBvg4b01gGlY5fzgKXLmNIj2ZHa4jvAzqjR+GpT4Ld4W?=
+ =?us-ascii?Q?osBmLX2Clpif74qtaLTEU+otupst8OwI9oYJdNZyMB4YUQZOmPxIsozYpmBH?=
+ =?us-ascii?Q?Wfi59zg0qlMC+mzc8Xf027FdOpzWljIugmd33Q7hoP/1Hz5vxohk8J5kJQjO?=
+ =?us-ascii?Q?lVU4cYt6q4jP3aKbLXw3Fs1sqAcQCHuzDrLejdpc+GOfdzcvflOdVpIQIkrX?=
+ =?us-ascii?Q?kLC6/kLs4DeWSEYTv4Bsy7aW0SwczyIYJIKcmwtqY+l9yU1xcnWfOQILELg4?=
+ =?us-ascii?Q?R93xspQtT6VBVKrve89Kq5dc7uxWwhLuNb/M2n2wXmdLpLXOTzF4NzSGpk2K?=
+ =?us-ascii?Q?vxMrADmziZEEnAPiB6BSsNPtHIzrGotvqVpw+WJsVEmuvUWv0HE6OLeHPceZ?=
+ =?us-ascii?Q?hIJvc1nuiDDf7TOXk7LM47aVlxCF4pyCVWZI+6MwaD0QxqQMtcCo6T+ZFLAI?=
+ =?us-ascii?Q?a1w+dZew+JdDPgBhXwlbN9dKsCB0UvRVc6wZobUuNPLa+WbUhvT9bry07XjY?=
+ =?us-ascii?Q?j8eAcK+8djTQ2eYgTlnimPD7GmjIPkD0ilXSJoHwU9zpLf4Nba7Vn/S4ROkx?=
+ =?us-ascii?Q?G1NSuIEgjnlW1Y6RGm55cg4RNy0CJvvUbclh01/NQJiltp3t6ch8fb/e8GZY?=
+ =?us-ascii?Q?kihisvh7B6XMZmq+uCrGX3U/wFVM0OgWMCDgmnsJ5I50AxF6C03jVKy1EQ1m?=
+ =?us-ascii?Q?9kliCM2XoOVPPrpdfe/oXaDP8ACZh18tWp/mONfhq5lYDX0ld003+ApDiZHN?=
+ =?us-ascii?Q?Xiv8YBtc0A12Pu+JFs24OG7aHPl0tkAkmUqf4Un6NeGRPP+GXo4QzxLquXgZ?=
+ =?us-ascii?Q?tk6yfH4s8VpsXSoByE1YpyfhFu2dRvVFj3HVzaa4SCOE0bechWUf9dOp6SHj?=
+ =?us-ascii?Q?R48lzHn34HDdxNJIIVH1t8fsiwmJt/PezzyStJlZKSXkDwx8H2U2m4d8qGPa?=
+ =?us-ascii?Q?WxGpmQjNQCdGd+WorJ5Y5bYBU3tXuMwwZexQOR3I?=
+Content-Type: text/plain; charset="us-ascii"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: CYYPR11MB8432.namprd11.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 54e8a799-f738-42f8-984b-08dc10b7f0e1
+X-MS-Exchange-CrossTenant-originalarrivaltime: 09 Jan 2024 02:08:58.5705 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 46c98d88-e344-4ed4-8496-4ed7712e255d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: XVTP/IvmgqIymb89jhgIxBfXqJWJRc1C29ghv0kTOco1FzvbGEU/QJe5P9iX+v0B50UQkMK0BlTi8U3zwT2iJg==
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CH0PR11MB5473
+X-OriginatorOrg: intel.com
+Received-SPF: pass client-ip=192.55.52.88; envelope-from=chen.zhang@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -66
+X-Spam_score: -6.7
+X-Spam_bar: ------
+X-Spam_report: (-6.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.243,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -136,42 +160,144 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Jan 2024 15:36:03 -0000
-
-On 03/01/2024 22.34, Pavel Pisa wrote:
-> On Wednesday 03 of January 2024 18:28:17 Samuel Tardieu wrote:
->> If "busses" might be encountered as a plural of "bus" (5 instances),
->> the correct spelling is "buses" (26 instances). Fixing those 5
->> instances makes the doc more consistent.
->>
->> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
-> Reviewed-by: Pavel Pisa <pisa@cmp.felk.cvut.cz>
-> 
-> PS: there is waiting my previous CAN FIX from December 14
-> and I have received any feedback if it will be taken
-> by somebody with commit rights
-> 
->    https://gitlab.com/qemu-project/qemu/-/issues/2028
->    https://patchew.org/QEMU/20231214104623.31147-1-pisa@fel.cvut.cz/
-> 
-> Should I resend it?
-
-Since you (and Vikram) are listed as a maintainer for the CAN subsystem,  so 
-if there were no objections, it's maybe easiest if you send a pull request 
-for it. See this page for some more information:
-
-  https://www.qemu.org/docs/master/devel/submitting-a-pull-request.html
-
-Basically:
-- Stick your patch(es) in a branch on your public repository
-- Create a signed git tag ("git tag -s ...") and push it to your repo
-- git format-patch --cover-letter --subject-prefix=PULL ...
-- Use "git request-pull" to create the contents of the cover letter
-- Send them to the qemu-devel mailing list
-
-  HTH,
-   Thomas
+X-List-Received-Date: Tue, 09 Jan 2024 02:09:30 -0000
 
 
+
+> -----Original Message-----
+> From: Michael Tokarev <mjt@tls.msk.ru>
+> Sent: Sunday, January 7, 2024 7:25 PM
+> To: qemu-devel@nongnu.org
+> Cc: Michael Tokarev <mjt@tls.msk.ru>; qemu-trivial@nongnu.org; Zhang,
+> Chen <chen.zhang@intel.com>; Li Zhijian <lizhijian@fujitsu.com>
+> Subject: [PATCH trivial] colo: examples: remove mentions of script=3D and
+> (wrong) downscript=3D
+>=20
+> There's no need to repeat script=3D/etc/qemu-ifup in examples, as it is a=
+lready
+> in there.  More, all examples uses incorrect "down script=3D" (which shou=
+ld be
+> "downscript=3D").
+
+Yes, good catch.
+Reviewed-by: Zhang Chen <chen.zhang@intel.com>
+
+> ---
+> I'm not sure we need so many identical examples, and why it uses vnet=3Do=
+ff, -
+> it looks like vnet=3D should also be dropped.
+
+Do you means the "vnet_hdr_support" in docs?
+If yes, we can't drop it. Because the filters use this tag to communicate w=
+ith an independent vnet_header.
+And when a filter with vnet_hdr_support tag(like filter-mirror) connect to =
+another filter without tag(like filter-redirector),
+They cannot correctly parse the data sent to each other.
+
+Thanks
+Chen
+
+>=20
+>  docs/colo-proxy.txt | 6 +++---
+>  qemu-options.hx     | 8 ++++----
+>  2 files changed, 7 insertions(+), 7 deletions(-)
+>=20
+> diff --git a/docs/colo-proxy.txt b/docs/colo-proxy.txt index
+> 1fc38aed1b..e712c883db 100644
+> --- a/docs/colo-proxy.txt
+> +++ b/docs/colo-proxy.txt
+> @@ -162,7 +162,7 @@ Here is an example using demonstration IP and port
+> addresses to more  clearly describe the usage.
+>=20
+>  Primary(ip:3.3.3.3):
+> --netdev tap,id=3Dhn0,vhost=3Doff,script=3D/etc/qemu-ifup,downscript=3D/e=
+tc/qemu-
+> ifdown
+> +-netdev tap,id=3Dhn0,vhost=3Doff
+>  -device e1000,id=3De0,netdev=3Dhn0,mac=3D52:a4:00:12:78:66
+>  -chardev socket,id=3Dmirror0,host=3D3.3.3.3,port=3D9003,server=3Don,wait=
+=3Doff
+>  -chardev socket,id=3Dcompare1,host=3D3.3.3.3,port=3D9004,server=3Don,wai=
+t=3Doff
+> @@ -177,7 +177,7 @@ Primary(ip:3.3.3.3):
+>  -object colo-compare,id=3Dcomp0,primary_in=3Dcompare0-
+> 0,secondary_in=3Dcompare1,outdev=3Dcompare_out0,iothread=3Diothread1
+>=20
+>  Secondary(ip:3.3.3.8):
+> --netdev tap,id=3Dhn0,vhost=3Doff,script=3D/etc/qemu-ifup,down script=3D/=
+etc/qemu-
+> ifdown
+> +-netdev tap,id=3Dhn0,vhost=3Doff
+>  -device e1000,netdev=3Dhn0,mac=3D52:a4:00:12:78:66
+>  -chardev socket,id=3Dred0,host=3D3.3.3.3,port=3D9003
+>  -chardev socket,id=3Dred1,host=3D3.3.3.3,port=3D9004
+> @@ -202,7 +202,7 @@ Primary(ip:3.3.3.3):
+>  -object colo-compare,id=3Dcomp0,primary_in=3Dcompare0-
+> 0,secondary_in=3Dcompare1,outdev=3Dcompare_out0,vnet_hdr_support
+>=20
+>  Secondary(ip:3.3.3.8):
+> --netdev tap,id=3Dhn0,vhost=3Doff,script=3D/etc/qemu-ifup,down script=3D/=
+etc/qemu-
+> ifdown
+> +-netdev tap,id=3Dhn0,vhost=3Doff
+>  -device e1000,netdev=3Dhn0,mac=3D52:a4:00:12:78:66
+>  -chardev socket,id=3Dred0,host=3D3.3.3.3,port=3D9003
+>  -chardev socket,id=3Dred1,host=3D3.3.3.3,port=3D9004
+> diff --git a/qemu-options.hx b/qemu-options.hx index
+> b66570ae00..d667bfa0c2 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -5500,7 +5500,7 @@ SRST
+>              KVM COLO
+>=20
+>              primary:
+> -            -netdev tap,id=3Dhn0,vhost=3Doff,script=3D/etc/qemu-
+> ifup,downscript=3D/etc/qemu-ifdown
+> +            -netdev tap,id=3Dhn0,vhost=3Doff
+>              -device e1000,id=3De0,netdev=3Dhn0,mac=3D52:a4:00:12:78:66
+>              -chardev socket,id=3Dmirror0,host=3D3.3.3.3,port=3D9003,serv=
+er=3Don,wait=3Doff
+>              -chardev
+> socket,id=3Dcompare1,host=3D3.3.3.3,port=3D9004,server=3Don,wait=3Doff
+> @@ -5515,7 +5515,7 @@ SRST
+>              -object colo-compare,id=3Dcomp0,primary_in=3Dcompare0-
+> 0,secondary_in=3Dcompare1,outdev=3Dcompare_out0,iothread=3Diothread1
+>=20
+>              secondary:
+> -            -netdev tap,id=3Dhn0,vhost=3Doff,script=3D/etc/qemu-ifup,dow=
+n
+> script=3D/etc/qemu-ifdown
+> +            -netdev tap,id=3Dhn0,vhost=3Doff
+>              -device e1000,netdev=3Dhn0,mac=3D52:a4:00:12:78:66
+>              -chardev socket,id=3Dred0,host=3D3.3.3.3,port=3D9003
+>              -chardev socket,id=3Dred1,host=3D3.3.3.3,port=3D9004
+> @@ -5526,7 +5526,7 @@ SRST
+>              Xen COLO
+>=20
+>              primary:
+> -            -netdev tap,id=3Dhn0,vhost=3Doff,script=3D/etc/qemu-
+> ifup,downscript=3D/etc/qemu-ifdown
+> +            -netdev tap,id=3Dhn0,vhost=3Doff
+>              -device e1000,id=3De0,netdev=3Dhn0,mac=3D52:a4:00:12:78:66
+>              -chardev socket,id=3Dmirror0,host=3D3.3.3.3,port=3D9003,serv=
+er=3Don,wait=3Doff
+>              -chardev
+> socket,id=3Dcompare1,host=3D3.3.3.3,port=3D9004,server=3Don,wait=3Doff
+> @@ -5542,7 +5542,7 @@ SRST
+>              -object colo-compare,id=3Dcomp0,primary_in=3Dcompare0-
+> 0,secondary_in=3Dcompare1,outdev=3Dcompare_out0,notify_dev=3Dnofity_way,i=
+oth
+> read=3Diothread1
+>=20
+>              secondary:
+> -            -netdev tap,id=3Dhn0,vhost=3Doff,script=3D/etc/qemu-ifup,dow=
+n
+> script=3D/etc/qemu-ifdown
+> +            -netdev tap,id=3Dhn0,vhost=3Doff
+>              -device e1000,netdev=3Dhn0,mac=3D52:a4:00:12:78:66
+>              -chardev socket,id=3Dred0,host=3D3.3.3.3,port=3D9003
+>              -chardev socket,id=3Dred1,host=3D3.3.3.3,port=3D9004
+> --
+> 2.39.2
 
 
