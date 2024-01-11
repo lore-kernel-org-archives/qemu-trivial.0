@@ -1,99 +1,135 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rNXse-0002H2-Co
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Jan 2024 07:40:25 -0500
+	id 1rNqo8-0005le-Vl
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Jan 2024 03:53:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1rNXsY-0002BY-BU; Wed, 10 Jan 2024 07:40:18 -0500
-Received: from mout.kundenserver.de ([217.72.192.73])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rNqo8-0005lM-Ah
+ for qemu-trivial@nongnu.org; Thu, 11 Jan 2024 03:53:00 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1rNXsM-000646-NZ; Wed, 10 Jan 2024 07:40:09 -0500
-Received: from [192.168.100.1] ([82.142.8.70]) by mrelayeu.kundenserver.de
- (mreue108 [213.165.67.119]) with ESMTPSA (Nemesis) id
- 1MI5cP-1rQawn19PD-00FCAq; Wed, 10 Jan 2024 13:39:54 +0100
-Message-ID: <f35f3934-4205-4ae3-a9a8-1fd47326194c@vivier.eu>
-Date: Wed, 10 Jan 2024 13:39:52 +0100
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rNqo6-0005qQ-Ub
+ for qemu-trivial@nongnu.org; Thu, 11 Jan 2024 03:53:00 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1704963178;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=0BUqBXXzdcv1NcZbDFVQy0bX57YILgVBvQVMZVq8OAY=;
+ b=d18vgVu0I5gk5Gov8rU4eWQq22GuAWxGZUkMshzNuFkndRlVr5cvQs5D09yJkvVYMyTNQ3
+ fD/7NIDKQMVqX4AoJRao6/MIhrqmRxFD7U7Rtn+AV3VxvRM7iGidaVDG64AOXNLgvlzRoC
+ F7QcPmNRZ+JVH8dDVouL0eqcoKG1OXA=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-677-t-NnT9ftOGuN3mQ5aMUz-g-1; Thu, 11 Jan 2024 03:52:50 -0500
+X-MC-Unique: t-NnT9ftOGuN3mQ5aMUz-g-1
+Received: by mail-qt1-f200.google.com with SMTP id
+ d75a77b69052e-4298b94cb5bso64153891cf.2
+ for <qemu-trivial@nongnu.org>; Thu, 11 Jan 2024 00:52:50 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1704963169; x=1705567969;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=0BUqBXXzdcv1NcZbDFVQy0bX57YILgVBvQVMZVq8OAY=;
+ b=HagU+LAkWrTD9q5PR8EU7vVv6afgIB9eObHe5Xc62OJaMiVSUoX0A/yFWWWR7AWSsB
+ KTlDHTeHqJzplUQszm6nVj8OEj9YX6c893HhM0gZ+r0Rk8rXY29Dtdy0NULOuf7lfc2X
+ 5BtuIeFQ3Rlm+j+sqfu2pklPkEFQoUq8KrgUpRSvvsLmK86xcdk1M6PSpfDrrpyAC1nH
+ u8t7JhZ6+uAZdIQ9K+S1/rFAQvoApPutt9D6cFOdcXuDyuX4YIWgc1XSRiQjy6eQAHuP
+ 1VPPOfdFhrVJ/0VRfx9F2Gfcv+df9Bi1HIUcO/bAaOCb9GQUEvsfMyUfvMBSSvo8Y6me
+ +zaw==
+X-Gm-Message-State: AOJu0YynpwBJ+BKbSRJrHCMUZowoWjLlR+PzEKfB0ULYTyNNIdkuCE+6
+ NvZki7dTOAyUO+GxlMarbwHYIw70mr7TjXqNdfv/0SrW+F8w3FwmUbJUumwdXm3klRhP/9cvwCk
+ ifWr0BXi+aMWt0VE/GWiypCoSEA==
+X-Received: by 2002:a05:620a:559c:b0:783:688:ed2 with SMTP id
+ vq28-20020a05620a559c00b0078306880ed2mr1117798qkn.10.1704963169619; 
+ Thu, 11 Jan 2024 00:52:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFhPwCfm5mwFKcLdf+Jyl29bsbv+4OxrnTmQmiuNidtTkqtDXVmZzBrceAmBWayAFdnFNE9Ng==
+X-Received: by 2002:a05:620a:559c:b0:783:688:ed2 with SMTP id
+ vq28-20020a05620a559c00b0078306880ed2mr1117783qkn.10.1704963169356; 
+ Thu, 11 Jan 2024 00:52:49 -0800 (PST)
+Received: from [10.33.192.181] (nat-pool-str-t.redhat.com. [149.14.88.106])
+ by smtp.gmail.com with ESMTPSA id
+ bm26-20020a05620a199a00b007831c391234sm213365qkb.21.2024.01.11.00.52.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 11 Jan 2024 00:52:48 -0800 (PST)
+Message-ID: <72c3cf5f-29ef-4adf-925d-7d5e36c65b7e@redhat.com>
+Date: Thu, 11 Jan 2024 09:52:46 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/timer: fix systick trace message
-To: Samuel Tardieu <sam@rfc1149.net>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
-References: <20240109184508.3189599-1-sam@rfc1149.net>
-Content-Language: fr
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; keydata=
- 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
-In-Reply-To: <20240109184508.3189599-1-sam@rfc1149.net>
+Subject: Re: [PATCH v3] scripts/checkpatch: Support codespell checking
+To: Zhao Liu <zhao1.liu@linux.intel.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Darren Kenny <darren.kenny@oracle.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
+ <alex.bennee@linaro.org>, Alexander Bulekov <alxndr@bu.edu>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Zhenyu Wang <zhenyu.z.wang@intel.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Yongwei Ma <yongwei.ma@intel.com>,
+ Samuel Tardieu <sam@rfc1149.net>
+References: <20240105083848.267192-1-zhao1.liu@linux.intel.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240105083848.267192-1-zhao1.liu@linux.intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Provags-ID: V03:K1:NlZdfm4z3cd6Rc3SHyP2CbcARUVvOtEVqznZdskMqDD8IS4Lc4B
- 7/S5TaWVEwcM0SfZcj+eBTuSp8Aijtf5maky75/c1PVrNTXtfZYvrvzXjHCKse7WureV5JE
- PFWHM80w7AWp6m4dOkWd8TYG/3pNKKpU/lv27h7nZOSWQYX50Us66laiM7OZ4XICNuUGx2b
- YsYrzFgJHsP9GxR+OQKyw==
-UI-OutboundReport: notjunk:1;M01:P0:02+tBSyJMmE=;pIvVnrwMrij2mQiNkxLW1heGHfm
- +rCSaUlFzfzMVfJ2NTnEh6acgv/PIi/2MeZOKUPHmXHGcMsyCT1ngM5VWWJhXAhQAGgmQhuVG
- 7pM4ybnHMvIUJD4DKuGLkjBb0bugUCdqazl3N/C5ceL3Q5fYfGMQLbc4UGxp1KUmQaedhwAUc
- cdeUZBelc4bg1Ze9dWIX6MME1/cF2IbfTi9vguhZhwU4cPYNMGboj/JYQWVVUTzJfu1lQoVum
- DluMlnmy2sMfWUU18GzsxOCiaID2OecWHh70lHEOXJuexgnlBicnHLIEDLfj1LxM9w/wkChYy
- v8dCaE3qsMnMNSJ21W4n+Msz0FMOKStX/t54iskvbm+TpBu0vOoUe+FpiigTIVAjIsM6ntVc8
- tJPbeBEpw2jMYnlPo3oK1c4WSV4/qKOhRunz6HFwnt0QMJAHmqk4JQpuX+UigZSWUxe3rKK1W
- MopnIKZJwcZ9FlexFRkjoFF2e5iWomqcwVk5kOdnLjqman9Mi/lZNPSeJGfn+unrrk3fxnX9E
- Di4sLHtO6MlrzL0z1o0ivlftyKjLLiouTutViRUsjjd+fLTvSGBQ+udE8/eOP6Cv/kxB9OVT3
- 9YfyzHVlcPfwYr8PQgDIEiGBRxJun1XEkY3v5mIjd6nNz8AhwRW4ItDlt/UtGGRpzKATHbiA/
- jh3YxSaZhJoi+G4G4LDviYkGGmIdf7/fQwelrGPKVENLj/RwoOLt1pIa1H8J7Of/h01mIjZxI
- AQz+WF+XaW7UA7fkkC2yUWdqY7c6SbRMa/UgzkDu0LDTAIbvkE0dljEl9Fi/XqOKt4lHeLQQo
- RheH9WYCJNe9n3jwOMEpvaTPmAttj6lrsMdiH/bsw3QuF1JuyEJSy3lUJAutjLzRIW0B277iJ
- rDNCfPXwGdX7iaQ==
-Received-SPF: none client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.774,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,28 +142,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jan 2024 12:40:18 -0000
+X-List-Received-Date: Thu, 11 Jan 2024 08:53:00 -0000
 
-Le 09/01/2024 à 19:45, Samuel Tardieu a écrit :
-> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
-> Fixes: ff68dacbc786 ("armv7m: Split systick out from NVIC")
-> ---
->   hw/timer/trace-events | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+On 05/01/2024 09.38, Zhao Liu wrote:
+> From: Zhao Liu <zhao1.liu@intel.com>
 > 
-> diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-> index 3eccef83858..8145e18e3da 100644
-> --- a/hw/timer/trace-events
-> +++ b/hw/timer/trace-events
-> @@ -35,7 +35,7 @@ aspeed_timer_read(uint64_t offset, unsigned size, uint64_t value) "From 0x%" PRI
->   
->   # armv7m_systick.c
->   systick_reload(void) "systick reload"
-> -systick_timer_tick(void) "systick reload"
-> +systick_timer_tick(void) "systick tick"
->   systick_read(uint64_t addr, uint32_t value, unsigned size) "systick read addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
->   systick_write(uint64_t addr, uint32_t value, unsigned size) "systick write addr 0x%" PRIx64 " data 0x%" PRIx32 " size %u"
->   
+> Add two spelling check options (--codespell and --codespellfile) to
+> enhance spelling check through dictionary, which copied the Linux
+> kernel's implementation in checkpatch.pl.
+> 
+> This check uses the dictionary at "/usr/share/codespell/dictionary.txt"
+> by default, if there is no dictionary specified under this path, it
+> will look for the dictionary of python3's codespell (This requires user
+> to add python3's path in environment variable $PATH, and to install
+> codespell by "pip install codespell").
+> 
+> Tested-by: Yongwei Ma <yongwei.ma@intel.com>
+> Tested-by: Samuel Tardieu <sam@rfc1149.net>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Tested-by: Thomas Huth <thuth@redhat.com>
+
+Thanks, I'll add it to my next pull request.
+
+
 
