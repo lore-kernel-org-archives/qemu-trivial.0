@@ -1,77 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rO17T-00076r-VW
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Jan 2024 14:53:40 -0500
+	id 1rO4FB-0001yy-I7
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Jan 2024 18:13:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rO17Q-00073h-9W; Thu, 11 Jan 2024 14:53:36 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rO17O-000810-3z; Thu, 11 Jan 2024 14:53:35 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 65496429BA;
- Thu, 11 Jan 2024 22:53:34 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 1DBA460EAC;
- Thu, 11 Jan 2024 22:53:18 +0300 (MSK)
-Message-ID: <3ef7f710-24a9-4ce4-9ebc-6072362656df@tls.msk.ru>
-Date: Thu, 11 Jan 2024 22:53:18 +0300
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rO4F9-0001xs-8w; Thu, 11 Jan 2024 18:13:47 -0500
+Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rO4F7-0007Zl-Mz; Thu, 11 Jan 2024 18:13:47 -0500
+Received: by mail-ua1-x92f.google.com with SMTP id
+ a1e0cc1a2514c-7cbdd011627so1880031241.3; 
+ Thu, 11 Jan 2024 15:13:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1705014823; x=1705619623; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=mvWDCfXb9K6sOUvNI3RIbJoxe5RMzVTxoEo1l07iz00=;
+ b=RucUpIuJSEX3zXd4HXmqu1JlkQ9+qtLv9xGWXhNSVrVjHpJ0o0CoUV4N0o5ChJRovn
+ UxV2MGPB7sg7Y6WirRYNCvHQXlI+qJqlgNzoMp2sPGag5f6YQau7Pwucb0giowhfqnyY
+ mSzh1g4iFedJqPd9USK/Z81ZUGtKosM4bLWgDqo1kRx5LGeSpYTwAbkGH9UtFal7VScn
+ uMHPLM0iNNQx03/J7K29dwUbiK4K6H8V4Nre9m+/8szgOq8T/B39ep/ft8tJIgPyBDb7
+ Wg8BVQrRKW7pSbQODUtmqRRFZA+rZpoG2R7mGBAP+3jqiaczVI76aKMCf+HWyoDb4mvY
+ ghjQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705014823; x=1705619623;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=mvWDCfXb9K6sOUvNI3RIbJoxe5RMzVTxoEo1l07iz00=;
+ b=rOg8A0/X+M9VB5rWqM9fQ4VJeI2tBNx0aZq3TBpEiybgSEYjHIxyzHyOebbTxVqHF7
+ L/BmdMicbcd7WnT58VOCg5Voaiy5hklAzSxnVUfx7tEA3//rqyP29k+OBkG+VhWhCVVH
+ ATXn+I6s0QvkORbO7NX/SQcxaHDZ9EcE/EFWSwi16JrBYDv3FLn2UbVdpga6Rnr7Y3sC
+ u7Yv1DLB1f0Bbd9ViZAr2F5TqppVdIUqypRjOmFkCs/zaYcE+wfCSVvX21WACuC1HR3n
+ V2t+1jYgsFis7W/PIhNwafB/METnQAulF0BKh3hkqvQgRmIwy4LwwAaMlt4CI3I/OvoX
+ PBjw==
+X-Gm-Message-State: AOJu0Yxs4l3F3y0qRxbIhwXggquzLF9Gu+QTuAhSZlQNi12v7eNSaBEV
+ +SwXSGEMl4qQo0S1WlwNxMYZnrPJNF6ogL50Qr0=
+X-Google-Smtp-Source: AGHT+IFuMNejdqpY789xEcsTxwd00raHU6aUbNO6iKwzZiaX1aUS1yBuP25RnIorAIQ+BZ/Pnh+UUo+R0gRvqCiU3Q8=
+X-Received: by 2002:a05:6102:1914:b0:467:d72e:5054 with SMTP id
+ jk20-20020a056102191400b00467d72e5054mr604011vsb.4.1705014823473; Thu, 11 Jan
+ 2024 15:13:43 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/5] target/i386: Rename tcg_cpu_FOO() to include 'x86'
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Weiwei Li <liwei1518@gmail.com>, Alistair Francis
- <alistair.francis@wdc.com>, qemu-s390x@nongnu.org,
- David Hildenbrand <david@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>, qemu-riscv@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bin.meng@windriver.com>,
- qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier <laurent@vivier.eu>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Eric Farman
- <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 References: <20240111120221.35072-1-philmd@linaro.org>
- <20240111120221.35072-5-philmd@linaro.org>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240111120221.35072-5-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ <20240111120221.35072-2-philmd@linaro.org>
+In-Reply-To: <20240111120221.35072-2-philmd@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Fri, 12 Jan 2024 09:13:17 +1000
+Message-ID: <CAKmqyKNZm8zUTnsBZ8Qi5gQeE9GL0Rr-KmpJHEZWQP8Bho6EgA@mail.gmail.com>
+Subject: Re: [PATCH 1/5] accel: Rename accel_init_ops_interfaces() to include
+ 'system'
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
+ Weiwei Li <liwei1518@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-s390x@nongnu.org, 
+ Michael Tokarev <mjt@tls.msk.ru>, David Hildenbrand <david@redhat.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, qemu-riscv@nongnu.org, 
+ Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bin.meng@windriver.com>,
+ qemu-trivial@nongnu.org, 
+ Halil Pasic <pasic@linux.ibm.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ Ilya Leoshkevich <iii@linux.ibm.com>, Eduardo Habkost <eduardo@habkost.net>, 
+ Laurent Vivier <laurent@vivier.eu>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::92f;
+ envelope-from=alistair23@gmail.com; helo=mail-ua1-x92f.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -85,105 +88,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Jan 2024 19:53:38 -0000
+X-List-Received-Date: Thu, 11 Jan 2024 23:13:48 -0000
 
-11.01.2024 15:02, Philippe Mathieu-Daudé :
-> The tcg_cpu_FOO() names are x86 specific, so rename
-> them as x86_tcg_cpu_FOO() (as other names in this file)
-> to ease navigating the code.
+On Thu, Jan 11, 2024 at 10:05=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
+<philmd@linaro.org> wrote:
+>
+> accel_init_ops_interfaces() is system specific, so
+> rename it as accel_system_init_ops_interfaces() to
+> ease navigating the code.
+>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-Wow, that's a large list of recipients..
+Alistair
 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   target/i386/tcg/tcg-cpu.c | 32 ++++++++++++++++----------------
->   1 file changed, 16 insertions(+), 16 deletions(-)
-> 
-> diff --git a/target/i386/tcg/tcg-cpu.c b/target/i386/tcg/tcg-cpu.c
-> index 6e881e9e27..e56489caea 100644
-> --- a/target/i386/tcg/tcg-cpu.c
-> +++ b/target/i386/tcg/tcg-cpu.c
-> @@ -114,18 +114,18 @@ static const struct TCGCPUOps x86_tcg_ops = {
->   #endif /* !CONFIG_USER_ONLY */
->   };
->   
-> -static void tcg_cpu_init_ops(AccelCPUClass *accel_cpu, CPUClass *cc)
-> +static void x86_tcg_cpu_init_ops(AccelCPUClass *accel_cpu, CPUClass *cc)
->   {
->       /* for x86, all cpus use the same set of operations */
->       cc->tcg_ops = &x86_tcg_ops;
->   }
->   
-> -static void tcg_cpu_class_init(CPUClass *cc)
-> +static void x86_tcg_cpu_class_init(CPUClass *cc)
->   {
-> -    cc->init_accel_cpu = tcg_cpu_init_ops;
-> +    cc->init_accel_cpu = x86_tcg_cpu_init_ops;
->   }
->   
-> -static void tcg_cpu_xsave_init(void)
-> +static void x86_tcg_cpu_xsave_init(void)
->   {
->   #define XO(bit, field) \
->       x86_ext_save_areas[bit].offset = offsetof(X86XSaveArea, field);
-> @@ -147,25 +147,25 @@ static void tcg_cpu_xsave_init(void)
->    * TCG-specific defaults that override cpudef models when using TCG.
->    * Only for builtin_x86_defs models initialized with x86_register_cpudef_types.
->    */
-> -static PropValue tcg_default_props[] = {
-> +static PropValue x86_tcg_default_props[] = {
->       { "vme", "off" },
->       { NULL, NULL },
->   };
->   
-> -static void tcg_cpu_instance_init(CPUState *cs)
-> +static void x86_tcg_cpu_instance_init(CPUState *cs)
->   {
->       X86CPU *cpu = X86_CPU(cs);
->       X86CPUClass *xcc = X86_CPU_GET_CLASS(cpu);
->   
->       if (xcc->model) {
->           /* Special cases not set in the X86CPUDefinition structs: */
-> -        x86_cpu_apply_props(cpu, tcg_default_props);
-> +        x86_cpu_apply_props(cpu, x86_tcg_default_props);
->       }
->   
-> -    tcg_cpu_xsave_init();
-> +    x86_tcg_cpu_xsave_init();
->   }
->   
-> -static void tcg_cpu_accel_class_init(ObjectClass *oc, void *data)
-> +static void x86_tcg_cpu_accel_class_init(ObjectClass *oc, void *data)
->   {
->       AccelCPUClass *acc = ACCEL_CPU_CLASS(oc);
->   
-> @@ -173,18 +173,18 @@ static void tcg_cpu_accel_class_init(ObjectClass *oc, void *data)
->       acc->cpu_target_realize = tcg_cpu_realizefn;
->   #endif /* CONFIG_USER_ONLY */
->   
-> -    acc->cpu_class_init = tcg_cpu_class_init;
-> -    acc->cpu_instance_init = tcg_cpu_instance_init;
-> +    acc->cpu_class_init = x86_tcg_cpu_class_init;
-> +    acc->cpu_instance_init = x86_tcg_cpu_instance_init;
->   }
-> -static const TypeInfo tcg_cpu_accel_type_info = {
-> +static const TypeInfo x86_tcg_cpu_accel_type_info = {
->       .name = ACCEL_CPU_NAME("tcg"),
->   
->       .parent = TYPE_ACCEL_CPU,
-> -    .class_init = tcg_cpu_accel_class_init,
-> +    .class_init = x86_tcg_cpu_accel_class_init,
->       .abstract = true,
->   };
-> -static void tcg_cpu_accel_register_types(void)
-> +static void x86_tcg_cpu_accel_register_types(void)
->   {
-> -    type_register_static(&tcg_cpu_accel_type_info);
-> +    type_register_static(&x86_tcg_cpu_accel_type_info);
->   }
-> -type_init(tcg_cpu_accel_register_types);
-> +type_init(x86_tcg_cpu_accel_register_types);
-
+>  accel/accel-system.h | 2 +-
+>  accel/accel-system.c | 2 +-
+>  accel/accel-target.c | 2 +-
+>  3 files changed, 3 insertions(+), 3 deletions(-)
+>
+> diff --git a/accel/accel-system.h b/accel/accel-system.h
+> index d41c62f21b..2d37c73c97 100644
+> --- a/accel/accel-system.h
+> +++ b/accel/accel-system.h
+> @@ -10,6 +10,6 @@
+>  #ifndef ACCEL_SYSTEM_H
+>  #define ACCEL_SYSTEM_H
+>
+> -void accel_init_ops_interfaces(AccelClass *ac);
+> +void accel_system_init_ops_interfaces(AccelClass *ac);
+>
+>  #endif /* ACCEL_SYSTEM_H */
+> diff --git a/accel/accel-system.c b/accel/accel-system.c
+> index fa8f43757c..f6c947dd82 100644
+> --- a/accel/accel-system.c
+> +++ b/accel/accel-system.c
+> @@ -62,7 +62,7 @@ void accel_setup_post(MachineState *ms)
+>  }
+>
+>  /* initialize the arch-independent accel operation interfaces */
+> -void accel_init_ops_interfaces(AccelClass *ac)
+> +void accel_system_init_ops_interfaces(AccelClass *ac)
+>  {
+>      const char *ac_name;
+>      char *ops_name;
+> diff --git a/accel/accel-target.c b/accel/accel-target.c
+> index 7e3cbde5df..08626c00c2 100644
+> --- a/accel/accel-target.c
+> +++ b/accel/accel-target.c
+> @@ -104,7 +104,7 @@ static void accel_init_cpu_interfaces(AccelClass *ac)
+>  void accel_init_interfaces(AccelClass *ac)
+>  {
+>  #ifndef CONFIG_USER_ONLY
+> -    accel_init_ops_interfaces(ac);
+> +    accel_system_init_ops_interfaces(ac);
+>  #endif /* !CONFIG_USER_ONLY */
+>
+>      accel_init_cpu_interfaces(ac);
+> --
+> 2.41.0
+>
+>
 
