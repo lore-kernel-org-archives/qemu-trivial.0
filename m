@@ -1,52 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rNtmM-0002zI-5h
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Jan 2024 07:03:25 -0500
+	id 1rNtmb-00033Q-9E
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Jan 2024 07:03:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rNtm4-0002q9-Gc
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rNtm4-0002qC-K9
  for qemu-trivial@nongnu.org; Thu, 11 Jan 2024 07:03:05 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rNtlz-0007Kj-C3
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rNtly-0007If-Ln
  for qemu-trivial@nongnu.org; Thu, 11 Jan 2024 07:03:02 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-40e5f3b390fso4881835e9.2
- for <qemu-trivial@nongnu.org>; Thu, 11 Jan 2024 04:02:46 -0800 (PST)
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-40e54f233abso21501605e9.0
+ for <qemu-trivial@nongnu.org>; Thu, 11 Jan 2024 04:02:27 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1704974565; x=1705579365; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=9oDADZ7OQkBJhilNI7y3OkwoRjc/uWOL4l0/5ZjzT+c=;
- b=hrWEwSN3xaVIO1pzvQBlZOIGNyMX3cNp84yVaTPgWuGgKyvub81M0dfT2XTFZFiLTM
- xOULxOekq0fMLb7tH/PWhIORjYvF2DMq9qP6sPRN2Nmi9jXbCjR6t9VgGx6thsrO5y/z
- Hm0wjb8zk77zSfDsA3XySu47BeVAxJn6oIDT31byEVpL0c8PItuAewqX1byTV//SsVb0
- lpjePB27K9f2SbR50ukwvTff/febyarvDyPfNAnfYM0nqsgnDcKsE8OndKNSzO8wIS3U
- 6DmwgkrqmahsQ9ON7B0gekuXBMMy/IVU+mScBZLELlz+XVS60Z4tPfqAQUwlO+qE3q35
- Hv7Q==
+ d=linaro.org; s=google; t=1704974546; x=1705579346; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Np3VcKjCEmoCcQ1sC27/JjnaozcQhcX+4VGjkjhIPyU=;
+ b=Fm6SGHQrC1MbNDRTPbmjoH8rDsqJhozLT53Z2n5Ihczo6xJJWHPnjb4eupB6qALs/T
+ qmP6+QHFgBnplg8RSm1fRxeR/q0b5v8kXDhGd0FEIL50FLn9ikmCS9Lt0YzOx16GgntL
+ 5LJCze9y0+nZOfZXgymt1gkVt50FvnaL0iG4+oDvq0SHApxZykMkpsyeIzcxYVWEONEd
+ +QkIf+zoGVKoRpGMBvDg48t+S6JK+J7Wxt4ffz0pa9UUM68nrpIUQoReQEbQ6q1tgvdv
+ rRpE+b4+k2HG0ZIaGaJnQfiRa67aSUswMRViaHcIaDziWsU4YIstsHeaSIxISH1h3cb9
+ /R5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704974565; x=1705579365;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=9oDADZ7OQkBJhilNI7y3OkwoRjc/uWOL4l0/5ZjzT+c=;
- b=Zy9JFRoVzXavn8fELgh+mnbQ2WJuk8DLb3GHY5hqzts1tG8Pp9wXq0eOsdtEzEX9ad
- 2hbuUqltTyqzYURI12eDSten8v6lv/cDazdSijjIRomdYOvKJYmqxY/QmCwaNhK+Gd4r
- BX1amjVmMX34CE1Wf07dwK5r5PRATd4bxgt5ltFM5i8G3lRh6PN5zAiC1pu7qgKejusp
- yuEkeYsjpQamWDMHAi1hyllb4lOpTJy9FhQ1By25koqwgHUqa2uf5PYD3lVLl4DG9tUo
- I98Yr2R2IS+Hw6rAWKbHDlq75eKrUP9jqaIZCf/KMnlESxfy4qhxDPdy60a8vk1g8c/J
- j1yQ==
-X-Gm-Message-State: AOJu0YzbbthfqovbkQk+pi3ojW0Y8hHs/sJ9NLbksPeKbCufB9z/KW6o
- zoqv1NgNBEwZt2Or2uyVtK8w8Jbm0sS1Pg==
-X-Google-Smtp-Source: AGHT+IHUy2rDKzOcAGPqrz1cWpY8bjDMaLqeYdAZU4p19oR22q+kOJSKHkxiRPj8CF6RdVzDH6fu6Q==
-X-Received: by 2002:a05:600c:3515:b0:40e:4e48:513b with SMTP id
- h21-20020a05600c351500b0040e4e48513bmr359496wmq.12.1704974565669; 
- Thu, 11 Jan 2024 04:02:45 -0800 (PST)
+ d=1e100.net; s=20230601; t=1704974546; x=1705579346;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Np3VcKjCEmoCcQ1sC27/JjnaozcQhcX+4VGjkjhIPyU=;
+ b=YU3fQB6T5dqNQFZsn0S3/awo2xH+/2Zf0LtuAAT4urPAH0FNbqqfGA9LD2A8D/u8UK
+ NG6xkU+jnW2+uCohaTN2MX2WTnfEhIn1SHy7BDb8/wCkY4wRUGvTJvKnSxM0q0hLV3on
+ 1LcXm5UJiaH5wD7t1PZlRuLpTJszkIacPJP5edpUIuB3gEryt4e6hqOm445AvpgUNR2o
+ XXh1XekHuSvbbOPBz7p6J9FOMFf/gdfPhvUppM0nB8NHauBXkAolT0eYoJoKESxSNXKn
+ IPOEE7Q83SD3w45RtjB476zshW8XcsKLUPk7CqXRfF52+dhlWA69uifnzWhQum4c2+vD
+ SyJA==
+X-Gm-Message-State: AOJu0Yx2gt0jBHjRAGmfhH1xn7Nmayf8+LP8XYU2T09bNBkWMvBxMsba
+ pjC+ur3JeIY2o6hOXplZP8/Kin720bHURQ==
+X-Google-Smtp-Source: AGHT+IGW98HvKQmBMk05A28qpHHkj3PVNY44IdoDoGHUxvKU5rKjCPlJBlyDMJB6qIIZkmTH/bQVYw==
+X-Received: by 2002:a05:600c:314c:b0:40d:8590:a310 with SMTP id
+ h12-20020a05600c314c00b0040d8590a310mr309464wmo.88.1704974545898; 
+ Thu, 11 Jan 2024 04:02:25 -0800 (PST)
 Received: from m1x-phil.lan (vau06-h02-176-184-43-236.dsl.sta.abo.bbox.fr.
  [176.184.43.236]) by smtp.gmail.com with ESMTPSA id
- t6-20020a05600c198600b0040e48abec33sm5550904wmq.45.2024.01.11.04.02.43
+ f10-20020adfb60a000000b003368849129dsm1050123wre.15.2024.01.11.04.02.23
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 11 Jan 2024 04:02:45 -0800 (PST)
+ Thu, 11 Jan 2024 04:02:25 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -62,17 +61,15 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
  Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 3/5] hw/s390x: Rename cpu_class_init() to include 'sclp'
-Date: Thu, 11 Jan 2024 13:02:19 +0100
-Message-ID: <20240111120221.35072-4-philmd@linaro.org>
+Subject: [PATCH 0/5] misc: Trivial code rename cleanup
+Date: Thu, 11 Jan 2024 13:02:16 +0100
+Message-ID: <20240111120221.35072-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240111120221.35072-1-philmd@linaro.org>
-References: <20240111120221.35072-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -93,38 +90,33 @@ List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 11 Jan 2024 12:03:05 -0000
+X-List-Received-Date: Thu, 11 Jan 2024 12:03:05 -0000
 
-cpu_class_init() is specific to s390x SCLP, so rename
-it as sclp_cpu_class_init() (as other names in this file)
-to ease navigating the code.
+Rename some code names to ease navigating / grepping
+the code.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/s390x/sclpcpu.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+I plan to queue these patches once reviewed.
 
-diff --git a/hw/s390x/sclpcpu.c b/hw/s390x/sclpcpu.c
-index f2b1a4b037..fa79891f5a 100644
---- a/hw/s390x/sclpcpu.c
-+++ b/hw/s390x/sclpcpu.c
-@@ -73,7 +73,7 @@ static int read_event_data(SCLPEvent *event, EventBufferHeader *evt_buf_hdr,
-     return 1;
- }
- 
--static void cpu_class_init(ObjectClass *oc, void *data)
-+static void sclp_cpu_class_init(ObjectClass *oc, void *data)
- {
-     SCLPEventClass *k = SCLP_EVENT_CLASS(oc);
-     DeviceClass *dc = DEVICE_CLASS(oc);
-@@ -94,7 +94,7 @@ static const TypeInfo sclp_cpu_info = {
-     .name          = TYPE_SCLP_CPU_HOTPLUG,
-     .parent        = TYPE_SCLP_EVENT,
-     .instance_size = sizeof(SCLPEvent),
--    .class_init    = cpu_class_init,
-+    .class_init    = sclp_cpu_class_init,
-     .class_size    = sizeof(SCLPEventClass),
- };
- 
+Thanks,
+
+Phil.
+
+Philippe Mathieu-Daudé (5):
+  accel: Rename accel_init_ops_interfaces() to include 'system'
+  hw/core/cpu: Rename cpu_class_init() to include 'common'
+  hw/s390x: Rename cpu_class_init() to include 'sclp'
+  target/i386: Rename tcg_cpu_FOO() to include 'x86'
+  target/riscv: Rename tcg_cpu_FOO() to include 'riscv'
+
+ accel/accel-system.h       |  2 +-
+ accel/accel-system.c       |  2 +-
+ accel/accel-target.c       |  2 +-
+ hw/core/cpu-common.c       |  4 ++--
+ hw/s390x/sclpcpu.c         |  4 ++--
+ target/i386/tcg/tcg-cpu.c  | 32 ++++++++++++++++----------------
+ target/riscv/tcg/tcg-cpu.c | 28 ++++++++++++++--------------
+ 7 files changed, 37 insertions(+), 37 deletions(-)
+
 -- 
 2.41.0
 
