@@ -1,89 +1,109 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rNugA-0003Vc-RK
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Jan 2024 08:01:02 -0500
+	id 1rNwVX-000098-SM
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Jan 2024 09:58:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1rNug8-0003Rs-Id
- for qemu-trivial@nongnu.org; Thu, 11 Jan 2024 08:01:00 -0500
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1rNug3-0002x4-RB
- for qemu-trivial@nongnu.org; Thu, 11 Jan 2024 08:01:00 -0500
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-1d3eb299e2eso33091845ad.2
- for <qemu-trivial@nongnu.org>; Thu, 11 Jan 2024 05:00:54 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1704978054; x=1705582854; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=2Y4ZPV7hFgduvDOqna7pksqq2gmS+aWZfjiiB9YjPPs=;
- b=ExeAFhK6ZnA0JjgUaV+zlJmFRCGVSW7orFYGhXum6yDjK+OF+s3Q+mA5aiPBJefdlX
- VO27bjR6lQSFZnI4PwwYWZIXjGE8iV4fgCcdcw+F2X45YA+aqVic1veT/UD4IJhGd81g
- vxrblsfuZPy1WodvmrDIOnt0urTcOj5cG8mMPLHmr+PQ0BDe1nfCpveuTSar7TbC8V+u
- RexVyfiDtsAxPiSEsyA7o6yqM+nvHDqXQySCMXcNORvX7BuxDsnwWROEbxHKnSeEKSHM
- mB69gkf7gDPaccN0B/SHx3t5VSInNE6c91hw13t2IlY0CZFQeGc8s3f8iM0Dv3Y3CYim
- Uk/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704978054; x=1705582854;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=2Y4ZPV7hFgduvDOqna7pksqq2gmS+aWZfjiiB9YjPPs=;
- b=R2BacLFHPV1YduSg6ZIDg6zHJ0vhwvIe6SE/olSp+4aH+qwAM3YRP5T5YLAn34U5yW
- ASXwq1RJ2zu+vGbmVLfPpTnfOrQaYwJcxFnE3ITZRJalZkdXYRgbCYDeG7Zq/o50Y4BJ
- bFlX9QkAdjE7EdHQ1P+7qZFADes4M002YYHDjnW24eckL9UUgo37PvqHxy5IuuTYSfgy
- jveQw5thB5cK3a+8RdJwsvL6fQmtxAerJl72nbWRcFQi1NNexI7cQYTYqVORhA2BhUe9
- oXTVqC4bT/o6FSMj544BlqYmSrD/uwP833jExybsyLMwQI/YTnGCT/ib1Xz0yWEDrtcm
- H3Zw==
-X-Gm-Message-State: AOJu0YwlNBttpRHJmF7gQilyEU2kpvCiBfsFkkFhTZSvW6n873SeV3tY
- +v9YLJQDDqrgI8tMkMUray7FPTFtWd526A==
-X-Google-Smtp-Source: AGHT+IFnPdqOoOwgoHwKjEje9vCwXUzz0fzVImmJUC3efNHl1erJD1D6RgXaCQWhZhpTB77R5/n7Sg==
-X-Received: by 2002:a17:902:780e:b0:1d5:8ce6:73 with SMTP id
- p14-20020a170902780e00b001d58ce60073mr466579pll.115.1704978053758; 
- Thu, 11 Jan 2024 05:00:53 -0800 (PST)
-Received: from [192.168.68.110] ([152.234.123.64])
- by smtp.gmail.com with ESMTPSA id
- g11-20020a170902c98b00b001d4c97a2adcsm1115031plc.108.2024.01.11.05.00.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Jan 2024 05:00:53 -0800 (PST)
-Message-ID: <0ec3905b-0364-48fa-8145-b4ae8990507c@ventanamicro.com>
-Date: Thu, 11 Jan 2024 10:00:47 -0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] target/riscv: Rename tcg_cpu_FOO() to include 'riscv'
-Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ (Exim 4.90_1) (envelope-from <farman@linux.ibm.com>)
+ id 1rNvfM-0001jg-3w; Thu, 11 Jan 2024 09:04:24 -0500
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <farman@linux.ibm.com>)
+ id 1rNvfF-0007h0-66; Thu, 11 Jan 2024 09:04:13 -0500
+Received: from pps.filterd (m0360072.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 40BDVtbR018443; Thu, 11 Jan 2024 14:04:02 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=message-id : subject :
+ from : to : cc : date : in-reply-to : references : content-type :
+ content-transfer-encoding : mime-version; s=pp1;
+ bh=pmP7aW5w/9VohmEo1Es3sf7zGdZg5oHodDJGOfVpxdc=;
+ b=gKUf0xgJUUKI4lAwmtXapH/3XnagL7wZ6UilhoafZJVJ/mWATDsG841OeouEdj2M63KT
+ RWc6H3/aRfkn34kkYdd/UtCxt2rDIDjOl/yngz647rYH7FrzWgfk7+96VYo4K+hrnP0/
+ +ERY6V4k6sw627jgL7P7Bb0SHEji2MN1jJsrIm/95k0jdo3xDoEhCjEkWLXBMDrx9xG4
+ jdI1J02c1P4eradqu7PK75eWzvWvwLMGCq11ajxkgqCqJNjx0WUfBIU01yB7U/GkNf3N
+ eQFxQZV5mXLEW1lcuHlPbWXGA8aiC9OiIPvg9T6QgPr6dpK1HNVhocIbmN9yMmwA9gCF KA== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vjbejt48w-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 11 Jan 2024 14:04:01 +0000
+Received: from m0360072.ppops.net (m0360072.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40BE1tAh027293;
+ Thu, 11 Jan 2024 14:04:00 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vjbejt46a-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 11 Jan 2024 14:04:00 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 40BB5nGd022819; Thu, 11 Jan 2024 14:03:58 GMT
+Received: from smtprelay04.dal12v.mail.ibm.com ([172.16.1.6])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vfhjyuxhp-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 11 Jan 2024 14:03:58 +0000
+Received: from smtpav02.wdc07v.mail.ibm.com (smtpav02.wdc07v.mail.ibm.com
+ [10.39.53.229])
+ by smtprelay04.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 40BE3vJB21692968
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 11 Jan 2024 14:03:57 GMT
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id EBA585805B;
+ Thu, 11 Jan 2024 14:03:56 +0000 (GMT)
+Received: from smtpav02.wdc07v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 97ED55805F;
+ Thu, 11 Jan 2024 14:03:54 +0000 (GMT)
+Received: from li-479af74c-31f9-11b2-a85c-e4ddee11713b.ibm.com (unknown
+ [9.61.162.96]) by smtpav02.wdc07v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 11 Jan 2024 14:03:54 +0000 (GMT)
+Message-ID: <828428af43af0eb78b1ea6462fd854ec9375543a.camel@linux.ibm.com>
+Subject: Re: [PATCH 3/5] hw/s390x: Rename cpu_class_init() to include 'sclp'
+From: Eric Farman <farman@linux.ibm.com>
+To: Philippe =?ISO-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
-Cc: Richard Henderson <richard.henderson@linaro.org>,
- Weiwei Li <liwei1518@gmail.com>, Alistair Francis
- <alistair.francis@wdc.com>, qemu-s390x@nongnu.org,
+Cc: Richard Henderson <richard.henderson@linaro.org>, Weiwei Li
+ <liwei1518@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-s390x@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>, David Hildenbrand <david@redhat.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>, qemu-riscv@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bin.meng@windriver.com>,
- qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier <laurent@vivier.eu>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Eric Farman
- <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ qemu-riscv@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng
+ <bin.meng@windriver.com>, qemu-trivial@nongnu.org, Halil Pasic
+ <pasic@linux.ibm.com>, Paolo Bonzini <pbonzini@redhat.com>, Ilya
+ Leoshkevich <iii@linux.ibm.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Laurent Vivier <laurent@vivier.eu>, Liu Zhiwei
+ <zhiwei_liu@linux.alibaba.com>, Thomas Huth <thuth@redhat.com>, Daniel
+ Henrique Barboza <dbarboza@ventanamicro.com>
+Date: Thu, 11 Jan 2024 09:03:54 -0500
+In-Reply-To: <20240111120221.35072-4-philmd@linaro.org>
 References: <20240111120221.35072-1-philmd@linaro.org>
- <20240111120221.35072-6-philmd@linaro.org>
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-In-Reply-To: <20240111120221.35072-6-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-pl1-x635.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ <20240111120221.35072-4-philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+User-Agent: Evolution 3.50.2 (3.50.2-1.fc39) 
+MIME-Version: 1.0
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: mOnwhgb2jZG-2ySHsKuIxssQWKOPVirX
+X-Proofpoint-ORIG-GUID: IimjlcGxbd-2dh_CqiFwVT63SzmXOEqS
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-01-11_07,2024-01-11_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ mlxscore=0 mlxlogscore=841
+ spamscore=0 malwarescore=0 impostorscore=0 lowpriorityscore=0
+ priorityscore=1501 suspectscore=0 phishscore=0 bulkscore=0 adultscore=0
+ clxscore=1011 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2401110111
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=farman@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 11 Jan 2024 09:58:10 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -95,94 +115,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Jan 2024 13:01:00 -0000
+X-List-Received-Date: Thu, 11 Jan 2024 14:04:56 -0000
 
-
-
-On 1/11/24 09:02, Philippe Mathieu-Daudé wrote:
-> The tcg_cpu_FOO() names are riscv specific, so rename
-> them as riscv_tcg_cpu_FOO() (as other names in this file)
+On Thu, 2024-01-11 at 13:02 +0100, Philippe Mathieu-Daud=C3=A9 wrote:
+> cpu_class_init() is specific to s390x SCLP, so rename
+> it as sclp_cpu_class_init() (as other names in this file)
 > to ease navigating the code.
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>=20
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
+> =C2=A0hw/s390x/sclpcpu.c | 4 ++--
+> =C2=A01 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Reviewed-by: Eric Farman <farman@linux.ibm.com>
 
->   target/riscv/tcg/tcg-cpu.c | 28 ++++++++++++++--------------
->   1 file changed, 14 insertions(+), 14 deletions(-)
-> 
-> diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
-> index 14133ff665..994ca1cdf9 100644
-> --- a/target/riscv/tcg/tcg-cpu.c
-> +++ b/target/riscv/tcg/tcg-cpu.c
-> @@ -929,7 +929,7 @@ static bool riscv_cpu_is_vendor(Object *cpu_obj)
->    *   -> cpu_exec_realizefn()
->    *      -> tcg_cpu_realize() (via accel_cpu_common_realize())
->    */
-> -static bool tcg_cpu_realize(CPUState *cs, Error **errp)
-> +static bool riscv_tcg_cpu_realize(CPUState *cs, Error **errp)
->   {
->       RISCVCPU *cpu = RISCV_CPU(cs);
->       Error *local_err = NULL;
-> @@ -1372,7 +1372,7 @@ static bool riscv_cpu_has_max_extensions(Object *cpu_obj)
->       return object_dynamic_cast(cpu_obj, TYPE_RISCV_CPU_MAX) != NULL;
->   }
->   
-> -static void tcg_cpu_instance_init(CPUState *cs)
-> +static void riscv_tcg_cpu_instance_init(CPUState *cs)
->   {
->       RISCVCPU *cpu = RISCV_CPU(cs);
->       Object *obj = OBJECT(cpu);
-> @@ -1386,7 +1386,7 @@ static void tcg_cpu_instance_init(CPUState *cs)
->       }
->   }
->   
-> -static void tcg_cpu_init_ops(AccelCPUClass *accel_cpu, CPUClass *cc)
-> +static void riscv_tcg_cpu_init_ops(AccelCPUClass *accel_cpu, CPUClass *cc)
->   {
->       /*
->        * All cpus use the same set of operations.
-> @@ -1394,30 +1394,30 @@ static void tcg_cpu_init_ops(AccelCPUClass *accel_cpu, CPUClass *cc)
->       cc->tcg_ops = &riscv_tcg_ops;
->   }
->   
-> -static void tcg_cpu_class_init(CPUClass *cc)
-> +static void riscv_tcg_cpu_class_init(CPUClass *cc)
->   {
-> -    cc->init_accel_cpu = tcg_cpu_init_ops;
-> +    cc->init_accel_cpu = riscv_tcg_cpu_init_ops;
->   }
->   
-> -static void tcg_cpu_accel_class_init(ObjectClass *oc, void *data)
-> +static void riscv_tcg_cpu_accel_class_init(ObjectClass *oc, void *data)
->   {
->       AccelCPUClass *acc = ACCEL_CPU_CLASS(oc);
->   
-> -    acc->cpu_class_init = tcg_cpu_class_init;
-> -    acc->cpu_instance_init = tcg_cpu_instance_init;
-> -    acc->cpu_target_realize = tcg_cpu_realize;
-> +    acc->cpu_class_init = riscv_tcg_cpu_class_init;
-> +    acc->cpu_instance_init = riscv_tcg_cpu_instance_init;
-> +    acc->cpu_target_realize = riscv_tcg_cpu_realize;
->   }
->   
-> -static const TypeInfo tcg_cpu_accel_type_info = {
-> +static const TypeInfo riscv_tcg_cpu_accel_type_info = {
->       .name = ACCEL_CPU_NAME("tcg"),
->   
->       .parent = TYPE_ACCEL_CPU,
-> -    .class_init = tcg_cpu_accel_class_init,
-> +    .class_init = riscv_tcg_cpu_accel_class_init,
->       .abstract = true,
->   };
->   
-> -static void tcg_cpu_accel_register_types(void)
-> +static void riscv_tcg_cpu_accel_register_types(void)
->   {
-> -    type_register_static(&tcg_cpu_accel_type_info);
-> +    type_register_static(&riscv_tcg_cpu_accel_type_info);
->   }
-> -type_init(tcg_cpu_accel_register_types);
-> +type_init(riscv_tcg_cpu_accel_register_types);
 
