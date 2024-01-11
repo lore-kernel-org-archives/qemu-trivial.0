@@ -1,135 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rNqo8-0005le-Vl
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Jan 2024 03:53:00 -0500
+	id 1rNtm1-0002pR-Om
+	for mharc-qemu-trivial@gnu.org; Thu, 11 Jan 2024 07:03:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rNqo8-0005lM-Ah
- for qemu-trivial@nongnu.org; Thu, 11 Jan 2024 03:53:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rNqo6-0005qQ-Ub
- for qemu-trivial@nongnu.org; Thu, 11 Jan 2024 03:53:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1704963178;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=0BUqBXXzdcv1NcZbDFVQy0bX57YILgVBvQVMZVq8OAY=;
- b=d18vgVu0I5gk5Gov8rU4eWQq22GuAWxGZUkMshzNuFkndRlVr5cvQs5D09yJkvVYMyTNQ3
- fD/7NIDKQMVqX4AoJRao6/MIhrqmRxFD7U7Rtn+AV3VxvRM7iGidaVDG64AOXNLgvlzRoC
- F7QcPmNRZ+JVH8dDVouL0eqcoKG1OXA=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-677-t-NnT9ftOGuN3mQ5aMUz-g-1; Thu, 11 Jan 2024 03:52:50 -0500
-X-MC-Unique: t-NnT9ftOGuN3mQ5aMUz-g-1
-Received: by mail-qt1-f200.google.com with SMTP id
- d75a77b69052e-4298b94cb5bso64153891cf.2
- for <qemu-trivial@nongnu.org>; Thu, 11 Jan 2024 00:52:50 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rNtly-0002oE-Ae
+ for qemu-trivial@nongnu.org; Thu, 11 Jan 2024 07:02:58 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rNtlu-0007KD-OJ
+ for qemu-trivial@nongnu.org; Thu, 11 Jan 2024 07:02:57 -0500
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-336dcebcdb9so4848626f8f.1
+ for <qemu-trivial@nongnu.org>; Thu, 11 Jan 2024 04:02:40 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1704974559; x=1705579359; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=kbCxYAXnaPA+cdBawT/EluO8Fm76t17YXM33Yu5GMIw=;
+ b=b+SRBAOgNj8xyn4b4laAHQnbANkNxH6ajSdjXflVW5inpprEpmJlFtPMEt17/oY2s0
+ K6bbNa5U8OpKA17OPVWm7t1nGq9mMd4JN3DfZwpOE6GdPocnLMPB+jtGy4ew18W+2Weh
+ 1VZ0h2dS4hFcAOED0vzcOFGs2TEp9WOobpfzDfzG4Ng4f2APPwskCaGzwmxoQZOGhI+e
+ 2ZSiIcxHy2162QVIouhMFScIce2OIgViEFlG3teTeKnHZmxHL/R8cVK39Ppbb5F6X7eh
+ tbhSM8ccIAhrgNG2qK1Y6ZUL1gKRTm1gLr55lYTnB/r4CrXuZYqxR5P60ECtjsm8AJoE
+ DcVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1704963169; x=1705567969;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=0BUqBXXzdcv1NcZbDFVQy0bX57YILgVBvQVMZVq8OAY=;
- b=HagU+LAkWrTD9q5PR8EU7vVv6afgIB9eObHe5Xc62OJaMiVSUoX0A/yFWWWR7AWSsB
- KTlDHTeHqJzplUQszm6nVj8OEj9YX6c893HhM0gZ+r0Rk8rXY29Dtdy0NULOuf7lfc2X
- 5BtuIeFQ3Rlm+j+sqfu2pklPkEFQoUq8KrgUpRSvvsLmK86xcdk1M6PSpfDrrpyAC1nH
- u8t7JhZ6+uAZdIQ9K+S1/rFAQvoApPutt9D6cFOdcXuDyuX4YIWgc1XSRiQjy6eQAHuP
- 1VPPOfdFhrVJ/0VRfx9F2Gfcv+df9Bi1HIUcO/bAaOCb9GQUEvsfMyUfvMBSSvo8Y6me
- +zaw==
-X-Gm-Message-State: AOJu0YynpwBJ+BKbSRJrHCMUZowoWjLlR+PzEKfB0ULYTyNNIdkuCE+6
- NvZki7dTOAyUO+GxlMarbwHYIw70mr7TjXqNdfv/0SrW+F8w3FwmUbJUumwdXm3klRhP/9cvwCk
- ifWr0BXi+aMWt0VE/GWiypCoSEA==
-X-Received: by 2002:a05:620a:559c:b0:783:688:ed2 with SMTP id
- vq28-20020a05620a559c00b0078306880ed2mr1117798qkn.10.1704963169619; 
- Thu, 11 Jan 2024 00:52:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFhPwCfm5mwFKcLdf+Jyl29bsbv+4OxrnTmQmiuNidtTkqtDXVmZzBrceAmBWayAFdnFNE9Ng==
-X-Received: by 2002:a05:620a:559c:b0:783:688:ed2 with SMTP id
- vq28-20020a05620a559c00b0078306880ed2mr1117783qkn.10.1704963169356; 
- Thu, 11 Jan 2024 00:52:49 -0800 (PST)
-Received: from [10.33.192.181] (nat-pool-str-t.redhat.com. [149.14.88.106])
- by smtp.gmail.com with ESMTPSA id
- bm26-20020a05620a199a00b007831c391234sm213365qkb.21.2024.01.11.00.52.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 11 Jan 2024 00:52:48 -0800 (PST)
-Message-ID: <72c3cf5f-29ef-4adf-925d-7d5e36c65b7e@redhat.com>
-Date: Thu, 11 Jan 2024 09:52:46 +0100
+ d=1e100.net; s=20230601; t=1704974559; x=1705579359;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=kbCxYAXnaPA+cdBawT/EluO8Fm76t17YXM33Yu5GMIw=;
+ b=dcnsHX3NGmUt80ulOwEJLZT5S/+GQSjFJKGB04Y5ogLzQa/wo6+sI9S/dujCmYAYoM
+ jXS6T2F0pdFaMs+UaBMiW1KeNQE9EM/v7TJkwjCHKuUjc6raF1n31MVzSQR/aOq2AnEd
+ W1Nc5C/3QhxnW+s+g68dPDAnEDdGtqw+u+ZYxdu/clPIND9jexrAMg0GBNead3KrzQSv
+ 28ClO8vTDSuzXhuQ4mmn5gDo1h/PG8S2jGsL00XtNWB+J31zr/tyisQtZjbhjMEb84uE
+ i5d2CAa3et6GMsM+gevIPsPa+klRCzsWmO3aH5Wc6qZjc833/sMlMFCW8IQan8D3wJc2
+ KewQ==
+X-Gm-Message-State: AOJu0YymfDqSToHDIVPrkPIvhDQYWXd/PvdLrrGrhOL7L8VYlJNw6lYR
+ FYDAj3WLL9UeBIXqg43twClv4EBu1viuPQ==
+X-Google-Smtp-Source: AGHT+IFi8ZAqXwBB+XquvDhK61hjPKAOzIdwxhqJUxp6aXpwxrV48/CZzjIuV9adAouObPtk84HeUA==
+X-Received: by 2002:adf:f5cc:0:b0:336:62f7:720f with SMTP id
+ k12-20020adff5cc000000b0033662f7720fmr297987wrp.160.1704974558996; 
+ Thu, 11 Jan 2024 04:02:38 -0800 (PST)
+Received: from m1x-phil.lan (vau06-h02-176-184-43-236.dsl.sta.abo.bbox.fr.
+ [176.184.43.236]) by smtp.gmail.com with ESMTPSA id
+ e16-20020a5d65d0000000b003365951cef9sm1061169wrw.55.2024.01.11.04.02.36
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 11 Jan 2024 04:02:38 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Alistair Francis <alistair.francis@wdc.com>, qemu-s390x@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, David Hildenbrand <david@redhat.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>, qemu-riscv@nongnu.org,
+ Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bin.meng@windriver.com>,
+ qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Laurent Vivier <laurent@vivier.eu>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 2/5] hw/core/cpu: Rename cpu_class_init() to include 'common'
+Date: Thu, 11 Jan 2024 13:02:18 +0100
+Message-ID: <20240111120221.35072-3-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240111120221.35072-1-philmd@linaro.org>
+References: <20240111120221.35072-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] scripts/checkpatch: Support codespell checking
-To: Zhao Liu <zhao1.liu@linux.intel.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Darren Kenny <darren.kenny@oracle.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Alexander Bulekov <alxndr@bu.edu>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Zhenyu Wang <zhenyu.z.wang@intel.com>,
- Zhao Liu <zhao1.liu@intel.com>, Yongwei Ma <yongwei.ma@intel.com>,
- Samuel Tardieu <sam@rfc1149.net>
-References: <20240105083848.267192-1-zhao1.liu@linux.intel.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20240105083848.267192-1-zhao1.liu@linux.intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.774,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,28 +92,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Jan 2024 08:53:00 -0000
+X-List-Received-Date: Thu, 11 Jan 2024 12:02:59 -0000
 
-On 05/01/2024 09.38, Zhao Liu wrote:
-> From: Zhao Liu <zhao1.liu@intel.com>
-> 
-> Add two spelling check options (--codespell and --codespellfile) to
-> enhance spelling check through dictionary, which copied the Linux
-> kernel's implementation in checkpatch.pl.
-> 
-> This check uses the dictionary at "/usr/share/codespell/dictionary.txt"
-> by default, if there is no dictionary specified under this path, it
-> will look for the dictionary of python3's codespell (This requires user
-> to add python3's path in environment variable $PATH, and to install
-> codespell by "pip install codespell").
-> 
-> Tested-by: Yongwei Ma <yongwei.ma@intel.com>
-> Tested-by: Samuel Tardieu <sam@rfc1149.net>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+cpu_class_init() is common, so rename it as cpu_common_class_init()
+to ease navigating the code.
 
-Tested-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/core/cpu-common.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Thanks, I'll add it to my next pull request.
-
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index 3ccfe882e2..67db07741d 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -273,7 +273,7 @@ static int64_t cpu_common_get_arch_id(CPUState *cpu)
+     return cpu->cpu_index;
+ }
+ 
+-static void cpu_class_init(ObjectClass *klass, void *data)
++static void cpu_common_class_init(ObjectClass *klass, void *data)
+ {
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     ResettableClass *rc = RESETTABLE_CLASS(klass);
+@@ -304,7 +304,7 @@ static const TypeInfo cpu_type_info = {
+     .instance_finalize = cpu_common_finalize,
+     .abstract = true,
+     .class_size = sizeof(CPUClass),
+-    .class_init = cpu_class_init,
++    .class_init = cpu_common_class_init,
+ };
+ 
+ static void cpu_register_types(void)
+-- 
+2.41.0
 
 
