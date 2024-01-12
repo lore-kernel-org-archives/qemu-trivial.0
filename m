@@ -1,13 +1,13 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rOEMF-0004LM-Pr
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Jan 2024 05:01:49 -0500
+	id 1rOEMI-0004Mf-Vy
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Jan 2024 05:01:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rOELl-00048W-8C
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rOELk-00048V-Bb
  for qemu-trivial@nongnu.org; Fri, 12 Jan 2024 05:01:19 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rOELi-0005h1-G0
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rOELi-0005h3-DM
  for qemu-trivial@nongnu.org; Fri, 12 Jan 2024 05:01:16 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  s=mimecast20190719; t=1705053673;
@@ -15,34 +15,34 @@ DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xVy7qsKJPjI2/wKvXRpiG+jBXe0T6eGOpYnuJmahC8g=;
- b=Vzr5lhaufYYxNbh9pkI3FX1zRZIw0tRGW8i17pv3RCYxCGZdKidb8VIvy7KHpAlOlROFq5
- 3MwIoFOs05sNeVPGDvYdC7xITWp/Cv+Cc+sDpL2HLJMQZSLLaE4d1xECjejpRJWyz68KbS
- exKz+mTo4D1MEWTU+CFARiB7SOdq1iA=
+ bh=t9q/1fP6B5/Fr/WdjYFW30bFD0l49qIgksjeahzvbOg=;
+ b=ScajB7gUKjXHTNlLblnr8nVZR5Y/GaJsTbBvWOrrFe6cWRE8R7vfG9usnX35V0rYuZREe5
+ ohOZglJKUtIDTQFA991seDt3WIjd4Yh+c6D26m9mWD9bkPOoIV0EeIxil8dKAwJ39mzXAI
+ woiyIVrEWjCMhdL3yWyo2BkBbQLnhjE=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-587-C_05SQ0gOliezulKB9qyOA-1; Fri, 12 Jan 2024 05:01:12 -0500
-X-MC-Unique: C_05SQ0gOliezulKB9qyOA-1
+ us-mta-537-P3uL-XnLOgq6ord1A2R58A-1; Fri, 12 Jan 2024 05:01:10 -0500
+X-MC-Unique: P3uL-XnLOgq6ord1A2R58A-1
 Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
  [10.11.54.8])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DF84E8A4401;
- Fri, 12 Jan 2024 10:01:11 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.194.216])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 681DDC08ED4;
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0CBC485A588;
  Fri, 12 Jan 2024 10:01:10 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.194.216])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 39DCBC08ED4;
+ Fri, 12 Jan 2024 10:01:07 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>
 Cc: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Claudio Imbrenda <imbrenda@linux.ibm.com>
-Subject: [PATCH 5/5] qemu-options: Remove the deprecated -singlestep option
-Date: Fri, 12 Jan 2024 11:00:59 +0100
-Message-ID: <20240112100059.965041-6-thuth@redhat.com>
+Subject: [PATCH 4/5] qemu-options: Remove the deprecated -chroot option
+Date: Fri, 12 Jan 2024 11:00:58 +0100
+Message-ID: <20240112100059.965041-5-thuth@redhat.com>
 In-Reply-To: <20240112100059.965041-1-thuth@redhat.com>
 References: <20240112100059.965041-1-thuth@redhat.com>
 MIME-Version: 1.0
@@ -57,7 +57,7 @@ X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.467,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -71,115 +71,90 @@ List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Fri, 12 Jan 2024 10:01:27 -0000
+X-List-Received-Date: Fri, 12 Jan 2024 10:01:27 -0000
 
 It's been marked as deprecated since QEMU 8.1, so it should be fine
 to remove this now.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- docs/about/deprecated.rst       |  6 ------
- docs/about/removed-features.rst |  7 +++++++
- system/vl.c                     | 18 +-----------------
- qemu-options.hx                 |  8 --------
- 4 files changed, 8 insertions(+), 31 deletions(-)
+ docs/about/deprecated.rst       |  5 -----
+ docs/about/removed-features.rst |  5 +++++
+ system/vl.c                     |  5 -----
+ qemu-options.hx                 | 12 ------------
+ 4 files changed, 5 insertions(+), 22 deletions(-)
 
 diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index b50cfe596b..81a5149f1e 100644
+index 80eacd40ba..b50cfe596b 100644
 --- a/docs/about/deprecated.rst
 +++ b/docs/about/deprecated.rst
-@@ -63,12 +63,6 @@ as short-form boolean values, and passed to plugins as ``arg_name=on``.
+@@ -63,11 +63,6 @@ as short-form boolean values, and passed to plugins as ``arg_name=on``.
  However, short-form booleans are deprecated and full explicit ``arg_name=on``
  form is preferred.
  
--``-singlestep`` (since 8.1)
--'''''''''''''''''''''''''''
+-``-chroot`` (since 8.1)
+-'''''''''''''''''''''''
 -
--The ``-singlestep`` option has been turned into an accelerator property,
--and given a name that better reflects what it actually does.
--Use ``-accel tcg,one-insn-per-tb=on`` instead.
+-Use ``-run-with chroot=dir`` instead.
+-
+ ``-singlestep`` (since 8.1)
+ '''''''''''''''''''''''''''
  
- User-mode emulator command line arguments
- -----------------------------------------
 diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index a8546f4787..d5c60ff47f 100644
+index 43f64a26ba..a8546f4787 100644
 --- a/docs/about/removed-features.rst
 +++ b/docs/about/removed-features.rst
-@@ -482,6 +482,13 @@ Use ``-run-with async-teardown=on`` instead.
+@@ -477,6 +477,11 @@ Use ``-machine acpi=off`` instead.
  
- Use ``-run-with chroot=dir`` instead.
+ Use ``-run-with async-teardown=on`` instead.
  
-+``-singlestep`` (removed in 9.0)
-+''''''''''''''''''''''''''''''''
++``-chroot`` (removed in 9.0)
++''''''''''''''''''''''''''''
 +
-+The ``-singlestep`` option has been turned into an accelerator property,
-+and given a name that better reflects what it actually does.
-+Use ``-accel tcg,one-insn-per-tb=on`` instead.
++Use ``-run-with chroot=dir`` instead.
 +
  
  QEMU Machine Protocol (QMP) commands
  ------------------------------------
 diff --git a/system/vl.c b/system/vl.c
-index c125fb9079..809f867bcc 100644
+index 924356f864..c125fb9079 100644
 --- a/system/vl.c
 +++ b/system/vl.c
-@@ -181,7 +181,6 @@ static const char *log_file;
- static bool list_data_dirs;
- static const char *qtest_chrdev;
- static const char *qtest_log;
--static bool opt_one_insn_per_tb;
- 
- static int has_defaults = 1;
- static int default_audio = 1;
-@@ -2308,19 +2307,7 @@ static int do_configure_accelerator(void *opaque, QemuOpts *opts, Error **errp)
-     qemu_opt_foreach(opts, accelerator_set_property,
-                      accel,
-                      &error_fatal);
--    /*
--     * If legacy -singlestep option is set, honour it for TCG and
--     * silently ignore for any other accelerator (which is how this
--     * option has always behaved).
--     */
--    if (opt_one_insn_per_tb) {
--        /*
--         * This will always succeed for TCG, and we want to ignore
--         * the error from trying to set a nonexistent property
--         * on any other accelerator.
--         */
--        object_property_set_bool(OBJECT(accel), "one-insn-per-tb", true, NULL);
--    }
-+
-     ret = accel_init_machine(accel, current_machine);
-     if (ret < 0) {
-         if (!qtest_with_kvm || ret != -ENOENT) {
-@@ -3057,9 +3044,6 @@ void qemu_init(int argc, char **argv)
-             case QEMU_OPTION_bios:
-                 qdict_put_str(machine_opts_dict, "firmware", optarg);
+@@ -3592,11 +3592,6 @@ void qemu_init(int argc, char **argv)
+                     exit(1);
+                 }
                  break;
--            case QEMU_OPTION_singlestep:
--                opt_one_insn_per_tb = true;
+-            case QEMU_OPTION_chroot:
+-                warn_report("option is deprecated,"
+-                            " use '-run-with chroot=...' instead");
+-                os_set_chroot(optarg);
 -                break;
-             case QEMU_OPTION_S:
-                 autostart = 0;
+             case QEMU_OPTION_daemonize:
+                 os_set_daemonize(true);
                  break;
 diff --git a/qemu-options.hx b/qemu-options.hx
-index 9be6beb5a0..033fa873e4 100644
+index 10c952ba3f..9be6beb5a0 100644
 --- a/qemu-options.hx
 +++ b/qemu-options.hx
-@@ -4357,14 +4357,6 @@ SRST
-     from a script.
+@@ -4790,18 +4790,6 @@ SRST
+     ``-nodefaults`` option will disable all those default devices.
  ERST
  
--DEF("singlestep", 0, QEMU_OPTION_singlestep, \
--    "-singlestep     deprecated synonym for -accel tcg,one-insn-per-tb=on\n", QEMU_ARCH_ALL)
+-#ifndef _WIN32
+-DEF("chroot", HAS_ARG, QEMU_OPTION_chroot, \
+-    "-chroot dir     chroot to dir just before starting the VM (deprecated)\n",
+-    QEMU_ARCH_ALL)
+-#endif
 -SRST
--``-singlestep``
--    This is a deprecated synonym for the TCG accelerator property
--    ``one-insn-per-tb``.
+-``-chroot dir``
+-    Deprecated, use '-run-with chroot=...' instead.
+-    Immediately before starting guest execution, chroot to the specified
+-    directory. Especially useful in combination with -runas.
 -ERST
 -
- DEF("preconfig", 0, QEMU_OPTION_preconfig, \
-     "--preconfig     pause QEMU before machine is initialized (experimental)\n",
-     QEMU_ARCH_ALL)
+ #ifndef _WIN32
+ DEF("runas", HAS_ARG, QEMU_OPTION_runas, \
+     "-runas user     change to user id user just before starting the VM\n" \
 -- 
 2.43.0
 
