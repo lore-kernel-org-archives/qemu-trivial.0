@@ -1,79 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rO4G0-0002MG-Bw
-	for mharc-qemu-trivial@gnu.org; Thu, 11 Jan 2024 18:14:40 -0500
+	id 1rO9vf-0004Ql-8T
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Jan 2024 00:18:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rO4Fx-0002KK-LY; Thu, 11 Jan 2024 18:14:37 -0500
-Received: from mail-vs1-xe31.google.com ([2607:f8b0:4864:20::e31])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1rO4Fv-00085P-Rr; Thu, 11 Jan 2024 18:14:37 -0500
-Received: by mail-vs1-xe31.google.com with SMTP id
- ada2fe7eead31-467ed334c40so853225137.0; 
- Thu, 11 Jan 2024 15:14:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1705014874; x=1705619674; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sQcoTyVLWsapadMoinlWwOIjl3zW0urWVkrUEa6w+to=;
- b=WaCdjzJ2L+ITiTEIfgzDm7L8VxY/oHK+KGSSxRqkforeXF/Ykkau1V/rO5IVI8XD9m
- 7ujLHW2r6K514ucqBCR2NfGCv7Sn+rC0HxamMeAps+WW1KOvRvd7sDeDuFQPboGVuosB
- UyxQwmvH0aAifdvYdS7zI6lgytFXQEMd//zwrt9TJYeP3nGl2TTmZYdiKkQSOAMowJlz
- llQoKfs6EkhCejz/tUb+HXczdWm7hCPcVWsFQsc1WCMeuMjbY9aAeDzQA95n2JaLlZc5
- d4+4JpMaAIfKojYNWdd0jehKd8ft0w+Lt/BK9Ndd6as4R10yIcGsGow3F4Gkwv2LNh3g
- ppGQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705014874; x=1705619674;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=sQcoTyVLWsapadMoinlWwOIjl3zW0urWVkrUEa6w+to=;
- b=wOWNJfxuiiL1O5W8XVS0zo9GHq8Wlk5quUy+ZxEBbgZBx2fvlxUOF5yQNatQw6ZWMA
- MnG6l3VQelUQE/XEVQeVf+y8ikO5sNJmuex/WTZJMDKafJOaknFiMES8NKsyoPOcqQTU
- NPtB2NMRyjCePwbHJd2FD60dtsUvuHrvSeW3FE+vL1pjLgcV0KTxlXaRr91yQ1wH1YoB
- ySGa/yPO4SyVm1ABgwsDhemgUS4fXfK2ZT1MUgA6B5uPLRqO1Zpd+7R34unn8lT4oEaA
- XdOMRdBpsWUHXiniRr/Y+3WIganQBHAACBib3OQrxbPeEEdtWCmzkjSPzk8DbAzFPzTj
- ZIwg==
-X-Gm-Message-State: AOJu0YxssO1Rczg8t2t3BljYZaO8kSrH9dKzCY7jYGD/6s5FPXAd76AT
- EdFyw4BPr7MB9MWZ5cGmMSCBpAJtwYHjz+VRu5s=
-X-Google-Smtp-Source: AGHT+IH3VJfPex9yfPv2YvGU0oZbQ/9CrcxHDt/6OJky8VqJU3hsyX7njSyvFNp6KPnlW/quGb4Kz6R6FaeKVW2v0Ag=
-X-Received: by 2002:a67:fa43:0:b0:468:1368:7af4 with SMTP id
- j3-20020a67fa43000000b0046813687af4mr536245vsq.0.1705014873914; Thu, 11 Jan
- 2024 15:14:33 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rO9va-0004QE-IY
+ for qemu-trivial@nongnu.org; Fri, 12 Jan 2024 00:17:58 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rO9vW-0003DL-Qm
+ for qemu-trivial@nongnu.org; Fri, 12 Jan 2024 00:17:57 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1705036673;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=yhEpTAOIOGxwApEuyOerzPJ+/tZaLW87qz6BfwQ4wJ0=;
+ b=fkaYeS29nIwrSnPAdBwAPYEh2Gtc9LPmEY1TQDGtIFlLpyEcQXy4P6jWYHbEH3byeGHZkL
+ RxEWq0acjQkRwgMKaZyckZbkxuKdjWquZbOhdlHd7wam0EhAaA6XqK93YIDb4U8LKIvDXB
+ y2ff7ej1OzLw7TWlwKOdaPYXZBg+mvQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-518-xjrp215uNAeX2zj9vAuhiw-1; Fri, 12 Jan 2024 00:17:51 -0500
+X-MC-Unique: xjrp215uNAeX2zj9vAuhiw-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0F7C5830E5C;
+ Fri, 12 Jan 2024 05:17:51 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.58])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 9C79C492BC6;
+ Fri, 12 Jan 2024 05:17:49 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH] util/uri: Remove is_hex() function
+Date: Fri, 12 Jan 2024 06:17:40 +0100
+Message-ID: <20240112051740.926658-1-thuth@redhat.com>
 MIME-Version: 1.0
-References: <20240111120221.35072-1-philmd@linaro.org>
- <20240111120221.35072-6-philmd@linaro.org>
-In-Reply-To: <20240111120221.35072-6-philmd@linaro.org>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 12 Jan 2024 09:14:07 +1000
-Message-ID: <CAKmqyKOvj8F83G0w7eXzr6U=WVy6BPiEOQmSS+bw5kUdd0E-pQ@mail.gmail.com>
-Subject: Re: [PATCH 5/5] target/riscv: Rename tcg_cpu_FOO() to include 'riscv'
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>, 
- Weiwei Li <liwei1518@gmail.com>,
- Alistair Francis <alistair.francis@wdc.com>, qemu-s390x@nongnu.org, 
- Michael Tokarev <mjt@tls.msk.ru>, David Hildenbrand <david@redhat.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, qemu-riscv@nongnu.org, 
- Palmer Dabbelt <palmer@dabbelt.com>, Bin Meng <bin.meng@windriver.com>,
- qemu-trivial@nongnu.org, 
- Halil Pasic <pasic@linux.ibm.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- Ilya Leoshkevich <iii@linux.ibm.com>, Eduardo Habkost <eduardo@habkost.net>, 
- Laurent Vivier <laurent@vivier.eu>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, 
- Eric Farman <farman@linux.ibm.com>, Thomas Huth <thuth@redhat.com>, 
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e31;
- envelope-from=alistair23@gmail.com; helo=mail-vs1-xe31.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -45
+X-Spam_score: -4.6
+X-Spam_bar: ----
+X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.467,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -87,103 +65,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 11 Jan 2024 23:14:38 -0000
+X-List-Received-Date: Fri, 12 Jan 2024 05:17:58 -0000
 
-On Thu, Jan 11, 2024 at 11:05=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> The tcg_cpu_FOO() names are riscv specific, so rename
-> them as riscv_tcg_cpu_FOO() (as other names in this file)
-> to ease navigating the code.
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+We can simply use the g_ascii_isxdigit() from the glib instead.
 
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ util/uri.c | 11 +----------
+ 1 file changed, 1 insertion(+), 10 deletions(-)
 
-Alistair
+diff --git a/util/uri.c b/util/uri.c
+index dcb3305236..7411c5ba14 100644
+--- a/util/uri.c
++++ b/util/uri.c
+@@ -1561,15 +1561,6 @@ done_cd:
+     return 0;
+ }
+ 
+-static int is_hex(char c)
+-{
+-    if (((c >= '0') && (c <= '9')) || ((c >= 'a') && (c <= 'f')) ||
+-        ((c >= 'A') && (c <= 'F'))) {
+-        return 1;
+-    }
+-    return 0;
+-}
+-
+ /**
+  * uri_string_unescape:
+  * @str:  the string to unescape
+@@ -1607,7 +1598,7 @@ char *uri_string_unescape(const char *str, int len, char *target)
+     in = str;
+     out = ret;
+     while (len > 0) {
+-        if ((len > 2) && (*in == '%') && (is_hex(in[1])) && (is_hex(in[2]))) {
++        if (len > 2 && *in == '%' && g_ascii_isxdigit(in[1]) && g_ascii_isxdigit(in[2])) {
+             in++;
+             if ((*in >= '0') && (*in <= '9')) {
+                 *out = (*in - '0');
+-- 
+2.43.0
 
-> ---
->  target/riscv/tcg/tcg-cpu.c | 28 ++++++++++++++--------------
->  1 file changed, 14 insertions(+), 14 deletions(-)
->
-> diff --git a/target/riscv/tcg/tcg-cpu.c b/target/riscv/tcg/tcg-cpu.c
-> index 14133ff665..994ca1cdf9 100644
-> --- a/target/riscv/tcg/tcg-cpu.c
-> +++ b/target/riscv/tcg/tcg-cpu.c
-> @@ -929,7 +929,7 @@ static bool riscv_cpu_is_vendor(Object *cpu_obj)
->   *   -> cpu_exec_realizefn()
->   *      -> tcg_cpu_realize() (via accel_cpu_common_realize())
->   */
-> -static bool tcg_cpu_realize(CPUState *cs, Error **errp)
-> +static bool riscv_tcg_cpu_realize(CPUState *cs, Error **errp)
->  {
->      RISCVCPU *cpu =3D RISCV_CPU(cs);
->      Error *local_err =3D NULL;
-> @@ -1372,7 +1372,7 @@ static bool riscv_cpu_has_max_extensions(Object *cp=
-u_obj)
->      return object_dynamic_cast(cpu_obj, TYPE_RISCV_CPU_MAX) !=3D NULL;
->  }
->
-> -static void tcg_cpu_instance_init(CPUState *cs)
-> +static void riscv_tcg_cpu_instance_init(CPUState *cs)
->  {
->      RISCVCPU *cpu =3D RISCV_CPU(cs);
->      Object *obj =3D OBJECT(cpu);
-> @@ -1386,7 +1386,7 @@ static void tcg_cpu_instance_init(CPUState *cs)
->      }
->  }
->
-> -static void tcg_cpu_init_ops(AccelCPUClass *accel_cpu, CPUClass *cc)
-> +static void riscv_tcg_cpu_init_ops(AccelCPUClass *accel_cpu, CPUClass *c=
-c)
->  {
->      /*
->       * All cpus use the same set of operations.
-> @@ -1394,30 +1394,30 @@ static void tcg_cpu_init_ops(AccelCPUClass *accel=
-_cpu, CPUClass *cc)
->      cc->tcg_ops =3D &riscv_tcg_ops;
->  }
->
-> -static void tcg_cpu_class_init(CPUClass *cc)
-> +static void riscv_tcg_cpu_class_init(CPUClass *cc)
->  {
-> -    cc->init_accel_cpu =3D tcg_cpu_init_ops;
-> +    cc->init_accel_cpu =3D riscv_tcg_cpu_init_ops;
->  }
->
-> -static void tcg_cpu_accel_class_init(ObjectClass *oc, void *data)
-> +static void riscv_tcg_cpu_accel_class_init(ObjectClass *oc, void *data)
->  {
->      AccelCPUClass *acc =3D ACCEL_CPU_CLASS(oc);
->
-> -    acc->cpu_class_init =3D tcg_cpu_class_init;
-> -    acc->cpu_instance_init =3D tcg_cpu_instance_init;
-> -    acc->cpu_target_realize =3D tcg_cpu_realize;
-> +    acc->cpu_class_init =3D riscv_tcg_cpu_class_init;
-> +    acc->cpu_instance_init =3D riscv_tcg_cpu_instance_init;
-> +    acc->cpu_target_realize =3D riscv_tcg_cpu_realize;
->  }
->
-> -static const TypeInfo tcg_cpu_accel_type_info =3D {
-> +static const TypeInfo riscv_tcg_cpu_accel_type_info =3D {
->      .name =3D ACCEL_CPU_NAME("tcg"),
->
->      .parent =3D TYPE_ACCEL_CPU,
-> -    .class_init =3D tcg_cpu_accel_class_init,
-> +    .class_init =3D riscv_tcg_cpu_accel_class_init,
->      .abstract =3D true,
->  };
->
-> -static void tcg_cpu_accel_register_types(void)
-> +static void riscv_tcg_cpu_accel_register_types(void)
->  {
-> -    type_register_static(&tcg_cpu_accel_type_info);
-> +    type_register_static(&riscv_tcg_cpu_accel_type_info);
->  }
-> -type_init(tcg_cpu_accel_register_types);
-> +type_init(riscv_tcg_cpu_accel_register_types);
-> --
-> 2.41.0
->
->
 
