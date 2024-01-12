@@ -1,64 +1,101 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rOEMI-0004Mf-Vy
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Jan 2024 05:01:51 -0500
+	id 1rOIFI-0000E2-Oq
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Jan 2024 09:10:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rOELk-00048V-Bb
- for qemu-trivial@nongnu.org; Fri, 12 Jan 2024 05:01:19 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <imbrenda@linux.ibm.com>)
+ id 1rOEYC-0003dB-Rs; Fri, 12 Jan 2024 05:14:08 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rOELi-0005h3-DM
- for qemu-trivial@nongnu.org; Fri, 12 Jan 2024 05:01:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1705053673;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=t9q/1fP6B5/Fr/WdjYFW30bFD0l49qIgksjeahzvbOg=;
- b=ScajB7gUKjXHTNlLblnr8nVZR5Y/GaJsTbBvWOrrFe6cWRE8R7vfG9usnX35V0rYuZREe5
- ohOZglJKUtIDTQFA991seDt3WIjd4Yh+c6D26m9mWD9bkPOoIV0EeIxil8dKAwJ39mzXAI
- woiyIVrEWjCMhdL3yWyo2BkBbQLnhjE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-537-P3uL-XnLOgq6ord1A2R58A-1; Fri, 12 Jan 2024 05:01:10 -0500
-X-MC-Unique: P3uL-XnLOgq6ord1A2R58A-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 0CBC485A588;
- Fri, 12 Jan 2024 10:01:10 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.194.216])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 39DCBC08ED4;
- Fri, 12 Jan 2024 10:01:07 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Claudio Imbrenda <imbrenda@linux.ibm.com>
-Subject: [PATCH 4/5] qemu-options: Remove the deprecated -chroot option
-Date: Fri, 12 Jan 2024 11:00:58 +0100
-Message-ID: <20240112100059.965041-5-thuth@redhat.com>
-In-Reply-To: <20240112100059.965041-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <imbrenda@linux.ibm.com>)
+ id 1rOEYA-00052h-H2; Fri, 12 Jan 2024 05:14:08 -0500
+Received: from pps.filterd (m0353727.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 40C8694i005204; Fri, 12 Jan 2024 10:14:03 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
+ h=date : from : to : cc :
+ subject : message-id : in-reply-to : references : mime-version :
+ content-type : content-transfer-encoding; s=pp1;
+ bh=+c3T22GlRUI1xs3dDX8O95LySohPlAZgmykRkIVe26A=;
+ b=jlwltrmE7VOqdg+cjlsLO+0rujxF8he1GtRflIh34T/uB/AsdUOWRz3vIkm5efMNTSGp
+ Vrtk8NxwI4NXCPNd+NWSAym5i5L9tAfwORuMxnmXa8jiobmxoTufLkpZI/uKxWugYQdM
+ I2JMqTJpyzvPI6Ejk6cEgwSA+S6zPpGXPdLTSmNqg1FcvXLAzYvRNdlq/Los6FhnJQ/5
+ E/WvHaz/ycpP7sYxIuRKGp1KHW+syV8mN8CiVpyMcG8MI4CgAeDSEVif6tD0vUenioLC
+ U1GBe6ljK4T6Q30Fv8JcKQTX1m8I2JlGMC0r5y7bSbezlYE7AnvewAy5sQ+2N5OBawl2 Bw== 
+Received: from pps.reinject (localhost [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vjwf2yh7y-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 12 Jan 2024 10:14:03 +0000
+Received: from m0353727.ppops.net (m0353727.ppops.net [127.0.0.1])
+ by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 40C9aT7V008163;
+ Fri, 12 Jan 2024 10:14:03 GMT
+Received: from ppma22.wdc07v.mail.ibm.com
+ (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3vjwf2yh7h-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 12 Jan 2024 10:14:03 +0000
+Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma22.wdc07v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
+ 40C9TJCp022781; Fri, 12 Jan 2024 10:14:01 GMT
+Received: from smtprelay02.fra02v.mail.ibm.com ([9.218.2.226])
+ by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 3vfhk01grq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 12 Jan 2024 10:14:01 +0000
+Received: from smtpav01.fra02v.mail.ibm.com (smtpav01.fra02v.mail.ibm.com
+ [10.20.54.100])
+ by smtprelay02.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 40CADxRd8323716
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 12 Jan 2024 10:13:59 GMT
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 9B6842004D;
+ Fri, 12 Jan 2024 10:13:59 +0000 (GMT)
+Received: from smtpav01.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 7199C2004B;
+ Fri, 12 Jan 2024 10:13:59 +0000 (GMT)
+Received: from p-imbrenda (unknown [9.152.224.66])
+ by smtpav01.fra02v.mail.ibm.com (Postfix) with ESMTP;
+ Fri, 12 Jan 2024 10:13:59 +0000 (GMT)
+Date: Fri, 12 Jan 2024 11:13:58 +0100
+From: Claudio Imbrenda <imbrenda@linux.ibm.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Markus
+ Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org, "Daniel P .
+ =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>
+Subject: Re: [PATCH 3/5] qemu-options: Remove the deprecated -async-teardown
+ option
+Message-ID: <20240112111358.5a42cc3a@p-imbrenda>
+In-Reply-To: <20240112100059.965041-4-thuth@redhat.com>
 References: <20240112100059.965041-1-thuth@redhat.com>
+ <20240112100059.965041-4-thuth@redhat.com>
+Organization: IBM
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.38; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -45
-X-Spam_score: -4.6
-X-Spam_bar: ----
-X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.467,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-ORIG-GUID: 9HxNfqCVOEpvILSCBIiHv3HAYggjxqbT
+X-Proofpoint-GUID: m7hGVo5BdLXMgom-pyazbOYA3Q0txxM-
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.272,Aquarius:18.0.997,Hydra:6.0.619,FMLib:17.11.176.26
+ definitions=2024-01-12_03,2024-01-12_01,2023-05-22_02
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 mlxscore=0
+ malwarescore=0 bulkscore=0 clxscore=1011 mlxlogscore=999 spamscore=0
+ suspectscore=0 impostorscore=0 adultscore=0 lowpriorityscore=0
+ phishscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.12.0-2311290000 definitions=main-2401120078
+Received-SPF: pass client-ip=148.163.156.1;
+ envelope-from=imbrenda@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 12 Jan 2024 09:10:51 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,92 +107,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Jan 2024 10:01:27 -0000
-X-List-Received-Date: Fri, 12 Jan 2024 10:01:27 -0000
+X-List-Received-Date: Fri, 12 Jan 2024 10:14:09 -0000
 
-It's been marked as deprecated since QEMU 8.1, so it should be fine
-to remove this now.
+On Fri, 12 Jan 2024 11:00:57 +0100
+Thomas Huth <thuth@redhat.com> wrote:
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- docs/about/deprecated.rst       |  5 -----
- docs/about/removed-features.rst |  5 +++++
- system/vl.c                     |  5 -----
- qemu-options.hx                 | 12 ------------
- 4 files changed, 5 insertions(+), 22 deletions(-)
+> It's been marked as deprecated since QEMU 8.1 (and was only available
+> since QEMU 8.0 anyway), so it should be fine to remove this now.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 80eacd40ba..b50cfe596b 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -63,11 +63,6 @@ as short-form boolean values, and passed to plugins as ``arg_name=on``.
- However, short-form booleans are deprecated and full explicit ``arg_name=on``
- form is preferred.
- 
--``-chroot`` (since 8.1)
--'''''''''''''''''''''''
--
--Use ``-run-with chroot=dir`` instead.
--
- ``-singlestep`` (since 8.1)
- '''''''''''''''''''''''''''
- 
-diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index 43f64a26ba..a8546f4787 100644
---- a/docs/about/removed-features.rst
-+++ b/docs/about/removed-features.rst
-@@ -477,6 +477,11 @@ Use ``-machine acpi=off`` instead.
- 
- Use ``-run-with async-teardown=on`` instead.
- 
-+``-chroot`` (removed in 9.0)
-+''''''''''''''''''''''''''''
-+
-+Use ``-run-with chroot=dir`` instead.
-+
- 
- QEMU Machine Protocol (QMP) commands
- ------------------------------------
-diff --git a/system/vl.c b/system/vl.c
-index 924356f864..c125fb9079 100644
---- a/system/vl.c
-+++ b/system/vl.c
-@@ -3592,11 +3592,6 @@ void qemu_init(int argc, char **argv)
-                     exit(1);
-                 }
-                 break;
--            case QEMU_OPTION_chroot:
--                warn_report("option is deprecated,"
--                            " use '-run-with chroot=...' instead");
--                os_set_chroot(optarg);
--                break;
-             case QEMU_OPTION_daemonize:
-                 os_set_daemonize(true);
-                 break;
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 10c952ba3f..9be6beb5a0 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -4790,18 +4790,6 @@ SRST
-     ``-nodefaults`` option will disable all those default devices.
- ERST
- 
--#ifndef _WIN32
--DEF("chroot", HAS_ARG, QEMU_OPTION_chroot, \
--    "-chroot dir     chroot to dir just before starting the VM (deprecated)\n",
--    QEMU_ARCH_ALL)
--#endif
--SRST
--``-chroot dir``
--    Deprecated, use '-run-with chroot=...' instead.
--    Immediately before starting guest execution, chroot to the specified
--    directory. Especially useful in combination with -runas.
--ERST
--
- #ifndef _WIN32
- DEF("runas", HAS_ARG, QEMU_OPTION_runas, \
-     "-runas user     change to user id user just before starting the VM\n" \
--- 
-2.43.0
+Reviewed-by: Claudio Imbrenda <imbrenda@linux.ibm.com>
+
+> ---
+>  docs/about/deprecated.rst       |  5 -----
+>  docs/about/removed-features.rst |  5 +++++
+>  system/vl.c                     |  6 ------
+>  qemu-options.hx                 | 10 ----------
+>  4 files changed, 5 insertions(+), 21 deletions(-)
+> 
+> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+> index dff4c76f1b..80eacd40ba 100644
+> --- a/docs/about/deprecated.rst
+> +++ b/docs/about/deprecated.rst
+> @@ -63,11 +63,6 @@ as short-form boolean values, and passed to plugins as ``arg_name=on``.
+>  However, short-form booleans are deprecated and full explicit ``arg_name=on``
+>  form is preferred.
+>  
+> -``-async-teardown`` (since 8.1)
+> -'''''''''''''''''''''''''''''''
+> -
+> -Use ``-run-with async-teardown=on`` instead.
+> -
+>  ``-chroot`` (since 8.1)
+>  '''''''''''''''''''''''
+>  
+> diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+> index ae728b6130..43f64a26ba 100644
+> --- a/docs/about/removed-features.rst
+> +++ b/docs/about/removed-features.rst
+> @@ -472,6 +472,11 @@ Use ``-machine hpet=off`` instead.
+>  The ``-no-acpi`` setting has been turned into a machine property.
+>  Use ``-machine acpi=off`` instead.
+>  
+> +``-async-teardown`` (removed in 9.0)
+> +''''''''''''''''''''''''''''''''''''
+> +
+> +Use ``-run-with async-teardown=on`` instead.
+> +
+>  
+>  QEMU Machine Protocol (QMP) commands
+>  ------------------------------------
+> diff --git a/system/vl.c b/system/vl.c
+> index 7e258889f3..924356f864 100644
+> --- a/system/vl.c
+> +++ b/system/vl.c
+> @@ -3600,12 +3600,6 @@ void qemu_init(int argc, char **argv)
+>              case QEMU_OPTION_daemonize:
+>                  os_set_daemonize(true);
+>                  break;
+> -#if defined(CONFIG_LINUX)
+> -            /* deprecated */
+> -            case QEMU_OPTION_asyncteardown:
+> -                init_async_teardown();
+> -                break;
+> -#endif
+>              case QEMU_OPTION_run_with: {
+>                  const char *str;
+>                  opts = qemu_opts_parse_noisily(qemu_find_opts("run-with"),
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index dafecf47d6..10c952ba3f 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -4975,16 +4975,6 @@ HXCOMM Internal use
+>  DEF("qtest", HAS_ARG, QEMU_OPTION_qtest, "", QEMU_ARCH_ALL)
+>  DEF("qtest-log", HAS_ARG, QEMU_OPTION_qtest_log, "", QEMU_ARCH_ALL)
+>  
+> -#ifdef __linux__
+> -DEF("async-teardown", 0, QEMU_OPTION_asyncteardown,
+> -    "-async-teardown enable asynchronous teardown\n",
+> -    QEMU_ARCH_ALL)
+> -SRST
+> -``-async-teardown``
+> -    This option is deprecated and should no longer be used. The new option
+> -    ``-run-with async-teardown=on`` is a replacement.
+> -ERST
+> -#endif
+>  #ifdef CONFIG_POSIX
+>  DEF("run-with", HAS_ARG, QEMU_OPTION_run_with,
+>      "-run-with [async-teardown=on|off][,chroot=dir]\n"
 
 
