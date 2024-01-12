@@ -1,75 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rOJfK-00032l-Bu
-	for mharc-qemu-trivial@gnu.org; Fri, 12 Jan 2024 10:41:50 -0500
+	id 1rOM0A-000782-Sb
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Jan 2024 13:11:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rOJfI-00032I-RE
- for qemu-trivial@nongnu.org; Fri, 12 Jan 2024 10:41:48 -0500
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rOM08-00076m-Ei
+ for qemu-trivial@nongnu.org; Fri, 12 Jan 2024 13:11:28 -0500
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rOJfG-0004i4-PH
- for qemu-trivial@nongnu.org; Fri, 12 Jan 2024 10:41:48 -0500
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-40e5afc18f5so23859775e9.3
- for <qemu-trivial@nongnu.org>; Fri, 12 Jan 2024 07:41:46 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rOM02-00005i-Aq
+ for qemu-trivial@nongnu.org; Fri, 12 Jan 2024 13:11:28 -0500
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-5578485fc0eso5682940a12.1
+ for <qemu-trivial@nongnu.org>; Fri, 12 Jan 2024 10:11:20 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705074105; x=1705678905; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=FkAdFARUeW02sluvd0pjbbd0wVVMZqgh09x/jMwH0uE=;
- b=LIDBlqzEkFrLFWXA1Gie6prjY0ejW8n8M0YSGuFV1a6mT9L5q3bv3jnCiK2sxWwPaK
- PTZPdWaPrMeJ0fJy286jG9DhWzWwdNNka0nJqGa+GvlM66WosHHl1TPkpvoU7tfrF6Di
- +otaizSNcFgMPLWSmysjflc9mXVkwDnsENZeptMrfPhTMEIM1OCZO6qV5uyBdhmdOgvO
- DS78em0ra9qI9N6Hz5RK0zCJDL5TwoUxWKtscuNuQT3um1nXhaUBS+C42v0fGj/LVIPe
- gJMx0pBvLV6M/ofdBa/O61K6omDmyC/0fvi7tpuySxiS+1HlnlJWDdb/sECwaA8ZAVp9
- sB2w==
+ d=linaro.org; s=google; t=1705083079; x=1705687879; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=LKtUr/7STRBwMZoeQOGBBYdccXoYytjWxVzBHAyGtAc=;
+ b=DSDyKJBXRBE8A2AD70PaVMX6jQ4JpvRmBZzK+SlwwB0+wK0aFCkwxSN/QqCQZe9EKI
+ xAAMW/1jGHrTtWzxLgNNoQv85YLcRSPYXNVoIFK2NBSnLgw+M1mhMWIzD4OvbZlfDoW6
+ 32uNa/MPo5wVIY5q4rAwskCVo0jndKAw3vct/dEgB0WZ9irLMWXve2BFMKPz/+pcTZmq
+ a2XaFZBXk/XVV9h53taYDqYRcIgFcjUflaXCDEEq0mAbyZXLgVKot2COPyUgUPl/R46X
+ hFW7bKfuuI7MvMhqFZm9ucSO1ZlFS0e2BnyHJVVLNjFj8UdfHe7K8h07ZKAImZAIrR4Q
+ /Qhg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705074105; x=1705678905;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=FkAdFARUeW02sluvd0pjbbd0wVVMZqgh09x/jMwH0uE=;
- b=nUWPmoqbxykOMkRA3p1/35CsKDMerJhmO+T5l1pudjEosBP0ngcNSIUAOHWPFmUs+E
- XP+orLbbHBhg8z+LLJufVvYe5fCfTqvgZ3JN8uN5V9tlZ73IFZ5ekwcD2YnN0Sq69vVm
- PJDvIGG7mvr1X+8Ui1z7QuoJuok0Yuk3CLQLMKqf93X1aBrXRFZnA+z7nSAoy+2jvUKP
- +xjQTADgYF1zGngNYBrKrXFLxbljTec9RV+1TsQV5YPHVy1PfQT9cIslLMSLrSfgIBUu
- dB2v+Hr9YgwWh8Rw6i2c/k4xcQ+0SgSGDnmTWZR/yTkasxswlKUS5B2apdowuE0pu4LM
- JSpg==
-X-Gm-Message-State: AOJu0YzwUyjouT8krtP6WvQ/gyYuY+9bwTgNbPYTIpmICkGIB6akv53E
- AimdztIfGbLBSaH//F1Njf14+flljoVPDg==
-X-Google-Smtp-Source: AGHT+IFyrEWZiIFVI/FRoWyeiKx7WehsBzuKskobNw7wOiSJQ+odd/CJzyXOq0jzR9FDOZrHOKyPTg==
-X-Received: by 2002:a05:600c:1c0a:b0:40d:5ca1:80bc with SMTP id
- j10-20020a05600c1c0a00b0040d5ca180bcmr877119wms.107.1705074105172; 
- Fri, 12 Jan 2024 07:41:45 -0800 (PST)
-Received: from [192.168.69.100] ([176.187.202.145])
- by smtp.gmail.com with ESMTPSA id
- p16-20020a05600c469000b0040e39cbf2a4sm10220924wmo.42.2024.01.12.07.41.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 12 Jan 2024 07:41:44 -0800 (PST)
-Message-ID: <ed2de2fd-7c94-4bfc-973d-7f7cba90d05b@linaro.org>
-Date: Fri, 12 Jan 2024 16:41:43 +0100
+ d=1e100.net; s=20230601; t=1705083079; x=1705687879;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=LKtUr/7STRBwMZoeQOGBBYdccXoYytjWxVzBHAyGtAc=;
+ b=Rw5/z4UOi8dDhsRfguLmKGTN/qTnEqPmXJ1B3Y4VFZ3ZFD/PGi2QKxWnJn305pW/+z
+ Rzm1NaB+2gifiKfcjIDovYSxWKi1TFm6zFbNN4tafoXIdEOEMUZDvnyXIUJE5rN3X8Mw
+ KZlWlW3Y2IR8q8RSBc5XZZkvazG/9x5S80VaXojISk/YifquKHv23QAgMZwsgntGAhTj
+ A7SORKJr27hq1CNFKaMDfpV6n/l30psUWiGGaxUpsqfzvzOCrAYqw4BwP6WFmqRlDRnG
+ ozvMHK4fJ7QheLjb2umsNhd75+kRqjLQpM23rj0CgaKrvtcgep3G7dL+Y3a491vjpuOD
+ ClBg==
+X-Gm-Message-State: AOJu0YyQpYyRVU0WymgHLiimnMUbPOq6B+qL3bg+P5JkjXW1wWGgTPUd
+ d9PYArA7svo/6HIr+fga1Gk1q1xC4Vq0UB4J8X040IuOCVo2Ag==
+X-Google-Smtp-Source: AGHT+IFAH7FzwboCnyhmmwz5FMl0PiPxymIWY74/PaXzqVPgjQJtMOY+Evw7ecTEMz8ebM4Crv0Gk9TSjOGjMgAceR8=
+X-Received: by 2002:a05:6402:64d:b0:558:b930:cbf1 with SMTP id
+ u13-20020a056402064d00b00558b930cbf1mr1095814edx.51.1705083079181; Fri, 12
+ Jan 2024 10:11:19 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] MAINTAINERS: Update Raphael Norwitz email
-Content-Language: en-US
-To: Raphael Norwitz <raphael.norwitz@nutanix.com>, qemu-devel@nongnu.org,
- mst@redhat.com
-Cc: raphael.s.norwitz@gmail.com, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240111192846.111699-1-raphael.norwitz@nutanix.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240111192846.111699-1-raphael.norwitz@nutanix.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+References: <20240109184508.3189599-1-sam@rfc1149.net>
+In-Reply-To: <20240109184508.3189599-1-sam@rfc1149.net>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 12 Jan 2024 18:11:07 +0000
+Message-ID: <CAFEAcA9sw9VW7Yw-KPrM=TRy2weTNsnyDxn8E6qcWgQagUVXdA@mail.gmail.com>
+Subject: Re: [PATCH] hw/timer: fix systick trace message
+To: Samuel Tardieu <sam@rfc1149.net>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-arm@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,17 +74,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 12 Jan 2024 15:41:49 -0000
+X-List-Received-Date: Fri, 12 Jan 2024 18:11:28 -0000
 
-On 11/1/24 20:28, Raphael Norwitz wrote:
-> I will be leaving Nutanix so updating my email in MAINTAINERS to my
-> personal email for now.
-> 
-> Signed-off-by: Raphael Norwitz <raphael.norwitz@nutanix.com>
+On Tue, 9 Jan 2024 at 18:45, Samuel Tardieu <sam@rfc1149.net> wrote:
+>
+> Signed-off-by: Samuel Tardieu <sam@rfc1149.net>
+> Fixes: ff68dacbc786 ("armv7m: Split systick out from NVIC")
 > ---
->   MAINTAINERS | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>  hw/timer/trace-events | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+
+Applied to target-arm.next, thanks.
+
+-- PMM
 
