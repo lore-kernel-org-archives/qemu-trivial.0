@@ -1,59 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rPg23-00026v-1o
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Jan 2024 04:46:56 -0500
+	id 1rPg7h-00055H-N5
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Jan 2024 04:52:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rPg1t-00021F-9F
- for qemu-trivial@nongnu.org; Tue, 16 Jan 2024 04:46:45 -0500
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rPg1q-0003aY-3S
- for qemu-trivial@nongnu.org; Tue, 16 Jan 2024 04:46:45 -0500
-Received: by mail-lj1-x22d.google.com with SMTP id
- 38308e7fff4ca-2cdc1af60b2so22044541fa.1
- for <qemu-trivial@nongnu.org>; Tue, 16 Jan 2024 01:46:40 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705398399; x=1706003199; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=aaCxHgpTz0zNjg821GaqEfG0bWMsLcZrke1pFcKjoqI=;
- b=If5xxEzFk8Hc1WwPaWF2I+oGMuTIgDsh5YGBItcbMBPvsxS3Xq5/+7GwwYVxrlGaJN
- 0dPjZCL1Vc1ztETJ7mvcuZmfEsaT+XoBRGG1tiis38EmSsrRPCv/8Uq9kqvUyGI74emz
- r6+0JCdAkz6NbX9vijOo93NFu7Re6liFYlvTyEEJHijGzPX8eKCfqWSRAp7Fk+pF6IcQ
- i61WtwiNme39ztGz4v5pLVQNIOi18C8FWgZFJ0rbFr0gOeZ1vQm55TIVpMH+7OCh+vqi
- eJzaXyfERZui3RtB4U81Pzw6MXlHT7ZCYDcllOLLgmuJwU/YiJmvuPsqAdYsazX3+wdI
- 6vCQ==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rPg7f-00053U-U1
+ for qemu-trivial@nongnu.org; Tue, 16 Jan 2024 04:52:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rPg7e-0005oN-93
+ for qemu-trivial@nongnu.org; Tue, 16 Jan 2024 04:52:43 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1705398761;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=szVJWMd1d5xhnB+bvOzJm+jUq+8IPzhDkkcpUJEXNCs=;
+ b=QvyEXKRmRoXO4DilUok7qtflXEKSCad2VaAlTkPzdS9LWt3bEqqR4jmJwq3We0/epuk6Rp
+ aPM2SN+UtPxIYDcqPRdk4f8w93/lLe1VKYLFKQXakZkll+kmvJGru82EjkXzLnmIVQGAfZ
+ WVJurWmS+iQO02A1jS35FCjXcc/mmVU=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-683-yIvFkIVoNJ6BRjT5Up0V8w-1; Tue, 16 Jan 2024 04:52:38 -0500
+X-MC-Unique: yIvFkIVoNJ6BRjT5Up0V8w-1
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-42992345c48so122793671cf.3
+ for <qemu-trivial@nongnu.org>; Tue, 16 Jan 2024 01:52:38 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705398399; x=1706003199;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1705398758; x=1706003558;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=aaCxHgpTz0zNjg821GaqEfG0bWMsLcZrke1pFcKjoqI=;
- b=JiHZNVKVoGISu6QeJHizeIK2HI1LvIiTyfU5jQGwXIDUSlUuFwRPdVeqw7hfkLUY/f
- 7mHyWqcBonBmsKnZAp4UgcH2nunwwN9KOdAY7ZJLTjhKoD1gpMVq/soEe+YIPaSLq5jh
- wLKUkzGBD/LgNB/4lcpYm6zw0sOWYoN0d4+8OEql+5fZDzzQI35Sz/pTUaPEMLmPi8PD
- 2dK4cJZ4RX75piMJPSabMPv7QAfiQm08EHYePkpPWAtiGfNUFH1DbD1FbI4RQoDFd63q
- jr1DCEOl0QM8YRAudY6yBvuV6wwWwHzQ7eSnPxWiCOjra1EmKgc5d3Ugm+8s3Jbqm8xr
- Dsxg==
-X-Gm-Message-State: AOJu0YxBS78Qz7c36iMicXGr7nnt7zxh1GeFlV1Xy4yowyS+YtlbWa2y
- r5wDmLTlvqI2mevDNObK2aDBEN2sKneB0w==
-X-Google-Smtp-Source: AGHT+IGMhpjc3wCc/MAUE/XSKyFq0nioO/yeMemjSQKd/CDLXtWdHp784sOdcXll3Bm6JINqAle8Jw==
-X-Received: by 2002:a05:6512:224c:b0:50e:b2cf:4e20 with SMTP id
- i12-20020a056512224c00b0050eb2cf4e20mr3562031lfu.24.1705398399260; 
- Tue, 16 Jan 2024 01:46:39 -0800 (PST)
-Received: from [192.168.69.100] ([176.187.209.30])
- by smtp.gmail.com with ESMTPSA id
- f19-20020a056402005300b00554af5ec62asm6555145edu.8.2024.01.16.01.46.37
+ bh=szVJWMd1d5xhnB+bvOzJm+jUq+8IPzhDkkcpUJEXNCs=;
+ b=EqRSqj6HSay7hHCYbpYeMRCZY5zAnfIUQxoIHtU7GPmCFekWLj40iqSD2Sst6ERloM
+ CZe7CeDJ8cH9K2pTJGMU8oou9c5U2/yAAVJzVk5EilAyC9pFvpoDV7m4RAUA3qUjPnEF
+ fZPeyCD08JrgeuPV10zprpqyigEkilndyCyi53Rh6IybxID2hNzf32ma4L1Qb2C3Ape6
+ Llgb1n+nFkyhEbzj5U4S1n2PBn00pOkzj3x0NE09yeNfJ64v41fL9malS0bWtU8linte
+ kcT7UfkWPPFt50+lW73+wINg9Ce315NE+eBmx+Ze4xuW+DDCJ6p4iIaZfiZxjFL0vMnx
+ sigA==
+X-Gm-Message-State: AOJu0YwfozxKEq/jGSOzCac4Gei8B3mj5Y1C5mCAZyFpR1AZF0hmNgFV
+ vUa1fX7B1rLbGIC1x+Q9z3dHma8wL1ozmqeVkxoYYygLZpFDZPZuUBNQXcQXwH8YA7CzcpTPMQL
+ hviPP248YX567PrGB4RGCiocC5Q==
+X-Received: by 2002:a05:622a:85:b0:429:e705:a003 with SMTP id
+ o5-20020a05622a008500b00429e705a003mr4113065qtw.73.1705398758337; 
+ Tue, 16 Jan 2024 01:52:38 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEketDsp8bALAyM/tpWc2Yw6miavyfjjA0SGmL9/jIRQvLzMBvuRjL42zrJAxXPUFeced9fjw==
+X-Received: by 2002:a05:622a:85:b0:429:e705:a003 with SMTP id
+ o5-20020a05622a008500b00429e705a003mr4113055qtw.73.1705398758051; 
+ Tue, 16 Jan 2024 01:52:38 -0800 (PST)
+Received: from [192.168.0.9] (ip-109-43-179-227.web.vodafone.de.
+ [109.43.179.227]) by smtp.gmail.com with ESMTPSA id
+ ie4-20020a05622a698400b00429943beea4sm4613596qtb.89.2024.01.16.01.52.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Jan 2024 01:46:38 -0800 (PST)
-Message-ID: <7ac1ae78-dca4-4fda-a5e9-32b3a332f80e@linaro.org>
-Date: Tue, 16 Jan 2024 10:46:36 +0100
+ Tue, 16 Jan 2024 01:52:37 -0800 (PST)
+Message-ID: <690cc02f-381f-46ed-a352-c148b1b02af8@redhat.com>
+Date: Tue, 16 Jan 2024 10:52:33 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 5/5] qemu-options: Remove the deprecated -singlestep option
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 Cc: Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
@@ -65,19 +71,66 @@ References: <20240112100059.965041-1-thuth@redhat.com>
  <fdbe4b2d-b63a-4fcd-9747-08d713e17d22@redhat.com>
  <CAFEAcA-9EnvXKcrECsAKCMHPobLch4mKU0Yvb2+ZKALcFSiqaQ@mail.gmail.com>
  <ZaV0QxdfQJDnICdF@redhat.com> <87y1cp94j9.fsf@pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <87y1cp94j9.fsf@pond.sub.org>
+ <7ac1ae78-dca4-4fda-a5e9-32b3a332f80e@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <7ac1ae78-dca4-4fda-a5e9-32b3a332f80e@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x22d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -2
+X-Spam_score: -0.3
+X-Spam_bar: /
+X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.531,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,134 +143,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Jan 2024 09:46:46 -0000
+X-List-Received-Date: Tue, 16 Jan 2024 09:52:44 -0000
 
-On 16/1/24 07:27, Markus Armbruster wrote:
-> Daniel P. Berrangé <berrange@redhat.com> writes:
-> 
->> On Mon, Jan 15, 2024 at 05:39:19PM +0000, Peter Maydell wrote:
->>> On Mon, 15 Jan 2024 at 13:54, Thomas Huth <thuth@redhat.com> wrote:
->>>>
->>>> On 12/01/2024 16.39, Philippe Mathieu-Daudé wrote:
->>>>> Hi Thomas
->>>>>
->>>>> +Laurent & Peter
->>>>>
->>>>> On 12/1/24 11:00, Thomas Huth wrote:
->>>>>> It's been marked as deprecated since QEMU 8.1, so it should be fine
->>>>>> to remove this now.
->>>>>>
->>>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>>
->>>>> StatusInfo::singlestep was deprecated at the same time,
->>>>> can we remove it?
->>>>>
->>>>> IOW could we complete your patch with this?
->>>
->>>>> diff --git a/qapi/run-state.json b/qapi/run-state.json
->>>>> index ca05502e0a..08bc99cb85 100644
->>>>> --- a/qapi/run-state.json
->>>>> +++ b/qapi/run-state.json
->>>>> @@ -106,25 +106,15 @@
->>>>>   #
->>>>>   # @running: true if all VCPUs are runnable, false if not runnable
->>>>>   #
->>>>> -# @singlestep: true if using TCG with one guest instruction per
->>>>> -#     translation block
->>>>> -#
->>>>>   # @status: the virtual machine @RunState
->>>>>   #
->>>>>   # Features:
->>>>>   #
->>>>> -# @deprecated: Member 'singlestep' is deprecated (with no
->>>>> -#     replacement).
->>>>> -#
->>>>>   # Since: 0.14
->>>>>   #
->>>>> -# Notes: @singlestep is enabled on the command line with '-accel
->>>>> -#     tcg,one-insn-per-tb=on', or with the HMP 'one-insn-per-tb'
->>>>> -#     command.
->>>>>   ##
->>>>>   { 'struct': 'StatusInfo',
->>>>>     'data': {'running': 'bool',
->>>>> -           'singlestep': { 'type': 'bool', 'features': [ 'deprecated' ]},
->>>>>              'status': 'RunState'} }
->>>>
->>>> Uh, oh, that's a bigger change already ... can we safely remove the field
->>>> here without upsetting 3rd party apps that rely on this interface?
->>>
->>> That was the whole point of marking it 'deprecated' in the JSON,
->>> I thought? We don't think anybody's using it, we've given fair
->>> warning, isn't the next step "remove it"? Markus, you're the
->>> expert on QAPI deprecations...
+On 16/01/2024 10.46, Philippe Mathieu-Daudé wrote:
+> On 16/1/24 07:27, Markus Armbruster wrote:
+>> Daniel P. Berrangé <berrange@redhat.com> writes:
 >>
->> Yes, it is fine to delete it without thinking further about possible usage,
->> unless someone steps forward quickly with new information that wasn't known
->> when the deprecation was added....
+>>> On Mon, Jan 15, 2024 at 05:39:19PM +0000, Peter Maydell wrote:
+>>>> On Mon, 15 Jan 2024 at 13:54, Thomas Huth <thuth@redhat.com> wrote:
+>>>>>
+>>>>> On 12/01/2024 16.39, Philippe Mathieu-Daudé wrote:
+>>>>>> Hi Thomas
+>>>>>>
+>>>>>> +Laurent & Peter
+>>>>>>
+>>>>>> On 12/1/24 11:00, Thomas Huth wrote:
+>>>>>>> It's been marked as deprecated since QEMU 8.1, so it should be fine
+>>>>>>> to remove this now.
+>>>>>>>
+>>>>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>>>
+>>>>>> StatusInfo::singlestep was deprecated at the same time,
+>>>>>> can we remove it?
+>>>>>>
+>>>>>> IOW could we complete your patch with this?
+>>>>
+>>>>>> diff --git a/qapi/run-state.json b/qapi/run-state.json
+>>>>>> index ca05502e0a..08bc99cb85 100644
+>>>>>> --- a/qapi/run-state.json
+>>>>>> +++ b/qapi/run-state.json
+>>>>>> @@ -106,25 +106,15 @@
+>>>>>>   #
+>>>>>>   # @running: true if all VCPUs are runnable, false if not runnable
+>>>>>>   #
+>>>>>> -# @singlestep: true if using TCG with one guest instruction per
+>>>>>> -#     translation block
+>>>>>> -#
+>>>>>>   # @status: the virtual machine @RunState
+>>>>>>   #
+>>>>>>   # Features:
+>>>>>>   #
+>>>>>> -# @deprecated: Member 'singlestep' is deprecated (with no
+>>>>>> -#     replacement).
+>>>>>> -#
+>>>>>>   # Since: 0.14
+>>>>>>   #
+>>>>>> -# Notes: @singlestep is enabled on the command line with '-accel
+>>>>>> -#     tcg,one-insn-per-tb=on', or with the HMP 'one-insn-per-tb'
+>>>>>> -#     command.
+>>>>>>   ##
+>>>>>>   { 'struct': 'StatusInfo',
+>>>>>>     'data': {'running': 'bool',
+>>>>>> -           'singlestep': { 'type': 'bool', 'features': [ 'deprecated' 
+>>>>>> ]},
+>>>>>>              'status': 'RunState'} }
+>>>>>
+>>>>> Uh, oh, that's a bigger change already ... can we safely remove the field
+>>>>> here without upsetting 3rd party apps that rely on this interface?
+>>>>
+>>>> That was the whole point of marking it 'deprecated' in the JSON,
+>>>> I thought? We don't think anybody's using it, we've given fair
+>>>> warning, isn't the next step "remove it"? Markus, you're the
+>>>> expert on QAPI deprecations...
+>>>
+>>> Yes, it is fine to delete it without thinking further about possible usage,
+>>> unless someone steps forward quickly with new information that wasn't known
+>>> when the deprecation was added....
+>>
+>> Concur.
 > 
-> Concur.
+> Thanks all for the feedback.
+> 
+> Thomas, are you OK to post a v2 with the changes I suggested
+> or do you want me to do it?
 
-Thanks all for the feedback.
+Since your changes were bigger than mine, I think it's just fair if you take 
+credit for the patch. So yes, please go ahead and assemble it as a v2! Thanks!
 
-Thomas, are you OK to post a v2 with the changes I suggested
-or do you want me to do it?
+  Thomas
 
-> Supporting data:
-> 
-> commit 34c18203d472c5bf969ebd87dc06c7c3a957efc4
-> Author: Peter Maydell <peter.maydell@linaro.org>
-> Date:   Mon Apr 17 17:40:41 2023 +0100
-> 
->      qmp: Deprecate 'singlestep' member of StatusInfo
->      
->      The 'singlestep' member of StatusInfo has never done what the QMP
->      documentation claims it does.  What it actually reports is whether
->      TCG is working in "one guest instruction per translation block" mode.
->      
->      We no longer need this field for the HMP 'info status' command, as
->      we've moved that information to 'info jit'.  It seems unlikely that
->      anybody is monitoring the state of this obscure TCG setting via QMP,
->      especially since QMP provides no means for changing the setting.  So
->      simply deprecate the field, without providing any replacement.
->      
->      Until we do eventually delete the member, correct the misstatements
->      in the QAPI documentation about it.
->      
->      If we do find that there are users for this, then the most likely way
->      we would provide replacement access to the information would be to
->      put the accelerator QOM object at a well-known path such as
->      /machine/accel, which could then be used with the existing qom-set
->      and qom-get commands.
->      
->      Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
->      Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
->      Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->      Reviewed-by: Markus Armbruster <armbru@redhat.com>
->      Message-id: 20230417164041.684562-11-peter.maydell@linaro.org
-> 
-> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-> index 6f5e689aa4..d5eda0f566 100644
-> --- a/docs/about/deprecated.rst
-> +++ b/docs/about/deprecated.rst
-> @@ -199,6 +199,20 @@ accepted incorrect commands will return an error. Users should make sure that
->   all arguments passed to ``device_add`` are consistent with the documented
->   property types.
->   
-> +``StatusInfo`` member ``singlestep`` (since 8.1)
-> +''''''''''''''''''''''''''''''''''''''''''''''''
-> +
-> +The ``singlestep`` member of the ``StatusInfo`` returned from the
-> +``query-status`` command is deprecated. This member has a confusing
-> +name and it never did what the documentation claimed or what its name
-> +suggests. We do not believe that anybody is actually using the
-> +information provided in this member.
-> +
-> +The information it reports is whether the TCG JIT is in "one
-> +instruction per translated block" mode (which can be set on the
-> +command line or via the HMP, but not via QMP). The information remains
-> +available via the HMP 'info jit' command.
-> +
-> [...]
-> 
 
 
