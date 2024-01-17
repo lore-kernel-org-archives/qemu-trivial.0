@@ -1,77 +1,129 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rQ6dO-0001gy-7b
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jan 2024 09:11:14 -0500
+	id 1rQ6mu-0004W7-13
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jan 2024 09:21:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQ6dL-0001ey-UC
- for qemu-trivial@nongnu.org; Wed, 17 Jan 2024 09:11:12 -0500
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rQ6dJ-0002Ya-Tg
- for qemu-trivial@nongnu.org; Wed, 17 Jan 2024 09:11:11 -0500
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-559533e2503so3743483a12.1
- for <qemu-trivial@nongnu.org>; Wed, 17 Jan 2024 06:11:09 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705500668; x=1706105468; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=u+pqUiRWhykiVeOu13nHBhA2bPaBp+OyNTb+94/gvY8=;
- b=hn7o/oldoksMyQoORrfSXp0cilVJ2PSX10wLP0HtaTsmmZIDzBDzvSCRuEIFbrpPHJ
- kUuvQiwyXJbJChF9FizpFKkbkdyzrZgrvSUY0s2dZt0RQ7OlzG7RAXlV9gqi7G37lQ6Y
- Nni6EkeMiihK+guF7v9Gvf37CUNZxOzh2x0w7hv0dosHznUnDaAQezhU1lrwK7+BlLzn
- aZLWtwny09vP5QNi47O++CQg1pJJ2rbc/mb3eVpTfFVywdCdpeelI78EXt1eGJbx4pNs
- yr2BkKVHYaVtVE1NgWDeW7K236p3KAf30wCatph54NPpzwfRljGS9c1m8RX5fb6vD/WF
- uvQw==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rQ6ms-0004VM-3o
+ for qemu-trivial@nongnu.org; Wed, 17 Jan 2024 09:21:02 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rQ6mq-0004NP-Bs
+ for qemu-trivial@nongnu.org; Wed, 17 Jan 2024 09:21:01 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1705501259;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=ivGd0zJ8XxEMTWD8X23aeU8QgKJz7Ebogg5g2Zec6v4=;
+ b=RqSjGZ7ehnkqI/5qWbAC/KyYiQR14SLgVsHZWLhod/0s9RqbihER3MwyZTJSHARzolaWRM
+ ojO1JRy7iv/eL5ntNftVXUaMYXxObe2gQjwjqKMDqvAlaxiLInbXZXmhvQ7OGPuTKVSypM
+ PBCYyWpSHwJc2EY+i/2a0AY+4fbTWyQ=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-515-n78skoj3OpuO4hV_MG_TbQ-1; Wed, 17 Jan 2024 09:20:57 -0500
+X-MC-Unique: n78skoj3OpuO4hV_MG_TbQ-1
+Received: by mail-qv1-f72.google.com with SMTP id
+ 6a1803df08f44-68140ae4499so82873616d6.3
+ for <qemu-trivial@nongnu.org>; Wed, 17 Jan 2024 06:20:57 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705500668; x=1706105468;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1705501257; x=1706106057;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=u+pqUiRWhykiVeOu13nHBhA2bPaBp+OyNTb+94/gvY8=;
- b=DkSBA3i/Tr6FdLQzkshDCz6nFrq66MkXxS2ys6uJBZ7xfbF89oe9FKFxShWLwTrCAz
- jUl3q2VbmBV8DKeuS3R9XmCjfA8sXXAWYc3F0cxUMxogs3/v+ypxKSGxFewQHJkjJFuy
- MtUq8yp5FxKQnJwr7dWLndlBELHnvKj6qTk+eneRLg4B/m7/c9m4XSuHnLGqQ0uz9m1o
- 5VyAH6cZm+lCmd/rmet9un+uGvZqt+HPx99ifD+iXL2bctuYrXX6TVhGvBz2qIhJj7X+
- mRotqQFSL5Ewcb5Yf8h84TozZr0xB5E4cesBnN3138ZDtxnZIKXQODpZcU1j1xC1dYgo
- V7XA==
-X-Gm-Message-State: AOJu0YytqDV/sdj1aKeFoLwZD62dyAOM1r8bhcnoAbftrFOHqMtH2fAi
- ZdTuOGZQAgxWjpu5eWnbmh4tF5MhYgD1rw==
-X-Google-Smtp-Source: AGHT+IFeypG5qMz4NKVvsWnmpwgUaEeFX1GVywiPf7jMEXpAb9hs6g7sFBU1AG2Xh4qk01MtEmh/LQ==
-X-Received: by 2002:a17:907:94d3:b0:a28:a9f4:5b85 with SMTP id
- dn19-20020a17090794d300b00a28a9f45b85mr5225451ejc.58.1705500668154; 
- Wed, 17 Jan 2024 06:11:08 -0800 (PST)
-Received: from [192.168.69.100] ([176.187.212.26])
- by smtp.gmail.com with ESMTPSA id
- vw13-20020a170907a70d00b00a2e92247a1fsm1681587ejc.62.2024.01.17.06.11.07
+ bh=ivGd0zJ8XxEMTWD8X23aeU8QgKJz7Ebogg5g2Zec6v4=;
+ b=K0kzaOFOY3mga4dlCABbgyRm6oK34Eq5w2/DSwcbpIXg12mBcLgZh8FOCsLxIvU1UA
+ dTClb7s25bOivE3SpQAfXN4OTArZigQ8bNkqwa6rTZvvDPEym6KUtHGTNPrndXOROLXq
+ NzCL4aj67P88TztBHJSdsWx9Dxlwc7Omy6/TdpXJeZCLmFzd6Rgd5aV/7PWT84aNbjbF
+ yg/Yy4w/jU/VRwFpjRyMlCsBcl4M0cnFzKYpIvwHPmBfEF4ngdtREyMle+7RsFRT83lK
+ YaQmW824REO41/MNp2eyb5jEQXd2PpBK+x/eQWUP93+Sfm5cgwFB1FA8B8uiUF7xYS0R
+ bX2Q==
+X-Gm-Message-State: AOJu0YwoaTkPBd/TjjC65mt7cIKuHF9zLHV4yBDLgYhlxGPkIu1d4pnf
+ 0tw+6NN+kFyNQ6Ug31nmXA5mJM4KWS3grUNHmR+o3RCXa90JdaqD2eog2HO2iem4zv7x+BPmrwJ
+ ogg1AKcEYwhbx3vywRlu4rekgUQ==
+X-Received: by 2002:a0c:e3d4:0:b0:681:7878:5443 with SMTP id
+ e20-20020a0ce3d4000000b0068178785443mr1454829qvl.131.1705501257220; 
+ Wed, 17 Jan 2024 06:20:57 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHibCnAxmplWR0D+9j9lLtmCLYlxPy9EFra8btJhpesRmmFymdGORfSaja796Gu9orAxST9Aw==
+X-Received: by 2002:a0c:e3d4:0:b0:681:7878:5443 with SMTP id
+ e20-20020a0ce3d4000000b0068178785443mr1454826qvl.131.1705501256891; 
+ Wed, 17 Jan 2024 06:20:56 -0800 (PST)
+Received: from [192.168.0.9] (ip-109-43-179-227.web.vodafone.de.
+ [109.43.179.227]) by smtp.gmail.com with ESMTPSA id
+ t12-20020a0ce2cc000000b0068170c6c47fsm1305826qvl.138.2024.01.17.06.20.54
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Jan 2024 06:11:07 -0800 (PST)
-Message-ID: <2d6aa6a4-c7e9-435a-81f2-9adac94825c3@linaro.org>
-Date: Wed, 17 Jan 2024 15:11:05 +0100
+ Wed, 17 Jan 2024 06:20:56 -0800 (PST)
+Message-ID: <9a371734-85b9-4f0f-83aa-cc4694ccdf69@redhat.com>
+Date: Wed, 17 Jan 2024 15:20:53 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] qemu-options: Remove the deprecated -singlestep option
-Content-Language: en-US
-To: Markus Armbruster <armbru@redhat.com>, Thomas Huth <thuth@redhat.com>
+Subject: Re: [PATCH 2/5] qemu-options: Remove the deprecated -no-acpi option
+To: Markus Armbruster <armbru@redhat.com>
 Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  qemu-trivial@nongnu.org, =?UTF-8?Q?Daniel_P=2EBerrang=C3=A9?=
  <berrange@redhat.com>, Claudio Imbrenda <imbrenda@linux.ibm.com>
 References: <20240112100059.965041-1-thuth@redhat.com>
- <20240112100059.965041-6-thuth@redhat.com> <87y1coi116.fsf@pond.sub.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <87y1coi116.fsf@pond.sub.org>
+ <20240112100059.965041-3-thuth@redhat.com> <87bk9kjfse.fsf@pond.sub.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <87bk9kjfse.fsf@pond.sub.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x52b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,18 +136,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jan 2024 14:11:12 -0000
+X-List-Received-Date: Wed, 17 Jan 2024 14:21:03 -0000
 
-On 17/1/24 13:42, Markus Armbruster wrote:
+On 17/01/2024 13.38, Markus Armbruster wrote:
 > Thomas Huth <thuth@redhat.com> writes:
 > 
->> It's been marked as deprecated since QEMU 8.1, so it should be fine
+>> It's been marked as deprecated since QEMU 8.0, so it should be fine
 >> to remove this now.
 >>
 >> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > 
-> Should we drop HMP command singlestep, too?
+> Leftovers:
+> 
+> docs/specs/tpm.rst:    -nographic -no-acpi \
+> hw/i386/pc.c:     * When -no-acpi is used with Q35 machine type, no ACPI is built,
+> hw/i386/pc.c:     * When -no-acpi is used with Q35 machine type, no ACPI is built,
 
-Yes, patch on the way.
+Thanks, I'll send a v2 to tackle these, too.
+
+  Thomas
+
 
 
