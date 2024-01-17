@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rQ5EH-000532-6N
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jan 2024 07:41:13 -0500
+	id 1rQ5Fs-0005rG-NH
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jan 2024 07:42:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rQ5EE-00051D-BR
- for qemu-trivial@nongnu.org; Wed, 17 Jan 2024 07:41:10 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rQ5Fq-0005qx-VC
+ for qemu-trivial@nongnu.org; Wed, 17 Jan 2024 07:42:50 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rQ5EB-0002Br-RF
- for qemu-trivial@nongnu.org; Wed, 17 Jan 2024 07:41:09 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rQ5Fp-0002Ns-Mu
+ for qemu-trivial@nongnu.org; Wed, 17 Jan 2024 07:42:50 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1705495266;
+ s=mimecast20190719; t=1705495369;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=iH6FEOObPu9ZjXI5OkZHTMSAWtGDIL70dtcsdAdycpk=;
- b=VYSQ+r+sLBGOsGvo6WEVUKmMv9CT+9x7xKRrzm1naSv3XcGrY94UiVqcs7m2X06MtVTVNr
- e9qvcLl7xTzPEDfHiyijU40R4FDbarIFlmkRMI8qBtvbq45fv9taA+VYNr3AvzzhaHlwZ+
- QbDKwTN+4YLEMU0LToDocLBDP+n4Dg8=
+ bh=eHD5Q4bE/+txEPZjwxpb9sTR8bc7jsaM85BLfi604L8=;
+ b=J/GueJLWH1kZLS5wrTTTHRLz4voEXEzrw6atYmp4XYebkfBO6zEM4cSnfFpnOdgPZVlTP7
+ ws1+16co4v5C1LZq+Z0Z0SPHeGAuGQ+y7qAGZgIaobrN+9PQtjr/O2hM+TZ8VqiIZV9sCU
+ 1BEgzNMaGfFi0auzDJehF/U4MzwzxV0=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-425-Pbe5hjQFMz-GkmFXpDjYMg-1; Wed, 17 Jan 2024 07:41:05 -0500
-X-MC-Unique: Pbe5hjQFMz-GkmFXpDjYMg-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
+ us-mta-441-qp-TphXxNbuMAOUUY3_uJQ-1; Wed, 17 Jan 2024 07:42:47 -0500
+X-MC-Unique: qp-TphXxNbuMAOUUY3_uJQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D5C9A10AFB50;
- Wed, 17 Jan 2024 12:41:04 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 4B091807F89;
+ Wed, 17 Jan 2024 12:42:47 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.128])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B430B492BE6;
- Wed, 17 Jan 2024 12:41:04 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 293512166B32;
+ Wed, 17 Jan 2024 12:42:47 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id ADD5921E6806; Wed, 17 Jan 2024 13:41:03 +0100 (CET)
+ id F14E021E6806; Wed, 17 Jan 2024 13:42:45 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: Thomas Huth <thuth@redhat.com>
 Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,
  qemu-trivial@nongnu.org,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
  <berrange@redhat.com>, Claudio Imbrenda <imbrenda@linux.ibm.com>
-Subject: Re: [PATCH 4/5] qemu-options: Remove the deprecated -chroot option
-In-Reply-To: <20240112100059.965041-5-thuth@redhat.com> (Thomas Huth's message
- of "Fri, 12 Jan 2024 11:00:58 +0100")
+Subject: Re: [PATCH 5/5] qemu-options: Remove the deprecated -singlestep option
+In-Reply-To: <20240112100059.965041-6-thuth@redhat.com> (Thomas Huth's message
+ of "Fri, 12 Jan 2024 11:00:59 +0100")
 References: <20240112100059.965041-1-thuth@redhat.com>
- <20240112100059.965041-5-thuth@redhat.com>
-Date: Wed, 17 Jan 2024 13:41:03 +0100
-Message-ID: <8734uwjfog.fsf@pond.sub.org>
+ <20240112100059.965041-6-thuth@redhat.com>
+Date: Wed, 17 Jan 2024 13:42:45 +0100
+Message-ID: <87y1coi116.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
 Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -38
@@ -73,7 +73,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jan 2024 12:41:10 -0000
+X-List-Received-Date: Wed, 17 Jan 2024 12:42:51 -0000
 
 Thomas Huth <thuth@redhat.com> writes:
 
@@ -82,6 +82,6 @@ Thomas Huth <thuth@redhat.com> writes:
 >
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Should we drop HMP command singlestep, too?
 
 
