@@ -1,66 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rQ1Hn-0002bL-RQ
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jan 2024 03:28:35 -0500
+	id 1rQ5Bw-00027d-T0
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jan 2024 07:38:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rQ1Hm-0002b6-N9; Wed, 17 Jan 2024 03:28:34 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rQ5Bv-00027K-9b
+ for qemu-trivial@nongnu.org; Wed, 17 Jan 2024 07:38:47 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rQ1Hk-0007DM-Uu; Wed, 17 Jan 2024 03:28:34 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 482C444052;
- Wed, 17 Jan 2024 11:28:48 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 8340C64CFD;
- Wed, 17 Jan 2024 11:28:20 +0300 (MSK)
-Message-ID: <e1ecbea4-9a5b-4a06-aa2a-48b332746bb6@tls.msk.ru>
-Date: Wed, 17 Jan 2024 11:28:20 +0300
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rQ5Bt-0001m1-8j
+ for qemu-trivial@nongnu.org; Wed, 17 Jan 2024 07:38:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1705495124;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=KbPVctoX2d7PkJcm3EHxw6RHaYI0rAf1Fm15gpAYm60=;
+ b=jRFxh91g/p/9wpdeKCfh9c/g9elvnyQ5pb8hSGkrqHNLIWy+4ismD9Dm5k1dLFHHh33i3J
+ nABgh1q2q1CDXQY/59/OWCTS35XU749MPPt8Tbd1K/Jfam3eNCvpzj91+ivnxougxEENUV
+ So9VYU6AXLkKXq9++544uTQFWOpLGLg=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-590-FTnMdxuJMbmX1q8xJ_uI4A-1; Wed,
+ 17 Jan 2024 07:38:42 -0500
+X-MC-Unique: FTnMdxuJMbmX1q8xJ_uI4A-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 3889B3814588;
+ Wed, 17 Jan 2024 12:38:42 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.128])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 163352026D6F;
+ Wed, 17 Jan 2024 12:38:42 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 0C5B521E66F1; Wed, 17 Jan 2024 13:38:41 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-trivial@nongnu.org,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>, Claudio Imbrenda <imbrenda@linux.ibm.com>
+Subject: Re: [PATCH 2/5] qemu-options: Remove the deprecated -no-acpi option
+In-Reply-To: <20240112100059.965041-3-thuth@redhat.com> (Thomas Huth's message
+ of "Fri, 12 Jan 2024 11:00:56 +0100")
+References: <20240112100059.965041-1-thuth@redhat.com>
+ <20240112100059.965041-3-thuth@redhat.com>
+Date: Wed, 17 Jan 2024 13:38:41 +0100
+Message-ID: <87bk9kjfse.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/1] dump: Fix HMP dump-guest-memory -z without -R
-Content-Language: en-US
-To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: Stephen Brennan <stephen.s.brennan@oracle.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20231222093827.951039-1-armbru@redhat.com>
- <20231222093827.951039-2-armbru@redhat.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20231222093827.951039-2-armbru@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -38
+X-Spam_score: -3.9
+X-Spam_bar: ---
+X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -75,19 +73,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jan 2024 08:28:35 -0000
+X-List-Received-Date: Wed, 17 Jan 2024 12:38:47 -0000
 
-22.12.2023 12:38, Markus Armbruster :
-> -z without -R has no effect: the dump format remains @elf.  Fix the
-> logic error so it becomes @kdump-zlib.
-> 
-> Fixes: e6549197f7ed (dump: Add command interface for kdump-raw formats)
-> Fixes: CID 1523841
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> Reviewed-by: Stephen Brennan <stephen.s.brennan@oracle.com>
-> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Thomas Huth <thuth@redhat.com> writes:
 
-Applied to trivial-patches tree, thanks!
+> It's been marked as deprecated since QEMU 8.0, so it should be fine
+> to remove this now.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-/mjt
+Leftovers:
+
+docs/specs/tpm.rst:    -nographic -no-acpi \
+hw/i386/pc.c:     * When -no-acpi is used with Q35 machine type, no ACPI is built,
+hw/i386/pc.c:     * When -no-acpi is used with Q35 machine type, no ACPI is built,
+
 
