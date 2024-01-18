@@ -1,72 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rQBtN-0004Jp-RR
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jan 2024 14:48:05 -0500
+	id 1rQM48-0002lI-VK
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Jan 2024 01:39:54 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rQBtK-0004JO-6A
- for qemu-trivial@nongnu.org; Wed, 17 Jan 2024 14:48:02 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rQBtI-0005cQ-1y
- for qemu-trivial@nongnu.org; Wed, 17 Jan 2024 14:48:01 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1705520877;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- resent-to:resent-from:resent-message-id:in-reply-to:in-reply-to:
- references:references; bh=5D1670npY2V+R2n6CwrAED/nVrNrXgHnf+CzyLmDy6Q=;
- b=MgH3mWjGH5POjt/c92zWWx3FpMt2tyMMWZTI2L4h5H+VJwdV7m/HIA6IiXNEVsk7QZJO10
- 5TdAQBx8Phg9zSSgYUfdHZ9dKeZiynct00esL0VTut6uJf8wMcBbA8bo7h7J46cKDcnCcn
- LMu4BFd14hkvPLhUbn8pcW+Igvddj98=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-155-s8rDjFKYMDmPIGiju0xAyw-1; Wed, 17 Jan 2024 14:47:55 -0500
-X-MC-Unique: s8rDjFKYMDmPIGiju0xAyw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5CDEC85A588;
- Wed, 17 Jan 2024 19:47:55 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.128])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 1D6192166B35;
- Wed, 17 Jan 2024 19:47:55 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id ABE8621E6806; Wed, 17 Jan 2024 20:47:49 +0100 (CET)
-Resent-To: imbrenda@linux.ibm.com, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Resent-From: Markus Armbruster <armbru@redhat.com>
-Resent-Date: Wed, 17 Jan 2024 20:47:49 +0100
-Resent-Message-ID: <87plxzg2sa.fsf@pond.sub.org>
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Markus
- Armbruster <armbru@redhat.com>,  qemu-trivial@nongnu.org,  Daniel P .
- =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Claudio Imbrenda
- <imbrenda@linux.ibm.com>
-Subject: Re: [PATCH 1/5] qemu-options: Remove the deprecated -no-hpet option
-In-Reply-To: <20240112100059.965041-2-thuth@redhat.com> (Thomas Huth's message
- of "Fri, 12 Jan 2024 11:00:55 +0100")
-References: <20240112100059.965041-1-thuth@redhat.com>
- <20240112100059.965041-2-thuth@redhat.com>
-Date: Wed, 17 Jan 2024 13:37:42 +0100
-Message-ID: <87frywjfu1.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <xun794@gmail.com>)
+ id 1rQM44-0002ku-Rj; Thu, 18 Jan 2024 01:39:50 -0500
+Received: from mail-pf1-x441.google.com ([2607:f8b0:4864:20::441])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <xun794@gmail.com>)
+ id 1rQM43-0002XA-2N; Thu, 18 Jan 2024 01:39:48 -0500
+Received: by mail-pf1-x441.google.com with SMTP id
+ d2e1a72fcca58-6d9af1f12d5so10198304b3a.3; 
+ Wed, 17 Jan 2024 22:39:45 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1705559984; x=1706164784; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=GR9pOvCXwXpLyLM6JJ5YnP4raOMjph+ANW69uOoX1L8=;
+ b=mageH97FqluYoU2zjSG9MoWVXaIuEQ1XhltF12Vub41TKZDW4pPIkjAYwMybVpJNpQ
+ iWZ58iXiYnqgykmGPy6KREWQF5GLQPZzTB3vv5bPuYIvpeYe+zXrkP/Fh0QHFGcum3w7
+ wRCTK7aJuiC4DVPKmH5ADx2+q+XccLNblV9t2CeMuj0xceL2+36m+8CMGX11HRHyaT2G
+ xnQ5eRyRn/FAWI6njQCIzr8gxiBkGGSmztzv72ie+J4KDfvWmIHgHiYoYhUTBzqkVbqn
+ WPt9fy/dj9Ch6K4ygf5qeLeqc4p2oA3ZWmhTizYr5wA/7iqLMe7xPVT850txO7tM8CrM
+ qyhw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705559984; x=1706164784;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=GR9pOvCXwXpLyLM6JJ5YnP4raOMjph+ANW69uOoX1L8=;
+ b=coRCjfsD/PUX9YerofI4wvtzEh/ewrHUMRuESmJAbqDiHULT3LZpX5Ngq6ArUUhiL3
+ 3XplSfVXRFGt5JEiOf7yGjP1hSjl/4QgeAzLPsRSMj3mK6RVwgIZf7NX28fM9ltdfgIh
+ TsWdh1USklZlaSZkKltX7VWNouT37unArH6FVbzNXQEyaeNv7qMVpA9ar9T9AQweKW2u
+ fyQv4lH8qT95YM8nbN7IkJCnD7i54i69w0hqmeZ6zSV4EZm5D4VNsBKGSioNzd/0SuF8
+ L0O5Y+ipmC771mvY4QWJyIky88OfGMYpsnxppBbWWLYEZlUUCjvpHA4CAR2PUCDFZ87q
+ Iv/A==
+X-Gm-Message-State: AOJu0YynAsTJxu2Yx6956iqDM1K6jikwaVgVZKZEBz9HdaKIVZMUbwDj
+ yy+ANt+Rgypf4v6GrfwPGNeK5bLCWFz7HLEd7GVcNtXTLqBNQj8xiNVKmvAqVlA=
+X-Google-Smtp-Source: AGHT+IFk683oCZdZNIX1ZWMZJq/ENFtW5HqiRvwlrmKXRnPc5icB6Qa6i90hKZHJP6XEFNFlLASPOw==
+X-Received: by 2002:a05:6a20:7d8e:b0:199:a6cb:20ab with SMTP id
+ v14-20020a056a207d8e00b00199a6cb20abmr484703pzj.123.1705559983639; 
+ Wed, 17 Jan 2024 22:39:43 -0800 (PST)
+Received: from localhost ([2409:8a20:ae8:e8d0:1e6b:fd1c:8c41:31ba])
+ by smtp.gmail.com with ESMTPSA id
+ w10-20020a63d74a000000b005cd945c0399sm748552pgi.80.2024.01.17.22.39.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 17 Jan 2024 22:39:43 -0800 (PST)
+From: Yihuan Pan <xun794@gmail.com>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	Yihuan Pan <xun794@gmail.com>
+Subject: [PATCH] qemu-docs: Update options for graphical frontends
+Date: Thu, 18 Jan 2024 14:39:30 +0800
+Message-ID: <20240118063930.190918-1-xun794@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::441;
+ envelope-from=xun794@gmail.com; helo=mail-pf1-x441.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,15 +78,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jan 2024 19:48:02 -0000
+X-List-Received-Date: Thu, 18 Jan 2024 06:39:50 -0000
 
-Thomas Huth <thuth@redhat.com> writes:
+The command line options `-ctrl-grab` and `-alt-grab` have been removed
+in QEMU 7.1. Instead, use the `-display sdl,grab-mod=<modifiers>` option
+to specify the grab modifiers.
 
-> It's been marked as deprecated since QEMU 8.0, so it should be fine
-> to remove this now.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2103
+Signed-off-by: Yihuan Pan <xun794@gmail.com>
+---
+ docs/system/keys.rst.inc | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+diff --git a/docs/system/keys.rst.inc b/docs/system/keys.rst.inc
+index bd9b8e5f6f..44698e301e 100644
+--- a/docs/system/keys.rst.inc
++++ b/docs/system/keys.rst.inc
+@@ -1,7 +1,8 @@
+ During the graphical emulation, you can use special key combinations to
+ change modes. The default key mappings are shown below, but if you use
+-``-alt-grab`` then the modifier is Ctrl-Alt-Shift (instead of Ctrl-Alt)
+-and if you use ``-ctrl-grab`` then the modifier is the right Ctrl key
++``-display sdl,grab-mod=lshift-lctrl-lalt`` then the modifier is
++Ctrl-Alt-Shift(instead of Ctrl-Alt) and if you use
++``-display sdl,grab-mod=rctrl`` then the modifier is the right Ctrl key
+ (instead of Ctrl-Alt):
+ 
+ Ctrl-Alt-f
+-- 
+2.43.0
 
 
