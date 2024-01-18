@@ -1,65 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rQSLF-0007OP-U6
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jan 2024 08:21:59 -0500
+	id 1rQTf1-0004qd-FG
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Jan 2024 09:46:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rQSL9-0007DW-1L
- for qemu-trivial@nongnu.org; Thu, 18 Jan 2024 08:21:53 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rQTew-0004oC-8I; Thu, 18 Jan 2024 09:46:22 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rQSL7-00052m-E5
- for qemu-trivial@nongnu.org; Thu, 18 Jan 2024 08:21:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1705584108;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=5D1670npY2V+R2n6CwrAED/nVrNrXgHnf+CzyLmDy6Q=;
- b=GEzuI7VfsNSR2dKAWtu/XVyPgB4+J/fRodcMGFabJTR4IKXMcHlYszTwwqqD2jkVQ2Rq3s
- BzsthRA5WLS4K6M5hET9PRcu5wr5uz++2AL4vwpA3DU73+weEEQYg+2sbZX4AgdvRfcobq
- t3n/Fg81IZ+sJomv/wp/OK6HXrAzNOk=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-185--y0RAicZNhyqgSGuFP8mVw-1; Thu, 18 Jan 2024 08:21:47 -0500
-X-MC-Unique: -y0RAicZNhyqgSGuFP8mVw-1
-Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
- [10.11.54.6])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 15349848C02;
- Thu, 18 Jan 2024 13:21:47 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.194.167])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id D8A592166B33;
- Thu, 18 Jan 2024 13:21:46 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id B099321E66F1; Thu, 18 Jan 2024 14:21:45 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,
- qemu-trivial@nongnu.org,  Daniel P . =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: Re: [PATCH v2 2/4] qemu-options: Remove the deprecated -no-acpi option
-In-Reply-To: <20240118103759.130748-3-thuth@redhat.com> (Thomas Huth's message
- of "Thu, 18 Jan 2024 11:37:57 +0100")
-References: <20240118103759.130748-1-thuth@redhat.com>
- <20240118103759.130748-3-thuth@redhat.com>
-Date: Thu, 18 Jan 2024 14:21:45 +0100
-Message-ID: <87y1cmaiae.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rQTet-0007fE-Cf; Thu, 18 Jan 2024 09:46:22 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 5F1854537B;
+ Thu, 18 Jan 2024 17:46:43 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id D91BE66B25;
+ Thu, 18 Jan 2024 17:46:12 +0300 (MSK)
+Message-ID: <38989879-544b-4ca7-abbe-44c9be04b670@tls.msk.ru>
+Date: Thu, 18 Jan 2024 17:46:12 +0300
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -38
-X-Spam_score: -3.9
-X-Spam_bar: ---
-X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] qemu-docs: Update options for graphical frontends
+Content-Language: en-US
+To: Yihuan Pan <xun794@gmail.com>, qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org
+References: <20240118063930.190918-1-xun794@gmail.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <20240118063930.190918-1-xun794@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -74,15 +72,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jan 2024 13:21:53 -0000
+X-List-Received-Date: Thu, 18 Jan 2024 14:46:23 -0000
 
-Thomas Huth <thuth@redhat.com> writes:
+18.01.2024 09:39, Yihuan Pan :
+> The command line options `-ctrl-grab` and `-alt-grab` have been removed
+> in QEMU 7.1. Instead, use the `-display sdl,grab-mod=<modifiers>` option
+> to specify the grab modifiers.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2103
+> Signed-off-by: Yihuan Pan <xun794@gmail.com>
+> ---
+>   docs/system/keys.rst.inc | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/docs/system/keys.rst.inc b/docs/system/keys.rst.inc
+> index bd9b8e5f6f..44698e301e 100644
+> --- a/docs/system/keys.rst.inc
+> +++ b/docs/system/keys.rst.inc
+> @@ -1,7 +1,8 @@
+>   During the graphical emulation, you can use special key combinations to
+>   change modes. The default key mappings are shown below, but if you use
+> -``-alt-grab`` then the modifier is Ctrl-Alt-Shift (instead of Ctrl-Alt)
+> -and if you use ``-ctrl-grab`` then the modifier is the right Ctrl key
+> +``-display sdl,grab-mod=lshift-lctrl-lalt`` then the modifier is
+> +Ctrl-Alt-Shift(instead of Ctrl-Alt) and if you use
+> +``-display sdl,grab-mod=rctrl`` then the modifier is the right Ctrl key
+>   (instead of Ctrl-Alt):
 
-> It's been marked as deprecated since QEMU 8.0, so it should be fine
-> to remove this now.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+A nitpick: please add space before "(instead".
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+But the whole sentence wants some refinement, or else it is awkward at
+best.  How about something like,
+
+    During the graphical emulation, you can use special key combinations from
+    the following table to change modes. By default the modifier is Ctrl-Alt
+    (used in the table below), which can be changed with ``-display`` suboption
+    ``mod=`` where appropriate.  For example, ``-display sdl,grab-mod=lshift-lctrl-lalt``
+    changes the modifier key to Ctrl-Alt-Shift, while ``-display sdl, grab-mod=rctrl``
+    changes it to the right Ctrl key.
+
+?
+
+Thanks,
+
+/mjt
+
+>   
+>   Ctrl-Alt-f
 
 
