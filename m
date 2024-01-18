@@ -1,47 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rQPml-0003ce-7e
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jan 2024 05:38:11 -0500
+	id 1rQPmn-0003dc-2t
+	for mharc-qemu-trivial@gnu.org; Thu, 18 Jan 2024 05:38:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rQPmj-0003cA-K9
- for qemu-trivial@nongnu.org; Thu, 18 Jan 2024 05:38:09 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rQPmk-0003cY-UO
+ for qemu-trivial@nongnu.org; Thu, 18 Jan 2024 05:38:11 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rQPmg-0006ut-9X
- for qemu-trivial@nongnu.org; Thu, 18 Jan 2024 05:38:09 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rQPmj-0006vN-5l
+ for qemu-trivial@nongnu.org; Thu, 18 Jan 2024 05:38:10 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1705574285;
+ s=mimecast20190719; t=1705574288;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=j5hV5GmGycQNkJWF0EYTgUMVq9H9BhvmE8XkS6rWopw=;
- b=HpmAHjw1bIAFUH+EFOU2bI59dnbnkJPJ8kXGOuHkXVbpYUUMLSX5eKYVFa+7mcUetGTyO1
- JvxMv8P+ZG6vBRSJvYVcTWApw0XC+c6tNwcnhMmtHe3JZFk/zSpwqEgaircAPKpmJDswUk
- Mbkn/fCv1/j7k/0lft+kDI/xsVfbZZc=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-619-zmgEsOs0PpKxUSex-rvDBQ-1; Thu,
- 18 Jan 2024 05:38:02 -0500
-X-MC-Unique: zmgEsOs0PpKxUSex-rvDBQ-1
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=AvLwrdsBtAbxG6dH0UjFC0ASo69JEa85T3xvMU5mOgY=;
+ b=aPY1MP/C0Kq+fvOoSk2/YKYpTwn47/dvtPE26si4xBfGSqq2NT+fX+SfwmbZHUNuOCE+eP
+ N4Gwv/z45AkUHJbanCF6OSoeF4jCYonBrLHj/bNRKUsSco8xWBBsGAYF8dOOBbUS3jccnQ
+ 46j5ZF7PWW5BWQ5l9b77NM23ne7YWrc=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-637-TqlUHSPdMdq_wXJG7_FMRw-1; Thu, 18 Jan 2024 05:38:05 -0500
+X-MC-Unique: TqlUHSPdMdq_wXJG7_FMRw-1
 Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
  [10.11.54.9])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 41245285F998;
- Thu, 18 Jan 2024 10:38:02 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DE23580007C;
+ Thu, 18 Jan 2024 10:38:04 +0000 (UTC)
 Received: from thuth-p1g4.redhat.com (unknown [10.39.192.52])
- by smtp.corp.redhat.com (Postfix) with ESMTP id C1CAB492BC6;
- Thu, 18 Jan 2024 10:38:00 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id CE028492BC6;
+ Thu, 18 Jan 2024 10:38:02 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org,
 	Paolo Bonzini <pbonzini@redhat.com>
 Cc: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
  =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 0/4] Remove deprecated command line options
-Date: Thu, 18 Jan 2024 11:37:55 +0100
-Message-ID: <20240118103759.130748-1-thuth@redhat.com>
+Subject: [PATCH v2 1/4] qemu-options: Remove the deprecated -no-hpet option
+Date: Thu, 18 Jan 2024 11:37:56 +0100
+Message-ID: <20240118103759.130748-2-thuth@redhat.com>
+In-Reply-To: <20240118103759.130748-1-thuth@redhat.com>
+References: <20240118103759.130748-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
@@ -54,7 +57,7 @@ X-Spam_report: (-3.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.806,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -67,32 +70,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jan 2024 10:38:10 -0000
+X-List-Received-Date: Thu, 18 Jan 2024 10:38:11 -0000
 
-The -no-hpet, -no-acpi, -async-teardown and -chroot options have been
-deprecated for at least two releases, so it should be fine if we remove
-them now.
+It's been marked as deprecated since QEMU 8.0, so it should be fine
+to remove this now.
 
-v2:
- - Rework some more occurances of -no-acpi in the second patch (Markus)
- - Collected Reviewed-bys from v1
- - Drop the -singlestep patch since this is handled by Philippe's series:
-   https://lore.kernel.org/qemu-devel/20240117151430.29235-1-philmd@linaro.org/
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ docs/about/deprecated.rst       | 6 ------
+ docs/about/removed-features.rst | 8 ++++++++
+ system/vl.c                     | 4 ----
+ qemu-options.hx                 | 7 -------
+ 4 files changed, 8 insertions(+), 17 deletions(-)
 
-Thomas Huth (4):
-  qemu-options: Remove the deprecated -no-hpet option
-  qemu-options: Remove the deprecated -no-acpi option
-  qemu-options: Remove the deprecated -async-teardown option
-  qemu-options: Remove the deprecated -chroot option
-
- docs/about/deprecated.rst       | 22 -------------------
- docs/about/removed-features.rst | 23 ++++++++++++++++++++
- docs/specs/tpm.rst              |  4 ++--
- hw/i386/pc.c                    |  4 ++--
- system/vl.c                     | 19 -----------------
- qemu-options.hx                 | 38 ---------------------------------
- 6 files changed, 27 insertions(+), 83 deletions(-)
-
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index f48fc83d85..bf2150f00c 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -63,12 +63,6 @@ as short-form boolean values, and passed to plugins as ``arg_name=on``.
+ However, short-form booleans are deprecated and full explicit ``arg_name=on``
+ form is preferred.
+ 
+-``-no-hpet`` (since 8.0)
+-''''''''''''''''''''''''
+-
+-The HPET setting has been turned into a machine property.
+-Use ``-machine hpet=off`` instead.
+-
+ ``-no-acpi`` (since 8.0)
+ ''''''''''''''''''''''''
+ 
+diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+index f04036987b..52d240ade9 100644
+--- a/docs/about/removed-features.rst
++++ b/docs/about/removed-features.rst
+@@ -460,6 +460,14 @@ in this case.
+ Note that the default audio backend must be configured on the command
+ line if the ``-nodefaults`` options is used.
+ 
++``-no-hpet`` (removed in 9.0)
++'''''''''''''''''''''''''''''
++
++The HPET setting has been turned into a machine property.
++Use ``-machine hpet=off`` instead.
++
++
++
+ QEMU Machine Protocol (QMP) commands
+ ------------------------------------
+ 
+diff --git a/system/vl.c b/system/vl.c
+index 53850a1daf..f08c4c8193 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -3373,10 +3373,6 @@ void qemu_init(int argc, char **argv)
+                 warn_report("-no-acpi is deprecated, use '-machine acpi=off' instead");
+                 qdict_put_str(machine_opts_dict, "acpi", "off");
+                 break;
+-            case QEMU_OPTION_no_hpet:
+-                warn_report("-no-hpet is deprecated, use '-machine hpet=off' instead");
+-                qdict_put_str(machine_opts_dict, "hpet", "off");
+-                break;
+             case QEMU_OPTION_no_reboot:
+                 olist = qemu_find_opts("action");
+                 qemu_opts_parse_noisily(olist, "reboot=shutdown", false);
+diff --git a/qemu-options.hx b/qemu-options.hx
+index b66570ae00..57e447065a 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -2654,13 +2654,6 @@ SRST
+     machine only).
+ ERST
+ 
+-DEF("no-hpet", 0, QEMU_OPTION_no_hpet,
+-    "-no-hpet        disable HPET\n", QEMU_ARCH_I386)
+-SRST
+-``-no-hpet``
+-    Disable HPET support. Deprecated, use '-machine hpet=off' instead.
+-ERST
+-
+ DEF("acpitable", HAS_ARG, QEMU_OPTION_acpitable,
+     "-acpitable [sig=str][,rev=n][,oem_id=str][,oem_table_id=str][,oem_rev=n][,asl_compiler_id=str][,asl_compiler_rev=n][,{data|file}=file1[:file2]...]\n"
+     "                ACPI table description\n", QEMU_ARCH_I386)
 -- 
 2.43.0
 
