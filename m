@@ -1,63 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rQTf1-0004qd-FG
-	for mharc-qemu-trivial@gnu.org; Thu, 18 Jan 2024 09:46:27 -0500
+	id 1rQpKr-0003ES-A4
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Jan 2024 08:55:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rQTew-0004oC-8I; Thu, 18 Jan 2024 09:46:22 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1rQpKp-0003EG-O2
+ for qemu-trivial@nongnu.org; Fri, 19 Jan 2024 08:55:03 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rQTet-0007fE-Cf; Thu, 18 Jan 2024 09:46:22 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 5F1854537B;
- Thu, 18 Jan 2024 17:46:43 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id D91BE66B25;
- Thu, 18 Jan 2024 17:46:12 +0300 (MSK)
-Message-ID: <38989879-544b-4ca7-abbe-44c9be04b670@tls.msk.ru>
-Date: Thu, 18 Jan 2024 17:46:12 +0300
+ (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1rQpKo-0007Rs-5u
+ for qemu-trivial@nongnu.org; Fri, 19 Jan 2024 08:55:03 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1705672501;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=DomS3jxqOjp5zUcEiyMIREnIQCm6PaZ2rUd1k7yv22U=;
+ b=DhxuYqc4r9Iq2l+ur8IOT7aEjM+kEfJb9VGw85Gn9TEBgwDSxC09GxZgyjzc4yg9qMONX0
+ +9R6hKBkdkymbd6aR7EngdzFF2/v6pX/qSDi5Ec1/8cO/TqjT/eEtHnSvQ/MXjiSoeRVN2
+ 1vLCemwQ46ZMd3LwzjHlhQTB/eGRSu0=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-446-Gzv4EzxyOMiFvB7PAaaPhw-1; Fri, 19 Jan 2024 08:53:46 -0500
+X-MC-Unique: Gzv4EzxyOMiFvB7PAaaPhw-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 65B05185A782
+ for <qemu-trivial@nongnu.org>; Fri, 19 Jan 2024 13:53:46 +0000 (UTC)
+Received: from fedora.redhat.com (unknown [10.72.116.132])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 13396492BE2;
+ Fri, 19 Jan 2024 13:53:44 +0000 (UTC)
+From: Han Han <hhan@redhat.com>
+To: qemu-trivial@nongnu.org
+Cc: Han Han <hhan@redhat.com>
+Subject: [PATCH] qapi/migration.json: Fix the member name for
+ MigrationCapability
+Date: Fri, 19 Jan 2024 21:53:14 +0800
+Message-ID: <20240119135341.279334-1-hhan@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] qemu-docs: Update options for graphical frontends
-Content-Language: en-US
-To: Yihuan Pan <xun794@gmail.com>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <20240118063930.190918-1-xun794@gmail.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240118063930.190918-1-xun794@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=hhan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -45
+X-Spam_score: -4.6
+X-Spam_bar: ----
+X-Spam_report: (-4.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.519,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -72,52 +68,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 18 Jan 2024 14:46:23 -0000
+X-List-Received-Date: Fri, 19 Jan 2024 13:55:04 -0000
 
-18.01.2024 09:39, Yihuan Pan :
-> The command line options `-ctrl-grab` and `-alt-grab` have been removed
-> in QEMU 7.1. Instead, use the `-display sdl,grab-mod=<modifiers>` option
-> to specify the grab modifiers.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2103
-> Signed-off-by: Yihuan Pan <xun794@gmail.com>
-> ---
->   docs/system/keys.rst.inc | 5 +++--
->   1 file changed, 3 insertions(+), 2 deletions(-)
-> 
-> diff --git a/docs/system/keys.rst.inc b/docs/system/keys.rst.inc
-> index bd9b8e5f6f..44698e301e 100644
-> --- a/docs/system/keys.rst.inc
-> +++ b/docs/system/keys.rst.inc
-> @@ -1,7 +1,8 @@
->   During the graphical emulation, you can use special key combinations to
->   change modes. The default key mappings are shown below, but if you use
-> -``-alt-grab`` then the modifier is Ctrl-Alt-Shift (instead of Ctrl-Alt)
-> -and if you use ``-ctrl-grab`` then the modifier is the right Ctrl key
-> +``-display sdl,grab-mod=lshift-lctrl-lalt`` then the modifier is
-> +Ctrl-Alt-Shift(instead of Ctrl-Alt) and if you use
-> +``-display sdl,grab-mod=rctrl`` then the modifier is the right Ctrl key
->   (instead of Ctrl-Alt):
+s/@compression/@compress/
 
-A nitpick: please add space before "(instead".
+Fixes: 864128df46
 
-But the whole sentence wants some refinement, or else it is awkward at
-best.  How about something like,
+Signed-off-by: Han Han <hhan@redhat.com>
+---
+ qapi/migration.json | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-    During the graphical emulation, you can use special key combinations from
-    the following table to change modes. By default the modifier is Ctrl-Alt
-    (used in the table below), which can be changed with ``-display`` suboption
-    ``mod=`` where appropriate.  For example, ``-display sdl,grab-mod=lshift-lctrl-lalt``
-    changes the modifier key to Ctrl-Alt-Shift, while ``-display sdl, grab-mod=rctrl``
-    changes it to the right Ctrl key.
-
-?
-
-Thanks,
-
-/mjt
-
->   
->   Ctrl-Alt-f
+diff --git a/qapi/migration.json b/qapi/migration.json
+index eb2f883513..1657b13314 100644
+--- a/qapi/migration.json
++++ b/qapi/migration.json
+@@ -534,7 +534,7 @@
+ # Features:
+ #
+ # @deprecated: Member @block is deprecated.  Use blockdev-mirror with
+-#     NBD instead.  Member @compression is deprecated because it is
++#     NBD instead.  Member @compress is deprecated because it is
+ #     unreliable and untested.  It is recommended to use multifd
+ #     migration, which offers an alternative compression
+ #     implementation that is reliable and tested.
+-- 
+2.43.0
 
 
