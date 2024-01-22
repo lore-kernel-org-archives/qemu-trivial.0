@@ -1,85 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rS1TA-0006yw-2N
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jan 2024 16:04:36 -0500
+	id 1rS1bI-0005Ef-2V
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jan 2024 16:13:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1rS1T8-0006yU-Dx; Mon, 22 Jan 2024 16:04:34 -0500
-Received: from mail.weilnetz.de ([37.120.169.71]
- helo=mail.v2201612906741603.powersrv.de)
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1rS1b7-00054j-0R
+ for qemu-trivial@nongnu.org; Mon, 22 Jan 2024 16:12:50 -0500
+Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1rS1T7-00008A-1T; Mon, 22 Jan 2024 16:04:34 -0500
-Received: from [192.168.178.59] (p5b1519e5.dip0.t-ipconnect.de [91.21.25.229])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 43CB6DA0DC3;
- Mon, 22 Jan 2024 22:04:31 +0100 (CET)
-Message-ID: <15e28826-2e2b-45a1-94c2-bbbbf2bbf143@weilnetz.de>
-Date: Mon, 22 Jan 2024 22:04:31 +0100
+ (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
+ id 1rS1b3-0002RQ-Ko
+ for qemu-trivial@nongnu.org; Mon, 22 Jan 2024 16:12:48 -0500
+Received: by mail-pj1-x102b.google.com with SMTP id
+ 98e67ed59e1d1-2906773c7e9so864209a91.1
+ for <qemu-trivial@nongnu.org>; Mon, 22 Jan 2024 13:12:44 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1705957962; x=1706562762; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=BZA4U8FeZ42t0bbhSQ7qFVMrjXIpcqIQEt110wRVJmg=;
+ b=dc/QndNeBHCq926xkoNBJwa8rR9o0j/lWibSHN4xYANfkiD7tL4X6XGoOrz+Ey6yil
+ tXVOHGmtOnnb+/uzZPglE3foW3DCRd79kA9Ue+iG8mJ8CEOHXMNBIuDpjTuD4fQeaBdk
+ tIPR63kczwF6Buu6pwW+M0HZsHmTViiEBQ1eT9mgg9WjMZDk48RkB3aWhsUNJNbOnCQT
+ NAfcIpMnA0OZ60ni1XT28qv3dwg/HAFclWlPz4iPmhO8d45VFSq1RPMIZioTmOqkoJyT
+ izh51gLltS/OiU89RuS/6D9G7OL3gIyRU+CB6Q2Tg0ABftzSsb+HfflXDQjJ/sArTrYS
+ Jvcw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705957962; x=1706562762;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=BZA4U8FeZ42t0bbhSQ7qFVMrjXIpcqIQEt110wRVJmg=;
+ b=aDGWcg0nU824El/h9RkbE9cqO9ZVQEViKEn+qBTXqWkuVLBp841AcPW4ada/CyWpYb
+ g/K0ExymNU5Pnt97fujCWhFnGOotUIvfNv1x74pqXiBbnkq/96k9NUjKsbwEeOs/0Sn8
+ CvSaNApaP2TSZ0pxVR8z+ei+2IvMRVfkqQ/q6hkSrT7iAlEkuaDi1wIij8JgG3rM6Zam
+ IqvY5vfDJe6HnvVqYZ+DduTgQLhWDoXrE/QEQC4F/bUWIi9a64wM+84OfsiQwbg9K7G1
+ v2UAiJhkimFhIeotG0Lsz7aPeF75I9ZTqOOBjcJg50A+drLypMCQLeAdlQX0Bk+KjfPn
+ fKRw==
+X-Gm-Message-State: AOJu0YyA/8p7VQGyUoGwFS1TQxEkg9aFOsij7K1J3/cdFdtMKqXr7wwZ
+ icNjOHpr5UQtnDXw5h102a4p45IsBuDHvcHC7OOXKOpN48/CTGj0E/sb429nTrYWIlMSrSJhdGE
+ as5s=
+X-Google-Smtp-Source: AGHT+IH+pgh2XdNWPI/Fn8UgrkugJbCpXEhxxjK8PdG5o6UMwfVJqBVNI5JcVainqswSWOiBGI20dg==
+X-Received: by 2002:a17:90a:2f24:b0:28b:3335:1489 with SMTP id
+ s33-20020a17090a2f2400b0028b33351489mr1866163pjd.99.1705957961972; 
+ Mon, 22 Jan 2024 13:12:41 -0800 (PST)
+Received: from amd.. ([2804:7f0:b401:e1f2:3e7c:3fff:fe7a:e83b])
+ by smtp.gmail.com with ESMTPSA id
+ y17-20020a170903011100b001d71cbf200esm5972636plc.260.2024.01.22.13.12.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 22 Jan 2024 13:12:41 -0800 (PST)
+From: Gustavo Romero <gustavo.romero@linaro.org>
+To: qemu-trivial@nongnu.org,
+	peter.maydell@linaro.org
+Cc: qemu-devel@nongnu.org, philmd@linaro.org, alex.bennee@linaro.org,
+ richard.henderson@linaro.org, gustavo.romero@linaro.org
+Subject: [PATCH v2] docs/system/arm/virt.rst: Add note on CPU features off by
+ default
+Date: Mon, 22 Jan 2024 21:12:15 +0000
+Message-Id: <20240122211215.95073-1-gustavo.romero@linaro.org>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] util/uri: Remove unused macros ISA_RESERVED() and
- ISA_GEN_DELIM()
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-trivial@nongnu.org
-References: <20240122191753.103118-1-thuth@redhat.com>
- <20240122191753.103118-6-thuth@redhat.com>
-From: Stefan Weil <sw@weilnetz.de>
-Autocrypt: addr=sw@weilnetz.de; keydata=
- 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
-In-Reply-To: <20240122191753.103118-6-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pj1-x102b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,18 +82,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jan 2024 21:04:34 -0000
+X-List-Received-Date: Mon, 22 Jan 2024 21:12:51 -0000
 
-Am 22.01.24 um 20:17 schrieb Thomas Huth:
+Add a note on CPU features that are off by default in `virt` machines.
+Some CPU features will remain off even if a CPU-capable CPU (e.g.,
+`-cpu max`) is selected because they require support in both the CPU
+itself and in the wider system. Therefore, the user, besides selecting a
+CPU that supports such features, must also turn on the feature using a
+machine option.
 
-> They are not used anywhere, so there's no need to keep them around.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   util/uri.c | 13 -------------
->   1 file changed, 13 deletions(-)
->
+Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+---
+ docs/system/arm/virt.rst | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
+diff --git a/docs/system/arm/virt.rst b/docs/system/arm/virt.rst
+index c245c52b7a..1888e31956 100644
+--- a/docs/system/arm/virt.rst
++++ b/docs/system/arm/virt.rst
+@@ -69,6 +69,19 @@ Supported guest CPU types:
+ Note that the default is ``cortex-a15``, so for an AArch64 guest you must
+ specify a CPU type.
+ 
++Also, please note that passing ``max`` CPU (i.e. ``-cpu max``) won't
++enable all the CPU features for a given ``virt`` machine. Where a CPU
++architectural feature requires support in both the CPU itself and in the
++wider system (e.g. the MTE feature), it may not be enabled by default,
++but instead requires a machine option to enable it.
++
++For example, MTE support must be enabled with ``-machine virt,mte=on``,
++as well as by selecting an MTE-capable CPU (e.g., ``max``) with the
++``-cpu`` option.
++
++See the machine-specific options below or check them for a given machine
++passing ``help``, like: ``-machine virt-9.0,help``.
++
+ Graphics output is available, but unlike the x86 PC machine types
+ there is no default display device enabled: you should select one from
+ the Display devices section of "-device help". The recommended option
+-- 
+2.34.1
 
 
