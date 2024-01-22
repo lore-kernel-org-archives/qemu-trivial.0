@@ -1,32 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rS1Ar-0006CU-91
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jan 2024 15:45:41 -0500
+	id 1rS1OO-0004LB-EB
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jan 2024 15:59:40 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1rS1Ap-0006B3-Rh; Mon, 22 Jan 2024 15:45:39 -0500
+ id 1rS1OM-0004KC-Ee; Mon, 22 Jan 2024 15:59:38 -0500
 Received: from mail.weilnetz.de ([37.120.169.71]
  helo=mail.v2201612906741603.powersrv.de)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1rS1An-0005Mu-Nd; Mon, 22 Jan 2024 15:45:39 -0500
+ id 1rS1OK-0007dz-DR; Mon, 22 Jan 2024 15:59:38 -0500
 Received: from [192.168.178.59] (p5b1519e5.dip0.t-ipconnect.de [91.21.25.229])
  (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
  key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
  (No client certificate requested)
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 4E565DA0F70;
- Mon, 22 Jan 2024 21:45:33 +0100 (CET)
-Message-ID: <f6e58aaf-fa64-4b40-b7b9-d7f434dd902a@weilnetz.de>
-Date: Mon, 22 Jan 2024 21:45:32 +0100
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 3EF6EDA0F70;
+ Mon, 22 Jan 2024 21:59:33 +0100 (CET)
+Message-ID: <343c59db-8004-4461-9c9e-976ca2f1a357@weilnetz.de>
+Date: Mon, 22 Jan 2024 21:59:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] util/uri: Remove the unused "target" argument from
- uri_string_unescape()
+Subject: Re: [PATCH 3/5] util/uri: Remove the uri_string_escape() function
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>
 Cc: qemu-trivial@nongnu.org
 References: <20240122191753.103118-1-thuth@redhat.com>
- <20240122191753.103118-2-thuth@redhat.com>
+ <20240122191753.103118-4-thuth@redhat.com>
 From: Stefan Weil <sw@weilnetz.de>
 Autocrypt: addr=sw@weilnetz.de; keydata=
  xsFNBFXCNBcBEACUbHx9FWsS1ATrhLGAS+Nc6bFQHPR3CpUQ4v++RiMg25bF6Ov1RsYEcovI
@@ -70,7 +69,7 @@ Autocrypt: addr=sw@weilnetz.de; keydata=
  Rm8B6J2ZK6ci1TRDiMpCUWefpnIuE+TibC5VJR5zx0Yh11rxxBFob8mWktRmLZyeEoCcZoBo
  sbJxD80QxWO03zPpkcJ7d4BrVsQ/BJkBtEe4Jn4iqHqA/OcrzwuEZSv+/MdgoqfblBZhDusm
  LYfVy7wFDeVClG6eQIiK2EnmDChLRkVIQzbkV0iG+NJVVJHLGK7/OsO47+zq
-In-Reply-To: <20240122191753.103118-2-thuth@redhat.com>
+In-Reply-To: <20240122191753.103118-4-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
@@ -92,21 +91,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jan 2024 20:45:40 -0000
+X-List-Received-Date: Mon, 22 Jan 2024 20:59:39 -0000
 
 Am 22.01.24 um 20:17 schrieb Thomas Huth:
 
-> All callers pass NULL as target, so we can simplify the code by
-> dropping this parameter.
+> It is not used in QEMU - and if somebody needs this functionality,
+> they can simply use g_uri_escape_string() from the glib instead.
 >
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->   include/qemu/uri.h |  2 +-
->   util/uri.c         | 32 ++++++++++++++------------------
->   2 files changed, 15 insertions(+), 19 deletions(-)
+>   include/qemu/uri.h |  1 -
+>   util/uri.c         | 64 ----------------------------------------------
+>   2 files changed, 65 deletions(-)
 
+
+The removed function is used in util/uri.c, so this patch breaks the 
+compilation.
+
+That can be fixed by applying patch 4 before this one.
+
+With that re-ordering you may add my signature:
 
 Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
 
 
