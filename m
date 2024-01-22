@@ -1,54 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rRzoI-0007t8-32
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jan 2024 14:18:18 -0500
+	id 1rRzsR-0004wP-9X
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jan 2024 14:22:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rRzoG-0007qW-4E
- for qemu-trivial@nongnu.org; Mon, 22 Jan 2024 14:18:16 -0500
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1rRzsN-0004uN-3B
+ for qemu-trivial@nongnu.org; Mon, 22 Jan 2024 14:22:32 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rRzoE-0004cF-P7
- for qemu-trivial@nongnu.org; Mon, 22 Jan 2024 14:18:15 -0500
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1rRzsL-0005Dt-8Y
+ for qemu-trivial@nongnu.org; Mon, 22 Jan 2024 14:22:30 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1705951094;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ s=mimecast20190719; t=1705951347;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Z3u6Yy9CfrVqwRHpuhwl3ZEXeFccWfWXdnHXfJdqu0U=;
- b=OFwv1eqR9lB9B0N5+RyELcFIrh9Cz8FuSWM+LnU2Un1N9Hy/3qTSvQWd3HdkHbVn0YEtgz
- /h34Nn3y7teeJhytsw2kmskE/d5QQu7XOl2Bq+iaAnIi3p3SX4gUEpqHEXYMMbrwKqgQB/
- ybQVpWcft0Zc8jhQx3K4LtuT3vG9/wc=
+ bh=fkFnR5s5hHboIXmh32DuvnLiAWHl6aY0Xd0TaXengGQ=;
+ b=bJs8dJhOve/T5VODvY9U3Y4QcQKZpVswFVLdlnPJ90aaSgiAFPAJ/++HpbY7IHJPajhKxN
+ YOHGnFZWGPO+la80wkT36Q6r45uxi1aCtFRz6huDGfDAF8e924bBBevFG7G8CprbgfXQy4
+ kiqHsqKe4xBLHSey6dqD8i5o1xJWsNY=
 Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
  by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-464-yVRBcxsbNu2UAsUKFqchqw-1; Mon,
- 22 Jan 2024 14:18:11 -0500
-X-MC-Unique: yVRBcxsbNu2UAsUKFqchqw-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-690-6GEUQM0kMJ6igf4ns0CbSw-1; Mon,
+ 22 Jan 2024 14:22:24 -0500
+X-MC-Unique: 6GEUQM0kMJ6igf4ns0CbSw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 59F9F28EA6E5;
- Mon, 22 Jan 2024 19:18:05 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.193.179])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 0B332492BC6;
- Mon, 22 Jan 2024 19:18:03 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Paolo Bonzini <pbonzini@redhat.com>
-Cc: Stefan Weil <sw@weilnetz.de>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH 5/5] util/uri: Remove unused macros ISA_RESERVED() and
- ISA_GEN_DELIM()
-Date: Mon, 22 Jan 2024 20:17:53 +0100
-Message-ID: <20240122191753.103118-6-thuth@redhat.com>
-In-Reply-To: <20240122191753.103118-1-thuth@redhat.com>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 698AE29AC004;
+ Mon, 22 Jan 2024 19:22:24 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.36])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2D2F3927;
+ Mon, 22 Jan 2024 19:22:22 +0000 (UTC)
+Date: Mon, 22 Jan 2024 19:22:20 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH 0/5] util/uri: Simplify the code, remove unused functions
+Message-ID: <Za7AbEhGXWvWd8Id@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20240122191753.103118-1-thuth@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+In-Reply-To: <20240122191753.103118-1-thuth@redhat.com>
+User-Agent: Mutt/2.2.10 (2023-03-25)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -33
 X-Spam_score: -3.4
@@ -70,40 +75,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jan 2024 19:18:16 -0000
+X-List-Received-Date: Mon, 22 Jan 2024 19:22:33 -0000
 
-They are not used anywhere, so there's no need to keep them around.
+On Mon, Jan 22, 2024 at 08:17:48PM +0100, Thomas Huth wrote:
+> The URI function uri_string_unescape() has some overlap with functions
+> from the glib, so we can simplify our code here quite a bit.
+> While at it, I also noticed that there are many unused functions in
+> here which we likely can drop nowadays (it's better to use the functions
+> from glib anyway).
+> 
+> Thomas Huth (5):
+>   util/uri: Remove the unused "target" argument from
+>     uri_string_unescape()
+>   util/uri: Simplify uri_string_unescape()
+>   util/uri: Remove the uri_string_escape() function
+>   util/uri: Remove unused functions uri_resolve() and
+>     uri_resolve_relative()
+>   util/uri: Remove unused macros ISA_RESERVED() and ISA_GEN_DELIM()
+> 
+>  include/qemu/uri.h |   5 +-
+>  util/uri.c         | 843 +--------------------------------------------
+>  2 files changed, 16 insertions(+), 832 deletions(-)
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- util/uri.c | 13 -------------
- 1 file changed, 13 deletions(-)
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 
-diff --git a/util/uri.c b/util/uri.c
-index 5f5ca79792..2deab91da3 100644
---- a/util/uri.c
-+++ b/util/uri.c
-@@ -163,19 +163,6 @@ static void uri_clean(URI *uri);
-      ((*(p) == '+')) || ((*(p) == ',')) || ((*(p) == ';')) ||                  \
-      ((*(p) == '=')) || ((*(p) == '\'')))
- 
--/*
-- *    gen-delims    = ":" / "/" / "?" / "#" / "[" / "]" / "@"
-- */
--#define ISA_GEN_DELIM(p)                                                       \
--    (((*(p) == ':')) || ((*(p) == '/')) || ((*(p) == '?')) ||                  \
--     ((*(p) == '#')) || ((*(p) == '[')) || ((*(p) == ']')) ||                  \
--     ((*(p) == '@')))
--
--/*
-- *    reserved      = gen-delims / sub-delims
-- */
--#define ISA_RESERVED(p) (ISA_GEN_DELIM(p) || (ISA_SUB_DELIM(p)))
--
- /*
-  *    unreserved    = ALPHA / DIGIT / "-" / "." / "_" / "~"
-  */
+
+With regards,
+Daniel
 -- 
-2.43.0
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
