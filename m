@@ -1,71 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rS9bh-0005pA-3q
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jan 2024 00:45:57 -0500
+	id 1rS9fo-0008Eu-Hz
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jan 2024 00:50:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rS9bb-0005ok-M7
- for qemu-trivial@nongnu.org; Tue, 23 Jan 2024 00:45:52 -0500
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rS9fn-0008EV-2h
+ for qemu-trivial@nongnu.org; Tue, 23 Jan 2024 00:50:11 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rS9bY-00082Q-Ls
- for qemu-trivial@nongnu.org; Tue, 23 Jan 2024 00:45:49 -0500
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-40e5afc18f5so43129315e9.3
- for <qemu-trivial@nongnu.org>; Mon, 22 Jan 2024 21:45:48 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rS9fk-0000MC-20
+ for qemu-trivial@nongnu.org; Tue, 23 Jan 2024 00:50:10 -0500
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-a277339dcf4so425907166b.2
+ for <qemu-trivial@nongnu.org>; Mon, 22 Jan 2024 21:50:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1705988747; x=1706593547; darn=nongnu.org;
+ d=linaro.org; s=google; t=1705989006; x=1706593806; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=u0CzfWu6++n+Y4l47J4vwGZsnDw6KzO9m/V4A2BAU7A=;
- b=HncPOaR+liyX++kMViANrpjhmfqL81sBWNuQ0JlaD1ZC2YNpKLHQydtCgACoa+YtCt
- PUIqAwklPRRLQ4HeDx0u/lIxk4K4t1uCnAje94CWlGXfDE5nr3+37gHto0Limv8bkm8g
- AkdDdGMMeQC/jtxpUDCJn/pyAdY3Po2ZpLZknn00bByI9nGJviDRZxDub8rWnyw3acgc
- MpUBnt3NCCmQCR8ZUyecXF6GfzEVE63psnVFkazcWs/MlJ9loPkgCIGBccAYqufHLZBD
- Vu98duI8orEhj2j4H0tH9CQkzXxBaMVkYsahllxuw0s+K3T6vDwPh5NK2BuubQcDArPg
- dIgA==
+ bh=ppChUoIFvo8a+f8Bqe3rqtKEWQsMJcEIWzXIQbJm984=;
+ b=Jqjf9d7WevloQpe94PRvDl9A40G0hjXRPH2KTQzSRbXx6PmSOFw17/k1myL+5qaR7d
+ n1tEpdpUv3umCzPSGN0O60AVFqMqxQFOH+MHZshTXMHhHCbo6dRN6zMCJATkgeZp9MNa
+ iWUQ4GwkpoHedjhg9puktD3Fr0kdmEpk0gZGbIw2J5hi9dCxDyRm69nJ7CEtNwgZHS7l
+ GfLtO8/Jy14foOQ9VMrwOz0nfB2LFP0noz9iiZqKwwSMyiDWCQ4q7ZZSmJw++/MX9Ujo
+ 0mnhm0tosR8MjoZd0o/eP4/3wh/DRL5i508mUDupvK797J1b5KdNhA+Rvx51u+/8IUJV
+ ks1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1705988747; x=1706593547;
+ d=1e100.net; s=20230601; t=1705989006; x=1706593806;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=u0CzfWu6++n+Y4l47J4vwGZsnDw6KzO9m/V4A2BAU7A=;
- b=qn5sfSwNsNp68nraULgSR4aqNIIeH1sTB4xA8U6S3z4HpwJdBCrwx8fd8hVZlrEkkE
- Yv53ionSWZ7uOD5MJ3SsgK/tNfE69Z5Jr7+/emiXNKssREPpN7a/vMTmV2kZxq+Holjj
- styzfqj2iXgU9NBv/zUEhcBeuYtxDkA4oNERg72F3/FJbg4442SeXZ3DZZ30Lc+qStkH
- d29I0kmGy0WYBPbF9Dn3bTUoeW0LRLSe9Py316/Y6g5yckR1T5cRl1SHEGuckREFYNQM
- EXgHsW3xQwma2Uik68B7YgdaNFOAXf8wOOcJ0308Vn8ITtuiagoiNRleUwrG9UBzneL+
- ma7Q==
-X-Gm-Message-State: AOJu0Yw+BiTV4F134V+tYO8SCKYqx+BAm83N0FmPmn5tdiVyT1B0xKbr
- 9VUCL4oiMWZKtLSRnn2WvCEiTkLxbRBnxAl3bYBsxac8KLNpew3ALg9qZbx+ttBcuwbQ9/nXZ1W
- cotU=
-X-Google-Smtp-Source: AGHT+IHYWRmWtBvWk5R6JVo58e4fkJaafnFf98triQDL1mkHjxQgXUd1vXnhYk0NICzL24nTQpcc3g==
-X-Received: by 2002:a1c:790f:0:b0:40e:45b0:557f with SMTP id
- l15-20020a1c790f000000b0040e45b0557fmr169981wme.140.1705988747064; 
- Mon, 22 Jan 2024 21:45:47 -0800 (PST)
+ bh=ppChUoIFvo8a+f8Bqe3rqtKEWQsMJcEIWzXIQbJm984=;
+ b=kZDHRtV9BQnNnc319y4Ci0zpz0Vh8cm7rma/BmHra/SSzaFcbcxJXONmo7WBojwwAu
+ eGbvimlKDo6sVWHI0l63+sg34nRQLYdry3QKXKpHuZTh1OmtCDgk3ucujBkob2cBt4de
+ vrlnfgZmysD404WXl8M5vWgjBfwRgy2rCcaO7voyoHt0ANxsVdVch24oefERv/jh+kwM
+ b+XCCT+KybK6oY6CMkAvx44TeOE19FOebcxxtWSShZEMLGxcs17HBytRKNcTsgPVutWM
+ Dq2MbOTqCc/BtrONjtySolh7YNKH0zHUylqZ8F8PG592Bgv2ktoLzQJZO/+P2RTjrUSJ
+ YYWA==
+X-Gm-Message-State: AOJu0YxXIPdWylefW0W7GEf08h1VL66zUXQALzKLb1JGogsnSVQStSQW
+ ioM9ekEVLPPeoAIsnbRGY/i+z4y8cumdAZTpx8KTYSdMOrOPwIbWdLod9uRRXjA=
+X-Google-Smtp-Source: AGHT+IG+6b89cpImxJmrOaW3MVd6rnk2CHr3D6NgKu6BSXm1UL0OTRD6ED9+t9IyEaeYbLmjH6fNCA==
+X-Received: by 2002:a17:907:7008:b0:a29:51ca:9df with SMTP id
+ wr8-20020a170907700800b00a2951ca09dfmr2170014ejb.148.1705989006144; 
+ Mon, 22 Jan 2024 21:50:06 -0800 (PST)
 Received: from [192.168.69.100] ([176.187.194.78])
  by smtp.gmail.com with ESMTPSA id
- m35-20020a05600c3b2300b0040e541ddcb1sm41322468wms.33.2024.01.22.21.45.46
+ th7-20020a1709078e0700b00a2fd84bc421sm3224500ejc.83.2024.01.22.21.50.05
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 22 Jan 2024 21:45:46 -0800 (PST)
-Message-ID: <d2ddf8af-4d3b-4c0b-832b-1ba6da0ed199@linaro.org>
-Date: Tue, 23 Jan 2024 06:45:45 +0100
+ Mon, 22 Jan 2024 21:50:05 -0800 (PST)
+Message-ID: <17bd56cb-8e29-47e8-939e-af5dfca55138@linaro.org>
+Date: Tue, 23 Jan 2024 06:50:04 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] util/uri: Remove the unused "target" argument from
- uri_string_unescape()
+Subject: Re: [PATCH 5/5] util/uri: Remove unused macros ISA_RESERVED() and
+ ISA_GEN_DELIM()
 Content-Language: en-US
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>
 Cc: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
 References: <20240122191753.103118-1-thuth@redhat.com>
- <20240122191753.103118-2-thuth@redhat.com>
+ <20240122191753.103118-6-thuth@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240122191753.103118-2-thuth@redhat.com>
+In-Reply-To: <20240122191753.103118-6-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -85,18 +84,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jan 2024 05:45:52 -0000
+X-List-Received-Date: Tue, 23 Jan 2024 05:50:11 -0000
 
 On 22/1/24 20:17, Thomas Huth wrote:
-> All callers pass NULL as target, so we can simplify the code by
-> dropping this parameter.
+> They are not used anywhere, so there's no need to keep them around.
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->   include/qemu/uri.h |  2 +-
->   util/uri.c         | 32 ++++++++++++++------------------
->   2 files changed, 15 insertions(+), 19 deletions(-)
+>   util/uri.c | 13 -------------
+>   1 file changed, 13 deletions(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+(could be reordered as patch 1 to clarify it is not
+  an effect of the uri_string_foo() cleanups)
 
