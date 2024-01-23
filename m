@@ -1,85 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rS1kI-0002mx-1z
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jan 2024 16:22:19 -0500
+	id 1rS9bh-0005pA-3q
+	for mharc-qemu-trivial@gnu.org; Tue, 23 Jan 2024 00:45:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1rS1kD-0002m9-V3; Mon, 22 Jan 2024 16:22:13 -0500
-Received: from mail.weilnetz.de ([37.120.169.71]
- helo=mail.v2201612906741603.powersrv.de)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rS9bb-0005ok-M7
+ for qemu-trivial@nongnu.org; Tue, 23 Jan 2024 00:45:52 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
- id 1rS1kA-0003td-Kd; Mon, 22 Jan 2024 16:22:13 -0500
-Received: from [192.168.178.59] (p5b1519e5.dip0.t-ipconnect.de [91.21.25.229])
- (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id 7DB1DDA0F70;
- Mon, 22 Jan 2024 22:22:06 +0100 (CET)
-Content-Type: multipart/alternative;
- boundary="------------6YLkwTRtHQJAGBUQJcV7ph74"
-Message-ID: <8c728584-8bf2-4122-bc2b-a8063d89fbe8@weilnetz.de>
-Date: Mon, 22 Jan 2024 22:22:05 +0100
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rS9bY-00082Q-Ls
+ for qemu-trivial@nongnu.org; Tue, 23 Jan 2024 00:45:49 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-40e5afc18f5so43129315e9.3
+ for <qemu-trivial@nongnu.org>; Mon, 22 Jan 2024 21:45:48 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1705988747; x=1706593547; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=u0CzfWu6++n+Y4l47J4vwGZsnDw6KzO9m/V4A2BAU7A=;
+ b=HncPOaR+liyX++kMViANrpjhmfqL81sBWNuQ0JlaD1ZC2YNpKLHQydtCgACoa+YtCt
+ PUIqAwklPRRLQ4HeDx0u/lIxk4K4t1uCnAje94CWlGXfDE5nr3+37gHto0Limv8bkm8g
+ AkdDdGMMeQC/jtxpUDCJn/pyAdY3Po2ZpLZknn00bByI9nGJviDRZxDub8rWnyw3acgc
+ MpUBnt3NCCmQCR8ZUyecXF6GfzEVE63psnVFkazcWs/MlJ9loPkgCIGBccAYqufHLZBD
+ Vu98duI8orEhj2j4H0tH9CQkzXxBaMVkYsahllxuw0s+K3T6vDwPh5NK2BuubQcDArPg
+ dIgA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1705988747; x=1706593547;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=u0CzfWu6++n+Y4l47J4vwGZsnDw6KzO9m/V4A2BAU7A=;
+ b=qn5sfSwNsNp68nraULgSR4aqNIIeH1sTB4xA8U6S3z4HpwJdBCrwx8fd8hVZlrEkkE
+ Yv53ionSWZ7uOD5MJ3SsgK/tNfE69Z5Jr7+/emiXNKssREPpN7a/vMTmV2kZxq+Holjj
+ styzfqj2iXgU9NBv/zUEhcBeuYtxDkA4oNERg72F3/FJbg4442SeXZ3DZZ30Lc+qStkH
+ d29I0kmGy0WYBPbF9Dn3bTUoeW0LRLSe9Py316/Y6g5yckR1T5cRl1SHEGuckREFYNQM
+ EXgHsW3xQwma2Uik68B7YgdaNFOAXf8wOOcJ0308Vn8ITtuiagoiNRleUwrG9UBzneL+
+ ma7Q==
+X-Gm-Message-State: AOJu0Yw+BiTV4F134V+tYO8SCKYqx+BAm83N0FmPmn5tdiVyT1B0xKbr
+ 9VUCL4oiMWZKtLSRnn2WvCEiTkLxbRBnxAl3bYBsxac8KLNpew3ALg9qZbx+ttBcuwbQ9/nXZ1W
+ cotU=
+X-Google-Smtp-Source: AGHT+IHYWRmWtBvWk5R6JVo58e4fkJaafnFf98triQDL1mkHjxQgXUd1vXnhYk0NICzL24nTQpcc3g==
+X-Received: by 2002:a1c:790f:0:b0:40e:45b0:557f with SMTP id
+ l15-20020a1c790f000000b0040e45b0557fmr169981wme.140.1705988747064; 
+ Mon, 22 Jan 2024 21:45:47 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.194.78])
+ by smtp.gmail.com with ESMTPSA id
+ m35-20020a05600c3b2300b0040e541ddcb1sm41322468wms.33.2024.01.22.21.45.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Jan 2024 21:45:46 -0800 (PST)
+Message-ID: <d2ddf8af-4d3b-4c0b-832b-1ba6da0ed199@linaro.org>
+Date: Tue, 23 Jan 2024 06:45:45 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] util/uri: Simplify uri_string_unescape()
+Subject: Re: [PATCH 1/5] util/uri: Remove the unused "target" argument from
+ uri_string_unescape()
+Content-Language: en-US
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-trivial@nongnu.org
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
 References: <20240122191753.103118-1-thuth@redhat.com>
- <20240122191753.103118-3-thuth@redhat.com>
-From: Stefan Weil <sw@weilnetz.de>
-Autocrypt: addr=sw@weilnetz.de; keydata=
- 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
-In-Reply-To: <20240122191753.103118-3-thuth@redhat.com>
-Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
- helo=mail.v2201612906741603.powersrv.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ <20240122191753.103118-2-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240122191753.103118-2-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,249 +85,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jan 2024 21:22:14 -0000
+X-List-Received-Date: Tue, 23 Jan 2024 05:45:52 -0000
 
-This is a multi-part message in MIME format.
---------------6YLkwTRtHQJAGBUQJcV7ph74
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-
-Am 22.01.24 um 20:17 schrieb Thomas Huth:
-
-> uri_string_unescape() basically does the same as the glib function
-> g_uri_unescape_string(), with just an additional length parameter.
-> So we can simplify this function a lot by limiting the length with
-> g_strndup() first and then by calling g_uri_unescape_string() instead
-> of walking through the string manually.
->
-> Suggested-by: Stefan Weil<stefan.weil@weilnetz.de>
-
-Can my e-mail address be replaced by another one (sw@weilnetz.de)?
-
-> Signed-off-by: Thomas Huth<thuth@redhat.com>
+On 22/1/24 20:17, Thomas Huth wrote:
+> All callers pass NULL as target, so we can simplify the code by
+> dropping this parameter.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->   util/uri.c | 49 +++----------------------------------------------
->   1 file changed, 3 insertions(+), 46 deletions(-)
->
-> diff --git a/util/uri.c b/util/uri.c
-> index 33b6c7214e..2a75f535ba 100644
-> --- a/util/uri.c
-> +++ b/util/uri.c
-> @@ -1561,15 +1561,6 @@ done_cd:
->       return 0;
->   }
->   
-> -static int is_hex(char c)
-> -{
-> -    if (((c >= '0') && (c <= '9')) || ((c >= 'a') && (c <= 'f')) ||
-> -        ((c >= 'A') && (c <= 'F'))) {
-> -        return 1;
-> -    }
-> -    return 0;
-> -}
-> -
->   /**
->    * uri_string_unescape:
->    * @str:  the string to unescape
-> @@ -1585,8 +1576,7 @@ static int is_hex(char c)
->    */
->   char *uri_string_unescape(const char *str, int len)
->   {
-> -    char *ret, *out;
-> -    const char *in;
-> +    g_autofree char *lstr = NULL;
+>   include/qemu/uri.h |  2 +-
+>   util/uri.c         | 32 ++++++++++++++------------------
+>   2 files changed, 15 insertions(+), 19 deletions(-)
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Is it necessary to assign NULL? It does not look so.
-
-
->   
->       if (str == NULL) {
->           return NULL;
-> @@ -1594,42 +1584,9 @@ char *uri_string_unescape(const char *str, int len)
->       if (len <= 0) {
->           len = strlen(str);
->       }
-> -    if (len < 0) {
-> -        return NULL;
-> -    }
-> -
-> -    ret = g_malloc(len + 1);
-> +    lstr = g_strndup(str, len);
->   
-> -    in = str;
-> -    out = ret;
-> -    while (len > 0) {
-> -        if ((len > 2) && (*in == '%') && (is_hex(in[1])) && (is_hex(in[2]))) {
-> -            in++;
-> -            if ((*in >= '0') && (*in <= '9')) {
-> -                *out = (*in - '0');
-> -            } else if ((*in >= 'a') && (*in <= 'f')) {
-> -                *out = (*in - 'a') + 10;
-> -            } else if ((*in >= 'A') && (*in <= 'F')) {
-> -                *out = (*in - 'A') + 10;
-> -            }
-> -            in++;
-> -            if ((*in >= '0') && (*in <= '9')) {
-> -                *out = *out * 16 + (*in - '0');
-> -            } else if ((*in >= 'a') && (*in <= 'f')) {
-> -                *out = *out * 16 + (*in - 'a') + 10;
-> -            } else if ((*in >= 'A') && (*in <= 'F')) {
-> -                *out = *out * 16 + (*in - 'A') + 10;
-> -            }
-> -            in++;
-> -            len -= 3;
-> -            out++;
-> -        } else {
-> -            *out++ = *in++;
-> -            len--;
-> -        }
-> -    }
-> -    *out = 0;
-> -    return ret;
-> +    return g_uri_unescape_string(lstr, NULL);
->   }
->   
->   /**
-
-
-Thank you.
-
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-
-
---------------6YLkwTRtHQJAGBUQJcV7ph74
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  </head>
-  <body>
-    <p>Am 22.01.24 um 20:17 schrieb Thomas Huth:</p>
-    <blockquote type="cite"
-      cite="mid:20240122191753.103118-3-thuth@redhat.com">
-      <pre class="moz-quote-pre" wrap="">uri_string_unescape() basically does the same as the glib function
-g_uri_unescape_string(), with just an additional length parameter.
-So we can simplify this function a lot by limiting the length with
-g_strndup() first and then by calling g_uri_unescape_string() instead
-of walking through the string manually.
-
-Suggested-by: Stefan Weil <a class="moz-txt-link-rfc2396E" href="mailto:stefan.weil@weilnetz.de">&lt;stefan.weil@weilnetz.de&gt;</a></pre>
-    </blockquote>
-    <br>
-    <p>Can my e-mail address be replaced by another one
-      (<a class="moz-txt-link-abbreviated" href="mailto:sw@weilnetz.de">sw@weilnetz.de</a>)?<br>
-    </p>
-    <p><span style="white-space: pre-wrap">
-</span></p>
-    <blockquote type="cite"
-      cite="mid:20240122191753.103118-3-thuth@redhat.com">
-      <pre class="moz-quote-pre" wrap="">Signed-off-by: Thomas Huth <a class="moz-txt-link-rfc2396E" href="mailto:thuth@redhat.com">&lt;thuth@redhat.com&gt;</a>
----
- util/uri.c | 49 +++----------------------------------------------
- 1 file changed, 3 insertions(+), 46 deletions(-)
-
-diff --git a/util/uri.c b/util/uri.c
-index 33b6c7214e..2a75f535ba 100644
---- a/util/uri.c
-+++ b/util/uri.c
-@@ -1561,15 +1561,6 @@ done_cd:
-     return 0;
- }
- 
--static int is_hex(char c)
--{
--    if (((c &gt;= '0') &amp;&amp; (c &lt;= '9')) || ((c &gt;= 'a') &amp;&amp; (c &lt;= 'f')) ||
--        ((c &gt;= 'A') &amp;&amp; (c &lt;= 'F'))) {
--        return 1;
--    }
--    return 0;
--}
--
- /**
-  * uri_string_unescape:
-  * @str:  the string to unescape
-@@ -1585,8 +1576,7 @@ static int is_hex(char c)
-  */
- char *uri_string_unescape(const char *str, int len)
- {
--    char *ret, *out;
--    const char *in;
-+    g_autofree char *lstr = NULL;</pre>
-    </blockquote>
-    <p><br>
-    </p>
-    <p>Is it necessary to assign NULL? It does not look so.<br>
-    </p>
-    <p><br>
-    </p>
-    <blockquote type="cite"
-      cite="mid:20240122191753.103118-3-thuth@redhat.com">
-      <pre class="moz-quote-pre" wrap="">
- 
-     if (str == NULL) {
-         return NULL;
-@@ -1594,42 +1584,9 @@ char *uri_string_unescape(const char *str, int len)
-     if (len &lt;= 0) {
-         len = strlen(str);
-     }
--    if (len &lt; 0) {
--        return NULL;
--    }
--
--    ret = g_malloc(len + 1);
-+    lstr = g_strndup(str, len);
- 
--    in = str;
--    out = ret;
--    while (len &gt; 0) {
--        if ((len &gt; 2) &amp;&amp; (*in == '%') &amp;&amp; (is_hex(in[1])) &amp;&amp; (is_hex(in[2]))) {
--            in++;
--            if ((*in &gt;= '0') &amp;&amp; (*in &lt;= '9')) {
--                *out = (*in - '0');
--            } else if ((*in &gt;= 'a') &amp;&amp; (*in &lt;= 'f')) {
--                *out = (*in - 'a') + 10;
--            } else if ((*in &gt;= 'A') &amp;&amp; (*in &lt;= 'F')) {
--                *out = (*in - 'A') + 10;
--            }
--            in++;
--            if ((*in &gt;= '0') &amp;&amp; (*in &lt;= '9')) {
--                *out = *out * 16 + (*in - '0');
--            } else if ((*in &gt;= 'a') &amp;&amp; (*in &lt;= 'f')) {
--                *out = *out * 16 + (*in - 'a') + 10;
--            } else if ((*in &gt;= 'A') &amp;&amp; (*in &lt;= 'F')) {
--                *out = *out * 16 + (*in - 'A') + 10;
--            }
--            in++;
--            len -= 3;
--            out++;
--        } else {
--            *out++ = *in++;
--            len--;
--        }
--    }
--    *out = 0;
--    return ret;
-+    return g_uri_unescape_string(lstr, NULL);
- }
- 
- /**
-</pre>
-    </blockquote>
-    <p><br>
-    </p>
-    <p>Thank you.<br>
-    </p>
-    <p>Reviewed-by: Stefan Weil <a class="moz-txt-link-rfc2396E"
-        href="mailto:sw@weilnetz.de">&lt;sw@weilnetz.de&gt;</a> <br>
-    </p>
-    <p><br>
-    </p>
-  </body>
-</html>
-
---------------6YLkwTRtHQJAGBUQJcV7ph74--
 
