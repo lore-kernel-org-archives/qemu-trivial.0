@@ -1,81 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rSOFZ-0008VH-7I
-	for mharc-qemu-trivial@gnu.org; Tue, 23 Jan 2024 16:24:06 -0500
+	id 1rSW37-0006m3-2J
+	for mharc-qemu-trivial@gnu.org; Wed, 24 Jan 2024 00:43:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rSOFN-0008UH-Ml
- for qemu-trivial@nongnu.org; Tue, 23 Jan 2024 16:23:54 -0500
-Received: from mail-pf1-x42e.google.com ([2607:f8b0:4864:20::42e])
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1rSW35-0006lM-Df; Wed, 24 Jan 2024 00:43:43 -0500
+Received: from mail.weilnetz.de ([37.120.169.71]
+ helo=mail.v2201612906741603.powersrv.de)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rSOFI-0006hw-Ao
- for qemu-trivial@nongnu.org; Tue, 23 Jan 2024 16:23:52 -0500
-Received: by mail-pf1-x42e.google.com with SMTP id
- d2e1a72fcca58-6dbb003be79so4169866b3a.0
- for <qemu-trivial@nongnu.org>; Tue, 23 Jan 2024 13:23:47 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706045027; x=1706649827; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=LKS8HF1IzMzN3IpYc7t40qCt+rc8/FF/9zQ1oVgE2IA=;
- b=SwinIda5s8rC16zi7wOsos8i6Ovtuoia4IKhRNGs9DYATUQIdxJOPeMYDecd93XnZg
- 1sve77LFp8pfAJyJFKGQjCbjUdST9aCSbBGfAaPiN3pL02Rye+EBteAVT2pT16tvkhu2
- wB+jRFYsocuZP43bbc+ND2TvoYJtJ5XAd2sj2p0xvpRWULNaDw4c3y4gJFIrI7qktZeQ
- WXGCE3kPFBviON0sCOjyEQk9jPrRNGk+PURj0Z+67Towh36P8rWBbBbypR9VuqYdZJ60
- Xh95M3w5NYe1+cvW/fTXVjcvaeHLjgScgh83zOZ0gwoEvRUECy6aI4AVxHKPvCWOyp1o
- d0Vg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706045027; x=1706649827;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=LKS8HF1IzMzN3IpYc7t40qCt+rc8/FF/9zQ1oVgE2IA=;
- b=eVgKjr1qw5htQSx/BtGgMI+6ppbWOAO21wG7nC/YbRL0bll907PpLjRSlPtlI+OYTW
- LXQMSspHL8REl2UYkJkZVhiBi//4QHNHZmJJDYaYjDfWAfDldsk108W3G+MWEdMtPALL
- SpBKqzgZyAmz2loHTT3sp0+kbyltohINDDLec9uJyGeiXYEgnDcEaQZKEq23if5YTS4R
- aiPg9fKL1b6CnuzO65L+HK0pB9fRGWr5wy3J7N4uhcUbO9L6QLp5JqViKMH8rD6YCXqK
- XRaTfgSju7dJEMnyNaD2n9HBfEXmVYELAzFpJdYvZt6O9GKCv0QWmdGbdB/RVzWoevbU
- v3Dw==
-X-Gm-Message-State: AOJu0YzJntaFy4D0ystal84MCHOTpRZe3g2LozudlThHikWCUBLEZLkj
- OICX3Npj2RzfInyC9Dh5LlVOCr8ht1SFABev/RmFP1l5qU9jFstrWEAnbpNW7I0=
-X-Google-Smtp-Source: AGHT+IHRpx2kfw3LdTM25czFKiI2D+s+k/dVh32cWNDu47aUhvl+YXx+YCT5hXbr0OloOfujVmlgOQ==
-X-Received: by 2002:a05:6a20:9f4f:b0:19b:46c7:c986 with SMTP id
- ml15-20020a056a209f4f00b0019b46c7c986mr304935pzb.16.1706045026709; 
- Tue, 23 Jan 2024 13:23:46 -0800 (PST)
-Received: from ?IPV6:2001:44b8:2176:c800:dd1:291f:3c3c:2485?
- (2001-44b8-2176-c800-0dd1-291f-3c3c-2485.static.ipv6.internode.on.net.
- [2001:44b8:2176:c800:dd1:291f:3c3c:2485])
- by smtp.gmail.com with ESMTPSA id
- i15-20020a63cd0f000000b005ce6b79ab6asm10655125pgg.82.2024.01.23.13.23.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 23 Jan 2024 13:23:46 -0800 (PST)
-Message-ID: <1ba077ad-6959-4edd-b08a-24c5145c1c54@linaro.org>
-Date: Wed, 24 Jan 2024 07:23:39 +1000
+ (Exim 4.90_1) (envelope-from <sw@weilnetz.de>)
+ id 1rSW33-0000MC-FI; Wed, 24 Jan 2024 00:43:43 -0500
+Received: from [192.168.178.59] (p5b1519e5.dip0.t-ipconnect.de [91.21.25.229])
+ (using TLSv1.3 with cipher TLS_AES_128_GCM_SHA256 (128/128 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTPSA id F2728DA0DC3;
+ Wed, 24 Jan 2024 06:43:36 +0100 (CET)
+Message-ID: <3e20bc72-bb85-4b65-8e62-3b9ee44cb83e@weilnetz.de>
+Date: Wed, 24 Jan 2024 06:43:36 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 0/4] util/uri: Simplify the code, remove unused
- functions
+Subject: Re: [PATCH v2 1/4] util/uri: Remove uri_string_unescape()
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
  Paolo Bonzini <pbonzini@redhat.com>
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org,
- qemu-block@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-block@nongnu.org
 References: <20240123182247.432642-1-thuth@redhat.com>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240123182247.432642-1-thuth@redhat.com>
+ <20240123182247.432642-2-thuth@redhat.com>
+From: Stefan Weil <sw@weilnetz.de>
+Autocrypt: addr=sw@weilnetz.de; keydata=
+ xsFNBFXCNBcBEACUbHx9FWsS1ATrhLGAS+Nc6bFQHPR3CpUQ4v++RiMg25bF6Ov1RsYEcovI
+ 0DXGh6Ma+l6dRlvUXV8tMvNwqghDUr5KY7LN6tgcFKjBbXdv9VlKiWiMLKBrARcFKxx1sfLp
+ 1P8RiaUdKsgy2Hq4T1PPy9ENTL1/FBG6P/Rw0rO9zOB+yNHcRJ5diDnERbi3x7qoaPUra2Ig
+ lmQk/uxXKC0aNIhpNLNiQ+YpwTUN9q3eG6B9/3CG8RGtFzH9vDPlLvtUX+01a2gCifTi3iH3
+ 8EEK8ACXIRs2dszlxMneKTvflXfvyCM1O+59wGcICQxltxLLhHSCJjOQyWdR2JUtn//XjVWM
+ mf6bBT7Imx3DhhfFRlA+/Lw9Zah66DJrZgiV0LqoN/2f031TzD3FCBiGQEMC072MvSQ1DdJN
+ OiRE1iWO0teLOxaFSbvJS9ij8CFSQQTnSVZs0YXGBal+1kMeaKo9sO4tkaAR2190IlMNanig
+ CTJfeFqxzZkoki378grSHdGUTGKfwNPflTOA6Pw6xuUcxW55LB3lBsPqb0289P8o9dTR7582
+ e6XTkpzqe/z/fYmfI9YXIjGY8WBMRbsuQA30JLq1/n/zwxAOr2P9y4nqTMMgFOtQS8w4G46K
+ UMY/5IspZp2VnPwvazUo2zpYiUSLo1hFHx2jrePYNu2KLROXpwARAQABzRxTdGVmYW4gV2Vp
+ bCA8c3dAd2VpbG5ldHouZGU+wsF6BBMBCAAkAhsDBQsJCAcDBRUKCQgLBRYCAwEAAh4BAheA
+ BQJV04LlAhkBAAoJEOCMIdVndFCtP5QP/1U8yWZzHeHufRFxtMsK1PERiLuKyGRH2oE5NWVc
+ 5QQHZZ2ypXu53o2ZbZxmdy8+4lXiPWWwYVqto3V7bPaMTvQhIT0I3c3ZEZsvwyEEE6QdRs52
+ haZwX+TzNMQ5mOePdM2m4WqO0oU7YHU2WFf54MBmAGtj3FAQEAlZAaMiJs2aApw/4t35ICL1
+ Sb0FY8d8lKBbIFOAaFfrlQTC3y8eMTk1QxOVtdXpRrOl6OE0alWn97NRqeZlBm0P+BEvdgTP
+ Qt+9rxbe4ulgKME2LkbDhLqf0m2+xMXb7T4LiHbQYnnWKGZyogpFaw3PuRVd9m8uxx1F8b4U
+ jNzI9x2Ez5LDv8NHpSY0LGwvVmkgELYbcbyiftbuw81gJuM7k4IW5GR85kTH6y/Sq6JNaI4p
+ 909IK8X4eeoCkAqEVmDOo1D5DytgxIV/PErrin82OIDXLENzOWfPPtUTO+H7qUe80NS2HLPG
+ IveYSjuYKBB6n2JhPkUD7xxMEdh5Ukqi1WIBSV4Tuk3/ubHajP5bqg4QP3Wo1AyICX09A1QQ
+ DajtMkyxXhYxr826EGcRD2WUUprGNYwaks4YiPuvOAJxSYprKWT6UDHzE3S8u4uZZm9H8cyg
+ Fa3pysJwTmbmrBAP1lMolwXHky60dPnKPmFyArGC0utAH7QELXzBybnE/vSNttNT1D+HzsFN
+ BFXcnj0BEAC32cCu2MWeqZEcvShjkoKsXk42mHrGbeuh/viVn8JOQbTO706GZtazoww2weAz
+ uVEYhwqi7u9RATz9MReHf7R5F0KIRhc/2NhNNeixT/7L+E5jffH1LD+0IQdeLPoz6unvg7U/
+ 7OpdKWbHzPM3Lfd0N1dRP5sXULpjtYQKEgiOU58sc4F5rM10KoPFEMz8Ip4j9RbH/CbTPUM0
+ S4PxytRciB3Fjd0ECbVsErTjX7cZc/yBgs3ip7BPVWgbflhrc+utML/MwC6ZqCOIXf/U0ICY
+ fp5I7PDbUSWgMFHvorWegMYJ9EzZ2nTvytL8E75C2U3j5RZAuQH5ysfGpdaTS76CRrYDtkEc
+ ViTL+hRUgrX9qvqzCdNEePbQZr6u6TNx3FBEnaTAZ5GuosfUk7ynvam2+zAzLNU+GTywTZL2
+ WU+tvOePp9z1/mbLnH2LkWHgy3bPu77AFJ1yTbBXl5OEQ/PtTOJeC1urvgeNru26hDFSFyk4
+ gFcqXxswu2PGU7tWYffXZXN+IFipCS718eDcT8eL66ifZ8lqJ8Vu5WJmp9mr1spP9RYbT7Rw
+ pzZ3iiz7e7AZyOtpSMIVJeYZTbtiqJbyN4zukhrTdCgCFYgf0CkA5UGpYXp2sXPr+gVxKX2p
+ tj/gid4n95vR7KMeWV6DJ0YS4hKGtdhkuJCpJfjKP/e8TwARAQABwsFfBBgBCAAJBQJV3J49
+ AhsMAAoJEOCMIdVndFCtYRoQAJOu3RZTEvUBPoFqsnd849VmOKKg77cs+HD3xyLtp95JwQrz
+ hwa/4ouDFrC86jt1vARfpVx5C8nQtNnWhg+5h5kyOIbtB1/27CCTdXAd/hL2k3GyrJXEc+i0
+ 31E9bCqgf2KGY7+aXu4LeAfRIWJT9FGVzdz1f+77pJuRIRRmtSs8VAond2l+OcDdEI9Mjd9M
+ qvyPJwDkDkDvsNptrcv4xeNzvX+2foxkJmYru6dJ+leritsasiAxacUowGB5E41RZEUg6bmV
+ F4SMseIAEKWLy3hPGvYBOzADhq2YLgnM/wn9Y9Z7bEMy+w5e75saBbkFI7TncxDPUnIl/UTE
+ KU1ORi5WWbvXYkUTtfNzZyD0/v3oojcIoZvK1OlpOtXHdlqOodjXF9nLe8eiVHyl8ZnzFxhe
+ EW2QPvX8FLKqmSs9W9saQtk6bhv9LNYIYINjH3EEH/+bbmV+ln4O7a73Wm8L3tnpC3LmdGn2
+ Rm8B6J2ZK6ci1TRDiMpCUWefpnIuE+TibC5VJR5zx0Yh11rxxBFob8mWktRmLZyeEoCcZoBo
+ sbJxD80QxWO03zPpkcJ7d4BrVsQ/BJkBtEe4Jn4iqHqA/OcrzwuEZSv+/MdgoqfblBZhDusm
+ LYfVy7wFDeVClG6eQIiK2EnmDChLRkVIQzbkV0iG+NJVVJHLGK7/OsO47+zq
+In-Reply-To: <20240123182247.432642-2-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x42e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=sw@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,17 +91,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 23 Jan 2024 21:23:56 -0000
+X-List-Received-Date: Wed, 24 Jan 2024 05:43:44 -0000
 
-On 1/24/24 04:22, Thomas Huth wrote:
-> Thomas Huth (4):
->    util/uri: Remove uri_string_unescape()
->    util/uri: Remove unused functions uri_resolve() and
->      uri_resolve_relative()
->    util/uri: Remove the uri_string_escape() function
->    util/uri: Remove unused macros ISA_RESERVED() and ISA_GEN_DELIM()
+Am 23.01.24 um 19:22 schrieb Thomas Huth:
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> uri_string_unescape() basically does the same as the glib function
+> g_uri_unescape_segment(). So we can get rid of our implementation
+> completely by simply using the glib function instead.
+>
+> Suggested-by: Stefan Weil <sw@weilnetz.de> [g_uri_unescape_string()]
+> Suggested-by: Paolo Bonzini <pbonzini@redhat.com> [g_uri_unescape_segment()]
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   include/qemu/uri.h |  1 -
+>   util/uri.c         | 97 ++++++----------------------------------------
+>   2 files changed, 11 insertions(+), 87 deletions(-)
+>
 
-r~
+Reviewed-by: Stefan Weil<sw@weilnetz.de>
+
+Thank you, Thomas and Paolo.
+
 
