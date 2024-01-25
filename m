@@ -1,74 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rT2gK-0006zf-2J
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Jan 2024 11:34:24 -0500
+	id 1rT2gG-0006uL-RV
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Jan 2024 11:34:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rT2gE-0006qv-Nv
- for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:18 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1rT2gG-0006tM-28
+ for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:20 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rT2gA-00029o-FT
- for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:18 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-40e5afc18f5so74613395e9.3
- for <qemu-trivial@nongnu.org>; Thu, 25 Jan 2024 08:34:13 -0800 (PST)
+ id 1rT2gB-0002Ah-CF
+ for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:19 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-40e80046264so87435605e9.0
+ for <qemu-trivial@nongnu.org>; Thu, 25 Jan 2024 08:34:14 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706200453; x=1706805253; darn=nongnu.org;
+ d=linaro.org; s=google; t=1706200454; x=1706805254; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=blcIrf8+81pwYQa70vo1vxCRB41hnePR6PPCGf2tfqg=;
- b=VKQ0X4a3q6eQr51QR4ktfoK/MwBKAPj25ylOql2OmMovYeB2gJF8iIcU+Pjsvaro8D
- UaRUxKuzZdEygUmIpVChkjuZtj8fXZtybi6tHKzNpLDfJzl8Wk56VPeT+X03uwZJEGcI
- /HXDwDsmFKjVuHXsggGZjnVjD6qOokp1+FGq096ScrEneJmIZgMXxhuaWVqFNLbBR31z
- T6Gxdrxs76+WbEk4YlxyddDnSBDdaIOwLS64c/mneNDMds8XcHfLRq5KG1/K6twP/BdG
- HK4rumuuqRrFm3yVw3jIhSe2SJ3o0PAUilPdYvJiEYvxmxEuMjsC0z5ylS8J6/DDYYyt
- 6dsQ==
+ bh=3B7RIYSQBA2EJV4QrqnnX0R7U4YmJKg5KsLLI0ApV2U=;
+ b=T2rxg3vkySHMQvphLG/I4yaLExBBr5fNmE7/rVutu47xdMZguAVEbSLUEGu++efIoI
+ RBS6Fdkj3Tlmc/El8IMLrqCpXw1bL1JScnweShUV668uCiX0tq/OtjHhnifE1kCQMJJh
+ BIjUypzLzy9bASl9heFIy7OPsVH2TvDA/Td8Lk10yJt0DY2YszNnK3yM/6XBuU0y+LDn
+ 3+j/jocbfLh4T3SR+3aa1PcyEwxMCv3q0/pp4FLQW+yHLfkXeo/xjBCCzvWhMm43C7t1
+ irBPOCj42nPtEqCNMtZ/rXQyzrteYpwhWyxWYtdc+S4IjBGGb9hYgd7WliyziDY6upe/
+ wArQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706200453; x=1706805253;
+ d=1e100.net; s=20230601; t=1706200454; x=1706805254;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=blcIrf8+81pwYQa70vo1vxCRB41hnePR6PPCGf2tfqg=;
- b=VAmErt7tX/KWsOGUM44Ss4hNuYz8cu7diVXcxd3ieBXEH4LdCnF2BC8nKp/zM5y+ZD
- V/PgWx0UD5DiyZp3lC99OAO80YK5NHBYGznM6/b0aINKSqAaJ35G8+4IezY8qQlRTp2+
- WUFR7tGpMlt+ai260/imseQ3oPavjyqB1ZDtAgcbHB2HuiBWwXw/F1Vm1+PvKtU64xbe
- u0uagRIc8a7N3HT6WzR+TtZtAeJE8DktW0frw37tUtcPMlCtbpz9Yk3YJCkxx54sZJNA
- yqG+/oe/Vgw2KzzgXr70v+L7sKX2IN6TuDbuiBGHAxfjbG6PGVGcRiOmn8DafMB4c3e2
- qwqQ==
-X-Gm-Message-State: AOJu0YzWlKCYd/e+/5RJhpJCoXj69BFi22TrfTD/+XSIDvR6QIAORsV6
- qlhHCFLHQeSwuwVG9/HP6Vz2eIFXbB4Qh5yBg42aqkQ9Cv2MqRkQ9hQKcKEg/oI=
-X-Google-Smtp-Source: AGHT+IEX5+KIpPHhbqC7Ytn3fdJnydoU/IMUMZoFZX7A05hwzjlolN/qp/qq2iUalZGpRlpYGfZuUQ==
-X-Received: by 2002:a05:600c:1d8d:b0:40e:d4d2:f00d with SMTP id
- p13-20020a05600c1d8d00b0040ed4d2f00dmr57837wms.130.1706200453065; 
+ bh=3B7RIYSQBA2EJV4QrqnnX0R7U4YmJKg5KsLLI0ApV2U=;
+ b=kaSg+NGUvTNE6zsK5CN1askXU9gGa9uoXkg/VAAWawkKvRSsUum625VkU3K6O6i+5A
+ xb9FW0kp6eWttsyufC9Z8JdUFWgbWyUfdz5Z0GYJWEXapmoSn0ejuJWWpAmCAAP9xREG
+ nWwlNdOf4Tebje35i9FWgjrkGDqEbC40ZARHT4QmNTxGPclcXWAvwQ0y0A0Yad7sYn3I
+ bRymjZVDlWlSDR7fd0jfgGAQB0k7J8w2rDzOwJsI7QKPChWLKsBX7UTmePKpXUKBMnrj
+ Ov9JApfpdglNI9+ghaxG4dalGI2ljDMm22QrPdJZjj/wn/REPvYlnPGL9iuU/p55a/jk
+ bZ/A==
+X-Gm-Message-State: AOJu0Yww3bumZdnzd0Lw0Qb0F8wiE6XodD8gcOMSvmJdrb2DCwCCsBrz
+ Z5Pszq1MSbsZhCWB6aumN1H7rPu2BmUE0DfhhWPnpIivvbyVWr6RJqmBSwQG8MOprXHYubI9SrZ
+ U
+X-Google-Smtp-Source: AGHT+IHAV+HJ4CQw/CsjJbiEyOWODFMOY+687qWqxl57jwwCUCdZivdKIsMtI/O8/EKLE0uSuKwjLA==
+X-Received: by 2002:a05:600c:4f54:b0:40e:a0fc:6435 with SMTP id
+ m20-20020a05600c4f5400b0040ea0fc6435mr687987wmq.116.1706200453923; 
  Thu, 25 Jan 2024 08:34:13 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- p13-20020a05600c358d00b0040ea875a527sm3122208wmq.26.2024.01.25.08.34.12
+ p13-20020a05600c358d00b0040ea875a527sm3122208wmq.26.2024.01.25.08.34.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jan 2024 08:34:12 -0800 (PST)
+ Thu, 25 Jan 2024 08:34:13 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-Subject: [PATCH 08/10] cxl: Clean up includes
-Date: Thu, 25 Jan 2024 16:34:06 +0000
-Message-Id: <20240125163408.1595135-9-peter.maydell@linaro.org>
+Subject: [PATCH 10/10] misc: Clean up includes
+Date: Thu, 25 Jan 2024 16:34:08 +0000
+Message-Id: <20240125163408.1595135-11-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240125163408.1595135-1-peter.maydell@linaro.org>
 References: <20240125163408.1595135-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,9 +82,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Jan 2024 16:34:18 -0000
+X-List-Received-Date: Thu, 25 Jan 2024 16:34:20 -0000
 
-This commit was created with scripts/clean-includes.
+This commit was created with scripts/clean-includes:
+ ./scripts/clean-includes --git misc net/af-xdp.c plugins/*.c audio/pwaudio.c util/userfaultfd.c
 
 All .c should include qemu/osdep.h first.  The script performs three
 related cleanups:
@@ -96,26 +98,75 @@ related cleanups:
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/cxl/cxl-events.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+These are all cases where files include things osdep already gives them.
+---
+ audio/pwaudio.c    | 1 -
+ net/af-xdp.c       | 1 -
+ plugins/core.c     | 1 -
+ plugins/loader.c   | 1 -
+ util/userfaultfd.c | 1 -
+ 5 files changed, 5 deletions(-)
 
-diff --git a/hw/cxl/cxl-events.c b/hw/cxl/cxl-events.c
-index bee6dfaf148..affcf8a34dd 100644
---- a/hw/cxl/cxl-events.c
-+++ b/hw/cxl/cxl-events.c
-@@ -7,11 +7,9 @@
-  * COPYING file in the top-level directory.
-  */
- 
--#include <stdint.h>
--
+diff --git a/audio/pwaudio.c b/audio/pwaudio.c
+index 3ce5f6507b4..3b14e04fbb0 100644
+--- a/audio/pwaudio.c
++++ b/audio/pwaudio.c
+@@ -11,7 +11,6 @@
  #include "qemu/osdep.h"
-+
- #include "qemu/bswap.h"
--#include "qemu/typedefs.h"
+ #include "qemu/module.h"
+ #include "audio.h"
+-#include <errno.h>
  #include "qemu/error-report.h"
- #include "hw/pci/msi.h"
- #include "hw/pci/msix.h"
+ #include "qapi/error.h"
+ #include <spa/param/audio/format-utils.h>
+diff --git a/net/af-xdp.c b/net/af-xdp.c
+index 6c65028fb00..38e600703a3 100644
+--- a/net/af-xdp.c
++++ b/net/af-xdp.c
+@@ -13,7 +13,6 @@
+ 
+ #include "qemu/osdep.h"
+ #include <bpf/bpf.h>
+-#include <inttypes.h>
+ #include <linux/if_link.h>
+ #include <linux/if_xdp.h>
+ #include <net/if.h>
+diff --git a/plugins/core.c b/plugins/core.c
+index 49588285dd0..ee2fa41af9e 100644
+--- a/plugins/core.c
++++ b/plugins/core.c
+@@ -27,7 +27,6 @@
+ #include "tcg/tcg.h"
+ #include "tcg/tcg-op.h"
+ #include "plugin.h"
+-#include "qemu/compiler.h"
+ 
+ struct qemu_plugin_cb {
+     struct qemu_plugin_ctx *ctx;
+diff --git a/plugins/loader.c b/plugins/loader.c
+index 734c11cae04..9768b78eb6b 100644
+--- a/plugins/loader.c
++++ b/plugins/loader.c
+@@ -33,7 +33,6 @@
+ #ifndef CONFIG_USER_ONLY
+ #include "hw/boards.h"
+ #endif
+-#include "qemu/compiler.h"
+ 
+ #include "plugin.h"
+ 
+diff --git a/util/userfaultfd.c b/util/userfaultfd.c
+index fdff4867e8b..1b2fa949d4d 100644
+--- a/util/userfaultfd.c
++++ b/util/userfaultfd.c
+@@ -18,7 +18,6 @@
+ #include <poll.h>
+ #include <sys/syscall.h>
+ #include <sys/ioctl.h>
+-#include <fcntl.h>
+ 
+ typedef enum {
+     UFFD_UNINITIALIZED = 0,
 -- 
 2.34.1
 
