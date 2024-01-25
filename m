@@ -1,50 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rT2gI-0006va-Lc
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Jan 2024 11:34:22 -0500
+	id 1rT2gK-0006zf-2J
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Jan 2024 11:34:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rT2gD-0006qD-V1
- for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:17 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ id 1rT2gE-0006qv-Nv
+ for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:18 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rT2gA-000296-0p
- for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:17 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-40e490c2115so6041545e9.0
+ id 1rT2gA-00029o-FT
+ for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:18 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-40e5afc18f5so74613395e9.3
  for <qemu-trivial@nongnu.org>; Thu, 25 Jan 2024 08:34:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706200452; x=1706805252; darn=nongnu.org;
+ d=linaro.org; s=google; t=1706200453; x=1706805253; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=5VAtlyKekgyrpcRxglyNDTk+EfBtmZT3jre+RwjFb84=;
- b=YfPmM/ncBRWpFQQOQewrEalxrkMsI0TQYJuG4jH+kWNWimyywcnXMfOphxoWCtvgcr
- Gm/8OCJyTv2hUdwE5YiMnINMcS2S5UoFK6Dwsu5nUnecqMV7TiGB1OJc8om7cH9Ly25U
- ILwdy2UIG+Pjq2GLuhO/U1g/0vHsmPT4PP+0mTWBrRZBdYVoZgiUB5M6PBmYTFwctxhr
- S96ZUCgUzUJCVwxBcy76VqTDZVgALJqgKaHHIyYdqLH0NyAdpiTA3RX6hfVui5dIyBMz
- V5bkNnnUCMX02dJ7+yyKK+Bh9CwWdNYOcCeteg4ZtnZ5m02kjBZUWKs7RaYDa0wzikec
- 08YA==
+ bh=blcIrf8+81pwYQa70vo1vxCRB41hnePR6PPCGf2tfqg=;
+ b=VKQ0X4a3q6eQr51QR4ktfoK/MwBKAPj25ylOql2OmMovYeB2gJF8iIcU+Pjsvaro8D
+ UaRUxKuzZdEygUmIpVChkjuZtj8fXZtybi6tHKzNpLDfJzl8Wk56VPeT+X03uwZJEGcI
+ /HXDwDsmFKjVuHXsggGZjnVjD6qOokp1+FGq096ScrEneJmIZgMXxhuaWVqFNLbBR31z
+ T6Gxdrxs76+WbEk4YlxyddDnSBDdaIOwLS64c/mneNDMds8XcHfLRq5KG1/K6twP/BdG
+ HK4rumuuqRrFm3yVw3jIhSe2SJ3o0PAUilPdYvJiEYvxmxEuMjsC0z5ylS8J6/DDYYyt
+ 6dsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706200452; x=1706805252;
+ d=1e100.net; s=20230601; t=1706200453; x=1706805253;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=5VAtlyKekgyrpcRxglyNDTk+EfBtmZT3jre+RwjFb84=;
- b=Y+WKtimb0GxYueMx4aU77C2J4uDtn9cZFiWp+9t/tk3MtTaFjeShshaA/PFF3NfT4i
- Ph+VPjKpIqkJ4Mjotf9LeAlNrjWT3dof1o3LZXa2fHpQOAZ1jZxJmD8blbZ2xsM8gJqF
- ZftaksKriVWhGWBwyMqscrxUY7QuLpimLFNh3DcfTpceqOM9amX8nF4P2yCJFBiVhZpt
- tIPt48JbMJE37tk9O2GrqjqXFzOdJuaok+EV7EuMD2Qq8omFjstQutWEn+LxSaV2XfzT
- bKC1jpomXWb0ba8Q6GC03jy2bXNmfTXUrNOIdSRJPg36Y+utLlb2L3Cv1ADewCY2Zc3a
- Kpjg==
-X-Gm-Message-State: AOJu0YyHDlhEHm2NVtR1R2JWho9cuudxnvSFyGbsMsq2G4uWzx6V+UM/
- 5EdZo//1rCxq6Rah5zD9s4qrAoM1zNu1EQaLxPeB8xmfSqqWQ+/C6QXpXAzSvlfEIgDrd7xfvmN
- c
-X-Google-Smtp-Source: AGHT+IGl23dbk6M9Zr1YlSPfewofwjrLnGbQ9yoY3iDw1oI4gHjKnf5tvL29+qfxZDhbQmLEXkqjmQ==
-X-Received: by 2002:a05:600c:1d90:b0:40e:c635:331 with SMTP id
- p16-20020a05600c1d9000b0040ec6350331mr42474wms.53.1706200452627; 
- Thu, 25 Jan 2024 08:34:12 -0800 (PST)
+ bh=blcIrf8+81pwYQa70vo1vxCRB41hnePR6PPCGf2tfqg=;
+ b=VAmErt7tX/KWsOGUM44Ss4hNuYz8cu7diVXcxd3ieBXEH4LdCnF2BC8nKp/zM5y+ZD
+ V/PgWx0UD5DiyZp3lC99OAO80YK5NHBYGznM6/b0aINKSqAaJ35G8+4IezY8qQlRTp2+
+ WUFR7tGpMlt+ai260/imseQ3oPavjyqB1ZDtAgcbHB2HuiBWwXw/F1Vm1+PvKtU64xbe
+ u0uagRIc8a7N3HT6WzR+TtZtAeJE8DktW0frw37tUtcPMlCtbpz9Yk3YJCkxx54sZJNA
+ yqG+/oe/Vgw2KzzgXr70v+L7sKX2IN6TuDbuiBGHAxfjbG6PGVGcRiOmn8DafMB4c3e2
+ qwqQ==
+X-Gm-Message-State: AOJu0YzWlKCYd/e+/5RJhpJCoXj69BFi22TrfTD/+XSIDvR6QIAORsV6
+ qlhHCFLHQeSwuwVG9/HP6Vz2eIFXbB4Qh5yBg42aqkQ9Cv2MqRkQ9hQKcKEg/oI=
+X-Google-Smtp-Source: AGHT+IEX5+KIpPHhbqC7Ytn3fdJnydoU/IMUMZoFZX7A05hwzjlolN/qp/qq2iUalZGpRlpYGfZuUQ==
+X-Received: by 2002:a05:600c:1d8d:b0:40e:d4d2:f00d with SMTP id
+ p13-20020a05600c1d8d00b0040ed4d2f00dmr57837wms.130.1706200453065; 
+ Thu, 25 Jan 2024 08:34:13 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
  p13-20020a05600c358d00b0040ea875a527sm3122208wmq.26.2024.01.25.08.34.12
@@ -53,16 +52,16 @@ Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-Subject: [PATCH 07/10] include: Clean up includes
-Date: Thu, 25 Jan 2024 16:34:05 +0000
-Message-Id: <20240125163408.1595135-8-peter.maydell@linaro.org>
+Subject: [PATCH 08/10] cxl: Clean up includes
+Date: Thu, 25 Jan 2024 16:34:06 +0000
+Message-Id: <20240125163408.1595135-9-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240125163408.1595135-1-peter.maydell@linaro.org>
 References: <20240125163408.1595135-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -84,8 +83,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Thu, 25 Jan 2024 16:34:18 -0000
 
-This commit was created with scripts/clean-includes:
- ./scripts/clean-includes --git include include/*/*.h include/*/*/*.h
+This commit was created with scripts/clean-includes.
 
 All .c should include qemu/osdep.h first.  The script performs three
 related cleanups:
@@ -98,90 +96,26 @@ related cleanups:
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
-I hand-checked that all these headers are included only by .c
-files which already have osdep.h included.
----
- include/hw/arm/raspberrypi-fw-defs.h | 1 -
- include/hw/mem/memory-device.h       | 1 -
- include/hw/ppc/spapr_nested.h        | 1 -
- include/hw/xen/xen-hvm-common.h      | 1 -
- include/qemu/qtree.h                 | 1 -
- include/ui/rect.h                    | 2 --
- 6 files changed, 7 deletions(-)
+ hw/cxl/cxl-events.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/include/hw/arm/raspberrypi-fw-defs.h b/include/hw/arm/raspberrypi-fw-defs.h
-index 4551fe7450d..579cf0d5546 100644
---- a/include/hw/arm/raspberrypi-fw-defs.h
-+++ b/include/hw/arm/raspberrypi-fw-defs.h
-@@ -10,7 +10,6 @@
- #ifndef INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_
- #define INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_
- 
--#include "qemu/osdep.h"
- 
- enum rpi_firmware_property_tag {
-     RPI_FWREQ_PROPERTY_END =                           0,
-diff --git a/include/hw/mem/memory-device.h b/include/hw/mem/memory-device.h
-index a1d62cc551a..e0571c8a319 100644
---- a/include/hw/mem/memory-device.h
-+++ b/include/hw/mem/memory-device.h
-@@ -14,7 +14,6 @@
- #define MEMORY_DEVICE_H
- 
- #include "hw/qdev-core.h"
--#include "qemu/typedefs.h"
- #include "qapi/qapi-types-machine.h"
- #include "qom/object.h"
- 
-diff --git a/include/hw/ppc/spapr_nested.h b/include/hw/ppc/spapr_nested.h
-index d3834864764..d312a5d61da 100644
---- a/include/hw/ppc/spapr_nested.h
-+++ b/include/hw/ppc/spapr_nested.h
-@@ -1,7 +1,6 @@
- #ifndef HW_SPAPR_NESTED_H
- #define HW_SPAPR_NESTED_H
- 
--#include "qemu/osdep.h"
- #include "target/ppc/cpu.h"
- 
- /*
-diff --git a/include/hw/xen/xen-hvm-common.h b/include/hw/xen/xen-hvm-common.h
-index 4e9904f1a65..4b1d728f35c 100644
---- a/include/hw/xen/xen-hvm-common.h
-+++ b/include/hw/xen/xen-hvm-common.h
-@@ -1,7 +1,6 @@
- #ifndef HW_XEN_HVM_COMMON_H
- #define HW_XEN_HVM_COMMON_H
- 
--#include "qemu/osdep.h"
- #include "qemu/units.h"
- 
- #include "cpu.h"
-diff --git a/include/qemu/qtree.h b/include/qemu/qtree.h
-index 69fe74b50d0..dc2b14d2582 100644
---- a/include/qemu/qtree.h
-+++ b/include/qemu/qtree.h
-@@ -42,7 +42,6 @@
- #ifndef QEMU_QTREE_H
- #define QEMU_QTREE_H
- 
--#include "qemu/osdep.h"
- 
- #ifdef HAVE_GLIB_WITH_SLICE_ALLOCATOR
- 
-diff --git a/include/ui/rect.h b/include/ui/rect.h
-index 68f05d78a8e..7ebf47ebcdc 100644
---- a/include/ui/rect.h
-+++ b/include/ui/rect.h
-@@ -4,8 +4,6 @@
- #ifndef QEMU_RECT_H
- #define QEMU_RECT_H
+diff --git a/hw/cxl/cxl-events.c b/hw/cxl/cxl-events.c
+index bee6dfaf148..affcf8a34dd 100644
+--- a/hw/cxl/cxl-events.c
++++ b/hw/cxl/cxl-events.c
+@@ -7,11 +7,9 @@
+  * COPYING file in the top-level directory.
+  */
  
 -#include <stdint.h>
--#include <stdbool.h>
- 
- typedef struct QemuRect {
-     int16_t x;
+-
+ #include "qemu/osdep.h"
++
+ #include "qemu/bswap.h"
+-#include "qemu/typedefs.h"
+ #include "qemu/error-report.h"
+ #include "hw/pci/msi.h"
+ #include "hw/pci/msix.h"
 -- 
 2.34.1
 
