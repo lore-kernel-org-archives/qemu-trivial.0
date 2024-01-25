@@ -1,74 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rT2gC-0006oW-Ef
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Jan 2024 11:34:16 -0500
+	id 1rT2gD-0006q0-Rx
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Jan 2024 11:34:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rT2gB-0006kR-01
- for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:15 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ id 1rT2gC-0006oe-IZ
+ for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:16 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rT2g8-00027y-CC
- for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:14 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-40ea5653f6bso72622325e9.3
- for <qemu-trivial@nongnu.org>; Thu, 25 Jan 2024 08:34:11 -0800 (PST)
+ id 1rT2g9-000288-0E
+ for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:16 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-40eb2f392f0so39314275e9.1
+ for <qemu-trivial@nongnu.org>; Thu, 25 Jan 2024 08:34:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=linaro.org; s=google; t=1706200451; x=1706805251; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=YHMUzgkXRP9wZQ4wL9pyKD3XATptA/6sivyW/DCZ/hM=;
- b=bi/pruiCm49nj9ILT+kpStwEwO9eaRdLx3QMegVjbGBUuXzPqMCfY/VLEiowyEi/ah
- sjm69QzKrnK33D0KCaHz2dlnm8r9wKoUQlfX5bFZQo8PYu67wvplJOyTMCYApYLiIU3F
- mtWhegm0KDyHn7H/ZddOJCeua6OtkInuu4ke9tG4Ah2lxjlzZnZzjX70wTRrIn+bJLBx
- AXzfLr4G7M9JTktV8zCTuxKi5ApGRRKwIG8ARVfW9okcIKwAFlTswzlb2BhMKIpOyvua
- RHHchnmSce+JKyWqIwOk+tlkWo1pSgCkvuYOstu1y78n/jB5zoPKoMOaTU4hWflKlgaA
- mpCA==
+ bh=nXb190+lhYx3lCV3waqp1Pgx9RLFbwQo2doe5u6vJo0=;
+ b=jQacrLeElBhY2VsPUmiiTHp7LMo43BnnTLv8I/3I9vB9xIzQC9BYIm3oMJDQ2KzQ5z
+ uuzQMIdctBqFy17glRDaxwFieQwwomoiQzQ2ONqGl49tCUoF5Q8dvaHHXetlY4+ST17P
+ Fffl8iC/E5qOwOxtdV6wnhH5rpcKIWqPR/17p6cDJRMd6uVrkeBVZ1ZqB6GEN31UQ0TQ
+ 3Oq8lAMbVRzm0sneGP2Tjlvi7nXE9cia0Q8zow6cru8kP1zw1ZumcwA7BTlkxUjIUJk2
+ lZIHy+zxxOONCxg05XDIIzjm4S3FbPUlb8G36blFTAr1s9hrcV87klwix2PmsjoP4pxe
+ YguA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
  d=1e100.net; s=20230601; t=1706200451; x=1706805251;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=YHMUzgkXRP9wZQ4wL9pyKD3XATptA/6sivyW/DCZ/hM=;
- b=esUuW3Z37W/pqbeYU/+wzAN0MzMYv+QoVyK9hLV2WhlY6ZfauUWvGBAu/Wf9tT085w
- dwfSJNCjgKiWEOlKg1v0WMfglG4W+ljxcSat+2QSXZin9a33dJCXSC8kKxtp3wH8xIS9
- 9JSWSTndW8JUJrhdoJgvfXgODw/R2lBVphn4gBN3eD9KoQIhWkJ2Po3Kau20zoG+oycl
- sRPwipMlSktmEY6WNEqtTZzshrOD/AJB/Dr/VFKQlKahLejAK73hqSest5VH96fKSBjQ
- SRuLjpK1Gqsv8Im+x4L6qsU5Jm0y74B3myCep/R/oaNs/MHZ7EoK+BoLVlt2G0A4Yj7t
- kfNQ==
-X-Gm-Message-State: AOJu0YzqRYFJPaq+LRJMuLYqEqsc7utfzGRZ32Vnl7o6EMGUQ+9Nee6x
- ZnRmjosq+aDvB7pF4kg2r0o0rMoDkkaPvl3J0s9bL0bKYvsiRkE4eCa5NsBrvh8=
-X-Google-Smtp-Source: AGHT+IEG5L84L9UQXNBAuQGxJwjDbdv6l1TIIMxWTQVW/2Acw35eIfLzZx0nKHSdfcOUsZl6/DYHWQ==
-X-Received: by 2002:a05:600c:22c7:b0:40d:9061:b8 with SMTP id
- 7-20020a05600c22c700b0040d906100b8mr743699wmg.223.1706200450979; 
- Thu, 25 Jan 2024 08:34:10 -0800 (PST)
+ bh=nXb190+lhYx3lCV3waqp1Pgx9RLFbwQo2doe5u6vJo0=;
+ b=HUa7Mf7c6fDBOvdYbAD5pkLSjrudXq/8zBk32MGdc9Dq2Y/zq+DkM1lbIHULQnoblm
+ J5suNQGyNlcYKv9wo8B1bNU1gbF4kEFh+aYeNsXW28TKJdOpR+fJc4CfAyp50wI6IDaM
+ Vemza+0mYFUz9xdqJKtd+YKJzxGFU2MVWy/iztbhOLIjPO7RW+/kAP2qMsgDi+t89wj/
+ 9BpX8aeXu/q7anqe4V4eyP8v2ud4DJaQlJwwOXRB2LxFCy7S2ji3dWmInzywC9YqCHJx
+ s/EaBOYnJPqLF7itnn9Q5GztvSiuPI/s0pCwj5SChKojm5Noxvpm3LreAj4r4EqkgrhT
+ Ie0A==
+X-Gm-Message-State: AOJu0YxULm7jUZ8a3WWkv0kfLmugLoEpKzktwNW3inRS1lnZjhre5RlU
+ fE1gOj9vsBPlCK53TzBDCzzdFGQClLNCMhveeAxsv+4mzewN7mIWNdO4h81KYuNTYRh/7TBEvOW
+ a
+X-Google-Smtp-Source: AGHT+IE0HVnIpPRsMYXIc3iE3qK38WGkTQQ5apxgP2dO9pN94oPR2pBbMSyOI/zQvndLN2N8XGhK+Q==
+X-Received: by 2002:a05:600c:a01:b0:40d:7d87:6730 with SMTP id
+ z1-20020a05600c0a0100b0040d7d876730mr716948wmp.101.1706200451391; 
+ Thu, 25 Jan 2024 08:34:11 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- p13-20020a05600c358d00b0040ea875a527sm3122208wmq.26.2024.01.25.08.34.10
+ p13-20020a05600c358d00b0040ea875a527sm3122208wmq.26.2024.01.25.08.34.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jan 2024 08:34:10 -0800 (PST)
+ Thu, 25 Jan 2024 08:34:11 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-Subject: [PATCH 03/10] disas/riscv: Clean up includes
-Date: Thu, 25 Jan 2024 16:34:01 +0000
-Message-Id: <20240125163408.1595135-4-peter.maydell@linaro.org>
+Subject: [PATCH 04/10] aspeed: Clean up includes
+Date: Thu, 25 Jan 2024 16:34:02 +0000
+Message-Id: <20240125163408.1595135-5-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240125163408.1595135-1-peter.maydell@linaro.org>
 References: <20240125163408.1595135-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,10 +82,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Jan 2024 16:34:15 -0000
+X-List-Received-Date: Thu, 25 Jan 2024 16:34:16 -0000
 
-This commit was created with scripts/clean-includes:
- ./scripts/clean-includes --git disas/riscv disas/riscv*[ch]
+This commit was created with scripts/clean-includes.
 
 All .c should include qemu/osdep.h first.  The script performs three
 related cleanups:
@@ -97,47 +97,48 @@ related cleanups:
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- disas/riscv.h          | 1 -
- disas/riscv-xthead.c   | 1 +
- disas/riscv-xventana.c | 1 +
- 3 files changed, 2 insertions(+), 1 deletion(-)
+ hw/arm/aspeed_eeprom.h     | 1 -
+ tests/qtest/qtest_aspeed.h | 2 --
+ hw/arm/aspeed_eeprom.c     | 1 +
+ 3 files changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/disas/riscv.h b/disas/riscv.h
-index 19e5ed2ce63..16a08e4895c 100644
---- a/disas/riscv.h
-+++ b/disas/riscv.h
+diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+index bbf9e54365b..f08c16ef506 100644
+--- a/hw/arm/aspeed_eeprom.h
++++ b/hw/arm/aspeed_eeprom.h
 @@ -7,7 +7,6 @@
- #ifndef DISAS_RISCV_H
- #define DISAS_RISCV_H
+ #ifndef ASPEED_EEPROM_H
+ #define ASPEED_EEPROM_H
  
 -#include "qemu/osdep.h"
- #include "target/riscv/cpu_cfg.h"
  
- /* types */
-diff --git a/disas/riscv-xthead.c b/disas/riscv-xthead.c
-index 99da679d16c..fcca326d1c3 100644
---- a/disas/riscv-xthead.c
-+++ b/disas/riscv-xthead.c
+ extern const uint8_t tiogapass_bmc_fruid[];
+ extern const size_t tiogapass_bmc_fruid_len;
+diff --git a/tests/qtest/qtest_aspeed.h b/tests/qtest/qtest_aspeed.h
+index 235dfaa186a..d35b0c7cba5 100644
+--- a/tests/qtest/qtest_aspeed.h
++++ b/tests/qtest/qtest_aspeed.h
+@@ -12,8 +12,6 @@
+ #ifndef QTEST_ASPEED_H
+ #define QTEST_ASPEED_H
+ 
+-#include <stdint.h>
+-
+ #include "libqtest.h"
+ 
+ #define AST2600_ASPEED_I2C_BASE_ADDR 0x1e78a000
+diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+index ace5266cec9..daa3d329d10 100644
+--- a/hw/arm/aspeed_eeprom.c
++++ b/hw/arm/aspeed_eeprom.c
 @@ -4,6 +4,7 @@
-  * SPDX-License-Identifier: GPL-2.0-or-later
+  * SPDX-License-Identifier: GPL-2.0-only
   */
  
 +#include "qemu/osdep.h"
- #include "disas/riscv.h"
- #include "disas/riscv-xthead.h"
+ #include "aspeed_eeprom.h"
  
-diff --git a/disas/riscv-xventana.c b/disas/riscv-xventana.c
-index a0224d1fb31..cd694f15f32 100644
---- a/disas/riscv-xventana.c
-+++ b/disas/riscv-xventana.c
-@@ -4,6 +4,7 @@
-  * SPDX-License-Identifier: GPL-2.0-or-later
-  */
- 
-+#include "qemu/osdep.h"
- #include "disas/riscv.h"
- #include "disas/riscv-xventana.h"
- 
+ /* Tiogapass BMC FRU */
 -- 
 2.34.1
 
