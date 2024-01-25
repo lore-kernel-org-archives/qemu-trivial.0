@@ -1,67 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rT2gI-0006vL-Dp
+	id 1rT2gI-0006va-Lc
 	for mharc-qemu-trivial@gnu.org; Thu, 25 Jan 2024 11:34:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rT2gC-0006of-J1
- for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:16 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1rT2gD-0006qD-V1
+ for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:17 -0500
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rT2g9-00028Q-1p
- for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:16 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-40e800461baso82436395e9.3
- for <qemu-trivial@nongnu.org>; Thu, 25 Jan 2024 08:34:12 -0800 (PST)
+ id 1rT2gA-000296-0p
+ for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:17 -0500
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-40e490c2115so6041545e9.0
+ for <qemu-trivial@nongnu.org>; Thu, 25 Jan 2024 08:34:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706200451; x=1706805251; darn=nongnu.org;
+ d=linaro.org; s=google; t=1706200452; x=1706805252; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=mFd2PHs04WAsVFPzXYILuTHvIcBM7o5Jl0UfF56ciXM=;
- b=iNXgz+VD2sE5uEk8nagwImqcml5Korc/70Y4/Vh6zYT3ow9crtIlhiHAGSbd/LTTrN
- AzXmkmVht1w11TGa8QXeBytbXM8h4C+ny804/33NSz764tPKKgq/MRK2t+PFAdX1Hsia
- TBwK4031PqosdEKxJvw3pXcUwcb60LdnaCoT5srsCWUqLyB66LAqhGFi6flNVXjJtSIF
- CSldTdOEXPw307T3QYUKO4K1nJJZo6nuXAssCGSRGGb427NFrvc7WQhfUe5DSxf2H7LF
- i0bs+vdJBUFL912PbgwLO/fQ0RyWNvcLYvccpaD/DIn/aI7Z3Ai1WVlGpYq6ezanFzwO
- hesQ==
+ bh=5VAtlyKekgyrpcRxglyNDTk+EfBtmZT3jre+RwjFb84=;
+ b=YfPmM/ncBRWpFQQOQewrEalxrkMsI0TQYJuG4jH+kWNWimyywcnXMfOphxoWCtvgcr
+ Gm/8OCJyTv2hUdwE5YiMnINMcS2S5UoFK6Dwsu5nUnecqMV7TiGB1OJc8om7cH9Ly25U
+ ILwdy2UIG+Pjq2GLuhO/U1g/0vHsmPT4PP+0mTWBrRZBdYVoZgiUB5M6PBmYTFwctxhr
+ S96ZUCgUzUJCVwxBcy76VqTDZVgALJqgKaHHIyYdqLH0NyAdpiTA3RX6hfVui5dIyBMz
+ V5bkNnnUCMX02dJ7+yyKK+Bh9CwWdNYOcCeteg4ZtnZ5m02kjBZUWKs7RaYDa0wzikec
+ 08YA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706200451; x=1706805251;
+ d=1e100.net; s=20230601; t=1706200452; x=1706805252;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=mFd2PHs04WAsVFPzXYILuTHvIcBM7o5Jl0UfF56ciXM=;
- b=Wa6EdBQWgHK3DYjcPhn/v8dgq+YCraSy/jwQ2rqm05quv68QsFFmOU0tKdUeNuGjHp
- Yaz22/MW/7Bg9etacFT8TctyInlC3QGNH+eoXmnusTKdZXAmiv//3/PHIvmyER77myJb
- khrlD8GLN4pGYjWhcfNO3YVJvcut+qwR8N+iNo08XWDZM7Zxh0WbYFJZ+vINxRnx8NiL
- YLvwGp7iU7QoeWrnHfh1Dmggtcieuv22k32Xfw7X/LHjQQwkHGR0VcyFkEiXm+1EZxB+
- tpl0cDcfDzLlnBjyLueUR74Uu3jt4bFxzJ6Q0o2Oa+6Ey/zKTBEeKJcjSdo3PX2gRx7F
- mm8A==
-X-Gm-Message-State: AOJu0YxM1iyd6+KLNWj8DHR3wisCSxxPZjkLcqXKZ88UZ/NObLJtAB/T
- /g4Uw9MOcP9IBDeHlS9ZD/TmcpxgA1eyS/LSe3T7NZbgiVPcWu9CbOoKORrvdbY=
-X-Google-Smtp-Source: AGHT+IEfTxv3Ir3Fd9NiUMR/z46aC4vFiGRGgIpiqDizGFN+UrRFPsUfPveqhIhTlAdnGknmwpEE1A==
-X-Received: by 2002:a05:600c:470f:b0:40e:d435:b877 with SMTP id
- v15-20020a05600c470f00b0040ed435b877mr2173wmo.112.1706200451794; 
- Thu, 25 Jan 2024 08:34:11 -0800 (PST)
+ bh=5VAtlyKekgyrpcRxglyNDTk+EfBtmZT3jre+RwjFb84=;
+ b=Y+WKtimb0GxYueMx4aU77C2J4uDtn9cZFiWp+9t/tk3MtTaFjeShshaA/PFF3NfT4i
+ Ph+VPjKpIqkJ4Mjotf9LeAlNrjWT3dof1o3LZXa2fHpQOAZ1jZxJmD8blbZ2xsM8gJqF
+ ZftaksKriVWhGWBwyMqscrxUY7QuLpimLFNh3DcfTpceqOM9amX8nF4P2yCJFBiVhZpt
+ tIPt48JbMJE37tk9O2GrqjqXFzOdJuaok+EV7EuMD2Qq8omFjstQutWEn+LxSaV2XfzT
+ bKC1jpomXWb0ba8Q6GC03jy2bXNmfTXUrNOIdSRJPg36Y+utLlb2L3Cv1ADewCY2Zc3a
+ Kpjg==
+X-Gm-Message-State: AOJu0YyHDlhEHm2NVtR1R2JWho9cuudxnvSFyGbsMsq2G4uWzx6V+UM/
+ 5EdZo//1rCxq6Rah5zD9s4qrAoM1zNu1EQaLxPeB8xmfSqqWQ+/C6QXpXAzSvlfEIgDrd7xfvmN
+ c
+X-Google-Smtp-Source: AGHT+IGl23dbk6M9Zr1YlSPfewofwjrLnGbQ9yoY3iDw1oI4gHjKnf5tvL29+qfxZDhbQmLEXkqjmQ==
+X-Received: by 2002:a05:600c:1d90:b0:40e:c635:331 with SMTP id
+ p16-20020a05600c1d9000b0040ec6350331mr42474wms.53.1706200452627; 
+ Thu, 25 Jan 2024 08:34:12 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- p13-20020a05600c358d00b0040ea875a527sm3122208wmq.26.2024.01.25.08.34.11
+ p13-20020a05600c358d00b0040ea875a527sm3122208wmq.26.2024.01.25.08.34.12
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jan 2024 08:34:11 -0800 (PST)
+ Thu, 25 Jan 2024 08:34:12 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-Subject: [PATCH 05/10] acpi: Clean up includes
-Date: Thu, 25 Jan 2024 16:34:03 +0000
-Message-Id: <20240125163408.1595135-6-peter.maydell@linaro.org>
+Subject: [PATCH 07/10] include: Clean up includes
+Date: Thu, 25 Jan 2024 16:34:05 +0000
+Message-Id: <20240125163408.1595135-8-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240125163408.1595135-1-peter.maydell@linaro.org>
 References: <20240125163408.1595135-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -81,10 +82,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Jan 2024 16:34:16 -0000
+X-List-Received-Date: Thu, 25 Jan 2024 16:34:18 -0000
 
 This commit was created with scripts/clean-includes:
- ./scripts/clean-includes --git acpi include/hw/*/*acpi.h hw/*/*acpi.c
+ ./scripts/clean-includes --git include include/*/*.h include/*/*/*.h
 
 All .c should include qemu/osdep.h first.  The script performs three
 related cleanups:
@@ -97,60 +98,90 @@ related cleanups:
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- include/hw/nvram/fw_cfg_acpi.h  | 1 -
- include/hw/virtio/virtio-acpi.h | 1 -
- hw/nvram/fw_cfg-acpi.c          | 1 +
- hw/virtio/virtio-acpi.c         | 1 +
- 4 files changed, 2 insertions(+), 2 deletions(-)
+I hand-checked that all these headers are included only by .c
+files which already have osdep.h included.
+---
+ include/hw/arm/raspberrypi-fw-defs.h | 1 -
+ include/hw/mem/memory-device.h       | 1 -
+ include/hw/ppc/spapr_nested.h        | 1 -
+ include/hw/xen/xen-hvm-common.h      | 1 -
+ include/qemu/qtree.h                 | 1 -
+ include/ui/rect.h                    | 2 --
+ 6 files changed, 7 deletions(-)
 
-diff --git a/include/hw/nvram/fw_cfg_acpi.h b/include/hw/nvram/fw_cfg_acpi.h
-index b6553d86fcb..b39eb0490ff 100644
---- a/include/hw/nvram/fw_cfg_acpi.h
-+++ b/include/hw/nvram/fw_cfg_acpi.h
-@@ -7,7 +7,6 @@
- #ifndef FW_CFG_ACPI_H
- #define FW_CFG_ACPI_H
+diff --git a/include/hw/arm/raspberrypi-fw-defs.h b/include/hw/arm/raspberrypi-fw-defs.h
+index 4551fe7450d..579cf0d5546 100644
+--- a/include/hw/arm/raspberrypi-fw-defs.h
++++ b/include/hw/arm/raspberrypi-fw-defs.h
+@@ -10,7 +10,6 @@
+ #ifndef INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_
+ #define INCLUDE_HW_MISC_RASPBERRYPI_FW_DEFS_H_
  
 -#include "qemu/osdep.h"
- #include "exec/hwaddr.h"
  
- void fw_cfg_acpi_dsdt_add(Aml *scope, const MemMapEntry *fw_cfg_memmap);
-diff --git a/include/hw/virtio/virtio-acpi.h b/include/hw/virtio/virtio-acpi.h
-index 844e102569e..cace2a315f4 100644
---- a/include/hw/virtio/virtio-acpi.h
-+++ b/include/hw/virtio/virtio-acpi.h
-@@ -6,7 +6,6 @@
- #ifndef VIRTIO_ACPI_H
- #define VIRTIO_ACPI_H
+ enum rpi_firmware_property_tag {
+     RPI_FWREQ_PROPERTY_END =                           0,
+diff --git a/include/hw/mem/memory-device.h b/include/hw/mem/memory-device.h
+index a1d62cc551a..e0571c8a319 100644
+--- a/include/hw/mem/memory-device.h
++++ b/include/hw/mem/memory-device.h
+@@ -14,7 +14,6 @@
+ #define MEMORY_DEVICE_H
+ 
+ #include "hw/qdev-core.h"
+-#include "qemu/typedefs.h"
+ #include "qapi/qapi-types-machine.h"
+ #include "qom/object.h"
+ 
+diff --git a/include/hw/ppc/spapr_nested.h b/include/hw/ppc/spapr_nested.h
+index d3834864764..d312a5d61da 100644
+--- a/include/hw/ppc/spapr_nested.h
++++ b/include/hw/ppc/spapr_nested.h
+@@ -1,7 +1,6 @@
+ #ifndef HW_SPAPR_NESTED_H
+ #define HW_SPAPR_NESTED_H
  
 -#include "qemu/osdep.h"
- #include "exec/hwaddr.h"
+ #include "target/ppc/cpu.h"
  
- void virtio_acpi_dsdt_add(Aml *scope, const hwaddr virtio_mmio_base,
-diff --git a/hw/nvram/fw_cfg-acpi.c b/hw/nvram/fw_cfg-acpi.c
-index 4e48baeaa01..58cdcd3121c 100644
---- a/hw/nvram/fw_cfg-acpi.c
-+++ b/hw/nvram/fw_cfg-acpi.c
-@@ -4,6 +4,7 @@
-  *
-  */
+ /*
+diff --git a/include/hw/xen/xen-hvm-common.h b/include/hw/xen/xen-hvm-common.h
+index 4e9904f1a65..4b1d728f35c 100644
+--- a/include/hw/xen/xen-hvm-common.h
++++ b/include/hw/xen/xen-hvm-common.h
+@@ -1,7 +1,6 @@
+ #ifndef HW_XEN_HVM_COMMON_H
+ #define HW_XEN_HVM_COMMON_H
  
-+#include "qemu/osdep.h"
- #include "hw/nvram/fw_cfg_acpi.h"
- #include "hw/acpi/aml-build.h"
+-#include "qemu/osdep.h"
+ #include "qemu/units.h"
  
-diff --git a/hw/virtio/virtio-acpi.c b/hw/virtio/virtio-acpi.c
-index e18cb38bdbe..230a6695001 100644
---- a/hw/virtio/virtio-acpi.c
-+++ b/hw/virtio/virtio-acpi.c
-@@ -4,6 +4,7 @@
-  *
-  */
+ #include "cpu.h"
+diff --git a/include/qemu/qtree.h b/include/qemu/qtree.h
+index 69fe74b50d0..dc2b14d2582 100644
+--- a/include/qemu/qtree.h
++++ b/include/qemu/qtree.h
+@@ -42,7 +42,6 @@
+ #ifndef QEMU_QTREE_H
+ #define QEMU_QTREE_H
  
-+#include "qemu/osdep.h"
- #include "hw/virtio/virtio-acpi.h"
- #include "hw/acpi/aml-build.h"
+-#include "qemu/osdep.h"
  
+ #ifdef HAVE_GLIB_WITH_SLICE_ALLOCATOR
+ 
+diff --git a/include/ui/rect.h b/include/ui/rect.h
+index 68f05d78a8e..7ebf47ebcdc 100644
+--- a/include/ui/rect.h
++++ b/include/ui/rect.h
+@@ -4,8 +4,6 @@
+ #ifndef QEMU_RECT_H
+ #define QEMU_RECT_H
+ 
+-#include <stdint.h>
+-#include <stdbool.h>
+ 
+ typedef struct QemuRect {
+     int16_t x;
 -- 
 2.34.1
 
