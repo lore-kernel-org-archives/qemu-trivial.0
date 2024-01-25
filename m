@@ -1,65 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rT2gB-0006km-9J
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Jan 2024 11:34:15 -0500
+	id 1rT2gC-0006oW-Ef
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Jan 2024 11:34:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rT2g9-0006ge-BU
- for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:13 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1rT2gB-0006kR-01
+ for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:15 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rT2g7-00027b-8m
- for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:13 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-40e76109cdeso77101455e9.0
- for <qemu-trivial@nongnu.org>; Thu, 25 Jan 2024 08:34:10 -0800 (PST)
+ id 1rT2g8-00027y-CC
+ for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:14 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-40ea5653f6bso72622325e9.3
+ for <qemu-trivial@nongnu.org>; Thu, 25 Jan 2024 08:34:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706200449; x=1706805249; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=axVRnZ7u7ABFdbz3e9o0Vpy+ahV/YOtAd/CyIOYX/5o=;
- b=pnodVZ3jhQgtzdzxgyrdFrez1o+4XqXJfmxbv/BzS8x0f0k+qbsWLgy0XHBhhx92Xj
- hNfRyzTzg7/XZID205vkzLDJLGfOuiGE9vlpGB1gW7HliiZnUE5tUYVwEstElx8blE7C
- 5Dm3tJDNJKJzku3iKW8SCRn+e5Bv3eTEutC1JQ+0DacExhrEXmo7Uk+6P0aQY//LYHE6
- u5kmudcXiR/uwp8jlxjgRpr1SI0zrBUs9T6sRNE3BdnW+Dg23rbZJIUk0Uq++SXIkKBA
- tHvjWeeuZlLfu9oE4LAXZY29jKIsqCcehnQHS38CHKH8zgCtryZOpquBnaGI2L01LzqG
- NleA==
+ d=linaro.org; s=google; t=1706200451; x=1706805251; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YHMUzgkXRP9wZQ4wL9pyKD3XATptA/6sivyW/DCZ/hM=;
+ b=bi/pruiCm49nj9ILT+kpStwEwO9eaRdLx3QMegVjbGBUuXzPqMCfY/VLEiowyEi/ah
+ sjm69QzKrnK33D0KCaHz2dlnm8r9wKoUQlfX5bFZQo8PYu67wvplJOyTMCYApYLiIU3F
+ mtWhegm0KDyHn7H/ZddOJCeua6OtkInuu4ke9tG4Ah2lxjlzZnZzjX70wTRrIn+bJLBx
+ AXzfLr4G7M9JTktV8zCTuxKi5ApGRRKwIG8ARVfW9okcIKwAFlTswzlb2BhMKIpOyvua
+ RHHchnmSce+JKyWqIwOk+tlkWo1pSgCkvuYOstu1y78n/jB5zoPKoMOaTU4hWflKlgaA
+ mpCA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706200449; x=1706805249;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=axVRnZ7u7ABFdbz3e9o0Vpy+ahV/YOtAd/CyIOYX/5o=;
- b=NgF1HHuDPmr1NHnjWfXjswTMLvRrunrD72dkJOIpQbUgFY4Jf9TqvvjWPRkq9CO0/x
- 479Cmkn5XpfQQjDrodlkcaGQdm8LcHX71ZES+wkpAdXuTaUyM/59aBWUCX4ex/rxRZng
- 2kI8pCVK+uaaskuZAm96Wv6+UhXPbbO/ShXbSc+rCqKDNMMWpaRZcUnx0yz4IPjmjYXs
- kaaTk76lL7xhJ4tawBTfbGKxg6vJeZw35+5TsEZoVih7y8WlB1dgdIbU3TS0RzQRMKlD
- +569Kvw0hOqw6cgbsqxSYg4is98IUVhHEEqHfYXx+QocaSYAzIOe4w/UrrTU62VqTp7G
- rwlg==
-X-Gm-Message-State: AOJu0YwQaX3M4RRYJsyoUgSMwlEsyVb5nB6qKngR62e5Y8oAtleC8GJr
- 6GFiaT+Kqz19Iyou4fL/6Jq3ybCVXg45j3oeEfG6ho9/5pi5L2xRc/JKL8n22N8tMdx798qwUT3
- 8
-X-Google-Smtp-Source: AGHT+IHeNsvO78xaZnAcEfDzJk5r9vEizQyoKfkse3x8pliftF0ve+dRMZ0xBo1b7uVENlOD/bYuOg==
-X-Received: by 2002:a05:600c:4e4b:b0:40e:d2c1:f21 with SMTP id
- e11-20020a05600c4e4b00b0040ed2c10f21mr544163wmq.122.1706200449571; 
- Thu, 25 Jan 2024 08:34:09 -0800 (PST)
+ d=1e100.net; s=20230601; t=1706200451; x=1706805251;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=YHMUzgkXRP9wZQ4wL9pyKD3XATptA/6sivyW/DCZ/hM=;
+ b=esUuW3Z37W/pqbeYU/+wzAN0MzMYv+QoVyK9hLV2WhlY6ZfauUWvGBAu/Wf9tT085w
+ dwfSJNCjgKiWEOlKg1v0WMfglG4W+ljxcSat+2QSXZin9a33dJCXSC8kKxtp3wH8xIS9
+ 9JSWSTndW8JUJrhdoJgvfXgODw/R2lBVphn4gBN3eD9KoQIhWkJ2Po3Kau20zoG+oycl
+ sRPwipMlSktmEY6WNEqtTZzshrOD/AJB/Dr/VFKQlKahLejAK73hqSest5VH96fKSBjQ
+ SRuLjpK1Gqsv8Im+x4L6qsU5Jm0y74B3myCep/R/oaNs/MHZ7EoK+BoLVlt2G0A4Yj7t
+ kfNQ==
+X-Gm-Message-State: AOJu0YzqRYFJPaq+LRJMuLYqEqsc7utfzGRZ32Vnl7o6EMGUQ+9Nee6x
+ ZnRmjosq+aDvB7pF4kg2r0o0rMoDkkaPvl3J0s9bL0bKYvsiRkE4eCa5NsBrvh8=
+X-Google-Smtp-Source: AGHT+IEG5L84L9UQXNBAuQGxJwjDbdv6l1TIIMxWTQVW/2Acw35eIfLzZx0nKHSdfcOUsZl6/DYHWQ==
+X-Received: by 2002:a05:600c:22c7:b0:40d:9061:b8 with SMTP id
+ 7-20020a05600c22c700b0040d906100b8mr743699wmg.223.1706200450979; 
+ Thu, 25 Jan 2024 08:34:10 -0800 (PST)
 Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- p13-20020a05600c358d00b0040ea875a527sm3122208wmq.26.2024.01.25.08.34.09
+ p13-20020a05600c358d00b0040ea875a527sm3122208wmq.26.2024.01.25.08.34.10
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Jan 2024 08:34:09 -0800 (PST)
+ Thu, 25 Jan 2024 08:34:10 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-Subject: [PATCH 00/10] Clean up includes
-Date: Thu, 25 Jan 2024 16:33:58 +0000
-Message-Id: <20240125163408.1595135-1-peter.maydell@linaro.org>
+Subject: [PATCH 03/10] disas/riscv: Clean up includes
+Date: Thu, 25 Jan 2024 16:34:01 +0000
+Message-Id: <20240125163408.1595135-4-peter.maydell@linaro.org>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240125163408.1595135-1-peter.maydell@linaro.org>
+References: <20240125163408.1595135-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -79,80 +81,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Jan 2024 16:34:13 -0000
+X-List-Received-Date: Thu, 25 Jan 2024 16:34:15 -0000
 
-This series makes a bunch of automated edits with the clean-includes
-script. The script performs three related cleanups:
+This commit was created with scripts/clean-includes:
+ ./scripts/clean-includes --git disas/riscv disas/riscv*[ch]
 
- * Ensure .c files include qemu/osdep.h first.
- * Including it in a .h is redundant, since the .c  already includes
-   it.  Drop such inclusions.
- * Likewise, including headers qemu/osdep.h includes is redundant.
-   Drop these, too.
+All .c should include qemu/osdep.h first.  The script performs three
+related cleanups:
 
-I created the series by looking at a run of the script across the
-whole tree (./scripts/clean-includes --git includes --all) produces,
-and then disentangling that into (a) different cohesive parts and (b)
-files that needed to go into the script's exclude-list.
+* Ensure .c files include qemu/osdep.h first.
+* Including it in a .h is redundant, since the .c  already includes
+  it.  Drop such inclusions.
+* Likewise, including headers qemu/osdep.h includes is redundant.
+  Drop these, too.
 
-After this series, the tree is still not entirely clean -- there
-are 20 other files the script wants to change. But at least some
-of them are things that should be on the exclude list, and some
-are things which I didn't feel like taking the time to try to
-decide whether they should be fixed or excluded. I might come
-back to these at some later date, but I figured this series was
-enough to be going on with.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ disas/riscv.h          | 1 -
+ disas/riscv-xthead.c   | 1 +
+ disas/riscv-xventana.c | 1 +
+ 3 files changed, 2 insertions(+), 1 deletion(-)
 
-thanks
--- PMM
-
-Peter Maydell (10):
-  scripts/clean-includes: Update exclude list
-  hyperv: Clean up includes
-  disas/riscv: Clean up includes
-  aspeed: Clean up includes
-  acpi: Clean up includes
-  m68k: Clean up includes
-  include: Clean up includes
-  cxl: Clean up includes
-  riscv: Clean up includes
-  misc: Clean up includes
-
- disas/riscv.h                             | 1 -
- hw/arm/aspeed_eeprom.h                    | 1 -
- hw/hyperv/hv-balloon-internal.h           | 1 -
- hw/hyperv/hv-balloon-our_range_memslots.h | 1 -
- hw/hyperv/hv-balloon-page_range_tree.h    | 1 -
- include/hw/arm/raspberrypi-fw-defs.h      | 1 -
- include/hw/audio/asc.h                    | 1 -
- include/hw/m68k/q800-glue.h               | 1 -
- include/hw/mem/memory-device.h            | 1 -
- include/hw/nvram/fw_cfg_acpi.h            | 1 -
- include/hw/ppc/spapr_nested.h             | 1 -
- include/hw/virtio/virtio-acpi.h           | 1 -
- include/hw/xen/xen-hvm-common.h           | 1 -
- include/qemu/qtree.h                      | 1 -
- include/ui/rect.h                         | 2 --
- target/riscv/vector_internals.h           | 1 -
- tests/qtest/qtest_aspeed.h                | 2 --
- audio/pwaudio.c                           | 1 -
- disas/riscv-xthead.c                      | 1 +
- disas/riscv-xventana.c                    | 1 +
- hw/arm/aspeed_eeprom.c                    | 1 +
- hw/cxl/cxl-events.c                       | 4 +---
- hw/hyperv/hv-balloon-our_range_memslots.c | 1 +
- hw/hyperv/hv-balloon-page_range_tree.c    | 1 +
- hw/hyperv/hv-balloon.c                    | 1 +
- hw/nvram/fw_cfg-acpi.c                    | 1 +
- hw/virtio/virtio-acpi.c                   | 1 +
- net/af-xdp.c                              | 1 -
- plugins/core.c                            | 1 -
- plugins/loader.c                          | 1 -
- target/riscv/vector_internals.c           | 1 +
- util/userfaultfd.c                        | 1 -
- scripts/clean-includes                    | 2 +-
- 33 files changed, 11 insertions(+), 28 deletions(-)
-
+diff --git a/disas/riscv.h b/disas/riscv.h
+index 19e5ed2ce63..16a08e4895c 100644
+--- a/disas/riscv.h
++++ b/disas/riscv.h
+@@ -7,7 +7,6 @@
+ #ifndef DISAS_RISCV_H
+ #define DISAS_RISCV_H
+ 
+-#include "qemu/osdep.h"
+ #include "target/riscv/cpu_cfg.h"
+ 
+ /* types */
+diff --git a/disas/riscv-xthead.c b/disas/riscv-xthead.c
+index 99da679d16c..fcca326d1c3 100644
+--- a/disas/riscv-xthead.c
++++ b/disas/riscv-xthead.c
+@@ -4,6 +4,7 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
++#include "qemu/osdep.h"
+ #include "disas/riscv.h"
+ #include "disas/riscv-xthead.h"
+ 
+diff --git a/disas/riscv-xventana.c b/disas/riscv-xventana.c
+index a0224d1fb31..cd694f15f32 100644
+--- a/disas/riscv-xventana.c
++++ b/disas/riscv-xventana.c
+@@ -4,6 +4,7 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
++#include "qemu/osdep.h"
+ #include "disas/riscv.h"
+ #include "disas/riscv-xventana.h"
+ 
 -- 
 2.34.1
 
