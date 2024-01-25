@@ -1,63 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rSzAu-00089G-LU
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Jan 2024 07:49:45 -0500
+	id 1rT2gB-0006km-9J
+	for mharc-qemu-trivial@gnu.org; Thu, 25 Jan 2024 11:34:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rSzAr-00088p-0K
- for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 07:49:41 -0500
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ id 1rT2g9-0006ge-BU
+ for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:13 -0500
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rSzAn-0000aZ-OD
- for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 07:49:40 -0500
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-55c1ac8d2f2so5823846a12.2
- for <qemu-trivial@nongnu.org>; Thu, 25 Jan 2024 04:49:33 -0800 (PST)
+ id 1rT2g7-00027b-8m
+ for qemu-trivial@nongnu.org; Thu, 25 Jan 2024 11:34:13 -0500
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-40e76109cdeso77101455e9.0
+ for <qemu-trivial@nongnu.org>; Thu, 25 Jan 2024 08:34:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706186973; x=1706791773; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=MGRoQROCc47nZ6NgFMBEtB+Bm2iE7zSPMm7VFK+t52k=;
- b=rjewQg29m3K+A2d816jZ8F1FykJ1Odo3LJTrPyNNcMfaWKorSm8dnND2MaBekB3p3Z
- 9KUVaGBxLZ0MoHQKMmme+rYPP/7F4lDRC48k+KZL0bULdwQsUNOCIZORa5XHiwowG32l
- ROt6U3otYIWmKBClrKr9EBMowU669LUDZpqCduiAKZQGPyC5Y2evLwZBg5BrLmilfkOW
- Q2A0X5XF3YSXP+UBmMTzhc+q38eUmj/vkrXbFrWRiX9M3ABLbr36y6nzoYZ4tmSgsE5g
- I+JvxVOogTSrq9KsDOiCdrmzUinttjsKKkOQX8NwHb28brD8iWIcGIQxPZzUWw0UEefb
- AiSg==
+ d=linaro.org; s=google; t=1706200449; x=1706805249; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=axVRnZ7u7ABFdbz3e9o0Vpy+ahV/YOtAd/CyIOYX/5o=;
+ b=pnodVZ3jhQgtzdzxgyrdFrez1o+4XqXJfmxbv/BzS8x0f0k+qbsWLgy0XHBhhx92Xj
+ hNfRyzTzg7/XZID205vkzLDJLGfOuiGE9vlpGB1gW7HliiZnUE5tUYVwEstElx8blE7C
+ 5Dm3tJDNJKJzku3iKW8SCRn+e5Bv3eTEutC1JQ+0DacExhrEXmo7Uk+6P0aQY//LYHE6
+ u5kmudcXiR/uwp8jlxjgRpr1SI0zrBUs9T6sRNE3BdnW+Dg23rbZJIUk0Uq++SXIkKBA
+ tHvjWeeuZlLfu9oE4LAXZY29jKIsqCcehnQHS38CHKH8zgCtryZOpquBnaGI2L01LzqG
+ NleA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706186973; x=1706791773;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1706200449; x=1706805249;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=MGRoQROCc47nZ6NgFMBEtB+Bm2iE7zSPMm7VFK+t52k=;
- b=cLe2lYkNLW63sMNvp6HNcwIrec0H12074iCRU3sgaViqAswUwiAtGG1KgrGgMzJBKq
- 29ToZE+e48SKtm1kgZJvkFI0h9I6cZSQ1aoQO2aMn7IJQbxdPxaVJ+RG4Z7LaQhaJt2f
- zYksbPDFRWW9SZU4omMfV+SQbVe3lriOrA7w80pZFHGFrydGJ2wC0Gj6VqLSLV1okdc7
- 1V6j5jwT5vhVGW33iG2MTOU/n4Vorrlu3oqlp/gh2KUonXICDqZ3wTTIAKmVl0p1LcvM
- mLlKSX45e8KNORD5algAdrTVe/zw/46/xmqP6ZRWiFUrEz42CWc0nB+SCXKalV8DGcWB
- iobQ==
-X-Gm-Message-State: AOJu0YxEXJp4drtsa5aiWxUGB2oejbfKkh0HCmNx9HW6/3oZK3gPL1dc
- xCUjyTIncp2/1Lnm9LYAyKxzEGlpbxlkgO6HFJ2Uv0I66UfzI0UzbSmCF7Ud2cWLCStm6oK8M/E
- 6hUvire7MlUW1CGnYYVx2OGy0zl/4NSNprnr2Tw==
-X-Google-Smtp-Source: AGHT+IFxSmxrU+wV2epbWdcy9Glp2j+O/LjX2T5JPTh6clIyVn64vBckcuqd+IhT1PzdS7q5ae0zLO5gJrvJA4NgTaY=
-X-Received: by 2002:a50:ab52:0:b0:55c:6283:3a95 with SMTP id
- t18-20020a50ab52000000b0055c62833a95mr643354edc.64.1706186972699; Thu, 25 Jan
- 2024 04:49:32 -0800 (PST)
-MIME-Version: 1.0
-References: <20240122211215.95073-1-gustavo.romero@linaro.org>
-In-Reply-To: <20240122211215.95073-1-gustavo.romero@linaro.org>
+ bh=axVRnZ7u7ABFdbz3e9o0Vpy+ahV/YOtAd/CyIOYX/5o=;
+ b=NgF1HHuDPmr1NHnjWfXjswTMLvRrunrD72dkJOIpQbUgFY4Jf9TqvvjWPRkq9CO0/x
+ 479Cmkn5XpfQQjDrodlkcaGQdm8LcHX71ZES+wkpAdXuTaUyM/59aBWUCX4ex/rxRZng
+ 2kI8pCVK+uaaskuZAm96Wv6+UhXPbbO/ShXbSc+rCqKDNMMWpaRZcUnx0yz4IPjmjYXs
+ kaaTk76lL7xhJ4tawBTfbGKxg6vJeZw35+5TsEZoVih7y8WlB1dgdIbU3TS0RzQRMKlD
+ +569Kvw0hOqw6cgbsqxSYg4is98IUVhHEEqHfYXx+QocaSYAzIOe4w/UrrTU62VqTp7G
+ rwlg==
+X-Gm-Message-State: AOJu0YwQaX3M4RRYJsyoUgSMwlEsyVb5nB6qKngR62e5Y8oAtleC8GJr
+ 6GFiaT+Kqz19Iyou4fL/6Jq3ybCVXg45j3oeEfG6ho9/5pi5L2xRc/JKL8n22N8tMdx798qwUT3
+ 8
+X-Google-Smtp-Source: AGHT+IHeNsvO78xaZnAcEfDzJk5r9vEizQyoKfkse3x8pliftF0ve+dRMZ0xBo1b7uVENlOD/bYuOg==
+X-Received: by 2002:a05:600c:4e4b:b0:40e:d2c1:f21 with SMTP id
+ e11-20020a05600c4e4b00b0040ed2c10f21mr544163wmq.122.1706200449571; 
+ Thu, 25 Jan 2024 08:34:09 -0800 (PST)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ p13-20020a05600c358d00b0040ea875a527sm3122208wmq.26.2024.01.25.08.34.09
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 25 Jan 2024 08:34:09 -0800 (PST)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Jan 2024 12:49:21 +0000
-Message-ID: <CAFEAcA_-tW7god6zhhBW3J_CmBpFARgnysphM7yi5h=9S4a4HA@mail.gmail.com>
-Subject: Re: [PATCH v2] docs/system/arm/virt.rst: Add note on CPU features off
- by default
-To: Gustavo Romero <gustavo.romero@linaro.org>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, philmd@linaro.org, 
- alex.bennee@linaro.org, richard.henderson@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH 00/10] Clean up includes
+Date: Thu, 25 Jan 2024 16:33:58 +0000
+Message-Id: <20240125163408.1595135-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -77,20 +79,81 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Jan 2024 12:49:41 -0000
+X-List-Received-Date: Thu, 25 Jan 2024 16:34:13 -0000
 
-On Mon, 22 Jan 2024 at 21:12, Gustavo Romero <gustavo.romero@linaro.org> wrote:
->
-> Add a note on CPU features that are off by default in `virt` machines.
-> Some CPU features will remain off even if a CPU-capable CPU (e.g.,
-> `-cpu max`) is selected because they require support in both the CPU
-> itself and in the wider system. Therefore, the user, besides selecting a
-> CPU that supports such features, must also turn on the feature using a
-> machine option.
->
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+This series makes a bunch of automated edits with the clean-includes
+script. The script performs three related cleanups:
 
-Applied to target-arm.next, thanks.
+ * Ensure .c files include qemu/osdep.h first.
+ * Including it in a .h is redundant, since the .c  already includes
+   it.  Drop such inclusions.
+ * Likewise, including headers qemu/osdep.h includes is redundant.
+   Drop these, too.
 
+I created the series by looking at a run of the script across the
+whole tree (./scripts/clean-includes --git includes --all) produces,
+and then disentangling that into (a) different cohesive parts and (b)
+files that needed to go into the script's exclude-list.
+
+After this series, the tree is still not entirely clean -- there
+are 20 other files the script wants to change. But at least some
+of them are things that should be on the exclude list, and some
+are things which I didn't feel like taking the time to try to
+decide whether they should be fixed or excluded. I might come
+back to these at some later date, but I figured this series was
+enough to be going on with.
+
+thanks
 -- PMM
+
+Peter Maydell (10):
+  scripts/clean-includes: Update exclude list
+  hyperv: Clean up includes
+  disas/riscv: Clean up includes
+  aspeed: Clean up includes
+  acpi: Clean up includes
+  m68k: Clean up includes
+  include: Clean up includes
+  cxl: Clean up includes
+  riscv: Clean up includes
+  misc: Clean up includes
+
+ disas/riscv.h                             | 1 -
+ hw/arm/aspeed_eeprom.h                    | 1 -
+ hw/hyperv/hv-balloon-internal.h           | 1 -
+ hw/hyperv/hv-balloon-our_range_memslots.h | 1 -
+ hw/hyperv/hv-balloon-page_range_tree.h    | 1 -
+ include/hw/arm/raspberrypi-fw-defs.h      | 1 -
+ include/hw/audio/asc.h                    | 1 -
+ include/hw/m68k/q800-glue.h               | 1 -
+ include/hw/mem/memory-device.h            | 1 -
+ include/hw/nvram/fw_cfg_acpi.h            | 1 -
+ include/hw/ppc/spapr_nested.h             | 1 -
+ include/hw/virtio/virtio-acpi.h           | 1 -
+ include/hw/xen/xen-hvm-common.h           | 1 -
+ include/qemu/qtree.h                      | 1 -
+ include/ui/rect.h                         | 2 --
+ target/riscv/vector_internals.h           | 1 -
+ tests/qtest/qtest_aspeed.h                | 2 --
+ audio/pwaudio.c                           | 1 -
+ disas/riscv-xthead.c                      | 1 +
+ disas/riscv-xventana.c                    | 1 +
+ hw/arm/aspeed_eeprom.c                    | 1 +
+ hw/cxl/cxl-events.c                       | 4 +---
+ hw/hyperv/hv-balloon-our_range_memslots.c | 1 +
+ hw/hyperv/hv-balloon-page_range_tree.c    | 1 +
+ hw/hyperv/hv-balloon.c                    | 1 +
+ hw/nvram/fw_cfg-acpi.c                    | 1 +
+ hw/virtio/virtio-acpi.c                   | 1 +
+ net/af-xdp.c                              | 1 -
+ plugins/core.c                            | 1 -
+ plugins/loader.c                          | 1 -
+ target/riscv/vector_internals.c           | 1 +
+ util/userfaultfd.c                        | 1 -
+ scripts/clean-includes                    | 2 +-
+ 33 files changed, 11 insertions(+), 28 deletions(-)
+
+-- 
+2.34.1
+
 
