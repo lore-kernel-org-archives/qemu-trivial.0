@@ -1,70 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rTKxf-0005Gk-FC
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jan 2024 07:05:31 -0500
+	id 1rTO6V-0000Zl-BH
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jan 2024 10:26:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rTKxZ-0004y3-M2; Fri, 26 Jan 2024 07:05:25 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1rTO6T-0000XQ-O5; Fri, 26 Jan 2024 10:26:49 -0500
+Received: from mgamail.intel.com ([192.55.52.115])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rTKxW-0001ml-Ub; Fri, 26 Jan 2024 07:05:25 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 0A129478C3;
- Fri, 26 Jan 2024 15:06:07 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 62D836BF4F;
- Fri, 26 Jan 2024 15:05:20 +0300 (MSK)
-Message-ID: <f1196c95-865b-4799-952d-89a70b2a09e6@tls.msk.ru>
-Date: Fri, 26 Jan 2024 15:05:20 +0300
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1rTO6R-0004ty-IV; Fri, 26 Jan 2024 10:26:49 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1706282807; x=1737818807;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=Ep4K5ToInF5CUDMsZrxUjxi6IBAbjApaSmNCYxPrLhs=;
+ b=b0C2LuohOj0+SHnB81nqIWi2NHXACtwHhK9WK/as/y+2l4FnonKwPED+
+ MJ0XZq9lGlp1nqDjm0msop6pbqTyVGmRUF701CYwJNjPx1+FR0nefysoE
+ XRVVxp/QAVIVJTlL3ZYD/8+HJqcodleVbkejl8hxkKYrNvQFXizYn25eX
+ gXVVxIXJUbtbjW+nm6e1l5gBC3+t2q5wjbohoTPThjVv/3tG5vUgW4HwU
+ K0EdK8w7sNg/PUpXwQJX8vlDdHJefEkaqIB+2KKEjGMgocA0P76+cHDsh
+ SWcBnkCM2KKcBTkkT/cId9ig3g1QhDvOkf4yJqw0QMV8HJ9/p1I+C5A/o Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10964"; a="402152702"
+X-IronPort-AV: E=Sophos;i="6.05,216,1701158400"; d="scan'208";a="402152702"
+Received: from fmsmga004.fm.intel.com ([10.253.24.48])
+ by fmsmga103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jan 2024 07:26:42 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10964"; a="857423436"
+X-IronPort-AV: E=Sophos;i="6.05,216,1701158400"; d="scan'208";a="857423436"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by fmsmga004.fm.intel.com with ESMTP; 26 Jan 2024 07:26:41 -0800
+Date: Fri, 26 Jan 2024 23:39:45 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH 04/10] aspeed: Clean up includes
+Message-ID: <ZbPSQUQ2UXhLQbRN@intel.com>
+References: <20240125163408.1595135-1-peter.maydell@linaro.org>
+ <20240125163408.1595135-5-peter.maydell@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial 1/2] close_all_open_fd(): move to oslib-posix.c
-Content-Language: en-US
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Laurent Vivier <laurent@vivier.eu>, QEMU Trivial
- <qemu-trivial@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
-References: <cover.1706221377.git.mjt@tls.msk.ru>
- <94fcee0d7595865b3a6fab744982ad47715e5faf.1706221377.git.mjt@tls.msk.ru>
- <ffc002d5-f648-43b8-b938-011a4a92cf5e@vivier.eu>
- <ZbN2DhQ4GeKc-aaX@redhat.com>
- <dbb90f22-d17d-4c40-8684-58ec976a014e@tls.msk.ru>
- <ZbOREEOcbSCwex15@redhat.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <ZbOREEOcbSCwex15@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240125163408.1595135-5-peter.maydell@linaro.org>
+Received-SPF: pass client-ip=192.55.52.115; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -56
+X-Spam_score: -5.7
+X-Spam_bar: -----
+X-Spam_report: (-5.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.313,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,32 +65,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jan 2024 12:05:30 -0000
+X-List-Received-Date: Fri, 26 Jan 2024 15:26:50 -0000
 
-26.01.2024 14:01, Daniel P. Berrangé:
-[]
-> We should try to use O_CLOEXEC everywhere, but at the same time QEMU
-> links to a large number of libraries, and we can't assume that they've
-> reliably used O_CLOEXEC. Non-QEMU owned code that is mapped in process
-> likely dwarfs QEMU owned code by a factor of x10.
+On Thu, Jan 25, 2024 at 04:34:02PM +0000, Peter Maydell wrote:
+> Date: Thu, 25 Jan 2024 16:34:02 +0000
+> From: Peter Maydell <peter.maydell@linaro.org>
+> Subject: [PATCH 04/10] aspeed: Clean up includes
+> X-Mailer: git-send-email 2.34.1
+> 
+> This commit was created with scripts/clean-includes.
+> 
+> All .c should include qemu/osdep.h first.  The script performs three
+> related cleanups:
+> 
+> * Ensure .c files include qemu/osdep.h first.
+> * Including it in a .h is redundant, since the .c  already includes
+>   it.  Drop such inclusions.
+> * Likewise, including headers qemu/osdep.h includes is redundant.
+>   Drop these, too.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  hw/arm/aspeed_eeprom.h     | 1 -
+>  tests/qtest/qtest_aspeed.h | 2 --
+>  hw/arm/aspeed_eeprom.c     | 1 +
+>  3 files changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/hw/arm/aspeed_eeprom.h b/hw/arm/aspeed_eeprom.h
+> index bbf9e54365b..f08c16ef506 100644
+> --- a/hw/arm/aspeed_eeprom.h
+> +++ b/hw/arm/aspeed_eeprom.h
+> @@ -7,7 +7,6 @@
+>  #ifndef ASPEED_EEPROM_H
+>  #define ASPEED_EEPROM_H
+>  
+> -#include "qemu/osdep.h"
+>  
+>  extern const uint8_t tiogapass_bmc_fruid[];
+>  extern const size_t tiogapass_bmc_fruid_len;
+> diff --git a/tests/qtest/qtest_aspeed.h b/tests/qtest/qtest_aspeed.h
+> index 235dfaa186a..d35b0c7cba5 100644
+> --- a/tests/qtest/qtest_aspeed.h
+> +++ b/tests/qtest/qtest_aspeed.h
+> @@ -12,8 +12,6 @@
+>  #ifndef QTEST_ASPEED_H
+>  #define QTEST_ASPEED_H
+>  
+> -#include <stdint.h>
+> -
+>  #include "libqtest.h"
+>  
+>  #define AST2600_ASPEED_I2C_BASE_ADDR 0x1e78a000
+> diff --git a/hw/arm/aspeed_eeprom.c b/hw/arm/aspeed_eeprom.c
+> index ace5266cec9..daa3d329d10 100644
+> --- a/hw/arm/aspeed_eeprom.c
+> +++ b/hw/arm/aspeed_eeprom.c
+> @@ -4,6 +4,7 @@
+>   * SPDX-License-Identifier: GPL-2.0-only
+>   */
+>  
+> +#include "qemu/osdep.h"
 
-There are quite a few points here.
+Just a question, as the code style, should we add a blank line after
+this header?
 
-As I already mentioned, qemu is one of very few software out here which
-is this paranoid, - I know no other software which does this.  External
-libs are being fixed too, and that's the proper place to do that.
+>  #include "aspeed_eeprom.h"
+>  
+>  /* Tiogapass BMC FRU */
+> -- 
+> 2.34.1
+> 
 
-Please note that currently we only close all files when executing scripts
-to setup/teardown tap interfaces, but not, say, when spawning a process
-to receive migration stream and in some other places, where such closing
-might be much more important.
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
-This close_all_open_fd() can check all FDs it finds open for O_CLOEXEC
-as a debugging aid, - maybe we missed something in qemu already.  After
-it's done, we'll have much better confidence already.
-
-And something else I forgot to mention :)
-
-/mjt
 
 
