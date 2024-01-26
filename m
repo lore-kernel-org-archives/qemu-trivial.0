@@ -1,72 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rTJy1-00076B-5T
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jan 2024 06:01:50 -0500
+	id 1rTKxf-0005Gk-FC
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jan 2024 07:05:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1rTJxz-00075r-9Q
- for qemu-trivial@nongnu.org; Fri, 26 Jan 2024 06:01:47 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rTKxZ-0004y3-M2; Fri, 26 Jan 2024 07:05:25 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1rTJxx-0000p9-Cp
- for qemu-trivial@nongnu.org; Fri, 26 Jan 2024 06:01:47 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1706266904;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=/gd6lJVnSVUS69Xf9qLuJFQa4bTUTxSXqpPF5edxEWw=;
- b=B0XPRxTkNKeoK/Yj7D+t3V2P8YKEXghQLCTxzEa2mQL14UnWYTnJtuCXTqxXgDLlYXNycY
- pFuQHvKgsrulo76+InKMql+AL2sngti4ccUCDlC6mLWKDIBR0I4n2RbvV0EsSfNXelanTR
- VLkO8Xo5S6yk8W38zkRQT3F/N9VJoc8=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-361-8JTTNg7ePt666QxjN_BJvg-1; Fri, 26 Jan 2024 06:01:41 -0500
-X-MC-Unique: 8JTTNg7ePt666QxjN_BJvg-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E3447837226;
- Fri, 26 Jan 2024 11:01:40 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.198])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 06542492BFA;
- Fri, 26 Jan 2024 11:01:38 +0000 (UTC)
-Date: Fri, 26 Jan 2024 11:01:36 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Laurent Vivier <laurent@vivier.eu>, QEMU Trivial <qemu-trivial@nongnu.org>,
- QEMU Developers <qemu-devel@nongnu.org>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rTKxW-0001ml-Ub; Fri, 26 Jan 2024 07:05:25 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 0A129478C3;
+ Fri, 26 Jan 2024 15:06:07 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 62D836BF4F;
+ Fri, 26 Jan 2024 15:05:20 +0300 (MSK)
+Message-ID: <f1196c95-865b-4799-952d-89a70b2a09e6@tls.msk.ru>
+Date: Fri, 26 Jan 2024 15:05:20 +0300
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH trivial 1/2] close_all_open_fd(): move to oslib-posix.c
-Message-ID: <ZbOREEOcbSCwex15@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+Content-Language: en-US
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Laurent Vivier <laurent@vivier.eu>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, QEMU Developers <qemu-devel@nongnu.org>
 References: <cover.1706221377.git.mjt@tls.msk.ru>
  <94fcee0d7595865b3a6fab744982ad47715e5faf.1706221377.git.mjt@tls.msk.ru>
  <ffc002d5-f648-43b8-b938-011a4a92cf5e@vivier.eu>
  <ZbN2DhQ4GeKc-aaX@redhat.com>
  <dbb90f22-d17d-4c40-8684-58ec976a014e@tls.msk.ru>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+ <ZbOREEOcbSCwex15@redhat.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <ZbOREEOcbSCwex15@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <dbb90f22-d17d-4c40-8684-58ec976a014e@tls.msk.ru>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.5,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,56 +78,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jan 2024 11:01:48 -0000
+X-List-Received-Date: Fri, 26 Jan 2024 12:05:30 -0000
 
-On Fri, Jan 26, 2024 at 01:45:39PM +0300, Michael Tokarev wrote:
-> 26.01.2024 12:06, Daniel P. Berrangé wrote:
-> > On Fri, Jan 26, 2024 at 08:44:13AM +0100, Laurent Vivier wrote:
-> > > Le 25/01/2024 à 23:29, Michael Tokarev a écrit :
-> 
-> 
-> > > I think the way using sysconf(_SC_OPEN_MAX) is more portable, simpler and
-> > > cleaner than the one using /proc/self/fd.
-> > 
-> > A fallback that uses _SC_OPEN_MAX is good for portability, but it is
-> > should not be considered a replacement for iterating over /proc/self/fd,
-> > rather an additional fallback for non-Linux, or when /proc is not mounted.
-> > It is not uncommon for _SC_OPEN_MAX to be *exceedingly* high
-> > 
-> >    $ podman run -it quay.io/centos/centos:stream9
-> >    [root@4a440d62935c /]# ulimit -n
-> >    524288
-> > 
-> > Iterating over 1/2 a million FDs is a serious performance penalty that
-> > we don't want to have, so _SC_OPEN_MAX should always be the last resort.
-> 
-> From yesterday conversation in IRC which started this:
-> 
->  <mmlb> open files          (-n) 1073741816
-> 
-> (it is a docker container)
-> They weren't able to start qemu.. :)
-> 
-> Sanity of such setting is questionable, but ok.
-> 
-> Not only linux implement close_range(2) syscall, it is also
-> available on some *BSDs.
-> 
-> And the most important point is, - we should aim at using O_CLOEXEC
-> everywhere, without this need to close each FD at exec time.  I think
-> qemu is the only software with such paranoid closing when just running
-> an interface setup script..
+26.01.2024 14:01, Daniel P. Berrangé:
+[]
+> We should try to use O_CLOEXEC everywhere, but at the same time QEMU
+> links to a large number of libraries, and we can't assume that they've
+> reliably used O_CLOEXEC. Non-QEMU owned code that is mapped in process
+> likely dwarfs QEMU owned code by a factor of x10.
 
-We should try to use O_CLOEXEC everywhere, but at the same time QEMU
-links to a large number of libraries, and we can't assume that they've
-reliably used O_CLOEXEC. Non-QEMU owned code that is mapped in process
-likely dwarfs QEMU owned code by a factor of x10.
+There are quite a few points here.
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+As I already mentioned, qemu is one of very few software out here which
+is this paranoid, - I know no other software which does this.  External
+libs are being fixed too, and that's the proper place to do that.
+
+Please note that currently we only close all files when executing scripts
+to setup/teardown tap interfaces, but not, say, when spawning a process
+to receive migration stream and in some other places, where such closing
+might be much more important.
+
+This close_all_open_fd() can check all FDs it finds open for O_CLOEXEC
+as a debugging aid, - maybe we missed something in qemu already.  After
+it's done, we'll have much better confidence already.
+
+And something else I forgot to mention :)
+
+/mjt
 
 
