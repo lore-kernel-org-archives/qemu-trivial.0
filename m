@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rTO7F-0001fy-Ge
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jan 2024 10:27:37 -0500
+	id 1rTO7w-0002nL-Oi
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jan 2024 10:28:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rTO7C-0001bl-UN; Fri, 26 Jan 2024 10:27:34 -0500
-Received: from mgamail.intel.com ([198.175.65.14])
+ id 1rTO7q-0002gm-Ai; Fri, 26 Jan 2024 10:28:15 -0500
+Received: from mgamail.intel.com ([192.198.163.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rTO7B-00050t-4I; Fri, 26 Jan 2024 10:27:34 -0500
+ id 1rTO7n-00055q-Hg; Fri, 26 Jan 2024 10:28:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1706282853; x=1737818853;
+ t=1706282891; x=1737818891;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=HSIXVUMH2mtjboSNzNtc9GiwOdmX9t1cg5ZooTkHW30=;
- b=DkNySx1sAuSMtvJoPpSqCLhmm0grAma3UDgbOfNcW0D2vvIuyiiW/o+5
- k007YIUb6NgU3SPAz/D9h+GqndV1yn79zC79oBVYCb7CwjTVJ3BrL+CyA
- r4BnMDKwDQQAAS0pauKxRIvasDIumZvUpT35YfRLIhkOUtZCi2eOkv5FX
- BSO/AADy4EoflFW4Hc9/AupYjBGO55dC2tFVubF5keGJRUvuBuBAW8biJ
- 54E82tYjtfYzXI0hpDnFty+MVlKos3Sn1HT+0nwyIfZ3DHPapvlRP9tFs
- CVQoxgw2jrmS11siyJQMMfzGnkHVXMMLzhHhpN8BxjFstOm2cpJF8NZWw Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10964"; a="2383052"
+ bh=X6kt4bSgL+TknRdagc/Pc71ISYBv8zPogojDwB9dlQA=;
+ b=IxdDhFN9Ch4I+89vGQKBAhYXOTXz6oAbGTMRlramV5HOntOXc0gA/flD
+ XubTDJUsqxzEaQbAiZmq5K+pDA7EQTIj/rSef9MT2obHNRFXD28sanj+F
+ V5KDogLA1Ila1KQ5P+x1/vItBKvwy3oDkCYNmZ1UbV41FVvioshLVk+fs
+ /N0f91YAtEPLuT+cfkbp02lycD35AtxoH0ef4nR/b3eiI8ibLTkTlfW21
+ Ze0vb+HsFQSoxeqCN4VxB5OIb/9Bqvc1NFuUrxgeT4AG75dkFn/TZ7vtm
+ oHJLnsyXMe4BEVSiN2qfZttglHc9b8DkfD083it3jY5IDreIIN4G42YS6 w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10964"; a="9878839"
 X-IronPort-AV: E=Sophos;i="6.05,216,1701158400"; 
-   d="scan'208";a="2383052"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by orvoesa106.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jan 2024 07:27:30 -0800
+   d="scan'208";a="9878839"
+Received: from fmsmga005.fm.intel.com ([10.253.24.32])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 26 Jan 2024 07:28:08 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,216,1701158400"; 
-   d="scan'208";a="2624602"
+X-IronPort-AV: E=McAfee;i="6600,9927,10964"; a="1118284121"
+X-IronPort-AV: E=Sophos;i="6.05,216,1701158400"; d="scan'208";a="1118284121"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.36])
- by fmviesa005.fm.intel.com with ESMTP; 26 Jan 2024 07:27:29 -0800
-Date: Fri, 26 Jan 2024 23:40:32 +0800
+ by fmsmga005.fm.intel.com with ESMTP; 26 Jan 2024 07:28:06 -0800
+Date: Fri, 26 Jan 2024 23:41:10 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH 05/10] acpi: Clean up includes
-Message-ID: <ZbPScIxKDQhKqWS8@intel.com>
+Subject: Re: [PATCH 09/10] riscv: Clean up includes
+Message-ID: <ZbPSlkzTr+VQTxqs@intel.com>
 References: <20240125163408.1595135-1-peter.maydell@linaro.org>
- <20240125163408.1595135-6-peter.maydell@linaro.org>
+ <20240125163408.1595135-10-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240125163408.1595135-6-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=198.175.65.14; envelope-from=zhao1.liu@intel.com;
+In-Reply-To: <20240125163408.1595135-10-peter.maydell@linaro.org>
+Received-SPF: pass client-ip=192.198.163.10; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -33
 X-Spam_score: -3.4
@@ -66,16 +66,16 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jan 2024 15:27:35 -0000
+X-List-Received-Date: Fri, 26 Jan 2024 15:28:18 -0000
 
-On Thu, Jan 25, 2024 at 04:34:03PM +0000, Peter Maydell wrote:
-> Date: Thu, 25 Jan 2024 16:34:03 +0000
+On Thu, Jan 25, 2024 at 04:34:07PM +0000, Peter Maydell wrote:
+> Date: Thu, 25 Jan 2024 16:34:07 +0000
 > From: Peter Maydell <peter.maydell@linaro.org>
-> Subject: [PATCH 05/10] acpi: Clean up includes
+> Subject: [PATCH 09/10] riscv: Clean up includes
 > X-Mailer: git-send-email 2.34.1
 > 
 > This commit was created with scripts/clean-includes:
->  ./scripts/clean-includes --git acpi include/hw/*/*acpi.h hw/*/*acpi.c
+>  ./scripts/clean-includes --git riscv target/riscv/*.[ch]
 > 
 > All .c should include qemu/osdep.h first.  The script performs three
 > related cleanups:
@@ -88,63 +88,37 @@ On Thu, Jan 25, 2024 at 04:34:03PM +0000, Peter Maydell wrote:
 > 
 > Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->  include/hw/nvram/fw_cfg_acpi.h  | 1 -
->  include/hw/virtio/virtio-acpi.h | 1 -
->  hw/nvram/fw_cfg-acpi.c          | 1 +
->  hw/virtio/virtio-acpi.c         | 1 +
->  4 files changed, 2 insertions(+), 2 deletions(-)
+>  target/riscv/vector_internals.h | 1 -
+>  target/riscv/vector_internals.c | 1 +
+>  2 files changed, 1 insertion(+), 1 deletion(-)
 
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
 > 
-> diff --git a/include/hw/nvram/fw_cfg_acpi.h b/include/hw/nvram/fw_cfg_acpi.h
-> index b6553d86fcb..b39eb0490ff 100644
-> --- a/include/hw/nvram/fw_cfg_acpi.h
-> +++ b/include/hw/nvram/fw_cfg_acpi.h
-> @@ -7,7 +7,6 @@
->  #ifndef FW_CFG_ACPI_H
->  #define FW_CFG_ACPI_H
+> diff --git a/target/riscv/vector_internals.h b/target/riscv/vector_internals.h
+> index 8133111e5f6..842765f6c16 100644
+> --- a/target/riscv/vector_internals.h
+> +++ b/target/riscv/vector_internals.h
+> @@ -19,7 +19,6 @@
+>  #ifndef TARGET_RISCV_VECTOR_INTERNALS_H
+>  #define TARGET_RISCV_VECTOR_INTERNALS_H
 >  
 > -#include "qemu/osdep.h"
->  #include "exec/hwaddr.h"
->  
->  void fw_cfg_acpi_dsdt_add(Aml *scope, const MemMapEntry *fw_cfg_memmap);
-> diff --git a/include/hw/virtio/virtio-acpi.h b/include/hw/virtio/virtio-acpi.h
-> index 844e102569e..cace2a315f4 100644
-> --- a/include/hw/virtio/virtio-acpi.h
-> +++ b/include/hw/virtio/virtio-acpi.h
-> @@ -6,7 +6,6 @@
->  #ifndef VIRTIO_ACPI_H
->  #define VIRTIO_ACPI_H
->  
-> -#include "qemu/osdep.h"
->  #include "exec/hwaddr.h"
->  
->  void virtio_acpi_dsdt_add(Aml *scope, const hwaddr virtio_mmio_base,
-> diff --git a/hw/nvram/fw_cfg-acpi.c b/hw/nvram/fw_cfg-acpi.c
-> index 4e48baeaa01..58cdcd3121c 100644
-> --- a/hw/nvram/fw_cfg-acpi.c
-> +++ b/hw/nvram/fw_cfg-acpi.c
-> @@ -4,6 +4,7 @@
->   *
+>  #include "qemu/bitops.h"
+>  #include "cpu.h"
+>  #include "tcg/tcg-gvec-desc.h"
+> diff --git a/target/riscv/vector_internals.c b/target/riscv/vector_internals.c
+> index 9cf5c17cdea..12f5964fbbe 100644
+> --- a/target/riscv/vector_internals.c
+> +++ b/target/riscv/vector_internals.c
+> @@ -16,6 +16,7 @@
+>   * this program.  If not, see <http://www.gnu.org/licenses/>.
 >   */
 >  
 > +#include "qemu/osdep.h"
->  #include "hw/nvram/fw_cfg_acpi.h"
->  #include "hw/acpi/aml-build.h"
+>  #include "vector_internals.h"
 >  
-> diff --git a/hw/virtio/virtio-acpi.c b/hw/virtio/virtio-acpi.c
-> index e18cb38bdbe..230a6695001 100644
-> --- a/hw/virtio/virtio-acpi.c
-> +++ b/hw/virtio/virtio-acpi.c
-> @@ -4,6 +4,7 @@
->   *
->   */
->  
-> +#include "qemu/osdep.h"
->  #include "hw/virtio/virtio-acpi.h"
->  #include "hw/acpi/aml-build.h"
->  
+>  /* set agnostic elements to 1s */
 > -- 
 > 2.34.1
 > 
