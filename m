@@ -1,34 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rT8Ef-0007cm-Tr
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Jan 2024 17:30:14 -0500
+	id 1rTHNO-0003v8-QF
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jan 2024 03:15:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rT8EM-0007Ws-TF; Thu, 25 Jan 2024 17:29:55 -0500
+ id 1rTHNB-0003qc-D6; Fri, 26 Jan 2024 03:15:42 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rT8EL-0001xP-BB; Thu, 25 Jan 2024 17:29:54 -0500
+ id 1rTHN8-0001ri-FA; Fri, 26 Jan 2024 03:15:36 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 50A5B47564;
- Fri, 26 Jan 2024 01:30:29 +0300 (MSK)
-Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id CDD826BA54;
- Fri, 26 Jan 2024 01:29:42 +0300 (MSK)
-Received: (nullmailer pid 147072 invoked by uid 1000);
- Thu, 25 Jan 2024 22:29:42 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH trivial 2/2] net/tap: use os_close_all_open_fd() instead of
- open-coding it
-Date: Fri, 26 Jan 2024 01:29:36 +0300
-Message-Id: <14aa02474bc5127910810969b87b659d766e2969.1706221377.git.mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <cover.1706221377.git.mjt@tls.msk.ru>
-References: <cover.1706221377.git.mjt@tls.msk.ru>
+ by isrv.corpit.ru (Postfix) with ESMTP id 8871D47705;
+ Fri, 26 Jan 2024 11:16:14 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 38D4F6BD96;
+ Fri, 26 Jan 2024 11:15:28 +0300 (MSK)
+Message-ID: <da83dc24-2b83-4d6c-83f4-a61346df49a0@tls.msk.ru>
+Date: Fri, 26 Jan 2024 11:15:28 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] qapi/migration.json: Fix the member name for
+ MigrationCapability
+Content-Language: en-US
+To: Han Han <hhan@redhat.com>, qemu-trivial@nongnu.org,
+ QEMU Developers <qemu-devel@nongnu.org>
+References: <20240119135341.279334-1-hhan@redhat.com>
+Cc: Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <20240119135341.279334-1-hhan@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
 X-Spam_score_int: -68
@@ -49,55 +74,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Jan 2024 22:30:11 -0000
+X-List-Received-Date: Fri, 26 Jan 2024 08:15:46 -0000
 
-Current code loops over every file descriptor up to SC_OPEN_MAX/RLIMIT_NOFILE
-which might be huge and the loop might be slow.  But we already have
-os_close_all_open_fd() which is fast.  Use it.
+19.01.2024 16:53, Han Han:
+> s/@compression/@compress/
+> 
+> Fixes: 864128df46
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- net/tap.c | 15 ++-------------
- 1 file changed, 2 insertions(+), 13 deletions(-)
+Please post all patches to qemu-devel@.  I'm picking this one up because
+it is an obvious an trivial fix, but it's still a good idea to let the
+migration/qapi people to know.
 
-diff --git a/net/tap.c b/net/tap.c
-index c698b70475..11c85c50dc 100644
---- a/net/tap.c
-+++ b/net/tap.c
-@@ -459,13 +459,7 @@ static void launch_script(const char *setup_script, const char *ifname,
-         return;
-     }
-     if (pid == 0) {
--        int open_max = sysconf(_SC_OPEN_MAX), i;
--
--        for (i = 3; i < open_max; i++) {
--            if (i != fd) {
--                close(i);
--            }
--        }
-+        os_close_all_open_fd(3);
-         parg = args;
-         *parg++ = (char *)setup_script;
-         *parg++ = (char *)ifname;
-@@ -549,16 +543,11 @@ static int net_bridge_run_helper(const char *helper, const char *bridge,
-         return -1;
-     }
-     if (pid == 0) {
--        int open_max = sysconf(_SC_OPEN_MAX), i;
-         char *fd_buf = NULL;
-         char *br_buf = NULL;
-         char *helper_cmd = NULL;
- 
--        for (i = 3; i < open_max; i++) {
--            if (i != sv[1]) {
--                close(i);
--            }
--        }
-+        os_close_all_open_fd(3);
- 
-         fd_buf = g_strdup_printf("%s%d", "--fd=", sv[1]);
- 
--- 
-2.39.2
+Thanks,
+
+/mjt
+
+> Signed-off-by: Han Han <hhan@redhat.com>
+> ---
+>   qapi/migration.json | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/qapi/migration.json b/qapi/migration.json
+> index eb2f883513..1657b13314 100644
+> --- a/qapi/migration.json
+> +++ b/qapi/migration.json
+> @@ -534,7 +534,7 @@
+>   # Features:
+>   #
+>   # @deprecated: Member @block is deprecated.  Use blockdev-mirror with
+> -#     NBD instead.  Member @compression is deprecated because it is
+> +#     NBD instead.  Member @compress is deprecated because it is
+>   #     unreliable and untested.  It is recommended to use multifd
+>   #     migration, which offers an alternative compression
+>   #     implementation that is reliable and tested.
 
 
