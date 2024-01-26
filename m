@@ -1,29 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rTHOI-0004Dn-Cp
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jan 2024 03:16:46 -0500
+	id 1rTHPo-00065U-7s
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jan 2024 03:18:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rTHO4-00047Z-T0; Fri, 26 Jan 2024 03:16:34 -0500
+ id 1rTHPi-00062C-C5; Fri, 26 Jan 2024 03:18:14 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rTHO3-0002BQ-6Y; Fri, 26 Jan 2024 03:16:32 -0500
+ id 1rTHPf-0002bi-Cn; Fri, 26 Jan 2024 03:18:13 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 8AB6C47709;
- Fri, 26 Jan 2024 11:17:15 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 6352647710;
+ Fri, 26 Jan 2024 11:18:55 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 055E36BD98;
- Fri, 26 Jan 2024 11:16:26 +0300 (MSK)
-Message-ID: <d36e89de-2f57-46eb-bb4f-f7cb30c51f76@tls.msk.ru>
-Date: Fri, 26 Jan 2024 11:16:26 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 17E256BD9B;
+ Fri, 26 Jan 2024 11:18:09 +0300 (MSK)
+Message-ID: <287c0f15-e191-4e38-a76f-fcdbecf8df05@tls.msk.ru>
+Date: Fri, 26 Jan 2024 11:18:09 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] qemu-docs: Update options for graphical frontends
+Subject: Re: [PATCH v2] mailmap: Fix Stefan Weil email
 Content-Language: en-US
-To: Yihuan Pan <xun794@gmail.com>, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <20240122042206.25585-1-xun794@gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
+References: <20240123082104.36208-1-philmd@linaro.org>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
  xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
@@ -49,9 +50,9 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240122042206.25585-1-xun794@gmail.com>
+In-Reply-To: <20240123082104.36208-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
 X-Spam_score_int: -68
@@ -72,41 +73,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jan 2024 08:16:40 -0000
+X-List-Received-Date: Fri, 26 Jan 2024 08:18:16 -0000
 
-22.01.2024 07:22, Yihuan Pan wrote:
-> The command line options `-ctrl-grab` and `-alt-grab` have been removed
-> in QEMU 7.1. Instead, use the `-display sdl,grab-mod=<modifiers>` option
-> to specify the grab modifiers.
+23.01.2024 11:21, Philippe Mathieu-Daudé:
+> Commit 5204b499a6 ("mailmap: Fix Stefan Weil author email")
+> corrected authorship for patch received at qemu-devel@nongnu.org,
+> correct now for patch received at qemu-trivial@nongnu.org.
+> 
+> Update other authorship email for Stefan's commits.
 
 Applied to trivial-patches, thanks!
 
+mailmap becomes a spelling fixer/filter, sort of :)
+
 /mjt
-
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2103
-> Signed-off-by: Yihuan Pan <xun794@gmail.com>
-> ---
->   docs/system/keys.rst.inc | 11 ++++++-----
->   1 file changed, 6 insertions(+), 5 deletions(-)
-> 
-> diff --git a/docs/system/keys.rst.inc b/docs/system/keys.rst.inc
-> index bd9b8e5f6f..2e2c97aa23 100644
-> --- a/docs/system/keys.rst.inc
-> +++ b/docs/system/keys.rst.inc
-> @@ -1,8 +1,9 @@
-> -During the graphical emulation, you can use special key combinations to
-> -change modes. The default key mappings are shown below, but if you use
-> -``-alt-grab`` then the modifier is Ctrl-Alt-Shift (instead of Ctrl-Alt)
-> -and if you use ``-ctrl-grab`` then the modifier is the right Ctrl key
-> -(instead of Ctrl-Alt):
-> +During the graphical emulation, you can use special key combinations from
-> +the following table to change modes. By default the modifier is Ctrl-Alt
-> +(used in the table below) which can be changed with ``-display`` suboption
-> +``mod=`` where appropriate. For example, ``-display sdl,
-> +grab-mod=lshift-lctrl-lalt`` changes the modifier key to Ctrl-Alt-Shift,
-> +while ``-display sdl,grab-mod=rctrl`` changes it to the right Ctrl key.
->   
->   Ctrl-Alt-f
->      Toggle full screen
-
 
