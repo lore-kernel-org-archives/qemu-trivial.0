@@ -1,30 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rTHPo-00065U-7s
-	for mharc-qemu-trivial@gnu.org; Fri, 26 Jan 2024 03:18:21 -0500
+	id 1rTJib-0001rN-4E
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Jan 2024 05:45:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rTHPi-00062C-C5; Fri, 26 Jan 2024 03:18:14 -0500
+ id 1rTJiV-0001km-RT; Fri, 26 Jan 2024 05:45:47 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rTHPf-0002bi-Cn; Fri, 26 Jan 2024 03:18:13 -0500
+ id 1rTJiS-0003RP-CG; Fri, 26 Jan 2024 05:45:46 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 6352647710;
- Fri, 26 Jan 2024 11:18:55 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 73E9F47832;
+ Fri, 26 Jan 2024 13:46:26 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 17E256BD9B;
- Fri, 26 Jan 2024 11:18:09 +0300 (MSK)
-Message-ID: <287c0f15-e191-4e38-a76f-fcdbecf8df05@tls.msk.ru>
-Date: Fri, 26 Jan 2024 11:18:09 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id E77346BEA6;
+ Fri, 26 Jan 2024 13:45:39 +0300 (MSK)
+Message-ID: <dbb90f22-d17d-4c40-8684-58ec976a014e@tls.msk.ru>
+Date: Fri, 26 Jan 2024 13:45:39 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] mailmap: Fix Stefan Weil email
+Subject: Re: [PATCH trivial 1/2] close_all_open_fd(): move to oslib-posix.c
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Stefan Weil <sw@weilnetz.de>, qemu-trivial@nongnu.org
-References: <20240123082104.36208-1-philmd@linaro.org>
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: QEMU Developers <qemu-devel@nongnu.org>
+References: <cover.1706221377.git.mjt@tls.msk.ru>
+ <94fcee0d7595865b3a6fab744982ad47715e5faf.1706221377.git.mjt@tls.msk.ru>
+ <ffc002d5-f648-43b8-b938-011a4a92cf5e@vivier.eu>
+ <ZbN2DhQ4GeKc-aaX@redhat.com>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
  xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
@@ -50,7 +53,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240123082104.36208-1-philmd@linaro.org>
+In-Reply-To: <ZbN2DhQ4GeKc-aaX@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -73,18 +76,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 26 Jan 2024 08:18:16 -0000
+X-List-Received-Date: Fri, 26 Jan 2024 10:45:48 -0000
 
-23.01.2024 11:21, Philippe Mathieu-Daudé:
-> Commit 5204b499a6 ("mailmap: Fix Stefan Weil author email")
-> corrected authorship for patch received at qemu-devel@nongnu.org,
-> correct now for patch received at qemu-trivial@nongnu.org.
+26.01.2024 12:06, Daniel P. Berrangé wrote:
+> On Fri, Jan 26, 2024 at 08:44:13AM +0100, Laurent Vivier wrote:
+>> Le 25/01/2024 à 23:29, Michael Tokarev a écrit :
+
+
+>> I think the way using sysconf(_SC_OPEN_MAX) is more portable, simpler and
+>> cleaner than the one using /proc/self/fd.
 > 
-> Update other authorship email for Stefan's commits.
+> A fallback that uses _SC_OPEN_MAX is good for portability, but it is
+> should not be considered a replacement for iterating over /proc/self/fd,
+> rather an additional fallback for non-Linux, or when /proc is not mounted.
+> It is not uncommon for _SC_OPEN_MAX to be *exceedingly* high
+> 
+>    $ podman run -it quay.io/centos/centos:stream9
+>    [root@4a440d62935c /]# ulimit -n
+>    524288
+> 
+> Iterating over 1/2 a million FDs is a serious performance penalty that
+> we don't want to have, so _SC_OPEN_MAX should always be the last resort.
 
-Applied to trivial-patches, thanks!
+ From yesterday conversation in IRC which started this:
 
-mailmap becomes a spelling fixer/filter, sort of :)
+  <mmlb> open files          (-n) 1073741816
+
+(it is a docker container)
+They weren't able to start qemu.. :)
+
+Sanity of such setting is questionable, but ok.
+
+Not only linux implement close_range(2) syscall, it is also
+available on some *BSDs.
+
+And the most important point is, - we should aim at using O_CLOEXEC
+everywhere, without this need to close each FD at exec time.  I think
+qemu is the only software with such paranoid closing when just running
+an interface setup script..
+
+So yes, loop though all FDs is okay too as a last resort but..
+For scripts in net/tap.c, this isn't necessary at all.  I want to take
+a look at all open(2)/socket(2)/etc calls in qemu to ensure they're all
+using O_CLOEXEC or are closed promptly, after which this code can be
+removed entirely, hopefully.  Maybe this patch wont be needed after
+that (so only async-teardown will need that code since it doesn't
+do exec()).
+
+Thanks,
 
 /mjt
 
