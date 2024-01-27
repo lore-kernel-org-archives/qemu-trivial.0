@@ -1,71 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rTasU-0006Qy-EH
-	for mharc-qemu-trivial@gnu.org; Sat, 27 Jan 2024 00:05:14 -0500
+	id 1rTasz-00076h-J2
+	for mharc-qemu-trivial@gnu.org; Sat, 27 Jan 2024 00:05:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rTasP-0006QH-IN
- for qemu-trivial@nongnu.org; Sat, 27 Jan 2024 00:05:09 -0500
-Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+ id 1rTasx-00075g-Rp
+ for qemu-trivial@nongnu.org; Sat, 27 Jan 2024 00:05:43 -0500
+Received: from mail-ot1-x32b.google.com ([2607:f8b0:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rTasN-0003aV-Kn
- for qemu-trivial@nongnu.org; Sat, 27 Jan 2024 00:05:09 -0500
-Received: by mail-pg1-x52a.google.com with SMTP id
- 41be03b00d2f7-5cedfc32250so732124a12.0
- for <qemu-trivial@nongnu.org>; Fri, 26 Jan 2024 21:05:07 -0800 (PST)
+ id 1rTasw-0003cd-Bq
+ for qemu-trivial@nongnu.org; Sat, 27 Jan 2024 00:05:43 -0500
+Received: by mail-ot1-x32b.google.com with SMTP id
+ 46e09a7af769-6e0d86d4659so822464a34.1
+ for <qemu-trivial@nongnu.org>; Fri, 26 Jan 2024 21:05:41 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706331906; x=1706936706; darn=nongnu.org;
+ d=linaro.org; s=google; t=1706331941; x=1706936741; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=socohSUVvLUt9LUw39oZmL14omv8AfTWGiDRd7J94bk=;
- b=lozZ0xgXkoN1P773xjPSbiyY1HMosUdIdlvFKubs0AXZhlgO9+gvoq7QZsV9tTWNoN
- 7HaQYDWSdBDqF3avvAcGK47BktzaBl2D7PKsYozXNMNGfcejgw5vAu/aa8aZK97qHr7v
- 84Q/2rPfRL8hmK5QBbZPyn/j8WdCHoxos2Hg4MgzerpiqQWva+Hq/FbDpYELCK8ZlGjA
- PhSCQBt3oeabQMnBoKCzWUuTfgoCzIw8JV2CEROskkvgoxPVRxUDFrR7ORn2+/FSNnrZ
- gZayVJlUMkwjGmkFJo667qIRaevBFrA48PQQm3GCX3QKnkHxN+57NMGISGqKOXvrhfNc
- QENQ==
+ bh=weKuqzC9tp6/h7jatkkGZ0S6HamZ7GxJD+IJulFZky4=;
+ b=JchK99UlXwNd4Mj5SIkGXTKjhGCNXpsx5qgENcOCQEKUMDzIgMbyHc9hPRqXwIyI4O
+ 7jD+8WvCcHKL7uu6LKT+0bdFrrU0lzYVjf6jJQlM5txTdOtohO68sCVjQzIMQTO1BLS1
+ 1CwEeZ0HL6y5Xf/fB7Kss92nZOvS7Obry6fmqjy6i3Cd3ZTZvmf6WpyFeqB1BAGoSsKJ
+ AYWDVgVzaUz7xiLAzSHZg2euDvHApVBXqyKhLM597/FbLIeoe5tGH3686qwTNf/5Yjgk
+ eIvvSzvU2j/z8AVbksK5uqlUkufBfbpwum258XQcHaxiWpRJwSWeb8Kg0a2xWaPUjpFD
+ HJKw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706331906; x=1706936706;
+ d=1e100.net; s=20230601; t=1706331941; x=1706936741;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=socohSUVvLUt9LUw39oZmL14omv8AfTWGiDRd7J94bk=;
- b=iAuXdqnu6hdAljJ70I5kFVITDCA4p1F9LaiC1L7XeCFYw/dsZsL5U3qQzzbD3hcWgP
- 3TudTS5QpLO3LDsQuo220nJTsZ1+lsjtWwuQvQamZw3XOoL0TPfVhRTMarSZkxXlD5Ys
- sDQM/hmLnAOsGhsAro4sT3ylflVMeghquTYIl2kDSOMVXyAuujc1JfKLMQgiNQNvAmpr
- CrSSPlyieSqnj4sMjzhv8ObOJLlHbebxQNqSwd+H7xCdM88F0eVXfNQnDRrtBNHVDA6v
- R5tTyJgdBqyBMvNUaX79yhFldTr3l/jNBzxr5FwN2s+xvNRxjrKIqGHbReBmY9hL5/C9
- bRsA==
-X-Gm-Message-State: AOJu0Yy10WMShn8P8V8EDghFB0nh3cEMlB+7riOO619WXJQ42BibS68v
- 6fe4qVm4dFIVCAu+TqHeDoye6KaymaMpawDPNqbREimc/kCn0CCG95tPRvxBmA0=
-X-Google-Smtp-Source: AGHT+IG//jn0QZyv/Eu6SL+erJTsdqUBcndb0/tnZU1D3mIuzhPHPx8KxPh5RO6cU0SNN0C83VBQsw==
-X-Received: by 2002:aa7:8457:0:b0:6d9:aaf1:d268 with SMTP id
- r23-20020aa78457000000b006d9aaf1d268mr517873pfn.69.1706331906261; 
- Fri, 26 Jan 2024 21:05:06 -0800 (PST)
+ bh=weKuqzC9tp6/h7jatkkGZ0S6HamZ7GxJD+IJulFZky4=;
+ b=R7keP6w5dtSOe4Kpesy+GfXcvP76RTc21Y29jsplgucOOIVOk9pd4YqksE8B+Dg4SC
+ y2J5kpJcRfOZZkYzUPxXLlhfV9l5LT4VspcPku6+/QJSoCzcARk4VNkaHRTz3lQ0Aym+
+ en19H86WenLbylMEwG5WEM9mYGww9HhYooMWY08SkLo+gjA2Grom62dYjsdt91FN8jV0
+ LTFld0KDZtnm8uGPFmpC2CQW5uswVRH3L/5WlQZDlv8qalcoH1f5K8H1bFXs7rIBuscF
+ hdD0mVZCzL2yRPSuVVgbUp96LFiiQ8nvQHGX3tme8hMOEmpd4Qux8dDQ+qXRoBsx4EpV
+ ashw==
+X-Gm-Message-State: AOJu0Yx5YMSJW7S9cLK8k+8+25314diJrty57732o0FP0E9YSskljRf2
+ AA46eeb+dtMmJv1IYt78vFi8ZYm3Ts9D6CKlJPsC2nQyPVJVHMtIDIS5CszQ+BI=
+X-Google-Smtp-Source: AGHT+IFJgSbso49Rd1Px9udkRJgMmwapp2zH5ljWTOkiLQ2G6L/M5zi3oIsq/tgotTicmt3C+JTHdQ==
+X-Received: by 2002:a9d:3e4d:0:b0:6dd:eebd:cd5f with SMTP id
+ h13-20020a9d3e4d000000b006ddeebdcd5fmr959462otg.48.1706331941057; 
+ Fri, 26 Jan 2024 21:05:41 -0800 (PST)
 Received: from ?IPV6:2001:8003:c96c:3c00:b5dc:ba0f:990f:fb9e?
  ([2001:8003:c96c:3c00:b5dc:ba0f:990f:fb9e])
  by smtp.gmail.com with ESMTPSA id
- d3-20020aa78683000000b006ddc14c416dsm1974542pfo.95.2024.01.26.21.05.04
+ d3-20020aa78683000000b006ddc14c416dsm1974542pfo.95.2024.01.26.21.05.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 26 Jan 2024 21:05:05 -0800 (PST)
-Message-ID: <ef75fa7f-47df-45f7-8310-ae329770092d@linaro.org>
-Date: Sat, 27 Jan 2024 15:05:03 +1000
+ Fri, 26 Jan 2024 21:05:40 -0800 (PST)
+Message-ID: <da1c3d20-2fa4-45d1-89e7-708b8437066e@linaro.org>
+Date: Sat, 27 Jan 2024 15:05:38 +1000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/10] disas/riscv: Clean up includes
+Subject: Re: [PATCH 04/10] aspeed: Clean up includes
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
 References: <20240125163408.1595135-1-peter.maydell@linaro.org>
- <20240125163408.1595135-4-peter.maydell@linaro.org>
+ <20240125163408.1595135-5-peter.maydell@linaro.org>
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240125163408.1595135-4-peter.maydell@linaro.org>
+In-Reply-To: <20240125163408.1595135-5-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
- envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::32b;
+ envelope-from=richard.henderson@linaro.org; helo=mail-ot1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -85,11 +85,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 27 Jan 2024 05:05:12 -0000
+X-List-Received-Date: Sat, 27 Jan 2024 05:05:44 -0000
 
 On 1/26/24 02:34, Peter Maydell wrote:
-> This commit was created with scripts/clean-includes:
->   ./scripts/clean-includes --git disas/riscv disas/riscv*[ch]
+> This commit was created with scripts/clean-includes.
 > 
 > All .c should include qemu/osdep.h first.  The script performs three
 > related cleanups:
@@ -102,10 +101,10 @@ On 1/26/24 02:34, Peter Maydell wrote:
 > 
 > Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
 > ---
->   disas/riscv.h          | 1 -
->   disas/riscv-xthead.c   | 1 +
->   disas/riscv-xventana.c | 1 +
->   3 files changed, 2 insertions(+), 1 deletion(-)
+>   hw/arm/aspeed_eeprom.h     | 1 -
+>   tests/qtest/qtest_aspeed.h | 2 --
+>   hw/arm/aspeed_eeprom.c     | 1 +
+>   3 files changed, 1 insertion(+), 3 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
