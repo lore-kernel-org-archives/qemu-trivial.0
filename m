@@ -1,78 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rTauC-0008Vu-3v
-	for mharc-qemu-trivial@gnu.org; Sat, 27 Jan 2024 00:07:00 -0500
+	id 1rTbcw-0003lS-Ul
+	for mharc-qemu-trivial@gnu.org; Sat, 27 Jan 2024 00:53:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rTauB-0008Vf-HN
- for qemu-trivial@nongnu.org; Sat, 27 Jan 2024 00:06:59 -0500
-Received: from mail-oi1-x231.google.com ([2607:f8b0:4864:20::231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rTau9-0003my-13
- for qemu-trivial@nongnu.org; Sat, 27 Jan 2024 00:06:59 -0500
-Received: by mail-oi1-x231.google.com with SMTP id
- 5614622812f47-3bd7c5b2439so803001b6e.1
- for <qemu-trivial@nongnu.org>; Fri, 26 Jan 2024 21:06:56 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706332015; x=1706936815; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=1nJtLF0cT25q/gKi4XZWH3z/BW/zLAEPFHOyGYOPht0=;
- b=CBwKjbTrcdoGFFP6RKfkwR1TR6KwL2QpMxK1QIv7dMr/VENAy9WMF3gr+DaKDexJea
- tYVkmqmVcMC3AiH3C4tTahO3diXHYHeYcAiF7nUhWA5kaJriDmQaPsUGV51cVzuuqAJ4
- rL6Ejmmj4+Bo+1cERYl5ny1HwNwnu0WyJN/LRSJlvQvAl6oISVTJqfChbbiruv5QxE84
- 37/icmm39QefiDdz0hvNpqPq5GojDZrR9QzZZqVX6qI9cX5D7CfiBp1TJC737a3B2GvV
- KOWrUM7hEZYLcMPcxgTGsIEKdxzi9Hf4c24S4n+t0hq7KJz8Nr00ynwvGVqjz9F7ooWX
- FCHg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706332015; x=1706936815;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=1nJtLF0cT25q/gKi4XZWH3z/BW/zLAEPFHOyGYOPht0=;
- b=laUR7R+LdyeWitNRFhXaNoaXoVgnegsV+AbFJT//CXpaN+VPLqP/SbEFR1mCLGlm6S
- wRnfPjVotmkmiC+NR4815qBanfE9kmb7jm63ulJPwB5VhwNXBBcqYm6dEpGHIL5Ixuvr
- eOUA9X9ASXMsMbwkyLMBUBuV1VxJoR/7GEpem2NLUrI1nfa5cLI2kzR7oV2FaTWDQXyL
- nDPrkcx9xrW1EyhUm9K8sJYwxmK/CTMAuLBRVswN/KMBEHfCABuRncSzmpaA/oTRSaxb
- OlrdjrV9GzQnFFVvysiscraCbMW5ZxegSOVxCArCOGLCFjnC/Uu2nzQGYsyC/fxwHrrj
- 4oNQ==
-X-Gm-Message-State: AOJu0YxpOniX5JGd5n9RkgOJ+Pk0nhYk8xdtUnRz5AwMb+SzImZoVcuN
- zWWx9xVlKm0XPRFBiUHRCnB9FemdebCBbLeiooDxMhZCGEfuAbRMow8TNgtSC+Y=
-X-Google-Smtp-Source: AGHT+IEzlKzdpYCfL5ewhOStpIO8bg8IUnbWYW69U16rzQ4lB3gLy8H7y5EJKXW5ISpFrvYhRZrI3A==
-X-Received: by 2002:a05:6808:13c6:b0:3bd:dd6a:b02 with SMTP id
- d6-20020a05680813c600b003bddd6a0b02mr1348587oiw.48.1706332015508; 
- Fri, 26 Jan 2024 21:06:55 -0800 (PST)
-Received: from ?IPV6:2001:8003:c96c:3c00:b5dc:ba0f:990f:fb9e?
- ([2001:8003:c96c:3c00:b5dc:ba0f:990f:fb9e])
- by smtp.gmail.com with ESMTPSA id
- d3-20020aa78683000000b006ddc14c416dsm1974542pfo.95.2024.01.26.21.06.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 26 Jan 2024 21:06:55 -0800 (PST)
-Message-ID: <08cf813f-f4c7-4b81-9de8-a8058e03e1a8@linaro.org>
-Date: Sat, 27 Jan 2024 15:06:52 +1000
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rTbcv-0003lB-MJ; Sat, 27 Jan 2024 00:53:13 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rTbct-00025b-Ui; Sat, 27 Jan 2024 00:53:13 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 19AC647D30;
+ Sat, 27 Jan 2024 08:53:55 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id E2C606C549;
+ Sat, 27 Jan 2024 08:53:06 +0300 (MSK)
+Message-ID: <c0ed40c7-34e7-4b99-9cbb-f9f3914e5362@tls.msk.ru>
+Date: Sat, 27 Jan 2024 08:53:06 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/10] acpi: Clean up includes
+Subject: Re: [PATCH 00/10] Clean up includes
 Content-Language: en-US
 To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
 References: <20240125163408.1595135-1-peter.maydell@linaro.org>
- <20240125163408.1595135-6-peter.maydell@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240125163408.1595135-6-peter.maydell@linaro.org>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <20240125163408.1595135-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::231;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x231.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,30 +72,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 27 Jan 2024 05:06:59 -0000
+X-List-Received-Date: Sat, 27 Jan 2024 05:53:14 -0000
 
-On 1/26/24 02:34, Peter Maydell wrote:
-> This commit was created with scripts/clean-includes:
->   ./scripts/clean-includes --git acpi include/hw/*/*acpi.h hw/*/*acpi.c
+25.01.2024 19:33, Peter Maydell :
+> This series makes a bunch of automated edits with the clean-includes
+> script. The script performs three related cleanups:
 > 
-> All .c should include qemu/osdep.h first.  The script performs three
-> related cleanups:
+>   * Ensure .c files include qemu/osdep.h first.
+>   * Including it in a .h is redundant, since the .c  already includes
+>     it.  Drop such inclusions.
+>   * Likewise, including headers qemu/osdep.h includes is redundant.
+>     Drop these, too.
 > 
-> * Ensure .c files include qemu/osdep.h first.
-> * Including it in a .h is redundant, since the .c  already includes
->    it.  Drop such inclusions.
-> * Likewise, including headers qemu/osdep.h includes is redundant.
->    Drop these, too.
+> I created the series by looking at a run of the script across the
+> whole tree (./scripts/clean-includes --git includes --all) produces,
+> and then disentangling that into (a) different cohesive parts and (b)
+> files that needed to go into the script's exclude-list.
 > 
-> Signed-off-by: Peter Maydell<peter.maydell@linaro.org>
-> ---
->   include/hw/nvram/fw_cfg_acpi.h  | 1 -
->   include/hw/virtio/virtio-acpi.h | 1 -
->   hw/nvram/fw_cfg-acpi.c          | 1 +
->   hw/virtio/virtio-acpi.c         | 1 +
->   4 files changed, 2 insertions(+), 2 deletions(-)
+> After this series, the tree is still not entirely clean -- there
+> are 20 other files the script wants to change. But at least some
+> of them are things that should be on the exclude list, and some
+> are things which I didn't feel like taking the time to try to
+> decide whether they should be fixed or excluded. I might come
+> back to these at some later date, but I figured this series was
+> enough to be going on with.
+> 
+> thanks
+> -- PMM
+> 
+> Peter Maydell (10):
+>    scripts/clean-includes: Update exclude list
+>    hyperv: Clean up includes
+>    disas/riscv: Clean up includes
+>    aspeed: Clean up includes
+>    acpi: Clean up includes
+>    m68k: Clean up includes
+>    include: Clean up includes
+>    cxl: Clean up includes
+>    riscv: Clean up includes
+>    misc: Clean up includes
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Applied to trivial-patches tree, thanks!
 
-r~
+/mjt
 
