@@ -1,65 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rTbcw-0003lS-Ul
-	for mharc-qemu-trivial@gnu.org; Sat, 27 Jan 2024 00:53:14 -0500
+	id 1rUOzE-0001C8-7U
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Jan 2024 05:35:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rTbcv-0003lB-MJ; Sat, 27 Jan 2024 00:53:13 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rUOzC-0001BO-AY; Mon, 29 Jan 2024 05:35:31 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rTbct-00025b-Ui; Sat, 27 Jan 2024 00:53:13 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 19AC647D30;
- Sat, 27 Jan 2024 08:53:55 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id E2C606C549;
- Sat, 27 Jan 2024 08:53:06 +0300 (MSK)
-Message-ID: <c0ed40c7-34e7-4b99-9cbb-f9f3914e5362@tls.msk.ru>
-Date: Sat, 27 Jan 2024 08:53:06 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 00/10] Clean up includes
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rUOz9-0004Wf-TU; Mon, 29 Jan 2024 05:35:30 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TNl3W6c2Bz6K92Z;
+ Mon, 29 Jan 2024 18:32:07 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id 82D491400D7;
+ Mon, 29 Jan 2024 18:35:11 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Mon, 29 Jan
+ 2024 10:35:11 +0000
+Date: Mon, 29 Jan 2024 10:35:10 +0000
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH 08/10] cxl: Clean up includes
+Message-ID: <20240129103510.00002e80@Huawei.com>
+In-Reply-To: <20240125163408.1595135-9-peter.maydell@linaro.org>
 References: <20240125163408.1595135-1-peter.maydell@linaro.org>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240125163408.1595135-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+ <20240125163408.1595135-9-peter.maydell@linaro.org>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="US-ASCII"
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100002.china.huawei.com (7.191.160.241) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -72,47 +56,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 27 Jan 2024 05:53:14 -0000
+X-List-Received-Date: Mon, 29 Jan 2024 10:35:31 -0000
 
-25.01.2024 19:33, Peter Maydell :
-> This series makes a bunch of automated edits with the clean-includes
-> script. The script performs three related cleanups:
-> 
->   * Ensure .c files include qemu/osdep.h first.
->   * Including it in a .h is redundant, since the .c  already includes
->     it.  Drop such inclusions.
->   * Likewise, including headers qemu/osdep.h includes is redundant.
->     Drop these, too.
-> 
-> I created the series by looking at a run of the script across the
-> whole tree (./scripts/clean-includes --git includes --all) produces,
-> and then disentangling that into (a) different cohesive parts and (b)
-> files that needed to go into the script's exclude-list.
-> 
-> After this series, the tree is still not entirely clean -- there
-> are 20 other files the script wants to change. But at least some
-> of them are things that should be on the exclude list, and some
-> are things which I didn't feel like taking the time to try to
-> decide whether they should be fixed or excluded. I might come
-> back to these at some later date, but I figured this series was
-> enough to be going on with.
-> 
-> thanks
-> -- PMM
-> 
-> Peter Maydell (10):
->    scripts/clean-includes: Update exclude list
->    hyperv: Clean up includes
->    disas/riscv: Clean up includes
->    aspeed: Clean up includes
->    acpi: Clean up includes
->    m68k: Clean up includes
->    include: Clean up includes
->    cxl: Clean up includes
->    riscv: Clean up includes
->    misc: Clean up includes
+On Thu, 25 Jan 2024 16:34:06 +0000
+Peter Maydell <peter.maydell@linaro.org> wrote:
 
-Applied to trivial-patches tree, thanks!
+> This commit was created with scripts/clean-includes.
+> 
+> All .c should include qemu/osdep.h first.  The script performs three
+> related cleanups:
+> 
+> * Ensure .c files include qemu/osdep.h first.
+> * Including it in a .h is redundant, since the .c  already includes
+>   it.  Drop such inclusions.
+> * Likewise, including headers qemu/osdep.h includes is redundant.
+>   Drop these, too.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-/mjt
+Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+
+> ---
+>  hw/cxl/cxl-events.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/hw/cxl/cxl-events.c b/hw/cxl/cxl-events.c
+> index bee6dfaf148..affcf8a34dd 100644
+> --- a/hw/cxl/cxl-events.c
+> +++ b/hw/cxl/cxl-events.c
+> @@ -7,11 +7,9 @@
+>   * COPYING file in the top-level directory.
+>   */
+>  
+> -#include <stdint.h>
+> -
+>  #include "qemu/osdep.h"
+> +
+>  #include "qemu/bswap.h"
+> -#include "qemu/typedefs.h"
+>  #include "qemu/error-report.h"
+>  #include "hw/pci/msi.h"
+>  #include "hw/pci/msix.h"
+
 
