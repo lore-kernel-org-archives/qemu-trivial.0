@@ -1,49 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rUOzE-0001C8-7U
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Jan 2024 05:35:32 -0500
+	id 1rUWPy-0005BL-5A
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Jan 2024 13:31:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rUOzC-0001BO-AY; Mon, 29 Jan 2024 05:35:31 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rUOz9-0004Wf-TU; Mon, 29 Jan 2024 05:35:30 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4TNl3W6c2Bz6K92Z;
- Mon, 29 Jan 2024 18:32:07 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id 82D491400D7;
- Mon, 29 Jan 2024 18:35:11 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.35; Mon, 29 Jan
- 2024 10:35:11 +0000
-Date: Mon, 29 Jan 2024 10:35:10 +0000
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH 08/10] cxl: Clean up includes
-Message-ID: <20240129103510.00002e80@Huawei.com>
-In-Reply-To: <20240125163408.1595135-9-peter.maydell@linaro.org>
-References: <20240125163408.1595135-1-peter.maydell@linaro.org>
- <20240125163408.1595135-9-peter.maydell@linaro.org>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rUWPx-0005B6-4m
+ for qemu-trivial@nongnu.org; Mon, 29 Jan 2024 13:31:37 -0500
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rUWPv-0001vV-EY
+ for qemu-trivial@nongnu.org; Mon, 29 Jan 2024 13:31:36 -0500
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-40eccf4a91dso35798045e9.2
+ for <qemu-trivial@nongnu.org>; Mon, 29 Jan 2024 10:31:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1706553093; x=1707157893; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=AUqrc350wLzgeXX9ItM43M1+gmDqwp5qAUbyxzezjGE=;
+ b=hS3/wezPgGhUQUcI+hMdjXSp2rNVVd5p2iVUTInX4GKZNGY33/bFSCgnLcSsAckYV5
+ 7fAJ+9Rse2+gtzpSnY8uCk+nkyPy2oGO3t/iGxdXkMExgNMP/lVB6FK/frcCPQPaCqD3
+ vUgUdKjF2jUZz4ivc3nHl7QYKDuqvBSf27qChrrfMu6XKRbU4YzAEZFtSSjxvb/jMgwn
+ NvdcL+T7WepQjh3MjbEH2d7p6iQalHhsbB+LoOY4ZSbakuTXAAXnIwQ4wICItoJq39bb
+ f/0G/OjY7+Wr3dlwz1W9rgNxt1oDc6CRg7icwgwmrH1wR248i0N1ZgzBAvJa2rgpHqGl
+ 4orw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1706553093; x=1707157893;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=AUqrc350wLzgeXX9ItM43M1+gmDqwp5qAUbyxzezjGE=;
+ b=TRumAChY/tUThjEY1uDhJaal1sNO/RBp3lJ5JR1kBDCf6E4tkz8acfgCGz2pDYDWa+
+ Ckv60v9sO3RIhqBtxJaOTBSpJhgxN952HFQ3YY7KP/BxkpNZdgiDekV948nudP2C/TAb
+ gZJR7qJfQGKAO65pTRvE+T0EQZ2hTZ++JykSb8tcLuZYt9E5DdnQgx7FksziLG5vkE0P
+ FGu6oDDayRQadICM1G+pXaYdPhjugQbwivJToHSrzCamTsjVbOApk8XaYpz/JbGX4R9c
+ ON+koByHYFx7ebvie+tHMCFI9FuhOlm0wOfxPPzfSwtbm5uCJ68Xb8A8eT335jtD1QPT
+ V1ow==
+X-Gm-Message-State: AOJu0YwXsMdQd0YjBTqSgA/QGnEVY7r9ZH48Ao55U00Qvg1t3+Ul+zOV
+ kRZhDrrNT0wqw58KYlV9NWfzxmfRFDLkhH6PO61EGEdEGuohqIOvlD5Gkj7nSZc=
+X-Google-Smtp-Source: AGHT+IE2O+kMpTYZh2gryVAv3yRBTKinUQqxza8UQQufWP/SrJUmLB6y+R6nw7Dm9FV6TTmI46HcAw==
+X-Received: by 2002:a5d:644d:0:b0:33a:e639:2da1 with SMTP id
+ d13-20020a5d644d000000b0033ae6392da1mr3737052wrw.65.1706553093102; 
+ Mon, 29 Jan 2024 10:31:33 -0800 (PST)
+Received: from m1x-phil.lan ([176.187.219.39])
+ by smtp.gmail.com with ESMTPSA id
+ i8-20020adfefc8000000b0033af093e296sm2494819wrp.15.2024.01.29.10.31.32
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 29 Jan 2024 10:31:32 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, David Hildenbrand <david@redhat.com>,
+ Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] backends/hostmem: Fix block comments style (checkpatch.pl
+ warnings)
+Date: Mon, 29 Jan 2024 19:31:30 +0100
+Message-ID: <20240129183130.97447-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset="US-ASCII"
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100002.china.huawei.com (7.191.160.241) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -51
-X-Spam_score: -5.2
-X-Spam_bar: -----
-X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -56,46 +80,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Jan 2024 10:35:31 -0000
+X-List-Received-Date: Mon, 29 Jan 2024 18:31:37 -0000
 
-On Thu, 25 Jan 2024 16:34:06 +0000
-Peter Maydell <peter.maydell@linaro.org> wrote:
+While re-indenting code in host_memory_backend_memory_complete(),
+we triggered various "Block comments use a leading /* on a separate
+line" warnings from checkpatch.pl. Correct the comments style.
 
-> This commit was created with scripts/clean-includes.
-> 
-> All .c should include qemu/osdep.h first.  The script performs three
-> related cleanups:
-> 
-> * Ensure .c files include qemu/osdep.h first.
-> * Including it in a .h is redundant, since the .c  already includes
->   it.  Drop such inclusions.
-> * Likewise, including headers qemu/osdep.h includes is redundant.
->   Drop these, too.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Fixes: e199f7ad4d ("backends: Simplify host_memory_backend_memory_complete()")
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ backends/hostmem.c | 12 ++++++++----
+ 1 file changed, 8 insertions(+), 4 deletions(-)
 
-Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-
-> ---
->  hw/cxl/cxl-events.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
-> 
-> diff --git a/hw/cxl/cxl-events.c b/hw/cxl/cxl-events.c
-> index bee6dfaf148..affcf8a34dd 100644
-> --- a/hw/cxl/cxl-events.c
-> +++ b/hw/cxl/cxl-events.c
-> @@ -7,11 +7,9 @@
->   * COPYING file in the top-level directory.
->   */
->  
-> -#include <stdint.h>
-> -
->  #include "qemu/osdep.h"
-> +
->  #include "qemu/bswap.h"
-> -#include "qemu/typedefs.h"
->  #include "qemu/error-report.h"
->  #include "hw/pci/msi.h"
->  #include "hw/pci/msix.h"
+diff --git a/backends/hostmem.c b/backends/hostmem.c
+index 30f69b2cb5..987f6f591e 100644
+--- a/backends/hostmem.c
++++ b/backends/hostmem.c
+@@ -344,9 +344,11 @@ host_memory_backend_memory_complete(UserCreatable *uc, Error **errp)
+     unsigned long lastbit = find_last_bit(backend->host_nodes, MAX_NODES);
+     /* lastbit == MAX_NODES means maxnode = 0 */
+     unsigned long maxnode = (lastbit + 1) % (MAX_NODES + 1);
+-    /* ensure policy won't be ignored in case memory is preallocated
++    /*
++     * Ensure policy won't be ignored in case memory is preallocated
+      * before mbind(). note: MPOL_MF_STRICT is ignored on hugepages so
+-     * this doesn't catch hugepage case. */
++     * this doesn't catch hugepage case.
++     */
+     unsigned flags = MPOL_MF_STRICT | MPOL_MF_MOVE;
+     int mode = backend->policy;
+ 
+@@ -363,7 +365,8 @@ host_memory_backend_memory_complete(UserCreatable *uc, Error **errp)
+         return;
+     }
+ 
+-    /* We can have up to MAX_NODES nodes, but we need to pass maxnode+1
++    /*
++     * We can have up to MAX_NODES nodes, but we need to pass maxnode+1
+      * as argument to mbind() due to an old Linux bug (feature?) which
+      * cuts off the last specified node. This means backend->host_nodes
+      * must have MAX_NODES+1 bits available.
+@@ -391,7 +394,8 @@ host_memory_backend_memory_complete(UserCreatable *uc, Error **errp)
+         }
+     }
+ #endif
+-    /* Preallocate memory after the NUMA policy has been instantiated.
++    /*
++     * Preallocate memory after the NUMA policy has been instantiated.
+      * This is necessary to guarantee memory is allocated with
+      * specified NUMA policy in place.
+      */
+-- 
+2.41.0
 
 
