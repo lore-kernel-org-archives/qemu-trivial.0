@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rUqUE-0000x9-HL
+	id 1rUqUE-0000xi-Tz
 	for mharc-qemu-trivial@gnu.org; Tue, 30 Jan 2024 10:57:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1rUqUB-0000vb-CT
- for qemu-trivial@nongnu.org; Tue, 30 Jan 2024 10:57:20 -0500
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1rUqUD-0000wL-1m
+ for qemu-trivial@nongnu.org; Tue, 30 Jan 2024 10:57:21 -0500
 Received: from us-smtp-delivery-44.mimecast.com ([207.211.30.44])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1rUqU3-0004gJ-5G
- for qemu-trivial@nongnu.org; Tue, 30 Jan 2024 10:57:12 -0500
+ (Exim 4.90_1) (envelope-from <groug@kaod.org>) id 1rUqU3-0004gT-25
+ for qemu-trivial@nongnu.org; Tue, 30 Jan 2024 10:57:20 -0500
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-187-Y4QX5mU9P0uR18IAj3Mw3A-1; Tue, 30 Jan 2024 10:57:00 -0500
-X-MC-Unique: Y4QX5mU9P0uR18IAj3Mw3A-1
+ us-mta-609-dmGTbhDxPC2mzpJpAkWsTg-1; Tue, 30 Jan 2024 10:57:02 -0500
+X-MC-Unique: dmGTbhDxPC2mzpJpAkWsTg-1
 Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
  [10.11.54.10])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AA66C85A58B;
- Tue, 30 Jan 2024 15:56:59 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id D469385A58B;
+ Tue, 30 Jan 2024 15:57:01 +0000 (UTC)
 Received: from bahia.redhat.com (unknown [10.39.192.68])
- by smtp.corp.redhat.com (Postfix) with ESMTP id BA0D2492BE2;
- Tue, 30 Jan 2024 15:56:57 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTP id E4FE5492BE2;
+ Tue, 30 Jan 2024 15:56:59 +0000 (UTC)
 From: Greg Kurz <groug@kaod.org>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
@@ -35,9 +35,9 @@ Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org,
  Eduardo Habkost <eduardo@habkost.net>, Ani Sinha <anisinha@redhat.com>,
  Greg Kurz <groug@kaod.org>
-Subject: [PATCH 1/3] hw/i386: Add `\n` to hint message
-Date: Tue, 30 Jan 2024 16:56:51 +0100
-Message-ID: <20240130155653.142283-2-groug@kaod.org>
+Subject: [PATCH 2/3] hw/loongarch: Add `\n` to hint message
+Date: Tue, 30 Jan 2024 16:56:52 +0100
+Message-ID: <20240130155653.142283-3-groug@kaod.org>
 In-Reply-To: <20240130155653.142283-1-groug@kaod.org>
 References: <20240130155653.142283-1-groug@kaod.org>
 MIME-Version: 1.0
@@ -63,37 +63,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jan 2024 15:57:20 -0000
+X-List-Received-Date: Tue, 30 Jan 2024 15:57:21 -0000
 
 error_fprintf() doesn't add newlines.
 
 Signed-off-by: Greg Kurz <groug@kaod.org>
 ---
- hw/i386/acpi-build.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/loongarch/acpi-build.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index edc979379c03..e990b0ae927f 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -2697,7 +2697,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-                         " migration may not work",
-                         tables_blob->len, legacy_table_size);
-             error_printf("Try removing CPUs, NUMA nodes, memory slots"
--                         " or PCI bridges.");
-+                         " or PCI bridges.\n");
-         }
-         g_array_set_size(tables_blob, legacy_table_size);
-     } else {
-@@ -2709,7 +2709,7 @@ void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-                         " migration may not work",
-                         tables_blob->len, ACPI_BUILD_TABLE_SIZE / 2);
-             error_printf("Try removing CPUs, NUMA nodes, memory slots"
--                         " or PCI bridges.");
-+                         " or PCI bridges.\n");
-         }
-         acpi_align_size(tables_blob, ACPI_BUILD_TABLE_SIZE);
+diff --git a/hw/loongarch/acpi-build.c b/hw/loongarch/acpi-build.c
+index 730bc4a748c4..a1c419874123 100644
+--- a/hw/loongarch/acpi-build.c
++++ b/hw/loongarch/acpi-build.c
+@@ -509,7 +509,7 @@ static void acpi_build(AcpiBuildTables *tables, MachineState *machine)
+                     " migration may not work",
+                     tables_blob->len, ACPI_BUILD_TABLE_SIZE / 2);
+         error_printf("Try removing CPUs, NUMA nodes, memory slots"
+-                     " or PCI bridges.");
++                     " or PCI bridges.\n");
      }
+ 
+     acpi_align_size(tables->linker->cmd_blob, ACPI_BUILD_ALIGN_SIZE);
 -- 
 2.43.0
 
