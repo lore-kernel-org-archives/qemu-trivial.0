@@ -1,74 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rUhp7-0003ey-Tm
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jan 2024 01:42:21 -0500
+	id 1rUhu4-0005hb-W4
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jan 2024 01:47:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rUhp5-0003dx-LK
- for qemu-trivial@nongnu.org; Tue, 30 Jan 2024 01:42:19 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rUhu3-0005hB-5J
+ for qemu-trivial@nongnu.org; Tue, 30 Jan 2024 01:47:27 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rUhp3-00089l-2W
- for qemu-trivial@nongnu.org; Tue, 30 Jan 2024 01:42:19 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rUhu1-0001OH-Gu
+ for qemu-trivial@nongnu.org; Tue, 30 Jan 2024 01:47:26 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1706596935;
+ s=mimecast20190719; t=1706597230;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=XSEI9BLbbOU2GltWvfzPyntdgNCvo1gqYesJ1268dws=;
- b=etwML/PUkuPVKJNR3cF5YyJ7AUQmIn9wwI4XWClnGcdAwVPOf75+6u07nqZkWmHIcvX+Yj
- W5wizLxzQNkOJ5WmOcFvm98AQMPWYvGDGsR5iQvhPaXhQI4zGIKQ0ZE4rxqWs203noOBxQ
- q0QawGBYQ/4nUbrmQckA4BVgJi18LXw=
+ bh=FO2jTTe9iw26yzYpnml8mvi2aCRHyt9dHaPIFvIehvk=;
+ b=gtq1VBpGbEHP94zarB+saORjhZVvfJurZghrZ4Xj545mtFHDSgizuf3+WgYaToZzSZEjtG
+ cBPmIBTRv9WJRz71tcadDZC4M33KiPt5nanzbtty4NfeZDLjiLS/ZbYnN+77rAaUVt9SaO
+ 6y8r9eGsXIcUiBFMNV+dA9lWUEIYpZ4=
 Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
  [209.85.208.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-340-Xzi9UPWrO8iKugMGE9fwNg-1; Tue, 30 Jan 2024 01:42:13 -0500
-X-MC-Unique: Xzi9UPWrO8iKugMGE9fwNg-1
+ us-mta-648-ukMfuOcWNXGUP2qsXhw-ng-1; Tue, 30 Jan 2024 01:47:08 -0500
+X-MC-Unique: ukMfuOcWNXGUP2qsXhw-ng-1
 Received: by mail-ed1-f70.google.com with SMTP id
- 4fb4d7f45d1cf-55efeee2d29so925364a12.1
- for <qemu-trivial@nongnu.org>; Mon, 29 Jan 2024 22:42:13 -0800 (PST)
+ 4fb4d7f45d1cf-5597d3e0aa3so2239711a12.0
+ for <qemu-trivial@nongnu.org>; Mon, 29 Jan 2024 22:47:08 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706596932; x=1707201732;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=XSEI9BLbbOU2GltWvfzPyntdgNCvo1gqYesJ1268dws=;
- b=wK+5wLu2bCtukc/2hdWdS0ia8Hf6WBNOtm/ieuZheKXQFRaCBy+JIeukvR4CKyi4YS
- uyGu/JZvn9J4TEhchjE3rZGD2NMfnNus7ZbwYCxJAbcDFXh1zIruNgo7JT+ksGyBkZ7k
- us/z0MUqSDeF5ILMRgA/bHClsjBiS49GL2ezky4OPvKwdpVJySffXJHpl3aEgYJ+Iz/F
- b+3T12uttx4voLKNW+4zNs1ULpOS9nPGte00hOC6PEgobMOO5gfGcz+UEbP55JurJ6ES
- 8EDPUtp+C5h53HdJSMlO9WnAhOAAA15Q3gOEE9qjHpJuz+DCdUnypYE2cO2E9zReEaQm
- RgdA==
-X-Gm-Message-State: AOJu0YysAPNKWnIx3bUKVEcCzCQcbajq8oflO2A2t9336vgiqNSOVGnr
- RzThGiFyBiqUEYDzl01EOiBlLZd1mG8kZDDqGenHAtxUqQK93tUn8UniRmp6OVZfrbwpRwb7zrY
- DAYkJpp2Jd3iwx7HHl+vMAO0W3cj2bmcvpVBPghw4AnO31qonOmSjGR4=
-X-Received: by 2002:a05:6402:35c4:b0:55e:9ddd:a03 with SMTP id
- z4-20020a05640235c400b0055e9ddd0a03mr6677737edc.9.1706596932613; 
- Mon, 29 Jan 2024 22:42:12 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF07Vb1JDbGZ7BRMGBkHTPWyebY7J/+zbnPnx2xjsF8HzWC+9q/KvGqUr3tVMMymQ12MX41Dw==
-X-Received: by 2002:a05:6402:35c4:b0:55e:9ddd:a03 with SMTP id
- z4-20020a05640235c400b0055e9ddd0a03mr6677714edc.9.1706596932337; 
- Mon, 29 Jan 2024 22:42:12 -0800 (PST)
+ d=1e100.net; s=20230601; t=1706597227; x=1707202027;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=FO2jTTe9iw26yzYpnml8mvi2aCRHyt9dHaPIFvIehvk=;
+ b=Fa9xGfOQo+EniEB3B/sjYJHt7IzRlu78cSxVml+Hbw56U3dlq1y4RFfFsNQPpx9oup
+ fOn7U/cF2jXXOqk7orzgz/wnu6APNSCFGcl39G1t/iiDzWB8H4xuZStCVkOUoSwV6K9c
+ LSxvvawHtwLLWISgozdd5VC7LDTeowZP7NqEQjKhXe160ZPg8pM8Lrkf8b2l2vfMDSM5
+ YpG0KJ1MRjzGLLXzzc8e5jAAug2MVHav2DZQYjQHltG1Bp5/joTeF9nl45g51iHOOZec
+ OFzWsqsl+1IFCMJNZCCA2VeU2p8iPlb8KfNzCFlhH1gBWHXqDFE9oOThI7Yo0YcBusMo
+ tQkg==
+X-Gm-Message-State: AOJu0YyBdPL/UxGq4CDwP0cnEFQep03uvk14zAoUBn+597UC4TQ1XasL
+ HjLQ+VIPcR95ZOtF+PT54ZNlRxWKTN1/d3bbHRWXLc+e2RDN1gCDY6hs6DqQdW/NLIxqGU6LKAc
+ /ycti48IzUOHSD/HTbA5EPVonQUTZJ8Uzz7l/Y8ZrzZjnV3JTcKXEQfqKJa23n30=
+X-Received: by 2002:a05:6402:268c:b0:55d:3007:96c0 with SMTP id
+ w12-20020a056402268c00b0055d300796c0mr7393943edd.0.1706597227388; 
+ Mon, 29 Jan 2024 22:47:07 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGUZn8F77E8Krl4mn2WaTwILevMQwrc+cPJnDguG0CgkOXRIyFLYMKr41A7tNs6OwJqfG5Ahw==
+X-Received: by 2002:a05:6402:268c:b0:55d:3007:96c0 with SMTP id
+ w12-20020a056402268c00b0055d300796c0mr7393936edd.0.1706597227082; 
+ Mon, 29 Jan 2024 22:47:07 -0800 (PST)
 Received: from [192.168.0.9] (ip-109-43-177-196.web.vodafone.de.
  [109.43.177.196]) by smtp.gmail.com with ESMTPSA id
- e8-20020a056402104800b0055ef2c893b3sm2206361edu.52.2024.01.29.22.42.11
+ cq16-20020a056402221000b0055f02661ae2sm1744274edb.78.2024.01.29.22.47.05
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Jan 2024 22:42:11 -0800 (PST)
-Message-ID: <7fe7bec4-95e8-40ca-8e8f-d4f9cd49385e@redhat.com>
-Date: Tue, 30 Jan 2024 07:42:10 +0100
+ Mon, 29 Jan 2024 22:47:06 -0800 (PST)
+Message-ID: <7313b8b5-7ebc-44e7-b4b0-e8c339483124@redhat.com>
+Date: Tue, 30 Jan 2024 07:47:05 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/intc/xics: Include missing 'cpu.h' header
+Subject: Re: [PATCH] hw/hyperv: Include missing headers
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- Harsh Prateek Bora <harshpb@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- David Gibson <david@gibson.dropbear.id.au>, qemu-ppc@nongnu.org,
- Anton Johansson <anjo@rev.ng>, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240129170529.74305-1-philmd@linaro.org>
+ Roman Kagan <rvkagan@yandex-team.ru>, qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Anton Johansson <anjo@rev.ng>,
+ qemu-block@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20240129170028.74012-1-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -112,7 +107,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240129170529.74305-1-philmd@linaro.org>
+In-Reply-To: <20240129170028.74012-1-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -140,34 +135,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jan 2024 06:42:20 -0000
+X-List-Received-Date: Tue, 30 Jan 2024 06:47:27 -0000
 
-On 29/01/2024 18.05, Philippe Mathieu-Daudé wrote:
+On 29/01/2024 18.00, Philippe Mathieu-Daudé wrote:
 > Include missing headers in order to avoid when refactoring
 > unrelated headers:
 > 
->    hw/intc/xics.c: In function 'icp_realize':
->    hw/intc/xics.c:304:5: error: unknown type name 'PowerPCCPU'
->      304 |     PowerPCCPU *cpu;
->          |     ^~~~~~~~~~
+>    hw/hyperv/hyperv.c:33:18: error: field ‘msg_page_mr’ has incomplete type
+>      33 |     MemoryRegion msg_page_mr;
+>         |                  ^~~~~~~~~~~
+>    hw/hyperv/hyperv.c: In function ‘synic_update’:
+>    hw/hyperv/hyperv.c:64:13: error: implicit declaration of function ‘memory_region_del_subregion’ [-Werror=implicit-function-declaration]
+>      64 |             memory_region_del_subregion(get_system_memory(),
+>         |             ^~~~~~~~~~~~~~~~~~~~~~~~~~~
+>    hw/hyperv/hyperv.c: In function ‘hyperv_hcall_signal_event’:
+>    hw/hyperv/hyperv.c:683:17: error: implicit declaration of function ‘ldq_phys’; did you mean ‘ldub_phys’? [-Werror=implicit-function-declaration]
+>     683 |         param = ldq_phys(&address_space_memory, addr);
+>         |                 ^~~~~~~~
+>         |                 ldub_phys
+>    hw/hyperv/hyperv.c:683:17: error: nested extern declaration of ‘ldq_phys’ [-Werror=nested-externs]
+>    hw/hyperv/hyperv.c: In function ‘hyperv_hcall_retreive_dbg_data’:
+>    hw/hyperv/hyperv.c:792:24: error: ‘TARGET_PAGE_SIZE’ undeclared (first use in this function); did you mean ‘TARGET_PAGE_BITS’?
+>     792 |     msg.u.recv.count = TARGET_PAGE_SIZE - sizeof(*debug_data_out);
+>         |                        ^~~~~~~~~~~~~~~~
+>         |                        TARGET_PAGE_BITS
+>    hw/hyperv/hyperv.c: In function ‘hyperv_syndbg_send’:
+>    hw/hyperv/hyperv.c:885:16: error: ‘HV_SYNDBG_STATUS_INVALID’ undeclared (first use in this function)
+>     885 |         return HV_SYNDBG_STATUS_INVALID;
+>         |                ^~~~~~~~~~~~~~~~~~~~~~~~
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   hw/intc/xics.c | 1 +
->   1 file changed, 1 insertion(+)
+> BTW who maintains this code?
 > 
-> diff --git a/hw/intc/xics.c b/hw/intc/xics.c
-> index 8b25787227..700abfa7a6 100644
-> --- a/hw/intc/xics.c
-> +++ b/hw/intc/xics.c
-> @@ -40,6 +40,7 @@
->   #include "hw/irq.h"
+> $ ./scripts/get_maintainer.pl -f hw/hyperv/hyperv.c
+> get_maintainer.pl: No maintainers found, printing recent contributors.
+> get_maintainer.pl: Do not blindly cc: them on patches!  Use common sense.
+> ---
+>   hw/hyperv/hyperv.c | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/hw/hyperv/hyperv.c b/hw/hyperv/hyperv.c
+> index 57b402b956..6c4a18dd0e 100644
+> --- a/hw/hyperv/hyperv.c
+> +++ b/hw/hyperv/hyperv.c
+> @@ -12,6 +12,7 @@
+>   #include "qemu/module.h"
+>   #include "qapi/error.h"
+>   #include "exec/address-spaces.h"
+> +#include "exec/memory.h"
 >   #include "sysemu/kvm.h"
->   #include "sysemu/reset.h"
-> +#include "target/ppc/cpu.h"
+>   #include "qemu/bitops.h"
+>   #include "qemu/error-report.h"
+> @@ -21,6 +22,9 @@
+>   #include "qemu/rcu_queue.h"
+>   #include "hw/hyperv/hyperv.h"
+>   #include "qom/object.h"
+> +#include "target/i386/kvm/hyperv-proto.h"
+> +#include "target/i386/cpu.h"
+> +#include "exec/cpu-all.h"
 >   
->   void icp_pic_print_info(ICPState *icp, Monitor *mon)
->   {
+>   struct SynICState {
+>       DeviceState parent_obj;
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
