@@ -1,71 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rUWPy-0005BL-5A
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Jan 2024 13:31:38 -0500
+	id 1rUcEc-0003nr-Ff
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Jan 2024 19:44:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rUWPx-0005B6-4m
- for qemu-trivial@nongnu.org; Mon, 29 Jan 2024 13:31:37 -0500
-Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rUcES-0003jS-OW; Mon, 29 Jan 2024 19:44:08 -0500
+Received: from mail-vs1-xe2d.google.com ([2607:f8b0:4864:20::e2d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rUWPv-0001vV-EY
- for qemu-trivial@nongnu.org; Mon, 29 Jan 2024 13:31:36 -0500
-Received: by mail-wm1-x329.google.com with SMTP id
- 5b1f17b1804b1-40eccf4a91dso35798045e9.2
- for <qemu-trivial@nongnu.org>; Mon, 29 Jan 2024 10:31:34 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1rUcER-0002aN-3B; Mon, 29 Jan 2024 19:44:08 -0500
+Received: by mail-vs1-xe2d.google.com with SMTP id
+ ada2fe7eead31-46b1cfd38feso495460137.0; 
+ Mon, 29 Jan 2024 16:44:06 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1706553093; x=1707157893; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=AUqrc350wLzgeXX9ItM43M1+gmDqwp5qAUbyxzezjGE=;
- b=hS3/wezPgGhUQUcI+hMdjXSp2rNVVd5p2iVUTInX4GKZNGY33/bFSCgnLcSsAckYV5
- 7fAJ+9Rse2+gtzpSnY8uCk+nkyPy2oGO3t/iGxdXkMExgNMP/lVB6FK/frcCPQPaCqD3
- vUgUdKjF2jUZz4ivc3nHl7QYKDuqvBSf27qChrrfMu6XKRbU4YzAEZFtSSjxvb/jMgwn
- NvdcL+T7WepQjh3MjbEH2d7p6iQalHhsbB+LoOY4ZSbakuTXAAXnIwQ4wICItoJq39bb
- f/0G/OjY7+Wr3dlwz1W9rgNxt1oDc6CRg7icwgwmrH1wR248i0N1ZgzBAvJa2rgpHqGl
- 4orw==
+ d=gmail.com; s=20230601; t=1706575445; x=1707180245; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=94jabcGHwtMHKpLXpnpRuzdMZgPpwf3Ll9WdFIs/pI8=;
+ b=djZ5chLy8KBIy0yOkgIZXeiN/bN37kHvGZO+zxDxmNllBTk3NEuenLM5D7LAFi9sbb
+ czHJ3f1IaLhuIuyDm/up9qlqGyOjUYEAjbyGqA27mjY3R0DZ1IWNzaEiyVJ0cH36aZVA
+ TdXrkzPyOq6dgdECDAEDeaCUewimycos+7ux2opgRbZVs7nyKX3gWKfc/JVCc0O5kUNS
+ qA2xugiQBX5A1WQUd2UY4zjEsH6dm4WrnE7VId9jl+MPGzP3+JK5T9ITtnYU6H5XF/Na
+ 6fEUta4rq7oLFhw2K66EL3sMtxqewXGIck7ZJqiFXxy8+M9UqwH84nOZNd70cECFMk14
+ Rayg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706553093; x=1707157893;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=AUqrc350wLzgeXX9ItM43M1+gmDqwp5qAUbyxzezjGE=;
- b=TRumAChY/tUThjEY1uDhJaal1sNO/RBp3lJ5JR1kBDCf6E4tkz8acfgCGz2pDYDWa+
- Ckv60v9sO3RIhqBtxJaOTBSpJhgxN952HFQ3YY7KP/BxkpNZdgiDekV948nudP2C/TAb
- gZJR7qJfQGKAO65pTRvE+T0EQZ2hTZ++JykSb8tcLuZYt9E5DdnQgx7FksziLG5vkE0P
- FGu6oDDayRQadICM1G+pXaYdPhjugQbwivJToHSrzCamTsjVbOApk8XaYpz/JbGX4R9c
- ON+koByHYFx7ebvie+tHMCFI9FuhOlm0wOfxPPzfSwtbm5uCJ68Xb8A8eT335jtD1QPT
- V1ow==
-X-Gm-Message-State: AOJu0YwXsMdQd0YjBTqSgA/QGnEVY7r9ZH48Ao55U00Qvg1t3+Ul+zOV
- kRZhDrrNT0wqw58KYlV9NWfzxmfRFDLkhH6PO61EGEdEGuohqIOvlD5Gkj7nSZc=
-X-Google-Smtp-Source: AGHT+IE2O+kMpTYZh2gryVAv3yRBTKinUQqxza8UQQufWP/SrJUmLB6y+R6nw7Dm9FV6TTmI46HcAw==
-X-Received: by 2002:a5d:644d:0:b0:33a:e639:2da1 with SMTP id
- d13-20020a5d644d000000b0033ae6392da1mr3737052wrw.65.1706553093102; 
- Mon, 29 Jan 2024 10:31:33 -0800 (PST)
-Received: from m1x-phil.lan ([176.187.219.39])
- by smtp.gmail.com with ESMTPSA id
- i8-20020adfefc8000000b0033af093e296sm2494819wrp.15.2024.01.29.10.31.32
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 29 Jan 2024 10:31:32 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, David Hildenbrand <david@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH] backends/hostmem: Fix block comments style (checkpatch.pl
- warnings)
-Date: Mon, 29 Jan 2024 19:31:30 +0100
-Message-ID: <20240129183130.97447-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
+ d=1e100.net; s=20230601; t=1706575445; x=1707180245;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=94jabcGHwtMHKpLXpnpRuzdMZgPpwf3Ll9WdFIs/pI8=;
+ b=Z6TGmvhp5zm1GD3OdS23OdI1oLltLlt8Tw29MCuWf2t/kCMyo9hi9MnhOMF//HEQ/A
+ m0x77xMjvPN791tF/nBomCA/dO3zBEAh4tY88Kl9ZkFrBAJCwNHH89UWyk4+ohw1aaoU
+ 6CTpDil/XcOIo/4U3IVnbeCN/6rw9xcb/TEM+gagMGVd67Eh/3XzjzHkwoxJWNkP1Y+j
+ NYKz/vpsvk9OAfU2z+9qDlK+DCYPC4P+YA/Nrw1C5j0JKudOmUs0OQbVaVWh9p0aPrO1
+ y66ACQeELidfRhkGH1U6OGRbyxA8laGBjA1C4jTiogv1mriTEiJweEV8z0mM9gFqh7qL
+ LltA==
+X-Gm-Message-State: AOJu0Yz2a0RwcoR6zmbhIG9VH9u6VcEiotDcOUKAY/hMGd12O0wTIiZ5
+ LnspQDaqQqBK9mEeJ/wEPmiZnT1fj6qezZ26eBCsfPABst/EbGH+ieQUcU+miNqTBYTRpwHASqI
+ T9FcDm9GZJtn50tzssNc7GKQjyJs=
+X-Google-Smtp-Source: AGHT+IE75ECynGQQO4ZCZ/6BlGPPumjYB2xzzme4Zwv5UxujhGRE/pliYK66SK6fGFhPU8me/XW7JiKVdisCBek9j74=
+X-Received: by 2002:a67:e9d9:0:b0:46b:213c:af1d with SMTP id
+ q25-20020a67e9d9000000b0046b213caf1dmr4444975vso.17.1706575445099; Mon, 29
+ Jan 2024 16:44:05 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::329;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x329.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+References: <20240125163408.1595135-1-peter.maydell@linaro.org>
+ <20240125163408.1595135-10-peter.maydell@linaro.org>
+In-Reply-To: <20240125163408.1595135-10-peter.maydell@linaro.org>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 30 Jan 2024 10:43:39 +1000
+Message-ID: <CAKmqyKNd5ePr0auTp0KhvhVGo8mAf34OW_-f5t=X_1UPRubDzw@mail.gmail.com>
+Subject: Re: [PATCH 09/10] riscv: Clean up includes
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::e2d;
+ envelope-from=alistair23@gmail.com; helo=mail-vs1-xe2d.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -80,57 +77,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Jan 2024 18:31:37 -0000
+X-List-Received-Date: Tue, 30 Jan 2024 00:44:13 -0000
 
-While re-indenting code in host_memory_backend_memory_complete(),
-we triggered various "Block comments use a leading /* on a separate
-line" warnings from checkpatch.pl. Correct the comments style.
+On Fri, Jan 26, 2024 at 2:35=E2=80=AFAM Peter Maydell <peter.maydell@linaro=
+.org> wrote:
+>
+> This commit was created with scripts/clean-includes:
+>  ./scripts/clean-includes --git riscv target/riscv/*.[ch]
+>
+> All .c should include qemu/osdep.h first.  The script performs three
+> related cleanups:
+>
+> * Ensure .c files include qemu/osdep.h first.
+> * Including it in a .h is redundant, since the .c  already includes
+>   it.  Drop such inclusions.
+> * Likewise, including headers qemu/osdep.h includes is redundant.
+>   Drop these, too.
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Fixes: e199f7ad4d ("backends: Simplify host_memory_backend_memory_complete()")
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- backends/hostmem.c | 12 ++++++++----
- 1 file changed, 8 insertions(+), 4 deletions(-)
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
-diff --git a/backends/hostmem.c b/backends/hostmem.c
-index 30f69b2cb5..987f6f591e 100644
---- a/backends/hostmem.c
-+++ b/backends/hostmem.c
-@@ -344,9 +344,11 @@ host_memory_backend_memory_complete(UserCreatable *uc, Error **errp)
-     unsigned long lastbit = find_last_bit(backend->host_nodes, MAX_NODES);
-     /* lastbit == MAX_NODES means maxnode = 0 */
-     unsigned long maxnode = (lastbit + 1) % (MAX_NODES + 1);
--    /* ensure policy won't be ignored in case memory is preallocated
-+    /*
-+     * Ensure policy won't be ignored in case memory is preallocated
-      * before mbind(). note: MPOL_MF_STRICT is ignored on hugepages so
--     * this doesn't catch hugepage case. */
-+     * this doesn't catch hugepage case.
-+     */
-     unsigned flags = MPOL_MF_STRICT | MPOL_MF_MOVE;
-     int mode = backend->policy;
- 
-@@ -363,7 +365,8 @@ host_memory_backend_memory_complete(UserCreatable *uc, Error **errp)
-         return;
-     }
- 
--    /* We can have up to MAX_NODES nodes, but we need to pass maxnode+1
-+    /*
-+     * We can have up to MAX_NODES nodes, but we need to pass maxnode+1
-      * as argument to mbind() due to an old Linux bug (feature?) which
-      * cuts off the last specified node. This means backend->host_nodes
-      * must have MAX_NODES+1 bits available.
-@@ -391,7 +394,8 @@ host_memory_backend_memory_complete(UserCreatable *uc, Error **errp)
-         }
-     }
- #endif
--    /* Preallocate memory after the NUMA policy has been instantiated.
-+    /*
-+     * Preallocate memory after the NUMA policy has been instantiated.
-      * This is necessary to guarantee memory is allocated with
-      * specified NUMA policy in place.
-      */
--- 
-2.41.0
+Alistair
 
+> ---
+>  target/riscv/vector_internals.h | 1 -
+>  target/riscv/vector_internals.c | 1 +
+>  2 files changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/target/riscv/vector_internals.h b/target/riscv/vector_intern=
+als.h
+> index 8133111e5f6..842765f6c16 100644
+> --- a/target/riscv/vector_internals.h
+> +++ b/target/riscv/vector_internals.h
+> @@ -19,7 +19,6 @@
+>  #ifndef TARGET_RISCV_VECTOR_INTERNALS_H
+>  #define TARGET_RISCV_VECTOR_INTERNALS_H
+>
+> -#include "qemu/osdep.h"
+>  #include "qemu/bitops.h"
+>  #include "cpu.h"
+>  #include "tcg/tcg-gvec-desc.h"
+> diff --git a/target/riscv/vector_internals.c b/target/riscv/vector_intern=
+als.c
+> index 9cf5c17cdea..12f5964fbbe 100644
+> --- a/target/riscv/vector_internals.c
+> +++ b/target/riscv/vector_internals.c
+> @@ -16,6 +16,7 @@
+>   * this program.  If not, see <http://www.gnu.org/licenses/>.
+>   */
+>
+> +#include "qemu/osdep.h"
+>  #include "vector_internals.h"
+>
+>  /* set agnostic elements to 1s */
+> --
+> 2.34.1
+>
+>
 
