@@ -1,66 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rUrdy-00039i-Nk
-	for mharc-qemu-trivial@gnu.org; Tue, 30 Jan 2024 12:11:30 -0500
+	id 1rUreU-000490-Fl
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jan 2024 12:12:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rUrdj-0002wY-5o
- for qemu-trivial@nongnu.org; Tue, 30 Jan 2024 12:11:15 -0500
+ id 1rUreS-00041r-K4
+ for qemu-trivial@nongnu.org; Tue, 30 Jan 2024 12:12:00 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1rUrdh-0003WD-Mq
- for qemu-trivial@nongnu.org; Tue, 30 Jan 2024 12:11:14 -0500
+ id 1rUreR-0003fC-3Z
+ for qemu-trivial@nongnu.org; Tue, 30 Jan 2024 12:12:00 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1706634673;
+ s=mimecast20190719; t=1706634718;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=AiFSls8vnBdUuS+QjzaLq58UQZSM3qooD6fk+VI55xs=;
- b=NANgKhlJC4s6uwxsYbLh5n7jIxTQg/odgKCp9BV9vX5Xop97VhNLcrb5zfHC4tiInpXcRa
- q5a+OzQvlHHTc76M7IW2/fN4UvrMQ2tIRpK5mXPc0ajZa4vCFByTopS+0d7zxmrgqjZ9pP
- 9kazsNxOwkOFP7j4q3d6ys+wNQr0eXo=
-Received: from mail-pf1-f198.google.com (mail-pf1-f198.google.com
- [209.85.210.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=3JbeLxGKYbzZ3XQl3u1s+TzD+mbxwvgqFTKzHuWqOso=;
+ b=JDpNU0zSEuS7vknTOljSR1UufPg2LRX0FR6mHIbcPmRzOL1RTEwrIcx5giWat+ig2SWPfm
+ Xy5MdGaoNK1Eo4oz8XbKWCaClkQm7iKEcANKx8QXfGwCz1eVkmvYtGNu7CZbX5t9GrAHxR
+ x/5N0HPQWwoUemnzRo/VD/8K4G+2VQw=
+Received: from mail-pf1-f197.google.com (mail-pf1-f197.google.com
+ [209.85.210.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-80-BbrW7vhmMbyQ3bDPrb_mVg-1; Tue, 30 Jan 2024 12:11:10 -0500
-X-MC-Unique: BbrW7vhmMbyQ3bDPrb_mVg-1
-Received: by mail-pf1-f198.google.com with SMTP id
- d2e1a72fcca58-6ddc1bf229bso3579070b3a.1
- for <qemu-trivial@nongnu.org>; Tue, 30 Jan 2024 09:11:10 -0800 (PST)
+ us-mta-546-mlSy9tYeP0OvzlaIHb9ikg-1; Tue, 30 Jan 2024 12:11:56 -0500
+X-MC-Unique: mlSy9tYeP0OvzlaIHb9ikg-1
+Received: by mail-pf1-f197.google.com with SMTP id
+ d2e1a72fcca58-6dde3743f0bso2642015b3a.2
+ for <qemu-trivial@nongnu.org>; Tue, 30 Jan 2024 09:11:55 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1706634669; x=1707239469;
+ d=1e100.net; s=20230601; t=1706634715; x=1707239515;
  h=to:references:message-id:content-transfer-encoding:cc:date
  :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=+kzOBHm7GNoNaZFkMrt8k2W+/6HNS6eWcviTjYAg+To=;
- b=aE78hCynU5yoYu6hjc9rwAk2RMnkpz5PcZATBPAP+d3PCliRoJZnTh4qEGny0LEThy
- 1wpz8+Mc3soYAhczxao0px3JLCS0tnoH562+Yf2sTcu3VtHO6dt5ixj/sSyjjjdugOKb
- eFXW3W5uc4CkTjUeBfyh1zQ5iMShW2S5TogUo5ZW83E4ldJt7DUUT3nWNWUdlTCRZSYB
- FEe7oNHwLGizs0hL6gfCYPZvef6Mm9OKlIIexzRPtidVopWnRm0eaumoEaAdb7yCUmXY
- uAgfnXLarUe+kM9DRfz69FHgVRC3btwW7aXjtG5qhD6U+0vsaend7a53RNgKTHOigyRP
- PG4A==
-X-Gm-Message-State: AOJu0YzZP6nAunpEREBSb1cV2PrN0ZnAdrMrToUGmrAB3xyP+Hvvch/n
- UmLJFmUfzcIGRfl1o5/kruWaWRdCzQkaXGzJGAJj/SGYMPAYmiJrWV5eIMrJtB6uYe53lZRS4Vh
- JSEuFzi4+fKpm6td+voS6qN9xVZR4+JjZdI76hD68JRxYgh37b105bFU=
-X-Received: by 2002:aa7:8ec2:0:b0:6da:ed17:bfa7 with SMTP id
- b2-20020aa78ec2000000b006daed17bfa7mr1874736pfr.6.1706634669486; 
- Tue, 30 Jan 2024 09:11:09 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGiLTbEwAud4WeaYLuHTLJqg3Z5VWq/FDNuSD1csbMGGhjP6hobrx+1RVBVk5ZRwW+obGfobQ==
-X-Received: by 2002:aa7:8ec2:0:b0:6da:ed17:bfa7 with SMTP id
- b2-20020aa78ec2000000b006daed17bfa7mr1874717pfr.6.1706634669165; 
- Tue, 30 Jan 2024 09:11:09 -0800 (PST)
+ bh=R06aqEIOEXWCLhaarYTxa85WehQ4KktiwtrZ5hjYt9I=;
+ b=b+21IgFnCj+cbUJI8mdkDg0aciFaH+aBf3nbOPy4Blr35dnxBGY1dRTcZ3ZirCRtGE
+ DhGemQ3w9BnYp7bIme/c1Qk0ivauJXJxiPxuchVvq5HXtSax/XpPl/jOO0ogeakOTshv
+ AbTuAQhUnyQnRS38N67N7vlfyVwaJxljTnQFbSE3yEGhAOT7E4SoO+k8LV2m4fOCC3zs
+ gG7JtfSjYg2Gbm9/m3ml05oLO/yCcWN+codKlgJjX/AYCYx25iHwtyMqpy1OzD/046M/
+ s9wKMr1uFutJkeQcHo7br006IRC1219rXgD1VkXEghAts6TEWdP4Oj5kCDG+YEcH8kk+
+ aWeA==
+X-Gm-Message-State: AOJu0YwKNZdC2+vSwuA5Z05Xna1pbrR+ezXSNZsGu6gvP7saHViyopoL
+ irFQIB3sW8eWsukFqs2Aisa99FEF74/CHVNpPm3mmzbA3Ry7Bwr6olnxgsBhD71v9BfTCIMlm06
+ IELxWUlk5ZHaLmPF42qbGigFnNOfbcGmk2A6hdIwJIrV0HcVC+afujKs=
+X-Received: by 2002:a05:6a00:4503:b0:6db:605c:b9e4 with SMTP id
+ cw3-20020a056a00450300b006db605cb9e4mr6316436pfb.31.1706634714941; 
+ Tue, 30 Jan 2024 09:11:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHd/cH+0BEPRj09ztEkWsYZ0Xc6/rc4GdQJcBQmZHGqZ7wJ9SPmeo6/59Ho7nARr5ddZ/vdVA==
+X-Received: by 2002:a05:6a00:4503:b0:6db:605c:b9e4 with SMTP id
+ cw3-20020a056a00450300b006db605cb9e4mr6316408pfb.31.1706634714604; 
+ Tue, 30 Jan 2024 09:11:54 -0800 (PST)
 Received: from smtpclient.apple ([115.96.128.50])
  by smtp.gmail.com with ESMTPSA id
- d2-20020aa78682000000b006ddc5d8ecd7sm8002030pfo.32.2024.01.30.09.11.04
+ d2-20020aa78682000000b006ddc5d8ecd7sm8002030pfo.32.2024.01.30.09.11.50
  (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Tue, 30 Jan 2024 09:11:08 -0800 (PST)
+ Tue, 30 Jan 2024 09:11:54 -0800 (PST)
 Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
-Subject: Re: [PATCH v2 1/3] hw/i386: Add `\n` to hint message
+Subject: Re: [PATCH v2 2/3] hw/loongarch: Add `\n` to hint message
 From: Ani Sinha <anisinha@redhat.com>
-In-Reply-To: <20240130163741.145925-2-groug@kaod.org>
-Date: Tue, 30 Jan 2024 22:40:54 +0530
+In-Reply-To: <20240130163741.145925-3-groug@kaod.org>
+Date: Tue, 30 Jan 2024 22:41:39 +0530
 Cc: QEMU Developers <qemu-devel@nongnu.org>,
  Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
@@ -70,9 +70,9 @@ Cc: QEMU Developers <qemu-devel@nongnu.org>,
  Shannon Zhao <shannon.zhaosl@gmail.com>, qemu-arm@nongnu.org,
  Song Gao <gaosong@loongson.cn>,
  Richard Henderson <richard.henderson@linaro.org>
-Message-Id: <7AD93A16-E040-4223-9AD8-93D73D62F572@redhat.com>
+Message-Id: <65A9DB8A-66E8-4F60-AE26-2CD73DDA440B@redhat.com>
 References: <20240130163741.145925-1-groug@kaod.org>
- <20240130163741.145925-2-groug@kaod.org>
+ <20240130163741.145925-3-groug@kaod.org>
 To: Greg Kurz <groug@kaod.org>
 X-Mailer: Apple Mail (2.3774.400.31)
 X-Mimecast-Spam-Score: 0
@@ -89,7 +89,7 @@ X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.292,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,7 +102,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jan 2024 17:11:21 -0000
+X-List-Received-Date: Tue, 30 Jan 2024 17:12:00 -0000
 
 
 
@@ -115,33 +115,23 @@ X-List-Received-Date: Tue, 30 Jan 2024 17:11:21 -0000
 Reviewed-by: Ani Sinha <anisinha@redhat.com>
 
 > ---
-> hw/i386/acpi-build.c | 4 ++--
-> 1 file changed, 2 insertions(+), 2 deletions(-)
+> hw/loongarch/acpi-build.c | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
 >=20
-> diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-> index edc979379c03..e990b0ae927f 100644
-> --- a/hw/i386/acpi-build.c
-> +++ b/hw/i386/acpi-build.c
-> @@ -2697,7 +2697,7 @@ void acpi_build(AcpiBuildTables *tables, MachineSta=
-te *machine)
->                         " migration may not work",
->                         tables_blob->len, legacy_table_size);
->             error_printf("Try removing CPUs, NUMA nodes, memory slots"
-> -                         " or PCI bridges.");
-> +                         " or PCI bridges.\n");
->         }
->         g_array_set_size(tables_blob, legacy_table_size);
->     } else {
-> @@ -2709,7 +2709,7 @@ void acpi_build(AcpiBuildTables *tables, MachineSta=
-te *machine)
->                         " migration may not work",
->                         tables_blob->len, ACPI_BUILD_TABLE_SIZE / 2);
->             error_printf("Try removing CPUs, NUMA nodes, memory slots"
-> -                         " or PCI bridges.");
-> +                         " or PCI bridges.\n");
->         }
->         acpi_align_size(tables_blob, ACPI_BUILD_TABLE_SIZE);
+> diff --git a/hw/loongarch/acpi-build.c b/hw/loongarch/acpi-build.c
+> index 730bc4a748c4..a1c419874123 100644
+> --- a/hw/loongarch/acpi-build.c
+> +++ b/hw/loongarch/acpi-build.c
+> @@ -509,7 +509,7 @@ static void acpi_build(AcpiBuildTables *tables, Machi=
+neState *machine)
+>                     " migration may not work",
+>                     tables_blob->len, ACPI_BUILD_TABLE_SIZE / 2);
+>         error_printf("Try removing CPUs, NUMA nodes, memory slots"
+> -                     " or PCI bridges.");
+> +                     " or PCI bridges.\n");
 >     }
+>=20
+>     acpi_align_size(tables->linker->cmd_blob, ACPI_BUILD_ALIGN_SIZE);
 > --=20
 > 2.43.0
 >=20
