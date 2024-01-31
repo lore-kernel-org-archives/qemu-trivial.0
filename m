@@ -1,34 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rV9Cb-0000NX-Rb
-	for mharc-qemu-trivial@gnu.org; Wed, 31 Jan 2024 06:56:27 -0500
+	id 1rV9Ce-0000Wh-PQ
+	for mharc-qemu-trivial@gnu.org; Wed, 31 Jan 2024 06:56:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rV9CQ-00005b-6r; Wed, 31 Jan 2024 06:56:15 -0500
+ id 1rV9CU-0000B2-0p; Wed, 31 Jan 2024 06:56:19 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rV9CN-0003xX-1q; Wed, 31 Jan 2024 06:56:13 -0500
+ id 1rV9CF-0003wN-5L; Wed, 31 Jan 2024 06:56:16 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 61344490C8;
+ by isrv.corpit.ru (Postfix) with ESMTP id 320E4490C5;
  Wed, 31 Jan 2024 14:56:47 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 9651870271;
+ by tsrv.corpit.ru (Postfix) with SMTP id 5BE8F7026E;
  Wed, 31 Jan 2024 14:55:50 +0300 (MSK)
-Received: (nullmailer pid 2263942 invoked by uid 1000);
+Received: (nullmailer pid 2263933 invoked by uid 1000);
  Wed, 31 Jan 2024 11:55:49 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 10/21] acpi: Clean up includes
-Date: Wed, 31 Jan 2024 14:55:38 +0300
-Message-Id: <20240131115549.2263854-11-mjt@tls.msk.ru>
+Subject: [PULL 07/21] hyperv: Clean up includes
+Date: Wed, 31 Jan 2024 14:55:35 +0300
+Message-Id: <20240131115549.2263854-8-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240131115549.2263854-1-mjt@tls.msk.ru>
 References: <20240131115549.2263854-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -50,12 +49,12 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 Jan 2024 11:56:21 -0000
+X-List-Received-Date: Wed, 31 Jan 2024 11:56:23 -0000
 
 From: Peter Maydell <peter.maydell@linaro.org>
 
 This commit was created with scripts/clean-includes:
- ./scripts/clean-includes --git acpi include/hw/*/*acpi.h hw/*/*acpi.c
+ ./scripts/clean-includes --git hyperv hw/hyperv/*.[ch]
 
 All .c should include qemu/osdep.h first.  The script performs three
 related cleanups:
@@ -67,65 +66,90 @@ related cleanups:
   Drop these, too.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/nvram/fw_cfg-acpi.c          | 1 +
- hw/virtio/virtio-acpi.c         | 1 +
- include/hw/nvram/fw_cfg_acpi.h  | 1 -
- include/hw/virtio/virtio-acpi.h | 1 -
- 4 files changed, 2 insertions(+), 2 deletions(-)
+ hw/hyperv/hv-balloon-internal.h           | 1 -
+ hw/hyperv/hv-balloon-our_range_memslots.c | 1 +
+ hw/hyperv/hv-balloon-our_range_memslots.h | 1 -
+ hw/hyperv/hv-balloon-page_range_tree.c    | 1 +
+ hw/hyperv/hv-balloon-page_range_tree.h    | 1 -
+ hw/hyperv/hv-balloon.c                    | 1 +
+ 6 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/hw/nvram/fw_cfg-acpi.c b/hw/nvram/fw_cfg-acpi.c
-index 4e48baeaa0..58cdcd3121 100644
---- a/hw/nvram/fw_cfg-acpi.c
-+++ b/hw/nvram/fw_cfg-acpi.c
-@@ -4,6 +4,7 @@
-  *
+diff --git a/hw/hyperv/hv-balloon-internal.h b/hw/hyperv/hv-balloon-internal.h
+index 164c2e5825..ee53a28a26 100644
+--- a/hw/hyperv/hv-balloon-internal.h
++++ b/hw/hyperv/hv-balloon-internal.h
+@@ -10,7 +10,6 @@
+ #ifndef HW_HYPERV_HV_BALLOON_INTERNAL_H
+ #define HW_HYPERV_HV_BALLOON_INTERNAL_H
+ 
+-#include "qemu/osdep.h"
+ 
+ #define HV_BALLOON_PFN_SHIFT 12
+ #define HV_BALLOON_PAGE_SIZE (1 << HV_BALLOON_PFN_SHIFT)
+diff --git a/hw/hyperv/hv-balloon-our_range_memslots.c b/hw/hyperv/hv-balloon-our_range_memslots.c
+index 99bae870f3..1505a395cf 100644
+--- a/hw/hyperv/hv-balloon-our_range_memslots.c
++++ b/hw/hyperv/hv-balloon-our_range_memslots.c
+@@ -7,6 +7,7 @@
+  * See the COPYING file in the top-level directory.
   */
  
 +#include "qemu/osdep.h"
- #include "hw/nvram/fw_cfg_acpi.h"
- #include "hw/acpi/aml-build.h"
+ #include "hv-balloon-internal.h"
+ #include "hv-balloon-our_range_memslots.h"
+ #include "trace.h"
+diff --git a/hw/hyperv/hv-balloon-our_range_memslots.h b/hw/hyperv/hv-balloon-our_range_memslots.h
+index b6f592d34b..df3b686bc7 100644
+--- a/hw/hyperv/hv-balloon-our_range_memslots.h
++++ b/hw/hyperv/hv-balloon-our_range_memslots.h
+@@ -10,7 +10,6 @@
+ #ifndef HW_HYPERV_HV_BALLOON_OUR_RANGE_MEMSLOTS_H
+ #define HW_HYPERV_HV_BALLOON_OUR_RANGE_MEMSLOTS_H
  
-diff --git a/hw/virtio/virtio-acpi.c b/hw/virtio/virtio-acpi.c
-index e18cb38bdb..230a669500 100644
---- a/hw/virtio/virtio-acpi.c
-+++ b/hw/virtio/virtio-acpi.c
-@@ -4,6 +4,7 @@
-  *
+-#include "qemu/osdep.h"
+ 
+ #include "exec/memory.h"
+ #include "qom/object.h"
+diff --git a/hw/hyperv/hv-balloon-page_range_tree.c b/hw/hyperv/hv-balloon-page_range_tree.c
+index e178d8b413..dfb14852f4 100644
+--- a/hw/hyperv/hv-balloon-page_range_tree.c
++++ b/hw/hyperv/hv-balloon-page_range_tree.c
+@@ -7,6 +7,7 @@
+  * See the COPYING file in the top-level directory.
   */
  
 +#include "qemu/osdep.h"
- #include "hw/virtio/virtio-acpi.h"
- #include "hw/acpi/aml-build.h"
+ #include "hv-balloon-internal.h"
+ #include "hv-balloon-page_range_tree.h"
  
-diff --git a/include/hw/nvram/fw_cfg_acpi.h b/include/hw/nvram/fw_cfg_acpi.h
-index b6553d86fc..b39eb0490f 100644
---- a/include/hw/nvram/fw_cfg_acpi.h
-+++ b/include/hw/nvram/fw_cfg_acpi.h
-@@ -7,7 +7,6 @@
- #ifndef FW_CFG_ACPI_H
- #define FW_CFG_ACPI_H
- 
--#include "qemu/osdep.h"
- #include "exec/hwaddr.h"
- 
- void fw_cfg_acpi_dsdt_add(Aml *scope, const MemMapEntry *fw_cfg_memmap);
-diff --git a/include/hw/virtio/virtio-acpi.h b/include/hw/virtio/virtio-acpi.h
-index 844e102569..cace2a315f 100644
---- a/include/hw/virtio/virtio-acpi.h
-+++ b/include/hw/virtio/virtio-acpi.h
-@@ -6,7 +6,6 @@
- #ifndef VIRTIO_ACPI_H
- #define VIRTIO_ACPI_H
+diff --git a/hw/hyperv/hv-balloon-page_range_tree.h b/hw/hyperv/hv-balloon-page_range_tree.h
+index 07a9ae0da6..333772b86d 100644
+--- a/hw/hyperv/hv-balloon-page_range_tree.h
++++ b/hw/hyperv/hv-balloon-page_range_tree.h
+@@ -10,7 +10,6 @@
+ #ifndef HW_HYPERV_HV_BALLOON_PAGE_RANGE_TREE_H
+ #define HW_HYPERV_HV_BALLOON_PAGE_RANGE_TREE_H
  
 -#include "qemu/osdep.h"
- #include "exec/hwaddr.h"
  
- void virtio_acpi_dsdt_add(Aml *scope, const hwaddr virtio_mmio_base,
+ /* PageRange */
+ typedef struct PageRange {
+diff --git a/hw/hyperv/hv-balloon.c b/hw/hyperv/hv-balloon.c
+index 66f297c1d7..0238365712 100644
+--- a/hw/hyperv/hv-balloon.c
++++ b/hw/hyperv/hv-balloon.c
+@@ -7,6 +7,7 @@
+  * See the COPYING file in the top-level directory.
+  */
+ 
++#include "qemu/osdep.h"
+ #include "hv-balloon-internal.h"
+ 
+ #include "exec/address-spaces.h"
 -- 
 2.39.2
 
