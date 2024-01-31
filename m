@@ -1,33 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rV9DO-0002Qs-N0
-	for mharc-qemu-trivial@gnu.org; Wed, 31 Jan 2024 06:57:14 -0500
+	id 1rV9DR-0002Ul-26
+	for mharc-qemu-trivial@gnu.org; Wed, 31 Jan 2024 06:57:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rV9DJ-0002Kc-RB; Wed, 31 Jan 2024 06:57:09 -0500
+ id 1rV9DO-0002QG-1t; Wed, 31 Jan 2024 06:57:14 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rV9DI-000425-BU; Wed, 31 Jan 2024 06:57:09 -0500
+ id 1rV9DM-00043N-HE; Wed, 31 Jan 2024 06:57:13 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id D4803490D0;
+ by isrv.corpit.ru (Postfix) with ESMTP id F2008490D2;
  Wed, 31 Jan 2024 14:56:47 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 1766A70279;
+ by tsrv.corpit.ru (Postfix) with SMTP id 348B27027B;
  Wed, 31 Jan 2024 14:55:51 +0300 (MSK)
-Received: (nullmailer pid 2263966 invoked by uid 1000);
+Received: (nullmailer pid 2263972 invoked by uid 1000);
  Wed, 31 Jan 2024 11:55:49 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Greg Kurz <groug@kaod.org>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 18/21] hw/loongarch: Add `\n` to hint message
-Date: Wed, 31 Jan 2024 14:55:46 +0300
-Message-Id: <20240131115549.2263854-19-mjt@tls.msk.ru>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 20/21] hw/intc/xics: Include missing 'cpu.h' header
+Date: Wed, 31 Jan 2024 14:55:48 +0300
+Message-Id: <20240131115549.2263854-21-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240131115549.2263854-1-mjt@tls.msk.ru>
 References: <20240131115549.2263854-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -49,32 +50,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 Jan 2024 11:57:12 -0000
+X-List-Received-Date: Wed, 31 Jan 2024 11:57:14 -0000
 
-From: Greg Kurz <groug@kaod.org>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-error_printf() doesn't add newlines.
+Include missing headers in order to avoid when refactoring
+unrelated headers:
 
-Signed-off-by: Greg Kurz <groug@kaod.org>
-Reviewed-by: Ani Sinha <anisinha@redhat.com>
+  hw/intc/xics.c: In function 'icp_realize':
+  hw/intc/xics.c:304:5: error: unknown type name 'PowerPCCPU'
+    304 |     PowerPCCPU *cpu;
+        |     ^~~~~~~~~~
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/loongarch/acpi-build.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/intc/xics.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/loongarch/acpi-build.c b/hw/loongarch/acpi-build.c
-index 730bc4a748..a1c4198741 100644
---- a/hw/loongarch/acpi-build.c
-+++ b/hw/loongarch/acpi-build.c
-@@ -509,7 +509,7 @@ static void acpi_build(AcpiBuildTables *tables, MachineState *machine)
-                     " migration may not work",
-                     tables_blob->len, ACPI_BUILD_TABLE_SIZE / 2);
-         error_printf("Try removing CPUs, NUMA nodes, memory slots"
--                     " or PCI bridges.");
-+                     " or PCI bridges.\n");
-     }
+diff --git a/hw/intc/xics.c b/hw/intc/xics.c
+index 8b25787227..700abfa7a6 100644
+--- a/hw/intc/xics.c
++++ b/hw/intc/xics.c
+@@ -40,6 +40,7 @@
+ #include "hw/irq.h"
+ #include "sysemu/kvm.h"
+ #include "sysemu/reset.h"
++#include "target/ppc/cpu.h"
  
-     acpi_align_size(tables->linker->cmd_blob, ACPI_BUILD_ALIGN_SIZE);
+ void icp_pic_print_info(ICPState *icp, Monitor *mon)
+ {
 -- 
 2.39.2
 
