@@ -1,31 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rV9C9-0008C3-Fs
-	for mharc-qemu-trivial@gnu.org; Wed, 31 Jan 2024 06:55:57 -0500
+	id 1rV9CB-0008Cp-0D
+	for mharc-qemu-trivial@gnu.org; Wed, 31 Jan 2024 06:55:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rV9C7-0008Ai-4R; Wed, 31 Jan 2024 06:55:55 -0500
+ id 1rV9C9-0008C4-G7; Wed, 31 Jan 2024 06:55:57 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rV9C4-0003t8-K7; Wed, 31 Jan 2024 06:55:54 -0500
+ id 1rV9C7-0003uI-N2; Wed, 31 Jan 2024 06:55:57 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id A7164490BE;
+ by isrv.corpit.ru (Postfix) with ESMTP id CF789490C0;
  Wed, 31 Jan 2024 14:56:46 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id D026870267;
- Wed, 31 Jan 2024 14:55:49 +0300 (MSK)
-Received: (nullmailer pid 2263911 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 0688570269;
+ Wed, 31 Jan 2024 14:55:50 +0300 (MSK)
+Received: (nullmailer pid 2263918 invoked by uid 1000);
  Wed, 31 Jan 2024 11:55:49 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Subject: [PULL 00/21] Trivial patches for 2024-01-31
-Date: Wed, 31 Jan 2024 14:55:28 +0300
-Message-Id: <20240131115549.2263854-1-mjt@tls.msk.ru>
+Subject: [PULL 02/21] colo: examples: remove mentions of script= and (wrong)
+ downscript=
+Date: Wed, 31 Jan 2024 14:55:30 +0300
+Message-Id: <20240131115549.2263854-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240131115549.2263854-1-mjt@tls.msk.ru>
+References: <20240131115549.2263854-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -47,103 +49,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 Jan 2024 11:55:55 -0000
+X-List-Received-Date: Wed, 31 Jan 2024 11:55:58 -0000
 
-The following changes since commit 11be70677c70fdccd452a3233653949b79e97908:
+There's no need to repeat script=/etc/qemu-ifup in examples,
+as it is already in there.  More, all examples uses incorrect
+"down script=" (which should be "downscript=").
 
-  Merge tag 'pull-vfio-20240129' of https://github.com/legoater/qemu into staging (2024-01-29 10:53:56 +0000)
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Zhang Chen <chen.zhang@intel.com>
+---
+ docs/colo-proxy.txt | 6 +++---
+ qemu-options.hx     | 8 ++++----
+ 2 files changed, 7 insertions(+), 7 deletions(-)
 
-are available in the Git repository at:
+diff --git a/docs/colo-proxy.txt b/docs/colo-proxy.txt
+index 1fc38aed1b..e712c883db 100644
+--- a/docs/colo-proxy.txt
++++ b/docs/colo-proxy.txt
+@@ -162,7 +162,7 @@ Here is an example using demonstration IP and port addresses to more
+ clearly describe the usage.
+ 
+ Primary(ip:3.3.3.3):
+--netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown
++-netdev tap,id=hn0,vhost=off
+ -device e1000,id=e0,netdev=hn0,mac=52:a4:00:12:78:66
+ -chardev socket,id=mirror0,host=3.3.3.3,port=9003,server=on,wait=off
+ -chardev socket,id=compare1,host=3.3.3.3,port=9004,server=on,wait=off
+@@ -177,7 +177,7 @@ Primary(ip:3.3.3.3):
+ -object colo-compare,id=comp0,primary_in=compare0-0,secondary_in=compare1,outdev=compare_out0,iothread=iothread1
+ 
+ Secondary(ip:3.3.3.8):
+--netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,down script=/etc/qemu-ifdown
++-netdev tap,id=hn0,vhost=off
+ -device e1000,netdev=hn0,mac=52:a4:00:12:78:66
+ -chardev socket,id=red0,host=3.3.3.3,port=9003
+ -chardev socket,id=red1,host=3.3.3.3,port=9004
+@@ -202,7 +202,7 @@ Primary(ip:3.3.3.3):
+ -object colo-compare,id=comp0,primary_in=compare0-0,secondary_in=compare1,outdev=compare_out0,vnet_hdr_support
+ 
+ Secondary(ip:3.3.3.8):
+--netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,down script=/etc/qemu-ifdown
++-netdev tap,id=hn0,vhost=off
+ -device e1000,netdev=hn0,mac=52:a4:00:12:78:66
+ -chardev socket,id=red0,host=3.3.3.3,port=9003
+ -chardev socket,id=red1,host=3.3.3.3,port=9004
+diff --git a/qemu-options.hx b/qemu-options.hx
+index ced8284863..484cc21c1f 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -5462,7 +5462,7 @@ SRST
+             KVM COLO
+ 
+             primary:
+-            -netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown
++            -netdev tap,id=hn0,vhost=off
+             -device e1000,id=e0,netdev=hn0,mac=52:a4:00:12:78:66
+             -chardev socket,id=mirror0,host=3.3.3.3,port=9003,server=on,wait=off
+             -chardev socket,id=compare1,host=3.3.3.3,port=9004,server=on,wait=off
+@@ -5477,7 +5477,7 @@ SRST
+             -object colo-compare,id=comp0,primary_in=compare0-0,secondary_in=compare1,outdev=compare_out0,iothread=iothread1
+ 
+             secondary:
+-            -netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,down script=/etc/qemu-ifdown
++            -netdev tap,id=hn0,vhost=off
+             -device e1000,netdev=hn0,mac=52:a4:00:12:78:66
+             -chardev socket,id=red0,host=3.3.3.3,port=9003
+             -chardev socket,id=red1,host=3.3.3.3,port=9004
+@@ -5488,7 +5488,7 @@ SRST
+             Xen COLO
+ 
+             primary:
+-            -netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,downscript=/etc/qemu-ifdown
++            -netdev tap,id=hn0,vhost=off
+             -device e1000,id=e0,netdev=hn0,mac=52:a4:00:12:78:66
+             -chardev socket,id=mirror0,host=3.3.3.3,port=9003,server=on,wait=off
+             -chardev socket,id=compare1,host=3.3.3.3,port=9004,server=on,wait=off
+@@ -5504,7 +5504,7 @@ SRST
+             -object colo-compare,id=comp0,primary_in=compare0-0,secondary_in=compare1,outdev=compare_out0,notify_dev=nofity_way,iothread=iothread1
+ 
+             secondary:
+-            -netdev tap,id=hn0,vhost=off,script=/etc/qemu-ifup,down script=/etc/qemu-ifdown
++            -netdev tap,id=hn0,vhost=off
+             -device e1000,netdev=hn0,mac=52:a4:00:12:78:66
+             -chardev socket,id=red0,host=3.3.3.3,port=9003
+             -chardev socket,id=red1,host=3.3.3.3,port=9004
+-- 
+2.39.2
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
-
-for you to fetch changes up to 54f0058fa7821c391719e69a92804636b2c403ae:
-
-  hw/hyperv: Include missing headers (2024-01-30 21:20:20 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2024-01-31
-
-----------------------------------------------------------------
-Greg Kurz (3):
-      hw/i386: Add `\n` to hint message
-      hw/loongarch: Add `\n` to hint message
-      hw/arm: Add `\n` to hint message
-
-Han Han (1):
-      qapi/migration.json: Fix the member name for MigrationCapability
-
-Markus Armbruster (1):
-      dump: Fix HMP dump-guest-memory -z without -R
-
-Michael Tokarev (1):
-      colo: examples: remove mentions of script= and (wrong) downscript=
-
-Peter Maydell (10):
-      scripts/clean-includes: Update exclude list
-      hyperv: Clean up includes
-      disas/riscv: Clean up includes
-      aspeed: Clean up includes
-      acpi: Clean up includes
-      m68k: Clean up includes
-      include: Clean up includes
-      cxl: Clean up includes
-      riscv: Clean up includes
-      misc: Clean up includes
-
-Philippe Mathieu-Daudé (4):
-      mailmap: Fix Stefan Weil email
-      backends/hostmem: Fix block comments style (checkpatch.pl warnings)
-      hw/intc/xics: Include missing 'cpu.h' header
-      hw/hyperv: Include missing headers
-
-Yihuan Pan (1):
-      qemu-docs: Update options for graphical frontends
-
- .mailmap                                  |  4 ++++
- audio/pwaudio.c                           |  1 -
- backends/hostmem.c                        | 12 ++++++++----
- disas/riscv-xthead.c                      |  1 +
- disas/riscv-xventana.c                    |  1 +
- disas/riscv.h                             |  1 -
- docs/colo-proxy.txt                       |  6 +++---
- docs/system/keys.rst.inc                  | 11 ++++++-----
- dump/dump-hmp-cmds.c                      |  2 +-
- hw/arm/aspeed_eeprom.c                    |  1 +
- hw/arm/aspeed_eeprom.h                    |  1 -
- hw/arm/virt-acpi-build.c                  |  2 +-
- hw/cxl/cxl-events.c                       |  4 +---
- hw/hyperv/hv-balloon-internal.h           |  1 -
- hw/hyperv/hv-balloon-our_range_memslots.c |  1 +
- hw/hyperv/hv-balloon-our_range_memslots.h |  1 -
- hw/hyperv/hv-balloon-page_range_tree.c    |  1 +
- hw/hyperv/hv-balloon-page_range_tree.h    |  1 -
- hw/hyperv/hv-balloon.c                    |  1 +
- hw/hyperv/hyperv.c                        |  4 ++++
- hw/i386/acpi-build.c                      |  4 ++--
- hw/intc/xics.c                            |  1 +
- hw/loongarch/acpi-build.c                 |  2 +-
- hw/nvram/fw_cfg-acpi.c                    |  1 +
- hw/virtio/virtio-acpi.c                   |  1 +
- include/hw/arm/raspberrypi-fw-defs.h      |  1 -
- include/hw/audio/asc.h                    |  1 -
- include/hw/m68k/q800-glue.h               |  1 -
- include/hw/mem/memory-device.h            |  1 -
- include/hw/nvram/fw_cfg_acpi.h            |  1 -
- include/hw/ppc/spapr_nested.h             |  1 -
- include/hw/virtio/virtio-acpi.h           |  1 -
- include/hw/xen/xen-hvm-common.h           |  1 -
- include/qemu/qtree.h                      |  1 -
- include/ui/rect.h                         |  2 --
- net/af-xdp.c                              |  1 -
- plugins/core.c                            |  1 -
- plugins/loader.c                          |  1 -
- qapi/migration.json                       |  2 +-
- qemu-options.hx                           |  8 ++++----
- scripts/clean-includes                    |  2 +-
- target/riscv/vector_internals.c           |  1 +
- target/riscv/vector_internals.h           |  1 -
- tests/qtest/qtest_aspeed.h                |  2 --
- util/userfaultfd.c                        |  1 -
- 45 files changed, 47 insertions(+), 50 deletions(-)
 
