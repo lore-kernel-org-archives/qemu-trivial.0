@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rV9Cg-0000cq-3w
-	for mharc-qemu-trivial@gnu.org; Wed, 31 Jan 2024 06:56:30 -0500
+	id 1rV9Ct-0001Bx-Fn
+	for mharc-qemu-trivial@gnu.org; Wed, 31 Jan 2024 06:56:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rV9CU-0000B8-1U; Wed, 31 Jan 2024 06:56:19 -0500
+ id 1rV9Cq-00018M-Tw; Wed, 31 Jan 2024 06:56:41 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rV9CR-0003xr-J4; Wed, 31 Jan 2024 06:56:17 -0500
+ id 1rV9Cp-0003yC-G8; Wed, 31 Jan 2024 06:56:40 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 6F6F9490C9;
+ by isrv.corpit.ru (Postfix) with ESMTP id 8C11A490CB;
  Wed, 31 Jan 2024 14:56:47 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id A64E370272;
+ by tsrv.corpit.ru (Postfix) with SMTP id C2E8F70274;
  Wed, 31 Jan 2024 14:55:50 +0300 (MSK)
-Received: (nullmailer pid 2263945 invoked by uid 1000);
+Received: (nullmailer pid 2263951 invoked by uid 1000);
  Wed, 31 Jan 2024 11:55:49 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 11/21] m68k: Clean up includes
-Date: Wed, 31 Jan 2024 14:55:39 +0300
-Message-Id: <20240131115549.2263854-12-mjt@tls.msk.ru>
+Subject: [PULL 13/21] cxl: Clean up includes
+Date: Wed, 31 Jan 2024 14:55:41 +0300
+Message-Id: <20240131115549.2263854-14-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240131115549.2263854-1-mjt@tls.msk.ru>
 References: <20240131115549.2263854-1-mjt@tls.msk.ru>
@@ -50,12 +50,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 Jan 2024 11:56:25 -0000
+X-List-Received-Date: Wed, 31 Jan 2024 11:56:41 -0000
 
 From: Peter Maydell <peter.maydell@linaro.org>
 
-This commit was created with scripts/clean-includes:
-./scripts/clean-includes --git m68k include/hw/audio/asc.h include/hw/m68k/*.h
+This commit was created with scripts/clean-includes.
 
 All .c should include qemu/osdep.h first.  The script performs three
 related cleanups:
@@ -68,38 +67,30 @@ related cleanups:
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Acked-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- include/hw/audio/asc.h      | 1 -
- include/hw/m68k/q800-glue.h | 1 -
- 2 files changed, 2 deletions(-)
+ hw/cxl/cxl-events.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/include/hw/audio/asc.h b/include/hw/audio/asc.h
-index 4741f92c46..04fac270b6 100644
---- a/include/hw/audio/asc.h
-+++ b/include/hw/audio/asc.h
-@@ -13,7 +13,6 @@
- #ifndef HW_AUDIO_ASC_H
- #define HW_AUDIO_ASC_H
+diff --git a/hw/cxl/cxl-events.c b/hw/cxl/cxl-events.c
+index bee6dfaf14..affcf8a34d 100644
+--- a/hw/cxl/cxl-events.c
++++ b/hw/cxl/cxl-events.c
+@@ -7,11 +7,9 @@
+  * COPYING file in the top-level directory.
+  */
  
--#include "qemu/osdep.h"
- #include "hw/sysbus.h"
- #include "audio/audio.h"
- 
-diff --git a/include/hw/m68k/q800-glue.h b/include/hw/m68k/q800-glue.h
-index ceb916d16c..04fac25f6c 100644
---- a/include/hw/m68k/q800-glue.h
-+++ b/include/hw/m68k/q800-glue.h
-@@ -23,7 +23,6 @@
- #ifndef HW_Q800_GLUE_H
- #define HW_Q800_GLUE_H
- 
--#include "qemu/osdep.h"
- #include "hw/sysbus.h"
- 
- #define TYPE_GLUE "q800-glue"
+-#include <stdint.h>
+-
+ #include "qemu/osdep.h"
++
+ #include "qemu/bswap.h"
+-#include "qemu/typedefs.h"
+ #include "qemu/error-report.h"
+ #include "hw/pci/msi.h"
+ #include "hw/pci/msix.h"
 -- 
 2.39.2
 
