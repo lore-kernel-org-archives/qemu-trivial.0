@@ -1,33 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rV9CH-0008Fh-HO
-	for mharc-qemu-trivial@gnu.org; Wed, 31 Jan 2024 06:56:05 -0500
+	id 1rV9CK-0008Gc-1T
+	for mharc-qemu-trivial@gnu.org; Wed, 31 Jan 2024 06:56:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rV9CG-0008F1-Cu; Wed, 31 Jan 2024 06:56:04 -0500
+ id 1rV9CI-0008GI-Bn; Wed, 31 Jan 2024 06:56:06 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rV9CD-0003w7-S8; Wed, 31 Jan 2024 06:56:03 -0500
+ id 1rV9CG-0003we-OR; Wed, 31 Jan 2024 06:56:06 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 16FA8490C4;
+ by isrv.corpit.ru (Postfix) with ESMTP id 401D9490C6;
  Wed, 31 Jan 2024 14:56:47 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 4D6207026D;
+ by tsrv.corpit.ru (Postfix) with SMTP id 76E9C7026F;
  Wed, 31 Jan 2024 14:55:50 +0300 (MSK)
-Received: (nullmailer pid 2263930 invoked by uid 1000);
+Received: (nullmailer pid 2263936 invoked by uid 1000);
  Wed, 31 Jan 2024 11:55:49 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 06/21] scripts/clean-includes: Update exclude list
-Date: Wed, 31 Jan 2024 14:55:34 +0300
-Message-Id: <20240131115549.2263854-7-mjt@tls.msk.ru>
+Subject: [PULL 08/21] disas/riscv: Clean up includes
+Date: Wed, 31 Jan 2024 14:55:36 +0300
+Message-Id: <20240131115549.2263854-9-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240131115549.2263854-1-mjt@tls.msk.ru>
 References: <20240131115549.2263854-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -49,32 +50,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 Jan 2024 11:56:04 -0000
+X-List-Received-Date: Wed, 31 Jan 2024 11:56:06 -0000
 
 From: Peter Maydell <peter.maydell@linaro.org>
 
-Update the exclude list to exclude some more files which don't follow our
-standard #include policy.
+This commit was created with scripts/clean-includes:
+ ./scripts/clean-includes --git disas/riscv disas/riscv*[ch]
+
+All .c should include qemu/osdep.h first.  The script performs three
+related cleanups:
+
+* Ensure .c files include qemu/osdep.h first.
+* Including it in a .h is redundant, since the .c  already includes
+  it.  Drop such inclusions.
+* Likewise, including headers qemu/osdep.h includes is redundant.
+  Drop these, too.
 
 Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- scripts/clean-includes | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ disas/riscv-xthead.c   | 1 +
+ disas/riscv-xventana.c | 1 +
+ disas/riscv.h          | 1 -
+ 3 files changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/scripts/clean-includes b/scripts/clean-includes
-index 58e1607a82..bdbf404024 100755
---- a/scripts/clean-includes
-+++ b/scripts/clean-includes
-@@ -51,7 +51,7 @@ GIT=no
- DUPHEAD=no
+diff --git a/disas/riscv-xthead.c b/disas/riscv-xthead.c
+index 99da679d16..fcca326d1c 100644
+--- a/disas/riscv-xthead.c
++++ b/disas/riscv-xthead.c
+@@ -4,6 +4,7 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
  
- # Extended regular expression defining files to ignore when using --all
--XDIRREGEX='^(tests/tcg|tests/multiboot|pc-bios)'
-+XDIRREGEX='^(tests/tcg|tests/multiboot|tests/fp|tests/plugin|tests/uefi-test-tools|pc-bios|subprojects|contrib/plugins|tools/ebpf|ebpf/rss.bpf.skeleton.h|linux-user/(mips64|x86_64)/(cpu_loop|signal).c)'
++#include "qemu/osdep.h"
+ #include "disas/riscv.h"
+ #include "disas/riscv-xthead.h"
  
- while true
- do
+diff --git a/disas/riscv-xventana.c b/disas/riscv-xventana.c
+index a0224d1fb3..cd694f15f3 100644
+--- a/disas/riscv-xventana.c
++++ b/disas/riscv-xventana.c
+@@ -4,6 +4,7 @@
+  * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
++#include "qemu/osdep.h"
+ #include "disas/riscv.h"
+ #include "disas/riscv-xventana.h"
+ 
+diff --git a/disas/riscv.h b/disas/riscv.h
+index 19e5ed2ce6..16a08e4895 100644
+--- a/disas/riscv.h
++++ b/disas/riscv.h
+@@ -7,7 +7,6 @@
+ #ifndef DISAS_RISCV_H
+ #define DISAS_RISCV_H
+ 
+-#include "qemu/osdep.h"
+ #include "target/riscv/cpu_cfg.h"
+ 
+ /* types */
 -- 
 2.39.2
 
