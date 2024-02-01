@@ -1,32 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rVVuY-00013x-6K
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Feb 2024 07:11:18 -0500
+	id 1rVWVN-0003TU-96
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Feb 2024 07:49:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rVVuX-00013l-ES; Thu, 01 Feb 2024 07:11:17 -0500
+ id 1rVWVK-0003Sk-Ju; Thu, 01 Feb 2024 07:49:18 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rVVuV-0007Uf-KA; Thu, 01 Feb 2024 07:11:17 -0500
+ id 1rVWVI-0006EG-MP; Thu, 01 Feb 2024 07:49:18 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 55AC749650;
- Thu,  1 Feb 2024 15:12:10 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 44B6C49680;
+ Thu,  1 Feb 2024 15:50:12 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 7134B7150E;
- Thu,  1 Feb 2024 15:11:11 +0300 (MSK)
-Message-ID: <904ef958-0e3d-48da-a4a7-5c1514c04472@tls.msk.ru>
-Date: Thu, 1 Feb 2024 15:11:11 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 44208715BB;
+ Thu,  1 Feb 2024 15:49:13 +0300 (MSK)
+Message-ID: <e441b771-0a08-4f2c-b7a7-f6fdd787bc1c@tls.msk.ru>
+Date: Thu, 1 Feb 2024 15:49:13 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: building qemu on a system with libxkbcommon installed but not
  xkeyboard-config produces an core dump
 Content-Language: en-US
+From: Michael Tokarev <mjt@tls.msk.ru>
 To: Zhang Wen <zhw2101024@gmail.com>, qemu-trivial@nongnu.org
 Cc: pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
  thuth@redhat.com, philmd@linaro.org, qemu-devel@nongnu.org
 References: <94cf974b-05ec-41c2-8d0b-43ffbc8bdeac@gmail.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
+ <904ef958-0e3d-48da-a4a7-5c1514c04472@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
  xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
  bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
@@ -51,9 +52,9 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <94cf974b-05ec-41c2-8d0b-43ffbc8bdeac@gmail.com>
+In-Reply-To: <904ef958-0e3d-48da-a4a7-5c1514c04472@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
 X-Spam_score_int: -68
@@ -74,17 +75,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Feb 2024 12:11:17 -0000
+X-List-Received-Date: Thu, 01 Feb 2024 12:49:19 -0000
 
-31.01.2024 11:13, Zhang Wen:
-> With this patch, qemu requires keyboard-config when libxkbcommon is found on the system. So if the qemu is configured when libxkbcommon is installed 
-> but not keyboard-config, the configure stage will produce an error message, thus avoid coredump in the build stage.
+01.02.2024 15:11, Michael Tokarev wrote:
+> 31.01.2024 11:13, Zhang Wen:
+>> With this patch, qemu requires keyboard-config when libxkbcommon is found on the system. So if the qemu is configured when libxkbcommon is installed 
+>> but not keyboard-config, the configure stage will produce an error message, thus avoid coredump in the build stage.
+> 
+> I'm not sure what you're talking about.  What *is* keyboard-config anyway?
+> 
+> On a debian system there's no such thing.  There's keyboard-configuration
+> package but it has nothing to do with that.  It looks like if we apply
+> such patch, it will be impossible to build qemu on debian.
 
-I'm not sure what you're talking about.  What *is* keyboard-config anyway?
-
-On a debian system there's no such thing.  There's keyboard-configuration
-package but it has nothing to do with that.  It looks like if we apply
-such patch, it will be impossible to build qemu on debian.
+Aha, I found it.  On debian it is /usr/share/pkgconfig/keyboard-config.pc,
+which is a part of xkb-data package.  And libxkbcommon Depends on xkb-data.
+It looks like the distribution here is wrong, there should be no libxkbcommon
+without xkb-data which includes keyboard-config.
 
 /mjt
 
