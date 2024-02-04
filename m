@@ -1,35 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rVWfI-0004mn-Tj
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Feb 2024 07:59:36 -0500
+	id 1rWUZp-0004j5-Jh
+	for mharc-qemu-trivial@gnu.org; Sat, 03 Feb 2024 23:57:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rVWfH-0004mJ-5g; Thu, 01 Feb 2024 07:59:35 -0500
+ id 1rWUZn-0004iM-B9; Sat, 03 Feb 2024 23:57:55 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rVWfE-0008PC-RQ; Thu, 01 Feb 2024 07:59:34 -0500
+ id 1rWUZl-0004CR-Nr; Sat, 03 Feb 2024 23:57:55 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 4EC4C49694;
- Thu,  1 Feb 2024 16:00:29 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 7CF944A262;
+ Sun,  4 Feb 2024 07:58:52 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 3A915715D9;
- Thu,  1 Feb 2024 15:59:30 +0300 (MSK)
-Message-ID: <0c2b8043-540e-4be8-954a-c9c134cdaa1b@tls.msk.ru>
-Date: Thu, 1 Feb 2024 15:59:30 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 1BDF573691;
+ Sun,  4 Feb 2024 07:57:48 +0300 (MSK)
+Message-ID: <7ee3278a-3224-41de-81fa-a3667aa491fb@tls.msk.ru>
+Date: Sun, 4 Feb 2024 07:57:48 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: building qemu on a system with libxkbcommon installed but not
- xkeyboard-config produces an core dump
+Subject: Re: [PATCH v2 0/2] hw/smbios: Fix option validation
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Zhang Wen <zhw2101024@gmail.com>, qemu-trivial@nongnu.org,
- pbonzini@redhat.com, marcandre.lureau@redhat.com, berrange@redhat.com,
- thuth@redhat.com, philmd@linaro.org, qemu-devel@nongnu.org
-References: <94cf974b-05ec-41c2-8d0b-43ffbc8bdeac@gmail.com>
- <904ef958-0e3d-48da-a4a7-5c1514c04472@tls.msk.ru>
- <e441b771-0a08-4f2c-b7a7-f6fdd787bc1c@tls.msk.ru>
- <CAFEAcA-C-pGGYY1bfE0ZatZP-imGmq=4-579TEnEZWFLeLxZLQ@mail.gmail.com>
+To: Akihiko Odaki <akihiko.odaki@daynix.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-stable@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20240129-smbios-v2-0-9ee6fede0d10@daynix.com>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
  xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
@@ -55,9 +52,9 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <CAFEAcA-C-pGGYY1bfE0ZatZP-imGmq=4-579TEnEZWFLeLxZLQ@mail.gmail.com>
+In-Reply-To: <20240129-smbios-v2-0-9ee6fede0d10@daynix.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
 X-Spam_score_int: -68
@@ -78,38 +75,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Feb 2024 12:59:35 -0000
+X-List-Received-Date: Sun, 04 Feb 2024 04:57:56 -0000
 
-01.02.2024 15:57, Peter Maydell пишет:
-> On Thu, 1 Feb 2024 at 12:50, Michael Tokarev <mjt@tls.msk.ru> wrote:
->>
->> 01.02.2024 15:11, Michael Tokarev wrote:
->>> 31.01.2024 11:13, Zhang Wen:
->>>> With this patch, qemu requires keyboard-config when libxkbcommon is found on the system. So if the qemu is configured when libxkbcommon is installed
->>>> but not keyboard-config, the configure stage will produce an error message, thus avoid coredump in the build stage.
->>>
->>> I'm not sure what you're talking about.  What *is* keyboard-config anyway?
->>>
->>> On a debian system there's no such thing.  There's keyboard-configuration
->>> package but it has nothing to do with that.  It looks like if we apply
->>> such patch, it will be impossible to build qemu on debian.
->>
->> Aha, I found it.  On debian it is /usr/share/pkgconfig/keyboard-config.pc,
->> which is a part of xkb-data package.  And libxkbcommon Depends on xkb-data.
->> It looks like the distribution here is wrong, there should be no libxkbcommon
->> without xkb-data which includes keyboard-config.
+29.01.2024 11:03, Akihiko Odaki:
+> This fixes qemu_smbios_type8_opts and qemu_smbios_type11_opts to have
+> list terminators and elements for the type option.
+
+> Akihiko Odaki (2):
+>        hw/smbios: Fix OEM strings table option validation
+>        hw/smbios: Fix port connector option validation
 > 
-> Are we talking about "keyboard-config" or "xkeyboard-config" here?
-> The commit message says "keyboard-config" but the patch itself
-> says "xkeyboard-config".
+>   hw/smbios/smbios.c | 12 ++++++++++++
+>   1 file changed, 12 insertions(+)
 
-It is xkeyboard-config.pc, - I hit the same trap with the wrong commit
-message.
+Should I pick this up via the trivial-patches tree perhaps?
+The changes are trivial enough.  Picking up there, unless there's
+a pull request pending for smbios area.
 
-$ dpkg -L xkb-data | fgrep .pc
-/usr/share/pkgconfig/xkeyboard-config.pc
-$ dpkg -s libxkbcommon0 | grep Depends
-Depends: xkb-data, libc6 (>= 2.33)
+Thanks,
 
 /mjt
 
