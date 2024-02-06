@@ -1,76 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rXGEY-0003w5-8J
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Feb 2024 02:51:10 -0500
+	id 1rXNn0-0000xs-OF
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Feb 2024 10:55:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhw2101024@gmail.com>)
- id 1rXGEU-0003ve-Vt; Tue, 06 Feb 2024 02:51:07 -0500
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <zhw2101024@gmail.com>)
- id 1rXGET-0003Wx-GK; Tue, 06 Feb 2024 02:51:06 -0500
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-a38291dbe65so26902766b.3; 
- Mon, 05 Feb 2024 23:51:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1707205863; x=1707810663; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=W6noDplANQXEE71GbQLBWRGpMuIKNOLW7Z0s33eTMSw=;
- b=ha6R644NEfkVP86scX3uu2cO0z3k9zj8noVbhUs/YE7jsoGYFT28itnq8RwIfNQc3O
- QnbW6plml1oXwOMTirg3EW8YpOJj/VtXSr1p1QsLz2XP0C21AwXoqP+zaf98LgK5dEk1
- iXa/iWsH9qvQ/m3ZtzeZ6MtUMr0MRS6lQZErLKVP1zX+Iz+YAeVm2HzBr++1DAZw9sW/
- xEa2XazdDnH0eSE0Nfe5uj6fxLaL77zNqUzN6SouhB3djK7ykFwNbKda7xXXpbCFjj1U
- tRMnfkkwMKDXEXhd47V0y7bjpagF1s0/l+23A8C+7SdJhbCcyYIa644rjUU0tfmGWIwm
- 4h0Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707205863; x=1707810663;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=W6noDplANQXEE71GbQLBWRGpMuIKNOLW7Z0s33eTMSw=;
- b=dKnxHxMU4Vh4P35HtShTV1mjfyjR1mhx9eAr0nFwr4OTNzagm0rFuFUvOEdTZE6fx6
- eVOzD51KVA0812pa/6weyeUSBoRNibG4vVi9q3/v4DCg5GKQH9cpASt33rHGs629io1p
- oWUomO3ieoNAir2kASxYwSP93jUmlGkdc1p9OSfxeb+bRRDfGhj/43hc5I9TWwbZZm0C
- YDKC1mi8yHUmTV8ah8aC5dGksGsy4N7KbaS3Pofj16M7OuswzkzNYR/gvWavyQYehjxN
- ffAlMQDBZcNRGeqJnhW3ltRG9NE0TgaviO/mhMAP/CdECSWfhj+9P83uw3HuCJhPHyIa
- WPOg==
-X-Gm-Message-State: AOJu0YzCzph6s0zf8UapCbdFt/+OKsY9kYIAifcLxSsyUDURWmlY9LSE
- O7/gHaP6AFGFppuA05sKuBPAVYev3CoVPWGZmdis91vtK9mKsiMnZBHICNd4krgjqXv5mowyo8y
- ZUok8RcqUK7X6j9r08Rh2rBGkMI8=
-X-Google-Smtp-Source: AGHT+IGQ67tv+w3bdMqm5RG12mpuM2sul/wlIgkUeIr7W55E02V1R/Mapd0obgJl4a6BvQ9SqD36Aeb3WP00BgJWZo0=
-X-Received: by 2002:a17:906:2898:b0:a35:fdf9:e7e4 with SMTP id
- o24-20020a170906289800b00a35fdf9e7e4mr871785ejd.20.1707205863250; Mon, 05 Feb
- 2024 23:51:03 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rXNmy-0000xb-Nc; Tue, 06 Feb 2024 10:55:12 -0500
+Received: from mgamail.intel.com ([192.198.163.15])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rXNmu-0002v8-QS; Tue, 06 Feb 2024 10:55:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1707234909; x=1738770909;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=OMNn92A+V+CtvYFiuGOI5lzLu5J/0mtDAw3T3VkMepM=;
+ b=Fw1g3d8Rb3EzqQuFFU6bXuwqA0/UhpZeZn0pzeZqoS9CSOVoyFbAm1qT
+ D4TDlVRrrjqVJNrtbWtJCFwfJ0oFfAnsZhW+Qt8TDRfjUrMGz99Sx79pV
+ Vpe44tmEhlarPrC9nnrvRGGaVusCsyrwr5/aiP0aieBcyKWujBW0HPWIa
+ EHo3iptBNPzc8/m4FAqVX8Mnb3wJv2OzmXnnBc7cOOAp+YxC4BDA2qtkH
+ LQjwH85sRK/8ggDS7L7isOMXGW7VJiPPTQAGONMWO5jqW2wjBfyYEKEVp
+ Qt5BVqiBxridvdHRwgN/M+325sPwkTYDZ7tyfju/T4H7JHpv2F8VDvOnS w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10976"; a="925264"
+X-IronPort-AV: E=Sophos;i="6.05,247,1701158400"; 
+   d="scan'208";a="925264"
+Received: from fmviesa004.fm.intel.com ([10.60.135.144])
+ by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 06 Feb 2024 07:55:01 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.05,247,1701158400"; 
+   d="scan'208";a="5671161"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by fmviesa004.fm.intel.com with ESMTP; 06 Feb 2024 07:54:58 -0800
+Date: Wed, 7 Feb 2024 00:08:31 +0800
+From: Zhao Liu <zhao1.liu@linux.intel.com>
+To: Philippe =?utf-8?B?TWF0aGlldS1EYXVk77+9?= <philmd@linaro.org>
+Cc: "Michael S . Tsirkin" <mst@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+ Markus Armbruster <armbru@redhat.com>
+Subject: Re: [PATCH] hw/intc: Handle the error of IOAPICCommonClass.realize()
+Message-ID: <ZcJZf8oZOBuEe6NV@intel.com>
+References: <20240131142902.115964-1-zhao1.liu@linux.intel.com>
+ <cdb1c6cd-0095-4787-a740-17b42e061548@linaro.org>
+ <ZbsPRB4OM027fbMA@intel.com>
 MIME-Version: 1.0
-References: <94cf974b-05ec-41c2-8d0b-43ffbc8bdeac@gmail.com>
- <904ef958-0e3d-48da-a4a7-5c1514c04472@tls.msk.ru>
- <e441b771-0a08-4f2c-b7a7-f6fdd787bc1c@tls.msk.ru>
- <CAFEAcA-C-pGGYY1bfE0ZatZP-imGmq=4-579TEnEZWFLeLxZLQ@mail.gmail.com>
- <CAKjfnjrCu1R6LE46AYf0+SGXs6994APhRvgSNWR8wfp=mnp3Fw@mail.gmail.com>
- <e292f18b-18cb-4b67-9db4-df938aa19d3d@tls.msk.ru>
-In-Reply-To: <e292f18b-18cb-4b67-9db4-df938aa19d3d@tls.msk.ru>
-From: Zhang Wen <zhw2101024@gmail.com>
-Date: Tue, 6 Feb 2024 15:50:51 +0800
-Message-ID: <CAKjfnjpCz=hrpZXj7uS=OQdpvkKPEFa24s3QYS4TqNZALcykJQ@mail.gmail.com>
-Subject: Re: building qemu on a system with libxkbcommon installed but not
- xkeyboard-config produces an core dump
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- pbonzini@redhat.com, 
- marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com, 
- philmd@linaro.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=zhw2101024@gmail.com; helo=mail-ej1-x635.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <ZbsPRB4OM027fbMA@intel.com>
+Received-SPF: none client-ip=192.198.163.15;
+ envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.294,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,14 +69,136 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Feb 2024 07:51:07 -0000
+X-List-Received-Date: Tue, 06 Feb 2024 15:55:13 -0000
 
-> So how the problem manifests itself?  What the actual error message is?
-> You mentioned some segfault iirc, care to share some details?
-I'm doing a rebuild, and will attach the error message and coredump
-file here in one or two days.
+Ping Philippe & Markus,
 
--- 
-Key fingerprint:
-419F 72F3 F3A9 36EE 1B72  B00B C1C3 4BD4 FDA3 362F
+Do you have furthur comment on such private realize()? ;-)
+
+Thanks,
+Zhao
+
+On Thu, Feb 01, 2024 at 11:25:56AM +0800, Zhao Liu wrote:
+> Date: Thu, 1 Feb 2024 11:25:56 +0800
+> From: Zhao Liu <zhao1.liu@linux.intel.com>
+> Subject: Re: [PATCH] hw/intc: Handle the error of
+>  IOAPICCommonClass.realize()
+> 
+> Hi Philippe,
+> 
+> On Wed, Jan 31, 2024 at 05:48:24PM +0100, Philippe Mathieu-Daud? wrote:
+> > Date: Wed, 31 Jan 2024 17:48:24 +0100
+> > From: Philippe Mathieu-Daud? <philmd@linaro.org>
+> > Subject: Re: [PATCH] hw/intc: Handle the error of
+> >  IOAPICCommonClass.realize()
+> > 
+> > Hi Zhao,
+> > 
+> > On 31/1/24 15:29, Zhao Liu wrote:
+> > > From: Zhao Liu <zhao1.liu@intel.com>
+> > > 
+> > > IOAPICCommonClass implements its own private realize(), and this private
+> > > realize() allows error.
+> > > 
+> > > Therefore, return directly if IOAPICCommonClass.realize() meets error.
+> > > 
+> > > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> > > ---
+> > >   hw/intc/ioapic_common.c | 3 +++
+> > >   1 file changed, 3 insertions(+)
+> > > 
+> > > diff --git a/hw/intc/ioapic_common.c b/hw/intc/ioapic_common.c
+> > > index cb9bf6214608..3772863377c2 100644
+> > > --- a/hw/intc/ioapic_common.c
+> > > +++ b/hw/intc/ioapic_common.c
+> > > @@ -162,6 +162,9 @@ static void ioapic_common_realize(DeviceState *dev, Error **errp)
+> > >       info = IOAPIC_COMMON_GET_CLASS(s);
+> > >       info->realize(dev, errp);
+> > > +    if (*errp) {
+> > > +        return;
+> > > +    }
+> > 
+> > Could be clearer to deviate from DeviceRealize and let the
+> > handler return a boolean:
+> > 
+> > -- >8 --
+> > diff --git a/hw/intc/ioapic_internal.h b/hw/intc/ioapic_internal.h
+> > index 37b8565539..9664bb3e00 100644
+> > --- a/hw/intc/ioapic_internal.h
+> > +++ b/hw/intc/ioapic_internal.h
+> > @@ -92,3 +92,3 @@ struct IOAPICCommonClass {
+> > 
+> > -    DeviceRealize realize;
+> > +    bool (*realize)(DeviceState *dev, Error **errp);
+> 
+> What about I change the name of this interface?
+> 
+> Maybe ioapic_realize(), to distinguish it from DeviceClass.realize().
+> 
+> >      DeviceUnrealize unrealize;
+> 
+> Additionally, if I change the pattern of realize(), should I also avoid
+> the DeviceUnrealize macro for symmetry's sake and just declare a similar
+> function pointer as you said?
+> 
+> Further, do you think it's necessary to introduce InternalRealize and
+> InternalUnrealize macros for qdev to wrap these special realize/unrealize
+> to differentiate them from normal DeviceRealize/DeviceUnrealize?
+> 
+> Because I found that this pattern of realize() (i.e. registering the
+> realize() of the child class in the parent class instead of DeviceClass,
+> and then calling the registered realize() in parent realize()) is also
+> widely used in many cases:
+> 
+> * xen_block_realize()
+> * virtser_port_device_realize()
+> * x86_iommu_realize()
+> * virtio_input_device_realize()
+> * apic_common_realize()
+> * pc_dimm_realize()
+> * virtio_device_realize()
+> ...
+> 
+> I'm not quite sure if this is a generic way to use it, although it looks
+> like it could easily be confused with DeviceClass.realize().
+> 
+> > diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
+> > index 409d0c8c76..96747ef2b8 100644
+> > --- a/hw/i386/kvm/ioapic.c
+> > +++ b/hw/i386/kvm/ioapic.c
+> > @@ -121,3 +121,3 @@ static void kvm_ioapic_set_irq(void *opaque, int irq,
+> > int level)
+> > 
+> > -static void kvm_ioapic_realize(DeviceState *dev, Error **errp)
+> > +static bool kvm_ioapic_realize(DeviceState *dev, Error **errp)
+> >  {
+> > @@ -133,2 +133,4 @@ static void kvm_ioapic_realize(DeviceState *dev, Error
+> > **errp)
+> >      qdev_init_gpio_in(dev, kvm_ioapic_set_irq, IOAPIC_NUM_PINS);
+> > +
+> > +    return true;
+> >  }
+> > diff --git a/hw/intc/ioapic_common.c b/hw/intc/ioapic_common.c
+> > index cb9bf62146..beab65be04 100644
+> > --- a/hw/intc/ioapic_common.c
+> > +++ b/hw/intc/ioapic_common.c
+> > @@ -163,3 +163,5 @@ static void ioapic_common_realize(DeviceState *dev,
+> > Error **errp)
+> >      info = IOAPIC_COMMON_GET_CLASS(s);
+> > -    info->realize(dev, errp);
+> > +    if (!info->realize(dev, errp)) {
+> > +        return;
+> > +    }
+> > 
+> > ---
+> > 
+> > What do you think?
+> 
+> I'm OK with the change here, but not sure if the return of private
+> realize() should be changed elsewhere as well.
+> 
+> Thanks,
+> Zhao
+> 
+> 
 
