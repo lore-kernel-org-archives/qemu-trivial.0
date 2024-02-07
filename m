@@ -1,62 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rXkiF-0005aO-U9
-	for mharc-qemu-trivial@gnu.org; Wed, 07 Feb 2024 11:23:52 -0500
+	id 1rXm6I-00028t-RX
+	for mharc-qemu-trivial@gnu.org; Wed, 07 Feb 2024 12:52:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rXkiE-0005Zx-De; Wed, 07 Feb 2024 11:23:50 -0500
-Received: from mgamail.intel.com ([192.198.163.7])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rXm6F-00027K-GV; Wed, 07 Feb 2024 12:52:43 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rXkiB-0003D0-CU; Wed, 07 Feb 2024 11:23:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1707323026; x=1738859026;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=r9x3/ipm1R1qJ0uy4DsMp3s3ZBjq5BTt+ZSrQxABzOE=;
- b=bm8zKZ/n0VTd96sClgYa3krh7CmhjNy7cKRYnjeg8u4Ul/u/Z2nkgEVW
- jiK+KIAptcJyutUu8spe3LO5zsgbO00E3LyvNSPU4gPMeK1hfTukkgg0v
- PR7PKkyF/iVL5pjCZDvbr6zBtDM0vZLbLZYKgVz3r8k30dHueN155n9nA
- +digHtphdwZv3URFNSWfM2kxzELvlAuiUQWZQvjNvKPz2ETpw03MStJe8
- mOPiRsD4PVPHqtJUmGnwPXn3wOrWcdGoCvol6ZHo4UsNqktahKJwnxozS
- Ga4WYT9UfgjoeHFs8YOtQNvX1HAMUszi7TAcYT3rmcSM90g4Rdi5QS0zF A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10977"; a="26467514"
-X-IronPort-AV: E=Sophos;i="6.05,251,1701158400"; d="scan'208";a="26467514"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 07 Feb 2024 08:23:41 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.05,251,1701158400"; 
-   d="scan'208";a="5991661"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by fmviesa004.fm.intel.com with ESMTP; 07 Feb 2024 08:23:39 -0800
-Date: Thu, 8 Feb 2024 00:37:12 +0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [PATCH] hw/intc: Handle the error of IOAPICCommonClass.realize()
-Message-ID: <ZcOxuELwO3KLUeuH@intel.com>
-References: <20240131142902.115964-1-zhao1.liu@linux.intel.com>
- <cdb1c6cd-0095-4787-a740-17b42e061548@linaro.org>
- <ZbsPRB4OM027fbMA@intel.com> <875xz0ojg7.fsf@pond.sub.org>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rXm6D-0003Iy-Kq; Wed, 07 Feb 2024 12:52:43 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 349C44B3CA;
+ Wed,  7 Feb 2024 20:53:48 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id E60E77639A;
+ Wed,  7 Feb 2024 20:52:35 +0300 (MSK)
+Received: (nullmailer pid 296722 invoked by uid 1000);
+ Wed, 07 Feb 2024 17:52:35 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org, qemu-block@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Subject: [PATCH trivial] qemu-img: factor out parse_output_format() and use it
+ in the code
+Date: Wed,  7 Feb 2024 20:52:28 +0300
+Message-Id: <20240207175228.296704-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <875xz0ojg7.fsf@pond.sub.org>
-Received-SPF: none client-ip=192.198.163.7;
- envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.106,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -69,233 +48,179 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 07 Feb 2024 16:23:50 -0000
+X-List-Received-Date: Wed, 07 Feb 2024 17:52:44 -0000
 
-Hi Markus,
+Use common code and simplify error message
 
-On Wed, Feb 07, 2024 at 07:51:52AM +0100, Markus Armbruster wrote:
-> Date: Wed, 07 Feb 2024 07:51:52 +0100
-> From: Markus Armbruster <armbru@redhat.com>
-> Subject: Re: [PATCH] hw/intc: Handle the error of
->  IOAPICCommonClass.realize()
-> 
-> Zhao Liu <zhao1.liu@linux.intel.com> writes:
-> 
-> > Hi Philippe,
-> >
-> > On Wed, Jan 31, 2024 at 05:48:24PM +0100, Philippe Mathieu-Daudé wrote:
-> >> Date: Wed, 31 Jan 2024 17:48:24 +0100
-> >> From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> >> Subject: Re: [PATCH] hw/intc: Handle the error of  IOAPICCommonClass.realize()
-> >> 
-> >> Hi Zhao,
-> >> 
-> >> On 31/1/24 15:29, Zhao Liu wrote:
-> >> > From: Zhao Liu <zhao1.liu@intel.com>
-> >> > 
-> >> > IOAPICCommonClass implements its own private realize(), and this private
-> >> > realize() allows error.
-> >> > 
-> >> > Therefore, return directly if IOAPICCommonClass.realize() meets error.
-> >> > 
-> >> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> >> > ---
-> >> >   hw/intc/ioapic_common.c | 3 +++
-> >> >   1 file changed, 3 insertions(+)
-> >> > 
-> >> > diff --git a/hw/intc/ioapic_common.c b/hw/intc/ioapic_common.c
-> >> > index cb9bf6214608..3772863377c2 100644
-> >> > --- a/hw/intc/ioapic_common.c
-> >> > +++ b/hw/intc/ioapic_common.c
-> >> > @@ -162,6 +162,9 @@ static void ioapic_common_realize(DeviceState *dev, Error **errp)
-> >> >      info = IOAPIC_COMMON_GET_CLASS(s);
-> >> >      info->realize(dev, errp);
-> >> > +    if (*errp) {
-> >> > +        return;
-> >> > +    }
-> 
-> This is wrong, although it'll work in practice.
-> 
-> It's wrong, because dereferencing @errp requires ERRP_GUARD().
-> qapi/error.h:
-> 
->  * = Why, when and how to use ERRP_GUARD() =
->  *
->  * Without ERRP_GUARD(), use of the @errp parameter is restricted:
->  * - It must not be dereferenced, because it may be null.
->  * - It should not be passed to error_prepend() or
->  *   error_append_hint(), because that doesn't work with &error_fatal.
->  * ERRP_GUARD() lifts these restrictions.
->  *
->  * To use ERRP_GUARD(), add it right at the beginning of the function.
->  * @errp can then be used without worrying about the argument being
->  * NULL or &error_fatal.
->  *
->  * Using it when it's not needed is safe, but please avoid cluttering
->  * the source with useless code.
-> 
-> It'll work anyway, because the caller never passes null.
-> 
-> Obvious fix:
-> 
-> diff --git a/hw/intc/ioapic_common.c b/hw/intc/ioapic_common.c
-> index cb9bf62146..280404cba5 100644
-> --- a/hw/intc/ioapic_common.c
-> +++ b/hw/intc/ioapic_common.c
-> @@ -152,6 +152,7 @@ static int ioapic_dispatch_post_load(void *opaque, int version_id)
->  
->  static void ioapic_common_realize(DeviceState *dev, Error **errp)
->  {
-> +    ERRP_GUARD();
->      IOAPICCommonState *s = IOAPIC_COMMON(dev);
->      IOAPICCommonClass *info;
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ qemu-img.c | 63 ++++++++++++++++--------------------------------------
+ 1 file changed, 18 insertions(+), 45 deletions(-)
 
-Thanks for explaining and educating me!
-
->  
-> >> Could be clearer to deviate from DeviceRealize and let the
-> >> handler return a boolean:
-> >> 
-> >> -- >8 --
-> >> diff --git a/hw/intc/ioapic_internal.h b/hw/intc/ioapic_internal.h
-> >> index 37b8565539..9664bb3e00 100644
-> >> --- a/hw/intc/ioapic_internal.h
-> >> +++ b/hw/intc/ioapic_internal.h
-> >> @@ -92,3 +92,3 @@ struct IOAPICCommonClass {
-> >> 
-> >> -    DeviceRealize realize;
-> >> +    bool (*realize)(DeviceState *dev, Error **errp);
-> 
-> qapi.error.h advises:
-> 
->  * - Whenever practical, also return a value that indicates success /
->  *   failure.  This can make the error checking more concise, and can
->  *   avoid useless error object creation and destruction.  Note that
->  *   we still have many functions returning void.  We recommend
->  *   • bool-valued functions return true on success / false on failure,
->  *   • pointer-valued functions return non-null / null pointer, and
->  *   • integer-valued functions return non-negative / negative.
-> 
-> The patch then becomes
-> 
->           info = IOAPIC_COMMON_GET_CLASS(s);
->      -    info->realize(dev, errp);
->      +    if (!info->realize(dev, errp) {
->      +        return;
->      +    }
-> 
-> DeviceClass and BusClass callbacks realize, unrealize ignore this
-> advice: they return void.  Why?
-> 
-> Following the advice makes calls easier to read, but the callees have to
-> do a tiny bit of extra work: return something.  Good trade when we have
-> at least as many callers as callees.
-> 
-> But these callbacks have many more callees: many devices implement them,
-> but only a few places call.  Changing them to return something looked
-> like more trouble than it's worth, so we didn't.
-
-Thanks! Got it.
-
-> 
-> > What about I change the name of this interface?
-> >
-> > Maybe ioapic_realize(), to distinguish it from DeviceClass.realize().
-> 
-> I wouldn't bother.
-
-;-)
-
-> 
-> >>      DeviceUnrealize unrealize;
-> >
-> > Additionally, if I change the pattern of realize(), should I also avoid
-> > the DeviceUnrealize macro for symmetry's sake and just declare a similar
-> > function pointer as you said?
-> >
-> > Further, do you think it's necessary to introduce InternalRealize and
-> > InternalUnrealize macros for qdev
-> 
-> You mean typedefs?
-
-Yes!
-
-> 
-> >                          for qdev to wrap these special realize/unrealize
-> > to differentiate them from normal DeviceRealize/DeviceUnrealize?
-> >
-> > Because I found that this pattern of realize() (i.e. registering the
-> > realize() of the child class in the parent class instead of DeviceClass,
-> > and then calling the registered realize() in parent realize()) is also
-> > widely used in many cases:
-> >
-> > * xen_block_realize()
-> > * virtser_port_device_realize()
-> > * x86_iommu_realize()
-> > * virtio_input_device_realize()
-> > * apic_common_realize()
-> > * pc_dimm_realize()
-> > * virtio_device_realize()
-> > ...
-> 
-> Yes.
-> 
-> When a subtype overrides a supertype's method, it often makes sense to
-> have the subtype's method call the supertype's method.
-
-Thanks! I can consider a simple RFC to introduce a new typedef.
-
-> 
-> > I'm not quite sure if this is a generic way to use it, although it looks
-> > like it could easily be confused with DeviceClass.realize().
-> 
-> Did I answer your question?  I'm not sure :)
-
-Of course you did. :-)
-
-> 
-> >> diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
-> >> index 409d0c8c76..96747ef2b8 100644
-> >> --- a/hw/i386/kvm/ioapic.c
-> >> +++ b/hw/i386/kvm/ioapic.c
-> >> @@ -121,3 +121,3 @@ static void kvm_ioapic_set_irq(void *opaque, int irq,
-> >> int level)
-> >> 
-> >> -static void kvm_ioapic_realize(DeviceState *dev, Error **errp)
-> >> +static bool kvm_ioapic_realize(DeviceState *dev, Error **errp)
-> >>  {
-> >> @@ -133,2 +133,4 @@ static void kvm_ioapic_realize(DeviceState *dev, Error
-> >> **errp)
-> >>      qdev_init_gpio_in(dev, kvm_ioapic_set_irq, IOAPIC_NUM_PINS);
-> >> +
-> >> +    return true;
-> >>  }
-> >> diff --git a/hw/intc/ioapic_common.c b/hw/intc/ioapic_common.c
-> >> index cb9bf62146..beab65be04 100644
-> >> --- a/hw/intc/ioapic_common.c
-> >> +++ b/hw/intc/ioapic_common.c
-> >> @@ -163,3 +163,5 @@ static void ioapic_common_realize(DeviceState *dev,
-> >> Error **errp)
-> >>      info = IOAPIC_COMMON_GET_CLASS(s);
-> >> -    info->realize(dev, errp);
-> >> +    if (!info->realize(dev, errp)) {
-> >> +        return;
-> >> +    }
-> >> 
-> >> ---
-> >> 
-> >> What do you think?
-> >
-> > I'm OK with the change here, but not sure if the return of private
-> > realize() should be changed elsewhere as well.
-> 
-> I think I'd add the missing ERRP_GUARD() and call it a day.
-> 
-
-Okay, let me add the missing ERRP_GUARD(). I'll also check and clean up
-other place where the ERRP_GUARD() is also missing.
-
-Regards,
-Zhao
+diff --git a/qemu-img.c b/qemu-img.c
+index 7668f86769..eb6017d339 100644
+--- a/qemu-img.c
++++ b/qemu-img.c
+@@ -126,6 +126,17 @@ void unrecognized_option(const char *option)
+     error_exit("unrecognized option '%s'", option);
+ }
+ 
++static OutputFormat parse_output_format(const char *arg)
++{
++    if (!strcmp(arg, "json")) {
++        return OFORMAT_JSON;
++    } else if (!strcmp(arg, "human")) {
++        return OFORMAT_HUMAN;
++    } else {
++        error_exit("--output expects 'human' or 'json' not '%s'", arg);
++    }
++}
++
+ /* Please keep in synch with docs/tools/qemu-img.rst */
+ static G_NORETURN
+ void help(void)
+@@ -720,7 +731,7 @@ static int img_check(int argc, char **argv)
+ {
+     int c, ret;
+     OutputFormat output_format = OFORMAT_HUMAN;
+-    const char *filename, *fmt, *output, *cache;
++    const char *filename, *fmt, *cache;
+     BlockBackend *blk;
+     BlockDriverState *bs;
+     int fix = 0;
+@@ -732,7 +743,6 @@ static int img_check(int argc, char **argv)
+     bool force_share = false;
+ 
+     fmt = NULL;
+-    output = NULL;
+     cache = BDRV_DEFAULT_CACHE;
+ 
+     for(;;) {
+@@ -778,7 +788,7 @@ static int img_check(int argc, char **argv)
+             }
+             break;
+         case OPTION_OUTPUT:
+-            output = optarg;
++            output_format = parse_output_format(optarg);
+             break;
+         case 'T':
+             cache = optarg;
+@@ -802,15 +812,6 @@ static int img_check(int argc, char **argv)
+     }
+     filename = argv[optind++];
+ 
+-    if (output && !strcmp(output, "json")) {
+-        output_format = OFORMAT_JSON;
+-    } else if (output && !strcmp(output, "human")) {
+-        output_format = OFORMAT_HUMAN;
+-    } else if (output) {
+-        error_report("--output must be used with human or json as argument.");
+-        return 1;
+-    }
+-
+     ret = bdrv_parse_cache_mode(cache, &flags, &writethrough);
+     if (ret < 0) {
+         error_report("Invalid source cache option: %s", cache);
+@@ -3004,13 +3005,12 @@ static int img_info(int argc, char **argv)
+     int c;
+     OutputFormat output_format = OFORMAT_HUMAN;
+     bool chain = false;
+-    const char *filename, *fmt, *output;
++    const char *filename, *fmt;
+     BlockGraphInfoList *list;
+     bool image_opts = false;
+     bool force_share = false;
+ 
+     fmt = NULL;
+-    output = NULL;
+     for(;;) {
+         int option_index = 0;
+         static const struct option long_options[] = {
+@@ -3045,7 +3045,7 @@ static int img_info(int argc, char **argv)
+             force_share = true;
+             break;
+         case OPTION_OUTPUT:
+-            output = optarg;
++            output_format = parse_output_format(optarg);
+             break;
+         case OPTION_BACKING_CHAIN:
+             chain = true;
+@@ -3063,15 +3063,6 @@ static int img_info(int argc, char **argv)
+     }
+     filename = argv[optind++];
+ 
+-    if (output && !strcmp(output, "json")) {
+-        output_format = OFORMAT_JSON;
+-    } else if (output && !strcmp(output, "human")) {
+-        output_format = OFORMAT_HUMAN;
+-    } else if (output) {
+-        error_report("--output must be used with human or json as argument.");
+-        return 1;
+-    }
+-
+     list = collect_image_info_list(image_opts, filename, fmt, chain,
+                                    force_share);
+     if (!list) {
+@@ -3230,7 +3221,7 @@ static int img_map(int argc, char **argv)
+     OutputFormat output_format = OFORMAT_HUMAN;
+     BlockBackend *blk;
+     BlockDriverState *bs;
+-    const char *filename, *fmt, *output;
++    const char *filename, *fmt;
+     int64_t length;
+     MapEntry curr = { .length = 0 }, next;
+     int ret = 0;
+@@ -3240,7 +3231,6 @@ static int img_map(int argc, char **argv)
+     int64_t max_length = -1;
+ 
+     fmt = NULL;
+-    output = NULL;
+     for (;;) {
+         int option_index = 0;
+         static const struct option long_options[] = {
+@@ -3276,7 +3266,7 @@ static int img_map(int argc, char **argv)
+             force_share = true;
+             break;
+         case OPTION_OUTPUT:
+-            output = optarg;
++            output_format = parse_output_format(optarg);
+             break;
+         case 's':
+             start_offset = cvtnum("start offset", optarg);
+@@ -3303,15 +3293,6 @@ static int img_map(int argc, char **argv)
+     }
+     filename = argv[optind];
+ 
+-    if (output && !strcmp(output, "json")) {
+-        output_format = OFORMAT_JSON;
+-    } else if (output && !strcmp(output, "human")) {
+-        output_format = OFORMAT_HUMAN;
+-    } else if (output) {
+-        error_report("--output must be used with human or json as argument.");
+-        return 1;
+-    }
+-
+     blk = img_open(image_opts, filename, fmt, 0, false, false, force_share);
+     if (!blk) {
+         return 1;
+@@ -5411,15 +5392,7 @@ static int img_measure(int argc, char **argv)
+             image_opts = true;
+             break;
+         case OPTION_OUTPUT:
+-            if (!strcmp(optarg, "json")) {
+-                output_format = OFORMAT_JSON;
+-            } else if (!strcmp(optarg, "human")) {
+-                output_format = OFORMAT_HUMAN;
+-            } else {
+-                error_report("--output must be used with human or json "
+-                             "as argument.");
+-                goto out;
+-            }
++            output_format = parse_output_format(optarg);
+             break;
+         case OPTION_SIZE:
+         {
+-- 
+2.39.2
 
 
