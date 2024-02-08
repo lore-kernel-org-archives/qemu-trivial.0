@@ -1,78 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rY2xL-00051d-1k
-	for mharc-qemu-trivial@gnu.org; Thu, 08 Feb 2024 06:52:39 -0500
+	id 1rY5IR-0001OR-NX
+	for mharc-qemu-trivial@gnu.org; Thu, 08 Feb 2024 09:22:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rY2xH-00050I-FD
- for qemu-trivial@nongnu.org; Thu, 08 Feb 2024 06:52:35 -0500
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rY2xF-0000s8-Rv
- for qemu-trivial@nongnu.org; Thu, 08 Feb 2024 06:52:35 -0500
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-56002e7118dso2108824a12.0
- for <qemu-trivial@nongnu.org>; Thu, 08 Feb 2024 03:52:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707393152; x=1707997952; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ZhsrJtfj3xZ7oV3SgSEwziBSoCYT1XaZ0wk65rFdG1A=;
- b=GRlt6/SZeMm8OU8yE67V7qUDB9N7bfoBdf1/U5s0Fo9IlnAp7Lb0nixdF8QZGeWbBx
- zuL1pQi+EYv/ifJtW/9VbespMwDccJCrYahnoR2LMAMmhRnqIHbugdz20T4qQKtb6fG/
- 5mrsMIAcS2bH95HFcyePFA3eoKpWNDCxeIHpa7yB47pafChtbo0r+Wp/R+UpIBXFVXdA
- H7eDfVfag0ISidZSFG+M57jntXRTLEHQst4DFjNxg0vZUYWgr+PP3I7jqB3tyGZnr7/m
- B4JSM2SHrDjv599w+iyFCsml7C4YFQkKiJIiCT9j/1RFBjkFQD2IWXtC1p/RYX83h7hU
- SO1g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707393152; x=1707997952;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ZhsrJtfj3xZ7oV3SgSEwziBSoCYT1XaZ0wk65rFdG1A=;
- b=mMiiblUe6APIaPmDq2VMv65vN06E735nMkJaYWZfvXdBxAw2m0q+7+crcOt/9hGbpx
- K6eiDggzdkdO9ctbng78cZ5/24ky1OY9ALG5aPnkRbk9P8woWWu/bgsMD6AKupOCIq76
- VlsPynzwKPD0ZrDLg2yKB4b0Bh1tQgmNDd8pSstluZ7aqCNi5x31/EPfCrdbG0zY052c
- XCNxMpam0ZGFGvxiEoElvHBPO+ZT+0GQS1dDIhul8IND7tiLBBQfStbKLLUSsWNj2R76
- +xwTxUVtL5z8+UN57ZlQX+ksVjOtkMJ2oKTwU0nlpsAhRhMAtis71oqLGufWjB+G9wtH
- rdzQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX45IztcVKDKyvB9svu2IZ8giuyyrlyCiUWRZWGz3GfurL+bQ9PZNd+97y7D3wY+KvGbh00sLa68rogJoFa/Ke564Xc0oH0Ew==
-X-Gm-Message-State: AOJu0Yx89hC+ihSGxANGahFJLQ/kSEsg5/rAYviGnYrmlc51V4vZ+q3I
- eO/9PfXTTDz8WXnY5zbM0US71raoNYmGe+CJGM5Gg3205Rr8GBylqwtw8PlruJe4Y1uxjoMrfa6
- A7m74HSvt3NvwnbzueO2HFFL0DCU3rY+EJ04pbA==
-X-Google-Smtp-Source: AGHT+IEnh1zOk74ZIZ0WX5eBmduGVU3UgNfjC3L4C9DAkbM7+CAOR7KMgdY8vxDCYNGHSta2HZ+PAU4F2rj2KR+WDsQ=
-X-Received: by 2002:a05:6402:31f3:b0:55f:f2ae:20ed with SMTP id
- dy19-20020a05640231f300b0055ff2ae20edmr5993364edb.16.1707393152207; Thu, 08
- Feb 2024 03:52:32 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1rY5IC-0001MC-40
+ for qemu-trivial@nongnu.org; Thu, 08 Feb 2024 09:22:23 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1rY5IA-0005sX-2d
+ for qemu-trivial@nongnu.org; Thu, 08 Feb 2024 09:22:19 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1707402136;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=gAla9J4PVDqycTuoekfcB6U5If2dSmAvYvLz7BgmNoQ=;
+ b=P7atb5quwq73FaFvnahAlgmm86K1YeYFIHIbK4S5tIlNqXSilec8P3h3oBHxongOa7QSty
+ NrJ7MVQgh48f0KvcXjIo02G3iCc4o4Mm3UQX4ecKNvgpN/FPOZa1on8suSBs7OFPsXltKy
+ rt36uPmCSJtyUf/CR+7WnVxHW/IFdco=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-61-dlziQXbcOvCOicqYfWWaBw-1; Thu, 08 Feb 2024 09:22:14 -0500
+X-MC-Unique: dlziQXbcOvCOicqYfWWaBw-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F1069185A780;
+ Thu,  8 Feb 2024 14:22:13 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.193.248])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 2CEAA1C14B0B;
+ Thu,  8 Feb 2024 14:22:13 +0000 (UTC)
+Date: Thu, 8 Feb 2024 15:22:12 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org, qemu-block@nongnu.org,
+ qemu-arm <qemu-arm@nongnu.org>
+Subject: Re: [PATCH] iothread: Simplify expression in qemu_in_iothread()
+Message-ID: <ZcTjlNeibKUnIDcL@redhat.com>
+References: <20240208101657.15962-1-kwolf@redhat.com>
+ <ffe07fee-0cda-4517-a64b-031cb922d806@linaro.org>
 MIME-Version: 1.0
-References: <94cf974b-05ec-41c2-8d0b-43ffbc8bdeac@gmail.com>
- <904ef958-0e3d-48da-a4a7-5c1514c04472@tls.msk.ru>
- <e441b771-0a08-4f2c-b7a7-f6fdd787bc1c@tls.msk.ru>
- <CAFEAcA-C-pGGYY1bfE0ZatZP-imGmq=4-579TEnEZWFLeLxZLQ@mail.gmail.com>
- <CAKjfnjrCu1R6LE46AYf0+SGXs6994APhRvgSNWR8wfp=mnp3Fw@mail.gmail.com>
-In-Reply-To: <CAKjfnjrCu1R6LE46AYf0+SGXs6994APhRvgSNWR8wfp=mnp3Fw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 8 Feb 2024 11:52:21 +0000
-Message-ID: <CAFEAcA-VKYuPk1c9=E_7W0h1T2uoTc53LeNX_kRQW9rk7zPiXg@mail.gmail.com>
-Subject: Re: building qemu on a system with libxkbcommon installed but not
- xkeyboard-config produces an core dump
-To: Zhang Wen <zhw2101024@gmail.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- pbonzini@redhat.com, 
- marcandre.lureau@redhat.com, berrange@redhat.com, thuth@redhat.com, 
- philmd@linaro.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <ffe07fee-0cda-4517-a64b-031cb922d806@linaro.org>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.213,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,45 +70,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 08 Feb 2024 11:52:35 -0000
+X-List-Received-Date: Thu, 08 Feb 2024 14:22:25 -0000
 
-On Tue, 6 Feb 2024 at 06:35, Zhang Wen <zhw2101024@gmail.com> wrote:
-> I'm building my own system following the Linux From Scratch package, which is at
-> https://www.linuxfromscratch.org.
-> I accidently built libxkbcommon package but not xkeyboard-config
-> package, and then
-> while building qemu I saw this problem.
+Am 08.02.2024 um 11:48 hat Philippe Mathieu-Daudé geschrieben:
+> On 8/2/24 11:16, Kevin Wolf wrote:
+> > 'a == b ? false : true' is a rather convoluted way of writing 'a != b'.
+> > Use the more obvious way to write it.
+> > 
+> > Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+> > ---
+> >   iothread.c | 3 +--
+> >   1 file changed, 1 insertion(+), 2 deletions(-)
+> > 
+> > diff --git a/iothread.c b/iothread.c
+> > index 6c1fc8c856..e1e9e04736 100644
+> > --- a/iothread.c
+> > +++ b/iothread.c
+> > @@ -404,6 +404,5 @@ IOThread *iothread_by_id(const char *id)
+> >   bool qemu_in_iothread(void)
+> >   {
+> > -    return qemu_get_current_aio_context() == qemu_get_aio_context() ?
+> > -                    false : true;
+> > +    return qemu_get_current_aio_context() != qemu_get_aio_context();
+> >   }
+> 
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> 
+> BTW using the same pattern:
+> 
+> -- >8 --
+> diff --git a/hw/nvram/xlnx-zynqmp-efuse.c b/hw/nvram/xlnx-zynqmp-efuse.c
+> index ec98456e5d..d074762a25 100644
+> --- a/hw/nvram/xlnx-zynqmp-efuse.c
+> +++ b/hw/nvram/xlnx-zynqmp-efuse.c
+> @@ -582,7 +582,7 @@ static uint64_t
+> zynqmp_efuse_cache_load_prew(RegisterInfo *reg,
+> 
+>  static uint64_t zynqmp_efuse_wr_lock_prew(RegisterInfo *reg, uint64_t val)
+>  {
+> -    return val == 0xDF0D ? 0 : 1;
+> +    return val != 0xDF0D;
+>  }
 
-I found this interesting commit in FreeBSD:
-https://svnweb.freebsd.org/ports?view=revision&revision=490981
-"Add a run time dependency on x11/xkeyboard-config in x11/libxkbcommon.
+Maybe. I would have to know that device to tell if this is really meant
+as boolean. Or maybe it should be written 0x0 and 0x1 to signify that
+it's a register value or something.
 
- While not strictly necessary, this is recommended upstream, since almost all
- uses of libxkbcommon also needs xkeyboard-config.  This is similar to how it
- is done in other distributions.
+> diff --git a/tests/tcg/aarch64/sysregs.c b/tests/tcg/aarch64/sysregs.c
+> index 301e61d0dd..bdd73bd181 100644
+> --- a/tests/tcg/aarch64/sysregs.c
+> +++ b/tests/tcg/aarch64/sysregs.c
+> @@ -183,5 +183,5 @@ int main(void)
+>          return 1;
+>      }
+> 
+> -    return should_fail_count == 6 ? 0 : 1;
+> +    return should_fail_count != 6;
+>  }
 
- This solves issues when graphics/xpdf4 is installed without a desktop or
- graphical environment, as well as other places."
+This one isn't unclear to me, though. This is EXIT_SUCCESS and
+EXIT_FAILURE, just open-coded. I think making your change would make it
+only more confusing.
 
-That suggests that the intention of X11 upstream is that if
-a distro provides libxkbcommon then it should also provide
-xkeyboard-config, and if the distro doesn't do that then various
-things will not work correctly, not just QEMU.
+Kevin
 
-Looking at the Linux From Scratch website I see that their
-libxkbcommon page
-https://www.linuxfromscratch.org/blfs/view/svn/general/libxkbcommon.html
-says:
-
-# Required
-# xkeyboard-config-2.41 (runtime)
-
-So LFS agrees that xkeyboard-config is a required dependency.
-
-My inclination is therefore to say that "libxkbcommon is present
-but one of its required dependencies is missing" is not really
-a situation we need to change QEMU to handle.
-
-thanks
--- PMM
 
