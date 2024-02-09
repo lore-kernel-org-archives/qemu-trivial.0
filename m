@@ -1,84 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rYTw6-0002pC-Py
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Feb 2024 11:41:10 -0500
+	id 1rYW1y-0000lz-47
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Feb 2024 13:55:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rYTw4-0002of-Vj
- for qemu-trivial@nongnu.org; Fri, 09 Feb 2024 11:41:10 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rYTw1-0006gx-Rf
- for qemu-trivial@nongnu.org; Fri, 09 Feb 2024 11:41:07 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-41061f0a243so7992375e9.0
- for <qemu-trivial@nongnu.org>; Fri, 09 Feb 2024 08:41:04 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707496863; x=1708101663; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=iSA6HhjgtgS+VYvw61Q384rZfEab29SZDHt8SdZCCu0=;
- b=Foiy2Iis/++URF+mx52f7rC3XvltJ49Z2vhBvZoVBCxhPUQ1ADvBKys5IMOCsPx2k/
- 646bkh2lZHzcEtzl5jIMbHuUCWoJOzvKOw2mRBZhwM6Uh1yWhHRneIz/NCST8RAzThrm
- Loa/0gKGMbWPRZybwGE/q6qitDavSKNs2Cz2FGvkMfaCWlmaqO7exiCwCLQtQA3xZqr6
- mxWwvIGgh7bXkR6yVcktveoxgsOv01T0EWmerH95mzjfWtOR3znE0oM1B1EF0Wfd6kiW
- nFY0qmz+9+1dkhgUClg0z5521Bm9lI/Q/j46t/63VbFiDRiDM77sXCcqXzmyB/HN9Pjm
- 0JFw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707496863; x=1708101663;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=iSA6HhjgtgS+VYvw61Q384rZfEab29SZDHt8SdZCCu0=;
- b=PtZuA1tDJFuzHtn0y5HiWcZahDswHtoGaBgXGs7ouX2mZqgZeChWVhnlzXSUxcTAXL
- r1ZFcVbNv9aTIiEsA7L0zwLETneifTZ1sSUXlDxEyZcjd2P7YGPohHyY1L3IxOpQADz6
- +HtbNVaXUaN6/80/7+XIUwmav8MOu0cbvW2/87ZSS46jtvzs12EsQtzE3rnthxCBxu7I
- xakllHXz6q55EChDL061/8SxZzpXUuFToqmUgfqoHd0SgLSiVzjpCKCMP0txYDhqZm8n
- /fn04+n/hxkzgaMyLxoS/8mcVc8N6IxaKU2SB0/PDBr20OQywga9L2cOBmU0ZAUtJvXo
- pgeQ==
-X-Gm-Message-State: AOJu0YzhdZ+sedLAU4YBt3WBhKG2+2B/B3TqF5TCDfpcA0Cnkb/tjsuy
- +f/7q4ACIBfcj6JQrKgti+neN4IRkh4IWhRg0cHqSp6txB05JeieFg5+nE0Gzio=
-X-Google-Smtp-Source: AGHT+IFE6M/HDLUe7XvRKr9Xb8XD1golMsntQyrxDY63eWBSLOr/zd39TdRYQgGL//rrpKuEZK6jPQ==
-X-Received: by 2002:a05:600c:3ac6:b0:410:3bf6:fabe with SMTP id
- d6-20020a05600c3ac600b004103bf6fabemr2044644wms.6.1707496863410; 
- Fri, 09 Feb 2024 08:41:03 -0800 (PST)
-X-Forwarded-Encrypted: i=1;
- AJvYcCUMloP6m+ODjqWexS0tsMf9Cp6/YAZytC2vti9mJw8ePmpXZmvfRSgZm9ALoWT6b/LudPxxmUIwyZxq/fZSG203GyDtT2C6eBUNpRwMOLh8AJIRn1jUqlCWeF6r73+GY6vHXokh9MY6TTNsbN7Mg/h0q00kq9ymCCA8W3Sou2a5qTwt5TMtv1eY/NyNYUkt1Z8rfobzhP/F8+zNFFWLNP8osghBSKt/KUlCmBAEPj/A5yr7uxgbBQLGI6esN6VA5EWYfA048keNhvzmQeiM01YKxJN/BFniuvT4HY6IlTVtiYkXQKhUQRY=
-Received: from [192.168.69.100] ([176.176.147.207])
- by smtp.gmail.com with ESMTPSA id
- jn14-20020a05600c6b0e00b004104bc8d841sm1157700wmb.13.2024.02.09.08.41.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 09 Feb 2024 08:41:03 -0800 (PST)
-Message-ID: <06da11bb-424c-49d8-a650-b846acb82298@linaro.org>
-Date: Fri, 9 Feb 2024 17:41:01 +0100
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rYW1w-0000lS-Di
+ for qemu-trivial@nongnu.org; Fri, 09 Feb 2024 13:55:20 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rYW1q-0001Ww-V7
+ for qemu-trivial@nongnu.org; Fri, 09 Feb 2024 13:55:20 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1707504913;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=3+KWLMqcyHzWRv7NZSsj5IzznoIvlcNWC67gfs3HkAY=;
+ b=WfHqEnw4z4a6qsLqn08Gh9IYoKoDlVsD1SMlyBVBZhy8jPMwMPYziq5sXTZM+yMlcnFVT1
+ ccN+t8Vd0c6qNIUcGaLyvevm3a/qdPbJhY3hN0PWjQ/opPQoxRXk2m5qu7b1TUj/dXSVIl
+ 3QSUkAD7TYiVDNrchKc6VIlXgn9VkP8=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-336-QyB1EcPINrGTwJvu6GSw0g-1; Fri,
+ 09 Feb 2024 13:55:10 -0500
+X-MC-Unique: QyB1EcPINrGTwJvu6GSw0g-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B10BE282D3CB;
+ Fri,  9 Feb 2024 18:55:09 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.170])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id F25A611218;
+ Fri,  9 Feb 2024 18:55:07 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Helge Deller <deller@gmx.de>,
+ Richard Henderson <richard.henderson@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-stable@nongnu.org,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] hw/hppa/Kconfig: Fix building with "configure
+ --without-default-devices"
+Date: Fri,  9 Feb 2024 19:55:06 +0100
+Message-ID: <20240209185506.248001-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/3] system/physmem: Assign global system I/O Memory to
- machine
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Peter Xu <peterx@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-trivial@nongnu.org, "Dr. David Alan Gilbert" <dave@treblig.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, David Hildenbrand <david@redhat.com>
-References: <20240209150039.22211-1-philmd@linaro.org>
- <20240209150039.22211-4-philmd@linaro.org>
- <CAFEAcA9+6aK_uPa6tFV2-yh3g_2oeuvFaOs=nd=2dexm=uxN9Q@mail.gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA9+6aK_uPa6tFV2-yh3g_2oeuvFaOs=nd=2dexm=uxN9Q@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.269,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,55 +67,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Feb 2024 16:41:10 -0000
+X-List-Received-Date: Fri, 09 Feb 2024 18:55:20 -0000
 
-(+Markus I forgot to Cc)
+When running "configure" with "--without-default-devices", building
+of qemu-system-hppa currently fails with:
 
-On 9/2/24 17:06, Peter Maydell wrote:
-> On Fri, 9 Feb 2024 at 15:01, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> So far there is only one system I/O and one system
->> memory per machine.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   system/physmem.c | 7 ++++---
->>   1 file changed, 4 insertions(+), 3 deletions(-)
->>
->> diff --git a/system/physmem.c b/system/physmem.c
->> index 5e66d9ae36..50947a374e 100644
->> --- a/system/physmem.c
->> +++ b/system/physmem.c
->> @@ -2554,12 +2554,13 @@ static void memory_map_init(void)
->>   {
->>       system_memory = g_malloc(sizeof(*system_memory));
->>
->> -    memory_region_init(system_memory, NULL, "system", UINT64_MAX);
->> +    memory_region_init(system_memory, OBJECT(current_machine),
->> +                       "system", UINT64_MAX);
->>       address_space_init(&address_space_memory, system_memory, "memory");
->>
->>       system_io = g_malloc(sizeof(*system_io));
->> -    memory_region_init_io(system_io, NULL, &unassigned_io_ops, NULL, "io",
->> -                          65536);
->> +    memory_region_init_io(system_io, OBJECT(current_machine),
->> +                          &unassigned_io_ops, NULL, "io", 65535);
->>       address_space_init(&address_space_io, system_io, "I/O");
->>   }
-> 
-> What's the intention in doing this? What does it change?
+ /usr/bin/ld: libqemu-hppa-softmmu.fa.p/hw_hppa_machine.c.o: in function `machine_HP_common_init_tail':
+ hw/hppa/machine.c:399: undefined reference to `usb_bus_find'
+ /usr/bin/ld: hw/hppa/machine.c:399: undefined reference to `usb_create_simple'
+ /usr/bin/ld: hw/hppa/machine.c:400: undefined reference to `usb_bus_find'
+ /usr/bin/ld: hw/hppa/machine.c:400: undefined reference to `usb_create_simple'
+ collect2: error: ld returned 1 exit status
+ ninja: build stopped: subcommand failed.
+ make: *** [Makefile:162: run-ninja] Error 1
 
-We want to remove access to pre-QOM and possibly hotplug QOM paths
-from external API (CLI & QMP so far).
+And after fixing this, the qemu-system-hppa binary refuses to run
+due to the missing 'pci-ohci' and 'pci-serial' devices. Let's add
+the right config switches to fix these problems.
 
-When the parent object is obvious and missing we simply have to
-explicit it.
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/hppa/Kconfig | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-> It seems to be OK to pass a non-Device owner in for
-> memory_region_init() (whereas it is *not* OK to do that
-> for memory_region_init_ram()), but this seems to be
-> getting a bit tricky.
+diff --git a/hw/hppa/Kconfig b/hw/hppa/Kconfig
+index ff8528aaa8..124d5e9e47 100644
+--- a/hw/hppa/Kconfig
++++ b/hw/hppa/Kconfig
+@@ -6,7 +6,7 @@ config HPPA_B160L
+     select ASTRO
+     select DINO
+     select LASI
+-    select SERIAL
++    select SERIAL_PCI
+     select ISA_BUS
+     select I8259
+     select IDE_CMD646
+@@ -16,3 +16,4 @@ config HPPA_B160L
+     select LASIPS2
+     select PARALLEL
+     select ARTIST
++    select USB_OHCI_PCI
+-- 
+2.43.0
 
-Yes, memory_region_init_ram() is problematic; I'm hardly trying
-to ignore it at this point.
 
