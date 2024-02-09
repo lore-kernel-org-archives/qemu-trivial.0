@@ -1,60 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rYW1y-0000lz-47
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Feb 2024 13:55:22 -0500
+	id 1rYW7h-0003T9-D5
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Feb 2024 14:01:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rYW1w-0000lS-Di
- for qemu-trivial@nongnu.org; Fri, 09 Feb 2024 13:55:20 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rYW1q-0001Ww-V7
- for qemu-trivial@nongnu.org; Fri, 09 Feb 2024 13:55:20 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1707504913;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=3+KWLMqcyHzWRv7NZSsj5IzznoIvlcNWC67gfs3HkAY=;
- b=WfHqEnw4z4a6qsLqn08Gh9IYoKoDlVsD1SMlyBVBZhy8jPMwMPYziq5sXTZM+yMlcnFVT1
- ccN+t8Vd0c6qNIUcGaLyvevm3a/qdPbJhY3hN0PWjQ/opPQoxRXk2m5qu7b1TUj/dXSVIl
- 3QSUkAD7TYiVDNrchKc6VIlXgn9VkP8=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-336-QyB1EcPINrGTwJvu6GSw0g-1; Fri,
- 09 Feb 2024 13:55:10 -0500
-X-MC-Unique: QyB1EcPINrGTwJvu6GSw0g-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B10BE282D3CB;
- Fri,  9 Feb 2024 18:55:09 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.170])
- by smtp.corp.redhat.com (Postfix) with ESMTP id F25A611218;
- Fri,  9 Feb 2024 18:55:07 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Helge Deller <deller@gmx.de>,
- Richard Henderson <richard.henderson@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-stable@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: [PATCH] hw/hppa/Kconfig: Fix building with "configure
- --without-default-devices"
-Date: Fri,  9 Feb 2024 19:55:06 +0100
-Message-ID: <20240209185506.248001-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rYW7g-0003Sr-H7
+ for qemu-trivial@nongnu.org; Fri, 09 Feb 2024 14:01:16 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rYW7e-0003CU-Ue
+ for qemu-trivial@nongnu.org; Fri, 09 Feb 2024 14:01:16 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-4104ebb050fso10743865e9.2
+ for <qemu-trivial@nongnu.org>; Fri, 09 Feb 2024 11:01:14 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1707505273; x=1708110073; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=gHzvEeOz77T7oAbrgDJ/PTgWR9TkPSHHAdSLszapdfk=;
+ b=Rk01EMPbNO8ZaA8Xb6pMknjqOBcf5vp838fcHVmxFlATT0c9xRVpH7V/l+xPEbvODS
+ YMz6/qK00/MfvUGSDfVVusPx97FOc3BzMdYC2M0gG2dkjjqFx7YK6KjSaHZkHvfF5jGs
+ nPaTPWaFjfzB8auiysDwt3fQ6xN/MvBYGBObf+PjvcGfnDiMSPJ0L9OFiisTheOisWw8
+ tqe7FBUr7mAjYOrS9jlxAOa0K6A+DJEwjpDw7hpUwak2d+zwFeg5J+YHD4KeNfM4z8Kb
+ UgMo/eQEEnbOh1HOU1KcJinEe00jSgNPXjIj6MpNpyR8XLww6bKynM19SpLyk9ptUtsj
+ wTJA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1707505273; x=1708110073;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=gHzvEeOz77T7oAbrgDJ/PTgWR9TkPSHHAdSLszapdfk=;
+ b=kmZyVeXedAzL+BUtn0GIoihi0sEa0dZnAKW9nlo/2c44poDoPYE3etjZPMxRK3eNlD
+ +81ZOaWsOb52j5kGQx4iMX99qBbIdE3MZaZXx9eOovE2k3FGHQTftxbbr6/kY/9vA4Uj
+ sLNNqzvym9x7li3+uv2QZdzcDZmsv6m8IJ51SKlFN5Bg/N24W/wV4lfGrPnhLmGz0C6h
+ Dg53fEmL1qOTRzgQZSp0gneKOExz1z1Sh/hb2HTEh/NpMs4nebHDh5ztxiVURO5UtbGM
+ oQ4/1w8umau5Ky7UP7GdXE2ZxpOMVB35C04mmdLOtxsD+l4VX5+AOC6qlEOjNgwV6Uc4
+ vBWg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU014ix8WlAUS7fN7IML3oNMKnTSgRkhuPkSOpR7xDrLT7KdMM6NLz1u3TwlRD1jeKTXFiamr6c0e6snL9iZrL6nOsmz/5ZZA==
+X-Gm-Message-State: AOJu0YyvXLNYKknDiO8LgrokOf8wG2adeHwV/F41M6Tj0FzjQbIJS5oJ
+ THRTQXdFoa3Hg5kmKe9rY+///LJIizSRJRae44zPOyvonvFILHDYEeBiIFUdCtQ=
+X-Google-Smtp-Source: AGHT+IHC2lYKOY18HwyWko8jQWTIm0u/AakVdwNS/QcDrg+TtLo+JMAfhFIIbVnpJJLjxP9ccTzhnQ==
+X-Received: by 2002:a05:600c:5123:b0:410:27e7:4c5 with SMTP id
+ o35-20020a05600c512300b0041027e704c5mr185869wms.29.1707505272988; 
+ Fri, 09 Feb 2024 11:01:12 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXm25cy0TzcFOxFbgUXNyIgj196W3OVUSiNWYooHT9UeUSYsh0TGJiKkA/D8U8toVhKnjjMDp5lfgE9Un8ANsVMauxEHJrLYYE92cdI/toQ9htb1udQy5k+Gw2QssQ/BQdKzAYQTUu4Mp9eo6yS7DPuD18y6wlzp/zlM+5kv9slrEVyoe2auNzf0UpV9BgBfpvetUafz/Zxmhv3MI1WZWCyHCZVTI5WN+g8ZxPCd/Th1WaUJhk2eDfRHQ9Ec+5B
+Received: from m1x-phil.lan ([176.176.147.207])
+ by smtp.gmail.com with ESMTPSA id
+ n33-20020a05600c502100b004101bdae3a0sm1485711wmr.38.2024.02.09.11.01.11
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Fri, 09 Feb 2024 11:01:12 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] hw/i386/kvm/ioapic: Replace magic '24' value by proper
+ definition
+Date: Fri,  9 Feb 2024 20:01:09 +0100
+Message-ID: <20240209190110.27413-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.269,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -67,48 +86,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Feb 2024 18:55:20 -0000
+X-List-Received-Date: Fri, 09 Feb 2024 19:01:16 -0000
 
-When running "configure" with "--without-default-devices", building
-of qemu-system-hppa currently fails with:
+Replace '24' -> KVM_IOAPIC_NUM_PINS.
 
- /usr/bin/ld: libqemu-hppa-softmmu.fa.p/hw_hppa_machine.c.o: in function `machine_HP_common_init_tail':
- hw/hppa/machine.c:399: undefined reference to `usb_bus_find'
- /usr/bin/ld: hw/hppa/machine.c:399: undefined reference to `usb_create_simple'
- /usr/bin/ld: hw/hppa/machine.c:400: undefined reference to `usb_bus_find'
- /usr/bin/ld: hw/hppa/machine.c:400: undefined reference to `usb_create_simple'
- collect2: error: ld returned 1 exit status
- ninja: build stopped: subcommand failed.
- make: *** [Makefile:162: run-ninja] Error 1
-
-And after fixing this, the qemu-system-hppa binary refuses to run
-due to the missing 'pci-ohci' and 'pci-serial' devices. Let's add
-the right config switches to fix these problems.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/hppa/Kconfig | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ hw/i386/kvm/ioapic.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/hppa/Kconfig b/hw/hppa/Kconfig
-index ff8528aaa8..124d5e9e47 100644
---- a/hw/hppa/Kconfig
-+++ b/hw/hppa/Kconfig
-@@ -6,7 +6,7 @@ config HPPA_B160L
-     select ASTRO
-     select DINO
-     select LASI
--    select SERIAL
-+    select SERIAL_PCI
-     select ISA_BUS
-     select I8259
-     select IDE_CMD646
-@@ -16,3 +16,4 @@ config HPPA_B160L
-     select LASIPS2
-     select PARALLEL
-     select ARTIST
-+    select USB_OHCI_PCI
+diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
+index 409d0c8c76..b96fe84eed 100644
+--- a/hw/i386/kvm/ioapic.c
++++ b/hw/i386/kvm/ioapic.c
+@@ -35,7 +35,7 @@ void kvm_pc_setup_irq_routing(bool pci_enabled)
+         kvm_irqchip_add_irq_route(s, i, KVM_IRQCHIP_PIC_SLAVE, i - 8);
+     }
+     if (pci_enabled) {
+-        for (i = 0; i < 24; ++i) {
++        for (i = 0; i < KVM_IOAPIC_NUM_PINS; ++i) {
+             if (i == 0) {
+                 kvm_irqchip_add_irq_route(s, i, KVM_IRQCHIP_IOAPIC, 2);
+             } else if (i != 2) {
 -- 
-2.43.0
+2.41.0
 
 
