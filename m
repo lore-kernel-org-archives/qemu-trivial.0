@@ -1,33 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rYYUo-0006kT-FC
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Feb 2024 16:33:18 -0500
+	id 1rYhj1-0006km-TM
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Feb 2024 02:24:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rYYUm-0006gQ-Oj; Fri, 09 Feb 2024 16:33:16 -0500
+ id 1rYhiw-0006jp-Rc; Sat, 10 Feb 2024 02:24:30 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rYYUl-0001dn-6G; Fri, 09 Feb 2024 16:33:16 -0500
+ id 1rYhiv-0005Di-5f; Sat, 10 Feb 2024 02:24:30 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id DE3E64BF8D;
- Sat, 10 Feb 2024 00:34:28 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 7DCCC4C080;
+ Sat, 10 Feb 2024 10:25:40 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id B04F977EF4;
- Sat, 10 Feb 2024 00:33:12 +0300 (MSK)
-Message-ID: <90cb8b40-6486-4e32-976b-354f643f626a@tls.msk.ru>
-Date: Sat, 10 Feb 2024 00:33:12 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 76D49782B0;
+ Sat, 10 Feb 2024 10:24:23 +0300 (MSK)
+Message-ID: <76c064b1-8371-4431-b8f6-f295388a20df@tls.msk.ru>
+Date: Sat, 10 Feb 2024 00:28:11 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] system/memory: Trivial fixes
+Subject: Re: [PATCH trivial] qemu-img: factor out parse_output_format() and
+ use it in the code
 Content-Language: en-US
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: Peter Xu <peterx@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-trivial@nongnu.org, "Dr. David Alan Gilbert" <dave@treblig.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, David Hildenbrand <david@redhat.com>
-References: <20240209150039.22211-1-philmd@linaro.org>
+To: qemu-devel@nongnu.org, qemu-block@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
+Cc: qemu-trivial@nongnu.org
+References: <20240207175228.296704-1-mjt@tls.msk.ru>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
  xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
@@ -53,16 +51,16 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240209150039.22211-1-philmd@linaro.org>
+In-Reply-To: <20240207175228.296704-1-mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_score_int: -53
+X-Spam_score: -5.4
+X-Spam_bar: -----
+X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_06_12=1.543,
+ RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,25 +74,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Feb 2024 21:33:17 -0000
+X-List-Received-Date: Sat, 10 Feb 2024 07:24:33 -0000
 
-09.02.2024 18:00, Philippe Mathieu-Daudé :
-> - Include missing "exec/memory.h"
-> - Set machine as parent of io/mem regions
-> 
-> Philippe Mathieu-Daudé (3):
->    cpu-target: Include missing 'exec/memory.h' header
->    monitor/target: Include missing 'exec/memory.h' header
->    system/physmem: Assign global system I/O Memory to machine
+07.02.2024 20:52, Michael Tokarev :
+> Use common code and simplify error message
 
-Picked up patches 1 & 2, but not 3 yet.
+I've sent this as part of qemu-img --help/options refactoring
+series, done in that context so this path does not make sense
+anymore.
 
 /mjt
-
->   cpu-target.c              | 1 +
->   monitor/hmp-cmds-target.c | 1 +
->   system/physmem.c          | 7 ++++---
->   3 files changed, 6 insertions(+), 3 deletions(-)
-> 
-
 
