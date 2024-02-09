@@ -1,82 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rYSNP-0007D1-J1
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Feb 2024 10:01:15 -0500
+	id 1rYTJf-0001Cc-4L
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Feb 2024 11:01:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rYSNM-0007Bs-72
- for qemu-trivial@nongnu.org; Fri, 09 Feb 2024 10:01:12 -0500
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rYTJV-00017b-OI
+ for qemu-trivial@nongnu.org; Fri, 09 Feb 2024 11:01:19 -0500
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rYSNE-0000WN-Ll
- for qemu-trivial@nongnu.org; Fri, 09 Feb 2024 10:01:08 -0500
-Received: by mail-lf1-x135.google.com with SMTP id
- 2adb3069b0e04-511689cc22aso1593472e87.0
- for <qemu-trivial@nongnu.org>; Fri, 09 Feb 2024 07:01:03 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rYTJU-00069l-8I
+ for qemu-trivial@nongnu.org; Fri, 09 Feb 2024 11:01:17 -0500
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-56001b47285so1571371a12.1
+ for <qemu-trivial@nongnu.org>; Fri, 09 Feb 2024 08:01:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707490862; x=1708095662; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1707494474; x=1708099274; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=0+v+hVYqqgGqr1jR1gLh8c+Nc8frKXqRwnR2qVdfBAM=;
- b=gQZ+/++9DhdhU+cVWQZEWYpuOq9m6m7J8yrpBWBqb7CbPjxkYdNrQE6SBmLr1jloA4
- OoyW4vlcTlD/HuY5NKAlfL5Fa/1jC8GAOmQiEtx+xfSVQPHxvqpAqUui0fpWvB4GfZH9
- 8yK5N+wa17HZWKkkW9J3djnj7WoTK4s++pQeWTASgt4uDIkPWiWGSrv8t2JHUIcvCprh
- qNpxVa7DFnSiGApdJlDM6R4P+woOAEQdhAJKM/4VpB/zLtXGe63F5zy+FpxOzdpxVYOG
- 53XOmEjCJlK8PmGEaZOvxxEZzy67cexi6t3qdehwsTv4kSELcKCID+JBczMZLcLs9e97
- Dz0w==
+ bh=vp22lOK/7vavlAwgAMcUbHYWwj5W5A4bUkj+jT9blj8=;
+ b=b8BlfCW6BgdwbxoGZIXNCLtFdc237V7698zcJTAvq0sEI+sryM4ctBg/Gt2ugH5AbZ
+ Z5m5NvNG/mcTwUKl+vM8Ryic/Tj8sdocku7IgGl7gGzc8oHl4XZWuBsNYwOYxA8eaKR7
+ ItfgPrGo3TElQKD/gIg0z8OfJoyzeX+rAPHqHatjAg80OAdphXW+L4KoKE+tPoHsPMNc
+ 48yCNQQkEaPI7B7ka3MLGsBMK1WY+5X3WuLAJadVomwwDdosa/sbzKidPxjbEED7FaAR
+ AF8AX70GaQe2W2iIOmAfBft+gevjjKa8e7jmdT5wwMAq6knSTO8PFxKsmPKzhAXLYVpX
+ 6jsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707490862; x=1708095662;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1707494474; x=1708099274;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=0+v+hVYqqgGqr1jR1gLh8c+Nc8frKXqRwnR2qVdfBAM=;
- b=E66WqAg9BlIA7C12l/Ju8fStIRcEKy+OAoGWS2nrjLcC4n0l4JikffRFQh2mbCeAMQ
- thvrN3Rz2xldI6UCSM04N13v7B7uwLHP5IOcoZUXR255Za6rxZTWIK+GfOF6KNjhdHIw
- VZUA8WSv6EShFvxcfc4G5aeGaG7KXUpy3Qo+NqsOxn37x8vA0GVqQVjY9HumwdmUSvff
- 0RcsphQi8jgmVUqlGFXjndgzlcsNI13wYyhAQddF3aXLAaXIli/Zhv8azIvPOR2jvIby
- oNE1rgT0Nd+pCt05NsCqX5+cLqeJj2JFB6t6LMi/8MRJA4UhQ1DEVK5jnwpFGEiiLFas
- iKpw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVN708ZK2OVtuTLd+beVZyPVWnYq/1Llv0kn4lzjWn7CYl8mpB58Bc7NeLVCicg9bNYCC1f0AqTnAbwhLiahnv1EiuFgZPckQ==
-X-Gm-Message-State: AOJu0YyvcKw6YHNOzfbVcoZiqQPHeGcKlvJoa6LN9vR1QSgXXhbO/NGi
- AtgviKMB9XIIcF9nE1DDwD2oE7Frp6ItEJHOpXi0U13KSsFZ+RkKuBSziB1RCSE=
-X-Google-Smtp-Source: AGHT+IFj+aGJPIoWWprFQKssNruIS63gbqlWCLeY5MKQt390gW3/zz++pRSa2b2EN65G6hitUVtmCw==
-X-Received: by 2002:a05:6512:2c96:b0:511:4f29:7fab with SMTP id
- dw22-20020a0565122c9600b005114f297fabmr1475511lfb.67.1707490862517; 
- Fri, 09 Feb 2024 07:01:02 -0800 (PST)
-X-Forwarded-Encrypted: i=1;
- AJvYcCWZNjfWqNiyfom6BZ2L7hpksOZx/tzkSC2EQ5fQRv0BbS+gqkdph1PmuO848Z9G/fJWY8ua7PA+mkYC97ImZjv4svlV4205j16Ac9q/xdM3f8cQCx2mBaSBPz0+AfztfvuzbGIogF6yepqAF0bzG/+zdnz+BaoTYkaSShE3mbreVMKgmku5T/0XZUneOm1NLSJ6Vz7iyDivLheiGOb/Mw8DDreeMoJinQbBhTkK43+h+O9oQ7Wu7kd4Ol+1P+H8yCuP9JaHIccIMlN5E9ppCoxqRY/8Wqh3lw==
-Received: from m1x-phil.lan ([176.187.218.105])
- by smtp.gmail.com with ESMTPSA id
- n14-20020a05600c4f8e00b0040fafd84095sm924049wmq.41.2024.02.09.07.01.00
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Fri, 09 Feb 2024 07:01:02 -0800 (PST)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Peter Xu <peterx@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-trivial@nongnu.org, "Dr. David Alan Gilbert" <dave@treblig.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>, David Hildenbrand <david@redhat.com>
-Subject: [PATCH 3/3] system/physmem: Assign global system I/O Memory to machine
-Date: Fri,  9 Feb 2024 16:00:39 +0100
-Message-ID: <20240209150039.22211-4-philmd@linaro.org>
-X-Mailer: git-send-email 2.41.0
-In-Reply-To: <20240209150039.22211-1-philmd@linaro.org>
-References: <20240209150039.22211-1-philmd@linaro.org>
+ bh=vp22lOK/7vavlAwgAMcUbHYWwj5W5A4bUkj+jT9blj8=;
+ b=N2AcgdBZZm28CcOVYIrBNZupNEfUO3Gy8mGxGUfU1CZCeF00X1gcmthaEUJxLcYhHB
+ sdEjulzgzFyUKy0t1Rs5rqvhKBTfHhqyjz7DQqvBckZV89ypOCZ/kF5jThkms9clTKoN
+ P1hdLZ/uCOsnD9aPFpHnoUmUkfSKbDmxDeJjQQ8nWEYMf3a0BDtxBZy1ExhXvtFMEP4v
+ Y9eiZ390Xrim01Y56i/tsrVpMNLo/sfHJKJf7JDtqto1V8oJ4VshJLubJoRT5t88iHgR
+ jqXZW3Ugo0UxCn7EFyCDMEvpbBuXzKhoivaCbIJAl8mxcXKVwin/2she6o74UQJRuqpd
+ KqIA==
+X-Gm-Message-State: AOJu0Ywrqx4eD5X2FayCvzHBLTj6wRVzJlUdjCkiGrdclfWPq0BwB1oY
+ OP28exYZPMMtHv/KYp7tVMfAaPn2UvXP/UhqPMio57C45ftOstMqwPWMIQznZsCsjJh4aA2Glqa
+ YsKPmvhTJ48GbAPSTSvkU+ItdOf0lJWTUv2Afxw==
+X-Google-Smtp-Source: AGHT+IGIe9b5efvkEmD6XOCrtJfehbHSbLh2gj8yynq587i1y3SS8XWiPV7yehRQXrfhsmyoC7Wt0ZF+c9IITD7ziYc=
+X-Received: by 2002:a05:6402:649:b0:561:aa3:f9e5 with SMTP id
+ u9-20020a056402064900b005610aa3f9e5mr1659199edx.3.1707494474091; Fri, 09 Feb
+ 2024 08:01:14 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::135;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x135.google.com
+References: <20240209150039.22211-1-philmd@linaro.org>
+ <20240209150039.22211-2-philmd@linaro.org>
+In-Reply-To: <20240209150039.22211-2-philmd@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 9 Feb 2024 16:01:02 +0000
+Message-ID: <CAFEAcA82_L4tJTFB2OP795Yad1bTzgK0MzQNY41nGz5LEbkC6g@mail.gmail.com>
+Subject: Re: [PATCH 1/3] cpu-target: Include missing 'exec/memory.h' header
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Peter Xu <peterx@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org, 
+ "Dr. David Alan Gilbert" <dave@treblig.org>,
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Laurent Vivier <laurent@vivier.eu>, David Hildenbrand <david@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,38 +83,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Feb 2024 15:01:13 -0000
+X-List-Received-Date: Fri, 09 Feb 2024 16:01:19 -0000
 
-So far there is only one system I/O and one system
-memory per machine.
+On Fri, 9 Feb 2024 at 15:01, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org=
+> wrote:
+>
+> Include "exec/memory.h" in order to avoid:
+>
+>   cpu-target.c:201:50: error: use of undeclared identifier 'TYPE_MEMORY_R=
+EGION'
+>       DEFINE_PROP_LINK("memory", CPUState, memory, TYPE_MEMORY_REGION,
+>                                                    ^
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- system/physmem.c | 7 ++++---
- 1 file changed, 4 insertions(+), 3 deletions(-)
+Given that we don't actually see this error, presumably
+we're implicitly dragging it in via some other include?
+Anyway, better to be explicit than implicit, so
 
-diff --git a/system/physmem.c b/system/physmem.c
-index 5e66d9ae36..50947a374e 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -2554,12 +2554,13 @@ static void memory_map_init(void)
- {
-     system_memory = g_malloc(sizeof(*system_memory));
- 
--    memory_region_init(system_memory, NULL, "system", UINT64_MAX);
-+    memory_region_init(system_memory, OBJECT(current_machine),
-+                       "system", UINT64_MAX);
-     address_space_init(&address_space_memory, system_memory, "memory");
- 
-     system_io = g_malloc(sizeof(*system_io));
--    memory_region_init_io(system_io, NULL, &unassigned_io_ops, NULL, "io",
--                          65536);
-+    memory_region_init_io(system_io, OBJECT(current_machine),
-+                          &unassigned_io_ops, NULL, "io", 65535);
-     address_space_init(&address_space_io, system_io, "I/O");
- }
- 
--- 
-2.41.0
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
+thanks
+-- PMM
 
