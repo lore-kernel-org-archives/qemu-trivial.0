@@ -1,31 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rYhj1-0006km-TM
-	for mharc-qemu-trivial@gnu.org; Sat, 10 Feb 2024 02:24:35 -0500
+	id 1rYj8X-0000l2-UD
+	for mharc-qemu-trivial@gnu.org; Sat, 10 Feb 2024 03:55:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rYhiw-0006jp-Rc; Sat, 10 Feb 2024 02:24:30 -0500
+ id 1rYj8W-0000kS-5i; Sat, 10 Feb 2024 03:55:00 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rYhiv-0005Di-5f; Sat, 10 Feb 2024 02:24:30 -0500
+ id 1rYj8T-0002ag-Fl; Sat, 10 Feb 2024 03:54:59 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 7DCCC4C080;
- Sat, 10 Feb 2024 10:25:40 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id DDD844C08F;
+ Sat, 10 Feb 2024 11:56:11 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 76D49782B0;
- Sat, 10 Feb 2024 10:24:23 +0300 (MSK)
-Message-ID: <76c064b1-8371-4431-b8f6-f295388a20df@tls.msk.ru>
-Date: Sat, 10 Feb 2024 00:28:11 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id A3BEF78311;
+ Sat, 10 Feb 2024 11:54:54 +0300 (MSK)
+Message-ID: <97f46e08-de06-42fc-9031-07e5eff4fbfb@tls.msk.ru>
+Date: Sat, 10 Feb 2024 11:54:54 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial] qemu-img: factor out parse_output_format() and
- use it in the code
+Subject: Re: [PATCH] hw/i386/kvm/ioapic: Replace magic '24' value by proper
+ definition
 Content-Language: en-US
-To: qemu-devel@nongnu.org, qemu-block@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
-Cc: qemu-trivial@nongnu.org
-References: <20240207175228.296704-1-mjt@tls.msk.ru>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20240209190110.27413-1-philmd@linaro.org>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
  xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
@@ -51,16 +54,16 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240207175228.296704-1-mjt@tls.msk.ru>
+In-Reply-To: <20240209190110.27413-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
-X-Spam_score_int: -53
-X-Spam_score: -5.4
-X-Spam_bar: -----
-X-Spam_report: (-5.4 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_06_12=1.543,
- RCVD_IN_DNSWL_HI=-5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -74,14 +77,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 10 Feb 2024 07:24:33 -0000
+X-List-Received-Date: Sat, 10 Feb 2024 08:55:00 -0000
 
-07.02.2024 20:52, Michael Tokarev :
-> Use common code and simplify error message
+09.02.2024 22:01, Philippe Mathieu-Daudé:
+> Replace '24' -> KVM_IOAPIC_NUM_PINS.
+> 
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/i386/kvm/ioapic.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
+> index 409d0c8c76..b96fe84eed 100644
+> --- a/hw/i386/kvm/ioapic.c
+> +++ b/hw/i386/kvm/ioapic.c
+> @@ -35,7 +35,7 @@ void kvm_pc_setup_irq_routing(bool pci_enabled)
+>           kvm_irqchip_add_irq_route(s, i, KVM_IRQCHIP_PIC_SLAVE, i - 8);
+>       }
+>       if (pci_enabled) {
+> -        for (i = 0; i < 24; ++i) {
+> +        for (i = 0; i < KVM_IOAPIC_NUM_PINS; ++i) {
+>               if (i == 0) {
+>                   kvm_irqchip_add_irq_route(s, i, KVM_IRQCHIP_IOAPIC, 2);
+>               } else if (i != 2) {
 
-I've sent this as part of qemu-img --help/options refactoring
-series, done in that context so this path does not make sense
-anymore.
+There seems to be some confusion here about
+KVM_IOAPIC_NUM_PINS vs IOAPIC_NUM_PINS (and
+vs ICH9_LPC_IOAPIC_NUM_PINS).
+
+FWIW.
 
 /mjt
 
