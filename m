@@ -1,29 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rZnkK-0004LA-VF
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 03:02:28 -0500
+	id 1rZnkF-0004Gd-CS
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 03:02:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rZnk1-00049t-6g; Tue, 13 Feb 2024 03:02:11 -0500
+ id 1rZnjp-00045U-LF; Tue, 13 Feb 2024 03:01:59 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rZnjy-0007Ag-QM; Tue, 13 Feb 2024 03:02:08 -0500
+ id 1rZnjn-00078x-TM; Tue, 13 Feb 2024 03:01:57 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 060544CBCF;
- Tue, 13 Feb 2024 11:01:57 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id B19614CBCA;
+ Tue, 13 Feb 2024 11:01:56 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 2D97A7CF1D;
- Tue, 13 Feb 2024 11:01:52 +0300 (MSK)
-Received: (nullmailer pid 160902 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id DA5CD7CF18;
+ Tue, 13 Feb 2024 11:01:51 +0300 (MSK)
+Received: (nullmailer pid 160887 invoked by uid 1000);
  Tue, 13 Feb 2024 08:01:51 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>, qemu-trivial@nongnu.org,
- qemu-stable@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 06/15] hw/smbios: Fix port connector option validation
-Date: Tue, 13 Feb 2024 11:01:42 +0300
-Message-Id: <20240213080151.160839-7-mjt@tls.msk.ru>
+Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 01/15] hw/isa/vt82c686: Consolidate the use of
+ device_class_set_parent_realize()
+Date: Tue, 13 Feb 2024 11:01:37 +0300
+Message-Id: <20240213080151.160839-2-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240213080151.160839-1-mjt@tls.msk.ru>
 References: <20240213080151.160839-1-mjt@tls.msk.ru>
@@ -49,49 +50,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Feb 2024 08:02:18 -0000
+X-List-Received-Date: Tue, 13 Feb 2024 08:02:03 -0000
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
+From: Zhao Liu <zhao1.liu@intel.com>
 
-qemu_smbios_type8_opts did not have the list terminator and that
-resulted in out-of-bound memory access. It also needs to have an element
-for the type option.
+Use device_class_set_parent_realize() to set parent realize() directly.
 
-Cc: qemu-stable@nongnu.org
-Fixes: fd8caa253c56 ("hw/smbios: support for type 8 (port connector)")
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Reviewed-by: Ani Sinha <anisinha@redhat.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/smbios/smbios.c | 6 ++++++
- 1 file changed, 6 insertions(+)
+ hw/isa/vt82c686.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/smbios/smbios.c b/hw/smbios/smbios.c
-index a9048c1342..a3c4e52ce9 100644
---- a/hw/smbios/smbios.c
-+++ b/hw/smbios/smbios.c
-@@ -352,6 +352,11 @@ static const QemuOptDesc qemu_smbios_type4_opts[] = {
- };
+diff --git a/hw/isa/vt82c686.c b/hw/isa/vt82c686.c
+index d3e0f6d01f..a99eae4f63 100644
+--- a/hw/isa/vt82c686.c
++++ b/hw/isa/vt82c686.c
+@@ -328,8 +328,8 @@ static void via_superio_class_init(ObjectClass *klass, void *data)
+     DeviceClass *dc = DEVICE_CLASS(klass);
+     ISASuperIOClass *sc = ISA_SUPERIO_CLASS(klass);
  
- static const QemuOptDesc qemu_smbios_type8_opts[] = {
-+    {
-+        .name = "type",
-+        .type = QEMU_OPT_NUMBER,
-+        .help = "SMBIOS element type",
-+    },
-     {
-         .name = "internal_reference",
-         .type = QEMU_OPT_STRING,
-@@ -372,6 +377,7 @@ static const QemuOptDesc qemu_smbios_type8_opts[] = {
-         .type = QEMU_OPT_NUMBER,
-         .help = "port type",
-     },
-+    { /* end of list */ }
- };
+-    sc->parent_realize = dc->realize;
+-    dc->realize = via_superio_realize;
++    device_class_set_parent_realize(dc, via_superio_realize,
++                                    &sc->parent_realize);
+ }
  
- static const QemuOptDesc qemu_smbios_type11_opts[] = {
+ static const TypeInfo via_superio_info = {
 -- 
 2.39.2
 
