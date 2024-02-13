@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rZnkI-0004Ip-PO
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 03:02:26 -0500
+	id 1rZnkK-0004Kc-1s
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 03:02:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rZnk4-0004AE-Cg; Tue, 13 Feb 2024 03:02:12 -0500
+ id 1rZnk4-0004BM-Rf; Tue, 13 Feb 2024 03:02:18 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rZnk2-0007BX-GZ; Tue, 13 Feb 2024 03:02:12 -0500
+ id 1rZnk2-0007BZ-HW; Tue, 13 Feb 2024 03:02:12 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 26EF14CBD1;
+ by isrv.corpit.ru (Postfix) with ESMTP id 33B2F4CBD2;
  Tue, 13 Feb 2024 11:01:57 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 4F99C7CF1F;
+ by tsrv.corpit.ru (Postfix) with SMTP id 5DB0F7CF20;
  Tue, 13 Feb 2024 11:01:52 +0300 (MSK)
-Received: (nullmailer pid 160908 invoked by uid 1000);
+Received: (nullmailer pid 160911 invoked by uid 1000);
  Tue, 13 Feb 2024 08:01:51 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 08/15] MAINTAINERS: Cover qapi/stats.json
-Date: Tue, 13 Feb 2024 11:01:44 +0300
-Message-Id: <20240213080151.160839-9-mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Subject: [PULL 09/15] qemu-nbd: mention --tls-hostname option in qemu-nbd
+ --help
+Date: Tue, 13 Feb 2024 11:01:45 +0300
+Message-Id: <20240213080151.160839-10-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240213080151.160839-1-mjt@tls.msk.ru>
 References: <20240213080151.160839-1-mjt@tls.msk.ru>
@@ -50,33 +50,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Feb 2024 08:02:18 -0000
+X-List-Received-Date: Tue, 13 Feb 2024 08:02:20 -0000
 
-From: Markus Armbruster <armbru@redhat.com>
+This option was not documented.
 
-Commit aa09b3d5f8e (stats: Move QMP commands from monitor/ to stats/)
-created section Stats, but neglected to add qapi/stats.json to it.
-Fix that.
-
-Signed-off-by: Markus Armbruster <armbru@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1240
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- MAINTAINERS | 1 +
+ qemu-nbd.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 87f03ebccd..2e09ed5595 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -3321,6 +3321,7 @@ Stats
- S: Orphan
- F: include/sysemu/stats.h
- F: stats/
-+F: qapi/stats.json
- 
- Streams
- M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
+diff --git a/qemu-nbd.c b/qemu-nbd.c
+index bac0b5e3ec..d7b3ccab21 100644
+--- a/qemu-nbd.c
++++ b/qemu-nbd.c
+@@ -114,6 +114,7 @@ static void usage(const char *name)
+ "  --tls-creds=ID            use id of an earlier --object to provide TLS\n"
+ "  --tls-authz=ID            use id of an earlier --object to provide\n"
+ "                            authorization\n"
++"  --tls-hostname=HOSTNAME   override hostname used to check x509 certificate\n"
+ "  -T, --trace [[enable=]<pattern>][,events=<file>][,file=<file>]\n"
+ "                            specify tracing options\n"
+ "  --fork                    fork off the server process and exit the parent\n"
 -- 
 2.39.2
 
