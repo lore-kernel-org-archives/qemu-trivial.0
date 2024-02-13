@@ -1,88 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rZvAp-0007X1-Qk
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 10:58:20 -0500
+	id 1rZvCz-0000rM-CU
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 11:00:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rZvAn-0007WI-6w
- for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 10:58:17 -0500
-Received: from mail-oi1-x22a.google.com ([2607:f8b0:4864:20::22a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZvCy-0000rE-FW
+ for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 11:00:32 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rZvAg-00073z-NN
- for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 10:58:16 -0500
-Received: by mail-oi1-x22a.google.com with SMTP id
- 5614622812f47-3c03d6e5e56so1727421b6e.1
- for <qemu-trivial@nongnu.org>; Tue, 13 Feb 2024 07:58:09 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZvCw-0007Ry-Td
+ for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 11:00:32 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-411c93e1cd8so3670815e9.0
+ for <qemu-trivial@nongnu.org>; Tue, 13 Feb 2024 08:00:30 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707839889; x=1708444689; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1707840029; x=1708444829; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=h5cn83n6hhOkfB8NQH82kSPPQ8n+nyW8nkCPXbCqoW4=;
- b=BMCjikWtqDyHTxu/iewgQpzO2lwe7Spn9DC0zAQup8OmjWTh/4/eSW5OE4sFn5UPca
- wY9nf9IZyODKYVt/AiQ1/H9plAKVT13icMUvwfWUb4r+mHW5YRRyxjqCC1AuJ2ctX4Zf
- vysykxqKgbclYj5awHizZBX1doqCqf9xwHcVN75gy1hZrmHBGcK5SIeTWVf6ZgBS26wS
- J5duNgbcwqzSebOrb+eWFtbOqLg2hq3Novo5uM7Mlpsfnvh0SZ5oX/wgpTA1wE4WJT3O
- aSJear0/FnJoy8kg1n224/wVmXtZkbbuvDpvgvxNy4e3dmkm25Juw+2hEBOAh9gQF1Nc
- vSYA==
+ bh=mu8vViIWUEygbMRgzg14BREK+eY/1nfzwFYTeAU/TNs=;
+ b=HyNsfbGtll/NoxDIPCl+yBRu17csw6Px3VseaZOCbRuyB7Gj30L1GDh7plqAfdMGm/
+ G5s9eXCcP2YkvH/F6GRZqq+hBPkRekQEErNnWKuQJ4lN0zOwyMnPP9KtxZmJ3OOUIMaG
+ RttAaknYPJqkl7PQLwTpWXKPnUP2Pzbq+xZaroATqV/OXjZiCyytZCBBtsjK53/6T7Ul
+ vJsrCtgVP4FzIY9YNw0ZMeEP/p5H7ijnJc5QFLUR9cGJApvRBObAU9U0LfkBa/bj5LgR
+ o66uYNqlb8BeZKL4YIav+eKFTYNtrjVqgJmEqr4hvj7W1k3y1yD6Avi5JgBw+FAq+J+z
+ gLXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707839889; x=1708444689;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1707840029; x=1708444829;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=h5cn83n6hhOkfB8NQH82kSPPQ8n+nyW8nkCPXbCqoW4=;
- b=UZzozl31/YB7NTcsUwwyAOZ/srniZvSlXHKYZZP28e/XalaAkGCq3euiEMi4VKsoG0
- tgiNt7dx6YKK3YxuzCJCdhOmGsI9LPAoRfx5r8QZEEld4Km+zMbyStD7YMXkYrjfXTwX
- FFnYbax+CBy2GApclc+MR0gcyPSEzgnEt83JKqcNVTInNb0DBztKPQhZuRhIFH6CD4jY
- PqnizAsyfpD/8ZtH8tg3PRP/UgEHnIX5X6AQTafsQdvNDRlWfcXoyx0/UnWzyYF726hp
- d47skywIMzdhCY3rPDHDVvrRKveZwXuuWwdfJsmXUmV5nyCkT+gIftJKH3zsjmO4uKoc
- BS2g==
+ bh=mu8vViIWUEygbMRgzg14BREK+eY/1nfzwFYTeAU/TNs=;
+ b=QKtFpCD3PNMCR/1ebXWttj3U6vgZmIRkoBavZS9OzjhZSYL+uUvv7j5pGJjDN9ozDO
+ 421Ni07f/x5n5Gtf6kYTDZybJcfmyi776x4xX70a3SJNhY2bXoeEdgPsTjpfmbZ5YIAA
+ /XHcvcduY/Zz+a9GqptNdrb+tJj71uU3sXf/jJ+6reWDtF6Rgp2UV8wP8knJMfZ4a4C4
+ BK7+ooJQh21q/yj/SwnHDGA05wIeGYYcCEgbvqEgTyFtLQxxFm7M2MB8IqFZYPaTqZVS
+ Do5nc6HL8EmM5NfhEB9Xi3yYPXU1YuGjQu+MF7S7RS6b00HwT1hZceT/YSy9DiiHSZ+a
+ yw8g==
+X-Gm-Message-State: AOJu0Yw0sOzOE/oQc5gA+qhhgrqRkSp1QzSrycsN6Mmlm9My1X+fSoXk
+ WyiXpL16i6pzud6n94pD8LPRAg0/lEqSibEJIRZITsTV23P4NHUdZSFg6w9+dMk=
+X-Google-Smtp-Source: AGHT+IGgT4E5/llJB1Kb2gyIaJJIKeiRUFIGQfh58Z4QxeFxaXa5+yq2txpwQ8+RkeYZGrRirro64Q==
+X-Received: by 2002:a05:600c:1d1f:b0:410:e91d:fa6c with SMTP id
+ l31-20020a05600c1d1f00b00410e91dfa6cmr2834277wms.2.1707840029225; 
+ Tue, 13 Feb 2024 08:00:29 -0800 (PST)
 X-Forwarded-Encrypted: i=1;
- AJvYcCXi4ArVYMgsA7Viux0zWriGS41wvLEBWN4IfQznHnHl0VyZNdCW3yCuxheuLcDIrK0u16DS0K/r/jjTbDeZ3sPGFZF+f56FRA==
-X-Gm-Message-State: AOJu0YzzhwcLoL7ja3H2fYAmkzrTaPumFBunF0MNu358j42kHHderUBl
- 55XgRHk1TlITHTyjGWheB7CtKcLpz8T6dmMIf/rQQ4uEXltJGADKiDoKJrIIJTc=
-X-Google-Smtp-Source: AGHT+IG3TXXF/mU1wA9gmi4B1LjLedCeEzQm1OxKDgj+/+duqwgekQUGX7EThy4W+di1DlX96ALHmw==
-X-Received: by 2002:a05:6358:e4aa:b0:17a:fa59:bb82 with SMTP id
- by42-20020a056358e4aa00b0017afa59bb82mr1157607rwb.14.1707839888758; 
- Tue, 13 Feb 2024 07:58:08 -0800 (PST)
-X-Forwarded-Encrypted: i=1;
- AJvYcCXBWFwAmNPA9hVC7tQcdfPu2TQ5j1keTGBhKDuL3VW2s3bxJbuJHswOwWFSeSAkqZc4Ubv4GC1L8Wwz92BiEgG5iDcYA1V7MfIGstSqFrfpM3d0ZGXcXU1Q35dyDQr8ytGFy/lQ7sTIOrUnZPWMwWKtsnezfGI1Q2TzVqhE2CA/vyJR/Bdjit1NFJYtPeoeZ0uP4cjw50dREzDHAGkm4TCX2nVs9yjWUlXC6C6yQwnIrGzlzXBii3+4L+wq3F4pdho8V74y2kVbRgUrRaNh6RrwFLVPenW/zW8HdAJjc9NWoG6nWBTdOYpCszVmqpwFRpgfc+6v1nQ+macWAeIuf6xlhoDcujZUL37+TXHXJz/TYKM0WvC2psxKthd9HM5YmZKdVurz4/4dNlP8uFA=
-Received: from [172.20.1.19] (173-197-098-125.biz.spectrum.com.
- [173.197.98.125]) by smtp.gmail.com with ESMTPSA id
- x186-20020a6263c3000000b006e0521c2156sm8185390pfb.173.2024.02.13.07.58.06
+ AJvYcCVtcxhjGmbu6jtenvm7ZjEnJvxBW1x5Cjhjnl109YBkRfF4hTMOuCO7EPWKfaOtvKMJMTzvnIYkylDGvLx0/+82Gu4rHv2ix20MMKY1BgRLMiLJDot7y4UhyD6Gtzbit7YMHBKeIDCwnodyD+9Rctea090IybCUJAyyVvQ6Gre+Mmi0xL9OHgYex57kSQPjjlu9hx/R80VdlatA1Q2GT6ry6AO6lMy4p+Z4KYvX3W6V6XftuPJkPCNTkSEEt9KEa/h06HlXzGNjNOIhyVFySeULwfyeUDbrkjkjvfHijUFnO5lAY0a1skRb
+Received: from [192.168.69.100] ([176.176.128.243])
+ by smtp.gmail.com with ESMTPSA id
+ l4-20020a05600c4f0400b0040ecdd672fasm12217819wmq.13.2024.02.13.08.00.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Feb 2024 07:58:08 -0800 (PST)
-Message-ID: <0307584c-80c4-42dd-8bf9-fde62cf15544@linaro.org>
-Date: Tue, 13 Feb 2024 05:58:03 -1000
+ Tue, 13 Feb 2024 08:00:28 -0800 (PST)
+Message-ID: <5e872a94-d4ab-4fe4-afe1-ffc952be8116@linaro.org>
+Date: Tue, 13 Feb 2024 17:00:26 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/dma: Pass parent object to i8257_dma_init()
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: BALATON Zoltan <balaton@eik.bme.hu>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, Aurelien Jarno
- <aurelien@aurel32.net>, Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-ppc@nongnu.org,
- qemu-trivial@nongnu.org, =?UTF-8?Q?Herv=C3=A9_Poussineau?=
- <hpoussin@reactos.org>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20240213114426.87836-1-philmd@linaro.org>
+Subject: Re: [PATCH 0/7] hw/i386: Cleanups around 'hw/i386/pc.h'
 Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240213114426.87836-1-philmd@linaro.org>
+To: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Bernhard Beschow <shentey@gmail.com>, Ani Sinha <anisinha@redhat.com>,
+ qemu-trivial@nongnu.org
+References: <20240213120153.90930-1-philmd@linaro.org>
+ <20240213105455-mutt-send-email-mst@kernel.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240213105455-mutt-send-email-mst@kernel.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::22a;
- envelope-from=richard.henderson@linaro.org; helo=mail-oi1-x22a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,24 +89,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Feb 2024 15:58:17 -0000
+X-List-Received-Date: Tue, 13 Feb 2024 16:00:32 -0000
 
-On 2/13/24 01:44, Philippe Mathieu-Daudé wrote:
-> Set I8257 instances parent (migration isn't affected).
+On 13/2/24 16:55, Michael S. Tsirkin wrote:
+> On Tue, Feb 13, 2024 at 01:01:45PM +0100, Philippe Mathieu-Daudé wrote:
+>> Trivial patches removing uses of "hw/i386/pc.h".
 > 
-> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
-> ---
->   include/hw/dma/i8257.h | 2 +-
->   hw/dma/i82374.c        | 2 +-
->   hw/dma/i8257.c         | 4 +++-
->   hw/i386/pc_piix.c      | 2 +-
->   hw/isa/lpc_ich9.c      | 2 +-
->   hw/isa/piix.c          | 2 +-
->   hw/isa/vt82c686.c      | 2 +-
->   hw/mips/jazz.c         | 2 +-
->   8 files changed, 10 insertions(+), 8 deletions(-)
+> How did you test that it's indeed unused?
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+I put and #error in hw/i386/pc.h and built :)
+(I'm trying to remove the PC dependency on generic devices.)
 
-r~
+The few generic devices left are not as trivial.
+
+>> Philippe Mathieu-Daudé (7):
+>>    target/i386/monitor: Remove unused 'hw/i386/pc.h' header
+>>    hw/timer: Move HPET_INTCAP definition to "hpet.h"
+>>    hw/isa/lpc_ich9: Remove unused 'hw/i386/pc.h'
+>>    hw/i386/acpi: Declare pc_madt_cpu_entry() in 'acpi-common.h'
+>>    hw/i386/port92: Add missing 'hw/isa/isa.h' header
+>>    hw/acpi/cpu_hotplug: Include 'pci_device.h' instead of 'pci.h'
+>>    hw/acpi/cpu_hotplug: Include 'x86.h' instead of 'pc.h'
+>>
+>>   hw/i386/acpi-common.h   | 3 +++
+>>   include/hw/i386/pc.h    | 6 ------
+>>   include/hw/timer/hpet.h | 2 ++
+>>   hw/acpi/cpu_hotplug.c   | 4 ++--
+>>   hw/i386/acpi-common.c   | 1 -
+>>   hw/i386/port92.c        | 1 +
+>>   hw/isa/lpc_ich9.c       | 1 -
+>>   hw/timer/hpet.c         | 1 -
+>>   target/i386/monitor.c   | 1 -
+>>   9 files changed, 8 insertions(+), 12 deletions(-)
+>>
+>> -- 
+>> 2.41.0
+> 
+
 
