@@ -1,72 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rZmO9-0001AU-9q
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 01:35:29 -0500
+	id 1rZmhw-0005Pm-OH
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 01:55:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rZmO7-0001A7-Ia
- for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 01:35:27 -0500
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZmhu-0005PM-OR
+ for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 01:55:54 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1rZmO6-0000b6-78
- for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 01:35:27 -0500
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-1d71cb97937so38033375ad.3
- for <qemu-trivial@nongnu.org>; Mon, 12 Feb 2024 22:35:25 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZmht-0004S3-Bh
+ for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 01:55:54 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-411a6ada28dso3730045e9.3
+ for <qemu-trivial@nongnu.org>; Mon, 12 Feb 2024 22:55:52 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707806124; x=1708410924; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1707807351; x=1708412151; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=P5ESf1ghr+WOnA74iha/4RkoDXSWq7s5UqdPqTrfx5w=;
- b=D6YtjqtsQmEcVrcisJhg7BpQD8MNLh5QVcOUWOuUQy2dMdgrR2w/7jKv2ixhBQ4zRk
- Qu4K4w1nWMxt3LKEQoRW7u74yUTFa9wzJq402ru0ennjF36VRqidGbfNInvWDq+5R1E0
- YzPhAmk9sbWGX1//CVerQURRiuBpViUkLSNbQHIeYvpzqkJ93NYeg0a2PLrg1f4arZq9
- fHuZqsC3VXkE6VgWfR0hBqLtCZeXy4eC488tDJQpWW6DdPXGaI7FHqKlg4ePTk0bm4Tb
- jvFv79U0KsMKwbF8PHDEpXtUMJ2/TSXLxU2akhOs4SGXo/2Hd8uLeCh0tsomgiQTg2tt
- kuHA==
+ bh=qDA115RBNnbaoapaA3ctGFVN7qT4fmp/58Rp9s8Cipo=;
+ b=xiKoTcMsyg690AudgoOrFOGTMzWe7SSvaT/gDxqCq68HDxuVCtdpeX0DIXcTa5Wo7r
+ /ioTGBicgwvbU6VtrjSjoefI2Hu9HK8xzFt+ezwm49heHRaArJsHJOxXjk3zcoBxE9TC
+ MZ8rOnOCRHkOeYuXBUSjSo89kFvDkPklWK1P7mjCrCrJBcw8UkKGeXe093jLnxLuIbs2
+ fQZIRTXFSQHRClPThgJtB52VZd0H23owxz1Vsm+cSa1do+VN/qR1BAL50Gy29jjTZX+1
+ ixsm3lGFR7xvgGD16mwH23vbIQXVw5oJW2NjVok/4nOUbGxQLJLeDb8dldhLtHfv2TVB
+ +9tw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707806124; x=1708410924;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1707807351; x=1708412151;
+ h=content-transfer-encoding:in-reply-to:from:references:to
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=P5ESf1ghr+WOnA74iha/4RkoDXSWq7s5UqdPqTrfx5w=;
- b=unW9+ehqNhshs8nB6d4QPaZhL6c5J+H4P1wAVgUhOOSVdqYqah/VhiawlG6XczhjSl
- 1/qtEtX18RnxnInyxUMspnFeq31BchcRN/jbHsUzWx7/EmQIBiswQAnwdUwDEUzXOG2L
- 05EjE0il/XC6ZVSx7P7EXDT8b3hXRlXJIBpBHj2WFEfUFJBM62ho81O5mGnXSp+r1y87
- emHsRokPSfSQQQFWXwjsxzijcl/FSzqqqjfXOzYmF0e+BL9NrZpG5hGDPNm/N0F7roFX
- c84FM/f8aFuxEhiljLO1wN/2ha3QyVphU9iidpSp7S1liJMLJ5cpk0ETC0U6uHwyL5G9
- d2tg==
-X-Gm-Message-State: AOJu0YyrjFE7OB5W1te3M+CNjdu4C29dnuzgJFX6F3W0H1bR4MzXRbHV
- WP/T9eo70wFAN99TsnZ4WCqdFIjSFzt4OTd6EyHzBHFcW/WdZ+3sbubWHnSlQpo=
-X-Google-Smtp-Source: AGHT+IGVb+u0Gq4xDohESpV0l9jBX3UVSfIl1IF4nwF4+Ia1mnWEIwCKCYnzZUoNr0dIUyTsjtynzA==
-X-Received: by 2002:a17:903:32d1:b0:1db:28b1:b1ba with SMTP id
- i17-20020a17090332d100b001db28b1b1bamr2665748plr.9.1707806123695; 
- Mon, 12 Feb 2024 22:35:23 -0800 (PST)
+ bh=qDA115RBNnbaoapaA3ctGFVN7qT4fmp/58Rp9s8Cipo=;
+ b=ZBYjt7Wselbo7RZLIO0yB+2E9TICuoZXo0M9DToAOASgwVOIAd6MW+CZTKdab+isoM
+ 9wNEvFHAQN1SDz0DyhA4m/kAZ3YFkgz7WghaeySmBPSpLZfDiERPbm1usvAsVsouO+7e
+ QTPeE/TH982e37Zhav8CHuULdlALB+e4e9p72qlBN2lwQzrfNAaWe37sX4DRYyy51Ab1
+ BROXBK30IlR+1UW7xtrKBJs5SLHDa+29jjvvaMNRKfj7DdxVsPtWI/uHZPFrzZ4lEvU0
+ IWEBVXAgve0/0doX4EikCIArxlZSKdldalxVPeYIcAHDCkeWULUAGWq4zNA/tbgIiIx4
+ YeHw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXiihdLgkvinkBDGHdCpYkKmDdtijQB2GpkfMUIyTkxGkJFtKu0MWHZADsgwWAFJtjJg5Z5YOC1OpsB0sfJvip+4tsKu15AXoDe3r8cY65coDSStq41L/gR
-Received: from [172.20.1.19] (173-197-098-125.biz.spectrum.com.
- [173.197.98.125]) by smtp.gmail.com with ESMTPSA id
- km14-20020a17090327ce00b001da2926bf46sm1364935plb.4.2024.02.12.22.35.22
+ AJvYcCWGw/XZVlxoUmhNBDi8XviQz2KgiIR9RIz0fMJ2D7ZFq1rel2STDjigPxX+Jk2S+a6bK4rtYG6s7ZiuQ7HQgf5kR6DL6HMMMQ==
+X-Gm-Message-State: AOJu0YyBje3ZR5a/ZjX5teDVwNkMWszSUpdiGh8e7O5ea2CeGS4aPVHp
+ uy1dtGmfKdvkmy3I53+WO38AZyn9GDB1vap13bZfLsNYkl5d+/IsEwUxso8Ol7k=
+X-Google-Smtp-Source: AGHT+IGkOiOZsHXLUDz+nAjkXQBDTS55StqrtiSpcY+aed9EzTMCif6T1EEBSZA5wlAs/wISJuWFoQ==
+X-Received: by 2002:adf:f1cf:0:b0:33b:3b00:520d with SMTP id
+ z15-20020adff1cf000000b0033b3b00520dmr5945528wro.51.1707807350893; 
+ Mon, 12 Feb 2024 22:55:50 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWcM++vrU7h9PoCNUJVkxq29yWM0l02ky1knR6TRU208g/SF/N+Gg2zWqV9X0VK76Qgy8ikfZoE5ZlOxv7v/89+7K3YJr6/FJai1PW1KRUlvNNNcGEYrtDy+/G6elqZ
+Received: from [192.168.69.100] ([176.176.128.243])
+ by smtp.gmail.com with ESMTPSA id
+ e27-20020a5d595b000000b0033b80a0d002sm5338566wri.57.2024.02.12.22.55.49
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Feb 2024 22:35:23 -0800 (PST)
-Message-ID: <357294ce-5958-47da-9b69-13b820c2109f@linaro.org>
-Date: Mon, 12 Feb 2024 20:35:19 -1000
+ Mon, 12 Feb 2024 22:55:50 -0800 (PST)
+Message-ID: <4c4fda8b-2a0d-46c8-b965-49a4e6533634@linaro.org>
+Date: Tue, 13 Feb 2024 07:55:49 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] hw/usb: Rename NB_PORTS -> UHCI_PORTS / EHCI_PORTS
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>
-References: <20240213043859.61019-1-philmd@linaro.org>
+Subject: Re: [PATCH] system: Move memory_ldst.c.inc to system
 Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240213043859.61019-1-philmd@linaro.org>
+To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+References: <20240209000505.B07D04E6049@zero.eik.bme.hu>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240209000505.B07D04E6049@zero.eik.bme.hu>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62c.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,15 +85,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Feb 2024 06:35:27 -0000
+X-List-Received-Date: Tue, 13 Feb 2024 06:55:54 -0000
 
-On 2/12/24 18:38, Philippe Mathieu-Daudé wrote:
-> Philippe Mathieu-Daudé (3):
->    hw/usb: Style cleanup
->    hw/usb/uhci: Rename NB_PORTS -> UHCI_PORTS
->    hw/usb/ehci: Rename NB_PORTS -> EHCI_PORTS
+On 9/2/24 01:05, BALATON Zoltan wrote:
+> This file is only used by system/physmem.c so move them together.
+> 
+> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+> ---
+>   memory_ldst.c.inc => system/memory_ldst.c.inc | 0
+>   1 file changed, 0 insertions(+), 0 deletions(-)
+>   rename memory_ldst.c.inc => system/memory_ldst.c.inc (100%)
+> 
+> diff --git a/memory_ldst.c.inc b/system/memory_ldst.c.inc
+> similarity index 100%
+> rename from memory_ldst.c.inc
+> rename to system/memory_ldst.c.inc
 
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Patched queued, thanks.
 
-r~
 
