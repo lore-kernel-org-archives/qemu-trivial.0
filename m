@@ -1,54 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rZrW4-0007Pe-HC
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 07:04:00 -0500
+	id 1rZrW7-0007e8-Mf
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 07:04:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZrUL-0005Qw-PB
- for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 07:02:24 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZrUW-0005Ri-7Z
+ for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 07:02:37 -0500
+Received: from mail-lj1-x22c.google.com ([2a00:1450:4864:20::22c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZrUC-00016W-4c
- for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 07:02:06 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-33cd57b7eabso351906f8f.2
- for <qemu-trivial@nongnu.org>; Tue, 13 Feb 2024 04:02:03 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZrUN-00017p-RR
+ for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 07:02:22 -0500
+Received: by mail-lj1-x22c.google.com with SMTP id
+ 38308e7fff4ca-2d0d7985dfdso58569391fa.2
+ for <qemu-trivial@nongnu.org>; Tue, 13 Feb 2024 04:02:15 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707825722; x=1708430522; darn=nongnu.org;
+ d=linaro.org; s=google; t=1707825734; x=1708430534; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=URWCcZelwghQnfWxClC3fdOHYZqhuz4D09m5EBaU2Y0=;
- b=nvkG3L+QIISU3vsWPbtSiUZY1QS1tgQIL4B+kQZJcuzci5bMsL4lLLTkg4nyXvoV6x
- QYwBmTWHqwkBc9ckeAF9p2qVkjRSvRJgHgN0SQPurBTK73TrzJA3xUmP0uzBTxvR6Ax8
- gFi7Dh/2i7VNLIR8+isRWdpEUJtF1/w3oXAFvqUQE5toHV/pVdeQ2a8tYgOfihbsGFaM
- z2tXCJpl316ztukpnGzE9ZgtGTDlt3wJkvugZKxk/jZl4z3USz5klJOiWwjUB/F6oIUd
- 6AxZZpX4PRHzEKRxC03O7LXwOcUuMcZ00knUx6Nh79S1YE2XA0kHFfbbFTm6NaqCXmAp
- XULw==
+ bh=NDuO1yoG1D7/XJGzTiSB0HfRJ9/QIMB6S76Ai8lLnLY=;
+ b=Xwd7CsZ2LXPgiUYLjX4Gu9GzmkYhbQmmiqmpYpul+aF2aINR5J1o+nVrypTe/EqqZD
+ +ETFJZN6N7RVrwwDLGIDpOv5BkoTlarBmbYSKW4nuNMTXhME6iCSpKIGQ4r3+zVox4bo
+ EAr4DzQmjcQvOPFIsop+szK3bOO8BsP9T/5ege35MKa02vGE/tYYfITbwwsR6AsIbLNq
+ PZv8yblFJFpcTeDleKNGgVF5DP8K4ZewQfSyxKTCrZGP6+13+UG07CjbusaVkX8tPpT+
+ zdPfYptIsoIoVJj78JHXxGj7RZcvQ8SWgN29auSGosoj+u1MsPcK24d7Yo4SLhGvctv0
+ Xspg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707825722; x=1708430522;
+ d=1e100.net; s=20230601; t=1707825734; x=1708430534;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=URWCcZelwghQnfWxClC3fdOHYZqhuz4D09m5EBaU2Y0=;
- b=ktXTH0FZogPyxOrVRBtwi9X6cNgeSJGwxT8QXqFgdCB+XU8bPjuglBAWrAS8UMh4lX
- ltTY6kUgXP/oHzAZqkV1qmStdFN/MTXD3km1JApUnZiaH3Xjg91XBVeb09oXNpflaqZu
- ffh5aMSScGg7O20Evvgy27CYFq8ASV5YWSCIyaT65sFsp4im8+AZIGz74Y2H3wBOAS2v
- O3cEeWlsXZBkma5MW96fEwahshju8a6sVSMkdiq/Hcd2Dlw1WjnKhhOqFLqj76dN8o0w
- cx+oPxAPn/n/ISGsZxRyOFgvvFQYzCjecku4BaLUVp4qGUQfQb7mO0kGqcGUkFx0X9aN
- lzHQ==
-X-Gm-Message-State: AOJu0YzuXnf2K/WiKc97bxpKy7uFnbTKbh8o8i8t7IcDWFsRkUMzeQgK
- Sx+vHL38vhfn9IkP5bk52XyW439vgQnllcUUkl1PP1p5twF5rZdL/hK8gAX1jq0=
-X-Google-Smtp-Source: AGHT+IFBcIQsCryECxDeQiGV9eyJexKjlZYijw8go/anuC35ucjcIWQtOlbMH7CWAwWkkNcHNV3ZKw==
-X-Received: by 2002:adf:e6c9:0:b0:33b:136a:95a3 with SMTP id
- y9-20020adfe6c9000000b0033b136a95a3mr5609270wrm.28.1707825722071; 
- Tue, 13 Feb 2024 04:02:02 -0800 (PST)
+ bh=NDuO1yoG1D7/XJGzTiSB0HfRJ9/QIMB6S76Ai8lLnLY=;
+ b=a+AaeqfiPWhmLMefYyIz+QZFN1uzErC58JzQH9zAl9VCOlrNMra7hGAOroKN4+yrlw
+ iMZHRiuweEvjqFdV4WzsnF69iOl0r0pmxQxzXc9DkRqD7BvSUxv9olnSawktqUATRhxN
+ d8RcQurxDztUxNKGP0V4wbAX2PuHBQ7R8+MwWqOm8WHEP/Lz+D1X71NQAMrm82PcF+09
+ ZHiycqnUA5uQimkGYJKry1D4m1XP+uoCn6apqXl8Kfh6Tayh+jw53UgDLtPuZhyx9sN3
+ 9wO/0ewox3HRU+gQR0wCcZXkf1JK+ri/QcJhp40ndDqNiD8Vtf8g9+whu/YeEyGJ15es
+ uBtg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXbkIZh6v+HCmpi5EqEkJ4qcPlvBQ+Rs3VISy+9MCtlJcac5fq/U7utL/DUwjfg88aCf2IvuKpveB1wwHbWjR1bHsv1aQ09lKlY7tc3z1XTKUFjiwK6/WUFXCwb669LCmDAVPgX8hd8JW0EnVSzh/YiNzQxZWK2Y3llzfyvEkPsyjJkxDpj4DPJsaAvMrSFAg79Uo0kpypaPjYIAHV5W+AcuWsPyvHMgU+g5S0Vpwf5HS+vytXbqiAaAoIog1aRqOdUA3FGDcRcHlybMiSwPd9oXCOb+meozxMwfe81AhtHOCAjNJwenx7RKXaXEFw64VA16ZkHxXI=
+ AJvYcCV2Ds5bUZ2B7wDEPR595tB6IGjwUGd6gGbICqLEdeA+yXw7dpkN1zlOd3rZaBSEG05Y/aRt13F5vP3BtlAKmCxsPytcZvUj4Q==
+X-Gm-Message-State: AOJu0Yyo+CGE18TvrJ2nfkPB5gOSvrOIK2mCGyVQU14Mm3ELGmSUOZCQ
+ quws+aJZCwSgxdJ/LOesIc978J5/OwBGRHC6askAlYotELwTb9pxzRZiRCuJSc4=
+X-Google-Smtp-Source: AGHT+IGur+wbZD2yUeBm3JhLiO1/vzzkr/lKJUPMzoRfq4ekHVogWhm8LpJQvHMql0zFWfd3MIprsA==
+X-Received: by 2002:a2e:7803:0:b0:2d0:a52d:5510 with SMTP id
+ t3-20020a2e7803000000b002d0a52d5510mr6549932ljc.39.1707825733823; 
+ Tue, 13 Feb 2024 04:02:13 -0800 (PST)
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXR6e91YgO3aY37n7c6JtVojful7CgVRLHd4R9TIyxDwLJPl4v0EruBsCz0hJsqCtf3ksdsJKSPl3zN0MVjWAq6GR6H8DbFS2rJ0+Rhzz1HT2+VbytjguDSiVYv/yIhCL/of32ZNabJarCFUB9i+OJFwtsAo0OGmkDEEgQko/s8jYAlD9oGnsU3HNIXy++9EdxqeYjmWCx8SRNyUxCVk6egUbo+88ZMaKFTvzxOJY0U1FcHaVJc0xJ1b8omteLYrQPypUP2LcBxpxnuhFzvitDPVJo3sTJHoawudODm6u9AEvPh7q5Gl961SHqb/iVoY/VSbG4njmY=
 Received: from m1x-phil.lan ([176.176.128.243])
  by smtp.gmail.com with ESMTPSA id
- bs25-20020a056000071900b0033b45bdb2a1sm9556186wrb.4.2024.02.13.04.02.00
+ y19-20020a05600c20d300b00410e8ef51cbsm4525823wmm.31.2024.02.13.04.02.12
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 13 Feb 2024 04:02:01 -0800 (PST)
+ Tue, 13 Feb 2024 04:02:13 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Eduardo Habkost <eduardo@habkost.net>,
@@ -59,17 +61,17 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
  Bernhard Beschow <shentey@gmail.com>, Ani Sinha <anisinha@redhat.com>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/7] target/i386/monitor: Remove unused 'hw/i386/pc.h' header
-Date: Tue, 13 Feb 2024 13:01:46 +0100
-Message-ID: <20240213120153.90930-2-philmd@linaro.org>
+Subject: [PATCH 3/7] hw/isa/lpc_ich9: Remove unused 'hw/i386/pc.h'
+Date: Tue, 13 Feb 2024 13:01:48 +0100
+Message-ID: <20240213120153.90930-4-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240213120153.90930-1-philmd@linaro.org>
 References: <20240213120153.90930-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::22c;
+ envelope-from=philmd@linaro.org; helo=mail-lj1-x22c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -89,27 +91,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Feb 2024 12:02:44 -0000
-X-List-Received-Date: Tue, 13 Feb 2024 12:02:44 -0000
-X-List-Received-Date: Tue, 13 Feb 2024 12:02:44 -0000
+X-List-Received-Date: Tue, 13 Feb 2024 12:02:47 -0000
+
+Commit c461f3e382 ("hw/acpi/acpi_dev_interface: Remove now unused
+madt_cpu virtual method") removed the need for "hw/i386/pc.h".
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/i386/monitor.c | 1 -
+ hw/isa/lpc_ich9.c | 1 -
  1 file changed, 1 deletion(-)
 
-diff --git a/target/i386/monitor.c b/target/i386/monitor.c
-index 950ff9ccbc..3a281dab02 100644
---- a/target/i386/monitor.c
-+++ b/target/i386/monitor.c
-@@ -33,7 +33,6 @@
- #include "qapi/error.h"
- #include "qapi/qapi-commands-misc-target.h"
- #include "qapi/qapi-commands-misc.h"
+diff --git a/hw/isa/lpc_ich9.c b/hw/isa/lpc_ich9.c
+index 3924eec483..b39d840ccd 100644
+--- a/hw/isa/lpc_ich9.c
++++ b/hw/isa/lpc_ich9.c
+@@ -41,7 +41,6 @@
+ #include "hw/isa/apm.h"
+ #include "hw/pci/pci.h"
+ #include "hw/southbridge/ich9.h"
 -#include "hw/i386/pc.h"
- 
- /* Perform linear address sign extension */
- static hwaddr addr_canonical(CPUArchState *env, hwaddr addr)
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/ich9.h"
+ #include "hw/pci/pci_bus.h"
 -- 
 2.41.0
 
