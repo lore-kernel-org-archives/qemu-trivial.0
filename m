@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rZnkH-0004IG-Ke
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 03:02:25 -0500
+	id 1rZnkI-0004Ip-PO
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 03:02:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rZnk7-0004Bq-83; Tue, 13 Feb 2024 03:02:18 -0500
+ id 1rZnk4-0004AE-Cg; Tue, 13 Feb 2024 03:02:12 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rZnk5-0007Bt-QI; Tue, 13 Feb 2024 03:02:15 -0500
+ id 1rZnk2-0007BX-GZ; Tue, 13 Feb 2024 03:02:12 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 41FC34CBD3;
+ by isrv.corpit.ru (Postfix) with ESMTP id 26EF14CBD1;
  Tue, 13 Feb 2024 11:01:57 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 6A8987CF21;
+ by tsrv.corpit.ru (Postfix) with SMTP id 4F99C7CF1F;
  Tue, 13 Feb 2024 11:01:52 +0300 (MSK)
-Received: (nullmailer pid 160914 invoked by uid 1000);
+Received: (nullmailer pid 160908 invoked by uid 1000);
  Tue, 13 Feb 2024 08:01:51 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-trivial@nongnu.org,
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 10/15] iothread: Simplify expression in qemu_in_iothread()
-Date: Tue, 13 Feb 2024 11:01:46 +0300
-Message-Id: <20240213080151.160839-11-mjt@tls.msk.ru>
+Subject: [PULL 08/15] MAINTAINERS: Cover qapi/stats.json
+Date: Tue, 13 Feb 2024 11:01:44 +0300
+Message-Id: <20240213080151.160839-9-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240213080151.160839-1-mjt@tls.msk.ru>
 References: <20240213080151.160839-1-mjt@tls.msk.ru>
@@ -50,33 +50,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Feb 2024 08:02:20 -0000
+X-List-Received-Date: Tue, 13 Feb 2024 08:02:18 -0000
 
-From: Kevin Wolf <kwolf@redhat.com>
+From: Markus Armbruster <armbru@redhat.com>
 
-'a == b ? false : true' is a rather convoluted way of writing 'a != b'.
-Use the more obvious way to write it.
+Commit aa09b3d5f8e (stats: Move QMP commands from monitor/ to stats/)
+created section Stats, but neglected to add qapi/stats.json to it.
+Fix that.
 
-Signed-off-by: Kevin Wolf <kwolf@redhat.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- iothread.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/iothread.c b/iothread.c
-index 6c1fc8c856..e1e9e04736 100644
---- a/iothread.c
-+++ b/iothread.c
-@@ -404,6 +404,5 @@ IOThread *iothread_by_id(const char *id)
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 87f03ebccd..2e09ed5595 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3321,6 +3321,7 @@ Stats
+ S: Orphan
+ F: include/sysemu/stats.h
+ F: stats/
++F: qapi/stats.json
  
- bool qemu_in_iothread(void)
- {
--    return qemu_get_current_aio_context() == qemu_get_aio_context() ?
--                    false : true;
-+    return qemu_get_current_aio_context() != qemu_get_aio_context();
- }
+ Streams
+ M: Edgar E. Iglesias <edgar.iglesias@gmail.com>
 -- 
 2.39.2
 
