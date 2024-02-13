@@ -1,70 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rZkZg-0008V0-Ds
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Feb 2024 23:39:18 -0500
+	id 1rZkZj-0008Vf-4J
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Feb 2024 23:39:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZkZd-0008Sa-K2
- for qemu-trivial@nongnu.org; Mon, 12 Feb 2024 23:39:14 -0500
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZkZf-0008Um-F0
+ for qemu-trivial@nongnu.org; Mon, 12 Feb 2024 23:39:16 -0500
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZkZa-0005za-F4
- for qemu-trivial@nongnu.org; Mon, 12 Feb 2024 23:39:12 -0500
-Received: by mail-lj1-x22d.google.com with SMTP id
- 38308e7fff4ca-2d1025717c7so11254061fa.2
- for <qemu-trivial@nongnu.org>; Mon, 12 Feb 2024 20:39:08 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZkZd-0005zo-Nv
+ for qemu-trivial@nongnu.org; Mon, 12 Feb 2024 23:39:15 -0500
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-a3122b70439so507261666b.3
+ for <qemu-trivial@nongnu.org>; Mon, 12 Feb 2024 20:39:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707799147; x=1708403947; darn=nongnu.org;
+ d=linaro.org; s=google; t=1707799152; x=1708403952; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=o6pxcy83+qY+qqR1JfeBd83QWY3SHzfnMOli7CsxV1g=;
- b=hl7fXCZXi7maccqm24r5IDkfVPS5OZN0PVEKoLkD30rvSZLDxf4AKtd5oFNqs+wjEP
- 5zxqrS7fQdG3KjO4FLfL0Qsn1fcpnwx55ABx/qUuHw8A/WVzF0YfnvkN066J3Fxf0RT3
- ewptUWYlfPB8Rs4VMhqk2mIrYolr5hfCC0rByUggs37qoTI7+obrjTQDlBBG85bhqFEr
- 1G37k80v1J7uRezQdcE+2ErRTGhm1GSfu4Mn4oepfv6dNSs+3qVT+YGFt7HO/lXLyc5E
- 7AfNm8UiMTTj4ZBslWM2ZQGL7wTbauvWc7cuPSdphW6oqjlBCx3l58At236ZtARSGlWp
- auFQ==
+ bh=Vj8qKfoHRQQSQjKf28SMVg7GGjhkAsn0wq6WSyRxVjw=;
+ b=PwlymzBn0akUrQZRWrVQ7kHLcyz9ruGCnccql5NMkjY4GXPVtcMjFq0JBKzYr47+7k
+ 4Iw2w2/C6LlK8ISm8wtejQnbN921QSBv4P3Wj3oZT/3OldGddOj74E5MdwwEWtTTuowR
+ BEjxrPhsxn2ltB4UutAQLInRgX1qSTv56WTLuMyJLJ7SkP3Hb3VpOc8F09u8GpY9PlE7
+ Bce06f9rrsZSjDELpSnrz7l23ru8NiTpaj45HNP+KNio7KYhexAMVdmUpPISYwHgBwVe
+ GJEJ5eM9pukPJvlBh6w7RmlLKhkycjlWwo8aM2k4iP83zI0z9/2nBDoMWFjlLb498w2C
+ L0Fg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707799147; x=1708403947;
+ d=1e100.net; s=20230601; t=1707799152; x=1708403952;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=o6pxcy83+qY+qqR1JfeBd83QWY3SHzfnMOli7CsxV1g=;
- b=g9BGMsL+4Iena73dbaA+35F4aLRSZxq3pKKwMG9tkLRYmVDasoY0YvB7GJgY77bF1t
- V1AJl+hxJY/7UdIY8mFW2OemiAIOaru5Qtn8DT9Bs+GcRqU9fOJAet8i2/DKTbuu4LKQ
- jM1Dw4AprsixD9mBZyh1d1cDQYwlp9Utz4lHMcmuWajwYlHBGvy2atvYufj9FgxeUmRk
- m++7ik7N/dk89AiVsj+oIyeVYj6/0jkaHOg4mWQy324FlfWtgGTUpvQpX4qZZw/UxTTX
- gqQRifr4IE1QomKJ3eVh//tzBMgYh+XznlcfMV1xBvn+W8mkeuM34Y7xQI7vuRmcAK2O
- pnVw==
-X-Gm-Message-State: AOJu0YxPqyha3vblVmbfuYvLG6hIax09l+KdXrIVF7Gx0RNc8N3dY2mV
- uFbhom0/afwrI7C4ywLAGKPWMpnme5Ba3y6DWXBxJRVhG3qPpSFhAAtyXAi02fNYWFdvSgK+faa
- v
-X-Google-Smtp-Source: AGHT+IF1YM6VspSFl6mXJhbfidWjAJDV1Te+VtIvos2AAaj+/nyLYm4HDpvbtxFr4APXjlbXOrCXFA==
-X-Received: by 2002:a05:651c:a12:b0:2d1:749:c85f with SMTP id
- k18-20020a05651c0a1200b002d10749c85fmr526820ljq.47.1707799146683; 
- Mon, 12 Feb 2024 20:39:06 -0800 (PST)
+ bh=Vj8qKfoHRQQSQjKf28SMVg7GGjhkAsn0wq6WSyRxVjw=;
+ b=cBZNWZ074en0LBWvDFj/Aw2jfmU7CEZv/MaZmNYuk3GlULUYdRBvlTYJ8pmYw/8X/D
+ pGXnDEQQsEFgf4Imkl/CkwZMwIwG5nn5ulLgaQsKIE0AhtbX/Vd4D/U/xeg19fz47TsL
+ TRX8G9M2YBVlz2DWhHIYNQmLUe6E33kOCEOBQTkG8nt+3ZHWIGA0revlq00ZVx10IP+Y
+ TFByrW4Zkc0FfGCqrprK7hCz3xmX4eHxPov0NzF6CwxhGHZM3aeTcMz4gftXePcxQu5g
+ FYL7mBF9cgoFs9fHoO4oZWqhSKkUMxs3X3RwJBK43cK+nR8RFoVkOfNWoTUh4q8ngut5
+ mglQ==
+X-Gm-Message-State: AOJu0YwFRnbtSUYY941e4owTJrpBtFOweJT4oUqTqX+e2Z/7jVvRr/tr
+ We5UyjR0zTAZUne7Bmff6P0qpLtAqsDirogwC8ktQ6/lWkXSiC3E/4FaymXHZtWuLkEWcODxgfY
+ j
+X-Google-Smtp-Source: AGHT+IG2ASL8Im0/nKG8gnnkdSwT58a8CNDfrwBZw3mrlSphdWGOZmw+J1Ax49oKLmSyncHkL/qTsA==
+X-Received: by 2002:a17:906:4719:b0:a3c:1291:224 with SMTP id
+ y25-20020a170906471900b00a3c12910224mr5878460ejq.42.1707799151879; 
+ Mon, 12 Feb 2024 20:39:11 -0800 (PST)
 X-Forwarded-Encrypted: i=1;
- AJvYcCWelYw+K+czkwcdHJjSKFRz8AzTHcxEzN5x7MjPxiZwA4JRoNdiQl8OQR9ApRI2okuGK/u6ji/kRMcoZak3PUW57zQPM0+ZsIzpNzAhMJP2kZ7wdzk=
+ AJvYcCW/aEpcgd6hIbqAc/+248471nD5BATvinlkB0wy7tUUPAZtkFgu6Z5yoM2/xA78qfcs6bcxGGaPSEv8qmWyKgcE5j4UPFK9SBT43b2Tt9QDjGdPisI=
 Received: from m1x-phil.lan ([176.176.128.243])
  by smtp.gmail.com with ESMTPSA id
- em8-20020a056402364800b00561740859b3sm3096177edb.19.2024.02.12.20.39.05
+ p10-20020a1709061b4a00b00a3c09f3aea8sm872522ejg.211.2024.02.12.20.39.10
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Mon, 12 Feb 2024 20:39:06 -0800 (PST)
+ Mon, 12 Feb 2024 20:39:11 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/3] hw/usb: Style cleanup
-Date: Tue, 13 Feb 2024 05:38:57 +0100
-Message-ID: <20240213043859.61019-2-philmd@linaro.org>
+Subject: [PATCH 2/3] hw/usb/uhci: Rename NB_PORTS -> UHCI_PORTS
+Date: Tue, 13 Feb 2024 05:38:58 +0100
+Message-ID: <20240213043859.61019-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240213043859.61019-1-philmd@linaro.org>
 References: <20240213043859.61019-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x22d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -84,58 +84,136 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Feb 2024 04:39:14 -0000
+X-List-Received-Date: Tue, 13 Feb 2024 04:39:16 -0000
 
-We are going to modify these lines, fix their style
-in order to avoid checkpatch.pl warning.
+Rename NB_PORTS as UHCI_PORTS to avoid definition clash
+with EHCI equivalent:
+
+  hw/usb/hcd-uhci.h:38:9: error: 'NB_PORTS' macro redefined [-Werror,-Wmacro-redefined]
+  #define NB_PORTS 2
+          ^
+  hw/usb/hcd-ehci.h:40:9: note: previous definition is here
+  #define NB_PORTS         6        /* Max. Number of downstream ports */
+          ^
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- hw/usb/hcd-ehci.c | 3 ++-
- hw/usb/hcd-uhci.c | 6 ++++--
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ hw/usb/hcd-uhci.h |  4 ++--
+ hw/usb/hcd-uhci.c | 22 +++++++++++-----------
+ 2 files changed, 13 insertions(+), 13 deletions(-)
 
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index 870c72cb59..98a2860069 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -1086,8 +1086,9 @@ static void ehci_opreg_write(void *ptr, hwaddr addr,
-     case CONFIGFLAG:
-         val &= 0x1;
-         if (val) {
--            for(i = 0; i < NB_PORTS; i++)
-+            for (i = 0; i < NB_PORTS; i++) {
-                 handle_port_owner_write(s, i, 0);
-+            }
-         }
-         break;
+diff --git a/hw/usb/hcd-uhci.h b/hw/usb/hcd-uhci.h
+index 69f8b40c49..6d26b94e92 100644
+--- a/hw/usb/hcd-uhci.h
++++ b/hw/usb/hcd-uhci.h
+@@ -35,7 +35,7 @@
  
+ typedef struct UHCIQueue UHCIQueue;
+ 
+-#define NB_PORTS 2
++#define UHCI_PORTS 2
+ 
+ typedef struct UHCIPort {
+     USBPort port;
+@@ -59,7 +59,7 @@ typedef struct UHCIState {
+     uint32_t frame_bytes;
+     uint32_t frame_bandwidth;
+     bool completions_only;
+-    UHCIPort ports[NB_PORTS];
++    UHCIPort ports[UHCI_PORTS];
+     qemu_irq irq;
+     /* Interrupts that should be raised at the end of the current frame.  */
+     uint32_t pending_int_mask;
 diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
-index 7d3c026dae..b95b47f6a4 100644
+index b95b47f6a4..a03cf22e69 100644
 --- a/hw/usb/hcd-uhci.c
 +++ b/hw/usb/hcd-uhci.c
-@@ -457,8 +457,9 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+@@ -322,7 +322,7 @@ static void uhci_reset(DeviceState *dev)
+     s->fl_base_addr = 0;
+     s->sof_timing = 64;
+ 
+-    for(i = 0; i < NB_PORTS; i++) {
++    for(i = 0; i < UHCI_PORTS; i++) {
+         port = &s->ports[i];
+         port->ctrl = 0x0080;
+         if (port->port.dev && port->port.dev->attached) {
+@@ -364,7 +364,7 @@ static const VMStateDescription vmstate_uhci = {
+     .fields = (const VMStateField[]) {
+         VMSTATE_PCI_DEVICE(dev, UHCIState),
+         VMSTATE_UINT8_EQUAL(num_ports_vmstate, UHCIState, NULL),
+-        VMSTATE_STRUCT_ARRAY(ports, UHCIState, NB_PORTS, 1,
++        VMSTATE_STRUCT_ARRAY(ports, UHCIState, UHCI_PORTS, 1,
+                              vmstate_uhci_port, UHCIPort),
+         VMSTATE_UINT16(cmd, UHCIState),
+         VMSTATE_UINT16(status, UHCIState),
+@@ -404,7 +404,7 @@ static void uhci_port_write(void *opaque, hwaddr addr,
+             int i;
+ 
+             /* send reset on the USB bus */
+-            for(i = 0; i < NB_PORTS; i++) {
++            for(i = 0; i < UHCI_PORTS; i++) {
+                 port = &s->ports[i];
+                 usb_device_reset(port->port.dev);
+             }
+@@ -457,7 +457,7 @@ static void uhci_port_write(void *opaque, hwaddr addr,
              int n;
  
              n = (addr >> 1) & 7;
--            if (n >= NB_PORTS)
-+            if (n >= NB_PORTS) {
+-            if (n >= NB_PORTS) {
++            if (n >= UHCI_PORTS) {
                  return;
-+            }
+             }
              port = &s->ports[n];
-             dev = port->port.dev;
-             if (dev && dev->attached) {
-@@ -513,8 +514,9 @@ static uint64_t uhci_port_read(void *opaque, hwaddr addr, unsigned size)
+@@ -514,7 +514,7 @@ static uint64_t uhci_port_read(void *opaque, hwaddr addr, unsigned size)
              UHCIPort *port;
              int n;
              n = (addr >> 1) & 7;
--            if (n >= NB_PORTS)
-+            if (n >= NB_PORTS) {
+-            if (n >= NB_PORTS) {
++            if (n >= UHCI_PORTS) {
                  goto read_default;
-+            }
+             }
              port = &s->ports[n];
-             val = port->ctrl;
+@@ -609,7 +609,7 @@ static USBDevice *uhci_find_device(UHCIState *s, uint8_t addr)
+     USBDevice *dev;
+     int i;
+ 
+-    for (i = 0; i < NB_PORTS; i++) {
++    for (i = 0; i < UHCI_PORTS; i++) {
+         UHCIPort *port = &s->ports[i];
+         if (!(port->ctrl & UHCI_PORT_EN)) {
+             continue;
+@@ -1173,11 +1173,11 @@ void usb_uhci_common_realize(PCIDevice *dev, Error **errp)
+     s->irq = pci_allocate_irq(dev);
+ 
+     if (s->masterbus) {
+-        USBPort *ports[NB_PORTS];
+-        for(i = 0; i < NB_PORTS; i++) {
++        USBPort *ports[UHCI_PORTS];
++        for(i = 0; i < UHCI_PORTS; i++) {
+             ports[i] = &s->ports[i].port;
          }
+-        usb_register_companion(s->masterbus, ports, NB_PORTS,
++        usb_register_companion(s->masterbus, ports, UHCI_PORTS,
+                                s->firstport, s, &uhci_port_ops,
+                                USB_SPEED_MASK_LOW | USB_SPEED_MASK_FULL,
+                                &err);
+@@ -1187,14 +1187,14 @@ void usb_uhci_common_realize(PCIDevice *dev, Error **errp)
+         }
+     } else {
+         usb_bus_new(&s->bus, sizeof(s->bus), &uhci_bus_ops, DEVICE(dev));
+-        for (i = 0; i < NB_PORTS; i++) {
++        for (i = 0; i < UHCI_PORTS; i++) {
+             usb_register_port(&s->bus, &s->ports[i].port, s, i, &uhci_port_ops,
+                               USB_SPEED_MASK_LOW | USB_SPEED_MASK_FULL);
+         }
+     }
+     s->bh = qemu_bh_new_guarded(uhci_bh, s, &DEVICE(dev)->mem_reentrancy_guard);
+     s->frame_timer = timer_new_ns(QEMU_CLOCK_VIRTUAL, uhci_frame_timer, s);
+-    s->num_ports_vmstate = NB_PORTS;
++    s->num_ports_vmstate = UHCI_PORTS;
+     QTAILQ_INIT(&s->queues);
+ 
+     memory_region_init_io(&s->io_bar, OBJECT(s), &uhci_ioport_ops, s,
 -- 
 2.41.0
 
