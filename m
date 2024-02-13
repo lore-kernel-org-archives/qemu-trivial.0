@@ -1,56 +1,56 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rZrW9-0007lv-Op
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 07:04:05 -0500
+	id 1rZrWA-0007n2-1m
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 07:04:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZrUq-0005Xj-B0
- for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 07:02:48 -0500
-Received: from mail-lj1-x230.google.com ([2a00:1450:4864:20::230])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZrUs-0005Xt-Kr
+ for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 07:02:49 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZrUg-0001B1-NP
- for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 07:02:38 -0500
-Received: by mail-lj1-x230.google.com with SMTP id
- 38308e7fff4ca-2d0b4ea773eso55791101fa.0
- for <qemu-trivial@nongnu.org>; Tue, 13 Feb 2024 04:02:32 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZrUo-0001BY-Eu
+ for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 07:02:46 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-33cda3dfa06so289957f8f.3
+ for <qemu-trivial@nongnu.org>; Tue, 13 Feb 2024 04:02:38 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707825751; x=1708430551; darn=nongnu.org;
+ d=linaro.org; s=google; t=1707825757; x=1708430557; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7DXeUhNBegKLVEEbNriXP0M30d34qp+psgJeRCEwOUo=;
- b=jvw0ArXVumvgMukunOELYqOpZTZG7ErChIPmdbM7QcYz5OdfO6pIG+5OKMIKqsJlVU
- tS+Zhxk3gSJSjcAeMy/j9uhfgeaesSu/RTrMw675AuaLaHJG5KIQtRxfwn40m6DWLCvD
- Wl8ZOS32cS6r/hImmf6ZeiFQRZ+h/oZ20ZvW1MXyJg1akKMW3zqrbIG/ZT+JSbf8+Jlm
- R/VyPjQN8weP8RVIrE3axX/qXMj4PO+Tgp+ZOpLnWoW6iS+C/BaiMXP2C4h5svDny63x
- f4/9ndpWckVFpPvnWqvpLMVHXOsb3vXj9PLafXEY6DN2Ull8y6kp3icb2qQPHNTIqEzP
- h/qQ==
+ bh=gT9BnHhKSLeB6DLDQir0eTSYCNcWVKYuyB5YSaZzw1E=;
+ b=G7SLVMm4HvokZLenrM6EJSDGuHSUroDT1JnLGFBYdako26hjR0IeAUmOwFropKRruu
+ GiT0wnpXjAtZKQbJLrzN18OMqEcVi0MaSCKdarjAhCcL0DXSlNbofafen2lRu//HRVQP
+ o/mpgkhOY/AX0Ff3w8yvvvfUtTzNnj70UDL2HYoRxkFmUHBc99LUXji8V+dPyduQsJG1
+ pwF8dJMwd9jFmFI10iejYLMJM6MTYhiH+8nH540rwdIkT+7hoz7pdAhAlh6Bu6f8fBuz
+ gpicj+yfFovBZrLBv9GX/mboSCMaUUekwSiNP4pMuaF04FjCDeOnmMp3+FQNp6z9c6GC
+ MDIQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707825751; x=1708430551;
+ d=1e100.net; s=20230601; t=1707825757; x=1708430557;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=7DXeUhNBegKLVEEbNriXP0M30d34qp+psgJeRCEwOUo=;
- b=SYD/0JZPsTsk9/pSXVDWp2cVT9prowypxHf0+sHKC43nzhdCds66EnNdvp5R/od1vZ
- 8miJW4AeYchv01pLj/OYdiLV1l1St2cHoGBQjL6mSbfRnxrJerLpaRydoOCNeRyldy3j
- eUj95p/6epOuKp0d4ACgn4P9oBXIc/xBfhs1IGbMwv9zFf7ZpyqmteLXs16nRidneuWo
- uEtJVtHwRaA9GjH+15/je4S0elVcggPrZ/98k/2xeJdInJ/gZZxPxpVqYlkfll6nmk6u
- 0wQCNslvIKyrYsXuegy1oxiRnFldyRyur9bXt2J93h+zIE2/LvenrO679qZM+n8ivFSI
- pT0Q==
+ bh=gT9BnHhKSLeB6DLDQir0eTSYCNcWVKYuyB5YSaZzw1E=;
+ b=ajG9hdGCOoVtM9cUTJB0nuygNMqfE7vn45oTJWkqyQ6l40fCZyXpRabzo8L1URsd4M
+ SuJTR1FFTiLTlDDOxwmbizMobUlV4fEkfpp2oo5nog1o2Yo/hacFLzG8WRgrCVs1AgMJ
+ Vojk3y3NUf+rSnfKQIDFgqIe1xv3ZZzRP7aT9V+ZORPUe9ow2dLSvgKso22dI35DeNCO
+ lcXP/nYM61smzfpu/gABr64I+BulAiUy1Si5XbuBSXr6fwEth638opeVe6bLhjYEV08K
+ fthTjifNVnzMhi3azYuAUsBG/LoJ39XPdYue0x7ix6R92bNkxxiqA0vOW/obJSEyt17O
+ ANog==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX71jhPuAGoqVcgGNuOFXg9urYM/QiCRBSZKbfXF7aWAEndBLRNjQZSgrL20mA5TvVQNEUjEtrmIlx/OazbYmBiTACZPU32iw==
-X-Gm-Message-State: AOJu0YydXcTKSKNtn1ZEvPaAP9Rxu3MlOR2N71MRCcIoPUPY1FmBoq8p
- wmGaj4CtAiR+M6zoD/lqbih4pdDXsAipT1lXZ65AQZ9t5ObxuQmxXeDq9RAVc7s=
-X-Google-Smtp-Source: AGHT+IHU2nOZBzOJiiwvB4NLtKxJFoQG8yRn3Zk8ihyzp3dcyIZLSsiUYCqCOQ4Gbk30iS91t9p+Ew==
-X-Received: by 2002:a2e:a6a6:0:b0:2d0:e730:b7d5 with SMTP id
- q38-20020a2ea6a6000000b002d0e730b7d5mr4714847lje.1.1707825751449; 
- Tue, 13 Feb 2024 04:02:31 -0800 (PST)
+ AJvYcCU3D++mI951tdA8tQfPGFRuu8WGL4O4o90CBB1GZhnggq1VgCa5pHNvfqRn8J+Q79wW7SDNQhh2oOs5RZv7n0uYF3QweuaSJg==
+X-Gm-Message-State: AOJu0Yz8YJMDqKcVGYdWwU3b1ZpTTVhBMZoDSRQ7EXzsQRzJeSuJ6Lgn
+ 6x6oG3GWG6atJqSJQ1NsFxlo8liTMLlUYTByVcKMThEQpZFuTCbYg+b+V33kyDc=
+X-Google-Smtp-Source: AGHT+IE8MDoV5cIX2X0Dc1lxcmlHUOvaNY8mOvWh4DnxUxe81R2VyTR1wl9guqz9Q6362FGOSkHjPg==
+X-Received: by 2002:a5d:53c4:0:b0:33a:ff66:fecc with SMTP id
+ a4-20020a5d53c4000000b0033aff66feccmr6807597wrw.26.1707825757405; 
+ Tue, 13 Feb 2024 04:02:37 -0800 (PST)
 X-Forwarded-Encrypted: i=1;
- AJvYcCUTgHRHVSpaiDt7jfmm6dHijKIlCbBc00EwR+Ml31drXthLr324tmsGVqDKspuzIeOLhckqnDgE4QeC9IMSZl0a4DwrcJSzhzf6PU2oiEp52SQ8cHBxZ47ZtDrmpEIscHUaj2E8ZQSNEEDY3cF1gGVk8y+NNx7vUBDlXasXcz5N1XiRz5QectFlfeGP9wnrzc1I3sg0pIWuWI1FpqgwxWJfN+McHEMSLIO1MfWqNncZXWdgs9zMXn0FueDwN/N4Su0I+GDmBBZdLSRwp+vpy//nWHJ5oDaOvHA7zsFMW8vqzJp0j7xoHsTW5U0i18yq3Zo8zBvuzHo=
+ AJvYcCVzfaonjkPEG9PV7JWli6v5BbF0tH/XSyuuag8oYSXFoTChnej/5IGDw4e18Ej+suIobhUpbtacqoJXowBVDwjQ75gn09cJVfX/vbiYwdujQuOTyrBX0iYix94AsVHz4IqYnjKkMghjteCIf6lLhmLF7d1iThf9ScYfzYzT8GcOJE3iwtdmYiRU5SH/AoqYXVPOB8qXm6ygJczbL5l7NCu5JG7Hkd7KNxRfkqAAUaudN27SzAr01eHhzPupS9UE3ah6jy4PPu2Ja3H2TE3G+yHILl884ac8xDn1wCvZaFwhFeDOD16cQiV77ilrkvzKGIntrx5th10=
 Received: from m1x-phil.lan ([176.176.128.243])
  by smtp.gmail.com with ESMTPSA id
- o39-20020a05600c512700b00411c3c2fc55sm1308184wms.45.2024.02.13.04.02.29
+ l1-20020a5d4bc1000000b0033ce214a97csm331838wrt.17.2024.02.13.04.02.36
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 13 Feb 2024 04:02:31 -0800 (PST)
+ Tue, 13 Feb 2024 04:02:37 -0800 (PST)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Eduardo Habkost <eduardo@habkost.net>,
@@ -61,18 +61,17 @@ Cc: Eduardo Habkost <eduardo@habkost.net>,
  Bernhard Beschow <shentey@gmail.com>, Ani Sinha <anisinha@redhat.com>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 6/7] hw/acpi/cpu_hotplug: Include 'pci_device.h' instead of
- 'pci.h'
-Date: Tue, 13 Feb 2024 13:01:51 +0100
-Message-ID: <20240213120153.90930-7-philmd@linaro.org>
+Subject: [PATCH 7/7] hw/acpi/cpu_hotplug: Include 'x86.h' instead of 'pc.h'
+Date: Tue, 13 Feb 2024 13:01:52 +0100
+Message-ID: <20240213120153.90930-8-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
 In-Reply-To: <20240213120153.90930-1-philmd@linaro.org>
 References: <20240213120153.90930-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::230;
- envelope-from=philmd@linaro.org; helo=mail-lj1-x230.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -92,9 +91,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Feb 2024 12:02:52 -0000
+X-List-Received-Date: Tue, 13 Feb 2024 12:02:53 -0000
 
-cpu_hotplug.c only needs the PCI *device* definitions.
+X86 CPU hotplug isn't specific to PC machines.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
@@ -102,18 +101,18 @@ Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 diff --git a/hw/acpi/cpu_hotplug.c b/hw/acpi/cpu_hotplug.c
-index 6f78db0ccb..f7fe905e0a 100644
+index f7fe905e0a..83b8bc5deb 100644
 --- a/hw/acpi/cpu_hotplug.c
 +++ b/hw/acpi/cpu_hotplug.c
-@@ -14,7 +14,7 @@
+@@ -13,7 +13,7 @@
+ #include "hw/acpi/cpu_hotplug.h"
  #include "qapi/error.h"
  #include "hw/core/cpu.h"
- #include "hw/i386/pc.h"
--#include "hw/pci/pci.h"
-+#include "hw/pci/pci_device.h"
+-#include "hw/i386/pc.h"
++#include "hw/i386/x86.h"
+ #include "hw/pci/pci_device.h"
  #include "qemu/error-report.h"
  
- #define CPU_EJECT_METHOD "CPEJ"
 -- 
 2.41.0
 
