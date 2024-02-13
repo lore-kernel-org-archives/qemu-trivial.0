@@ -1,30 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rZnkC-0004E6-IZ
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 03:02:20 -0500
+	id 1rZnkC-0004Em-OW
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 03:02:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rZnjs-00046I-RI; Tue, 13 Feb 2024 03:02:01 -0500
+ id 1rZnjw-00047b-FL; Tue, 13 Feb 2024 03:02:07 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rZnjr-00079P-6K; Tue, 13 Feb 2024 03:02:00 -0500
+ id 1rZnjv-0007A5-35; Tue, 13 Feb 2024 03:02:04 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id BF7944CBCB;
+ by isrv.corpit.ru (Postfix) with ESMTP id DB6234CBCD;
  Tue, 13 Feb 2024 11:01:56 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id E85877CF19;
- Tue, 13 Feb 2024 11:01:51 +0300 (MSK)
-Received: (nullmailer pid 160890 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 0FF5F7CF1B;
+ Tue, 13 Feb 2024 11:01:52 +0300 (MSK)
+Received: (nullmailer pid 160896 invoked by uid 1000);
  Tue, 13 Feb 2024 08:01:51 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 02/15] hw/isa/pc87312: Consolidate the use of
+Subject: [PULL 04/15] hw/arm/smmuv3: Consolidate the use of
  device_class_set_parent_realize()
-Date: Tue, 13 Feb 2024 11:01:38 +0300
-Message-Id: <20240213080151.160839-3-mjt@tls.msk.ru>
+Date: Tue, 13 Feb 2024 11:01:40 +0300
+Message-Id: <20240213080151.160839-5-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240213080151.160839-1-mjt@tls.msk.ru>
 References: <20240213080151.160839-1-mjt@tls.msk.ru>
@@ -50,7 +50,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Feb 2024 08:02:03 -0000
+X-List-Received-Date: Tue, 13 Feb 2024 08:02:12 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -60,26 +60,24 @@ Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/isa/pc87312.c | 4 ++--
+ hw/arm/smmuv3.c | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/isa/pc87312.c b/hw/isa/pc87312.c
-index ee23f3e164..64dd17b537 100644
---- a/hw/isa/pc87312.c
-+++ b/hw/isa/pc87312.c
-@@ -338,10 +338,10 @@ static void pc87312_class_init(ObjectClass *klass, void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
-     ISASuperIOClass *sc = ISA_SUPERIO_CLASS(klass);
+diff --git a/hw/arm/smmuv3.c b/hw/arm/smmuv3.c
+index 68eeef3e1d..b3d8642a49 100644
+--- a/hw/arm/smmuv3.c
++++ b/hw/arm/smmuv3.c
+@@ -1857,8 +1857,8 @@ static void smmuv3_class_init(ObjectClass *klass, void *data)
+     dc->vmsd = &vmstate_smmuv3;
+     resettable_class_set_parent_phases(rc, NULL, smmu_reset_hold, NULL,
+                                        &c->parent_phases);
+-    c->parent_realize = dc->realize;
+-    dc->realize = smmu_realize;
++    device_class_set_parent_realize(dc, smmu_realize,
++                                    &c->parent_realize);
+     device_class_set_props(dc, smmuv3_properties);
+ }
  
--    sc->parent_realize = dc->realize;
--    dc->realize = pc87312_realize;
-     dc->reset = pc87312_reset;
-     dc->vmsd = &vmstate_pc87312;
-+    device_class_set_parent_realize(dc, pc87312_realize,
-+                                    &sc->parent_realize);
-     device_class_set_props(dc, pc87312_properties);
- 
-     sc->parallel = (ISASuperIOFuncs){
 -- 
 2.39.2
 
