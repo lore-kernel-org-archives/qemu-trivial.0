@@ -1,78 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rZmhw-0005Pm-OH
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 01:55:56 -0500
+	id 1rZn1j-0002In-KS
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Feb 2024 02:16:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZmhu-0005PM-OR
- for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 01:55:54 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZn1h-0002Hl-C1
+ for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 02:16:21 -0500
+Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZmht-0004S3-Bh
- for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 01:55:54 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-411a6ada28dso3730045e9.3
- for <qemu-trivial@nongnu.org>; Mon, 12 Feb 2024 22:55:52 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rZn1e-0007tf-88
+ for qemu-trivial@nongnu.org; Tue, 13 Feb 2024 02:16:20 -0500
+Received: by mail-wr1-x42e.google.com with SMTP id
+ ffacd0b85a97d-3394bec856fso2946340f8f.0
+ for <qemu-trivial@nongnu.org>; Mon, 12 Feb 2024 23:16:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707807351; x=1708412151; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=qDA115RBNnbaoapaA3ctGFVN7qT4fmp/58Rp9s8Cipo=;
- b=xiKoTcMsyg690AudgoOrFOGTMzWe7SSvaT/gDxqCq68HDxuVCtdpeX0DIXcTa5Wo7r
- /ioTGBicgwvbU6VtrjSjoefI2Hu9HK8xzFt+ezwm49heHRaArJsHJOxXjk3zcoBxE9TC
- MZ8rOnOCRHkOeYuXBUSjSo89kFvDkPklWK1P7mjCrCrJBcw8UkKGeXe093jLnxLuIbs2
- fQZIRTXFSQHRClPThgJtB52VZd0H23owxz1Vsm+cSa1do+VN/qR1BAL50Gy29jjTZX+1
- ixsm3lGFR7xvgGD16mwH23vbIQXVw5oJW2NjVok/4nOUbGxQLJLeDb8dldhLtHfv2TVB
- +9tw==
+ d=linaro.org; s=google; t=1707808576; x=1708413376; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Cj9qCj9mT2tt5rgoG2stTmiFvC9CmzQUn4FtQx8Dgyg=;
+ b=Nyugot3aKozmEN3Od4aVM4pM7pkounGGNXLkw0W5IVimYeo7vi9p45XlNjOPKcyLb0
+ ucwVi14PwNoqAH587zDLvN/o5As9DxqXHBts89vViw0MNsrA7uEPWssDKS8TjjL+EWvW
+ L2XGrstl/QWtDKZpRqYbpowyGfwJMJpP1XPz+lgx4vGkWs+R7TlMO6OdnOBYo2Nn9qxu
+ T+PvwZrcgmXPQH17j6cwgtfzYzv2IlmxmSXT+m+VxgDAt9zXvlaIQ/z8wyxnCkPUTBeI
+ N06qJQ6lMMbeVcp05CjT1Lb9P0+eNdJ5qoXcKy7w9a/vHY+vGfMV8DoZudZLOL5KCSUq
+ aNVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707807351; x=1708412151;
- h=content-transfer-encoding:in-reply-to:from:references:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=qDA115RBNnbaoapaA3ctGFVN7qT4fmp/58Rp9s8Cipo=;
- b=ZBYjt7Wselbo7RZLIO0yB+2E9TICuoZXo0M9DToAOASgwVOIAd6MW+CZTKdab+isoM
- 9wNEvFHAQN1SDz0DyhA4m/kAZ3YFkgz7WghaeySmBPSpLZfDiERPbm1usvAsVsouO+7e
- QTPeE/TH982e37Zhav8CHuULdlALB+e4e9p72qlBN2lwQzrfNAaWe37sX4DRYyy51Ab1
- BROXBK30IlR+1UW7xtrKBJs5SLHDa+29jjvvaMNRKfj7DdxVsPtWI/uHZPFrzZ4lEvU0
- IWEBVXAgve0/0doX4EikCIArxlZSKdldalxVPeYIcAHDCkeWULUAGWq4zNA/tbgIiIx4
- YeHw==
+ d=1e100.net; s=20230601; t=1707808576; x=1708413376;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Cj9qCj9mT2tt5rgoG2stTmiFvC9CmzQUn4FtQx8Dgyg=;
+ b=ZCLcv8F6eR6cmjXmliAoMTIhkBvhY575x3XFZio0kqDfz5zpVzCjxEcFhz+ZLjckgL
+ /l90nRD/4if5mxXSM/QzlY1nt/WeGeiBBWXWXfcsZaxuSY1Cn927nrE57DnkkOCeGd2y
+ 6Zqic90wY/NVGD4OF5LMzk/cuvZtMTFYqEKs8wjRj6CFhJP3fU7TRa6Qj4xN9DBKL/LA
+ ntgB0a+qPJFsAqYQqVNJfeahr9kuUaaSHu3DL4j0zuuS01OR2sR7rsfE01O3R2ATMghI
+ URfCXyR+JVnnDePkyPT9R/eNrE4AA/4CJaFcAt8NDvFftBURTzfSJi90OsiR02MW4gZL
+ 5NJA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWGw/XZVlxoUmhNBDi8XviQz2KgiIR9RIz0fMJ2D7ZFq1rel2STDjigPxX+Jk2S+a6bK4rtYG6s7ZiuQ7HQgf5kR6DL6HMMMQ==
-X-Gm-Message-State: AOJu0YyBje3ZR5a/ZjX5teDVwNkMWszSUpdiGh8e7O5ea2CeGS4aPVHp
- uy1dtGmfKdvkmy3I53+WO38AZyn9GDB1vap13bZfLsNYkl5d+/IsEwUxso8Ol7k=
-X-Google-Smtp-Source: AGHT+IGkOiOZsHXLUDz+nAjkXQBDTS55StqrtiSpcY+aed9EzTMCif6T1EEBSZA5wlAs/wISJuWFoQ==
-X-Received: by 2002:adf:f1cf:0:b0:33b:3b00:520d with SMTP id
- z15-20020adff1cf000000b0033b3b00520dmr5945528wro.51.1707807350893; 
- Mon, 12 Feb 2024 22:55:50 -0800 (PST)
+ AJvYcCX62N/PmOev752ndEg6+X89uOXIKoBrMiCYCBTVUFVs0RuQAiy0zacjCHw8dxiCOD5GP4Z5P+WJsRE+pi3pUmqF5LVI3bSXYA==
+X-Gm-Message-State: AOJu0Yxm1FMmVtQxbvtUJynuyk/YVOwQrSIP0B6Bzox51zjFxEpQ76+H
+ Vtga6imheBquEUs2wEPIpRd6K6WXXZcUbgyYwBvHybw4U9yzf7OOpVHu79CZPdk=
+X-Google-Smtp-Source: AGHT+IHrTLLFI1tqRrznVpJefkYRpov81hxKrswb+qr8oG1krRE3F60MHN+PzxhK8sZc6q4GGy5DPA==
+X-Received: by 2002:a5d:680a:0:b0:33b:58c7:8281 with SMTP id
+ w10-20020a5d680a000000b0033b58c78281mr1332042wru.10.1707808576417; 
+ Mon, 12 Feb 2024 23:16:16 -0800 (PST)
 X-Forwarded-Encrypted: i=1;
- AJvYcCWcM++vrU7h9PoCNUJVkxq29yWM0l02ky1knR6TRU208g/SF/N+Gg2zWqV9X0VK76Qgy8ikfZoE5ZlOxv7v/89+7K3YJr6/FJai1PW1KRUlvNNNcGEYrtDy+/G6elqZ
-Received: from [192.168.69.100] ([176.176.128.243])
+ AJvYcCWXMyN4Ms6ScJQQh7dqSy6GHbE06UMgK9JZeeYZ9dG7RPFxdwmu0sY+47koNoHh+ljrad1MOEabRm2rvp9PCAl+NJ8Nd7UUfsfFBbWB4V2mbZNhg2jCeHDCnJqMdbFPnKjt8CD/WqqGG7w9iyiK/JUF2m3CtU2AamnOdVAvdLlrXPBpDdlpYbblD6okSn/zo+kuRXcrite5nUivZiblO/1spB3ldJUanQTHWmwBfAOQWhXGyV1vlGieRg==
+Received: from m1x-phil.lan ([176.176.128.243])
  by smtp.gmail.com with ESMTPSA id
- e27-20020a5d595b000000b0033b80a0d002sm5338566wri.57.2024.02.12.22.55.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Feb 2024 22:55:50 -0800 (PST)
-Message-ID: <4c4fda8b-2a0d-46c8-b965-49a4e6533634@linaro.org>
-Date: Tue, 13 Feb 2024 07:55:49 +0100
+ dv5-20020a0560000d8500b0033b483d1abcsm8709565wrb.53.2024.02.12.23.16.15
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 12 Feb 2024 23:16:16 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] hw/i386/sgx: Use QDev API
+Date: Tue, 13 Feb 2024 08:16:13 +0100
+Message-ID: <20240213071613.72566-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] system: Move memory_ldst.c.inc to system
-Content-Language: en-US
-To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-References: <20240209000505.B07D04E6049@zero.eik.bme.hu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240209000505.B07D04E6049@zero.eik.bme.hu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,22 +85,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Feb 2024 06:55:54 -0000
+X-List-Received-Date: Tue, 13 Feb 2024 07:16:21 -0000
 
-On 9/2/24 01:05, BALATON Zoltan wrote:
-> This file is only used by system/physmem.c so move them together.
-> 
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> ---
->   memory_ldst.c.inc => system/memory_ldst.c.inc | 0
->   1 file changed, 0 insertions(+), 0 deletions(-)
->   rename memory_ldst.c.inc => system/memory_ldst.c.inc (100%)
-> 
-> diff --git a/memory_ldst.c.inc b/system/memory_ldst.c.inc
-> similarity index 100%
-> rename from memory_ldst.c.inc
-> rename to system/memory_ldst.c.inc
+Prefer the QDev API over the low level QOM one.
+No logical change intended.
 
-Patched queued, thanks.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/i386/sgx.c | 14 ++++++--------
+ 1 file changed, 6 insertions(+), 8 deletions(-)
+
+diff --git a/hw/i386/sgx.c b/hw/i386/sgx.c
+index 70305547d4..9176040f8f 100644
+--- a/hw/i386/sgx.c
++++ b/hw/i386/sgx.c
+@@ -286,7 +286,6 @@ void pc_machine_init_sgx_epc(PCMachineState *pcms)
+     SGXEPCState *sgx_epc = &pcms->sgx_epc;
+     X86MachineState *x86ms = X86_MACHINE(pcms);
+     SgxEPCList *list = NULL;
+-    Object *obj;
+ 
+     memset(sgx_epc, 0, sizeof(SGXEPCState));
+     if (!x86ms->sgx_epc_list) {
+@@ -300,16 +299,15 @@ void pc_machine_init_sgx_epc(PCMachineState *pcms)
+                                 &sgx_epc->mr);
+ 
+     for (list = x86ms->sgx_epc_list; list; list = list->next) {
+-        obj = object_new("sgx-epc");
++        DeviceState *dev = qdev_new(TYPE_SGX_EPC);
+ 
+         /* set the memdev link with memory backend */
+-        object_property_parse(obj, SGX_EPC_MEMDEV_PROP, list->value->memdev,
+-                              &error_fatal);
++        object_property_parse(OBJECT(dev), SGX_EPC_MEMDEV_PROP,
++                              list->value->memdev, &error_fatal);
+         /* set the numa node property for sgx epc object */
+-        object_property_set_uint(obj, SGX_EPC_NUMA_NODE_PROP, list->value->node,
+-                             &error_fatal);
+-        object_property_set_bool(obj, "realized", true, &error_fatal);
+-        object_unref(obj);
++        object_property_set_uint(OBJECT(dev), SGX_EPC_NUMA_NODE_PROP,
++                                 list->value->node, &error_fatal);
++        qdev_realize_and_unref(dev, &error_fatal);
+     }
+ 
+     if ((sgx_epc->base + sgx_epc->size) < sgx_epc->base) {
+-- 
+2.41.0
 
 
