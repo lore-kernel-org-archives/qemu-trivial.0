@@ -1,85 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ra9Dn-0000MH-5U
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Feb 2024 01:58:19 -0500
+	id 1raEZG-0005CA-Ku
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Feb 2024 07:40:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ra9Dl-0000Lv-DN
- for qemu-trivial@nongnu.org; Wed, 14 Feb 2024 01:58:17 -0500
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ra9Dj-0005va-RF
- for qemu-trivial@nongnu.org; Wed, 14 Feb 2024 01:58:17 -0500
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-a3d0d26182dso140607866b.1
- for <qemu-trivial@nongnu.org>; Tue, 13 Feb 2024 22:58:15 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1707893894; x=1708498694; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=3TGxlVSnXdE3Z8EQcfcL0AyJBFbksB4NiCVh+ku2kRc=;
- b=k9j53APo4Sdpf18nhrGEHiXS+bPGahpe+ewyvpTS5ewI/l5VOswhjLTUoR46gU/ZR5
- ljl9VnRIZLH87cdinFsH383RYpdhnRT31J2eXnqjYfjRyCMpKfHvM9b/bohqEyl1xlqx
- /RxeWdFlidJGVmYGYlG5QUGGcCd8KI9JFjFzqdKx2GdWWCXG4HuBrqDXixyAn30yefso
- fvNJDMlWikzOSpDuIFTxUI7CGx03r2cXvXrvEjtfx1uuilaJz3TfTRkXv1Fsc9G/2zaH
- 78PWEa56V7g0MIPL42ypVw4H3KU2wJ0ZeO18EXliY0bfYfXYnI2GsaOjMWDIcVywKYWU
- TxAw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1707893894; x=1708498694;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3TGxlVSnXdE3Z8EQcfcL0AyJBFbksB4NiCVh+ku2kRc=;
- b=VFUPl31ceeFJn8hSiGC2UM2meAH16heFiXdRP8RhJYB1WjjhnTNikxpD2/4QgEN/Rj
- EWhHesVo0gp3dHamZvNa0ZnuAlIO5X4zf/ldK0NMegp9eNqL8srn8X/VHM+m97qdExTL
- GMAgSQSAWDnRgGbVhRiMO42JvP1hKArUumdNH62+dpzJFArAlQpTQJSG4C6RFrT80shV
- dksUylbcG+az4drzouVUro/a+nwbGVc7bp4RDxtg0J0wTzn4NufQndzn3pvoXyQyEOtU
- ofCOQab7MjhkrdFRCHHXWJbDsw4ULDkiXVc0GlNkIo+S8NZ0ln2CvNv/c8Czst+WvhXv
- t0Yw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVoavj2SDqY2GtuPhxuTEzoYSUWkYWyK/NcOiinmeOw9g/XHRoxfcYah5YCaIzHRti5u4OPiG42fCPjROgfbtklkbn5zQtkYA==
-X-Gm-Message-State: AOJu0YxzJG4vnx3uIXTpC+OBhGTECGYYPgPwapgpfNBrkMoY/7pMBvb/
- HJ69H9MQa7J7yEc//HpmuGlY/r77v52lBm0huCL6wk8oMzgzJrAKJO/tfu2hwtI=
-X-Google-Smtp-Source: AGHT+IFx/48kIRY+VCY3vSlxmN08+9ZmB82AYcL4de3UD1JwEqkhs27GtmZCV4pf5EAZs17jpQSCSg==
-X-Received: by 2002:a17:906:f1c1:b0:a3d:482f:3fc4 with SMTP id
- gx1-20020a170906f1c100b00a3d482f3fc4mr474615ejb.70.1707893893936; 
- Tue, 13 Feb 2024 22:58:13 -0800 (PST)
-X-Forwarded-Encrypted: i=1;
- AJvYcCXuTQTXNRycCn/2ir9P8ZV147ie2WnBrKndNsjRI15+Pxj1yclss4SEbIbqq8cWEnbE1+9FfKC5EID23i1YmOHkphY7z0sqDd56PhQp0cnSbw4o09SVMwUqkkmvGsbylwcxkknw4n1jkSouhT7HE0ScYFsKZ3DyMqam2OkF9CQ0et20iXQ4HtSoPuymfPJ6+9FtF1PG8qikNxgyPad5diKjes1dSr1h0XtlkYFy7ysL9yjW3wgQSi15+mJPieVyUA1h9119lufKa6GPZ4FD3OPPzvIs4fjTRLPJ5hl+5NaRAC3kpFX4laY=
-Received: from [192.168.69.100] (mau49-h01-176-184-41-88.dsl.sta.abo.bbox.fr.
- [176.184.41.88]) by smtp.gmail.com with ESMTPSA id
- ld15-20020a170906f94f00b00a3d5d8ff745sm13645ejb.144.2024.02.13.22.58.12
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Feb 2024 22:58:13 -0800 (PST)
-Message-ID: <17f737fa-5a2d-4465-9f53-7ef11b6287e4@linaro.org>
-Date: Wed, 14 Feb 2024 07:58:11 +0100
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1raEZC-0004xs-80; Wed, 14 Feb 2024 07:40:46 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1raEZA-00039J-Il; Wed, 14 Feb 2024 07:40:45 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 8D65D4D3C9;
+ Wed, 14 Feb 2024 15:40:48 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 425D17EBEA;
+ Wed, 14 Feb 2024 15:40:41 +0300 (MSK)
+Message-ID: <6fc585bb-f733-4268-a742-a4f82686617e@tls.msk.ru>
+Date: Wed, 14 Feb 2024 15:40:41 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 4/7] hw/i386/acpi: Declare pc_madt_cpu_entry() in
- 'acpi-common.h'
+Subject: Re: [PATCH] hw/i386/kvm/ioapic: Replace magic '24' value by proper
+ definition
 Content-Language: en-US
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>,
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Ani Sinha <anisinha@redhat.com>, qemu-trivial@nongnu.org
-References: <20240213120153.90930-1-philmd@linaro.org>
- <20240213120153.90930-5-philmd@linaro.org>
- <35DAA6EC-1C6D-4F36-A595-A7F720D63C20@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <35DAA6EC-1C6D-4F36-A595-A7F720D63C20@gmail.com>
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20240209190110.27413-1-philmd@linaro.org>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <20240209190110.27413-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -93,49 +77,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Feb 2024 06:58:17 -0000
+X-List-Received-Date: Wed, 14 Feb 2024 12:40:47 -0000
 
-On 13/2/24 19:57, Bernhard Beschow wrote:
+09.02.2024 22:01, Philippe Mathieu-Daudé:
+> Replace '24' -> KVM_IOAPIC_NUM_PINS.
+
+Picked up for trivial-patches. Not exactly a trivial thing but heck :)
+
+Thanks,
+
+/mjt
+
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   hw/i386/kvm/ioapic.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> 
-> Am 13. Februar 2024 12:01:49 UTC schrieb "Philippe Mathieu-Daudé" <philmd@linaro.org>:
->> Since pc_madt_cpu_entry() is only used by:
->> - hw/i386/acpi-build.c   // single call
->> - hw/i386/acpi-common.c  // definition
->> there is no need to expose it outside of hw/i386/.
->> Declare it in "acpi-common.h".
->> acpi-build.c doesn't need "hw/i386/pc.h" anymore.
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->> hw/i386/acpi-common.h | 3 +++
->> include/hw/i386/pc.h  | 4 ----
->> hw/i386/acpi-common.c | 1 -
->> 3 files changed, 3 insertions(+), 5 deletions(-)
->>
->> diff --git a/hw/i386/acpi-common.h b/hw/i386/acpi-common.h
->> index b3c56ee014..e305aaac15 100644
->> --- a/hw/i386/acpi-common.h
->> +++ b/hw/i386/acpi-common.h
->> @@ -1,12 +1,15 @@
->> #ifndef HW_I386_ACPI_COMMON_H
->> #define HW_I386_ACPI_COMMON_H
->>
->> +#include "hw/boards.h"
->> #include "hw/acpi/bios-linker-loader.h"
->> #include "hw/i386/x86.h"
->>
->> /* Default IOAPIC ID */
->> #define ACPI_BUILD_IOAPIC_ID 0x0
->>
->> +void pc_madt_cpu_entry(int uid, const CPUArchIdList *apic_ids,
-> 
-> Since the function is apparently not pc but rather x86-specific: Does it make sense to rename the function as well, e.g. to x86_madt_cpu_entry()?
+> diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
+> index 409d0c8c76..b96fe84eed 100644
+> --- a/hw/i386/kvm/ioapic.c
+> +++ b/hw/i386/kvm/ioapic.c
+> @@ -35,7 +35,7 @@ void kvm_pc_setup_irq_routing(bool pci_enabled)
+>           kvm_irqchip_add_irq_route(s, i, KVM_IRQCHIP_PIC_SLAVE, i - 8);
+>       }
+>       if (pci_enabled) {
+> -        for (i = 0; i < 24; ++i) {
+> +        for (i = 0; i < KVM_IOAPIC_NUM_PINS; ++i) {
+>               if (i == 0) {
+>                   kvm_irqchip_add_irq_route(s, i, KVM_IRQCHIP_IOAPIC, 2);
+>               } else if (i != 2) {
 
-I don't know much about ACPI tables. Is it?
-Ani, can you confirm and do you mind posting a cleanup patch on top? :)
-
-Regards,
-
-Phil.
 
