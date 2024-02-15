@@ -1,87 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1racf0-0000Fw-4i
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Feb 2024 09:24:22 -0500
+	id 1rad3Z-0000xF-S8
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Feb 2024 09:49:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1racey-0000FQ-ND
- for qemu-trivial@nongnu.org; Thu, 15 Feb 2024 09:24:20 -0500
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rad3X-0000wT-S6
+ for qemu-trivial@nongnu.org; Thu, 15 Feb 2024 09:49:43 -0500
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1racew-0000kZ-2q
- for qemu-trivial@nongnu.org; Thu, 15 Feb 2024 09:24:20 -0500
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-339289fead2so519904f8f.3
- for <qemu-trivial@nongnu.org>; Thu, 15 Feb 2024 06:24:17 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rad3W-0007Qj-EE
+ for qemu-trivial@nongnu.org; Thu, 15 Feb 2024 09:49:43 -0500
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-a389ea940f1so122512066b.3
+ for <qemu-trivial@nongnu.org>; Thu, 15 Feb 2024 06:49:42 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708007056; x=1708611856; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708008581; x=1708613381; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=BbodEF5CfyfyezAUM7C9Pjfur1AbgmXuVllEdfGP3ws=;
- b=SgK8+o3KUApX4BRt2Yy8mkR1pAv71w734KI3+Ea0xuycxOzvh+M0GQ1/5QGDJORqMz
- ENFSGbZu5kv1vjmZyZTCjHNxAYcS7CBa67V1vkC+5PByl/5hbHY0QVDvF5WRJPuKZsGK
- HSrklV8Z+abloVTP3aYs6/xao1b3gmWqmgJxfzihb8nSMdtdwEsdufHMhxpccRnB5qB9
- Zae7rtkRYJssDXlVXh/6WVMaVwhFwHaVcabgjZaTsXPr7eYQJVczbCXxjAdQ8wDllxYs
- q2BB4BJkarCOs24Cjm6To3+A/TBv/HG/7bdgI7WJcrd6Wlf+BBT7lCrVtoy538aNXICo
- E2oQ==
+ bh=aqr7wWcuqB9yP7xREpIQs/l1ZNVyP4RyA++HWsSqjYk=;
+ b=JhBv/dXYnzJj4ri9ts2Ui32g4euzqD+O48EcV1Iy9F1ZqWTsNoxLACcIM5y/IdhSuJ
+ kYgEo10pyTExAnyQpy8kWRVJwWHy5aiis/+7n1740hj8OTrBXLb4IemcTKt9MxuegXQm
+ dIiLJFzPRwNC5kQJxP1s22n1gfJBooi6dxFbrft0/KLXpsdSHZvnRwgahbN4voZmP2R9
+ Qb1uMHiSSfmaC5hX3YIgIhjOcZxEFCnIAvazDIpciAiy1xrDaJaFowP14TbWrr7F5nOd
+ DkNQ9GlOdWLG0Vdd3oMjRBIqMKzax4w9qyCI364PV6S6zYvZX/Wbi77UrY173DNDkJ62
+ IypA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708007056; x=1708611856;
+ d=1e100.net; s=20230601; t=1708008581; x=1708613381;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=BbodEF5CfyfyezAUM7C9Pjfur1AbgmXuVllEdfGP3ws=;
- b=EBz7BfVr+Zu9kHRIGy2hI51nz6VnZjqC8MYCiKd/i2oBr0/wZc6Gob6xeZVfZ401MA
- rWW0KuFk/SB8MLUPJ1HSzWnnsCq1vMna+9WG+fBS6zLwI+nkZEdbX5LjB6dmMytIEjkN
- fAgGraZeEEr7cSYfQ8mC6RnZ4I1SC/9sPllaevs21pTRcIzpLxdoL0aZO+Avx5+BcBBB
- O103jTy8OePAvrAfC77bj1tVp7mixnallPlw9/NgNJPYkt9zPNOBc92Bq/S7qPkv+Fzu
- tWiafd8Hr6bx245KiBJwcgVb5aOjsClCs8IsEKq+OT6yOHqJBa/59dB7lTiWDxtFysFx
- zl1g==
+ bh=aqr7wWcuqB9yP7xREpIQs/l1ZNVyP4RyA++HWsSqjYk=;
+ b=hk5L4EiLNjoCLZY601PLSAtyFakQOQ3B9se/TVQyFIeuzAqiQNTetq63VZBG5PSyE3
+ sJpRDp329vlpAYCEjnx7Vm9dymRtob7N61LwjVffZ5beNHtAkI57lkPaeHqCSUE2t/Mn
+ IYaOmiVaebrAE7Ip3kqErXkhr6Fkss1EZL8W6DiNp6bj2hZt3Fg8JEWob9/kl/d9K3Gs
+ TCMamAFIeEy1PUbz9Tkln8+hr1Yc1Emo8ZZSJdPnHB9JZHbV1bfTowduVOfVgjXKtzrI
+ PY6Msj47RaMvyBF4nKICZH8QxB3ntx69fr+FGuqyW4hZvXD8hB0ZY6ekknlkKmqs37hK
+ G5Qw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVdFRYCLNRk+sqWiNcve0Djl8ceC4QHk9x9TzbB5HLoOUhK2dxEC9vbdlLE7Eaeu0lcOYv+L1mNfcb30qKOxYLuDu/m7qCQxQ==
-X-Gm-Message-State: AOJu0Yy9N7TEWrXiq8OSreHcKWsmR46FBtBTiNhSEfCpcTL5KuYWfaCc
- lJHY5pp6lZ+8HXBctjarhyYIZVZ3vVGLgBaus/Tw65Ie7T0v9015iHccSca8nEA=
-X-Google-Smtp-Source: AGHT+IGIbYETV9AbMpyGxDBqzj+Xmuzr40nossI1Z5oeeIPYWgm8+u9yXBhGS47unnE1lzxQjLnDcg==
-X-Received: by 2002:a5d:4fc1:0:b0:33b:d225:3640 with SMTP id
- h1-20020a5d4fc1000000b0033bd2253640mr1520980wrw.59.1708007056461; 
- Thu, 15 Feb 2024 06:24:16 -0800 (PST)
+ AJvYcCVgBTZO25pA42GFjqG2Auy4ZpWqWK9RVlLGp6ntwTZtdSc0KsxcDwkSg2Wz6KUC7/y/5++FBw4hhmX7oXk/ToMhPrcb6GVvjg==
+X-Gm-Message-State: AOJu0YwqPXzzfSVY4RQ/gfFl9m6vmgtwXFjgO3a9IY3An3dH1FYRmSpK
+ V3j9xHDWqnJalxXvvHkd3F378lLxvpuv92jevaBw8Fp6BAqAJtZuRqGBtTwtvFpn6OZGCKCVViR
+ P6Bk=
+X-Google-Smtp-Source: AGHT+IHR+MQNfCCXanh9nA0RYrDgNOW0/02hZeQFNv3c75DzG6ULdbqrtxiRs3IUDgxPgF6XSetbYg==
+X-Received: by 2002:a17:906:f156:b0:a3d:7c4f:9c5b with SMTP id
+ gw22-20020a170906f15600b00a3d7c4f9c5bmr1580255ejb.66.1708008580988; 
+ Thu, 15 Feb 2024 06:49:40 -0800 (PST)
 Received: from [192.168.69.100] ([176.187.193.50])
  by smtp.gmail.com with ESMTPSA id
- n18-20020a5d67d2000000b0033cf0f5a01fsm1896020wrw.33.2024.02.15.06.24.15
+ gs36-20020a1709072d2400b00a3d0a094574sm629020ejc.66.2024.02.15.06.49.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Feb 2024 06:24:16 -0800 (PST)
-Message-ID: <f9dd39e6-4ff1-4a05-944b-3cdd93fef82d@linaro.org>
-Date: Thu, 15 Feb 2024 15:24:14 +0100
+ Thu, 15 Feb 2024 06:49:40 -0800 (PST)
+Message-ID: <b6503fb9-b3a3-4b28-a18a-3254dab1a6bd@linaro.org>
+Date: Thu, 15 Feb 2024 15:49:38 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] hw/sparc/leon3: Have write_bootloader() take a void
- pointer argument
+Subject: Re: [PATCH] hw/dma: Pass parent object to i8257_dma_init()
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- Artyom Tarasenko <atar4qemu@gmail.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Michael Tokarev <mjt@tls.msk.ru>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Frederic Konrad <konrad.frederic@yahoo.fr>,
- =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>,
- qemu-trivial@nongnu.org, Fabien Chouteau <chouteau@adacore.com>
-References: <20240215132824.67363-1-philmd@linaro.org>
- <20240215132824.67363-3-philmd@linaro.org>
- <CAFEAcA_we0joWBdAeyhRAAWaTF_gZSSUVJTNv=jQwpS+cUUuGg@mail.gmail.com>
+To: qemu-devel@nongnu.org
+Cc: BALATON Zoltan <balaton@eik.bme.hu>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, Aurelien Jarno
+ <aurelien@aurel32.net>, Eduardo Habkost <eduardo@habkost.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-ppc@nongnu.org,
+ qemu-trivial@nongnu.org, =?UTF-8?Q?Herv=C3=A9_Poussineau?=
+ <hpoussin@reactos.org>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20240213114426.87836-1-philmd@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA_we0joWBdAeyhRAAWaTF_gZSSUVJTNv=jQwpS+cUUuGg@mail.gmail.com>
+In-Reply-To: <20240213114426.87836-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,34 +92,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Feb 2024 14:24:20 -0000
+X-List-Received-Date: Thu, 15 Feb 2024 14:49:44 -0000
 
-On 15/2/24 15:13, Peter Maydell wrote:
-> On Thu, 15 Feb 2024 at 13:28, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>
->> Directly use the void pointer argument returned
->> by memory_region_get_ram_ptr().
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/sparc/leon3.c | 9 +++------
->>   1 file changed, 3 insertions(+), 6 deletions(-)
-
-
->> -static void write_bootloader(uint8_t *base, hwaddr kernel_addr)
->> +static void write_bootloader(void *ptr, hwaddr kernel_addr)
->>   {
->> -    uint32_t *p = (uint32_t *) base;
->> +    uint32_t *p = (uint32_t *) ptr;
+On 13/2/24 12:44, Philippe Mathieu-Daudé wrote:
+> Set I8257 instances parent (migration isn't affected).
 > 
-> I don't think you need the cast any more now ptr is void*.
-> (If you do, then our coding style doesn't put a space after
-> the cast.)
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> ---
+>   include/hw/dma/i8257.h | 2 +-
+>   hw/dma/i82374.c        | 2 +-
+>   hw/dma/i8257.c         | 4 +++-
+>   hw/i386/pc_piix.c      | 2 +-
+>   hw/isa/lpc_ich9.c      | 2 +-
+>   hw/isa/piix.c          | 2 +-
+>   hw/isa/vt82c686.c      | 2 +-
+>   hw/mips/jazz.c         | 2 +-
+>   8 files changed, 10 insertions(+), 8 deletions(-)
 
-Right, updated.
-
-> Either way,
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-
-Thank you!
+Patch queued.
 
