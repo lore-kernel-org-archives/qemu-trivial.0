@@ -1,68 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1raYCO-0000uN-4m
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Feb 2024 04:38:32 -0500
+	id 1raZcf-0005Z5-Ct
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Feb 2024 06:09:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1raYCM-0000sT-H8; Thu, 15 Feb 2024 04:38:30 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1raYCH-0006P7-6s; Thu, 15 Feb 2024 04:38:29 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id BDB8B4D80E;
- Thu, 15 Feb 2024 12:38:31 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id A81CC7FB06;
- Thu, 15 Feb 2024 12:38:22 +0300 (MSK)
-Message-ID: <e77f8d1e-dad6-43c6-b17c-d2ac83a3d7ab@tls.msk.ru>
-Date: Thu, 15 Feb 2024 12:38:22 +0300
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1raZce-0005Ym-E1
+ for qemu-trivial@nongnu.org; Thu, 15 Feb 2024 06:09:44 -0500
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1raZcc-0005G2-67
+ for qemu-trivial@nongnu.org; Thu, 15 Feb 2024 06:09:44 -0500
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-a3566c0309fso87046066b.1
+ for <qemu-trivial@nongnu.org>; Thu, 15 Feb 2024 03:09:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1707995380; x=1708600180; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=uoXAxn0yxpUW4HQVuTENxtjqV2RS/NYwgwcHZY+wN5c=;
+ b=JCN6oWDUfQqFzTIXqelmiQ+VUHn0aMFVI7vDMr/R1C24aEpa+nofZmKeOWB02DvEWy
+ iz+Y1Y2cidSYOfpbL57kuLoodLN/qEcnf14zIu3COoUFovTFQJTA0i2ae9fg4Cl5ZLZ+
+ TBdLRr4sYY+wfdZz5RHxdmay0AWTzgev2Z03RkFS1103o4wAZzrMg2nqz2nL3RK2PJVV
+ pDOkuBna9FPv/+dXJlsPcL34aJXqipLRYY11FQK+EsDs5SLmHqU8sIZXISrBSFBfYhEx
+ uPA4GzSMSUyppvlXtTVMzimbjI8J35zSpaU8wkDvd0RpYkdaqWvwZPegiDmyiFFiTm7n
+ 25JA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1707995380; x=1708600180;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=uoXAxn0yxpUW4HQVuTENxtjqV2RS/NYwgwcHZY+wN5c=;
+ b=cH6gZ4FPZtsAXze42Efp4Bsh0YHmTE3Mo1xF4R3Pa83ZcYEef7A5SnyQMejeDvd5y0
+ kglyPWq8ANHaTGNxga+eYy/bK+E5wle8Qf8JnwoSawuVWST2NNB5pmB2ArAfTyoR5cPJ
+ j7HBbz3Vo2OxIcUA1e0qp+8g5EFGb7GbDLBOBJ+AjfiGImJqNhElAXqjYcxcQN0vGi+J
+ LfjvCNk+gkcsvRHMBId574OPwuhv9EBqRz3LEhdrvt+35q1j0p9xwZ5dm6xTFGAnm89c
+ LUFOZMFtW+PeH0NIv6feDze7cdqu2xJYKDKh4HM7FAX1ImMrSDP8kQ9L6/CmfpNzTXwp
+ HAMw==
+X-Gm-Message-State: AOJu0YzgfoD2uxMHhHLGvzhPc0kunkYZeiy6qWmX7adyQWP4ufZheG9d
+ H1z2QbRCt7tkJ8RodE180tPUNcC5UBV6BpIlt8S3YDofDpPtlcOObGP8eH+o5bk=
+X-Google-Smtp-Source: AGHT+IGbVznLzh8XObjnbcM+mLm+zgYvLH2FV/BI8+eFRctA7GXLY7awGpWC5bXGJjIeiKhXrExxuw==
+X-Received: by 2002:a17:906:2498:b0:a3c:c8de:9cee with SMTP id
+ e24-20020a170906249800b00a3cc8de9ceemr1056143ejb.62.1707995380473; 
+ Thu, 15 Feb 2024 03:09:40 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.193.50])
+ by smtp.gmail.com with ESMTPSA id
+ vh2-20020a170907d38200b00a3d784f1daesm426921ejc.132.2024.02.15.03.09.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 15 Feb 2024 03:09:39 -0800 (PST)
+Message-ID: <9cafaeae-78a2-47e6-b2f4-4ea89c2ab1a4@linaro.org>
+Date: Thu, 15 Feb 2024 12:09:37 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] system/physmem: remove redundant arg reassignment
 Content-Language: en-US
 To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
  Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
  David Hildenbrand <david@redhat.com>
 References: <20240215091506.1932251-1-manos.pitsidianakis@linaro.org>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 In-Reply-To: <20240215091506.1932251-1-manos.pitsidianakis@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x631.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -75,14 +84,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Feb 2024 09:38:31 -0000
+X-List-Received-Date: Thu, 15 Feb 2024 11:09:44 -0000
 
-15.02.2024 12:15, Manos Pitsidianakis :
+On 15/2/24 10:15, Manos Pitsidianakis wrote:
 > Arguments `ram_block` are reassigned to local declarations `block`
 > without further use. Remove re-assignment to reduce noise.
+> 
+> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> ---
+>   system/physmem.c | 7 ++-----
+>   1 file changed, 2 insertions(+), 5 deletions(-)
+> 
+> diff --git a/system/physmem.c b/system/physmem.c
+> index 5e66d9ae36..d4c3bfac65 100644
+> --- a/system/physmem.c
+> +++ b/system/physmem.c
+> @@ -2154,10 +2154,8 @@ void qemu_ram_remap(ram_addr_t addr, ram_addr_t length)
+>    *
+>    * Called within RCU critical section.
+>    */
+> -void *qemu_map_ram_ptr(RAMBlock *ram_block, ram_addr_t addr)
+> +void *qemu_map_ram_ptr(RAMBlock *block, ram_addr_t addr)
 
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-And applied to trivial-patches, thanks!
+Better update the declaration in the same commit:
 
-/mjt
+-- >8 --
+diff --git a/include/exec/memory.h b/include/exec/memory.h
+index 177be23db7..bf4db3b374 100644
+--- a/include/exec/memory.h
++++ b/include/exec/memory.h
+@@ -2960,7 +2960,7 @@ MemTxResult flatview_read_continue(FlatView *fv, 
+hwaddr addr,
+                                     MemTxAttrs attrs, void *buf,
+                                     hwaddr len, hwaddr addr1, hwaddr l,
+                                     MemoryRegion *mr);
+-void *qemu_map_ram_ptr(RAMBlock *ram_block, ram_addr_t addr);
++void *qemu_map_ram_ptr(RAMBlock *block, ram_addr_t addr);
+
+  /* Internal functions, part of the implementation of 
+address_space_read_cached
+   * and address_space_write_cached.  */
+---
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
 
