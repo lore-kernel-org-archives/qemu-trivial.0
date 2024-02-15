@@ -1,75 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1racV0-0002Ik-C0
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Feb 2024 09:14:02 -0500
+	id 1racf0-0000Fw-4i
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Feb 2024 09:24:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1racUt-0002Cm-Gb
- for qemu-trivial@nongnu.org; Thu, 15 Feb 2024 09:13:57 -0500
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1racey-0000FQ-ND
+ for qemu-trivial@nongnu.org; Thu, 15 Feb 2024 09:24:20 -0500
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1racUr-00074S-Pu
- for qemu-trivial@nongnu.org; Thu, 15 Feb 2024 09:13:55 -0500
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-55c2cf644f3so1070295a12.1
- for <qemu-trivial@nongnu.org>; Thu, 15 Feb 2024 06:13:53 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1racew-0000kZ-2q
+ for qemu-trivial@nongnu.org; Thu, 15 Feb 2024 09:24:20 -0500
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-339289fead2so519904f8f.3
+ for <qemu-trivial@nongnu.org>; Thu, 15 Feb 2024 06:24:17 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708006432; x=1708611232; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eiTGB6KKp0wG3lVP4vPXbHMx1ObJEV//yPylyml/O6s=;
- b=zdJ+FKdtD3USrjyD7mVATB3wCoSPeKJXX+PsO/7BFBNhhKGHt/n4tN67JN4okcYARu
- jLbo6hi9j5Kdsbl3HCz5INC863U1qxZ7moXqzQk1KnmskOY9K/Z4/G+MEhavhJ0gdwRk
- NHfsECbn9ZR/QQ0sLWDRvVuV7Or/8AIJKCgtqKVd2OvqO1YzfXQMssTjM2Xp3GxLxG8B
- ODYFA+KiMXRMXb5KUWu/FTJU4Uo1OsT1AmDS/Mv8JYMmrQFNzYOBWZh/Mr4kh2Lpiq7V
- O7E2tgRjL2u26kkHHoaQcBJJq+uVU3/4Hjg/6T46Fi1UyAPowlpzKYAdH7jgoC+XnYVt
- mfPg==
+ d=linaro.org; s=google; t=1708007056; x=1708611856; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=BbodEF5CfyfyezAUM7C9Pjfur1AbgmXuVllEdfGP3ws=;
+ b=SgK8+o3KUApX4BRt2Yy8mkR1pAv71w734KI3+Ea0xuycxOzvh+M0GQ1/5QGDJORqMz
+ ENFSGbZu5kv1vjmZyZTCjHNxAYcS7CBa67V1vkC+5PByl/5hbHY0QVDvF5WRJPuKZsGK
+ HSrklV8Z+abloVTP3aYs6/xao1b3gmWqmgJxfzihb8nSMdtdwEsdufHMhxpccRnB5qB9
+ Zae7rtkRYJssDXlVXh/6WVMaVwhFwHaVcabgjZaTsXPr7eYQJVczbCXxjAdQ8wDllxYs
+ q2BB4BJkarCOs24Cjm6To3+A/TBv/HG/7bdgI7WJcrd6Wlf+BBT7lCrVtoy538aNXICo
+ E2oQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708006432; x=1708611232;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=eiTGB6KKp0wG3lVP4vPXbHMx1ObJEV//yPylyml/O6s=;
- b=stwCMebwIcXscubqkAvwDNrq7iff118ET5+GeCiJZOiMOutLkc8SQE+To9ef/tqySP
- kF2yMlXUZ/TNYDDhIRjSFsvuiDUJhxHt+/T6lpoGzI52QBy+7cSm924VD2pLJ3uwzzIw
- ygNTendUcxuqLYWrWvBwLrcOOiLDSMnLH6r/0Ts404yOIsnrf1CKbJ6BJ4R0uSt5bPQu
- ONs5d8hXhNkx9PK1FoY7VRnZHNb8AMcCNHQW6BofhjEGMEgYXukk96o5SoAOKpI24pN1
- kQle2W/s942XT3q7e8Pb+/LUrKFxBGRbRjIMrkPP8Q8s1dlOKQ7VoO+QMv2U4hVj7Xak
- ilLg==
+ d=1e100.net; s=20230601; t=1708007056; x=1708611856;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=BbodEF5CfyfyezAUM7C9Pjfur1AbgmXuVllEdfGP3ws=;
+ b=EBz7BfVr+Zu9kHRIGy2hI51nz6VnZjqC8MYCiKd/i2oBr0/wZc6Gob6xeZVfZ401MA
+ rWW0KuFk/SB8MLUPJ1HSzWnnsCq1vMna+9WG+fBS6zLwI+nkZEdbX5LjB6dmMytIEjkN
+ fAgGraZeEEr7cSYfQ8mC6RnZ4I1SC/9sPllaevs21pTRcIzpLxdoL0aZO+Avx5+BcBBB
+ O103jTy8OePAvrAfC77bj1tVp7mixnallPlw9/NgNJPYkt9zPNOBc92Bq/S7qPkv+Fzu
+ tWiafd8Hr6bx245KiBJwcgVb5aOjsClCs8IsEKq+OT6yOHqJBa/59dB7lTiWDxtFysFx
+ zl1g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWwaJ7lbadobBrwAowiypr0b5UT5TPjVWNtPeH3fMO7Yng3pfd7NWBW6b2lJR6W0pHdvfDw42GjkmcVbuLfuwK8KS5b586DJw==
-X-Gm-Message-State: AOJu0YydBXVAFAp/Og27wWyGdIovsjUqA/bylKHj3Fef9OvNKQAL0hug
- ifq0upUHLQIVbAkiiDh5mIPtnIRWG5IHJDJmWJIm9xoE0FBJux3EFfu+XfIVhKkbBLkmtm8bHcT
- ph/Bnu+dtgDbkEH+/5Tq43OYWEwPHMYQRwbLEpA==
-X-Google-Smtp-Source: AGHT+IFpCgk71dCyH0lnXiL8oZsCXXvIBtEhRD9+EPg1Zqg2JKnQ89uv4F3JUi8GrakS+g/UKRm7ZYKFjnjMiCuHdWo=
-X-Received: by 2002:a05:6402:2904:b0:563:c22b:2b40 with SMTP id
- ee4-20020a056402290400b00563c22b2b40mr676822edb.21.1708006432209; Thu, 15 Feb
- 2024 06:13:52 -0800 (PST)
+ AJvYcCVdFRYCLNRk+sqWiNcve0Djl8ceC4QHk9x9TzbB5HLoOUhK2dxEC9vbdlLE7Eaeu0lcOYv+L1mNfcb30qKOxYLuDu/m7qCQxQ==
+X-Gm-Message-State: AOJu0Yy9N7TEWrXiq8OSreHcKWsmR46FBtBTiNhSEfCpcTL5KuYWfaCc
+ lJHY5pp6lZ+8HXBctjarhyYIZVZ3vVGLgBaus/Tw65Ie7T0v9015iHccSca8nEA=
+X-Google-Smtp-Source: AGHT+IGIbYETV9AbMpyGxDBqzj+Xmuzr40nossI1Z5oeeIPYWgm8+u9yXBhGS47unnE1lzxQjLnDcg==
+X-Received: by 2002:a5d:4fc1:0:b0:33b:d225:3640 with SMTP id
+ h1-20020a5d4fc1000000b0033bd2253640mr1520980wrw.59.1708007056461; 
+ Thu, 15 Feb 2024 06:24:16 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.193.50])
+ by smtp.gmail.com with ESMTPSA id
+ n18-20020a5d67d2000000b0033cf0f5a01fsm1896020wrw.33.2024.02.15.06.24.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 15 Feb 2024 06:24:16 -0800 (PST)
+Message-ID: <f9dd39e6-4ff1-4a05-944b-3cdd93fef82d@linaro.org>
+Date: Thu, 15 Feb 2024 15:24:14 +0100
 MIME-Version: 1.0
-References: <20240215132824.67363-1-philmd@linaro.org>
- <20240215132824.67363-3-philmd@linaro.org>
-In-Reply-To: <20240215132824.67363-3-philmd@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 15 Feb 2024 14:13:41 +0000
-Message-ID: <CAFEAcA_we0joWBdAeyhRAAWaTF_gZSSUVJTNv=jQwpS+cUUuGg@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 2/2] hw/sparc/leon3: Have write_bootloader() take a void
  pointer argument
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>, 
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
  Artyom Tarasenko <atar4qemu@gmail.com>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, 
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Michael Tokarev <mjt@tls.msk.ru>, 
+ Michael Tokarev <mjt@tls.msk.ru>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Frederic Konrad <konrad.frederic@yahoo.fr>, 
- =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>, qemu-trivial@nongnu.org, 
- Fabien Chouteau <chouteau@adacore.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
+ Frederic Konrad <konrad.frederic@yahoo.fr>,
+ =?UTF-8?Q?Cl=C3=A9ment_Chigot?= <chigot@adacore.com>,
+ qemu-trivial@nongnu.org, Fabien Chouteau <chouteau@adacore.com>
+References: <20240215132824.67363-1-philmd@linaro.org>
+ <20240215132824.67363-3-philmd@linaro.org>
+ <CAFEAcA_we0joWBdAeyhRAAWaTF_gZSSUVJTNv=jQwpS+cUUuGg@mail.gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAFEAcA_we0joWBdAeyhRAAWaTF_gZSSUVJTNv=jQwpS+cUUuGg@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -89,60 +94,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Feb 2024 14:13:57 -0000
+X-List-Received-Date: Thu, 15 Feb 2024 14:24:20 -0000
 
-On Thu, 15 Feb 2024 at 13:28, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> Directly use the void pointer argument returned
-> by memory_region_get_ram_ptr().
->
-> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
-> ---
->  hw/sparc/leon3.c | 9 +++------
->  1 file changed, 3 insertions(+), 6 deletions(-)
->
-> diff --git a/hw/sparc/leon3.c b/hw/sparc/leon3.c
-> index d096fb04cb..8717c72e77 100644
-> --- a/hw/sparc/leon3.c
-> +++ b/hw/sparc/leon3.c
-> @@ -94,9 +94,9 @@ static uint32_t *gen_store_u32(uint32_t *code, hwaddr a=
-ddr, uint32_t val)
->   * state (eg: initialized by the bootloader). This little code reproduce=
-s
->   * this behavior.
->   */
-> -static void write_bootloader(uint8_t *base, hwaddr kernel_addr)
-> +static void write_bootloader(void *ptr, hwaddr kernel_addr)
->  {
-> -    uint32_t *p =3D (uint32_t *) base;
-> +    uint32_t *p =3D (uint32_t *) ptr;
+On 15/2/24 15:13, Peter Maydell wrote:
+> On Thu, 15 Feb 2024 at 13:28, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>>
+>> Directly use the void pointer argument returned
+>> by memory_region_get_ram_ptr().
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   hw/sparc/leon3.c | 9 +++------
+>>   1 file changed, 3 insertions(+), 6 deletions(-)
 
-I don't think you need the cast any more now ptr is void*.
-(If you do, then our coding style doesn't put a space after
-the cast.)
 
->
->      /* Initialize the UARTs                                        */
->      /* *UART_CONTROL =3D UART_RECEIVE_ENABLE | UART_TRANSMIT_ENABLE; */
-> @@ -338,10 +338,7 @@ static void leon3_generic_hw_init(MachineState *mach=
-ine)
->               * the machine in an initialized state through a little
->               * bootloader.
->               */
-> -            uint8_t *bootloader_entry;
-> -
-> -            bootloader_entry =3D memory_region_get_ram_ptr(prom);
-> -            write_bootloader(bootloader_entry, entry);
-> +            write_bootloader(memory_region_get_ram_ptr(prom), entry);
->              env->pc =3D LEON3_PROM_OFFSET;
->              env->npc =3D LEON3_PROM_OFFSET + 4;
->              reset_info->entry =3D LEON3_PROM_OFFSET;
-> --
+>> -static void write_bootloader(uint8_t *base, hwaddr kernel_addr)
+>> +static void write_bootloader(void *ptr, hwaddr kernel_addr)
+>>   {
+>> -    uint32_t *p = (uint32_t *) base;
+>> +    uint32_t *p = (uint32_t *) ptr;
+> 
+> I don't think you need the cast any more now ptr is void*.
+> (If you do, then our coding style doesn't put a space after
+> the cast.)
 
-Either way,
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Right, updated.
 
-thanks
--- PMM
+> Either way,
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+
+Thank you!
 
