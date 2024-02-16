@@ -1,59 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rauKh-0007jy-RM
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Feb 2024 04:16:35 -0500
+	id 1ravK0-0007ex-21
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Feb 2024 05:19:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rauKg-0007jf-68
- for qemu-trivial@nongnu.org; Fri, 16 Feb 2024 04:16:34 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rauKd-0005nz-SE
- for qemu-trivial@nongnu.org; Fri, 16 Feb 2024 04:16:33 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1708074988;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=tqqDW39l+V/yPFeZxBUCWNqogR2/wN8JjWZ2Hv5ILfE=;
- b=Uapsw7OoYPTulDRoZzs2ts6OvBo2sBhPBnhEROWvSJuZ5UKzBQa62BmgYYOlaExJHHzC0A
- cCC35fp58PpcG2zIeNgn0maNTqk3fTvtyGtxU0cfLRDoeSonV9jXC9AuGrB8QGsPc4/oBH
- w+YyvV6kiLw8BUh1+WoaNZmAbTo7FQs=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-505-iz1mgji0NimqQd_C8psgnw-1; Fri, 16 Feb 2024 04:16:24 -0500
-X-MC-Unique: iz1mgji0NimqQd_C8psgnw-1
-Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
- [10.11.54.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 77E72837234;
- Fri, 16 Feb 2024 09:16:24 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.46])
- by smtp.corp.redhat.com (Postfix) with ESMTP id A0E10AC07;
- Fri, 16 Feb 2024 09:16:22 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Helge Deller <deller@gmx.de>,
- Richard Henderson <richard.henderson@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH v2] hw/hppa/Kconfig: Fix building with "configure
- --without-default-devices"
-Date: Fri, 16 Feb 2024 10:16:21 +0100
-Message-ID: <20240216091621.32989-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ravJz-0007eb-8H
+ for qemu-trivial@nongnu.org; Fri, 16 Feb 2024 05:19:55 -0500
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ravJx-0000kF-Nz
+ for qemu-trivial@nongnu.org; Fri, 16 Feb 2024 05:19:54 -0500
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-41223e0777dso11005195e9.2
+ for <qemu-trivial@nongnu.org>; Fri, 16 Feb 2024 02:19:52 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1708078792; x=1708683592; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Dfjzs7lUQ6pj9EbFLIycFa/Gecwa2zxP0/rG7S2nwls=;
+ b=tfcMFDEFm8VHMNiHEsJJ1IlLo7QO81hxZKXmX0u2S0Us6k8szG6brEgfJh451PktBE
+ 7tbRlpZwIrkTQXPzsEkpJUgoZlCBBMZ1BATjbUMIMBwF/7xv3zJufbdpW3TOtzsqe9kO
+ oeRG19/DydsApPz/TpBM7m8bdbnw0rRRGP907FHCyH0qFaHlMghNdmKF6Ygl+nzl+llB
+ Z3u55628JXeZuJ0M1J6rWe0QEgOXLaxotmApmSrHHyVX8fnvwjIxG5QcyBF8pEYMTau6
+ Jpx/oX/s/Md0jHVaHfFRgu+7ruYMqslBZCYgITwF7QdEeL/+udiVEGqyWS9UyMQTn2lA
+ JD3g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708078792; x=1708683592;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Dfjzs7lUQ6pj9EbFLIycFa/Gecwa2zxP0/rG7S2nwls=;
+ b=lgpsmfdrciUZoVtfQ+tOTMiY1sGpQHYvW3DXmlplNqPnlYIShtSHCIyQ6f2e86/Jh3
+ lOCScoCtpRQCsLtedWnWcVief5o769HhruCw+ZB8ye3DPVL0mdeZ2jJ8qDF/liRwMgiC
+ d+L60B678Rey9JGoK1xXVjbpUbTAdYIbIYPauOGCrr25CdFmoCr8xLZF1Nj78Md8fAFH
+ YrLKXN0ERnjo3C/2C3fjz4e9otycP0aL6IoE4RGHzWhsJXfoGyTlkbGw3CqMkNkVq7FF
+ 1nRnW9jr8NaRP6T7OGHjAkd8iyU9bqxo4xCyEtl9UN4RyPD57xSf46cT4vOfEVU/7T+k
+ T8uw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVAIj/R3KVm5e4wS74e33XowNYbP2Q7BKlwtSP95uWfFEcXnUKmfbcOgq2a91hKHMg0b2vnoxxNMLuN9+HHTaGlfEMGrfhP1g==
+X-Gm-Message-State: AOJu0YzRvOLpsZFw4w2fdTk1cpUQlRc7fNGFcs4JwKiGstbWnUhN3eyF
+ gZm3sEemb4OatCTS1KHrDtjQUiPe6npb6kh+SfiDy2tNS6yxGPwWuNJEsaJutwo=
+X-Google-Smtp-Source: AGHT+IGZ5HrsPZTgDb8j1lcZOu631LRNvyzg654+pKaz7NL80OHMmxT6VuzfNlye/ZsiZUZJZhQVSQ==
+X-Received: by 2002:adf:f8d1:0:b0:33b:2100:3a44 with SMTP id
+ f17-20020adff8d1000000b0033b21003a44mr3741785wrq.39.1708078791672; 
+ Fri, 16 Feb 2024 02:19:51 -0800 (PST)
+Received: from [192.168.69.100] ([176.187.210.246])
+ by smtp.gmail.com with ESMTPSA id
+ k18-20020a5d66d2000000b0033940016d6esm1756251wrw.93.2024.02.16.02.19.50
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 16 Feb 2024 02:19:51 -0800 (PST)
+Message-ID: <2b236cac-b940-4570-8a2e-2d7bf9828feb@linaro.org>
+Date: Fri, 16 Feb 2024 11:19:48 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] hw/hppa/Kconfig: Fix building with "configure
+ --without-default-devices"
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Helge Deller <deller@gmx.de>,
+ Richard Henderson <richard.henderson@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
+References: <20240216091621.32989-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240216091621.32989-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -28
-X-Spam_score: -2.9
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.772,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -67,49 +86,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Feb 2024 09:16:34 -0000
+X-List-Received-Date: Fri, 16 Feb 2024 10:19:55 -0000
 
-When running "configure" with "--without-default-devices", building
-of qemu-system-hppa currently fails with:
+On 16/2/24 10:16, Thomas Huth wrote:
+> When running "configure" with "--without-default-devices", building
+> of qemu-system-hppa currently fails with:
+> 
+>   /usr/bin/ld: libqemu-hppa-softmmu.fa.p/hw_hppa_machine.c.o: in function `machine_HP_common_init_tail':
+>   hw/hppa/machine.c:399: undefined reference to `usb_bus_find'
+>   /usr/bin/ld: hw/hppa/machine.c:399: undefined reference to `usb_create_simple'
+>   /usr/bin/ld: hw/hppa/machine.c:400: undefined reference to `usb_bus_find'
+>   /usr/bin/ld: hw/hppa/machine.c:400: undefined reference to `usb_create_simple'
+>   collect2: error: ld returned 1 exit status
+>   ninja: build stopped: subcommand failed.
+>   make: *** [Makefile:162: run-ninja] Error 1
+> 
+> And after fixing this, the qemu-system-hppa binary refuses to run
+> due to the missing 'pci-ohci' and 'pci-serial' devices. Let's add
+> the right config switches to fix these problems.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   v2: Keep "select SERIAL" instead of replacing it
 
- /usr/bin/ld: libqemu-hppa-softmmu.fa.p/hw_hppa_machine.c.o: in function `machine_HP_common_init_tail':
- hw/hppa/machine.c:399: undefined reference to `usb_bus_find'
- /usr/bin/ld: hw/hppa/machine.c:399: undefined reference to `usb_create_simple'
- /usr/bin/ld: hw/hppa/machine.c:400: undefined reference to `usb_bus_find'
- /usr/bin/ld: hw/hppa/machine.c:400: undefined reference to `usb_create_simple'
- collect2: error: ld returned 1 exit status
- ninja: build stopped: subcommand failed.
- make: *** [Makefile:162: run-ninja] Error 1
-
-And after fixing this, the qemu-system-hppa binary refuses to run
-due to the missing 'pci-ohci' and 'pci-serial' devices. Let's add
-the right config switches to fix these problems.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v2: Keep "select SERIAL" instead of replacing it
-
- hw/hppa/Kconfig | 2 ++
- 1 file changed, 2 insertions(+)
-
-diff --git a/hw/hppa/Kconfig b/hw/hppa/Kconfig
-index ff8528aaa8..dff5df7f72 100644
---- a/hw/hppa/Kconfig
-+++ b/hw/hppa/Kconfig
-@@ -7,6 +7,7 @@ config HPPA_B160L
-     select DINO
-     select LASI
-     select SERIAL
-+    select SERIAL_PCI
-     select ISA_BUS
-     select I8259
-     select IDE_CMD646
-@@ -16,3 +17,4 @@ config HPPA_B160L
-     select LASIPS2
-     select PARALLEL
-     select ARTIST
-+    select USB_OHCI_PCI
--- 
-2.43.0
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
