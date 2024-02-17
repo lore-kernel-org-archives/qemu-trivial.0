@@ -1,85 +1,114 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1raznO-0002gX-Pk
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Feb 2024 10:06:34 -0500
+	id 1rbN7t-000187-Cc
+	for mharc-qemu-trivial@gnu.org; Sat, 17 Feb 2024 11:01:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1raznN-0002gE-7P
- for qemu-trivial@nongnu.org; Fri, 16 Feb 2024 10:06:33 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <dave@daveparsons.net>)
+ id 1rbN57-0000W2-BD; Sat, 17 Feb 2024 10:58:25 -0500
+Received: from cyan.elm.relay.mailchannels.net ([23.83.212.47])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1raznL-0001Ce-Fr
- for qemu-trivial@nongnu.org; Fri, 16 Feb 2024 10:06:32 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1708095989;
+ (Exim 4.90_1) (envelope-from <dave@daveparsons.net>)
+ id 1rbN55-00020F-KH; Sat, 17 Feb 2024 10:58:25 -0500
+X-Sender-Id: thundermail|x-authsender|dave@daveparsons.net
+Received: from relay.mailchannels.net (localhost [127.0.0.1])
+ by relay.mailchannels.net (Postfix) with ESMTP id 6AA89902562;
+ Sat, 17 Feb 2024 15:58:19 +0000 (UTC)
+Received: from mailclean11.thundermail.uk (unknown [127.0.0.6])
+ (Authenticated sender: thundermail)
+ by relay.mailchannels.net (Postfix) with ESMTPA id E37AC902122;
+ Sat, 17 Feb 2024 15:58:17 +0000 (UTC)
+ARC-Seal: i=1; s=arc-2022; d=mailchannels.net; t=1708185498; a=rsa-sha256;
+ cv=none;
+ b=tLFvHDc0bBByh4l65cagDabkOG1/1ekdhsvuVZKKsDyx2j6XzUeAPuQeKFD7jm5NLsPcw+
+ F0Rp2vx5Gy2YPpWBmbipqXWeGLokjfEcvTXM3SjoXrGitmrtdQIc1Yr7PgKcpQF5RBn7bo
+ 5oGhiVj0gyUqG5eyQ5zfbM31TSBx75LQjjcN2bXyUw3ZE2YjnzsKqAjqo907+xoir090hw
+ ugLh6hPgbIfsGIXTX8RB9UDzHKx+gEuFdFJxbSlW7qF/XX8/zGY9B90S0Mv9b8oXiNVtkT
+ o94mF5MXT2SebkWoGVZRNiz/AHMUkfUqRDAnjQTNRpd80Fagf3BilZcRm+VeFA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=mailchannels.net; s=arc-2022; t=1708185498;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=CPBTdysDYpPiACBe5cKL5ETdbaaMEMrm03T0DAO6ASg=;
- b=DIreeWh0Y2xeNPhO13/qom3iQkp+sl2284J8lHWlFYhQwbGrxm3RpgoIVq8E9k0EmJ02V4
- r8Gn7TG8PIanx/bMMIMW+AUVj1HubqItPzLiax05Dx7AfE+gO68CDYh5NqUqFalrVndxkT
- tt9ESR7Lo9X9Car7buRAAWGRNCvnpRE=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-210-9FAmaj-4NMS8fmFhKZlsQA-1; Fri, 16 Feb 2024 10:06:28 -0500
-X-MC-Unique: 9FAmaj-4NMS8fmFhKZlsQA-1
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-33b51ae1c9dso966728f8f.3
- for <qemu-trivial@nongnu.org>; Fri, 16 Feb 2024 07:06:27 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708095987; x=1708700787;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=CPBTdysDYpPiACBe5cKL5ETdbaaMEMrm03T0DAO6ASg=;
- b=hGd8J1zGKr72m3rGq430dB5XrI5AbIDLUjO/Om1fHwCEM3AMPQmecotYLNkDciqAlN
- l8kHF7b1GOSe8RtdpkSHWS/zfEuJpJj7cYDctkeulIDr7j9zAl3pOEi5eLzmJIdorkJL
- k+mWcz695GySFEtsXvkZzvm9hEpADHQTElfy3hnrBFt4rPaxXjYg3/trnpCJFv1H/Q8W
- SZKnvSuQTyEDv1ssIvOgWlgIu5wdXW7LmGyraXPZa0zQcJGR3rKHTK+KVfcfPzh1PfKQ
- LL7qYsyGA94rShRU0YVS40NYmKizzdXQynsc+aSIvHP728NhmdP7+mgOr+EWE5/mgJsz
- yPUQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVQ4Sh/+pRpbFJXhbZm84he0Mhaq/rAOL6GS8sha/sY9qemNlmrxvtj+hj2Mj/yjyrtKdk6nqJX/kY3kO/zVcyr5gU1vJ8DzQ==
-X-Gm-Message-State: AOJu0YzXUYcowj2kT0hzvtzoEGBimOl3786UgtRUf2YoXuYaleX82i7e
- w0ipPKG/DChWluW6ThumoziFSoZbLzX+qqmT9MybkJgt4UUZqLyJ9GZ3+s++n2moelQz1eZ4AYY
- TKTlN7ShVhC7fbm9/QpYE/AJ1A0gJwJs3o8BLvHwddVr1Xq4HvbEavLqsUeBKNcR0WFcViPyVS2
- 9z/0WxKY9Y2KRnArRFCJe7XfE4F5o2Fg==
-X-Received: by 2002:adf:a30e:0:b0:33d:1f21:2dd with SMTP id
- c14-20020adfa30e000000b0033d1f2102ddmr1385084wrb.40.1708095986568; 
- Fri, 16 Feb 2024 07:06:26 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF6nb+V5JIUApGsbqtuvHC1+amCjLEW74NDgmopjTNFkQqUwUy/KpRDF9zaSew+lpAWDcwhzXC54uzrYLovztI=
-X-Received: by 2002:adf:a30e:0:b0:33d:1f21:2dd with SMTP id
- c14-20020adfa30e000000b0033d1f2102ddmr1385068wrb.40.1708095986202; Fri, 16
- Feb 2024 07:06:26 -0800 (PST)
-MIME-Version: 1.0
-References: <20240216091621.32989-1-thuth@redhat.com>
-In-Reply-To: <20240216091621.32989-1-thuth@redhat.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Date: Fri, 16 Feb 2024 16:06:00 +0100
-Message-ID: <CABgObfYf7Yy3sfDSfU7v+RFLsa5VShC9FSiNCd0CkJyun6vkbA@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/hppa/Kconfig: Fix building with "configure
- --without-default-devices"
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Helge Deller <deller@gmx.de>, 
- Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+ content-transfer-encoding:content-transfer-encoding:dkim-signature;
+ bh=ibmswVGgLNO8hq7MqmREZ9UF84lwpqFS1JQSVs1K58g=;
+ b=NxDD8CRVR9cMYHj9SWg/ntfqJIDnsG9fZF9CLyPH9aD9qGT1TaKXAvOXZvqhKoJYXi2wmV
+ Fg+Fdl0BSeVRsnCDgc8dHus86SPejcFy9J/JHD9voRZymrYq8PR1oy0AJlAfNOzT2hL1WL
+ VSfxoJFt2f5UEHXJIdJqwELPJ/ZLFnlk5i9XZn3888/Z/OekrkRVPNjrPW3XUwgvgG0zRO
+ bNRWLUiIimKFo0veiL9NTKo9xsH2oL1Z5LzfUbzhAY8/4L9kXrtmcexvVk2e0/Ebu8zC+0
+ 6wZUvk0Tjq0eDDfclxuxcH6MIA2BF0mfr/dEhzTp1+Rd3Ie75tg4zFg2MNFasQ==
+ARC-Authentication-Results: i=1; rspamd-6bdc45795d-lxxw5;
+ auth=pass smtp.auth=thundermail smtp.mailfrom=dave@daveparsons.net
+X-Sender-Id: thundermail|x-authsender|dave@daveparsons.net
+X-MC-Relay: Neutral
+X-MailChannels-SenderId: thundermail|x-authsender|dave@daveparsons.net
+X-MailChannels-Auth-Id: thundermail
+X-Wiry-Towering: 6e9dc7d3784a52eb_1708185498983_1488885165
+X-MC-Loop-Signature: 1708185498983:2138584531
+X-MC-Ingress-Time: 1708185498983
+Received: from mailclean11.thundermail.uk (mailclean11.thundermail.uk
+ [149.255.60.66]) (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
+ by 100.119.153.94 (trex/6.9.2); Sat, 17 Feb 2024 15:58:18 +0000
+Received: from cloud227.thundercloud.uk (cloud227.thundercloud.uk
+ [149.255.62.108])
+ by mailclean11.thundermail.uk (Postfix) with ESMTPS id ED13D40260;
+ Sat, 17 Feb 2024 15:58:12 +0000 (GMT)
+Received: from smtpclient.apple
+ (host109-149-93-149.range109-149.btcentralplus.com [109.149.93.149])
+ (Authenticated sender: dave@daveparsons.net)
+ by cloud227.thundercloud.uk (Postfix) with ESMTPSA id 8E0AF101FB4;
+ Sat, 17 Feb 2024 15:58:47 +0000 (GMT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=daveparsons.net;
+ s=default; t=1708185527;
+ bh=ibmswVGgLNO8hq7MqmREZ9UF84lwpqFS1JQSVs1K58g=; h=From:Subject:To;
+ b=qws+EYCMF/y0kkGZM16lb8BlHoB1l5UOpgiTR4CfCNhHdY2OXZx/0ZhXXFoJj39dS
+ UN0gHrVzpn++2IS89CThx4QocZHWdBeRPvO3SCWDKp6OtXOiSMymjrxMZA+MUhsYTM
+ F77XnOuVNcFYKCuZHKRx5wPESxeGJP+H+lMi7Y4k=
+Authentication-Results: cloud227.thundercloud.uk;
+ spf=pass (sender IP is 109.149.93.149) smtp.mailfrom=dave@daveparsons.net
+ smtp.helo=smtpclient.apple
+Received-SPF: pass (cloud227.thundercloud.uk: connection is authenticated)
+From: David Parsons <dave@daveparsons.net>
+Content-Type: text/plain;
+	charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
+Subject: [PATCH] ui/cocoa: Fix incorrect window clipping on macOS Sonoma
+Message-Id: <DDADA9A9-DED4-4510-A532-7600C0233467@daveparsons.net>
+Date: Sat, 17 Feb 2024 15:58:02 +0000
+Cc: qemu-trivial@nongnu.org,
+ peter.maydell@linaro.org,
+ philmd@linaro.org
+To: qemu-devel@nongnu.org
+X-Mailer: Apple Mail (2.3774.400.31)
+X-PPP-Message-ID: <170818552782.773145.12447335006264330645@cloud227.thundercloud.uk>
+X-PPP-Vhost: daveparsons.net
+X-Rspamd-Queue-Id: ED13D40260
+X-Rspamd-Server: mailclean11
+X-Spamd-Result: default: False [-0.01 / 999.00]; ONCE_RECEIVED(0.10)[];
+ MIME_GOOD(-0.10)[text/plain]; MX_GOOD(-0.01)[];
+ RCVD_TLS_ALL(0.00)[]; DMARC_NA(0.00)[daveparsons.net];
+ APPLE_MAILER_COMMON(0.00)[]; RCVD_VIA_SMTP_AUTH(0.00)[];
+ ASN(0.00)[asn:34931, ipnet:149.255.60.0/22, country:GB];
+ ARC_NA(0.00)[]; MIME_TRACE(0.00)[0:+]; RCVD_COUNT_ONE(0.00)[1];
+ FUZZY_BLOCKED(0.00)[rspamd.com]; NEURAL_HAM(-0.00)[-0.999];
+ MID_RHS_MATCH_FROM(0.00)[]; FROM_EQ_ENVFROM(0.00)[];
+ FROM_HAS_DN(0.00)[]; RCPT_COUNT_THREE(0.00)[4];
+ R_SPF_SOFTFAIL(0.00)[~all]; TO_MATCH_ENVRCPT_ALL(0.00)[];
+ TO_DN_NONE(0.00)[];
+ R_DKIM_ALLOW(0.00)[daveparsons.net:s=default];
+ DKIM_TRACE(0.00)[daveparsons.net:+]
+X-Rspamd-Action: no action
+Received-SPF: pass client-ip=23.83.212.47; envelope-from=dave@daveparsons.net;
+ helo=cyan.elm.relay.mailchannels.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.364,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 17 Feb 2024 11:01:15 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,64 +120,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Feb 2024 15:06:33 -0000
+X-List-Received-Date: Sat, 17 Feb 2024 15:58:26 -0000
 
-On Fri, Feb 16, 2024 at 10:16=E2=80=AFAM Thomas Huth <thuth@redhat.com> wro=
-te:
->
-> When running "configure" with "--without-default-devices", building
-> of qemu-system-hppa currently fails with:
->
->  /usr/bin/ld: libqemu-hppa-softmmu.fa.p/hw_hppa_machine.c.o: in function =
-`machine_HP_common_init_tail':
->  hw/hppa/machine.c:399: undefined reference to `usb_bus_find'
->  /usr/bin/ld: hw/hppa/machine.c:399: undefined reference to `usb_create_s=
-imple'
->  /usr/bin/ld: hw/hppa/machine.c:400: undefined reference to `usb_bus_find=
-'
->  /usr/bin/ld: hw/hppa/machine.c:400: undefined reference to `usb_create_s=
-imple'
->  collect2: error: ld returned 1 exit status
->  ninja: build stopped: subcommand failed.
->  make: *** [Makefile:162: run-ninja] Error 1
->
-> And after fixing this, the qemu-system-hppa binary refuses to run
-> due to the missing 'pci-ohci' and 'pci-serial' devices. Let's add
-> the right config switches to fix these problems.
+macOS Sonoma changes the NSView.clipsToBounds to false by default where =
+it was true in
+earlier version of macOS. This causes the window contents to be obscured =
+by the window
+frame. This fixes the issue by conditionally setting the clipping on =
+Sonoma to true.
 
-USB_OHCI_PCI is something similar to what was going on with the
-Loongsoon virt machine, and Philippe asked me to look at removing
-usb_bus_find() everywhere. But I have no objection to having this
-patch committed in the meanwhile.
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1994
+Signed-off-by: David Parsons <dave@daveparsons.net>
 
-Paolo
-
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  v2: Keep "select SERIAL" instead of replacing it
->
->  hw/hppa/Kconfig | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/hw/hppa/Kconfig b/hw/hppa/Kconfig
-> index ff8528aaa8..dff5df7f72 100644
-> --- a/hw/hppa/Kconfig
-> +++ b/hw/hppa/Kconfig
-> @@ -7,6 +7,7 @@ config HPPA_B160L
->      select DINO
->      select LASI
->      select SERIAL
-> +    select SERIAL_PCI
->      select ISA_BUS
->      select I8259
->      select IDE_CMD646
-> @@ -16,3 +17,4 @@ config HPPA_B160L
->      select LASIPS2
->      select PARALLEL
->      select ARTIST
-> +    select USB_OHCI_PCI
-> --
-> 2.43.0
->
+diff --git a/ui/cocoa.m b/ui/cocoa.m
+index eb99064bee..c9e3b96004 100644
+--- a/ui/cocoa.m
++++ b/ui/cocoa.m
+@@ -365,6 +365,9 @@ - (id)initWithFrame:(NSRect)frameRect
+         screen.width =3D frameRect.size.width;
+         screen.height =3D frameRect.size.height;
+         kbd =3D qkbd_state_init(dcl.con);
++        if (@available(macOS 14, *)) {
++            [self setClipsToBounds:YES];
++        }
+=20
+     }
+     return self;
 
 
