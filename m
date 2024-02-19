@@ -1,83 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rc4CW-0001Uu-Mx
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Feb 2024 09:00:57 -0500
+	id 1rc4PX-0002tE-9f
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Feb 2024 09:14:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1rc4CR-0001Tu-4v
- for qemu-trivial@nongnu.org; Mon, 19 Feb 2024 09:00:51 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1rc4CP-0005nk-1P
- for qemu-trivial@nongnu.org; Mon, 19 Feb 2024 09:00:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1708351247;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=5N1pkXCQ3ocyzN9RHKLM9moZ7or8GoZH/OW139oyAqU=;
- b=grV4izYdmYqRlRXDs877owEZQ7q6VApUQiEO+8N3QZ6+CrnZ4Pp/LzVw6UWqA61/dBUZQT
- 4MLn5MJnFBMYqmZ76NuFJTZZebLddxD8kcI38QLfhFeVDnfm75L5kYq1WaxD3RImpTFZ2+
- seXHwMK33LkjuP8bCtgO9wTFTg1tYa0=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-663-yNlvgAF0Pm23piZVIhscGA-1; Mon, 19 Feb 2024 09:00:45 -0500
-X-MC-Unique: yNlvgAF0Pm23piZVIhscGA-1
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-a3120029877so528760666b.1
- for <qemu-trivial@nongnu.org>; Mon, 19 Feb 2024 06:00:45 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rc4PU-0002sZ-3q
+ for qemu-trivial@nongnu.org; Mon, 19 Feb 2024 09:14:21 -0500
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rc4PS-0008Ok-DR
+ for qemu-trivial@nongnu.org; Mon, 19 Feb 2024 09:14:19 -0500
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-55f50cf2021so6002856a12.1
+ for <qemu-trivial@nongnu.org>; Mon, 19 Feb 2024 06:14:17 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1708352055; x=1708956855; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=4f28WQJxzPl90nyS2MFArA7P4j/F8y7DYz1HQkdfTB4=;
+ b=MnqqyGKJA+Z8ThWR0m1IceQBfQDJ6gm9JT++jH9AtPgCvDXwvA1j+meBrvoNUeMvLv
+ Kv8mwWbSwLJShXacN7pwaoF1c/a5PBerLwx5vxEHrmI4y19cBT5S7CS6Ps7LwZLHbwMd
+ 0sno3E5upVVnn/vO3uTlVYNJb1KEX3BK0yKt6H1CHuzAZjXddHh3+NewzcWdDR1hn/ot
+ slL7ERth/fMYsMKrOOMLMz+a7KH5YxMKH7tDeYKWYQhjWN2/e7mWy5e+UYhPQufKPdgZ
+ Nq1lsvPkg9KKt1gT7KnFj5Cvi3h7dFL5LcYfmfMPcanc8JUTougW8NjFoeoD2szVwNRa
+ HQVg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708351244; x=1708956044;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=5N1pkXCQ3ocyzN9RHKLM9moZ7or8GoZH/OW139oyAqU=;
- b=CHbIKD8Fb1fY01jzI04mU/A2g9mqlCdco/IoDRjYm2qqPW1uljaH8VcGK5LTrmbd/p
- 7Hesvofd9mMmZW87+rJTKh1RO/Y3vDrq2mksnd1qVpDddNsG/To7/p7U3T28e4tI9lNv
- A1L4u8oWqRFThLOvWLSO3vSffRQ2nDGHen51lO5CvA/COrxlUlJsq8e4cz6Y2ThfWja3
- 9HrV0MpWxjg8l/n09OwLLHovA9HX0Ubpo9vuWhv+o91RA1dl5wi75rypCiq/Tzr02/n6
- MvFIsxpqVOvyJFXZG5Eyp98I26zr109HqEhoLSThONMQmxVEzrCDwsp+aNKNpkTks8/u
- 4Xxg==
+ d=1e100.net; s=20230601; t=1708352055; x=1708956855;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=4f28WQJxzPl90nyS2MFArA7P4j/F8y7DYz1HQkdfTB4=;
+ b=EjChurEpKRAucvouaeq+7T6nHRkyRHpZQkpCbHxSTlCxBorr+nZE/1OnPuQk9pQJo3
+ lWNQgkaMLV7av75SRuHuqbHr4LZD9+LvXdQkGEgI5B6NwK/UzuCqlez65oH9635EFwgk
+ VCs4JAyvc/8eAv6d9dymQRIfEWQfVO9m9jUBFTEt45gxbnNj8GVSslk0pSSTFaCockbh
+ 9SL7BGij35ymgzNDw6P1ezOiE0+ur9j3Q+WMKnyQtBsi0Jc+cWClhFDXdfBVGxspbT6l
+ cTBlbIl06fXOU/vfc2DvqBi587s1ax3O13oAQlRJUF0Tx4BwnV37hGsdpjiJgaLtw3ql
+ 1kCA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXpqErpSJ6sautVT1YN0QjucW9LJhoUYtoNaPU7rfqZhUmsTpg52djqSh4JhNBscP+uSrbzf7pswoMBHqqSqYusJrdDg1VvEQ==
-X-Gm-Message-State: AOJu0YzTs1bVv3lxenM1IcjLdcwvaNrIVpH2vhoBS6cktQpYcK3AZEzv
- M003UrbPnPBkSrETyUaQRZAoEbZ9J0/XBeWMGFIgd2k4FhTrltzuD7GCSBqWrvUzMrnkIpvQDlA
- wTSlEh5WXmnFV4bYr9v0li4oTl1m4OrOgbeNPWlMO0zoCF2KSAzQMMl445okwGGb9aXFFd1YqHv
- MhKOicMF0y0vcSqCkomFmyBmlfjUabgQ==
-X-Received: by 2002:a05:6402:3415:b0:564:16e:b91e with SMTP id
- k21-20020a056402341500b00564016eb91emr6802504edc.19.1708351244635; 
- Mon, 19 Feb 2024 06:00:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEIqXl83yY1y4VqqWiEQGjJiKdt0Q6FbA/JJDXMCQEcRmfIPwYBwH1ttH342C79TAo6+H5xLkhf/K/FYjdrT+E=
-X-Received: by 2002:a05:6402:3415:b0:564:16e:b91e with SMTP id
- k21-20020a056402341500b00564016eb91emr6802488edc.19.1708351244322; Mon, 19
- Feb 2024 06:00:44 -0800 (PST)
+ AJvYcCWW4j1E4j/WtvBlps+B4bjrVuABSvUghSjJWt05lt23Y1jtx+mRFjeRynNE4nIHcaieFAqX0aACT1RbhmDoNYrQqov/W4Hnxw==
+X-Gm-Message-State: AOJu0YyMzqnsZUWlPtj/EQXuSKarDHcu3xztq/fN1nIexdUAJOYmQ8H7
+ h9Y2MtvLPzY9Nom6D5+bNpcc2WxKqBYHAtUWOVqqqEbOoLXKLI7tPp/8wmKICN4=
+X-Google-Smtp-Source: AGHT+IHMf/+gNQyLvxJ2a/3DhDCfIv9szvwp28V6H52Q6kxy/deFHQghHSt+T+a4d0TnEGn6FgjBrA==
+X-Received: by 2002:aa7:d4d3:0:b0:564:1c4e:eb5c with SMTP id
+ t19-20020aa7d4d3000000b005641c4eeb5cmr3889072edr.24.1708352055553; 
+ Mon, 19 Feb 2024 06:14:15 -0800 (PST)
+Received: from m1x-phil.lan ([176.176.181.220])
+ by smtp.gmail.com with ESMTPSA id
+ d7-20020a50ea87000000b0055c85e6d75dsm2686671edo.87.2024.02.19.06.14.13
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Mon, 19 Feb 2024 06:14:15 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 0/5] hw/acpi: Include missing headers
+Date: Mon, 19 Feb 2024 15:14:06 +0100
+Message-ID: <20240219141412.71418-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-References: <20240219123900.430943-1-thuth@redhat.com>
-In-Reply-To: <20240219123900.430943-1-thuth@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Mon, 19 Feb 2024 18:00:32 +0400
-Message-ID: <CAMxuvazmk_cnxUOAsAi1D7=VsT7OkkyNPL6adqqCkwt2LWVscg@mail.gmail.com>
-Subject: Re: [PATCH] tests/qtest: Don't run the dbus-display-test without
- CONFIG_VGA_PCI
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mlureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.072,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,44 +85,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 19 Feb 2024 14:00:51 -0000
+X-List-Received-Date: Mon, 19 Feb 2024 14:14:21 -0000
 
-Hi
+Patches extracted from an ICH9 model rework. Explicitly include
+required headers instead of having them being randomply pulled.
 
-On Mon, Feb 19, 2024 at 4:39=E2=80=AFPM Thomas Huth <thuth@redhat.com> wrot=
-e:
->
-> When compiling with "configure --without-default-devices", the
-> dbus-display-test fails since it implicitly assumes that the
-> machine comes with the standard VGA card. Thus add a check to
-> meson.build to disable the test if the VGA card is not available.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Philippe Mathieu-Daudé (5):
+  hw/acpi: Include missing 'qapi/qapi-types-acpi.h' generated header
+  hw/acpi/cpu: Use CPUState typedef
+  hw/acpi/ich9: Include missing headers
+  hw/acpi/ich9_tco: Include missing 'migration/vmstate.h' header
+  hw/i386/q35: Include missing 'hw/acpi/acpi.h' header
 
-Not necessarily VGA, but a graphic or VC console. I am not sure how to
-guess from the binary or compilation settings. Maybe it would be
-simpler to check at run-time if /org/qemu/Display1/Console_0 exists. I
-can work on a patch.
+ include/hw/acpi/cpu.h            | 3 ++-
+ include/hw/acpi/ich9.h           | 3 ++-
+ include/hw/acpi/ich9_tco.h       | 1 +
+ include/hw/acpi/memory_hotplug.h | 1 +
+ hw/acpi/ich9.c                   | 2 +-
+ hw/i386/pc_q35.c                 | 1 +
+ 6 files changed, 8 insertions(+), 3 deletions(-)
 
-> ---
->  tests/qtest/meson.build | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-> index 2b89e8634b..c8e6d7df40 100644
-> --- a/tests/qtest/meson.build
-> +++ b/tests/qtest/meson.build
-> @@ -108,7 +108,7 @@ qtests_i386 =3D \
->     'numa-test'
->    ]
->
-> -if dbus_display
-> +if dbus_display and config_all_devices.has_key('CONFIG_VGA_PCI')
->    qtests_i386 +=3D ['dbus-display-test']
->  endif
->
-> --
-> 2.43.2
->
+-- 
+2.41.0
 
 
