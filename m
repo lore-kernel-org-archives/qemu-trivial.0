@@ -1,47 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rc3TS-0001ho-Mr
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Feb 2024 08:14:22 -0500
+	id 1rc4CW-0001Uu-Mx
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Feb 2024 09:00:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1rc3TR-0001hA-EV; Mon, 19 Feb 2024 08:14:21 -0500
-Received: from zero.eik.bme.hu ([152.66.115.2])
+ (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
+ id 1rc4CR-0001Tu-4v
+ for qemu-trivial@nongnu.org; Mon, 19 Feb 2024 09:00:51 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1rc3TP-0004TO-3j; Mon, 19 Feb 2024 08:14:21 -0500
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 60EBE4E6013;
- Mon, 19 Feb 2024 14:14:14 +0100 (CET)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id favqpBJ_dTtN; Mon, 19 Feb 2024 14:14:12 +0100 (CET)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 6A5994E6003; Mon, 19 Feb 2024 14:14:12 +0100 (CET)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 68A437456B4;
- Mon, 19 Feb 2024 14:14:12 +0100 (CET)
-Date: Mon, 19 Feb 2024 14:14:12 +0100 (CET)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Thomas Huth <thuth@redhat.com>
-cc: qemu-ppc@nongnu.org, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] tests/qtest: Fix boot-serial-test when using
- --without-default-devices
-In-Reply-To: <359e3bf6-bd94-42e5-b8e7-06b41805fd03@redhat.com>
-Message-ID: <f551a54a-788c-392a-e9b5-ff486aafa4e3@eik.bme.hu>
-References: <20240219111030.384158-1-thuth@redhat.com>
- <b56a11d4-ef54-64ae-76ef-25c600255b59@eik.bme.hu>
- <359e3bf6-bd94-42e5-b8e7-06b41805fd03@redhat.com>
+ (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
+ id 1rc4CP-0005nk-1P
+ for qemu-trivial@nongnu.org; Mon, 19 Feb 2024 09:00:50 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1708351247;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=5N1pkXCQ3ocyzN9RHKLM9moZ7or8GoZH/OW139oyAqU=;
+ b=grV4izYdmYqRlRXDs877owEZQ7q6VApUQiEO+8N3QZ6+CrnZ4Pp/LzVw6UWqA61/dBUZQT
+ 4MLn5MJnFBMYqmZ76NuFJTZZebLddxD8kcI38QLfhFeVDnfm75L5kYq1WaxD3RImpTFZ2+
+ seXHwMK33LkjuP8bCtgO9wTFTg1tYa0=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-663-yNlvgAF0Pm23piZVIhscGA-1; Mon, 19 Feb 2024 09:00:45 -0500
+X-MC-Unique: yNlvgAF0Pm23piZVIhscGA-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ a640c23a62f3a-a3120029877so528760666b.1
+ for <qemu-trivial@nongnu.org>; Mon, 19 Feb 2024 06:00:45 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708351244; x=1708956044;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=5N1pkXCQ3ocyzN9RHKLM9moZ7or8GoZH/OW139oyAqU=;
+ b=CHbIKD8Fb1fY01jzI04mU/A2g9mqlCdco/IoDRjYm2qqPW1uljaH8VcGK5LTrmbd/p
+ 7Hesvofd9mMmZW87+rJTKh1RO/Y3vDrq2mksnd1qVpDddNsG/To7/p7U3T28e4tI9lNv
+ A1L4u8oWqRFThLOvWLSO3vSffRQ2nDGHen51lO5CvA/COrxlUlJsq8e4cz6Y2ThfWja3
+ 9HrV0MpWxjg8l/n09OwLLHovA9HX0Ubpo9vuWhv+o91RA1dl5wi75rypCiq/Tzr02/n6
+ MvFIsxpqVOvyJFXZG5Eyp98I26zr109HqEhoLSThONMQmxVEzrCDwsp+aNKNpkTks8/u
+ 4Xxg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXpqErpSJ6sautVT1YN0QjucW9LJhoUYtoNaPU7rfqZhUmsTpg52djqSh4JhNBscP+uSrbzf7pswoMBHqqSqYusJrdDg1VvEQ==
+X-Gm-Message-State: AOJu0YzTs1bVv3lxenM1IcjLdcwvaNrIVpH2vhoBS6cktQpYcK3AZEzv
+ M003UrbPnPBkSrETyUaQRZAoEbZ9J0/XBeWMGFIgd2k4FhTrltzuD7GCSBqWrvUzMrnkIpvQDlA
+ wTSlEh5WXmnFV4bYr9v0li4oTl1m4OrOgbeNPWlMO0zoCF2KSAzQMMl445okwGGb9aXFFd1YqHv
+ MhKOicMF0y0vcSqCkomFmyBmlfjUabgQ==
+X-Received: by 2002:a05:6402:3415:b0:564:16e:b91e with SMTP id
+ k21-20020a056402341500b00564016eb91emr6802504edc.19.1708351244635; 
+ Mon, 19 Feb 2024 06:00:44 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEIqXl83yY1y4VqqWiEQGjJiKdt0Q6FbA/JJDXMCQEcRmfIPwYBwH1ttH342C79TAo6+H5xLkhf/K/FYjdrT+E=
+X-Received: by 2002:a05:6402:3415:b0:564:16e:b91e with SMTP id
+ k21-20020a056402341500b00564016eb91emr6802488edc.19.1708351244322; Mon, 19
+ Feb 2024 06:00:44 -0800 (PST)
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-722608179-1708348452=:77986"
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+References: <20240219123900.430943-1-thuth@redhat.com>
+In-Reply-To: <20240219123900.430943-1-thuth@redhat.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Mon, 19 Feb 2024 18:00:32 +0400
+Message-ID: <CAMxuvazmk_cnxUOAsAi1D7=VsT7OkkyNPL6adqqCkwt2LWVscg@mail.gmail.com>
+Subject: Re: [PATCH] tests/qtest: Don't run the dbus-display-test without
+ CONFIG_VGA_PCI
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mlureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.072,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -54,70 +90,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 19 Feb 2024 13:14:22 -0000
+X-List-Received-Date: Mon, 19 Feb 2024 14:00:51 -0000
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+Hi
 
---3866299591-722608179-1708348452=:77986
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
-
-On Mon, 19 Feb 2024, Thomas Huth wrote:
-> On 19/02/2024 12.37, BALATON Zoltan wrote:
->> On Mon, 19 Feb 2024, Thomas Huth wrote:
->>> If "configure" has been run with "--without-default-devices", there is
->>> no e1000 device in the binaries, so the boot-serial-test currently fails
->>> in that case since it tries to use the e1000 with the sam460ex machine.
->>> 
->>> Since we're testing the serial output here, and not the NIC, let's
->>> simply switch to the "pci-bridge" device here instead, which should
->>> always be there for PCIe-based machines like the sam460ex.
->> 
->> It's not actually testing PCIe but PCI bus but I think that does not 
->> matter. PCIe on sam460ex does not work yet, I've only implemented it 
->> partially to pass the firmware init but devices attached to the PCIe bus 
->> probably won't work. I have some patches to improve that but not yet ready.
+On Mon, Feb 19, 2024 at 4:39=E2=80=AFPM Thomas Huth <thuth@redhat.com> wrot=
+e:
 >
-> Ah, ok, I looked at the Kconfig file and saw the "select PCI_EXPRESS" there 
-> that got selected by PPC440 (which gets selected by SAM460EX), that's why I 
-> concluded that it must be "PCIe-based" ... I'll drop the "e" here.
+> When compiling with "configure --without-default-devices", the
+> dbus-display-test fails since it implicitly assumes that the
+> machine comes with the standard VGA card. Thus add a check to
+> meson.build to disable the test if the VGA card is not available.
 >
->>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>> ---
->>> tests/qtest/boot-serial-test.c | 2 +-
->>> 1 file changed, 1 insertion(+), 1 deletion(-)
->>> 
->>> diff --git a/tests/qtest/boot-serial-test.c 
->>> b/tests/qtest/boot-serial-test.c
->>> index 6dd06aeaf4..e3b7d65fe5 100644
->>> --- a/tests/qtest/boot-serial-test.c
->>> +++ b/tests/qtest/boot-serial-test.c
->>> @@ -156,7 +156,7 @@ static const testdef_t tests[] = {
->>>       "Open Firmware" },
->>>     { "ppc64", "powernv8", "", "OPAL" },
->>>     { "ppc64", "powernv9", "", "OPAL" },
->>> -    { "ppc64", "sam460ex", "-device e1000", "8086  100e" },
->>> +    { "ppc64", "sam460ex", "-device pci-bridge,chassis_nr=2", "1b36 
->>> 0001" },
->> 
->> So if you want to check if PCI bus works then maybe there's no need to add 
->> a device at all just look for the sm501 display chip ("126f 0501") that's 
->> soldered on the board so it's always created even with -nodefaults and 
->> should always present on sam460ex. The -device option just adds a device 
->> that appears before the sm501 and stops the test there. Not sure if this is 
->> testing more than looking for a PCI device created by the board code.
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Not necessarily VGA, but a graphic or VC console. I am not sure how to
+guess from the binary or compilation settings. Maybe it would be
+simpler to check at run-time if /org/qemu/Display1/Console_0 exists. I
+can work on a patch.
+
+> ---
+>  tests/qtest/meson.build | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> I was considering the sm501, too, but I thought that we might test a little 
-> bit more if we check that cold-plugging via "-device" works, too, so I'd 
-> prefer to keep it this way.
+> diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+> index 2b89e8634b..c8e6d7df40 100644
+> --- a/tests/qtest/meson.build
+> +++ b/tests/qtest/meson.build
+> @@ -108,7 +108,7 @@ qtests_i386 =3D \
+>     'numa-test'
+>    ]
+>
+> -if dbus_display
+> +if dbus_display and config_all_devices.has_key('CONFIG_VGA_PCI')
+>    qtests_i386 +=3D ['dbus-display-test']
+>  endif
+>
+> --
+> 2.43.2
+>
 
-No problem, if testing -device is adding more coverage than testing for a 
-device created by the board then I'm OK with it but not sure these are 
-really different other than maybe -device going through options parsing 
-but at the end for testing the PCI but they are probably the same.
-
-Regards,
-BALATON Zoltan
---3866299591-722608179-1708348452=:77986--
 
