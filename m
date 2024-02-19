@@ -1,114 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rbN7t-000187-Cc
-	for mharc-qemu-trivial@gnu.org; Sat, 17 Feb 2024 11:01:17 -0500
+	id 1rc1Xv-0006Xr-67
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Feb 2024 06:10:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dave@daveparsons.net>)
- id 1rbN57-0000W2-BD; Sat, 17 Feb 2024 10:58:25 -0500
-Received: from cyan.elm.relay.mailchannels.net ([23.83.212.47])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rc1Xq-0006Vc-RD
+ for qemu-trivial@nongnu.org; Mon, 19 Feb 2024 06:10:47 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dave@daveparsons.net>)
- id 1rbN55-00020F-KH; Sat, 17 Feb 2024 10:58:25 -0500
-X-Sender-Id: thundermail|x-authsender|dave@daveparsons.net
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
- by relay.mailchannels.net (Postfix) with ESMTP id 6AA89902562;
- Sat, 17 Feb 2024 15:58:19 +0000 (UTC)
-Received: from mailclean11.thundermail.uk (unknown [127.0.0.6])
- (Authenticated sender: thundermail)
- by relay.mailchannels.net (Postfix) with ESMTPA id E37AC902122;
- Sat, 17 Feb 2024 15:58:17 +0000 (UTC)
-ARC-Seal: i=1; s=arc-2022; d=mailchannels.net; t=1708185498; a=rsa-sha256;
- cv=none;
- b=tLFvHDc0bBByh4l65cagDabkOG1/1ekdhsvuVZKKsDyx2j6XzUeAPuQeKFD7jm5NLsPcw+
- F0Rp2vx5Gy2YPpWBmbipqXWeGLokjfEcvTXM3SjoXrGitmrtdQIc1Yr7PgKcpQF5RBn7bo
- 5oGhiVj0gyUqG5eyQ5zfbM31TSBx75LQjjcN2bXyUw3ZE2YjnzsKqAjqo907+xoir090hw
- ugLh6hPgbIfsGIXTX8RB9UDzHKx+gEuFdFJxbSlW7qF/XX8/zGY9B90S0Mv9b8oXiNVtkT
- o94mF5MXT2SebkWoGVZRNiz/AHMUkfUqRDAnjQTNRpd80Fagf3BilZcRm+VeFA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailchannels.net; s=arc-2022; t=1708185498;
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rc1Xi-0005Gq-7K
+ for qemu-trivial@nongnu.org; Mon, 19 Feb 2024 06:10:46 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1708341036;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:dkim-signature;
- bh=ibmswVGgLNO8hq7MqmREZ9UF84lwpqFS1JQSVs1K58g=;
- b=NxDD8CRVR9cMYHj9SWg/ntfqJIDnsG9fZF9CLyPH9aD9qGT1TaKXAvOXZvqhKoJYXi2wmV
- Fg+Fdl0BSeVRsnCDgc8dHus86SPejcFy9J/JHD9voRZymrYq8PR1oy0AJlAfNOzT2hL1WL
- VSfxoJFt2f5UEHXJIdJqwELPJ/ZLFnlk5i9XZn3888/Z/OekrkRVPNjrPW3XUwgvgG0zRO
- bNRWLUiIimKFo0veiL9NTKo9xsH2oL1Z5LzfUbzhAY8/4L9kXrtmcexvVk2e0/Ebu8zC+0
- 6wZUvk0Tjq0eDDfclxuxcH6MIA2BF0mfr/dEhzTp1+Rd3Ie75tg4zFg2MNFasQ==
-ARC-Authentication-Results: i=1; rspamd-6bdc45795d-lxxw5;
- auth=pass smtp.auth=thundermail smtp.mailfrom=dave@daveparsons.net
-X-Sender-Id: thundermail|x-authsender|dave@daveparsons.net
-X-MC-Relay: Neutral
-X-MailChannels-SenderId: thundermail|x-authsender|dave@daveparsons.net
-X-MailChannels-Auth-Id: thundermail
-X-Wiry-Towering: 6e9dc7d3784a52eb_1708185498983_1488885165
-X-MC-Loop-Signature: 1708185498983:2138584531
-X-MC-Ingress-Time: 1708185498983
-Received: from mailclean11.thundermail.uk (mailclean11.thundermail.uk
- [149.255.60.66]) (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
- by 100.119.153.94 (trex/6.9.2); Sat, 17 Feb 2024 15:58:18 +0000
-Received: from cloud227.thundercloud.uk (cloud227.thundercloud.uk
- [149.255.62.108])
- by mailclean11.thundermail.uk (Postfix) with ESMTPS id ED13D40260;
- Sat, 17 Feb 2024 15:58:12 +0000 (GMT)
-Received: from smtpclient.apple
- (host109-149-93-149.range109-149.btcentralplus.com [109.149.93.149])
- (Authenticated sender: dave@daveparsons.net)
- by cloud227.thundercloud.uk (Postfix) with ESMTPSA id 8E0AF101FB4;
- Sat, 17 Feb 2024 15:58:47 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=daveparsons.net;
- s=default; t=1708185527;
- bh=ibmswVGgLNO8hq7MqmREZ9UF84lwpqFS1JQSVs1K58g=; h=From:Subject:To;
- b=qws+EYCMF/y0kkGZM16lb8BlHoB1l5UOpgiTR4CfCNhHdY2OXZx/0ZhXXFoJj39dS
- UN0gHrVzpn++2IS89CThx4QocZHWdBeRPvO3SCWDKp6OtXOiSMymjrxMZA+MUhsYTM
- F77XnOuVNcFYKCuZHKRx5wPESxeGJP+H+lMi7Y4k=
-Authentication-Results: cloud227.thundercloud.uk;
- spf=pass (sender IP is 109.149.93.149) smtp.mailfrom=dave@daveparsons.net
- smtp.helo=smtpclient.apple
-Received-SPF: pass (cloud227.thundercloud.uk: connection is authenticated)
-From: David Parsons <dave@daveparsons.net>
-Content-Type: text/plain;
-	charset=us-ascii
-Content-Transfer-Encoding: quoted-printable
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3774.400.31\))
-Subject: [PATCH] ui/cocoa: Fix incorrect window clipping on macOS Sonoma
-Message-Id: <DDADA9A9-DED4-4510-A532-7600C0233467@daveparsons.net>
-Date: Sat, 17 Feb 2024 15:58:02 +0000
-Cc: qemu-trivial@nongnu.org,
- peter.maydell@linaro.org,
- philmd@linaro.org
-To: qemu-devel@nongnu.org
-X-Mailer: Apple Mail (2.3774.400.31)
-X-PPP-Message-ID: <170818552782.773145.12447335006264330645@cloud227.thundercloud.uk>
-X-PPP-Vhost: daveparsons.net
-X-Rspamd-Queue-Id: ED13D40260
-X-Rspamd-Server: mailclean11
-X-Spamd-Result: default: False [-0.01 / 999.00]; ONCE_RECEIVED(0.10)[];
- MIME_GOOD(-0.10)[text/plain]; MX_GOOD(-0.01)[];
- RCVD_TLS_ALL(0.00)[]; DMARC_NA(0.00)[daveparsons.net];
- APPLE_MAILER_COMMON(0.00)[]; RCVD_VIA_SMTP_AUTH(0.00)[];
- ASN(0.00)[asn:34931, ipnet:149.255.60.0/22, country:GB];
- ARC_NA(0.00)[]; MIME_TRACE(0.00)[0:+]; RCVD_COUNT_ONE(0.00)[1];
- FUZZY_BLOCKED(0.00)[rspamd.com]; NEURAL_HAM(-0.00)[-0.999];
- MID_RHS_MATCH_FROM(0.00)[]; FROM_EQ_ENVFROM(0.00)[];
- FROM_HAS_DN(0.00)[]; RCPT_COUNT_THREE(0.00)[4];
- R_SPF_SOFTFAIL(0.00)[~all]; TO_MATCH_ENVRCPT_ALL(0.00)[];
- TO_DN_NONE(0.00)[];
- R_DKIM_ALLOW(0.00)[daveparsons.net:s=default];
- DKIM_TRACE(0.00)[daveparsons.net:+]
-X-Rspamd-Action: no action
-Received-SPF: pass client-ip=23.83.212.47; envelope-from=dave@daveparsons.net;
- helo=cyan.elm.relay.mailchannels.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Wwhcq9d24Y8fXRPCPmM5LJVrD3A40ujKe6m1ZsX7wGk=;
+ b=U4fbS6m7pVeX+sGvqUkLJr12A/66cK655WoohedQ7eo/IW57BAWpjxTbBNpXr58VQh/LIO
+ ZrvpB5APMewwSZ7JyjvjShVH9UDC08zsZBUsdv/EZ5FGYAnzrSqOPWKUpuWhjaMKBKk98y
+ GS3aJtMvFF08Y3ItUpCg0UdjGYdHoE4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-468-p_KVqQn0Oba8h5kEL24WQg-1; Mon, 19 Feb 2024 06:10:32 -0500
+X-MC-Unique: p_KVqQn0Oba8h5kEL24WQg-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6B93B1025620;
+ Mon, 19 Feb 2024 11:10:32 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.115])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 438EF492BE7;
+ Mon, 19 Feb 2024 11:10:31 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-ppc@nongnu.org,
+	qemu-devel@nongnu.org
+Cc: BALATON Zoltan <balaton@eik.bme.hu>,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] tests/qtest: Fix boot-serial-test when using
+ --without-default-devices
+Date: Mon, 19 Feb 2024 12:10:30 +0100
+Message-ID: <20240219111030.384158-1-thuth@redhat.com>
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.077,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 17 Feb 2024 11:01:15 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -120,31 +67,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 17 Feb 2024 15:58:26 -0000
+X-List-Received-Date: Mon, 19 Feb 2024 11:10:47 -0000
 
-macOS Sonoma changes the NSView.clipsToBounds to false by default where =
-it was true in
-earlier version of macOS. This causes the window contents to be obscured =
-by the window
-frame. This fixes the issue by conditionally setting the clipping on =
-Sonoma to true.
+If "configure" has been run with "--without-default-devices", there is
+no e1000 device in the binaries, so the boot-serial-test currently fails
+in that case since it tries to use the e1000 with the sam460ex machine.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1994
-Signed-off-by: David Parsons <dave@daveparsons.net>
+Since we're testing the serial output here, and not the NIC, let's
+simply switch to the "pci-bridge" device here instead, which should
+always be there for PCIe-based machines like the sam460ex.
 
-diff --git a/ui/cocoa.m b/ui/cocoa.m
-index eb99064bee..c9e3b96004 100644
---- a/ui/cocoa.m
-+++ b/ui/cocoa.m
-@@ -365,6 +365,9 @@ - (id)initWithFrame:(NSRect)frameRect
-         screen.width =3D frameRect.size.width;
-         screen.height =3D frameRect.size.height;
-         kbd =3D qkbd_state_init(dcl.con);
-+        if (@available(macOS 14, *)) {
-+            [self setClipsToBounds:YES];
-+        }
-=20
-     }
-     return self;
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/qtest/boot-serial-test.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
+index 6dd06aeaf4..e3b7d65fe5 100644
+--- a/tests/qtest/boot-serial-test.c
++++ b/tests/qtest/boot-serial-test.c
+@@ -156,7 +156,7 @@ static const testdef_t tests[] = {
+       "Open Firmware" },
+     { "ppc64", "powernv8", "", "OPAL" },
+     { "ppc64", "powernv9", "", "OPAL" },
+-    { "ppc64", "sam460ex", "-device e1000", "8086  100e" },
++    { "ppc64", "sam460ex", "-device pci-bridge,chassis_nr=2", "1b36  0001" },
+     { "i386", "isapc", "-cpu qemu32 -M graphics=off", "SeaBIOS" },
+     { "i386", "pc", "-M graphics=off", "SeaBIOS" },
+     { "i386", "q35", "-M graphics=off", "SeaBIOS" },
+-- 
+2.43.2
 
 
