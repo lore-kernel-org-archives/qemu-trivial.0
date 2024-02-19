@@ -1,60 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rc1Xv-0006Xr-67
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Feb 2024 06:10:51 -0500
+	id 1rc1xx-0000FA-Pc
+	for mharc-qemu-trivial@gnu.org; Mon, 19 Feb 2024 06:37:45 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rc1Xq-0006Vc-RD
- for qemu-trivial@nongnu.org; Mon, 19 Feb 2024 06:10:47 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1rc1xv-0000E2-Na; Mon, 19 Feb 2024 06:37:43 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rc1Xi-0005Gq-7K
- for qemu-trivial@nongnu.org; Mon, 19 Feb 2024 06:10:46 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1708341036;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=Wwhcq9d24Y8fXRPCPmM5LJVrD3A40ujKe6m1ZsX7wGk=;
- b=U4fbS6m7pVeX+sGvqUkLJr12A/66cK655WoohedQ7eo/IW57BAWpjxTbBNpXr58VQh/LIO
- ZrvpB5APMewwSZ7JyjvjShVH9UDC08zsZBUsdv/EZ5FGYAnzrSqOPWKUpuWhjaMKBKk98y
- GS3aJtMvFF08Y3ItUpCg0UdjGYdHoE4=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-468-p_KVqQn0Oba8h5kEL24WQg-1; Mon, 19 Feb 2024 06:10:32 -0500
-X-MC-Unique: p_KVqQn0Oba8h5kEL24WQg-1
-Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
- [10.11.54.10])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6B93B1025620;
- Mon, 19 Feb 2024 11:10:32 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.115])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 438EF492BE7;
- Mon, 19 Feb 2024 11:10:31 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-ppc@nongnu.org,
-	qemu-devel@nongnu.org
-Cc: BALATON Zoltan <balaton@eik.bme.hu>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] tests/qtest: Fix boot-serial-test when using
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1rc1xt-0001f6-AY; Mon, 19 Feb 2024 06:37:43 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id EEE714E6012;
+ Mon, 19 Feb 2024 12:37:36 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id pSfM092EwJsk; Mon, 19 Feb 2024 12:37:35 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 0EB754E6003; Mon, 19 Feb 2024 12:37:35 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 0D4C47456B4;
+ Mon, 19 Feb 2024 12:37:35 +0100 (CET)
+Date: Mon, 19 Feb 2024 12:37:35 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Thomas Huth <thuth@redhat.com>
+cc: qemu-ppc@nongnu.org, qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] tests/qtest: Fix boot-serial-test when using
  --without-default-devices
-Date: Mon, 19 Feb 2024 12:10:30 +0100
-Message-ID: <20240219111030.384158-1-thuth@redhat.com>
+In-Reply-To: <20240219111030.384158-1-thuth@redhat.com>
+Message-ID: <b56a11d4-ef54-64ae-76ef-25c600255b59@eik.bme.hu>
+References: <20240219111030.384158-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.077,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -67,35 +51,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 19 Feb 2024 11:10:47 -0000
+X-List-Received-Date: Mon, 19 Feb 2024 11:37:44 -0000
 
-If "configure" has been run with "--without-default-devices", there is
-no e1000 device in the binaries, so the boot-serial-test currently fails
-in that case since it tries to use the e1000 with the sam460ex machine.
+On Mon, 19 Feb 2024, Thomas Huth wrote:
+> If "configure" has been run with "--without-default-devices", there is
+> no e1000 device in the binaries, so the boot-serial-test currently fails
+> in that case since it tries to use the e1000 with the sam460ex machine.
+>
+> Since we're testing the serial output here, and not the NIC, let's
+> simply switch to the "pci-bridge" device here instead, which should
+> always be there for PCIe-based machines like the sam460ex.
 
-Since we're testing the serial output here, and not the NIC, let's
-simply switch to the "pci-bridge" device here instead, which should
-always be there for PCIe-based machines like the sam460ex.
+It's not actually testing PCIe but PCI bus but I think that does not 
+matter. PCIe on sam460ex does not work yet, I've only implemented it 
+partially to pass the firmware init but devices attached to the PCIe bus 
+probably won't work. I have some patches to improve that but not yet 
+ready.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/qtest/boot-serial-test.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+> tests/qtest/boot-serial-test.c | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
+> index 6dd06aeaf4..e3b7d65fe5 100644
+> --- a/tests/qtest/boot-serial-test.c
+> +++ b/tests/qtest/boot-serial-test.c
+> @@ -156,7 +156,7 @@ static const testdef_t tests[] = {
+>       "Open Firmware" },
+>     { "ppc64", "powernv8", "", "OPAL" },
+>     { "ppc64", "powernv9", "", "OPAL" },
+> -    { "ppc64", "sam460ex", "-device e1000", "8086  100e" },
+> +    { "ppc64", "sam460ex", "-device pci-bridge,chassis_nr=2", "1b36  0001" },
 
-diff --git a/tests/qtest/boot-serial-test.c b/tests/qtest/boot-serial-test.c
-index 6dd06aeaf4..e3b7d65fe5 100644
---- a/tests/qtest/boot-serial-test.c
-+++ b/tests/qtest/boot-serial-test.c
-@@ -156,7 +156,7 @@ static const testdef_t tests[] = {
-       "Open Firmware" },
-     { "ppc64", "powernv8", "", "OPAL" },
-     { "ppc64", "powernv9", "", "OPAL" },
--    { "ppc64", "sam460ex", "-device e1000", "8086  100e" },
-+    { "ppc64", "sam460ex", "-device pci-bridge,chassis_nr=2", "1b36  0001" },
-     { "i386", "isapc", "-cpu qemu32 -M graphics=off", "SeaBIOS" },
-     { "i386", "pc", "-M graphics=off", "SeaBIOS" },
-     { "i386", "q35", "-M graphics=off", "SeaBIOS" },
--- 
-2.43.2
+So if you want to check if PCI bus works then maybe there's no need to add 
+a device at all just look for the sm501 display chip ("126f 0501") that's 
+soldered on the board so it's always created even with -nodefaults and 
+should always present on sam460ex. The -device option just adds a device 
+that appears before the sm501 and stops the test there. Not sure if this 
+is testing more than looking for a PCI device created by the board code.
 
+Regards,
+BALATON Zoltan
+
+>     { "i386", "isapc", "-cpu qemu32 -M graphics=off", "SeaBIOS" },
+>     { "i386", "pc", "-M graphics=off", "SeaBIOS" },
+>     { "i386", "q35", "-M graphics=off", "SeaBIOS" },
+>
 
