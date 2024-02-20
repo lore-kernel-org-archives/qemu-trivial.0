@@ -1,72 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcP46-0007Bz-SI
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 07:17:38 -0500
+	id 1rcP4x-0007tF-2d
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 07:18:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP45-0007BX-3G
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:17:37 -0500
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP4t-0007sZ-S8
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:18:27 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP43-0004GV-AS
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:17:36 -0500
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-33d568fbf62so964155f8f.3
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 04:17:34 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP4s-0004KR-8H
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:18:27 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-33d066f8239so2513042f8f.1
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 04:18:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708431453; x=1709036253; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708431505; x=1709036305; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=U1sgjxdp+gqDly3StkHne6g68Czi1k258A8i6UHN3j4=;
- b=veJDFFvsjFVtS5YMFhPcbxG+WrmZdeXP1togJV8/wDCRrblx9ftZIzLAW63LGO0KWe
- dnKrNilXi5Cg0bj1v4/bmNTYLolxLicGr/5mdcOpQe4qAtuAKLUUsicRlSHuJxXmTcAa
- upTISz4GwtrtwVuHwYh9ETp50omIuMGFNTHy7me/G136sgjA7Ib6s5rmfS+FaS/YTGEC
- RPDzc/e0uMUZYIdhMdvBKvjrnsJsv5caIc3aK/Q9+5O7gUEEHu/9w39Zmk8iOuLU5ap5
- TrbV5e/hG4J5dQ+WJkz5sb7XodzPqedRk/LF14TMGa/6RULNSKDCh7sAT36a4KctSQRd
- QDbg==
+ bh=hxZ/1Wp/ALyY7BKNpyDflf3LMmHEkqKQ6VtkdTvFR64=;
+ b=a6KCuex10yLUrR8sQrC1G0LpngBfUV27CRl+VmxNtNpjcG8OwpXbRskVcV/GPKzWw+
+ CZXwORUOB1uR7ajPJ85/obp7tL81DtYvrcSe2EHm6VypCrNZjO3su2kiKQmnrTo2wR+S
+ UBgEQMENI70HSjuGdC2n/MROixdMXL6Vyv1w9BWZfzkFikaYlRU8h8uMlOM2M5etA7+U
+ cdBrcHm8P78RICAnJRq342ydvPSSPyhfOdDmFXnefMj5/l7jDmlVftRVdxvF5bZ61UDS
+ ymlOEY7EFsTWsCfFJ+4vgsnZ3Gw6Ad4N00Y9/uIMRyZKd4ZxbGW6VSG6QRyTBfKxb5zy
+ Crcw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708431453; x=1709036253;
+ d=1e100.net; s=20230601; t=1708431505; x=1709036305;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=U1sgjxdp+gqDly3StkHne6g68Czi1k258A8i6UHN3j4=;
- b=TptxNwq8c2FuP+bqacIbNbMYDEk3CGv7wicjZaUCS4hwiQpXPl5195om30ZMMO4jK9
- SROP7os2qkakMsYTF6CE1G4vnPPNmhBvf7hZGyf0WHZEI0aL7ov1He01EfdKujsWE/8i
- bg4Ct+qb3s0Jh3D326pxfDDm4Nl41lC6zxg5tVt38i5SnUb8EbyUU9yfHtpmQk6sdMWP
- iVsJbYaMa5S9q2K++dwH134wIQ+3DjBiEE5WSnqG3DH6VJB6gUV2ulyVSZ3v5/t8wKJN
- J4rsvwn4GqZZMJ1QkJ0GYadaJk4SfUglqB9QhK0I9Co0ECvGCJkiGZen9usz0VlQZHkB
- im+A==
+ bh=hxZ/1Wp/ALyY7BKNpyDflf3LMmHEkqKQ6VtkdTvFR64=;
+ b=wd95sR76O22M3njXEg8PMA1beDXWTlu7tuA4cVy75Y503lAlDOgjJnMCZs/SXTsMnl
+ 7294GHDPhV/ZaeB0ob53nqj6N6gIHXKnwLGg7nDEaLnG8KdvSEUQ7ziAT64d2ySkJAiZ
+ AwpVbM4vIYUm3E7F9yXy23hFgdLNh6Y0mkDxTco3XfLWgs6PlblfftP6MaQIMVBAKgkZ
+ rSIUBDv4oX0Vi8PlXLoHuWO+5Phaijw2pXaiA+Md0LvdBBx5TBP0GRQLekNjYbAGIFSU
+ P5oYd87yOAqcxtnZmGMGrzpGXoRiEkWK4G09TeZp+EQO4NTB3IrAJ0RB/JJRyjsTjMuo
+ 4Lww==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVlc2IZnFq4k/DUuR+34KrN7RaCxJVhOpcfYd9HvaxnoXUAREbv5TgIKeGI5LJAg1rKZuFSvOD0ENfEng2xuUhUhwelFyPpjw==
-X-Gm-Message-State: AOJu0YzFZGW40iKFLTcRlZSrNasTRh5zyh1aJO/l/3l+hrSiQB/RplBa
- exugwRFxKBuTRbyItagte8k7S7nHVB5hZts2BzdXtK2raqRVTgAS91k3/5yDZQ2/SKvb++6Y2PP
- a
-X-Google-Smtp-Source: AGHT+IEHj6ucJ9seA0kkSsx7WH+3FZe11x5yevk+DmT5W0xpnsc6TjKevMbvPPpxKGMOSk5jx4vYgQ==
-X-Received: by 2002:a5d:5645:0:b0:33d:3b82:ab2a with SMTP id
- j5-20020a5d5645000000b0033d3b82ab2amr5046236wrw.19.1708431453631; 
- Tue, 20 Feb 2024 04:17:33 -0800 (PST)
+ AJvYcCXn9rloJ2mwIULa5HhxDRxWpe/YwYt7vLkIHdr0H1rJKPzJfj1jldbmvBKLWDn1rnWK1pBcTzMhQW17ElF+RMcjSsfGx4YdMw==
+X-Gm-Message-State: AOJu0YwEAImIhHiG5/FTKQo4T6veum84H36JrA5RTN1CvjHH/j2UXeBb
+ OAq+Oar+vHYi3YjTT0HMRgbe+mIhOM9im5x3i0Huwq2ugFFDa/PNuEYQXydJZpJgfLTpVYXDPvT
+ b
+X-Google-Smtp-Source: AGHT+IH53uDhVOEv2S5z/e47ksjK8i7feXGNgRLZNkxAI+xdusYGRNLUcpaR3EJIFajL+S2dzNLdRw==
+X-Received: by 2002:adf:fe0f:0:b0:33c:e35b:7a59 with SMTP id
+ n15-20020adffe0f000000b0033ce35b7a59mr10054563wrr.48.1708431504685; 
+ Tue, 20 Feb 2024 04:18:24 -0800 (PST)
 Received: from [192.168.69.100] (mek33-h02-176-184-23-7.dsl.sta.abo.bbox.fr.
  [176.184.23.7]) by smtp.gmail.com with ESMTPSA id
- a7-20020adfeec7000000b0033b483d1abcsm13193952wrp.53.2024.02.20.04.17.32
+ a7-20020adfeec7000000b0033b483d1abcsm13193952wrp.53.2024.02.20.04.18.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Feb 2024 04:17:33 -0800 (PST)
-Message-ID: <f2caa5fb-5443-474a-b042-f467e737bbc0@linaro.org>
-Date: Tue, 20 Feb 2024 13:17:32 +0100
+ Tue, 20 Feb 2024 04:18:24 -0800 (PST)
+Message-ID: <9ac1a0a8-7a71-4074-8ea5-62cd98fefed8@linaro.org>
+Date: Tue, 20 Feb 2024 13:18:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 09/21] include/exec/plugin-gen.h: correct typos
+Subject: Re: [PATCH v1 10/21] hw/arm/omap.h: correct typos
 Content-Language: en-US
 To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
- <d3a488b11917054cf4f13010e0f56d7b619a1257.1708419115.git.manos.pitsidianakis@linaro.org>
+ <3a8b80f6427bf84580eec8f7c5c411fab5419e1f.1708419115.git.manos.pitsidianakis@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <d3a488b11917054cf4f13010e0f56d7b619a1257.1708419115.git.manos.pitsidianakis@linaro.org>
+In-Reply-To: <3a8b80f6427bf84580eec8f7c5c411fab5419e1f.1708419115.git.manos.pitsidianakis@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,7 +87,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 12:17:37 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 12:18:28 -0000
 
 On 20/2/24 09:52, Manos Pitsidianakis wrote:
 > Correct typos automatically found with the `typos` tool
@@ -94,24 +95,25 @@ On 20/2/24 09:52, Manos Pitsidianakis wrote:
 > 
 > Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 > ---
->   include/exec/plugin-gen.h | 2 +-
+>   include/hw/arm/omap.h | 2 +-
 >   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/include/exec/plugin-gen.h b/include/exec/plugin-gen.h
-> index c4552b5061..b18edd6ab4 100644
-> --- a/include/exec/plugin-gen.h
-> +++ b/include/exec/plugin-gen.h
-> @@ -19,7 +19,7 @@ struct DisasContextBase;
->   #ifdef CONFIG_PLUGIN
+> diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
+> index 067e9419f7..2f59220c0e 100644
+> --- a/include/hw/arm/omap.h
+> +++ b/include/hw/arm/omap.h
+> @@ -1008,7 +1008,7 @@ void omap_mpu_wakeup(void *opaque, int irq, int req);
+>                         __func__, paddr)
 >   
->   bool plugin_gen_tb_start(CPUState *cpu, const struct DisasContextBase *db,
-> -                         bool supress);
-> +                         bool suppress);
+>   /* OMAP-specific Linux bootloader tags for the ATAG_BOARD area
+> -   (Board-specifc tags are not here)  */
+> +   (Board-specific tags are not here)  */
 
-Could we keep the definition in sync?
+Unfortunately you need to update the comment style, otherwise
+this patch doesn't pass ./scripts/checkpatch.pl.
 
-accel/tcg/plugin-gen.c:794:bool plugin_gen_tb_start(CPUState *cpu, const 
-DisasContextBase *db,
-accel/tcg/plugin-gen.c-795-                         bool mem_only)
+With this fixed:
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
+Thanks!
 
