@@ -1,73 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcOzm-0003Hd-Gj
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 07:13:10 -0500
+	id 1rcP2S-0005Ue-Mm
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 07:15:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcOzl-0003HE-DZ
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:13:09 -0500
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP2O-0005LD-TH
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:15:55 -0500
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcOzj-00037Y-T2
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:13:09 -0500
-Received: by mail-lf1-x132.google.com with SMTP id
- 2adb3069b0e04-512bc0e8ce1so2103923e87.0
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 04:13:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP2M-0003t3-N2
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:15:52 -0500
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-33d146737e6so3303843f8f.0
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 04:15:50 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708431185; x=1709035985; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708431349; x=1709036149; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=Fz3rhuMyIR5IIsO7/TNcMXjTgsSoaEjkhP7dkLH7cWw=;
- b=Jhmau/Nqoet6NwnHa05uG7dTCee2hKfr5xPsL0JZskZPfJ4+S+tSUHZIvAEuWqqtQq
- M6VGIXaTinJke2v3BM3d/O+PnkoRB/dEP4nqZFEbOncC3tC31P+tGR3TSGCU0xfVxy8N
- tnU3EztSd0BAY0oPkd2qObyYEx451ctuO2ilntLBlafNcl/pqevpzObkqUemki47NVtp
- aUrftrVdx6cIuYJeWdL2hX91TT67nAhyI8bcSP5jFZd5eXgOSiemnBXE2f468E85Dn7O
- BW/yP8aQPHOfz0mqgfkwSF0roOQThnqB+tg0BfKGecSuxAYbTQvhj/9faZDIrf7y/jGv
- TRPg==
+ bh=/lXrDV0+0Z9ohF8B0ptVCwj073MI7pv/ix0B/jvgdeg=;
+ b=aRXPyW9slPGL2eIA5SAgj7oOv7BtuBP4j6soA40xjllgB1GEk37yjeYpZupXxSiElB
+ HbZTP3HdY1/4Tjs8fgrUtkKDLpwaZ/s9CWPQQBbolegeFiBKrUeDO6WZoome8lbufgYF
+ 1ASx3i/U9RAvivf38RQ85X03W+fIfLGfhrq7SOPB7XrrglTX41TnJ2qc0mJF03Q0tZps
+ IE2moGRzd8nKMmDgLtD61L28C8RhzLmIH2EFrLnKuMzW4P6kJuu2FLSjCqi1i38jROwc
+ lRg6Wf61ncRqcLEmJT/JEd78Ql4lU7CSPRIOP424VBDWle62D22JCauReg0iaj9fcsYG
+ p/ew==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708431185; x=1709035985;
+ d=1e100.net; s=20230601; t=1708431349; x=1709036149;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Fz3rhuMyIR5IIsO7/TNcMXjTgsSoaEjkhP7dkLH7cWw=;
- b=qefoPqfI3MCyH810fS+XBj30jpKo+dr7pd6RiBAkRYQu/PxjLDhi5f+/de2zxUJZMo
- 4hTwIxwjyJUXKnGKZt3FB/muqA3X9YaPxn2amOSwnkb7Slw+tXxaBwLcYnzIx29oDO3f
- oq5tzB11PyrdE3BI27lU6FWflfWWb8uSppm1glcfnZT8GQcZY/t38K2Mc/QifAar9lIZ
- PEBf8ZWsDjPULlU89E33hKZXGnMOl+mLVKeKcg46NWuF5ka3OZeONOghR1Hsf6z42mVr
- 1DFV/2TzodiUn8O5kBgQyGdcSfamC40td4RbtvTX41gL/Ztcrm0zX6RD2n4YiZ5CNmrr
- MuHw==
+ bh=/lXrDV0+0Z9ohF8B0ptVCwj073MI7pv/ix0B/jvgdeg=;
+ b=MQrGxVJ4L3VAzvEviRc9c5t5U1otGvQjI8yjOp7/WS5ZLLdGDHuRFM7DKuevHYZJBm
+ HX2svx9gbeqHhzEfR1FaFs5Ov+ishkmM4oJHLtVe+H9gl+3B6JZs3eOa/m+lnMR0nEJ+
+ 7mDPm01vUtzHLDjs15T7an3a6QTcSUbhSloBqO1JsSUsL+8fxBRk634BhS/LwSqfRY6A
+ j1wwunLbvuIiPRfGRCtsGuX9XrT0OCqlCL+4V41p+V86pQvQNIeG6Y6KYlzqVqJ805oo
+ xwLlO36BhzIsaWAVdlPZxeUKUqLd8BM/UxfUu83JJJoavPNms4ElYqjrofuh65TuMO+5
+ JG1Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVkMZvHxeRHN7bjl9AuECKR+Jaf5uUAIOvgAPZuoON8B/QX7MSDdgcV+f1qzD7azjF4aujZaurPjlCGbc/mJDdJ+EWM/lnsow==
-X-Gm-Message-State: AOJu0YzZnYOu39ljmNDxy0N2YFAWOOWTj/jQ++QfUfoEtUsvHZJqZb9x
- uw7R2CJ+1d60yFO8j0nFyd8g+OyFVYOOWZnJQbk6nTUTuyEuRjTs3vUi5WR0S/M=
-X-Google-Smtp-Source: AGHT+IH+EXFyNV7jWsEV9f5xkqv8o3Y3/P646twrfUOYqq7Fu+tCJlKQOi0OycRhl8mlnY4wyPx58w==
-X-Received: by 2002:a19:655d:0:b0:512:ab03:f4 with SMTP id
- c29-20020a19655d000000b00512ab0300f4mr5101336lfj.37.1708431185189; 
- Tue, 20 Feb 2024 04:13:05 -0800 (PST)
+ AJvYcCUOyBYrfS4l3wzKdf/io1JPDmuxxeEZDUURgl0pSA0TXAKFvI5Ag3jvbjL6PCjKzh9b3tnP48X8UjTGXFWVAAM93hNFxwqiaQ==
+X-Gm-Message-State: AOJu0YwDbZkoE+NFN8loHZHvtZbEsA4fKnxrb0SF6ELuss14yx2WGFlO
+ efN/m6AYnsj6wMKvoXpGVjlKcjDGC/4056tjtg5e/y58ryP8EHf3xXuz7bYzqPE=
+X-Google-Smtp-Source: AGHT+IFGOnO0Tdk4GiPCSz/pWDnv6//kEbECIIZIUnUfbjlN5J84vujRBdtLHPZE/oySO2ELmgtvkQ==
+X-Received: by 2002:a5d:414e:0:b0:33d:1427:5274 with SMTP id
+ c14-20020a5d414e000000b0033d14275274mr9881772wrq.52.1708431348879; 
+ Tue, 20 Feb 2024 04:15:48 -0800 (PST)
 Received: from [192.168.69.100] (mek33-h02-176-184-23-7.dsl.sta.abo.bbox.fr.
  [176.184.23.7]) by smtp.gmail.com with ESMTPSA id
- l8-20020a056402028800b00564427855b5sm2711413edv.44.2024.02.20.04.13.03
+ a7-20020adfeec7000000b0033b483d1abcsm13193952wrp.53.2024.02.20.04.15.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Feb 2024 04:13:04 -0800 (PST)
-Message-ID: <ccfe5f39-7c49-4778-b0eb-a3e9c0c97a7e@linaro.org>
-Date: Tue, 20 Feb 2024 13:13:02 +0100
+ Tue, 20 Feb 2024 04:15:48 -0800 (PST)
+Message-ID: <a136a0a2-d390-4fba-ba42-3ad2746ad1ca@linaro.org>
+Date: Tue, 20 Feb 2024 13:15:47 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 08/21] include/exec/memory.h: correct typos
+Subject: Re: [PATCH v1 04/21] accel/tcg: correct typos
 Content-Language: en-US
 To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  qemu-trivial@nongnu.org
 Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>
+ Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
- <16e84fbb3dec43ee349a8ea5dd945c9630630bb3.1708419115.git.manos.pitsidianakis@linaro.org>
+ <a7bdde5bf92b22255cb6d280330bab94bdb59a79.1708419115.git.manos.pitsidianakis@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <16e84fbb3dec43ee349a8ea5dd945c9630630bb3.1708419115.git.manos.pitsidianakis@linaro.org>
+In-Reply-To: <a7bdde5bf92b22255cb6d280330bab94bdb59a79.1708419115.git.manos.pitsidianakis@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x132.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -87,7 +87,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 12:13:09 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 12:15:55 -0000
 
 On 20/2/24 09:52, Manos Pitsidianakis wrote:
 > Correct typos automatically found with the `typos` tool
@@ -95,7 +95,7 @@ On 20/2/24 09:52, Manos Pitsidianakis wrote:
 > 
 > Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 > ---
->   include/exec/memory.h | 2 +-
+>   accel/tcg/ldst_atomicity.c.inc | 2 +-
 >   1 file changed, 1 insertion(+), 1 deletion(-)
 
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
