@@ -1,70 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcLsY-0000P6-Fg
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:30 -0500
+	id 1rcLsa-0000R5-1b
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsW-0000FF-FI
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:28 -0500
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ id 1rcLsY-0000Ps-Um
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:30 -0500
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsP-0008Cu-1Y
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:27 -0500
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-a3e5d82ad86so280106966b.2
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:20 -0800 (PST)
+ id 1rcLsU-0008EJ-Kp
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:30 -0500
+Received: by mail-lf1-x12d.google.com with SMTP id
+ 2adb3069b0e04-512a96e44e2so3309997e87.2
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:26 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708419199; x=1709023999; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708419204; x=1709024004; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=kfSQCPN1GGM5Zej4RQdSlhjLn3KZeYb7da7sMakzv6E=;
- b=WGXkxvlZ6X0ljqBuDLkDQUKYHZPNkK4xEiK0Q7QpmgnM2c8+/UnKk/TtuxEQOxlfBw
- /OJF9aQZRgw1rpTdv45AEImJTSo36yLxKRAjCR5VgGTDl7G/Dnkh8S4zlEiUy8SrjMEW
- 9OzUbgsSU0AsRlSSoQ1iB6T5C6xTpjeBc2cteKU6QG6MzAGOyNveJ2ZBOsKTPHyYVfUk
- PRTKpS7g4T4QMBhrkqEciDwMelQ6TP04kQu7xuXeO93TxoicO+Y7p1LOLm7VTdvfcPOh
- WJjSGhRvHo6XqRkNym5YsWAL5nLqMKJ5CgKrJjyDG6M4L7BJtMVGpMBHqTrR4mtfMczn
- yfRw==
+ bh=MvdV9IUyScfXO/aRp9jIGXOMeWvG9ot2GraQaMTkQfY=;
+ b=dzV2vMc+QOtvV4BfBPrvWTL0rxE2c/3icEwOm4Eb3FH6vRY8mHK7xCWxbPr9GP3+iL
+ L2YfUb1SmyEiHeE9Ow7NznSHyAW9pBrVIakFC3riGnWz4n2xwKKX6ojhPx3FNut7zh3M
+ Dfrf1hMejt8KL+yR4erlSq/vjeWw+zGDerrAaSyfiIKA4rs7fQit4RjYxzuT6BQzM90l
+ ku/04+CzZMRPw2gcLQR1f+/EiRZR9Vnxh5/Fy2Wg8LfqFGGdmsGLWE/6vdwD1+gA0zxL
+ k/eX2V4hUANz2nlM0KRtZVcVPmQbUsMPLlcIRD/L2Z3HCppa/FwaNxGYO0LF2a5tM7D/
+ aaZg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708419199; x=1709023999;
+ d=1e100.net; s=20230601; t=1708419204; x=1709024004;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=kfSQCPN1GGM5Zej4RQdSlhjLn3KZeYb7da7sMakzv6E=;
- b=kmAF+qJz1g5mPTZTuhSjpHujIToA1yAc/P9wzP9pzRIfdV2w01zvWMBwACIbLEZkcF
- cc+FCoB5Fdv98zZfC+ZWxQ4vfhMBEQFHGcdfol+BMAlUodBqBOu2FjpUAi4e1groG+cI
- VZ6HGS9gjOJ+E+AFdVNsB2JmplY6xo0WKIMT9tux6pkOJbq28yhOheROC+bhzVmm1fyF
- r7nIFYmZTKolf81ISnbRPL2vlKVmz6VhOul5JqHbI3kabfLs30M+MRTgrbXFrbN1avLd
- IHozp/h5+Dli73cDZGkvYR/nQoeMxIgYcxnUjSedt7JH3FkleEkMLFVCsHcxFK8MDXcj
- /Reg==
-X-Gm-Message-State: AOJu0Yw/PTXjAqMybL+FHaG4Cze3Ow3slum/JoKdTFLEiRIGiJoVBpWG
- 9f3K3mz3PJDjVjQU28Abo4bG+f2JrH9bd/oqzcrpEIZWbZNpzaJuB+rFYxAG89LvSCw2ETYuj+W
- fv9w=
-X-Google-Smtp-Source: AGHT+IEBSeLFPPqoXQckZq4L1F+fqEd0CwMFbo5YwT3y/6QTRKiRFcCb7D2n3ONZUh236DgQvtgwLQ==
-X-Received: by 2002:a17:906:f44:b0:a3d:d7f1:35fd with SMTP id
- h4-20020a1709060f4400b00a3dd7f135fdmr10250515ejj.9.1708419199506; 
- Tue, 20 Feb 2024 00:53:19 -0800 (PST)
+ bh=MvdV9IUyScfXO/aRp9jIGXOMeWvG9ot2GraQaMTkQfY=;
+ b=RLtyRRZHvZzegb3msUOscV+RxEsfRizXFEIWCfIeAGi9ttoGQ9QqRCkltFiPtZNpXQ
+ feipLGqAxmYR4PdmrTuGWfRTY0zSpxvVUFyYP5Puwpfmn0zT4c0T4GH8jjYJtS4hPfs5
+ i1hcXbR6wdMMTFo8KF8HSHexbUL/GsEcLZH8Hy1QdBArpdiIR5QbeOMaRo0cEbkHEfaf
+ yL5hG+MC4YxqHxu2DD3HLUbws2luzfx2RVYCCQ3/jI6whptTEn/zp8yi7vDAXFNQkJ1x
+ AVWdfk5rFOKLxW6whfWCa36MxwEfWp/M4XWPBKch07gj+7CYmN/H/3I5P4lR4Ep04NfX
+ DHgg==
+X-Gm-Message-State: AOJu0YwJkRz7LbZKN7icVzVr7CbFPZ84WS2jmlL6KPRFMhhfnMzpjRFG
+ SIwspUoFOayRXqhRysQxKMO/HK9Y9sUEhdHn9GauyfW2WuTzovtVvnMNP6VJR+ZtvdfRunDUOaP
+ cpTw=
+X-Google-Smtp-Source: AGHT+IEbySSjHls8NAbeQTB2ZfhggNPAIhoEucwffA6V5Q2r6kGdNic7nNDc9SWPtQ5Y0X9uH6FaMg==
+X-Received: by 2002:ac2:5dee:0:b0:512:a987:13ee with SMTP id
+ z14-20020ac25dee000000b00512a98713eemr4549873lfq.50.1708419204300; 
+ Tue, 20 Feb 2024 00:53:24 -0800 (PST)
 Received: from localhost.localdomain (adsl-245.37.6.163.tellas.gr.
  [37.6.163.245]) by smtp.gmail.com with ESMTPSA id
- cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.18
+ cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.22
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Feb 2024 00:53:19 -0800 (PST)
+ Tue, 20 Feb 2024 00:53:24 -0800 (PST)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-trivial@nongnu.org
 Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org
-Subject: [PATCH v1 10/21] hw/arm/omap.h: correct typos
-Date: Tue, 20 Feb 2024 10:52:17 +0200
-Message-Id: <3a8b80f6427bf84580eec8f7c5c411fab5419e1f.1708419115.git.manos.pitsidianakis@linaro.org>
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Bin Meng <bin.meng@windriver.com>, Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, qemu-riscv@nongnu.org
+Subject: [PATCH v1 13/21] hw/riscv/virt.h: correct typos
+Date: Tue, 20 Feb 2024 10:52:20 +0200
+Message-Id: <c391076e9958561b3294ba922e69e38d36b8a9b5.1708419115.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-lf1-x12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -84,29 +88,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 08:53:28 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 08:53:31 -0000
 
 Correct typos automatically found with the `typos` tool
 <https://crates.io/crates/typos>
 
 Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- include/hw/arm/omap.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/hw/riscv/virt.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index 067e9419f7..2f59220c0e 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -1008,7 +1008,7 @@ void omap_mpu_wakeup(void *opaque, int irq, int req);
-                       __func__, paddr)
+diff --git a/include/hw/riscv/virt.h b/include/hw/riscv/virt.h
+index f89790fd58..3db839160f 100644
+--- a/include/hw/riscv/virt.h
++++ b/include/hw/riscv/virt.h
+@@ -144,13 +144,13 @@ uint32_t imsic_num_bits(uint32_t count);
+ #define VIRT_IMSIC_GROUP_MAX_SIZE      (1U << IMSIC_MMIO_GROUP_MIN_SHIFT)
+ #if VIRT_IMSIC_GROUP_MAX_SIZE < \
+     IMSIC_GROUP_SIZE(VIRT_CPUS_MAX_BITS, VIRT_IRQCHIP_MAX_GUESTS_BITS)
+-#error "Can't accomodate single IMSIC group in address space"
++#error "Can't accommodate single IMSIC group in address space"
+ #endif
  
- /* OMAP-specific Linux bootloader tags for the ATAG_BOARD area
--   (Board-specifc tags are not here)  */
-+   (Board-specific tags are not here)  */
- #define OMAP_TAG_CLOCK		0x4f01
- #define OMAP_TAG_MMC		0x4f02
- #define OMAP_TAG_SERIAL_CONSOLE	0x4f03
+ #define VIRT_IMSIC_MAX_SIZE            (VIRT_SOCKETS_MAX * \
+                                         VIRT_IMSIC_GROUP_MAX_SIZE)
+ #if 0x4000000 < VIRT_IMSIC_MAX_SIZE
+-#error "Can't accomodate all IMSIC groups in address space"
++#error "Can't accommodate all IMSIC groups in address space"
+ #endif
+ 
+ #endif
 -- 
 γαῖα πυρί μιχθήτω
 
