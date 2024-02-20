@@ -1,71 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcP5W-0008KB-4n
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 07:19:06 -0500
+	id 1rcP6k-00010a-4K
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 07:20:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP5P-0008F6-Rt
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:19:01 -0500
-Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP6h-0000zp-4P
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:20:19 -0500
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP5M-0004Lz-PM
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:18:59 -0500
-Received: by mail-wr1-x42c.google.com with SMTP id
- ffacd0b85a97d-33aeb088324so2837926f8f.2
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 04:18:56 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP6Z-0004so-Go
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:20:15 -0500
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-4127011685dso2636875e9.1
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 04:20:10 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708431535; x=1709036335; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708431609; x=1709036409; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=yg5SVoKbf5S0YjskYn34WXu5kIgOC7uG7UyRrF8iVmo=;
- b=egU3IaTx8xos3x/VsSc+yOXcYuh/zkk7KBr8OXgtJbBv/RJZilGUGo8WPnniZpN9YZ
- j/JO8+mjPq3dZljBqdRKbsEla7TJ1CLrIfSoSPrTr1+5uk8j5s+pi1Hi1ZGzWx2TgNNI
- bfANXkhSlZU/i4rDEbv3ciTXhosEtdBmVdO0Yqv1TOO4Fmc2z6PZeuvlUZu8J7K1Nt6o
- shUTcMQqv4zsXbm+rUTn9DNLKT0d4ixPTqCusIzlb6R2kapWyrLXMGUyMJNKXPpl5dUF
- raVkXKWWjBlzR3hh789s+GF0YDgbE8pObRX98l6w9kr8OQH4qG62nkuFIIfLV54R8hNm
- L7HA==
+ bh=en4M2z59ORJxnfwO0sqQooTGqZaI9mV3tBiE1WfXXyo=;
+ b=BPTiifJQeWiqcmD7iWw51J1KZwv0encMuRmaN36SPHyiGt3wLL15hfa2mkGyBwYes6
+ HmRB/H04igDv7YWaaQM0NoFsIfg+S8oFAgwZcGlulbSjHENwAuEBbfsf5W1s9b3D/i+v
+ WjcNSC6biACGLfoAgFjhLaJijT4krqvlC5Jfbx6HKPy9GWcc/uD0rsrteKxdgThvY2x1
+ Ab/3H2GPwQke8gFigr22UG42d/cOfb1vbpuYcZqADN0cKUPqHNXcmVbbjVuekm27T4yq
+ YpsenUd7GReBRKtatSDrIz9atWbtwOXyaueVDCc//NoCqzx72oEeNabhX+yL2HhfuSQ/
+ /4bw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708431535; x=1709036335;
+ d=1e100.net; s=20230601; t=1708431609; x=1709036409;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=yg5SVoKbf5S0YjskYn34WXu5kIgOC7uG7UyRrF8iVmo=;
- b=Vve8TIIPitrkSreZsMo1qb5iprQjKPpThWn3IOxRDPlUoQcXbHwY4r78WoeImLEZVq
- +KEyh1noEN+HGrWdKNAbrDHYCfN13XImsTF7+pp4itbluD0CDRQHqSIdvQR0s97gWqL/
- rdZTVfoOdnum3uxitZY52ymjTSkiyddJTy0gYN6LpM5Q4FrUCgegbHQ4AQBJ/7oTvwTr
- phNBV1yGF/uR8sTY6/0snRytrsiWx1TAnNPf7JjKeCxxtpEL+pd2RQFA7ih4WF90JoLS
- HnZV05GpIngQiA+H+gCMPfXeaPOkc+SiLu0d64Oqf1MSr+BQi2j0ER+kWQqvYcsMLsp/
- XLpw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWAiVkvMKAAZVnnWwlYvYMa0AKhptBlu7J9jIKQ+3zu+zr234YeC8QNJLOjPMuGv2BhK+BBenQ69thBP3eQqULvyywiDOlzxg==
-X-Gm-Message-State: AOJu0Yx/cyoSlR8d8G0JMxGghVYatnZ9ZeFy+YJLjX20nfebxaG281SN
- 68ViWVTEs7TNga60ncXSro91oqSHpnkrrbiLaIKNAy3vKJ1rQ5ylNJlgT4sifxs=
-X-Google-Smtp-Source: AGHT+IFk6yIfHM6AgO9sZQhV0dx4WqObYKbhDnynI3esJQfvFtVaKPn9PIPLgwRnL2UTff0Ow5PcpQ==
-X-Received: by 2002:a5d:6dae:0:b0:33d:3cf6:a2ca with SMTP id
- u14-20020a5d6dae000000b0033d3cf6a2camr5430643wrs.30.1708431535219; 
- Tue, 20 Feb 2024 04:18:55 -0800 (PST)
+ bh=en4M2z59ORJxnfwO0sqQooTGqZaI9mV3tBiE1WfXXyo=;
+ b=pHgCe085gV/INlJnZreK+iarG7yZKuRECuIpfAcxz898nFs0INx3agOJxQNBauz3SU
+ QvYiKPv+vjcYbP7tpJmsXA0OskyhFz8Eh5KmjEsvKFJr4rqsV1iTRiIZDgXvQCENGDSf
+ /prPqA7IYbW0qZsqarKCXu3Jq0P+uyvwchxNDzgD0ZmM5u+eBBhMUPGC1h9B02MgGMXx
+ wOhLUwB+AjwzZ/KnN0TuFKm9iDNrKxjJv3hepWKQ5OmEeTtB9AVKXwPRk0N6muj/7FF1
+ jslxqHpEtrnYdpkv//ApM1LYTRVs7oPN7NktREmqeP4A+MjsI6OaKN2HD+CuFrugxDDf
+ dtbQ==
+X-Gm-Message-State: AOJu0YzHt4g9QeZSWQJf+xP2b+5GZbt52yf9qWuhg2JS+zeMkUyYDGnb
+ iMtleYJHrw/VnwJMEiqwR8Xt+Wvna8Q4zVPM9gsqJX1CPjeKkmr8dNPq0d60Age/1JvxUPeOM7v
+ 4
+X-Google-Smtp-Source: AGHT+IHwzxjgKJ00sjIlYJBm3oz94NkdqV85y6tx2+TlFKI3jsI0GvUfjSUst1wFZUM7HhYhRKbOOQ==
+X-Received: by 2002:a5d:4389:0:b0:33d:3b83:6ca3 with SMTP id
+ i9-20020a5d4389000000b0033d3b836ca3mr4647585wrq.64.1708431609143; 
+ Tue, 20 Feb 2024 04:20:09 -0800 (PST)
 Received: from [192.168.69.100] (mek33-h02-176-184-23-7.dsl.sta.abo.bbox.fr.
  [176.184.23.7]) by smtp.gmail.com with ESMTPSA id
- a7-20020adfeec7000000b0033b483d1abcsm13193952wrp.53.2024.02.20.04.18.54
+ a7-20020adfeec7000000b0033b483d1abcsm13193952wrp.53.2024.02.20.04.20.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Feb 2024 04:18:54 -0800 (PST)
-Message-ID: <aae1de82-7f8f-42c1-bab3-b859fe8aa1b4@linaro.org>
-Date: Tue, 20 Feb 2024 13:18:53 +0100
+ Tue, 20 Feb 2024 04:20:08 -0800 (PST)
+Message-ID: <3d446080-6be2-4a05-bc52-a2b131e84a4a@linaro.org>
+Date: Tue, 20 Feb 2024 13:20:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 14/21] pc-bios/README: correct typos
+Subject: Re: [PATCH v1 15/21] qapi/ui: correct typos
 Content-Language: en-US
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+To: Markus Armbruster <armbru@redhat.com>,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Eric Blake <eblake@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
- <300815e3494a5f016137a09f331bc4137f1ed9ff.1708419115.git.manos.pitsidianakis@linaro.org>
+ <2b12236539211bfa887364cf7b621586addbb42e.1708419115.git.manos.pitsidianakis@linaro.org>
+ <87a5nvcw0p.fsf@pond.sub.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <300815e3494a5f016137a09f331bc4137f1ed9ff.1708419115.git.manos.pitsidianakis@linaro.org>
+In-Reply-To: <87a5nvcw0p.fsf@pond.sub.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42c.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -85,18 +88,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 12:19:01 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 12:20:19 -0000
 
-On 20/2/24 09:52, Manos Pitsidianakis wrote:
-> Correct typos automatically found with the `typos` tool
-> <https://crates.io/crates/typos>
+On 20/2/24 10:41, Markus Armbruster wrote:
+> Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
 > 
-> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-> ---
->   pc-bios/README | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>> Correct typos automatically found with the `typos` tool
+>> <https://crates.io/crates/typos>
+>>
+>> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+>> ---
+>>   qapi/ui.json | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/qapi/ui.json b/qapi/ui.json
+>> index b6d7e142b7..1448eaca73 100644
+>> --- a/qapi/ui.json
+>> +++ b/qapi/ui.json
+>> @@ -63,7 +63,7 @@
+>>   ##
+>>   # @SetPasswordOptionsVnc:
+>>   #
+>> -# Options for set_password specific to the VNC procotol.
+>> +# Options for set_password specific to the VNC protocol.
+>>   #
+>>   # @display: The id of the display where the password should be
+>>   #     changed.  Defaults to the first.
+>> @@ -125,7 +125,7 @@
+>>   ##
+>>   # @ExpirePasswordOptionsVnc:
+>>   #
+>> -# Options for expire_password specific to the VNC procotol.
+>> +# Options for expire_password specific to the VNC protocol.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Too bad, I remember reading few times the procotol, it was
+funny.
 
+>>   #
+>>   # @display: The id of the display where the expiration should be
+>>   #     changed.  Defaults to the first.
+> 
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+> 
+> 
 
 
