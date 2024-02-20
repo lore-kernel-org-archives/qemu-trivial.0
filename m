@@ -1,33 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcU27-0007q2-FP
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 12:35:55 -0500
+	id 1rcVdk-0004Gd-Mm
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 14:18:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rcU25-0007pV-K4; Tue, 20 Feb 2024 12:35:53 -0500
+ id 1rcVdi-0004Eg-C4; Tue, 20 Feb 2024 14:18:50 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rcU23-0004Ab-FC; Tue, 20 Feb 2024 12:35:53 -0500
+ id 1rcVdf-00056u-PU; Tue, 20 Feb 2024 14:18:49 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id F2C214F090;
- Tue, 20 Feb 2024 20:36:07 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 5C0CE4F154;
+ Tue, 20 Feb 2024 22:19:03 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id C310F85499;
- Tue, 20 Feb 2024 20:35:47 +0300 (MSK)
-Message-ID: <0049ecc3-f3f9-4668-a13f-11120a7e8627@tls.msk.ru>
-Date: Tue, 20 Feb 2024 20:35:47 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 5D82585555;
+ Tue, 20 Feb 2024 22:18:42 +0300 (MSK)
+Message-ID: <e3b3b720-96e3-42dc-8e94-3d875e89c26f@tls.msk.ru>
+Date: Tue, 20 Feb 2024 22:18:42 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 03/21] Xen headers: correct typos
+Subject: Re: [PATCH v1 00/21] Trivial tree wide typo fixes
 Content-Language: en-US
 To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
- Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
- xen-devel@lists.xenproject.org
+Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
- <dca380ada7f7eabfb473828eccafc2902b1985b7.1708419115.git.manos.pitsidianakis@linaro.org>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
  xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
@@ -53,9 +50,9 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <dca380ada7f7eabfb473828eccafc2902b1985b7.1708419115.git.manos.pitsidianakis@linaro.org>
+In-Reply-To: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
 X-Spam_score_int: -68
@@ -76,30 +73,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 17:35:54 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 19:18:50 -0000
 
-20.02.2024 11:52, Manos Pitsidianakis пишет:
-> Correct typos automatically found with the `typos` tool
-> <https://crates.io/crates/typos>
-> 
-> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-> ---
->   include/hw/xen/interface/arch-x86/xen-x86_64.h | 2 +-
->   include/hw/xen/interface/arch-x86/xen.h        | 2 +-
->   include/hw/xen/interface/event_channel.h       | 2 +-
->   include/hw/xen/interface/grant_table.h         | 2 +-
->   include/hw/xen/interface/hvm/hvm_op.h          | 2 +-
->   include/hw/xen/interface/io/blkif.h            | 4 ++--
->   include/hw/xen/interface/io/fbif.h             | 2 +-
->   include/hw/xen/interface/io/kbdif.h            | 2 +-
->   include/hw/xen/interface/io/ring.h             | 2 +-
->   include/hw/xen/interface/memory.h              | 2 +-
->   include/hw/xen/interface/physdev.h             | 4 ++--
->   include/hw/xen/interface/xen.h                 | 4 ++--
->   12 files changed, 15 insertions(+), 15 deletions(-)
+20.02.2024 11:52, Manos Pitsidianakis wrote:
+..
 
-include/hw/xen/ is imported from xen, IIRC it should not be edited
-directly in qemu.
+So I picked up this series, to reduce the list SPAM.
+With the following details:
 
-/mjt
+>    docs: correct typos
+
+fixed "the historical behaviour"
+(why my spell checker continues marking "behaviour"?
+
+>    tests: correct typos
+>    Xen headers: correct typos
+
+*not* picked up
+
+>    accel/tcg: correct typos
+>    loongson3: correct typos
+>    ppc: correct typos
+
+remove 2 hooks "arbitrer" as suggested by BALATON
+
+>    sh4: correct typos
+>    include/exec/memory.h: correct typos
+>    include/exec/plugin-gen.h: correct typos
+
+*not* picked up
+
+>    hw/arm/omap.h: correct typos
+
+fix comment style
+
+>    hw/cxl/cxl_device.h: correct typos
+>    hw/net/npcm_gmac.h: correct typos
+>    hw/riscv/virt.h: correct typos
+>    pc-bios/README: correct typos
+>    qapi/ui: correct typos
+>    qemu-options.hx: correct typos
+>    ci/gitlab-pipeline-status: correct typos
+>    hexagon: correct typos
+>    m68k: correct typos
+
+correct "covers" as suggested by Thomas
+
+>    s390x: correct typos
+>    target/sparc: correct typos
+
 
