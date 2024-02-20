@@ -1,40 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcTp4-0003Gt-5Z
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 12:22:26 -0500
+	id 1rcU27-0007q2-FP
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 12:35:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rcTp2-0003GJ-Cn; Tue, 20 Feb 2024 12:22:24 -0500
+ id 1rcU25-0007pV-K4; Tue, 20 Feb 2024 12:35:53 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rcTp0-0001ng-Kd; Tue, 20 Feb 2024 12:22:24 -0500
+ id 1rcU23-0004Ab-FC; Tue, 20 Feb 2024 12:35:53 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 6A4404F088;
- Tue, 20 Feb 2024 20:22:32 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id F2C214F090;
+ Tue, 20 Feb 2024 20:36:07 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 18CA185485;
- Tue, 20 Feb 2024 20:22:12 +0300 (MSK)
-Message-ID: <83c9cdfa-c60e-4215-9d7d-0dcc43fed96a@tls.msk.ru>
-Date: Tue, 20 Feb 2024 20:22:11 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id C310F85499;
+ Tue, 20 Feb 2024 20:35:47 +0300 (MSK)
+Message-ID: <0049ecc3-f3f9-4668-a13f-11120a7e8627@tls.msk.ru>
+Date: Tue, 20 Feb 2024 20:35:47 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 01/21] docs: correct typos
+Subject: Re: [PATCH v1 03/21] Xen headers: correct typos
 Content-Language: en-US
 To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- =?UTF-8?Q?Alex_Benn_=C3=A9_e?= <alex.bennee@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud_=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
- "Hongren (Zenithal) Zheng" <i@zenithal.me>,
- "Canokeys.org" <contact@canokeys.org>
+ qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ xen-devel@lists.xenproject.org
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
- <135bbfcb6dd09377cfd39fb73c862cd0fb66bb20.1708419115.git.manos.pitsidianakis@linaro.org>
- <20240220053538-mutt-send-email-mst@kernel.org>
- <95hul.sppswhjb0hah@linaro.org>
+ <dca380ada7f7eabfb473828eccafc2902b1985b7.1708419115.git.manos.pitsidianakis@linaro.org>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
  xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
@@ -60,7 +53,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <95hul.sppswhjb0hah@linaro.org>
+In-Reply-To: <dca380ada7f7eabfb473828eccafc2902b1985b7.1708419115.git.manos.pitsidianakis@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -83,34 +76,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 17:22:24 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 17:35:54 -0000
 
-20.02.2024 13:42, Manos Pitsidianakis wrote:
-..
->>>  Set this variable to 2 to create the pipelines and run all
->>> -the jobs immediately, as was historicaly behaviour
->>> +the jobs immediately, as was historically behaviour
->>
->> as long as we do this let's fix grammar too?
->>
->> as was historically the behaviour
+20.02.2024 11:52, Manos Pitsidianakis пишет:
+> Correct typos automatically found with the `typos` tool
+> <https://crates.io/crates/typos>
 > 
-> After the fact, I think it should be "as was historical behaviour".
+> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> ---
+>   include/hw/xen/interface/arch-x86/xen-x86_64.h | 2 +-
+>   include/hw/xen/interface/arch-x86/xen.h        | 2 +-
+>   include/hw/xen/interface/event_channel.h       | 2 +-
+>   include/hw/xen/interface/grant_table.h         | 2 +-
+>   include/hw/xen/interface/hvm/hvm_op.h          | 2 +-
+>   include/hw/xen/interface/io/blkif.h            | 4 ++--
+>   include/hw/xen/interface/io/fbif.h             | 2 +-
+>   include/hw/xen/interface/io/kbdif.h            | 2 +-
+>   include/hw/xen/interface/io/ring.h             | 2 +-
+>   include/hw/xen/interface/memory.h              | 2 +-
+>   include/hw/xen/interface/physdev.h             | 4 ++--
+>   include/hw/xen/interface/xen.h                 | 4 ++--
+>   12 files changed, 15 insertions(+), 15 deletions(-)
 
-That's exactly what I suggested on IRC right after you sent this patch.
-Plus "the", so the final version reads
-
-  the jobs immediately, as was the historical behaviour
-
-> I will re-spin with only this change, and keep the Acks/RoBs if that is okay with everyone.
-
-If that's the only change, let me just pick it all with the above fix,
-to avoid additional SPAM :)
-
-Either way, I'm picking up this series to trivial-patches@, please
-resend just the "changed changes" if needs to be.
-
-Thanks,
+include/hw/xen/ is imported from xen, IIRC it should not be edited
+directly in qemu.
 
 /mjt
 
