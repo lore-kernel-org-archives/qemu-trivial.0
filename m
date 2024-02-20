@@ -1,70 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcLsd-0000Zw-Bn
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:35 -0500
+	id 1rcLse-0000bG-HE
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:36 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsb-0000VW-N6
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:33 -0500
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ id 1rcLsd-0000aA-Gq
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:35 -0500
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsX-0008FP-Ej
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:33 -0500
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-a28a6cef709so572011266b.1
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:28 -0800 (PST)
+ id 1rcLsZ-0008GC-Ii
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:35 -0500
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-a3cc2f9621aso548712566b.1
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:31 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708419208; x=1709024008; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708419209; x=1709024009; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=p2ZZZfT2mvh9TPWu1HLXXLptGZNuBkeMEgEXTk5vuuQ=;
- b=fBykam33pGzxcYHGA9CQh2lwzHmohd/zv66axXoM7ENs4qgYV9Vm0bkIV3MKJuuqZC
- tv633u9h0AMVtMZQMb6FdQ1/SyVENQFN7h7cv7Rkau9/ZYYA7Q+ac8X6FaLFWeGxlYtN
- sgRHL+Om23dl7aIi+xhdEfeqgOZD8pZ/Us7PTOD6jNYfqAE7o3J7MHIlytRvRCtTazqb
- IpFcHjiQs43x+j1BerhYNLsdg3sD2TDtzVRhWxEIvDI2slwyUi8j9IofQCxfRa/bHgt2
- zRSMYyVzVD7rjCoNbb+kNUisuhcNXLYthSIo5p7idWt+cLD7k3EUhnQ0b8ZHes/Ik/bA
- i+3Q==
+ bh=vAkF59EwY8fUX/a1Fp7pYk/1Z9QBW83OQ84YuPeKoyg=;
+ b=qWeQ/MeNtR1jE9NFHt+d0iHNu7YE7z9BpesW9tNYBvcPDYjs1Ay+73Rc3vk0mGwHmZ
+ G6JPq0hgKXJd0Lv0bDex7vsuFJw98hX39MDZbOm0OKsooVeJSx/9IKcp3Nq29jGk3VmT
+ cZPMOBkOhsxmO8hJxYAth1rOOCDt8gurT1KwM8WvT6SYROLiBC9toTqK4plxpHEkWIrh
+ gl1MoL8jTKGX40al8e0t+iQu4egbIOetKcsrldq64w2BF4bS6IW6f4vF22RpNKLCOGLj
+ cD8OViB2Tat6RBURIOTKSMJKhbczxWE7lB+BW/WjSLG+1Q0kt9FW/YmnVvd69P+LuAtp
+ kt8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708419208; x=1709024008;
+ d=1e100.net; s=20230601; t=1708419209; x=1709024009;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=p2ZZZfT2mvh9TPWu1HLXXLptGZNuBkeMEgEXTk5vuuQ=;
- b=oexdC3tcoe/EBkdRPjgjWEVewordJcbjKqj0qjihGs9RVZOvjkdY7AF6VHa9nRjuB+
- +xWeRhAmOsu7GmZ8bYsIX8c3UFqz0tekbRxII4fEJqX3AFa450phBwm0a7twBkvJ/O/L
- 392I+0TiJMfivPPhW4tpH0dgj/FRQMbdo7GiwG3jdL0BVMFYWTlzt4+QTKYrqPEQhCv9
- SIU+qMFHGTvZkaOfbopn4mCONOcyRrhc5fqyimhWCSf0KcfcoWKZ7U9Y809CQUSGhgBt
- sVm87ZXMOQHCxplcl10Zn2rE5uhIepCCw3scvKkxinU4rS4SbeoHm28UoJRoGZ/l2EDv
- gimw==
-X-Gm-Message-State: AOJu0Yze+wGHbgqReWqhLu4e+Y65aJN0T3u4toA5fZbnHzt2FAapQyqI
- kL779IR0FjIJGTshkP6K4QVYXcCICJAwHOKXtO0eSSfkJTInkEfKM22h2tU8GS2yreYd3bM0JrQ
- wm2A=
-X-Google-Smtp-Source: AGHT+IEStIKtmT5AaMveWofLskvajnkJhh3rrgvT0Ejf+dFSKdpwnsFRJUaDAJEB4tg11nulmDpEIA==
-X-Received: by 2002:a17:906:154e:b0:a3f:2c1:9887 with SMTP id
- c14-20020a170906154e00b00a3f02c19887mr686091ejd.21.1708419207994; 
- Tue, 20 Feb 2024 00:53:27 -0800 (PST)
+ bh=vAkF59EwY8fUX/a1Fp7pYk/1Z9QBW83OQ84YuPeKoyg=;
+ b=FuHYatyPAt14wdb8RAgX5aepmDGJOkTBmGhYcsH2vjPbV5j0N/IkmYrUpfqwOBNwId
+ gIpvcgsFIZ0T43FddjxdhKbd5/A+NnXHEdGBkXvoF/F0LI4y/POLLtSXQIJgjgsQ98R6
+ YXYF6eDeiomwJb5vB83jq7LMbT7Ixv2idR5oWAB3t6O7hKEI2qxO06VxiMHfU19aVLBT
+ 3O1iR0pwAvUMhytyGqh53KgILe78XGYZ7TlEsBlAywGMepIFV1Hdzx1YtZLmWn84ZY56
+ gu3+zlImfDqMJNXnV+QCi4g3xA3Dl2vVmi0sJIJLZHTJutkeeEFGf4MDd6MzfZNsTErP
+ RGXA==
+X-Gm-Message-State: AOJu0YwoB+jF5MIoUmRlsh/8DkO4wE7r7ehgFaW+SVxlo4mD8n5V8OvY
+ S+0PP7ze/kxOdioTqYjHrcO15qfbO3lb/zifyrOZGLyLd0dt7bl1ddSX7ngdz03AkUpIotN2FLx
+ iwVg=
+X-Google-Smtp-Source: AGHT+IFVNV4VkPgHeK7Q36xRCLjSLsuWQVy25lUslwaUxEQijO3QqmVboW0ePWIP8MGtoBOZZfhW4Q==
+X-Received: by 2002:a17:906:1249:b0:a3b:e8f3:25d with SMTP id
+ u9-20020a170906124900b00a3be8f3025dmr8895757eja.75.1708419209539; 
+ Tue, 20 Feb 2024 00:53:29 -0800 (PST)
 Received: from localhost.localdomain (adsl-245.37.6.163.tellas.gr.
  [37.6.163.245]) by smtp.gmail.com with ESMTPSA id
- cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.27
+ cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Feb 2024 00:53:27 -0800 (PST)
+ Tue, 20 Feb 2024 00:53:29 -0800 (PST)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH v1 16/21] qemu-options.hx: correct typos
-Date: Tue, 20 Feb 2024 10:52:23 +0200
-Message-Id: <be8b852de8adb887472d04016eec876264ea5a91.1708419115.git.manos.pitsidianakis@linaro.org>
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>
+Subject: [PATCH v1 17/21] ci/gitlab-pipeline-status: correct typos
+Date: Tue, 20 Feb 2024 10:52:24 +0200
+Message-Id: <5f804fdf765bd656296743315293695ed803ee0c.1708419115.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -84,38 +88,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 08:53:34 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 08:53:35 -0000
 
 Correct typos automatically found with the `typos` tool
 <https://crates.io/crates/typos>
 
 Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- qemu-options.hx | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ scripts/ci/gitlab-pipeline-status | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 8547254dbf..9be1e5817c 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -2468,7 +2468,7 @@ SRST
- 
-     ``to=L``
-         With this option, QEMU will try next available VNC displays,
--        until the number L, if the origianlly defined "-vnc display" is
-+        until the number L, if the originally defined "-vnc display" is
-         not available, e.g. port 5900+display is already used by another
-         application. By default, to=0.
- 
-@@ -5511,7 +5511,7 @@ SRST
-             -object filter-redirector,netdev=hn0,id=redire0,queue=rx,indev=compare_out
-             -object filter-redirector,netdev=hn0,id=redire1,queue=rx,outdev=compare0
-             -object iothread,id=iothread1
--            -object colo-compare,id=comp0,primary_in=compare0-0,secondary_in=compare1,outdev=compare_out0,notify_dev=nofity_way,iothread=iothread1
-+            -object colo-compare,id=comp0,primary_in=compare0-0,secondary_in=compare1,outdev=compare_out0,notify_dev=notify_way,iothread=iothread1
- 
-             secondary:
-             -netdev tap,id=hn0,vhost=off
+diff --git a/scripts/ci/gitlab-pipeline-status b/scripts/ci/gitlab-pipeline-status
+index e3343b0510..39f3c22c66 100755
+--- a/scripts/ci/gitlab-pipeline-status
++++ b/scripts/ci/gitlab-pipeline-status
+@@ -131,7 +131,7 @@ def create_parser():
+                               'checks of the pipeline status.  Defaults '
+                               'to %(default)s'))
+     parser.add_argument('-w', '--wait', action='store_true', default=False,
+-                        help=('Wether to wait, instead of checking only once '
++                        help=('Whether to wait, instead of checking only once '
+                               'the status of a pipeline'))
+     parser.add_argument('-p', '--project-id', type=int, default=11167699,
+                         help=('The GitLab project ID. Defaults to the project '
 -- 
 γαῖα πυρί μιχθήτω
 
