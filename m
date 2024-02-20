@@ -1,79 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcP2n-0006BQ-0z
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 07:16:17 -0500
+	id 1rcP46-0007Bz-SI
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 07:17:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP2l-00063F-6L
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:16:15 -0500
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP45-0007BX-3G
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:17:37 -0500
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP2i-0003x4-AB
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:16:13 -0500
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-33d6bd39470so281603f8f.3
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 04:16:06 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP43-0004GV-AS
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:17:36 -0500
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-33d568fbf62so964155f8f.3
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 04:17:34 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708431365; x=1709036165; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708431453; x=1709036253; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=7H0EUGaobq/gktfL3j8gq54UEmx/OaRDF8Dc0h1AGo4=;
- b=xSh3YC1l6wgmmKjQEsRIuMhSL/8z8XTihXTneX9M5AfmKGeiK7nWuhcqliZ6nstF25
- dwLu6/fYUy4WbPNYA6fhDoLBHLoMmv73792jTXbDU8cqajQ4w0kxNOJlTDQOcwtZMbBe
- JSY/H/6QrX4VLPeTahGKuTP4OsWATxvOAuF1DXOsk/KXgVk4N09y73teh6KIpArS6HHM
- kuSpfdK546GBKhO6sHAwV+O8voJue5HEEc0OSyNvv0r5d5q72kSreJOOr70dm1xOF9TD
- LGbY1jRMxjcfzZU3keBmHJN43ebbRgFCuJNI8ikRGpfp95XVi7WnvF41g1Qj3BzB2HzD
- jLMA==
+ bh=U1sgjxdp+gqDly3StkHne6g68Czi1k258A8i6UHN3j4=;
+ b=veJDFFvsjFVtS5YMFhPcbxG+WrmZdeXP1togJV8/wDCRrblx9ftZIzLAW63LGO0KWe
+ dnKrNilXi5Cg0bj1v4/bmNTYLolxLicGr/5mdcOpQe4qAtuAKLUUsicRlSHuJxXmTcAa
+ upTISz4GwtrtwVuHwYh9ETp50omIuMGFNTHy7me/G136sgjA7Ib6s5rmfS+FaS/YTGEC
+ RPDzc/e0uMUZYIdhMdvBKvjrnsJsv5caIc3aK/Q9+5O7gUEEHu/9w39Zmk8iOuLU5ap5
+ TrbV5e/hG4J5dQ+WJkz5sb7XodzPqedRk/LF14TMGa/6RULNSKDCh7sAT36a4KctSQRd
+ QDbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708431365; x=1709036165;
+ d=1e100.net; s=20230601; t=1708431453; x=1709036253;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7H0EUGaobq/gktfL3j8gq54UEmx/OaRDF8Dc0h1AGo4=;
- b=CMpeR5tVv6d+UARf3Q6yhmvIAOXOXy3v9kEc+lF03D2xSrMyZTI40vXJV3URnGpx8E
- 5g6gTzIkkiKUJXyISrBt05hGS37m1MK8QeqBt4B9AOcMEDAD3r6yWUXddD1M5jsjP+Eo
- fNsQ64ob0XWg1k1vXwiG2xT2QyPfkrATIAP9hYlmoPS7OcO7aTX3B/Nnu3EBrKzjeGNM
- rv6riYsx6orQwLgyf8tcd8a5DDal8ZNh226YzEqOAMV3kPDUKFuHkAjZc6pcEwjRAode
- xw0I0bRZ3gKnFvdQYM/buPbXzXMOxai06L1XqVigpAzAg/MJ5fUz5r7Xf49Ozn9hk+0h
- f7Pw==
+ bh=U1sgjxdp+gqDly3StkHne6g68Czi1k258A8i6UHN3j4=;
+ b=TptxNwq8c2FuP+bqacIbNbMYDEk3CGv7wicjZaUCS4hwiQpXPl5195om30ZMMO4jK9
+ SROP7os2qkakMsYTF6CE1G4vnPPNmhBvf7hZGyf0WHZEI0aL7ov1He01EfdKujsWE/8i
+ bg4Ct+qb3s0Jh3D326pxfDDm4Nl41lC6zxg5tVt38i5SnUb8EbyUU9yfHtpmQk6sdMWP
+ iVsJbYaMa5S9q2K++dwH134wIQ+3DjBiEE5WSnqG3DH6VJB6gUV2ulyVSZ3v5/t8wKJN
+ J4rsvwn4GqZZMJ1QkJ0GYadaJk4SfUglqB9QhK0I9Co0ECvGCJkiGZen9usz0VlQZHkB
+ im+A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXwzjy+5xFSN3eMA6lvcstGhgaF18aVQuM1IJS4llcuU92WAFiHtOPpMQmDJZIb8rcCC7IapS5kEOg9jogptHGkPXQlKORvPw==
-X-Gm-Message-State: AOJu0YxzJ3QKL2Mh4wZ1bnChqrmmrLjkWOQNYUnlmefXazexQlcTYLdl
- K9TVcznm8WeVhHKYGat1693ncg7RB+G/c8IBQvx54dyZXmR4CUFbjhgMQOu+3uA=
-X-Google-Smtp-Source: AGHT+IEbfoRaA1cEvFeZNs9p2UQl9Rr544IQ8ynItBoujHmYFKqjDuvF7TEydPobgeFWnDbrR3uj5Q==
-X-Received: by 2002:a5d:43c4:0:b0:33d:3566:b5c8 with SMTP id
- v4-20020a5d43c4000000b0033d3566b5c8mr6079943wrr.13.1708431364691; 
- Tue, 20 Feb 2024 04:16:04 -0800 (PST)
+ AJvYcCVlc2IZnFq4k/DUuR+34KrN7RaCxJVhOpcfYd9HvaxnoXUAREbv5TgIKeGI5LJAg1rKZuFSvOD0ENfEng2xuUhUhwelFyPpjw==
+X-Gm-Message-State: AOJu0YzFZGW40iKFLTcRlZSrNasTRh5zyh1aJO/l/3l+hrSiQB/RplBa
+ exugwRFxKBuTRbyItagte8k7S7nHVB5hZts2BzdXtK2raqRVTgAS91k3/5yDZQ2/SKvb++6Y2PP
+ a
+X-Google-Smtp-Source: AGHT+IEHj6ucJ9seA0kkSsx7WH+3FZe11x5yevk+DmT5W0xpnsc6TjKevMbvPPpxKGMOSk5jx4vYgQ==
+X-Received: by 2002:a5d:5645:0:b0:33d:3b82:ab2a with SMTP id
+ j5-20020a5d5645000000b0033d3b82ab2amr5046236wrw.19.1708431453631; 
+ Tue, 20 Feb 2024 04:17:33 -0800 (PST)
 Received: from [192.168.69.100] (mek33-h02-176-184-23-7.dsl.sta.abo.bbox.fr.
  [176.184.23.7]) by smtp.gmail.com with ESMTPSA id
- a7-20020adfeec7000000b0033b483d1abcsm13193952wrp.53.2024.02.20.04.16.03
+ a7-20020adfeec7000000b0033b483d1abcsm13193952wrp.53.2024.02.20.04.17.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Feb 2024 04:16:04 -0800 (PST)
-Message-ID: <94650315-da1b-4aac-bec7-84911b9780d2@linaro.org>
-Date: Tue, 20 Feb 2024 13:16:03 +0100
+ Tue, 20 Feb 2024 04:17:33 -0800 (PST)
+Message-ID: <f2caa5fb-5443-474a-b042-f467e737bbc0@linaro.org>
+Date: Tue, 20 Feb 2024 13:17:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 07/21] sh4: correct typos
+Subject: Re: [PATCH v1 09/21] include/exec/plugin-gen.h: correct typos
 Content-Language: en-US
 To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Yoshinori Sato <ysato@users.sourceforge.jp>
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
- <12425416adca441b07f7e3ecd4bb339096a7568b.1708419115.git.manos.pitsidianakis@linaro.org>
+ <d3a488b11917054cf4f13010e0f56d7b619a1257.1708419115.git.manos.pitsidianakis@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <12425416adca441b07f7e3ecd4bb339096a7568b.1708419115.git.manos.pitsidianakis@linaro.org>
+In-Reply-To: <d3a488b11917054cf4f13010e0f56d7b619a1257.1708419115.git.manos.pitsidianakis@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,7 +86,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 12:16:15 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 12:17:37 -0000
 
 On 20/2/24 09:52, Manos Pitsidianakis wrote:
 > Correct typos automatically found with the `typos` tool
@@ -94,10 +94,24 @@ On 20/2/24 09:52, Manos Pitsidianakis wrote:
 > 
 > Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 > ---
->   hw/sh4/sh7750_regs.h | 2 +-
+>   include/exec/plugin-gen.h | 2 +-
 >   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/include/exec/plugin-gen.h b/include/exec/plugin-gen.h
+> index c4552b5061..b18edd6ab4 100644
+> --- a/include/exec/plugin-gen.h
+> +++ b/include/exec/plugin-gen.h
+> @@ -19,7 +19,7 @@ struct DisasContextBase;
+>   #ifdef CONFIG_PLUGIN
+>   
+>   bool plugin_gen_tb_start(CPUState *cpu, const struct DisasContextBase *db,
+> -                         bool supress);
+> +                         bool suppress);
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Could we keep the definition in sync?
 
+accel/tcg/plugin-gen.c:794:bool plugin_gen_tb_start(CPUState *cpu, const 
+DisasContextBase *db,
+accel/tcg/plugin-gen.c-795-                         bool mem_only)
 
 
