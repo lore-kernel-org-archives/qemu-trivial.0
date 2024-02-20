@@ -1,72 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcLsV-0000Db-0E
+	id 1rcLsV-0000Gk-UK
 	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsS-0008TR-Ct
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:24 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ id 1rcLsU-00008z-2V
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:26 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsM-0008Bk-Ma
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:24 -0500
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-a3e75e30d36so347796466b.1
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:16 -0800 (PST)
+ id 1rcLsO-0008Cb-39
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:25 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id
+ a640c23a62f3a-a3e7f7b3d95so239610166b.3
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:19 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708419194; x=1709023994; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708419198; x=1709023998; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=AlrhK1LpCylwWHbR84XlfAvVU7thjLK8TeSDt+aYfm4=;
- b=DzuS7b6Kaz3oWwm42ghKHrbVOzzTb9iKHiCDRPNT3/MIlmwhHv3DUsX5Vw1PYag9JV
- YQjk/sdAZ60JgkCAFIzMCbMlDEAkRh+qJDkeLS+pFEFKO5wc0jXw0E0gg2ZWhPyyayG7
- siXu3oflhTfCo51btuTMu0mjzJiaeNn3Y7U36Az/6ORDQSJPnnOK8pl/KS5kkT0FNlw8
- alsOoSEsjOBPhJv+rr5HSBLXrU9I26jlVPKXtdIBy+rZWpMRqNfWBTnbJQWh6VRs2RMJ
- 1/RlDkkw7NZKUIj7qOqEwiRKg8/wbnygsKxXisnXkUfFjJaCxgojBnZh7qFGbM2OFIir
- w5ug==
+ bh=tkp6172BQTI4XTV/rD4fH3YQaLWfoOyj86RHXRoWlp8=;
+ b=DQmvYRP75IQi1PnWKraQGBp4ckE3Jwxjlz6HtfOlmkI8taj72clejy7BOVMx8tNjz8
+ rK4U7PJc3dvcoDgMCHH8SIbQrpJXjaD4FwUHVTg+GFiLzhh3ePYfWN4ColjwQtVQW5jb
+ iTcuN7OiNBkMeaN96a/uFh5M2yqL3sljT3RKqUbKmO4aKI3ObXNv6JVZOxDdqC02It9j
+ XvfNWSGtq1IV6FGEcQ4TssB6STPh3nU66IqYl8WIRlmPOZQWOaJxA47xl05ppJypQazX
+ Gu7ot3xFpnZoDt7UnKzHJqWqxazlNthXeCHYQyHzoXymXGat7gCYVfjE/fqa5RhvmfO1
+ 4fpw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708419194; x=1709023994;
+ d=1e100.net; s=20230601; t=1708419198; x=1709023998;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=AlrhK1LpCylwWHbR84XlfAvVU7thjLK8TeSDt+aYfm4=;
- b=uwUUxQdSO5kdOL3sbPgmLynZryOm3Jp64vfob1sErrAO8PpVuQ7CxPMsnBU0r4qiPF
- DT4oY0HiB9P8tjUO3dFO3ZmvnIjRJCKBvqsQWiHG1Wxa10Z/5N0NhpfRwm/Yf+oMtFcz
- guwhH9kYn8ZTpmAjIc9c2WIjKPFaEors8z4YFKetMIsb6i4Jqha5UAaerI0nrHiGEqh9
- LgvMtp3z6SjCekPq1hhLnIVIls4nouTYPfACYFTLCDf8MyhZ1dJLBWrNj4eS4rcgRV9D
- GrzHBrDrUpv6DrbUEZk96jk9IJrys/9u5ICUS+E8op6wG1q6kOhwNy2s2yW6uUsjOkhE
- 1L+w==
-X-Gm-Message-State: AOJu0YwvGA8T8/gVevsaIWqh2myeM2LkRwPxgZO5e8CHoYI6HYlLVpc1
- wSBFy2E0GWXAYW8grKLsFqCMIjEzZWqAEyjKOrZygL5UWHGYxIlEVN0NvFyuNxnB9nhZO7VQdyH
- mgNM=
-X-Google-Smtp-Source: AGHT+IHl4xtOrS0f1TSud33kINBocvq8IVU5P6Fd7rZTaSOHaXUkBaY2Tn+O9hOoGpmAsMNrXjcknA==
-X-Received: by 2002:a17:907:7251:b0:a3e:feee:3a5b with SMTP id
- ds17-20020a170907725100b00a3efeee3a5bmr955998ejc.3.1708419194561; 
- Tue, 20 Feb 2024 00:53:14 -0800 (PST)
+ bh=tkp6172BQTI4XTV/rD4fH3YQaLWfoOyj86RHXRoWlp8=;
+ b=mVkFCQEDb1HbTSqZGo6l2287pWHhpEIg6Z+HNje8SxEkA4Pe796ChdpkXZATEbuea5
+ fepJSmYcWCfc/4vtJMj5sSAtY6pBxyo9q8LfPwcc/1yOYFOWiW19FvziboA4bpRo4muH
+ LxwMjgI0BV2vrwfaFfzu81LYKbo+etkNJOQdLCbaLJgxkInMjvY2eBQ9AinoKQgBjTcK
+ Lq3WpHH4hNM5oylVNkrlfV1zVaXjIH5BXgittZACyZRgyDZIZh/aTR1QrUb6E7yuF/8/
+ AWzmzQBwJ508JRrIoY9IkCutKDaRSOfIQvhAPgXkT1lpRzNwfkH+Nl0vp3jwsnUNxKpF
+ rZWA==
+X-Gm-Message-State: AOJu0Yz+/t6NcJITdp3UFHHUO8qEkEMPtTOlj0ZOD83Lg2Xleb8iIYK3
+ ZYazsT6fJkvYW9LzIn/zNY9Nr/1pnOtKhuhHxqsWQYbmaTXrkTxJamDW4OzrCWXl9mn/y1j22Pj
+ e1qY=
+X-Google-Smtp-Source: AGHT+IGpNeTTp5UTwLiCsOCnn/s0uF/RU+a1QpbasPKyoXE8ik9k/ZmKRzpn8vTKGP4srkT//qNC4A==
+X-Received: by 2002:a17:906:c49:b0:a3e:e90f:e258 with SMTP id
+ t9-20020a1709060c4900b00a3ee90fe258mr1390768ejf.16.1708419198264; 
+ Tue, 20 Feb 2024 00:53:18 -0800 (PST)
 Received: from localhost.localdomain (adsl-245.37.6.163.tellas.gr.
  [37.6.163.245]) by smtp.gmail.com with ESMTPSA id
- cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.13
+ cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.17
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Feb 2024 00:53:14 -0800 (PST)
+ Tue, 20 Feb 2024 00:53:18 -0800 (PST)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-ppc@nongnu.org
-Subject: [PATCH v1 06/21] ppc: correct typos
-Date: Tue, 20 Feb 2024 10:52:13 +0200
-Message-Id: <95ffc19d9c3877052a1a6dabf91e139fda183427.1708419115.git.manos.pitsidianakis@linaro.org>
+Cc: qemu-devel@nongnu.org,
+	Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH v1 09/21] include/exec/plugin-gen.h: correct typos
+Date: Tue, 20 Feb 2024 10:52:16 +0200
+Message-Id: <d3a488b11917054cf4f13010e0f56d7b619a1257.1708419115.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x630.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -86,57 +84,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 08:53:24 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 08:53:26 -0000
 
 Correct typos automatically found with the `typos` tool
 <https://crates.io/crates/typos>
 
 Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- include/hw/ppc/ppc4xx.h             | 2 +-
- hw/ppc/ppc405.h                     | 2 +-
- target/ppc/translate/vmx-impl.c.inc | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+ include/exec/plugin-gen.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/ppc/ppc4xx.h b/include/hw/ppc/ppc4xx.h
-index ea7740239b..c4ecb1652f 100644
---- a/include/hw/ppc/ppc4xx.h
-+++ b/include/hw/ppc/ppc4xx.h
-@@ -75,7 +75,7 @@ struct Ppc4xxMalState {
-     uint8_t  rxcnum;
- };
+diff --git a/include/exec/plugin-gen.h b/include/exec/plugin-gen.h
+index c4552b5061..b18edd6ab4 100644
+--- a/include/exec/plugin-gen.h
++++ b/include/exec/plugin-gen.h
+@@ -19,7 +19,7 @@ struct DisasContextBase;
+ #ifdef CONFIG_PLUGIN
  
--/* Peripheral local bus arbitrer */
-+/* Peripheral local bus arbiter */
- #define TYPE_PPC4xx_PLB "ppc4xx-plb"
- OBJECT_DECLARE_SIMPLE_TYPE(Ppc4xxPlbState, PPC4xx_PLB);
- struct Ppc4xxPlbState {
-diff --git a/hw/ppc/ppc405.h b/hw/ppc/ppc405.h
-index 9a4312691e..a39f0caea1 100644
---- a/hw/ppc/ppc405.h
-+++ b/hw/ppc/ppc405.h
-@@ -41,7 +41,7 @@ struct Ppc405PobState {
-     uint32_t besr1;
- };
- 
--/* OPB arbitrer */
-+/* OPB arbiter */
- #define TYPE_PPC405_OPBA "ppc405-opba"
- OBJECT_DECLARE_SIMPLE_TYPE(Ppc405OpbaState, PPC405_OPBA);
- struct Ppc405OpbaState {
-diff --git a/target/ppc/translate/vmx-impl.c.inc b/target/ppc/translate/vmx-impl.c.inc
-index 4b91c3489d..b56e615c24 100644
---- a/target/ppc/translate/vmx-impl.c.inc
-+++ b/target/ppc/translate/vmx-impl.c.inc
-@@ -1183,7 +1183,7 @@ static void glue(gen_, name)(DisasContext *ctx)                         \
- 
- /*
-  * Support for Altivec instructions that use bit 31 (Rc) as an opcode
-- * bit but also use bit 21 as an actual Rc bit.  In general, thse pairs
-+ * bit but also use bit 21 as an actual Rc bit.  In general, these pairs
-  * come from different versions of the ISA, so we must also support a
-  * pair of flags for each instruction.
-  */
+ bool plugin_gen_tb_start(CPUState *cpu, const struct DisasContextBase *db,
+-                         bool supress);
++                         bool suppress);
+ void plugin_gen_tb_end(CPUState *cpu, size_t num_insns);
+ void plugin_gen_insn_start(CPUState *cpu, const struct DisasContextBase *db);
+ void plugin_gen_insn_end(void);
 -- 
 γαῖα πυρί μιχθήτω
 
