@@ -1,70 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcLsk-0000kR-2F
+	id 1rcLsk-0000m2-9L
 	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsg-0000g5-Pz
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:38 -0500
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ id 1rcLsi-0000id-5B
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:40 -0500
+Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsQ-0008DD-IB
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:38 -0500
-Received: by mail-ej1-x62c.google.com with SMTP id
- a640c23a62f3a-a3e8be8a7ddso238018566b.2
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:22 -0800 (PST)
+ id 1rcLse-0008Hy-Oz
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:39 -0500
+Received: by mail-ej1-x62f.google.com with SMTP id
+ a640c23a62f3a-a3e4765c86eso299636566b.0
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:36 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708419200; x=1709024000; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708419215; x=1709024015; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=wInO8bPcUIy1thV+iCEEHgOMyRBvhF+gY8bxTe/IrWw=;
- b=tGsV/9nYK6KGO4LofCwDwwVgJSsrhx7luTmm/pG9ULXII7EbDPTuNOPGPiL2wP2Nev
- aIzMhdO1gprBauDsC2myCXvtyO/+dTnYtDrktwVIQ4f69u3b6PPoP0MKqC6b8OGcOZip
- 8ks7qTcDetjZOZOO5xjxPfd54z1bHI/n6jClh0jIA3ZrJLzgaXJbKqfcmNzJFQKbcmKK
- /OcP0qgspzUApuJEQoeaev74voMv0RciL0o1KefSPAVgfNsdjgu0neWn+gcdwvxonxTP
- EkZ0iGS/sgZlBQQvs/ZFyN9/dKVuvDjRVkmOilfkK5jtQPpLCNmoTGhHd/lr/sMzs++Z
- PnpA==
+ bh=GDgHSGvtF7qGWqMyv82hrdTgzPdhn+1HJ5vS2mvdT+k=;
+ b=WFs8ucruAXeC3ZWMKBzM8JO8YHKEN6OVm6dPuxfGoCggWu+h2kT4yNwRUx3+2ijAG5
+ HxNNCGy8XjlP9k34lYSla/pj6olcheJqfHpqEEZobRtJ1XRoyUy/HqYu+zqXi3MyqL13
+ Jsd3VONaZNZ0ZzdYRUFurXwXY44y7dLdPfUtXFbEjVZmFL7lelGyqTCAF6qfXtTw4NVJ
+ mnccoNirNMYe5wMNcSPCO+lM4IIyoosGOKKeWISM1DH1Tw9wIXiTe9XaiqgSiONg7Ytl
+ zIxJvFJLhPXsgdPF9wdWfZVlEWzN0hgKnegwjYEgj2qvrxpR7qs2avFe4hKKoF1Rro0g
+ 42tQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708419200; x=1709024000;
+ d=1e100.net; s=20230601; t=1708419215; x=1709024015;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=wInO8bPcUIy1thV+iCEEHgOMyRBvhF+gY8bxTe/IrWw=;
- b=S+bXjVOfWIaZA2ajEDmgLMIgBp3XfPk3E9jwGeczn3E/KNEqffi5OTZt7q7//41pNH
- fBxcRWRfBU6bmqgW+ETPK4UQEMVvfjPKPGaUnD5XU2EOyFmEEP5H/vlWgHy61vxwyM8q
- /Joo+4BlYGmbPoG69A+PCL3wLHDcXnji5lK6/6j0PfA7D4o2Z9dQI6FEoX6bQKcLoI52
- +RlEHn0pP0h15Pi+JcqJcAZulpVrcYN5XigHSulelU7Z48PK0gB44jjs8MfvcBLxiVoK
- +OPNnOv/L/u+8Rh6r4nzq2LfeThm3yhZ98sAS7FQWyd4VZloiiwVOyqXKWWxIZWkCWHM
- z4BQ==
-X-Gm-Message-State: AOJu0Yx3JSMG7nIbzWfL8FGjeOyb0Df4qqmefhbznRJ4JIiDyihn8TmU
- LB/C9XpnclQT9i/4dyh+f6FsjvNDdb79+2dw8YQDlpAvKwfE+4ZbYH57fVJ7Cpo4X1nYj/yC3Vj
- S+fU=
-X-Google-Smtp-Source: AGHT+IHXxMtbuZiVe7Aa8Mle5ntWAs+56CJ3SEwLgEMUnoQh9LyMVjwHfUu5NBXP6rkZvHu1DQv+QA==
-X-Received: by 2002:a17:906:ff53:b0:a3e:c1ec:7bff with SMTP id
- zo19-20020a170906ff5300b00a3ec1ec7bffmr2476895ejb.68.1708419200743; 
- Tue, 20 Feb 2024 00:53:20 -0800 (PST)
+ bh=GDgHSGvtF7qGWqMyv82hrdTgzPdhn+1HJ5vS2mvdT+k=;
+ b=tCqyEnrvvFocxJoxU51R6DRUbrygxzyQw9OUqDpQInCcrPWWN1fbwnRp5z/wxM8yan
+ PJdRD9E7cQ4LSOtrKAikTc/QRTv6R7AcUZ88+VOcmFe6CEYiCKA/4H0mJHIDCgk9AB35
+ ieyk6LklSCZ5V0O6CIJ4WFp+7kbtY/PJE0pIwYkqhlr3QBHaN0epop1CBoEyNn/LvoOA
+ 1KwnrxfP5Ul/Izdhg3CE2cg4b92DmqolySxCJd6sIo4QEkO6OINrQCRK4MgnUqJZjtFu
+ GcxAIUjFOQBu+BgTX0o3xmF+bfzss+CZS8RPpqUNllGiDIAkhwynii8G72LP7RPJzstU
+ +pMQ==
+X-Gm-Message-State: AOJu0Yxj2CWUXWrrhX2SceA9TNXEAXLsqajNq0OHvfXW6zTWbNbLCD4w
+ zWXEEXD3J5oBL3bdiudQC0HG41d757ktsF652v3UzrVUN14qsBPzhaYUD9rSUbV//F3QDAiU/Wl
+ NzjY=
+X-Google-Smtp-Source: AGHT+IF05Jr+3eODfG9nVaaMLbz71kgqZc91A+v3oTf+OAYzS9zC6++fOVnHWqwv1rRNXeKZHLqYuw==
+X-Received: by 2002:a17:907:100b:b0:a3e:876d:1b1 with SMTP id
+ ox11-20020a170907100b00b00a3e876d01b1mr3944482ejb.20.1708419214949; 
+ Tue, 20 Feb 2024 00:53:34 -0800 (PST)
 Received: from localhost.localdomain (adsl-245.37.6.163.tellas.gr.
  [37.6.163.245]) by smtp.gmail.com with ESMTPSA id
- cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.19
+ cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Feb 2024 00:53:20 -0800 (PST)
+ Tue, 20 Feb 2024 00:53:34 -0800 (PST)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-trivial@nongnu.org
 Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Jonathan Cameron <jonathan.cameron@huawei.com>, Fan Ni <fan.ni@samsung.com>
-Subject: [PATCH v1 11/21] hw/cxl/cxl_device.h: correct typos
-Date: Tue, 20 Feb 2024 10:52:18 +0200
-Message-Id: <76ecf49e448d00c6b1b09446c832e007dd1f811a.1708419115.git.manos.pitsidianakis@linaro.org>
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Artyom Tarasenko <atar4qemu@gmail.com>
+Subject: [PATCH v1 21/21] target/sparc: correct typos
+Date: Tue, 20 Feb 2024 10:52:28 +0200
+Message-Id: <deda57f7d7dde2b88e2975ed6dee6cd85fb0ff96.1708419115.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -84,38 +85,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 08:53:39 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 08:53:40 -0000
 
 Correct typos automatically found with the `typos` tool
 <https://crates.io/crates/typos>
 
 Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- include/hw/cxl/cxl_device.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ target/sparc/asi.h | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/include/hw/cxl/cxl_device.h b/include/hw/cxl/cxl_device.h
-index d8e184c4ba..279b276bda 100644
---- a/include/hw/cxl/cxl_device.h
-+++ b/include/hw/cxl/cxl_device.h
-@@ -268,7 +268,7 @@ void cxl_event_set_status(CXLDeviceState *cxl_dstate, CXLEventLogType log_type,
- /*
-  * Helper macro to initialize capability headers for CXL devices.
-  *
-- * In CXL r3.1 Section 8.2.8.2: CXL Device Capablity Header Register, this is
-+ * In CXL r3.1 Section 8.2.8.2: CXL Device Capability Header Register, this is
-  * listed as a 128b register, but in CXL r3.1 Section 8.2.8: CXL Device Register
-  * Interface, it says:
-  * > No registers defined in Section 8.2.8 are larger than 64-bits wide so that
-@@ -276,7 +276,7 @@ void cxl_event_set_status(CXLDeviceState *cxl_dstate, CXLEventLogType log_type,
-  * > followed, the behavior is undefined.
-  *
-  * > To illustrate how the fields fit together, the layouts ... are shown as
-- * > wider than a 64 bit register. Implemenations are expected to use any size
-+ * > wider than a 64 bit register. Implementations are expected to use any size
-  * > accesses for this information up to 64 bits without lost of functionality
-  *
-  * Here we've chosen to make it 4 dwords.
+diff --git a/target/sparc/asi.h b/target/sparc/asi.h
+index 3270ed0c7f..a66829674b 100644
+--- a/target/sparc/asi.h
++++ b/target/sparc/asi.h
+@@ -145,14 +145,14 @@
+  * and later ASIs.
+  */
+ #define ASI_REAL                0x14 /* Real address, cacheable          */
+-#define ASI_PHYS_USE_EC		0x14 /* PADDR, E-cachable		*/
+-#define ASI_REAL_IO             0x15 /* Real address, non-cachable      */
++#define ASI_PHYS_USE_EC		0x14 /* PADDR, E-cacheable		*/
++#define ASI_REAL_IO             0x15 /* Real address, non-cacheable      */
+ #define ASI_PHYS_BYPASS_EC_E	0x15 /* PADDR, E-bit			*/
+ #define ASI_BLK_AIUP_4V		0x16 /* (4V) Prim, user, block ld/st	*/
+ #define ASI_BLK_AIUS_4V		0x17 /* (4V) Sec, user, block ld/st	*/
+ #define ASI_REAL_L              0x1c /* Real address, cacheable, LE      */
+-#define ASI_PHYS_USE_EC_L	0x1c /* PADDR, E-cachable, little endian*/
+-#define ASI_REAL_IO_L           0x1d /* Real address, non-cachable, LE  */
++#define ASI_PHYS_USE_EC_L	0x1c /* PADDR, E-cacheable, little endian*/
++#define ASI_REAL_IO_L           0x1d /* Real address, non-cacheable, LE  */
+ #define ASI_PHYS_BYPASS_EC_E_L	0x1d /* PADDR, E-bit, little endian	*/
+ #define ASI_BLK_AIUP_L_4V	0x1e /* (4V) Prim, user, block, l-endian*/
+ #define ASI_BLK_AIUS_L_4V	0x1f /* (4V) Sec, user, block, l-endian	*/
 -- 
 γαῖα πυρί μιχθήτω
 
