@@ -1,70 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcLsV-0000Gk-UK
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:27 -0500
+	id 1rcLsW-0000Hw-3S
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsU-00008z-2V
+ id 1rcLsU-00009A-7o
  for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:26 -0500
-Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsO-0008Cb-39
+ id 1rcLsG-00089K-Ko
  for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:25 -0500
-Received: by mail-ej1-x62b.google.com with SMTP id
- a640c23a62f3a-a3e7f7b3d95so239610166b.3
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:19 -0800 (PST)
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-a34c5ca2537so663602966b.0
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708419198; x=1709023998; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708419190; x=1709023990; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=tkp6172BQTI4XTV/rD4fH3YQaLWfoOyj86RHXRoWlp8=;
- b=DQmvYRP75IQi1PnWKraQGBp4ckE3Jwxjlz6HtfOlmkI8taj72clejy7BOVMx8tNjz8
- rK4U7PJc3dvcoDgMCHH8SIbQrpJXjaD4FwUHVTg+GFiLzhh3ePYfWN4ColjwQtVQW5jb
- iTcuN7OiNBkMeaN96a/uFh5M2yqL3sljT3RKqUbKmO4aKI3ObXNv6JVZOxDdqC02It9j
- XvfNWSGtq1IV6FGEcQ4TssB6STPh3nU66IqYl8WIRlmPOZQWOaJxA47xl05ppJypQazX
- Gu7ot3xFpnZoDt7UnKzHJqWqxazlNthXeCHYQyHzoXymXGat7gCYVfjE/fqa5RhvmfO1
- 4fpw==
+ bh=74P+PKZ6orTLj/5plkkdrxWuHnGI5wedPF2+fgfkjP0=;
+ b=IProdb+RTIenez6FNm/luv2riechFOQy4SBgLCZYgZKC9/ulzrR24aw/F7GEY44GkK
+ gr4WSZrmXAp+nPb4Mn3Jclpi+kAzNMQAQAcMBUsFuFqRA4f5an1DWphZsSCI6SedPzNA
+ TiKMeimSN714tnG+yIWJuEPGPNVt4+GzWqOZMuL2Tb4TyNYm1zjgBGFEZGeyZVWxGAB7
+ yE01gMuyFHbrF8rbCgCmLFhOqg9unUZNVaiH4RbpXHB7SuclHqAT5qz5Kkf3ddldCboo
+ XmQ2oIC8A9guz5bYQomUiQlDNK4hct3sH1KsuEkQo9FnC5k7T34nHQhQaVPZ2UCwbtYG
+ qGPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708419198; x=1709023998;
+ d=1e100.net; s=20230601; t=1708419190; x=1709023990;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=tkp6172BQTI4XTV/rD4fH3YQaLWfoOyj86RHXRoWlp8=;
- b=mVkFCQEDb1HbTSqZGo6l2287pWHhpEIg6Z+HNje8SxEkA4Pe796ChdpkXZATEbuea5
- fepJSmYcWCfc/4vtJMj5sSAtY6pBxyo9q8LfPwcc/1yOYFOWiW19FvziboA4bpRo4muH
- LxwMjgI0BV2vrwfaFfzu81LYKbo+etkNJOQdLCbaLJgxkInMjvY2eBQ9AinoKQgBjTcK
- Lq3WpHH4hNM5oylVNkrlfV1zVaXjIH5BXgittZACyZRgyDZIZh/aTR1QrUb6E7yuF/8/
- AWzmzQBwJ508JRrIoY9IkCutKDaRSOfIQvhAPgXkT1lpRzNwfkH+Nl0vp3jwsnUNxKpF
- rZWA==
-X-Gm-Message-State: AOJu0Yz+/t6NcJITdp3UFHHUO8qEkEMPtTOlj0ZOD83Lg2Xleb8iIYK3
- ZYazsT6fJkvYW9LzIn/zNY9Nr/1pnOtKhuhHxqsWQYbmaTXrkTxJamDW4OzrCWXl9mn/y1j22Pj
- e1qY=
-X-Google-Smtp-Source: AGHT+IGpNeTTp5UTwLiCsOCnn/s0uF/RU+a1QpbasPKyoXE8ik9k/ZmKRzpn8vTKGP4srkT//qNC4A==
-X-Received: by 2002:a17:906:c49:b0:a3e:e90f:e258 with SMTP id
- t9-20020a1709060c4900b00a3ee90fe258mr1390768ejf.16.1708419198264; 
- Tue, 20 Feb 2024 00:53:18 -0800 (PST)
+ bh=74P+PKZ6orTLj/5plkkdrxWuHnGI5wedPF2+fgfkjP0=;
+ b=X86rGYWOaPmPtjVETAqLOzBm19Vs/nA7D6SvgMnKaOXICUuT0uSCPVuW9nt37JofhC
+ zxCWlGfxwrGcuX1ID4TDGu8X0dIUB/wu4Ts4OOkVitt83GtA9FLfgLfr35qtsHs66UQ0
+ JQiGqymH2Dkaun4B6dH/BXG2Skk8LYEGsdc+QKgeI423v1zlq8gBG9UDwGiBOBEV54fx
+ yfFSoxj57gH3ql3TnBI4PZZZkACt4GLd87yFH0WKF96t3jeltsZ2Mc/URsJskvtscEjo
+ uBIoQbsPVkB/N1+Z5IAcfnlbMASkcRuYVB+bplZH4P5h/EB5hQha1Bg8Iq9chO2G3qWz
+ 6ddA==
+X-Gm-Message-State: AOJu0YxA2IXdhzMRCcVryL9EAqFr0XrJXd+kEP4efDiF1r8rQ5VrRAOY
+ 1fFVjVAn9TwfXCYrlB1lGWWIuEkM5RmWUnj03qP5+IixJROHlvRwKxSmqWCidCECiaUhFIci7Cn
+ OeTI=
+X-Google-Smtp-Source: AGHT+IH0/5iDtgDsLwpGN/YmUhRGA55XSWPIdNMzHkhCmG1fsWPv29/an+50Zc6oVwnQznVwV1dJEg==
+X-Received: by 2002:a17:906:57ca:b0:a3f:ce8:1234 with SMTP id
+ u10-20020a17090657ca00b00a3f0ce81234mr403891ejr.68.1708419190280; 
+ Tue, 20 Feb 2024 00:53:10 -0800 (PST)
 Received: from localhost.localdomain (adsl-245.37.6.163.tellas.gr.
  [37.6.163.245]) by smtp.gmail.com with ESMTPSA id
- cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.17
+ cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.09
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Feb 2024 00:53:18 -0800 (PST)
+ Tue, 20 Feb 2024 00:53:10 -0800 (PST)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH v1 09/21] include/exec/plugin-gen.h: correct typos
-Date: Tue, 20 Feb 2024 10:52:16 +0200
-Message-Id: <d3a488b11917054cf4f13010e0f56d7b619a1257.1708419115.git.manos.pitsidianakis@linaro.org>
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ xen-devel@lists.xenproject.org
+Subject: [PATCH v1 03/21] Xen headers: correct typos
+Date: Tue, 20 Feb 2024 10:52:10 +0200
+Message-Id: <dca380ada7f7eabfb473828eccafc2902b1985b7.1708419115.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -91,22 +93,196 @@ Correct typos automatically found with the `typos` tool
 
 Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- include/exec/plugin-gen.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/hw/xen/interface/arch-x86/xen-x86_64.h | 2 +-
+ include/hw/xen/interface/arch-x86/xen.h        | 2 +-
+ include/hw/xen/interface/event_channel.h       | 2 +-
+ include/hw/xen/interface/grant_table.h         | 2 +-
+ include/hw/xen/interface/hvm/hvm_op.h          | 2 +-
+ include/hw/xen/interface/io/blkif.h            | 4 ++--
+ include/hw/xen/interface/io/fbif.h             | 2 +-
+ include/hw/xen/interface/io/kbdif.h            | 2 +-
+ include/hw/xen/interface/io/ring.h             | 2 +-
+ include/hw/xen/interface/memory.h              | 2 +-
+ include/hw/xen/interface/physdev.h             | 4 ++--
+ include/hw/xen/interface/xen.h                 | 4 ++--
+ 12 files changed, 15 insertions(+), 15 deletions(-)
 
-diff --git a/include/exec/plugin-gen.h b/include/exec/plugin-gen.h
-index c4552b5061..b18edd6ab4 100644
---- a/include/exec/plugin-gen.h
-+++ b/include/exec/plugin-gen.h
-@@ -19,7 +19,7 @@ struct DisasContextBase;
- #ifdef CONFIG_PLUGIN
+diff --git a/include/hw/xen/interface/arch-x86/xen-x86_64.h b/include/hw/xen/interface/arch-x86/xen-x86_64.h
+index 5d9035ed22..3e94eeb0bf 100644
+--- a/include/hw/xen/interface/arch-x86/xen-x86_64.h
++++ b/include/hw/xen/interface/arch-x86/xen-x86_64.h
+@@ -89,7 +89,7 @@
+  *   RING1 -> RING3 kernel mode.
+  *   RING2 -> RING3 kernel mode.
+  *   RING3 -> RING3 user mode.
+- * However RING0 indicates that the guest kernel should return to iteself
++ * However RING0 indicates that the guest kernel should return to itself
+  * directly with
+  *      orb   $3,1*8(%rsp)
+  *      iretq
+diff --git a/include/hw/xen/interface/arch-x86/xen.h b/include/hw/xen/interface/arch-x86/xen.h
+index c0f4551247..323bd06a63 100644
+--- a/include/hw/xen/interface/arch-x86/xen.h
++++ b/include/hw/xen/interface/arch-x86/xen.h
+@@ -156,7 +156,7 @@ typedef uint64_t tsc_timestamp_t; /* RDTSC timestamp */
+  * information in this structure is updated, the fields read include: fpu_ctxt
+  * (if VGCT_I387_VALID is set), flags, user_regs and debugreg[*].
+  *
+- * Note: VCPUOP_initialise for HVM guests is non-symetric with
++ * Note: VCPUOP_initialise for HVM guests is non-symmetric with
+  * DOMCTL_setvcpucontext, and uses struct vcpu_hvm_context from hvm/hvm_vcpu.h
+  */
+ struct vcpu_guest_context {
+diff --git a/include/hw/xen/interface/event_channel.h b/include/hw/xen/interface/event_channel.h
+index 0d91a1c4af..d446863230 100644
+--- a/include/hw/xen/interface/event_channel.h
++++ b/include/hw/xen/interface/event_channel.h
+@@ -302,7 +302,7 @@ typedef struct evtchn_set_priority evtchn_set_priority_t;
+  * ` enum neg_errnoval
+  * ` HYPERVISOR_event_channel_op_compat(struct evtchn_op *op)
+  * `
+- * Superceded by new event_channel_op() hypercall since 0x00030202.
++ * Superseded by new event_channel_op() hypercall since 0x00030202.
+  */
+ struct evtchn_op {
+     uint32_t cmd; /* enum event_channel_op */
+diff --git a/include/hw/xen/interface/grant_table.h b/include/hw/xen/interface/grant_table.h
+index 1dfa17a6d0..7652e8bf81 100644
+--- a/include/hw/xen/interface/grant_table.h
++++ b/include/hw/xen/interface/grant_table.h
+@@ -607,7 +607,7 @@ DEFINE_XEN_GUEST_HANDLE(gnttab_cache_flush_t);
+  /*
+   * GNTMAP_contains_pte subflag:
+   *  0 => This map request contains a host virtual address.
+-  *  1 => This map request contains the machine addess of the PTE to update.
++  *  1 => This map request contains the machine address of the PTE to update.
+   */
+ #define _GNTMAP_contains_pte    (4)
+ #define GNTMAP_contains_pte     (1<<_GNTMAP_contains_pte)
+diff --git a/include/hw/xen/interface/hvm/hvm_op.h b/include/hw/xen/interface/hvm/hvm_op.h
+index e22adf0319..3defe1c108 100644
+--- a/include/hw/xen/interface/hvm/hvm_op.h
++++ b/include/hw/xen/interface/hvm/hvm_op.h
+@@ -337,7 +337,7 @@ struct xen_hvm_altp2m_op {
+ #define HVMOP_altp2m_vcpu_disable_notify  13
+ /* Get the active vcpu p2m index */
+ #define HVMOP_altp2m_get_p2m_idx          14
+-/* Set the "Supress #VE" bit for a range of pages */
++/* Set the "Suppress #VE" bit for a range of pages */
+ #define HVMOP_altp2m_set_suppress_ve_multi 15
+ /* Set visibility for a given altp2m view */
+ #define HVMOP_altp2m_set_visibility       16
+diff --git a/include/hw/xen/interface/io/blkif.h b/include/hw/xen/interface/io/blkif.h
+index 22f1eef0c0..4356956975 100644
+--- a/include/hw/xen/interface/io/blkif.h
++++ b/include/hw/xen/interface/io/blkif.h
+@@ -42,7 +42,7 @@
+  * All data in the XenStore is stored as strings.  Nodes specifying numeric
+  * values are encoded in decimal.  Integer value ranges listed below are
+  * expressed as fixed sized integer types capable of storing the conversion
+- * of a properly formated node string, without loss of information.
++ * of a properly formatted node string, without loss of information.
+  *
+  * Any specified default value is in effect if the corresponding XenBus node
+  * is not present in the XenStore.
+@@ -406,7 +406,7 @@
+  *     further requests may reuse these grants and require write permissions.
+  * (9) Linux implementation doesn't have a limit on the maximum number of
+  *     grants that can be persistently mapped in the frontend driver, but
+- *     due to the frontent driver implementation it should never be bigger
++ *     due to the frontend driver implementation it should never be bigger
+  *     than RING_SIZE * BLKIF_MAX_SEGMENTS_PER_REQUEST.
+  *(10) The discard-secure property may be present and will be set to 1 if the
+  *     backing device supports secure discard.
+diff --git a/include/hw/xen/interface/io/fbif.h b/include/hw/xen/interface/io/fbif.h
+index 93c73195d8..46046f6775 100644
+--- a/include/hw/xen/interface/io/fbif.h
++++ b/include/hw/xen/interface/io/fbif.h
+@@ -72,7 +72,7 @@ union xenfb_out_event
+  * just ignore it.  Frontends that use the advice should immediately
+  * refresh the framebuffer (and send an update notification event if
+  * those have been requested), then use the update frequency to guide
+- * their periodical refreshs.
++ * their periodical refresh.
+  */
+ #define XENFB_TYPE_REFRESH_PERIOD 1
+ #define XENFB_NO_REFRESH 0
+diff --git a/include/hw/xen/interface/io/kbdif.h b/include/hw/xen/interface/io/kbdif.h
+index 4bde6b3821..5794cc33f8 100644
+--- a/include/hw/xen/interface/io/kbdif.h
++++ b/include/hw/xen/interface/io/kbdif.h
+@@ -22,7 +22,7 @@
+  * All data in XenStore is stored as strings.  Nodes specifying numeric
+  * values are encoded in decimal. Integer value ranges listed below are
+  * expressed as fixed sized integer types capable of storing the conversion
+- * of a properly formated node string, without loss of information.
++ * of a properly formatted node string, without loss of information.
+  *
+  *****************************************************************************
+  *                            Backend XenBus Nodes
+diff --git a/include/hw/xen/interface/io/ring.h b/include/hw/xen/interface/io/ring.h
+index 025939278b..6d8f63d7a5 100644
+--- a/include/hw/xen/interface/io/ring.h
++++ b/include/hw/xen/interface/io/ring.h
+@@ -145,7 +145,7 @@ typedef struct __name##_back_ring __name##_back_ring_t
+  *
+  * N.B. these macros do NO INTERLOCKS OR FLOW CONTROL.
+  * This is OK in 1-for-1 request-response situations where the
+- * requestor (front end) never has more than RING_SIZE()-1
++ * requester (front end) never has more than RING_SIZE()-1
+  * outstanding requests.
+  */
  
- bool plugin_gen_tb_start(CPUState *cpu, const struct DisasContextBase *db,
--                         bool supress);
-+                         bool suppress);
- void plugin_gen_tb_end(CPUState *cpu, size_t num_insns);
- void plugin_gen_insn_start(CPUState *cpu, const struct DisasContextBase *db);
- void plugin_gen_insn_end(void);
+diff --git a/include/hw/xen/interface/memory.h b/include/hw/xen/interface/memory.h
+index 29cf5c8239..ad11573d90 100644
+--- a/include/hw/xen/interface/memory.h
++++ b/include/hw/xen/interface/memory.h
+@@ -167,7 +167,7 @@ struct xen_machphys_mfn_list {
+ 
+     /*
+      * Pointer to buffer to fill with list of extent starts. If there are
+-     * any large discontiguities in the machine address space, 2MB gaps in
++     * any large discontinuities in the machine address space, 2MB gaps in
+      * the machphys table will be represented by an MFN base of zero.
+      */
+     XEN_GUEST_HANDLE(xen_pfn_t) extent_start;
+diff --git a/include/hw/xen/interface/physdev.h b/include/hw/xen/interface/physdev.h
+index f0c0d4727c..053c045cf5 100644
+--- a/include/hw/xen/interface/physdev.h
++++ b/include/hw/xen/interface/physdev.h
+@@ -206,7 +206,7 @@ typedef struct physdev_manage_pci_ext physdev_manage_pci_ext_t;
+ DEFINE_XEN_GUEST_HANDLE(physdev_manage_pci_ext_t);
+ 
+ /*
+- * Argument to physdev_op_compat() hypercall. Superceded by new physdev_op()
++ * Argument to physdev_op_compat() hypercall. Superseded by new physdev_op()
+  * hypercall since 0x00030202.
+  */
+ struct physdev_op {
+@@ -332,7 +332,7 @@ DEFINE_XEN_GUEST_HANDLE(physdev_dbgp_op_t);
+ 
+ #if __XEN_INTERFACE_VERSION__ < 0x00040600
+ /*
+- * These all-capitals physdev operation names are superceded by the new names
++ * These all-capitals physdev operation names are superseded by the new names
+  * (defined above) since interface version 0x00030202. The guard above was
+  * added post-4.5 only though and hence shouldn't check for 0x00030202.
+  */
+diff --git a/include/hw/xen/interface/xen.h b/include/hw/xen/interface/xen.h
+index 920567e006..b8fe746f78 100644
+--- a/include/hw/xen/interface/xen.h
++++ b/include/hw/xen/interface/xen.h
+@@ -733,8 +733,8 @@ struct shared_info {
+      * are delivered by this mechanism:
+      *  1. Bi-directional inter- and intra-domain connections. Domains must
+      *     arrange out-of-band to set up a connection (usually by allocating
+-     *     an unbound 'listener' port and avertising that via a storage service
+-     *     such as xenstore).
++     *     an unbound 'listener' port and advertising that via a storage
++     *     service such as xenstore).
+      *  2. Physical interrupts. A domain with suitable hardware-access
+      *     privileges can bind an event-channel port to a physical interrupt
+      *     source.
 -- 
 γαῖα πυρί μιχθήτω
 
