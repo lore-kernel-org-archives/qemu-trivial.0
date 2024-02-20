@@ -1,78 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcLsP-0008Qo-Dk
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:21 -0500
+	id 1rcLsS-0008Tj-PV
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsM-0008Ky-Ma
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:20 -0500
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ id 1rcLsR-0008Si-4e
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:23 -0500
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsJ-0008A0-1k
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:18 -0500
-Received: by mail-ej1-x62c.google.com with SMTP id
- a640c23a62f3a-a3cc2f9621aso548687266b.1
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:14 -0800 (PST)
+ id 1rcLsM-0008C1-J0
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:22 -0500
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-a3e6f79e83dso273949766b.2
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:18 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708419193; x=1709023993; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708419195; x=1709023995; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Ibal5kJU8cDAhCTBUG3CNnHg6SzZrp5LopRtcroEZos=;
- b=WUQuaAfAUhGXQTJvMQvm45nquw3m7ofKqzS725wKuojj5BWOsdqfbuM54vPXpHQvPG
- 8PSEpRlSNIjWc34eWINWBF5Mi8eht1qUUTR/9TJum3lxe5mpvKdUTXrtK4jAvEUS9S/f
- z8VOHKmOPLNl40RZG/KYVt1fcYwk8K02R5JaKKlXglcASwbXBXLc+Ma69WayYoiipqe4
- FyUBfMD/aXlR/pMpFJtPrNYnRIVbI8NUEvle2/EC2p8kiPT/25htipdXjmaStUHIabuX
- SJHuf/TGg00NIFjqt2O6QVZCriYgUzyyunwXoqOzU6M1uaK3tg3sjwT1EksoFnZOSMS3
- EQRg==
+ bh=w8LOpUQSDLdq/Q7FHXx+eaDcvqKGP+tp/efzoaFLimQ=;
+ b=pw5577pTpXp8k0vN6O1zMaqxu8cIHmD+bmp68hoXP5va+pzHFYOL/uJTbpx/RHjxwS
+ PYSWVlSJrxeg3D517OF9jHQtkHv8kDgOH3RSXWie8FYaZiRj/OXXZe7ZZ0WGr5fA6eL2
+ GTAYsZ38ML2DtCJjYtRpO7xzF9KCsrX1dtKjX2DAqNS5kbnLIW9pH95ch/HrrtdVo/Ok
+ a7gTpcRW/C+d65TEQIoD+HOaVBU6qqQmK8V0CJFvQP6IMSlg9x2WtUV8GWyWm5Z++6OJ
+ zsic+ShfmW1cTz7Lb8NC0ks9/wWF0KRKYUD0uQjVggnUUbtTdul7jS1gRlYcgJ8ig5X3
+ 42KQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708419193; x=1709023993;
+ d=1e100.net; s=20230601; t=1708419195; x=1709023995;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Ibal5kJU8cDAhCTBUG3CNnHg6SzZrp5LopRtcroEZos=;
- b=R+2shsy4uq4+nH43fXyrqOlqIBDSHISjzFggRGxZWLuLxJUwXDo32jl5WE6lynCzED
- r9SpJgQ9AEYobmOqXjZOwZWhvVs/G+0ACHGDYFfoMmHC/pBQ+eJ7kc5IR5zgleKz4Kp8
- a4AQYehl7c4RZw5KjntsJGLVJE0yTktnzvp0gmBGBtqibNtK9foUGrwS7ehEbGx4JmOQ
- KAy8HqFON4q1IAyk/+JCMRCzYUmOHHz9kji9yjJ3ei9UFxqPr+dDXvhA6Ol5s+2Xv3PH
- e0NIjvlzXQFziLS63cBa0pBFVcNR+mBfcdPdaCi/JRKl2nB1cnmteBBqV2DSGlrGscyM
- 0lCA==
-X-Gm-Message-State: AOJu0Yx0N4oQ0DD9aSHc/N1DcSf3zuBBvOWnr+m3zH+tZRbE8b2EWyUl
- 0999lqCwL7EwClfFT0o1z2zfZhLwXfgR94r0WVwcLNQZK/FnLlA5WkbzUQA8EAGr2nmduUQ+zUu
- PEb4=
-X-Google-Smtp-Source: AGHT+IGKrIgTriG0BwstuH6SgcnuLPqF2z//8LNow0szcvdnnCuYsdwmL6TQpxOfiPbwLcyO5AUsrg==
-X-Received: by 2002:a17:906:40cb:b0:a3e:405c:d5d1 with SMTP id
- a11-20020a17090640cb00b00a3e405cd5d1mr4474359ejk.50.1708419193047; 
- Tue, 20 Feb 2024 00:53:13 -0800 (PST)
+ bh=w8LOpUQSDLdq/Q7FHXx+eaDcvqKGP+tp/efzoaFLimQ=;
+ b=X87TiVDfXGVXHvtADJopds2SxxceEQMXnD1Zynjj7tUqxfFeY3sWTUxiDEX/n9tRl8
+ ZShCUFw1a/Lz5XEuv8YPTctvW5lgHgxnwALDM44eymxPxnN1jbvaGYaUyGc0zWwwjmsh
+ oDSUjqk3VZBYFdYJ8C8omQXoJEWMxSQO9yNydakgIeloLYtszODAnxjR5k0mmMOqR1TY
+ fCBjKmipPSaPxOj2hYAn8aKVy2ts9qSgiG5kd269sfZN+e8eriZ758W/5rB4XQ4ReCPx
+ Zk5/5FpTZVrhlgVz4EnH6fgM77pijE+Wdhf5POwTThj4xNTxYXo309laRnKVu/W/+Ppz
+ EwnA==
+X-Gm-Message-State: AOJu0Yx8/caJbn1YkbpNsPCayk4lgXFVGLOGesk1cXzL4F3Sz6KzAXAs
+ TCMSrJ/yQYxNrbHouWeMc7IacBOEKBT3kzDClVZLWJxtGIoqNAy7AlwL5L5Bd+2tGQFc1US4Sr9
+ gAho=
+X-Google-Smtp-Source: AGHT+IG8qqcWkwXHQPyB+uR9bclG1G2vyQ7VRpW2+xiFcPJu44K6+Becb2NE5IJuMLHAhYyUAdVFLg==
+X-Received: by 2002:a17:906:68cb:b0:a3e:482b:1b9b with SMTP id
+ y11-20020a17090668cb00b00a3e482b1b9bmr4588271ejr.75.1708419195707; 
+ Tue, 20 Feb 2024 00:53:15 -0800 (PST)
 Received: from localhost.localdomain (adsl-245.37.6.163.tellas.gr.
  [37.6.163.245]) by smtp.gmail.com with ESMTPSA id
- cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.11
+ cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.14
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Feb 2024 00:53:12 -0800 (PST)
+ Tue, 20 Feb 2024 00:53:15 -0800 (PST)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-trivial@nongnu.org
 Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v1 05/21] loongson3: correct typos
-Date: Tue, 20 Feb 2024 10:52:12 +0200
-Message-Id: <62438f7dd20e0c31450372e5b09ef0a5a5f9b561.1708419115.git.manos.pitsidianakis@linaro.org>
+ Yoshinori Sato <ysato@users.sourceforge.jp>
+Subject: [PATCH v1 07/21] sh4: correct typos
+Date: Tue, 20 Feb 2024 10:52:14 +0200
+Message-Id: <12425416adca441b07f7e3ecd4bb339096a7568b.1708419115.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,38 +84,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 08:53:20 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 08:53:24 -0000
 
 Correct typos automatically found with the `typos` tool
 <https://crates.io/crates/typos>
 
 Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- hw/mips/loongson3_bootp.h | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/sh4/sh7750_regs.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/mips/loongson3_bootp.h b/hw/mips/loongson3_bootp.h
-index d525ab745a..1b0dd3b591 100644
---- a/hw/mips/loongson3_bootp.h
-+++ b/hw/mips/loongson3_bootp.h
-@@ -25,7 +25,7 @@
- struct efi_memory_map_loongson {
-     uint16_t vers;               /* version of efi_memory_map */
-     uint32_t nr_map;             /* number of memory_maps */
--    uint32_t mem_freq;           /* memory frequence */
-+    uint32_t mem_freq;           /* memory frequency */
-     struct mem_map {
-         uint32_t node_id;        /* node_id which memory attached to */
-         uint32_t mem_type;       /* system memory, pci memory, pci io, etc. */
-@@ -156,7 +156,7 @@ struct board_devices {
+diff --git a/hw/sh4/sh7750_regs.h b/hw/sh4/sh7750_regs.h
+index edb5d18f00..946ad7b3aa 100644
+--- a/hw/sh4/sh7750_regs.h
++++ b/hw/sh4/sh7750_regs.h
+@@ -172,7 +172,7 @@
  
- struct loongson_special_attribute {
-     uint16_t vers;               /* version of this special */
--    char special_name[64];       /* special_atribute_name */
-+    char special_name[64];       /* special_attribute_name */
-     uint32_t loongson_special_type; /* type of special device */
-     /* for each device's resource */
-     struct resource_loongson resource[MAX_RESOURCE_NUMBER];
+ 
+ /*
+- * Exeption-related registers
++ * Exception-related registers
+  */
+ 
+ /* Immediate data for TRAPA instruction - TRA */
 -- 
 γαῖα πυρί μιχθήτω
 
