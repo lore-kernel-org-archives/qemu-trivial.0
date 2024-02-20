@@ -1,82 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcKHL-0000rd-SQ
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 02:10:59 -0500
+	id 1rcLs9-000871-RD
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcKHK-0000og-5b
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 02:10:58 -0500
-Received: from mail-ej1-x62f.google.com ([2a00:1450:4864:20::62f])
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1rcLs9-00086l-0G
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:05 -0500
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcKH8-0008JO-Aw
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 02:10:57 -0500
-Received: by mail-ej1-x62f.google.com with SMTP id
- a640c23a62f3a-a3e3a09cd79so226568966b.3
- for <qemu-trivial@nongnu.org>; Mon, 19 Feb 2024 23:10:45 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1rcLs5-000887-P3
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:04 -0500
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-563c2b2bddbso7234027a12.1
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:01 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708413045; x=1709017845; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=v+S6ZJERfThL4wLhWONge+QXGq/6LbhlTg2kdjWmYNg=;
- b=I5wejuz2/fUcuUx5y/PLIEZYg8udlS0ubsFebONQPJGyqm7QJVO/L2Bdp1NQG/PXZe
- V9I1FediOTeG5y92wVDTZMTW2vroIHgVbCPs3P4subumce9gX8SZBB0qYuJeVy1eRJFo
- E7pB8jXMceLgrWhsyNSx3hIaYHGrvop3bYO8sDIwW3vfHrSoegCYF3MpM50mcaTq3JZF
- fiCYyGQK/OeYHsbAcvNRzsJUcEmBSc7Bg7xC7XeUS11BNcj61qklBd0Bx/I12TXagcSf
- nMiOhT310KGBWm2o7h0KyURQfL2+9J0W/JiTa8gyyF8dwgEU17nkdYC1uDnNgMb5LOFQ
- 6erw==
+ d=linaro.org; s=google; t=1708419179; x=1709023979; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=jlABJvEucbY1KeNVifASjWFei49F4VgqUTPNkIySpbE=;
+ b=Oe9gV6QBFvue3q1CZFE0/uNcooqDzYlfj26lb0K4SkpNzsfPG0F1oR+bJbv0So2PO5
+ KxWoxrdYxwuoVIzMT9mGnIGMdc9hcovdVt+iE3YhffT+TqEnfWm5JPivwYd+6vzdwQRS
+ ue129Zb9wf9y9CMm9kyCXMicTlAQPD/y0sbleH53W2nxPnYYhP01ul4mIRFsZOoAEJNQ
+ Wae0zKK0J2VPT5eKAfvzuAwJWttyyMpLcZt8DpDsvTQzfYH0uYvesrCY+TtSZStN/k5O
+ BWw+MfmxzBtw8YruBbUIsX4THRBRk0JdmLHBrbPJlCQFaQbeHm278h0QT2DqLU4ZQBBx
+ dyzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708413045; x=1709017845;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=v+S6ZJERfThL4wLhWONge+QXGq/6LbhlTg2kdjWmYNg=;
- b=aH6hkahwLpIqlST+wbVHgIFwCjhhaCrm7cnGuhsrmzpFTQVmgbCxr6sWwo5/EGMT1c
- CXi8S+DDCYCdXmhJV9YS2VE7lGHPqZ/qVStmn+40sv3szSx1gTEdVdFlEwuKnKhoBo3h
- DzWxFFeU+tpiWBdFDJqGvEFClTKveQbJVCjqhuhvYnaXpRLJ5CDD+RIU72b9EqVWAqWn
- 0fe5HcGqzvpPvhHILrMww+HpSmX/W60DOFd4OiKTAgSupak1xG8qW6C6tV8mnVkDS9Rr
- mznzh3riujelXiHAsjfDMfeGu27PXSxvPvGJYj1IA+AMJJIhk1mKGCUSlnk4HR1/Pbcu
- Awnw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX8cMPJoxA+zQ5rr6ipbt1bxfT0l0+rGVOvmH7crKjBA74pCTETwh6Mn27ckL1IodrCzuS3VlUQW18iLmf3RhVF5v8RErpfWA==
-X-Gm-Message-State: AOJu0Yw3/nCRK4wyb4AB4dPKiWF1ywFRAXawY9jdPVwHBpPQSsuA58Kc
- RoykjTjCU0F395njqMCY8QKxbBH8A0YQXOfNK4veyUPR2gIhpH30znsoDnSgunQ=
-X-Google-Smtp-Source: AGHT+IEr6xEJn0c+v5xmNJyx0k3J5t5yBhNCoOWzRaBU0KZwZs+nNIzx06G601uc7XrZWvddMSScPQ==
-X-Received: by 2002:a17:906:3616:b0:a3e:4e48:43a with SMTP id
- q22-20020a170906361600b00a3e4e48043amr6699497ejb.55.1708413044984; 
- Mon, 19 Feb 2024 23:10:44 -0800 (PST)
-Received: from [192.168.69.100] (mek33-h02-176-184-23-7.dsl.sta.abo.bbox.fr.
- [176.184.23.7]) by smtp.gmail.com with ESMTPSA id
- qw23-20020a170906fcb700b00a3e426149a1sm2878011ejb.50.2024.02.19.23.10.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 19 Feb 2024 23:10:44 -0800 (PST)
-Message-ID: <7cae30fb-2a84-4a59-b7d9-d02c0807cede@linaro.org>
-Date: Tue, 20 Feb 2024 08:10:43 +0100
+ d=1e100.net; s=20230601; t=1708419179; x=1709023979;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=jlABJvEucbY1KeNVifASjWFei49F4VgqUTPNkIySpbE=;
+ b=nq4XfDrQf0J8sMbcX0ykK7mZR/iAwRZ8mP6GlppPk3L+5CMRRlUZmD47eG1Rmis15f
+ LA8IzZ/+cfmKJnk5Qfr0FuYtcRyRBlkfP2Pwd/3j+FDoWF0SAV6g+Maqi7nSe4m5qqBF
+ gdu2VgMO9KWSON4Nn+8BDgPhMZbApCAVVpAnhXtMn05/Z9JWKjekWYAYXlFr0qOCGHtm
+ V05vHgWVxgVCfil0zwWPzuumhpGmzxEnc8jJJ2iKjOqlukTaVmuAxDtAtUHfFRLJSFku
+ boC0psz5+w0OmjX7WliLbJ8pJW9ljEJ9QLiV06cM/B/oh7ecwb3ppDw9/yfTsqfsxH97
+ LzFQ==
+X-Gm-Message-State: AOJu0Yy+zTs4X84ou3c6bU3RxfkNuPe23V8oFzHnlrhPTFARhcJNaKHZ
+ 4NayR67wEOU8ncDCPlCUiymf9IRUeCFqP/VX9Hp9dwM7e6ul9LZAbLrEVfFT12uSS4G7/3bsnRC
+ l+Og=
+X-Google-Smtp-Source: AGHT+IGqpnFauq/AX6zaGfBK2latLhd50JrdS1JcvXGK//hGusSzfFeSKfql7hmCvPWaEqUvMeCkyw==
+X-Received: by 2002:a17:906:b288:b0:a3e:8f38:cdad with SMTP id
+ q8-20020a170906b28800b00a3e8f38cdadmr3084920ejz.70.1708419179430; 
+ Tue, 20 Feb 2024 00:52:59 -0800 (PST)
+Received: from localhost.localdomain (adsl-245.37.6.163.tellas.gr.
+ [37.6.163.245]) by smtp.gmail.com with ESMTPSA id
+ cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.52.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 20 Feb 2024 00:52:59 -0800 (PST)
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH v1 00/21] Trivial tree wide typo fixes
+Date: Tue, 20 Feb 2024 10:52:07 +0200
+Message-Id: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] hw/i386/q35: Include missing 'hw/acpi/acpi.h' header
-Content-Language: en-US
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org
-References: <20240219141412.71418-1-philmd@linaro.org>
- <20240219141412.71418-6-philmd@linaro.org> <ZdQSOiQiRxoEoR58@intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <ZdQSOiQiRxoEoR58@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62f;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62f.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,55 +81,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 07:10:58 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 08:53:05 -0000
 
-On 20/2/24 03:45, Zhao Liu wrote:
-> Hi Philippe,
-> 
-> On Mon, Feb 19, 2024 at 03:14:11PM +0100, Philippe Mathieu-Daudé wrote:
->> Date: Mon, 19 Feb 2024 15:14:11 +0100
->> From: Philippe Mathieu-Daudé <philmd@linaro.org>
->> Subject: [PATCH 5/5] hw/i386/q35: Include missing 'hw/acpi/acpi.h' header
->> X-Mailer: git-send-email 2.41.0
->>
->> "hw/acpi/acpi.h" is implicitly included.
->> Included it
-> 
-> I'm guessing it's an imperative and shouldn't be in passive form. ;-) So,
-> 
-> s/Included/Include/
-> 
->> explicitly to avoid when refactoring headers:
-> 
-> s/to avoid/to avoid the following error/
+Correct typos automatically found with the `typos` tool
+<https://crates.io/crates/typos>
 
-Oops, thanks :)
+Manos Pitsidianakis (21):
+  docs: correct typos
+  tests: correct typos
+  Xen headers: correct typos
+  accel/tcg: correct typos
+  loongson3: correct typos
+  ppc: correct typos
+  sh4: correct typos
+  include/exec/memory.h: correct typos
+  include/exec/plugin-gen.h: correct typos
+  hw/arm/omap.h: correct typos
+  hw/cxl/cxl_device.h: correct typos
+  hw/net/npcm_gmac.h: correct typos
+  hw/riscv/virt.h: correct typos
+  pc-bios/README: correct typos
+  qapi/ui: correct typos
+  qemu-options.hx: correct typos
+  ci/gitlab-pipeline-status: correct typos
+  hexagon: correct typos
+  m68k: correct typos
+  s390x: correct typos
+  target/sparc: correct typos
 
-> 
->>
->> hw/i386/pc_q35.c:209:43: error: use of undeclared identifier 'ACPI_PM_PROP_ACPI_PCIHP_BRIDGE'
->>                                ACPI_PM_PROP_ACPI_PCIHP_BRIDGE,
->>                                ^
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   hw/i386/pc_q35.c | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
->> index d346fa3b1d..a91f414922 100644
->> --- a/hw/i386/pc_q35.c
->> +++ b/hw/i386/pc_q35.c
->> @@ -58,6 +58,7 @@
->>   #include "hw/hyperv/vmbus-bridge.h"
->>   #include "hw/mem/nvdimm.h"
->>   #include "hw/i386/acpi-build.h"
->> +#include "hw/acpi/acpi.h"
->>   #include "target/i386/cpu.h"
-> 
-> Here it is unordered, and similarly, does it need to be sorted
-> alphabetically here?
+ include/exec/memory.h                          | 2 +-
+ include/exec/plugin-gen.h                      | 2 +-
+ include/hw/arm/omap.h                          | 2 +-
+ include/hw/cxl/cxl_device.h                    | 4 ++--
+ include/hw/net/npcm_gmac.h                     | 4 ++--
+ include/hw/ppc/ppc4xx.h                        | 2 +-
+ include/hw/riscv/virt.h                        | 4 ++--
+ include/hw/xen/interface/arch-x86/xen-x86_64.h | 2 +-
+ include/hw/xen/interface/arch-x86/xen.h        | 2 +-
+ include/hw/xen/interface/event_channel.h       | 2 +-
+ include/hw/xen/interface/grant_table.h         | 2 +-
+ include/hw/xen/interface/hvm/hvm_op.h          | 2 +-
+ include/hw/xen/interface/io/blkif.h            | 4 ++--
+ include/hw/xen/interface/io/fbif.h             | 2 +-
+ include/hw/xen/interface/io/kbdif.h            | 2 +-
+ include/hw/xen/interface/io/ring.h             | 2 +-
+ include/hw/xen/interface/memory.h              | 2 +-
+ include/hw/xen/interface/physdev.h             | 4 ++--
+ include/hw/xen/interface/xen.h                 | 4 ++--
+ accel/tcg/ldst_atomicity.c.inc                 | 2 +-
+ docs/devel/ci-jobs.rst.inc                     | 2 +-
+ docs/devel/docs.rst                            | 2 +-
+ docs/devel/testing.rst                         | 2 +-
+ docs/interop/prl-xml.txt                       | 2 +-
+ docs/interop/vhost-user.rst                    | 2 +-
+ docs/system/devices/canokey.rst                | 2 +-
+ hw/mips/loongson3_bootp.h                      | 4 ++--
+ hw/ppc/ppc405.h                                | 2 +-
+ hw/sh4/sh7750_regs.h                           | 2 +-
+ pc-bios/README                                 | 2 +-
+ qapi/ui.json                                   | 4 ++--
+ qemu-options.hx                                | 4 ++--
+ scripts/ci/gitlab-pipeline-status              | 2 +-
+ target/hexagon/idef-parser/macros.inc          | 2 +-
+ target/m68k/cpu.h                              | 7 ++++---
+ target/ppc/translate/vmx-impl.c.inc            | 2 +-
+ target/s390x/cpu_features_def.h.inc            | 2 +-
+ target/sparc/asi.h                             | 8 ++++----
+ tests/avocado/acpi-bits/bits-tests/smbios.py2  | 2 +-
+ tests/avocado/mem-addr-space-check.py          | 6 +++---
+ tests/avocado/reverse_debugging.py             | 2 +-
+ 41 files changed, 58 insertions(+), 57 deletions(-)
 
-It shouldn't hurt ;)
+
+base-commit: da96ad4a6a2ef26c83b15fa95e7fceef5147269c
+-- 
+γαῖα πυρί μιχθήτω
 
 
