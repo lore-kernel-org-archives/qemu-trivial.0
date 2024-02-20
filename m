@@ -1,30 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcVdk-0004Gd-Mm
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 14:18:53 -0500
+	id 1rcVtJ-0007mA-A3
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 14:34:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rcVdi-0004Eg-C4; Tue, 20 Feb 2024 14:18:50 -0500
+ id 1rcVtC-0007h6-Lo; Tue, 20 Feb 2024 14:34:52 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rcVdf-00056u-PU; Tue, 20 Feb 2024 14:18:49 -0500
+ id 1rcVt9-0007zq-Nr; Tue, 20 Feb 2024 14:34:49 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 5C0CE4F154;
- Tue, 20 Feb 2024 22:19:03 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id DC0BE4F168;
+ Tue, 20 Feb 2024 22:35:03 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 5D82585555;
- Tue, 20 Feb 2024 22:18:42 +0300 (MSK)
-Message-ID: <e3b3b720-96e3-42dc-8e94-3d875e89c26f@tls.msk.ru>
-Date: Tue, 20 Feb 2024 22:18:42 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id B921F855D5;
+ Tue, 20 Feb 2024 22:34:43 +0300 (MSK)
+Message-ID: <fbcb6333-fb49-4466-96b1-e0f365f7df9c@tls.msk.ru>
+Date: Tue, 20 Feb 2024 22:34:43 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 00/21] Trivial tree wide typo fixes
+Subject: Re: [PATCH v2] hw/hppa/Kconfig: Fix building with "configure
+ --without-default-devices"
 Content-Language: en-US
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>
-References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Helge Deller <deller@gmx.de>,
+ Richard Henderson <richard.henderson@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org
+References: <20240216091621.32989-1-thuth@redhat.com>
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
  xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
@@ -50,7 +52,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
+In-Reply-To: <20240216091621.32989-1-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -73,53 +75,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 19:18:50 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 19:34:54 -0000
 
-20.02.2024 11:52, Manos Pitsidianakis wrote:
+16.02.2024 12:16, Thomas Huth :
+> When running "configure" with "--without-default-devices", building
+> of qemu-system-hppa currently fails with:
 ..
 
-So I picked up this series, to reduce the list SPAM.
-With the following details:
+Applied to trivial-patches, thanks!
 
->    docs: correct typos
-
-fixed "the historical behaviour"
-(why my spell checker continues marking "behaviour"?
-
->    tests: correct typos
->    Xen headers: correct typos
-
-*not* picked up
-
->    accel/tcg: correct typos
->    loongson3: correct typos
->    ppc: correct typos
-
-remove 2 hooks "arbitrer" as suggested by BALATON
-
->    sh4: correct typos
->    include/exec/memory.h: correct typos
->    include/exec/plugin-gen.h: correct typos
-
-*not* picked up
-
->    hw/arm/omap.h: correct typos
-
-fix comment style
-
->    hw/cxl/cxl_device.h: correct typos
->    hw/net/npcm_gmac.h: correct typos
->    hw/riscv/virt.h: correct typos
->    pc-bios/README: correct typos
->    qapi/ui: correct typos
->    qemu-options.hx: correct typos
->    ci/gitlab-pipeline-status: correct typos
->    hexagon: correct typos
->    m68k: correct typos
-
-correct "covers" as suggested by Thomas
-
->    s390x: correct typos
->    target/sparc: correct typos
-
+/mjt
 
