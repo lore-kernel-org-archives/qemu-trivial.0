@@ -1,81 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcP8r-0003kh-7P
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 07:22:33 -0500
+	id 1rcQrb-0001yH-53
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 09:12:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP8m-0003gR-AK
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:22:28 -0500
-Received: from mail-wr1-x42f.google.com ([2a00:1450:4864:20::42f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcP8k-0005Of-LQ
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 07:22:28 -0500
-Received: by mail-wr1-x42f.google.com with SMTP id
- ffacd0b85a97d-33d146737e6so3308942f8f.0
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 04:22:25 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708431744; x=1709036544; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=120Mbf918CfIjoH9RXejPvN/VltDfd8gHYe9CW7AQaw=;
- b=TVi1cNpbUK6AL16HsYuETOw/rrGMOghQPXswsqMiQ1/t7SDDgLoXUx+PPG19ic4VX9
- znlFFedw/buMxsXpgQakjLuUETeqKyTzknhtcKMnZRe4e3pAkZavaT7ozBhXteuMNU8d
- 54gh5O6vCWg1z2bBk/L1fp98+tt6j+4EQV+utuudQkHzPpcvueAn24VDgO3tIegxkfuV
- rlk/8aeFyHWIdOAKFh7dBTRKf85+tgc7Y6bm3LEhIMZ/HxMClXGXNIkIbeKgxoRCI5fx
- fv2G8RY6BzRKii5O6G6FJcVLP+Qsj0tmUrAruq3cmHKcLaDRzob8cS9ZKojDOxWM/ZxA
- aLiQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708431744; x=1709036544;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=120Mbf918CfIjoH9RXejPvN/VltDfd8gHYe9CW7AQaw=;
- b=OVRKD7nMjerVFby174wA37JgiNn2WgcDa1QquNOpN3j4COhc50GY3kFMUAAOoIwjD8
- tJPSJVHXABWLrB+Epe/cXQxrk8C1yiGtA7XNpAgzeMMCdUinIKuZH74RJtRXmkD7TJU1
- AKR5Bj9SWefQgwLg9Diz6IT1t9bq6ym9AXprhJd7bNPo2qfg1D/4/8URzGskPuVdhs9K
- JZpKn3ACmj+eOFxuoWIcil/ZQnxnp7GSLneQwq3KBCfTHa3kSKR/DebY+Yb5hxTxLusq
- Y4jPsRu68MeLxttVoWtMCwGd113RQCT9kaCHCJKeZjRVLdDQEZp1Ldo+fKR0q/PMcTQA
- 6NLw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW+xkLQAZ7WiXJdgxPQKFGoPPtADb87XhbJdpICvJAGdktOfERmGg60fNtlTL4Nj2RTaLtyZM5s8cqmv7ryhtOM16p6qen3AQ==
-X-Gm-Message-State: AOJu0YyzQR4mYNlV7OJtjgvy9A/BPbD9hTyq/+SBiccbcMtEDfYTrUaS
- fXDdNC+FRswf5KBTvqMsWHsvkv2VkcPzZb4lmKKCWf/fUJ5/gllP1TZozu4XxZo=
-X-Google-Smtp-Source: AGHT+IE84mlVvKFg005XOyWa7JGRGtTAi1BUGHPX+83Y8i8lOAC/FBHhhEOORuWEWlX173XeijANyw==
-X-Received: by 2002:a5d:5645:0:b0:33d:3b82:ab2a with SMTP id
- j5-20020a5d5645000000b0033d3b82ab2amr5055985wrw.19.1708431744271; 
- Tue, 20 Feb 2024 04:22:24 -0800 (PST)
-Received: from [192.168.69.100] (mek33-h02-176-184-23-7.dsl.sta.abo.bbox.fr.
- [176.184.23.7]) by smtp.gmail.com with ESMTPSA id
- a7-20020adfeec7000000b0033b483d1abcsm13193952wrp.53.2024.02.20.04.22.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Feb 2024 04:22:23 -0800 (PST)
-Message-ID: <9383e2a1-f956-4207-8c8e-27b8818444d7@linaro.org>
-Date: Tue, 20 Feb 2024 13:22:22 +0100
+ (Exim 4.90_1) (envelope-from <pavel.dovgalyuk@ispras.ru>)
+ id 1rcLxD-0007z3-Qd; Tue, 20 Feb 2024 03:58:20 -0500
+Received: from mail.ispras.ru ([83.149.199.84])
+ by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <pavel.dovgalyuk@ispras.ru>)
+ id 1rcLxA-0000he-IU; Tue, 20 Feb 2024 03:58:19 -0500
+Received: from [10.12.102.111] (unknown [85.142.117.226])
+ by mail.ispras.ru (Postfix) with ESMTPSA id B3EAE40737C5;
+ Tue, 20 Feb 2024 08:57:50 +0000 (UTC)
+DKIM-Filter: OpenDKIM Filter v2.11.0 mail.ispras.ru B3EAE40737C5
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ispras.ru;
+ s=default; t=1708419470;
+ bh=elkSpOAmlNJJ3p1ebAxvciRm89hULlvZlNqyvN3LONE=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
+ b=fK1nnW6+w2QSND08LkPuBWYDr26+T0CzQuXDMYtIuY8GXBEW7jZI3b7Nb90PSa5e8
+ mpVWxpIxf+8wSCC2AQGi5IyDbqtHhnoUrwXv8BRCBQS9HtvJs89vsrtZBYGxgx4VJ6
+ buPggvMn29XNfI5Gs7GUvQKooRv3eBg6thGHnWGc=
+Message-ID: <26a43eca-4bf3-4b35-a00b-b2b085c8ea8b@ispras.ru>
+Date: Tue, 20 Feb 2024 11:57:50 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 21/21] target/sparc: correct typos
+Subject: Re: [PATCH v1 02/21] tests: correct typos
 Content-Language: en-US
 To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  qemu-trivial@nongnu.org
 Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Artyom Tarasenko <atar4qemu@gmail.com>
+ Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
+ Beraldo Leal <bleal@redhat.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
+ Paolo Bonzini <pbonzini@redhat.com>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
- <deda57f7d7dde2b88e2975ed6dee6cd85fb0ff96.1708419115.git.manos.pitsidianakis@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <deda57f7d7dde2b88e2975ed6dee6cd85fb0ff96.1708419115.git.manos.pitsidianakis@linaro.org>
+ <723e7a4b522cebce583e924fbd965f110cbc2af4.1708419115.git.manos.pitsidianakis@linaro.org>
+From: Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>
+In-Reply-To: <723e7a4b522cebce583e924fbd965f110cbc2af4.1708419115.git.manos.pitsidianakis@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42f;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42f.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=83.149.199.84;
+ envelope-from=pavel.dovgalyuk@ispras.ru; helo=mail.ispras.ru
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 20 Feb 2024 09:12:47 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -87,17 +60,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 12:22:28 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 08:58:23 -0000
 
-On 20/2/24 09:52, Manos Pitsidianakis wrote:
+Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
+
+On 20.02.2024 11:52, Manos Pitsidianakis wrote:
 > Correct typos automatically found with the `typos` tool
 > <https://crates.io/crates/typos>
 > 
 > Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 > ---
->   target/sparc/asi.h | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>   tests/avocado/acpi-bits/bits-tests/smbios.py2 | 2 +-
+>   tests/avocado/mem-addr-space-check.py         | 6 +++---
+>   tests/avocado/reverse_debugging.py            | 2 +-
+>   3 files changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/tests/avocado/acpi-bits/bits-tests/smbios.py2 b/tests/avocado/acpi-bits/bits-tests/smbios.py2
+> index fc623de072..5868a7137a 100644
+> --- a/tests/avocado/acpi-bits/bits-tests/smbios.py2
+> +++ b/tests/avocado/acpi-bits/bits-tests/smbios.py2
+> @@ -1060,7 +1060,7 @@ class EventLogDescriptor(unpack.Struct):
+>               0x16: 'Log Area Reset/Cleared',
+>               0x17: 'System boot',
+>               xrange(0x18, 0x7F): 'Unused, available for assignment',
+> -            xrange(0x80, 0xFE): 'Availalbe for system- and OEM-specific assignments',
+> +            xrange(0x80, 0xFE): 'Available for system- and OEM-specific assignments',
+>               0xFF: 'End of log'
+>           }
+>           yield 'log_type', u.unpack_one('B'), unpack.format_table("{}", _event_log_type_descriptors)
+> diff --git a/tests/avocado/mem-addr-space-check.py b/tests/avocado/mem-addr-space-check.py
+> index 363c3f12a6..af019969c0 100644
+> --- a/tests/avocado/mem-addr-space-check.py
+> +++ b/tests/avocado/mem-addr-space-check.py
+> @@ -165,7 +165,7 @@ def test_phybits_low_tcg_q35_70_amd(self):
+>           For q35-7.0 machines, "above 4G" memory starts are 4G.
+>           pci64_hole size is 32 GiB. Since TCG_PHYS_ADDR_BITS is defined to
+>           be 40, TCG emulated CPUs have maximum of 1 TiB (1024 GiB) of
+> -        directly addressible memory.
+> +        directly addressable memory.
+>           Hence, maxmem value at most can be
+>           1024 GiB - 4 GiB - 1 GiB per slot for alignment - 32 GiB + 0.5 GiB
+>           which is equal to 987.5 GiB. Setting the value to 988 GiB should
+> @@ -190,7 +190,7 @@ def test_phybits_low_tcg_q35_71_amd(self):
+>           AMD_HT_START is defined to be at 1012 GiB. So for q35 machines
+>           version > 7.0 and AMD cpus, instead of 1024 GiB limit for 40 bit
+>           processor address space, it has to be 1012 GiB , that is 12 GiB
+> -        less than the case above in order to accomodate HT hole.
+> +        less than the case above in order to accommodate HT hole.
+>           Make sure QEMU fails when maxmem size is 976 GiB (12 GiB less
+>           than 988 GiB).
+>           """
+> @@ -297,7 +297,7 @@ def test_phybits_ok_tcg_q35_71_amd_41bits(self):
+>           :avocado: tags=arch:x86_64
+>   
+>           AMD processor with 41 bits. Max cpu hw address = 2 TiB.
+> -        Same as above but by setting maxram beween 976 GiB and 992 Gib,
+> +        Same as above but by setting maxram between 976 GiB and 992 Gib,
+>           QEMU should start fine.
+>           """
+>           self.vm.add_args('-S', '-cpu', 'EPYC-v4,phys-bits=41',
+> diff --git a/tests/avocado/reverse_debugging.py b/tests/avocado/reverse_debugging.py
+> index 4cce5a5598..92855a02a5 100644
+> --- a/tests/avocado/reverse_debugging.py
+> +++ b/tests/avocado/reverse_debugging.py
+> @@ -191,7 +191,7 @@ def reverse_debugging(self, shift=7, args=None):
+>           self.check_pc(g, steps[-1])
+>           logger.info('successfully reached %x' % steps[-1])
+>   
+> -        logger.info('exitting gdb and qemu')
+> +        logger.info('exiting gdb and qemu')
+>           vm.shutdown()
+>   
+>   class ReverseDebugging_X86_64(ReverseDebugging):
 
 
