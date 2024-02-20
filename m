@@ -1,81 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcNC7-0003Sd-5V
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 05:17:47 -0500
+	id 1rcNCa-0003Z7-BE
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 05:18:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1rcNC4-0003SA-IA
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 05:17:44 -0500
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ id 1rcNCZ-0003XI-4C
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 05:18:15 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1rcNC3-0006LU-0L
- for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 05:17:44 -0500
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-33d6f26ff33so150066f8f.0
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 02:17:42 -0800 (PST)
+ id 1rcNCX-0006NK-HN
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 05:18:14 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4127011685dso1832125e9.1
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 02:18:13 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708424261; x=1709029061; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708424292; x=1709029092; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
  bh=4dD47USlRE9SCSskFlIhsE3baFMZgQDtxOJr+pWEYaM=;
- b=pOZRhomjgyeMTMl5fn3pariaOUbYqzGPcujZlpwsVariHmT4TkJ9KaFJt4RZ2gmSA0
- pi7Go92mkkb40B6erJV0vUZxpp1wfc42kW4uMw5qCyqhFY2qmbQfYp8Aly2Pm9sh7y9d
- WHS7GgV4zOsd9Da9YxdZtU4nCCDYR8zEz9YswqCSX5pz0nYFIeQtRForJJIMwKz93of4
- UaT5bwE6ow0XDyugdzUf5OBP5gnrd+mPbRigXQVxseCALiTHfufidj389OU5kPmwfewy
- /Wt8IurvvvP3sqAccuj6Z3Ej9BoFUI7h673W2KRlJQeJfCjgzhFykvS8z0lkaPnyxnZf
- YHzQ==
+ b=Cr5bo1/UolsQMniaWoKy/NXWlYFRRK4G8kCEWjr70wpvd7p8w3L7F1+sC+dbwCvGfT
+ 1+W+fx1NbXqEKfvo7Wbm/zvYGvzEZGvBXwtIFciIUl/3X0f8jUUHArzYxKJUTfqbcKB0
+ sgnYK4EO2V1w5QI0E+VqISh88aVFs+z68xOArDI0gzODCp1ARaqpLq34Q+c011GH2C99
+ SVREfLeNIUWj+n4J4ZZ67RakU5PiM8Rp+tRvzmrRjMpmfCeYwU9LddEhrJU1Lgx96x4x
+ xMlQxLTlBSCvOZdb/UlZgy6AkdYTtbRD/oFIpgfI2nyjuHwlvr5itBc46+RGWDCJbMhm
+ HdRA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708424261; x=1709029061;
+ d=1e100.net; s=20230601; t=1708424292; x=1709029092;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
  bh=4dD47USlRE9SCSskFlIhsE3baFMZgQDtxOJr+pWEYaM=;
- b=TYinBZvAlIKuHSsXcucZm03EgLdRxUWR4LTjjKPWAKXRSZTz5GnOuFhSK70091Mlhv
- fn+iwv8vP4yRPc0wNkzOCwBhHfxkaLeeluBWDF9ZYQIHwydOj8xkWReGx9Xehv8zgmbB
- 8fn7jEkktqkMz6Gg8a51FYKN2NzVnAZAohepO2C3bhDsM5nkdAHW8Qlz6xrizQVNciWZ
- +m5h10fj3Bwnb40BkbvwgekMDRR1iigPB+J9EigKdyAbQjdiXH+Q33Yl3Etq/jxO/wB2
- gsHy90ijW2TVZTZ2y2ABcp0ECzku6TE3aD4j1IxzPhdYOwscdwDro8+5uwiccCj481ba
- xAoQ==
-X-Gm-Message-State: AOJu0YxbrUTp7nsWhYrj3zh+A1RbKoVYtXE6YfX0pbS6nufIA/92tUWC
- Bg7Sv08P0+fe1oAZ4tcCA0l/dH1c8RmqL49BT1SqBnvZTQ8sKyLUW4XfHkxaXt8=
-X-Google-Smtp-Source: AGHT+IFW++kiOUvk74B0B07+ddkJbc7OoxxdYHRh4VfQoly76cMUOlLdSYAgMKksV6/gd9vVDV/tEg==
-X-Received: by 2002:adf:cd0d:0:b0:33d:13bc:4fc2 with SMTP id
- w13-20020adfcd0d000000b0033d13bc4fc2mr7906608wrm.27.1708424260797; 
- Tue, 20 Feb 2024 02:17:40 -0800 (PST)
+ b=VjQ/bATKgFP2iK3ec9Ag51sFRqmVrDBao2POmf/azDQhhKB1/nwVZFbaqM3PoSB20q
+ qPgYLDgALO+w2gSlzhL/pHe8uwvFGUNMQHfGr4HNRhKM49WDwdkzlnqc7dgxCNNpcWFO
+ 8Aj9Gf0Y75EO4OW/cOS6SYdw146Sitbl+CRtDxmPId1BduonMNXE2Lfyq7UNq0OGUb8F
+ usF9+C5dILGKi2zzIVU0qxAHXQBSPYNyf5ToMeqI3jFbnD1kVjed1vrvKP/+y8Z+DZpO
+ KnvLB1ASQWVci36a6XTZoXKOIE0QcK4VrnroMaBkIdhZidHJrYs+IY0S33d2+rPdWpPz
+ jdeg==
+X-Gm-Message-State: AOJu0Yx3+LlROKMVYDt/5feUWcJGeJBTaGqqHA+4XAq6/f+r0T8x9AaL
+ Lo5xZ1b4D5aL0Jduc3eNSpR+q5Xay4ntMBd08E9j43btgczWoBnstP9Oqpr+2NQ=
+X-Google-Smtp-Source: AGHT+IFKeje4En4OJW0yyKAkVrq/QTe/033HqKNOi+PNLpD5PN72yNamk4OxsBeHP0hmze2uQyTUGw==
+X-Received: by 2002:a05:600c:1c1e:b0:412:1615:7343 with SMTP id
+ j30-20020a05600c1c1e00b0041216157343mr13535031wms.5.1708424292077; 
+ Tue, 20 Feb 2024 02:18:12 -0800 (PST)
 Received: from draig.lan ([85.9.250.243]) by smtp.gmail.com with ESMTPSA id
- bk30-20020a0560001d9e00b0033cddadde6esm13324007wrb.80.2024.02.20.02.17.40
+ f2-20020adfe902000000b0033cf24700e5sm12898016wrm.39.2024.02.20.02.18.11
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Feb 2024 02:17:40 -0800 (PST)
+ Tue, 20 Feb 2024 02:18:11 -0800 (PST)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 0E5475F8B9;
- Tue, 20 Feb 2024 10:17:40 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 6B8B85F8B9;
+ Tue, 20 Feb 2024 10:18:11 +0000 (GMT)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 Cc: qemu-trivial@nongnu.org,  qemu-devel@nongnu.org,  Michael Tokarev
- <mjt@tls.msk.ru>,  Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>
-Subject: Re: [PATCH v1 04/21] accel/tcg: correct typos
-In-Reply-To: <a7bdde5bf92b22255cb6d280330bab94bdb59a79.1708419115.git.manos.pitsidianakis@linaro.org>
- (Manos Pitsidianakis's message of "Tue, 20 Feb 2024 10:52:11 +0200")
+ <mjt@tls.msk.ru>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,  Thomas
+ Huth <thuth@redhat.com>,  Wainer dos Santos Moschetta
+ <wainersm@redhat.com>,  Beraldo Leal <bleal@redhat.com>,  Peter Maydell
+ <peter.maydell@linaro.org>,  "Michael S. Tsirkin" <mst@redhat.com>,
+ "Hongren (Zenithal) Zheng" <i@zenithal.me>,  "Canokeys.org"
+ <contact@canokeys.org>
+Subject: Re: [PATCH v1 01/21] docs: correct typos
+In-Reply-To: <135bbfcb6dd09377cfd39fb73c862cd0fb66bb20.1708419115.git.manos.pitsidianakis@linaro.org>
+ (Manos Pitsidianakis's message of "Tue, 20 Feb 2024 10:52:08 +0200")
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
- <a7bdde5bf92b22255cb6d280330bab94bdb59a79.1708419115.git.manos.pitsidianakis@linaro.org>
+ <135bbfcb6dd09377cfd39fb73c862cd0fb66bb20.1708419115.git.manos.pitsidianakis@linaro.org>
 User-Agent: mu4e 1.11.28; emacs 29.1
-Date: Tue, 20 Feb 2024 10:17:40 +0000
-Message-ID: <87bk8be8xn.fsf@draig.linaro.org>
+Date: Tue, 20 Feb 2024 10:18:11 +0000
+Message-ID: <875xyje8ws.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,7 +93,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 10:17:44 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 10:18:15 -0000
 
 Manos Pitsidianakis <manos.pitsidianakis@linaro.org> writes:
 
