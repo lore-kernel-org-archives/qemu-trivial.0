@@ -1,54 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcQrb-0001yH-53
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 09:12:51 -0500
+	id 1rcRzB-0003P6-RL
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 10:24:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pavel.dovgalyuk@ispras.ru>)
- id 1rcLxD-0007z3-Qd; Tue, 20 Feb 2024 03:58:20 -0500
-Received: from mail.ispras.ru ([83.149.199.84])
- by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pavel.dovgalyuk@ispras.ru>)
- id 1rcLxA-0000he-IU; Tue, 20 Feb 2024 03:58:19 -0500
-Received: from [10.12.102.111] (unknown [85.142.117.226])
- by mail.ispras.ru (Postfix) with ESMTPSA id B3EAE40737C5;
- Tue, 20 Feb 2024 08:57:50 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.ispras.ru B3EAE40737C5
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ispras.ru;
- s=default; t=1708419470;
- bh=elkSpOAmlNJJ3p1ebAxvciRm89hULlvZlNqyvN3LONE=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=fK1nnW6+w2QSND08LkPuBWYDr26+T0CzQuXDMYtIuY8GXBEW7jZI3b7Nb90PSa5e8
- mpVWxpIxf+8wSCC2AQGi5IyDbqtHhnoUrwXv8BRCBQS9HtvJs89vsrtZBYGxgx4VJ6
- buPggvMn29XNfI5Gs7GUvQKooRv3eBg6thGHnWGc=
-Message-ID: <26a43eca-4bf3-4b35-a00b-b2b085c8ea8b@ispras.ru>
-Date: Tue, 20 Feb 2024 11:57:50 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v1 02/21] tests: correct typos
-Content-Language: en-US
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Cleber Rosa <crosa@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, Pavel Dovgalyuk <pavel.dovgaluk@ispras.ru>,
- Paolo Bonzini <pbonzini@redhat.com>
+ (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
+ id 1rcRz3-0003M7-3v; Tue, 20 Feb 2024 10:24:38 -0500
+Received: from rev.ng ([5.9.113.41])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
+ id 1rcRyw-0006qO-Ld; Tue, 20 Feb 2024 10:24:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
+ s=dkim; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
+ References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
+ Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
+ :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
+ List-Post:List-Owner:List-Archive;
+ bh=i6RY4gecdwbq1NUEYqmf3Ya4Lo6zn+ooot4wMwaeJKg=; b=RVlsvL7IcUXjsXoq69wBAessRd
+ HpHv+eAa/rHcR5jMn1AD8tJNtN7xRjb0+KyQFLM4EPFGebeZEjwRE6whKreiKf/6b3lp4dWDpNWOD
+ +tpmSaA0I/pCooM9q4DukA896H0fqBnFXUqnQFLSfAlzSrjg2OLQzeHiJQyBa0kpeMNI=;
+Date: Tue, 20 Feb 2024 16:24:44 +0100
+From: Anton Johansson <anjo@rev.ng>
+To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, 
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Alessandro Di Federico <ale@rev.ng>
+Subject: Re: [PATCH v1 18/21] hexagon: correct typos
+Message-ID: <gz2izpqkk5fesny6rtnsqka65uhgicafs4kc5zwdkmjobgselr@rdln67afg2pr>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
- <723e7a4b522cebce583e924fbd965f110cbc2af4.1708419115.git.manos.pitsidianakis@linaro.org>
-From: Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>
-In-Reply-To: <723e7a4b522cebce583e924fbd965f110cbc2af4.1708419115.git.manos.pitsidianakis@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=83.149.199.84;
- envelope-from=pavel.dovgalyuk@ispras.ru; helo=mail.ispras.ru
+ <10db19d340ac3f275900f315661904d1aa004949.1708419115.git.manos.pitsidianakis@linaro.org>
+ <529a81a2-792f-4739-965e-6eecffa919b6@linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <529a81a2-792f-4739-965e-6eecffa919b6@linaro.org>
+Received-SPF: pass client-ip=5.9.113.41; envelope-from=anjo@rev.ng; helo=rev.ng
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 20 Feb 2024 09:12:47 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -60,77 +53,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 08:58:23 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 15:24:41 -0000
 
-Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
-
-On 20.02.2024 11:52, Manos Pitsidianakis wrote:
-> Correct typos automatically found with the `typos` tool
-> <https://crates.io/crates/typos>
+On 20/02/24, Philippe Mathieu-Daudé wrote:
+> On 20/2/24 09:52, Manos Pitsidianakis wrote:
+> > Correct typos automatically found with the `typos` tool
+> > <https://crates.io/crates/typos>
+> > 
+> > Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+> > ---
+> >   target/hexagon/idef-parser/macros.inc | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-> ---
->   tests/avocado/acpi-bits/bits-tests/smbios.py2 | 2 +-
->   tests/avocado/mem-addr-space-check.py         | 6 +++---
->   tests/avocado/reverse_debugging.py            | 2 +-
->   3 files changed, 5 insertions(+), 5 deletions(-)
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > 
-> diff --git a/tests/avocado/acpi-bits/bits-tests/smbios.py2 b/tests/avocado/acpi-bits/bits-tests/smbios.py2
-> index fc623de072..5868a7137a 100644
-> --- a/tests/avocado/acpi-bits/bits-tests/smbios.py2
-> +++ b/tests/avocado/acpi-bits/bits-tests/smbios.py2
-> @@ -1060,7 +1060,7 @@ class EventLogDescriptor(unpack.Struct):
->               0x16: 'Log Area Reset/Cleared',
->               0x17: 'System boot',
->               xrange(0x18, 0x7F): 'Unused, available for assignment',
-> -            xrange(0x80, 0xFE): 'Availalbe for system- and OEM-specific assignments',
-> +            xrange(0x80, 0xFE): 'Available for system- and OEM-specific assignments',
->               0xFF: 'End of log'
->           }
->           yield 'log_type', u.unpack_one('B'), unpack.format_table("{}", _event_log_type_descriptors)
-> diff --git a/tests/avocado/mem-addr-space-check.py b/tests/avocado/mem-addr-space-check.py
-> index 363c3f12a6..af019969c0 100644
-> --- a/tests/avocado/mem-addr-space-check.py
-> +++ b/tests/avocado/mem-addr-space-check.py
-> @@ -165,7 +165,7 @@ def test_phybits_low_tcg_q35_70_amd(self):
->           For q35-7.0 machines, "above 4G" memory starts are 4G.
->           pci64_hole size is 32 GiB. Since TCG_PHYS_ADDR_BITS is defined to
->           be 40, TCG emulated CPUs have maximum of 1 TiB (1024 GiB) of
-> -        directly addressible memory.
-> +        directly addressable memory.
->           Hence, maxmem value at most can be
->           1024 GiB - 4 GiB - 1 GiB per slot for alignment - 32 GiB + 0.5 GiB
->           which is equal to 987.5 GiB. Setting the value to 988 GiB should
-> @@ -190,7 +190,7 @@ def test_phybits_low_tcg_q35_71_amd(self):
->           AMD_HT_START is defined to be at 1012 GiB. So for q35 machines
->           version > 7.0 and AMD cpus, instead of 1024 GiB limit for 40 bit
->           processor address space, it has to be 1012 GiB , that is 12 GiB
-> -        less than the case above in order to accomodate HT hole.
-> +        less than the case above in order to accommodate HT hole.
->           Make sure QEMU fails when maxmem size is 976 GiB (12 GiB less
->           than 988 GiB).
->           """
-> @@ -297,7 +297,7 @@ def test_phybits_ok_tcg_q35_71_amd_41bits(self):
->           :avocado: tags=arch:x86_64
->   
->           AMD processor with 41 bits. Max cpu hw address = 2 TiB.
-> -        Same as above but by setting maxram beween 976 GiB and 992 Gib,
-> +        Same as above but by setting maxram between 976 GiB and 992 Gib,
->           QEMU should start fine.
->           """
->           self.vm.add_args('-S', '-cpu', 'EPYC-v4,phys-bits=41',
-> diff --git a/tests/avocado/reverse_debugging.py b/tests/avocado/reverse_debugging.py
-> index 4cce5a5598..92855a02a5 100644
-> --- a/tests/avocado/reverse_debugging.py
-> +++ b/tests/avocado/reverse_debugging.py
-> @@ -191,7 +191,7 @@ def reverse_debugging(self, shift=7, args=None):
->           self.check_pc(g, steps[-1])
->           logger.info('successfully reached %x' % steps[-1])
->   
-> -        logger.info('exitting gdb and qemu')
-> +        logger.info('exiting gdb and qemu')
->           vm.shutdown()
->   
->   class ReverseDebugging_X86_64(ReverseDebugging):
+> 
+Ah nice, havent seen the typos tool before!
 
+Reviewed-by: Anton Johansson <anjo@rev.ng>
 
