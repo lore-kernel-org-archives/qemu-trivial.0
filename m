@@ -1,79 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcLsU-0000AK-EN
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:26 -0500
+	id 1rcLsV-0000Db-0E
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 03:53:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsS-0008TW-JL
+ id 1rcLsS-0008TR-Ct
  for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:24 -0500
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1rcLsM-0008CK-OM
+ id 1rcLsM-0008Bk-Ma
  for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 03:53:24 -0500
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-a3566c0309fso601851366b.1
- for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:18 -0800 (PST)
+Received: by mail-ej1-x630.google.com with SMTP id
+ a640c23a62f3a-a3e75e30d36so347796466b.1
+ for <qemu-trivial@nongnu.org>; Tue, 20 Feb 2024 00:53:16 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708419197; x=1709023997; darn=nongnu.org;
+ d=linaro.org; s=google; t=1708419194; x=1709023994; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=o89E/Ku3KzR64hkojq1CtXI0Qta+vdWxO3OzuZ7eBoY=;
- b=pWJsZVTSXObnowGiGoI+AgoHsUQgh/F4wP446N9Y++va8hY++enuomAdsVgyl2irrE
- 558y7Pyu3dP3vBfz3GDl4wvJZCbc2lju54dREfARTzEUFmlP0pLb+LP4+UQheF+rwMQ0
- Zte/AiwiHtP+oE/2A6XvIUrLWdTjeLvWHCvvJMzJZs6IdWE3cazDpnasNpAYIgTgi2dC
- PqNtUhUiHmu6w7kCTx/daxz0YdeBPBVg0ZyGRpkt+Sq/Fquhs5uhhpMHUU52Jb5JbQFo
- DBKL+OaEWwqeFp4UGCka0qVkO5AGtOKD5nBf+1jrd5tw7a3NepiddsaliYnsgnTApejr
- 7UxA==
+ bh=AlrhK1LpCylwWHbR84XlfAvVU7thjLK8TeSDt+aYfm4=;
+ b=DzuS7b6Kaz3oWwm42ghKHrbVOzzTb9iKHiCDRPNT3/MIlmwhHv3DUsX5Vw1PYag9JV
+ YQjk/sdAZ60JgkCAFIzMCbMlDEAkRh+qJDkeLS+pFEFKO5wc0jXw0E0gg2ZWhPyyayG7
+ siXu3oflhTfCo51btuTMu0mjzJiaeNn3Y7U36Az/6ORDQSJPnnOK8pl/KS5kkT0FNlw8
+ alsOoSEsjOBPhJv+rr5HSBLXrU9I26jlVPKXtdIBy+rZWpMRqNfWBTnbJQWh6VRs2RMJ
+ 1/RlDkkw7NZKUIj7qOqEwiRKg8/wbnygsKxXisnXkUfFjJaCxgojBnZh7qFGbM2OFIir
+ w5ug==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708419197; x=1709023997;
+ d=1e100.net; s=20230601; t=1708419194; x=1709023994;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=o89E/Ku3KzR64hkojq1CtXI0Qta+vdWxO3OzuZ7eBoY=;
- b=ekNByUSFrTFX/s7+mDY47oFAaWeAhf7EoA8ehGvxh62Am8UGy8u6JgyysPwy1QKpMa
- 4tdmwI8Fvhoc8b8zt5W9dLEOGRRdvP+29382VSM78uDC/pzVLNw4r53DqKVH9DXPMjq9
- /4v+rv/AI9sKpKdNZqklG2FthvPIFJ1AWsxPvUE+k18dOWkOYVaqNzNSIp1CnPyCwMQ1
- d91lLqW7yGVqQz1yDkKjvYaM7lAlNJB9dKnXuPvnBdch6IRcBVQvBLPL3707RrXgkgPi
- 1kJJnME1WL+mfjh26dVfipPEANf2AfZ1CInG59W4mtVJ+tYT1XE7Uflrg4++eZIP5zPM
- sxoQ==
-X-Gm-Message-State: AOJu0Yx5JHNEnNx7L/OHFRL1rydAX3ArByKFI4wl7w5MqOKIp1vPdpUX
- of3Ybn4KsZduh1n8GDXv9skCzvv2lPY1ZKKUUV+M3b4eAkKOCyiK9nkF2qLrZW/pU3Cx1yq8/OW
- 5jV8=
-X-Google-Smtp-Source: AGHT+IHZ/5+wJaE8BswIiI13qF638fQ84Xq68mx6bhNQPrYduawqHNgg3bpQsy0Pa63H+aZDMetv3w==
-X-Received: by 2002:a17:906:2657:b0:a3e:46f3:ac92 with SMTP id
- i23-20020a170906265700b00a3e46f3ac92mr4182933ejc.21.1708419197251; 
- Tue, 20 Feb 2024 00:53:17 -0800 (PST)
+ bh=AlrhK1LpCylwWHbR84XlfAvVU7thjLK8TeSDt+aYfm4=;
+ b=uwUUxQdSO5kdOL3sbPgmLynZryOm3Jp64vfob1sErrAO8PpVuQ7CxPMsnBU0r4qiPF
+ DT4oY0HiB9P8tjUO3dFO3ZmvnIjRJCKBvqsQWiHG1Wxa10Z/5N0NhpfRwm/Yf+oMtFcz
+ guwhH9kYn8ZTpmAjIc9c2WIjKPFaEors8z4YFKetMIsb6i4Jqha5UAaerI0nrHiGEqh9
+ LgvMtp3z6SjCekPq1hhLnIVIls4nouTYPfACYFTLCDf8MyhZ1dJLBWrNj4eS4rcgRV9D
+ GrzHBrDrUpv6DrbUEZk96jk9IJrys/9u5ICUS+E8op6wG1q6kOhwNy2s2yW6uUsjOkhE
+ 1L+w==
+X-Gm-Message-State: AOJu0YwvGA8T8/gVevsaIWqh2myeM2LkRwPxgZO5e8CHoYI6HYlLVpc1
+ wSBFy2E0GWXAYW8grKLsFqCMIjEzZWqAEyjKOrZygL5UWHGYxIlEVN0NvFyuNxnB9nhZO7VQdyH
+ mgNM=
+X-Google-Smtp-Source: AGHT+IHl4xtOrS0f1TSud33kINBocvq8IVU5P6Fd7rZTaSOHaXUkBaY2Tn+O9hOoGpmAsMNrXjcknA==
+X-Received: by 2002:a17:907:7251:b0:a3e:feee:3a5b with SMTP id
+ ds17-20020a170907725100b00a3efeee3a5bmr955998ejc.3.1708419194561; 
+ Tue, 20 Feb 2024 00:53:14 -0800 (PST)
 Received: from localhost.localdomain (adsl-245.37.6.163.tellas.gr.
  [37.6.163.245]) by smtp.gmail.com with ESMTPSA id
- cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.15
+ cu3-20020a170906ba8300b00a3d014fa12esm3747876ejd.196.2024.02.20.00.53.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 20 Feb 2024 00:53:17 -0800 (PST)
+ Tue, 20 Feb 2024 00:53:14 -0800 (PST)
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 To: qemu-trivial@nongnu.org
 Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- David Hildenbrand <david@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v1 08/21] include/exec/memory.h: correct typos
-Date: Tue, 20 Feb 2024 10:52:15 +0200
-Message-Id: <16e84fbb3dec43ee349a8ea5dd945c9630630bb3.1708419115.git.manos.pitsidianakis@linaro.org>
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>, qemu-ppc@nongnu.org
+Subject: [PATCH v1 06/21] ppc: correct typos
+Date: Tue, 20 Feb 2024 10:52:13 +0200
+Message-Id: <95ffc19d9c3877052a1a6dabf91e139fda183427.1708419115.git.manos.pitsidianakis@linaro.org>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 References: <cover.1708419115.git.manos.pitsidianakis@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x635.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,21 +93,49 @@ Correct typos automatically found with the `typos` tool
 
 Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 ---
- include/exec/memory.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/hw/ppc/ppc4xx.h             | 2 +-
+ hw/ppc/ppc405.h                     | 2 +-
+ target/ppc/translate/vmx-impl.c.inc | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
 
-diff --git a/include/exec/memory.h b/include/exec/memory.h
-index 177be23db7..8626a355b3 100644
---- a/include/exec/memory.h
-+++ b/include/exec/memory.h
-@@ -3146,7 +3146,7 @@ int ram_block_discard_require(bool state);
+diff --git a/include/hw/ppc/ppc4xx.h b/include/hw/ppc/ppc4xx.h
+index ea7740239b..c4ecb1652f 100644
+--- a/include/hw/ppc/ppc4xx.h
++++ b/include/hw/ppc/ppc4xx.h
+@@ -75,7 +75,7 @@ struct Ppc4xxMalState {
+     uint8_t  rxcnum;
+ };
+ 
+-/* Peripheral local bus arbitrer */
++/* Peripheral local bus arbiter */
+ #define TYPE_PPC4xx_PLB "ppc4xx-plb"
+ OBJECT_DECLARE_SIMPLE_TYPE(Ppc4xxPlbState, PPC4xx_PLB);
+ struct Ppc4xxPlbState {
+diff --git a/hw/ppc/ppc405.h b/hw/ppc/ppc405.h
+index 9a4312691e..a39f0caea1 100644
+--- a/hw/ppc/ppc405.h
++++ b/hw/ppc/ppc405.h
+@@ -41,7 +41,7 @@ struct Ppc405PobState {
+     uint32_t besr1;
+ };
+ 
+-/* OPB arbitrer */
++/* OPB arbiter */
+ #define TYPE_PPC405_OPBA "ppc405-opba"
+ OBJECT_DECLARE_SIMPLE_TYPE(Ppc405OpbaState, PPC405_OPBA);
+ struct Ppc405OpbaState {
+diff --git a/target/ppc/translate/vmx-impl.c.inc b/target/ppc/translate/vmx-impl.c.inc
+index 4b91c3489d..b56e615c24 100644
+--- a/target/ppc/translate/vmx-impl.c.inc
++++ b/target/ppc/translate/vmx-impl.c.inc
+@@ -1183,7 +1183,7 @@ static void glue(gen_, name)(DisasContext *ctx)                         \
  
  /*
-  * See ram_block_discard_require(): only inhibit technologies that disable
-- * uncoordinated discarding of pages in RAM blocks, allowing co-existance with
-+ * uncoordinated discarding of pages in RAM blocks, allowing co-existence with
-  * technologies that only inhibit uncoordinated discards (via the
-  * RamDiscardManager).
+  * Support for Altivec instructions that use bit 31 (Rc) as an opcode
+- * bit but also use bit 21 as an actual Rc bit.  In general, thse pairs
++ * bit but also use bit 21 as an actual Rc bit.  In general, these pairs
+  * come from different versions of the ISA, so we must also support a
+  * pair of flags for each instruction.
   */
 -- 
 γαῖα πυρί μιχθήτω
