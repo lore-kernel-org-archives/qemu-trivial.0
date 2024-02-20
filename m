@@ -1,63 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcFvE-0003hN-N2
-	for mharc-qemu-trivial@gnu.org; Mon, 19 Feb 2024 21:31:52 -0500
+	id 1rcKFv-00081A-ES
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Feb 2024 02:09:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rcFv8-0003gb-8S; Mon, 19 Feb 2024 21:31:46 -0500
-Received: from mgamail.intel.com ([198.175.65.11])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rcFv4-0004lU-2y; Mon, 19 Feb 2024 21:31:45 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708396302; x=1739932302;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=lupXvcMC5x30SUwTP4I8Mb7Ore8HGeqzgojVyTH4XrQ=;
- b=S8CHn3NCmmykug92TVOeXQuS8pwRrhpcGXTdJ3585hlpQ4rziIXBBilg
- pD8tfs3N2lKkh1DeRkAu64YTXwrlicifwcOLRsbn1k/9d5YTS0SpbCuxd
- Q7VOq4c/STph2NNxEQWWG+Sa0GaVTXaRSnx4XdUpD9sdPJkbjJwKxSK/L
- v3A5hxX+T41LD8J72u+5/XFyxDU2WVkimEA+fxoJM+rMZsJaGLF6qN2MZ
- Ftr6orFkiTUjh2Pp4rZGRyK9jft8Jsi47XriebMQUp9C0m5f6ZFoKnE7M
- k7NJxtn3Xyek3HODWvAqwtm6ib+Fda3iYZnj9xf5MjHBIZFiJqFedOLhW w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10989"; a="13035178"
-X-IronPort-AV: E=Sophos;i="6.06,171,1705392000"; d="scan'208";a="13035178"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 19 Feb 2024 18:31:38 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,171,1705392000"; 
-   d="scan'208";a="4608640"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by fmviesa009.fm.intel.com with ESMTP; 19 Feb 2024 18:31:35 -0800
-Date: Tue, 20 Feb 2024 10:45:14 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcKFu-00080O-12
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 02:09:30 -0500
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rcKFp-0007yd-Rz
+ for qemu-trivial@nongnu.org; Tue, 20 Feb 2024 02:09:29 -0500
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-564647bcdbfso2050066a12.2
+ for <qemu-trivial@nongnu.org>; Mon, 19 Feb 2024 23:09:25 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1708412964; x=1709017764; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=A2ti6MU64ste7HF3pHVEAvtgCFlRo8bHIyKHvxSphvo=;
+ b=zKLJJ626snowECQbCC/lwGUOUrUUq3a27AfDmJqrsJUl5m8EMY5A0zk1dMqvZl6em2
+ qyvQJHjFjnTWkAa1bT1qLid6M8dQ81XMPyykWBOT81d9gik2igUbz/ZnRmIZwsJ5wMSr
+ XIxhTlorFN6bOjYdlRGkGkzAdbY0QlVpsx65ygz4clZ9xiiedr66ncKIuvB8PbNkszMl
+ nPGmJufUV+ZiSsA84n1tXTpAnw5bZiQKsjM1ARzNvV2hfHrmgIbZvvzPSn9d5t/CCoBQ
+ xX1VSX+LtGiIwOwBEHBvWgYDCBPs9qdzr7MWKw4fmeOVHCbc4n+oQ/+ol5rx4SZGcwin
+ iqmA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708412964; x=1709017764;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=A2ti6MU64ste7HF3pHVEAvtgCFlRo8bHIyKHvxSphvo=;
+ b=h6WZ44HQeIxQM7BMBY49uDi4LnptvW+w3xoAzMX7igmQ0/CUL4kjy/EEbZjNVrsFb3
+ cUCQ2Ljx3CcTG5tvJ1ro4apb9SEZGFwaVvNU7r+7NLhqJIKNaW5TaWJ+VZbqfMf3GJZ2
+ H7wY6ccLIkTCslc4kuKAmFToFhlUbl4YFha7nFIoTnmXr28JRQrIS/VBeNI3pqi9Xa2I
+ wybdPOCrVNKYyTpy9GpQZ7BePyXC4v2/bzmA7lpRUyf1Tnze6L42RbewYwIkZskhKXdF
+ Dkg/KG9Wg07+NrYRlf1aD8Wl3JwmURWEUvppxdwzpWoHWvm/mSokGUP9k2YW5w4neWnK
+ e5wg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWCCtR7sHAxTts+xT59n4UGxtfljgFofh/qdQGitErzgZtdxOVYNrOUEpjmadPWVbWsAAwWmJN3KRyHejZCznZKgr6qEVJ8yQ==
+X-Gm-Message-State: AOJu0YxD9gtGrOiJztHERhixTHnmCRFRQW5mcrpoNJBbkTRt8sPEyTNp
+ oVHRy/pyiVKF6nP4REeVl3upBQFwJx5fSLUQ2ltfOQPSprHjMnZY2BX8nAK1Adw=
+X-Google-Smtp-Source: AGHT+IGZsoVfd+CQZp+MzSF0QWw06ZL275/DQLuJNvdn6cdf/Y3MgayB45QiMchgRpvrByf76yLRqg==
+X-Received: by 2002:a17:906:b154:b0:a3e:cbba:fd86 with SMTP id
+ bt20-20020a170906b15400b00a3ecbbafd86mr1969169ejb.11.1708412963799; 
+ Mon, 19 Feb 2024 23:09:23 -0800 (PST)
+Received: from [192.168.69.100] (mek33-h02-176-184-23-7.dsl.sta.abo.bbox.fr.
+ [176.184.23.7]) by smtp.gmail.com with ESMTPSA id
+ qw23-20020a170906fcb700b00a3e426149a1sm2878011ejb.50.2024.02.19.23.09.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 19 Feb 2024 23:09:23 -0800 (PST)
+Message-ID: <ef49ed81-fa4c-4f77-b5d8-53d62bae3524@linaro.org>
+Date: Tue, 20 Feb 2024 08:09:20 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 3/5] hw/acpi/ich9: Include missing headers
+Content-Language: en-US
+To: Zhao Liu <zhao1.liu@intel.com>
 Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
  Ani Sinha <anisinha@redhat.com>, Bernhard Beschow <shentey@gmail.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH 5/5] hw/i386/q35: Include missing 'hw/acpi/acpi.h' header
-Message-ID: <ZdQSOiQiRxoEoR58@intel.com>
+ Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
+ Peter Maydell <peter.maydell@linaro.org>
 References: <20240219141412.71418-1-philmd@linaro.org>
- <20240219141412.71418-6-philmd@linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+ <20240219141412.71418-4-philmd@linaro.org> <ZdQPhcB28MsDdFfu@intel.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <ZdQPhcB28MsDdFfu@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240219141412.71418-6-philmd@linaro.org>
-Received-SPF: pass client-ip=198.175.65.11; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x531.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.072,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -71,58 +90,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Feb 2024 02:31:50 -0000
+X-List-Received-Date: Tue, 20 Feb 2024 07:09:30 -0000
 
-Hi Philippe,
-
-On Mon, Feb 19, 2024 at 03:14:11PM +0100, Philippe Mathieu-Daudé wrote:
-> Date: Mon, 19 Feb 2024 15:14:11 +0100
-> From: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Subject: [PATCH 5/5] hw/i386/q35: Include missing 'hw/acpi/acpi.h' header
-> X-Mailer: git-send-email 2.41.0
+On 20/2/24 03:33, Zhao Liu wrote:
+> Hi Philippe,
 > 
-> "hw/acpi/acpi.h" is implicitly included.
-> Included it
+> On Mon, Feb 19, 2024 at 03:14:09PM +0100, Philippe Mathieu-DaudÃ© wrote:
+>> Date: Mon, 19 Feb 2024 15:14:09 +0100
+>> From: Philippe Mathieu-DaudÃ© <philmd@linaro.org>
+>> Subject: [PATCH 3/5] hw/acpi/ich9: Include missing headers
+>> X-Mailer: git-send-email 2.41.0
+>>
+>> The ICH9LPCPMRegs structure has MemoryRegion and
+>> Notifier fields, so requires the "qemu/notify.h"
+>> and "exec/memory.h" headers.
+>>
+>> However nothing from "hw/acpi/acpi_dev_interface.h"
+>> is required, so reduce its inclusion to hw/acpi/ich9.c
+>> source file where it is used.
+>>
+>> Signed-off-by: Philippe Mathieu-DaudÃ© <philmd@linaro.org>
+>> ---
+>>   include/hw/acpi/ich9.h | 3 ++-
+>>   hw/acpi/ich9.c         | 2 +-
+>>   2 files changed, 3 insertions(+), 2 deletions(-)
 
-I'm guessing it's an imperative and shouldn't be in passive form. ;-) So,
 
-s/Included/Include/
+>> diff --git a/hw/acpi/ich9.c b/hw/acpi/ich9.c
+>> index 573d032e8e..be375a8b9d 100644
+>> --- a/hw/acpi/ich9.c
+>> +++ b/hw/acpi/ich9.c
+>> @@ -35,7 +35,7 @@
+>>   #include "sysemu/runstate.h"
+>>   #include "hw/acpi/acpi.h"
+>>   #include "hw/acpi/ich9_tco.h"
+>> -
+>> +#include "hw/acpi/acpi_dev_interface.h"
+> 
+> Do we have the requirement for included header ordering?
 
-> explicitly to avoid when refactoring headers:
+We don't. If headers were properly including requisites and
+self-contained, order shouldn't matter, and we could sort them
+alphabetically to enforce a common style.
 
-s/to avoid/to avoid the following error/
+> If so, it would be better to put it before "hw/acpi/ich9_tco.h".
+
+Sure, no problem.
 
 > 
-> hw/i386/pc_q35.c:209:43: error: use of undeclared identifier 'ACPI_PM_PROP_ACPI_PCIHP_BRIDGE'
->                               ACPI_PM_PROP_ACPI_PCIHP_BRIDGE,
->                               ^
+> -Zhao
 > 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  hw/i386/pc_q35.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index d346fa3b1d..a91f414922 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -58,6 +58,7 @@
->  #include "hw/hyperv/vmbus-bridge.h"
->  #include "hw/mem/nvdimm.h"
->  #include "hw/i386/acpi-build.h"
-> +#include "hw/acpi/acpi.h"
->  #include "target/i386/cpu.h"
+>>   #include "hw/southbridge/ich9.h"
+>>   #include "hw/mem/pc-dimm.h"
+>>   #include "hw/mem/nvdimm.h"
+>> -- 
+>> 2.41.0
+>>
+>>
 
-Here it is unordered, and similarly, does it need to be sorted
-alphabetically here?
-
-Regards,
-Zhao
-
->  
->  /* ICH9 AHCI has 6 ports */
-> -- 
-> 2.41.0
-> 
-> 
 
