@@ -1,75 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcoa6-0005lg-Ma
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Feb 2024 10:32:22 -0500
+	id 1rcoa9-00062D-8g
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Feb 2024 10:32:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rcoa3-0005Rn-SX
- for qemu-trivial@nongnu.org; Wed, 21 Feb 2024 10:32:20 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rcoa5-0005fH-Tm; Wed, 21 Feb 2024 10:32:21 -0500
+Received: from mgamail.intel.com ([198.175.65.19])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rcl4f-0000AZ-M1
- for qemu-trivial@nongnu.org; Wed, 21 Feb 2024 06:47:43 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1708516059;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hlagwSl2YsZuNFzln+6oCnnPHlq+xDD7OxjiWOTZMyU=;
- b=hcCONE4lNdi7bMamzMNRCx/UYQ0NKKJBqVyBAd4fXgnU7Hkc6UOELKWJdLsMCqxfmXwPD9
- jxDKk1PPyInXMZKy4y6G50dYTgrqfTBVR/OgaHvkxi2aOEu66ixvMfJuaXrfUvn3Hm8sJS
- t+sY0ZhsXpKoPZajlomrJmu1TDNnSIw=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-361-LUpPYozJM523E6VipHT9CA-1; Wed, 21 Feb 2024 06:47:35 -0500
-X-MC-Unique: LUpPYozJM523E6VipHT9CA-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id EBD44863063;
- Wed, 21 Feb 2024 11:47:34 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.55])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8E15A20169C6;
- Wed, 21 Feb 2024 11:47:34 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 7A98721E66D5; Wed, 21 Feb 2024 12:47:33 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Zhao Liu <zhao1.liu@linux.intel.com>
-Cc: Jonathan Cameron <jonathan.cameron@huawei.com>,  Fan Ni
- <fan.ni@samsung.com>,  Laurent Vivier <laurent@vivier.eu>,  Alistair
- Francis <alistair@alistair23.me>,  "Edgar E . Iglesias"
- <edgar.iglesias@gmail.com>,  Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,  Marcel Apfelbaum
- <marcel.apfelbaum@gmail.com>,  Alex Williamson
- <alex.williamson@redhat.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
- <clg@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Markus
- Armbruster
- <armbru@redhat.com>,  qemu-devel@nongnu.org,  qemu-arm@nongnu.org,
- qemu-trivial@nongnu.org,  Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [PATCH 4/6] hw/misc/xlnx-versal-trng: Fix missing ERRP_GUARD()
- in trng_prop_fault_event_set()
-In-Reply-To: <20240221094317.994454-5-zhao1.liu@linux.intel.com> (Zhao Liu's
- message of "Wed, 21 Feb 2024 17:43:15 +0800")
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rco3f-0007g1-Dg; Wed, 21 Feb 2024 09:58:52 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1708527532; x=1740063532;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=XbDKq8C3hMQma9UmSzPUYiX8Eifflw1sLxBgBoa5q9E=;
+ b=Syj4Q5KuYdnX6hz5RJFY75s0L8mMTBXSvmIHLKD/YDOdCpttmIi3kYG8
+ 1MU//ZbdB6vI5IMPDYCCs7o5L2orFbFkd5ojENkx7zOiO6l8jjEf2BnCw
+ XkV5gGFLd1ZItSIMAmQXYAnND6UfwAd6b8OZT4eyo2y4xnDUX/44knmXL
+ 74xUBKAnvjI/aP6SRG9c0ZOcA4UqdlVPUfUCoV2xdH3EmdSDOepA0jjWV
+ Nxr/llLjMOvjWZqAVgWHZp1e1bshJY8x3MSucuJxUuqf3cOehnUkIOuBR
+ nOj3nFumflTBWUxkhkw/EhNKkLgd+1LQP+EnpJwbvakILVqntOicvHQg7 g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="2552253"
+X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; 
+   d="scan'208";a="2552253"
+Received: from fmsmga002.fm.intel.com ([10.253.24.26])
+ by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Feb 2024 06:58:46 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="913319102"
+X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; d="scan'208";a="913319102"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by fmsmga002.fm.intel.com with ESMTP; 21 Feb 2024 06:58:42 -0800
+Date: Wed, 21 Feb 2024 23:12:22 +0800
+From: Zhao Liu <zhao1.liu@linux.intel.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: Jonathan Cameron <jonathan.cameron@huawei.com>,
+ Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
+ Alistair Francis <alistair@alistair23.me>,
+ "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [PATCH 6/6] hw/vfio/iommufd: Fix missing ERRP_GUARD() in
+ iommufd_cdev_getfd()
+Message-ID: <ZdYS1reX+nN9UvhK@intel.com>
 References: <20240221094317.994454-1-zhao1.liu@linux.intel.com>
- <20240221094317.994454-5-zhao1.liu@linux.intel.com>
-Date: Wed, 21 Feb 2024 12:47:33 +0100
-Message-ID: <87ttm2ujhm.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ <20240221094317.994454-7-zhao1.liu@linux.intel.com>
+ <87h6i2uj89.fsf@pond.sub.org>
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <87h6i2uj89.fsf@pond.sub.org>
+Received-SPF: none client-ip=198.175.65.19;
+ envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,86 +78,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Feb 2024 15:32:21 -0000
+X-List-Received-Date: Wed, 21 Feb 2024 15:32:23 -0000
 
-Zhao Liu <zhao1.liu@linux.intel.com> writes:
+On Wed, Feb 21, 2024 at 12:53:10PM +0100, Markus Armbruster wrote:
+> Date: Wed, 21 Feb 2024 12:53:10 +0100
+> From: Markus Armbruster <armbru@redhat.com>
+> Subject: Re: [PATCH 6/6] hw/vfio/iommufd: Fix missing ERRP_GUARD() in
+>  iommufd_cdev_getfd()
+> 
+> Zhao Liu <zhao1.liu@linux.intel.com> writes:
+> 
+> > From: Zhao Liu <zhao1.liu@intel.com>
+> >
+> > As the comment in qapi/error, dereferencing @errp requires
+> > ERRP_GUARD():
+> >
+> > * = Why, when and how to use ERRP_GUARD() =
+> > *
+> > * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+> > * - It must not be dereferenced, because it may be null.
+> > * - It should not be passed to error_prepend() or
+> > *   error_append_hint(), because that doesn't work with &error_fatal.
+> > * ERRP_GUARD() lifts these restrictions.
+> > *
+> > * To use ERRP_GUARD(), add it right at the beginning of the function.
+> > * @errp can then be used without worrying about the argument being
+> > * NULL or &error_fatal.
+> > *
+> > * Using it when it's not needed is safe, but please avoid cluttering
+> > * the source with useless code.
+> >
+> > Currently, since vfio_attach_device() - the caller of
+> > iommufd_cdev_getfd() - is always called in DeviceClass.realize() context
+> > and won't get the NULL errp parameter, iommufd_cdev_getfd()
+> > doesn't trigger the dereference issue.
+> >
+> > To follow the requirement of errp, add missing ERRP_GUARD() in
+> > iommufd_cdev_getfd().
+> >
+> > Suggested-by: Markus Armbruster <armbru@redhat.com>
+> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> > ---
+> > Suggested by credit:
+> >  Markus: Referred his explanation about ERRP_GUARD().
+> > ---
+> >  hw/vfio/iommufd.c | 1 +
+> >  1 file changed, 1 insertion(+)
+> >
+> > diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
+> > index 9bfddc136089..7baf49e6ee9e 100644
+> > --- a/hw/vfio/iommufd.c
+> > +++ b/hw/vfio/iommufd.c
+> > @@ -116,6 +116,7 @@ static void iommufd_cdev_unbind_and_disconnect(VFIODevice *vbasedev)
+> >  
+> >  static int iommufd_cdev_getfd(const char *sysfs_path, Error **errp)
+> >  {
+> > +    ERRP_GUARD();
+> >      long int ret = -ENOTTY;
+> >      char *path, *vfio_dev_path = NULL, *vfio_path = NULL;
+> >      DIR *dir = NULL;
+> 
+> The problematic use is
+> 
+>        if (*errp) {
+>            error_prepend(errp, VFIO_MSG_PREFIX, path);
+>        }
+> 
+> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>
 
-> From: Zhao Liu <zhao1.liu@intel.com>
->
-> As the comment in qapi/error, dereferencing @errp requires
-> ERRP_GUARD():
->
-> * = Why, when and how to use ERRP_GUARD() =
-> *
-> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
-> * - It must not be dereferenced, because it may be null.
-> * - It should not be passed to error_prepend() or
-> *   error_append_hint(), because that doesn't work with &error_fatal.
-> * ERRP_GUARD() lifts these restrictions.
-> *
-> * To use ERRP_GUARD(), add it right at the beginning of the function.
-> * @errp can then be used without worrying about the argument being
-> * NULL or &error_fatal.
-> *
-> * Using it when it's not needed is safe, but please avoid cluttering
-> * the source with useless code.
->
-> Currently, since trng_prop_fault_event_set() doesn't get the NULL errp
-> parameter as a "set" method of object property, it doesn't trigger the
-> dereference issue.
->
-> To follow the requirement of errp, add missing ERRP_GUARD() in
-> trng_prop_fault_event_set().
->
-> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> ---
-> Suggested by credit:
->  Markus: Referred his explanation about ERRP_GUARD().
-> ---
->  hw/misc/xlnx-versal-trng.c | 2 ++
->  1 file changed, 2 insertions(+)
->
-> diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
-> index b8111b8b6626..3579348a9d17 100644
-> --- a/hw/misc/xlnx-versal-trng.c
-> +++ b/hw/misc/xlnx-versal-trng.c
-> @@ -33,6 +33,7 @@
->  #include "qemu/error-report.h"
->  #include "qemu/guest-random.h"
->  #include "qemu/timer.h"
-> +#include "qapi/error.h"
->  #include "qapi/visitor.h"
->  #include "migration/vmstate.h"
->  #include "hw/qdev-properties.h"
-> @@ -641,6 +642,7 @@ static void trng_prop_fault_event_set(Object *obj, Visitor *v,
->                                        const char *name, void *opaque,
->                                        Error **errp)
->  {
-> +    ERRP_GUARD();
->      Property *prop = opaque;
->      uint32_t *events = object_field_prop_ptr(obj, prop);
+Thanks! Will also add the description of problematic use in commit
+message to make review easier. ;-)
 
-       visit_type_uint32(v, name, events, errp);
-       if (*errp) {
-           return;
-       }
+Regards,
+Zhao
 
-Please do this instead:
-
-diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
-index b8111b8b66..6495188dc7 100644
---- a/hw/misc/xlnx-versal-trng.c
-+++ b/hw/misc/xlnx-versal-trng.c
-@@ -644,8 +644,7 @@ static void trng_prop_fault_event_set(Object *obj, Visitor *v,
-     Property *prop = opaque;
-     uint32_t *events = object_field_prop_ptr(obj, prop);
- 
--    visit_type_uint32(v, name, events, errp);
--    if (*errp) {
-+    if (!visit_type_uint32(v, name, events, errp)) {
-         return;
-     }
- 
 
 
