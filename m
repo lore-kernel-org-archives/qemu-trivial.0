@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcoUQ-0002IG-4c
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Feb 2024 10:26:31 -0500
+	id 1rcoa5-0005bO-FC
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Feb 2024 10:32:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rcoU4-0000na-As; Wed, 21 Feb 2024 10:26:08 -0500
+ id 1rcoa2-0005LV-SN; Wed, 21 Feb 2024 10:32:19 -0500
 Received: from mgamail.intel.com ([192.198.163.15])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rciva-0003SO-LJ; Wed, 21 Feb 2024 04:30:15 -0500
+ id 1rcivf-0003QN-Kc; Wed, 21 Feb 2024 04:30:30 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708507811; x=1740043811;
+ t=1708507816; x=1740043816;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=9Bc0Ckt/w+D5ioixCAtTbsd0rswmbrxmghE0DuhNEmw=;
- b=kFbLR8zrVVXmHGHwV5+hTaFMQaaWx05EVkp8t1Csj8md1O8lOvY2/LVx
- 5tWSS087VY3GZathzuDDWnGcSCnhaaXY3otU7VN10VZPR8gpN80XTf7Fs
- SZziDZOZMK0L5TVqBqH29PApE4NK22FePCaLWaeprhRC4+dCvO/OtMIOR
- IZFjZW97F9NvYIdJFVslyyuVgybAi5WVMn+l/CMj7TVbaOGDF/ljfoQGs
- l5GxqPYZNJGpH1CVVIiBgnMfQeafVEDPskAnGVwHRW9HbckYsTba4jyhl
- geXqTwOXfXg8M9XzP4Q83XHn9kPW8ODcsB3zMkKkN0MfkUQlAazq7Qs4m w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="2795468"
+ bh=ZoOw7oZSsgWoryzBsNZfJlqiBLjXl5nzRum0ygARlNs=;
+ b=fucxyC/kNOGG6zBZBp6QY7JL4y4k6Nc2z3CbbORIU6cMAiXjUsHnVk/c
+ zusNW4sNfRmI7Mvi2QC14UziiPoxjAJL7o7krHuALJZ2wXBcSWJhzkJ3z
+ OH5/3oWGQzGa8iE76rWradcmutHC0S6VkF4sO1qxbA9KHEqs2051u28/Z
+ OBvfPDPpFbSZQrAA26QDckXXdFyDV/FqnpISc89zUU7aUukyjiS2nR/IC
+ BVNnc3Is3tDXbT1fdQgUnAOTo+tFoguZ7yW/IAKczFOuxi+6kr8srJ4m0
+ kOm80KH9sgQ7P3vQ6s2k4+vaeNLsbiCs9I0dVRC2utwUYvu5mJerGcOv3 Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="2795509"
 X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; 
-   d="scan'208";a="2795468"
+   d="scan'208";a="2795509"
 Received: from orviesa003.jf.intel.com ([10.64.159.143])
  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Feb 2024 01:30:01 -0800
+ 21 Feb 2024 01:30:10 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; 
-   d="scan'208";a="9720087"
+   d="scan'208";a="9720217"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by orviesa003.jf.intel.com with ESMTP; 21 Feb 2024 01:29:57 -0800
+ by orviesa003.jf.intel.com with ESMTP; 21 Feb 2024 01:30:06 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Jonathan Cameron <jonathan.cameron@huawei.com>,
  Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -46,10 +46,10 @@ To: Jonathan Cameron <jonathan.cameron@huawei.com>,
  Markus Armbruster <armbru@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH 4/6] hw/misc/xlnx-versal-trng: Fix missing ERRP_GUARD() in
- trng_prop_fault_event_set()
-Date: Wed, 21 Feb 2024 17:43:15 +0800
-Message-Id: <20240221094317.994454-5-zhao1.liu@linux.intel.com>
+Subject: [PATCH 6/6] hw/vfio/iommufd: Fix missing ERRP_GUARD() in
+ iommufd_cdev_getfd()
+Date: Wed, 21 Feb 2024 17:43:17 +0800
+Message-Id: <20240221094317.994454-7-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240221094317.994454-1-zhao1.liu@linux.intel.com>
 References: <20240221094317.994454-1-zhao1.liu@linux.intel.com>
@@ -75,7 +75,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Feb 2024 15:26:10 -0000
+X-List-Received-Date: Wed, 21 Feb 2024 15:32:20 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -97,12 +97,13 @@ ERRP_GUARD():
 * Using it when it's not needed is safe, but please avoid cluttering
 * the source with useless code.
 
-Currently, since trng_prop_fault_event_set() doesn't get the NULL errp
-parameter as a "set" method of object property, it doesn't trigger the
-dereference issue.
+Currently, since vfio_attach_device() - the caller of
+iommufd_cdev_getfd() - is always called in DeviceClass.realize() context
+and won't get the NULL errp parameter, iommufd_cdev_getfd()
+doesn't trigger the dereference issue.
 
 To follow the requirement of errp, add missing ERRP_GUARD() in
-trng_prop_fault_event_set().
+iommufd_cdev_getfd().
 
 Suggested-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
@@ -110,29 +111,21 @@ Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 Suggested by credit:
  Markus: Referred his explanation about ERRP_GUARD().
 ---
- hw/misc/xlnx-versal-trng.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/vfio/iommufd.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
-index b8111b8b6626..3579348a9d17 100644
---- a/hw/misc/xlnx-versal-trng.c
-+++ b/hw/misc/xlnx-versal-trng.c
-@@ -33,6 +33,7 @@
- #include "qemu/error-report.h"
- #include "qemu/guest-random.h"
- #include "qemu/timer.h"
-+#include "qapi/error.h"
- #include "qapi/visitor.h"
- #include "migration/vmstate.h"
- #include "hw/qdev-properties.h"
-@@ -641,6 +642,7 @@ static void trng_prop_fault_event_set(Object *obj, Visitor *v,
-                                       const char *name, void *opaque,
-                                       Error **errp)
+diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
+index 9bfddc136089..7baf49e6ee9e 100644
+--- a/hw/vfio/iommufd.c
++++ b/hw/vfio/iommufd.c
+@@ -116,6 +116,7 @@ static void iommufd_cdev_unbind_and_disconnect(VFIODevice *vbasedev)
+ 
+ static int iommufd_cdev_getfd(const char *sysfs_path, Error **errp)
  {
 +    ERRP_GUARD();
-     Property *prop = opaque;
-     uint32_t *events = object_field_prop_ptr(obj, prop);
- 
+     long int ret = -ENOTTY;
+     char *path, *vfio_dev_path = NULL, *vfio_path = NULL;
+     DIR *dir = NULL;
 -- 
 2.34.1
 
