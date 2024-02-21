@@ -1,57 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rch1S-0008Ny-0U
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Feb 2024 02:28:06 -0500
+	id 1rcoJk-0001AJ-5z
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Feb 2024 10:15:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rch1N-0008NM-2g; Wed, 21 Feb 2024 02:28:01 -0500
-Received: from mgamail.intel.com ([192.198.163.9])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rcoJe-0000wk-5d
+ for qemu-trivial@nongnu.org; Wed, 21 Feb 2024 10:15:24 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rch1F-0008UM-Do; Wed, 21 Feb 2024 02:27:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708500474; x=1740036474;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=3JICSjf6M0kKgsolTp8ey2+2CcYHO111m7nPgLVo5Xw=;
- b=RUrAOgpPf496ZzQk5zzLEaaSclBY/Gf+ZBhIe9BHhp2vuQ/T3aelb+vj
- YmttMthRmK4AqGYj07zYxB6p8nnTphJssfM7qY26TrQFkG91Y4VmAMFfC
- 4McnsYoUAhQ4X+ngkSU8ViuhHCmo+8QK6Zbwoc4TXUyrJ91ftJ4nTM2ho
- HfqC+La3RaR8bS72I7FTfgxWR0IcH2OPfHuyWvwqFajcMp7orvH28xhd/
- LOeXaMxia7cfbr7Lc3aA3lEPIGxwmD4Z4Q79j23GseF0r3OQOTYyG8mI1
- KgZ2IWNu1AXvv5wwV4y9wTyi+lWsRekSL/WqRklk+lFI3yJErb/rryVg0 Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="13347368"
-X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; d="scan'208";a="13347368"
-Received: from orviesa009.jf.intel.com ([10.64.159.149])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 Feb 2024 23:27:50 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; 
-   d="scan'208";a="4982749"
-Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by orviesa009.jf.intel.com with ESMTP; 20 Feb 2024 23:26:16 -0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: "Michael S . Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2] hw/intc: Handle the error of IOAPICCommonClass.realize()
-Date: Wed, 21 Feb 2024 15:39:48 +0800
-Message-Id: <20240221073948.768828-1-zhao1.liu@linux.intel.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rcmtx-0002bn-TA
+ for qemu-trivial@nongnu.org; Wed, 21 Feb 2024 08:44:52 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1708523082;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ resent-to:resent-from:resent-message-id:in-reply-to:in-reply-to:
+ references:references; bh=yom5qVcNfraWQaHI7ahibAxGsXgPAW0YgsRkhiRCSlc=;
+ b=CXjBdgS1pV40KoSVLkBp1bTyKJeC6EDrgSz+g7SUh0AoWwL1GCAxu+2NZPhdVIk1FbT1K/
+ mTi3pAioA8LpI0H9x6DeGK2VVvPLGDzqVqcymSKNfCJUm6M0psxMfiF0nJ4D/yOkABDKIE
+ w/HJvOBgdjTpydEUhhnZnoIfttwG3XA=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-20-CukR6-3kPBaPeB6KchUj_g-1; Wed,
+ 21 Feb 2024 08:44:39 -0500
+X-MC-Unique: CukR6-3kPBaPeB6KchUj_g-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id DC6CE3C2B607;
+ Wed, 21 Feb 2024 13:44:38 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.55])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id D4AB82166B32;
+ Wed, 21 Feb 2024 13:44:36 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 906F021E66D5; Wed, 21 Feb 2024 14:44:35 +0100 (CET)
+Resent-To: alistair@alistair23.me, edgar.iglesias@gmail.com,
+ marcel.apfelbaum@gmail.com, jonathan.cameron@huawei.com,
+ zhao1.liu@intel.com, peter.maydell@linaro.org, philmd@linaro.org,
+ zhao1.liu@linux.intel.com, qemu-arm@nongnu.org, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, fan.ni@samsung.com, laurent@vivier.eu
+Resent-From: Markus Armbruster <armbru@redhat.com>
+Resent-Date: Wed, 21 Feb 2024 14:44:35 +0100
+Resent-Message-ID: <87v86i2apo.fsf@pond.sub.org>
+From: Markus Armbruster <armbru@redhat.com>
+To: Zhao Liu <zhao1.liu@linux.intel.com>
+Cc: Jonathan Cameron <jonathan.cameron@huawei.com>,  Fan Ni
+ <fan.ni@samsung.com>,  Laurent Vivier <laurent@vivier.eu>,  Alistair
+ Francis <alistair@alistair23.me>,  "Edgar E . Iglesias"
+ <edgar.iglesias@gmail.com>,  Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,  Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,  Alex Williamson
+ <alex.williamson@redhat.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org,  qemu-trivial@nongnu.org,  Zhao Liu
+ <zhao1.liu@intel.com>
+Subject: Re: [PATCH 3/6] hw/mem/cxl_type3: Fix missing ERRP_GUARD() in
+ ct3_realize()
+In-Reply-To: <20240221094317.994454-4-zhao1.liu@linux.intel.com> (Zhao Liu's
+ message of "Wed, 21 Feb 2024 17:43:14 +0800")
+References: <20240221094317.994454-1-zhao1.liu@linux.intel.com>
+ <20240221094317.994454-4-zhao1.liu@linux.intel.com>
+Date: Wed, 21 Feb 2024 12:35:47 +0100
+Message-ID: <87zfvuuk18.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=192.198.163.9;
- envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,45 +91,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Feb 2024 07:28:01 -0000
+X-List-Received-Date: Wed, 21 Feb 2024 15:15:26 -0000
 
-From: Zhao Liu <zhao1.liu@intel.com>
+Zhao Liu <zhao1.liu@linux.intel.com> writes:
 
-IOAPICCommonClass implements its own private realize(), and this private
-realize() allows error.
+> From: Zhao Liu <zhao1.liu@intel.com>
+>
+> As the comment in qapi/error, dereferencing @errp requires
+> ERRP_GUARD():
+>
+> * = Why, when and how to use ERRP_GUARD() =
+> *
+> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+> * - It must not be dereferenced, because it may be null.
+> * - It should not be passed to error_prepend() or
+> *   error_append_hint(), because that doesn't work with &error_fatal.
+> * ERRP_GUARD() lifts these restrictions.
+> *
+> * To use ERRP_GUARD(), add it right at the beginning of the function.
+> * @errp can then be used without worrying about the argument being
+> * NULL or &error_fatal.
+> *
+> * Using it when it's not needed is safe, but please avoid cluttering
+> * the source with useless code.
+>
+> Currently, since ct3_realize() - as a PCIDeviceClass.realize() method -
+> doesn't get the NULL errp parameter, it doesn't trigger the dereference
+> issue.
+>
+> To follow the requirement of errp, add missing ERRP_GUARD() in
+> ct3_realize().
+>
+> Suggested-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+> Suggested by credit:
+>  Markus: Referred his explanation about ERRP_GUARD().
+> ---
+>  hw/mem/cxl_type3.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/hw/mem/cxl_type3.c b/hw/mem/cxl_type3.c
+> index e8801805b90f..a3b0761f843b 100644
+> --- a/hw/mem/cxl_type3.c
+> +++ b/hw/mem/cxl_type3.c
+> @@ -645,6 +645,7 @@ static DOEProtocol doe_cdat_prot[] = {
+>  
+>  static void ct3_realize(PCIDevice *pci_dev, Error **errp)
+>  {
+> +    ERRP_GUARD();
+>      CXLType3Dev *ct3d = CXL_TYPE3(pci_dev);
+>      CXLComponentState *cxl_cstate = &ct3d->cxl_cstate;
+>      ComponentRegisters *regs = &cxl_cstate->crb;
 
-Therefore, return directly if IOAPICCommonClass.realize() meets error.
+The dereference is
 
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
----
-v2: Add the missing ERRP_GUARD(). (Markus)
----
- hw/intc/ioapic_common.c | 4 ++++
- 1 file changed, 4 insertions(+)
+       cxl_doe_cdat_init(cxl_cstate, errp);
+       if (*errp) {
+           goto err_free_special_ops;
+       }
 
-diff --git a/hw/intc/ioapic_common.c b/hw/intc/ioapic_common.c
-index cb9bf6214608..efbe6958c8d7 100644
---- a/hw/intc/ioapic_common.c
-+++ b/hw/intc/ioapic_common.c
-@@ -152,6 +152,7 @@ static int ioapic_dispatch_post_load(void *opaque, int version_id)
- 
- static void ioapic_common_realize(DeviceState *dev, Error **errp)
- {
-+    ERRP_GUARD();
-     IOAPICCommonState *s = IOAPIC_COMMON(dev);
-     IOAPICCommonClass *info;
- 
-@@ -162,6 +163,9 @@ static void ioapic_common_realize(DeviceState *dev, Error **errp)
- 
-     info = IOAPIC_COMMON_GET_CLASS(s);
-     info->realize(dev, errp);
-+    if (*errp) {
-+        return;
-+    }
- 
-     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->io_memory);
-     ioapic_no++;
--- 
-2.34.1
+We check *errp, because cxl_doe_cdat_init() returns void.  Could be
+improved to return bool, along with its callees ct3_load_cdat() and
+ct3_build_cdat(), but that's a slightly more ambitious cleanup, so
+
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
 
