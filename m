@@ -1,39 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcoPO-0005Gf-Dg
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Feb 2024 10:21:20 -0500
+	id 1rcoPm-0006KQ-Ai
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Feb 2024 10:21:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rcoM9-0001hh-4F; Wed, 21 Feb 2024 10:17:57 -0500
-Received: from mgamail.intel.com ([192.198.163.16])
+ id 1rcoMj-0004vg-Q8; Wed, 21 Feb 2024 10:18:38 -0500
+Received: from mgamail.intel.com ([192.198.163.13])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rco1B-0007ME-4u; Wed, 21 Feb 2024 09:56:18 -0500
+ id 1rcnyC-0006w4-Bw; Wed, 21 Feb 2024 09:53:13 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708527377; x=1740063377;
+ t=1708527192; x=1740063192;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=GkDRFpSgEw4Jc9eQg/w5fzMP57UNmwkGjsPiSjtncj0=;
- b=ctcChPA3oBeHTYSiHnl5bvKZFvKnF0D5fgaHihfmnae8Fra7benpp9ND
- fVSxhro6WvWFwacqeDLbGVZCtlehEJMQdcm6q6q6WdER0E84PoArzKHJE
- V+o9xuZxtLDnNvfIP1F8mPRP4Q4p33Ohrx4r4zt+acxTrL2Wy61b8VVd6
- qQCnVB4W+/1bVs4W0mlhIoO1sUULLA7sp+kkC/7b2jcIEftBaK4LgafoI
- OED7J7D83SU/EceoNqR/wAmxU6PTWWgfQ9e6rqNfaTxRL8Rhd8dTbI2kT
- NF9cNFyrpV1UjGqf3CFwVTFEec03P3CpBEKI5NnDM9C68Gxa5yv/pVNl9 w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="3173102"
+ bh=UGj5JoIo7Cr9pGUnX7V/P0tJcuLD76ovvoOQLggI0D8=;
+ b=it9xlkMuuFBVDvlQyist1CgBj7T6GYrUbkdDil2rbFT/GVkHhGygTnwK
+ y6qumUGgvOWZSshevTsrdhEVqT6sHjR4/7GBxZdzU2WQqr8emiY5GYdNk
+ TUNaQDgXfzTdwzG809Ql+WEbdZNzXjkBaRgzqtgPr2KtFMB30W3FW15hh
+ kGstlUvQ3+83zYR/8Hj1G7u6xHs75wdmc3ilJmUoTkYWR5ZoseLcRoxuC
+ gDHXQ0ODM6MaTAaJNHrvlvl605AIXha6hoHGtYzMl5wJgyEMAJzjOXNF7
+ KdNtgrscw9SYKfWfUaOv28Kjb//tSsT3t8XQMNdmsB81KrpLBBX5YSDjq w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="5643881"
 X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; 
-   d="scan'208";a="3173102"
-Received: from fmviesa005.fm.intel.com ([10.60.135.145])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Feb 2024 06:56:15 -0800
+   d="scan'208";a="5643881"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 Feb 2024 06:53:09 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; 
-   d="scan'208";a="9782187"
+X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; d="scan'208";a="28302334"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.36])
- by fmviesa005.fm.intel.com with ESMTP; 21 Feb 2024 06:56:11 -0800
-Date: Wed, 21 Feb 2024 23:09:49 +0800
+ by fmviesa002.fm.intel.com with ESMTP; 21 Feb 2024 06:53:04 -0800
+Date: Wed, 21 Feb 2024 23:06:44 +0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Markus Armbruster <armbru@redhat.com>
 Cc: Jonathan Cameron <jonathan.cameron@huawei.com>,
@@ -48,17 +47,17 @@ Cc: Jonathan Cameron <jonathan.cameron@huawei.com>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [PATCH 5/6] hw/pci-bridge/cxl_upstream: Fix missing ERRP_GUARD()
- in cxl_usp_realize()
-Message-ID: <ZdYSPYlZEL6jUobe@intel.com>
+Subject: Re: [PATCH 4/6] hw/misc/xlnx-versal-trng: Fix missing ERRP_GUARD()
+ in trng_prop_fault_event_set()
+Message-ID: <ZdYRhCWhTGlkM7up@intel.com>
 References: <20240221094317.994454-1-zhao1.liu@linux.intel.com>
- <20240221094317.994454-6-zhao1.liu@linux.intel.com>
- <87le7eujdx.fsf@pond.sub.org>
+ <20240221094317.994454-5-zhao1.liu@linux.intel.com>
+ <87ttm2ujhm.fsf@pond.sub.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <87le7eujdx.fsf@pond.sub.org>
-Received-SPF: none client-ip=192.198.163.16;
+In-Reply-To: <87ttm2ujhm.fsf@pond.sub.org>
+Received-SPF: none client-ip=192.198.163.13;
  envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -78,13 +77,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Feb 2024 15:18:14 -0000
+X-List-Received-Date: Wed, 21 Feb 2024 15:19:02 -0000
 
-On Wed, Feb 21, 2024 at 12:49:46PM +0100, Markus Armbruster wrote:
-> Date: Wed, 21 Feb 2024 12:49:46 +0100
+On Wed, Feb 21, 2024 at 12:47:33PM +0100, Markus Armbruster wrote:
+> Date: Wed, 21 Feb 2024 12:47:33 +0100
 > From: Markus Armbruster <armbru@redhat.com>
-> Subject: Re: [PATCH 5/6] hw/pci-bridge/cxl_upstream: Fix missing
->  ERRP_GUARD() in cxl_usp_realize()
+> Subject: Re: [PATCH 4/6] hw/misc/xlnx-versal-trng: Fix missing ERRP_GUARD()
+>  in trng_prop_fault_event_set()
 > 
 > Zhao Liu <zhao1.liu@linux.intel.com> writes:
 > 
@@ -108,12 +107,12 @@ On Wed, Feb 21, 2024 at 12:49:46PM +0100, Markus Armbruster wrote:
 > > * Using it when it's not needed is safe, but please avoid cluttering
 > > * the source with useless code.
 > >
-> > Currently, since cxl_usp_realize() - as a PCIDeviceClass.realize()
-> > method - doesn't get the NULL errp parameter, it doesn't trigger the
+> > Currently, since trng_prop_fault_event_set() doesn't get the NULL errp
+> > parameter as a "set" method of object property, it doesn't trigger the
 > > dereference issue.
 > >
 > > To follow the requirement of errp, add missing ERRP_GUARD() in
-> > cxl_usp_realize()().
+> > trng_prop_fault_event_set().
 > >
 > > Suggested-by: Markus Armbruster <armbru@redhat.com>
 > > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
@@ -121,42 +120,52 @@ On Wed, Feb 21, 2024 at 12:49:46PM +0100, Markus Armbruster wrote:
 > > Suggested by credit:
 > >  Markus: Referred his explanation about ERRP_GUARD().
 > > ---
-> >  hw/pci-bridge/cxl_upstream.c | 1 +
-> >  1 file changed, 1 insertion(+)
+> >  hw/misc/xlnx-versal-trng.c | 2 ++
+> >  1 file changed, 2 insertions(+)
 > >
-> > diff --git a/hw/pci-bridge/cxl_upstream.c b/hw/pci-bridge/cxl_upstream.c
-> > index e87eb4017713..03d123cca0ef 100644
-> > --- a/hw/pci-bridge/cxl_upstream.c
-> > +++ b/hw/pci-bridge/cxl_upstream.c
-> > @@ -289,6 +289,7 @@ static void free_default_cdat_table(CDATSubHeader **cdat_table, int num,
-> >  
-> >  static void cxl_usp_realize(PCIDevice *d, Error **errp)
+> > diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
+> > index b8111b8b6626..3579348a9d17 100644
+> > --- a/hw/misc/xlnx-versal-trng.c
+> > +++ b/hw/misc/xlnx-versal-trng.c
+> > @@ -33,6 +33,7 @@
+> >  #include "qemu/error-report.h"
+> >  #include "qemu/guest-random.h"
+> >  #include "qemu/timer.h"
+> > +#include "qapi/error.h"
+> >  #include "qapi/visitor.h"
+> >  #include "migration/vmstate.h"
+> >  #include "hw/qdev-properties.h"
+> > @@ -641,6 +642,7 @@ static void trng_prop_fault_event_set(Object *obj, Visitor *v,
+> >                                        const char *name, void *opaque,
+> >                                        Error **errp)
 > >  {
 > > +    ERRP_GUARD();
-> >      PCIEPort *p = PCIE_PORT(d);
-> >      CXLUpstreamPort *usp = CXL_USP(d);
-> >      CXLComponentState *cxl_cstate = &usp->cxl_cstate;
+> >      Property *prop = opaque;
+> >      uint32_t *events = object_field_prop_ptr(obj, prop);
 > 
-> The dereference is
-> 
->        cxl_doe_cdat_init(cxl_cstate, errp);
+>        visit_type_uint32(v, name, events, errp);
 >        if (*errp) {
->            goto err_cap;
+>            return;
 >        }
 > 
-> As noted in review of PATCH 3, we check *errp, because
-> cxl_doe_cdat_init() returns void.  Could be improved to return bool,
-> along with its callees ct3_load_cdat() and ct3_build_cdat(), but that's
-> a slightly more ambitious cleanup, so
+> Please do this instead:
 > 
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
->
+> diff --git a/hw/misc/xlnx-versal-trng.c b/hw/misc/xlnx-versal-trng.c
+> index b8111b8b66..6495188dc7 100644
+> --- a/hw/misc/xlnx-versal-trng.c
+> +++ b/hw/misc/xlnx-versal-trng.c
+> @@ -644,8 +644,7 @@ static void trng_prop_fault_event_set(Object *obj, Visitor *v,
+>      Property *prop = opaque;
+>      uint32_t *events = object_field_prop_ptr(obj, prop);
+>  
+> -    visit_type_uint32(v, name, events, errp);
+> -    if (*errp) {
+> +    if (!visit_type_uint32(v, name, events, errp)) {
+>          return;
+>      }
+>  
 
-Thanks! It's a good idea and I can continue to consider such the cleanup
-in the follow up.
-
-Will also add the dereference description in commit message to make
-review easier.
+Thanks! I didn't think of that. Will do this.
 
 Regards,
 Zhao
