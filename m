@@ -1,71 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcoOR-00026x-OK
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Feb 2024 10:20:19 -0500
+	id 1rcoOS-0002CO-CA
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Feb 2024 10:20:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rcoKz-0000wC-2h; Wed, 21 Feb 2024 10:16:45 -0500
-Received: from mgamail.intel.com ([198.175.65.19])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rcoM5-0001XF-8L
+ for qemu-trivial@nongnu.org; Wed, 21 Feb 2024 10:17:56 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rcnvv-0006fX-6p; Wed, 21 Feb 2024 09:50:53 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708527051; x=1740063051;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=F06opmdQj8jsmdUPOzllj+66O8Vb8X3YdS5EM/vRWJE=;
- b=BfMv1H19DsC6cfZ5lweun26Uo60Y5G9vqgRCf6MMtPGZ60sGoPE8XV6A
- cvhiGeBRYfv9AEjNwScPjc/T0NsMWn5JNI9x1AGMFjxuPUFxNXuvPrcsf
- b823f/HMNhaj0IY9uL2U35TnfjKBdCAPp3Epxs7T9hQe3303Lt2CZQJi7
- WFaya4jEN/ytEkS3RJbUv5ow8GGTn0r8npUL6HnrhYOQrLxv36zRpHwoG
- Qip8oj7JzDFMPIYgHMvA9x2XJ0P1I6e3lHrHpkR76/uPda+as//NzUZ8C
- XCcyEWSjF+ZdGIbJpcWqxX5ErzoPbyamb9Ac4Ir4aYLIGWGn6m2yYZYmx Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="2551701"
-X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; 
-   d="scan'208";a="2551701"
-Received: from fmsmga002.fm.intel.com ([10.253.24.26])
- by orvoesa111.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Feb 2024 06:50:48 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="913318118"
-X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; d="scan'208";a="913318118"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by fmsmga002.fm.intel.com with ESMTP; 21 Feb 2024 06:50:44 -0800
-Date: Wed, 21 Feb 2024 23:04:23 +0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Jonathan Cameron <jonathan.cameron@huawei.com>,
- Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rckoj-0005Ts-5K
+ for qemu-trivial@nongnu.org; Wed, 21 Feb 2024 06:31:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1708515071;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=DFeShg4Zc8YLMA/+QI1a+xZt/Ft3UHkKRSJD6FE+aCU=;
+ b=WtaYs3DbDToPT9QTMtr3fWhTxuCDfpe3izzwvl6XT2O+MxbKNf6XLW/RMNH0fHQnQwuHP4
+ FrGUSp2swTUXOwIUxnMHr7zDc9aKd5dIfMrchpvPyBb+S/NekU0I37tTbMIptuNwBgrAek
+ H74Cduh0fC8jN27QbZg/En/j0MrJY+I=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-354-_qHt3OD_Nk2Ww0r03SUf7Q-1; Wed,
+ 21 Feb 2024 06:31:09 -0500
+X-MC-Unique: _qHt3OD_Nk2Ww0r03SUf7Q-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 8D76F3816B4B;
+ Wed, 21 Feb 2024 11:31:08 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.55])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id C7F6A8CE8;
+ Wed, 21 Feb 2024 11:31:07 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id BD43521E66D5; Wed, 21 Feb 2024 12:31:06 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Zhao Liu <zhao1.liu@linux.intel.com>
+Cc: Jonathan Cameron <jonathan.cameron@huawei.com>,  Fan Ni
+ <fan.ni@samsung.com>,  Laurent Vivier <laurent@vivier.eu>,  Alistair
+ Francis <alistair@alistair23.me>,  "Edgar E . Iglesias"
+ <edgar.iglesias@gmail.com>,  Peter Maydell <peter.maydell@linaro.org>,
+ "Michael S . Tsirkin" <mst@redhat.com>,  Marcel Apfelbaum
+ <marcel.apfelbaum@gmail.com>,  Alex Williamson
+ <alex.williamson@redhat.com>,  =?utf-8?Q?C=C3=A9dric?= Le Goater
+ <clg@redhat.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org,  qemu-trivial@nongnu.org,  Zhao Liu
+ <zhao1.liu@intel.com>
 Subject: Re: [PATCH 1/6] hw/cxl/cxl-host: Fix missing ERRP_GUARD() in
  cxl_fixed_memory_window_config()
-Message-ID: <ZdYQ99m6BXzxb+nf@intel.com>
+In-Reply-To: <20240221094317.994454-2-zhao1.liu@linux.intel.com> (Zhao Liu's
+ message of "Wed, 21 Feb 2024 17:43:12 +0800")
 References: <20240221094317.994454-1-zhao1.liu@linux.intel.com>
  <20240221094317.994454-2-zhao1.liu@linux.intel.com>
- <878r3evyth.fsf@pond.sub.org>
+Date: Wed, 21 Feb 2024 12:31:06 +0100
+Message-ID: <878r3evyth.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <878r3evyth.fsf@pond.sub.org>
-Received-SPF: none client-ip=198.175.65.19;
- envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.05,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,90 +83,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Feb 2024 15:17:00 -0000
+X-List-Received-Date: Wed, 21 Feb 2024 15:17:57 -0000
 
-On Wed, Feb 21, 2024 at 12:31:06PM +0100, Markus Armbruster wrote:
-> Date: Wed, 21 Feb 2024 12:31:06 +0100
-> From: Markus Armbruster <armbru@redhat.com>
-> Subject: Re: [PATCH 1/6] hw/cxl/cxl-host: Fix missing ERRP_GUARD() in
->  cxl_fixed_memory_window_config()
-> 
-> Zhao Liu <zhao1.liu@linux.intel.com> writes:
-> 
-> > From: Zhao Liu <zhao1.liu@intel.com>
-> >
-> > As the comment in qapi/error, dereferencing @errp requires
-> > ERRP_GUARD():
-> >
-> > * = Why, when and how to use ERRP_GUARD() =
-> > *
-> > * Without ERRP_GUARD(), use of the @errp parameter is restricted:
-> > * - It must not be dereferenced, because it may be null.
-> > * - It should not be passed to error_prepend() or
-> > *   error_append_hint(), because that doesn't work with &error_fatal.
-> > * ERRP_GUARD() lifts these restrictions.
-> > *
-> > * To use ERRP_GUARD(), add it right at the beginning of the function.
-> > * @errp can then be used without worrying about the argument being
-> > * NULL or &error_fatal.
-> > *
-> > * Using it when it's not needed is safe, but please avoid cluttering
-> > * the source with useless code.
-> >
-> > Currently, since machine_set_cfmw() - the caller of
-> > cxl_fixed_memory_window_config() - doesn't get the NULL errp parameter
-> > as the "set" method of object property, cxl_fixed_memory_window_config()
-> > doesn't trigger the dereference issue.
-> >
-> > To follow the requirement of errp, add missing ERRP_GUARD() in
-> > cxl_fixed_memory_window_config().
-> >
-> > Suggested-by: Markus Armbruster <armbru@redhat.com>
-> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> > ---
-> > Suggested by credit:
-> >  Markus: Referred his explanation about ERRP_GUARD().
-> > ---
-> >  hw/cxl/cxl-host.c | 1 +
-> >  1 file changed, 1 insertion(+)
-> >
-> > diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
-> > index 2aa776c79c74..c5f5fcfd64d0 100644
-> > --- a/hw/cxl/cxl-host.c
-> > +++ b/hw/cxl/cxl-host.c
-> > @@ -26,6 +26,7 @@ static void cxl_fixed_memory_window_config(CXLState *cxl_state,
-> >                                             CXLFixedMemoryWindowOptions *object,
-> >                                             Error **errp)
-> >  {
-> > +    ERRP_GUARD();
-> >      g_autofree CXLFixedWindow *fw = g_malloc0(sizeof(*fw));
-> >      strList *target;
-> >      int i;
-> 
-> The dereferences are
-> 
->        fw->enc_int_ways = cxl_interleave_ways_enc(fw->num_targets, errp);
->        if (*errp) {
->            return;
->        }
-> 
-> and
-> 
->            fw->enc_int_gran =
->                cxl_interleave_granularity_enc(object->interleave_granularity,
->                                               errp);
->            if (*errp) {
->                return;
->            }
-> 
-> We check *errp, because neither function returns a suitable error code.
-> 
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Zhao Liu <zhao1.liu@linux.intel.com> writes:
+
+> From: Zhao Liu <zhao1.liu@intel.com>
 >
+> As the comment in qapi/error, dereferencing @errp requires
+> ERRP_GUARD():
+>
+> * = Why, when and how to use ERRP_GUARD() =
+> *
+> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+> * - It must not be dereferenced, because it may be null.
+> * - It should not be passed to error_prepend() or
+> *   error_append_hint(), because that doesn't work with &error_fatal.
+> * ERRP_GUARD() lifts these restrictions.
+> *
+> * To use ERRP_GUARD(), add it right at the beginning of the function.
+> * @errp can then be used without worrying about the argument being
+> * NULL or &error_fatal.
+> *
+> * Using it when it's not needed is safe, but please avoid cluttering
+> * the source with useless code.
+>
+> Currently, since machine_set_cfmw() - the caller of
+> cxl_fixed_memory_window_config() - doesn't get the NULL errp parameter
+> as the "set" method of object property, cxl_fixed_memory_window_config()
+> doesn't trigger the dereference issue.
+>
+> To follow the requirement of errp, add missing ERRP_GUARD() in
+> cxl_fixed_memory_window_config().
+>
+> Suggested-by: Markus Armbruster <armbru@redhat.com>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+> Suggested by credit:
+>  Markus: Referred his explanation about ERRP_GUARD().
+> ---
+>  hw/cxl/cxl-host.c | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
+> index 2aa776c79c74..c5f5fcfd64d0 100644
+> --- a/hw/cxl/cxl-host.c
+> +++ b/hw/cxl/cxl-host.c
+> @@ -26,6 +26,7 @@ static void cxl_fixed_memory_window_config(CXLState *cxl_state,
+>                                             CXLFixedMemoryWindowOptions *object,
+>                                             Error **errp)
+>  {
+> +    ERRP_GUARD();
+>      g_autofree CXLFixedWindow *fw = g_malloc0(sizeof(*fw));
+>      strList *target;
+>      int i;
 
-Thanks! I'll attach your description to the commit message.
+The dereferences are
 
-Regards,
-Zhao
+       fw->enc_int_ways = cxl_interleave_ways_enc(fw->num_targets, errp);
+       if (*errp) {
+           return;
+       }
+
+and
+
+           fw->enc_int_gran =
+               cxl_interleave_granularity_enc(object->interleave_granularity,
+                                              errp);
+           if (*errp) {
+               return;
+           }
+
+We check *errp, because neither function returns a suitable error code.
+
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
 
