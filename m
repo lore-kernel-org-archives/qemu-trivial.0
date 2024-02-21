@@ -1,37 +1,37 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rcoRa-0002Fw-Us
-	for mharc-qemu-trivial@gnu.org; Wed, 21 Feb 2024 10:23:35 -0500
+	id 1rcoTw-00087D-9o
+	for mharc-qemu-trivial@gnu.org; Wed, 21 Feb 2024 10:26:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rcoNJ-0001hh-IJ; Wed, 21 Feb 2024 10:19:09 -0500
+ id 1rcoOO-0001cd-7G; Wed, 21 Feb 2024 10:20:16 -0500
 Received: from mgamail.intel.com ([192.198.163.15])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rcivJ-0003QN-TL; Wed, 21 Feb 2024 04:29:56 -0500
+ id 1rcivF-0003Pu-TT; Wed, 21 Feb 2024 04:29:51 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708507794; x=1740043794;
+ t=1708507790; x=1740043790;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=XiQ/HbQz6vM8OKlU2Z+p1K0FZs1RQXcxipd8cRAsJiw=;
- b=YgxNC/bgqCBX4oZ+cT9jTFz4dtVtp0/vhqsmqBMDLna/qQCpA8VcEG2k
- yJI3zigGXtNB2uonQaPfuXjKbCrQZ3YrzzpwDulrO95PIzbOSZscTNXAa
- YY59/Vt1PFbZmanJNfvp4iFnRwDQQaJhQLN3QMVidbMxRuYYK7cEtsnVP
- 8G3SLydXKvd2zsXE4pZE/8V7hZ0DUNXu7OlRI9DTQOyZfyWDKcIX53lkP
- yuSlBZygFlX2L/8psI15KZeNH8w/EM8q4sjRPweo8fcChwStBzbx9KzG2
- s3I4ngXb7hzyHTnreNTaKAP90ssahIe0DSViz4oqdZhD7La/ORrVu4/rF w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="2795451"
+ bh=jr5xLn+pxgEWB18t0POPDrO12COnWPAt/ERZ0Rl77N4=;
+ b=LTopbUVbvyu/vGvN4ufYLCjJPCjQCeYjFQkamOIuVfZUM6yQ/Zfq/n4w
+ O8TYba1g+sM42CJ0SdEYBq1f6JEZASQzVxKvfZWrnLYXWZhSor9hpfkoj
+ w9HnOrqOOpxW7l3EuMwxxx6SB42xVBAzZBwdipvVj7vd7txrUMUyjI+YE
+ yczH4qcDlAEkysEqSZDo/T8zQuQOVgaZ73qVh/iTsAvhb2OOhXllrDl1X
+ bJOradR971NDtmKSyNSt45m1n8elwTLkDKDZ6MDG/cWG8x86Wr/nDM1be
+ DWFifY91SR53soImv5kmp6Hvw39V83CXGcISntAexprp6iMt/Cw5aW7Q7 A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10990"; a="2795440"
 X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; 
-   d="scan'208";a="2795451"
+   d="scan'208";a="2795440"
 Received: from orviesa003.jf.intel.com ([10.64.159.143])
  by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Feb 2024 01:29:52 -0800
+ 21 Feb 2024 01:29:48 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,175,1705392000"; 
-   d="scan'208";a="9720034"
+   d="scan'208";a="9720001"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by orviesa003.jf.intel.com with ESMTP; 21 Feb 2024 01:29:48 -0800
+ by orviesa003.jf.intel.com with ESMTP; 21 Feb 2024 01:29:44 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Jonathan Cameron <jonathan.cameron@huawei.com>,
  Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -46,10 +46,10 @@ To: Jonathan Cameron <jonathan.cameron@huawei.com>,
  Markus Armbruster <armbru@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH 2/6] hw/display/macfb: Fix missing ERRP_GUARD() in
- macfb_nubus_realize()
-Date: Wed, 21 Feb 2024 17:43:13 +0800
-Message-Id: <20240221094317.994454-3-zhao1.liu@linux.intel.com>
+Subject: [PATCH 1/6] hw/cxl/cxl-host: Fix missing ERRP_GUARD() in
+ cxl_fixed_memory_window_config()
+Date: Wed, 21 Feb 2024 17:43:12 +0800
+Message-Id: <20240221094317.994454-2-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240221094317.994454-1-zhao1.liu@linux.intel.com>
 References: <20240221094317.994454-1-zhao1.liu@linux.intel.com>
@@ -75,7 +75,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 21 Feb 2024 15:19:17 -0000
+X-List-Received-Date: Wed, 21 Feb 2024 15:20:17 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -97,12 +97,13 @@ ERRP_GUARD():
 * Using it when it's not needed is safe, but please avoid cluttering
 * the source with useless code.
 
-Currently, since macfb_nubus_realize() - as a DeviceClass.realize()
-method - doesn't get the NULL errp parameter, it doesn't trigger the
-dereference issue.
+Currently, since machine_set_cfmw() - the caller of
+cxl_fixed_memory_window_config() - doesn't get the NULL errp parameter
+as the "set" method of object property, cxl_fixed_memory_window_config()
+doesn't trigger the dereference issue.
 
 To follow the requirement of errp, add missing ERRP_GUARD() in
-macfb_nubus_realize().
+cxl_fixed_memory_window_config().
 
 Suggested-by: Markus Armbruster <armbru@redhat.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
@@ -110,21 +111,21 @@ Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 Suggested by credit:
  Markus: Referred his explanation about ERRP_GUARD().
 ---
- hw/display/macfb.c | 1 +
+ hw/cxl/cxl-host.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/display/macfb.c b/hw/display/macfb.c
-index 418e99c8e18e..1ace341a0ff4 100644
---- a/hw/display/macfb.c
-+++ b/hw/display/macfb.c
-@@ -714,6 +714,7 @@ static void macfb_nubus_set_irq(void *opaque, int n, int level)
- 
- static void macfb_nubus_realize(DeviceState *dev, Error **errp)
+diff --git a/hw/cxl/cxl-host.c b/hw/cxl/cxl-host.c
+index 2aa776c79c74..c5f5fcfd64d0 100644
+--- a/hw/cxl/cxl-host.c
++++ b/hw/cxl/cxl-host.c
+@@ -26,6 +26,7 @@ static void cxl_fixed_memory_window_config(CXLState *cxl_state,
+                                            CXLFixedMemoryWindowOptions *object,
+                                            Error **errp)
  {
 +    ERRP_GUARD();
-     NubusDevice *nd = NUBUS_DEVICE(dev);
-     MacfbNubusState *s = NUBUS_MACFB(dev);
-     MacfbNubusDeviceClass *ndc = NUBUS_MACFB_GET_CLASS(dev);
+     g_autofree CXLFixedWindow *fw = g_malloc0(sizeof(*fw));
+     strList *target;
+     int i;
 -- 
 2.34.1
 
