@@ -1,34 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rd7Ew-00009g-DZ
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Feb 2024 06:27:47 -0500
+	id 1rd7Ey-0000DL-UG
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Feb 2024 06:27:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rd7Eq-0008Uh-9b; Thu, 22 Feb 2024 06:27:41 -0500
+ id 1rd7Et-00005Q-TK; Thu, 22 Feb 2024 06:27:44 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rd7En-00058G-MW; Thu, 22 Feb 2024 06:27:40 -0500
+ id 1rd7Er-00058n-O5; Thu, 22 Feb 2024 06:27:43 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id A91DC4FB56;
+ by isrv.corpit.ru (Postfix) with ESMTP id C67324FB58;
  Thu, 22 Feb 2024 14:26:26 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 2F16487182;
+ by tsrv.corpit.ru (Postfix) with SMTP id 4D35887184;
  Thu, 22 Feb 2024 14:26:03 +0300 (MSK)
-Received: (nullmailer pid 2526201 invoked by uid 1000);
+Received: (nullmailer pid 2526207 invoked by uid 1000);
  Thu, 22 Feb 2024 11:26:01 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
  qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 20/34] hw/arm/omap.h: correct typos
-Date: Thu, 22 Feb 2024 14:25:47 +0300
-Message-Id: <20240222112601.2526057-21-mjt@tls.msk.ru>
+Subject: [PULL 22/34] hw/net/npcm_gmac.h: correct typos
+Date: Thu, 22 Feb 2024 14:25:49 +0300
+Message-Id: <20240222112601.2526057-23-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240222112601.2526057-1-mjt@tls.msk.ru>
 References: <20240222112601.2526057-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -50,7 +49,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Feb 2024 11:27:42 -0000
+X-List-Received-Date: Thu, 22 Feb 2024 11:27:45 -0000
 
 From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
@@ -58,28 +57,34 @@ Correct typos automatically found with the `typos` tool
 <https://crates.io/crates/typos>
 
 Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-(mjt: fix comment style as suggested by Philippe)
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- include/hw/arm/omap.h | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+ include/hw/net/npcm_gmac.h | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/include/hw/arm/omap.h b/include/hw/arm/omap.h
-index 067e9419f7..40ee8ea9e5 100644
---- a/include/hw/arm/omap.h
-+++ b/include/hw/arm/omap.h
-@@ -1008,7 +1008,8 @@ void omap_mpu_wakeup(void *opaque, int irq, int req);
-                       __func__, paddr)
+diff --git a/include/hw/net/npcm_gmac.h b/include/hw/net/npcm_gmac.h
+index f2d9f08ec1..6340ffe92c 100644
+--- a/include/hw/net/npcm_gmac.h
++++ b/include/hw/net/npcm_gmac.h
+@@ -81,7 +81,7 @@ struct NPCMGMACRxDesc {
  
- /* OMAP-specific Linux bootloader tags for the ATAG_BOARD area
--   (Board-specifc tags are not here)  */
-+ * (Board-specific tags are not here)
-+ */
- #define OMAP_TAG_CLOCK		0x4f01
- #define OMAP_TAG_MMC		0x4f02
- #define OMAP_TAG_SERIAL_CONSOLE	0x4f03
+ /* Disable Interrupt on Completion */
+ #define RX_DESC_RDES1_DIS_INTR_COMP_MASK BIT(31)
+-/* Recieve end of ring */
++/* Receive end of ring */
+ #define RX_DESC_RDES1_RC_END_RING_MASK BIT(25)
+ /* Second Address Chained */
+ #define RX_DESC_RDES1_SEC_ADDR_CHND_MASK BIT(24)
+@@ -213,7 +213,7 @@ OBJECT_DECLARE_SIMPLE_TYPE(NPCMGMACState, NPCM_GMAC)
+ #define NPCM_DMA_STATUS_FBI BIT(13)
+ /* Early transmit Interrupt */
+ #define NPCM_DMA_STATUS_ETI BIT(10)
+-/* Receive Watchdog Timout */
++/* Receive Watchdog Timeout */
+ #define NPCM_DMA_STATUS_RWT BIT(9)
+ /* Receive Process Stopped */
+ #define NPCM_DMA_STATUS_RPS BIT(8)
 -- 
 2.39.2
 
