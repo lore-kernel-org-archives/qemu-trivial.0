@@ -1,29 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rd7E8-0008D8-Rc
-	for mharc-qemu-trivial@gnu.org; Thu, 22 Feb 2024 06:26:56 -0500
+	id 1rd7E9-0008DG-16
+	for mharc-qemu-trivial@gnu.org; Thu, 22 Feb 2024 06:26:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rd7DR-00083N-76; Thu, 22 Feb 2024 06:26:13 -0500
+ id 1rd7Dm-00086E-Pu; Thu, 22 Feb 2024 06:26:36 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rd7DK-0004p1-Tv; Thu, 22 Feb 2024 06:26:12 -0500
+ id 1rd7Dk-0004x1-8N; Thu, 22 Feb 2024 06:26:33 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 701CB4FB43;
+ by isrv.corpit.ru (Postfix) with ESMTP id D74564FB4A;
  Thu, 22 Feb 2024 14:26:25 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id EB40A8716F;
- Thu, 22 Feb 2024 14:26:01 +0300 (MSK)
-Received: (nullmailer pid 2526143 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 5DEE387176;
+ Thu, 22 Feb 2024 14:26:02 +0300 (MSK)
+Received: (nullmailer pid 2526164 invoked by uid 1000);
  Thu, 22 Feb 2024 11:26:01 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 01/34] hw/usb: Style cleanup
-Date: Thu, 22 Feb 2024 14:25:28 +0300
-Message-Id: <20240222112601.2526057-2-mjt@tls.msk.ru>
+Subject: [PULL 08/34] hw/i386/acpi: Declare pc_madt_cpu_entry() in
+ 'acpi-common.h'
+Date: Thu, 22 Feb 2024 14:25:35 +0300
+Message-Id: <20240222112601.2526057-9-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240222112601.2526057-1-mjt@tls.msk.ru>
 References: <20240222112601.2526057-1-mjt@tls.msk.ru>
@@ -36,8 +37,8 @@ X-Spam_score_int: -68
 X-Spam_score: -6.9
 X-Spam_bar: ------
 X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -54,58 +55,70 @@ X-List-Received-Date: Thu, 22 Feb 2024 11:26:49 -0000
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-We are going to modify these lines, fix their style
-in order to avoid checkpatch.pl warning.
+Since pc_madt_cpu_entry() is only used by:
+ - hw/i386/acpi-build.c   // single call
+ - hw/i386/acpi-common.c  // definition
+there is no need to expose it outside of hw/i386/.
+Declare it in "acpi-common.h".
+acpi-build.c doesn't need "hw/i386/pc.h" anymore.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Luc Michel <luc.michel@amd.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/usb/hcd-ehci.c | 3 ++-
- hw/usb/hcd-uhci.c | 6 ++++--
- 2 files changed, 6 insertions(+), 3 deletions(-)
+ hw/i386/acpi-common.c | 1 -
+ hw/i386/acpi-common.h | 3 +++
+ include/hw/i386/pc.h  | 4 ----
+ 3 files changed, 3 insertions(+), 5 deletions(-)
 
-diff --git a/hw/usb/hcd-ehci.c b/hw/usb/hcd-ehci.c
-index 870c72cb59..98a2860069 100644
---- a/hw/usb/hcd-ehci.c
-+++ b/hw/usb/hcd-ehci.c
-@@ -1086,8 +1086,9 @@ static void ehci_opreg_write(void *ptr, hwaddr addr,
-     case CONFIGFLAG:
-         val &= 0x1;
-         if (val) {
--            for(i = 0; i < NB_PORTS; i++)
-+            for (i = 0; i < NB_PORTS; i++) {
-                 handle_port_owner_write(s, i, 0);
-+            }
-         }
-         break;
+diff --git a/hw/i386/acpi-common.c b/hw/i386/acpi-common.c
+index 43dc23f7e0..f1a11f833a 100644
+--- a/hw/i386/acpi-common.c
++++ b/hw/i386/acpi-common.c
+@@ -27,7 +27,6 @@
+ #include "hw/acpi/acpi.h"
+ #include "hw/acpi/aml-build.h"
+ #include "hw/acpi/utils.h"
+-#include "hw/i386/pc.h"
+ #include "target/i386/cpu.h"
  
-diff --git a/hw/usb/hcd-uhci.c b/hw/usb/hcd-uhci.c
-index 7d3c026dae..b95b47f6a4 100644
---- a/hw/usb/hcd-uhci.c
-+++ b/hw/usb/hcd-uhci.c
-@@ -457,8 +457,9 @@ static void uhci_port_write(void *opaque, hwaddr addr,
-             int n;
+ #include "acpi-build.h"
+diff --git a/hw/i386/acpi-common.h b/hw/i386/acpi-common.h
+index b3c56ee014..e305aaac15 100644
+--- a/hw/i386/acpi-common.h
++++ b/hw/i386/acpi-common.h
+@@ -1,12 +1,15 @@
+ #ifndef HW_I386_ACPI_COMMON_H
+ #define HW_I386_ACPI_COMMON_H
  
-             n = (addr >> 1) & 7;
--            if (n >= NB_PORTS)
-+            if (n >= NB_PORTS) {
-                 return;
-+            }
-             port = &s->ports[n];
-             dev = port->port.dev;
-             if (dev && dev->attached) {
-@@ -513,8 +514,9 @@ static uint64_t uhci_port_read(void *opaque, hwaddr addr, unsigned size)
-             UHCIPort *port;
-             int n;
-             n = (addr >> 1) & 7;
--            if (n >= NB_PORTS)
-+            if (n >= NB_PORTS) {
-                 goto read_default;
-+            }
-             port = &s->ports[n];
-             val = port->ctrl;
-         }
++#include "hw/boards.h"
+ #include "hw/acpi/bios-linker-loader.h"
+ #include "hw/i386/x86.h"
+ 
+ /* Default IOAPIC ID */
+ #define ACPI_BUILD_IOAPIC_ID 0x0
+ 
++void pc_madt_cpu_entry(int uid, const CPUArchIdList *apic_ids,
++                       GArray *entry, bool force_enabled);
+ void acpi_build_madt(GArray *table_data, BIOSLinker *linker,
+                      X86MachineState *x86ms,
+                      const char *oem_id, const char *oem_table_id);
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index c0e6c43fbd..d7c7f930ed 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -199,10 +199,6 @@ bool pc_system_ovmf_table_find(const char *entry, uint8_t **data,
+                                int *data_len);
+ void pc_system_parse_ovmf_flash(uint8_t *flash_ptr, size_t flash_size);
+ 
+-/* hw/i386/acpi-common.c */
+-void pc_madt_cpu_entry(int uid, const CPUArchIdList *apic_ids,
+-                       GArray *entry, bool force_enabled);
+-
+ /* sgx.c */
+ void pc_machine_init_sgx_epc(PCMachineState *pcms);
+ 
 -- 
 2.39.2
 
