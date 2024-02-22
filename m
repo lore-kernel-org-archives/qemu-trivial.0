@@ -1,30 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rd7E9-0008Dj-7z
+	id 1rd7E9-0008ED-FS
 	for mharc-qemu-trivial@gnu.org; Thu, 22 Feb 2024 06:26:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rd7De-00085l-6X; Thu, 22 Feb 2024 06:26:26 -0500
+ id 1rd7Dg-00085u-94; Thu, 22 Feb 2024 06:26:28 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rd7DW-0004se-SJ; Thu, 22 Feb 2024 06:26:24 -0500
+ id 1rd7Dd-0004um-HJ; Thu, 22 Feb 2024 06:26:27 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 9DF174FB46;
+ by isrv.corpit.ru (Postfix) with ESMTP id BAC284FB48;
  Thu, 22 Feb 2024 14:26:25 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 2474587172;
+ by tsrv.corpit.ru (Postfix) with SMTP id 4123B87174;
  Thu, 22 Feb 2024 14:26:02 +0300 (MSK)
-Received: (nullmailer pid 2526152 invoked by uid 1000);
+Received: (nullmailer pid 2526158 invoked by uid 1000);
  Thu, 22 Feb 2024 11:26:01 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 04/34] hw/i386/kvm/ioapic: Replace magic '24' value by proper
- definition
-Date: Thu, 22 Feb 2024 14:25:31 +0300
-Message-Id: <20240222112601.2526057-5-mjt@tls.msk.ru>
+Subject: [PULL 06/34] hw/timer: Move HPET_INTCAP definition to "hpet.h"
+Date: Thu, 22 Feb 2024 14:25:33 +0300
+Message-Id: <20240222112601.2526057-7-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240222112601.2526057-1-mjt@tls.msk.ru>
 References: <20240222112601.2526057-1-mjt@tls.msk.ru>
@@ -51,32 +50,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 22 Feb 2024 11:26:48 -0000
+X-List-Received-Date: Thu, 22 Feb 2024 11:26:49 -0000
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Replace '24' -> KVM_IOAPIC_NUM_PINS.
+HPET_INTCAP is specific to TYPE_HPET, so define it there.
+hpet.c doesn't need to include "hw/i386/pc.h" anymore.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Luc Michel <luc.michel@amd.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/i386/kvm/ioapic.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/timer/hpet.c         | 1 -
+ include/hw/i386/pc.h    | 2 --
+ include/hw/timer/hpet.h | 2 ++
+ 3 files changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/hw/i386/kvm/ioapic.c b/hw/i386/kvm/ioapic.c
-index 409d0c8c76..b96fe84eed 100644
---- a/hw/i386/kvm/ioapic.c
-+++ b/hw/i386/kvm/ioapic.c
-@@ -35,7 +35,7 @@ void kvm_pc_setup_irq_routing(bool pci_enabled)
-         kvm_irqchip_add_irq_route(s, i, KVM_IRQCHIP_PIC_SLAVE, i - 8);
-     }
-     if (pci_enabled) {
--        for (i = 0; i < 24; ++i) {
-+        for (i = 0; i < KVM_IOAPIC_NUM_PINS; ++i) {
-             if (i == 0) {
-                 kvm_irqchip_add_irq_route(s, i, KVM_IRQCHIP_IOAPIC, 2);
-             } else if (i != 2) {
+diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+index 1672faa4f2..01efe4885d 100644
+--- a/hw/timer/hpet.c
++++ b/hw/timer/hpet.c
+@@ -25,7 +25,6 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include "hw/i386/pc.h"
+ #include "hw/irq.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+diff --git a/include/hw/i386/pc.h b/include/hw/i386/pc.h
+index 02a0deedd3..c0e6c43fbd 100644
+--- a/include/hw/i386/pc.h
++++ b/include/hw/i386/pc.h
+@@ -15,8 +15,6 @@
+ #include "hw/firmware/smbios.h"
+ #include "hw/cxl/cxl.h"
+ 
+-#define HPET_INTCAP "hpet-intcap"
+-
+ /**
+  * PCMachineState:
+  * @acpi_dev: link to ACPI PM device that performs ACPI hotplug handling
+diff --git a/include/hw/timer/hpet.h b/include/hw/timer/hpet.h
+index f04c4d3238..d17a8d4319 100644
+--- a/include/hw/timer/hpet.h
++++ b/include/hw/timer/hpet.h
+@@ -78,6 +78,8 @@ extern struct hpet_fw_config hpet_cfg;
+ 
+ #define TYPE_HPET "hpet"
+ 
++#define HPET_INTCAP "hpet-intcap"
++
+ static inline bool hpet_find(void)
+ {
+     return object_resolve_path_type("", TYPE_HPET, NULL);
 -- 
 2.39.2
 
