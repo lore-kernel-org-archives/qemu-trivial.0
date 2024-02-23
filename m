@@ -1,89 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rdZw0-0005xR-S3
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Feb 2024 13:06:08 -0500
+	id 1rdakk-00028p-8X
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Feb 2024 13:58:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdZkG-0003NI-PV
- for qemu-trivial@nongnu.org; Fri, 23 Feb 2024 12:54:00 -0500
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rdZkE-0005z3-WA
- for qemu-trivial@nongnu.org; Fri, 23 Feb 2024 12:54:00 -0500
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-412984360faso1720545e9.1
- for <qemu-trivial@nongnu.org>; Fri, 23 Feb 2024 09:53:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708710837; x=1709315637; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Wm/3VqJy4JV8D9Jtr6AJYVH6S+lLPzfbWwpJolkV9H8=;
- b=tdKGK5ltVgOm2k6g1hrIyRg+ys2PIJLY6qJKgh7EUwCueQpvExy92J/PlZTBhDF+6F
- OiBnUw8Dp1Bg6UKkHmcR2Hg4vitMh1sDp850zSHMMsBmjrzpnKyRBBktLu8N2JR7tPVh
- MEk5Jyar4gwTSrVPcVKrhISR7+GvyZWgRcXS2MF0uN8x+IwrwJS88ooEL6a9TyMbCOLX
- spgXpvg9ZNje0i3XqYM1dTWIZWX08kAHzNuBd+CDhGsNcil0BtfDng5R0sU5K/IEplq3
- 21yHeptmlHKossriaB1Bv9BMJMhWZ0MsxsPOWd9dTmn1/9MNlYRj5jQB2rjncTFniVXX
- xrsg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708710837; x=1709315637;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Wm/3VqJy4JV8D9Jtr6AJYVH6S+lLPzfbWwpJolkV9H8=;
- b=Fk2iznyMdjQmqWRl65zzqgMAvzJ21rujaG68CoYvM89G9y++1/Zkb3btk2gEo6a2XF
- cw8cuxF+mzoJ4YV4oLKYUW+IHnjL/XMfb2YD5cZtkW+4pWTYFde45lRS+ql4YIscqeSM
- HEJqMIjAd3oFTn9lC952thzhdXDYmH+0nWlfKnOraxe/rxxa6Ls9tvkaPVB9VA9etyVn
- /GMmP4hrxizKq139Ryo8BoMneLrwutZqx8oLcJ3qb9hDQ5n1KbNGWOoYSgG9zGfz/eYC
- gxVQgjBLIJXmUrt/fGnEEx5DJN+85SYxC04dR/BaVRQwpAeRvjqfLHg/4w8gx00UUl8E
- GxHA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWMCwnvv/AIvSNx3gKbb+/aGFdGndk0ojLyPkRRqSjeqWab6ciFpHKdHfauhcDyysCkrJHm5L8/6kDui+oyTlEUcH1y2MvWIQ==
-X-Gm-Message-State: AOJu0YzlKUDzyzt+fRvu0ndXDhLMuyZMfI3a7mMTlg4JSRs2SVtKe+d+
- ANhiX4qJNoDy4/KeYIkhG4LWgjTiEiKb6twGmveXGjoOuHchk2MfxvVNGNFAhtA=
-X-Google-Smtp-Source: AGHT+IFEPiw6NQxSQ5DKImaxfPHgQV9dQhtVZtcVO668cxiaS/gjuknMedcbFsy2vct9ZDhglflqLg==
-X-Received: by 2002:a05:600c:45ca:b0:412:9051:9429 with SMTP id
- s10-20020a05600c45ca00b0041290519429mr345105wmo.26.1708710837298; 
- Fri, 23 Feb 2024 09:53:57 -0800 (PST)
-Received: from [192.168.69.100] (xbn44-h02-176-184-35-109.dsl.sta.abo.bbox.fr.
- [176.184.35.109]) by smtp.gmail.com with ESMTPSA id
- fm23-20020a05600c0c1700b00412952d3cc6sm2858181wmb.7.2024.02.23.09.53.55
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 23 Feb 2024 09:53:56 -0800 (PST)
-Message-ID: <f5c5a0f7-c7c9-49d2-abe9-da94c6f05d19@linaro.org>
-Date: Fri, 23 Feb 2024 18:53:54 +0100
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1rdaJ3-0003Vp-Po; Fri, 23 Feb 2024 13:29:57 -0500
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1rdaJ0-0003IW-U6; Fri, 23 Feb 2024 13:29:57 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 137554E6004;
+ Fri, 23 Feb 2024 19:29:50 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id 6dhJnxTjsXcP; Fri, 23 Feb 2024 19:29:47 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id BB6624E6003; Fri, 23 Feb 2024 19:29:47 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id B97557456FE;
+ Fri, 23 Feb 2024 19:29:47 +0100 (CET)
+Date: Fri, 23 Feb 2024 19:29:47 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: David Parsons <dave@daveparsons.net>
+cc: Akihiko Odaki <akihiko.odaki@daynix.com>, 
+ Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>, 
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>, 
+ Gerd Hoffmann <kraxel@redhat.com>, 
+ =?ISO-8859-15?Q?Marc-Andr=E9_Lureau?= <marcandre.lureau@redhat.com>
+Subject: Re: [PATCH] ui/cocoa: Fix incorrect window clipping on macOS
+ Sonoma
+In-Reply-To: <E5C37F0E-3B73-45FA-8FC7-5E39CBF765BF@daveparsons.net>
+Message-ID: <3c915fba-f332-f0f1-056a-8d8a454b6383@eik.bme.hu>
+References: <DDADA9A9-DED4-4510-A532-7600C0233467@daveparsons.net>
+ <fdda385d-2e18-4554-88d0-e43cb5b90e39@tls.msk.ru>
+ <CAFEAcA9psJuvPz+mWYzWz0NLTcQTCNhknFrGZ2bx7Frtb3=B4A@mail.gmail.com>
+ <c018e266-0092-4d9e-ba2f-397cb0a1518e@daynix.com>
+ <E5C37F0E-3B73-45FA-8FC7-5E39CBF765BF@daveparsons.net>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 4/7] hw/misc/xlnx-versal-trng: Check returned bool in
- trng_prop_fault_event_set()
-Content-Language: en-US
-To: Zhao Liu <zhao1.liu@linux.intel.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>, Fan Ni <fan.ni@samsung.com>,
- Laurent Vivier <laurent@vivier.eu>, Alistair Francis
- <alistair@alistair23.me>, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
-References: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
- <20240223085653.1255438-5-zhao1.liu@linux.intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240223085653.1255438-5-zhao1.liu@linux.intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: multipart/mixed;
+ boundary="3866299591-458185346-1708712987=:13514"
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,58 +61,143 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Feb 2024 17:54:01 -0000
+X-List-Received-Date: Fri, 23 Feb 2024 18:29:58 -0000
 
-On 23/2/24 09:56, Zhao Liu wrote:
-> From: Zhao Liu <zhao1.liu@intel.com>
-> 
-> As the comment in qapi/error, dereferencing @errp requires
-> ERRP_GUARD():
-> 
-> * = Why, when and how to use ERRP_GUARD() =
-> *
-> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
-> * - It must not be dereferenced, because it may be null.
-> ...
-> * ERRP_GUARD() lifts these restrictions.
-> *
-> * To use ERRP_GUARD(), add it right at the beginning of the function.
-> * @errp can then be used without worrying about the argument being
-> * NULL or &error_fatal.
-> *
-> * Using it when it's not needed is safe, but please avoid cluttering
-> * the source with useless code.
-> 
-> But in trng_prop_fault_event_set, @errp is dereferenced without
-> ERRP_GUARD():
-> 
-> visit_type_uint32(v, name, events, errp);
-> if (*errp) {
->      return;
-> }
-> 
-> Currently, since trng_prop_fault_event_set() doesn't get the NULL @errp
-> parameter as a "set" method of object property, it hasn't triggered the
-> bug that dereferencing the NULL @errp.
-> 
-> And since visit_type_uint32() returns bool, check the returned bool
-> directly instead of dereferencing @errp, then we needn't the add missing
-> ERRP_GUARD().
-> 
-> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> ---
-> Suggested by credit:
->   Markus: Referred his explanation about ERRP_GUARD().
-> ---
-> v2:
->   * Add the @errp dereference code in commit message to make review
->     easier. (Markus)
->   * Check the returned bool instead of dereferencing @errp. (Markus)
-> ---
->   hw/misc/xlnx-versal-trng.c | 3 +--
->   1 file changed, 1 insertion(+), 2 deletions(-)
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+--3866299591-458185346-1708712987=:13514
+Content-Type: text/plain; charset=utf-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
+On Fri, 23 Feb 2024, David Parsons wrote:
+> Hi Akihiko
+>
+> I’ve re-worked the patch to match your suggestion. I have compiled
+> and tested it on Sonoma and Monterey and both builds worked correctly.
+>
+> New patch is below. I’m new to sending patches to QEMU so please let
+> me know if I need to do anything else to get it incorporated into the
+> repo.
+
+See here for detailed docs:
+https://www.qemu.org/docs/master/devel/submitting-a-patch.html
+
+In short you'd need to make the patch the same way you did the first 
+version with the changed content but as [PATCH v2] and send it again as a 
+new patch like you did the first time. (You can use -v2 option to git 
+format-patch to add v2 to subject but if you're not using git format-patch 
+directly then I'm not sure what option will do that for the way you send 
+the patch.)
+
+Regards,
+BALATON Zoltan
+
+> Dave
+>
+> diff --git a/ui/cocoa.m b/ui/cocoa.m
+> index eb99064bee..bbf9704b8c 100644
+> --- a/ui/cocoa.m
+> +++ b/ui/cocoa.m
+> @@ -54,6 +54,10 @@
+> #define MAC_OS_X_VERSION_10_13 101300
+> #endif
+>
+> +#ifndef MAC_OS_VERSION_14_0
+> +#define MAC_OS_VERSION_14_0 140000
+> +#endif
+> +
+> /* 10.14 deprecates NSOnState and NSOffState in favor of
+>  * NSControlStateValueOn/Off, which were introduced in 10.13.
+>  * Define for older versions
+> @@ -365,6 +369,9 @@ - (id)initWithFrame:(NSRect)frameRect
+>         screen.width = frameRect.size.width;
+>         screen.height = frameRect.size.height;
+>         kbd = qkbd_state_init(dcl.con);
+> +#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_14_0
+> +        [self setClipsToBounds:YES];
+> +#endif
+>
+>     }
+>     return self;
+>
+>
+>> On 23 Feb 2024, at 11:28, Akihiko Odaki <akihiko.odaki@daynix.com> wrote:
+>>
+>> On 2024/02/23 2:10, Peter Maydell wrote:
+>>> On Thu, 22 Feb 2024 at 06:08, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>>>>
+>>>> [Adding a few more Ccs]
+>>>>
+>>>> 17.02.2024 18:58, David Parsons :
+>>>>> macOS Sonoma changes the NSView.clipsToBounds to false by default where it was true in
+>>>>> earlier version of macOS. This causes the window contents to be obscured by the window
+>>>>> frame. This fixes the issue by conditionally setting the clipping on Sonoma to true.
+>>
+>> Thanks for posting a patch for this critical problem.
+>>
+>>>>>
+>>>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1994
+>>>>> Signed-off-by: David Parsons <dave@daveparsons.net>
+>>>>>
+>>>>> diff --git a/ui/cocoa.m b/ui/cocoa.m
+>>>>> index eb99064bee..c9e3b96004 100644
+>>>>> --- a/ui/cocoa.m
+>>>>> +++ b/ui/cocoa.m
+>>>>> @@ -365,6 +365,9 @@ - (id)initWithFrame:(NSRect)frameRect
+>>>>>           screen.width = frameRect.size.width;
+>>>>>           screen.height = frameRect.size.height;
+>>>>>           kbd = qkbd_state_init(dcl.con);
+>>>>> +        if (@available(macOS 14, *)) {
+>>>>> +            [self setClipsToBounds:YES];
+>>>>> +        }
+>>>>>
+>>>>>       }
+>>>>>       return self;
+>>>>>
+>>>>
+>>>> Hi David!
+>>>>
+>>>> While the code change is tiny, I for one know nothing about MacOS and
+>>>> its cocoa thing, so to me (with my trivial-patches hat on) this is a
+>>>> no-go.  I'd love to have a review from someone more knowlegeable in
+>>>> this area.
+>>> Mmm. Akihiko is the expert here, but I do notice that we don't
+>>> seem to be handling the "macos-version-specific" stuff in a
+>>> way we've done it before (we don't use @available elsewhere).
+>>> I did wonder if we could call the setClipsToBounds method unconditionally;
+>>> The release notes say
+>>> https://developer.apple.com/documentation/macos-release-notes/appkit-release-notes-for-macos-14#NSView
+>>> "This property is available back to macOS 10.9. This availability is
+>>> intended to allow code targeting older OSes to set this property to
+>>> true without guarding the setter in an availability check."
+>>> but I think that might only mean "you can do this building on a new
+>>> SDK that's targeting an old version", not "you can do this
+>>> when building on an older SDK" (at least judging from the
+>>> comments in the gitlab issue).
+>>
+>> Apparently it is that case.
+>>
+>> Please check if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_14_0
+>> instead of using @available. See commit 5e24600a7c1c ("ui/cocoa.m: Fix macOS 10.14 deprecation warnings") for example.
+>>
+>>> The other option would be to fix whatever it is that we're
+>>> presumably not getting right that means this default change
+>>> caused the bug. My guess is that we are in the case
+>>> "Confusing a view’s bounds and its dirty rect. The dirty rect
+>>>  passed to .drawRect() should be used to determine what to draw,
+>>>  not where to draw it. Use NSView.bounds when determining the
+>>>  layout of what your view draws."
+>>> But unless the fix for that is really obvious and easy I guess
+>>> that flipping the default back to its old value is the better
+>>> approach.
+>>
+>> It is a chore to convert the coordinates using NSView.bounds. Let's keep using clipsToBounds.
+>>
+>>> -- PMM
+>>
+>>
+>
+>
+--3866299591-458185346-1708712987=:13514--
 
