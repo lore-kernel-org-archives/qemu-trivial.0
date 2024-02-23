@@ -1,67 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rdRA6-0003oM-8f
-	for mharc-qemu-trivial@gnu.org; Fri, 23 Feb 2024 03:44:06 -0500
+	id 1rdTjS-0004MV-VF
+	for mharc-qemu-trivial@gnu.org; Fri, 23 Feb 2024 06:28:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rdRA0-0003lb-RG; Fri, 23 Feb 2024 03:44:02 -0500
-Received: from mgamail.intel.com ([192.198.163.7])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rdR9z-0000BO-7B; Fri, 23 Feb 2024 03:44:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1708677839; x=1740213839;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=MdIfh/jYydArR3D22MnTaJm9imdQCnDqtGGlbaFl++w=;
- b=JUCrwAi9HXFCrFIz9r7w0S/eZ3/WNjN+rEZE1zrp/wNGnZuACQ3u3lu9
- vzUEZeQklvzHG8TFgFhXEPqHwvmxox3OAHanNxY1mEbzQQ/uJAnHQjUoR
- 74KDJZsGygFQjX/LBYUnwXzF9aPAy+G4zMx2N/Pqs0qcKYaM2wlvX1cFu
- uTugGlgPv6dCErZZ1PncweFQeGdsxICjbXjEj0hF75hJRXGTYnL4jwsFU
- OlRzEn9Mk25fb2V5HlYbiEMa1QTo5RL82SPvy2BQ+b08bBRHheQJGsZ/F
- Q20iWGNVGy3hq7OUHl2g/V9mvjEwVMPsce5mkXitw+HHBmVdbLYuDvNlz w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10992"; a="28413916"
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; d="scan'208";a="28413916"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Feb 2024 00:43:52 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,179,1705392000"; 
-   d="scan'208";a="5731881"
-Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa007.fm.intel.com with ESMTP; 23 Feb 2024 00:43:48 -0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Jonathan Cameron <jonathan.cameron@huawei.com>,
- Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH v2 7/7] hw/intc: Check @errp to handle the error of
- IOAPICCommonClass.realize()
-Date: Fri, 23 Feb 2024 16:56:53 +0800
-Message-Id: <20240223085653.1255438-8-zhao1.liu@linux.intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
-References: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1rdTjR-0004M5-Ai
+ for qemu-trivial@nongnu.org; Fri, 23 Feb 2024 06:28:45 -0500
+Received: from mail-ot1-x329.google.com ([2607:f8b0:4864:20::329])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1rdTjO-0005nX-Pj
+ for qemu-trivial@nongnu.org; Fri, 23 Feb 2024 06:28:44 -0500
+Received: by mail-ot1-x329.google.com with SMTP id
+ 46e09a7af769-6e2e6bcc115so105498a34.3
+ for <qemu-trivial@nongnu.org>; Fri, 23 Feb 2024 03:28:41 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1708687721; x=1709292521;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ls5vQacCF0G8Uvo1mVdX+EMSTYrFJ3Uk+K0MXDyqp+A=;
+ b=XS0AfrVmdB37Nl32HMHOyYZxGC3Yk9H1rctrtL31PHgPF9NrrKPgLJhlOifLwAbIM8
+ QDw/38JLhwqtL9WlPiILLgfYj5Gpaw9XMrIg6GPc6IeqKnuO9mn/NyCF9Ki0TVGsPl7D
+ zfKdXlKYUjVnWrKDNYXWbj6RocF4Rp/reSTLYhWTzVheQopiB01v8pjxAsdX02zeA4Mc
+ ioc9x4nKe0JN3lLD8P2Gs2aUs+4hl/LDL4lQEG0SuXMcldCqhPVsje7kY8Ohk5hMyBsp
+ tNLh50QVyJCC5YUYCf19YUQ+iBoTUHqBKIDdy/rDOx6YjcC4eUX1shUeD+ZOBn30kY0Z
+ PMuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708687721; x=1709292521;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ls5vQacCF0G8Uvo1mVdX+EMSTYrFJ3Uk+K0MXDyqp+A=;
+ b=eNQP93c7IW/Tt2TbDmaQDuy+cyG5/O/Cidqh8s+3N9ZBgNof7lpUz0Jht6bY2nW/cw
+ q7hVqPmsFqeGxKNrUYTvuqLTMJ2kaz5y2FRfPdly7xstfbAby4J2mec8jtPkesUyQHVT
+ 451gdrgaoXw+YAdedielXeelyOyt01UX9q1h1lesxDDEdQ4j32PwlNEoxMkwVc/jx2bA
+ 2UeHUs7aUlKtp+J8p9Aa4E/x42VeXBesP4g5UzWdLnUJdsERvtJiXK54ofXfMwd/sYgO
+ veA6o/I68ZFJg9mzSwh1TfJaELkNoHy4nLZbubVYjYt2pByedJNFH2oTETBEikqPQoHg
+ k39A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXDtrW/0Lf31OqIgfX2t6xYtQizQ4dD67HhYMDoKicftXAUyjEbINzCmxwZAQw8pIE5kmgl0JEGuLHBnZUZenwSxI6Z+L2Xtg==
+X-Gm-Message-State: AOJu0YwSM3Exa5PT+ZLF4omXMxTRRzSPH2sEgkaJY5aO+sJ8puNGh3xv
+ sdEcESIpSs4QouPY8gBC2KR/RFDXXPqoAovie4P2px3L7wlwlqN+q9gG+1lsQqM=
+X-Google-Smtp-Source: AGHT+IH5h4EhmIwUNTTDJmOkd+68/PrMRGnnM98pDgADQb6bLMia5IVZkq7+pjsqzoYJu8/E1P2sEA==
+X-Received: by 2002:a05:6359:5096:b0:17b:6e2c:524a with SMTP id
+ on22-20020a056359509600b0017b6e2c524amr1557032rwb.27.1708687720896; 
+ Fri, 23 Feb 2024 03:28:40 -0800 (PST)
+Received: from [157.82.203.206] ([157.82.203.206])
+ by smtp.gmail.com with ESMTPSA id
+ j6-20020a17090276c600b001db693d89fdsm11419880plt.179.2024.02.23.03.28.38
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 23 Feb 2024 03:28:40 -0800 (PST)
+Message-ID: <c018e266-0092-4d9e-ba2f-397cb0a1518e@daynix.com>
+Date: Fri, 23 Feb 2024 20:28:37 +0900
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] ui/cocoa: Fix incorrect window clipping on macOS Sonoma
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>
+Cc: David Parsons <dave@daveparsons.net>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+References: <DDADA9A9-DED4-4510-A532-7600C0233467@daveparsons.net>
+ <fdda385d-2e18-4554-88d0-e43cb5b90e39@tls.msk.ru>
+ <CAFEAcA9psJuvPz+mWYzWz0NLTcQTCNhknFrGZ2bx7Frtb3=B4A@mail.gmail.com>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <CAFEAcA9psJuvPz+mWYzWz0NLTcQTCNhknFrGZ2bx7Frtb3=B4A@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: none client-ip=192.198.163.7;
- envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.002,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+Received-SPF: none client-ip=2607:f8b0:4864:20::329;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-ot1-x329.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -75,48 +90,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 Feb 2024 08:44:04 -0000
+X-List-Received-Date: Fri, 23 Feb 2024 11:28:46 -0000
 
-From: Zhao Liu <zhao1.liu@intel.com>
+On 2024/02/23 2:10, Peter Maydell wrote:
+> On Thu, 22 Feb 2024 at 06:08, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>>
+>> [Adding a few more Ccs]
+>>
+>> 17.02.2024 18:58, David Parsons :
+>>> macOS Sonoma changes the NSView.clipsToBounds to false by default where it was true in
+>>> earlier version of macOS. This causes the window contents to be obscured by the window
+>>> frame. This fixes the issue by conditionally setting the clipping on Sonoma to true.
 
-IOAPICCommonClass implements its own private realize(), and this private
-realize() allows error.
+Thanks for posting a patch for this critical problem.
 
-Since IOAPICCommonClass.realize() returns void, to check the error,
-dereference @errp with ERRP_GUARD().
+>>>
+>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1994
+>>> Signed-off-by: David Parsons <dave@daveparsons.net>
+>>>
+>>> diff --git a/ui/cocoa.m b/ui/cocoa.m
+>>> index eb99064bee..c9e3b96004 100644
+>>> --- a/ui/cocoa.m
+>>> +++ b/ui/cocoa.m
+>>> @@ -365,6 +365,9 @@ - (id)initWithFrame:(NSRect)frameRect
+>>>            screen.width = frameRect.size.width;
+>>>            screen.height = frameRect.size.height;
+>>>            kbd = qkbd_state_init(dcl.con);
+>>> +        if (@available(macOS 14, *)) {
+>>> +            [self setClipsToBounds:YES];
+>>> +        }
+>>>
+>>>        }
+>>>        return self;
+>>>
+>>
+>> Hi David!
+>>
+>> While the code change is tiny, I for one know nothing about MacOS and
+>> its cocoa thing, so to me (with my trivial-patches hat on) this is a
+>> no-go.  I'd love to have a review from someone more knowlegeable in
+>> this area.
+> 
+> Mmm. Akihiko is the expert here, but I do notice that we don't
+> seem to be handling the "macos-version-specific" stuff in a
+> way we've done it before (we don't use @available elsewhere).
+> 
+> I did wonder if we could call the setClipsToBounds method unconditionally;
+> The release notes say
+> https://developer.apple.com/documentation/macos-release-notes/appkit-release-notes-for-macos-14#NSView
+> "This property is available back to macOS 10.9. This availability is
+> intended to allow code targeting older OSes to set this property to
+> true without guarding the setter in an availability check."
+> 
+> but I think that might only mean "you can do this building on a new
+> SDK that's targeting an old version", not "you can do this
+> when building on an older SDK" (at least judging from the
+> comments in the gitlab issue).
 
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
----
-v2:
- * Add the missing ERRP_GUARD(). (Markus)
- * Move this single patch into @errp fixing series. (Micheal)
----
- hw/intc/ioapic_common.c | 4 ++++
- 1 file changed, 4 insertions(+)
+Apparently it is that case.
 
-diff --git a/hw/intc/ioapic_common.c b/hw/intc/ioapic_common.c
-index cb9bf6214608..efbe6958c8d7 100644
---- a/hw/intc/ioapic_common.c
-+++ b/hw/intc/ioapic_common.c
-@@ -152,6 +152,7 @@ static int ioapic_dispatch_post_load(void *opaque, int version_id)
- 
- static void ioapic_common_realize(DeviceState *dev, Error **errp)
- {
-+    ERRP_GUARD();
-     IOAPICCommonState *s = IOAPIC_COMMON(dev);
-     IOAPICCommonClass *info;
- 
-@@ -162,6 +163,9 @@ static void ioapic_common_realize(DeviceState *dev, Error **errp)
- 
-     info = IOAPIC_COMMON_GET_CLASS(s);
-     info->realize(dev, errp);
-+    if (*errp) {
-+        return;
-+    }
- 
-     sysbus_init_mmio(SYS_BUS_DEVICE(s), &s->io_memory);
-     ioapic_no++;
--- 
-2.34.1
+Please check if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_14_0
+instead of using @available. See commit 5e24600a7c1c ("ui/cocoa.m: Fix 
+macOS 10.14 deprecation warnings") for example.
+
+> 
+> The other option would be to fix whatever it is that we're
+> presumably not getting right that means this default change
+> caused the bug. My guess is that we are in the case
+> "Confusing a view’s bounds and its dirty rect. The dirty rect
+>   passed to .drawRect() should be used to determine what to draw,
+>   not where to draw it. Use NSView.bounds when determining the
+>   layout of what your view draws."
+> But unless the fix for that is really obvious and easy I guess
+> that flipping the default back to its old value is the better
+> approach.
+
+It is a chore to convert the coordinates using NSView.bounds. Let's keep 
+using clipsToBounds.
+
+> 
+> -- PMM
+
 
 
