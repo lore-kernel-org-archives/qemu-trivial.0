@@ -1,110 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rdsfv-0003D1-As
-	for mharc-qemu-trivial@gnu.org; Sat, 24 Feb 2024 09:06:47 -0500
+	id 1rdssN-0008Fi-2X
+	for mharc-qemu-trivial@gnu.org; Sat, 24 Feb 2024 09:19:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dave@daveparsons.net>)
- id 1rdsfm-00039C-SQ; Sat, 24 Feb 2024 09:06:40 -0500
-Received: from hamster.birch.relay.mailchannels.net ([23.83.209.80])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dave@daveparsons.net>)
- id 1rdsfj-0004Kf-Cb; Sat, 24 Feb 2024 09:06:38 -0500
-X-Sender-Id: thundermail|x-authsender|dave@daveparsons.net
-Received: from relay.mailchannels.net (localhost [127.0.0.1])
- by relay.mailchannels.net (Postfix) with ESMTP id A194E802DA4;
- Sat, 24 Feb 2024 14:06:31 +0000 (UTC)
-Received: from mailclean11.thundermail.uk (unknown [127.0.0.6])
- (Authenticated sender: thundermail)
- by relay.mailchannels.net (Postfix) with ESMTPA id 1E3868033A5;
- Sat, 24 Feb 2024 14:06:28 +0000 (UTC)
-ARC-Seal: i=1; s=arc-2022; d=mailchannels.net; t=1708783590; a=rsa-sha256;
- cv=none;
- b=uT08J277UT8z+8EHQxgeQ/PJYYza7L8zLa1+fP7hF4lzPIOZOUvFJZvdohurG3swmfT167
- rEAZ+qgcrhRo9APVMi/fjwvALURHQzmCa7FkEMC0q0WivhvicYEE/t+/DJBEUiQ14/FRGe
- BW9We6ax7vYOdBympa0ozH3YnGfuF1Dm8DtVOCs8MrhQcVLqdWKGh1sBI9qMgaKStzjfNL
- 9KCb7Es0Ui6zxlVGGRKhmQk/v9b0bGztKUjbSr+JW2IBOx/k4NEwLYdPa6Z3b0gL3249+h
- 9chTx1ADuv1cqj2i/ggiqg+wRC2VfWzALiMjdfGrcMJznfWRV7hIhUVFhDLx+A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed;
- d=mailchannels.net; s=arc-2022; t=1708783590;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding:dkim-signature;
- bh=Z9X1HZr3mu0mTTUfwzTQhmsSc2asmpSe1PaQrzRDq60=;
- b=pZAAIkM+6hrpPorE4eE+rMXJ9JP5y6kaqH6E82ZoAf3v57JREmrFzIo1zXWjUmMkpefllm
- 2WMqQZDuhkdP90LTfw52v66xkapWcr3skvHI4XRjHAiZPQSpzgIv5hWkqU9ynZ8uaMtUZl
- jPuZb6AMfUaMsYfX5QNjjloyEf2bcBYU1xKxydi1BAUk7pQ5VG2X8SVj3OcONlCFKarhM3
- zGlxPE1Ik79nztv5fTdKGn7n728N8kWaXTcJSEEGenFT1oXR66IUxIgLpDmEfpnL9C7vxu
- f0TTrc7cMvR7AHIV8Shu1qho7yO3FJGhjecFxcYRi92ZjESpZh6ZFvvT9Y078A==
-ARC-Authentication-Results: i=1; rspamd-55b4bfd7cb-pb77f;
- auth=pass smtp.auth=thundermail smtp.mailfrom=dave@daveparsons.net
-X-Sender-Id: thundermail|x-authsender|dave@daveparsons.net
-X-MC-Relay: Neutral
-X-MailChannels-SenderId: thundermail|x-authsender|dave@daveparsons.net
-X-MailChannels-Auth-Id: thundermail
-X-Drop-Army: 459133923eb00e63_1708783590758_2107120092
-X-MC-Loop-Signature: 1708783590758:696577549
-X-MC-Ingress-Time: 1708783590758
-Received: from mailclean11.thundermail.uk (mailclean11.thundermail.uk
- [149.255.60.66]) (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384)
- by 100.101.14.245 (trex/6.9.2); Sat, 24 Feb 2024 14:06:30 +0000
-Received: from cloud227.thundercloud.uk (cloud227.thundercloud.uk
- [149.255.62.108])
- by mailclean11.thundermail.uk (Postfix) with ESMTPS id B82DE402E9;
- Sat, 24 Feb 2024 14:06:23 +0000 (GMT)
-Received: from localhost.localdomain
- (host109-149-93-149.range109-149.btcentralplus.com [109.149.93.149])
- (Authenticated sender: dave@daveparsons.net)
- by cloud227.thundercloud.uk (Postfix) with ESMTPSA id 4B52F104073;
- Sat, 24 Feb 2024 14:07:12 +0000 (GMT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=daveparsons.net;
- s=default; t=1708783632;
- bh=Z9X1HZr3mu0mTTUfwzTQhmsSc2asmpSe1PaQrzRDq60=; h=From:To:Subject;
- b=TrE1bDrEANirvipotOnFB13aBTbwQAkhf5lOkLLlCflbY3Vl1s3EWd7o9i+sdp2I4
- t/Ql8JqiSEHQNt9ycCmDAXDPl1b7VM2VA64ix3TJAB2fsCMzCACOsRoudst0jAsU6k
- FQBheqzRHxg5+96JEIPN2DEPN4IXmF8ywBfI9M8g=
-Authentication-Results: cloud227.thundercloud.uk;
- spf=pass (sender IP is 109.149.93.149) smtp.mailfrom=dave@daveparsons.net
- smtp.helo=localhost.localdomain
-Received-SPF: pass (cloud227.thundercloud.uk: connection is authenticated)
-From: David Parsons <dave@daveparsons.net>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, akihiko.odaki@daynix.com, mjt@tls.msk.ru,
- philmd@linaro.org, kraxel@redhat.com, marcandre.lureau@redhat.com,
- David Parsons <dave@daveparsons.net>
-Subject: [PATCH v2] ui/cocoa: Fix window clipping on macOS 14
-Date: Sat, 24 Feb 2024 14:06:20 +0000
-Message-Id: <20240224140620.39200-1-dave@daveparsons.net>
-X-Mailer: git-send-email 2.39.3 (Apple Git-145)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1rdssK-0008FA-Rk
+ for qemu-trivial@nongnu.org; Sat, 24 Feb 2024 09:19:36 -0500
+Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <akihiko.odaki@daynix.com>)
+ id 1rdssJ-0006QJ-40
+ for qemu-trivial@nongnu.org; Sat, 24 Feb 2024 09:19:36 -0500
+Received: by mail-pl1-x631.google.com with SMTP id
+ d9443c01a7336-1dc0e5b223eso14713425ad.1
+ for <qemu-trivial@nongnu.org>; Sat, 24 Feb 2024 06:19:34 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=daynix-com.20230601.gappssmtp.com; s=20230601; t=1708784373; x=1709389173;
+ darn=nongnu.org; 
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=sL7AXmg2/WGVYQ0ZtRCkJnAzTFCjo6PV+RI/0vO+oPQ=;
+ b=g1lmAj7qqpGsAKgdLtmbPEerx6QFoFOg/eLxPRwzEcEpgT5UyGSfk9YvsqkzgLMWKX
+ BaRTfSQk980BO8wQ3c9w+i3NZKWdgZGu2SWmx2KSduET6+NG3G9bWMFAO9GG54mgaMda
+ j9EUUQAW8uVFHbloRSpObefjYm9D8HNWrpsX8KGi8UirwCl+HYvGaErqwZOkTuWImteh
+ cb+eINBkhMdcMWe+80gTweAxl6GxuO6kl8Igf+1+9TG5LQgv9LZpaYNJHFqDvjRqjvXO
+ 5rBkEUJubFapk+AHw2gVg4hgFEICa73xX/PgqUlNk45rvLZPOx8w3P7LlTTTHmpFxGS3
+ ESaQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1708784373; x=1709389173;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=sL7AXmg2/WGVYQ0ZtRCkJnAzTFCjo6PV+RI/0vO+oPQ=;
+ b=QmO9ce8mPAaepx/A93RidCHxqGHrOtrMSe+DLcr/8ntXJ+X1DyhZEirh1TEj6RXdEi
+ bOjOANelteWXX4zgKVFhD4/6FpqUe5HOuMXqleYGRL3PtRpvfCbuBipxGkKXEDYOY/Xk
+ DODllXF4geWsfLQyoCSp3Ah2TDJQWjTMR9ngQARk7ADlgZPgdpWynD3RWyLlS/mduD3u
+ 04v+SOpl1F4bHYQ70UEtKA+ku9FR09wU0yL2DioTPvDC5LFqtWtIlm1QsNNxdzdwPzGI
+ CxWsJKF6UwwswRYb/IK8/PcpAjbGbji5Bd2pujCdoIwSM7ynx55krWO9k7/FvuKlgbq4
+ NpVg==
+X-Gm-Message-State: AOJu0YzYMa7P/4MbUN/wnFYTbcyBUY8+ZD8Xnl68wIz4BgNJQ4isFzRd
+ b+uVtbYX2dMk5FlszOhFpIHlUXIU38Ze3COu3AE1DX8zZy4THUsRyAyY7Wyy4gw=
+X-Google-Smtp-Source: AGHT+IGICiVaPlJTeYuTBlvwzO8G+l1hK+AfqS2ImDhvz0b5s04GC7R5shHgQ8HxuT2ql1ybTiWvPA==
+X-Received: by 2002:a17:902:e84e:b0:1db:f965:471e with SMTP id
+ t14-20020a170902e84e00b001dbf965471emr2996092plg.58.1708784373587; 
+ Sat, 24 Feb 2024 06:19:33 -0800 (PST)
+Received: from ?IPV6:2400:4050:a840:1e00:9ac7:6d57:2b16:6932?
+ ([2400:4050:a840:1e00:9ac7:6d57:2b16:6932])
+ by smtp.gmail.com with ESMTPSA id
+ kx4-20020a170902f94400b001dc214f7353sm1076942plb.249.2024.02.24.06.19.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 24 Feb 2024 06:19:32 -0800 (PST)
+Message-ID: <0dfce9a1-568c-4a1c-8d96-0523674c6873@daynix.com>
+Date: Sat, 24 Feb 2024 23:19:29 +0900
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-PPP-Message-ID: <170878363277.3104394.709066910959988231@cloud227.thundercloud.uk>
-X-PPP-Vhost: daveparsons.net
-X-Rspamd-Server: mailclean11
-X-Rspamd-Queue-Id: B82DE402E9
-X-Rspamd-Action: no action
-X-Spamd-Result: default: False [1.49 / 999.00]; MID_CONTAINS_FROM(1.00)[];
- R_MISSING_CHARSET(0.50)[]; ONCE_RECEIVED(0.10)[];
- MIME_GOOD(-0.10)[text/plain]; MX_GOOD(-0.01)[];
- MIME_TRACE(0.00)[0:+]; RCVD_VIA_SMTP_AUTH(0.00)[];
- RCVD_COUNT_ONE(0.00)[1]; TO_DN_SOME(0.00)[];
- ASN(0.00)[asn:34931, ipnet:149.255.60.0/22, country:GB];
- ARC_NA(0.00)[]; DMARC_NA(0.00)[daveparsons.net];
- RCPT_COUNT_SEVEN(0.00)[8]; NEURAL_SPAM(0.00)[0.956];
- FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
- FUZZY_BLOCKED(0.00)[rspamd.com]; TO_MATCH_ENVRCPT_SOME(0.00)[];
- DKIM_TRACE(0.00)[daveparsons.net:+];
- R_SPF_SOFTFAIL(0.00)[~all];
- R_DKIM_ALLOW(0.00)[daveparsons.net:s=default];
- RCVD_TLS_ALL(0.00)[]
-Received-SPF: pass client-ip=23.83.209.80; envelope-from=dave@daveparsons.net;
- helo=hamster.birch.relay.mailchannels.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] ui/cocoa: Fix window clipping on macOS 14
+Content-Language: en-US
+To: David Parsons <dave@daveparsons.net>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, philmd@linaro.org,
+ kraxel@redhat.com, marcandre.lureau@redhat.com
+References: <20240224140620.39200-1-dave@daveparsons.net>
+From: Akihiko Odaki <akihiko.odaki@daynix.com>
+In-Reply-To: <20240224140620.39200-1-dave@daveparsons.net>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: none client-ip=2607:f8b0:4864:20::631;
+ envelope-from=akihiko.odaki@daynix.com; helo=mail-pl1-x631.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,47 +86,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 24 Feb 2024 14:06:41 -0000
+X-List-Received-Date: Sat, 24 Feb 2024 14:19:37 -0000
 
-macOS Sonoma changes the NSView.clipsToBounds to false by default
-where it was true in earlier version of macOS. This causes the window
-contents to be occluded by the frame at the top of the window. This
-fixes the issue by conditionally compiling the clipping on Sonoma to
-true. NSView only exposes the clipToBounds in macOS 14 and so has
-to be fixed via conditional compilation.
+On 2024/02/24 23:06, David Parsons wrote:
+> macOS Sonoma changes the NSView.clipsToBounds to false by default
+> where it was true in earlier version of macOS. This causes the window
+> contents to be occluded by the frame at the top of the window. This
+> fixes the issue by conditionally compiling the clipping on Sonoma to
+> true. NSView only exposes the clipToBounds in macOS 14 and so has
+> to be fixed via conditional compilation.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1994
+> Signed-off-by: David Parsons <dave@daveparsons.net>
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1994
-Signed-off-by: David Parsons <dave@daveparsons.net>
----
- ui/cocoa.m | 7 +++++++
- 1 file changed, 7 insertions(+)
+Reviewed-by: Akihiko Odaki <akihiko.odaki@daynix.com>
 
-diff --git a/ui/cocoa.m b/ui/cocoa.m
-index eb99064bee..bbf9704b8c 100644
---- a/ui/cocoa.m
-+++ b/ui/cocoa.m
-@@ -54,6 +54,10 @@
- #define MAC_OS_X_VERSION_10_13 101300
- #endif
- 
-+#ifndef MAC_OS_VERSION_14_0
-+#define MAC_OS_VERSION_14_0 140000
-+#endif
-+
- /* 10.14 deprecates NSOnState and NSOffState in favor of
-  * NSControlStateValueOn/Off, which were introduced in 10.13.
-  * Define for older versions
-@@ -365,6 +369,9 @@ - (id)initWithFrame:(NSRect)frameRect
-         screen.width = frameRect.size.width;
-         screen.height = frameRect.size.height;
-         kbd = qkbd_state_init(dcl.con);
-+#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_14_0
-+        [self setClipsToBounds:YES];
-+#endif
- 
-     }
-     return self;
--- 
-2.39.3 (Apple Git-145)
-
+> ---
+>   ui/cocoa.m | 7 +++++++
+>   1 file changed, 7 insertions(+)
+> 
+> diff --git a/ui/cocoa.m b/ui/cocoa.m
+> index eb99064bee..bbf9704b8c 100644
+> --- a/ui/cocoa.m
+> +++ b/ui/cocoa.m
+> @@ -54,6 +54,10 @@
+>   #define MAC_OS_X_VERSION_10_13 101300
+>   #endif
+>   
+> +#ifndef MAC_OS_VERSION_14_0
+> +#define MAC_OS_VERSION_14_0 140000
+> +#endif
+> +
+>   /* 10.14 deprecates NSOnState and NSOffState in favor of
+>    * NSControlStateValueOn/Off, which were introduced in 10.13.
+>    * Define for older versions
+> @@ -365,6 +369,9 @@ - (id)initWithFrame:(NSRect)frameRect
+>           screen.width = frameRect.size.width;
+>           screen.height = frameRect.size.height;
+>           kbd = qkbd_state_init(dcl.con);
+> +#if MAC_OS_X_VERSION_MAX_ALLOWED >= MAC_OS_VERSION_14_0
+> +        [self setClipsToBounds:YES];
+> +#endif
+>   
+>       }
+>       return self;
 
