@@ -1,79 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1reWet-00046D-Nk
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Feb 2024 03:48:25 -0500
+	id 1reWkW-0000Yv-6p
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Feb 2024 03:54:12 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reWen-00044B-Iz
- for qemu-trivial@nongnu.org; Mon, 26 Feb 2024 03:48:17 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reWkT-0000YL-Eh
+ for qemu-trivial@nongnu.org; Mon, 26 Feb 2024 03:54:10 -0500
+Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reWel-0000gr-D2
- for qemu-trivial@nongnu.org; Mon, 26 Feb 2024 03:48:16 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-33d90dfe73cso1856359f8f.0
- for <qemu-trivial@nongnu.org>; Mon, 26 Feb 2024 00:48:11 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reWkR-0001Zq-Qw
+ for qemu-trivial@nongnu.org; Mon, 26 Feb 2024 03:54:09 -0500
+Received: by mail-wr1-x42a.google.com with SMTP id
+ ffacd0b85a97d-33d01faf711so2960620f8f.1
+ for <qemu-trivial@nongnu.org>; Mon, 26 Feb 2024 00:54:07 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708937289; x=1709542089; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ d=linaro.org; s=google; t=1708937646; x=1709542446; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=o4QuUVMa/8riGap4wQPSzLfqOnNru0vzY7BsLOLWHSE=;
- b=RIs65FJpUY7Q0acLr0xujBSY7T0Wtl2EYQzHSNLq/DY7JjrsHHv55flAPrT8nSntwa
- TwvldOpj3/7B91NDz80732jiqgkdZQTTZ/oUZocdgM+TtrykUjsx6l2/RlO/sIMVyd4m
- PqgOQy7w3xWLOZJY/+MfuFwH4Kxkj2Vvd9Zn2tTASbfp/OFkL+ePAyDPbMFqeXREzeZ5
- 79Q2dFReeikbut64aOh2aubiX/v2U2ocVyef0ufsPLMjq0IvQjDOSspbJfAjmYB60Yu+
- fYccbA/qEZLA8Gu8g9usL8iSvVS/AfYHRkac+vVW9oRiwQcHdq8y11swBZW+wYsKVflk
- 8ltQ==
+ bh=mT94LtOI9uDDPqWj7St7l9/fVkwxxxe7GhZ8AGoPtC0=;
+ b=TazdJd8adPSU/OZ2Gi49bxhTSUMuBdwzrrVMGdfURd3qZ2L4Mn1TzEoaLRPSJT1wYj
+ qC/HpzbMqH4op1sGehMu/MFwhj6xud7V9hHdm1mHhG5LcaqVR678ZusFSbQzSW7rm/Af
+ 823JGr/Nb2M/LZFXp86rjHJqfVsw7o+t4HE3UjeSo0mLaV4ShT3P6WXsvQ+9eBJMh+O3
+ UhqaPKyX7Y2kTd7dTpcTnEl7zFD21AcZLVLFfoM9TUlGj8LXynGP+W9SXtAtWBGLJB6a
+ I9F3M58IOqvZdIW2/G9S2QGg5gvwiO34MNTE7tNtlCidl0NEXSuPnm1NqRnAFan8CRE+
+ 6AyQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708937289; x=1709542089;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ d=1e100.net; s=20230601; t=1708937646; x=1709542446;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=o4QuUVMa/8riGap4wQPSzLfqOnNru0vzY7BsLOLWHSE=;
- b=m+vitZt1Kmc8XkHP9bEjutxg/c6xeYuwRZ2+6m1uJXQ9DJBgMW6wVw2N0k3KA7azmQ
- Wm1Qb6Cdl/1217olvdY6JzzZSHnHk3qMiLofUbtvpcLO7kwH7Xde+plhu1GjNsWGJkIR
- 9sG+9TpoSj/8aWnxY6kagEjTrI4TZytdg/yDHvB63l2zrEwD3RczXI2C+NaQ5FDlMtgz
- OsKUBsdKk9yUi3BimDV0RV40gdibF7if1ThOaUOwG0thFfmg9L34Qd1+3G8kE0AznoFU
- AJh39BYfD8zwZVKE+Q9GpgnvbavximTO2N2TZgegM5uSeYDri4OL4cUn1leDBcVZm4qu
- ALvw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXngS1VAIP7rSphJfmvb1sPyG0Xz0CJOJ8YgJhypYMzEZTUU/tvIb2xajD8pCGDJFRAxa963lTJIuYfG/fWjx4wW/biEvSuJA==
-X-Gm-Message-State: AOJu0YxpmQC10bRXajgMtBb4XlzeqRMX74/8HTx8k7xbKPxI/XrIRLjf
- 2RPl5DiKv1I6xyWEMrkkMU+tMczXUUmfuiqj91eL/NsbUVfxxixaPP/MC7R/Vks=
-X-Google-Smtp-Source: AGHT+IFVVBxgIny3rkSUlHtywxq7Pi75bQ+ik9Bkyyzzi+PoX3L9SACJ47r2B4OfyMG4JGXVHQG/ng==
-X-Received: by 2002:a05:6000:1007:b0:33d:8ebf:4f6 with SMTP id
- a7-20020a056000100700b0033d8ebf04f6mr4797923wrx.20.1708937289450; 
- Mon, 26 Feb 2024 00:48:09 -0800 (PST)
+ bh=mT94LtOI9uDDPqWj7St7l9/fVkwxxxe7GhZ8AGoPtC0=;
+ b=NCoWYwOtXYh7ORrPw5he6Xtr1o0xbu52CqdgSUheGLHgLnNLp3v/z39Zqhoor0ScrF
+ JUH/vIvELGHHrvYkZqylnjkoi/jMjIlTjleLgVyujRIflJiXVQ1gLy3EAfTDkOJg9UNU
+ iYh0nLsQuz/G1Thuna61MEWwAl5efIAL5T5O/RP1W1gAf4fQFqsChXm6t78IaqIJKEQc
+ KEqMznu87OeXL4OiliBC2WiSqQqEZSS6MWk0zCJe6adP9FjRTJxVUtzzdkANuKUg//I+
+ savwSW8VDvk0LKouHVfWJC5RnnxClShQPFEUOKDR6J1yML91g7cKDJ2ZzJz6Ww2NgLfK
+ Bp9w==
+X-Gm-Message-State: AOJu0YwkvMaZInuqEOnAMJYYRI57ZT7z952VHrBxUi4avAtUT4h/l/WH
+ CLSy460DBaZ80jwbhwEk79IY0Ap5mC+c98DWKanPjPwS97/Ef0GifKz+4l5oFWo=
+X-Google-Smtp-Source: AGHT+IFm/qumrh9UKQSd1i6jtSpYI85FnvsuSYZoKCULaWnXc9p9gEbJNSezMsryrVMXAjkdTsHpJw==
+X-Received: by 2002:a05:6000:1b8d:b0:33d:2b3d:a02e with SMTP id
+ r13-20020a0560001b8d00b0033d2b3da02emr4458954wru.46.1708937645833; 
+ Mon, 26 Feb 2024 00:54:05 -0800 (PST)
 Received: from [192.168.69.100] ([176.176.164.69])
  by smtp.gmail.com with ESMTPSA id
- e3-20020a5d4e83000000b0033d12895cfdsm7555529wru.61.2024.02.26.00.48.08
+ by6-20020a056000098600b0033d568f8310sm7647781wrb.89.2024.02.26.00.54.04
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 26 Feb 2024 00:48:09 -0800 (PST)
-Message-ID: <ec5f9189-9ec5-4b04-8da2-cfb9969970eb@linaro.org>
-Date: Mon, 26 Feb 2024 09:48:07 +0100
+ Mon, 26 Feb 2024 00:54:05 -0800 (PST)
+Message-ID: <ec595183-df69-4cca-a930-2308488fb0c4@linaro.org>
+Date: Mon, 26 Feb 2024 09:54:03 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] tests/unit/test-util-sockets: Remove temporary file after
- test
+Subject: Re: [PATCH] system/physmem: remove redundant arg reassignment
 Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-trivial@nongnu.org
-References: <20240226082728.249753-1-thuth@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240226082728.249753-1-thuth@redhat.com>
+To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
+ David Hildenbrand <david@redhat.com>
+References: <20240215091506.1932251-1-manos.pitsidianakis@linaro.org>
+ <9cafaeae-78a2-47e6-b2f4-4ea89c2ab1a4@linaro.org>
+In-Reply-To: <9cafaeae-78a2-47e6-b2f4-4ea89c2ab1a4@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,34 +85,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Feb 2024 08:48:18 -0000
+X-List-Received-Date: Mon, 26 Feb 2024 08:54:10 -0000
 
-On 26/2/24 09:27, Thomas Huth wrote:
-> test-util-sockets leaves the temporary socket files around in the
-> temporary files folder. Let's better remove them at the end of the
-> testing.
+On 15/2/24 12:09, Philippe Mathieu-Daudé wrote:
+> On 15/2/24 10:15, Manos Pitsidianakis wrote:
+>> Arguments `ram_block` are reassigned to local declarations `block`
+>> without further use. Remove re-assignment to reduce noise.
+>>
+>> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+>> ---
+>>   system/physmem.c | 7 ++-----
+>>   1 file changed, 2 insertions(+), 5 deletions(-)
+>>
+>> diff --git a/system/physmem.c b/system/physmem.c
+>> index 5e66d9ae36..d4c3bfac65 100644
+>> --- a/system/physmem.c
+>> +++ b/system/physmem.c
+>> @@ -2154,10 +2154,8 @@ void qemu_ram_remap(ram_addr_t addr, ram_addr_t 
+>> length)
+>>    *
+>>    * Called within RCU critical section.
+>>    */
+>> -void *qemu_map_ram_ptr(RAMBlock *ram_block, ram_addr_t addr)
+>> +void *qemu_map_ram_ptr(RAMBlock *block, ram_addr_t addr)
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Better update the declaration in the same commit:
+> 
+> -- >8 --
+> diff --git a/include/exec/memory.h b/include/exec/memory.h
+> index 177be23db7..bf4db3b374 100644
+> --- a/include/exec/memory.h
+> +++ b/include/exec/memory.h
+> @@ -2960,7 +2960,7 @@ MemTxResult flatview_read_continue(FlatView *fv, 
+> hwaddr addr,
+>                                      MemTxAttrs attrs, void *buf,
+>                                      hwaddr len, hwaddr addr1, hwaddr l,
+>                                      MemoryRegion *mr);
+> -void *qemu_map_ram_ptr(RAMBlock *ram_block, ram_addr_t addr);
+> +void *qemu_map_ram_ptr(RAMBlock *block, ram_addr_t addr);
+
+FYI this is now merged as commit aab4631a4a ("system/physmem:
+remove redundant arg reassignment").
+
+> 
+>   /* Internal functions, part of the implementation of 
+> address_space_read_cached
+>    * and address_space_write_cached.  */
 > ---
->   tests/unit/test-util-sockets.c | 1 +
->   1 file changed, 1 insertion(+)
 > 
-> diff --git a/tests/unit/test-util-sockets.c b/tests/unit/test-util-sockets.c
-> index 63909ccb2b..4c9dd0b271 100644
-> --- a/tests/unit/test-util-sockets.c
-> +++ b/tests/unit/test-util-sockets.c
-> @@ -326,6 +326,7 @@ static void test_socket_unix_abstract(void)
->           test_socket_unix_abstract_row(&matrix[i]);
->       }
->   
-> +    unlink(addr.u.q_unix.path);
->       g_free(addr.u.q_unix.path);
->   }
->   
-
-Maybe:
-Fixes: 4d3a329af5 ("tests/util-sockets: add abstract unix socket cases")
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> 
 
 
