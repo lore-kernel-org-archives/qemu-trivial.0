@@ -1,73 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1reWSQ-0008Cs-Sa
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Feb 2024 03:35:30 -0500
+	id 1reWet-00046D-Nk
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Feb 2024 03:48:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1reWSE-0007Yf-FC; Mon, 26 Feb 2024 03:35:20 -0500
-Received: from mail-qt1-x82e.google.com ([2607:f8b0:4864:20::82e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reWen-00044B-Iz
+ for qemu-trivial@nongnu.org; Mon, 26 Feb 2024 03:48:17 -0500
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
- id 1reWSB-0006TI-Jt; Mon, 26 Feb 2024 03:35:18 -0500
-Received: by mail-qt1-x82e.google.com with SMTP id
- d75a77b69052e-42db60ebcd7so13240841cf.0; 
- Mon, 26 Feb 2024 00:35:12 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reWel-0000gr-D2
+ for qemu-trivial@nongnu.org; Mon, 26 Feb 2024 03:48:16 -0500
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-33d90dfe73cso1856359f8f.0
+ for <qemu-trivial@nongnu.org>; Mon, 26 Feb 2024 00:48:11 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1708936511; x=1709541311; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=556s9HbIF6gW0h9p5/wllHpndfq5pf/1zDUonsuknRk=;
- b=Y+VuLbr2yrcaiBX/GhyTQHIYwkHaQhN3d4orSR+JbnPNvNCs0oGQq6/uNldvI9y0uH
- e3VlnigvzERdEcE2T9Mjt4PFQNLy5qxj7cUo6x6jIO/UaWKfP4qN+CLQj3Y4vC8FDXkp
- irFcEYSzpAX4Es4vOnCZOR/Xx4/AolAxi4w/PXoO633DyXwjnsUgMB124CUUxAMKZl7K
- MZxnb2na3KFEcBzaMeSCuXoUQgW3hhR3FRE1Jdu47D2AgzzwQoxuodUNTWLPkbef16Ni
- ZQkNg83Tr8o5QyuKLfhmyAmmbWBa7m2aBmjz3D6ORv2kzcpWAIAfq/k+L2bUA+3nrcfS
- zDEA==
+ d=linaro.org; s=google; t=1708937289; x=1709542089; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=o4QuUVMa/8riGap4wQPSzLfqOnNru0vzY7BsLOLWHSE=;
+ b=RIs65FJpUY7Q0acLr0xujBSY7T0Wtl2EYQzHSNLq/DY7JjrsHHv55flAPrT8nSntwa
+ TwvldOpj3/7B91NDz80732jiqgkdZQTTZ/oUZocdgM+TtrykUjsx6l2/RlO/sIMVyd4m
+ PqgOQy7w3xWLOZJY/+MfuFwH4Kxkj2Vvd9Zn2tTASbfp/OFkL+ePAyDPbMFqeXREzeZ5
+ 79Q2dFReeikbut64aOh2aubiX/v2U2ocVyef0ufsPLMjq0IvQjDOSspbJfAjmYB60Yu+
+ fYccbA/qEZLA8Gu8g9usL8iSvVS/AfYHRkac+vVW9oRiwQcHdq8y11swBZW+wYsKVflk
+ 8ltQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708936511; x=1709541311;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=556s9HbIF6gW0h9p5/wllHpndfq5pf/1zDUonsuknRk=;
- b=e0eazE68SIjfPTfYhXaennW+8SqobxnvQ+2tbwQw6/YwhWIH/MF9J3xGrRFWEtXK/X
- RWZ9oHOkBLH5XVCsV0xMI7nGuhUEQapA9bMWU5xjJCiSUSUVbvpWez9044OgOmDGriC4
- IDkpbGVe8nFKYTKTidahKBRWOgeYwH7wqVmW5GAV7xWwUBdd2wJs6cVuk7tzIzC4g/Sc
- BZwGLp1Vu7emKbnePgiABrZXOSPc1IQSxS6UyuCEvVwJoYv65+vT18K8XFcKNHfxvvu1
- 39gbU1QZKsvmmpHtmyJ9qT727oZZVx7F6v9u7dA6i+vYOnVw3nclxZj9pfjfvne72UlA
- 9KEA==
+ d=1e100.net; s=20230601; t=1708937289; x=1709542089;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=o4QuUVMa/8riGap4wQPSzLfqOnNru0vzY7BsLOLWHSE=;
+ b=m+vitZt1Kmc8XkHP9bEjutxg/c6xeYuwRZ2+6m1uJXQ9DJBgMW6wVw2N0k3KA7azmQ
+ Wm1Qb6Cdl/1217olvdY6JzzZSHnHk3qMiLofUbtvpcLO7kwH7Xde+plhu1GjNsWGJkIR
+ 9sG+9TpoSj/8aWnxY6kagEjTrI4TZytdg/yDHvB63l2zrEwD3RczXI2C+NaQ5FDlMtgz
+ OsKUBsdKk9yUi3BimDV0RV40gdibF7if1ThOaUOwG0thFfmg9L34Qd1+3G8kE0AznoFU
+ AJh39BYfD8zwZVKE+Q9GpgnvbavximTO2N2TZgegM5uSeYDri4OL4cUn1leDBcVZm4qu
+ ALvw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV1Yqf/kU9h/mvKJ+MEocJkPhhcVNJAfpeYy5a1eFEM+zXieYuWItbkrLyYqnzJC7ZHCInsUe0REx02ozN8PUg7ldUgfsfZBA==
-X-Gm-Message-State: AOJu0YyrsgnIQ7vnbdgh1ffmAbWGcpruD5ICy5YLKYwEjCA5ot6AAU8T
- UbPTPI+O11htcf2AID1OFfW/DI6O8FkYnLI8/k1DVqeQefDByyFdUlXvlDCC3tZfJv3uQ7CQg+3
- Dyyxre+CIQRIgU4Vm+aJ65inxO3c=
-X-Google-Smtp-Source: AGHT+IHYu8njjunVoxOLXoIE7QG6xGF+C/zZ/n3EmW7tRXCdDLtso3dpCXYNZqmvYE4Ub2KDeHrTlgKR0WuYWTN0xvQ=
-X-Received: by 2002:ac8:5952:0:b0:42e:5c3a:8b2d with SMTP id
- 18-20020ac85952000000b0042e5c3a8b2dmr8862362qtz.1.1708936511638; Mon, 26 Feb
- 2024 00:35:11 -0800 (PST)
+ AJvYcCXngS1VAIP7rSphJfmvb1sPyG0Xz0CJOJ8YgJhypYMzEZTUU/tvIb2xajD8pCGDJFRAxa963lTJIuYfG/fWjx4wW/biEvSuJA==
+X-Gm-Message-State: AOJu0YxpmQC10bRXajgMtBb4XlzeqRMX74/8HTx8k7xbKPxI/XrIRLjf
+ 2RPl5DiKv1I6xyWEMrkkMU+tMczXUUmfuiqj91eL/NsbUVfxxixaPP/MC7R/Vks=
+X-Google-Smtp-Source: AGHT+IFVVBxgIny3rkSUlHtywxq7Pi75bQ+ik9Bkyyzzi+PoX3L9SACJ47r2B4OfyMG4JGXVHQG/ng==
+X-Received: by 2002:a05:6000:1007:b0:33d:8ebf:4f6 with SMTP id
+ a7-20020a056000100700b0033d8ebf04f6mr4797923wrx.20.1708937289450; 
+ Mon, 26 Feb 2024 00:48:09 -0800 (PST)
+Received: from [192.168.69.100] ([176.176.164.69])
+ by smtp.gmail.com with ESMTPSA id
+ e3-20020a5d4e83000000b0033d12895cfdsm7555529wru.61.2024.02.26.00.48.08
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 26 Feb 2024 00:48:09 -0800 (PST)
+Message-ID: <ec5f9189-9ec5-4b04-8da2-cfb9969970eb@linaro.org>
+Date: Mon, 26 Feb 2024 09:48:07 +0100
 MIME-Version: 1.0
-References: <20240226082728.249753-1-thuth@redhat.com>
-In-Reply-To: <20240226082728.249753-1-thuth@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
-Date: Mon, 26 Feb 2024 12:35:00 +0400
-Message-ID: <CAJ+F1CKnRSW8=LzDzL6ed05hF8Snw_PFH2j58QFU_VjiH68N+A@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] tests/unit/test-util-sockets: Remove temporary file after
  test
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Markus Armbruster <armbru@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
  qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::82e;
- envelope-from=marcandre.lureau@gmail.com; helo=mail-qt1-x82e.google.com
+References: <20240226082728.249753-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240226082728.249753-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,42 +86,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Feb 2024 08:35:29 -0000
+X-List-Received-Date: Mon, 26 Feb 2024 08:48:18 -0000
 
-On Mon, Feb 26, 2024 at 12:28=E2=80=AFPM Thomas Huth <thuth@redhat.com> wro=
-te:
->
+On 26/2/24 09:27, Thomas Huth wrote:
 > test-util-sockets leaves the temporary socket files around in the
 > temporary files folder. Let's better remove them at the end of the
 > testing.
->
+> 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
-
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
 > ---
->  tests/unit/test-util-sockets.c | 1 +
->  1 file changed, 1 insertion(+)
->
-> diff --git a/tests/unit/test-util-sockets.c b/tests/unit/test-util-socket=
-s.c
+>   tests/unit/test-util-sockets.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/tests/unit/test-util-sockets.c b/tests/unit/test-util-sockets.c
 > index 63909ccb2b..4c9dd0b271 100644
 > --- a/tests/unit/test-util-sockets.c
 > +++ b/tests/unit/test-util-sockets.c
 > @@ -326,6 +326,7 @@ static void test_socket_unix_abstract(void)
->          test_socket_unix_abstract_row(&matrix[i]);
->      }
->
+>           test_socket_unix_abstract_row(&matrix[i]);
+>       }
+>   
 > +    unlink(addr.u.q_unix.path);
->      g_free(addr.u.q_unix.path);
->  }
->
-> --
-> 2.43.2
->
->
+>       g_free(addr.u.q_unix.path);
+>   }
+>   
 
+Maybe:
+Fixes: 4d3a329af5 ("tests/util-sockets: add abstract unix socket cases")
 
---=20
-Marc-Andr=C3=A9 Lureau
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
 
