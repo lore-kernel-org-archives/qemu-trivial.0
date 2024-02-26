@@ -1,74 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1reW4s-0001dU-Jh
-	for mharc-qemu-trivial@gnu.org; Mon, 26 Feb 2024 03:11:11 -0500
+	id 1reWKn-0000Wg-M7
+	for mharc-qemu-trivial@gnu.org; Mon, 26 Feb 2024 03:27:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reW4p-0001bk-Bk
- for qemu-trivial@nongnu.org; Mon, 26 Feb 2024 03:11:07 -0500
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1reW4n-0002dD-S8
- for qemu-trivial@nongnu.org; Mon, 26 Feb 2024 03:11:07 -0500
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-a3e891b5e4eso307221966b.0
- for <qemu-trivial@nongnu.org>; Mon, 26 Feb 2024 00:11:05 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1708935064; x=1709539864; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=IXxTAwoJKY2jfKurotE+rFCHnfcn+5saUQNAytaPDDk=;
- b=hpW2teennsvUyXYD4DAlYBH61/J/IQd7quphUYPHodY59J31ASQ14ag387H7yU9wbQ
- bF43DkD3bLZeJSpf1Ef9D8iMT/drMh4anGdm07eFCfIhwyZQnP1qTsNjm7EThihiOMyL
- HIE1jcP6Tt7QPt3zCHuwmMX0ttrp5Aluo0YC2KhM3lj9qfttWHoFNwzIzSIc1129gt4I
- 1nfmo8wVUiz8Gf20G1LW2jKwYTIlAGBfFWuQXsRGcDBgesmVAJBZidG4dyhJD0zJrEmi
- X0Tjj4dHJULVsXMPnjTR739Zm8g+LhHu8Uf3WSeQfjZbdCJZ1OZ/wt4L3VjaX/j0ZW6X
- qKUw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1708935064; x=1709539864;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=IXxTAwoJKY2jfKurotE+rFCHnfcn+5saUQNAytaPDDk=;
- b=JJiYJKVRNE0JVUECCqErbMsNS16HAEQuK+3fjDjaXkKo4XeEnEyOnjIiqMfIOZyNU5
- R6gq1qUT0QhyiS3aP3zUvdzgCqJXM95j8rVy+7l+pcvIqC3iKDxEYND7kQyIlrP6Yzw5
- cTkdG7FB+L94H5FGnLqouGHWW3esro1rGy+L+lXuKPVCdbXBPEv6HuvuU+T3aQeJLwh2
- NMHskgC+pyFluqreHpNkpNp3EUKxt+q+RCxCFbULV1u06n6sB+8oYMYIEol3NqHkdn9w
- RWVQTvgVVhWOUSJJu4LY+/hO92n5nItYosmshy/B4kqOHggT8UBLEscAqAu4v5HWX8vV
- AXnw==
-X-Gm-Message-State: AOJu0YxStrZTFYMNHs9bRS5VVd+8fFtJWT0JV+20lOJkkb8rSPgYVTN7
- WE07X+1St2+b7z0EDBAAIIMNV0FUwZYLPGoIyxhZ/jccEUr6pdG5cQF9DydwOEc=
-X-Google-Smtp-Source: AGHT+IEUzjguIvkERSszRezAEUNX5PU20OKfYznX22BzTzPMfMcO6fG96j4iVNrClVcUhP5cyoH4yQ==
-X-Received: by 2002:a17:906:2e89:b0:a3f:5144:ada2 with SMTP id
- o9-20020a1709062e8900b00a3f5144ada2mr4542878eji.2.1708935064325; 
- Mon, 26 Feb 2024 00:11:04 -0800 (PST)
-Received: from [192.168.69.100] ([176.176.164.69])
- by smtp.gmail.com with ESMTPSA id
- tb24-20020a1709078b9800b00a42fa329ebfsm1948745ejc.54.2024.02.26.00.11.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 26 Feb 2024 00:11:03 -0800 (PST)
-Message-ID: <c2a2b5b5-10ca-4a7c-84aa-308273e6c7d9@linaro.org>
-Date: Mon, 26 Feb 2024 09:11:02 +0100
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1reWKl-0000WR-Rn
+ for qemu-trivial@nongnu.org; Mon, 26 Feb 2024 03:27:36 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1reWKk-0005HR-H9
+ for qemu-trivial@nongnu.org; Mon, 26 Feb 2024 03:27:35 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1708936053;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=r1lKxg2kVFZHoOaa1CBiUCuMgw8lKO9GM2yy8gBe+8Q=;
+ b=c5wGMcD0y/sjFENR6YgyPWUD3/3WBy30PCnYNFg8LQRCx+A9ej5C5yyDO2g/3jKHPDw76O
+ LBKubFzYPLxSf09O5nRMgE97n5vGiGkypAbtK3OOzVRjehXH0UKVU26MId4c0X6UiXvYNp
+ gzRSqGAKEb5Tsg1jksSJG8aSbjpIOO4=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-208-YSqhj0wcPZWGdHCqjegFGQ-1; Mon, 26 Feb 2024 03:27:32 -0500
+X-MC-Unique: YSqhj0wcPZWGdHCqjegFGQ-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id B42BD85A5A6;
+ Mon, 26 Feb 2024 08:27:31 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.84])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 03652112131D;
+ Mon, 26 Feb 2024 08:27:29 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] tests/unit/test-util-sockets: Remove temporary file after test
+Date: Mon, 26 Feb 2024 09:27:28 +0100
+Message-ID: <20240226082728.249753-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] ui/cocoa: Fix window clipping on macOS 14
-Content-Language: en-US
-To: David Parsons <dave@daveparsons.net>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, akihiko.odaki@daynix.com, mjt@tls.msk.ru,
- kraxel@redhat.com, marcandre.lureau@redhat.com
-References: <20240224140620.39200-1-dave@daveparsons.net>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240224140620.39200-1-dave@daveparsons.net>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x635.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.097,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -82,21 +67,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 26 Feb 2024 08:11:08 -0000
+X-List-Received-Date: Mon, 26 Feb 2024 08:27:36 -0000
 
-On 24/2/24 15:06, David Parsons wrote:
-> macOS Sonoma changes the NSView.clipsToBounds to false by default
-> where it was true in earlier version of macOS. This causes the window
-> contents to be occluded by the frame at the top of the window. This
-> fixes the issue by conditionally compiling the clipping on Sonoma to
-> true. NSView only exposes the clipToBounds in macOS 14 and so has
-> to be fixed via conditional compilation.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1994
-> Signed-off-by: David Parsons <dave@daveparsons.net>
-> ---
->   ui/cocoa.m | 7 +++++++
->   1 file changed, 7 insertions(+)
+test-util-sockets leaves the temporary socket files around in the
+temporary files folder. Let's better remove them at the end of the
+testing.
 
-Patch queued, thanks!
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/unit/test-util-sockets.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/tests/unit/test-util-sockets.c b/tests/unit/test-util-sockets.c
+index 63909ccb2b..4c9dd0b271 100644
+--- a/tests/unit/test-util-sockets.c
++++ b/tests/unit/test-util-sockets.c
+@@ -326,6 +326,7 @@ static void test_socket_unix_abstract(void)
+         test_socket_unix_abstract_row(&matrix[i]);
+     }
+ 
++    unlink(addr.u.q_unix.path);
+     g_free(addr.u.q_unix.path);
+ }
+ 
+-- 
+2.43.2
+
 
