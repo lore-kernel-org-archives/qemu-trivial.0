@@ -1,61 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfMit-0003sU-BL
+	id 1rfMit-0003sw-MU
 	for mharc-qemu-trivial@gnu.org; Wed, 28 Feb 2024 11:23:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rfMis-0003rX-6J; Wed, 28 Feb 2024 11:23:58 -0500
+ id 1rfMiq-0003qi-6y; Wed, 28 Feb 2024 11:23:56 -0500
 Received: from mgamail.intel.com ([192.198.163.7])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rfMiq-0000mI-Bz; Wed, 28 Feb 2024 11:23:57 -0500
+ id 1rfMin-0000kQ-7Q; Wed, 28 Feb 2024 11:23:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709137436; x=1740673436;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=k9iYhMvDZgDUYC+uUV1HBSQug6hcI5PYy6xahfkmyYw=;
- b=TEZuipusTDaIAsRMvb8LvO5T/LULaQSI/ohB00wYt40YTlBxK7mCSTrp
- +YBr2wNx6WQ8IHbTXc7ds7zHTH9ABTE4uXG97g8JnlIUM7E5XnudQ1Rot
- 1jxZ2PZwPWaz7ZU1jnI3dRKwuuRfmVnki6Kl7cuLR03kDnmSWysmrG8q8
- DZGfJQH+rOeQhEeX43rsJhtGWnomvUDiLW7DjoYFnyaNkMy5BNkCxQF5b
- r273mE7E8nXOPEMEoFC1gpm28yjbizYXXBflstTzk2zQ0j9UUMFB+d9VM
- uJNgBvNL/lrS38iJvZOKQBm68YaYkN820dqPLPdDnNNQDcKt0tnm3gDRa w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="28982423"
-X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="28982423"
+ t=1709137434; x=1740673434;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=0uVgekxIK5wyboVzgu8net2AZrmTW1lYWRw7Vo7AvW0=;
+ b=YJ54xnCp83m4WjsPehBYNOL6YqnpMx0JiPLcRxnww8N2tFtAgUiWUngQ
+ pyfM3llS91X0uMkYo4Ykptntg9GDVxXXcxLSeYFbSlqXVYl5L82tefkex
+ /sv7yK0QGQDQyF55SW6UyBQjHA+b3QBDA5ZDz+3yW3+qcZe22sCMMq8tq
+ Okjpo1HcWo7m4iLhQivO5icyYMZCOkYUSdFFu7xLYXLHgNN+dsJA18HLy
+ GWTVnVRiKX1ZLlts0fvETtlT//Eeyz+bPHmTNEybw6I9pnUSyAAG1z75j
+ ds7vlSSdvUCaoEvIlMif0HLRcR7yuWPVjRVYo5R/u+6s3PRi6WA9TyTNr w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="28982401"
+X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="28982401"
 Received: from orviesa004.jf.intel.com ([10.64.159.144])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Feb 2024 08:23:53 -0800
+ 28 Feb 2024 08:23:47 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="12144821"
+X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="12144783"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by orviesa004.jf.intel.com with ESMTP; 28 Feb 2024 08:23:50 -0800
+ by orviesa004.jf.intel.com with ESMTP; 28 Feb 2024 08:23:45 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
  Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Yi Liu <yi.l.liu@intel.com>, Eric Auger <eric.auger@redhat.com>,
- Zhenzhong Duan <zhenzhong.duan@intel.com>
-Subject: [PATCH 02/16] backends/iommufd: Fix missing ERRP_GUARD() for
+Cc: qemu-trivial@nongnu.org,
+	Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH 00/16 Part 1] Cleanup up to fix missing ERRP_GUARD() for
  error_prepend()
-Date: Thu, 29 Feb 2024 00:37:09 +0800
-Message-Id: <20240228163723.1775791-3-zhao1.liu@linux.intel.com>
+Date: Thu, 29 Feb 2024 00:37:07 +0800
+Message-Id: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
-References: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: none client-ip=192.198.163.7;
  envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+X-Spam_score_int: 4
+X-Spam_score: 0.4
+X-Spam_bar: /
+X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ SORTED_RECIPS=2.499, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -68,56 +65,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Feb 2024 16:23:58 -0000
+X-List-Received-Date: Wed, 28 Feb 2024 16:23:56 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-As the comment in qapi/error, passing @errp to error_prepend() requires
-ERRP_GUARD():
+Hi list,
 
-* = Why, when and how to use ERRP_GUARD() =
-*
+This series is the follow-up of my previous @errp related patch set
+[1].
+
+The @errp's second restriction (in qapi/error) said:
+
 * Without ERRP_GUARD(), use of the @errp parameter is restricted:
 ...
-* - It should not be passed to error_prepend(), error_vprepend() or
+* - It should not be passed to error_prepend() or
 *   error_append_hint(), because that doesn't work with &error_fatal.
 * ERRP_GUARD() lifts these restrictions.
-*
-* To use ERRP_GUARD(), add it right at the beginning of the function.
-* @errp can then be used without worrying about the argument being
-* NULL or &error_fatal.
 
-ERRP_GUARD() could avoid the case when @errp is the pointer of
-error_fatal, the user can't see this additional information, because
-exit() happens in error_setg earlier than information is added [1].
+With this requirement, there are many places where ERRP_GUARD() needs to
+be added, especially places where there is no way to ensure that the
+incoming @errp is pointing to @errp_fatal or not.
 
-The iommufd_backend_set_fd() passes @errp to error_prepend(), to avoid
-the above issue, add missing ERRP_GUARD() at the beginning of this
-function.
+To make review easier (and to make sure I'm doing the right thing), I
+just post the first part here.
 
-[1]: Issue description in the commit message of commit ae7c80a7bd73
-     ("error: New macro ERRP_GUARD()").
+Welcome your feedback!
 
-Cc: Yi Liu <yi.l.liu@intel.com>
-Cc: Eric Auger <eric.auger@redhat.com>
-Cc: Zhenzhong Duan <zhenzhong.duan@intel.com>
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+[1]: https://lore.kernel.org/qemu-devel/20240223085653.1255438-1-zhao1.liu@linux.intel.com/
+
+Thanks and Best Regards,
+Zhao
 ---
- backends/iommufd.c | 1 +
- 1 file changed, 1 insertion(+)
+Zhao Liu (16):
+  error: Add error_vprepend() in comment of ERRP_GUARD() rules
+  backends/iommufd: Fix missing ERRP_GUARD() for error_prepend()
+  block: Fix missing ERRP_GUARD() for error_prepend()
+  block/cbw: Fix missing ERRP_GUARD() for error_prepend()
+  block/nbd: Fix missing ERRP_GUARD() for error_prepend()
+  block/nvme: Fix missing ERRP_GUARD() for error_prepend()
+  block/qcow2-bitmap: Fix missing ERRP_GUARD() for error_prepend()
+  block/qcow2: Fix missing ERRP_GUARD() for error_prepend()
+  block/qed: Fix missing ERRP_GUARD() for error_prepend()
+  block/snapshot: Fix missing ERRP_GUARD() for error_prepend()
+  block/vdi: Fix missing ERRP_GUARD() for error_prepend()
+  block/vmdk: Fix missing ERRP_GUARD() for error_prepend()
+  block/virtio-blk: Fix missing ERRP_GUARD() for error_prepend()
+  hw/char/xen_console: Fix missing ERRP_GUARD() for error_prepend()
+  hw/core/loader-fit: Fix missing ERRP_GUARD() for error_prepend()
+  hw/core/qdev-properties-system: Fix missing ERRP_GUARD() for
+    error_prepend()
 
-diff --git a/backends/iommufd.c b/backends/iommufd.c
-index 1ef683c7b080..62a79fa6b049 100644
---- a/backends/iommufd.c
-+++ b/backends/iommufd.c
-@@ -43,6 +43,7 @@ static void iommufd_backend_finalize(Object *obj)
- 
- static void iommufd_backend_set_fd(Object *obj, const char *str, Error **errp)
- {
-+    ERRP_GUARD();
-     IOMMUFDBackend *be = IOMMUFD_BACKEND(obj);
-     int fd = -1;
- 
+ backends/iommufd.c               | 1 +
+ block.c                          | 4 ++++
+ block/copy-before-write.c        | 1 +
+ block/nbd.c                      | 1 +
+ block/nvme.c                     | 3 +++
+ block/qcow2-bitmap.c             | 1 +
+ block/qcow2.c                    | 2 ++
+ block/qed.c                      | 1 +
+ block/snapshot.c                 | 2 ++
+ block/vdi.c                      | 1 +
+ block/vmdk.c                     | 1 +
+ hw/block/virtio-blk.c            | 1 +
+ hw/char/xen_console.c            | 1 +
+ hw/core/loader-fit.c             | 2 ++
+ hw/core/qdev-properties-system.c | 1 +
+ include/qapi/error.h             | 2 +-
+ 16 files changed, 24 insertions(+), 1 deletion(-)
+
 -- 
 2.34.1
 
