@@ -1,50 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfMjV-0004iN-SJ
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Feb 2024 11:24:37 -0500
+	id 1rfMkA-0005Nj-Jc
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Feb 2024 11:25:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rfMjL-0004OJ-KW; Wed, 28 Feb 2024 11:24:27 -0500
+ id 1rfMjk-0004rH-Iv; Wed, 28 Feb 2024 11:24:54 -0500
 Received: from mgamail.intel.com ([192.198.163.7])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rfMjK-0000sx-1T; Wed, 28 Feb 2024 11:24:27 -0500
+ id 1rfMji-0000pW-HX; Wed, 28 Feb 2024 11:24:52 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709137466; x=1740673466;
+ t=1709137490; x=1740673490;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=se7iaBg2YM4bDU1t5iF+ZzwdJjnzwm4fgLQ2Wyzhwuw=;
- b=fLlY9V60XoY97Z0P/0LFl5zrFdms/IFU7sIsHh9Dztd/59Xgp99N4sfZ
- rU6xtecXRoH5AyUm9TR31lgel3ySDuiMp5qjYobr/2sgnaXydIuAYaZGQ
- 3CnQ2EPnRRxH1/P4ro+YMWpdGDpqg3MmvsfKKMGycNm2WdiM7+DIyaG6z
- JgAblhc59fImAIZ2I4pKvSP3LrwqqGbYDietLhEUiablyFuT2usikrSTz
- Qfi/VPylQJB9UvmLDPF8sOlXzT0j4EZ3hndj7nnIpex8XdS6ExjuXF2fn
- CWT0M4UiU3aC1QMVE0QxpI3iKFmy+r21te8kmhvkSDZAoKtTQURQXL6/F g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="28982562"
-X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="28982562"
+ bh=YUV44m5264ILzslR7yaaWtbghS0W7xiSkmi7/Bp3aow=;
+ b=dxtrKqLtGE+Qt7M91B8x8TxBymHTM+pVKmbawvbegrGh+LIzVOpf21Qk
+ gmTbwQ3bqc4JF7vJ1dEJRfwQD1oQMoC8pj/sU+zWvE1T6e4ZNppU9XYaW
+ zfewZPEWZeP1GBaTAgzPyVlqH33/FwiwavFSIv9pk0XeUTANeeSbpSB1T
+ X5g18ZiSxfhSUlmNOQa8rR6qvI0b/TgpCH9soLJG35vvC1dBHVmLOpfa2
+ EtQK9ZBcl2mhZzfhi6hqzwI9SqT6Xa+UB35yHS/9gp59XB3HTsIKMIvw5
+ OJAtl3jMF2iZqMK+8h/wtzPfnT51br0zpYu7itxdVHCnhjLJBpxBs6iiL w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="28982634"
+X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="28982634"
 Received: from orviesa004.jf.intel.com ([10.64.159.144])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Feb 2024 08:24:21 -0800
+ 28 Feb 2024 08:24:29 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="12145008"
+X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="12145054"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by orviesa004.jf.intel.com with ESMTP; 28 Feb 2024 08:24:17 -0800
+ by orviesa004.jf.intel.com with ESMTP; 28 Feb 2024 08:24:26 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
  Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Stefan Weil <sw@weilnetz.de>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>
-Subject: [PATCH 11/16] block/vdi: Fix missing ERRP_GUARD() for error_prepend()
-Date: Thu, 29 Feb 2024 00:37:18 +0800
-Message-Id: <20240228163723.1775791-12-zhao1.liu@linux.intel.com>
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony Perard <anthony.perard@citrix.com>, Paul Durrant <paul@xen.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH 14/16] hw/char/xen_console: Fix missing ERRP_GUARD() for
+ error_prepend()
+Date: Thu, 29 Feb 2024 00:37:21 +0800
+Message-Id: <20240228163723.1775791-15-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
 References: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: none client-ip=192.198.163.7;
  envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
@@ -67,7 +71,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Feb 2024 16:24:27 -0000
+X-List-Received-Date: Wed, 28 Feb 2024 16:25:00 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -90,36 +94,43 @@ ERRP_GUARD() could avoid the case when @errp is the pointer of
 error_fatal, the user can't see this additional information, because
 exit() happens in error_setg earlier than information is added [1].
 
-The vdi_co_do_create() passes @errp to error_prepend() without
-ERRP_GUARD(), and its @errp parameter is so widely sourced that it is
-necessary to protect it with ERRP_GUARD().
+The xen_console_connect() passes @errp to error_prepend() without
+ERRP_GUARD().
 
-To avoid the potential issues as [1] said, add missing ERRP_GUARD() at
-the beginning of this function.
+There're 2 places will call xen_console_connect():
+ - xen_console_realize(): the @errp is from DeviceClass.realize()'s
+			  parameter.
+ - xen_console_frontend_changed(): the @errp points its caller's
+                                   @local_err.
+
+To avoid the issue like [1] said, add missing ERRP_GUARD() at the
+beginning of xen_console_connect().
 
 [1]: Issue description in the commit message of commit ae7c80a7bd73
      ("error: New macro ERRP_GUARD()").
 
-Cc: Stefan Weil <sw@weilnetz.de>
-Cc: Kevin Wolf <kwolf@redhat.com>
-Cc: Hanna Reitz <hreitz@redhat.com>
+Cc: Stefano Stabellini <sstabellini@kernel.org>
+Cc: Anthony Perard <anthony.perard@citrix.com>
+Cc: Paul Durrant <paul@xen.org>
+Cc: "Marc-André Lureau" <marcandre.lureau@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- block/vdi.c | 1 +
+ hw/char/xen_console.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/block/vdi.c b/block/vdi.c
-index 3b57becb9fe0..6363da08cee9 100644
---- a/block/vdi.c
-+++ b/block/vdi.c
-@@ -738,6 +738,7 @@ static int coroutine_fn GRAPH_UNLOCKED
- vdi_co_do_create(BlockdevCreateOptions *create_options, size_t block_size,
-                  Error **errp)
+diff --git a/hw/char/xen_console.c b/hw/char/xen_console.c
+index 5cbee2f184d8..683c92aca1ce 100644
+--- a/hw/char/xen_console.c
++++ b/hw/char/xen_console.c
+@@ -206,6 +206,7 @@ static bool con_event(void *_xendev)
+ 
+ static bool xen_console_connect(XenDevice *xendev, Error **errp)
  {
 +    ERRP_GUARD();
-     BlockdevCreateOptionsVdi *vdi_opts;
-     int ret = 0;
-     uint64_t bytes = 0;
+     XenConsole *con = XEN_CONSOLE_DEVICE(xendev);
+     unsigned int port, limit;
+ 
 -- 
 2.34.1
 
