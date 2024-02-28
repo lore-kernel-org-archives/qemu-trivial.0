@@ -1,58 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfMit-0003sw-MU
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Feb 2024 11:23:59 -0500
+	id 1rfMix-0003wG-3M
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Feb 2024 11:24:03 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rfMiq-0003qi-6y; Wed, 28 Feb 2024 11:23:56 -0500
+ id 1rfMiw-0003vn-Bp; Wed, 28 Feb 2024 11:24:02 -0500
 Received: from mgamail.intel.com ([192.198.163.7])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rfMin-0000kQ-7Q; Wed, 28 Feb 2024 11:23:55 -0500
+ id 1rfMit-0000mI-Lx; Wed, 28 Feb 2024 11:24:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709137434; x=1740673434;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=0uVgekxIK5wyboVzgu8net2AZrmTW1lYWRw7Vo7AvW0=;
- b=YJ54xnCp83m4WjsPehBYNOL6YqnpMx0JiPLcRxnww8N2tFtAgUiWUngQ
- pyfM3llS91X0uMkYo4Ykptntg9GDVxXXcxLSeYFbSlqXVYl5L82tefkex
- /sv7yK0QGQDQyF55SW6UyBQjHA+b3QBDA5ZDz+3yW3+qcZe22sCMMq8tq
- Okjpo1HcWo7m4iLhQivO5icyYMZCOkYUSdFFu7xLYXLHgNN+dsJA18HLy
- GWTVnVRiKX1ZLlts0fvETtlT//Eeyz+bPHmTNEybw6I9pnUSyAAG1z75j
- ds7vlSSdvUCaoEvIlMif0HLRcR7yuWPVjRVYo5R/u+6s3PRi6WA9TyTNr w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="28982401"
-X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="28982401"
+ t=1709137440; x=1740673440;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=ScaB6SaBv2CqP5Ws6GB8REcTl3j7b3N6RkLZjBdmWdE=;
+ b=YHkbNc6Mv46zUPX778EhHpHS/7HUkaFTgNlMOoFyxYdcytoZV+Ft9kmq
+ /jh8L7FqqP6iJctpSA4RGBKWpygZZP+2NGocrAmfTfjrRmS6/PTX3UYv4
+ GPtkgJFRGWICqJbcJ+RUHJ5x05pnp3CglVYZEOm5BhfrvxAr9O1Vz021W
+ pUBtrh3fgA1Wn7K9z0RtYAKcXCdFyes1NbvKuOYCxfpYvlfOqW5Bs1XQx
+ 8HBIjDXuk//cWBRWzCbjYmBZljaq6fOA54Rvlu+AC0PuhjmL6QrMHVt9u
+ oAcTYpXgDAYpcu9QDFun1FqBVHIf9n+SUBWee3kEjDAjB8pGy6bY/zLR7 Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="28982439"
+X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="28982439"
 Received: from orviesa004.jf.intel.com ([10.64.159.144])
  by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Feb 2024 08:23:47 -0800
+ 28 Feb 2024 08:23:56 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="12144783"
+X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="12144863"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by orviesa004.jf.intel.com with ESMTP; 28 Feb 2024 08:23:45 -0800
+ by orviesa004.jf.intel.com with ESMTP; 28 Feb 2024 08:23:53 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
  Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH 00/16 Part 1] Cleanup up to fix missing ERRP_GUARD() for
- error_prepend()
-Date: Thu, 29 Feb 2024 00:37:07 +0800
-Message-Id: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
+Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
+Subject: [PATCH 03/16] block: Fix missing ERRP_GUARD() for error_prepend()
+Date: Thu, 29 Feb 2024 00:37:10 +0800
+Message-Id: <20240228163723.1775791-4-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
+References: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: none client-ip=192.198.163.7;
  envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H2=-0.001,
- SORTED_RECIPS=2.499, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -65,74 +66,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Feb 2024 16:23:56 -0000
+X-List-Received-Date: Wed, 28 Feb 2024 16:24:02 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-Hi list,
+As the comment in qapi/error, passing @errp to error_prepend() requires
+ERRP_GUARD():
 
-This series is the follow-up of my previous @errp related patch set
-[1].
-
-The @errp's second restriction (in qapi/error) said:
-
+* = Why, when and how to use ERRP_GUARD() =
+*
 * Without ERRP_GUARD(), use of the @errp parameter is restricted:
 ...
-* - It should not be passed to error_prepend() or
+* - It should not be passed to error_prepend(), error_vprepend() or
 *   error_append_hint(), because that doesn't work with &error_fatal.
 * ERRP_GUARD() lifts these restrictions.
+*
+* To use ERRP_GUARD(), add it right at the beginning of the function.
+* @errp can then be used without worrying about the argument being
+* NULL or &error_fatal.
 
-With this requirement, there are many places where ERRP_GUARD() needs to
-be added, especially places where there is no way to ensure that the
-incoming @errp is pointing to @errp_fatal or not.
+ERRP_GUARD() could avoid the case when @errp is the pointer of
+error_fatal, the user can't see this additional information, because
+exit() happens in error_setg earlier than information is added [1].
 
-To make review easier (and to make sure I'm doing the right thing), I
-just post the first part here.
+In block.c, there're 4 functions passing @errp to error_prepend()
+without ERRP_GUARD():
+ - bdrv_co_create_opts_simple()
+ - parse_json_filename()
+ - bdrv_open_backing_file()
+ - bdrv_append_temp_snapshot()
 
-Welcome your feedback!
+bdrv_co_create_opts_simple(), as an implementation of
+BolckDriver.bdrv_co_create_opts(), its @errp parameter is so widely
+sourced that it is necessary to protect it with ERRP_GUARD().
 
-[1]: https://lore.kernel.org/qemu-devel/20240223085653.1255438-1-zhao1.liu@linux.intel.com/
+Though the @errp parameters passed to parse_json_filename(),
+bdrv_open_backing_file() and bdrv_append_temp_snapshot() points to their
+callers' local_err, to follow the requirement of @errp, also add missing
+ERRP_GUARD() at their beginning.
 
-Thanks and Best Regards,
-Zhao
+[1]: Issue description in the commit message of commit ae7c80a7bd73
+     ("error: New macro ERRP_GUARD()").
+
+Cc: Kevin Wolf <kwolf@redhat.com>
+Cc: Hanna Reitz <hreitz@redhat.com>
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
-Zhao Liu (16):
-  error: Add error_vprepend() in comment of ERRP_GUARD() rules
-  backends/iommufd: Fix missing ERRP_GUARD() for error_prepend()
-  block: Fix missing ERRP_GUARD() for error_prepend()
-  block/cbw: Fix missing ERRP_GUARD() for error_prepend()
-  block/nbd: Fix missing ERRP_GUARD() for error_prepend()
-  block/nvme: Fix missing ERRP_GUARD() for error_prepend()
-  block/qcow2-bitmap: Fix missing ERRP_GUARD() for error_prepend()
-  block/qcow2: Fix missing ERRP_GUARD() for error_prepend()
-  block/qed: Fix missing ERRP_GUARD() for error_prepend()
-  block/snapshot: Fix missing ERRP_GUARD() for error_prepend()
-  block/vdi: Fix missing ERRP_GUARD() for error_prepend()
-  block/vmdk: Fix missing ERRP_GUARD() for error_prepend()
-  block/virtio-blk: Fix missing ERRP_GUARD() for error_prepend()
-  hw/char/xen_console: Fix missing ERRP_GUARD() for error_prepend()
-  hw/core/loader-fit: Fix missing ERRP_GUARD() for error_prepend()
-  hw/core/qdev-properties-system: Fix missing ERRP_GUARD() for
-    error_prepend()
+ block.c | 4 ++++
+ 1 file changed, 4 insertions(+)
 
- backends/iommufd.c               | 1 +
- block.c                          | 4 ++++
- block/copy-before-write.c        | 1 +
- block/nbd.c                      | 1 +
- block/nvme.c                     | 3 +++
- block/qcow2-bitmap.c             | 1 +
- block/qcow2.c                    | 2 ++
- block/qed.c                      | 1 +
- block/snapshot.c                 | 2 ++
- block/vdi.c                      | 1 +
- block/vmdk.c                     | 1 +
- hw/block/virtio-blk.c            | 1 +
- hw/char/xen_console.c            | 1 +
- hw/core/loader-fit.c             | 2 ++
- hw/core/qdev-properties-system.c | 1 +
- include/qapi/error.h             | 2 +-
- 16 files changed, 24 insertions(+), 1 deletion(-)
-
+diff --git a/block.c b/block.c
+index 1ed9214f66ed..cf66c767a011 100644
+--- a/block.c
++++ b/block.c
+@@ -633,6 +633,7 @@ int coroutine_fn bdrv_co_create_opts_simple(BlockDriver *drv,
+                                             QemuOpts *opts,
+                                             Error **errp)
+ {
++    ERRP_GUARD();
+     BlockBackend *blk;
+     QDict *options;
+     int64_t size = 0;
+@@ -1998,6 +1999,7 @@ fail_opts:
+ 
+ static QDict *parse_json_filename(const char *filename, Error **errp)
+ {
++    ERRP_GUARD();
+     QObject *options_obj;
+     QDict *options;
+     int ret;
+@@ -3585,6 +3587,7 @@ int bdrv_set_backing_hd(BlockDriverState *bs, BlockDriverState *backing_hd,
+ int bdrv_open_backing_file(BlockDriverState *bs, QDict *parent_options,
+                            const char *bdref_key, Error **errp)
+ {
++    ERRP_GUARD();
+     char *backing_filename = NULL;
+     char *bdref_key_dot;
+     const char *reference = NULL;
+@@ -3851,6 +3854,7 @@ static BlockDriverState *bdrv_append_temp_snapshot(BlockDriverState *bs,
+                                                    QDict *snapshot_options,
+                                                    Error **errp)
+ {
++    ERRP_GUARD();
+     g_autofree char *tmp_filename = NULL;
+     int64_t total_size;
+     QemuOpts *opts = NULL;
 -- 
 2.34.1
 
