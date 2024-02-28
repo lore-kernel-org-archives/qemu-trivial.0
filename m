@@ -1,64 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfMvT-00065p-PM
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Feb 2024 11:37:04 -0500
+	id 1rfOss-0003bg-G7
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Feb 2024 13:42:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rfMv6-00063d-Op; Wed, 28 Feb 2024 11:36:37 -0500
-Received: from mgamail.intel.com ([192.198.163.8])
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1rfOsq-0003bH-It
+ for qemu-trivial@nongnu.org; Wed, 28 Feb 2024 13:42:25 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rfMv3-0004GU-Dy; Wed, 28 Feb 2024 11:36:35 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709138193; x=1740674193;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=ZwWzALbivLFaEzSRE1bkC29w10a/LaMW8r5ZnpQ2n0U=;
- b=Xsku7iKS1JiBF74fIp0igxrGgZYq+nnBb7x+PB+ez0Ehg7cuTd2D42hk
- 1GBKGbv4W+96ajSNXCR1zURapAZ/NTYUII7bir7us2n1m1Fngvi+v7ntj
- xIqWO6iCjPaxqY8H9u2+CBpdb/38PXoZnN1luTyTO+kTrUopfHMcYOXHw
- Qtfdqwu8brb2mlhoCQ9Dfdmjql3rvHf5oSHGCdkHXwSIgF0QUFrl/PjWr
- wtqJX6inqhqR/A/qZOk61aO1i/BfEm/oUFr7C5K4a/4kwdyB+HaZU2EOm
- uz6KoonYmpTNVRzW2wm4+RtGTOi1Yu/x6wE9EdqVPhbzl5y7kJOdiw0KP A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="21095735"
-X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; d="scan'208";a="21095735"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 28 Feb 2024 08:36:31 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,190,1705392000"; 
-   d="scan'208";a="7348961"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by fmviesa007.fm.intel.com with ESMTP; 28 Feb 2024 08:36:28 -0800
-Date: Thu, 29 Feb 2024 00:50:11 +0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1rfOsp-0003XU-2U
+ for qemu-trivial@nongnu.org; Wed, 28 Feb 2024 13:42:24 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709145741;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=sU+3X0AHn456pNTAT2xSU6kPLCizdVrPJ8hAbycWptw=;
+ b=Ce6M7MtvZYjKF5NvnkzVS9uRgBYz7Zv7SsBzE8btrWbQk9sJUUEhRoAyN6eMgvkA20Vbfw
+ +lWfC8Tcy11OqVjzGbYvS3vNM9cPM94IrVxHS3/xAv9VaBLdSwElfmiINye4W3x/v/dE9p
+ B1trjM7xtux0NmdtWoeYCfe2cH/Hm6Y=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-695-ooyQuhUBMA24T815POlQAA-1; Wed,
+ 28 Feb 2024 13:42:16 -0500
+X-MC-Unique: ooyQuhUBMA24T815POlQAA-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id A7B4A2824798;
+ Wed, 28 Feb 2024 18:42:15 +0000 (UTC)
+Received: from localhost (unknown [10.39.192.165])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 1127A20169C6;
+ Wed, 28 Feb 2024 18:42:13 +0000 (UTC)
+Date: Wed, 28 Feb 2024 13:42:12 -0500
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Zhao Liu <zhao1.liu@linux.intel.com>
 Cc: Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
  Michael Tokarev <mjt@tls.msk.ru>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>, John Snow <jsnow@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Fam Zheng <fam@euphon.net>,
  Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
-Subject: Re: [PATCH 04/16] block/cbw: Fix missing ERRP_GUARD() for
+Subject: Re: [PATCH 06/16] block/nvme: Fix missing ERRP_GUARD() for
  error_prepend()
-Message-ID: <Zd9kQyQeB6HriBkD@intel.com>
+Message-ID: <20240228184212.GB641417@fedora>
 References: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
- <20240228163723.1775791-5-zhao1.liu@linux.intel.com>
- <217e42c9-a316-4b98-9050-fd5967e825f3@yandex-team.ru>
+ <20240228163723.1775791-7-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="NF1acaMMLvtcxaWo"
 Content-Disposition: inline
-In-Reply-To: <217e42c9-a316-4b98-9050-fd5967e825f3@yandex-team.ru>
-Received-SPF: none client-ip=192.198.163.8;
- envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+In-Reply-To: <20240228163723.1775791-7-zhao1.liu@linux.intel.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.102,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -71,25 +77,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Feb 2024 16:36:49 -0000
+X-List-Received-Date: Wed, 28 Feb 2024 18:42:25 -0000
 
-Hi Vladimir,
 
-> > Signed-off-by: Zhao Liu<zhao1.liu@intel.com>
-> 
-> Your actual email is at linux.intel.com, is it all OK?
+--NF1acaMMLvtcxaWo
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
 
-Yes, I'm used to sending patches from linux.intel.com, and both
-addresses are OK.
+On Thu, Feb 29, 2024 at 12:37:13AM +0800, Zhao Liu wrote:
+> From: Zhao Liu <zhao1.liu@intel.com>
+>=20
+> As the comment in qapi/error, passing @errp to error_prepend() requires
+> ERRP_GUARD():
+>=20
+> * =3D Why, when and how to use ERRP_GUARD() =3D
+> *
+> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+> ...
+> * - It should not be passed to error_prepend(), error_vprepend() or
+> *   error_append_hint(), because that doesn't work with &error_fatal.
+> * ERRP_GUARD() lifts these restrictions.
+> *
+> * To use ERRP_GUARD(), add it right at the beginning of the function.
+> * @errp can then be used without worrying about the argument being
+> * NULL or &error_fatal.
+>=20
+> ERRP_GUARD() could avoid the case when @errp is the pointer of
+> error_fatal, the user can't see this additional information, because
+> exit() happens in error_setg earlier than information is added [1].
+>=20
+> In nvme.c, there're 3 functions passing @errp to error_prepend()
+> without ERRP_GUARD():
+> - nvme_init_queue()
+> - nvme_create_queue_pair()
+> - nvme_identify()
+>=20
+> All these 3 functions take their @errp parameters from the
+> nvme_file_open(), which is a BlockDriver.bdrv_nvme() method and its
+> @errp points to its caller's local_err.
+>=20
+> Though these 3 cases haven't trigger the issue like [1] said, to
+> follow the requirement of @errp, add missing ERRP_GUARD() at their
+> beginning.
+>=20
+> [1]: Issue description in the commit message of commit ae7c80a7bd73
+>      ("error: New macro ERRP_GUARD()").
+>=20
+> Cc: Stefan Hajnoczi <stefanha@redhat.com>
+> Cc: Fam Zheng <fam@euphon.net>
+> Cc: "Philippe Mathieu-Daud=E9" <philmd@linaro.org>
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> Cc: Hanna Reitz <hreitz@redhat.com>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+>  block/nvme.c | 3 +++
+>  1 file changed, 3 insertions(+)
 
-> 
-> I'd prefer not to abbreviate copy-before-write in subject, but anyway:
-> Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
->
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-Thanks! I'll take care of this in the future.
+--NF1acaMMLvtcxaWo
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Regards,
-Zhao
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmXffoQACgkQnKSrs4Gr
+c8gzIgf/dM25JEOFRp2w9Rq06Tewm5rA3O+zyTz7QWsy2BUYSk1fzAJNLYN0sCvu
+LJ4cOk66oR05Tu/jZ0sBEep03lCvqNvQ2sYif3SgCFO7KwpDywCeokmX2OQIaKIX
+efWuDvEC813LeHWJ9S3UKB+JrDseXwcC0Vv5/LGEt4Z0y0RbGZwUL4anH71E1ZiZ
+TNE4a2Vyd1jey9Su0CiDR22Y8EXytQc1dfDMY7ssPGknSzwuipUxrwM39bLag31K
+sq7L4iLeULQ+iMhT5h+55TWv/ihz7LuqHUv+KgUQKT+YitYm05nKML26JK1C4rYz
+2Td/v0xpUHhzPAa0cmgkjhrwzBfAzQ==
+=3U1B
+-----END PGP SIGNATURE-----
+
+--NF1acaMMLvtcxaWo--
 
 
