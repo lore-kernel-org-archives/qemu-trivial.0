@@ -1,39 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfMqW-00023m-By
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Feb 2024 11:31:58 -0500
+	id 1rfMrY-0003VT-Sf
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Feb 2024 11:33:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
- id 1rfMqM-0001qT-7y; Wed, 28 Feb 2024 11:31:42 -0500
+ id 1rfMrF-0003Qo-Qe; Wed, 28 Feb 2024 11:32:39 -0500
 Received: from forwardcorp1c.mail.yandex.net
  ([2a02:6b8:c03:500:1:45:d181:df01])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
- id 1rfMqK-0002Zm-1b; Wed, 28 Feb 2024 11:31:41 -0500
+ id 1rfMrE-0003BZ-7W; Wed, 28 Feb 2024 11:32:37 -0500
 Received: from mail-nwsmtp-smtp-corp-canary-81.sas.yp-c.yandex.net
  (mail-nwsmtp-smtp-corp-canary-81.sas.yp-c.yandex.net
  [IPv6:2a02:6b8:c08:6c2d:0:640:316f:0])
- by forwardcorp1c.mail.yandex.net (Yandex) with ESMTPS id ADEE6609A6;
- Wed, 28 Feb 2024 19:31:37 +0300 (MSK)
+ by forwardcorp1c.mail.yandex.net (Yandex) with ESMTPS id 7A51A60A93;
+ Wed, 28 Feb 2024 19:32:34 +0300 (MSK)
 Received: from [IPV6:2a02:6b8:b081:a519::1:3a] (unknown
  [2a02:6b8:b081:a519::1:3a])
  by mail-nwsmtp-smtp-corp-canary-81.sas.yp-c.yandex.net (smtpcorp/Yandex) with
- ESMTPSA id ZVc7gI2IXGk0-LXt08fE6; Wed, 28 Feb 2024 19:31:37 +0300
+ ESMTPSA id ZVc7gI2IXGk0-0VSPx57f; Wed, 28 Feb 2024 19:32:33 +0300
 X-Yandex-Fwd: 1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
- s=default; t=1709137897;
- bh=XcQ1z6/4GM63EXG/j/deDCA2e6jpW3xWeljm1z539QU=;
+ s=default; t=1709137953;
+ bh=HRhEcdgVhvd42dMzodGqUwGjap7iStcKao6xBwnMn/g=;
  h=From:In-Reply-To:Cc:Date:References:To:Subject:Message-ID;
- b=R6Ajgodi//cbtDwq6wSTKG5eB6bHRregGGz91lx+jbeWuqzCOBGh1f1h1WPoFDDgX
- I07Roz4TvtON9NHy68mTslkiPQWUW7YKlenbrv4GWif9k9nmwsPo3SWeVyzkAZgmMP
- rEIQENOTmOlOfQiFj1a9Judrq8+uXtb2Azqvc0aA=
+ b=0GAbEJo6YDt5JLt8Ik+ZRJmCafpaIP02Ew241QqeyOPspuCCR5f1qyD7NlwH73GGA
+ cDumVo+iCVvvi8c2ZlIuBg4510boIX0omvn3qjY0RXgh7fskV96Caryk8u8NcuM13P
+ I/6mEN2r9d+X+E0Saa6eDsxYLXwRA0cKv0zELTIU=
 Authentication-Results: mail-nwsmtp-smtp-corp-canary-81.sas.yp-c.yandex.net;
  dkim=pass header.i=@yandex-team.ru
-Message-ID: <85130430-8da4-4df4-afa0-05f60ef702d7@yandex-team.ru>
-Date: Wed, 28 Feb 2024 19:31:35 +0300
+Message-ID: <cc25c79e-4a94-4402-a730-2ef571b77e9d@yandex-team.ru>
+Date: Wed, 28 Feb 2024 19:32:33 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/16] block/nbd: Fix missing ERRP_GUARD() for
+Subject: Re: [PATCH 07/16] block/qcow2-bitmap: Fix missing ERRP_GUARD() for
  error_prepend()
 Content-Language: en-US
 To: Zhao Liu <zhao1.liu@linux.intel.com>,
@@ -41,12 +41,12 @@ To: Zhao Liu <zhao1.liu@linux.intel.com>,
  Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Eric Blake <eblake@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>
+ Eric Blake <eblake@redhat.com>, John Snow <jsnow@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
 References: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
- <20240228163723.1775791-6-zhao1.liu@linux.intel.com>
+ <20240228163723.1775791-8-zhao1.liu@linux.intel.com>
 From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-In-Reply-To: <20240228163723.1775791-6-zhao1.liu@linux.intel.com>
+In-Reply-To: <20240228163723.1775791-8-zhao1.liu@linux.intel.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=2a02:6b8:c03:500:1:45:d181:df01;
@@ -69,7 +69,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Feb 2024 16:31:48 -0000
+X-List-Received-Date: Wed, 28 Feb 2024 16:32:47 -0000
 
 On 28.02.24 19:37, Zhao Liu wrote:
 > From: Zhao Liu<zhao1.liu@intel.com>
@@ -93,16 +93,23 @@ On 28.02.24 19:37, Zhao Liu wrote:
 > error_fatal, the user can't see this additional information, because
 > exit() happens in error_setg earlier than information is added [1].
 > 
-> The nbd_co_do_receive_one_chunk() passes @errp to error_prepend()
-> without ERRP_GUARD(), and though its @errp parameter points to its
-> caller's local_err, to follow the requirement of @errp, add missing
-> ERRP_GUARD() at the beginning of this function.
+> The qcow2_co_can_store_new_dirty_bitmap() passes @errp to
+> error_prepend(). As a BlockDriver.bdrv_co_can_store_new_dirty_bitmap
+> method, it's called by bdrv_co_can_store_new_dirty_bitmap().
+> 
+> Its caller is not being called anywhere, but as the API in
+> include/block/block-io.h, we can't ensure what kind of @errp future
+> users will pass in.
+> 
+> To avoid potential issues as [1] said, add missing ERRP_GUARD() at the
+> beginning of qcow2_co_can_store_new_dirty_bitmap().
 > 
 > [1]: Issue description in the commit message of commit ae7c80a7bd73
 >       ("error: New macro ERRP_GUARD()").
 > 
 > Cc: Eric Blake<eblake@redhat.com>
 > Cc: Vladimir Sementsov-Ogievskiy<vsementsov@yandex-team.ru>
+> Cc: John Snow<jsnow@redhat.com>
 > Cc: Kevin Wolf<kwolf@redhat.com>
 > Cc: Hanna Reitz<hreitz@redhat.com>
 > Signed-off-by: Zhao Liu<zhao1.liu@intel.com>
