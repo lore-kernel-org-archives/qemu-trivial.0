@@ -1,65 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfl4l-0005z9-EG
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 13:24:12 -0500
+	id 1rfl5p-0007ff-BS
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 13:25:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rfl4i-0005sz-4R
- for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 13:24:08 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rfl5n-0007df-3n
+ for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 13:25:16 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rfl4d-00046n-B2
- for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 13:24:07 -0500
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1rfl5l-0004XF-Fl
+ for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 13:25:14 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709231042;
+ s=mimecast20190719; t=1709231112;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=F3pIRz+zVLrKRYcSc+itWPqUw50CxhlRnpCLFrGPO6A=;
- b=HgQiDObTN1gk7MHea24IPmLIHKpikr9xZc52V0nAEk4OOwod73RED7FzfpzTUU6cGtCT0M
- cduWCYjFy2HThNXj2WkM2Fw4Pp+3rPAKXD5/h5VxQ3l1GsD9eztZ3lmAW3YvdRyhpR+K4E
- ISadPfl7vL3U3FEC18P9VeOb4sQAB1Q=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=jwWTqwix/dFR+GhOL3Z3zoL9KBd9h+uQgpNcgqh5go8=;
+ b=IRJqpQBEYOx1ZznTxiIJ/DCirr/MWdZY0ltW7UPXrmxr+Pq1qGCAqXLJrYLEcMLQ86b0jr
+ k9FRzd0JcOiB2KY8vGVxUHjSIOOtVl+djy0xSfoetjLKqV8XF/zAHiWQPgMi248z0xj9Ft
+ 3xwbR3K6v2EhW24rfqwi/LneGPOsXZM=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-504-u5qsUD_cM0mPOl-U7voMJQ-1; Thu, 29 Feb 2024 13:24:01 -0500
-X-MC-Unique: u5qsUD_cM0mPOl-U7voMJQ-1
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-69053b3145fso402146d6.3
- for <qemu-trivial@nongnu.org>; Thu, 29 Feb 2024 10:24:01 -0800 (PST)
+ us-mta-546-HMBkH7LxMx-qDuACTyHUyw-1; Thu, 29 Feb 2024 13:25:10 -0500
+X-MC-Unique: HMBkH7LxMx-qDuACTyHUyw-1
+Received: by mail-qt1-f200.google.com with SMTP id
+ d75a77b69052e-42ea7bcb203so13509031cf.0
+ for <qemu-trivial@nongnu.org>; Thu, 29 Feb 2024 10:25:10 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709231040; x=1709835840;
+ d=1e100.net; s=20230601; t=1709231110; x=1709835910;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=F3pIRz+zVLrKRYcSc+itWPqUw50CxhlRnpCLFrGPO6A=;
- b=dWnQBqiXcIsRTcN0o+a/IKq/OvEL4TrpzeYdkts5p6DWIiBwGpSyqr8DWad9lAUV3A
- kJEq/FCacYB1lMQQ1J4lwLTe55DmfV2N7lS6FDE/SoCS8UkkOgURutXtPsMDsXKsa+hT
- guqetu/Dn2pJ4oO78elqxof7w9V/vEI1Afpw83Ll32E1Wn+YwO6+XpAChUUYmGFdT0SW
- THfyEdoT8i7OEc8UO/oUAF1CQCp01VVBJoFzWrSDWMYmytPscpoAwdCS+/O/3TKDXN02
- b2d7FjNbxfVVYlswn9E5GvWfY7AD2I+JCsrTeqKSWpbnueOLLzxYxdYK7DyYZxPZHIwf
- fcHg==
-X-Gm-Message-State: AOJu0YxCSYZLYhhTdnSkgdB4Zvpw8EfhO4lmpj1Cr8QMTgkfWha8OSsY
- ACwHmuaXUR1T7F4WAzJAufAdM1k61rBfRNgBqbbQkVOzmGGysIgJOQRpEJmaCRFMPWZvCRqKQjm
- nFqNxVS77vpUhLAoNLMoIFyenXaaY8C7pDjwHg18NPrNw9XaqqqHRHqQ=
-X-Received: by 2002:a05:6214:1083:b0:690:4de5:8483 with SMTP id
- o3-20020a056214108300b006904de58483mr1506487qvr.37.1709231040683; 
- Thu, 29 Feb 2024 10:24:00 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH/ODcYrlub94A9B4Gl6SZs3Mz2ZNeh+hvr0h2H5MfHFgl1D6PyYOWt9onu0KzKHwI4bfOaJA==
-X-Received: by 2002:a05:6214:1083:b0:690:4de5:8483 with SMTP id
- o3-20020a056214108300b006904de58483mr1506474qvr.37.1709231040409; 
- Thu, 29 Feb 2024 10:24:00 -0800 (PST)
+ bh=jwWTqwix/dFR+GhOL3Z3zoL9KBd9h+uQgpNcgqh5go8=;
+ b=PP6yppMn3Of0OXQ0iTqfvZCq3lw2Z4Ql0Sg3/rRCQ9y4RbXnRo3VcLVgocoUC04e5n
+ NpG8W2K8dmZ3a4e9MCrsMG5n0qSSELnkXtHS5CAU/gkhbeKEW5Qd5lGv7vBMrZbKepyy
+ mRc2MU2r65dXxECY6+cB038UrtW+9xdx1xWs220F/CHnue24buYBFaogI8UUg/FjEQ5C
+ tgMkf+O5+rBLBSdnuyv7IlLnInIdBL4I+MMbIOOMjYLax/GZOxxAWuZgE4q1kvzZt0ls
+ 5o9rXIDDkYbwVBrQvfO+ndAsP7Ap7QcRfTlg9M61XV8utSxrRLhNp0HnEsGfkcngFcpE
+ zcxw==
+X-Gm-Message-State: AOJu0YwntnZUZylzCIgQ7Txm1vhZSpEQqrR7W/KsjcQMslAQwr4a3ZCr
+ yIGfZO2Za2tsW3OjL8SEebvETahtCVDufRUvBe2DZQoGDgEl+j5Z0yKzwYUMPPn17vd3NiZy7+m
+ Jl3jTBkXYG4f7aryBmHsazgDbLaPspdwJGrzKdz4JJ1LQdSnPxPyrUL0=
+X-Received: by 2002:a05:6214:933:b0:68f:b7f0:65f4 with SMTP id
+ dk19-20020a056214093300b0068fb7f065f4mr2641453qvb.63.1709231110490; 
+ Thu, 29 Feb 2024 10:25:10 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGnDTDQ8T5NIqsStFVR9MOaiFxAe7TdccdaUpHay9XrVf5JETTqV2Q0p2kYTczMMRnp/eaiXQ==
+X-Received: by 2002:a05:6214:933:b0:68f:b7f0:65f4 with SMTP id
+ dk19-20020a056214093300b0068fb7f065f4mr2641439qvb.63.1709231110208; 
+ Thu, 29 Feb 2024 10:25:10 -0800 (PST)
 Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
  ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
  by smtp.gmail.com with ESMTPSA id
- qp11-20020a056214598b00b0068fef74fdb3sm994819qvb.59.2024.02.29.10.23.58
+ qp11-20020a056214598b00b0068fef74fdb3sm994819qvb.59.2024.02.29.10.25.08
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 29 Feb 2024 10:23:59 -0800 (PST)
-Message-ID: <389190e1-cf8c-4cc5-bae0-3ce93c00f495@redhat.com>
-Date: Thu, 29 Feb 2024 19:23:58 +0100
+ Thu, 29 Feb 2024 10:25:09 -0800 (PST)
+Message-ID: <2b516b6f-e655-4895-a82f-7d7ff11ce63d@redhat.com>
+Date: Thu, 29 Feb 2024 19:25:07 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 09/17] hw/vfio/pci-quirks: Fix missing ERRP_GUARD() for
+Subject: Re: [PATCH 10/17] hw/vfio/pci: Fix missing ERRP_GUARD() for
  error_prepend()
 To: Zhao Liu <zhao1.liu@linux.intel.com>,
  Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
@@ -68,9 +68,9 @@ To: Zhao Liu <zhao1.liu@linux.intel.com>,
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
  Alex Williamson <alex.williamson@redhat.com>
 References: <20240229143914.1977550-1-zhao1.liu@linux.intel.com>
- <20240229143914.1977550-10-zhao1.liu@linux.intel.com>
+ <20240229143914.1977550-11-zhao1.liu@linux.intel.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-In-Reply-To: <20240229143914.1977550-10-zhao1.liu@linux.intel.com>
+In-Reply-To: <20240229143914.1977550-11-zhao1.liu@linux.intel.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
@@ -78,14 +78,14 @@ Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
+X-Spam_score_int: -6
+X-Spam_score: -0.7
+X-Spam_bar: /
+X-Spam_report: (-0.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,7 +98,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Feb 2024 18:24:08 -0000
+X-List-Received-Date: Thu, 29 Feb 2024 18:25:16 -0000
 
 On 2/29/24 15:39, Zhao Liu wrote:
 > From: Zhao Liu <zhao1.liu@intel.com>
@@ -122,16 +122,18 @@ On 2/29/24 15:39, Zhao Liu wrote:
 > error_fatal, the user can't see this additional information, because
 > exit() happens in error_setg earlier than information is added [1].
 > 
-> In hw/vfio/pci-quirks.c, there're 2 functions passing @errp to
-> error_prepend() without ERRP_GUARD():
-> - vfio_add_nv_gpudirect_cap()
-> - vfio_add_vmd_shadow_cap()
+> In hw/vfio/pci.c, there're 2 functions passing @errp to error_prepend()
+> without ERRP_GUARD():
+> - vfio_add_std_cap()
+> - vfio_realize()
 > 
-> Their @errp parameters are so widely sourced that it is necessary to
-> protect them with ERRP_GUARD().
+> The @errp of vfio_add_std_cap() is also from vfio_realize(). And
+> vfio_realize(), as a PCIDeviceClass.realize method, its @errp is from
+> DeviceClass.realize so that there is no guarantee that the @errp won't
+> point to @error_fatal.
 > 
-> To avoid the issue like [1] said, add missing ERRP_GUARD() at the
-> beginning of this function.
+> To avoid the issue like [1] said, add missing ERRP_GUARD() at their
+> beginning.
 > 
 > [1]: Issue description in the commit message of commit ae7c80a7bd73
 >       ("error: New macro ERRP_GUARD()").
@@ -148,29 +150,5 @@ Thanks,
 C.
 
 
-> ---
->   hw/vfio/pci-quirks.c | 2 ++
->   1 file changed, 2 insertions(+)
-> 
-> diff --git a/hw/vfio/pci-quirks.c b/hw/vfio/pci-quirks.c
-> index 84b1a7b9485c..496fd1ee86bd 100644
-> --- a/hw/vfio/pci-quirks.c
-> +++ b/hw/vfio/pci-quirks.c
-> @@ -1538,6 +1538,7 @@ static bool is_valid_std_cap_offset(uint8_t pos)
->   
->   static int vfio_add_nv_gpudirect_cap(VFIOPCIDevice *vdev, Error **errp)
->   {
-> +    ERRP_GUARD();
->       PCIDevice *pdev = &vdev->pdev;
->       int ret, pos;
->       bool c8_conflict = false, d4_conflict = false;
-> @@ -1630,6 +1631,7 @@ static int vfio_add_nv_gpudirect_cap(VFIOPCIDevice *vdev, Error **errp)
->   #define VMD_SHADOW_CAP_LEN 24
->   static int vfio_add_vmd_shadow_cap(VFIOPCIDevice *vdev, Error **errp)
->   {
-> +    ERRP_GUARD();
->       uint8_t membar_phys[16];
->       int ret, pos = 0xE8;
->   
 
 
