@@ -1,62 +1,125 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfiry-0000ji-JW
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 11:02:50 -0500
+	id 1rfk2I-0004pY-Vf
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 12:17:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rfirr-0000iV-Pf
- for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 11:02:43 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfk2H-0004p9-8U
+ for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 12:17:33 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rfirp-00079f-0Y
- for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 11:02:43 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfk2F-0004Ig-JW
+ for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 12:17:33 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709222559;
+ s=mimecast20190719; t=1709227050;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=i+ZVzG6fyryFXzZbktppWR3lwqy70D2BqNW0CuTBnvY=;
- b=P6sPodVkliiwS1oIGc8ifaGuZoYensv45pbBRfWoiw0N0Dzip7miyVkx45C+jjRV6CM28V
- P+aKvipjd6PuOmx9/caMnNWxmKVZgk/inJMgCMopa7rA8rWdgF6tZS9/k5FlDB84w2d/AU
- zKrRuEPRFwmRjYREuWc9HCky3xKh8vE=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-371-AvTMOSx5PYGQyWrtf9FBNA-1; Thu,
- 29 Feb 2024 11:02:37 -0500
-X-MC-Unique: AvTMOSx5PYGQyWrtf9FBNA-1
-Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
- [10.11.54.2])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F26461C06505;
- Thu, 29 Feb 2024 16:02:36 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.193.4])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 4F3C240C6EBA;
- Thu, 29 Feb 2024 16:02:36 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 3A6CE21E6740; Thu, 29 Feb 2024 17:02:35 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Zhao Liu <zhao1.liu@linux.intel.com>
-Cc: Michael Roth <michael.roth@amd.com>,  Michael Tokarev <mjt@tls.msk.ru>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org,  Zhao Liu <zhao1.liu@intel.com>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>
-Subject: Re: [PATCH 16/16] hw/core/qdev-properties-system: Fix missing
- ERRP_GUARD() for error_prepend()
-In-Reply-To: <ZeCo9A82Uqi3TKBM@intel.com> (Zhao Liu's message of "Thu, 29 Feb
- 2024 23:55:32 +0800")
-References: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
- <20240228163723.1775791-17-zhao1.liu@linux.intel.com>
- <87frxbuy05.fsf@pond.sub.org> <ZeCo9A82Uqi3TKBM@intel.com>
-Date: Thu, 29 Feb 2024 17:02:35 +0100
-Message-ID: <87zfvjtg10.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=G8UCrDmhV+Ci8DNV1VN6Fk1kV5Qa/EdczDE5doqCIMg=;
+ b=BxqtbQC7F0UyQIuiRJdmFjlXu0LymaHtm7yIqQQyaOK7WMM8CyOHyc+mMoqcqqlSM0eKxE
+ dHBZZ5yg2UlXX/VI7OeefHeiBdTIOxMok8MpS60kKZyPIMtL5NQAiBWW6DZTXMh16WdzbA
+ FbVGTBGd5WYWWTjlsKTPCePEFx0+2Jo=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-479-iP12LqTTN2uSFYlnWR_UMg-1; Thu, 29 Feb 2024 12:17:28 -0500
+X-MC-Unique: iP12LqTTN2uSFYlnWR_UMg-1
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-a43f3f8d7d8so83368866b.3
+ for <qemu-trivial@nongnu.org>; Thu, 29 Feb 2024 09:17:27 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709227047; x=1709831847;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=G8UCrDmhV+Ci8DNV1VN6Fk1kV5Qa/EdczDE5doqCIMg=;
+ b=DigQWJT+gsFyRcRKbQXbM9HMugEVgL8ZLVywSjPFWEGRwB/gZt5+QgQjh3gxs5ytBN
+ PMvnFLPPQLJt3DEKJyU9lyFesQJ0XBtX+T0HbvFQGZ9nuVmynU95vKU2ZgMPg2P1zlL1
+ JjNKkl2wB1sB+vGJq+M//rGac0r9WXQ1+suoYBHLIP7FKkdm8pthxvtFW1q2ivYsCJqv
+ G1NDRsjIozuT6MDzD8H/EaJptjYAMO/a9UrGXMTQ5WC21+FEOId5Kp+2VLtSF43hAZKT
+ g3303bETc3rEr/uKGHiHNGABgqjgitq/zWnlTObqc7+O6TXhnnB9KEQ5I3CYZfTOzENa
+ qTVQ==
+X-Gm-Message-State: AOJu0YwZCUEorqh8DU1OXLN3nAnOh2PR9pWw6R1YTyCkCyMz8yPmtU/n
+ WvoW3kD7ZsHy23fj/n2297l1QcZsS7i3hh0Mzpy7jLs45iYChLA3jIwTYoZI/FbEvkE6UGQ5ZWs
+ DmDBOM8hKSg3DW9jymwg4VaFlhFbXOkCAsyXdHHhKjYwRXnEmMQZgWcc=
+X-Received: by 2002:a17:907:38b:b0:a44:1a51:a1fd with SMTP id
+ ss11-20020a170907038b00b00a441a51a1fdmr1968015ejb.64.1709227047100; 
+ Thu, 29 Feb 2024 09:17:27 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGWfB6kmMBfsQaV3QWHH3T3E6qnsPfmZUSOyKA2qoc2Be3pXdtkQExWXEw3u+CblkOV+G/umg==
+X-Received: by 2002:a17:907:38b:b0:a44:1a51:a1fd with SMTP id
+ ss11-20020a170907038b00b00a441a51a1fdmr1968001ejb.64.1709227046770; 
+ Thu, 29 Feb 2024 09:17:26 -0800 (PST)
+Received: from [192.168.0.9] (ip-109-43-178-133.web.vodafone.de.
+ [109.43.178.133]) by smtp.gmail.com with ESMTPSA id
+ t13-20020a1709066bcd00b00a3e94142018sm861745ejs.132.2024.02.29.09.17.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 29 Feb 2024 09:17:26 -0800 (PST)
+Message-ID: <6e7eff95-cfd3-46f9-9937-7597b2e4f3ee@redhat.com>
+Date: Thu, 29 Feb 2024 18:17:24 +0100
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 17/17] target/s390x/cpu_models: Fix missing ERRP_GUARD()
+ for error_prepend()
+To: Zhao Liu <zhao1.liu@linux.intel.com>,
+ Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+ David Hildenbrand <david@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>
+References: <20240229143914.1977550-1-zhao1.liu@linux.intel.com>
+ <20240229143914.1977550-18-zhao1.liu@linux.intel.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240229143914.1977550-18-zhao1.liu@linux.intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -64,8 +127,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,48 +140,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Feb 2024 16:02:44 -0000
+X-List-Received-Date: Thu, 29 Feb 2024 17:17:33 -0000
 
-Zhao Liu <zhao1.liu@linux.intel.com> writes:
+On 29/02/2024 15.39, Zhao Liu wrote:
+> From: Zhao Liu <zhao1.liu@intel.com>
+> 
+> As the comment in qapi/error, passing @errp to error_prepend() requires
+> ERRP_GUARD():
+> 
+> * = Why, when and how to use ERRP_GUARD() =
+> *
+> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+> ...
+> * - It should not be passed to error_prepend(), error_vprepend() or
+> *   error_append_hint(), because that doesn't work with &error_fatal.
+> * ERRP_GUARD() lifts these restrictions.
+> *
+> * To use ERRP_GUARD(), add it right at the beginning of the function.
+> * @errp can then be used without worrying about the argument being
+> * NULL or &error_fatal.
+> 
+> ERRP_GUARD() could avoid the case when @errp is the pointer of
+> error_fatal, the user can't see this additional information, because
+> exit() happens in error_setg earlier than information is added [1].
+> 
+> In target/s390x/cpu_models.c, there're 2 functions passing @errp to
+> error_prepend() without ERRP_GUARD():
+> - check_compatibility()
+> - s390_realize_cpu_model()
+> 
+> Though both their @errp parameters point to their callers' local @err
+> virables and don't cause the issue as [1] said, to follow the
+> requirement of @errp, also add missing ERRP_GUARD() at their beginning.
+> 
+> [1]: Issue description in the commit message of commit ae7c80a7bd73
+>       ("error: New macro ERRP_GUARD()").
+> 
+> Cc: David Hildenbrand <david@redhat.com>
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Ilya Leoshkevich <iii@linux.ibm.com>
+> Cc: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+>   target/s390x/cpu_models.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/target/s390x/cpu_models.c b/target/s390x/cpu_models.c
+> index a63d990e4e8e..1a1c09612271 100644
+> --- a/target/s390x/cpu_models.c
+> +++ b/target/s390x/cpu_models.c
+> @@ -503,6 +503,7 @@ static void error_prepend_missing_feat(const char *name, void *opaque)
+>   static void check_compatibility(const S390CPUModel *max_model,
+>                                   const S390CPUModel *model, Error **errp)
+>   {
+> +    ERRP_GUARD();
+>       S390FeatBitmap missing;
+>   
+>       if (model->def->gen > max_model->def->gen) {
+> @@ -566,6 +567,7 @@ S390CPUModel *get_max_cpu_model(Error **errp)
+>   
+>   void s390_realize_cpu_model(CPUState *cs, Error **errp)
+>   {
+> +    ERRP_GUARD();
+>       Error *err = NULL;
 
-> Hi Markus,
->
->> > ERRP_GUARD() could avoid the case when @errp is the pointer of
->> > error_fatal, the user can't see this additional information, because
->> 
->> Suggest "when @errp is &error_fatal"
->
-> Sure! It's clearer.
->
->> > exit() happens in error_setg earlier than information is added [1].
->> >
->> > The set_chr() passes @errp to error_prepend() without ERRP_GUARD().
->> >
->> > As a PropertyInfo.set method, the @errp passed to set_chr() is so widely
->> > sourced that it is necessary to protect it with ERRP_GUARD().
->> 
->> "sourced"?  Do you mean "used"?
->> 
->> Are you trying to say something like "there are too many possible
->> callers for me to check the impact of this defect; it may or may not be
->> harmless."
->
-> Yes! Very well expressed. Thanks for your words.
+I think that function could use an additional clean-up now: Remove the local 
+"err" variable and use "errp" only instead.
 
-You're welcome!  Go ahead and replace your sentence with it.
+  Thomas
 
->> > To avoid the issue like [1] said, add missing ERRP_GUARD() at the
->> > beginning of this function.
->> >
->
-> [snip]
->
->> Commit message could use a bit of polish.  Regardless
->> Reviewed-by: Markus Armbruster <armbru@redhat.com>
->> 
->
-> Thanks!
->
-> -Zhao
+
+>       S390CPUClass *xcc = S390_CPU_GET_CLASS(cs);
+>       S390CPU *cpu = S390_CPU(cs);
 
 
