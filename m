@@ -1,74 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfkAz-0002Tt-CC
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 12:26:33 -0500
+	id 1rfkDS-0003sO-0L
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 12:29:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfkAy-0002TK-Ew
- for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 12:26:32 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfkDO-0003rw-Pg
+ for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 12:29:03 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfkAo-0006IR-SC
- for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 12:26:31 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfkDM-0006cn-Tr
+ for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 12:29:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709227581;
+ s=mimecast20190719; t=1709227740;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=eEJ+heazH42dGukRZbPG9kUKNB/KnVc0BR4eDpbRwy4=;
- b=FnQC111aT0r8RTknnWFFljBvVBe1HsjZyE/qF7kReQQxuuEvIbwllxfhYd0nvzpfopGEcM
- mAPFVV+I6Yflhh9sDccbQgJ5/pq7//Kaj3IC0vC7IBWqNkbRoqyMaTEcZsvrMMKybe5Hu3
- IsXf/dILGbzK/emDbvGJm0w3DvpbwU0=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=20baVLk+Y/+X/K2B5zFQGGtquUNCzVN6xCCsWgJ7eGU=;
+ b=OLqc2OPM707Gd2V8c7IOhIM+TqJ4gxPozdAydQSf5qtxildGOqrmvZ2/KnKwSMHudWwOIP
+ yRKnzBHLx5cP4Ng3jtcDTx5bPGqzh7MX5qA9YArH3bU9M8wCk1QBHqLhDYVdUYwfyOkI6C
+ dknC1xVDBQIw0ZeoO6jz09/8xtBGiYk=
+Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
+ [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-492-lmT3CNmePaiWOVRkUvM85Q-1; Thu, 29 Feb 2024 12:26:19 -0500
-X-MC-Unique: lmT3CNmePaiWOVRkUvM85Q-1
-Received: by mail-ed1-f70.google.com with SMTP id
- 4fb4d7f45d1cf-564901924f4so1026927a12.0
- for <qemu-trivial@nongnu.org>; Thu, 29 Feb 2024 09:26:19 -0800 (PST)
+ us-mta-681-OQjEa7H6Ogu6vmyZPhYL7A-1; Thu, 29 Feb 2024 12:28:58 -0500
+X-MC-Unique: OQjEa7H6Ogu6vmyZPhYL7A-1
+Received: by mail-qv1-f72.google.com with SMTP id
+ 6a1803df08f44-68f47e46658so11931856d6.3
+ for <qemu-trivial@nongnu.org>; Thu, 29 Feb 2024 09:28:58 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709227578; x=1709832378;
+ d=1e100.net; s=20230601; t=1709227738; x=1709832538;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=eEJ+heazH42dGukRZbPG9kUKNB/KnVc0BR4eDpbRwy4=;
- b=LtWvVDN+Q+b0tE2Tkv8XwwdsqDjmpQhjyXcsR09/DtughbDJvfP3lFVOYcYXw+9ZCP
- SO0lvtn4CUXCgqvwsNcFYwIDgiyTy8lymM23KYljBN3RzK+MjxbgTA8Py2JXQyGnhFIo
- WaxCL6vMxtXrnygS2mH5aaViCNHCFToYr3W00QQya5ZtDfQ0fDFqRz+MG3fgAxC6PxBr
- Om4eml9WN8EdG2hGpLPVy53KN8kpUlMOGpP0eBRTDvPL7zDmWyFvRXyT694AD5JjIn3E
- GvXFgCykf/85Q2L7uzxbdC8oAVB8I8uGDZPcdprQel0n6LkSNVevD6vo7aNDKu2P84d7
- 3e+Q==
-X-Gm-Message-State: AOJu0Yz0V1dmPgcmn1iKudIqPDlFSd7jCJSIBC+PsAuOQLMsnnC5P2IR
- 2wvtD9Rey+ISEpnIwq39jwzhCrXvfl5Nhjd8RuJLI/FhXSbMxw4QpoFw0+ORjlUHs6Jorcfs/7f
- rzbQ3VgZGPCBzrNAHwZ/iG9N6Ph1rYU0lncXbT6AlNgZBbdD1zaiIDsM=
-X-Received: by 2002:a50:8d86:0:b0:565:f90c:1263 with SMTP id
- r6-20020a508d86000000b00565f90c1263mr2151810edh.9.1709227578351; 
- Thu, 29 Feb 2024 09:26:18 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IHAvd7nKsEDJ4JQXo+6iHx1UV5OphanDDs7p1vYVEKi6oTpq7Xv19lGJBLf1Gv7CyNSX8Uagw==
-X-Received: by 2002:a50:8d86:0:b0:565:f90c:1263 with SMTP id
- r6-20020a508d86000000b00565f90c1263mr2151802edh.9.1709227578057; 
- Thu, 29 Feb 2024 09:26:18 -0800 (PST)
+ bh=20baVLk+Y/+X/K2B5zFQGGtquUNCzVN6xCCsWgJ7eGU=;
+ b=IyULqLfHpeN+j4IPSfQ9gNdvvIPu6JBZWc/FhiqedLCM0/J1XOyWCFpcrdr3nVXEEd
+ gFQgDeiwdjEl6G9VtXbHAKNZnuo7KBj/MLadK24SLqE1k4usn/TPGxLsiHd7tHZPF2JJ
+ ugDb4fVCcuwcuqjgrwRzQezDK92qhUNVgdgBx4mfQBO/p73Y/TqbOBMvHAacKp+KuEqi
+ yNEDl2iePZvH2IUzVyu8QAqe6w4pN3e9fQ79pIz+R6UNjO3IarMabCkw+cdfMQmOMLBB
+ k+3WR8Rexggq1xAsyj/n7ACANr4BrbRv69LHuMIq/YRGNC7h16O6SMCB53FDDYtDEzjk
+ qecg==
+X-Gm-Message-State: AOJu0YzMeaKuCltTU0728WlZDIfFApXlmY6H6b9HCpHHmOz3YBxa08D4
+ TzWTEX/6Vx3bpsq3/GIjkBbok+/r7Xr5LAW4XV81Z2X+opm2NQ6uEIc9OzX1exn5tiwIzu+a2E1
+ qeifS8sCQ+47IVFjH4neup5OL2Gbut0rcSUXClopWEY38hKRjgDs/+SI=
+X-Received: by 2002:a0c:8bda:0:b0:68f:ba43:2e77 with SMTP id
+ a26-20020a0c8bda000000b0068fba432e77mr3234716qvc.48.1709227738442; 
+ Thu, 29 Feb 2024 09:28:58 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IH/NVsHsk19qJbEopLRIzBrkOOlvJVt2uZgHqWSx0AB8zFw2wjdkQeDazi4Pc0wgpi2kKkatQ==
+X-Received: by 2002:a0c:8bda:0:b0:68f:ba43:2e77 with SMTP id
+ a26-20020a0c8bda000000b0068fba432e77mr3234694qvc.48.1709227738145; 
+ Thu, 29 Feb 2024 09:28:58 -0800 (PST)
 Received: from [192.168.0.9] (ip-109-43-178-133.web.vodafone.de.
  [109.43.178.133]) by smtp.gmail.com with ESMTPSA id
- es17-20020a056402381100b005666aaf340dsm787884edb.21.2024.02.29.09.26.16
+ nh7-20020a056214390700b0069048f91dfbsm779103qvb.78.2024.02.29.09.28.56
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 29 Feb 2024 09:26:17 -0800 (PST)
-Message-ID: <02c6275c-ad12-4bac-b1d3-b61330c434e6@redhat.com>
-Date: Thu, 29 Feb 2024 18:26:16 +0100
+ Thu, 29 Feb 2024 09:28:57 -0800 (PST)
+Message-ID: <4b7eeb33-8673-47c2-884c-595cb3662c38@redhat.com>
+Date: Thu, 29 Feb 2024 18:28:54 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 03/17] hw/remote/remote-obj: hw/misc/ivshmem: Fix missing
- ERRP_GUARD() for error_prepend()
+Subject: Re: [PATCH 06/17] hw/vfio/container: Fix missing ERRP_GUARD() for
+ error_prepend()
 To: Zhao Liu <zhao1.liu@linux.intel.com>,
  Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
  Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Elena Ufimtseva <elena.ufimtseva@oracle.com>,
- Jagannathan Raman <jag.raman@oracle.com>
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 References: <20240229143914.1977550-1-zhao1.liu@linux.intel.com>
- <20240229143914.1977550-4-zhao1.liu@linux.intel.com>
+ <20240229143914.1977550-7-zhao1.liu@linux.intel.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -112,22 +112,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240229143914.1977550-4-zhao1.liu@linux.intel.com>
+In-Reply-To: <20240229143914.1977550-7-zhao1.liu@linux.intel.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -140,7 +139,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Feb 2024 17:26:32 -0000
+X-List-Received-Date: Thu, 29 Feb 2024 17:29:03 -0000
 
 On 29/02/2024 15.39, Zhao Liu wrote:
 > From: Zhao Liu <zhao1.liu@intel.com>
@@ -164,9 +163,9 @@ On 29/02/2024 15.39, Zhao Liu wrote:
 > error_fatal, the user can't see this additional information, because
 > exit() happens in error_setg earlier than information is added [1].
 > 
-> The remote_object_set_fd() passes @errp to error_prepend(), and as a
-> PropertyInfo.set method, its @errp is so widely sourced that it is
-> necessary to protect it with ERRP_GUARD().
+> The vfio_get_group() passes @errp to error_prepend(). Its @errp is
+> from vfio_attach_device(), which @errp parameter is so widely sourced
+> that it is necessary to protect it with ERRP_GUARD().
 > 
 > To avoid the issue like [1] said, add missing ERRP_GUARD() at the
 > beginning of this function.
@@ -174,25 +173,25 @@ On 29/02/2024 15.39, Zhao Liu wrote:
 > [1]: Issue description in the commit message of commit ae7c80a7bd73
 >       ("error: New macro ERRP_GUARD()").
 > 
-> Cc: Elena Ufimtseva <elena.ufimtseva@oracle.com>
-> Cc: Jagannathan Raman <jag.raman@oracle.com>
+> Cc: Alex Williamson <alex.williamson@redhat.com>
+> Cc: "Cédric Le Goater" <clg@redhat.com>
 > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 > ---
->   hw/remote/remote-obj.c | 1 +
+>   hw/vfio/container.c | 1 +
 >   1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/remote/remote-obj.c b/hw/remote/remote-obj.c
-> index 65b6f7cc863f..dc27cc8da1f3 100644
-> --- a/hw/remote/remote-obj.c
-> +++ b/hw/remote/remote-obj.c
-> @@ -49,6 +49,7 @@ struct RemoteObject {
+> diff --git a/hw/vfio/container.c b/hw/vfio/container.c
+> index bd25b9fbad2e..f66bb01f5b18 100644
+> --- a/hw/vfio/container.c
+> +++ b/hw/vfio/container.c
+> @@ -719,6 +719,7 @@ static void vfio_disconnect_container(VFIOGroup *group)
 >   
->   static void remote_object_set_fd(Object *obj, const char *str, Error **errp)
+>   static VFIOGroup *vfio_get_group(int groupid, AddressSpace *as, Error **errp)
 >   {
 > +    ERRP_GUARD();
->       RemoteObject *o = REMOTE_OBJECT(obj);
->       int fd = -1;
->   
+>       VFIOGroup *group;
+>       char path[32];
+>       struct vfio_group_status status = { .argsz = sizeof(status) };
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
