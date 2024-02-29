@@ -1,73 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfkII-0007GU-2O
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 12:34:07 -0500
+	id 1rfkKY-0002WI-II
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 12:36:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfkIB-0007CG-O8
- for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 12:34:01 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfkKS-0002SV-Sa
+ for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 12:36:21 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfkI9-0008Ey-K9
- for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 12:33:58 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rfkKQ-0000XR-Ss
+ for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 12:36:20 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709228035;
+ s=mimecast20190719; t=1709228176;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=0uN+CP1PGbkCDAaVxYDbmoceNp8BYuwYTnTf0KhGM4Y=;
- b=LlXQOYDijFbdtjD8skz4NFSp25yLME+NIJD9WaNfX2pj3o2+qUgPOi3H0rd728pYyLki9x
- ImYwY3E14FenTiV3l/c72FJdSQMktb9PO6esfvn/YZXSj2UnWsaZEvk3o9RTCCzn+asZHj
- BR1qZsd2AL9sXk7u/59pV2nSnL/NJJY=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=6oVQwRS1D35YxIQp2lv2Y0uAFKpFPhuskX2Ecou6s5U=;
+ b=SAGHAH2j5HdGxzOY1uVBx7i6/GBsWm03OWOlIdVo4RH8uPHXuOheOY0Z93b+AlHj+rH9ti
+ ZDoC1xpT1nwMd218Af2+U+3yn2v9lZHyIghwt1PT+StNzbjXpL8mDFzyepx5PBOdqWcxbp
+ 5eKp1Z3+wAkmKe/Z/ykaYtOCUorVOWg=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-313-TmLS7qWENmmy4S06AEY36A-1; Thu, 29 Feb 2024 12:33:53 -0500
-X-MC-Unique: TmLS7qWENmmy4S06AEY36A-1
-Received: by mail-ej1-f69.google.com with SMTP id
- a640c23a62f3a-a44563c65dcso59551766b.2
- for <qemu-trivial@nongnu.org>; Thu, 29 Feb 2024 09:33:53 -0800 (PST)
+ us-mta-668-K5ygHYzBP9ysjZtHQflHRw-1; Thu, 29 Feb 2024 12:36:14 -0500
+X-MC-Unique: K5ygHYzBP9ysjZtHQflHRw-1
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-a41380f5ee5so104719866b.2
+ for <qemu-trivial@nongnu.org>; Thu, 29 Feb 2024 09:36:14 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709228032; x=1709832832;
+ d=1e100.net; s=20230601; t=1709228173; x=1709832973;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=0uN+CP1PGbkCDAaVxYDbmoceNp8BYuwYTnTf0KhGM4Y=;
- b=hGrwWD83zNTIvL65SFkwo4OjJgsurOVyV4wrBJUeWo90u9F9SliIF6aVC42vzsl+gG
- LOLPPwhU+8lLnDTQqLOaX3riIILdQfFWwlwMG8ojVokDuT5+dvHE6hADgNS4YIHvYAS1
- uWfNa1GCgS1QjUa5w1z5GOqZQ9asSKfZoZcTfpWytKURuuUuq1vfJJHv284Lq3olp+EM
- HNE43dqDwGP5cZ1LMoCL1vDMMOlrS7SsUQ63pJ+2lDsyF88r8AO/eYmYr4ovRin8RINZ
- LO4VzbiJaOnSwM0oMCx6p/GbgEOzFnE32W7uHgI409e5OHww3rHbjJtxB54BDpc0AJgR
- G5SQ==
-X-Gm-Message-State: AOJu0YyfxyE+E5ZkpcVs5/YkpXtLnWWJR/ipxM6Rm39gXgr2JGZpnPJd
- x0dJz8PUFeLic5KijXgpcMNhbbxnXkVcoRYf/yc0rTR0NACqQXsnzoHk57QNFJwhnoPc5T03Xzf
- qI1/Oog4e1kImlYDeX2ly7vp6cRpMPoDowFfa5Re8OjsIWG+GVuf+4Bs=
-X-Received: by 2002:a17:906:f281:b0:a43:a12b:1951 with SMTP id
- gu1-20020a170906f28100b00a43a12b1951mr2098170ejb.2.1709228032187; 
- Thu, 29 Feb 2024 09:33:52 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IG+N4+zddUNViUllk77dlKio0g1VukGv9n3aiqJT4c+DiymBEKrMRiUApzwopxXg+MOohY7jw==
-X-Received: by 2002:a17:906:f281:b0:a43:a12b:1951 with SMTP id
- gu1-20020a170906f28100b00a43a12b1951mr2098158ejb.2.1709228031886; 
- Thu, 29 Feb 2024 09:33:51 -0800 (PST)
+ bh=6oVQwRS1D35YxIQp2lv2Y0uAFKpFPhuskX2Ecou6s5U=;
+ b=tetv5bg8gOfb7etOcm9iytWjJQ+ib5+Srq7TWNCpFjJl47qayX60ae6Wlc34Z/2P+i
+ av81L+YhdhPGm8p+3ytvmuqWjxrcBRLIjkvSdKGGbOqOAZvHEhnh93PDApboO57p6muL
+ 9FxhpAZim+mpfO7v7H1N+n+gK980axzWq/Yp+wG0qx9pzYlpM+5n5YXNQYUu/JZcnvVs
+ 2/lloKEjJTraDIm5/ar0kAYefd9jQmaWZyx8BpkbozSNNVBSHUnnMUqQGexBVOB80P60
+ Qkp2ogQfGpbcHqRwVafuKNcB3oGdr7plR7ErWIm1VE7BNqVA/cLLNHa+wIJm2Wek/dfH
+ 3BbA==
+X-Gm-Message-State: AOJu0YxhAM7w+nHmsCd14tDMoL1PgftDKPlFMFQ5GEcoS5qKGT4h8WbG
+ 9Cm6kaEAfZX4+47CsrkuHCoO+uNT2csccso+eNRzXaPFxXYNTw/bF1xzMjLonajNhmDXL0dmd6f
+ wPrIV66LIHK8d5A4WOA2hCAaDGISyZ9jJSD3b2UIH2puaMYNsLibC5XwpSUDTlmI=
+X-Received: by 2002:a17:906:5792:b0:a44:64d:93d1 with SMTP id
+ k18-20020a170906579200b00a44064d93d1mr2043821ejq.18.1709228173602; 
+ Thu, 29 Feb 2024 09:36:13 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IEwmPDNkl3NdwqkQbZksBu7XBGJFMIkhvSdoEqgOV0d5UDH3BHN50qs2Lkw7iVgY3x3qUyqNQ==
+X-Received: by 2002:a17:906:5792:b0:a44:64d:93d1 with SMTP id
+ k18-20020a170906579200b00a44064d93d1mr2043815ejq.18.1709228173267; 
+ Thu, 29 Feb 2024 09:36:13 -0800 (PST)
 Received: from [192.168.0.9] (ip-109-43-178-133.web.vodafone.de.
  [109.43.178.133]) by smtp.gmail.com with ESMTPSA id
- f13-20020a1709062c4d00b00a43215bff13sm884576ejh.117.2024.02.29.09.33.50
+ f13-20020a1709062c4d00b00a43215bff13sm884576ejh.117.2024.02.29.09.36.12
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 29 Feb 2024 09:33:51 -0800 (PST)
-Message-ID: <79c5a59b-e68c-4027-9fe1-121ed10ca4ca@redhat.com>
-Date: Thu, 29 Feb 2024 18:33:50 +0100
+ Thu, 29 Feb 2024 09:36:12 -0800 (PST)
+Message-ID: <f3d3a29d-a78d-4f39-b5a2-9c64ba9718a2@redhat.com>
+Date: Thu, 29 Feb 2024 18:36:12 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 15/17] net/vhost-vdpa: Fix missing ERRP_GUARD() for
+Subject: Re: [PATCH 16/17] target/i386/sev: Fix missing ERRP_GUARD() for
  error_prepend()
 To: Zhao Liu <zhao1.liu@linux.intel.com>,
  Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
  Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Jason Wang <jasowang@redhat.com>
+ Paolo Bonzini <pbonzini@redhat.com>, Marcelo Tosatti <mtosatti@redhat.com>
 References: <20240229143914.1977550-1-zhao1.liu@linux.intel.com>
- <20240229143914.1977550-16-zhao1.liu@linux.intel.com>
+ <20240229143914.1977550-17-zhao1.liu@linux.intel.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -111,21 +111,22 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240229143914.1977550-16-zhao1.liu@linux.intel.com>
+In-Reply-To: <20240229143914.1977550-17-zhao1.liu@linux.intel.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -138,7 +139,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Feb 2024 17:34:01 -0000
+X-List-Received-Date: Thu, 29 Feb 2024 17:36:22 -0000
 
 On 29/02/2024 15.39, Zhao Liu wrote:
 > From: Zhao Liu <zhao1.liu@intel.com>
@@ -162,38 +163,35 @@ On 29/02/2024 15.39, Zhao Liu wrote:
 > error_fatal, the user can't see this additional information, because
 > exit() happens in error_setg earlier than information is added [1].
 > 
-> The net_init_vhost_vdpa() passes @errp to error_prepend(), and as a
-> member of net_client_init_fun[], it's called in net_client_init1() and
-> gets @errp from this caller.
+> The sev_inject_launch_secret() passes @errp to error_prepend(), and as
+> an APIs defined in target/i386/sev.h, it is necessary to protect its
+> @errp with ERRP_GUARD().
 > 
-> But because netdev_init_modern() passes &error_fatal to
-> net_client_init1(), then @errp parameter of net_init_vhost_vdpa() would
-> point to @error_fatal. This causes the error message in error_prepend()
-> to be lost because of the above issue.
-> 
-> To fix this, add missing ERRP_GUARD() at the beginning of this function.
+> To avoid the issue like [1] said, add missing ERRP_GUARD() at the
+> beginning of this function.
 > 
 > [1]: Issue description in the commit message of commit ae7c80a7bd73
 >       ("error: New macro ERRP_GUARD()").
 > 
-> Cc: Jason Wang <jasowang@redhat.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Cc: Marcelo Tosatti <mtosatti@redhat.com>
 > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 > ---
->   net/vhost-vdpa.c | 1 +
+>   target/i386/sev.c | 1 +
 >   1 file changed, 1 insertion(+)
 > 
-> diff --git a/net/vhost-vdpa.c b/net/vhost-vdpa.c
-> index 3726ee5d6763..6c1fa396aae1 100644
-> --- a/net/vhost-vdpa.c
-> +++ b/net/vhost-vdpa.c
-> @@ -1751,6 +1751,7 @@ static int vhost_vdpa_get_max_queue_pairs(int fd, uint64_t features,
->   int net_init_vhost_vdpa(const Netdev *netdev, const char *name,
->                           NetClientState *peer, Error **errp)
+> diff --git a/target/i386/sev.c b/target/i386/sev.c
+> index 173de91afe7d..72930ff0dcc5 100644
+> --- a/target/i386/sev.c
+> +++ b/target/i386/sev.c
+> @@ -1044,6 +1044,7 @@ sev_encrypt_flash(uint8_t *ptr, uint64_t len, Error **errp)
+>   int sev_inject_launch_secret(const char *packet_hdr, const char *secret,
+>                                uint64_t gpa, Error **errp)
 >   {
 > +    ERRP_GUARD();
->       const NetdevVhostVDPAOptions *opts;
->       uint64_t features;
->       int vdpa_device_fd;
+>       struct kvm_sev_launch_secret input;
+>       g_autofree guchar *data = NULL, *hdr = NULL;
+>       int error, ret = 1;
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
