@@ -1,53 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfhMH-0006Du-IL
+	id 1rfhMH-0006Ex-Pw
 	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 09:26:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rfhMA-00064e-5p; Thu, 29 Feb 2024 09:25:54 -0500
+ id 1rfhM5-0005xl-7U; Thu, 29 Feb 2024 09:25:50 -0500
 Received: from mgamail.intel.com ([192.198.163.11])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rfhM7-0005O2-H0; Thu, 29 Feb 2024 09:25:53 -0500
+ id 1rfhM3-0005O2-Bl; Thu, 29 Feb 2024 09:25:48 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709216751; x=1740752751;
+ t=1709216747; x=1740752747;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=tm2TfL8tCatkLG6f9ax0h2DVCNI++sDtZFIjXdGxA2U=;
- b=hDBnCndeof+cuNUvpJWLttT0db/Bls1FNs1AzXz2rbabSa1DTIFvJXS0
- t4RoAphuki0rZmb3IeW6Hg7fI1OWJXq7ATHcaZiiolyn0/bsAluMzftUC
- maDzAzXOHzhgPCpW1mjSaba8OguZdSKrbH8MRje+w/zWQV7k7IALNQccI
- hvTEiT9WekbF9+J64fvKay3V5dg3E320UJtaJ5Wkf7mg33oAOxylv6RuD
- AhOJXBlmomeA8hcDHp2bVxYFzZl/dSbjTyP6nCeBqZcTwzb4Hc60v2CD1
- JEIy8338fR891qVS6Kl4hOUh0XY0FeaXG7PPCuv4vGf3GFXZM4PHapxxP Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="14322767"
-X-IronPort-AV: E=Sophos;i="6.06,194,1705392000"; d="scan'208";a="14322767"
+ bh=PuIkkbjrFZHQWrlHk+V1lHEGDSQ4p//0zIRr95rqpiw=;
+ b=Jom9ORGqtHWhovYuHhZcYVNgiHMgliYtSCzfPhNGZ5p5k7gpIppGf9uY
+ UjHeV0KG5ji3jX3W1PsJiaOQl6TD6qkhnXupBw1SYX35awB7lAvrEK/Qb
+ XAXw38vSsYk3i8kZMnDDgoYsQ3wEO+losGZdtJTQm9sgzf/DygDASwNXg
+ tkbdig1r9+smyDe1VmqumYZqKNOJPi+zJC4zfXgMJ8cI1VZJZ/3zjpx3v
+ eDSFlLjzM2XMQobDKeuU7Iky6VWq3JE5xY6JVE5HRGK0kltMrfxHKgK3t
+ PhJ2rMimw5/mCTlDwzLXCmYOlloJidCE5vBu4QuMOZ8VvTuLbmGcO/GQP g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10998"; a="14322746"
+X-IronPort-AV: E=Sophos;i="6.06,194,1705392000"; d="scan'208";a="14322746"
 Received: from fmviesa010.fm.intel.com ([10.60.135.150])
  by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Feb 2024 06:25:50 -0800
+ 29 Feb 2024 06:25:45 -0800
 X-ExtLoop1: 1
 X-IronPort-AV: E=Sophos;i="6.06,194,1705392000"; 
-   d="scan'208";a="7793832"
+   d="scan'208";a="7793820"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa010.fm.intel.com with ESMTP; 29 Feb 2024 06:25:48 -0800
+ by fmviesa010.fm.intel.com with ESMTP; 29 Feb 2024 06:25:42 -0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
  Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH 06/17] hw/vfio/container: Fix missing ERRP_GUARD() for
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Fam Zheng <fam@euphon.net>
+Subject: [PATCH 04/17] hw/scsi/vhost-scsi: Fix missing ERRP_GUARD() for
  error_prepend()
-Date: Thu, 29 Feb 2024 22:39:03 +0800
-Message-Id: <20240229143914.1977550-7-zhao1.liu@linux.intel.com>
+Date: Thu, 29 Feb 2024 22:39:01 +0800
+Message-Id: <20240229143914.1977550-5-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240229143914.1977550-1-zhao1.liu@linux.intel.com>
 References: <20240229143914.1977550-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: none client-ip=192.198.163.11;
  envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
@@ -69,7 +68,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Feb 2024 14:25:54 -0000
+X-List-Received-Date: Thu, 29 Feb 2024 14:25:51 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -92,9 +91,10 @@ ERRP_GUARD() could avoid the case when @errp is the pointer of
 error_fatal, the user can't see this additional information, because
 exit() happens in error_setg earlier than information is added [1].
 
-The vfio_get_group() passes @errp to error_prepend(). Its @errp is
-from vfio_attach_device(), which @errp parameter is so widely sourced
-that it is necessary to protect it with ERRP_GUARD().
+The vhost_scsi_realize() passes @errp to error_prepend(), and as a
+VirtioDeviceClass.realize method, its @errp is from DeviceClass.realize
+so that there is no guarantee that the @errp won't point to
+@error_fatal.
 
 To avoid the issue like [1] said, add missing ERRP_GUARD() at the
 beginning of this function.
@@ -102,25 +102,26 @@ beginning of this function.
 [1]: Issue description in the commit message of commit ae7c80a7bd73
      ("error: New macro ERRP_GUARD()").
 
-Cc: Alex Williamson <alex.williamson@redhat.com>
-Cc: "Cédric Le Goater" <clg@redhat.com>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Fam Zheng <fam@euphon.net>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/vfio/container.c | 1 +
+ hw/scsi/vhost-scsi.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/vfio/container.c b/hw/vfio/container.c
-index bd25b9fbad2e..f66bb01f5b18 100644
---- a/hw/vfio/container.c
-+++ b/hw/vfio/container.c
-@@ -719,6 +719,7 @@ static void vfio_disconnect_container(VFIOGroup *group)
+diff --git a/hw/scsi/vhost-scsi.c b/hw/scsi/vhost-scsi.c
+index 58a00336c2db..ae26bc19a457 100644
+--- a/hw/scsi/vhost-scsi.c
++++ b/hw/scsi/vhost-scsi.c
+@@ -220,6 +220,7 @@ static int vhost_scsi_set_workers(VHostSCSICommon *vsc, bool per_virtqueue)
  
- static VFIOGroup *vfio_get_group(int groupid, AddressSpace *as, Error **errp)
+ static void vhost_scsi_realize(DeviceState *dev, Error **errp)
  {
 +    ERRP_GUARD();
-     VFIOGroup *group;
-     char path[32];
-     struct vfio_group_status status = { .argsz = sizeof(status) };
+     VirtIOSCSICommon *vs = VIRTIO_SCSI_COMMON(dev);
+     VHostSCSICommon *vsc = VHOST_SCSI_COMMON(dev);
+     Error *err = NULL;
 -- 
 2.34.1
 
