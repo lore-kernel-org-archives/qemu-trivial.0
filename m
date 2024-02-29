@@ -1,66 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfiXl-0005el-5R
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 10:41:57 -0500
+	id 1rfiry-0000ji-JW
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 11:02:50 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rfiXj-0005eN-Dp; Thu, 29 Feb 2024 10:41:55 -0500
-Received: from mgamail.intel.com ([198.175.65.16])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rfirr-0000iV-Pf
+ for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 11:02:43 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rfiXh-00012y-RX; Thu, 29 Feb 2024 10:41:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709221314; x=1740757314;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=Sq+FwXcAIeSa1JYuCfxjSFB02ZVo2r/rJq/L59N+K6I=;
- b=YbBitEeS6jhq/TVTqRIff39MJFidIN0XU7qWb9cJl3EPPG23gZj4YfOt
- CTdNgVl9+U0Kenz/CQAJ0Px4EMh4WMEsiVVYmjy8pqItye3cZXoEJT8XQ
- TRE0wpVazGHQWu5C6RzNCvQTXDY3iqPIuLjmPT4vVx1ZEQ6D2wi54+qPu
- TK8um5ZNHCq08pSdjGRRIW0X13Tbii9Mdhho92TnJ1woY/9ZHtQ9QYb5r
- Txb08xgkjT3GRw5GPcsoLM56LKqywbCk1Ct6DI2fZ2OHgvzC9PYijNvzi
- LMiDv9gb1tJXoyUS0wJUEtIhUdcnqSc/bLgX7XCW7kTKdHJlv+xkEbSiR w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,10999"; a="3813175"
-X-IronPort-AV: E=Sophos;i="6.06,194,1705392000"; 
-   d="scan'208";a="3813175"
-Received: from orviesa007.jf.intel.com ([10.64.159.147])
- by orvoesa108.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 29 Feb 2024 07:41:52 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,194,1705392000"; 
-   d="scan'208";a="8212549"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by orviesa007.jf.intel.com with ESMTP; 29 Feb 2024 07:41:49 -0800
-Date: Thu, 29 Feb 2024 23:55:32 +0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rfirp-00079f-0Y
+ for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 11:02:43 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709222559;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=i+ZVzG6fyryFXzZbktppWR3lwqy70D2BqNW0CuTBnvY=;
+ b=P6sPodVkliiwS1oIGc8ifaGuZoYensv45pbBRfWoiw0N0Dzip7miyVkx45C+jjRV6CM28V
+ P+aKvipjd6PuOmx9/caMnNWxmKVZgk/inJMgCMopa7rA8rWdgF6tZS9/k5FlDB84w2d/AU
+ zKrRuEPRFwmRjYREuWc9HCky3xKh8vE=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-371-AvTMOSx5PYGQyWrtf9FBNA-1; Thu,
+ 29 Feb 2024 11:02:37 -0500
+X-MC-Unique: AvTMOSx5PYGQyWrtf9FBNA-1
+Received: from smtp.corp.redhat.com (int-mx02.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.2])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id F26461C06505;
+ Thu, 29 Feb 2024 16:02:36 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.4])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4F3C240C6EBA;
+ Thu, 29 Feb 2024 16:02:36 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 3A6CE21E6740; Thu, 29 Feb 2024 17:02:35 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Zhao Liu <zhao1.liu@linux.intel.com>
+Cc: Michael Roth <michael.roth@amd.com>,  Michael Tokarev <mjt@tls.msk.ru>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org,  Zhao Liu <zhao1.liu@intel.com>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>
 Subject: Re: [PATCH 16/16] hw/core/qdev-properties-system: Fix missing
  ERRP_GUARD() for error_prepend()
-Message-ID: <ZeCo9A82Uqi3TKBM@intel.com>
+In-Reply-To: <ZeCo9A82Uqi3TKBM@intel.com> (Zhao Liu's message of "Thu, 29 Feb
+ 2024 23:55:32 +0800")
 References: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
  <20240228163723.1775791-17-zhao1.liu@linux.intel.com>
- <87frxbuy05.fsf@pond.sub.org>
+ <87frxbuy05.fsf@pond.sub.org> <ZeCo9A82Uqi3TKBM@intel.com>
+Date: Thu, 29 Feb 2024 17:02:35 +0100
+Message-ID: <87zfvjtg10.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <87frxbuy05.fsf@pond.sub.org>
-Received-SPF: none client-ip=198.175.65.16;
- envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.2
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H2=-0.001,
- SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,43 +78,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Feb 2024 15:41:55 -0000
+X-List-Received-Date: Thu, 29 Feb 2024 16:02:44 -0000
 
-Hi Markus,
+Zhao Liu <zhao1.liu@linux.intel.com> writes:
 
-> > ERRP_GUARD() could avoid the case when @errp is the pointer of
-> > error_fatal, the user can't see this additional information, because
-> 
-> Suggest "when @errp is &error_fatal"
+> Hi Markus,
+>
+>> > ERRP_GUARD() could avoid the case when @errp is the pointer of
+>> > error_fatal, the user can't see this additional information, because
+>> 
+>> Suggest "when @errp is &error_fatal"
+>
+> Sure! It's clearer.
+>
+>> > exit() happens in error_setg earlier than information is added [1].
+>> >
+>> > The set_chr() passes @errp to error_prepend() without ERRP_GUARD().
+>> >
+>> > As a PropertyInfo.set method, the @errp passed to set_chr() is so widely
+>> > sourced that it is necessary to protect it with ERRP_GUARD().
+>> 
+>> "sourced"?  Do you mean "used"?
+>> 
+>> Are you trying to say something like "there are too many possible
+>> callers for me to check the impact of this defect; it may or may not be
+>> harmless."
+>
+> Yes! Very well expressed. Thanks for your words.
 
-Sure! It's clearer.
+You're welcome!  Go ahead and replace your sentence with it.
 
-> > exit() happens in error_setg earlier than information is added [1].
-> >
-> > The set_chr() passes @errp to error_prepend() without ERRP_GUARD().
-> >
-> > As a PropertyInfo.set method, the @errp passed to set_chr() is so widely
-> > sourced that it is necessary to protect it with ERRP_GUARD().
-> 
-> "sourced"?  Do you mean "used"?
-> 
-> Are you trying to say something like "there are too many possible
-> callers for me to check the impact of this defect; it may or may not be
-> harmless."
+>> > To avoid the issue like [1] said, add missing ERRP_GUARD() at the
+>> > beginning of this function.
+>> >
+>
+> [snip]
+>
+>> Commit message could use a bit of polish.  Regardless
+>> Reviewed-by: Markus Armbruster <armbru@redhat.com>
+>> 
+>
+> Thanks!
+>
+> -Zhao
 
-Yes! Very well expressed. Thanks for your words.
-
-> > To avoid the issue like [1] said, add missing ERRP_GUARD() at the
-> > beginning of this function.
-> >
-
-[snip]
-
-> Commit message could use a bit of polish.  Regardless
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> 
-
-Thanks!
-
--Zhao
 
