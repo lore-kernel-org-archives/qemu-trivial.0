@@ -1,100 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfha6-0000Za-9d
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 09:40:19 -0500
+	id 1rfhc3-00024s-QA
+	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 09:42:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1rfha3-0000Yk-Nd; Thu, 29 Feb 2024 09:40:17 -0500
-Received: from smtp-out1.suse.de ([195.135.223.130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1rfha1-0000pq-WA; Thu, 29 Feb 2024 09:40:15 -0500
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org [10.150.64.97])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rfhby-00021c-Q4
+ for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 09:42:15 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rfhbw-0001HO-9w
+ for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 09:42:14 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709217731;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=i1QgDldSsCJtxeJ0IjtTCPbiOKSp6fBTys1FmNx1zCs=;
+ b=LB3ImcIayNEEzmuBofXPEci4u/J5gSHtcjSytEe0X7MWOaMjnz0rHlRrXO2uqwOiKFgyo7
+ Lr7ALmdcMyB/XYj5GbOhqxiaPpiMDmfxyifjovzdO+NJii6sFopKXK2jKkrpWqxfOoOWsz
+ Bi6yTlT7kg1wGGmYVeySH9eOXARB3xc=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-513-MbFVY4TEMDu_Od64SNMAlQ-1; Thu, 29 Feb 2024 09:42:07 -0500
+X-MC-Unique: MbFVY4TEMDu_Od64SNMAlQ-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id 777B8228C1;
- Thu, 29 Feb 2024 14:40:11 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1709217611; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hNpKbYqfzuf/MaKse8ndi5jx0DwmYBrPj+7dmmZyC8I=;
- b=0Y/aHk0tn25s0ubDCmfPYdzBpK9sCDYoER3nisWjO+b5Gy43qKtzLhYC6YFBaChyHjFN0K
- yXfH3RPrSqIm7ffpYccZfIFRS4ej1H7GI22FgszE4FMUT/njxfCgeU1/YaC6sYUyaa1qR7
- XJa987R1tPwdx2O5cxIoMHnhR2zM2Hg=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1709217611;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hNpKbYqfzuf/MaKse8ndi5jx0DwmYBrPj+7dmmZyC8I=;
- b=YANC+17nxk1CZlOrt/q8HjRcF2pkHArFmdefQ2ZTi9e43CCZomChKzmrT2NMt1F/0NJcFC
- b0s4u4whCI/nk9BQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1709217611; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hNpKbYqfzuf/MaKse8ndi5jx0DwmYBrPj+7dmmZyC8I=;
- b=0Y/aHk0tn25s0ubDCmfPYdzBpK9sCDYoER3nisWjO+b5Gy43qKtzLhYC6YFBaChyHjFN0K
- yXfH3RPrSqIm7ffpYccZfIFRS4ej1H7GI22FgszE4FMUT/njxfCgeU1/YaC6sYUyaa1qR7
- XJa987R1tPwdx2O5cxIoMHnhR2zM2Hg=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1709217611;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hNpKbYqfzuf/MaKse8ndi5jx0DwmYBrPj+7dmmZyC8I=;
- b=YANC+17nxk1CZlOrt/q8HjRcF2pkHArFmdefQ2ZTi9e43CCZomChKzmrT2NMt1F/0NJcFC
- b0s4u4whCI/nk9BQ==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id ED0D213A4B;
- Thu, 29 Feb 2024 14:40:10 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id bPaiLEqX4GVgIwAAD6G6ig
- (envelope-from <farosas@suse.de>); Thu, 29 Feb 2024 14:40:10 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Zhao Liu <zhao1.liu@linux.intel.com>, Markus Armbruster
- <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>, Michael Tokarev
- <mjt@tls.msk.ru>, Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>, Peter Xu
- <peterx@redhat.com>
-Subject: Re: [PATCH 14/17] migration/option: Fix missing ERRP_GUARD() for
- error_prepend()
-In-Reply-To: <20240229143914.1977550-15-zhao1.liu@linux.intel.com>
-References: <20240229143914.1977550-1-zhao1.liu@linux.intel.com>
- <20240229143914.1977550-15-zhao1.liu@linux.intel.com>
-Date: Thu, 29 Feb 2024 11:39:36 -0300
-Message-ID: <87jzmnz653.fsf@suse.de>
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id AB1DE85A588;
+ Thu, 29 Feb 2024 14:42:06 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.193.4])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7314820229A4;
+ Thu, 29 Feb 2024 14:42:06 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 4C95C21E6767; Thu, 29 Feb 2024 15:42:05 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: Zhao Liu <zhao1.liu@linux.intel.com>
+Cc: Michael Roth <michael.roth@amd.com>,  Michael Tokarev <mjt@tls.msk.ru>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org,  Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [PATCH 01/16] error: Add error_vprepend() in comment of
+ ERRP_GUARD() rules
+In-Reply-To: <20240228163723.1775791-2-zhao1.liu@linux.intel.com> (Zhao Liu's
+ message of "Thu, 29 Feb 2024 00:37:08 +0800")
+References: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
+ <20240228163723.1775791-2-zhao1.liu@linux.intel.com>
+Date: Thu, 29 Feb 2024 15:42:05 +0100
+Message-ID: <87jzmnuybm.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
 Content-Type: text/plain
-Authentication-Results: smtp-out1.suse.de;
-	none
-X-Spamd-Result: default: False [-2.95 / 50.00]; ARC_NA(0.00)[];
- RCVD_VIA_SMTP_AUTH(0.00)[]; BAYES_HAM(-2.85)[99.36%];
- FROM_HAS_DN(0.00)[]; TO_DN_SOME(0.00)[];
- TO_MATCH_ENVRCPT_ALL(0.00)[]; MIME_GOOD(-0.10)[text/plain];
- RCVD_COUNT_THREE(0.00)[3];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- RCPT_COUNT_SEVEN(0.00)[9];
- DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:email];
- FUZZY_BLOCKED(0.00)[rspamd.com]; FROM_EQ_ENVFROM(0.00)[];
- MIME_TRACE(0.00)[0:+]; RCVD_TLS_ALL(0.00)[];
- MID_RHS_MATCH_FROM(0.00)[]
-X-Spam-Score: -2.95
-Received-SPF: pass client-ip=195.135.223.130; envelope-from=farosas@suse.de;
- helo=smtp-out1.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,46 +75,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 29 Feb 2024 14:40:17 -0000
+X-List-Received-Date: Thu, 29 Feb 2024 14:42:15 -0000
 
 Zhao Liu <zhao1.liu@linux.intel.com> writes:
 
 > From: Zhao Liu <zhao1.liu@intel.com>
 >
-> As the comment in qapi/error, passing @errp to error_prepend() requires
-> ERRP_GUARD():
+> The error_vprepend() should use ERRP_GUARD() just as the documentation
+> of ERRP_GUARD() says:
 >
-> * = Why, when and how to use ERRP_GUARD() =
-> *
-> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
-> ...
-> * - It should not be passed to error_prepend(), error_vprepend() or
-> *   error_append_hint(), because that doesn't work with &error_fatal.
-> * ERRP_GUARD() lifts these restrictions.
-> *
-> * To use ERRP_GUARD(), add it right at the beginning of the function.
-> * @errp can then be used without worrying about the argument being
-> * NULL or &error_fatal.
+>> It must be used when the function dereferences @errp or passes
+>> @errp to error_prepend(), error_vprepend(), or error_append_hint().
 >
-> ERRP_GUARD() could avoid the case when @errp is the pointer of
-> error_fatal, the user can't see this additional information, because
-> exit() happens in error_setg earlier than information is added [1].
+> Considering that error_vprepend() is also an API provided in error.h,
+> it is necessary to add it to the description of the rules for using
+> ERRP_GUARD().
 >
-> The migrate_params_check() passes @errp to error_prepend() without
-> ERRP_GUARD(), and it could be called from migration_object_init(),
-> where the passed @errp points to @error_fatal.
->
-> Therefore, the error message echoed in error_prepend() will be lost
-> because of the above issue.
->
-> To fix this, add missing ERRP_GUARD() at the beginning of this function.
->
-> [1]: Issue description in the commit message of commit ae7c80a7bd73
->      ("error: New macro ERRP_GUARD()").
->
-> Cc: Peter Xu <peterx@redhat.com>
-> Cc: Fabiano Rosas <farosas@suse.de>
 > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+>  include/qapi/error.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/include/qapi/error.h b/include/qapi/error.h
+> index f21a231bb1a6..b1b389967f92 100644
+> --- a/include/qapi/error.h
+> +++ b/include/qapi/error.h
+> @@ -207,7 +207,7 @@
+>   *
+>   * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+>   * - It must not be dereferenced, because it may be null.
+> - * - It should not be passed to error_prepend() or
+> + * - It should not be passed to error_prepend(), error_vprepend() or
+>   *   error_append_hint(), because that doesn't work with &error_fatal.
+>   * ERRP_GUARD() lifts these restrictions.
+>   *
 
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
+Good catch!
+
+I'd like a comma after error_vprepend().
+
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+
 
