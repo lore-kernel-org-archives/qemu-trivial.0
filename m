@@ -1,48 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rg576-0007Rv-Mt
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2024 10:47:56 -0500
+	id 1rg5Er-0002kH-07
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2024 10:55:57 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pavel.dovgalyuk@ispras.ru>)
- id 1rg574-0007R2-JC; Fri, 01 Mar 2024 10:47:54 -0500
-Received: from mail.ispras.ru ([83.149.199.84])
- by eggs.gnu.org with esmtps (TLS1.2:DHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pavel.dovgalyuk@ispras.ru>)
- id 1rg572-0005g8-73; Fri, 01 Mar 2024 10:47:54 -0500
-Received: from [192.168.0.253] (unknown [178.178.100.83])
- by mail.ispras.ru (Postfix) with ESMTPSA id 878EA40F1DFB;
- Fri,  1 Mar 2024 15:47:27 +0000 (UTC)
-DKIM-Filter: OpenDKIM Filter v2.11.0 mail.ispras.ru 878EA40F1DFB
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ispras.ru;
- s=default; t=1709308047;
- bh=Bm38lFwtIU/Ws2Fofl5LNYp0G1R3YthP/JdI8roNLkA=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To:From;
- b=kXzU7oVgKC9bezxIsBZByx/6igDlUbLSOQlikxHQF+5mbsOAgCNsAPOmmwt2ovo4y
- 8jpUHi0yZriTyVsXSuuCEO3aCnAwlGSqSQirfEhIMWHWaRLTpDkmEM22Ppvtu8Hrsj
- x8HYYVik0LU3L8RG/SgBEAmnC7W79XwjHq8k4v5c=
-Message-ID: <a066c1db-33a4-41c9-9a15-4ede82dfc895@ispras.ru>
-Date: Fri, 1 Mar 2024 18:47:27 +0300
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rg5Eq-0002iI-5T
+ for qemu-trivial@nongnu.org; Fri, 01 Mar 2024 10:55:56 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rg5En-0006sb-34
+ for qemu-trivial@nongnu.org; Fri, 01 Mar 2024 10:55:55 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-412c34e84a5so9990135e9.3
+ for <qemu-trivial@nongnu.org>; Fri, 01 Mar 2024 07:55:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1709308549; x=1709913349; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=iGjfd67xLecNptvIrHUYbWQz/e0weR4wRxQOimbIicQ=;
+ b=SA8uJb9oU1aiKeN9HzfmR8+BL6au5r8F8zJ+JZ0ImelzbJqFKv8lVyrb0aiZmmhjAT
+ hDaOGJpv26yJ6hmW2hbPEDg4bln1MZN+qU0QEvmyh1KEIkBvCFR2l5M8ZeNV365fglYg
+ 2fhvSFzkNXxEvI99/Br3RaFEktIJLnnezx3lA3O5IrRa8/cU5aoUjpzdTvhpfflikGL/
+ zZZiUmMPiYntP4aHqF4kMcTkd9F3M2TMKcdYW472VxZpI01Ra8d7tk0medpTde4qVPKw
+ O0pNsDtgk9eKMHWmuUswLlvrN79JsfEGyH2lDkvaBKyBtJSjVoHKAM+j4/1OiVCOrjit
+ BW+Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709308549; x=1709913349;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=iGjfd67xLecNptvIrHUYbWQz/e0weR4wRxQOimbIicQ=;
+ b=VX45JKmhq8rEtIPBeThNMv+RcybnyxZDtrmA5WUDOecVvw+EQE8BPRbqRdrDLykpsx
+ DrZLlI0Dvkm1GT0Ha1l6BG9RDhBDR/mO7TP5BcEbBzliYd7WjgbNZEGZD6UbhSrBhFME
+ StGxG09KLbvpJMYsbDQrfIrKUGO6lgxWAVYQkyWn2AE389zPrvaLUZ3EiSWQkLoTc3Rf
+ gyt/Nj0ztrF69QIiSWPpvQp4zfcXWYJ7DEIWUYrtocCV1e2PtTCFF0OgyRK6rSyn5N4B
+ 2seQ3ExirjZg21rA1Yq3BnRXtE5OurJD7xKGsvSCc0MTVc4+amgUCrVUXYysPHWDmcwJ
+ RcqA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUclqRG8B1fRaMRV6IYn4oj6ZRmkmtXoGSToDaXc7Ez8iZBeYOc/wGQjUYWTQhYULQEkGErf0ePSLJJCCJgXphIajNLNZ5hpg==
+X-Gm-Message-State: AOJu0YzHAVJZpGELlCX4A245T0cFznF9MnFs3wnjPV+S/IBYU98a4cDR
+ wzUIg9iWSPl7hKedeJx0Ds94A7YjN1OwqRCy6OMUjFpqbAXIiE2MAJoy6Hm9pMw=
+X-Google-Smtp-Source: AGHT+IEfE3TUlqi8tVeVtr4X2uory3i5fyUUkqLHJ2iix+3vJG++p/du9Vs37HXgviMC5NtnNULynA==
+X-Received: by 2002:a05:600c:474a:b0:412:bf52:9ac2 with SMTP id
+ w10-20020a05600c474a00b00412bf529ac2mr1852740wmo.14.1709308549583; 
+ Fri, 01 Mar 2024 07:55:49 -0800 (PST)
+Received: from [192.168.193.175] (232.red-88-28-18.dynamicip.rima-tde.net.
+ [88.28.18.232]) by smtp.gmail.com with ESMTPSA id
+ 26-20020a05600c021a00b004128c73beffsm8797363wmi.34.2024.03.01.07.55.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 01 Mar 2024 07:55:49 -0800 (PST)
+Message-ID: <e78d9f52-e5d6-4039-a776-f2391afe0799@linaro.org>
+Date: Fri, 1 Mar 2024 16:55:46 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [Spam][PATCH] replay: Improve error messages about configuration
+Subject: Re: [PATCH] replay: Improve error messages about configuration
  conflicts
 Content-Language: en-US
 To: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, qemu-trivial@nongnu.org
+Cc: pavel.dovgaluk@ispras.ru, pbonzini@redhat.com, qemu-trivial@nongnu.org
 References: <20240301120641.864047-1-armbru@redhat.com>
-From: Pavel Dovgalyuk <pavel.dovgalyuk@ispras.ru>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 In-Reply-To: <20240301120641.864047-1-armbru@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=83.149.199.84;
- envelope-from=pavel.dovgalyuk@ispras.ru; helo=mail.ispras.ru
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -55,11 +84,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Mar 2024 15:47:55 -0000
+X-List-Received-Date: Fri, 01 Mar 2024 15:55:56 -0000
 
-Reviewed-by: Pavel Dovgalyuk <Pavel.Dovgalyuk@ispras.ru>
-
-On 01.03.2024 15:06, Markus Armbruster wrote:
+On 1/3/24 13:06, Markus Armbruster wrote:
 > Improve
 > 
 >     Record/replay feature is not supported for '-rtc base=localtime'
@@ -77,32 +104,7 @@ On 01.03.2024 15:06, Markus Armbruster wrote:
 >   replay/replay.c | 2 +-
 >   system/vl.c     | 2 +-
 >   2 files changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/replay/replay.c b/replay/replay.c
-> index 3fd241a4fc..a2c576c16e 100644
-> --- a/replay/replay.c
-> +++ b/replay/replay.c
-> @@ -511,7 +511,7 @@ void replay_add_blocker(const char *feature)
->   {
->       Error *reason = NULL;
->   
-> -    error_setg(&reason, "Record/replay feature is not supported for '%s'",
-> +    error_setg(&reason, "Record/replay is not supported with %s",
->                  feature);
->       replay_blockers = g_slist_prepend(replay_blockers, reason);
->   }
-> diff --git a/system/vl.c b/system/vl.c
-> index e480afd7a0..cc03a17c09 100644
-> --- a/system/vl.c
-> +++ b/system/vl.c
-> @@ -1932,7 +1932,7 @@ static void qemu_apply_machine_options(QDict *qdict)
->       }
->   
->       if (current_machine->smp.cpus > 1) {
-> -        replay_add_blocker("smp");
-> +        replay_add_blocker("multiple CPUs");
->       }
->   }
->   
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
