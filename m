@@ -1,68 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rg9mv-000834-LE
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2024 15:47:25 -0500
+	id 1rgAYU-000825-3z
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2024 16:36:34 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rg9mt-000822-1o; Fri, 01 Mar 2024 15:47:23 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rg9mq-0000Jh-M8; Fri, 01 Mar 2024 15:47:22 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 22CB0523A6;
- Fri,  1 Mar 2024 23:47:56 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 9DCDE8D794;
- Fri,  1 Mar 2024 23:47:15 +0300 (MSK)
-Message-ID: <b59855db-dc66-412f-8945-ce96dc8c9214@tls.msk.ru>
-Date: Fri, 1 Mar 2024 23:47:15 +0300
+ (Exim 4.90_1) (envelope-from <freddy77@gmail.com>)
+ id 1rg82v-0005HS-2P; Fri, 01 Mar 2024 13:55:49 -0500
+Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <freddy77@gmail.com>)
+ id 1rg82t-0003l6-PO; Fri, 01 Mar 2024 13:55:48 -0500
+Received: by mail-yb1-xb35.google.com with SMTP id
+ 3f1490d57ef6-dcc84ae94c1so2416672276.1; 
+ Fri, 01 Mar 2024 10:55:46 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1709319346; x=1709924146; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=T5POIChyahJc+CzAF7f5jZcebWJKRIFLJlnNHD44KNI=;
+ b=lBr1tnNunGsiO6YrP3pragMA4yfg7aeyqZYk2B8Ydiv/4WtfGJ+1lkWFkEXFdX/G5a
+ 0jzD3OItxBE8Bv2Bp+D5Qan6acCsp/35qslMqfVL4hfnjjt1HTH6UKau/DnOsjp7IdEn
+ xRIhLC82H2pRkgfTZzTYC4/VFIBQmbHFZZ1i/zuX30HerImme1XUGFkIyjiSexjzvOwS
+ OArQ8vjVDL3b3SYzqp5+ePC6MyRkti7SqPVouFiHjVZXWZEJnUJweWB/TXU2xl3+cLQo
+ Z6HklYji+zHKaX7/Zf7aC3GhTul54BTouhaG38Rc1jMRzbCpZQkd/Pgd2UOx/cP19acH
+ VqIg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709319346; x=1709924146;
+ h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=T5POIChyahJc+CzAF7f5jZcebWJKRIFLJlnNHD44KNI=;
+ b=ViHyeCr8gwFRAM22C9+ch8xKRBKv9D/IrAD7B7WTj0d5bO0yDs8IGAIwocGQbAzPN+
+ 1D5DbokntPCbQLu6rIwVkaA85DtkhAnwD1hx4JwAjw1DlJ2VdIDADtQ2cJccvutGh9DU
+ Aox00DOFk9BVj0Ma1zJ2eYKIOq7SFssblL8F7B+0WACSlJ1s1E2XozmYkzrjcxnhoMSp
+ 4nQ+Nkm52M1d1BVus9cTjaZyt5gN/n3Ds1mg413k0rFUlZBPzzdb43e7dU8WVAf+vgkF
+ 5SB1m12bF1BCnM4ENQVCF2rzTeLrsKE7ylEtPStTajfdaQnsYOoEJ2ikKeGzmXlrEMTp
+ xtvA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXiP7qcVgbQQq4cWF001yZ59rs5Wb9osMBD7PovZ8bTovML53lhl8zm2FHIlh+t5a4kRUizfZvpYQhgw0Ne1d+nUSNVAQpgfA==
+X-Gm-Message-State: AOJu0YycpEx2/mALNdTbSJmiqkwR4V4Ve7OegSX98qCLMR2ACBHNuJ1z
+ Ab2VuelqMBFAUUsov5Q6Ct6eC0RYSVTNMOD+BJr2faPtZ3in8cTkP3YccCS1uCF/N0zdbfaDzTv
+ nrlkiZToqQTTrBKFvkwm+12Sl39j3QXttl14=
+X-Google-Smtp-Source: AGHT+IFVrukZoiuJWjLHo/RVStiDIizRu873vHcxTChV2RmwIKR7A4pCUTSkCKvzyeR/85oQExU7dGWqoh0UFVtXYag=
+X-Received: by 2002:a25:8148:0:b0:dc7:497e:cddf with SMTP id
+ j8-20020a258148000000b00dc7497ecddfmr2160440ybm.33.1709319346028; Fri, 01 Mar
+ 2024 10:55:46 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] Make some structure static
-Content-Language: en-US
-To: Frediano Ziglio <freddy77@gmail.com>, qemu-devel <qemu-devel@nongnu.org>
+From: Frediano Ziglio <freddy77@gmail.com>
+Date: Fri, 1 Mar 2024 18:55:35 +0000
+Message-ID: <CAHt6W4fiLh+bBOX1qwvm-1qJVG=j9SrT5rMJnEaMSWPjwwZr1g@mail.gmail.com>
+Subject: [PATCH] Fix typo in comment (uin32_t -> uint32_t)
+To: qemu-devel <qemu-devel@nongnu.org>
 Cc: Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <CAHt6W4cH+=pyxNZ9F_8Yed4K_pYfO-qP6iNHQHEYLvWUk+aGUw@mail.gmail.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <CAHt6W4cH+=pyxNZ9F_8Yed4K_pYfO-qP6iNHQHEYLvWUk+aGUw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
+ envelope-from=freddy77@gmail.com; helo=mail-yb1-xb35.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 01 Mar 2024 16:36:32 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,47 +77,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Mar 2024 20:47:24 -0000
+X-List-Received-Date: Fri, 01 Mar 2024 18:55:49 -0000
 
-01.03.2024 21:56, Frediano Ziglio wrote:
-> Not used outside C module.
+Signed-off-by: Frediano Ziglio <frediano.ziglio@cloud.com>
+---
+ hw/vfio/pci.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Please add a sensible subject prefix, like "hw/vfio/pci.c: ".
+diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+index 6e64a2654e..4bb7d7d257 100644
+--- a/hw/vfio/pci.h
++++ b/hw/vfio/pci.h
+@@ -181,7 +181,7 @@ struct VFIOPCIDevice {
+     Notifier irqchip_change_notifier;
+ };
 
-With that,
-
-Revieved-by: Michael Tokarev <mjt@tls.msk.ru>
-
-This is a good candidate for trivial-patches@ too (Cc'd).
-
-/mjt
-
-> Signed-off-by: Frediano Ziglio <frediano.ziglio@cloud.com>
-> ---
->   hw/vfio/pci.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/hw/vfio/pci.c b/hw/vfio/pci.c
-> index 4fa387f043..a1522a011a 100644
-> --- a/hw/vfio/pci.c
-> +++ b/hw/vfio/pci.c
-> @@ -2558,7 +2558,7 @@ static bool vfio_display_migration_needed(void *opaque)
->           (vdev->ramfb_migrate == ON_OFF_AUTO_AUTO && vdev->enable_ramfb);
->   }
-> 
-> -const VMStateDescription vmstate_vfio_display = {
-> +static const VMStateDescription vmstate_vfio_display = {
->       .name = "VFIOPCIDevice/VFIODisplay",
->       .version_id = 1,
->       .minimum_version_id = 1,
-> @@ -2570,7 +2570,7 @@ const VMStateDescription vmstate_vfio_display = {
->       }
->   };
-> 
-> -const VMStateDescription vmstate_vfio_pci_config = {
-> +static const VMStateDescription vmstate_vfio_pci_config = {
->       .name = "VFIOPCIDevice",
->       .version_id = 1,
->       .minimum_version_id = 1,
-
+-/* Use uin32_t for vendor & device so PCI_ANY_ID expands and cannot match hw */
++/* Use uint32_t for vendor & device so PCI_ANY_ID expands and cannot
+match hw */
+ static inline bool vfio_pci_is(VFIOPCIDevice *vdev, uint32_t vendor,
+uint32_t device)
+ {
+     return (vendor == PCI_ANY_ID || vendor == vdev->vendor_id) &&
+-- 
+2.34.1
 
