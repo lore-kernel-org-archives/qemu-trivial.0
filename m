@@ -1,88 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rfrqW-00072n-P8
-	for mharc-qemu-trivial@gnu.org; Thu, 29 Feb 2024 20:37:56 -0500
+	id 1rfwMy-0005Ch-5t
+	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2024 01:27:44 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1rfrqV-00072e-9v
- for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 20:37:55 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rfwMw-0005CL-Fn; Fri, 01 Mar 2024 01:27:42 -0500
+Received: from mgamail.intel.com ([198.175.65.21])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1rfrqT-00042n-Ty
- for qemu-trivial@nongnu.org; Thu, 29 Feb 2024 20:37:55 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709257072;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=63oYsEAvNqcByuDthn6v74H3iZYFylwDOaegU5/e6ro=;
- b=UVYFKz0xt9GQmA+W7QaGcYEdpEIYGeCRXVZdXzdHQRXtLqJdrWm52UXqpRW4/Iz2vx/5td
- JUFRi/Zi0WZpCnZIbWaTtwuiJFRGGkNYqx5OCnoEYu5BPaEv6yq8Z9jzAD+uNEry2Z2ezN
- 95iXh92Ky2La7djt5gTVd3J4vThUM7Y=
-Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
- [209.85.216.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-345-yOhAFSreNBOf8sB08iAOkg-1; Thu, 29 Feb 2024 20:37:49 -0500
-X-MC-Unique: yOhAFSreNBOf8sB08iAOkg-1
-Received: by mail-pj1-f70.google.com with SMTP id
- 98e67ed59e1d1-299180d546bso338418a91.0
- for <qemu-trivial@nongnu.org>; Thu, 29 Feb 2024 17:37:48 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709257068; x=1709861868;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=63oYsEAvNqcByuDthn6v74H3iZYFylwDOaegU5/e6ro=;
- b=UU/36Py5xz+Y8qvUMBW+GedzENpIIt26xhodIHSVJhORmUtjdG6YmgkIa2hllae6U5
- DVZdiQl96P5f3boteNvKToiQ+zznQD87Y94SrEzu/eGeYqYIuTURmoeWTj7fBrV40Wox
- slXAV4zOZk9doZmG2jyFrZVXvPVSyaGv2lgxp3xpw7x8ZkKj9gsV27wfAdKKBWNeNNDU
- o8w/2XuIOPBNqlBJ/NPPjzSsEAXhHSlLLkQMds0FNOgNKmOt4pVO7vGNadkWjS3sT221
- 8xsh1kKn9HpgaNV++xh4y4QD6/CL8UTJNACqEAxNmHLpfxVN9TFT9gwlQfvkQAjkblQx
- +ZeQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXwicEdGC0Unxmh/uZ4A59NuXwFG2wpkN9GiK4Bvngpi4ZVM8Aa1s/qWa34QczFFc+Oxwuo1jtYXgdZsI+WlKjq2PhVeeWjQA==
-X-Gm-Message-State: AOJu0Yw8OtIfbkBCM+OcheEX1ANDaQtYwcDd1gEchFRrETksfoAtMXn3
- 9TjO6DrGsQDrZPv76bRtxSYUEYK+r8lTK6QTy1d8oa4jiAB3BwQ95StKqT8IjVFoG7hXthlMk79
- WFv97DVx1n8+Ed56OloONNCcrj7tUqFxvAod2lLrmFiIDNJ5R0fN6Bho=
-X-Received: by 2002:a17:903:22c6:b0:1dc:6208:2e5a with SMTP id
- y6-20020a17090322c600b001dc62082e5amr277365plg.3.1709257068100; 
- Thu, 29 Feb 2024 17:37:48 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEzJj/cjoaVrLoEFuuCrBTcHzmFa6dyu8L1NlwPUQWSQclmcTpNINf/LMdWTd0sGvjyfz4p1g==
-X-Received: by 2002:a17:903:22c6:b0:1dc:6208:2e5a with SMTP id
- y6-20020a17090322c600b001dc62082e5amr277350plg.3.1709257067665; 
- Thu, 29 Feb 2024 17:37:47 -0800 (PST)
-Received: from x1n ([43.228.180.230]) by smtp.gmail.com with ESMTPSA id
- h12-20020a170902f7cc00b001dcac08a360sm2177494plw.175.2024.02.29.17.37.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 29 Feb 2024 17:37:47 -0800 (PST)
-Date: Fri, 1 Mar 2024 09:37:38 +0800
-From: Peter Xu <peterx@redhat.com>
-To: Zhao Liu <zhao1.liu@linux.intel.com>
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rfwMu-0005Zl-5i; Fri, 01 Mar 2024 01:27:42 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1709274460; x=1740810460;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=XCtpnWdSB/ppu1KW/ef5a+BODFHs3LeeZAZC2Iuvn1w=;
+ b=XJfmQqG8rtyZqACccIG1c1JNh0vfj0xxvBbvW0ruMZ4p8I9kzxmTmPsH
+ Pmny2GKqy5891pSYQGqHGHwNlJYlYLrSMzRLsEXeMee8v4r+gDQTKzprB
+ /Mnd49Z1tRX1zmkOr7EvKElQifqa5ld+L3sg9faKRa78BAHQ2epdUZQQk
+ p07Jjga04yBpNVahu9u+GcC6jSj1+XKn2UvAqx1KOozoE/8GHsp/wEwDc
+ +ThNwCBeNZ7s+o3aax2JW9/qG3gn2afw4eIKPN/SxJd5Y8FK3c1jgqTa4
+ tXR2VqYp9wo1h0WfSin1di2iLLLXlvZf6rwimFJH6dqv+wQcEU7NfAPs2 Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,10999"; a="3722835"
+X-IronPort-AV: E=Sophos;i="6.06,195,1705392000"; 
+   d="scan'208";a="3722835"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 29 Feb 2024 22:27:36 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,195,1705392000"; d="scan'208";a="39114543"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by fmviesa001.fm.intel.com with ESMTP; 29 Feb 2024 22:27:33 -0800
+Date: Fri, 1 Mar 2024 14:41:17 +0800
+From: Zhao Liu <zhao1.liu@linux.intel.com>
+To: Thomas Huth <thuth@redhat.com>
 Cc: Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
  Michael Tokarev <mjt@tls.msk.ru>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>, Fabiano Rosas <farosas@suse.de>
-Subject: Re: [PATCH 14/17] migration/option: Fix missing ERRP_GUARD() for
+ Zhao Liu <zhao1.liu@intel.com>, Juan Quintela <quintela@trasno.org>,
+ Steve Sistare <steven.sistare@oracle.com>,
+ Michael Galaxy <mgalaxy@akamai.com>
+Subject: Re: [PATCH 01/17] hw/misc/ivshmem: Fix missing ERRP_GUARD() for
  error_prepend()
-Message-ID: <ZeExYtPjZWAdaJup@x1n>
+Message-ID: <ZeF4jZ3NEqGYXkVG@intel.com>
 References: <20240229143914.1977550-1-zhao1.liu@linux.intel.com>
- <20240229143914.1977550-15-zhao1.liu@linux.intel.com>
+ <20240229143914.1977550-2-zhao1.liu@linux.intel.com>
+ <dec70521-cacc-419c-8405-44780b39f84a@redhat.com>
 MIME-Version: 1.0
-In-Reply-To: <20240229143914.1977550-15-zhao1.liu@linux.intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
+Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+In-Reply-To: <dec70521-cacc-419c-8405-44780b39f84a@redhat.com>
+Received-SPF: none client-ip=198.175.65.21;
+ envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_MSPIKE_H2=-0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,49 +73,19 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Mar 2024 01:37:55 -0000
+X-List-Received-Date: Fri, 01 Mar 2024 06:27:42 -0000
 
-On Thu, Feb 29, 2024 at 10:39:11PM +0800, Zhao Liu wrote:
-> From: Zhao Liu <zhao1.liu@intel.com>
+> > @@ -832,6 +832,7 @@ static void ivshmem_write_config(PCIDevice *pdev, uint32_t address,
+> >   static void ivshmem_common_realize(PCIDevice *dev, Error **errp)
+> >   {
+> > +    ERRP_GUARD();
+> >       IVShmemState *s = IVSHMEM_COMMON(dev);
+> >       Error *err = NULL;
 > 
-> As the comment in qapi/error, passing @errp to error_prepend() requires
-> ERRP_GUARD():
-> 
-> * = Why, when and how to use ERRP_GUARD() =
-> *
-> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
-> ...
-> * - It should not be passed to error_prepend(), error_vprepend() or
-> *   error_append_hint(), because that doesn't work with &error_fatal.
-> * ERRP_GUARD() lifts these restrictions.
-> *
-> * To use ERRP_GUARD(), add it right at the beginning of the function.
-> * @errp can then be used without worrying about the argument being
-> * NULL or &error_fatal.
-> 
-> ERRP_GUARD() could avoid the case when @errp is the pointer of
-> error_fatal, the user can't see this additional information, because
-> exit() happens in error_setg earlier than information is added [1].
-> 
-> The migrate_params_check() passes @errp to error_prepend() without
-> ERRP_GUARD(), and it could be called from migration_object_init(),
-> where the passed @errp points to @error_fatal.
-> 
-> Therefore, the error message echoed in error_prepend() will be lost
-> because of the above issue.
-> 
-> To fix this, add missing ERRP_GUARD() at the beginning of this function.
-> 
-> [1]: Issue description in the commit message of commit ae7c80a7bd73
->      ("error: New macro ERRP_GUARD()").
-> 
-> Cc: Peter Xu <peterx@redhat.com>
-> Cc: Fabiano Rosas <farosas@suse.de>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> Please remove "err" and the error_propagate in here now.
 
-Acked-by: Peter Xu <peterx@redhat.com>
+OK, I hadn't thought of that. Thanks.
 
--- 
-Peter Xu
-
+Regards,
+Zhao
 
