@@ -1,71 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rgAYU-000825-3z
-	for mharc-qemu-trivial@gnu.org; Fri, 01 Mar 2024 16:36:34 -0500
+	id 1rgJFN-0003OH-Sf
+	for mharc-qemu-trivial@gnu.org; Sat, 02 Mar 2024 01:53:26 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <freddy77@gmail.com>)
- id 1rg82v-0005HS-2P; Fri, 01 Mar 2024 13:55:49 -0500
-Received: from mail-yb1-xb35.google.com ([2607:f8b0:4864:20::b35])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <freddy77@gmail.com>)
- id 1rg82t-0003l6-PO; Fri, 01 Mar 2024 13:55:48 -0500
-Received: by mail-yb1-xb35.google.com with SMTP id
- 3f1490d57ef6-dcc84ae94c1so2416672276.1; 
- Fri, 01 Mar 2024 10:55:46 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1709319346; x=1709924146; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=T5POIChyahJc+CzAF7f5jZcebWJKRIFLJlnNHD44KNI=;
- b=lBr1tnNunGsiO6YrP3pragMA4yfg7aeyqZYk2B8Ydiv/4WtfGJ+1lkWFkEXFdX/G5a
- 0jzD3OItxBE8Bv2Bp+D5Qan6acCsp/35qslMqfVL4hfnjjt1HTH6UKau/DnOsjp7IdEn
- xRIhLC82H2pRkgfTZzTYC4/VFIBQmbHFZZ1i/zuX30HerImme1XUGFkIyjiSexjzvOwS
- OArQ8vjVDL3b3SYzqp5+ePC6MyRkti7SqPVouFiHjVZXWZEJnUJweWB/TXU2xl3+cLQo
- Z6HklYji+zHKaX7/Zf7aC3GhTul54BTouhaG38Rc1jMRzbCpZQkd/Pgd2UOx/cP19acH
- VqIg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709319346; x=1709924146;
- h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=T5POIChyahJc+CzAF7f5jZcebWJKRIFLJlnNHD44KNI=;
- b=ViHyeCr8gwFRAM22C9+ch8xKRBKv9D/IrAD7B7WTj0d5bO0yDs8IGAIwocGQbAzPN+
- 1D5DbokntPCbQLu6rIwVkaA85DtkhAnwD1hx4JwAjw1DlJ2VdIDADtQ2cJccvutGh9DU
- Aox00DOFk9BVj0Ma1zJ2eYKIOq7SFssblL8F7B+0WACSlJ1s1E2XozmYkzrjcxnhoMSp
- 4nQ+Nkm52M1d1BVus9cTjaZyt5gN/n3Ds1mg413k0rFUlZBPzzdb43e7dU8WVAf+vgkF
- 5SB1m12bF1BCnM4ENQVCF2rzTeLrsKE7ylEtPStTajfdaQnsYOoEJ2ikKeGzmXlrEMTp
- xtvA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXiP7qcVgbQQq4cWF001yZ59rs5Wb9osMBD7PovZ8bTovML53lhl8zm2FHIlh+t5a4kRUizfZvpYQhgw0Ne1d+nUSNVAQpgfA==
-X-Gm-Message-State: AOJu0YycpEx2/mALNdTbSJmiqkwR4V4Ve7OegSX98qCLMR2ACBHNuJ1z
- Ab2VuelqMBFAUUsov5Q6Ct6eC0RYSVTNMOD+BJr2faPtZ3in8cTkP3YccCS1uCF/N0zdbfaDzTv
- nrlkiZToqQTTrBKFvkwm+12Sl39j3QXttl14=
-X-Google-Smtp-Source: AGHT+IFVrukZoiuJWjLHo/RVStiDIizRu873vHcxTChV2RmwIKR7A4pCUTSkCKvzyeR/85oQExU7dGWqoh0UFVtXYag=
-X-Received: by 2002:a25:8148:0:b0:dc7:497e:cddf with SMTP id
- j8-20020a258148000000b00dc7497ecddfmr2160440ybm.33.1709319346028; Fri, 01 Mar
- 2024 10:55:46 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1rgJFH-0003N3-8Z; Sat, 02 Mar 2024 01:53:20 -0500
+Received: from mgamail.intel.com ([192.198.163.9])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1rgJFF-00063D-Hg; Sat, 02 Mar 2024 01:53:18 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1709362397; x=1740898397;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=9fwep/7AZNW0eCKIXJgGZuTHg9SjIqiPMyccxKMXpcM=;
+ b=QLJYfkhzGpeMVAc5syXWgivPQM1H9cDL3K+E7fF6oH0MqpTSC43Bva9b
+ 0AbE5Qx6suXkRoE+U4uyQeGmynqf5kQgBbb0FmgPxi5VBQn4oy79pGwgm
+ sKWpYw6iS64kOCBhmz1aBVojiOWp/d59I1zUoXs6ffKyF3xnGL0JQVRlz
+ asK3mOlscV71ipowvAL31c4Uzi5qWMAXDPkbZ2CjkKaWk5zqaTAb+/F4E
+ ZSjc0J8Rf2hL4cGlEF2NMlablXJZjOPXuVtwmK34xyIsBG/OwbXsaW03Y
+ BHlf9WWqGbxxkFT610GkXksuBkXknm4cmHMERl1kro1JuXzJVlzznPEku A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11000"; a="14620378"
+X-IronPort-AV: E=Sophos;i="6.06,199,1705392000"; d="scan'208";a="14620378"
+Received: from orviesa006.jf.intel.com ([10.64.159.146])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Mar 2024 22:53:15 -0800
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.06,199,1705392000"; 
+   d="scan'208";a="8839157"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by orviesa006.jf.intel.com with ESMTP; 01 Mar 2024 22:53:13 -0800
+Date: Sat, 2 Mar 2024 15:06:56 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Frediano Ziglio <freddy77@gmail.com>
+Cc: qemu-devel <qemu-devel@nongnu.org>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] Fix typo in comment (uin32_t -> uint32_t)
+Message-ID: <ZeLQEEtbcPJpxenT@intel.com>
+References: <CAHt6W4fiLh+bBOX1qwvm-1qJVG=j9SrT5rMJnEaMSWPjwwZr1g@mail.gmail.com>
 MIME-Version: 1.0
-From: Frediano Ziglio <freddy77@gmail.com>
-Date: Fri, 1 Mar 2024 18:55:35 +0000
-Message-ID: <CAHt6W4fiLh+bBOX1qwvm-1qJVG=j9SrT5rMJnEaMSWPjwwZr1g@mail.gmail.com>
-Subject: [PATCH] Fix typo in comment (uin32_t -> uint32_t)
-To: qemu-devel <qemu-devel@nongnu.org>
-Cc: Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b35;
- envelope-from=freddy77@gmail.com; helo=mail-yb1-xb35.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <CAHt6W4fiLh+bBOX1qwvm-1qJVG=j9SrT5rMJnEaMSWPjwwZr1g@mail.gmail.com>
+Received-SPF: pass client-ip=192.198.163.9; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 01 Mar 2024 16:36:32 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,28 +68,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 01 Mar 2024 18:55:49 -0000
+X-List-Received-Date: Sat, 02 Mar 2024 06:53:23 -0000
 
-Signed-off-by: Frediano Ziglio <frediano.ziglio@cloud.com>
----
- hw/vfio/pci.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+On Fri, Mar 01, 2024 at 06:55:35PM +0000, Frediano Ziglio wrote:
+> Date: Fri, 1 Mar 2024 18:55:35 +0000
+> From: Frediano Ziglio <freddy77@gmail.com>
+> Subject: [PATCH] Fix typo in comment (uin32_t -> uint32_t)
+> 
+> Signed-off-by: Frediano Ziglio <frediano.ziglio@cloud.com>
+> ---
+>  hw/vfio/pci.h | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
+> index 6e64a2654e..4bb7d7d257 100644
+> --- a/hw/vfio/pci.h
+> +++ b/hw/vfio/pci.h
+> @@ -181,7 +181,7 @@ struct VFIOPCIDevice {
+>      Notifier irqchip_change_notifier;
+>  };
+> 
+> -/* Use uin32_t for vendor & device so PCI_ANY_ID expands and cannot match hw */
+> +/* Use uint32_t for vendor & device so PCI_ANY_ID expands and cannot
+> match hw */
 
-diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
-index 6e64a2654e..4bb7d7d257 100644
---- a/hw/vfio/pci.h
-+++ b/hw/vfio/pci.h
-@@ -181,7 +181,7 @@ struct VFIOPCIDevice {
-     Notifier irqchip_change_notifier;
- };
+It would be better to also change the comment style as:
 
--/* Use uin32_t for vendor & device so PCI_ANY_ID expands and cannot match hw */
-+/* Use uint32_t for vendor & device so PCI_ANY_ID expands and cannot
-match hw */
- static inline bool vfio_pci_is(VFIOPCIDevice *vdev, uint32_t vendor,
-uint32_t device)
- {
-     return (vendor == PCI_ANY_ID || vendor == vdev->vendor_id) &&
--- 
-2.34.1
+/*
+ * Use uint32_t for vendor & device so PCI_ANY_ID expands and cannot
+ * match hw.
+ */
+
+Otherwise,
+
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+
+>  static inline bool vfio_pci_is(VFIOPCIDevice *vdev, uint32_t vendor,
+> uint32_t device)
+>  {
+>      return (vendor == PCI_ANY_ID || vendor == vdev->vendor_id) &&
+> -- 
+> 2.34.1
+> 
 
