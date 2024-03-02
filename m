@@ -1,61 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rgJFN-0003OH-Sf
-	for mharc-qemu-trivial@gnu.org; Sat, 02 Mar 2024 01:53:26 -0500
+	id 1rgY3X-0003Mg-1l
+	for mharc-qemu-trivial@gnu.org; Sat, 02 Mar 2024 17:42:11 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rgJFH-0003N3-8Z; Sat, 02 Mar 2024 01:53:20 -0500
-Received: from mgamail.intel.com ([192.198.163.9])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1rgY3T-0003M2-UC; Sat, 02 Mar 2024 17:42:07 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1rgJFF-00063D-Hg; Sat, 02 Mar 2024 01:53:18 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709362397; x=1740898397;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=9fwep/7AZNW0eCKIXJgGZuTHg9SjIqiPMyccxKMXpcM=;
- b=QLJYfkhzGpeMVAc5syXWgivPQM1H9cDL3K+E7fF6oH0MqpTSC43Bva9b
- 0AbE5Qx6suXkRoE+U4uyQeGmynqf5kQgBbb0FmgPxi5VBQn4oy79pGwgm
- sKWpYw6iS64kOCBhmz1aBVojiOWp/d59I1zUoXs6ffKyF3xnGL0JQVRlz
- asK3mOlscV71ipowvAL31c4Uzi5qWMAXDPkbZ2CjkKaWk5zqaTAb+/F4E
- ZSjc0J8Rf2hL4cGlEF2NMlablXJZjOPXuVtwmK34xyIsBG/OwbXsaW03Y
- BHlf9WWqGbxxkFT610GkXksuBkXknm4cmHMERl1kro1JuXzJVlzznPEku A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11000"; a="14620378"
-X-IronPort-AV: E=Sophos;i="6.06,199,1705392000"; d="scan'208";a="14620378"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Mar 2024 22:53:15 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.06,199,1705392000"; 
-   d="scan'208";a="8839157"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by orviesa006.jf.intel.com with ESMTP; 01 Mar 2024 22:53:13 -0800
-Date: Sat, 2 Mar 2024 15:06:56 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Frediano Ziglio <freddy77@gmail.com>
-Cc: qemu-devel <qemu-devel@nongnu.org>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] Fix typo in comment (uin32_t -> uint32_t)
-Message-ID: <ZeLQEEtbcPJpxenT@intel.com>
-References: <CAHt6W4fiLh+bBOX1qwvm-1qJVG=j9SrT5rMJnEaMSWPjwwZr1g@mail.gmail.com>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1rgY3S-0004dy-08; Sat, 02 Mar 2024 17:42:07 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 1D5DD4E6013;
+ Sat,  2 Mar 2024 23:42:02 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id VoZq0rSond8a; Sat,  2 Mar 2024 23:42:00 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 353AD4E6005; Sat,  2 Mar 2024 23:42:00 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+Subject: [PATCH] hw/scsi/lsi53c895a: Fix typo in comment
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <CAHt6W4fiLh+bBOX1qwvm-1qJVG=j9SrT5rMJnEaMSWPjwwZr1g@mail.gmail.com>
-Received-SPF: pass client-ip=192.198.163.9; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.096,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
+ Sven Schnelle <svens@stackframe.org>
+Message-Id: <20240302224200.353AD4E6005@zero.eik.bme.hu>
+Date: Sat,  2 Mar 2024 23:42:00 +0100 (CET)
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -68,46 +47,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 02 Mar 2024 06:53:23 -0000
+X-List-Received-Date: Sat, 02 Mar 2024 22:42:08 -0000
 
-On Fri, Mar 01, 2024 at 06:55:35PM +0000, Frediano Ziglio wrote:
-> Date: Fri, 1 Mar 2024 18:55:35 +0000
-> From: Frediano Ziglio <freddy77@gmail.com>
-> Subject: [PATCH] Fix typo in comment (uin32_t -> uint32_t)
-> 
-> Signed-off-by: Frediano Ziglio <frediano.ziglio@cloud.com>
-> ---
->  hw/vfio/pci.h | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/vfio/pci.h b/hw/vfio/pci.h
-> index 6e64a2654e..4bb7d7d257 100644
-> --- a/hw/vfio/pci.h
-> +++ b/hw/vfio/pci.h
-> @@ -181,7 +181,7 @@ struct VFIOPCIDevice {
->      Notifier irqchip_change_notifier;
->  };
-> 
-> -/* Use uin32_t for vendor & device so PCI_ANY_ID expands and cannot match hw */
-> +/* Use uint32_t for vendor & device so PCI_ANY_ID expands and cannot
-> match hw */
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+---
+ hw/scsi/lsi53c895a.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-It would be better to also change the comment style as:
+diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
+index d607a5f9fb..4f784be749 100644
+--- a/hw/scsi/lsi53c895a.c
++++ b/hw/scsi/lsi53c895a.c
+@@ -225,7 +225,7 @@ struct LSIState {
+     MemoryRegion io_io;
+     AddressSpace pci_io_as;
+ 
+-    int carry; /* ??? Should this be an a visible register somewhere?  */
++    int carry; /* ??? Should this be in a visible register somewhere?  */
+     int status;
+     int msg_action;
+     int msg_len;
+-- 
+2.30.9
 
-/*
- * Use uint32_t for vendor & device so PCI_ANY_ID expands and cannot
- * match hw.
- */
-
-Otherwise,
-
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-
->  static inline bool vfio_pci_is(VFIOPCIDevice *vdev, uint32_t vendor,
-> uint32_t device)
->  {
->      return (vendor == PCI_ANY_ID || vendor == vdev->vendor_id) &&
-> -- 
-> 2.34.1
-> 
 
