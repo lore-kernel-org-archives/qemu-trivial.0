@@ -1,106 +1,133 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rhBgU-0007T3-B8
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Mar 2024 12:01:02 -0500
+	id 1rhPDY-00034v-MP
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Mar 2024 02:28:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akrowiak@linux.ibm.com>)
- id 1rh9zt-00009m-UG; Mon, 04 Mar 2024 10:12:58 -0500
-Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rhPDU-00032U-EJ
+ for qemu-trivial@nongnu.org; Tue, 05 Mar 2024 02:28:00 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <akrowiak@linux.ibm.com>)
- id 1rh9zq-0003Qt-K2; Mon, 04 Mar 2024 10:12:57 -0500
-Received: from pps.filterd (m0356516.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.17.1.19/8.17.1.19) with ESMTP id
- 424Ed2Ia025944; Mon, 4 Mar 2024 15:12:48 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com;
- h=message-id : date :
- mime-version : subject : to : cc : references : from : in-reply-to :
- content-type : content-transfer-encoding; s=pp1;
- bh=bdtbQKVHtF4NJDWJmquUW/ceLG7mk6IQq91g4Db7I1g=;
- b=DyrFnNHD0Ug9xbWnv/zBzTNdpuRBDitOGbW3UIJqtQ0syOhFT8xNcTm5u6VAl3EWut/8
- fErZ826jzRPEg72Q7qdwtH2LicVzC9/OUkKHk+9ccb88opH0+BIOZtGyMqswM1IG1LV5
- 0hbG30HLjXbO08CWLfHz57Hs2xP2usWYMrd5m+A59ZpEDWEUvHNtyDeXDVT/Xg3sskI2
- UEbc4FyFYcgUUOc6DvEsx7tqOMTP6q1/tjIJnRb5EYs7Jp3dyZ0I6l/ccJebpVc6s5mi
- F1sgB0oMIQ2ieyqTkj+WN8zc89E6JHV/+zQxHyAE6H8Ph4k2yvsFUR3OMnRlpfCsX/6f gw== 
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3wng8bgv2b-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 04 Mar 2024 15:12:48 +0000
-Received: from m0356516.ppops.net (m0356516.ppops.net [127.0.0.1])
- by pps.reinject (8.17.1.5/8.17.1.5) with ESMTP id 424Edq9I028104;
- Mon, 4 Mar 2024 15:12:47 GMT
-Received: from ppma11.dal12v.mail.ibm.com
- (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 3wng8bgv1y-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 04 Mar 2024 15:12:47 +0000
-Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
- by ppma11.dal12v.mail.ibm.com (8.17.1.19/8.17.1.19) with ESMTP id
- 424CFltB010913; Mon, 4 Mar 2024 15:12:46 GMT
-Received: from smtprelay06.wdc07v.mail.ibm.com ([172.16.1.73])
- by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 3wmh520ue9-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Mon, 04 Mar 2024 15:12:46 +0000
-Received: from smtpav05.dal12v.mail.ibm.com (smtpav05.dal12v.mail.ibm.com
- [10.241.53.104])
- by smtprelay06.wdc07v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 424FCeA625232118
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 4 Mar 2024 15:12:42 GMT
-Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 396125806A;
- Mon,  4 Mar 2024 15:12:40 +0000 (GMT)
-Received: from smtpav05.dal12v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 2DA2858056;
- Mon,  4 Mar 2024 15:12:39 +0000 (GMT)
-Received: from [9.61.76.243] (unknown [9.61.76.243])
- by smtpav05.dal12v.mail.ibm.com (Postfix) with ESMTP;
- Mon,  4 Mar 2024 15:12:39 +0000 (GMT)
-Message-ID: <0fa974fe-6be5-4468-8581-85bccd4b720b@linux.ibm.com>
-Date: Mon, 4 Mar 2024 10:12:38 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rhPDS-0004LV-Jo
+ for qemu-trivial@nongnu.org; Tue, 05 Mar 2024 02:28:00 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709623677;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=wSDlwUjKQ3h/+oMby1NULjzvaM/98uHLBBJBALNFrNo=;
+ b=RhQTQSEcmOrZRyk6v9kk+ikgZ2XVu3FCsWaPj/eJWE/aPeVktJodGL/9lC4p/j2Q71k5Ka
+ EoXTqKofYFfFNuzglRQ7CTuMG7IfEeci6isrj+7UrXVgTSIU4eP9Nkf4AkeH5GGmkmxtz9
+ auRKHuTf466VGp/RcQ4kMEwiixPr6qs=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-608-eIuxU0K4OFyCiNlYJ2BEog-1; Tue, 05 Mar 2024 02:27:55 -0500
+X-MC-Unique: eIuxU0K4OFyCiNlYJ2BEog-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ 4fb4d7f45d1cf-567309c57b0so979825a12.2
+ for <qemu-trivial@nongnu.org>; Mon, 04 Mar 2024 23:27:55 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709623674; x=1710228474;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=wSDlwUjKQ3h/+oMby1NULjzvaM/98uHLBBJBALNFrNo=;
+ b=ZqWa/Q8fY1beCkQG6g7qCeTrfSwFPzFHB+hL/gC3O3YHd45eBQxONShI6wOaYQBz++
+ QdkeZ8jSGJgy4//BJnZ24r+96aBL/XHF/C7fz02jpRyUTtbFV5tLng87EjTdbcDe+8aN
+ iSM6YlbPsCrDJhkNq39CEFKOpDWWwFi4JAWv/s6fs8K+1BnVRbHG12yotOOO4Ff67ju6
+ O3CNvGKZxkkzgNasom9DLP2TS23lvP3QBTplZS/4QxveCzAlogUnfpuRF8dEq/Na0sVu
+ AzSWf4CE5GTr7JvZkNZa3a/uJmga1+4PuVv7c23vGruSPWpWtsa0w7/7yL4Cl9DbhOyI
+ FcFg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWJNasG09853kR+5Td7DRbu/D7Gp0aRsHFyhuPmBUKBQup8tJFZlx4xwdZx/iYGdvHnOqQwADUELkelixJ3rOXKL5f0C6TkFQ==
+X-Gm-Message-State: AOJu0YxAxT2WG/2sRGLnHklToytoLK68WirA6sCvgL3TBG8aoAQIUNkw
+ Vmi9mR0OLD6YHOvP6kQrBcOCk/0vdouUi1Vts/7xdKzGGw3BkZbj5Qn8w+LOK9qs4/VVIPFpT3i
+ 9oYRoCwNR9eVlmk+giwAAJ2JMMINHVER1BtNWG+iSUP5Z7mvJez9y3zk=
+X-Received: by 2002:a05:6402:40c8:b0:567:15a6:848e with SMTP id
+ z8-20020a05640240c800b0056715a6848emr5808239edb.18.1709623674230; 
+ Mon, 04 Mar 2024 23:27:54 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGVh5ofpakgtUzKbVnO5m0VVOEJYNo6MfBW6fbVz4FsRfChwwtulUgsWwJfO8NE3OMIUiS0pw==
+X-Received: by 2002:a05:6402:40c8:b0:567:15a6:848e with SMTP id
+ z8-20020a05640240c800b0056715a6848emr5808218edb.18.1709623673821; 
+ Mon, 04 Mar 2024 23:27:53 -0800 (PST)
+Received: from [192.168.0.9] (ip-109-43-178-243.web.vodafone.de.
+ [109.43.178.243]) by smtp.gmail.com with ESMTPSA id
+ l17-20020aa7cad1000000b005673b5a2370sm2419214edt.44.2024.03.04.23.27.53
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 04 Mar 2024 23:27:53 -0800 (PST)
+Message-ID: <4f6e1748-a917-4b2b-847d-fbfe04a3e43e@redhat.com>
+Date: Tue, 5 Mar 2024 08:27:52 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 05/17] hw/vfio/ap: Fix missing ERRP_GUARD() for
- error_prepend()
+Subject: Re: [PATCH 3/3] hw/mem/cxl_type3: Fix problem with g_steal_pointer()
+To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+Cc: qemu-devel@nongnu.org, Fan Ni <fan.ni@samsung.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org
+References: <20240304104406.59855-1-thuth@redhat.com>
+ <20240304104406.59855-4-thuth@redhat.com>
+ <20240304151037.00000f6c@Huawei.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240304151037.00000f6c@Huawei.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, Zhao Liu <zhao1.liu@linux.intel.com>,
- Markus Armbruster <armbru@redhat.com>,
- Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>
-References: <20240229143914.1977550-1-zhao1.liu@linux.intel.com>
- <20240229143914.1977550-6-zhao1.liu@linux.intel.com>
- <7dadf54c-5a6f-4fe4-8dd3-1137e43c1756@redhat.com>
-From: Anthony Krowiak <akrowiak@linux.ibm.com>
-In-Reply-To: <7dadf54c-5a6f-4fe4-8dd3-1137e43c1756@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-GUID: ckrel7F4KOo1eUXX_mVWZCHwntryovsO
-X-Proofpoint-ORIG-GUID: se4vdU-wN4T-xZl_wTBKiaPhCUu-CF6m
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1011,Hydra:6.0.619,FMLib:17.11.176.26
- definitions=2024-03-04_10,2024-03-04_01,2023-05-22_02
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- suspectscore=0
- mlxlogscore=999 lowpriorityscore=0 adultscore=0 phishscore=0 clxscore=1011
- mlxscore=0 impostorscore=0 spamscore=0 priorityscore=1501 bulkscore=0
- malwarescore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2311290000 definitions=main-2403040114
-Received-SPF: pass client-ip=148.163.158.5;
- envelope-from=akrowiak@linux.ibm.com; helo=mx0b-001b2d01.pphosted.com
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 7
+X-Spam_score: 0.7
+X-Spam_bar: /
+X-Spam_report: (0.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.571,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 04 Mar 2024 12:01:01 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -112,80 +139,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Mar 2024 15:12:58 -0000
+X-List-Received-Date: Tue, 05 Mar 2024 07:28:00 -0000
 
+On 04/03/2024 16.10, Jonathan Cameron wrote:
+> On Mon,  4 Mar 2024 11:44:06 +0100
+> Thomas Huth <thuth@redhat.com> wrote:
+> 
+>> When setting GLIB_VERSION_MAX_ALLOWED to GLIB_VERSION_2_58 or higher,
+>> glib adds type safety checks to the g_steal_pointer() macro. This
+>> triggers errors in the ct3_build_cdat_entries_for_mr() function which
+>> uses the g_steal_pointer() for type-casting from one pointer type to
+>> the other (which also looks quite weird since the local pointers have
+>> all been declared with g_autofree though they are never freed here).
+>> Fix it by using a proper typecast instead. For making this possible, we
+>> have to remove the QEMU_PACKED attribute from some structs since GCC
+>> otherwise complains that the source and destination pointer might
+>> have different alignment restrictions. Removing the QEMU_PACKED should
+>> be fine here since the structs are already naturally aligned. Anyway,
+>> add some QEMU_BUILD_BUG_ON() statements to make sure that we've got
+>> the right sizes (without padding in the structs).
+> 
+> I missed these as well when getting rid of the false handling
+> of failure of g_new0 calls.
+> 
+> Another alternative would be to point to the head structures rather
+> than the containing structure - would avoid need to cast.
+> That might be neater?  Should I think also remove the alignment
+> question?
 
-On 2/29/24 12:30 PM, Thomas Huth wrote:
-> On 29/02/2024 15.39, Zhao Liu wrote:
->> From: Zhao Liu <zhao1.liu@intel.com>
->>
->> As the comment in qapi/error, passing @errp to error_prepend() requires
->> ERRP_GUARD():
->>
->> * = Why, when and how to use ERRP_GUARD() =
->> *
->> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
->> ...
->> * - It should not be passed to error_prepend(), error_vprepend() or
->> *   error_append_hint(), because that doesn't work with &error_fatal.
->> * ERRP_GUARD() lifts these restrictions.
->> *
->> * To use ERRP_GUARD(), add it right at the beginning of the function.
->> * @errp can then be used without worrying about the argument being
->> * NULL or &error_fatal.
->>
->> ERRP_GUARD() could avoid the case when @errp is the pointer of
->> error_fatal, the user can't see this additional information, because
->> exit() happens in error_setg earlier than information is added [1].
->>
->> The vfio_ap_realize() passes @errp to error_prepend(), and as a
->> DeviceClass.realize method, its @errp is so widely sourced that it is
->> necessary to protect it with ERRP_GUARD().
->>
->> To avoid the issue like [1] said, add missing ERRP_GUARD() at the
->> beginning of this function.
->>
->> [1]: Issue description in the commit message of commit ae7c80a7bd73
->>       ("error: New macro ERRP_GUARD()").
->>
->> Cc: Alex Williamson <alex.williamson@redhat.com>
->> Cc: "Cédric Le Goater" <clg@redhat.com>
->> Cc: Thomas Huth <thuth@redhat.com>
->> Cc: Tony Krowiak <akrowiak@linux.ibm.com>
->> Cc: Halil Pasic <pasic@linux.ibm.com>
->> Cc: Jason Herne <jjherne@linux.ibm.com>
->> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
->> ---
->>   hw/vfio/ap.c | 1 +
->>   1 file changed, 1 insertion(+)
->>
->> diff --git a/hw/vfio/ap.c b/hw/vfio/ap.c
->> index e157aa1ff79c..7c4caa593863 100644
->> --- a/hw/vfio/ap.c
->> +++ b/hw/vfio/ap.c
->> @@ -155,6 +155,7 @@ static void 
->> vfio_ap_unregister_irq_notifier(VFIOAPDevice *vapdev,
->>     static void vfio_ap_realize(DeviceState *dev, Error **errp)
->>   {
->> +    ERRP_GUARD();
->>       int ret;
->>       Error *err = NULL;
->
-> Now this function looks like we need both, ERRP_GUARD and the local 
-> "err" variable? ... patch looks ok to me, but maybe Markus has an idea 
-> how this could be done in a nicer way?
+I gave it a try, but it does not help against the alignment issue, I still get:
 
+../../devel/qemu/hw/mem/cxl_type3.c: In function 
+‘ct3_build_cdat_entries_for_mr’:
+../../devel/qemu/hw/mem/cxl_type3.c:138:34: error: taking address of packed 
+member of ‘struct CDATDsmas’ may result in an unaligned pointer value 
+[-Werror=address-of-packed-member]
+   138 |     cdat_table[CT3_CDAT_DSMAS] = &dsmas->header;
+       |                                  ^~~~~~~~~~~~~~
 
-Correct me if I'm wrong, but my understanding from reading the prologue 
-in error.h is that errp is used to pass errors back to the caller. The 
-'err' variable is used to report errors set by a call to the 
-vfio_ap_register_irq_notification function after which this function 
-returns cleanly. It does seem, however, that this function should return 
-a value (possibly a boolean?)  for the cases where errp is passed to a 
-function that sets an error to be propagated to the caller.
+ From my experience, it's better anyway to avoid __attribute__((packed)) on 
+structures unless it is really really required. At least we should avoid it 
+as good as possible as long as we still support running QEMU on Sparc hosts 
+(that don't support misaligned memory accesses), since otherwise you can end 
+up with non-working code there, see e.g.:
 
+  https://www.mail-archive.com/qemu-devel@nongnu.org/msg439899.html
 
->
->  Thomas
->
+or:
+
+  https://gitlab.com/qemu-project/qemu/-/commit/cb89b349074310ff9eb7ebe18a
+
+Thus I'd rather prefer to keep this patch as it is right now.
+
+  Thomas
+
 
