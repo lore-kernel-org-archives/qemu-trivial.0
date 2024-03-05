@@ -1,132 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rhPDY-00034v-MP
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Mar 2024 02:28:04 -0500
+	id 1rhX6A-00025l-4T
+	for mharc-qemu-trivial@gnu.org; Tue, 05 Mar 2024 10:53:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rhPDU-00032U-EJ
- for qemu-trivial@nongnu.org; Tue, 05 Mar 2024 02:28:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rhX5o-0001n3-CU; Tue, 05 Mar 2024 10:52:37 -0500
+Received: from frasgout.his.huawei.com ([185.176.79.56])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rhPDS-0004LV-Jo
- for qemu-trivial@nongnu.org; Tue, 05 Mar 2024 02:28:00 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709623677;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=wSDlwUjKQ3h/+oMby1NULjzvaM/98uHLBBJBALNFrNo=;
- b=RhQTQSEcmOrZRyk6v9kk+ikgZ2XVu3FCsWaPj/eJWE/aPeVktJodGL/9lC4p/j2Q71k5Ka
- EoXTqKofYFfFNuzglRQ7CTuMG7IfEeci6isrj+7UrXVgTSIU4eP9Nkf4AkeH5GGmkmxtz9
- auRKHuTf466VGp/RcQ4kMEwiixPr6qs=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-608-eIuxU0K4OFyCiNlYJ2BEog-1; Tue, 05 Mar 2024 02:27:55 -0500
-X-MC-Unique: eIuxU0K4OFyCiNlYJ2BEog-1
-Received: by mail-ed1-f71.google.com with SMTP id
- 4fb4d7f45d1cf-567309c57b0so979825a12.2
- for <qemu-trivial@nongnu.org>; Mon, 04 Mar 2024 23:27:55 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709623674; x=1710228474;
- h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
- :to:content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=wSDlwUjKQ3h/+oMby1NULjzvaM/98uHLBBJBALNFrNo=;
- b=ZqWa/Q8fY1beCkQG6g7qCeTrfSwFPzFHB+hL/gC3O3YHd45eBQxONShI6wOaYQBz++
- QdkeZ8jSGJgy4//BJnZ24r+96aBL/XHF/C7fz02jpRyUTtbFV5tLng87EjTdbcDe+8aN
- iSM6YlbPsCrDJhkNq39CEFKOpDWWwFi4JAWv/s6fs8K+1BnVRbHG12yotOOO4Ff67ju6
- O3CNvGKZxkkzgNasom9DLP2TS23lvP3QBTplZS/4QxveCzAlogUnfpuRF8dEq/Na0sVu
- AzSWf4CE5GTr7JvZkNZa3a/uJmga1+4PuVv7c23vGruSPWpWtsa0w7/7yL4Cl9DbhOyI
- FcFg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWJNasG09853kR+5Td7DRbu/D7Gp0aRsHFyhuPmBUKBQup8tJFZlx4xwdZx/iYGdvHnOqQwADUELkelixJ3rOXKL5f0C6TkFQ==
-X-Gm-Message-State: AOJu0YxAxT2WG/2sRGLnHklToytoLK68WirA6sCvgL3TBG8aoAQIUNkw
- Vmi9mR0OLD6YHOvP6kQrBcOCk/0vdouUi1Vts/7xdKzGGw3BkZbj5Qn8w+LOK9qs4/VVIPFpT3i
- 9oYRoCwNR9eVlmk+giwAAJ2JMMINHVER1BtNWG+iSUP5Z7mvJez9y3zk=
-X-Received: by 2002:a05:6402:40c8:b0:567:15a6:848e with SMTP id
- z8-20020a05640240c800b0056715a6848emr5808239edb.18.1709623674230; 
- Mon, 04 Mar 2024 23:27:54 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IGVh5ofpakgtUzKbVnO5m0VVOEJYNo6MfBW6fbVz4FsRfChwwtulUgsWwJfO8NE3OMIUiS0pw==
-X-Received: by 2002:a05:6402:40c8:b0:567:15a6:848e with SMTP id
- z8-20020a05640240c800b0056715a6848emr5808218edb.18.1709623673821; 
- Mon, 04 Mar 2024 23:27:53 -0800 (PST)
-Received: from [192.168.0.9] (ip-109-43-178-243.web.vodafone.de.
- [109.43.178.243]) by smtp.gmail.com with ESMTPSA id
- l17-20020aa7cad1000000b005673b5a2370sm2419214edt.44.2024.03.04.23.27.53
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 Mar 2024 23:27:53 -0800 (PST)
-Message-ID: <4f6e1748-a917-4b2b-847d-fbfe04a3e43e@redhat.com>
-Date: Tue, 5 Mar 2024 08:27:52 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+ (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
+ id 1rhX5l-0007X6-8k; Tue, 05 Mar 2024 10:52:36 -0500
+Received: from mail.maildlp.com (unknown [172.18.186.31])
+ by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Tq0Lw2dv5z6J67f;
+ Tue,  5 Mar 2024 23:47:36 +0800 (CST)
+Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
+ by mail.maildlp.com (Postfix) with ESMTPS id 27DA9140F92;
+ Tue,  5 Mar 2024 23:52:20 +0800 (CST)
+Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
+ (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Tue, 5 Mar
+ 2024 15:52:19 +0000
+Date: Tue, 5 Mar 2024 15:52:18 +0000
+From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
+To: Thomas Huth <thuth@redhat.com>
+CC: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, "Michael S. Tsirkin"
+ <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ <qemu-trivial@nongnu.org>
 Subject: Re: [PATCH 3/3] hw/mem/cxl_type3: Fix problem with g_steal_pointer()
-To: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-Cc: qemu-devel@nongnu.org, Fan Ni <fan.ni@samsung.com>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>, qemu-trivial@nongnu.org
+Message-ID: <20240305155218.00000c00@Huawei.com>
+In-Reply-To: <4f6e1748-a917-4b2b-847d-fbfe04a3e43e@redhat.com>
 References: <20240304104406.59855-1-thuth@redhat.com>
  <20240304104406.59855-4-thuth@redhat.com>
  <20240304151037.00000f6c@Huawei.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20240304151037.00000f6c@Huawei.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 7
-X-Spam_score: 0.7
-X-Spam_bar: /
-X-Spam_report: (0.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.571,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ <4f6e1748-a917-4b2b-847d-fbfe04a3e43e@redhat.com>
+Organization: Huawei Technologies Research and Development (UK) Ltd.
+X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+MIME-Version: 1.0
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+X-Originating-IP: [10.202.227.76]
+X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
+ lhrpeml500005.china.huawei.com (7.191.163.240)
+Received-SPF: pass client-ip=185.176.79.56;
+ envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
+X-Spam_score_int: -41
+X-Spam_score: -4.2
+X-Spam_bar: ----
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,58 +60,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Mar 2024 07:28:00 -0000
+X-List-Received-Date: Tue, 05 Mar 2024 15:52:45 -0000
 
-On 04/03/2024 16.10, Jonathan Cameron wrote:
-> On Mon,  4 Mar 2024 11:44:06 +0100
-> Thomas Huth <thuth@redhat.com> wrote:
-> 
->> When setting GLIB_VERSION_MAX_ALLOWED to GLIB_VERSION_2_58 or higher,
->> glib adds type safety checks to the g_steal_pointer() macro. This
->> triggers errors in the ct3_build_cdat_entries_for_mr() function which
->> uses the g_steal_pointer() for type-casting from one pointer type to
->> the other (which also looks quite weird since the local pointers have
->> all been declared with g_autofree though they are never freed here).
->> Fix it by using a proper typecast instead. For making this possible, we
->> have to remove the QEMU_PACKED attribute from some structs since GCC
->> otherwise complains that the source and destination pointer might
->> have different alignment restrictions. Removing the QEMU_PACKED should
->> be fine here since the structs are already naturally aligned. Anyway,
->> add some QEMU_BUILD_BUG_ON() statements to make sure that we've got
->> the right sizes (without padding in the structs).
-> 
-> I missed these as well when getting rid of the false handling
-> of failure of g_new0 calls.
-> 
-> Another alternative would be to point to the head structures rather
-> than the containing structure - would avoid need to cast.
-> That might be neater?  Should I think also remove the alignment
-> question?
+On Tue, 5 Mar 2024 08:27:52 +0100
+Thomas Huth <thuth@redhat.com> wrote:
 
-I gave it a try, but it does not help against the alignment issue, I still get:
+> On 04/03/2024 16.10, Jonathan Cameron wrote:
+> > On Mon,  4 Mar 2024 11:44:06 +0100
+> > Thomas Huth <thuth@redhat.com> wrote:
+> >  =20
+> >> When setting GLIB_VERSION_MAX_ALLOWED to GLIB_VERSION_2_58 or higher,
+> >> glib adds type safety checks to the g_steal_pointer() macro. This
+> >> triggers errors in the ct3_build_cdat_entries_for_mr() function which
+> >> uses the g_steal_pointer() for type-casting from one pointer type to
+> >> the other (which also looks quite weird since the local pointers have
+> >> all been declared with g_autofree though they are never freed here).
+> >> Fix it by using a proper typecast instead. For making this possible, we
+> >> have to remove the QEMU_PACKED attribute from some structs since GCC
+> >> otherwise complains that the source and destination pointer might
+> >> have different alignment restrictions. Removing the QEMU_PACKED should
+> >> be fine here since the structs are already naturally aligned. Anyway,
+> >> add some QEMU_BUILD_BUG_ON() statements to make sure that we've got
+> >> the right sizes (without padding in the structs). =20
+> >=20
+> > I missed these as well when getting rid of the false handling
+> > of failure of g_new0 calls.
+> >=20
+> > Another alternative would be to point to the head structures rather
+> > than the containing structure - would avoid need to cast.
+> > That might be neater?  Should I think also remove the alignment
+> > question? =20
+>=20
+> I gave it a try, but it does not help against the alignment issue, I stil=
+l get:
+>=20
+> ../../devel/qemu/hw/mem/cxl_type3.c: In function=20
+> =E2=80=98ct3_build_cdat_entries_for_mr=E2=80=99:
+> ../../devel/qemu/hw/mem/cxl_type3.c:138:34: error: taking address of pack=
+ed=20
+> member of =E2=80=98struct CDATDsmas=E2=80=99 may result in an unaligned p=
+ointer value=20
+> [-Werror=3Daddress-of-packed-member]
+>    138 |     cdat_table[CT3_CDAT_DSMAS] =3D &dsmas->header;
+>        |                                  ^~~~~~~~~~~~~~
+>=20
+>  From my experience, it's better anyway to avoid __attribute__((packed)) =
+on=20
+> structures unless it is really really required. At least we should avoid =
+it=20
+> as good as possible as long as we still support running QEMU on Sparc hos=
+ts=20
+> (that don't support misaligned memory accesses), since otherwise you can =
+end=20
+> up with non-working code there, see e.g.:
+>=20
+>   https://www.mail-archive.com/qemu-devel@nongnu.org/msg439899.html
+>=20
+> or:
+>=20
+>   https://gitlab.com/qemu-project/qemu/-/commit/cb89b349074310ff9eb7ebe18a
+>=20
+> Thus I'd rather prefer to keep this patch as it is right now.
+>=20
+>   Thomas
+Fair enough.
 
-../../devel/qemu/hw/mem/cxl_type3.c: In function 
-‘ct3_build_cdat_entries_for_mr’:
-../../devel/qemu/hw/mem/cxl_type3.c:138:34: error: taking address of packed 
-member of ‘struct CDATDsmas’ may result in an unaligned pointer value 
-[-Werror=address-of-packed-member]
-   138 |     cdat_table[CT3_CDAT_DSMAS] = &dsmas->header;
-       |                                  ^~~~~~~~~~~~~~
+Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
- From my experience, it's better anyway to avoid __attribute__((packed)) on 
-structures unless it is really really required. At least we should avoid it 
-as good as possible as long as we still support running QEMU on Sparc hosts 
-(that don't support misaligned memory accesses), since otherwise you can end 
-up with non-working code there, see e.g.:
-
-  https://www.mail-archive.com/qemu-devel@nongnu.org/msg439899.html
-
-or:
-
-  https://gitlab.com/qemu-project/qemu/-/commit/cb89b349074310ff9eb7ebe18a
-
-Thus I'd rather prefer to keep this patch as it is right now.
-
-  Thomas
+>=20
 
 
