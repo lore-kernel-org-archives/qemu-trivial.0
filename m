@@ -1,53 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rhX6A-00025l-4T
-	for mharc-qemu-trivial@gnu.org; Tue, 05 Mar 2024 10:53:00 -0500
+	id 1rhmQl-00075O-V5
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2024 03:15:16 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rhX5o-0001n3-CU; Tue, 05 Mar 2024 10:52:37 -0500
-Received: from frasgout.his.huawei.com ([185.176.79.56])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rhmQj-00075D-TU
+ for qemu-trivial@nongnu.org; Wed, 06 Mar 2024 03:15:13 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonathan.cameron@huawei.com>)
- id 1rhX5l-0007X6-8k; Tue, 05 Mar 2024 10:52:36 -0500
-Received: from mail.maildlp.com (unknown [172.18.186.31])
- by frasgout.his.huawei.com (SkyGuard) with ESMTP id 4Tq0Lw2dv5z6J67f;
- Tue,  5 Mar 2024 23:47:36 +0800 (CST)
-Received: from lhrpeml500005.china.huawei.com (unknown [7.191.163.240])
- by mail.maildlp.com (Postfix) with ESMTPS id 27DA9140F92;
- Tue,  5 Mar 2024 23:52:20 +0800 (CST)
-Received: from localhost (10.202.227.76) by lhrpeml500005.china.huawei.com
- (7.191.163.240) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.1.2507.35; Tue, 5 Mar
- 2024 15:52:19 +0000
-Date: Tue, 5 Mar 2024 15:52:18 +0000
-From: Jonathan Cameron <Jonathan.Cameron@Huawei.com>
-To: Thomas Huth <thuth@redhat.com>
-CC: <qemu-devel@nongnu.org>, Fan Ni <fan.ni@samsung.com>, "Michael S. Tsirkin"
- <mst@redhat.com>, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH 3/3] hw/mem/cxl_type3: Fix problem with g_steal_pointer()
-Message-ID: <20240305155218.00000c00@Huawei.com>
-In-Reply-To: <4f6e1748-a917-4b2b-847d-fbfe04a3e43e@redhat.com>
-References: <20240304104406.59855-1-thuth@redhat.com>
- <20240304104406.59855-4-thuth@redhat.com>
- <20240304151037.00000f6c@Huawei.com>
- <4f6e1748-a917-4b2b-847d-fbfe04a3e43e@redhat.com>
-Organization: Huawei Technologies Research and Development (UK) Ltd.
-X-Mailer: Claws Mail 4.1.0 (GTK 3.24.33; x86_64-w64-mingw32)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rhmQi-0008H7-8A
+ for qemu-trivial@nongnu.org; Wed, 06 Mar 2024 03:15:13 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1709712911;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=mFpMS6WR8NVLm8NlkeXo2TxGNnD58mgHm1nye30iap4=;
+ b=DsHtMLmC7cfR/+SGDW2QeFnIyyGjfZjjUaGjlnJqS7p9oLrWKW0PlgQToJMgITGWW5AD2E
+ mMCxnh/0DBMtiv/YpIzasPckeMyA//0JQ1FsrcPzegKSNpOpx1Y1QKN+ncozC4Q6nFB4xD
+ psyTPT4aQjwolLIhneoQX2xNG5bHLms=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-457-QMYgzSKWMhuLr_1Q0KX0eA-1; Wed, 06 Mar 2024 03:15:07 -0500
+X-MC-Unique: QMYgzSKWMhuLr_1Q0KX0eA-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 21C91872514;
+ Wed,  6 Mar 2024 08:15:07 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.3])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 00049112131D;
+ Wed,  6 Mar 2024 08:15:06 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id D6BB721E6A24; Wed,  6 Mar 2024 09:15:05 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: marcandre.lureau@redhat.com, pbonzini@redhat.com, qemu-trivial@nongnu.org
+Subject: [PATCH] char: Slightly better error reporting when chardev is in use
+Date: Wed,  6 Mar 2024 09:15:05 +0100
+Message-ID: <20240306081505.2258405-1-armbru@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-X-Originating-IP: [10.202.227.76]
-X-ClientProxiedBy: lhrpeml100006.china.huawei.com (7.191.160.224) To
- lhrpeml500005.china.huawei.com (7.191.163.240)
-Received-SPF: pass client-ip=185.176.79.56;
- envelope-from=jonathan.cameron@huawei.com; helo=frasgout.his.huawei.com
-X-Spam_score_int: -41
-X-Spam_score: -4.2
-X-Spam_bar: ----
-X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-type: text/plain
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.568,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -60,73 +66,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 05 Mar 2024 15:52:45 -0000
+X-List-Received-Date: Wed, 06 Mar 2024 08:15:14 -0000
 
-On Tue, 5 Mar 2024 08:27:52 +0100
-Thomas Huth <thuth@redhat.com> wrote:
+Both
 
-> On 04/03/2024 16.10, Jonathan Cameron wrote:
-> > On Mon,  4 Mar 2024 11:44:06 +0100
-> > Thomas Huth <thuth@redhat.com> wrote:
-> >  =20
-> >> When setting GLIB_VERSION_MAX_ALLOWED to GLIB_VERSION_2_58 or higher,
-> >> glib adds type safety checks to the g_steal_pointer() macro. This
-> >> triggers errors in the ct3_build_cdat_entries_for_mr() function which
-> >> uses the g_steal_pointer() for type-casting from one pointer type to
-> >> the other (which also looks quite weird since the local pointers have
-> >> all been declared with g_autofree though they are never freed here).
-> >> Fix it by using a proper typecast instead. For making this possible, we
-> >> have to remove the QEMU_PACKED attribute from some structs since GCC
-> >> otherwise complains that the source and destination pointer might
-> >> have different alignment restrictions. Removing the QEMU_PACKED should
-> >> be fine here since the structs are already naturally aligned. Anyway,
-> >> add some QEMU_BUILD_BUG_ON() statements to make sure that we've got
-> >> the right sizes (without padding in the structs). =20
-> >=20
-> > I missed these as well when getting rid of the false handling
-> > of failure of g_new0 calls.
-> >=20
-> > Another alternative would be to point to the head structures rather
-> > than the containing structure - would avoid need to cast.
-> > That might be neater?  Should I think also remove the alignment
-> > question? =20
->=20
-> I gave it a try, but it does not help against the alignment issue, I stil=
-l get:
->=20
-> ../../devel/qemu/hw/mem/cxl_type3.c: In function=20
-> =E2=80=98ct3_build_cdat_entries_for_mr=E2=80=99:
-> ../../devel/qemu/hw/mem/cxl_type3.c:138:34: error: taking address of pack=
-ed=20
-> member of =E2=80=98struct CDATDsmas=E2=80=99 may result in an unaligned p=
-ointer value=20
-> [-Werror=3Daddress-of-packed-member]
->    138 |     cdat_table[CT3_CDAT_DSMAS] =3D &dsmas->header;
->        |                                  ^~~~~~~~~~~~~~
->=20
->  From my experience, it's better anyway to avoid __attribute__((packed)) =
-on=20
-> structures unless it is really really required. At least we should avoid =
-it=20
-> as good as possible as long as we still support running QEMU on Sparc hos=
-ts=20
-> (that don't support misaligned memory accesses), since otherwise you can =
-end=20
-> up with non-working code there, see e.g.:
->=20
->   https://www.mail-archive.com/qemu-devel@nongnu.org/msg439899.html
->=20
-> or:
->=20
->   https://gitlab.com/qemu-project/qemu/-/commit/cb89b349074310ff9eb7ebe18a
->=20
-> Thus I'd rather prefer to keep this patch as it is right now.
->=20
->   Thomas
-Fair enough.
+    $ qemu-system-x86_64 -chardev null,id=chr0,mux=on -mon chardev=chr0 -mon chardev=chr0 -mon chardev=chr0 -mon chardev=chr0 -mon chardev=chr0
 
-Reviewed-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+and
 
->=20
+    $ qemu-system-x86_64 -chardev null,id=chr0 -mon chardev=chr0 -mon chardev=chr0
+fail with
+
+    qemu-system-x86_64: -mon chardev=chr0: Device 'chr0' is in use
+
+Improve to
+
+    qemu-system-x86_64: -mon chardev=chr0: too many uses of multiplexed chardev 'chr0' (maximum is 4)
+
+and
+
+    qemu-system-x86_64: -mon chardev=chr0: chardev 'chr0' is already in use
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+---
+ chardev/char-fe.c | 13 +++++++------
+ 1 file changed, 7 insertions(+), 6 deletions(-)
+
+diff --git a/chardev/char-fe.c b/chardev/char-fe.c
+index 20222a4cad..66cee8475a 100644
+--- a/chardev/char-fe.c
++++ b/chardev/char-fe.c
+@@ -199,13 +199,18 @@ bool qemu_chr_fe_init(CharBackend *b, Chardev *s, Error **errp)
+             MuxChardev *d = MUX_CHARDEV(s);
+ 
+             if (d->mux_cnt >= MAX_MUX) {
+-                goto unavailable;
++                error_setg(errp,
++                           "too many uses of multiplexed chardev '%s'"
++                           " (maximum is " stringify(MAX_MUX) ")",
++                           s->label);
++                return false;
+             }
+ 
+             d->backends[d->mux_cnt] = b;
+             tag = d->mux_cnt++;
+         } else if (s->be) {
+-            goto unavailable;
++            error_setg(errp, "chardev '%s' is already in use", s->label);
++            return false;
+         } else {
+             s->be = b;
+         }
+@@ -215,10 +220,6 @@ bool qemu_chr_fe_init(CharBackend *b, Chardev *s, Error **errp)
+     b->tag = tag;
+     b->chr = s;
+     return true;
+-
+-unavailable:
+-    error_setg(errp, QERR_DEVICE_IN_USE, s->label);
+-    return false;
+ }
+ 
+ void qemu_chr_fe_deinit(CharBackend *b, bool del)
+-- 
+2.44.0
 
 
