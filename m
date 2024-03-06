@@ -1,54 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rhr3a-0007hy-31
-	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2024 08:11:38 -0500
+	id 1rhsGA-0000Xm-1z
+	for mharc-qemu-trivial@gnu.org; Wed, 06 Mar 2024 09:28:42 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rhr3J-0007Y4-As
- for qemu-trivial@nongnu.org; Wed, 06 Mar 2024 08:11:24 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rhsG8-0000XR-0W
+ for qemu-trivial@nongnu.org; Wed, 06 Mar 2024 09:28:40 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rhr2z-00040E-V7
- for qemu-trivial@nongnu.org; Wed, 06 Mar 2024 08:11:13 -0500
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rhsG5-000441-Lc
+ for qemu-trivial@nongnu.org; Wed, 06 Mar 2024 09:28:39 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709730659;
+ s=mimecast20190719; t=1709735316;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=SwEudHoghRZYuczHTbA5NvCVKA5HOFPjj2GYqcK3fPE=;
- b=bSGdG8Bx2e7w21Of7YiYicDZvmMvhS3HNUWpeCgrYMiygfULka9wTmEN8wenFWGW8kFaLo
- dp+Yi2WsETna8Rdr3yg3iKGybo5DJ9S376/lnmuoNlqQAudFQfXOm+zZCCu6OlRqXGTnti
- uv9OdEkegEW5l5ylXZmdmaMoM4rz294=
+ content-transfer-encoding:content-transfer-encoding;
+ bh=oO47nNdCbFfOr1QhJsTJLn777GWhWY/TMXW8pMn2RiA=;
+ b=enEw/DnHS9Vzgyf7c/gAs2OE4A2lsegbrFlmSPPZZyVuwS8d8SlTSAMUlOi2t6+FBzow42
+ GbG8EfEdKGnLwZjZ8Sj9DuLG4m17MLzoh2vMVoC84TWbrXNuzPNE+vks7ML8Jv6U6uIYhG
+ JEPZkGHlqg15x6vwORpklWWN5pI2494=
 Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
  [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-411-nb87G12oPy-ecodz38ebeg-1; Wed, 06 Mar 2024 08:10:56 -0500
-X-MC-Unique: nb87G12oPy-ecodz38ebeg-1
-Received: from smtp.corp.redhat.com (int-mx08.intmail.prod.int.rdu2.redhat.com
- [10.11.54.8])
+ us-mta-319-lKMjwvlEPweFXZbmOGkp_A-1; Wed, 06 Mar 2024 09:28:32 -0500
+X-MC-Unique: lKMjwvlEPweFXZbmOGkp_A-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5D3F0800267;
- Wed,  6 Mar 2024 13:10:56 +0000 (UTC)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 726DC852008;
+ Wed,  6 Mar 2024 14:28:32 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.39.192.3])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 3AC99C01600;
- Wed,  6 Mar 2024 13:10:56 +0000 (UTC)
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 4FDEA111DD03;
+ Wed,  6 Mar 2024 14:28:32 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 2F2B121E691E; Wed,  6 Mar 2024 14:10:55 +0100 (CET)
+ id 5413F21E6A24; Wed,  6 Mar 2024 15:28:31 +0100 (CET)
 From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: kwolf@redhat.com, hreitz@redhat.com, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org
-Subject: [PATCH 2/2] qerror: QERR_DEVICE_IN_USE is no longer used, drop
-Date: Wed,  6 Mar 2024 14:10:55 +0100
-Message-ID: <20240306131055.2460378-3-armbru@redhat.com>
-In-Reply-To: <20240306131055.2460378-1-armbru@redhat.com>
-References: <20240306131055.2460378-1-armbru@redhat.com>
+Subject: [PATCH] blockdev: Fix blockdev-snapshot-sync error reporting for no
+ medium
+Date: Wed,  6 Mar 2024 15:28:31 +0100
+Message-ID: <20240306142831.2514431-1-armbru@redhat.com>
 MIME-Version: 1.0
 Content-type: text/plain
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.8
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
@@ -70,26 +68,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 06 Mar 2024 13:11:28 -0000
+X-List-Received-Date: Wed, 06 Mar 2024 14:28:40 -0000
 
+When external_snapshot_abort() rejects a BlockDriverState without a
+medium, it creates an error like this:
+
+        error_setg(errp, "Device '%s' has no medium", device);
+
+Trouble is @device can be null.  My system formats null as "(null)",
+but other systems might crash.  Reproducer:
+
+1. Create a block device without a medium
+
+    -> {"execute": "blockdev-add", "arguments": {"driver": "host_cdrom", "node-name": "blk0", "filename": "/dev/sr0"}}
+    <- {"return": {}}
+
+3. Attempt to snapshot it
+
+    -> {"execute":"blockdev-snapshot-sync", "arguments": { "node-name": "blk0", "snapshot-file":"/tmp/foo.qcow2","format":"qcow2"}}
+    <- {"error": {"class": "GenericError", "desc": "Device '(null)' has no medium"}}
+
+Broken when commit 0901f67ecdb made @device optional.
+
+Use bdrv_get_device_or_node_name() instead.  Now it fails as it
+should:
+
+    <- {"error": {"class": "GenericError", "desc": "Device 'blk0' has no medium"}}
+
+Fixes: 0901f67ecdb7 (qmp: Allow to take external snapshots on bs graphs node.)
 Signed-off-by: Markus Armbruster <armbru@redhat.com>
 ---
- include/qapi/qmp/qerror.h | 3 ---
- 1 file changed, 3 deletions(-)
+ blockdev.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/include/qapi/qmp/qerror.h b/include/qapi/qmp/qerror.h
-index 8dd9fcb071..0c2689cf8a 100644
---- a/include/qapi/qmp/qerror.h
-+++ b/include/qapi/qmp/qerror.h
-@@ -23,9 +23,6 @@
- #define QERR_DEVICE_HAS_NO_MEDIUM \
-     "Device '%s' has no medium"
+diff --git a/blockdev.c b/blockdev.c
+index d8fb3399f5..057601dcf0 100644
+--- a/blockdev.c
++++ b/blockdev.c
+@@ -1395,7 +1395,8 @@ static void external_snapshot_action(TransactionAction *action,
+     bdrv_drained_begin(state->old_bs);
  
--#define QERR_DEVICE_IN_USE \
--    "Device '%s' is in use"
--
- #define QERR_DEVICE_NO_HOTPLUG \
-     "Device '%s' does not support hotplugging"
+     if (!bdrv_is_inserted(state->old_bs)) {
+-        error_setg(errp, QERR_DEVICE_HAS_NO_MEDIUM, device);
++        error_setg(errp, QERR_DEVICE_HAS_NO_MEDIUM,
++                   bdrv_get_device_or_node_name(state->old_bs));
+         return;
+     }
  
 -- 
 2.44.0
