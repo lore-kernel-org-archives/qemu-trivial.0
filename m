@@ -1,85 +1,136 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1riDHg-0001kA-HD
-	for mharc-qemu-trivial@gnu.org; Thu, 07 Mar 2024 07:55:40 -0500
+	id 1riJNn-0001yE-LO
+	for mharc-qemu-trivial@gnu.org; Thu, 07 Mar 2024 14:26:23 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1riDHb-0001iy-7G
- for qemu-trivial@nongnu.org; Thu, 07 Mar 2024 07:55:35 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1riJNl-0001xu-62
+ for qemu-trivial@nongnu.org; Thu, 07 Mar 2024 14:26:22 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1riDHX-0004vy-RG
- for qemu-trivial@nongnu.org; Thu, 07 Mar 2024 07:55:34 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1riJNW-0008LR-5H
+ for qemu-trivial@nongnu.org; Thu, 07 Mar 2024 14:26:19 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1709816129;
+ s=mimecast20190719; t=1709839564;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=at8BC76ZbcOCvnYmCuLdtC1vcmwWzolgXKE7VcZPyGU=;
- b=DK6T6EYZNrvZfW9fK6uxsHoqId1kjHalThQsNc4E1sOn/N6BvRPA81fF9HGTgD4tiAoqMo
- 0WI1qbGd87MsD7+r4JAWCAcUpOjbgO7BjY1xxAwhK+1n4ZK4CB++h4qOormB+WZu2DzZEn
- KF/ymh9dUi01A923DR8NHyUmwlS49CI=
-Received: from mail-oi1-f197.google.com (mail-oi1-f197.google.com
- [209.85.167.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=YDkgwdaxInvc7gvn2rkK6xaqbRC8CM1PVSdNoqffaTw=;
+ b=Y74q0CLQcAchdTksLDG5Q689FiGVxhhmrWIH+QnN5IqtlNa284je+9VSMacwfEdxcI3NvG
+ za4Eq7rRtf8vo6Wb9ImaEgjbOVcuzmxVX4wP+HJr9vC5RYo71dEgbxhjIL1UNPlJPllSwN
+ qUAO1pQTNDjPCUC9JKihRL6WRu+5eak=
+Received: from mail-oo1-f71.google.com (mail-oo1-f71.google.com
+ [209.85.161.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-280-Bl1uz9InMBOt97SZHdyX4Q-1; Thu, 07 Mar 2024 07:55:28 -0500
-X-MC-Unique: Bl1uz9InMBOt97SZHdyX4Q-1
-Received: by mail-oi1-f197.google.com with SMTP id
- 5614622812f47-3c1aa386e5eso830103b6e.0
- for <qemu-trivial@nongnu.org>; Thu, 07 Mar 2024 04:55:28 -0800 (PST)
+ us-mta-553-LZXYzG36PEquCPwH8aNjIQ-1; Thu, 07 Mar 2024 14:26:03 -0500
+X-MC-Unique: LZXYzG36PEquCPwH8aNjIQ-1
+Received: by mail-oo1-f71.google.com with SMTP id
+ 006d021491bc7-59fe01fbe7bso1281679eaf.2
+ for <qemu-trivial@nongnu.org>; Thu, 07 Mar 2024 11:26:03 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1709816126; x=1710420926;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=at8BC76ZbcOCvnYmCuLdtC1vcmwWzolgXKE7VcZPyGU=;
- b=KoA11xewOInA8VrAkShzMINytgm/L7w5ZxKICw5cUggqdKkBB3OOMKw9qu2LEI/UzR
- Wy4DKHoqPYUir05KzS/RJj95ZXwUELPqGB+gIL0gZrmHlpDprQilfeBvl5cli08CI3OJ
- XmM0X8PTkPHf6LeuN7eXoy34yWxfUWWl9y/ChQSExnzbicWf3c1sY3rXKO40jvf744kL
- 9igMqs9aax2q0+6pDQtb+C11H0ED5TLIBUJQWANXzAYLPDjkO1uZ+FpA7QuFfDwbr5W0
- +tfGcE+LfuXvGqEXSb4+ni5EmddWGWJg/XHPFeoqaVWhFIUPMysh80QtDekXDdm70mGq
- NHiw==
-X-Gm-Message-State: AOJu0YwOvKGll1jiXGVARaD0rFs4dZHwP4mhwykVSFyp24gq4kMlelD6
- nXd8AF1Fw5Zq9Mpq+fHAcai6qwr48JgwS2xUU7Lx8tbqeENDz9SSk82BHi4fbt9jzicFJ0/cCZw
- A2iJKU4Cgc6C8o4iT9NYSsZXRWBoaTGEsg0rYxjW8jjDTxrfaF2tg+Ag=
-X-Received: by 2002:a05:6808:634c:b0:3c1:c8fb:89f9 with SMTP id
- eb12-20020a056808634c00b003c1c8fb89f9mr7526144oib.39.1709816126416; 
- Thu, 07 Mar 2024 04:55:26 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IH56NG/TchSst+ygxKgGqdok3zc30lHjLaOpFlHLmVemFO9i0I266u1rapCbapRiG2YfRT+nA==
-X-Received: by 2002:a05:6808:634c:b0:3c1:c8fb:89f9 with SMTP id
- eb12-20020a056808634c00b003c1c8fb89f9mr7526132oib.39.1709816126006; 
- Thu, 07 Mar 2024 04:55:26 -0800 (PST)
-Received: from localhost.localdomain ([116.73.135.231])
- by smtp.googlemail.com with ESMTPSA id
- x7-20020a626307000000b006e624f5c866sm7288282pfb.145.2024.03.07.04.55.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 07 Mar 2024 04:55:25 -0800 (PST)
-From: Ani Sinha <anisinha@redhat.com>
-To: Ani Sinha <anisinha@redhat.com>,
-	"Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-trivial@nongnu.org,
-	qemu-devel@nongnu.org
-Subject: [PATCH] docs/acpi/bits: add some clarity and details and improve
- formating
-Date: Thu,  7 Mar 2024 18:25:18 +0530
-Message-ID: <20240307125518.6268-1-anisinha@redhat.com>
-X-Mailer: git-send-email 2.42.0
+ d=1e100.net; s=20230601; t=1709839563; x=1710444363;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=YDkgwdaxInvc7gvn2rkK6xaqbRC8CM1PVSdNoqffaTw=;
+ b=dvr1MJzLqoQCHoSuU16+3r0rlVVuGJwPsNDAPdW9aXgFwIRbAjbngNvXPtp9a2BR0U
+ 0b2wHfqbwjZpmwMoDvxSE4bdzKREQvx7MDY9nQAv9s71kVg6jMKJ4EaCi9AmRSz9t4lB
+ j4BtFkIcxjtm028uQNaW3P1XSG/6C6Ng8xUmMdcgvsQULhkOT7rlXLWr9rpDBNOD/K5b
+ U98g5S5vp8Dkhl8lC4yyfPAQxUrhk97nhrg5yABJubWIrZHSAhraJbusmkapwrLnXqI1
+ xh6d4+/36LddMxvb6WNOVW9fzWl/wdyrBJJRsKvHwobVScGof++RbgJmbSYHFE/2cqlC
+ KIMg==
+X-Gm-Message-State: AOJu0Yzhsz9dxaM5baywV66c89xSvd8gttMRhghJVipJ2LakIrUcUeAV
+ MkhzqrsG3btkbKUF14YbeOSS6K36EKT+Oj5fFQdqyj2/ssWgltmQfq4PQ9cpYWycrLWy8KpAT7k
+ d8rBpTrK+HiPtsHu2mjkUiZcfPwwwNCRKI3i50cJmmNn7iXNhm5A86AE=
+X-Received: by 2002:a05:6358:998b:b0:17c:2214:6537 with SMTP id
+ j11-20020a056358998b00b0017c22146537mr9956461rwb.30.1709839562633; 
+ Thu, 07 Mar 2024 11:26:02 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IHSrfGS1RpZQBZo7DKPwAqQutlaCtOv0ZIUQpgC+YOizU9xOcU2FGpqjMLeEnWdgXwYOeOa7Q==
+X-Received: by 2002:a05:6358:998b:b0:17c:2214:6537 with SMTP id
+ j11-20020a056358998b00b0017c22146537mr9956386rwb.30.1709839561019; 
+ Thu, 07 Mar 2024 11:26:01 -0800 (PST)
+Received: from [192.168.0.9] (ip-109-43-178-151.web.vodafone.de.
+ [109.43.178.151]) by smtp.gmail.com with ESMTPSA id
+ om13-20020a0562143d8d00b0069049135a69sm8873169qvb.118.2024.03.07.11.25.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 07 Mar 2024 11:26:00 -0800 (PST)
+Message-ID: <3a7a9d7e-3639-4adc-84a5-1126f7a13a0c@redhat.com>
+Date: Thu, 7 Mar 2024 20:25:54 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 05/17] hw/vfio/ap: Fix missing ERRP_GUARD() for
+ error_prepend()
+To: Anthony Krowiak <akrowiak@linux.ibm.com>,
+ Zhao Liu <zhao1.liu@linux.intel.com>, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>
+References: <20240229143914.1977550-1-zhao1.liu@linux.intel.com>
+ <20240229143914.1977550-6-zhao1.liu@linux.intel.com>
+ <7dadf54c-5a6f-4fe4-8dd3-1137e43c1756@redhat.com>
+ <0fa974fe-6be5-4468-8581-85bccd4b720b@linux.ibm.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <0fa974fe-6be5-4468-8581-85bccd4b720b@linux.ibm.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -11
-X-Spam_score: -1.2
-X-Spam_bar: -
-X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.583,
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.583,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SORBS_WEB=1.5, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,102 +143,84 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 07 Mar 2024 12:55:35 -0000
+X-List-Received-Date: Thu, 07 Mar 2024 19:26:22 -0000
 
-Update bios-bits docs to add more details on why a pre-OS environment for
-testing bioses is useful. Add author's FOSDEM talk link.
+On 04/03/2024 16.12, Anthony Krowiak wrote:
+> 
+> On 2/29/24 12:30 PM, Thomas Huth wrote:
+>> On 29/02/2024 15.39, Zhao Liu wrote:
+>>> From: Zhao Liu <zhao1.liu@intel.com>
+>>>
+>>> As the comment in qapi/error, passing @errp to error_prepend() requires
+>>> ERRP_GUARD():
+>>>
+>>> * = Why, when and how to use ERRP_GUARD() =
+>>> *
+>>> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+>>> ...
+>>> * - It should not be passed to error_prepend(), error_vprepend() or
+>>> *   error_append_hint(), because that doesn't work with &error_fatal.
+>>> * ERRP_GUARD() lifts these restrictions.
+>>> *
+>>> * To use ERRP_GUARD(), add it right at the beginning of the function.
+>>> * @errp can then be used without worrying about the argument being
+>>> * NULL or &error_fatal.
+>>>
+>>> ERRP_GUARD() could avoid the case when @errp is the pointer of
+>>> error_fatal, the user can't see this additional information, because
+>>> exit() happens in error_setg earlier than information is added [1].
+>>>
+>>> The vfio_ap_realize() passes @errp to error_prepend(), and as a
+>>> DeviceClass.realize method, its @errp is so widely sourced that it is
+>>> necessary to protect it with ERRP_GUARD().
+>>>
+>>> To avoid the issue like [1] said, add missing ERRP_GUARD() at the
+>>> beginning of this function.
+>>>
+>>> [1]: Issue description in the commit message of commit ae7c80a7bd73
+>>>       ("error: New macro ERRP_GUARD()").
+>>>
+>>> Cc: Alex Williamson <alex.williamson@redhat.com>
+>>> Cc: "Cédric Le Goater" <clg@redhat.com>
+>>> Cc: Thomas Huth <thuth@redhat.com>
+>>> Cc: Tony Krowiak <akrowiak@linux.ibm.com>
+>>> Cc: Halil Pasic <pasic@linux.ibm.com>
+>>> Cc: Jason Herne <jjherne@linux.ibm.com>
+>>> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+>>> ---
+>>>   hw/vfio/ap.c | 1 +
+>>>   1 file changed, 1 insertion(+)
+>>>
+>>> diff --git a/hw/vfio/ap.c b/hw/vfio/ap.c
+>>> index e157aa1ff79c..7c4caa593863 100644
+>>> --- a/hw/vfio/ap.c
+>>> +++ b/hw/vfio/ap.c
+>>> @@ -155,6 +155,7 @@ static void 
+>>> vfio_ap_unregister_irq_notifier(VFIOAPDevice *vapdev,
+>>>     static void vfio_ap_realize(DeviceState *dev, Error **errp)
+>>>   {
+>>> +    ERRP_GUARD();
+>>>       int ret;
+>>>       Error *err = NULL;
+>>
+>> Now this function looks like we need both, ERRP_GUARD and the local "err" 
+>> variable? ... patch looks ok to me, but maybe Markus has an idea how this 
+>> could be done in a nicer way?
+> 
+> 
+> Correct me if I'm wrong, but my understanding from reading the prologue in 
+> error.h is that errp is used to pass errors back to the caller. The 'err' 
+> variable is used to report errors set by a call to the 
+> vfio_ap_register_irq_notification function after which this function returns 
+> cleanly.
 
-CC: qemu-trivial@nongnu.org
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
----
- docs/devel/acpi-bits.rst | 55 ++++++++++++++++++++++++++++------------
- 1 file changed, 39 insertions(+), 16 deletions(-)
+Right, no objections, that's what I meant with "this function looks like we 
+need both" ...
+But having both, "err" and "errp" in one function also looks somewhat 
+confusing at a first glance. No clue how this could be done much better 
+though, maybe rename "err" to "local_err" to make it clear that the two 
+variables are used independently?
 
-diff --git a/docs/devel/acpi-bits.rst b/docs/devel/acpi-bits.rst
-index 9677b0098f..1ec394f5fb 100644
---- a/docs/devel/acpi-bits.rst
-+++ b/docs/devel/acpi-bits.rst
-@@ -1,26 +1,48 @@
- =============================================================================
- ACPI/SMBIOS avocado tests using biosbits
- =============================================================================
--
-+************
-+Introduction
-+************
- Biosbits is a software written by Josh Triplett that can be downloaded
- from https://biosbits.org/. The github codebase can be found
--`here <https://github.com/biosbits/bits/tree/master>`__. It is a software that executes
--the bios components such as acpi and smbios tables directly through acpica
--bios interpreter (a freely available C based library written by Intel,
-+`here <https://github.com/biosbits/bits/tree/master>`__. It is a software that
-+executes the bios components such as acpi and smbios tables directly through
-+acpica bios interpreter (a freely available C based library written by Intel,
- downloadable from https://acpica.org/ and is included with biosbits) without an
--operating system getting involved in between.
-+operating system getting involved in between. Bios-bits has python integration
-+with grub so actual routines that executes bios components can be written in
-+python instead of bash-ish (grub's native scripting language).
- There are several advantages to directly testing the bios in a real physical
--machine or VM as opposed to indirectly discovering bios issues through the
--operating system. For one thing, the OSes tend to hide bios problems from the
--end user. The other is that we have more control of what we wanted to test
--and how by directly using acpica interpreter on top of the bios on a running
--system. More details on the inspiration for developing biosbits and its real
--life uses can be found in [#a]_ and [#b]_.
-+machine or in a VM as opposed to indirectly discovering bios issues through the
-+operating system (the OS). Operating systems tend to bypass bios problems and
-+hide them from the end user. We have more control of what we wanted to test and
-+how by being as close to the bios on a running system as possible without a
-+complicated software component such as an operating system coming in between.
-+Another issue is that we cannot exercise bios components such as ACPI and
-+SMBIOS without being in the highest hardware privilege level, ring 0 for
-+example in case of x86. Since the OS executes from ring 0 whereas normal user
-+land software resides in unprivileged ring 3, operating system must be modified
-+in order to write our test routines that exercise and test the bios. This is
-+not possible in all cases. Lastly, test frameworks and routines are preferably
-+written using a high level scripting language such as python. OSes and
-+OS modules are generally written using low level languages such as C and
-+low level assembly machine language. Writing test routines in a low level
-+language makes things more cumbersome. These and other reasons makes using
-+bios-bits very attractive for testing bioses. More details on the inspiration
-+for developing biosbits and its real life uses can be found in [#a]_ and [#b]_.
-+
- For QEMU, we maintain a fork of bios bits in gitlab along with all the
--dependent submodules here: https://gitlab.com/qemu-project/biosbits-bits
-+dependent submodules `here <https://gitlab.com/qemu-project/biosbits-bits>`__.
- This fork contains numerous fixes, a newer acpica and changes specific to
- running this avocado QEMU tests using bits. The author of this document
--is the sole maintainer of the QEMU fork of bios bits repo.
-+is the sole maintainer of the QEMU fork of bios bits repository. For more
-+information, please see author's `FOSDEM talk on this bios-bits based test
-+framework <https://fosdem.org/2024/schedule/event/fosdem-2024-2262-exercising-qemu-generated-acpi-smbios-tables-using-biosbits-from-within-a-guest-vm-/>`__.
-+
-+*********************************
-+Description of the test framework
-+*********************************
- 
- Under the directory ``tests/avocado/``, ``acpi-bits.py`` is a QEMU avocado
- test that drives all this.
-@@ -120,8 +142,9 @@ Under ``tests/avocado/`` as the root we have:
-        (b) Add a SPDX license header.
-        (c) Perform modifications to the test.
- 
--   Commits (a), (b) and (c) should go under separate commits so that the original
--   test script and the changes we have made are separated and clear.
-+   Commits (a), (b) and (c) preferably should go under separate commits so that
-+   the original test script and the changes we have made are separated and
-+   clear. (a) and (b) can sometimes be combined into a single step.
- 
-    The test framework will then use your modified test script to run the test.
-    No further changes would be needed. Please check the logs to make sure that
-@@ -141,4 +164,4 @@ References:
- -----------
- .. [#a] https://blog.linuxplumbersconf.org/2011/ocw/system/presentations/867/original/bits.pdf
- .. [#b] https://www.youtube.com/watch?v=36QIepyUuhg
--
-+.. [#c] https://fosdem.org/2024/schedule/event/fosdem-2024-2262-exercising-qemu-generated-acpi-smbios-tables-using-biosbits-from-within-a-guest-vm-/
--- 
-2.42.0
+  Thomas
 
 
