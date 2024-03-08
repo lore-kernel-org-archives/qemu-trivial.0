@@ -1,56 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1riXtQ-00041V-GJ
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2024 05:56:01 -0500
+	id 1riYN4-00051h-EI
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2024 06:26:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1riXtO-0003y9-96; Fri, 08 Mar 2024 05:55:58 -0500
-Received: from mgamail.intel.com ([192.198.163.15])
+ id 1riYMq-0004z5-7s; Fri, 08 Mar 2024 06:26:25 -0500
+Received: from mgamail.intel.com ([198.175.65.15])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1riXtL-0005y8-7p; Fri, 08 Mar 2024 05:55:58 -0500
+ id 1riYMk-0005QX-1N; Fri, 08 Mar 2024 06:26:21 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709895355; x=1741431355;
+ t=1709897179; x=1741433179;
  h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=4oIgtf+paer8ClkmhTXjdZdJb9xaIV/5IsWivs9QhTs=;
- b=Lx4IIjt4wV/KL9BUhxRyS8+Q4fvtbrR5X1HS7olOE4qQTpOfQo8cESRH
- MJhadtIOV5waJlnbYX8U60Yu4wk/TFn2gZE7a5tZieERFEQBAW+Iszi4g
- ZdqJXPgDuQdjIfUQn9PxHULJMuOBJOJ+/TsagQ5sr2ogfiJt9GTbLKhuf
- oKc1UaNfNKMbhTJz9G6VxVgmwzbWheeuBf5uUNZoeXlBYsnmVGY4KKP7c
- BsYiIZbthlGhw8QUy1SCmQoGTOP8g7F3umlHfL9s14M06VBTc+y23n2bQ
- sa1ZI7/a/fMOI0QRrz7cTFtlNb+W6G1zFosDsmStYr5i+nrtL2hwf69ea g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11006"; a="4779047"
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=phMUmCnzlh5IRbgVfIlvSACSCm84/sl/XLRrfcVWj2I=;
+ b=a34MOyDxEAcDcN0n0hD11RBM41wmmDPFYv41eBKoHZxqqGzz0qVeoWgo
+ vH0le+sC02n/JM1w5putjRK0y2MZ0zc00ZkKdfnnBkckRfmBDcdni66ac
+ cg/49oCsxxUZ0FWK/p61kwYq3yQn3g2udBrjxW3CFRGzITaM0BV/LZOx+
+ Ch52i2wruKOOgmgtKeAL0uqeHuNj6c1B5mw9xunhVw1geN1EAVvloZLBU
+ p+X1hZhJMrVy3qNr2LCNAo+ZWjdajeMRcN5YIskbeLNdJha6uIrYI06pJ
+ 1UBJSkU5L2fwT6b+O6Ex9M4rgHE8MxYRBLgV8hc3WCOcaIzmRnUBbhniP w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11006"; a="8433862"
 X-IronPort-AV: E=Sophos;i="6.07,109,1708416000"; 
-   d="scan'208";a="4779047"
-Received: from orviesa006.jf.intel.com ([10.64.159.146])
- by fmvoesa109.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2024 02:55:52 -0800
+   d="scan'208";a="8433862"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Mar 2024 03:26:15 -0800
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,109,1708416000"; d="scan'208";a="10836852"
+X-IronPort-AV: E=Sophos;i="6.07,109,1708416000"; d="scan'208";a="14991643"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.36])
- by orviesa006.jf.intel.com with ESMTP; 08 Mar 2024 02:55:50 -0800
-Date: Fri, 8 Mar 2024 19:09:36 +0800
+ by fmviesa003.fm.intel.com with ESMTP; 08 Mar 2024 03:26:11 -0800
+Date: Fri, 8 Mar 2024 19:39:58 +0800
 From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Eric Blake <eblake@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Michael Tokarev <mjt@tls.msk.ru>,
+To: Thomas Huth <thuth@redhat.com>, Anthony Krowiak <akrowiak@linux.ibm.com>,
+ Markus Armbruster <armbru@redhat.com>
+Cc: Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>
-Subject: Re: [PATCH 03/16] block: Fix missing ERRP_GUARD() for error_prepend()
-Message-ID: <Zerx8HOvpcOeoBWt@intel.com>
-References: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
- <20240228163723.1775791-4-zhao1.liu@linux.intel.com>
- <gmziaj7f2xj6qxharirunbm5apnqffz6tl33emtjsdkn5uqkxb@hdfllvc76gdk>
+ Zhao Liu <zhao1.liu@intel.com>,
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
+ Halil Pasic <pasic@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>
+Subject: Re: [PATCH 05/17] hw/vfio/ap: Fix missing ERRP_GUARD() for
+ error_prepend()
+Message-ID: <Zer5DmlB454EltBJ@intel.com>
+References: <20240229143914.1977550-1-zhao1.liu@linux.intel.com>
+ <20240229143914.1977550-6-zhao1.liu@linux.intel.com>
+ <7dadf54c-5a6f-4fe4-8dd3-1137e43c1756@redhat.com>
+ <0fa974fe-6be5-4468-8581-85bccd4b720b@linux.ibm.com>
+ <3a7a9d7e-3639-4adc-84a5-1126f7a13a0c@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <gmziaj7f2xj6qxharirunbm5apnqffz6tl33emtjsdkn5uqkxb@hdfllvc76gdk>
-Received-SPF: none client-ip=192.198.163.15;
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <3a7a9d7e-3639-4adc-84a5-1126f7a13a0c@redhat.com>
+Received-SPF: none client-ip=198.175.65.15;
  envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
 X-Spam_score_int: -25
 X-Spam_score: -2.6
@@ -71,38 +77,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Mar 2024 10:55:58 -0000
+X-List-Received-Date: Fri, 08 Mar 2024 11:26:28 -0000
 
-On Thu, Feb 29, 2024 at 01:51:16PM -0600, Eric Blake wrote:
-> Date: Thu, 29 Feb 2024 13:51:16 -0600
-> From: Eric Blake <eblake@redhat.com>
-> Subject: Re: [PATCH 03/16] block: Fix missing ERRP_GUARD() for
->  error_prepend()
+Hi Thomas, (and also ping Markus) ;-)
+
+> > > > vfio_ap_unregister_irq_notifier(VFIOAPDevice *vapdev,
+> > > >     static void vfio_ap_realize(DeviceState *dev, Error **errp)
+> > > >   {
+> > > > +    ERRP_GUARD();
+> > > >       int ret;
+> > > >       Error *err = NULL;
+> > > 
+> > > Now this function looks like we need both, ERRP_GUARD and the local
+> > > "err" variable? ... patch looks ok to me, but maybe Markus has an
+> > > idea how this could be done in a nicer way?
+> > 
+> > 
+> > Correct me if I'm wrong, but my understanding from reading the prologue
+> > in error.h is that errp is used to pass errors back to the caller. The
+> > 'err' variable is used to report errors set by a call to the
+> > vfio_ap_register_irq_notification function after which this function
+> > returns cleanly.
 > 
-> On Thu, Feb 29, 2024 at 12:37:10AM +0800, Zhao Liu wrote:
-> > From: Zhao Liu <zhao1.liu@intel.com>
-> > 
-> > As the comment in qapi/error, passing @errp to error_prepend() requires
-> > ERRP_GUARD():
-> > 
-> 
-> > 
-> > In block.c, there're 4 functions passing @errp to error_prepend()
-> > without ERRP_GUARD():
-> >  - bdrv_co_create_opts_simple()
-> >  - parse_json_filename()
-> >  - bdrv_open_backing_file()
-> >  - bdrv_append_temp_snapshot()
-> > 
-> > bdrv_co_create_opts_simple(), as an implementation of
-> > BolckDriver.bdrv_co_create_opts(), its @errp parameter is so widely
-> 
-> BlockDriver
+> Right, no objections, that's what I meant with "this function looks like we
+> need both" ...
+> But having both, "err" and "errp" in one function also looks somewhat
+> confusing at a first glance. No clue how this could be done much better
+> though, maybe rename "err" to "local_err" to make it clear that the two
+> variables are used independently?
 >
 
-Good catch! Thanks and will fix!
+I agree, the "local_err" is a better name and it seems we can't get rid
+of this local varibale. (I can also cleanup this in the follow-up
+series).
 
-Regards,
+From other use cases, @err is usually used to play with @errp and
+@local_err is (sometimes) used for local error handling.
+
+I'm also unsure if this variable naming is a convention of error
+handling though... Markus, what do you think about this understanding?
+
+Thanks,
 Zhao
 
 
