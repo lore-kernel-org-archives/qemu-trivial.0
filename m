@@ -1,65 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1riTZ9-0001OS-4o
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2024 01:18:48 -0500
+	id 1riVLw-0002JN-MH
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2024 03:13:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1riTZ3-0001NP-3T; Fri, 08 Mar 2024 01:18:41 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1riTZ1-0005H1-Fi; Fri, 08 Mar 2024 01:18:40 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 119AE5407E;
- Fri,  8 Mar 2024 09:19:31 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id D7DB993A91;
- Fri,  8 Mar 2024 09:18:37 +0300 (MSK)
-Message-ID: <45f690bd-8bb4-4bc7-8a2c-4e8c49c3c709@tls.msk.ru>
-Date: Fri, 8 Mar 2024 09:18:37 +0300
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1riVLi-0002Dz-GO
+ for qemu-trivial@nongnu.org; Fri, 08 Mar 2024 03:13:03 -0500
+Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1riVLg-00061i-V3
+ for qemu-trivial@nongnu.org; Fri, 08 Mar 2024 03:13:02 -0500
+Received: by mail-ej1-x636.google.com with SMTP id
+ a640c23a62f3a-a45cdb790dfso208364566b.3
+ for <qemu-trivial@nongnu.org>; Fri, 08 Mar 2024 00:12:58 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1709885578; x=1710490378; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=3hjr+hXi96y9rsK4LI2sGzcszVc/xuvXEWVv+y3/7f0=;
+ b=CvQNaCAfpY+fjjo9HTimyCza+QxOZ0LZyfZ9vZqUUkX1dlJEzzJ9sMM62cf6BaeKBJ
+ 3AhuEbJfydMzxKcN0mraPfkJi6N7GZjmT7V+Jwho7ZryfpcbHjpWk6n7RpVRbRs3ChA+
+ RHruoTDiOr1sPVQvCdZTSfk+OV6towZjR0ic2FM5QLtGQTsbLWGCmnd/0KMn1b/v+gws
+ EoQsXW9I1MFkM6+LLzeUEI5MU19ftQB2ogOBgK/pafpJfP4JL5KNnMGv7afMDrmC9xIq
+ 9ZJGeZsJhOORtM5np2cRVKdtZgZlrwOGc5/zH6CmuSZZslz1/0IvKSg2JiSc1UiMOYjC
+ e8Fw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709885578; x=1710490378;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=3hjr+hXi96y9rsK4LI2sGzcszVc/xuvXEWVv+y3/7f0=;
+ b=CRD8OuP10SYO3Iqjtr1XctPVfs35fP00Maj6mqlV6OQtxqWhacjfO1B/htyc3X50XT
+ W8JUplrOs5lAD/BoRItDAfkrkrthh5OC19C3awROXrGv1O+MqbuTI0M5HPwonMl+vPsT
+ u7OVfGpQKzU+ows64JBDtrrNcuK8F4gg5fKzbtm0yRFr1NPLeNIJ23l0cTYaAdsz+ti9
+ 4KIeFXQhCwVe34FXT5p2H8JASzyp0WPpuPDdHJ3H3ZJ2RBAQgAyXVgOzRT3mVk1we+kW
+ w9wqQBcpeYe+qWd8pL8Tb8PbPtHQpBfmgkXZS9kbhdjepNdl/KeDyo8uXkiDf+U2hb2o
+ 9OJQ==
+X-Gm-Message-State: AOJu0YwFmSUhNAoiAXzhTquNSzqAKqN/zqwLMoBICTrHsCEQsGdO1Rnv
+ asIWi6HT7/h+iv8LjJv3U5Whbqh7XeYn0BvPTaKjKQKF4Cfuybc5nFmly+QLrHW7YDPCC1kMGJC
+ F
+X-Google-Smtp-Source: AGHT+IGW8vQzXPMXhNRDB9cqXkxwFEJO3I6JyONCsSyIMVH9IKVxvzU/vWff8R6P7LitdnR02xsbzA==
+X-Received: by 2002:a17:906:eb4d:b0:a45:b36c:55c8 with SMTP id
+ mc13-20020a170906eb4d00b00a45b36c55c8mr5392711ejb.38.1709885577659; 
+ Fri, 08 Mar 2024 00:12:57 -0800 (PST)
+Received: from [192.168.69.100] (pir44-h02-176-184-37-132.dsl.sta.abo.bbox.fr.
+ [176.184.37.132]) by smtp.gmail.com with ESMTPSA id
+ jl1-20020a05600c6a8100b00412896298afsm1327135wmb.1.2024.03.08.00.12.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 08 Mar 2024 00:12:57 -0800 (PST)
+Message-ID: <7cced4b0-0c95-4544-9599-a2ad994cdc98@linaro.org>
+Date: Fri, 8 Mar 2024 09:12:55 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] docs/acpi/bits: add some clarity and details while
- also improving formating
+Subject: Re: [PATCH 0/4] hw/i386/pc: Trivial cleanups
 Content-Language: en-US
-To: Ani Sinha <anisinha@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20240308042252.4083-1-anisinha@redhat.com>
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240308042252.4083-1-anisinha@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, Bernhard Beschow <shentey@gmail.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20240301185936.95175-1-philmd@linaro.org>
+ <2062822B-3D5E-4D17-A913-0036249CFB50@gmail.com>
+ <33636782-de00-4a9a-87e1-59beac29087f@tls.msk.ru>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <33636782-de00-4a9a-87e1-59beac29087f@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::636;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -73,19 +85,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Mar 2024 06:18:44 -0000
+X-List-Received-Date: Fri, 08 Mar 2024 08:13:05 -0000
 
-08.03.2024 07:22, Ani Sinha :
-> Update bios-bits docs to add more details on why a pre-OS environment for
-> testing bioses is useful. Add author's FOSDEM talk link. Also improve the
-> formating of the document while at it.
+On 8/3/24 07:05, Michael Tokarev wrote:
+> 07.03.2024 21:57, Bernhard Beschow :
+>> Am 1. März 2024 18:59:32 UTC schrieb "Philippe Mathieu-Daudé" 
+>> <philmd@linaro.org>:
+>>> Trivial cleanups, mostly around the 'isapc' machine.
+>>>
+>>> Philippe Mathieu-Daudé (4):
+>>>   hw/i386/pc: Remove pc_compat_1_4..1.7[] left over declarations
+>>>   hw/i386/pc: Use generated NotifyVmexitOption_str()
+>>>   hw/i386/pc: Remove 'host_type' argument from pc_init1()
+>>>   hw/i386/pc: Have pc_init_isa() pass a NULL pci_type argument
+>>
+>> Ping. Will this series make it into 9.0? AFAICS all patches are reviewed.
 > 
-> CC: qemu-trivial@nongnu.org
-> Signed-off-by: Ani Sinha <anisinha@redhat.com>
+> Philippe, are you submitting this through you misc tree, or should I
+> pick it for trivial-patches?  I'm often a bit in doubt about patches
+> you Cc to qemu-trivial@, - a few times we both tried to submit them.
 
-Reviewed-by: Michael Tokarev <mjt@tls.mks.ru>
+Yes, series queued, thanks!
 
-and applied to qemu-trivial.  Thank you!
-
-/mjt
 
