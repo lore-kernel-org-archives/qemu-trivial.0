@@ -1,71 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1riYN4-00051h-EI
-	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2024 06:26:38 -0500
+	id 1ridE4-0001Bw-QQ
+	for mharc-qemu-trivial@gnu.org; Fri, 08 Mar 2024 11:37:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1riYMq-0004z5-7s; Fri, 08 Mar 2024 06:26:25 -0500
-Received: from mgamail.intel.com ([198.175.65.15])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1riYMk-0005QX-1N; Fri, 08 Mar 2024 06:26:21 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1709897179; x=1741433179;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=phMUmCnzlh5IRbgVfIlvSACSCm84/sl/XLRrfcVWj2I=;
- b=a34MOyDxEAcDcN0n0hD11RBM41wmmDPFYv41eBKoHZxqqGzz0qVeoWgo
- vH0le+sC02n/JM1w5putjRK0y2MZ0zc00ZkKdfnnBkckRfmBDcdni66ac
- cg/49oCsxxUZ0FWK/p61kwYq3yQn3g2udBrjxW3CFRGzITaM0BV/LZOx+
- Ch52i2wruKOOgmgtKeAL0uqeHuNj6c1B5mw9xunhVw1geN1EAVvloZLBU
- p+X1hZhJMrVy3qNr2LCNAo+ZWjdajeMRcN5YIskbeLNdJha6uIrYI06pJ
- 1UBJSkU5L2fwT6b+O6Ex9M4rgHE8MxYRBLgV8hc3WCOcaIzmRnUBbhniP w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11006"; a="8433862"
-X-IronPort-AV: E=Sophos;i="6.07,109,1708416000"; 
-   d="scan'208";a="8433862"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by orvoesa107.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Mar 2024 03:26:15 -0800
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,109,1708416000"; d="scan'208";a="14991643"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by fmviesa003.fm.intel.com with ESMTP; 08 Mar 2024 03:26:11 -0800
-Date: Fri, 8 Mar 2024 19:39:58 +0800
-From: Zhao Liu <zhao1.liu@linux.intel.com>
-To: Thomas Huth <thuth@redhat.com>, Anthony Krowiak <akrowiak@linux.ibm.com>,
- Markus Armbruster <armbru@redhat.com>
-Cc: Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ (Exim 4.90_1) (envelope-from <anthony.perard@cloud.com>)
+ id 1ricBo-0001ac-J7
+ for qemu-trivial@nongnu.org; Fri, 08 Mar 2024 10:31:21 -0500
+Received: from mail-ej1-x62b.google.com ([2a00:1450:4864:20::62b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <anthony.perard@cloud.com>)
+ id 1ricBi-00008j-Aj
+ for qemu-trivial@nongnu.org; Fri, 08 Mar 2024 10:31:16 -0500
+Received: by mail-ej1-x62b.google.com with SMTP id
+ a640c23a62f3a-a45bdf6e9c2so269487866b.0
+ for <qemu-trivial@nongnu.org>; Fri, 08 Mar 2024 07:31:09 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cloud.com; s=cloud; t=1709911867; x=1710516667; darn=nongnu.org;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date:from:to
+ :cc:subject:date:message-id:reply-to;
+ bh=YH6MlDPdnoLWWPXoTTEpelfujeDTtrM788RsOZVvSv0=;
+ b=WONxwXMDk6E7LCigw/BR3neWahDiERIgQTCKucCQmcOoSSm3N3tGw1L8iZE6/pi1eo
+ 7BV+OcC3HMQ8eelVEwRq7QS7+fdzrhPFfZm/wTupXI6YdOmv509yO2dNR/hOfDPDqmOh
+ yODEWQd0IvtTp26K98q9jZ6Sy7XRS16ekijWM=
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1709911867; x=1710516667;
+ h=in-reply-to:content-transfer-encoding:content-disposition
+ :mime-version:references:message-id:subject:cc:to:from:date
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=YH6MlDPdnoLWWPXoTTEpelfujeDTtrM788RsOZVvSv0=;
+ b=W5bPisuCK9EGm5WIoXJVDdWlpkvrDJxF3tBhHYZxi3X28YQWBtFNrYOb+GIUM87ENk
+ c7NB8LI4rDGcZF0LSE6OIK+NFbSNMYWh3/BHUWnFnmQ0QyYHD3xeMmWvmO96Kee0A6aU
+ BRv9QF13MBLQFRgY0dL0QdwdWVP2ZmaQH/WFCVSBqWfJyTFH/T2E+BBMceEjQhApzoTx
+ oOW13bKcYitOLmjWyrEagAI3Puw2AuJ20BU+FBwoxmu8y0imqc6KQKrxww6038WjhPSB
+ x8YaVksywdcfXCiaX/YuHlllmI4NY5/L3sdmOsiBJ9SaOPRy42AIEv+kUTcBNpy5X13+
+ 3KOw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUAMY5ivsoYvXBCzzAs2vMbWv9a+730j4IQK/AoY+y9k8q1QVVdvVObfBHk4LzO0EDeXLHc2r01cuJlkHwreBXYl+0YEjKzGw==
+X-Gm-Message-State: AOJu0YxLAOZ+G4EEyH4ZLoGxnxJCtQah4hUlGVWIS44K5bKk3LweK3tA
+ RPcvc4nKQrjZthNIx830FltJ/iIgQMQXbtEd3h2XO2NKng3MK9AEYKrZFciL3Es=
+X-Google-Smtp-Source: AGHT+IEBfIxsts55MLYdgyvsm2syWKaIzZJ/gQRQnI55gvIt3Qc/sVGj1iaCCCcqY8M5YHKD4JUpqQ==
+X-Received: by 2002:a17:906:84e:b0:a43:b269:d27f with SMTP id
+ f14-20020a170906084e00b00a43b269d27fmr13273755ejd.64.1709911867295; 
+ Fri, 08 Mar 2024 07:31:07 -0800 (PST)
+Received: from perard.uk.xensource.com (default-46-102-197-194.interdsl.co.uk.
+ [46.102.197.194]) by smtp.gmail.com with ESMTPSA id
+ js18-20020a170906ca9200b00a45be04f00fsm2848497ejb.171.2024.03.08.07.31.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 08 Mar 2024 07:31:06 -0800 (PST)
+Date: Fri, 8 Mar 2024 15:31:06 +0000
+From: Anthony PERARD <anthony.perard@cloud.com>
+To: Zhao Liu <zhao1.liu@linux.intel.com>
+Cc: Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Michael Tokarev <mjt@tls.msk.ru>,
  Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
  Zhao Liu <zhao1.liu@intel.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
- Halil Pasic <pasic@linux.ibm.com>, Jason Herne <jjherne@linux.ibm.com>
-Subject: Re: [PATCH 05/17] hw/vfio/ap: Fix missing ERRP_GUARD() for
+ Stefano Stabellini <sstabellini@kernel.org>, Paul Durrant <paul@xen.org>,
+ =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH 14/16] hw/char/xen_console: Fix missing ERRP_GUARD() for
  error_prepend()
-Message-ID: <Zer5DmlB454EltBJ@intel.com>
-References: <20240229143914.1977550-1-zhao1.liu@linux.intel.com>
- <20240229143914.1977550-6-zhao1.liu@linux.intel.com>
- <7dadf54c-5a6f-4fe4-8dd3-1137e43c1756@redhat.com>
- <0fa974fe-6be5-4468-8581-85bccd4b720b@linux.ibm.com>
- <3a7a9d7e-3639-4adc-84a5-1126f7a13a0c@redhat.com>
+Message-ID: <521de725-5d13-46ff-94d9-29e09fb90210@perard>
+References: <20240228163723.1775791-1-zhao1.liu@linux.intel.com>
+ <20240228163723.1775791-15-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <3a7a9d7e-3639-4adc-84a5-1126f7a13a0c@redhat.com>
-Received-SPF: none client-ip=198.175.65.15;
- envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+In-Reply-To: <20240228163723.1775791-15-zhao1.liu@linux.intel.com>
+Received-SPF: pass client-ip=2a00:1450:4864:20::62b;
+ envelope-from=anthony.perard@cloud.com; helo=mail-ej1-x62b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.583,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 08 Mar 2024 11:37:35 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,47 +91,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 08 Mar 2024 11:26:28 -0000
+X-List-Received-Date: Fri, 08 Mar 2024 15:31:21 -0000
 
-Hi Thomas, (and also ping Markus) ;-)
-
-> > > > vfio_ap_unregister_irq_notifier(VFIOAPDevice *vapdev,
-> > > >     static void vfio_ap_realize(DeviceState *dev, Error **errp)
-> > > >   {
-> > > > +    ERRP_GUARD();
-> > > >       int ret;
-> > > >       Error *err = NULL;
-> > > 
-> > > Now this function looks like we need both, ERRP_GUARD and the local
-> > > "err" variable? ... patch looks ok to me, but maybe Markus has an
-> > > idea how this could be done in a nicer way?
-> > 
-> > 
-> > Correct me if I'm wrong, but my understanding from reading the prologue
-> > in error.h is that errp is used to pass errors back to the caller. The
-> > 'err' variable is used to report errors set by a call to the
-> > vfio_ap_register_irq_notification function after which this function
-> > returns cleanly.
+On Thu, Feb 29, 2024 at 12:37:21AM +0800, Zhao Liu wrote:
+> From: Zhao Liu <zhao1.liu@intel.com>
 > 
-> Right, no objections, that's what I meant with "this function looks like we
-> need both" ...
-> But having both, "err" and "errp" in one function also looks somewhat
-> confusing at a first glance. No clue how this could be done much better
-> though, maybe rename "err" to "local_err" to make it clear that the two
-> variables are used independently?
->
+> As the comment in qapi/error, passing @errp to error_prepend() requires
+> ERRP_GUARD():
+> 
+> * = Why, when and how to use ERRP_GUARD() =
+> *
+> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+> ...
+> * - It should not be passed to error_prepend(), error_vprepend() or
+> *   error_append_hint(), because that doesn't work with &error_fatal.
+> * ERRP_GUARD() lifts these restrictions.
+> *
+> * To use ERRP_GUARD(), add it right at the beginning of the function.
+> * @errp can then be used without worrying about the argument being
+> * NULL or &error_fatal.
+> 
+> ERRP_GUARD() could avoid the case when @errp is the pointer of
+> error_fatal, the user can't see this additional information, because
+> exit() happens in error_setg earlier than information is added [1].
+> 
+> The xen_console_connect() passes @errp to error_prepend() without
+> ERRP_GUARD().
+> 
+> There're 2 places will call xen_console_connect():
+>  - xen_console_realize(): the @errp is from DeviceClass.realize()'s
+> 			  parameter.
+>  - xen_console_frontend_changed(): the @errp points its caller's
+>                                    @local_err.
+> 
+> To avoid the issue like [1] said, add missing ERRP_GUARD() at the
+> beginning of xen_console_connect().
+> 
+> [1]: Issue description in the commit message of commit ae7c80a7bd73
+>      ("error: New macro ERRP_GUARD()").
+> 
+> Cc: Stefano Stabellini <sstabellini@kernel.org>
+> Cc: Anthony Perard <anthony.perard@citrix.com>
+> Cc: Paul Durrant <paul@xen.org>
+> Cc: "Marc-André Lureau" <marcandre.lureau@redhat.com>
+> Cc: Paolo Bonzini <pbonzini@redhat.com>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 
-I agree, the "local_err" is a better name and it seems we can't get rid
-of this local varibale. (I can also cleanup this in the follow-up
-series).
-
-From other use cases, @err is usually used to play with @errp and
-@local_err is (sometimes) used for local error handling.
-
-I'm also unsure if this variable naming is a convention of error
-handling though... Markus, what do you think about this understanding?
+Acked-by: Anthony PERARD <anthony.perard@citrix.com>
 
 Thanks,
-Zhao
 
+-- 
+Anthony PERARD
 
