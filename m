@@ -1,33 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1riz54-0007F1-VZ
-	for mharc-qemu-trivial@gnu.org; Sat, 09 Mar 2024 10:57:50 -0500
+	id 1riz56-0007HR-4J
+	for mharc-qemu-trivial@gnu.org; Sat, 09 Mar 2024 10:57:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1riz52-0007Av-QL; Sat, 09 Mar 2024 10:57:48 -0500
+ id 1riz54-0007EF-A4; Sat, 09 Mar 2024 10:57:50 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1riz51-0004Gz-4c; Sat, 09 Mar 2024 10:57:48 -0500
+ id 1riz52-0004HG-LW; Sat, 09 Mar 2024 10:57:50 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id EC8B454528;
- Sat,  9 Mar 2024 18:58:30 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id B66E554529;
+ Sat,  9 Mar 2024 18:58:31 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 505A8944BD;
- Sat,  9 Mar 2024 18:57:34 +0300 (MSK)
-Received: (nullmailer pid 1694653 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 7E480944BE;
+ Sat,  9 Mar 2024 18:57:35 +0300 (MSK)
+Received: (nullmailer pid 1694656 invoked by uid 1000);
  Sat, 09 Mar 2024 15:57:29 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: BALATON Zoltan <balaton@eik.bme.hu>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 03/11] hw/scsi/lsi53c895a: Fix typo in comment
-Date: Sat,  9 Mar 2024 18:57:21 +0300
-Message-Id: <20240309155729.1694607-4-mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Subject: [PULL 04/11] make-release: switch to .xz format by default
+Date: Sat,  9 Mar 2024 18:57:22 +0300
+Message-Id: <20240309155729.1694607-5-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240309155729.1694607-1-mjt@tls.msk.ru>
 References: <20240309155729.1694607-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -49,30 +49,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 09 Mar 2024 15:57:49 -0000
+X-List-Received-Date: Sat, 09 Mar 2024 15:57:50 -0000
 
-From: BALATON Zoltan <balaton@eik.bme.hu>
+For a long time, we provide two compression formats in the
+download area, .bz2 and .xz.  There's absolutely no reason
+to provide two in parallel, .xz compresses better, and all
+the links we use points to .xz.  Downstream distributions
+mostly use .xz too.
 
-Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+For the release maintenance providing two formats is definitely
+extra burden too.
+
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/scsi/lsi53c895a.c | 2 +-
+ scripts/make-release | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
-index d607a5f9fb..f8598a17f5 100644
---- a/hw/scsi/lsi53c895a.c
-+++ b/hw/scsi/lsi53c895a.c
-@@ -225,7 +225,7 @@ struct LSIState {
-     MemoryRegion io_io;
-     AddressSpace pci_io_as;
- 
--    int carry; /* ??? Should this be an a visible register somewhere?  */
-+    int carry; /* ??? Should this be in a visible register somewhere?  */
-     int status;
-     int msg_action;
-     int msg_len;
+diff --git a/scripts/make-release b/scripts/make-release
+index 9c570b87f4..6e0433de24 100755
+--- a/scripts/make-release
++++ b/scripts/make-release
+@@ -47,5 +47,5 @@ meson subprojects download $SUBPROJECTS
+         CryptoPkg/Library/OpensslLib/openssl \
+         MdeModulePkg/Library/BrotliCustomDecompressLib/brotli)
+ popd
+-tar --exclude=.git -cjf ${destination}.tar.bz2 ${destination}
++tar --exclude=.git -cJf ${destination}.tar.xz ${destination}
+ rm -rf ${destination}
 -- 
 2.39.2
 
