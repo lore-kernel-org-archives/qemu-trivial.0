@@ -1,44 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1riz5N-0007R3-Ew
-	for mharc-qemu-trivial@gnu.org; Sat, 09 Mar 2024 10:58:10 -0500
+	id 1rj4XA-0005PU-4b
+	for mharc-qemu-trivial@gnu.org; Sat, 09 Mar 2024 16:47:14 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1riz5J-0007PX-CF; Sat, 09 Mar 2024 10:58:06 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1riz5H-0004Jt-3O; Sat, 09 Mar 2024 10:58:05 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 2C4A654533;
- Sat,  9 Mar 2024 18:58:40 +0300 (MSK)
-Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id AFE37944C5;
- Sat,  9 Mar 2024 18:57:43 +0300 (MSK)
-Received: (nullmailer pid 1694677 invoked by uid 1000);
- Sat, 09 Mar 2024 15:57:29 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <joonas.a.kankaala@gmail.com>)
+ id 1rj0XW-0003LU-H3; Sat, 09 Mar 2024 12:31:19 -0500
+Received: from mail-lf1-x142.google.com ([2a00:1450:4864:20::142])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <joonas.a.kankaala@gmail.com>)
+ id 1rj0XU-00026F-T5; Sat, 09 Mar 2024 12:31:18 -0500
+Received: by mail-lf1-x142.google.com with SMTP id
+ 2adb3069b0e04-5131c0691feso4169689e87.1; 
+ Sat, 09 Mar 2024 09:31:15 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1710005474; x=1710610274; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=5SY5eQbGOyL3k0Jv7RfKwObXNkxN20JhiRjwB5XoDUY=;
+ b=LFXcb7qys4c3Xb8yCdTuZOpOSc/da8BOnwjQh9+20lCxZZjfhX1qJ/MWjveDj7Ti3m
+ iRca7/T1U3OzWHls8R5jOv1j9eFo/04tKl9/OjGhSjH8yKo+300DMIi0gLEF8SoE95MC
+ mNCV6fs8o4qlWjDzVt1yMbAy/5yhikZ7V1nG2zhy9co/Dr7f//s6Q9gF/gsoiRAqZmZQ
+ XktH0fVwIyfFRT2hEexNyFpn3lNUVydNRna8hlyh/zPsBCZzS6nOhk1agWzM24+Mbjs2
+ A56KNhbLmHJMR+IJ0Ckrgq6hAf0r4LcmeVrG/SRZvk39f7nrXdVjmelCxyYcG1vZtkqo
+ mzvQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710005474; x=1710610274;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=5SY5eQbGOyL3k0Jv7RfKwObXNkxN20JhiRjwB5XoDUY=;
+ b=o//kd+M0sp8fZv+i7tijxQ9NL1yYxvWpyixinc6GK9IekDij9HIXWzRNVBsNtJoryH
+ YanHZhDUXC2roAEXFIPsr1B51S6DfBbnSDeRaztdusvHKJvC7LdvyrGmitxgOJSMrnbt
+ v8UaCSR/wdZNgbkD8d/4Gp6V5/HdcX6BHDWyyxKwMYWvnvbRhUuD446QQq9o9Hi2ZQCE
+ 21xYr7tTQfii6eaT2SbT+SxdKRtvbjwt6ilKc+Tyry3xo2IcZi9rcQ4J9+ToiMg6Bp+h
+ xXVwImlcsQmw5HFv2UDXl71PjLVqbXHbuBsTWztb6Pj+LBW2q87Cw7wsyTyK86SJMzTu
+ fRIA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX1WSvjId9ctq1iWtGhD6PEklYGtzXrdQt0Kx9p6vK8WQwGXy3Fr8W4iaEfG7ew3U4CTL11K0DJ0P7nYt5/B7Y8Sv0ZnnnNcA==
+X-Gm-Message-State: AOJu0YzKqTKqVIxZeosDw8sDHisAXJYfhUvTZ9Y3+wllqpwizgCj+SN7
+ Y8zeDdkG4yM9N2fEOKF3ZAo3NiA3DJkPFWAbbT3qc9xj3r1AVl82++VtB/EEkR9P8g==
+X-Google-Smtp-Source: AGHT+IEE3FR9BT4HcXtvzl3O4bqSdtYpzUGOOPJV8OP94vLgm17DkiNvuhTl8+xiA23/BW+TN2VV+Q==
+X-Received: by 2002:ac2:4305:0:b0:512:be8e:79da with SMTP id
+ l5-20020ac24305000000b00512be8e79damr1307932lfh.8.1710005474004; 
+ Sat, 09 Mar 2024 09:31:14 -0800 (PST)
+Received: from bequiet.zyxel.com (87-92-213-99.rev.dnainternet.fi.
+ [87.92.213.99]) by smtp.gmail.com with ESMTPSA id
+ c19-20020a056512325300b0051360320c79sm375298lfr.86.2024.03.09.09.31.13
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 09 Mar 2024 09:31:13 -0800 (PST)
+From: Joonas Kankaala <joonas.a.kankaala@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Ani Sinha <anisinha@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 11/11] docs/acpi/bits: add some clarity and details while also
- improving formating
-Date: Sat,  9 Mar 2024 18:57:29 +0300
-Message-Id: <20240309155729.1694607-12-mjt@tls.msk.ru>
+Cc: kraxel@redhat.com, qemu-trivial@nongnu.org,
+ Joonas Kankaala <joonas.a.kankaala@gmail.com>
+Subject: [PATCH] usb-audio: Fix invalid values in AudioControl descriptors
+Date: Sat,  9 Mar 2024 19:29:32 +0200
+Message-Id: <20240309172932.288940-1-joonas.a.kankaala@gmail.com>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240309155729.1694607-1-mjt@tls.msk.ru>
-References: <20240309155729.1694607-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::142;
+ envelope-from=joonas.a.kankaala@gmail.com; helo=mail-lf1-x142.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 09 Mar 2024 16:47:07 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -50,105 +80,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 09 Mar 2024 15:58:08 -0000
+X-List-Received-Date: Sat, 09 Mar 2024 17:31:20 -0000
 
-From: Ani Sinha <anisinha@redhat.com>
+This fixes the invalid bInterfaceProtocol value 0x04 in the USB audio
+AudioControl descriptors. It should be zero. While Linux and Windows
+forgive this error, macOS 14 Sonoma does not. The usb-audio device does
+not appear in macOS sound settings even though the device is recognized
+and shows up in USB system information. According to the USB audio class
+specs 1.0-4.0, valid values are 0x00, 0x20, 0x30 and 0x40. (Note also
+that Linux prints the warning "unknown interface protocol 0x4, assuming
+v1", but then proceeds as if the value was zero.)
 
-Update bios-bits docs to add more details on why a pre-OS environment for
-testing bioses is useful. Add author's FOSDEM talk link. Also improve the
-formating of the document while at it.
+This also fixes the invalid wTotalLength value in the multi-channel
+setup AudioControl interface header descriptor (used when multi=on
+and out.mixing-engine off). The combined length of all the descriptors
+there add up to 0x37, not 0x38. In Linux, "lsusb -D ..." displays
+incomplete descriptor information when this length is incorrect.
 
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Joonas Kankaala <joonas.a.kankaala@gmail.com>
 ---
- docs/devel/acpi-bits.rst | 55 ++++++++++++++++++++++++++++------------
- 1 file changed, 39 insertions(+), 16 deletions(-)
+ hw/usb/dev-audio.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/docs/devel/acpi-bits.rst b/docs/devel/acpi-bits.rst
-index 9677b0098f..1ec394f5fb 100644
---- a/docs/devel/acpi-bits.rst
-+++ b/docs/devel/acpi-bits.rst
-@@ -1,26 +1,48 @@
- =============================================================================
- ACPI/SMBIOS avocado tests using biosbits
- =============================================================================
--
-+************
-+Introduction
-+************
- Biosbits is a software written by Josh Triplett that can be downloaded
- from https://biosbits.org/. The github codebase can be found
--`here <https://github.com/biosbits/bits/tree/master>`__. It is a software that executes
--the bios components such as acpi and smbios tables directly through acpica
--bios interpreter (a freely available C based library written by Intel,
-+`here <https://github.com/biosbits/bits/tree/master>`__. It is a software that
-+executes the bios components such as acpi and smbios tables directly through
-+acpica bios interpreter (a freely available C based library written by Intel,
- downloadable from https://acpica.org/ and is included with biosbits) without an
--operating system getting involved in between.
-+operating system getting involved in between. Bios-bits has python integration
-+with grub so actual routines that executes bios components can be written in
-+python instead of bash-ish (grub's native scripting language).
- There are several advantages to directly testing the bios in a real physical
--machine or VM as opposed to indirectly discovering bios issues through the
--operating system. For one thing, the OSes tend to hide bios problems from the
--end user. The other is that we have more control of what we wanted to test
--and how by directly using acpica interpreter on top of the bios on a running
--system. More details on the inspiration for developing biosbits and its real
--life uses can be found in [#a]_ and [#b]_.
-+machine or in a VM as opposed to indirectly discovering bios issues through the
-+operating system (the OS). Operating systems tend to bypass bios problems and
-+hide them from the end user. We have more control of what we wanted to test and
-+how by being as close to the bios on a running system as possible without a
-+complicated software component such as an operating system coming in between.
-+Another issue is that we cannot exercise bios components such as ACPI and
-+SMBIOS without being in the highest hardware privilege level, ring 0 for
-+example in case of x86. Since the OS executes from ring 0 whereas normal user
-+land software resides in unprivileged ring 3, operating system must be modified
-+in order to write our test routines that exercise and test the bios. This is
-+not possible in all cases. Lastly, test frameworks and routines are preferably
-+written using a high level scripting language such as python. OSes and
-+OS modules are generally written using low level languages such as C and
-+low level assembly machine language. Writing test routines in a low level
-+language makes things more cumbersome. These and other reasons makes using
-+bios-bits very attractive for testing bioses. More details on the inspiration
-+for developing biosbits and its real life uses can be found in [#a]_ and [#b]_.
-+
- For QEMU, we maintain a fork of bios bits in gitlab along with all the
--dependent submodules here: https://gitlab.com/qemu-project/biosbits-bits
-+dependent submodules `here <https://gitlab.com/qemu-project/biosbits-bits>`__.
- This fork contains numerous fixes, a newer acpica and changes specific to
- running this avocado QEMU tests using bits. The author of this document
--is the sole maintainer of the QEMU fork of bios bits repo.
-+is the sole maintainer of the QEMU fork of bios bits repository. For more
-+information, please see author's `FOSDEM talk on this bios-bits based test
-+framework <https://fosdem.org/2024/schedule/event/fosdem-2024-2262-exercising-qemu-generated-acpi-smbios-tables-using-biosbits-from-within-a-guest-vm-/>`__.
-+
-+*********************************
-+Description of the test framework
-+*********************************
- 
- Under the directory ``tests/avocado/``, ``acpi-bits.py`` is a QEMU avocado
- test that drives all this.
-@@ -120,8 +142,9 @@ Under ``tests/avocado/`` as the root we have:
-        (b) Add a SPDX license header.
-        (c) Perform modifications to the test.
- 
--   Commits (a), (b) and (c) should go under separate commits so that the original
--   test script and the changes we have made are separated and clear.
-+   Commits (a), (b) and (c) preferably should go under separate commits so that
-+   the original test script and the changes we have made are separated and
-+   clear. (a) and (b) can sometimes be combined into a single step.
- 
-    The test framework will then use your modified test script to run the test.
-    No further changes would be needed. Please check the logs to make sure that
-@@ -141,4 +164,4 @@ References:
- -----------
- .. [#a] https://blog.linuxplumbersconf.org/2011/ocw/system/presentations/867/original/bits.pdf
- .. [#b] https://www.youtube.com/watch?v=36QIepyUuhg
--
-+.. [#c] https://fosdem.org/2024/schedule/event/fosdem-2024-2262-exercising-qemu-generated-acpi-smbios-tables-using-biosbits-from-within-a-guest-vm-/
+diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
+index d5ac1f8962..1897fff9e6 100644
+--- a/hw/usb/dev-audio.c
++++ b/hw/usb/dev-audio.c
+@@ -124,7 +124,6 @@ static const USBDescIface desc_iface[] = {
+         .bNumEndpoints                 = 0,
+         .bInterfaceClass               = USB_CLASS_AUDIO,
+         .bInterfaceSubClass            = USB_SUBCLASS_AUDIO_CONTROL,
+-        .bInterfaceProtocol            = 0x04,
+         .iInterface                    = STRING_USBAUDIO_CONTROL,
+         .ndesc                         = 4,
+         .descs = (USBDescOther[]) {
+@@ -282,7 +281,6 @@ static const USBDescIface desc_iface_multi[] = {
+         .bNumEndpoints                 = 0,
+         .bInterfaceClass               = USB_CLASS_AUDIO,
+         .bInterfaceSubClass            = USB_SUBCLASS_AUDIO_CONTROL,
+-        .bInterfaceProtocol            = 0x04,
+         .iInterface                    = STRING_USBAUDIO_CONTROL,
+         .ndesc                         = 4,
+         .descs = (USBDescOther[]) {
+@@ -293,7 +291,7 @@ static const USBDescIface desc_iface_multi[] = {
+                     USB_DT_CS_INTERFACE,        /*  u8  bDescriptorType */
+                     DST_AC_HEADER,              /*  u8  bDescriptorSubtype */
+                     U16(0x0100),                /* u16  bcdADC */
+-                    U16(0x38),                  /* u16  wTotalLength */
++                    U16(0x37),                  /* u16  wTotalLength */
+                     0x01,                       /*  u8  bInCollection */
+                     0x01,                       /*  u8  baInterfaceNr */
+                 }
 -- 
 2.39.2
 
