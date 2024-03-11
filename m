@@ -1,70 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjK0z-0001Vp-Iv
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 10:19:01 -0400
+	id 1rjWHQ-0005WY-Il
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:24:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rjK0n-0001TI-M9
- for qemu-trivial@nongnu.org; Sun, 10 Mar 2024 10:18:52 -0400
-Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rjK0k-0005PH-R1
- for qemu-trivial@nongnu.org; Sun, 10 Mar 2024 10:18:49 -0400
-Received: by mail-lj1-x229.google.com with SMTP id
- 38308e7fff4ca-2d4141c4438so50902571fa.3
- for <qemu-trivial@nongnu.org>; Sun, 10 Mar 2024 07:18:44 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710080323; x=1710685123; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=qwCFGX+5luWlu3CN3CepFmsc5aJK6fPfIFQpj0DyARU=;
- b=OJSVEPnXor9mmbK9u+CQ1o8HciCRQOfpjcbzTq/5yyLzYcx9YoC2wcYrTONYsK/SJN
- w0PQXLH+F5EPZ/+SyD9oNYFPQy9jkM/4NfjxONwKgPhOu9PJ+kXlqa3pO9PAC/UtNdFu
- 1mfmpqwXNxTD90tya82X6nbhFSsu3L/iAZbXEHnVfiGKhFJZP8dMvtliCmDLWXoXm4Yn
- YDSTPt+M3XgS9Fkacus+kouYoVhaJEp2a89wwT9mxTkmCxpg/ZbI7/rEa3GYRP+B7Olr
- TcUHuGsFgmrzRKCdxqvM8RUZ+9jHtcxV+Iplpt6OIAOf1FGw4NsXCOn6soAM9kyT0Hwo
- 5sdw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710080323; x=1710685123;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=qwCFGX+5luWlu3CN3CepFmsc5aJK6fPfIFQpj0DyARU=;
- b=gcLA/ZUwjqZSthOh07Y/Cpry41nG1NMVzQApP36Prrr7ijVTquJMur+ERtUISMWFCk
- THdk8g59RXsymcG+YfCQcrEwProMetUMCRCwcc87AwUdOldhIsjFU0JpOhl+0iSnl6wQ
- 977vyWT9KEbuQ4jk8xiQw1NIz1H6oSqCL3o8FWfLUUeAxPFuIOwTYbjgUY3Lvxoe/Po6
- GjBDaxjYil63cAIDTHWMhW6HFZ6x1wPfrxDOZ358UhAKmQ7uPhb88cJylS0hIrtHxfaq
- LzHeEOmiD8JGbtWC20FNzFXAggA+4/C60JP0qkxEVkim+FIh1IOFRK6gIi8PIprYghei
- ip0A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV8tiaL9FhIvu+K9DAm4JSiAGuhEMQjZuwxTlWKv6FyWbOBglicSF2Z2ripnpkFxRESsYBquildb8YiSN538pakI62g1/ngAA==
-X-Gm-Message-State: AOJu0YwZxzUoAmw3/iAxj2Y9AGF1xrOUqWNjfd9spwercL3HC0AQQOwN
- r/IuQFbcDOmP0dDxs1Mi8dF2zpRLUxSBujpDPEPMBj6o2Jq8b9Y0/SeOR/SjRIhwNGfQtuOsDP9
- p0fe11ZNsEsFpI2GulaS4WsZ5l6K7zlXPOND4/A==
-X-Google-Smtp-Source: AGHT+IHfNGUw4QsGJJHb99eLOVhaIBtqkyPPg7t4jFPCJfqgcLHf3rOLO7R9g8BPRqydbvcNBPjGlV+wzbmjPa7y24Q=
-X-Received: by 2002:a05:651c:1986:b0:2d2:3c88:cd57 with SMTP id
- bx6-20020a05651c198600b002d23c88cd57mr3017936ljb.32.1710080323165; Sun, 10
- Mar 2024 07:18:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rjWHP-0005W8-E3; Sun, 10 Mar 2024 23:24:47 -0400
+Received: from mgamail.intel.com ([198.175.65.10])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
+ id 1rjWHN-0007qJ-DL; Sun, 10 Mar 2024 23:24:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1710127485; x=1741663485;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=9u2qpUQw+97M2ytR4D9PH0ERtHP9EM+bxi7PUz1J0MM=;
+ b=f+5F5Oh0AUwUKO3ZQFnhLZRafbXONiq4LZ7t91ncgJXDQFeujqgaUtCZ
+ C8O2k3loJlSr86qOk9EjZqd2pfKV2mcokdlcUAhTiNiw/WZcaZbYgQssN
+ Wdtd0JxQTU1F84hki38zLPApLk1MU482a2s/Hb46TTW1AzAPA65sud+l8
+ pRsKldQP7BK8jL8Wm3qJ6QgaJnOf1h8UzeUaWjoGGb9Gpxq5H8N/IebZX
+ Lut5YmP9PMUv4/PRTqJ+PxWYRmAeWzjwa8EsLJbBZzLwn6W2GlNO4YcrH
+ cdvA7YtIpD7B5t/xQQ/alEGAcugpnKfZOeoB7XgivDv7yAjfMLK6pjzTP A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229576"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229576"
+Received: from fmviesa003.fm.intel.com ([10.60.135.143])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 10 Mar 2024 20:24:43 -0700
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15593711"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
+ by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:24:42 -0700
+From: Zhao Liu <zhao1.liu@linux.intel.com>
+To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH v2 01/29] error: Add error_vprepend() in comment of
+ ERRP_GUARD() rules
+Date: Mon, 11 Mar 2024 11:37:54 +0800
+Message-Id: <20240311033822.3142585-2-zhao1.liu@linux.intel.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
+References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
-References: <20240309155729.1694607-1-mjt@tls.msk.ru>
-In-Reply-To: <20240309155729.1694607-1-mjt@tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 10 Mar 2024 14:18:32 +0000
-Message-ID: <CAFEAcA_ffM2pbgWXjpzZscDk2O0uzoaRCbKUg-LQ2yWqi1NJ6Q@mail.gmail.com>
-Subject: Re: [PULL 00/11] Trivial patches for 2024-03-09
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::229;
- envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x229.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: none client-ip=198.175.65.10;
+ envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.945,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,31 +67,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 10 Mar 2024 14:18:56 -0000
+X-List-Received-Date: Mon, 11 Mar 2024 03:24:47 -0000
 
-On Sat, 9 Mar 2024 at 15:59, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
-> The following changes since commit 84644ac1b0f80d41b8a2f66547b83b2ad4a98576:
->
->   Merge tag 'darwin-20240305' of https://github.com/philmd/qemu into staging (2024-03-08 18:19:25 +0000)
->
-> are available in the Git repository at:
->
->   https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
->
-> for you to fetch changes up to d65f1ed7de1559534d0a1fabca5bdd81c594c7ca:
->
->   docs/acpi/bits: add some clarity and details while also improving formating (2024-03-09 18:56:37 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2024-03-09
->
+From: Zhao Liu <zhao1.liu@intel.com>
 
+The error_vprepend() should use ERRP_GUARD() just as the documentation
+of ERRP_GUARD() says:
 
-Applied, thanks.
+> It must be used when the function dereferences @errp or passes
+> @errp to error_prepend(), error_vprepend(), or error_append_hint().
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/9.0
-for any user-visible changes.
+Considering that error_vprepend() is also an API provided in error.h,
+it is necessary to add it to the description of the rules for using
+ERRP_GUARD().
 
--- PMM
+Cc: Markus Armbruster <armbru@redhat.com>
+Cc: Michael Roth <michael.roth@amd.com>
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+---
+v2: Add a comma after error_vprepend(). (Markus)
+---
+ include/qapi/error.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/qapi/error.h b/include/qapi/error.h
+index f21a231bb1a6..71f8fb2c50ee 100644
+--- a/include/qapi/error.h
++++ b/include/qapi/error.h
+@@ -207,7 +207,7 @@
+  *
+  * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+  * - It must not be dereferenced, because it may be null.
+- * - It should not be passed to error_prepend() or
++ * - It should not be passed to error_prepend(), error_vprepend(), or
+  *   error_append_hint(), because that doesn't work with &error_fatal.
+  * ERRP_GUARD() lifts these restrictions.
+  *
+-- 
+2.34.1
+
 
