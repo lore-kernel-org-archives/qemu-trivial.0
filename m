@@ -1,47 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjWI7-0005ov-1r
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:25:31 -0400
+	id 1rjWIV-0006Mc-6R
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:25:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWI0-0005fZ-9n; Sun, 10 Mar 2024 23:25:24 -0400
+ id 1rjWIP-00066h-9I; Sun, 10 Mar 2024 23:25:50 -0400
 Received: from mgamail.intel.com ([198.175.65.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWHq-00085e-L9; Sun, 10 Mar 2024 23:25:24 -0400
+ id 1rjWIN-00084P-ET; Sun, 10 Mar 2024 23:25:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710127514; x=1741663514;
+ t=1710127547; x=1741663547;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=rXT52kQTMV0QpLJDW1r5yUbIXX8ae4g4UM9QXgujzJA=;
- b=ih4eZi2hAgF3vWPHRsXFf5zspbF0yHQh8OvF+SK+Dq3lcODT/N0WPNJ8
- +UyBnfZsSxY2SEjK2fQEnyOU428rI5kprnlFX4LzMnhHqi4u7aVibGCHL
- wIVrI6P8NrGv7N2Fh0ppICCOnszVLRmaUzbCAmoRUT5UBA09fMWoB5jFC
- C19e9ZacnWs/DNcVnBOeoioAEeilmeYA+ZgUmx/+LGtdbJ5wIxo1wW32g
- guss+R0gfSAsIY17IuVcyPtyZwKwW7NkcG3r4kbfeyPz3Iu/pqWBQ+Dri
- yvCCTpTOVrDxd2H/8NxQvj1BrP4GmQbw5ZmBFrgbLZVqeYNeLzmvO0bbI Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229640"
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229640"
+ bh=dhYFu9CpNh5doFmSCgCFqfnCRHrzDYVeD6p8TJhW+Hc=;
+ b=lA7i23TDW3Pgw2mpmtmDQr6hlLthdoofXSBGTtzN70o6iet6agJF8ar7
+ 9xR+bbf90/NajZnhfr2bj9VIs4RL14l4QeJD0M7qKsnqlu2lk4r/g0bx7
+ 3C78E0j4zuE0XZXd0arfDG6oGHBFPdS2u15fYK0UUBhdTnCeIqfJC8M5r
+ x/aELWdQKhfMt3CiIGK/pju0ajycvGptJOa4YXds0CUUZKwqImoGBRRtN
+ Qbes+x8IoEPjIVhhIXE0KPwgZpwKr/hytni8Sd1NjCN/MJnuUeFuKCJPJ
+ t0e7Vs4Aj2/osMIK70dCekw7lyRwigbawn6UOMlcM5sFeZZuyHCwraIVT A==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229698"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229698"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Mar 2024 20:25:10 -0700
+ 10 Mar 2024 20:25:25 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15593791"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15593888"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:25:07 -0700
+ by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:25:23 -0700
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org
-Subject: [PATCH v2 09/29] block/qed: Fix missing ERRP_GUARD() for
+ Paul Burton <paulburton@kernel.org>,
+ Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Subject: [PATCH v2 14/29] hw/core/loader-fit: Fix missing ERRP_GUARD() for
  error_prepend()
-Date: Mon, 11 Mar 2024 11:38:02 +0800
-Message-Id: <20240311033822.3142585-10-zhao1.liu@linux.intel.com>
+Date: Mon, 11 Mar 2024 11:38:07 +0800
+Message-Id: <20240311033822.3142585-15-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
 References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
@@ -53,8 +53,9 @@ X-Spam_score_int: -29
 X-Spam_score: -3.0
 X-Spam_bar: ---
 X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.945,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_NONE=0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -67,7 +68,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2024 03:25:24 -0000
+X-List-Received-Date: Mon, 11 Mar 2024 03:25:50 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -90,39 +91,47 @@ ERRP_GUARD() could avoid the case when @errp is &error_fatal, the user
 can't see this additional information, because exit() happens in
 error_setg earlier than information is added [1].
 
-The bdrv_qed_co_invalidate_cache() passes @errp to error_prepend()
-without ERRP_GUARD().
+In hw/core/loader-fit.c, there are 2 functions passing @errp to
+error_prepend() without ERRP_GUARD():
+ - fit_load_kernel()
+ - fit_load_fdt()
 
-Though it is a BlockDriver.bdrv_co_invalidate_cache() method, and
-currently its @errp parameter only points to callers' local_err, to
-follow the requirement of @errp, add missing ERRP_GUARD() at the
-beginning of this function.
+Their @errp parameters are both the pointers of the local @err virable
+in load_fit().
+
+Though they don't cause the issue like [1] said, to follow the
+requirement of @errp, add missing ERRP_GUARD() at their beginning.
 
 [1]: Issue description in the commit message of commit ae7c80a7bd73
      ("error: New macro ERRP_GUARD()").
 
-Cc: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: Kevin Wolf <kwolf@redhat.com>
-Cc: Hanna Reitz <hreitz@redhat.com>
-Cc: qemu-block@nongnu.org
+Cc: Paul Burton <paulburton@kernel.org>
+Cc: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- block/qed.c | 1 +
- 1 file changed, 1 insertion(+)
+ hw/core/loader-fit.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/block/qed.c b/block/qed.c
-index bc2f0a61c0a9..fa5bc1108552 100644
---- a/block/qed.c
-+++ b/block/qed.c
-@@ -1579,6 +1579,7 @@ bdrv_qed_co_change_backing_file(BlockDriverState *bs, const char *backing_file,
- static void coroutine_fn GRAPH_RDLOCK
- bdrv_qed_co_invalidate_cache(BlockDriverState *bs, Error **errp)
+diff --git a/hw/core/loader-fit.c b/hw/core/loader-fit.c
+index b7c7b3ba94d4..9f20007dbb51 100644
+--- a/hw/core/loader-fit.c
++++ b/hw/core/loader-fit.c
+@@ -120,6 +120,7 @@ static int fit_load_kernel(const struct fit_loader *ldr, const void *itb,
+                            int cfg, void *opaque, hwaddr *pend,
+                            Error **errp)
  {
 +    ERRP_GUARD();
-     BDRVQEDState *s = bs->opaque;
-     int ret;
- 
+     const char *name;
+     const void *data;
+     const void *load_data;
+@@ -178,6 +179,7 @@ static int fit_load_fdt(const struct fit_loader *ldr, const void *itb,
+                         int cfg, void *opaque, const void *match_data,
+                         hwaddr kernel_end, Error **errp)
+ {
++    ERRP_GUARD();
+     Error *err = NULL;
+     const char *name;
+     const void *data;
 -- 
 2.34.1
 
