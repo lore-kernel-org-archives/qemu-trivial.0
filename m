@@ -1,67 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjeQW-0006gw-BK
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2024 08:06:44 -0400
+	id 1rjerx-0000r7-D2
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2024 08:35:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rjeQU-0006gd-Sf
- for qemu-trivial@nongnu.org; Mon, 11 Mar 2024 08:06:42 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ (Exim 4.90_1) (envelope-from <anthony.perard@cloud.com>)
+ id 1rjerw-0000ql-0b
+ for qemu-trivial@nongnu.org; Mon, 11 Mar 2024 08:35:04 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rjeQT-0005uQ-Ba
- for qemu-trivial@nongnu.org; Mon, 11 Mar 2024 08:06:42 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-5684f95cc9bso1969577a12.1
- for <qemu-trivial@nongnu.org>; Mon, 11 Mar 2024 05:06:40 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <anthony.perard@cloud.com>)
+ id 1rjert-0002us-P9
+ for qemu-trivial@nongnu.org; Mon, 11 Mar 2024 08:35:03 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4132ab0eea9so4318335e9.1
+ for <qemu-trivial@nongnu.org>; Mon, 11 Mar 2024 05:35:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710158799; x=1710763599; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=HHeF1kcO0KBNnDHvzwFJmaj+tfFkHCSkoe5qdulqK/E=;
- b=yxcFPCLQIFS04yyeb9IdF/Ts1T9zTA57TfuDzKyQk27a1gfZ3WmqW9hAtHUfy4Cksw
- kq6lpQum+3l4q2inuw0NNAugHod9/lmt6wsejIbKMy6WXVwMF8CPsz5GG0+BDq23Ht3v
- 3QmLtoTUSFh0uBt7yW5EN+PhC4iapwwcCEgIK2Mus+H7A6oy+ByzKZ17OJMYTorMiXc6
- 7bRvFcln+Kd6VH3vvb9Hl/ttVzGqsk3hvog1Xg3vCfBqtezs5kZrP+tgwRJUlXpZ+2Ev
- Hi1T7W2gHMukEbJ1vLxPh6XOLrekoNjozGxVJBNxtBycYpDVSzOQIwJkvcCFu/Pemc4f
- xxow==
+ d=citrix.com; s=google; t=1710160499; x=1710765299; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=rlPMa/qxborM8s490ri7DT2VZROhH4ERuCvOsPfS7eM=;
+ b=nebDNmtvU+MUtZa0vwbQWpiRKlEScf6PZDcA9E7h/VqFsHROdTOxhtYXeccjkobvGl
+ iHy6c3UQ0aryo3MYSiprVqW2KtD0lN/AerOXNe3foVZtDVjcbvlKLvyaYUAvg1CCBoaz
+ Kt347vb0ucoyRoMwvPkUndKLIsIzKxz/On8rY=
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710158799; x=1710763599;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1710160499; x=1710765299;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=HHeF1kcO0KBNnDHvzwFJmaj+tfFkHCSkoe5qdulqK/E=;
- b=v2TvzTUtL58xMVOWWdjpX+i5K/lBUWGErAoN+dnj11cRtUIV+XVokdsjj6W5aL4uEs
- 8vLWXRPZTpzY43kOE6AXgaFYVODI3+FPbSQ+/327Q+wv0q0C3XyexA39sqyLn1fl7Vo4
- JCo7fSVjkLdl3b8cZKC7PKLV94N2IH1CW8tIc3uDjSPGaIbA2aBf3jzM33oQkBPQpDkz
- 6a8BhaCcCs4H7Ex7F7nhyrmZbhADmje9A5vVlWrhrHHXF9u1caavj8U5w/P4MWd1ZpXY
- 9cIoONIb6OtxW1NBdItLWy5l7VZq8vgDC4xBHyToZzeGEPjblORYIZ+fb5Gj7xUzNhZH
- BmLA==
-X-Gm-Message-State: AOJu0YyY0eCrfXu/zQk7BSThm9vdyz65/5wgCLnw60wCplNtoB470qYh
- KC7aezLKWGwO+x/mYwQg0H5StpQf/ISblbvGfssM3C6tXWFDIDJV2Y7W46aJh3DcLf34OW3j6YN
- Ql0lDoQMdaRa0TO0TGdxdeftGqukdOqodkoXBfUneBk2WtExj
-X-Google-Smtp-Source: AGHT+IGU71GVKYfU28UjVSxcElyObnNBhcJkZpkJB6rFmtVxjTdJg0UgMpg5H4kg78PWXRyGTDQ8gCObHe+ZBCJfZwc=
-X-Received: by 2002:a50:8e5a:0:b0:565:6b76:3140 with SMTP id
- 26-20020a508e5a000000b005656b763140mr5709373edx.18.1710158799361; Mon, 11 Mar
- 2024 05:06:39 -0700 (PDT)
+ bh=rlPMa/qxborM8s490ri7DT2VZROhH4ERuCvOsPfS7eM=;
+ b=sFmSfaRjRMnNb9mKhxCQCA88v5P+wfqq8wEZfKnpwPBryDbwLA6DkO5jDufPpqvRj6
+ 1tFOtqLxF/J0NW7xnHdYsFpwlJitwMPl2jLvU1S3hkIK4XR/Kc6nR2/Tey1XebTVUIoA
+ QEWKj4dJNSGytPqxKmVI+JG5Z/ir44ijZWliDqK9INT+OKznGBO6Hghe7cLDLHck+XPq
+ 2kfv2PjcmQQhxrPU3SwAmLfsfhsk26VCY5Syqev1fk6Sun+/kzKZimW8RDTRempXb61b
+ 8LdBaCmWLdhYQSQS41i8mlnvvQpaAEpCy1zdilibJToR9mCwKtQvFBxml9uh+6plZnD5
+ B42g==
+X-Gm-Message-State: AOJu0YzrbA+hLXPaG5dlUgp4+vqzOXYZaQzeNVZ0wR0mEmhBXFfOiMp5
+ 63e6BIZuBB9rWdZtyfDICVrO6jVfkuhcflv2fJCptXL2xz806OsvYC2f0Ou4K8A=
+X-Google-Smtp-Source: AGHT+IGNVDb7sZG1ocbqJS/Hcf9B2VYTyLUFbrcHqEdOixXYj4DfOL6lzVnqAqkk11Sq1GbhwaJIAw==
+X-Received: by 2002:a05:600c:3f90:b0:413:28ee:22e5 with SMTP id
+ fs16-20020a05600c3f9000b0041328ee22e5mr2266589wmb.23.1710160499262; 
+ Mon, 11 Mar 2024 05:34:59 -0700 (PDT)
+Received: from localhost.localdomain
+ (cpc92320-cmbg19-2-0-cust35.5-4.cable.virginm.net. [82.13.64.36])
+ by smtp.gmail.com with ESMTPSA id
+ c6-20020a05600c0a4600b00412f2136793sm15792639wmq.44.2024.03.11.05.34.58
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 11 Mar 2024 05:34:58 -0700 (PDT)
+From: Anthony PERARD <anthony.perard@citrix.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Xu <peterx@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>
+Subject: [PATCH] migration: Fix format in error message
+Date: Mon, 11 Mar 2024 12:34:39 +0000
+Message-Id: <20240311123439.16844-1-anthony.perard@citrix.com>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-References: <20240311120346.9596-1-anisinha@redhat.com>
-In-Reply-To: <20240311120346.9596-1-anisinha@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Mar 2024 12:06:28 +0000
-Message-ID: <CAFEAcA_kh4sXkxsk10hCB9vAaJg2oNAv3DS_QhkHmFsWtVdUBw@mail.gmail.com>
-Subject: Re: [PATCH] docs: update copyright date to the year 2024
-To: Ani Sinha <anisinha@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=anthony.perard@cloud.com; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.029,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.249, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -75,25 +78,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2024 12:06:43 -0000
+X-List-Received-Date: Mon, 11 Mar 2024 12:35:04 -0000
 
-On Mon, 11 Mar 2024 at 12:04, Ani Sinha <anisinha@redhat.com> wrote:
->
-> We are already in the third month of 2024 but the copyright notices still refer
-> to 2023. Update the date to 2024 in documentation and help texts.
->
-> Cc: peter.maydell@linaro.org
-> Cc: qemu-trivial@nongnu.org
-> Signed-off-by: Ani Sinha <anisinha@redhat.com>
-> ---
->  docs/conf.py              | 2 +-
->  include/qemu/help-texts.h | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+From: Anthony PERARD <anthony.perard@citrix.com>
 
-Oops, yes, we always forget this. Thanks for catching it.
+In file_write_ramblock_iov(), "offset" is "uintptr_t" and not
+"ram_addr_t". While usually they are both equivalent, this is not the
+case with CONFIG_XEN_BACKEND.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Use the right format. This will fix build on 32-bit.
 
-thanks
--- PMM
+Fixes: f427d90b9898 ("migration/multifd: Support outgoing mapped-ram stream format")
+Signed-off-by: Anthony PERARD <anthony.perard@citrix.com>
+---
+ migration/file.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/migration/file.c b/migration/file.c
+index 164b079966..5054a60851 100644
+--- a/migration/file.c
++++ b/migration/file.c
+@@ -191,7 +191,7 @@ int file_write_ramblock_iov(QIOChannel *ioc, const struct iovec *iov,
+          */
+         offset = (uintptr_t) iov[slice_idx].iov_base - (uintptr_t) block->host;
+         if (offset >= block->used_length) {
+-            error_setg(errp, "offset " RAM_ADDR_FMT
++            error_setg(errp, "offset %" PRIxPTR
+                        "outside of ramblock %s range", offset, block->idstr);
+             ret = -1;
+             break;
+-- 
+Anthony PERARD
+
 
