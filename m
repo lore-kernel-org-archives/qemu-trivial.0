@@ -1,35 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjWIu-0007yA-Js
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:26:20 -0400
+	id 1rjWIw-00084S-Vl
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:26:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWIt-0007tI-Eg; Sun, 10 Mar 2024 23:26:19 -0400
+ id 1rjWIu-0007vj-32; Sun, 10 Mar 2024 23:26:20 -0400
 Received: from mgamail.intel.com ([198.175.65.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWIr-00084P-Lh; Sun, 10 Mar 2024 23:26:19 -0400
+ id 1rjWIs-0008BV-0b; Sun, 10 Mar 2024 23:26:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710127577; x=1741663577;
+ t=1710127578; x=1741663578;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=RzsS+Q7k5xI37YwrtN7D37ccOEKmtvC2L46segGR2TU=;
- b=QYc0b9blufhyfuziL175gVo+wOptCGFlmyJBskaxug44Rrj957aYR0kw
- eLoSn/xuRl+BNzjRfUe895l3rfQjl1D5K62VYt4or6boLG96EhyhTqFBK
- QVEfP049yM7OLuOgDPPFVqYPsHcFqhqvImPYLJ4WS09XtoY8QsimVTpMI
- GIxetdl9HMP0INk1G+eTt4w7swBZqF3UbeBwEtu7Azq/dYHg7YFfqyz6Y
- 8+Ngu4FFeYWDdagxvpPMdp2NGwpR5PTBcWC8FTxdw53bWc3QDsQEBUiDR
- a4/OKkE5Pu76M863ZhyCwSZI/N1tNjJVZX5dZsmVm2WJl1NvuSusgO8k2 g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229754"
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229754"
+ bh=TFnB2T5AZHrD3WQA9yPndxMlq2vhIpqQTeZDm9Rn2z4=;
+ b=a7dOTpSF2TNOKADHGhu67C+tnWrf4JJ0m1ZafYkHRk/0zwynlBYa8nrF
+ k3rE83zD13UScB5Q/HmAvYKBUlOgWXG3RQZIqvrZK816L5If5AN8J6b5q
+ sIiQiJxPtKe2RDzifKgtyNyheF1zrEXEHzIEWUpoqMOj9KV2fY5tB2vqq
+ m1YM7MPELFqh2Mi4/ioH+dn2ZEnJo0r7xV1kgrAuKK9K1bY39r4yjIXjC
+ qjnXAFXrqnnQB9vMx+MoPC3MIdYsq3sKnc+8akTrJco2N4JrzLitl5YTw
+ 9USdUE94njLOoWBhji73GLPIuiartX+2pB0MXOVJlq4SkV090zBrey0y/ Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229772"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229772"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Mar 2024 20:25:40 -0700
+ 10 Mar 2024 20:25:46 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15593999"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15594046"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:25:38 -0700
+ by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:25:44 -0700
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
@@ -38,10 +38,10 @@ To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
  Alex Williamson <alex.williamson@redhat.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v2 19/29] hw/vfio/container: Fix missing ERRP_GUARD() for
+Subject: [PATCH v2 21/29] hw/vfio/iommufd: Fix missing ERRP_GUARD() for
  error_prepend()
-Date: Mon, 11 Mar 2024 11:38:12 +0800
-Message-Id: <20240311033822.3142585-20-zhao1.liu@linux.intel.com>
+Date: Mon, 11 Mar 2024 11:38:14 +0800
+Message-Id: <20240311033822.3142585-22-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
 References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
@@ -69,7 +69,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2024 03:26:19 -0000
+X-List-Received-Date: Mon, 11 Mar 2024 03:26:20 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -92,7 +92,7 @@ ERRP_GUARD() could avoid the case when @errp is &error_fatal, the user
 can't see this additional information, because exit() happens in
 error_setg earlier than information is added [1].
 
-The vfio_get_group() passes @errp to error_prepend(). Its @errp is
+The iommufd_cdev_getfd() passes @errp to error_prepend(). Its @errp is
 from vfio_attach_device(), and there are too many possible callers to
 check the impact of this defect; it may or may not be harmless. Thus it
 is necessary to protect @errp with ERRP_GUARD().
@@ -106,26 +106,25 @@ beginning of this function.
 Cc: Alex Williamson <alex.williamson@redhat.com>
 Cc: "Cédric Le Goater" <clg@redhat.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
 v2: Use Markus' sentence to polish commit message. (Markus)
 ---
- hw/vfio/container.c | 1 +
+ hw/vfio/iommufd.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/vfio/container.c b/hw/vfio/container.c
-index bd25b9fbad2e..f66bb01f5b18 100644
---- a/hw/vfio/container.c
-+++ b/hw/vfio/container.c
-@@ -719,6 +719,7 @@ static void vfio_disconnect_container(VFIOGroup *group)
+diff --git a/hw/vfio/iommufd.c b/hw/vfio/iommufd.c
+index 9bfddc136089..7baf49e6ee9e 100644
+--- a/hw/vfio/iommufd.c
++++ b/hw/vfio/iommufd.c
+@@ -116,6 +116,7 @@ static void iommufd_cdev_unbind_and_disconnect(VFIODevice *vbasedev)
  
- static VFIOGroup *vfio_get_group(int groupid, AddressSpace *as, Error **errp)
+ static int iommufd_cdev_getfd(const char *sysfs_path, Error **errp)
  {
 +    ERRP_GUARD();
-     VFIOGroup *group;
-     char path[32];
-     struct vfio_group_status status = { .argsz = sizeof(status) };
+     long int ret = -ENOTTY;
+     char *path, *vfio_dev_path = NULL, *vfio_path = NULL;
+     DIR *dir = NULL;
 -- 
 2.34.1
 
