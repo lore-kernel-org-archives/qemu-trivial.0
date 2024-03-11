@@ -1,53 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjWHm-0005cR-GG
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:25:11 -0400
+	id 1rjWHu-0005dq-AM
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:25:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWHh-0005bT-MA; Sun, 10 Mar 2024 23:25:05 -0400
+ id 1rjWHr-0005dJ-Ul; Sun, 10 Mar 2024 23:25:16 -0400
 Received: from mgamail.intel.com ([198.175.65.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWHe-0007rZ-TW; Sun, 10 Mar 2024 23:25:05 -0400
+ id 1rjWHq-00084P-4E; Sun, 10 Mar 2024 23:25:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710127503; x=1741663503;
+ t=1710127514; x=1741663514;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=n7x/NGlcrymeFElMS75k5Vxzn/ea0m2ZkbkONubxDgw=;
- b=dyNOyScc6vDSdBb0T4JLgOycc0jWe6bXh20BSswPl05oVpk/DUGz+NY/
- G79064ppSmx4if8gKEgF00TaEhnVv1p5o/Cej1LHr2urMge0K1YM6p0Om
- hi3fg53aRVq6t7+3dztqvJZb1SfYCd/w+aTzw61kaD9iQ1/j+JgjoajLl
- JVLRmCJVuqWUqNAdPrINkQRQgiAKpehM0MsxT5dSpB9g0HBD+G4Chbd1n
- CLwXFno1Ro/v306UyRKalp0MnoT9U3ho+EhSPxi1BvWY/atifjCWVEYUr
- 0XoNWCZAq8/pzk+jT5a+21tZQYTnfVd0gcZajToYJgSF0EqRgLcOeL7mN g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229615"
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229615"
+ bh=UApyMmGs7NxGJ7nyTsQeSlDiPd1XDqLXAIr9okAi3X4=;
+ b=CtWF06wf2siRU7dLKa9HDjeWKuZm5uxaIo/qgRS6mEzfGX4dVBggBsnw
+ gKoC/f2BHsqis1AL5E6FKS0B+RyzNNuOq0uRmnMYzwdDLuqQL2YdTx/ux
+ HfsDX3oh/8r9qjSpq+5yhYHPJcBTW8SKEvakyDVSgqQXssvIUfv7y3rhu
+ L6EDglclgqG2YbURr1evb+7pY6adrSGyJggbkJ+XwnKoex5A3tMrPfnwo
+ g4+uGwu/CpQH31RbqSJtPomvNl/oxb4qdN3uYuI4G+4gV9TCp0pK3zCO8
+ WvtnvzXJfBhtAWNs21+wEZeJRPVzB0J1fb0PWsJtMh5IgIiQm008RnMJ4 g==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229633"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229633"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Mar 2024 20:25:00 -0700
+ 10 Mar 2024 20:25:07 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15593759"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15593784"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:24:57 -0700
+ by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:25:04 -0700
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Stefan Hajnoczi <stefanha@redhat.com>, Fam Zheng <fam@euphon.net>,
  Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- qemu-block@nongnu.org
-Subject: [PATCH v2 06/29] block/nvme: Fix missing ERRP_GUARD() for
+ qemu-block@nongnu.org, Eric Blake <eblake@redhat.com>
+Subject: [PATCH v2 08/29] block/qcow2: Fix missing ERRP_GUARD() for
  error_prepend()
-Date: Mon, 11 Mar 2024 11:37:59 +0800
-Message-Id: <20240311033822.3142585-7-zhao1.liu@linux.intel.com>
+Date: Mon, 11 Mar 2024 11:38:01 +0800
+Message-Id: <20240311033822.3142585-9-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
 References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: none client-ip=198.175.65.10;
  envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
@@ -70,7 +68,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2024 03:25:05 -0000
+X-List-Received-Date: Mon, 11 Mar 2024 03:25:16 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -93,63 +91,54 @@ ERRP_GUARD() could avoid the case when @errp is &error_fatal, the user
 can't see this additional information, because exit() happens in
 error_setg earlier than information is added [1].
 
-In nvme.c, there are 3 functions passing @errp to error_prepend()
+In block/qcow2.c, there are 2 functions passing @errp to error_prepend()
 without ERRP_GUARD():
-- nvme_init_queue()
-- nvme_create_queue_pair()
-- nvme_identify()
+ - qcow2_co_create()
+ - qcow2_co_truncate()
 
-All these 3 functions take their @errp parameters from the
-nvme_file_open(), which is a BlockDriver.bdrv_nvme() method and its
-@errp points to its caller's local_err.
+There are too many possible callers to check the impact of the defect;
+it may or may not be harmless. Thus it is necessary to protect @errp with
+ERRP_GUARD().
 
-Though these 3 cases haven't trigger the issue like [1] said, to
-follow the requirement of @errp, add missing ERRP_GUARD() at their
-beginning.
+Therefore, to avoid the issue like [1] said, add missing ERRP_GUARD() at
+their beginning.
 
 [1]: Issue description in the commit message of commit ae7c80a7bd73
      ("error: New macro ERRP_GUARD()").
 
-Cc: Stefan Hajnoczi <stefanha@redhat.com>
-Cc: Fam Zheng <fam@euphon.net>
-Cc: "Philippe Mathieu-Daudé" <philmd@linaro.org>
 Cc: Kevin Wolf <kwolf@redhat.com>
 Cc: Hanna Reitz <hreitz@redhat.com>
 Cc: qemu-block@nongnu.org
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Reviewed-by: Eric Blake <eblake@redhat.com>
 ---
- block/nvme.c | 3 +++
- 1 file changed, 3 insertions(+)
+v2:
+ * Use Markus' sentence to polish commit message. (Markus)
+ * Fix typo. (Eric)
+---
+ block/qcow2.c | 2 ++
+ 1 file changed, 2 insertions(+)
 
-diff --git a/block/nvme.c b/block/nvme.c
-index 0a0a0a6b36cd..3a3c6da73d29 100644
---- a/block/nvme.c
-+++ b/block/nvme.c
-@@ -168,6 +168,7 @@ static QemuOptsList runtime_opts = {
- static bool nvme_init_queue(BDRVNVMeState *s, NVMeQueue *q,
-                             unsigned nentries, size_t entry_bytes, Error **errp)
+diff --git a/block/qcow2.c b/block/qcow2.c
+index 204f5854cff2..956128b40948 100644
+--- a/block/qcow2.c
++++ b/block/qcow2.c
+@@ -3483,6 +3483,7 @@ static uint64_t qcow2_opt_get_refcount_bits_del(QemuOpts *opts, int version,
+ static int coroutine_fn GRAPH_UNLOCKED
+ qcow2_co_create(BlockdevCreateOptions *create_options, Error **errp)
  {
 +    ERRP_GUARD();
-     size_t bytes;
-     int r;
+     BlockdevCreateOptionsQcow2 *qcow2_opts;
+     QDict *options;
  
-@@ -221,6 +222,7 @@ static NVMeQueuePair *nvme_create_queue_pair(BDRVNVMeState *s,
-                                              unsigned idx, size_t size,
-                                              Error **errp)
+@@ -4283,6 +4284,7 @@ static int coroutine_fn GRAPH_RDLOCK
+ qcow2_co_truncate(BlockDriverState *bs, int64_t offset, bool exact,
+                   PreallocMode prealloc, BdrvRequestFlags flags, Error **errp)
  {
 +    ERRP_GUARD();
-     int i, r;
-     NVMeQueuePair *q;
-     uint64_t prp_list_iova;
-@@ -535,6 +537,7 @@ static int nvme_admin_cmd_sync(BlockDriverState *bs, NvmeCmd *cmd)
- /* Returns true on success, false on failure. */
- static bool nvme_identify(BlockDriverState *bs, int namespace, Error **errp)
- {
-+    ERRP_GUARD();
-     BDRVNVMeState *s = bs->opaque;
-     bool ret = false;
-     QEMU_AUTO_VFREE union {
+     BDRVQcow2State *s = bs->opaque;
+     uint64_t old_length;
+     int64_t new_l1_size;
 -- 
 2.34.1
 
