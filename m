@@ -1,61 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjZjp-0007ta-7O
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2024 03:06:21 -0400
+	id 1rjaIT-0006aC-KD
+	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2024 03:42:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rjZjZ-0007s7-Pr
- for qemu-trivial@nongnu.org; Mon, 11 Mar 2024 03:06:07 -0400
+ (Exim 4.90_1) (envelope-from <clegoate@redhat.com>)
+ id 1rjaIS-0006ZX-7L
+ for qemu-trivial@nongnu.org; Mon, 11 Mar 2024 03:42:08 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1rjZjW-0006cZ-6O
- for qemu-trivial@nongnu.org; Mon, 11 Mar 2024 03:06:03 -0400
+ (Exim 4.90_1) (envelope-from <clegoate@redhat.com>)
+ id 1rjaIP-0006Fw-Kf
+ for qemu-trivial@nongnu.org; Mon, 11 Mar 2024 03:42:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1710140760;
+ s=mimecast20190719; t=1710142923;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=7IA2bnntCqzgsW4BCsJ9TcXjp/1HBaRmv15AQl7n9Mk=;
- b=LhzTZ9pO/HZHLWOc4Z9gWmtD2Oos7ZIg2I3BXh2ezjLctusOeDCKcp190FHz4SKe11erlK
- 2zZXKWnaoilO5be3b2lejX8aFo2vGl5GFgtpqS9eUO15w3K5j4aq9Wz4hIN9R5KrpcuBu6
- 7XRzAxma3azVKSDlQbEiDtAMcnk9sWE=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-625-EdbZ1sboODOntp5DMye6aA-1; Mon,
- 11 Mar 2024 03:05:55 -0400
-X-MC-Unique: EdbZ1sboODOntp5DMye6aA-1
-Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
- [10.11.54.5])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C847D1C0170E;
- Mon, 11 Mar 2024 07:05:54 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.138])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 8587C8177;
- Mon, 11 Mar 2024 07:05:54 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 05FB721E6A24; Mon, 11 Mar 2024 08:05:51 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org,
- qemu-block@nongnu.org,  John Snow <jsnow@redhat.com>,  Thomas Huth
- <thuth@redhat.com>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/ide/ahci: Rename ahci_internal.h to ahci-internal.h
-In-Reply-To: <a1a9cdfd-8c54-dc8c-6512-9c59b63cdcdf@eik.bme.hu> (BALATON
- Zoltan's message of "Sun, 10 Mar 2024 15:27:23 +0100 (CET)")
-References: <20240227131310.C24EB4E6005@zero.eik.bme.hu>
- <00a87926-49bf-4945-94fd-99f5c3a73bb0@linaro.org>
- <a1a9cdfd-8c54-dc8c-6512-9c59b63cdcdf@eik.bme.hu>
-Date: Mon, 11 Mar 2024 08:05:51 +0100
-Message-ID: <87zfv5uu28.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ bh=lZsD4Cd8TiQrd0EYmIkzGuuEMBx0IvBbsO+tklst1EA=;
+ b=CVNcC0upZpAsRMlT3XQ7H+IE6E7hMdi0mo+kCCntZ6Ych7EW+1QNzl1KJFWfir9gpPqjgq
+ C1FWTIlvaIq2JhqUmd41tY9JZbDWVpEfZi2biqWH1FlKC/zqhErFMHwciSc/G60op7IUTo
+ 8I2LK6lh6JZ40gdAebG8xT7s9DkEW/4=
+Received: from mail-lf1-f72.google.com (mail-lf1-f72.google.com
+ [209.85.167.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-373-3nVCefosNdCDKrLNbuaAxw-1; Mon, 11 Mar 2024 03:42:00 -0400
+X-MC-Unique: 3nVCefosNdCDKrLNbuaAxw-1
+Received: by mail-lf1-f72.google.com with SMTP id
+ 2adb3069b0e04-5139c92ba2eso1284430e87.1
+ for <qemu-trivial@nongnu.org>; Mon, 11 Mar 2024 00:42:00 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1710142919; x=1710747719;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=lZsD4Cd8TiQrd0EYmIkzGuuEMBx0IvBbsO+tklst1EA=;
+ b=abfEdi3vxOdOpxAaEKD5HeNABHQnB2nzLfpFPo5gRO9Vxo6LE8vgr9BRcjNu9snSSn
+ SOOlaGpL12qqMnCUYccLlcpLTABgtsvl9nDBR9i/STjqdWHgtUcTu0suhPS1LjUXwTG8
+ XQi2WPQUZmNHUHb65FS2pntW0929cyfd/qUaejqZeAs9ufIFW4mJRP54vJ9MYpOyIPTB
+ BejzqCN34bx7Fi+bdapGptDcVcPKrsdrPaJZmulj1m0KCaIZRKX48EoixD+Xfr/vvzIs
+ fg3D9v/mrNdG97uHC/G0td16X4PhHAgdrjTfN9538FYc8R38JGU97TdhSia7wUdbzvV5
+ lPyA==
+X-Gm-Message-State: AOJu0Yx4Mu1g2re+yh4FDCHZeUnDAhx3C9JSWeTpfWpc2558BJvx/AYm
+ uCnbuezSmlD7etpdJpCUyp2TFIe7rWTtuuH8lNPP5oeVsH97TfhP6natNPDpAVnTWw4GC/6+g1a
+ UA1DxLEshASjme6UcGN0B/5PF/haPsIrdeDEYP1hZwO054vBJ9pyxEMg=
+X-Received: by 2002:a05:6512:118e:b0:513:23be:e924 with SMTP id
+ g14-20020a056512118e00b0051323bee924mr4457943lfr.59.1710142919031; 
+ Mon, 11 Mar 2024 00:41:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFKRe/7tgwMXo120uKBJePAZrklcFs4PoDG+6meLDMuz6j5bg/D9Tg8U5X1Vv2rn/8F9RNtUw==
+X-Received: by 2002:a05:6512:118e:b0:513:23be:e924 with SMTP id
+ g14-20020a056512118e00b0051323bee924mr4457920lfr.59.1710142918662; 
+ Mon, 11 Mar 2024 00:41:58 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
+ ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ by smtp.gmail.com with ESMTPSA id
+ e10-20020a05600c4e4a00b004132aa2f857sm2001045wmq.17.2024.03.11.00.41.57
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 11 Mar 2024 00:41:58 -0700 (PDT)
+Message-ID: <675daa19-96ac-48c4-a2a5-baf4cc38facb@redhat.com>
+Date: Mon, 11 Mar 2024 08:41:55 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 29/29] target/s390x/cpu_models: Fix missing
+ ERRP_GUARD() for error_prepend()
+To: Zhao Liu <zhao1.liu@linux.intel.com>, Thomas Huth <thuth@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+ David Hildenbrand <david@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, qemu-s390x@nongnu.org
+References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
+ <20240311033822.3142585-30-zhao1.liu@linux.intel.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clegoate@redhat.com>
+In-Reply-To: <20240311033822.3142585-30-zhao1.liu@linux.intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US, fr
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=clegoate@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -30
 X-Spam_score: -3.1
@@ -76,28 +101,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2024 07:06:09 -0000
+X-List-Received-Date: Mon, 11 Mar 2024 07:42:08 -0000
 
-BALATON Zoltan <balaton@eik.bme.hu> writes:
+On 3/11/24 04:38, Zhao Liu wrote:
+> From: Zhao Liu <zhao1.liu@intel.com>
+> 
+> As the comment in qapi/error, passing @errp to error_prepend() requires
+> ERRP_GUARD():
+> 
+> * = Why, when and how to use ERRP_GUARD() =
+> *
+> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+> ...
+> * - It should not be passed to error_prepend(), error_vprepend() or
+> *   error_append_hint(), because that doesn't work with &error_fatal.
+> * ERRP_GUARD() lifts these restrictions.
+> *
+> * To use ERRP_GUARD(), add it right at the beginning of the function.
+> * @errp can then be used without worrying about the argument being
+> * NULL or &error_fatal.
+> 
+> ERRP_GUARD() could avoid the case when @errp is &error_fatal, the user
+> can't see this additional information, because exit() happens in
+> error_setg earlier than information is added [1].
+> 
+> In target/s390x/cpu_models.c, there are 2 functions passing @errp to
+> error_prepend() without ERRP_GUARD():
+> - check_compatibility()
+> - s390_realize_cpu_model()
+> 
+> Though both their @errp parameters point to their callers' local @err
+> virables and don't cause the issue as [1] said, to follow the
+> requirement of @errp, also add missing ERRP_GUARD() at their beginning.
+> 
+> [1]: Issue description in the commit message of commit ae7c80a7bd73
+>       ("error: New macro ERRP_GUARD()").
+> 
+> Cc: David Hildenbrand <david@redhat.com>
+> Cc: Thomas Huth <thuth@redhat.com>
+> Cc: Richard Henderson <richard.henderson@linaro.org>
+> Cc: Ilya Leoshkevich <iii@linux.ibm.com>
+> Cc: qemu-s390x@nongnu.org
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
 
-> On Tue, 27 Feb 2024, Philippe Mathieu-Daud=C3=A9 wrote:
->> On 27/2/24 14:13, BALATON Zoltan wrote:
->>> Other headers now use dash instead of underscore. Rename
->>> ahci_internal.h accordingly for consistency.
->>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
->>> ---
->>>   hw/ide/{ahci_internal.h =3D> ahci-internal.h} | 0
->>>   hw/ide/ahci.c                               | 2 +-
->>>   hw/ide/ich.c                                | 2 +-
->>>   3 files changed, 2 insertions(+), 2 deletions(-)
->>>   rename hw/ide/{ahci_internal.h =3D> ahci-internal.h} (100%)
->>
->> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->
-> Was this also queued somewhere? I haven't seen it merged neither with the=
- trivial nor the misc-hw pull requests.
 
-I figure John (our IDE odd fixer) wouldn't mind this going via
-qemu-trivial.  Cc'ed!
+Reviewed-by: Cédric Le Goater <clg@kaod.org>
+
+Thanks,
+
+C.
+
+
 
 
