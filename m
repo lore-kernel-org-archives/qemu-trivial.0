@@ -1,35 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjWJL-00028y-F7
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:26:47 -0400
+	id 1rjWJN-0002Nf-1n
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:26:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWJK-0001zx-7k; Sun, 10 Mar 2024 23:26:46 -0400
+ id 1rjWJL-00028z-EH; Sun, 10 Mar 2024 23:26:47 -0400
 Received: from mgamail.intel.com ([198.175.65.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWJH-00084P-W6; Sun, 10 Mar 2024 23:26:45 -0400
+ id 1rjWJJ-0008EJ-Bg; Sun, 10 Mar 2024 23:26:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710127604; x=1741663604;
+ t=1710127605; x=1741663605;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=EmFbIY6Qn3mloQQLOMmHVbYM6zm0hNI5fLAvwGdEegc=;
- b=CaovXFTrego+dUblqRoGrPSyUyeKem1k7AQHt4E9AW+wqffiOiLPVrq7
- Vp24Jhj3VYjCGHNeBc9tDbkIC6HnYX8Ij3vVMEKsDYe3F/xNXGYwPrlOr
- j5DAdc/RcYsM7iU8WMWrRZclfHYI5KygnNUKoqa/lJXs2mYch/sFOhoGh
- C2TrwPXvpvOQfpbNBj4HdtqZyNgmr9EJXuP5GiLdXdRnoa4DfcQZpH2x4
- 4HG1uoTU9L3qH08zU3WaFEq0cg4zEuVYyiKslQyb96Pi1HdmJ8vLSoxq0
- 3hAWCGkxjeBBpdA5ZmxrnkV7Cy7O3hapJVaGaUSbU9uK459qXB88Z8LAH A==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229844"
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229844"
+ bh=9ayhOJuCQ4MJTTJHMLUMPI61IaoZ8oXaXLwtDkGmbN8=;
+ b=PwJ4PQBXi1NFG4TskEQ3mWzSn52z9AAjMKwI0d+vybsYwr9RKuYmu4tW
+ 1BaEuC//wlmVbh3CUm7s5JRjlPwS9kVTY65esWYtT1shJZUsZlBofUib3
+ biKoE8V7TDbX9gBWlE428xXPsZiN2a3iqaEiRoMfrF0YCYRmkZFX7tM+v
+ 0UCacIsbua4KeuEUXwR9DRP6spsgI9WimiXmohxXoKvdO5zc0HvEdTZyU
+ ekgPwXaDO3R6NEPAPMT2N3OO8tJ8FvUoPZ7s+bpRmwDmIDDAc+/T5R3q4
+ PcT1vnxIAjiWLVkbTfIi99UkT4Y+1yOqt+cEwm8u+NT/Cc78Na9TKbX+R Q==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229835"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229835"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Mar 2024 20:26:00 -0700
+ 10 Mar 2024 20:25:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15594086"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15594080"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:25:57 -0700
+ by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:25:55 -0700
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
@@ -37,10 +37,10 @@ To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
  "Michael S. Tsirkin" <mst@redhat.com>
-Subject: [PATCH v2 26/29] hw/virtio/vhost: Fix missing ERRP_GUARD() for
+Subject: [PATCH v2 25/29] hw/virtio/vhost-vsock: Fix missing ERRP_GUARD() for
  error_prepend()
-Date: Mon, 11 Mar 2024 11:38:19 +0800
-Message-Id: <20240311033822.3142585-27-zhao1.liu@linux.intel.com>
+Date: Mon, 11 Mar 2024 11:38:18 +0800
+Message-Id: <20240311033822.3142585-26-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
 References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
@@ -67,7 +67,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2024 03:26:46 -0000
+X-List-Received-Date: Mon, 11 Mar 2024 03:26:47 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -90,17 +90,13 @@ ERRP_GUARD() could avoid the case when @errp is &error_fatal, the user
 can't see this additional information, because exit() happens in
 error_setg earlier than information is added [1].
 
-In hw/virtio/vhost.c, there are 2 functions passing @errp to
-error_prepend() without ERRP_GUARD():
-- vhost_save_backend_state()
-- vhost_load_backend_state()
+The vhost_vsock_device_realize() passes @errp to error_prepend(), and as
+a VirtioDeviceClass.realize method, its @errp is from
+DeviceClass.realize so that there is no guarantee that the @errp won't
+point to @error_fatal.
 
-Their @errp both points to callers' @local_err. However, as the APIs
-defined in include/hw/virtio/vhost.h, it is necessary to protect their
-@errp with ERRP_GUARD().
-
-To follow the requirement of @errp, add missing ERRP_GUARD() at their
-beginning.
+To avoid the issue like [1] said, add missing ERRP_GUARD() at the
+beginning of this function.
 
 [1]: Issue description in the commit message of commit ae7c80a7bd73
      ("error: New macro ERRP_GUARD()").
@@ -108,29 +104,21 @@ beginning.
 Cc: "Michael S. Tsirkin" <mst@redhat.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- hw/virtio/vhost.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/virtio/vhost-vsock.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
-index 2c9ac794680e..2e4e040db87a 100644
---- a/hw/virtio/vhost.c
-+++ b/hw/virtio/vhost.c
-@@ -2199,6 +2199,7 @@ int vhost_check_device_state(struct vhost_dev *dev, Error **errp)
+diff --git a/hw/virtio/vhost-vsock.c b/hw/virtio/vhost-vsock.c
+index d5ca0b5a1055..3d4a5a97f484 100644
+--- a/hw/virtio/vhost-vsock.c
++++ b/hw/virtio/vhost-vsock.c
+@@ -121,6 +121,7 @@ static const VMStateDescription vmstate_virtio_vhost_vsock = {
  
- int vhost_save_backend_state(struct vhost_dev *dev, QEMUFile *f, Error **errp)
+ static void vhost_vsock_device_realize(DeviceState *dev, Error **errp)
  {
 +    ERRP_GUARD();
-     /* Maximum chunk size in which to transfer the state */
-     const size_t chunk_size = 1 * 1024 * 1024;
-     g_autofree void *transfer_buf = NULL;
-@@ -2291,6 +2292,7 @@ fail:
- 
- int vhost_load_backend_state(struct vhost_dev *dev, QEMUFile *f, Error **errp)
- {
-+    ERRP_GUARD();
-     size_t transfer_buf_size = 0;
-     g_autofree void *transfer_buf = NULL;
-     g_autoptr(GError) g_err = NULL;
+     VHostVSockCommon *vvc = VHOST_VSOCK_COMMON(dev);
+     VirtIODevice *vdev = VIRTIO_DEVICE(dev);
+     VHostVSock *vsock = VHOST_VSOCK(dev);
 -- 
 2.34.1
 
