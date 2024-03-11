@@ -1,53 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjWIc-0006nR-Aj
+	id 1rjWIc-0006qT-Oo
 	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:26:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWIV-0006Nk-Q9; Sun, 10 Mar 2024 23:25:56 -0400
+ id 1rjWIW-0006Qy-Ll; Sun, 10 Mar 2024 23:25:57 -0400
 Received: from mgamail.intel.com ([198.175.65.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWIU-0008EJ-18; Sun, 10 Mar 2024 23:25:55 -0400
+ id 1rjWIU-0008BV-Ec; Sun, 10 Mar 2024 23:25:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
  t=1710127554; x=1741663554;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=Vhjy1DpbGaIvfiMMR/WA6udExEgCFb+nLNgH2lQLdrI=;
- b=dtZYsyCvDkt/CYvo7HWzYUkngUEh3Ia/SND6eu66Fw0Xe08XNAeMPrdV
- YhRn/eFoULpYhwWSh/aFbqv+xMSHTsTl1qmj00rPUjb2RDSM05fr92EwI
- z9Jd7lA+hinGGcp+ifX2kZiCZv9KOkgoQgg47udZbn3Abkn84yBjXER6O
- Qu4nQUycRgskoHmZTPZ2MEUaaUw0WKSOrx+zrnqrLanhZ4nuPWfka911c
- RCc1+XlYL5BujwQcT2S/pvbEM4iss+kZkrN03t/QnXdFzPsB9yIput7rX
- rMqh6MyMbVbyShfitqh0QiSzlKynGF/DcvvLK90moTY6/oWhKWpnMvo4D Q==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229726"
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229726"
+ bh=vZshy9OBrsUTeZ3ltvu9CPOrZHXEn+0ngl/QLE5aqVA=;
+ b=MsqFjWKYa7qlZNYRnlveVAgH+qHNz40U3OhLFkxg+iYGh1vbUPjyd/TE
+ J3lfyfDnxBJ5Xvlrgue9S5BoJc5o759aDP6B+cV+XRfrpZ7JqCAgfEmT5
+ H3xY3h8sEkhwdjtJLKFitu4HItcXfca4s5p4O9R23UxVWbHfFW6/dZNOp
+ HI+bEyiGBdsA56qCU01Z80KOKkU4oKBDcAAmHUMwlseNCQL00NkR1F2H6
+ oASXzxNV3NBhsu5CGco8OoM/6cyW7lZip7BwjrrFrAoocT8r+fi/J0Qws
+ ivex6PK1kvt14uebQBsEEaMjiqd3Vu8MXyrFZQSg5L4GehxrebRELWYyi w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229745"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229745"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Mar 2024 20:25:31 -0700
+ 10 Mar 2024 20:25:38 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15593950"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15593992"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:25:29 -0700
+ by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:25:35 -0700
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Juan Quintela <quintela@trasno.org>,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- Michael Galaxy <mgalaxy@akamai.com>,
- Steve Sistare <steven.sistare@oracle.com>
-Subject: [PATCH v2 16/29] hw/misc/ivshmem: Fix missing ERRP_GUARD() for
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ Tony Krowiak <akrowiak@linux.ibm.com>, Halil Pasic <pasic@linux.ibm.com>,
+ Jason Herne <jjherne@linux.ibm.com>, qemu-s390x@nongnu.org
+Subject: [PATCH v2 18/29] hw/vfio/ap: Fix missing ERRP_GUARD() for
  error_prepend()
-Date: Mon, 11 Mar 2024 11:38:09 +0800
-Message-Id: <20240311033822.3142585-17-zhao1.liu@linux.intel.com>
+Date: Mon, 11 Mar 2024 11:38:11 +0800
+Message-Id: <20240311033822.3142585-19-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
 References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: none client-ip=198.175.65.10;
  envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
@@ -93,7 +94,7 @@ ERRP_GUARD() could avoid the case when @errp is &error_fatal, the user
 can't see this additional information, because exit() happens in
 error_setg earlier than information is added [1].
 
-The ivshmem_common_realize() passes @errp to error_prepend(), and as a
+The vfio_ap_realize() passes @errp to error_prepend(), and as a
 DeviceClass.realize method, there are too many possible callers to check
 the impact of this defect; it may or may not be harmless. Thus it is
 necessary to protect @errp with ERRP_GUARD().
@@ -104,29 +105,32 @@ beginning of this function.
 [1]: Issue description in the commit message of commit ae7c80a7bd73
      ("error: New macro ERRP_GUARD()").
 
-Cc: Juan Quintela <quintela@trasno.org>
-Cc: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: Michael Galaxy <mgalaxy@akamai.com>
-Cc: Steve Sistare <steven.sistare@oracle.com>
+Cc: Alex Williamson <alex.williamson@redhat.com>
+Cc: "Cédric Le Goater" <clg@redhat.com>
+Cc: Tony Krowiak <akrowiak@linux.ibm.com>
+Cc: Halil Pasic <pasic@linux.ibm.com>
+Cc: Jason Herne <jjherne@linux.ibm.com>
+Cc: Thomas Huth <thuth@redhat.com>
+Cc: qemu-s390x@nongnu.org
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
 v2: Use Markus' sentence to polish commit message. (Markus)
 ---
- hw/misc/ivshmem.c | 1 +
+ hw/vfio/ap.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/misc/ivshmem.c b/hw/misc/ivshmem.c
-index a2fd0bc36544..de49d1b8a826 100644
---- a/hw/misc/ivshmem.c
-+++ b/hw/misc/ivshmem.c
-@@ -832,6 +832,7 @@ static void ivshmem_write_config(PCIDevice *pdev, uint32_t address,
+diff --git a/hw/vfio/ap.c b/hw/vfio/ap.c
+index e157aa1ff79c..7c4caa593863 100644
+--- a/hw/vfio/ap.c
++++ b/hw/vfio/ap.c
+@@ -155,6 +155,7 @@ static void vfio_ap_unregister_irq_notifier(VFIOAPDevice *vapdev,
  
- static void ivshmem_common_realize(PCIDevice *dev, Error **errp)
+ static void vfio_ap_realize(DeviceState *dev, Error **errp)
  {
 +    ERRP_GUARD();
-     IVShmemState *s = IVSHMEM_COMMON(dev);
+     int ret;
      Error *err = NULL;
-     uint8_t *pci_conf;
+     VFIOAPDevice *vapdev = VFIO_AP_DEVICE(dev);
 -- 
 2.34.1
 
