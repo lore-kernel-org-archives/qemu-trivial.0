@@ -1,51 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjWIY-0006WK-U4
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:25:58 -0400
+	id 1rjWIb-0006mn-V0
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:26:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWIT-00069u-7a; Sun, 10 Mar 2024 23:25:53 -0400
+ id 1rjWIU-0006M5-RL; Sun, 10 Mar 2024 23:25:55 -0400
 Received: from mgamail.intel.com ([198.175.65.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWIP-0008BV-Sg; Sun, 10 Mar 2024 23:25:51 -0400
+ id 1rjWIS-00084P-1V; Sun, 10 Mar 2024 23:25:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710127549; x=1741663549;
+ t=1710127552; x=1741663552;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=+pGEfYcYehQQMgpVVFM6aL50Te9K+jPhcZ13DzXq8Lg=;
- b=G48RjoMLMIto6RLg7MdH8Ssz3zVcT0Fg5wf6p4RT/N8ZZM5GFiNtUZRB
- VNuz5hQMNnDXd4JpRJ8GXh60oV1kCsRItTYBJUCpNrjkk7ZEH1QbGBjvE
- NMt25tTEaV+Cwuj8penvC6csqhIuSenAI8MYwzU2qDALdmoJTLWqz+BhD
- NEDGQ8p0JFS83FwH1JTwvBHnyNvIzOi1sHdUaHZXH5sSBtAq9/13c7+22
- UhWWiIsgRQ8+y5+zfArQGQPityDqQh4zV3f7nKJaMLtPwesfYrHXGj8GE
- 3DnGu84LJY9T8todTtYmxIdcf+05SDrLSQWMWSMW4B/cqHGhOw2J0ubLm w==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229715"
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229715"
+ bh=+OGEjCDgDWgrBkE40f0La/lOl+AzgU5g8D4hjhE/uhg=;
+ b=anylCoxq+7KSOofTGG8ZbvhE7yosnErIHidsxF72bmWZBIMAnkI83doL
+ Ww46AD3cNV6Am1DJ6UxBIsPrtwmWjJDkJLQAUgo+4KXQ4DScF9m35ZpZU
+ xlpOuip/UwlNZ1GCjA5ShW5KZthUZeP/tuqyqgEWnWiZ4sYrABd1176nl
+ Nwrdq6pqEefvgxLEFFIusgCIOIyVYe87Mrwep2MU7W9Jw26xgYwpvX/qq
+ i79B6Yl4MTMqLf2ckRvMU8/Vi0OGn0X/lS45ZpKN35jaa7vPV3hV62Nmy
+ Cuq2GnfNiczgNUAEos5BCL9/AmZ0CkSDTEAGXANVWzX7W+mQld3KxaIDV w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229737"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229737"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Mar 2024 20:25:28 -0700
+ 10 Mar 2024 20:25:34 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15593910"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15593972"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:25:26 -0700
+ by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:25:32 -0700
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>
-Subject: [PATCH v2 15/29] hw/core/qdev-properties-system: Fix missing
- ERRP_GUARD() for error_prepend()
-Date: Mon, 11 Mar 2024 11:38:08 +0800
-Message-Id: <20240311033822.3142585-16-zhao1.liu@linux.intel.com>
+ Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
+ "Michael S. Tsirkin" <mst@redhat.com>
+Subject: [PATCH v2 17/29] hw/scsi/vhost-scsi: Fix missing ERRP_GUARD() for
+ error_prepend()
+Date: Mon, 11 Mar 2024 11:38:10 +0800
+Message-Id: <20240311033822.3142585-18-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
 References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: none client-ip=198.175.65.10;
  envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
@@ -68,7 +68,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2024 03:25:54 -0000
+X-List-Received-Date: Mon, 11 Mar 2024 03:25:56 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -91,11 +91,10 @@ ERRP_GUARD() could avoid the case when @errp is &error_fatal, the user
 can't see this additional information, because exit() happens in
 error_setg earlier than information is added [1].
 
-The set_chr() passes @errp to error_prepend() without ERRP_GUARD().
-
-As a PropertyInfo.set method, there are too many possible callers to
-check the impact of this defect; it may or may not be harmless. Thus it
-is necessary to protect @errp with ERRP_GUARD().
+The vhost_scsi_realize() passes @errp to error_prepend(), and as a
+VirtioDeviceClass.realize method, its @errp is from DeviceClass.realize
+so that there is no guarantee that the @errp won't point to
+@error_fatal.
 
 To avoid the issue like [1] said, add missing ERRP_GUARD() at the
 beginning of this function.
@@ -104,28 +103,25 @@ beginning of this function.
      ("error: New macro ERRP_GUARD()").
 
 Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: "Daniel P. Berrangé" <berrange@redhat.com
-Cc: Eduardo Habkost <eduardo@habkost.net>
+Cc: Fam Zheng <fam@euphon.net>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
 ---
-v2: Use Markus' sentence to polish commit message. (Markus)
----
- hw/core/qdev-properties-system.c | 1 +
+ hw/scsi/vhost-scsi.c | 1 +
  1 file changed, 1 insertion(+)
 
-diff --git a/hw/core/qdev-properties-system.c b/hw/core/qdev-properties-system.c
-index b45e90edb2a2..00c968f4f52b 100644
---- a/hw/core/qdev-properties-system.c
-+++ b/hw/core/qdev-properties-system.c
-@@ -242,6 +242,7 @@ static void get_chr(Object *obj, Visitor *v, const char *name, void *opaque,
- static void set_chr(Object *obj, Visitor *v, const char *name, void *opaque,
-                     Error **errp)
+diff --git a/hw/scsi/vhost-scsi.c b/hw/scsi/vhost-scsi.c
+index 58a00336c2db..ae26bc19a457 100644
+--- a/hw/scsi/vhost-scsi.c
++++ b/hw/scsi/vhost-scsi.c
+@@ -220,6 +220,7 @@ static int vhost_scsi_set_workers(VHostSCSICommon *vsc, bool per_virtqueue)
+ 
+ static void vhost_scsi_realize(DeviceState *dev, Error **errp)
  {
 +    ERRP_GUARD();
-     Property *prop = opaque;
-     CharBackend *be = object_field_prop_ptr(obj, prop);
-     Chardev *s;
+     VirtIOSCSICommon *vs = VIRTIO_SCSI_COMMON(dev);
+     VHostSCSICommon *vsc = VHOST_SCSI_COMMON(dev);
+     Error *err = NULL;
 -- 
 2.34.1
 
