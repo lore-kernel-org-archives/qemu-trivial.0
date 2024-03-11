@@ -1,60 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjWJO-0002ZQ-8p
-	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:26:50 -0400
+	id 1rjWJV-0003w7-P4
+	for mharc-qemu-trivial@gnu.org; Sun, 10 Mar 2024 23:26:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWJM-0002Kd-M9; Sun, 10 Mar 2024 23:26:48 -0400
+ id 1rjWJU-0003i8-Cl; Sun, 10 Mar 2024 23:26:56 -0400
 Received: from mgamail.intel.com ([198.175.65.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@linux.intel.com>)
- id 1rjWJK-00084P-Td; Sun, 10 Mar 2024 23:26:48 -0400
+ id 1rjWJE-0008BV-QC; Sun, 10 Mar 2024 23:26:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1710127607; x=1741663607;
+ t=1710127600; x=1741663600;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=ptTuy2ckiHWNEI7SVUGTBp2K5fyc5nf3WiWP/pqmio0=;
- b=KPQnVflc96/GzjCWQURLWNKGvP+GJQc2f2subItWCeJ2Ise0x5CEGWdr
- Vk3iIWlcaU9usqUXeKqRjC17nLwoaEO0Ym6HSQNpKWbQVVmcN+DacN4ed
- OBMcJ/m1eC0y8b2fGVPz4lUJ9MkRKLSmyvHBkyB6uT89q/d+FlqAJVxMl
- 1vUj3vZJMMtcerfVJHxA6o4tQYB+4UGCsORjMl8xT8PDvcvQq7VgvAQdh
- 5TunE73e7pVhimBgrlXPCz7fVSSvM/v1r49NziddDVePRtznKf3BDzDxV
- UyS/2v7vnSi85xNNcVtzJ+vDIwEfK1lRfNB9TR0QjH02hE7vehwvgUdiG g==;
-X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229850"
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229850"
+ bh=GIq3Lmcu3fjMp0gf1ukU2dID2kj7OKhxGKif5k51WEs=;
+ b=c2lydNVViTF4FzJyl3lFUybJF/4C6ILohmS2jgpq1/xFFN0nI2ezdORu
+ KoV0swQonM9Ci/lU4WGuZAdzWw3HXPn+3FBDkEAKfzAUNglLp3fOz0BnM
+ g3qfVEumdLsnB6IawKM4O2/aXDKLE1CLirlCJZPiGqtGMlLhJqF1vctVg
+ /mAqYHVJFlY+cjSaAmx5SGa66n5ZRUDqALn757tZm9rFC9BZztiMHbGYm
+ cQDGLeLRpaaRR7pEc3HRG2GhXFXzCMsihN34DR5CLWAh6GJwIDe1WX4Zy
+ T8zhyCfDZxUOzuTerbD8MzJopRsX7WFyF+PUQxAM0Ek0oKqjGRu6sbvyI w==;
+X-IronPort-AV: E=McAfee;i="6600,9927,11009"; a="22229830"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="22229830"
 Received: from fmviesa003.fm.intel.com ([10.60.135.143])
  by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Mar 2024 20:26:02 -0700
+ 10 Mar 2024 20:25:57 -0700
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15594090"
+X-IronPort-AV: E=Sophos;i="6.07,115,1708416000"; d="scan'208";a="15594068"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:26:00 -0700
+ by fmviesa003.fm.intel.com with ESMTP; 10 Mar 2024 20:25:52 -0700
 From: Zhao Liu <zhao1.liu@linux.intel.com>
 To: Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  Michael Roth <michael.roth@amd.com>, Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Peter Xu <peterx@redhat.com>, Fabiano Rosas <farosas@suse.de>
-Subject: [PATCH v2 27/29] migration/option: Fix missing ERRP_GUARD() for
+ Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v2 24/29] hw/vfio/platform: Fix missing ERRP_GUARD() for
  error_prepend()
-Date: Mon, 11 Mar 2024 11:38:20 +0800
-Message-Id: <20240311033822.3142585-28-zhao1.liu@linux.intel.com>
+Date: Mon, 11 Mar 2024 11:38:17 +0800
+Message-Id: <20240311033822.3142585-25-zhao1.liu@linux.intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
 References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: none client-ip=198.175.65.10;
  envelope-from=zhao1.liu@linux.intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.945,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_NONE=0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_score_int: -28
+X-Spam_score: -2.9
+X-Spam_bar: --
+X-Spam_report: (-2.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.945,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -67,7 +69,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2024 03:26:49 -0000
+X-List-Received-Date: Mon, 11 Mar 2024 03:26:56 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -90,40 +92,39 @@ ERRP_GUARD() could avoid the case when @errp is &error_fatal, the user
 can't see this additional information, because exit() happens in
 error_setg earlier than information is added [1].
 
-The migrate_params_check() passes @errp to error_prepend() without
-ERRP_GUARD(), and it could be called from migration_object_init(),
-where the passed @errp points to @error_fatal.
+The vfio_platform_realize() passes @errp to error_prepend(), and as a
+DeviceClass.realize method, there are too many possible callers to check
+the impact of this defect; it may or may not be harmless. Thus it is
+necessary to protect @errp with ERRP_GUARD().
 
-Therefore, the error message echoed in error_prepend() will be lost
-because of the above issue.
-
-To fix this, add missing ERRP_GUARD() at the beginning of this function.
+To avoid the issue like [1] said, add missing ERRP_GUARD() at the
+beginning of this function.
 
 [1]: Issue description in the commit message of commit ae7c80a7bd73
      ("error: New macro ERRP_GUARD()").
 
-Cc: Peter Xu <peterx@redhat.com>
-Cc: Fabiano Rosas <farosas@suse.de>
+Cc: Alex Williamson <alex.williamson@redhat.com>
+Cc: "Cédric Le Goater" <clg@redhat.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
-Acked-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- migration/options.c | 2 ++
- 1 file changed, 2 insertions(+)
+v2: Use Markus' sentence to polish commit message. (Markus)
+---
+ hw/vfio/platform.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/migration/options.c b/migration/options.c
-index 40eb9309401c..caff0a271dff 100644
---- a/migration/options.c
-+++ b/migration/options.c
-@@ -1085,6 +1085,8 @@ void migrate_params_init(MigrationParameters *params)
+diff --git a/hw/vfio/platform.c b/hw/vfio/platform.c
+index a8d9b7da633e..dcd2365fb353 100644
+--- a/hw/vfio/platform.c
++++ b/hw/vfio/platform.c
+@@ -576,6 +576,7 @@ static int vfio_base_device_init(VFIODevice *vbasedev, Error **errp)
   */
- bool migrate_params_check(MigrationParameters *params, Error **errp)
+ static void vfio_platform_realize(DeviceState *dev, Error **errp)
  {
 +    ERRP_GUARD();
-+
-     if (params->has_compress_level &&
-         (params->compress_level > 9)) {
-         error_setg(errp, QERR_INVALID_PARAMETER_VALUE, "compress_level",
+     VFIOPlatformDevice *vdev = VFIO_PLATFORM_DEVICE(dev);
+     SysBusDevice *sbdev = SYS_BUS_DEVICE(dev);
+     VFIODevice *vbasedev = &vdev->vbasedev;
 -- 
 2.34.1
 
