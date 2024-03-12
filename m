@@ -1,68 +1,132 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjjM3-00077V-VC
-	for mharc-qemu-trivial@gnu.org; Mon, 11 Mar 2024 13:22:29 -0400
+	id 1rjxES-00066K-3u
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Mar 2024 04:11:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rjjLz-00075D-F7
- for qemu-trivial@nongnu.org; Mon, 11 Mar 2024 13:22:24 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rjjLq-0002u4-Ok
- for qemu-trivial@nongnu.org; Mon, 11 Mar 2024 13:22:18 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-5683089d4bbso4153561a12.2
- for <qemu-trivial@nongnu.org>; Mon, 11 Mar 2024 10:22:14 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1710177733; x=1710782533; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=ExZDLlcW/aPce/t871JYwvQeW26VYQ80tHmn7HDLWXk=;
- b=PPFCxA1ulRLl3VBWbEiUodPtMsbIehnkSCLfF3kzDwWQADlW12LwgHJpoyFWl0GqF6
- /jPEA5cmXPtyHbzXAhCLTHv6e/j6y+uHw41Z1E6Cx6uqET7O8xdjRp25H43CnPU6x4y6
- T9phT5cEzqMDPAzrkl7ayssuWM/NCVzgtSAvBQ9QaNRorPEPlyXYb+pg+Y6VGWVLRluq
- x/5V1XTbnRZaGV7giPL0wO6kZAg10/vswtME0+YOHyeA/O51EsjzgYl8Rw/F383Dd5+/
- UlvpGADeArpJGVXdpUJLyx8tPcS/nCHEyKOGE6/hFDQoiJNxYnbqp8Qp71aiIe2IadUr
- czLg==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjxER-00065s-CA
+ for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 04:11:31 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjxEP-0006xd-Pq
+ for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 04:11:31 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1710231088;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=h8IIW/kUbeU72UEwqrk6JHNKB2vu4PXNo0DumvdtXT0=;
+ b=KYDuuHwE1wAzsjpC2es2NwK9jB8niDbs+iePr6AqVbTWPn9Bx3GBC6GoC5dPDMHTxtBb8T
+ CwuoY4eu/hI/q8udubr/G6Iv/P0hzfYRERdcegiCxmI/l5aBdXU/Y+RauBlc31cfnvZPBs
+ 4R4GAEx1nP62MDPwsueJ2iwkaMwU/Ss=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-502-ZtHOyMrJPD66mFwtyevVqg-1; Tue, 12 Mar 2024 04:11:26 -0400
+X-MC-Unique: ZtHOyMrJPD66mFwtyevVqg-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-412e51c20fdso31328755e9.2
+ for <qemu-trivial@nongnu.org>; Tue, 12 Mar 2024 01:11:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710177733; x=1710782533;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ExZDLlcW/aPce/t871JYwvQeW26VYQ80tHmn7HDLWXk=;
- b=Qa+jw2nxVaKqJb0+VlqxVf/PEEXMl/Oa/KoL1cy3Fpgd6aFmB65BCiYsycjSoDk04S
- eS1hJyDVD18pIQZNxAW/BZ59gz+V+Vr8IHBGRcG0B1Gcw7XmnotdugnXgP51izCJ8ZHV
- 8ZGu70ryxmuIVG4FbhRp3mFuMmxNBCdZ5Fr6tL/jUi4NCGnMCia2mYIJWUzRIQsZ14KD
- yHCikzws1lO2CJ7B48L25TgmQqfpYOdm1xGsGlqY7xZD9woZNN5JtJAgiEqAGa62F8Pw
- 92J7PHNgrqswBbNFDvhPM7xeM13K/ygyzMhYjdwwfoLvNh+g46T85sjOuTy0cul4/h12
- 2Pfw==
-X-Gm-Message-State: AOJu0YwgUEZaI0j3XvbEbOnXbHWps0lV89ZLTroI2RddkAE7d97/gXI1
- VZiel7XqHfjcMJZO+JgkiMTAWU5Gn3rAAYawmd/5WjIjss9Xr1jrNYS1gwsJ/CfCQNTvX2/DfN4
- t/VfDiM50PVq389QWFNYaQumR+Z+RR2FpKQCGSw==
-X-Google-Smtp-Source: AGHT+IFF0OpGwSHdUV1J4PmqeK91GpjTlDrECYjZKgU3NfG2tj+QmRdHv6mkOkcFXNZzdjJuk/JTE0JUcCFXGPBam+M=
-X-Received: by 2002:a50:934a:0:b0:568:1882:651f with SMTP id
- n10-20020a50934a000000b005681882651fmr4979227eda.25.1710177732969; Mon, 11
- Mar 2024 10:22:12 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1710231085; x=1710835885;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
+ :to:content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=h8IIW/kUbeU72UEwqrk6JHNKB2vu4PXNo0DumvdtXT0=;
+ b=R5XNVDbzVHxzPNkBD/Ess0GldcL+O3VM0OFd9HoypzZdyG22/QEyHAaos7keS46pgR
+ uQaY034W8G15NFXGWQ4Uk8481BW9C3vvGAj/bozhjuPnIpvLblm52EcVWNFWspD/pNx/
+ aReS+kjodB3kfJKU4LawvAg27V0sq9t9sZim6gH71goD8rcx6Da3ZdHbs5O6Zuhp9gyR
+ 980rvC3P3kLl3WKfprNfRsnfkd5HtJ0xXSM8kXGElMh2P7ATcSrXr2xs2ykZ2AzZS2gN
+ bDyrzSRPx8dR7osF7Lh4Ml/fGU0k9AufdV2otqC8AAkKIxyD3x06aAcrE3NtycUN/0gi
+ IyPw==
+X-Gm-Message-State: AOJu0YxfVwOXHzVrKJfxV4G3raZyxm1IR07iOXTCXpiSSbqSDRVpDDts
+ 7ZoUcyTHEBaXUSTAcsHV6E8LwYf8EWNmv1R03AKAL3BqCB+FDVMvXM2MeN2thJuJnxnn7A9bNsp
+ 1MBkLk51dB0HUozENBRD/1oHb/C6KuCitPP3H63YFeQ+ZNys/r9TQwEw=
+X-Received: by 2002:a05:600c:1f94:b0:413:1dcb:b618 with SMTP id
+ je20-20020a05600c1f9400b004131dcbb618mr5760878wmb.39.1710231085520; 
+ Tue, 12 Mar 2024 01:11:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFTv/CZ3jtWjloEgx7HwcNPCNrxVr42LQJcEH68YIgIJ2fAPXXtsO6CSnLGuY2qCtOB51LV1Q==
+X-Received: by 2002:a05:600c:1f94:b0:413:1dcb:b618 with SMTP id
+ je20-20020a05600c1f9400b004131dcbb618mr5760851wmb.39.1710231085175; 
+ Tue, 12 Mar 2024 01:11:25 -0700 (PDT)
+Received: from [192.168.0.9] (ip-109-43-177-86.web.vodafone.de.
+ [109.43.177.86]) by smtp.gmail.com with ESMTPSA id
+ fl17-20020a05600c0b9100b0041338f660d8sm1045092wmb.25.2024.03.12.01.11.23
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 12 Mar 2024 01:11:24 -0700 (PDT)
+Message-ID: <c49b13a5-f3ed-4fe5-83bf-13a4dc887d1c@redhat.com>
+Date: Tue, 12 Mar 2024 09:11:23 +0100
 MIME-Version: 1.0
-References: <20240311120346.9596-1-anisinha@redhat.com>
- <CAFEAcA_kh4sXkxsk10hCB9vAaJg2oNAv3DS_QhkHmFsWtVdUBw@mail.gmail.com>
-In-Reply-To: <CAFEAcA_kh4sXkxsk10hCB9vAaJg2oNAv3DS_QhkHmFsWtVdUBw@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 11 Mar 2024 17:22:02 +0000
-Message-ID: <CAFEAcA9jEdC7_TbKAr2s26TgtadU1uB+90i4QTCta1tGf2YJLA@mail.gmail.com>
-Subject: Re: [PATCH] docs: update copyright date to the year 2024
-To: Ani Sinha <anisinha@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 10/29] block/snapshot: Fix missing ERRP_GUARD() for
+ error_prepend()
+To: Zhao Liu <zhao1.liu@linux.intel.com>,
+ Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ qemu-block@nongnu.org
+References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
+ <20240311033822.3142585-11-zhao1.liu@linux.intel.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240311033822.3142585-11-zhao1.liu@linux.intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -30
+X-Spam_score: -3.1
+X-Spam_bar: ---
+X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.029,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,30 +140,73 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 11 Mar 2024 17:22:24 -0000
+X-List-Received-Date: Tue, 12 Mar 2024 08:11:31 -0000
 
-On Mon, 11 Mar 2024 at 12:06, Peter Maydell <peter.maydell@linaro.org> wrote:
->
-> On Mon, 11 Mar 2024 at 12:04, Ani Sinha <anisinha@redhat.com> wrote:
-> >
-> > We are already in the third month of 2024 but the copyright notices still refer
-> > to 2023. Update the date to 2024 in documentation and help texts.
-> >
-> > Cc: peter.maydell@linaro.org
-> > Cc: qemu-trivial@nongnu.org
-> > Signed-off-by: Ani Sinha <anisinha@redhat.com>
-> > ---
-> >  docs/conf.py              | 2 +-
-> >  include/qemu/help-texts.h | 2 +-
-> >  2 files changed, 2 insertions(+), 2 deletions(-)
->
-> Oops, yes, we always forget this. Thanks for catching it.
->
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+On 11/03/2024 04.38, Zhao Liu wrote:
+> From: Zhao Liu <zhao1.liu@intel.com>
+> 
+> As the comment in qapi/error, passing @errp to error_prepend() requires
+> ERRP_GUARD():
+> 
+> * = Why, when and how to use ERRP_GUARD() =
+> *
+> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
+> ...
+> * - It should not be passed to error_prepend(), error_vprepend() or
+> *   error_append_hint(), because that doesn't work with &error_fatal.
+> * ERRP_GUARD() lifts these restrictions.
+> *
+> * To use ERRP_GUARD(), add it right at the beginning of the function.
+> * @errp can then be used without worrying about the argument being
+> * NULL or &error_fatal.
+> 
+> ERRP_GUARD() could avoid the case when @errp is &error_fatal, the user
+> can't see this additional information, because exit() happens in
+> error_setg earlier than information is added [1].
+> 
+> In block/snapshot.c, there are 2 functions passing @errp to
+> error_prepend() without ERRP_GUARD():
+>   - bdrv_all_delete_snapshot()
+>   - bdrv_all_goto_snapshot()
+> 
+> As the APIs exposed in include/block/snapshot.h, they could be called
+> by other modules.
+> 
+> To avoid potential issues as [1] said, add missing ERRP_GUARD() at the
+> beginning of these 2 functions.
+> 
+> [1]: Issue description in the commit message of commit ae7c80a7bd73
+>       ("error: New macro ERRP_GUARD()").
+> 
+> Cc: Kevin Wolf <kwolf@redhat.com>
+> Cc: Hanna Reitz <hreitz@redhat.com>
+> Cc: qemu-block@nongnu.org
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+>   block/snapshot.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/block/snapshot.c b/block/snapshot.c
+> index 8694fc0a3eba..8242b4abac41 100644
+> --- a/block/snapshot.c
+> +++ b/block/snapshot.c
+> @@ -566,6 +566,7 @@ int bdrv_all_delete_snapshot(const char *name,
+>                                bool has_devices, strList *devices,
+>                                Error **errp)
+>   {
+> +    ERRP_GUARD();
+>       g_autoptr(GList) bdrvs = NULL;
+>       GList *iterbdrvs;
+>   
+> @@ -605,6 +606,7 @@ int bdrv_all_goto_snapshot(const char *name,
+>                              bool has_devices, strList *devices,
+>                              Error **errp)
+>   {
+> +    ERRP_GUARD();
+>       g_autoptr(GList) bdrvs = NULL;
+>       GList *iterbdrvs;
+>       int ret;
 
-I'll take this via target-arm.next since I want to do a pullreq
-before softfreeze anyway.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-thanks
--- PMM
 
