@@ -1,74 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjxoh-0002SQ-J1
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Mar 2024 04:49:00 -0400
+	id 1rjxqO-00048l-Hu
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Mar 2024 04:50:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjxoP-0002N6-EJ
- for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 04:48:44 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjxqF-00043d-3K
+ for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 04:50:38 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjxoN-0005Rz-CS
- for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 04:48:40 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjxqB-0005mA-U3
+ for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 04:50:34 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1710233317;
+ s=mimecast20190719; t=1710233430;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=xsvRwEKQ5DNSqCnUYTAZ8wt3un7Gm4lXwSy4Ck0iSbE=;
- b=GOmBPssSbTe9JYmoLbbpcAXcbDjCWhxZjBo/zIjzeYgQGPmPms1rMqaHx6Ptda6VGgmR0i
- 1Xr7VS2rj9oSro5inlJJgvow2cIbVz6u0M6pRhmvPXj/m+lSSBOP4LKbfRavphvVv2cAXx
- 7tOjDzm8zASrknqZh9/EfbJfg/7Uo28=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=1VRk1c+RLEPigqDbqoCcY3ibvyOTKcjaTe1GsSxEYhE=;
+ b=OmMjidiopsir0aXXtEhrufiDd8t5YrTCrKiwpIOQLG1WTJ7ziyTaXNUt/Hn+H6OwU//wO0
+ rWnEz/RRqkwpzghfEJZqeEF4NRFpBWXj5kZfstRRDHt/dfg9ew/zCEMyrbS8rP0mNtWER2
+ b3s3WggvbamXUTMl9RJ8KTVVIES0WeM=
+Received: from mail-lf1-f71.google.com (mail-lf1-f71.google.com
+ [209.85.167.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-507-JkbqcH-dPtW5ywwyetapZw-1; Tue, 12 Mar 2024 04:48:35 -0400
-X-MC-Unique: JkbqcH-dPtW5ywwyetapZw-1
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-33e79d3f462so2284320f8f.1
- for <qemu-trivial@nongnu.org>; Tue, 12 Mar 2024 01:48:35 -0700 (PDT)
+ us-mta-75-u7K750BePPWm01_tB0BGug-1; Tue, 12 Mar 2024 04:50:28 -0400
+X-MC-Unique: u7K750BePPWm01_tB0BGug-1
+Received: by mail-lf1-f71.google.com with SMTP id
+ 2adb3069b0e04-513a1ed3ff8so2401237e87.1
+ for <qemu-trivial@nongnu.org>; Tue, 12 Mar 2024 01:50:28 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710233314; x=1710838114;
+ d=1e100.net; s=20230601; t=1710233427; x=1710838227;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=xsvRwEKQ5DNSqCnUYTAZ8wt3un7Gm4lXwSy4Ck0iSbE=;
- b=HMPm6Dd4jkzusqmiAJeEBswfFHKngKltoVyqPuBdILDJBVauiL3oJMhR3Y3JwbkXk4
- PSD3lp6z3gKWEvSA8v/uvazvFM8lO0gSECbdPl1HuP7BmtF3Ub+VpSY8TzwCYlHGa37V
- oTNkKVSdDLzYlgcoJeg5ieDz9xlFz5CR0LNpPF4852z9BtbIR4b4/q6e1KrOHPSeOmcX
- z2brC6ag5aHRZocYPgrEjEUwSI+kzSeAHyVkJ26vDhwLaU4QGT6aNsgvGQpy2/817byv
- Z3C/VG7sB3pNIOWqvBulct8I6K6mOQ7TWsl0VtDK6CMAD+ax1M1wcZPLwhdGHQ9hfbpj
- HkHw==
-X-Gm-Message-State: AOJu0Yxy27cqhJb4Eh8hivO/6NZMI5DimFLJUwf209pGE9KWQSqaRG/d
- x8ym9xK4D60Mi6Fuat9aLRTdy6zCYy80wpMlX4jdnaDtB4De/YHHI0Xyr7MieXhlPx9jY2SmZm5
- wVOb0ciIJRgFltD/Kqo388ghd84wItNsZERwJrUEmgQlLPCK0ZaEvEHc=
-X-Received: by 2002:a05:6000:ad0:b0:33e:8775:9e93 with SMTP id
- di16-20020a0560000ad000b0033e87759e93mr5032830wrb.65.1710233314716; 
- Tue, 12 Mar 2024 01:48:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG2xzeO0CyQuZRGWxCXmYaNIGNH/F6RjZtJXcxK4sN0P2eUVZoC26o2dybHL77AzZP9fbZxUA==
-X-Received: by 2002:a05:6000:ad0:b0:33e:8775:9e93 with SMTP id
- di16-20020a0560000ad000b0033e87759e93mr5032818wrb.65.1710233314356; 
- Tue, 12 Mar 2024 01:48:34 -0700 (PDT)
+ bh=1VRk1c+RLEPigqDbqoCcY3ibvyOTKcjaTe1GsSxEYhE=;
+ b=R8jPRIqnUWQY8BXivj/AUTHK4xQF+iRMWqu2eH+f8YprxZjbhS6pTVqiXTkldeCzKQ
+ 3PIhi51E1dq1JV9J2bO1JdfFnQsiV8Lvq6oSldWwifGkcs++mmWTYFlxbw/zCRDcqMtN
+ G8G4JJhI2Ge1+nwmmHzZsiOcZxuK0BAkjJXavI8XpQ+j6eeDJxo4JpXgG73ppiCCu3sS
+ GoO8qO80Soj5xdCCufo4GbXCKAzQZfDOV36Q0rpzJ+wiZ38ZTa7fjn+XLFfYJdwh+iKV
+ +eG/QNsXqPxuZrQSh6LxeS8YyoD/p+M6S+OKDTd3eOAZ6v+Noxymk/DbxuW4RUugEqas
+ pkGg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUowjqvQvXFqoNYLswChxQxLnD8hdPSvPxLiEC7GQj/MAECgy44V7/IXyR+1+eK5zTd5+RFHa6rk7VR0/l3P/om3eqfQuC3iw==
+X-Gm-Message-State: AOJu0YzE05dn3LzLfG5OIu6hYFKbCoVtFJMEEoX7DEKOGrmkTKv7wqRh
+ qIXCPk58mQfSjwQ4x9kTuTXOzhUN9vFclti7HpcNZtLkxfj4JxmiZhwyWbhODgXSL+pwqJUbGvO
+ JfZewrT6BXg8zOIGS9BxYx6Wt0drLWe8KjGvq65KloPhfypcqRSvCt4I=
+X-Received: by 2002:a05:6512:2207:b0:513:b159:e711 with SMTP id
+ h7-20020a056512220700b00513b159e711mr3159639lfu.4.1710233427346; 
+ Tue, 12 Mar 2024 01:50:27 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFrbHM8HQNspLfLsZ2yAQl4rOUe4bhtpb/ccCaU+HrxT7o0XBG1Gcyyha1yO8kM8jC9sTvpOA==
+X-Received: by 2002:a05:6512:2207:b0:513:b159:e711 with SMTP id
+ h7-20020a056512220700b00513b159e711mr3159628lfu.4.1710233427014; 
+ Tue, 12 Mar 2024 01:50:27 -0700 (PDT)
 Received: from [192.168.0.9] (ip-109-43-177-86.web.vodafone.de.
  [109.43.177.86]) by smtp.gmail.com with ESMTPSA id
- w4-20020a5d6084000000b0033de10c9efcsm8435361wrt.114.2024.03.12.01.48.33
+ h17-20020a05600c315100b004101f27737asm18150696wmo.29.2024.03.12.01.50.25
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Mar 2024 01:48:34 -0700 (PDT)
-Message-ID: <65c4004f-5093-4806-8e5a-42d84017e96a@redhat.com>
-Date: Tue, 12 Mar 2024 09:48:32 +0100
+ Tue, 12 Mar 2024 01:50:26 -0700 (PDT)
+Message-ID: <4ba8e5dc-cda0-4ed4-8baa-82687a235627@redhat.com>
+Date: Tue, 12 Mar 2024 09:50:25 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 17/29] hw/scsi/vhost-scsi: Fix missing ERRP_GUARD() for
+Subject: Re: [PATCH v2 00/29] Cleanup up to fix missing ERRP_GUARD() for
  error_prepend()
 To: Zhao Liu <zhao1.liu@linux.intel.com>,
- Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
- "Michael S. Tsirkin" <mst@redhat.com>
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, Markus Armbruster <armbru@redhat.com>
+Cc: Michael Roth <michael.roth@amd.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>
 References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
- <20240311033822.3142585-18-zhao1.liu@linux.intel.com>
+ <d48e5d05-0e1e-4bb0-b10a-f0c943b055f6@linaro.org>
+ <ZfAVsQTIOgAOjd0Y@intel.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -112,12 +113,12 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240311033822.3142585-18-zhao1.liu@linux.intel.com>
+In-Reply-To: <ZfAVsQTIOgAOjd0Y@intel.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -30
@@ -126,7 +127,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.029,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,62 +140,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Mar 2024 08:48:48 -0000
+X-List-Received-Date: Tue, 12 Mar 2024 08:50:38 -0000
 
-On 11/03/2024 04.38, Zhao Liu wrote:
-> From: Zhao Liu <zhao1.liu@intel.com>
+On 12/03/2024 09.43, Zhao Liu wrote:
+> Hi Thomas/Markus/Michael,
 > 
-> As the comment in qapi/error, passing @errp to error_prepend() requires
-> ERRP_GUARD():
+> For the remaing patches, could you please help me merge them next?
 > 
-> * = Why, when and how to use ERRP_GUARD() =
-> *
-> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
-> ...
-> * - It should not be passed to error_prepend(), error_vprepend() or
-> *   error_append_hint(), because that doesn't work with &error_fatal.
-> * ERRP_GUARD() lifts these restrictions.
-> *
-> * To use ERRP_GUARD(), add it right at the beginning of the function.
-> * @errp can then be used without worrying about the argument being
-> * NULL or &error_fatal.
-> 
-> ERRP_GUARD() could avoid the case when @errp is &error_fatal, the user
-> can't see this additional information, because exit() happens in
-> error_setg earlier than information is added [1].
-> 
-> The vhost_scsi_realize() passes @errp to error_prepend(), and as a
-> VirtioDeviceClass.realize method, its @errp is from DeviceClass.realize
-> so that there is no guarantee that the @errp won't point to
-> @error_fatal.
-> 
-> To avoid the issue like [1] said, add missing ERRP_GUARD() at the
-> beginning of this function.
-> 
-> [1]: Issue description in the commit message of commit ae7c80a7bd73
->       ("error: New macro ERRP_GUARD()").
-> 
-> Cc: Paolo Bonzini <pbonzini@redhat.com>
-> Cc: Fam Zheng <fam@euphon.net>
-> Cc: "Michael S. Tsirkin" <mst@redhat.com>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> ---
->   hw/scsi/vhost-scsi.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/scsi/vhost-scsi.c b/hw/scsi/vhost-scsi.c
-> index 58a00336c2db..ae26bc19a457 100644
-> --- a/hw/scsi/vhost-scsi.c
-> +++ b/hw/scsi/vhost-scsi.c
-> @@ -220,6 +220,7 @@ static int vhost_scsi_set_workers(VHostSCSICommon *vsc, bool per_virtqueue)
->   
->   static void vhost_scsi_realize(DeviceState *dev, Error **errp)
->   {
-> +    ERRP_GUARD();
->       VirtIOSCSICommon *vs = VIRTIO_SCSI_COMMON(dev);
->       VHostSCSICommon *vsc = VHOST_SCSI_COMMON(dev);
->       Error *err = NULL;
+> Many thanks!
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Yes, I'm currently reviewing the ones that don't have a Reviewed-by yet. I 
+can pick up the remaining patches if the other maintainers won't pick them 
+up for the softfreeze today.
+
+  Thomas
+
+
+> On Tue, Mar 12, 2024 at 09:17:30AM +0100, Philippe Mathieu-Daudé wrote:
+>> Date: Tue, 12 Mar 2024 09:17:30 +0100
+>> From: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> Subject: Re: [PATCH v2 00/29] Cleanup up to fix missing ERRP_GUARD() for
+>>   error_prepend()
+>>
+>> On 11/3/24 04:37, Zhao Liu wrote:
+>>
+>>> ---
+>>> Zhao Liu (29):
+>>
+>>>     hw/core/loader-fit: Fix missing ERRP_GUARD() for error_prepend()
+>>>     hw/core/qdev-properties-system: Fix missing ERRP_GUARD() for
+>>>       error_prepend()
+>>>     hw/misc/ivshmem: Fix missing ERRP_GUARD() for error_prepend()
+>>
+>> I'm queuing these 3 patches, thanks!
+> 
+> 
+> 
 
 
