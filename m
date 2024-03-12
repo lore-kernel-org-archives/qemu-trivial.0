@@ -1,74 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjxES-00066K-3u
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Mar 2024 04:11:32 -0400
+	id 1rjxHa-0007W3-PG
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Mar 2024 04:14:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjxER-00065s-CA
- for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 04:11:31 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjxHW-0007Uy-OM
+ for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 04:14:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjxEP-0006xd-Pq
- for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 04:11:31 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjxHT-0007b9-FN
+ for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 04:14:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1710231088;
+ s=mimecast20190719; t=1710231277;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=h8IIW/kUbeU72UEwqrk6JHNKB2vu4PXNo0DumvdtXT0=;
- b=KYDuuHwE1wAzsjpC2es2NwK9jB8niDbs+iePr6AqVbTWPn9Bx3GBC6GoC5dPDMHTxtBb8T
- CwuoY4eu/hI/q8udubr/G6Iv/P0hzfYRERdcegiCxmI/l5aBdXU/Y+RauBlc31cfnvZPBs
- 4R4GAEx1nP62MDPwsueJ2iwkaMwU/Ss=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=iZX4ia+kzVCPXL4hnW0xJ/6c7JqvR+7+6nledC+T94w=;
+ b=RXdKV9gdLsrz5aC5pckMSD3Cf1DyBHYlC6fSPN3Yf8V+yW8JXOuMRScX7CANhy1GezS2KY
+ BXoaPDqSgaUIxeEr5BrkhImkNSL7XjIM3NJwMYzi5Z+lDD0rCJhyY3j19ACxPxdhMZEPgA
+ niina+RH0AJNTuEW3zxgAjlS/V8iOIk=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-502-ZtHOyMrJPD66mFwtyevVqg-1; Tue, 12 Mar 2024 04:11:26 -0400
-X-MC-Unique: ZtHOyMrJPD66mFwtyevVqg-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-412e51c20fdso31328755e9.2
- for <qemu-trivial@nongnu.org>; Tue, 12 Mar 2024 01:11:26 -0700 (PDT)
+ us-mta-551-e-ZKhlGaP0y9_hrGrfDetQ-1; Tue, 12 Mar 2024 04:14:35 -0400
+X-MC-Unique: e-ZKhlGaP0y9_hrGrfDetQ-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-33e8c89cbd9so1367403f8f.1
+ for <qemu-trivial@nongnu.org>; Tue, 12 Mar 2024 01:14:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710231085; x=1710835885;
+ d=1e100.net; s=20230601; t=1710231274; x=1710836074;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=h8IIW/kUbeU72UEwqrk6JHNKB2vu4PXNo0DumvdtXT0=;
- b=R5XNVDbzVHxzPNkBD/Ess0GldcL+O3VM0OFd9HoypzZdyG22/QEyHAaos7keS46pgR
- uQaY034W8G15NFXGWQ4Uk8481BW9C3vvGAj/bozhjuPnIpvLblm52EcVWNFWspD/pNx/
- aReS+kjodB3kfJKU4LawvAg27V0sq9t9sZim6gH71goD8rcx6Da3ZdHbs5O6Zuhp9gyR
- 980rvC3P3kLl3WKfprNfRsnfkd5HtJ0xXSM8kXGElMh2P7ATcSrXr2xs2ykZ2AzZS2gN
- bDyrzSRPx8dR7osF7Lh4Ml/fGU0k9AufdV2otqC8AAkKIxyD3x06aAcrE3NtycUN/0gi
- IyPw==
-X-Gm-Message-State: AOJu0YxfVwOXHzVrKJfxV4G3raZyxm1IR07iOXTCXpiSSbqSDRVpDDts
- 7ZoUcyTHEBaXUSTAcsHV6E8LwYf8EWNmv1R03AKAL3BqCB+FDVMvXM2MeN2thJuJnxnn7A9bNsp
- 1MBkLk51dB0HUozENBRD/1oHb/C6KuCitPP3H63YFeQ+ZNys/r9TQwEw=
-X-Received: by 2002:a05:600c:1f94:b0:413:1dcb:b618 with SMTP id
- je20-20020a05600c1f9400b004131dcbb618mr5760878wmb.39.1710231085520; 
- Tue, 12 Mar 2024 01:11:25 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFTv/CZ3jtWjloEgx7HwcNPCNrxVr42LQJcEH68YIgIJ2fAPXXtsO6CSnLGuY2qCtOB51LV1Q==
-X-Received: by 2002:a05:600c:1f94:b0:413:1dcb:b618 with SMTP id
- je20-20020a05600c1f9400b004131dcbb618mr5760851wmb.39.1710231085175; 
- Tue, 12 Mar 2024 01:11:25 -0700 (PDT)
+ bh=iZX4ia+kzVCPXL4hnW0xJ/6c7JqvR+7+6nledC+T94w=;
+ b=QPaKceOMxYnxk4F+ILi7YgsijLKfLSa40KfPJv2D5DOqq700tLY9UmA3jW9OSjHAh5
+ zL9sZVp4cb34iNill5US1oOwPp0Wq/m643mPM8jGORRl+WLq+V4BGgvnzQUIQDEGvtDW
+ awlKjKJsDNwEWKW16ZiRwTuiIOyN7uBVCmTEohNZBiF5xKtN+Dmdb90vM1lWF5l4nOWy
+ AFfC6aNgn/NrnDYyxOLoGpVF+ffVLTRpZh0WOgb/6HWAsaO81dTlhXztf+bTW+sVsbOB
+ IKSgQjjlt3khgyftxELMTDfhYMfJerjh8DkqOmlm7+GJlfAVaOyKCu1Q8ivuMC6DTaAX
+ jU+w==
+X-Gm-Message-State: AOJu0YxC+6eIL3hOudGM3v8fBAWUh3yy1RL87QpCVQ+XJ7NcZGDBKwrL
+ l7S6Rt1Onf5jXxXf9isQABiQwufX2e71IKar1ZGRbOqa70JX7mB3MH7AG55w1hqPiAi6K2fnpkr
+ SBt8umfFKGR/VcwkwB5CcgzxcEIpO8G2xJIhYfhvVdgzx9t5UduNh52Q=
+X-Received: by 2002:a5d:670f:0:b0:33d:c29d:2219 with SMTP id
+ o15-20020a5d670f000000b0033dc29d2219mr718983wru.8.1710231274658; 
+ Tue, 12 Mar 2024 01:14:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEf4iGmjVGbZvylraLqlFi+dfW+ed939PTMIfv1LsuVh73dpKT2rNxd1SC9lOGd+PqzRJLQXw==
+X-Received: by 2002:a5d:670f:0:b0:33d:c29d:2219 with SMTP id
+ o15-20020a5d670f000000b0033dc29d2219mr718963wru.8.1710231274348; 
+ Tue, 12 Mar 2024 01:14:34 -0700 (PDT)
 Received: from [192.168.0.9] (ip-109-43-177-86.web.vodafone.de.
  [109.43.177.86]) by smtp.gmail.com with ESMTPSA id
- fl17-20020a05600c0b9100b0041338f660d8sm1045092wmb.25.2024.03.12.01.11.23
+ b17-20020a05600010d100b0033e03a6b1ecsm8403477wrx.18.2024.03.12.01.14.33
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Mar 2024 01:11:24 -0700 (PDT)
-Message-ID: <c49b13a5-f3ed-4fe5-83bf-13a4dc887d1c@redhat.com>
-Date: Tue, 12 Mar 2024 09:11:23 +0100
+ Tue, 12 Mar 2024 01:14:33 -0700 (PDT)
+Message-ID: <c663a881-161d-431f-8f56-298dbc1f0f36@redhat.com>
+Date: Tue, 12 Mar 2024 09:14:32 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 10/29] block/snapshot: Fix missing ERRP_GUARD() for
+Subject: Re: [PATCH v2 11/29] block/vdi: Fix missing ERRP_GUARD() for
  error_prepend()
 To: Zhao Liu <zhao1.liu@linux.intel.com>,
  Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
  Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
  <philmd@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- qemu-block@nongnu.org
+ Stefan Weil <sw@weilnetz.de>, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, qemu-block@nongnu.org
 References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
- <20240311033822.3142585-11-zhao1.liu@linux.intel.com>
+ <20240311033822.3142585-12-zhao1.liu@linux.intel.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -112,21 +112,20 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240311033822.3142585-11-zhao1.liu@linux.intel.com>
+In-Reply-To: <20240311033822.3142585-12-zhao1.liu@linux.intel.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.029,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -140,7 +139,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Mar 2024 08:11:31 -0000
+X-List-Received-Date: Tue, 12 Mar 2024 08:14:44 -0000
 
 On 11/03/2024 04.38, Zhao Liu wrote:
 > From: Zhao Liu <zhao1.liu@intel.com>
@@ -164,48 +163,37 @@ On 11/03/2024 04.38, Zhao Liu wrote:
 > can't see this additional information, because exit() happens in
 > error_setg earlier than information is added [1].
 > 
-> In block/snapshot.c, there are 2 functions passing @errp to
-> error_prepend() without ERRP_GUARD():
->   - bdrv_all_delete_snapshot()
->   - bdrv_all_goto_snapshot()
+> The vdi_co_do_create() passes @errp to error_prepend() without
+> ERRP_GUARD(), and its @errp parameter is so widely sourced that it is
+> necessary to protect it with ERRP_GUARD().
 > 
-> As the APIs exposed in include/block/snapshot.h, they could be called
-> by other modules.
-> 
-> To avoid potential issues as [1] said, add missing ERRP_GUARD() at the
-> beginning of these 2 functions.
+> To avoid the potential issues as [1] said, add missing ERRP_GUARD() at
+> the beginning of this function.
 > 
 > [1]: Issue description in the commit message of commit ae7c80a7bd73
 >       ("error: New macro ERRP_GUARD()").
 > 
+> Cc: Stefan Weil <sw@weilnetz.de>
 > Cc: Kevin Wolf <kwolf@redhat.com>
 > Cc: Hanna Reitz <hreitz@redhat.com>
 > Cc: qemu-block@nongnu.org
 > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 > ---
->   block/snapshot.c | 2 ++
->   1 file changed, 2 insertions(+)
+>   block/vdi.c | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> diff --git a/block/snapshot.c b/block/snapshot.c
-> index 8694fc0a3eba..8242b4abac41 100644
-> --- a/block/snapshot.c
-> +++ b/block/snapshot.c
-> @@ -566,6 +566,7 @@ int bdrv_all_delete_snapshot(const char *name,
->                                bool has_devices, strList *devices,
->                                Error **errp)
+> diff --git a/block/vdi.c b/block/vdi.c
+> index 3b57becb9fe0..6363da08cee9 100644
+> --- a/block/vdi.c
+> +++ b/block/vdi.c
+> @@ -738,6 +738,7 @@ static int coroutine_fn GRAPH_UNLOCKED
+>   vdi_co_do_create(BlockdevCreateOptions *create_options, size_t block_size,
+>                    Error **errp)
 >   {
 > +    ERRP_GUARD();
->       g_autoptr(GList) bdrvs = NULL;
->       GList *iterbdrvs;
->   
-> @@ -605,6 +606,7 @@ int bdrv_all_goto_snapshot(const char *name,
->                              bool has_devices, strList *devices,
->                              Error **errp)
->   {
-> +    ERRP_GUARD();
->       g_autoptr(GList) bdrvs = NULL;
->       GList *iterbdrvs;
->       int ret;
+>       BlockdevCreateOptionsVdi *vdi_opts;
+>       int ret = 0;
+>       uint64_t bytes = 0;
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
