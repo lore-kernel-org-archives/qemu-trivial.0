@@ -1,65 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjxtk-0006Xh-P0
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Mar 2024 04:54:13 -0400
+	id 1rjy8d-0005bu-Gu
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Mar 2024 05:09:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjxtf-0006X5-Vx
- for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 04:54:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjy8Z-0005bV-En
+ for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 05:09:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjxtd-0006Si-In
- for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 04:54:06 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjy8X-0000NL-Da
+ for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 05:09:30 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1710233644;
+ s=mimecast20190719; t=1710234568;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=TB+dJ1z5rFpwPpb8f0K6cqhLtZ8cr4WQuAeF8nhNzZQ=;
- b=BSOzfX17TBfJg4PaFTV+PMzi0m7IrFJt068xDk/5xKc/NBvjl+4SEmTXMQYyLwXXdwUVa6
- aKsC8avd2vpzn2jJ05DE8dcbPOo00DEBloqcJe1ftVS7gmkjOBWEXnIVWSyK0cv0BfYJmG
- k3fI4OvEi4W38Q2OzFi6arYLemZJSVQ=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=34ODYRbiNO2jIM8JN3D2Lk8SCzyPZ/Izil+mkgwqkkY=;
+ b=HnLlyWnRyK2NHdRxPXJ8PZMfc4tjnRLJ41Q3Lgn+pmBAJ2oJ5pn+1AJgxaYyVj7SpTfjsy
+ 5CJmIYY7Jfpc+xJXYjc+L+4uDZNR7H0ixOwtqj+0BhZKJtReFVegzz3Qmn4fnsdTFs+262
+ aH0ao3F9lNz9QTp4AQ15qf00BicrAK0=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-576--sJuxWG4Py2OAhGMJ70eaw-1; Tue, 12 Mar 2024 04:54:01 -0400
-X-MC-Unique: -sJuxWG4Py2OAhGMJ70eaw-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-41312565bd4so24915095e9.2
- for <qemu-trivial@nongnu.org>; Tue, 12 Mar 2024 01:54:01 -0700 (PDT)
+ us-mta-255-YJ4Ze6nwPte0ALeUDmH_LQ-1; Tue, 12 Mar 2024 05:09:27 -0400
+X-MC-Unique: YJ4Ze6nwPte0ALeUDmH_LQ-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-33e6f9ce74dso2556852f8f.3
+ for <qemu-trivial@nongnu.org>; Tue, 12 Mar 2024 02:09:26 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710233640; x=1710838440;
+ d=1e100.net; s=20230601; t=1710234565; x=1710839365;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=TB+dJ1z5rFpwPpb8f0K6cqhLtZ8cr4WQuAeF8nhNzZQ=;
- b=R0zlhCWvwZyC/fBh8QFcupSTd+S9f0YUp1AXct/JkwLUIS3QKsMeAHMDngz1XBbK5N
- rHSoiM1Z+lMIInPc+naLgrC8AB4KHCCp0vLWow4CyOMGiSkDlFVPDACEf3RZQ+9pabi7
- ymizaz0jk5rED72uhbz3AowESJwPCinlRw2t+dF9p4H5jqZfsoG3L51Xy/B2aQ7xB28U
- vdXqUilysp8YRVKXa9uNc72TaVdnSVZEUCxGzsKa2OaxJ9YeslM/u9gADpbR2hJDzPg1
- ut9KpcY60vuraSXPWu3JyCPsC+2oIIavHG3bZnTgXNxy/idoV4mV3l0glrYVxKWCLXGW
- BnyA==
-X-Gm-Message-State: AOJu0YxVN0eHzZ85auExt18JEx6FwF38oxYXF6AzStWQGQTQoKpdfibf
- CZimXlMLeb4tMkzQpQwDHggMSe+UwSkQ4s4MPHvprv/Z84EfBVqTpa6KDS4YKvKhGccbiQlFwTe
- YWZhsDyIOEd4Wp4T7Il5NXB0t4z8xc/c8tUEBcX4AAG6dp0qw7eJW7D4=
-X-Received: by 2002:a05:600c:4f16:b0:412:bcc9:32dc with SMTP id
- l22-20020a05600c4f1600b00412bcc932dcmr2207749wmq.31.1710233640267; 
- Tue, 12 Mar 2024 01:54:00 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHSd7tYr9DeWc3ebGz4fOVo4M7xc23m0w0l3lXhRWvvhnGN/CwfgqDtKcc61xp9EOmdSBTBbg==
-X-Received: by 2002:a05:600c:4f16:b0:412:bcc9:32dc with SMTP id
- l22-20020a05600c4f1600b00412bcc932dcmr2207732wmq.31.1710233639963; 
- Tue, 12 Mar 2024 01:53:59 -0700 (PDT)
+ bh=34ODYRbiNO2jIM8JN3D2Lk8SCzyPZ/Izil+mkgwqkkY=;
+ b=ML7+roNJeCiDDnSs3nhnRvvjxT3fBvzxxwIBb33Je+fkZeLUz9GE79gtfk5TMtqQgK
+ w8fmxqDkEVVKTSmmCY0nxhUtOntxxoxBgkniPwcaObYcbCOB3faJTEZ2nBYexVWFVpxB
+ suZoLFDkYNeABq3WKT92odI3xvh7qCMZRJvCwYY919e2YO5DSuy8AmXV2pE1cS3LCFoa
+ ZFayVszkKDVkKdUcBhXTncluP/Iwca3zOJks+EciBkGl0SgVtkYnrh7lXKnBgyWyFnbc
+ YNsESGf8twbiuvE+YC21UqXyNDIIcynEq7jXk3KfsTtDejcClAo0fqeYxEFN8FzbUZRI
+ nOwA==
+X-Gm-Message-State: AOJu0YxiX2RQRUg+V4UTGlJnED1/3BmxXeEwo+R7q0/qD0JFpKA4vR5Z
+ tLrF7Zr6Rgt3ZYRAKyq2bKOd2KwFEpAvJqmc0TnKhG+UpK+KdFpSWPsOYon793YBp0XtSWjmSF1
+ eqHDuQXWkEjtxJg9So2NVPBEHGBZe/z76SQfdu1bHgdKhJIEHp+VqqHI=
+X-Received: by 2002:adf:ea06:0:b0:33e:48f9:169d with SMTP id
+ q6-20020adfea06000000b0033e48f9169dmr991721wrm.31.1710234565706; 
+ Tue, 12 Mar 2024 02:09:25 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEuC40TmRiegpd4MSV6xiElGpqPGXohBiORdyCqc+ALMjRfaJKqwDaPXLQMOPJggvM0y/3h8A==
+X-Received: by 2002:adf:ea06:0:b0:33e:48f9:169d with SMTP id
+ q6-20020adfea06000000b0033e48f9169dmr991701wrm.31.1710234565379; 
+ Tue, 12 Mar 2024 02:09:25 -0700 (PDT)
 Received: from [192.168.0.9] (ip-109-43-177-86.web.vodafone.de.
  [109.43.177.86]) by smtp.gmail.com with ESMTPSA id
- iv6-20020a05600c548600b0041294d015fbsm11837135wmb.40.2024.03.12.01.53.58
+ h17-20020adf9cd1000000b0033e97f3a479sm4065169wre.19.2024.03.12.02.09.24
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Mar 2024 01:53:59 -0700 (PDT)
-Message-ID: <5e9c1dea-ffde-4aa6-87fa-a3727816e6e4@redhat.com>
-Date: Tue, 12 Mar 2024 09:53:58 +0100
+ Tue, 12 Mar 2024 02:09:25 -0700 (PDT)
+Message-ID: <81bbd360-6652-4fe3-8169-b1875dbee04f@redhat.com>
+Date: Tue, 12 Mar 2024 10:09:23 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 25/29] hw/virtio/vhost-vsock: Fix missing ERRP_GUARD()
- for error_prepend()
+Subject: Re: [PATCH v2 26/29] hw/virtio/vhost: Fix missing ERRP_GUARD() for
+ error_prepend()
 To: Zhao Liu <zhao1.liu@linux.intel.com>,
  Markus Armbruster <armbru@redhat.com>, Michael Roth <michael.roth@amd.com>,
  Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
@@ -67,7 +67,7 @@ To: Zhao Liu <zhao1.liu@linux.intel.com>,
 Cc: qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>,
  "Michael S. Tsirkin" <mst@redhat.com>
 References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
- <20240311033822.3142585-26-zhao1.liu@linux.intel.com>
+ <20240311033822.3142585-27-zhao1.liu@linux.intel.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -111,22 +111,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240311033822.3142585-26-zhao1.liu@linux.intel.com>
+In-Reply-To: <20240311033822.3142585-27-zhao1.liu@linux.intel.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.029,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -139,7 +138,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Mar 2024 08:54:08 -0000
+X-List-Received-Date: Tue, 12 Mar 2024 09:09:33 -0000
 
 On 11/03/2024 04.38, Zhao Liu wrote:
 > From: Zhao Liu <zhao1.liu@intel.com>
@@ -163,13 +162,17 @@ On 11/03/2024 04.38, Zhao Liu wrote:
 > can't see this additional information, because exit() happens in
 > error_setg earlier than information is added [1].
 > 
-> The vhost_vsock_device_realize() passes @errp to error_prepend(), and as
-> a VirtioDeviceClass.realize method, its @errp is from
-> DeviceClass.realize so that there is no guarantee that the @errp won't
-> point to @error_fatal.
+> In hw/virtio/vhost.c, there are 2 functions passing @errp to
+> error_prepend() without ERRP_GUARD():
+> - vhost_save_backend_state()
+> - vhost_load_backend_state()
 > 
-> To avoid the issue like [1] said, add missing ERRP_GUARD() at the
-> beginning of this function.
+> Their @errp both points to callers' @local_err. However, as the APIs
+> defined in include/hw/virtio/vhost.h, it is necessary to protect their
+> @errp with ERRP_GUARD().
+> 
+> To follow the requirement of @errp, add missing ERRP_GUARD() at their
+> beginning.
 > 
 > [1]: Issue description in the commit message of commit ae7c80a7bd73
 >       ("error: New macro ERRP_GUARD()").
@@ -177,21 +180,29 @@ On 11/03/2024 04.38, Zhao Liu wrote:
 > Cc: "Michael S. Tsirkin" <mst@redhat.com>
 > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 > ---
->   hw/virtio/vhost-vsock.c | 1 +
->   1 file changed, 1 insertion(+)
+>   hw/virtio/vhost.c | 2 ++
+>   1 file changed, 2 insertions(+)
 > 
-> diff --git a/hw/virtio/vhost-vsock.c b/hw/virtio/vhost-vsock.c
-> index d5ca0b5a1055..3d4a5a97f484 100644
-> --- a/hw/virtio/vhost-vsock.c
-> +++ b/hw/virtio/vhost-vsock.c
-> @@ -121,6 +121,7 @@ static const VMStateDescription vmstate_virtio_vhost_vsock = {
+> diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+> index 2c9ac794680e..2e4e040db87a 100644
+> --- a/hw/virtio/vhost.c
+> +++ b/hw/virtio/vhost.c
+> @@ -2199,6 +2199,7 @@ int vhost_check_device_state(struct vhost_dev *dev, Error **errp)
 >   
->   static void vhost_vsock_device_realize(DeviceState *dev, Error **errp)
+>   int vhost_save_backend_state(struct vhost_dev *dev, QEMUFile *f, Error **errp)
 >   {
 > +    ERRP_GUARD();
->       VHostVSockCommon *vvc = VHOST_VSOCK_COMMON(dev);
->       VirtIODevice *vdev = VIRTIO_DEVICE(dev);
->       VHostVSock *vsock = VHOST_VSOCK(dev);
+>       /* Maximum chunk size in which to transfer the state */
+>       const size_t chunk_size = 1 * 1024 * 1024;
+>       g_autofree void *transfer_buf = NULL;
+> @@ -2291,6 +2292,7 @@ fail:
+>   
+>   int vhost_load_backend_state(struct vhost_dev *dev, QEMUFile *f, Error **errp)
+>   {
+> +    ERRP_GUARD();
+>       size_t transfer_buf_size = 0;
+>       g_autofree void *transfer_buf = NULL;
+>       g_autoptr(GError) g_err = NULL;
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
