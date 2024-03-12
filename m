@@ -1,83 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rjzY0-0005cZ-12
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Mar 2024 06:39:52 -0400
+	id 1rjzaw-0007E3-TB
+	for mharc-qemu-trivial@gnu.org; Tue, 12 Mar 2024 06:42:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjzXx-0005cA-Qb
- for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 06:39:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjzar-0007DU-Kq
+ for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 06:42:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjzXt-0007ae-QQ
- for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 06:39:48 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1rjzaq-00083j-32
+ for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 06:42:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1710239983;
+ s=mimecast20190719; t=1710240165;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=et5Uje11bZaT7gWbvP/juN1LLlgzevBdIHvM/JA7Lnw=;
- b=EyC7mlMvP9t+FbQyHA9h+Ac0PVmAMvNEHN2WtZxpbhjVMvKoFX3mpEGkmB86fUoC3ODENo
- NSg8KxsxG9z6npcIXIKylwX8OOZsXu/fgAJkvoObtA8xTEVwDqDRw9gI5t4QVjmp46qg7K
- soelIlIUTPSMS5m3qJjnLMvWG7cl64c=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=BeuAOt/r8kCLKqvGEqqWgAEL/dK9McVlz20zQTDAsd8=;
+ b=HBtyDvnSer0B267nf5QsGr9t3ghpdM3un0KcvOlUlyHjsAX1PQWGYZDbfiur2lMJAMouSm
+ 5nuFkJi8NdgjY6xn9s9Ur5hq6ouFUnrvtzHkq1o3C/ezpG+fXaCVI4k83Y2cJ20NkyKtbE
+ A1K7PN7RtrXahOAzW5Is2aW+kNdfCls=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-590-PM94KKGjMzSfdTvjbTaLZQ-1; Tue, 12 Mar 2024 06:39:42 -0400
-X-MC-Unique: PM94KKGjMzSfdTvjbTaLZQ-1
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-33e4397540bso3309974f8f.3
- for <qemu-trivial@nongnu.org>; Tue, 12 Mar 2024 03:39:42 -0700 (PDT)
+ us-mta-347-dcm0h-KIMnedhFFPRg6aYw-1; Tue, 12 Mar 2024 06:42:42 -0400
+X-MC-Unique: dcm0h-KIMnedhFFPRg6aYw-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-33e94548450so895034f8f.1
+ for <qemu-trivial@nongnu.org>; Tue, 12 Mar 2024 03:42:41 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710239981; x=1710844781;
+ d=1e100.net; s=20230601; t=1710240161; x=1710844961;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=et5Uje11bZaT7gWbvP/juN1LLlgzevBdIHvM/JA7Lnw=;
- b=UtJTF2EsiZnRWy1hBEQhD5mc7K0e8BFXo+pcws+Jd+z6EPMwRlulSs7z6rbcmODPue
- L9juD/8A1vbQ8beUL3GVde9gZILErKNw6upwzVbTxozwHCIhWFRSFYjc86o/WfVimvFL
- z4NtXboQ9IEc6k55hoZlrhP/hY/YujcASZiYgfDNSmV356Kyh2id7Gjg5K12LhENcSRN
- GR3yB6SNeFS0Hi92PJqStLH2Pg3N2bZel9y65xHDH7Eu3MRbNz1ZfKc55cwNyK7v6CWk
- 2/YghW/bDzWYumCUAlmWUItWoQY15M61x3nePD57tVSjxrkA12eeE2kEQ30MX2PXIJn9
- gavg==
+ bh=BeuAOt/r8kCLKqvGEqqWgAEL/dK9McVlz20zQTDAsd8=;
+ b=dEquo3jlf01ewu7PLl+VGIgwFuIutnNVxTJHON5Eh0zDp/9f0EOlrxZi2fG6CutDwv
+ sKOsMxFQK/mdOI0HrXaMblBf2SbPrSP0yqdi0lYV1U6zghVVAMXmJvN6SgOhc1pTzBtY
+ te11woixGAmB+vDoarf5QW87Irh3ytHl6IBhLyhC4J+cK0xpOnsJgrFVAD/ERIuJoxl+
+ Ef3lugQI2LleX1Xf0ck61zNmtcgJglesQDAkSnpBeoWdINm6R7nRrOsngzFqUUlToYyW
+ ItGqeR4cPWhYxGe+L6kC2vtrxJUDbquaDkNaeKsNcvynG7nosrS1/frPDOIuRLFKxWM0
+ mmSg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVr79SAUnKZuqUlSDBIYX3VtfXTWmEy9f7ouH0BWm2l4vhulVA1/DAEPu5rR6Vzj4fpS5VsU+W6G8bb/7c9K5zz+NLRm8eLwQ==
-X-Gm-Message-State: AOJu0YyLte8tP3w2uMFx3fk9rkd7+hIT/QdfNcHCiVRWnNdxF55LC+7N
- TKZ2ZhEzM1a17T4N0gXO3DINY44ODSpKxl7N/Hkq2rzxnTXjPt1S8ZVQ4hB0cfBg2+aZZqrc8dg
- 3JHbrBjaQQq8E3kpOUODDqpzaVE+i+uPccnGlQKed8VsBkatbrrchCBI=
-X-Received: by 2002:adf:f7ce:0:b0:33e:a1e3:87b3 with SMTP id
- a14-20020adff7ce000000b0033ea1e387b3mr2019730wrq.41.1710239981075; 
- Tue, 12 Mar 2024 03:39:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEtvK4BHlXf38/mj69Utmko7XSqwLnA7Lif63XTsquTC4/grAhE7Gp9u5yM0KCjwPYLtq2zrQ==
-X-Received: by 2002:adf:f7ce:0:b0:33e:a1e3:87b3 with SMTP id
- a14-20020adff7ce000000b0033ea1e387b3mr2019706wrq.41.1710239980753; 
- Tue, 12 Mar 2024 03:39:40 -0700 (PDT)
+ AJvYcCUqH+qmN/PtnwupXm0y4lhAILgAQF0IB1x24D/0aSPbmHOiJLpHVQ3OC0w7kXO+EULTPWwnf+KKRWqCUDAs5tF7ZZGqLt/NkA==
+X-Gm-Message-State: AOJu0Ywy3k0uZKCTrYWXOt4qg+fbxWbaN7lyaOsyWHtUJor/p5s1PMVK
+ HVh7NZ8vn04YAzhOZYDXbLuyNGLP4FMzYycskFSBBOPjGD9i7ll/f4CQfvQDqkVLo6U9Yn6RjqF
+ OWwMqIGP1sLnwgFaq+Pt/5zXUOZhsrelOVI327zyN231b30I209m0OIg=
+X-Received: by 2002:adf:e48b:0:b0:33e:6112:fefc with SMTP id
+ i11-20020adfe48b000000b0033e6112fefcmr8180229wrm.19.1710240160996; 
+ Tue, 12 Mar 2024 03:42:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH9VMG5BFPxrlU5lKXRRnDFr2tJIVcjzsetYbQin8et0nrvvUxFa4D9oFEc+SgTQVzvZx72hw==
+X-Received: by 2002:adf:e48b:0:b0:33e:6112:fefc with SMTP id
+ i11-20020adfe48b000000b0033e6112fefcmr8180208wrm.19.1710240160699; 
+ Tue, 12 Mar 2024 03:42:40 -0700 (PDT)
 Received: from [192.168.0.9] (ip-109-43-177-86.web.vodafone.de.
  [109.43.177.86]) by smtp.gmail.com with ESMTPSA id
- i5-20020adfb645000000b0033e87c6bcb2sm7582116wre.8.2024.03.12.03.39.39
+ f4-20020a5d58e4000000b0033e7a204dc7sm8739191wrd.32.2024.03.12.03.42.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 12 Mar 2024 03:39:40 -0700 (PDT)
-Message-ID: <5c84e9e9-8beb-4357-ace7-96f44973e15c@redhat.com>
-Date: Tue, 12 Mar 2024 11:39:38 +0100
+ Tue, 12 Mar 2024 03:42:40 -0700 (PDT)
+Message-ID: <5ff0cd3c-88e1-4961-8d97-da0af67a4273@redhat.com>
+Date: Tue, 12 Mar 2024 11:42:30 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 5/7] hw/pci-bridge/cxl_upstream: Fix missing
- ERRP_GUARD() in cxl_usp_realize()
-To: Zhao Liu <zhao1.liu@linux.intel.com>,
- Jonathan Cameron <jonathan.cameron@huawei.com>, Fan Ni <fan.ni@samsung.com>,
- Laurent Vivier <laurent@vivier.eu>, Alistair Francis
- <alistair@alistair23.me>, "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- "Michael S . Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Markus Armbruster <armbru@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
-References: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
- <20240223085653.1255438-6-zhao1.liu@linux.intel.com>
+Subject: Re: [PATCH v2 00/29] Cleanup up to fix missing ERRP_GUARD() for
+ error_prepend()
+To: Zhao Liu <zhao1.liu@linux.intel.com>
+Cc: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, Markus Armbruster <armbru@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Zhao Liu <zhao1.liu@intel.com>
+References: <20240311033822.3142585-1-zhao1.liu@linux.intel.com>
+ <d48e5d05-0e1e-4bb0-b10a-f0c943b055f6@linaro.org>
+ <ZfAVsQTIOgAOjd0Y@intel.com>
+ <4ba8e5dc-cda0-4ed4-8baa-82687a235627@redhat.com>
+ <ZfAtx3fBR9KgsAWa@intel.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -121,21 +115,20 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240223085653.1255438-6-zhao1.liu@linux.intel.com>
+In-Reply-To: <ZfAtx3fBR9KgsAWa@intel.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -30
 X-Spam_score: -3.1
 X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.029,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -149,70 +142,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Mar 2024 10:39:50 -0000
+X-List-Received-Date: Tue, 12 Mar 2024 10:42:51 -0000
 
-On 23/02/2024 09.56, Zhao Liu wrote:
-> From: Zhao Liu <zhao1.liu@intel.com>
+On 12/03/2024 11.26, Zhao Liu wrote:
+> On Tue, Mar 12, 2024 at 09:50:25AM +0100, Thomas Huth wrote:
+>> Date: Tue, 12 Mar 2024 09:50:25 +0100
+>> From: Thomas Huth <thuth@redhat.com>
+>> Subject: Re: [PATCH v2 00/29] Cleanup up to fix missing ERRP_GUARD() for
+>>   error_prepend()
+>>
+>> On 12/03/2024 09.43, Zhao Liu wrote:
+>>> Hi Thomas/Markus/Michael,
+>>>
+>>> For the remaing patches, could you please help me merge them next?
+>>>
+>>> Many thanks!
+>>
+>> Yes, I'm currently reviewing the ones that don't have a Reviewed-by yet. I
+>> can pick up the remaining patches if the other maintainers won't pick them
+>> up for the softfreeze today.
+>>
 > 
-> As the comment in qapi/error, dereferencing @errp requires
-> ERRP_GUARD():
+> Appreciate that you can help me get on the last train of releases.
 > 
-> * = Why, when and how to use ERRP_GUARD() =
-> *
-> * Without ERRP_GUARD(), use of the @errp parameter is restricted:
-> * - It must not be dereferenced, because it may be null.
-> ...
-> * ERRP_GUARD() lifts these restrictions.
-> *
-> * To use ERRP_GUARD(), add it right at the beginning of the function.
-> * @errp can then be used without worrying about the argument being
-> * NULL or &error_fatal.
-> *
-> * Using it when it's not needed is safe, but please avoid cluttering
-> * the source with useless code.
+> If possible, could you please also help me pick up two other ERRP_GUARD()
+> related cleanups (total 8 patches, both got r/b)? ;-)
 > 
-> But in cxl_usp_realize(), @errp is dereferenced without ERRP_GUARD():
+> My cleanup is too fragmented, I'll try to centralize my work to make it easier
+> for maintainer to review and merge in the future!
 > 
-> cxl_doe_cdat_init(cxl_cstate, errp);
-> if (*errp) {
->      goto err_cap;
-> }
-> 
-> Here we check *errp, because cxl_doe_cdat_init() returns void. And since
-> cxl_usp_realize() - as a PCIDeviceClass.realize() method - doesn't get
-> the NULL @errp parameter, it hasn't triggered the bug that dereferencing
-> the NULL @errp.
-> 
-> To follow the requirement of @errp, add missing ERRP_GUARD() in
-> cxl_usp_realize().
-> 
-> Suggested-by: Markus Armbruster <armbru@redhat.com>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> Reviewed-by: Markus Armbruster <armbru@redhat.com>
-> ---
-> Suggested by credit:
->   Markus: Referred his explanation about ERRP_GUARD().
-> ---
-> v2:
->   * Add the @errp dereference code in commit message to make review
->     easier. (Markus)
-> ---
->   hw/pci-bridge/cxl_upstream.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/pci-bridge/cxl_upstream.c b/hw/pci-bridge/cxl_upstream.c
-> index e87eb4017713..03d123cca0ef 100644
-> --- a/hw/pci-bridge/cxl_upstream.c
-> +++ b/hw/pci-bridge/cxl_upstream.c
-> @@ -289,6 +289,7 @@ static void free_default_cdat_table(CDATSubHeader **cdat_table, int num,
->   
->   static void cxl_usp_realize(PCIDevice *d, Error **errp)
->   {
-> +    ERRP_GUARD();
->       PCIEPort *p = PCIE_PORT(d);
->       CXLUpstreamPort *usp = CXL_USP(d);
->       CXLComponentState *cxl_cstate = &usp->cxl_cstate;
+> [1]: https://lore.kernel.org/qemu-devel/20240223085653.1255438-1-zhao1.liu@linux.intel.com/
+> [2]: https://lore.kernel.org/qemu-devel/20240312060337.3240965-1-zhao1.liu@linux.intel.com/
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+I'll try to include them!
+
+  Thomas
+
 
 
