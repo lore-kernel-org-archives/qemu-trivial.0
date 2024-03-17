@@ -1,96 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rk5EY-0003Xv-Fy
-	for mharc-qemu-trivial@gnu.org; Tue, 12 Mar 2024 12:44:10 -0400
+	id 1rlu0V-00087y-7P
+	for mharc-qemu-trivial@gnu.org; Sun, 17 Mar 2024 13:09:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rk5EW-0003XJ-R0
- for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 12:44:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
+ id 1rlu0T-00087Z-CR; Sun, 17 Mar 2024 13:09:09 -0400
+Received: from mailout10.t-online.de ([194.25.134.21])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1rk5EV-0004mh-ES
- for qemu-trivial@nongnu.org; Tue, 12 Mar 2024 12:44:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1710261846;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=NFZpIIaHFLHWQ3CKSA+QU16wLiPBEnVumhahukR4YQk=;
- b=RitF5zOUl+OervKkXYMwbohCeYROzo+X2TVrM24JA5nOXwuIQr3+U7KF7y90etEhmYXSkv
- wNQkDI1T+GNU0t35WKmzsz7o7wFqu+RRCnwAKeWN+PidVaIxzhLG/Xgh3V1dnRberujjf3
- MpB3rBanUZ1ab4fWQAcsQ6D0ItcYezA=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-169-1-UQ6PoANDGbFrprQyXmEw-1; Tue, 12 Mar 2024 12:44:03 -0400
-X-MC-Unique: 1-UQ6PoANDGbFrprQyXmEw-1
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-412eeb789d9so740345e9.3
- for <qemu-trivial@nongnu.org>; Tue, 12 Mar 2024 09:44:03 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1710261842; x=1710866642;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=NFZpIIaHFLHWQ3CKSA+QU16wLiPBEnVumhahukR4YQk=;
- b=a0/xOYzZ7S1KVvQzZv12LxBHOJma7B8bavs46AlL4xhUWSdP6Mi7s6hiL73PFOGTvS
- VDyjmK6V4fL9HLmTseGbXM9I8b/0uKwMEUBA0mq+U9wsGfdn+9XpU0ITdOXSjsd8VTVw
- 6D/pHyinY7gTmXtmvzxKbZDkwVGKN7P8SDOEPPOifeHpsxh3tQ/JNpLT3IyvMSxmkfNx
- FxdHT2c7FqI1iGyJ7AwoXy1Q1RW1WQSYdUY7+U3qw0hYuYoPQEeKtcCo/Di8sKsMcbwp
- wVko7fyGBTg1hNsglsEek5xkKVGD6gWFZ9OH4HyEyhbRJI3nmYO6of/urHejzXIOwz4j
- RElg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX4hrPbI9HR/YwRWqW71mwiven2uTiDeeGBZ29af2qisIkHrO8klufdizGb9jjeBlRh3TXRT5CguivzAJ3rqAnCJbwTJTAzXA==
-X-Gm-Message-State: AOJu0Yw85AbASz3JY3XM7gx5PifPzRwkdy75RWKNqywG1u18o+YA3tbF
- SmRrbl+M0drUDB70MDNiFIgaf0j70mY1SSSJS23AfdMsC6Gdfe6utaBNuuaJBPPubfMXPl6KXgN
- ipAD6XEhix4tvgKkyJjQUZogoMSlW6Kw7KpgiYqh8TsKKddV+dp+rdpk=
-X-Received: by 2002:a05:600c:35cc:b0:412:ed3f:1b4b with SMTP id
- r12-20020a05600c35cc00b00412ed3f1b4bmr3005411wmq.11.1710261842190; 
- Tue, 12 Mar 2024 09:44:02 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHxsOyypDT7GZSd0ybfIpycv9ghyUGncGhAHWtortRBN3JIB5fiFFpykMr0RcUvegM/mxzTZQ==
-X-Received: by 2002:a05:600c:35cc:b0:412:ed3f:1b4b with SMTP id
- r12-20020a05600c35cc00b00412ed3f1b4bmr3005387wmq.11.1710261841695; 
- Tue, 12 Mar 2024 09:44:01 -0700 (PDT)
-Received: from redhat.com ([2a02:14f:1f0:532c:5ae4:fce6:76e1:fa1a])
- by smtp.gmail.com with ESMTPSA id
- bh25-20020a05600c3d1900b004133365bbc6sm2840627wmb.19.2024.03.12.09.43.58
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 12 Mar 2024 09:44:01 -0700 (PDT)
-Date: Tue, 12 Mar 2024 12:43:55 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: Zhao Liu <zhao1.liu@linux.intel.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Jonathan Cameron <jonathan.cameron@huawei.com>,
- Fan Ni <fan.ni@samsung.com>, Laurent Vivier <laurent@vivier.eu>,
- Alistair Francis <alistair@alistair23.me>,
- "Edgar E . Iglesias" <edgar.iglesias@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Alex Williamson <alex.williamson@redhat.com>,
- =?iso-8859-1?Q?C=E9dric?= Le Goater <clg@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [PATCH v2 0/7] Cleanup and fix @errp dereference
-Message-ID: <20240312124339-mutt-send-email-mst@kernel.org>
-References: <20240223085653.1255438-1-zhao1.liu@linux.intel.com>
- <Ze5/r5EW9YsqVwtS@intel.com>
+ (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
+ id 1rlu0R-00012E-G7; Sun, 17 Mar 2024 13:09:09 -0400
+Received: from fwd87.aul.t-online.de (fwd87.aul.t-online.de [10.223.144.113])
+ by mailout10.t-online.de (Postfix) with SMTP id AFD7C2B06C;
+ Sun, 17 Mar 2024 18:09:01 +0100 (CET)
+Received: from [192.168.211.200] ([79.208.24.6]) by fwd87.t-online.de
+ with (TLSv1.3:TLS_AES_256_GCM_SHA384 encrypted)
+ esmtp id 1rlu0J-0Vvb5F0; Sun, 17 Mar 2024 18:08:59 +0100
+Message-ID: <72b4ec08-8943-4d47-9cd1-332536ee630f@t-online.de>
+Date: Sun, 17 Mar 2024 18:08:58 +0100
 MIME-Version: 1.0
-In-Reply-To: <Ze5/r5EW9YsqVwtS@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.687,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+User-Agent: Mozilla Thunderbird
+From: =?UTF-8?Q?Volker_R=C3=BCmelin?= <vr_qemu@t-online.de>
+Subject: Re: [PATCH] usb-audio: Fix invalid values in AudioControl descriptors
+To: Joonas Kankaala <joonas.a.kankaala@gmail.com>, qemu-devel@nongnu.org
+Cc: kraxel@redhat.com, qemu-trivial@nongnu.org
+References: <20240309172932.288940-1-joonas.a.kankaala@gmail.com>
+Content-Language: en-US
+In-Reply-To: <20240309172932.288940-1-joonas.a.kankaala@gmail.com>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-TOI-EXPURGATEID: 150726::1710695339-94855968-046F08AE/0/0 CLEAN NORMAL
+X-TOI-MSGID: 76f78163-9b7a-4c7c-9203-d1a393d2d1c7
+Received-SPF: pass client-ip=194.25.134.21; envelope-from=vr_qemu@t-online.de;
+ helo=mailout10.t-online.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,16 +50,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 12 Mar 2024 16:44:09 -0000
+X-List-Received-Date: Sun, 17 Mar 2024 17:09:09 -0000
 
-On Mon, Mar 11, 2024 at 11:51:11AM +0800, Zhao Liu wrote:
-> Hi Michael & Philippe,
-> 
-> Could this series catch the last train of next releases? ;-)
-> 
-> Thanks,
-> Zhao
+Am 09.03.24 um 18:29 schrieb Joonas Kankaala:
+> This fixes the invalid bInterfaceProtocol value 0x04 in the USB audio
+> AudioControl descriptors. It should be zero. While Linux and Windows
+> forgive this error, macOS 14 Sonoma does not. The usb-audio device does
+> not appear in macOS sound settings even though the device is recognized
+> and shows up in USB system information. According to the USB audio class
+> specs 1.0-4.0, valid values are 0x00, 0x20, 0x30 and 0x40. (Note also
+> that Linux prints the warning "unknown interface protocol 0x4, assuming
+> v1", but then proceeds as if the value was zero.)
+>
+> This also fixes the invalid wTotalLength value in the multi-channel
+> setup AudioControl interface header descriptor (used when multi=on
+> and out.mixing-engine off). The combined length of all the descriptors
+> there add up to 0x37, not 0x38. In Linux, "lsusb -D ..." displays
+> incomplete descriptor information when this length is incorrect.
+>
+> Signed-off-by: Joonas Kankaala <joonas.a.kankaala@gmail.com>
 
-yes it will be in subject to last minute testing.
+lsusb also misinterprets the invalid interface protocol 0x4 and uses
+0x30 instead.
+
+Reviewed-by: Volker Rümelin <vr_qemu@t-online.de>
+
+> ---
+>  hw/usb/dev-audio.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+>
+> diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
+> index d5ac1f8962..1897fff9e6 100644
+> --- a/hw/usb/dev-audio.c
+> +++ b/hw/usb/dev-audio.c
+> @@ -124,7 +124,6 @@ static const USBDescIface desc_iface[] = {
+>          .bNumEndpoints                 = 0,
+>          .bInterfaceClass               = USB_CLASS_AUDIO,
+>          .bInterfaceSubClass            = USB_SUBCLASS_AUDIO_CONTROL,
+> -        .bInterfaceProtocol            = 0x04,
+>          .iInterface                    = STRING_USBAUDIO_CONTROL,
+>          .ndesc                         = 4,
+>          .descs = (USBDescOther[]) {
+> @@ -282,7 +281,6 @@ static const USBDescIface desc_iface_multi[] = {
+>          .bNumEndpoints                 = 0,
+>          .bInterfaceClass               = USB_CLASS_AUDIO,
+>          .bInterfaceSubClass            = USB_SUBCLASS_AUDIO_CONTROL,
+> -        .bInterfaceProtocol            = 0x04,
+>          .iInterface                    = STRING_USBAUDIO_CONTROL,
+>          .ndesc                         = 4,
+>          .descs = (USBDescOther[]) {
+> @@ -293,7 +291,7 @@ static const USBDescIface desc_iface_multi[] = {
+>                      USB_DT_CS_INTERFACE,        /*  u8  bDescriptorType */
+>                      DST_AC_HEADER,              /*  u8  bDescriptorSubtype */
+>                      U16(0x0100),                /* u16  bcdADC */
+> -                    U16(0x38),                  /* u16  wTotalLength */
+> +                    U16(0x37),                  /* u16  wTotalLength */
+>                      0x01,                       /*  u8  bInCollection */
+>                      0x01,                       /*  u8  baInterfaceNr */
+>                  }
 
 
