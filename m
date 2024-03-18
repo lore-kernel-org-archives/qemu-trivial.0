@@ -1,43 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rlu0V-00087y-7P
-	for mharc-qemu-trivial@gnu.org; Sun, 17 Mar 2024 13:09:11 -0400
+	id 1rmBSe-0005sv-VC
+	for mharc-qemu-trivial@gnu.org; Mon, 18 Mar 2024 07:47:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
- id 1rlu0T-00087Z-CR; Sun, 17 Mar 2024 13:09:09 -0400
-Received: from mailout10.t-online.de ([194.25.134.21])
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1rmBSb-0005sU-MF
+ for qemu-trivial@nongnu.org; Mon, 18 Mar 2024 07:47:22 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vr_qemu@t-online.de>)
- id 1rlu0R-00012E-G7; Sun, 17 Mar 2024 13:09:09 -0400
-Received: from fwd87.aul.t-online.de (fwd87.aul.t-online.de [10.223.144.113])
- by mailout10.t-online.de (Postfix) with SMTP id AFD7C2B06C;
- Sun, 17 Mar 2024 18:09:01 +0100 (CET)
-Received: from [192.168.211.200] ([79.208.24.6]) by fwd87.t-online.de
- with (TLSv1.3:TLS_AES_256_GCM_SHA384 encrypted)
- esmtp id 1rlu0J-0Vvb5F0; Sun, 17 Mar 2024 18:08:59 +0100
-Message-ID: <72b4ec08-8943-4d47-9cd1-332536ee630f@t-online.de>
-Date: Sun, 17 Mar 2024 18:08:58 +0100
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1rmBSW-0001Uz-2B
+ for qemu-trivial@nongnu.org; Mon, 18 Mar 2024 07:47:21 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1710762432;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=2Y5+sUh8mt96EMkWt5D5MUpETfKazlsNBxkcDUAndLk=;
+ b=RUvT1GweEx1L2Be8flYrtKds4a7PldQHKQ16XDI0A59FXFo235qeoHq7IbYS7rp0gvtw4i
+ ftLGARf0rgf53Fui0oCAgxbrDHZcrJAOK23IOb9f4mNuTBgvTKZp0elsuksyyez8xKkR44
+ s5Q0c4eLDP+R6jQxUx1aEA9rDSerVNE=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-665-s_lpF8udOayE5Q4DNcllEw-1; Mon, 18 Mar 2024 07:47:11 -0400
+X-MC-Unique: s_lpF8udOayE5Q4DNcllEw-1
+Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BBB921875044;
+ Mon, 18 Mar 2024 11:47:10 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.194.127])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id B7124200B3BD;
+ Mon, 18 Mar 2024 11:47:09 +0000 (UTC)
+Date: Mon, 18 Mar 2024 12:47:04 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, hreitz@redhat.com, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] blockdev: Fix blockdev-snapshot-sync error reporting for
+ no medium
+Message-ID: <ZfgpuMp7K-mGpZ_B@redhat.com>
+References: <20240306142831.2514431-1-armbru@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: =?UTF-8?Q?Volker_R=C3=BCmelin?= <vr_qemu@t-online.de>
-Subject: Re: [PATCH] usb-audio: Fix invalid values in AudioControl descriptors
-To: Joonas Kankaala <joonas.a.kankaala@gmail.com>, qemu-devel@nongnu.org
-Cc: kraxel@redhat.com, qemu-trivial@nongnu.org
-References: <20240309172932.288940-1-joonas.a.kankaala@gmail.com>
-Content-Language: en-US
-In-Reply-To: <20240309172932.288940-1-joonas.a.kankaala@gmail.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-TOI-EXPURGATEID: 150726::1710695339-94855968-046F08AE/0/0 CLEAN NORMAL
-X-TOI-MSGID: 76f78163-9b7a-4c7c-9203-d1a393d2d1c7
-Received-SPF: pass client-ip=194.25.134.21; envelope-from=vr_qemu@t-online.de;
- helo=mailout10.t-online.de
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240306142831.2514431-1-armbru@redhat.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -50,63 +69,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 17 Mar 2024 17:09:09 -0000
+X-List-Received-Date: Mon, 18 Mar 2024 11:47:22 -0000
 
-Am 09.03.24 um 18:29 schrieb Joonas Kankaala:
-> This fixes the invalid bInterfaceProtocol value 0x04 in the USB audio
-> AudioControl descriptors. It should be zero. While Linux and Windows
-> forgive this error, macOS 14 Sonoma does not. The usb-audio device does
-> not appear in macOS sound settings even though the device is recognized
-> and shows up in USB system information. According to the USB audio class
-> specs 1.0-4.0, valid values are 0x00, 0x20, 0x30 and 0x40. (Note also
-> that Linux prints the warning "unknown interface protocol 0x4, assuming
-> v1", but then proceeds as if the value was zero.)
->
-> This also fixes the invalid wTotalLength value in the multi-channel
-> setup AudioControl interface header descriptor (used when multi=on
-> and out.mixing-engine off). The combined length of all the descriptors
-> there add up to 0x37, not 0x38. In Linux, "lsusb -D ..." displays
-> incomplete descriptor information when this length is incorrect.
->
-> Signed-off-by: Joonas Kankaala <joonas.a.kankaala@gmail.com>
+Am 06.03.2024 um 15:28 hat Markus Armbruster geschrieben:
+> When external_snapshot_abort() rejects a BlockDriverState without a
+> medium, it creates an error like this:
+> 
+>         error_setg(errp, "Device '%s' has no medium", device);
+> 
+> Trouble is @device can be null.  My system formats null as "(null)",
+> but other systems might crash.  Reproducer:
+> 
+> 1. Create a block device without a medium
+> 
+>     -> {"execute": "blockdev-add", "arguments": {"driver": "host_cdrom", "node-name": "blk0", "filename": "/dev/sr0"}}
+>     <- {"return": {}}
+> 
+> 3. Attempt to snapshot it
+> 
+>     -> {"execute":"blockdev-snapshot-sync", "arguments": { "node-name": "blk0", "snapshot-file":"/tmp/foo.qcow2","format":"qcow2"}}
+>     <- {"error": {"class": "GenericError", "desc": "Device '(null)' has no medium"}}
+> 
+> Broken when commit 0901f67ecdb made @device optional.
+> 
+> Use bdrv_get_device_or_node_name() instead.  Now it fails as it
+> should:
+> 
+>     <- {"error": {"class": "GenericError", "desc": "Device 'blk0' has no medium"}}
+> 
+> Fixes: 0901f67ecdb7 (qmp: Allow to take external snapshots on bs graphs node.)
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
 
-lsusb also misinterprets the invalid interface protocol 0x4 and uses
-0x30 instead.
+Thanks, applied to the block branch.
 
-Reviewed-by: Volker Rümelin <vr_qemu@t-online.de>
-
-> ---
->  hw/usb/dev-audio.c | 4 +---
->  1 file changed, 1 insertion(+), 3 deletions(-)
->
-> diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
-> index d5ac1f8962..1897fff9e6 100644
-> --- a/hw/usb/dev-audio.c
-> +++ b/hw/usb/dev-audio.c
-> @@ -124,7 +124,6 @@ static const USBDescIface desc_iface[] = {
->          .bNumEndpoints                 = 0,
->          .bInterfaceClass               = USB_CLASS_AUDIO,
->          .bInterfaceSubClass            = USB_SUBCLASS_AUDIO_CONTROL,
-> -        .bInterfaceProtocol            = 0x04,
->          .iInterface                    = STRING_USBAUDIO_CONTROL,
->          .ndesc                         = 4,
->          .descs = (USBDescOther[]) {
-> @@ -282,7 +281,6 @@ static const USBDescIface desc_iface_multi[] = {
->          .bNumEndpoints                 = 0,
->          .bInterfaceClass               = USB_CLASS_AUDIO,
->          .bInterfaceSubClass            = USB_SUBCLASS_AUDIO_CONTROL,
-> -        .bInterfaceProtocol            = 0x04,
->          .iInterface                    = STRING_USBAUDIO_CONTROL,
->          .ndesc                         = 4,
->          .descs = (USBDescOther[]) {
-> @@ -293,7 +291,7 @@ static const USBDescIface desc_iface_multi[] = {
->                      USB_DT_CS_INTERFACE,        /*  u8  bDescriptorType */
->                      DST_AC_HEADER,              /*  u8  bDescriptorSubtype */
->                      U16(0x0100),                /* u16  bcdADC */
-> -                    U16(0x38),                  /* u16  wTotalLength */
-> +                    U16(0x37),                  /* u16  wTotalLength */
->                      0x01,                       /*  u8  bInCollection */
->                      0x01,                       /*  u8  baInterfaceNr */
->                  }
+Kevin
 
 
