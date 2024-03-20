@@ -1,63 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rmBSe-0005sv-VC
-	for mharc-qemu-trivial@gnu.org; Mon, 18 Mar 2024 07:47:25 -0400
+	id 1rnAq9-0004rN-Nb
+	for mharc-qemu-trivial@gnu.org; Thu, 21 Mar 2024 01:19:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1rmBSb-0005sU-MF
- for qemu-trivial@nongnu.org; Mon, 18 Mar 2024 07:47:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <dg@treblig.org>)
+ id 1rn4dd-0008JM-Em; Wed, 20 Mar 2024 18:42:25 -0400
+Received: from mx.treblig.org ([2a00:1098:5b::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1rmBSW-0001Uz-2B
- for qemu-trivial@nongnu.org; Mon, 18 Mar 2024 07:47:21 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1710762432;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=2Y5+sUh8mt96EMkWt5D5MUpETfKazlsNBxkcDUAndLk=;
- b=RUvT1GweEx1L2Be8flYrtKds4a7PldQHKQ16XDI0A59FXFo235qeoHq7IbYS7rp0gvtw4i
- ftLGARf0rgf53Fui0oCAgxbrDHZcrJAOK23IOb9f4mNuTBgvTKZp0elsuksyyez8xKkR44
- s5Q0c4eLDP+R6jQxUx1aEA9rDSerVNE=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-665-s_lpF8udOayE5Q4DNcllEw-1; Mon, 18 Mar 2024 07:47:11 -0400
-X-MC-Unique: s_lpF8udOayE5Q4DNcllEw-1
-Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
- [10.11.54.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id BBB921875044;
- Mon, 18 Mar 2024 11:47:10 +0000 (UTC)
-Received: from redhat.com (unknown [10.39.194.127])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id B7124200B3BD;
- Mon, 18 Mar 2024 11:47:09 +0000 (UTC)
-Date: Mon, 18 Mar 2024 12:47:04 +0100
-From: Kevin Wolf <kwolf@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, hreitz@redhat.com, qemu-block@nongnu.org,
+ (Exim 4.90_1) (envelope-from <dg@treblig.org>)
+ id 1rn4dZ-0008CQ-RP; Wed, 20 Mar 2024 18:42:25 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
+ ; s=bytemarkmx;
+ h=In-Reply-To:Content-Transfer-Encoding:Content-Type:
+ MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
+ Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
+ Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=KBf/tPFYcgNlcQJNQKKFsPqHw6A1Q1et/hZJdIyr66w=; b=pvB4TtE8Jm1+RfiCwI93LXUAfr
+ Ng0goMWDivrLmBdFf1quBrVTFiOW3YJTg79J+vy4C6pe5Or5Ck+uCxV9qKXlcRX/+xfDk/oyAl4M4
+ cVyxZQpapH0+b+xyw5t+ovmdrKyrfUv6oZIhKAzt2lHOaxPv0X+XT3fHMJZby7rw8BtHyz+92B1oL
+ mHmMfObwrUA6VVjaTIH29khJhSffeFeWbjxiU0WbhkWuunBDQ+bweSWV4G8JIKYErRicSlRoKFb6M
+ kDYKQopSYUP3t3jNNvTmdyPeO931oOryZ2IrVVlrRJn9qu0FM3bjdnjuWR9iIYfz0Fa4FckyVT1Jc
+ vIN5fs2g==;
+Received: from dg by mx.treblig.org with local (Exim 4.96)
+ (envelope-from <dg@treblig.org>) id 1rn4dV-00DaIB-2z;
+ Wed, 20 Mar 2024 22:42:17 +0000
+Date: Wed, 20 Mar 2024 22:42:17 +0000
+From: "Dr. David Alan Gilbert" <dave@treblig.org>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
  qemu-trivial@nongnu.org
-Subject: Re: [PATCH] blockdev: Fix blockdev-snapshot-sync error reporting for
- no medium
-Message-ID: <ZfgpuMp7K-mGpZ_B@redhat.com>
-References: <20240306142831.2514431-1-armbru@redhat.com>
+Cc: Shiyang Ruan <ruansy.fnst@fujitsu.com>, qemu-devel@nongnu.org,
+ jonathan.cameron@huawei.com, Yao Xingtao <yaoxt.fnst@fujitsu.com>
+Subject: Re: [PATCH-for-9.0] monitor/hmp-cmds-target.c: append a space in
+ error message in gpa2hva()
+Message-ID: <ZftmSRMlOZfPtksS@gallifrey>
+References: <20240319021610.2423844-1-ruansy.fnst@fujitsu.com>
+ <c7cd0119-0c8b-45fa-93d5-de25fb8f6a6e@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20240306142831.2514431-1-armbru@redhat.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kwolf@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <c7cd0119-0c8b-45fa-93d5-de25fb8f6a6e@linaro.org>
+X-Chocolate: 70 percent or better cocoa solids preferably
+X-Operating-System: Linux/6.1.0-17-amd64 (x86_64)
+X-Uptime: 22:41:41 up 78 days, 1:31, 1 user, load average: 0.00, 0.00, 0.00
+User-Agent: Mutt/2.2.12 (2023-09-09)
+Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
+ helo=mx.treblig.org
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.374,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 21 Mar 2024 01:19:44 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -69,39 +66,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 18 Mar 2024 11:47:22 -0000
+X-List-Received-Date: Wed, 20 Mar 2024 22:42:25 -0000
 
-Am 06.03.2024 um 15:28 hat Markus Armbruster geschrieben:
-> When external_snapshot_abort() rejects a BlockDriverState without a
-> medium, it creates an error like this:
+* Philippe Mathieu-Daudé (philmd@linaro.org) wrote:
+> On 19/3/24 03:16, Shiyang Ruan via wrote:
+> > From: Yao Xingtao <yaoxt.fnst@fujitsu.com>
+> > 
+> > In qemu monitor mode, when we use gpa2hva command to print the host
+> > virtual address corresponding to a guest physical address, if the gpa is
+> > not in RAM, the error message is below:
+> > 
+> > (qemu) gpa2hva 0x750000000
+> > Memory at address 0x750000000is not RAM
+> > 
+> > a space is missed between '0x750000000' and 'is'.
+> > 
+> > Signed-off-by: Yao Xingtao <yaoxt.fnst@fujitsu.com>
+> > ---
+> >   monitor/hmp-cmds-target.c | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> > 
+> > diff --git a/monitor/hmp-cmds-target.c b/monitor/hmp-cmds-target.c
+> > index 9338ae8440..ff01cf9d8d 100644
+> > --- a/monitor/hmp-cmds-target.c
+> > +++ b/monitor/hmp-cmds-target.c
+> > @@ -261,7 +261,7 @@ void *gpa2hva(MemoryRegion **p_mr, hwaddr addr, uint64_t size, Error **errp)
+> >       }
+> >       if (!memory_region_is_ram(mrs.mr) && !memory_region_is_romd(mrs.mr)) {
+> > -        error_setg(errp, "Memory at address 0x%" HWADDR_PRIx "is not RAM", addr);
+> > +        error_setg(errp, "Memory at address 0x%" HWADDR_PRIx " is not RAM", addr);
+> >           memory_region_unref(mrs.mr);
+> >           return NULL;
+> >       }
 > 
->         error_setg(errp, "Device '%s' has no medium", device);
-> 
-> Trouble is @device can be null.  My system formats null as "(null)",
-> but other systems might crash.  Reproducer:
-> 
-> 1. Create a block device without a medium
-> 
->     -> {"execute": "blockdev-add", "arguments": {"driver": "host_cdrom", "node-name": "blk0", "filename": "/dev/sr0"}}
->     <- {"return": {}}
-> 
-> 3. Attempt to snapshot it
-> 
->     -> {"execute":"blockdev-snapshot-sync", "arguments": { "node-name": "blk0", "snapshot-file":"/tmp/foo.qcow2","format":"qcow2"}}
->     <- {"error": {"class": "GenericError", "desc": "Device '(null)' has no medium"}}
-> 
-> Broken when commit 0901f67ecdb made @device optional.
-> 
-> Use bdrv_get_device_or_node_name() instead.  Now it fails as it
-> should:
-> 
->     <- {"error": {"class": "GenericError", "desc": "Device 'blk0' has no medium"}}
-> 
-> Fixes: 0901f67ecdb7 (qmp: Allow to take external snapshots on bs graphs node.)
-> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> Fixes: e9628441df ("hmp: gpa2hva and gpa2hpa hostaddr command")
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Thanks, applied to the block branch.
+Thanks,
 
-Kevin
+Reviewed-by: Dr. David Alan Gilbert <dave@treblig.org>
 
+Cc'ing in Trivial.
+
+Dave
+
+> 
+-- 
+ -----Open up your eyes, open up your mind, open up your code -------   
+/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
+\        dave @ treblig.org |                               | In Hex /
+ \ _________________________|_____ http://www.treblig.org   |_______/
 
