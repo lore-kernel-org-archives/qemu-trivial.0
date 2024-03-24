@@ -1,60 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rnAq9-0004rN-Nb
-	for mharc-qemu-trivial@gnu.org; Thu, 21 Mar 2024 01:19:46 -0400
+	id 1roQSd-0003d1-3M
+	for mharc-qemu-trivial@gnu.org; Sun, 24 Mar 2024 12:12:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1rn4dd-0008JM-Em; Wed, 20 Mar 2024 18:42:25 -0400
-Received: from mx.treblig.org ([2a00:1098:5b::1])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1roQSc-0003ch-18; Sun, 24 Mar 2024 12:12:38 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1rn4dZ-0008CQ-RP; Wed, 20 Mar 2024 18:42:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
- ; s=bytemarkmx;
- h=In-Reply-To:Content-Transfer-Encoding:Content-Type:
- MIME-Version:References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:
- Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender:
- Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
- List-Subscribe:List-Post:List-Owner:List-Archive;
- bh=KBf/tPFYcgNlcQJNQKKFsPqHw6A1Q1et/hZJdIyr66w=; b=pvB4TtE8Jm1+RfiCwI93LXUAfr
- Ng0goMWDivrLmBdFf1quBrVTFiOW3YJTg79J+vy4C6pe5Or5Ck+uCxV9qKXlcRX/+xfDk/oyAl4M4
- cVyxZQpapH0+b+xyw5t+ovmdrKyrfUv6oZIhKAzt2lHOaxPv0X+XT3fHMJZby7rw8BtHyz+92B1oL
- mHmMfObwrUA6VVjaTIH29khJhSffeFeWbjxiU0WbhkWuunBDQ+bweSWV4G8JIKYErRicSlRoKFb6M
- kDYKQopSYUP3t3jNNvTmdyPeO931oOryZ2IrVVlrRJn9qu0FM3bjdnjuWR9iIYfz0Fa4FckyVT1Jc
- vIN5fs2g==;
-Received: from dg by mx.treblig.org with local (Exim 4.96)
- (envelope-from <dg@treblig.org>) id 1rn4dV-00DaIB-2z;
- Wed, 20 Mar 2024 22:42:17 +0000
-Date: Wed, 20 Mar 2024 22:42:17 +0000
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-trivial@nongnu.org
-Cc: Shiyang Ruan <ruansy.fnst@fujitsu.com>, qemu-devel@nongnu.org,
- jonathan.cameron@huawei.com, Yao Xingtao <yaoxt.fnst@fujitsu.com>
-Subject: Re: [PATCH-for-9.0] monitor/hmp-cmds-target.c: append a space in
- error message in gpa2hva()
-Message-ID: <ZftmSRMlOZfPtksS@gallifrey>
-References: <20240319021610.2423844-1-ruansy.fnst@fujitsu.com>
- <c7cd0119-0c8b-45fa-93d5-de25fb8f6a6e@linaro.org>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1roQSZ-0006tM-IQ; Sun, 24 Mar 2024 12:12:37 -0400
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 89C294E6003;
+ Sun, 24 Mar 2024 17:11:50 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id q52ltfNNo1Wl; Sun, 24 Mar 2024 17:11:48 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 4650D4E601F; Sun, 24 Mar 2024 17:11:48 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+Subject: [PATCH] docs/system/ppc/amigang.rst: Fix formatting
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <c7cd0119-0c8b-45fa-93d5-de25fb8f6a6e@linaro.org>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.1.0-17-amd64 (x86_64)
-X-Uptime: 22:41:41 up 78 days, 1:31, 1 user, load average: 0.00, 0.00, 0.00
-User-Agent: Mutt/2.2.12 (2023-09-09)
-Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
- helo=mx.treblig.org
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+To: qemu-devel@nongnu.org
+Cc: qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
+Message-Id: <20240324161148.4650D4E601F@zero.eik.bme.hu>
+Date: Sun, 24 Mar 2024 17:11:48 +0100 (CET)
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 21 Mar 2024 01:19:44 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -66,54 +46,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 20 Mar 2024 22:42:25 -0000
+X-List-Received-Date: Sun, 24 Mar 2024 16:12:38 -0000
 
-* Philippe Mathieu-Daudé (philmd@linaro.org) wrote:
-> On 19/3/24 03:16, Shiyang Ruan via wrote:
-> > From: Yao Xingtao <yaoxt.fnst@fujitsu.com>
-> > 
-> > In qemu monitor mode, when we use gpa2hva command to print the host
-> > virtual address corresponding to a guest physical address, if the gpa is
-> > not in RAM, the error message is below:
-> > 
-> > (qemu) gpa2hva 0x750000000
-> > Memory at address 0x750000000is not RAM
-> > 
-> > a space is missed between '0x750000000' and 'is'.
-> > 
-> > Signed-off-by: Yao Xingtao <yaoxt.fnst@fujitsu.com>
-> > ---
-> >   monitor/hmp-cmds-target.c | 2 +-
-> >   1 file changed, 1 insertion(+), 1 deletion(-)
-> > 
-> > diff --git a/monitor/hmp-cmds-target.c b/monitor/hmp-cmds-target.c
-> > index 9338ae8440..ff01cf9d8d 100644
-> > --- a/monitor/hmp-cmds-target.c
-> > +++ b/monitor/hmp-cmds-target.c
-> > @@ -261,7 +261,7 @@ void *gpa2hva(MemoryRegion **p_mr, hwaddr addr, uint64_t size, Error **errp)
-> >       }
-> >       if (!memory_region_is_ram(mrs.mr) && !memory_region_is_romd(mrs.mr)) {
-> > -        error_setg(errp, "Memory at address 0x%" HWADDR_PRIx "is not RAM", addr);
-> > +        error_setg(errp, "Memory at address 0x%" HWADDR_PRIx " is not RAM", addr);
-> >           memory_region_unref(mrs.mr);
-> >           return NULL;
-> >       }
-> 
-> Fixes: e9628441df ("hmp: gpa2hva and gpa2hpa hostaddr command")
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Add missing space to fix character formatting where it was missed in
+two places.
 
-Thanks,
+Fixes: 623d9065b6 (docs/system/ppc: Document running Linux on AmigaNG machines)
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+---
+ docs/system/ppc/amigang.rst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-Reviewed-by: Dr. David Alan Gilbert <dave@treblig.org>
-
-Cc'ing in Trivial.
-
-Dave
-
-> 
+diff --git a/docs/system/ppc/amigang.rst b/docs/system/ppc/amigang.rst
+index ba1a3d80b9..e2c9cb74b7 100644
+--- a/docs/system/ppc/amigang.rst
++++ b/docs/system/ppc/amigang.rst
+@@ -16,7 +16,7 @@ firmware to support AmigaOS 4.
+ Emulated devices
+ ----------------
+ 
+- * PowerPC 7457 CPU (can also use``-cpu g3, 750cxe, 750fx`` or ``750gx``)
++ * PowerPC 7457 CPU (can also use ``-cpu g3, 750cxe, 750fx`` or ``750gx``)
+  * Articia S north bridge
+  * VIA VT82C686B south bridge
+  * PCI VGA compatible card (guests may need other card instead)
+@@ -73,7 +73,7 @@ https://www.powerdeveloper.org/platforms/pegasos/schematics.
+ Emulated devices
+ ----------------
+ 
+- * PowerPC 7457 CPU (can also use``-cpu g3`` or ``750cxe``)
++ * PowerPC 7457 CPU (can also use ``-cpu g3`` or ``750cxe``)
+  * Marvell MV64361 Discovery II north bridge
+  * VIA VT8231 south bridge
+  * PCI VGA compatible card (guests may need other card instead)
 -- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+2.30.9
+
 
