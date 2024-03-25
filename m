@@ -1,40 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rok4y-0004Dh-5q
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Mar 2024 09:09:32 -0400
+	id 1rokYu-0003q3-3n
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Mar 2024 09:40:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rok4w-0004DM-0N; Mon, 25 Mar 2024 09:09:30 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rok4u-0002yO-5J; Mon, 25 Mar 2024 09:09:29 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id F345058BAD;
- Mon, 25 Mar 2024 16:10:51 +0300 (MSK)
-Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 6B1B0A27D7;
- Mon, 25 Mar 2024 16:09:24 +0300 (MSK)
-Received: (nullmailer pid 349893 invoked by uid 1000);
- Mon, 25 Mar 2024 13:09:24 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
- "Michael S . Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH trivial for-9.0] hw/i386/fw_cfg.c: fix non-legacy smbios build
-Date: Mon, 25 Mar 2024 16:09:20 +0300
-Message-Id: <20240325130920.349521-1-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.2
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rokYt-0003pm-BY
+ for qemu-trivial@nongnu.org; Mon, 25 Mar 2024 09:40:27 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rokYr-0000LG-Dl
+ for qemu-trivial@nongnu.org; Mon, 25 Mar 2024 09:40:26 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-414859830f2so9078005e9.0
+ for <qemu-trivial@nongnu.org>; Mon, 25 Mar 2024 06:40:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1711374024; x=1711978824; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=x6MuEQSkb/kt5823ISGd/KisLUiiIt3CnAcazZPSXC4=;
+ b=DFKufq7J9/x4+E5Z499QVNIIoHKt7GOt8pxofAUcp2qyQmmYAuegs4c+52UeX2ETMg
+ Xgo4vYH+jqsV0CAxFi8u1wiqBSeEwsgPxMOrLBqVs7Qi4pSQ1k0oRKSIxXeMJy/Lz/mP
+ swJLx3obio/nc8AY8DFgw3xkwmY63h9ADM2B+r5YJcj4HIvVoLaTah5b/2M4KGWyKUCn
+ mDca1FbhIQa3j8lcwRg2vOKiKp9g3PAJxnXZQvRXSeDlOzTJD8Rhae7d4qVD8kFWIMlA
+ nTGStJGyhYGJBO6WvdK93l85r+Qk7DZ0b943OKm90ygAMrsjsBzCq6LHqoL6lg2J8PUE
+ wC3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1711374024; x=1711978824;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=x6MuEQSkb/kt5823ISGd/KisLUiiIt3CnAcazZPSXC4=;
+ b=KlIpV79TZ52gvdl8QNFQ4dddpO3iBG47AV0w18IBAjHsW0biaoO0nd6PJu8ZsqAnkL
+ 9CJbRlR1brWWwp81C/03kkDwzIMRghIqRXZAsj1pBvBjGEm0PRytuPusKFH2SoPIXMKZ
+ kUZv4m4vMhcUbTgxx2BODfFIdB7Mfl+xPt+IqluTD6ctfJvpcPSGIdh93s3CI4h7s39F
+ 4irnm9JeBQH7R5uxKC8qL6SL4XWY3IoKcSRjnBJfAszjMHUsO99pWpSZme8G5nTiJbOK
+ 7df9KqwYiTBO5Z/gUI+ywvmHV6H83l/3wweZzQDSSEfbHV0S63JlpjXSRCk/iFHsp1hA
+ BC4g==
+X-Gm-Message-State: AOJu0YyRiQhafWqlCdFqg3K9Q6KZ/g2uLSsVqVp6KEdzcnqCMDBISMoM
+ zQE4W5RlIYAV0ZvjHkK+lNJ6ucNj1bra2kCqy05N5ZpozbfBEVjxyeVK4kCUR74=
+X-Google-Smtp-Source: AGHT+IHNsNG6BHUhvFMTG55UDBvRU+R3T9K/XOHcrTxNCYrdHMtF+hiVFyMOoEjJMfEZOsVmXzVrvQ==
+X-Received: by 2002:a05:600c:4da4:b0:413:f290:c747 with SMTP id
+ v36-20020a05600c4da400b00413f290c747mr5171829wmp.33.1711374023661; 
+ Mon, 25 Mar 2024 06:40:23 -0700 (PDT)
+Received: from [192.168.69.100] ([176.187.208.214])
+ by smtp.gmail.com with ESMTPSA id
+ t9-20020a05600c198900b0041330d49604sm8527103wmq.45.2024.03.25.06.40.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 25 Mar 2024 06:40:23 -0700 (PDT)
+Message-ID: <ca6b1ae9-14b9-413b-93dc-a28d930b0e3a@linaro.org>
+Date: Mon, 25 Mar 2024 14:40:21 +0100
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH trivial for-9.0] hw/i386/fw_cfg.c: fix non-legacy smbios
+ build
+Content-Language: en-US
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>
+References: <20240325130920.349521-1-mjt@tls.msk.ru>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240325130920.349521-1-mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -47,43 +83,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Mar 2024 13:09:30 -0000
+X-List-Received-Date: Mon, 25 Mar 2024 13:40:27 -0000
 
-When building qemu with smbios but not legacy mode (eg minimal microvm build),
-link fails with:
+Hi Michael,
 
-  hw/i386/fw_cfg.c:74: undefined reference to `smbios_get_table_legacy'
+On 25/3/24 14:09, Michael Tokarev wrote:
+> When building qemu with smbios but not legacy mode (eg minimal microvm build),
+> link fails with:
+> 
+>    hw/i386/fw_cfg.c:74: undefined reference to `smbios_get_table_legacy'
+> 
+> This is because fw_cfg interface can call this function if CONFIG_SMBIOS
+> is defined.  Made this code block to depend on CONFIG_SMBIOS_LEGACY.
+> 
+> Fixes: b42b0e4daaa5 "smbios: build legacy mode code only for 'pc' machine"
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>   hw/i386/fw_cfg.c | 2 ++
+>   1 file changed, 2 insertions(+)
+> 
+> diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
+> index d802d2787f..d5e78a9183 100644
+> --- a/hw/i386/fw_cfg.c
+> +++ b/hw/i386/fw_cfg.c
+> @@ -70,6 +70,7 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg,
+>       /* tell smbios about cpuid version and features */
+>       smbios_set_cpuid(cpu->env.cpuid_version, cpu->env.features[FEAT_1_EDX]);
+>   
+> +#ifdef CONFIG_SMBIOS_LEGACY
+>       if (pcmc->smbios_legacy_mode) {
 
-This is because fw_cfg interface can call this function if CONFIG_SMBIOS
-is defined.  Made this code block to depend on CONFIG_SMBIOS_LEGACY.
+But then having pcmc->smbios_legacy_mode == true without
+CONFIG_SMBIOS_LEGACY would be a bug. IMHO what we want is:
 
-Fixes: b42b0e4daaa5 "smbios: build legacy mode code only for 'pc' machine"
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+-- >8 --
+diff --git a/hw/smbios/smbios_legacy_stub.c b/hw/smbios/smbios_legacy_stub.c
+index f29b15316c..7d593dca98 100644
+--- a/hw/smbios/smbios_legacy_stub.c
++++ b/hw/smbios/smbios_legacy_stub.c
+@@ -13,3 +13,8 @@
+  void smbios_add_usr_blob_size(size_t size)
+  {
+  }
++
++uint8_t *smbios_get_table_legacy(size_t *length, Error **errp)
++{
++    g_assert_not_reached();
++}
 ---
- hw/i386/fw_cfg.c | 2 ++
- 1 file changed, 2 insertions(+)
 
-diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
-index d802d2787f..d5e78a9183 100644
---- a/hw/i386/fw_cfg.c
-+++ b/hw/i386/fw_cfg.c
-@@ -70,6 +70,7 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg,
-     /* tell smbios about cpuid version and features */
-     smbios_set_cpuid(cpu->env.cpuid_version, cpu->env.features[FEAT_1_EDX]);
- 
-+#ifdef CONFIG_SMBIOS_LEGACY
-     if (pcmc->smbios_legacy_mode) {
-         smbios_tables = smbios_get_table_legacy(&smbios_tables_len,
-                                                 &error_fatal);
-@@ -77,6 +78,7 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg,
-                          smbios_tables, smbios_tables_len);
-         return;
-     }
-+#endif
- 
-     /* build the array of physical mem area from e820 table */
-     mem_array = g_malloc0(sizeof(*mem_array) * e820_get_num_entries());
--- 
-2.39.2
+>           smbios_tables = smbios_get_table_legacy(&smbios_tables_len,
+>                                                   &error_fatal);
+> @@ -77,6 +78,7 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg,
+>                            smbios_tables, smbios_tables_len);
+>           return;
+>       }
+> +#endif
+>   
+>       /* build the array of physical mem area from e820 table */
+>       mem_array = g_malloc0(sizeof(*mem_array) * e820_get_num_entries());
 
 
