@@ -1,70 +1,40 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1roTmy-0007l1-Fl
-	for mharc-qemu-trivial@gnu.org; Sun, 24 Mar 2024 15:45:52 -0400
+	id 1rok4y-0004Dh-5q
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Mar 2024 09:09:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1roTmx-0007kk-F9
- for qemu-trivial@nongnu.org; Sun, 24 Mar 2024 15:45:51 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1roTmw-0002DQ-2a
- for qemu-trivial@nongnu.org; Sun, 24 Mar 2024 15:45:51 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-56a2bb1d84eso6623184a12.1
- for <qemu-trivial@nongnu.org>; Sun, 24 Mar 2024 12:45:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711309548; x=1711914348; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=N2JsNotPsxrW+11ThuWn1EOfLxqHr2RtWo996k/wJHk=;
- b=iAaKCvZ1Xf10Bcp2+e0ZQjymbIINdZvqEnkIgNp+PQotmZIxSpqLbqJyyvIiACZocP
- FXqsIIu3d6rRq9DDqPc9f3urhiMck7J4SsXV5xR3ZT1gHFmN3PCxhte4zNUw5uLIrsSD
- L3Je9D//Zuv0a/eGTDsHcjSY36friQ0ITx2J/Usi34kmIJXtlKU3e8BZYZUIaNAYxPfj
- cCYpzT9VSBBylk17Bb2nyZkA8YVKNei/XgvCmxUk1CTdyrS3Pv+OXhDsilB2++G0n8yZ
- nj/WI9X4DhwnJ6+oau741NLDOkpM/KIACrX0XEFLLxiLqKTYR/9F5KNRCzIyF3NAmgw+
- mf3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711309548; x=1711914348;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=N2JsNotPsxrW+11ThuWn1EOfLxqHr2RtWo996k/wJHk=;
- b=PD4xX1trF9ph3wqPqlT4NxVVntZi6twarzHsMGQ3XDFavAlrx6rRGG9GiyqJOsn2o+
- IV3BI7nWKv/YMe3GAP0T2uaIaMz8jGsRIVstk8X0F2bPIMVx6mYXmZLt8P7y7S1k/CV3
- qOKjawKrQIVvdE83Wz7tBpPUuLzO8VjX7/XifUCGt71+XBPOmVWjzuILyETBlLLf/O0u
- 2FXIvRBAa9B31yHRhMolV7f8W2HutBKpquFVI9JUVmTOnnMgCfngONEV5KjLeRZOOm0u
- bOUFpSHG1yiCvUTNyuWdMB3tbmNp0H3GDuKM7+KS+vbnWUoGV78rhsRS+MF1JfV0OxdI
- XTLA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVuEnpfF7plWDzPYVICwrIJ8WMrKglBTDpPcwHFcAyQkqiNPGxwXSFGFX1f/uhyf3LNkoyk42FZDRxtP8JbvAIbh9eWgb/yLg==
-X-Gm-Message-State: AOJu0YwRfvWMIUbRxeGwpXWY0gQEea/R07bQNs+9BKTnogGj6rg0Scpu
- N7YyL8KKifdOruHbP0KnJPkNLwHrpCHhRZQ7nziVmKPQfnzwLQ2JWfdL/7H4Tp5pDxTyEgJrgqq
- 6/FEQU3hFZMVHlCBFzyK0W9u3Mgcbcc9H9ulChA==
-X-Google-Smtp-Source: AGHT+IHmPaiLgN25rN8RifcETYY9CLkocn/OH7qT6Mca+Xvcc8A3R8VQbWqbFvgiKA+9tlr6P7D8wvuJJ8lAGB9AOdA=
-X-Received: by 2002:a50:cdd2:0:b0:566:624a:9e3f with SMTP id
- h18-20020a50cdd2000000b00566624a9e3fmr4202972edj.3.1711309548263; Sun, 24 Mar
- 2024 12:45:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rok4w-0004DM-0N; Mon, 25 Mar 2024 09:09:30 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rok4u-0002yO-5J; Mon, 25 Mar 2024 09:09:29 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id F345058BAD;
+ Mon, 25 Mar 2024 16:10:51 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id 6B1B0A27D7;
+ Mon, 25 Mar 2024 16:09:24 +0300 (MSK)
+Received: (nullmailer pid 349893 invoked by uid 1000);
+ Mon, 25 Mar 2024 13:09:24 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Igor Mammedov <imammedo@redhat.com>,
+ "Michael S . Tsirkin" <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH trivial for-9.0] hw/i386/fw_cfg.c: fix non-legacy smbios build
+Date: Mon, 25 Mar 2024 16:09:20 +0300
+Message-Id: <20240325130920.349521-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-References: <20240324161148.4650D4E601F@zero.eik.bme.hu>
-In-Reply-To: <20240324161148.4650D4E601F@zero.eik.bme.hu>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sun, 24 Mar 2024 19:45:37 +0000
-Message-ID: <CAFEAcA9-UUOpC56d=N8T=2ELZAS7s2eqmMv0L+QVSGLp6odAEg@mail.gmail.com>
-Subject: Re: [PATCH] docs/system/ppc/amigang.rst: Fix formatting
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,18 +47,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 24 Mar 2024 19:45:51 -0000
+X-List-Received-Date: Mon, 25 Mar 2024 13:09:30 -0000
 
-On Sun, 24 Mar 2024 at 16:13, BALATON Zoltan <balaton@eik.bme.hu> wrote:
->
-> Add missing space to fix character formatting where it was missed in
-> two places.
->
-> Fixes: 623d9065b6 (docs/system/ppc: Document running Linux on AmigaNG machines)
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> ---
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+When building qemu with smbios but not legacy mode (eg minimal microvm build),
+link fails with:
 
-thanks
--- PMM
+  hw/i386/fw_cfg.c:74: undefined reference to `smbios_get_table_legacy'
+
+This is because fw_cfg interface can call this function if CONFIG_SMBIOS
+is defined.  Made this code block to depend on CONFIG_SMBIOS_LEGACY.
+
+Fixes: b42b0e4daaa5 "smbios: build legacy mode code only for 'pc' machine"
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/i386/fw_cfg.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/hw/i386/fw_cfg.c b/hw/i386/fw_cfg.c
+index d802d2787f..d5e78a9183 100644
+--- a/hw/i386/fw_cfg.c
++++ b/hw/i386/fw_cfg.c
+@@ -70,6 +70,7 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg,
+     /* tell smbios about cpuid version and features */
+     smbios_set_cpuid(cpu->env.cpuid_version, cpu->env.features[FEAT_1_EDX]);
+ 
++#ifdef CONFIG_SMBIOS_LEGACY
+     if (pcmc->smbios_legacy_mode) {
+         smbios_tables = smbios_get_table_legacy(&smbios_tables_len,
+                                                 &error_fatal);
+@@ -77,6 +78,7 @@ void fw_cfg_build_smbios(PCMachineState *pcms, FWCfgState *fw_cfg,
+                          smbios_tables, smbios_tables_len);
+         return;
+     }
++#endif
+ 
+     /* build the array of physical mem area from e820 table */
+     mem_array = g_malloc0(sizeof(*mem_array) * e820_get_num_entries());
+-- 
+2.39.2
+
 
