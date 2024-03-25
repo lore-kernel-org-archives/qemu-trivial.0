@@ -1,71 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rom8B-0000cg-Th
-	for mharc-qemu-trivial@gnu.org; Mon, 25 Mar 2024 11:20:59 -0400
+	id 1romGu-0005GX-M9
+	for mharc-qemu-trivial@gnu.org; Mon, 25 Mar 2024 11:30:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rom8A-0000bm-Pi
- for qemu-trivial@nongnu.org; Mon, 25 Mar 2024 11:20:58 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1romGt-0005Fm-GL
+ for qemu-trivial@nongnu.org; Mon, 25 Mar 2024 11:29:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rom88-0007xm-Um
- for qemu-trivial@nongnu.org; Mon, 25 Mar 2024 11:20:58 -0400
+ id 1romGr-0000Jk-SX
+ for qemu-trivial@nongnu.org; Mon, 25 Mar 2024 11:29:59 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1711380055;
+ s=mimecast20190719; t=1711380596;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=k2yJZFqqLtCwBlTPSlEy1nH9OBn79RPRDIv5w/yrVMw=;
- b=hYusOwGiqgqEzDjbKUoKml++K61YfUfuZ0k3TkIANUyOa/n+8HNbi0uYL6mXMr39oKLSmJ
- dnq/47wY6gEz3BaHIQToZAIU7OnkmlEUTiuTkFs0A6hOBCF7+jizqhiH3V4vr9wX2Uonya
- BNjdVxjK9jaXD7hkYWwneEnM2ipjkcA=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=kXdhjWLcZVSrCzqzMNe5+sdh72XKz5BSXFIujU5V2iM=;
+ b=QgdmYOrW1REdXmDJCsBo0Yu46vQI8XxEQj7YTviPUJaIVhmyaFWDQhfo/utlKuS4Wx8KIP
+ UUB1NtSURJXYVqYVQncifRw4d2pwRRzqRwrguoIO7+hLCrxc0DX4f09iWjBnSid/2V7Qj2
+ kuRBh+pOMcgcKTvrldzNeQnHGlufvFA=
+Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
+ [209.85.208.197]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-378-XhyJIOjDNTucJf3jGUoTDw-1; Mon, 25 Mar 2024 11:20:53 -0400
-X-MC-Unique: XhyJIOjDNTucJf3jGUoTDw-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-4148c035ab6so2103165e9.1
- for <qemu-trivial@nongnu.org>; Mon, 25 Mar 2024 08:20:53 -0700 (PDT)
+ us-mta-357-mpqfBnwoNN-giy008wMOUQ-1; Mon, 25 Mar 2024 11:29:54 -0400
+X-MC-Unique: mpqfBnwoNN-giy008wMOUQ-1
+Received: by mail-lj1-f197.google.com with SMTP id
+ 38308e7fff4ca-2d6c94d98afso16520771fa.3
+ for <qemu-trivial@nongnu.org>; Mon, 25 Mar 2024 08:29:54 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711380052; x=1711984852;
+ d=1e100.net; s=20230601; t=1711380592; x=1711985392;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=k2yJZFqqLtCwBlTPSlEy1nH9OBn79RPRDIv5w/yrVMw=;
- b=h9wloVIblVpHgX8WtJhuUIQhI+RxoYxYdWIc0IiUnv9BDWRVhAPMF+ZUEEdXdCwTc7
- VkHBOd+NxHqkGrjmYjl0rZGEXBamgNfeKQhksFr+ScJDwLllUwJw9IIiWaX0OfuIlLXe
- NgGtQ8CAYE1xwrdXE5cyGsX2eT3PNutsdrYCj4V56gCrzF4lagd4Y9iAh/tEdHKFGvJM
- E+vekYV6eJOXpgrmVtitqfSB6RyzbKWmcYcI0vMc6iLcxXtwRediK9RZfmFCSdnHVHIH
- aTTtbKesqDKd/y8eC9+IxohjNoLOSuT0Xj44y/0A/+1e9cYFYTtVv3Tqc7u+QXpuZl22
- q8XQ==
+ bh=kXdhjWLcZVSrCzqzMNe5+sdh72XKz5BSXFIujU5V2iM=;
+ b=Fxa7h2nvFRuWu2tWc1XG9GEP2Tuw4nAsPT8SDx2HBevI7WUitMZ/ugtwMXHi595SPY
+ nIZRvgrfXn8dpNwihvZOidTlnOudU87JF2mJAlL3rAw5EG4674KleEsGZh4vkVfDM7Sl
+ MG9ZYzHf8igzEtAoV1R6VeV2+hagqrDgRZywCkEeQWlsvVGiKpCUVNAQrVNMSeHuQOHA
+ oKob+GGUFRiKDU7kSeUyoA//fMB66raOti9vzJY4li7o/hymiypPa57yVbgGLlX5fzsx
+ qUDxdVIjtA1+/4cJ7wJt32+F2v9BpJPGjK07fsFsWivoYADqfuCyj3pItv+72D7iLIgL
+ nSqA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWumkw+Ytg2J6d5ivomzoWlcjz/kLKUgIjuJ7hivx2WUNB2jisaqvIoQg3nJlmuLYageOrnGJfPEYquDTd6A+Ur5Mfdgv2LKw==
-X-Gm-Message-State: AOJu0Yyqqbthekz4+a4E8LNuJKueC9zgWHncly8wyNsvU6Sv1GOGfek9
- p81xlvEVJvnTLSbwJ/bMKeQiPOhU+4TfhwayZCmJPlv4HHy0PHr+6vbsiwJroZADTI1uN/Pux6+
- BxEOjqFV1SM05RAFZl4KA8h4dT8ET/qD+cGF6BKEqPyf4ha6Z7q11lQtAW/py2iQ=
-X-Received: by 2002:a5d:5cc2:0:b0:33d:c5c5:9bc6 with SMTP id
- cg2-20020a5d5cc2000000b0033dc5c59bc6mr4210236wrb.54.1711380051831; 
- Mon, 25 Mar 2024 08:20:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFuBC9+mONGdiE+5lYUOaJTDigEVIv2fo5DUFzVT8YY3yYyyvZMJVuUQrDpbDakI/L0tnUf6g==
-X-Received: by 2002:a5d:5cc2:0:b0:33d:c5c5:9bc6 with SMTP id
- cg2-20020a5d5cc2000000b0033dc5c59bc6mr4210223wrb.54.1711380051478; 
- Mon, 25 Mar 2024 08:20:51 -0700 (PDT)
+ AJvYcCXtkcSbwA75FjDp883eyKA85b8hMkACDxdsmHVp1hTleWclzewev9vimg7RJMAYJ6xsxtnkpbm5slmbtlHPzPJFTDBGOPD4UQ==
+X-Gm-Message-State: AOJu0Yw4y5l0lb7hguUW6r6nxo/HlBEb92282x/PvIfXnAriSkNmQ4f1
+ MMi4luRnuhdgbJq5T5l7ii0EHP5kbf51h0wxz4u1i5Xwj/GRc/4nZb77ThsSX+RjViysXSRqpDP
+ jlMWKOZSfIxmkvQr/CDgm83KiVKeCgGHQfk0sCWKoQO53BFCnxKp1xEYQb+3vw4g=
+X-Received: by 2002:a2e:7a0e:0:b0:2d6:cb40:e0a2 with SMTP id
+ v14-20020a2e7a0e000000b002d6cb40e0a2mr98614ljc.53.1711380592403; 
+ Mon, 25 Mar 2024 08:29:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHePtAuOG+6IWrEAQOeI4+FXXtjMz3xtZeNU9g/eXmDML9zOpwT7pAfuR78Cz1uUtTNtQxWlw==
+X-Received: by 2002:a2e:7a0e:0:b0:2d6:cb40:e0a2 with SMTP id
+ v14-20020a2e7a0e000000b002d6cb40e0a2mr98594ljc.53.1711380592053; 
+ Mon, 25 Mar 2024 08:29:52 -0700 (PDT)
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
  [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- r25-20020adfa159000000b00341b69e9162sm9148103wrr.90.2024.03.25.08.20.50
+ k2-20020a2e8882000000b002d2a710f864sm1498636lji.24.2024.03.25.08.29.51
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 25 Mar 2024 08:20:50 -0700 (PDT)
-Date: Mon, 25 Mar 2024 16:20:49 +0100
+ Mon, 25 Mar 2024 08:29:51 -0700 (PDT)
+Date: Mon, 25 Mar 2024 16:29:50 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Michael Tokarev <mjt@tls.msk.ru>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, "Michael S . Tsirkin"
  <mst@redhat.com>, Ani Sinha <anisinha@redhat.com>
 Subject: Re: [PATCH trivial for-9.0] hw/i386/fw_cfg.c: fix non-legacy smbios
  build
-Message-ID: <20240325162049.46c2a758@imammedo.users.ipa.redhat.com>
+Message-ID: <20240325162950.0b8f29c5@imammedo.users.ipa.redhat.com>
 In-Reply-To: <20240325130920.349521-1-mjt@tls.msk.ru>
 References: <20240325130920.349521-1-mjt@tls.msk.ru>
 X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-redhat-linux-gnu)
@@ -74,7 +74,7 @@ X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -95,7 +95,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 25 Mar 2024 15:20:59 -0000
+X-List-Received-Date: Mon, 25 Mar 2024 15:29:59 -0000
 
 On Mon, 25 Mar 2024 16:09:20 +0300
 Michael Tokarev <mjt@tls.msk.ru> wrote:
@@ -107,13 +107,31 @@ Michael Tokarev <mjt@tls.msk.ru> wrote:
 > 
 > This is because fw_cfg interface can call this function if CONFIG_SMBIOS
 > is defined.  Made this code block to depend on CONFIG_SMBIOS_LEGACY.
-
-stub supposedly should have handled that 
-what configure options do you use to build 'minimal microvm'?
-
 > 
 > Fixes: b42b0e4daaa5 "smbios: build legacy mode code only for 'pc' machine"
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+
+
+hmh, it looks like MICROVM doesn't select SMBIOS nor FW_CFG_DMA
+
+which looks broken to me,
+does following help:
+
+diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
+index a6ee052f9a..54c77b5bcc 100644
+--- a/hw/i386/Kconfig
++++ b/hw/i386/Kconfig
+@@ -119,6 +119,8 @@ config MICROVM
+     select PCI_EXPRESS_GENERIC_BRIDGE
+     select USB_XHCI_SYSBUS
+     select I8254
++    select SMBIOS
++    select FW_CFG_DMA
+ 
+ config X86_IOMMU
+     bool
+
+
 > ---
 >  hw/i386/fw_cfg.c | 2 ++
 >  1 file changed, 2 insertions(+)
