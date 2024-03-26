@@ -1,78 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rp6AX-0007OJ-SP
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2024 08:44:45 -0400
+	id 1rp6Gr-0002XU-O2
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2024 08:51:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp6AW-0007Ls-Ed
- for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 08:44:44 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp6AU-0002Zb-A3
- for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 08:44:43 -0400
-Received: by mail-ej1-x632.google.com with SMTP id
- a640c23a62f3a-a46f0da1b4fso696862666b.2
- for <qemu-trivial@nongnu.org>; Tue, 26 Mar 2024 05:44:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711457080; x=1712061880; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=6y3dXxT2LvK5BmUuAXOk1aeNE8lK2zNenWRM67Foq2Q=;
- b=TBkBN5FS490gScZYytBwmVIuVzCvh8+JZoFfBOBwuJUhKWTbO18ULf9jUk93eJ4+HX
- TxCNswjoIu4ZeQSlyDBJdZSYOB/o4nlfKf/r1OGA3mvE4k0C4iB1t5jRAIjy1y7xI6Ps
- oeVJ46E5pAiAkzlcWR/9N+/Z/ybRVUIKtzz1guhnT0CuwLvBw5nHyjNG9+WQ58jI1ipY
- hj29YqNeqkhVb1ufSnSMZsN951maI7e+07eIkCswZSvd4UPrDk5AKzyjCyA1dEfr2mjb
- JsHiZYlN4QqxGz3FvZrjOIa5Zod+RRO2yvWbCTr9VoAc8uiuptedOBVSs1LyKiInnVy0
- shtg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711457080; x=1712061880;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=6y3dXxT2LvK5BmUuAXOk1aeNE8lK2zNenWRM67Foq2Q=;
- b=L79qpcwNjRH1nTMWYAZIErlbltQYqaGHCI846lBNdAZFDymlSsbn2mt7lz5wnjOeRe
- Unp0Eh7IgHk0/RGqoN77bYWnuagJu1qmR6ak73887SmoPNC9hPl8Z8ZsFy+mR+f/NiVP
- Dutzvz7RsIn+VUuP8FYspvft2OH1/QqOMo23Ta3fmzcCq+zG5sRivv/ABTAuFFg5KbrV
- P5PRiBn367zwE00iKztj2LGLN/lQCJzQD51iZPRrKMkhaGpB8V7LjCRkhT4S6OzV9wW0
- ec2yMU2OqLVZgkLPspxpa8U9StV1FKoAaxud1QrUDiSqiRjv64Pcqz3oRZiNxQAOESVq
- S1Vw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWnUgXlD3HWudtWsypL1ctJVx80wasFx9AbBd6ejAVF/KuJL+K4NicvWGfbQbvEwHeSdmsrvNj8wf0tRlLAhmdui/DmbMgnug==
-X-Gm-Message-State: AOJu0YyEXiER7NIVdAUMRrLBfBMOHmVaizkE3hTPSRLjwbBj7chpkoVK
- EsM5+kL7zKxoDqoQ18f2hf2WNrQy4BmjrEwm+WQYV6jGn1bwpLX5rmJ2x39XGeU=
-X-Google-Smtp-Source: AGHT+IG77PdbeLzSjGKBMUSFLwnEroujx9drC/ePc4XqNVTH9VM8GXrjznhsQxrFTr0GJdH54Ekfdw==
-X-Received: by 2002:a17:906:ad1:b0:a4d:fa3f:43f7 with SMTP id
- z17-20020a1709060ad100b00a4dfa3f43f7mr381474ejf.55.1711457080361; 
- Tue, 26 Mar 2024 05:44:40 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.155.229])
- by smtp.gmail.com with ESMTPSA id
- x15-20020a1709060a4f00b00a455519bcb3sm4211247ejf.55.2024.03.26.05.44.39
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Mar 2024 05:44:39 -0700 (PDT)
-Message-ID: <2b158752-9a6d-4013-a9d1-bb380b31cbda@linaro.org>
-Date: Tue, 26 Mar 2024 13:44:38 +0100
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1rp6Gq-0002XC-LL
+ for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 08:51:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1rp6Gp-0003nB-17
+ for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 08:51:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1711457473;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=JlMSmLkcTMlylmW5uZLLXGFw0hS3xSZAZYREd5/BcF4=;
+ b=PRjfdyv8mWFig1iFteLSJl9tTQvwnxqNCOaKqw8JWxIAMsrtpXRqG24ay//uHeWfzUREdw
+ /EfV4af6YkhCspWSBxpWDgzVMQs7EQQBaOfkopxM1cq3LpzbHWbGLD7rojRcMA2SRo21pU
+ kIjbFHgT4k8vqeTAa9iRiYytb6BtwT0=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-316-ImfVzm7RMkiZ0Qe3zQx44w-1; Tue, 26 Mar 2024 08:51:07 -0400
+X-MC-Unique: ImfVzm7RMkiZ0Qe3zQx44w-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 81491800262;
+ Tue, 26 Mar 2024 12:51:07 +0000 (UTC)
+Received: from dell-r430-03.lab.eng.brq2.redhat.com
+ (dell-r430-03.lab.eng.brq2.redhat.com [10.37.153.18])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 4F15E492BDC;
+ Tue, 26 Mar 2024 12:51:06 +0000 (UTC)
+From: Igor Mammedov <imammedo@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, devel@lists.libvirt.org, richard.henderson@linaro.org,
+ mst@redhat.com, thuth@redhat.com, qemu-trivial@nongnu.org
+Subject: [PATCH for-9.0] docs/about: Mark the iaspc machine type as deprecated
+Date: Tue, 26 Mar 2024 13:51:04 +0100
+Message-ID: <20240326125104.90103-1-imammedo@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial for-9.0] smbios: add stub for
- smbios_get_table_legacy()
-Content-Language: en-US
-To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
-Cc: anisinha@redhat.com, mst@redhat.com, laurent@vivier.eu,
- qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-References: <20240326122630.85989-1-imammedo@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240326122630.85989-1-imammedo@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x632.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,43 +68,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Mar 2024 12:44:44 -0000
+X-List-Received-Date: Tue, 26 Mar 2024 12:51:16 -0000
 
-On 26/3/24 13:26, Igor Mammedov wrote:
-> QEMU build fails with
->    hw/i386/fw_cfg.c:74: undefined reference to `smbios_get_table_legacy'
-> when it's built with only 'microvm' enabled i.e. with config patch
->     +++ b/configs/devices/i386-softmmu/default.mak
->     @@ -26,7 +26,7 @@
-> 
->     # Boards:
->     #
->     -CONFIG_ISAPC=y
->     -CONFIG_I440FX=y
->     -CONFIG_Q35=y
->     +CONFIG_ISAPC=n
->     +CONFIG_I440FX=n
->     +CONFIG_Q35=n
-> 
-> it happens because I've fogotten/lost smbios_get_table_legacy() stub.
-> 
-> Fix it by adding missing stub as Philippe suggested.
-> 
-> Fixes: b42b0e4daaa5 "smbios: build legacy mode code only for 'pc' machine"
-> Reported-by: Michael Tokarev <mjt@tls.msk.ru>
-> Singned-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
-> ---
-> Compile tested only.
-> 
-> While it's fixing bug for off-tree usecase with non-upstream config,
-> it's trivial enough to go into 9.0 if time frame allows.
-> Benefit of it going into 9.0 is that folks who play with minimal builds
-> won't have to carry the patch in their tree.
-> 
-> 
->   hw/smbios/smbios_legacy_stub.c | 5 +++++
->   1 file changed, 5 insertions(+)
+ISAPC machine was introduced 25 years ago and it's a lot of time since
+such machine was around with real ISA only PC hardware practically defunct.
+Also it's slowly bit-rots (for example: I was able to boot RHEL6 on RHEL9 host
+in only TCG mode, while in KVM mode it hung in the middle of boot)
 
-Thanks, patch queued.
+Rather than spending time on fixing 'the oldest' no longer tested machine type,
+deprecate it so we can clean up QEMU code from legacy fixups and hopefully
+make it easier to follow.
+
+Folks who have to use ancient guest that requires ISAPC can still
+use older QEMU to play with it.
+
+Signed-off-by: Igor Mammedov <imammedo@redhat.com>
+---
+ docs/about/deprecated.rst | 7 +++++++
+ hw/i386/pc_piix.c         | 1 +
+ 2 files changed, 8 insertions(+)
+
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 7b548519b5..5708296991 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -226,6 +226,13 @@ These old machine types are quite neglected nowadays and thus might have
+ various pitfalls with regards to live migration. Use a newer machine type
+ instead.
+ 
++``isapc`` (since 9.0)
++'''''''''''''''''''''''''''''''''''''''''''''''''''''
++
++These old machine type are quite neglected nowadays and thus might have
++various pitfalls with regards to live migration. Use a newer machine type
++instead.
++
+ Nios II ``10m50-ghrd`` and ``nios2-generic-nommu`` machines (since 8.2)
+ '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+ 
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index 18ba076609..96f72384dd 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -921,6 +921,7 @@ static void isapc_machine_options(MachineClass *m)
+     m->default_nic = "ne2k_isa";
+     m->default_cpu_type = X86_CPU_TYPE_NAME("486");
+     m->no_parallel = !module_object_class_by_name(TYPE_ISA_PARALLEL);
++    m->deprecation_reason = "old and unattended - use a newer version instead";
+ }
+ 
+ DEFINE_PC_MACHINE(isapc, "isapc", pc_init_isa,
+-- 
+2.43.0
+
 
