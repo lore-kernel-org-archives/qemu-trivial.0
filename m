@@ -1,82 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rp7ME-0001LH-Ev
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2024 10:00:54 -0400
+	id 1rp9HY-0007ym-Kx
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2024 12:04:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp7MC-0001Jj-Re
- for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 10:00:53 -0400
-Received: from mail-lf1-x135.google.com ([2a00:1450:4864:20::135])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp7MA-00031K-VZ
- for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 10:00:52 -0400
-Received: by mail-lf1-x135.google.com with SMTP id
- 2adb3069b0e04-513d3746950so6911651e87.1
- for <qemu-trivial@nongnu.org>; Tue, 26 Mar 2024 07:00:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711461649; x=1712066449; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=518rxPStDSiC644PHfV+WPYhM8g47DKTiBbf7OfJSi0=;
- b=kWBcBdpf792gvdtXC/72MjFfTzItqOcs9LCs6U4mWLk6RS3zOQJ1Bj++2iNdiFfQFX
- 36znMpFNcAy15WY8wepqaU3WCRId0B4uuP8QMS4q5B8WwHVlaRPkheQpchh/J63PrKzi
- qXvK4VF4K/QgC1Lwjw24RfshGBfNp153HpNeQaD4n1ytBd/Oez8p1E3N+uVuOeX48Pl4
- 3WV4HDQvfWH8pKyfIAvk2joKk8QWmHf5MPCG9a0e4gQRki2gzrRzjcbhZnx9oA9/QMOq
- sH9wTGDHbnihNVYjluw1LPuofMbtKUnWTSAvlDgKh00KqDi8mtx86LTt9jXcw3c4Mozy
- udDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711461649; x=1712066449;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=518rxPStDSiC644PHfV+WPYhM8g47DKTiBbf7OfJSi0=;
- b=Z4vncMd2clic9U69oV3cXaTkddQlgB/AS+vxMrrNlftvpyQeaxdZQtaZvqgooD5WLD
- rG5BbyldK99i1yQPzQ2vBkKUeqoc/SJcSyIHsV1B9Mc83/ZX6HbioqkAVKKzDCcKX/AG
- AveJ9wXOo6qMf4fn6cGI+Gej8tnSPr1WliSUFnJtwYnHA62lHcPUrqUyeHTONl5YCU9e
- A4mAPgylEda26ZRsW28eFZc7Wn3goHE3ZJHDjc+O1vOoNE85QddABjdWZm0I7Mjw6G4d
- ZYVcywOL2v4JOsuISOWMQQ7B6vnOe/5qptDoTBGqvRNZEsGRxHiXoHNVqupkEIQQCHW+
- fPhA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWfFdS4JJAFSlpq9XTPgtm4JFFa0zdLbyec42wqI+hfANHsKamaFa/DXv/kcfbCQEzLMTi9GgA+yiKak//+2I1pgGqvOi+5bg==
-X-Gm-Message-State: AOJu0YwVDiHwpcLNUmUq3b2f3jNyRNknPkHR2jC0RVG3D7ri25Y9Cyrw
- ZqlxBPs/7Wc/dyv2vpY+mYLpG3fIflg2+eanC5Fef1WquqjR2n89UY+k0z40kK4=
-X-Google-Smtp-Source: AGHT+IHTZfn9haAVcRCw/8INyWm7Ly7DU7TOZaflyvkjX11+WuWsm4pXECrJDW8M1nc7kDWpNyvcLQ==
-X-Received: by 2002:a19:6914:0:b0:513:e249:65fc with SMTP id
- e20-20020a196914000000b00513e24965fcmr5932355lfc.61.1711461648472; 
- Tue, 26 Mar 2024 07:00:48 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.155.229])
- by smtp.gmail.com with ESMTPSA id
- u15-20020a05600c00cf00b00414041032casm908926wmm.1.2024.03.26.07.00.46
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Mar 2024 07:00:47 -0700 (PDT)
-Message-ID: <c8a96403-a07f-40ae-8865-bec3fa1a7258@linaro.org>
-Date: Tue, 26 Mar 2024 15:00:45 +0100
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rp9HR-0007vp-ST; Tue, 26 Mar 2024 12:04:10 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rp9HP-0005Ys-C5; Tue, 26 Mar 2024 12:04:05 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id D1EC459220;
+ Tue, 26 Mar 2024 19:05:26 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id D6363A3606;
+ Tue, 26 Mar 2024 19:03:56 +0300 (MSK)
+Message-ID: <f48df4d0-56ff-4e6a-97ec-71e3f14bd91d@tls.msk.ru>
+Date: Tue, 26 Mar 2024 19:03:56 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-9.0] docs/about: Mark the iaspc machine type as
- deprecated
+Subject: Re: [PATCH trivial for-9.0] smbios: add stub for
+ smbios_get_table_legacy()
+To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org
+Cc: anisinha@redhat.com, mst@redhat.com, laurent@vivier.eu,
+ qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>
+References: <20240326122630.85989-1-imammedo@redhat.com>
 Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- qemu-devel@nongnu.org, Bernhard Beschow <shentey@gmail.com>
-Cc: pbonzini@redhat.com, devel@lists.libvirt.org,
- richard.henderson@linaro.org, mst@redhat.com, qemu-trivial@nongnu.org
-References: <20240326125104.90103-1-imammedo@redhat.com>
- <a4a0bb13-d6a0-4665-810d-ecd9a9fb89b1@redhat.com>
- <8dbba6ae-5910-4a62-9a08-a56e20dfb480@linaro.org>
- <306fd62e-50d4-4871-ae62-ea554a0fb388@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <306fd62e-50d4-4871-ae62-ea554a0fb388@redhat.com>
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <20240326122630.85989-1-imammedo@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::135;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x135.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,44 +74,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Mar 2024 14:00:53 -0000
+X-List-Received-Date: Tue, 26 Mar 2024 16:04:10 -0000
 
-On 26/3/24 14:37, Thomas Huth wrote:
-> On 26/03/2024 14.29, Philippe Mathieu-Daudé wrote:
->> Hi Igor,
->>
->> On 26/3/24 14:08, Thomas Huth wrote:
->>>
->>> s/iaspc/isapc/ in the subject
->>>
->>> On 26/03/2024 13.51, Igor Mammedov wrote:
->>>> ISAPC machine was introduced 25 years ago and it's a lot of time since
->>>> such machine was around with real ISA only PC hardware practically 
->>>> defunct.
->>>> Also it's slowly bit-rots (for example: I was able to boot RHEL6 on 
->>>> RHEL9 host
->>>> in only TCG mode, while in KVM mode it hung in the middle of boot)
->>
->> I'm quite opposed to this patch. QEMU models various very-old /
->> defunct hardware. I'm pretty sure Bernhard and myself are OK to
->> keep maintaining it, besides we are working in separating it from
->> the i440fx+piix machine. Also, this machine is particularly
->> interesting for my single-binary experiments.
->>
->> Where I agree is we should stop reporting "KVM on ISA/PC machine"
->> as supported.
+26.03.2024 15:26, Igor Mammedov wrote:
+> QEMU build fails with
+>    hw/i386/fw_cfg.c:74: undefined reference to `smbios_get_table_legacy'
+> when it's built with only 'microvm' enabled i.e. with config patch
+>     +++ b/configs/devices/i386-softmmu/default.mak
+>     @@ -26,7 +26,7 @@
 > 
-> +1
-
-Rough plan is to extract 'isapc' machine from PCMachineClass,
-having the latter becoming smth like PcPciMachineClass, on
-top of:
-https://lore.kernel.org/qemu-devel/20240305134221.30924-1-philmd@linaro.org/
-
-> See also:
+>     # Boards:
+>     #
+>     -CONFIG_ISAPC=y
+>     -CONFIG_I440FX=y
+>     -CONFIG_Q35=y
+>     +CONFIG_ISAPC=n
+>     +CONFIG_I440FX=n
+>     +CONFIG_Q35=n
 > 
-> https://lists.gnu.org/archive/html/qemu-devel/2017-11/msg01367.html
+> it happens because I've fogotten/lost smbios_get_table_legacy() stub.
+> 
+> Fix it by adding missing stub as Philippe suggested.
+> 
+> Fixes: b42b0e4daaa5 "smbios: build legacy mode code only for 'pc' machine"
+> Reported-by: Michael Tokarev <mjt@tls.msk.ru>
+> Singned-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 
-lol I didn't remember I posted a similar patch =)
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 
+Thanks,
+
+/mjt
 
