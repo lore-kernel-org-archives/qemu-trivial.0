@@ -1,77 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rp3Xm-0007ub-T3
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2024 05:56:34 -0400
+	id 1rp5eU-0003I3-VR
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2024 08:11:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp3Xk-0007o8-Re
- for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 05:56:32 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp3Xj-0006zW-BI
- for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 05:56:32 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-4148c6af2d3so7134125e9.1
- for <qemu-trivial@nongnu.org>; Tue, 26 Mar 2024 02:56:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711446990; x=1712051790; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=qeE5IqzdinRWh6lTlE0AtWqMokUPKMdMOciWC6LfJAE=;
- b=q8Zk5Rb4OTLBovvAs3Ydr0Tp0rP7R9kZ5CGA2R57WElXnLxBIGQGMVbJLbVAHo7OAh
- X5BLsLe9ELPbCVa50LZTezQ/sHZiRvzcQtdFkbrs6hfUD6otd2EWQW7r0WUG74hyuItL
- ecOb6vVVxErVTwRaN2pjVdJ3xgHVzXIFHhq28pzK8bsQv/xbUNcE6YrUU7t1k/8cX8QD
- 6t2ESk7Ymm8aQXAO5ynUzFTSLWk67z+3V1ukCxExrD825Ag2X/1cbntV7IIugGM0T6FK
- kVboPIup951wFvs50HRFU3qOLLqrw9/tI/Tgj0rFCIrVfWmxyDYo59y8JPnMR9ESgFHo
- sFUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711446990; x=1712051790;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=qeE5IqzdinRWh6lTlE0AtWqMokUPKMdMOciWC6LfJAE=;
- b=CVMSuKy0EItPb8Rz2X09/JL0u/lWV3fgTAIgQjpSXi8Cy1WNkSD0LqM4V8rMGw5J+T
- tQ7aZcpUFEgzhAbk6gHTcIfxSzxBR77qgqfJOFym1QcOVbONniYIBAX3B9Q/piLEuLBP
- pNkrUw/u4e6pPc5S4E6vVJokItuqiIVCuqdd/2s6QAmqEp27Dv23jLBw8suOmUtaHCaA
- iFB/WkhTIuEDZ96uAIl2wV5zQwhEwk97QRjpdHJqiXtwz6N+TFTse9gj0sgb0sagv8ac
- qrpTA2UG/5qFskb7V08a6jK/aMY0o/2DOiPM6EU2RojPZgia576QCbO6PSInYNIJ2iLA
- mjoA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWbbXXPpm0cpvYuNH5pM3CITgghJJRdrZFvBta6DO96abP/dAYnZzqP6sCTKvA7v0oHEIl/FaLdPlQpYcO5ioh5G6IaCAsIdA==
-X-Gm-Message-State: AOJu0YzxJwRQr2MmsjAj2WN5BJwUPfUqDcLGssy6qsul7gOCP5BGTJnp
- zEvlhAfTjG1IL76gwJlg1KeHCHb5niiPlSzHHwWqUdKuEkEQsjtJ2+z34xGBfToM6TLQ6NcnIXU
- B
-X-Google-Smtp-Source: AGHT+IHmQIRTDEIOw9WFpimkhJHl7IXlFHt30wjN6LKdKXnpUUjIazryJ1GuoVvCRIURrW7j6gutTg==
-X-Received: by 2002:a05:600c:2e51:b0:414:250:ccaa with SMTP id
- q17-20020a05600c2e5100b004140250ccaamr6858790wmf.12.1711446989647; 
- Tue, 26 Mar 2024 02:56:29 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.155.229])
- by smtp.gmail.com with ESMTPSA id
- g4-20020a05600c310400b0041462294fe3sm11043010wmo.42.2024.03.26.02.56.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Mar 2024 02:56:29 -0700 (PDT)
-Message-ID: <a8408559-7eb4-4643-bae7-4039f16ef00e@linaro.org>
-Date: Tue, 26 Mar 2024 10:56:28 +0100
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1rp5eL-0003H6-Pn
+ for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 08:11:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1rp5eJ-0003Ej-TE
+ for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 08:11:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1711455086;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=ukAcib95DKwJleYYNFW0g/eUYKFbc9tvGzHisW50wDM=;
+ b=dEcN5g1j+N6KHBUBW5yZImpLWIUOCqTqYQoxhpMUPyrkFZUCSOTKU3+ivOTePiHguacMI5
+ p4uTIrck0jezHee/BVfsKkRk0D25zMRxQCEnWbIYbGWSpdO6+MhOrQ8UB9VPRvL2n6VmeT
+ XIooBxfnJ5SdpaitnmwPILdgoSg/2Bs=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-390-tNEWK7A1OqilPoPpu7nKTQ-1; Tue, 26 Mar 2024 08:11:21 -0400
+X-MC-Unique: tNEWK7A1OqilPoPpu7nKTQ-1
+Received: from smtp.corp.redhat.com (int-mx06.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.6])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 82D01185A786;
+ Tue, 26 Mar 2024 12:11:20 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.193.60])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 7303D2166B32;
+ Tue, 26 Mar 2024 12:11:19 +0000 (UTC)
+Date: Tue, 26 Mar 2024 13:11:14 +0100
+From: Kevin Wolf <kwolf@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-block@nongnu.org, Hanna Reitz <hreitz@redhat.com>,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] tests/qemu-iotests: Test 157 and 227 require virtio-blk
+Message-ID: <ZgK7YnAlMD6XU-7U@redhat.com>
+References: <20240325154737.1305063-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] docs/system/ppc/amigang.rst: Fix formatting
-Content-Language: en-US
-To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org
-Cc: qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-References: <20240324161148.4650D4E601F@zero.eik.bme.hu>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240324161148.4650D4E601F@zero.eik.bme.hu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240325154737.1305063-1-thuth@redhat.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.6
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,17 +67,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Mar 2024 09:56:33 -0000
+X-List-Received-Date: Tue, 26 Mar 2024 12:11:37 -0000
 
-On 24/3/24 17:11, BALATON Zoltan wrote:
-> Add missing space to fix character formatting where it was missed in
-> two places.
+Am 25.03.2024 um 16:47 hat Thomas Huth geschrieben:
+> Tests 157 and 227 use the virtio-blk device, so we have to mark these
+> tests accordingly to be skipped if this devices is not available (e.g.
+> when running the tests with qemu-system-avr only).
 > 
-> Fixes: 623d9065b6 (docs/system/ppc: Document running Linux on AmigaNG machines)
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> ---
->   docs/system/ppc/amigang.rst | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Thanks, patch queued.
+Thanks, applied to the block branch.
+
+Kevin
+
 
