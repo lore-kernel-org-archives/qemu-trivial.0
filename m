@@ -1,64 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rp9Yq-00069a-OI
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2024 12:22:04 -0400
+	id 1rp9ZP-0006LZ-HE
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2024 12:22:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rp9Yp-000691-Lr
- for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 12:22:03 -0400
+ id 1rp9ZL-0006Jz-O8
+ for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 12:22:37 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1rp9Yn-0002Av-Dq
- for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 12:22:03 -0400
+ id 1rp9ZK-0002Ih-2T
+ for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 12:22:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1711470120;
+ s=mimecast20190719; t=1711470153;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
  bh=zSBko5VBkdv5xMNTquercBqwqtT3YFKAb945ePdU8fM=;
- b=TXWOuSaCglTXxTpVXBMEdifh0Sgqq2DVrHWCiCd48jtkNx91++qS7s/8YZkZQsn+mhYUaW
- HPMiQSQDSTIRsdIqxbaUNo/Iyb81KSv+4LdJ4vzWWDiIF1gUzVNtwVQ5cjMg3BHXsr7USv
- 4laHrHZJrYChzfJXX7C3iZkmnK1dXEU=
-Received: from mail-lj1-f199.google.com (mail-lj1-f199.google.com
- [209.85.208.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ b=BgfxJQ3B1V5KDZxXRMCWzFMlPeyuPNCykxs5BAeageszv/IiNEbI0S0LIbOLc43jKPCeew
+ RjiefeFJuZgiyXqGfCTcgaJ0i5qKbXIIpaQV4e467reoPOTH6NyEAENv8e9id9u+f3liff
+ 1TgWTtu9XF4/awIw6D9XlheOIvLXZEc=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-632-MmoUcXSqOsCbMnkAi-dTpw-1; Tue, 26 Mar 2024 12:21:58 -0400
-X-MC-Unique: MmoUcXSqOsCbMnkAi-dTpw-1
-Received: by mail-lj1-f199.google.com with SMTP id
- 38308e7fff4ca-2d599dba7fbso52320351fa.0
- for <qemu-trivial@nongnu.org>; Tue, 26 Mar 2024 09:21:58 -0700 (PDT)
+ us-mta-618-RlE4X5OYOvWQQLh9PmXmLw-1; Tue, 26 Mar 2024 12:22:31 -0400
+X-MC-Unique: RlE4X5OYOvWQQLh9PmXmLw-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-41401eb321fso31779745e9.3
+ for <qemu-trivial@nongnu.org>; Tue, 26 Mar 2024 09:22:31 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711470116; x=1712074916;
+ d=1e100.net; s=20230601; t=1711470146; x=1712074946;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
  bh=zSBko5VBkdv5xMNTquercBqwqtT3YFKAb945ePdU8fM=;
- b=PnBv1XeMxEWkorM5exC8m/IounsDKGp4cXL/xG1bK55Tz5/Jjtk0XjnhRyAGD7b2V2
- CHH8dy0OpK0yX/7lx3zi345mTYINeau9vhtVPi+DO5Rfq5nnhk7oht8yIgdw41MXFo/L
- 9Niz9Tnd3/kBomP7ccYqsfvMYSynRdBcsKXg4KJovD0OBfTs3ojlhfuI4tM4K9jl1gx4
- tGntcbEm9pLcAMsSh75+C0Nbn4YN9wTqmmdIWYcH9i/+irStnKj1KXR/+8REZVeVKVEe
- fqbCpEAGGM2XK4PP23K3f2jBjdqsseJOCz57WVm+BiYT/blEAS5DGvPXzM+jDi+hZ2TQ
- oEMg==
+ b=nI/Q3eNyR5Et6/tGaE1mXhvIGGjOXosHFh5n3/JSM8FkMSCwlseqz7meWCbLv2PSeD
+ WtzHoj+ecz8KZnE1S6kF4Kb3/CjzUCxBJFkipN9O3LtD3yF1eGgA6CVuliKUPXxjfZLM
+ Z/8ixMvvOMsuekcFmjXiBm1YEb4O20xpWwiPgNcGy0xF4r1U0ppwcfSZBMUqEde7+Z92
+ Tj3yJUK6uchdAlHoqOTuamv+AOhzZdaXVh/MWVwW6YHcFSMFXLxlBZVLGX+qvkh5cJtd
+ hsdXwUQsli3BvIDEyax/3GwfirkZ2hyBgkY9BrnRpzpQpqcMxPh2sut1MGk+LUK2Ey2d
+ 83hw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVEU2feDA2K1Z2wWiqMzHB8ZIX7M+RXo7r2JMddtWD7Xl2cbPz5TZ3STsTqkHW5DpP/stRglIKDCvENz/TyHCNHXStrDlj7iw==
-X-Gm-Message-State: AOJu0Yz9CDpEQeZNhsEzRf6gjLqveHVeq9Mht7FLxVwVkS5JrY48etb9
- 8c/MwHWD7A5RD2JSgKIkzgUZKgv7E+ff/+hGTqsjNNkPS5tmvHXLCRmMrzoF1ykj3UOvyv03JRk
- IzE+H0TcKv4uU/OaQ5ShSYWHqNLbdLfF2bfLirvgbMdNExQqBa+ndOCM=
-X-Received: by 2002:a2e:9f08:0:b0:2d6:dbc3:3d3c with SMTP id
- u8-20020a2e9f08000000b002d6dbc33d3cmr112750ljk.8.1711470116365; 
- Tue, 26 Mar 2024 09:21:56 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE7uyqYco9tTL7Da49zmvFAYrEg97iwHH5EII44DwMXwgIfu4+lVSTa9KISCvqFzkLP4xfGtw==
-X-Received: by 2002:a2e:9f08:0:b0:2d6:dbc3:3d3c with SMTP id
- u8-20020a2e9f08000000b002d6dbc33d3cmr112735ljk.8.1711470115934; 
- Tue, 26 Mar 2024 09:21:55 -0700 (PDT)
+ AJvYcCXMPLzCiO+umOzqin9X8X711CiCiSsHkh68jKK4I8KuOykKHgAiT2FsqdZFeW4u8QI8m4FoKgBGj9reM/TCxZmn7Z2+BOBBdA==
+X-Gm-Message-State: AOJu0Yw9BW+RpqhNk+Djy0RPjhg1dqI0aT/1w4FgJxF41pMKiphgEyAO
+ 4khhGUzpChWwAbYChicFnMwjeQENVSNbJIcMc6SfIFHiiP5+KS8KWgdR+F7MA+MrZPL/TyHYJwZ
+ yy49pgoPaiaSxDqwQBF5uL6Xh8YNnGgCOFPfjVNiI20X+D2IyO8wU4rk=
+X-Received: by 2002:a05:600c:1c23:b0:414:a76:3d5e with SMTP id
+ j35-20020a05600c1c2300b004140a763d5emr27899wms.28.1711470146090; 
+ Tue, 26 Mar 2024 09:22:26 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEi3AJhx68Kf58pyYingJcZfDc2UDuGSXFKDe6APsDFGEyUPfTaYYwmMZ+N1sxfoLl7G8R4sA==
+X-Received: by 2002:a05:600c:1c23:b0:414:a76:3d5e with SMTP id
+ j35-20020a05600c1c2300b004140a763d5emr27876wms.28.1711470145690; 
+ Tue, 26 Mar 2024 09:22:25 -0700 (PDT)
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
  [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- q20-20020a05600c46d400b004147db8a91asm12072085wmo.40.2024.03.26.09.20.22
+ j19-20020a05600c191300b00414610d9223sm12040956wmq.14.2024.03.26.09.22.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Mar 2024 09:20:33 -0700 (PDT)
-Date: Tue, 26 Mar 2024 17:20:13 +0100
+ Tue, 26 Mar 2024 09:22:25 -0700 (PDT)
+Date: Tue, 26 Mar 2024 17:22:24 +0100
 From: Igor Mammedov <imammedo@redhat.com>
 To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
 Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, devel@lists.libvirt.org,
@@ -84,7 +84,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,7 +97,8 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Mar 2024 16:22:04 -0000
+X-List-Received-Date: Tue, 26 Mar 2024 16:22:37 -0000
+Message-ID: <20240326162224.Z-r9wm-ql4clOcscBGMngcuRBD36gXpOrox4HRm6RCc@z>
 
 On Tue, 26 Mar 2024 13:30:48 +0000
 Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk> wrote:
