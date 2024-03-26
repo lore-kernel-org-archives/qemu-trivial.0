@@ -1,74 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rp6Yp-0002Gd-Hy
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2024 09:09:51 -0400
+	id 1rp6sR-0002AP-5I
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Mar 2024 09:30:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp6Yn-0002GA-1E
- for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 09:09:49 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp6sP-00026v-Of
+ for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 09:30:05 -0400
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp6Yl-00076W-Cf
- for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 09:09:48 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-41490e42c74so1171505e9.1
- for <qemu-trivial@nongnu.org>; Tue, 26 Mar 2024 06:09:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rp6sN-0002tf-Q5
+ for qemu-trivial@nongnu.org; Tue, 26 Mar 2024 09:30:05 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id
+ 2adb3069b0e04-515a81928a1so3924428e87.3
+ for <qemu-trivial@nongnu.org>; Tue, 26 Mar 2024 06:30:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711458584; x=1712063384; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=linaro.org; s=google; t=1711459801; x=1712064601; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=0LSC2LbQn66/CrjDJXLYir/DE+1vSCS6UQ5hjybI1Vg=;
- b=B5Doez2sxvf8LGvczasT5bfBguzavX1hT7wAAo+3ZYsZ3vF6h8JUlX1XF5fj+TvAC8
- AQxwrrX9Jq05vGjxl5gnsE5QLYIUppsSVfoB0x1JHHgrUXKh4M+KZo67VaLaEBVwVsOu
- UL7gKxjc+uXqFz2eCc/NKq1nNcRQW8XWwMHJZf+aTAhfMcrvM5XEC1x33dx9qX0uX+nl
- G0/zMDZuoUudSuiRiRRNEfjWoiQWnb9G7Vz2/GTlPk9F5KMXFSHgSfd9opEwA3z+b8fT
- /qUDbtK97z4FdeAQ87Q9VcLpyiaXyXKDSNnN80kdfPoRpRKAoNj/g+zE1ohs4h7OW7bV
- FUhQ==
+ bh=/2e3dQMofYK+iQiQyGxuwRKrWC4AGMEVfIDJ8td1qUU=;
+ b=Fee2PCY+3/gE4qQGhBvRz5LGBEdOkKYjZ0fD7I9z5+1zUVn0kns13XXitiqPrY+T5a
+ zsAjNZTTaweNsx5ZsHDWKVkHb1E1hqJYTmgvQ1YpC37goXeM3tXVSmjQIWk7viUO3DLI
+ Xtg1MejLLO/zjwSIPdwwklrGxemotp4hMtb/eTvtqk71/CIWODmM3E4B/I5SdZIpwjzr
+ oYCX56rPjwzkfb4c1SvHEr8eQmvz4ABlm2FiLuoE9L0GeOO9kIXOuePeRcCb3LCQ9Pwq
+ gMd1/G4Y/8aPobW0q5FK1NviOeQk+RJRkgQgz5II8zCV0FOWBb3p3PR1YWpykbscq8Xy
+ dgeQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711458584; x=1712063384;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ d=1e100.net; s=20230601; t=1711459801; x=1712064601;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=0LSC2LbQn66/CrjDJXLYir/DE+1vSCS6UQ5hjybI1Vg=;
- b=avTkyzhos8PTRtxKjCITCMJ6gTto20k/62B3rHcxcv+mzN05/61yz5VP2MsHeyhhRK
- YNtpV1GtQXIn4ZWJvVb+DWATwO0Cstxzaej4XEhCpBo141fo5Y9UkwFUv9SCavhxVxMa
- J99vnCzMFAn4AHN8uvbhonFg9HgZLbpMaUxqXw+CvMH3zxf5X89p0k0j5gDKiGMd5BQa
- No6Hk84TOMVtGQ2BEiG54qQ225bH7rXe/BwR2n3M4VspGGGAxAacpk5ucUOSPoP2uHmK
- Yy5wCQRNRDKM8gBhtr4XC2gxacuAJnMzXVyfvNP4EEeCsl6tq4Tbp+OYtgwp5B6VEm9O
- Gfbg==
+ bh=/2e3dQMofYK+iQiQyGxuwRKrWC4AGMEVfIDJ8td1qUU=;
+ b=RInZ0n6JCmZU4LBzsa+dRJ5w50ysU3ol+sPOZa2WLBtZG92QmAzEfBKUSXNeG3ZTqJ
+ b3Q/L5/tWgo72xZkvqN3svhYAd+JFaRJdS8vJykSPEJ1AlsyJXoJkPGfXPiGxPEPMRvd
+ DcgCPSWvgkAUx/RkOWYmLCYGqXjYmz3oMJNuNfSjSXdqNHHm465YymrumUtkdBUsD7DJ
+ y8o26TXjAYfXldRDvpXZwjh9dklt3lqtr6xQbwZr+NxG8ZdoczooYeZstcKlftnnc30v
+ zaEAJKFeJpk3U5JPv86V/7gHb7SVvvc31En6CxP24ZGXXDcc/unCrcuNFqWI4DKfx/VA
+ KcYg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVBww6HtibVl//YhePWhNx4KDbJO/J7kNejilonDFupoAaP2Zku+payA6V9wNjVkeHCr6Lmqxo8C1p9izsWfHkOQwQvFfaewA==
-X-Gm-Message-State: AOJu0Yzr+RTNox/fAMRa3YU0QH78H4AlOW/6u3GisHSmLYqXwTBaVMlR
- 5SAjp5cUWC31s6yLXkXQonlv6r3YHJeGgA6FNkbLNobfIEMBelseYhtzk9iv37R9LklgZZo/nI0
- J
-X-Google-Smtp-Source: AGHT+IHb/1iI5LxGQfN25P6NFALfXzEQbEqhKJSWMBdkEn5aIXMTUeOQFlh9Fnzk/pAzrACvvG+D7A==
-X-Received: by 2002:a05:600c:3217:b0:414:6467:d8e9 with SMTP id
- r23-20020a05600c321700b004146467d8e9mr1341526wmp.17.1711458584531; 
- Tue, 26 Mar 2024 06:09:44 -0700 (PDT)
+ AJvYcCVaugX3n0iJfcBNAhssM8/G6XL8T79nqY6w8WlVk05usVHRXsr74JEZHDqIyVOZQ5QQU1kgQZhwC/qgGuN3evg1IvWZ9dETOQ==
+X-Gm-Message-State: AOJu0YwKZZgAi0XA6wcEthvXWZfrFcki4wH6fYQcn3c+USGXtdWSpKbm
+ nUYsroV5AgpH8j9/YItwo9ckxhFuSjRRHjN0Dj8rY547HZ2EBSnNtrjUIyySuL0=
+X-Google-Smtp-Source: AGHT+IF75fzFm+AWOo2LQ/w/w8nyYXn3T4Fyf5JAvKtoJFdm/58wtWUUcvV4Vx9JbSGRI6CIdcca2w==
+X-Received: by 2002:ac2:499e:0:b0:515:7686:6068 with SMTP id
+ f30-20020ac2499e000000b0051576866068mr6151219lfl.55.1711459801482; 
+ Tue, 26 Mar 2024 06:30:01 -0700 (PDT)
 Received: from [192.168.69.100] ([176.176.155.229])
  by smtp.gmail.com with ESMTPSA id
- d37-20020a05600c4c2500b004140a6d52e9sm648578wmp.1.2024.03.26.06.09.43
+ w2-20020a1709067c8200b00a4720ce2e75sm4200687ejo.129.2024.03.26.06.29.59
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 26 Mar 2024 06:09:44 -0700 (PDT)
-Message-ID: <403a8e6f-b6ba-45e1-a406-0642b8d1eb93@linaro.org>
-Date: Tue, 26 Mar 2024 14:09:42 +0100
+ Tue, 26 Mar 2024 06:30:00 -0700 (PDT)
+Message-ID: <8dbba6ae-5910-4a62-9a08-a56e20dfb480@linaro.org>
+Date: Tue, 26 Mar 2024 14:29:58 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial for-9.0] smbios: add stub for
- smbios_get_table_legacy()
+Subject: Re: [PATCH for-9.0] docs/about: Mark the iaspc machine type as
+ deprecated
 Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ qemu-devel@nongnu.org, Bernhard Beschow <shentey@gmail.com>
+Cc: pbonzini@redhat.com, devel@lists.libvirt.org,
+ richard.henderson@linaro.org, mst@redhat.com, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20240326125104.90103-1-imammedo@redhat.com>
+ <a4a0bb13-d6a0-4665-810d-ecd9a9fb89b1@redhat.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Cc: anisinha@redhat.com, mst@redhat.com, laurent@vivier.eu,
- qemu-trivial@nongnu.org
-References: <20240326122630.85989-1-imammedo@redhat.com>
- <2b158752-9a6d-4013-a9d1-bb380b31cbda@linaro.org>
-In-Reply-To: <2b158752-9a6d-4013-a9d1-bb380b31cbda@linaro.org>
+In-Reply-To: <a4a0bb13-d6a0-4665-810d-ecd9a9fb89b1@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -88,113 +88,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 26 Mar 2024 13:09:49 -0000
+X-List-Received-Date: Tue, 26 Mar 2024 13:30:06 -0000
 
-On 26/3/24 13:44, Philippe Mathieu-Daudé wrote:
-> On 26/3/24 13:26, Igor Mammedov wrote:
->> QEMU build fails with
->>    hw/i386/fw_cfg.c:74: undefined reference to `smbios_get_table_legacy'
->> when it's built with only 'microvm' enabled i.e. with config patch
->>     +++ b/configs/devices/i386-softmmu/default.mak
->>     @@ -26,7 +26,7 @@
+Hi Igor,
+
+On 26/3/24 14:08, Thomas Huth wrote:
+> 
+> s/iaspc/isapc/ in the subject
+> 
+> On 26/03/2024 13.51, Igor Mammedov wrote:
+>> ISAPC machine was introduced 25 years ago and it's a lot of time since
+>> such machine was around with real ISA only PC hardware practically 
+>> defunct.
+>> Also it's slowly bit-rots (for example: I was able to boot RHEL6 on 
+>> RHEL9 host
+>> in only TCG mode, while in KVM mode it hung in the middle of boot)
+
+I'm quite opposed to this patch. QEMU models various very-old /
+defunct hardware. I'm pretty sure Bernhard and myself are OK to
+keep maintaining it, besides we are working in separating it from
+the i440fx+piix machine. Also, this machine is particularly
+interesting for my single-binary experiments.
+
+Where I agree is we should stop reporting "KVM on ISA/PC machine"
+as supported.
+
+Regards,
+
+Phil.
+
+>> Rather than spending time on fixing 'the oldest' no longer tested 
+>> machine type,
+>> deprecate it so we can clean up QEMU code from legacy fixups and 
+>> hopefully
+>> make it easier to follow.
 >>
->>     # Boards:
->>     #
->>     -CONFIG_ISAPC=y
->>     -CONFIG_I440FX=y
->>     -CONFIG_Q35=y
->>     +CONFIG_ISAPC=n
->>     +CONFIG_I440FX=n
->>     +CONFIG_Q35=n
+>> Folks who have to use ancient guest that requires ISAPC can still
+>> use older QEMU to play with it.
 >>
->> it happens because I've fogotten/lost smbios_get_table_legacy() stub.
->>
->> Fix it by adding missing stub as Philippe suggested.
->>
->> Fixes: b42b0e4daaa5 "smbios: build legacy mode code only for 'pc' 
->> machine"
->> Reported-by: Michael Tokarev <mjt@tls.msk.ru>
->> Singned-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 >> Signed-off-by: Igor Mammedov <imammedo@redhat.com>
 >> ---
->> Compile tested only.
+>>   docs/about/deprecated.rst | 7 +++++++
+>>   hw/i386/pc_piix.c         | 1 +
+>>   2 files changed, 8 insertions(+)
 >>
->> While it's fixing bug for off-tree usecase with non-upstream config,
->> it's trivial enough to go into 9.0 if time frame allows.
->> Benefit of it going into 9.0 is that folks who play with minimal builds
->> won't have to carry the patch in their tree.
->>
->>
->>   hw/smbios/smbios_legacy_stub.c | 5 +++++
->>   1 file changed, 5 insertions(+)
+>> diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+>> index 7b548519b5..5708296991 100644
+>> --- a/docs/about/deprecated.rst
+>> +++ b/docs/about/deprecated.rst
+>> @@ -226,6 +226,13 @@ These old machine types are quite neglected 
+>> nowadays and thus might have
+>>   various pitfalls with regards to live migration. Use a newer machine 
+>> type
+>>   instead.
+>> +``isapc`` (since 9.0)
+>> +'''''''''''''''''''''''''''''''''''''''''''''''''''''
+>> +
+>> +These old machine type are quite neglected nowadays and thus might have
 > 
-> Thanks, patch queued.
+> "This old machine type is ..." ?
+> 
+>> +various pitfalls with regards to live migration. Use a newer machine 
+>> type
+>> +instead.
+> 
+> I doubt that isapc could ever be used reliably for live migration, since 
+> it's an unversioned machine type, so I think it would be better to not 
+> mention live migration here.
+> 
+>   Thomas
+> 
+> 
 
-Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-BTW I tested using the following patch:
-
--- >8 --
-commit 8be7b26b430d3ab192a2d22215ee512072bd88fb
-Author: Philippe Mathieu-Daudé <philmd@linaro.org>
-Date:   Tue Mar 26 13:52:17 2024 +0100
-
-     hw/i386: Add a config to only build the microvm machine
-
-     Add a config file to build a binary only containing the
-     microvm machine.
-
-     As suggested in commit d1d5e9eefd ("configure: allow the
-     selection of alternate config in the build"), it can be
-     built using:
-
-       $ ../configure --without-default-features \
-                      --target-list=x86_64-softmmu \
-                      --with-devices-x86_64=microvm
-
-     Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-diff --git a/configs/devices/x86_64-softmmu/microvm.mak 
-b/configs/devices/x86_64-softmmu/microvm.mak
-new file mode 100644
-index 0000000000..fe48b5b4a7
---- /dev/null
-+++ b/configs/devices/x86_64-softmmu/microvm.mak
-@@ -0,0 +1,20 @@
-+# SPDX-FileCopyrightText: 2024 Linaro Ltd.
-+#
-+# Config that only supports the 64-bit microvm machine.
-+# This avoids bringing in any of numerous legacy features from
-+# the legacy machines or the 32bit platform.
-+#
-+
-+CONFIG_MICROVM=y
-+CONFIG_PCI_DEVICES=n
-+CONFIG_SMBIOS=y
-+CONFIG_SMBIOS_LEGACY=n
-+CONFIG_VIRTIO_BALLOON=y
-+CONFIG_VIRTIO_BLK=y
-+CONFIG_VIRTIO_CRYPTO=y
-+CONFIG_VIRTIO_GPU=y
-+CONFIG_VIRTIO_INPUT=y
-+CONFIG_VIRTIO_NET=y
-+CONFIG_VIRTIO_RNG=y
-+CONFIG_VIRTIO_SCSI=y
-+CONFIG_VIRTIO_SERIAL=y
----
-
-Before:
-
-Undefined symbols for architecture arm64:
-   "_smbios_get_table_legacy", referenced from:
-       _fw_cfg_build_smbios in hw_i386_fw_cfg.c.o
-ld: symbol(s) not found for architecture arm64
-
-After:
-
-$ ./qemu-system-x86_64 -S -monitor stdio -M microvm
-QEMU 8.2.90 monitor - type 'help' for more information
-(qemu) info qom-tree
-/machine (microvm-machine)
-...
 
