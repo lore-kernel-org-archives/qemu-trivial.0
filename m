@@ -1,62 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rpNPx-0003K4-8D
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Mar 2024 03:09:49 -0400
+	id 1rpQr1-0000fa-8l
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Mar 2024 06:49:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1rpNPv-0003Jn-Mn
- for qemu-trivial@nongnu.org; Wed, 27 Mar 2024 03:09:47 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1rpQqz-0000VW-7w
+ for qemu-trivial@nongnu.org; Wed, 27 Mar 2024 06:49:57 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1rpNPt-0008VQ-Ua
- for qemu-trivial@nongnu.org; Wed, 27 Mar 2024 03:09:47 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1rpQqw-0005iC-SS
+ for qemu-trivial@nongnu.org; Wed, 27 Mar 2024 06:49:56 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1711523385;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1711536593;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=vIzIzogi+A8S/XQGl9Pr07ygOeqr+JWEcuZxwvgp3GM=;
- b=cEWaVokwQUxtAXPf/FwTz0m62EXQgB5eZ1GuKJzqaKkYRXmFeDQQtxByLiqQkqp/wTUHQP
- c9LIl7tfx7wLksgYq6+Qst1xvx+cmJxz0AQMxwv721IwwHu0ujH7uKHqM0yElbhb8aitgX
- 3l4U/BAJxPf6EBvddgkeGqiCPBA03FI=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-116-9CT_MDQOPEa49XOUrI44fQ-1; Wed,
- 27 Mar 2024 03:09:41 -0400
-X-MC-Unique: 9CT_MDQOPEa49XOUrI44fQ-1
+ bh=ItORnOPDjDn9Fd5IWsfZLSAJMDnQ7csuLL1Izr3fnEA=;
+ b=Qis0vvhEjoHW6OkONh00mvdGwZVL9dEofG9l+sd12eXlnylSw3fVFce5hN7QbzjDUUdpy9
+ BmFqUHPYOnvWc4msCLeqQglQM4+TVQpJvbHJ2/dgOB8/0Z+h7qzMJmF3E0G45Oxiw0D9zY
+ sF/8FLOqk1aCYR6ELWSS/NEAIk+S3vQ=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-148-zxk44sPvN_WWWIEMhkRDgg-1; Wed, 27 Mar 2024 06:49:52 -0400
+X-MC-Unique: zxk44sPvN_WWWIEMhkRDgg-1
 Received: from smtp.corp.redhat.com (int-mx04.intmail.prod.int.rdu2.redhat.com
  [10.11.54.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 67D013C025D7;
- Wed, 27 Mar 2024 07:09:40 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.192.75])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id F15DE200A384;
- Wed, 27 Mar 2024 07:09:39 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id B880C18003BA; Wed, 27 Mar 2024 08:09:34 +0100 (CET)
-Date: Wed, 27 Mar 2024 08:09:34 +0100
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Cc: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org, 
- pbonzini@redhat.com, devel@lists.libvirt.org, richard.henderson@linaro.org, 
- mst@redhat.com, thuth@redhat.com, qemu-trivial@nongnu.org
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 9F4DB8007A1;
+ Wed, 27 Mar 2024 10:49:51 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.186])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id A85D72024517;
+ Wed, 27 Mar 2024 10:49:49 +0000 (UTC)
+Date: Wed, 27 Mar 2024 10:49:43 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Igor Mammedov <imammedo@redhat.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Bernhard Beschow <shentey@gmail.com>, pbonzini@redhat.com,
+ devel@lists.libvirt.org, richard.henderson@linaro.org,
+ mst@redhat.com, qemu-trivial@nongnu.org
 Subject: Re: [PATCH for-9.0] docs/about: Mark the iaspc machine type as
  deprecated
-Message-ID: <vyepknhyulwvmyypt74i7gvu4nqqqzhgdj2fxi66rgdnipi2co@ildhvlycqf2v>
+Message-ID: <ZgP5x3ECYGevla1-@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20240326125104.90103-1-imammedo@redhat.com>
- <d8ddb193-fe76-4554-b887-5106eed2dd01@ilande.co.uk>
+ <a4a0bb13-d6a0-4665-810d-ecd9a9fb89b1@redhat.com>
+ <8dbba6ae-5910-4a62-9a08-a56e20dfb480@linaro.org>
+ <20240326171632.3cc7533d@imammedo.users.ipa.redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-In-Reply-To: <d8ddb193-fe76-4554-b887-5106eed2dd01@ilande.co.uk>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240326171632.3cc7533d@imammedo.users.ipa.redhat.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
 X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kraxel@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.088,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
@@ -72,22 +81,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Mar 2024 07:09:47 -0000
+X-List-Received-Date: Wed, 27 Mar 2024 10:49:57 -0000
 
-On Tue, Mar 26, 2024 at 01:30:48PM +0000, Mark Cave-Ayland wrote:
-> Heh I've actually been using isapc over the past couple of weeks to fire up
-> some old programs in a Windows 3 VM :)
+On Tue, Mar 26, 2024 at 05:16:32PM +0100, Igor Mammedov wrote:
+> On Tue, 26 Mar 2024 14:29:58 +0100
+> Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+> 
+> > Hi Igor,
+> > 
+> > On 26/3/24 14:08, Thomas Huth wrote:
+> > > 
+> > > s/iaspc/isapc/ in the subject
+> > > 
+> > > On 26/03/2024 13.51, Igor Mammedov wrote:  
+> > >> ISAPC machine was introduced 25 years ago and it's a lot of time since
+> > >> such machine was around with real ISA only PC hardware practically 
+> > >> defunct.
+> > >> Also it's slowly bit-rots (for example: I was able to boot RHEL6 on 
+> > >> RHEL9 host
+> > >> in only TCG mode, while in KVM mode it hung in the middle of boot)  
+> > 
+> > I'm quite opposed to this patch. QEMU models various very-old /
+> > defunct hardware. I'm pretty sure Bernhard and myself are OK to
+> > keep maintaining it, besides we are working in separating it from
+> > the i440fx+piix machine. Also, this machine is particularly
+> > interesting for my single-binary experiments.
+> 
+> it would not be fair to ask you or Bernard to deal with every
+> case where ISAPC related code gets in a way, nor it's fair to
+> ask other contributors to ensure that their patches don't break
+> semi-working ISAPC or refactor code that relates to it. 
+> 
+> [
+> for example I'd like to refactor smbios parts in the image
+> ACPI table builder, but the I'd have to do it for legacy
+> part as well without means to verify that. Sure it can be
+> done but at cost of extra time spent to rewrite something
+> that would never be used and to find test env to verify
+> touched code.
+> ]
 
-I'm wondering why these use cases can't simply use the 'pc' machine
-type?
+Is SMBIOS even relevant for isapc ? IIUC, the first SMBIOS spec
+is from 1999, while PCI has been around since 1992.
 
-The early pci chipsets of the 90-ies have been designed in a
-backward-compatible manner, with devices such as the IDE controller
-being mapped to the standard ISA ioports.  So even an historic OS which
-does not know what PCI is can run on that hardware, by simply talking to
-devices using the standard ISA io ports ...
+IOW, we shouldn't even be exposing SMBIOS with the isapc
+machine type. If we address that, then isapc has no impact
+on your ability to refactor SMBIOS code.
 
-take care,
-  Gerd
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
