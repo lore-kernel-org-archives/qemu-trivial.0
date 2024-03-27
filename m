@@ -1,80 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rpTIa-0008Dt-77
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Mar 2024 09:26:36 -0400
+	id 1rpTKB-000186-0i
+	for mharc-qemu-trivial@gnu.org; Wed, 27 Mar 2024 09:28:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rpTIZ-0008CS-4H
- for qemu-trivial@nongnu.org; Wed, 27 Mar 2024 09:26:35 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rpTK9-00017i-RG
+ for qemu-trivial@nongnu.org; Wed, 27 Mar 2024 09:28:13 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rpTIX-0005Xd-1Q
- for qemu-trivial@nongnu.org; Wed, 27 Mar 2024 09:26:34 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-41492504233so7766775e9.0
- for <qemu-trivial@nongnu.org>; Wed, 27 Mar 2024 06:26:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1rpTK8-0005i6-7I
+ for qemu-trivial@nongnu.org; Wed, 27 Mar 2024 09:28:13 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-56c3689ad2cso1769155a12.1
+ for <qemu-trivial@nongnu.org>; Wed, 27 Mar 2024 06:28:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711545991; x=1712150791; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=4dCw7HH6eL2/wh/se0db0+w3WDUYFh/wkPQjXWNfVDQ=;
- b=iU6p4MH35fKRvGVr99MumyHJeTDPkBsmjGInRqx0X5ujLoVJr0gf+BnrRqcQU9zWjs
- dK4GU1m/1Fbf/LJDDqjBc38TwFCzptVrfW++z7uHqFHSm0OkU8ycozkUlKcug8H5tGH6
- wyhqHsTdnIKcYA3gJJVGlDigckYwPVbxrQz2gZHQ+q9tMx8QPXx+jHnd8XcU+b4FYPiO
- v2nhGdIottimd/OINUdemzyKucaGonG/iDDJNSu7mM/41dAfNei/ZxSqWxt3qIL+xggA
- MYekUbhqzwRkRdKcnDj2ROHwwnCAfyFfVwf/w/GONVgM1E8igWNi3d/YFAexuxF/Liif
- MtKA==
+ d=linaro.org; s=google; t=1711546090; x=1712150890; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=TitztqS/oML4BOLgIpb5h6Tok73IYxEQW3Ngsz1nAYM=;
+ b=s6M5hVzFWp7xP39KdNW0LOkGJejRgPpD9YMuzi3rp0zULJtiKlu7rv6yGDo7TKsYk7
+ f505dDf+zUjTrf1/Od7Nxthz4Ky6+A2zYqMA7H5SCDr6/dNztNeCjlraVG7kQad4/w8P
+ hYF8eQ6CXXpoPnzn4ghqiVoVfHrdC7cnCZzEW6xOzRbNh2OCmi/L+5Gca0KCE+On9TvG
+ B0AigMqKPGqwhBEap/kzk1OnaYbV3uWwzHA8LpmaaaELjcjPMvODWvo1HFVWTI04A3Tb
+ SfsCtRND3kemGmqCEuDy2j+qG8J4JqMx0f+iJv3CfUcGXC2ZCnMWPzc3gnesql7GjB08
+ 7CzQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711545991; x=1712150791;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=4dCw7HH6eL2/wh/se0db0+w3WDUYFh/wkPQjXWNfVDQ=;
- b=ENiYZu92dCSYp/NYfnFJD85+gL+jYQJRw2nDKkgSstQ85o/zHM3H9C3G+M28Uv/MwI
- slbYfZKPGb8BZJGblwzBbI9huctHQf8wr8MUESnuQ+d6ochonBdFm3obs2g+/nmPUDR7
- qoAxKk4/0XOxxAwpOHMl7CP4srnPbX52m35laQN/IK2ujtej7i2OBmMmONEPaR4cdT3f
- Kj8ZLJSkjT98uVsIfLbN4ZqbTP2o55WN37WR2IkaFQsPs5gPeCr3sbAAq0x2gKBg87EH
- 7RO07UUqAlETwPG0jrvIDM3t6DDM1pPFLCAONjcXJNEIxCE/YWaL/AMgT+eT2mINBGkZ
- ZVFw==
+ d=1e100.net; s=20230601; t=1711546090; x=1712150890;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=TitztqS/oML4BOLgIpb5h6Tok73IYxEQW3Ngsz1nAYM=;
+ b=VDpPi3TczLe8657uq8C/hAVKcgSpXTXMsp2DquTjCv2o4lp5g5USz3R+Igoiq+QA4t
+ 8Lyx68x6rQbsY2aVfif3OUdwc39B3gwIsexNtwCwdcGuxMB/fmtagwxV1pHnyg1uME2Z
+ Lk0uMZwdLdx0vYDNbZWXJa6/y1VTTYjZa5Xq6UFIZmx3o/cL7KnKVbK2r9vLLhcjleSt
+ wRhNEoeimXTHg5vA+rd8qF7pbF7Qylnk1d3EGgmCSyLVy87sd/ZeL8z6acGHgFILtSlB
+ ENqyL1CJrzT9Ex0FZLKChoY71u9Du/s1Tgio60D6XFX5tOFrpkZ/ezfWkyxWd77oZu0q
+ CWuw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV/eThiRtSd595cQpOAhOlLRzupjcpogWBplu03+xBPNgPG8e7iSfNkPUU8MtvgduAVFKxdGtX9g1yfkNp+rph/6zM14EwisQ==
-X-Gm-Message-State: AOJu0Yw0RdJpTG6FHd4SPB3ppQQSrI0erqjROUARuv5wbQmB+wDCD8dx
- 6NfhUrb3gHNlbmvpqEQYykRUfFDLEFsi9/covQ3VN2DAjfsCiqxRUylqb0HJaR2f50gQ2UA44wx
- 8
-X-Google-Smtp-Source: AGHT+IF/CVsIGMaFEYPxIhMBN8G5NfhVfITI5jc1zuSkD706h5e3S2M3bpybLX6I1yn8qz1uhxyrCg==
-X-Received: by 2002:a05:600c:35cb:b0:414:255:c6a7 with SMTP id
- r11-20020a05600c35cb00b004140255c6a7mr25880wmq.32.1711545991222; 
- Wed, 27 Mar 2024 06:26:31 -0700 (PDT)
-Received: from [192.168.69.100] ([176.187.205.175])
- by smtp.gmail.com with ESMTPSA id
- d17-20020a05600c34d100b004146e631a81sm2174872wmq.5.2024.03.27.06.26.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Mar 2024 06:26:30 -0700 (PDT)
-Message-ID: <40360cb9-71f5-43c1-9c10-edf6b7ecbc81@linaro.org>
-Date: Wed, 27 Mar 2024 14:26:28 +0100
+ AJvYcCUlJi3wVXF8xom3dEKGr7IpDZ57H+tFDR1dqXrkXZ6sYTq6fiBy7LhcwTjsgBfNge3vGKEP8rg28fN3vIfViAjJTUoJ8RWf/g==
+X-Gm-Message-State: AOJu0YzkbG/gomKZ1OMUbGWdRKTuk3b2LqM/E4OHrznvJ+ngb4UJA372
+ JCCKtTIpV4BQIZQT1GAJJHuuCSJLTX0jSJFeYJWWnN1ty0VEeIR70wwgDZ46dl/lSBAYhA/etVG
+ ltfX2xSnLSz11KlvIfAtl0x3ZVtT/C3wy3rwxhA==
+X-Google-Smtp-Source: AGHT+IGNq1+ftX5LbkdkZcSnLQCAhD6g3naPeP7IPh0hp5Ewlu2m4BDCVPlWnTc2iPcXB3gF4R9+Q3H6HgWoNGrA81U=
+X-Received: by 2002:a50:bae2:0:b0:568:b702:e0d3 with SMTP id
+ x89-20020a50bae2000000b00568b702e0d3mr4021319ede.21.1711546090361; Wed, 27
+ Mar 2024 06:28:10 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-9.0] docs/about: Mark the iaspc machine type as
- deprecated
-To: Igor Mammedov <imammedo@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Bernhard Beschow <shentey@gmail.com>, pbonzini@redhat.com,
- devel@lists.libvirt.org, richard.henderson@linaro.org, mst@redhat.com,
- qemu-trivial@nongnu.org
 References: <20240326125104.90103-1-imammedo@redhat.com>
  <a4a0bb13-d6a0-4665-810d-ecd9a9fb89b1@redhat.com>
  <8dbba6ae-5910-4a62-9a08-a56e20dfb480@linaro.org>
  <20240326171632.3cc7533d@imammedo.users.ipa.redhat.com>
  <ZgP5x3ECYGevla1-@redhat.com>
  <20240327140917.69d86539@imammedo.users.ipa.redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240327140917.69d86539@imammedo.users.ipa.redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+ <ZgQdjX_G9FzpOx6n@redhat.com>
+In-Reply-To: <ZgQdjX_G9FzpOx6n@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 27 Mar 2024 13:27:58 +0000
+Message-ID: <CAFEAcA-K30KZndNK-sfUKjsE7ATMNpNUgpPZY-5YEpxL3BoeLA@mail.gmail.com>
+Subject: Re: [PATCH for-9.0] docs/about: Mark the iaspc machine type as
+ deprecated
+To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, 
+ Bernhard Beschow <shentey@gmail.com>, pbonzini@redhat.com,
+ devel@lists.libvirt.org, 
+ richard.henderson@linaro.org, mst@redhat.com, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -94,94 +91,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Mar 2024 13:26:35 -0000
+X-List-Received-Date: Wed, 27 Mar 2024 13:28:14 -0000
 
-On 27/3/24 14:09, Igor Mammedov wrote:
-> On Wed, 27 Mar 2024 10:49:43 +0000
-> Daniel P. Berrangé <berrange@redhat.com> wrote:
-> 
->> On Tue, Mar 26, 2024 at 05:16:32PM +0100, Igor Mammedov wrote:
->>> On Tue, 26 Mar 2024 14:29:58 +0100
->>> Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
->>>    
->>>> Hi Igor,
->>>>
->>>> On 26/3/24 14:08, Thomas Huth wrote:
->>>>>
->>>>> s/iaspc/isapc/ in the subject
->>>>>
->>>>> On 26/03/2024 13.51, Igor Mammedov wrote:
->>>>>> ISAPC machine was introduced 25 years ago and it's a lot of time since
->>>>>> such machine was around with real ISA only PC hardware practically
->>>>>> defunct.
->>>>>> Also it's slowly bit-rots (for example: I was able to boot RHEL6 on
->>>>>> RHEL9 host
->>>>>> in only TCG mode, while in KVM mode it hung in the middle of boot)
->>>>
->>>> I'm quite opposed to this patch. QEMU models various very-old /
->>>> defunct hardware. I'm pretty sure Bernhard and myself are OK to
->>>> keep maintaining it, besides we are working in separating it from
->>>> the i440fx+piix machine. Also, this machine is particularly
->>>> interesting for my single-binary experiments.
->>>
->>> it would not be fair to ask you or Bernard to deal with every
->>> case where ISAPC related code gets in a way, nor it's fair to
->>> ask other contributors to ensure that their patches don't break
->>> semi-working ISAPC or refactor code that relates to it.
->>>
->>> [
->>> for example I'd like to refactor smbios parts in the image
->>> ACPI table builder, but the I'd have to do it for legacy
->>> part as well without means to verify that. Sure it can be
->>> done but at cost of extra time spent to rewrite something
->>> that would never be used and to find test env to verify
->>> touched code.
->>> ]
->>
->> Is SMBIOS even relevant for isapc ? IIUC, the first SMBIOS spec
->> is from 1999, while PCI has been around since 1992.
-> 
-> Theoretically SMBIOS can still be used with isapc,
-> (that's how I've tested factoring out legacy part by running
-> RHEL6 in TCG mode)
-> Whether it's used in practice somewhere else is unknown.
-> 
->> IOW, we shouldn't even be exposing SMBIOS with the isapc
->> machine type. If we address that, then isapc has no impact
->> on your ability to refactor SMBIOS code.
-> 
-> It's question of whether we are willing to do unthinkable,
-> i.e. to break QEMU <-> guest ABI for isapc case by removing
-> corresponding fwcfg entries.
-> 
-> With migration ignored it shouldn't be a problem.
-> Question is: does anyone care about migration with isapc?
-> If not, I'd gladly axe smbios legacy parts in 9.1
-> 
-> 
-> But given how easy one can spawn old qemu environment to
-> run something on isapc, we are loosing a chance to cleanup
-> QEMU code base touching following
-> 
->      m->option_rom_has_mr = true;
->      m->rom_file_has_mr = false;
->      pcmc->pci_enabled = false;
->      pcmc->has_acpi_build = false;
->      pcmc->smbios_defaults = false;
->      pcmc->gigabyte_align = false;
->      pcmc->smbios_legacy_mode = true;
+On Wed, 27 Mar 2024 at 13:23, Daniel P. Berrang=C3=A9 <berrange@redhat.com>=
+ wrote:
+>
+> On Wed, Mar 27, 2024 at 02:09:17PM +0100, Igor Mammedov wrote:
+> > On Wed, 27 Mar 2024 10:49:43 +0000
+> > Daniel P. Berrang=C3=A9 <berrange@redhat.com> wrote:
+> > It's question of whether we are willing to do unthinkable,
+> > i.e. to break QEMU <-> guest ABI for isapc case by removing
+> > corresponding fwcfg entries.
+>
+> There has never been any ABI stability requirement for 'isapc'
+> as it is not a versioned machine type.
+>
+> > With migration ignored it shouldn't be a problem.
+> > Question is: does anyone care about migration with isapc?
+> > If not, I'd gladly axe smbios legacy parts in 9.1
+>
+> Migration is irrelevant unless someone steps forward to
+> commit to long term versioning of the machine type.
 
-My plan is to split the legacy part of fw_cfg_build_smbios() out
-of it as fw_cfg_build_smbios_legacy().
+But migration is also how we implement savevm/loadvm,
+which are useful even when the machine type is not versioned.
+So please don't put in migration blockers or similar that would
+break that.
 
->      pcmc->has_reserved_memory = false;
-> 
-> they are all marginal but in shared code, and removing them
-> makes code a bit more easier to follow (especially when it
-> comes to memory layout).
-> 
->> With regards,
->> Daniel
-> 
-
+thanks
+-- PMM
 
