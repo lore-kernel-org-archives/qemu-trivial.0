@@ -1,81 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rpaiH-0000FV-IA
-	for mharc-qemu-trivial@gnu.org; Wed, 27 Mar 2024 17:21:37 -0400
+	id 1rpqSc-0002SF-2b
+	for mharc-qemu-trivial@gnu.org; Thu, 28 Mar 2024 10:10:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1rpaiF-0000El-Gr; Wed, 27 Mar 2024 17:21:35 -0400
-Received: from mail-lf1-x129.google.com ([2a00:1450:4864:20::129])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1rpaiD-0004dU-Hp; Wed, 27 Mar 2024 17:21:35 -0400
-Received: by mail-lf1-x129.google.com with SMTP id
- 2adb3069b0e04-513e25afabaso223155e87.2; 
- Wed, 27 Mar 2024 14:21:31 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1711574490; x=1712179290; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=JuSxJn1ijkFMnBjJ6Hb54upktV5uWoGDE3+zkgCVc8Y=;
- b=gGCIaBbOyD55eGmgcc2ISUlDQnrnVfL1Ptza8Ft+KHt1sPST5fKmbuPZCuB5DZF68b
- BxTLYm1rREG8Xcd0SK8kscNxPYOvrx/yBEL//lNtBaGI7CuS3456MJl7z/lFkUOaDzAb
- AYOYBZ2NcJJ5qwqD/rcK3ZBRx+oC2O2N17Cf2Caf7/knP+Vs7jiYBt66SkGAV1XZheXD
- 61TbWBHzIwpM7YC5jyNcMOO3G1g/MbCeLtFxtbWBiZZPyr6R2EtdQ595oL7xiSrcrYI7
- xaxAg4fCxEK+lhzRJDWtcT8qW1EbGG49Um0jbUl6XCCLxMN7vaO/r4/aBLivOnHuU+xD
- /4sA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711574490; x=1712179290;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=JuSxJn1ijkFMnBjJ6Hb54upktV5uWoGDE3+zkgCVc8Y=;
- b=IQHiHS/nTD/tudrIaJt1N055dQnErmYqjZu8bw8fSpF14iHBHVrJ7yhwumk2gXfVB3
- MBWMWs5pab7v+fxzUN9NiGiOrBnFSZPbqICc0Tz0OLcX+QMwpEvzajHft1OUiLT4Ag26
- y95BpPLzZoB/s2yO93TGlQD2v0o9PJsajIp8wbtROQFAsc7/5Cv4lVBeKeoe4nLVE2Ox
- TtltT0rQW53f0DaXZdYEp+4+PoZbBR0iFjxqiGDL3S/AIseLpn1454JLKGBu9VVk7flp
- VNMRE9TrvKmJ126r30t3NODSjuPxzDx2uCTIoYonkyBYCAWCKpLZgymZmO7i9jepj/by
- XaAw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWi1k5ZcGKaQREuKmOafP2ahvBuqc6dGL9VPGT0hD+rgwd9lbBVV7TTkzEncYtaqspIQ+sVnwTjJt7HqoTBcQDmK3sAPDkcgqmsdhGjKSp4F6u6S1aJzXw3+sBTKCqm
-X-Gm-Message-State: AOJu0YwzXbs7PCBvZpEkT98mbK0SP36RckjFvaZ5vWeEtau2uEwOn0VD
- JPkV1blsohV0+IUpV5VJ8e6RoeQzyeNbqnHfvMaBbGtmmVTL8KIU
-X-Google-Smtp-Source: AGHT+IHHkxgl24ZRYdzxqqFMiOV53K1Y9jUlb/OLvkqhf0DvjtmognATW0U7iJTPSSyFVFwHmKPRMA==
-X-Received: by 2002:ac2:5f8e:0:b0:515:a5b1:1dd0 with SMTP id
- r14-20020ac25f8e000000b00515a5b11dd0mr372753lfe.55.1711574490191; 
- Wed, 27 Mar 2024 14:21:30 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-077-191-040-243.77.191.pool.telefonica.de.
- [77.191.40.243]) by smtp.gmail.com with ESMTPSA id
- wr8-20020a170907700800b00a474ba09387sm5072924ejb.22.2024.03.27.14.21.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 27 Mar 2024 14:21:29 -0700 (PDT)
-Date: Wed, 27 Mar 2024 20:47:19 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: =?ISO-8859-1?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
- qemu-devel@nongnu.org
-CC: pbonzini@redhat.com, devel@lists.libvirt.org, richard.henderson@linaro.org,
- mst@redhat.com, qemu-trivial@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_for-9=2E0=5D_docs/about=3A_Mark?=
- =?US-ASCII?Q?_the_iaspc_machine_type_as_deprecated?=
-In-Reply-To: <8dbba6ae-5910-4a62-9a08-a56e20dfb480@linaro.org>
-References: <20240326125104.90103-1-imammedo@redhat.com>
- <a4a0bb13-d6a0-4665-810d-ecd9a9fb89b1@redhat.com>
- <8dbba6ae-5910-4a62-9a08-a56e20dfb480@linaro.org>
-Message-ID: <5365A87A-C33D-40CC-9D9A-B908EBCB4FCF@gmail.com>
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1rpqSC-0002BE-DL; Thu, 28 Mar 2024 10:10:08 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1rpqSA-0005Cb-MC; Thu, 28 Mar 2024 10:10:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:
+ List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=lZuA6NT0jNMphZQh64B+Okobf3QD0+Z1fOnMjG1hAqI=; b=DsHJEgd/iAyEZtEPdH4HTvYGE0
+ 4ALQG8ha5S9T/BjFKfgoE/qGpMB6bs3BZovL6DI6P0OzU1tZAJhq0TIiP2yNkznDgV2zOdHDT5p1k
+ 5FeCV/www8dEsNHHE6qP4BgjmAxVAbrTb021F0wFEHQuOkgj/2qQGdJ3n0POXC9bRsxPkuj2YfYDR
+ zNV1WD9i/rffy4RE6PAhg4DCA9BjmAUzAUVkh+sgnrvgsRrKwc86xuXeFknCZwOeFa3t5e7oHOxuG
+ Q0dz4oPI+cjdmwrDE2ewS/XkcRYZ7J1z93mijjfIn//To62lEL1At6lhnNzN1OKVNkmqoL08Mv0dQ
+ kj7gzKjcENmXF6JzDTg6AZEZGOe6osiNBjGdsPw3iK2wdHTvuTADv8y0zHfcVobslhaA2SD6g4nrJ
+ pteng8VCY79lXm/vlv09S4oqZytQcBigpQcYuaI6K4U+xi8Wcz3ofBvMdMod6wW/NBfAxsI2l2hMu
+ JmIv4FXuxnCyahJJoGRpZ8UhttJdJVBGgVbblUQz9EtkOqJ4CEIzLaMOhZWqI/DEAgaAsXWE9echk
+ SAmBtvRNoCVJGS45mGrfKUj4CoRscQFLXlo4eRgCEWrce86eYosfLwuAnZ3Qe0LHlbJnNCLrTZGOU
+ aulMRjzsSB/zWOAFvNUI9gLUnORMUGuV0XOsnk8+4=;
+Received: from [2a02:8012:c93d:0:260e:bf57:a4e9:8142]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1rpqRB-0000Gd-HO; Thu, 28 Mar 2024 14:09:01 +0000
+Message-ID: <2dbf45c6-33a3-4ebc-a78a-75305836022e@ilande.co.uk>
+Date: Thu, 28 Mar 2024 14:09:52 +0000
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::129;
- envelope-from=shentey@gmail.com; helo=mail-lf1-x129.google.com
+User-Agent: Mozilla Thunderbird
+To: Gerd Hoffmann <kraxel@redhat.com>
+Cc: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org,
+ pbonzini@redhat.com, devel@lists.libvirt.org, richard.henderson@linaro.org,
+ mst@redhat.com, thuth@redhat.com, qemu-trivial@nongnu.org
+References: <20240326125104.90103-1-imammedo@redhat.com>
+ <d8ddb193-fe76-4554-b887-5106eed2dd01@ilande.co.uk>
+ <vyepknhyulwvmyypt74i7gvu4nqqqzhgdj2fxi66rgdnipi2co@ildhvlycqf2v>
+Content-Language: en-US
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+In-Reply-To: <vyepknhyulwvmyypt74i7gvu4nqqqzhgdj2fxi66rgdnipi2co@ildhvlycqf2v>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 2a02:8012:c93d:0:260e:bf57:a4e9:8142
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH for-9.0] docs/about: Mark the iaspc machine type as
+ deprecated
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -89,92 +95,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 27 Mar 2024 21:21:35 -0000
+X-List-Received-Date: Thu, 28 Mar 2024 14:10:25 -0000
+
+On 27/03/2024 07:09, Gerd Hoffmann wrote:
+
+> On Tue, Mar 26, 2024 at 01:30:48PM +0000, Mark Cave-Ayland wrote:
+>> Heh I've actually been using isapc over the past couple of weeks to fire up
+>> some old programs in a Windows 3 VM :)
+> 
+> I'm wondering why these use cases can't simply use the 'pc' machine
+> type?
+> 
+> The early pci chipsets of the 90-ies have been designed in a
+> backward-compatible manner, with devices such as the IDE controller
+> being mapped to the standard ISA ioports.  So even an historic OS which
+> does not know what PCI is can run on that hardware, by simply talking to
+> devices using the standard ISA io ports ...
+
+Hmmm that's a fair point: I think the pc machine has a PCI-ISA bridge included, so 
+ISA devices can be plugged in as needed. The reason I ended up on that configuration 
+was because I ended up chasing down a regression, and wanted to quickly eliminate 
+things such as ACPI.
 
 
+ATB,
 
-Am 26=2E M=C3=A4rz 2024 13:29:58 UTC schrieb "Philippe Mathieu-Daud=C3=A9"=
- <philmd@linaro=2Eorg>:
->Hi Igor,
->
->On 26/3/24 14:08, Thomas Huth wrote:
->>=20
->> s/iaspc/isapc/ in the subject
->>=20
->> On 26/03/2024 13=2E51, Igor Mammedov wrote:
->>> ISAPC machine was introduced 25 years ago and it's a lot of time since
->>> such machine was around with real ISA only PC hardware practically def=
-unct=2E
->>> Also it's slowly bit-rots (for example: I was able to boot RHEL6 on RH=
-EL9 host
->>> in only TCG mode, while in KVM mode it hung in the middle of boot)
->
->I'm quite opposed to this patch=2E QEMU models various very-old /
->defunct hardware=2E I'm pretty sure Bernhard and myself are OK to
->keep maintaining it, besides we are working in separating it from
->the i440fx+piix machine=2E
+Mark.
 
-Yes, I'd rather keep maintaining the isapc machine and separating it from =
-the i440fx machine seems like a good idea to me=2E I'm confident that we ca=
-n work out a way that allows for moving forward the pc-pci machines while k=
-eeping the isapc machine from getting into the way too much=2E
-
-Best regards,
-Bernhard
-
-> Also, this machine is particularly
->interesting for my single-binary experiments=2E
->
->Where I agree is we should stop reporting "KVM on ISA/PC machine"
->as supported=2E
->
->Regards,
->
->Phil=2E
->
->>> Rather than spending time on fixing 'the oldest' no longer tested mach=
-ine type,
->>> deprecate it so we can clean up QEMU code from legacy fixups and hopef=
-ully
->>> make it easier to follow=2E
->>>=20
->>> Folks who have to use ancient guest that requires ISAPC can still
->>> use older QEMU to play with it=2E
->>>=20
->>> Signed-off-by: Igor Mammedov <imammedo@redhat=2Ecom>
->>> ---
->>> =C2=A0 docs/about/deprecated=2Erst | 7 +++++++
->>> =C2=A0 hw/i386/pc_piix=2Ec=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0 | 1 +
->>> =C2=A0 2 files changed, 8 insertions(+)
->>>=20
->>> diff --git a/docs/about/deprecated=2Erst b/docs/about/deprecated=2Erst
->>> index 7b548519b5=2E=2E5708296991 100644
->>> --- a/docs/about/deprecated=2Erst
->>> +++ b/docs/about/deprecated=2Erst
->>> @@ -226,6 +226,13 @@ These old machine types are quite neglected nowad=
-ays and thus might have
->>> =C2=A0 various pitfalls with regards to live migration=2E Use a newer =
-machine type
->>> =C2=A0 instead=2E
->>> +``isapc`` (since 9=2E0)
->>> +'''''''''''''''''''''''''''''''''''''''''''''''''''''
->>> +
->>> +These old machine type are quite neglected nowadays and thus might ha=
-ve
->>=20
->> "This old machine type is =2E=2E=2E" ?
->>=20
->>> +various pitfalls with regards to live migration=2E Use a newer machin=
-e type
->>> +instead=2E
->>=20
->> I doubt that isapc could ever be used reliably for live migration, sinc=
-e it's an unversioned machine type, so I think it would be better to not me=
-ntion live migration here=2E
->>=20
->>  =C2=A0Thomas
->>=20
->>=20
->
 
