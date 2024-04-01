@@ -1,76 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rrIgL-0004KM-UZ
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Apr 2024 10:30:41 -0400
+	id 1rrKtN-0004gf-Ot
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Apr 2024 12:52:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rrIgK-0004JU-GF
- for qemu-trivial@nongnu.org; Mon, 01 Apr 2024 10:30:40 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rrIgH-0000w4-I7
- for qemu-trivial@nongnu.org; Mon, 01 Apr 2024 10:30:40 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-56be32b9775so5291449a12.1
- for <qemu-trivial@nongnu.org>; Mon, 01 Apr 2024 07:30:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1711981836; x=1712586636; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=GVN+lwHSohgXkQHEdJl/aOZt0jUvDhHv1XunQuVsDZc=;
- b=dvyXplyrFpLhkKvibCMIXNrkJbKQK88Fbtqd+v6mUQ7pfemLabrG3BXMBxGCKaNKKh
- vxP+zup/lyOEH9i/JA2PI7CSVXUFWRV3LSgMzAjnMCiJEOMA/24Fty8P8xYMkCA79FXG
- aplyTg1znifH3rhSOskeUA11C5akj58qXiDaPAWnyFw0tEIakRuCU1xfKgN3N/bajyDF
- MOum/337ZTkBiqytusZSGpED9XDW/59fxPgMMlONHOE8mv8mQdxdlZeg81bTiuaxQ2lR
- ZcDSgJHxasKVDk7ZpSSpK99st/OS5I9TLSzphN+5Bo+j1SSj21hZkoHuRWjM1K/JIGlH
- rAxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1711981836; x=1712586636;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=GVN+lwHSohgXkQHEdJl/aOZt0jUvDhHv1XunQuVsDZc=;
- b=qP5bMpMUlHXl+bsk2jTV11ho8qEOJPjFkcBdejHw3guHVuGuRKoMxKv5X9xLjEgmro
- F8Bnl+4Frf5hCaRCOLQMKgY2Obuvgb/QkJa1dRCHgB63zDEEsceRd4izUO3UGJIPFoKp
- HTiMRkmU9BGFc8QY2ADeE1jkTAMTye0eJQUnUsNZsDbPjxJ6QRQgBoJN0TGrRGP6wLcN
- LCE2WLHAP2Japhl6mfgpJkeNL/HZ895tejkkQWw2e17HHcE6yiMf2RhNIwY35ir+IP8X
- mTzLXLI9n809xNAY/J8DwP4lWh7cE28K5WHfcI2luD6JmodGPNKCcWohKKZPwGWRfinj
- XQGQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVG6LQ8Dsg5gp4sWyjFDe+rV5BI6Xu6QEBn+qYfnVq6L9JpX+6IrQ8RdtP8sQLEJZqG51MdT2EDlRXuRbXokBEaZ7613zXf5w==
-X-Gm-Message-State: AOJu0Yy0/FpXVVr1dPZ2CLBU+B+2JA+svzEMqKRl+XHtBy6ZfBsKsPMe
- oYYoV+OelvpP2XZNjI+mXlXd1pcLhNUNTvE2pOdvWM8Qe3/z1L6Jmdjp+OGsPMZzfwTWIV7VbLs
- dHRMfMp5P2gMC4v2AhnfwGOySiFGiu/9RJu1knQ==
-X-Google-Smtp-Source: AGHT+IEZmr66Fj6IJDW97Ke7zvJXTbMZ+18EWddgfGFJriGq5wvUdjTKE9RkuAL1d0VEholgePEmEKlbDWlINq7IO9Q=
-X-Received: by 2002:a05:6402:1ec9:b0:56d:c929:999b with SMTP id
- g9-20020a0564021ec900b0056dc929999bmr2787498edg.41.1711981836255; Mon, 01 Apr
- 2024 07:30:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rrKtM-0004gK-22; Mon, 01 Apr 2024 12:52:16 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rrKtK-0001fb-6T; Mon, 01 Apr 2024 12:52:15 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 6AB0A5AD85;
+ Mon,  1 Apr 2024 19:53:42 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 80E18A8BC6;
+ Mon,  1 Apr 2024 19:52:00 +0300 (MSK)
+Message-ID: <298819da-145e-4478-901f-66241a23f03f@tls.msk.ru>
+Date: Mon, 1 Apr 2024 19:52:00 +0300
 MIME-Version: 1.0
-References: <20240401051633.2780456-1-mjt@tls.msk.ru>
-In-Reply-To: <20240401051633.2780456-1-mjt@tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 1 Apr 2024 15:30:25 +0100
-Message-ID: <CAFEAcA8MVD9CNOUs7m3XUx6efFWA7QhkhmVp+wgYW+L2RotVjA@mail.gmail.com>
-Subject: Re: [PATCH] gitlab-ci/cirrus: switch from 'master' to 'latest'
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: Patch for qemu-project/qemu#2247 issue
+To: liu.dayu@zte.com.cn, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, jiang.xuexin@zte.com.cn
+References: <20240401174355899iU6IFrpOQSiGe36G4PToz@zte.com.cn>
+Content-Language: en-US
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <20240401174355899iU6IFrpOQSiGe36G4PToz@zte.com.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,18 +71,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Apr 2024 14:30:40 -0000
+X-List-Received-Date: Mon, 01 Apr 2024 16:52:16 -0000
 
-On Mon, 1 Apr 2024 at 06:17, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
-> Commit ab72522797 "gitlab: switch from 'stable' to
-> 'latest' docker container tags" switched most tags
-> to 'latest' but missed cirrus image.  Fix this now.
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2256
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+01.04.2024 12:43, liu.dayu@zte.com.cn wrote:
+> hmp: Add help information for watchdog action: inject-nmi
+> 
+> virsh qemu-monitor-command --hmp help information of watchdog_action missing inject-nmi which already supported in Commit 795dc6e4
+> 
+> Signed-off-by: Dayu Liu <liu.dayu@zte.com.cn>
 
-Thanks; applied to git to fix the CI jobs.
+Applied to trivial-patches tree, in the following form:
 
--- PMM
+Author: Dayu Liu <liu.dayu@zte.com.cn>
+Date:   Mon Apr 1 17:43:55 2024 +0800
+
+     hmp: Add help information for watchdog action: inject-nmi
+
+     virsh qemu-monitor-command --hmp help information of
+     watchdog_action missing inject-nmi which already supported
+     in Commit 795dc6e4
+
+     Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2247
+     Signed-off-by: Dayu Liu <liu.dayu@zte.com.cn>
+     Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+     Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+     [Mjt: decode and word-wrap commit message and add Resolves: tag]
+
+Thanks,
+
+/mjt
 
