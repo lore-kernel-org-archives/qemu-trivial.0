@@ -1,64 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rrKtN-0004gf-Ot
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Apr 2024 12:52:17 -0400
+	id 1rrXqf-0006wI-MT
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2024 02:42:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rrKtM-0004gK-22; Mon, 01 Apr 2024 12:52:16 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1rrXqb-0006um-Bv; Tue, 02 Apr 2024 02:42:18 -0400
+Received: from pharaoh.lmichel.fr ([149.202.28.74])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1rrKtK-0001fb-6T; Mon, 01 Apr 2024 12:52:15 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 6AB0A5AD85;
- Mon,  1 Apr 2024 19:53:42 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 80E18A8BC6;
- Mon,  1 Apr 2024 19:52:00 +0300 (MSK)
-Message-ID: <298819da-145e-4478-901f-66241a23f03f@tls.msk.ru>
-Date: Mon, 1 Apr 2024 19:52:00 +0300
+ (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
+ id 1rrXqZ-0002s4-7e; Tue, 02 Apr 2024 02:42:17 -0400
+Received: from localhost (sekoia-laptop.home.lmichel.fr [192.168.61.102])
+ by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 809C0C60172;
+ Tue,  2 Apr 2024 08:42:11 +0200 (CEST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
+ t=1712040131;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=ftWxsJLpk+n6OGLzL+MJBExDwuhHf9jlwwOi9Ck5Flk=;
+ b=Fgx8vkzPjjg6bRUR0z/pECMZ7VSzKyitWZbHXjGRK+gLt8kBQh6aPdGYnWk2vsN3Yg5EKZ
+ 2NKCzqVFGLnYkNH+6hPe58k2vtF5TeuUxMN/prsPeirlCYDZkAxrw9l5F8VgMXlKOTwaSL
+ cGXKI4M2U7+unSOOZNv0TbD2MCIHO0HIs9MounSQC7iY4pPgewOuBNIwMZShWDX6alXa1G
+ s8F4suDCurXDNVtzRHBdZWzh/QzJRFIfDsNhljr07dNbFV+Ch4Hlc+3RXSkYUIiYGQSgG4
+ vUwpo37WsTFaCVz3BQbZZ73O6fGM5Wcg7euCk3McXsYSRegOkSesJbt7oHg9Rw==
+Date: Tue, 2 Apr 2024 08:42:11 +0200
+From: Luc Michel <luc@lmichel.fr>
+To: Stefan Weil <sw@weilnetz.de>
+Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, Eric Blake <eblake@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH for-9.0] Fix some typos in documentation (found by
+ codespell)
+Message-ID: <Zguow643FFMzxbfk@michell-laptop.localdomain>
+References: <20240331161526.1746598-1-sw@weilnetz.de>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: Patch for qemu-project/qemu#2247 issue
-To: liu.dayu@zte.com.cn, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, jiang.xuexin@zte.com.cn
-References: <20240401174355899iU6IFrpOQSiGe36G4PToz@zte.com.cn>
-Content-Language: en-US
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240401174355899iU6IFrpOQSiGe36G4PToz@zte.com.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240331161526.1746598-1-sw@weilnetz.de>
+Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
+ helo=pharaoh.lmichel.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -71,33 +59,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Apr 2024 16:52:16 -0000
+X-List-Received-Date: Tue, 02 Apr 2024 06:42:19 -0000
 
-01.04.2024 12:43, liu.dayu@zte.com.cn wrote:
-> hmp: Add help information for watchdog action: inject-nmi
+On 18:15 Sun 31 Mar     , Stefan Weil wrote:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+
+Reviewed-by: Luc Michel <luc@lmichel.fr>
+
+> ---
+>  docs/devel/atomics.rst     | 2 +-
+>  docs/devel/ci-jobs.rst.inc | 2 +-
+>  docs/devel/clocks.rst      | 2 +-
+>  docs/system/i386/sgx.rst   | 2 +-
+>  qapi/qom.json              | 2 +-
+>  5 files changed, 5 insertions(+), 5 deletions(-)
 > 
-> virsh qemu-monitor-command --hmp help information of watchdog_action missing inject-nmi which already supported in Commit 795dc6e4
+> diff --git a/docs/devel/atomics.rst b/docs/devel/atomics.rst
+> index ff9b5ee30c..b77c6e13e1 100644
+> --- a/docs/devel/atomics.rst
+> +++ b/docs/devel/atomics.rst
+> @@ -119,7 +119,7 @@ The only guarantees that you can rely upon in this case are:
+>    ordinary accesses instead cause data races if they are concurrent with
+>    other accesses of which at least one is a write.  In order to ensure this,
+>    the compiler will not optimize accesses out of existence, create unsolicited
+> -  accesses, or perform other similar optimzations.
+> +  accesses, or perform other similar optimizations.
+>  
+>  - acquire operations will appear to happen, with respect to the other
+>    components of the system, before all the LOAD or STORE operations
+> diff --git a/docs/devel/ci-jobs.rst.inc b/docs/devel/ci-jobs.rst.inc
+> index ec33e6ee2b..be06322279 100644
+> --- a/docs/devel/ci-jobs.rst.inc
+> +++ b/docs/devel/ci-jobs.rst.inc
+> @@ -115,7 +115,7 @@ CI pipeline.
+>  QEMU_JOB_SKIPPED
+>  ~~~~~~~~~~~~~~~~
+>  
+> -The job is not reliably successsful in general, so is not
+> +The job is not reliably successful in general, so is not
+>  currently suitable to be run by default. Ideally this should
+>  be a temporary marker until the problems can be addressed, or
+>  the job permanently removed.
+> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
+> index b2d1148cdb..177ee1c90d 100644
+> --- a/docs/devel/clocks.rst
+> +++ b/docs/devel/clocks.rst
+> @@ -279,7 +279,7 @@ You can change the multiplier and divider of a clock at runtime,
+>  so you can use this to model clock controller devices which
+>  have guest-programmable frequency multipliers or dividers.
+>  
+> -Similary to ``clock_set()``, ``clock_set_mul_div()`` returns ``true`` if
+> +Similarly to ``clock_set()``, ``clock_set_mul_div()`` returns ``true`` if
+>  the clock state was modified; that is, if the multiplier or the diviser
+>  or both were changed by the call.
+>  
+> diff --git a/docs/system/i386/sgx.rst b/docs/system/i386/sgx.rst
+> index 0f0a73f758..c293f7f44e 100644
+> --- a/docs/system/i386/sgx.rst
+> +++ b/docs/system/i386/sgx.rst
+> @@ -6,7 +6,7 @@ Overview
+>  
+>  Intel Software Guard eXtensions (SGX) is a set of instructions and mechanisms
+>  for memory accesses in order to provide security accesses for sensitive
+> -applications and data. SGX allows an application to use it's pariticular
+> +applications and data. SGX allows an application to use its particular
+>  address space as an *enclave*, which is a protected area provides confidentiality
+>  and integrity even in the presence of privileged malware. Accesses to the
+>  enclave memory area from any software not resident in the enclave are prevented,
+> diff --git a/qapi/qom.json b/qapi/qom.json
+> index 8d4ca8ed92..85e6b4f84a 100644
+> --- a/qapi/qom.json
+> +++ b/qapi/qom.json
+> @@ -802,7 +802,7 @@
+>  #
+>  # @fd: file descriptor name previously passed via 'getfd' command,
+>  #     which represents a pre-opened /dev/iommu.  This allows the
+> -#     iommufd object to be shared accross several subsystems (VFIO,
+> +#     iommufd object to be shared across several subsystems (VFIO,
+>  #     VDPA, ...), and the file descriptor to be shared with other
+>  #     process, e.g. DPDK.  (default: QEMU opens /dev/iommu by itself)
+>  #
+> -- 
+> 2.39.2
 > 
-> Signed-off-by: Dayu Liu <liu.dayu@zte.com.cn>
 
-Applied to trivial-patches tree, in the following form:
-
-Author: Dayu Liu <liu.dayu@zte.com.cn>
-Date:   Mon Apr 1 17:43:55 2024 +0800
-
-     hmp: Add help information for watchdog action: inject-nmi
-
-     virsh qemu-monitor-command --hmp help information of
-     watchdog_action missing inject-nmi which already supported
-     in Commit 795dc6e4
-
-     Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2247
-     Signed-off-by: Dayu Liu <liu.dayu@zte.com.cn>
-     Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-     Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-     [Mjt: decode and word-wrap commit message and add Resolves: tag]
-
-Thanks,
-
-/mjt
+-- 
 
