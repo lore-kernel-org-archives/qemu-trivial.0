@@ -1,53 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rrcpF-0007cW-UI
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2024 08:01:14 -0400
+	id 1rrcpO-0007lr-0A
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2024 08:01:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rrcp6-0007T6-Sm
- for qemu-trivial@nongnu.org; Tue, 02 Apr 2024 08:01:08 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rrcpB-0007UZ-B7
+ for qemu-trivial@nongnu.org; Tue, 02 Apr 2024 08:01:12 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rrcoD-00033y-1S
- for qemu-trivial@nongnu.org; Tue, 02 Apr 2024 08:01:04 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4161eb1aeaaso690535e9.0
- for <qemu-trivial@nongnu.org>; Tue, 02 Apr 2024 05:00:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rrcoI-0003Jv-BJ
+ for qemu-trivial@nongnu.org; Tue, 02 Apr 2024 08:01:09 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-4156a29ff70so10215095e9.3
+ for <qemu-trivial@nongnu.org>; Tue, 02 Apr 2024 05:00:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712059202; x=1712664002; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=Pf6iAlvC95lcmhl6PK/jcsdEbiggfdr3Doja1fwCupM=;
- b=xcSG5IT6eExeSD+bgObGZCIvOPb+OgKuNwJTvSYHRkDcyt6RGB3klBVpPMv+XDoCWx
- 3CfH8VGzoXzr4MI52db8MW2xyy4o3hvDSrInunNsureF87Ab5dfsYGQ82dFHcyaRweZZ
- fas+ryo6nUXPIwTuE8ROTXMMq41JFkPsI7PjUZsnIgWYJRDz3Unoj1RlIZBPO0s3jasj
- fqp5Bwf0LaAV1/Bnc5lTRQv/BPk/t+UTjTFaEpbjM5C/ASuVQiW3k6GKqobeZFSZcyCe
- qTBvNkwoLbzmMQarBJIQUfw06bi2mqWBiyX97wvGRpBC9l+l9V5wbqRsTkf7EpaP/ttW
- 9qFQ==
+ d=linaro.org; s=google; t=1712059209; x=1712664009; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=F1kjiUTZUDmebHpHvoroBhRzu2KMQB0AVpaRH7FSxUQ=;
+ b=lEFURz30hSXdAdrNmY/1x/8bUf7obHInKB2El28RCfv2NNe1tJJ6qht4PgLzD90gLS
+ 8KKNMPsEIhTIpq4bZDk5rq7Rp60V4DOeg7/XRTEFwmmvlewvWcE52as1fFjJ9mMkT8Lz
+ wD2Qlvp36kfg7k6BwjTcH2+ihge+gHfTkV0X4X5jaBJK3Ov86PdlpgX3tnh8AbJMazh8
+ lDQJFwIIBjJ5KOBeRXbgAs6i+/6Y3FHAd+lkUuIh2PH3TFnpARNivwqC/Py4T0T5nFaV
+ eIP/WkZGN9MrXkSrBzvtufe4KsiTDPdJ5JICj6+nwXCeB90+aHageYmIMtaun3YDb200
+ Yv8g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712059202; x=1712664002;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=Pf6iAlvC95lcmhl6PK/jcsdEbiggfdr3Doja1fwCupM=;
- b=LZ44x5omQlUUD7FWcM4kEQlF26PEVwrxusQgHgFTd/Ae5Kj7S+pwbk5L5fyPigFmjN
- TJKNSlkY/FtdhBjn1NLMfM3/dHpgY8X59BGlYoIQo07cqBmc2i6xNAkEDse37lLP6mQy
- fnxS/SxZfygcy4GCKAxguNrLqJPYEH1nc8UFMvf/oHTXrfrMJlyMGjrpciEh2YKhOnT7
- EbUu+CqKCYaxplEexZMDIxKh+lpGSR8A/0+FoY9L9xMLXyeLbqjRrkcIjrMo634sqhrF
- 8lWNDFp1G/7no2hDaUqe7c4Fan5F6p/5hi0Oc+51vUpkLNunBDVthHxDKin7twQk3IWb
- ZiNw==
+ d=1e100.net; s=20230601; t=1712059209; x=1712664009;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=F1kjiUTZUDmebHpHvoroBhRzu2KMQB0AVpaRH7FSxUQ=;
+ b=es88JBEypJF73YBXu9TybqJMsBP5cdxenez/uc/reJM+zu2Mp4zjBskJnpA/ljoexq
+ B0WN2vjS0sIMnF1/lzxX3JY391LUryuXRf7MladNcyBV/1kVYKHn3m6/HmhI8dRqDndL
+ VV9aBwNqsai+9B2yWpUi284A+SVP+uLfsJkM94Eyav4og+2egXobfqlkfVS4EbTbLhtM
+ QakGauC77XvZXxZC1SjpBUQYyIRqwZhFSp7LMFUxvn3LGy7nGmwzqV3s3/k7uUrnpVpv
+ 9YrnscldD3YHTzGm4nwfjtdjk6a2sdOfYviYsKpK2029TCuYbv9NSCOB4i8lNrCCtqin
+ PGvw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVSbL5L2vVhWZfXGSOnN6/jIaHDq5EOUKMnsgXvzVgPfGcjiOCTD/YaDyTuB7FAlmBLVMzN0ykCSe+8BGOxdAUo3k6xlYFNZQ==
-X-Gm-Message-State: AOJu0YxPQjbnZThesoGyU7TDTlbncReFoYaJCIamyUrX5wxj7NscLTF4
- SSlygG8Mx1o3lCkrBBfSXZMaySGxwZtkfpMiLpuGrgeYPJQAopAvM89TEBw7z3g=
-X-Google-Smtp-Source: AGHT+IEg4VxtfFHoptXE7r87n9Ghvb4CiBIU28SZPBGwZVem9JGzPDqibtpAEYrHeLNEY3jfzGELVw==
-X-Received: by 2002:a05:600c:3b17:b0:414:1325:e8a8 with SMTP id
- m23-20020a05600c3b1700b004141325e8a8mr8443095wms.39.1712059201954; 
- Tue, 02 Apr 2024 05:00:01 -0700 (PDT)
+ AJvYcCWoGGEZ6KIkRTjJGKUQNXx0VYxF0M77AZ33OpXdA4wOZ89aVJCYBIAwQx5nj8hAWpgmXnF5FX1vbN7BPcZXUEn9XG47TGsPOA==
+X-Gm-Message-State: AOJu0YzuWYG8j1f4NnZV8v+1kRfaOhsTDN1aBm6Oo1Ib4ZSPBrAhRuad
+ PrVSYHc+5BCQ22DOS4bbNfEusiQfb8+Kvq2xfOFQyRuu9RfQkEExgPir8ZExamQ2LcR7He0dwzn
+ tXos=
+X-Google-Smtp-Source: AGHT+IGhs4CvOkK63Lj00QvbIWNPnDa6ZkMHU194Az5nSki+CIQBDwgMVTWPVov8iqczXa4xcQUa0g==
+X-Received: by 2002:a05:6000:1449:b0:343:439a:5962 with SMTP id
+ v9-20020a056000144900b00343439a5962mr6779612wrx.1.1712059209471; 
+ Tue, 02 Apr 2024 05:00:09 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.202.91])
  by smtp.gmail.com with ESMTPSA id
- p2-20020a05600c1d8200b004156daeee90sm3482495wms.4.2024.04.02.05.00.00
+ ck5-20020a5d5e85000000b0034349225fbcsm6780280wrb.114.2024.04.02.05.00.07
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 02 Apr 2024 05:00:01 -0700 (PDT)
+ Tue, 02 Apr 2024 05:00:08 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
@@ -55,16 +57,18 @@ Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
  Stefan Weil <sw@weilnetz.de>,
  =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH v2 0/2] scripts/checkpatch: Do not use mailmap and check
- qemu-trivial@ author
-Date: Tue,  2 Apr 2024 13:59:56 +0200
-Message-ID: <20240402115958.67615-1-philmd@linaro.org>
+Subject: [PATCH v2 1/2] scripts/checkpatch: Avoid author email mangled by
+ qemu-*@nongnu.org
+Date: Tue,  2 Apr 2024 13:59:57 +0200
+Message-ID: <20240402115958.67615-2-philmd@linaro.org>
 X-Mailer: git-send-email 2.41.0
+In-Reply-To: <20240402115958.67615-1-philmd@linaro.org>
+References: <20240402115958.67615-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -84,23 +88,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Apr 2024 12:01:12 -0000
+X-List-Received-Date: Tue, 02 Apr 2024 12:01:13 -0000
 
-Since v1:
-- Extend regexp to cover all lists (Peter)
+Commit f5177798d8 ("scripts: report on author emails
+that are mangled by the mailing list") added a check
+for qemu-devel@ list, extend the regexp to cover more
+such qemu-trivial@, qemu-block@ and qemu-ppc@.
 
-* qemu-trivial@ is not checked
-* mailmap hides the mistakes we want to catch
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ scripts/checkpatch.pl | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-See https://lore.kernel.org/qemu-devel/60faa39d-52e8-46f1-8bd9-9d9661794880@tls.msk.ru/
-
-Philippe Mathieu-Daudé (2):
-  scripts/checkpatch: Avoid author email mangled by qemu-*@nongnu.org
-  scripts/checkpatch: Do not use mailmap
-
- scripts/checkpatch.pl | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
-
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index 7026895074..12e9028b10 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -1573,7 +1573,7 @@ sub process {
+ 			$is_patch = 1;
+ 		}
+ 
+-		if ($line =~ /^(Author|From): .* via .*<qemu-devel\@nongnu.org>/) {
++		if ($line =~ /^(Author|From): .* via .*<qemu-\w+\@nongnu\.org>/) {
+ 		    ERROR("Author email address is mangled by the mailing list\n" . $herecurr);
+ 		}
+ 
 -- 
 2.41.0
 
