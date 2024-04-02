@@ -1,65 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rrcWC-0006hw-7a
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2024 07:41:32 -0400
+	id 1rrcpF-0007cW-UI
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2024 08:01:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rrcW5-0006h2-W9
- for qemu-trivial@nongnu.org; Tue, 02 Apr 2024 07:41:28 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rrcp6-0007T6-Sm
+ for qemu-trivial@nongnu.org; Tue, 02 Apr 2024 08:01:08 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1rrcVz-0003mO-E3
- for qemu-trivial@nongnu.org; Tue, 02 Apr 2024 07:41:22 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-56c0a249bacso6125331a12.1
- for <qemu-trivial@nongnu.org>; Tue, 02 Apr 2024 04:41:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1rrcoD-00033y-1S
+ for qemu-trivial@nongnu.org; Tue, 02 Apr 2024 08:01:04 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-4161eb1aeaaso690535e9.0
+ for <qemu-trivial@nongnu.org>; Tue, 02 Apr 2024 05:00:03 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1712058077; x=1712662877; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=iXdhEj8D9AgaXWEHfz+JRhRCKc5icpIRdo3WoQFTrus=;
- b=zSSswM0WBL6cW3Lu6bzS8/voW+lKdTdcZFnsadT5glUZbR3piXTBPR1ej9e0Bb7H5O
- prQ4vJi/fN67lYPvPFBvhtfX6vs6xv9W4FupOKA/dOewMSVgQRl6mhsUc7PLBcQyEGF2
- Kq6K4kXpdtM+0MaXOlecYA8pE6A5wjc6KCFtfvPfqVGupP5a3w1cblTZ7Pdf3y/mwlBQ
- hg9bcMAgpcXGUV20XjxG/wq45SYe7ShSRtRg5LWkaEBliXW4Mh6biroNop73hri09jh+
- J9Dktcywv62noRZpgV/nHF5S6EREt5cwa1bF+Xrc7tJrc2xE5LXsB6mSwQ68MJmYlDPS
- J0NQ==
+ d=linaro.org; s=google; t=1712059202; x=1712664002; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=Pf6iAlvC95lcmhl6PK/jcsdEbiggfdr3Doja1fwCupM=;
+ b=xcSG5IT6eExeSD+bgObGZCIvOPb+OgKuNwJTvSYHRkDcyt6RGB3klBVpPMv+XDoCWx
+ 3CfH8VGzoXzr4MI52db8MW2xyy4o3hvDSrInunNsureF87Ab5dfsYGQ82dFHcyaRweZZ
+ fas+ryo6nUXPIwTuE8ROTXMMq41JFkPsI7PjUZsnIgWYJRDz3Unoj1RlIZBPO0s3jasj
+ fqp5Bwf0LaAV1/Bnc5lTRQv/BPk/t+UTjTFaEpbjM5C/ASuVQiW3k6GKqobeZFSZcyCe
+ qTBvNkwoLbzmMQarBJIQUfw06bi2mqWBiyX97wvGRpBC9l+l9V5wbqRsTkf7EpaP/ttW
+ 9qFQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712058077; x=1712662877;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1712059202; x=1712664002;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=iXdhEj8D9AgaXWEHfz+JRhRCKc5icpIRdo3WoQFTrus=;
- b=m0p0P90Ur4tiF3Wd9ePcPXtBcJEby/B/Y55pL0xxuUOjwosSgrcktCWjmx0kk54Rxg
- EN+m3qMsMamKq1n5lXmYZgIa51IoD9E285EOdQ2wEeggK6KQ0Yqx/+8SKi+nMniyxCOy
- w1Slw8RrxY4r0tru4wL9GxhGrl2ozNgEtZKhWtHQywmJs0+IJpY2H4KdRwJkkerd7pg8
- YbG4Vq9O6iFYC+/9ye5vsqJtVBaI/uHCxPjdYuaZPBYDUrXsk/XevBX1ZVENqF2V98gU
- lHSWYk+BuDK91M0c7FCcmyyA+IwbYERz6SFzDeB2GbtzLi7uxS/f5NWqH3ANXUEk2Tjr
- bsMg==
+ bh=Pf6iAlvC95lcmhl6PK/jcsdEbiggfdr3Doja1fwCupM=;
+ b=LZ44x5omQlUUD7FWcM4kEQlF26PEVwrxusQgHgFTd/Ae5Kj7S+pwbk5L5fyPigFmjN
+ TJKNSlkY/FtdhBjn1NLMfM3/dHpgY8X59BGlYoIQo07cqBmc2i6xNAkEDse37lLP6mQy
+ fnxS/SxZfygcy4GCKAxguNrLqJPYEH1nc8UFMvf/oHTXrfrMJlyMGjrpciEh2YKhOnT7
+ EbUu+CqKCYaxplEexZMDIxKh+lpGSR8A/0+FoY9L9xMLXyeLbqjRrkcIjrMo634sqhrF
+ 8lWNDFp1G/7no2hDaUqe7c4Fan5F6p/5hi0Oc+51vUpkLNunBDVthHxDKin7twQk3IWb
+ ZiNw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWUp/gig4WPN63dRJed+7/OllUXemlBY6CJpMBZlxAscoJAD6aa/NOA0oLexU1ScjCGH7lBrfWz2+L5o6mWw+D2NYeRzgwxNA==
-X-Gm-Message-State: AOJu0YyjGpKHBelN0UbWWWy+it0AH2U6zpr8BKpAeiQlunDUWepdDsC7
- MgQ45S4PeZPBbwrVLAH7jDzghhjhNbdXg0voxd453BXH0ZVghb3DaCyjOGIzGp21FxZE2o5MeYG
- IsMgW6vCcYdk5iAqIOMciQa5HCZjQgBU7hMXSqQ==
-X-Google-Smtp-Source: AGHT+IHtPeRVVZ3PuTPjmKdSEl44gpdmnFDh/FDVhYD+bG+DmcPDEeeNt/Ff6sSoiwd6n68sT4IOtFI+2d/1xA56gFc=
-X-Received: by 2002:a50:c04e:0:b0:568:bc48:5f27 with SMTP id
- u14-20020a50c04e000000b00568bc485f27mr8309298edd.39.1712058077333; Tue, 02
- Apr 2024 04:41:17 -0700 (PDT)
+ AJvYcCVSbL5L2vVhWZfXGSOnN6/jIaHDq5EOUKMnsgXvzVgPfGcjiOCTD/YaDyTuB7FAlmBLVMzN0ykCSe+8BGOxdAUo3k6xlYFNZQ==
+X-Gm-Message-State: AOJu0YxPQjbnZThesoGyU7TDTlbncReFoYaJCIamyUrX5wxj7NscLTF4
+ SSlygG8Mx1o3lCkrBBfSXZMaySGxwZtkfpMiLpuGrgeYPJQAopAvM89TEBw7z3g=
+X-Google-Smtp-Source: AGHT+IEg4VxtfFHoptXE7r87n9Ghvb4CiBIU28SZPBGwZVem9JGzPDqibtpAEYrHeLNEY3jfzGELVw==
+X-Received: by 2002:a05:600c:3b17:b0:414:1325:e8a8 with SMTP id
+ m23-20020a05600c3b1700b004141325e8a8mr8443095wms.39.1712059201954; 
+ Tue, 02 Apr 2024 05:00:01 -0700 (PDT)
+Received: from m1x-phil.lan ([176.187.202.91])
+ by smtp.gmail.com with ESMTPSA id
+ p2-20020a05600c1d8200b004156daeee90sm3482495wms.4.2024.04.02.05.00.00
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Tue, 02 Apr 2024 05:00:01 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>, Peter Maydell <peter.maydell@linaro.org>,
+ Stefan Weil <sw@weilnetz.de>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2 0/2] scripts/checkpatch: Do not use mailmap and check
+ qemu-trivial@ author
+Date: Tue,  2 Apr 2024 13:59:56 +0200
+Message-ID: <20240402115958.67615-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
-References: <20240402093157.2931117-1-mjt@tls.msk.ru>
- <CAFEAcA8UBewAHriNkbJNO9CFKgf5bBGRHntbb_y11JdfoNTvcQ@mail.gmail.com>
- <60faa39d-52e8-46f1-8bd9-9d9661794880@tls.msk.ru>
-In-Reply-To: <60faa39d-52e8-46f1-8bd9-9d9661794880@tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 2 Apr 2024 12:41:05 +0100
-Message-ID: <CAFEAcA950hP1vb-aVSFOvAmG3n2cjTsU524AsYBDAseSZh+Q4A@mail.gmail.com>
-Subject: Re: [PULL 0/4] Trivial patches for 2024-04-02
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -79,37 +84,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Apr 2024 11:41:29 -0000
+X-List-Received-Date: Tue, 02 Apr 2024 12:01:12 -0000
 
-On Tue, 2 Apr 2024 at 11:41, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
->
-> > Author: Stefan Weil via <qemu-trivial@nongnu.org>
->
-> *SIGH*  This happened *again*.
->
-> > (you'll need to tell git log "--no-mailmap" to not get confused
-> > by the mapping we have for the last time one of these slipped
-> > through...)
->
-> Now this is interesting.  And this is exactly why I haven't noticed
-> it - I did pay attention to Author lines this time.  -- because
-> it is displayed with mailmap applied.  How very useful.
->
-> I have to use `git show --no-mailmap' to see the original " via.."
-> version.
+Since v1:
+- Extend regexp to cover all lists (Peter)
 
-FWIW my apply-pullreq script makes this check for this:
+* qemu-trivial@ is not checked
+* mailmap hides the mistakes we want to catch
 
-if git shortlog --author='qemu-.*@nongnu\.org' master..staging | grep .; then
-    echo "ERROR: pull request includes commits attributed to list"
-    exit 1
-fi
+See https://lore.kernel.org/qemu-devel/60faa39d-52e8-46f1-8bd9-9d9661794880@tls.msk.ru/
 
-(This doesn't pass --no-mailmap, because git shortlog doesn't
-take that option, and the --author match is done on the "true"
-author, not the mapped one. This is the kind of orthogonality
-in command line UI that we have come to expect from git ;-))
+Philippe Mathieu-Daudé (2):
+  scripts/checkpatch: Avoid author email mangled by qemu-*@nongnu.org
+  scripts/checkpatch: Do not use mailmap
 
--- PMM
+ scripts/checkpatch.pl | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
+
+-- 
+2.41.0
+
 
