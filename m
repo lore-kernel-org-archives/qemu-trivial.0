@@ -1,68 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rrZuM-00048l-Ss
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2024 04:54:18 -0400
+	id 1rraVE-0005nN-67
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2024 05:32:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1rrZuI-00047x-SI
- for qemu-trivial@nongnu.org; Tue, 02 Apr 2024 04:54:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rraV9-0005lq-IE; Tue, 02 Apr 2024 05:32:19 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1rrZuA-0007NW-Ec
- for qemu-trivial@nongnu.org; Tue, 02 Apr 2024 04:54:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1712048040;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=OdSCXe1MhWvi5Rs4y3pmZsWeu2DuM4zXK8C+4ayDdac=;
- b=LDvcydMFW8zHBIz5L0eS6s3iyHHFsNhEogHD6hkBEbZW/Sh4gDFBD7M/oBpc7WTxutfJlt
- 6KXptvPM8AdlmwcA2rZK+yG+3gaMI1vADeX/ygcjpxf6EXMHBw0MXYxR/7P+RPaWTsjhhi
- oO2EOLONNvMVPM602LF/N+LxyephgMs=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-253-_TjxPVoaP66mw0t-P30bBg-1; Tue,
- 02 Apr 2024 04:53:55 -0400
-X-MC-Unique: _TjxPVoaP66mw0t-P30bBg-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 396BA29AC031;
- Tue,  2 Apr 2024 08:53:55 +0000 (UTC)
-Received: from sirius.home.kraxel.org (unknown [10.39.192.127])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 41E8D1C060A6;
- Tue,  2 Apr 2024 08:53:54 +0000 (UTC)
-Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
- id 3C70C1800D54; Tue,  2 Apr 2024 10:53:49 +0200 (CEST)
-Date: Tue, 2 Apr 2024 10:53:49 +0200
-From: Gerd Hoffmann <kraxel@redhat.com>
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Igor Mammedov <imammedo@redhat.com>, pbonzini@redhat.com, 
- devel@lists.libvirt.org, richard.henderson@linaro.org, mst@redhat.com,
- thuth@redhat.com, qemu-trivial@nongnu.org
-Subject: Re: [PATCH for-9.0] docs/about: Mark the iaspc machine type as
- deprecated
-Message-ID: <al5k7rzebkfmpfrc7fbe6yaqsnwod5rjfpm6f2elshy2e7olze@43fqzednk3dn>
-References: <20240326125104.90103-1-imammedo@redhat.com>
- <d8ddb193-fe76-4554-b887-5106eed2dd01@ilande.co.uk>
- <vyepknhyulwvmyypt74i7gvu4nqqqzhgdj2fxi66rgdnipi2co@ildhvlycqf2v>
- <2dbf45c6-33a3-4ebc-a78a-75305836022e@ilande.co.uk>
- <2BB514FB-47D6-4B1E-9463-4F4811015F29@gmail.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1rraV3-0003sh-OI; Tue, 02 Apr 2024 05:32:17 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id C62245B08A;
+ Tue,  2 Apr 2024 12:33:40 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id C17A4A9346;
+ Tue,  2 Apr 2024 12:31:57 +0300 (MSK)
+Received: (nullmailer pid 2931143 invoked by uid 1000);
+ Tue, 02 Apr 2024 09:31:57 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Joonas Kankaala <joonas.a.kankaala@gmail.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 1/4] usb-audio: Fix invalid values in AudioControl descriptors
+Date: Tue,  2 Apr 2024 12:31:54 +0300
+Message-Id: <20240402093157.2931117-2-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240402093157.2931117-1-mjt@tls.msk.ru>
+References: <20240402093157.2931117-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <2BB514FB-47D6-4B1E-9463-4F4811015F29@gmail.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,38 +49,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Apr 2024 08:54:16 -0000
+X-List-Received-Date: Tue, 02 Apr 2024 09:32:21 -0000
 
-On Fri, Mar 29, 2024 at 10:19:09AM +0000, Bernhard Beschow wrote:
-> 
-> In theory you could pass `-M acpi=off` to not instantiate the PIIX4
-> ACPI function, essentially turning the Frankenstein-PIIX4 SB into a
-> PIIX3. However, this also removes SMI registers used by SeaBIOS to
-> handle SMM setup which may create unwanted side effects.
+From: Joonas Kankaala <joonas.a.kankaala@gmail.com>
 
-SeaBIOS will simply not use SMM in that case.
+This fixes the invalid bInterfaceProtocol value 0x04 in the USB audio
+AudioControl descriptors. It should be zero. While Linux and Windows
+forgive this error, macOS 14 Sonoma does not. The usb-audio device does
+not appear in macOS sound settings even though the device is recognized
+and shows up in USB system information. According to the USB audio class
+specs 1.0-4.0, valid values are 0x00, 0x20, 0x30 and 0x40. (Note also
+that Linux prints the warning "unknown interface protocol 0x4, assuming
+v1", but then proceeds as if the value was zero.)
 
-> On a real PIIX3, these registers are located in the ISA function. I
-> wonder if it made sense to implement that for greater compatibility.
-> 
-> What do you think? Gerd, what do you think w.r.t. SeaBIOS?
+This also fixes the invalid wTotalLength value in the multi-channel
+setup AudioControl interface header descriptor (used when multi=on
+and out.mixing-engine off). The combined length of all the descriptors
+there add up to 0x37, not 0x38. In Linux, "lsusb -D ..." displays
+incomplete descriptor information when this length is incorrect.
 
-Well, SMM support isn't that important I think.  It was introduced to
-make switches to 32-bit mode more robust.  Entering SMM mode stores the
-*complete* x86 processor state (which is impossible to do in other
-ways), so with SMM it's possible to switch back into whatever state the
-processor has been before entering 32-bit mode.
+Signed-off-by: Joonas Kankaala <joonas.a.kankaala@gmail.com>
+Reviewed-by: Volker Rümelin <vr_qemu@t-online.de>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/usb/dev-audio.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-Some storage drivers (virtio, ahci) switch into 32-bit mode so they can
-reach the mmio registers they need.  Some storage drivers (ide) don't,
-in that case SMM doesn't change anything.
-
-I'm not aware of any problems actually fixed by adding SMM support in
-seabios.  I suspect the guest OS-es new enough to support ahci or virtio
-are also new enough to not not call BIOS interfaces from non-standard
-processor modes.
-
-take care,
-  Gerd
+diff --git a/hw/usb/dev-audio.c b/hw/usb/dev-audio.c
+index d5ac1f8962..1897fff9e6 100644
+--- a/hw/usb/dev-audio.c
++++ b/hw/usb/dev-audio.c
+@@ -124,7 +124,6 @@ static const USBDescIface desc_iface[] = {
+         .bNumEndpoints                 = 0,
+         .bInterfaceClass               = USB_CLASS_AUDIO,
+         .bInterfaceSubClass            = USB_SUBCLASS_AUDIO_CONTROL,
+-        .bInterfaceProtocol            = 0x04,
+         .iInterface                    = STRING_USBAUDIO_CONTROL,
+         .ndesc                         = 4,
+         .descs = (USBDescOther[]) {
+@@ -282,7 +281,6 @@ static const USBDescIface desc_iface_multi[] = {
+         .bNumEndpoints                 = 0,
+         .bInterfaceClass               = USB_CLASS_AUDIO,
+         .bInterfaceSubClass            = USB_SUBCLASS_AUDIO_CONTROL,
+-        .bInterfaceProtocol            = 0x04,
+         .iInterface                    = STRING_USBAUDIO_CONTROL,
+         .ndesc                         = 4,
+         .descs = (USBDescOther[]) {
+@@ -293,7 +291,7 @@ static const USBDescIface desc_iface_multi[] = {
+                     USB_DT_CS_INTERFACE,        /*  u8  bDescriptorType */
+                     DST_AC_HEADER,              /*  u8  bDescriptorSubtype */
+                     U16(0x0100),                /* u16  bcdADC */
+-                    U16(0x38),                  /* u16  wTotalLength */
++                    U16(0x37),                  /* u16  wTotalLength */
+                     0x01,                       /*  u8  bInCollection */
+                     0x01,                       /*  u8  baInterfaceNr */
+                 }
+-- 
+2.39.2
 
 
