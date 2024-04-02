@@ -1,52 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rrXqf-0006wI-MT
-	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2024 02:42:21 -0400
+	id 1rrZuM-00048l-Ss
+	for mharc-qemu-trivial@gnu.org; Tue, 02 Apr 2024 04:54:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1rrXqb-0006um-Bv; Tue, 02 Apr 2024 02:42:18 -0400
-Received: from pharaoh.lmichel.fr ([149.202.28.74])
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1rrZuI-00047x-SI
+ for qemu-trivial@nongnu.org; Tue, 02 Apr 2024 04:54:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc@lmichel.fr>)
- id 1rrXqZ-0002s4-7e; Tue, 02 Apr 2024 02:42:17 -0400
-Received: from localhost (sekoia-laptop.home.lmichel.fr [192.168.61.102])
- by pharaoh.lmichel.fr (Postfix) with ESMTPSA id 809C0C60172;
- Tue,  2 Apr 2024 08:42:11 +0200 (CEST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=lmichel.fr; s=pharaoh; 
- t=1712040131;
+ (Exim 4.90_1) (envelope-from <kraxel@redhat.com>) id 1rrZuA-0007NW-Ec
+ for qemu-trivial@nongnu.org; Tue, 02 Apr 2024 04:54:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1712048040;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=ftWxsJLpk+n6OGLzL+MJBExDwuhHf9jlwwOi9Ck5Flk=;
- b=Fgx8vkzPjjg6bRUR0z/pECMZ7VSzKyitWZbHXjGRK+gLt8kBQh6aPdGYnWk2vsN3Yg5EKZ
- 2NKCzqVFGLnYkNH+6hPe58k2vtF5TeuUxMN/prsPeirlCYDZkAxrw9l5F8VgMXlKOTwaSL
- cGXKI4M2U7+unSOOZNv0TbD2MCIHO0HIs9MounSQC7iY4pPgewOuBNIwMZShWDX6alXa1G
- s8F4suDCurXDNVtzRHBdZWzh/QzJRFIfDsNhljr07dNbFV+Ch4Hlc+3RXSkYUIiYGQSgG4
- vUwpo37WsTFaCVz3BQbZZ73O6fGM5Wcg7euCk3McXsYSRegOkSesJbt7oHg9Rw==
-Date: Tue, 2 Apr 2024 08:42:11 +0200
-From: Luc Michel <luc@lmichel.fr>
-To: Stefan Weil <sw@weilnetz.de>
-Cc: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>, Eric Blake <eblake@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH for-9.0] Fix some typos in documentation (found by
- codespell)
-Message-ID: <Zguow643FFMzxbfk@michell-laptop.localdomain>
-References: <20240331161526.1746598-1-sw@weilnetz.de>
+ bh=OdSCXe1MhWvi5Rs4y3pmZsWeu2DuM4zXK8C+4ayDdac=;
+ b=LDvcydMFW8zHBIz5L0eS6s3iyHHFsNhEogHD6hkBEbZW/Sh4gDFBD7M/oBpc7WTxutfJlt
+ 6KXptvPM8AdlmwcA2rZK+yG+3gaMI1vADeX/ygcjpxf6EXMHBw0MXYxR/7P+RPaWTsjhhi
+ oO2EOLONNvMVPM602LF/N+LxyephgMs=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-253-_TjxPVoaP66mw0t-P30bBg-1; Tue,
+ 02 Apr 2024 04:53:55 -0400
+X-MC-Unique: _TjxPVoaP66mw0t-P30bBg-1
+Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.7])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 396BA29AC031;
+ Tue,  2 Apr 2024 08:53:55 +0000 (UTC)
+Received: from sirius.home.kraxel.org (unknown [10.39.192.127])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 41E8D1C060A6;
+ Tue,  2 Apr 2024 08:53:54 +0000 (UTC)
+Received: by sirius.home.kraxel.org (Postfix, from userid 1000)
+ id 3C70C1800D54; Tue,  2 Apr 2024 10:53:49 +0200 (CEST)
+Date: Tue, 2 Apr 2024 10:53:49 +0200
+From: Gerd Hoffmann <kraxel@redhat.com>
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Igor Mammedov <imammedo@redhat.com>, pbonzini@redhat.com, 
+ devel@lists.libvirt.org, richard.henderson@linaro.org, mst@redhat.com,
+ thuth@redhat.com, qemu-trivial@nongnu.org
+Subject: Re: [PATCH for-9.0] docs/about: Mark the iaspc machine type as
+ deprecated
+Message-ID: <al5k7rzebkfmpfrc7fbe6yaqsnwod5rjfpm6f2elshy2e7olze@43fqzednk3dn>
+References: <20240326125104.90103-1-imammedo@redhat.com>
+ <d8ddb193-fe76-4554-b887-5106eed2dd01@ilande.co.uk>
+ <vyepknhyulwvmyypt74i7gvu4nqqqzhgdj2fxi66rgdnipi2co@ildhvlycqf2v>
+ <2dbf45c6-33a3-4ebc-a78a-75305836022e@ilande.co.uk>
+ <2BB514FB-47D6-4B1E-9463-4F4811015F29@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240331161526.1746598-1-sw@weilnetz.de>
-Received-SPF: pass client-ip=149.202.28.74; envelope-from=luc@lmichel.fr;
- helo=pharaoh.lmichel.fr
+In-Reply-To: <2BB514FB-47D6-4B1E-9463-4F4811015F29@gmail.com>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kraxel@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -59,89 +76,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 02 Apr 2024 06:42:19 -0000
+X-List-Received-Date: Tue, 02 Apr 2024 08:54:16 -0000
 
-On 18:15 Sun 31 Mar     , Stefan Weil wrote:
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-
-Reviewed-by: Luc Michel <luc@lmichel.fr>
-
-> ---
->  docs/devel/atomics.rst     | 2 +-
->  docs/devel/ci-jobs.rst.inc | 2 +-
->  docs/devel/clocks.rst      | 2 +-
->  docs/system/i386/sgx.rst   | 2 +-
->  qapi/qom.json              | 2 +-
->  5 files changed, 5 insertions(+), 5 deletions(-)
+On Fri, Mar 29, 2024 at 10:19:09AM +0000, Bernhard Beschow wrote:
 > 
-> diff --git a/docs/devel/atomics.rst b/docs/devel/atomics.rst
-> index ff9b5ee30c..b77c6e13e1 100644
-> --- a/docs/devel/atomics.rst
-> +++ b/docs/devel/atomics.rst
-> @@ -119,7 +119,7 @@ The only guarantees that you can rely upon in this case are:
->    ordinary accesses instead cause data races if they are concurrent with
->    other accesses of which at least one is a write.  In order to ensure this,
->    the compiler will not optimize accesses out of existence, create unsolicited
-> -  accesses, or perform other similar optimzations.
-> +  accesses, or perform other similar optimizations.
->  
->  - acquire operations will appear to happen, with respect to the other
->    components of the system, before all the LOAD or STORE operations
-> diff --git a/docs/devel/ci-jobs.rst.inc b/docs/devel/ci-jobs.rst.inc
-> index ec33e6ee2b..be06322279 100644
-> --- a/docs/devel/ci-jobs.rst.inc
-> +++ b/docs/devel/ci-jobs.rst.inc
-> @@ -115,7 +115,7 @@ CI pipeline.
->  QEMU_JOB_SKIPPED
->  ~~~~~~~~~~~~~~~~
->  
-> -The job is not reliably successsful in general, so is not
-> +The job is not reliably successful in general, so is not
->  currently suitable to be run by default. Ideally this should
->  be a temporary marker until the problems can be addressed, or
->  the job permanently removed.
-> diff --git a/docs/devel/clocks.rst b/docs/devel/clocks.rst
-> index b2d1148cdb..177ee1c90d 100644
-> --- a/docs/devel/clocks.rst
-> +++ b/docs/devel/clocks.rst
-> @@ -279,7 +279,7 @@ You can change the multiplier and divider of a clock at runtime,
->  so you can use this to model clock controller devices which
->  have guest-programmable frequency multipliers or dividers.
->  
-> -Similary to ``clock_set()``, ``clock_set_mul_div()`` returns ``true`` if
-> +Similarly to ``clock_set()``, ``clock_set_mul_div()`` returns ``true`` if
->  the clock state was modified; that is, if the multiplier or the diviser
->  or both were changed by the call.
->  
-> diff --git a/docs/system/i386/sgx.rst b/docs/system/i386/sgx.rst
-> index 0f0a73f758..c293f7f44e 100644
-> --- a/docs/system/i386/sgx.rst
-> +++ b/docs/system/i386/sgx.rst
-> @@ -6,7 +6,7 @@ Overview
->  
->  Intel Software Guard eXtensions (SGX) is a set of instructions and mechanisms
->  for memory accesses in order to provide security accesses for sensitive
-> -applications and data. SGX allows an application to use it's pariticular
-> +applications and data. SGX allows an application to use its particular
->  address space as an *enclave*, which is a protected area provides confidentiality
->  and integrity even in the presence of privileged malware. Accesses to the
->  enclave memory area from any software not resident in the enclave are prevented,
-> diff --git a/qapi/qom.json b/qapi/qom.json
-> index 8d4ca8ed92..85e6b4f84a 100644
-> --- a/qapi/qom.json
-> +++ b/qapi/qom.json
-> @@ -802,7 +802,7 @@
->  #
->  # @fd: file descriptor name previously passed via 'getfd' command,
->  #     which represents a pre-opened /dev/iommu.  This allows the
-> -#     iommufd object to be shared accross several subsystems (VFIO,
-> +#     iommufd object to be shared across several subsystems (VFIO,
->  #     VDPA, ...), and the file descriptor to be shared with other
->  #     process, e.g. DPDK.  (default: QEMU opens /dev/iommu by itself)
->  #
-> -- 
-> 2.39.2
-> 
+> In theory you could pass `-M acpi=off` to not instantiate the PIIX4
+> ACPI function, essentially turning the Frankenstein-PIIX4 SB into a
+> PIIX3. However, this also removes SMI registers used by SeaBIOS to
+> handle SMM setup which may create unwanted side effects.
 
--- 
+SeaBIOS will simply not use SMM in that case.
+
+> On a real PIIX3, these registers are located in the ISA function. I
+> wonder if it made sense to implement that for greater compatibility.
+> 
+> What do you think? Gerd, what do you think w.r.t. SeaBIOS?
+
+Well, SMM support isn't that important I think.  It was introduced to
+make switches to 32-bit mode more robust.  Entering SMM mode stores the
+*complete* x86 processor state (which is impossible to do in other
+ways), so with SMM it's possible to switch back into whatever state the
+processor has been before entering 32-bit mode.
+
+Some storage drivers (virtio, ahci) switch into 32-bit mode so they can
+reach the mmio registers they need.  Some storage drivers (ide) don't,
+in that case SMM doesn't change anything.
+
+I'm not aware of any problems actually fixed by adding SMM support in
+seabios.  I suspect the guest OS-es new enough to support ahci or virtio
+are also new enough to not not call BIOS interfaces from non-standard
+processor modes.
+
+take care,
+  Gerd
+
 
