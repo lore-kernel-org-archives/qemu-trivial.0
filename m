@@ -1,88 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rtk0g-0008LZ-Da
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Apr 2024 04:05:46 -0400
+	id 1rvFTT-0005R6-Mg
+	for mharc-qemu-trivial@gnu.org; Fri, 12 Apr 2024 07:53:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1rtk0e-0008L3-FB
- for qemu-trivial@nongnu.org; Mon, 08 Apr 2024 04:05:44 -0400
+ id 1rvFTR-0005QW-7W
+ for qemu-trivial@nongnu.org; Fri, 12 Apr 2024 07:53:41 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1rtk0c-0006YC-9J
- for qemu-trivial@nongnu.org; Mon, 08 Apr 2024 04:05:44 -0400
+ id 1rvFTP-0005N3-OQ
+ for qemu-trivial@nongnu.org; Fri, 12 Apr 2024 07:53:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1712563541;
+ s=mimecast20190719; t=1712922818;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=IfcOSNi7FSDHGZe3v2WIeiJXYIgH/xHA+S8EP99nVfFDdKdEpaOAWwTbNb0e4dLaHcY+Ar
- zGW/cAV17+A17iieWuYsWbifN1FwSU1xK2Z2QUjrcINteLkpKYfYOS977JMnNWMXH34Sfk
- koQz4f9Zzjpp8vXOp2uroYZf8Dj05mQ=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=j7hWBKIAyBw6jgPbTNH+lqA7uOFmsZI15xA0xyu4X74=;
+ b=WxZpTf67dNY5VQrqCa0RV9DL02u+DnNDxFKcR6e1VmZNQ54ONfxnepOpCOcg6AFCC5yroH
+ QXzz+/fdTwdpTnCCmtCdW8LNSc3lV1SjWcJEQ8M1zMP8kC/OEbZDskFw6d1FqVJwiV+u6z
+ Y92UYMmQu1N9RGZ+QBEKWhAQ9+XcsrY=
+Received: from mail-lj1-f199.google.com (mail-lj1-f199.google.com
+ [209.85.208.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-124-uGtTtxJZPFm9M3kUnd0XEQ-1; Mon, 08 Apr 2024 04:05:38 -0400
-X-MC-Unique: uGtTtxJZPFm9M3kUnd0XEQ-1
-Received: by mail-ed1-f71.google.com with SMTP id
- 4fb4d7f45d1cf-56e4827e584so1302156a12.1
- for <qemu-trivial@nongnu.org>; Mon, 08 Apr 2024 01:05:38 -0700 (PDT)
+ us-mta-322-NymCpC2PPP6VEtuORPQ0UA-1; Fri, 12 Apr 2024 07:53:37 -0400
+X-MC-Unique: NymCpC2PPP6VEtuORPQ0UA-1
+Received: by mail-lj1-f199.google.com with SMTP id
+ 38308e7fff4ca-2d45c064742so7553291fa.3
+ for <qemu-trivial@nongnu.org>; Fri, 12 Apr 2024 04:53:36 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1712563538; x=1713168338;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1712922816; x=1713527616;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=Uqp9xX2FjRI7pQvBdOpjFyYKd3FOaUbLw2Ip4aq7aCHa1ONNk1QD6xr/DS1Uvl2K6f
- EP1jRT110DsXCzC3AJCmv5GQOmxImTV2tmjUbeiRUSLj+YCTYyXYaVuuboqoED//mqCf
- uOxAi46n4zYvIJHxZ+k+zcCgQWuiaGCZofmp/oITd0RPuzpOITclU4E2yTTIe/CGTim+
- qxBdE6t5S+pWbcI1maXo4veYc63kR1jM4ZKAk0sRzLpxeGMrkenYzbMAt8pA5JPpcngq
- BmVCatGTgI37+pLbdZOYnnvWXEch3m7eFZq94GJ76BEt3g0lTNmJa0oJTanJc9GUwPF1
- QpfQ==
+ bh=j7hWBKIAyBw6jgPbTNH+lqA7uOFmsZI15xA0xyu4X74=;
+ b=gJqGxRBvUgHltwasYXtOua4MpagfNtSkZgtiQWjSgszyGMr8JClX87LHSZn5VmG62D
+ 3KjMEvzUqpfy/2+JB4IATyQ7OkHQUP2AiOMNNrzyrZgpN3vVKfhqYFsICeP0+h7TEY3N
+ /ER+xyBOo0WchdRLRjgvTm+ERyKt1IzPE4Zif7kumuqbYqlRwJqybvj/uXHuwrslVT61
+ Jkzacxf8LUOhZdir4scMCWjzDECYlMDeqUWi2p0OcQ7MP44Vb60oN9tWDcI8nOaF9Y2Z
+ lMuA3MPM+9PGeY2FnR3vUR02FMnfChERvEh+ZUhxSm9RHGlgggIi46C2avCzhM+cf8Y2
+ PO/Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUylLyE+b2ArneKD8LI/AuO4llyIoH0HMSg4McSWDNdQd3KlLJmBoCespL7sal1AFwDpXpE9PCfUuhZiQlzJB2wfwvVcyl6dA==
-X-Gm-Message-State: AOJu0YwouH5NjxFnpakL49tIJgjzej5iiRMMg7wFB+Wuhl/puUx9GmU/
- RzIXA6ggDUbCvfxkFWpoN/PClsqhcF6UNGJg6On8zQjZmKtJDvk4v/qyYowL6JXiEF/vLYYLmXm
- lhDqGf7IXcCb6peLn0FiGzRERDavSwLdvRDylSaIIjwI5dyUFtxmwY8k=
-X-Received: by 2002:a05:6402:4347:b0:56e:2458:eea9 with SMTP id
- n7-20020a056402434700b0056e2458eea9mr6529316edc.20.1712563537925; 
- Mon, 08 Apr 2024 01:05:37 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGi1lbBQVHIGv5hodqzHPGlXylZA/87iQQBuloMK4PwJEUOKgnOFKL/ORycy/FCysgIRCzCUA==
-X-Received: by 2002:a05:6402:4347:b0:56e:2458:eea9 with SMTP id
- n7-20020a056402434700b0056e2458eea9mr6529300edc.20.1712563537637; 
- Mon, 08 Apr 2024 01:05:37 -0700 (PDT)
-Received: from avogadro.local ([151.95.152.232])
- by smtp.gmail.com with ESMTPSA id
- k19-20020aa7c393000000b0056bfb7004basm3632166edq.90.2024.04.08.01.05.37
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 08 Apr 2024 01:05:37 -0700 (PDT)
+ AJvYcCVPdXxRhKm4n1gZa+i5HZm+i4xLDxL+QzpjdsITCKhb0UVFUk0Twe85s1BMdUGdc/QRGiDusvIVlDKPYHgAWxAK/GjOw7/tcw==
+X-Gm-Message-State: AOJu0YzMnbwB6WgQdSo+otknQXUjpB9nsouHN7PZcne8aYLLtnZAbLa7
+ Dce9kfSlMG0oGLF7Qxf1ZMAJxBvRNjQcta2MRo7oy4m4jOuAj7WNiG9J2d6mqDa7tLRI2j/jobX
+ ZNQiW/Q+mFV6B425DvFUqTEL1348dWtjc31kK6szG2cOub16U9k2/raZeKBx6jyWRbiCVyrnsOk
+ oLZdxQ+/6/8ShXQt8TXChGuuzMpvfiGQ==
+X-Received: by 2002:ac2:528c:0:b0:518:7e4a:2035 with SMTP id
+ q12-20020ac2528c000000b005187e4a2035mr1161902lfm.45.1712922815563; 
+ Fri, 12 Apr 2024 04:53:35 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE48o3THnFHJhM63yPTxw4l2QVzMDlyNyvNmh41taPJYXcCYGyEiKSP+9aIOgZFyVI3gk5uz5HuyJjsKDcdSH8=
+X-Received: by 2002:ac2:528c:0:b0:518:7e4a:2035 with SMTP id
+ q12-20020ac2528c000000b005187e4a2035mr1161892lfm.45.1712922815119; Fri, 12
+ Apr 2024 04:53:35 -0700 (PDT)
+MIME-Version: 1.0
+References: <20240402081738.1051560-1-martin@geanix.com>
+ <81117f0e-407b-4729-bb78-cbadc196c8f1@proxmox.com>
+In-Reply-To: <81117f0e-407b-4729-bb78-cbadc196c8f1@proxmox.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
-To: =?UTF-8?q?Martin=20Hundeb=C3=B8ll?= <martin@geanix.com>
-Cc: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
+Date: Fri, 12 Apr 2024 13:53:22 +0200
+Message-ID: <CABgObfbA1rxXPfo4QiH7jczxRXi-=RtGAUXNEQ6MMy70zpqeRg@mail.gmail.com>
 Subject: Re: [PATCH] Makefile: preserve --jobserver-auth argument when calling
  ninja
-Date: Mon,  8 Apr 2024 10:05:19 +0200
-Message-ID: <20240408080519.315039-1-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.44.0
-In-Reply-To: <20240402081738.1051560-1-martin@geanix.com>
-References: 
-MIME-Version: 1.0
+To: Fiona Ebner <f.ebner@proxmox.com>
+Cc: =?UTF-8?Q?Martin_Hundeb=C3=B8ll?= <martin@geanix.com>, 
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
+X-Spam_score_int: -41
+X-Spam_score: -4.2
 X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.355,
+X-Spam_report: (-4.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.103,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,9 +91,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Apr 2024 08:05:44 -0000
+X-List-Received-Date: Fri, 12 Apr 2024 11:53:41 -0000
 
-Queued, thanks.
+On Fri, Apr 12, 2024 at 1:52=E2=80=AFPM Fiona Ebner <f.ebner@proxmox.com> w=
+rote:
+>
+> Am 02.04.24 um 10:17 schrieb Martin Hundeb=C3=B8ll:
+> > Qemu wraps its call to ninja in a Makefile. Since ninja, as opposed to
+> > make, utilizes all CPU cores by default, the qemu Makefile translates
+> > the absense of a `-jN` argument into `-j1`. This breaks jobserver
+> > functionality, so update the -jN mangling to take the --jobserver-auth
+> > argument into considerationa too.
+> >
+> > Signed-off-by: Martin Hundeb=C3=B8ll <martin@geanix.com>
+> > ---
+> >  Makefile | 2 +-
+> >  1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/Makefile b/Makefile
+> > index 8f36990335..183756018f 100644
+> > --- a/Makefile
+> > +++ b/Makefile
+> > @@ -142,7 +142,7 @@ MAKE.k =3D $(findstring k,$(firstword $(filter-out =
+--%,$(MAKEFLAGS))))
+> >  MAKE.q =3D $(findstring q,$(firstword $(filter-out --%,$(MAKEFLAGS))))
+> >  MAKE.nq =3D $(if $(word 2, $(MAKE.n) $(MAKE.q)),nq)
+> >  NINJAFLAGS =3D $(if $V,-v) $(if $(MAKE.n), -n) $(if $(MAKE.k), -k0) \
+> > -        $(filter-out -j, $(lastword -j1 $(filter -l% -j%, $(MAKEFLAGS)=
+))) \
+> > +        $(or $(filter -l% -j%, $(MAKEFLAGS)), $(if $(filter --jobserve=
+r-auth=3D%, $(MAKEFLAGS)),, -j1)) \
+> >          -d keepdepfile
+> >  ninja-cmd-goals =3D $(or $(MAKECMDGOALS), all)
+> >  ninja-cmd-goals +=3D $(foreach g, $(MAKECMDGOALS), $(.ninja-goals.$g))
+>
+> Hi,
+>
+> unfortunately, this patch breaks build when specifying just '-j' as a
+> make flag (i.e. without a number), because it will now end up being
+> passed to ninja:
+
+Yep, I've sent a pull request with the fix.
 
 Paolo
 
