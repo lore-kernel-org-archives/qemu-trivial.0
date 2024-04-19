@@ -1,65 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rxnqQ-0002EP-88
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Apr 2024 08:59:58 -0400
+	id 1rxvOc-0001wn-06
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Apr 2024 17:03:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1rxnqP-0002Dy-0B
- for qemu-trivial@nongnu.org; Fri, 19 Apr 2024 08:59:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <eblake@redhat.com>) id 1rxnqN-0006rj-EB
- for qemu-trivial@nongnu.org; Fri, 19 Apr 2024 08:59:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1713531594;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=KG351djTjx2PkJp+FNyrxCUZSA8+D2z9wHbn1nf+5Qo=;
- b=UfWiT58ivdkGT5YqTIWLI6NY+4PP640BLTUWNG6Z3/i1ssBnwZgtjwtnEOf5ylpt7Rs1re
- QHHoo3jVFlUv7DrZQLJrr0PPhcAuD9IKdhW1OQizxhkENh3wR00/Lp3+dfTxUUN+iEfw7Q
- qVPHi+vsiET5dWMJ2uZoBZAXgCU+KO4=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-139-sYlXzKmvNaqWajrhatUcgA-1; Fri, 19 Apr 2024 08:59:51 -0400
-X-MC-Unique: sYlXzKmvNaqWajrhatUcgA-1
-Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
- [10.11.54.3])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C672580021A;
- Fri, 19 Apr 2024 12:59:50 +0000 (UTC)
-Received: from redhat.com (unknown [10.2.16.239])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id E1C35112131D;
- Fri, 19 Apr 2024 12:59:48 +0000 (UTC)
-Date: Fri, 19 Apr 2024 07:59:47 -0500
-From: Eric Blake <eblake@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>, 
- qemu-block@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] tests/unit: Remove debug statements in
- test-nested-aio-poll.c
-Message-ID: <zg6iz2vzomgnje7m3yqhwlfuv6ugha7u5xbarz3rl24jeyv7iz@nj24kj3prj7h>
-References: <20240419085819.47606-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <vilhelmgyda@gmail.com>)
+ id 1rxtq4-00049I-Ig; Fri, 19 Apr 2024 15:24:00 -0400
+Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <vilhelmgyda@gmail.com>)
+ id 1rxtq2-0007D5-Tc; Fri, 19 Apr 2024 15:24:00 -0400
+Received: by mail-io1-xd2b.google.com with SMTP id
+ ca18e2360f4ac-7d6230233f9so74172739f.2; 
+ Fri, 19 Apr 2024 12:23:57 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1713554637; x=1714159437; darn=nongnu.org;
+ h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=uJUxi9tsBykObmLhNkXt9AkdhoGWi4TZIDvAKqsWtAw=;
+ b=mPQiJTAjEa1oMKDn0tDsAiVAtQ+YYu7QougqTjRgn56uHIA5mQy/v2uFxezyXmmo0j
+ 5n+k0F/IJLWBOXul9KHaTBljyiOERVnS0m35T8GMDxVPfLsaah8IvKD2N7zUuu9Ti9g/
+ ox5Hn59Bi/c3kgl/txwrNbP1LvPACYG0S2En/mm/yfOLl8ceIsEjZOt/ZJHge8Qe314D
+ ccd5QlNyKqD3zmhazlTegaCNaOwwF0gGHMuXchiw7xmRkyIV4EooaWbenX7CnYjWJRWu
+ AFhJpwo6HnQKviM5h1uw687h0bZGDPtvV6kMXQfGz8jbrm9vuZ0eMIx1rAi8DQyzHGY7
+ surA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1713554637; x=1714159437;
+ h=to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=uJUxi9tsBykObmLhNkXt9AkdhoGWi4TZIDvAKqsWtAw=;
+ b=RyDIajDFQvwbp2oaF8XJyZtq7Rx0biLCbIOLxuxa03C61dCjwQIA9EYQz5dwwHYa9B
+ ypIAeyyUagm0uQFmr1Z+UX8Dg4lTe7sxwghb/ccck/+CXJOyuD2xZuxwgjI4YaPaTwpT
+ /rREtlUeHzI4xwtqf46H4Uv1xfG+qjlzVvIWmGhFQFWAtv9BZ2eXVc2ggl+lgGSWCJRA
+ cWUEqrB0IK30DbWVZjm8ELlv2mu3ApPBmx6WHKrbehH43E17N97TZQzjAD7KFsmJoMfY
+ 6elxgavw3yjL5ercOcAShArPymmryO4bXeO1Ug28g2ophbOsS5LNGpJQng8bcUWeMX4t
+ tcBw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUyfMjmn41RSp2jsl54Ub3MlubqSM99+hT7IINra0xAyJPj6D3h/x4AWpBOFHqHicZTVbAVg3SJC6vrLUevKCL1lvspWLhrVg==
+X-Gm-Message-State: AOJu0Yw1W3mDh3Ccq4K8bjUW1yjHb+U06ARswMxI8NWClW7gc60HGQLD
+ H+3+njwanPRlZdTY5Ghu6OCX8gjiEurX7hn5indas8DjqmCnNsSjXWtXgpYa7pGE0jpVYmR+bCn
+ SjF1QvsgRqd4CIIvs0dxA2WyV15i82MXlpHyJuD8S
+X-Google-Smtp-Source: AGHT+IFj03IyUHw5iRx1QaD1dsphTATHaQm9ALf9MYpMXMiLUlpNdiNAFuwgE1N2HPli148KTa7xL5pisnxekQlnl6s=
+X-Received: by 2002:a05:6602:1485:b0:7da:4645:4703 with SMTP id
+ a5-20020a056602148500b007da46454703mr4569830iow.20.1713554636698; Fri, 19 Apr
+ 2024 12:23:56 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240419085819.47606-1-philmd@linaro.org>
-User-Agent: NeoMutt/20240201
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=eblake@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.313,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+From: Vilhelm Gyda <vilhelmgyda@gmail.com>
+Date: Sat, 20 Apr 2024 00:53:45 +0530
+Message-ID: <CADe4k3LvHf5j+nedOq_4w0QrRWz60kBRxJ7W+fW6dyM7_invqg@mail.gmail.com>
+Subject: Issue#414 and qemu_mutex_lock() API Conversion
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, jsnow@redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::d2b;
+ envelope-from=vilhelmgyda@gmail.com; helo=mail-io1-xd2b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 19 Apr 2024 17:03:44 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,50 +72,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Apr 2024 12:59:57 -0000
+X-List-Received-Date: Fri, 19 Apr 2024 19:24:01 -0000
 
-On Fri, Apr 19, 2024 at 10:58:19AM +0200, Philippe Mathieu-Daudé wrote:
-> We are running this test since almost a year; it is
+Hi,
 
-Grammar suggestion:
+I am new here, so I found some issues suitable for beginners at [1]. I
+am currently looking at the API Conversion task of replacing
+`qemu_mutex_lock()` and `qemu_mutex_unlock()` with `QEMU_LOCK_GUARD()`
 
-We have been running this test for almost a year;
+After reading the macro definition of `QEMU_LOCK_GUARD()` and
+`WITH_QEMU_LOCK_GUARD()`, I think I can replace an instance of
+`qemu_mutex_(un)lock` at line 1065[2] and 1072[3] with
+`WITH_QEMU_LOCK_GUARD(&rs->bitmap_mutex) {}`
 
-> safe to remove its debug statements, which clutter
-> CI jobs output:
-> 
->   ▶  88/100 /nested-aio-poll                      OK
->   io_read 0x16bb26158
->   io_poll_true 0x16bb26158
->   > io_poll_ready
->   io_read 0x16bb26164
->   < io_poll_ready
->   io_poll_true 0x16bb26158
->   io_poll_false 0x16bb26164
->   > io_poll_ready
->   io_poll_false 0x16bb26164
->   io_poll_false 0x16bb26164
->   io_poll_false 0x16bb26164
->   io_poll_false 0x16bb26164
->   io_poll_false 0x16bb26164
->   io_poll_false 0x16bb26164
->   io_poll_false 0x16bb26164
->   io_poll_false 0x16bb26164
->   io_poll_false 0x16bb26164
->   io_read 0x16bb26164
->   < io_poll_ready
->   88/100 qemu:unit / test-nested-aio-poll        OK
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  tests/unit/test-nested-aio-poll.c | 7 -------
->  1 file changed, 7 deletions(-)
+Will this be an acceptable patch? Do I need to do anything else before
+submitting(other than the checkpatch script)? How and what should I
+test before submitting? This page[4] has some tests, but will running
+all these be too much for a change this trivial?
 
-Reviewed-by: Eric Blake <eblake@redhat.com>
+Also, about this bite-sized issue[5]. @jsnow has commented to get in
+touch about it. So, what should be my next step for working on this
+issue?
 
--- 
-Eric Blake, Principal Software Engineer
-Red Hat, Inc.
-Virtualization:  qemu.org | libguestfs.org
+Thanks,
+Will
 
+[1]: https://wiki.qemu.org/Contribute/BiteSizedTasks
+[2]: https://gitlab.com/qemu-project/qemu/-/blob/master/migration/ram.c?ref_type=heads#L1065
+[3]: https://gitlab.com/qemu-project/qemu/-/blob/master/migration/ram.c?ref_type=heads#L1072
+[4]: https://wiki.qemu.org/Testing
+[5]: https://gitlab.com/qemu-project/qemu/-/issues/414
 
