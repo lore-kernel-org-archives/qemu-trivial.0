@@ -1,75 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ryDYN-0002X3-Os
-	for mharc-qemu-trivial@gnu.org; Sat, 20 Apr 2024 12:27:03 -0400
+	id 1ryDoF-0005hf-9k
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Apr 2024 12:43:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ryDYK-0002VT-Uy
- for qemu-trivial@nongnu.org; Sat, 20 Apr 2024 12:27:00 -0400
-Received: from mail-pl1-x62b.google.com ([2607:f8b0:4864:20::62b])
+ id 1ryDoE-0005by-9u
+ for qemu-trivial@nongnu.org; Sat, 20 Apr 2024 12:43:26 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1ryDYI-0002Y0-BU
- for qemu-trivial@nongnu.org; Sat, 20 Apr 2024 12:27:00 -0400
-Received: by mail-pl1-x62b.google.com with SMTP id
- d9443c01a7336-1e5c7d087e1so26161695ad.0
- for <qemu-trivial@nongnu.org>; Sat, 20 Apr 2024 09:26:56 -0700 (PDT)
+ id 1ryDoC-0004lw-JY
+ for qemu-trivial@nongnu.org; Sat, 20 Apr 2024 12:43:26 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-1e4f341330fso26212785ad.0
+ for <qemu-trivial@nongnu.org>; Sat, 20 Apr 2024 09:43:24 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1713630415; x=1714235215; darn=nongnu.org;
+ d=linaro.org; s=google; t=1713631403; x=1714236203; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=EVi/ltbTByuAJWQrsYjkR9v6uxtGhW8cPtv5rMnf9/4=;
- b=AzkXf+0/wBewU9ypJtL8fyiz+0sj9xMloWodT75v5bhPTf3zo7YOZUFBel3cBCJ+jp
- uqmzOdfsn0GGSMgXea6SVJ0wTPPaRVGqpMCypDgOaItbCLbeC50WUuhX5386VWjfJdio
- K8T+TR0Aq/Nx5JB/SnmOO3JW54f9l5xhOQT7hUl7l+E9PUBVNH0GG4oHos/yW6N+WdJ/
- pQHr+lm0wDSKWr+UhJBzZFJ16/lNOux25RIVKJrz1hjVYOJOs43lzVl1odGec2w9S/a8
- 7fzbwbQ2puj6dLF+dslO4QMzgZQ2g9Q6hg97HDNHZCJq+MXWrWYZY2ddyRf6hQm/SOJi
- mAOg==
+ bh=p2Qi3Z69q+iov6pHwb1AL1DKLkWOYopTR+eWFrUSnBQ=;
+ b=LIJTEJ5M+xeBugeILPXqDCePwtOq3GwtkcMv0M9pnefAYujsqKHYlJblZwg9yeoUBF
+ e/+KmScPELOs77cbMB1FXtvAhpGMkeGcDEvDoZ/jIq1KXQcG208g2aod9MoqPqGuJOiz
+ 05mIkquXDNEqGi9GwxU4++MOEsJf6lsrbm5wrQlKDv5gECyeKxOkB69oa4JUtshKOUty
+ CCfbzCKgFkYqI3YkNDSZ9G9Q0fttYK9IoCUFu3c7gmqots5qypEPiO7NO34Naiit7RzJ
+ 1urHE5QMUB5ktn8yxMepv3hQwCHhW+SE2LjNLGDo6dUKQK6uz8i5r1frD05tj27eJ0St
+ uB/A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713630415; x=1714235215;
+ d=1e100.net; s=20230601; t=1713631403; x=1714236203;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=EVi/ltbTByuAJWQrsYjkR9v6uxtGhW8cPtv5rMnf9/4=;
- b=Next2+154FrE7uPJcmVE3Hxg2UuI2+FJrW3HOKXGgNoUkwznnYahYLWTSQm/btw/iQ
- NZl/bbRq8fguGAz6/P7ptZnfsALCx/d9yAjAl51F9GrtSg7Pna0a2n6R/mM85+5gUZJb
- zrtme+7/BepPixhLikZJXeuj/kn2N29KBFKcx4SLLDYd0Xs3sgyTRgHiw5Njc1HS6Jea
- IA2qTOQ71XXNofIKndw0olc54z8ocwchwPQi/wmIu9j+mZhx8sMaWR6Yyd3CzJ7BTaV/
- tHmyWQopjJxxpIz68txJYX32pLVpSlUhjHVYgMezxTUF8wZFL6pJemVgIMjx/6jYivoL
- T6vw==
+ bh=p2Qi3Z69q+iov6pHwb1AL1DKLkWOYopTR+eWFrUSnBQ=;
+ b=E4JAY4OIA56EtcJapPbZJfJFfmTP4rGNr7uCng1yiCM6ob7JMuD5f4aHcCkvQumx87
+ d/KbLlsE1nWZ3CjhsD9nBW567OUL5yOM3GdvEyqn4BnLp1/aHXrjCsVfLa+WaZaQC1gW
+ Dddkpm4iSHDL8ctgSrKLJf/YoExvW4R2U/te07zzAddFuhlBI7J1WSD4ABu8VjixT1hv
+ wioUVglioUp1qd3qu7lGRTVr6iBL5X19puwTOSQNSJs6LGiLQ/kHH7rAun2Ib48OudKn
+ gf9fvLSalnxQT/pDuHVTdCe5hoyn/XzEGRKo1FbhQmrc6tHIIxJHtffMrDMx9e8yPDQt
+ 9UNw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXXpbNtceAhBA+232+AQzTm+fXBI4nQyiq3Zf9/lqSrDYCRGXsTJqE7gh4SPTWxNrWoQpCmiMjosMzyVE4LQT+RwRiug20ekQ==
-X-Gm-Message-State: AOJu0YxvAvmKHVpjHles/riK55h7G4NYhGR4t1hGRFGaXcL+wHmH6lJo
- YlSQM4qrzcbnks49dzWwrRB25tm2qB6ME2IkztCiCoTt1zSswJgnHz1N/P6D15I=
-X-Google-Smtp-Source: AGHT+IHW0BqT5Us8+nu0ykOG3l6uhkSYOtoTNjPLWkSFAxzfea/JIYKheJ9Cm5h83zQ7Qy1OZXwO8Q==
-X-Received: by 2002:a17:902:8210:b0:1e5:c0ee:a7f5 with SMTP id
- x16-20020a170902821000b001e5c0eea7f5mr5104451pln.24.1713630415398; 
- Sat, 20 Apr 2024 09:26:55 -0700 (PDT)
+ AJvYcCVVBFwPDXCqD1CQzLYW4FlgR/BZRd4ZvgMQvXOXDrDrw1p9cX8puNuPOd7pUrcbbsQxqBm4vBNWWLrFExkRjILLJQwJOfvYOw==
+X-Gm-Message-State: AOJu0YxRWi1yjoF1fMV/u7DlE2yelLe/FkKKFhSWPuPL2SndgPrqyoOA
+ b6ksdRTmXKjsaPWd2cWjVQcQWMzQWFP/pOsQgHdHygRCvXrZTlueDS+HArRUGFQ=
+X-Google-Smtp-Source: AGHT+IGvaTzai2nBRgo7Bm9FYoXYHBi4etHXcMS5jNMBl0hFj7PArOjGcaZm7QUtRwp87hYjzVGkmQ==
+X-Received: by 2002:a17:902:d48c:b0:1e6:11ae:dcde with SMTP id
+ c12-20020a170902d48c00b001e611aedcdemr6937900plg.58.1713631403110; 
+ Sat, 20 Apr 2024 09:43:23 -0700 (PDT)
 Received: from [192.168.91.227] ([156.19.246.23])
  by smtp.gmail.com with ESMTPSA id
- j12-20020a170903024c00b001db66f3748fsm5235821plh.182.2024.04.20.09.26.53
+ u9-20020a170902e80900b001e7c05cf1a2sm5246142plg.112.2024.04.20.09.43.22
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 20 Apr 2024 09:26:54 -0700 (PDT)
-Message-ID: <1b4a11e8-3752-4bfb-b8c2-8c273f13bc6b@linaro.org>
-Date: Sat, 20 Apr 2024 09:26:51 -0700
+ Sat, 20 Apr 2024 09:43:22 -0700 (PDT)
+Message-ID: <b51ecf9e-ca5e-4548-b9c2-077ad9ccfd4a@linaro.org>
+Date: Sat, 20 Apr 2024 09:43:20 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/3] Remove useless architecture prefix from the CPU list
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>
-Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- David Hildenbrand <david@redhat.com>, qemu-trivial@nongnu.org
-References: <20240420054606.13353-1-thuth@redhat.com>
+Subject: Re: [PATCH] tests/unit: Remove debug statements in
+ test-nested-aio-poll.c
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Stefan Hajnoczi <stefanha@redhat.com>, qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org
+References: <20240419085819.47606-1-philmd@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240420054606.13353-1-thuth@redhat.com>
+In-Reply-To: <20240419085819.47606-1-philmd@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62b;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62b.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -89,13 +88,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 20 Apr 2024 16:27:01 -0000
+X-List-Received-Date: Sat, 20 Apr 2024 16:43:26 -0000
 
-On 4/19/24 22:46, Thomas Huth wrote:
-> Thomas Huth (3):
->    target/i386/cpu: Remove "x86" prefix from the CPU list
->    target/s390x/cpu_models: Rework the output of "-cpu help"
->    target/ppc/cpu_init: Remove "PowerPC" prefix from the CPU list
+On 4/19/24 01:58, Philippe Mathieu-Daudé wrote:
+> We are running this test since almost a year; it is
+> safe to remove its debug statements, which clutter
+> CI jobs output:
+> 
+>    ▶  88/100 /nested-aio-poll                      OK
+>    io_read 0x16bb26158
+>    io_poll_true 0x16bb26158
+>    > io_poll_ready
+>    io_read 0x16bb26164
+>    < io_poll_ready
+>    io_poll_true 0x16bb26158
+>    io_poll_false 0x16bb26164
+>    > io_poll_ready
+>    io_poll_false 0x16bb26164
+>    io_poll_false 0x16bb26164
+>    io_poll_false 0x16bb26164
+>    io_poll_false 0x16bb26164
+>    io_poll_false 0x16bb26164
+>    io_poll_false 0x16bb26164
+>    io_poll_false 0x16bb26164
+>    io_poll_false 0x16bb26164
+>    io_poll_false 0x16bb26164
+>    io_read 0x16bb26164
+>    < io_poll_ready
+>    88/100 qemu:unit / test-nested-aio-poll        OK
+> 
+> Signed-off-by: Philippe Mathieu-Daudé<philmd@linaro.org>
+> ---
+>   tests/unit/test-nested-aio-poll.c | 7 -------
+>   1 file changed, 7 deletions(-)
 
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
