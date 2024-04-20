@@ -1,66 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rxvOc-0001wn-06
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Apr 2024 17:03:46 -0400
+	id 1ry3YL-00031v-Nr
+	for mharc-qemu-trivial@gnu.org; Sat, 20 Apr 2024 01:46:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vilhelmgyda@gmail.com>)
- id 1rxtq4-00049I-Ig; Fri, 19 Apr 2024 15:24:00 -0400
-Received: from mail-io1-xd2b.google.com ([2607:f8b0:4864:20::d2b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <vilhelmgyda@gmail.com>)
- id 1rxtq2-0007D5-Tc; Fri, 19 Apr 2024 15:24:00 -0400
-Received: by mail-io1-xd2b.google.com with SMTP id
- ca18e2360f4ac-7d6230233f9so74172739f.2; 
- Fri, 19 Apr 2024 12:23:57 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1713554637; x=1714159437; darn=nongnu.org;
- h=to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=uJUxi9tsBykObmLhNkXt9AkdhoGWi4TZIDvAKqsWtAw=;
- b=mPQiJTAjEa1oMKDn0tDsAiVAtQ+YYu7QougqTjRgn56uHIA5mQy/v2uFxezyXmmo0j
- 5n+k0F/IJLWBOXul9KHaTBljyiOERVnS0m35T8GMDxVPfLsaah8IvKD2N7zUuu9Ti9g/
- ox5Hn59Bi/c3kgl/txwrNbP1LvPACYG0S2En/mm/yfOLl8ceIsEjZOt/ZJHge8Qe314D
- ccd5QlNyKqD3zmhazlTegaCNaOwwF0gGHMuXchiw7xmRkyIV4EooaWbenX7CnYjWJRWu
- AFhJpwo6HnQKviM5h1uw687h0bZGDPtvV6kMXQfGz8jbrm9vuZ0eMIx1rAi8DQyzHGY7
- surA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713554637; x=1714159437;
- h=to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=uJUxi9tsBykObmLhNkXt9AkdhoGWi4TZIDvAKqsWtAw=;
- b=RyDIajDFQvwbp2oaF8XJyZtq7Rx0biLCbIOLxuxa03C61dCjwQIA9EYQz5dwwHYa9B
- ypIAeyyUagm0uQFmr1Z+UX8Dg4lTe7sxwghb/ccck/+CXJOyuD2xZuxwgjI4YaPaTwpT
- /rREtlUeHzI4xwtqf46H4Uv1xfG+qjlzVvIWmGhFQFWAtv9BZ2eXVc2ggl+lgGSWCJRA
- cWUEqrB0IK30DbWVZjm8ELlv2mu3ApPBmx6WHKrbehH43E17N97TZQzjAD7KFsmJoMfY
- 6elxgavw3yjL5ercOcAShArPymmryO4bXeO1Ug28g2ophbOsS5LNGpJQng8bcUWeMX4t
- tcBw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUyfMjmn41RSp2jsl54Ub3MlubqSM99+hT7IINra0xAyJPj6D3h/x4AWpBOFHqHicZTVbAVg3SJC6vrLUevKCL1lvspWLhrVg==
-X-Gm-Message-State: AOJu0Yw1W3mDh3Ccq4K8bjUW1yjHb+U06ARswMxI8NWClW7gc60HGQLD
- H+3+njwanPRlZdTY5Ghu6OCX8gjiEurX7hn5indas8DjqmCnNsSjXWtXgpYa7pGE0jpVYmR+bCn
- SjF1QvsgRqd4CIIvs0dxA2WyV15i82MXlpHyJuD8S
-X-Google-Smtp-Source: AGHT+IFj03IyUHw5iRx1QaD1dsphTATHaQm9ALf9MYpMXMiLUlpNdiNAFuwgE1N2HPli148KTa7xL5pisnxekQlnl6s=
-X-Received: by 2002:a05:6602:1485:b0:7da:4645:4703 with SMTP id
- a5-20020a056602148500b007da46454703mr4569830iow.20.1713554636698; Fri, 19 Apr
- 2024 12:23:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ry3YJ-000311-6w
+ for qemu-trivial@nongnu.org; Sat, 20 Apr 2024 01:46:20 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ry3YH-0007Gv-QX
+ for qemu-trivial@nongnu.org; Sat, 20 Apr 2024 01:46:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1713591977;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=FyGRDQwn8/dR/gZHL4hfrkpySTN3DDnWK27uGreCaK4=;
+ b=Ek9alFFZn7h947Btex1hrdO/6Jnad1LsQHvy20KIVFE5iYtYQDlkW1SobdAaG4yhO1hEan
+ xUCHtzcb7cz2mzgRSq9LtGlVZjvFBJ02jNWQo4wvu3pSbTsaD37RtO8Sgh1CnlaSo8nEa9
+ lSCVRFiWJRXcGh7E4piC6/COstUYR24=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-333-zU9M_JjYMgivW5p1Wb3cNA-1; Sat,
+ 20 Apr 2024 01:46:09 -0400
+X-MC-Unique: zU9M_JjYMgivW5p1Wb3cNA-1
+Received: from smtp.corp.redhat.com (int-mx10.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.10])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5CE5B1C04B59;
+ Sat, 20 Apr 2024 05:46:09 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.7])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 88538492BC7;
+ Sat, 20 Apr 2024 05:46:07 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Paolo Bonzini <pbonzini@redhat.com>
+Cc: qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Hildenbrand <david@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org
+Subject: [PATCH 0/3] Remove useless architecture prefix from the CPU list
+Date: Sat, 20 Apr 2024 07:46:03 +0200
+Message-ID: <20240420054606.13353-1-thuth@redhat.com>
 MIME-Version: 1.0
-From: Vilhelm Gyda <vilhelmgyda@gmail.com>
-Date: Sat, 20 Apr 2024 00:53:45 +0530
-Message-ID: <CADe4k3LvHf5j+nedOq_4w0QrRWz60kBRxJ7W+fW6dyM7_invqg@mail.gmail.com>
-Subject: Issue#414 and qemu_mutex_lock() API Conversion
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, jsnow@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d2b;
- envelope-from=vilhelmgyda@gmail.com; helo=mail-io1-xd2b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.10
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.313,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 19 Apr 2024 17:03:44 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -72,34 +68,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Apr 2024 19:24:01 -0000
+X-List-Received-Date: Sat, 20 Apr 2024 05:46:20 -0000
 
-Hi,
+Printing an architecture prefix in front of each CPU name is not helpful
+at all: It is confusing for the users since they don't know whether they
+have to specify these letters for the "-cpu" parameter, too, and it also
+takes some precious space in the dense output of the CPU entries. Let's
+simply remove those now.
 
-I am new here, so I found some issues suitable for beginners at [1]. I
-am currently looking at the API Conversion task of replacing
-`qemu_mutex_lock()` and `qemu_mutex_unlock()` with `QEMU_LOCK_GUARD()`
+Thomas Huth (3):
+  target/i386/cpu: Remove "x86" prefix from the CPU list
+  target/s390x/cpu_models: Rework the output of "-cpu help"
+  target/ppc/cpu_init: Remove "PowerPC" prefix from the CPU list
 
-After reading the macro definition of `QEMU_LOCK_GUARD()` and
-`WITH_QEMU_LOCK_GUARD()`, I think I can replace an instance of
-`qemu_mutex_(un)lock` at line 1065[2] and 1072[3] with
-`WITH_QEMU_LOCK_GUARD(&rs->bitmap_mutex) {}`
+ target/i386/cpu.c         | 2 +-
+ target/ppc/cpu_init.c     | 9 +++++----
+ target/s390x/cpu_models.c | 9 +++++----
+ 3 files changed, 11 insertions(+), 9 deletions(-)
 
-Will this be an acceptable patch? Do I need to do anything else before
-submitting(other than the checkpatch script)? How and what should I
-test before submitting? This page[4] has some tests, but will running
-all these be too much for a change this trivial?
+-- 
+2.44.0
 
-Also, about this bite-sized issue[5]. @jsnow has commented to get in
-touch about it. So, what should be my next step for working on this
-issue?
-
-Thanks,
-Will
-
-[1]: https://wiki.qemu.org/Contribute/BiteSizedTasks
-[2]: https://gitlab.com/qemu-project/qemu/-/blob/master/migration/ram.c?ref_type=heads#L1065
-[3]: https://gitlab.com/qemu-project/qemu/-/blob/master/migration/ram.c?ref_type=heads#L1072
-[4]: https://wiki.qemu.org/Testing
-[5]: https://gitlab.com/qemu-project/qemu/-/issues/414
 
