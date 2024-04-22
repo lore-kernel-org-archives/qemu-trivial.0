@@ -1,74 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ryt3H-0007Ht-Re
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Apr 2024 08:45:44 -0400
+	id 1ryvjK-0001Lc-LI
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Apr 2024 11:37:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ryt3C-0007Ca-2V
- for qemu-trivial@nongnu.org; Mon, 22 Apr 2024 08:45:38 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1ryt3A-0005Li-EU
- for qemu-trivial@nongnu.org; Mon, 22 Apr 2024 08:45:37 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-56e6affdd21so1481250a12.3
- for <qemu-trivial@nongnu.org>; Mon, 22 Apr 2024 05:45:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1713789934; x=1714394734; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=5Gvssde9/xaurWK599MgZqx+vkz5GaGp8TSAAqSjOMw=;
- b=GyxE8pGfBucj0lBw/e05ZkKM58hQyf7kg1P5vUW15XhThONP4mNd60Sz9wywG6Y70+
- 5WoHha33wDJ+S2csg6hsQkxYpy/UpUgZlmsSQWizVfqr59WpGl8c3hsJ4cbttltl46vs
- pGXALDD4DkQUyZPUioHF56Xl3e7x8OtePyJAKWmEVMDpi5iOAhG7Xd2tZ9SxYGGUdUc6
- LSylJCdsfm1qLU5JnMhWO53uH7PwqLFdRG/VKbv+FWF+Y1OO0XrBBCThsw8oXGTuJx3F
- Dfqj5oFEcWLmgAk06aEDd9IOHUmuojGwAPNi8R0IwWBa3rQaAKTmmRrx4FKNwmkJwJ1a
- TK8g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1713789934; x=1714394734;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=5Gvssde9/xaurWK599MgZqx+vkz5GaGp8TSAAqSjOMw=;
- b=puC8lEZDKUdSDShz3K2gylcWOJhA4GYj3CfhMAoK/ZfajVPgKp90ztBGCcbar9t4j3
- PA34fg9nUc2dvyFXTo55xjaVnuGMXxgBFR/rGd9JcsrcvyGtAH3EhS/tU69Fr0XBIN7i
- odYvoMgLfhT7exxanfDTV/5ecZiYGY6irLPgsDtGck0X6V43kboq28sdIze9PngDJzbs
- sWqr1zFM6kpkijuxxeRJtY4AF1JR6i5VwIfwbMO8esCNDx+DyD/V+eFSdQy1QNOgpEBo
- ZASiMtJexH2iuHWziwLdMe3JHuWUPoHLucq5xekafDFqtNH7/sHleKTX84GcaIHp5LMa
- kodA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWVLhkG5OI7dNypD6i3U2FfJuEEqa4DIbXDYtotOYngd0c8oxMKLbEObo5GUHpmBLBm9hbZZw3FlkBmqm4iGgIFK7ChVJ/aSA==
-X-Gm-Message-State: AOJu0YwnGC7Bixsgvcx7ekGqD1PhE71BIBZWSHsGw7UbkyV9h/6KZhT/
- X8LcDVEp5cy6RvtcLNfVE9L/MlxGjHLMqz4bLORiUSCTeYuGxPBtNhmEtcXWFefHmGYDTpjO3Aa
- e6ANf+X0EDGOZZqi9A0ELrsmeqmQiYYheeH2q7g==
-X-Google-Smtp-Source: AGHT+IGotxdISTlx1oD6A4f/aljsRACWpwmNSAotUDKFGgabI6UwsdtoR4xXyVi+ljmv6lQ1EAxZqPTujQ5RpBkuK/I=
-X-Received: by 2002:a50:bac6:0:b0:568:d19e:7ab0 with SMTP id
- x64-20020a50bac6000000b00568d19e7ab0mr8330839ede.36.1713789934271; Mon, 22
- Apr 2024 05:45:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1ryvjJ-0001LC-9X
+ for qemu-trivial@nongnu.org; Mon, 22 Apr 2024 11:37:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1ryvjG-0004bi-Pi
+ for qemu-trivial@nongnu.org; Mon, 22 Apr 2024 11:37:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1713800233;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=B3WaZDU/J22/rfz6WSV00kAJIW1b3odqQQBV4Ynoins=;
+ b=bUNagksfj8VuHAW/zOQ4L/hO+p4xjunpAzodKUwPRMstrmjYQp7ON9kJWxgL975Usg+YHC
+ 7CNEuU0O+eJfG42NMN61SnKXqcrluttAng0isMoHh46cgTl8zcpXs/dZQWZRIZNzlpiql2
+ L3lBB4D9HUb1Oxu24e1qlSgRYQmijOI=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-147-QNt9TzKNO8Cxf9sh1Bowzg-1; Mon,
+ 22 Apr 2024 11:37:09 -0400
+X-MC-Unique: QNt9TzKNO8Cxf9sh1Bowzg-1
+Received: from smtp.corp.redhat.com (int-mx03.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.3])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 6BE3329AC003;
+ Mon, 22 Apr 2024 15:37:09 +0000 (UTC)
+Received: from localhost (unknown [10.39.193.103])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id C2B061121312;
+ Mon, 22 Apr 2024 15:37:08 +0000 (UTC)
+Date: Mon, 22 Apr 2024 11:37:07 -0400
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-block@nongnu.org,
+ Eric Blake <eblake@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: Re: [PATCH v2] tests/unit: Remove debug statements in
+ test-nested-aio-poll.c
+Message-ID: <20240422153707.GB77895@fedora>
+References: <20240422112246.83812-1-philmd@linaro.org>
 MIME-Version: 1.0
-References: <20240422124128.4034482-1-manos.pitsidianakis@linaro.org>
-In-Reply-To: <20240422124128.4034482-1-manos.pitsidianakis@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 22 Apr 2024 13:45:22 +0100
-Message-ID: <CAFEAcA-NgdMgJfWZqWV7khgnEzz8K7NWPg6tgHDKtA+KaP85eQ@mail.gmail.com>
-Subject: Re: [PATCH] docs/devel: fix minor typo in submitting-a-patch.rst
-To: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Thomas Huth <thuth@redhat.com>, Markus Armbruster <armbru@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="o3LkhkKz6NsA4JeK"
+Content-Disposition: inline
+In-Reply-To: <20240422112246.83812-1-philmd@linaro.org>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.3
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.669,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,38 +72,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Apr 2024 12:45:38 -0000
+X-List-Received-Date: Mon, 22 Apr 2024 15:37:17 -0000
 
-On Mon, 22 Apr 2024 at 13:43, Manos Pitsidianakis
-<manos.pitsidianakis@linaro.org> wrote:
->
-> s/Resolved:/Resolves:/
->
-> Cc: qemu-trivial@nongnu.org
-> Signed-off-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+
+--o3LkhkKz6NsA4JeK
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Mon, Apr 22, 2024 at 01:22:46PM +0200, Philippe Mathieu-Daud=C3=A9 wrote:
+> We have been running this test for almost a year; it
+> is safe to remove its debug statements, which clutter
+> CI jobs output:
+>=20
+>   =E2=96=B6  88/100 /nested-aio-poll                      OK
+>   io_read 0x16bb26158
+>   io_poll_true 0x16bb26158
+>   > io_poll_ready
+>   io_read 0x16bb26164
+>   < io_poll_ready
+>   io_poll_true 0x16bb26158
+>   io_poll_false 0x16bb26164
+>   > io_poll_ready
+>   io_poll_false 0x16bb26164
+>   io_poll_false 0x16bb26164
+>   io_poll_false 0x16bb26164
+>   io_poll_false 0x16bb26164
+>   io_poll_false 0x16bb26164
+>   io_poll_false 0x16bb26164
+>   io_poll_false 0x16bb26164
+>   io_poll_false 0x16bb26164
+>   io_poll_false 0x16bb26164
+>   io_read 0x16bb26164
+>   < io_poll_ready
+>   88/100 qemu:unit / test-nested-aio-poll        OK
+>=20
+> Reviewed-by: Eric Blake <eblake@redhat.com>
+> Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+> Signed-off-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
 > ---
->  docs/devel/submitting-a-patch.rst | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/docs/devel/submitting-a-patch.rst b/docs/devel/submitting-a-patch.rst
-> index c641d948f1..83e9092b8c 100644
-> --- a/docs/devel/submitting-a-patch.rst
-> +++ b/docs/devel/submitting-a-patch.rst
-> @@ -177,7 +177,7 @@ add an additional line with "Fixes: <at-least-12-digits-of-SHA-commit-id>
->
->  If your patch fixes a bug in the gitlab bug tracker, please add a line
->  with "Resolves: <URL-of-the-bug>" to the commit message, too. Gitlab can
-> -close bugs automatically once commits with the "Resolved:" keyword get
-> +close bugs automatically once commits with the "Resolves:" keyword get
->  merged into the master branch of the project. And if your patch addresses
->  a bug in another public bug tracker, you can also use a line with
->  "Buglink: <URL-of-the-bug>" for reference here, too.
->
-> base-commit: 62dbe54c24dbf77051bafe1039c31ddc8f37602d
-> --
+>  tests/unit/test-nested-aio-poll.c | 7 -------
+>  1 file changed, 7 deletions(-)
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 
-thanks
--- PMM
+--o3LkhkKz6NsA4JeK
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmYmhCMACgkQnKSrs4Gr
+c8jYAQgAvlDqB3zOqkP6qnjjflaBiPPtw0gSy6tKSg37VG6Il4swtFJFzQDdBMkn
+5piM/G64cUCIV5m7dFgh0hj5YVrr6qMbKP7+sDUyxm7EmDE1/0MvTK31s4tspHyK
+1CdzX4lEemXOIC8hR4rRGHJFQOg94xR+gjtGFqNpvoTYJF8HtH0IIi491HbXHWRi
+0CbLp8REDsoVys4brDcajVVhOtHkVI+ecxbUcQepzyGPZ6F5KxDNZwemJlLri1ui
+3CV0OB9G8EdvbQq4x5KJAE/dUik2OxvN4Nfo4n3kP0WzKB1ZBgPwkJZ/IiHFlrN3
+yjLI7jpq7vJNYP/Z606+4rliT6KdBg==
+=JtbI
+-----END PGP SIGNATURE-----
+
+--o3LkhkKz6NsA4JeK--
+
 
