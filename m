@@ -1,72 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1rzxUg-0002Kt-NG
-	for mharc-qemu-trivial@gnu.org; Thu, 25 Apr 2024 07:42:27 -0400
+	id 1s0LJZ-0005Dx-7X
+	for mharc-qemu-trivial@gnu.org; Fri, 26 Apr 2024 09:08:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <vilhelmgyda@gmail.com>)
- id 1rzxUe-0002KX-6K; Thu, 25 Apr 2024 07:42:24 -0400
-Received: from mail-pf1-x42f.google.com ([2607:f8b0:4864:20::42f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <vilhelmgyda@gmail.com>)
- id 1rzxUc-0008Ne-JX; Thu, 25 Apr 2024 07:42:23 -0400
-Received: by mail-pf1-x42f.google.com with SMTP id
- d2e1a72fcca58-6ed3cafd766so809113b3a.0; 
- Thu, 25 Apr 2024 04:42:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1714045340; x=1714650140; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=4WihhI17+h0UselPTrYdal9ALxk/nvaFEA/Gh0x8DAg=;
- b=QgGTgsw7zzb9PQ2bh+NIZ4p2yO6WMWIplKvBIcn441aT00cis1oo+KbzURRyCIHCyu
- mqgILvCkTNhjXxKx4DUYm2OJswgWm/zidRlcwFTdNSbmUZzYXphpkjN/W5buLLV6eKzi
- eh8bPXSOBSE9aCa3fPeRqQvtRRf5afWbe+j4zTg6U7uLLUr+/zkYICFdILu0LA+pWydK
- DqsvGys6XiORbL78zesMidg1/U299CIcmUmHmFqOw4N7unAIs5CYm8ftRQgNinVLBJzG
- 4ivk7uOU2Tq92msTU3n74p/r+CajX1sYPE5F6vDpfAHZPjKzxHpqmaRQH2WRq7rjY4RU
- f+fw==
+ (Exim 4.90_1) (envelope-from <mcasquer@redhat.com>)
+ id 1s0Hek-00072M-UH
+ for qemu-trivial@nongnu.org; Fri, 26 Apr 2024 05:14:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mcasquer@redhat.com>)
+ id 1s0Hei-0004IH-AT
+ for qemu-trivial@nongnu.org; Fri, 26 Apr 2024 05:14:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1714122845;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HzqgLx78EvlSfnqx+14UcMQjMPJVBXLZODD/QaXQlmY=;
+ b=OMrHTEcvIalog/iFk6j99KqUnCPfG9dnIyDrvBQWCl1KE5g/ZsdewpmcVPK5h7sMAPuJ+h
+ MMibD/d7E87mBOM7fiphVfPEaLja5SecCLs647O/dLE5DNa5vgZPrbDnH3zTOpiBNeK1MI
+ C/4T5oCdRJhJMK5jg6rs59YYV1od1sQ=
+Received: from mail-lj1-f197.google.com (mail-lj1-f197.google.com
+ [209.85.208.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-267-nmzqZ8fkNOaHnkqfsMW84A-1; Fri, 26 Apr 2024 05:14:02 -0400
+X-MC-Unique: nmzqZ8fkNOaHnkqfsMW84A-1
+Received: by mail-lj1-f197.google.com with SMTP id
+ 38308e7fff4ca-2dab1fc7c16so15633041fa.0
+ for <qemu-trivial@nongnu.org>; Fri, 26 Apr 2024 02:14:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714045340; x=1714650140;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=4WihhI17+h0UselPTrYdal9ALxk/nvaFEA/Gh0x8DAg=;
- b=Qdzgdmj2OgATEsKAtNAKmxE5bPPKy0HeTZKoul3XMpW/DifBPCUkYNdV+cJaY+Yo/t
- IQ3BdTtKZetXqF2P/QoV53KRQS3jspYC4qRT/MftNjSrRDHjGuqGRHPLQwFeWl6qewVw
- /Q9gzPxs8t/qqtfB3T6Uq5sfQp4Q0ydaUxsRTuWZGrVndJwChss+JBsu6Rm1toyxCSSF
- WNkZgWGysEemR0nBbsYuTBib2qcwXQ+qCKNXZsfS9S84iqtL2x2x8hGPC05cDZwQC8j/
- w5ot7Ec5KVWF4zk8mUeua85/dTygwdMlJu8XgDpFJI+EgdMA6mCvyT+CYSjB3HImIkJQ
- UDGQ==
-X-Gm-Message-State: AOJu0Yzlf7M1repAYLeEqvzjww/EPrvHLyE3SwfPlAXoDUbovx0GOab9
- NmqkZiQcgq32qtg88ePYXyF1KVW9UveW6/38g/IgUgX7cXUaMCs4xtnKQA==
-X-Google-Smtp-Source: AGHT+IFroAyZGr2Yu4FI0QuznNw8KSJC71P9j4Xno5MyQN0T4REq2InpO2FrIm06Ckk+SsHrqABH7g==
-X-Received: by 2002:a05:6a21:339f:b0:1a9:a31a:1b67 with SMTP id
- yy31-20020a056a21339f00b001a9a31a1b67mr6142562pzb.47.1714045339674; 
- Thu, 25 Apr 2024 04:42:19 -0700 (PDT)
-Received: from localhost.localdomain ([2401:4900:2ff7:384:8eb2:1cc1:dda:650a])
- by smtp.gmail.com with ESMTPSA id
- s27-20020a63525b000000b006008ee7e805sm6578791pgl.30.2024.04.25.04.42.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 25 Apr 2024 04:42:19 -0700 (PDT)
-From: Will Gyda <vilhelmgyda@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, quintela@redhat.com, jsnow@redhat.com,
- Will Gyda <vilhelmgyda@gmail.com>
-Subject: [PATCH] migration/ram.c: API Conversion qemu_mutex_lock(),
- and qemu_mutex_unlock() to WITH_QEMU_LOCK_GUARD macro
-Date: Thu, 25 Apr 2024 17:12:07 +0530
-Message-Id: <20240425114207.54148-1-vilhelmgyda@gmail.com>
-X-Mailer: git-send-email 2.25.1
+ d=1e100.net; s=20230601; t=1714122841; x=1714727641;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=HzqgLx78EvlSfnqx+14UcMQjMPJVBXLZODD/QaXQlmY=;
+ b=WV9iS4JhK5lUT6k06tnEaZOnRx7F3GeHUVRFffpMjWGIDYnys3amDX1VIluWa30Wlw
+ U+Vu/ChSdsavxXItM+nyLn8yakSSKM0uUPkfoEi1K3cWi3qUOgW9BMaBOOcUQ78xwK8x
+ LcRYKQ1/QlTTntk2Z0Ed509I4Dt8XgZYE98Qsc+v0MkC2SOnSUUrAZDnWJnbW0rOQlLS
+ eyiZqREAjhMeWFXOUPr3VyRAw34VBMcid2UJG5U69i1QsnL7rHVoz83cvBct4KB3j1wL
+ eJg28/GpFgTi7eBdJPkta1LGytiC9baZjSQeqqe6FUCBS9+2FfDUHfX/5UpxpdSVw5uP
+ r48g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU0SPIyM4X4fEXkg3SiP6LjYhSEj6rs9yIyT/6J+Faf/5JXeLwZXfY0yIdngC6E4eN8Ey5408tPYhvYvAP5QAoHdpA41MpEng==
+X-Gm-Message-State: AOJu0YxpyLPh2CVdZ2V0F/u954TRC0DYBjy+VsTAF1RFAOLeMAtcu+F2
+ gw0j7w3ylPiOwnci6mE+JdfAxW1BW36QXVpAf3lfC1WI3JaNBMHTXntWvO4LB0au9z2AJ405Y22
+ d3xLFCRqIFgRxyH98SjcxEaFKyuHOK/OzjlHGgrbep/7mK9JS/IKRLPxFd/meIzIGq0sI7CmxBw
+ 7s2lpF6rXexBL8ykOM5jqYV65gEl/EuA==
+X-Received: by 2002:a2e:bc04:0:b0:2da:6f70:38b6 with SMTP id
+ b4-20020a2ebc04000000b002da6f7038b6mr1648965ljf.35.1714122841395; 
+ Fri, 26 Apr 2024 02:14:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF9y/HWJwf1jpWocOFqS3oFX2RfA8othwHG4DUsGIedHQiE2uXXpDnExoVy2hS3AZfPwtIikJW4213sCNgc3kg=
+X-Received: by 2002:a2e:bc04:0:b0:2da:6f70:38b6 with SMTP id
+ b4-20020a2ebc04000000b002da6f7038b6mr1648951ljf.35.1714122841072; Fri, 26 Apr
+ 2024 02:14:01 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42f;
- envelope-from=vilhelmgyda@gmail.com; helo=mail-pf1-x42f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+References: <20240420054606.13353-1-thuth@redhat.com>
+In-Reply-To: <20240420054606.13353-1-thuth@redhat.com>
+From: Mario Casquero <mcasquer@redhat.com>
+Date: Fri, 26 Apr 2024 11:13:49 +0200
+Message-ID: <CAMXpfWswsBtuaSXs_pK+-La2qeMrKSSU1JzmP_uCYp3rbxn0vw@mail.gmail.com>
+Subject: Re: [PATCH 0/3] Remove useless architecture prefix from the CPU list
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-ppc@nongnu.org, 
+ qemu-s390x@nongnu.org, Nicholas Piggin <npiggin@gmail.com>, 
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Hildenbrand <david@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mcasquer@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.669,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 26 Apr 2024 09:08:32 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -78,42 +94,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 25 Apr 2024 11:42:24 -0000
+X-List-Received-Date: Fri, 26 Apr 2024 09:14:11 -0000
 
-migration/ram.c: API Conversion qemu_mutex_lock(),
-and qemu_mutex_unlock() to WITH_QEMU_LOCK_GUARD macro
+This series has been successfully tested in x86. Execute the cpu help
+command and check in the list the x86 prefix is no longer present.
 
-Signed-off-by: Will Gyda <vilhelmgyda@gmail.com>
----
- migration/ram.c | 12 ++++++------
- 1 file changed, 6 insertions(+), 6 deletions(-)
+Tested-by: Mario Casquero <mcasquer@redhat.com>
 
-diff --git a/migration/ram.c b/migration/ram.c
-index a975c5af16..50df1e9cd2 100644
---- a/migration/ram.c
-+++ b/migration/ram.c
-@@ -1066,14 +1066,14 @@ static void migration_bitmap_sync(RAMState *rs, bool last_stage)
-     trace_migration_bitmap_sync_start();
-     memory_global_dirty_log_sync(last_stage);
- 
--    qemu_mutex_lock(&rs->bitmap_mutex);
--    WITH_RCU_READ_LOCK_GUARD() {
--        RAMBLOCK_FOREACH_NOT_IGNORED(block) {
--            ramblock_sync_dirty_bitmap(rs, block);
-+    WITH_QEMU_LOCK_GUARD(&rs->bitmap_mutex) {
-+        WITH_RCU_READ_LOCK_GUARD() {
-+            RAMBLOCK_FOREACH_NOT_IGNORED(block) {
-+                ramblock_sync_dirty_bitmap(rs, block);
-+            }
-+            stat64_set(&mig_stats.dirty_bytes_last_sync, ram_bytes_remaining());
-         }
--        stat64_set(&mig_stats.dirty_bytes_last_sync, ram_bytes_remaining());
-     }
--    qemu_mutex_unlock(&rs->bitmap_mutex);
- 
-     memory_global_after_dirty_log_sync();
-     trace_migration_bitmap_sync_end(rs->num_dirty_pages_period);
--- 
-2.25.1
+On Sat, Apr 20, 2024 at 7:47=E2=80=AFAM Thomas Huth <thuth@redhat.com> wrot=
+e:
+>
+> Printing an architecture prefix in front of each CPU name is not helpful
+> at all: It is confusing for the users since they don't know whether they
+> have to specify these letters for the "-cpu" parameter, too, and it also
+> takes some precious space in the dense output of the CPU entries. Let's
+> simply remove those now.
+>
+> Thomas Huth (3):
+>   target/i386/cpu: Remove "x86" prefix from the CPU list
+>   target/s390x/cpu_models: Rework the output of "-cpu help"
+>   target/ppc/cpu_init: Remove "PowerPC" prefix from the CPU list
+>
+>  target/i386/cpu.c         | 2 +-
+>  target/ppc/cpu_init.c     | 9 +++++----
+>  target/s390x/cpu_models.c | 9 +++++----
+>  3 files changed, 11 insertions(+), 9 deletions(-)
+>
+> --
+> 2.44.0
+>
+>
 
 
