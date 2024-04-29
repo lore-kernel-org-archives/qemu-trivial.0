@@ -1,33 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s1Km1-0001tL-9t
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Apr 2024 02:46:01 -0400
+	id 1s1Km5-0001v3-5d
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Apr 2024 02:46:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1s1Klk-0001q4-Bm; Mon, 29 Apr 2024 02:45:46 -0400
+ id 1s1Kls-0001rF-Q0; Mon, 29 Apr 2024 02:45:56 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1s1Kli-0006WD-5j; Mon, 29 Apr 2024 02:45:43 -0400
+ id 1s1Klr-0006XY-2j; Mon, 29 Apr 2024 02:45:52 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id DD27262CB0;
- Mon, 29 Apr 2024 09:45:39 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 11D9362CB3;
+ Mon, 29 Apr 2024 09:45:40 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id E86FEC33F3;
- Mon, 29 Apr 2024 09:45:36 +0300 (MSK)
-Received: (nullmailer pid 238429 invoked by uid 1000);
+ by tsrv.corpit.ru (Postfix) with SMTP id 1CF65C33F6;
+ Mon, 29 Apr 2024 09:45:37 +0300 (MSK)
+Received: (nullmailer pid 238438 invoked by uid 1000);
  Mon, 29 Apr 2024 06:45:36 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 1/9] target/i386/cpu: Remove "x86" prefix from the CPU list
-Date: Mon, 29 Apr 2024 09:45:28 +0300
-Message-Id: <20240429064536.238392-2-mjt@tls.msk.ru>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 4/9] scripts/checkpatch: Avoid author email mangled by
+ qemu-*@nongnu.org
+Date: Mon, 29 Apr 2024 09:45:31 +0300
+Message-Id: <20240429064536.238392-5-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240429064536.238392-1-mjt@tls.msk.ru>
 References: <20240429064536.238392-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -48,40 +50,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Apr 2024 06:45:52 -0000
+X-List-Received-Date: Mon, 29 Apr 2024 06:46:00 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Printing an "x86" in front of each CPU name is not helpful at all:
-It is confusing for the users since they don't know whether they
-have to specify these letters for the "-cpu" parameter, too, and
-it also takes some precious space in the dense output of the CPU
-entries. Let's simply remove this now and use two spaces at the
-beginning of the lines for the indentation of the entries instead,
-like most other target architectures are doing it for their CPU help
-output already.
+Commit f5177798d8 ("scripts: report on author emails
+that are mangled by the mailing list") added a check
+for qemu-devel@ list, extend the regexp to cover more
+such qemu-trivial@, qemu-block@ and qemu-ppc@.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- target/i386/cpu.c | 2 +-
+ scripts/checkpatch.pl | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index fa1ea3735d..aa3b2d8391 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -5708,7 +5708,7 @@ static void x86_cpu_list_entry(gpointer data, gpointer user_data)
-         desc = g_strdup_printf("%s (deprecated)", olddesc);
-     }
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index 7026895074..12e9028b10 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -1573,7 +1573,7 @@ sub process {
+ 			$is_patch = 1;
+ 		}
  
--    qemu_printf("x86 %-20s  %s\n", name, desc);
-+    qemu_printf("  %-20s  %s\n", name, desc);
- }
+-		if ($line =~ /^(Author|From): .* via .*<qemu-devel\@nongnu.org>/) {
++		if ($line =~ /^(Author|From): .* via .*<qemu-\w+\@nongnu\.org>/) {
+ 		    ERROR("Author email address is mangled by the mailing list\n" . $herecurr);
+ 		}
  
- /* list available CPU models and flags */
 -- 
 2.39.2
 
