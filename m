@@ -1,41 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s1KmJ-00021N-SU
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Apr 2024 02:46:20 -0400
+	id 1s1KmO-00022K-D3
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Apr 2024 02:46:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1s1Klv-0001rU-Qo; Mon, 29 Apr 2024 02:46:00 -0400
+ id 1s1Klp-0001qY-ID; Mon, 29 Apr 2024 02:45:52 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1s1Klu-0006Y6-3y; Mon, 29 Apr 2024 02:45:55 -0400
+ id 1s1Klm-0006X0-Kb; Mon, 29 Apr 2024 02:45:49 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 2BE6862CB5;
+ by isrv.corpit.ru (Postfix) with ESMTP id 041F362CB2;
  Mon, 29 Apr 2024 09:45:40 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 38501C33F8;
+ by tsrv.corpit.ru (Postfix) with SMTP id 0F4C4C33F5;
  Mon, 29 Apr 2024 09:45:37 +0300 (MSK)
-Received: (nullmailer pid 238444 invoked by uid 1000);
+Received: (nullmailer pid 238435 invoked by uid 1000);
  Mon, 29 Apr 2024 06:45:36 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 6/9] backends/cryptodev-builtin: Fix local_error leaks
-Date: Mon, 29 Apr 2024 09:45:33 +0300
-Message-Id: <20240429064536.238392-7-mjt@tls.msk.ru>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 3/9] target/ppc/cpu_init: Remove "PowerPC" prefix from the CPU
+ list
+Date: Mon, 29 Apr 2024 09:45:30 +0300
+Message-Id: <20240429064536.238392-4-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240429064536.238392-1-mjt@tls.msk.ru>
 References: <20240429064536.238392-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_score_int: -58
+X-Spam_score: -5.9
+X-Spam_bar: -----
+X-Spam_report: (-5.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ TVD_SUBJ_WIPE_DEBT=1.004 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -50,55 +52,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Mon, 29 Apr 2024 06:46:00 -0000
 
-From: Li Zhijian via <qemu-devel@nongnu.org>
+From: Thomas Huth <thuth@redhat.com>
 
-It seems that this error does not need to be propagated to the upper,
-directly output the error to avoid the leaks
+Printing a "PowerPC" in front of each CPU name is not helpful at all:
+It is confusing for the users since they don't know whether they
+have to specify these letters for the "-cpu" parameter, too, and
+it also takes some precious space in the dense output of the CPU
+entries. Let's simply remove this now and use two spaces at the
+beginning of the lines for the indentation of the entries instead,
+and add a "Available CPUs" in the very first line, like most other
+target architectures are doing it for their CPU help output already.
 
-Closes: https://gitlab.com/qemu-project/qemu/-/issues/2283
-Fixes: 2fda101de07 ("virtio-crypto: Support asynchronous mode")
-Signed-off-by: Li Zhijian <lizhijian@fujitsu.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: zhenwei pi <pizhenwei@bytedance.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- backends/cryptodev-builtin.c | 9 +++++----
+ target/ppc/cpu_init.c | 9 +++++----
  1 file changed, 5 insertions(+), 4 deletions(-)
 
-diff --git a/backends/cryptodev-builtin.c b/backends/cryptodev-builtin.c
-index a514bbb310..940104ee55 100644
---- a/backends/cryptodev-builtin.c
-+++ b/backends/cryptodev-builtin.c
-@@ -23,6 +23,7 @@
- 
- #include "qemu/osdep.h"
- #include "sysemu/cryptodev.h"
-+#include "qemu/error-report.h"
- #include "qapi/error.h"
- #include "standard-headers/linux/virtio_crypto.h"
- #include "crypto/cipher.h"
-@@ -396,8 +397,8 @@ static int cryptodev_builtin_create_session(
-     case VIRTIO_CRYPTO_HASH_CREATE_SESSION:
-     case VIRTIO_CRYPTO_MAC_CREATE_SESSION:
-     default:
--        error_setg(&local_error, "Unsupported opcode :%" PRIu32 "",
--                   sess_info->op_code);
-+        error_report("Unsupported opcode :%" PRIu32 "",
-+                     sess_info->op_code);
-         return -VIRTIO_CRYPTO_NOTSUPP;
+diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
+index 6d82f24c87..c11a69fd90 100644
+--- a/target/ppc/cpu_init.c
++++ b/target/ppc/cpu_init.c
+@@ -7063,7 +7063,7 @@ static void ppc_cpu_list_entry(gpointer data, gpointer user_data)
      }
  
-@@ -554,8 +555,8 @@ static int cryptodev_builtin_operation(
- 
-     if (op_info->session_id >= MAX_NUM_SESSIONS ||
-               builtin->sessions[op_info->session_id] == NULL) {
--        error_setg(&local_error, "Cannot find a valid session id: %" PRIu64 "",
--                   op_info->session_id);
-+        error_report("Cannot find a valid session id: %" PRIu64 "",
-+                     op_info->session_id);
-         return -VIRTIO_CRYPTO_INVSESS;
+     name = cpu_model_from_type(typename);
+-    qemu_printf("PowerPC %-16s PVR %08x\n", name, pcc->pvr);
++    qemu_printf("  %-16s PVR %08x\n", name, pcc->pvr);
+     for (i = 0; ppc_cpu_aliases[i].alias != NULL; i++) {
+         PowerPCCPUAlias *alias = &ppc_cpu_aliases[i];
+         ObjectClass *alias_oc = ppc_cpu_class_by_name(alias->model);
+@@ -7076,10 +7076,10 @@ static void ppc_cpu_list_entry(gpointer data, gpointer user_data)
+          * avoid printing the wrong alias here and use "preferred" instead
+          */
+         if (strcmp(alias->alias, family->desc) == 0) {
+-            qemu_printf("PowerPC %-16s (alias for preferred %s CPU)\n",
++            qemu_printf("  %-16s (alias for preferred %s CPU)\n",
+                         alias->alias, family->desc);
+         } else {
+-            qemu_printf("PowerPC %-16s (alias for %s)\n",
++            qemu_printf("  %-16s (alias for %s)\n",
+                         alias->alias, name);
+         }
      }
+@@ -7090,6 +7090,7 @@ void ppc_cpu_list(void)
+ {
+     GSList *list;
+ 
++    qemu_printf("Available CPUs:\n");
+     list = object_class_get_list(TYPE_POWERPC_CPU, false);
+     list = g_slist_sort(list, ppc_cpu_list_compare);
+     g_slist_foreach(list, ppc_cpu_list_entry, NULL);
+@@ -7097,7 +7098,7 @@ void ppc_cpu_list(void)
+ 
+ #ifdef CONFIG_KVM
+     qemu_printf("\n");
+-    qemu_printf("PowerPC %s\n", "host");
++    qemu_printf("  %s\n", "host");
+ #endif
+ }
  
 -- 
 2.39.2
