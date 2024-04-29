@@ -1,43 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s1KmO-00022K-D3
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Apr 2024 02:46:26 -0400
+	id 1s1ODa-0005Ss-Cy
+	for mharc-qemu-trivial@gnu.org; Mon, 29 Apr 2024 06:26:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1s1Klp-0001qY-ID; Mon, 29 Apr 2024 02:45:52 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1s1Klm-0006X0-Kb; Mon, 29 Apr 2024 02:45:49 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 041F362CB2;
- Mon, 29 Apr 2024 09:45:40 +0300 (MSK)
-Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 0F4C4C33F5;
- Mon, 29 Apr 2024 09:45:37 +0300 (MSK)
-Received: (nullmailer pid 238435 invoked by uid 1000);
- Mon, 29 Apr 2024 06:45:36 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 3/9] target/ppc/cpu_init: Remove "PowerPC" prefix from the CPU
- list
-Date: Mon, 29 Apr 2024 09:45:30 +0300
-Message-Id: <20240429064536.238392-4-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240429064536.238392-1-mjt@tls.msk.ru>
-References: <20240429064536.238392-1-mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s1ODZ-0005Sc-0w
+ for qemu-trivial@nongnu.org; Mon, 29 Apr 2024 06:26:41 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s1ODX-0000SI-3e
+ for qemu-trivial@nongnu.org; Mon, 29 Apr 2024 06:26:40 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-41b7a26326eso23099075e9.3
+ for <qemu-trivial@nongnu.org>; Mon, 29 Apr 2024 03:26:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1714386397; x=1714991197; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=znmZeJkGaSCtxVUBkfoWyfWxlq6LW1KJw9yscTqdCls=;
+ b=uafpNz7Yh1vUEcU00qiBPfVEYfe4TKkxUY6tslVavBjJ9B35QfJmpb+uxiZzXyZiRO
+ yTSnSi569UEeSrk24kqNjZioDpy+S80s2JKSMaWvSB58wK1SE/CkqFiz3BtTGu2kJHIz
+ /ESOPofebFup4k9c5Cj+4CYpx5FZQ9xihuO2Gi1w39JQBxT4WaaTq119C7O+o2OEk+0T
+ TgHDgD2nh7g/YOj/+ri8L0bAqDQpk9rX4Uhv9M01c58UEkYNOfL3qoSnHVNe4FTTjItf
+ GK5nOo7oKqRxyjqtxeyJngEmkCMwgBSprhQ4NfmqwcMEUrZr06cCWFsbGyD74gNFj26a
+ 4S9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1714386397; x=1714991197;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=znmZeJkGaSCtxVUBkfoWyfWxlq6LW1KJw9yscTqdCls=;
+ b=VPyhYDjn3KAmS1NJuwA9qIPzLUr1wB8frObGJojq7tNE4wLt9maTJ9GBIVmGY+JRZO
+ do1hx0wjBLjwOennyELDlaLFTNWLSTQbLkaNMvSt82VEDK08VTep5BKGlucFfyVJz7FE
+ PnCzU8zQSDAGFjjrixg4ahB9d8EiuxwlL5pg6Npo4ULoihjADE5YUKbLvzlV+a49XjC3
+ vlU4xuXRcrHzmpKIUizVmlTpxdafsEjQBlSlybm5u5U6qWZ8G1FjhWe+uDP+IyE+SGi3
+ JZXRn7KWvcgJaJat4bUbizuFBDAuq7YFgTRUCFnaI/hE5DGMhpt2MFDg/7/M7t7hkl1X
+ Tgrw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUjJ4ozZMTvRWSd24KTGgguNbi6UwBa8exM2eRQrqqAjXBET2zpz/Lq/wp8dpoZ1l4zqxKDgX4X9CEDNuOj61sJRvMnANCtYg==
+X-Gm-Message-State: AOJu0Yy4TjLVHKPU8ebPTCq4PjR/PRpNVAOnrvg1HruMJmj6isew/Tud
+ HVm1fDTfBm66tsKo3vK3v2bYYCPQvZayC9vPHg9OlU82IVN3/9/rkTueXF3p8OM=
+X-Google-Smtp-Source: AGHT+IHO7DkfsZ+o36ag67jMmIfb9FepsJaq94SOAortLU0+IbQtuqBtQlP6p0pKJToptzjsDzj8xg==
+X-Received: by 2002:a05:600c:548a:b0:418:ed13:302d with SMTP id
+ iv10-20020a05600c548a00b00418ed13302dmr8086092wmb.26.1714386397205; 
+ Mon, 29 Apr 2024 03:26:37 -0700 (PDT)
+Received: from [10.79.37.248] ([83.247.137.20])
+ by smtp.gmail.com with ESMTPSA id
+ fm18-20020a05600c0c1200b0041b5500e438sm15224477wmb.23.2024.04.29.03.26.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 29 Apr 2024 03:26:36 -0700 (PDT)
+Message-ID: <3de69422-38eb-4fa2-972d-16d5c868ae30@linaro.org>
+Date: Mon, 29 Apr 2024 12:26:35 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/3] Remove useless architecture prefix from the CPU list
+To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-ppc@nongnu.org, qemu-s390x@nongnu.org,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Daniel Henrique Barboza <danielhb413@gmail.com>,
+ David Hildenbrand <david@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>, qemu-trivial@nongnu.org
+References: <20240420054606.13353-1-thuth@redhat.com>
+ <ZiYZyOqeM2tYPcCs@redhat.com>
+ <d2786e99-ae33-43a0-8040-8a218bb485f1@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <d2786e99-ae33-43a0-8040-8a218bb485f1@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -58
-X-Spam_score: -5.9
-X-Spam_bar: -----
-X-Spam_report: (-5.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- TVD_SUBJ_WIPE_DEBT=1.004 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -50,71 +91,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 29 Apr 2024 06:46:00 -0000
+X-List-Received-Date: Mon, 29 Apr 2024 10:26:41 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+On 22/4/24 10:22, Thomas Huth wrote:
+> On 22/04/2024 10.03, Daniel P. Berrangé wrote:
+>> On Sat, Apr 20, 2024 at 07:46:03AM +0200, Thomas Huth wrote:
+>>> Printing an architecture prefix in front of each CPU name is not helpful
+>>> at all: It is confusing for the users since they don't know whether they
+>>> have to specify these letters for the "-cpu" parameter, too, and it also
+>>> takes some precious space in the dense output of the CPU entries. Let's
+>>> simply remove those now.
+>>
+>> Could it be said that this arch prefix is about to finally become useful
+>> with Philippe's patches to add a 'qemu-system-any' command covering
+>> multiple arches ?
+> 
+> I don't think so: In that case we'd rather print it once at the 
+> beginning of a list ("Available x86 CPUs:") instead of printing it in 
+> each and every line.
 
-Printing a "PowerPC" in front of each CPU name is not helpful at all:
-It is confusing for the users since they don't know whether they
-have to specify these letters for the "-cpu" parameter, too, and
-it also takes some precious space in the dense output of the CPU
-entries. Let's simply remove this now and use two spaces at the
-beginning of the lines for the indentation of the entries instead,
-and add a "Available CPUs" in the very first line, like most other
-target architectures are doing it for their CPU help output already.
+Yes that is correct. Hopefully we won't have the same CPU name used
+by different architectures...
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- target/ppc/cpu_init.c | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
-
-diff --git a/target/ppc/cpu_init.c b/target/ppc/cpu_init.c
-index 6d82f24c87..c11a69fd90 100644
---- a/target/ppc/cpu_init.c
-+++ b/target/ppc/cpu_init.c
-@@ -7063,7 +7063,7 @@ static void ppc_cpu_list_entry(gpointer data, gpointer user_data)
-     }
- 
-     name = cpu_model_from_type(typename);
--    qemu_printf("PowerPC %-16s PVR %08x\n", name, pcc->pvr);
-+    qemu_printf("  %-16s PVR %08x\n", name, pcc->pvr);
-     for (i = 0; ppc_cpu_aliases[i].alias != NULL; i++) {
-         PowerPCCPUAlias *alias = &ppc_cpu_aliases[i];
-         ObjectClass *alias_oc = ppc_cpu_class_by_name(alias->model);
-@@ -7076,10 +7076,10 @@ static void ppc_cpu_list_entry(gpointer data, gpointer user_data)
-          * avoid printing the wrong alias here and use "preferred" instead
-          */
-         if (strcmp(alias->alias, family->desc) == 0) {
--            qemu_printf("PowerPC %-16s (alias for preferred %s CPU)\n",
-+            qemu_printf("  %-16s (alias for preferred %s CPU)\n",
-                         alias->alias, family->desc);
-         } else {
--            qemu_printf("PowerPC %-16s (alias for %s)\n",
-+            qemu_printf("  %-16s (alias for %s)\n",
-                         alias->alias, name);
-         }
-     }
-@@ -7090,6 +7090,7 @@ void ppc_cpu_list(void)
- {
-     GSList *list;
- 
-+    qemu_printf("Available CPUs:\n");
-     list = object_class_get_list(TYPE_POWERPC_CPU, false);
-     list = g_slist_sort(list, ppc_cpu_list_compare);
-     g_slist_foreach(list, ppc_cpu_list_entry, NULL);
-@@ -7097,7 +7098,7 @@ void ppc_cpu_list(void)
- 
- #ifdef CONFIG_KVM
-     qemu_printf("\n");
--    qemu_printf("PowerPC %s\n", "host");
-+    qemu_printf("  %s\n", "host");
- #endif
- }
- 
--- 
-2.39.2
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
