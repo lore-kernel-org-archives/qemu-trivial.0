@@ -1,60 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s2XSd-0001E7-Kw
-	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2024 10:30:59 -0400
+	id 1s2YGp-0001Gs-QI
+	for mharc-qemu-trivial@gnu.org; Thu, 02 May 2024 11:22:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2XSc-0001Dv-0l
- for qemu-trivial@nongnu.org; Thu, 02 May 2024 10:30:58 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1s2YGn-0001Fd-ML
+ for qemu-trivial@nongnu.org; Thu, 02 May 2024 11:22:49 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2XSa-00024Y-HH
- for qemu-trivial@nongnu.org; Thu, 02 May 2024 10:30:57 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1s2YGm-0004uR-AC
+ for qemu-trivial@nongnu.org; Thu, 02 May 2024 11:22:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1714660255;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=CltSPHu2UmmNZlcAe1OZUeDX9g7WX74NFQjtuxh45EU=;
- b=KSKvuIdGGcqEpXXpvw5y6wrPM1UEDNN4JVQZFSWB9mhS00koo0J4EdAVoYtIr3uLtKe7hT
- ALCqDXD8Cn4Q+xs/iBu6XxVgSqB+1eiVLz5Rn79uAjQ/mVNmIp2qBf7iVkmQtWrFeV575H
- VmHMrzLbpzVUKE3aCq9z8wWKPjbPgG0=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-349-VsgXTC6INz6Uj9fEUGr6tQ-1; Thu,
- 02 May 2024 10:30:52 -0400
-X-MC-Unique: VsgXTC6INz6Uj9fEUGr6tQ-1
-Received: from smtp.corp.redhat.com (int-mx07.intmail.prod.int.rdu2.redhat.com
- [10.11.54.7])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id E849B1C0005E;
- Thu,  2 May 2024 14:30:51 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.138])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id A04E01C0666A;
- Thu,  2 May 2024 14:30:50 +0000 (UTC)
-Date: Thu, 2 May 2024 15:30:47 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: Re: [PATCH] ui/cocoa.m: Drop old macOS-10.12-and-earlier compat ifdefs
-Message-ID: <ZjOjlwgbVqRzPR6V@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240502142904.62644-1-peter.maydell@linaro.org>
+ s=mimecast20190719; t=1714663366;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=nf2rzIkR+FaL/rs+/EeFo6/nss3sW8O16iG5/mhIl3A=;
+ b=BFfpcuaE2IwDzueR91sTGx+nm6zsY/nCG7LAiB87LC5iMsXs8Eyxs2In04mqedkpHwnmvi
+ MCzSrOQ3pPjLKCMune9RlUhPPPRBG38k5bW6sOHXcaMUhcTRqcD3Hxp1XIW2asAV930eoC
+ r4CT1ARyLQdFlEZILhwSzuITNitbuZw=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-515-KjE8nssSOX6RjYZeL3wNTg-1; Thu, 02 May 2024 11:22:45 -0400
+X-MC-Unique: KjE8nssSOX6RjYZeL3wNTg-1
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-a5564a2e3a5so578976666b.1
+ for <qemu-trivial@nongnu.org>; Thu, 02 May 2024 08:22:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1714663364; x=1715268164;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=nf2rzIkR+FaL/rs+/EeFo6/nss3sW8O16iG5/mhIl3A=;
+ b=OHZf10uQ+F9SSvK5/ysjZcMEaQVzA43d42U22mZoqkXv1wzKm9ltPqOs5k2onOyoeQ
+ p9v2xVre8N5v7YdeonAR03xO4W3IRhu/4I/wCnhcV8xspIRE77t+PIY/u0oCvu794yju
+ nXbhOdtQ76ESXBrdkIWGUhINeR2en17JlUeU3+bt0U+Pt/aYyYsuWIr+wZcQq3jGib6n
+ xo7HnbTHIgXRamfr5DrpKK9QDOc/VaAWsqYqLpmF7f43sGqJwEvnl3kw/3do/P0doLxE
+ /GflnhmBosNuYgopgK0W5yk+rrqs7xoLEhG26lPFMfMH8cZEfOLn72rLIXnZf05Sb5CK
+ olKA==
+X-Gm-Message-State: AOJu0YzH46oVtkNMCaFhQsbhAR6Wt0knKCBkF1TRu/FgKtT8K3Cz5bAk
+ gOh67jeYW4/JK5NswQ+DEwikZ6saO2S79JahuHSTrhBVxcZBwQFMI78pmqGsNihQICbXBvbl/TU
+ kBJ/pNZA8vAL1eZYAzcm9wbC7fWNuMnUeNApcnhU3vtJ1FCcoxqyqa3I=
+X-Received: by 2002:a17:906:2ad2:b0:a52:6fcb:564a with SMTP id
+ m18-20020a1709062ad200b00a526fcb564amr3848946eje.9.1714663364054; 
+ Thu, 02 May 2024 08:22:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGFOwVxoLUnKbi2kbsFsMq0YgXnwuUQWhXBSV0+eHaOOwTRjCQ370wGAVv89gefF1D5pyZb+A==
+X-Received: by 2002:a17:906:2ad2:b0:a52:6fcb:564a with SMTP id
+ m18-20020a1709062ad200b00a526fcb564amr3848934eje.9.1714663363599; 
+ Thu, 02 May 2024 08:22:43 -0700 (PDT)
+Received: from avogadro.local ([151.95.155.52])
+ by smtp.gmail.com with ESMTPSA id
+ u5-20020a170906408500b00a53c746b499sm665937ejj.137.2024.05.02.08.22.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 02 May 2024 08:22:43 -0700 (PDT)
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Roman Kiryanov <rkir@google.com>,
+ Daniel Berrange <berrange@redhat.com>
+Subject: [PATCH v2] bitmap: Use g_try_new0/g_renew
+Date: Thu,  2 May 2024 17:22:42 +0200
+Message-ID: <20240502152242.101181-1-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.44.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240502142904.62644-1-peter.maydell@linaro.org>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.7
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -35
 X-Spam_score: -3.6
@@ -62,7 +76,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.476,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -75,30 +89,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 May 2024 14:30:58 -0000
+X-List-Received-Date: Thu, 02 May 2024 15:22:49 -0000
 
-On Thu, May 02, 2024 at 03:29:04PM +0100, Peter Maydell wrote:
-> We only support the most recent two versions of macOS (currently
-> macOS 13 Ventura and macOS 14 Sonoma), and our ui/cocoa.m code
-> already assumes at least macOS 12 Monterey or better, because it uses
-> NSScreen safeAreaInsets, which is 12.0-or-newer.
-> 
-> Remove the ifdefs that were providing backwards compatibility for
-> building on 10.12 and earlier versions.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  ui/cocoa.m | 13 -------------
->  1 file changed, 13 deletions(-)
+Avoids an explicit use of sizeof().  The GLib allocation macros
+ensure that the multiplication by the size of the element
+uses the right type and does not overflow.
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+While at it, change bitmap_new() to use g_new0 directly.  Its current
+impl of calling bitmap_try_new() followed by a plain abort() has
+worse diagnostics than g_new0, which uses g_error to report the actual
+allocation size that failed.
 
+Cc: qemu-trivial@nongnu.org
+Cc: Roman Kiryanov <rkir@google.com>
+Cc: Daniel Berrange <berrange@redhat.com>
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
+---
+ include/qemu/bitmap.h | 19 ++++++++-----------
+ 1 file changed, 8 insertions(+), 11 deletions(-)
 
-With regards,
-Daniel
+diff --git a/include/qemu/bitmap.h b/include/qemu/bitmap.h
+index 97806811eeb..1cf288445f3 100644
+--- a/include/qemu/bitmap.h
++++ b/include/qemu/bitmap.h
+@@ -92,17 +92,14 @@ long slow_bitmap_count_one(const unsigned long *bitmap, long nbits);
+ 
+ static inline unsigned long *bitmap_try_new(long nbits)
+ {
+-    long len = BITS_TO_LONGS(nbits) * sizeof(unsigned long);
+-    return g_try_malloc0(len);
++    long nelem = BITS_TO_LONGS(nbits);
++    return g_try_new0(unsigned long, nelem);
+ }
+ 
+ static inline unsigned long *bitmap_new(long nbits)
+ {
+-    unsigned long *ptr = bitmap_try_new(nbits);
+-    if (ptr == NULL) {
+-        abort();
+-    }
+-    return ptr;
++    long nelem = BITS_TO_LONGS(nbits);
++    return g_new0(unsigned long, nelem);
+ }
+ 
+ static inline void bitmap_zero(unsigned long *dst, long nbits)
+@@ -265,10 +262,10 @@ unsigned long bitmap_find_next_zero_area(unsigned long *map,
+ static inline unsigned long *bitmap_zero_extend(unsigned long *old,
+                                                 long old_nbits, long new_nbits)
+ {
+-    long new_len = BITS_TO_LONGS(new_nbits) * sizeof(unsigned long);
+-    unsigned long *new = g_realloc(old, new_len);
+-    bitmap_clear(new, old_nbits, new_nbits - old_nbits);
+-    return new;
++    long new_nelem = BITS_TO_LONGS(new_nbits);
++    unsigned long *ptr = g_renew(unsigned long, old, new_nelem);
++    bitmap_clear(ptr, old_nbits, new_nbits - old_nbits);
++    return ptr;
+ }
+ 
+ void bitmap_to_le(unsigned long *dst, const unsigned long *src,
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.44.0
 
 
