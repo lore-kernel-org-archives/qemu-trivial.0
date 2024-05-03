@@ -1,74 +1,130 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s2sSt-00040A-HH
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2024 08:56:39 -0400
+	id 1s2wfQ-0005fk-St
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2024 13:25:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s2sSr-0003zP-78
- for qemu-trivial@nongnu.org; Fri, 03 May 2024 08:56:37 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s2sSp-0007FD-It
- for qemu-trivial@nongnu.org; Fri, 03 May 2024 08:56:36 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-34d7b0dac54so1699500f8f.0
- for <qemu-trivial@nongnu.org>; Fri, 03 May 2024 05:56:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1714740994; x=1715345794; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=lxaYcWb+xBzcc9VX7AuLafdW78gfD1N26Mu9ghbppO4=;
- b=cEEuEprw8zDr2cAWeXQmatk853HdQ0vfQ6QMkIVoVXVn4rcG87xTFq5QW/PDlTu3L1
- vHOXT8iB4iplujTHs+dWvJkpaN9KRm7mXh5Vcm3GZvOm+tRv3lTf3YjbaF0rY3IUiWMe
- GQihV31mhvxcJ7YKzeyZFN9C4nvbmjhJWOCFrfvljptIJ43xeXGeRPNsfmhC0zFEf9Zn
- S5ZkDOQgTxOAdJCuoex8OF3tiMxOxXZ92Z6T+Pla2XBT1Ww7pRmf5iFcpkmOEdlLEKmF
- 2K69bXrj7pn06O/bEVIGTS2gcbBRwta5in+TgMhygC0opCAvkkg5Qac1vkCcELLbjkjg
- YsBQ==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2wfP-0005fC-PL
+ for qemu-trivial@nongnu.org; Fri, 03 May 2024 13:25:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s2wfO-0006vo-DO
+ for qemu-trivial@nongnu.org; Fri, 03 May 2024 13:25:51 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1714757148;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=NGggQ8UEacDGN4fT2pSNWr3zF+dUd9fYTfIMBEppCaE=;
+ b=GTqAjSjIgOqGEwR5aG+ZNP9jgiU74Ic41AkxP5APUZU3fRzeF3aekpp3nwu4Kbaic4gzLL
+ 4y+bSdD0OzeiqYC52yQXa3F5DiyWC7turtRrprbsaEtWw88xJUeYPFri05gzCB2LftTzSR
+ asnNeLwAE/r12i1tCxD1gBz6xgDHQgU=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-160-r515dYdMN9OJzlpS2CtYEg-1; Fri, 03 May 2024 13:25:45 -0400
+X-MC-Unique: r515dYdMN9OJzlpS2CtYEg-1
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-6a0b7ba8d0aso67857566d6.0
+ for <qemu-trivial@nongnu.org>; Fri, 03 May 2024 10:25:45 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714740994; x=1715345794;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=lxaYcWb+xBzcc9VX7AuLafdW78gfD1N26Mu9ghbppO4=;
- b=F7JSiGoYfbKe9CJ3ndDgMDM0v9ZEB0CRfHUpsdhuIgjNCEiQyiWNHZ358vuIqYWKNp
- P8UmKOCeVECZ3DRI+WEEnXH0BNZLfO/OnvdJgu3oDwqQar+GLKz0yva1YlR+EetkQSyW
- awnjxfIfESDZA6e6csOr9wKqrLUiAgfqbXEttvCY3WHyxhY9VDarYBtVm8GII0s77KOg
- keT43i4BL4QNceltTPE+DEctGC7wOrvWVZkpaZtQXgzFITqiTyLhAoG4+cAODur61ftz
- NcSGeW9BveT+ZNm7dJVXMFnKnveZ9w7o5WrSWoqbOaVO4vDJqxIMJ+6sV4LRC948zc/p
- KGRA==
-X-Gm-Message-State: AOJu0Yw0w8i3ghSxQasL0Bc4jOy2g9mBoY9MPxlpVFtZKGE+bWWegKhE
- rDT3tl+uFzGFK/nJeAbUimkpVfptCOT0eH+gf8oeI1o7KKcCPsybWxFL6aG/G0I=
-X-Google-Smtp-Source: AGHT+IGjgkuM2400IXhyb4mZtHljeXHcKMz8kCvkPdJYwdp7Pvy2eyt9MCWdXupNK/EdbAWDhW7qDw==
-X-Received: by 2002:adf:a309:0:b0:343:cee1:cbc1 with SMTP id
- c9-20020adfa309000000b00343cee1cbc1mr4981739wrb.14.1714740993871; 
- Fri, 03 May 2024 05:56:33 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.179.187])
- by smtp.gmail.com with ESMTPSA id
- m3-20020adffa03000000b0034db974d7a1sm3705170wrr.81.2024.05.03.05.56.32
+ d=1e100.net; s=20230601; t=1714757145; x=1715361945;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=NGggQ8UEacDGN4fT2pSNWr3zF+dUd9fYTfIMBEppCaE=;
+ b=IeAsaBRyjas4ppI6xCZa9vj1szSMwtqa/XjaTB+6zjsM1bJyRY4PxIXgq8JTyXJdCN
+ pAndF+426PeCGyCdmn0KebHzLuShxFiS94GpC1rvx6DfSJmIipCmbflEZM1+mQ1RszwC
+ UjWhB28ro5uATLC5/NAI0P1WViSfQViLSwb9cR1AKSOCKcz937kOPuTusVI+1fu5UkyR
+ X7v+rjbcJPJhwBOYMzcIiCmc5mQQhMxQkDJPgLboHg1skq7dcwludp/Z67qok4QjW3RE
+ ERBXuPTYTalw6+PhQ66FJhYcAN6+8pQHj0Yl4N+B9zo98Ivv3TR3/E3+pgd7h1dDVCaJ
+ hmEg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXwLNweOK6j6OSfXiGgYhhJX5fTXrKBbS5Kn022H+gjeBCTYLomX+/WGrucn1DtcVPuPIK77CQQEjdw/mNCsljWwi9hynwVQg==
+X-Gm-Message-State: AOJu0Ywcs5gHtVI64NiI2nTKKt40HrwCq6ctJd735Cx6gBSjpPHG9aUc
+ T2h3KXiCAj8SSYYp3Jg8dLrai7CDGAW6r29ZuZcvLHxEzBlTUHky+wxUxlMoy4ys075qPypaaNO
+ MTU+5TwSUGuNWyf8dY782r2RN+nl5gvbqltp2/7SFpnKU2JL99AVx7Mo=
+X-Received: by 2002:a05:6214:c83:b0:6a0:b3ec:9032 with SMTP id
+ r3-20020a0562140c8300b006a0b3ec9032mr6161593qvr.12.1714757145118; 
+ Fri, 03 May 2024 10:25:45 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG26UzKKHBWixuS7gxAUy3Tc1WDQNOA42TnpChg+aVt1vdUontq2IyXMraUqKyf7U0Zi2vFtw==
+X-Received: by 2002:a05:6214:c83:b0:6a0:b3ec:9032 with SMTP id
+ r3-20020a0562140c8300b006a0b3ec9032mr6161539qvr.12.1714757144736; 
+ Fri, 03 May 2024 10:25:44 -0700 (PDT)
+Received: from [192.168.0.9] (ip-109-43-179-34.web.vodafone.de.
+ [109.43.179.34]) by smtp.gmail.com with ESMTPSA id
+ e17-20020a056214111100b006a0d0c6ed22sm1383773qvs.98.2024.05.03.10.25.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 03 May 2024 05:56:33 -0700 (PDT)
-Message-ID: <41d1f49a-5a2d-496e-859c-341b1abc1aa8@linaro.org>
-Date: Fri, 3 May 2024 14:56:31 +0200
+ Fri, 03 May 2024 10:25:44 -0700 (PDT)
+Message-ID: <7934395b-3e86-4dbd-898f-ff667681c8fe@redhat.com>
+Date: Fri, 3 May 2024 19:25:42 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ui/cocoa.m: Drop old macOS-10.12-and-earlier compat ifdefs
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Akihiko Odaki <akihiko.odaki@daynix.com>
-References: <20240502142904.62644-1-peter.maydell@linaro.org>
+Subject: Re: [PATCH] qga/commands-posix: fix typo in
+ qmp_guest_set_user_password
+To: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org
+Cc: kkostiuk@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>,
+ Andrey Drobyshev <andrey.drobyshev@virtuozzo.com>
+References: <20240503171333.241463-1-pbonzini@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240503171333.241463-1-pbonzini@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240502142904.62644-1-peter.maydell@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -35
+X-Spam_score: -3.6
+X-Spam_bar: ---
+X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.483,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,21 +137,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2024 12:56:37 -0000
+X-List-Received-Date: Fri, 03 May 2024 17:25:52 -0000
 
-On 2/5/24 16:29, Peter Maydell wrote:
-> We only support the most recent two versions of macOS (currently
-> macOS 13 Ventura and macOS 14 Sonoma), and our ui/cocoa.m code
-> already assumes at least macOS 12 Monterey or better, because it uses
-> NSScreen safeAreaInsets, which is 12.0-or-newer.
+On 03/05/2024 19.13, Paolo Bonzini wrote:
+> qga/commands-posix.c does not compile on FreeBSD due to a confusion
+> between "chpasswdata" (wrong) and "chpasswddata" (used in the #else
+> branch).
 > 
-> Remove the ifdefs that were providing backwards compatibility for
-> building on 10.12 and earlier versions.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 > ---
->   ui/cocoa.m | 13 -------------
->   1 file changed, 13 deletions(-)
+>   qga/commands-posix.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+> index 7a065c4085c..7f05996495a 100644
+> --- a/qga/commands-posix.c
+> +++ b/qga/commands-posix.c
+> @@ -2173,7 +2173,7 @@ void qmp_guest_set_user_password(const char *username,
+>       }
+>   
+>   #ifdef __FreeBSD__
+> -    g_autofree char *chpasswdata = g_strdup(rawpasswddata);
+> +    g_autofree char *chpasswddata = g_strdup(rawpasswddata);
+>       const char *crypt_flag = crypted ? "-H" : "-h";
+>       const char *argv[] = {"pw", "usermod", "-n", username,
+>                             crypt_flag, "0", NULL};
 
-Thanks, patch queued.
+Fixes: 0e5b75a390 ("qga/commands-posix: qmp_guest_set_user_password: use 
+ga_run_command helper")
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+
 
