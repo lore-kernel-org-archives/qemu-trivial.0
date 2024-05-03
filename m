@@ -1,71 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s2pu0-0008V3-Nq
-	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2024 06:12:28 -0400
+	id 1s2sSt-00040A-HH
+	for mharc-qemu-trivial@gnu.org; Fri, 03 May 2024 08:56:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2ptz-0008Ur-Ro
- for qemu-trivial@nongnu.org; Fri, 03 May 2024 06:12:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1s2ptu-0004Pm-FJ
- for qemu-trivial@nongnu.org; Fri, 03 May 2024 06:12:27 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1714731141;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=x8fwFIN6e2AzVvBRcz7Mss+aqBdqwZCOYdZc2K7W9cQ=;
- b=evfxMYbLlyYxGsmos7z3ZqAip388TVkFY/r0pCf7FDZmfcKM+cRowSiR7pcn3bcnj++oDo
- kgDoFVH46x/ERDRdO6axD2DREZO7ahQDl/LEMy1TVA3kiCQi1IPY4vfAb0nVo2NG1TGCmg
- hDkenDbsdCXyQvZcE5wZCl3KZBHDsTM=
-Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
- [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-427-xiDB7ZnEOx6eNjoiBxgU2Q-1; Fri, 03 May 2024 06:12:17 -0400
-X-MC-Unique: xiDB7ZnEOx6eNjoiBxgU2Q-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 5B7EC80017B;
- Fri,  3 May 2024 10:12:17 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.62])
- by smtp.corp.redhat.com (Postfix) with ESMTPS id 37F7540EE0E;
- Fri,  3 May 2024 10:12:16 +0000 (UTC)
-Date: Fri, 3 May 2024 11:12:14 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: Re: [PATCH v2] Re-enable riscv64-debian-cross-container (debian
- riscv64 is finally usable again!)
-Message-ID: <ZjS4fqE1OdpTgeMq@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240503071634.841103-1-mjt@tls.msk.ru>
- <ZjSbRsOpJsTdTh6l@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s2sSr-0003zP-78
+ for qemu-trivial@nongnu.org; Fri, 03 May 2024 08:56:37 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s2sSp-0007FD-It
+ for qemu-trivial@nongnu.org; Fri, 03 May 2024 08:56:36 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-34d7b0dac54so1699500f8f.0
+ for <qemu-trivial@nongnu.org>; Fri, 03 May 2024 05:56:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1714740994; x=1715345794; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=lxaYcWb+xBzcc9VX7AuLafdW78gfD1N26Mu9ghbppO4=;
+ b=cEEuEprw8zDr2cAWeXQmatk853HdQ0vfQ6QMkIVoVXVn4rcG87xTFq5QW/PDlTu3L1
+ vHOXT8iB4iplujTHs+dWvJkpaN9KRm7mXh5Vcm3GZvOm+tRv3lTf3YjbaF0rY3IUiWMe
+ GQihV31mhvxcJ7YKzeyZFN9C4nvbmjhJWOCFrfvljptIJ43xeXGeRPNsfmhC0zFEf9Zn
+ S5ZkDOQgTxOAdJCuoex8OF3tiMxOxXZ92Z6T+Pla2XBT1Ww7pRmf5iFcpkmOEdlLEKmF
+ 2K69bXrj7pn06O/bEVIGTS2gcbBRwta5in+TgMhygC0opCAvkkg5Qac1vkCcELLbjkjg
+ YsBQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1714740994; x=1715345794;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=lxaYcWb+xBzcc9VX7AuLafdW78gfD1N26Mu9ghbppO4=;
+ b=F7JSiGoYfbKe9CJ3ndDgMDM0v9ZEB0CRfHUpsdhuIgjNCEiQyiWNHZ358vuIqYWKNp
+ P8UmKOCeVECZ3DRI+WEEnXH0BNZLfO/OnvdJgu3oDwqQar+GLKz0yva1YlR+EetkQSyW
+ awnjxfIfESDZA6e6csOr9wKqrLUiAgfqbXEttvCY3WHyxhY9VDarYBtVm8GII0s77KOg
+ keT43i4BL4QNceltTPE+DEctGC7wOrvWVZkpaZtQXgzFITqiTyLhAoG4+cAODur61ftz
+ NcSGeW9BveT+ZNm7dJVXMFnKnveZ9w7o5WrSWoqbOaVO4vDJqxIMJ+6sV4LRC948zc/p
+ KGRA==
+X-Gm-Message-State: AOJu0Yw0w8i3ghSxQasL0Bc4jOy2g9mBoY9MPxlpVFtZKGE+bWWegKhE
+ rDT3tl+uFzGFK/nJeAbUimkpVfptCOT0eH+gf8oeI1o7KKcCPsybWxFL6aG/G0I=
+X-Google-Smtp-Source: AGHT+IGjgkuM2400IXhyb4mZtHljeXHcKMz8kCvkPdJYwdp7Pvy2eyt9MCWdXupNK/EdbAWDhW7qDw==
+X-Received: by 2002:adf:a309:0:b0:343:cee1:cbc1 with SMTP id
+ c9-20020adfa309000000b00343cee1cbc1mr4981739wrb.14.1714740993871; 
+ Fri, 03 May 2024 05:56:33 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.179.187])
+ by smtp.gmail.com with ESMTPSA id
+ m3-20020adffa03000000b0034db974d7a1sm3705170wrr.81.2024.05.03.05.56.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 03 May 2024 05:56:33 -0700 (PDT)
+Message-ID: <41d1f49a-5a2d-496e-859c-341b1abc1aa8@linaro.org>
+Date: Fri, 3 May 2024 14:56:31 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZjSbRsOpJsTdTh6l@redhat.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.476,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] ui/cocoa.m: Drop old macOS-10.12-and-earlier compat ifdefs
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Akihiko Odaki <akihiko.odaki@daynix.com>
+References: <20240502142904.62644-1-peter.maydell@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240502142904.62644-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42b.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,48 +81,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 03 May 2024 10:12:28 -0000
+X-List-Received-Date: Fri, 03 May 2024 12:56:37 -0000
 
-On Fri, May 03, 2024 at 09:07:34AM +0100, Daniel P. Berrangé wrote:
-> On Fri, May 03, 2024 at 10:16:34AM +0300, Michael Tokarev wrote:
-> > Revert "gitlab-ci: Disable the riscv64-debian-cross-container by default"
-> > This reverts commit f51f90c65ed7706c3c4f7a889ce3d6b7ab75ef6a.
-> > 
-> > riscv64 in debian has been non-functioning for almost a year, after the
-> > architecture has been promoted to release architecture and all binary
-> > packages started to be re-built, making the port not multi-arch-co-installable
-> > for a long time (in debian, multi-arch packages must be of the same version,
-> > but when a package is rebuilt on one architecture it gets a version bump too).
-> > Later on, debiah had a long time64_t transition which made sid unusable for
-> > quite some time too.  Both such events happens in debian very rarely (like,
-> > once in 10 years or so - for example, previous big transition like that was
-> > libc5 => libc6 transition).  Now both of these are finished (where qemu is
-> > concerned anyway).
-> > 
-> > Hopefully debian unstable wont be very unstable.  At the very least it is
-> > better to have sporadic CI failures here than no riscv64 coverage at all.
+On 2/5/24 16:29, Peter Maydell wrote:
+> We only support the most recent two versions of macOS (currently
+> macOS 13 Ventura and macOS 14 Sonoma), and our ui/cocoa.m code
+> already assumes at least macOS 12 Monterey or better, because it uses
+> NSScreen safeAreaInsets, which is 12.0-or-newer.
 > 
-> IME of running Debian sid in CI pipelines for libvirt, it is
-> way too unstable to be used as a gating job. There are periods
-> weeks-long when packages fail to install, even for relatively
-> mainstream arch targets like x86, let alone a new target like
-> riscv.
+> Remove the ifdefs that were providing backwards compatibility for
+> building on 10.12 and earlier versions.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   ui/cocoa.m | 13 -------------
+>   1 file changed, 13 deletions(-)
 
-BTW, I don't mean this to be a criticism of Debian. We've seen
-the same kind of instability with all the other non-released distros
-(Fedora Rawhide, OpenSUSE Tumbleweed and Alpine Edge) in libvirt CI,
-such that we've finally set all of them non-gating across all our CI
-deployments.
-
-They're all good to have in CI as a smoke test to identify possible
-problems coming towards you in the next stable release, but false
-failures have to be expected.
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+Thanks, patch queued.
 
