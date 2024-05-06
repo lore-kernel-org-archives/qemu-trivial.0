@@ -1,81 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s3ffF-0003z0-6l
-	for mharc-qemu-trivial@gnu.org; Sun, 05 May 2024 13:28:41 -0400
+	id 1s3rbN-0006Op-Te
+	for mharc-qemu-trivial@gnu.org; Mon, 06 May 2024 02:13:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1s3ff4-0003vC-3v
- for qemu-trivial@nongnu.org; Sun, 05 May 2024 13:28:30 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1s3fer-00020X-LC
- for qemu-trivial@nongnu.org; Sun, 05 May 2024 13:28:20 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-1ee0132a6f3so1988945ad.0
- for <qemu-trivial@nongnu.org>; Sun, 05 May 2024 10:28:15 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1714930094; x=1715534894; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=a6PmXlljicyUKu1kRZOlfnoIeOP8EKVaqj4Iw8qf/18=;
- b=lXmwgKCyBrkqC0f6A+gCff0YwWirTVnp4DRjPXhvOm1kF7hMbLX6jRTuKU0gpD4ctl
- mtEtcuxEpBk4M1u5YVacy5QIYUUZjrgLsMGYJN9HiwyVzDWgf1SZl3mZDZNAORZygO0M
- RUf3Z8OXFoRUgDb1ODuprw9v9oAALCpNZMWKKTDrIZYbVwUtw26l/PI0QO8089SqB0PY
- DZCBcGF9bBGZcr5OEiCNFGX367KyDhwSTuJIRrMywaeY29RDVGT7k0ISZA/WIe2L0MiJ
- jyc6OQVfT6vm8y3XBBplVDjUkhYhlhYUwQbJqWJgfMckW4FCrjFny21KDBz2o8IwkzXf
- 8Hrg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1714930094; x=1715534894;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=a6PmXlljicyUKu1kRZOlfnoIeOP8EKVaqj4Iw8qf/18=;
- b=VYfQ4gS9VgswXVXHYbtfY1/iyDs3K4HxRFJyB5wQ2aeZsagIyC9MuOsoqgX0JX/qjO
- hMrCBMiKjxV+V/gk0stV4gIppOrm8PzvlT3Q/LeaUaeUQqVjdvZVxfVjyCruYKpbhvf3
- OT6QOh750WMcmG/H3/BJEdM88RaQoCBGwueLBX5URQ4zCEibOtunOx/RwuwHHwCUUCR5
- Kc39mRXVtMqnI42wqlnSzDAfkVGS/hiyU9gV8ioiM5o6AbnxTvkOifECkn3uDI0jEtVD
- uDJmaUh0tdSl/LqGTO6Wya+vFssZBX4XJktcL1mXptOVTe937GpSghEzw3ih2nKBRJI9
- bXPw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVaAnF33HMLQ1WlvhpX/REj4qwDmahWaDEfq7KxmIEOSW8tipPAcdbL4TLcG+UW0pA5chhpXvNOJbviZsaTEnGK1EmsLdXqqA==
-X-Gm-Message-State: AOJu0YxciEYSQaZEKquTctbapOMPwVwrJhA0SRCqMoadDpn1Ke59Dvh2
- Rny+XKzXq8/yqC3SY18zLizIJRiW1iv/L7AnL3+gigVKxuQNA+FiHSqM3uFyS4V3e3URWWKW7JG
- 5
-X-Google-Smtp-Source: AGHT+IEetWSgSB97VQ8qw7S7pz3Hpzg8H/3vMHBZmPW4DLZof0OB9bBQTSdtLYEwTYD/kpyotYad1A==
-X-Received: by 2002:a17:902:cf0a:b0:1e1:3300:702b with SMTP id
- i10-20020a170902cf0a00b001e13300702bmr8825038plg.15.1714930094454; 
- Sun, 05 May 2024 10:28:14 -0700 (PDT)
-Received: from [192.168.0.4] (174-21-72-5.tukw.qwest.net. [174.21.72.5])
- by smtp.gmail.com with ESMTPSA id
- v21-20020a170902f0d500b001dd02f4c2casm6761544pla.164.2024.05.05.10.28.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 05 May 2024 10:28:14 -0700 (PDT)
-Message-ID: <f2b8b540-9e3f-4366-a721-52bafaf2b30d@linaro.org>
-Date: Sun, 5 May 2024 10:28:11 -0700
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1s3rb9-0006Fj-4d
+ for qemu-trivial@nongnu.org; Mon, 06 May 2024 02:13:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1s3rb5-0004dc-FI
+ for qemu-trivial@nongnu.org; Mon, 06 May 2024 02:13:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1714975990;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=LQapm1J1mC6roB+BwuihFStYb/xnfa8N3vQmFEeEWm4=;
+ b=QrVBjCIgXifNwiygENwd9hVjeiP8W8A4fyGFhlDJk6uGKH4VrQj4eSdJ5VKe9T9inYDjMP
+ w+lAB1FapboTJh52BY88pGEhAJtAd9kowUzzAM5m9sD5CreD4MtynMhwmZ0dDBqTWlu8/c
+ tjr7LbGD5F/OD68wruWyFQ4xd3CW/0w=
+Received: from mimecast-mx02.redhat.com (mimecast-mx02.redhat.com
+ [66.187.233.88]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-139-9NrTt8yaOn6O2N4EOqzfTg-1; Mon, 06 May 2024 02:13:05 -0400
+X-MC-Unique: 9NrTt8yaOn6O2N4EOqzfTg-1
+Received: from smtp.corp.redhat.com (int-mx05.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.5])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 88BE58943A0;
+ Mon,  6 May 2024 06:13:05 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.247])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 62BC7EC680;
+ Mon,  6 May 2024 06:13:05 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 7E2D921E6806; Mon,  6 May 2024 08:13:04 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org,
+ Aleksandar Rikalo <arikalo@gmail.com>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] MAINTAINERS: Update Aleksandar Rikalo email
+In-Reply-To: <20240209062147.62453-1-aleksandar.rikalo@syrmia.com> (Aleksandar
+ Rikalo's message of "Fri, 9 Feb 2024 07:21:47 +0100")
+References: <20240209062147.62453-1-aleksandar.rikalo@syrmia.com>
+Date: Mon, 06 May 2024 08:13:04 +0200
+Message-ID: <87h6fbsc27.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] include/exec/cpu-common.h: Rename PAGE_BITS macro to
- PAGE_RWX
-To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-References: <20240505121008.44A0D4E602D@zero.eik.bme.hu>
-Content-Language: en-US
-From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20240505121008.44A0D4E602D@zero.eik.bme.hu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x630.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.5
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.431,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,27 +73,71 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 05 May 2024 17:28:31 -0000
+X-List-Received-Date: Mon, 06 May 2024 06:13:28 -0000
 
-On 5/5/24 05:10, BALATON Zoltan wrote:
-> This macro can be used to abbreviate PAGE_READ | PAGE_WRITE | PAGE_EXEC
-> for which PAGE_RWX is a better name and renaming it also shows it is
-> not related to TARGET_PAGE_BITS.
-> 
-> Signed-off-by: BALATON Zoltan<balaton@eik.bme.hu>
+Looks like this fell through the cracks.
+
+As far as I can tell, the patch did come from @syrmia.com.
+
+Cc'ing qemu-trivial.
+
+Aleksandar Rikalo <aleksandar.rikalo@syrmia.com> writes:
+
+> Syrmia LLC has been acquired recently and the syrmia.com domain will
+> disappear soon, so updating my email in the MAINTAINERS file.
+>
+> Signed-off-by: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
 > ---
->   accel/tcg/user-exec.c      | 2 +-
->   bsd-user/mmap.c            | 6 +++---
->   include/exec/cpu-common.h  | 2 +-
->   linux-user/elfload.c       | 2 +-
->   linux-user/mmap.c          | 2 +-
->   target/cris/mmu.c          | 4 ++--
->   target/microblaze/helper.c | 2 +-
->   7 files changed, 10 insertions(+), 10 deletions(-)
+>  MAINTAINERS | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+>
+> diff --git a/MAINTAINERS b/MAINTAINERS
+> index 2f9741b898..1c2dbbc30a 100644
+> --- a/MAINTAINERS
+> +++ b/MAINTAINERS
+> @@ -284,7 +284,7 @@ MIPS TCG CPUs
+>  M: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>  R: Aurelien Jarno <aurelien@aurel32.net>
+>  R: Jiaxun Yang <jiaxun.yang@flygoat.com>
+> -R: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+> +R: Aleksandar Rikalo <arikalo@gmail.com>
+>  S: Odd Fixes
+>  F: target/mips/
+>  F: disas/*mips.c
+> @@ -1344,7 +1344,7 @@ F: include/hw/mips/
+>=20=20
+>  Jazz
+>  M: Herv=C3=A9 Poussineau <hpoussin@reactos.org>
+> -R: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+> +R: Aleksandar Rikalo <arikalo@gmail.com>
+>  S: Maintained
+>  F: hw/mips/jazz.c
+>  F: hw/display/g364fb.c
+> @@ -1365,7 +1365,7 @@ F: tests/avocado/linux_ssh_mips_malta.py
+>  F: tests/avocado/machine_mips_malta.py
+>=20=20
+>  Mipssim
+> -R: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+> +R: Aleksandar Rikalo <arikalo@gmail.com>
+>  S: Orphan
+>  F: hw/mips/mipssim.c
+>  F: hw/net/mipsnet.c
+> @@ -1393,7 +1393,7 @@ F: tests/avocado/machine_mips_loongson3v.py
+>=20=20
+>  Boston
+>  M: Paul Burton <paulburton@kernel.org>
+> -R: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+> +R: Aleksandar Rikalo <arikalo@gmail.com>
+>  S: Odd Fixes
+>  F: hw/core/loader-fit.c
+>  F: hw/mips/boston.c
+> @@ -3719,7 +3719,7 @@ M: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>  R: Aurelien Jarno <aurelien@aurel32.net>
+>  R: Huacai Chen <chenhuacai@kernel.org>
+>  R: Jiaxun Yang <jiaxun.yang@flygoat.com>
+> -R: Aleksandar Rikalo <aleksandar.rikalo@syrmia.com>
+> +R: Aleksandar Rikalo <arikalo@gmail.com>
+>  S: Odd Fixes
+>  F: tcg/mips/
 
-Reasonable.
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-
-
-r~
 
