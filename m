@@ -1,75 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s5LoL-0003OP-35
-	for mharc-qemu-trivial@gnu.org; Fri, 10 May 2024 04:41:02 -0400
+	id 1s699o-0005bE-0B
+	for mharc-qemu-trivial@gnu.org; Sun, 12 May 2024 09:22:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s5LoF-0003JD-J7
- for qemu-trivial@nongnu.org; Fri, 10 May 2024 04:40:55 -0400
-Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1s6546-0004cF-Sh; Sun, 12 May 2024 05:00:18 -0400
+Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s5Lnz-0007g0-Fq
- for qemu-trivial@nongnu.org; Fri, 10 May 2024 04:40:54 -0400
-Received: by mail-ej1-x62a.google.com with SMTP id
- a640c23a62f3a-a4702457ccbso446326466b.3
- for <qemu-trivial@nongnu.org>; Fri, 10 May 2024 01:40:37 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
+ id 1s6545-0000pz-AW; Sun, 12 May 2024 05:00:18 -0400
+Received: by mail-ej1-x62c.google.com with SMTP id
+ a640c23a62f3a-a5a5cce2ce6so69198966b.3; 
+ Sun, 12 May 2024 02:00:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1715330436; x=1715935236; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=6ahdgPeTC9Hwr3TC1O0u/KNWYwdxKjBdaHdY7nGI1DA=;
- b=XHA57Nysdv0S3kCyra9RX4Ms+emngYXHp40gJcOPFITfKElcQARUv2W5jyPsNWQvYl
- PymZ6hJfMPnZ5SmmgticO5CAX+xF6ioz6QAG8bo5l/VKrFCHfIZ7qqFrFn0jrY6drIMr
- akuWX9IICBNaKl0uUB3PmUkNMWO+aqXDvpqlC+DHJbluQJtCjLRuwsMBYRZwMi9GkKs8
- gQMtKEYqGHjLua0UMJRFI1VmKG4JOZQjspQHjQ37LrwS4nr9fbSqMHnejDu6jIo73kuT
- mPS79T/sYl0hbAniCCTplRLXcNfs5fL0aA4M4PP/sAcvrnDS7Lt0HHsP6xOqos+1TwXY
- BjCQ==
+ d=gmail.com; s=20230601; t=1715504414; x=1716109214; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=s2HUUSV/R8kHZKSr121aPfLsWX8/+1NKAhwK3cedQig=;
+ b=CnSae8VyhVRHxPbnvqPS6aYSGk5WL8H9EQMiX7YhegCcAvk7crL/JmfjLxmWXUsuQW
+ zEp+i5/N8Mq4CsSO0dKt9oGIOq5SE7xgl1HaKYixaDqIfobMMjo0y9HZ1pXg6t50MD3x
+ ryFB3Dx4lKjYyahOAYE7nfqY/5SrzntY5ibfCxqHIfry2OZ9R1seTKBCDFjvsR0V6XoU
+ 0cKE1gu3paasdceMA4Y15td+kB+4LLi1Wua8uv81OdZcd58Qhrj5lXOmu/zf35mxZ63H
+ 4FBZMqIZYkuuxUmdoYZZ2+uyeteqk7J0YMGzmscXvYP50eUPTwth4RIE2liNtFmQAx0A
+ DDfA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715330436; x=1715935236;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=6ahdgPeTC9Hwr3TC1O0u/KNWYwdxKjBdaHdY7nGI1DA=;
- b=M8eUZFKwsrWJVHlQLNsBg3bOD6RYwfqTaPckmXFCHOWoZ0vm6KJh0mB0p4G5/DhS40
- htpLFgITbo9t32w5zczEqBUerd83lu5JgZ9lWS+bR112gx7YikVcRBDOFGcSQQp16h/t
- 7a4wjFWKIolsaRnC6Cp8ditomgORlhN4g/ns+AC5+XnhXTMoljOjz+SPH65ySJXt65o9
- seS2h1YW1SOaYK7BR5PKeLKqbJzclmWADKX7pwe7jqZceealQ07V/OsRawsJGKKZMC8y
- iXIqCzdMEzXfNvhaJKLjJhmmSIeg2emLr6SG3mVW5Kci5ShhtxVkiFMpx5uIBr2tX7mz
- 77+A==
-X-Gm-Message-State: AOJu0Ywkix/7L1Vqtt5PVF6VitUvl4WnvUo783C3yG5TCVIs94tEtw3o
- mG35dNPpcasjk0hCHFRa9uhjHz81CtGzPofADpYpuUvSnHmOuKaxXyyVYdGObwc=
-X-Google-Smtp-Source: AGHT+IHqnfVXBxdrA/r/ELf5OLgR6n3iErrmK64+q7KrbiKgDeiLAZKp+LO4T/XNz2iA7D9sBAs8yg==
-X-Received: by 2002:a17:906:b79a:b0:a59:aa69:9790 with SMTP id
- a640c23a62f3a-a5a2d54c87fmr125899566b.8.1715330436396; 
- Fri, 10 May 2024 01:40:36 -0700 (PDT)
-Received: from [192.168.69.100] (sev93-h02-176-184-17-152.dsl.sta.abo.bbox.fr.
- [176.184.17.152]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a5a179c822fsm159662866b.138.2024.05.10.01.40.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 10 May 2024 01:40:35 -0700 (PDT)
-Message-ID: <7ec09843-2560-4c73-a5c1-9049dea19870@linaro.org>
-Date: Fri, 10 May 2024 10:40:34 +0200
+ d=1e100.net; s=20230601; t=1715504414; x=1716109214;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=s2HUUSV/R8kHZKSr121aPfLsWX8/+1NKAhwK3cedQig=;
+ b=ZQIn9J80SgWPwSzv8NSOY0pqeHGKdiz8ZPh83Zce/6PZtTAC3VkIRxluw8el2jOTr2
+ TUX73tBiCwmCPqDE6LfSugKKQjWzqb1Eply820B8Gjy+WKu6XVZJKY8KkHxrSULuADUg
+ gP0qzfY53Mhi6y9I0fVJSGX8GtKrqcZ3nQ+YdTldIXswGq1BnS7S6RZveFufQH5N1unT
+ 44DjWmldNirn/54MpWFWVcR8qSDIL43yUSlHSCEIwpwE6EQyc9TKOS4GcunQnYUX63xP
+ LAYFXv0NjLbNp55WravYH2R6EM3YkEqTu56GPu+E4MAEDb34FfJjNfUPxvgM3QYz49uB
+ apDA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWuPx01AfotSquAmMuIJXr8wnARAD6/2SJFI/L09AeA7kEXYUEOh0z/zIiIaYpo0hsDPhX8BSa0t7NWT0gDUOFqvsO6
+X-Gm-Message-State: AOJu0YwPEenOnNTt/IeUlqmPFi5bETdFX4uFMq0o9cWQ90ekPqRlVdx7
+ SsVflGG8Q8L30vpV8CX71Qc74YJ1u4Gx03B7zb9CIFsNzwfmsIJc+9spGw==
+X-Google-Smtp-Source: AGHT+IF0TbT2N6rFBEBx9taO0of0xFoGS8TLGmiKYBj3TU6h0qZ8S8KIq2QNQQlclcsJ8lwvb4BdBQ==
+X-Received: by 2002:a17:906:17c5:b0:a59:c9ad:bd26 with SMTP id
+ a640c23a62f3a-a5a2d54c601mr431144566b.12.1715504413771; 
+ Sun, 12 May 2024 02:00:13 -0700 (PDT)
+Received: from localhost.localdomain ([212.70.119.223])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a5a1781cf9csm432214366b.7.2024.05.12.02.00.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 12 May 2024 02:00:13 -0700 (PDT)
+From: Rayhan Faizel <rayhan.faizel@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Rayhan Faizel <rayhan.faizel@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-arm@nongnu.org (open list:Raspberry Pi)
+Subject: [PATCH] docs/system: Remove ADC from raspi documentation
+Date: Sun, 12 May 2024 14:27:16 +0530
+Message-Id: <20240512085716.222326-1-rayhan.faizel@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/loongarch/virt.c: Fixes memory leak in ramName during
- loop iterations
-To: "R.Samarasekara" <rsamarnz@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, gaosong@loongson.cn, raj3sr@gmail.com
-References: <20240509132802.247147-1-rsamarnz@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240509132802.247147-1-rsamarnz@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x62a.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
+ envelope-from=rayhan.faizel@gmail.com; helo=mail-ej1-x62c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 12 May 2024 09:22:26 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -81,36 +82,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 10 May 2024 08:40:57 -0000
+X-List-Received-Date: Sun, 12 May 2024 09:00:19 -0000
 
-Hi R.
+None of the RPi boards have ADC on-board. In real life, an external ADC chip
+is required to operate on analog signals.
 
-On 9/5/24 15:28, R.Samarasekara wrote:
-> This patch fixes a memory leak in the ramName variable within the
-> hw/loongarch/virt.c file. The leak occurs due to repeated calls to
-> g_strdup_printf within a loop, causing memory allocated for ramName on
-> previous iterations to be unfreed.
-> 
-> Signed-off-by: R.Samarasekara <rsamarnz@gmail.com>
-> ---
->   hw/loongarch/virt.c | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
-> index c0999878df..1fe02f8501 100644
-> --- a/hw/loongarch/virt.c
-> +++ b/hw/loongarch/virt.c
-> @@ -954,6 +954,7 @@ static void loongarch_init(MachineState *machine)
->           fdt_add_memory_node(machine, phyAddr, numa_info[i].node_mem, i);
->           offset += numa_info[i].node_mem;
->           phyAddr += numa_info[i].node_mem;
-> +        g_free(ramName);
->       }
+Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
+---
+ docs/system/arm/raspi.rst | 1 -
+ 1 file changed, 1 deletion(-)
 
-This has been fixed recently in this commit:
-https://gitlab.com/qemu-project/qemu/-/commit/54c52ec719
+diff --git a/docs/system/arm/raspi.rst b/docs/system/arm/raspi.rst
+index fbec1da6a1..44eec3f1c3 100644
+--- a/docs/system/arm/raspi.rst
++++ b/docs/system/arm/raspi.rst
+@@ -40,7 +40,6 @@ Implemented devices
+ Missing devices
+ ---------------
+ 
+- * Analog to Digital Converter (ADC)
+  * Pulse Width Modulation (PWM)
+  * PCIE Root Port (raspi4b)
+  * GENET Ethernet Controller (raspi4b)
+-- 
+2.34.1
 
-Regards,
-
-Phil.
 
