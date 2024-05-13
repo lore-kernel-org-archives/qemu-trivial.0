@@ -1,77 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s6SeY-0005sz-5Z
-	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2024 06:11:30 -0400
+	id 1s6Tpi-0000Uu-6S
+	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2024 07:27:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1s6SeS-0005p4-Ce; Mon, 13 May 2024 06:11:24 -0400
-Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s6Tph-0000US-2B
+ for qemu-trivial@nongnu.org; Mon, 13 May 2024 07:27:05 -0400
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1s6SeP-0006Nv-GH; Mon, 13 May 2024 06:11:23 -0400
-Received: by mail-ej1-x634.google.com with SMTP id
- a640c23a62f3a-a59cf8140d0so949491066b.3; 
- Mon, 13 May 2024 03:11:20 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s6Tpb-00008v-3Q
+ for qemu-trivial@nongnu.org; Mon, 13 May 2024 07:27:04 -0400
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-34da4d6f543so3086365f8f.3
+ for <qemu-trivial@nongnu.org>; Mon, 13 May 2024 04:26:58 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1715595078; x=1716199878; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=uTlmaVG3MgnpSaFXvkPmHZXU1e4/64o+61NDr9XBH+I=;
- b=fCuckwRDkGQfaO9K9gx5XqdArWXie8DuDaskZdYur+Q/yb6utSjEyLwE5llW246Z/f
- 30BAxoY7xkiTdBuimMDsWVrEKe4DjFCeoNBsVCrPT1zrVIWjtAVGfgLv3eNa7xnVd8Xa
- V/x4dAj9oEJDl+GqpBx0zxEBLIu7GoYIr7TOr5bXJp8wvgXbO639o9oxSr8kOmyuWF0V
- UdYItUr6qpIKO7W204OZSvXAh2rZU3FGFkLHd2CgZAaz8JSiaZrM5ASiFx1B5jV+VJQk
- lHxfVJDKaCGc04zheVo/VCntxyWMAlvyBDSzQ5xp2cFqiqBuCOTVbvl69Pe7uHBb0Zj5
- Jo0A==
+ d=linaro.org; s=google; t=1715599617; x=1716204417; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=/G7MfgzCcN0jtEglp0t6kBbppY8sZFYe8E6d/jwHYcg=;
+ b=DfDgY65CkKaOX+Cpy8Eikx6rhzf/S9sY1ZJY9EuB+hmYAfGFX0wLckwm6y/aR6y6PW
+ 9O0sAZUfVyJkrYKrj7CDArEaBOT4UN9tik5wWS/3LLCpAEb+wJN2ucNIFQXrH9AaBUm+
+ HakPhTMvv3RX2qVB+RCSFVbt5qlQUqWXLZ/EfV9hUjyBgAowH5P11hZ70N8XnFB/RPEC
+ 5/L34AZ5N+Knl3OC7vSTbz+4QUfyOhVP/zBAm2lFUjFXwlwZVtQu6UzHl92ULiHGhCUX
+ eqU2PNe85tOusHPRTKq+8tnzLoTfuAEwhi+2aXLc6V6Y3BQbluO1cN5md/0jPJAD816w
+ /Tuw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715595078; x=1716199878;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=uTlmaVG3MgnpSaFXvkPmHZXU1e4/64o+61NDr9XBH+I=;
- b=sm3Zaw4aieany1Q0HDUok9EWJo5nnLBQZ4TxA2qTf0IxaN4LALK+5A9CcQsMffcvL8
- 4930tipKrv0nb/ZQKR4/Um/0w7pZ0hAYdL329Y/ZJbKzPCMQFvDi6PH/75RKlCsUDWvm
- guh/MWwt7aps9Tfvd3k2rs9ZFGmCCqkR4ZhEuXBNZ4ddouEEnRdLiNkx4bTjFrXwJcsZ
- Eiak4j4bj5ulL9++/bHsVmuxD7zAx01V1/kruCJwlmIWu+JzMNkk4aDh3YiJZhLkSr5Y
- ga43fuOB6ZdycI41IN/KA/BckzAIdmQUlSKwBmtBjykSHCdQkv2ocCw3tTudoI+2tzOp
- MCTw==
+ d=1e100.net; s=20230601; t=1715599617; x=1716204417;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=/G7MfgzCcN0jtEglp0t6kBbppY8sZFYe8E6d/jwHYcg=;
+ b=mo0P5BUTAiBrsN+NwqMbRDbGfB9dF9RlH6FolCftDqLMHYiY8nEyWSF2OUf/2zo+h5
+ h+PWH+IpRAE3Y8yNXUK/Gb0U6G+Reh6LMt5vjInjfREuQTtCH2KnAvNfonhdjSVAzonf
+ igsNhsgpshbI1G9zbBSqUFktgwRarl0hdB4xqDixt46Utyw5F/3/etvRZpIFJp9qgVNX
+ iFm9QbHgArnXWa0g8EeYNXHth1TglSw+Fg7DOm/ewBZ9B9Vzit/H1wLk3aR68lUPPLmJ
+ 4B+46ZmLs2KoBDjNHA08CYFtqj+ymnhIMQpFWkX2gnxkIsDPPvLrp8I3CXmm76EnZf4l
+ oyuw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUn2a1lPh1ZBRe31XvktuDHMo/wNxwRp9OXM1Yjhfw2hkFuMDeM+7gZlDCRPZe2PwbxTeaNKletmAPvDG6R0ZUtL4BCahXftLSaTWoHtEYUQZs6etzTI5JmzxUauA==
-X-Gm-Message-State: AOJu0YxklvIvPK20h6WDToO0TCTyrGw113ax2RQ2M0N/sDl1RwfxILrl
- xkGQbq/PLjEqJmuqv51Cyoj6IHDrttX9aJS2HqDh6Qlvu5yYX5CRXPbHtA==
-X-Google-Smtp-Source: AGHT+IE0sq4Bc5bd1ddt0NRyLXoW9wrni8vVjYMYdv5kwZlC1KR9GVjD5jR/+u099TPLyP3PSFAkCQ==
-X-Received: by 2002:a17:906:4f08:b0:a58:725b:a021 with SMTP id
- a640c23a62f3a-a5a2d54c467mr522854066b.15.1715595078229; 
- Mon, 13 May 2024 03:11:18 -0700 (PDT)
-Received: from archlinux.. (business-90-187-110-129.pool2.vodafone-ip.de.
- [90.187.110.129]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a5a17894d2asm574906666b.87.2024.05.13.03.11.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 May 2024 03:11:17 -0700 (PDT)
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-trivial@nongnu.org,
- qemu-arm@nongnu.org, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 2/3] hw/timer/imx_gpt: Convert DPRINTF to trace events
-Date: Mon, 13 May 2024 12:11:07 +0200
-Message-ID: <20240513101108.5237-3-shentey@gmail.com>
-X-Mailer: git-send-email 2.45.0
-In-Reply-To: <20240513101108.5237-1-shentey@gmail.com>
-References: <20240513101108.5237-1-shentey@gmail.com>
+ AJvYcCXAGaNClQb4LcIBiQVB/j3luzPIVVV7u2EQJ8EnjXxsUL2qYHPCL8D/Q+2YRMd47ufHRErKwxFoW+IkRm42o88IiwxRjL6m8g==
+X-Gm-Message-State: AOJu0YyEphHZ1GZsfcATZyyvr1sgN39VEhHC04kr+uS6hMZGTwJyGkih
+ Dqz/C9j2/Tra0bvQQ3EuJS6kiV8U3XlzZ6FTgqIadXya1gFyy7vzLpa/4nN6wM4=
+X-Google-Smtp-Source: AGHT+IHHKRugbe7S2sosZWTGK6SMaDiKH339rK6MCwqegI28M3lHkG/hP7jmXPxx25wWZ8lnz7TgUw==
+X-Received: by 2002:adf:fa4d:0:b0:34f:fd71:9af with SMTP id
+ ffacd0b85a97d-3504a73edbfmr6780716f8f.39.1715599617085; 
+ Mon, 13 May 2024 04:26:57 -0700 (PDT)
+Received: from [10.1.2.72] ([149.14.240.163]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-351b79e8e6bsm3274119f8f.65.2024.05.13.04.26.56
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 13 May 2024 04:26:56 -0700 (PDT)
+Message-ID: <93836d9f-56b7-464e-84a2-a101ca78e360@linaro.org>
+Date: Mon, 13 May 2024 13:26:55 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/3] hw/rtc/ds1338: Trace send and receive operations
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev
+ <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-trivial@nongnu.org,
+ qemu-arm@nongnu.org
+References: <20240513101108.5237-1-shentey@gmail.com>
+ <20240513101108.5237-2-shentey@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240513101108.5237-2-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::634;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x634.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x431.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,94 +86,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 May 2024 10:11:24 -0000
+X-List-Received-Date: Mon, 13 May 2024 11:27:05 -0000
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
----
- hw/timer/imx_gpt.c    | 18 +++++-------------
- hw/timer/trace-events |  6 ++++++
- 2 files changed, 11 insertions(+), 13 deletions(-)
+On 13/5/24 12:11, Bernhard Beschow wrote:
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   hw/rtc/ds1338.c     | 6 ++++++
+>   hw/rtc/trace-events | 4 ++++
+>   2 files changed, 10 insertions(+)
 
-diff --git a/hw/timer/imx_gpt.c b/hw/timer/imx_gpt.c
-index a8edaec867..3c3b044622 100644
---- a/hw/timer/imx_gpt.c
-+++ b/hw/timer/imx_gpt.c
-@@ -18,19 +18,12 @@
- #include "migration/vmstate.h"
- #include "qemu/module.h"
- #include "qemu/log.h"
-+#include "trace.h"
- 
- #ifndef DEBUG_IMX_GPT
- #define DEBUG_IMX_GPT 0
- #endif
- 
--#define DPRINTF(fmt, args...) \
--    do { \
--        if (DEBUG_IMX_GPT) { \
--            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_GPT, \
--                                             __func__, ##args); \
--        } \
--    } while (0)
--
- static const char *imx_gpt_reg_name(uint32_t reg)
- {
-     switch (reg) {
-@@ -145,7 +138,7 @@ static void imx_gpt_set_freq(IMXGPTState *s)
-     s->freq = imx_ccm_get_clock_frequency(s->ccm,
-                                           s->clocks[clksrc]) / (1 + s->pr);
- 
--    DPRINTF("Setting clksrc %d to frequency %d\n", clksrc, s->freq);
-+    trace_imx_gpt_set_freq(clksrc, s->freq);
- 
-     if (s->freq) {
-         ptimer_set_freq(s->timer, s->freq);
-@@ -317,7 +310,7 @@ static uint64_t imx_gpt_read(void *opaque, hwaddr offset, unsigned size)
-         break;
-     }
- 
--    DPRINTF("(%s) = 0x%08x\n", imx_gpt_reg_name(offset >> 2), reg_value);
-+    trace_imx_gpt_read(imx_gpt_reg_name(offset >> 2), reg_value);
- 
-     return reg_value;
- }
-@@ -384,8 +377,7 @@ static void imx_gpt_write(void *opaque, hwaddr offset, uint64_t value,
-     IMXGPTState *s = IMX_GPT(opaque);
-     uint32_t oldreg;
- 
--    DPRINTF("(%s, value = 0x%08x)\n", imx_gpt_reg_name(offset >> 2),
--            (uint32_t)value);
-+    trace_imx_gpt_write(imx_gpt_reg_name(offset >> 2), (uint32_t)value);
- 
-     switch (offset >> 2) {
-     case 0:
-@@ -485,7 +477,7 @@ static void imx_gpt_timeout(void *opaque)
- {
-     IMXGPTState *s = IMX_GPT(opaque);
- 
--    DPRINTF("\n");
-+    trace_imx_gpt_timeout();
- 
-     s->sr |= s->next_int;
-     s->next_int = 0;
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index de769f4b71..c9bcc85455 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -49,6 +49,12 @@ cmsdk_apb_dualtimer_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK A
- cmsdk_apb_dualtimer_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB dualtimer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
- 
-+# imx_gpt.c
-+imx_gpt_set_freq(uint32_t clksrc, uint32_t freq) "Setting clksrc %d to %d Hz"
-+imx_gpt_read(const char *name, uint32_t value) "%s -> 0x%08x"
-+imx_gpt_write(const char *name, uint32_t value) "%s <- 0x%08x"
-+imx_gpt_timeout(void) ""
-+
- # npcm7xx_timer.c
- npcm7xx_timer_read(const char *id, uint64_t offset, uint64_t value) " %s offset: 0x%04" PRIx64 " value 0x%08" PRIx64
- npcm7xx_timer_write(const char *id, uint64_t offset, uint64_t value) "%s offset: 0x%04" PRIx64 " value 0x%08" PRIx64
--- 
-2.45.0
+
+> @@ -134,6 +138,8 @@ static int ds1338_send(I2CSlave *i2c, uint8_t data)
+>   {
+>       DS1338State *s = DS1338(i2c);
+>   
+> +    trace_ds1338_send(s->ptr, data);
+
+
+> --- a/hw/rtc/trace-events
+> +++ b/hw/rtc/trace-events
+> @@ -22,6 +22,10 @@ pl031_set_alarm(uint32_t ticks) "alarm set for %u ticks"
+>   aspeed_rtc_read(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
+>   aspeed_rtc_write(uint64_t addr, uint64_t value) "addr 0x%02" PRIx64 " value 0x%08" PRIx64
+>   
+> +# ds1338.c
+> +ds1338_recv(uint32_t addr, uint8_t value) "[0x%" PRIx32 "] -> 0x%02" PRIx8
+> +ds1338_send(uint32_t addr, uint8_t value) "[0x%" PRIx32 "] <- 0x%02" PRIx8
+
+DS1338State::ptr is signed, although being an offset, odd. Using
+unsigned in traces seems better anyway,
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
