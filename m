@@ -1,74 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s6Rsn-0003Wy-HV
-	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2024 05:22:09 -0400
+	id 1s6SeT-0005qH-GW
+	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2024 06:11:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s6Rsl-0003WJ-9L
- for qemu-trivial@nongnu.org; Mon, 13 May 2024 05:22:07 -0400
-Received: from mail-lf1-x12b.google.com ([2a00:1450:4864:20::12b])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1s6SeQ-0005ok-S8; Mon, 13 May 2024 06:11:22 -0400
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1s6Rsi-0004Ot-Re
- for qemu-trivial@nongnu.org; Mon, 13 May 2024 05:22:07 -0400
-Received: by mail-lf1-x12b.google.com with SMTP id
- 2adb3069b0e04-51ffff16400so6660331e87.2
- for <qemu-trivial@nongnu.org>; Mon, 13 May 2024 02:22:03 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
+ id 1s6SeP-0006Nl-5R; Mon, 13 May 2024 06:11:22 -0400
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-a59b81d087aso1036142866b.3; 
+ Mon, 13 May 2024 03:11:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1715592122; x=1716196922; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=oZrQWtxU52idxp5eYbhcQHiiBGL/BJdP6x1q+TfBDHU=;
- b=kG9GSI+BwDElSSoEzNyH1b3a4p8fpX+wb5RDnYL2w25wmr427ZUq1Hozmh7JpHCx+O
- M3yZJa33DECzzq3mloCuyOu2INIdoZNP0cLa97k1HElHOnDueGFhHDa2R41K65gYbeSr
- Bz1NKuPlR7WaMZwe5Ud3PMB0ttvbXkA1w5Ghh9DXOwQOWIhuA1nwZl6IkOJUPPGUJql0
- 2wmJaKge8E7Bfj/m50xx1HXpEwhqcyhJoVHZhzmD89fLNGQa+vwAZYPR0jMLm2ZbAnEc
- 2zAv0d7t+2m7YMdjnCgxnLYM75gaW9jgHPtFoDNkDmH18DCgVGK1KfFUH4+FqWUs7XQE
- WeSg==
+ d=gmail.com; s=20230601; t=1715595077; x=1716199877; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=3yXxmMXz6raz0yk5kfkPN65fGosWmMze3CL97q/kGb8=;
+ b=OsJ70k2LDdxPvGdXRxlNKyTZV5Okg0OyrMrCf1pe7djzt164GPyehr2ajxzBf9+D/d
+ SFHrv90wjC3Cg7X/jzN277rOetRkQgsV1uJj4GapfBFAEcnXZDF3KOgQ6XSkUoSm5MYX
+ 0s6TMOXxSPUxuabKF237K8k6MTsI72wDEZVHKgE8dOUJCLe/l9++cOTiJfBZFD2XyAtA
+ 6Fh7Z3zhkR5QKaD9kA8vSNqZGg2//THGNz1OhtQ0pKOx1NqzuQEid5oe9Xa4HsRjGqGq
+ 2v4dNQkTUqfxDs/aSnHc1i/++uQ+Ty0+e7koq0i2xy/r16cIRw/d9ITpZZ1zVtt5vcFw
+ iT4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715592122; x=1716196922;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oZrQWtxU52idxp5eYbhcQHiiBGL/BJdP6x1q+TfBDHU=;
- b=FWNnszXqjVh4H/kwkW6HAnobvOMxk2NTK5RB2LfX5gnIbGzDN8KTMvijdLhsBsEuh8
- lV239v8lR22Swp0Zz/1Dg1XSIqdMoZUAOMBM5ctNPP2w5cqTQPpdzO54Oj4nwTAoILAM
- OEpPy1qe6AOZm/r4vH0UUOmVX8mO4U+hbTWGI6ZsYQDG5SJYmmnX6Z2qIjieRcv2WwKW
- Fiq6KnUK4PpfuyDwv/4Dcawd9tx8ks4XlWXrvMlJMOSwq+XZIpNRn4Y819JHmWMcte+7
- +gNIndd1yc52Ca09nEtWeBYTjzrVtBz+rJ4O0FbIcCMBeWC2K9owpJhYAcKUwoTR1X+W
- C5Xg==
-X-Gm-Message-State: AOJu0YzA243ir32PS5qqEsvFmS4DOy/orSvyKMQEWV/4T1gamBjC+KOR
- jIqLbATjQWBfGxKCzuMI0/5JT41uICORAizIP4J/ht6HHWiVV8+ShunuJvwbYyw=
-X-Google-Smtp-Source: AGHT+IGiteA84IGmFjZ9bQl5x4IbBwzqk4HlaAadFJhLHxUVeKqjgLxN+4TZLwlCeYtSkYOKYHrRwg==
-X-Received: by 2002:a05:6512:149:b0:51d:4c8a:bbdb with SMTP id
- 2adb3069b0e04-5220fc7d133mr7285327e87.3.1715592121768; 
- Mon, 13 May 2024 02:22:01 -0700 (PDT)
-Received: from [10.1.2.72] ([149.14.240.163]) by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-521f35ba739sm1702167e87.101.2024.05.13.02.22.00
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 May 2024 02:22:01 -0700 (PDT)
-Message-ID: <1ffddbe0-12eb-4220-9920-28310ce55a46@linaro.org>
-Date: Mon, 13 May 2024 11:21:59 +0200
+ d=1e100.net; s=20230601; t=1715595077; x=1716199877;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=3yXxmMXz6raz0yk5kfkPN65fGosWmMze3CL97q/kGb8=;
+ b=vTW8Ltyv1rIJKz1NMOg2o2IXfxy4ru2WBpHuVt9C5NErqiIKrodd+x3Vm4Lq+0eoMl
+ lkojoMPnEBMQF2i5z+qRZ097mhcwceGwRlDJm2cU1aU6bkdw++E68H2R0eP9DptXG3v+
+ vHqNCqKp0iCSw42rf4K/nR/3oFKjTOmGgBY2BJXElusoW8Lmv8DYpxKkg+0bYfSpQ1xJ
+ fXkS2KBsVwGCSx1dnUcoAcD705IDX3d5bQbgbZZFvm9lvaIurDU/AevZGBKZk0cq7IkY
+ KrMqdlm/dns/WKfXdHqt5YvPOQYzxSjeVDo1+BUeRHUaMu15f5UVeJCunG2xnV8Efcw3
+ wC6g==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUP4ou7g0dE7knRM/q0UC+S9qADl0SIvAzoYO2x3aqrXIWExKhfiCi9sJB8FKCWdhpF2d8xFsT92CmGSNqZt93SJqZCDa0P85UcDjLBi70+5BvLSI5JZZJ3gRVHEg==
+X-Gm-Message-State: AOJu0Yzb7VVj9LhuyqIgH30gXBJM3QCQ7gqC+RdcHIuq67Lnt6DV/avH
+ zpKEJdvGcXhCgwqJyAPyJxaKybdOQtyQDfcM9KHUuI6JfBvYTCPbOy7f2w==
+X-Google-Smtp-Source: AGHT+IEx8gcj5bGokGVyKMB/94BfU3JzwTai1LOpxID13VP2mRwyneYTT+NcVZ755kI00lz1gAfmxQ==
+X-Received: by 2002:a17:906:f59a:b0:a55:6602:e3a9 with SMTP id
+ a640c23a62f3a-a5a2d53b27fmr1096572866b.1.1715595076679; 
+ Mon, 13 May 2024 03:11:16 -0700 (PDT)
+Received: from archlinux.. (business-90-187-110-129.pool2.vodafone-ip.de.
+ [90.187.110.129]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a5a17894d2asm574906666b.87.2024.05.13.03.11.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 13 May 2024 03:11:16 -0700 (PDT)
+From: Bernhard Beschow <shentey@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>,
+ Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-trivial@nongnu.org,
+ qemu-arm@nongnu.org, Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH 0/3] Trivial ARM changes
+Date: Mon, 13 May 2024 12:11:05 +0200
+Message-ID: <20240513101108.5237-1-shentey@gmail.com>
+X-Mailer: git-send-email 2.45.0
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] docs/system: Remove ADC from raspi documentation
-To: Rayhan Faizel <rayhan.faizel@gmail.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- "open list:Raspberry Pi" <qemu-arm@nongnu.org>
-References: <20240512085716.222326-1-rayhan.faizel@gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240512085716.222326-1-rayhan.faizel@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12b;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12b.google.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,21 +82,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 May 2024 09:22:07 -0000
+X-List-Received-Date: Mon, 13 May 2024 10:11:23 -0000
 
-On 12/5/24 10:57, Rayhan Faizel wrote:
-> None of the RPi boards have ADC on-board. In real life, an external ADC chip
-> is required to operate on analog signals.
-
-Oops.
-
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-> Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
-> ---
->   docs/system/arm/raspi.rst | 1 -
->   1 file changed, 1 deletion(-)
-
-
-
+This series improves the tracing experience in two devices used in ARM cont=
+ext.=0D
+It also removes a duplicate statement in an IMX watchdog which may indicate=
+ a=0D
+bug (see comment underneath commit message).=0D
+=0D
+Best regards,=0D
+Bernhard=0D
+=0D
+Bernhard Beschow (3):=0D
+  hw/rtc/ds1338: Trace send and receive operations=0D
+  hw/timer/imx_gpt: Convert DPRINTF to trace events=0D
+  hw/watchdog/wdt_imx2: Remove redundant assignment=0D
+=0D
+ hw/rtc/ds1338.c        |  6 ++++++=0D
+ hw/timer/imx_gpt.c     | 18 +++++-------------=0D
+ hw/watchdog/wdt_imx2.c |  1 -=0D
+ hw/rtc/trace-events    |  4 ++++=0D
+ hw/timer/trace-events  |  6 ++++++=0D
+ 5 files changed, 21 insertions(+), 14 deletions(-)=0D
+=0D
+-- =0D
+2.45.0=0D
+=0D
 
