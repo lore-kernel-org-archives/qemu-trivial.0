@@ -1,68 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s6SeT-0005qH-GW
-	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2024 06:11:25 -0400
+	id 1s6SeV-0005rL-8l
+	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2024 06:11:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1s6SeQ-0005ok-S8; Mon, 13 May 2024 06:11:22 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ id 1s6SeS-0005p5-ED; Mon, 13 May 2024 06:11:24 -0400
+Received: from mail-ej1-x634.google.com ([2a00:1450:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1s6SeP-0006Nl-5R; Mon, 13 May 2024 06:11:22 -0400
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-a59b81d087aso1036142866b.3; 
- Mon, 13 May 2024 03:11:19 -0700 (PDT)
+ id 1s6SeQ-0006Oh-MD; Mon, 13 May 2024 06:11:24 -0400
+Received: by mail-ej1-x634.google.com with SMTP id
+ a640c23a62f3a-a5a2d0d8644so825774466b.1; 
+ Mon, 13 May 2024 03:11:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1715595077; x=1716199877; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=3yXxmMXz6raz0yk5kfkPN65fGosWmMze3CL97q/kGb8=;
- b=OsJ70k2LDdxPvGdXRxlNKyTZV5Okg0OyrMrCf1pe7djzt164GPyehr2ajxzBf9+D/d
- SFHrv90wjC3Cg7X/jzN277rOetRkQgsV1uJj4GapfBFAEcnXZDF3KOgQ6XSkUoSm5MYX
- 0s6TMOXxSPUxuabKF237K8k6MTsI72wDEZVHKgE8dOUJCLe/l9++cOTiJfBZFD2XyAtA
- 6Fh7Z3zhkR5QKaD9kA8vSNqZGg2//THGNz1OhtQ0pKOx1NqzuQEid5oe9Xa4HsRjGqGq
- 2v4dNQkTUqfxDs/aSnHc1i/++uQ+Ty0+e7koq0i2xy/r16cIRw/d9ITpZZ1zVtt5vcFw
- iT4A==
+ d=gmail.com; s=20230601; t=1715595080; x=1716199880; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=fUtc2P5wiu3xmmXd/GBLH801a72H5QY+oBtjsuwYI28=;
+ b=mb759xq4rnEe/ZuU4Ld3afXejl8uCwjv8+DfKV0mq4EvQTFs/yjRuLNo+v5EriczfZ
+ k86JvM5aN/JM2uHD6Rm77CRoqC63miabAzZLg8E4bSVcwGMWHzIDsz1ssve/RT4pUatJ
+ Ef5Z/xGB+wqz+i86+1ZoLlUMqxVVnHH9+7zYvgt6gpl0BmQrE43CNz630DfcQUqAJe/c
+ wkV7lb/aNscF0hrgM9G09u6VQw9sGO/9nZeWXVeeDBsEwRV8oEsAduNZAaSXHFkCOL17
+ yAbhI0oJX4F/2WI+uwvRWSL2Op6Kkiq9jotAYOK0UiDgIE3wJrgy9S5X/wcOsU3y1Npl
+ CF7Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715595077; x=1716199877;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=3yXxmMXz6raz0yk5kfkPN65fGosWmMze3CL97q/kGb8=;
- b=vTW8Ltyv1rIJKz1NMOg2o2IXfxy4ru2WBpHuVt9C5NErqiIKrodd+x3Vm4Lq+0eoMl
- lkojoMPnEBMQF2i5z+qRZ097mhcwceGwRlDJm2cU1aU6bkdw++E68H2R0eP9DptXG3v+
- vHqNCqKp0iCSw42rf4K/nR/3oFKjTOmGgBY2BJXElusoW8Lmv8DYpxKkg+0bYfSpQ1xJ
- fXkS2KBsVwGCSx1dnUcoAcD705IDX3d5bQbgbZZFvm9lvaIurDU/AevZGBKZk0cq7IkY
- KrMqdlm/dns/WKfXdHqt5YvPOQYzxSjeVDo1+BUeRHUaMu15f5UVeJCunG2xnV8Efcw3
- wC6g==
+ d=1e100.net; s=20230601; t=1715595080; x=1716199880;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=fUtc2P5wiu3xmmXd/GBLH801a72H5QY+oBtjsuwYI28=;
+ b=Xd7yf93ivdspOkeH8LiCjG5YNp3uzJG0FqEifbyfpdwrrrSsuOrxS8F4z//BIMg5z6
+ lOEI8WQ2qDAhJSdbfjmXwsKUnpFESoBBo+xqb7u45ShorHyPT0V2ObBBZA2M3Q3NJzoO
+ S2889vEufABr+A0bmKgfOk2vJm63ywmqrv/h3MRzClPP6VCLUjZ4s80S/oPlKVowV0i2
+ MApvk0/m7nlUPJ6nJNhvtqq/hHFSUYjhtsGOKh+rHeMpTzQHwSLRS+X+1pNUj1yxKbTj
+ edPPU7FktqC33A28KFAeuKJrptmLphDV1DRF7sDcBQeVh6Or5E2kp9djFb5n0t0g9NUl
+ 8Vbw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUP4ou7g0dE7knRM/q0UC+S9qADl0SIvAzoYO2x3aqrXIWExKhfiCi9sJB8FKCWdhpF2d8xFsT92CmGSNqZt93SJqZCDa0P85UcDjLBi70+5BvLSI5JZZJ3gRVHEg==
-X-Gm-Message-State: AOJu0Yzb7VVj9LhuyqIgH30gXBJM3QCQ7gqC+RdcHIuq67Lnt6DV/avH
- zpKEJdvGcXhCgwqJyAPyJxaKybdOQtyQDfcM9KHUuI6JfBvYTCPbOy7f2w==
-X-Google-Smtp-Source: AGHT+IEx8gcj5bGokGVyKMB/94BfU3JzwTai1LOpxID13VP2mRwyneYTT+NcVZ755kI00lz1gAfmxQ==
-X-Received: by 2002:a17:906:f59a:b0:a55:6602:e3a9 with SMTP id
- a640c23a62f3a-a5a2d53b27fmr1096572866b.1.1715595076679; 
- Mon, 13 May 2024 03:11:16 -0700 (PDT)
+ AJvYcCUJJESi3O9pi/W6pG08V/dLzFWIkHsCxIbf/5AvNmaCCtbCXeHSQuTUKA7jNnjfejf4+vEVDgWFoFJ9rnSGSzUZhOcz2acqniFyigVR99gqZijHwd1MeDMV6u8sGw==
+X-Gm-Message-State: AOJu0Ywe1d3oXWHNEDC27zAzOpbxAgoKpqo/i66jiKXSkg2cgYoo/haV
+ Nur6OP2rfkLjs5PSlJKph0sq3IMeJKYjuwJN5OrGPFBpRvNA/revzz1QMg==
+X-Google-Smtp-Source: AGHT+IFDtbqqeNzLK4reqnTP+WC926m1NYJQtEWZfxnSrKA9TQH9evXC4Q0sDH5B0MBh3fDxL1FWzQ==
+X-Received: by 2002:a17:906:394e:b0:a59:cb29:3fac with SMTP id
+ a640c23a62f3a-a5a2d68aad7mr655064066b.65.1715595079841; 
+ Mon, 13 May 2024 03:11:19 -0700 (PDT)
 Received: from archlinux.. (business-90-187-110-129.pool2.vodafone-ip.de.
  [90.187.110.129]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a5a17894d2asm574906666b.87.2024.05.13.03.11.16
+ a640c23a62f3a-a5a17894d2asm574906666b.87.2024.05.13.03.11.18
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 13 May 2024 03:11:16 -0700 (PDT)
+ Mon, 13 May 2024 03:11:18 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Peter Maydell <peter.maydell@linaro.org>, Michael Tokarev <mjt@tls.msk.ru>,
  Laurent Vivier <laurent@vivier.eu>,
  Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-trivial@nongnu.org,
- qemu-arm@nongnu.org, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH 0/3] Trivial ARM changes
-Date: Mon, 13 May 2024 12:11:05 +0200
-Message-ID: <20240513101108.5237-1-shentey@gmail.com>
+ qemu-arm@nongnu.org, Bernhard Beschow <shentey@gmail.com>,
+ Guenter Roeck <linux@roeck-us.net>
+Subject: [PATCH 3/3] hw/watchdog/wdt_imx2: Remove redundant assignment
+Date: Mon, 13 May 2024 12:11:08 +0200
+Message-ID: <20240513101108.5237-4-shentey@gmail.com>
 X-Mailer: git-send-email 2.45.0
-Content-Type: text/plain; charset="utf-8"
+In-Reply-To: <20240513101108.5237-1-shentey@gmail.com>
+References: <20240513101108.5237-1-shentey@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x633.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::634;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -82,30 +85,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 13 May 2024 10:11:23 -0000
+X-List-Received-Date: Mon, 13 May 2024 10:11:24 -0000
 
-This series improves the tracing experience in two devices used in ARM cont=
-ext.=0D
-It also removes a duplicate statement in an IMX watchdog which may indicate=
- a=0D
-bug (see comment underneath commit message).=0D
-=0D
-Best regards,=0D
-Bernhard=0D
-=0D
-Bernhard Beschow (3):=0D
-  hw/rtc/ds1338: Trace send and receive operations=0D
-  hw/timer/imx_gpt: Convert DPRINTF to trace events=0D
-  hw/watchdog/wdt_imx2: Remove redundant assignment=0D
-=0D
- hw/rtc/ds1338.c        |  6 ++++++=0D
- hw/timer/imx_gpt.c     | 18 +++++-------------=0D
- hw/watchdog/wdt_imx2.c |  1 -=0D
- hw/rtc/trace-events    |  4 ++++=0D
- hw/timer/trace-events  |  6 ++++++=0D
- 5 files changed, 21 insertions(+), 14 deletions(-)=0D
-=0D
--- =0D
-2.45.0=0D
-=0D
+The same statement is executed unconditionally right before the if statement.
+
+Cc: Guenter Roeck <linux@roeck-us.net>
+Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+
+---
+
+The duplicate line may indicate a bug. I'm not familiar with the code, so this
+patch may go into the wrong direction. Please check!
+---
+ hw/watchdog/wdt_imx2.c | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/hw/watchdog/wdt_imx2.c b/hw/watchdog/wdt_imx2.c
+index 6452fc4721..f9a7ea287f 100644
+--- a/hw/watchdog/wdt_imx2.c
++++ b/hw/watchdog/wdt_imx2.c
+@@ -39,7 +39,6 @@ static void imx2_wdt_expired(void *opaque)
+ 
+     /* Perform watchdog action if watchdog is enabled */
+     if (s->wcr & IMX2_WDT_WCR_WDE) {
+-        s->wrsr = IMX2_WDT_WRSR_TOUT;
+         watchdog_perform_action();
+     }
+ }
+-- 
+2.45.0
+
 
