@@ -1,76 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s699o-0005bE-0B
-	for mharc-qemu-trivial@gnu.org; Sun, 12 May 2024 09:22:28 -0400
+	id 1s6Myu-0002QH-Cc
+	for mharc-qemu-trivial@gnu.org; Mon, 13 May 2024 00:08:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1s6546-0004cF-Sh; Sun, 12 May 2024 05:00:18 -0400
-Received: from mail-ej1-x62c.google.com ([2a00:1450:4864:20::62c])
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1s6MyF-0002OA-8Y; Mon, 13 May 2024 00:07:28 -0400
+Received: from mail-vk1-xa35.google.com ([2607:f8b0:4864:20::a35])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <rayhan.faizel@gmail.com>)
- id 1s6545-0000pz-AW; Sun, 12 May 2024 05:00:18 -0400
-Received: by mail-ej1-x62c.google.com with SMTP id
- a640c23a62f3a-a5a5cce2ce6so69198966b.3; 
- Sun, 12 May 2024 02:00:15 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1s6Mxx-0002UT-Ve; Mon, 13 May 2024 00:07:26 -0400
+Received: by mail-vk1-xa35.google.com with SMTP id
+ 71dfb90a1353d-4df3f7b93a7so984470e0c.1; 
+ Sun, 12 May 2024 21:07:09 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1715504414; x=1716109214; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=s2HUUSV/R8kHZKSr121aPfLsWX8/+1NKAhwK3cedQig=;
- b=CnSae8VyhVRHxPbnvqPS6aYSGk5WL8H9EQMiX7YhegCcAvk7crL/JmfjLxmWXUsuQW
- zEp+i5/N8Mq4CsSO0dKt9oGIOq5SE7xgl1HaKYixaDqIfobMMjo0y9HZ1pXg6t50MD3x
- ryFB3Dx4lKjYyahOAYE7nfqY/5SrzntY5ibfCxqHIfry2OZ9R1seTKBCDFjvsR0V6XoU
- 0cKE1gu3paasdceMA4Y15td+kB+4LLi1Wua8uv81OdZcd58Qhrj5lXOmu/zf35mxZ63H
- 4FBZMqIZYkuuxUmdoYZZ2+uyeteqk7J0YMGzmscXvYP50eUPTwth4RIE2liNtFmQAx0A
- DDfA==
+ d=gmail.com; s=20230601; t=1715573228; x=1716178028; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=I5IKMKHDMv2So9ueaEu7fZnePMMLqzgNKoCO9ZCKWec=;
+ b=QHGqpY4slLIITH52nem5HvHDpgGybPx7GXk8i/7DjPZB36CoJwiiHrKTR8gc1+eNvz
+ Bdp6YdIc3khFPmNsPyh4XIvr3R5/yfmVQsvufo3+fJ1tzFlJYB+FOFl3qRCjFEIwhuAw
+ xdy9aBaGVazcg9a0AwzFBsPyvbXE6cWcHYwXRu+wdAx/x6mFlT0vQ5LZmW491Tqj+Gpu
+ MoRoCarW8Stcb6eWSo6Ks1IbpgQv5jYZpZgOh6Xz1EUIICQzyZ63yIVoameTqXY/Rhvd
+ 7yjNY4bbiKM4hsbVbseOgUgLbD4EVgtBbZ/B75wNOoDCo9hiD10z8cQ6AotwQp3sz9Ot
+ wJ9w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1715504414; x=1716109214;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=s2HUUSV/R8kHZKSr121aPfLsWX8/+1NKAhwK3cedQig=;
- b=ZQIn9J80SgWPwSzv8NSOY0pqeHGKdiz8ZPh83Zce/6PZtTAC3VkIRxluw8el2jOTr2
- TUX73tBiCwmCPqDE6LfSugKKQjWzqb1Eply820B8Gjy+WKu6XVZJKY8KkHxrSULuADUg
- gP0qzfY53Mhi6y9I0fVJSGX8GtKrqcZ3nQ+YdTldIXswGq1BnS7S6RZveFufQH5N1unT
- 44DjWmldNirn/54MpWFWVcR8qSDIL43yUSlHSCEIwpwE6EQyc9TKOS4GcunQnYUX63xP
- LAYFXv0NjLbNp55WravYH2R6EM3YkEqTu56GPu+E4MAEDb34FfJjNfUPxvgM3QYz49uB
- apDA==
+ d=1e100.net; s=20230601; t=1715573228; x=1716178028;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=I5IKMKHDMv2So9ueaEu7fZnePMMLqzgNKoCO9ZCKWec=;
+ b=UrUrat1P6zZhSD1IA2iC+JhU+NtbokstY88Q+U5OAcxTgW7Q6gLt97/uyQkabU8Pal
+ pJLkxySA/huCdKsoEYSTVSN1ZEdNEgTd7LiGM+NnhH1Vga5v3INQavqjZSNT0o33gxp3
+ q1YgMJv/jQ4BAz6nTm1pwTQqKxdRiWz6+G5/bPJCBIlPpvRdIlCyxKkSFOxeqyOuQgNm
+ FVtkgXijfXKKUpEHpvitHWCZ8SR5sfAQmo6foCsg+hKllcJLEN2i822iP2KU5iM/fugV
+ 91GibdDBoZq0hm91J37EP7Xi//NvisyD0kTAL/fHF3aOJswva1buQvMdH8kvuwnGIhrw
+ QwtA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWuPx01AfotSquAmMuIJXr8wnARAD6/2SJFI/L09AeA7kEXYUEOh0z/zIiIaYpo0hsDPhX8BSa0t7NWT0gDUOFqvsO6
-X-Gm-Message-State: AOJu0YwPEenOnNTt/IeUlqmPFi5bETdFX4uFMq0o9cWQ90ekPqRlVdx7
- SsVflGG8Q8L30vpV8CX71Qc74YJ1u4Gx03B7zb9CIFsNzwfmsIJc+9spGw==
-X-Google-Smtp-Source: AGHT+IF0TbT2N6rFBEBx9taO0of0xFoGS8TLGmiKYBj3TU6h0qZ8S8KIq2QNQQlclcsJ8lwvb4BdBQ==
-X-Received: by 2002:a17:906:17c5:b0:a59:c9ad:bd26 with SMTP id
- a640c23a62f3a-a5a2d54c601mr431144566b.12.1715504413771; 
- Sun, 12 May 2024 02:00:13 -0700 (PDT)
-Received: from localhost.localdomain ([212.70.119.223])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a5a1781cf9csm432214366b.7.2024.05.12.02.00.12
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 12 May 2024 02:00:13 -0700 (PDT)
-From: Rayhan Faizel <rayhan.faizel@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Rayhan Faizel <rayhan.faizel@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org (open list:Raspberry Pi)
-Subject: [PATCH] docs/system: Remove ADC from raspi documentation
-Date: Sun, 12 May 2024 14:27:16 +0530
-Message-Id: <20240512085716.222326-1-rayhan.faizel@gmail.com>
-X-Mailer: git-send-email 2.34.1
+ AJvYcCUDbGvjILA9iFwQ6QUHR6SfMvd9XLjlEQAYXs8qtU2e+6GR2P2yvuTOCCrZv/Vpy4S/C6jQ7a26JBlHYuAHOjOyfigpfURnWw==
+X-Gm-Message-State: AOJu0YzzqyUa2WPk3WiWOLIEn8GQIqIA5XRBGWVlQGz94FHiXt1OXSCt
+ v/vkLN2hG/ddqizAxjadfNJmqUNmcADNpVLAG5S/TTKvBMwOekpH+lniShPLU9Bsb1gfPx9ZcEP
+ int/i/iyIuwlYzttyTR9xKihHhNw=
+X-Google-Smtp-Source: AGHT+IGWmyfCDeckncnUt7RQ8IAlMvLUdwX4ffoBM5fBH/bVAbdYda6fsGhl0yvrcCMmm8SPfNIEMRWiU1lp13fcA8s=
+X-Received: by 2002:a05:6122:3128:b0:4db:1b9d:c70a with SMTP id
+ 71dfb90a1353d-4df88180aefmr7050950e0c.0.1715573228199; Sun, 12 May 2024
+ 21:07:08 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::62c;
- envelope-from=rayhan.faizel@gmail.com; helo=mail-ej1-x62c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20240503071634.841103-1-mjt@tls.msk.ru>
+In-Reply-To: <20240503071634.841103-1-mjt@tls.msk.ru>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Mon, 13 May 2024 14:06:41 +1000
+Message-ID: <CAKmqyKOC+o5-H-Yo=8J1XaDJzTavqvUAQ9CvDk8muFeiWrAUBg@mail.gmail.com>
+Subject: Re: [PATCH v2] Re-enable riscv64-debian-cross-container (debian
+ riscv64 is finally usable again!)
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::a35;
+ envelope-from=alistair23@gmail.com; helo=mail-vk1-xa35.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 12 May 2024 09:22:26 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,29 +80,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 12 May 2024 09:00:19 -0000
+X-List-Received-Date: Mon, 13 May 2024 04:07:42 -0000
 
-None of the RPi boards have ADC on-board. In real life, an external ADC chip
-is required to operate on analog signals.
+On Fri, May 3, 2024 at 5:17=E2=80=AFPM Michael Tokarev <mjt@tls.msk.ru> wro=
+te:
+>
+> Revert "gitlab-ci: Disable the riscv64-debian-cross-container by default"
+> This reverts commit f51f90c65ed7706c3c4f7a889ce3d6b7ab75ef6a.
+>
+> riscv64 in debian has been non-functioning for almost a year, after the
+> architecture has been promoted to release architecture and all binary
+> packages started to be re-built, making the port not multi-arch-co-instal=
+lable
+> for a long time (in debian, multi-arch packages must be of the same versi=
+on,
+> but when a package is rebuilt on one architecture it gets a version bump =
+too).
+> Later on, debiah had a long time64_t transition which made sid unusable f=
+or
+> quite some time too.  Both such events happens in debian very rarely (lik=
+e,
+> once in 10 years or so - for example, previous big transition like that w=
+as
+> libc5 =3D> libc6 transition).  Now both of these are finished (where qemu=
+ is
+> concerned anyway).
+>
+> Hopefully debian unstable wont be very unstable.  At the very least it is
+> better to have sporadic CI failures here than no riscv64 coverage at all.
+>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 
-Signed-off-by: Rayhan Faizel <rayhan.faizel@gmail.com>
----
- docs/system/arm/raspi.rst | 1 -
- 1 file changed, 1 deletion(-)
+Acked-by: Alistair Francis <alistair.francis@wdc.com>
 
-diff --git a/docs/system/arm/raspi.rst b/docs/system/arm/raspi.rst
-index fbec1da6a1..44eec3f1c3 100644
---- a/docs/system/arm/raspi.rst
-+++ b/docs/system/arm/raspi.rst
-@@ -40,7 +40,6 @@ Implemented devices
- Missing devices
- ---------------
- 
-- * Analog to Digital Converter (ADC)
-  * Pulse Width Modulation (PWM)
-  * PCIE Root Port (raspi4b)
-  * GENET Ethernet Controller (raspi4b)
--- 
-2.34.1
+Alistair
 
+> ---
+> v2: drop a TODO comment which turned out to be confused, replacing it
+>  with the description why debian riscv64 were unusable.
+>
+>  .gitlab-ci.d/container-cross.yml | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/.gitlab-ci.d/container-cross.yml b/.gitlab-ci.d/container-cr=
+oss.yml
+> index e3103940a0..dbffed3f21 100644
+> --- a/.gitlab-ci.d/container-cross.yml
+> +++ b/.gitlab-ci.d/container-cross.yml
+> @@ -77,7 +77,6 @@ riscv64-debian-cross-container:
+>    allow_failure: true
+>    variables:
+>      NAME: debian-riscv64-cross
+> -    QEMU_JOB_OPTIONAL: 1
+>
+>  s390x-debian-cross-container:
+>    extends: .container_job_template
+> --
+> 2.39.2
+>
+>
 
