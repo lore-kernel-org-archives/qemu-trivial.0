@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s9P2s-0000T8-4J
-	for mharc-qemu-trivial@gnu.org; Tue, 21 May 2024 08:56:46 -0400
+	id 1s9P2t-0000TH-1K
+	for mharc-qemu-trivial@gnu.org; Tue, 21 May 2024 08:56:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zide.chen@intel.com>)
- id 1s9JIe-0005EX-5H; Tue, 21 May 2024 02:48:40 -0400
-Received: from mgamail.intel.com ([198.175.65.9])
+ id 1s9JcX-00015y-Sn; Tue, 21 May 2024 03:09:13 -0400
+Received: from mgamail.intel.com ([192.198.163.7])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zide.chen@intel.com>)
- id 1s9JIa-0004MJ-6P; Tue, 21 May 2024 02:48:39 -0400
+ id 1s9JcU-0007y6-V1; Tue, 21 May 2024 03:09:13 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1716274117; x=1747810117;
+ t=1716275351; x=1747811351;
  h=message-id:date:mime-version:subject:to:cc:references:
  from:in-reply-to:content-transfer-encoding;
- bh=xu0J+ktm3+Hxoapf2VXvMUf4yrwDYoXdorYqglmrT0Q=;
- b=Lnx5rA038MIr9PmXMxCPP1gWmP+QzxalPCL/Gcn6PypoSpkcF1djHPiD
- p4vlldLkr9edqZHKfaE6/gOVzKT9TImNnYBhvo3zEq8vJZIj6XyMCVJm4
- 6o8GN1Yl9oUMkXNbiBNM9bj4mUn7h8a017r6ftH7plR2aF/xdD4W3vmYi
- oSWbZTKQ63OMkMrqC15U4S/cN35ToAtuCe9I0juREUc92XxMdWRFb5Ihh
- eXyw9M2l1q7TqoNX2Zq/zIaKfFNH37/72RvQ8Ht0VVpgSSGGuettTZoCu
- /tUfowmCQ4YgkVex7LI3mubVBV7zXhdgDat1HWUvKkpqi/XjqbNmxUdrJ A==;
-X-CSE-ConnectionGUID: SlN2mwslRUqxBS2oaI5VYQ==
-X-CSE-MsgGUID: M8HlHXgGSnCsOaRCPfl2Ig==
-X-IronPort-AV: E=McAfee;i="6600,9927,11078"; a="34958220"
-X-IronPort-AV: E=Sophos;i="6.08,176,1712646000"; d="scan'208";a="34958220"
-Received: from fmviesa009.fm.intel.com ([10.60.135.149])
- by orvoesa101.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 May 2024 23:48:32 -0700
-X-CSE-ConnectionGUID: JCc8riy7QGaAOjfig6UEVg==
-X-CSE-MsgGUID: 3cfQ4eaQQ46fP1+bFJP/gw==
+ bh=Pvz7MwSyLrso6mVoQ+oMHX6flK5vwhKGpZy9yfr2v4g=;
+ b=ItTfN3MHsVT5Ogqlq/2hQJpI3vlvA2BDDhLyWezOVQto6YsPLf5bHItm
+ vpQCnOtCir+Jyeo+TnX4F771VormmFlbrjnSoG0xrV7fccbuV2HvHzxoa
+ tbtTwZMlHI0Vw2zWnT8SOwuhs1ZHmx42L9t7gkhwkBv+K+MqAdwk8nu2h
+ VBoOoG5JyrT20oTp9Jz3ZQLRnyz5poaRuuJ71qcMZkxngblG0D+Bu8PRT
+ P8f1lrdxA/+BkB0YRVPEr7WSuhBpoUVqQRs7tbZGbX81y5WzNSIo6JAdd
+ X/y2XIcmvpew501KGPB8p0hA1/OfaN0M2ZLSmgf1waIEXzo2vnc28cMHk w==;
+X-CSE-ConnectionGUID: 8Vhfzc0ZQR+HRv6ZetmLDw==
+X-CSE-MsgGUID: G7zCWYnKRu6+RgEb6cZBag==
+X-IronPort-AV: E=McAfee;i="6600,9927,11078"; a="37824370"
+X-IronPort-AV: E=Sophos;i="6.08,177,1712646000"; d="scan'208";a="37824370"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 May 2024 00:09:06 -0700
+X-CSE-ConnectionGUID: ZWknJowKQB2OV9O07QuR3g==
+X-CSE-MsgGUID: 2ZA/SjucQv6SNNZRGIyJ8g==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,177,1712646000"; d="scan'208";a="32837689"
-Received: from ankitku6-mobl.amr.corp.intel.com (HELO [10.124.48.85])
- ([10.124.48.85])
- by fmviesa009-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 20 May 2024 23:48:31 -0700
-Message-ID: <06c28d67-5b82-416c-ae6f-a8c56f63d0fa@intel.com>
-Date: Mon, 20 May 2024 23:48:29 -0700
+X-IronPort-AV: E=Sophos;i="6.08,177,1712646000"; d="scan'208";a="32681251"
+Received: from pkrish5-mobl2.gar.corp.intel.com (HELO [10.98.172.235])
+ ([10.98.172.235])
+ by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 21 May 2024 00:09:05 -0700
+Message-ID: <310b54f1-e0b1-4cdb-a187-5014976bc946@intel.com>
+Date: Tue, 21 May 2024 00:09:04 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/3] vl: Allow multiple -overcommit commands
@@ -53,7 +53,7 @@ From: "Chen, Zide" <zide.chen@intel.com>
 In-Reply-To: <342858a6-c8bd-45fe-8b91-8e0a444eb2e6@redhat.com>
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=198.175.65.9; envelope-from=zide.chen@intel.com;
+Received-SPF: pass client-ip=192.198.163.7; envelope-from=zide.chen@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -43
 X-Spam_score: -4.4
@@ -75,7 +75,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 May 2024 06:48:40 -0000
+X-List-Received-Date: Tue, 21 May 2024 07:09:14 -0000
 
 
 
@@ -135,10 +135,9 @@ On 5/20/2024 10:16 PM, Thomas Huth wrote:
 >         enable_mlock = qemu_opt_get_bool(opts, "mem-lock", enable_mlock);
 >         enable_cpu_pm = qemu_opt_get_bool(opts, "cpu-pm", enable_cpu_pm);
 > 
-
 > What do you think about this?
 
-Thank you very much! This is a very good idea, and I can update it in V2.
+This is great! Thank you very much! I will update it in V2.
 
 > 
 >  Thomas
