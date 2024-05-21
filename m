@@ -1,73 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1s9Hjh-00031N-Fc
-	for mharc-qemu-trivial@gnu.org; Tue, 21 May 2024 01:08:30 -0400
+	id 1s9Hrg-00060P-24
+	for mharc-qemu-trivial@gnu.org; Tue, 21 May 2024 01:16:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s9Hjf-000312-QG
- for qemu-trivial@nongnu.org; Tue, 21 May 2024 01:08:28 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s9HrW-0005z8-93
+ for qemu-trivial@nongnu.org; Tue, 21 May 2024 01:16:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s9Hjc-0003m7-Iv
- for qemu-trivial@nongnu.org; Tue, 21 May 2024 01:08:27 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1s9HrM-0005R6-Rx
+ for qemu-trivial@nongnu.org; Tue, 21 May 2024 01:16:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1716268101;
+ s=mimecast20190719; t=1716268582;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=EFCbFwxZzGg1KW76WNNRgUlZYL5FOK1G5D+mDSyRI7c=;
- b=Dhe6qbRpQx9UK1XIfURRnhhO/Cs0p/g/Qa0Us7PhhXL1xvJjANJCnmZ3d3hK9kLN7+rHm2
- 05F1G6+4gYgXsTV0zbx5EdBWNYdsg0s2ripfFKA78JLzGuts0SYDUV7X2InPeSuyRJKiM0
- XUPaooiMDVsEX0hHUTHB3CeamDbzw0w=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=f6rLL0yYfxe8Lth/pZimRI+J6NNQU8Oz2cXeSJYlm1I=;
+ b=cWGI2ywzfpy5e90V7vRZhp03wFkvVfQwyZP8EAoZNvEBu/1z0w/NywB3hlcFXjFRTp+idD
+ VD+t7trnENFbYG6sxuOLS+y7hSFQm515AM7ffzsNUFL4/N5RYC5gkFdeP0g3PTsNTWOgkH
+ ksfCiWmQoUEN/7RUyjhLDxLPz2gsE8s=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-121-X4MognICN3Cb337UgtlJiw-1; Tue, 21 May 2024 01:08:19 -0400
-X-MC-Unique: X4MognICN3Cb337UgtlJiw-1
-Received: by mail-qt1-f199.google.com with SMTP id
- d75a77b69052e-43e0e94fa82so119255421cf.0
- for <qemu-trivial@nongnu.org>; Mon, 20 May 2024 22:08:19 -0700 (PDT)
+ us-mta-538-lL-S_hFWPwa7X4ptGdugFA-1; Tue, 21 May 2024 01:16:17 -0400
+X-MC-Unique: lL-S_hFWPwa7X4ptGdugFA-1
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-6a35d0f1673so60614876d6.2
+ for <qemu-trivial@nongnu.org>; Mon, 20 May 2024 22:16:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716268099; x=1716872899;
+ d=1e100.net; s=20230601; t=1716268576; x=1716873376;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
+ :references:cc:to:from:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=EFCbFwxZzGg1KW76WNNRgUlZYL5FOK1G5D+mDSyRI7c=;
- b=LWG03Ra8bJHE5PLuluG9hUm5ttY155aN/ojNFMKdgXBV9/UPE5pcVt7N2uBEa5RmDv
- zE3SdTM/Dy8/qiF4oYQ1mxm3vsDNt5PIJoXHf1k4IQ5G1qcbi5ShJbBmU1uOO/jLa7nn
- j+/OPmoO1XJi9PAneNhkKfpkFphsMVGldLAm9l5ES7gxdVY0pfm6WhOhOMAj6Qwww2L0
- PJ3jE4DWuz4n3H65E8iPYRWTlJ17UfYdGEip/gi7E0kd+1JBR/7gebeTQjSz4w+9N0bx
- 1CxEwNUEBnzNasniWXxKXcgOrbKN1IjheaNdZ2pY+YopRxtsnFaFWWAbT+Ihv0L+PNC2
- yGdg==
+ bh=f6rLL0yYfxe8Lth/pZimRI+J6NNQU8Oz2cXeSJYlm1I=;
+ b=ZoZ2RQDKyoCcB82miClcyDP3hyO1jovotg0yculFDgw9J/B7GxHeQtnMrBlxBzg3r9
+ 6HWdgM3vXNNkQvrCzVvyebZ1q4z0zEaMiRs4fzlgPYY3EmkWkDLiD72ynm9QxL964Ri2
+ 5FHJQQvNS+quAS082QgITZVYsiMjApoTVPd4Jr2pVfigbcRnqbg7BluMaOY43MresqPH
+ G0mdz3jZXF/TZFNKeVod82MNBhY74a2LWeywESFxtGAlLtB0fNjKOM1r61+kIR67V1YD
+ TNTMXavwiMOVVF2gqX2KEkA/3bVBR3C3kr7N4Kr4racbhUC9ntwO5bwXsOe+0r7tbiAs
+ zj3Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWLcRDRf1/OgKALJtlpQvVSjUyuCGa7QEAQpZQ+UN6uEbIJI+VYozIMVbz/swx/b6VEBog3FU04PouhgJLQvPDVkwivwlispw==
-X-Gm-Message-State: AOJu0Yx/ZJkwcVtCa/FL/k0lPZ16pGwzU3qWXnLe1+lEcRVYWRdCNwL5
- h6oCD4CcAFnyLDwWXutM3da/3BH6pAn3l344KfioTFNQRdn4jKHWa70DpdBKJ5eS1/NlO5bH9c9
- ItGKA5Xw+2OcLrUfIuuLUjuMZ+VxJRtIB1NOMcIEZzoAj80sws365dnU=
-X-Received: by 2002:ac8:7c45:0:b0:43a:ffa5:3f24 with SMTP id
- d75a77b69052e-43dfdba9604mr383793541cf.58.1716268098982; 
- Mon, 20 May 2024 22:08:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFAVWVn7k0C5AvPbuNGaH1NkItxQaOgtVjEzXK4e3IKgn9CERGiQIAvXg3Ra8F8pqXa6K8vBA==
-X-Received: by 2002:ac8:7c45:0:b0:43a:ffa5:3f24 with SMTP id
- d75a77b69052e-43dfdba9604mr383793361cf.58.1716268098542; 
- Mon, 20 May 2024 22:08:18 -0700 (PDT)
+ AJvYcCXx+1YQKexSh0bodzEhLerAMWgPwZi6ji3ZdgeKNQSsWvEO0shHFuC064cajliXmUC5n3wKiAOPMzGIt7YpkJ6TYzxVxg/3Mw==
+X-Gm-Message-State: AOJu0Yy4xv6L6ORtyuBy+/Jago2vJTrTREPWUEfuFOW3jo+APXd0ft0k
+ zwwHlEADZxxojWubuACWu8opES4PO6c02lxg0+RLZYDlDETtRrZwxSvg2OnZHigIGUiK/rDuTJy
+ 3/5LBJno+d/Q69wkUafDp71C0jXCSCgPr/OwgUeuMMbWi9w9+BtqdC80=
+X-Received: by 2002:a05:6214:5e8a:b0:6a0:7de0:a28c with SMTP id
+ 6a1803df08f44-6a168259719mr261681626d6.65.1716268576642; 
+ Mon, 20 May 2024 22:16:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGo1s64d2U5i2GY2FDRNZbPm+KzaO6cUPAvYcUSeAxciUA4bG+ryN4QXeUXMk/tslH6lwWTYw==
+X-Received: by 2002:a05:6214:5e8a:b0:6a0:7de0:a28c with SMTP id
+ 6a1803df08f44-6a168259719mr261681466d6.65.1716268576141; 
+ Mon, 20 May 2024 22:16:16 -0700 (PDT)
 Received: from [192.168.0.4] (ip-109-43-179-90.web.vodafone.de.
  [109.43.179.90]) by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-43e046467a4sm139339391cf.83.2024.05.20.22.08.15
+ 6a1803df08f44-6a15f1cd271sm118812106d6.101.2024.05.20.22.16.13
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 May 2024 22:08:18 -0700 (PDT)
-Message-ID: <7b6bb859-acbe-4fb0-a8d5-c1698f597ef7@redhat.com>
-Date: Tue, 21 May 2024 07:08:12 +0200
+ Mon, 20 May 2024 22:16:15 -0700 (PDT)
+Message-ID: <342858a6-c8bd-45fe-8b91-8e0a444eb2e6@redhat.com>
+Date: Tue, 21 May 2024 07:16:11 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH 1/3] vl: Allow multiple -overcommit commands
+From: Thomas Huth <thuth@redhat.com>
 To: Zide Chen <zide.chen@intel.com>, qemu-devel@nongnu.org
 Cc: pbonzini@redhat.com, mst@redhat.com, cfontana@suse.de,
  xiaoyao.li@intel.com, QEMU Trivial <qemu-trivial@nongnu.org>
 References: <20240520174733.32979-1-zide.chen@intel.com>
  <20240520174733.32979-2-zide.chen@intel.com>
-From: Thomas Huth <thuth@redhat.com>
+ <7b6bb859-acbe-4fb0-a8d5-c1698f597ef7@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
  yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
@@ -110,13 +111,13 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240520174733.32979-2-zide.chen@intel.com>
+In-Reply-To: <7b6bb859-acbe-4fb0-a8d5-c1698f597ef7@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -137,46 +138,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 21 May 2024 05:08:28 -0000
+X-List-Received-Date: Tue, 21 May 2024 05:16:42 -0000
 
-On 20/05/2024 19.47, Zide Chen wrote:
-> Both cpu-pm and mem-lock are related to system resource overcommit, but
-> they are separate from each other, in terms of how they are realized,
-> and of course, they are applied to different system resources.
+On 21/05/2024 07.08, Thomas Huth wrote:
+> On 20/05/2024 19.47, Zide Chen wrote:
+>> Both cpu-pm and mem-lock are related to system resource overcommit, but
+>> they are separate from each other, in terms of how they are realized,
+>> and of course, they are applied to different system resources.
+>>
+>> It's tempting to use separate command lines to specify their behavior.
+>> e.g., in the following example, the cpu-pm command is quietly
+>> overwritten, and it's not easy to notice it without careful inspection.
+>>
+>>    --overcommit mem-lock=on
+>>    --overcommit cpu-pm=on
+>>
+>> Fixes: c8c9dc42b7ca ("Remove the deprecated -realtime option")
+>> Signed-off-by: Zide Chen <zide.chen@intel.com>
+>> ---
+>>   system/vl.c | 8 ++++++--
+>>   1 file changed, 6 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/system/vl.c b/system/vl.c
+>> index a3eede5fa5b8..ed682643805b 100644
+>> --- a/system/vl.c
+>> +++ b/system/vl.c
+>> @@ -3545,8 +3545,12 @@ void qemu_init(int argc, char **argv)
+>>                   if (!opts) {
+>>                       exit(1);
+>>                   }
+>> -                enable_mlock = qemu_opt_get_bool(opts, "mem-lock", false);
+>> -                enable_cpu_pm = qemu_opt_get_bool(opts, "cpu-pm", false);
+>> +
+>> +                /* Don't override the -overcommit option if set */
+>> +                enable_mlock = enable_mlock ||
+>> +                    qemu_opt_get_bool(opts, "mem-lock", false);
+>> +                enable_cpu_pm = enable_cpu_pm ||
+>> +                    qemu_opt_get_bool(opts, "cpu-pm", false);
+>>                   break;
+>>               case QEMU_OPTION_compat:
+>>                   {
 > 
-> It's tempting to use separate command lines to specify their behavior.
-> e.g., in the following example, the cpu-pm command is quietly
-> overwritten, and it's not easy to notice it without careful inspection.
-> 
->    --overcommit mem-lock=on
->    --overcommit cpu-pm=on
-> 
-> Fixes: c8c9dc42b7ca ("Remove the deprecated -realtime option")
-> Signed-off-by: Zide Chen <zide.chen@intel.com>
-> ---
->   system/vl.c | 8 ++++++--
->   1 file changed, 6 insertions(+), 2 deletions(-)
-> 
-> diff --git a/system/vl.c b/system/vl.c
-> index a3eede5fa5b8..ed682643805b 100644
-> --- a/system/vl.c
-> +++ b/system/vl.c
-> @@ -3545,8 +3545,12 @@ void qemu_init(int argc, char **argv)
->                   if (!opts) {
->                       exit(1);
->                   }
-> -                enable_mlock = qemu_opt_get_bool(opts, "mem-lock", false);
-> -                enable_cpu_pm = qemu_opt_get_bool(opts, "cpu-pm", false);
-> +
-> +                /* Don't override the -overcommit option if set */
-> +                enable_mlock = enable_mlock ||
-> +                    qemu_opt_get_bool(opts, "mem-lock", false);
-> +                enable_cpu_pm = enable_cpu_pm ||
-> +                    qemu_opt_get_bool(opts, "cpu-pm", false);
->                   break;
->               case QEMU_OPTION_compat:
->                   {
+> Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Ah, wait, actually, this is a bad idea, too, since now you cannot disable an 
+enabled option anymore. Imagine that you have for example enabled the option 
+in the config file, and now you'd like to disable it on the command line 
+again - you're stuck with the enabled setting in that case.
+
+I think the better solution is to replace the "false" default value at the end:
+
+         enable_mlock = qemu_opt_get_bool(opts, "mem-lock", enable_mlock);
+         enable_cpu_pm = qemu_opt_get_bool(opts, "cpu-pm", enable_cpu_pm);
+
+What do you think about this?
+
+  Thomas
 
 
