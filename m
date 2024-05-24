@@ -1,39 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sA5i1-0006M3-IM
-	for mharc-qemu-trivial@gnu.org; Thu, 23 May 2024 06:30:05 -0400
+	id 1sAb6D-0002FQ-HZ
+	for mharc-qemu-trivial@gnu.org; Fri, 24 May 2024 16:01:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frolov@swemel.ru>)
- id 1sA5hz-0006KN-0h; Thu, 23 May 2024 06:30:03 -0400
-Received: from mx.swemel.ru ([95.143.211.150])
+ (Exim 4.90_1) (envelope-from <zide.chen@intel.com>)
+ id 1sAb67-0002AN-VX; Fri, 24 May 2024 16:01:05 -0400
+Received: from mgamail.intel.com ([192.198.163.13])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frolov@swemel.ru>)
- id 1sA5hw-0001EJ-40; Thu, 23 May 2024 06:30:02 -0400
-From: Dmitry Frolov <frolov@swemel.ru>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=swemel.ru; s=mail;
- t=1716460193;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=2WqSKzC05EnuZ9NdOIHIky6gmKHK5eVCSZg+kTaLSO0=;
- b=ffB5S9BfPsVmAWB0yMX4TZ8R3FXBWKk8st20uQTE1DdkrDDdkbl7m8erd5kjqyW3dgDmuf
- 3T7SmvtENkCPJdgSbMRB9U1DP6303KAkMnIc6j8LiklQsQ1Buk2GkQP5IxBrN7fkJPIOaj
- vbu4IX4EF3ucFNsVPRedKer7P2Pqq4g=
-To: alxndr@bu.edu
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, sdl.qemu@linuxtesting.org,
- Dmitry Frolov <frolov@swemel.ru>
-Subject: [PATCH] tests/qtest/fuzz/virtio_net_fuzz.c: fix virtio_net_fuzz_multi
-Date: Thu, 23 May 2024 13:28:14 +0300
-Message-ID: <20240523102813.396750-2-frolov@swemel.ru>
+ (Exim 4.90_1) (envelope-from <zide.chen@intel.com>)
+ id 1sAb65-00050y-8Q; Fri, 24 May 2024 16:01:03 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1716580861; x=1748116861;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=CfBulfqouTJD2KFyY/RsB2TzLeKk14JepRumF3y0b/o=;
+ b=W9Qd0V68JuFXL+/effeT7LWe/8z5ESNY53WrWP8v6x//wlWKkvjyCl1C
+ LDVMD3CF2qfRUbUPs83sNtj5e8gs2w/vW2fL/x35DHXJ7dbFjyJ4ANtPo
+ 3gwizdpfNuuXQfmKq+7fRBNPOQy6HLj6VhV17ru+opYKrT3NhFFCVYJNS
+ 0TouAkppXZcoPxXebo7f1gNfn5UC6p1IlMN/lZRfTNpx/CLgFFhX+U+6a
+ oZYP9f3E72T1LpSk9LECCKpodSUKNhxUW63UkmhKXJH3MJF7ECzSbLolB
+ NSD4kyFRzVWvXlszJE3zBmUjaKOy8A8nplYM2zS0mAbHBlR2uhjOiM1Ly g==;
+X-CSE-ConnectionGUID: XVCOb9HDTO6U9wxfKnNKow==
+X-CSE-MsgGUID: 7nlj2i+mS6C2Guhi/Qfgkw==
+X-IronPort-AV: E=McAfee;i="6600,9927,11082"; a="15918269"
+X-IronPort-AV: E=Sophos;i="6.08,186,1712646000"; d="scan'208";a="15918269"
+Received: from orviesa004.jf.intel.com ([10.64.159.144])
+ by fmvoesa107.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 May 2024 13:00:47 -0700
+X-CSE-ConnectionGUID: 8eAWJbomQI6p/IR+TlvkVA==
+X-CSE-MsgGUID: pS5GDOZTTWK8qgYDfYh2nA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.08,186,1712646000"; d="scan'208";a="39108914"
+Received: from 9cc2c43eec6b.jf.intel.com ([10.54.77.100])
+ by orviesa004-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 24 May 2024 13:00:47 -0700
+From: Zide Chen <zide.chen@intel.com>
+To: qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, mst@redhat.com, thuth@redhat.com, cfontana@suse.de,
+ xiaoyao.li@intel.com, qemu-trivial@nongnu.org,
+ Zide Chen <zide.chen@intel.com>
+Subject: [PATCH V2 3/3] target/i386: Move host_cpu_enable_cpu_pm into
+ kvm_cpu_realizefn()
+Date: Fri, 24 May 2024 13:00:17 -0700
+Message-Id: <20240524200017.150339-4-zide.chen@intel.com>
+X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240524200017.150339-1-zide.chen@intel.com>
+References: <20240524200017.150339-1-zide.chen@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=95.143.211.150; envelope-from=frolov@swemel.ru;
- helo=mx.swemel.ru
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+Received-SPF: pass client-ip=192.198.163.13; envelope-from=zide.chen@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -47,32 +70,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 23 May 2024 10:30:03 -0000
+X-List-Received-Date: Fri, 24 May 2024 20:01:05 -0000
 
-If QTestState was already CLOSED due to error, calling qtest_clock_step()
-afterwards makes no sense and only raises false-crash with message:
-"assertion timer != NULL failed".
+It seems not a good idea to expand features in host_cpu_realizefn,
+which is for host CPU only.  Additionally, cpu-pm option is KVM
+specific, and it's cleaner to put it in kvm_cpu_realizefn(), together
+with the WAITPKG code.
 
-Signed-off-by: Dmitry Frolov <frolov@swemel.ru>
+Fixes: f5cc5a5c1686 ("i386: split cpu accelerators from cpu.c, using AccelCPUClass")
+Signed-off-by: Zide Chen <zide.chen@intel.com>
 ---
- tests/qtest/fuzz/virtio_net_fuzz.c | 3 +++
- 1 file changed, 3 insertions(+)
+ target/i386/host-cpu.c    | 12 ------------
+ target/i386/kvm/kvm-cpu.c | 11 +++++++++--
+ 2 files changed, 9 insertions(+), 14 deletions(-)
 
-diff --git a/tests/qtest/fuzz/virtio_net_fuzz.c b/tests/qtest/fuzz/virtio_net_fuzz.c
-index e239875e3b..2f57a8ddd8 100644
---- a/tests/qtest/fuzz/virtio_net_fuzz.c
-+++ b/tests/qtest/fuzz/virtio_net_fuzz.c
-@@ -81,6 +81,9 @@ static void virtio_net_fuzz_multi(QTestState *s,
-         /* Run the main loop */
-         qtest_clock_step(s, 100);
-         flush_events(s);
-+        if (!qtest_probe_child(s)) {
-+            return;
-+        }
+diff --git a/target/i386/host-cpu.c b/target/i386/host-cpu.c
+index 280e427c017c..8b8bf5afeccf 100644
+--- a/target/i386/host-cpu.c
++++ b/target/i386/host-cpu.c
+@@ -42,15 +42,6 @@ static uint32_t host_cpu_phys_bits(void)
+     return host_phys_bits;
+ }
  
-         /* Wait on used descriptors */
-         if (check_used && !vqa.rx) {
+-static void host_cpu_enable_cpu_pm(X86CPU *cpu)
+-{
+-    CPUX86State *env = &cpu->env;
+-
+-    host_cpuid(5, 0, &cpu->mwait.eax, &cpu->mwait.ebx,
+-               &cpu->mwait.ecx, &cpu->mwait.edx);
+-    env->features[FEAT_1_ECX] |= CPUID_EXT_MONITOR;
+-}
+-
+ static uint32_t host_cpu_adjust_phys_bits(X86CPU *cpu)
+ {
+     uint32_t host_phys_bits = host_cpu_phys_bits();
+@@ -83,9 +74,6 @@ bool host_cpu_realizefn(CPUState *cs, Error **errp)
+     X86CPU *cpu = X86_CPU(cs);
+     CPUX86State *env = &cpu->env;
+ 
+-    if (cpu->max_features && enable_cpu_pm) {
+-        host_cpu_enable_cpu_pm(cpu);
+-    }
+     if (env->features[FEAT_8000_0001_EDX] & CPUID_EXT2_LM) {
+         uint32_t phys_bits = host_cpu_adjust_phys_bits(cpu);
+ 
+diff --git a/target/i386/kvm/kvm-cpu.c b/target/i386/kvm/kvm-cpu.c
+index 3adcedf0dbc3..197c892da89a 100644
+--- a/target/i386/kvm/kvm-cpu.c
++++ b/target/i386/kvm/kvm-cpu.c
+@@ -64,9 +64,16 @@ static bool kvm_cpu_realizefn(CPUState *cs, Error **errp)
+      *   cpu_common_realizefn() (via xcc->parent_realize)
+      */
+     if (cpu->max_features) {
+-        if (enable_cpu_pm && kvm_has_waitpkg()) {
+-            env->features[FEAT_7_0_ECX] |= CPUID_7_0_ECX_WAITPKG;
++        if (enable_cpu_pm) {
++            if (kvm_has_waitpkg()) {
++                env->features[FEAT_7_0_ECX] |= CPUID_7_0_ECX_WAITPKG;
++            }
++
++            host_cpuid(5, 0, &cpu->mwait.eax, &cpu->mwait.ebx,
++                       &cpu->mwait.ecx, &cpu->mwait.edx);
++            env->features[FEAT_1_ECX] |= CPUID_EXT_MONITOR;
+         }
++
+         if (cpu->ucode_rev == 0) {
+             cpu->ucode_rev =
+                 kvm_arch_get_supported_msr_feature(kvm_state,
 -- 
-2.43.0
+2.34.1
 
 
