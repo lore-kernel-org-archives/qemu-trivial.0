@@ -1,89 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sBt3S-00076M-SX
-	for mharc-qemu-trivial@gnu.org; Tue, 28 May 2024 05:23:38 -0400
+	id 1sBtzw-0002MV-3i
+	for mharc-qemu-trivial@gnu.org; Tue, 28 May 2024 06:24:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sBt3Q-00075s-O9
- for qemu-trivial@nongnu.org; Tue, 28 May 2024 05:23:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sBt3P-00047E-86
- for qemu-trivial@nongnu.org; Tue, 28 May 2024 05:23:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1716888213;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=GiIG3EFPZ0dBuuM8Q/iUmKqxSxvg75nmSJ1FT+F9AGU=;
- b=cARBdFTsTVmBOE/5SAyT7Q3MgmR/QqfiKZrNZQV6GGLuWnxXIkmigtjqNi0Q190ikh3/Es
- WldDOIta0m0aOtoS8zWjJaarrbSI48OzpE81GI74nPIeUiFxsFySn1/7U30/HH2q98bgGD
- ky7/YYXOuMI2DgPV1sunGjfzPwQQH+A=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-683-ddRKSFeeNvyrn3VDk6xskw-1; Tue, 28 May 2024 05:23:32 -0400
-X-MC-Unique: ddRKSFeeNvyrn3VDk6xskw-1
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-354f28306dfso468151f8f.0
- for <qemu-trivial@nongnu.org>; Tue, 28 May 2024 02:23:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <vilhelmgyda@gmail.com>)
+ id 1sBtzu-0002MJ-FY; Tue, 28 May 2024 06:24:02 -0400
+Received: from mail-pf1-x42d.google.com ([2607:f8b0:4864:20::42d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <vilhelmgyda@gmail.com>)
+ id 1sBtzs-0005j6-Q2; Tue, 28 May 2024 06:24:02 -0400
+Received: by mail-pf1-x42d.google.com with SMTP id
+ d2e1a72fcca58-6f8e859eb20so484835b3a.0; 
+ Tue, 28 May 2024 03:23:58 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1716891837; x=1717496637; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=WV0J4buDakTlrBzgJ0rNMX1xKXRSU6p21ZGDgZCBtPA=;
+ b=OUGhBusjDPp/lRK0ZHE7P9A6ycPnDAppGfKkBFDDdyUo2CdwXOedTEJOnHKdgSYDcR
+ u2TlzJ/GTQzLimjBCmLRr/lFCjcNCgjQduLd06wVXHDH4NQ9A+D0xbrAf8wUI73daBqZ
+ mBDAgcn8cCYvwbVQ6ooaJzC7/6g1g1ELC3r1zSfsmQ4aGjwvoIMafIcjK7QNMlhqx+Vw
+ a6cHNEYZi8ZZpweSQlQocjfzaOBiMSnoQRKzVl1q7Rtf1xfDMBvZjFuAMsuRgQkLX2yV
+ eWJHEr0yZU7zBlMxiZmliO3VL8sfEHZhACn5hgUWBv08syGPqZIhB86iMOZCZV/W1dJQ
+ T2Vg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716888211; x=1717493011;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=GiIG3EFPZ0dBuuM8Q/iUmKqxSxvg75nmSJ1FT+F9AGU=;
- b=UaT9KGBxy/swwVYE7eiPiwES41UL/qWhqj0nE1k9rdp5V4fFiEv/9DVP/p9ZCtt7/N
- pgCqegFYG5W0DRNFeJ69YjgFDx1yLNFxYQOg6T18THDfAZQ8xTgJnPSA0jgaDBkFf/Zf
- VSPKYmsrQYpyRke5eZXPeH1MSuNEF/fbcgsFR60M+no3apJmzY3exhmPgyIHTPv8Ry3f
- GpPHyOq3bkekEFSjcDdUxDA01IYtZJoarasVt3D7rhaCYxQTmAgV1cVOVK+Evr/UfDMI
- 8w6UAPMix+FQt6SrBJ7i/VXfxC2SxwtEX2F75uIlrLDTd82MUXbIECjlHeFCGqeFe5cL
- Tmfg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVQQ01A3MLgIoKU41jTEtP+YGgGFQXFRJ03JXMEfqTgIAjkhdxw5uxLEkNx1fdsBr4IuILUpn76C2/wd0wY9Jk/MM1NLOL3zA==
-X-Gm-Message-State: AOJu0YyHu6F1+xHSJYv9BuARJLjrs/xEw3Ul/iNMnDAJGcs8RV8uhwdQ
- 8SGGkA4tdaIPL+mz4h0vOgkFQbMk5IyG1YHjGvvD6xgVAcbu6VN8OZf4wTU8kpzf8Qs0USBBU+y
- fVSPzC5MjctXdQCuOLWNPbZpJIA0odNBuOxfHO3Dl5pEYmAVhSLXYUis=
-X-Received: by 2002:a05:600c:54cc:b0:419:f630:57c2 with SMTP id
- 5b1f17b1804b1-421089f98d1mr89363025e9.37.1716888210992; 
- Tue, 28 May 2024 02:23:30 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGPlszxcSL842gGYVO5cN2F4JY8z8RF3aRn4CMl2XzfMw5gxlI5PzYGovCP7YNkPOim6kLEwg==
-X-Received: by 2002:a05:600c:54cc:b0:419:f630:57c2 with SMTP id
- 5b1f17b1804b1-421089f98d1mr89362855e9.37.1716888210608; 
- Tue, 28 May 2024 02:23:30 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4210897bc02sm135851425e9.22.2024.05.28.02.23.29
+ d=1e100.net; s=20230601; t=1716891837; x=1717496637;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=WV0J4buDakTlrBzgJ0rNMX1xKXRSU6p21ZGDgZCBtPA=;
+ b=CCNKW5IZ2/7IHUm3J0DKj9GIJofsUcLIWtb06ZlFsQyE4j5pLvctKKdl6IQx8GXL0W
+ 0acBXjJZhVGGpVFv3pAY6u7ZKKI8jkx/AUFKBqTm2ga8dfMwSvKp7m1QOeO6oaNDak7J
+ 32lBLnL0EUDwV8WK4n0QgVJURLNgkxwSFkDWnaF0HDvodZG7+ZFnF7aMoa0Szt7eFxD5
+ SE4mNL2R+4pJ3YE6r/9877BKISYHZn/rNqwDgHjnmRhWyqYoAQc5N7t6j7Px+/ookmnd
+ LZ+BYcoK2zZvVaOimNZ/zi1TFDxuHLu46MMAgiGQny8zMJG+FrgHaURN3Uq2ZxCNpuO6
+ jm7Q==
+X-Gm-Message-State: AOJu0YwpAht8if5duJe8lX24ukN+Qkncc8hpL/jmcsqDc9Tn/zCnLndD
+ BwOZpacM0fnPyBNTqGA6tPs3T0rnhWlo4XFet72Cn68H8/pnGpS/FslNBg==
+X-Google-Smtp-Source: AGHT+IHo6DDgggILzH0XwlTHwUsrsOAGqGB3pzZ43lnHPDgyMHVR+bSQfGFMfvR2aJzgVieuumBWIg==
+X-Received: by 2002:a05:6a20:d48c:b0:1af:f92c:de8e with SMTP id
+ adf61e73a8af0-1b212f724e1mr12762597637.52.1716891837174; 
+ Tue, 28 May 2024 03:23:57 -0700 (PDT)
+Received: from wijungle.bbrouter ([183.83.55.203])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-6f8fc36d224sm6144663b3a.83.2024.05.28.03.23.53
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 May 2024 02:23:30 -0700 (PDT)
-Date: Tue, 28 May 2024 11:23:27 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Zide Chen <zide.chen@intel.com>
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, mst@redhat.com,
- thuth@redhat.com, cfontana@suse.de, xiaoyao.li@intel.com,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH V2 0/3] improve -overcommit cpu-pm=on|off
-Message-ID: <20240528112327.634e95a6@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240524200017.150339-1-zide.chen@intel.com>
-References: <20240524200017.150339-1-zide.chen@intel.com>
-X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-redhat-linux-gnu)
+ Tue, 28 May 2024 03:23:56 -0700 (PDT)
+From: Will Gyda <vilhelmgyda@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, philmd@linaro.org, pbonzini@redhat.com,
+ richard.henderson@linaro.org, eduardo@habkost.net,
+ Will Gyda <vilhelmgyda@gmail.com>
+Subject: [PATCH] Issue #2294 | Machine microvm doesn't run under Xen accel for
+ x86_64
+Date: Tue, 28 May 2024 15:53:39 +0530
+Message-Id: <20240528102339.106257-1-vilhelmgyda@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42d;
+ envelope-from=vilhelmgyda@gmail.com; helo=mail-pf1-x42d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.034,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,34 +79,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 28 May 2024 09:23:36 -0000
+X-List-Received-Date: Tue, 28 May 2024 10:24:03 -0000
 
-On Fri, 24 May 2024 13:00:14 -0700
-Zide Chen <zide.chen@intel.com> wrote:
+Issue #2294: Machine microvm doesn't run under Xen accel for qemu-system-x86_64. 
+Solution: microvm is now not build if only Xen is available.
 
-> Currently, if running "-overcommit cpu-pm=on" on hosts that don't
-> have MWAIT support, the MWAIT/MONITOR feature is advertised to the
-> guest and executing MWAIT/MONITOR on the guest triggers #UD.
+Signed-off-by: Will Gyda <vilhelmgyda@gmail.com>
 
-this is missing proper description how do you trigger issue
-with reproducer and detailed description why guest sees MWAIT
-when it's not supported by host.
+---
+ configs/devices/i386-softmmu/default.mak | 2 +-
+ hw/i386/Kconfig                          | 2 ++
+ 2 files changed, 3 insertions(+), 1 deletion(-)
 
-> 
-> V2:
-> - [PATCH 1]: took Thomas' suggestion for more generic fix
-> - [PATCH 2/3]: no changes
-> 
-> Zide Chen (3):
->   vl: Allow multiple -overcommit commands
->   target/i386: call cpu_exec_realizefn before x86_cpu_filter_features
->   target/i386: Move host_cpu_enable_cpu_pm into kvm_cpu_realizefn()
-> 
->  system/vl.c               |  4 ++--
->  target/i386/cpu.c         | 24 ++++++++++++------------
->  target/i386/host-cpu.c    | 12 ------------
->  target/i386/kvm/kvm-cpu.c | 12 +++++++++---
->  4 files changed, 23 insertions(+), 29 deletions(-)
-> 
+diff --git a/configs/devices/i386-softmmu/default.mak b/configs/devices/i386-softmmu/default.mak
+index 598c6646df..6a73aee7dd 100644
+--- a/configs/devices/i386-softmmu/default.mak
++++ b/configs/devices/i386-softmmu/default.mak
+@@ -29,4 +29,4 @@
+ CONFIG_ISAPC=y
+ CONFIG_I440FX=y
+ CONFIG_Q35=y
+-CONFIG_MICROVM=y
++#CONFIG_MICROVM=n
+diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
+index a6ee052f9a..f8ec8ebd7a 100644
+--- a/hw/i386/Kconfig
++++ b/hw/i386/Kconfig
+@@ -108,6 +108,8 @@ config Q35
+ 
+ config MICROVM
+     bool
++    default y
++    depends on KVM || WHPX || NVMM || HVF
+     select SERIAL_ISA # for serial_hds_isa_init()
+     select ISA_BUS
+     select APIC
+-- 
+2.25.1
 
 
