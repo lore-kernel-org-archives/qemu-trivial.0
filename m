@@ -1,90 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sCIhm-0003BM-Rq
-	for mharc-qemu-trivial@gnu.org; Wed, 29 May 2024 08:46:58 -0400
+	id 1sCJOe-0001LD-QW
+	for mharc-qemu-trivial@gnu.org; Wed, 29 May 2024 09:31:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sCIhk-0003AR-QG
- for qemu-trivial@nongnu.org; Wed, 29 May 2024 08:46:56 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sCJOd-0001K9-2F
+ for qemu-trivial@nongnu.org; Wed, 29 May 2024 09:31:15 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sCIhW-0007WE-Fu
- for qemu-trivial@nongnu.org; Wed, 29 May 2024 08:46:55 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sCJOa-0007Nv-Fp
+ for qemu-trivial@nongnu.org; Wed, 29 May 2024 09:31:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1716986801;
+ s=mimecast20190719; t=1716989470;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=uVMDKm04epXl+SRHoDfd5QIbcdAd2LbbZjlVtYq7c6Y=;
- b=YzBhT661y8GfMVTG4YGmlT6RlF4v/1PV7uzSOZbOwkFO/ZstTtY7zvZ6VzNyUEEv+iQrpH
- adYcV5Cg/v6IY5/C6NsYd7VZn+E3HX62AUUGJK6oOgrJqH7biIFdLzN6IIkvZlcpaalaF/
- v2W8Ge2YP7asaM9wVInvp5lD80soZ4E=
-Received: from mail-lj1-f200.google.com (mail-lj1-f200.google.com
- [209.85.208.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-176-0fjrEguJN6SK4keZMcLLrw-1; Wed, 29 May 2024 08:46:40 -0400
-X-MC-Unique: 0fjrEguJN6SK4keZMcLLrw-1
-Received: by mail-lj1-f200.google.com with SMTP id
- 38308e7fff4ca-2e95a2fc8e3so18722441fa.0
- for <qemu-trivial@nongnu.org>; Wed, 29 May 2024 05:46:39 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1716986797; x=1717591597;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=uVMDKm04epXl+SRHoDfd5QIbcdAd2LbbZjlVtYq7c6Y=;
- b=FxoLdZxpUQ9k+j4hDQvjqiUXL2+ecdP4BztIePktNtc6nqOGJFWSuuGG5XlRx4Flt7
- ZspmaQtXKi5Z/MNeKsPRZWNU+fj/W51CKnVlxd8tZ8T3spfUtnCBUJBzcs2yHFnzlNik
- Mw69FheIR8xMEy/aFH2sYn9u+Pr9hsQTEwyKvddQGvAYT0BnBxEgubYmDDfHZeduFFb2
- DU6n5LLuaAgrlkJk5X/pOOUpr8IqrGuIILP5J3Ps7J+J8Lun26YzZClNeXMwrkOlJQ+Y
- 4MPf7Fs9laUkt+u+qBZdI7BIlhjaOY3znd/tw8SCrwtFeekKIblMricd55JwV/qy4GBQ
- 6WqQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV4PdzQv9bcA6aDjKXhdgCz263IuzUI1sWNNT1AzrmfCMKUS0bfBqb/bE5nbJc+8v6m8abfcEsBMMpUpg+et+feYCr5tr/F8A==
-X-Gm-Message-State: AOJu0YzTdkTgsGeEZzxt3deXj9RwYmSGa6LI+ymXN5RIbyhtT0CN8yPY
- wfOg9/q3Rm6SzIJht0y+zSI2afTzk7mfeAoC1BvpSvF+E7VgoCFq5seUwXJDkFqTyk2UuBHlt6+
- I8DmzVaiTyZnF2J1k9wuUDAB8bNaEUMbrQBpziuajyXaMW904iS7ecBJjdrnz4AU=
-X-Received: by 2002:a05:651c:20f:b0:2e9:8833:adf2 with SMTP id
- 38308e7fff4ca-2e98833b01amr31841911fa.8.1716986797345; 
- Wed, 29 May 2024 05:46:37 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGNPfkBRBLPfW91C+KFvrGA4fXlvgZatsqhvKrg7oItxt91tvdnWQ5gQRFSE5xUnnS79dLBFQ==
-X-Received: by 2002:a05:651c:20f:b0:2e9:8833:adf2 with SMTP id
- 38308e7fff4ca-2e98833b01amr31841721fa.8.1716986796874; 
- Wed, 29 May 2024 05:46:36 -0700 (PDT)
-Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
- [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42108970967sm179653065e9.17.2024.05.29.05.46.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 May 2024 05:46:36 -0700 (PDT)
-Date: Wed, 29 May 2024 14:46:34 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: "Chen, Zide" <zide.chen@intel.com>
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, mst@redhat.com,
- thuth@redhat.com, cfontana@suse.de, xiaoyao.li@intel.com,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH V2 0/3] improve -overcommit cpu-pm=on|off
-Message-ID: <20240529144634.40aa597f@imammedo.users.ipa.redhat.com>
-In-Reply-To: <29944dba-7005-496d-81ff-1cbc77c67f15@intel.com>
-References: <20240524200017.150339-1-zide.chen@intel.com>
- <20240528112327.634e95a6@imammedo.users.ipa.redhat.com>
- <29944dba-7005-496d-81ff-1cbc77c67f15@intel.com>
-X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-redhat-linux-gnu)
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=qauMgQVPtCANJT4Nt7LxsGLPSOqkbefylp3+uMX4ihU=;
+ b=gCAV/CiRdlkx7iXXgdkWd3VAwOS398PiX4xG5TeHfQodVQ8E2zshnKTl7rJhQNJvFIAxnx
+ lhszB7ZuWBkUyjtCpckHO/RR2h1MhhoMt5sXi7GL01ym6TI+zOrFggfZeutXwlRaoKlBcF
+ qoHdrtMsLFb1Hpw5HAC1NSa9Q6QRMUc=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-544-bf6bpCfvPfu8_lUqwAZ44g-1; Wed,
+ 29 May 2024 09:31:09 -0400
+X-MC-Unique: bf6bpCfvPfu8_lUqwAZ44g-1
+Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.9])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 965DD3C025B1;
+ Wed, 29 May 2024 13:31:08 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.109])
+ by smtp.corp.redhat.com (Postfix) with ESMTP id 646E5492BC6;
+ Wed, 29 May 2024 13:31:07 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: [PATCH] io/channel-socket: Fix -fsanitize=undefined problem with
+ latest Clang
+Date: Wed, 29 May 2024 15:31:06 +0200
+Message-ID: <20240529133106.1224866-1-thuth@redhat.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.036,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,46 +67,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 May 2024 12:46:57 -0000
+X-List-Received-Date: Wed, 29 May 2024 13:31:15 -0000
 
-On Tue, 28 May 2024 11:16:59 -0700
-"Chen, Zide" <zide.chen@intel.com> wrote:
+Casting function pointers from one type to another causes undefined
+behavior errors when compiling with -fsanitize=undefined with Clang v18:
 
-> On 5/28/2024 2:23 AM, Igor Mammedov wrote:
-> > On Fri, 24 May 2024 13:00:14 -0700
-> > Zide Chen <zide.chen@intel.com> wrote:
-> >   
-> >> Currently, if running "-overcommit cpu-pm=on" on hosts that don't
-> >> have MWAIT support, the MWAIT/MONITOR feature is advertised to the
-> >> guest and executing MWAIT/MONITOR on the guest triggers #UD.  
-> > 
-> > this is missing proper description how do you trigger issue
-> > with reproducer and detailed description why guest sees MWAIT
-> > when it's not supported by host.  
-> 
-> If "overcommit cpu-pm=on" and "-cpu hpst" are present, as shown in the
-it's bette to provide full QEMU CLI and host/guest kernels used and what
-hardware was used if it's relevant so others can reproduce problem.
+ $ QTEST_QEMU_BINARY=./qemu-system-mips64 tests/qtest/netdev-socket
+ TAP version 13
+ # random seed: R02S4424f4f460de783fdd3d72c5571d3adc
+ 1..10
+ # Start of mips64 tests
+ # Start of netdev tests
+ # Start of stream tests
+ # starting QEMU: exec ./qemu-system-mips64 -qtest unix:/tmp/qtest-1213196.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-1213196.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -nodefaults -M none -netdev stream,id=st0,addr.type=fd,addr.str=3 -accel qtest
+ ../io/task.c:78:13: runtime error: call to function qapi_free_SocketAddress through pointer to incorrect function type 'void (*)(void *)'
+ /tmp/qemu-sanitize/qapi/qapi-types-sockets.c:170: note: qapi_free_SocketAddress defined here
+ SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../io/task.c:78:13
 
-> following, CPUID_EXT_MONITOR is set after x86_cpu_filter_features(), so
-> that it doesn't have a chance to check MWAIT against host features and
-> will be advertised to the guest regardless of whether it's supported by
-> the host or not.
-> 
-> x86_cpu_realizefn()
->   x86_cpu_filter_features()
->   cpu_exec_realizefn()
->     kvm_cpu_realizefn
->       host_cpu_realizefn
->         host_cpu_enable_cpu_pm
->           env->features[FEAT_1_ECX] |= CPUID_EXT_MONITOR;
-> 
-> 
-> If it's not supported by the host, executing MONITOR or MWAIT
-> instructions from the guest triggers #UD, no matter MWAIT_EXITING
-> control is set or not.
+Add a wrapper function to avoid the problem.
 
-If I recall right, kvm was able to emulate mwait/monitor.
-So question is why it leads to exception instead?
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ io/channel-socket.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
+
+diff --git a/io/channel-socket.c b/io/channel-socket.c
+index 3a899b0608..aa2a1c8586 100644
+--- a/io/channel-socket.c
++++ b/io/channel-socket.c
+@@ -193,6 +193,10 @@ static void qio_channel_socket_connect_worker(QIOTask *task,
+     qio_task_set_error(task, err);
+ }
+ 
++static void qio_qapi_free_SocketAddress(gpointer sa)
++{
++    qapi_free_SocketAddress(sa);
++}
+ 
+ void qio_channel_socket_connect_async(QIOChannelSocket *ioc,
+                                       SocketAddress *addr,
+@@ -213,7 +217,7 @@ void qio_channel_socket_connect_async(QIOChannelSocket *ioc,
+     qio_task_run_in_thread(task,
+                            qio_channel_socket_connect_worker,
+                            addrCopy,
+-                           (GDestroyNotify)qapi_free_SocketAddress,
++                           qio_qapi_free_SocketAddress,
+                            context);
+ }
+ 
+-- 
+2.45.1
 
 
