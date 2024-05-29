@@ -1,61 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sCJOe-0001LD-QW
-	for mharc-qemu-trivial@gnu.org; Wed, 29 May 2024 09:31:16 -0400
+	id 1sCJRt-0004A6-Sl
+	for mharc-qemu-trivial@gnu.org; Wed, 29 May 2024 09:34:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sCJOd-0001K9-2F
- for qemu-trivial@nongnu.org; Wed, 29 May 2024 09:31:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sCJOa-0007Nv-Fp
- for qemu-trivial@nongnu.org; Wed, 29 May 2024 09:31:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1716989470;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=qauMgQVPtCANJT4Nt7LxsGLPSOqkbefylp3+uMX4ihU=;
- b=gCAV/CiRdlkx7iXXgdkWd3VAwOS398PiX4xG5TeHfQodVQ8E2zshnKTl7rJhQNJvFIAxnx
- lhszB7ZuWBkUyjtCpckHO/RR2h1MhhoMt5sXi7GL01ym6TI+zOrFggfZeutXwlRaoKlBcF
- qoHdrtMsLFb1Hpw5HAC1NSa9Q6QRMUc=
-Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
- by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-544-bf6bpCfvPfu8_lUqwAZ44g-1; Wed,
- 29 May 2024 09:31:09 -0400
-X-MC-Unique: bf6bpCfvPfu8_lUqwAZ44g-1
-Received: from smtp.corp.redhat.com (int-mx09.intmail.prod.int.rdu2.redhat.com
- [10.11.54.9])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mimecast-mx02.redhat.com (Postfix) with ESMTPS id 965DD3C025B1;
- Wed, 29 May 2024 13:31:08 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.109])
- by smtp.corp.redhat.com (Postfix) with ESMTP id 646E5492BC6;
- Wed, 29 May 2024 13:31:07 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: [PATCH] io/channel-socket: Fix -fsanitize=undefined problem with
- latest Clang
-Date: Wed, 29 May 2024 15:31:06 +0200
-Message-ID: <20240529133106.1224866-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <michael.vogt@gmail.com>)
+ id 1sCEAf-0001Ni-HS; Wed, 29 May 2024 03:56:29 -0400
+Received: from mail-ot1-x332.google.com ([2607:f8b0:4864:20::332])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <michael.vogt@gmail.com>)
+ id 1sCEAd-0001iQ-GH; Wed, 29 May 2024 03:56:28 -0400
+Received: by mail-ot1-x332.google.com with SMTP id
+ 46e09a7af769-6f8cd25ebd5so727368a34.1; 
+ Wed, 29 May 2024 00:56:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1716969385; x=1717574185; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=qCDc0qSIrx+gT7/2fYqupgGbWDRahVb7zLFLhhmMUDY=;
+ b=eh9TcBTwvsx8+E+75yLXrbdoWYFWu63bd7F9rjeFyB7n/uOw6/MDhk6mhwO+1S0fqW
+ 614T+iAtB0LQwdNwlQemNfzaTGEtnmCG6gkm0jY+UlHrRvM+jxk7YikyrOFJ7LAlkN6G
+ 7OBZ/jXWqIan17QpzCPl9pIL9Wa16GsUimyivgn2/Q6trPZwyZdHx1cRacsp4qsoVOjz
+ ngizM+EC79xNyVWyz7mafrB2Fg3b/suOHKyflY31f2nyjp6CpTOUlrv0xoiTlBLTAHIK
+ jdmiQIjU/uZ577Sd5MQTVqG8ptBigaDK8PCnBz3nj0ul0Yr87HNuM45WqXvraen53zcv
+ Yn8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1716969385; x=1717574185;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=qCDc0qSIrx+gT7/2fYqupgGbWDRahVb7zLFLhhmMUDY=;
+ b=r5JGtKVwoqzedmcsB7zYXAqbJCHb4Pg3OGscA2P9PDPjyxR/m1FWW57opm9MBnPywc
+ m0WV2US8zlS/qk5EICeuC87dk29HuY3/D776jP8MeVHnxQv8UwvpIqWWgbaLrfWanJ5V
+ SR05t2YUY82Is8GgM852Hvi1WAQGc83X82JFhyOCLP8Z4WdLjXnXOV98BGBj7je48j3U
+ t3nUMIfgHVFJesAYzxttW6K+yETSIjO2gWSlRjiP8eZHuKh5D6i4CUEuK6Hrgy/5Ybtp
+ yWuJwskLfpL2B9BMeFdHGA78bcpuOTyGk/GFbUmVLvlTsQl4pMttwH+UNnuH2kOiGIF/
+ 1KIA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXnaNUqOjHy4yf/Wv03/iRJzIxGsXAUYW9AOGp7YiVOkMdlYm18Q/2i/wMOTLmYc8ieCBK0SrFo47M0aVVlAKsIjDd0K8xy7w==
+X-Gm-Message-State: AOJu0YwuAJsid42Z9NXVj2qWES6OhIr2gJYu3WRFbvoghp18oLrY60Uz
+ eiqlu2gKgclxkMA3HeMsTpLx4eVYcydsiC34v6NfrDdrOvWo/WmFSmNQOuAn/wR0jt/reBFTuK2
+ y/meA9YqZ/bW/iL/CvjcmFedvthmDLEUJ
+X-Google-Smtp-Source: AGHT+IEW3pHZ5PPPpE/CMFk51jXTjX4t7+ixwZgJJd9rcCK5Yr0cOre1Jyznv/NedrZoi35Dv085UsJiiRpuqISf8pM=
+X-Received: by 2002:a05:6870:818e:b0:24f:d448:c97a with SMTP id
+ 586e51a60fabf-24fd448cae1mr10707167fac.42.1716969385120; Wed, 29 May 2024
+ 00:56:25 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.9
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20240423152438.19841-2-mvogt@redhat.com>
+In-Reply-To: <20240423152438.19841-2-mvogt@redhat.com>
+From: Michael Vogt <michael.vogt@gmail.com>
+Date: Wed, 29 May 2024 09:56:14 +0200
+Message-ID: <CAPOxN2FyxFp+BJzgFa=EkxDkrctBg5TZWWW1x7r0tKONLHJ7Jg@mail.gmail.com>
+Subject: Re: [PATCH] linux-user: Add ioctl for BLKBSZSET
+To: qemu-devel@nongnu.org, richard.henderson@linaro.org
+Cc: Michael Vogt <mvogt@redhat.com>, qemu-trivial@nongnu.org
+Content-Type: multipart/alternative; boundary="0000000000004a5bb30619931669"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::332;
+ envelope-from=michael.vogt@gmail.com; helo=mail-ot1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.036,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 29 May 2024 09:34:36 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,55 +76,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 29 May 2024 13:31:15 -0000
+X-List-Received-Date: Wed, 29 May 2024 07:56:30 -0000
 
-Casting function pointers from one type to another causes undefined
-behavior errors when compiling with -fsanitize=undefined with Clang v18:
+--0000000000004a5bb30619931669
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
- $ QTEST_QEMU_BINARY=./qemu-system-mips64 tests/qtest/netdev-socket
- TAP version 13
- # random seed: R02S4424f4f460de783fdd3d72c5571d3adc
- 1..10
- # Start of mips64 tests
- # Start of netdev tests
- # Start of stream tests
- # starting QEMU: exec ./qemu-system-mips64 -qtest unix:/tmp/qtest-1213196.sock -qtest-log /dev/null -chardev socket,path=/tmp/qtest-1213196.qmp,id=char0 -mon chardev=char0,mode=control -display none -audio none -nodefaults -M none -netdev stream,id=st0,addr.type=fd,addr.str=3 -accel qtest
- ../io/task.c:78:13: runtime error: call to function qapi_free_SocketAddress through pointer to incorrect function type 'void (*)(void *)'
- /tmp/qemu-sanitize/qapi/qapi-types-sockets.c:170: note: qapi_free_SocketAddress defined here
- SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior ../io/task.c:78:13
+Friendly ping
 
-Add a wrapper function to avoid the problem.
+I tested the patch as part of cross architecture build (using qemu-user)
+with bootc-image-builder in
+https://github.com/osbuild/bootc-image-builder/pull/342 (not sure that is
+relevant, but I wanted to mention that it is working for my test-case).
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- io/channel-socket.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
+On Tue, Apr 23, 2024 at 5:25=E2=80=AFPM Michael Vogt <michael.vogt@gmail.co=
+m> wrote:
 
-diff --git a/io/channel-socket.c b/io/channel-socket.c
-index 3a899b0608..aa2a1c8586 100644
---- a/io/channel-socket.c
-+++ b/io/channel-socket.c
-@@ -193,6 +193,10 @@ static void qio_channel_socket_connect_worker(QIOTask *task,
-     qio_task_set_error(task, err);
- }
- 
-+static void qio_qapi_free_SocketAddress(gpointer sa)
-+{
-+    qapi_free_SocketAddress(sa);
-+}
- 
- void qio_channel_socket_connect_async(QIOChannelSocket *ioc,
-                                       SocketAddress *addr,
-@@ -213,7 +217,7 @@ void qio_channel_socket_connect_async(QIOChannelSocket *ioc,
-     qio_task_run_in_thread(task,
-                            qio_channel_socket_connect_worker,
-                            addrCopy,
--                           (GDestroyNotify)qapi_free_SocketAddress,
-+                           qio_qapi_free_SocketAddress,
-                            context);
- }
- 
--- 
-2.45.1
+> Tiny patch to add the ioctl wrapper definition for BLKBSZSET.
+>
+> Signed-off-by: Michael Vogt <mvogt@redhat.com>
+> ---
+>  linux-user/ioctls.h | 1 +
+>  1 file changed, 1 insertion(+)
+>
+> diff --git a/linux-user/ioctls.h b/linux-user/ioctls.h
+> index d508d0c04a..3b41128fd7 100644
+> --- a/linux-user/ioctls.h
+> +++ b/linux-user/ioctls.h
+> @@ -102,6 +102,7 @@
+>       IOCTL(BLKRAGET, IOC_R, MK_PTR(TYPE_LONG))
+>       IOCTL(BLKSSZGET, IOC_R, MK_PTR(TYPE_INT))
+>       IOCTL(BLKBSZGET, IOC_R, MK_PTR(TYPE_INT))
+> +     IOCTL(BLKBSZSET, IOC_W, MK_PTR(TYPE_INT))
+>       IOCTL_SPECIAL(BLKPG, IOC_W, do_ioctl_blkpg,
+>                     MK_PTR(MK_STRUCT(STRUCT_blkpg_ioctl_arg)))
+>
+> --
+> 2.43.0
+>
+>
 
+--0000000000004a5bb30619931669
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div>Friendly ping</div><div><br></div><div>I tested the p=
+atch as part of cross architecture build (using qemu-user) with bootc-image=
+-builder in <a href=3D"https://github.com/osbuild/bootc-image-builder/pull/=
+342">https://github.com/osbuild/bootc-image-builder/pull/342</a> (not sure =
+that is relevant, but I wanted to mention that it is working for my test-ca=
+se).</div></div><br><div class=3D"gmail_quote"><div dir=3D"ltr" class=3D"gm=
+ail_attr">On Tue, Apr 23, 2024 at 5:25=E2=80=AFPM Michael Vogt &lt;<a href=
+=3D"mailto:michael.vogt@gmail.com">michael.vogt@gmail.com</a>&gt; wrote:<br=
+></div><blockquote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;=
+border-left:1px solid rgb(204,204,204);padding-left:1ex">Tiny patch to add =
+the ioctl wrapper definition for BLKBSZSET.<br>
+<br>
+Signed-off-by: Michael Vogt &lt;<a href=3D"mailto:mvogt@redhat.com" target=
+=3D"_blank">mvogt@redhat.com</a>&gt;<br>
+---<br>
+=C2=A0linux-user/ioctls.h | 1 +<br>
+=C2=A01 file changed, 1 insertion(+)<br>
+<br>
+diff --git a/linux-user/ioctls.h b/linux-user/ioctls.h<br>
+index d508d0c04a..3b41128fd7 100644<br>
+--- a/linux-user/ioctls.h<br>
++++ b/linux-user/ioctls.h<br>
+@@ -102,6 +102,7 @@<br>
+=C2=A0 =C2=A0 =C2=A0 IOCTL(BLKRAGET, IOC_R, MK_PTR(TYPE_LONG))<br>
+=C2=A0 =C2=A0 =C2=A0 IOCTL(BLKSSZGET, IOC_R, MK_PTR(TYPE_INT))<br>
+=C2=A0 =C2=A0 =C2=A0 IOCTL(BLKBSZGET, IOC_R, MK_PTR(TYPE_INT))<br>
++=C2=A0 =C2=A0 =C2=A0IOCTL(BLKBSZSET, IOC_W, MK_PTR(TYPE_INT))<br>
+=C2=A0 =C2=A0 =C2=A0 IOCTL_SPECIAL(BLKPG, IOC_W, do_ioctl_blkpg,<br>
+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 MK_PT=
+R(MK_STRUCT(STRUCT_blkpg_ioctl_arg)))<br>
+<br>
+-- <br>
+2.43.0<br>
+<br>
+</blockquote></div>
+
+--0000000000004a5bb30619931669--
 
