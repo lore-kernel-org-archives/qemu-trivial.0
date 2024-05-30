@@ -1,63 +1,94 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sCg6J-0003dG-NZ
-	for mharc-qemu-trivial@gnu.org; Thu, 30 May 2024 09:45:51 -0400
+	id 1sCgs2-000873-F7
+	for mharc-qemu-trivial@gnu.org; Thu, 30 May 2024 10:35:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sCg6I-0003cO-Bo; Thu, 30 May 2024 09:45:50 -0400
-Received: from mgamail.intel.com ([192.198.163.11])
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sCgs0-0007yM-N3
+ for qemu-trivial@nongnu.org; Thu, 30 May 2024 10:35:08 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sCg6F-0005VC-JL; Thu, 30 May 2024 09:45:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1717076747; x=1748612747;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=HYmRgL95rnL5I4sazCVOH+MQqPURl3cWjMGPjI8wfrE=;
- b=Z7j5xySIs4dhixW8yET646fvKF1eaOX6RaFCwZvoE7pDQ69FuJGowNzI
- tGFswybVJcRjpyM+b5xKIoi0mnsxpuvZX8VOaCDwyns6hJA03SQ78hoau
- 13u/u/oWHefkIukzENS4OSX6YLYoXt4qxyUo01w0L2t476xe7iwEfI71X
- XMRdohb5TR3azC+UJypyLD++3NiPy1qa8b9q+GoU84p4s0YTWPPadVevB
- 6WIN5ENmCjs3AkXFtydOmOFUNrdL8V9RPhxXmC6gBNMgW/mPmYW/7heVH
- H7N4Qf8IlHgRJwmI9PlOEoTtTfLHW9zND/Xc9cVJSSs9si/oyEWZcaRMk w==;
-X-CSE-ConnectionGUID: qO58X6GGT/yeecwt7a9Z/g==
-X-CSE-MsgGUID: qq05+HQ6SaKXwTCQKWAang==
-X-IronPort-AV: E=McAfee;i="6600,9927,11088"; a="24172645"
-X-IronPort-AV: E=Sophos;i="6.08,201,1712646000"; d="scan'208";a="24172645"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by fmvoesa105.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 30 May 2024 06:45:42 -0700
-X-CSE-ConnectionGUID: De7S8QHlR6ukqok0PVx89A==
-X-CSE-MsgGUID: rUrmNaspSzG9SS4tC+adLA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,201,1712646000"; d="scan'208";a="35762246"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by orviesa010.jf.intel.com with ESMTP; 30 May 2024 06:45:41 -0700
-Date: Thu, 30 May 2024 22:01:04 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Zide Chen <zide.chen@intel.com>, qemu-devel@nongnu.org,
- pbonzini@redhat.com, mst@redhat.com, cfontana@suse.de,
- xiaoyao.li@intel.com, qemu-trivial@nongnu.org
-Subject: Re: [PATCH V2 1/3] vl: Allow multiple -overcommit commands
-Message-ID: <ZliGoM9Hy3Q2qthQ@intel.com>
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sCgrv-0006ex-1f
+ for qemu-trivial@nongnu.org; Thu, 30 May 2024 10:35:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1717079701;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=U/bSNLE6vRMxIhWWHa3sXbymBPDbm7q+oYFGxKXhdCU=;
+ b=TNiDeSyu6NnVc4EpSfrbR7foo5sKHG+3UyNC4kaoe5zeY5O60Ka1Sj2slQRrPb6oADqhkW
+ +5FV+HzCZwlPRYH6UygpOKI1H4kxONjtWkwQYFIFESmgABuETpJvJ7ln+8PtPmVzqY1FoI
+ 9DTeWtfkzQS/5CJLR28uJLzhvBCPKng=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-64-a-dQE37KP3OaH6CI9rN5Xw-1; Thu, 30 May 2024 10:34:59 -0400
+X-MC-Unique: a-dQE37KP3OaH6CI9rN5Xw-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-42128f7b5fbso5293385e9.2
+ for <qemu-trivial@nongnu.org>; Thu, 30 May 2024 07:34:59 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1717079698; x=1717684498;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=U/bSNLE6vRMxIhWWHa3sXbymBPDbm7q+oYFGxKXhdCU=;
+ b=Zn3pakUOibKg4LPkeoUsSF+1uKTE28EuyL/CJjCCVEWbRKl+InPUdcvr8H6GKf23Cy
+ iiH7Ktw+iEcJtpmbFPCAB+8G7QeFu8SQNRKM0bpNG1gV1rO36gmRZwlquEgQU/+Jsr8H
+ 6tz/E1XwtBPMbiKCMjgp+HUKBk14q+0KhtjVWhQvtdoqE/I+5SkW/PRA+zmFhEMbdln2
+ zzcb4o4IRCG3oI1TEHFhV//SLl8uKTYjLd6L790FvpNUeQyDrIK365ovZuCJLO0NPeLL
+ ZfnKzSd0V6cyGn8dgIkGk3SExAFjIVpUMzB3O4cJO1am7BWmmIWs46jftqUJerSvGiGY
+ oERg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUE9CMwOxlUNE9gPxdcnOVxI3Djt0LOZXlFWGlXqXcc6wXOUNFQ8dd8hfGt525wukL0t074gmqPdG/vIIfgwodNrsD/raxuLA==
+X-Gm-Message-State: AOJu0YxqVaKSUKfvtqHjchZYrHKT1z39LOPkpjTjIe2GUKMBN5lmHwN1
+ kLFCTP3UcaQMugnMUh2wwpqwjG3TGHvSmdIRZf7YsJTYR3Lqx0KsWXDGwxqaAQF4FDYa2Pcn3qn
+ yyRVZcw5e+G46zypU4jsbyY0ATDDN6fBFoldHDIQhziylDsrVh49jzRE=
+X-Received: by 2002:a05:600c:190e:b0:416:9ba0:8f17 with SMTP id
+ 5b1f17b1804b1-4212781b22cmr22750665e9.22.1717079698150; 
+ Thu, 30 May 2024 07:34:58 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHeDhjVADL1qQ2SQ5bn6wm7sn743EDitHjovG00/VGeK3xOmUrSug7+0zwT8WqBysCG0NtYYA==
+X-Received: by 2002:a05:600c:190e:b0:416:9ba0:8f17 with SMTP id
+ 5b1f17b1804b1-4212781b22cmr22750335e9.22.1717079697601; 
+ Thu, 30 May 2024 07:34:57 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-35579d7da35sm17617315f8f.16.2024.05.30.07.34.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 May 2024 07:34:57 -0700 (PDT)
+Date: Thu, 30 May 2024 16:34:55 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: "Chen, Zide" <zide.chen@intel.com>, qemu-devel@nongnu.org,
+ pbonzini@redhat.com, mst@redhat.com, thuth@redhat.com, cfontana@suse.de,
+ xiaoyao.li@intel.com, qemu-trivial@nongnu.org, Sean Christopherson
+ <seanjc@google.com>
+Subject: Re: [PATCH V2 0/3] improve -overcommit cpu-pm=on|off
+Message-ID: <20240530163455.0c70edcc@imammedo.users.ipa.redhat.com>
+In-Reply-To: <ZliFJyRhnSVlNOYQ@intel.com>
 References: <20240524200017.150339-1-zide.chen@intel.com>
- <20240524200017.150339-2-zide.chen@intel.com>
- <e86c1913-a1ff-4c31-9915-d66c269b7e10@redhat.com>
+ <20240528112327.634e95a6@imammedo.users.ipa.redhat.com>
+ <29944dba-7005-496d-81ff-1cbc77c67f15@intel.com>
+ <20240529144634.40aa597f@imammedo.users.ipa.redhat.com>
+ <898effa1-1a5b-42c0-9305-8db8d5febbf5@intel.com>
+ <ZliFJyRhnSVlNOYQ@intel.com>
+X-Mailer: Claws Mail 4.2.0 (GTK 3.24.41; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e86c1913-a1ff-4c31-9915-d66c269b7e10@redhat.com>
-Received-SPF: pass client-ip=192.198.163.11; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.085,
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.085,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -71,66 +102,161 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 May 2024 13:45:50 -0000
+X-List-Received-Date: Thu, 30 May 2024 14:35:09 -0000
 
-On Mon, May 27, 2024 at 07:19:56AM +0200, Thomas Huth wrote:
-> Date: Mon, 27 May 2024 07:19:56 +0200
-> From: Thomas Huth <thuth@redhat.com>
-> Subject: Re: [PATCH V2 1/3] vl: Allow multiple -overcommit commands
+On Thu, 30 May 2024 21:54:47 +0800
+Zhao Liu <zhao1.liu@intel.com> wrote:
+
+> Hi Zide,
 > 
-> On 24/05/2024 22.00, Zide Chen wrote:
-> > Both cpu-pm and mem-lock are related to system resource overcommit, but
-> > they are separate from each other, in terms of how they are realized,
-> > and of course, they are applied to different system resources.
+> On Wed, May 29, 2024 at 10:31:21AM -0700, Chen, Zide wrote:
+> > Date: Wed, 29 May 2024 10:31:21 -0700
+> > From: "Chen, Zide" <zide.chen@intel.com>
+> > Subject: Re: [PATCH V2 0/3] improve -overcommit cpu-pm=on|off
 > > 
-> > It's tempting to use separate command lines to specify their behavior.
-> > e.g., in the following example, the cpu-pm command is quietly
-> > overwritten, and it's not easy to notice it without careful inspection.
 > > 
-> >    --overcommit mem-lock=on
-> >    --overcommit cpu-pm=on
 > > 
-> > Fixes: c8c9dc42b7ca ("Remove the deprecated -realtime option")
-> > Suggested-by: Thomas Huth <thuth@redhat.com>
-> > Signed-off-by: Zide Chen <zide.chen@intel.com>
-> > ---
+> > On 5/29/2024 5:46 AM, Igor Mammedov wrote:  
+> > > On Tue, 28 May 2024 11:16:59 -0700
+> > > "Chen, Zide" <zide.chen@intel.com> wrote:
+> > >   
+> > >> On 5/28/2024 2:23 AM, Igor Mammedov wrote:  
+> > >>> On Fri, 24 May 2024 13:00:14 -0700
+> > >>> Zide Chen <zide.chen@intel.com> wrote:
+> > >>>     
+> > >>>> Currently, if running "-overcommit cpu-pm=on" on hosts that don't
+> > >>>> have MWAIT support, the MWAIT/MONITOR feature is advertised to the
+> > >>>> guest and executing MWAIT/MONITOR on the guest triggers #UD.    
+> > >>>
+> > >>> this is missing proper description how do you trigger issue
+> > >>> with reproducer and detailed description why guest sees MWAIT
+> > >>> when it's not supported by host.    
+> > >>
+> > >> If "overcommit cpu-pm=on" and "-cpu host" are present, as shown in the  
+> > > it's bette to provide full QEMU CLI and host/guest kernels used and what
+> > > hardware was used if it's relevant so others can reproduce problem.  
 > > 
-> > v2:
+> > I ever reproduced this on an older Intel Icelake machine, a
+> > Sapphire Rapids and a Sierra Forest, but I believe this is a x86 generic
+> > issue, not specific to particular models.
 > > 
-> > Thanks to Thomas' suggestion, changed to this better approach, which
-> > is more generic and can handle situations like: "enabled the option in
-> > the config file, and now you'd like to disable it on the command line
-> > again".
+> > For the CLI, I think the only command line options that matter are
+> >  -overcommit cpu-pm=on: to set enable_cpu_pm
+> >  -cpu host: so that cpu->max_features is set
 > > 
-> >   system/vl.c | 4 ++--
-> >   1 file changed, 2 insertions(+), 2 deletions(-)
+> > For QEMU version, as long as it's after this commit: 662175b91ff2
+> > ("i386: reorder call to cpu_exec_realizefn")
 > > 
-> > diff --git a/system/vl.c b/system/vl.c
-> > index a3eede5fa5b8..dfa6cdd9283b 100644
-> > --- a/system/vl.c
-> > +++ b/system/vl.c
-> > @@ -3545,8 +3545,8 @@ void qemu_init(int argc, char **argv)
-> >                   if (!opts) {
-> >                       exit(1);
-> >                   }
-> > -                enable_mlock = qemu_opt_get_bool(opts, "mem-lock", false);
-> > -                enable_cpu_pm = qemu_opt_get_bool(opts, "cpu-pm", false);
-> > +                enable_mlock = qemu_opt_get_bool(opts, "mem-lock", enable_mlock);
-> > +                enable_cpu_pm = qemu_opt_get_bool(opts, "cpu-pm", enable_cpu_pm);
-> >                   break;
-> >               case QEMU_OPTION_compat:
-> >                   {
+> > The guest fails to boot:
+> > 
+> > [ 24.825568] smpboot: x86: Booting SMP configuration:
+> > [ 24.826377] .... node #0, CPUs: #1 #2 #3 #4 #5 #6 #7 #8 #9 #10 #11 #12
+> > #13 #14 #15 #17
+> > [ 24.985799] .... node #1, CPUs: #128 #129 #130 #131 #132 #133 #134 #135
+> > #136 #137 #138 #139 #140 #141 #142 #143 #145
+> > [ 25.136955] invalid opcode: 0000 1 PREEMPT SMP NOPTI
+> > [ 25.137790] CPU: 0 PID: 0 Comm: swapper/0 Not tainted 6.8.0 #2
+> > [ 25.137790] Hardware name: QEMU Standard PC (Q35 + ICH9, 2009), BIOS
+> > rel-1.16.3-0-ga6ed6b701f0a-prebuilt.qemu.org 04/04
+> > [ 25.137790] RIP: 0010:mwait_idle+0x35/0x80
+> > [ 25.137790] Code: 6f f0 80 48 02 20 48 8b 10 83 e2 08 75 3e 65 48 8b 15
+> > 47 d6 56 6f 48 0f ba e2 27 72 41 31 d2 48 89 d8
+> > [ 25.137790] RSP: 0000:ffffffff91403e70 EFLAGS: 00010046
+> > [ 25.137790] RAX: ffffffff9140a980 RBX: ffffffff9140a980 RCX:
+> > 0000000000000000
+> > [ 25.137790] RDX: 0000000000000000 RSI: ffff97f1ade21b20 RDI:
+> > 0000000000000004
+> > [ 25.137790] RBP: 0000000000000000 R08: 00000005da4709cb R09:
+> > 0000000000000001
+> > [ 25.137790] R10: 0000000000005da4 R11: 0000000000000009 R12:
+> > 0000000000000000
+> > [ 25.137790] R13: ffff98573ff90fc0 R14: ffffffff9140a038 R15:
+> > 0000000000093ff0
+> > [ 25.137790] FS: 0000000000000000(0000) GS:ffff97f1ade00000(0000)
+> > knlGS:0000000000000000
+> > [ 25.137790] CS: 0010 DS: 0000 ES: 0000 CR0: 0000000080050033
+> > [ 25.137790] CR2: ffff97d8aa801000 CR3: 00000049e9430001 CR4:
+> > 0000000000770ef0
+> > [ 25.137790] DR0: 0000000000000000 DR1: 0000000000000000 DR2:
+> > 0000000000000000
+> > [ 25.137790] DR3: 0000000000000000 DR6: 00000000ffff07f0 DR7:
+> > 0000000000000400
+> > [ 25.137790] PKRU: 55555554
+> > [ 25.137790] Call Trace:
+> > [ 25.137790] <TASK>
+> > [ 25.137790] ? die+0x37/0x90
+> > [ 25.137790] ? do_trap+0xe3/0x110
+> > [ 25.137790] ? mwait_idle+0x35/0x80
+> > [ 25.137790] ? do_error_trap+0x6a/0x90
+> > [ 25.137790] ? mwait_idle+0x35/0x80
+> > [ 25.137790] ? exc_invalid_op+0x52/0x70
+> > [ 25.137790] ? mwait_idle+0x35/0x80
+> > [ 25.137790] ? asm_exc_invalid_op+0x1a/0x20
+> > [ 25.137790] ? mwait_idle+0x35/0x80
+> > [ 25.137790] default_idle_call+0x30/0x100
+> > [ 25.137790] cpuidle_idle_call+0x12c/0x170
+> > [ 25.137790] ? tsc_verify_tsc_adjust+0x73/0xd0
+> > [ 25.137790] do_idle+0x7f/0xd0
+> > [ 25.137790] cpu_startup_entry+0x29/0x30
+> > [ 25.137790] rest_init+0xcc/0xd0
+> > [ 25.137790] start_kernel+0x396/0x5d0
+> > [ 25.137790] x86_64_start_reservations+0x18/0x30
+> > [ 25.137790] x86_64_start_kernel+0xe7/0xf0
+> > [ 25.137790] common_startup_64+0x13e/0x148
+> > [ 25.137790] </TASK>
+> > [ 25.137790] Modules linked in:
+> > [ 25.137790] --[ end trace 0000000000000000 ]--
+> > [ 25.137790] invalid opcode: 0000 2 PREEMPT SMP NOPTI
+> > [ 25.137790] RIP: 0010:mwait_idle+0x35/0x80
+> > [ 25.137790] Code: 6f f0 80 48 02 20 48 8b 10 83 e2 08 75 3e 65 48 8b 15
+> > 47 d6 56 6f 48 0f ba e2 27 72 41 31 d2 48 89 d8
+> >   
+> > >   
+> > >> following, CPUID_EXT_MONITOR is set after x86_cpu_filter_features(), so
+> > >> that it doesn't have a chance to check MWAIT against host features and
+> > >> will be advertised to the guest regardless of whether it's supported by
+> > >> the host or not.
+> > >>
+> > >> x86_cpu_realizefn()
+> > >>   x86_cpu_filter_features()
+> > >>   cpu_exec_realizefn()
+> > >>     kvm_cpu_realizefn
+> > >>       host_cpu_realizefn
+> > >>         host_cpu_enable_cpu_pm
+> > >>           env->features[FEAT_1_ECX] |= CPUID_EXT_MONITOR;
+> > >>
+> > >>
+> > >> If it's not supported by the host, executing MONITOR or MWAIT
+> > >> instructions from the guest triggers #UD, no matter MWAIT_EXITING
+> > >> control is set or not.  
+> > > 
+> > > If I recall right, kvm was able to emulate mwait/monitor.
+> > > So question is why it leads to exception instead?  
+> > 
+> > KVM can come to play only iff it can trigger MWAIT/MONITOR VM exits. I
+> > didn't find explicit proof from Intel SDM that #UD exceptions take
+> > precedence over MWAIT/MONITOR VM exits, but this is my speculation. For
+> > example, in ancient machines which don't support MWAIT yet, the only way
+> > it can do is #UD, not MWAIT VM exit?  
 > 
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
+> For the Host which doesn't support MWAIT, it shouldn't have the VMX
+> control bit for mwait exit either, right?
 > 
+> Could you pls check this on your machine? If VMX doesn't support this
+> exit event, then triggering an exception will make sense.
 
-Hi Thomas,
+My assumption (probably wrong) was that KVM would emulate mwait if it's unavailable,
+unless we have KVM_CAP_X86_DISABLE_EXITS enabled. And in the later case it would
+explode as expected, however then we shouldn't be able to set KVM_CAP_X86_DISABLE_EXITS
+to begin with.
 
-BTW, do you think it's a good idea to define the overcommit via QAPI way
-(defined in a json file)? ;-)
+Recently Sean posted a patch related to that
+[PATCH v2 12/49] KVM: x86: Reject disabling of MWAIT/HLT interception when not allowed
+  https://lkml.org/lkml/2024/5/17/729
 
-My rough understanding is that all APIs are better to be defined via
-QAPI to go JSON compatible.
+This needs someone with KVM expertise to chime in
+Perhaps Paolo/Sean could clarify expected behavior.
+
 
 
 
