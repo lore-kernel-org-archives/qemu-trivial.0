@@ -1,58 +1,53 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sDQOW-00024F-Mw
-	for mharc-qemu-trivial@gnu.org; Sat, 01 Jun 2024 11:11:44 -0400
+	id 1sDdt4-0005Wb-H1
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Jun 2024 01:36:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sDQOU-00023q-Tz; Sat, 01 Jun 2024 11:11:42 -0400
-Received: from mgamail.intel.com ([192.198.163.7])
+ id 1sDdt2-0005WG-Re; Sun, 02 Jun 2024 01:36:08 -0400
+Received: from mgamail.intel.com ([192.198.163.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sDQOS-0003LH-89; Sat, 01 Jun 2024 11:11:42 -0400
+ id 1sDdt0-0002B2-QK; Sun, 02 Jun 2024 01:36:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1717254700; x=1748790700;
+ t=1717306567; x=1748842567;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=iqxY4OA9pDpwm3vLPpCWLZjHd2gPOinMkapeVP844vw=;
- b=mhH60uBvVPBFNbBmXtKyHp/mxToxHfhPWRJLIUENn/juC4K66AW6556L
- AVZKet7f6Ig9Pd51yFg9mLR1QTUEduUCbxcuSqIkR1UDu+l7oAQV/A8Bb
- +XiXzi0Jq4Fry4Z1YC484nNo5/rwH5/fPiq44HI018DAYa13WGiFNH91E
- P9uP1KTlvu/QFg4nGbQf5kv5YiSpzmDwLqb8rtoT89KYxJTcPNPIf01ax
- i7a00LhGtbOSNE2jV5r/YhLI1dZJlJf4sz+lI3+rDgddlNl9B0OPyvJ5W
- pa41bHl03O5563G18Ft1frcRbBddeJU1ljKq3HYEXkcbqadcLYlAAL5Y8 A==;
-X-CSE-ConnectionGUID: RTLKeMpCSnGbnzPgFMd/Jg==
-X-CSE-MsgGUID: fEkPzcR8RYKjn2bTjTHZpQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11090"; a="39196306"
-X-IronPort-AV: E=Sophos;i="6.08,207,1712646000"; d="scan'208";a="39196306"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by fmvoesa101.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jun 2024 08:11:32 -0700
-X-CSE-ConnectionGUID: CmcTnsCPRKaYFx4ykXE49A==
-X-CSE-MsgGUID: vhHJoFX2QPuAf7Gy4YnoSg==
+ bh=3WaybShHrTo0oGSdFwEFlUTgdU/ecCDERa31TwrKso4=;
+ b=aCbP+WB/CIAWEgu/hIOW8P5RZBX+rCVtmeRPgC6JZLVbK4/gSQ7AzlsL
+ FLcyMhMmyuMmCRnv4sEivR8BNghAhk9GV/1xzeBVUcwUBuTqiqmL3Xruk
+ PvR3rE7bqezXh3wPjfO5CFUGXI7npqS7cHAH7oaTv1O3zvhHSvmE1+V30
+ LJhPDYP/T0NKFEh/zbIhtyXtHXWedZU/QwVpMKoFYp6wOl6yxn3hHx2vU
+ WuzH/zcbMhKqWA7k9VJ9R31J8h1eHb0AKVxSaDTSLQMAR5ZYbX7KySnOA
+ Qgp5MoQyzluWyNucGSli4GDKSv6hwiRNptKkRXdJfK+lzw75c+fzWJM/n g==;
+X-CSE-ConnectionGUID: W+FAlfOYTomfWNUhqNBS4Q==
+X-CSE-MsgGUID: mKWSPNSSS06NAYETfLzITQ==
+X-IronPort-AV: E=McAfee;i="6600,9927,11090"; a="24475377"
+X-IronPort-AV: E=Sophos;i="6.08,208,1712646000"; d="scan'208";a="24475377"
+Received: from orviesa010.jf.intel.com ([10.64.159.150])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jun 2024 22:36:04 -0700
+X-CSE-ConnectionGUID: KeD1hLweScGdzUxn7/G5wA==
+X-CSE-MsgGUID: S/PoCQbhTxmoCYt+iYi/oQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,207,1712646000"; d="scan'208";a="40881543"
+X-IronPort-AV: E=Sophos;i="6.08,208,1712646000"; d="scan'208";a="36485936"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.36])
- by fmviesa003.fm.intel.com with ESMTP; 01 Jun 2024 08:11:30 -0700
-Date: Sat, 1 Jun 2024 23:26:55 +0800
+ by orviesa010.jf.intel.com with ESMTP; 01 Jun 2024 22:36:02 -0700
+Date: Sun, 2 Jun 2024 13:51:27 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
-To: "Chen, Zide" <zide.chen@intel.com>
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, mst@redhat.com,
- thuth@redhat.com, cfontana@suse.de, xiaoyao.li@intel.com,
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
  qemu-trivial@nongnu.org
-Subject: Re: [PATCH V2 2/3] target/i386: call cpu_exec_realizefn before
- x86_cpu_filter_features
-Message-ID: <Zls9v9mg17SXZhO7@intel.com>
-References: <20240524200017.150339-1-zide.chen@intel.com>
- <20240524200017.150339-3-zide.chen@intel.com>
- <ZlluoKXUF6ctecVt@intel.com>
- <04d3dfd8-93d2-493d-82d1-8fbcad6ecd22@intel.com>
+Subject: Re: [PATCH] accel/kvm: Fix two lines with hard-coded tabs
+Message-ID: <ZlwIX2izGFJzlNvy@intel.com>
+References: <20240531170952.505323-1-peter.maydell@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <04d3dfd8-93d2-493d-82d1-8fbcad6ecd22@intel.com>
-Received-SPF: pass client-ip=192.198.163.7; envelope-from=zhao1.liu@intel.com;
+In-Reply-To: <20240531170952.505323-1-peter.maydell@linaro.org>
+Received-SPF: pass client-ip=192.198.163.9; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -44
 X-Spam_score: -4.5
@@ -73,122 +68,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 01 Jun 2024 15:11:43 -0000
+X-List-Received-Date: Sun, 02 Jun 2024 05:36:09 -0000
 
-On Fri, May 31, 2024 at 10:13:47AM -0700, Chen, Zide wrote:
-> Date: Fri, 31 May 2024 10:13:47 -0700
-> From: "Chen, Zide" <zide.chen@intel.com>
-> Subject: Re: [PATCH V2 2/3] target/i386: call cpu_exec_realizefn before
->  x86_cpu_filter_features
+On Fri, May 31, 2024 at 06:09:52PM +0100, Peter Maydell wrote:
+> Date: Fri, 31 May 2024 18:09:52 +0100
+> From: Peter Maydell <peter.maydell@linaro.org>
+> Subject: [PATCH] accel/kvm: Fix two lines with hard-coded tabs
+> X-Mailer: git-send-email 2.34.1
 > 
-> On 5/30/2024 11:30 PM, Zhao Liu wrote:
-> > Hi Zide,
-> > 
-> > On Fri, May 24, 2024 at 01:00:16PM -0700, Zide Chen wrote:
-> >> Date: Fri, 24 May 2024 13:00:16 -0700
-> >> From: Zide Chen <zide.chen@intel.com>
-> >> Subject: [PATCH V2 2/3] target/i386: call cpu_exec_realizefn before
-> >>  x86_cpu_filter_features
-> >> X-Mailer: git-send-email 2.34.1
-> >>
-> >> cpu_exec_realizefn which calls the accel-specific realizefn may expand
-> >> features.  e.g., some accel-specific options may require extra features
-> >> to be enabled, and it's appropriate to expand these features in accel-
-> >> specific realizefn.
-> >>
-> >> One such example is the cpu-pm option, which may add CPUID_EXT_MONITOR.
-> >>
-> >> Thus, call cpu_exec_realizefn before x86_cpu_filter_features to ensure
-> >> that it won't expose features not supported by the host.
-> >>
-> >> Fixes: 662175b91ff2 ("i386: reorder call to cpu_exec_realizefn")
-> >> Suggested-by: Xiaoyao Li <xiaoyao.li@intel.com>
-> >> Signed-off-by: Zide Chen <zide.chen@intel.com>
-> >> ---
-> >>  target/i386/cpu.c         | 24 ++++++++++++------------
-> >>  target/i386/kvm/kvm-cpu.c |  1 -
-> >>  2 files changed, 12 insertions(+), 13 deletions(-)
-> >>
-> >> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> >> index bc2dceb647fa..a1c1c785bd2f 100644
-> >> --- a/target/i386/cpu.c
-> >> +++ b/target/i386/cpu.c
-> >> @@ -7604,6 +7604,18 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
-> >>          }
-> >>      }
-> >>  
-> >> +    /*
-> >> +     * note: the call to the framework needs to happen after feature expansion,
-> >> +     * but before the checks/modifications to ucode_rev, mwait, phys_bits.
-> >> +     * These may be set by the accel-specific code,
-> >> +     * and the results are subsequently checked / assumed in this function.
-> >> +     */
-> >> +    cpu_exec_realizefn(cs, &local_err);
-> >> +    if (local_err != NULL) {
-> >> +        error_propagate(errp, local_err);
-> >> +        return;
-> >> +    }
-> >> +
-> >>      x86_cpu_filter_features(cpu, cpu->check_cpuid || cpu->enforce_cpuid);
-> > 
-> > For your case, which sets cpu-pm=on via overcommit, then
-> > x86_cpu_filter_features() will complain that mwait is not supported.
-> > 
-> > Such warning is not necessary, because the purpose of overcommit (from
-> > code) is only to support mwait when possible, not to commit to support
-> > mwait in Guest.
-> > 
-> > Additionally, I understand x86_cpu_filter_features() is primarily
-> > intended to filter features configured by the user, 
+> In kvm-all.c, two lines have been accidentally indented with
+> hard-coded tabs rather than spaces. Normalise to match the rest
+> of the file.
 > 
-> Yes, that's why this patches intends to let x86_cpu_filter_features()
-> filter out the MWAIT bit which is set from the overcommit option.
-
-HMM, but in fact x86_cpu_filter_features() has already checked the MWAIT
-bit set by "-overcommit cpu-pm=on". ;-)
-
-(Pls correct me if I'm wrong) Revisiting what cpu-pm did to MWAIT:
-* Firstly, it set MWAIT bit in x86_cpu_expand_features():
-  x86_cpu_expand_features()
-     -> x86_cpu_get_supported_feature_word()
-        -> kvm_arch_get_supported_cpuid()
- This MWAIT is based on Host's MWAIT capability. This MWAIT enablement
- is fine for next x86_cpu_filter_features() and x86_cpu_filter_features()
- is working correctly here!
-
-* Then, MWAIT was secondly set in host_cpu_enable_cpu_pm() regardless
-  neither Host's support or previous MWAIT enablement result. This is
-  the root cause of your issue.
-
-Therefore, we should make cpu-pm honor his first MWAIT enablement result
-instead of repeatly and unconditionally setting the MWAIT bit again in
-host_cpu_enable_cpu_pm().
-
-Additionally, I think the code in x86_cpu_realizefn():
-  cpu->mwait.ecx |= CPUID_MWAIT_EMX | CPUID_MWAIT_IBE;
-has the similar issue because it also should check MWAIT feature bit.
-
-Further, it may be possible to remove cpu->mwait: just check the MWAIT
-bit in leaf 5 of cpu_x86_cpuid(), and if MWAIT is present, use host's
-mwait info plus CPUID_MWAIT_EMX | CPUID_MWAIT_IBE.
-
-> > and the changes of
-> > CPUID after x86_cpu_filter_features() should by default be regarded like
-> > "QEMU knows what it is doing".
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>  accel/kvm/kvm-all.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> Sure, we can add feature bits after x86_cpu_filter_features(), but I
-> think moving cpu_exec_realizefn() before x86_cpu_filter_features() is
-> more generic, and actually this is what QEMU did before commit 662175b91ff2.
-> 
-> - Less redundant code. Specifically, no need to call
-> x86_cpu_get_supported_feature_word() again.
-> - Potentially there could be other features could be added from the
-> accel-specific realizefn, kvm_cpu_realizefn() for example.  And these
-> features need to be checked against the host availability.
 
-Mainly I don't think this reorder is a direct fix for the problem (I
-just analyse it above), also in your case x86_cpu_filter_features() will
-print a WARNING when QEMU boots, which I don't think is cpu-pm's intention.
-
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
 
