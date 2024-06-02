@@ -1,60 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sDdt4-0005Wb-H1
-	for mharc-qemu-trivial@gnu.org; Sun, 02 Jun 2024 01:36:10 -0400
+	id 1sDibv-0006Fo-IE
+	for mharc-qemu-trivial@gnu.org; Sun, 02 Jun 2024 06:38:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sDdt2-0005WG-Re; Sun, 02 Jun 2024 01:36:08 -0400
-Received: from mgamail.intel.com ([192.198.163.9])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sDdt0-0002B2-QK; Sun, 02 Jun 2024 01:36:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1717306567; x=1748842567;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=3WaybShHrTo0oGSdFwEFlUTgdU/ecCDERa31TwrKso4=;
- b=aCbP+WB/CIAWEgu/hIOW8P5RZBX+rCVtmeRPgC6JZLVbK4/gSQ7AzlsL
- FLcyMhMmyuMmCRnv4sEivR8BNghAhk9GV/1xzeBVUcwUBuTqiqmL3Xruk
- PvR3rE7bqezXh3wPjfO5CFUGXI7npqS7cHAH7oaTv1O3zvhHSvmE1+V30
- LJhPDYP/T0NKFEh/zbIhtyXtHXWedZU/QwVpMKoFYp6wOl6yxn3hHx2vU
- WuzH/zcbMhKqWA7k9VJ9R31J8h1eHb0AKVxSaDTSLQMAR5ZYbX7KySnOA
- Qgp5MoQyzluWyNucGSli4GDKSv6hwiRNptKkRXdJfK+lzw75c+fzWJM/n g==;
-X-CSE-ConnectionGUID: W+FAlfOYTomfWNUhqNBS4Q==
-X-CSE-MsgGUID: mKWSPNSSS06NAYETfLzITQ==
-X-IronPort-AV: E=McAfee;i="6600,9927,11090"; a="24475377"
-X-IronPort-AV: E=Sophos;i="6.08,208,1712646000"; d="scan'208";a="24475377"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 01 Jun 2024 22:36:04 -0700
-X-CSE-ConnectionGUID: KeD1hLweScGdzUxn7/G5wA==
-X-CSE-MsgGUID: S/PoCQbhTxmoCYt+iYi/oQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,208,1712646000"; d="scan'208";a="36485936"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by orviesa010.jf.intel.com with ESMTP; 01 Jun 2024 22:36:02 -0700
-Date: Sun, 2 Jun 2024 13:51:27 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] accel/kvm: Fix two lines with hard-coded tabs
-Message-ID: <ZlwIX2izGFJzlNvy@intel.com>
-References: <20240531170952.505323-1-peter.maydell@linaro.org>
+ (Exim 4.90_1) (envelope-from <vilhelmgyda@gmail.com>)
+ id 1sDibt-0006FL-P2; Sun, 02 Jun 2024 06:38:45 -0400
+Received: from mail-oo1-xc2e.google.com ([2607:f8b0:4864:20::c2e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <vilhelmgyda@gmail.com>)
+ id 1sDibs-0007CO-5w; Sun, 02 Jun 2024 06:38:45 -0400
+Received: by mail-oo1-xc2e.google.com with SMTP id
+ 006d021491bc7-5ba33b08550so238507eaf.2; 
+ Sun, 02 Jun 2024 03:38:43 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1717324721; x=1717929521; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=/qTmOIQ5IR5TBp5xj+xfZSzNlH4qqX+SuA9WjRG9iTU=;
+ b=WObwj31AO96863YzgEy00mPcgKVUjquQI5PRrKHZwZ57+fsgsCu8d1cclDtAm2sLpn
+ IG/LkFOfKkH3I6I9vBuwojKR0maD7knsyW+5tiJYEl1+HOSsunrdvpIIMf/DpMs1UjYT
+ TxSrbWaMpiIyvZ8qDQRpPIMquhngHnMXzBLCr1lfdI6TgGvqf2/G7BIh/kLyjp1gzuNj
+ CdKVVmUdXVZHQ8DGBbr/sI82d2IX878564qSkj6vOSDdcynrMXLfGcpUVMRskq3JIUse
+ 3+01dKtt5DZg0nvIDvh4mhTfE8035itBHg4bzuAgciU7tuPQ0imMlr/YRc6HoGFplA85
+ pJwg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1717324721; x=1717929521;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=/qTmOIQ5IR5TBp5xj+xfZSzNlH4qqX+SuA9WjRG9iTU=;
+ b=k8yxWllX5xVAPkGDRgqQ2GM3B4RLgcD5FGSyQ7L4/qjlM317seOXNpnuzB/8/qXOdl
+ 5uUKEJq8Tfk4jA9KZgUqcYbThbw2RoaQx0y+eUnnfSD6B32UjYG/9UFTiMd3x2TloRfz
+ QxfElFc5jXS9p10GeBaqbWjx8eOGEwjrUjVdvPfgnvP0RLL/cJS/aLZI7UvBvydp3I2D
+ fzPQkxERDf/fYr948hytecP3sEL9HbKCc/vqZ38jIJjt7+NIMbZBFruhFnQ6slxHhORf
+ 7FwGl341HQ3vQdC11XRNGMpDNp8pbSTImmK6JXRqqIYyx14+KuN0aHRI8fUiXpvy7cos
+ t5lw==
+X-Gm-Message-State: AOJu0Yzp1nqFL43NZvRblo3Qz5zobHMK0Sa0V6rlHQIqMeoKT+QYSTPi
+ JcuF+oZtY/GZrdhAkWbZ5hslDkJx1JVJynul7Amj2lnvrsPWJp3bJUrBDRG4
+X-Google-Smtp-Source: AGHT+IEbiqQdI8bakaAcEHuL8vhD8kcBW48rft7J7MDpQkBzQyBwdSqwmdVnqqWRk0kb+qhNr8V7aw==
+X-Received: by 2002:a05:6358:9814:b0:199:3305:133b with SMTP id
+ e5c5f4694b2df-19b490d65d4mr856515655d.31.1717324720908; 
+ Sun, 02 Jun 2024 03:38:40 -0700 (PDT)
+Received: from wijungle.bbrouter ([183.83.54.202])
+ by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-6c35629c3a1sm3821940a12.56.2024.06.02.03.38.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 02 Jun 2024 03:38:40 -0700 (PDT)
+From: Will Gyda <vilhelmgyda@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, philmd@linaro.org, pbonzini@redhat.com,
+ richard.henderson@linaro.org, eduardo@habkost.net,
+ manos.pitsidianakis@linaro.org, Will Gyda <vilhelmgyda@gmail.com>
+Subject: [PATCH] i386: removes microvm from default build since microvm
+ doesn't support Xen accel.
+Date: Sun,  2 Jun 2024 16:08:10 +0530
+Message-Id: <20240602103810.21356-1-vilhelmgyda@gmail.com>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240531170952.505323-1-peter.maydell@linaro.org>
-Received-SPF: pass client-ip=192.198.163.9; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.041,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::c2e;
+ envelope-from=vilhelmgyda@gmail.com; helo=mail-oo1-xc2e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -68,24 +79,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 02 Jun 2024 05:36:09 -0000
+X-List-Received-Date: Sun, 02 Jun 2024 10:38:46 -0000
 
-On Fri, May 31, 2024 at 06:09:52PM +0100, Peter Maydell wrote:
-> Date: Fri, 31 May 2024 18:09:52 +0100
-> From: Peter Maydell <peter.maydell@linaro.org>
-> Subject: [PATCH] accel/kvm: Fix two lines with hard-coded tabs
-> X-Mailer: git-send-email 2.34.1
-> 
-> In kvm-all.c, two lines have been accidentally indented with
-> hard-coded tabs rather than spaces. Normalise to match the rest
-> of the file.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->  accel/kvm/kvm-all.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
+i386: removes microvm from default build since microvm doesn't support Xen accel.
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2294
+
+Signed-off-by: Will Gyda <vilhelmgyda@gmail.com>
+
+---
+ configs/devices/i386-softmmu/default.mak | 1 -
+ hw/i386/Kconfig                          | 2 ++
+ 2 files changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/configs/devices/i386-softmmu/default.mak b/configs/devices/i386-softmmu/default.mak
+index 598c6646df..6f4f5ab9eb 100644
+--- a/configs/devices/i386-softmmu/default.mak
++++ b/configs/devices/i386-softmmu/default.mak
+@@ -29,4 +29,3 @@
+ CONFIG_ISAPC=y
+ CONFIG_I440FX=y
+ CONFIG_Q35=y
+-CONFIG_MICROVM=y
+diff --git a/hw/i386/Kconfig b/hw/i386/Kconfig
+index a6ee052f9a..95bcd922a5 100644
+--- a/hw/i386/Kconfig
++++ b/hw/i386/Kconfig
+@@ -108,6 +108,8 @@ config Q35
+ 
+ config MICROVM
+     bool
++    default y
++    depends on KVM || WHPX || NVMM || HVF || TCG
+     select SERIAL_ISA # for serial_hds_isa_init()
+     select ISA_BUS
+     select APIC
+-- 
+2.25.1
 
 
