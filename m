@@ -1,81 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sEBlb-00031z-Cs
-	for mharc-qemu-trivial@gnu.org; Mon, 03 Jun 2024 13:46:45 -0400
+	id 1sEBtz-0001BV-Tk
+	for mharc-qemu-trivial@gnu.org; Mon, 03 Jun 2024 13:55:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1sEBlO-0002x7-Qn
- for qemu-trivial@nongnu.org; Mon, 03 Jun 2024 13:46:30 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1sEBlE-0005Zn-BE
- for qemu-trivial@nongnu.org; Mon, 03 Jun 2024 13:46:22 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-356c4e926a3so3769145f8f.1
- for <qemu-trivial@nongnu.org>; Mon, 03 Jun 2024 10:46:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1717436777; x=1718041577; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:references
- :in-reply-to:subject:cc:to:from:from:to:cc:subject:date:message-id
- :reply-to; bh=7vpSiqKP2SeQR3N3rIUGIsWSyA01MJR8wqZvgPJ1Pe0=;
- b=EL2G3OW9/pVOsu3uN265rlgPCKFEmAeTXu6RTwggEAFYCO42mkJKMUldKewS7nBpSC
- 0x9Cud351QVAHrk5zkOogxbMaVPIXrlduuN4YYZV4y3MKyrG69eCeV/Dj0jWxKkbJgYf
- EYwkICDbg6h8GOuLW+fGl+3RV+9LNLABoj1sg6MQ5tThoEPaRScjMtu90fqf312DW7l6
- AIXokD63Bwkrn6gCeSRwMCynI06hX/AF4c8pUP4o2G9G/pbDjb96mxsrKxl/kcMvgXMV
- Oac/bxgLtUhZXuEZkSgYJUZ3IAV9QGoV4Waou9yPGP/nGXCZHGvJRPqGXrrwHfR36g4w
- cZUg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717436777; x=1718041577;
- h=content-transfer-encoding:mime-version:message-id:date:references
- :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=7vpSiqKP2SeQR3N3rIUGIsWSyA01MJR8wqZvgPJ1Pe0=;
- b=DVCt+50rIWAbY2dCc6AzvlUR4n8lbx32hUHONfJCXOEOAvyRNk5ZXlzbp1I0695stx
- LTjJaMNGVUrX3467iMFWuHGm07z7aXNO8tWK9lQCWG57rDrwibh71XfSIfDFRXbdCrC6
- ytJtsg5W1tg6pP/iuhtdsANRuxGKkL4Oqee0Nc8vkMuPLP2tl5bsI68xeDMvRb+xAM+z
- cG8CZgIgZ/X9JyN/TIpFIpX8qhbDL5QgA47LetnNI1JAgbp4FXth9jwSTMZBi/biXWEP
- IzCOeEzDXrdCdzh6+Rh33sL6Q3sSwizysa2LaXwKlCyXYKtoE+G/TXMG2kHNIXCrq9nD
- /bWA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUcrYLz+NMlnmLWN/AggtAnU0wEmPo+Rpx8iM1MRJ/ZNULJZ19rixFiGuPWBlg+PNTjFp+7mKthfo2eQ5MBVZi7PsOEzzqQUg==
-X-Gm-Message-State: AOJu0YyqVbCX/bPQxz7NGFLP+wjlLQmwMLvEVi1KP0ezAbeKfxgGFfvc
- 5dplX8rf6vUFNuTuDBCes7EECQS9Ux5GyQPUOYEKQCIeV/B3M/vxi9H4E/eGAeE=
-X-Google-Smtp-Source: AGHT+IEN+XyRP7IF7QQoGnWfohTdDop8UK4FXaS7HMd0QhS3++0aB15OKw7X/HJXYUjgqZNSngs3OA==
-X-Received: by 2002:a5d:46d2:0:b0:355:4cb:5049 with SMTP id
- ffacd0b85a97d-35e0f30dfcamr8003439f8f.44.1717436776566; 
- Mon, 03 Jun 2024 10:46:16 -0700 (PDT)
-Received: from draig.lan ([85.9.250.243]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-35dd04c0d6csm9368596f8f.1.2024.06.03.10.46.16
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 03 Jun 2024 10:46:16 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 96C625F860;
- Mon,  3 Jun 2024 18:46:15 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Daniel P. =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>
-Cc: Thomas Huth <thuth@redhat.com>,  qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org,  Akihiko Odaki <akihiko.odaki@daynix.com>
-Subject: Re: [PATCH] io/channel-socket: Fix -fsanitize=undefined problem
- with latest Clang
-In-Reply-To: <Zl3YTm0-rEs2Kqqj@redhat.com> ("Daniel P. =?utf-8?Q?Berrang?=
- =?utf-8?Q?=C3=A9=22's?= message of
- "Mon, 3 Jun 2024 15:50:54 +0100")
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1sEBtr-00014p-FV
+ for qemu-trivial@nongnu.org; Mon, 03 Jun 2024 13:55:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1sEBtn-0000YY-BJ
+ for qemu-trivial@nongnu.org; Mon, 03 Jun 2024 13:55:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1717437306;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=KARoLuBVHwanDn5ZOSrMUvpIv5PZX8QSh4rGPd7RZs8=;
+ b=MjuuMbqbQuPc62stP9ZUFfC13D8M7Ci3el0iowocIzFuvmtbxyhT4pJ7AeuXRgHIwMjGHJ
+ +f5v854fZ/77bqQJvo4+JsU7Eyxv728muPq9pN6T0wfBnpGCN5RR472WA2Px7GvKFU6ykX
+ IN+fUiJEa0ykgbfLjLjgPmqSFX91dmU=
+Received: from mimecast-mx02.redhat.com (mx-ext.redhat.com [66.187.233.73])
+ by relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-534-kx1ZY5kuPr2WkVm4BZxHLw-1; Mon,
+ 03 Jun 2024 13:55:03 -0400
+X-MC-Unique: kx1ZY5kuPr2WkVm4BZxHLw-1
+Received: from smtp.corp.redhat.com (int-mx01.intmail.prod.int.rdu2.redhat.com
+ [10.11.54.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mimecast-mx02.redhat.com (Postfix) with ESMTPS id C43E829AA385;
+ Mon,  3 Jun 2024 17:55:02 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.31])
+ by smtp.corp.redhat.com (Postfix) with ESMTPS id 0CB4F5620;
+ Mon,  3 Jun 2024 17:55:01 +0000 (UTC)
+Date: Mon, 3 Jun 2024 18:55:00 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Akihiko Odaki <akihiko.odaki@daynix.com>
+Subject: Re: [PATCH] io/channel-socket: Fix -fsanitize=undefined problem with
+ latest Clang
+Message-ID: <Zl4DdL1Cwiy-GuCj@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20240529133106.1224866-1-thuth@redhat.com>
  <877cf6gk10.fsf@draig.linaro.org> <Zl3YTm0-rEs2Kqqj@redhat.com>
-Date: Mon, 03 Jun 2024 18:46:15 +0100
-Message-ID: <8734pthqc8.fsf@draig.linaro.org>
+ <8734pthqc8.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42b.google.com
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <8734pthqc8.fsf@draig.linaro.org>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.11.54.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -89,36 +78,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 03 Jun 2024 17:46:31 -0000
+X-List-Received-Date: Mon, 03 Jun 2024 17:55:20 -0000
 
-Daniel P. Berrang=C3=A9 <berrange@redhat.com> writes:
+On Mon, Jun 03, 2024 at 06:46:15PM +0100, Alex Bennée wrote:
+> Daniel P. Berrangé <berrange@redhat.com> writes:
+> 
+> > On Mon, Jun 03, 2024 at 03:47:55PM +0100, Alex Bennée wrote:
+> >> Thomas Huth <thuth@redhat.com> writes:
+> >> 
+> >> > Casting function pointers from one type to another causes undefined
+> >> > behavior errors when compiling with -fsanitize=undefined with Clang
+> >> > v18:
+> >> 
+> >> Queued to testing/next, thanks.
+> >
+> > Please remove, as I don't think this is a viable approach to the
+> > problem
+> 
+> Ok - I'll drop it.
+> 
+> I still have:
+> 
+>   .gitlab-ci.d/buildtest.yml: Use -fno-sanitize=function in the clang-system job
+> 
+> to prevent the CI failures.
 
-> On Mon, Jun 03, 2024 at 03:47:55PM +0100, Alex Benn=C3=A9e wrote:
->> Thomas Huth <thuth@redhat.com> writes:
->>=20
->> > Casting function pointers from one type to another causes undefined
->> > behavior errors when compiling with -fsanitize=3Dundefined with Clang
->> > v18:
->>=20
->> Queued to testing/next, thanks.
->
-> Please remove, as I don't think this is a viable approach to the
-> problem
+Yes, that's good.
 
-Ok - I'll drop it.
 
-I still have:
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
-  .gitlab-ci.d/buildtest.yml: Use -fno-sanitize=3Dfunction in the clang-sys=
-tem job
-
-to prevent the CI failures.
-
->
-> With regards,
-> Daniel
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 
