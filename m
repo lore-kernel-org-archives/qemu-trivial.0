@@ -1,66 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sEVmP-0001Gm-Ks
-	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2024 11:08:53 -0400
+	id 1sEZVp-0004QW-8M
+	for mharc-qemu-trivial@gnu.org; Tue, 04 Jun 2024 15:08:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xiaoyao.li@intel.com>)
- id 1sEVmO-0001GO-1G; Tue, 04 Jun 2024 11:08:52 -0400
-Received: from mgamail.intel.com ([192.198.163.18])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sEZVn-00044S-Ba
+ for qemu-trivial@nongnu.org; Tue, 04 Jun 2024 15:07:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xiaoyao.li@intel.com>)
- id 1sEVmK-0000nH-NX; Tue, 04 Jun 2024 11:08:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1717513728; x=1749049728;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=JeOBBM0d4YIUT0J1py90ZZ7gnBnyJCwUqUhFwSbZ2ro=;
- b=eCb3gQCowAHqzewgvjAjX1AeZiqai5XMu2TODqMWA3lqQmE185qCP8Ub
- jIxQG7+CUWgJFMcC3hT63tALer0bwUOz7AdcTErh/W/27HtAwpx1BoKNV
- mklDQfvE84DAPVk+xeh1Ly6OKZWWuY5foeBY06SvzGh/SdYlxBPdCi2Pk
- dSOxD8QkpLmEAntEcLJ/8jL4FWOzS9zspQZDIaPe7+RUsOiNNf0X7DdZv
- vmQII4zDaq24pwmsSYIo45niZbG8+VTqLk9mH8Zc2G8ZjvbL96siL48qq
- CrLqV/Ab1u/GvZFWisfqx4fDqrGoR03yhIviQyMXQ17qhvYLG75gAz6wz g==;
-X-CSE-ConnectionGUID: 6xzkaxZITCCvyQoKJRELpQ==
-X-CSE-MsgGUID: TvlOuBhFRi6eJ/ZDhh6L6w==
-X-IronPort-AV: E=McAfee;i="6600,9927,11093"; a="13816988"
-X-IronPort-AV: E=Sophos;i="6.08,214,1712646000"; d="scan'208";a="13816988"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2024 08:08:46 -0700
-X-CSE-ConnectionGUID: BQ0DAi9IRmGuJtIiMP09Ow==
-X-CSE-MsgGUID: hdJTlxOFSgeEDguQ97RsPA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.08,214,1712646000"; d="scan'208";a="41708741"
-Received: from xiaoyaol-hp-g830.ccr.corp.intel.com (HELO [10.125.247.52])
- ([10.125.247.52])
- by fmviesa003-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jun 2024 08:08:43 -0700
-Message-ID: <d1756ef5-7eb9-419f-850f-2addaa6533e6@intel.com>
-Date: Tue, 4 Jun 2024 23:08:41 +0800
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sEZVl-0000yR-Ed
+ for qemu-trivial@nongnu.org; Tue, 04 Jun 2024 15:07:58 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1717528076;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=VYKkp6fHZoal2oiYNWaG4icBm491Zje1r86kUs5B3ls=;
+ b=OZwsTCuNXg5b613I+ciJOPNr5Gn7CTCzrDu5mKU0WumZwHKQiAjWrvnL3FSL9lqcvOSkKy
+ vHYjIpY9LtJs4pyXnHHCodVbkEX4tL8Ss9TTEPtXf6dr3/2no48I4YUYN2BekjM/07jP61
+ KPb5DAYDsKuZlJOTcLCVPW3lgqaHLX8=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-478-tZKp7RBvOQKER34yqde77A-1; Tue, 04 Jun 2024 15:07:53 -0400
+X-MC-Unique: tZKp7RBvOQKER34yqde77A-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-4213530af1aso22857245e9.2
+ for <qemu-trivial@nongnu.org>; Tue, 04 Jun 2024 12:07:53 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1717528072; x=1718132872;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=VYKkp6fHZoal2oiYNWaG4icBm491Zje1r86kUs5B3ls=;
+ b=MeRUYpWMzx5OoZNpg7+nSw7YXNVjKf11AobZF3vc9Rub5E3Sd6RfEPFmdBuCoCbEEE
+ 9zwt52F8J8sj/nIn7zmjiFVN2XE66oVWlIQdpcca/+PbcebLN8M9FZnTZNLY2phgEBr5
+ tREO8oCICUo0pY5cFidR5YjmXpx9rdj1gbxbh6Nj8r3AFj9KM6yMhyfEXqWmtUlmpv//
+ NZCeFdNwu4xnwqfuKaNcIRt2Eann5b2aTKvUzoheJkQSkrK3ST4Fu9axzgfbQsG2YR7U
+ H+gGjEGDAvPaqedP/TbDbeZJGCJtqH6v6IUJ03JpaiDMPm2NVmhekxWy7+vsGhrm3xXj
+ cCTA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU2+fqt3JfvcqsILZAYiTkiH8hAHYPm0EZ9dpB2Htbf/0ihdTP2WPAkGWpY5AmmHZqql6ejo2LfJGJM4nV+n8j5AuB7aBc64A==
+X-Gm-Message-State: AOJu0Yy9d1S8iIJFyzPe8x6YhfwQRkbr6rvYdXokBtxgcL0QWol0auHI
+ KVYCcnxtpAdGECE5M2CDkMjml3psUSkVk8e29/NsmBjNf1eL9euk3VR9m8oXUOD8aIcvE6nXcLa
+ Q4548GPTDpR9b+oQM6I2UhcCF5fg7/GKG24n6zAmcbRSzbD/yYr3hSX4=
+X-Received: by 2002:a05:600c:1da3:b0:419:f9ae:e50 with SMTP id
+ 5b1f17b1804b1-4215634dba3mr3428725e9.37.1717528072125; 
+ Tue, 04 Jun 2024 12:07:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHtmf1otv2cfBpSc0kN/2tPZPOjIDE3hj4mgg2t9VZw5P52wHDeIYV7CndRteKV44ug4AObAg==
+X-Received: by 2002:a05:600c:1da3:b0:419:f9ae:e50 with SMTP id
+ 5b1f17b1804b1-4215634dba3mr3428565e9.37.1717528071749; 
+ Tue, 04 Jun 2024 12:07:51 -0700 (PDT)
+Received: from redhat.com ([2a0d:6fc7:552:cf5c:2b13:215c:b9df:f231])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-35ed8b574e3sm52528f8f.79.2024.06.04.12.07.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 04 Jun 2024 12:07:51 -0700 (PDT)
+Date: Tue, 4 Jun 2024 15:07:48 -0400
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+ Jonathan Cameron <Jonathan.Cameron@huawei.com>,
+ Ankit Agrawal <ankita@nvidia.com>, Igor Mammedov <imammedo@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
+Subject: [PULL 31/46] hw/acpi/GI: Fix trivial parameter alignment issue.
+Message-ID: <481a30a72769a5086a0596fb6ebe19d16d2bac77.1717527933.git.mst@redhat.com>
+References: <cover.1717527933.git.mst@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V3 2/2] target/i386: Advertise MWAIT iff host supports
-To: Zide Chen <zide.chen@intel.com>, qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, mst@redhat.com, thuth@redhat.com, cfontana@suse.de,
- qemu-trivial@nongnu.org, seanjc@google.com, zhao1.liu@intel.com
-References: <20240604000222.75065-1-zide.chen@intel.com>
- <20240604000222.75065-3-zide.chen@intel.com>
-Content-Language: en-US
-From: Xiaoyao Li <xiaoyao.li@intel.com>
-In-Reply-To: <20240604000222.75065-3-zide.chen@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=192.198.163.18; envelope-from=xiaoyao.li@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -40
-X-Spam_score: -4.1
-X-Spam_bar: ----
-X-Spam_report: (-4.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+In-Reply-To: <cover.1717527933.git.mst@redhat.com>
+X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
+X-Mutt-Fcc: =sent
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.288, RCVD_IN_DNSWL_MED=-2.3,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,103 +96,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 04 Jun 2024 15:08:52 -0000
+X-List-Received-Date: Tue, 04 Jun 2024 19:07:59 -0000
 
-On 6/4/2024 8:02 AM, Zide Chen wrote:
-> host_cpu_realizefn() sets CPUID_EXT_MONITOR without consulting host/KVM
-> capabilities. This may cause problems:
-> 
-> - If MWAIT/MONITOR is not available on the host, advertising this
->    feature to the guest and executing MWAIT/MONITOR from the guest
->    triggers #UD and the guest doesn't boot.  This is because typically
->    #UD takes priority over VM-Exit interception checks and KVM doesn't
->    emulate MONITOR/MWAIT on #UD.
-> 
-> - If KVM doesn't support KVM_X86_DISABLE_EXITS_MWAIT, MWAIT/MONITOR
->    from the guest are intercepted by KVM, which is not what cpu-pm=on
->    intends to do.
-> 
-> In these cases, MWAIT/MONITOR should not be exposed to the guest.
-> 
-> The logic in kvm_arch_get_supported_cpuid() to handle CPUID_EXT_MONITOR
-> is correct and sufficient, and we can't set CPUID_EXT_MONITOR after
-> x86_cpu_filter_features().
-> 
-> This was not an issue before commit 662175b91ff ("i386: reorder call to
-> cpu_exec_realizefn") because the feature added in the accel-specific
-> realizefn could be checked against host availability and filtered out.
-> 
-> Additionally, it seems not a good idea to handle guest CPUID leaves in
-> host_cpu_realizefn(), and this patch merges host_cpu_enable_cpu_pm()
-> into kvm_cpu_realizefn().
-> 
-> Fixes: f5cc5a5c1686 ("i386: split cpu accelerators from cpu.c, using AccelCPUClass")
-> Fixes: 662175b91ff2 ("i386: reorder call to cpu_exec_realizefn")
-> Signed-off-by: Zide Chen <zide.chen@intel.com>
+From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
 
-Reviewed-by: Xiaoyao Li <xiaoyao.li@intel.com>
+Before making additional modification, tidy up this misleading indentation.
 
-> ---
-> 
-> V3:
-> - don't set CPUID_EXT_MONITOR in kvm_cpu_realizefn().
-> - Change title to reflect the main purpose of this patch.
-> 
->   target/i386/host-cpu.c    | 12 ------------
->   target/i386/kvm/kvm-cpu.c | 11 +++++++++--
->   2 files changed, 9 insertions(+), 14 deletions(-)
-> 
-> diff --git a/target/i386/host-cpu.c b/target/i386/host-cpu.c
-> index 280e427c017c..8b8bf5afeccf 100644
-> --- a/target/i386/host-cpu.c
-> +++ b/target/i386/host-cpu.c
-> @@ -42,15 +42,6 @@ static uint32_t host_cpu_phys_bits(void)
->       return host_phys_bits;
->   }
->   
-> -static void host_cpu_enable_cpu_pm(X86CPU *cpu)
-> -{
-> -    CPUX86State *env = &cpu->env;
-> -
-> -    host_cpuid(5, 0, &cpu->mwait.eax, &cpu->mwait.ebx,
-> -               &cpu->mwait.ecx, &cpu->mwait.edx);
-> -    env->features[FEAT_1_ECX] |= CPUID_EXT_MONITOR;
-> -}
-> -
->   static uint32_t host_cpu_adjust_phys_bits(X86CPU *cpu)
->   {
->       uint32_t host_phys_bits = host_cpu_phys_bits();
-> @@ -83,9 +74,6 @@ bool host_cpu_realizefn(CPUState *cs, Error **errp)
->       X86CPU *cpu = X86_CPU(cs);
->       CPUX86State *env = &cpu->env;
->   
-> -    if (cpu->max_features && enable_cpu_pm) {
-> -        host_cpu_enable_cpu_pm(cpu);
-> -    }
->       if (env->features[FEAT_8000_0001_EDX] & CPUID_EXT2_LM) {
->           uint32_t phys_bits = host_cpu_adjust_phys_bits(cpu);
->   
-> diff --git a/target/i386/kvm/kvm-cpu.c b/target/i386/kvm/kvm-cpu.c
-> index f76972e47e61..148d10ce3711 100644
-> --- a/target/i386/kvm/kvm-cpu.c
-> +++ b/target/i386/kvm/kvm-cpu.c
-> @@ -65,8 +65,15 @@ static bool kvm_cpu_realizefn(CPUState *cs, Error **errp)
->        *   cpu_common_realizefn() (via xcc->parent_realize)
->        */
->       if (cpu->max_features) {
-> -        if (enable_cpu_pm && kvm_has_waitpkg()) {
-> -            env->features[FEAT_7_0_ECX] |= CPUID_7_0_ECX_WAITPKG;
-> +        if (enable_cpu_pm) {
-> +            if (kvm_has_waitpkg()) {
-> +                env->features[FEAT_7_0_ECX] |= CPUID_7_0_ECX_WAITPKG;
-> +            }
-> +
-> +            if (env->features[FEAT_1_ECX] & CPUID_EXT_MONITOR) {
-> +                host_cpuid(5, 0, &cpu->mwait.eax, &cpu->mwait.ebx,
-> +                           &cpu->mwait.ecx, &cpu->mwait.edx);
-> +	    }
->           }
->           if (cpu->ucode_rev == 0) {
->               cpu->ucode_rev =
+Reviewed-by: Ankit Agrawal <ankita@nvidia.com>
+Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+Message-Id: <20240524100507.32106-2-Jonathan.Cameron@huawei.com>
+Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
+Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
+---
+ hw/acpi/acpi_generic_initiator.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/acpi/acpi_generic_initiator.c b/hw/acpi/acpi_generic_initiator.c
+index 17b9a052f5..18a939b0e5 100644
+--- a/hw/acpi/acpi_generic_initiator.c
++++ b/hw/acpi/acpi_generic_initiator.c
+@@ -132,7 +132,7 @@ static int build_all_acpi_generic_initiators(Object *obj, void *opaque)
+ 
+     dev_handle.segment = 0;
+     dev_handle.bdf = PCI_BUILD_BDF(pci_bus_num(pci_get_bus(pci_dev)),
+-                                               pci_dev->devfn);
++                                   pci_dev->devfn);
+ 
+     build_srat_generic_pci_initiator_affinity(table_data,
+                                               gi->node, &dev_handle);
+-- 
+MST
 
 
