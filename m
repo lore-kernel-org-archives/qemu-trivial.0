@@ -1,73 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sEr0x-0008Fj-Iq
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Jun 2024 09:49:19 -0400
+	id 1sEsEx-0006RP-9b
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Jun 2024 11:07:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sEr0w-0008FJ-AH
- for qemu-trivial@nongnu.org; Wed, 05 Jun 2024 09:49:18 -0400
+ id 1sEsEv-0006Qq-L6
+ for qemu-trivial@nongnu.org; Wed, 05 Jun 2024 11:07:49 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sEr0u-0006SK-J7
- for qemu-trivial@nongnu.org; Wed, 05 Jun 2024 09:49:18 -0400
+ id 1sEsEq-0002My-58
+ for qemu-trivial@nongnu.org; Wed, 05 Jun 2024 11:07:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1717595355;
+ s=mimecast20190719; t=1717600061;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=KcsTVxe7VUKYfyT3ArKLCmyHlqdueGzwZGo7mFbW06s=;
- b=hfxUs3VsnIPEBqa0x8Bw6KwUIJ7b+ozFuAqixLQ7gFu4410I6vWvNr1do64MzkW8sI48ES
- JXZSFaNNsqAnbTIfdGFUdFEFblYTys1AyBQqh2hFfefXU+4kJGJpmHsCs+NXnKXe+jAiAM
- nidlIDM/z5MtqyuuRqLlTNIQ/+FRbHg=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=e35qjsyccZfefOnL0gdhf9y4wVpfLI/EMgKoYs72SN4=;
+ b=XlqBu/zsLRGb97UlVXPZwWVvxD/ULVKDz7PlnC/a6cQm2WydipJdVwczCImZLjeUXJ057t
+ rgDCmRkZuDshoMQ/vbSUYDKLfy9V5OGOHjbA0YKM2vXHwrUCOsrDiiNj6W6HJIV+Q7uU7t
+ 1Wa6Z3tNZ/0cwkgDQBgnfwUeRC/H1Yc=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-647-jjQpAq7zOLmKfSUrXycgVw-1; Wed, 05 Jun 2024 09:49:13 -0400
-X-MC-Unique: jjQpAq7zOLmKfSUrXycgVw-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-42153125d3eso13506985e9.2
- for <qemu-trivial@nongnu.org>; Wed, 05 Jun 2024 06:49:12 -0700 (PDT)
+ us-mta-185-1F7pt-wQN1iSql-_Cg5ajg-1; Wed, 05 Jun 2024 11:07:40 -0400
+X-MC-Unique: 1F7pt-wQN1iSql-_Cg5ajg-1
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-35e114d0befso1671151f8f.0
+ for <qemu-trivial@nongnu.org>; Wed, 05 Jun 2024 08:07:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717595350; x=1718200150;
+ d=1e100.net; s=20230601; t=1717600056; x=1718204856;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=KcsTVxe7VUKYfyT3ArKLCmyHlqdueGzwZGo7mFbW06s=;
- b=pYQHUZBLWKYCkQdKgTTXQWK4x8338xyDApmfL8KncP9Y0FNJjgxWGDCg514aMswDBZ
- 9KqtcnFuRK2ColpD9T+adv1QVtkKCRNOiQuAr6swa8KUGTPiE5SsitUUTf9iJpXW2owD
- 2sF1pCSg70nwz2xWOBCT7s90qMjRyMRbONTNhJRkHrAHATLyCp9RpLxUZZAwIZKuAp/N
- pX+rhJf8vBoabhOA91D6m//kGMedBNmk6K5VOwENMXus3YsWSDEHt41KzjUKi1yEMUsP
- Dp6uYwAoVJA0pEbqWDa+0B/Rhch/uJvGP/18RJGisTNdG7rz8KIbo7NdX4MA1JxR5lBV
- Ff4Q==
+ bh=e35qjsyccZfefOnL0gdhf9y4wVpfLI/EMgKoYs72SN4=;
+ b=uzN6aQ2pA8I4mrT5iQYMo5MwnpAh7055XF8qzaCC0rZe7qiPHGICySBA7U5GsKlJku
+ Zes7HgSfKT395cKaSAEsQ7vIaK733J2qP6pWrPEAdoy6I4ak/xUM33Lsv5jFAo4Zi/bO
+ qy7zkKjh60FE9yH/POwaVQdOhY1MBt82e5nBJveGXwpUja6f0Rauvlkdutyz0Ep5XtcF
+ 6R4gqTJLDeDUu5tSN8I+5itV3aka8T5Mb4TIUPR50qXMPSvsH5SIbTiLyqVVQkHFFtk1
+ Wmv8ds+E3w0+5jR8rgQMNRNw2YXBbJVY86SBgZQAT3EX+bD1Lb5LqQjwBM6slmbAkiO5
+ htqw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWkc4uftuzHHA/NaEpcBwF+SR6/3Mv5o244YRF/ZNmw7BvolCCNu3kt5uAOTqQQ8kZAbW1XtLyw8IgZL/ndoPpENyI84n6W2g==
-X-Gm-Message-State: AOJu0YyjNvAZ1X4KWWilUk5LsM6pSZOfQ3rUoIWYcOCtg0JH3SBODeHC
- Igc2iElsvMiMT7ibGJIyA+DgiAEPjKMmEzlR95F8VgZOY7k7NjuKVi3C7Z98CvpwIzHC2sqt7Sa
- r7m84dNM8NEtaPZTA+Pw7mMOlm2M/HygZy1zdHWkY2NdZCeaL9oDTc+o=
-X-Received: by 2002:a05:600c:5491:b0:420:1551:96a9 with SMTP id
- 5b1f17b1804b1-4215633a321mr20299035e9.39.1717595350008; 
- Wed, 05 Jun 2024 06:49:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHZnuKComjtyYd4hJD9oCfU5bhmTbTrUV9epijVg02/y8t1dwcD2TsT4TXw6APJIAs4gBkh/g==
-X-Received: by 2002:a05:600c:5491:b0:420:1551:96a9 with SMTP id
- 5b1f17b1804b1-4215633a321mr20298845e9.39.1717595349672; 
- Wed, 05 Jun 2024 06:49:09 -0700 (PDT)
+ AJvYcCWQVy9V9kVJ0lQnyODXJox2RUcIfdLdAwUmlGlSo7XjEA+owSb8yYWX6iPbY3aW8IvTHQKaK6mAndtu7OJ1+4YN9/3ltBvOAA==
+X-Gm-Message-State: AOJu0YwKhF4uDG8jxWXNgOKpeNbRbLKx1F9CdvWeos/rbteM7R8MfepS
+ sSVdyNGYrAFigGdKGELzn1VgA+x+9pemaS/lnckt25kWwnOIbyXjSWApVotYqOyGFd4M1zK0N02
+ xxwLZe4Zxgtcp7snIKNcoLefBqfNgHC2kVsvfx4krY5OF0T0F7iePV9o=
+X-Received: by 2002:a5d:424f:0:b0:35e:5189:2d73 with SMTP id
+ ffacd0b85a97d-35e8ef9a012mr1982480f8f.63.1717600056641; 
+ Wed, 05 Jun 2024 08:07:36 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGVEJXbzgrZPUtNGH9RV7+CPBZCPJUJxMLO/iCzkbBoRf7T2ChZCVasHcy740OOQ0VmfGAlJg==
+X-Received: by 2002:a5d:424f:0:b0:35e:5189:2d73 with SMTP id
+ ffacd0b85a97d-35e8ef9a012mr1982459f8f.63.1717600056157; 
+ Wed, 05 Jun 2024 08:07:36 -0700 (PDT)
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
  [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42158101772sm22846205e9.6.2024.06.05.06.49.09
+ ffacd0b85a97d-35dd064bbb1sm14781718f8f.101.2024.06.05.08.07.35
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Jun 2024 06:49:09 -0700 (PDT)
-Date: Wed, 5 Jun 2024 15:49:08 +0200
+ Wed, 05 Jun 2024 08:07:35 -0700 (PDT)
+Date: Wed, 5 Jun 2024 17:07:35 +0200
 From: Igor Mammedov <imammedo@redhat.com>
-To: Zide Chen <zide.chen@intel.com>
-Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, mst@redhat.com,
- thuth@redhat.com, cfontana@suse.de, xiaoyao.li@intel.com,
- qemu-trivial@nongnu.org, seanjc@google.com, zhao1.liu@intel.com
-Subject: Re: [PATCH V3 0/2] improve -overcommit cpu-pm=on|off
-Message-ID: <20240605154908.54c65d26@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240604000222.75065-1-zide.chen@intel.com>
-References: <20240604000222.75065-1-zide.chen@intel.com>
+To: "Chen, Zide" <zide.chen@intel.com>
+Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-devel@nongnu.org,
+ pbonzini@redhat.com, mst@redhat.com, thuth@redhat.com, cfontana@suse.de,
+ xiaoyao.li@intel.com, qemu-trivial@nongnu.org, Sean Christopherson
+ <seanjc@google.com>
+Subject: Re: [PATCH V2 2/3] target/i386: call cpu_exec_realizefn before
+ x86_cpu_filter_features
+Message-ID: <20240605170735.5a3924cd@imammedo.users.ipa.redhat.com>
+In-Reply-To: <dcd913cd-10ce-45c9-9ed8-79b9c42c234b@intel.com>
+References: <20240524200017.150339-1-zide.chen@intel.com>
+ <20240524200017.150339-3-zide.chen@intel.com>
+ <ZlluoKXUF6ctecVt@intel.com>
+ <04d3dfd8-93d2-493d-82d1-8fbcad6ecd22@intel.com>
+ <Zls9v9mg17SXZhO7@intel.com>
+ <20240603113022.6569043b@imammedo.users.ipa.redhat.com>
+ <dcd913cd-10ce-45c9-9ed8-79b9c42c234b@intel.com>
 X-Mailer: Claws Mail 4.2.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
@@ -96,46 +104,220 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Jun 2024 13:49:18 -0000
+X-List-Received-Date: Wed, 05 Jun 2024 15:07:49 -0000
 
-On Mon,  3 Jun 2024 17:02:20 -0700
-Zide Chen <zide.chen@intel.com> wrote:
+On Mon, 3 Jun 2024 14:29:50 -0700
+"Chen, Zide" <zide.chen@intel.com> wrote:
 
-> Currently, if running "-overcommit cpu-pm=on" on hosts that don't
-> have MWAIT support, the MWAIT/MONITOR feature is advertised to the
-> guest and executing MWAIT/MONITOR on the guest triggers #UD.
+> On 6/3/2024 2:30 AM, Igor Mammedov wrote:
+> > On Sat, 1 Jun 2024 23:26:55 +0800
+> > Zhao Liu <zhao1.liu@intel.com> wrote:
+> >   
+> >> On Fri, May 31, 2024 at 10:13:47AM -0700, Chen, Zide wrote:  
+> >>> Date: Fri, 31 May 2024 10:13:47 -0700
+> >>> From: "Chen, Zide" <zide.chen@intel.com>
+> >>> Subject: Re: [PATCH V2 2/3] target/i386: call cpu_exec_realizefn before
+> >>>  x86_cpu_filter_features
+> >>>
+> >>> On 5/30/2024 11:30 PM, Zhao Liu wrote:    
+> >>>> Hi Zide,
+> >>>>
+> >>>> On Fri, May 24, 2024 at 01:00:16PM -0700, Zide Chen wrote:    
+> >>>>> Date: Fri, 24 May 2024 13:00:16 -0700
+> >>>>> From: Zide Chen <zide.chen@intel.com>
+> >>>>> Subject: [PATCH V2 2/3] target/i386: call cpu_exec_realizefn before
+> >>>>>  x86_cpu_filter_features
+> >>>>> X-Mailer: git-send-email 2.34.1
+> >>>>>
+> >>>>> cpu_exec_realizefn which calls the accel-specific realizefn may expand
+> >>>>> features.  e.g., some accel-specific options may require extra features
+> >>>>> to be enabled, and it's appropriate to expand these features in accel-
+> >>>>> specific realizefn.
+> >>>>>
+> >>>>> One such example is the cpu-pm option, which may add CPUID_EXT_MONITOR.
+> >>>>>
+> >>>>> Thus, call cpu_exec_realizefn before x86_cpu_filter_features to ensure
+> >>>>> that it won't expose features not supported by the host.
+> >>>>>
+> >>>>> Fixes: 662175b91ff2 ("i386: reorder call to cpu_exec_realizefn")
+> >>>>> Suggested-by: Xiaoyao Li <xiaoyao.li@intel.com>
+> >>>>> Signed-off-by: Zide Chen <zide.chen@intel.com>
+> >>>>> ---
+> >>>>>  target/i386/cpu.c         | 24 ++++++++++++------------
+> >>>>>  target/i386/kvm/kvm-cpu.c |  1 -
+> >>>>>  2 files changed, 12 insertions(+), 13 deletions(-)
+> >>>>>
+> >>>>> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> >>>>> index bc2dceb647fa..a1c1c785bd2f 100644
+> >>>>> --- a/target/i386/cpu.c
+> >>>>> +++ b/target/i386/cpu.c
+> >>>>> @@ -7604,6 +7604,18 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
+> >>>>>          }
+> >>>>>      }
+> >>>>>  
+> >>>>> +    /*
+> >>>>> +     * note: the call to the framework needs to happen after feature expansion,
+> >>>>> +     * but before the checks/modifications to ucode_rev, mwait, phys_bits.
+> >>>>> +     * These may be set by the accel-specific code,
+> >>>>> +     * and the results are subsequently checked / assumed in this function.
+> >>>>> +     */
+> >>>>> +    cpu_exec_realizefn(cs, &local_err);
+> >>>>> +    if (local_err != NULL) {
+> >>>>> +        error_propagate(errp, local_err);
+> >>>>> +        return;
+> >>>>> +    }
+> >>>>> +
+> >>>>>      x86_cpu_filter_features(cpu, cpu->check_cpuid || cpu->enforce_cpuid);    
+> >>>>
+> >>>> For your case, which sets cpu-pm=on via overcommit, then
+> >>>> x86_cpu_filter_features() will complain that mwait is not supported.
+> >>>>
+> >>>> Such warning is not necessary, because the purpose of overcommit (from
+> >>>> code) is only to support mwait when possible, not to commit to support
+> >>>> mwait in Guest.
+> >>>>
+> >>>> Additionally, I understand x86_cpu_filter_features() is primarily
+> >>>> intended to filter features configured by the user,     
+> >>>
+> >>> Yes, that's why this patches intends to let x86_cpu_filter_features()
+> >>> filter out the MWAIT bit which is set from the overcommit option.    
+> >>
+> >> HMM, but in fact x86_cpu_filter_features() has already checked the MWAIT
+> >> bit set by "-overcommit cpu-pm=on". ;-)
+> >>
+> >> (Pls correct me if I'm wrong) Revisiting what cpu-pm did to MWAIT:
+> >> * Firstly, it set MWAIT bit in x86_cpu_expand_features():
+> >>   x86_cpu_expand_features()  
+> >>      -> x86_cpu_get_supported_feature_word()
+> >>         -> kvm_arch_get_supported_cpuid()    
+> >>  This MWAIT is based on Host's MWAIT capability. This MWAIT enablement
+> >>  is fine for next x86_cpu_filter_features() and x86_cpu_filter_features()
+> >>  is working correctly here!
+> >>
+> >> * Then, MWAIT was secondly set in host_cpu_enable_cpu_pm() regardless
+> >>   neither Host's support or previous MWAIT enablement result. This is
+> >>   the root cause of your issue.
+> >>
+> >> Therefore, we should make cpu-pm honor his first MWAIT enablement result
+> >> instead of repeatly and unconditionally setting the MWAIT bit again in
+> >> host_cpu_enable_cpu_pm().
+> >>
+> >> Additionally, I think the code in x86_cpu_realizefn():
+> >>   cpu->mwait.ecx |= CPUID_MWAIT_EMX | CPUID_MWAIT_IBE;
+> >> has the similar issue because it also should check MWAIT feature bit.
+> >>
+> >> Further, it may be possible to remove cpu->mwait: just check the MWAIT
+> >> bit in leaf 5 of cpu_x86_cpuid(), and if MWAIT is present, use host's
+> >> mwait info plus CPUID_MWAIT_EMX | CPUID_MWAIT_IBE.  
+> > 
+> > Agreed with above analysis,
+> > we shouldn't have host_cpu_enable_cpu_pm() as kvm_arch_get_supported_cpuid
+> > gets us MWAIT already.  
 > 
-> Typically #UD takes priority over VM-Exit interception checks and
-> KVM doesn't emulate MONITOR/MWAIT. This causes the guest fail to
-> boot.
+> Yes, I agree don't need to set CPUID_EXT_MONITOR besides
+> kvm_arch_get_supported_cpuid().
 > 
-> V2:
-> - [PATCH 1]: took Thomas' suggestion for more generic fix
-> - [PATCH 2/3]: no changes
+> > 
+> > filling in cpu->mwait.ecx is benign mistake which likely doesn't
+> > trigger anything if CPUID_EXT_MONITOR is not present.
+> > But for clarity it's better to add an explicit check there as well.  
 > 
-> V3:
-> - dropped [PATCH 1/3]. Took the simpler approach not to re-order
->   cpu_exec_realizefn() call.
-> - changed patch title in [PATCH V3 1/2]
-> - don't set CPUID_EXT_MONITOR in kvm_cpu_realizefn() 
+> Yes, I agree without MWAIT available and advertised, it's meaningless to
+> set the EMX and IBE bits. Seems to me it's cleaner to remove cpu->mwait
+> all together, and in cpu_x86_cpuid(), just read from host_cpuid(5) if
+> MWAIT is available to the guest. But I don't understand the history of
+> why QEMU unconditionally advertises these two bits, and don't know it it
+> could break some thing if these two bits are removed.
+> 
+> Even if we want to fix these two bits, we can do it in another separate
+> patch.
+> 
+> e737b32a36 (" Core 2 Duo specification (Alexander Graf).")
+> unconditionally adds "CPUID_MWAIT_EMX | CPUID_MWAIT_IBE" to CPUID.5.ECX
+> with further explanation.
+> 
+> 2266d44311 ("i386/cpu: make -cpu host support monitor/mwait") adds
+> comment "We always wake on interrupt even if host does not have the
+> capability" to CPUID_MWAIT_IBE.
+> 
+> 
+> >   
+> >>  
+> >>>> and the changes of
+> >>>> CPUID after x86_cpu_filter_features() should by default be regarded like
+> >>>> "QEMU knows what it is doing".    
+> >>>
+> >>> Sure, we can add feature bits after x86_cpu_filter_features(), but I
+> >>> think moving cpu_exec_realizefn() before x86_cpu_filter_features() is
+> >>> more generic, and actually this is what QEMU did before commit 662175b91ff2.
+> >>>
+> >>> - Less redundant code. Specifically, no need to call
+> >>> x86_cpu_get_supported_feature_word() again.
+> >>> - Potentially there could be other features could be added from the
+> >>> accel-specific realizefn, kvm_cpu_realizefn() for example.  And these
+> >>> features need to be checked against the host availability.    
+> >>
+> >> Mainly I don't think this reorder is a direct fix for the problem (I
+> >> just analyse it above), also in your case x86_cpu_filter_features() will
+> >> print a WARNING when QEMU boots, which I don't think is cpu-pm's intention.  
+> > 
+> > There is no problem with warning, I'd even say it's a good thing.  
+> 
+> I agree it's good to have the warning as well.
+> 
+> > But you are right reordering just masks the issue.
+> > 
+> > As for expected behavior, if user asked for "-overcommit cpu-pm=on"
+> > there are 2 options:
+> >    * it's working as expected (mwait exiting is enabled successfully with CPUID MONITOR bit set)
+> >    * QEMU shall fail to start.  
+> 
+> I like the idea that QEMU refuses to launch the guest if the asked CPU
+> features are not available, which is more user friendly.  But the
+> problem is, "-overcommit cpu-pm=on" is an umbrella which intends to
+> enable all the following CPUIDs and KVM features if it's possible.  So,
+> if QEMU fails the guest in this case, then it needs to fail the WAITPKG
+> feature as well. Additionally, it may need to provide individual options
+> to enable these individual features, which I doubt could be too complicated.
 
-on top of above we should make make
-  -overcommit cpu-pm=on
-to error out if KVM_X86_DISABLE_EXITS_MWAIT is not supported/failed
+how about
 
-if we don't do this user gets false assumption that cpu-pm=on
-works as expected, and instead of effective CPU usage/IPI delivery
-all they get is a storm of mwait exits.
+kvm_arch_init()
+    ...
+    if (enable_cpu_pm) {                                                         
+        int disable_exits = kvm_check_extension(s, KVM_CAP_X86_DISABLE_EXITS);   
 
-> 
-> Zide Chen (2):
->   vl: Allow multiple -overcommit commands
->   target/i386: Advertise MWAIT iff host supports
-> 
->  system/vl.c               |  4 ++--
->  target/i386/host-cpu.c    | 12 ------------
->  target/i386/kvm/kvm-cpu.c | 11 +++++++++--
->  3 files changed, 11 insertions(+), 16 deletions(-)
+/* Work around for kernel header with a typo. TODO: fix header and drop. */      
+#if defined(KVM_X86_DISABLE_EXITS_HTL) && !defined(KVM_X86_DISABLE_EXITS_HLT)    
+#define KVM_X86_DISABLE_EXITS_HLT KVM_X86_DISABLE_EXITS_HTL                      
+#endif                                   
+                                        
+above comment probably needs to be cleaned up
+
+        if (disable_exits) {                                                     
+            disable_exits &= (KVM_X86_DISABLE_EXITS_MWAIT |                      
+                              KVM_X86_DISABLE_EXITS_HLT |                        
+                              KVM_X86_DISABLE_EXITS_PAUSE |                      
+                              KVM_X86_DISABLE_EXITS_CSTATE);                     
+        }  
+
+fail here if filtered disable_exits is an empty set?                                                                
+                                                                                 
+        ret = kvm_vm_enable_cap(s, KVM_CAP_X86_DISABLE_EXITS, 0,                 
+                                disable_exits);                                  
+        if (ret < 0) {                                                           
+            error_report("kvm: guest stopping CPU not supported: %s",            
+                         strerror(-ret));                                        
+        }                                                                        
+    }                                                                            
+      
+
+
+> KVM_X86_DISABLE_EXITS_MWAI
+> KVM_X86_DISABLE_EXITS_HLTKVM_X86_DISABLE_EXITS_PAUSE
+> KVM_X86_DISABLE_EXITS_CSTATE
+> CPUID.7.0:ECX.WAITPKG
+> CPUID.1.ECX.MWAIT
 > 
 
 
