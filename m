@@ -1,74 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sEqn8-0001xk-6T
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Jun 2024 09:35:02 -0400
+	id 1sEqu3-0005uO-Qg
+	for mharc-qemu-trivial@gnu.org; Wed, 05 Jun 2024 09:42:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sEqn6-0001xA-M1
- for qemu-trivial@nongnu.org; Wed, 05 Jun 2024 09:35:00 -0400
+ id 1sEqu1-0005rI-7B
+ for qemu-trivial@nongnu.org; Wed, 05 Jun 2024 09:42:09 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1sEqn5-00031J-5I
- for qemu-trivial@nongnu.org; Wed, 05 Jun 2024 09:35:00 -0400
+ id 1sEqtz-0005Ha-DC
+ for qemu-trivial@nongnu.org; Wed, 05 Jun 2024 09:42:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1717594498;
+ s=mimecast20190719; t=1717594925;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=JZZPtrDu9x28REqGTPIWhw9vKCAfhpoOi3laR69ZUMY=;
- b=SrAmdqZxVWt3q8p7G9Nmc85bi6lIcbXNNBX5cqH8HCwoVV60odU+0XXaAaNJanApoz3y/4
- 7Sm993xOe6ez8Xy1RKc9e0EpoCNaVzfroAe0ZtAUuqKuVBfLLy4au40oLa766RjwZIVnq6
- g472J0LIPTJuhOual51va4XrnGOBWu8=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=0O0BrZBeorsDSlWqqb75Id2FxwyblMLQic+MBhE1DB0=;
+ b=dgE9kNQQehBCkJ6/4BAzcGp4Rx0ge1KyXO1mls4pNxZgJxcl09B7nT8hVQyMBwAI7IKRAc
+ pj4sQ1+x8G2EPOb0o/oMJwQb0HFUTMf2x4HvvcHd5NpCyZYrBUe7FaSEhTGSXOGUnpWaBU
+ 5RS6W/8Ri5JV2EoAVQrtg3C69xApEWM=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-459-HlGII0gBP_uc8NaoIwYEWQ-1; Wed, 05 Jun 2024 09:34:56 -0400
-X-MC-Unique: HlGII0gBP_uc8NaoIwYEWQ-1
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-35dcde1be6cso1525733f8f.1
- for <qemu-trivial@nongnu.org>; Wed, 05 Jun 2024 06:34:55 -0700 (PDT)
+ us-mta-219-G6lxi9hoNZGw2NJO6ODr1A-1; Wed, 05 Jun 2024 09:42:03 -0400
+X-MC-Unique: G6lxi9hoNZGw2NJO6ODr1A-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-42156af89afso6742685e9.0
+ for <qemu-trivial@nongnu.org>; Wed, 05 Jun 2024 06:42:02 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717594493; x=1718199293;
+ d=1e100.net; s=20230601; t=1717594919; x=1718199719;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=JZZPtrDu9x28REqGTPIWhw9vKCAfhpoOi3laR69ZUMY=;
- b=Ru6ZSYl8eqV7Cklzos3EG1vbzqnIOaes3RGUSAA74EW7XujIxFzoLwvq1c8VeGwo2Q
- qXIEqjjdaRH6kjuZ4M65RlUJ6Oa2BbcElsJpVnMd9AUGfpb8bSkvx0sIOj5YkM/qP7zn
- WHqVqtI7Z0zxR5CUh9ToQG7yAn1yKlqYx1iYPrg/FvnnOrXIqkpkGbYfG5oBIY9R1KzW
- 4+KC/OokR7MXGp13+HFowSUFepTAA8/bwcdRNistNI7D88s1Se4GY60c7STqjab3qHqj
- 7IRjMxxJLzrDdbb1m02nWBzepqtMoIbIJgZzBbXQmLx8RSH4WMNznsuClKKPuiyRNvrr
- wcEA==
+ bh=0O0BrZBeorsDSlWqqb75Id2FxwyblMLQic+MBhE1DB0=;
+ b=ForryA1L81THyqc736SU42yqhNHApi0H9r5OOqRpcQDJTw5hQXfaxEqsK3vhELiTY4
+ OdsE66r5gqGm9jvnnyRU8N9sUEgj2RdYjaspjOVDb9b7KfQ4DhldqVNLMIYLDObdgHQF
+ TSDEOXf1loqQd0vyk4Iv0lveWzbT07PZH7xG57uUN2qd8F1i9Ihrb8K+WVAqpotIVX3b
+ tFvqcZhRrx5fLatZQWx4pkbduD8VOo3AeQKn3T4Of+1xdQpWyV37bJqIaLRRfzyk3KqS
+ egvCU1fq9BUYuwa8fTvv5qm2mdPoRw/+2+rr0Np616TFMB4OyU369kEmA8sNxyiCHYs2
+ wYwg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXqsPgfp5Fh8yf2jafOf55wCntaMuIOeM9JOTwe1o8JCuqOo/wQjZdwsTGv9L9/84mFsBM0DzNPiP8S9lKeh34aO8i4JYFARA==
-X-Gm-Message-State: AOJu0Yy+qtz4tITv8EwxReCoE+sAa3isipIBJeDJwlYQNxnadx7sMr5X
- 7ETqLK+Z38C20DDXkgiO+jrOC2a0Y9hWxwTTPBmiIc4gUjenslGkW9C1AfbUecFISxc4OX2uZ/4
- nA6ukSh0V9/avXO7RJT5KePexGRXLOUpWf5bWYv8YRqPRlioajFPGmEk=
-X-Received: by 2002:a5d:53c6:0:b0:35e:7cc6:98fc with SMTP id
- ffacd0b85a97d-35e8405e26cmr1839246f8f.12.1717594493297; 
- Wed, 05 Jun 2024 06:34:53 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEtZaH7DB2hwXC0W2u7ZsPckXWfoKYcGOmQvBK0l8NtX+l6NDw82TGaOGdWenjhDnbmKjQS4w==
-X-Received: by 2002:a5d:53c6:0:b0:35e:7cc6:98fc with SMTP id
- ffacd0b85a97d-35e8405e26cmr1839229f8f.12.1717594492980; 
- Wed, 05 Jun 2024 06:34:52 -0700 (PDT)
+ AJvYcCUOGVhn3aj4F16j9GqxLqFFnUlCVby9ItkjxLkxaUAWHS2XwhwG5ZlZV+MACpUCq/wI5QcQqRYZoLjVfdojQBl6S/mF9npZaA==
+X-Gm-Message-State: AOJu0YzIbog/k0kMxk42wCPZ3kX60TUWcx/whxjVp/dQ8eLTk2lg+L2z
+ tEijprYChMK0s+r23jwh2QTp4gvjZfNOBW4ifEVsM/kEZTZN3c6MFgmL9xg6JiLMzGH5XQMPU4u
+ gU7yS/y+lH3ConWUTGa3vHQqGPo2XbQfBnJQajWcpZFo0d2KQwszq7hA=
+X-Received: by 2002:a05:600c:46c3:b0:421:2cb3:143 with SMTP id
+ 5b1f17b1804b1-421562cf604mr18961445e9.3.1717594918950; 
+ Wed, 05 Jun 2024 06:41:58 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IE2kfxnqBL0ZcIFk0P7ClyMYS6GQt3TkD/bbXAkkjd3JawmJ6y9LSIjrKNL8oojMOQsOkjilQ==
+X-Received: by 2002:a05:600c:46c3:b0:421:2cb3:143 with SMTP id
+ 5b1f17b1804b1-421562cf604mr18961235e9.3.1717594918599; 
+ Wed, 05 Jun 2024 06:41:58 -0700 (PDT)
 Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
  [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-35dd04ca434sm14608816f8f.30.2024.06.05.06.34.52
+ 5b1f17b1804b1-421581016c6sm22320795e9.3.2024.06.05.06.41.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Jun 2024 06:34:52 -0700 (PDT)
-Date: Wed, 5 Jun 2024 15:34:51 +0200
+ Wed, 05 Jun 2024 06:41:58 -0700 (PDT)
+Date: Wed, 5 Jun 2024 15:41:57 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: Zide Chen <zide.chen@intel.com>
 Cc: qemu-devel@nongnu.org, pbonzini@redhat.com, mst@redhat.com,
  thuth@redhat.com, cfontana@suse.de, xiaoyao.li@intel.com,
  qemu-trivial@nongnu.org, seanjc@google.com, zhao1.liu@intel.com
-Subject: Re: [PATCH V3 1/2] vl: Allow multiple -overcommit commands
-Message-ID: <20240605153451.5c234180@imammedo.users.ipa.redhat.com>
-In-Reply-To: <20240604000222.75065-2-zide.chen@intel.com>
+Subject: Re: [PATCH V3 2/2] target/i386: Advertise MWAIT iff host supports
+Message-ID: <20240605154157.6874cad0@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240604000222.75065-3-zide.chen@intel.com>
 References: <20240604000222.75065-1-zide.chen@intel.com>
- <20240604000222.75065-2-zide.chen@intel.com>
+ <20240604000222.75065-3-zide.chen@intel.com>
 X-Mailer: Claws Mail 4.2.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
@@ -97,57 +97,105 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Jun 2024 13:35:00 -0000
+X-List-Received-Date: Wed, 05 Jun 2024 13:42:10 -0000
 
-On Mon,  3 Jun 2024 17:02:21 -0700
+On Mon,  3 Jun 2024 17:02:22 -0700
 Zide Chen <zide.chen@intel.com> wrote:
 
-> Both cpu-pm and mem-lock are related to system resource overcommit, but
-> they are separate from each other, in terms of how they are realized,
-> and of course, they are applied to different system resources.
+> host_cpu_realizefn() sets CPUID_EXT_MONITOR without consulting host/KVM
+> capabilities. This may cause problems:
 > 
-> It's tempting to use separate command lines to specify their behavior.
-> e.g., in the following example, the cpu-pm command is quietly
-> overwritten, and it's not easy to notice it without careful inspection.
+> - If MWAIT/MONITOR is not available on the host, advertising this
+>   feature to the guest and executing MWAIT/MONITOR from the guest
+>   triggers #UD and the guest doesn't boot.  This is because typically
+>   #UD takes priority over VM-Exit interception checks and KVM doesn't
+>   emulate MONITOR/MWAIT on #UD.
 > 
->   --overcommit mem-lock=on
->   --overcommit cpu-pm=on
+> - If KVM doesn't support KVM_X86_DISABLE_EXITS_MWAIT, MWAIT/MONITOR
+>   from the guest are intercepted by KVM, which is not what cpu-pm=on
+>   intends to do.
 > 
-> Fixes: c8c9dc42b7ca ("Remove the deprecated -realtime option")
-> Suggested-by: Thomas Huth <thuth@redhat.com>
+> In these cases, MWAIT/MONITOR should not be exposed to the guest.
+> 
+> The logic in kvm_arch_get_supported_cpuid() to handle CPUID_EXT_MONITOR
+> is correct and sufficient, and we can't set CPUID_EXT_MONITOR after
+> x86_cpu_filter_features().
+> 
+> This was not an issue before commit 662175b91ff ("i386: reorder call to
+> cpu_exec_realizefn") because the feature added in the accel-specific
+> realizefn could be checked against host availability and filtered out.
+> 
+> Additionally, it seems not a good idea to handle guest CPUID leaves in
+> host_cpu_realizefn(), and this patch merges host_cpu_enable_cpu_pm()
+> into kvm_cpu_realizefn().
+> 
+> Fixes: f5cc5a5c1686 ("i386: split cpu accelerators from cpu.c, using AccelCPUClass")
+> Fixes: 662175b91ff2 ("i386: reorder call to cpu_exec_realizefn")
 > Signed-off-by: Zide Chen <zide.chen@intel.com>
-> Reviewed-by: Thomas Huth <thuth@redhat.com>
-> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
 > ---
 > 
-> V3: added Reviewed-by
+> V3:
+> - don't set CPUID_EXT_MONITOR in kvm_cpu_realizefn().
+> - Change title to reflect the main purpose of this patch.
 > 
-> v2:
-> Thanks to Thomas' suggestion, changed to this better approach, which
-> is more generic and can handle situations like: "enabled the option in
-> the config file, and now you'd like to disable it on the command line
-> again".
+>  target/i386/host-cpu.c    | 12 ------------
+>  target/i386/kvm/kvm-cpu.c | 11 +++++++++--
+>  2 files changed, 9 insertions(+), 14 deletions(-)
 > 
->  system/vl.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/system/vl.c b/system/vl.c
-> index a3eede5fa5b8..dfa6cdd9283b 100644
-> --- a/system/vl.c
-> +++ b/system/vl.c
-> @@ -3545,8 +3545,8 @@ void qemu_init(int argc, char **argv)
->                  if (!opts) {
->                      exit(1);
->                  }
-> -                enable_mlock = qemu_opt_get_bool(opts, "mem-lock", false);
-> -                enable_cpu_pm = qemu_opt_get_bool(opts, "cpu-pm", false);
-> +                enable_mlock = qemu_opt_get_bool(opts, "mem-lock", enable_mlock);
-> +                enable_cpu_pm = qemu_opt_get_bool(opts, "cpu-pm", enable_cpu_pm);
->                  break;
->              case QEMU_OPTION_compat:
->                  {
+> diff --git a/target/i386/host-cpu.c b/target/i386/host-cpu.c
+> index 280e427c017c..8b8bf5afeccf 100644
+> --- a/target/i386/host-cpu.c
+> +++ b/target/i386/host-cpu.c
+> @@ -42,15 +42,6 @@ static uint32_t host_cpu_phys_bits(void)
+>      return host_phys_bits;
+>  }
+>  
+> -static void host_cpu_enable_cpu_pm(X86CPU *cpu)
+> -{
+> -    CPUX86State *env = &cpu->env;
+> -
+> -    host_cpuid(5, 0, &cpu->mwait.eax, &cpu->mwait.ebx,
+> -               &cpu->mwait.ecx, &cpu->mwait.edx);
+> -    env->features[FEAT_1_ECX] |= CPUID_EXT_MONITOR;
+> -}
+> -
+>  static uint32_t host_cpu_adjust_phys_bits(X86CPU *cpu)
+>  {
+>      uint32_t host_phys_bits = host_cpu_phys_bits();
+> @@ -83,9 +74,6 @@ bool host_cpu_realizefn(CPUState *cs, Error **errp)
+>      X86CPU *cpu = X86_CPU(cs);
+>      CPUX86State *env = &cpu->env;
+>  
+> -    if (cpu->max_features && enable_cpu_pm) {
+> -        host_cpu_enable_cpu_pm(cpu);
+> -    }
+>      if (env->features[FEAT_8000_0001_EDX] & CPUID_EXT2_LM) {
+>          uint32_t phys_bits = host_cpu_adjust_phys_bits(cpu);
+>  
+> diff --git a/target/i386/kvm/kvm-cpu.c b/target/i386/kvm/kvm-cpu.c
+> index f76972e47e61..148d10ce3711 100644
+> --- a/target/i386/kvm/kvm-cpu.c
+> +++ b/target/i386/kvm/kvm-cpu.c
+> @@ -65,8 +65,15 @@ static bool kvm_cpu_realizefn(CPUState *cs, Error **errp)
+>       *   cpu_common_realizefn() (via xcc->parent_realize)
+>       */
+>      if (cpu->max_features) {
+> -        if (enable_cpu_pm && kvm_has_waitpkg()) {
+> -            env->features[FEAT_7_0_ECX] |= CPUID_7_0_ECX_WAITPKG;
+> +        if (enable_cpu_pm) {
+> +            if (kvm_has_waitpkg()) {
+> +                env->features[FEAT_7_0_ECX] |= CPUID_7_0_ECX_WAITPKG;
+> +            }
+> +
+> +            if (env->features[FEAT_1_ECX] & CPUID_EXT_MONITOR) {
+> +                host_cpuid(5, 0, &cpu->mwait.eax, &cpu->mwait.ebx,
+> +                           &cpu->mwait.ecx, &cpu->mwait.edx);
+> +	    }
+>          }
+>          if (cpu->ucode_rev == 0) {
+>              cpu->ucode_rev =
 
 
