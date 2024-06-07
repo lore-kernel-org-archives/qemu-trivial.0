@@ -1,88 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sF0BN-0007t8-J5
-	for mharc-qemu-trivial@gnu.org; Wed, 05 Jun 2024 19:36:41 -0400
+	id 1sFaCo-0004L9-Cw
+	for mharc-qemu-trivial@gnu.org; Fri, 07 Jun 2024 10:04:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sF0BL-0007ig-Mt
- for qemu-trivial@nongnu.org; Wed, 05 Jun 2024 19:36:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <dg@treblig.org>)
+ id 1sFaCn-0004Kw-JZ; Fri, 07 Jun 2024 10:04:33 -0400
+Received: from mx.treblig.org ([2a00:1098:5b::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1sF0BJ-0005t4-6w
- for qemu-trivial@nongnu.org; Wed, 05 Jun 2024 19:36:39 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1717630596;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=VYKkp6fHZoal2oiYNWaG4icBm491Zje1r86kUs5B3ls=;
- b=RAT/OFEIKlUkR7JuK/SRVFrGemLRXvpK54uLT61+6vXSsEKQxFtG242s9OJgZB9JjPiQvM
- HIqH1XtP8U7r492nRQNOJ6aDWGuENqmdq+fLU0BLpvSmw93Da85OUPapE/uWroHg6cgASc
- A1cwlgoBk/pECAgMyuWFYZRYT/KRfgw=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-308-5eRZynM8OvyZjZ6k7vDnvA-1; Wed, 05 Jun 2024 19:36:35 -0400
-X-MC-Unique: 5eRZynM8OvyZjZ6k7vDnvA-1
-Received: by mail-ed1-f72.google.com with SMTP id
- 4fb4d7f45d1cf-57a7946685aso128864a12.2
- for <qemu-trivial@nongnu.org>; Wed, 05 Jun 2024 16:36:35 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1717630594; x=1718235394;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=VYKkp6fHZoal2oiYNWaG4icBm491Zje1r86kUs5B3ls=;
- b=GpKFH6/MUR53nufZHHkv9kVqwyddZVxqd5RqPo5FYnNzRJhHLXMoSUBOTayP5kDGqA
- wdntoONv2ljbHR4zLn2/C8IhG349W/4nv5gpkaL2giFGoARC3JzPr/6q6Ab9kgyJvnZI
- FoC07nYfF74wWqEmJZIzjqU61popqMnNRQX42d8FisEtnI+iU5F86XIDX7DvEKWqpRZh
- 69h1BU/RbNTzTkRCwRd3BsuRuAhnrLRNxBOTxXrK6si00KgrOO7DtRhHbkZ1uKFkxvxL
- 5B61hPoLSNDv5w4Q0upwaqL+2lP/d0Rquvp2e2Nlp+D4Uad8AMDVLEHhuoV0KMisEsMe
- uPkA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVkuNLe5YVMapPE8fX0bsyHWTkXnvcFJKVksZ2MpVcvdogabAX3RX7cZAQ7gF42+jd41xgwis1ZaO4C6NW60+dtMu1WNMUpmg==
-X-Gm-Message-State: AOJu0YwcxYLI3oKp1mcVXJwuUVElQboNk9pBbPLvhdy2DFo4YwFmwYjT
- topVe9ygN6E89QvHN6l4K8jx4wjkiaE/oSspr0pB/ucu1JszGEQbbEbf5+L/knXlrXHC0LXBF3N
- hbPoqxI13NEz6pG+BwIzVp+ybdTaw9BBEwU7UD5tWvydziH1q+WO5wno=
-X-Received: by 2002:a50:f69d:0:b0:57a:79c2:e9d7 with SMTP id
- 4fb4d7f45d1cf-57a8b7c6141mr2531858a12.27.1717630594174; 
- Wed, 05 Jun 2024 16:36:34 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHqDL5XbCU5fqlEGdBT3VAnL6174hRz+Kbaud0YHpoylqwlOVNg+ayQGc3yGA8kSZ3smxm1cQ==
-X-Received: by 2002:a50:f69d:0:b0:57a:79c2:e9d7 with SMTP id
- 4fb4d7f45d1cf-57a8b7c6141mr2531849a12.27.1717630593817; 
- Wed, 05 Jun 2024 16:36:33 -0700 (PDT)
-Received: from redhat.com ([2.55.56.67]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-57aae11a98csm98999a12.48.2024.06.05.16.36.31
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 05 Jun 2024 16:36:33 -0700 (PDT)
-Date: Wed, 5 Jun 2024 19:36:30 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Ankit Agrawal <ankita@nvidia.com>, Igor Mammedov <imammedo@redhat.com>,
- Ani Sinha <anisinha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
-Subject: [PULL v3 30/41] hw/acpi/GI: Fix trivial parameter alignment issue.
-Message-ID: <a8ff9b58450fb1df51302a5d698041aca6adcaaf.1717630437.git.mst@redhat.com>
-References: <cover.1717630437.git.mst@redhat.com>
+ (Exim 4.90_1) (envelope-from <dg@treblig.org>)
+ id 1sFaCl-0002Ew-4r; Fri, 07 Jun 2024 10:04:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
+ ; s=bytemarkmx;
+ h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
+ :Subject; bh=GIYnsST43nefCECPfrzEHy5iEPGuAaIBorJIrZwMoX4=; b=U7vugKpFZdPqg4F0
+ vgEyaHgZLPH97e3nA+g+uSBD6CBFSGKwuOJMn8nAD7n8Q43eo09qTUBtegdp5Byab6ihFt3eyZYQG
+ OWJ6Q64FECDiiHFzkj/4ANEH4OAlrup2zBbSAqeeupU2UCx5muQbGxvp26ppSETuNYIbAHsWsmJAY
+ VPqsH0oSKr89nLUOsEzGthohyi5xTT4r/BLaIPTubFDh7JO1Evhk2GPLi6sovDhkCOIwTcNfTyteO
+ Xk1efhMWjQe7Tr+zvr02wi0CuVLUWlZraJ9CPYw/xulYnM2ACxG/H5BDRZPYCN17n08ncXHfUUWB4
+ keJOUAxvP1NmPBM1Xw==;
+Received: from dg by mx.treblig.org with local (Exim 4.96)
+ (envelope-from <dg@treblig.org>) id 1sFaCg-0050k1-3A;
+ Fri, 07 Jun 2024 14:04:26 +0000
+Date: Fri, 7 Jun 2024 14:04:26 +0000
+From: "Dr. David Alan Gilbert" <dave@treblig.org>
+To: peter.maydell@linaro.org, laurent@vivier.eu, qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org
+Subject: Re: [PATCH 0/7] Remove some unused structures
+Message-ID: <ZmMTPvLUaB4tGvbk@gallifrey>
+References: <20240505171444.333302-1-dave@treblig.org>
 MIME-Version: 1.0
-In-Reply-To: <cover.1717630437.git.mst@redhat.com>
-X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-X-Mutt-Fcc: =sent
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+In-Reply-To: <20240505171444.333302-1-dave@treblig.org>
+X-Chocolate: 70 percent or better cocoa solids preferably
+X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
+X-Uptime: 14:01:06 up 30 days, 1:15, 1 user, load average: 0.02, 0.04, 0.00
+User-Agent: Mutt/2.2.12 (2023-09-09)
+Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
+ helo=mx.treblig.org
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,35 +56,60 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 05 Jun 2024 23:36:40 -0000
+X-List-Received-Date: Fri, 07 Jun 2024 14:04:33 -0000
 
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+* Dr. David Alan Gilbert (dave@treblig.org) wrote:
+> A bunch of structs that are currently unused,
+> found with a simple script and a bit of eyeballing.
+> 
+> The only one I'm that suspicious of is the SPARC
+> one, where the patch which removed the use is a bit
+> confusing to me.
 
-Before making additional modification, tidy up this misleading indentation.
+Copying in Trivial; I think there are 4 of these that
+are still outstanding:
 
-Reviewed-by: Ankit Agrawal <ankita@nvidia.com>
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Message-Id: <20240524100507.32106-2-Jonathan.Cameron@huawei.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- hw/acpi/acpi_generic_initiator.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+   [PATCH 1/7] linux-user: cris: Remove unused struct 'rt_signal_frame'
+      (Although cris is going)
+   [PATCH 3/7] linux-user: sparc: Remove unused struct 'target_mc_fq'
+   [PATCH 5/7] hw/arm/bcm2836: Remove unusued struct 'BCM283XClass'
+   [PATCH 7/7] net/can: Remove unused struct 'CanBusState'
 
-diff --git a/hw/acpi/acpi_generic_initiator.c b/hw/acpi/acpi_generic_initiator.c
-index 17b9a052f5..18a939b0e5 100644
---- a/hw/acpi/acpi_generic_initiator.c
-+++ b/hw/acpi/acpi_generic_initiator.c
-@@ -132,7 +132,7 @@ static int build_all_acpi_generic_initiators(Object *obj, void *opaque)
- 
-     dev_handle.segment = 0;
-     dev_handle.bdf = PCI_BUILD_BDF(pci_bus_num(pci_get_bus(pci_dev)),
--                                               pci_dev->devfn);
-+                                   pci_dev->devfn);
- 
-     build_srat_generic_pci_initiator_affinity(table_data,
-                                               gi->node, &dev_handle);
+Can Trivial pick these up please?
+
+Dave
+
+> Tested with a 
+>   --target-list=ppc-softmmu,m68k-softmmu,x86_64-softmmu,arm-softmmu,aarch64-softmmu,cris-linux-user,i386-linux-user,sparc-linux-user
+> and 'make check' on x86 linux.
+> 
+> Dave
+> 
+> Dr. David Alan Gilbert (7):
+>   linux-user: cris: Remove unused struct 'rt_signal_frame'
+>   linux-user: i386/signal: Remove unused fp structs
+>   linux-user: sparc: Remove unused struct 'target_mc_fq'
+>   hw/usb/dev-network: Remove unused struct 'rndis_config_parameter'
+>   hw/arm/bcm2836: Remove unusued struct 'BCM283XClass'
+>   target/ppc: Remove unused struct 'mmu_ctx_hash32'
+>   net/can: Remove unused struct 'CanBusState'
+> 
+>  hw/arm/bcm2836.c          | 12 ------------
+>  hw/usb/dev-network.c      |  8 --------
+>  linux-user/cris/signal.c  |  8 --------
+>  linux-user/i386/signal.c  | 10 ----------
+>  linux-user/sparc/signal.c |  5 -----
+>  net/can/can_host.c        |  6 ------
+>  target/ppc/mmu-hash32.c   |  6 ------
+>  7 files changed, 55 deletions(-)
+> 
+> -- 
+> 2.45.0
+> 
+> 
 -- 
-MST
-
+ -----Open up your eyes, open up your mind, open up your code -------   
+/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
+\        dave @ treblig.org |                               | In Hex /
+ \ _________________________|_____ http://www.treblig.org   |_______/
 
