@@ -1,40 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sFaCo-0004L9-Cw
-	for mharc-qemu-trivial@gnu.org; Fri, 07 Jun 2024 10:04:34 -0400
+	id 1sGevy-0003qi-Nb
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Jun 2024 09:19:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1sFaCn-0004Kw-JZ; Fri, 07 Jun 2024 10:04:33 -0400
+ id 1sGevx-0003qS-IS; Mon, 10 Jun 2024 09:19:37 -0400
 Received: from mx.treblig.org ([2a00:1098:5b::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1sFaCl-0002Ew-4r; Fri, 07 Jun 2024 10:04:33 -0400
+ id 1sGevu-0008Fd-UW; Mon, 10 Jun 2024 09:19:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
  ; s=bytemarkmx;
  h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
- :Subject; bh=GIYnsST43nefCECPfrzEHy5iEPGuAaIBorJIrZwMoX4=; b=U7vugKpFZdPqg4F0
- vgEyaHgZLPH97e3nA+g+uSBD6CBFSGKwuOJMn8nAD7n8Q43eo09qTUBtegdp5Byab6ihFt3eyZYQG
- OWJ6Q64FECDiiHFzkj/4ANEH4OAlrup2zBbSAqeeupU2UCx5muQbGxvp26ppSETuNYIbAHsWsmJAY
- VPqsH0oSKr89nLUOsEzGthohyi5xTT4r/BLaIPTubFDh7JO1Evhk2GPLi6sovDhkCOIwTcNfTyteO
- Xk1efhMWjQe7Tr+zvr02wi0CuVLUWlZraJ9CPYw/xulYnM2ACxG/H5BDRZPYCN17n08ncXHfUUWB4
- keJOUAxvP1NmPBM1Xw==;
+ :Subject; bh=jCRBsW8ZUV7JwQ+XKRjuYwB4Qd/WP5ltErF5V8WW9R0=; b=RDNlVBknMaznwdwf
+ fy9cCgGLN8C3l0XolnsKS6YXs5i0GiuBcgI1zhs6gEurzyfMkZGQ7/sKEbWufAv8AdVQ/8WMcIv7Q
+ 3bvzSVFPSk5VFtYpwLcrbTt80oB3W3npU2Wd55J+YYoE0wahK/3YNr50GS8NXsw2QuorHzqvr1KTK
+ uNWozRDrTYt621kaBGgyTbQxXF1DNyCF5ll503NXYkMOifJMy1FwdTPcca3Wx+fmSI58ARrd4lqbQ
+ U9M67YYHq3Rz8uV2rYIPF6BYzftaH2gSrp+Chs9lKJwmMqJUVFj07Lq2mc7FyEnzyvd7XoX4ttX0Y
+ kKWPjA/SPhfBmKpZ/w==;
 Received: from dg by mx.treblig.org with local (Exim 4.96)
- (envelope-from <dg@treblig.org>) id 1sFaCg-0050k1-3A;
- Fri, 07 Jun 2024 14:04:26 +0000
-Date: Fri, 7 Jun 2024 14:04:26 +0000
+ (envelope-from <dg@treblig.org>) id 1sGevo-005KAT-2j;
+ Mon, 10 Jun 2024 13:19:28 +0000
+Date: Mon, 10 Jun 2024 13:19:28 +0000
 From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: peter.maydell@linaro.org, laurent@vivier.eu, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
-Subject: Re: [PATCH 0/7] Remove some unused structures
-Message-ID: <ZmMTPvLUaB4tGvbk@gallifrey>
-References: <20240505171444.333302-1-dave@treblig.org>
+To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org,
+ Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>
+Subject: Re: [PATCH] monitor: Remove obsolete stubs
+Message-ID: <Zmb9YNgnV7R4_4iB@gallifrey>
+References: <20240610063924.51154-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=iso-8859-1
 Content-Disposition: inline
-In-Reply-To: <20240505171444.333302-1-dave@treblig.org>
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <20240610063924.51154-1-philmd@linaro.org>
 X-Chocolate: 70 percent or better cocoa solids preferably
 X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
-X-Uptime: 14:01:06 up 30 days, 1:15, 1 user, load average: 0.02, 0.04, 0.00
+X-Uptime: 13:18:46 up 33 days, 32 min,  1 user,  load average: 0.00, 0.00, 0.00
 User-Agent: Mutt/2.2.12 (2023-09-09)
 Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
  helo=mx.treblig.org
@@ -56,56 +59,77 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 07 Jun 2024 14:04:33 -0000
+X-List-Received-Date: Mon, 10 Jun 2024 13:19:37 -0000
 
-* Dr. David Alan Gilbert (dave@treblig.org) wrote:
-> A bunch of structs that are currently unused,
-> found with a simple script and a bit of eyeballing.
+* Philippe Mathieu-Daudé (philmd@linaro.org) wrote:
+> hmp_info_roms() was removed in commit dd98234c05 ("qapi:
+> introduce x-query-roms QMP command"),
 > 
-> The only one I'm that suspicious of is the SPARC
-> one, where the patch which removed the use is a bit
-> confusing to me.
-
-Copying in Trivial; I think there are 4 of these that
-are still outstanding:
-
-   [PATCH 1/7] linux-user: cris: Remove unused struct 'rt_signal_frame'
-      (Although cris is going)
-   [PATCH 3/7] linux-user: sparc: Remove unused struct 'target_mc_fq'
-   [PATCH 5/7] hw/arm/bcm2836: Remove unusued struct 'BCM283XClass'
-   [PATCH 7/7] net/can: Remove unused struct 'CanBusState'
-
-Can Trivial pick these up please?
-
-Dave
-
-> Tested with a 
->   --target-list=ppc-softmmu,m68k-softmmu,x86_64-softmmu,arm-softmmu,aarch64-softmmu,cris-linux-user,i386-linux-user,sparc-linux-user
-> and 'make check' on x86 linux.
+> hmp_info_numa() in commit 1b8ae799d8 ("qapi: introduce
+> x-query-numa QMP command"),
 > 
-> Dave
+> hmp_info_ramblock() in commit ca411b7c8a ("qapi: introduce
+> x-query-ramblock QMP command")
 > 
-> Dr. David Alan Gilbert (7):
->   linux-user: cris: Remove unused struct 'rt_signal_frame'
->   linux-user: i386/signal: Remove unused fp structs
->   linux-user: sparc: Remove unused struct 'target_mc_fq'
->   hw/usb/dev-network: Remove unused struct 'rndis_config_parameter'
->   hw/arm/bcm2836: Remove unusued struct 'BCM283XClass'
->   target/ppc: Remove unused struct 'mmu_ctx_hash32'
->   net/can: Remove unused struct 'CanBusState'
+> and hmp_info_irq() in commit 91f2fa7045 ("qapi: introduce
+> x-query-irq QMP command").
 > 
->  hw/arm/bcm2836.c          | 12 ------------
->  hw/usb/dev-network.c      |  8 --------
->  linux-user/cris/signal.c  |  8 --------
->  linux-user/i386/signal.c  | 10 ----------
->  linux-user/sparc/signal.c |  5 -----
->  net/can/can_host.c        |  6 ------
->  target/ppc/mmu-hash32.c   |  6 ------
->  7 files changed, 55 deletions(-)
+> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+Reviewed-by: Dr. David Alan Gilbert <dave@treblig.org>
+
+> ---
+> Note x-query-roms is used as example in
+> docs/devel/writing-monitor-commands.rst
+> but was removed in commit dd98234c05
+> ("qapi: introduce x-query-roms QMP command").
+> ---
+>  include/hw/loader.h   | 1 -
+>  include/monitor/hmp.h | 3 ---
+>  2 files changed, 4 deletions(-)
 > 
+> diff --git a/include/hw/loader.h b/include/hw/loader.h
+> index 8685e27334..9844c5e3cf 100644
+> --- a/include/hw/loader.h
+> +++ b/include/hw/loader.h
+> @@ -338,7 +338,6 @@ void *rom_ptr(hwaddr addr, size_t size);
+>   * rom_ptr().
+>   */
+>  void *rom_ptr_for_as(AddressSpace *as, hwaddr addr, size_t size);
+> -void hmp_info_roms(Monitor *mon, const QDict *qdict);
+>  
+>  #define rom_add_file_fixed(_f, _a, _i)          \
+>      rom_add_file(_f, NULL, _a, _i, false, NULL, NULL)
+> diff --git a/include/monitor/hmp.h b/include/monitor/hmp.h
+> index 954f3c83ad..ae116d9804 100644
+> --- a/include/monitor/hmp.h
+> +++ b/include/monitor/hmp.h
+> @@ -35,7 +35,6 @@ void hmp_info_cpus(Monitor *mon, const QDict *qdict);
+>  void hmp_info_vnc(Monitor *mon, const QDict *qdict);
+>  void hmp_info_spice(Monitor *mon, const QDict *qdict);
+>  void hmp_info_balloon(Monitor *mon, const QDict *qdict);
+> -void hmp_info_irq(Monitor *mon, const QDict *qdict);
+>  void hmp_info_pic(Monitor *mon, const QDict *qdict);
+>  void hmp_info_pci(Monitor *mon, const QDict *qdict);
+>  void hmp_info_tpm(Monitor *mon, const QDict *qdict);
+> @@ -102,7 +101,6 @@ void hmp_chardev_send_break(Monitor *mon, const QDict *qdict);
+>  void hmp_object_add(Monitor *mon, const QDict *qdict);
+>  void hmp_object_del(Monitor *mon, const QDict *qdict);
+>  void hmp_info_memdev(Monitor *mon, const QDict *qdict);
+> -void hmp_info_numa(Monitor *mon, const QDict *qdict);
+>  void hmp_info_memory_devices(Monitor *mon, const QDict *qdict);
+>  void hmp_qom_list(Monitor *mon, const QDict *qdict);
+>  void hmp_qom_get(Monitor *mon, const QDict *qdict);
+> @@ -141,7 +139,6 @@ void hmp_rocker_ports(Monitor *mon, const QDict *qdict);
+>  void hmp_rocker_of_dpa_flows(Monitor *mon, const QDict *qdict);
+>  void hmp_rocker_of_dpa_groups(Monitor *mon, const QDict *qdict);
+>  void hmp_info_dump(Monitor *mon, const QDict *qdict);
+> -void hmp_info_ramblock(Monitor *mon, const QDict *qdict);
+>  void hmp_hotpluggable_cpus(Monitor *mon, const QDict *qdict);
+>  void hmp_info_vm_generation_id(Monitor *mon, const QDict *qdict);
+>  void hmp_info_memory_size_summary(Monitor *mon, const QDict *qdict);
 > -- 
-> 2.45.0
-> 
+> 2.41.0
 > 
 -- 
  -----Open up your eyes, open up your mind, open up your code -------   
