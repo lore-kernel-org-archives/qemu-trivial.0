@@ -1,46 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sGevy-0003qi-Nb
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Jun 2024 09:19:38 -0400
+	id 1sH0eg-0007ll-4z
+	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2024 08:31:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1sGevx-0003qS-IS; Mon, 10 Jun 2024 09:19:37 -0400
-Received: from mx.treblig.org ([2a00:1098:5b::1])
+ (Exim 4.90_1) (envelope-from <frolov@swemel.ru>)
+ id 1sH0ee-0007jL-9K; Tue, 11 Jun 2024 08:31:12 -0400
+Received: from mx.swemel.ru ([95.143.211.150])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1sGevu-0008Fd-UW; Mon, 10 Jun 2024 09:19:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
- ; s=bytemarkmx;
- h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
- :Subject; bh=jCRBsW8ZUV7JwQ+XKRjuYwB4Qd/WP5ltErF5V8WW9R0=; b=RDNlVBknMaznwdwf
- fy9cCgGLN8C3l0XolnsKS6YXs5i0GiuBcgI1zhs6gEurzyfMkZGQ7/sKEbWufAv8AdVQ/8WMcIv7Q
- 3bvzSVFPSk5VFtYpwLcrbTt80oB3W3npU2Wd55J+YYoE0wahK/3YNr50GS8NXsw2QuorHzqvr1KTK
- uNWozRDrTYt621kaBGgyTbQxXF1DNyCF5ll503NXYkMOifJMy1FwdTPcca3Wx+fmSI58ARrd4lqbQ
- U9M67YYHq3Rz8uV2rYIPF6BYzftaH2gSrp+Chs9lKJwmMqJUVFj07Lq2mc7FyEnzyvd7XoX4ttX0Y
- kKWPjA/SPhfBmKpZ/w==;
-Received: from dg by mx.treblig.org with local (Exim 4.96)
- (envelope-from <dg@treblig.org>) id 1sGevo-005KAT-2j;
- Mon, 10 Jun 2024 13:19:28 +0000
-Date: Mon, 10 Jun 2024 13:19:28 +0000
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org,
- Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>
-Subject: Re: [PATCH] monitor: Remove obsolete stubs
-Message-ID: <Zmb9YNgnV7R4_4iB@gallifrey>
-References: <20240610063924.51154-1-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <frolov@swemel.ru>)
+ id 1sH0eZ-0000fr-Ap; Tue, 11 Jun 2024 08:31:12 -0400
+Message-ID: <49286496-3693-44cd-80ad-afebeb0e9e40@swemel.ru>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=swemel.ru; s=mail;
+ t=1718109060;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=zAbjyQMcLnrvsFZlrvcKhg4ZEWTMBNVlVjAWxp1fJIM=;
+ b=nfC9r0LYqTdMDed1P0TOAGklV6ImgYb+QgsK1rGPAleUkn4+ffJeyDfSMFDN2MMq1ScFwT
+ w/qNyxWMBn3dseZq0ZrObqh8FZ7VlUvK2EMQK9elpPR4SP3hXXf8vpVDhaIfLFA4/mD+DE
+ fEjYSPoJ5ymbuJC42RIrLcKl6tGB95E=
+Date: Tue, 11 Jun 2024 15:31:00 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240610063924.51154-1-philmd@linaro.org>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
-X-Uptime: 13:18:46 up 33 days, 32 min,  1 user,  load average: 0.00, 0.00, 0.00
-User-Agent: Mutt/2.2.12 (2023-09-09)
-Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
- helo=mx.treblig.org
+Subject: Re: [PATCH] tests/qtest/fuzz: fix memleak in qos_fuzz.c
+To: alxndr@bu.edu
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, sdl.qemu@linuxtesting.org
+References: <20240521103106.119021-3-frolov@swemel.ru>
+Content-Language: en-US
+From: =?UTF-8?B?0JTQvNC40YLRgNC40Lkg0KTRgNC+0LvQvtCy?= <frolov@swemel.ru>
+In-Reply-To: <20240521103106.119021-3-frolov@swemel.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=95.143.211.150; envelope-from=frolov@swemel.ru;
+ helo=mx.swemel.ru
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -59,81 +51,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Jun 2024 13:19:37 -0000
+X-List-Received-Date: Tue, 11 Jun 2024 12:31:13 -0000
 
-* Philippe Mathieu-Daudé (philmd@linaro.org) wrote:
-> hmp_info_roms() was removed in commit dd98234c05 ("qapi:
-> introduce x-query-roms QMP command"),
-> 
-> hmp_info_numa() in commit 1b8ae799d8 ("qapi: introduce
-> x-query-numa QMP command"),
-> 
-> hmp_info_ramblock() in commit ca411b7c8a ("qapi: introduce
-> x-query-ramblock QMP command")
-> 
-> and hmp_info_irq() in commit 91f2fa7045 ("qapi: introduce
-> x-query-irq QMP command").
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+ping
 
-Reviewed-by: Dr. David Alan Gilbert <dave@treblig.org>
+https://patchew.org/QEMU/20240521103106.119021-3-frolov@swemel.ru/
 
+On 21.05.2024 13:31, Dmitry Frolov wrote:
+> Found with fuzzing for qemu-8.2, but also relevant for master
+>
+> Signed-off-by: Dmitry Frolov <frolov@swemel.ru>
 > ---
-> Note x-query-roms is used as example in
-> docs/devel/writing-monitor-commands.rst
-> but was removed in commit dd98234c05
-> ("qapi: introduce x-query-roms QMP command").
-> ---
->  include/hw/loader.h   | 1 -
->  include/monitor/hmp.h | 3 ---
->  2 files changed, 4 deletions(-)
-> 
-> diff --git a/include/hw/loader.h b/include/hw/loader.h
-> index 8685e27334..9844c5e3cf 100644
-> --- a/include/hw/loader.h
-> +++ b/include/hw/loader.h
-> @@ -338,7 +338,6 @@ void *rom_ptr(hwaddr addr, size_t size);
->   * rom_ptr().
->   */
->  void *rom_ptr_for_as(AddressSpace *as, hwaddr addr, size_t size);
-> -void hmp_info_roms(Monitor *mon, const QDict *qdict);
->  
->  #define rom_add_file_fixed(_f, _a, _i)          \
->      rom_add_file(_f, NULL, _a, _i, false, NULL, NULL)
-> diff --git a/include/monitor/hmp.h b/include/monitor/hmp.h
-> index 954f3c83ad..ae116d9804 100644
-> --- a/include/monitor/hmp.h
-> +++ b/include/monitor/hmp.h
-> @@ -35,7 +35,6 @@ void hmp_info_cpus(Monitor *mon, const QDict *qdict);
->  void hmp_info_vnc(Monitor *mon, const QDict *qdict);
->  void hmp_info_spice(Monitor *mon, const QDict *qdict);
->  void hmp_info_balloon(Monitor *mon, const QDict *qdict);
-> -void hmp_info_irq(Monitor *mon, const QDict *qdict);
->  void hmp_info_pic(Monitor *mon, const QDict *qdict);
->  void hmp_info_pci(Monitor *mon, const QDict *qdict);
->  void hmp_info_tpm(Monitor *mon, const QDict *qdict);
-> @@ -102,7 +101,6 @@ void hmp_chardev_send_break(Monitor *mon, const QDict *qdict);
->  void hmp_object_add(Monitor *mon, const QDict *qdict);
->  void hmp_object_del(Monitor *mon, const QDict *qdict);
->  void hmp_info_memdev(Monitor *mon, const QDict *qdict);
-> -void hmp_info_numa(Monitor *mon, const QDict *qdict);
->  void hmp_info_memory_devices(Monitor *mon, const QDict *qdict);
->  void hmp_qom_list(Monitor *mon, const QDict *qdict);
->  void hmp_qom_get(Monitor *mon, const QDict *qdict);
-> @@ -141,7 +139,6 @@ void hmp_rocker_ports(Monitor *mon, const QDict *qdict);
->  void hmp_rocker_of_dpa_flows(Monitor *mon, const QDict *qdict);
->  void hmp_rocker_of_dpa_groups(Monitor *mon, const QDict *qdict);
->  void hmp_info_dump(Monitor *mon, const QDict *qdict);
-> -void hmp_info_ramblock(Monitor *mon, const QDict *qdict);
->  void hmp_hotpluggable_cpus(Monitor *mon, const QDict *qdict);
->  void hmp_info_vm_generation_id(Monitor *mon, const QDict *qdict);
->  void hmp_info_memory_size_summary(Monitor *mon, const QDict *qdict);
-> -- 
-> 2.41.0
-> 
--- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+>   tests/qtest/fuzz/qos_fuzz.c | 1 +
+>   1 file changed, 1 insertion(+)
+>
+> diff --git a/tests/qtest/fuzz/qos_fuzz.c b/tests/qtest/fuzz/qos_fuzz.c
+> index b71e945c5f..d3839bf999 100644
+> --- a/tests/qtest/fuzz/qos_fuzz.c
+> +++ b/tests/qtest/fuzz/qos_fuzz.c
+> @@ -180,6 +180,7 @@ static void walk_path(QOSGraphNode *orig_path, int len)
+>   
+>           fuzz_path_vec = path_vec;
+>       } else {
+> +        g_string_free(cmd_line, true);
+>           g_free(path_vec);
+>       }
+>   
+
 
