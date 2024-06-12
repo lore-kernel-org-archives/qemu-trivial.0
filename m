@@ -1,39 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sH0fS-0001Qu-OR
-	for mharc-qemu-trivial@gnu.org; Tue, 11 Jun 2024 08:32:02 -0400
+	id 1sHRPS-0006gD-Pz
+	for mharc-qemu-trivial@gnu.org; Wed, 12 Jun 2024 13:05:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frolov@swemel.ru>)
- id 1sH0fR-0001QD-VA; Tue, 11 Jun 2024 08:32:01 -0400
-Received: from mx.swemel.ru ([95.143.211.150])
+ (Exim 4.90_1) (envelope-from <quic_mathbern@quicinc.com>)
+ id 1sHRPQ-0006fl-UI; Wed, 12 Jun 2024 13:05:17 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frolov@swemel.ru>)
- id 1sH0fQ-0000t6-28; Tue, 11 Jun 2024 08:32:01 -0400
-Message-ID: <4f9e536c-1dd8-43e3-8c0b-cc4ee5832e10@swemel.ru>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=swemel.ru; s=mail;
- t=1718109116;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=AhH1WYkiF+1NPJkaIk1wcbcYku6uZVNzMKCMpAeKbmo=;
- b=kZl30vRdKQSRrN/7O82IzSERA6nz1iVLAzUjgsnbo+urlkBzUz3mFZjq/wW5TkFtWkUyiU
- /n6QFsoMvR6o7oU75exhlvq/gmi0A7BBVNu7W4F+oxckavMMaZd/YJaBsibvUJRjJNB3Je
- gAKWroPeAoLEcx5k47d170XW1R89Upo=
-Date: Tue, 11 Jun 2024 15:31:56 +0300
+ (Exim 4.90_1) (envelope-from <quic_mathbern@quicinc.com>)
+ id 1sHRPP-0005bG-2V; Wed, 12 Jun 2024 13:05:16 -0400
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 45CGP1go011703;
+ Wed, 12 Jun 2024 17:05:01 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+ cc:content-transfer-encoding:content-type:date:from:message-id
+ :mime-version:subject:to; s=qcppdkim1; bh=h4DiGOn+TewBWqIUqH9t7H
+ Vu/MZAlmdByx5eKKIVB0s=; b=IxNvUS+Co3cWnUzg2+uAm4azmpZCrEY1MSVOh0
+ of+GEZkD6tKo1pNNgLSKIPw3P8kGfCriGeRMAZntiQS2BcYqEaO1aspZ3AUMFCMT
+ vVuuB2oPf3hSX+vgFt4gkRPH23NykNVXiEAqbVmi9VGNfO7u3ZWUT/TJX1qNT+bD
+ mbWtlNpxCfIfZYQH1d04Tpdroey/xDADWWMOLutI5DjeVJw0jR2cBnJK6e6Sj7JJ
+ Cmiq3smeLVhTD58fFKHMM65wAi6v+o4PEorcjt6c2c2pdX4F3JjBuzCI5j8ktsoY
+ I3Ky3DSzoNnYQWcf0tnbpa6LA845cdE4X0vcCaO0YmvjZFOQ==
+Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com
+ [129.46.96.20])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 3yq83wh05a-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 12 Jun 2024 17:05:01 +0000 (GMT)
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com
+ [10.47.209.196])
+ by NALASPPMTA01.qualcomm.com (8.17.1.19/8.17.1.19) with ESMTPS id
+ 45CH4xZn008591
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 12 Jun 2024 17:04:59 GMT
+Received: from hu-mathbern-lv.qualcomm.com (10.49.16.6) by
+ nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.9; Wed, 12 Jun 2024 10:04:59 -0700
+From: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+To: <qemu-devel@nongnu.org>
+CC: <alex.bennee@linaro.org>, <pierrick.bouvier@linaro.org>,
+ <philmd@linaro.org>, <qemu-trivial@nongnu.org>, Richard Henderson
+ <richard.henderson@linaro.org>, Paolo Bonzini <pbonzini@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Yanan Wang <wangyanan55@huawei.com>
+Subject: [PATCH] cpu: fix memleak of 'halt_cond' and 'thread'
+Date: Wed, 12 Jun 2024 14:04:46 -0300
+Message-ID: <3ad18bc590ef28e1526e8053568086b453e7ffde.1718211878.git.quic_mathbern@quicinc.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-Subject: Re: [PATCH] tests/qtest/fuzz/virtio_net_fuzz.c: fix
- virtio_net_fuzz_multi
-Content-Language: en-US
-To: alxndr@bu.edu
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, sdl.qemu@linuxtesting.org
-References: <20240523102813.396750-2-frolov@swemel.ru>
-From: =?UTF-8?B?0JTQvNC40YLRgNC40Lkg0KTRgNC+0LvQvtCy?= <frolov@swemel.ru>
-In-Reply-To: <20240523102813.396750-2-frolov@swemel.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=95.143.211.150; envelope-from=frolov@swemel.ru;
- helo=mx.swemel.ru
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain
+X-Originating-IP: [10.49.16.6]
+X-ClientProxiedBy: nalasex01b.na.qualcomm.com (10.47.209.197) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-GUID: ltFrEk61xI18zjQg6xFx6EBbd0rtHzCj
+X-Proofpoint-ORIG-GUID: ltFrEk61xI18zjQg6xFx6EBbd0rtHzCj
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
+ definitions=2024-06-12_08,2024-06-12_02,2024-05-17_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 phishscore=0
+ bulkscore=0 spamscore=0 mlxlogscore=614 suspectscore=0 clxscore=1011
+ lowpriorityscore=0 malwarescore=0 priorityscore=1501 mlxscore=0
+ adultscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2405170001 definitions=main-2406120122
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=quic_mathbern@quicinc.com; helo=mx0b-0031df01.pphosted.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -52,35 +88,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 11 Jun 2024 12:32:02 -0000
+X-List-Received-Date: Wed, 12 Jun 2024 17:05:17 -0000
 
-ping
+Since a4c2735f35 (cpu: move Qemu[Thread|Cond] setup into common code,
+2024-05-30) these fields are now allocated at cpu_common_initfn(). So
+let's make sure we also free them at cpu_common_finalize().
 
-https://patchew.org/QEMU/20240523102813.396750-2-frolov@swemel.ru/
+Furthermore, the code also frees these on round robin, but we missed
+'halt_cond'.
 
-On 23.05.2024 13:28, Dmitry Frolov wrote:
-> If QTestState was already CLOSED due to error, calling qtest_clock_step()
-> afterwards makes no sense and only raises false-crash with message:
-> "assertion timer != NULL failed".
->
-> Signed-off-by: Dmitry Frolov <frolov@swemel.ru>
-> ---
->   tests/qtest/fuzz/virtio_net_fuzz.c | 3 +++
->   1 file changed, 3 insertions(+)
->
-> diff --git a/tests/qtest/fuzz/virtio_net_fuzz.c b/tests/qtest/fuzz/virtio_net_fuzz.c
-> index e239875e3b..2f57a8ddd8 100644
-> --- a/tests/qtest/fuzz/virtio_net_fuzz.c
-> +++ b/tests/qtest/fuzz/virtio_net_fuzz.c
-> @@ -81,6 +81,9 @@ static void virtio_net_fuzz_multi(QTestState *s,
->           /* Run the main loop */
->           qtest_clock_step(s, 100);
->           flush_events(s);
-> +        if (!qtest_probe_child(s)) {
-> +            return;
-> +        }
->   
->           /* Wait on used descriptors */
->           if (check_used && !vqa.rx) {
+Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+---
+ accel/tcg/tcg-accel-ops-rr.c | 1 +
+ hw/core/cpu-common.c         | 3 +++
+ 2 files changed, 4 insertions(+)
+
+diff --git a/accel/tcg/tcg-accel-ops-rr.c b/accel/tcg/tcg-accel-ops-rr.c
+index 84c36c1450..48c38714bd 100644
+--- a/accel/tcg/tcg-accel-ops-rr.c
++++ b/accel/tcg/tcg-accel-ops-rr.c
+@@ -329,6 +329,7 @@ void rr_start_vcpu_thread(CPUState *cpu)
+         /* we share the thread, dump spare data */
+         g_free(cpu->thread);
+         qemu_cond_destroy(cpu->halt_cond);
++        g_free(cpu->halt_cond);
+         cpu->thread = single_tcg_cpu_thread;
+         cpu->halt_cond = single_tcg_halt_cond;
+ 
+diff --git a/hw/core/cpu-common.c b/hw/core/cpu-common.c
+index bf1a7b8892..f131cde2c0 100644
+--- a/hw/core/cpu-common.c
++++ b/hw/core/cpu-common.c
+@@ -286,6 +286,9 @@ static void cpu_common_finalize(Object *obj)
+     g_array_free(cpu->gdb_regs, TRUE);
+     qemu_lockcnt_destroy(&cpu->in_ioctl_lock);
+     qemu_mutex_destroy(&cpu->work_mutex);
++    qemu_cond_destroy(cpu->halt_cond);
++    g_free(cpu->halt_cond);
++    g_free(cpu->thread);
+ }
+ 
+ static int64_t cpu_common_get_arch_id(CPUState *cpu)
+-- 
+2.37.2
 
 
