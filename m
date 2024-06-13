@@ -1,71 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sHhKC-0001F1-A8
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jun 2024 06:04:56 -0400
+	id 1sHhO7-0002Sk-MV
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jun 2024 06:08:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sHhK9-0001E8-QD
- for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 06:04:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sHhO5-0002SJ-LB
+ for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 06:08:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sHhK6-0004tQ-TE
- for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 06:04:53 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sHhO4-0005dw-4O
+ for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 06:08:57 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718273089;
+ s=mimecast20190719; t=1718273335;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=uOznFgO1HHbyM7edIGEspHYQXTwnPE/Yy8M0FvOdCew=;
- b=ILDimxH9kjK9upjxO1WvL10nEnutNY2RnroJgrawelTxQRb/SBrFCRcpj1ImtMZ1o7qLXu
- b0MkF9E0VLRIOxelZDrhkFiFV2EVhRqmQwnbooFdjwrSMahRqBVkFI0JuUTes1m7wqvJkA
- 8Idnlh2Z+EKhIhUT7iwL9cl+x5dDPjA=
-Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
- [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=yF50Fu3YW72re3nJRKMaUbmikUDhQUEzENCafUaSfXg=;
+ b=hXu3mnNRyV8Hxse+9RuJAczV9cHOXHOq8YAKQ4Pp9lxJodQpdra29RCv9mMbD4BDxf4S3J
+ yzQ7E6DaP+i/RvkAgxUlLjsfDqU+cnKnb/FKVMITzoZbBGObf14Qqy3Uv2F9aNL/xXnoCu
+ xtvRf/YzHYsnFdcOe6xQKH2/nmae0cM=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-338-LC8aIoMnMIOXDp9hyFHDwQ-1; Thu, 13 Jun 2024 06:04:47 -0400
-X-MC-Unique: LC8aIoMnMIOXDp9hyFHDwQ-1
-Received: by mail-ed1-f72.google.com with SMTP id
- 4fb4d7f45d1cf-57c738349baso532375a12.1
- for <qemu-trivial@nongnu.org>; Thu, 13 Jun 2024 03:04:46 -0700 (PDT)
+ us-mta-139-EDuGXHw_Pv-3VMz_W7msew-1; Thu, 13 Jun 2024 06:08:53 -0400
+X-MC-Unique: EDuGXHw_Pv-3VMz_W7msew-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ a640c23a62f3a-a6f2662d050so37409166b.3
+ for <qemu-trivial@nongnu.org>; Thu, 13 Jun 2024 03:08:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718273086; x=1718877886;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=uOznFgO1HHbyM7edIGEspHYQXTwnPE/Yy8M0FvOdCew=;
- b=kwVR6ZiAT4A+mdgojXomZfO5hPRFiCwch3T6HuIctcg/CuAa/xVK79NwUFBKQkRxbX
- aQ7sOh/6WClPCnBDQUExKMh/FjHBtwaC15jOcjBk+oJnIO6OQWbrcX+oKvepJfsuzKdL
- ZMKP0/j1MI9uFpfTW7PMPL4ruotcEaYN573ttP3NCUGjkp7vGsnvH2laLFYT7txMH7/i
- QQpNlX8uuR898kiKeUa8fb1DgAWEPrOil6RQtqbFm4ZVSDVPyvQPi3qJm6wz0DA+K2rN
- JRlyT67qx29VO7vUYqdymVQ0Pjr84D4tYdiWHbVwdNLAhhMBDCRL4RuJCvwpwBAQXsPt
- urJw==
+ d=1e100.net; s=20230601; t=1718273332; x=1718878132;
+ h=content-transfer-encoding:in-reply-to:autocrypt:cc:from
+ :content-language:references:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=yF50Fu3YW72re3nJRKMaUbmikUDhQUEzENCafUaSfXg=;
+ b=bbV1g4UW9sDo9wCADKoIgqe2pZFP1a+nwjbJ01QgEYI59LGrHA7txVi0GBbHXcUhD7
+ f/NVfTgIYeI8P2ewwy698Mgl1AKnwwuC4nSrHacFY5YpZ0V79zpeagkhzZ0yQM2zbZ+x
+ tpenwOZIZxN66yVC4JNhHwM/x7Qzu0V5THIF3FNnky+gyuKQl23oOQF2nX2ZaiccvHh+
+ Lmgnai04qAroxwo2kYZoz+vHRnQfFNc9BkJSJZToXeb2t2meKw7jnL4YKFNv9oIYLS87
+ MRTcgRpT01TfF9InpXRUcfdeGi6E8VlyFe2hrv1DL1mMGXtdJl0oSiRP6YsMgGJJoaUV
+ JXYg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWQedld7eZiiY1tkgSicL/yNQaMkn7TfbSW52yEo8kpuqC+SH5eRmrUZSkRqeQhJj9iZuA75xTlvnps/vHLuRioGxjCTmbClA==
-X-Gm-Message-State: AOJu0YwbXAPBlWX0Rq1e4JI5J8tkH/EESfj8t5odidGrypG5GuOowZIe
- 870wbMmd0NwkAylaL4y6NQCfQVWxu3u7nPdAQAyyA/qQK0HXfbR+ErjsPeC0QLPDpLp+1czzg+S
- fU7rDNye135khS+ivp0HqRe1y3ve4sg5arfBBxmLS+RKY7fjDa/2EhUs=
-X-Received: by 2002:a50:cc93:0:b0:57c:5ec9:f5d9 with SMTP id
- 4fb4d7f45d1cf-57caa9bee33mr3715609a12.31.1718273086014; 
- Thu, 13 Jun 2024 03:04:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGJV1renOzgW2CEKERyz/X5fV4XwMxeuGsHPuD+CUCWIl64bQ/+VN5v18RvnQdYzzc6toQgWQ==
-X-Received: by 2002:a50:cc93:0:b0:57c:5ec9:f5d9 with SMTP id
- 4fb4d7f45d1cf-57caa9bee33mr3715590a12.31.1718273085519; 
- Thu, 13 Jun 2024 03:04:45 -0700 (PDT)
+ AJvYcCUEFc/ik2JFMmd45/c7NgVLgk0LhBR+8bc0nl4IGLyGY7aAvhIVSLtalTiQhKfnZZ9EAzLhOI4RWgrmOcNEvYQ+RAGi7//Dvg==
+X-Gm-Message-State: AOJu0YzGy/E+09qO+Uw2g3r3hvCYNqlBASwRF7HvNXIRp1VoHlBslzIs
+ lFax4llLpb2FMWBFyYo7TgK4/Vc5PiITyaz52H5YkKDwgvOgEtgRU8u8Bb0kaV6ScQ4z1A+73ex
+ VT4n4z3DMEByf8GP/toN0ukynZsjsS9vUioWYrC5CWR86RiyeGdqoKCk=
+X-Received: by 2002:a50:8d17:0:b0:57c:6861:d72a with SMTP id
+ 4fb4d7f45d1cf-57ca97497e6mr2886501a12.4.1718273332434; 
+ Thu, 13 Jun 2024 03:08:52 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFtW+G4HfUOCtzBJ053uLUwtCcsYMCvKc2oqwmsKkgeoqoAZuJ5weROSnAQTSeWP6B18QPGRQ==
+X-Received: by 2002:a50:8d17:0:b0:57c:6861:d72a with SMTP id
+ 4fb4d7f45d1cf-57ca97497e6mr2886488a12.4.1718273332012; 
+ Thu, 13 Jun 2024 03:08:52 -0700 (PDT)
 Received: from [192.168.0.4] (ip-109-43-242-210.web.vodafone.de.
  [109.43.242.210]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-57cb72ea3b2sm715602a12.55.2024.06.13.03.04.44
+ 4fb4d7f45d1cf-57cb72cdff1sm722883a12.3.2024.06.13.03.08.50
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Jun 2024 03:04:45 -0700 (PDT)
-Message-ID: <1a06b729-6d28-4c07-a742-4b08de1c8586@redhat.com>
-Date: Thu, 13 Jun 2024 12:04:43 +0200
+ Thu, 13 Jun 2024 03:08:51 -0700 (PDT)
+Message-ID: <2982b9c8-1325-4ca7-9e91-b1a94178c9d9@redhat.com>
+Date: Thu, 13 Jun 2024 12:08:49 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] tests/qtest/fuzz: fix memleak in qos_fuzz.c
-To: Dmitry Frolov <frolov@swemel.ru>, alxndr@bu.edu
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, sdl.qemu@linuxtesting.org
-References: <20240521103106.119021-3-frolov@swemel.ru>
+Subject: Re: [PATCH] tests/qtest/fuzz/virtio_net_fuzz.c: fix
+ virtio_net_fuzz_multi
+To: qemu-devel@nongnu.org, Dmitry Frolov <frolov@swemel.ru>
+References: <20240523102813.396750-2-frolov@swemel.ru>
 From: Thomas Huth <thuth@redhat.com>
+Cc: alxndr@bu.edu, sdl.qemu@linuxtesting.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Jason Wang <jasowang@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
  yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
@@ -108,13 +110,13 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240521103106.119021-3-frolov@swemel.ru>
+In-Reply-To: <20240523102813.396750-2-frolov@swemel.ru>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -22
 X-Spam_score: -2.3
@@ -123,7 +125,7 @@ X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.143,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,29 +138,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jun 2024 10:04:54 -0000
+X-List-Received-Date: Thu, 13 Jun 2024 10:08:57 -0000
 
-On 21/05/2024 12.31, Dmitry Frolov wrote:
-> Found with fuzzing for qemu-8.2, but also relevant for master
+On 23/05/2024 12.28, Dmitry Frolov wrote:
+> If QTestState was already CLOSED due to error, calling qtest_clock_step()
+> afterwards makes no sense and only raises false-crash with message:
+> "assertion timer != NULL failed".
 > 
 > Signed-off-by: Dmitry Frolov <frolov@swemel.ru>
 > ---
->   tests/qtest/fuzz/qos_fuzz.c | 1 +
->   1 file changed, 1 insertion(+)
+>   tests/qtest/fuzz/virtio_net_fuzz.c | 3 +++
+>   1 file changed, 3 insertions(+)
 > 
-> diff --git a/tests/qtest/fuzz/qos_fuzz.c b/tests/qtest/fuzz/qos_fuzz.c
-> index b71e945c5f..d3839bf999 100644
-> --- a/tests/qtest/fuzz/qos_fuzz.c
-> +++ b/tests/qtest/fuzz/qos_fuzz.c
-> @@ -180,6 +180,7 @@ static void walk_path(QOSGraphNode *orig_path, int len)
->   
->           fuzz_path_vec = path_vec;
->       } else {
-> +        g_string_free(cmd_line, true);
->           g_free(path_vec);
->       }
->   
+> diff --git a/tests/qtest/fuzz/virtio_net_fuzz.c b/tests/qtest/fuzz/virtio_net_fuzz.c
+> index e239875e3b..2f57a8ddd8 100644
+> --- a/tests/qtest/fuzz/virtio_net_fuzz.c
+> +++ b/tests/qtest/fuzz/virtio_net_fuzz.c
+> @@ -81,6 +81,9 @@ static void virtio_net_fuzz_multi(QTestState *s,
+>           /* Run the main loop */
+>           qtest_clock_step(s, 100);
+>           flush_events(s);
+> +        if (!qtest_probe_child(s)) {
+> +            return;
+> +        }
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+According to your patch description, it rather sounds like the check should 
+be done before the qtest_clock_step() ? ... or where does the QTestState get 
+closed? During flush_events() ?
+
+  Thomas
 
 
