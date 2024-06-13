@@ -1,111 +1,108 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sHmn3-0001Vq-AX
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jun 2024 11:55:05 -0400
+	id 1sHmnX-0002XS-B6
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jun 2024 11:55:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>) id 1sHmn2-0001V6-A3
- for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 11:55:04 -0400
-Received: from esa15.hc2706-39.iphmx.com ([216.71.140.200])
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>) id 1sHmnV-0002U4-Om
+ for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 11:55:33 -0400
+Received: from esa5.hc2706-39.iphmx.com ([216.71.137.63])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>) id 1sHmmw-0005Pa-6d
- for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 11:55:04 -0400
-X-CSE-ConnectionGUID: IiD7PvZPSVOo0Bk+jOpu1g==
-X-CSE-MsgGUID: Qth9Nn6wQyK5czdv6ICo6A==
-X-IronPort-RemoteIP: 209.85.222.200
-X-IronPort-MID: 365582123
+ (Exim 4.90_1) (envelope-from <alxndr@bu.edu>) id 1sHmnU-0005kq-3G
+ for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 11:55:33 -0400
+X-CSE-ConnectionGUID: ttuJcUwkT5G8gO4MqrB20g==
+X-CSE-MsgGUID: QQLuEOITQW+tAGH3M0XW9A==
+X-IronPort-RemoteIP: 209.85.222.198
+X-IronPort-MID: 384318211
 X-IronPort-Reputation: None
 X-IronPort-Listener: OutgoingMail
 X-IronPort-SenderGroup: RELAY_GSUITE
 X-IronPort-MailFlowPolicy: $RELAYED
-IronPort-Data: A9a23:G/eSB64XOi2M/kFkbeyG8wxRtG3GchMFZxGqfqrLsTDasY5as4F+v
- mFOCGyFPq7ZYTOkfNh+b4vkpx9TvJWDmt9hSQY9pCFnEysa+MHIO4+lIxarNUt+DCFioGGLT
- Sk6QoOdRCzhZiaE/n9BCpC48D8hk/jOHuehYAL9EngZbRd+Tys8gg5Ulec8g4p56fC0GArIs
- t7pyyHlEAbNNwVcbCRMu8pvlDs15K6u4G1B5QRnDRx2lAS2e0c9Xcp3yZ6ZciOQrrl8RoaSW
- +vFxbelyWLVlz9FIs+liLvybnoRSbfUOwWU4lIOM0R1qkEfzsCa+v9T2Ms0MC+7uR3Q9zxC4
- IwlWaiLdOscFvakdNLx8vVvO3oW0aVuoNcrKJUk2CCZ5xSun3DEmp2CAKyqVGGxFyke7Wxmr
- JQlxD4xgh+rpuOan4qleNFXuOMkdOPof4E4omw5wmSMZRomacirr6Ti4NZZ2HIphZkLE6yGP
- 4wWbj1gaBmGaBpKUrsVIMhmzaH42z+lKWce8grNzUY0yzG7IAhZ2bz9NtbPUtaXA8hZgy50o
- 0qdoTmkUktDbof3JTyty26s18nJwzzCSaFPH6+06KBLq1rN7zlGYPERfR7hyRWjsWanVtdCb
- lAO+zQvpKwa8kutQd/gGRqirxa5UgU0XtNRF6gj61jIxPCMu0CWAW8LSjMHY9sj3CMreQEXO
- payt4uBLVRSXHe9EhpxKp/8QeuOBBUo
-IronPort-HdrOrdr: A9a23:LYEIPKopgayU+RM+DjGNwFQaV5qaeYIsimQD101hICG9Lfb15r
- uTdaUguG6NtN9OYhtQ4OxoWJPwPk80kqQFk7X5XI3SKTUO3VHYUvAS0WKM+UyVJ8SVzJ856U
- 4NSdkINDSTNykysS+K2njPLz9I+rDum9HN9JquvwYfcexzUdAd0+4eMHfRLqQffng9OXNTLu
- vV2iMonUvuRV0nKui9G3kZT6ziirTw5dzbiBQ9dlQawTjLojWy9rbgHhSUmjsYWShe2Kov/A
- H+/TAQ/s6YwpOGIuq27R6x032UorrcIxl4a/BkRvJlTQkEQzzJFeJcsmS5zX0ISTeUmRoXrO
- U=
-X-Talos-CUID: 9a23:1iIabW0DZJ2AtXGTyBz/urxfO8EJLUXD/k/rHWi/UUxqC7+yUULJ9/Yx
-X-Talos-MUID: 9a23:fQ9NogvYawmsBCQ/Ts2nvS1iZeFuvbuXGWNQmocKpZelHisuEmLI
-Received: from mail-qk1-f200.google.com ([209.85.222.200])
+IronPort-Data: A9a23:OuO7u6NHVx/6CzTvrR3wlsFynXyQoLVcMsEvi/4bfWQNrUoj3zVSz
+ DQZWj3TP6qNNmD3ft1zaYzg9RkBuJODzdJkGQZtpSBmQkwRlceUXt7xwmUcns+xwm8vaGo9s
+ q3yv/GZdJhcokf0/0rrb/646yEhiMlkf5KkYMbcICd9WAR4fykojBNnioYRj5VhxNO0GGthg
+ /uryyHkEAHjg24c3l48sfrZ9Esx5a+q4Vv0g3RlDRx1lA6G/5UqJM9HTU2BByOQapVZGOe8W
+ 9HCwNmRlkvF/w0gA8+Sib3ydEsHWNb6ZWBiXVIPBsBOKjAbzsAD+v9T2Mg0MC+7uB3Q9zxF8
+ +ihgLTrIesf0gwgr8xGO/VQO3kW0aSrY9YrK1Dm2SCY5xSun3cBX5yCpaz5VGEV0r8fPI1Ay
+ RAXACwRczKIuv21/O+UGuZL2uE6NuOxZIxK7xmMzRmBZRonaZXKQqGP/NwBmTlp15AIEvHZa
+ M4ULzFoaXwsYTUVYgZRWM94xr3ywCCuI1W0q3rMzUYzy2HX3Ap9ypDnLZzYdsHiqcB9xRbE/
+ TuWpT2gav0cHOWm7Seo1VOQv9CMgQrUeNk3TI2Hp9c/1TV/wURWUnX6T2CTuPS8lwuiQdNBK
+ kUQ0iwpq6c06QqsVNaVYvGjiHuNvxpZQtkJVuNjuVHLxa3T7AKUQGMDS1atdeAbiSP/fhRyv
+ nfhoj8jLWYHXGG9IZ5FyoqpkA==
+IronPort-HdrOrdr: A9a23:BJAVwKCG7nmjw7TlHemU55DYdb4zR+YMi2TDsHoBKyC9E/bo9P
+ xG885w6faZslsssRIb+exoWpPvfZq0z/ccirX5W43PYOCMggqVxe9ZgrcKuweQfxHWx6p42b
+ 17e6ZzKNCYNykcsS+A2njcL+od
+X-Talos-CUID: 9a23:4sI1UWAxEinYmZ76EzV76WwfJ98mTiDynHj3f2qhE0wzELLAHA==
+X-Talos-MUID: =?us-ascii?q?9a23=3AODs5hw20Ei7luMt9E8P171hG4TUj2p2KFW0qsKk?=
+ =?us-ascii?q?/hIqYHANQYBLFvAvma9py?=
+Received: from mail-qk1-f198.google.com ([209.85.222.198])
  by ob1.hc2706-39.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
- 13 Jun 2024 11:54:54 -0400
-Received: by mail-qk1-f200.google.com with SMTP id
- af79cd13be357-7954f7742b8so143383085a.1
- for <qemu-trivial@nongnu.org>; Thu, 13 Jun 2024 08:54:54 -0700 (PDT)
+ 13 Jun 2024 11:55:29 -0400
+Received: by mail-qk1-f198.google.com with SMTP id
+ af79cd13be357-7954f7742b8so143481485a.1
+ for <qemu-trivial@nongnu.org>; Thu, 13 Jun 2024 08:55:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bu.edu; s=s1gsbu; t=1718294094; x=1718898894; darn=nongnu.org;
+ d=bu.edu; s=s1gsbu; t=1718294129; x=1718898929; darn=nongnu.org;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=H/qCMwgn0nhGbT+NuzYYOoETEb1b8M8/gisRsLw1sYU=;
- b=F4Qkg8q1DOPWN1uzo4VVaAMnZ1iggfs70x2NxoDrNoJ975kgEFpbkaI4cHmsUUG5I3
- LgAOEDC7LrqhZm1Qfgr1pxsCtz+YUd9zTnBNd8JaaD0YTAr7tNOCRvP7DnDRKPGfEkuT
- 8jG6C3zmymdfVwc/+a1jH1WD5bO5omvCFhox9LKRAqK/0dTxtVOlzDKd2OwYfW1uMTYM
- Or+bo8MA/irNYBBYdhNpCngx0U5QO482/lNLb260H/RxubvxuRILnPIgLbSrMMtqBtSR
- IOx7M2G7trkicRHHvWzneuNCqVTTjtnm+G0w80hmQai2SMBQpEOsgxs2mWyH9y+mVlgq
- z1rQ==
+ bh=dhbyvWGT16zVh2jUWMQRnzM3yNBcoG2ynfy9femxJSs=;
+ b=KlHg1GhzbAgMFRNUYh119JfdRECE25uLc0BsXAm183y1ZXy7qebjF5AVrg0eqOxUAw
+ JofCdV2e5MG4oCdP4956RL4j8InhhhcVkdzYONGNMg2Y4zsbpY6wVLaMwUmiiAcAesji
+ 9RKpA7QSuMCEWfCXWAo0flKZsusNIstMOLOYf1edoaECJch3A9Iah7+sywdbY0EqeLLt
+ Po/N+PeT4sy4OA2uyY7vRsRevnkjbPi3jxf9/fPs6xMH++UjobuFVPpWwQF1OZK8WmYD
+ 9CoXS9Gb/NzygpQF6zoY5/LeBIflJ0mVubhaaGHZvSrniNiyr1IMx/xidftjbODrUt3B
+ 2WCw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718294094; x=1718898894;
+ d=1e100.net; s=20230601; t=1718294129; x=1718898929;
  h=in-reply-to:content-disposition:mime-version:references:message-id
  :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=H/qCMwgn0nhGbT+NuzYYOoETEb1b8M8/gisRsLw1sYU=;
- b=pf506NYqejPrgwUsWwxBTS+TM5TQhjWkYUntQ/eeBqrAhgqXiITdZlCOuMdaZ9ypm3
- teU1HHTUg2cxU5XcNthtIMMEczKFR1EVI5cqJHWMvf/mhq7+iV7OSCbc8Tobm4s4vXIw
- w4J/cR55AMbrz+NnGSJ7vMoqmedL3QUruwEPqQ3w/jAQntsjy71FWu+YpaA6a0KKcacd
- k1RJE+7oIEdvXNO1MUwiuQzZYjJSTYgJINnRPnThggjTzYxAgKAzpma9wlOLaFxvca3W
- 8W0c9bzvIbCgODzdj2kHBDVP0sDzG/3ZMVEPM0z4TPs2htxR6/5khmx3Ne2IJ4M/QBrw
- pFTQ==
+ bh=dhbyvWGT16zVh2jUWMQRnzM3yNBcoG2ynfy9femxJSs=;
+ b=tk/BO1FjTPQt3daBtF927l9pzcjwQlJwlQ1wxQvyeJZjJwhrvGGf+OzPDlEY05h8/s
+ 0/T5KBPb76hOYqKCFoJHEgLK3m8Jr9ftMYObUqgblRl4zomfGXHIcokJNDFKIqW7kREB
+ hq02vZp9sikH4oDKBm8QuChg5MaCICg0CQvAe2EujLRmkXoWVWGz9I/5CQzNpV1GJGFY
+ FutickttmB2fHZA7PYJ+UOapBm3MZz4Y29MWUlR4PnC0wKmVm9/7nBdYyiORk7nj8o9q
+ aymXxDBvY7Gus7G5zUSHAkc1Ihs8C+HGLxG8R0Q+LglER6gDb8TXiDTMAyIBYJI+xUDz
+ LO7Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXUv4+4GEnrV5PTcrUs1gtX0muZg84L0VfLK4KoL2WrJnBGuPq/S40t3zVuFfMd9P3lZqv7s7uXNm6ndevHDw+cDqHEB8BomA==
-X-Gm-Message-State: AOJu0Yxn/vuQOCjEracKr0FGreDYbWxDw3o4K6Xh2kTAZ9h4tifefgRO
- 0Yb4EMePoVO26N+Qg7Jn0czalyMUbFuOe68WT/keHd9bulXLAQd+dFosFlFRz8cKsJshf3nCW+s
- /LkWZ1E3fehVLOPZc+bN1zJqUfNQLuBfercruN3zNuzmTA1nbjE7t8rHcdUbruBzdjbzDObF1VJ
- Dz
-X-Received: by 2002:a05:620a:4688:b0:795:47c6:79b1 with SMTP id
- af79cd13be357-797f602757amr518510585a.21.1718294093785; 
- Thu, 13 Jun 2024 08:54:53 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH7Q4Am5Nw00uHGHvjIKW1skZW6+ZRm9PtNnDp5grAnmf9Tx6zT0IXH+aJNGvwY4pgwYZuDiQ==
-X-Received: by 2002:a05:620a:4688:b0:795:47c6:79b1 with SMTP id
- af79cd13be357-797f602757amr518508785a.21.1718294093343; 
- Thu, 13 Jun 2024 08:54:53 -0700 (PDT)
+ AJvYcCWJEwn1oZjPfPEW+/nCiDmhzV1LXh62IM46PEnJ2i5kTXA0b1GENPLrXQwx1IhLV+DzLhMmzonJzgdmDJWaxK3Bpcb2+XBymQ==
+X-Gm-Message-State: AOJu0Yx7ZVDuABgHUNGxxrjZ9VLDER3aBR/wxhCbzYKjGXSOWY5sKyBL
+ Z2HDq5i1q+K1Naqj3zwYB3d/9NQ6XvFhg+3aYuSBSwjqmtH6i5UBjVmV5rACnKx5ol166fSZ6er
+ 1m0ijjDUqznTkrrx2jR+Jc5fmUow7n4QGiEqV+TwvUnCunOA2LIrFUTSaejY2LJs85u79YCQVKK
+ 1+
+X-Received: by 2002:a05:620a:4092:b0:797:d55a:516a with SMTP id
+ af79cd13be357-797f6128e9amr615460185a.60.1718294129172; 
+ Thu, 13 Jun 2024 08:55:29 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEVnNSsBqQumuKErOIPO1AOzElnbyOBQjWu6ICerdzGD/8I8I/CGitjbX+RujkwsZLe0qMEVQ==
+X-Received: by 2002:a05:620a:4092:b0:797:d55a:516a with SMTP id
+ af79cd13be357-797f6128e9amr615457485a.60.1718294128736; 
+ Thu, 13 Jun 2024 08:55:28 -0700 (PDT)
 Received: from mozz.bu.edu (pool-173-48-150-109.bstnma.fios.verizon.net.
  [173.48.150.109]) by smtp.gmail.com with ESMTPSA id
- af79cd13be357-798abc03812sm62532685a.93.2024.06.13.08.54.52
+ af79cd13be357-798c39d8cafsm41860885a.127.2024.06.13.08.55.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Jun 2024 08:54:53 -0700 (PDT)
-Date: Thu, 13 Jun 2024 11:54:48 -0400
+ Thu, 13 Jun 2024 08:55:28 -0700 (PDT)
+Date: Thu, 13 Jun 2024 11:55:24 -0400
 From: Alexander Bulekov <alxndr@bu.edu>
 To: Dmitry Frolov <frolov@swemel.ru>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, sdl.qemu@linuxtesting.org
-Subject: Re: [PATCH] tests/qtest/fuzz/virtio_net_fuzz.c: fix
- virtio_net_fuzz_multi
-Message-ID: <20240613155448.5m6zuv2idqbbpnf2@mozz.bu.edu>
-References: <20240523102813.396750-2-frolov@swemel.ru>
+Subject: Re: [PATCH] tests/qtest/fuzz: fix memleak in qos_fuzz.c
+Message-ID: <20240613155524.ldxi3zjvsj2l4bnf@mozz.bu.edu>
+References: <20240521103106.119021-3-frolov@swemel.ru>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240523102813.396750-2-frolov@swemel.ru>
+In-Reply-To: <20240521103106.119021-3-frolov@swemel.ru>
 X-CES-GSUITE_AUTH: bf3aNvsZpxl8
-Received-SPF: pass client-ip=216.71.140.200; envelope-from=alxndr@bu.edu;
- helo=esa15.hc2706-39.iphmx.com
+Received-SPF: pass client-ip=216.71.137.63; envelope-from=alxndr@bu.edu;
+ helo=esa5.hc2706-39.iphmx.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.001, SPF_HELO_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -118,57 +115,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jun 2024 15:55:04 -0000
+X-List-Received-Date: Thu, 13 Jun 2024 15:55:34 -0000
 
-This fixes the almost-immediate timeout issue for me on the
-virtio_net_fuzz target, but I'm not sure why this works or if it is
-fixing the right problem:
+Reviewed-by: Alexander Bulekov <alxndr@bu.edu>
 
-qtest_probe_child is designed to run from a libqtest process which
-uses waitpid on the PID of the child (qemu) process (stored in
-QTestState->qemu_pid) . With qemu-fuzz we do not have a separate
-libqtest and qemu process:
-
-(gdb) p s->qemu_pid
-$1 = 0
-
-So we are calling waitpid with pid = 0. From the man-page:
-"0 meaning wait for any child process whose process group ID is equal to
-that of the calling process at the time of the call to waitpid()."
-
-And we are calling it with WNOHANG. So I would expect that this almost
-always returns 0 unless some adjacent thread has changed state
-(libfuzzer uses extra threads to manage timeouts).
-
-I'm happy that the fuzzer works again, and am happy to leave a review,
-but I would like to first understand what the behavior of
-qtest_probe_child here is, since it isn't really designed to work with
-the fuzzer.
-
-On 240523 1328, Dmitry Frolov wrote:
-> If QTestState was already CLOSED due to error, calling qtest_clock_step()
-> afterwards makes no sense and only raises false-crash with message:
-> "assertion timer != NULL failed".
+On 240521 1331, Dmitry Frolov wrote:
+> Found with fuzzing for qemu-8.2, but also relevant for master
 > 
 > Signed-off-by: Dmitry Frolov <frolov@swemel.ru>
 > ---
->  tests/qtest/fuzz/virtio_net_fuzz.c | 3 +++
->  1 file changed, 3 insertions(+)
+>  tests/qtest/fuzz/qos_fuzz.c | 1 +
+>  1 file changed, 1 insertion(+)
 > 
-> diff --git a/tests/qtest/fuzz/virtio_net_fuzz.c b/tests/qtest/fuzz/virtio_net_fuzz.c
-> index e239875e3b..2f57a8ddd8 100644
-> --- a/tests/qtest/fuzz/virtio_net_fuzz.c
-> +++ b/tests/qtest/fuzz/virtio_net_fuzz.c
-> @@ -81,6 +81,9 @@ static void virtio_net_fuzz_multi(QTestState *s,
->          /* Run the main loop */
->          qtest_clock_step(s, 100);
->          flush_events(s);
-> +        if (!qtest_probe_child(s)) {
-> +            return;
-> +        }
+> diff --git a/tests/qtest/fuzz/qos_fuzz.c b/tests/qtest/fuzz/qos_fuzz.c
+> index b71e945c5f..d3839bf999 100644
+> --- a/tests/qtest/fuzz/qos_fuzz.c
+> +++ b/tests/qtest/fuzz/qos_fuzz.c
+> @@ -180,6 +180,7 @@ static void walk_path(QOSGraphNode *orig_path, int len)
 >  
->          /* Wait on used descriptors */
->          if (check_used && !vqa.rx) {
+>          fuzz_path_vec = path_vec;
+>      } else {
+> +        g_string_free(cmd_line, true);
+>          g_free(path_vec);
+>      }
+>  
 > -- 
 > 2.43.0
 > 
