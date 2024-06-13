@@ -1,80 +1,128 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sHgw9-0002l6-5H
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jun 2024 05:40:05 -0400
+	id 1sHhKC-0001F1-A8
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jun 2024 06:04:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sHgw7-0002kc-F2
- for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 05:40:03 -0400
-Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sHgw5-0008W5-Sf
- for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 05:40:03 -0400
-Received: by mail-lf1-x132.google.com with SMTP id
- 2adb3069b0e04-52c525257feso1048080e87.1
- for <qemu-trivial@nongnu.org>; Thu, 13 Jun 2024 02:40:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1718271600; x=1718876400; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=3aOunvMosKHTQ3tcT30IqrnVLnm+2Svo2x15/onrgnI=;
- b=YZrZ0W9geiHLvEKN5KgyRSjDk9YUXa+8NB0etF1TzdGy67g5XKPAgP5B4AYxj+HhJM
- Ynj+BUctMkefNjL77aHTjQD3FRkqUWsBAB1gxKxOKYZNHPjmRgS8I4SCfn3/WvvdJyQj
- uxh28deXbel0B/mzLJxCk//NPZhUwMR0Ug5pexiC33bF8D6EqSA0wpB4959TLnvlyTJa
- xOvuErHKCxYnmpFHyr2CYQK6wnepLnWgm85x5TjlZ1lv6YyX7Nk1b4ci+oFRf+b+LQS0
- pDG4PvozA1JTlyB7dk19B3FcViBOiXE8/NcG56+S8fmVZKJzgrg6Z3YHTzfKVVznSwjf
- dL9A==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sHhK9-0001E8-QD
+ for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 06:04:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sHhK6-0004tQ-TE
+ for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 06:04:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1718273089;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=uOznFgO1HHbyM7edIGEspHYQXTwnPE/Yy8M0FvOdCew=;
+ b=ILDimxH9kjK9upjxO1WvL10nEnutNY2RnroJgrawelTxQRb/SBrFCRcpj1ImtMZ1o7qLXu
+ b0MkF9E0VLRIOxelZDrhkFiFV2EVhRqmQwnbooFdjwrSMahRqBVkFI0JuUTes1m7wqvJkA
+ 8Idnlh2Z+EKhIhUT7iwL9cl+x5dDPjA=
+Received: from mail-ed1-f72.google.com (mail-ed1-f72.google.com
+ [209.85.208.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-338-LC8aIoMnMIOXDp9hyFHDwQ-1; Thu, 13 Jun 2024 06:04:47 -0400
+X-MC-Unique: LC8aIoMnMIOXDp9hyFHDwQ-1
+Received: by mail-ed1-f72.google.com with SMTP id
+ 4fb4d7f45d1cf-57c738349baso532375a12.1
+ for <qemu-trivial@nongnu.org>; Thu, 13 Jun 2024 03:04:46 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718271600; x=1718876400;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3aOunvMosKHTQ3tcT30IqrnVLnm+2Svo2x15/onrgnI=;
- b=kE7IM+OUm7Kos6jl+Brk8BvFRaQeSF3emQXEfa5IDDG6nk3aTrxvvCtLXR1kFLP4wW
- KJGu/YjBYjk3e6mkk9aXHtRK0g/hSYHoFvlELiySG5ihypskTepmP8SCIbpmZS1kvuaS
- MNDl1vlgwmESyvYvlcv/OsJozJ1ABu9F2c7qIq2sXDAMBrjmf54+e79Yx46lfxEJ8E4+
- 69jYWEMPkVPfDbkiAHx481plVsnDzz52JeSiYWqQqp37YOj1TvTtPiFRHj1xWDdha/NB
- HngwhKbmPisY66ktm101QGvQcnnuBw24vB7NEW57LOnmWRn0U5L0Ods/tlkD1zZTSl/V
- t2tQ==
+ d=1e100.net; s=20230601; t=1718273086; x=1718877886;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=uOznFgO1HHbyM7edIGEspHYQXTwnPE/Yy8M0FvOdCew=;
+ b=kwVR6ZiAT4A+mdgojXomZfO5hPRFiCwch3T6HuIctcg/CuAa/xVK79NwUFBKQkRxbX
+ aQ7sOh/6WClPCnBDQUExKMh/FjHBtwaC15jOcjBk+oJnIO6OQWbrcX+oKvepJfsuzKdL
+ ZMKP0/j1MI9uFpfTW7PMPL4ruotcEaYN573ttP3NCUGjkp7vGsnvH2laLFYT7txMH7/i
+ QQpNlX8uuR898kiKeUa8fb1DgAWEPrOil6RQtqbFm4ZVSDVPyvQPi3qJm6wz0DA+K2rN
+ JRlyT67qx29VO7vUYqdymVQ0Pjr84D4tYdiWHbVwdNLAhhMBDCRL4RuJCvwpwBAQXsPt
+ urJw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUlJYiDfONiyT0Kim5jeF0S2jH0OCOjp+fIIo0zTdEGL0Akc9aSFh88mdmLH7lwB2qFWuWJfSiKRaKaMEDok6thyvOYcMaEyw==
-X-Gm-Message-State: AOJu0YxRrXVEP0xU4WlmIPHXM4FFw+uI2UKALF1stC4QGYwBiJmJMVMt
- 4FlEjDTMmzn83/ASm04eCIxqo5FM3OOwdX39r/pVlC3/ljzYLmWBsguX/etdXU0=
-X-Google-Smtp-Source: AGHT+IFOG/8FrgqA9XZ/w2p9VIFkSxQU0Sedis4nI++qNFKsZF2ng64Ha6M2ODVcCthbioPnL41stw==
-X-Received: by 2002:a05:6512:2255:b0:52c:6ff5:aecf with SMTP id
- 2adb3069b0e04-52c9a3fcc83mr3578819e87.42.1718271599618; 
- Thu, 13 Jun 2024 02:39:59 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.148.226])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-360750ad216sm1161830f8f.57.2024.06.13.02.39.58
+ AJvYcCWQedld7eZiiY1tkgSicL/yNQaMkn7TfbSW52yEo8kpuqC+SH5eRmrUZSkRqeQhJj9iZuA75xTlvnps/vHLuRioGxjCTmbClA==
+X-Gm-Message-State: AOJu0YwbXAPBlWX0Rq1e4JI5J8tkH/EESfj8t5odidGrypG5GuOowZIe
+ 870wbMmd0NwkAylaL4y6NQCfQVWxu3u7nPdAQAyyA/qQK0HXfbR+ErjsPeC0QLPDpLp+1czzg+S
+ fU7rDNye135khS+ivp0HqRe1y3ve4sg5arfBBxmLS+RKY7fjDa/2EhUs=
+X-Received: by 2002:a50:cc93:0:b0:57c:5ec9:f5d9 with SMTP id
+ 4fb4d7f45d1cf-57caa9bee33mr3715609a12.31.1718273086014; 
+ Thu, 13 Jun 2024 03:04:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGJV1renOzgW2CEKERyz/X5fV4XwMxeuGsHPuD+CUCWIl64bQ/+VN5v18RvnQdYzzc6toQgWQ==
+X-Received: by 2002:a50:cc93:0:b0:57c:5ec9:f5d9 with SMTP id
+ 4fb4d7f45d1cf-57caa9bee33mr3715590a12.31.1718273085519; 
+ Thu, 13 Jun 2024 03:04:45 -0700 (PDT)
+Received: from [192.168.0.4] (ip-109-43-242-210.web.vodafone.de.
+ [109.43.242.210]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-57cb72ea3b2sm715602a12.55.2024.06.13.03.04.44
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 13 Jun 2024 02:39:59 -0700 (PDT)
-Message-ID: <0bdd0e28-8216-43c0-a415-c2148565900f@linaro.org>
-Date: Thu, 13 Jun 2024 11:39:57 +0200
+ Thu, 13 Jun 2024 03:04:45 -0700 (PDT)
+Message-ID: <1a06b729-6d28-4c07-a742-4b08de1c8586@redhat.com>
+Date: Thu, 13 Jun 2024 12:04:43 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] cpu: fix memleak of 'halt_cond' and 'thread'
-To: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>,
- qemu-devel@nongnu.org
-Cc: alex.bennee@linaro.org, pierrick.bouvier@linaro.org,
- qemu-trivial@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Yanan Wang <wangyanan55@huawei.com>
-References: <3ad18bc590ef28e1526e8053568086b453e7ffde.1718211878.git.quic_mathbern@quicinc.com>
+Subject: Re: [PATCH] tests/qtest/fuzz: fix memleak in qos_fuzz.c
+To: Dmitry Frolov <frolov@swemel.ru>, alxndr@bu.edu
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, sdl.qemu@linuxtesting.org
+References: <20240521103106.119021-3-frolov@swemel.ru>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240521103106.119021-3-frolov@swemel.ru>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <3ad18bc590ef28e1526e8053568086b453e7ffde.1718211878.git.quic_mathbern@quicinc.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::132;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x132.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.143,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -88,22 +136,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jun 2024 09:40:03 -0000
+X-List-Received-Date: Thu, 13 Jun 2024 10:04:54 -0000
 
-On 12/6/24 19:04, Matheus Tavares Bernardino wrote:
-> Since a4c2735f35 (cpu: move Qemu[Thread|Cond] setup into common code,
-> 2024-05-30) these fields are now allocated at cpu_common_initfn(). So
-> let's make sure we also free them at cpu_common_finalize().
+On 21/05/2024 12.31, Dmitry Frolov wrote:
+> Found with fuzzing for qemu-8.2, but also relevant for master
 > 
-> Furthermore, the code also frees these on round robin, but we missed
-> 'halt_cond'.
-> 
-> Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+> Signed-off-by: Dmitry Frolov <frolov@swemel.ru>
 > ---
->   accel/tcg/tcg-accel-ops-rr.c | 1 +
->   hw/core/cpu-common.c         | 3 +++
->   2 files changed, 4 insertions(+)
+>   tests/qtest/fuzz/qos_fuzz.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/tests/qtest/fuzz/qos_fuzz.c b/tests/qtest/fuzz/qos_fuzz.c
+> index b71e945c5f..d3839bf999 100644
+> --- a/tests/qtest/fuzz/qos_fuzz.c
+> +++ b/tests/qtest/fuzz/qos_fuzz.c
+> @@ -180,6 +180,7 @@ static void walk_path(QOSGraphNode *orig_path, int len)
+>   
+>           fuzz_path_vec = path_vec;
+>       } else {
+> +        g_string_free(cmd_line, true);
+>           g_free(path_vec);
+>       }
+>   
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
