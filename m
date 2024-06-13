@@ -1,108 +1,134 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sHmnX-0002XS-B6
-	for mharc-qemu-trivial@gnu.org; Thu, 13 Jun 2024 11:55:35 -0400
+	id 1sHneg-0005uR-Vg
+	for mharc-qemu-trivial@gnu.org; Thu, 13 Jun 2024 12:50:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>) id 1sHmnV-0002U4-Om
- for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 11:55:33 -0400
-Received: from esa5.hc2706-39.iphmx.com ([216.71.137.63])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sHnef-0005tq-C4
+ for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 12:50:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alxndr@bu.edu>) id 1sHmnU-0005kq-3G
- for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 11:55:33 -0400
-X-CSE-ConnectionGUID: ttuJcUwkT5G8gO4MqrB20g==
-X-CSE-MsgGUID: QQLuEOITQW+tAGH3M0XW9A==
-X-IronPort-RemoteIP: 209.85.222.198
-X-IronPort-MID: 384318211
-X-IronPort-Reputation: None
-X-IronPort-Listener: OutgoingMail
-X-IronPort-SenderGroup: RELAY_GSUITE
-X-IronPort-MailFlowPolicy: $RELAYED
-IronPort-Data: A9a23:OuO7u6NHVx/6CzTvrR3wlsFynXyQoLVcMsEvi/4bfWQNrUoj3zVSz
- DQZWj3TP6qNNmD3ft1zaYzg9RkBuJODzdJkGQZtpSBmQkwRlceUXt7xwmUcns+xwm8vaGo9s
- q3yv/GZdJhcokf0/0rrb/646yEhiMlkf5KkYMbcICd9WAR4fykojBNnioYRj5VhxNO0GGthg
- /uryyHkEAHjg24c3l48sfrZ9Esx5a+q4Vv0g3RlDRx1lA6G/5UqJM9HTU2BByOQapVZGOe8W
- 9HCwNmRlkvF/w0gA8+Sib3ydEsHWNb6ZWBiXVIPBsBOKjAbzsAD+v9T2Mg0MC+7uB3Q9zxF8
- +ihgLTrIesf0gwgr8xGO/VQO3kW0aSrY9YrK1Dm2SCY5xSun3cBX5yCpaz5VGEV0r8fPI1Ay
- RAXACwRczKIuv21/O+UGuZL2uE6NuOxZIxK7xmMzRmBZRonaZXKQqGP/NwBmTlp15AIEvHZa
- M4ULzFoaXwsYTUVYgZRWM94xr3ywCCuI1W0q3rMzUYzy2HX3Ap9ypDnLZzYdsHiqcB9xRbE/
- TuWpT2gav0cHOWm7Seo1VOQv9CMgQrUeNk3TI2Hp9c/1TV/wURWUnX6T2CTuPS8lwuiQdNBK
- kUQ0iwpq6c06QqsVNaVYvGjiHuNvxpZQtkJVuNjuVHLxa3T7AKUQGMDS1atdeAbiSP/fhRyv
- nfhoj8jLWYHXGG9IZ5FyoqpkA==
-IronPort-HdrOrdr: A9a23:BJAVwKCG7nmjw7TlHemU55DYdb4zR+YMi2TDsHoBKyC9E/bo9P
- xG885w6faZslsssRIb+exoWpPvfZq0z/ccirX5W43PYOCMggqVxe9ZgrcKuweQfxHWx6p42b
- 17e6ZzKNCYNykcsS+A2njcL+od
-X-Talos-CUID: 9a23:4sI1UWAxEinYmZ76EzV76WwfJ98mTiDynHj3f2qhE0wzELLAHA==
-X-Talos-MUID: =?us-ascii?q?9a23=3AODs5hw20Ei7luMt9E8P171hG4TUj2p2KFW0qsKk?=
- =?us-ascii?q?/hIqYHANQYBLFvAvma9py?=
-Received: from mail-qk1-f198.google.com ([209.85.222.198])
- by ob1.hc2706-39.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
- 13 Jun 2024 11:55:29 -0400
-Received: by mail-qk1-f198.google.com with SMTP id
- af79cd13be357-7954f7742b8so143481485a.1
- for <qemu-trivial@nongnu.org>; Thu, 13 Jun 2024 08:55:30 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=bu.edu; s=s1gsbu; t=1718294129; x=1718898929; darn=nongnu.org;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:from:to:cc:subject:date:message-id:reply-to;
- bh=dhbyvWGT16zVh2jUWMQRnzM3yNBcoG2ynfy9femxJSs=;
- b=KlHg1GhzbAgMFRNUYh119JfdRECE25uLc0BsXAm183y1ZXy7qebjF5AVrg0eqOxUAw
- JofCdV2e5MG4oCdP4956RL4j8InhhhcVkdzYONGNMg2Y4zsbpY6wVLaMwUmiiAcAesji
- 9RKpA7QSuMCEWfCXWAo0flKZsusNIstMOLOYf1edoaECJch3A9Iah7+sywdbY0EqeLLt
- Po/N+PeT4sy4OA2uyY7vRsRevnkjbPi3jxf9/fPs6xMH++UjobuFVPpWwQF1OZK8WmYD
- 9CoXS9Gb/NzygpQF6zoY5/LeBIflJ0mVubhaaGHZvSrniNiyr1IMx/xidftjbODrUt3B
- 2WCw==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sHnec-0008HX-OS
+ for qemu-trivial@nongnu.org; Thu, 13 Jun 2024 12:50:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1718297425;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=UqE2SU1gPjJacZoMq5dpIcvpqD1xTqDOlBCSYRdpH+c=;
+ b=S2rIu/XLGQvkdcn+VSGS1zO6BWniblEVbL0ENRvZWjPmq/DGYM0v7XL5iQEUFLywaQd7HG
+ 2ezu3udaJye1MqanLRmmxn+N1QjleS0DDY/9Rm8aohkPu3F8scvaEcqkiDIQAz61CBoNZB
+ khSum/qTklTc6GhW95fzm4GqtZhbc60=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-423-_QlPSPH5O1qAThaos-vUQA-1; Thu, 13 Jun 2024 12:50:23 -0400
+X-MC-Unique: _QlPSPH5O1qAThaos-vUQA-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ a640c23a62f3a-a6f0fee1f49so66810966b.0
+ for <qemu-trivial@nongnu.org>; Thu, 13 Jun 2024 09:50:23 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718294129; x=1718898929;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=dhbyvWGT16zVh2jUWMQRnzM3yNBcoG2ynfy9femxJSs=;
- b=tk/BO1FjTPQt3daBtF927l9pzcjwQlJwlQ1wxQvyeJZjJwhrvGGf+OzPDlEY05h8/s
- 0/T5KBPb76hOYqKCFoJHEgLK3m8Jr9ftMYObUqgblRl4zomfGXHIcokJNDFKIqW7kREB
- hq02vZp9sikH4oDKBm8QuChg5MaCICg0CQvAe2EujLRmkXoWVWGz9I/5CQzNpV1GJGFY
- FutickttmB2fHZA7PYJ+UOapBm3MZz4Y29MWUlR4PnC0wKmVm9/7nBdYyiORk7nj8o9q
- aymXxDBvY7Gus7G5zUSHAkc1Ihs8C+HGLxG8R0Q+LglER6gDb8TXiDTMAyIBYJI+xUDz
- LO7Q==
+ d=1e100.net; s=20230601; t=1718297422; x=1718902222;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UqE2SU1gPjJacZoMq5dpIcvpqD1xTqDOlBCSYRdpH+c=;
+ b=NPhDQYLbHeNc7v59nz6OsPjELGGZnbs5q+HneZk5oapHe8XgABe4KLXpBpfxIv3tp/
+ t42zRkbVeJAWgDuVoqdZUjMw681Q19lgAh96AETumvRtgy70b/QKLU4UNQCYk/mO1zaQ
+ 60kW8wv8mgX6HlutAjKaA9JfE9/CcTt5XhbzIywHDIwrKIZfXFG6uZ5dkiGMNmBdCCId
+ h2iaIKJbJXSARuLuMPVYhdTEQLHsOxwkGa0opWo5VdFdFtrw5U1OLgRsVb1rOJpDO7PG
+ besemOH5joX80+ToY4orYGc5M71WHbku1ZXRZ+G/NTgOZ/SofRL+Q9kg2RqIf+aAy1Po
+ GA6Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWJEwn1oZjPfPEW+/nCiDmhzV1LXh62IM46PEnJ2i5kTXA0b1GENPLrXQwx1IhLV+DzLhMmzonJzgdmDJWaxK3Bpcb2+XBymQ==
-X-Gm-Message-State: AOJu0Yx7ZVDuABgHUNGxxrjZ9VLDER3aBR/wxhCbzYKjGXSOWY5sKyBL
- Z2HDq5i1q+K1Naqj3zwYB3d/9NQ6XvFhg+3aYuSBSwjqmtH6i5UBjVmV5rACnKx5ol166fSZ6er
- 1m0ijjDUqznTkrrx2jR+Jc5fmUow7n4QGiEqV+TwvUnCunOA2LIrFUTSaejY2LJs85u79YCQVKK
- 1+
-X-Received: by 2002:a05:620a:4092:b0:797:d55a:516a with SMTP id
- af79cd13be357-797f6128e9amr615460185a.60.1718294129172; 
- Thu, 13 Jun 2024 08:55:29 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEVnNSsBqQumuKErOIPO1AOzElnbyOBQjWu6ICerdzGD/8I8I/CGitjbX+RujkwsZLe0qMEVQ==
-X-Received: by 2002:a05:620a:4092:b0:797:d55a:516a with SMTP id
- af79cd13be357-797f6128e9amr615457485a.60.1718294128736; 
- Thu, 13 Jun 2024 08:55:28 -0700 (PDT)
-Received: from mozz.bu.edu (pool-173-48-150-109.bstnma.fios.verizon.net.
- [173.48.150.109]) by smtp.gmail.com with ESMTPSA id
- af79cd13be357-798c39d8cafsm41860885a.127.2024.06.13.08.55.28
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 13 Jun 2024 08:55:28 -0700 (PDT)
-Date: Thu, 13 Jun 2024 11:55:24 -0400
-From: Alexander Bulekov <alxndr@bu.edu>
-To: Dmitry Frolov <frolov@swemel.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, sdl.qemu@linuxtesting.org
-Subject: Re: [PATCH] tests/qtest/fuzz: fix memleak in qos_fuzz.c
-Message-ID: <20240613155524.ldxi3zjvsj2l4bnf@mozz.bu.edu>
-References: <20240521103106.119021-3-frolov@swemel.ru>
+ AJvYcCWZrxHRzhKUu9m1iOb0JUCdEma+l9umJm0vDzVxRmenl+S8LR/6dlZ33OgLyL/XG1amMwQWem8rbU0Rhj+66LhXFXyAwBenEg==
+X-Gm-Message-State: AOJu0YzEWQ7hxt1jh05AGnUpxXw/sZHb2QjH4VPoCx0IRf9HBSSx8hAy
+ TInlyd5Tk6LjUKjkUH4JncqKjZ4s6QOfStdxMuGiYSj5M/z4G+lMiUR/SEBu23PcYrZ4/GEkjTC
+ EiSbAFi67O1VosIO+XTtPijCWhp0grUykiyCT4Ef4tMgtefIculm67/s=
+X-Received: by 2002:a17:906:3bce:b0:a6f:efb:b347 with SMTP id
+ a640c23a62f3a-a6f60de2620mr16687866b.70.1718297422627; 
+ Thu, 13 Jun 2024 09:50:22 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEErfM1Tc4nnZ3wG/7HE1LjCcnfHSo7JS1exGhfafa1iQKrYjYjp1E6wMvmZLk/SJHRzayrPA==
+X-Received: by 2002:a17:906:3bce:b0:a6f:efb:b347 with SMTP id
+ a640c23a62f3a-a6f60de2620mr16686366b.70.1718297422222; 
+ Thu, 13 Jun 2024 09:50:22 -0700 (PDT)
+Received: from [192.168.0.4] (ip-109-43-242-210.web.vodafone.de.
+ [109.43.242.210]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a6f56db61e0sm89164066b.49.2024.06.13.09.50.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 13 Jun 2024 09:50:21 -0700 (PDT)
+Message-ID: <9d456ca1-0a63-483d-bfe1-1ff8ccfbe0a0@redhat.com>
+Date: Thu, 13 Jun 2024 18:50:20 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240521103106.119021-3-frolov@swemel.ru>
-X-CES-GSUITE_AUTH: bf3aNvsZpxl8
-Received-SPF: pass client-ip=216.71.137.63; envelope-from=alxndr@bu.edu;
- helo=esa5.hc2706-39.iphmx.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] tests/qtest/fuzz/virtio_net_fuzz.c: fix
+ virtio_net_fuzz_multi
+To: =?UTF-8?B?0JTQvNC40YLRgNC40Lkg0KTRgNC+0LvQvtCy?= <frolov@swemel.ru>,
+ qemu-devel@nongnu.org
+Cc: alxndr@bu.edu, sdl.qemu@linuxtesting.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Jason Wang <jasowang@redhat.com>
+References: <20240523102813.396750-2-frolov@swemel.ru>
+ <2982b9c8-1325-4ca7-9e91-b1a94178c9d9@redhat.com>
+ <ee6ee73c-9714-40b2-9a0a-3f835bcf0c95@swemel.ru>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <ee6ee73c-9714-40b2-9a0a-3f835bcf0c95@swemel.ru>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.145,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,31 +141,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 13 Jun 2024 15:55:34 -0000
+X-List-Received-Date: Thu, 13 Jun 2024 16:50:29 -0000
 
-Reviewed-by: Alexander Bulekov <alxndr@bu.edu>
+On 13/06/2024 13.59, Дмитрий Фролов wrote:
+> 
+> 
+> On 13.06.2024 13:08, Thomas Huth wrote:
+>> On 23/05/2024 12.28, Dmitry Frolov wrote:
+>>> If QTestState was already CLOSED due to error, calling qtest_clock_step()
+>>> afterwards makes no sense and only raises false-crash with message:
+>>> "assertion timer != NULL failed".
+>>>
+>>> Signed-off-by: Dmitry Frolov <frolov@swemel.ru>
+>>> ---
+>>>   tests/qtest/fuzz/virtio_net_fuzz.c | 3 +++
+>>>   1 file changed, 3 insertions(+)
+>>>
+>>> diff --git a/tests/qtest/fuzz/virtio_net_fuzz.c 
+>>> b/tests/qtest/fuzz/virtio_net_fuzz.c
+>>> index e239875e3b..2f57a8ddd8 100644
+>>> --- a/tests/qtest/fuzz/virtio_net_fuzz.c
+>>> +++ b/tests/qtest/fuzz/virtio_net_fuzz.c
+>>> @@ -81,6 +81,9 @@ static void virtio_net_fuzz_multi(QTestState *s,
+>>>           /* Run the main loop */
+>>>           qtest_clock_step(s, 100);
+>>>           flush_events(s);
+>>> +        if (!qtest_probe_child(s)) {
+>>> +            return;
+>>> +        }
+>>
+>> According to your patch description, it rather sounds like the check 
+>> should be done before the qtest_clock_step() ? ... or where does the 
+>> QTestState get closed? During flush_events() ?
+> To my understanding, the main loop is executed during flush_events(), where 
+> an error may occur. This behavior is legit and should not produce any crash 
+> report.
+> Without the check, the test continues to wait on used descriptors, and 
+> finally fails with message: "assertion timer != NULL failed".
+> Thus, any invalid input data produces a meaningless crash report.
 
-On 240521 1331, Dmitry Frolov wrote:
-> Found with fuzzing for qemu-8.2, but also relevant for master
-> 
-> Signed-off-by: Dmitry Frolov <frolov@swemel.ru>
-> ---
->  tests/qtest/fuzz/qos_fuzz.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/tests/qtest/fuzz/qos_fuzz.c b/tests/qtest/fuzz/qos_fuzz.c
-> index b71e945c5f..d3839bf999 100644
-> --- a/tests/qtest/fuzz/qos_fuzz.c
-> +++ b/tests/qtest/fuzz/qos_fuzz.c
-> @@ -180,6 +180,7 @@ static void walk_path(QOSGraphNode *orig_path, int len)
->  
->          fuzz_path_vec = path_vec;
->      } else {
-> +        g_string_free(cmd_line, true);
->          g_free(path_vec);
->      }
->  
-> -- 
-> 2.43.0
-> 
+Ok, makes sense now, thanks!
+
+There seems to be another while loop with a flush_events() call later in 
+this file, does it maybe need the same treatment, too?
+
+  Thomas
+
 
