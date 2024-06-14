@@ -1,73 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sI6Ta-0006iq-Fx
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2024 08:56:18 -0400
+	id 1sI70f-00083S-M7
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2024 09:30:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <trentmhuber@gmail.com>)
- id 1sHzHE-0003uE-0m; Fri, 14 Jun 2024 01:15:04 -0400
-Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <trentmhuber@gmail.com>)
- id 1sHzHC-0008OJ-Co; Fri, 14 Jun 2024 01:15:03 -0400
-Received: by mail-qv1-xf31.google.com with SMTP id
- 6a1803df08f44-6b0871bd288so2635956d6.2; 
- Thu, 13 Jun 2024 22:15:01 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1718342100; x=1718946900; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=7GTksfZRb2NSXlR1E0cPWHKFmqRx4/aAfvMPhoC8MME=;
- b=j+hqaxfrcCRIUauXzn/0COvKt8jqBLZFPJk1xmQAQOzGCwoz5wuDaDkISDCNFnZGgj
- UzM+83cPLhD0jAFUFsShfmuuNgiiCl++R5xPU6HFcO/Pkgaaqb7SPKYzc6gZhKzcpnvC
- nedEnLhT5bm+NgFUP4EoP4DFVR76S+2J8Ci1007CAcRJcUaKCGnf0kLC+GZ23ov/Dl4B
- NH7auCcUQrlZ9yYL9u+10mvbi9NiYaOxlRD3dGsDeuxnVsfhpWFeBaB1B4mBhGxwbodH
- Z2CFA1thpoO/h8dWvbAW31FXJUh+Jpt+qA8aariqB14aq/9eUsjKyOy35i1snii0H2aQ
- Wgjw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718342100; x=1718946900;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=7GTksfZRb2NSXlR1E0cPWHKFmqRx4/aAfvMPhoC8MME=;
- b=S+LGjIpCHiJfv1zEaAdvMUSa9B/fo7kWT8WWrYXTGV6ZoihfgEjtEIUlBAfZTA4B9i
- giD4pzyUnkCLpDsyHAvHbCzmvrNpuq/U44FqagB+XJupnAizFdAxopudWj1Qo6WV2oR8
- LtvqmMcbuOBuuhZtBSe/oyG7LcB/y1Gv0YREM58NI6BNotht1ZFhWzDKL+kV3W3URNFW
- 6Oh/1aRBNyolxqxl+z3nTulNkPSuGe93VFysm9I873O1x4Wo4J7TCOFBQz/lyXh9AF71
- VyIiUBkyufbZqep9hqEA/FOmDOOxNB6cuhGN/4JvjJMDDQ3JkURdClq94Jyh4r0nVmWj
- kSJw==
-X-Gm-Message-State: AOJu0YwnMEpxKHYfgr/olqrMvtIX5+U6QGBKoPOrDdXGZ0r9bwvp6UWR
- 5Nr60QF/Bc4S3SuwzDQI95A1foEI445EMAAg5Oa6Tu+xHHOYARwiJ2pt8b2XpcY=
-X-Google-Smtp-Source: AGHT+IGcZDGWNahJgfpt3OZT3Ts7iQqObbRjGY1bDAyCAJvWbozfx8mvVJRPjappPKA0P6+9Maf8KA==
-X-Received: by 2002:a05:620a:8903:b0:795:59b1:526a with SMTP id
- af79cd13be357-798d1f81d99mr180965085a.0.1718342100048; 
- Thu, 13 Jun 2024 22:15:00 -0700 (PDT)
-Received: from localhost.localdomain
- (pool-96-227-82-228.phlapa.fios.verizon.net. [96.227.82.228])
- by smtp.gmail.com with ESMTPSA id
- af79cd13be357-798abe47c96sm113217485a.102.2024.06.13.22.14.59
- (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
- Thu, 13 Jun 2024 22:14:59 -0700 (PDT)
-From: Trent Huber <trentmhuber@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
- Trent Huber <trentmhuber@gmail.com>
-Subject: [PATCH] os-posix: Expand setrlimit() syscall compatibility
-Date: Fri, 14 Jun 2024 01:14:22 -0400
-Message-Id: <20240614051422.13532-1-trentmhuber@gmail.com>
-X-Mailer: git-send-email 2.24.3 (Apple Git-128)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1sI70d-00082L-Ht
+ for qemu-trivial@nongnu.org; Fri, 14 Jun 2024 09:30:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1sI70b-0001kb-VP
+ for qemu-trivial@nongnu.org; Fri, 14 Jun 2024 09:30:27 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1718371823;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=TYiHbzTmtUK4QRRJjDLnRWwfPgs26MjZumaGRuYJPsg=;
+ b=b/sXbKkIGr1DTimHU5sf58uPTejqC/A3zV0Hn6kd0buIpxNRKOTGFjehZ47GbCC6mdmg+5
+ PoHhhKGTQiL38SPLv9ggf02hQGFDZ+RTshjszuicnbIf0/eSp2MO/wsfXOUfzpCXxO3cS+
+ 5soAJcFwmhvHsYEl//0hAlEUyiW5W78=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-327-euGQSUwtPy2rWZdca01Wbw-1; Fri,
+ 14 Jun 2024 09:30:19 -0400
+X-MC-Unique: euGQSUwtPy2rWZdca01Wbw-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6851F1955E84; Fri, 14 Jun 2024 13:30:10 +0000 (UTC)
+Received: from redhat.com (unknown [10.39.193.248])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 644601956079; Fri, 14 Jun 2024 13:30:06 +0000 (UTC)
+Date: Fri, 14 Jun 2024 14:30:02 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Trent Huber <trentmhuber@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, pbonzini@redhat.com
+Subject: Re: [PATCH] os-posix: Expand setrlimit() syscall compatibility
+Message-ID: <ZmxF2lTY0hvS_HqV@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20240614051422.13532-1-trentmhuber@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::f31;
- envelope-from=trentmhuber@gmail.com; helo=mail-qv1-xf31.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20240614051422.13532-1-trentmhuber@gmail.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 11
+X-Spam_score: 1.1
+X-Spam_bar: +
+X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 14 Jun 2024 08:56:17 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -79,32 +72,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2024 05:15:04 -0000
+X-List-Received-Date: Fri, 14 Jun 2024 13:30:27 -0000
 
-Darwin (I'm running version 19.6.0) uses a subtly different version
-of the setrlimit() syscall as described in the COMPATIBILITY section
-of the macOS man page. I adjusted the way the rlim_cur member is set
-to accommodate and which shouldn't affect any non-Darwin systems.
+On Fri, Jun 14, 2024 at 01:14:22AM -0400, Trent Huber wrote:
+> Darwin (I'm running version 19.6.0) uses a subtly different version
+> of the setrlimit() syscall as described in the COMPATIBILITY section
+> of the macOS man page. I adjusted the way the rlim_cur member is set
+> to accommodate and which shouldn't affect any non-Darwin systems.
+> 
+> Signed-off-by: Trent Huber <trentmhuber@gmail.com>
+> ---
+>  os-posix.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/os-posix.c b/os-posix.c
+> index a4284e2c07..5766346521 100644
+> --- a/os-posix.c
+> +++ b/os-posix.c
+> @@ -270,7 +270,7 @@ void os_setup_limits(void)
+>          return;
+>      }
+>  
+> -    nofile.rlim_cur = nofile.rlim_max;
+> +    nofile.rlim_cur = OPEN_MAX < nofile.rlim_max ? OPEN_MAX : nofile.rlim_max;
 
-Signed-off-by: Trent Huber <trentmhuber@gmail.com>
----
- os-posix.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+There's no such constant OPEN_MAX on Linux, so this doesn't compile.
 
-diff --git a/os-posix.c b/os-posix.c
-index a4284e2c07..5766346521 100644
---- a/os-posix.c
-+++ b/os-posix.c
-@@ -270,7 +270,7 @@ void os_setup_limits(void)
-         return;
-     }
- 
--    nofile.rlim_cur = nofile.rlim_max;
-+    nofile.rlim_cur = OPEN_MAX < nofile.rlim_max ? OPEN_MAX : nofile.rlim_max;
- 
-     if (setrlimit(RLIMIT_NOFILE, &nofile) < 0) {
-         warn_report("unable to set NOFILE limit: %s", strerror(errno));
+There is a sysconf() parameter _SC_OPEN_MAX, but we should not use
+that as it is a dynamic value that just reflects what 'rlim_cur'
+is set to, and would thus turn this into a no-op.
+
+This should just be made conditional to macOS, since its the only
+problematic platform that we known of.
+
+With regards,
+Daniel
 -- 
-2.24.3 (Apple Git-128)
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
