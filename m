@@ -1,46 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sI3JK-0004jH-QL
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2024 05:33:30 -0400
+	id 1sI3RA-0001F9-Qc
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2024 05:41:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <frolov@swemel.ru>)
- id 1sI3JJ-0004iJ-8q; Fri, 14 Jun 2024 05:33:29 -0400
+ id 1sI3R8-0001EN-Ih; Fri, 14 Jun 2024 05:41:34 -0400
 Received: from mx.swemel.ru ([95.143.211.150])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <frolov@swemel.ru>)
- id 1sI3JF-0007Ny-Rt; Fri, 14 Jun 2024 05:33:29 -0400
-Content-Type: multipart/alternative;
- boundary="------------xrJ8DxpDnc0EUnjuWUElMLlc"
+ id 1sI3R6-00019l-1f; Fri, 14 Jun 2024 05:41:34 -0400
+Message-ID: <8e9e9e21-2d00-49f2-8563-aee494c5bbe5@swemel.ru>
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=swemel.ru; s=mail;
- t=1718357602;
+ t=1718358087;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=bijNzxYLv9HMvmlAHhEVBb1QAaXrSD1tL9FWhswhn34=;
- b=Obahux/M9EhVGSXCKTkcQNQAgHG7SB/rZcdDaauPPY1gJgoJmx1W3T1AiF/XFwoOifZi6q
- TmbU2SgZ/oz5cczPjvsoqdGZG7Dcv+69jtPwFchGrBqY5UIwzlbQxm/slKPkl/l6owJYc7
- 2JgjZoZ15PnjiHQ/n8j5dm2IAClxLMc=
-Message-ID: <d78740ad-e233-4e5f-9773-ff26a8ea9801@swemel.ru>
-Date: Fri, 14 Jun 2024 12:33:21 +0300
+ bh=3lCW7ZXf+t8QzQHdfXVaXQ1vxu7+8YHaWGGh0EYQP5Y=;
+ b=Qo8herkT1LBZJwKAobmVUT/72ufoh1kJWPDY0bVEZXCK0iMHjRmSsiPHQ7pm03BSL9j7YP
+ H/EEqPdbK2c20rhAYqjLdRfEdDQVo0sCwK0UuJQSQF6J4rwmOoCBf28+hzOO9wbmT0+og9
+ 82rUhA87YRxIBsH7GS4AbPzFk4IrYjE=
+Date: Fri, 14 Jun 2024 12:41:27 +0300
 MIME-Version: 1.0
-Subject: Re: *** MAY_BE_SPAM !!! *** Re: [PATCH]
- tests/qtest/fuzz/virtio_net_fuzz.c: fix virtio_net_fuzz_multi
+Subject: Re: [PATCH] tests/qtest/fuzz/virtio_net_fuzz.c: fix
+ virtio_net_fuzz_multi
 Content-Language: en-US
-To: Alexander Bulekov <alxndr@bu.edu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, sdl.qemu@linuxtesting.org
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: alxndr@bu.edu, sdl.qemu@linuxtesting.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Jason Wang <jasowang@redhat.com>
 References: <20240523102813.396750-2-frolov@swemel.ru>
- <20240613155448.5m6zuv2idqbbpnf2@mozz.bu.edu>
+ <2982b9c8-1325-4ca7-9e91-b1a94178c9d9@redhat.com>
+ <ee6ee73c-9714-40b2-9a0a-3f835bcf0c95@swemel.ru>
+ <9d456ca1-0a63-483d-bfe1-1ff8ccfbe0a0@redhat.com>
 From: =?UTF-8?B?0JTQvNC40YLRgNC40Lkg0KTRgNC+0LvQvtCy?= <frolov@swemel.ru>
-In-Reply-To: <20240613155448.5m6zuv2idqbbpnf2@mozz.bu.edu>
+In-Reply-To: <9d456ca1-0a63-483d-bfe1-1ff8ccfbe0a0@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=95.143.211.150; envelope-from=frolov@swemel.ru;
  helo=mx.swemel.ru
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -53,159 +56,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2024 09:33:29 -0000
+X-List-Received-Date: Fri, 14 Jun 2024 09:41:35 -0000
 
-This is a multi-part message in MIME format.
---------------xrJ8DxpDnc0EUnjuWUElMLlc
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-
-On 13.06.2024 18:54, Alexander Bulekov wrote:
-> This fixes the almost-immediate timeout issue for me on the
-> virtio_net_fuzz target, but I'm not sure why this works or if it is
-> fixing the right problem:
->
-> qtest_probe_child is designed to run from a libqtest process which
-> uses waitpid on the PID of the child (qemu) process (stored in
-> QTestState->qemu_pid) . With qemu-fuzz we do not have a separate
-> libqtest and qemu process:
->
-> (gdb) p s->qemu_pid
-> $1 = 0
->
-> So we are calling waitpid with pid = 0. From the man-page:
-> "0 meaning wait for any child process whose process group ID is equal to
-> that of the calling process at the time of the call to waitpid()."
->
-> And we are calling it with WNOHANG. So I would expect that this almost
-> always returns 0 unless some adjacent thread has changed state
-> (libfuzzer uses extra threads to manage timeouts).
-According to 
-https://www.redhat.com/en/blog/hardening-qemu-through-continuous-security-testing#:~:text=each%20input%20is%20executed%20within%20a%20forked%20child%20process
-"each input is executed within a forked child process".
-According to crash reports, an error occurs first (which may be different),
-followed by the crash with message "assertion timer != NULL failed". To 
-my opinion, waiting for an answer from dead children is the reason of 
-crashes.
-> I'm happy that the fuzzer works again, and am happy to leave a review,
-> but I would like to first understand what the behavior of
-> qtest_probe_child here is, since it isn't really designed to work with
-> the fuzzer.
->
-> On 240523 1328, Dmitry Frolov wrote:
->> If QTestState was already CLOSED due to error, calling qtest_clock_step()
->> afterwards makes no sense and only raises false-crash with message:
->> "assertion timer != NULL failed".
+On 13.06.2024 19:50, Thomas Huth wrote:
+> On 13/06/2024 13.59, Дмитрий Фролов wrote:
 >>
->> Signed-off-by: Dmitry Frolov<frolov@swemel.ru>
->> ---
->>   tests/qtest/fuzz/virtio_net_fuzz.c | 3 +++
->>   1 file changed, 3 insertions(+)
 >>
->> diff --git a/tests/qtest/fuzz/virtio_net_fuzz.c b/tests/qtest/fuzz/virtio_net_fuzz.c
->> index e239875e3b..2f57a8ddd8 100644
->> --- a/tests/qtest/fuzz/virtio_net_fuzz.c
->> +++ b/tests/qtest/fuzz/virtio_net_fuzz.c
->> @@ -81,6 +81,9 @@ static void virtio_net_fuzz_multi(QTestState *s,
->>           /* Run the main loop */
->>           qtest_clock_step(s, 100);
->>           flush_events(s);
->> +        if (!qtest_probe_child(s)) {
->> +            return;
->> +        }
->>   
->>           /* Wait on used descriptors */
->>           if (check_used && !vqa.rx) {
->> -- 
->> 2.43.0
->>
+>> On 13.06.2024 13:08, Thomas Huth wrote:
+>>> On 23/05/2024 12.28, Dmitry Frolov wrote:
+>>>> If QTestState was already CLOSED due to error, calling 
+>>>> qtest_clock_step()
+>>>> afterwards makes no sense and only raises false-crash with message:
+>>>> "assertion timer != NULL failed".
+>>>>
+>>>> Signed-off-by: Dmitry Frolov <frolov@swemel.ru>
+>>>> ---
+>>>>   tests/qtest/fuzz/virtio_net_fuzz.c | 3 +++
+>>>>   1 file changed, 3 insertions(+)
+>>>>
+>>>> diff --git a/tests/qtest/fuzz/virtio_net_fuzz.c 
+>>>> b/tests/qtest/fuzz/virtio_net_fuzz.c
+>>>> index e239875e3b..2f57a8ddd8 100644
+>>>> --- a/tests/qtest/fuzz/virtio_net_fuzz.c
+>>>> +++ b/tests/qtest/fuzz/virtio_net_fuzz.c
+>>>> @@ -81,6 +81,9 @@ static void virtio_net_fuzz_multi(QTestState *s,
+>>>>           /* Run the main loop */
+>>>>           qtest_clock_step(s, 100);
+>>>>           flush_events(s);
+>>>> +        if (!qtest_probe_child(s)) {
+>>>> +            return;
+>>>> +        }
+>>>
+>>> According to your patch description, it rather sounds like the check 
+>>> should be done before the qtest_clock_step() ? ... or where does the 
+>>> QTestState get closed? During flush_events() ?
+>> To my understanding, the main loop is executed during flush_events(), 
+>> where an error may occur. This behavior is legit and should not 
+>> produce any crash report.
+>> Without the check, the test continues to wait on used descriptors, 
+>> and finally fails with message: "assertion timer != NULL failed".
+>> Thus, any invalid input data produces a meaningless crash report.
+>
+> Ok, makes sense now, thanks!
+>
+> There seems to be another while loop with a flush_events() call later 
+> in this file, does it maybe need the same treatment, too?
+With this fix, the number of crashes reduced significantly, but I guess, 
+you are right...
+If another similar crash will occur - I`ll make another patch.
+Many thanks!
+Dmitry
+>  Thomas
+>
 
---------------xrJ8DxpDnc0EUnjuWUElMLlc
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  </head>
-  <body>
-    On 13.06.2024 18:54, Alexander Bulekov wrote:<br>
-    <blockquote type="cite"
-      cite="mid:20240613155448.5m6zuv2idqbbpnf2@mozz.bu.edu">
-      <pre class="moz-quote-pre" wrap="">This fixes the almost-immediate timeout issue for me on the
-virtio_net_fuzz target, but I'm not sure why this works or if it is
-fixing the right problem:
-
-qtest_probe_child is designed to run from a libqtest process which
-uses waitpid on the PID of the child (qemu) process (stored in
-QTestState-&gt;qemu_pid) . With qemu-fuzz we do not have a separate
-libqtest and qemu process:
-
-(gdb) p s-&gt;qemu_pid
-$1 = 0
-
-So we are calling waitpid with pid = 0. From the man-page:
-"0 meaning wait for any child process whose process group ID is equal to
-that of the calling process at the time of the call to waitpid()."
-
-And we are calling it with WNOHANG. So I would expect that this almost
-always returns 0 unless some adjacent thread has changed state
-(libfuzzer uses extra threads to manage timeouts).
-</pre>
-    </blockquote>
-    According to
-<a class="moz-txt-link-freetext" href="https://www.redhat.com/en/blog/hardening-qemu-through-continuous-security-testing#:~:text=each%20input%20is%20executed%20within%20a%20forked%20child%20process">https://www.redhat.com/en/blog/hardening-qemu-through-continuous-security-testing#:~:text=each%20input%20is%20executed%20within%20a%20forked%20child%20process</a><br>
-    "each input is executed within a forked child process".<br>
-    According to crash reports, an error occurs first (which may be
-    different), <br>
-    followed by the crash with message <span
-    style="white-space: pre-wrap">"assertion timer != NULL failed".
-To my opinion, waiting for an answer from dead children is the reason of crashes.
-</span><span style="white-space: pre-wrap">
-</span>
-    <blockquote type="cite"
-      cite="mid:20240613155448.5m6zuv2idqbbpnf2@mozz.bu.edu">
-      <pre class="moz-quote-pre" wrap="">I'm happy that the fuzzer works again, and am happy to leave a review,
-but I would like to first understand what the behavior of
-qtest_probe_child here is, since it isn't really designed to work with
-the fuzzer.
-
-On 240523 1328, Dmitry Frolov wrote:
-</pre>
-      <blockquote type="cite">
-        <pre class="moz-quote-pre" wrap="">If QTestState was already CLOSED due to error, calling qtest_clock_step()
-afterwards makes no sense and only raises false-crash with message:
-"assertion timer != NULL failed".
-
-Signed-off-by: Dmitry Frolov <a class="moz-txt-link-rfc2396E" href="mailto:frolov@swemel.ru">&lt;frolov@swemel.ru&gt;</a>
----
- tests/qtest/fuzz/virtio_net_fuzz.c | 3 +++
- 1 file changed, 3 insertions(+)
-
-diff --git a/tests/qtest/fuzz/virtio_net_fuzz.c b/tests/qtest/fuzz/virtio_net_fuzz.c
-index e239875e3b..2f57a8ddd8 100644
---- a/tests/qtest/fuzz/virtio_net_fuzz.c
-+++ b/tests/qtest/fuzz/virtio_net_fuzz.c
-@@ -81,6 +81,9 @@ static void virtio_net_fuzz_multi(QTestState *s,
-         /* Run the main loop */
-         qtest_clock_step(s, 100);
-         flush_events(s);
-+        if (!qtest_probe_child(s)) {
-+            return;
-+        }
- 
-         /* Wait on used descriptors */
-         if (check_used &amp;&amp; !vqa.rx) {
--- 
-2.43.0
-
-</pre>
-      </blockquote>
-    </blockquote>
-    <br>
-  </body>
-</html>
-
---------------xrJ8DxpDnc0EUnjuWUElMLlc--
 
