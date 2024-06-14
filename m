@@ -1,50 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sI3RA-0001F9-Qc
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2024 05:41:36 -0400
+	id 1sI6Ta-0006iq-Fx
+	for mharc-qemu-trivial@gnu.org; Fri, 14 Jun 2024 08:56:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frolov@swemel.ru>)
- id 1sI3R8-0001EN-Ih; Fri, 14 Jun 2024 05:41:34 -0400
-Received: from mx.swemel.ru ([95.143.211.150])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <frolov@swemel.ru>)
- id 1sI3R6-00019l-1f; Fri, 14 Jun 2024 05:41:34 -0400
-Message-ID: <8e9e9e21-2d00-49f2-8563-aee494c5bbe5@swemel.ru>
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=swemel.ru; s=mail;
- t=1718358087;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3lCW7ZXf+t8QzQHdfXVaXQ1vxu7+8YHaWGGh0EYQP5Y=;
- b=Qo8herkT1LBZJwKAobmVUT/72ufoh1kJWPDY0bVEZXCK0iMHjRmSsiPHQ7pm03BSL9j7YP
- H/EEqPdbK2c20rhAYqjLdRfEdDQVo0sCwK0UuJQSQF6J4rwmOoCBf28+hzOO9wbmT0+og9
- 82rUhA87YRxIBsH7GS4AbPzFk4IrYjE=
-Date: Fri, 14 Jun 2024 12:41:27 +0300
+ (Exim 4.90_1) (envelope-from <trentmhuber@gmail.com>)
+ id 1sHzHE-0003uE-0m; Fri, 14 Jun 2024 01:15:04 -0400
+Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <trentmhuber@gmail.com>)
+ id 1sHzHC-0008OJ-Co; Fri, 14 Jun 2024 01:15:03 -0400
+Received: by mail-qv1-xf31.google.com with SMTP id
+ 6a1803df08f44-6b0871bd288so2635956d6.2; 
+ Thu, 13 Jun 2024 22:15:01 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1718342100; x=1718946900; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=7GTksfZRb2NSXlR1E0cPWHKFmqRx4/aAfvMPhoC8MME=;
+ b=j+hqaxfrcCRIUauXzn/0COvKt8jqBLZFPJk1xmQAQOzGCwoz5wuDaDkISDCNFnZGgj
+ UzM+83cPLhD0jAFUFsShfmuuNgiiCl++R5xPU6HFcO/Pkgaaqb7SPKYzc6gZhKzcpnvC
+ nedEnLhT5bm+NgFUP4EoP4DFVR76S+2J8Ci1007CAcRJcUaKCGnf0kLC+GZ23ov/Dl4B
+ NH7auCcUQrlZ9yYL9u+10mvbi9NiYaOxlRD3dGsDeuxnVsfhpWFeBaB1B4mBhGxwbodH
+ Z2CFA1thpoO/h8dWvbAW31FXJUh+Jpt+qA8aariqB14aq/9eUsjKyOy35i1snii0H2aQ
+ Wgjw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718342100; x=1718946900;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=7GTksfZRb2NSXlR1E0cPWHKFmqRx4/aAfvMPhoC8MME=;
+ b=S+LGjIpCHiJfv1zEaAdvMUSa9B/fo7kWT8WWrYXTGV6ZoihfgEjtEIUlBAfZTA4B9i
+ giD4pzyUnkCLpDsyHAvHbCzmvrNpuq/U44FqagB+XJupnAizFdAxopudWj1Qo6WV2oR8
+ LtvqmMcbuOBuuhZtBSe/oyG7LcB/y1Gv0YREM58NI6BNotht1ZFhWzDKL+kV3W3URNFW
+ 6Oh/1aRBNyolxqxl+z3nTulNkPSuGe93VFysm9I873O1x4Wo4J7TCOFBQz/lyXh9AF71
+ VyIiUBkyufbZqep9hqEA/FOmDOOxNB6cuhGN/4JvjJMDDQ3JkURdClq94Jyh4r0nVmWj
+ kSJw==
+X-Gm-Message-State: AOJu0YwnMEpxKHYfgr/olqrMvtIX5+U6QGBKoPOrDdXGZ0r9bwvp6UWR
+ 5Nr60QF/Bc4S3SuwzDQI95A1foEI445EMAAg5Oa6Tu+xHHOYARwiJ2pt8b2XpcY=
+X-Google-Smtp-Source: AGHT+IGcZDGWNahJgfpt3OZT3Ts7iQqObbRjGY1bDAyCAJvWbozfx8mvVJRPjappPKA0P6+9Maf8KA==
+X-Received: by 2002:a05:620a:8903:b0:795:59b1:526a with SMTP id
+ af79cd13be357-798d1f81d99mr180965085a.0.1718342100048; 
+ Thu, 13 Jun 2024 22:15:00 -0700 (PDT)
+Received: from localhost.localdomain
+ (pool-96-227-82-228.phlapa.fios.verizon.net. [96.227.82.228])
+ by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-798abe47c96sm113217485a.102.2024.06.13.22.14.59
+ (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+ Thu, 13 Jun 2024 22:14:59 -0700 (PDT)
+From: Trent Huber <trentmhuber@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com,
+ Trent Huber <trentmhuber@gmail.com>
+Subject: [PATCH] os-posix: Expand setrlimit() syscall compatibility
+Date: Fri, 14 Jun 2024 01:14:22 -0400
+Message-Id: <20240614051422.13532-1-trentmhuber@gmail.com>
+X-Mailer: git-send-email 2.24.3 (Apple Git-128)
 MIME-Version: 1.0
-Subject: Re: [PATCH] tests/qtest/fuzz/virtio_net_fuzz.c: fix
- virtio_net_fuzz_multi
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: alxndr@bu.edu, sdl.qemu@linuxtesting.org,
- QEMU Trivial <qemu-trivial@nongnu.org>, Jason Wang <jasowang@redhat.com>
-References: <20240523102813.396750-2-frolov@swemel.ru>
- <2982b9c8-1325-4ca7-9e91-b1a94178c9d9@redhat.com>
- <ee6ee73c-9714-40b2-9a0a-3f835bcf0c95@swemel.ru>
- <9d456ca1-0a63-483d-bfe1-1ff8ccfbe0a0@redhat.com>
-From: =?UTF-8?B?0JTQvNC40YLRgNC40Lkg0KTRgNC+0LvQvtCy?= <frolov@swemel.ru>
-In-Reply-To: <9d456ca1-0a63-483d-bfe1-1ff8ccfbe0a0@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=95.143.211.150; envelope-from=frolov@swemel.ru;
- helo=mx.swemel.ru
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f31;
+ envelope-from=trentmhuber@gmail.com; helo=mail-qv1-xf31.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 14 Jun 2024 08:56:17 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,57 +79,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Jun 2024 09:41:35 -0000
+X-List-Received-Date: Fri, 14 Jun 2024 05:15:04 -0000
 
-On 13.06.2024 19:50, Thomas Huth wrote:
-> On 13/06/2024 13.59, Дмитрий Фролов wrote:
->>
->>
->> On 13.06.2024 13:08, Thomas Huth wrote:
->>> On 23/05/2024 12.28, Dmitry Frolov wrote:
->>>> If QTestState was already CLOSED due to error, calling 
->>>> qtest_clock_step()
->>>> afterwards makes no sense and only raises false-crash with message:
->>>> "assertion timer != NULL failed".
->>>>
->>>> Signed-off-by: Dmitry Frolov <frolov@swemel.ru>
->>>> ---
->>>>   tests/qtest/fuzz/virtio_net_fuzz.c | 3 +++
->>>>   1 file changed, 3 insertions(+)
->>>>
->>>> diff --git a/tests/qtest/fuzz/virtio_net_fuzz.c 
->>>> b/tests/qtest/fuzz/virtio_net_fuzz.c
->>>> index e239875e3b..2f57a8ddd8 100644
->>>> --- a/tests/qtest/fuzz/virtio_net_fuzz.c
->>>> +++ b/tests/qtest/fuzz/virtio_net_fuzz.c
->>>> @@ -81,6 +81,9 @@ static void virtio_net_fuzz_multi(QTestState *s,
->>>>           /* Run the main loop */
->>>>           qtest_clock_step(s, 100);
->>>>           flush_events(s);
->>>> +        if (!qtest_probe_child(s)) {
->>>> +            return;
->>>> +        }
->>>
->>> According to your patch description, it rather sounds like the check 
->>> should be done before the qtest_clock_step() ? ... or where does the 
->>> QTestState get closed? During flush_events() ?
->> To my understanding, the main loop is executed during flush_events(), 
->> where an error may occur. This behavior is legit and should not 
->> produce any crash report.
->> Without the check, the test continues to wait on used descriptors, 
->> and finally fails with message: "assertion timer != NULL failed".
->> Thus, any invalid input data produces a meaningless crash report.
->
-> Ok, makes sense now, thanks!
->
-> There seems to be another while loop with a flush_events() call later 
-> in this file, does it maybe need the same treatment, too?
-With this fix, the number of crashes reduced significantly, but I guess, 
-you are right...
-If another similar crash will occur - I`ll make another patch.
-Many thanks!
-Dmitry
->  Thomas
->
+Darwin (I'm running version 19.6.0) uses a subtly different version
+of the setrlimit() syscall as described in the COMPATIBILITY section
+of the macOS man page. I adjusted the way the rlim_cur member is set
+to accommodate and which shouldn't affect any non-Darwin systems.
+
+Signed-off-by: Trent Huber <trentmhuber@gmail.com>
+---
+ os-posix.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/os-posix.c b/os-posix.c
+index a4284e2c07..5766346521 100644
+--- a/os-posix.c
++++ b/os-posix.c
+@@ -270,7 +270,7 @@ void os_setup_limits(void)
+         return;
+     }
+ 
+-    nofile.rlim_cur = nofile.rlim_max;
++    nofile.rlim_cur = OPEN_MAX < nofile.rlim_max ? OPEN_MAX : nofile.rlim_max;
+ 
+     if (setrlimit(RLIMIT_NOFILE, &nofile) < 0) {
+         warn_report("unable to set NOFILE limit: %s", strerror(errno));
+-- 
+2.24.3 (Apple Git-128)
 
 
