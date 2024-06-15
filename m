@@ -1,74 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sITSB-0008S8-90
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Jun 2024 09:28:23 -0400
+	id 1sIdFR-0001eS-J9
+	for mharc-qemu-trivial@gnu.org; Sat, 15 Jun 2024 19:55:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <martin.joerg@gmail.com>)
- id 1sIRpV-0006Gd-CG; Sat, 15 Jun 2024 07:44:21 -0400
-Received: from mail-io1-xd34.google.com ([2607:f8b0:4864:20::d34])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <martin.joerg@gmail.com>)
- id 1sIRpT-0000Ur-6Z; Sat, 15 Jun 2024 07:44:20 -0400
-Received: by mail-io1-xd34.google.com with SMTP id
- ca18e2360f4ac-7eb77b1d2fcso128163739f.0; 
- Sat, 15 Jun 2024 04:44:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1718451857; x=1719056657; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=0ux8Dm5lIBUr4VOu/ulNgfoar5Iom7WwzWnL/JaR/fY=;
- b=WKY+vLb4E5K41Db+9h4wVsQE36IdNLlP8kURlvbwp1SRN85ye0M65B3ztbJEHYSRP0
- +ItQ4O6E0a/dEYkteW68fnrdxH8+uD6bSjPQ7MGcUlDR+E0uEkvNIvCxJbTHa8jk4dD7
- KIMThmUV+GUU1+WJR5WlG8djUppoxjprAC9BjpxU0+6LCbvoTGg3q8bfPryLbsVgnTdR
- 2XXN6QWR8PdhybuLcuQg0hweIOcJpiRxrmpXqiNj43vkIJlJzuDsOpvhakLABc+qthi7
- Ee4huqUrybNFybfj6CLaTECkSYrAr65JOBKx52LBEGOt+ubNiwtnhC7ytnYDTlU+yL9L
- NuPw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718451857; x=1719056657;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=0ux8Dm5lIBUr4VOu/ulNgfoar5Iom7WwzWnL/JaR/fY=;
- b=bdVIz2kow2sp6bmWNv48keBk0Q4wEksjJSAmuaK0dCBexgP83pIsfCv2skMFOXpJO+
- Iej7KF+uPDzZFUfMvYC9f1LzqWeXJcWY61QsWaffNNGND/Mm+VBzf6hzMUrqZFAtdIRW
- wLG71LYV9EbqjPHOjSuXsVofkC2lBYNaNJS+F/oQPPkgU4lpZqgrVAB9pC8gpWj6BcEL
- 7dR8wLnOKdFOVueVWt2KtKrKtVbfyUVo1XdXsefc2BafjUshHVXdM9hisI+QXe/zRwDi
- ppTYFmpHLP2ZYiaJ10hfck8/8hmetvLTfQAv2i7jHvkTFGWCsd9YeQunH5DM791jI3fB
- /KDg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXo4uWHjecOHpbvX17WtmFCOYn5hYim3mrKwlu+v5wPGI83L/kS/8o0HZio72RRoHFpqZfeB+Nqm5tMAChFLIT54JmRZazv5A==
-X-Gm-Message-State: AOJu0Ywt1nMyyBdcCgaZY6ByUQEsE6C5crb7gf4uMJjhvDPRTtYxXWPM
- Gmc2Iu310EvOl2OPH4Dvaklh1vdb0A/0j5RX5LINsQAUFoHgIEqwno/3SaE2uW7gwg==
-X-Google-Smtp-Source: AGHT+IGwVuMq0sCZcYl4fEC99vqFdFsDxMSxSN1ub8iFD8j41hdU01eR3IPOU4ammf1f99OLVrEyvw==
-X-Received: by 2002:a05:6602:3426:b0:7eb:9864:410b with SMTP id
- ca18e2360f4ac-7ebeb4b4633mr568297439f.5.1718451856695; 
- Sat, 15 Jun 2024 04:44:16 -0700 (PDT)
-Received: from boondocks.. (18.205.134.34.bc.googleusercontent.com.
- [34.134.205.18]) by smtp.gmail.com with ESMTPSA id
- ca18e2360f4ac-7ebdbaf1edbsm128182339f.55.2024.06.15.04.44.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 15 Jun 2024 04:44:16 -0700 (PDT)
-From: Martin Joerg <martin.joerg@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: dave@treblig.org, qemu-trivial@nongnu.org,
- Martin Joerg <martin.joerg@gmail.com>
-Subject: [PATCH] hmp-commands-info.hx: Add missing info command for stats
+ (Exim 4.90_1) (envelope-from <dg@treblig.org>)
+ id 1sIdFM-0001au-75; Sat, 15 Jun 2024 19:55:48 -0400
+Received: from mx.treblig.org ([2a00:1098:5b::1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <dg@treblig.org>)
+ id 1sIdFK-0000aK-2x; Sat, 15 Jun 2024 19:55:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
+ ; s=bytemarkmx;
+ h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
+ :Subject; bh=q8pHLb4NS79pOg3qhGn+hXWfgBDpH6U6Cngkex8HSWU=; b=T89SOEdPYMukbcr6
+ E9R5KkBndFedJB6tuVK6kLwDx8JrwU7ph75bASyCau1l7KOpOL7DR4cAhBljlvaCcrpJCk7ZoVWQP
+ 3pirWQQ3uBYoj6sDf6XYufyEdZiPYn3LKgbGx4BhZisSsK8JlCatIzARu0A0QKamCUza2tVHTMOOv
+ heqgk9C6CWNi722EzFByfC/CtNrNJJebephaPfUI5VsH5uah0E9nDFI9EKukCclOsmUeEEi6HV/yA
+ wbJ2O5NoCXXjih652TX3xHl/lSS9QPPKeH4RYxut6+ZrZhI7Fb6qydhhD1XUT+3TFJX2E+oCbmDsc
+ ONdupFxIkjQju6yN6w==;
+Received: from dg by mx.treblig.org with local (Exim 4.96)
+ (envelope-from <dg@treblig.org>) id 1sIdFG-006RFN-0k;
+ Sat, 15 Jun 2024 23:55:42 +0000
+Date: Sat, 15 Jun 2024 23:55:42 +0000
+From: "Dr. David Alan Gilbert" <dave@treblig.org>
+To: Martin Joerg <martin.joerg@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] hmp-commands-info.hx: Add missing info command for stats
  subcommand
-Date: Sat, 15 Jun 2024 13:43:23 +0200
-Message-ID: <20240615114323.30550-1-martin.joerg@gmail.com>
+Message-ID: <Zm4p_kmbp8lh6rFF@gallifrey>
+References: <20240615114323.30550-1-martin.joerg@gmail.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::d34;
- envelope-from=martin.joerg@gmail.com; helo=mail-io1-xd34.google.com
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20240615114323.30550-1-martin.joerg@gmail.com>
+X-Chocolate: 70 percent or better cocoa solids preferably
+X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
+X-Uptime: 23:55:04 up 38 days, 11:09, 1 user, load average: 0.00, 0.00, 0.00
+User-Agent: Mutt/2.2.12 (2023-09-09)
+Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
+ helo=mx.treblig.org
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 15 Jun 2024 09:28:22 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -80,24 +57,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Jun 2024 11:44:22 -0000
+X-List-Received-Date: Sat, 15 Jun 2024 23:55:51 -0000
 
-Signed-off-by: Martin Joerg <martin.joerg@gmail.com>
----
- hmp-commands-info.hx | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+* Martin Joerg (martin.joerg@gmail.com) wrote:
+> Signed-off-by: Martin Joerg <martin.joerg@gmail.com>
 
-diff --git a/hmp-commands-info.hx b/hmp-commands-info.hx
-index 20a9835ea8..f5639af517 100644
---- a/hmp-commands-info.hx
-+++ b/hmp-commands-info.hx
-@@ -892,7 +892,7 @@ ERST
-     },
- 
- SRST
--  ``stats``
-+  ``info stats``
-     Show runtime-collected statistics
- ERST
- 
+Thanks!
+(Trivial please take that).
+
+Reviewed-by: Dr. David Alan Gilbert <dave@treblig.org>
+
+> ---
+>  hmp-commands-info.hx | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hmp-commands-info.hx b/hmp-commands-info.hx
+> index 20a9835ea8..f5639af517 100644
+> --- a/hmp-commands-info.hx
+> +++ b/hmp-commands-info.hx
+> @@ -892,7 +892,7 @@ ERST
+>      },
+>  
+>  SRST
+> -  ``stats``
+> +  ``info stats``
+>      Show runtime-collected statistics
+>  ERST
+>  
+-- 
+ -----Open up your eyes, open up your mind, open up your code -------   
+/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
+\        dave @ treblig.org |                               | In Hex /
+ \ _________________________|_____ http://www.treblig.org   |_______/
 
