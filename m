@@ -1,50 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sIdFR-0001eS-J9
-	for mharc-qemu-trivial@gnu.org; Sat, 15 Jun 2024 19:55:53 -0400
+	id 1sJ6eI-0001w0-BO
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2024 03:19:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1sIdFM-0001au-75; Sat, 15 Jun 2024 19:55:48 -0400
-Received: from mx.treblig.org ([2a00:1098:5b::1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1sIdFK-0000aK-2x; Sat, 15 Jun 2024 19:55:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
- ; s=bytemarkmx;
- h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
- :Subject; bh=q8pHLb4NS79pOg3qhGn+hXWfgBDpH6U6Cngkex8HSWU=; b=T89SOEdPYMukbcr6
- E9R5KkBndFedJB6tuVK6kLwDx8JrwU7ph75bASyCau1l7KOpOL7DR4cAhBljlvaCcrpJCk7ZoVWQP
- 3pirWQQ3uBYoj6sDf6XYufyEdZiPYn3LKgbGx4BhZisSsK8JlCatIzARu0A0QKamCUza2tVHTMOOv
- heqgk9C6CWNi722EzFByfC/CtNrNJJebephaPfUI5VsH5uah0E9nDFI9EKukCclOsmUeEEi6HV/yA
- wbJ2O5NoCXXjih652TX3xHl/lSS9QPPKeH4RYxut6+ZrZhI7Fb6qydhhD1XUT+3TFJX2E+oCbmDsc
- ONdupFxIkjQju6yN6w==;
-Received: from dg by mx.treblig.org with local (Exim 4.96)
- (envelope-from <dg@treblig.org>) id 1sIdFG-006RFN-0k;
- Sat, 15 Jun 2024 23:55:42 +0000
-Date: Sat, 15 Jun 2024 23:55:42 +0000
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: Martin Joerg <martin.joerg@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hmp-commands-info.hx: Add missing info command for stats
- subcommand
-Message-ID: <Zm4p_kmbp8lh6rFF@gallifrey>
-References: <20240615114323.30550-1-martin.joerg@gmail.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sJ6eB-0001uh-8d
+ for qemu-trivial@nongnu.org; Mon, 17 Jun 2024 03:19:25 -0400
+Received: from mail-wr1-x432.google.com ([2a00:1450:4864:20::432])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sJ6e9-0003YX-Mo
+ for qemu-trivial@nongnu.org; Mon, 17 Jun 2024 03:19:23 -0400
+Received: by mail-wr1-x432.google.com with SMTP id
+ ffacd0b85a97d-35f1cb7a40fso3415559f8f.0
+ for <qemu-trivial@nongnu.org>; Mon, 17 Jun 2024 00:19:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1718608760; x=1719213560; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Tosoy+FeKPaOtHAoln09Q9INtZ+aN/UG3uTnYhXu0jU=;
+ b=VCd/Liynhd5wUi2y4JCFzExdRMhYo3T++yUHcSbkP4bdnWMh7ro1eABIcEnuCeil73
+ az2vCyLIoKKxyfKlCzMUw4EJfIEFG/R75GpaRaJEzebsTdmAVV+uDm4W0j6W2M5YlGTL
+ iSF2K3s6nSpUAFpLZAG0GQMRld/ez80bsUZi8gFQgrAuNuGe3whqapyZIcvZD+n3loy0
+ QM+RIMl8Q0040hQCerEJAmCzb/3RDH2edf/cA5OCNG8s576FuXHbcfOHL4fw2QxJYZzu
+ nqA6JodrCT5omaNokJIfnYU243nYZqtvDcQWm4fKzDbLDkcWWJcWCeWBP+ut2ci7ebXT
+ +CBg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1718608760; x=1719213560;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Tosoy+FeKPaOtHAoln09Q9INtZ+aN/UG3uTnYhXu0jU=;
+ b=jFGc2hMoWcGg1speO+t4CAe9u+oNX60i+v0Y2emFOmjTcUjBgqrFrYMLy1kp+/XRke
+ Fo6lrHTkr5r64O4XDV36tvkk3OymobQ9GESrJhTU97pgjcxe43YzrMiAItcTK9N4C0dl
+ B2PK/abPx/p0UlQiG23eJe0wJStHFDsdTBwXKAl6y5qCseQNx7I8Q9LC+CuYIXEOpBE4
+ jQoOErfHpRfqYp4LbmvC7ULqHSaeYZWWzt2zJtolx4fyP9xKNAKY3PjEQFJovVZgPBfd
+ 48dQylTrNkbNB2Cu5zuR0PGjgPB7YpHmG7hA0zRJIQbPjnB9JB8K8lB1yELxFxHddZz1
+ EsqQ==
+X-Gm-Message-State: AOJu0YyH0AUTnKd9mcTWZ8V9HY7GfQEBehT9yzRqkAiqSI0LyyVTCJp4
+ lt6WGrmK95hCeap5CIywzAlf6lg2PPvehNx+uz2lsDyuh1i0eHeZeLlrggFrSs3y7wkX0YWw2rQ
+ Vcpg=
+X-Google-Smtp-Source: AGHT+IFIjLMEFpt8qU81fHsFnDEVi+p7kBPZkTO1Gn3MsRQKg+w7TvTOTb/+cBvbzcyxQiAmnNMShA==
+X-Received: by 2002:a05:6000:1f8a:b0:360:9b83:2970 with SMTP id
+ ffacd0b85a97d-3609b832b26mr413610f8f.68.1718608759920; 
+ Mon, 17 Jun 2024 00:19:19 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.169.90])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-360750f2489sm11181335f8f.69.2024.06.17.00.19.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 17 Jun 2024 00:19:19 -0700 (PDT)
+Message-ID: <b9ed9c39-349d-4397-9b05-d7faa5b95fa2@linaro.org>
+Date: Mon, 17 Jun 2024 09:19:17 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20240615114323.30550-1-martin.joerg@gmail.com>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
-X-Uptime: 23:55:04 up 38 days, 11:09, 1 user, load average: 0.00, 0.00, 0.00
-User-Agent: Mutt/2.2.12 (2023-09-09)
-Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
- helo=mx.treblig.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] os-posix: Expand setrlimit() syscall compatibility
+To: Trent Huber <trentmhuber@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
+References: <20240614210638.5959-1-trentmhuber@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240614210638.5959-1-trentmhuber@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::432;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x432.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -57,36 +82,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 15 Jun 2024 23:55:51 -0000
+X-List-Received-Date: Mon, 17 Jun 2024 07:19:28 -0000
 
-* Martin Joerg (martin.joerg@gmail.com) wrote:
-> Signed-off-by: Martin Joerg <martin.joerg@gmail.com>
+Hi Trent,
 
-Thanks!
-(Trivial please take that).
-
-Reviewed-by: Dr. David Alan Gilbert <dave@treblig.org>
-
-> ---
->  hmp-commands-info.hx | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On 14/6/24 23:06, Trent Huber wrote:
+> Darwin uses a subtly different version of the setrlimit() syscall as
+> described in the COMPATIBILITY section of the macOS man page. The value
+> of the rlim_cur member has been adjusted accordingly for Darwin-based
+> systems.
 > 
-> diff --git a/hmp-commands-info.hx b/hmp-commands-info.hx
-> index 20a9835ea8..f5639af517 100644
-> --- a/hmp-commands-info.hx
-> +++ b/hmp-commands-info.hx
-> @@ -892,7 +892,7 @@ ERST
->      },
->  
->  SRST
-> -  ``stats``
-> +  ``info stats``
->      Show runtime-collected statistics
->  ERST
->  
--- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+> Signed-off-by: Trent Huber <trentmhuber@gmail.com>
+> ---
+> The previous version assumed OPEN_MAX was a constant defined on all
+> POSIX systems--turns out it's only a macOS constant. This version adds
+> preprocessing conditionals to maintain compatibility with Linux.
+> 
+>   os-posix.c | 4 ++++
+>   1 file changed, 4 insertions(+)
+> 
+> diff --git a/os-posix.c b/os-posix.c
+> index a4284e2c07..43f9a43f3f 100644
+> --- a/os-posix.c
+> +++ b/os-posix.c
+> @@ -270,7 +270,11 @@ void os_setup_limits(void)
+>           return;
+>       }
+>   
+> +#ifdef CONFIG_DARWIN
+> +    nofile.rlim_cur = OPEN_MAX < nofile.rlim_max ? OPEN_MAX : nofile.rlim_max;
+
+Why open-code min()? (The man-page also suggests it).
+
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
+> +#else
+>       nofile.rlim_cur = nofile.rlim_max;
+> +#endif
+>   
+>       if (setrlimit(RLIMIT_NOFILE, &nofile) < 0) {
+>           warn_report("unable to set NOFILE limit: %s", strerror(errno));
+
 
