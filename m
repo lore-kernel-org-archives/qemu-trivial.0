@@ -1,31 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sJBsn-0003gc-J4
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2024 08:54:50 -0400
+	id 1sJBxL-00083D-OY
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2024 08:59:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sJBsg-0003dF-Tn; Mon, 17 Jun 2024 08:54:42 -0400
+ id 1sJBxK-00081Y-9a; Mon, 17 Jun 2024 08:59:30 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sJBsf-0002c6-6s; Mon, 17 Jun 2024 08:54:42 -0400
+ id 1sJBxG-0003Vo-Sb; Mon, 17 Jun 2024 08:59:30 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 48D0F70FAA;
- Mon, 17 Jun 2024 15:55:52 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 3196A70FB1;
+ Mon, 17 Jun 2024 16:00:34 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 900A3EABD1;
- Mon, 17 Jun 2024 15:54:39 +0300 (MSK)
-Message-ID: <b43e7447-38e1-4ce6-965d-0c3ef95704f9@tls.msk.ru>
-Date: Mon, 17 Jun 2024 15:54:39 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 74EFBEABE3;
+ Mon, 17 Jun 2024 15:59:21 +0300 (MSK)
+Message-ID: <e928571e-0420-4c10-ba9e-aade4cfd3c7c@tls.msk.ru>
+Date: Mon, 17 Jun 2024 15:59:21 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] monitor: Remove obsolete stubs
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: "Dr . David Alan Gilbert" <dave@treblig.org>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240610063924.51154-1-philmd@linaro.org>
+Subject: Re: [PATCH 0/7] Remove some unused structures
+To: "Dr. David Alan Gilbert" <dave@treblig.org>, peter.maydell@linaro.org,
+ laurent@vivier.eu, qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org
+References: <20240505171444.333302-1-dave@treblig.org>
+ <ZmMTPvLUaB4tGvbk@gallifrey>
 Content-Language: en-US, ru-RU
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
@@ -52,7 +51,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240610063924.51154-1-philmd@linaro.org>
+In-Reply-To: <ZmMTPvLUaB4tGvbk@gallifrey>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -75,20 +74,27 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Jun 2024 12:54:44 -0000
+X-List-Received-Date: Mon, 17 Jun 2024 12:59:30 -0000
 
-10.06.2024 09:39, Philippe Mathieu-Daudé wrote:
-> hmp_info_roms() was removed in commit dd98234c05 ("qapi:
-> introduce x-query-roms QMP command"),
+07.06.2024 17:04, Dr. David Alan Gilbert пишет:
+> * Dr. David Alan Gilbert (dave@treblig.org) wrote:
+>> A bunch of structs that are currently unused,
+>> found with a simple script and a bit of eyeballing.
+>>
+>> The only one I'm that suspicious of is the SPARC
+>> one, where the patch which removed the use is a bit
+>> confusing to me.
 > 
-> hmp_info_numa() in commit 1b8ae799d8 ("qapi: introduce
-> x-query-numa QMP command"),
+> Copying in Trivial; I think there are 4 of these that
+> are still outstanding:
 > 
-> hmp_info_ramblock() in commit ca411b7c8a ("qapi: introduce
-> x-query-ramblock QMP command")
+>     [PATCH 1/7] linux-user: cris: Remove unused struct 'rt_signal_frame'
+>        (Although cris is going)
+>     [PATCH 3/7] linux-user: sparc: Remove unused struct 'target_mc_fq'
+>     [PATCH 5/7] hw/arm/bcm2836: Remove unusued struct 'BCM283XClass'
+>     [PATCH 7/7] net/can: Remove unused struct 'CanBusState'
 > 
-> and hmp_info_irq() in commit 91f2fa7045 ("qapi: introduce
-> x-query-irq QMP command").
+> Can Trivial pick these up please?
 
 Applied to qemu-trivial, thanks!
 
