@@ -1,30 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sJBxL-00083D-OY
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2024 08:59:31 -0400
+	id 1sJC5X-0003Wc-Ii
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2024 09:07:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sJBxK-00081Y-9a; Mon, 17 Jun 2024 08:59:30 -0400
+ id 1sJC5W-0003WA-3g; Mon, 17 Jun 2024 09:07:58 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sJBxG-0003Vo-Sb; Mon, 17 Jun 2024 08:59:30 -0400
+ id 1sJC5T-0005VQ-I7; Mon, 17 Jun 2024 09:07:57 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 3196A70FB1;
- Mon, 17 Jun 2024 16:00:34 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id D490370FBC;
+ Mon, 17 Jun 2024 16:09:04 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 74EFBEABE3;
- Mon, 17 Jun 2024 15:59:21 +0300 (MSK)
-Message-ID: <e928571e-0420-4c10-ba9e-aade4cfd3c7c@tls.msk.ru>
-Date: Mon, 17 Jun 2024 15:59:21 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 22162EAC42;
+ Mon, 17 Jun 2024 16:07:52 +0300 (MSK)
+Message-ID: <781afc0a-6ae1-4122-8a2d-8ca77191983f@tls.msk.ru>
+Date: Mon, 17 Jun 2024 16:07:52 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/7] Remove some unused structures
-To: "Dr. David Alan Gilbert" <dave@treblig.org>, peter.maydell@linaro.org,
- laurent@vivier.eu, qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org
-References: <20240505171444.333302-1-dave@treblig.org>
- <ZmMTPvLUaB4tGvbk@gallifrey>
+Subject: Re: [PATCH v2] os-posix: Expand setrlimit() syscall compatibility
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Trent Huber <trentmhuber@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, pbonzini@redhat.com
+References: <20240614210638.5959-1-trentmhuber@gmail.com>
+ <b9ed9c39-349d-4397-9b05-d7faa5b95fa2@linaro.org>
 Content-Language: en-US, ru-RU
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
@@ -51,7 +51,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <ZmMTPvLUaB4tGvbk@gallifrey>
+In-Reply-To: <b9ed9c39-349d-4397-9b05-d7faa5b95fa2@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -74,29 +74,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Jun 2024 12:59:30 -0000
+X-List-Received-Date: Mon, 17 Jun 2024 13:07:58 -0000
 
-07.06.2024 17:04, Dr. David Alan Gilbert пишет:
-> * Dr. David Alan Gilbert (dave@treblig.org) wrote:
->> A bunch of structs that are currently unused,
->> found with a simple script and a bit of eyeballing.
+17.06.2024 10:19, Philippe Mathieu-Daudé wrote:
+> Hi Trent,
+> 
+> On 14/6/24 23:06, Trent Huber wrote:
+>> Darwin uses a subtly different version of the setrlimit() syscall as
+>> described in the COMPATIBILITY section of the macOS man page. The value
+>> of the rlim_cur member has been adjusted accordingly for Darwin-based
+>> systems.
 >>
->> The only one I'm that suspicious of is the SPARC
->> one, where the patch which removed the use is a bit
->> confusing to me.
+>> Signed-off-by: Trent Huber <trentmhuber@gmail.com>
+>> ---
+>> The previous version assumed OPEN_MAX was a constant defined on all
+>> POSIX systems--turns out it's only a macOS constant. This version adds
+>> preprocessing conditionals to maintain compatibility with Linux.
+>>
+>>   os-posix.c | 4 ++++
+>>   1 file changed, 4 insertions(+)
+>>
+>> diff --git a/os-posix.c b/os-posix.c
+>> index a4284e2c07..43f9a43f3f 100644
+>> --- a/os-posix.c
+>> +++ b/os-posix.c
+>> @@ -270,7 +270,11 @@ void os_setup_limits(void)
+>>           return;
+>>       }
+>> +#ifdef CONFIG_DARWIN
+>> +    nofile.rlim_cur = OPEN_MAX < nofile.rlim_max ? OPEN_MAX : nofile.rlim_max;
 > 
-> Copying in Trivial; I think there are 4 of these that
-> are still outstanding:
-> 
->     [PATCH 1/7] linux-user: cris: Remove unused struct 'rt_signal_frame'
->        (Although cris is going)
->     [PATCH 3/7] linux-user: sparc: Remove unused struct 'target_mc_fq'
->     [PATCH 5/7] hw/arm/bcm2836: Remove unusued struct 'BCM283XClass'
->     [PATCH 7/7] net/can: Remove unused struct 'CanBusState'
-> 
-> Can Trivial pick these up please?
+> Why open-code min()? (The man-page also suggests it).
 
-Applied to qemu-trivial, thanks!
+I guess it's because stddef.h isn't included there, so min() isn't immediately
+available :)
+
+Applied to trivial-patches,
 
 /mjt
 
