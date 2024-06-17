@@ -1,30 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sJBlr-0007a6-NV
-	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2024 08:47:39 -0400
+	id 1sJBm6-0007cL-TE
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Jun 2024 08:47:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sJBlq-0007Zd-5H; Mon, 17 Jun 2024 08:47:38 -0400
+ id 1sJBm5-0007c1-Rr; Mon, 17 Jun 2024 08:47:53 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sJBli-0001UP-7r; Mon, 17 Jun 2024 08:47:37 -0400
+ id 1sJBm3-0001bH-Lc; Mon, 17 Jun 2024 08:47:53 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 1923370F8F;
- Mon, 17 Jun 2024 15:48:29 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id A671A70F91;
+ Mon, 17 Jun 2024 15:49:02 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 60333EAB8F;
- Mon, 17 Jun 2024 15:47:16 +0300 (MSK)
-Message-ID: <8c8a8022-3599-44b5-8597-f69773e958e3@tls.msk.ru>
-Date: Mon, 17 Jun 2024 15:47:16 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 000FFEAB90;
+ Mon, 17 Jun 2024 15:47:49 +0300 (MSK)
+Message-ID: <c4a7aaf7-3524-4d53-bce8-4d4fdd6360ed@tls.msk.ru>
+Date: Mon, 17 Jun 2024 15:47:49 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH V3 0/2] improve -overcommit cpu-pm=on|off
-To: Zide Chen <zide.chen@intel.com>, qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, mst@redhat.com, thuth@redhat.com, cfontana@suse.de,
- xiaoyao.li@intel.com, qemu-trivial@nongnu.org, seanjc@google.com,
- zhao1.liu@intel.com
-References: <20240604000222.75065-1-zide.chen@intel.com>
+Subject: Re: [PATCH] hmp-commands-info.hx: Add missing info command for stats
+ subcommand
+To: Martin Joerg <martin.joerg@gmail.com>, qemu-devel@nongnu.org
+Cc: dave@treblig.org, qemu-trivial@nongnu.org
+References: <20240615114323.30550-1-martin.joerg@gmail.com>
 Content-Language: en-US, ru-RU
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
@@ -51,7 +50,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240604000222.75065-1-zide.chen@intel.com>
+In-Reply-To: <20240615114323.30550-1-martin.joerg@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -74,16 +73,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 17 Jun 2024 12:47:38 -0000
-
-04.06.2024 03:02, Zide Chen wrote:
-> Currently, if running "-overcommit cpu-pm=on" on hosts that don't
-> have MWAIT support, the MWAIT/MONITOR feature is advertised to the
-> guest and executing MWAIT/MONITOR on the guest triggers #UD.
-> 
-> Typically #UD takes priority over VM-Exit interception checks and
-> KVM doesn't emulate MONITOR/MWAIT. This causes the guest fail to
-> boot.
+X-List-Received-Date: Mon, 17 Jun 2024 12:47:54 -0000
 
 Applied to trivial-patches, thanks!
 
