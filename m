@@ -1,136 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sJoO3-0003oH-5z
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Jun 2024 02:01:39 -0400
+	id 1sJvI7-0001Pz-DP
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Jun 2024 09:23:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sJoNx-0003mj-2S
- for qemu-trivial@nongnu.org; Wed, 19 Jun 2024 02:01:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sJoNv-0003lC-CX
- for qemu-trivial@nongnu.org; Wed, 19 Jun 2024 02:01:32 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718776890;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=0Y0GtWcMX2y0zaI4VvqROSIOoPgBAf0RqtH/WOxhJiM=;
- b=VQC0qmL7nFLLy7lxZlPIcilOmmxLHCSOT97Y7rJsvgz8o2jz3qWfHATUT7C73kOB/gX/k6
- UStu1vflrHT1ciugOsmfpPjFqXs3U9u9kSBZNz6kcN+52WfifQ3jfeuAoag7sBgJ0gA6dp
- tLg2C635SWkige2q/mFqs4nq+9GzmVk=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-197-felm9MNoOFOX3rbqD7mjiQ-1; Wed, 19 Jun 2024 02:01:25 -0400
-X-MC-Unique: felm9MNoOFOX3rbqD7mjiQ-1
-Received: by mail-qv1-f69.google.com with SMTP id
- 6a1803df08f44-6b5093b20d9so1698316d6.2
- for <qemu-trivial@nongnu.org>; Tue, 18 Jun 2024 23:01:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <hyeongtak.ji@gmail.com>)
+ id 1sJnLn-0004I3-Fy; Wed, 19 Jun 2024 00:55:15 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <hyeongtak.ji@gmail.com>)
+ id 1sJnLk-00017t-WD; Wed, 19 Jun 2024 00:55:15 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-2c508ea0cc5so2603097a91.1; 
+ Tue, 18 Jun 2024 21:55:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1718772906; x=1719377706; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=nuygwi5nDptBAvHytYIXBemQzADxFZ/rpm2zueIZ1BA=;
+ b=HqzUzC/CZRfOqnoCzlJ7tuuAtBnYHD4Y2T73ZaFXos93B6JXfSTtqZL7GLrJDip5jM
+ HqiFMWCUaLrD3KDMF3WzvYLNCRvjznmwMCkkHr+G6y9SqclTALFg+B/6jhPEhm39fI+G
+ kkFLHrXR0+DhvDa7AjoT3mcOPlYAc/wnwcWIcxjstPBd6WhztefWCJHpxHMIQXa26fbr
+ B+FNYAUX9ck7+3sJGi5aSqEwDeoicKDwGDj3q6r07+kmxGn8IXW4Np3Dc5lQtXH/7JJi
+ BaPB0M63yOHPFZeXDi4JbTo31ZcexTLbYiSIkiqMOCEnjYlK6gcEVY2hRQPtYleSFD68
+ x9iQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718776885; x=1719381685;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1718772906; x=1719377706;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=0Y0GtWcMX2y0zaI4VvqROSIOoPgBAf0RqtH/WOxhJiM=;
- b=FsX73yAbrk3vLm80rJ83fW2B0A2Ng+iWK6U3q5JL/2smc/ifLwapAuXXGhf8yR7nCj
- Io7zba2fY2TlPBLxRsY3Ig7Cln+jUWDAMr/KD4xptEQuazB47bMR9V5BsTjFbrHyq19N
- VYpxbsPvG7ViYBJL1bScu3Le5Guj1kY83kmZCksqi2F8RcmdDTi0ExctnJKBt4FFM6Qf
- kNg+nhdNr9BeEVo9eI1jEtIpxyMOA4yzWJe3Ods3uleyyERM/MpxPrIadzG6zgI9V8zj
- S0pR1DydNV1sciO10MMZBkam+byI82hh7U5dj3F201Vc6tuhmqL1aNsY6NSk06C2qwQW
- Ipgg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXOXfgP3gYEoRPRhE/NbzrZ0eMcNmSXa4L4+Up9L1JZCJKkdSjZjUj/iWAA5ePBdanxW9ymqctE5VPdcKpFW/746KiJpyhipQ==
-X-Gm-Message-State: AOJu0YwWqqDVc5BAMNW+oRwcnNS+G468AXUeQ0ezJNJY3EF31RVwM7Ux
- B/AAB12Y/qu0XZDOtFhiMYM1AC4qFH1xyCg+S9nIsTGFEj+C4ZLF1t5+qBncy6GdrW/fR5Mbb+z
- DvJf5c4k5Yo8EOp/QZITb+0Xcv54L1roDGmNboLH3gcnsoEbKdIicGW8=
-X-Received: by 2002:a0c:e0c3:0:b0:6b4:fe1a:eeee with SMTP id
- 6a1803df08f44-6b501e9f637mr19468296d6.46.1718776884887; 
- Tue, 18 Jun 2024 23:01:24 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHOlQPtOt/WDLisxVRRXxxBkAti9S9bN87HfHM0ed0j5B1K960SeuORXaGfkqnNFcbzBoh5bA==
-X-Received: by 2002:a0c:e0c3:0:b0:6b4:fe1a:eeee with SMTP id
- 6a1803df08f44-6b501e9f637mr19468126d6.46.1718776884528; 
- Tue, 18 Jun 2024 23:01:24 -0700 (PDT)
-Received: from [192.168.0.4] (ip-109-43-178-117.web.vodafone.de.
- [109.43.178.117]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6b506e7525esm2400526d6.108.2024.06.18.23.01.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Jun 2024 23:01:24 -0700 (PDT)
-Message-ID: <431324a5-d455-464c-a4cb-1b2fc457b31b@redhat.com>
-Date: Wed, 19 Jun 2024 08:01:20 +0200
+ bh=nuygwi5nDptBAvHytYIXBemQzADxFZ/rpm2zueIZ1BA=;
+ b=plMyiqDuy9qJrmEd8xDCtUaey+Dq5BdP9hE2Ws2Ygd5yVqhiohI0TsWmVerov3iR2Q
+ CHkdLGkBj33kiYWyPt/mhMpFfYTo8TX09lYVlE3M9wSNXG5IBonF7eM6nqz41M9Gz963
+ tDIL8MoLUbNCFlx7iCV4FV15c32M679JV7EYYGpUaQRCCcaT7Rz1jQJpzM1p648QGngR
+ Q3JmGqz3pdln0CwM+w5apX6oK+sN2oboIZrQYHTysJDVKAiERWGK4tjz8tf+smAUO89q
+ iRA6J+afgfrSqt0wTu249n+kT+Two2abRfQawodZzV0SO58pQtKmjzNORVxr/MY425TU
+ kWag==
+X-Gm-Message-State: AOJu0Yz9V687QxDN5XboCR9gZvYWGkINM/H8d2+I7IK/uXg/DoYKXyJr
+ L3c5ourunczN9Taks9atZ/CJ8pqHLOabBWlwOH0D0tn0fBzgfdonbagc8Ps3
+X-Google-Smtp-Source: AGHT+IHNpI6Rt7/Qr9WIsIg/Y6Jua08sDhXkKvdwhhz+jejSTYCPL+VGCLuxADr35vfqh0Yn7QETnw==
+X-Received: by 2002:a17:90a:fc83:b0:2bf:c6fb:ec34 with SMTP id
+ 98e67ed59e1d1-2c7b5af2f11mr1605552a91.8.1718772906015; 
+ Tue, 18 Jun 2024 21:55:06 -0700 (PDT)
+Received: from hyeongtakPC.. ([147.46.174.104])
+ by smtp.googlemail.com with ESMTPSA id
+ 98e67ed59e1d1-2c738c1b741sm1927021a91.1.2024.06.18.21.55.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 18 Jun 2024 21:55:05 -0700 (PDT)
+From: Hyeongtak Ji <hyeongtak.ji@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Hyeongtak Ji <hyeongtak.ji@gmail.com>
+Subject: [PATCH] docs/cxl: fix some typos
+Date: Wed, 19 Jun 2024 13:54:59 +0900
+Message-Id: <20240619045459.305997-1-hyeongtak.ji@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/2] target/ppc/arch_dump: set prstatus pid to cpuid
-To: Omar Sandoval <osandov@osandov.com>, qemu-devel@nongnu.org
-Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Nicholas Piggin <npiggin@gmail.com>,
- Daniel Henrique Barboza <danielhb413@gmail.com>,
- linux-debuggers@vger.kernel.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <cover.1718771802.git.osandov@osandov.com>
- <ac09da04c8e6dd777945219815d1c53b02291b5b.1718771802.git.osandov@osandov.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <ac09da04c8e6dd777945219815d1c53b02291b5b.1718771802.git.osandov@osandov.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=hyeongtak.ji@gmail.com; helo=mail-pj1-x102c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.148,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 19 Jun 2024 09:23:57 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -142,107 +78,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Jun 2024 06:01:35 -0000
+X-List-Received-Date: Wed, 19 Jun 2024 04:55:16 -0000
 
-On 19/06/2024 07.00, Omar Sandoval wrote:
-> Every other architecture does this, and debuggers need it to be able to
-> identify which prstatus note corresponds to which CPU.
-> 
-> Signed-off-by: Omar Sandoval <osandov@osandov.com>
-> ---
->   target/ppc/arch_dump.c | 21 ++++++++++++---------
->   1 file changed, 12 insertions(+), 9 deletions(-)
-> 
-> diff --git a/target/ppc/arch_dump.c b/target/ppc/arch_dump.c
-> index a8315659d9..78b4205319 100644
-> --- a/target/ppc/arch_dump.c
-> +++ b/target/ppc/arch_dump.c
-> @@ -47,9 +47,11 @@ struct PPCUserRegStruct {
->   } QEMU_PACKED;
->   
->   struct PPCElfPrstatus {
-> -    char pad1[112];
-> +    char pad1[32];
-> +    uint32_t pid;
-> +    uint8_t pad2[76];
->       struct PPCUserRegStruct pr_reg;
-> -    char pad2[40];
-> +    char pad3[40];
->   } QEMU_PACKED;
->   
->   
-> @@ -96,7 +98,7 @@ typedef struct NoteFuncArg {
->       DumpState *state;
->   } NoteFuncArg;
->   
-> -static void ppc_write_elf_prstatus(NoteFuncArg *arg, PowerPCCPU *cpu)
-> +static void ppc_write_elf_prstatus(NoteFuncArg *arg, PowerPCCPU *cpu, int id)
->   {
->       int i;
->       reg_t cr;
-> @@ -109,6 +111,7 @@ static void ppc_write_elf_prstatus(NoteFuncArg *arg, PowerPCCPU *cpu)
->   
->       prstatus = &note->contents.prstatus;
->       memset(prstatus, 0, sizeof(*prstatus));
-> +    prstatus->pid = cpu_to_dump32(s, id);
->       reg = &prstatus->pr_reg;
->   
->       for (i = 0; i < 32; i++) {
-> @@ -127,7 +130,7 @@ static void ppc_write_elf_prstatus(NoteFuncArg *arg, PowerPCCPU *cpu)
->       reg->ccr = cpu_to_dump_reg(s, cr);
->   }
->   
-> -static void ppc_write_elf_fpregset(NoteFuncArg *arg, PowerPCCPU *cpu)
-> +static void ppc_write_elf_fpregset(NoteFuncArg *arg, PowerPCCPU *cpu, int id)
->   {
->       int i;
->       struct PPCElfFpregset  *fpregset;
-> @@ -146,7 +149,7 @@ static void ppc_write_elf_fpregset(NoteFuncArg *arg, PowerPCCPU *cpu)
->       fpregset->fpscr = cpu_to_dump_reg(s, cpu->env.fpscr);
->   }
->   
-> -static void ppc_write_elf_vmxregset(NoteFuncArg *arg, PowerPCCPU *cpu)
-> +static void ppc_write_elf_vmxregset(NoteFuncArg *arg, PowerPCCPU *cpu, int id)
->   {
->       int i;
->       struct PPCElfVmxregset *vmxregset;
-> @@ -178,7 +181,7 @@ static void ppc_write_elf_vmxregset(NoteFuncArg *arg, PowerPCCPU *cpu)
->       vmxregset->vscr.u32[3] = cpu_to_dump32(s, ppc_get_vscr(&cpu->env));
->   }
->   
-> -static void ppc_write_elf_vsxregset(NoteFuncArg *arg, PowerPCCPU *cpu)
-> +static void ppc_write_elf_vsxregset(NoteFuncArg *arg, PowerPCCPU *cpu, int id)
->   {
->       int i;
->       struct PPCElfVsxregset *vsxregset;
-> @@ -195,7 +198,7 @@ static void ppc_write_elf_vsxregset(NoteFuncArg *arg, PowerPCCPU *cpu)
->       }
->   }
->   
-> -static void ppc_write_elf_speregset(NoteFuncArg *arg, PowerPCCPU *cpu)
-> +static void ppc_write_elf_speregset(NoteFuncArg *arg, PowerPCCPU *cpu, int id)
->   {
->       struct PPCElfSperegset *speregset;
->       Note *note = &arg->note;
-> @@ -211,7 +214,7 @@ static void ppc_write_elf_speregset(NoteFuncArg *arg, PowerPCCPU *cpu)
->   
->   static const struct NoteFuncDescStruct {
->       int contents_size;
-> -    void (*note_contents_func)(NoteFuncArg *arg, PowerPCCPU *cpu);
-> +    void (*note_contents_func)(NoteFuncArg *arg, PowerPCCPU *cpu, int id);
->   } note_func[] = {
->       {sizeof_field(Note, contents.prstatus),  ppc_write_elf_prstatus},
->       {sizeof_field(Note, contents.fpregset),  ppc_write_elf_fpregset},
-> @@ -282,7 +285,7 @@ static int ppc_write_all_elf_notes(const char *note_name,
->           arg.note.hdr.n_descsz = cpu_to_dump32(s, nf->contents_size);
->           strncpy(arg.note.name, note_name, sizeof(arg.note.name));
->   
-> -        (*nf->note_contents_func)(&arg, cpu);
-> +        (*nf->note_contents_func)(&arg, cpu, id);
->   
->           note_size =
->               sizeof(arg.note) - sizeof(arg.note.contents) + nf->contents_size;
+Signed-off-by: Hyeongtak Ji <hyeongtak.ji@gmail.com>
+---
+ docs/system/devices/cxl.rst | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+diff --git a/docs/system/devices/cxl.rst b/docs/system/devices/cxl.rst
+index 10a0e9bc9ff4..e2497e6a098b 100644
+--- a/docs/system/devices/cxl.rst
++++ b/docs/system/devices/cxl.rst
+@@ -218,17 +218,17 @@ Notes:
+     A complex configuration here, might be to use the following HDM
+     decoders in HB0. HDM0 routes CFMW0 requests to RP0 and hence
+     part of CXL Type3 0. HDM1 routes CFMW0 requests from a
+-    different region of the CFMW0 PA range to RP2 and hence part
++    different region of the CFMW0 PA range to RP1 and hence part
+     of CXL Type 3 1.  HDM2 routes yet another PA range from within
+     CFMW0 to be interleaved across RP0 and RP1, providing 2 way
+     interleave of part of the memory provided by CXL Type3 0 and
+     CXL Type 3 1. HDM3 routes those interleaved accesses from
+     CFMW1 that target HB0 to RP 0 and another part of the memory of
+     CXL Type 3 0 (as part of a 2 way interleave at the system level
+-    across for example CXL Type3 0 and CXL Type3 2.
++    across for example CXL Type3 0 and CXL Type3 1).
+     HDM4 is used to enable system wide 4 way interleave across all
+     the present CXL type3 devices, by interleaving those (interleaved)
+-    requests that HB0 receives from from CFMW1 across RP 0 and
++    requests that HB0 receives from CFMW1 across RP 0 and
+     RP 1 and hence to yet more regions of the memory of the
+     attached Type3 devices.  Note this is a representative subset
+     of the full range of possible HDM decoder configurations in this
+-- 
+2.34.1
 
 
