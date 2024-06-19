@@ -1,67 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sJoKX-0000L0-IA
-	for mharc-qemu-trivial@gnu.org; Wed, 19 Jun 2024 01:58:01 -0400
+	id 1sJoO3-0003oH-5z
+	for mharc-qemu-trivial@gnu.org; Wed, 19 Jun 2024 02:01:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sJoKV-0000Jt-G4
- for qemu-trivial@nongnu.org; Wed, 19 Jun 2024 01:57:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sJoNx-0003mj-2S
+ for qemu-trivial@nongnu.org; Wed, 19 Jun 2024 02:01:35 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sJoKU-0002vd-0k
- for qemu-trivial@nongnu.org; Wed, 19 Jun 2024 01:57:59 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sJoNv-0003lC-CX
+ for qemu-trivial@nongnu.org; Wed, 19 Jun 2024 02:01:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1718776677;
+ s=mimecast20190719; t=1718776890;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=BW0f/jx+kDhhZS2H6o9qj2psvjx8/jWoOCoGT7/QvAg=;
- b=SRVswsTZhjSzHQNp4URrPgJ0flp17yG10BUXlhM9iE7hlhFgPi6bsnApwrzk3t7IfPNv+3
- uVii3A/B05WxT3PWxBQT0qrXwrUJhe5PnbLOlDQgf4NzXsAmcGclomi1QoQ+xYcPJl0gkR
- sAkmRZdOTxo7bBMT0toW7DBPuH3sl8E=
-Received: from mail-yw1-f197.google.com (mail-yw1-f197.google.com
- [209.85.128.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=0Y0GtWcMX2y0zaI4VvqROSIOoPgBAf0RqtH/WOxhJiM=;
+ b=VQC0qmL7nFLLy7lxZlPIcilOmmxLHCSOT97Y7rJsvgz8o2jz3qWfHATUT7C73kOB/gX/k6
+ UStu1vflrHT1ciugOsmfpPjFqXs3U9u9kSBZNz6kcN+52WfifQ3jfeuAoag7sBgJ0gA6dp
+ tLg2C635SWkige2q/mFqs4nq+9GzmVk=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-130-dN0fom4lPday34t202DiLg-1; Wed, 19 Jun 2024 01:57:55 -0400
-X-MC-Unique: dN0fom4lPday34t202DiLg-1
-Received: by mail-yw1-f197.google.com with SMTP id
- 00721157ae682-631b498f981so96834867b3.0
- for <qemu-trivial@nongnu.org>; Tue, 18 Jun 2024 22:57:55 -0700 (PDT)
+ us-mta-197-felm9MNoOFOX3rbqD7mjiQ-1; Wed, 19 Jun 2024 02:01:25 -0400
+X-MC-Unique: felm9MNoOFOX3rbqD7mjiQ-1
+Received: by mail-qv1-f69.google.com with SMTP id
+ 6a1803df08f44-6b5093b20d9so1698316d6.2
+ for <qemu-trivial@nongnu.org>; Tue, 18 Jun 2024 23:01:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1718776675; x=1719381475;
+ d=1e100.net; s=20230601; t=1718776885; x=1719381685;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=BW0f/jx+kDhhZS2H6o9qj2psvjx8/jWoOCoGT7/QvAg=;
- b=PmypwCZga4Q7IJVhUIFsHgMNHKXievzu5bAb2mogMABK7/w3Zs1LgqrGep6bsvsJg3
- dmP4VNESsCNO1nZzFXrxBRAwHH5j+XDI7EEVn/ufRJVLA2jEOuYbqHgLcCnnbjvBlY77
- uI/0ms3KLVjx8sAUGhoHrqJHb+RDU+GDvtlHplLCw76DySm5JzrC/eWdxYDSKM0tLwAl
- uFRYcYgJgXztdkKXSyWbUmO6wJfW6zcQeCqk3O/A3pn8hc70hvAnrZks7/W+dD3+9ebB
- O8ZIY7X5DnQrL1SHTmt7PfsVa5Qwr3rc35oXC7Il+WiwFIyiZh9/ceSbpBXxi0FYralR
- ZxXg==
+ bh=0Y0GtWcMX2y0zaI4VvqROSIOoPgBAf0RqtH/WOxhJiM=;
+ b=FsX73yAbrk3vLm80rJ83fW2B0A2Ng+iWK6U3q5JL/2smc/ifLwapAuXXGhf8yR7nCj
+ Io7zba2fY2TlPBLxRsY3Ig7Cln+jUWDAMr/KD4xptEQuazB47bMR9V5BsTjFbrHyq19N
+ VYpxbsPvG7ViYBJL1bScu3Le5Guj1kY83kmZCksqi2F8RcmdDTi0ExctnJKBt4FFM6Qf
+ kNg+nhdNr9BeEVo9eI1jEtIpxyMOA4yzWJe3Ods3uleyyERM/MpxPrIadzG6zgI9V8zj
+ S0pR1DydNV1sciO10MMZBkam+byI82hh7U5dj3F201Vc6tuhmqL1aNsY6NSk06C2qwQW
+ Ipgg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVa/2mqC6ylyF+CFPqNzFjANUBuKesVdKJYvWzbnIvT6KE0SKk7qOa+MAioqce94OBOUhqy75+LCslUR7baUG5uAtSgNMyWUw==
-X-Gm-Message-State: AOJu0YwlmKtbBgjp7QWwYkMR/4oJ9v2Id91nxdHf6dT5OI0ZE7mi4y3q
- COQEsNGypfHqpdhikOJnkcqUIrPlS28z8muZWrRPPahhZAEqZQ67Wc7jPpJvnYfBO02H/D90Fsc
- huwhj+9KLjDugNmfunXn+cP85VWF2jWFGXvsXS9Q3KruyGztvWHCM0f0=
-X-Received: by 2002:a81:9e0d:0:b0:62c:c65d:8d1c with SMTP id
- 00721157ae682-63a8faf2eb6mr15316007b3.52.1718776675037; 
- Tue, 18 Jun 2024 22:57:55 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFfdXU3DmXCfiJkGoBKT2c7MqL3WPW2xtqGkz9n54NjK9uaNzQI9DAZdpp0JE6Pq0XV+lOz+w==
-X-Received: by 2002:a81:9e0d:0:b0:62c:c65d:8d1c with SMTP id
- 00721157ae682-63a8faf2eb6mr15315857b3.52.1718776674643; 
- Tue, 18 Jun 2024 22:57:54 -0700 (PDT)
+ AJvYcCXOXfgP3gYEoRPRhE/NbzrZ0eMcNmSXa4L4+Up9L1JZCJKkdSjZjUj/iWAA5ePBdanxW9ymqctE5VPdcKpFW/746KiJpyhipQ==
+X-Gm-Message-State: AOJu0YwWqqDVc5BAMNW+oRwcnNS+G468AXUeQ0ezJNJY3EF31RVwM7Ux
+ B/AAB12Y/qu0XZDOtFhiMYM1AC4qFH1xyCg+S9nIsTGFEj+C4ZLF1t5+qBncy6GdrW/fR5Mbb+z
+ DvJf5c4k5Yo8EOp/QZITb+0Xcv54L1roDGmNboLH3gcnsoEbKdIicGW8=
+X-Received: by 2002:a0c:e0c3:0:b0:6b4:fe1a:eeee with SMTP id
+ 6a1803df08f44-6b501e9f637mr19468296d6.46.1718776884887; 
+ Tue, 18 Jun 2024 23:01:24 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHOlQPtOt/WDLisxVRRXxxBkAti9S9bN87HfHM0ed0j5B1K960SeuORXaGfkqnNFcbzBoh5bA==
+X-Received: by 2002:a0c:e0c3:0:b0:6b4:fe1a:eeee with SMTP id
+ 6a1803df08f44-6b501e9f637mr19468126d6.46.1718776884528; 
+ Tue, 18 Jun 2024 23:01:24 -0700 (PDT)
 Received: from [192.168.0.4] (ip-109-43-178-117.web.vodafone.de.
  [109.43.178.117]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6b2a5ef497esm73881606d6.124.2024.06.18.22.57.51
+ 6a1803df08f44-6b506e7525esm2400526d6.108.2024.06.18.23.01.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 18 Jun 2024 22:57:54 -0700 (PDT)
-Message-ID: <4687c59a-1427-4215-a58d-cb84dd27f9ff@redhat.com>
-Date: Wed, 19 Jun 2024 07:57:49 +0200
+ Tue, 18 Jun 2024 23:01:24 -0700 (PDT)
+Message-ID: <431324a5-d455-464c-a4cb-1b2fc457b31b@redhat.com>
+Date: Wed, 19 Jun 2024 08:01:20 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] target/s390x/arch_dump: use correct byte order for pid
+Subject: Re: [PATCH 2/2] target/ppc/arch_dump: set prstatus pid to cpuid
 To: Omar Sandoval <osandov@osandov.com>, qemu-devel@nongnu.org
 Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
  Richard Henderson <richard.henderson@linaro.org>,
@@ -70,7 +70,7 @@ Cc: qemu-s390x@nongnu.org, qemu-ppc@nongnu.org,
  Daniel Henrique Barboza <danielhb413@gmail.com>,
  linux-debuggers@vger.kernel.org, QEMU Trivial <qemu-trivial@nongnu.org>
 References: <cover.1718771802.git.osandov@osandov.com>
- <5929f76d536d355afd04af51bf293695a1065118.1718771802.git.osandov@osandov.com>
+ <ac09da04c8e6dd777945219815d1c53b02291b5b.1718771802.git.osandov@osandov.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -114,13 +114,13 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <5929f76d536d355afd04af51bf293695a1065118.1718771802.git.osandov@osandov.com>
+In-Reply-To: <ac09da04c8e6dd777945219815d1c53b02291b5b.1718771802.git.osandov@osandov.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -22
 X-Spam_score: -2.3
@@ -129,7 +129,7 @@ X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.148,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,31 +142,106 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 19 Jun 2024 05:57:59 -0000
+X-List-Received-Date: Wed, 19 Jun 2024 06:01:35 -0000
 
 On 19/06/2024 07.00, Omar Sandoval wrote:
-> The pid field of prstatus needs to be big endian like all of the other
-> fields.
+> Every other architecture does this, and debuggers need it to be able to
+> identify which prstatus note corresponds to which CPU.
 > 
-> Fixes: f738f296eaae ("s390x/arch_dump: pass cpuid into notes sections")
 > Signed-off-by: Omar Sandoval <osandov@osandov.com>
 > ---
->   target/s390x/arch_dump.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
+>   target/ppc/arch_dump.c | 21 ++++++++++++---------
+>   1 file changed, 12 insertions(+), 9 deletions(-)
 > 
-> diff --git a/target/s390x/arch_dump.c b/target/s390x/arch_dump.c
-> index 7e8a1b4fc0..029d91d93a 100644
-> --- a/target/s390x/arch_dump.c
-> +++ b/target/s390x/arch_dump.c
-> @@ -102,7 +102,7 @@ static void s390x_write_elf64_prstatus(Note *note, S390CPU *cpu, int id)
->           regs->acrs[i] = cpu_to_be32(cpu->env.aregs[i]);
->           regs->gprs[i] = cpu_to_be64(cpu->env.regs[i]);
->       }
-> -    note->contents.prstatus.pid = id;
-> +    note->contents.prstatus.pid = cpu_to_be32(id);
+> diff --git a/target/ppc/arch_dump.c b/target/ppc/arch_dump.c
+> index a8315659d9..78b4205319 100644
+> --- a/target/ppc/arch_dump.c
+> +++ b/target/ppc/arch_dump.c
+> @@ -47,9 +47,11 @@ struct PPCUserRegStruct {
+>   } QEMU_PACKED;
+>   
+>   struct PPCElfPrstatus {
+> -    char pad1[112];
+> +    char pad1[32];
+> +    uint32_t pid;
+> +    uint8_t pad2[76];
+>       struct PPCUserRegStruct pr_reg;
+> -    char pad2[40];
+> +    char pad3[40];
+>   } QEMU_PACKED;
+>   
+>   
+> @@ -96,7 +98,7 @@ typedef struct NoteFuncArg {
+>       DumpState *state;
+>   } NoteFuncArg;
+>   
+> -static void ppc_write_elf_prstatus(NoteFuncArg *arg, PowerPCCPU *cpu)
+> +static void ppc_write_elf_prstatus(NoteFuncArg *arg, PowerPCCPU *cpu, int id)
+>   {
+>       int i;
+>       reg_t cr;
+> @@ -109,6 +111,7 @@ static void ppc_write_elf_prstatus(NoteFuncArg *arg, PowerPCCPU *cpu)
+>   
+>       prstatus = &note->contents.prstatus;
+>       memset(prstatus, 0, sizeof(*prstatus));
+> +    prstatus->pid = cpu_to_dump32(s, id);
+>       reg = &prstatus->pr_reg;
+>   
+>       for (i = 0; i < 32; i++) {
+> @@ -127,7 +130,7 @@ static void ppc_write_elf_prstatus(NoteFuncArg *arg, PowerPCCPU *cpu)
+>       reg->ccr = cpu_to_dump_reg(s, cr);
 >   }
 >   
->   static void s390x_write_elf64_fpregset(Note *note, S390CPU *cpu, int id)
+> -static void ppc_write_elf_fpregset(NoteFuncArg *arg, PowerPCCPU *cpu)
+> +static void ppc_write_elf_fpregset(NoteFuncArg *arg, PowerPCCPU *cpu, int id)
+>   {
+>       int i;
+>       struct PPCElfFpregset  *fpregset;
+> @@ -146,7 +149,7 @@ static void ppc_write_elf_fpregset(NoteFuncArg *arg, PowerPCCPU *cpu)
+>       fpregset->fpscr = cpu_to_dump_reg(s, cpu->env.fpscr);
+>   }
+>   
+> -static void ppc_write_elf_vmxregset(NoteFuncArg *arg, PowerPCCPU *cpu)
+> +static void ppc_write_elf_vmxregset(NoteFuncArg *arg, PowerPCCPU *cpu, int id)
+>   {
+>       int i;
+>       struct PPCElfVmxregset *vmxregset;
+> @@ -178,7 +181,7 @@ static void ppc_write_elf_vmxregset(NoteFuncArg *arg, PowerPCCPU *cpu)
+>       vmxregset->vscr.u32[3] = cpu_to_dump32(s, ppc_get_vscr(&cpu->env));
+>   }
+>   
+> -static void ppc_write_elf_vsxregset(NoteFuncArg *arg, PowerPCCPU *cpu)
+> +static void ppc_write_elf_vsxregset(NoteFuncArg *arg, PowerPCCPU *cpu, int id)
+>   {
+>       int i;
+>       struct PPCElfVsxregset *vsxregset;
+> @@ -195,7 +198,7 @@ static void ppc_write_elf_vsxregset(NoteFuncArg *arg, PowerPCCPU *cpu)
+>       }
+>   }
+>   
+> -static void ppc_write_elf_speregset(NoteFuncArg *arg, PowerPCCPU *cpu)
+> +static void ppc_write_elf_speregset(NoteFuncArg *arg, PowerPCCPU *cpu, int id)
+>   {
+>       struct PPCElfSperegset *speregset;
+>       Note *note = &arg->note;
+> @@ -211,7 +214,7 @@ static void ppc_write_elf_speregset(NoteFuncArg *arg, PowerPCCPU *cpu)
+>   
+>   static const struct NoteFuncDescStruct {
+>       int contents_size;
+> -    void (*note_contents_func)(NoteFuncArg *arg, PowerPCCPU *cpu);
+> +    void (*note_contents_func)(NoteFuncArg *arg, PowerPCCPU *cpu, int id);
+>   } note_func[] = {
+>       {sizeof_field(Note, contents.prstatus),  ppc_write_elf_prstatus},
+>       {sizeof_field(Note, contents.fpregset),  ppc_write_elf_fpregset},
+> @@ -282,7 +285,7 @@ static int ppc_write_all_elf_notes(const char *note_name,
+>           arg.note.hdr.n_descsz = cpu_to_dump32(s, nf->contents_size);
+>           strncpy(arg.note.name, note_name, sizeof(arg.note.name));
+>   
+> -        (*nf->note_contents_func)(&arg, cpu);
+> +        (*nf->note_contents_func)(&arg, cpu, id);
+>   
+>           note_size =
+>               sizeof(arg.note) - sizeof(arg.note.contents) + nf->contents_size;
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
