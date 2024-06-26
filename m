@@ -1,60 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sMPCK-000501-UR
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2024 05:44:17 -0400
+	id 1sMSvx-0000yH-Lv
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2024 09:43:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sMPCI-0004za-Mf
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2024 05:44:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
+ id 1sMSvv-0000xD-J6; Wed, 26 Jun 2024 09:43:35 -0400
+Received: from forwardcorp1b.mail.yandex.net ([178.154.239.136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sMPCG-00048A-Nz
- for qemu-trivial@nongnu.org; Wed, 26 Jun 2024 05:44:14 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1719395051;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=7+iufi1Xo8iLE0XDVDPgtL12+InO4uaZEffUh6Jqxl4=;
- b=XDYTRpCMFVpVdEjXTHIaXy+FaEPslUe2JAumguSaYaB6GVWgw3qV9o/hUajRAkJOpoJoj8
- h8DQVewqzmzBqC1zMNkLCDsG038fZ9pPgxqMm6UJNtm1gkzZB/cIYy9/fBq6iAonIxEoKq
- AQAIqbsUG2BJvvYOZaxJziErFxy9+Ns=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-637-pJ3PH8UsOo6P0OyZDkgkDg-1; Wed,
- 26 Jun 2024 05:44:10 -0400
-X-MC-Unique: pJ3PH8UsOo6P0OyZDkgkDg-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 261381956089; Wed, 26 Jun 2024 09:44:09 +0000 (UTC)
-Received: from thuth-p1g4.str.redhat.com (dhcp-192-191.str.redhat.com
- [10.33.192.191])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id CD08F1956050; Wed, 26 Jun 2024 09:44:07 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
+ id 1sMSvt-0007CK-Kz; Wed, 26 Jun 2024 09:43:35 -0400
+Received: from mail-nwsmtp-smtp-corp-main-80.iva.yp-c.yandex.net
+ (mail-nwsmtp-smtp-corp-main-80.iva.yp-c.yandex.net
+ [IPv6:2a02:6b8:c0c:958d:0:640:7be4:0])
+ by forwardcorp1b.mail.yandex.net (Yandex) with ESMTPS id EE6CD60D7C;
+ Wed, 26 Jun 2024 16:43:26 +0300 (MSK)
+Received: from vsementsov-lin.. (unknown [2a02:6b8:b081:b645::1:29])
+ by mail-nwsmtp-smtp-corp-main-80.iva.yp-c.yandex.net (smtpcorp/Yandex) with
+ ESMTPSA id 6hQ8Aa0IZiE0-XWZb1UyL; Wed, 26 Jun 2024 16:43:26 +0300
+X-Yandex-Fwd: 1
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
+ s=default; t=1719409406;
+ bh=cvo+hMcUxlju52t+434JqXymNOWSaZltHB7XK4GSaUc=;
+ h=Message-Id:Date:Cc:Subject:To:From;
+ b=rfkiwZvMk7bcJwmNmTRkPpDpHvMT6w+g53dHEer/gYXyQ9NCPb673yg5oH2oaiRyQ
+ U3Otx0DAX1MNewI2kg0xIJ05cfZpuHAITxeMQUgjmQDUPGQVGmyikWWz1tYUpSw92N
+ 8n00tXExFhDWx0qDdNskw7Iv2FxmyuKL8FG7snaQ=
+Authentication-Results: mail-nwsmtp-smtp-corp-main-80.iva.yp-c.yandex.net;
+ dkim=pass header.i=@yandex-team.ru
+From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Subject: [PATCH] docs/system/devices/usb: Replace the non-existing "qemu"
- binary
-Date: Wed, 26 Jun 2024 11:44:06 +0200
-Message-ID: <20240626094406.87556-1-thuth@redhat.com>
+Cc: pbonzini@redhat.com, qemu-trivial@nongnu.org, armbru@redhat.com,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+Subject: [PATCH 0/3] vl.c: select_machine(): improve error message
+Date: Wed, 26 Jun 2024 16:43:02 +0300
+Message-Id: <20240626134305.432627-1-vsementsov@yandex-team.ru>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 11
-X-Spam_score: 1.1
-X-Spam_bar: +
-X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.151,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=178.154.239.136;
+ envelope-from=vsementsov@yandex-team.ru; helo=forwardcorp1b.mail.yandex.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -67,31 +57,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Jun 2024 09:44:15 -0000
+X-List-Received-Date: Wed, 26 Jun 2024 13:43:36 -0000
 
-We don't ship a binary that is simply called "qemu", so we should
-avoid this in the documentation. Use the configurable binary name
-via "|qemu_system|" instead.
+Hi all!
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- docs/system/devices/usb.rst | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Here are three simple patches, improving select_machine() function a
+bit.
 
-diff --git a/docs/system/devices/usb.rst b/docs/system/devices/usb.rst
-index a6ca7b0c37..dc694d23c2 100644
---- a/docs/system/devices/usb.rst
-+++ b/docs/system/devices/usb.rst
-@@ -18,7 +18,7 @@ emulation uses less resources (especially CPU).  So if your guest
- supports XHCI (which should be the case for any operating system
- released around 2010 or later) we recommend using it:
- 
--    qemu -device qemu-xhci
-+    |qemu_system| -device qemu-xhci
- 
- XHCI supports USB 1.1, USB 2.0 and USB 3.0 devices, so this is the
- only controller you need.  With only a single USB controller (and
+Vladimir Sementsov-Ogievskiy (3):
+  vl.c: select_machine(): use ERRP_GUARD instead of error propagation
+  vl.c: select_machine(): use g_autoptr
+  vl.c: select_machine(): add selected machine type to error message
+
+ system/vl.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
+
 -- 
-2.45.2
+2.34.1
 
 
