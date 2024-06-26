@@ -1,71 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sMKNf-0001jL-Ox
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2024 00:35:39 -0400
+	id 1sMPCK-000501-UR
+	for mharc-qemu-trivial@gnu.org; Wed, 26 Jun 2024 05:44:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hyeongtak.ji@gmail.com>)
- id 1sMKNd-0001fs-BJ; Wed, 26 Jun 2024 00:35:37 -0400
-Received: from mail-pf1-x429.google.com ([2607:f8b0:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <hyeongtak.ji@gmail.com>)
- id 1sMKNb-0004bz-EA; Wed, 26 Jun 2024 00:35:36 -0400
-Received: by mail-pf1-x429.google.com with SMTP id
- d2e1a72fcca58-7066463c841so2936673b3a.1; 
- Tue, 25 Jun 2024 21:35:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1719376532; x=1719981332; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=I4S7uZEPhH9ntgTMnCv9u5wHaTvK/eGeWAK0YEt+zxc=;
- b=NKdscHll1JtLpBdXFaUq17R+nlMXjMqazTBfPZHQmovJf+Pk0cZ6mfsCbCcxovdNm/
- mqYnRSe0u3+8KlkcmdptEnx4c9J1kPYwJ3JYAljxomY6Zg7V3ylffkXMhagVFaMwmJ1D
- qUSar05xyFJXyBqXlxFkSa6NCeMNb+ZbQDOvncx0HPIiD/mvPJZCtPOVHuyOQLz1RGxS
- J1BdlJoaGYFuTaZ/kwJxI2mZ8MWoSNtUNX0QlizwaG9+9DXZaZhR7+k29W1WLCgKSuP4
- P+3/Jsv3PfMlFnkdaoXBosUWGeMKomg4aqXOsdAQP/MqE3eBhxK+JEU5HfiPoKtrFgnj
- 0HvA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719376532; x=1719981332;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=I4S7uZEPhH9ntgTMnCv9u5wHaTvK/eGeWAK0YEt+zxc=;
- b=goVOH2UNOAuzqT8zJ8hqT5pGOQNMDcfQr/zJscmHQTGZuLlLBRVOC+mHedTwFgSC7V
- kk7Q/0qFwShSosdp/cevs83ppC2ykFzYEY6NIlYK6gg72vicIlsl5+hlOOFrCO1YjM4w
- FAah+TSQC9HZTlV0bSjy3fNB+AQ+NqrCon9O7VXzGUNdq04dlmSvLQOwR0FwPo1MidhB
- /uuVwhuMg6mJm279fCAm55MCOFb8lZmWd7Re7pmEgZTaS5k4s+H20/++oNvjJufJaXXW
- 8hd9lw2m5J48HrhzWGG4Kb4T7pceky9pI8NFQEsp/xaVzS5h3GL/c8eGPALcYLKn5FIi
- m2AA==
-X-Gm-Message-State: AOJu0Yz91UuFeICNPmkFPF0W00A0XrDQWlzy5hRfEeNfzIMs5UhEqonL
- 4r626Jph3sDS6jaSnoeqeuWNp/gzv+34mNMl23zLsnTKt2Xd0oebphPsfA==
-X-Google-Smtp-Source: AGHT+IHda2j7hNxwnp7jm8bw5Ejz0/WjOfp9qcT85suJEa7NVgRHdnniJgzWzi5hqGwyHMyYeLtnOA==
-X-Received: by 2002:aa7:908f:0:b0:705:bc32:5357 with SMTP id
- d2e1a72fcca58-7067459c765mr9065851b3a.1.1719376531766; 
- Tue, 25 Jun 2024 21:35:31 -0700 (PDT)
-Received: from hyeongtakPC.. ([147.46.174.104])
- by smtp.googlemail.com with ESMTPSA id
- d2e1a72fcca58-70668dce186sm7331775b3a.176.2024.06.25.21.35.30
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 25 Jun 2024 21:35:31 -0700 (PDT)
-From: Hyeongtak Ji <hyeongtak.ji@gmail.com>
-To: qemu-devel@nongnu.org,
-	jonathan.cameron@huawei.com
-Cc: qemu-trivial@nongnu.org,
-	Hyeongtak Ji <hyeongtak.ji@gmail.com>
-Subject: [PATCH v2] docs/cxl: fix some typos
-Date: Wed, 26 Jun 2024 13:34:58 +0900
-Message-Id: <20240626043458.1446926-1-hyeongtak.ji@gmail.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sMPCI-0004za-Mf
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2024 05:44:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sMPCG-00048A-Nz
+ for qemu-trivial@nongnu.org; Wed, 26 Jun 2024 05:44:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1719395051;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=7+iufi1Xo8iLE0XDVDPgtL12+InO4uaZEffUh6Jqxl4=;
+ b=XDYTRpCMFVpVdEjXTHIaXy+FaEPslUe2JAumguSaYaB6GVWgw3qV9o/hUajRAkJOpoJoj8
+ h8DQVewqzmzBqC1zMNkLCDsG038fZ9pPgxqMm6UJNtm1gkzZB/cIYy9/fBq6iAonIxEoKq
+ AQAIqbsUG2BJvvYOZaxJziErFxy9+Ns=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-637-pJ3PH8UsOo6P0OyZDkgkDg-1; Wed,
+ 26 Jun 2024 05:44:10 -0400
+X-MC-Unique: pJ3PH8UsOo6P0OyZDkgkDg-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 261381956089; Wed, 26 Jun 2024 09:44:09 +0000 (UTC)
+Received: from thuth-p1g4.str.redhat.com (dhcp-192-191.str.redhat.com
+ [10.33.192.191])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id CD08F1956050; Wed, 26 Jun 2024 09:44:07 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] docs/system/devices/usb: Replace the non-existing "qemu"
+ binary
+Date: Wed, 26 Jun 2024 11:44:06 +0200
+Message-ID: <20240626094406.87556-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::429;
- envelope-from=hyeongtak.ji@gmail.com; helo=mail-pf1-x429.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 11
+X-Spam_score: 1.1
+X-Spam_bar: +
+X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.151,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,43 +67,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Jun 2024 04:35:37 -0000
+X-List-Received-Date: Wed, 26 Jun 2024 09:44:15 -0000
 
-This patch corrects minor typographical errors to ensure the ASCII art
-aligns with the explanations provided.  Specifically, it fixes an
-incorrect root port reference and removes redundant words.
+We don't ship a binary that is simply called "qemu", so we should
+avoid this in the documentation. Use the configurable binary name
+via "|qemu_system|" instead.
 
-Signed-off-by: Hyeongtak Ji <hyeongtak.ji@gmail.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- docs/system/devices/cxl.rst | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ docs/system/devices/usb.rst | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/system/devices/cxl.rst b/docs/system/devices/cxl.rst
-index cf0a5143cfe8..a551d95455bc 100644
---- a/docs/system/devices/cxl.rst
-+++ b/docs/system/devices/cxl.rst
-@@ -218,17 +218,17 @@ Notes:
-     A complex configuration here, might be to use the following HDM
-     decoders in HB0. HDM0 routes CFMW0 requests to RP0 and hence
-     part of CXL Type3 0. HDM1 routes CFMW0 requests from a
--    different region of the CFMW0 PA range to RP2 and hence part
-+    different region of the CFMW0 PA range to RP1 and hence part
-     of CXL Type 3 1.  HDM2 routes yet another PA range from within
-     CFMW0 to be interleaved across RP0 and RP1, providing 2 way
-     interleave of part of the memory provided by CXL Type3 0 and
-     CXL Type 3 1. HDM3 routes those interleaved accesses from
-     CFMW1 that target HB0 to RP 0 and another part of the memory of
-     CXL Type 3 0 (as part of a 2 way interleave at the system level
--    across for example CXL Type3 0 and CXL Type3 2.
-+    across for example CXL Type3 0 and CXL Type3 2).
-     HDM4 is used to enable system wide 4 way interleave across all
-     the present CXL type3 devices, by interleaving those (interleaved)
--    requests that HB0 receives from from CFMW1 across RP 0 and
-+    requests that HB0 receives from CFMW1 across RP 0 and
-     RP 1 and hence to yet more regions of the memory of the
-     attached Type3 devices.  Note this is a representative subset
-     of the full range of possible HDM decoder configurations in this
+diff --git a/docs/system/devices/usb.rst b/docs/system/devices/usb.rst
+index a6ca7b0c37..dc694d23c2 100644
+--- a/docs/system/devices/usb.rst
++++ b/docs/system/devices/usb.rst
+@@ -18,7 +18,7 @@ emulation uses less resources (especially CPU).  So if your guest
+ supports XHCI (which should be the case for any operating system
+ released around 2010 or later) we recommend using it:
+ 
+-    qemu -device qemu-xhci
++    |qemu_system| -device qemu-xhci
+ 
+ XHCI supports USB 1.1, USB 2.0 and USB 3.0 devices, so this is the
+ only controller you need.  With only a single USB controller (and
 -- 
-2.34.1
+2.45.2
 
 
