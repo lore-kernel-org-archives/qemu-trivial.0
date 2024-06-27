@@ -1,51 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sMr5x-0007yM-7C
-	for mharc-qemu-trivial@gnu.org; Thu, 27 Jun 2024 11:31:33 -0400
+	id 1sMrwL-0003G5-Ep
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Jun 2024 12:25:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
- id 1sMr5r-0007vP-P8; Thu, 27 Jun 2024 11:31:28 -0400
-Received: from forwardcorp1b.mail.yandex.net
- ([2a02:6b8:c02:900:1:45:d181:df01])
+ id 1sMrwD-0002p9-Jq; Thu, 27 Jun 2024 12:25:33 -0400
+Received: from forwardcorp1a.mail.yandex.net ([178.154.239.72])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <vsementsov@yandex-team.ru>)
- id 1sMr5p-0003xq-CV; Thu, 27 Jun 2024 11:31:27 -0400
-Received: from mail-nwsmtp-smtp-corp-main-34.sas.yp-c.yandex.net
- (mail-nwsmtp-smtp-corp-main-34.sas.yp-c.yandex.net
- [IPv6:2a02:6b8:c16:1680:0:640:d42f:0])
- by forwardcorp1b.mail.yandex.net (Yandex) with ESMTPS id C85F860A8A;
- Thu, 27 Jun 2024 18:31:13 +0300 (MSK)
+ id 1sMrw8-0002Vw-I6; Thu, 27 Jun 2024 12:25:33 -0400
+Received: from mail-nwsmtp-smtp-corp-main-62.myt.yp-c.yandex.net
+ (mail-nwsmtp-smtp-corp-main-62.myt.yp-c.yandex.net
+ [IPv6:2a02:6b8:c12:2799:0:640:ddd6:0])
+ by forwardcorp1a.mail.yandex.net (Yandex) with ESMTPS id 78BAF61469;
+ Thu, 27 Jun 2024 19:25:22 +0300 (MSK)
 Received: from vsementsov-lin.. (unknown [2a02:6b8:b081:227::1:3a])
- by mail-nwsmtp-smtp-corp-main-34.sas.yp-c.yandex.net (smtpcorp/Yandex) with
- ESMTPSA id 0VTS9M01TCg0-X2UxXmfK; Thu, 27 Jun 2024 18:31:13 +0300
+ by mail-nwsmtp-smtp-corp-main-62.myt.yp-c.yandex.net (smtpcorp/Yandex) with
+ ESMTPSA id 9PUR6J0IiCg0-c2tkSPvN; Thu, 27 Jun 2024 19:25:21 +0300
 X-Yandex-Fwd: 1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.ru;
- s=default; t=1719502273;
- bh=zUl8pu8xHNgdvWEHH+WAqVh92HQPTBSqB5JMxY64YIo=;
+ s=default; t=1719505522;
+ bh=hFypxwmyFaCxrHHUSBLg/l70hhX3SKgqnjxSZ87PaG4=;
  h=Message-Id:Date:Cc:Subject:To:From;
- b=yz5m74QOrL1n/Bb+cTz1hHOt9zyKKGEqbtRHLG8rxMgjPo4Vwqxt9triaBhyr5CqB
- iRASiZogoELAfd3SBPOJKmNExDMU8krx++Q+qpxnNiaBOiMG/UgMcY/WQpPNZqLgBl
- ODFBk3y6uzS0sGpdEiWbNmXjb/uHhSg46LRIFRns=
-Authentication-Results: mail-nwsmtp-smtp-corp-main-34.sas.yp-c.yandex.net;
+ b=iriiqXWutNMcQXeAGRod7Fu1XcsaURW3SbRssFrJ01B2LG5ev2Q3olztQEXM1zCb0
+ Wj/Bd0xRNMpoRszFGp+y/HS9Fq1Rzu8Jud+i/NYll3gtZHvZs7BpzDxVwG4F9lM813
+ aHBwkQNBWwkxE8DfATn8JLIvBpsRRHA67XQteSck=
+Authentication-Results: mail-nwsmtp-smtp-corp-main-62.myt.yp-c.yandex.net;
  dkim=pass header.i=@yandex-team.ru
 From: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-To: qemu-block@nongnu.org
-Cc: qemu-devel@nongnu.org, vsementsov@yandex-team.ru, hreitz@redhat.com,
- kwolf@redhat.com, qemu-trivial@nongnu.org
-Subject: [PATCH] block/curl: explicitly assert that strchr returns non-NULL
- value
-Date: Thu, 27 Jun 2024 18:30:59 +0300
-Message-Id: <20240627153059.589070-1-vsementsov@yandex-team.ru>
+To: qemu-devel@nongnu.org
+Cc: philmd@linaro.org, qemu-trivial@nongnu.org,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+Subject: [PATCH] hw/core/loader: gunzip(): fix memory leak on error path
+Date: Thu, 27 Jun 2024 19:25:07 +0300
+Message-Id: <20240627162507.598352-1-vsementsov@yandex-team.ru>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a02:6b8:c02:900:1:45:d181:df01;
- envelope-from=vsementsov@yandex-team.ru; helo=forwardcorp1b.mail.yandex.net
+Received-SPF: pass client-ip=178.154.239.72;
+ envelope-from=vsementsov@yandex-team.ru; helo=forwardcorp1a.mail.yandex.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -59,32 +58,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 27 Jun 2024 15:31:32 -0000
+X-List-Received-Date: Thu, 27 Jun 2024 16:25:40 -0000
 
-strchr may return NULL if colon is not found. It seems clearer to
-assert explicitly that we don't expect it here, than dereference 1 in
-the next line.
+We should call inflateEnd() like on success path to cleanup state in s
+variable.
 
 Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
 ---
- block/curl.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
+ hw/core/loader.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/block/curl.c b/block/curl.c
-index 419f7c89ef..ccfffd6c12 100644
---- a/block/curl.c
-+++ b/block/curl.c
-@@ -219,7 +219,9 @@ static size_t curl_header_cb(void *ptr, size_t size, size_t nmemb, void *opaque)
-         && g_ascii_strncasecmp(header, accept_ranges,
-                                strlen(accept_ranges)) == 0) {
- 
--        char *p = strchr(header, ':') + 1;
-+        char *p = strchr(header, ':');
-+        assert(p != NULL);
-+        p += 1;
- 
-         /* Skip whitespace between the header name and value. */
-         while (p < end && *p && g_ascii_isspace(*p)) {
+diff --git a/hw/core/loader.c b/hw/core/loader.c
+index 2f8105d7de..a3bea1e718 100644
+--- a/hw/core/loader.c
++++ b/hw/core/loader.c
+@@ -610,6 +610,7 @@ ssize_t gunzip(void *dst, size_t dstlen, uint8_t *src, size_t srclen)
+     r = inflate(&s, Z_FINISH);
+     if (r != Z_OK && r != Z_STREAM_END) {
+         printf ("Error: inflate() returned %d\n", r);
++        inflateEnd(&s);
+         return -1;
+     }
+     dstbytes = s.next_out - (unsigned char *) dst;
 -- 
 2.34.1
 
