@@ -1,60 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sNRjw-0007XL-S4
-	for mharc-qemu-trivial@gnu.org; Sat, 29 Jun 2024 02:39:16 -0400
+	id 1sNZ1l-0006qC-NA
+	for mharc-qemu-trivial@gnu.org; Sat, 29 Jun 2024 10:26:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sNRjp-0007WJ-FR; Sat, 29 Jun 2024 02:39:09 -0400
+ id 1sNZ1j-0006pJ-Vw; Sat, 29 Jun 2024 10:26:07 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sNRjn-0003TV-QZ; Sat, 29 Jun 2024 02:39:09 -0400
+ id 1sNZ1h-0004MF-T0; Sat, 29 Jun 2024 10:26:07 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 96672753A2;
- Sat, 29 Jun 2024 09:39:00 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 4B142F9A4B;
- Sat, 29 Jun 2024 09:39:05 +0300 (MSK)
-Message-ID: <aa83f3d8-4177-4cfe-ae1d-7670432d55cc@tls.msk.ru>
-Date: Sat, 29 Jun 2024 09:39:05 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] block/curl: use strlen instead of strchr
+ by isrv.corpit.ru (Postfix) with ESMTP id 1A9FF7540A;
+ Sat, 29 Jun 2024 17:25:55 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id 40A04F9C61;
+ Sat, 29 Jun 2024 17:26:00 +0300 (MSK)
+Received: (nullmailer pid 1088710 invoked by uid 1000);
+ Sat, 29 Jun 2024 14:26:00 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
  qemu-block@nongnu.org
-Cc: qemu-devel@nongnu.org, hreitz@redhat.com, kwolf@redhat.com,
- qemu-trivial@nongnu.org
-References: <20240628054942.657397-1-vsementsov@yandex-team.ru>
- <03e1eb96-49ce-48bb-adc7-6ea3fb843b48@tls.msk.ru>
- <4fa12c78-98f7-4f38-ba5d-fe7eebc4a2d8@tls.msk.ru>
-Content-Language: en-US, ru-RU
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <4fa12c78-98f7-4f38-ba5d-fe7eebc4a2d8@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org, hreitz@redhat.com,
+ kwolf@redhat.com, qemu-trivial@nongnu.org
+Subject: [PATCH] block/curl: rewrite http header parsing function
+Date: Sat, 29 Jun 2024 17:25:42 +0300
+Message-Id: <20240629142542.1086076-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.2
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -75,27 +47,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 29 Jun 2024 06:39:14 -0000
+X-List-Received-Date: Sat, 29 Jun 2024 14:26:08 -0000
 
-On 6/29/24 09:36, Michael Tokarev wrote:
-..
-> +    while (p < end && *t) {
-> +        if (*t == ' ') {
-> +            if (g_ascii_isspace(*p)) {
-> +                ++p;
-> +            } else {
-> +                ++t;
->               }
-> +        } else if (*t == g_ascii_tolower(*p)) {
-> +            ++p, ++t;
-> +        } else {
-> +            break;
->           }
->       }
-> 
-> +    if (p == end || !*p) {
+Existing code was long, unclear and twisty.
 
-        if (!*t && p == end)  ofc.
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ block/curl.c | 44 ++++++++++++++++++--------------------------
+ 1 file changed, 18 insertions(+), 26 deletions(-)
 
-/mjt
+diff --git a/block/curl.c b/block/curl.c
+index 419f7c89ef..9802d0319d 100644
+--- a/block/curl.c
++++ b/block/curl.c
+@@ -210,37 +210,29 @@ static size_t curl_header_cb(void *ptr, size_t size, size_t nmemb, void *opaque)
+ {
+     BDRVCURLState *s = opaque;
+     size_t realsize = size * nmemb;
+-    const char *header = (char *)ptr;
+-    const char *end = header + realsize;
+-    const char *accept_ranges = "accept-ranges:";
+-    const char *bytes = "bytes";
++    const char *p = ptr;
++    const char *end = p + realsize;
++    const char *t = "accept-ranges : bytes "; /* A lowercase template */
+ 
+-    if (realsize >= strlen(accept_ranges)
+-        && g_ascii_strncasecmp(header, accept_ranges,
+-                               strlen(accept_ranges)) == 0) {
+-
+-        char *p = strchr(header, ':') + 1;
+-
+-        /* Skip whitespace between the header name and value. */
+-        while (p < end && *p && g_ascii_isspace(*p)) {
+-            p++;
+-        }
+-
+-        if (end - p >= strlen(bytes)
+-            && strncmp(p, bytes, strlen(bytes)) == 0) {
+-
+-            /* Check that there is nothing but whitespace after the value. */
+-            p += strlen(bytes);
+-            while (p < end && *p && g_ascii_isspace(*p)) {
+-                p++;
+-            }
+-
+-            if (p == end || !*p) {
+-                s->accept_range = true;
++    /* check if header matches the "t" template */
++    for (;;) {
++        if (*t == ' ') { /* space in t matches any amount of isspace in p */
++            if (p < end && g_ascii_isspace(*p)) {
++                ++p;
++            } else {
++                ++t;
+             }
++        } else if (*t && p < end && *t == g_ascii_tolower(*p)) {
++            ++p, ++t;
++        } else {
++            break;
+         }
+     }
+ 
++    if (!*t && p == end) { /* if we managed to reach ends of both strings */
++        s->accept_range = true;
++    }
++
+     return realsize;
+ }
+ 
+-- 
+2.39.2
+
 
