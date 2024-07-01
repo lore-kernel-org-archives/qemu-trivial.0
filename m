@@ -1,88 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sOHJT-0006SR-GJ
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jul 2024 09:43:25 -0400
+	id 1sOIXA-0006ZJ-No
+	for mharc-qemu-trivial@gnu.org; Mon, 01 Jul 2024 11:01:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sOHJC-0006FJ-NJ
- for qemu-trivial@nongnu.org; Mon, 01 Jul 2024 09:43:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1sOHJA-0005QH-Vt
- for qemu-trivial@nongnu.org; Mon, 01 Jul 2024 09:43:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1719841383;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=6rIDlGfL/DvfAluSOXFJPk4ANF0Fy+JO3hBI44JUHjo=;
- b=PdyLtTSMSigoFGfb9dPd5gYAs8g44sg8PjEcFOd/YUzYN5B8ArSS+s8YxP7vi51h2gT9mw
- TxqiXH8Gob9qTsJ5hA+ymzuLuJ6VfLyo3XUqClaQUctsRk8hvhrEF4oac7CkNj6/TBOQTU
- dcR8jQGyJORjEPIQac6lZ2Ll6L53N9E=
-Received: from mail-lj1-f198.google.com (mail-lj1-f198.google.com
- [209.85.208.198]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-41-xkGjgXoDOrmrb0HFPd6CWg-1; Mon, 01 Jul 2024 09:43:02 -0400
-X-MC-Unique: xkGjgXoDOrmrb0HFPd6CWg-1
-Received: by mail-lj1-f198.google.com with SMTP id
- 38308e7fff4ca-2ec5057538aso29558651fa.2
- for <qemu-trivial@nongnu.org>; Mon, 01 Jul 2024 06:43:01 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOIWV-00062K-1z
+ for qemu-trivial@nongnu.org; Mon, 01 Jul 2024 11:00:57 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOIWR-0001kv-J7
+ for qemu-trivial@nongnu.org; Mon, 01 Jul 2024 11:00:54 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-42565697036so24800305e9.1
+ for <qemu-trivial@nongnu.org>; Mon, 01 Jul 2024 08:00:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1719846050; x=1720450850; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=0i9XgB3FWcCofNOcUCQntbSdJHNFbhPZ+eaxWE0nNQ8=;
+ b=iCSVShggcQRNQQMmmlBA6qHTD1mGH2+EYosVY80PLCiiy4TVmMszkEhgeFuQEsuyUX
+ LfONZM1bRltGxYJ3s6rimfIkc9NiYhCxlfID1clCoZKRpzBUWyeoBBqBKbKnk5rO/HrI
+ S1kxMNPT6qHp9a3Rgys5msnp9VT7V4ZWBvBXskMzkZ/pAMYLbgJoDKLPq19FyxviGkrD
+ N9fqUGFN4FpL6GRPzbRX9yhkUhxPRGXArErTFFRZmVpUUydPYOxeztlqHMhIF69P3x0K
+ xwzosm9rmbCpiv5hQ/CsV5OP9oF7u2LCu+MgyImvG3T31JCbCaDtfDfq9QZpAbLjtqRo
+ 0HdQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719841380; x=1720446180;
+ d=1e100.net; s=20230601; t=1719846050; x=1720450850;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=6rIDlGfL/DvfAluSOXFJPk4ANF0Fy+JO3hBI44JUHjo=;
- b=lmjRy54en8dlcPKX7pJw7FMI+SI9ndPWwhVVwmIozjJrRlpkWkdqSrdhcOjsz/M1U/
- eAMSUryg9DfGa/XjOn9Hw6GKNX1egknFuLaqyg+F6Gp6Mt5QCBY4lc2wG5oXqXGA05ct
- ju+96uNOz6urXGODuEx9ScaTJqUSOk8KlN/pXq5Y32ZtQ72XRKXCHS5EE+oXHRJz1QtQ
- vgfXsgFjPRJI4PQFgMJ+ba6KE9/tv2Ld9+R4vZBIgaimAh9Y+z9skOqE9UmMouC1hD/9
- i+cHqACoACUYRsN+6US9G1+QWX3VBCWyR/DC+4JmeqQlIn8LaqynZI7VzwY5ZD0VWaBk
- rv8A==
-X-Gm-Message-State: AOJu0Yzk0/fOci9LZ6NsEH4JZDt6X7eb6uPAVs8Ws/koYUDbxPrc1YRR
- MT8VwC8IyN3FAlRBMJyUc80tDrvhkvv3EDqrGodHE9OiyA1EIcSM8iIb3MDepp8XokH2sKfuhm/
- 0kWWS0ztXWwAE1l/hunrEcmHgx3mfBOEBtI7ahM75TMsVSyt9CX36izM=
-X-Received: by 2002:a05:6512:4026:b0:52c:8206:b986 with SMTP id
- 2adb3069b0e04-52e82727b47mr4977275e87.56.1719841380570; 
- Mon, 01 Jul 2024 06:43:00 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IE2zmTcd9JMwiNF83J0g+wsUHj/wNCc9WHkEV5aW8nhhMgdwkBhzs8Q3Oounp8IrTNxtkEITA==
-X-Received: by 2002:a05:6512:4026:b0:52c:8206:b986 with SMTP id
- 2adb3069b0e04-52e82727b47mr4977226e87.56.1719841379190; 
- Mon, 01 Jul 2024 06:42:59 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
+ bh=0i9XgB3FWcCofNOcUCQntbSdJHNFbhPZ+eaxWE0nNQ8=;
+ b=JztbjNWE8nuIEkx8tjlRWr8YAVm5JCAI51eZvhVFyfmIHdEYZAKM0JommNaHuABa5c
+ qLl7+ldZUAMuaHGXWvK5W+s86tJMdEOeCP8/GDazXdN++4FmI/vQF6kdZh0UHblxJ/Rj
+ S+5xZpDMEBD4LxoAAlbaaseWCYdCevyp68rydsdzIyNVpz6m7oLXnMNmKcI7f6RoHlqO
+ Xm8RhRIvLLhCKMltKutPTrFj9BNPxjPeN61hRShXTii+4nzICZ7T7OwM9N0qnSxXrzSc
+ iNcVC0dwIpoX05WuGH+Wf5tB7GA2JNe2LoRN/U/1Zo9HKjkagXec6HcrI5fqLpDY5kgH
+ LvdQ==
+X-Gm-Message-State: AOJu0Yzu7q26KNhFA7eXqQ/23awlMtQkhvNqoRS4+bpgZr5AyPfw67bl
+ kXFhhfa6dFl9s+1KE450V1SNPxu3OnEdMMcBDOWzU+YElwYG00xOTmy3ZqKVDs4=
+X-Google-Smtp-Source: AGHT+IHFMquxgYW21IEoWEkpoGLeh85y4F6RwynFDEcc7yVdwjBqb87QK+jgfMagdnDyikQ4E2i5wA==
+X-Received: by 2002:a05:600c:3552:b0:425:7c42:d24b with SMTP id
+ 5b1f17b1804b1-4257c42d3a0mr42783875e9.18.1719846050104; 
+ Mon, 01 Jul 2024 08:00:50 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.177.159])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4257fc934b2sm58052665e9.44.2024.07.01.06.42.58
+ 5b1f17b1804b1-4258014f8b7sm62140435e9.41.2024.07.01.08.00.47
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jul 2024 06:42:58 -0700 (PDT)
-Message-ID: <90c733fe-ef96-4612-9637-60cc3e740363@redhat.com>
-Date: Mon, 1 Jul 2024 15:42:57 +0200
+ Mon, 01 Jul 2024 08:00:49 -0700 (PDT)
+Message-ID: <89618c21-b1dc-4979-af97-35576d8eeabb@linaro.org>
+Date: Mon, 1 Jul 2024 17:00:46 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] Remove inclusion of hw/hw.h from files that don't need it
 To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
  Jiri Slaby <jslaby@suse.cz>, Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-trivial@nongnu.org, Alex Williamson <alex.williamson@redhat.com>,
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>,
  Francisco Iglesias <francisco.iglesias@amd.com>,
  Alistair Francis <alistair@alistair23.me>,
  "Edgar E. Iglesias" <edgar.iglesias@gmail.com>
 References: <20240701132649.58345-1-thuth@redhat.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 In-Reply-To: <20240701132649.58345-1-thuth@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,9 +86,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jul 2024 13:43:15 -0000
+X-List-Received-Date: Mon, 01 Jul 2024 15:01:00 -0000
 
-On 7/1/24 3:26 PM, Thomas Huth wrote:
+On 1/7/24 15:26, Thomas Huth wrote:
 > hw/hw.h only contains the prototype of hw_error() nowadays, so
 > files that don't use this function don't need to include this
 > header.
@@ -108,51 +99,6 @@ On 7/1/24 3:26 PM, Thomas Huth wrote:
 >   hw/misc/edu.c                 | 1 -
 >   hw/vfio/container.c           | 1 -
 >   3 files changed, 3 deletions(-)
-> 
-> diff --git a/include/hw/misc/xlnx-cfi-if.h b/include/hw/misc/xlnx-cfi-if.h
-> index f9bd12292d..5010401517 100644
-> --- a/include/hw/misc/xlnx-cfi-if.h
-> +++ b/include/hw/misc/xlnx-cfi-if.h
-> @@ -11,7 +11,6 @@
->   #define XLNX_CFI_IF_H 1
->   
->   #include "qemu/help-texts.h"
-> -#include "hw/hw.h"
->   #include "qom/object.h"
->   
->   #define TYPE_XLNX_CFI_IF "xlnx-cfi-if"
-> diff --git a/hw/misc/edu.c b/hw/misc/edu.c
-> index fa052c44db..504178b4a2 100644
-> --- a/hw/misc/edu.c
-> +++ b/hw/misc/edu.c
-> @@ -26,7 +26,6 @@
->   #include "qemu/log.h"
->   #include "qemu/units.h"
->   #include "hw/pci/pci.h"
-> -#include "hw/hw.h"
->   #include "hw/pci/msi.h"
->   #include "qemu/timer.h"
->   #include "qom/object.h"
-> diff --git a/hw/vfio/container.c b/hw/vfio/container.c
-> index 2e7ecdf10e..88ede913d6 100644
-> --- a/hw/vfio/container.c
-> +++ b/hw/vfio/container.c
-> @@ -26,7 +26,6 @@
->   #include "exec/address-spaces.h"
->   #include "exec/memory.h"
->   #include "exec/ram_addr.h"
-> -#include "hw/hw.h"
->   #include "qemu/error-report.h"
->   #include "qemu/range.h"
->   #include "sysemu/reset.h"
 
-
-
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-
-Thanks,
-
-C.
-
-
+Thanks, patch queued.
 
