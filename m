@@ -1,75 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sOKK3-0004NA-DJ
-	for mharc-qemu-trivial@gnu.org; Mon, 01 Jul 2024 12:56:11 -0400
+	id 1sOvzM-00006f-Qb
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jul 2024 05:09:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOKK2-0004Mm-Fe
- for qemu-trivial@nongnu.org; Mon, 01 Jul 2024 12:56:10 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sOKJy-0004Vu-KY
- for qemu-trivial@nongnu.org; Mon, 01 Jul 2024 12:56:10 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-3636c572257so2407261f8f.0
- for <qemu-trivial@nongnu.org>; Mon, 01 Jul 2024 09:56:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1719852964; x=1720457764; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=uZojCX/M8iEGUl41QWmDniRskrkbd5b/r5DSD8KpT4M=;
- b=LszwQ5A3GP+NDAD4H/evlHNlLDSa6KpbYApbUBFtaZGLpGVbMe0ONbFurBcWLEdzV/
- PwyuGoRhkJXghdBPbwB7pEe0mRLvGCNKow+/zvJuEOYJVnQEkYtU8P5ky4iN8l8j414u
- 07JQRe5PbE3oMiuFqLLZcwpOh/cEiqRYVX77YaAerGAmwytz63+JtyVpkL+VS/x6Lzaa
- mWn9QK7S52o++0Z+ItaLgSKu9RH3xAZx3vhK+0Kfp08cj6o7McHvATua3wj9fhwF4Ekw
- 7ZwzhhKMoU3NCYVPVsKpLw3v2hd+rA4H0GprZKYm+sh8ZU0yGKQ7YL84ZwGwsYA3nRnW
- rwQA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719852964; x=1720457764;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=uZojCX/M8iEGUl41QWmDniRskrkbd5b/r5DSD8KpT4M=;
- b=A1HmeYPdVKiWQOddAspGUNHrZS7h7zfF0rmdoQjB+qLUjVvJz49UNYTyyv+SZ/mhvT
- nsuFU8dNmUuEDKBhH5aTPOolQ0te5ww/GgTO9lDX07EyXiBGixjp96PP3BmXeW3Cu5l4
- 8GD14k58rwoTzSP5MOH1oxzXhlAwcejWemTPqPR94ZycmY11hTmjvuGMD16eBVWnV0ha
- GbYYud0fYqCJCb/ZYs0nPd4keLnwDssoM/voXSSLcIekgfFLvbW1KN8GwblGw3fFWC91
- fFDigiyLHxnoxHzlGBP1+A920OjUzj9EuevaHJ4BZQ9P9yjtFLF//ZLryoniQ4HV9sHk
- kzSw==
-X-Gm-Message-State: AOJu0YzVnyom0tOdM2369o7FLp6rnB3QCj4QUI5WEIC1IQWA0CObzGb6
- 1XEbMqQQmz0xewHJJU9U0YkCkYeZhTq8ptUGkPuA+sq360D40/akAP4VZcxLBb4=
-X-Google-Smtp-Source: AGHT+IEN/qAAQMBm6Pc6lpO8RJk/5IVX7+vYL2S0N7eea/f8azsThOoJNiLL/+GWK+KltIUW2eAMPA==
-X-Received: by 2002:a5d:648c:0:b0:367:4ddc:fc40 with SMTP id
- ffacd0b85a97d-36775699458mr5443837f8f.6.1719852964048; 
- Mon, 01 Jul 2024 09:56:04 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.177.159])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3675a0cd778sm10731646f8f.5.2024.07.01.09.56.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 01 Jul 2024 09:56:03 -0700 (PDT)
-Message-ID: <0bb8926e-65cb-4a64-b792-96bc5544b965@linaro.org>
-Date: Mon, 1 Jul 2024 18:56:01 +0200
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sOvzL-00006O-A6
+ for qemu-trivial@nongnu.org; Wed, 03 Jul 2024 05:09:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sOvzJ-0007Dl-OT
+ for qemu-trivial@nongnu.org; Wed, 03 Jul 2024 05:09:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1719997756;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=+NrTpNaHAHqpdFkMY0digZ6OBUg+4A51BmdyFxA206E=;
+ b=bFhT8fX8DxDH6FJlkO4G6uVDnyHM/b9BRrSVNgC2K3mX6EM48VoP/qX4AxSBgD8uxyokX1
+ Z+tQUH4TZTWvigKonmZgLoIAIGQlPjk50Ld0fgPxrN8mdH8xHOOvw0T8GKq/Hv8TaIxjI5
+ 8bj+qHsDn9F/gCZBQe+UmVnxWdUpR/M=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-619-Vq7xrQyCO9awZR7ZMI_ZVw-1; Wed,
+ 03 Jul 2024 05:09:11 -0400
+X-MC-Unique: Vq7xrQyCO9awZR7ZMI_ZVw-1
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 85E6219560AE; Wed,  3 Jul 2024 09:09:09 +0000 (UTC)
+Received: from thuth-p1g4.str.redhat.com (dhcp-192-191.str.redhat.com
+ [10.33.192.191])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 99A5630000DD; Wed,  3 Jul 2024 09:09:05 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ yong.huang@smartx.com
+Cc: qemu-trivial@nongnu.org, Fam Zheng <fam@euphon.net>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>
+Subject: [PATCH] hw: Fix crash that happens when introspecting scsi-block on
+ older machine types
+Date: Wed,  3 Jul 2024 11:09:04 +0200
+Message-ID: <20240703090904.909720-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/core/loader: gunzip(): fix memory leak on error path
-To: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20240627162507.598352-1-vsementsov@yandex-team.ru>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240627162507.598352-1-vsementsov@yandex-team.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,17 +71,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 01 Jul 2024 16:56:10 -0000
+X-List-Received-Date: Wed, 03 Jul 2024 09:09:19 -0000
 
-On 27/6/24 18:25, Vladimir Sementsov-Ogievskiy wrote:
-> We should call inflateEnd() like on success path to cleanup state in s
-> variable.
-> 
-> Signed-off-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
-> ---
->   hw/core/loader.c | 1 +
->   1 file changed, 1 insertion(+)
+"make check SPEED=slow" is currently failing the device-introspect-test on
+older machine types since introspecting "scsi-block" is causing an abort:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+ $ ./qemu-system-x86_64 -M pc-q35-8.0 -monitor stdio
+ QEMU 9.0.50 monitor - type 'help' for more information
+ (qemu) device_add scsi-block,help
+ Unexpected error in object_property_find_err() at
+ ../../devel/qemu/qom/object.c:1357:
+ can't apply global scsi-disk-base.migrate-emulated-scsi-request=false:
+ Property 'scsi-block.migrate-emulated-scsi-request' not found
+ Aborted (core dumped)
+
+The problem is that the compat code tries to change the
+"migrate-emulated-scsi-request" property for all devices that are
+derived from "scsi-block", but the property has only been added
+to "scsi-hd" and "scsi-cd" via the DEFINE_SCSI_DISK_PROPERTIES macro.
+
+Thus let's fix the problem by only changing the property on the devices
+that really have this property.
+
+Fixes: b4912afa5f ("scsi-disk: Fix crash for VM configured with USB CDROM after live migration")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/core/machine.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index 655d75c21f..60858a8565 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -36,7 +36,8 @@
+ 
+ GlobalProperty hw_compat_9_0[] = {
+     {"arm-cpu", "backcompat-cntfrq", "true" },
+-    {"scsi-disk-base", "migrate-emulated-scsi-request", "false" },
++    {"scsi-hd", "migrate-emulated-scsi-request", "false" },
++    {"scsi-cd", "migrate-emulated-scsi-request", "false" },
+     {"vfio-pci", "skip-vsc-check", "false" },
+ };
+ const size_t hw_compat_9_0_len = G_N_ELEMENTS(hw_compat_9_0);
+-- 
+2.45.2
 
 
