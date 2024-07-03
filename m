@@ -1,78 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sOz23-0001Pz-1E
-	for mharc-qemu-trivial@gnu.org; Wed, 03 Jul 2024 08:24:19 -0400
+	id 1sP5op-0002pL-UM
+	for mharc-qemu-trivial@gnu.org; Wed, 03 Jul 2024 15:39:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <yong.huang@smartx.com>)
- id 1sOwKI-00071e-Mz
- for qemu-trivial@nongnu.org; Wed, 03 Jul 2024 05:30:59 -0400
-Received: from mail-oo1-xc2c.google.com ([2607:f8b0:4864:20::c2c])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sP5ol-0002nB-1w
+ for qemu-trivial@nongnu.org; Wed, 03 Jul 2024 15:39:03 -0400
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <yong.huang@smartx.com>)
- id 1sOwKG-0001X8-5J
- for qemu-trivial@nongnu.org; Wed, 03 Jul 2024 05:30:58 -0400
-Received: by mail-oo1-xc2c.google.com with SMTP id
- 006d021491bc7-5c45d13e658so239904eaf.0
- for <qemu-trivial@nongnu.org>; Wed, 03 Jul 2024 02:30:51 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sP5oi-0004YY-VZ
+ for qemu-trivial@nongnu.org; Wed, 03 Jul 2024 15:39:02 -0400
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-52cdbc20faeso8214312e87.1
+ for <qemu-trivial@nongnu.org>; Wed, 03 Jul 2024 12:39:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=smartx-com.20230601.gappssmtp.com; s=20230601; t=1719999050; x=1720603850;
- darn=nongnu.org; 
+ d=linaro.org; s=google; t=1720035537; x=1720640337; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=GFOMHh5M0Xsb8DBjQGrmeB6KeO2VJveqUhb7Sak+Apk=;
- b=xjWk26SXsKfnePIpndmySUJ7ffWwqqxXCl0gG8c5CMG2mh9XqvdUc40lIFcP+2j+iI
- PGdgQHlhEiEeDuY4HL2u8ZdoKdqtDZu8gqzcyVGSP4JTE7DJWALi96KW3ly029z29npt
- co5B9JchaDj4VtjlczvKTwIfwDDSvgWdoAnSITlE5PM3OUOzCUJkaM8/kuGMWwzQ1sSs
- fLRWJuIs2q2xGEg8O2476gSVnqmSaVlOm2X/v8W+Q2ywaw4GTKdNBfabYNhDQ+IA09iw
- 7w+2TCZzrWtyAQIJaySF+YKMhYxt8FfQB9ugG9V0fsJOoT14BTXhiuMXZuWzLF6y4f06
- yUFQ==
+ bh=w0epxMydntOWolgrCPdLLXWE4HBIG9qxSZgFKtGSlgU=;
+ b=YasXbhyLuPb396yescQJFt8SdpoNQQI46EGSKQ0VFkR7bb3z1B4QF+OCgjZDr0FwjM
+ 2B6ATRuTzqUxlq23t25pilVvovgRwes9Tuf8Xo3gTI8LYa9mgsCcNGjwpy8EDCN5NGs0
+ 3kfF3PLIyZ9b3sfJx3+ayfz2RnkySCn9Jv1ZDuyD4finZ6GXUKBV0/z4m1YEugLVlY2Y
+ enDE4b1djKyH5zgEKbRX9MpP2PsplEEexb1mSnkd/64ttexdUKblh3Ol3uRWEyXCqcXC
+ 2mzNxUf6pgNpGcht6edSRD0hdJsY+qC4qBq2JbFKKgM/RCJUWxoKbHcJS9RcdwS+fjqO
+ ua8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1719999050; x=1720603850;
+ d=1e100.net; s=20230601; t=1720035537; x=1720640337;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=GFOMHh5M0Xsb8DBjQGrmeB6KeO2VJveqUhb7Sak+Apk=;
- b=SUOmh0bw4PfAThDVQ99EV+Tq7dedX+c6yjM2nCb4TWbhT5FUX4cgtNRIkRpz96Hixq
- bXbOXWvBrWY64cDA2KkfkJkVBjmCveMkX2knbF65RedE/byakuiwn2RgVyLkrjF+7u8h
- a/Gs2cliEOC3b2tDysRl7f32qWhICNjXFS/CowUl/XnZzw/Wd88P9f3uRp37txrqROaS
- m2fv4dbVtLqpkdi+zKpS+dpkXYbGUgVfrxg40PivKDtCs/BCcEx8RZIpVYYr2Dq95n4q
- YDSpxpGhPwDEdKMqaA3caiNOVMuxt4v+0uY4m1cy9dCNCgGWPf/wkz00OpEMsc5g+Nv0
- dX8w==
+ bh=w0epxMydntOWolgrCPdLLXWE4HBIG9qxSZgFKtGSlgU=;
+ b=YRrbb/ZZcpepIFwfDwt1EVjcDJqHa8eFsnpgWOt1yfJTimvCF3mkrLBBwRfEgc+jhh
+ Uv3+zpUQYgTmf5K6bNLNrmsdE+UIJSwULAqDzgky+qZ4NA/8ls95fZ09bsLwngKH7dwY
+ s+HeWwo0NrgHhn/JLV+fWR4Pp+hDp5lhwP8F0EMYpHfcr1Bxh63jksbTzb3fNto3KnLx
+ N6a2cnGPOeoyIS93vZMHUOe1+5X/AaYCAMIqxD0L1lkrPamXH4+YAYt3YU+5p9e72aGa
+ SNxtMmgZcq4k6rK7J6iA5KcyK0WW8MumV6vcRIXO4zAWjPL5bJDQn9sY/lgWKcOHPQvM
+ Gx6A==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWAyhww6ZxOEUCi77VQ8gYWMUvHBce58uk8KjTOdgM1nmQ1vPP1J+GI1xO5JbsjGVo5Sp788EWtuJF5zUXRGjVbsF6EKtxoqQ==
-X-Gm-Message-State: AOJu0Yy+HU4v9mhMK9kM5u0dIAfuqRajqcdNaAbPeIB1AW2kXw7O+y5T
- +J1nFWjsI15O8pJaG8DQHrMt/7Wat7gIwimW65eiCz2iwTz7bHnbIA0k7exqd3D/qXd0IL82STh
- 8x4WlkA1GUvC2ck6AU00GC+1zCWFyxQseynYaOg==
-X-Google-Smtp-Source: AGHT+IHz3MwklUCvPR7TL85bXg34gAntSrn2Sb6dj034I58H6W06sVPUBRLD03i8LfqF1I0Flni5hfOkSAtoqfV+pDk=
-X-Received: by 2002:a05:6871:544:b0:25d:7d7d:c96a with SMTP id
- 586e51a60fabf-25e103ae1b0mr315804fac.16.1719999049391; Wed, 03 Jul 2024
- 02:30:49 -0700 (PDT)
+ AJvYcCX1g4FqbBrgrJgpe5qodrCG5aJymZkCMUThcZq+M0UGLE/v+ykhE7dnI8X1Gg8Dc1tMcHa3U6et3hf+zUD+1vN3zQlL/r6OTA==
+X-Gm-Message-State: AOJu0YwJ6wHfq/0iAQwKzDWhDIxaWihRnkTjt5Xicf5bcA1+HkhoUL/5
+ fOyWywcdd/7nqVKcOXt04q8qBqcHXY0E1FygEj8fD7992EFY0IpVPoGdBVgD8kKMYFLePRyi4sD
+ qEs/5/UXk6zF6qIROZGgTtbb9GyNCJleywz3e8A==
+X-Google-Smtp-Source: AGHT+IGX84eTRkM17McAUysKFWFKZro1ah9fPl6hpUZqLbCIbjrgD4bsGB2BdPLrdE3e++rMjFWbz2+KQ6CGp3fZrsA=
+X-Received: by 2002:a05:6512:39c5:b0:52c:da18:618c with SMTP id
+ 2adb3069b0e04-52e826fb768mr9326826e87.45.1720035537580; Wed, 03 Jul 2024
+ 12:38:57 -0700 (PDT)
 MIME-Version: 1.0
-References: <20240703090904.909720-1-thuth@redhat.com>
-In-Reply-To: <20240703090904.909720-1-thuth@redhat.com>
-From: Yong Huang <yong.huang@smartx.com>
-Date: Wed, 3 Jul 2024 17:30:33 +0800
-Message-ID: <CAK9dgmavQqRAGisTE22LHES6cORwnJUyj8QAXym9LJcLuKHkFQ@mail.gmail.com>
-Subject: Re: [PATCH] hw: Fix crash that happens when introspecting scsi-block
- on older machine types
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-trivial@nongnu.org, 
- Fam Zheng <fam@euphon.net>, Eduardo Habkost <eduardo@habkost.net>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
- Yanan Wang <wangyanan55@huawei.com>
-Content-Type: multipart/alternative; boundary="0000000000005a7acc061c547cbf"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::c2c;
- envelope-from=yong.huang@smartx.com; helo=mail-oo1-xc2c.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+References: <20240703033901.1017-1-dongzhihai@eswincomputing.com>
+In-Reply-To: <20240703033901.1017-1-dongzhihai@eswincomputing.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Wed, 3 Jul 2024 20:38:46 +0100
+Message-ID: <CAFEAcA8U8vaixGLy-UG9kt0EYvsqmbU2c=HUPTzCdsYwo-ZYRA@mail.gmail.com>
+Subject: Re: [PATCH] README.rst: add the missing punctuations
+To: Zhihai Dong <dongzhihai@eswincomputing.com>
+Cc: qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 03 Jul 2024 08:24:17 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -84,149 +77,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 03 Jul 2024 09:30:59 -0000
+X-List-Received-Date: Wed, 03 Jul 2024 19:39:03 -0000
 
---0000000000005a7acc061c547cbf
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-On Wed, Jul 3, 2024 at 5:09=E2=80=AFPM Thomas Huth <thuth@redhat.com> wrote=
-:
-
-> "make check SPEED=3Dslow" is currently failing the device-introspect-test=
- on
-> older machine types since introspecting "scsi-block" is causing an abort:
+On Wed, 3 Jul 2024 at 04:40, Zhihai Dong <dongzhihai@eswincomputing.com> wrote:
 >
->  $ ./qemu-system-x86_64 -M pc-q35-8.0 -monitor stdio
->  QEMU 9.0.50 monitor - type 'help' for more information
->  (qemu) device_add scsi-block,help
->  Unexpected error in object_property_find_err() at
->  ../../devel/qemu/qom/object.c:1357:
->  can't apply global scsi-disk-base.migrate-emulated-scsi-request=3Dfalse:
->  Property 'scsi-block.migrate-emulated-scsi-request' not found
->  Aborted (core dumped)
+> Make the README more clearly.
 >
-> The problem is that the compat code tries to change the
-> "migrate-emulated-scsi-request" property for all devices that are
-> derived from "scsi-block", but the property has only been added
-> to "scsi-hd" and "scsi-cd" via the DEFINE_SCSI_DISK_PROPERTIES macro.
->
-> Thus let's fix the problem by only changing the property on the devices
-> that really have this property.
->
-
-Thanks for the fix.
-
-
-> Fixes: b4912afa5f ("scsi-disk: Fix crash for VM configured with USB CDROM
-> after live migration")
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Zhihai Dong <dongzhihai@eswincomputing.com>
 > ---
->  hw/core/machine.c | 3 ++-
->  1 file changed, 2 insertions(+), 1 deletion(-)
+>  README.rst | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
 >
-> diff --git a/hw/core/machine.c b/hw/core/machine.c
-> index 655d75c21f..60858a8565 100644
-> --- a/hw/core/machine.c
-> +++ b/hw/core/machine.c
-> @@ -36,7 +36,8 @@
+> diff --git a/README.rst b/README.rst
+> index 21df79ef43..b120a1f69e 100644
+> --- a/README.rst
+> +++ b/README.rst
+> @@ -82,7 +82,7 @@ guidelines set out in the `style section
+>  the Developers Guide.
 >
->  GlobalProperty hw_compat_9_0[] =3D {
->      {"arm-cpu", "backcompat-cntfrq", "true" },
-> -    {"scsi-disk-base", "migrate-emulated-scsi-request", "false" },
-> +    {"scsi-hd", "migrate-emulated-scsi-request", "false" },
-> +    {"scsi-cd", "migrate-emulated-scsi-request", "false" },
->      {"vfio-pci", "skip-vsc-check", "false" },
->  };
->  const size_t hw_compat_9_0_len =3D G_N_ELEMENTS(hw_compat_9_0);
+>  Additional information on submitting patches can be found online via
+> -the QEMU website
+> +the QEMU website:
+>
+>  * `<https://wiki.qemu.org/Contribute/SubmitAPatch>`_
+>  * `<https://wiki.qemu.org/Contribute/TrivialPatches>`_
+> @@ -102,7 +102,7 @@ requires a working 'git send-email' setup, and by default doesn't
+>  automate everything, so you may want to go through the above steps
+>  manually for once.
+>
+> -For installation instructions, please go to
+> +For installation instructions, please go to:
+>
+>  *  `<https://github.com/stefanha/git-publish>`_
+>
+> @@ -159,7 +159,7 @@ Contact
+>  =======
+>
+>  The QEMU community can be contacted in a number of ways, with the two
+> -main methods being email and IRC
+> +main methods being email and IRC:
+>
+>  * `<mailto:qemu-devel@nongnu.org>`_
+>  * `<https://lists.nongnu.org/mailman/listinfo/qemu-devel>`_
 > --
-> 2.45.2
->
-Acked-by: Hyman Huang <yong.huang@smartx.com>
+> 2.34.1
 
---=20
-Best regards
+(cc'ing qemu-trivial)
 
---0000000000005a7acc061c547cbf
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-<div dir=3D"ltr"><div dir=3D"ltr"><div class=3D"gmail_default" style=3D"fon=
-t-family:&quot;comic sans ms&quot;,sans-serif"><br></div></div><br><div cla=
-ss=3D"gmail_quote"><div dir=3D"ltr" class=3D"gmail_attr">On Wed, Jul 3, 202=
-4 at 5:09=E2=80=AFPM Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com">th=
-uth@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote" st=
-yle=3D"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:sol=
-id;border-left-color:rgb(204,204,204);padding-left:1ex">&quot;make check SP=
-EED=3Dslow&quot; is currently failing the device-introspect-test on<br>
-older machine types since introspecting &quot;scsi-block&quot; is causing a=
-n abort:<br>
-<br>
-=C2=A0$ ./qemu-system-x86_64 -M pc-q35-8.0 -monitor stdio<br>
-=C2=A0QEMU 9.0.50 monitor - type &#39;help&#39; for more information<br>
-=C2=A0(qemu) device_add scsi-block,help<br>
-=C2=A0Unexpected error in object_property_find_err() at<br>
-=C2=A0../../devel/qemu/qom/object.c:1357:<br>
-=C2=A0can&#39;t apply global scsi-disk-base.migrate-emulated-scsi-request=
-=3Dfalse:<br>
-=C2=A0Property &#39;scsi-block.migrate-emulated-scsi-request&#39; not found=
-<br>
-=C2=A0Aborted (core dumped)<br>
-<br>
-The problem is that the compat code tries to change the<br>
-&quot;migrate-emulated-scsi-request&quot; property for all devices that are=
-<br>
-derived from &quot;scsi-block&quot;, but the property has only been added<b=
-r>
-to &quot;scsi-hd&quot; and &quot;scsi-cd&quot; via the DEFINE_SCSI_DISK_PRO=
-PERTIES macro.<br>
-<br>
-Thus let&#39;s fix the problem by only changing the property on the devices=
-<br>
-that really have this property.<br></blockquote><div><span style=3D"font-fa=
-mily:&quot;comic sans ms&quot;,sans-serif"><br></span></div><div><span styl=
-e=3D"font-family:&quot;comic sans ms&quot;,sans-serif">Thanks for the fix.<=
-/span>=C2=A0</div><div><br></div><blockquote class=3D"gmail_quote" style=3D=
-"margin:0px 0px 0px 0.8ex;border-left-width:1px;border-left-style:solid;bor=
-der-left-color:rgb(204,204,204);padding-left:1ex">
-<br>
-Fixes: b4912afa5f (&quot;scsi-disk: Fix crash for VM configured with USB CD=
-ROM after live migration&quot;)<br>
-Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=
-=3D"_blank">thuth@redhat.com</a>&gt;<br>
----<br>
-=C2=A0hw/core/machine.c | 3 ++-<br>
-=C2=A01 file changed, 2 insertions(+), 1 deletion(-)<br>
-<br>
-diff --git a/hw/core/machine.c b/hw/core/machine.c<br>
-index 655d75c21f..60858a8565 100644<br>
---- a/hw/core/machine.c<br>
-+++ b/hw/core/machine.c<br>
-@@ -36,7 +36,8 @@<br>
-<br>
-=C2=A0GlobalProperty hw_compat_9_0[] =3D {<br>
-=C2=A0 =C2=A0 =C2=A0{&quot;arm-cpu&quot;, &quot;backcompat-cntfrq&quot;, &q=
-uot;true&quot; },<br>
--=C2=A0 =C2=A0 {&quot;scsi-disk-base&quot;, &quot;migrate-emulated-scsi-req=
-uest&quot;, &quot;false&quot; },<br>
-+=C2=A0 =C2=A0 {&quot;scsi-hd&quot;, &quot;migrate-emulated-scsi-request&qu=
-ot;, &quot;false&quot; },<br>
-+=C2=A0 =C2=A0 {&quot;scsi-cd&quot;, &quot;migrate-emulated-scsi-request&qu=
-ot;, &quot;false&quot; },<br>
-=C2=A0 =C2=A0 =C2=A0{&quot;vfio-pci&quot;, &quot;skip-vsc-check&quot;, &quo=
-t;false&quot; },<br>
-=C2=A0};<br>
-=C2=A0const size_t hw_compat_9_0_len =3D G_N_ELEMENTS(hw_compat_9_0);<br>
--- <br>
-2.45.2<br></blockquote></div><div><div style=3D"font-family:&quot;comic san=
-s ms&quot;,sans-serif" class=3D"gmail_default"></div><div style=3D"font-fam=
-ily:&quot;comic sans ms&quot;,sans-serif" class=3D"gmail_default">Acked-by:=
-=C2=A0Hyman Huang &lt;<a href=3D"mailto:yong.huang@smartx.com">yong.huang@s=
-martx.com</a>&gt;</div></div><div style=3D"font-family:&quot;comic sans ms&=
-quot;,sans-serif" class=3D"gmail_default"><br></div><span class=3D"gmail_si=
-gnature_prefix">-- </span><br><div dir=3D"ltr" class=3D"gmail_signature"><d=
-iv dir=3D"ltr"><font face=3D"comic sans ms, sans-serif">Best regards</font>=
-</div></div></div>
-
---0000000000005a7acc061c547cbf--
+thanks
+-- PMM
 
