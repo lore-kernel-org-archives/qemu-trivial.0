@@ -1,72 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sPItc-0003XD-Lg
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Jul 2024 05:36:56 -0400
+	id 1sPJ4f-0007nb-B0
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Jul 2024 05:48:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sPIta-0003U8-MN
- for qemu-trivial@nongnu.org; Thu, 04 Jul 2024 05:36:55 -0400
-Received: from mail-ed1-x532.google.com ([2a00:1450:4864:20::532])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1sPJ4c-0007nA-RL
+ for qemu-trivial@nongnu.org; Thu, 04 Jul 2024 05:48:18 -0400
+Received: from mail-lf1-x12e.google.com ([2a00:1450:4864:20::12e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sPItP-0003Ii-Rs
- for qemu-trivial@nongnu.org; Thu, 04 Jul 2024 05:36:54 -0400
-Received: by mail-ed1-x532.google.com with SMTP id
- 4fb4d7f45d1cf-58ba3e38027so524151a12.1
- for <qemu-trivial@nongnu.org>; Thu, 04 Jul 2024 02:36:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1sPJ4P-000346-KQ
+ for qemu-trivial@nongnu.org; Thu, 04 Jul 2024 05:48:18 -0400
+Received: by mail-lf1-x12e.google.com with SMTP id
+ 2adb3069b0e04-52cd80e55efso708145e87.0
+ for <qemu-trivial@nongnu.org>; Thu, 04 Jul 2024 02:48:05 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1720085801; x=1720690601; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=yuLhLjASJ1XEpE9lWqsWVoEP/ie88qXwmF7fpyahyP0=;
- b=umj+/yro0wwqzZGeQ19G21nz70YWQXk1qlbrqiBBMJ8wKu03Rw31dyC/d3zg/CLcUk
- eXTDUDe1NOsU28AmSwBhjmwhIRQ99jiESOAQ85V9BTP8+Ic8K2Imv9tSnqgPcQZXShzJ
- lMevqBmNhf/P3BRjyqDgSiWIruNebECnT4FW/hVRvhn2Vc37Rljv6p3I+xpfkJZwFMvJ
- OwzR4tjTSgpsT6rp6mKtNoxYUhjk6AfINn76l9CaqI0O2Fzi+/UW0xDj7kEJv72jU4XU
- HrQdhHlPq441DQuWls55fsiFxeEG/Sdi4Km1MYvcjJ9YulZEuzquKGgNVXudhZcUa4+B
- Xmew==
+ d=linaro.org; s=google; t=1720086483; x=1720691283; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:references
+ :in-reply-to:subject:cc:to:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=eTGtAckJ4OPcEYf3bG6lbqS6cGVXgdLQAk3WTr1SGgw=;
+ b=NdSZetiD63igXmtSEIVC6JJc/cAWwLKpU7TsS9NWF7yZvxV3W6KJ72kLeyY1gi3tmT
+ GW02Ntx2B5HTbMG7M2rg9qjAV7egfAAF7f2VkrqQVNNzaBIjtlfLGCbuCoI5TPIeIr6J
+ tk0Do3vOWvQf66hSpzkKWbsM3d6CW5d1n2dyVdu5EEObUW38RQEDP8w8y4bLoK3z1gSF
+ dmYXKGtWeSl6z64XFrHuDUiug3rUNDJKpEMpqIJ5GTPh9DrEb9x27CAjeLOHyGTeOAe4
+ T1KCiYKwRgVH8XiDaEq3nR+KEGTrOIjuhmoGAO06kUgl26U5pHBDdKWowM2FNf5W+ZOg
+ O8gg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1720085801; x=1720690601;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=yuLhLjASJ1XEpE9lWqsWVoEP/ie88qXwmF7fpyahyP0=;
- b=dXYF3QF9gVXEOgTlIzaRTyk90jhJQa0D9SQYoc1BtklCbaXpTpf5eYB0WhsmZKh7YA
- 96V6yh6p/oM9mtbJz3HKtiKu0B3iN2TK0d8vnXPXHQC0Dx1rt/B+W78v9wCMBf8Oh0iz
- Zhq7D33Tlzf6SuQn+3avTfH541tkTDnahljPfhxenK+XPomqsAwrIKNjjO9rxmk9tybX
- YGecb3tHUYLgvKJEca2PTC/Kpohks8Xy9YJHFS2ULpw+8z5+Jkh/kDwlt0ouwSF1nUfx
- tbbcqrVA8QlzOtWWcY3I2SsnLTJJJ7gzxlusMCKhefvBjWAfqbstPsPR1QijI+OCuqHP
- h/+A==
+ d=1e100.net; s=20230601; t=1720086483; x=1720691283;
+ h=content-transfer-encoding:mime-version:message-id:date:references
+ :in-reply-to:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=eTGtAckJ4OPcEYf3bG6lbqS6cGVXgdLQAk3WTr1SGgw=;
+ b=odg/15A38HGTRDdi06WkuDkYUnR3oNXQFz6K2TnSwVFbHHJHzecfArinAjQcHCqBfk
+ E+nsR3PwrE4lnE5aayaZGnZNbQOcbmbG7sV9Cr61ItD47tGwp9usxHO0cuG/0b3XJFCt
+ QSC2V01n18oYlmBfuNG32ItKBUj/GwAY2TMN0y3CnFV1JtUt3xJ5YLvLpSFBF9xj8iqQ
+ GbadCFERCeFLcqZcYIO8UuZI1Vv0c9EWNyETYzgSVWgMZuTjoxTBXXpclq983eVC8a7k
+ lhQZ5l5we4jAMDyEmvJZQJOULz/lTeG+yS2Wd5Ci/fyzrDNQc78gXXjvYZ6K3k9NWU1Q
+ VKjQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU4tNql6GjO71TX5IDZ/eYePItZkLYnOwXQkE/F+5AMS3G0ZO5Oev0Ki8PBiWJ1wh4vyncztHHT5yitxv4kcOFhyp9iPpnXMQ==
-X-Gm-Message-State: AOJu0YxAI4QNl0+EAm7zbNNNVSAKBLy4qBn8UvyVvSX+c4B+MljXdy/w
- iyWStffLu2lvPFs895DdFUdjqBjwE+hG5qHixnctzEV4rcZnYIIIKvNLle8uTLZn9OI9iVDAZUc
- P7HQfpQMY6p7P89zSWmi5l5+qNW+Nax4fTXtA+Q==
-X-Google-Smtp-Source: AGHT+IFjApFLiaKc4LvPN6+NUbdiC47/rQJa7tmBT0CMBx29s5hQA5QcPVHPWq1Jtt5GMgox7SKgOIOQzLS3HUS8Pcw=
-X-Received: by 2002:a05:6402:2108:b0:58d:410a:32a9 with SMTP id
- 4fb4d7f45d1cf-58e5add2bfemr877931a12.15.1720085801214; Thu, 04 Jul 2024
- 02:36:41 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240704084759.1824420-1-zhao1.liu@intel.com>
- <20240704084759.1824420-3-zhao1.liu@intel.com>
-In-Reply-To: <20240704084759.1824420-3-zhao1.liu@intel.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 4 Jul 2024 10:36:30 +0100
-Message-ID: <CAFEAcA_R+F+CoHvQY53K1sGsBe2fKm3mD35rLkLQ-RosoYEr-A@mail.gmail.com>
-Subject: Re: [PATCH 2/4] hw/i386/x86: Fix superfluous trailing semicolon
+ AJvYcCW6Eo5VqGBf1cSz0iZm1BJ0nFd8rYzuY8S4mI9UILfqNun3MKpPvKSBoQiTQ6dQYGsfKtxD55Zy1uGa0+A7Fne5WoqV6ivnnQ==
+X-Gm-Message-State: AOJu0YzudMRho9O2G8Or+KMeqZlmH5GJHq+tVVq6tIZK8sx807h0YpCl
+ +pIXTo33AQECAR0BmxC5CbQmKpOAm6RTXj8K+K8IG6Bq8ujWtnpD/G2x71nbaLo=
+X-Google-Smtp-Source: AGHT+IHHrsxmnvpZAyGJcca6l/ncdPkOXI0cqmZbtEj4hJx2fPkPjCChla7/npTlrlvo8UknmC/x7w==
+X-Received: by 2002:a19:6a0d:0:b0:52c:905b:ea5f with SMTP id
+ 2adb3069b0e04-52ea06c7fc2mr869461e87.63.1720086483236; 
+ Thu, 04 Jul 2024 02:48:03 -0700 (PDT)
+Received: from draig.lan ([85.9.250.243]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a77af9f46c0sm70223766b.181.2024.07.04.02.48.02
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 04 Jul 2024 02:48:02 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 14A7B5F839;
+ Thu,  4 Jul 2024 10:48:02 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+Cc: Michael Tokarev <mjt@tls.msk.ru>,  Laurent Vivier <laurent@vivier.eu>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::532;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x532.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Subject: Re: [PATCH 1/4] accel/kvm/kvm-all: Fix superfluous trailing semicolon
+In-Reply-To: <20240704084759.1824420-2-zhao1.liu@intel.com> (Zhao Liu's
+ message of "Thu, 4 Jul 2024 16:47:56 +0800")
+References: <20240704084759.1824420-1-zhao1.liu@intel.com>
+ <20240704084759.1824420-2-zhao1.liu@intel.com>
+Date: Thu, 04 Jul 2024 10:48:02 +0100
+Message-ID: <87cyntpjxp.fsf@draig.linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::12e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-lf1-x12e.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,33 +87,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Jul 2024 09:36:56 -0000
+X-List-Received-Date: Thu, 04 Jul 2024 09:48:19 -0000
 
-On Thu, 4 Jul 2024 at 09:33, Zhao Liu <zhao1.liu@intel.com> wrote:
->
+Zhao Liu <zhao1.liu@intel.com> writes:
+
 > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 > ---
->  hw/i386/x86.c | 2 +-
+>  accel/kvm/kvm-all.c | 2 +-
 >  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/hw/i386/x86.c b/hw/i386/x86.c
-> index a4aa8e081098..01fc5e656272 100644
-> --- a/hw/i386/x86.c
-> +++ b/hw/i386/x86.c
-> @@ -242,7 +242,7 @@ static void x86_machine_get_pit(Object *obj, Visitor *v, const char *name,
->  static void x86_machine_set_pit(Object *obj, Visitor *v, const char *name,
->                                      void *opaque, Error **errp)
->  {
-> -    X86MachineState *x86ms = X86_MACHINE(obj);;
-> +    X86MachineState *x86ms = X86_MACHINE(obj);
->
->      visit_type_OnOffAuto(v, name, &x86ms->pit, errp);
->  }
-> --
-> 2.34.1
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index 2b4ab896794b..64bf47a03300 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -3878,7 +3878,7 @@ static StatsList *add_kvmstat_entry(struct kvm_stat=
+s_desc *pdesc,
+>      /* Alloc and populate data list */
+>      stats =3D g_new0(Stats, 1);
+>      stats->name =3D g_strdup(pdesc->name);
+> -    stats->value =3D g_new0(StatsValue, 1);;
+> +    stats->value =3D g_new0(StatsValue, 1);
+>=20=20
+>      if ((pdesc->flags & KVM_STATS_UNIT_MASK) =3D=3D KVM_STATS_UNIT_BOOLE=
+AN) {
+>          stats->value->u.boolean =3D *stats_data;
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-thanks
--- PMM
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 
