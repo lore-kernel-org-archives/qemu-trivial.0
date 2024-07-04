@@ -1,62 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sPHtb-0007DR-LC
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Jul 2024 04:32:51 -0400
+	id 1sPIse-0001r8-W0
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Jul 2024 05:35:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sPHtY-0006xW-7Y; Thu, 04 Jul 2024 04:32:48 -0400
-Received: from mgamail.intel.com ([192.198.163.17])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sPHtP-00051p-Dh; Thu, 04 Jul 2024 04:32:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1720081959; x=1751617959;
- h=from:to:cc:subject:date:message-id:in-reply-to:
- references:mime-version:content-transfer-encoding;
- bh=lJ3uEcOixGTUXfyfihGmHOnuYHgDolQXivQigTutBRU=;
- b=Z1uDeKksg2n69p7ku+fmoqdh6NyKu8vSJ/lkTaKvnR4ck3wJ72Gn6pBS
- wtpoeyYgwBnVY3kZlMYmUr4im5+qiJagjc18lRmw0+nDCSgGaZJTVZmQd
- nWqDh5GoMz6EOSGvLznAhlYtEpohT0cbwkoVRFZEyEYNAQ1QGG1t4ThYs
- /+L9Kq0PDF26fhNowkQYDdCSCFs0APOBNUsMZIefEUZ81MsDSQDF/Pu+3
- IbX3V/eeKqxLz4GH15PjULL1VBJtE81Dbk7jXbYi1X7DhKByh2C+fq1VG
- XlMt6aehK+IO4tgjov2OxqXDVJXQTU9V3eO3++mRf7IRH0cUnqVy0slpC g==;
-X-CSE-ConnectionGUID: 4tES1O8hTkCuP2NlxehWvA==
-X-CSE-MsgGUID: VmaNae26TOi8PvWp5u8Kjw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11122"; a="17215721"
-X-IronPort-AV: E=Sophos;i="6.09,183,1716274800"; d="scan'208";a="17215721"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jul 2024 01:32:32 -0700
-X-CSE-ConnectionGUID: tIo86+0xTliphpbj0bxmRg==
-X-CSE-MsgGUID: R16Q5F3NTPqzvjrftjj2UQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,183,1716274800"; d="scan'208";a="46597259"
-Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa010.fm.intel.com with ESMTP; 04 Jul 2024 01:32:30 -0700
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>, Brian Cain <bcain@quicinc.com>
-Subject: [PATCH 4/4] target/hexagon/imported/mmvec: Fix superfluous trailing
- semicolon
-Date: Thu,  4 Jul 2024 16:47:59 +0800
-Message-Id: <20240704084759.1824420-5-zhao1.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20240704084759.1824420-1-zhao1.liu@intel.com>
-References: <20240704084759.1824420-1-zhao1.liu@intel.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sPIsc-0001pL-PF
+ for qemu-trivial@nongnu.org; Thu, 04 Jul 2024 05:35:54 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sPIsX-00036z-Px
+ for qemu-trivial@nongnu.org; Thu, 04 Jul 2024 05:35:54 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-57ccd1111aeso596603a12.0
+ for <qemu-trivial@nongnu.org>; Thu, 04 Jul 2024 02:35:49 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1720085748; x=1720690548; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=U03veFQenI/Utth8gnAPVCdRcWiHwgvsqN6ytuwipU0=;
+ b=vAbGfGebxKLLthr8qzX+fXXDdXI5ZjHzvzhIh8LR9YOn3X2S2Axx9hwSSRbcdILjDe
+ QaQJyrG4XIvOlQCgBd2s2Fff1/1MOJi2D2g1XQt9iGiHdbuO7ngpbznQ2jMyRdUC4B4C
+ +Kt2ya66bY9yPYb5y6pt4RkuAG43E2uh2wchSR3ZI5SOanoVSovUSM5DpCnj1HCTbAA9
+ +38KoysyscVyA/1Ttd1AQQJZXdiLp0KoFjh9zFWXFQ4ZZk0WXfP7H0ds39HqktA8/HNY
+ 0ij3yNbjI52c1++46D/lzUDIBTebIGL6SIinP6/0PlNN/loLSv7GS/k3ps5B45KmQVIv
+ QxAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1720085748; x=1720690548;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=U03veFQenI/Utth8gnAPVCdRcWiHwgvsqN6ytuwipU0=;
+ b=XTnhiza7k6m1Z2QV2upCQqlrkerpqynb6EaesJ4n/aMnQIlhb28iXgD3HXJ+cD1f9X
+ +c7S7T/1Ddj6UpCj6JsuaNLI3zZWl3+0lzRFOTJSXC9XiRF3zTk9IHRBmnkvHyzWyRA8
+ Ns+TKB/7N0LKiwYG1rVef4/1wyc8XACmcAchWK1AZwh866ipvZUjAMJWJ8fR3o86GiQQ
+ 0JKZ4enPhUkHFsudYyEUfYGr6vdo0TntSi/I/RRciaa0YVImrlPp61qrLKJ3DeUshcWu
+ DE9YzYgmno9j+prnkHTa4VEsGNZ8VIAaPLYB9gHaogDExZSfWudmBIftcud0ulTBNqrB
+ /7ww==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXr3cD9bJrqAaTcgaPkmM97iV+HuPZW/CGp4jlPo3DtUhsDTSLjijqowfvqWnyTlOI67aCMu8qI0VGyzu2+zE1zNcS2jQAuUA==
+X-Gm-Message-State: AOJu0Yzl6LxWZvmSHQ4bi+uEDV+Vr1a7b5YkOvyY9pxiSyAcZrmSKwrk
+ /wc+Pa2R0Fh6unJszGy4sMnyejBwNIV79NPVdduO36zfrgl6ofNzRNQIQ2VXpnXVPcobPcUnock
+ pu8Vh2nJmECF2MF9eBxg7D6tocvhsoOAy1LJ0cQ==
+X-Google-Smtp-Source: AGHT+IHiDLwFohbLMfdykNOns5eO0chkk+sAjL47R3R0AibStB3FYkrUSI23NG5RIx3kTVScr/rG5M/m69WmYpn0WOs=
+X-Received: by 2002:a05:6402:11d0:b0:57c:5ec6:1466 with SMTP id
+ 4fb4d7f45d1cf-58e5b2b0643mr913509a12.25.1720085748120; Thu, 04 Jul 2024
+ 02:35:48 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=192.198.163.17; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20240704084759.1824420-1-zhao1.liu@intel.com>
+ <20240704084759.1824420-4-zhao1.liu@intel.com>
+In-Reply-To: <20240704084759.1824420-4-zhao1.liu@intel.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 4 Jul 2024 10:35:36 +0100
+Message-ID: <CAFEAcA8BAwjLo_4M_U6ucbM9at9ko28mXJPq7yEByjG1fr3o=A@mail.gmail.com>
+Subject: Re: [PATCH 3/4] util/oslib-posix: Fix superfluous trailing semicolon
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, 
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -69,31 +80,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Jul 2024 08:32:48 -0000
+X-List-Received-Date: Thu, 04 Jul 2024 09:35:55 -0000
 
-Fix the superfluous trailing semicolon in target/hexagon/imported/mmvec/
-ext.idef.
+On Thu, 4 Jul 2024 at 09:33, Zhao Liu <zhao1.liu@intel.com> wrote:
+>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+>  util/oslib-posix.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/util/oslib-posix.c b/util/oslib-posix.c
+> index e76441695bdc..b090fe0eed0d 100644
+> --- a/util/oslib-posix.c
+> +++ b/util/oslib-posix.c
+> @@ -263,7 +263,7 @@ int qemu_socketpair(int domain, int type, int protocol, int sv[2])
+>          return ret;
+>      }
+>  #endif
+> -    ret = socketpair(domain, type, protocol, sv);;
+> +    ret = socketpair(domain, type, protocol, sv);
+>      if (ret == 0) {
+>          qemu_set_cloexec(sv[0]);
+>          qemu_set_cloexec(sv[1]);
+> --
+> 2.34.1
+>
 
-Cc: Brian Cain <bcain@quicinc.com>
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
----
- target/hexagon/imported/mmvec/ext.idef | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/target/hexagon/imported/mmvec/ext.idef b/target/hexagon/imported/mmvec/ext.idef
-index 98daabfb07c4..03d31f6181d7 100644
---- a/target/hexagon/imported/mmvec/ext.idef
-+++ b/target/hexagon/imported/mmvec/ext.idef
-@@ -2855,7 +2855,7 @@ EXTINSN(V6_vscattermhw_add,  "vscatter(Rt32,Mu2,Vvv32.w).h+=Vw32", ATTRIBS(A_EXT
-     fVALIGN(RtV, element_size);
-     fVFOREACH(32, i) {
-         for(j = 0; j < 2; j++) {
--             EA =  RtV + fVALIGN(VvvV.v[j].uw[i],ALIGNMENT);;
-+             EA =  RtV + fVALIGN(VvvV.v[j].uw[i],ALIGNMENT);
-              fVLOG_VTCM_HALFWORD_INCREMENT_DV(EA,VvvV.v[j].uw[i],VwV,(2*i+j),i,j,ALIGNMENT,MuV);
-         }
-     }
--- 
-2.34.1
-
+thanks
+-- PMM
 
