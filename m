@@ -1,48 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sPHtN-0006eQ-Br
-	for mharc-qemu-trivial@gnu.org; Thu, 04 Jul 2024 04:32:37 -0400
+	id 1sPHtQ-0006oT-BP
+	for mharc-qemu-trivial@gnu.org; Thu, 04 Jul 2024 04:32:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sPHtK-0006Pc-6x; Thu, 04 Jul 2024 04:32:34 -0400
+ id 1sPHtN-0006er-JI; Thu, 04 Jul 2024 04:32:37 -0400
 Received: from mgamail.intel.com ([192.198.163.17])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sPHtE-00051M-Rp; Thu, 04 Jul 2024 04:32:33 -0400
+ id 1sPHtH-00051p-6t; Thu, 04 Jul 2024 04:32:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1720081949; x=1751617949;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=m49gTWXS6ca2p8lqTCdnmzYMtneKlZAzq3sovEPigys=;
- b=DwjCbnOMErMJkIK3PN+shkv6hVSxHxU/KfK+T/5ZDn7L/291udGSInLS
- A/ZmwZDWTMQ7DJm9HTwJhlMmXF/u4oMNT10ieNUOy27FtranISWTTUSgx
- /6MW1IzvuDyZC+KuY2xz4KjZVl1tcy/igVCoMnsDUc+tJCPaFq44u7Nm+
- 62BYu7TQ9CliPG6R1J2fCHWtna8PvQnwzhGSpKbrZq4oORqeJKuQmCZ6j
- hWRZKN9HHQm50KvtT1pD0jIgCV+XDEgq7zHponWz3kxrZQ3T7ZxwnIgw0
- HmfnqZdWO0/KcjDYCWAdH0RFYhNDGwgx2P4cZfbMnVF2UmrllU7R2Buj7 A==;
-X-CSE-ConnectionGUID: D65HesfHS0alymoKTAicxg==
-X-CSE-MsgGUID: m4T8espFQWCHeHF5uzB/5g==
-X-IronPort-AV: E=McAfee;i="6700,10204,11122"; a="17215688"
-X-IronPort-AV: E=Sophos;i="6.09,183,1716274800"; d="scan'208";a="17215688"
+ t=1720081951; x=1751617951;
+ h=from:to:cc:subject:date:message-id:in-reply-to:
+ references:mime-version:content-transfer-encoding;
+ bh=5hujl58AvrZ/on+e6096dEufyQnj74Jlw/4R9zcO3Qk=;
+ b=a/gliyOnUAGvMCEIFjzKrxFzIWUS/u/s/H3klJEKQxyltg2a+zFOVdcm
+ Tb9aHWTE6sPy6c8pF3D268lZZk3f4BrWF2Q9fg3o3acthnVA5zmPEAor5
+ vfDqmuPokn2io+XbG2KohVzoWCOPakJyVz8vEOTcn35oZHDyTl9B+lxHd
+ k2sChZ/bIny1IUrcI38c/FYp2nIRIPS8Pvziv4li3cdrz2gwRih9GoAcU
+ klD8mR8H5hZFIWCEQjdRywSGRneJCRSzcXNqa4+LBBAlO0OgZEP2s+UPP
+ wCdlujqSXAIbQY+26CyWL1n+HX/2n8oNfDBUQjPRkGE47ASL16wW1WzFI Q==;
+X-CSE-ConnectionGUID: bcw3DM53RouerE7MNXplWQ==
+X-CSE-MsgGUID: Vw67vI1BSyKqryh3HPky5g==
+X-IronPort-AV: E=McAfee;i="6700,10204,11122"; a="17215708"
+X-IronPort-AV: E=Sophos;i="6.09,183,1716274800"; d="scan'208";a="17215708"
 Received: from fmviesa010.fm.intel.com ([10.60.135.150])
  by fmvoesa111.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 04 Jul 2024 01:32:25 -0700
-X-CSE-ConnectionGUID: HhYFVVGiTM2/9Sj8/iPrwg==
-X-CSE-MsgGUID: H+wxlzMNQhS/xyjcE004qw==
+ 04 Jul 2024 01:32:28 -0700
+X-CSE-ConnectionGUID: OfqZiTpSRCekWdrFoa/2vw==
+X-CSE-MsgGUID: Ga0YK8oJSTuvKY/kY9JhKg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,183,1716274800"; d="scan'208";a="46597203"
+X-IronPort-AV: E=Sophos;i="6.09,183,1716274800"; d="scan'208";a="46597249"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa010.fm.intel.com with ESMTP; 04 Jul 2024 01:32:24 -0700
+ by fmviesa010.fm.intel.com with ESMTP; 04 Jul 2024 01:32:27 -0700
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH 0/4] trivial: Fix superfluous trailing semicolon
-Date: Thu,  4 Jul 2024 16:47:55 +0800
-Message-Id: <20240704084759.1824420-1-zhao1.liu@intel.com>
+Subject: [PATCH 2/4] hw/i386/x86: Fix superfluous trailing semicolon
+Date: Thu,  4 Jul 2024 16:47:57 +0800
+Message-Id: <20240704084759.1824420-3-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
+In-Reply-To: <20240704084759.1824420-1-zhao1.liu@intel.com>
+References: <20240704084759.1824420-1-zhao1.liu@intel.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=192.198.163.17; envelope-from=zhao1.liu@intel.com;
@@ -66,28 +68,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 04 Jul 2024 08:32:34 -0000
+X-List-Received-Date: Thu, 04 Jul 2024 08:32:38 -0000
 
-Hi,
-
-I checked the files in QEMU to fix these few errors about "superfluous
-trailing semicolon" to honor the requirement in checkpatch.pl.
-
-Thanks and Best Regards,
-Zhao
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
-Zhao Liu (4):
-  accel/kvm/kvm-all: Fix superfluous trailing semicolon
-  hw/i386/x86: Fix superfluous trailing semicolon
-  util/oslib-posix: Fix superfluous trailing semicolon
-  target/hexagon/imported/mmvec: Fix superfluous trailing semicolon
+ hw/i386/x86.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
- accel/kvm/kvm-all.c                    | 2 +-
- hw/i386/x86.c                          | 2 +-
- target/hexagon/imported/mmvec/ext.idef | 2 +-
- util/oslib-posix.c                     | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
-
+diff --git a/hw/i386/x86.c b/hw/i386/x86.c
+index a4aa8e081098..01fc5e656272 100644
+--- a/hw/i386/x86.c
++++ b/hw/i386/x86.c
+@@ -242,7 +242,7 @@ static void x86_machine_get_pit(Object *obj, Visitor *v, const char *name,
+ static void x86_machine_set_pit(Object *obj, Visitor *v, const char *name,
+                                     void *opaque, Error **errp)
+ {
+-    X86MachineState *x86ms = X86_MACHINE(obj);;
++    X86MachineState *x86ms = X86_MACHINE(obj);
+ 
+     visit_type_OnOffAuto(v, name, &x86ms->pit, errp);
+ }
 -- 
 2.34.1
 
