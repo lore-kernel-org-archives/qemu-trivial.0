@@ -1,87 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sPtLI-0002xo-Cx
-	for mharc-qemu-trivial@gnu.org; Fri, 05 Jul 2024 20:31:56 -0400
+	id 1sQkPD-0008B8-SZ
+	for mharc-qemu-trivial@gnu.org; Mon, 08 Jul 2024 05:11:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_bcain@quicinc.com>)
- id 1sPqpq-000072-5Y; Fri, 05 Jul 2024 17:51:18 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1sQkP0-00085c-Nw; Mon, 08 Jul 2024 05:11:20 -0400
+Received: from mgamail.intel.com ([192.198.163.9])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_bcain@quicinc.com>)
- id 1sPqpo-0002y3-Kn; Fri, 05 Jul 2024 17:51:17 -0400
-Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 465FtaiE019711;
- Fri, 5 Jul 2024 21:51:08 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- lXmK6myZBy50VZ65+i/tMOm2m1kdjo+jcUjIzITE/ok=; b=g5I9uWrRhSGwszOR
- q9tPU3sHP5y/UaxaW28gO5hCDmBCyZlaE0k4XCR6eChh7NCUYKV5ZwIUMOCCSlMI
- izuxVtjpFePPwbgEjaxbX9VP6oY62s/QcGIRl4D8PzrA2Xn50ESqUOScDzuLDCKM
- Y58adf35AHvX3fik9sywSxl/Hj+Lt3UYhRuVsdZXgtlyumRjm1fp30HwG2d7Hsg5
- AkfLCCCdQ8hxorpG4Vd9VJ44hxlBtMmHIIDDk5BFoBLXNib0w/YyX/Iu48dKu10g
- uVKxwKbQDIcvj2hJrEhthUI3dQL1XKp9ceE2Q3V2tMQwBmjiw6RMR9cy7KWlcqvY
- MRSpmQ==
-Received: from nalasppmta05.qualcomm.com (Global_NAT1.qualcomm.com
- [129.46.96.20])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 406cwwa0sa-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 05 Jul 2024 21:51:08 +0000 (GMT)
-Received: from nalasex01c.na.qualcomm.com (nalasex01c.na.qualcomm.com
- [10.47.97.35])
- by NALASPPMTA05.qualcomm.com (8.17.1.19/8.17.1.19) with ESMTPS id
- 465Lp7AO024379
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Fri, 5 Jul 2024 21:51:07 GMT
-Received: from [10.110.93.59] (10.80.80.8) by nalasex01c.na.qualcomm.com
- (10.47.97.35) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.1544.9; Fri, 5 Jul 2024
- 14:51:06 -0700
-Message-ID: <82dc0f6f-a00a-4013-84f7-8c6522062965@quicinc.com>
-Date: Fri, 5 Jul 2024 16:50:52 -0500
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1sQkOy-0002WQ-6y; Mon, 08 Jul 2024 05:11:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1720429876; x=1751965876;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=jbNRfTeu4PCF7A092btP4KQ8q4LhmqDH1pqO7VmOkQA=;
+ b=gbWuc4MAWbZDfq7WYWqzWtC++HgQMthBYXBctjZRf7wKTKfEupgqm734
+ Zw2XKuz/CpfSfNHnZhvvf4E+jHAOzWFk/Wfx8kWEJsEB3EhQYSSH8tahS
+ 5RVQ35U9MVudHGYKWn19JHZZqwYlsVQiTI87k6xIqvI3rKucL/Z7VY+vu
+ X0dpjdbW2eoZBfzmSPBOGyBaohARWGOS8qneB8+qYbYPeoRU9JQcVwSEp
+ nkIEx1xpA4ACWIWwBYVE6HNXyxrcmp0KmqQbKuB6CjN4m/ayrHGwEzoFh
+ KGQ8T46n1GSt8iBS7gS+oBOIHcNuxof0+Vjw49IeDC8KKj0e9Ul+63D9d w==;
+X-CSE-ConnectionGUID: XD1HJLFaSkKYCxx9aAV1yQ==
+X-CSE-MsgGUID: Vg0ak+Q5T92xH6mMIrf3iA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11126"; a="28292142"
+X-IronPort-AV: E=Sophos;i="6.09,191,1716274800"; d="scan'208";a="28292142"
+Received: from fmviesa008.fm.intel.com ([10.60.135.148])
+ by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Jul 2024 02:11:11 -0700
+X-CSE-ConnectionGUID: ilJW5QDJSkq6ZHJdJIqaqA==
+X-CSE-MsgGUID: /Eon3TuhRpW5s2r7xpUt0A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,191,1716274800"; d="scan'208";a="47414033"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
+ by fmviesa008.fm.intel.com with ESMTP; 08 Jul 2024 02:11:10 -0700
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>, Jason Wang <jasowang@redhat.com>
+Subject: [PATCH] doc/net/l2tpv3: Update boolean fields' description to avoid
+ short-form use
+Date: Mon,  8 Jul 2024 17:26:30 +0800
+Message-Id: <20240708092630.2596945-1-zhao1.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-From: Brian Cain <quic_bcain@quicinc.com>
-Subject: Re: [PATCH 4/4] target/hexagon/imported/mmvec: Fix superfluous
- trailing semicolon
-To: Zhao Liu <zhao1.liu@intel.com>, Michael Tokarev <mjt@tls.msk.ru>, "Laurent
- Vivier" <laurent@vivier.eu>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
-CC: <qemu-trivial@nongnu.org>, <qemu-devel@nongnu.org>, Brian Cain
- <bcain@quicinc.com>
-References: <20240704084759.1824420-1-zhao1.liu@intel.com>
- <20240704084759.1824420-5-zhao1.liu@intel.com>
-Content-Language: en-US
-In-Reply-To: <20240704084759.1824420-5-zhao1.liu@intel.com>
-Content-Type: text/plain; charset="UTF-8"; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Originating-IP: [10.80.80.8]
-X-ClientProxiedBy: nasanex01a.na.qualcomm.com (10.52.223.231) To
- nalasex01c.na.qualcomm.com (10.47.97.35)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-ORIG-GUID: h21B1juOAN0H-Aggas0CcGXdLu9oxKZf
-X-Proofpoint-GUID: h21B1juOAN0H-Aggas0CcGXdLu9oxKZf
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-07-05_16,2024-07-05_01,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- phishscore=0 adultscore=0 mlxlogscore=677 lowpriorityscore=0 mlxscore=0
- clxscore=1011 suspectscore=0 impostorscore=0 malwarescore=0 bulkscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2406140001 definitions=main-2407050161
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=quic_bcain@quicinc.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=192.198.163.9; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 05 Jul 2024 20:31:54 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,34 +67,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 05 Jul 2024 21:51:18 -0000
+X-List-Received-Date: Mon, 08 Jul 2024 09:11:25 -0000
 
+The short-form boolean options has been deprecated since v6.0 (refer
+to docs/about/deprecated.rst).
 
-On 7/4/2024 3:47 AM, Zhao Liu wrote:
-> Fix the superfluous trailing semicolon in target/hexagon/imported/mmvec/
-> ext.idef.
->
-> Cc: Brian Cain <bcain@quicinc.com>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+Update the description and example of boolean fields in l2tpv3 option to
+avoid deprecation warning.
 
-Reviewed-by: Brian Cain <bcain@quicinc.com>
+Cc: Jason Wang <jasowang@redhat.com>
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+---
+ qemu-options.hx | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
+diff --git a/qemu-options.hx b/qemu-options.hx
+index ad6521ef5e7e..edeaefe2c79a 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -3353,7 +3353,7 @@ SRST
+                          -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
+                          -netdev socket,id=n1,mcast=239.192.168.1:1102,localaddr=1.2.3.4
+ 
+-``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on|off][,udp=on|off][,cookie64][,counter][,pincounter][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
++``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on|off][,udp=on|off][,cookie64=on|off][,counter=on|off][,pincounter=on|off][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
+     Configure a L2TPv3 pseudowire host network backend. L2TPv3 (RFC3931)
+     is a popular protocol to transport Ethernet (and other Layer 2) data
+     frames between two systems. It is present in routers, firewalls and
+@@ -3368,7 +3368,7 @@ SRST
+     ``dst=dstaddr``
+         destination address (mandatory)
+ 
+-    ``udp``
++    ``udp=on``
+         select udp encapsulation (default is ip).
+ 
+     ``srcport=srcport``
+@@ -3377,7 +3377,7 @@ SRST
+     ``dstport=dstport``
+         destination udp port.
+ 
+-    ``ipv6``
++    ``ipv6=on``
+         force v6, otherwise defaults to v4.
+ 
+     ``rxcookie=rxcookie``; \ ``txcookie=txcookie``
+@@ -3385,7 +3385,7 @@ SRST
+         Their function is mostly to prevent misconfiguration. By default
+         they are 32 bit.
+ 
+-    ``cookie64``
++    ``cookie64=on``
+         Set cookie size to 64 bit instead of the default 32
+ 
+     ``counter=off``
+@@ -3419,7 +3419,7 @@ SRST
+         # launch QEMU instance - if your network has reorder or is very lossy add ,pincounter
+ 
+         |qemu_system| linux.img -device e1000,netdev=n1 \\
+-            -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter
++            -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp=on,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter=on
+ 
+ ``-netdev vde,id=id[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]``
+     Configure VDE backend to connect to PORT n of a vde switch running
+-- 
+2.34.1
 
-> ---
->   target/hexagon/imported/mmvec/ext.idef | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target/hexagon/imported/mmvec/ext.idef b/target/hexagon/imported/mmvec/ext.idef
-> index 98daabfb07c4..03d31f6181d7 100644
-> --- a/target/hexagon/imported/mmvec/ext.idef
-> +++ b/target/hexagon/imported/mmvec/ext.idef
-> @@ -2855,7 +2855,7 @@ EXTINSN(V6_vscattermhw_add,  "vscatter(Rt32,Mu2,Vvv32.w).h+=Vw32", ATTRIBS(A_EXT
->       fVALIGN(RtV, element_size);
->       fVFOREACH(32, i) {
->           for(j = 0; j < 2; j++) {
-> -             EA =  RtV + fVALIGN(VvvV.v[j].uw[i],ALIGNMENT);;
-> +             EA =  RtV + fVALIGN(VvvV.v[j].uw[i],ALIGNMENT);
->                fVLOG_VTCM_HALFWORD_INCREMENT_DV(EA,VvvV.v[j].uw[i],VwV,(2*i+j),i,j,ALIGNMENT,MuV);
->           }
->       }
 
