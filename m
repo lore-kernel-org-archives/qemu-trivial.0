@@ -1,60 +1,59 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sQkPD-0008B8-SZ
-	for mharc-qemu-trivial@gnu.org; Mon, 08 Jul 2024 05:11:31 -0400
+	id 1sRVKr-0003Q8-Ju
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Jul 2024 07:18:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sQkP0-00085c-Nw; Mon, 08 Jul 2024 05:11:20 -0400
-Received: from mgamail.intel.com ([192.198.163.9])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sRVKo-0003Kz-Ft
+ for qemu-trivial@nongnu.org; Wed, 10 Jul 2024 07:18:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sQkOy-0002WQ-6y; Mon, 08 Jul 2024 05:11:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1720429876; x=1751965876;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=jbNRfTeu4PCF7A092btP4KQ8q4LhmqDH1pqO7VmOkQA=;
- b=gbWuc4MAWbZDfq7WYWqzWtC++HgQMthBYXBctjZRf7wKTKfEupgqm734
- Zw2XKuz/CpfSfNHnZhvvf4E+jHAOzWFk/Wfx8kWEJsEB3EhQYSSH8tahS
- 5RVQ35U9MVudHGYKWn19JHZZqwYlsVQiTI87k6xIqvI3rKucL/Z7VY+vu
- X0dpjdbW2eoZBfzmSPBOGyBaohARWGOS8qneB8+qYbYPeoRU9JQcVwSEp
- nkIEx1xpA4ACWIWwBYVE6HNXyxrcmp0KmqQbKuB6CjN4m/ayrHGwEzoFh
- KGQ8T46n1GSt8iBS7gS+oBOIHcNuxof0+Vjw49IeDC8KKj0e9Ul+63D9d w==;
-X-CSE-ConnectionGUID: XD1HJLFaSkKYCxx9aAV1yQ==
-X-CSE-MsgGUID: Vg0ak+Q5T92xH6mMIrf3iA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11126"; a="28292142"
-X-IronPort-AV: E=Sophos;i="6.09,191,1716274800"; d="scan'208";a="28292142"
-Received: from fmviesa008.fm.intel.com ([10.60.135.148])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Jul 2024 02:11:11 -0700
-X-CSE-ConnectionGUID: ilJW5QDJSkq6ZHJdJIqaqA==
-X-CSE-MsgGUID: /Eon3TuhRpW5s2r7xpUt0A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,191,1716274800"; d="scan'208";a="47414033"
-Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa008.fm.intel.com with ESMTP; 08 Jul 2024 02:11:10 -0700
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>, Jason Wang <jasowang@redhat.com>
-Subject: [PATCH] doc/net/l2tpv3: Update boolean fields' description to avoid
- short-form use
-Date: Mon,  8 Jul 2024 17:26:30 +0800
-Message-Id: <20240708092630.2596945-1-zhao1.liu@intel.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sRVKm-0004bk-79
+ for qemu-trivial@nongnu.org; Wed, 10 Jul 2024 07:18:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1720610282;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=7abA/sUs4O+FT1rN7yDGBje1HYkj85kkJXZndgMyMog=;
+ b=ckfGb0rHDn9k5MJJaXga56rvfqZWnnUxvek9S29L5jZgNxpxktGrbaxkgomUysdZ+sHiTm
+ +ZA7dF9VjnWJbXgWwACtNk/x6R64YzufiCYbGEW221612WWcqTGliuQj9WQ2dStubBo7PX
+ Z1FYzYZYKr4WZ1+RGNW/n/vYSFgxwV4=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-445-tbtBlsTFOPGWD960Y2XDbA-1; Wed,
+ 10 Jul 2024 07:18:00 -0400
+X-MC-Unique: tbtBlsTFOPGWD960Y2XDbA-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 112D7196CDF1; Wed, 10 Jul 2024 11:17:59 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.89])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id C37D01955E76; Wed, 10 Jul 2024 11:17:56 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] tests/avocado: Remove non-working sparc leon3 test
+Date: Wed, 10 Jul 2024 13:17:49 +0200
+Message-ID: <20240710111755.60584-1-thuth@redhat.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=192.198.163.9; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -67,70 +66,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 08 Jul 2024 09:11:25 -0000
+X-List-Received-Date: Wed, 10 Jul 2024 11:18:06 -0000
 
-The short-form boolean options has been deprecated since v6.0 (refer
-to docs/about/deprecated.rst).
+The test has been marked as broken more than 4 years ago, and
+so far nobody ever cared to fix it. Thus let's simply remove it
+now ... if somebody ever needs it again, they can restore the
+file from an older version of QEMU.
 
-Update the description and example of boolean fields in l2tpv3 option to
-avoid deprecation warning.
-
-Cc: Jason Wang <jasowang@redhat.com>
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- qemu-options.hx | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ tests/avocado/machine_sparc_leon3.py | 37 ----------------------------
+ 1 file changed, 37 deletions(-)
+ delete mode 100644 tests/avocado/machine_sparc_leon3.py
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index ad6521ef5e7e..edeaefe2c79a 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -3353,7 +3353,7 @@ SRST
-                          -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
-                          -netdev socket,id=n1,mcast=239.192.168.1:1102,localaddr=1.2.3.4
- 
--``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on|off][,udp=on|off][,cookie64][,counter][,pincounter][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
-+``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on|off][,udp=on|off][,cookie64=on|off][,counter=on|off][,pincounter=on|off][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
-     Configure a L2TPv3 pseudowire host network backend. L2TPv3 (RFC3931)
-     is a popular protocol to transport Ethernet (and other Layer 2) data
-     frames between two systems. It is present in routers, firewalls and
-@@ -3368,7 +3368,7 @@ SRST
-     ``dst=dstaddr``
-         destination address (mandatory)
- 
--    ``udp``
-+    ``udp=on``
-         select udp encapsulation (default is ip).
- 
-     ``srcport=srcport``
-@@ -3377,7 +3377,7 @@ SRST
-     ``dstport=dstport``
-         destination udp port.
- 
--    ``ipv6``
-+    ``ipv6=on``
-         force v6, otherwise defaults to v4.
- 
-     ``rxcookie=rxcookie``; \ ``txcookie=txcookie``
-@@ -3385,7 +3385,7 @@ SRST
-         Their function is mostly to prevent misconfiguration. By default
-         they are 32 bit.
- 
--    ``cookie64``
-+    ``cookie64=on``
-         Set cookie size to 64 bit instead of the default 32
- 
-     ``counter=off``
-@@ -3419,7 +3419,7 @@ SRST
-         # launch QEMU instance - if your network has reorder or is very lossy add ,pincounter
- 
-         |qemu_system| linux.img -device e1000,netdev=n1 \\
--            -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter
-+            -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp=on,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter=on
- 
- ``-netdev vde,id=id[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]``
-     Configure VDE backend to connect to PORT n of a vde switch running
+diff --git a/tests/avocado/machine_sparc_leon3.py b/tests/avocado/machine_sparc_leon3.py
+deleted file mode 100644
+index e61b223185..0000000000
+--- a/tests/avocado/machine_sparc_leon3.py
++++ /dev/null
+@@ -1,37 +0,0 @@
+-# Functional test that boots a Leon3 machine and checks its serial console.
+-#
+-# Copyright (c) Philippe Mathieu-Daudé <f4bug@amsat.org>
+-#
+-# This work is licensed under the terms of the GNU GPL, version 2 or
+-# later. See the COPYING file in the top-level directory.
+-
+-from avocado_qemu import QemuSystemTest
+-from avocado_qemu import wait_for_console_pattern
+-from avocado import skip
+-
+-
+-class Leon3Machine(QemuSystemTest):
+-
+-    timeout = 60
+-
+-    @skip("Test currently broken")
+-    # A Window Underflow exception occurs before booting the kernel,
+-    # and QEMU exit calling cpu_abort(), which makes this test to fail.
+-    def test_leon3_helenos_uimage(self):
+-        """
+-        :avocado: tags=arch:sparc
+-        :avocado: tags=machine:leon3_generic
+-        :avocado: tags=binfmt:uimage
+-        """
+-        kernel_url = ('http://www.helenos.org/releases/'
+-                      'HelenOS-0.6.0-sparc32-leon3.bin')
+-        kernel_hash = 'a88c9cfdb8430c66650e5290a08765f9bf049a30'
+-        kernel_path = self.fetch_asset(kernel_url, asset_hash=kernel_hash)
+-
+-        self.vm.set_console()
+-        self.vm.add_args('-kernel', kernel_path)
+-
+-        self.vm.launch()
+-
+-        wait_for_console_pattern(self, 'Copyright (c) 2001-2014 HelenOS project')
+-        wait_for_console_pattern(self, 'Booting the kernel ...')
 -- 
-2.34.1
+2.45.2
 
 
