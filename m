@@ -1,59 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sRW3G-0003Ci-7I
-	for mharc-qemu-trivial@gnu.org; Wed, 10 Jul 2024 08:04:02 -0400
+	id 1sRXr7-0004a1-30
+	for mharc-qemu-trivial@gnu.org; Wed, 10 Jul 2024 09:59:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sRW3D-00036W-4C
- for qemu-trivial@nongnu.org; Wed, 10 Jul 2024 08:03:59 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sRW3B-0004tr-2d
- for qemu-trivial@nongnu.org; Wed, 10 Jul 2024 08:03:58 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1720613034;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=WxVATn/7oTvdKaGQFE/QHqmVJRmPO7JHQtZyaj0EZUM=;
- b=d6C4gzLQLodZdFpO5eJPzlOraUAkpxCXtBY2Ri5B5+DsuRHBCOAXqSEi7Ss5JXTS1EDz3U
- j1mf145HPbEJcgHhhEGZsoLZqCN8TN8O1ppio227PsV0Eot7yMRrIsdeZGI3PNFvpG/2r3
- f3N3v2GTBRHUolF9yUKkJBZ3elTaCQc=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-186-AaNB9XQVO263BqFXYEYiAg-1; Wed,
- 10 Jul 2024 08:03:48 -0400
-X-MC-Unique: AaNB9XQVO263BqFXYEYiAg-1
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 28DE31955BD2; Wed, 10 Jul 2024 12:03:39 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.89])
- by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1A58B195421C; Wed, 10 Jul 2024 12:03:31 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Denis Plotnikov <dplotnikov@virtuozzo.com>
-Subject: [PATCH] tests/avocado: Remove the non-working virtio_check_params test
-Date: Wed, 10 Jul 2024 14:03:30 +0200
-Message-ID: <20240710120330.78581-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sRXr4-0004Yl-N8
+ for qemu-trivial@nongnu.org; Wed, 10 Jul 2024 09:59:34 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sRXr2-0000YI-OR
+ for qemu-trivial@nongnu.org; Wed, 10 Jul 2024 09:59:34 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-426526d30aaso36063565e9.0
+ for <qemu-trivial@nongnu.org>; Wed, 10 Jul 2024 06:59:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1720619971; x=1721224771; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=kJ4vIdBWINpISsNnSom9WLnNU/7LffLcmCsv6uUHM7g=;
+ b=BJmovzUIP+wlc3/nctsxkAavd6/yBETvtKz++1pBo5tx9suQ9xoJV3RRTpj9L2qbRj
+ J4vjxg9P6WX/T19QM2PnarpSs5tryDC8N17IcjOoTW/tkoPBGcIVidVBlhZQ0Yrcmcyv
+ Qlma9LAmNgVCV6RNArQKc6J/sGsGUt04O9IywLs9hyZWqrSw5O2FV7erpf+Cj9spXaPc
+ JLkH4Yna5OGB0uRDxNxAwc1yQLOtmy/xsjP5CHVCi+OMlJwUcvzm2ddb1a/L5P7d5b86
+ s+HvWNLXtWZ2feWUE+I8fpAY116UuoAdplm2+LSW+arZ/qxeV/F4dtjd6bElZDex1Wr9
+ PLGw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1720619971; x=1721224771;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=kJ4vIdBWINpISsNnSom9WLnNU/7LffLcmCsv6uUHM7g=;
+ b=UjC3vusCA8tkoU4ONnDXWXTOXe4Sjzsd5Hn8HI3QMt/PArR/xkXQYbu3Ff7IJZlCOI
+ cDDjcBrAtf09DpwiBxyg9EOa9EjOIPOVpA+dmelahsDfkAbeMbyvye9VLhys9G7hnb0N
+ bXaZOhqNjR5Nqm7ki7BWDBmQbyW247zEQdZWPYZO5IcoeAAAtufw3JPjn82jTdDN5wnj
+ 4hAYt/KRKf2mRec+CNXBmiQR5ogTiwczTTyj46ezp8g1qosXqKDsZjALPz3DKvr262Ds
+ wZyey45GbJ4eFKcnpHr0p2F5hwOV4IyQPofAzjt+7Nf6jXKlxOapOklQZcCXjLuUh2Sr
+ XqDQ==
+X-Gm-Message-State: AOJu0YwQDmriPWZacJrlkzJ8kitcjmV3oimuMrW1MZIh9eN5Tw47Iu+Q
+ 9y9TVMvSzkQpIa6ZY/JevoIlVwfm7nlwQZq+d3tyLm3W2guyhiPdDI+mBSFQg9M=
+X-Google-Smtp-Source: AGHT+IEWw8ovDGVJYf9lATgxbhx+omcLO3jSJmbP+ZlLgTv8CVbAL6kdi2o25u7EIfmSgJbv3rH+8Q==
+X-Received: by 2002:adf:f20b:0:b0:366:ecd1:2f38 with SMTP id
+ ffacd0b85a97d-367cea45cb1mr3622065f8f.7.1720619970836; 
+ Wed, 10 Jul 2024 06:59:30 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.167.117])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-367cdfa06d3sm5342613f8f.75.2024.07.10.06.59.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 10 Jul 2024 06:59:30 -0700 (PDT)
+Message-ID: <fb9a6445-a4f9-41dc-829f-5566f41aa2a2@linaro.org>
+Date: Wed, 10 Jul 2024 15:59:28 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] tests/avocado: Remove the non-working virtio_check_params
+ test
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Denis Plotnikov <dplotnikov@virtuozzo.com>
+References: <20240710120330.78581-1-thuth@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240710120330.78581-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -66,169 +82,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 10 Jul 2024 12:03:59 -0000
+X-List-Received-Date: Wed, 10 Jul 2024 13:59:35 -0000
 
-The test has been marked as broken more than 4 years ago, and
-so far nobody ever cared to fix it. Thus let's simply remove it
-now ... if somebody ever needs it again, they can restore the
-file from an older version of QEMU.
+On 10/7/24 14:03, Thomas Huth wrote:
+> The test has been marked as broken more than 4 years ago
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/avocado/virtio_check_params.py | 143 ---------------------------
- 1 file changed, 143 deletions(-)
- delete mode 100644 tests/avocado/virtio_check_params.py
+[*]
 
-diff --git a/tests/avocado/virtio_check_params.py b/tests/avocado/virtio_check_params.py
-deleted file mode 100644
-index 5fe370a179..0000000000
---- a/tests/avocado/virtio_check_params.py
-+++ /dev/null
-@@ -1,143 +0,0 @@
--#
--# Test virtio-scsi and virtio-blk queue settings for all machine types
--#
--# Copyright (c) 2019 Virtuozzo International GmbH
--#
--# This program is free software; you can redistribute it and/or modify
--# it under the terms of the GNU General Public License as published by
--# the Free Software Foundation; either version 2 of the License, or
--# (at your option) any later version.
--#
--# This program is distributed in the hope that it will be useful,
--# but WITHOUT ANY WARRANTY; without even the implied warranty of
--# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
--# GNU General Public License for more details.
--#
--# You should have received a copy of the GNU General Public License
--# along with this program.  If not, see <http://www.gnu.org/licenses/>.
--#
--
--import sys
--import os
--import re
--import logging
--
--from qemu.machine import QEMUMachine
--from avocado_qemu import QemuSystemTest
--from avocado import skip
--
--#list of machine types and virtqueue properties to test
--VIRTIO_SCSI_PROPS = {'seg_max_adjust': 'seg_max_adjust'}
--VIRTIO_BLK_PROPS = {'seg_max_adjust': 'seg-max-adjust'}
--
--DEV_TYPES = {'virtio-scsi-pci': VIRTIO_SCSI_PROPS,
--             'virtio-blk-pci': VIRTIO_BLK_PROPS}
--
--VM_DEV_PARAMS = {'virtio-scsi-pci': ['-device', 'virtio-scsi-pci,id=scsi0'],
--                 'virtio-blk-pci': ['-device',
--                                    'virtio-blk-pci,id=scsi0,drive=drive0',
--                                    '-drive',
--                                    'driver=null-co,id=drive0,if=none']}
--
--
--class VirtioMaxSegSettingsCheck(QemuSystemTest):
--    @staticmethod
--    def make_pattern(props):
--        pattern_items = [r'{0} = \w+'.format(prop) for prop in props]
--        return '|'.join(pattern_items)
--
--    def query_virtqueue(self, vm, dev_type_name):
--        query_ok = False
--        error = None
--        props = None
--
--        output = vm.cmd('human-monitor-command',
--                        command_line = 'info qtree')
--        props_list = DEV_TYPES[dev_type_name].values();
--        pattern = self.make_pattern(props_list)
--        res = re.findall(pattern, output)
--
--        if len(res) != len(props_list):
--            props_list = set(props_list)
--            res = set(res)
--            not_found = props_list.difference(res)
--            not_found = ', '.join(not_found)
--            error = '({0}): The following properties not found: {1}'\
--                     .format(dev_type_name, not_found)
--        else:
--            query_ok = True
--            props = dict()
--            for prop in res:
--                p = prop.split(' = ')
--                props[p[0]] = p[1]
--        return query_ok, props, error
--
--    def check_mt(self, mt, dev_type_name):
--        mt['device'] = dev_type_name # Only for the debug() call.
--        logger = logging.getLogger('machine')
--        logger.debug(mt)
--        with QEMUMachine(self.qemu_bin) as vm:
--            vm.set_machine(mt["name"])
--            vm.add_args('-nodefaults')
--            for s in VM_DEV_PARAMS[dev_type_name]:
--                vm.add_args(s)
--            try:
--                vm.launch()
--                query_ok, props, error = self.query_virtqueue(vm, dev_type_name)
--            except:
--                query_ok = False
--                error = sys.exc_info()[0]
--
--        if not query_ok:
--            self.fail('machine type {0}: {1}'.format(mt['name'], error))
--
--        for prop_name, prop_val in props.items():
--            expected_val = mt[prop_name]
--            self.assertEqual(expected_val, prop_val)
--
--    @staticmethod
--    def seg_max_adjust_enabled(mt):
--        # machine types >= 5.0 should have seg_max_adjust = true
--        # others seg_max_adjust = false
--        mt = mt.split("-")
--
--        # machine types with one line name and name like pc-x.x
--        if len(mt) <= 2:
--            return False
--
--        # machine types like pc-<chip_name>-x.x[.x]
--        ver = mt[2]
--        ver = ver.split(".");
--
--        # versions >= 5.0 goes with seg_max_adjust enabled
--        major = int(ver[0])
--
--        if major >= 5:
--            return True
--        return False
--
--    @skip("break multi-arch CI")
--    def test_machine_types(self):
--        # collect all machine types except 'none', 'isapc', 'microvm'
--        with QEMUMachine(self.qemu_bin) as vm:
--            vm.launch()
--            machines = [m['name'] for m in vm.cmd('query-machines')]
--            vm.shutdown()
--        machines.remove('none')
--        machines.remove('isapc')
--        machines.remove('microvm')
--
--        for dev_type in DEV_TYPES:
--            # create the list of machine types and their parameters.
--            mtypes = list()
--            for m in machines:
--                if self.seg_max_adjust_enabled(m):
--                    enabled = 'true'
--                else:
--                    enabled = 'false'
--                mtypes.append({'name': m,
--                               DEV_TYPES[dev_type]['seg_max_adjust']: enabled})
--
--            # test each machine type for a device type
--            for mt in mtypes:
--                self.check_mt(mt, dev_type)
--- 
-2.45.2
+, and
+> so far nobody ever cared to fix it. Thus let's simply remove it
+> now ... if somebody ever needs it again, they can restore the
+> file from an older version of QEMU.
+
+You might refer to:
+
+[*] 
+https://lore.kernel.org/qemu-devel/4bbe9ff8-e1a8-917d-5a57-ce5185da19fa@redhat.com/
+
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   tests/avocado/virtio_check_params.py | 143 ---------------------------
+>   1 file changed, 143 deletions(-)
+>   delete mode 100644 tests/avocado/virtio_check_params.py
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
