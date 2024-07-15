@@ -1,29 +1,35 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sTIVf-0004N4-8P
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Jul 2024 06:00:43 -0400
+	id 1sTJXw-00086z-N9
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Jul 2024 07:07:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sTIVc-0004E8-K8; Mon, 15 Jul 2024 06:00:40 -0400
+ id 1sTJXu-00082F-Ba; Mon, 15 Jul 2024 07:07:06 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sTIVa-0000yV-Py; Mon, 15 Jul 2024 06:00:40 -0400
+ id 1sTJXs-0004t6-E5; Mon, 15 Jul 2024 07:07:06 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id C79237A5CD;
- Mon, 15 Jul 2024 13:00:35 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 6EBFD7A626;
+ Mon, 15 Jul 2024 14:06:59 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 1B820108D6E;
- Mon, 15 Jul 2024 13:00:37 +0300 (MSK)
-Message-ID: <edb5b579-b1cf-479f-b72a-2fcffb02b18f@tls.msk.ru>
-Date: Mon, 15 Jul 2024 13:00:37 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id BF0E41092DF;
+ Mon, 15 Jul 2024 14:07:00 +0300 (MSK)
+Message-ID: <487ea08d-d374-4591-bb68-b29e50013864@tls.msk.ru>
+Date: Mon, 15 Jul 2024 14:07:00 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 0/4] trivial: Fix superfluous trailing semicolon
-To: Zhao Liu <zhao1.liu@intel.com>, Laurent Vivier <laurent@vivier.eu>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-References: <20240704084759.1824420-1-zhao1.liu@intel.com>
+Subject: Re: [PATCH 7/7] backends/rng-random: Get rid of qemu_open_old()
+To: Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>
+Cc: Laurent Vivier <laurent@vivier.eu>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org, Amit Shah <amit@kernel.org>
+References: <20240715082155.28771-1-zhao1.liu@intel.com>
+ <20240715082155.28771-8-zhao1.liu@intel.com>
+ <01245850-b5df-4bf6-9a22-775d12fc07a0@linaro.org>
+ <ZpT1iy5NPqwjqaLB@intel.com>
 Content-Language: en-US, ru-RU
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
@@ -50,7 +56,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
  rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
  Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240704084759.1824420-1-zhao1.liu@intel.com>
+In-Reply-To: <ZpT1iy5NPqwjqaLB@intel.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -72,18 +78,15 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Jul 2024 10:00:41 -0000
+X-List-Received-Date: Mon, 15 Jul 2024 11:07:06 -0000
 
-04.07.2024 11:47, Zhao Liu wrote:
-> Hi,
-> 
-> I checked the files in QEMU to fix these few errors about "superfluous
-> trailing semicolon" to honor the requirement in checkpatch.pl.
+15.07.2024 13:10, Zhao Liu wrote:
+...
+> Thanks Philippe! I'll wait patch 1's comment, after that I can post a
+> new version with the change you mentioned.
 
-Applied to the trivial-patches queue (pending confirmation from Brian
-for the 4th patch).
-
-Thanks,
+I don't think either of this is necessary.  Patch 1 LGTM, and I'll
+drop the comment while applying.
 
 /mjt
 
