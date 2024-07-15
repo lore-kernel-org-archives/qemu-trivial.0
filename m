@@ -1,68 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sTIPw-00043s-Ed
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Jul 2024 05:54:48 -0400
+	id 1sTIUl-0000C9-Q0
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Jul 2024 05:59:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sTIPu-0003xD-Qh; Mon, 15 Jul 2024 05:54:46 -0400
-Received: from mgamail.intel.com ([198.175.65.20])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sTIUj-0008Ut-Jm; Mon, 15 Jul 2024 05:59:45 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sTIPs-00081A-UM; Mon, 15 Jul 2024 05:54:46 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1721037285; x=1752573285;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=LapDANChhrEqCXMS7GYF4vmGDux79W3PxBHvfqK5iZo=;
- b=VKbR+Zed2b9XuzXdUGIzFQrG1v+Wdh1UE32jhg7QnMjs9GaHoA1WhsoX
- k4OINx7SvrgJDyp8aktILQOglDTHl4fzTucNrxGv8L07+7CsP35O6r7KF
- UFanIP2eeyYgTOi+XS7TuwWbvKARGFlACVKrq0/RwD+zW4ZVAca8JlEL+
- L2Vdehgsct9O3mOmIgeDppcp3BphqTwP0mTB6d6doIZHXw5pvqhdhgpoL
- wd1UXBnIAY8n19zRoi2FVCTt0LxOeRPJm50nl/cWAqIUcSu4efHBLo39J
- RL+qoPUI2utev73HnQ5kbA55Djn+REyBYmH2aztIERDvjXCQ8Ia7AE2EY A==;
-X-CSE-ConnectionGUID: exmnF7G9TvKuvCM3LIrMBg==
-X-CSE-MsgGUID: y3O1eufAQHq1ErL3gdqIpw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11133"; a="18219405"
-X-IronPort-AV: E=Sophos;i="6.09,210,1716274800"; d="scan'208";a="18219405"
-Received: from orviesa004.jf.intel.com ([10.64.159.144])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 Jul 2024 02:54:41 -0700
-X-CSE-ConnectionGUID: /vG4t8zoS/2CedoHMhkKKg==
-X-CSE-MsgGUID: 8nvzbuioRyGaHXmbpnUg0A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,210,1716274800"; d="scan'208";a="54743486"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by orviesa004.jf.intel.com with ESMTP; 15 Jul 2024 02:54:38 -0700
-Date: Mon, 15 Jul 2024 18:10:19 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>
-Cc: Laurent Vivier <laurent@vivier.eu>,
- Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org, Laurent Vivier <lvivier@redhat.com>,
- Amit Shah <amit@kernel.org>
-Subject: Re: [PATCH 7/7] backends/rng-random: Get rid of qemu_open_old()
-Message-ID: <ZpT1iy5NPqwjqaLB@intel.com>
-References: <20240715082155.28771-1-zhao1.liu@intel.com>
- <20240715082155.28771-8-zhao1.liu@intel.com>
- <01245850-b5df-4bf6-9a22-775d12fc07a0@linaro.org>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sTIUh-0000Ma-SU; Mon, 15 Jul 2024 05:59:45 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 3E9B97A5C9;
+ Mon, 15 Jul 2024 12:59:40 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 8277D108D68;
+ Mon, 15 Jul 2024 12:59:41 +0300 (MSK)
+Message-ID: <d72fe736-2b6c-4c98-90d7-c613f21a2547@tls.msk.ru>
+Date: Mon, 15 Jul 2024 12:59:41 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 4/4] target/hexagon/imported/mmvec: Fix superfluous
+ trailing semicolon
+To: Brian Cain <quic_bcain@quicinc.com>, Zhao Liu <zhao1.liu@intel.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
+References: <20240704084759.1824420-1-zhao1.liu@intel.com>
+ <20240704084759.1824420-5-zhao1.liu@intel.com>
+ <82dc0f6f-a00a-4013-84f7-8c6522062965@quicinc.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <82dc0f6f-a00a-4013-84f7-8c6522062965@quicinc.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <01245850-b5df-4bf6-9a22-775d12fc07a0@linaro.org>
-Received-SPF: pass client-ip=198.175.65.20; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -75,54 +75,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Jul 2024 09:54:47 -0000
+X-List-Received-Date: Mon, 15 Jul 2024 09:59:46 -0000
 
-On Mon, Jul 15, 2024 at 11:46:54AM +0200, Philippe Mathieu-Daud� wrote:
-> Date: Mon, 15 Jul 2024 11:46:54 +0200
-> From: Philippe Mathieu-Daud� <philmd@linaro.org>
-> Subject: Re: [PATCH 7/7] backends/rng-random: Get rid of qemu_open_old()
+06.07.2024 00:50, Brian Cain wrote:
 > 
-> On 15/7/24 10:21, Zhao Liu wrote:
-> > For qemu_open_old(), osdep.h said:
-> > 
-> > > Don't introduce new usage of this function, prefer the following
-> > > qemu_open/qemu_create that take an "Error **errp".
-> > 
-> > So replace qemu_open_old() with qemu_open(). And considering
-> > rng_random_opened() will lose its obvious error handling case after
-> > removing error_setg_file_open(), add comment to remind here.
-> > 
-> > Cc: Laurent Vivier <lvivier@redhat.com>
-> > Cc: Amit Shah <amit@kernel.org>
-> > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> > ---
-> >   backends/rng-random.c | 9 +++++----
-> >   1 file changed, 5 insertions(+), 4 deletions(-)
-> > 
-> > diff --git a/backends/rng-random.c b/backends/rng-random.c
-> > index 80eb5be138ce..3cdb982533b5 100644
-> > --- a/backends/rng-random.c
-> > +++ b/backends/rng-random.c
-> > @@ -75,10 +75,11 @@ static void rng_random_opened(RngBackend *b, Error **errp)
-> >           error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
-> >                      "filename", "a valid filename");
-> >       } else {
-> > -        s->fd = qemu_open_old(s->filename, O_RDONLY | O_NONBLOCK);
-> > -        if (s->fd == -1) {
-> > -            error_setg_file_open(errp, errno, s->filename);
-> > -        }
-> > +        /*
-> > +         * Once the open fails, the error message is integrated into
-> > +         * the *errp object by qemu_open().
-> > +         */
+> On 7/4/2024 3:47 AM, Zhao Liu wrote:
+>> Fix the superfluous trailing semicolon in target/hexagon/imported/mmvec/
+>> ext.idef.
+>>
+>> Cc: Brian Cain <bcain@quicinc.com>
+>> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 > 
-> IMHO this comment is superfluous, I'd drop it, otherwise:
-> 
-> Reviewed-by: Philippe Mathieu-Daud� <philmd@linaro.org>
->
+> Reviewed-by: Brian Cain <bcain@quicinc.com>
 
-Thanks Philippe! I'll wait patch 1's comment, after that I can post a
-new version with the change you mentioned.
+Brian, is it okay to fix this in something "imported" ?
+I realize you added your R-b, but do you realize it's "imported"?
 
+Thanks,
+
+/mjt
+
+>> ---
+>>   target/hexagon/imported/mmvec/ext.idef | 2 +-
+>>   1 file changed, 1 insertion(+), 1 deletion(-)
+>>
+>> diff --git a/target/hexagon/imported/mmvec/ext.idef b/target/hexagon/imported/mmvec/ext.idef
+>> index 98daabfb07c4..03d31f6181d7 100644
+>> --- a/target/hexagon/imported/mmvec/ext.idef
+>> +++ b/target/hexagon/imported/mmvec/ext.idef
+>> @@ -2855,7 +2855,7 @@ EXTINSN(V6_vscattermhw_add,  "vscatter(Rt32,Mu2,Vvv32.w).h+=Vw32", ATTRIBS(A_EXT
+>>       fVALIGN(RtV, element_size);
+>>       fVFOREACH(32, i) {
+>>           for(j = 0; j < 2; j++) {
+>> -             EA =  RtV + fVALIGN(VvvV.v[j].uw[i],ALIGNMENT);;
+>> +             EA =  RtV + fVALIGN(VvvV.v[j].uw[i],ALIGNMENT);
+>>                fVLOG_VTCM_HALFWORD_INCREMENT_DV(EA,VvvV.v[j].uw[i],VwV,(2*i+j),i,j,ALIGNMENT,MuV);
+>>           }
+>>       }
+> 
 
 
