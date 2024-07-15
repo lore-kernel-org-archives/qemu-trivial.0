@@ -1,71 +1,91 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sTL7m-00086G-3n
-	for mharc-qemu-trivial@gnu.org; Mon, 15 Jul 2024 08:48:14 -0400
+	id 1sTMID-0001YH-DG
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Jul 2024 10:03:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sTL7f-00084j-BM
- for qemu-trivial@nongnu.org; Mon, 15 Jul 2024 08:48:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sTMIB-0001W8-31
+ for qemu-trivial@nongnu.org; Mon, 15 Jul 2024 10:03:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sTL7b-0005AZ-5j
- for qemu-trivial@nongnu.org; Mon, 15 Jul 2024 08:48:07 -0400
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1sTMI9-0004sc-KL
+ for qemu-trivial@nongnu.org; Mon, 15 Jul 2024 10:03:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1721047682;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
+ s=mimecast20190719; t=1721052181;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Pfu6O8lg34RbDkDfXlGkHEP1e9e4uZMaHydNy/7oGns=;
- b=fsmN9YzkpX6yneJ1+aems7w0Yhqja5tSLqk/qkoDoGd3ivk3UBT542eMgcq2rN2UOxitvM
- iHieOzRabHLqolZO8ALk+ZyidmoaxkDSHKfiD0Fl3G5wn6EUS38WKzDpgXYX66JSIstnHN
- qcyBuVMXt/A4BMfHF4zPVS2dZTrmO/M=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-537-E-zgKDX4MBuglY45-7PhHw-1; Mon,
- 15 Jul 2024 08:47:59 -0400
-X-MC-Unique: E-zgKDX4MBuglY45-7PhHw-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2C3E41955D5B; Mon, 15 Jul 2024 12:47:58 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.18])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 53A061955F40; Mon, 15 Jul 2024 12:47:54 +0000 (UTC)
-Date: Mon, 15 Jul 2024 13:47:51 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+ bh=7FMmdE8Bd/K5RIwz6RZQegZfACkPEXnzNSX+e3/Y4xM=;
+ b=XiAPMufICZ1ItAkdkcb+/IhRqLTAlk/6wHsMXn/Ng+3Lvfp7wIGvCxMG9CzcZy/BABFa3P
+ XzFNeMSBBKdYKdqlQsMKjqgBKCDTChJWrCXPdm8OzvHUIYmida9sTYsq23galSzcrGhGIT
+ exWVK63+t4MsVfL1ay+eeDUQgkE3Q4k=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-632-i1gbwcrvNUSvvuQjLb3c5A-1; Mon, 15 Jul 2024 10:02:58 -0400
+X-MC-Unique: i1gbwcrvNUSvvuQjLb3c5A-1
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-367990b4beeso2866161f8f.2
+ for <qemu-trivial@nongnu.org>; Mon, 15 Jul 2024 07:02:57 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721052176; x=1721656976;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=7FMmdE8Bd/K5RIwz6RZQegZfACkPEXnzNSX+e3/Y4xM=;
+ b=qH/qmm6pawPOhsXZFhNpfmWzhG0pzl27XN1k6iB1x9lGXYlYsRsd3wKVMMleuMo6ul
+ PCyPGJlJ8Fm4NWJarFJB0YnKbHdmUTBz0HjsJl8v7Vr2tcAZxMl2XGY7lYEwN9L4m2Uz
+ vkrMkb9v/zwl95GT3kRmQiEiarJXNnT+hTlZMoiZLd9FTna8/X0lVYISV+ykDwx605xP
+ TXuW7ygfPVBhc7ZMr0F54rv16zfq7NGH/DsjkqMIAePgNcgP4yTC+y4D6j61dVe0hWQB
+ SVCFwX6u5mvPNUlTcUMCykxyimZ+B837uMKxOOwqvxV1MII3rBe/aaGdC1OIHcQufiR+
+ YwzQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXXzdKvlpwotYkuhLIpAZAS35m8Gc/zd91Ikrpefup18d5+u05NZXI08Ssuwlv+RRj9eoC3S9Lm3HoRFbo+6BGo6RN3+H+HfA==
+X-Gm-Message-State: AOJu0YyvSqw9DNMRaI1YsyWujQH3pTYrCSwQFt6czYt0DVAKDvzYFkHc
+ KC9pCKZEpXHL/fhGHTIbfqRuOeukGbJG6kLJor5yR/SJq1Ol3m2YNek+nPkluFz3mdEYTd3FmDX
+ CWip3fDurToQX/lNlUzzQo2GSsEw89EiryFnGdZC5AtKGUxIa5QH3yOY=
+X-Received: by 2002:a5d:680a:0:b0:367:89de:7c7c with SMTP id
+ ffacd0b85a97d-367cea738f1mr12217391f8f.28.1721052176134; 
+ Mon, 15 Jul 2024 07:02:56 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG22g5e9464d1DEgz652yOdwK4xP/f91QdksHZdZkKbc6h6ULr8e/GLULKiZfi4jd+bccOrzA==
+X-Received: by 2002:a5d:680a:0:b0:367:89de:7c7c with SMTP id
+ ffacd0b85a97d-367cea738f1mr12217376f8f.28.1721052175779; 
+ Mon, 15 Jul 2024 07:02:55 -0700 (PDT)
+Received: from imammedo.users.ipa.redhat.com (nat-pool-brq-t.redhat.com.
+ [213.175.37.10]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-36816758620sm4076915f8f.19.2024.07.15.07.02.55
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 15 Jul 2024 07:02:55 -0700 (PDT)
+Date: Mon, 15 Jul 2024 16:02:54 +0200
+From: Igor Mammedov <imammedo@redhat.com>
 To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- Thomas Huth <thuth@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] meson: Update meson-buildoptions.sh
-Message-ID: <ZpUad0qRK2xBAnV5@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240705054903.2100562-1-zhao1.liu@intel.com>
- <Zoe625Z3JxlB4G5D@redhat.com> <ZpUdgyNb2lFga9PU@intel.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ "Daniel P . =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>, Markus
+ Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>, Philippe
+ =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org, David Hildenbrand
+ <david@redhat.com>
+Subject: Re: [PATCH 5/7] backends/hostmem-epc: Get rid of qemu_open_old()
+Message-ID: <20240715160254.558e0415@imammedo.users.ipa.redhat.com>
+In-Reply-To: <20240715082155.28771-6-zhao1.liu@intel.com>
+References: <20240715082155.28771-1-zhao1.liu@intel.com>
+ <20240715082155.28771-6-zhao1.liu@intel.com>
+X-Mailer: Claws Mail 4.3.0 (GTK 3.24.42; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <ZpUdgyNb2lFga9PU@intel.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -79,44 +99,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 15 Jul 2024 12:48:09 -0000
+X-List-Received-Date: Mon, 15 Jul 2024 14:03:03 -0000
 
-CC qemu-trivial
+On Mon, 15 Jul 2024 16:21:53 +0800
+Zhao Liu <zhao1.liu@intel.com> wrote:
 
-On Mon, Jul 15, 2024 at 09:00:51PM +0800, Zhao Liu wrote:
-> Hi Daniel,
+> For qemu_open_old(), osdep.h said:
 > 
-> On Fri, Jul 05, 2024 at 10:20:27AM +0100, Daniel P. Berrangé wrote:
-> > Date: Fri, 5 Jul 2024 10:20:27 +0100
-> > From: "Daniel P. Berrangé" <berrange@redhat.com>
-> > Subject: Re: [PATCH] meson: Update meson-buildoptions.sh
-> > 
-> > On Fri, Jul 05, 2024 at 01:49:03PM +0800, Zhao Liu wrote:
-> > > Update meson-buildoptions.sh to stay in sync with meson_options.txt.
-> > > 
-> > > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> > > ---
-> > >  scripts/meson-buildoptions.sh | 14 +++++++-------
-> > >  1 file changed, 7 insertions(+), 7 deletions(-)
-> > 
-> > Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-> > 
+> > Don't introduce new usage of this function, prefer the following
+> > qemu_open/qemu_create that take an "Error **errp".  
 > 
-> Thanks!
+> So replace qemu_open_old() with qemu_open().
 > 
-> BTW, could you please help merge this change? Because recently this
-> script has been "polluting" my git staging workspace during
-> development.
-> 
-> Regards,
-> Zhao
-> 
+> Cc: David Hildenbrand <david@redhat.com>
+> Cc: Igor Mammedov <imammedo@redhat.com>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+> ---
+>  backends/hostmem-epc.c | 4 +---
+>  1 file changed, 1 insertion(+), 3 deletions(-)
+> 
+> diff --git a/backends/hostmem-epc.c b/backends/hostmem-epc.c
+> index f58fcf00a10b..6c024d6217d2 100644
+> --- a/backends/hostmem-epc.c
+> +++ b/backends/hostmem-epc.c
+> @@ -29,10 +29,8 @@ sgx_epc_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
+>          return false;
+>      }
+>  
+> -    fd = qemu_open_old("/dev/sgx_vepc", O_RDWR);
+> +    fd = qemu_open("/dev/sgx_vepc", O_RDWR, errp);
+>      if (fd < 0) {
+> -        error_setg_errno(errp, errno,
+> -                         "failed to open /dev/sgx_vepc to alloc SGX EPC");
+>          return false;
+>      }
+>  
 
 
