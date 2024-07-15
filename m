@@ -1,61 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sSfkK-0000Ep-VH
-	for mharc-qemu-trivial@gnu.org; Sat, 13 Jul 2024 12:37:18 -0400
+	id 1sTGjM-00022I-HZ
+	for mharc-qemu-trivial@gnu.org; Mon, 15 Jul 2024 04:06:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@samjakob.com>) id 1sSfEE-00006A-OP
- for qemu-trivial@nongnu.org; Sat, 13 Jul 2024 12:04:08 -0400
-Received: from qs51p00im-qukt01071502.me.com ([17.57.155.5])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1sTGjI-0001xC-FN; Mon, 15 Jul 2024 04:06:41 -0400
+Received: from mgamail.intel.com ([192.198.163.8])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@samjakob.com>) id 1sSfEB-00063M-S0
- for qemu-trivial@nongnu.org; Sat, 13 Jul 2024 12:04:06 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samjakob.com;
- s=sig1; t=1720886641;
- bh=Pm4YVouzr7AEZLWE6riErvbFYoXYD6jFvtrjxHqNMOI=;
- h=From:To:Subject:Date:Message-ID:MIME-Version;
- b=jyWQkUnOVgkRs/Hv25WELvTi3CH+ddNz3ZV2IsiBKUJmYw7eullQcTQ5pGlgEw6EI
- w2kB/nY3xTZoudfeLlu8zgTYzRFrAF4EP45oN6CcrFSOBV/T334M+6ZEmD45LR+1v9
- Ql+PUHE72t95bVIwVZAG3vwuh1frXlOCIbIU3zASWA5T0zvMHKOKHlJN4D6bg+PMLx
- A2KuKJwD2KGHavQGM0ce8vnCmcjOfqQaAcKNN2p8yJDjT8N2Ntjk4PpdKaUIJjG5TU
- lw8spf/AGMs4d2Zgr9Y6N8c7l3pcAmoK26rG4w96SeRLxxspMvHYvxyoFyJaSmK3Nz
- OJ+6BYXDhmAiw==
-Received: from localhost.localdomain (qs51p00im-dlb-asmtp-mailmevip.me.com
- [17.57.155.28])
- by qs51p00im-qukt01071502.me.com (Postfix) with ESMTPSA id D49E366803DD;
- Sat, 13 Jul 2024 16:03:58 +0000 (UTC)
-From: SamJakob <me@samjakob.com>
-To: qemu-trivial@nongnu.org
-Cc: SamJakob <me@samjakob.com>, Peter Maydell <peter.maydell@linaro.org>,
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1sTGjD-00043v-5P; Mon, 15 Jul 2024 04:06:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1721030795; x=1752566795;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=Lp4v3L+AkbHFxgebhesrGiQlCdljWIVdS1biLiIzptI=;
+ b=OFIP4Og2llrWLZJptuApdXAnQQ0Ch+3bNlYs500QBZ9g0Yx9sziw8Eft
+ rYgPH+ExK43zxGDDeIZarDtw7TgvpWUdOdghOBxmmZSl7d6Wz1bdpinpy
+ n6aZw68YM4doQ5W4uM1OltrIgfn5R0LV26VSQyc6gta5vXpVAQLINTwYY
+ bMaLiQJiY99vLwEY7/hKvgL/OjC8uULNOpSZJc0ijs9xHP1d0j3NOaA4z
+ IzpFQ12zZpw/vQEEc5+Vs2+NcpGBlaieOt7nNasAxqyjagGc1h8YcKobl
+ ZFIFP6aB2inc/NCBJT4MMP/CSkEdf/xElqXS8zk028BxPcB3e2/AYVxqR g==;
+X-CSE-ConnectionGUID: A+MMKsr9RKOomODTLBYgvw==
+X-CSE-MsgGUID: EHSbiq/URxKTJ7NgNr4Gaw==
+X-IronPort-AV: E=McAfee;i="6700,10204,11133"; a="35935615"
+X-IronPort-AV: E=Sophos;i="6.09,209,1716274800"; d="scan'208";a="35935615"
+Received: from fmviesa009.fm.intel.com ([10.60.135.149])
+ by fmvoesa102.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 Jul 2024 01:06:30 -0700
+X-CSE-ConnectionGUID: fDkr1dItSteGpLOwmzo+yA==
+X-CSE-MsgGUID: rDPg4alCSpmbPOpBnDmxAw==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,209,1716274800"; d="scan'208";a="49512569"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
+ by fmviesa009.fm.intel.com with ESMTP; 15 Jul 2024 01:06:28 -0700
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Michael Tokarev <mjt@tls.msk.ru>,
+	Laurent Vivier <laurent@vivier.eu>
+Cc: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Eric Blake <eblake@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-arm@nongnu.org (open list:Raspberry Pi),
- qemu-devel@nongnu.org (open list:All patches CC here)
-Subject: [PATCH] hw/display/bcm2835_fb: fix fb_use_offsets condition
-Date: Sat, 13 Jul 2024 17:03:53 +0100
-Message-ID: <20240713160353.62410-1-me@samjakob.com>
-X-Mailer: git-send-email 2.45.2
+ qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH 0/7] trivial: Replace some qemu_open_old() with qemu_open()
+Date: Mon, 15 Jul 2024 16:21:48 +0800
+Message-Id: <20240715082155.28771-1-zhao1.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-GUID: InkTY5WYpDk3oIvHETJFkySVMkg9Ba05
-X-Proofpoint-ORIG-GUID: InkTY5WYpDk3oIvHETJFkySVMkg9Ba05
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-07-13_12,2024-07-11_01,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 suspectscore=0
- spamscore=0 adultscore=0
- mlxlogscore=903 mlxscore=0 malwarescore=0 clxscore=1030 phishscore=0
- bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2407130120
-Received-SPF: pass client-ip=17.57.155.5; envelope-from=me@samjakob.com;
- helo=qs51p00im-qukt01071502.me.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=192.198.163.8; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 13 Jul 2024 12:37:09 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -67,44 +69,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 13 Jul 2024 16:04:09 -0000
+X-List-Received-Date: Mon, 15 Jul 2024 08:06:41 -0000
 
-	It is common practice when implementing double-buffering
-	on VideoCore to do so by multiplying the height of the
-	virtual buffer by the number of virtual screens desired
-	(i.e., two - in the case of double-bufferring).
+Hi list,
 
-	At present, this won't work in QEMU because the logic in
-	fb_use_offsets require that both the virtual width and
-	height exceed their physical counterparts.
+After Daniel's renaming (448058aa99aa "util: rename qemu_open() to
+qemu_open_old()"), I find some qemu_open_old() can be directly replaced
+by the new qemu_open().
 
-	This appears to be unintentional/a typo and indeed the
-	comment states; "Experimentally, the hardware seems to
-	do this only if the viewport size is larger than the
-	physical screen". The viewport/virtual size would be
-	larger than the physical size if either virtual dimension
-	were larger than their physical counterparts and not
-	necessarily both.
+This series considers the case where @errp exists, for which @errp can
+be passed directly to qemu_open().
 
-Signed-off-by: SamJakob <me@samjakob.com>
+There would be more cleanup to help qemu_open_old() retire as early as
+possible.
+
+Thanks and Best Regards,
+Zhao
 ---
- hw/display/bcm2835_fb.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Zhao Liu (7):
+  hw/i386/sgx: Get rid of qemu_open_old()
+  hw/usb/host-libusb: Get rid of qemu_open_old()
+  hw/usb/u2f-passthru: Get rid of qemu_open_old()
+  hw/vfio/container: Get rid of qemu_open_old()
+  backends/hostmem-epc: Get rid of qemu_open_old()
+  backends/iommufd: Get rid of qemu_open_old()
+  backends/rng-random: Get rid of qemu_open_old()
 
-diff --git a/hw/display/bcm2835_fb.c b/hw/display/bcm2835_fb.c
-index e40ed2d2e1..650db3da82 100644
---- a/hw/display/bcm2835_fb.c
-+++ b/hw/display/bcm2835_fb.c
-@@ -145,7 +145,7 @@ static bool fb_use_offsets(BCM2835FBConfig *config)
-      * viewport size is larger than the physical screen. (It doesn't
-      * prevent the guest setting this silly viewport setting, though...)
-      */
--    return config->xres_virtual > config->xres &&
-+    return config->xres_virtual > config->xres ||
-         config->yres_virtual > config->yres;
- }
- 
+ backends/hostmem-epc.c | 4 +---
+ backends/iommufd.c     | 3 +--
+ backends/rng-random.c  | 9 +++++----
+ hw/i386/sgx.c          | 6 ++++--
+ hw/usb/host-libusb.c   | 3 +--
+ hw/usb/u2f-passthru.c  | 4 +---
+ hw/vfio/container.c    | 6 ++----
+ 7 files changed, 15 insertions(+), 20 deletions(-)
+
 -- 
-2.45.2
+2.34.1
 
 
