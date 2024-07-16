@@ -1,77 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sTjJL-0002qD-O6
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Jul 2024 10:37:47 -0400
+	id 1sTjPt-0000pq-9V
+	for mharc-qemu-trivial@gnu.org; Tue, 16 Jul 2024 10:44:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sTjJK-0002nS-9S
- for qemu-trivial@nongnu.org; Tue, 16 Jul 2024 10:37:46 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sTjPr-0000j5-RK
+ for qemu-trivial@nongnu.org; Tue, 16 Jul 2024 10:44:31 -0400
+Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sTjJA-0001i6-1E
- for qemu-trivial@nongnu.org; Tue, 16 Jul 2024 10:37:45 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4279ca8af51so34671435e9.3
- for <qemu-trivial@nongnu.org>; Tue, 16 Jul 2024 07:37:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sTjPf-0003AS-DN
+ for qemu-trivial@nongnu.org; Tue, 16 Jul 2024 10:44:31 -0400
+Received: by mail-ed1-x531.google.com with SMTP id
+ 4fb4d7f45d1cf-58c2e5e8649so9959228a12.1
+ for <qemu-trivial@nongnu.org>; Tue, 16 Jul 2024 07:44:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1721140654; x=1721745454; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=tOxQpWcw0LIUguDMbxcPC2388Mn3DGxme+Fp+3lkV0g=;
- b=T38FuQjawJLyE9uFX+ugtg4HthSnpCdC/qud/p2ZVduYKvm6XU5xNp7CDUyNt43txh
- foQeW5MjKVMIIPGKWkXfD6M398bOJdSSwEjthFH+qgRyuwQm8RYLxaMJIzvcWmSDIK//
- BqPz1RNARiGayvsFsSaMB/5rPQzUK22A62kp/NmWPu9Z8k1vIbA4en6pwgn7qwiFqtS2
- 8ozXKsTIq/rK14qHDNipC0hQzdymx9cZv5bj3ZaBK6JP59OdRf/zhP5TlQ9hF1hQV3KG
- TkFKI0RiFoD594Zl1zE2bDxPnFmuH82QSNwRK+ITdxZOIp0qCK1BYNt6Sy0IYTnpLMUE
- 8euw==
+ d=linaro.org; s=google; t=1721141054; x=1721745854; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=9rzLZmf8wi3VJrCA9+xiQjVWImQTbreBpuPWfZU1qY4=;
+ b=ejPZ+WUMRG+zUnrqRJr5YCo2iUX8oe/tHFv9tgYikez02z+7msW7Ast23OQ0qdMieD
+ fwQIRVwqkOCFBUUMe8FWB2Uc2mjNlnmAqtpatzf0+sFDjm7zlfZJ7BMMnQn3o4Gf0/KX
+ nNVSqm8yj5bWqCm+7WwYcREDycZnUhXAR/k27Tn1zuR9VrcHgchzyXhc120u4E+eiMfr
+ dQRaSFjAbDR0oAPjshi/d7J6vOp57OLz1iKP3tDT/rji7MxCendY2zgrjB71R/NRiyI7
+ nat5TDBdTFwlgaJmErxeXfmzqeVgZXsfefb1eucxLKX80WJBqzAKSjfeSq7qhy6b3kpK
+ 4aIA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721140654; x=1721745454;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=tOxQpWcw0LIUguDMbxcPC2388Mn3DGxme+Fp+3lkV0g=;
- b=gDdZGc0hjTEPslizQEO2iC+lYxxuGwga+GWfAGmfzsh4F5D2VoW5ecpBQWFxRBdoBP
- xK6c5/Ln2fan4vZq3veMnyMXQ4FcmyNC8osAORcu0PLEcACKfHm6M5d/RRo67IqLKb75
- /V7mbkUvDnOhmCVksJFq0J8IsSJ0pAjT9zcmkdVoVdLgIowCk3maZ10ZGsgsOFusqX2X
- V6dlq0eUuZtY27+PyaqvBsgPnaqw2z2uxoSHD06jvWz+5PaSNjBInTk/nI7ZC1SYLVkb
- 0SRyBpYBgGyyxUv8cj+cZqfHwsHyv8OyB08uqxHv5NmrrMXx/8qn5KEuL0w0ZgGbIWVc
- cvPQ==
-X-Gm-Message-State: AOJu0YxvrvAvPVbJTyAmLj0qMsREsJJpNUBWXWTbWwNeujXyxiZsKsGJ
- AqOSVsd+2nDk0g4/TvJOrpxhz/dTzoqwMcnFISDJWfrZ62ISdvUveXBg4OWaREdM5tvUTZIfb96
- k7n+7oA==
-X-Google-Smtp-Source: AGHT+IF1UjoFHg862n96EDXgkdzOcXerSZK8HQt5RL+dpEEXMlu++vMufX1CTE6vQTYU+he9krFrHA==
-X-Received: by 2002:a05:600c:4e86:b0:426:6688:2421 with SMTP id
- 5b1f17b1804b1-427ba678739mr15165765e9.11.1721140654300; 
- Tue, 16 Jul 2024 07:37:34 -0700 (PDT)
-Received: from [192.168.1.172] ([185.87.38.242])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4279f25a957sm163011475e9.13.2024.07.16.07.37.33
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 16 Jul 2024 07:37:33 -0700 (PDT)
-Message-ID: <3e35a80c-fa0f-41f5-8a63-30a873fb3bad@linaro.org>
-Date: Tue, 16 Jul 2024 16:37:32 +0200
+ d=1e100.net; s=20230601; t=1721141054; x=1721745854;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=9rzLZmf8wi3VJrCA9+xiQjVWImQTbreBpuPWfZU1qY4=;
+ b=mbb9Rtade/D2gbrhebCtsktmTy6BcVjKFcZVOIM1Hhp+ps2nvIJ4yl1wtAaj3LmUVe
+ f3DXFHqAn0kV05HsvsNKOwZAdydR9lBJYnFg92qSyMDDes7Borg7MnmezC7OEsqf2DKO
+ onqNbrL2sNy3ZcoVwWbEs/8/jqB/giPWOV4LlnnGBZbGuTsS1gJ3bOVURnSiLVTAA1TY
+ U1J0orlZfdi6cf4MxAM478DdY2a7XbsqhogzqDEon6QXO/bn7V/qF8uNouIyrI+CcSlG
+ GCT44d2iGEgh1n3wiMllepPtNly4pD6vpq+pA+vI7Ylk32PcCHPXuId4yU9y2rTS55NB
+ fHXA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUppxAwOFXzajemKGSHxI/hZU3dp9VW4Xx/7q684ZfMTjtxia3TSKe3UALBgYH/cN30gmCm7OVfmtZpw1X2zFRfcWTiEiQONg==
+X-Gm-Message-State: AOJu0YzC/slm0XDotalG/qJ1J0ey6FncMig0LhXmV2n8wRriy3sAFfhp
+ 5ShVYPCwOiKOrCo+YVPCMljDPF331CJw8i4eEQAYPF7tbU5Y6sXkg1gOqucDJ1I5LHzT5KdqItP
+ cwmeITSE3ocfX7HK3HX6qdggDvaJfAEjzmZTHew==
+X-Google-Smtp-Source: AGHT+IH+pfyzhanmtTgdevkSavrsq2jJEwGbbZH1+Byxa3hOocfhpE2M0MSLdPAmHe8xZbLhKTyn1Qk3Wrwr2BE0vSQ=
+X-Received: by 2002:a05:6402:3594:b0:58b:bb69:763e with SMTP id
+ 4fb4d7f45d1cf-59f0ac09412mr2071906a12.7.1721141053847; Tue, 16 Jul 2024
+ 07:44:13 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/display/bcm2835_fb: fix fb_use_offsets condition
-To: Peter Maydell <peter.maydell@linaro.org>, SamJakob <me@samjakob.com>
-Cc: qemu-trivial@nongnu.org, "open list:Raspberry Pi" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
 References: <20240713160353.62410-1-me@samjakob.com>
  <CAFEAcA82m+8K8rWDMBehPp=NGUezHZPn1LVoyU3DJ3LWq+ZnAw@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAFEAcA82m+8K8rWDMBehPp=NGUezHZPn1LVoyU3DJ3LWq+ZnAw@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+ <3e35a80c-fa0f-41f5-8a63-30a873fb3bad@linaro.org>
+In-Reply-To: <3e35a80c-fa0f-41f5-8a63-30a873fb3bad@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 16 Jul 2024 15:44:02 +0100
+Message-ID: <CAFEAcA_jA9BnBRYZK8b15ibp7SFw0PNKb7H=-xs4p=ttOesahg@mail.gmail.com>
+Subject: Re: [PATCH] hw/display/bcm2835_fb: fix fb_use_offsets condition
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: SamJakob <me@samjakob.com>, qemu-trivial@nongnu.org, 
+ "open list:Raspberry Pi" <qemu-arm@nongnu.org>, 
+ "open list:All patches CC here" <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::531;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
- T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,42 +82,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Jul 2024 14:37:46 -0000
+X-List-Received-Date: Tue, 16 Jul 2024 14:44:32 -0000
 
-On 16/7/24 12:35, Peter Maydell wrote:
-> On Sat, 13 Jul 2024 at 17:04, SamJakob <me@samjakob.com> wrote:
->>
->>          It is common practice when implementing double-buffering
->>          on VideoCore to do so by multiplying the height of the
->>          virtual buffer by the number of virtual screens desired
->>          (i.e., two - in the case of double-bufferring).
->>
->>          At present, this won't work in QEMU because the logic in
->>          fb_use_offsets require that both the virtual width and
->>          height exceed their physical counterparts.
->>
->>          This appears to be unintentional/a typo and indeed the
->>          comment states; "Experimentally, the hardware seems to
->>          do this only if the viewport size is larger than the
->>          physical screen". The viewport/virtual size would be
->>          larger than the physical size if either virtual dimension
->>          were larger than their physical counterparts and not
->>          necessarily both.
->>
->> Signed-off-by: SamJakob <me@samjakob.com>
-> 
-> Thanks for this bugfix; I've applied it to my target-arm.next
-> queue and it should get upstream within a week or so.
+On Tue, 16 Jul 2024 at 15:37, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> On 16/7/24 12:35, Peter Maydell wrote:
+> > On Sat, 13 Jul 2024 at 17:04, SamJakob <me@samjakob.com> wrote:
+> >>
+> >>          It is common practice when implementing double-buffering
+> >>          on VideoCore to do so by multiplying the height of the
+> >>          virtual buffer by the number of virtual screens desired
+> >>          (i.e., two - in the case of double-bufferring).
+> >>
+> >>          At present, this won't work in QEMU because the logic in
+> >>          fb_use_offsets require that both the virtual width and
+> >>          height exceed their physical counterparts.
+> >>
+> >>          This appears to be unintentional/a typo and indeed the
+> >>          comment states; "Experimentally, the hardware seems to
+> >>          do this only if the viewport size is larger than the
+> >>          physical screen". The viewport/virtual size would be
+> >>          larger than the physical size if either virtual dimension
+> >>          were larger than their physical counterparts and not
+> >>          necessarily both.
+> >>
+> >> Signed-off-by: SamJakob <me@samjakob.com>
+> >
+> > Thanks for this bugfix; I've applied it to my target-arm.next
+> > queue and it should get upstream within a week or so.
+>
+> Since I'm seeing 2 times the same patch, adding R-b again on
+> this one:
+>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>
+> (BTW Peter the commit description is mis-aligned, if you
+> don't mind, correcting it while applying would be appreciated!)
 
-Since I'm seeing 2 times the same patch, adding R-b again on
-this one:
+Yep, I already picked up your r-by and rewrapped the commit
+message.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
-(BTW Peter the commit description is mis-aligned, if you
-don't mind, correcting it while applying would be appreciated!)
-
-Thanks,
-
-Phil.
+-- PMM
 
