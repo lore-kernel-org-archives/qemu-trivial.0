@@ -1,30 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sU2WH-00072q-DZ
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:08:31 -0400
+	id 1sU2WW-0007wk-3K
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:08:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2Va-0003Sf-D0; Wed, 17 Jul 2024 07:07:47 -0400
+ id 1sU2Vg-0003rS-6S; Wed, 17 Jul 2024 07:07:50 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2VX-0007Xe-Cf; Wed, 17 Jul 2024 07:07:41 -0400
+ id 1sU2Vc-0007Zl-SW; Wed, 17 Jul 2024 07:07:47 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 9F47C7B37F;
+ by isrv.corpit.ru (Postfix) with ESMTP id BF8737B381;
  Wed, 17 Jul 2024 14:06:36 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 116F910B294;
+ by tsrv.corpit.ru (Postfix) with SMTP id 31DEC10B296;
  Wed, 17 Jul 2024 14:06:41 +0300 (MSK)
-Received: (nullmailer pid 844422 invoked by uid 1000);
+Received: (nullmailer pid 844428 invoked by uid 1000);
  Wed, 17 Jul 2024 11:06:40 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org,
- David Hildenbrand <david@redhat.com>, Igor Mammedov <imammedo@redhat.com>,
+ Laurent Vivier <lvivier@redhat.com>, Amit Shah <amit@kernel.org>,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 13/16] backends/hostmem-epc: Get rid of qemu_open_old()
-Date: Wed, 17 Jul 2024 14:06:37 +0300
-Message-Id: <20240717110640.844335-14-mjt@tls.msk.ru>
+Subject: [PULL 15/16] backends/rng-random: Get rid of qemu_open_old()
+Date: Wed, 17 Jul 2024 14:06:39 +0300
+Message-Id: <20240717110640.844335-16-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240717110640.844335-1-mjt@tls.msk.ru>
 References: <20240717110640.844335-1-mjt@tls.msk.ru>
@@ -50,7 +50,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jul 2024 11:08:05 -0000
+X-List-Received-Date: Wed, 17 Jul 2024 11:08:14 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -59,34 +59,36 @@ For qemu_open_old(), osdep.h said:
 > Don't introduce new usage of this function, prefer the following
 > qemu_open/qemu_create that take an "Error **errp".
 
-So replace qemu_open_old() with qemu_open().
+So replace qemu_open_old() with qemu_open(). And considering
+rng_random_opened() will lose its obvious error handling case after
+removing error_setg_file_open(), add comment to remind here.
 
-Cc: David Hildenbrand <david@redhat.com>
-Cc: Igor Mammedov <imammedo@redhat.com>
+Cc: Laurent Vivier <lvivier@redhat.com>
+Cc: Amit Shah <amit@kernel.org>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+(mjt: drop superfluous commit as suggested by philmd)
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- backends/hostmem-epc.c | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+ backends/rng-random.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-diff --git a/backends/hostmem-epc.c b/backends/hostmem-epc.c
-index f58fcf00a1..6c024d6217 100644
---- a/backends/hostmem-epc.c
-+++ b/backends/hostmem-epc.c
-@@ -29,10 +29,8 @@ sgx_epc_backend_memory_alloc(HostMemoryBackend *backend, Error **errp)
-         return false;
+diff --git a/backends/rng-random.c b/backends/rng-random.c
+index 80eb5be138..489c0917f0 100644
+--- a/backends/rng-random.c
++++ b/backends/rng-random.c
+@@ -75,10 +75,7 @@ static void rng_random_opened(RngBackend *b, Error **errp)
+         error_setg(errp, QERR_INVALID_PARAMETER_VALUE,
+                    "filename", "a valid filename");
+     } else {
+-        s->fd = qemu_open_old(s->filename, O_RDONLY | O_NONBLOCK);
+-        if (s->fd == -1) {
+-            error_setg_file_open(errp, errno, s->filename);
+-        }
++        s->fd = qemu_open(s->filename, O_RDONLY | O_NONBLOCK, errp);
      }
- 
--    fd = qemu_open_old("/dev/sgx_vepc", O_RDWR);
-+    fd = qemu_open("/dev/sgx_vepc", O_RDWR, errp);
-     if (fd < 0) {
--        error_setg_errno(errp, errno,
--                         "failed to open /dev/sgx_vepc to alloc SGX EPC");
-         return false;
-     }
+ }
  
 -- 
 2.39.2
