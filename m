@@ -1,31 +1,34 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sU2VF-00023c-Ig
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:07:21 -0400
+	id 1sU2VO-0002f3-5x
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:07:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2Ug-0007tz-61; Wed, 17 Jul 2024 07:06:48 -0400
+ id 1sU2Uy-0000rf-Q5; Wed, 17 Jul 2024 07:07:04 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2Ud-0007R5-J4; Wed, 17 Jul 2024 07:06:45 -0400
+ id 1sU2Ut-0007TA-5d; Wed, 17 Jul 2024 07:07:04 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id DCB337B372;
- Wed, 17 Jul 2024 14:06:35 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 434757B379;
+ Wed, 17 Jul 2024 14:06:36 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 4FF3D10B287;
+ by tsrv.corpit.ru (Postfix) with SMTP id AAD1C10B28E;
  Wed, 17 Jul 2024 14:06:40 +0300 (MSK)
-Received: (nullmailer pid 844381 invoked by uid 1000);
+Received: (nullmailer pid 844403 invoked by uid 1000);
  Wed, 17 Jul 2024 11:06:40 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
-Subject: [PULL 00/16] Trivial patches for 2024-07-17
-Date: Wed, 17 Jul 2024 14:06:24 +0300
-Message-Id: <20240717110640.844335-1-mjt@tls.msk.ru>
+Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org,
+ Jason Wang <jasowang@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 07/16] doc/net/l2tpv3: Update boolean fields' description to
+ avoid short-form use
+Date: Wed, 17 Jul 2024 14:06:31 +0300
+Message-Id: <20240717110640.844335-8-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240717110640.844335-1-mjt@tls.msk.ru>
+References: <20240717110640.844335-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -46,64 +49,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jul 2024 11:07:00 -0000
+X-List-Received-Date: Wed, 17 Jul 2024 11:07:06 -0000
 
-The following changes since commit e2f346aa98646e84eabe0256f89d08e89b1837cf:
+From: Zhao Liu <zhao1.liu@intel.com>
 
-  Merge tag 'sdmmc-20240716' of https://github.com/philmd/qemu into staging (2024-07-17 07:59:31 +1000)
+The short-form boolean options has been deprecated since v6.0 (refer
+to docs/about/deprecated.rst).
 
-are available in the Git repository at:
+Update the description and example of boolean fields in l2tpv3 option to
+avoid deprecation warning.
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+Cc: Jason Wang <jasowang@redhat.com>
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ qemu-options.hx | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-for you to fetch changes up to 66a8de9889ceb929e2abe7fb0e424f45210d9dda:
+diff --git a/qemu-options.hx b/qemu-options.hx
+index ad6521ef5e..edeaefe2c7 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -3353,7 +3353,7 @@ SRST
+                          -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
+                          -netdev socket,id=n1,mcast=239.192.168.1:1102,localaddr=1.2.3.4
+ 
+-``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on|off][,udp=on|off][,cookie64][,counter][,pincounter][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
++``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on|off][,udp=on|off][,cookie64=on|off][,counter=on|off][,pincounter=on|off][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
+     Configure a L2TPv3 pseudowire host network backend. L2TPv3 (RFC3931)
+     is a popular protocol to transport Ethernet (and other Layer 2) data
+     frames between two systems. It is present in routers, firewalls and
+@@ -3368,7 +3368,7 @@ SRST
+     ``dst=dstaddr``
+         destination address (mandatory)
+ 
+-    ``udp``
++    ``udp=on``
+         select udp encapsulation (default is ip).
+ 
+     ``srcport=srcport``
+@@ -3377,7 +3377,7 @@ SRST
+     ``dstport=dstport``
+         destination udp port.
+ 
+-    ``ipv6``
++    ``ipv6=on``
+         force v6, otherwise defaults to v4.
+ 
+     ``rxcookie=rxcookie``; \ ``txcookie=txcookie``
+@@ -3385,7 +3385,7 @@ SRST
+         Their function is mostly to prevent misconfiguration. By default
+         they are 32 bit.
+ 
+-    ``cookie64``
++    ``cookie64=on``
+         Set cookie size to 64 bit instead of the default 32
+ 
+     ``counter=off``
+@@ -3419,7 +3419,7 @@ SRST
+         # launch QEMU instance - if your network has reorder or is very lossy add ,pincounter
+ 
+         |qemu_system| linux.img -device e1000,netdev=n1 \\
+-            -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter
++            -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp=on,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter=on
+ 
+ ``-netdev vde,id=id[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]``
+     Configure VDE backend to connect to PORT n of a vde switch running
+-- 
+2.39.2
 
-  meson: Update meson-buildoptions.sh (2024-07-17 14:04:15 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2024-07-17
-
-----------------------------------------------------------------
-Michael Tokarev (1):
-      block/curl: rewrite http header parsing function
-
-Thomas Huth (1):
-      tests/avocado: Remove the non-working virtio_check_params test
-
-Zhao Liu (13):
-      accel/kvm/kvm-all: Fix superfluous trailing semicolon
-      hw/i386/x86: Fix superfluous trailing semicolon
-      util/oslib-posix: Fix superfluous trailing semicolon
-      target/hexagon/imported/mmvec: Fix superfluous trailing semicolon
-      doc/net/l2tpv3: Update boolean fields' description to avoid short-form use
-      hw/i386/sgx: Get rid of qemu_open_old()
-      hw/usb/host-libusb: Get rid of qemu_open_old()
-      hw/usb/u2f-passthru: Get rid of qemu_open_old()
-      hw/vfio/container: Get rid of qemu_open_old()
-      backends/hostmem-epc: Get rid of qemu_open_old()
-      backends/iommufd: Get rid of qemu_open_old()
-      backends/rng-random: Get rid of qemu_open_old()
-      meson: Update meson-buildoptions.sh
-
-Zhihai Dong (1):
-      README.rst: add the missing punctuations
-
- README.rst                             |   6 +-
- accel/kvm/kvm-all.c                    |   2 +-
- backends/hostmem-epc.c                 |   4 +-
- backends/iommufd.c                     |   3 +-
- backends/rng-random.c                  |   5 +-
- block/curl.c                           |  44 +++++-----
- hw/i386/sgx.c                          |   6 +-
- hw/i386/x86.c                          |   2 +-
- hw/usb/host-libusb.c                   |   3 +-
- hw/usb/u2f-passthru.c                  |   4 +-
- hw/vfio/container.c                    |   6 +-
- qemu-options.hx                        |  10 +--
- scripts/meson-buildoptions.sh          |  14 ++--
- target/hexagon/imported/mmvec/ext.idef |   2 +-
- tests/avocado/virtio_check_params.py   | 143 ---------------------------------
- util/oslib-posix.c                     |   2 +-
- 16 files changed, 48 insertions(+), 208 deletions(-)
- delete mode 100644 tests/avocado/virtio_check_params.py
 
