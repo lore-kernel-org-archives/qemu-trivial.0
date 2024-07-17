@@ -1,30 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sU2XA-0002cT-9k
+	id 1sU2XA-0002gf-IK
 	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:09:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2Va-0003Sz-Fj; Wed, 17 Jul 2024 07:07:47 -0400
+ id 1sU2Vg-0003rR-6G; Wed, 17 Jul 2024 07:07:50 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2VY-0007Xs-RK; Wed, 17 Jul 2024 07:07:42 -0400
+ id 1sU2Vb-0007Zn-W9; Wed, 17 Jul 2024 07:07:46 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id B02727B380;
+ by isrv.corpit.ru (Postfix) with ESMTP id D9FF07B382;
  Wed, 17 Jul 2024 14:06:36 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 20FBD10B295;
+ by tsrv.corpit.ru (Postfix) with SMTP id 419C610B297;
  Wed, 17 Jul 2024 14:06:41 +0300 (MSK)
-Received: (nullmailer pid 844425 invoked by uid 1000);
+Received: (nullmailer pid 844432 invoked by uid 1000);
  Wed, 17 Jul 2024 11:06:40 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org,
- Yi Liu <yi.l.liu@intel.com>, Eric Auger <eric.auger@redhat.com>,
- Zhenzhong Duan <zhenzhong.duan@intel.com>, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 14/16] backends/iommufd: Get rid of qemu_open_old()
-Date: Wed, 17 Jul 2024 14:06:38 +0300
-Message-Id: <20240717110640.844335-15-mjt@tls.msk.ru>
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 16/16] meson: Update meson-buildoptions.sh
+Date: Wed, 17 Jul 2024 14:06:40 +0300
+Message-Id: <20240717110640.844335-17-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240717110640.844335-1-mjt@tls.msk.ru>
 References: <20240717110640.844335-1-mjt@tls.msk.ru>
@@ -50,44 +49,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jul 2024 11:08:04 -0000
+X-List-Received-Date: Wed, 17 Jul 2024 11:08:07 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-For qemu_open_old(), osdep.h said:
+Update meson-buildoptions.sh to stay in sync with meson_options.txt.
 
-> Don't introduce new usage of this function, prefer the following
-> qemu_open/qemu_create that take an "Error **errp".
-
-So replace qemu_open_old() with qemu_open().
-
-Cc: Yi Liu <yi.l.liu@intel.com>
-Cc: Eric Auger <eric.auger@redhat.com>
-Cc: Zhenzhong Duan <zhenzhong.duan@intel.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Yi Liu <yi.l.liu@intel.com>
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- backends/iommufd.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ scripts/meson-buildoptions.sh | 14 +++++++-------
+ 1 file changed, 7 insertions(+), 7 deletions(-)
 
-diff --git a/backends/iommufd.c b/backends/iommufd.c
-index 84fefbc9ee..cabd1b5002 100644
---- a/backends/iommufd.c
-+++ b/backends/iommufd.c
-@@ -77,9 +77,8 @@ bool iommufd_backend_connect(IOMMUFDBackend *be, Error **errp)
-     int fd;
- 
-     if (be->owned && !be->users) {
--        fd = qemu_open_old("/dev/iommu", O_RDWR);
-+        fd = qemu_open("/dev/iommu", O_RDWR, errp);
-         if (fd < 0) {
--            error_setg_errno(errp, errno, "/dev/iommu opening failed");
-             return false;
-         }
-         be->fd = fd;
+diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
+index cfadb5ea86..c97079a38c 100644
+--- a/scripts/meson-buildoptions.sh
++++ b/scripts/meson-buildoptions.sh
+@@ -83,7 +83,7 @@ meson_options_help() {
+   printf "%s\n" '                           (can be empty) [qemu]'
+   printf "%s\n" '  --with-trace-file=VALUE  Trace file prefix for simple backend [trace]'
+   printf "%s\n" '  --x86-version=CHOICE     tweak required x86_64 architecture version beyond'
+-  printf "%s\n" '                           compiler default [1] (choices: 0/1/2/3)'
++  printf "%s\n" '                           compiler default [1] (choices: 0/1/2/3/4)'
+   printf "%s\n" ''
+   printf "%s\n" 'Optional features, enabled with --enable-FEATURE and'
+   printf "%s\n" 'disabled with --disable-FEATURE, default is enabled if available'
+@@ -166,6 +166,7 @@ meson_options_help() {
+   printf "%s\n" '  qcow1           qcow1 image format support'
+   printf "%s\n" '  qed             qed image format support'
+   printf "%s\n" '  qga-vss         build QGA VSS support (broken with MinGW)'
++  printf "%s\n" '  qpl             Query Processing Library support'
+   printf "%s\n" '  rbd             Ceph block device driver'
+   printf "%s\n" '  rdma            Enable RDMA-based migration'
+   printf "%s\n" '  replication     replication support'
+@@ -187,6 +188,7 @@ meson_options_help() {
+   printf "%s\n" '  tools           build support utilities that come with QEMU'
+   printf "%s\n" '  tpm             TPM support'
+   printf "%s\n" '  u2f             U2F emulation support'
++  printf "%s\n" '  uadk            UADK Library support'
+   printf "%s\n" '  usb-redir       libusbredir support'
+   printf "%s\n" '  vde             vde network backend support'
+   printf "%s\n" '  vdi             vdi image format support'
+@@ -221,8 +223,6 @@ meson_options_help() {
+   printf "%s\n" '                  Xen PCI passthrough support'
+   printf "%s\n" '  xkbcommon       xkbcommon support'
+   printf "%s\n" '  zstd            zstd compression support'
+-  printf "%s\n" '  qpl             Query Processing Library support'
+-  printf "%s\n" '  uadk            UADK Library support'
+ }
+ _meson_option_parse() {
+   case $1 in
+@@ -440,6 +440,8 @@ _meson_option_parse() {
+     --disable-qga-vss) printf "%s" -Dqga_vss=disabled ;;
+     --enable-qom-cast-debug) printf "%s" -Dqom_cast_debug=true ;;
+     --disable-qom-cast-debug) printf "%s" -Dqom_cast_debug=false ;;
++    --enable-qpl) printf "%s" -Dqpl=enabled ;;
++    --disable-qpl) printf "%s" -Dqpl=disabled ;;
+     --enable-rbd) printf "%s" -Drbd=enabled ;;
+     --disable-rbd) printf "%s" -Drbd=disabled ;;
+     --enable-rdma) printf "%s" -Drdma=enabled ;;
+@@ -501,6 +503,8 @@ _meson_option_parse() {
+     --disable-tsan) printf "%s" -Dtsan=false ;;
+     --enable-u2f) printf "%s" -Du2f=enabled ;;
+     --disable-u2f) printf "%s" -Du2f=disabled ;;
++    --enable-uadk) printf "%s" -Duadk=enabled ;;
++    --disable-uadk) printf "%s" -Duadk=disabled ;;
+     --enable-usb-redir) printf "%s" -Dusb_redir=enabled ;;
+     --disable-usb-redir) printf "%s" -Dusb_redir=disabled ;;
+     --enable-vde) printf "%s" -Dvde=enabled ;;
+@@ -560,10 +564,6 @@ _meson_option_parse() {
+     --disable-xkbcommon) printf "%s" -Dxkbcommon=disabled ;;
+     --enable-zstd) printf "%s" -Dzstd=enabled ;;
+     --disable-zstd) printf "%s" -Dzstd=disabled ;;
+-    --enable-qpl) printf "%s" -Dqpl=enabled ;;
+-    --disable-qpl) printf "%s" -Dqpl=disabled ;;
+-    --enable-uadk) printf "%s" -Duadk=enabled ;;
+-    --disable-uadk) printf "%s" -Duadk=disabled ;;
+     *) return 1 ;;
+   esac
+ }
 -- 
 2.39.2
 
