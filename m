@@ -1,33 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sU2V6-0001QK-BS
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:07:12 -0400
+	id 1sU2VF-00023c-Ig
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:07:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2Ut-0000Nr-3P; Wed, 17 Jul 2024 07:07:00 -0400
+ id 1sU2Ug-0007tz-61; Wed, 17 Jul 2024 07:06:48 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2Uq-0007So-2j; Wed, 17 Jul 2024 07:06:58 -0400
+ id 1sU2Ud-0007R5-J4; Wed, 17 Jul 2024 07:06:45 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 3456B7B378;
- Wed, 17 Jul 2024 14:06:36 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id DCB337B372;
+ Wed, 17 Jul 2024 14:06:35 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 9BAE910B28D;
+ by tsrv.corpit.ru (Postfix) with SMTP id 4FF3D10B287;
  Wed, 17 Jul 2024 14:06:40 +0300 (MSK)
-Received: (nullmailer pid 844400 invoked by uid 1000);
+Received: (nullmailer pid 844381 invoked by uid 1000);
  Wed, 17 Jul 2024 11:06:40 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org,
- Brian Cain <bcain@quicinc.com>, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 06/16] target/hexagon/imported/mmvec: Fix superfluous trailing
- semicolon
-Date: Wed, 17 Jul 2024 14:06:30 +0300
-Message-Id: <20240717110640.844335-7-mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Subject: [PULL 00/16] Trivial patches for 2024-07-17
+Date: Wed, 17 Jul 2024 14:06:24 +0300
+Message-Id: <20240717110640.844335-1-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240717110640.844335-1-mjt@tls.msk.ru>
-References: <20240717110640.844335-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -50,37 +46,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jul 2024 11:07:02 -0000
+X-List-Received-Date: Wed, 17 Jul 2024 11:07:00 -0000
 
-From: Zhao Liu <zhao1.liu@intel.com>
+The following changes since commit e2f346aa98646e84eabe0256f89d08e89b1837cf:
 
-Fix the superfluous trailing semicolon in target/hexagon/imported/mmvec/
-ext.idef.
+  Merge tag 'sdmmc-20240716' of https://github.com/philmd/qemu into staging (2024-07-17 07:59:31 +1000)
 
-Cc: Brian Cain <bcain@quicinc.com>
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Brian Cain <bcain@quicinc.com>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- target/hexagon/imported/mmvec/ext.idef | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+are available in the Git repository at:
 
-diff --git a/target/hexagon/imported/mmvec/ext.idef b/target/hexagon/imported/mmvec/ext.idef
-index 98daabfb07..03d31f6181 100644
---- a/target/hexagon/imported/mmvec/ext.idef
-+++ b/target/hexagon/imported/mmvec/ext.idef
-@@ -2855,7 +2855,7 @@ EXTINSN(V6_vscattermhw_add,  "vscatter(Rt32,Mu2,Vvv32.w).h+=Vw32", ATTRIBS(A_EXT
-     fVALIGN(RtV, element_size);
-     fVFOREACH(32, i) {
-         for(j = 0; j < 2; j++) {
--             EA =  RtV + fVALIGN(VvvV.v[j].uw[i],ALIGNMENT);;
-+             EA =  RtV + fVALIGN(VvvV.v[j].uw[i],ALIGNMENT);
-              fVLOG_VTCM_HALFWORD_INCREMENT_DV(EA,VvvV.v[j].uw[i],VwV,(2*i+j),i,j,ALIGNMENT,MuV);
-         }
-     }
--- 
-2.39.2
+  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
 
+for you to fetch changes up to 66a8de9889ceb929e2abe7fb0e424f45210d9dda:
+
+  meson: Update meson-buildoptions.sh (2024-07-17 14:04:15 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2024-07-17
+
+----------------------------------------------------------------
+Michael Tokarev (1):
+      block/curl: rewrite http header parsing function
+
+Thomas Huth (1):
+      tests/avocado: Remove the non-working virtio_check_params test
+
+Zhao Liu (13):
+      accel/kvm/kvm-all: Fix superfluous trailing semicolon
+      hw/i386/x86: Fix superfluous trailing semicolon
+      util/oslib-posix: Fix superfluous trailing semicolon
+      target/hexagon/imported/mmvec: Fix superfluous trailing semicolon
+      doc/net/l2tpv3: Update boolean fields' description to avoid short-form use
+      hw/i386/sgx: Get rid of qemu_open_old()
+      hw/usb/host-libusb: Get rid of qemu_open_old()
+      hw/usb/u2f-passthru: Get rid of qemu_open_old()
+      hw/vfio/container: Get rid of qemu_open_old()
+      backends/hostmem-epc: Get rid of qemu_open_old()
+      backends/iommufd: Get rid of qemu_open_old()
+      backends/rng-random: Get rid of qemu_open_old()
+      meson: Update meson-buildoptions.sh
+
+Zhihai Dong (1):
+      README.rst: add the missing punctuations
+
+ README.rst                             |   6 +-
+ accel/kvm/kvm-all.c                    |   2 +-
+ backends/hostmem-epc.c                 |   4 +-
+ backends/iommufd.c                     |   3 +-
+ backends/rng-random.c                  |   5 +-
+ block/curl.c                           |  44 +++++-----
+ hw/i386/sgx.c                          |   6 +-
+ hw/i386/x86.c                          |   2 +-
+ hw/usb/host-libusb.c                   |   3 +-
+ hw/usb/u2f-passthru.c                  |   4 +-
+ hw/vfio/container.c                    |   6 +-
+ qemu-options.hx                        |  10 +--
+ scripts/meson-buildoptions.sh          |  14 ++--
+ target/hexagon/imported/mmvec/ext.idef |   2 +-
+ tests/avocado/virtio_check_params.py   | 143 ---------------------------------
+ util/oslib-posix.c                     |   2 +-
+ 16 files changed, 48 insertions(+), 208 deletions(-)
+ delete mode 100644 tests/avocado/virtio_check_params.py
 
