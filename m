@@ -1,60 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sTklb-0002Se-69
-	for mharc-qemu-trivial@gnu.org; Tue, 16 Jul 2024 12:11:04 -0400
+	id 1sTxxJ-0005tt-Mt
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 02:16:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@samjakob.com>) id 1sTklU-0001zG-Dy
- for qemu-trivial@nongnu.org; Tue, 16 Jul 2024 12:10:56 -0400
-Received: from qs51p00im-qukt01071701.me.com ([17.57.155.6])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1sTxxF-0005dC-LI; Wed, 17 Jul 2024 02:15:58 -0400
+Received: from mgamail.intel.com ([192.198.163.16])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <me@samjakob.com>) id 1sTklS-0002wZ-GW
- for qemu-trivial@nongnu.org; Tue, 16 Jul 2024 12:10:56 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samjakob.com;
- s=sig1; t=1721146250;
- bh=KjtVo/OCWQ0RNtoc5VyV2ztYRA6Jh4iaDgpmRDZu1JU=;
- h=Content-Type:From:Mime-Version:Subject:Date:Message-Id:To;
- b=q4/Q+C4uORALVY4z5Knema+XWUBSyoJgswV/fnr0z3ljmoU9fzCmBF+HX1e9MEK9l
- 0d65XXt/1uhl/wyVjuyLmAS0hrNlE3AoAXQ12/3auPrBBd40wO/TM2GTA83ywAMwNI
- SEIJzTT22fO4dTBmCWQ9K0a/sNV/j2lk/S7tgj9H0ALiG8lO5wzvEGg3vFNS4Djlx0
- MKQRe3xImAwsfdB/EGKC8dO3lEWxYpEulRfKr6VgW7HLiTNgVWZxtkNvP27IOX4Pfl
- TMIFYXsjIgSFGBaIdIyx5buYF3MgUWVCyBGh+sm9hRpPP0xWLf2Xa99UjugYbp3qu/
- pQXwe7uDLGyBA==
-Received: from smtpclient.apple (qs51p00im-dlb-asmtp-mailmevip.me.com
- [17.57.155.28])
- by qs51p00im-qukt01071701.me.com (Postfix) with ESMTPSA id 0BA474D003C5;
- Tue, 16 Jul 2024 16:10:47 +0000 (UTC)
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-From: "Sam M." <me@samjakob.com>
-Mime-Version: 1.0 (1.0)
-Subject: Re: [PATCH] hw/display/bcm2835_fb: fix fb_use_offsets condition
-Date: Tue, 16 Jul 2024 17:10:35 +0100
-Message-Id: <2CF81837-4459-4C1D-9CFA-3E689A9F7AB6@samjakob.com>
-References: <CAFEAcA_jA9BnBRYZK8b15ibp7SFw0PNKb7H=-xs4p=ttOesahg@mail.gmail.com>
-Cc: =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-trivial@nongnu.org, "open list:Raspberry Pi" <qemu-arm@nongnu.org>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-In-Reply-To: <CAFEAcA_jA9BnBRYZK8b15ibp7SFw0PNKb7H=-xs4p=ttOesahg@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: iPhone Mail (21F90)
-X-Proofpoint-ORIG-GUID: K5L0EAUgy5I-1nrINYMwqh3PZaFa305y
-X-Proofpoint-GUID: K5L0EAUgy5I-1nrINYMwqh3PZaFa305y
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.272,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.28.16
- definitions=2024-07-15_19,2024-07-16_02,2024-05-17_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- phishscore=0
- mlxlogscore=999 suspectscore=0 malwarescore=0 spamscore=0 mlxscore=0
- clxscore=1030 bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2308100000 definitions=main-2407160119
-Received-SPF: pass client-ip=17.57.155.6; envelope-from=me@samjakob.com;
- helo=qs51p00im-qukt01071701.me.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1sTxxC-0007YN-Sk; Wed, 17 Jul 2024 02:15:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1721196955; x=1752732955;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=lxVTDdL+S0Cn0Lj0YQLBnh1gWlr2LWb/YRUTiBXoNuw=;
+ b=UYN/cS1ZLrQHndV6afKVZFlLuSwyvPrMil/nj9xiTN+lr4EBQ/AyZNzs
+ 4HzSGkJEzPyo/x42f+Zv2xymGWrp0PXrr5fFR6Bptebv07Qr03ZiCiSJb
+ ogBKJ/EKum0TblJRooIPSdPmk6cBAPu64on9X7mKYq/d5CWImubo4uDfg
+ Rqw3K8+hDXePBY9uF9SFqg6CHkqKtf8CoV7UlGwYiT8NGoo2eratDY47R
+ WpyMd1OsYZeQFt5TZODxD4nytVIdcbjo8e36gn1dq4cnCykx7Rd0/2e0s
+ IlYuDCWmr7I396oe/HtDHRYDduZUq0MbREiKFSx34OvsNrNatsgMNdfaF Q==;
+X-CSE-ConnectionGUID: B3Xt47jRTXeFD84gdK8OfQ==
+X-CSE-MsgGUID: nGLi1FLHQ6uyLA8MrGXTUg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11135"; a="12582827"
+X-IronPort-AV: E=Sophos;i="6.09,213,1716274800"; d="scan'208";a="12582827"
+Received: from orviesa008.jf.intel.com ([10.64.159.148])
+ by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 16 Jul 2024 23:15:48 -0700
+X-CSE-ConnectionGUID: oYAqu01kQJuznZcfCRHKog==
+X-CSE-MsgGUID: 4nIPCdO/TTSTEXc+WvZw8A==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,213,1716274800"; d="scan'208";a="51009713"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by orviesa008.jf.intel.com with ESMTP; 16 Jul 2024 23:15:46 -0700
+Date: Wed, 17 Jul 2024 14:31:28 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Jason Wang <jasowang@redhat.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>
+Subject: Re: [PATCH] doc/net/l2tpv3: Update boolean fields' description to
+ avoid short-form use
+Message-ID: <ZpdlQDIjGp4wR8aR@intel.com>
+References: <20240708092630.2596945-1-zhao1.liu@intel.com>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20240708092630.2596945-1-zhao1.liu@intel.com>
+Received-SPF: pass client-ip=192.198.163.16; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -68,54 +69,85 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 16 Jul 2024 16:10:58 -0000
+X-List-Received-Date: Wed, 17 Jul 2024 06:15:58 -0000
 
-Thank you!
+Hi Jason,
 
-My apologies for the duplicates and alignment - it=E2=80=99s my first time u=
-sing a mailing list!
+Just a kind ping. Does this update satisfy you?
+Since the original example generates the warning.
 
-> On Jul 16, 2024, at 3:44=E2=80=AFPM, Peter Maydell <peter.maydell@linaro.o=
-rg> wrote:
->=20
-> =EF=BB=BFOn Tue, 16 Jul 2024 at 15:37, Philippe Mathieu-Daud=C3=A9 <philmd=
-@linaro.org> wrote:
->>=20
->>> On 16/7/24 12:35, Peter Maydell wrote:
->>> On Sat, 13 Jul 2024 at 17:04, SamJakob <me@samjakob.com> wrote:
->>>>=20
->>>>         It is common practice when implementing double-buffering
->>>>         on VideoCore to do so by multiplying the height of the
->>>>         virtual buffer by the number of virtual screens desired
->>>>         (i.e., two - in the case of double-bufferring).
->>>>=20
->>>>         At present, this won't work in QEMU because the logic in
->>>>         fb_use_offsets require that both the virtual width and
->>>>         height exceed their physical counterparts.
->>>>=20
->>>>         This appears to be unintentional/a typo and indeed the
->>>>         comment states; "Experimentally, the hardware seems to
->>>>         do this only if the viewport size is larger than the
->>>>         physical screen". The viewport/virtual size would be
->>>>         larger than the physical size if either virtual dimension
->>>>         were larger than their physical counterparts and not
->>>>         necessarily both.
->>>>=20
->>>> Signed-off-by: SamJakob <me@samjakob.com>
->>>=20
->>> Thanks for this bugfix; I've applied it to my target-arm.next
->>> queue and it should get upstream within a week or so.
->>=20
->> Since I'm seeing 2 times the same patch, adding R-b again on
->> this one:
->>=20
->> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->>=20
->> (BTW Peter the commit description is mis-aligned, if you
->> don't mind, correcting it while applying would be appreciated!)
->=20
-> Yep, I already picked up your r-by and rewrapped the commit
-> message.
->=20
-> -- PMM
+Thanks,
+Zhao
+
+On Mon, Jul 08, 2024 at 05:26:30PM +0800, Zhao Liu wrote:
+> Date: Mon, 8 Jul 2024 17:26:30 +0800
+> From: Zhao Liu <zhao1.liu@intel.com>
+> Subject: [PATCH] doc/net/l2tpv3: Update boolean fields' description to
+>  avoid short-form use
+> X-Mailer: git-send-email 2.34.1
+> 
+> The short-form boolean options has been deprecated since v6.0 (refer
+> to docs/about/deprecated.rst).
+> 
+> Update the description and example of boolean fields in l2tpv3 option to
+> avoid deprecation warning.
+> 
+> Cc: Jason Wang <jasowang@redhat.com>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+>  qemu-options.hx | 10 +++++-----
+>  1 file changed, 5 insertions(+), 5 deletions(-)
+> 
+> diff --git a/qemu-options.hx b/qemu-options.hx
+> index ad6521ef5e7e..edeaefe2c79a 100644
+> --- a/qemu-options.hx
+> +++ b/qemu-options.hx
+> @@ -3353,7 +3353,7 @@ SRST
+>                           -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
+>                           -netdev socket,id=n1,mcast=239.192.168.1:1102,localaddr=1.2.3.4
+>  
+> -``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on|off][,udp=on|off][,cookie64][,counter][,pincounter][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
+> +``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on|off][,udp=on|off][,cookie64=on|off][,counter=on|off][,pincounter=on|off][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
+>      Configure a L2TPv3 pseudowire host network backend. L2TPv3 (RFC3931)
+>      is a popular protocol to transport Ethernet (and other Layer 2) data
+>      frames between two systems. It is present in routers, firewalls and
+> @@ -3368,7 +3368,7 @@ SRST
+>      ``dst=dstaddr``
+>          destination address (mandatory)
+>  
+> -    ``udp``
+> +    ``udp=on``
+>          select udp encapsulation (default is ip).
+>  
+>      ``srcport=srcport``
+> @@ -3377,7 +3377,7 @@ SRST
+>      ``dstport=dstport``
+>          destination udp port.
+>  
+> -    ``ipv6``
+> +    ``ipv6=on``
+>          force v6, otherwise defaults to v4.
+>  
+>      ``rxcookie=rxcookie``; \ ``txcookie=txcookie``
+> @@ -3385,7 +3385,7 @@ SRST
+>          Their function is mostly to prevent misconfiguration. By default
+>          they are 32 bit.
+>  
+> -    ``cookie64``
+> +    ``cookie64=on``
+>          Set cookie size to 64 bit instead of the default 32
+>  
+>      ``counter=off``
+> @@ -3419,7 +3419,7 @@ SRST
+>          # launch QEMU instance - if your network has reorder or is very lossy add ,pincounter
+>  
+>          |qemu_system| linux.img -device e1000,netdev=n1 \\
+> -            -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter
+> +            -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp=on,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter=on
+>  
+>  ``-netdev vde,id=id[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]``
+>      Configure VDE backend to connect to PORT n of a vde switch running
+> -- 
+> 2.34.1
+> 
 
