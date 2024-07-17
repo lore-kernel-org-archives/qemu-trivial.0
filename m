@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sU2Wj-0000Sa-JH
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:08:56 -0400
+	id 1sU2Wt-00019k-EQ
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:09:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2V6-0001Rm-JR; Wed, 17 Jul 2024 07:07:13 -0400
+ id 1sU2V9-0001fx-Ri; Wed, 17 Jul 2024 07:07:16 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2V3-0007Wb-Sa; Wed, 17 Jul 2024 07:07:11 -0400
+ id 1sU2V7-0007XC-Vd; Wed, 17 Jul 2024 07:07:15 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 730E37B37C;
+ by isrv.corpit.ru (Postfix) with ESMTP id 800267B37D;
  Wed, 17 Jul 2024 14:06:36 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id DC20310B291;
+ by tsrv.corpit.ru (Postfix) with SMTP id E908310B292;
  Wed, 17 Jul 2024 14:06:40 +0300 (MSK)
-Received: (nullmailer pid 844413 invoked by uid 1000);
+Received: (nullmailer pid 844416 invoked by uid 1000);
  Wed, 17 Jul 2024 11:06:40 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 10/16] hw/usb/host-libusb: Get rid of qemu_open_old()
-Date: Wed, 17 Jul 2024 14:06:34 +0300
-Message-Id: <20240717110640.844335-11-mjt@tls.msk.ru>
+Subject: [PULL 11/16] hw/usb/u2f-passthru: Get rid of qemu_open_old()
+Date: Wed, 17 Jul 2024 14:06:35 +0300
+Message-Id: <20240717110640.844335-12-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240717110640.844335-1-mjt@tls.msk.ru>
 References: <20240717110640.844335-1-mjt@tls.msk.ru>
@@ -49,8 +49,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jul 2024 11:07:19 -0000
-X-List-Received-Date: Wed, 17 Jul 2024 11:07:19 -0000
+X-List-Received-Date: Wed, 17 Jul 2024 11:07:22 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
@@ -66,24 +65,25 @@ Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/usb/host-libusb.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ hw/usb/u2f-passthru.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/hw/usb/host-libusb.c b/hw/usb/host-libusb.c
-index 80122b4125..691bc881fb 100644
---- a/hw/usb/host-libusb.c
-+++ b/hw/usb/host-libusb.c
-@@ -1212,9 +1212,8 @@ static void usb_host_realize(USBDevice *udev, Error **errp)
-     if (s->hostdevice) {
-         int fd;
-         s->needs_autoscan = false;
--        fd = qemu_open_old(s->hostdevice, O_RDWR);
-+        fd = qemu_open(s->hostdevice, O_RDWR, errp);
+diff --git a/hw/usb/u2f-passthru.c b/hw/usb/u2f-passthru.c
+index b7025d303d..c4a783d128 100644
+--- a/hw/usb/u2f-passthru.c
++++ b/hw/usb/u2f-passthru.c
+@@ -482,10 +482,8 @@ static void u2f_passthru_realize(U2FKeyState *base, Error **errp)
+         return;
+ #endif
+     } else {
+-        fd = qemu_open_old(key->hidraw, O_RDWR);
++        fd = qemu_open(key->hidraw, O_RDWR, errp);
          if (fd < 0) {
--            error_setg_errno(errp, errno, "failed to open %s", s->hostdevice);
+-            error_setg(errp, "%s: Failed to open %s", TYPE_U2F_PASSTHRU,
+-                       key->hidraw);
              return;
          }
-         rc = usb_host_open(s, NULL, fd);
+ 
 -- 
 2.39.2
 
