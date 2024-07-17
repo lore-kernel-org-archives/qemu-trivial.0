@@ -1,29 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sU2Uw-0000h6-Qx
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:07:02 -0400
+	id 1sU2V1-00014o-5p
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:07:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2Ul-0008FQ-4s; Wed, 17 Jul 2024 07:06:52 -0400
+ id 1sU2Ug-0007th-36; Wed, 17 Jul 2024 07:06:48 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2Uj-0007RX-9Z; Wed, 17 Jul 2024 07:06:50 -0400
+ id 1sU2Ud-0007R4-IF; Wed, 17 Jul 2024 07:06:45 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id F1F7B7B374;
+ by isrv.corpit.ru (Postfix) with ESMTP id E54B37B373;
  Wed, 17 Jul 2024 14:06:35 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 66D9710B289;
+ by tsrv.corpit.ru (Postfix) with SMTP id 5B74210B288;
  Wed, 17 Jul 2024 14:06:40 +0300 (MSK)
-Received: (nullmailer pid 844388 invoked by uid 1000);
+Received: (nullmailer pid 844385 invoked by uid 1000);
  Wed, 17 Jul 2024 11:06:40 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Zhihai Dong <dongzhihai@eswincomputing.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 02/16] README.rst: add the missing punctuations
-Date: Wed, 17 Jul 2024 14:06:26 +0300
-Message-Id: <20240717110640.844335-3-mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org
+Subject: [PULL 01/16] block/curl: rewrite http header parsing function
+Date: Wed, 17 Jul 2024 14:06:25 +0300
+Message-Id: <20240717110640.844335-2-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240717110640.844335-1-mjt@tls.msk.ru>
 References: <20240717110640.844335-1-mjt@tls.msk.ru>
@@ -48,51 +47,80 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jul 2024 11:07:00 -0000
+X-List-Received-Date: Wed, 17 Jul 2024 11:07:01 -0000
 
-From: Zhihai Dong <dongzhihai@eswincomputing.com>
+Existing code was long, unclear and twisty.
 
-Make the README more clearly.
+This also relaxes the rules a tiny bit: allows to have
+whitespace before header name and colon and makes the
+header value match to be case-insensitive.
 
-Signed-off-by: Zhihai Dong <dongzhihai@eswincomputing.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
 ---
- README.rst | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ block/curl.c | 44 ++++++++++++++++++--------------------------
+ 1 file changed, 18 insertions(+), 26 deletions(-)
 
-diff --git a/README.rst b/README.rst
-index 21df79ef43..b120a1f69e 100644
---- a/README.rst
-+++ b/README.rst
-@@ -82,7 +82,7 @@ guidelines set out in the `style section
- the Developers Guide.
+diff --git a/block/curl.c b/block/curl.c
+index ef5252d00b..0fdb6d39ac 100644
+--- a/block/curl.c
++++ b/block/curl.c
+@@ -210,37 +210,29 @@ static size_t curl_header_cb(void *ptr, size_t size, size_t nmemb, void *opaque)
+ {
+     BDRVCURLState *s = opaque;
+     size_t realsize = size * nmemb;
+-    const char *header = (char *)ptr;
+-    const char *end = header + realsize;
+-    const char *accept_ranges = "accept-ranges:";
+-    const char *bytes = "bytes";
++    const char *p = ptr;
++    const char *end = p + realsize;
++    const char *t = "accept-ranges : bytes "; /* A lowercase template */
  
- Additional information on submitting patches can be found online via
--the QEMU website
-+the QEMU website:
+-    if (realsize >= strlen(accept_ranges)
+-        && g_ascii_strncasecmp(header, accept_ranges,
+-                               strlen(accept_ranges)) == 0) {
+-
+-        char *p = strchr(header, ':') + 1;
+-
+-        /* Skip whitespace between the header name and value. */
+-        while (p < end && *p && g_ascii_isspace(*p)) {
+-            p++;
+-        }
+-
+-        if (end - p >= strlen(bytes)
+-            && strncmp(p, bytes, strlen(bytes)) == 0) {
+-
+-            /* Check that there is nothing but whitespace after the value. */
+-            p += strlen(bytes);
+-            while (p < end && *p && g_ascii_isspace(*p)) {
+-                p++;
+-            }
+-
+-            if (p == end || !*p) {
+-                s->accept_range = true;
++    /* check if header matches the "t" template */
++    for (;;) {
++        if (*t == ' ') { /* space in t matches any amount of isspace in p */
++            if (p < end && g_ascii_isspace(*p)) {
++                ++p;
++            } else {
++                ++t;
+             }
++        } else if (*t && p < end && *t == g_ascii_tolower(*p)) {
++            ++p, ++t;
++        } else {
++            break;
+         }
+     }
  
- * `<https://wiki.qemu.org/Contribute/SubmitAPatch>`_
- * `<https://wiki.qemu.org/Contribute/TrivialPatches>`_
-@@ -102,7 +102,7 @@ requires a working 'git send-email' setup, and by default doesn't
- automate everything, so you may want to go through the above steps
- manually for once.
++    if (!*t && p == end) { /* if we managed to reach ends of both strings */
++        s->accept_range = true;
++    }
++
+     return realsize;
+ }
  
--For installation instructions, please go to
-+For installation instructions, please go to:
- 
- *  `<https://github.com/stefanha/git-publish>`_
- 
-@@ -159,7 +159,7 @@ Contact
- =======
- 
- The QEMU community can be contacted in a number of ways, with the two
--main methods being email and IRC
-+main methods being email and IRC:
- 
- * `<mailto:qemu-devel@nongnu.org>`_
- * `<https://lists.nongnu.org/mailman/listinfo/qemu-devel>`_
 -- 
 2.39.2
 
