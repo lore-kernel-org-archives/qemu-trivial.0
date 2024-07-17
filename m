@@ -1,42 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sU2XA-0002gf-IK
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:09:20 -0400
+	id 1sU5Cx-0003rA-Fn
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 10:00:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2Vg-0003rR-6G; Wed, 17 Jul 2024 07:07:50 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2Vb-0007Zn-W9; Wed, 17 Jul 2024 07:07:46 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id D9FF07B382;
- Wed, 17 Jul 2024 14:06:36 +0300 (MSK)
-Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 419C610B297;
- Wed, 17 Jul 2024 14:06:41 +0300 (MSK)
-Received: (nullmailer pid 844432 invoked by uid 1000);
- Wed, 17 Jul 2024 11:06:40 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sU5Cs-0003qP-2C
+ for qemu-trivial@nongnu.org; Wed, 17 Jul 2024 10:00:34 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sU5Cp-0008Rw-Uy
+ for qemu-trivial@nongnu.org; Wed, 17 Jul 2024 10:00:33 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-427c4843df5so4297645e9.0
+ for <qemu-trivial@nongnu.org>; Wed, 17 Jul 2024 07:00:30 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1721224829; x=1721829629; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=FHIcAsY8i/uctUZuPeh8Vzd8dmu0Izzx+CInGK+n1jU=;
+ b=N2HSN4YGVYYQLY9fwDMPiRIlVrEIkB0wBB8oX6NlML0nv6/pBRkM1Tz31G90THabAp
+ sITAkn1l3QB4DWeIwwdb4JdbJfBKeZRO35bLpkeOE0cvewJ1CYGUh91bauUeIGXFoGFf
+ QRMG+oqQhp/FNyKFTbmMWYPeOIjrQu/l+stwXLdzs7BtSlh2rUDG24mZ7kX0LsSHz1mR
+ nbgUwzE3NBM0vpYax6mMHKxL6SGcfB9chgLUuo6nUxdt2Gzsuzdw/A4hsGr11TEI5ZFS
+ mgTkd/Y0j5v7VT1qe+hf4adktuxylINyju1EKMIn2DcKwn0bL34Uzx9zPoF/VkCJvSJT
+ JDpA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721224829; x=1721829629;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FHIcAsY8i/uctUZuPeh8Vzd8dmu0Izzx+CInGK+n1jU=;
+ b=rRpl1HtPmIv3C7QNuq2fQdYY1q+fvfqmeFOvZOHiYZ63eqXi8IZcazTxBmGFsFjkXC
+ Jd5N1ueSVhwUZ5NByXT27VRajRMrOKGCVgsxd8BnZaCfp3PWpwFS8botSOO/u6NXM1Ep
+ mTch79DfK19Gu6kM/OFbc4u1WyZfZ+utDr4jQYL/IXSpbua12pmybrLtq8XW+yL8MnqD
+ OAupn8K7ecmmDa3rtpVo+tIf1DJsc8OOTTPF74RGTlFS0SbxdQ6nXjPzVW0kBBoPOxGM
+ JPGAYhjjcg6QB/8EkvvcU49RkgjiDmEe78Se22pKP9QJLeGUVvHjnBN0X8b0H5kt3dRR
+ bAfQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU8+F4GhkVBKWKEro//yLGZicjRLxq3hz3WX2ACKuiNgT7O4D7IxTZiGu2EcWXkifhI7WWVUozaRrEZ8ei3pDOkokqEJ/8L9w==
+X-Gm-Message-State: AOJu0Yzowrhemk7kfcF7J/4BsxWlzaTwqdU7L4+swlECQ0EfgXs259i8
+ KrDgZP6bC3v+w6DcEf+Uv3PkU3AFZS5NTd3EXhHkYmcEElEx75KR8Pj4+F+So7Y=
+X-Google-Smtp-Source: AGHT+IHYjJJELgTXrMKTjxA122dyrxiF4b7r14wjlGidgbOSH95I18aBqD6AGJ1KRwmZKxDiMBxIHw==
+X-Received: by 2002:a05:600c:4f56:b0:426:6f17:531 with SMTP id
+ 5b1f17b1804b1-427c2cb15cbmr16078185e9.13.1721224828687; 
+ Wed, 17 Jul 2024 07:00:28 -0700 (PDT)
+Received: from localhost.localdomain ([176.187.208.21])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4279f27877dsm202323515e9.26.2024.07.17.07.00.27
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 17 Jul 2024 07:00:28 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
-Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 16/16] meson: Update meson-buildoptions.sh
-Date: Wed, 17 Jul 2024 14:06:40 +0300
-Message-Id: <20240717110640.844335-17-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.2
-In-Reply-To: <20240717110640.844335-1-mjt@tls.msk.ru>
-References: <20240717110640.844335-1-mjt@tls.msk.ru>
+Cc: Eric Blake <eblake@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ Konstantin Kostiuk <kkostiuk@redhat.com>, Dehan Meng <demeng@redhat.com>,
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] MAINTAINERS: Cover guest-agent in QAPI schema
+Date: Wed, 17 Jul 2024 16:00:25 +0200
+Message-ID: <20240717140025.66397-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.41.0
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -49,88 +82,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jul 2024 11:08:07 -0000
+X-List-Received-Date: Wed, 17 Jul 2024 14:00:34 -0000
 
-From: Zhao Liu <zhao1.liu@intel.com>
-
-Update meson-buildoptions.sh to stay in sync with meson_options.txt.
-
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- scripts/meson-buildoptions.sh | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
+ MAINTAINERS | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/scripts/meson-buildoptions.sh b/scripts/meson-buildoptions.sh
-index cfadb5ea86..c97079a38c 100644
---- a/scripts/meson-buildoptions.sh
-+++ b/scripts/meson-buildoptions.sh
-@@ -83,7 +83,7 @@ meson_options_help() {
-   printf "%s\n" '                           (can be empty) [qemu]'
-   printf "%s\n" '  --with-trace-file=VALUE  Trace file prefix for simple backend [trace]'
-   printf "%s\n" '  --x86-version=CHOICE     tweak required x86_64 architecture version beyond'
--  printf "%s\n" '                           compiler default [1] (choices: 0/1/2/3)'
-+  printf "%s\n" '                           compiler default [1] (choices: 0/1/2/3/4)'
-   printf "%s\n" ''
-   printf "%s\n" 'Optional features, enabled with --enable-FEATURE and'
-   printf "%s\n" 'disabled with --disable-FEATURE, default is enabled if available'
-@@ -166,6 +166,7 @@ meson_options_help() {
-   printf "%s\n" '  qcow1           qcow1 image format support'
-   printf "%s\n" '  qed             qed image format support'
-   printf "%s\n" '  qga-vss         build QGA VSS support (broken with MinGW)'
-+  printf "%s\n" '  qpl             Query Processing Library support'
-   printf "%s\n" '  rbd             Ceph block device driver'
-   printf "%s\n" '  rdma            Enable RDMA-based migration'
-   printf "%s\n" '  replication     replication support'
-@@ -187,6 +188,7 @@ meson_options_help() {
-   printf "%s\n" '  tools           build support utilities that come with QEMU'
-   printf "%s\n" '  tpm             TPM support'
-   printf "%s\n" '  u2f             U2F emulation support'
-+  printf "%s\n" '  uadk            UADK Library support'
-   printf "%s\n" '  usb-redir       libusbredir support'
-   printf "%s\n" '  vde             vde network backend support'
-   printf "%s\n" '  vdi             vdi image format support'
-@@ -221,8 +223,6 @@ meson_options_help() {
-   printf "%s\n" '                  Xen PCI passthrough support'
-   printf "%s\n" '  xkbcommon       xkbcommon support'
-   printf "%s\n" '  zstd            zstd compression support'
--  printf "%s\n" '  qpl             Query Processing Library support'
--  printf "%s\n" '  uadk            UADK Library support'
- }
- _meson_option_parse() {
-   case $1 in
-@@ -440,6 +440,8 @@ _meson_option_parse() {
-     --disable-qga-vss) printf "%s" -Dqga_vss=disabled ;;
-     --enable-qom-cast-debug) printf "%s" -Dqom_cast_debug=true ;;
-     --disable-qom-cast-debug) printf "%s" -Dqom_cast_debug=false ;;
-+    --enable-qpl) printf "%s" -Dqpl=enabled ;;
-+    --disable-qpl) printf "%s" -Dqpl=disabled ;;
-     --enable-rbd) printf "%s" -Drbd=enabled ;;
-     --disable-rbd) printf "%s" -Drbd=disabled ;;
-     --enable-rdma) printf "%s" -Drdma=enabled ;;
-@@ -501,6 +503,8 @@ _meson_option_parse() {
-     --disable-tsan) printf "%s" -Dtsan=false ;;
-     --enable-u2f) printf "%s" -Du2f=enabled ;;
-     --disable-u2f) printf "%s" -Du2f=disabled ;;
-+    --enable-uadk) printf "%s" -Duadk=enabled ;;
-+    --disable-uadk) printf "%s" -Duadk=disabled ;;
-     --enable-usb-redir) printf "%s" -Dusb_redir=enabled ;;
-     --disable-usb-redir) printf "%s" -Dusb_redir=disabled ;;
-     --enable-vde) printf "%s" -Dvde=enabled ;;
-@@ -560,10 +564,6 @@ _meson_option_parse() {
-     --disable-xkbcommon) printf "%s" -Dxkbcommon=disabled ;;
-     --enable-zstd) printf "%s" -Dzstd=enabled ;;
-     --disable-zstd) printf "%s" -Dzstd=disabled ;;
--    --enable-qpl) printf "%s" -Dqpl=enabled ;;
--    --disable-qpl) printf "%s" -Dqpl=disabled ;;
--    --enable-uadk) printf "%s" -Duadk=enabled ;;
--    --disable-uadk) printf "%s" -Duadk=disabled ;;
-     *) return 1 ;;
-   esac
- }
+diff --git a/MAINTAINERS b/MAINTAINERS
+index 7d9811458c..af4db698de 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3219,6 +3219,7 @@ M: Eric Blake <eblake@redhat.com>
+ M: Markus Armbruster <armbru@redhat.com>
+ S: Supported
+ F: qapi/*.json
++F: qga/qapi-schema.json
+ T: git https://repo.or.cz/qemu/armbru.git qapi-next
+ 
+ QObject
 -- 
-2.39.2
+2.41.0
 
 
