@@ -1,30 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sU2VO-0002f3-5x
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:07:39 -0400
+	id 1sU2Ve-0003kv-S3
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:07:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2Uy-0000rf-Q5; Wed, 17 Jul 2024 07:07:04 -0400
+ id 1sU2V2-0001AQ-FD; Wed, 17 Jul 2024 07:07:09 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sU2Ut-0007TA-5d; Wed, 17 Jul 2024 07:07:04 -0400
+ id 1sU2V0-0007Ub-9Q; Wed, 17 Jul 2024 07:07:07 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 434757B379;
+ by isrv.corpit.ru (Postfix) with ESMTP id 660737B37B;
  Wed, 17 Jul 2024 14:06:36 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id AAD1C10B28E;
+ by tsrv.corpit.ru (Postfix) with SMTP id C8ABE10B290;
  Wed, 17 Jul 2024 14:06:40 +0300 (MSK)
-Received: (nullmailer pid 844403 invoked by uid 1000);
+Received: (nullmailer pid 844409 invoked by uid 1000);
  Wed, 17 Jul 2024 11:06:40 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org,
- Jason Wang <jasowang@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 07/16] doc/net/l2tpv3: Update boolean fields' description to
- avoid short-form use
-Date: Wed, 17 Jul 2024 14:06:31 +0300
-Message-Id: <20240717110640.844335-8-mjt@tls.msk.ru>
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 09/16] hw/i386/sgx: Get rid of qemu_open_old()
+Date: Wed, 17 Jul 2024 14:06:33 +0300
+Message-Id: <20240717110640.844335-10-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.2
 In-Reply-To: <20240717110640.844335-1-mjt@tls.msk.ru>
 References: <20240717110640.844335-1-mjt@tls.msk.ru>
@@ -49,73 +52,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jul 2024 11:07:06 -0000
+X-List-Received-Date: Wed, 17 Jul 2024 11:07:12 -0000
 
 From: Zhao Liu <zhao1.liu@intel.com>
 
-The short-form boolean options has been deprecated since v6.0 (refer
-to docs/about/deprecated.rst).
+For qemu_open_old(), osdep.h said:
 
-Update the description and example of boolean fields in l2tpv3 option to
-avoid deprecation warning.
+> Don't introduce new usage of this function, prefer the following
+> qemu_open/qemu_create that take an "Error **errp".
 
-Cc: Jason Wang <jasowang@redhat.com>
+So replace qemu_open_old() with qemu_open(). And considering the SGX
+enablement description is useful, convert it into a error message hint.
+
+Cc: Paolo Bonzini <pbonzini@redhat.com>
+Cc: Richard Henderson <richard.henderson@linaro.org>
+Cc: Eduardo Habkost <eduardo@habkost.net>
+Cc: "Michael S. Tsirkin" <mst@redhat.com>
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- qemu-options.hx | 10 +++++-----
- 1 file changed, 5 insertions(+), 5 deletions(-)
+ hw/i386/sgx.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index ad6521ef5e..edeaefe2c7 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -3353,7 +3353,7 @@ SRST
-                          -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
-                          -netdev socket,id=n1,mcast=239.192.168.1:1102,localaddr=1.2.3.4
+diff --git a/hw/i386/sgx.c b/hw/i386/sgx.c
+index de76397bcf..a14a84bc6f 100644
+--- a/hw/i386/sgx.c
++++ b/hw/i386/sgx.c
+@@ -157,10 +157,12 @@ SGXInfo *qmp_query_sgx_capabilities(Error **errp)
+ {
+     SGXInfo *info = NULL;
+     uint32_t eax, ebx, ecx, edx;
++    Error *local_err = NULL;
  
--``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on|off][,udp=on|off][,cookie64][,counter][,pincounter][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
-+``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on|off][,udp=on|off][,cookie64=on|off][,counter=on|off][,pincounter=on|off][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
-     Configure a L2TPv3 pseudowire host network backend. L2TPv3 (RFC3931)
-     is a popular protocol to transport Ethernet (and other Layer 2) data
-     frames between two systems. It is present in routers, firewalls and
-@@ -3368,7 +3368,7 @@ SRST
-     ``dst=dstaddr``
-         destination address (mandatory)
+-    int fd = qemu_open_old("/dev/sgx_vepc", O_RDWR);
++    int fd = qemu_open("/dev/sgx_vepc", O_RDWR, &local_err);
+     if (fd < 0) {
+-        error_setg(errp, "SGX is not enabled in KVM");
++        error_append_hint(&local_err, "SGX is not enabled in KVM");
++        error_propagate(errp, local_err);
+         return NULL;
+     }
  
--    ``udp``
-+    ``udp=on``
-         select udp encapsulation (default is ip).
- 
-     ``srcport=srcport``
-@@ -3377,7 +3377,7 @@ SRST
-     ``dstport=dstport``
-         destination udp port.
- 
--    ``ipv6``
-+    ``ipv6=on``
-         force v6, otherwise defaults to v4.
- 
-     ``rxcookie=rxcookie``; \ ``txcookie=txcookie``
-@@ -3385,7 +3385,7 @@ SRST
-         Their function is mostly to prevent misconfiguration. By default
-         they are 32 bit.
- 
--    ``cookie64``
-+    ``cookie64=on``
-         Set cookie size to 64 bit instead of the default 32
- 
-     ``counter=off``
-@@ -3419,7 +3419,7 @@ SRST
-         # launch QEMU instance - if your network has reorder or is very lossy add ,pincounter
- 
-         |qemu_system| linux.img -device e1000,netdev=n1 \\
--            -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter
-+            -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp=on,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter=on
- 
- ``-netdev vde,id=id[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]``
-     Configure VDE backend to connect to PORT n of a vde switch running
 -- 
 2.39.2
 
