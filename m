@@ -1,62 +1,41 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sTxxJ-0005tt-Mt
-	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 02:16:02 -0400
+	id 1sU2Uw-0000h6-Qx
+	for mharc-qemu-trivial@gnu.org; Wed, 17 Jul 2024 07:07:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sTxxF-0005dC-LI; Wed, 17 Jul 2024 02:15:58 -0400
-Received: from mgamail.intel.com ([192.198.163.16])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sU2Ul-0008FQ-4s; Wed, 17 Jul 2024 07:06:52 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sTxxC-0007YN-Sk; Wed, 17 Jul 2024 02:15:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1721196955; x=1752732955;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=lxVTDdL+S0Cn0Lj0YQLBnh1gWlr2LWb/YRUTiBXoNuw=;
- b=UYN/cS1ZLrQHndV6afKVZFlLuSwyvPrMil/nj9xiTN+lr4EBQ/AyZNzs
- 4HzSGkJEzPyo/x42f+Zv2xymGWrp0PXrr5fFR6Bptebv07Qr03ZiCiSJb
- ogBKJ/EKum0TblJRooIPSdPmk6cBAPu64on9X7mKYq/d5CWImubo4uDfg
- Rqw3K8+hDXePBY9uF9SFqg6CHkqKtf8CoV7UlGwYiT8NGoo2eratDY47R
- WpyMd1OsYZeQFt5TZODxD4nytVIdcbjo8e36gn1dq4cnCykx7Rd0/2e0s
- IlYuDCWmr7I396oe/HtDHRYDduZUq0MbREiKFSx34OvsNrNatsgMNdfaF Q==;
-X-CSE-ConnectionGUID: B3Xt47jRTXeFD84gdK8OfQ==
-X-CSE-MsgGUID: nGLi1FLHQ6uyLA8MrGXTUg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11135"; a="12582827"
-X-IronPort-AV: E=Sophos;i="6.09,213,1716274800"; d="scan'208";a="12582827"
-Received: from orviesa008.jf.intel.com ([10.64.159.148])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 16 Jul 2024 23:15:48 -0700
-X-CSE-ConnectionGUID: oYAqu01kQJuznZcfCRHKog==
-X-CSE-MsgGUID: 4nIPCdO/TTSTEXc+WvZw8A==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,213,1716274800"; d="scan'208";a="51009713"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by orviesa008.jf.intel.com with ESMTP; 16 Jul 2024 23:15:46 -0700
-Date: Wed, 17 Jul 2024 14:31:28 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Jason Wang <jasowang@redhat.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>
-Subject: Re: [PATCH] doc/net/l2tpv3: Update boolean fields' description to
- avoid short-form use
-Message-ID: <ZpdlQDIjGp4wR8aR@intel.com>
-References: <20240708092630.2596945-1-zhao1.liu@intel.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sU2Uj-0007RX-9Z; Wed, 17 Jul 2024 07:06:50 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id F1F7B7B374;
+ Wed, 17 Jul 2024 14:06:35 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id 66D9710B289;
+ Wed, 17 Jul 2024 14:06:40 +0300 (MSK)
+Received: (nullmailer pid 844388 invoked by uid 1000);
+ Wed, 17 Jul 2024 11:06:40 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Zhihai Dong <dongzhihai@eswincomputing.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 02/16] README.rst: add the missing punctuations
+Date: Wed, 17 Jul 2024 14:06:26 +0300
+Message-Id: <20240717110640.844335-3-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.2
+In-Reply-To: <20240717110640.844335-1-mjt@tls.msk.ru>
+References: <20240717110640.844335-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240708092630.2596945-1-zhao1.liu@intel.com>
-Received-SPF: pass client-ip=192.198.163.16; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -69,85 +48,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 17 Jul 2024 06:15:58 -0000
+X-List-Received-Date: Wed, 17 Jul 2024 11:07:00 -0000
 
-Hi Jason,
+From: Zhihai Dong <dongzhihai@eswincomputing.com>
 
-Just a kind ping. Does this update satisfy you?
-Since the original example generates the warning.
+Make the README more clearly.
 
-Thanks,
-Zhao
+Signed-off-by: Zhihai Dong <dongzhihai@eswincomputing.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ README.rst | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-On Mon, Jul 08, 2024 at 05:26:30PM +0800, Zhao Liu wrote:
-> Date: Mon, 8 Jul 2024 17:26:30 +0800
-> From: Zhao Liu <zhao1.liu@intel.com>
-> Subject: [PATCH] doc/net/l2tpv3: Update boolean fields' description to
->  avoid short-form use
-> X-Mailer: git-send-email 2.34.1
-> 
-> The short-form boolean options has been deprecated since v6.0 (refer
-> to docs/about/deprecated.rst).
-> 
-> Update the description and example of boolean fields in l2tpv3 option to
-> avoid deprecation warning.
-> 
-> Cc: Jason Wang <jasowang@redhat.com>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> ---
->  qemu-options.hx | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
-> 
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index ad6521ef5e7e..edeaefe2c79a 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -3353,7 +3353,7 @@ SRST
->                           -device e1000,netdev=n1,mac=52:54:00:12:34:56 \\
->                           -netdev socket,id=n1,mcast=239.192.168.1:1102,localaddr=1.2.3.4
->  
-> -``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on|off][,udp=on|off][,cookie64][,counter][,pincounter][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
-> +``-netdev l2tpv3,id=id,src=srcaddr,dst=dstaddr[,srcport=srcport][,dstport=dstport],txsession=txsession[,rxsession=rxsession][,ipv6=on|off][,udp=on|off][,cookie64=on|off][,counter=on|off][,pincounter=on|off][,txcookie=txcookie][,rxcookie=rxcookie][,offset=offset]``
->      Configure a L2TPv3 pseudowire host network backend. L2TPv3 (RFC3931)
->      is a popular protocol to transport Ethernet (and other Layer 2) data
->      frames between two systems. It is present in routers, firewalls and
-> @@ -3368,7 +3368,7 @@ SRST
->      ``dst=dstaddr``
->          destination address (mandatory)
->  
-> -    ``udp``
-> +    ``udp=on``
->          select udp encapsulation (default is ip).
->  
->      ``srcport=srcport``
-> @@ -3377,7 +3377,7 @@ SRST
->      ``dstport=dstport``
->          destination udp port.
->  
-> -    ``ipv6``
-> +    ``ipv6=on``
->          force v6, otherwise defaults to v4.
->  
->      ``rxcookie=rxcookie``; \ ``txcookie=txcookie``
-> @@ -3385,7 +3385,7 @@ SRST
->          Their function is mostly to prevent misconfiguration. By default
->          they are 32 bit.
->  
-> -    ``cookie64``
-> +    ``cookie64=on``
->          Set cookie size to 64 bit instead of the default 32
->  
->      ``counter=off``
-> @@ -3419,7 +3419,7 @@ SRST
->          # launch QEMU instance - if your network has reorder or is very lossy add ,pincounter
->  
->          |qemu_system| linux.img -device e1000,netdev=n1 \\
-> -            -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter
-> +            -netdev l2tpv3,id=n1,src=4.2.3.1,dst=1.2.3.4,udp=on,srcport=16384,dstport=16384,rxsession=0xffffffff,txsession=0xffffffff,counter=on
->  
->  ``-netdev vde,id=id[,sock=socketpath][,port=n][,group=groupname][,mode=octalmode]``
->      Configure VDE backend to connect to PORT n of a vde switch running
-> -- 
-> 2.34.1
-> 
+diff --git a/README.rst b/README.rst
+index 21df79ef43..b120a1f69e 100644
+--- a/README.rst
++++ b/README.rst
+@@ -82,7 +82,7 @@ guidelines set out in the `style section
+ the Developers Guide.
+ 
+ Additional information on submitting patches can be found online via
+-the QEMU website
++the QEMU website:
+ 
+ * `<https://wiki.qemu.org/Contribute/SubmitAPatch>`_
+ * `<https://wiki.qemu.org/Contribute/TrivialPatches>`_
+@@ -102,7 +102,7 @@ requires a working 'git send-email' setup, and by default doesn't
+ automate everything, so you may want to go through the above steps
+ manually for once.
+ 
+-For installation instructions, please go to
++For installation instructions, please go to:
+ 
+ *  `<https://github.com/stefanha/git-publish>`_
+ 
+@@ -159,7 +159,7 @@ Contact
+ =======
+ 
+ The QEMU community can be contacted in a number of ways, with the two
+-main methods being email and IRC
++main methods being email and IRC:
+ 
+ * `<mailto:qemu-devel@nongnu.org>`_
+ * `<https://lists.nongnu.org/mailman/listinfo/qemu-devel>`_
+-- 
+2.39.2
+
 
