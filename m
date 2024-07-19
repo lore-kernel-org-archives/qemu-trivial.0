@@ -1,71 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sUkRU-000234-Tl
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Jul 2024 06:02:24 -0400
+	id 1sUn1D-0000mE-Fq
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Jul 2024 08:47:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sUkRS-00021l-VR
- for qemu-trivial@nongnu.org; Fri, 19 Jul 2024 06:02:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1sUkRQ-000139-LV
- for qemu-trivial@nongnu.org; Fri, 19 Jul 2024 06:02:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1721383339;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=au+CzVSws7ueJ+58jpPIBOr2H4qQ0bq2ZVr87rgBpaw=;
- b=elODXV4Hznv1j/1s0oxAfCSp/t1vbxGZrNfvZr7FAnVwRuQvhxt9Vjd9gThHz3qLTIGH6y
- 7k+rlgAT4sc5vhLifiDO/k0w3wUfb9SAA5t91lr57iYeJYWq+/Vwjhxpji70/vlugHUy5F
- uHRBP+17w+xPJuQ+A7emrUS+XvPKDrg=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-288--6rT1s18Nj-qT9G2f8CxzQ-1; Fri,
- 19 Jul 2024 06:02:18 -0400
-X-MC-Unique: -6rT1s18Nj-qT9G2f8CxzQ-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0C8661955D4A; Fri, 19 Jul 2024 10:02:17 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.37])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 710A81955E8C; Fri, 19 Jul 2024 10:02:14 +0000 (UTC)
-Date: Fri, 19 Jul 2024 11:02:10 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org, Cleber Rosa <crosa@redhat.com>,
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sUn1C-0000lG-PT
+ for qemu-trivial@nongnu.org; Fri, 19 Jul 2024 08:47:26 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sUn1B-0003Tc-4d
+ for qemu-trivial@nongnu.org; Fri, 19 Jul 2024 08:47:26 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-4267300145eso13177205e9.3
+ for <qemu-trivial@nongnu.org>; Fri, 19 Jul 2024 05:47:23 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1721393242; x=1721998042; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=QOVaz4Bw6+iiquXfzRFSlJaUUp3cP5kRK6mUCdf7T7s=;
+ b=S9obLNfsPu7rrZ0Xy7dGzW0eRr3XxhhyQqaOfhyxOaFnnRBFzqG5pVH7DD5D/x6JR0
+ 8z9X2oOpKiCzdXbJBjtjTAjK82AWYS8K1eOHf99kfxk/kmfhcKihTz0kGF8zOUno4nKr
+ vZ7eCpsaC9d9OBEGYu0+3x7W95RTCX+EvUvYd8rhmywVJgMSzkSSfwo242/mTU5rwkec
+ sunThBj119Jzqxo9xCDQkZKX5NNMVKvy16/mJcBvGB1qMvFitCVrmSE/KCGu0tWW4mIf
+ dkNjhCYxrOePbszD5/fyiHAVG5WPKnzt68hZMtqVh8xMRZ7zF/y76cpZxCOLEJEI9/Zi
+ 8ARQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721393242; x=1721998042;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=QOVaz4Bw6+iiquXfzRFSlJaUUp3cP5kRK6mUCdf7T7s=;
+ b=nBWo1ei1Apxm8IzpgwvxU8fbkyc7VbYdV+h3FV3E7pWxbEivhWzYUG1BOHZLHq7qFF
+ 31StEX+/8p5rwvHHV97+1dMa7WL228tF4qBwFMzkRSEHmKRWvrLD72fnPPuzPq/NXWTB
+ l2+7ImcFUWWgBZmKA4fTOME6TElwtZx7kM0VNAG+/glylEu5OZL5ddXm67Gy74820VtK
+ yXPA1UFeKTypYHRwPHadQTvXMk3o89+WdueE7mDmSs7nHUWwl+rF990JVdficklKyjl3
+ qUkZoAjr6+lglR56PfNEvp8XlVEFGIRnmEOtnNaVHQ4UnCy3GpSNIwOalxSiKPfLPuHr
+ UlMg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV+WfyE6c8JYkjPL1iiFXkfSCtuw8VJvkkAJ/AH884UQMDqeg/U/ZvVyJdN+LKH2yGWuXN19avziMqY6gX2Dl3xl/RWz/kHpw==
+X-Gm-Message-State: AOJu0YywdK06QwVGWLH7W2koXttZ+it3WQgcykGSn3+FWPpZ05l3vqRw
+ amgWJjoeEuegPyOs5JJvHta189zEwrmRvCoIuVmhyns1pYI/QAit2n3hR/A/ofM=
+X-Google-Smtp-Source: AGHT+IHVXLJysIls5jKuc+ButAzpUAaigGb7e3vadN/D72DBDpC8iifHjP1EcrZhllQrfVvxNnxusQ==
+X-Received: by 2002:a05:600c:1d8d:b0:426:640a:9de7 with SMTP id
+ 5b1f17b1804b1-427c2d13b7amr66276795e9.39.1721393242366; 
+ Fri, 19 Jul 2024 05:47:22 -0700 (PDT)
+Received: from [192.168.69.100] ([176.187.209.227])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-427d6929976sm23555695e9.29.2024.07.19.05.47.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 19 Jul 2024 05:47:21 -0700 (PDT)
+Message-ID: <1a37fd6c-3aed-47b3-ade7-35f2b40f5a3b@linaro.org>
+Date: Fri, 19 Jul 2024 14:47:19 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] tests/avocado/mem-addr-space-check: Remove unused "import
+ signal"
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: Cleber Rosa <crosa@redhat.com>,
  Wainer dos Santos Moschetta <wainersm@redhat.com>,
  Beraldo Leal <bleal@redhat.com>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] tests/avocado/mem-addr-space-check: Remove unused
- "import signal"
-Message-ID: <Zpo5opA3n8L9aKjA@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 References: <20240719095408.33298-1-thuth@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 In-Reply-To: <20240719095408.33298-1-thuth@redhat.com>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,24 +86,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Jul 2024 10:02:23 -0000
+X-List-Received-Date: Fri, 19 Jul 2024 12:47:27 -0000
 
-On Fri, Jul 19, 2024 at 11:54:08AM +0200, Thomas Huth wrote:
+On 19/7/24 11:54, Thomas Huth wrote:
 > The "signal" module is not used here, so we can remove this import
 > statement.
 > 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  tests/avocado/mem-addr-space-check.py | 1 -
->  1 file changed, 1 deletion(-)
+>   tests/avocado/mem-addr-space-check.py | 1 -
+>   1 file changed, 1 deletion(-)
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
