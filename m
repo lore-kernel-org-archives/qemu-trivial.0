@@ -1,79 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sUn1D-0000mE-Fq
-	for mharc-qemu-trivial@gnu.org; Fri, 19 Jul 2024 08:47:27 -0400
+	id 1sUnzj-00089E-3U
+	for mharc-qemu-trivial@gnu.org; Fri, 19 Jul 2024 09:49:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sUn1C-0000lG-PT
- for qemu-trivial@nongnu.org; Fri, 19 Jul 2024 08:47:26 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sUn1B-0003Tc-4d
- for qemu-trivial@nongnu.org; Fri, 19 Jul 2024 08:47:26 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-4267300145eso13177205e9.3
- for <qemu-trivial@nongnu.org>; Fri, 19 Jul 2024 05:47:23 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1721393242; x=1721998042; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=QOVaz4Bw6+iiquXfzRFSlJaUUp3cP5kRK6mUCdf7T7s=;
- b=S9obLNfsPu7rrZ0Xy7dGzW0eRr3XxhhyQqaOfhyxOaFnnRBFzqG5pVH7DD5D/x6JR0
- 8z9X2oOpKiCzdXbJBjtjTAjK82AWYS8K1eOHf99kfxk/kmfhcKihTz0kGF8zOUno4nKr
- vZ7eCpsaC9d9OBEGYu0+3x7W95RTCX+EvUvYd8rhmywVJgMSzkSSfwo242/mTU5rwkec
- sunThBj119Jzqxo9xCDQkZKX5NNMVKvy16/mJcBvGB1qMvFitCVrmSE/KCGu0tWW4mIf
- dkNjhCYxrOePbszD5/fyiHAVG5WPKnzt68hZMtqVh8xMRZ7zF/y76cpZxCOLEJEI9/Zi
- 8ARQ==
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1sUnzh-00085x-2W
+ for qemu-trivial@nongnu.org; Fri, 19 Jul 2024 09:49:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1sUnzf-0003Ym-6F
+ for qemu-trivial@nongnu.org; Fri, 19 Jul 2024 09:49:56 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1721396993;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=NzpP5zxi/dF3488FKEyR86bHqqfJr7CcoP3BrHPIZ5Y=;
+ b=Tq6LhxMDd20roNAMcV/BAwEEkViF92eq5WHDxcvaZn5gsDq3VpZCqyyRjn5eDViZarRaZp
+ 3gQK7nZ3+HPx6R8P38rvDaOo639Gnjj9OxXwr3Wk5PVYSFK1ASqibEb7E3IC/1c1WiHwIU
+ lg6XTzV+rc2wRpRNzPX+BygUs/2bMfU=
+Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
+ [209.85.215.198]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-158-WIksVdt2PvW_yMniXxP_qA-1; Fri, 19 Jul 2024 09:49:51 -0400
+X-MC-Unique: WIksVdt2PvW_yMniXxP_qA-1
+Received: by mail-pg1-f198.google.com with SMTP id
+ 41be03b00d2f7-78e08ce33d0so1834923a12.0
+ for <qemu-trivial@nongnu.org>; Fri, 19 Jul 2024 06:49:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721393242; x=1721998042;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=QOVaz4Bw6+iiquXfzRFSlJaUUp3cP5kRK6mUCdf7T7s=;
- b=nBWo1ei1Apxm8IzpgwvxU8fbkyc7VbYdV+h3FV3E7pWxbEivhWzYUG1BOHZLHq7qFF
- 31StEX+/8p5rwvHHV97+1dMa7WL228tF4qBwFMzkRSEHmKRWvrLD72fnPPuzPq/NXWTB
- l2+7ImcFUWWgBZmKA4fTOME6TElwtZx7kM0VNAG+/glylEu5OZL5ddXm67Gy74820VtK
- yXPA1UFeKTypYHRwPHadQTvXMk3o89+WdueE7mDmSs7nHUWwl+rF990JVdficklKyjl3
- qUkZoAjr6+lglR56PfNEvp8XlVEFGIRnmEOtnNaVHQ4UnCy3GpSNIwOalxSiKPfLPuHr
- UlMg==
+ d=1e100.net; s=20230601; t=1721396990; x=1722001790;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=NzpP5zxi/dF3488FKEyR86bHqqfJr7CcoP3BrHPIZ5Y=;
+ b=r6oEcxQjxPzt/cK3rzBkqZR8XvAqb8dU6HcnbVSJljSEcr5El9W7IhW6jF65bDDz9E
+ IQ3muT82qe78qU7PlYEHX6tncd3MzY6HpOaqqNKAf2mAbvBahbYxw6nBB7enmROQXkj+
+ prbEoIJzYia3RJYBLdgqPyt0kAR/TtOQ+EYb/CYQCyobUcyfEiB1AytTDwvJtPbLwYNz
+ ODtMingqZIR0TnupKMxn2/WTP1s9abE5KC1Ko2nmXUD2U3fVC6A9WZge6Myop0yWepS8
+ q79sHVmH7Dl2u0rpDB3tr26NYbPAHwCKuK6BVDY/tIU+ut0c6Hw29JiaTozBTXSxNvy7
+ DcbQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV+WfyE6c8JYkjPL1iiFXkfSCtuw8VJvkkAJ/AH884UQMDqeg/U/ZvVyJdN+LKH2yGWuXN19avziMqY6gX2Dl3xl/RWz/kHpw==
-X-Gm-Message-State: AOJu0YywdK06QwVGWLH7W2koXttZ+it3WQgcykGSn3+FWPpZ05l3vqRw
- amgWJjoeEuegPyOs5JJvHta189zEwrmRvCoIuVmhyns1pYI/QAit2n3hR/A/ofM=
-X-Google-Smtp-Source: AGHT+IHVXLJysIls5jKuc+ButAzpUAaigGb7e3vadN/D72DBDpC8iifHjP1EcrZhllQrfVvxNnxusQ==
-X-Received: by 2002:a05:600c:1d8d:b0:426:640a:9de7 with SMTP id
- 5b1f17b1804b1-427c2d13b7amr66276795e9.39.1721393242366; 
- Fri, 19 Jul 2024 05:47:22 -0700 (PDT)
-Received: from [192.168.69.100] ([176.187.209.227])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-427d6929976sm23555695e9.29.2024.07.19.05.47.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 19 Jul 2024 05:47:21 -0700 (PDT)
-Message-ID: <1a37fd6c-3aed-47b3-ade7-35f2b40f5a3b@linaro.org>
-Date: Fri, 19 Jul 2024 14:47:19 +0200
+ AJvYcCViz3RAhQhtKNkOy6zJhmI40qDG6fOHuv06d9TQD5pxQnrmVC5kbid8spgg3jT5nHXxLWtagwF54ml81VvSTJVvGZCHIvyJ5w==
+X-Gm-Message-State: AOJu0YxF9odQXxvhMqqcVyQpgf0SJxOEa2DSK7zjJ2CZhBthHpKe8WYG
+ Wyd8AJjpTnilSoWKA0yuete+ztCyBSaMjvLW/E4IW2nQ/dVAgS9b1pJNvUHUU9GQeQd9luUnWJG
+ zJuIp9foilk1PxE5ScAYH+GTIJ1zRMlNFf/uO4QaPeZvMbqnW3b7Bax8=
+X-Received: by 2002:a05:6a21:9986:b0:1c3:b2b3:442d with SMTP id
+ adf61e73a8af0-1c3fdd3082fmr9450893637.40.1721396990438; 
+ Fri, 19 Jul 2024 06:49:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFo7ESVjai3vPwUqiXQxgtlNgRx0TFEoSnrj1a3SD+Rsx0zv4co4zEE+izm551vwVNo7gL7Rw==
+X-Received: by 2002:a05:6a21:9986:b0:1c3:b2b3:442d with SMTP id
+ adf61e73a8af0-1c3fdd3082fmr9450865637.40.1721396989987; 
+ Fri, 19 Jul 2024 06:49:49 -0700 (PDT)
+Received: from localhost.localdomain ([115.96.152.71])
+ by smtp.googlemail.com with ESMTPSA id
+ d9443c01a7336-1fd6f45cfe8sm4737825ad.249.2024.07.19.06.49.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 19 Jul 2024 06:49:49 -0700 (PDT)
+From: Ani Sinha <anisinha@redhat.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>
+Cc: Ani Sinha <anisinha@redhat.com>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: [PATCH] hw/x86: add a couple of comments explaining how the kernel
+ image is parsed
+Date: Fri, 19 Jul 2024 19:19:37 +0530
+Message-ID: <20240719134937.3643-1-anisinha@redhat.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] tests/avocado/mem-addr-space-check: Remove unused "import
- signal"
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: Cleber Rosa <crosa@redhat.com>,
- Wainer dos Santos Moschetta <wainersm@redhat.com>,
- Beraldo Leal <bleal@redhat.com>, qemu-trivial@nongnu.org
-References: <20240719095408.33298-1-thuth@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240719095408.33298-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+Content-Type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,18 +96,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 19 Jul 2024 12:47:27 -0000
+X-List-Received-Date: Fri, 19 Jul 2024 13:49:57 -0000
 
-On 19/7/24 11:54, Thomas Huth wrote:
-> The "signal" module is not used here, so we can remove this import
-> statement.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   tests/avocado/mem-addr-space-check.py | 1 -
->   1 file changed, 1 deletion(-)
+Cosmetic: add comments in x86_load_linux() pointing to the kernel documentation
+so that users can better understand the code.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+CC: qemu-trivial@nongnu.org
+Signed-off-by: Ani Sinha <anisinha@redhat.com>
+---
+ hw/i386/x86-common.c | 7 +++++--
+ 1 file changed, 5 insertions(+), 2 deletions(-)
 
+diff --git a/hw/i386/x86-common.c b/hw/i386/x86-common.c
+index c0c66a0eb5..992ea1f25e 100644
+--- a/hw/i386/x86-common.c
++++ b/hw/i386/x86-common.c
+@@ -665,8 +665,11 @@ void x86_load_linux(X86MachineState *x86ms,
+         exit(1);
+     }
+ 
+-    /* kernel protocol version */
+-    if (ldl_p(header + 0x202) == 0x53726448) {
++    /*
++     * kernel protocol version.
++     * Please see https://www.kernel.org/doc/Documentation/x86/boot.txt
++     */
++    if (ldl_p(header + 0x202) == 0x53726448) /* Magic signature "HdrS" */ {
+         protocol = lduw_p(header + 0x206);
+     } else {
+         /*
+-- 
+2.45.2
 
 
