@@ -1,67 +1,48 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sVXbv-0005IP-Dw
-	for mharc-qemu-trivial@gnu.org; Sun, 21 Jul 2024 10:32:27 -0400
+	id 1sVaex-0004Sw-Rl
+	for mharc-qemu-trivial@gnu.org; Sun, 21 Jul 2024 13:47:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sVXbr-0005Gw-Tq; Sun, 21 Jul 2024 10:32:23 -0400
-Received: from mgamail.intel.com ([192.198.163.12])
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>) id 1sVa0J-0005Zu-3Z
+ for qemu-trivial@nongnu.org; Sun, 21 Jul 2024 13:05:47 -0400
+Received: from mail-a.sr.ht ([46.23.81.152])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1sVXbn-0005Y3-SQ; Sun, 21 Jul 2024 10:32:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1721572340; x=1753108340;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=dgewjQCx6bg9+T1HWxV7ETFDVTjyCyPPpDZKxdrI17U=;
- b=KXTcKW3N/0EP7DoBk9fW+BVBP3S1VNlUfIq0MUSkQepFyB2OaN28ks1j
- EodW+63MmygkFLtIQaTonxeScBIC2jzqEtbUoLmr0BZYzpFihjV04340w
- kP2l0hq0TKhAU+NP7+hmZrlrmWDIKTaLYBPLdMuYORWRYotJF1arrcjFl
- QI43AwLzZhb1JNLCvbY3AiyiLm+rgc8ghdRmWBDMY277VBfrZzH9K5//P
- fZR3Pv6Rpy3M/PXHmeD7L4HQqrmE6w1roI8Snyt30QH1U3G/dyVfIVOv1
- MWemn2VRy0y5hcmP0/bdwsJ5Kxl4XsuWzWxPFeu01rJNFN3AHkkZjbbfn Q==;
-X-CSE-ConnectionGUID: TO/vSUHpRCe3UkGYnPWhJw==
-X-CSE-MsgGUID: /GQnLXMWSVKKD8pBLb/hfw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11140"; a="23005198"
-X-IronPort-AV: E=Sophos;i="6.09,225,1716274800"; d="scan'208";a="23005198"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa106.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 21 Jul 2024 07:32:15 -0700
-X-CSE-ConnectionGUID: OGG2WZecSMKc+412L1Hw5A==
-X-CSE-MsgGUID: L232TfeCRwO8q+ctMQf6Qw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,225,1716274800"; d="scan'208";a="82245708"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.36])
- by orviesa002.jf.intel.com with ESMTP; 21 Jul 2024 07:32:13 -0700
-Date: Sun, 21 Jul 2024 22:47:56 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Ani Sinha <anisinha@redhat.com>
-Cc: "Michael S. Tsirkin" <mst@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
- qemu-devel@nongnu.org
-Subject: Re: [PATCH] hw/x86: add a couple of comments explaining how the
- kernel image is parsed
-Message-ID: <Zp0fnCmGyi2L4AFX@intel.com>
-References: <20240719134937.3643-1-anisinha@redhat.com>
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>) id 1sVa0G-0002pw-LN
+ for qemu-trivial@nongnu.org; Sun, 21 Jul 2024 13:05:46 -0400
+DKIM-Signature: a=rsa-sha256; bh=aAguMqs7qQpDpiVcdc3KhyfaFgvVLazT4VWZcoNA0No=; 
+ c=simple/simple; d=git.sr.ht;
+ h=From:Date:Subject:Reply-to:To:Cc; 
+ q=dns/txt; s=20240113; t=1721581540; v=1;
+ b=TQC9miY4mTsY5SvlTNKYOI5ayiyeGpR7kiJvq8cYqPpqFmDoJqHtTG33iYJyxNGM2gTxQkrY
+ RDqKp7xJxqWP16ZTlOrY/Ao9ezqSlpUBB3qP84lguovAIOEcbq59yRHXmjjxcktwNP1XprrLJqz
+ HySjhtzAa5v+QhesQJu+eSnK9+X0tClbsKkQfzP8LfvC6+VoqYVxOZBAUFySyPUThGXvZaPH/Vn
+ VtfU/2LQBDS7nUNX0ve4I6UaieuBZzAOZDrvC19+b5uK3jQmufczcTKzfuck3q5u7NS7pByRDdT
+ 2QcdGBiFeYChJRTuvA1gVS+zcWuLoPBoapsI/f+vMcXIA==
+Received: from git.sr.ht (unknown [46.23.81.155])
+ by mail-a.sr.ht (Postfix) with ESMTPSA id C6F4620170;
+ Sun, 21 Jul 2024 17:05:40 +0000 (UTC)
+From: ~fvanhovell <fvanhovell@git.sr.ht>
+Date: Sun, 21 Jul 2024 18:13:22 +0200
+Subject: [PATCH qemu] [hw/char/bcm2835_aux] Fix receive FIFO filling up
+ (raspi3)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20240719134937.3643-1-anisinha@redhat.com>
-Received-SPF: pass client-ip=192.198.163.12; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -44
-X-Spam_score: -4.5
-X-Spam_bar: ----
-X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Message-ID: <172158154072.9480.4077116485578955977-0@git.sr.ht>
+X-Mailer: git.sr.ht
+Reply-to: ~fvanhovell <frederik@fvhovell.nl>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=46.23.81.152; envelope-from=outgoing@sr.ht;
+ helo=mail-a.sr.ht
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 21 Jul 2024 13:47:45 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,25 +54,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 21 Jul 2024 14:32:24 -0000
+X-List-Received-Date: Sun, 21 Jul 2024 17:05:47 -0000
 
-On Fri, Jul 19, 2024 at 07:19:37PM +0530, Ani Sinha wrote:
-> Date: Fri, 19 Jul 2024 19:19:37 +0530
-> From: Ani Sinha <anisinha@redhat.com>
-> Subject: [PATCH] hw/x86: add a couple of comments explaining how the kernel
->  image is parsed
-> X-Mailer: git-send-email 2.42.0
-> 
-> Cosmetic: add comments in x86_load_linux() pointing to the kernel documentation
-> so that users can better understand the code.
-> 
-> CC: qemu-trivial@nongnu.org
-> Signed-off-by: Ani Sinha <anisinha@redhat.com>
-> ---
->  hw/i386/x86-common.c | 7 +++++--
->  1 file changed, 5 insertions(+), 2 deletions(-)
-> 
+From: Frederik van H=C3=B6vell <frederik@fvhovell.nl>
 
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+When a bare-metal application on the raspi3 board reads the
+AUX_MU_STAT_REG MMIO register while the device's buffer is
+at full receive FIFO capacity
+(i.e. `s->read_count =3D=3D BCM2835_AUX_RX_FIFO_LEN`) the
+assertion `assert(s->read_count < BCM2835_AUX_RX_FIFO_LEN)`
+fails.
 
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/459
+Signed-off-by: Frederik van H=C3=B6vell <frederik@fvhovell.nl>
+---
+ hw/char/bcm2835_aux.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
+index 83990e20f7..fca2f27a55 100644
+--- a/hw/char/bcm2835_aux.c
++++ b/hw/char/bcm2835_aux.c
+@@ -138,7 +138,7 @@ static uint64_t bcm2835_aux_read(void *opaque, hwaddr off=
+set, unsigned size)
+         res =3D 0x30e; /* space in the output buffer, empty tx fifo, idle tx=
+/rx */
+         if (s->read_count > 0) {
+             res |=3D 0x1; /* data in input buffer */
+-            assert(s->read_count < BCM2835_AUX_RX_FIFO_LEN);
++            assert(s->read_count <=3D BCM2835_AUX_RX_FIFO_LEN);
+             res |=3D ((uint32_t)s->read_count) << 16; /* rx fifo fill level =
+*/
+         }
+         return res;
+--=20
+2.43.4
 
