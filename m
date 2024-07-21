@@ -1,48 +1,38 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sVaex-0004Sw-Rl
-	for mharc-qemu-trivial@gnu.org; Sun, 21 Jul 2024 13:47:47 -0400
+	id 1sVfSZ-0005eP-Ck
+	for mharc-qemu-trivial@gnu.org; Sun, 21 Jul 2024 18:55:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>) id 1sVa0J-0005Zu-3Z
- for qemu-trivial@nongnu.org; Sun, 21 Jul 2024 13:05:47 -0400
-Received: from mail-a.sr.ht ([46.23.81.152])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1sVfSW-0005cs-3m; Sun, 21 Jul 2024 18:55:17 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <outgoing@sr.ht>) id 1sVa0G-0002pw-LN
- for qemu-trivial@nongnu.org; Sun, 21 Jul 2024 13:05:46 -0400
-DKIM-Signature: a=rsa-sha256; bh=aAguMqs7qQpDpiVcdc3KhyfaFgvVLazT4VWZcoNA0No=; 
- c=simple/simple; d=git.sr.ht;
- h=From:Date:Subject:Reply-to:To:Cc; 
- q=dns/txt; s=20240113; t=1721581540; v=1;
- b=TQC9miY4mTsY5SvlTNKYOI5ayiyeGpR7kiJvq8cYqPpqFmDoJqHtTG33iYJyxNGM2gTxQkrY
- RDqKp7xJxqWP16ZTlOrY/Ao9ezqSlpUBB3qP84lguovAIOEcbq59yRHXmjjxcktwNP1XprrLJqz
- HySjhtzAa5v+QhesQJu+eSnK9+X0tClbsKkQfzP8LfvC6+VoqYVxOZBAUFySyPUThGXvZaPH/Vn
- VtfU/2LQBDS7nUNX0ve4I6UaieuBZzAOZDrvC19+b5uK3jQmufczcTKzfuck3q5u7NS7pByRDdT
- 2QcdGBiFeYChJRTuvA1gVS+zcWuLoPBoapsI/f+vMcXIA==
-Received: from git.sr.ht (unknown [46.23.81.155])
- by mail-a.sr.ht (Postfix) with ESMTPSA id C6F4620170;
- Sun, 21 Jul 2024 17:05:40 +0000 (UTC)
-From: ~fvanhovell <fvanhovell@git.sr.ht>
-Date: Sun, 21 Jul 2024 18:13:22 +0200
-Subject: [PATCH qemu] [hw/char/bcm2835_aux] Fix receive FIFO filling up
- (raspi3)
-MIME-Version: 1.0
-Message-ID: <172158154072.9480.4077116485578955977-0@git.sr.ht>
-X-Mailer: git.sr.ht
-Reply-to: ~fvanhovell <frederik@fvhovell.nl>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=46.23.81.152; envelope-from=outgoing@sr.ht;
- helo=mail-a.sr.ht
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1sVfSS-0007xC-W9; Sun, 21 Jul 2024 18:55:14 -0400
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id A9FE64E6000;
+ Mon, 22 Jul 2024 00:55:08 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id gPugac4jC7r3; Mon, 22 Jul 2024 00:55:06 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id B32704E6039; Mon, 22 Jul 2024 00:55:06 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+Subject: [PATCH] hw/i2c/mpc_i2c.c: Fix mmio region size
+To: qemu-devel@nongnu.org,
+    qemu-trivial@nongnu.org
+Cc: philmd@linaro.org
+Message-Id: <20240721225506.B32704E6039@zero.eik.bme.hu>
+Date: Mon, 22 Jul 2024 00:55:06 +0200 (CEST)
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 21 Jul 2024 13:47:45 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,39 +44,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 21 Jul 2024 17:05:47 -0000
+X-List-Received-Date: Sun, 21 Jul 2024 22:55:18 -0000
 
-From: Frederik van H=C3=B6vell <frederik@fvhovell.nl>
+The last register of this device is at offset 0x14 occupying 8 bits so
+to cover it the mmio region needs to be 0x15 bytes long. Also correct
+the name of the field storing this register value to match the
+register name.
 
-When a bare-metal application on the raspi3 board reads the
-AUX_MU_STAT_REG MMIO register while the device's buffer is
-at full receive FIFO capacity
-(i.e. `s->read_count =3D=3D BCM2835_AUX_RX_FIFO_LEN`) the
-assertion `assert(s->read_count < BCM2835_AUX_RX_FIFO_LEN)`
-fails.
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/459
-Signed-off-by: Frederik van H=C3=B6vell <frederik@fvhovell.nl>
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
 ---
- hw/char/bcm2835_aux.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/i2c/mpc_i2c.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
-index 83990e20f7..fca2f27a55 100644
---- a/hw/char/bcm2835_aux.c
-+++ b/hw/char/bcm2835_aux.c
-@@ -138,7 +138,7 @@ static uint64_t bcm2835_aux_read(void *opaque, hwaddr off=
-set, unsigned size)
-         res =3D 0x30e; /* space in the output buffer, empty tx fifo, idle tx=
-/rx */
-         if (s->read_count > 0) {
-             res |=3D 0x1; /* data in input buffer */
--            assert(s->read_count < BCM2835_AUX_RX_FIFO_LEN);
-+            assert(s->read_count <=3D BCM2835_AUX_RX_FIFO_LEN);
-             res |=3D ((uint32_t)s->read_count) << 16; /* rx fifo fill level =
-*/
+diff --git a/hw/i2c/mpc_i2c.c b/hw/i2c/mpc_i2c.c
+index cb051a520f..06d4ce7d68 100644
+--- a/hw/i2c/mpc_i2c.c
++++ b/hw/i2c/mpc_i2c.c
+@@ -82,7 +82,7 @@ struct MPCI2CState {
+     uint8_t cr;
+     uint8_t sr;
+     uint8_t dr;
+-    uint8_t dfssr;
++    uint8_t dfsrr;
+ };
+ 
+ static bool mpc_i2c_is_enabled(MPCI2CState *s)
+@@ -293,7 +293,7 @@ static void mpc_i2c_write(void *opaque, hwaddr addr,
          }
-         return res;
---=20
-2.43.4
+         break;
+     case MPC_I2C_DFSRR:
+-        s->dfssr = value;
++        s->dfsrr = value;
+         break;
+     default:
+         DPRINTF("ERROR: Bad write addr 0x%x\n", (unsigned int)addr);
+@@ -319,7 +319,7 @@ static const VMStateDescription mpc_i2c_vmstate = {
+         VMSTATE_UINT8(cr, MPCI2CState),
+         VMSTATE_UINT8(sr, MPCI2CState),
+         VMSTATE_UINT8(dr, MPCI2CState),
+-        VMSTATE_UINT8(dfssr, MPCI2CState),
++        VMSTATE_UINT8(dfsrr, MPCI2CState),
+         VMSTATE_END_OF_LIST()
+     }
+ };
+@@ -329,7 +329,7 @@ static void mpc_i2c_realize(DeviceState *dev, Error **errp)
+     MPCI2CState  *i2c = MPC_I2C(dev);
+     sysbus_init_irq(SYS_BUS_DEVICE(dev), &i2c->irq);
+     memory_region_init_io(&i2c->iomem, OBJECT(i2c), &i2c_ops, i2c,
+-                          "mpc-i2c", 0x14);
++                          "mpc-i2c", 0x15);
+     sysbus_init_mmio(SYS_BUS_DEVICE(dev), &i2c->iomem);
+     i2c->bus = i2c_init_bus(dev, "i2c");
+ }
+-- 
+2.30.9
+
 
