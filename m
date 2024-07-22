@@ -1,78 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sVo6U-0008PC-MN
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jul 2024 04:09:07 -0400
+	id 1sVpbA-0000Yp-BB
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jul 2024 05:44:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sVo6Q-0008MQ-N3
- for qemu-trivial@nongnu.org; Mon, 22 Jul 2024 04:09:02 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sVpb9-0000Tu-0z
+ for qemu-trivial@nongnu.org; Mon, 22 Jul 2024 05:44:51 -0400
+Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sVo6O-0002B7-4d
- for qemu-trivial@nongnu.org; Mon, 22 Jul 2024 04:09:01 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-367940c57ddso1970380f8f.3
- for <qemu-trivial@nongnu.org>; Mon, 22 Jul 2024 01:08:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sVpb6-0003TT-AE
+ for qemu-trivial@nongnu.org; Mon, 22 Jul 2024 05:44:50 -0400
+Received: by mail-ed1-x52e.google.com with SMTP id
+ 4fb4d7f45d1cf-5a1337cfbb5so3498311a12.3
+ for <qemu-trivial@nongnu.org>; Mon, 22 Jul 2024 02:44:47 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1721635738; x=1722240538; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:cc:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=GuhGhQfW+nG+132ytSxy9RpTW+oDEVjviPWjVECwFhM=;
- b=Z91Wx9YOkS0cg1rWYDyPACw95r+1yYlZkCWKlr5lmK2/hC5jlaDGqe6DZKKXrDw39E
- 5SMxagdtHth5T9oB11s0ntzpDi9D9C7xqFDhfvjVdZdYH3OQE/auvRkQquYu2Eq0c7YI
- uc/rkmXZ5GGL34SKOE38dsxa5VrV2bBMbvf1HqstghWdF1R+5VYvcyYTAGy37ijKBLfB
- VRc50gGmNYUs/0XoKO2xVc4dkCCIelaZJ7RLJr++GyUkXoCOxLjjEsJDhtjeCo8dTFLJ
- TbULNPQP9BRUD5ch4wnc6nU4N06B3u0n8rxirjmxJjqnpXhbmnzKJnykiOqJtqut95Px
- +VRA==
+ d=linaro.org; s=google; t=1721641486; x=1722246286; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=CRGVza52LbAbO38WHL/QhboDgGFEkYSCn52ypTfv2rY=;
+ b=fJkhX09QoTsSQJntGsVVqxyNdUNBdDITLyldhp4sBqnb2RsyhdDXrm1Xg5Z59CBTDO
+ TrHWmv/pdfj0gUUxm0uMAeU69UvswYcsenGp4NTdKRIYUyFHrcp5S0lLnrf1U4tutrzO
+ 06AuceT0DFQDXyrWQjZMRbqnhEho77ssPDUtB8aMPyd1U9OW5S+RD0htir7VUfxOl6/7
+ FpbCsjtsrFkiFq6xze81k6hqlwSYo477uhD8BMmS0Kc4Alv+GrJGEWXR9UIEa56OIGAx
+ qLtuyHVWhcLjxZLHyHpIeolDAdLBqZEzw5S9SBcQng2bBq1dlt5wAUFZ80qa3f4UD5fX
+ nYSg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721635738; x=1722240538;
- h=content-transfer-encoding:in-reply-to:from:cc:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=GuhGhQfW+nG+132ytSxy9RpTW+oDEVjviPWjVECwFhM=;
- b=gj9zwsylAThVaMI0jqbP+rXhuDaaEMjAaUAAuJsuDyKb29j4KegV8jU/TrV66aShfg
- swiOUZOCTJP9PVQC3heHAku0ZdMkehOx8KO4SoTYUzXKZNjMCeqq+FQrwygnIE1TqaaQ
- 8Wuj2D+VtAJEScPpDCH/qqy3fe5xWM9+tIFUpBF9YluEF+U3om6f2LHF0/hey/WhnaP5
- iH0atJOvk5yIDRWJvpANW7ud8Wnh1xc5SlRa3AtVYAvyhTMFgDPa5V+CMtygN442FXCA
- LodoO9EW7BJveE1JysF6ji/G+Rf6SF7pVLYA9GrU5fOvDE2dFipEzzTL2/ONH2w1dV5W
- L06A==
+ d=1e100.net; s=20230601; t=1721641486; x=1722246286;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=CRGVza52LbAbO38WHL/QhboDgGFEkYSCn52ypTfv2rY=;
+ b=GFDvdu9UaRz8g94zwW7223E4KyVshSFFmRsQjFA8klXY6H5hrLr/X6Lnu/Je1lpD4V
+ D+gK2lEJLt4bKGNcEYg/T2v5+tIPim5Zm+WOsn1cNjP9QLuJjp2RC9eyfNXSKlr8pzJZ
+ W8cMzKoxg8ydD7q5y6Fq11Lk9B1FciDgy03FrJNIkAKaWZEnXrG63ub0JumMm0m4qfQo
+ hIQbzVo5MEBFWIGNPMZdINclT7VIlM74+O9BHHFY4NWk8qcG35R6yLZ8KC4ksmC0Ucb8
+ N4h9xCymFtyIu2xvQVXhl7xG0e2DLAxGIOLkSmh9vxeDe9pOXV6llpzLDWqr+Dc0d5VO
+ p/YQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUyLtLGpa41De+C7rSQKddleLjUYIiII1DRiNt9c32/KuJXWb4iHoVkrFhk6iSq5+mcHopo3/jv1m5zOIAsk4pwcBsatU5LSA==
-X-Gm-Message-State: AOJu0YzIUrsl5YjS+3KvwiPX5tbmJzcpTc2yQFdsLxDom5ZjxQ1mOL7S
- TIkisa443917b+yZW1bgVWNxNiyl9af3ljxTapH5D07JbO3UuSPmBwl0YPwysO0=
-X-Google-Smtp-Source: AGHT+IFISfe7Glmxr7X5ayHDuHzcYnKBZCYOjH/6XVdDUkj2wovbUHVeWIkoddXiTHyXbY7zPENxhw==
-X-Received: by 2002:a5d:5352:0:b0:368:71bc:2b0c with SMTP id
- ffacd0b85a97d-369bae02398mr3704156f8f.10.1721635738020; 
- Mon, 22 Jul 2024 01:08:58 -0700 (PDT)
-Received: from [192.168.69.100] (gen92-h02-176-184-20-254.dsl.sta.abo.bbox.fr.
- [176.184.20.254]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-368787ecf92sm7759570f8f.101.2024.07.22.01.08.56
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 22 Jul 2024 01:08:57 -0700 (PDT)
-Message-ID: <8ab5cfc4-3360-4b2e-9679-8566aea9b890@linaro.org>
-Date: Mon, 22 Jul 2024 10:08:55 +0200
+ AJvYcCXG5ldEYCVcLYwQJRyiA0ZAvkJBYIiOCNqKeULMU5CDPLomIHl4cPsKe21IyhcSdIva10Ix39rS7H2ElWZeeJVv8+TlwTHUfQ==
+X-Gm-Message-State: AOJu0YxXovizuMM22V7STTC2gqPhonFZAzBw2vfwI07UyZrsske7IPgW
+ J964r9OWwEj/Kbk0rVYDBgjNb1XfuZILVFmlcVMePeCuQW78QyCcxNKzkPVbIombL8Mk8gmTXBp
+ OM8A58SO2sUNF7cd8ko6w6vpQXh4C3T4SLL8Dng==
+X-Google-Smtp-Source: AGHT+IHwN2x4+T6SDtREkhRedColiALFEMEqKApKiNrn7a31Sld3F586uXqOx4iiVPrbjHOsEyIKQYJ0WDtXardECCY=
+X-Received: by 2002:a50:d794:0:b0:5a1:6198:10ba with SMTP id
+ 4fb4d7f45d1cf-5a47b5bc28emr4142841a12.32.1721641481300; Mon, 22 Jul 2024
+ 02:44:41 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/i2c/mpc_i2c.c: Fix mmio region size
-To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-References: <20240721225506.B32704E6039@zero.eik.bme.hu>
-Content-Language: en-US
-Cc: Andrew Randrianasulu <randrianasulu@gmail.com>,
- Amit Singh Tomar <amit.tomar@freescale.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240721225506.B32704E6039@zero.eik.bme.hu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+References: <172158154072.9480.4077116485578955977-0@git.sr.ht>
+ <4100ce91-e4e0-426a-8098-93cd29e634ec@linaro.org>
+In-Reply-To: <4100ce91-e4e0-426a-8098-93cd29e634ec@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 22 Jul 2024 10:44:30 +0100
+Message-ID: <CAFEAcA_A57pCQEHi_oSMvngQggfcbW9pR9+qkyQm49NQiVREnQ@mail.gmail.com>
+Subject: Re: [PATCH qemu] [hw/char/bcm2835_aux] Fix receive FIFO filling up
+ (raspi3)
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: "~fvanhovell" <frederik@fvhovell.nl>, qemu-trivial@nongnu.org, 
+ Cryptjar <cryptjar@junk.studio>, QEMU Developers <qemu-devel@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,40 +82,52 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jul 2024 08:09:02 -0000
+X-List-Received-Date: Mon, 22 Jul 2024 09:44:51 -0000
 
-+Amit & Andrew
+[Added missing cc of qemu-devel]
 
-On 22/7/24 00:55, BALATON Zoltan wrote:
-> The last register of this device is at offset 0x14 occupying 8 bits so
-> to cover it the mmio region needs to be 0x15 bytes long. Also correct
-> the name of the field storing this register value to match the
-> register name.
-> 
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> ---
->   hw/i2c/mpc_i2c.c | 8 ++++----
->   1 file changed, 4 insertions(+), 4 deletions(-)
+On Mon, 22 Jul 2024 at 07:33, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
+g> wrote:
+>
+> On 21/7/24 18:13, ~fvanhovell wrote:
+> > From: Frederik van H=C3=B6vell <frederik@fvhovell.nl>
+> >
+> > When a bare-metal application on the raspi3 board reads the
+> > AUX_MU_STAT_REG MMIO register while the device's buffer is
+> > at full receive FIFO capacity
+> > (i.e. `s->read_count =3D=3D BCM2835_AUX_RX_FIFO_LEN`) the
+> > assertion `assert(s->read_count < BCM2835_AUX_RX_FIFO_LEN)`
+> > fails.
+> >
+>
+> Reported-by: Cryptjar <cryptjar@junk.studio>
+> Suggested-by: Cryptjar <cryptjar@junk.studio>
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
+>
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/459
+> > Signed-off-by: Frederik van H=C3=B6vell <frederik@fvhovell.nl>
+> > ---
+> >   hw/char/bcm2835_aux.c | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> >
+> > diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
+> > index 83990e20f7..fca2f27a55 100644
+> > --- a/hw/char/bcm2835_aux.c
+> > +++ b/hw/char/bcm2835_aux.c
+> > @@ -138,7 +138,7 @@ static uint64_t bcm2835_aux_read(void *opaque, hwad=
+dr offset, unsigned size)
+> >           res =3D 0x30e; /* space in the output buffer, empty tx fifo, =
+idle tx/rx */
+> >           if (s->read_count > 0) {
+> >               res |=3D 0x1; /* data in input buffer */
+> > -            assert(s->read_count < BCM2835_AUX_RX_FIFO_LEN);
+> > +            assert(s->read_count <=3D BCM2835_AUX_RX_FIFO_LEN);
+> >               res |=3D ((uint32_t)s->read_count) << 16; /* rx fifo fill=
+ level */
+> >           }
+> >           return res;
+>
 
-
-> @@ -329,7 +329,7 @@ static void mpc_i2c_realize(DeviceState *dev, Error **errp)
->       MPCI2CState  *i2c = MPC_I2C(dev);
->       sysbus_init_irq(SYS_BUS_DEVICE(dev), &i2c->irq);
->       memory_region_init_io(&i2c->iomem, OBJECT(i2c), &i2c_ops, i2c,
-> -                          "mpc-i2c", 0x14);
-> +                          "mpc-i2c", 0x15);
-
-Personally I'm not a big fan of non-pow2 regions, so I'd have picked
-0x20 or 0x100 where the 2nd i2c controller starts. Amit, what do you
-think?
-
-Anyhow,
-
-Fixes: 7abb479c7a ("PPC: E500: Add FSL I2C controller")
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
->       sysbus_init_mmio(SYS_BUS_DEVICE(dev), &i2c->iomem);
->       i2c->bus = i2c_init_bus(dev, "i2c");
->   }
-
+thanks
+-- PMM
 
