@@ -1,75 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sVpbA-0000Yp-BB
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jul 2024 05:44:52 -0400
+	id 1sVq5Y-0003Ia-Sp
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jul 2024 06:16:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sVpb9-0000Tu-0z
- for qemu-trivial@nongnu.org; Mon, 22 Jul 2024 05:44:51 -0400
-Received: from mail-ed1-x52e.google.com ([2a00:1450:4864:20::52e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sVpb6-0003TT-AE
- for qemu-trivial@nongnu.org; Mon, 22 Jul 2024 05:44:50 -0400
-Received: by mail-ed1-x52e.google.com with SMTP id
- 4fb4d7f45d1cf-5a1337cfbb5so3498311a12.3
- for <qemu-trivial@nongnu.org>; Mon, 22 Jul 2024 02:44:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1721641486; x=1722246286; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CRGVza52LbAbO38WHL/QhboDgGFEkYSCn52ypTfv2rY=;
- b=fJkhX09QoTsSQJntGsVVqxyNdUNBdDITLyldhp4sBqnb2RsyhdDXrm1Xg5Z59CBTDO
- TrHWmv/pdfj0gUUxm0uMAeU69UvswYcsenGp4NTdKRIYUyFHrcp5S0lLnrf1U4tutrzO
- 06AuceT0DFQDXyrWQjZMRbqnhEho77ssPDUtB8aMPyd1U9OW5S+RD0htir7VUfxOl6/7
- FpbCsjtsrFkiFq6xze81k6hqlwSYo477uhD8BMmS0Kc4Alv+GrJGEWXR9UIEa56OIGAx
- qLtuyHVWhcLjxZLHyHpIeolDAdLBqZEzw5S9SBcQng2bBq1dlt5wAUFZ80qa3f4UD5fX
- nYSg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1721641486; x=1722246286;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=CRGVza52LbAbO38WHL/QhboDgGFEkYSCn52ypTfv2rY=;
- b=GFDvdu9UaRz8g94zwW7223E4KyVshSFFmRsQjFA8klXY6H5hrLr/X6Lnu/Je1lpD4V
- D+gK2lEJLt4bKGNcEYg/T2v5+tIPim5Zm+WOsn1cNjP9QLuJjp2RC9eyfNXSKlr8pzJZ
- W8cMzKoxg8ydD7q5y6Fq11Lk9B1FciDgy03FrJNIkAKaWZEnXrG63ub0JumMm0m4qfQo
- hIQbzVo5MEBFWIGNPMZdINclT7VIlM74+O9BHHFY4NWk8qcG35R6yLZ8KC4ksmC0Ucb8
- N4h9xCymFtyIu2xvQVXhl7xG0e2DLAxGIOLkSmh9vxeDe9pOXV6llpzLDWqr+Dc0d5VO
- p/YQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXG5ldEYCVcLYwQJRyiA0ZAvkJBYIiOCNqKeULMU5CDPLomIHl4cPsKe21IyhcSdIva10Ix39rS7H2ElWZeeJVv8+TlwTHUfQ==
-X-Gm-Message-State: AOJu0YxXovizuMM22V7STTC2gqPhonFZAzBw2vfwI07UyZrsske7IPgW
- J964r9OWwEj/Kbk0rVYDBgjNb1XfuZILVFmlcVMePeCuQW78QyCcxNKzkPVbIombL8Mk8gmTXBp
- OM8A58SO2sUNF7cd8ko6w6vpQXh4C3T4SLL8Dng==
-X-Google-Smtp-Source: AGHT+IHwN2x4+T6SDtREkhRedColiALFEMEqKApKiNrn7a31Sld3F586uXqOx4iiVPrbjHOsEyIKQYJ0WDtXardECCY=
-X-Received: by 2002:a50:d794:0:b0:5a1:6198:10ba with SMTP id
- 4fb4d7f45d1cf-5a47b5bc28emr4142841a12.32.1721641481300; Mon, 22 Jul 2024
- 02:44:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1sVq5R-0003Gb-P8; Mon, 22 Jul 2024 06:16:11 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1sVq5O-00019y-Dr; Mon, 22 Jul 2024 06:16:09 -0400
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 0B04A4E6005;
+ Mon, 22 Jul 2024 12:16:03 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id EKYYOxSr7o4O; Mon, 22 Jul 2024 12:16:01 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 12C3E4E6000; Mon, 22 Jul 2024 12:16:01 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 0FC91746E3B;
+ Mon, 22 Jul 2024 12:16:01 +0200 (CEST)
+Date: Mon, 22 Jul 2024 12:16:01 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
+cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ Andrew Randrianasulu <randrianasulu@gmail.com>, 
+ Amit Singh Tomar <amit.tomar@freescale.com>
+Subject: Re: [PATCH] hw/i2c/mpc_i2c.c: Fix mmio region size
+In-Reply-To: <8ab5cfc4-3360-4b2e-9679-8566aea9b890@linaro.org>
+Message-ID: <5ccba9c4-50ec-7d55-4d34-14a925662563@eik.bme.hu>
+References: <20240721225506.B32704E6039@zero.eik.bme.hu>
+ <8ab5cfc4-3360-4b2e-9679-8566aea9b890@linaro.org>
 MIME-Version: 1.0
-References: <172158154072.9480.4077116485578955977-0@git.sr.ht>
- <4100ce91-e4e0-426a-8098-93cd29e634ec@linaro.org>
-In-Reply-To: <4100ce91-e4e0-426a-8098-93cd29e634ec@linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 22 Jul 2024 10:44:30 +0100
-Message-ID: <CAFEAcA_A57pCQEHi_oSMvngQggfcbW9pR9+qkyQm49NQiVREnQ@mail.gmail.com>
-Subject: Re: [PATCH qemu] [hw/char/bcm2835_aux] Fix receive FIFO filling up
- (raspi3)
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: "~fvanhovell" <frederik@fvhovell.nl>, qemu-trivial@nongnu.org, 
- Cryptjar <cryptjar@junk.studio>, QEMU Developers <qemu-devel@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52e;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: multipart/mixed; boundary="3866299591-97805229-1721643361=:44083"
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,52 +53,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jul 2024 09:44:51 -0000
+X-List-Received-Date: Mon, 22 Jul 2024 10:16:15 -0000
 
-[Added missing cc of qemu-devel]
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-On Mon, 22 Jul 2024 at 07:33, Philippe Mathieu-Daud=C3=A9 <philmd@linaro.or=
-g> wrote:
->
-> On 21/7/24 18:13, ~fvanhovell wrote:
-> > From: Frederik van H=C3=B6vell <frederik@fvhovell.nl>
-> >
-> > When a bare-metal application on the raspi3 board reads the
-> > AUX_MU_STAT_REG MMIO register while the device's buffer is
-> > at full receive FIFO capacity
-> > (i.e. `s->read_count =3D=3D BCM2835_AUX_RX_FIFO_LEN`) the
-> > assertion `assert(s->read_count < BCM2835_AUX_RX_FIFO_LEN)`
-> > fails.
-> >
->
-> Reported-by: Cryptjar <cryptjar@junk.studio>
-> Suggested-by: Cryptjar <cryptjar@junk.studio>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org>
->
-> > Resolves: https://gitlab.com/qemu-project/qemu/-/issues/459
-> > Signed-off-by: Frederik van H=C3=B6vell <frederik@fvhovell.nl>
-> > ---
-> >   hw/char/bcm2835_aux.c | 2 +-
-> >   1 file changed, 1 insertion(+), 1 deletion(-)
-> >
-> > diff --git a/hw/char/bcm2835_aux.c b/hw/char/bcm2835_aux.c
-> > index 83990e20f7..fca2f27a55 100644
-> > --- a/hw/char/bcm2835_aux.c
-> > +++ b/hw/char/bcm2835_aux.c
-> > @@ -138,7 +138,7 @@ static uint64_t bcm2835_aux_read(void *opaque, hwad=
-dr offset, unsigned size)
-> >           res =3D 0x30e; /* space in the output buffer, empty tx fifo, =
-idle tx/rx */
-> >           if (s->read_count > 0) {
-> >               res |=3D 0x1; /* data in input buffer */
-> > -            assert(s->read_count < BCM2835_AUX_RX_FIFO_LEN);
-> > +            assert(s->read_count <=3D BCM2835_AUX_RX_FIFO_LEN);
-> >               res |=3D ((uint32_t)s->read_count) << 16; /* rx fifo fill=
- level */
-> >           }
-> >           return res;
->
+--3866299591-97805229-1721643361=:44083
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-thanks
--- PMM
+On Mon, 22 Jul 2024, Philippe Mathieu-Daudé wrote:
+> +Amit & Andrew
+>
+> On 22/7/24 00:55, BALATON Zoltan wrote:
+>> The last register of this device is at offset 0x14 occupying 8 bits so
+>> to cover it the mmio region needs to be 0x15 bytes long. Also correct
+>> the name of the field storing this register value to match the
+>> register name.
+>> 
+>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+>> ---
+>>   hw/i2c/mpc_i2c.c | 8 ++++----
+>>   1 file changed, 4 insertions(+), 4 deletions(-)
+>
+>
+>> @@ -329,7 +329,7 @@ static void mpc_i2c_realize(DeviceState *dev, Error 
+>> **errp)
+>>       MPCI2CState  *i2c = MPC_I2C(dev);
+>>       sysbus_init_irq(SYS_BUS_DEVICE(dev), &i2c->irq);
+>>       memory_region_init_io(&i2c->iomem, OBJECT(i2c), &i2c_ops, i2c,
+>> -                          "mpc-i2c", 0x14);
+>> +                          "mpc-i2c", 0x15);
+>
+> Personally I'm not a big fan of non-pow2 regions, so I'd have picked
+> 0x20 or 0x100 where the 2nd i2c controller starts. Amit, what do you
+
+Coverung unused areas isn't a good idea because that would omit invalid 
+read/write warnings when those are enabled so it's harder to catch 
+unimplemented registers that way. So 0x100 is definitely overkill, 0x20 
+could be acceptable as other regs are also covering some unused area after 
+them but is also unnecessary when we can cover exactly the area where the 
+register is.
+
+Regards,
+BALATON Zoltan
+
+> think?
+>
+> Anyhow,
+>
+> Fixes: 7abb479c7a ("PPC: E500: Add FSL I2C controller")
+> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>
+>>       sysbus_init_mmio(SYS_BUS_DEVICE(dev), &i2c->iomem);
+>>       i2c->bus = i2c_init_bus(dev, "i2c");
+>>   }
+>
+>
+--3866299591-97805229-1721643361=:44083--
 
