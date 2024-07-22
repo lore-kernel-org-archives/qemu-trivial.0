@@ -1,45 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sVq5Y-0003Ia-Sp
-	for mharc-qemu-trivial@gnu.org; Mon, 22 Jul 2024 06:16:18 -0400
+	id 1sW0L5-0005AB-4j
+	for mharc-qemu-trivial@gnu.org; Mon, 22 Jul 2024 17:12:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1sVq5R-0003Gb-P8; Mon, 22 Jul 2024 06:16:11 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1sVq5O-00019y-Dr; Mon, 22 Jul 2024 06:16:09 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 0B04A4E6005;
- Mon, 22 Jul 2024 12:16:03 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id EKYYOxSr7o4O; Mon, 22 Jul 2024 12:16:01 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 12C3E4E6000; Mon, 22 Jul 2024 12:16:01 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 0FC91746E3B;
- Mon, 22 Jul 2024 12:16:01 +0200 (CEST)
-Date: Mon, 22 Jul 2024 12:16:01 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: =?ISO-8859-15?Q?Philippe_Mathieu-Daud=E9?= <philmd@linaro.org>
-cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- Andrew Randrianasulu <randrianasulu@gmail.com>, 
- Amit Singh Tomar <amit.tomar@freescale.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sW0L2-00050K-Ni
+ for qemu-trivial@nongnu.org; Mon, 22 Jul 2024 17:12:57 -0400
+Received: from mail-il1-x12d.google.com ([2607:f8b0:4864:20::12d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sW0Kx-00067J-0a
+ for qemu-trivial@nongnu.org; Mon, 22 Jul 2024 17:12:56 -0400
+Received: by mail-il1-x12d.google.com with SMTP id
+ e9e14a558f8ab-38f69f73966so10128735ab.3
+ for <qemu-trivial@nongnu.org>; Mon, 22 Jul 2024 14:12:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1721682769; x=1722287569; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=dcVf5xUSfMyZzLAwJeFUCVkHH+WQRogq6/+R0xNjMS4=;
+ b=H0+qZpcF20XyrQKbZ/qp94RC3YV6/sb6YJCVhxVLinbfI43pK4GOFjX1bdoPDLG9u8
+ AKYFpp4RNa9hVH92PlOxb0c/b7CmCj6ZwUSVeivJ1pWXTTj2m0ekOTdOOI6H0pwWT7oM
+ RYcA2BRqIXpcGts+HVl5pz1PfcItpQoKmWjeuyxuX2/scu8aM1uxnCxhzR0uXmbVdOMz
+ optSoKbFnsIGh9TnwI00JeM87O7FvQW3++tz4cWmKxI4U+rWLRiRfaa0zxFjBNphYFYa
+ a1b8vkeEu6h0+LS1QB2/3Kpv2CT53ioGDRyQWnovcIKWOMK6QJCnoHLo6Wbtz9jsoAM6
+ qm2g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1721682769; x=1722287569;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=dcVf5xUSfMyZzLAwJeFUCVkHH+WQRogq6/+R0xNjMS4=;
+ b=dyl+93VUAYp+fst7h9AiiYa4JqAq+aRqKzQVIOoDoMacmexS5ikwwf+fTdE/AjxPy4
+ tcsyhBY0Cx7qbMWrNTMpLQG7p6fZSbZSRVg9b2lS/gZLZp3C+WzUWtSpg08E3Z6z+HYe
+ evq8PvzSk4pqGq1c0N8ca5E2LcCW6ULJQMwTyfZKdVQigkPekHfQUzzGAvf6C161rNi6
+ +huJQVFSHalmmCNvF9wNmir1IHb7xD0z3GqkrAUw/u5Aj8pnGoFN0/OrI9hhc8vDTWoH
+ Ue3xE+lCYtp0sePvOmp8PfZeRnOOns4VGioM6/z1ZQJOPAFEXBenguXeCHAbZmLte6fZ
+ waMQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWSHHpBJm+wDaxZHKQOrS9IQ7X7WxU8f8/uVtvESs27/kq2F5mYlSn+Y5KPZxidRr3hpC0ucVqebWZVQuiYX5s7jkAKamxy9A==
+X-Gm-Message-State: AOJu0YwrnQsxz6Fj287ExLBzfV7uJ1qH2ywRhT8IuufVBw1NyIKs6M/+
+ vrxqDQL63J1a7WRvn5IbL6FBKOYXV0vxEXpXyT/9BH5MYnIBdVSjlhn+7G1Jjd4=
+X-Google-Smtp-Source: AGHT+IEvwP1LZ+/PjNCJbRQTXIFGNYOBAQsbou8uZuNYfOZiRJrXzBJd36yY6C+7Jl4F2JTLs4UsDA==
+X-Received: by 2002:a05:6e02:1a44:b0:383:8ec6:6d17 with SMTP id
+ e9e14a558f8ab-39a0c7fb29emr14677625ab.0.1721682769410; 
+ Mon, 22 Jul 2024 14:12:49 -0700 (PDT)
+Received: from [192.168.69.100] ([176.187.208.14])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-70cff59cb7dsm6004314b3a.144.2024.07.22.14.12.47
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 22 Jul 2024 14:12:49 -0700 (PDT)
+Message-ID: <daad7f23-92f0-4b8f-b0c6-a1e8510f3702@linaro.org>
+Date: Mon, 22 Jul 2024 23:12:45 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] hw/i2c/mpc_i2c.c: Fix mmio region size
-In-Reply-To: <8ab5cfc4-3360-4b2e-9679-8566aea9b890@linaro.org>
-Message-ID: <5ccba9c4-50ec-7d55-4d34-14a925662563@eik.bme.hu>
+To: BALATON Zoltan <balaton@eik.bme.hu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Andrew Randrianasulu <randrianasulu@gmail.com>,
+ Amit Singh Tomar <amit.tomar@freescale.com>
 References: <20240721225506.B32704E6039@zero.eik.bme.hu>
  <8ab5cfc4-3360-4b2e-9679-8566aea9b890@linaro.org>
-MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary="3866299591-97805229-1721643361=:44083"
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ <5ccba9c4-50ec-7d55-4d34-14a925662563@eik.bme.hu>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <5ccba9c4-50ec-7d55-4d34-14a925662563@eik.bme.hu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::12d;
+ envelope-from=philmd@linaro.org; helo=mail-il1-x12d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -53,62 +87,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 22 Jul 2024 10:16:15 -0000
+X-List-Received-Date: Mon, 22 Jul 2024 21:12:57 -0000
 
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
+On 22/7/24 12:16, BALATON Zoltan wrote:
+> On Mon, 22 Jul 2024, Philippe Mathieu-Daudé wrote:
+>> +Amit & Andrew
+>>
+>> On 22/7/24 00:55, BALATON Zoltan wrote:
+>>> The last register of this device is at offset 0x14 occupying 8 bits so
+>>> to cover it the mmio region needs to be 0x15 bytes long. Also correct
+>>> the name of the field storing this register value to match the
+>>> register name.
+>>>
+>>> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+>>> ---
+>>>   hw/i2c/mpc_i2c.c | 8 ++++----
+>>>   1 file changed, 4 insertions(+), 4 deletions(-)
+>>
+>>
+>>> @@ -329,7 +329,7 @@ static void mpc_i2c_realize(DeviceState *dev, 
+>>> Error **errp)
+>>>       MPCI2CState  *i2c = MPC_I2C(dev);
+>>>       sysbus_init_irq(SYS_BUS_DEVICE(dev), &i2c->irq);
+>>>       memory_region_init_io(&i2c->iomem, OBJECT(i2c), &i2c_ops, i2c,
+>>> -                          "mpc-i2c", 0x14);
+>>> +                          "mpc-i2c", 0x15);
+>>
+>> Personally I'm not a big fan of non-pow2 regions, so I'd have picked
+>> 0x20 or 0x100 where the 2nd i2c controller starts. Amit, what do you
+> 
+> Coverung unused areas isn't a good idea because that would omit invalid 
+> read/write warnings when those are enabled so it's harder to catch 
+> unimplemented registers that way. So 0x100 is definitely overkill, 0x20 
+> could be acceptable as other regs are also covering some unused area 
+> after them but is also unnecessary when we can cover exactly the area 
+> where the register is.
 
---3866299591-97805229-1721643361=:44083
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8BIT
-
-On Mon, 22 Jul 2024, Philippe Mathieu-Daudé wrote:
-> +Amit & Andrew
->
-> On 22/7/24 00:55, BALATON Zoltan wrote:
->> The last register of this device is at offset 0x14 occupying 8 bits so
->> to cover it the mmio region needs to be 0x15 bytes long. Also correct
->> the name of the field storing this register value to match the
->> register name.
->> 
->> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
->> ---
->>   hw/i2c/mpc_i2c.c | 8 ++++----
->>   1 file changed, 4 insertions(+), 4 deletions(-)
->
->
->> @@ -329,7 +329,7 @@ static void mpc_i2c_realize(DeviceState *dev, Error 
->> **errp)
->>       MPCI2CState  *i2c = MPC_I2C(dev);
->>       sysbus_init_irq(SYS_BUS_DEVICE(dev), &i2c->irq);
->>       memory_region_init_io(&i2c->iomem, OBJECT(i2c), &i2c_ops, i2c,
->> -                          "mpc-i2c", 0x14);
->> +                          "mpc-i2c", 0x15);
->
-> Personally I'm not a big fan of non-pow2 regions, so I'd have picked
-> 0x20 or 0x100 where the 2nd i2c controller starts. Amit, what do you
-
-Coverung unused areas isn't a good idea because that would omit invalid 
-read/write warnings when those are enabled so it's harder to catch 
-unimplemented registers that way. So 0x100 is definitely overkill, 0x20 
-could be acceptable as other regs are also covering some unused area after 
-them but is also unnecessary when we can cover exactly the area where the 
-register is.
-
-Regards,
-BALATON Zoltan
-
-> think?
->
-> Anyhow,
->
-> Fixes: 7abb479c7a ("PPC: E500: Add FSL I2C controller")
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->
->>       sysbus_init_mmio(SYS_BUS_DEVICE(dev), &i2c->iomem);
->>       i2c->bus = i2c_init_bus(dev, "i2c");
->>   }
->
->
---3866299591-97805229-1721643361=:44083--
+Yeah. I'm queuing this patch via hw-misc, thanks.
 
