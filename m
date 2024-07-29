@@ -1,84 +1,51 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sYdnx-000645-Ed
-	for mharc-qemu-trivial@gnu.org; Mon, 29 Jul 2024 23:45:41 -0400
+	id 1sYiLl-0000vZ-MO
+	for mharc-qemu-trivial@gnu.org; Tue, 30 Jul 2024 04:36:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1sYdnu-0005wM-FL
- for qemu-trivial@nongnu.org; Mon, 29 Jul 2024 23:45:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <marco@palumbi.it>) id 1sYesj-0004cv-60
+ for qemu-trivial@nongnu.org; Tue, 30 Jul 2024 00:54:41 -0400
+Received: from smtpcmd10101.aruba.it ([62.149.156.101])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jasowang@redhat.com>)
- id 1sYdnr-0005L2-T5
- for qemu-trivial@nongnu.org; Mon, 29 Jul 2024 23:45:36 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1722311135;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=bXJNjky8EefqMLiwUpRfOObSGdedE0BP/ZPWloO0qjA=;
- b=aw8Q248reBjVY5uCoe3H5e1fTBvcGPei2KaF0bunHENTfZEY9iOZEHzEl4Fo2ms9mNDjAB
- 1Tr3zHuKd6HS7eloolD8rRzwdqEoMbD1MLrtvr8Igfcccb/Ut2Tv981762S7Cro+lAh2lS
- HBTJFVNlMIpg+viz2Qct1Swx7X/0LlI=
-Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
- [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-106-89_UZmjLPLiLpD8Aqxut-Q-1; Mon, 29 Jul 2024 23:45:33 -0400
-X-MC-Unique: 89_UZmjLPLiLpD8Aqxut-Q-1
-Received: by mail-pj1-f71.google.com with SMTP id
- 98e67ed59e1d1-2cb5847ff53so5229746a91.2
- for <qemu-trivial@nongnu.org>; Mon, 29 Jul 2024 20:45:33 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722311132; x=1722915932;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=bXJNjky8EefqMLiwUpRfOObSGdedE0BP/ZPWloO0qjA=;
- b=ZdpdXCxkz9EHwS53zfHXxUHzaTGE5Uddch68Ga3op//uX4Fqq/CpC5zoAzIBUqdH44
- LMmRpx3BKzG7zumqtcbyucim2vf2dwC5yDRCAwZudwxq03x+KADLil9yQbafrOhRsiPy
- T1rnonjwduMO3ibvabQbFTygl7f4A3fYkk+ekXqlKuqgpSsvq7aWMCe+BW9KlyfGYORQ
- 6ky4CtKQQvNZDlb4zXENec0m2D/q2OCtigVIsfbjBd/l7Ete8K7NRTXieu22B4NBV0bn
- vBfumK8Ja/rBU8zABtulx4LNshfZrBGG9WnK+eC6byqG7SA87CkYTcM+ZRuHTXOi1eGi
- F0VQ==
-X-Gm-Message-State: AOJu0YwBEZXTB2ih9365U4j1rO6qi6RAC5GWAev3UoK9tKBnjxkZ40Y+
- qnh/o18UAUhMNgtgDLpZnRH5tWRLr+jFve2BcFAmcW1Jr2R5hw5W06VSaqhsKRGvDOvP2zELxLY
- 0RmHhlgWFrLILmySmxU8be0GL6mDi340OrynnOrbWkefBLAYHUQnfJ/JagIPTp/BwtDy9O0M8bn
- 67U4sergnDi5LY4dYPn9z6n78pNH/fqkXJzRFBezAA
-X-Received: by 2002:a17:90a:1c17:b0:2cb:5678:7a1c with SMTP id
- 98e67ed59e1d1-2cf7e1e1e69mr11933277a91.18.1722311131983; 
- Mon, 29 Jul 2024 20:45:31 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGGd6vw/rBrRerbfBAm+yBhRqY7rgAK5UBbOS+OQx23lyHGKA9xXIMF5+7Yitk+KRhqgZvJWmCozOiEe2YCnp8=
-X-Received: by 2002:a17:90a:1c17:b0:2cb:5678:7a1c with SMTP id
- 98e67ed59e1d1-2cf7e1e1e69mr11933257a91.18.1722311131530; Mon, 29 Jul 2024
- 20:45:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marco@palumbi.it>) id 1sYesf-0001Rm-Sr
+ for qemu-trivial@nongnu.org; Tue, 30 Jul 2024 00:54:40 -0400
+Received: from localhost.localdomain ([93.48.145.82])
+ by Aruba Outgoing Smtp  with ESMTPSA
+ id YX0gsBXiIegg3YX0gs6la7; Mon, 29 Jul 2024 22:30:22 +0200
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=aruba.it; s=a1;
+ t=1722285022; bh=Tvbf28qA9MBLLj+jr2qMi+M5DKY5MhWJE5Q1kMhnhYc=;
+ h=From:To:Subject:Date:MIME-Version;
+ b=ZJ2pSEtQCugYyjzzlHfrMS0xwd2n6cb/75UjQIAIpVov0yG6kKotahlpD9mOtyftW
+ gar+M4tKijQnujdO2lT1n0QxDkRwS2kBuy+BT1Rowxtxy/6TSejfvC/JUaj4LqivGR
+ 24+54pAlgu+F+vZSfcKkiV+xol221NpNSuVjVSTJFsDtQaZwpKR03PAGz5TbaAXeq4
+ 093xDUDnKISDBl4og8NPwGOZsEDtql90ogTCjRUz49s64Q2tTtEVMIuN0HMtYwdTFt
+ PHbZuRY4EqL/Mg0tc3EoOaPk6AdMSs5sDesamrY8MfWZA27MqgLtvKOIfCpEaVWnr1
+ rChEjI29CxL6g==
+From: marco@palumbi.it
+To: qemu-arm@nongnu.org
+Cc: Marco Palumbi <Marco.Palumbi@tii.ae>,
+ Peter Maydell <peter.maydell@linaro.org>, qemu-stable@nongnu.org,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] hw/arm/mps2-tz.c: fix RX/TX interrupts order
+Date: Mon, 29 Jul 2024 20:30:16 +0000
+Message-ID: <20240729203020.72937-1-marco@palumbi.it>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20240708092630.2596945-1-zhao1.liu@intel.com>
- <ZpdlQDIjGp4wR8aR@intel.com>
- <CACGkMEsGyKb932T_AJ63sWFObYSJRvghTYywvbDT0BpVV-c9Vw@mail.gmail.com>
- <Zqhhv3lnyMfxLCvV@intel.com>
-In-Reply-To: <Zqhhv3lnyMfxLCvV@intel.com>
-From: Jason Wang <jasowang@redhat.com>
-Date: Tue, 30 Jul 2024 11:45:20 +0800
-Message-ID: <CACGkMEvSYA1bJu6bV55MauYNHhpcyTjP6DjM5ruNf87rY4FHcg@mail.gmail.com>
-Subject: Re: [PATCH] doc/net/l2tpv3: Update boolean fields' description to
- avoid short-form use
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jasowang@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
-X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.125,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+X-CMAE-Envelope: MS4xfEidVWUwyBQEgMX2gMq5c67nHro0koOox+iRxqAMA+56sO8o3ZRl07b8VYgN5KsDeqNcbPhvzQ7OzmdYBhmAgJW9t3Lh9LNRnN64q0ntb0l3tHoJ03Ft
+ AT9l+dFq3DLoDSLCXEQsLd0n3ZI5YvXMxaX5g+sxGUmh3XBuYY1WxVOUyK9aHGpFrDsXxpkhTNTADDxoXeljKwWeeh2J9iFh424EXssDg9FeW1MxDthNG/cZ
+ eO0SFoE8hmwSQDLJ7KYTatQAyREuGK0eNrAzQffMVAgNi2cz72va7vi3rzedO8E8seO2NJKELwTMOnHJaojRyLpuPJYUgrdnEWgSlmcRemk=
+Received-SPF: pass client-ip=62.149.156.101; envelope-from=marco@palumbi.it;
+ helo=smtpcmd10101.aruba.it
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H2=-0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 30 Jul 2024 04:36:52 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,45 +57,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 30 Jul 2024 03:45:38 -0000
+X-List-Received-Date: Tue, 30 Jul 2024 04:54:41 -0000
 
-On Tue, Jul 30, 2024 at 11:29=E2=80=AFAM Zhao Liu <zhao1.liu@intel.com> wro=
-te:
->
-> On Tue, Jul 30, 2024 at 10:54:07AM +0800, Jason Wang wrote:
-> > Date: Tue, 30 Jul 2024 10:54:07 +0800
-> > From: Jason Wang <jasowang@redhat.com>
-> > Subject: Re: [PATCH] doc/net/l2tpv3: Update boolean fields' description=
- to
-> >  avoid short-form use
-> >
-> > On Wed, Jul 17, 2024 at 2:15=E2=80=AFPM Zhao Liu <zhao1.liu@intel.com> =
-wrote:
-> > >
-> > > Hi Jason,
-> > >
-> > > Just a kind ping. Does this update satisfy you?
-> > > Since the original example generates the warning.
-> > >
-> > > Thanks,
-> > > Zhao
-> >
-> > Queued.
-> >
-> > Thanks
-> >
->
-> Hi Jason, thank you! I noticed Michael has already helped me merge this
-> (commit cb8de74ac6df "doc/net/l2tpv3: Update boolean fields' description
-> to avoid short-form use").
+From: Marco Palumbi <Marco.Palumbi@tii.ae>
 
-Great, so I dropped it.
+The order of the RX and TX interrupts are swapped.
+This commit fixes the order as per the following documents:
+ * https://developer.arm.com/documentation/dai0505/latest/
+ * https://developer.arm.com/documentation/dai0521/latest/
+ * https://developer.arm.com/documentation/dai0524/latest/
+ * https://developer.arm.com/documentation/dai0547/latest/
 
-Thanks
+Signed-off-by: Marco Palumbi <Marco.Palumbi@tii.ae>
+---
+ hw/arm/mps2-tz.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
->
-> Best Regards,
-> Zhao
->
+diff --git a/hw/arm/mps2-tz.c b/hw/arm/mps2-tz.c
+index a2d18afd79..aec57c0d68 100644
+--- a/hw/arm/mps2-tz.c
++++ b/hw/arm/mps2-tz.c
+@@ -435,7 +435,7 @@ static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
+                                const char *name, hwaddr size,
+                                const int *irqs, const PPCExtraData *extradata)
+ {
+-    /* The irq[] array is tx, rx, combined, in that order */
++    /* The irq[] array is rx, tx, combined, in that order */
+     MPS2TZMachineClass *mmc = MPS2TZ_MACHINE_GET_CLASS(mms);
+     CMSDKAPBUART *uart = opaque;
+     int i = uart - &mms->uart[0];
+@@ -447,8 +447,8 @@ static MemoryRegion *make_uart(MPS2TZMachineState *mms, void *opaque,
+     qdev_prop_set_uint32(DEVICE(uart), "pclk-frq", mmc->apb_periph_frq);
+     sysbus_realize(SYS_BUS_DEVICE(uart), &error_fatal);
+     s = SYS_BUS_DEVICE(uart);
+-    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, irqs[0]));
+-    sysbus_connect_irq(s, 1, get_sse_irq_in(mms, irqs[1]));
++    sysbus_connect_irq(s, 0, get_sse_irq_in(mms, irqs[1]));
++    sysbus_connect_irq(s, 1, get_sse_irq_in(mms, irqs[0]));
+     sysbus_connect_irq(s, 2, qdev_get_gpio_in(orgate_dev, i * 2));
+     sysbus_connect_irq(s, 3, qdev_get_gpio_in(orgate_dev, i * 2 + 1));
+     sysbus_connect_irq(s, 4, get_sse_irq_in(mms, irqs[2]));
+-- 
+2.43.0
 
 
