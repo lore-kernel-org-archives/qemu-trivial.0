@@ -1,73 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sZSzt-00011U-Bx
-	for mharc-qemu-trivial@gnu.org; Thu, 01 Aug 2024 06:25:25 -0400
+	id 1sZU5L-00055a-83
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Aug 2024 07:35:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sZSzr-00010P-V6
- for qemu-trivial@nongnu.org; Thu, 01 Aug 2024 06:25:23 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sZSzp-0007qX-9G
- for qemu-trivial@nongnu.org; Thu, 01 Aug 2024 06:25:23 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-428243f928fso32542495e9.0
- for <qemu-trivial@nongnu.org>; Thu, 01 Aug 2024 03:25:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722507918; x=1723112718; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=LGj9xUPuFQKz+iRXpwtcPvUOjN63NyRT7V4lFqRZMPE=;
- b=lnDH/I+MBS2wiQxqQYWNhuO82uZqCvsZcMH0gFWTWVXhbhspNWv4pkjhStk+5QzeCf
- 1sHcjSJx2UxCsspYQNfSKKDIAgAdTA3lDLMDqmNoFrlyku43M4xTZXyXEuzCiBPVF3W6
- CUlzqHXci4yBK6Q7uEWn545SyCbN+Q1IpMoIvM2K1ZSy6r7ZYqpwsgAibDkrQzS6cZg0
- Vmf6SJMEDHtuGvyhqa9hpP/VNkep31KQbcw2Af+1/22M0SOOKhtt28wWhTDWkb8JBz0C
- EKAvhYrvyfDkskWoFhXztXq7Vu9H1B+I47jCuL167Nan7qleLn1KxPXpa+Nf9RA36dTm
- bytA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722507918; x=1723112718;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=LGj9xUPuFQKz+iRXpwtcPvUOjN63NyRT7V4lFqRZMPE=;
- b=chqOdOolsUpR/fdA44RUGFTaCL4abRiTqAO+6aPjgm+dv5eTp1wYt3n+jqSwjqk5zj
- uOjCEUUTjxK6tMTuNIJD0ZIPzwLchuxyhTnJ6QFJwsn6q4wQX8lNVi48I7TQVB01AA95
- R+bSgQHd0xsE158zAckL/9uJEkAvNXCJAmk7JKC7HpRxB2zsNBWvgVpgtUTK57SnQcuR
- TtJjFMEwWp+ZdP4PunR1XSkiHjbFRb2h1uh/DsxGySouccL90VkEsTtfJFL23jKIaPnS
- RkSOFFW4ZSo60GDxeKN7AfWfnC+C6M96rmSetFBFNx0bW2JyjGawena8kJMrcBQ73Vb2
- F9GA==
-X-Gm-Message-State: AOJu0Yw+tfDuXsHbeuYd95YrcrBmfnR7va5dQxnhz8OW60ggPsfT0uhL
- M3DpkGZ03GWZhzusrNMOxyNVUj13FSpWwn0uFrYUkA9fQPm9fH50i7gbj9md1pzplbVS+glSb4c
- 9
-X-Google-Smtp-Source: AGHT+IHf748LX2HEdOtRqhDU6nTzs5Npe0Q4NkH3ErpYw0aDqYLV2uKT96BX+DBA2Z5/4L8rb9GuTQ==
-X-Received: by 2002:a05:600c:46c9:b0:426:593c:9359 with SMTP id
- 5b1f17b1804b1-428b8a2a666mr20757835e9.32.1722507917829; 
- Thu, 01 Aug 2024 03:25:17 -0700 (PDT)
-Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4282bb223f6sm52381275e9.45.2024.08.01.03.25.17
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 01 Aug 2024 03:25:17 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Markus Armbruster <armbru@redhat.com>
-Subject: [PATCH] include: Fix typo in name of MAKE_IDENTFIER macro
-Date: Thu,  1 Aug 2024 11:25:16 +0100
-Message-Id: <20240801102516.3843780-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sZU5J-0004y6-9w
+ for qemu-trivial@nongnu.org; Thu, 01 Aug 2024 07:35:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sZU5H-0005o0-6j
+ for qemu-trivial@nongnu.org; Thu, 01 Aug 2024 07:35:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1722512101;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=P2prQn4AvlqAirrxQEn7Tka3iAQtocsNfPVTXFt2kT4=;
+ b=Aipw4h7Rk+qbxZ6aFKZcKpe4xVb8WwhdwxJrA9WeUVtkiE1qucOTPO/WdS39/iKAmZQBxN
+ KWpp9d8PnrpsWseYgTfzLfI96qKanZHR7ujKjg5fT0qZnfgmFIeGTsABxUSNgxjVPPN1pt
+ RiCJkMQyz1Up15GQXQ19tI8UF54bXnI=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-590-zrCYipwaOo-uNmkE0krr6A-1; Thu,
+ 01 Aug 2024 07:35:00 -0400
+X-MC-Unique: zrCYipwaOo-uNmkE0krr6A-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4A5491955D47; Thu,  1 Aug 2024 11:34:59 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.65])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AA28519560AE; Thu,  1 Aug 2024 11:34:58 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 7796621E668A; Thu,  1 Aug 2024 13:34:56 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org
+Subject: Re: [PATCH] include: Fix typo in name of MAKE_IDENTFIER macro
+In-Reply-To: <20240801102516.3843780-1-peter.maydell@linaro.org> (Peter
+ Maydell's message of "Thu, 1 Aug 2024 11:25:16 +0100")
+References: <20240801102516.3843780-1-peter.maydell@linaro.org>
+Date: Thu, 01 Aug 2024 13:34:56 +0200
+Message-ID: <87zfpwcw7z.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.131,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,96 +71,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 01 Aug 2024 10:25:24 -0000
+X-List-Received-Date: Thu, 01 Aug 2024 11:35:05 -0000
 
-In commit bb71846325e23 we added some macro magic to avoid
-variable-shadowing when using some of our more complicated
-macros. One of the internal components of this is a macro
-named MAKE_IDENTFIER. Fix the typo in its name: it should
-be MAKE_IDENTIFIER.
+Peter Maydell <peter.maydell@linaro.org> writes:
 
-Commit created with
- sed -i -e 's/MAKE_IDENTFIER/MAKE_IDENTIFIER/g' include/qemu/*.h include/qapi/qmp/qobject.h
+> In commit bb71846325e23 we added some macro magic to avoid
+> variable-shadowing when using some of our more complicated
+> macros. One of the internal components of this is a macro
+> named MAKE_IDENTFIER. Fix the typo in its name: it should
+> be MAKE_IDENTIFIER.
+>
+> Commit created with
+>  sed -i -e 's/MAKE_IDENTFIER/MAKE_IDENTIFIER/g' include/qemu/*.h include/qapi/qmp/qobject.h
+>
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- include/qapi/qmp/qobject.h | 2 +-
- include/qemu/atomic.h      | 2 +-
- include/qemu/compiler.h    | 2 +-
- include/qemu/osdep.h       | 6 +++---
- 4 files changed, 6 insertions(+), 6 deletions(-)
+Can't believe I messed this up, but git proves I did %-}
 
-diff --git a/include/qapi/qmp/qobject.h b/include/qapi/qmp/qobject.h
-index 89b97d88bca..256d782688c 100644
---- a/include/qapi/qmp/qobject.h
-+++ b/include/qapi/qmp/qobject.h
-@@ -54,7 +54,7 @@ struct QObject {
-     typeof(obj) _obj = (obj);                                   \
-     _obj ? container_of(&_obj->base, QObject, base) : NULL;     \
- })
--#define QOBJECT(obj) QOBJECT_INTERNAL((obj), MAKE_IDENTFIER(_obj))
-+#define QOBJECT(obj) QOBJECT_INTERNAL((obj), MAKE_IDENTIFIER(_obj))
- 
- /* Required for qobject_to() */
- #define QTYPE_CAST_TO_QNull     QTYPE_QNULL
-diff --git a/include/qemu/atomic.h b/include/qemu/atomic.h
-index dc4118ddd9e..7a3f2e6576b 100644
---- a/include/qemu/atomic.h
-+++ b/include/qemu/atomic.h
-@@ -128,7 +128,7 @@
-     _val;                                               \
-     })
- #define qatomic_rcu_read(ptr) \
--    qatomic_rcu_read_internal((ptr), MAKE_IDENTFIER(_val))
-+    qatomic_rcu_read_internal((ptr), MAKE_IDENTIFIER(_val))
- 
- #define qatomic_rcu_set(ptr, i) do {                   \
-     qemu_build_assert(sizeof(*ptr) <= ATOMIC_REG_SIZE); \
-diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
-index 554c5ce7df7..c06954ccb41 100644
---- a/include/qemu/compiler.h
-+++ b/include/qemu/compiler.h
-@@ -38,7 +38,7 @@
- #endif
- 
- /* Expands into an identifier stemN, where N is another number each time */
--#define MAKE_IDENTFIER(stem) glue(stem, __COUNTER__)
-+#define MAKE_IDENTIFIER(stem) glue(stem, __COUNTER__)
- 
- #ifndef likely
- #define likely(x)   __builtin_expect(!!(x), 1)
-diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
-index 720ed21a7e4..38a127a699e 100644
---- a/include/qemu/osdep.h
-+++ b/include/qemu/osdep.h
-@@ -399,7 +399,7 @@ void QEMU_ERROR("code path is reachable")
-     })
- #undef MIN
- #define MIN(a, b) \
--    MIN_INTERNAL((a), (b), MAKE_IDENTFIER(_a), MAKE_IDENTFIER(_b))
-+    MIN_INTERNAL((a), (b), MAKE_IDENTIFIER(_a), MAKE_IDENTIFIER(_b))
- 
- #define MAX_INTERNAL(a, b, _a, _b)                      \
-     ({                                                  \
-@@ -408,7 +408,7 @@ void QEMU_ERROR("code path is reachable")
-     })
- #undef MAX
- #define MAX(a, b) \
--    MAX_INTERNAL((a), (b), MAKE_IDENTFIER(_a), MAKE_IDENTFIER(_b))
-+    MAX_INTERNAL((a), (b), MAKE_IDENTIFIER(_a), MAKE_IDENTIFIER(_b))
- 
- #ifdef __COVERITY__
- # define MIN_CONST(a, b) ((a) < (b) ? (a) : (b))
-@@ -440,7 +440,7 @@ void QEMU_ERROR("code path is reachable")
-         _a == 0 ? _b : (_b == 0 || _b > _a) ? _a : _b;  \
-     })
- #define MIN_NON_ZERO(a, b) \
--    MIN_NON_ZERO_INTERNAL((a), (b), MAKE_IDENTFIER(_a), MAKE_IDENTFIER(_b))
-+    MIN_NON_ZERO_INTERNAL((a), (b), MAKE_IDENTIFIER(_a), MAKE_IDENTIFIER(_b))
- 
- /*
-  * Round number down to multiple. Safe when m is not a power of 2 (see
--- 
-2.34.1
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+
+Thanks!
 
 
