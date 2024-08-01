@@ -1,71 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sZ7fK-0003tv-T4
-	for mharc-qemu-trivial@gnu.org; Wed, 31 Jul 2024 07:38:47 -0400
+	id 1sZSzt-00011U-Bx
+	for mharc-qemu-trivial@gnu.org; Thu, 01 Aug 2024 06:25:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sZ7fB-0003pu-AO
- for qemu-trivial@nongnu.org; Wed, 31 Jul 2024 07:38:37 -0400
-Received: from mail-ed1-x52b.google.com ([2a00:1450:4864:20::52b])
+ id 1sZSzr-00010P-V6
+ for qemu-trivial@nongnu.org; Thu, 01 Aug 2024 06:25:23 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1sZ7f8-0002Go-8f
- for qemu-trivial@nongnu.org; Wed, 31 Jul 2024 07:38:37 -0400
-Received: by mail-ed1-x52b.google.com with SMTP id
- 4fb4d7f45d1cf-5a2ffc34722so1596858a12.0
- for <qemu-trivial@nongnu.org>; Wed, 31 Jul 2024 04:38:31 -0700 (PDT)
+ id 1sZSzp-0007qX-9G
+ for qemu-trivial@nongnu.org; Thu, 01 Aug 2024 06:25:23 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-428243f928fso32542495e9.0
+ for <qemu-trivial@nongnu.org>; Thu, 01 Aug 2024 03:25:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722425911; x=1723030711; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=oK9aom/3jHdVS7ezZ8ZFE4bSdGSaDuLYvsraI038mHc=;
- b=K4IHAwSNVllve9YZvr85I7Y8n7vlzs25uV7jG4a6a3y1PyeAASOdhfZXPnd+DcLCfS
- xiGXh71fRlfGIYJIrzUs5tZtTwNtBc37fDxtU9V6a9W0Q0ELaIjWo82I7YJhRvY9pHyR
- jeOLKMJLSOQ0AwMsweEnZhfHseuE3S8B7IlfFRvMF1ipFKJHJsfjs3SG/2dGeAEXKOJE
- ZtmCrYQ72xmswKh0HlBg5BKPhq67VlNFGGvIuY7Sbx7veC9O6AFIlSxTKSVrnEbT8aPo
- cg33MdzRNrKrKYbg9rolQCpywK5yo3gHDxB1TdsN7DiMQGRqSL+NKQ2p8agMhrneMHOB
- yuCQ==
+ d=linaro.org; s=google; t=1722507918; x=1723112718; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=LGj9xUPuFQKz+iRXpwtcPvUOjN63NyRT7V4lFqRZMPE=;
+ b=lnDH/I+MBS2wiQxqQYWNhuO82uZqCvsZcMH0gFWTWVXhbhspNWv4pkjhStk+5QzeCf
+ 1sHcjSJx2UxCsspYQNfSKKDIAgAdTA3lDLMDqmNoFrlyku43M4xTZXyXEuzCiBPVF3W6
+ CUlzqHXci4yBK6Q7uEWn545SyCbN+Q1IpMoIvM2K1ZSy6r7ZYqpwsgAibDkrQzS6cZg0
+ Vmf6SJMEDHtuGvyhqa9hpP/VNkep31KQbcw2Af+1/22M0SOOKhtt28wWhTDWkb8JBz0C
+ EKAvhYrvyfDkskWoFhXztXq7Vu9H1B+I47jCuL167Nan7qleLn1KxPXpa+Nf9RA36dTm
+ bytA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722425911; x=1723030711;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1722507918; x=1723112718;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=oK9aom/3jHdVS7ezZ8ZFE4bSdGSaDuLYvsraI038mHc=;
- b=Bn59I4pFj1yzZbIB4VddgPtlj0wmim7JdStRb+9LLKb4FMQDE2x8g6c/mFQnm8JXri
- X8JonIdsC65ObNxhw3GGRXzGpQlD8gMpopzAIqzATb/jMpCO6fpCVcESfPExUHfqYivh
- 8S/uqOrRN7DJLR3dnAjGC+7l15yPHVXzcuJoHmbyGKw3nzQMvqxSOFWdoNw/gmyTX1px
- sBriLVIwmOx0WU55/7UGUwJVp4l4rpwnFqsFWeDd+vGwgtI7+iMK8PePZQf/gkwzuBoN
- 8s/r4HKdFoH354A6vOpT4WmfCpUqnTy8riGR1Pj8xCkLkaBUkT7otwbpHrEgxhJsOV86
- iS/A==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXpqlnbbhjCXs6ozWDWnV5geQFmF4HzIzoL2+21Jqh4IGkuBtecYNh8t08r4wOQfb6hFW+YbZ1x1qYzZenRiUkPMv1MfK9jhw==
-X-Gm-Message-State: AOJu0YydQuEEcxWnihcuJnLM/cuI30cUkgdnvRaRFCGBiehdi0VrIu4B
- iBZYmMIegQLGTlkKdJEjmE7YG0VA8E6owzZbIhzSf/vPYUGGAHeVnzQc1BUx5lhUJCb406Y8NdC
- /J1H6Fvzu43dlxARBIx5sqwLyKRBek4mLdBTG/g==
-X-Google-Smtp-Source: AGHT+IH1ipf9xIs7/esfyJh+sWaz1jpk9H3soDgxyJGfz2eZeDdI08ZL6+4al2uk0AZ7i6r5UjPR130ABlr73RikdvM=
-X-Received: by 2002:a50:d657:0:b0:58c:10fd:5082 with SMTP id
- 4fb4d7f45d1cf-5b46bf6f88emr5013371a12.10.1722425910581; Wed, 31 Jul 2024
- 04:38:30 -0700 (PDT)
-MIME-Version: 1.0
-References: <20240730073123.72992-1-marco@palumbi.it>
-In-Reply-To: <20240730073123.72992-1-marco@palumbi.it>
+ bh=LGj9xUPuFQKz+iRXpwtcPvUOjN63NyRT7V4lFqRZMPE=;
+ b=chqOdOolsUpR/fdA44RUGFTaCL4abRiTqAO+6aPjgm+dv5eTp1wYt3n+jqSwjqk5zj
+ uOjCEUUTjxK6tMTuNIJD0ZIPzwLchuxyhTnJ6QFJwsn6q4wQX8lNVi48I7TQVB01AA95
+ R+bSgQHd0xsE158zAckL/9uJEkAvNXCJAmk7JKC7HpRxB2zsNBWvgVpgtUTK57SnQcuR
+ TtJjFMEwWp+ZdP4PunR1XSkiHjbFRb2h1uh/DsxGySouccL90VkEsTtfJFL23jKIaPnS
+ RkSOFFW4ZSo60GDxeKN7AfWfnC+C6M96rmSetFBFNx0bW2JyjGawena8kJMrcBQ73Vb2
+ F9GA==
+X-Gm-Message-State: AOJu0Yw+tfDuXsHbeuYd95YrcrBmfnR7va5dQxnhz8OW60ggPsfT0uhL
+ M3DpkGZ03GWZhzusrNMOxyNVUj13FSpWwn0uFrYUkA9fQPm9fH50i7gbj9md1pzplbVS+glSb4c
+ 9
+X-Google-Smtp-Source: AGHT+IHf748LX2HEdOtRqhDU6nTzs5Npe0Q4NkH3ErpYw0aDqYLV2uKT96BX+DBA2Z5/4L8rb9GuTQ==
+X-Received: by 2002:a05:600c:46c9:b0:426:593c:9359 with SMTP id
+ 5b1f17b1804b1-428b8a2a666mr20757835e9.32.1722507917829; 
+ Thu, 01 Aug 2024 03:25:17 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4282bb223f6sm52381275e9.45.2024.08.01.03.25.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 01 Aug 2024 03:25:17 -0700 (PDT)
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Wed, 31 Jul 2024 12:38:18 +0100
-Message-ID: <CAFEAcA_7QDUuQ-zs53Xp2zcO83rDzj0Smga49GZ8J9gg26VBdw@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm/mps2-tz.c: fix RX/TX interrupts order
-To: marco@palumbi.it
-Cc: qemu-devel@nongnu.org, Marco Palumbi <Marco.Palumbi@tii.ae>,
- qemu-arm@nongnu.org, qemu-stable@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52b;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52b.google.com
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Markus Armbruster <armbru@redhat.com>
+Subject: [PATCH] include: Fix typo in name of MAKE_IDENTFIER macro
+Date: Thu,  1 Aug 2024 11:25:16 +0100
+Message-Id: <20240801102516.3843780-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.34.1
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x331.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,30 +80,96 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 31 Jul 2024 11:38:37 -0000
+X-List-Received-Date: Thu, 01 Aug 2024 10:25:24 -0000
 
-On Tue, 30 Jul 2024 at 08:32, <marco@palumbi.it> wrote:
->
-> From: Marco Palumbi <Marco.Palumbi@tii.ae>
->
-> The order of the RX and TX interrupts are swapped.
-> This commit fixes the order as per the following documents:
->  * https://developer.arm.com/documentation/dai0505/latest/
->  * https://developer.arm.com/documentation/dai0521/latest/
->  * https://developer.arm.com/documentation/dai0524/latest/
->  * https://developer.arm.com/documentation/dai0547/latest/
->
-> Signed-off-by: Marco Palumbi <Marco.Palumbi@tii.ae>
+In commit bb71846325e23 we added some macro magic to avoid
+variable-shadowing when using some of our more complicated
+macros. One of the internal components of this is a macro
+named MAKE_IDENTFIER. Fix the typo in its name: it should
+be MAKE_IDENTIFIER.
 
-Thanks for this patch, I've applied it to my target-arm.next
-queue.
+Commit created with
+ sed -i -e 's/MAKE_IDENTFIER/MAKE_IDENTIFIER/g' include/qemu/*.h include/qapi/qmp/qobject.h
 
-I checked the other boards that use the cmsdk UART, and they
-all get the tx/rx interrupt order right, so this is the
-only place that needed fixing. I suspect that the guest
-images I tested didn't care about the separate tx/rx
-interrupts and only used the combined irq.
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+---
+ include/qapi/qmp/qobject.h | 2 +-
+ include/qemu/atomic.h      | 2 +-
+ include/qemu/compiler.h    | 2 +-
+ include/qemu/osdep.h       | 6 +++---
+ 4 files changed, 6 insertions(+), 6 deletions(-)
 
-thanks
--- PMM
+diff --git a/include/qapi/qmp/qobject.h b/include/qapi/qmp/qobject.h
+index 89b97d88bca..256d782688c 100644
+--- a/include/qapi/qmp/qobject.h
++++ b/include/qapi/qmp/qobject.h
+@@ -54,7 +54,7 @@ struct QObject {
+     typeof(obj) _obj = (obj);                                   \
+     _obj ? container_of(&_obj->base, QObject, base) : NULL;     \
+ })
+-#define QOBJECT(obj) QOBJECT_INTERNAL((obj), MAKE_IDENTFIER(_obj))
++#define QOBJECT(obj) QOBJECT_INTERNAL((obj), MAKE_IDENTIFIER(_obj))
+ 
+ /* Required for qobject_to() */
+ #define QTYPE_CAST_TO_QNull     QTYPE_QNULL
+diff --git a/include/qemu/atomic.h b/include/qemu/atomic.h
+index dc4118ddd9e..7a3f2e6576b 100644
+--- a/include/qemu/atomic.h
++++ b/include/qemu/atomic.h
+@@ -128,7 +128,7 @@
+     _val;                                               \
+     })
+ #define qatomic_rcu_read(ptr) \
+-    qatomic_rcu_read_internal((ptr), MAKE_IDENTFIER(_val))
++    qatomic_rcu_read_internal((ptr), MAKE_IDENTIFIER(_val))
+ 
+ #define qatomic_rcu_set(ptr, i) do {                   \
+     qemu_build_assert(sizeof(*ptr) <= ATOMIC_REG_SIZE); \
+diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
+index 554c5ce7df7..c06954ccb41 100644
+--- a/include/qemu/compiler.h
++++ b/include/qemu/compiler.h
+@@ -38,7 +38,7 @@
+ #endif
+ 
+ /* Expands into an identifier stemN, where N is another number each time */
+-#define MAKE_IDENTFIER(stem) glue(stem, __COUNTER__)
++#define MAKE_IDENTIFIER(stem) glue(stem, __COUNTER__)
+ 
+ #ifndef likely
+ #define likely(x)   __builtin_expect(!!(x), 1)
+diff --git a/include/qemu/osdep.h b/include/qemu/osdep.h
+index 720ed21a7e4..38a127a699e 100644
+--- a/include/qemu/osdep.h
++++ b/include/qemu/osdep.h
+@@ -399,7 +399,7 @@ void QEMU_ERROR("code path is reachable")
+     })
+ #undef MIN
+ #define MIN(a, b) \
+-    MIN_INTERNAL((a), (b), MAKE_IDENTFIER(_a), MAKE_IDENTFIER(_b))
++    MIN_INTERNAL((a), (b), MAKE_IDENTIFIER(_a), MAKE_IDENTIFIER(_b))
+ 
+ #define MAX_INTERNAL(a, b, _a, _b)                      \
+     ({                                                  \
+@@ -408,7 +408,7 @@ void QEMU_ERROR("code path is reachable")
+     })
+ #undef MAX
+ #define MAX(a, b) \
+-    MAX_INTERNAL((a), (b), MAKE_IDENTFIER(_a), MAKE_IDENTFIER(_b))
++    MAX_INTERNAL((a), (b), MAKE_IDENTIFIER(_a), MAKE_IDENTIFIER(_b))
+ 
+ #ifdef __COVERITY__
+ # define MIN_CONST(a, b) ((a) < (b) ? (a) : (b))
+@@ -440,7 +440,7 @@ void QEMU_ERROR("code path is reachable")
+         _a == 0 ? _b : (_b == 0 || _b > _a) ? _a : _b;  \
+     })
+ #define MIN_NON_ZERO(a, b) \
+-    MIN_NON_ZERO_INTERNAL((a), (b), MAKE_IDENTFIER(_a), MAKE_IDENTFIER(_b))
++    MIN_NON_ZERO_INTERNAL((a), (b), MAKE_IDENTIFIER(_a), MAKE_IDENTIFIER(_b))
+ 
+ /*
+  * Round number down to multiple. Safe when m is not a power of 2 (see
+-- 
+2.34.1
+
 
