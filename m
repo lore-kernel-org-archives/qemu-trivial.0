@@ -1,76 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1satD1-0005EF-0d
-	for mharc-qemu-trivial@gnu.org; Mon, 05 Aug 2024 04:36:51 -0400
+	id 1sbEzX-0004PP-R0
+	for mharc-qemu-trivial@gnu.org; Tue, 06 Aug 2024 03:52:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1satCv-0005C7-Ah
- for qemu-trivial@nongnu.org; Mon, 05 Aug 2024 04:36:45 -0400
-Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sbEzR-00042P-Rh
+ for qemu-trivial@nongnu.org; Tue, 06 Aug 2024 03:52:18 -0400
+Received: from mail-ej1-x62d.google.com ([2a00:1450:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1satCs-0003kh-Oz
- for qemu-trivial@nongnu.org; Mon, 05 Aug 2024 04:36:44 -0400
-Received: by mail-wm1-x32b.google.com with SMTP id
- 5b1f17b1804b1-4266dc7591fso65536965e9.0
- for <qemu-trivial@nongnu.org>; Mon, 05 Aug 2024 01:36:41 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sbEzP-0006oX-BK
+ for qemu-trivial@nongnu.org; Tue, 06 Aug 2024 03:52:17 -0400
+Received: by mail-ej1-x62d.google.com with SMTP id
+ a640c23a62f3a-a7d89bb07e7so28304966b.3
+ for <qemu-trivial@nongnu.org>; Tue, 06 Aug 2024 00:52:14 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722847000; x=1723451800; darn=nongnu.org;
+ d=linaro.org; s=google; t=1722930733; x=1723535533; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=pKBiIltAVoXZZg0LL7Muk/bomt5G37qqc5x4duMKkRI=;
- b=P7iOzvnAnt444Ti/PtvoJjSJiXvPYFcyJFGDNQA/Zx7ox0Q5FPO9UlrHpHo8OwgN/t
- mboJlo+tS3rzCuhg/gpys6IL4/4SmWSrwQI6rCXYA1BrnYUuNtnNixO54ABbvxPEeHez
- fkMod+avM0mycCs3MIMwcE0eQpv1EgO2N/nM0OywLqJotA7ljlk8WR1rqGTQciTEvCZI
- 2uV+VH3NfKNV29zQNBWP7RRTROzMWUpDmNyXBd/pKY2pSrLYYHCjlKLt/og40Nt1xIvC
- LWpDNot7WYakWuOoeRe4Gf6tnQ3CLX0HtB/rzqWs/7Q2DlJzFc52QGy+07wwIZraoNXj
- PW8A==
+ bh=7PdkskWn9cxxIFtpEDmbr02VE7ggSAA3JWm/2RuISdo=;
+ b=S6QayyoSIRDbVYgzCQuKAwdD068iyMleP67Xb3QowGINRJmoOexkk5eABwUCuVbbMT
+ 7lezJshZPqnCB6s50QiglxShQ7B3chFtdq5YQdUOGEFOZ/u28I37VFcnR+rr5yf/9OZe
+ o61rEHr6kxz9OuhztbIdhaXsD55W/9s3pkgVQQjKHJGgUWGUnox+gOL8J8qOxQqy9bRH
+ JF6N3rxY4+nTDjqUJPlEcWMBEimKihcM+obulEe0oFUzqsVjiEnN9/O9tyWGA3hIvUx4
+ XyyDPb2Ji+rGs92DTMbfOPLy7QgKBq5CSwY+O1Uwsv9txTup9MaE8QXsRt7J1ZcTLHzM
+ UySA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722847000; x=1723451800;
+ d=1e100.net; s=20230601; t=1722930733; x=1723535533;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=pKBiIltAVoXZZg0LL7Muk/bomt5G37qqc5x4duMKkRI=;
- b=qF6geyfJl0zL904zPeRT3+limQsoGc4gGYAqNPTMLuQKO8WeJpLEx0Z4uY/rS2KhNh
- atAwlADe0iEICRbnWSPe3tznaL+f7jGdtnUSIm0Fp+eJTNM0qjceSQWOWNlVEEmg5sEF
- itfcFGUPY4i8T5CeEZd+HMsXkv0bqYBZcV7kfQebcdJNmjN3O3/zvlhVK4VUAr7UGR5W
- Mbt480VUAjPs6ASgNwXV80H8AahkkAqIG4g+2oFbGosklzOb1zBJHVDl2ismuS4xKKzh
- wmdXXXAJNbCxuIjN8WJG8+ZOZtMBIJOuIFiAQSoXWilzuvpMJDqNtJKAGPIDEE1MMOlR
- NGFQ==
-X-Gm-Message-State: AOJu0Yw81zreo4qhVLXBdBLNXZ7aDp8MLbLXe53qXJhQTh9faniCOL+X
- ht4PxzMcZEJKD+xIka81VxPUI5Eg6en4O0KPCGKUPdl8PxqCU8rkhYDWjK05JdA=
-X-Google-Smtp-Source: AGHT+IFoJAeNS1BHCpnYK6EybdfIAlD8BhWtpEEkU+ivX0W0RcXn1imU8aVkIR/SUmXWrWxyQkbghg==
-X-Received: by 2002:a05:600c:1552:b0:426:6822:861 with SMTP id
- 5b1f17b1804b1-428e6b925c7mr71984905e9.36.1722847000027; 
- Mon, 05 Aug 2024 01:36:40 -0700 (PDT)
-Received: from [192.168.1.102] (cor91-h02-176-184-30-132.dsl.sta.abo.bbox.fr.
- [176.184.30.132]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-428e6e9cd4esm127446015e9.44.2024.08.05.01.36.37
+ bh=7PdkskWn9cxxIFtpEDmbr02VE7ggSAA3JWm/2RuISdo=;
+ b=iTByi76G4cQ7LyK05n/y68lU0/aMT8wxYKkAXKi9Kz0TDFYIcBPNFXcTTRCnSxsaUK
+ 4Y03KIPPyDIt4sQWW4tjNUBVFOOxO/afo+N2y/Gz/rXYvezv5sPLR6yuT0JGcSvpBhmf
+ P1OSLf4jf52kSO6YRyG3WTwpPjlPFgwwEVNnEzbTLn4FsvSTdFVWRSFiq4h4V00xHfXM
+ AILDTze6vYoEe9d/BT6ao+HvQVp2zdrs6FaYh6dwBdkqHATsDaKxp2N69fyj7QfrkKqD
+ O2QgKfUGFa74b6RpafgUYBjhHit77W1KgpHzpsCnI3qHxojJcs9L1DVxShOPe2JeEIBX
+ 1LrQ==
+X-Gm-Message-State: AOJu0YyomHSTSQJuQz51q/xOx5HNTRw0Djx/kWuqe2tzG1uwfd2C8TXY
+ u5wT2L/7ao0EZeeLH5ttctqOxcwG8XMBtEbMUwkI/qIFFNKhVGWOmQLgnUwNSCQ=
+X-Google-Smtp-Source: AGHT+IEHcfyuBQP0wfWSqzlhqxcg/6zNcVAUv7JBAGFyB+Fdui90tiL4Gt2QdB6myckm5ofK9Tx7tw==
+X-Received: by 2002:a17:907:eab:b0:a7a:b0a0:ebdb with SMTP id
+ a640c23a62f3a-a7dc4e282f4mr1146223166b.22.1722930733130; 
+ Tue, 06 Aug 2024 00:52:13 -0700 (PDT)
+Received: from [192.168.69.100] (cor91-h02-176-184-30-206.dsl.sta.abo.bbox.fr.
+ [176.184.30.206]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a7dc9bc3be2sm528793266b.38.2024.08.06.00.52.11
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 Aug 2024 01:36:39 -0700 (PDT)
-Message-ID: <f4f5b4a0-536e-4eb4-aa50-8c694d9ed9e7@linaro.org>
-Date: Mon, 5 Aug 2024 10:36:36 +0200
+ Tue, 06 Aug 2024 00:52:12 -0700 (PDT)
+Message-ID: <87c18c11-436f-4044-87bf-748fe6330032@linaro.org>
+Date: Tue, 6 Aug 2024 09:52:10 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ppc: fix incorrect spelling of PowerMac
-To: Tejas Vipin <tejasvipin76@gmail.com>, mark.cave-ayland@ilande.co.uk
-Cc: qemu-trivial@nongnu.org, qemu-ppc@nongnu.org, qemu-devel@nongnu.org,
- BALATON Zoltan <balaton@eik.bme.hu>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-References: <20240805070150.369824-1-tejasvipin76@gmail.com>
+Subject: Re: [PATCH 2/2] docs/specs/pci-ids: Fix markup
+To: George Matsumura <gorg@gorgnet.net>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, mst@redhat.com, marcel.apfelbaum@gmail.com
+References: <20240805031012.16547-2-gorg@gorgnet.net>
+ <20240805031012.16547-4-gorg@gorgnet.net>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240805070150.369824-1-tejasvipin76@gmail.com>
+In-Reply-To: <20240805031012.16547-4-gorg@gorgnet.net>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62d;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,63 +82,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 Aug 2024 08:36:45 -0000
+X-List-Received-Date: Tue, 06 Aug 2024 07:52:19 -0000
 
-Hi Tejas,
-
-On 5/8/24 09:01, Tejas Vipin wrote:
-> PowerMac is spelled as PowerMAC (Media Access Control) in some places.
-> This is misleading.
+On 5/8/24 05:10, George Matsumura via wrote:
+> This fixes the markup of the PCI and PCIe Expander Bridge entries to be
+> consistent with the rest of the file.
 > 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2297
-> Signed-off-by: Tejas Vipin <tejasvipin76@gmail.com>
+> Signed-off-by: George Matsumura <gorg@gorgnet.net>
 > ---
->   docs/system/ppc/powermac.rst | 4 ++--
->   hw/ppc/mac_newworld.c        | 2 +-
->   hw/ppc/mac_oldworld.c        | 2 +-
->   3 files changed, 4 insertions(+), 4 deletions(-)
-> 
-> diff --git a/docs/system/ppc/powermac.rst b/docs/system/ppc/powermac.rst
-> index 04334ba210..3eac81c491 100644
-> --- a/docs/system/ppc/powermac.rst
-> +++ b/docs/system/ppc/powermac.rst
-> @@ -4,8 +4,8 @@ PowerMac family boards (``g3beige``, ``mac99``)
->   Use the executable ``qemu-system-ppc`` to simulate a complete PowerMac
->   PowerPC system.
->   
-> -- ``g3beige``              Heathrow based PowerMAC
-> -- ``mac99``                Mac99 based PowerMAC
-> +- ``g3beige``              Heathrow based PowerMac
-> +- ``mac99``                Mac99 based PowerMac
->   
->   Supported devices
->   -----------------
-> diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
-> index ff9e490c4e..9d249a506c 100644
-> --- a/hw/ppc/mac_newworld.c
-> +++ b/hw/ppc/mac_newworld.c
-> @@ -571,7 +571,7 @@ static void core99_machine_class_init(ObjectClass *oc, void *data)
->       MachineClass *mc = MACHINE_CLASS(oc);
->       FWPathProviderClass *fwc = FW_PATH_PROVIDER_CLASS(oc);
->   
-> -    mc->desc = "Mac99 based PowerMAC";
-> +    mc->desc = "Mac99 based PowerMac";
->       mc->init = ppc_core99_init;
->       mc->block_default_type = IF_IDE;
->       /* SMP is not supported currently */
-> diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
-> index 1981d3d8f6..eef3261002 100644
-> --- a/hw/ppc/mac_oldworld.c
-> +++ b/hw/ppc/mac_oldworld.c
-> @@ -411,7 +411,7 @@ static void heathrow_class_init(ObjectClass *oc, void *data)
->       MachineClass *mc = MACHINE_CLASS(oc);
->       FWPathProviderClass *fwc = FW_PATH_PROVIDER_CLASS(oc);
->   
-> -    mc->desc = "Heathrow based PowerMAC";
-> +    mc->desc = "Heathrow based PowerMac";
+>   docs/specs/pci-ids.rst | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 
-It seems it is even spelt with a space as "Power Mac".
-Anyhow this is still better than MAC, so:
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
 
 
