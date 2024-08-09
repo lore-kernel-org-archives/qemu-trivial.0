@@ -1,74 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sbFUM-0006LE-L7
-	for mharc-qemu-trivial@gnu.org; Tue, 06 Aug 2024 04:24:16 -0400
+	id 1scHdE-0002W0-Ff
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Aug 2024 00:53:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sbFUL-0006Jh-AU
- for qemu-trivial@nongnu.org; Tue, 06 Aug 2024 04:24:13 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sbFUJ-0002Jr-RZ
- for qemu-trivial@nongnu.org; Tue, 06 Aug 2024 04:24:13 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-428243f928fso3340725e9.0
- for <qemu-trivial@nongnu.org>; Tue, 06 Aug 2024 01:24:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1722932649; x=1723537449; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=i1NqOcFNHbhT1NGjqswedMfmrLNO9L7Y0/lHhZXRg3E=;
- b=Dau/NImbcQVs1Ik9ZJwBwJ5XOVQlqgBr09AW20HUy82jVLCZZEI69HmWvB0npuMrHY
- IC5djOmM1T50Vyhj2su/jcJ12rrjcydge1pDtpXi7HJJi2UORMxKfim5+BHetAiOLiqA
- Y+HHRjyzw8aDMpXfptttrFLt5bMzDBDlwinvpfKf3kOTtZvsLgnoV8Mhr6jgFOOD19C8
- Uwhq66eMHn6ihF4An5vWfxKiX+jf5AR4ktq5+AlFf0TVnehSh/3nnNJsZ1GaWXgWsGoz
- vg4qPaooHM9t05H88ipJsGUFEjmaA7mCN9okznv/XVoTxFUiD7MrqBq0v2poVQVNA37+
- 438Q==
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1scHdD-0002RR-7i
+ for qemu-trivial@nongnu.org; Fri, 09 Aug 2024 00:53:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1scHdB-0008Fn-SM
+ for qemu-trivial@nongnu.org; Fri, 09 Aug 2024 00:53:38 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1723179216;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=s9N1cyy+ecX5HWtxGg4Tr3VQQ2fgXCoD73nkgydtGB4=;
+ b=Ry2+CEADDwe0olAVbZ/4p7WP7xJwAGqk/gbZ60w9LMryVbORG66MjGap6xe6i4eJIpPYtt
+ qvJc4DepGSRk+j+PfqMCflrk8F92wmk+oUiYLi45Y6ocpQYUF8LlQGv0RyMk7qJD9A40ld
+ Kes6Yh/aobL8Z7PE8wpShaMO5AU6Bmc=
+Received: from mail-pl1-f199.google.com (mail-pl1-f199.google.com
+ [209.85.214.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-553-0kPlEXKSPwqGBOsWIPkdZg-1; Fri, 09 Aug 2024 00:53:35 -0400
+X-MC-Unique: 0kPlEXKSPwqGBOsWIPkdZg-1
+Received: by mail-pl1-f199.google.com with SMTP id
+ d9443c01a7336-1fc51ea72abso17938865ad.1
+ for <qemu-trivial@nongnu.org>; Thu, 08 Aug 2024 21:53:35 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1722932649; x=1723537449;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=i1NqOcFNHbhT1NGjqswedMfmrLNO9L7Y0/lHhZXRg3E=;
- b=cE5aZbAnqmt5kCoQzEQFDMzw6awy6SJ8oN3dr6+UebyNzW5zl6LrVWG4KrSB4N8Qu8
- n5Tig9Z2dYJT/mqUVDwIH2V4CqY5gkYN8ylCX7lstEdU/VZkL5vwX4yIIglf19atsQft
- s7siSSRQxkV5opGZACfBIBGxir9FCDYH350I8ZuioRvzQps5slNoEn6HjRs6cEzWsDSo
- F8aUneJsBDbO2bKlXLcjXg6s00cSXMdXZ6uF3sb9/iC10AznuPIrlEAriOP422CDQoST
- bI+qEtHb0h7l+4/vPFKf6OYWGGR26nHgzeUSx4JescO5/2cDAzaLQFsSAolEDFAj/nmN
- wCQw==
-X-Gm-Message-State: AOJu0YyRsszFp7jrSu0HfL4ndd1PaMTtitAeGghqjOvYLxaN1u+IlCa9
- YXuWW1KK+Cbm6vF5ErXREBEaO4ma1GEUJCXR55omQ1rls0b8MC2KeCH3Qd5uTaI=
-X-Google-Smtp-Source: AGHT+IE85dyjSACDuCcfd23rwGWQsG6GELE40MVP5IPQzH+r48f6Xw4yi9yR8PEQ/jLZ6gQQtWLhCA==
-X-Received: by 2002:a05:600c:46d5:b0:428:e820:37b6 with SMTP id
- 5b1f17b1804b1-428e8203ceamr111506105e9.31.1722932649139; 
- Tue, 06 Aug 2024 01:24:09 -0700 (PDT)
-Received: from [192.168.69.100] (cor91-h02-176-184-30-206.dsl.sta.abo.bbox.fr.
- [176.184.30.206]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4282b89aa9esm230608915e9.2.2024.08.06.01.24.07
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 06 Aug 2024 01:24:08 -0700 (PDT)
-Message-ID: <0da52473-5bef-4858-a482-590ad2d04f20@linaro.org>
-Date: Tue, 6 Aug 2024 10:24:06 +0200
+ d=1e100.net; s=20230601; t=1723179214; x=1723784014;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=s9N1cyy+ecX5HWtxGg4Tr3VQQ2fgXCoD73nkgydtGB4=;
+ b=aIyPQAX9LuLliy9sX7r9SsaP8DNo+ygTQmrWgCAv29EjJZblcnf9qgdjsS/ItFUWUv
+ zfiAHV3yTqFfpvC/hAQRqTkXQrC1+nSwtE7Fwx8+xvsJmhg9fAjx/CjFqj3ZhUEpub4P
+ NAGfu1tbxdJCdqKw4jaZELB68gEhRBu2tE4I5CiAsnNhnw+pBNVdH6aGUG/PO0P0zCK2
+ mLzeT2oVi6uOkk99XTbSSjnoCf58benTW3UOsPt5f1UQILMyXJdxmANC+5Fic5g1Vzce
+ 13WXvrcKY4ahmSCARCfH4nKIkcyN3nFLHqteSft6YdOwnmwz3CI+KQvZp+kDPjmdnNwR
+ DaFw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVwm904cZ3akhx+kzt+mOtOV2Fz4WXWx2pgVtgwijopflFUv12wvvudggdmXB0+RyumiYJbGbLRuMYs6oRRVWC2QtQntDjiEg==
+X-Gm-Message-State: AOJu0YxuYXmNrL//lWCLRwMOptaiNx8Pp/Dmicxd7jCIee47WIwVCzCD
+ OoE+HpnEHIOm+Gqap+GDJU2ixTHK5VdtMqrsF9RZ0P/m0nwcJeGwiPG6+MxejuhhGZ1iygbjXLX
+ wErkS/12UWga0bsFqSVq746Gi6B6v0KdAspa7wviF/Q0t0clyBInfavI=
+X-Received: by 2002:a17:902:da8b:b0:1fb:95b3:722f with SMTP id
+ d9443c01a7336-200ae61a99fmr2625555ad.60.1723179214570; 
+ Thu, 08 Aug 2024 21:53:34 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEz8fNSTwk4w4hgHlo5t97I3+nftttPm+QNRguV4oATgAkQnN2dkRyUeSnrahM8NlB5q5PlVg==
+X-Received: by 2002:a17:902:da8b:b0:1fb:95b3:722f with SMTP id
+ d9443c01a7336-200ae61a99fmr2625435ad.60.1723179214170; 
+ Thu, 08 Aug 2024 21:53:34 -0700 (PDT)
+Received: from localhost.localdomain ([115.96.114.241])
+ by smtp.googlemail.com with ESMTPSA id
+ d9443c01a7336-1ff58f6a540sm133516895ad.118.2024.08.08.21.53.31
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 08 Aug 2024 21:53:33 -0700 (PDT)
+From: Ani Sinha <anisinha@redhat.com>
+To: 
+Cc: Ani Sinha <anisinha@redhat.com>, qemu-trivial@nongnu.org,
+ zhao1.liu@intel.com, pbonzini@redhat.com
+Subject: [PATCH 0/2] Some refactoring
+Date: Fri,  9 Aug 2024 10:21:51 +0530
+Message-ID: <20240809045153.1744397-1-anisinha@redhat.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] docs/specs/pci-ids: Add missing devices
-To: George Matsumura <gorg@gorgnet.net>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, mst@redhat.com, marcel.apfelbaum@gmail.com
-References: <20240805031012.16547-2-gorg@gorgnet.net>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240805031012.16547-2-gorg@gorgnet.net>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=anisinha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.141,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,17 +91,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 06 Aug 2024 08:24:13 -0000
+X-List-Received-Date: Fri, 09 Aug 2024 04:53:39 -0000
 
-On 5/8/24 05:10, George Matsumura via wrote:
-> Add the missing devices 1b36:000c (PCIe root port) and 1b36:000e
-> (PCIe-to-PCI bridge).
-> 
-> Signed-off-by: George Matsumura <gorg@gorgnet.net>
-> ---
->   docs/specs/pci-ids.rst | 4 ++++
->   1 file changed, 4 insertions(+)
+replace fprintf() with error_report() in kvm_init()
+refactor code in kvm_init() to move core vm creation operation to its
+own function.
 
-Patches 1 & 2 queued, thanks George.
+CC: qemu-trivial@nongnu.org
+CC: zhao1.liu@intel.com
+CC: pbonzini@redhat.com
+Ani Sinha (2):
+  kvm: replace fprintf with error_report() in kvm_init() for error
+    conditions
+  kvm: refactor core virtual machine creation into its own function
+
+ accel/kvm/kvm-all.c | 106 +++++++++++++++++++++++++-------------------
+ 1 file changed, 61 insertions(+), 45 deletions(-)
+
+-- 
+2.45.2
 
 
