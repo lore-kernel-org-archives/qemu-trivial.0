@@ -1,55 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1scHya-0007oY-AR
-	for mharc-qemu-trivial@gnu.org; Fri, 09 Aug 2024 01:15:44 -0400
+	id 1scIdN-0007tq-9s
+	for mharc-qemu-trivial@gnu.org; Fri, 09 Aug 2024 01:57:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1scHyY-0007nN-II; Fri, 09 Aug 2024 01:15:42 -0400
-Received: from mgamail.intel.com ([198.175.65.21])
+ id 1scIdK-0007sQ-V1; Fri, 09 Aug 2024 01:57:51 -0400
+Received: from mgamail.intel.com ([192.198.163.18])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1scHyW-0003Vw-8y; Fri, 09 Aug 2024 01:15:42 -0400
+ id 1scIdI-0000O0-NK; Fri, 09 Aug 2024 01:57:50 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1723180541; x=1754716541;
+ t=1723183069; x=1754719069;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=7zC5X+3wT/YG6YfO3WL6oaU7GpvFEdfjp8clX6chuQw=;
- b=MaYospsUGNAd0n0epyAl8uHRmJUAFahRpjsaQYsALCE5dyNVj/kIU7X0
- 6tzlK8Zxz3YObvMoQo4QwR7j7oERIdweZKfYmFICQ66I65rmm0wtJ5PfI
- tLEPF6/kqevP7O/ISRMw1KBHZW0YyHqKXlItiVukjtcJq3SSdAnpISlP5
- ImwAPUVsXuZtQY03K/hP1tbfNazCO9wlIREqVoNa0Y6rGw+zrhzSce5DC
- XNLL6NT1jfNrvuLhHu6yxtAJI3HoKGYC3AxzBgTjslICWWREc5a/1xg9j
- ISG/ZXsNwAPPh3nY7sbct2MdEebnVA1Qs/8obVs3TxnQhcb9E+hc7mnDj w==;
-X-CSE-ConnectionGUID: Ny/m3lXyRtazZELlZKSnIQ==
-X-CSE-MsgGUID: u7hFZhTUT02OMVajaCUAzg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11158"; a="21312496"
-X-IronPort-AV: E=Sophos;i="6.09,275,1716274800"; d="scan'208";a="21312496"
-Received: from fmviesa004.fm.intel.com ([10.60.135.144])
- by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 08 Aug 2024 22:15:37 -0700
-X-CSE-ConnectionGUID: yV7O915vSnSqhBA9FQMAoQ==
-X-CSE-MsgGUID: s+CAelOOQNCcrseZoelePA==
+ bh=xnP+MSR/wvIrA5raQK0NBZEHIJRmZdfsczn+tYlznUM=;
+ b=KbRu3k59tDZczK4V4XKTxUgUTCgH5X0AB6Hvdn71Q0uVyiWWigtzK42t
+ /QHmC+kKLBTu5e4Inc0qtxbdGMOElI3FtGlDSexB1IMRCWKicVqLlnaut
+ XYZzADtQSkmS3rhrRqwQEOdb9xw3qOMraXEIR3jC+4Jmt88Kq28BNAmJf
+ zTNbzWqiBgjvVwNKwsdArsgtLECACz6jIht9Zz6H8eXL8FrFx0bzC1fhH
+ cJe4sUMpm39xgwva7RzrPqiyBKB9IvLp9mcUQYSbfKW3IxeO5QSz+0az9
+ gQeieP3oGUHY0n00oJ1bhUDwF8x5qhraT329QUE42BnmuP35f98omiNvW w==;
+X-CSE-ConnectionGUID: Vl/VQxicTvyAGdbhv2pTLQ==
+X-CSE-MsgGUID: kUsXEP44QNmt5MChrH0CNA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11158"; a="20905618"
+X-IronPort-AV: E=Sophos;i="6.09,275,1716274800"; d="scan'208";a="20905618"
+Received: from fmviesa002.fm.intel.com ([10.60.135.142])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Aug 2024 22:57:39 -0700
+X-CSE-ConnectionGUID: WDs2KvbSQLWNIMcbVD4wjQ==
+X-CSE-MsgGUID: tkfS8gnOSyeGcFimJ4QBTQ==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.09,275,1716274800"; d="scan'208";a="62095893"
+X-IronPort-AV: E=Sophos;i="6.09,275,1716274800"; d="scan'208";a="80702279"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.36])
- by fmviesa004.fm.intel.com with ESMTP; 08 Aug 2024 22:15:34 -0700
-Date: Fri, 9 Aug 2024 13:31:24 +0800
+ by fmviesa002.fm.intel.com with ESMTP; 08 Aug 2024 22:57:37 -0700
+Date: Fri, 9 Aug 2024 14:13:28 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Ani Sinha <anisinha@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, cfontana@suse.de,
- qemu-trivial@nongnu.org, kvm@vger.kernel.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v3 2/2] kvm: refactor core virtual machine creation into
- its own function
-Message-ID: <ZrWprIS6gFhCQFjR@intel.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+ kvm@vger.kernel.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v2 1/2] kvm: replace fprintf with error_report() in
+ kvm_init() for error conditions
+Message-ID: <ZrWziCQWgLogq+lV@intel.com>
 References: <20240809051054.1745641-1-anisinha@redhat.com>
- <20240809051054.1745641-3-anisinha@redhat.com>
+ <20240809051054.1745641-2-anisinha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <20240809051054.1745641-3-anisinha@redhat.com>
-Received-SPF: pass client-ip=198.175.65.21; envelope-from=zhao1.liu@intel.com;
+In-Reply-To: <20240809051054.1745641-2-anisinha@redhat.com>
+Received-SPF: pass client-ip=192.198.163.18; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -44
 X-Spam_score: -4.5
@@ -70,33 +70,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 Aug 2024 05:15:42 -0000
+X-List-Received-Date: Fri, 09 Aug 2024 05:57:51 -0000
 
-On Fri, Aug 09, 2024 at 10:40:54AM +0530, Ani Sinha wrote:
-> Date: Fri,  9 Aug 2024 10:40:54 +0530
+On Fri, Aug 09, 2024 at 10:40:53AM +0530, Ani Sinha wrote:
+> Date: Fri,  9 Aug 2024 10:40:53 +0530
 > From: Ani Sinha <anisinha@redhat.com>
-> Subject: [PATCH v3 2/2] kvm: refactor core virtual machine creation into
->  its own function
+> Subject: [PATCH v2 1/2] kvm: replace fprintf with error_report() in
+>  kvm_init() for error conditions
 > X-Mailer: git-send-email 2.45.2
 > 
-> Refactoring the core logic around KVM_CREATE_VM into its own separate function
-> so that it can be called from other functions in subsequent patches. There is
-> no functional change in this patch.
+> error_report() is more appropriate for error situations. Replace fprintf with
+> error_report. Cosmetic. No functional change.
 > 
-> CC: pbonzini@redhat.com
-> CC: zhao1.liu@intel.com
-> CC: cfontana@suse.de
 > CC: qemu-trivial@nongnu.org
+> CC: zhao1.liu@intel.com
 > Signed-off-by: Ani Sinha <anisinha@redhat.com>
 > ---
->  accel/kvm/kvm-all.c | 86 ++++++++++++++++++++++++++++-----------------
->  1 file changed, 53 insertions(+), 33 deletions(-)
+>  accel/kvm/kvm-all.c | 40 ++++++++++++++++++----------------------
+>  1 file changed, 18 insertions(+), 22 deletions(-)
 > 
 > changelog:
-> v2: s/fprintf/warn_report as suggested by zhao
-> v3: s/warn_report/error_report. function names adjusted to conform to
-> other names. fprintf -> error_report() moved to its own patch.
+> v2: fix a bug.
+
+Generally good to me. Only some nits below, otherwise,
 
 Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+
+>  #ifdef TARGET_S390X
+>          if (ret == -EINVAL) {
+> -            fprintf(stderr,
+> -                    "Host kernel setup problem detected. Please verify:\n");
+> -            fprintf(stderr, "- for kernels supporting the switch_amode or"
+> -                    " user_mode parameters, whether\n");
+> -            fprintf(stderr,
+> -                    "  user space is running in primary address space\n");
+> -            fprintf(stderr,
+> -                    "- for kernels supporting the vm.allocate_pgste sysctl, "
+> -                    "whether it is enabled\n");
+> +            error_report("Host kernel setup problem detected. Please verify:");
+
+The doc of error_report() said it doesn't want multiple sentences or trailing
+punctuation:
+
+"The resulting message should be a single phrase, with no newline or trailing
+punctuation."
+
+So I think these extra messages (with complex formatting & content) are
+better printed with error_printf() as I suggested in [1].
+
+[1]: https://lore.kernel.org/qemu-devel/ZrWP0fWPNzeAvjja@intel.com/T/#m953afd879eb6279fcdf03cda594c43f1829bdffe
+
+> +            error_report("- for kernels supporting the switch_amode or"
+> +                        " user_mode parameters, whether");
+> +            error_report("  user space is running in primary address space");
+> +            error_report("- for kernels supporting the vm.allocate_pgste "
+> +                        "sysctl, whether it is enabled");
+>          }
+>  #elif defined(TARGET_PPC)
+>          if (ret == -EINVAL) {
+> -            fprintf(stderr,
+> -                    "PPC KVM module is not loaded. Try modprobe kvm_%s.\n",
+> -                    (type == 2) ? "pr" : "hv");
+> +            error_report("PPC KVM module is not loaded. Try modprobe kvm_%s.",
+> +                        (type == 2) ? "pr" : "hv");
+
+Same here. A trailing punctuation. If possible, feel free to refer to
+the comment in [1].
+
+>          }
+>  #endif
+
+[snip]
+
+> @@ -2542,8 +2538,8 @@ static int kvm_init(MachineState *ms)
+>      }
+>      if (missing_cap) {
+>          ret = -EINVAL;
+> -        fprintf(stderr, "kvm does not support %s\n%s",
+> -                missing_cap->name, upgrade_note);
+> +        error_report("kvm does not support %s", missing_cap->name);
+> +        error_report("%s", upgrade_note);
+
+"upgrade_note" string also has the trailing punctuation, and it's
+also better to use error_printf() to replace the 2nd error_report().
+
+For this patch, error_report() is already a big step forward, so I think
+these few nits doesn't block this patch.
+
+Thank you for your patience.
+Zhao
 
 
