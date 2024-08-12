@@ -1,131 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sdPuX-0000Zq-Em
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Aug 2024 03:56:13 -0400
+	id 1sdRjy-0006S5-1H
+	for mharc-qemu-trivial@gnu.org; Mon, 12 Aug 2024 05:53:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sdPuV-0000YF-Ds
- for qemu-trivial@nongnu.org; Mon, 12 Aug 2024 03:56:11 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1sdRju-0006JY-KJ
+ for qemu-trivial@nongnu.org; Mon, 12 Aug 2024 05:53:23 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sdPuR-0007rg-6j
- for qemu-trivial@nongnu.org; Mon, 12 Aug 2024 03:56:11 -0400
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1sdRjs-0006vZ-H9
+ for qemu-trivial@nongnu.org; Mon, 12 Aug 2024 05:53:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1723449365;
+ s=mimecast20190719; t=1723456399;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=0nkzn3mGikJx+HBVtvdsH5nX1J2UGqjJpcMKEh7ukqs=;
- b=MUWSaN2w0LDtymwBsvNqv9fQRGhCn4BWJHmoeV4QfEFo65SNrYC2NYuv4aOapyDV1I1DJo
- az9lYNF6V4Es/HwLsr/We4GR9IIzDGcxjQAbJBywo8+O+HSJ3cJJWoj3NoTspX8zRwSHIH
- 49VQF2lnf1TQ1arnpZRrs0NOakfjsSg=
-Received: from mail-lf1-f70.google.com (mail-lf1-f70.google.com
- [209.85.167.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references;
+ bh=DaNd/0SeJ2+vXikjwkP3r5pLGCe1rmKQoREGvBy59qk=;
+ b=EVBwVeJjlQMAmrwa6/Cjyj/wql7FcmTZ5Q+TH43fu9rEea2v1plBSFk1nKMNh55o6AAOHs
+ HnVW+96/6Dl+nYZQH8T7XUlMU/X//wCTu7xyq/Fc8ZKdBFoFcF7AXVBu1hHTrvq8IjquL3
+ CT+8YDGm1KyHEQ9wgoS5rG1s3j3QN3k=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-184-oNWrb-rUNj-W-aZRfoDhCA-1; Mon, 12 Aug 2024 03:56:03 -0400
-X-MC-Unique: oNWrb-rUNj-W-aZRfoDhCA-1
-Received: by mail-lf1-f70.google.com with SMTP id
- 2adb3069b0e04-52eff5a4faaso4963674e87.3
- for <qemu-trivial@nongnu.org>; Mon, 12 Aug 2024 00:56:02 -0700 (PDT)
+ us-mta-139-RRDLoWJYPvWfMt7rWnUtyQ-1; Mon, 12 Aug 2024 05:53:17 -0400
+X-MC-Unique: RRDLoWJYPvWfMt7rWnUtyQ-1
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-a7d2f42df2dso523548566b.1
+ for <qemu-trivial@nongnu.org>; Mon, 12 Aug 2024 02:53:17 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723449361; x=1724054161;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=0nkzn3mGikJx+HBVtvdsH5nX1J2UGqjJpcMKEh7ukqs=;
- b=xVTlQws4uMS+klfIjP9YkTBf9anzBrjkhK9caCk/HkGRa3MoLXG8roVOmewchgnVvk
- D2tbXWa39+9pK/66SD5c9NYQsHUkpMQbeO4zGaenCYi3JdC9SjNtxuMhTdAgxTCBpg48
- nHu8PFnp8GXO6IPfGw+GmKRinsQmhDxNavjTu3EKRw05nJKO4LDhkwgNwLJJwSRflkk1
- eR3BxEGV91qoQF310gU8zK/W3GDUQgJyv43E6PQYwP2aVkSibJ+peDtbx+qNftTaHnux
- RpyI+XFFDrke1ZPpo+aY3zA6319ffZienE4DxyH/XGGRKoqYdk1fCfbTJFycTjLYA0JZ
- b3aA==
+ d=1e100.net; s=20230601; t=1723456396; x=1724061196;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=DaNd/0SeJ2+vXikjwkP3r5pLGCe1rmKQoREGvBy59qk=;
+ b=c0B+mMKeBE0NRiFd8mmGnjLG77vUWUHOK7F6Zhuw5U9dZ9ahFsygTSlxEcpf4Yh50H
+ njUXUaWbkHiFcE+xujyHE1GaIytmXbGwZWI5QNX8yrBWjkXy7vjGhFMlQW6Eosym40tx
+ 2cH+69WzFwXXQuuNkJNynVWcBLu00XVyVu7d7o/MnIq/vmeHwEyPQW9NxY8WNmiabjlk
+ 5i/Ic/dCKNXCyuXVEkKjUEheEKa4xpvQk/xv7JBUSI69O9Wo0GyFS43jC7e0Ad8t3qHd
+ pYz+daQkQUSKHJFciW7SIM7PV+7hmrPDxleitpF4LSJN52Cc3BY6GWMhdyQZLw3w5hls
+ LkSQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUb4S5mAGcXSkhR41L02wwQXuBLQSHMc8oDnI0XffJqshGcEsoqMqj2xIcoEXy6kjJEjb/EsNuwuk8f2f6lCPlESFZ+SwVneA==
-X-Gm-Message-State: AOJu0YyYtljLeRnrgDMDUultxTiqc6eKw4RKiceuK9U3gKcuWChmZNQ9
- 3wLbjWOMRpsthIsq2jmAOOEAnMQjms1co70PbSmKPAcqHwvHdU9xk/gnqHVhkOYj0QQogDsWKTY
- IKctPMbWoldhayLrgE6k3JKTn5gs1ciU3foCckNbnQXGtp1Kt6orQjCI=
-X-Received: by 2002:a05:6512:3e15:b0:530:aa53:60f6 with SMTP id
- 2adb3069b0e04-530ee998ec6mr6164808e87.15.1723449361160; 
- Mon, 12 Aug 2024 00:56:01 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHmRXEKAZU/ReLhR3FNEMWNf37jg9HS4zXog+ox5XE/jUaOFI/QZMG8tSv8eb8RVinfjRxx+w==
-X-Received: by 2002:a05:6512:3e15:b0:530:aa53:60f6 with SMTP id
- 2adb3069b0e04-530ee998ec6mr6164780e87.15.1723449360580; 
- Mon, 12 Aug 2024 00:56:00 -0700 (PDT)
-Received: from [192.168.0.6] (ip-109-43-178-125.web.vodafone.de.
- [109.43.178.125]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a80bb1cce50sm206759366b.129.2024.08.12.00.55.59
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 12 Aug 2024 00:56:00 -0700 (PDT)
-Message-ID: <98119a55-96ec-40ac-8668-17b31dd15380@redhat.com>
-Date: Mon, 12 Aug 2024 09:55:58 +0200
+ AJvYcCXSxYcyfkPNVmnyec6b7NsMC39DAl7pGeXtt3H0EOkSl4WBq8KQbkItcVCo6CvCF28h8I89Mh3JugBjwKo+oLQOiSsDHkWAVA==
+X-Gm-Message-State: AOJu0YyDskqlnPPwMapS9vsH6qWEpD9H0/E9R/v8tiSuOeSdcMfuEM4+
+ lYws2ZxheTa/EtKR+71187WN8lfH2s12yCjgLYjzpeOUz5hFzPHlHKjB/dNdJtyd3SVC0pXBdoz
+ UHqGWto+K+shiKn15Ow7HL8XSIP/JL7N2jL1QVcSwu3vYKugKAynUKw6giU81FxAq2g8pRaKdIO
+ ybxHf0cWlJK99UL85bBiBH8TRC8NTrBTtpVQ9zVj1pGwo=
+X-Received: by 2002:a17:907:dac:b0:a7a:bcbc:f7f4 with SMTP id
+ a640c23a62f3a-a80ab795802mr667107066b.14.1723456396353; 
+ Mon, 12 Aug 2024 02:53:16 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFTpvWhvzJKJINItgkEHZvMCgHN2cqJ5ObqV2x/QDvdU+IVRKhPZr+44cYlBD1rk5d7utrzPNmjj/9yTQ7l2g8=
+X-Received: by 2002:a17:907:dac:b0:a7a:bcbc:f7f4 with SMTP id
+ a640c23a62f3a-a80ab795802mr667105066b.14.1723456395764; Mon, 12 Aug 2024
+ 02:53:15 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/1] qemu-options.hx: correct formatting -smbios type=4
-To: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, "Michael S . Tsirkin" <mst@redhat.com>, 
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240729204816.11905-1-heinrich.schuchardt@canonical.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20240729204816.11905-1-heinrich.schuchardt@canonical.com>
+References: <20240809064940.1788169-1-anisinha@redhat.com>
+ <8913b8c7-4103-4f69-8567-afdc29f8d0d3@linaro.org>
+In-Reply-To: <8913b8c7-4103-4f69-8567-afdc29f8d0d3@linaro.org>
+From: Ani Sinha <anisinha@redhat.com>
+Date: Mon, 12 Aug 2024 15:23:04 +0530
+Message-ID: <CAK3XEhM+SR39vYxG_ygQ=hCj_bmDE3dOH6EPFQZbLYrE-Yj-ow@mail.gmail.com>
+Subject: Re: [PATCH v3] kvm: replace fprintf with error_report/printf() in
+ kvm_init()
+To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+ zhao1.liu@intel.com, kvm@vger.kernel.org, qemu-devel@nongnu.org, 
+ Markus Armbruster <armbru@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=anisinha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -22
 X-Spam_score: -2.3
 X-Spam_bar: --
 X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.125,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -140,33 +93,154 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Aug 2024 07:56:11 -0000
+X-List-Received-Date: Mon, 12 Aug 2024 09:53:24 -0000
 
-On 29/07/2024 22.48, Heinrich Schuchardt wrote:
-> processor-family and processor-id can be assigned independently.
-> 
-> Add missing brackets.
-> 
-> Fixes: b5831d79671c ("smbios: add processor-family option")
-> Signed-off-by: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>
-> ---
->   qemu-options.hx | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 369ae81d7c..b0eb41fbcd 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -2704,7 +2704,7 @@ DEF("smbios", HAS_ARG, QEMU_OPTION_smbios,
->       "                specify SMBIOS type 3 fields\n"
->       "-smbios type=4[,sock_pfx=str][,manufacturer=str][,version=str][,serial=str]\n"
->       "              [,asset=str][,part=str][,max-speed=%d][,current-speed=%d]\n"
-> -    "              [,processor-family=%d,processor-id=%d]\n"
-> +    "              [,processor-family=%d][,processor-id=%d]\n"
->       "                specify SMBIOS type 4 fields\n"
->       "-smbios type=8[,external_reference=str][,internal_reference=str][,connector_type=%d][,port_type=%d]\n"
->       "                specify SMBIOS type 8 fields\n"
+On Fri, Aug 9, 2024 at 2:06=E2=80=AFPM Philippe Mathieu-Daud=C3=A9 <philmd@=
+linaro.org> wrote:
+>
+> Hi Ani,
+>
+> On 9/8/24 08:49, Ani Sinha wrote:
+> > error_report() is more appropriate for error situations. Replace fprint=
+f with
+> > error_report. Cosmetic. No functional change.
+> >
+> > CC: qemu-trivial@nongnu.org
+> > CC: zhao1.liu@intel.com
+>
+> (Pointless to carry Cc line when patch is already reviewed next line)
+>
+> > Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+> > Signed-off-by: Ani Sinha <anisinha@redhat.com>
+> > ---
+> >   accel/kvm/kvm-all.c | 40 ++++++++++++++++++----------------------
+> >   1 file changed, 18 insertions(+), 22 deletions(-)
+> >
+> > changelog:
+> > v2: fix a bug.
+> > v3: replace one instance of error_report() with error_printf(). added t=
+ags.
+> >
+> > diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> > index 75d11a07b2..5bc9d35b61 100644
+> > --- a/accel/kvm/kvm-all.c
+> > +++ b/accel/kvm/kvm-all.c
+> > @@ -2427,7 +2427,7 @@ static int kvm_init(MachineState *ms)
+> >       QLIST_INIT(&s->kvm_parked_vcpus);
+> >       s->fd =3D qemu_open_old(s->device ?: "/dev/kvm", O_RDWR);
+> >       if (s->fd =3D=3D -1) {
+> > -        fprintf(stderr, "Could not access KVM kernel module: %m\n");
+> > +        error_report("Could not access KVM kernel module: %m");
+> >           ret =3D -errno;
+> >           goto err;
+> >       }
+> > @@ -2437,13 +2437,13 @@ static int kvm_init(MachineState *ms)
+> >           if (ret >=3D 0) {
+> >               ret =3D -EINVAL;
+> >           }
+> > -        fprintf(stderr, "kvm version too old\n");
+> > +        error_report("kvm version too old");
+> >           goto err;
+> >       }
+> >
+> >       if (ret > KVM_API_VERSION) {
+> >           ret =3D -EINVAL;
+> > -        fprintf(stderr, "kvm version not supported\n");
+> > +        error_report("kvm version not supported");
+> >           goto err;
+> >       }
+> >
+> > @@ -2488,26 +2488,22 @@ static int kvm_init(MachineState *ms)
+> >       } while (ret =3D=3D -EINTR);
+> >
+> >       if (ret < 0) {
+> > -        fprintf(stderr, "ioctl(KVM_CREATE_VM) failed: %d %s\n", -ret,
+> > -                strerror(-ret));
+> > +        error_report("ioctl(KVM_CREATE_VM) failed: %d %s", -ret,
+> > +                    strerror(-ret));
+> >
+> >   #ifdef TARGET_S390X
+> >           if (ret =3D=3D -EINVAL) {
+> > -            fprintf(stderr,
+> > -                    "Host kernel setup problem detected. Please verify=
+:\n");
+> > -            fprintf(stderr, "- for kernels supporting the switch_amode=
+ or"
+> > -                    " user_mode parameters, whether\n");
+> > -            fprintf(stderr,
+> > -                    "  user space is running in primary address space\=
+n");
+> > -            fprintf(stderr,
+> > -                    "- for kernels supporting the vm.allocate_pgste sy=
+sctl, "
+> > -                    "whether it is enabled\n");
+> > +            error_report("Host kernel setup problem detected.
+>
+> \n"
+>
+> Should we use error_printf_unless_qmp() for the following?
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Do you believe that qemu_init() -> configure_accelerators() ->
+do_configure_accelerator,() -> accel_init_machine() -> kvm_init()  can
+be called from QMP context?
+
+>
+> " Please verify:");
+> > +            error_report("- for kernels supporting the switch_amode or=
+"
+> > +                        " user_mode parameters, whether");
+> > +            error_report("  user space is running in primary address s=
+pace");
+> > +            error_report("- for kernels supporting the vm.allocate_pgs=
+te "
+> > +                        "sysctl, whether it is enabled");
+> >           }
+> >   #elif defined(TARGET_PPC)
+> >           if (ret =3D=3D -EINVAL) {
+> > -            fprintf(stderr,
+> > -                    "PPC KVM module is not loaded.
+>
+> \n"
+>
+> Ditto.
+>
+> " Try modprobe kvm_%s.\n",
+> > -                    (type =3D=3D 2) ? "pr" : "hv");
+> > +            error_report("PPC KVM module is not loaded. Try modprobe k=
+vm_%s.",
+> > +                        (type =3D=3D 2) ? "pr" : "hv");
+> >           }
+> >   #endif
+> >           goto err;
+> > @@ -2526,9 +2522,9 @@ static int kvm_init(MachineState *ms)
+> >                           nc->name, nc->num, soft_vcpus_limit);
+> >
+> >               if (nc->num > hard_vcpus_limit) {
+> > -                fprintf(stderr, "Number of %s cpus requested (%d) exce=
+eds "
+> > -                        "the maximum cpus supported by KVM (%d)\n",
+> > -                        nc->name, nc->num, hard_vcpus_limit);
+> > +                error_report("Number of %s cpus requested (%d) exceeds=
+ "
+> > +                             "the maximum cpus supported by KVM (%d)",
+> > +                             nc->name, nc->num, hard_vcpus_limit);
+> >                   exit(1);
+> >               }
+> >           }
+> > @@ -2542,8 +2538,8 @@ static int kvm_init(MachineState *ms)
+> >       }
+> >       if (missing_cap) {
+> >           ret =3D -EINVAL;
+> > -        fprintf(stderr, "kvm does not support %s\n%s",
+> > -                missing_cap->name, upgrade_note);
+> > +        error_printf("kvm does not support %s\n%s",
+> > +                     missing_cap->name, upgrade_note);
+>
+> Similarly, should we print upgrade_note using error_printf_unless_qmp?
+>
+> >           goto err;
+> >       }
+> >
+>
 
 
