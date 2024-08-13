@@ -1,69 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sdaRZ-0000S1-Fy
-	for mharc-qemu-trivial@gnu.org; Mon, 12 Aug 2024 15:11:03 -0400
+	id 1sdn1y-0003pJ-5p
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Aug 2024 04:37:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sdaRM-0000PR-9B; Mon, 12 Aug 2024 15:10:49 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sdaRI-0004K7-Fy; Mon, 12 Aug 2024 15:10:47 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id B0DBD84240;
- Mon, 12 Aug 2024 22:09:47 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 147F5124239;
- Mon, 12 Aug 2024 22:10:28 +0300 (MSK)
-Message-ID: <953ac1bc-4375-466d-bfc3-db77b2d922ab@tls.msk.ru>
-Date: Mon, 12 Aug 2024 22:10:28 +0300
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sdn1x-0003od-7K
+ for qemu-trivial@nongnu.org; Tue, 13 Aug 2024 04:37:25 -0400
+Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sdn1v-00072t-GL
+ for qemu-trivial@nongnu.org; Tue, 13 Aug 2024 04:37:24 -0400
+Received: by mail-ej1-x635.google.com with SMTP id
+ a640c23a62f3a-a80eab3945eso127520066b.1
+ for <qemu-trivial@nongnu.org>; Tue, 13 Aug 2024 01:37:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1723538241; x=1724143041; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=vV6z8N+8tdskD7I0r2oxLb8s/tD0+mUHbOGVlZruiKM=;
+ b=w6ucRuLePOmGVv8invAXv8UbRAP6ltrFem7owux6ijZmTXXD34NkFUavM65zQolrzW
+ F7TfqRMs5SFqVlgM7LY44jxVTkV8aZTI3DYTavczajdkn4clUbxtgH30zzt8A3NJGiaa
+ CZj5RdnnTpxdl47k2dPQITeqIqQMzuP3phO8ITQxHLiH2AoDm8Otjn1Z7n14IhLQB+Pk
+ sL5GKUqJ+0gPMngwso+lOikCQssGKOUlCZWCh4tGeo0ALvE1MQCM3tYGorrifxBCVhaI
+ lHnVZm6YByFPgGBrrJZjYotZULESNiUtRrMHJmeFQNERyNYTSwrBChzrHReI0+p2HggS
+ Gh1w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1723538241; x=1724143041;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=vV6z8N+8tdskD7I0r2oxLb8s/tD0+mUHbOGVlZruiKM=;
+ b=ncKYoICMXXrHLrrDaSYZ7AH+q+aqTkr2dYbJdqc43aYZffHLl/4bZIYsa4qCGut38d
+ 2Lz5+3Vwt7DGocfMvhosPR6MefDV8I9xzE6oIiplUxXgqufdviHrLrbLv+ONHZ5ZYlfc
+ BbZYtPVq58pSggbal6YTtphLF7HoBJxnFC28HXNgyxep1sBKBA2ZXfMyDvBgCBe345nj
+ ISSIdyRf2gAwc8fVpM/8YQR8keCm6FQBKdY09hY5t+1i9kF3vZJ89w/45gqDpXXeK6ER
+ Q2Dpef1yl+f4XiuMCEFbU8OSpEsoOcw4/Ef4UUvCZMK/nwQhbQyg4OSlh1iK5t7TmcMp
+ x35g==
+X-Gm-Message-State: AOJu0Yzcy2td3SbzIoBHdWCPqkdIXyyg4fh/BpeiphUQskOSXWvcCb3p
+ IW1GcNTDFMsW9qVD/zGrOqRVSENdS7yXgNW37+4Ju89+M+yRg04mnvSgR7eGoHZv7ED0QBlSGTi
+ /mag=
+X-Google-Smtp-Source: AGHT+IF586vRCNsHBskR4QN8Zx1G6K3M7LhR51oeaD64zpHbvCk9erlOW98bnz7UmouBst1w4Cm7pw==
+X-Received: by 2002:a17:907:7f14:b0:a77:af6b:d1a8 with SMTP id
+ a640c23a62f3a-a80ed2d76aemr197299566b.64.1723538241017; 
+ Tue, 13 Aug 2024 01:37:21 -0700 (PDT)
+Received: from [192.168.69.100] ([176.176.129.17])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a80f3fa782csm49835166b.60.2024.08.13.01.37.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 13 Aug 2024 01:37:20 -0700 (PDT)
+Message-ID: <55ab8f41-7ac4-4a41-8e2b-3720302bd3ee@linaro.org>
+Date: Tue, 13 Aug 2024 10:37:09 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/1] module: Move local_err initialization to the loop
- in module_load_qom_all()
-To: Alexander Ivanov <alexander.ivanov@virtuozzo.com>, qemu-devel@nongnu.org
-Cc: den@virtuozzo.com, andrey.drobyshev@virtuozzo.com, cfontana@suse.de,
- kraxel@redhat.com, laurent@vivier.eu, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240812085725.1093540-1-alexander.ivanov@virtuozzo.com>
- <20240812085725.1093540-2-alexander.ivanov@virtuozzo.com>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240812085725.1093540-2-alexander.ivanov@virtuozzo.com>
+Subject: Re: [PATCH] hw/i386/pc: Add a description for the i8042 property
+To: =?UTF-8?Q?Kamil_Szcz=C4=99k?= <kamil@szczek.dev>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <15fhXFY6x78KW8P5gw0eKTW8kc17zejrJFxqnOyoBy6vw4W9rCmgDhoxssWosWFs_dbFtfsyjn9wpPrV3x8Nlzhy8mTJSEnXCr4qyHAhXSw=@szczek.dev>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <15fhXFY6x78KW8P5gw0eKTW8kc17zejrJFxqnOyoBy6vw4W9rCmgDhoxssWosWFs_dbFtfsyjn9wpPrV3x8Nlzhy8mTJSEnXCr4qyHAhXSw=@szczek.dev>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::635;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x635.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,31 +83,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 Aug 2024 19:10:55 -0000
+X-List-Received-Date: Tue, 13 Aug 2024 08:37:25 -0000
 
-12.08.2024 11:57, Alexander Ivanov wrote:
-> Move local_err initialization inside the loop in the module_load_qom_all()
-> function. This change ensures that the error variable is reset to NULL for
-> each iteration of the loop. This prevents triggering assert(*errp == NULL)
-> failure in error_setv() when local_err is reused in the loop.
+On 12/8/24 19:23, Kamil Szczęk wrote:
+> While working on exposing the i8042 property in libvirt I noticed that
+> the property is missing a description. This adds a simple description
+> so that QEMU users don't have to dig in the source code to figure out
+> what this option does.
 > 
-> Note: The local_err variable is freed in error_report_err() so there is no
-> any leak.
-> 
-> Signed-off-by: Alexander Ivanov <alexander.ivanov@virtuozzo.com>
+> Signed-off-by: Kamil Szczęk <kamil@szczek.dev>
+> ---
+>   hw/i386/pc.c | 2 ++
+>   1 file changed, 2 insertions(+)
 
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-This can be applied through the trivial tree (Cc'd).
-
-Thanks,
-
-/mjt
-
--- 
-GPG Key transition (from rsa2048 to rsa4096) since 2024-04-24.
-New key: rsa4096/61AD3D98ECDF2C8E  9D8B E14E 3F2A 9DD7 9199  28F1 61AD 3D98 ECDF 2C8E
-Old key: rsa2048/457CE0A0804465C5  6EE1 95D1 886E 8FFB 810D  4324 457C E0A0 8044 65C5
-Transition statement: http://www.corpit.ru/mjt/gpg-transition-2024.txt
 
 
