@@ -1,76 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sdn1y-0003pJ-5p
-	for mharc-qemu-trivial@gnu.org; Tue, 13 Aug 2024 04:37:26 -0400
+	id 1sdneF-0006KQ-6a
+	for mharc-qemu-trivial@gnu.org; Tue, 13 Aug 2024 05:16:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sdn1x-0003od-7K
- for qemu-trivial@nongnu.org; Tue, 13 Aug 2024 04:37:25 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sdn1v-00072t-GL
- for qemu-trivial@nongnu.org; Tue, 13 Aug 2024 04:37:24 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-a80eab3945eso127520066b.1
- for <qemu-trivial@nongnu.org>; Tue, 13 Aug 2024 01:37:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723538241; x=1724143041; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=vV6z8N+8tdskD7I0r2oxLb8s/tD0+mUHbOGVlZruiKM=;
- b=w6ucRuLePOmGVv8invAXv8UbRAP6ltrFem7owux6ijZmTXXD34NkFUavM65zQolrzW
- F7TfqRMs5SFqVlgM7LY44jxVTkV8aZTI3DYTavczajdkn4clUbxtgH30zzt8A3NJGiaa
- CZj5RdnnTpxdl47k2dPQITeqIqQMzuP3phO8ITQxHLiH2AoDm8Otjn1Z7n14IhLQB+Pk
- sL5GKUqJ+0gPMngwso+lOikCQssGKOUlCZWCh4tGeo0ALvE1MQCM3tYGorrifxBCVhaI
- lHnVZm6YByFPgGBrrJZjYotZULESNiUtRrMHJmeFQNERyNYTSwrBChzrHReI0+p2HggS
- Gh1w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723538241; x=1724143041;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=vV6z8N+8tdskD7I0r2oxLb8s/tD0+mUHbOGVlZruiKM=;
- b=ncKYoICMXXrHLrrDaSYZ7AH+q+aqTkr2dYbJdqc43aYZffHLl/4bZIYsa4qCGut38d
- 2Lz5+3Vwt7DGocfMvhosPR6MefDV8I9xzE6oIiplUxXgqufdviHrLrbLv+ONHZ5ZYlfc
- BbZYtPVq58pSggbal6YTtphLF7HoBJxnFC28HXNgyxep1sBKBA2ZXfMyDvBgCBe345nj
- ISSIdyRf2gAwc8fVpM/8YQR8keCm6FQBKdY09hY5t+1i9kF3vZJ89w/45gqDpXXeK6ER
- Q2Dpef1yl+f4XiuMCEFbU8OSpEsoOcw4/Ef4UUvCZMK/nwQhbQyg4OSlh1iK5t7TmcMp
- x35g==
-X-Gm-Message-State: AOJu0Yzcy2td3SbzIoBHdWCPqkdIXyyg4fh/BpeiphUQskOSXWvcCb3p
- IW1GcNTDFMsW9qVD/zGrOqRVSENdS7yXgNW37+4Ju89+M+yRg04mnvSgR7eGoHZv7ED0QBlSGTi
- /mag=
-X-Google-Smtp-Source: AGHT+IF586vRCNsHBskR4QN8Zx1G6K3M7LhR51oeaD64zpHbvCk9erlOW98bnz7UmouBst1w4Cm7pw==
-X-Received: by 2002:a17:907:7f14:b0:a77:af6b:d1a8 with SMTP id
- a640c23a62f3a-a80ed2d76aemr197299566b.64.1723538241017; 
- Tue, 13 Aug 2024 01:37:21 -0700 (PDT)
-Received: from [192.168.69.100] ([176.176.129.17])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a80f3fa782csm49835166b.60.2024.08.13.01.37.19
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 13 Aug 2024 01:37:20 -0700 (PDT)
-Message-ID: <55ab8f41-7ac4-4a41-8e2b-3720302bd3ee@linaro.org>
-Date: Tue, 13 Aug 2024 10:37:09 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1sdne7-0006IY-UH; Tue, 13 Aug 2024 05:16:53 -0400
+Received: from mgamail.intel.com ([198.175.65.17])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1sdne3-00057j-Lj; Tue, 13 Aug 2024 05:16:50 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1723540608; x=1755076608;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=8NtQ+m2aKB6iYToa6t7dybTia62yHNGP3KJBraXxCpU=;
+ b=fmpxhrHGhIEbm0zhozQMFg32psDfrhg1+0B0LQpXX8nmYCvE3QS5QB3S
+ pkAn6yOE+Ln92cOa98i9z43j7UE9Ja1Fbx+ujsdg1FyqwMhbnnWfb/WY9
+ K/pt5tGjhmDqbgK6Kj3zfvfodLnvHoWnOKj9KW4aQlvVZAK7aMqA67Jfv
+ q/LUq8LU4P2z0R6GuP+Z3sBPj5AhHJGrD9Jol4dWn8lkwFMJ5oB04lQ6m
+ St2/mldpsmBYSWjzbBkN+EHdJ3wnpZw922O6rgv/0k+iuIXvGxuJue1wU
+ rZyqrsPJWh0pDurV/r4+sXbDBfq+qUrMRYb42iQw/OppXtUP65toxXQdD w==;
+X-CSE-ConnectionGUID: a1VfiEX6T/ChsYq/tDhlXQ==
+X-CSE-MsgGUID: 8HcbFrRNTIyqloRgfTFiZA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11162"; a="21824693"
+X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="21824693"
+Received: from fmviesa005.fm.intel.com ([10.60.135.145])
+ by orvoesa109.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 13 Aug 2024 02:16:38 -0700
+X-CSE-ConnectionGUID: ok7MbNc3QYiteuVonTEdAA==
+X-CSE-MsgGUID: ryPaxXe7SMOiwPdyXLvAvA==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.09,285,1716274800"; d="scan'208";a="62994836"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.36])
+ by fmviesa005.fm.intel.com with ESMTP; 13 Aug 2024 02:16:36 -0700
+Date: Tue, 13 Aug 2024 17:32:27 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Kamil =?utf-8?Q?Szcz=C4=99k?= <kamil@szczek.dev>
+Cc: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
 Subject: Re: [PATCH] hw/i386/pc: Add a description for the i8042 property
-To: =?UTF-8?Q?Kamil_Szcz=C4=99k?= <kamil@szczek.dev>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Message-ID: <ZrsoK2XdWIUgd5zN@intel.com>
 References: <15fhXFY6x78KW8P5gw0eKTW8kc17zejrJFxqnOyoBy6vw4W9rCmgDhoxssWosWFs_dbFtfsyjn9wpPrV3x8Nlzhy8mTJSEnXCr4qyHAhXSw=@szczek.dev>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <15fhXFY6x78KW8P5gw0eKTW8kc17zejrJFxqnOyoBy6vw4W9rCmgDhoxssWosWFs_dbFtfsyjn9wpPrV3x8Nlzhy8mTJSEnXCr4qyHAhXSw=@szczek.dev>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x635.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+In-Reply-To: <15fhXFY6x78KW8P5gw0eKTW8kc17zejrJFxqnOyoBy6vw4W9rCmgDhoxssWosWFs_dbFtfsyjn9wpPrV3x8Nlzhy8mTJSEnXCr4qyHAhXSw=@szczek.dev>
+Received-SPF: pass client-ip=198.175.65.17; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -44
+X-Spam_score: -4.5
+X-Spam_bar: ----
+X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.126,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,9 +70,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 13 Aug 2024 08:37:25 -0000
+X-List-Received-Date: Tue, 13 Aug 2024 09:16:55 -0000
 
-On 12/8/24 19:23, Kamil Szczęk wrote:
+On Mon, Aug 12, 2024 at 05:23:31PM +0000, Kamil Szczęk wrote:
+> Date: Mon, 12 Aug 2024 17:23:31 +0000
+> From: Kamil Szczęk <kamil@szczek.dev>
+> Subject: [PATCH] hw/i386/pc: Add a description for the i8042 property
+> 
 > While working on exposing the i8042 property in libvirt I noticed that
 > the property is missing a description. This adds a simple description
 > so that QEMU users don't have to dig in the source code to figure out
@@ -93,10 +84,9 @@ On 12/8/24 19:23, Kamil Szczęk wrote:
 > 
 > Signed-off-by: Kamil Szczęk <kamil@szczek.dev>
 > ---
->   hw/i386/pc.c | 2 ++
->   1 file changed, 2 insertions(+)
+>  hw/i386/pc.c | 2 ++
+>  1 file changed, 2 insertions(+)
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 
 
