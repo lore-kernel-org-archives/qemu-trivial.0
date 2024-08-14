@@ -1,138 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1seBfT-0004Ai-Mg
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Aug 2024 06:55:51 -0400
+	id 1seDSA-00010l-03
+	for mharc-qemu-trivial@gnu.org; Wed, 14 Aug 2024 08:50:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1seBfR-000463-OR
- for qemu-trivial@nongnu.org; Wed, 14 Aug 2024 06:55:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <kamil@szczek.dev>)
+ id 1seBtj-0007m7-B8; Wed, 14 Aug 2024 07:10:35 -0400
+Received: from mail-4317.proton.ch ([185.70.43.17])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1seBfQ-0000zK-9t
- for qemu-trivial@nongnu.org; Wed, 14 Aug 2024 06:55:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1723632947;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=CJnRJK2iX9AhwdK2pp52JpepRBP6YNcdwBhgRdbk5qU=;
- b=hoUtmgHKJH88bq1jP++QeZrfp0TFTH+XC/Rj0VYGhjbeA+0kTnGKLlHwlaEYBWUgk1Ww4W
- Bzg9c3cExGxxDDFnkcqXZfbImcTXjmU+DP6Vv2uV98EQIPZCVGGhHGlZDA5vN6n5S5Dbwk
- bnInvyUyK7iGi75pjMeSmqugrIxIQM4=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-496-T3R0kJycOka5fyp4Hr_DNg-1; Wed, 14 Aug 2024 06:55:44 -0400
-X-MC-Unique: T3R0kJycOka5fyp4Hr_DNg-1
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-42816096cb8so73860685e9.0
- for <qemu-trivial@nongnu.org>; Wed, 14 Aug 2024 03:55:44 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723632943; x=1724237743;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CJnRJK2iX9AhwdK2pp52JpepRBP6YNcdwBhgRdbk5qU=;
- b=vu5DHhDi65AUkHCw1iQyqE6gg5Zse+eY57Vp/RpS9oenqPL2+XeKtH8dEty3RmV4A/
- z4fYYgiQRs+cDZtFExqczDfzvGhe1kGPrAIMAxfPdsppcWgauyowuEP+N76BvuE43slO
- FHdzOuLphAia1DkJsO1xn3pmj/27y8JuaA2+/B2So3tC8C05mRzK1g760MWF4qjgpahR
- 7dxN5ApHKl1nBdTpXH1uHaedvywfOQ8Di20B7iN5jgebwJrz4lMwptoqRyxFDly/WyFV
- aKUPQIUqGdfpglzH0EPZqnzW8fWbNteYjYQ6sdcOveBb6hnFchT348qNPnNfGiuSVJDx
- NoNw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCW/4PcR3/xl6JfCRDskXcnCWoP5MSDfLCN9pFw2LUUREHtBg29YgEGWe6MwWh5Vmt17u0ZhKX5kCfPnHbU=@nongnu.org
-X-Gm-Message-State: AOJu0YwitrW+lnxu3wrG0bQz/rcV8veRNmaO6pUBjdwv/DXCS3GlO6+/
- vxvPGHWw2DrSCpLgltusYRXR8pz+0Pg1NosXd7zOBDgb6Q669iK0OgAvAJXy8Npb3Zio5WnKwQV
- dhRXMuKF93zoYy6MkkNzMk5fPxXugKPd34Tc0ncEF1Fqb+2HxGE1+QlE=
-X-Received: by 2002:a05:600c:190e:b0:426:6822:5aa8 with SMTP id
- 5b1f17b1804b1-429dd23cf9emr23467325e9.18.1723632943167; 
- Wed, 14 Aug 2024 03:55:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGeclh82908UAdJwYUeWnxi5OCdrtQ7LFG1iUvuXWBdMIZ7caILiDjhgj6JchTHBhpuh/B3LA==
-X-Received: by 2002:a05:600c:190e:b0:426:6822:5aa8 with SMTP id
- 5b1f17b1804b1-429dd23cf9emr23467095e9.18.1723632942629; 
- Wed, 14 Aug 2024 03:55:42 -0700 (PDT)
-Received: from [192.168.0.6] (ip-109-43-179-177.web.vodafone.de.
- [109.43.179.177]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-429ded327aesm16291585e9.20.2024.08.14.03.55.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 14 Aug 2024 03:55:42 -0700 (PDT)
-Message-ID: <0ca851ce-3ed9-48a8-a795-9135f2c936ad@redhat.com>
-Date: Wed, 14 Aug 2024 12:55:40 +0200
+ (Exim 4.90_1) (envelope-from <kamil@szczek.dev>)
+ id 1seBtg-0003pj-C6; Wed, 14 Aug 2024 07:10:35 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=szczek.dev;
+ s=protonmail3; t=1723633822; x=1723893022;
+ bh=9fYMUYs5VhM8NvGzYuEL1YV7KREso0N9pmZ2XGncD9A=;
+ h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+ Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+ b=dwkYq5lF2lrTidoNPqi3QLEhodXaov4UlQkJx8mVxDkU7Mp1FkyNkW6fR0QEwE1uy
+ Ya0ik43rlDtkRg+ZPLmaU3rWVDUsro7a98Rf7f8Tkw5B27Z+Z2XUC77i4kMxWFle7e
+ WHXDeC5kWFstkZE2UDYVJbRx9Gxn64/UPjJxKUf8Vy/Bi7iofn3yMovWoVf8Zmlvd6
+ ab+C01gd7peeipW0V0zl9gBk3rSSaGUbPITQmzEWFrflz3VpSVi33cwRsTS8YuIFXH
+ hv1C7T/aN9yywP6YH+2u/DKLUdVLqaooSat7UQiE2qdhvbPP67dra5u9WLHw/cbuob
+ ccWjWNaDN2xhQ==
+Date: Wed, 14 Aug 2024 11:10:16 +0000
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+From: =?utf-8?Q?Kamil_Szcz=C4=99k?= <kamil@szczek.dev>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Subject: [PATCH] hw/i386/pc: Warn about unsatisfied vmport deps
+Message-ID: <vsm1ly2eX009LRKgURcMp6qTYHWw1bZd3zg2GUbd4M90T91QvJRdKxiRS3rPl8PR96y2r890Am3Ajf4kQrwihn7-7hKBU9VicRPPtIRv_GI=@szczek.dev>
+Feedback-ID: 37679334:user:proton
+X-Pm-Message-ID: d53fa00ec7c0b54278ffa66bc4aaad817f9ee9c2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-9.2 05/10] hw/dma/xilinx_axidma: Use semicolon at end
- of statement, not comma
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: qemu-s390x@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- David Hildenbrand <david@redhat.com>, Ilya Leoshkevich <iii@linux.ibm.com>,
- Cornelia Huck <cohuck@redhat.com>, Halil Pasic <pasic@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>
-References: <20240813165250.2717650-1-peter.maydell@linaro.org>
- <20240813165250.2717650-6-peter.maydell@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20240813165250.2717650-6-peter.maydell@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=185.70.43.17; envelope-from=kamil@szczek.dev;
+ helo=mail-4317.proton.ch
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.125,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 14 Aug 2024 08:50:12 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -144,34 +53,86 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Aug 2024 10:55:50 -0000
+X-List-Received-Date: Wed, 14 Aug 2024 11:10:35 -0000
 
-On 13/08/2024 18.52, Peter Maydell wrote:
-> In axidma_class_init() we accidentally used a comma at the end of
-> a statement rather than a semicolon. This has no ill effects, but
-> it's obviously not intended and it means that Coccinelle scripts
-> for instance will fail to match on the two statements. Use a
-> semicolon instead.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   hw/dma/xilinx_axidma.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/dma/xilinx_axidma.c b/hw/dma/xilinx_axidma.c
-> index c9cfc3169b8..7707634253a 100644
-> --- a/hw/dma/xilinx_axidma.c
-> +++ b/hw/dma/xilinx_axidma.c
-> @@ -626,7 +626,7 @@ static void axidma_class_init(ObjectClass *klass, void *data)
->   {
->       DeviceClass *dc = DEVICE_CLASS(klass);
->   
-> -    dc->realize = xilinx_axidma_realize,
-> +    dc->realize = xilinx_axidma_realize;
->       dc->reset = xilinx_axidma_reset;
->       device_class_set_props(dc, axidma_properties);
->   }
+Since commit 4ccd5fe22feb95137d325f422016a6473541fe9f ('pc: add option
+to disable PS/2 mouse/keyboard'), the vmport will not be created unless
+the i8042 PS/2 controller is enabled. To not confuse users, let's add a
+warning if vmport was explicitly requested, but the i8042 controller is
+disabled. This also changes the behavior of vmport=3Dauto to take i8042
+controller availability into account.
 
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Kamil Szcz=C4=99k <kamil@szczek.dev>
+---
+ hw/i386/pc.c      | 4 ++++
+ hw/i386/pc_piix.c | 3 ++-
+ hw/i386/pc_q35.c  | 2 +-
+ qemu-options.hx   | 4 ++--
+ 4 files changed, 9 insertions(+), 4 deletions(-)
+
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index c74931d577..5bd8dd0350 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1100,6 +1100,10 @@ static void pc_superio_init(ISABus *isa_bus, bool cr=
+eate_fdctrl,
+     }
+=20
+     if (!create_i8042) {
++        if (!no_vmport) {
++            warn_report("vmport requires the i8042 controller to be enable=
+d");
++        }
++
+         return;
+     }
+=20
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index d9e69243b4..cf2e2e3e30 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -312,7 +312,8 @@ static void pc_init1(MachineState *machine, const char =
+*pci_type)
+=20
+     assert(pcms->vmport !=3D ON_OFF_AUTO__MAX);
+     if (pcms->vmport =3D=3D ON_OFF_AUTO_AUTO) {
+-        pcms->vmport =3D xen_enabled() ? ON_OFF_AUTO_OFF : ON_OFF_AUTO_ON;
++        pcms->vmport =3D (xen_enabled() || !pcms->i8042_enabled)
++            ? ON_OFF_AUTO_OFF : ON_OFF_AUTO_ON;
+     }
+=20
+     /* init basic PC hardware */
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 9d108b194e..6c112d804d 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -278,7 +278,7 @@ static void pc_q35_init(MachineState *machine)
+=20
+     assert(pcms->vmport !=3D ON_OFF_AUTO__MAX);
+     if (pcms->vmport =3D=3D ON_OFF_AUTO_AUTO) {
+-        pcms->vmport =3D ON_OFF_AUTO_ON;
++        pcms->vmport =3D pcms->i8042_enabled ? ON_OFF_AUTO_ON : ON_OFF_AUT=
+O_OFF;
+     }
+=20
+     /* init basic PC hardware */
+diff --git a/qemu-options.hx b/qemu-options.hx
+index cee0da2014..0bc780a669 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -68,8 +68,8 @@ SRST
+=20
+     ``vmport=3Don|off|auto``
+         Enables emulation of VMWare IO port, for vmmouse etc. auto says
+-        to select the value based on accel. For accel=3Dxen the default is
+-        off otherwise the default is on.
++        to select the value based on accel and i8042. For accel=3Dxen
++        and/or i8042=3Doff the default is off otherwise the default is on.
+=20
+     ``dump-guest-core=3Don|off``
+         Include guest memory in a core dump. The default is on.
+--=20
+2.45.0
+
 
 
