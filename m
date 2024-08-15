@@ -1,77 +1,136 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1seEa3-00020D-VP
-	for mharc-qemu-trivial@gnu.org; Wed, 14 Aug 2024 10:02:27 -0400
+	id 1seVVd-0001YG-22
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Aug 2024 04:07:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1seEa1-0001yd-4d
- for qemu-trivial@nongnu.org; Wed, 14 Aug 2024 10:02:25 -0400
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1seEZz-0007tF-C4
- for qemu-trivial@nongnu.org; Wed, 14 Aug 2024 10:02:24 -0400
-Received: by mail-lf1-x12d.google.com with SMTP id
- 2adb3069b0e04-52f04b4abdcso9108473e87.2
- for <qemu-trivial@nongnu.org>; Wed, 14 Aug 2024 07:02:22 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723644141; x=1724248941; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=CyH8NtOH3FXOYJVzoV/ZtzwA2EgCNDtmlD5S30K7HSQ=;
- b=FCAEsJC0IeaWPr+cHSx967mIbLVlqaywuC5+mGC98ybDTUo/76VPPYzTv2SfMtStVz
- YOH92HjRKBJz2FCRtjof799yfiEVHfg99RAtmqwDB2EouL6Tv9PE0yS4PlKrOu05KEMK
- rMkEvxLBtWy2GtmGtQJQFucWzlTQeOwdQKN3ib2K2yjnkNM/FD0Ft6wuvftWL1w7XGAx
- /hxpNdGTX8KlREyufAg60FQguVdWkejpDmvgSHvGGsqJBRfbMP7ySax3zjHZkGImTrcS
- 9dof/cSnTLucUdqgdQ4byrx74vX5AMybwB8/jbb1tY4PqwhVcFVhTTgvSrPudpuM4yIo
- wtgg==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1seVVZ-0001W3-C5
+ for qemu-trivial@nongnu.org; Thu, 15 Aug 2024 04:06:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1seVVU-0001Ml-Nq
+ for qemu-trivial@nongnu.org; Thu, 15 Aug 2024 04:06:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1723709210;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=t0j1PrwMwd2r9/bZ28wzYoxOwHXdsk+gBKjqqJdXh9o=;
+ b=YDMKtK6N6uFy4pDQ8y+NI0yCmeQ3Xo4nfulirQstT7M1mxZfw+80YV4N5fui8ee72U2xBn
+ V6h8IG+yr3+3OHuZgxVcoayw1W/A/rPzuFcKzJwbH59Ta0FvKOf0eNu/v/PMMw+TQHrv+9
+ gMZTOMRtYWjBZasGeDwR8wF3/RdhjMM=
+Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
+ [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-230-gWVl_n7IMl-L7YRhBrWChw-1; Thu, 15 Aug 2024 04:06:48 -0400
+X-MC-Unique: gWVl_n7IMl-L7YRhBrWChw-1
+Received: by mail-ej1-f69.google.com with SMTP id
+ a640c23a62f3a-a7aa3181bc2so58687666b.0
+ for <qemu-trivial@nongnu.org>; Thu, 15 Aug 2024 01:06:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723644141; x=1724248941;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=CyH8NtOH3FXOYJVzoV/ZtzwA2EgCNDtmlD5S30K7HSQ=;
- b=ak1PT9FqinWY/DSGqS4JipOwSJEOGeKVx+uYPMe+ulbs+WeGqnOIPKzIUUl9ExU+Qu
- zT8FcCHhPvqqdAtiQIfIgh7RMfqawE62+1v6XHx12UaRGFZ7rUQk8/G3sFklZuSf6QNo
- A70pAS+PwAPX310ge0y6E5yiCqPXu5XBhxskFnaDHBoxyeR9UgTa/fgScPggDN0uKc1c
- T6tcRo3vtYiKbb6vYy27TS83Fq15sFQS20Bv5TTe8jCuUZR7Y8MZRADGg2PqT+U85pto
- Mu9hUtjNAMSkN60SCNAlDdF59DEFxvCWwJf8Tlp2MIxnYsrGnL1WUUFKPWcL+Cn4PDOR
- XOzQ==
-X-Gm-Message-State: AOJu0Yy4uHW+rXZESMv1+5mzOWQhsUNhImg1WduFxJ4bS8T791sEx0qq
- uG0fD17c/JX6fVWEWoQlaJ79CiVGL3B/oQLTN4RVzTCu4J7+T1S2M2FEbqjEtk8=
-X-Google-Smtp-Source: AGHT+IGBoznFZPhUr/3x/1OFDpGNGFj+aGEAqaXT1znmwLS91aWlEpNlVdiTBaxZyPg3/86mj0YNSw==
-X-Received: by 2002:a05:6512:3052:b0:52c:e393:6634 with SMTP id
- 2adb3069b0e04-532eda83bbdmr1921410e87.33.1723644140938; 
- Wed, 14 Aug 2024 07:02:20 -0700 (PDT)
-Received: from [192.168.69.100] ([176.187.208.57])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-429d877e066sm55826815e9.1.2024.08.14.07.02.19
+ d=1e100.net; s=20230601; t=1723709207; x=1724314007;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=t0j1PrwMwd2r9/bZ28wzYoxOwHXdsk+gBKjqqJdXh9o=;
+ b=mk9ctRNsiw5jD7Y8TNAGmfka4TrmbKeTesQ6v63dNtFZswbZCb/WiiVyIi1xgMBj7w
+ XaV5Kv7IrupQfsll7Uw2/oMeT18rf5TEvfaIESaDybTF1GOlkfapZpt4pZDQZuk6yzlk
+ 3j8BzSXdkSxTyLYR+6nRKevoQs0Ykq7udQjYibNqvH9LtjXLfloxllUEcpKPL7r0R06Y
+ 69Te9cjiUOuirqHJK4ushF0KmsWJYO5sNmZuTlyU9/Cr4s31YrA133iuICpvxfI9XSwC
+ KSk613GIGJbmFTPAb619e8sH/EJEXYftqhf/vQxNQxWvo+dYzrefaHKLps9uVoG7Vms/
+ uhBQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUBZ36ctfO85U5N1nifEvUPATyacWhZm+LL970YnTeEM8B9lXu9SPCmT6fHaTrY6fjiBesNQjebYV7c3nv1GJewdyhPGvW7gQ==
+X-Gm-Message-State: AOJu0YwpUor4CXMmfmniBZW/smD9aCw9FlsV/0N51A2Ojb/1Rl8S77Vl
+ 3TWpExVhQqjkgO2u8rmtpCeHII6/YkJ9cAXqqqYYdfauFyILcVUA4n3DZr+fc+uJU6ZvNA2fRcf
+ KsYgRMUmTDKDsTbi/XVDDOFWc+a41RkTf2ZCbvxMzD9Z2NyIVl9AyNKE=
+X-Received: by 2002:a17:907:e661:b0:a77:bfca:da53 with SMTP id
+ a640c23a62f3a-a8366d5a3aemr366716666b.30.1723709206998; 
+ Thu, 15 Aug 2024 01:06:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHz6dB2Mm0vW1IJ6TkZH0s5ImckfPd3b/YaarhRqA7vj5GJ66BbWYcTenJdnNz1PZtFCohH9Q==
+X-Received: by 2002:a17:907:e661:b0:a77:bfca:da53 with SMTP id
+ a640c23a62f3a-a8366d5a3aemr366713666b.30.1723709206473; 
+ Thu, 15 Aug 2024 01:06:46 -0700 (PDT)
+Received: from [192.168.0.6] (ip-109-43-177-15.web.vodafone.de.
+ [109.43.177.15]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a838396afe2sm62826766b.195.2024.08.15.01.06.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 14 Aug 2024 07:02:20 -0700 (PDT)
-Message-ID: <e7c17260-41d7-4749-aca9-da344517c772@linaro.org>
-Date: Wed, 14 Aug 2024 16:02:11 +0200
+ Thu, 15 Aug 2024 01:06:46 -0700 (PDT)
+Message-ID: <e1fcdf3a-1f28-4e6f-95bc-19eebb6b6d0f@redhat.com>
+Date: Thu, 15 Aug 2024 10:06:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-9.1] hw/i386/pc: Warn about unsatisfied vmport deps
-To: =?UTF-8?Q?Kamil_Szcz=C4=99k?= <kamil@szczek.dev>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
- Joelle van Dyne <j@getutm.app>, Bernhard Beschow <shentey@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <vsm1ly2eX009LRKgURcMp6qTYHWw1bZd3zg2GUbd4M90T91QvJRdKxiRS3rPl8PR96y2r890Am3Ajf4kQrwihn7-7hKBU9VicRPPtIRv_GI=@szczek.dev>
+Subject: Re: [PATCH 1/6] contrib/plugins/execlog: fix warning
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Mahmoud Mandour
+ <ma.mandourr@gmail.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20240814233645.944327-1-pierrick.bouvier@linaro.org>
+ <20240814233645.944327-2-pierrick.bouvier@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240814233645.944327-2-pierrick.bouvier@linaro.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <vsm1ly2eX009LRKgURcMp6qTYHWw1bZd3zg2GUbd4M90T91QvJRdKxiRS3rPl8PR96y2r890Am3Ajf4kQrwihn7-7hKBU9VicRPPtIRv_GI=@szczek.dev>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.135,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,85 +143,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 Aug 2024 14:02:25 -0000
+X-List-Received-Date: Thu, 15 Aug 2024 08:06:58 -0000
 
-Hi Kamil,
-
-On 14/8/24 13:10, Kamil Szczęk wrote:
-> Since commit 4ccd5fe22feb95137d325f422016a6473541fe9f ('pc: add option
-> to disable PS/2 mouse/keyboard'), the vmport will not be created unless
-> the i8042 PS/2 controller is enabled. To not confuse users, let's add a
-> warning if vmport was explicitly requested, but the i8042 controller is
-> disabled. This also changes the behavior of vmport=auto to take i8042
-> controller availability into account.
+On 15/08/2024 01.36, Pierrick Bouvier wrote:
+> Found on debian stable.
 > 
-> Signed-off-by: Kamil Szczęk <kamil@szczek.dev>
+> ../contrib/plugins/execlog.c: In function ‘vcpu_tb_trans’:
+> ../contrib/plugins/execlog.c:236:22: error: declaration of ‘n’ shadows a previous local [-Werror=shadow=local]
+>    236 |             for (int n = 0; n < all_reg_names->len; n++) {
+>        |                      ^
+> ../contrib/plugins/execlog.c:184:12: note: shadowed declaration is here
+>    184 |     size_t n = qemu_plugin_tb_n_insns(tb);
+>        |
+> 
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > ---
->   hw/i386/pc.c      | 4 ++++
->   hw/i386/pc_piix.c | 3 ++-
->   hw/i386/pc_q35.c  | 2 +-
->   qemu-options.hx   | 4 ++--
->   4 files changed, 9 insertions(+), 4 deletions(-)
+>   contrib/plugins/execlog.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/hw/i386/pc.c b/hw/i386/pc.c
-> index c74931d577..5bd8dd0350 100644
-> --- a/hw/i386/pc.c
-> +++ b/hw/i386/pc.c
-> @@ -1100,6 +1100,10 @@ static void pc_superio_init(ISABus *isa_bus, bool create_fdctrl,
->       }
+> diff --git a/contrib/plugins/execlog.c b/contrib/plugins/execlog.c
+> index 1c1601cc0b4..d67d0107613 100644
+> --- a/contrib/plugins/execlog.c
+> +++ b/contrib/plugins/execlog.c
+> @@ -181,8 +181,8 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
+>       bool check_regs_this = rmatches;
+>       bool check_regs_next = false;
 >   
->       if (!create_i8042) {
-> +        if (!no_vmport) {
-> +            warn_report("vmport requires the i8042 controller to be enabled");
+> -    size_t n = qemu_plugin_tb_n_insns(tb);
+> -    for (size_t i = 0; i < n; i++) {
+> +    size_t n_insns = qemu_plugin_tb_n_insns(tb);
+> +    for (size_t i = 0; i < n_insns; i++) {
+>           char *insn_disas;
+>           uint64_t insn_vaddr;
+>   
 
-Should we fail instead?
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-> +        }
-> +
->           return;
->       }
->   
-> diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
-> index d9e69243b4..cf2e2e3e30 100644
-> --- a/hw/i386/pc_piix.c
-> +++ b/hw/i386/pc_piix.c
-> @@ -312,7 +312,8 @@ static void pc_init1(MachineState *machine, const char *pci_type)
->   
->       assert(pcms->vmport != ON_OFF_AUTO__MAX);
->       if (pcms->vmport == ON_OFF_AUTO_AUTO) {
-> -        pcms->vmport = xen_enabled() ? ON_OFF_AUTO_OFF : ON_OFF_AUTO_ON;
-> +        pcms->vmport = (xen_enabled() || !pcms->i8042_enabled)
-> +            ? ON_OFF_AUTO_OFF : ON_OFF_AUTO_ON;
->       }
->   
->       /* init basic PC hardware */
-> diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
-> index 9d108b194e..6c112d804d 100644
-> --- a/hw/i386/pc_q35.c
-> +++ b/hw/i386/pc_q35.c
-> @@ -278,7 +278,7 @@ static void pc_q35_init(MachineState *machine)
->   
->       assert(pcms->vmport != ON_OFF_AUTO__MAX);
->       if (pcms->vmport == ON_OFF_AUTO_AUTO) {
-> -        pcms->vmport = ON_OFF_AUTO_ON;
-> +        pcms->vmport = pcms->i8042_enabled ? ON_OFF_AUTO_ON : ON_OFF_AUTO_OFF;
->       }
->   
->       /* init basic PC hardware */
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index cee0da2014..0bc780a669 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -68,8 +68,8 @@ SRST
->   
->       ``vmport=on|off|auto``
->           Enables emulation of VMWare IO port, for vmmouse etc. auto says
-> -        to select the value based on accel. For accel=xen the default is
-> -        off otherwise the default is on.
-> +        to select the value based on accel and i8042. For accel=xen
-> +        and/or i8042=off the default is off otherwise the default is on.
->   
->       ``dump-guest-core=on|off``
->           Include guest memory in a core dump. The default is on.
 
 
