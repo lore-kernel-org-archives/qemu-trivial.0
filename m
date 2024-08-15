@@ -1,77 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1seVVd-0001YG-22
-	for mharc-qemu-trivial@gnu.org; Thu, 15 Aug 2024 04:07:01 -0400
+	id 1seX6c-0001q8-QE
+	for mharc-qemu-trivial@gnu.org; Thu, 15 Aug 2024 05:49:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1seVVZ-0001W3-C5
- for qemu-trivial@nongnu.org; Thu, 15 Aug 2024 04:06:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1seX6a-0001mt-Ux
+ for qemu-trivial@nongnu.org; Thu, 15 Aug 2024 05:49:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1seVVU-0001Ml-Nq
- for qemu-trivial@nongnu.org; Thu, 15 Aug 2024 04:06:57 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1seX6Z-0008Nm-8I
+ for qemu-trivial@nongnu.org; Thu, 15 Aug 2024 05:49:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1723709210;
+ s=mimecast20190719; t=1723715352;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=t0j1PrwMwd2r9/bZ28wzYoxOwHXdsk+gBKjqqJdXh9o=;
- b=YDMKtK6N6uFy4pDQ8y+NI0yCmeQ3Xo4nfulirQstT7M1mxZfw+80YV4N5fui8ee72U2xBn
- V6h8IG+yr3+3OHuZgxVcoayw1W/A/rPzuFcKzJwbH59Ta0FvKOf0eNu/v/PMMw+TQHrv+9
- gMZTOMRtYWjBZasGeDwR8wF3/RdhjMM=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=6K/w3mydahKSJzUZNevQ4VpM26b9qlYm6tF4qoxzK2k=;
+ b=IrCIUgQ/KxhfrR3oWv9E28802jEphZcQyLqPrjFVpvfZb6IlUIIN3EkAhTt4NFo24vSegU
+ +nB9h5LwOXBwXv7cJ7NhCJG+b3aqLdMD2bHKXd1x08BLDa7IvcVehwZcZhsT7Xs383LSUz
+ Pb80Dean8ZySB7Te69gWxHVpAX+PnhE=
+Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
+ [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-230-gWVl_n7IMl-L7YRhBrWChw-1; Thu, 15 Aug 2024 04:06:48 -0400
-X-MC-Unique: gWVl_n7IMl-L7YRhBrWChw-1
-Received: by mail-ej1-f69.google.com with SMTP id
- a640c23a62f3a-a7aa3181bc2so58687666b.0
- for <qemu-trivial@nongnu.org>; Thu, 15 Aug 2024 01:06:47 -0700 (PDT)
+ us-mta-173-WZ0f9sMUNe-nR1uk2jja2g-1; Thu, 15 Aug 2024 05:49:10 -0400
+X-MC-Unique: WZ0f9sMUNe-nR1uk2jja2g-1
+Received: by mail-ed1-f71.google.com with SMTP id
+ 4fb4d7f45d1cf-5bd326f3f52so637331a12.3
+ for <qemu-trivial@nongnu.org>; Thu, 15 Aug 2024 02:49:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723709207; x=1724314007;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=t0j1PrwMwd2r9/bZ28wzYoxOwHXdsk+gBKjqqJdXh9o=;
- b=mk9ctRNsiw5jD7Y8TNAGmfka4TrmbKeTesQ6v63dNtFZswbZCb/WiiVyIi1xgMBj7w
- XaV5Kv7IrupQfsll7Uw2/oMeT18rf5TEvfaIESaDybTF1GOlkfapZpt4pZDQZuk6yzlk
- 3j8BzSXdkSxTyLYR+6nRKevoQs0Ykq7udQjYibNqvH9LtjXLfloxllUEcpKPL7r0R06Y
- 69Te9cjiUOuirqHJK4ushF0KmsWJYO5sNmZuTlyU9/Cr4s31YrA133iuICpvxfI9XSwC
- KSk613GIGJbmFTPAb619e8sH/EJEXYftqhf/vQxNQxWvo+dYzrefaHKLps9uVoG7Vms/
- uhBQ==
+ d=1e100.net; s=20230601; t=1723715349; x=1724320149;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=6K/w3mydahKSJzUZNevQ4VpM26b9qlYm6tF4qoxzK2k=;
+ b=Kx7sXyJGZ9Z+b/iLq3asvH6mnBl4LqeobiSCexZrqY3cEVNZDnO8Kl1I7QZpxSzZkO
+ /rm8ZpN2ie2/uF6vPBT3HR7wUhG+pSAWqdLa7gL7GbO6HSL5kcm2CuvGYBqRBGP0wznJ
+ 1bqgTHDdkfYTmbZNhCVgrDsmONEybIiz5KuAJmovWB7kivK6yqYG15+g0a2SflYSOGMF
+ 08XY3RAlm+HsH+a61UBdC3Luu6c8QnER5rd7I/kWXjUkTai6xUQHKUxmgrdEHh+f+lzj
+ 6aIs8NWr//TPYAQDJ62la5+p/3eMtBBJi+TOWDY5p8wwcCRMxsvobUE1SF1h8XynaKfn
+ wA4Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUBZ36ctfO85U5N1nifEvUPATyacWhZm+LL970YnTeEM8B9lXu9SPCmT6fHaTrY6fjiBesNQjebYV7c3nv1GJewdyhPGvW7gQ==
-X-Gm-Message-State: AOJu0YwpUor4CXMmfmniBZW/smD9aCw9FlsV/0N51A2Ojb/1Rl8S77Vl
- 3TWpExVhQqjkgO2u8rmtpCeHII6/YkJ9cAXqqqYYdfauFyILcVUA4n3DZr+fc+uJU6ZvNA2fRcf
- KsYgRMUmTDKDsTbi/XVDDOFWc+a41RkTf2ZCbvxMzD9Z2NyIVl9AyNKE=
-X-Received: by 2002:a17:907:e661:b0:a77:bfca:da53 with SMTP id
- a640c23a62f3a-a8366d5a3aemr366716666b.30.1723709206998; 
- Thu, 15 Aug 2024 01:06:46 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHz6dB2Mm0vW1IJ6TkZH0s5ImckfPd3b/YaarhRqA7vj5GJ66BbWYcTenJdnNz1PZtFCohH9Q==
-X-Received: by 2002:a17:907:e661:b0:a77:bfca:da53 with SMTP id
- a640c23a62f3a-a8366d5a3aemr366713666b.30.1723709206473; 
- Thu, 15 Aug 2024 01:06:46 -0700 (PDT)
+ AJvYcCVwLGsc25YSuhdv2z2iaNkawZdrkrL+MTsQ9uxcmtc9lUDdNmufszLrqn2i7RN3iSGUm68XNLn/ZbTA8O2NcqLqx0HPYQGT6g==
+X-Gm-Message-State: AOJu0Yzfz8GIwNCC2RiC8MO85uruypUF2LUciNppqXGcAkAG8Vxk40iK
+ A1c+HfgjZt07MnQl12oLMG4LS/EbjDGBRhS3P1mjMea4/WRHx6li1C8MzSesGA97E58AEDQNTF5
+ +5CmUyZH0thb6MGB0bLCLinAoyYj4QCTaZC3K8tVIpwhmUNwo42G0L14=
+X-Received: by 2002:a05:6402:84b:b0:58d:31f6:2162 with SMTP id
+ 4fb4d7f45d1cf-5bea1cb45d8mr3780870a12.36.1723715349522; 
+ Thu, 15 Aug 2024 02:49:09 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF1m5Pl5eenfSbutxhQdGlTkYyEy0lVZJCPE4JfY56s/TLO8Ou65Y+so3cWaGaLnhXRNbNJzA==
+X-Received: by 2002:a05:6402:84b:b0:58d:31f6:2162 with SMTP id
+ 4fb4d7f45d1cf-5bea1cb45d8mr3780843a12.36.1723715349050; 
+ Thu, 15 Aug 2024 02:49:09 -0700 (PDT)
 Received: from [192.168.0.6] (ip-109-43-177-15.web.vodafone.de.
  [109.43.177.15]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a838396afe2sm62826766b.195.2024.08.15.01.06.45
+ 4fb4d7f45d1cf-5bebbe7f80dsm658138a12.64.2024.08.15.02.49.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Aug 2024 01:06:46 -0700 (PDT)
-Message-ID: <e1fcdf3a-1f28-4e6f-95bc-19eebb6b6d0f@redhat.com>
-Date: Thu, 15 Aug 2024 10:06:44 +0200
+ Thu, 15 Aug 2024 02:49:08 -0700 (PDT)
+Message-ID: <81e236a1-2a75-4719-a8a3-c0daaad1ac85@redhat.com>
+Date: Thu, 15 Aug 2024 11:49:06 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/6] contrib/plugins/execlog: fix warning
+Subject: Re: [PATCH v2 2/4] target/i386: fix build warning (gcc-12
+ -fsanitize=thread)
 To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Mahmoud Mandour
- <ma.mandourr@gmail.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Alexandre Iooss <erdnaxe@crans.org>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+Cc: Beraldo Leal <bleal@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240814233645.944327-1-pierrick.bouvier@linaro.org>
- <20240814233645.944327-2-pierrick.bouvier@linaro.org>
+ Paolo Bonzini <pbonzini@redhat.com>, kvm@vger.kernel.org,
+ Wainer dos Santos Moschetta <wainersm@redhat.com>, qemu-s390x@nongnu.org,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20240814224132.897098-1-pierrick.bouvier@linaro.org>
+ <20240814224132.897098-3-pierrick.bouvier@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -115,22 +119,22 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240814233645.944327-2-pierrick.bouvier@linaro.org>
+In-Reply-To: <20240814224132.897098-3-pierrick.bouvier@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.135,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -143,41 +147,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 Aug 2024 08:06:58 -0000
+X-List-Received-Date: Thu, 15 Aug 2024 09:49:17 -0000
 
-On 15/08/2024 01.36, Pierrick Bouvier wrote:
+On 15/08/2024 00.41, Pierrick Bouvier wrote:
 > Found on debian stable.
 > 
-> ../contrib/plugins/execlog.c: In function ‘vcpu_tb_trans’:
-> ../contrib/plugins/execlog.c:236:22: error: declaration of ‘n’ shadows a previous local [-Werror=shadow=local]
->    236 |             for (int n = 0; n < all_reg_names->len; n++) {
->        |                      ^
-> ../contrib/plugins/execlog.c:184:12: note: shadowed declaration is here
->    184 |     size_t n = qemu_plugin_tb_n_insns(tb);
->        |
+> ../target/i386/kvm/kvm.c: In function ‘kvm_handle_rdmsr’:
+> ../target/i386/kvm/kvm.c:5345:1: error: control reaches end of non-void function [-Werror=return-type]
+>   5345 | }
+>        | ^
+> ../target/i386/kvm/kvm.c: In function ‘kvm_handle_wrmsr’:
+> ../target/i386/kvm/kvm.c:5364:1: error: control reaches end of non-void function [-Werror=return-type]
+>   5364 | }
 > 
 > Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > ---
->   contrib/plugins/execlog.c | 4 ++--
+>   target/i386/kvm/kvm.c | 4 ++--
 >   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/contrib/plugins/execlog.c b/contrib/plugins/execlog.c
-> index 1c1601cc0b4..d67d0107613 100644
-> --- a/contrib/plugins/execlog.c
-> +++ b/contrib/plugins/execlog.c
-> @@ -181,8 +181,8 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
->       bool check_regs_this = rmatches;
->       bool check_regs_next = false;
+> diff --git a/target/i386/kvm/kvm.c b/target/i386/kvm/kvm.c
+> index 31f149c9902..ddec27edd5b 100644
+> --- a/target/i386/kvm/kvm.c
+> +++ b/target/i386/kvm/kvm.c
+> @@ -5770,7 +5770,7 @@ static int kvm_handle_rdmsr(X86CPU *cpu, struct kvm_run *run)
+>           }
+>       }
 >   
-> -    size_t n = qemu_plugin_tb_n_insns(tb);
-> -    for (size_t i = 0; i < n; i++) {
-> +    size_t n_insns = qemu_plugin_tb_n_insns(tb);
-> +    for (size_t i = 0; i < n_insns; i++) {
->           char *insn_disas;
->           uint64_t insn_vaddr;
+> -    assert(false);
+> +    g_assert_not_reached();
+>   }
 >   
+>   static int kvm_handle_wrmsr(X86CPU *cpu, struct kvm_run *run)
+> @@ -5789,7 +5789,7 @@ static int kvm_handle_wrmsr(X86CPU *cpu, struct kvm_run *run)
+>           }
+>       }
+>   
+> -    assert(false);
+> +    g_assert_not_reached();
+>   }
+>   
+>   static bool has_sgx_provisioning;
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-
 
 
