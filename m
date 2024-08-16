@@ -1,82 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1seqLG-0000QI-7u
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Aug 2024 02:21:43 -0400
+	id 1sertv-0002s6-VO
+	for mharc-qemu-trivial@gnu.org; Fri, 16 Aug 2024 04:01:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1seqLB-0000OZ-DN
- for qemu-trivial@nongnu.org; Fri, 16 Aug 2024 02:21:37 -0400
-Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1seqL8-0004IG-8D
- for qemu-trivial@nongnu.org; Fri, 16 Aug 2024 02:21:37 -0400
-Received: by mail-lf1-x12d.google.com with SMTP id
- 2adb3069b0e04-52f04b3cb33so3663293e87.0
- for <qemu-trivial@nongnu.org>; Thu, 15 Aug 2024 23:21:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1723789292; x=1724394092; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=gN/IDNnIVqePOUl3+INdjUuo1e/RhZoKy6s/qPCWKbQ=;
- b=WQ0dDKSkvegmMV9kd9ZQvyvrcNLNaCeWYZlZLs3AF5ev7q4Ajb422QiiCQGVH6i7NF
- LNnAXqTv/n71GHnA9XeJxLbLxvRRSsBf8nFCZ3ztcB/UdqbTzy+aMDu3t8UfeCkFL1yG
- VAsDPHL6+hqat1l0NwceGzlZE+rr/u097bQLeIxWuvRSZNT8mP0nHGeKmJ6fQbn3vD7M
- A4OLj4pwIERgGL5mqYdN91U65DnGrmhqM27Da+xakyEZevlAehOD4ElOfk07ff99nGaZ
- kcKWX3eLlEtvC7jpxyBEkc8ciSFRlQj1eZxCATFhpZtLLl0sbAAZBpcL86qZT3K7dqrC
- Q/TQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723789292; x=1724394092;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=gN/IDNnIVqePOUl3+INdjUuo1e/RhZoKy6s/qPCWKbQ=;
- b=hG0opTlalBmzIuZbBE3zCGzgeWDJ76AiggSeQdeBC4txjKsy7VIdBTQwkK850sYVM0
- lS2LUISKAspa6ACrhnLlT3e4NdUgXbX5YIAtd6Or8zLV1EX1qNRF1CFteLMWGCaD7B2n
- QJgRVQiYQoCMOI0+CZ3DMWQQQLqtYnwH1Nj7P8H4aMybJycJE8oLN1BJbc4W/TUjVLly
- FOS6NIErPKLxVr1yiE2E5By5Ln4qYv7M74veZstqz66PmnE17HFqoOhc2Bp+wllcx13j
- zF8rXcRWPR2w6ghkU1mgW38snYTnBfm4/kkzwk/ppJ1OojLRKRt12gRbDxMJ0t3PNptQ
- Xy7Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUjX4fCsBeHlcT7wX2RR17F7jDX01WrIU+bJzCBYRLYxnp9ZjxpYoqQXe3hwspnHsb7XWm34v6kAg8wGjO2ej49UV+sHuWlvg==
-X-Gm-Message-State: AOJu0YzLzjCjEKhGQqBhSmbJ2k4erLH5AEKnoMU9+OLSpyPKtFCJou7j
- +sito7KVwBboWojqrXBQnVe4p3yc1Ydw94bOU9d1WwqPzv+S0+x1iS14xnPwIk4=
-X-Google-Smtp-Source: AGHT+IEa2KUSICyrEZCI46tZGlAlao5lx1DfUbEZ5609WVaQc4E2Td19rNhAnjAalT5tjPNh2pYAaQ==
-X-Received: by 2002:a05:6512:118e:b0:52c:76ac:329b with SMTP id
- 2adb3069b0e04-5331c6bdaeemr1283662e87.35.1723789291403; 
- Thu, 15 Aug 2024 23:21:31 -0700 (PDT)
-Received: from [192.168.69.100] (cor91-h02-176-184-30-185.dsl.sta.abo.bbox.fr.
- [176.184.30.185]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a838396d4b2sm205670166b.220.2024.08.15.23.21.15
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 Aug 2024 23:21:30 -0700 (PDT)
-Message-ID: <31202ec6-d108-4dd9-a103-f534f36c2821@linaro.org>
-Date: Fri, 16 Aug 2024 08:21:10 +0200
+ (Exim 4.90_1) (envelope-from <kamil@szczek.dev>) id 1sertu-0002km-6L
+ for qemu-trivial@nongnu.org; Fri, 16 Aug 2024 04:01:34 -0400
+Received: from mail-4323.proton.ch ([185.70.43.23])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kamil@szczek.dev>) id 1sertr-0001C1-Kb
+ for qemu-trivial@nongnu.org; Fri, 16 Aug 2024 04:01:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=szczek.dev;
+ s=protonmail3; t=1723795289; x=1724054489;
+ bh=rPFgNlJ6chvB0hG9r9nURep/QmzrAcRSRUPwGjYwykY=;
+ h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+ Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+ b=rhQ55VRNC7aig6JnoJV2PxQIA5VMorDjJkxjxCWtHdTay8A3p8kfkC98AupNt/YFE
+ YXv6rZpwjnlfXfl+apA5ONvPqH0QJQhv+32mA8lEqZ+V6Oh1+67NyV5THS6rJvnmuE
+ iaRgpwqXNiPR9i6xiNWygmouZlBGsj3UNyG03n4zTOIl+gVWqeBtMixgjMck5/0Mq7
+ N/qs/+g3p3eY3AC+sMYj1/FEGELJSkEE7GtJ18RHE3zy1kRYuyx2lz6DwrWybQGsHC
+ p58sTxyzinRoiVJ+CO7lVkmhTqcccOiz5i3SKxVd/gyzsHgz9Cv4XT3hvIQgDQ6rdz
+ hjDtBkro3AmYg==
+Date: Fri, 16 Aug 2024 08:01:26 +0000
+To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+From: =?utf-8?Q?Kamil_Szcz=C4=99k?= <kamil@szczek.dev>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Joelle van Dyne <j@getutm.app>, Bernhard Beschow <shentey@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH-for-9.1 v2] hw/i386/pc: Ensure vmport prerequisites are
+ fulfilled
+Message-ID: <CJaQOvoJMl8P04F7-0Pk23paXt29GnSt2ICM-xlruQ9rGsMHocU_xH3RRaRRJEQpqUxGo63sATZb5St7968jHLV0r7NORODN3zHgi_qxpPE=@szczek.dev>
+Feedback-ID: 37679334:user:proton
+X-Pm-Message-ID: ef0bbe03faa94f568da6425093c804af69018f0b
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] kvm: replace fprintf with error_report/printf() in
- kvm_init()
-To: Ani Sinha <anisinha@redhat.com>, Markus Armbruster <armbru@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- Zhao Liu <zhao1.liu@intel.com>, kvm@vger.kernel.org,
- qemu-devel <qemu-devel@nongnu.org>
-References: <20240809064940.1788169-1-anisinha@redhat.com>
- <8913b8c7-4103-4f69-8567-afdc29f8d0d3@linaro.org>
- <CAK3XEhM+SR39vYxG_ygQ=hCj_bmDE3dOH6EPFQZbLYrE-Yj-ow@mail.gmail.com>
- <CAK3XEhPZ8X1-Ui6pJ+kYY3Er-N-zW0f5MqpLyaU7t2d3qaQXkA@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAK3XEhPZ8X1-Ui6pJ+kYY3Er-N-zW0f5MqpLyaU7t2d3qaQXkA@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
- envelope-from=philmd@linaro.org; helo=mail-lf1-x12d.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=185.70.43.23; envelope-from=kamil@szczek.dev;
+ helo=mail-4323.proton.ch
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,175 +56,106 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Aug 2024 06:21:37 -0000
+X-List-Received-Date: Fri, 16 Aug 2024 08:01:34 -0000
 
-On 12/8/24 11:59, Ani Sinha wrote:
-> 
-> 
-> On Mon, 12 Aug, 2024, 3:23 pm Ani Sinha, <anisinha@redhat.com 
-> <mailto:anisinha@redhat.com>> wrote:
-> 
->     On Fri, Aug 9, 2024 at 2:06 PM Philippe Mathieu-Daudé
->     <philmd@linaro.org <mailto:philmd@linaro.org>> wrote:
->      >
->      > Hi Ani,
->      >
->      > On 9/8/24 08:49, Ani Sinha wrote:
->      > > error_report() is more appropriate for error situations.
->     Replace fprintf with
->      > > error_report. Cosmetic. No functional change.
->      > >
->      > > CC: qemu-trivial@nongnu.org <mailto:qemu-trivial@nongnu.org>
->      > > CC: zhao1.liu@intel.com <mailto:zhao1.liu@intel.com>
->      >
->      > (Pointless to carry Cc line when patch is already reviewed next line)
->      >
->      > > Reviewed-by: Zhao Liu <zhao1.liu@intel.com
->     <mailto:zhao1.liu@intel.com>>
->      > > Signed-off-by: Ani Sinha <anisinha@redhat.com
->     <mailto:anisinha@redhat.com>>
->      > > ---
->      > >   accel/kvm/kvm-all.c | 40 ++++++++++++++++++----------------------
->      > >   1 file changed, 18 insertions(+), 22 deletions(-)
->      > >
->      > > changelog:
->      > > v2: fix a bug.
->      > > v3: replace one instance of error_report() with error_printf().
->     added tags.
->      > >
->      > > diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
->      > > index 75d11a07b2..5bc9d35b61 100644
->      > > --- a/accel/kvm/kvm-all.c
->      > > +++ b/accel/kvm/kvm-all.c
->      > > @@ -2427,7 +2427,7 @@ static int kvm_init(MachineState *ms)
->      > >       QLIST_INIT(&s->kvm_parked_vcpus);
->      > >       s->fd = qemu_open_old(s->device ?: "/dev/kvm", O_RDWR);
->      > >       if (s->fd == -1) {
->      > > -        fprintf(stderr, "Could not access KVM kernel module:
->     %m\n");
->      > > +        error_report("Could not access KVM kernel module: %m");
->      > >           ret = -errno;
->      > >           goto err;
->      > >       }
->      > > @@ -2437,13 +2437,13 @@ static int kvm_init(MachineState *ms)
->      > >           if (ret >= 0) {
->      > >               ret = -EINVAL;
->      > >           }
->      > > -        fprintf(stderr, "kvm version too old\n");
->      > > +        error_report("kvm version too old");
->      > >           goto err;
->      > >       }
->      > >
->      > >       if (ret > KVM_API_VERSION) {
->      > >           ret = -EINVAL;
->      > > -        fprintf(stderr, "kvm version not supported\n");
->      > > +        error_report("kvm version not supported");
->      > >           goto err;
->      > >       }
->      > >
->      > > @@ -2488,26 +2488,22 @@ static int kvm_init(MachineState *ms)
->      > >       } while (ret == -EINTR);
->      > >
->      > >       if (ret < 0) {
->      > > -        fprintf(stderr, "ioctl(KVM_CREATE_VM) failed: %d
->     %s\n", -ret,
->      > > -                strerror(-ret));
->      > > +        error_report("ioctl(KVM_CREATE_VM) failed: %d %s", -ret,
->      > > +                    strerror(-ret));
->      > >
->      > >   #ifdef TARGET_S390X
->      > >           if (ret == -EINVAL) {
->      > > -            fprintf(stderr,
->      > > -                    "Host kernel setup problem detected.
->     Please verify:\n");
->      > > -            fprintf(stderr, "- for kernels supporting the
->     switch_amode or"
->      > > -                    " user_mode parameters, whether\n");
->      > > -            fprintf(stderr,
->      > > -                    "  user space is running in primary
->     address space\n");
->      > > -            fprintf(stderr,
->      > > -                    "- for kernels supporting the
->     vm.allocate_pgste sysctl, "
->      > > -                    "whether it is enabled\n");
->      > > +            error_report("Host kernel setup problem detected.
->      >
->      > \n"
->      >
->      > Should we use error_printf_unless_qmp() for the following?
-> 
->     Do you believe that qemu_init() -> configure_accelerators() ->
->     do_configure_accelerator,() -> accel_init_machine() -> kvm_init()  can
->     be called from QMP context?
-> 
-> 
-> To clarify, that is the only path I saw that calls kvm_init()
+Since commit 4ccd5fe22feb95137d325f422016a6473541fe9f ('pc: add option
+to disable PS/2 mouse/keyboard'), the vmport will not be created unless
+the i8042 PS/2 controller is enabled. To avoid confusion, let's fail if
+vmport was explicitly requested, but the i8042 controller is disabled.
+This also changes the behavior of vmport=3Dauto to take i8042 controller
+availability into account.
 
-We don't know whether this code can end refactored or not.
-Personally I rather consistent API uses, since snipped of
-code are often used as example. Up to the maintainer.
+Signed-off-by: Kamil Szcz=C4=99k <kamil@szczek.dev>
+---
+ hw/i386/pc.c      | 8 ++++++--
+ hw/i386/pc_piix.c | 3 ++-
+ hw/i386/pc_q35.c  | 2 +-
+ qemu-options.hx   | 4 ++--
+ 4 files changed, 11 insertions(+), 6 deletions(-)
 
->      >
->      > " Please verify:");
->      > > +            error_report("- for kernels supporting the
->     switch_amode or"
->      > > +                        " user_mode parameters, whether");
->      > > +            error_report("  user space is running in primary
->     address space");
->      > > +            error_report("- for kernels supporting the
->     vm.allocate_pgste "
->      > > +                        "sysctl, whether it is enabled");
->      > >           }
->      > >   #elif defined(TARGET_PPC)
->      > >           if (ret == -EINVAL) {
->      > > -            fprintf(stderr,
->      > > -                    "PPC KVM module is not loaded.
->      >
->      > \n"
->      >
->      > Ditto.
->      >
->      > " Try modprobe kvm_%s.\n",
->      > > -                    (type == 2) ? "pr" : "hv");
->      > > +            error_report("PPC KVM module is not loaded. Try
->     modprobe kvm_%s.",
->      > > +                        (type == 2) ? "pr" : "hv");
->      > >           }
->      > >   #endif
->      > >           goto err;
->      > > @@ -2526,9 +2522,9 @@ static int kvm_init(MachineState *ms)
->      > >                           nc->name, nc->num, soft_vcpus_limit);
->      > >
->      > >               if (nc->num > hard_vcpus_limit) {
->      > > -                fprintf(stderr, "Number of %s cpus requested
->     (%d) exceeds "
->      > > -                        "the maximum cpus supported by KVM
->     (%d)\n",
->      > > -                        nc->name, nc->num, hard_vcpus_limit);
->      > > +                error_report("Number of %s cpus requested (%d)
->     exceeds "
->      > > +                             "the maximum cpus supported by
->     KVM (%d)",
->      > > +                             nc->name, nc->num, hard_vcpus_limit);
->      > >                   exit(1);
->      > >               }
->      > >           }
->      > > @@ -2542,8 +2538,8 @@ static int kvm_init(MachineState *ms)
->      > >       }
->      > >       if (missing_cap) {
->      > >           ret = -EINVAL;
->      > > -        fprintf(stderr, "kvm does not support %s\n%s",
->      > > -                missing_cap->name, upgrade_note);
->      > > +        error_printf("kvm does not support %s\n%s",
->      > > +                     missing_cap->name, upgrade_note);
->      >
->      > Similarly, should we print upgrade_note using
->     error_printf_unless_qmp?
->      >
->      > >           goto err;
->      > >       }
->      > >
->      >
-> 
+diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+index c74931d577..c99f2ce540 100644
+--- a/hw/i386/pc.c
++++ b/hw/i386/pc.c
+@@ -1075,7 +1075,7 @@ static const MemoryRegionOps ioportF0_io_ops =3D {
+ };
+=20
+ static void pc_superio_init(ISABus *isa_bus, bool create_fdctrl,
+-                            bool create_i8042, bool no_vmport)
++                            bool create_i8042, bool no_vmport, Error **err=
+p)
+ {
+     int i;
+     DriveInfo *fd[MAX_FD];
+@@ -1100,6 +1100,10 @@ static void pc_superio_init(ISABus *isa_bus, bool cr=
+eate_fdctrl,
+     }
+=20
+     if (!create_i8042) {
++        if (!no_vmport) {
++            error_setg(errp,
++                       "vmport requires the i8042 controller to be enabled=
+");
++        }
+         return;
+     }
+=20
+@@ -1219,7 +1223,7 @@ void pc_basic_device_init(struct PCMachineState *pcms=
+,
+=20
+     /* Super I/O */
+     pc_superio_init(isa_bus, create_fdctrl, pcms->i8042_enabled,
+-                    pcms->vmport !=3D ON_OFF_AUTO_ON);
++                    pcms->vmport !=3D ON_OFF_AUTO_ON, &error_fatal);
+ }
+=20
+ void pc_nic_init(PCMachineClass *pcmc, ISABus *isa_bus, PCIBus *pci_bus)
+diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+index d9e69243b4..cf2e2e3e30 100644
+--- a/hw/i386/pc_piix.c
++++ b/hw/i386/pc_piix.c
+@@ -312,7 +312,8 @@ static void pc_init1(MachineState *machine, const char =
+*pci_type)
+=20
+     assert(pcms->vmport !=3D ON_OFF_AUTO__MAX);
+     if (pcms->vmport =3D=3D ON_OFF_AUTO_AUTO) {
+-        pcms->vmport =3D xen_enabled() ? ON_OFF_AUTO_OFF : ON_OFF_AUTO_ON;
++        pcms->vmport =3D (xen_enabled() || !pcms->i8042_enabled)
++            ? ON_OFF_AUTO_OFF : ON_OFF_AUTO_ON;
+     }
+=20
+     /* init basic PC hardware */
+diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+index 9d108b194e..6c112d804d 100644
+--- a/hw/i386/pc_q35.c
++++ b/hw/i386/pc_q35.c
+@@ -278,7 +278,7 @@ static void pc_q35_init(MachineState *machine)
+=20
+     assert(pcms->vmport !=3D ON_OFF_AUTO__MAX);
+     if (pcms->vmport =3D=3D ON_OFF_AUTO_AUTO) {
+-        pcms->vmport =3D ON_OFF_AUTO_ON;
++        pcms->vmport =3D pcms->i8042_enabled ? ON_OFF_AUTO_ON : ON_OFF_AUT=
+O_OFF;
+     }
+=20
+     /* init basic PC hardware */
+diff --git a/qemu-options.hx b/qemu-options.hx
+index cee0da2014..0bc780a669 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -68,8 +68,8 @@ SRST
+=20
+     ``vmport=3Don|off|auto``
+         Enables emulation of VMWare IO port, for vmmouse etc. auto says
+-        to select the value based on accel. For accel=3Dxen the default is
+-        off otherwise the default is on.
++        to select the value based on accel and i8042. For accel=3Dxen
++        and/or i8042=3Doff the default is off otherwise the default is on.
+=20
+     ``dump-guest-core=3Don|off``
+         Include guest memory in a core dump. The default is on.
+--=20
+2.45.0
+
 
 
