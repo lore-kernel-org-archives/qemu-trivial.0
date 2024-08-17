@@ -1,76 +1,52 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sewn6-0003f5-RQ
-	for mharc-qemu-trivial@gnu.org; Fri, 16 Aug 2024 09:14:52 -0400
+	id 1sfF7h-0004CH-FB
+	for mharc-qemu-trivial@gnu.org; Sat, 17 Aug 2024 04:49:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1sewn2-0003bC-8K; Fri, 16 Aug 2024 09:14:48 -0400
-Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>)
- id 1sewn0-0006Ev-CE; Fri, 16 Aug 2024 09:14:47 -0400
-Received: by mail-ed1-x52a.google.com with SMTP id
- 4fb4d7f45d1cf-5b9d48d1456so3253708a12.1; 
- Fri, 16 Aug 2024 06:14:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1723814083; x=1724418883; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=NO0yNECN+xfmp1Ew6nPth1TBvVMJWXurUgl6b+qxEiY=;
- b=ZUCT/PYFlI36DbSvWUdmdxkso/FDH7TeZIkxO3qoYgkLruXg6eDcchwuYLSXz/jyEk
- Ftz3YxX0+WITfydAwvnHW+1iIkl2MFvEq16X2YTmN9lvD9cebiT5Vd7tl/9dDnqDf0Bj
- e2oKfP5i3OHOlKj0F4PCC8eUXRAQSOPjEw6nJ/sQVhTS2aOOipF0QgT989con4dE4Ava
- O3iaODaQsROUkvOWOKt8vb8XqlY5j1lYspePW6J4VeixSGtpKsABsf7KSEOlmnqm7Y0T
- q9oGZ0ygOhcILIgB7ouVQ5uIZm6PA22ZgsltReCcCpfgg2p3TGxrD6xONOsW10s4Iv3K
- Pn6Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1723814083; x=1724418883;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=NO0yNECN+xfmp1Ew6nPth1TBvVMJWXurUgl6b+qxEiY=;
- b=BrpihK9fGhLmRBzuL9qC1ObOU+nGMZOodmJfZIKmeWQR46rtv7hHRDgrJn1PYlBWwq
- ydJNb7vMUcMdLF3ZBxWDnLS1XYhSVB26U0Nqwxd3I4noeCXKkMucFkRtQvTIq8y80gBr
- DdSI5cv9fkRdMyJtmHP8F9E6bBF6yoDt6is4iHmUNUMqzr3WLTCJJpg/RGfdI353RpjM
- AWxt2vLVoHiyfa1Gh47qquGl/D302/Ml4cgDyWBjZ+1Ez9LDTRhlc9bcgpaQxqa9qN0z
- adhF+aL4h39V8HOeOaKn/HmAUnw5cl8kV1yN3VdLGfE3kgie1DsZUXa2BHA/e6dfwrNL
- OkjQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWajg9qvfdyrVONxpCwGykUSv1TQYQ6Hng8IilxdxmDepFrlhF/ygzK4/TMZDKgXNyruBnyrZuBLJTSPIUD7+jjLw0gRW0=
-X-Gm-Message-State: AOJu0Yx7ze/lkdLlUX6l786gGJHuTpKs/as9zlCQpQFuQiHERlyeLbB7
- sKHsmbs0IQpdZeyWFsCNLv3s6Bn1QUWhRBN+mZZsxmZmKdmIEcT7B+ivzA==
-X-Google-Smtp-Source: AGHT+IF0qtJ+9CX6ULHCp08LHeW1yCgYYgvjrvRADJ1pT8O7bGynF5Ry1KFEHB2b+Cgw6SFYe/jUPQ==
-X-Received: by 2002:a05:6402:5108:b0:5bb:8ffd:24b9 with SMTP id
- 4fb4d7f45d1cf-5beb38ba20fmr5249697a12.0.1723814082980; 
- Fri, 16 Aug 2024 06:14:42 -0700 (PDT)
-Received: from [127.0.0.1] (dynamic-077-013-145-177.77.13.pool.telefonica.de.
- [77.13.145.177]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5bebbdfa240sm2252070a12.42.2024.08.16.06.14.42
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 Aug 2024 06:14:42 -0700 (PDT)
-Date: Fri, 16 Aug 2024 13:14:41 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: qemu-devel@nongnu.org, =?UTF-8?Q?Kamil_Szcz=C4=99k?= <kamil@szczek.dev>,
+ (Exim 4.90_1) (envelope-from <kamil@szczek.dev>) id 1sfF7e-00049j-VA
+ for qemu-trivial@nongnu.org; Sat, 17 Aug 2024 04:49:19 -0400
+Received: from mail-40136.proton.ch ([185.70.40.136])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kamil@szczek.dev>) id 1sfF7b-0007VD-Cn
+ for qemu-trivial@nongnu.org; Sat, 17 Aug 2024 04:49:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=szczek.dev;
+ s=protonmail3; t=1723884550; x=1724143750;
+ bh=tkL+j2AuaQd3rWS/sFgiD96I3hY5MbiXOZryxix19wY=;
+ h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+ Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+ Message-ID:BIMI-Selector;
+ b=nnTyNXh7Y4CuahGZTzXrbQU59NbZ4TOHvEu+WNsDmyvc4vEk//OGkPCGM5gnWb+w5
+ 7fxy1Fwaef1Wf5hZq3hlad3Az6RhFzWLaiGDkZFCK+kmjMu8YGqOCU34LNXDBYn1vH
+ tjRktTHRQRBmVIGgA9DjselW2D+28BDAf793j4vpg5IcTxHzHWp+zWCzjLO7hegwAP
+ Z3c9ywt99Bh7uj7IG2iM0smWxBvFF7IAHJRXUFbjk12YKxP7IFqRF5qgHTr+ZtvTbZ
+ +aPj2BMpnSHvX9Iahs+ci4PGS7XQtcjznpm/2bTwW4bqjIbpHgp6AdLCniEvHohpvV
+ E1RhWpcRMKk7A==
+Date: Sat, 17 Aug 2024 08:49:05 +0000
+To: Bernhard Beschow <shentey@gmail.com>,
  "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+From: =?utf-8?Q?Kamil_Szcz=C4=99k?= <kamil@szczek.dev>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>,
+ =?utf-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 Subject: Re: [PATCH] hw/i386/pc: Warn about unsatisfied vmport deps
-In-Reply-To: <vsm1ly2eX009LRKgURcMp6qTYHWw1bZd3zg2GUbd4M90T91QvJRdKxiRS3rPl8PR96y2r890Am3Ajf4kQrwihn7-7hKBU9VicRPPtIRv_GI=@szczek.dev>
+Message-ID: <qT_ps6medVHIOIF5hUE_tIMUtEdbHQw5wnhE2ZVauM1cpnfHXqnl9-hroGS-3due9uRtKlMR5RsREbzeIV_0Xp1-FM0w4UDFsvdo3PsIG6U=@szczek.dev>
+In-Reply-To: <0D723368-3251-4D5E-A625-73169CBE3395@gmail.com>
 References: <vsm1ly2eX009LRKgURcMp6qTYHWw1bZd3zg2GUbd4M90T91QvJRdKxiRS3rPl8PR96y2r890Am3Ajf4kQrwihn7-7hKBU9VicRPPtIRv_GI=@szczek.dev>
-Message-ID: <0D723368-3251-4D5E-A625-73169CBE3395@gmail.com>
+ <0D723368-3251-4D5E-A625-73169CBE3395@gmail.com>
+Feedback-ID: 37679334:user:proton
+X-Pm-Message-ID: c1a6bcafa1b93b2b6ed742e983777258883b9490
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x52a.google.com
+Received-SPF: pass client-ip=185.70.40.136; envelope-from=kamil@szczek.dev;
+ helo=mail-40136.proton.ch
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,103 +59,107 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 Aug 2024 13:14:48 -0000
+X-List-Received-Date: Sat, 17 Aug 2024 08:49:19 -0000
 
+On Friday, August 16th, 2024 at 15:14, Bernhard Beschow <shentey@gmail.com>=
+ wrote:
 
-
-Am 14=2E August 2024 11:10:16 UTC schrieb "Kamil Szcz=C4=99k" <kamil@szcze=
-k=2Edev>:
->Since commit 4ccd5fe22feb95137d325f422016a6473541fe9f ('pc: add option
->to disable PS/2 mouse/keyboard'), the vmport will not be created unless
->the i8042 PS/2 controller is enabled=2E To not confuse users, let's add a
->warning if vmport was explicitly requested, but the i8042 controller is
->disabled=2E This also changes the behavior of vmport=3Dauto to take i8042
->controller availability into account=2E
 >
->Signed-off-by: Kamil Szcz=C4=99k <kamil@szczek=2Edev>
->---
-> hw/i386/pc=2Ec      | 4 ++++
-> hw/i386/pc_piix=2Ec | 3 ++-
-> hw/i386/pc_q35=2Ec  | 2 +-
-> qemu-options=2Ehx   | 4 ++--
-> 4 files changed, 9 insertions(+), 4 deletions(-)
+> Am 14. August 2024 11:10:16 UTC schrieb "Kamil Szcz=C4=99k" kamil@szczek.=
+dev:
 >
->diff --git a/hw/i386/pc=2Ec b/hw/i386/pc=2Ec
->index c74931d577=2E=2E5bd8dd0350 100644
->--- a/hw/i386/pc=2Ec
->+++ b/hw/i386/pc=2Ec
->@@ -1100,6 +1100,10 @@ static void pc_superio_init(ISABus *isa_bus, bool =
-create_fdctrl,
->     }
->=20
->     if (!create_i8042) {
->+        if (!no_vmport) {
->+            warn_report("vmport requires the i8042 controller to be enab=
-led");
->+        }
->+
->         return;
->     }
->=20
->diff --git a/hw/i386/pc_piix=2Ec b/hw/i386/pc_piix=2Ec
->index d9e69243b4=2E=2Ecf2e2e3e30 100644
->--- a/hw/i386/pc_piix=2Ec
->+++ b/hw/i386/pc_piix=2Ec
->@@ -312,7 +312,8 @@ static void pc_init1(MachineState *machine, const cha=
-r *pci_type)
->=20
->     assert(pcms->vmport !=3D ON_OFF_AUTO__MAX);
->     if (pcms->vmport =3D=3D ON_OFF_AUTO_AUTO) {
->-        pcms->vmport =3D xen_enabled() ? ON_OFF_AUTO_OFF : ON_OFF_AUTO_O=
-N;
->+        pcms->vmport =3D (xen_enabled() || !pcms->i8042_enabled)
->+            ? ON_OFF_AUTO_OFF : ON_OFF_AUTO_ON;
->     }
+> > Since commit 4ccd5fe22feb95137d325f422016a6473541fe9f ('pc: add option
+> > to disable PS/2 mouse/keyboard'), the vmport will not be created unless
+> > the i8042 PS/2 controller is enabled. To not confuse users, let's add a
+> > warning if vmport was explicitly requested, but the i8042 controller is
+> > disabled. This also changes the behavior of vmport=3Dauto to take i8042
+> > controller availability into account.
+> >
+> > Signed-off-by: Kamil Szcz=C4=99k kamil@szczek.dev
+> > ---
+> > hw/i386/pc.c | 4 ++++
+> > hw/i386/pc_piix.c | 3 ++-
+> > hw/i386/pc_q35.c | 2 +-
+> > qemu-options.hx | 4 ++--
+> > 4 files changed, 9 insertions(+), 4 deletions(-)
+> >
+> > diff --git a/hw/i386/pc.c b/hw/i386/pc.c
+> > index c74931d577..5bd8dd0350 100644
+> > --- a/hw/i386/pc.c
+> > +++ b/hw/i386/pc.c
+> > @@ -1100,6 +1100,10 @@ static void pc_superio_init(ISABus *isa_bus, boo=
+l create_fdctrl,
+> > }
+> >
+> > if (!create_i8042) {
+> > + if (!no_vmport) {
+> > + warn_report("vmport requires the i8042 controller to be enabled");
+> > + }
+> > +
+> > return;
+> > }
+> >
+> > diff --git a/hw/i386/pc_piix.c b/hw/i386/pc_piix.c
+> > index d9e69243b4..cf2e2e3e30 100644
+> > --- a/hw/i386/pc_piix.c
+> > +++ b/hw/i386/pc_piix.c
+> > @@ -312,7 +312,8 @@ static void pc_init1(MachineState *machine, const c=
+har *pci_type)
+> >
+> > assert(pcms->vmport !=3D ON_OFF_AUTO__MAX);
+> > if (pcms->vmport =3D=3D ON_OFF_AUTO_AUTO) {
+> > - pcms->vmport =3D xen_enabled() ? ON_OFF_AUTO_OFF : ON_OFF_AUTO_ON;
+> > + pcms->vmport =3D (xen_enabled() || !pcms->i8042_enabled)
+> > + ? ON_OFF_AUTO_OFF : ON_OFF_AUTO_ON;
+> > }
+>
+>
+> I think it makes sense to consolidate this handling into pc_basic_devices=
+_init() before doing this change. Maybe just in front of the call to pc_sup=
+erio_init()? The additional handling of xen_enabled() shouldn't hurt there =
+for q35: Even though q35 doesn't (yet) support Xen there are already code p=
+aths where this check is done.
 
-I think it makes sense to consolidate this handling into pc_basic_devices_=
-init() before doing this change=2E Maybe just in front of the call to pc_su=
-perio_init()? The additional handling of xen_enabled() shouldn't hurt there=
- for q35: Even though q35 doesn't (yet) support Xen there are already code =
-paths where this check is done=2E
+Makes sense technically, but since I'm new to the mailing list workflow I c=
+ould use some help with logistics. I've already posted a v2 of this patch w=
+hich was reviewed and accepted, should I wait for it to be pulled in and po=
+st a follow-up patch or post another revision of this patch?
 
->=20
->     /* init basic PC hardware */
->diff --git a/hw/i386/pc_q35=2Ec b/hw/i386/pc_q35=2Ec
->index 9d108b194e=2E=2E6c112d804d 100644
->--- a/hw/i386/pc_q35=2Ec
->+++ b/hw/i386/pc_q35=2Ec
->@@ -278,7 +278,7 @@ static void pc_q35_init(MachineState *machine)
->=20
->     assert(pcms->vmport !=3D ON_OFF_AUTO__MAX);
->     if (pcms->vmport =3D=3D ON_OFF_AUTO_AUTO) {
->-        pcms->vmport =3D ON_OFF_AUTO_ON;
->+        pcms->vmport =3D pcms->i8042_enabled ? ON_OFF_AUTO_ON : ON_OFF_A=
-UTO_OFF;
->     }
->=20
->     /* init basic PC hardware */
->diff --git a/qemu-options=2Ehx b/qemu-options=2Ehx
->index cee0da2014=2E=2E0bc780a669 100644
->--- a/qemu-options=2Ehx
->+++ b/qemu-options=2Ehx
->@@ -68,8 +68,8 @@ SRST
->=20
->     ``vmport=3Don|off|auto``
->         Enables emulation of VMWare IO port, for vmmouse etc=2E auto say=
-s
->-        to select the value based on accel=2E For accel=3Dxen the defaul=
-t is
->-        off otherwise the default is on=2E
->+        to select the value based on accel and i8042=2E For accel=3Dxen
->+        and/or i8042=3Doff the default is off otherwise the default is o=
-n=2E
-
-I'd do s#and/or#or# for readability=2E
-
-Best regards,
-Bernhard
-
->=20
->     ``dump-guest-core=3Don|off``
->         Include guest memory in a core dump=2E The default is on=2E
+>
+> > /* init basic PC hardware */
+> > diff --git a/hw/i386/pc_q35.c b/hw/i386/pc_q35.c
+> > index 9d108b194e..6c112d804d 100644
+> > --- a/hw/i386/pc_q35.c
+> > +++ b/hw/i386/pc_q35.c
+> > @@ -278,7 +278,7 @@ static void pc_q35_init(MachineState *machine)
+> >
+> > assert(pcms->vmport !=3D ON_OFF_AUTO__MAX);
+> > if (pcms->vmport =3D=3D ON_OFF_AUTO_AUTO) {
+> > - pcms->vmport =3D ON_OFF_AUTO_ON;
+> > + pcms->vmport =3D pcms->i8042_enabled ? ON_OFF_AUTO_ON : ON_OFF_AUTO_O=
+FF;
+> > }
+> >
+> > /* init basic PC hardware */
+> > diff --git a/qemu-options.hx b/qemu-options.hx
+> > index cee0da2014..0bc780a669 100644
+> > --- a/qemu-options.hx
+> > +++ b/qemu-options.hx
+> > @@ -68,8 +68,8 @@ SRST
+> >
+> > `vmport=3Don|off|auto`
+> > Enables emulation of VMWare IO port, for vmmouse etc. auto says
+> > - to select the value based on accel. For accel=3Dxen the default is
+> > - off otherwise the default is on.
+> > + to select the value based on accel and i8042. For accel=3Dxen
+> > + and/or i8042=3Doff the default is off otherwise the default is on.
+>
+>
+> I'd do s#and/or#or# for readability.
+>
+> Best regards,
+> Bernhard
+>
+> > `dump-guest-core=3Don|off`
+> > Include guest memory in a core dump. The default is on.
 
