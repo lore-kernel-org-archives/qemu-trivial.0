@@ -1,69 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sgMF1-0002NN-SK
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Aug 2024 06:37:31 -0400
+	id 1sgMHG-0004Ec-AN
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Aug 2024 06:39:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sgMF0-0002Hq-HU
- for qemu-trivial@nongnu.org; Tue, 20 Aug 2024 06:37:30 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sgMH9-0004Co-ON
+ for qemu-trivial@nongnu.org; Tue, 20 Aug 2024 06:39:43 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sgMEy-0005dW-TJ
- for qemu-trivial@nongnu.org; Tue, 20 Aug 2024 06:37:30 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-5becdf7d36aso4244251a12.1
- for <qemu-trivial@nongnu.org>; Tue, 20 Aug 2024 03:37:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sgMH8-0005pn-9d
+ for qemu-trivial@nongnu.org; Tue, 20 Aug 2024 06:39:43 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-5becdf7d36aso4246374a12.1
+ for <qemu-trivial@nongnu.org>; Tue, 20 Aug 2024 03:39:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1724150247; x=1724755047; darn=nongnu.org;
+ d=linaro.org; s=google; t=1724150381; x=1724755181; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=YeX2pH7S+X+RBHTTO4RrTsaPeGgF/gJQxWwMU4ZFPK0=;
- b=HbsYA+3SEIjAcax2f/+ehQXTa4N04fKcOD5wwZBI/ejh88knUWioocBQATica0pt4c
- 71q1HC5doobogu545fGPahTA9uV+g27l57qF470Fd0UDfN2ER69vvI1mCzqsIZUoKeYj
- JOyK6l4W1zHPAadd+BzWIBaJ5ScfzxOR1nzkgSp6GuWSNpSYLadpZj9bl/FlDKbXN3KO
- 3mW/93y/liB6AGhpUTj5pXj39PzncD7ATOv7ieFS71Zy7Aoxr3bu7iVfSudTqDOecqDu
- GTewXvw/O6gSZ6jNDUVVzreQVyirpHDGhA1+NfkRIl65aEIl7xb/JKA4SyoBeQCOC2x+
- 3XhQ==
+ bh=JDvNnQTvDSh32A9jDGuqBTXfgR0G/e1o6MYBxxG1hBQ=;
+ b=eQzTBgmYihC7AWVhh10WTyNQ0ZwuCOwdtXqPyMnlMw5YnXdjxdy9pGlqC+NVAf8nPN
+ o9d2E6MwcMSuUnVJIglOXN8Xl6WCwVuaftUsR98pFmdx5p62FKamYCqOiZ4+5Y7Zb1Xd
+ c4oDfteoqutd9upPy+r+vq2v2POjUpgtYRnal83odPIhdVDiZw1N8plhK/j4JCXm7Nvk
+ 8yu7zg0ysutj5Nh6BeDPBk68wblQfOmiV4hvCONASEojjuo5Qdx20E/n6qqx3Ys/kMZo
+ 0Zk/Q3Zpdvdn3NOA7Fh8Q4hFcrocTfULRNuAFpBOlpG30ZRCwbwOfoXoOo8HAaMizwWP
+ nuPg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724150247; x=1724755047;
+ d=1e100.net; s=20230601; t=1724150381; x=1724755181;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=YeX2pH7S+X+RBHTTO4RrTsaPeGgF/gJQxWwMU4ZFPK0=;
- b=PAEhUJZ/3aTpILqTFDEU/jMEMBfwTsGbKVSfq3snu0JG894lQQcV6ZRCYsIPVKHz3/
- kxREY40eko/AE9dcahvwIoGuX8kT5vhxbBLNl3bwL7X+bxWc/HNiq7V+32uaX7S2qYRU
- cH0F+5686JTIBIllLmHYHBVeHWuM17Y7QhOd3utnOo0M6PPniRjYXaCJlC/RFFfZgoGv
- eRlcLPkas04AuWLr0eFe9Ant6rELEZz9ZqUY89eD/htouCF8IMPpaqDZKvh+iiUpirzU
- T32/4rfQCcIJEPPEFQaXvnA31pQoIJdhz0ckEJDWDo7TsMTLyBHAYZK8U1mEsyYOxD2n
- 1Rhw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXGH4F30yvBt7RliN8aMbsSHpRwVzWYz8/iTyfenBhaqj81fpIMlzkFqqFpHQn05Qz1jS22HVNbcMa2487ZevUmHmKEdsI8eQ==
-X-Gm-Message-State: AOJu0YxpJsd7zvDaP1IdVxfRzZkXNAXKAEiAclu/RCkYpytc7PBcEBKr
- OtU0L2H2V4X/S9ZsdRVqjfw7WYt0DO6ZUfcZgx0Ae1K8WPGP6UnmKi2m3mUOjLA=
-X-Google-Smtp-Source: AGHT+IHWKHfbZO57bp3Tn0tlgqLMdg71wiUgDSrD3F+p4iWZNBnF7sMJ2i3CRk0QyFQBZVek+nJzew==
-X-Received: by 2002:a05:6402:42ce:b0:59e:f6e7:5521 with SMTP id
- 4fb4d7f45d1cf-5beca59365bmr10097247a12.19.1724150246944; 
- Tue, 20 Aug 2024 03:37:26 -0700 (PDT)
+ bh=JDvNnQTvDSh32A9jDGuqBTXfgR0G/e1o6MYBxxG1hBQ=;
+ b=KpTv0TIYHk4N1soQtaJx8bdWaiFgQMVJzSzzxRwGYaJxqMkAAtJSo1XB/AS3ndq0BO
+ dAEqGBJxSTQgtQs/9fyHxKvkvhmq2VTyKTTdgeCQUJ6iLoYNQuN6OSX3Y4r93uyPgBFP
+ w1wkMhv0TqF52sC86a07tDZhInDkOOeWZ0YPqbIYLFPF+cvaq1Buz3JOLNxSDaRTwe2v
+ qv+tbiMXBptwW2SBgj0/SBX3DqaNdWIoVbnMol3bHaoj8ZHZZbKuBCbasMmznFEUe6Bh
+ LcY7YtvRLMJ4SxT4nYDqmCR9qWjxrDm2h95QUrW8H4lLFG6be1Ek0ZZUJOI/TIhYsiF5
+ 5KvA==
+X-Gm-Message-State: AOJu0YxvEdoZTAfGrBHdamab+WGKqQpzFsAEo8xJ+U1YgEGCvdfIJRYk
+ 1HRYy/UWiWR7hyaQthFY8QQAv9xbRGb/c6dEwqY3A0IzdtcslxfPbibmVr2Bs/o=
+X-Google-Smtp-Source: AGHT+IHer8sYgaUfE/LrJgzwGzZfvpxnuwO0C3ralML75WvUgbtmk6bptLIFa8o/sgyGTgv1DyIRIQ==
+X-Received: by 2002:a05:6402:34ce:b0:5be:ee30:9948 with SMTP id
+ 4fb4d7f45d1cf-5beee30a06amr4531652a12.8.1724150380558; 
+ Tue, 20 Aug 2024 03:39:40 -0700 (PDT)
 Received: from [192.168.223.175] (84.21.205.77.rev.sfr.net. [77.205.21.84])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5bebbe7f17bsm6710306a12.59.2024.08.20.03.37.25
+ 4fb4d7f45d1cf-5bebc0832d2sm6565334a12.97.2024.08.20.03.39.39
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 20 Aug 2024 03:37:26 -0700 (PDT)
-Message-ID: <148cb5a4-2db3-4ba4-bb3b-a281e7dde9d3@linaro.org>
-Date: Tue, 20 Aug 2024 12:37:24 +0200
+ Tue, 20 Aug 2024 03:39:40 -0700 (PDT)
+Message-ID: <eb9ecc66-288d-4fc4-bdfb-95594774bdf6@linaro.org>
+Date: Tue, 20 Aug 2024 12:39:38 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/display/vhost-user-gpu.c: fix vhost_user_gpu_chr_read()
-To: Haoran Zhang <wh1sper@zju.edu.cn>, qemu-trivial@nongnu.org
-Cc: marcandre.lureau@redhat.com, qemu-stable <qemu-stable@nongnu.org>
-References: <20240820030433.395444-2-wh1sper@zju.edu.cn>
+Subject: Re: [PATCH-for-9.1 v3 0/2] hw/i386/pc: Fix vmport option handling
+To: =?UTF-8?Q?Kamil_Szcz=C4=99k?= <kamil@szczek.dev>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Bernhard Beschow <shentey@gmail.com>, Joelle van Dyne <j@getutm.app>
+References: <IrhtgC0oPtusYG_0cOwVYOuOr0UpK0YLNYNtxDQ2_lqgtcVBzVr-gYNUzggvmO9tHdmf65aO8Zoab-ERkyQbtjx9u2VuHEYZ_3r0Wb25huw=@szczek.dev>
 Content-Language: en-US
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20240820030433.395444-2-wh1sper@zju.edu.cn>
+In-Reply-To: <IrhtgC0oPtusYG_0cOwVYOuOr0UpK0YLNYNtxDQ2_lqgtcVBzVr-gYNUzggvmO9tHdmf65aO8Zoab-ERkyQbtjx9u2VuHEYZ_3r0Wb25huw=@szczek.dev>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -83,22 +84,13 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Aug 2024 10:37:30 -0000
+X-List-Received-Date: Tue, 20 Aug 2024 10:39:45 -0000
 
-On 20/8/24 05:04, Haoran Zhang wrote:
-> fix vhost_user_gpu_chr_read() where `size` was incorretly passed
+On 17/8/24 17:24, Kamil Szczęk wrote:
 
-Typo "incorrectly".
+> Kamil Szczęk (2):
+>    hw/i386/pc: Unify vmport=auto handling
+>    hw/i386/pc: Ensure vmport prerequisites are fulfilled
 
-> to `msg->flags`.
-> 
-> Signed-off-by: Haoran Zhang <wh1sper@zju.edu.cn>
-> ---
->   hw/display/vhost-user-gpu.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-
-Cc: qemu-stable@nongnu.org
-Fixes: 267f664658 ("hw/display: add vhost-user-vga & gpu-pci")
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+Series merged, thanks.
 
