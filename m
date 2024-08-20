@@ -1,51 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sgGrb-0001Cd-TF
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Aug 2024 00:52:59 -0400
+	id 1sgGrd-0001DQ-T3
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Aug 2024 00:53:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <wh1sper@zju.edu.cn>)
- id 1sgFDf-0004j1-Ug
- for qemu-trivial@nongnu.org; Mon, 19 Aug 2024 23:07:39 -0400
-Received: from zg8tmja2lje4os4yms4ymjma.icoremail.net ([206.189.21.223])
+ id 1sgEXn-0000Xk-Si
+ for qemu-trivial@nongnu.org; Mon, 19 Aug 2024 22:24:23 -0400
+Received: from azure-sdnproxy.icoremail.net ([20.231.56.155])
  by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wh1sper@zju.edu.cn>) id 1sgFDd-0007V0-Mn
- for qemu-trivial@nongnu.org; Mon, 19 Aug 2024 23:07:39 -0400
-Received: from NUC10i7FNH.. (unknown [101.82.68.47])
- by mail-app2 (Coremail) with SMTP id by_KCgCHa9htCMRm7ZyzAg--.325S2;
- Tue, 20 Aug 2024 11:07:29 +0800 (CST)
-From: Haoran Zhang <wh1sper@zju.edu.cn>
+ (envelope-from <wh1sper@zju.edu.cn>) id 1sgEXi-0001pc-Ue
+ for qemu-trivial@nongnu.org; Mon, 19 Aug 2024 22:24:23 -0400
+Received: from wh1sper$zju.edu.cn ( [101.82.68.47] ) by
+ ajax-webmail-mail-app4 (Coremail) ; Tue, 20 Aug 2024 10:20:00 +0800
+ (GMT+08:00)
+X-Originating-IP: [101.82.68.47]
+Date: Tue, 20 Aug 2024 10:20:00 +0800 (GMT+08:00)
+X-CM-HeaderCharset: UTF-8
+From: =?UTF-8?B?5byg5rWp54S2?= <wh1sper@zju.edu.cn>
 To: qemu-trivial@nongnu.org
-Cc: marcandre.lureau@redhat.com,
-	Haoran Zhang <wh1sper@zju.edu.cn>
-Subject: [PATCH] hw/display/vhost-user-gpu.c: fix vhost_user_gpu_chr_read()
-Date: Tue, 20 Aug 2024 11:04:34 +0800
-Message-ID: <20240820030433.395444-2-wh1sper@zju.edu.cn>
-X-Mailer: git-send-email 2.43.0
+Cc: marcandre.lureau@redhat.com
+Subject: [PATCH] fix vhost_user_gpu_chr_read() where `size` was incorrectly
+ passed to `msg->flags`
+X-Priority: 3
+X-Mailer: Coremail Webmail Server Version 2024.1-cmXT5 build
+ 20240625(a75f206e) Copyright (c) 2002-2024 www.mailtech.cn zju.edu.cn
+Content-Type: multipart/alternative; 
+ boundary="----=_Part_291546_1426043346.1724120400002"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: by_KCgCHa9htCMRm7ZyzAg--.325S2
-X-Coremail-Antispam: 1UD129KBjvdXoWrJw1xtrWUAFy3WrWrCF15Arb_yoWxXwc_Ga
- 1rAFZ7WFW5Gr1qgr45Jrn5urWSq3yfZr4I9F93JFy5try2kwn7t3yF934ruF13uwsrKr1D
- ArZ8J3ykAws0qjkaLaAFLSUrUUUUjb8apTn2vfkv8UJUUUU8Yxn0WfASr-VFAUDa7-sFnT
- 9fnUUIcSsGvfJTRUUUb2kFF20E14v26r1j6r4UM7CY07I20VC2zVCF04k26cxKx2IYs7xG
- 6rWj6s0DM7CIcVAFz4kK6r1j6r18M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48ve4kI8w
- A2z4x0Y4vE2Ix0cI8IcVAFwI0_tr0E3s1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI0_Cr1j
- 6rxdM28EF7xvwVC2z280aVAFwI0_GcCE3s1l84ACjcxK6I8E87Iv6xkF7I0E14v26rxl6s
- 0DM2AIxVAIcxkEcVAq07x20xvEncxIr21l5I8CrVACY4xI64kE6c02F40Ex7xfMcIj6xII
- jxv20xvE14v26r106r15McIj6I8E87Iv67AKxVWUJVW8JwAm72CE4IkC6x0Yz7v_Jr0_Gr
- 1lF7xvr2IYc2Ij64vIr41lF7I21c0EjII2zVCS5cI20VAGYxC7MxkIecxEwVAFwVW8GwCF
- 04k20xvY0x0EwIxGrwCFx2IqxVCFs4IE7xkEbVWUJVW8JwC20s026c02F40E14v26r1j6r
- 18MI8I3I0E7480Y4vE14v26r106r1rMI8E67AF67kF1VAFwI0_Jrv_JF1lIxkGc2Ij64vI
- r41lIxAIcVC0I7IYx2IY67AKxVWUJVWUCwCI42IY6xIIjxv20xvEc7CjxVAFwI0_Jr0_Gr
- 1lIxAIcVCF04k26cxKx2IYs7xG6r1j6r1xMIIF0xvEx4A2jsIE14v26r1j6r4UMIIF0xvE
- x4A2jsIEc7CjxVAFwI0_Jr0_GrUvcSsGvfC2KfnxnUUI43ZEXa7VUjHGQDUUUUU==
-X-CM-SenderInfo: asssliaqzvq6lmxovvfxof0/1tbiAggTB2bDWKYK2AADsU
-Received-SPF: pass client-ip=206.189.21.223; envelope-from=wh1sper@zju.edu.cn;
- helo=zg8tmja2lje4os4yms4ymjma.icoremail.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_MSPIKE_H2=-0.001,
+Message-ID: <4b2234bc.14983.1916d958082.Coremail.wh1sper@zju.edu.cn>
+X-Coremail-Locale: zh_CN
+X-CM-TRANSID: cS_KCgAHzFhQ_cNmf85nAg--.15757W
+X-CM-SenderInfo: asssliaqzvq6lmxovvfxof0/1tbiAggTB2bDWKYK2AAAsX
+X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VWUCw
+ CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
+ daVFxhVjvjDU=
+Received-SPF: pass client-ip=20.231.56.155; envelope-from=wh1sper@zju.edu.cn;
+ helo=azure-sdnproxy.icoremail.net
+X-Spam_score_int: -25
+X-Spam_score: -2.6
+X-Spam_bar: --
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -61,30 +56,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Aug 2024 03:07:40 -0000
+X-List-Received-Date: Tue, 20 Aug 2024 02:24:24 -0000
 
-fix vhost_user_gpu_chr_read() where `size` was incorretly passed 
-to `msg->flags`.
+------=_Part_291546_1426043346.1724120400002
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: base64
 
-Signed-off-by: Haoran Zhang <wh1sper@zju.edu.cn>
----
- hw/display/vhost-user-gpu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+RnJvbSBiODk4Mzk2M2VmZGQ4MWRkNWViZWZkM2UyOWE4NWY0MTE5MjkzNmUxIE1vbiBTZXAgMTcg
+MDA6MDA6MDAgMjAwMQoKRnJvbTogSGFvcmFuIFpoYW5nIDx3aDFzcGVyQHpqdS5lZHUuY24+CgpE
+YXRlOiBUdWUsIDIwIEF1ZyAyMDI0IDEwOjA2OjQyICswODAwCgpTdWJqZWN0OiBbUEFUQ0hdIGZp
+eCB2aG9zdF91c2VyX2dwdV9jaHJfcmVhZCgpIHdoZXJlIGBzaXplYCB3YXMgaW5jb3JyZWN0bHkK
+CiBwYXNzZWQgdG8gYG1zZy0+ZmxhZ3NgCgoKCgpTaWduZWQtb2ZmLWJ5OiBIYW9yYW4gWmhhbmcg
+PHdoMXNwZXJAemp1LmVkdS5jbj4KCgoKCi0tLQoKCgoKIGh3L2Rpc3BsYXkvdmhvc3QtdXNlci1n
+cHUuYyB8IDIgKy0KCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24o
+LSkKCgoKCmRpZmYgLS1naXQgYS9ody9kaXNwbGF5L3Zob3N0LXVzZXItZ3B1LmMgYi9ody9kaXNw
+bGF5L3Zob3N0LXVzZXItZ3B1LmMKCgoKCmluZGV4IDYzYzY0ZGRkZTYuLmMwYzY2OTEwZjEgMTAw
+NjQ0CgotLS0gYS9ody9kaXNwbGF5L3Zob3N0LXVzZXItZ3B1LmMKCisrKyBiL2h3L2Rpc3BsYXkv
+dmhvc3QtdXNlci1ncHUuYwoKQEAgLTM5MCw3ICszOTAsNyBAQCB2aG9zdF91c2VyX2dwdV9jaHJf
+cmVhZCh2b2lkICpvcGFxdWUpCgogICAgIH0KCiAKCiAgICAgbXNnLT5yZXF1ZXN0ID0gcmVxdWVz
+dDsKCi0gICAgbXNnLT5mbGFncyA9IHNpemU7CgorICAgIG1zZy0+ZmxhZ3MgPSBmbGFnczsKCiAg
+ICAgbXNnLT5zaXplID0gc2l6ZTsKCiAKCiAgICAgaWYgKHJlcXVlc3QgPT0gVkhPU1RfVVNFUl9H
+UFVfQ1VSU09SX1VQREFURSB8fAoKLS0gCgoyLjQzLjAKCgo=
+------=_Part_291546_1426043346.1724120400002
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: base64
 
-diff --git a/hw/display/vhost-user-gpu.c b/hw/display/vhost-user-gpu.c
-index 63c64ddde6..c0c66910f1 100644
---- a/hw/display/vhost-user-gpu.c
-+++ b/hw/display/vhost-user-gpu.c
-@@ -390,7 +390,7 @@ vhost_user_gpu_chr_read(void *opaque)
-     }
- 
-     msg->request = request;
--    msg->flags = size;
-+    msg->flags = flags;
-     msg->size = size;
- 
-     if (request == VHOST_USER_GPU_CURSOR_UPDATE ||
--- 
-2.43.0
+PHN0eWxlIGNsYXNzPSJrZS1zdHlsZSI+CltsaXN0LXN0eWxlLXR5cGVdIHtwYWRkaW5nLWxlZnQ6
+MjBweDtsaXN0LXN0eWxlLXBvc2l0aW9uOmluc2lkZX0KW2xpc3Qtc3R5bGUtdHlwZV0gbGkge21h
+cmdpbjowfQpbbGlzdC1zdHlsZS10eXBlXSBsaTpiZWZvcmUsIHNwYW4ua2UtbGlzdC1pdGVtLW1h
+dHRlciB7Zm9udC1mYW1pbHk6InNhbnMgc2VyaWYiLHRhaG9tYSx2ZXJkYW5hLGhlbHZldGljYX0K
+W2xpc3Qtc3R5bGUtdHlwZV0gbGkgcCxbbGlzdC1zdHlsZS10eXBlXSBsaSBoMSxbbGlzdC1zdHls
+ZS10eXBlXSBsaSBoMixbbGlzdC1zdHlsZS10eXBlXSBsaSBoMyxbbGlzdC1zdHlsZS10eXBlXSBs
+aSBoNCxbbGlzdC1zdHlsZS10eXBlXSBsaSBoNSxbbGlzdC1zdHlsZS10eXBlXSBsaSBkaXYsW2xp
+c3Qtc3R5bGUtdHlwZV0gbGkgYmxvY2txdW90ZXtkaXNwbGF5OmlubGluZTt3b3JkLWJyZWFrOmJy
+ZWFrLWFsbH0KW2xpc3Qtc3R5bGUtdHlwZV0gbGkgdGFibGUge2Rpc3BsYXk6aW5saW5lLWJsb2Nr
+O3ZlcnRpY2FsLWFsaWduOnRvcH0KcHttYXJnaW46MH0KdGQge3dvcmQtYnJlYWs6IGJyZWFrLXdv
+cmR9Ci5kZWZhdWx0LWZvbnQtMTcyNDExOTY2ODQ3MXsKfQo8L3N0eWxlPjxkaXYgY2xhc3M9ImRl
+ZmF1bHQtZm9udC0xNzI0MTE5NjY4NDcxIiBkaXI9Imx0ciI+PHA+RnJvbSBiODk4Mzk2M2VmZGQ4
+MWRkNWViZWZkM2UyOWE4NWY0MTE5MjkzNmUxIE1vbiBTZXAgMTcgMDA6MDA6MDAgMjAwMTwvcD48
+cD5Gcm9tOiBIYW9yYW4gWmhhbmcgJmx0O3doMXNwZXJAemp1LmVkdS5jbiZndDs8L3A+PHA+RGF0
+ZTogVHVlLCAyMCBBdWcgMjAyNCAxMDowNjo0MiArMDgwMDwvcD48cD5TdWJqZWN0OiBbUEFUQ0hd
+IGZpeCB2aG9zdF91c2VyX2dwdV9jaHJfcmVhZCgpIHdoZXJlIGBzaXplYCB3YXMgaW5jb3JyZWN0
+bHk8L3A+PHA+Jm5ic3A7cGFzc2VkIHRvIGBtc2ctJmd0O2ZsYWdzYDwvcD48cD48YnI+PC9wPjxw
+PlNpZ25lZC1vZmYtYnk6IEhhb3JhbiBaaGFuZyAmbHQ7d2gxc3BlckB6anUuZWR1LmNuJmd0Ozwv
+cD48cD48YnI+PC9wPjxwPi0tLTwvcD48cD48YnI+PC9wPjxwPiZuYnNwO2h3L2Rpc3BsYXkvdmhv
+c3QtdXNlci1ncHUuYyB8IDIgKy08L3A+PHA+Jm5ic3A7MSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0
+aW9uKCspLCAxIGRlbGV0aW9uKC0pPC9wPjxwPjxicj48L3A+PHA+ZGlmZiAtLWdpdCBhL2h3L2Rp
+c3BsYXkvdmhvc3QtdXNlci1ncHUuYyBiL2h3L2Rpc3BsYXkvdmhvc3QtdXNlci1ncHUuYzwvcD48
+cD48YnI+PC9wPjxwPmluZGV4IDYzYzY0ZGRkZTYuLmMwYzY2OTEwZjEgMTAwNjQ0PC9wPjxwPi0t
+LSBhL2h3L2Rpc3BsYXkvdmhvc3QtdXNlci1ncHUuYzwvcD48cD4rKysgYi9ody9kaXNwbGF5L3Zo
+b3N0LXVzZXItZ3B1LmM8L3A+PHA+QEAgLTM5MCw3ICszOTAsNyBAQCB2aG9zdF91c2VyX2dwdV9j
+aHJfcmVhZCh2b2lkICpvcGFxdWUpPC9wPjxwPiZuYnNwOyAmbmJzcDsgJm5ic3A7fTwvcD48cD4m
+bmJzcDs8L3A+PHA+Jm5ic3A7ICZuYnNwOyAmbmJzcDttc2ctJmd0O3JlcXVlc3QgPSByZXF1ZXN0
+OzwvcD48cD4tJm5ic3A7ICZuYnNwOyBtc2ctJmd0O2ZsYWdzID0gc2l6ZTs8L3A+PHA+KyZuYnNw
+OyAmbmJzcDsgbXNnLSZndDtmbGFncyA9IGZsYWdzOzwvcD48cD4mbmJzcDsgJm5ic3A7ICZuYnNw
+O21zZy0mZ3Q7c2l6ZSA9IHNpemU7PC9wPjxwPiZuYnNwOzwvcD48cD4mbmJzcDsgJm5ic3A7ICZu
+YnNwO2lmIChyZXF1ZXN0ID09IFZIT1NUX1VTRVJfR1BVX0NVUlNPUl9VUERBVEUgfHw8L3A+PHA+
+LS0mbmJzcDs8L3A+PHA+Mi40My4wPC9wPjxwPjxicj48L3A+PC9kaXY+
+------=_Part_291546_1426043346.1724120400002--
 
 
