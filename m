@@ -1,50 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sgGrd-0001DQ-T3
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Aug 2024 00:53:01 -0400
+	id 1sgIPF-0000GU-Sl
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Aug 2024 02:31:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wh1sper@zju.edu.cn>)
- id 1sgEXn-0000Xk-Si
- for qemu-trivial@nongnu.org; Mon, 19 Aug 2024 22:24:23 -0400
-Received: from azure-sdnproxy.icoremail.net ([20.231.56.155])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <wh1sper@zju.edu.cn>) id 1sgEXi-0001pc-Ue
- for qemu-trivial@nongnu.org; Mon, 19 Aug 2024 22:24:23 -0400
-Received: from wh1sper$zju.edu.cn ( [101.82.68.47] ) by
- ajax-webmail-mail-app4 (Coremail) ; Tue, 20 Aug 2024 10:20:00 +0800
- (GMT+08:00)
-X-Originating-IP: [101.82.68.47]
-Date: Tue, 20 Aug 2024 10:20:00 +0800 (GMT+08:00)
-X-CM-HeaderCharset: UTF-8
-From: =?UTF-8?B?5byg5rWp54S2?= <wh1sper@zju.edu.cn>
-To: qemu-trivial@nongnu.org
-Cc: marcandre.lureau@redhat.com
-Subject: [PATCH] fix vhost_user_gpu_chr_read() where `size` was incorrectly
- passed to `msg->flags`
-X-Priority: 3
-X-Mailer: Coremail Webmail Server Version 2024.1-cmXT5 build
- 20240625(a75f206e) Copyright (c) 2002-2024 www.mailtech.cn zju.edu.cn
-Content-Type: multipart/alternative; 
- boundary="----=_Part_291546_1426043346.1724120400002"
+ (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
+ id 1sgIPC-0000F9-Pk
+ for qemu-trivial@nongnu.org; Tue, 20 Aug 2024 02:31:46 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
+ id 1sgIPA-0003zx-Jx
+ for qemu-trivial@nongnu.org; Tue, 20 Aug 2024 02:31:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1724135501;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ipqdOzdsD3jeKscdJAixqRrYXhLbC9Fh2mP3zpOwGS0=;
+ b=IOInq+v7w6/TXpYAcx5wjcQbqwRdjGaRJyMw6s2F4wCMJjhTVXu14rHCyO6A241ppqsSnI
+ tM81GTz9PkBTodIsBo9qq4a2AtORVhP2HKdhQaUT8GiSCW0aoPXRQbb+0t+5JLduoJnm5l
+ XU9DCh+A1YUdD1qSbeJRgRH+X4H+Tr8=
+Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
+ [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-435-wOayX9rJNE-N8nVdsyaTCg-1; Tue, 20 Aug 2024 02:31:38 -0400
+X-MC-Unique: wOayX9rJNE-N8nVdsyaTCg-1
+Received: by mail-qv1-f70.google.com with SMTP id
+ 6a1803df08f44-6bf7ad66ab7so82734106d6.1
+ for <qemu-trivial@nongnu.org>; Mon, 19 Aug 2024 23:31:38 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1724135498; x=1724740298;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=ipqdOzdsD3jeKscdJAixqRrYXhLbC9Fh2mP3zpOwGS0=;
+ b=s8WMBEYijoGdW0UWz7JlsA5xf/8Ku10BMEVuwa7R7QfaCLLVAxvhuQ72lQBzi5rXhl
+ BXXo2LuZhuPxR86NrzLcHIUGkkeq9fy62eek/DSBDgZMDP0g4xwB5WNKdtDEWhnr0mEv
+ jVh6TJ3M4Cr00asj9ip9c/rup5G34t+E7qHWqrFFBSflY6P9JLNWsXpa+qqwTvUBG2hM
+ 6nq2E/ZYFguv23VOipcO7zNp+GNfntZ0rB/uUuvDeHotB8Q22KUasaiE3t4dqleYZb3w
+ 8ly5cKmj6z9EoT54yGxwwIMnoft6ITsH/xG4zF9LEaotex3pGtxEj5ldy9G9pvJb4sGn
+ cyBA==
+X-Gm-Message-State: AOJu0Yy6SehkMHvaTIicNtpc5VaD3Ae8Cxii/2Yv9JChFweSYzgxsENF
+ XGkYbsw90K/ZpfDt2FhJUkwhSTTXsF8DMQLGsh9GuyC2dYeCEu0MCbhCr6CMhpgAonihsqDNjnT
+ tH4qJzBvbNgpFArroJKx6YeJhBu5KvUXqKYstXw/75DKuqNpG+/j+pMhV597SHm7tPAjSLGvo4B
+ SqlRWumnPL66WE4PW0AO3BPZw0GKj37W5O3/kP9cPL
+X-Received: by 2002:a05:6214:3da0:b0:6bf:7eeb:99b0 with SMTP id
+ 6a1803df08f44-6bfa8a55c6dmr46450126d6.14.1724135498250; 
+ Mon, 19 Aug 2024 23:31:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHIy0YY24/mEQf5+9pdmU3PUnQqELUfZ6FSzI8OSM6k9u/CBU/Ae/Cf9YwGrqzSq+lGOMoVpcMOnPD1Um5N1Rs=
+X-Received: by 2002:a05:6214:3da0:b0:6bf:7eeb:99b0 with SMTP id
+ 6a1803df08f44-6bfa8a55c6dmr46449926d6.14.1724135497844; Mon, 19 Aug 2024
+ 23:31:37 -0700 (PDT)
 MIME-Version: 1.0
-Message-ID: <4b2234bc.14983.1916d958082.Coremail.wh1sper@zju.edu.cn>
-X-Coremail-Locale: zh_CN
-X-CM-TRANSID: cS_KCgAHzFhQ_cNmf85nAg--.15757W
-X-CM-SenderInfo: asssliaqzvq6lmxovvfxof0/1tbiAggTB2bDWKYK2AAAsX
-X-Coremail-Antispam: 1Ur529EdanIXcx71UUUUU7IcSsGvfJ3iIAIbVAYjsxI4VWUCw
- CS07vEb4IE77IF4wCS07vE1I0E4x80FVAKz4kxMIAIbVAFxVCaYxvI4VCIwcAKzIAtYxBI
- daVFxhVjvjDU=
-Received-SPF: pass client-ip=20.231.56.155; envelope-from=wh1sper@zju.edu.cn;
- helo=azure-sdnproxy.icoremail.net
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+References: <20240820030433.395444-2-wh1sper@zju.edu.cn>
+In-Reply-To: <20240820030433.395444-2-wh1sper@zju.edu.cn>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
+Date: Tue, 20 Aug 2024 10:31:26 +0400
+Message-ID: <CAMxuvaz5P4uHHLjhFE-+aFHGmVZq1zN62Qu2ReuXkOvvyC9-zQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/display/vhost-user-gpu.c: fix vhost_user_gpu_chr_read()
+To: Haoran Zhang <wh1sper@zju.edu.cn>
+Cc: qemu-trivial@nongnu.org
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mlureau@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, HTML_MESSAGE=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.134,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 20 Aug 2024 00:52:59 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -56,63 +87,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Aug 2024 02:24:24 -0000
+X-List-Received-Date: Tue, 20 Aug 2024 06:31:47 -0000
 
-------=_Part_291546_1426043346.1724120400002
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: base64
+On Tue, Aug 20, 2024 at 7:09=E2=80=AFAM Haoran Zhang <wh1sper@zju.edu.cn> w=
+rote:
+>
+> fix vhost_user_gpu_chr_read() where `size` was incorretly passed
+> to `msg->flags`.
+>
+> Signed-off-by: Haoran Zhang <wh1sper@zju.edu.cn>
 
-RnJvbSBiODk4Mzk2M2VmZGQ4MWRkNWViZWZkM2UyOWE4NWY0MTE5MjkzNmUxIE1vbiBTZXAgMTcg
-MDA6MDA6MDAgMjAwMQoKRnJvbTogSGFvcmFuIFpoYW5nIDx3aDFzcGVyQHpqdS5lZHUuY24+CgpE
-YXRlOiBUdWUsIDIwIEF1ZyAyMDI0IDEwOjA2OjQyICswODAwCgpTdWJqZWN0OiBbUEFUQ0hdIGZp
-eCB2aG9zdF91c2VyX2dwdV9jaHJfcmVhZCgpIHdoZXJlIGBzaXplYCB3YXMgaW5jb3JyZWN0bHkK
-CiBwYXNzZWQgdG8gYG1zZy0+ZmxhZ3NgCgoKCgpTaWduZWQtb2ZmLWJ5OiBIYW9yYW4gWmhhbmcg
-PHdoMXNwZXJAemp1LmVkdS5jbj4KCgoKCi0tLQoKCgoKIGh3L2Rpc3BsYXkvdmhvc3QtdXNlci1n
-cHUuYyB8IDIgKy0KCiAxIGZpbGUgY2hhbmdlZCwgMSBpbnNlcnRpb24oKyksIDEgZGVsZXRpb24o
-LSkKCgoKCmRpZmYgLS1naXQgYS9ody9kaXNwbGF5L3Zob3N0LXVzZXItZ3B1LmMgYi9ody9kaXNw
-bGF5L3Zob3N0LXVzZXItZ3B1LmMKCgoKCmluZGV4IDYzYzY0ZGRkZTYuLmMwYzY2OTEwZjEgMTAw
-NjQ0CgotLS0gYS9ody9kaXNwbGF5L3Zob3N0LXVzZXItZ3B1LmMKCisrKyBiL2h3L2Rpc3BsYXkv
-dmhvc3QtdXNlci1ncHUuYwoKQEAgLTM5MCw3ICszOTAsNyBAQCB2aG9zdF91c2VyX2dwdV9jaHJf
-cmVhZCh2b2lkICpvcGFxdWUpCgogICAgIH0KCiAKCiAgICAgbXNnLT5yZXF1ZXN0ID0gcmVxdWVz
-dDsKCi0gICAgbXNnLT5mbGFncyA9IHNpemU7CgorICAgIG1zZy0+ZmxhZ3MgPSBmbGFnczsKCiAg
-ICAgbXNnLT5zaXplID0gc2l6ZTsKCiAKCiAgICAgaWYgKHJlcXVlc3QgPT0gVkhPU1RfVVNFUl9H
-UFVfQ1VSU09SX1VQREFURSB8fAoKLS0gCgoyLjQzLjAKCgo=
-------=_Part_291546_1426043346.1724120400002
-Content-Type: text/html; charset=UTF-8
-Content-Transfer-Encoding: base64
+Good catch,
+Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
 
-PHN0eWxlIGNsYXNzPSJrZS1zdHlsZSI+CltsaXN0LXN0eWxlLXR5cGVdIHtwYWRkaW5nLWxlZnQ6
-MjBweDtsaXN0LXN0eWxlLXBvc2l0aW9uOmluc2lkZX0KW2xpc3Qtc3R5bGUtdHlwZV0gbGkge21h
-cmdpbjowfQpbbGlzdC1zdHlsZS10eXBlXSBsaTpiZWZvcmUsIHNwYW4ua2UtbGlzdC1pdGVtLW1h
-dHRlciB7Zm9udC1mYW1pbHk6InNhbnMgc2VyaWYiLHRhaG9tYSx2ZXJkYW5hLGhlbHZldGljYX0K
-W2xpc3Qtc3R5bGUtdHlwZV0gbGkgcCxbbGlzdC1zdHlsZS10eXBlXSBsaSBoMSxbbGlzdC1zdHls
-ZS10eXBlXSBsaSBoMixbbGlzdC1zdHlsZS10eXBlXSBsaSBoMyxbbGlzdC1zdHlsZS10eXBlXSBs
-aSBoNCxbbGlzdC1zdHlsZS10eXBlXSBsaSBoNSxbbGlzdC1zdHlsZS10eXBlXSBsaSBkaXYsW2xp
-c3Qtc3R5bGUtdHlwZV0gbGkgYmxvY2txdW90ZXtkaXNwbGF5OmlubGluZTt3b3JkLWJyZWFrOmJy
-ZWFrLWFsbH0KW2xpc3Qtc3R5bGUtdHlwZV0gbGkgdGFibGUge2Rpc3BsYXk6aW5saW5lLWJsb2Nr
-O3ZlcnRpY2FsLWFsaWduOnRvcH0KcHttYXJnaW46MH0KdGQge3dvcmQtYnJlYWs6IGJyZWFrLXdv
-cmR9Ci5kZWZhdWx0LWZvbnQtMTcyNDExOTY2ODQ3MXsKfQo8L3N0eWxlPjxkaXYgY2xhc3M9ImRl
-ZmF1bHQtZm9udC0xNzI0MTE5NjY4NDcxIiBkaXI9Imx0ciI+PHA+RnJvbSBiODk4Mzk2M2VmZGQ4
-MWRkNWViZWZkM2UyOWE4NWY0MTE5MjkzNmUxIE1vbiBTZXAgMTcgMDA6MDA6MDAgMjAwMTwvcD48
-cD5Gcm9tOiBIYW9yYW4gWmhhbmcgJmx0O3doMXNwZXJAemp1LmVkdS5jbiZndDs8L3A+PHA+RGF0
-ZTogVHVlLCAyMCBBdWcgMjAyNCAxMDowNjo0MiArMDgwMDwvcD48cD5TdWJqZWN0OiBbUEFUQ0hd
-IGZpeCB2aG9zdF91c2VyX2dwdV9jaHJfcmVhZCgpIHdoZXJlIGBzaXplYCB3YXMgaW5jb3JyZWN0
-bHk8L3A+PHA+Jm5ic3A7cGFzc2VkIHRvIGBtc2ctJmd0O2ZsYWdzYDwvcD48cD48YnI+PC9wPjxw
-PlNpZ25lZC1vZmYtYnk6IEhhb3JhbiBaaGFuZyAmbHQ7d2gxc3BlckB6anUuZWR1LmNuJmd0Ozwv
-cD48cD48YnI+PC9wPjxwPi0tLTwvcD48cD48YnI+PC9wPjxwPiZuYnNwO2h3L2Rpc3BsYXkvdmhv
-c3QtdXNlci1ncHUuYyB8IDIgKy08L3A+PHA+Jm5ic3A7MSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0
-aW9uKCspLCAxIGRlbGV0aW9uKC0pPC9wPjxwPjxicj48L3A+PHA+ZGlmZiAtLWdpdCBhL2h3L2Rp
-c3BsYXkvdmhvc3QtdXNlci1ncHUuYyBiL2h3L2Rpc3BsYXkvdmhvc3QtdXNlci1ncHUuYzwvcD48
-cD48YnI+PC9wPjxwPmluZGV4IDYzYzY0ZGRkZTYuLmMwYzY2OTEwZjEgMTAwNjQ0PC9wPjxwPi0t
-LSBhL2h3L2Rpc3BsYXkvdmhvc3QtdXNlci1ncHUuYzwvcD48cD4rKysgYi9ody9kaXNwbGF5L3Zo
-b3N0LXVzZXItZ3B1LmM8L3A+PHA+QEAgLTM5MCw3ICszOTAsNyBAQCB2aG9zdF91c2VyX2dwdV9j
-aHJfcmVhZCh2b2lkICpvcGFxdWUpPC9wPjxwPiZuYnNwOyAmbmJzcDsgJm5ic3A7fTwvcD48cD4m
-bmJzcDs8L3A+PHA+Jm5ic3A7ICZuYnNwOyAmbmJzcDttc2ctJmd0O3JlcXVlc3QgPSByZXF1ZXN0
-OzwvcD48cD4tJm5ic3A7ICZuYnNwOyBtc2ctJmd0O2ZsYWdzID0gc2l6ZTs8L3A+PHA+KyZuYnNw
-OyAmbmJzcDsgbXNnLSZndDtmbGFncyA9IGZsYWdzOzwvcD48cD4mbmJzcDsgJm5ic3A7ICZuYnNw
-O21zZy0mZ3Q7c2l6ZSA9IHNpemU7PC9wPjxwPiZuYnNwOzwvcD48cD4mbmJzcDsgJm5ic3A7ICZu
-YnNwO2lmIChyZXF1ZXN0ID09IFZIT1NUX1VTRVJfR1BVX0NVUlNPUl9VUERBVEUgfHw8L3A+PHA+
-LS0mbmJzcDs8L3A+PHA+Mi40My4wPC9wPjxwPjxicj48L3A+PC9kaXY+
-------=_Part_291546_1426043346.1724120400002--
+> ---
+>  hw/display/vhost-user-gpu.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/display/vhost-user-gpu.c b/hw/display/vhost-user-gpu.c
+> index 63c64ddde6..c0c66910f1 100644
+> --- a/hw/display/vhost-user-gpu.c
+> +++ b/hw/display/vhost-user-gpu.c
+> @@ -390,7 +390,7 @@ vhost_user_gpu_chr_read(void *opaque)
+>      }
+>
+>      msg->request =3D request;
+> -    msg->flags =3D size;
+> +    msg->flags =3D flags;
+>      msg->size =3D size;
+>
+>      if (request =3D=3D VHOST_USER_GPU_CURSOR_UPDATE ||
+> --
+> 2.43.0
+>
 
 
