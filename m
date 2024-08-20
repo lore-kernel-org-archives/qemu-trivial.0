@@ -1,80 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sgIPF-0000GU-Sl
-	for mharc-qemu-trivial@gnu.org; Tue, 20 Aug 2024 02:31:49 -0400
+	id 1sgMF1-0002NN-SK
+	for mharc-qemu-trivial@gnu.org; Tue, 20 Aug 2024 06:37:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1sgIPC-0000F9-Pk
- for qemu-trivial@nongnu.org; Tue, 20 Aug 2024 02:31:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1sgIPA-0003zx-Jx
- for qemu-trivial@nongnu.org; Tue, 20 Aug 2024 02:31:45 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1724135501;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ipqdOzdsD3jeKscdJAixqRrYXhLbC9Fh2mP3zpOwGS0=;
- b=IOInq+v7w6/TXpYAcx5wjcQbqwRdjGaRJyMw6s2F4wCMJjhTVXu14rHCyO6A241ppqsSnI
- tM81GTz9PkBTodIsBo9qq4a2AtORVhP2HKdhQaUT8GiSCW0aoPXRQbb+0t+5JLduoJnm5l
- XU9DCh+A1YUdD1qSbeJRgRH+X4H+Tr8=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-435-wOayX9rJNE-N8nVdsyaTCg-1; Tue, 20 Aug 2024 02:31:38 -0400
-X-MC-Unique: wOayX9rJNE-N8nVdsyaTCg-1
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-6bf7ad66ab7so82734106d6.1
- for <qemu-trivial@nongnu.org>; Mon, 19 Aug 2024 23:31:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sgMF0-0002Hq-HU
+ for qemu-trivial@nongnu.org; Tue, 20 Aug 2024 06:37:30 -0400
+Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1sgMEy-0005dW-TJ
+ for qemu-trivial@nongnu.org; Tue, 20 Aug 2024 06:37:30 -0400
+Received: by mail-ed1-x536.google.com with SMTP id
+ 4fb4d7f45d1cf-5becdf7d36aso4244251a12.1
+ for <qemu-trivial@nongnu.org>; Tue, 20 Aug 2024 03:37:28 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1724150247; x=1724755047; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=YeX2pH7S+X+RBHTTO4RrTsaPeGgF/gJQxWwMU4ZFPK0=;
+ b=HbsYA+3SEIjAcax2f/+ehQXTa4N04fKcOD5wwZBI/ejh88knUWioocBQATica0pt4c
+ 71q1HC5doobogu545fGPahTA9uV+g27l57qF470Fd0UDfN2ER69vvI1mCzqsIZUoKeYj
+ JOyK6l4W1zHPAadd+BzWIBaJ5ScfzxOR1nzkgSp6GuWSNpSYLadpZj9bl/FlDKbXN3KO
+ 3mW/93y/liB6AGhpUTj5pXj39PzncD7ATOv7ieFS71Zy7Aoxr3bu7iVfSudTqDOecqDu
+ GTewXvw/O6gSZ6jNDUVVzreQVyirpHDGhA1+NfkRIl65aEIl7xb/JKA4SyoBeQCOC2x+
+ 3XhQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724135498; x=1724740298;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=ipqdOzdsD3jeKscdJAixqRrYXhLbC9Fh2mP3zpOwGS0=;
- b=s8WMBEYijoGdW0UWz7JlsA5xf/8Ku10BMEVuwa7R7QfaCLLVAxvhuQ72lQBzi5rXhl
- BXXo2LuZhuPxR86NrzLcHIUGkkeq9fy62eek/DSBDgZMDP0g4xwB5WNKdtDEWhnr0mEv
- jVh6TJ3M4Cr00asj9ip9c/rup5G34t+E7qHWqrFFBSflY6P9JLNWsXpa+qqwTvUBG2hM
- 6nq2E/ZYFguv23VOipcO7zNp+GNfntZ0rB/uUuvDeHotB8Q22KUasaiE3t4dqleYZb3w
- 8ly5cKmj6z9EoT54yGxwwIMnoft6ITsH/xG4zF9LEaotex3pGtxEj5ldy9G9pvJb4sGn
- cyBA==
-X-Gm-Message-State: AOJu0Yy6SehkMHvaTIicNtpc5VaD3Ae8Cxii/2Yv9JChFweSYzgxsENF
- XGkYbsw90K/ZpfDt2FhJUkwhSTTXsF8DMQLGsh9GuyC2dYeCEu0MCbhCr6CMhpgAonihsqDNjnT
- tH4qJzBvbNgpFArroJKx6YeJhBu5KvUXqKYstXw/75DKuqNpG+/j+pMhV597SHm7tPAjSLGvo4B
- SqlRWumnPL66WE4PW0AO3BPZw0GKj37W5O3/kP9cPL
-X-Received: by 2002:a05:6214:3da0:b0:6bf:7eeb:99b0 with SMTP id
- 6a1803df08f44-6bfa8a55c6dmr46450126d6.14.1724135498250; 
- Mon, 19 Aug 2024 23:31:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHIy0YY24/mEQf5+9pdmU3PUnQqELUfZ6FSzI8OSM6k9u/CBU/Ae/Cf9YwGrqzSq+lGOMoVpcMOnPD1Um5N1Rs=
-X-Received: by 2002:a05:6214:3da0:b0:6bf:7eeb:99b0 with SMTP id
- 6a1803df08f44-6bfa8a55c6dmr46449926d6.14.1724135497844; Mon, 19 Aug 2024
- 23:31:37 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1724150247; x=1724755047;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=YeX2pH7S+X+RBHTTO4RrTsaPeGgF/gJQxWwMU4ZFPK0=;
+ b=PAEhUJZ/3aTpILqTFDEU/jMEMBfwTsGbKVSfq3snu0JG894lQQcV6ZRCYsIPVKHz3/
+ kxREY40eko/AE9dcahvwIoGuX8kT5vhxbBLNl3bwL7X+bxWc/HNiq7V+32uaX7S2qYRU
+ cH0F+5686JTIBIllLmHYHBVeHWuM17Y7QhOd3utnOo0M6PPniRjYXaCJlC/RFFfZgoGv
+ eRlcLPkas04AuWLr0eFe9Ant6rELEZz9ZqUY89eD/htouCF8IMPpaqDZKvh+iiUpirzU
+ T32/4rfQCcIJEPPEFQaXvnA31pQoIJdhz0ckEJDWDo7TsMTLyBHAYZK8U1mEsyYOxD2n
+ 1Rhw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXGH4F30yvBt7RliN8aMbsSHpRwVzWYz8/iTyfenBhaqj81fpIMlzkFqqFpHQn05Qz1jS22HVNbcMa2487ZevUmHmKEdsI8eQ==
+X-Gm-Message-State: AOJu0YxpJsd7zvDaP1IdVxfRzZkXNAXKAEiAclu/RCkYpytc7PBcEBKr
+ OtU0L2H2V4X/S9ZsdRVqjfw7WYt0DO6ZUfcZgx0Ae1K8WPGP6UnmKi2m3mUOjLA=
+X-Google-Smtp-Source: AGHT+IHWKHfbZO57bp3Tn0tlgqLMdg71wiUgDSrD3F+p4iWZNBnF7sMJ2i3CRk0QyFQBZVek+nJzew==
+X-Received: by 2002:a05:6402:42ce:b0:59e:f6e7:5521 with SMTP id
+ 4fb4d7f45d1cf-5beca59365bmr10097247a12.19.1724150246944; 
+ Tue, 20 Aug 2024 03:37:26 -0700 (PDT)
+Received: from [192.168.223.175] (84.21.205.77.rev.sfr.net. [77.205.21.84])
+ by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-5bebbe7f17bsm6710306a12.59.2024.08.20.03.37.25
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 20 Aug 2024 03:37:26 -0700 (PDT)
+Message-ID: <148cb5a4-2db3-4ba4-bb3b-a281e7dde9d3@linaro.org>
+Date: Tue, 20 Aug 2024 12:37:24 +0200
 MIME-Version: 1.0
-References: <20240820030433.395444-2-wh1sper@zju.edu.cn>
-In-Reply-To: <20240820030433.395444-2-wh1sper@zju.edu.cn>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Tue, 20 Aug 2024 10:31:26 +0400
-Message-ID: <CAMxuvaz5P4uHHLjhFE-+aFHGmVZq1zN62Qu2ReuXkOvvyC9-zQ@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] hw/display/vhost-user-gpu.c: fix vhost_user_gpu_chr_read()
-To: Haoran Zhang <wh1sper@zju.edu.cn>
-Cc: qemu-trivial@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mlureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+To: Haoran Zhang <wh1sper@zju.edu.cn>, qemu-trivial@nongnu.org
+Cc: marcandre.lureau@redhat.com, qemu-stable <qemu-stable@nongnu.org>
+References: <20240820030433.395444-2-wh1sper@zju.edu.cn>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20240820030433.395444-2-wh1sper@zju.edu.cn>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::536;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x536.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.134,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,38 +83,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 20 Aug 2024 06:31:47 -0000
+X-List-Received-Date: Tue, 20 Aug 2024 10:37:30 -0000
 
-On Tue, Aug 20, 2024 at 7:09=E2=80=AFAM Haoran Zhang <wh1sper@zju.edu.cn> w=
-rote:
->
+On 20/8/24 05:04, Haoran Zhang wrote:
 > fix vhost_user_gpu_chr_read() where `size` was incorretly passed
+
+Typo "incorrectly".
+
 > to `msg->flags`.
->
+> 
 > Signed-off-by: Haoran Zhang <wh1sper@zju.edu.cn>
-
-Good catch,
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
-
 > ---
->  hw/display/vhost-user-gpu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/hw/display/vhost-user-gpu.c b/hw/display/vhost-user-gpu.c
-> index 63c64ddde6..c0c66910f1 100644
-> --- a/hw/display/vhost-user-gpu.c
-> +++ b/hw/display/vhost-user-gpu.c
-> @@ -390,7 +390,7 @@ vhost_user_gpu_chr_read(void *opaque)
->      }
->
->      msg->request =3D request;
-> -    msg->flags =3D size;
-> +    msg->flags =3D flags;
->      msg->size =3D size;
->
->      if (request =3D=3D VHOST_USER_GPU_CURSOR_UPDATE ||
-> --
-> 2.43.0
->
+>   hw/display/vhost-user-gpu.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+
+Cc: qemu-stable@nongnu.org
+Fixes: 267f664658 ("hw/display: add vhost-user-vga & gpu-pci")
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
