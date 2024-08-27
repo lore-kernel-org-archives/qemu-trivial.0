@@ -1,74 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sivHN-00050j-Ha
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2024 08:26:33 -0400
+	id 1sixqD-0004Hq-Hf
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2024 11:10:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sivHM-0004yw-0B
- for qemu-trivial@nongnu.org; Tue, 27 Aug 2024 08:26:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1sixqB-0004Gq-Ou
+ for qemu-trivial@nongnu.org; Tue, 27 Aug 2024 11:10:39 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sivHK-0007Ow-Ew
- for qemu-trivial@nongnu.org; Tue, 27 Aug 2024 08:26:31 -0400
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1sixq9-0000VV-R9
+ for qemu-trivial@nongnu.org; Tue, 27 Aug 2024 11:10:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1724761589;
+ s=mimecast20190719; t=1724771436;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=3pqf4vIDiJZIq0NvzPPjp8hfkf3fzLyKRmzc9tkgSTY=;
- b=UKwUrm9VEKd4HMcigHoptiI1kFPPJChKNmM4gRb+IETrDUYnPK3UzwblVa7rqnOqqkw8pD
- 72LqK1hqgPL1VQtlm+Zp3vkKW/U1OqOTO5/l6rKve7f/ou72PFjqqahRiqt4uknn43VA2v
- I0NqhIa4t6kcICpRQEUw1B8NXPaxm0s=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-303-y-Ul_CPtOw-27rCzWzUC0w-1; Tue,
- 27 Aug 2024 08:26:24 -0400
-X-MC-Unique: y-Ul_CPtOw-27rCzWzUC0w-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C20161955D54; Tue, 27 Aug 2024 12:26:22 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.112])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6072119560A3; Tue, 27 Aug 2024 12:26:20 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 05FFA21E6A28; Tue, 27 Aug 2024 14:26:18 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Ani Sinha <anisinha@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Paolo Bonzini
- <pbonzini@redhat.com>,  qemu-trivial@nongnu.org,  Zhao Liu
- <zhao1.liu@intel.com>,  kvm@vger.kernel.org,  qemu-devel
- <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v3] kvm: replace fprintf with error_report/printf() in
- kvm_init()
-In-Reply-To: <03C06183-B8ED-405D-8B9C-532E30B8E412@redhat.com> (Ani Sinha's
- message of "Tue, 27 Aug 2024 17:47:44 +0530")
-References: <20240809064940.1788169-1-anisinha@redhat.com>
- <8913b8c7-4103-4f69-8567-afdc29f8d0d3@linaro.org>
- <87v7zmmq9f.fsf@pond.sub.org>
- <03C06183-B8ED-405D-8B9C-532E30B8E412@redhat.com>
-Date: Tue, 27 Aug 2024 14:26:18 +0200
-Message-ID: <87plpui239.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ content-transfer-encoding:content-transfer-encoding;
+ bh=FidGmXnxpG6f8PpoDrv303//AyAsBhaUgdFoIqfgnDc=;
+ b=MWCI0PUSc74l0fEOmNV6v2xxDWnTEFXdHaZ4SqOzTdM3dDk+s0HAGEcaCr7QeSqi6F6jrQ
+ SRYscJQp5+exWqwykzm2u/VPInRRjjpny+zUJOiP2HpFnW/BkZT4V4YeEATuoiw+zKcoQS
+ ujqS7x6btOVpT4elBjaagGWwFBVWDIM=
+Received: from mail-pf1-f199.google.com (mail-pf1-f199.google.com
+ [209.85.210.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-180-B012PelbNem8uZFn-jXyYA-1; Tue, 27 Aug 2024 11:10:34 -0400
+X-MC-Unique: B012PelbNem8uZFn-jXyYA-1
+Received: by mail-pf1-f199.google.com with SMTP id
+ d2e1a72fcca58-71440a7cd08so5151452b3a.2
+ for <qemu-trivial@nongnu.org>; Tue, 27 Aug 2024 08:10:34 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1724771433; x=1725376233;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FidGmXnxpG6f8PpoDrv303//AyAsBhaUgdFoIqfgnDc=;
+ b=PMfQl51h1TN9oOXHfikhf6PNuOEuJItSnZfrtYXkRp93L0OCQRW8t6raFKWOcr9m4x
+ Rlv/FEL6qBZMU9cQsD8+kt52s7ytCSO4wgoSqUzYj7498xEqCfX//X6a3I23bopL73jf
+ r64mW1uPrSDC3W0vAbIfmmP9va75Z/A9rr2THUlWmmlzX4QlpJCFz4s6HA9FBj8emQ02
+ oXi4Yg8oQSJyaLNGFSOGTzPnOxDHqihzY7A9KjmvtPiGvkSfr4/xi/kmaYVTcV0B0Y7f
+ yuVrqV9LZZsGYwFCK8kdb8tG0dvl6Jk8c7NpfdU8YyCKB/sIsLo1sdDXLyKuzFxp8hgw
+ wrrw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWzEPd7XV/WhTvNTxvnRi/2QNMCLeqHCOHJN1G/V31hR67BLJ6KnsaqXFhNeRhLCGKP46s6wMC/5OFUUBc=@nongnu.org
+X-Gm-Message-State: AOJu0Yw/bDEY4plz3f+Y/eRZMF3YtaI3MTstuQ7dCVHd5+hajVHZQz+I
+ YTaBqszsxOmDRMxBQN9ePYJ8Ka27sNbdQeI/lcT1RxKoWvMSZGY8uj17BdaRSIOrPcnNT3qFEqL
+ zn7HgRCeJuEyfMBvIekj6G4XlMEUp9CDHr9WraIA6j/GtLqzn8GtMdlY=
+X-Received: by 2002:a05:6a00:3c8b:b0:70a:f65e:b13d with SMTP id
+ d2e1a72fcca58-71445e73722mr15425768b3a.27.1724771433087; 
+ Tue, 27 Aug 2024 08:10:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFlpqBQKIWl8ufEwOHqy+tmzdMjRRi8eswppCnEysYfgdJcZX+AGTQ60Jv9FaPnnjB7kPt5Ig==
+X-Received: by 2002:a05:6a00:3c8b:b0:70a:f65e:b13d with SMTP id
+ d2e1a72fcca58-71445e73722mr15425722b3a.27.1724771432540; 
+ Tue, 27 Aug 2024 08:10:32 -0700 (PDT)
+Received: from localhost.localdomain ([115.96.30.188])
+ by smtp.googlemail.com with ESMTPSA id
+ d2e1a72fcca58-7143430636esm8679062b3a.165.2024.08.27.08.10.28
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 27 Aug 2024 08:10:32 -0700 (PDT)
+From: Ani Sinha <anisinha@redhat.com>
+To: 
+Cc: Ani Sinha <anisinha@redhat.com>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org, zhao1.liu@intel.com, pbonzini@redhat.com,
+ armbru@redhat.com
+Subject: [PATCH 0/2] Some refactoring
+Date: Tue, 27 Aug 2024 20:40:20 +0530
+Message-ID: <20240827151022.37992-1-anisinha@redhat.com>
+X-Mailer: git-send-email 2.42.0
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,118 +94,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Aug 2024 12:26:32 -0000
+X-List-Received-Date: Tue, 27 Aug 2024 15:10:40 -0000
 
-Ani Sinha <anisinha@redhat.com> writes:
+replace fprintf() with error_report() in kvm_init()
+refactor code in kvm_init() to move core vm creation operation to its
+own function.
 
->> On 27 Aug 2024, at 12:00=E2=80=AFPM, Markus Armbruster <armbru@redhat.co=
-m> wrote:
->>=20
->> Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
->>=20
->>> Hi Ani,
->>>=20
->>> On 9/8/24 08:49, Ani Sinha wrote:
->>>> error_report() is more appropriate for error situations. Replace fprin=
-tf with
->>>> error_report. Cosmetic. No functional change.
->>>> CC: qemu-trivial@nongnu.org
->>>> CC: zhao1.liu@intel.com
->>>=20
->>> (Pointless to carry Cc line when patch is already reviewed next line)
->>>=20
->>>> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
->>>> Signed-off-by: Ani Sinha <anisinha@redhat.com>
->>>> ---
->>>>  accel/kvm/kvm-all.c | 40 ++++++++++++++++++----------------------
->>>>  1 file changed, 18 insertions(+), 22 deletions(-)
->>>> changelog:
->>>> v2: fix a bug.
->>>> v3: replace one instance of error_report() with error_printf(). added =
-tags.
->>>> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
->>>> index 75d11a07b2..5bc9d35b61 100644
->>>> --- a/accel/kvm/kvm-all.c
->>>> +++ b/accel/kvm/kvm-all.c
->>>> @@ -2427,7 +2427,7 @@ static int kvm_init(MachineState *ms)
->>>>      QLIST_INIT(&s->kvm_parked_vcpus);
->>>>      s->fd =3D qemu_open_old(s->device ?: "/dev/kvm", O_RDWR);
->>>>      if (s->fd =3D=3D -1) {
->>>> -        fprintf(stderr, "Could not access KVM kernel module: %m\n");
->>>> +        error_report("Could not access KVM kernel module: %m");
->>>>          ret =3D -errno;
->>>>          goto err;
->>>>      }
->>>> @@ -2437,13 +2437,13 @@ static int kvm_init(MachineState *ms)
->>>>          if (ret >=3D 0) {
->>>>              ret =3D -EINVAL;
->>>>          }
->>>> -        fprintf(stderr, "kvm version too old\n");
->>>> +        error_report("kvm version too old");
->>>>          goto err;
->>>>      }
->>>>        if (ret > KVM_API_VERSION) {
->>>>          ret =3D -EINVAL;
->>>> -        fprintf(stderr, "kvm version not supported\n");
->>>> +        error_report("kvm version not supported");
->>>>          goto err;
->>>>      }
->>>>  @@ -2488,26 +2488,22 @@ static int kvm_init(MachineState *ms)
->>>>      } while (ret =3D=3D -EINTR);
->>>>        if (ret < 0) {
->>>> -        fprintf(stderr, "ioctl(KVM_CREATE_VM) failed: %d %s\n", -ret,
->>>> -                strerror(-ret));
->>>> +        error_report("ioctl(KVM_CREATE_VM) failed: %d %s", -ret,
->>>> +                    strerror(-ret));
->>>>    #ifdef TARGET_S390X
->>>>          if (ret =3D=3D -EINVAL) {
->>>> -            fprintf(stderr,
->>>> -                    "Host kernel setup problem detected. Please verif=
-y:\n");
->>>> -            fprintf(stderr, "- for kernels supporting the switch_amod=
-e or"
->>>> -                    " user_mode parameters, whether\n");
->>>> -            fprintf(stderr,
->>>> -                    "  user space is running in primary address space=
-\n");
->>>> -            fprintf(stderr,
->>>> -                    "- for kernels supporting the vm.allocate_pgste s=
-ysctl, "
->>>> -                    "whether it is enabled\n");
->>>> +            error_report("Host kernel setup problem detected.
->>>=20
->>> \n"
->>>=20
->>> Should we use error_printf_unless_qmp() for the following?
->>>=20
->>> " Please verify:");
->>>> +            error_report("- for kernels supporting the switch_amode o=
-r"
->>>> +                        " user_mode parameters, whether");
->>>> +            error_report("  user space is running in primary address =
-space");
->>>> +            error_report("- for kernels supporting the vm.allocate_pg=
-ste "
->>>> +                        "sysctl, whether it is enabled");
->>=20
->> Do not put newlines into error messages.  error_report()'s function
->> comment demands "The resulting message should be a single phrase, with
->> no newline or trailing punctuation."
->>=20
->> You can do this:
->>=20
->>    error_report(... the actual error message ...);
->>    error_printf(... hints on what to do about it ...);
->>=20
->> Questions?
->
-> Do you see any newlines in my proposed patch?
+CC: qemu-trivial@nongnu.org
+CC: qemu-devel@nongnu.org
+CC: zhao1.liu@intel.com
+CC: pbonzini@redhat.com
+CC: armbru@redhat.com
 
-I see some in Philippe's suggestion.
+Ani Sinha (2):
+  kvm: replace fprintf with error_report/printf() in kvm_init()
+  kvm: refactor core virtual machine creation into its own function
 
-Your patch's use of multiple error_report() for a single error condition
-is inappropriate.
+ accel/kvm/kvm-all.c | 106 +++++++++++++++++++++++++-------------------
+ 1 file changed, 61 insertions(+), 45 deletions(-)
 
-Questions?
+-- 
+2.42.0
 
 
