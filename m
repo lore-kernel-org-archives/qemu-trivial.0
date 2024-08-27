@@ -1,74 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1siy7l-0004Qk-34
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2024 11:28:49 -0400
+	id 1siyEl-0001F9-7n
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2024 11:36:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1siy7j-0004PM-Nr
- for qemu-trivial@nongnu.org; Tue, 27 Aug 2024 11:28:47 -0400
-Received: from mail-ed1-x531.google.com ([2a00:1450:4864:20::531])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1siy7i-0002X3-3d
- for qemu-trivial@nongnu.org; Tue, 27 Aug 2024 11:28:47 -0400
-Received: by mail-ed1-x531.google.com with SMTP id
- 4fb4d7f45d1cf-5bf01bdaff0so6081591a12.3
- for <qemu-trivial@nongnu.org>; Tue, 27 Aug 2024 08:28:45 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1724772524; x=1725377324; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=4yAlMlBA4ouTt0DGe3f9cAnewU9Z5AuKZeGQC3oO/yM=;
- b=VjdeJLkZq3A38hsqfxQ8z9jMh2iHOcjFU2vDLOUBeuLczCKkjbEVU3izm7Fbn2pVgQ
- mURYjF0JpUOIE/6z/lDzxoseq2C0Y+yU9e0lA6kkJWS8UEo61F6MBRnPDBHkkqF9PJ8s
- jSURM5tYlCuSdWT/Mn2Ox/CriiOnU2MHIi9iCR+w5AhiGx5BlLoxzxbhVxAdUiXMXlTf
- ZjEQepF7VA5/v4FEaGnjuPmzRc7WizdNuUfEnDzNhSezpUbYnI+a2y9L+wawHqQ7wZ7/
- at+tP1Ell4KRxZYU4l5/uI6EpBqVf/Y9XDMSKXQVCqormXqkqm4bmKNl+h1s7oQSxhj5
- K+3w==
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1siyEk-0001Ao-1k
+ for qemu-trivial@nongnu.org; Tue, 27 Aug 2024 11:36:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1siyEi-0003V5-4T
+ for qemu-trivial@nongnu.org; Tue, 27 Aug 2024 11:36:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1724772959;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=hXBj1zpRbkovYQZaFT0xfH4IPmRYfCibUwJ+bcQKbJQ=;
+ b=K+Ywn9Ckp5iAgfJi8pbVYeVgJ3fIg0h1rPu0uzN7pQq8xJNdbhoQE+vSNvyFEQ96LJgokI
+ cSHwocyHCmXGrKsDH/s9SQFBqhx5+61iWTaU4JVzo8tMqIPHm3qGyVSiH8ibulJTHBLLLv
+ Lekc/iEugZCmZjFnHjOsOKTvw6bg2pg=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-208-l7HJ6ikWPMWH-Y769FMvtw-1; Tue, 27 Aug 2024 11:35:55 -0400
+X-MC-Unique: l7HJ6ikWPMWH-Y769FMvtw-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ a640c23a62f3a-a7d2d414949so518913166b.0
+ for <qemu-trivial@nongnu.org>; Tue, 27 Aug 2024 08:35:55 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724772524; x=1725377324;
+ d=1e100.net; s=20230601; t=1724772955; x=1725377755;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=4yAlMlBA4ouTt0DGe3f9cAnewU9Z5AuKZeGQC3oO/yM=;
- b=TesGHBdtcd6KKzOgxUrGj0GkuCWmzq5ELMbKttjj8P5uiHFT5weZicTrwdnJPvU8VV
- boFLHqjhXw6cZ26lvOGkRPtZRk912QFE1Cz01lGb2o+vHcID8f59CIDZlkdkQXmZlo2y
- YISAD9YKwNH68bd3UfP7tOhgtDa+bZjB/M9Jl4TmG53FUz4LFpsou1ellPgH0qALyXz/
- 6ns2yBfnLjgtuZ84gvuom++VLdgkHgJsGnp3WCLr4BPUQd83nK2nktjCO++stVTY7505
- N0R0j5ecswdmN/GoKTlQ0WNV32Ea5FTvsrduEHeqUdlM2w+0pqV2m9vNxaY9Zhll2Jcu
- 47Dw==
+ bh=hXBj1zpRbkovYQZaFT0xfH4IPmRYfCibUwJ+bcQKbJQ=;
+ b=QaV2NPr7R0tVrLxzlMel4hmVYk0A4PMk5O2UqB39MOVgBjmaoREtQWG2b/QII8hoVW
+ HdcjOenmS/hioTW1MLmWHZ+rfQfa6bCz4A0z9Wp1K/p5P5fH/i0PEM7DmpfQ6VlLG4g7
+ NH7L1YpP5I92mH2t7wJj1QvFzFkXC2AiaavWOi8nQtfGTX5Mf+YdUca0KPaFpdcwVZ5s
+ b6EKoSvt279oyH1xQhqbQfI+HscOS8LgX5lNSr+NcXRDeNzu5gFi3RPwygyFSjv3ukqS
+ 0i8pXgvRmnwqKG3BzKSpe8gbqY6Y1CJX503/Hsi9YSzmb+f4P7oV9Dwj71klzgz6Fp2R
+ 93Fg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV0cv5OgXCwdfegZmGT1T4kFAHPebku+7SvzLgi99I8+p9MKoKXgkhNPeWoYr2dSIEBsxipGdTtIrjTMO4=@nongnu.org
-X-Gm-Message-State: AOJu0Ywn5rlSl2nOjth1uYEOJiF5bJmBxUXn+SfYWrZbS+vMTRLuR8ea
- ew0IZ7xmCALkIYLIq5hZE0c235WCJvnuvCBiVclwZzw8t7DEwI3g4GJ94TIb7eg5uWRDLB88ki9
- Lbk2HYLODf+RTCxzqwmukI3pfvJOe9/qNjHjHbw==
-X-Google-Smtp-Source: AGHT+IHNXYKP+BrjeVYDN3n2Nvk0pm4G3DyCjzZQTu06RSPdP2LyJjWIHGARVO3uX/jlq7P9dttqNx7mclhmD5yRb5U=
-X-Received: by 2002:a05:6402:1f4e:b0:5c0:c4d3:9017 with SMTP id
- 4fb4d7f45d1cf-5c0c4d39303mr1334841a12.38.1724772524119; Tue, 27 Aug 2024
- 08:28:44 -0700 (PDT)
+ AJvYcCU3kbEH8Qo4hMKBotpvVfbuBP5kinno1kx1ynXnxvCOczbUme3o6VSIpmehn4Nn3KeucN2PMAnaw5r9GKI=@nongnu.org
+X-Gm-Message-State: AOJu0YyhcxvQ1y+O3FLIVkhj239yiqmbSHV8tSH8wCZBG10goM3p+6jR
+ WYee1QTUVcgv79SMRvh5o/5FzIScy3lHDSICpgZI8VGO0KcbpZeu0TTaGnbybOZfNv5P5ZfjGol
+ A36qJmfaDytpDxLufOcowFF/qvs85PCisCg6LK9Mp6wB1P2+jNOYLzXlSRJ06/Hw2Fv2ZFp8Lhs
+ wh+Z4D6Vsj0TMqhTocZgkrwfVpSdnOlg==
+X-Received: by 2002:a17:907:9487:b0:a86:bb5f:ebbd with SMTP id
+ a640c23a62f3a-a86e3d40516mr243557566b.63.1724772954605; 
+ Tue, 27 Aug 2024 08:35:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEFVrH03ygMqYp0dtnyox9CSJB2OqtA2jRh0d50Y7xj5QsIaKIk2zUL1n5zS5DbboAYfA7UIkUmhe+ailZoa1U=
+X-Received: by 2002:a17:907:9487:b0:a86:bb5f:ebbd with SMTP id
+ a640c23a62f3a-a86e3d40516mr243555366b.63.1724772954141; Tue, 27 Aug 2024
+ 08:35:54 -0700 (PDT)
 MIME-Version: 1.0
 References: <20240827151022.37992-1-anisinha@redhat.com>
  <20240827151022.37992-3-anisinha@redhat.com>
-In-Reply-To: <20240827151022.37992-3-anisinha@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 27 Aug 2024 16:28:33 +0100
-Message-ID: <CAFEAcA9Xq7S6_-hYkNYdv6-z7tM7xSgDGyC92L19kTm02qScAw@mail.gmail.com>
+ <CAFEAcA9Xq7S6_-hYkNYdv6-z7tM7xSgDGyC92L19kTm02qScAw@mail.gmail.com>
+In-Reply-To: <CAFEAcA9Xq7S6_-hYkNYdv6-z7tM7xSgDGyC92L19kTm02qScAw@mail.gmail.com>
+From: Ani Sinha <anisinha@redhat.com>
+Date: Tue, 27 Aug 2024 21:05:41 +0530
+Message-ID: <CAK3XEhPPWvRuzc=DZiP0ni-c9-KsT6=R+9_XAM5224KsiARh=g@mail.gmail.com>
 Subject: Re: [PATCH v4 2/2] kvm: refactor core virtual machine creation into
  its own function
-To: Ani Sinha <anisinha@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, zhao1.liu@intel.com, cfontana@suse.de,
- armbru@redhat.com, qemu-trivial@nongnu.org, kvm@vger.kernel.org, 
- qemu-devel@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::531;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x531.google.com
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ cfontana@suse.de, 
+ Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
+ kvm@vger.kernel.org, qemu-devel <qemu-devel@nongnu.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/alternative; boundary="000000000000401a3c0620abff37"
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
+ RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -81,16 +94,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Aug 2024 15:28:48 -0000
+X-List-Received-Date: Tue, 27 Aug 2024 15:36:02 -0000
 
-On Tue, 27 Aug 2024 at 16:11, Ani Sinha <anisinha@redhat.com> wrote:
+--000000000000401a3c0620abff37
+Content-Type: text/plain; charset="UTF-8"
+
+On Tue, 27 Aug, 2024, 8:59 pm Peter Maydell, <peter.maydell@linaro.org>
+wrote:
+
+> On Tue, 27 Aug 2024 at 16:11, Ani Sinha <anisinha@redhat.com> wrote:
+> >
+> > Refactoring the core logic around KVM_CREATE_VM into its own separate
+> function
+> > so that it can be called from other functions in subsequent patches.
+> There is
+> > no functional change in this patch.
 >
-> Refactoring the core logic around KVM_CREATE_VM into its own separate function
-> so that it can be called from other functions in subsequent patches. There is
-> no functional change in this patch.
+> What subsequent patches? This is patch 2 of 2...
+>
 
-What subsequent patches? This is patch 2 of 2...
+I intend to post them later as a part of a larger patch series when my
+changes have stabilized.
 
-thanks
--- PMM
+
+
+>
+
+--000000000000401a3c0620abff37
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
+class=3D"gmail_attr">On Tue, 27 Aug, 2024, 8:59 pm Peter Maydell, &lt;<a hr=
+ef=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wro=
+te:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;b=
+order-left:1px #ccc solid;padding-left:1ex">On Tue, 27 Aug 2024 at 16:11, A=
+ni Sinha &lt;<a href=3D"mailto:anisinha@redhat.com" target=3D"_blank" rel=
+=3D"noreferrer">anisinha@redhat.com</a>&gt; wrote:<br>
+&gt;<br>
+&gt; Refactoring the core logic around KVM_CREATE_VM into its own separate =
+function<br>
+&gt; so that it can be called from other functions in subsequent patches. T=
+here is<br>
+&gt; no functional change in this patch.<br>
+<br>
+What subsequent patches? This is patch 2 of 2...<br></blockquote></div></di=
+v><div dir=3D"auto"><br></div><div dir=3D"auto">I intend to post them later=
+ as a part of a larger patch series when my changes have stabilized.</div><=
+div dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div dir=3D"auto"><d=
+iv class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:=
+0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><br>
+</blockquote></div></div></div>
+
+--000000000000401a3c0620abff37--
+
 
