@@ -1,87 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1siyEl-0001F9-7n
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2024 11:36:03 -0400
+	id 1sj0Ll-0004Jv-2D
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2024 13:51:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1siyEk-0001Ao-1k
- for qemu-trivial@nongnu.org; Tue, 27 Aug 2024 11:36:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sj0Lj-0004Dn-Hc; Tue, 27 Aug 2024 13:51:23 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1siyEi-0003V5-4T
- for qemu-trivial@nongnu.org; Tue, 27 Aug 2024 11:36:01 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1724772959;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=hXBj1zpRbkovYQZaFT0xfH4IPmRYfCibUwJ+bcQKbJQ=;
- b=K+Ywn9Ckp5iAgfJi8pbVYeVgJ3fIg0h1rPu0uzN7pQq8xJNdbhoQE+vSNvyFEQ96LJgokI
- cSHwocyHCmXGrKsDH/s9SQFBqhx5+61iWTaU4JVzo8tMqIPHm3qGyVSiH8ibulJTHBLLLv
- Lekc/iEugZCmZjFnHjOsOKTvw6bg2pg=
-Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
- [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-208-l7HJ6ikWPMWH-Y769FMvtw-1; Tue, 27 Aug 2024 11:35:55 -0400
-X-MC-Unique: l7HJ6ikWPMWH-Y769FMvtw-1
-Received: by mail-ej1-f71.google.com with SMTP id
- a640c23a62f3a-a7d2d414949so518913166b.0
- for <qemu-trivial@nongnu.org>; Tue, 27 Aug 2024 08:35:55 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724772955; x=1725377755;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=hXBj1zpRbkovYQZaFT0xfH4IPmRYfCibUwJ+bcQKbJQ=;
- b=QaV2NPr7R0tVrLxzlMel4hmVYk0A4PMk5O2UqB39MOVgBjmaoREtQWG2b/QII8hoVW
- HdcjOenmS/hioTW1MLmWHZ+rfQfa6bCz4A0z9Wp1K/p5P5fH/i0PEM7DmpfQ6VlLG4g7
- NH7L1YpP5I92mH2t7wJj1QvFzFkXC2AiaavWOi8nQtfGTX5Mf+YdUca0KPaFpdcwVZ5s
- b6EKoSvt279oyH1xQhqbQfI+HscOS8LgX5lNSr+NcXRDeNzu5gFi3RPwygyFSjv3ukqS
- 0i8pXgvRmnwqKG3BzKSpe8gbqY6Y1CJX503/Hsi9YSzmb+f4P7oV9Dwj71klzgz6Fp2R
- 93Fg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU3kbEH8Qo4hMKBotpvVfbuBP5kinno1kx1ynXnxvCOczbUme3o6VSIpmehn4Nn3KeucN2PMAnaw5r9GKI=@nongnu.org
-X-Gm-Message-State: AOJu0YyhcxvQ1y+O3FLIVkhj239yiqmbSHV8tSH8wCZBG10goM3p+6jR
- WYee1QTUVcgv79SMRvh5o/5FzIScy3lHDSICpgZI8VGO0KcbpZeu0TTaGnbybOZfNv5P5ZfjGol
- A36qJmfaDytpDxLufOcowFF/qvs85PCisCg6LK9Mp6wB1P2+jNOYLzXlSRJ06/Hw2Fv2ZFp8Lhs
- wh+Z4D6Vsj0TMqhTocZgkrwfVpSdnOlg==
-X-Received: by 2002:a17:907:9487:b0:a86:bb5f:ebbd with SMTP id
- a640c23a62f3a-a86e3d40516mr243557566b.63.1724772954605; 
- Tue, 27 Aug 2024 08:35:54 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEFVrH03ygMqYp0dtnyox9CSJB2OqtA2jRh0d50Y7xj5QsIaKIk2zUL1n5zS5DbboAYfA7UIkUmhe+ailZoa1U=
-X-Received: by 2002:a17:907:9487:b0:a86:bb5f:ebbd with SMTP id
- a640c23a62f3a-a86e3d40516mr243555366b.63.1724772954141; Tue, 27 Aug 2024
- 08:35:54 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sj0Lh-0001B6-7o; Tue, 27 Aug 2024 13:51:23 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id BB28889295;
+ Tue, 27 Aug 2024 20:50:13 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id BBD5A12DAFB;
+ Tue, 27 Aug 2024 20:51:16 +0300 (MSK)
+Message-ID: <d52cafbc-351c-41cd-8796-d10ea13b75c9@tls.msk.ru>
+Date: Tue, 27 Aug 2024 20:51:16 +0300
 MIME-Version: 1.0
-References: <20240827151022.37992-1-anisinha@redhat.com>
- <20240827151022.37992-3-anisinha@redhat.com>
- <CAFEAcA9Xq7S6_-hYkNYdv6-z7tM7xSgDGyC92L19kTm02qScAw@mail.gmail.com>
-In-Reply-To: <CAFEAcA9Xq7S6_-hYkNYdv6-z7tM7xSgDGyC92L19kTm02qScAw@mail.gmail.com>
-From: Ani Sinha <anisinha@redhat.com>
-Date: Tue, 27 Aug 2024 21:05:41 +0530
-Message-ID: <CAK3XEhPPWvRuzc=DZiP0ni-c9-KsT6=R+9_XAM5224KsiARh=g@mail.gmail.com>
-Subject: Re: [PATCH v4 2/2] kvm: refactor core virtual machine creation into
- its own function
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- cfontana@suse.de, 
- Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
- kvm@vger.kernel.org, qemu-devel <qemu-devel@nongnu.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000401a3c0620abff37"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] mark <zlib.h> with for-crc32 in a consistent manner
+To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20240827100207.3502764-1-mjt@tls.msk.ru>
+ <0a691100-7c80-40bc-b02b-dccdad510e1c@ilande.co.uk>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <0a691100-7c80-40bc-b02b-dccdad510e1c@ilande.co.uk>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,58 +74,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Aug 2024 15:36:02 -0000
+X-List-Received-Date: Tue, 27 Aug 2024 17:51:23 -0000
 
---000000000000401a3c0620abff37
-Content-Type: text/plain; charset="UTF-8"
+27.08.2024 15:09, Mark Cave-Ayland wrote:
+> On 27/08/2024 11:02, Michael Tokarev wrote:
+> 
+>> in many cases, <zlib.h> is only included for crc32 function,
+>> and in some of them, there's a comment saying that, but in
+>> a different way.  In one place (hw/net/rtl8139.c), there was
+>> another #include added between the comment and <zlib.h> include.
+>>
+>> Make all such comments to be on the same line as #include, make
+>> it consistent, and also add a few missing comments, including
+>> hw/nvram/mac_nvram.c which uses adler32 instead.
+...
+>>   //#define DEBUG_STELLARIS_ENET 1
+> 
+> For the hw/net devices there are separate net_crc32() and net_crc32_le() functions from net/net.c which are intended for (most) network devices where 
+> the "standard" polynomials are used.
 
-On Tue, 27 Aug, 2024, 8:59 pm Peter Maydell, <peter.maydell@linaro.org>
-wrote:
+In many hw/net files I touched in this patch, *both*
+plain crc32() and qemu's net_crc32() are used.
 
-> On Tue, 27 Aug 2024 at 16:11, Ani Sinha <anisinha@redhat.com> wrote:
-> >
-> > Refactoring the core logic around KVM_CREATE_VM into its own separate
-> function
-> > so that it can be called from other functions in subsequent patches.
-> There is
-> > no functional change in this patch.
->
-> What subsequent patches? This is patch 2 of 2...
->
+For now I just marked the #include, nothing more, we
+can finish the refactoring later if needs to be.
 
-I intend to post them later as a part of a larger patch series when my
-changes have stabilized.
+Speaking of crc32 from zlib, I don't really see a point
+in re-implementing it in this context (it is re-implemented
+in net/net.c:net_crc32(), with comment "XXX: optimize*).
+Implementation from zlib is quite a good one. Not the best
+possible but definitely not the worst and is better than
+net_crc32().
 
+(See also https://create.stephan-brumme.com/crc32/)
 
+What we definitely *can* optimize is the two cases in
+tcg (arm and loong iirc) - they have hardware isns for
+crc32, but these operate in fixed 4 or 8-bytes integers,
+and there, implementing a function in qemu would be
+nice - not much code but significant speedup due to
+fixed size of the argument.
 
->
+I don't see any isse with using crc32 from zlib, since
+zlib is used for other things anyway and is mandatory
+dependency.  In case of qemu-user binaries, even static
+link, it is tiny (since only crc32 stuff is linked to),
+but there it would be more interesting to have in-qemu
+implementation for static-size isns.
 
---000000000000401a3c0620abff37
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"auto"><div><br><br><div class=3D"gmail_quote"><div dir=3D"ltr" =
-class=3D"gmail_attr">On Tue, 27 Aug, 2024, 8:59 pm Peter Maydell, &lt;<a hr=
-ef=3D"mailto:peter.maydell@linaro.org">peter.maydell@linaro.org</a>&gt; wro=
-te:<br></div><blockquote class=3D"gmail_quote" style=3D"margin:0 0 0 .8ex;b=
-order-left:1px #ccc solid;padding-left:1ex">On Tue, 27 Aug 2024 at 16:11, A=
-ni Sinha &lt;<a href=3D"mailto:anisinha@redhat.com" target=3D"_blank" rel=
-=3D"noreferrer">anisinha@redhat.com</a>&gt; wrote:<br>
-&gt;<br>
-&gt; Refactoring the core logic around KVM_CREATE_VM into its own separate =
-function<br>
-&gt; so that it can be called from other functions in subsequent patches. T=
-here is<br>
-&gt; no functional change in this patch.<br>
-<br>
-What subsequent patches? This is patch 2 of 2...<br></blockquote></div></di=
-v><div dir=3D"auto"><br></div><div dir=3D"auto">I intend to post them later=
- as a part of a larger patch series when my changes have stabilized.</div><=
-div dir=3D"auto"><br></div><div dir=3D"auto"><br></div><div dir=3D"auto"><d=
-iv class=3D"gmail_quote"><blockquote class=3D"gmail_quote" style=3D"margin:=
-0 0 0 .8ex;border-left:1px #ccc solid;padding-left:1ex"><br>
-</blockquote></div></div></div>
-
---000000000000401a3c0620abff37--
-
+/mjt
 
