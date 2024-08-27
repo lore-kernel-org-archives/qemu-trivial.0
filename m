@@ -1,71 +1,39 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sipj9-0004b2-Gm
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2024 02:30:51 -0400
+	id 1sit1u-0006SZ-5r
+	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2024 06:02:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sipj8-0004ZX-JS
- for qemu-trivial@nongnu.org; Tue, 27 Aug 2024 02:30:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sit1q-0006Ql-8Z; Tue, 27 Aug 2024 06:02:23 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sipj7-0004ee-1Q
- for qemu-trivial@nongnu.org; Tue, 27 Aug 2024 02:30:50 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1724740246;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=J7ee2KV+Lqz+23D3Fwl+N0nP1Ygl2fAs/LiLzNVq+xI=;
- b=Lbt37owv9AwuXgK60q0Br6JyEDgouS10nP/IKFWutMdDYnF6z0NHse7DmqOZ0G6l2P0NpX
- eagiAEbOSEkDNEFyZ6HqpKb8iueCd9QxC262qFVyjVarVkgCP11hZtR/jlYzYFmM8WCkbh
- nN2ceNq6E4NijaT2RW68eDh/jET4usE=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-401-I6ZRyGUsMTyzN4TmTB0tUw-1; Tue,
- 27 Aug 2024 02:30:41 -0400
-X-MC-Unique: I6ZRyGUsMTyzN4TmTB0tUw-1
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 89AF11955BF6; Tue, 27 Aug 2024 06:30:40 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.112])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EC1141956054; Tue, 27 Aug 2024 06:30:38 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 9EA7421E6A28; Tue, 27 Aug 2024 08:30:36 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Ani Sinha <anisinha@redhat.com>,  Paolo Bonzini <pbonzini@redhat.com>,
- qemu-trivial@nongnu.org,  zhao1.liu@intel.com,  kvm@vger.kernel.org,
- qemu-devel@nongnu.org,  Markus Armbruster <armbru@redhat.com>
-Subject: Re: [PATCH v3] kvm: replace fprintf with error_report/printf() in
- kvm_init()
-In-Reply-To: <8913b8c7-4103-4f69-8567-afdc29f8d0d3@linaro.org> ("Philippe
- =?utf-8?Q?Mathieu-Daud=C3=A9=22's?= message of "Fri, 9 Aug 2024 10:35:57
- +0200")
-References: <20240809064940.1788169-1-anisinha@redhat.com>
- <8913b8c7-4103-4f69-8567-afdc29f8d0d3@linaro.org>
-Date: Tue, 27 Aug 2024 08:30:36 +0200
-Message-ID: <87v7zmmq9f.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sit1m-00010C-Iq; Tue, 27 Aug 2024 06:02:20 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 1109788F9C;
+ Tue, 27 Aug 2024 13:01:06 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id 8EBD712D85A;
+ Tue, 27 Aug 2024 13:02:08 +0300 (MSK)
+Received: (nullmailer pid 3502779 invoked by uid 1000);
+ Tue, 27 Aug 2024 10:02:08 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH] mark <zlib.h> with for-crc32 in a consistent manner
+Date: Tue, 27 Aug 2024 13:02:07 +0300
+Message-Id: <20240827100207.3502764-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,105 +46,243 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Aug 2024 06:30:50 -0000
+X-List-Received-Date: Tue, 27 Aug 2024 10:02:24 -0000
 
-Philippe Mathieu-Daud=C3=A9 <philmd@linaro.org> writes:
+in many cases, <zlib.h> is only included for crc32 function,
+and in some of them, there's a comment saying that, but in
+a different way.  In one place (hw/net/rtl8139.c), there was
+another #include added between the comment and <zlib.h> include.
 
-> Hi Ani,
->
-> On 9/8/24 08:49, Ani Sinha wrote:
->> error_report() is more appropriate for error situations. Replace fprintf=
- with
->> error_report. Cosmetic. No functional change.
->> CC: qemu-trivial@nongnu.org
->> CC: zhao1.liu@intel.com
->
-> (Pointless to carry Cc line when patch is already reviewed next line)
->
->> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
->> Signed-off-by: Ani Sinha <anisinha@redhat.com>
->> ---
->>   accel/kvm/kvm-all.c | 40 ++++++++++++++++++----------------------
->>   1 file changed, 18 insertions(+), 22 deletions(-)
->> changelog:
->> v2: fix a bug.
->> v3: replace one instance of error_report() with error_printf(). added ta=
-gs.
->> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
->> index 75d11a07b2..5bc9d35b61 100644
->> --- a/accel/kvm/kvm-all.c
->> +++ b/accel/kvm/kvm-all.c
->> @@ -2427,7 +2427,7 @@ static int kvm_init(MachineState *ms)
->>       QLIST_INIT(&s->kvm_parked_vcpus);
->>       s->fd =3D qemu_open_old(s->device ?: "/dev/kvm", O_RDWR);
->>       if (s->fd =3D=3D -1) {
->> -        fprintf(stderr, "Could not access KVM kernel module: %m\n");
->> +        error_report("Could not access KVM kernel module: %m");
->>           ret =3D -errno;
->>           goto err;
->>       }
->> @@ -2437,13 +2437,13 @@ static int kvm_init(MachineState *ms)
->>           if (ret >=3D 0) {
->>               ret =3D -EINVAL;
->>           }
->> -        fprintf(stderr, "kvm version too old\n");
->> +        error_report("kvm version too old");
->>           goto err;
->>       }
->>         if (ret > KVM_API_VERSION) {
->>           ret =3D -EINVAL;
->> -        fprintf(stderr, "kvm version not supported\n");
->> +        error_report("kvm version not supported");
->>           goto err;
->>       }
->>   @@ -2488,26 +2488,22 @@ static int kvm_init(MachineState *ms)
->>       } while (ret =3D=3D -EINTR);
->>         if (ret < 0) {
->> -        fprintf(stderr, "ioctl(KVM_CREATE_VM) failed: %d %s\n", -ret,
->> -                strerror(-ret));
->> +        error_report("ioctl(KVM_CREATE_VM) failed: %d %s", -ret,
->> +                    strerror(-ret));
->>     #ifdef TARGET_S390X
->>           if (ret =3D=3D -EINVAL) {
->> -            fprintf(stderr,
->> -                    "Host kernel setup problem detected. Please verify:=
-\n");
->> -            fprintf(stderr, "- for kernels supporting the switch_amode =
-or"
->> -                    " user_mode parameters, whether\n");
->> -            fprintf(stderr,
->> -                    "  user space is running in primary address space\n=
-");
->> -            fprintf(stderr,
->> -                    "- for kernels supporting the vm.allocate_pgste sys=
-ctl, "
->> -                    "whether it is enabled\n");
->> +            error_report("Host kernel setup problem detected.
->
-> \n"
->
-> Should we use error_printf_unless_qmp() for the following?
->
-> " Please verify:");
->> +            error_report("- for kernels supporting the switch_amode or"
->> +                        " user_mode parameters, whether");
->> +            error_report("  user space is running in primary address sp=
-ace");
->> +            error_report("- for kernels supporting the vm.allocate_pgst=
-e "
->> +                        "sysctl, whether it is enabled");
+Make all such comments to be on the same line as #include, make
+it consistent, and also add a few missing comments, including
+hw/nvram/mac_nvram.c which uses adler32 instead.
 
-Do not put newlines into error messages.  error_report()'s function
-comment demands "The resulting message should be a single phrase, with
-no newline or trailing punctuation."
+There's no code changes.
 
-You can do this:
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/net/cadence_gem.c             | 2 +-
+ hw/net/dp8393x.c                 | 2 +-
+ hw/net/ftgmac100.c               | 3 +--
+ hw/net/i82596.c                  | 2 +-
+ hw/net/imx_fec.c                 | 3 +--
+ hw/net/lan9118.c                 | 3 +--
+ hw/net/mcf_fec.c                 | 3 +--
+ hw/net/npcm7xx_emc.c             | 3 +--
+ hw/net/rtl8139.c                 | 4 +---
+ hw/net/smc91c111.c               | 3 +--
+ hw/net/stellaris_enet.c          | 2 +-
+ hw/nvram/mac_nvram.c             | 2 +-
+ target/arm/helper.c              | 2 +-
+ target/arm/tcg/helper-a64.c      | 2 +-
+ target/loongarch/tcg/op_helper.c | 2 +-
+ 15 files changed, 15 insertions(+), 23 deletions(-)
 
-    error_report(... the actual error message ...);
-    error_printf(... hints on what to do about it ...);
-
-Questions?
-
-[...]
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index ec7bf562e5..12857d9d7d 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -23,7 +23,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include <zlib.h> /* For crc32 */
++#include <zlib.h> /* for crc32 */
+ 
+ #include "hw/irq.h"
+ #include "hw/net/cadence_gem.h"
+diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
+index bf0652da1b..6d143bac5c 100644
+--- a/hw/net/dp8393x.c
++++ b/hw/net/dp8393x.c
+@@ -27,7 +27,7 @@
+ #include "qapi/error.h"
+ #include "qemu/module.h"
+ #include "qemu/timer.h"
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ #include "qom/object.h"
+ #include "trace.h"
+ 
+diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+index 80f9cd56d5..c68db4e15f 100644
+--- a/hw/net/ftgmac100.c
++++ b/hw/net/ftgmac100.c
+@@ -24,8 +24,7 @@
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+ 
+-/* For crc32 */
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ 
+ /*
+  * FTGMAC100 registers
+diff --git a/hw/net/i82596.c b/hw/net/i82596.c
+index 6cc8292a65..d786086a51 100644
+--- a/hw/net/i82596.c
++++ b/hw/net/i82596.c
+@@ -19,7 +19,7 @@
+ #include "qemu/module.h"
+ #include "trace.h"
+ #include "i82596.h"
+-#include <zlib.h>       /* For crc32 */
++#include <zlib.h> /* for crc32 */
+ 
+ #if defined(ENABLE_DEBUG)
+ #define DBG(x)          x
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index 8c91d20d44..dfc3fb0d9a 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -33,8 +33,7 @@
+ #include "net/eth.h"
+ #include "trace.h"
+ 
+-/* For crc32 */
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ 
+ #define IMX_MAX_DESC    1024
+ 
+diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
+index 91d81b410b..c38ea40ada 100644
+--- a/hw/net/lan9118.c
++++ b/hw/net/lan9118.c
+@@ -22,8 +22,7 @@
+ #include "qapi/error.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+-/* For crc32 */
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ #include "qom/object.h"
+ 
+ //#define DEBUG_LAN9118
+diff --git a/hw/net/mcf_fec.c b/hw/net/mcf_fec.c
+index e6902716bd..9db64f08c5 100644
+--- a/hw/net/mcf_fec.c
++++ b/hw/net/mcf_fec.c
+@@ -16,8 +16,7 @@
+ #include "hw/net/mii.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/sysbus.h"
+-/* For crc32 */
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ 
+ //#define DEBUG_FEC 1
+ 
+diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c
+index d1583b6f9b..7f25bca448 100644
+--- a/hw/net/npcm7xx_emc.c
++++ b/hw/net/npcm7xx_emc.c
+@@ -29,8 +29,7 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-/* For crc32 */
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ 
+ #include "hw/irq.h"
+ #include "hw/qdev-clock.h"
+diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+index 03a204ef8a..69a78ad677 100644
+--- a/hw/net/rtl8139.c
++++ b/hw/net/rtl8139.c
+@@ -48,10 +48,8 @@
+  *  2011-Mar-22  Benjamin Poirier:  Implemented VLAN offloading
+  */
+ 
+-/* For crc32 */
+-
+ #include "qemu/osdep.h"
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ 
+ #include "hw/pci/pci_device.h"
+ #include "hw/qdev-properties.h"
+diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
+index 702d0e8e83..a00a76009e 100644
+--- a/hw/net/smc91c111.c
++++ b/hw/net/smc91c111.c
+@@ -17,8 +17,7 @@
+ #include "qapi/error.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+-/* For crc32 */
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ #include "qom/object.h"
+ 
+ /* Number of 2k memory pages available.  */
+diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
+index db95766e29..8e2ce3bf29 100644
+--- a/hw/net/stellaris_enet.c
++++ b/hw/net/stellaris_enet.c
+@@ -15,7 +15,7 @@
+ #include "net/net.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ #include "qom/object.h"
+ 
+ //#define DEBUG_STELLARIS_ENET 1
+diff --git a/hw/nvram/mac_nvram.c b/hw/nvram/mac_nvram.c
+index fe9df9fa35..83c6724c0a 100644
+--- a/hw/nvram/mac_nvram.c
++++ b/hw/nvram/mac_nvram.c
+@@ -35,7 +35,7 @@
+ #include "qemu/module.h"
+ #include "qemu/error-report.h"
+ #include "trace.h"
+-#include <zlib.h>
++#include <zlib.h> /* for adler32 */
+ 
+ #define DEF_SYSTEM_SIZE 0xc10
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 0a582c1cd3..3f77b40734 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -19,7 +19,7 @@
+ #include "qemu/crc32c.h"
+ #include "qemu/qemu-print.h"
+ #include "exec/exec-all.h"
+-#include <zlib.h> /* For crc32 */
++#include <zlib.h> /* for crc32 */
+ #include "hw/irq.h"
+ #include "sysemu/cpu-timers.h"
+ #include "sysemu/kvm.h"
+diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+index 21a9abd90a..56b431faf5 100644
+--- a/target/arm/tcg/helper-a64.c
++++ b/target/arm/tcg/helper-a64.c
+@@ -33,7 +33,7 @@
+ #include "qemu/int128.h"
+ #include "qemu/atomic128.h"
+ #include "fpu/softfloat.h"
+-#include <zlib.h> /* For crc32 */
++#include <zlib.h> /* for crc32 */
+ 
+ /* C2.4.7 Multiply and divide */
+ /* special cases for 0 and LLONG_MIN are mandated by the standard */
+diff --git a/target/loongarch/tcg/op_helper.c b/target/loongarch/tcg/op_helper.c
+index fe79c62fa4..b17208e5b9 100644
+--- a/target/loongarch/tcg/op_helper.c
++++ b/target/loongarch/tcg/op_helper.c
+@@ -14,7 +14,7 @@
+ #include "exec/cpu_ldst.h"
+ #include "internals.h"
+ #include "qemu/crc32c.h"
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ #include "cpu-csr.h"
+ 
+ /* Exceptions helpers */
+-- 
+2.39.2
 
 
