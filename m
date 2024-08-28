@@ -1,84 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sjEHN-0004Si-Ry
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2024 04:43:49 -0400
+	id 1sjGlk-0006aQ-8B
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2024 07:23:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1sjEHM-0004RL-Ow; Wed, 28 Aug 2024 04:43:48 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sjGli-0006Xr-Uo
+ for qemu-trivial@nongnu.org; Wed, 28 Aug 2024 07:23:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1sjEHK-0002mF-Vf; Wed, 28 Aug 2024 04:43:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID;
- bh=hYSXzKKTJiQl2reHDZ35uAsCW1EFe0QV6AyUrLko564=; b=q9VI+9glBdBcDd5H6aNDmp+IEh
- C/olAhSJNHyeF1uZWDwI7rIP3KD1T3kAZfJZTVA+mQ3YU3kavM5qiMumcj85gG423+I7Zbx+u/jlu
- KAxrbA/d+37rrnm6Dpr1GKOm11FuNjDVA3Zjz9wwsNnzj0s++bObMZNKeh/OpJFDXwjhe3c6+bmKA
- 5ln7MP98iyYhkdRgS9qOY9Yd9IUlbeVQczb/XTC8i6Gz+U46nf0DWJ2EK+SYqFefKVs2tjh17NAcW
- 3QceJnquieeZmK2zDYLR8Zn/nxTTlya/0OcpIfSfDGY+6lXBoyZDeZkZdZEO+PPoVakFMFDTRHRcB
- Q2BYjh6NSQ9sK5yz+G4adtolMfpWSwzvN/pkAwe9CVubeP9ErA0ZQw6KkRBCYe5QDos3qcdSqTTPt
- 9oozsUR94G5Tl2v3FdGpxlSBCpmaMsrYk3yicSmN5WZadXtwiGB1YYUo62aPRQIMRXDX0/oJZVvxJ
- q0StdlTsVye+63GE4+XSON5HKQYAj0PgJ2OEKY/Q89hXbOaOsNkcIknCMUlqc8i9rlQ5JxxyahD4a
- AZtExQvcmNmpvkdY34PETQzfbuqUNDKSiP0UNUPOrfQY4H1V+jMzIc+l+OHLbp8E80jQTWWHui9u4
- FbFuLFNVSii8XM28h63jL0eVuKtb13S3u588fzfag=;
-Received: from [2a02:8012:c93d:0:260e:bf57:a4e9:8142]
- by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1sjEGn-0009Am-6Z; Wed, 28 Aug 2024 09:43:17 +0100
-Message-ID: <75a65917-1504-43dc-9726-45cb1403ae62@ilande.co.uk>
-Date: Wed, 28 Aug 2024 09:43:20 +0100
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sjGlg-0002dK-7z
+ for qemu-trivial@nongnu.org; Wed, 28 Aug 2024 07:23:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1724844194;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=sjPscny8RpBp/Hq/MF0Txq0RsmBmvhMA9j1IvksC6Zg=;
+ b=UXGbHdarJCwvN5Ly4atiTPCWQ4UIAhWDv8qy4/4GGGIttHfD40hx2DAyMntUL5UiKOr0v9
+ XO9lnAnG4KpjwTJQtL1f7CFaA54an8Ihy78DIIjWHttkRzpbGUGwnMloTObgcVnmmFiARM
+ 4CLbDmgC0xXrxH4H8Ig70n4vtcHU80g=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-644-VVMG9EtQNq6uKZ4tlwC9Sw-1; Wed,
+ 28 Aug 2024 07:23:13 -0400
+X-MC-Unique: VVMG9EtQNq6uKZ4tlwC9Sw-1
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0AB3F1955F4A; Wed, 28 Aug 2024 11:23:12 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.112])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 151FE19560A3; Wed, 28 Aug 2024 11:23:11 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id E498221E6A28; Wed, 28 Aug 2024 13:23:08 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Ani Sinha <anisinha@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,  qemu-trivial@nongnu.org,
+ zhao1.liu@intel.com,  kvm@vger.kernel.org,  qemu-devel@nongnu.org
+Subject: Re: [PATCH v5 1/2] kvm: replace fprintf with
+ error_report()/printf() in kvm_init()
+In-Reply-To: <20240828075630.7754-2-anisinha@redhat.com> (Ani Sinha's message
+ of "Wed, 28 Aug 2024 13:26:28 +0530")
+References: <20240828075630.7754-1-anisinha@redhat.com>
+ <20240828075630.7754-2-anisinha@redhat.com>
+Date: Wed, 28 Aug 2024 13:23:08 +0200
+Message-ID: <87ikvkriw3.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20240827100207.3502764-1-mjt@tls.msk.ru>
- <0a691100-7c80-40bc-b02b-dccdad510e1c@ilande.co.uk>
- <d52cafbc-351c-41cd-8796-d10ea13b75c9@tls.msk.ru>
-Content-Language: en-US
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
- eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-In-Reply-To: <d52cafbc-351c-41cd-8796-d10ea13b75c9@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a02:8012:c93d:0:260e:bf57:a4e9:8142
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH] mark <zlib.h> with for-crc32 in a consistent manner
-X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,68 +75,152 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Aug 2024 08:43:49 -0000
+X-List-Received-Date: Wed, 28 Aug 2024 11:23:19 -0000
 
-On 27/08/2024 18:51, Michael Tokarev wrote:
+Ani Sinha <anisinha@redhat.com> writes:
 
-> 27.08.2024 15:09, Mark Cave-Ayland wrote:
->> On 27/08/2024 11:02, Michael Tokarev wrote:
->>
->>> in many cases, <zlib.h> is only included for crc32 function,
->>> and in some of them, there's a comment saying that, but in
->>> a different way.  In one place (hw/net/rtl8139.c), there was
->>> another #include added between the comment and <zlib.h> include.
->>>
->>> Make all such comments to be on the same line as #include, make
->>> it consistent, and also add a few missing comments, including
->>> hw/nvram/mac_nvram.c which uses adler32 instead.
-> ...
->>>   //#define DEBUG_STELLARIS_ENET 1
->>
->> For the hw/net devices there are separate net_crc32() and net_crc32_le() functions 
->> from net/net.c which are intended for (most) network devices where the "standard" 
->> polynomials are used.
-> 
-> In many hw/net files I touched in this patch, *both*
-> plain crc32() and qemu's net_crc32() are used.
-> 
-> For now I just marked the #include, nothing more, we
-> can finish the refactoring later if needs to be.
-> 
-> Speaking of crc32 from zlib, I don't really see a point
-> in re-implementing it in this context (it is re-implemented
-> in net/net.c:net_crc32(), with comment "XXX: optimize*).
-> Implementation from zlib is quite a good one. Not the best
-> possible but definitely not the worst and is better than
-> net_crc32().
-> 
-> (See also https://create.stephan-brumme.com/crc32/)
+> error_report() is more appropriate for error situations. Replace fprintf with
+> error_report() and error_printf() as appropriate. Cosmetic. No functional
+> change.
 
-Right, I was just wondering that since you were already changing the zlib.h includes 
-if you were interested to update the net devices and switch net_crc32() to use the 
-zlib implementation whilst you were working in that area ;)
+Uh, I missed this last time around: the change is more than just
+cosmetics!  The error messages change, e.g. from
 
-> What we definitely *can* optimize is the two cases in
-> tcg (arm and loong iirc) - they have hardware isns for
-> crc32, but these operate in fixed 4 or 8-bytes integers,
-> and there, implementing a function in qemu would be
-> nice - not much code but significant speedup due to
-> fixed size of the argument.
-> 
-> I don't see any isse with using crc32 from zlib, since
-> zlib is used for other things anyway and is mandatory
-> dependency.  In case of qemu-user binaries, even static
-> link, it is tiny (since only crc32 stuff is linked to),
-> but there it would be more interesting to have in-qemu
-> implementation for static-size isns.
+    $ qemu-system-x86_64 -nodefaults -S -display none --accel kvm
+    qemu-system-x86_64: --accel kvm: Could not access KVM kernel module: Permission denied
+    qemu-system-x86_64: --accel kvm: failed to initialize kvm: Permission denied
 
-Agreed, I can certainly see the need for an implementation in the QEMU core. In which 
-case the net_crc32_*() functions will then be simple wrappers onto those 
-implementations...
+to
 
+    $ qemu-system-x86_64 -nodefaults -S -display none --accel kvm
+    Could not access KVM kernel module: Permission denied
+    qemu-system-x86_64: --accel kvm: failed to initialize kvm: Permission denied
 
-ATB,
+Note: the second message is from kvm_init()'s caller.  Reporting the
+same error twice is wrong, but not this patch's problem.
 
-Mark.
+Moreover, the patch tweaks an error message at [*].
+
+Suggest something like
+
+  Replace fprintf() with error_report() and error_printf() where
+  appropriate.  Error messages improve, e.g. from
+
+      Could not access KVM kernel module: Permission denied
+
+  to
+
+      qemu-system-x86_64: --accel kvm: Could not access KVM kernel module: Permission denied
+
+> CC: qemu-trivial@nongnu.org
+> CC: zhao1.liu@intel.com
+> CC: armbru@redhat.com
+> Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+> Signed-off-by: Ani Sinha <anisinha@redhat.com>
+> ---
+>  accel/kvm/kvm-all.c | 40 ++++++++++++++++++----------------------
+>  1 file changed, 18 insertions(+), 22 deletions(-)
+>
+> changelog:
+> v2: fix a bug.
+> v3: replace one instance of error_report() with error_printf(). added tags.
+> v4: changes suggested by Markus.
+> v5: more changes from Markus's comments on v4.
+>
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index 75d11a07b2..fcc157f0e6 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -2427,7 +2427,7 @@ static int kvm_init(MachineState *ms)
+>      QLIST_INIT(&s->kvm_parked_vcpus);
+>      s->fd = qemu_open_old(s->device ?: "/dev/kvm", O_RDWR);
+>      if (s->fd == -1) {
+> -        fprintf(stderr, "Could not access KVM kernel module: %m\n");
+> +        error_report("Could not access KVM kernel module: %m");
+>          ret = -errno;
+>          goto err;
+>      }
+> @@ -2437,13 +2437,13 @@ static int kvm_init(MachineState *ms)
+>          if (ret >= 0) {
+>              ret = -EINVAL;
+>          }
+> -        fprintf(stderr, "kvm version too old\n");
+> +        error_report("kvm version too old");
+>          goto err;
+>      }
+>  
+>      if (ret > KVM_API_VERSION) {
+>          ret = -EINVAL;
+> -        fprintf(stderr, "kvm version not supported\n");
+> +        error_report("kvm version not supported");
+>          goto err;
+>      }
+>  
+> @@ -2488,26 +2488,22 @@ static int kvm_init(MachineState *ms)
+>      } while (ret == -EINTR);
+>  
+>      if (ret < 0) {
+> -        fprintf(stderr, "ioctl(KVM_CREATE_VM) failed: %d %s\n", -ret,
+> -                strerror(-ret));
+> +        error_report("ioctl(KVM_CREATE_VM) failed: %s", strerror(-ret));
+
+[*] This is where you change an error message.
+
+>  
+>  #ifdef TARGET_S390X
+>          if (ret == -EINVAL) {
+> -            fprintf(stderr,
+> -                    "Host kernel setup problem detected. Please verify:\n");
+> -            fprintf(stderr, "- for kernels supporting the switch_amode or"
+> -                    " user_mode parameters, whether\n");
+> -            fprintf(stderr,
+> -                    "  user space is running in primary address space\n");
+> -            fprintf(stderr,
+> -                    "- for kernels supporting the vm.allocate_pgste sysctl, "
+> -                    "whether it is enabled\n");
+> +            error_printf("Host kernel setup problem detected."
+> +                         " Please verify:\n");
+> +            error_printf("- for kernels supporting the"
+> +                        " switch_amode or user_mode parameters, whether");
+> +            error_printf(" user space is running in primary address space\n");
+> +            error_printf("- for kernels supporting the vm.allocate_pgste"
+> +                         " sysctl, whether it is enabled\n");
+>          }
+>  #elif defined(TARGET_PPC)
+>          if (ret == -EINVAL) {
+> -            fprintf(stderr,
+> -                    "PPC KVM module is not loaded. Try modprobe kvm_%s.\n",
+> -                    (type == 2) ? "pr" : "hv");
+> +            error_printf("PPC KVM module is not loaded. Try modprobe kvm_%s.\n",
+> +                         (type == 2) ? "pr" : "hv");
+>          }
+>  #endif
+>          goto err;
+> @@ -2526,9 +2522,9 @@ static int kvm_init(MachineState *ms)
+>                          nc->name, nc->num, soft_vcpus_limit);
+>  
+>              if (nc->num > hard_vcpus_limit) {
+> -                fprintf(stderr, "Number of %s cpus requested (%d) exceeds "
+> -                        "the maximum cpus supported by KVM (%d)\n",
+> -                        nc->name, nc->num, hard_vcpus_limit);
+> +                error_report("Number of %s cpus requested (%d) exceeds "
+> +                             "the maximum cpus supported by KVM (%d)",
+> +                             nc->name, nc->num, hard_vcpus_limit);
+>                  exit(1);
+>              }
+>          }
+> @@ -2542,8 +2538,8 @@ static int kvm_init(MachineState *ms)
+>      }
+>      if (missing_cap) {
+>          ret = -EINVAL;
+> -        fprintf(stderr, "kvm does not support %s\n%s",
+> -                missing_cap->name, upgrade_note);
+> +        error_report("kvm does not support %s", missing_cap->name);
+> +        error_printf("%s", upgrade_note);
+>          goto err;
+>      }
+
+With the commit message corrected:
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
 
