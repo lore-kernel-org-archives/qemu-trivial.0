@@ -1,91 +1,84 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sjDXx-0003tP-PR
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2024 03:56:53 -0400
+	id 1sjEHN-0004Si-Ry
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2024 04:43:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1sjDXw-0003mr-2W
- for qemu-trivial@nongnu.org; Wed, 28 Aug 2024 03:56:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1sjEHM-0004RL-Ow; Wed, 28 Aug 2024 04:43:48 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
- id 1sjDXu-00063T-I5
- for qemu-trivial@nongnu.org; Wed, 28 Aug 2024 03:56:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1724831809;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=zYl3uaCkxHjT2nDUPL1WDle3wL/fOkENv7M02v+JPJY=;
- b=T6QUMzPYnLMEXX1aZytzqkEk4TCmQ3ZCtF81NIRWE/qtdTwIIDNWFW5cunOUw99tbCOL8q
- P1K8MwkAipaUKkCREW7ss3OlhLqU3OBMOHsBqOrYonSgxbGEQ4HFBwVIuKyts0Uk9ti5wc
- wIvg3VXbFuwWHYV61IHK/EU/mscWnJE=
-Received: from mail-pj1-f72.google.com (mail-pj1-f72.google.com
- [209.85.216.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-136-6UNH-FGwOb-k08FKbyABEg-1; Wed, 28 Aug 2024 03:56:47 -0400
-X-MC-Unique: 6UNH-FGwOb-k08FKbyABEg-1
-Received: by mail-pj1-f72.google.com with SMTP id
- 98e67ed59e1d1-2d5dafe951eso7298519a91.3
- for <qemu-trivial@nongnu.org>; Wed, 28 Aug 2024 00:56:46 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1724831805; x=1725436605;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=zYl3uaCkxHjT2nDUPL1WDle3wL/fOkENv7M02v+JPJY=;
- b=oU9svtxoapGNdX3JQOXYRe/TyqbdmRXNJABjajlP2U+JoavPj7n1qHLVADpGfHJAL8
- qCQlm2ZBK1V5SmQQodQqSae4QCors0ggZWkOhrEAyWnZ8B/p37GcTKgu3wWJGszMUiG5
- ISSi6igfiLcQbcTBdbrpzYPAfze0ZTNwAoVCAfEFoKvLyvmgyKXIA07wP1qpHOlBTMLD
- f7sbOTsPa+YeQN1dv8QOt7jOmG42Nu6TOPs4JYJLg0Svn5OhK7OjvO9V/Ow/KQm4tETe
- rMCRfZeQmVrFNKrnzqeQK0WjO3IldI2YP0Xkun2HE9H9LhywWIDazXNxWfA2hsZHaIcB
- mhBg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVVL1cqv1OfHRMB6f5cajh25UFgyufqDIQg+2o7F9tya4C28kNn2E5RsddoDYteSR2IS4LH/ZkbBNR0MvA=@nongnu.org
-X-Gm-Message-State: AOJu0Yy9u6LZ22zfzhTCRyahZmFX67VAU/WcxLDgGZ6a6BowmyeQUPCy
- 2ebkS7mdv7pSvSNv/tZAtzBXg9AaRp42TEptRJXtJXAsGHfE+R7Mstp+31dyUvMYJD+bCaaMFPA
- mTwVWYfZZJ8X2ayNUm5p11Z5i2+eCzJVzZwyZIcoimeQFO2qYN2lFr+e4ML1zyHIorQ==
-X-Received: by 2002:a17:90a:7408:b0:2d3:cc3e:4d6d with SMTP id
- 98e67ed59e1d1-2d646b91092mr14510029a91.9.1724831805448; 
- Wed, 28 Aug 2024 00:56:45 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHnS9wmiNKpmg/gLxiSQVdrbd8UyjUO09X7ptuxTKXWPb9mBB1kZo5ol5VgojZc/qD+8UvY6w==
-X-Received: by 2002:a17:90a:7408:b0:2d3:cc3e:4d6d with SMTP id
- 98e67ed59e1d1-2d646b91092mr14510013a91.9.1724831805035; 
- Wed, 28 Aug 2024 00:56:45 -0700 (PDT)
-Received: from localhost.localdomain ([115.96.157.236])
- by smtp.googlemail.com with ESMTPSA id
- 98e67ed59e1d1-2d8445fbf0dsm1013534a91.19.2024.08.28.00.56.42
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 28 Aug 2024 00:56:44 -0700 (PDT)
-From: Ani Sinha <anisinha@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Ani Sinha <anisinha@redhat.com>, zhao1.liu@intel.com, cfontana@suse.de,
- armbru@redhat.com, qemu-trivial@nongnu.org, kvm@vger.kernel.org,
- qemu-devel@nongnu.org
-Subject: [PATCH v5 2/2] kvm: refactor core virtual machine creation into its
- own function
-Date: Wed, 28 Aug 2024 13:26:29 +0530
-Message-ID: <20240828075630.7754-3-anisinha@redhat.com>
-X-Mailer: git-send-email 2.42.0
-In-Reply-To: <20240828075630.7754-1-anisinha@redhat.com>
-References: <20240828075630.7754-1-anisinha@redhat.com>
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1sjEHK-0002mF-Vf; Wed, 28 Aug 2024 04:43:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID;
+ bh=hYSXzKKTJiQl2reHDZ35uAsCW1EFe0QV6AyUrLko564=; b=q9VI+9glBdBcDd5H6aNDmp+IEh
+ C/olAhSJNHyeF1uZWDwI7rIP3KD1T3kAZfJZTVA+mQ3YU3kavM5qiMumcj85gG423+I7Zbx+u/jlu
+ KAxrbA/d+37rrnm6Dpr1GKOm11FuNjDVA3Zjz9wwsNnzj0s++bObMZNKeh/OpJFDXwjhe3c6+bmKA
+ 5ln7MP98iyYhkdRgS9qOY9Yd9IUlbeVQczb/XTC8i6Gz+U46nf0DWJ2EK+SYqFefKVs2tjh17NAcW
+ 3QceJnquieeZmK2zDYLR8Zn/nxTTlya/0OcpIfSfDGY+6lXBoyZDeZkZdZEO+PPoVakFMFDTRHRcB
+ Q2BYjh6NSQ9sK5yz+G4adtolMfpWSwzvN/pkAwe9CVubeP9ErA0ZQw6KkRBCYe5QDos3qcdSqTTPt
+ 9oozsUR94G5Tl2v3FdGpxlSBCpmaMsrYk3yicSmN5WZadXtwiGB1YYUo62aPRQIMRXDX0/oJZVvxJ
+ q0StdlTsVye+63GE4+XSON5HKQYAj0PgJ2OEKY/Q89hXbOaOsNkcIknCMUlqc8i9rlQ5JxxyahD4a
+ AZtExQvcmNmpvkdY34PETQzfbuqUNDKSiP0UNUPOrfQY4H1V+jMzIc+l+OHLbp8E80jQTWWHui9u4
+ FbFuLFNVSii8XM28h63jL0eVuKtb13S3u588fzfag=;
+Received: from [2a02:8012:c93d:0:260e:bf57:a4e9:8142]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1sjEGn-0009Am-6Z; Wed, 28 Aug 2024 09:43:17 +0100
+Message-ID: <75a65917-1504-43dc-9726-45cb1403ae62@ilande.co.uk>
+Date: Wed, 28 Aug 2024 09:43:20 +0100
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla Thunderbird
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20240827100207.3502764-1-mjt@tls.msk.ru>
+ <0a691100-7c80-40bc-b02b-dccdad510e1c@ilande.co.uk>
+ <d52cafbc-351c-41cd-8796-d10ea13b75c9@tls.msk.ru>
+Content-Language: en-US
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+In-Reply-To: <d52cafbc-351c-41cd-8796-d10ea13b75c9@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=anisinha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+X-SA-Exim-Connect-IP: 2a02:8012:c93d:0:260e:bf57:a4e9:8142
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH] mark <zlib.h> with for-crc32 in a consistent manner
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,141 +91,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Aug 2024 07:56:52 -0000
+X-List-Received-Date: Wed, 28 Aug 2024 08:43:49 -0000
 
-Refactoring the core logic around KVM_CREATE_VM into its own separate function
-so that it can be called from other functions in future patches. There is
-no functional change in this patch.
+On 27/08/2024 18:51, Michael Tokarev wrote:
 
-CC: pbonzini@redhat.com
-CC: zhao1.liu@intel.com
-CC: cfontana@suse.de
-CC: armbru@redhat.com
-CC: qemu-trivial@nongnu.org
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Claudio Fontana <cfontana@suse.de>
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
----
- accel/kvm/kvm-all.c | 86 ++++++++++++++++++++++++++++-----------------
- 1 file changed, 53 insertions(+), 33 deletions(-)
+> 27.08.2024 15:09, Mark Cave-Ayland wrote:
+>> On 27/08/2024 11:02, Michael Tokarev wrote:
+>>
+>>> in many cases, <zlib.h> is only included for crc32 function,
+>>> and in some of them, there's a comment saying that, but in
+>>> a different way.  In one place (hw/net/rtl8139.c), there was
+>>> another #include added between the comment and <zlib.h> include.
+>>>
+>>> Make all such comments to be on the same line as #include, make
+>>> it consistent, and also add a few missing comments, including
+>>> hw/nvram/mac_nvram.c which uses adler32 instead.
+> ...
+>>>   //#define DEBUG_STELLARIS_ENET 1
+>>
+>> For the hw/net devices there are separate net_crc32() and net_crc32_le() functions 
+>> from net/net.c which are intended for (most) network devices where the "standard" 
+>> polynomials are used.
+> 
+> In many hw/net files I touched in this patch, *both*
+> plain crc32() and qemu's net_crc32() are used.
+> 
+> For now I just marked the #include, nothing more, we
+> can finish the refactoring later if needs to be.
+> 
+> Speaking of crc32 from zlib, I don't really see a point
+> in re-implementing it in this context (it is re-implemented
+> in net/net.c:net_crc32(), with comment "XXX: optimize*).
+> Implementation from zlib is quite a good one. Not the best
+> possible but definitely not the worst and is better than
+> net_crc32().
+> 
+> (See also https://create.stephan-brumme.com/crc32/)
 
-v2: s/fprintf/warn_report as suggested by zhao
-v3: s/warn_report/error_report. function names adjusted to conform to
-other names. fprintf -> error_report() moved to its own patch.
-v4: added tags and rebased.
-v5: rebased.
+Right, I was just wondering that since you were already changing the zlib.h includes 
+if you were interested to update the net devices and switch net_crc32() to use the 
+zlib implementation whilst you were working in that area ;)
 
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index fcc157f0e6..cf3d820b94 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2385,6 +2385,57 @@ uint32_t kvm_dirty_ring_size(void)
-     return kvm_state->kvm_dirty_ring_size;
- }
- 
-+static int kvm_create_vm(MachineState *ms, KVMState *s, int type)
-+{
-+    int ret;
-+
-+    do {
-+        ret = kvm_ioctl(s, KVM_CREATE_VM, type);
-+    } while (ret == -EINTR);
-+
-+    if (ret < 0) {
-+        error_report("ioctl(KVM_CREATE_VM) failed: %s", strerror(-ret));
-+
-+#ifdef TARGET_S390X
-+        if (ret == -EINVAL) {
-+            error_printf("Host kernel setup problem detected."
-+                         " Please verify:\n");
-+            error_printf("- for kernels supporting the"
-+                        " switch_amode or user_mode parameters, whether");
-+            error_printf(" user space is running in primary address space\n");
-+            error_printf("- for kernels supporting the vm.allocate_pgste"
-+                         " sysctl, whether it is enabled\n");
-+        }
-+#elif defined(TARGET_PPC)
-+        if (ret == -EINVAL) {
-+            error_printf("PPC KVM module is not loaded. Try modprobe kvm_%s.\n",
-+                         (type == 2) ? "pr" : "hv");
-+        }
-+#endif
-+    }
-+
-+    return ret;
-+}
-+
-+static int kvm_machine_type(MachineState *ms)
-+{
-+    MachineClass *mc = MACHINE_GET_CLASS(ms);
-+    int type;
-+
-+    if (object_property_find(OBJECT(current_machine), "kvm-type")) {
-+        g_autofree char *kvm_type;
-+        kvm_type = object_property_get_str(OBJECT(current_machine),
-+                                           "kvm-type",
-+                                           &error_abort);
-+        type = mc->kvm_type(ms, kvm_type);
-+    } else if (mc->kvm_type) {
-+        type = mc->kvm_type(ms, NULL);
-+    } else {
-+        type = kvm_arch_get_default_type(ms);
-+    }
-+    return type;
-+}
-+
- static int kvm_init(MachineState *ms)
- {
-     MachineClass *mc = MACHINE_GET_CLASS(ms);
-@@ -2467,45 +2518,14 @@ static int kvm_init(MachineState *ms)
-     }
-     s->as = g_new0(struct KVMAs, s->nr_as);
- 
--    if (object_property_find(OBJECT(current_machine), "kvm-type")) {
--        g_autofree char *kvm_type = object_property_get_str(OBJECT(current_machine),
--                                                            "kvm-type",
--                                                            &error_abort);
--        type = mc->kvm_type(ms, kvm_type);
--    } else if (mc->kvm_type) {
--        type = mc->kvm_type(ms, NULL);
--    } else {
--        type = kvm_arch_get_default_type(ms);
--    }
--
-+    type = kvm_machine_type(ms);
-     if (type < 0) {
-         ret = -EINVAL;
-         goto err;
-     }
- 
--    do {
--        ret = kvm_ioctl(s, KVM_CREATE_VM, type);
--    } while (ret == -EINTR);
--
-+    ret = kvm_create_vm(ms, s, type);
-     if (ret < 0) {
--        error_report("ioctl(KVM_CREATE_VM) failed: %s", strerror(-ret));
--
--#ifdef TARGET_S390X
--        if (ret == -EINVAL) {
--            error_printf("Host kernel setup problem detected."
--                         " Please verify:\n");
--            error_printf("- for kernels supporting the"
--                        " switch_amode or user_mode parameters, whether");
--            error_printf(" user space is running in primary address space\n");
--            error_printf("- for kernels supporting the vm.allocate_pgste"
--                         " sysctl, whether it is enabled\n");
--        }
--#elif defined(TARGET_PPC)
--        if (ret == -EINVAL) {
--            error_printf("PPC KVM module is not loaded. Try modprobe kvm_%s.\n",
--                         (type == 2) ? "pr" : "hv");
--        }
--#endif
-         goto err;
-     }
- 
--- 
-2.42.0
+> What we definitely *can* optimize is the two cases in
+> tcg (arm and loong iirc) - they have hardware isns for
+> crc32, but these operate in fixed 4 or 8-bytes integers,
+> and there, implementing a function in qemu would be
+> nice - not much code but significant speedup due to
+> fixed size of the argument.
+> 
+> I don't see any isse with using crc32 from zlib, since
+> zlib is used for other things anyway and is mandatory
+> dependency.  In case of qemu-user binaries, even static
+> link, it is tiny (since only crc32 stuff is linked to),
+> but there it would be more interesting to have in-qemu
+> implementation for static-size isns.
+
+Agreed, I can certainly see the need for an implementation in the QEMU core. In which 
+case the net_crc32_*() functions will then be simple wrappers onto those 
+implementations...
+
+
+ATB,
+
+Mark.
 
 
