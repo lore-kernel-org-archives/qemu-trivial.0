@@ -1,64 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sj0Ll-0004Jv-2D
-	for mharc-qemu-trivial@gnu.org; Tue, 27 Aug 2024 13:51:25 -0400
+	id 1sjBJs-0000vr-N0
+	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2024 01:34:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sj0Lj-0004Dn-Hc; Tue, 27 Aug 2024 13:51:23 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sjBJr-0000rg-8P
+ for qemu-trivial@nongnu.org; Wed, 28 Aug 2024 01:34:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sj0Lh-0001B6-7o; Tue, 27 Aug 2024 13:51:23 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id BB28889295;
- Tue, 27 Aug 2024 20:50:13 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id BBD5A12DAFB;
- Tue, 27 Aug 2024 20:51:16 +0300 (MSK)
-Message-ID: <d52cafbc-351c-41cd-8796-d10ea13b75c9@tls.msk.ru>
-Date: Tue, 27 Aug 2024 20:51:16 +0300
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sjBJp-0000AO-61
+ for qemu-trivial@nongnu.org; Wed, 28 Aug 2024 01:34:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1724823247;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=UA/+RqDrOCk+oYc+QQr8ZQ8csnbYVHT3jQysDSl4/yg=;
+ b=FRCmlcK6cEpTnIVen4RAdv525cbKtkQI3OmDTyNEmfVgyJds74znaH5xu4DOWnSQR+3j8+
+ SPMdcl6vocJfBemn+0d/U15JkfRu1D97IaBF8F39lk2eamsLHjuA1i1rvHd4Kgo0zTIw0z
+ WyE+wPCgiDviWkfBlOdOhwWYOHu2QFg=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-602-1nMCIYwaP1-Zu7m_jpaKmw-1; Wed,
+ 28 Aug 2024 01:34:00 -0400
+X-MC-Unique: 1nMCIYwaP1-Zu7m_jpaKmw-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8B1111955D4B; Wed, 28 Aug 2024 05:33:59 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.39.192.112])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 89BFE1955D42; Wed, 28 Aug 2024 05:33:57 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 54B6221E6A28; Wed, 28 Aug 2024 07:33:55 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Ani Sinha <anisinha@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,  Paolo Bonzini
+ <pbonzini@redhat.com>,  Zhao Liu <zhao1.liu@intel.com>,  cfontana@suse.de,
+ qemu-trivial@nongnu.org,  kvm@vger.kernel.org,  qemu-devel
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH v4 2/2] kvm: refactor core virtual machine creation into
+ its own function
+In-Reply-To: <CAK3XEhPPWvRuzc=DZiP0ni-c9-KsT6=R+9_XAM5224KsiARh=g@mail.gmail.com>
+ (Ani Sinha's message of "Tue, 27 Aug 2024 21:05:41 +0530")
+References: <20240827151022.37992-1-anisinha@redhat.com>
+ <20240827151022.37992-3-anisinha@redhat.com>
+ <CAFEAcA9Xq7S6_-hYkNYdv6-z7tM7xSgDGyC92L19kTm02qScAw@mail.gmail.com>
+ <CAK3XEhPPWvRuzc=DZiP0ni-c9-KsT6=R+9_XAM5224KsiARh=g@mail.gmail.com>
+Date: Wed, 28 Aug 2024 07:33:55 +0200
+Message-ID: <87a5gxgqik.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] mark <zlib.h> with for-crc32 in a consistent manner
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20240827100207.3502764-1-mjt@tls.msk.ru>
- <0a691100-7c80-40bc-b02b-dccdad510e1c@ilande.co.uk>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <0a691100-7c80-40bc-b02b-dccdad510e1c@ilande.co.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
@@ -74,53 +79,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 27 Aug 2024 17:51:23 -0000
+X-List-Received-Date: Wed, 28 Aug 2024 05:34:11 -0000
 
-27.08.2024 15:09, Mark Cave-Ayland wrote:
-> On 27/08/2024 11:02, Michael Tokarev wrote:
-> 
->> in many cases, <zlib.h> is only included for crc32 function,
->> and in some of them, there's a comment saying that, but in
->> a different way.  In one place (hw/net/rtl8139.c), there was
->> another #include added between the comment and <zlib.h> include.
+Ani Sinha <anisinha@redhat.com> writes:
+
+> On Tue, 27 Aug, 2024, 8:59 pm Peter Maydell, <peter.maydell@linaro.org>
+> wrote:
+>
+>> On Tue, 27 Aug 2024 at 16:11, Ani Sinha <anisinha@redhat.com> wrote:
+>> >
+>> > Refactoring the core logic around KVM_CREATE_VM into its own separate
+>> function
+>> > so that it can be called from other functions in subsequent patches.
+>> There is
+>> > no functional change in this patch.
 >>
->> Make all such comments to be on the same line as #include, make
->> it consistent, and also add a few missing comments, including
->> hw/nvram/mac_nvram.c which uses adler32 instead.
-...
->>   //#define DEBUG_STELLARIS_ENET 1
-> 
-> For the hw/net devices there are separate net_crc32() and net_crc32_le() functions from net/net.c which are intended for (most) network devices where 
-> the "standard" polynomials are used.
+>> What subsequent patches? This is patch 2 of 2...
+>
+> I intend to post them later as a part of a larger patch series when my
+> changes have stabilized.
 
-In many hw/net files I touched in this patch, *both*
-plain crc32() and qemu's net_crc32() are used.
+Call them "future patches" then :)
 
-For now I just marked the #include, nothing more, we
-can finish the refactoring later if needs to be.
-
-Speaking of crc32 from zlib, I don't really see a point
-in re-implementing it in this context (it is re-implemented
-in net/net.c:net_crc32(), with comment "XXX: optimize*).
-Implementation from zlib is quite a good one. Not the best
-possible but definitely not the worst and is better than
-net_crc32().
-
-(See also https://create.stephan-brumme.com/crc32/)
-
-What we definitely *can* optimize is the two cases in
-tcg (arm and loong iirc) - they have hardware isns for
-crc32, but these operate in fixed 4 or 8-bytes integers,
-and there, implementing a function in qemu would be
-nice - not much code but significant speedup due to
-fixed size of the argument.
-
-I don't see any isse with using crc32 from zlib, since
-zlib is used for other things anyway and is mandatory
-dependency.  In case of qemu-user binaries, even static
-link, it is tiny (since only crc32 stuff is linked to),
-but there it would be more interesting to have in-qemu
-implementation for static-size isns.
-
-/mjt
 
