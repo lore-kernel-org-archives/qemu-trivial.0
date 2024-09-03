@@ -1,73 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sjIXu-0004ng-Tv
-	for mharc-qemu-trivial@gnu.org; Wed, 28 Aug 2024 09:17:10 -0400
+	id 1slThs-0001Db-Gg
+	for mharc-qemu-trivial@gnu.org; Tue, 03 Sep 2024 09:36:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sjIXt-0004lp-7V
- for qemu-trivial@nongnu.org; Wed, 28 Aug 2024 09:17:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1slThp-0001BT-7D
+ for qemu-trivial@nongnu.org; Tue, 03 Sep 2024 09:36:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1sjIXr-0007z6-OK
- for qemu-trivial@nongnu.org; Wed, 28 Aug 2024 09:17:08 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1slThm-0005Ld-ET
+ for qemu-trivial@nongnu.org; Tue, 03 Sep 2024 09:36:24 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1724851026;
+ s=mimecast20190719; t=1725370579;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=0TgtqdjKCvWtZAewbSEHHFCTAFowGaw5CywnmWY6G8o=;
- b=QoQ22abjO5k819TF5nPNXeaBu7ryMqgNPwJYlW/Q8yNzDvCAOWKpJIvcloK1XQjuBqyyvH
- Z4HvfvV3mm+kb3GUGFL4BI2VuA7k4DCbNt+ke7hvWoqaeNfvPwGwT4HYvQzes4zT+HEWAn
- XZlIxcsdf2GJrUjfvnmxIIePaYNmW8s=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=zPvQpTk5rSXcciAXaX4nWK0XiQ3vCA57Wt8c7vKs+IE=;
+ b=hddRMJ0CzEA/Po4iOlFWTvrX37YBtKVK4WVp1YmJInqTcaW9SBykYmfgy41kjN1khc3MbB
+ AsD2N/+eO5lfX1SefuS+63tDJj9O6g/52lGwg/zf6Wiq2NPTO7mU7IGlrqH8aHA6VVGjrZ
+ u7o6HHNHGo4HJIqxAPzg7cZ0majq2tk=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-622-xg62V1oaMYKhzctZzJuAYA-1; Wed,
- 28 Aug 2024 09:17:01 -0400
-X-MC-Unique: xg62V1oaMYKhzctZzJuAYA-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-689-5Yk6umckOVCQC0IyIDDWSQ-1; Tue,
+ 03 Sep 2024 09:36:17 -0400
+X-MC-Unique: 5Yk6umckOVCQC0IyIDDWSQ-1
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 82E481955D52; Wed, 28 Aug 2024 13:17:00 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.39.192.112])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E39E919560A3; Wed, 28 Aug 2024 13:16:57 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id AE1BB21E6A28; Wed, 28 Aug 2024 15:16:55 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Ani Sinha <anisinha@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,  qemu-trivial@nongnu.org,  Zhao Liu
- <zhao1.liu@intel.com>,  kvm@vger.kernel.org,  qemu-devel
- <qemu-devel@nongnu.org>
-Subject: Re: [PATCH v5 1/2] kvm: replace fprintf with
- error_report()/printf() in kvm_init()
-In-Reply-To: <E66A6507-F348-49F9-8887-1CE24A5827EF@redhat.com> (Ani Sinha's
- message of "Wed, 28 Aug 2024 18:10:24 +0530")
-References: <20240828075630.7754-1-anisinha@redhat.com>
- <20240828075630.7754-2-anisinha@redhat.com>
- <87ikvkriw3.fsf@pond.sub.org>
- <E66A6507-F348-49F9-8887-1CE24A5827EF@redhat.com>
-Date: Wed, 28 Aug 2024 15:16:55 +0200
-Message-ID: <874j74rdmg.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A51281954B19; Tue,  3 Sep 2024 13:36:16 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.86])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 21A791956048; Tue,  3 Sep 2024 13:36:14 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] tests/qtest/boot-order-test: Make the machine name mandatory
+ in this test
+Date: Tue,  3 Sep 2024 15:36:13 +0200
+Message-ID: <20240903133613.204608-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
+Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 11
+X-Spam_score: 1.1
+X-Spam_bar: +
+X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -80,41 +68,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 28 Aug 2024 13:17:09 -0000
+X-List-Received-Date: Tue, 03 Sep 2024 13:36:25 -0000
 
-Ani Sinha <anisinha@redhat.com> writes:
+Let's make sure that we always pass a machine name to the test_boot_orders()
+function, so we can check whether the machine is available in the binary
+and skip the test in case it is not included in the build.
 
->> On 28 Aug 2024, at 4:53=E2=80=AFPM, Markus Armbruster <armbru@redhat.com=
-> wrote:
->>=20
->> Ani Sinha <anisinha@redhat.com> writes:
->>=20
->>> error_report() is more appropriate for error situations. Replace fprint=
-f with
->>> error_report() and error_printf() as appropriate. Cosmetic. No function=
-al
->>> change.
->>=20
->> Uh, I missed this last time around: the change is more than just
->> cosmetics!  The error messages change, e.g. from
->>=20
->>    $ qemu-system-x86_64 -nodefaults -S -display none --accel kvm
->>    qemu-system-x86_64: --accel kvm: Could not access KVM kernel module: =
-Permission denied
->>    qemu-system-x86_64: --accel kvm: failed to initialize kvm: Permission=
- denied
->>=20
->> to
->>=20
->>    $ qemu-system-x86_64 -nodefaults -S -display none --accel kvm
->>    Could not access KVM kernel module: Permission denied
->>    qemu-system-x86_64: --accel kvm: failed to initialize kvm: Permission=
- denied
->
-> You got this backwards. This is what I have:
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/qtest/boot-order-test.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-I do!  Sorry %-}
-
-[...]
+diff --git a/tests/qtest/boot-order-test.c b/tests/qtest/boot-order-test.c
+index 8f2b6ef05a..c67b8cfe16 100644
+--- a/tests/qtest/boot-order-test.c
++++ b/tests/qtest/boot-order-test.c
+@@ -31,7 +31,7 @@ static void test_a_boot_order(const char *machine,
+     uint64_t actual;
+     QTestState *qts;
+ 
+-    if (machine && !qtest_has_machine(machine)) {
++    if (!qtest_has_machine(machine)) {
+         g_test_skip("Machine is not available");
+         return;
+     }
+@@ -107,7 +107,7 @@ static const boot_order_test test_cases_pc[] = {
+ 
+ static void test_pc_boot_order(void)
+ {
+-    test_boot_orders(NULL, read_boot_order_pc, test_cases_pc);
++    test_boot_orders("pc", read_boot_order_pc, test_cases_pc);
+ }
+ 
+ static uint64_t read_boot_order_pmac(QTestState *qts)
+-- 
+2.46.0
 
 
