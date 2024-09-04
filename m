@@ -1,61 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sllGb-00029E-JQ
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Sep 2024 04:21:29 -0400
+	id 1slp8G-0005Sy-JI
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Sep 2024 08:29:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sllGZ-00025r-6i
- for qemu-trivial@nongnu.org; Wed, 04 Sep 2024 04:21:27 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1slp8E-0005S0-Pp
+ for qemu-trivial@nongnu.org; Wed, 04 Sep 2024 08:29:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sllGX-00084a-Bf
- for qemu-trivial@nongnu.org; Wed, 04 Sep 2024 04:21:26 -0400
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1slp8D-0006b0-1h
+ for qemu-trivial@nongnu.org; Wed, 04 Sep 2024 08:29:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1725438084;
+ s=mimecast20190719; t=1725452943;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=S5nZ0X+eAS36sBXtdeZjgNSJh8wYU6415sme3a/niUk=;
- b=N2WzXpJD+AdlGnU+0EngMvYdr1d8dE5+tbuZwYFEQuexb4yf1QpAgtTHESLdv2lZ/f9Tjb
- qUMN8o5AvRQhAOg2SyxINBtr8BNYYKJ2XIRyX2ji+Nq0Bqtvoq8EQPN5Lc/Uiq2DfKqrbE
- WEv/ix7/Bhde7rIg3YA3Ut/gwc6BJFQ=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-217-qc64QcfzNfydrhvSSdWiYQ-1; Wed,
- 04 Sep 2024 04:21:21 -0400
-X-MC-Unique: qc64QcfzNfydrhvSSdWiYQ-1
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5209D1955BC1; Wed,  4 Sep 2024 08:21:20 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.194.48])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E2DC71955D42; Wed,  4 Sep 2024 08:21:17 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Laurent Vivier <lvivier@redhat.com>
-Subject: [PATCH] tests/qtest/meson.build: Add more CONFIG switches checks for
- the x86 tests
-Date: Wed,  4 Sep 2024 10:21:15 +0200
-Message-ID: <20240904082116.209260-1-thuth@redhat.com>
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
+ b=gNC+O2BFgtGIcqKCe9mXMoCVx8tLDAyvkol/c8hBH+zKOaNjPIxIn/GCNVaNLTBFiGpdjc
+ dn+zWw6YMroRbmeoZ331FHVs10rcwo6uJ0sUzBD2nHq+sMXi1CyyyvFs6c25R5vdo2YgZD
+ QcsJnj5UXSOMcFOvAUGpaojpR6cVxm0=
+Received: from mail-lf1-f69.google.com (mail-lf1-f69.google.com
+ [209.85.167.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-425-KOWYyDAqOpifJQemapoW2A-1; Wed, 04 Sep 2024 08:22:56 -0400
+X-MC-Unique: KOWYyDAqOpifJQemapoW2A-1
+Received: by mail-lf1-f69.google.com with SMTP id
+ 2adb3069b0e04-5344b7df784so7236798e87.1
+ for <qemu-trivial@nongnu.org>; Wed, 04 Sep 2024 05:22:56 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725452575; x=1726057375;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
+ b=mRJXIO2CTZ4+9ahkc4TVSi3++zef6ZKKIHHc5nli9U9+9W1EidV7DaHNrKDFXWLgLi
+ rB4yEQ8opoM/02mpbwDNUUszOBhFVnZX9vC9frIrjttzbAld3oV3n4yEYCs4rbU41kLY
+ 83GTXKN9Eai1iu4UzEEpJYIHTSL4K+wL967oZFbKRNEXFHaPf/kPOLnnxS5Iflty5BRA
+ O4l5oXrDEbHdHsatb0pEghaXO+tHDaA8KZYShLfFPaMgHt43+V+1w0BTDV6kRRQzJX4F
+ mr2BbDE6Doi/ZUNLzTtKJ3It1rJMf2ToDLFLw8ytjNUgjDR/PQryBtfWPn/m8sdZGDv/
+ GbPA==
+X-Gm-Message-State: AOJu0YzsBRlGbZlFGmnYsvSaDZPgIEBl7e+1sHeQIT3teC9Rvf8uUYWa
+ zbmy9CsP+kyCXzSOGeKCyoxcSyxxCdXeoC1b8hxSk9tnxO/eNUISd5blvEa0f7wlQSeAzgWCSVj
+ FKrJV24Is6draJONvcgYq6ukGs3GY60nEXNCRjT/vLGPMBl1zOrxgg5s=
+X-Received: by 2002:a05:6512:1394:b0:533:45dc:d2f0 with SMTP id
+ 2adb3069b0e04-53546b931c8mr12244907e87.46.1725452574924; 
+ Wed, 04 Sep 2024 05:22:54 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IG+Em0B4WQdVj+ndnKwa/MbfNw8FPzXnZlE20GbqZw5nEF0AYhy1vnhNsCfI1VGJOe2LODBcA==
+X-Received: by 2002:a05:6512:1394:b0:533:45dc:d2f0 with SMTP id
+ 2adb3069b0e04-53546b931c8mr12244886e87.46.1725452574413; 
+ Wed, 04 Sep 2024 05:22:54 -0700 (PDT)
+Received: from avogadro.local ([151.95.101.29])
+ by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-a898922295csm798832966b.198.2024.09.04.05.22.53
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 04 Sep 2024 05:22:53 -0700 (PDT)
+From: Paolo Bonzini <pbonzini@redhat.com>
+To: Ani Sinha <anisinha@redhat.com>
+Cc: qemu-trivial@nongnu.org, zhao1.liu@intel.com, armbru@redhat.com,
+ kvm@vger.kernel.org, qemu-devel@nongnu.org
+Subject: Re: [PATCH v6] kvm: replace fprintf with error_report()/printf() in
+ kvm_init()
+Date: Wed,  4 Sep 2024 14:22:53 +0200
+Message-ID: <20240904122253.281351-1-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.46.0
+In-Reply-To: <20240828124539.62672-1-anisinha@redhat.com>
+References: 
 MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Content-Type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 11
-X-Spam_score: 1.1
-X-Spam_bar: +
-X-Spam_report: (1.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.142,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- T_SCC_BODY_TEXT_LINE=-0.01 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ T_SCC_BODY_TEXT_LINE=-0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -68,64 +94,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Sep 2024 08:21:27 -0000
+X-List-Received-Date: Wed, 04 Sep 2024 12:29:07 -0000
 
-When configuring QEMU with "--without-default-devices", currently a lot
-of the x86 qtests are failing since they silently assume that a certain
-device or the i440fx pc machine is available. Add more checks for CONFIG
-switches here to not run those tests in case the corresponding device is
-not available.
+Queued, thanks.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/qtest/meson.build | 16 ++++++++--------
- 1 file changed, 8 insertions(+), 8 deletions(-)
-
-diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
-index 486974cad7..587e1dc47e 100644
---- a/tests/qtest/meson.build
-+++ b/tests/qtest/meson.build
-@@ -49,9 +49,15 @@ qtests_filter = \
- qtests_i386 = \
-   (slirp.found() ? ['pxe-test'] : []) + \
-   qtests_filter + \
--  (have_tools ? ['ahci-test'] : []) +                                                       \
-+  (config_all_devices.has_key('CONFIG_ACPI_VMGENID') ? ['vmgenid-test'] : []) +             \
-+  (config_all_devices.has_key('CONFIG_AHCI_ICH9') and have_tools ? ['ahci-test'] : []) +    \
-+  (config_all_devices.has_key('CONFIG_AHCI_ICH9') ? ['tco-test'] : []) +                    \
-   (config_all_devices.has_key('CONFIG_FDC_ISA') ? ['fdc-test'] : []) +                      \
-+  (config_all_devices.has_key('CONFIG_I440FX') ? ['fw_cfg-test'] : []) +                    \
-   (config_all_devices.has_key('CONFIG_I440FX') ? ['i440fx-test'] : []) +                    \
-+  (config_all_devices.has_key('CONFIG_I440FX') ? ['ide-test'] : []) +                       \
-+  (config_all_devices.has_key('CONFIG_I440FX') ? ['numa-test'] : []) +                      \
-+  (config_all_devices.has_key('CONFIG_I440FX') ? ['test-x86-cpuid-compat'] : []) +          \
-   (config_all_devices.has_key('CONFIG_ISA_TESTDEV') ? ['endianness-test'] : []) +           \
-   (config_all_devices.has_key('CONFIG_SGA') ? ['boot-serial-test'] : []) +                  \
-   (config_all_devices.has_key('CONFIG_ISA_IPMI_KCS') ? ['ipmi-kcs-test'] : []) +            \
-@@ -96,21 +102,15 @@ qtests_i386 = \
-   qtests_pci +                                                                              \
-   qtests_cxl +                                                                              \
-   [
--   'ide-test',
-    'hd-geo-test',
-    'boot-order-test',
--   'fw_cfg-test',
-    'device-plug-test',
-    'drive_del-test',
--   'tco-test',
-    'cpu-plug-test',
--   'vmgenid-test',
-    'migration-test',
--   'test-x86-cpuid-compat',
--   'numa-test'
-   ]
- 
--if dbus_display
-+if dbus_display and config_all_devices.has_key('CONFIG_VGA')
-   qtests_i386 += ['dbus-display-test']
- endif
- 
--- 
-2.46.0
+Paolo
 
 
