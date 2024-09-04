@@ -1,50 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1slThs-0001Db-Gg
-	for mharc-qemu-trivial@gnu.org; Tue, 03 Sep 2024 09:36:28 -0400
+	id 1sllGb-00029E-JQ
+	for mharc-qemu-trivial@gnu.org; Wed, 04 Sep 2024 04:21:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1slThp-0001BT-7D
- for qemu-trivial@nongnu.org; Tue, 03 Sep 2024 09:36:25 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sllGZ-00025r-6i
+ for qemu-trivial@nongnu.org; Wed, 04 Sep 2024 04:21:27 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1slThm-0005Ld-ET
- for qemu-trivial@nongnu.org; Tue, 03 Sep 2024 09:36:24 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sllGX-00084a-Bf
+ for qemu-trivial@nongnu.org; Wed, 04 Sep 2024 04:21:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1725370579;
+ s=mimecast20190719; t=1725438084;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:
  content-transfer-encoding:content-transfer-encoding;
- bh=zPvQpTk5rSXcciAXaX4nWK0XiQ3vCA57Wt8c7vKs+IE=;
- b=hddRMJ0CzEA/Po4iOlFWTvrX37YBtKVK4WVp1YmJInqTcaW9SBykYmfgy41kjN1khc3MbB
- AsD2N/+eO5lfX1SefuS+63tDJj9O6g/52lGwg/zf6Wiq2NPTO7mU7IGlrqH8aHA6VVGjrZ
- u7o6HHNHGo4HJIqxAPzg7cZ0majq2tk=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=S5nZ0X+eAS36sBXtdeZjgNSJh8wYU6415sme3a/niUk=;
+ b=N2WzXpJD+AdlGnU+0EngMvYdr1d8dE5+tbuZwYFEQuexb4yf1QpAgtTHESLdv2lZ/f9Tjb
+ qUMN8o5AvRQhAOg2SyxINBtr8BNYYKJ2XIRyX2ji+Nq0Bqtvoq8EQPN5Lc/Uiq2DfKqrbE
+ WEv/ix7/Bhde7rIg3YA3Ut/gwc6BJFQ=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-689-5Yk6umckOVCQC0IyIDDWSQ-1; Tue,
- 03 Sep 2024 09:36:17 -0400
-X-MC-Unique: 5Yk6umckOVCQC0IyIDDWSQ-1
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-217-qc64QcfzNfydrhvSSdWiYQ-1; Wed,
+ 04 Sep 2024 04:21:21 -0400
+X-MC-Unique: qc64QcfzNfydrhvSSdWiYQ-1
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A51281954B19; Tue,  3 Sep 2024 13:36:16 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.86])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 21A791956048; Tue,  3 Sep 2024 13:36:14 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5209D1955BC1; Wed,  4 Sep 2024 08:21:20 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.194.48])
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id E2DC71955D42; Wed,  4 Sep 2024 08:21:17 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] tests/qtest/boot-order-test: Make the machine name mandatory
- in this test
-Date: Tue,  3 Sep 2024 15:36:13 +0200
-Message-ID: <20240903133613.204608-1-thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org,
+	Laurent Vivier <lvivier@redhat.com>
+Subject: [PATCH] tests/qtest/meson.build: Add more CONFIG switches checks for
+ the x86 tests
+Date: Wed,  4 Sep 2024 10:21:15 +0200
+Message-ID: <20240904082116.209260-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 11
@@ -68,39 +68,63 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 03 Sep 2024 13:36:25 -0000
+X-List-Received-Date: Wed, 04 Sep 2024 08:21:27 -0000
 
-Let's make sure that we always pass a machine name to the test_boot_orders()
-function, so we can check whether the machine is available in the binary
-and skip the test in case it is not included in the build.
+When configuring QEMU with "--without-default-devices", currently a lot
+of the x86 qtests are failing since they silently assume that a certain
+device or the i440fx pc machine is available. Add more checks for CONFIG
+switches here to not run those tests in case the corresponding device is
+not available.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- tests/qtest/boot-order-test.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests/qtest/meson.build | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/tests/qtest/boot-order-test.c b/tests/qtest/boot-order-test.c
-index 8f2b6ef05a..c67b8cfe16 100644
---- a/tests/qtest/boot-order-test.c
-+++ b/tests/qtest/boot-order-test.c
-@@ -31,7 +31,7 @@ static void test_a_boot_order(const char *machine,
-     uint64_t actual;
-     QTestState *qts;
+diff --git a/tests/qtest/meson.build b/tests/qtest/meson.build
+index 486974cad7..587e1dc47e 100644
+--- a/tests/qtest/meson.build
++++ b/tests/qtest/meson.build
+@@ -49,9 +49,15 @@ qtests_filter = \
+ qtests_i386 = \
+   (slirp.found() ? ['pxe-test'] : []) + \
+   qtests_filter + \
+-  (have_tools ? ['ahci-test'] : []) +                                                       \
++  (config_all_devices.has_key('CONFIG_ACPI_VMGENID') ? ['vmgenid-test'] : []) +             \
++  (config_all_devices.has_key('CONFIG_AHCI_ICH9') and have_tools ? ['ahci-test'] : []) +    \
++  (config_all_devices.has_key('CONFIG_AHCI_ICH9') ? ['tco-test'] : []) +                    \
+   (config_all_devices.has_key('CONFIG_FDC_ISA') ? ['fdc-test'] : []) +                      \
++  (config_all_devices.has_key('CONFIG_I440FX') ? ['fw_cfg-test'] : []) +                    \
+   (config_all_devices.has_key('CONFIG_I440FX') ? ['i440fx-test'] : []) +                    \
++  (config_all_devices.has_key('CONFIG_I440FX') ? ['ide-test'] : []) +                       \
++  (config_all_devices.has_key('CONFIG_I440FX') ? ['numa-test'] : []) +                      \
++  (config_all_devices.has_key('CONFIG_I440FX') ? ['test-x86-cpuid-compat'] : []) +          \
+   (config_all_devices.has_key('CONFIG_ISA_TESTDEV') ? ['endianness-test'] : []) +           \
+   (config_all_devices.has_key('CONFIG_SGA') ? ['boot-serial-test'] : []) +                  \
+   (config_all_devices.has_key('CONFIG_ISA_IPMI_KCS') ? ['ipmi-kcs-test'] : []) +            \
+@@ -96,21 +102,15 @@ qtests_i386 = \
+   qtests_pci +                                                                              \
+   qtests_cxl +                                                                              \
+   [
+-   'ide-test',
+    'hd-geo-test',
+    'boot-order-test',
+-   'fw_cfg-test',
+    'device-plug-test',
+    'drive_del-test',
+-   'tco-test',
+    'cpu-plug-test',
+-   'vmgenid-test',
+    'migration-test',
+-   'test-x86-cpuid-compat',
+-   'numa-test'
+   ]
  
--    if (machine && !qtest_has_machine(machine)) {
-+    if (!qtest_has_machine(machine)) {
-         g_test_skip("Machine is not available");
-         return;
-     }
-@@ -107,7 +107,7 @@ static const boot_order_test test_cases_pc[] = {
+-if dbus_display
++if dbus_display and config_all_devices.has_key('CONFIG_VGA')
+   qtests_i386 += ['dbus-display-test']
+ endif
  
- static void test_pc_boot_order(void)
- {
--    test_boot_orders(NULL, read_boot_order_pc, test_cases_pc);
-+    test_boot_orders("pc", read_boot_order_pc, test_cases_pc);
- }
- 
- static uint64_t read_boot_order_pmac(QTestState *qts)
 -- 
 2.46.0
 
