@@ -1,77 +1,113 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1slp8G-0005Sy-JI
-	for mharc-qemu-trivial@gnu.org; Wed, 04 Sep 2024 08:29:09 -0400
+	id 1sm7rE-0005xo-QE
+	for mharc-qemu-trivial@gnu.org; Thu, 05 Sep 2024 04:28:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1slp8E-0005S0-Pp
- for qemu-trivial@nongnu.org; Wed, 04 Sep 2024 08:29:06 -0400
+ id 1sm7rB-0005lr-OO
+ for qemu-trivial@nongnu.org; Thu, 05 Sep 2024 04:28:46 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1slp8D-0006b0-1h
- for qemu-trivial@nongnu.org; Wed, 04 Sep 2024 08:29:06 -0400
+ id 1sm7rA-0003rA-9o
+ for qemu-trivial@nongnu.org; Thu, 05 Sep 2024 04:28:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1725452943;
+ s=mimecast20190719; t=1725524921;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=gNC+O2BFgtGIcqKCe9mXMoCVx8tLDAyvkol/c8hBH+zKOaNjPIxIn/GCNVaNLTBFiGpdjc
- dn+zWw6YMroRbmeoZ331FHVs10rcwo6uJ0sUzBD2nHq+sMXi1CyyyvFs6c25R5vdo2YgZD
- QcsJnj5UXSOMcFOvAUGpaojpR6cVxm0=
-Received: from mail-lf1-f69.google.com (mail-lf1-f69.google.com
- [209.85.167.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=72tp/aHJd5yf3KJuEmi80Ko4ohiJJaa17zcLLnLLIpI=;
+ b=MdLujygTbqwpg2uZ1kcrLMlISATzkQQP+CJ8EyAVdjDjyfI+uMEr7w2Gpye7ghwir/Cw7r
+ L7kIIdVCfmZCbGDRH+jqjPhfQ6wPWuOIKmM/zP1FhVqUlFKdXKB5iYCoGYHiWR+COo4w5n
+ R1ITm5aM+YoWDr2ekDVM6/pegwBNnxc=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-425-KOWYyDAqOpifJQemapoW2A-1; Wed, 04 Sep 2024 08:22:56 -0400
-X-MC-Unique: KOWYyDAqOpifJQemapoW2A-1
-Received: by mail-lf1-f69.google.com with SMTP id
- 2adb3069b0e04-5344b7df784so7236798e87.1
- for <qemu-trivial@nongnu.org>; Wed, 04 Sep 2024 05:22:56 -0700 (PDT)
+ us-mta-638-PLrK2LogNdivbV71mpqR7Q-1; Thu, 05 Sep 2024 04:28:40 -0400
+X-MC-Unique: PLrK2LogNdivbV71mpqR7Q-1
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-3750b4feb9fso248218f8f.1
+ for <qemu-trivial@nongnu.org>; Thu, 05 Sep 2024 01:28:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725452575; x=1726057375;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=mRJXIO2CTZ4+9ahkc4TVSi3++zef6ZKKIHHc5nli9U9+9W1EidV7DaHNrKDFXWLgLi
- rB4yEQ8opoM/02mpbwDNUUszOBhFVnZX9vC9frIrjttzbAld3oV3n4yEYCs4rbU41kLY
- 83GTXKN9Eai1iu4UzEEpJYIHTSL4K+wL967oZFbKRNEXFHaPf/kPOLnnxS5Iflty5BRA
- O4l5oXrDEbHdHsatb0pEghaXO+tHDaA8KZYShLfFPaMgHt43+V+1w0BTDV6kRRQzJX4F
- mr2BbDE6Doi/ZUNLzTtKJ3It1rJMf2ToDLFLw8ytjNUgjDR/PQryBtfWPn/m8sdZGDv/
- GbPA==
-X-Gm-Message-State: AOJu0YzsBRlGbZlFGmnYsvSaDZPgIEBl7e+1sHeQIT3teC9Rvf8uUYWa
- zbmy9CsP+kyCXzSOGeKCyoxcSyxxCdXeoC1b8hxSk9tnxO/eNUISd5blvEa0f7wlQSeAzgWCSVj
- FKrJV24Is6draJONvcgYq6ukGs3GY60nEXNCRjT/vLGPMBl1zOrxgg5s=
-X-Received: by 2002:a05:6512:1394:b0:533:45dc:d2f0 with SMTP id
- 2adb3069b0e04-53546b931c8mr12244907e87.46.1725452574924; 
- Wed, 04 Sep 2024 05:22:54 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IG+Em0B4WQdVj+ndnKwa/MbfNw8FPzXnZlE20GbqZw5nEF0AYhy1vnhNsCfI1VGJOe2LODBcA==
-X-Received: by 2002:a05:6512:1394:b0:533:45dc:d2f0 with SMTP id
- 2adb3069b0e04-53546b931c8mr12244886e87.46.1725452574413; 
- Wed, 04 Sep 2024 05:22:54 -0700 (PDT)
-Received: from avogadro.local ([151.95.101.29])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a898922295csm798832966b.198.2024.09.04.05.22.53
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 04 Sep 2024 05:22:53 -0700 (PDT)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: Ani Sinha <anisinha@redhat.com>
-Cc: qemu-trivial@nongnu.org, zhao1.liu@intel.com, armbru@redhat.com,
- kvm@vger.kernel.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH v6] kvm: replace fprintf with error_report()/printf() in
- kvm_init()
-Date: Wed,  4 Sep 2024 14:22:53 +0200
-Message-ID: <20240904122253.281351-1-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.46.0
-In-Reply-To: <20240828124539.62672-1-anisinha@redhat.com>
-References: 
+ d=1e100.net; s=20230601; t=1725524919; x=1726129719;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=72tp/aHJd5yf3KJuEmi80Ko4ohiJJaa17zcLLnLLIpI=;
+ b=tBO4pjFaWD5HN1bfRh0w8uavMUOGHdSQ/wxz+4iUcAjOktWCsvB2kooGee+H4DYwuy
+ 55xBPzvByc7FapF4hD9yE/W/0cXvcnJ1yeSKzPrBxj5OB3whfWF3FdSJSnDaMdRpMlvJ
+ ava2yZXy9EDcQVUXHqKFxTIHjYEZkfHSBOM87OdlfIcynw6i0ueL1pnDfwY1LZ80rx2X
+ F++x7ESihg3oneD6+/OEKHHcAsX/uUrTySo4Hva4Ap1Xizvlw8n/WDi0iFEkjjq73FzH
+ 8raO3ns92MJU/BtEuqWo3puZrFgq0dw7BBn8eu1ebxu/oBBroMve6kM108KkaLxyXrjU
+ IHAw==
+X-Gm-Message-State: AOJu0YyLoOG/F8+Trq6+CdhWISxT4+Z4YI31UnVctRrypQOwb5/aBy3k
+ zJiurnTg6syO8fMLZ9nRdqaHYDw29V7q+HHBBGNqwYwZJkDja8eA97TPftbC1r0hDzdPv3yVPQv
+ 3PgI8DlhUowqk6X3/W5Y4SRYNXkYzcUmawCgxNjwy2NFxXXbIM5dliGI=
+X-Received: by 2002:a05:6000:d1:b0:374:c1ea:2d40 with SMTP id
+ ffacd0b85a97d-377998aaeabmr3215521f8f.1.1725524918898; 
+ Thu, 05 Sep 2024 01:28:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IH+6OKrdPLKQ8DI2SITgeKuWKdilpb5ADAOpSrSPM0TlRap2R+3UYZfCEWOmDoi/vCOCqh1LQ==
+X-Received: by 2002:a05:6000:d1:b0:374:c1ea:2d40 with SMTP id
+ ffacd0b85a97d-377998aaeabmr3215502f8f.1.1725524918388; 
+ Thu, 05 Sep 2024 01:28:38 -0700 (PDT)
+Received: from [192.168.10.28] ([151.95.101.29])
+ by smtp.googlemail.com with ESMTPSA id
+ 5b1f17b1804b1-42baa08d9f9sm251207865e9.32.2024.09.05.01.28.37
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 05 Sep 2024 01:28:37 -0700 (PDT)
+Message-ID: <37254a58-3f76-4c12-a2ae-0f2259e8bf9f@redhat.com>
+Date: Thu, 5 Sep 2024 10:28:36 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] tests/qtest/meson.build: Add more CONFIG switches checks
+ for the x86 tests
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Laurent Vivier <lvivier@redhat.com>
+References: <20240904082116.209260-1-thuth@redhat.com>
+From: Paolo Bonzini <pbonzini@redhat.com>
+Autocrypt: addr=pbonzini@redhat.com; keydata=
+ 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
+In-Reply-To: <20240904082116.209260-1-thuth@redhat.com>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset="US-ASCII"; x-default=true
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
@@ -94,9 +130,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 04 Sep 2024 12:29:07 -0000
+X-List-Received-Date: Thu, 05 Sep 2024 08:28:47 -0000
 
-Queued, thanks.
+On 9/4/24 10:21, Thomas Huth wrote:
+> When configuring QEMU with "--without-default-devices", currently a lot
+> of the x86 qtests are failing since they silently assume that a certain
+> device or the i440fx pc machine is available. Add more checks for CONFIG
+> switches here to not run those tests in case the corresponding device is
+> not available.
+
+Is this enough to fix this:
+
+# Check our reduced build configurations
+# requires libfdt: aarch64, arm, loongarch64, microblaze, microblazeel,
+#   or1k, ppc64, riscv32, riscv64, rx
+# fails qtest without boards: i386, x86_64
+build-without-defaults:
+
+and add i386-softmmu/x86_64-softmmu to build-without-defaults?
+
+Thanks,
 
 Paolo
 
