@@ -1,67 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1smuHw-00013W-F4
-	for mharc-qemu-trivial@gnu.org; Sat, 07 Sep 2024 08:11:36 -0400
+	id 1smvZR-0001tc-LX
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Sep 2024 09:33:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1smuHt-00011K-Rx; Sat, 07 Sep 2024 08:11:33 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1smuHr-0004NR-WB; Sat, 07 Sep 2024 08:11:33 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 2A25D8CA3C;
- Sat,  7 Sep 2024 15:11:26 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 663571366CA;
- Sat,  7 Sep 2024 15:11:26 +0300 (MSK)
-Message-ID: <147e295a-7886-49bf-8f37-e603df8b2bf8@tls.msk.ru>
-Date: Sat, 7 Sep 2024 15:11:26 +0300
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1smvZQ-0001sC-Te
+ for qemu-trivial@nongnu.org; Sat, 07 Sep 2024 09:33:44 -0400
+Received: from mail-lj1-x229.google.com ([2a00:1450:4864:20::229])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1smvZP-0004J7-5V
+ for qemu-trivial@nongnu.org; Sat, 07 Sep 2024 09:33:44 -0400
+Received: by mail-lj1-x229.google.com with SMTP id
+ 38308e7fff4ca-2f75f116d11so2124011fa.1
+ for <qemu-trivial@nongnu.org>; Sat, 07 Sep 2024 06:33:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1725716020; x=1726320820; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=WKe16QE24W+UCLCHr9tZ5xCVWKX6T3uhPk6K6l7AHac=;
+ b=s6SCeATnNwBZO9ZaNyqa1lGUOMndYY7USydocC4MaroYGb0ZXTr+8RcjAaKCq62HrM
+ YvdJFe/yU8kvvbYq4JtI4epOVC9yZrcW8gBXBAhL5Uiz7tgWp5X4WnBeZA6UCcJdOeP/
+ U2PCfi3HXUPNz6ocLft0na16NmNNXEnqe3knC138WfZb5Jy7bP8GiVoAqel+gosyfSiJ
+ bZzxVcKT2cNZsMhFxIOcQuSZhK8guFfr+88oEDfH/fuciMmjEFZFYBzlZuRYTdy9FWK6
+ ezKPeaEPkxfBI11ZBn62bI8eJt/Blz+gpbzhz+PGPwiN6VqkMzjyYIJxY12E2Hp7Lwti
+ 1CZQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725716020; x=1726320820;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=WKe16QE24W+UCLCHr9tZ5xCVWKX6T3uhPk6K6l7AHac=;
+ b=clsJBeQgFZw6D7pJ0aKWd/+9dz0ZRPr2okYlEu9Sa8jZV/aeOQ6CF59vCHsu9bS63s
+ xK1SqzwRTk8ym7j2hHPZ05ycExiYmQ/ESbZaKn9Zrhc6mTxUiR7tUPt4pBv5woHxxkEP
+ GmbhPbIu3gwJev6dFZw4CvEVyW0aLpoHLpuTX66aot0vvYVEh4PpAyqWg+4IDc8mPO6Z
+ dbRqspm6IVl8GfEUGnSHdqsRGz7sIfYrjye11VR76bmXwTVv6LM0ITLCSza7MlHWzm9k
+ CtPXtJzrngMgiMlQrwRYBQ4eQdctjrHcLWSamON5ub77lXotDbiWjy0hubytnyYlHp6Z
+ osug==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWAxaX0ZRW7sHcuS0Dv815XD8RP83COmleYf9iYVU95F51XZHJ9+YfygmU6bZU64jBXOy5m9QwMbX2+q+g=@nongnu.org
+X-Gm-Message-State: AOJu0YzoOsaVTyGYHaXP9gfWvfN4T1QL80+P7erTk7w/eZyb/xC+1QJq
+ LIQM1Nfjoy+KMl5u7gF3ky1RlDB5xCWnWmW/wX0D1NMAMbrh4qCBRkqhzqfRXj2qyxCsr3JzRi4
+ uM+izoogOqmGp5UpoMgn1QIeyBn06QTei9qFBPw==
+X-Google-Smtp-Source: AGHT+IFXJpiPAgjji3s8tPLsqTrW3KRo8MJMMfV2PoWAwTmMzJRJnegMex7+dEy0rhpOqKYuTuCsH+FolWU1kyUTjaI=
+X-Received: by 2002:a05:651c:20c:b0:2f3:ee44:c6de with SMTP id
+ 38308e7fff4ca-2f751f2b7ebmr33913441fa.27.1725716019639; Sat, 07 Sep 2024
+ 06:33:39 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/mips/jazz: fix typo in in-built NIC alias
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, hpoussin@reactos.org,
- arikalo@gmail.com, philmd@linaro.org, jiaxun.yang@flygoat.com,
- dwmw@amazon.co.uk, qemu-devel@nongnu.org, qemu-stable@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240906230138.335995-1-mark.cave-ayland@ilande.co.uk>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240906230138.335995-1-mark.cave-ayland@ilande.co.uk>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20240907065918.376217-1-mjt@tls.msk.ru>
+In-Reply-To: <20240907065918.376217-1-mjt@tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 7 Sep 2024 14:33:28 +0100
+Message-ID: <CAFEAcA9b=du71rY9dA3VpJwbxiv2rYuvyuBmmKAJCetFvhhf+Q@mail.gmail.com>
+Subject: Re: [PATCH trivial] linux-user/syscall.c: replace function pointer
+ with a helper macro for fcntl/flock case
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ Laurent Vivier <laurent@vivier.eu>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::229;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lj1-x229.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -74,22 +79,113 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 07 Sep 2024 12:11:34 -0000
+X-List-Received-Date: Sat, 07 Sep 2024 13:33:45 -0000
 
-07.09.2024 02:01, Mark Cave-Ayland wrote:
-> Commit e104edbb9d ("hw/mips/jazz: use qemu_find_nic_info()") contained a typo
-> in the NIC alias which caused initialisation of the in-built dp83932 NIC to fail
-> when using the normal -nic user,model=dp83932 command line.
-> 
-> Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+On Sat, 7 Sept 2024 at 08:00, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>
+> There's a slight difference in fcntl locking handling on arm and others:
+> arm has 2 variants of struct flock argument handling, with and without eabi.
+> For this reason, we currently take address of the conversion function into
+> a variable, and for arm without eabi case, assign a different conversion
+> function to this pointer.  All functions are declared as inline, - and for
+> an inline function, it is not clear how one can have an address of it at
+> all.
 
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+There's no problem with this. "inline" is just a hint to the compiler
+to say "this is probably better inlined where you can". For the case
+where we take the address of a function, that's a case where it can't
+be inlined. But other places where the function is called directly can be
+inlined without problems. For functions where are only ever used via
+function pointers, the "inline" annotation is a bit pointless and we could
+remove it; arguably for other cases we could also remove it and let
+the compiler make the call about inline vs not. As it happens the kernel
+is not inclined to inline these functions even if we ask for it, probably
+because they're too big for that to be a good idea.
 
-This is a fun one indeed :)
+> Instead of using a function pointer, use a macro, defined differently for
+> arm (with arithmetic if based on eabi presence) and for all other targets
+> (using regular argument conversion function directly).
+>
+> While at it, replace tabs with spaces in nearby code.
+>
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>  linux-user/syscall.c | 26 +++++++++++++++-----------
+>  1 file changed, 15 insertions(+), 11 deletions(-)
+>
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index d418e2864a..786623d395 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -6880,9 +6880,6 @@ static inline abi_long copy_to_user_flock(abi_ulong target_flock_addr,
+>      return 0;
+>  }
+>
+> -typedef abi_long from_flock64_fn(struct flock *fl, abi_ulong target_addr);
+> -typedef abi_long to_flock64_fn(abi_ulong target_addr, const struct flock *fl);
+> -
+>  #if defined(TARGET_ARM) && TARGET_ABI_BITS == 32
+>  struct target_oabi_flock64 {
+>      abi_short l_type;
+> @@ -12402,14 +12399,19 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+>      {
+>          int cmd;
+>          struct flock fl;
+> -        from_flock64_fn *copyfrom = copy_from_user_flock64;
+> -        to_flock64_fn *copyto = copy_to_user_flock64;
+>
+>  #ifdef TARGET_ARM
+> -        if (!cpu_env->eabi) {
+> -            copyfrom = copy_from_user_oabi_flock64;
+> -            copyto = copy_to_user_oabi_flock64;
+> -        }
+> +# define copyfrom(fl, arg) \
+> +           (cpu_env->eabi ? \
+> +             copy_from_user_flock64(fl, arg) : \
+> +             copy_from_user_oabi_flock64(fl, arg))
+> +# define copyto(arg, fl) \
+> +           (cpu_env->eabi ? \
+> +             copy_to_user_flock64(arg, fl) : \
+> +             copy_to_user_oabi_flock64(arg, fl))
+> +#else
+> +# define copyfrom copy_from_user_flock64
+> +# define copyto copy_to_user_flock64
+>  #endif
 
-I picked this one up to qemu-trivial tree, if no one picks it before.
+This seems to me to be less readable than the current code.
+Unless there's a specific performance issue with what we have
+(which seems unlikely for flock), I would prefer not to
+macroify things like this.
 
-Thanks,
+Looking at the generated code, for the non-arm cases the
+compiler is smart enough to turn the call into a direct
+call to copy_from_user_flock64 already.
 
-/mjt
+>          cmd = target_to_host_fcntl_cmd(arg2);
+> @@ -12427,7 +12429,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+>              if (ret == 0) {
+>                  ret = copyto(arg3, &fl);
+>              }
+> -           break;
+> +            break;
+>
+>          case TARGET_F_SETLK64:
+>          case TARGET_F_SETLKW64:
+> @@ -12436,10 +12438,12 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+>                  break;
+>              }
+>              ret = get_errno(safe_fcntl(arg1, cmd, &fl));
+> -           break;
+> +            break;
+>          default:
+>              ret = do_fcntl(arg1, arg2, arg3);
+>              break;
+> +#undef copyfrom
+> +#undef copyto
+>          }
+>          return ret;
+>      }
+
+thanks
+-- PMM
 
