@@ -1,66 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1snWvR-0005pV-0D
-	for mharc-qemu-trivial@gnu.org; Mon, 09 Sep 2024 01:26:57 -0400
+	id 1snh6t-00011I-2T
+	for mharc-qemu-trivial@gnu.org; Mon, 09 Sep 2024 12:19:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1snWvQ-0005oX-7B; Mon, 09 Sep 2024 01:26:56 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1snWvO-00064v-Gi; Mon, 09 Sep 2024 01:26:55 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 84DA58CE3F;
- Mon,  9 Sep 2024 08:26:46 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 699D1137AA0;
- Mon,  9 Sep 2024 08:26:49 +0300 (MSK)
-Message-ID: <096e96cc-d126-4f71-a05f-eaef1f8f4a4f@tls.msk.ru>
-Date: Mon, 9 Sep 2024 08:26:49 +0300
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1snh6q-0000zB-TH
+ for qemu-trivial@nongnu.org; Mon, 09 Sep 2024 12:19:24 -0400
+Received: from mail-pj1-x102e.google.com ([2607:f8b0:4864:20::102e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1snh6p-0007Dv-8n
+ for qemu-trivial@nongnu.org; Mon, 09 Sep 2024 12:19:24 -0400
+Received: by mail-pj1-x102e.google.com with SMTP id
+ 98e67ed59e1d1-2d88edf1340so2899875a91.1
+ for <qemu-trivial@nongnu.org>; Mon, 09 Sep 2024 09:19:22 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1725898761; x=1726503561; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=mq9dk/yeTvxJDa2OYzYUC7zIRF3fM25tuukQKjyBDdw=;
+ b=p1X3pf97yhZYvYL8jZRzA/mFgeDqrQutKQxLRgf+lmysbMQLRrPfNHwWfvGSsuIsfZ
+ k496URf8M0o9ct5oJvf0ur21RrpmiQLfStyF1HXDLb5CA/f0adD1KU/BpEECUPGV6PY8
+ aJJTDez7C3Y9Ngv0pvlERz8iZKltuZwtZocfWoA71rAs94rZnIQA+7roBvrgLgE0/FGD
+ /uH2OLUAqO8sT63fuoS9TzaApVq1oux5ynEv0+BLNxA6mdbnD5di3KpR9oqPTzmqHPKa
+ SoqUz/q4tG81NLjJ78N7WyyklEyUVIwcToqNQBLVtJn/Q9K5rM05AUGQ4Ib36OJ9aNMA
+ 0O4A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725898761; x=1726503561;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=mq9dk/yeTvxJDa2OYzYUC7zIRF3fM25tuukQKjyBDdw=;
+ b=MCYzx1p8buRw7uqq5x9J4QY2tRR7iwiaUlsCSGsJBX0Jp/1Jkp5XdBiUxJaWpb6BEr
+ 99HN8DJ8rMDVx8UvCh6CoB2D5YD2chEgLtU0I77RyLggKCNWDVaeWSnfHlfPFaYwcakl
+ BLgVe3qhaxYuwJ0Kh4n08QaWRc3/quiE80MEhDixNB40n7Dfn+UBRKG/ZEBkzOBlg354
+ FQxZSjiR2hvW5fU6zWA3VANQqVFgFRuvIz9Q491W/RxOgVw4rYKFW61cSljPEcc/aYVJ
+ 5mtrxWlIGVrArl9Fpx/WohJ7QVXdZ+J71nfcqIFXMekKgnoPtD+md5EPm39W4/7p7YAf
+ nHSQ==
+X-Gm-Message-State: AOJu0Yw4gXkipW8BlaFXV+S/vg1jqbc0SF0J6hPXJkcOnhGhdWrnn31/
+ X8WX3FGddLtOtJxkaSKsMBUWhiJw6+MPkzb3caWPEhKhr7ejT7X1BIvn2t22ItY=
+X-Google-Smtp-Source: AGHT+IFEHMPATTs6OVQ14OiUhafesJSL+oso+8Byw3rO5puUuiWBRuebfO4+qYnbumPxnnk92yiFCw==
+X-Received: by 2002:a17:90a:12ce:b0:2d3:c6dd:4383 with SMTP id
+ 98e67ed59e1d1-2dad5019a89mr9988131a91.16.1725898761206; 
+ Mon, 09 Sep 2024 09:19:21 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-81-121.tukw.qwest.net. [174.21.81.121])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-2dadc00bfc0sm6880840a91.15.2024.09.09.09.19.20
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 09 Sep 2024 09:19:20 -0700 (PDT)
+Message-ID: <95b74368-8e3b-43a2-8185-e95ae89c9f6c@linaro.org>
+Date: Mon, 9 Sep 2024 09:19:19 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH trvivial] linux-user/syscall.c: replace function pointers
  for flock64 fcntl with macros
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
 References: <20240908071600.430410-1-mjt@tls.msk.ru>
  <08b5c803-cfcc-49bd-910b-61934fa2d1e6@linaro.org>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <08b5c803-cfcc-49bd-910b-61934fa2d1e6@linaro.org>
+ <096e96cc-d126-4f71-a05f-eaef1f8f4a4f@tls.msk.ru>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <096e96cc-d126-4f71-a05f-eaef1f8f4a4f@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,48 +86,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 09 Sep 2024 05:26:56 -0000
+X-List-Received-Date: Mon, 09 Sep 2024 16:19:25 -0000
 
-08.09.2024 20:39, Richard Henderson wrote:
-> On 9/8/24 00:16, Michael Tokarev wrote:
->> For 32bit ARM fcntl64 syscall there are 2 possible argument types,
->> depending on cpu_env->eabi.  For other architectures, it is plain
->> struct flock64 in all cases.  In order to solve this, old code
->> used to take address of the conversion function and and run it
->> through this pointer.  Instead, introduce 2 helper macros for
->> the flock64 conversion, and define them in the same block where
->> the oabi conversion functions are defined, and use these
->> helpers directly in the actual code, making each part more
->> self-contained and easier to read.
->>
->> Also add comment to the block of code which itroduces the oabi
->> conversion functions.
->>
->> Note also there was an inconsistency in the old code: different
->> the differences in single place we eliminate this difference.
->>
->> While at it, replace tabs with spaces in nearby code.
->>
->> Signed-off-by: Michael Tokarev<mjt@tls.msk.ru>
->> ---
->>   linux-user/syscall.c | 40 +++++++++++++++++++++++-----------------
->>   1 file changed, 23 insertions(+), 17 deletions(-)
+On 9/8/24 22:26, Michael Tokarev wrote:
+>> Why do you think this is an improvement?
 > 
-> Why do you think this is an improvement?
+> It just feels more natural, so to say.
+> 
+>> What was wrong with the function pointers?
+> 
+> Not exactly wrong.  It just hurts my eyes when I see an address
+> is taken of a function marked `inline`
 
-It just feels more natural, so to say.
+I'm certainly happy to fix that!
 
-> What was wrong with the function pointers?
+> (though I understand well
+> this keyword is just a hint and the compiler is free to omit
+> inlining).  Also the typedefs are a bit ugly.
 
-Not exactly wrong.  It just hurts my eyes when I see an address
-is taken of a function marked `inline` (though I understand well
-this keyword is just a hint and the compiler is free to omit
-inlining).  Also the typedefs are a bit ugly.
+I think the macro is uglier than the typedef.
 
-I come through this place when removing remnants of LFS, and
-disliked this way.
 
-Thanks,
-
-/mjt
+r~
 
