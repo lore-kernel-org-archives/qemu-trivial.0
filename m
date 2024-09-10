@@ -1,47 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1so1ih-0005CV-My
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Sep 2024 10:19:51 -0400
+	id 1so5Yg-00009m-Pk
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Sep 2024 14:25:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1so1if-000524-5G; Tue, 10 Sep 2024 10:19:49 -0400
-Received: from rev.ng ([94.130.142.21])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <anjo@rev.ng>)
- id 1so1id-0008Ei-DI; Tue, 10 Sep 2024 10:19:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=rev.ng;
- s=dkim; h=In-Reply-To:Content-Transfer-Encoding:Content-Type:MIME-Version:
- References:Message-ID:Subject:Cc:To:From:Date:Sender:Reply-To:Content-ID:
- Content-Description:Resent-Date:Resent-From:Resent-Sender:Resent-To:Resent-Cc
- :Resent-Message-ID:List-Id:List-Help:List-Unsubscribe:List-Subscribe:
- List-Post:List-Owner:List-Archive:List-Unsubscribe:List-Unsubscribe-Post:
- List-Help; bh=+3uvlrtFpJ3UWH3Top9OwdZbnBgpBIOESYNb4A7g1ig=; b=Vwz6HG3rS9WR3RM
- SK1xYTEGFAcMEv14LFuBYvFsv5ZJNXHn5PRv220KSbmmdO4eyiiLYmEQJNMFwx+9SnCamESlMIqHb
- qViDTO1AATb1TuxJoutlxBI1VI0gg4bsHZrZRbNKezxj07GejEwAWMU7ydkMp+NK00cEHB5fOUZeQ
- cE=;
-Date: Tue, 10 Sep 2024 16:21:36 +0200
-From: Anton Johansson <anjo@rev.ng>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, Brian Cain <bcain@quicinc.com>, 
- qemu-trivial@nongnu.org, Alessandro Di Federico <ale@rev.ng>, 
- Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-Subject: Re: [PATCH 1/2] target/hexagon: Rename macros.inc -> macros.h.inc
-Message-ID: <7o5kfqvytp7z4i27t7qzc5dkwhudjvi3xepwtyx4it4fojlnxv@gfcumwhumool>
-References: <20240910112833.27594-1-philmd@linaro.org>
- <20240910112833.27594-2-philmd@linaro.org>
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1so5YT-00006i-M9
+ for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 14:25:33 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1so5YN-000105-5j
+ for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 14:25:31 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-205659dc63aso58692185ad.1
+ for <qemu-trivial@nongnu.org>; Tue, 10 Sep 2024 11:25:25 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1725992725; x=1726597525; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=U+apKFwRTq+GS/zaWIu8Jni8n15c/rLBfDrOp5IZGZ8=;
+ b=a2Pj45R717J9ybGxyotKQltNKyc4Gyz+TQNfRi8QW/y9ZDMc/hHgM19gjQmfGMyCae
+ fM5kW7piDvQQ3kXiOhrKFw0axdrUiNVyhNpKAd3cslt1HiUPzE7av6qufd4daAFPGM0y
+ 9KfN/vAzIgm+tSJOqnAZfxdr2UM9IEXTibp53oVaFNgfxaK2sycYeOo+NfgsVwR0z7t5
+ xvyTig7WYVkdzIDZWZmZC+fAEPcUw438LkeSUQJEKih+Ex04a+DYNk0u2wh+SAITvnGx
+ r4nboxaBEy7u3ahh7lytUPmBG9YbqTHv2Ju3AukIBvkz/1SaZzv4HxTl44Er6gT/+Q9S
+ Mp3Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1725992725; x=1726597525;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=U+apKFwRTq+GS/zaWIu8Jni8n15c/rLBfDrOp5IZGZ8=;
+ b=AgF49o/ajxatpnNAqiBD0faKMdxesmON0cPS4hmbHCiB8Uvi++HZxWsegwh9WdT3MH
+ sLCUQV0LlxVjikbMd5zrdpcqmAM4JJCR604i0kuoJeYdeGleMl33gyZD9v4xyA9/ulFx
+ HNlmIwhmIz+Cf3VBQ517qf/K7XmQHFyq4lIaBlHxGo1IGJT8o4MBwBAUY+u1OMjxnDEt
+ XKZ33+iS6pjdEHt3Pvlj4VkOnMgw79PJvxxCZKWax+83cVvahG069IsMs1K6a98fNw+U
+ YCx72+vRHLLxTApK1BjKLS5qmbsJFCFXzFG4KbtX6YxRN+st5bWEaZK+fOX2v0sIkTwm
+ KKJA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXmCESJolkBIOwHfi15iWahFYArfOl5jF9MsDovXOsw+x+c9cgwxNjX8TPUHI9Rvw7ObbTXrtOLU84F8Lo=@nongnu.org
+X-Gm-Message-State: AOJu0Yx9j4ohpVgk3xXv9xbwGijItZJjhNYw924GUKh7U869VduhIyAk
+ XTs80FRBLCEk3hV2518gxd6Ft8QUo2WC2wlZTEluwogGztk0Y64RS2+apo5xHZ0=
+X-Google-Smtp-Source: AGHT+IFJv16jHK1VoNBh6Qxh2fKthyUzRfOV5/JspBH0NTA37vv4HmsU+suFsoG6WS7iBCOroI7/DQ==
+X-Received: by 2002:a17:903:2a8e:b0:202:3103:c250 with SMTP id
+ d9443c01a7336-2074c72280emr21118395ad.38.1725992724664; 
+ Tue, 10 Sep 2024 11:25:24 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-81-121.tukw.qwest.net. [174.21.81.121])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-20710eea9d1sm51593905ad.157.2024.09.10.11.25.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 10 Sep 2024 11:25:23 -0700 (PDT)
+Message-ID: <bef11607-6743-4822-89ad-e91f79bb57d0@linaro.org>
+Date: Tue, 10 Sep 2024 11:25:21 -0700
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 0/5] license: Fix typos and update deprecated SPDX tags
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: Stefan Weil <sw@weilnetz.de>, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Maydell
+ <peter.maydell@linaro.org>, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, qemu-trivial@nongnu.org
+References: <20240910115131.28766-1-philmd@linaro.org>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20240910115131.28766-1-philmd@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240910112833.27594-2-philmd@linaro.org>
-Received-SPF: pass client-ip=94.130.142.21; envelope-from=anjo@rev.ng;
- helo=rev.ng
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -54,31 +90,17 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Sep 2024 14:19:50 -0000
+X-List-Received-Date: Tue, 10 Sep 2024 18:25:34 -0000
 
-On 10/09/24, Philippe Mathieu-Daudé wrote:
-> Since commits 139c1837db ("meson: rename included C source files
-> to .c.inc") and 0979ed017f ("meson: rename .inc.h files to .h.inc"),
-> EMU standard procedure for included header files is to use *.h.inc.
-> 
-> Besides, since commit 6a0057aa22 ("docs/devel: make a statement
-> about includes") this is documented in the Coding Style:
-> 
->   If you do use template header files they should be named with
->   the ``.c.inc`` or ``.h.inc`` suffix to make it clear they are
->   being included for expansion.
-> 
-> Therefore rename "macros.inc" as "macros.h.inc".
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->  target/hexagon/idef-parser/README.rst                   | 4 ++--
->  target/hexagon/idef-parser/{macros.inc => macros.h.inc} | 0
->  target/hexagon/gen_idef_parser_funcs.py                 | 2 +-
->  target/hexagon/meson.build                              | 2 +-
->  4 files changed, 4 insertions(+), 4 deletions(-)
->  rename target/hexagon/idef-parser/{macros.inc => macros.h.inc} (100%)
-> 
+On 9/10/24 04:51, Philippe Mathieu-Daudé wrote:
+> Philippe Mathieu-Daudé (5):
+>    NSIS: Simplify license description
+>    tests/functional: Correct typo in test_netdev_ethtool.py SPDX tag
+>    license: Update deprecated SPDX tag LGPL-2.0+ to LGPL-2.0-or-later
+>    license: Update deprecated SPDX tag GPL-2.0+ to GPL-2.0-or-later
+>    license: Update deprecated SPDX tag GPL-2.0 to GPL-2.0-only
 
-Reviewed-by: Anton Johansson <anjo@rev.ng>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+r~
 
