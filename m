@@ -1,71 +1,72 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1snz3A-0007j9-F3
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Sep 2024 07:28:48 -0400
+	id 1snz3I-0007uW-07
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Sep 2024 07:28:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1snz38-0007gH-W5
- for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 07:28:47 -0400
-Received: from mail-ej1-x636.google.com ([2a00:1450:4864:20::636])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1snz3F-0007tX-6Q
+ for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 07:28:53 -0400
+Received: from mail-ed1-x52a.google.com ([2a00:1450:4864:20::52a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1snz37-0003PE-9f
- for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 07:28:46 -0400
-Received: by mail-ej1-x636.google.com with SMTP id
- a640c23a62f3a-a8d2b24b7a8so517830266b.1
- for <qemu-trivial@nongnu.org>; Tue, 10 Sep 2024 04:28:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1snz3D-0003Qh-Io
+ for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 07:28:52 -0400
+Received: by mail-ed1-x52a.google.com with SMTP id
+ 4fb4d7f45d1cf-5c27067b81aso5516978a12.0
+ for <qemu-trivial@nongnu.org>; Tue, 10 Sep 2024 04:28:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725967723; x=1726572523; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725967730; x=1726572530; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=FOStTVlTR7gBcQgAt0bLPJDUQd/JCSgZdNVPc04Dy2A=;
- b=mp0DcR6+zDnA9ffYem07iDHwfNISxMsV60tMQWnQkR077Ph4xYDkY69wa+cGFvCZTY
- Y78wjnlTlVOO7/LgsGORTS3hlLCi1lt5rSNyIaBtqzSkdJQPpxsdO5uBE97+7+0vSoEJ
- WCIn7v78ahDCgyKryNrv1weEmEFuz+rNape54RN/Vr1IOmH7RAJTSvLt6rTC5NY8qTnH
- SD3zYD24ONoNlj1dHBmIecMkfk+97K0rQOBauToJftPkKLdXnRZ20CWTeq6/N8L1Tay1
- cUZwQ08lKauQwAhr+9mi/2FnBjsMdjSklgpARVG1OOVjhtfqwoMZv7dw/OMsKtJWMYyx
- wBpA==
+ bh=7IJQz062XEcKffx5qVwimty50F+XhBG7KCKIdS+RdzI=;
+ b=tod/dAOe9RXC2QPs8KRRIJFPfVln6pfWNVHzJN7GYDFKyORfqOzg3jAcq8o/m9DTjL
+ I2C3/g7sjVhsmjDXUG44Pz17PMFutc1oGmsbLSf5glc6/LRvF+6G0Z4MZ3jNDoNstl9c
+ 8b4zumHdEg/hq9YPvfP39k9n1tsJ/op6UZ6+aD34NGZTWCSOR3w23jw3E/2fjiH8gaqW
+ aie+QwzwxsimvlEVk8rXkscWx6lzCKXPbRA3UCL4exXbZhY4YXaYckzBEzNBxf2B7tY7
+ ndwyg7oumvU0eojUzUZp2lWbPOfmOUN80nItqGFzRGMOCPvgnE6sI0q1JuDOkLvYd1jE
+ ee/w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725967723; x=1726572523;
+ d=1e100.net; s=20230601; t=1725967730; x=1726572530;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=FOStTVlTR7gBcQgAt0bLPJDUQd/JCSgZdNVPc04Dy2A=;
- b=a7XZtrFcZfy7lhQsrA+1ySFw/hVa0Im2RN6pUp9sMeqQAlwf5m7YemRH2GXDYA5uS1
- 27M61rojLqIpHDp4zqxIc6ad3a/LSbY2G4c7Vm8H2GLg7s4/pPx/2l6iNd8V7H0hPwf0
- 051uBv/zX6D/d79QVY3ZpiMg/f5FLF7yT5Eg0NjtqfKbmIgvQyknZO8BmbUPnCzkXJvL
- lx6kiJrWTZdhjTKR94RTe/nAhDAZQdsIUAGny27LgLtwcUxAcEJThuVRYcqzJzOGO/PD
- 8J3zGt7uIsUKozPqnqZ7JO1nKEkwI53R/KFo+qaLf9kwYn7nndFZY824ytamQULA5y/R
- SZzw==
+ bh=7IJQz062XEcKffx5qVwimty50F+XhBG7KCKIdS+RdzI=;
+ b=DCt8vF32bijooVziXhwXGHc8MdjXpFVfCLTk4/+Kb9c9TH5/qH6/f1YDsTaSYCK9tC
+ GxSy7cNzDIbKrZacv3mDL0RxrYaMdGTtRWH121PPSGqRo52FZqFRVnrg1aOv5jgfrmNC
+ GsdvxFPWBUrJYGX2l4FpMEFu2QIH5eKtDQLCQs2wMEl8nBt+KTWpLpMu8ad69URqyFEN
+ G018QqPM1xtEtU2GdKwzIIQ89ACfFTDy/HUY90ulCHZ9IlfQ1AKMny16TkUOb69MTgOW
+ FEDuF+0c1tjzSo/GPf0IQcW83DFDCDpxwgBaDBc2fZ6PEKmPhuM+LlO/oFfvgi+xxBdC
+ o9AQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWqGoKZLnH/Dg82nYHJnXCTaPSWUX5FsXcRzQJYT860qryFPMiUXSXgSC3bhiQcFMwOocwy5Q3I7MdEl48=@nongnu.org
-X-Gm-Message-State: AOJu0YyHohdGZHVRHO2CKpyh2fuEveXzdUGZ0lrX4iO+CoIaZVCgQrsc
- 40+xESP22YgB8dAlh28664FLzUdAaBWxkk/wEAXUBfI8lWKVxekXZRu/dTuZzUE=
-X-Google-Smtp-Source: AGHT+IFxWzB7XYj76ZmgG7/k90Mb5LGOtdXXbEMGIcGV/r7/OexQes18OKRKEZHBcTU2JviVyqVE/Q==
-X-Received: by 2002:a17:907:e8e:b0:a8d:4954:c209 with SMTP id
- a640c23a62f3a-a8ffae0018emr47262866b.22.1725967723340; 
- Tue, 10 Sep 2024 04:28:43 -0700 (PDT)
+ AJvYcCUZf+JJcaye4tcjCqvkg2TK+uLBDDW7kR1s8rafzDkZGFWMUVU4XoroQ/hTTZdg9Pxegu55T7/Ac4saO5M=@nongnu.org
+X-Gm-Message-State: AOJu0Yw/0fSJleEDWI9ARV8NO+kh3XY99hGXcQ5ZoiY4S1K9DzVh1tE/
+ 9DymgNRNqKis1wUH+aX0UyzP1nk2MkTTd6MLh/Fcy5PA72Nq7KgL4aq3rO+WKic=
+X-Google-Smtp-Source: AGHT+IFJx9ZYaXhA7CsNHXFW5t+enU0rDqsDQwXZzYNe6Wm9vw3DlrUA+sRGnzf1FmPkn0oymjVanQ==
+X-Received: by 2002:a05:6402:5419:b0:5c2:54a3:6b3e with SMTP id
+ 4fb4d7f45d1cf-5c3eac064a2mr6508715a12.16.1725967729845; 
+ Tue, 10 Sep 2024 04:28:49 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.217.32])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a8d25833c90sm468921566b.25.2024.09.10.04.28.41
+ 4fb4d7f45d1cf-5c3ebd520cesm4111925a12.50.2024.09.10.04.28.47
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 10 Sep 2024 04:28:42 -0700 (PDT)
+ Tue, 10 Sep 2024 04:28:49 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Brian Cain <bcain@quicinc.com>, qemu-trivial@nongnu.org,
  Anton Johansson <anjo@rev.ng>, Alessandro Di Federico <ale@rev.ng>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 1/2] target/hexagon: Rename macros.inc -> macros.h.inc
-Date: Tue, 10 Sep 2024 13:28:32 +0200
-Message-ID: <20240910112833.27594-2-philmd@linaro.org>
+Subject: [PATCH 2/2] tests/bench: Rename test_akcipher_keys.inc ->
+ test_akcipher_keys.c.inc
+Date: Tue, 10 Sep 2024 13:28:33 +0200
+Message-ID: <20240910112833.27594-3-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240910112833.27594-1-philmd@linaro.org>
 References: <20240910112833.27594-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::636;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x636.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52a;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x52a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -85,11 +86,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Sep 2024 11:28:47 -0000
+X-List-Received-Date: Tue, 10 Sep 2024 11:28:53 -0000
 
-Since commits 139c1837db ("meson: rename included C source files
-to .c.inc") and 0979ed017f ("meson: rename .inc.h files to .h.inc"),
-EMU standard procedure for included header files is to use *.h.inc.
+Since commit 139c1837db ("meson: rename included C source files
+to .c.inc"), QEMU standard procedure for included C files is to
+use *.c.inc.
 
 Besides, since commit 6a0057aa22 ("docs/devel: make a statement
 about includes") this is documented in the Coding Style:
@@ -98,69 +99,32 @@ about includes") this is documented in the Coding Style:
   the ``.c.inc`` or ``.h.inc`` suffix to make it clear they are
   being included for expansion.
 
-Therefore rename "macros.inc" as "macros.h.inc".
+Rename "test_akcipher_keys.inc" as "test_akcipher_keys.c.inc".
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- target/hexagon/idef-parser/README.rst                   | 4 ++--
- target/hexagon/idef-parser/{macros.inc => macros.h.inc} | 0
- target/hexagon/gen_idef_parser_funcs.py                 | 2 +-
- target/hexagon/meson.build                              | 2 +-
- 4 files changed, 4 insertions(+), 4 deletions(-)
- rename target/hexagon/idef-parser/{macros.inc => macros.h.inc} (100%)
+ tests/bench/benchmark-crypto-akcipher.c                         | 2 +-
+ .../bench/{test_akcipher_keys.inc => test_akcipher_keys.c.inc}  | 0
+ 2 files changed, 1 insertion(+), 1 deletion(-)
+ rename tests/bench/{test_akcipher_keys.inc => test_akcipher_keys.c.inc} (100%)
 
-diff --git a/target/hexagon/idef-parser/README.rst b/target/hexagon/idef-parser/README.rst
-index d0aa34309b..7199177ee3 100644
---- a/target/hexagon/idef-parser/README.rst
-+++ b/target/hexagon/idef-parser/README.rst
-@@ -138,7 +138,7 @@ we obtain the pseudo code
- with macros such as ``fJUMPR`` intact.
+diff --git a/tests/bench/benchmark-crypto-akcipher.c b/tests/bench/benchmark-crypto-akcipher.c
+index 5e68cb0a1c..fb88106a0c 100644
+--- a/tests/bench/benchmark-crypto-akcipher.c
++++ b/tests/bench/benchmark-crypto-akcipher.c
+@@ -16,7 +16,7 @@
+ #include "crypto/akcipher.h"
+ #include "standard-headers/linux/virtio_crypto.h"
  
- The second step is to expand macros into a form suitable for our parser.
--These macros are defined in ``idef-parser/macros.inc`` and the step is
-+These macros are defined in ``idef-parser/macros.h.inc`` and the step is
- carried out by the ``prepare`` script which runs the C preprocessor on
- ``idef_parser_input.h.inc`` to produce
- ``idef_parser_input.preprocessed.h.inc``.
-@@ -266,7 +266,7 @@ in plain C is defined as
-     #define fABS(A) (((A) < 0) ? (-(A)) : (A))
+-#include "test_akcipher_keys.inc"
++#include "test_akcipher_keys.c.inc"
  
- and returns the absolute value of the argument ``A``. This macro is not included
--in ``idef-parser/macros.inc`` and as such is not expanded and kept as a "call"
-+in ``idef-parser/macros.h.inc`` and as such is not expanded and kept as a "call"
- ``fABS(...)``. Reason being, that ``fABS`` is easier to match and map to
- ``tcg_gen_abs_<width>``, compared to the full ternary expression above. Loads of
- macros in ``macros.h`` are kept unexpanded to aid in parsing, as seen in the
-diff --git a/target/hexagon/idef-parser/macros.inc b/target/hexagon/idef-parser/macros.h.inc
+ static QCryptoAkCipher *create_rsa_akcipher(const uint8_t *priv_key,
+                                             size_t keylen,
+diff --git a/tests/bench/test_akcipher_keys.inc b/tests/bench/test_akcipher_keys.c.inc
 similarity index 100%
-rename from target/hexagon/idef-parser/macros.inc
-rename to target/hexagon/idef-parser/macros.h.inc
-diff --git a/target/hexagon/gen_idef_parser_funcs.py b/target/hexagon/gen_idef_parser_funcs.py
-index eb494abba8..72f11c68ca 100644
---- a/target/hexagon/gen_idef_parser_funcs.py
-+++ b/target/hexagon/gen_idef_parser_funcs.py
-@@ -50,7 +50,7 @@ def main():
-     tagimms = hex_common.get_tagimms()
- 
-     with open(sys.argv[-1], "w") as f:
--        f.write('#include "macros.inc"\n\n')
-+        f.write('#include "macros.h.inc"\n\n')
- 
-         for tag in hex_common.tags:
-             ## Skip the priv instructions
-diff --git a/target/hexagon/meson.build b/target/hexagon/meson.build
-index 9ea1f4fc59..f1723778a6 100644
---- a/target/hexagon/meson.build
-+++ b/target/hexagon/meson.build
-@@ -284,7 +284,7 @@ if idef_parser_enabled and 'hexagon-linux-user' in target_dirs
-         'idef_parser_input.preprocessed.h.inc',
-         output: 'idef_parser_input.preprocessed.h.inc',
-         input: idef_parser_input_generated,
--        depend_files: [idef_parser_dir / 'macros.inc'],
-+        depend_files: [idef_parser_dir / 'macros.h.inc'],
-         command: [idef_parser_dir / 'prepare', '@INPUT@', '-I' + idef_parser_dir, '-o', '@OUTPUT@'],
-     )
- 
+rename from tests/bench/test_akcipher_keys.inc
+rename to tests/bench/test_akcipher_keys.c.inc
 -- 
 2.45.2
 
