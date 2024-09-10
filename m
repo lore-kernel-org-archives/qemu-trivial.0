@@ -1,68 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1snzZW-0006NY-2C
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Sep 2024 08:02:14 -0400
+	id 1snzbU-0006AO-5n
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Sep 2024 08:04:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1snzZT-0006AH-P6
- for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 08:02:11 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1snzb5-0004Zu-1I
+ for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 08:04:05 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1snzZS-0008KV-19
- for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 08:02:11 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1snzb0-0008RW-RL
+ for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 08:03:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1725969728;
+ s=mimecast20190719; t=1725969824;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=UMoEThv69Nx8btEv8MQge7OD9DyBaR+J6mVU846W8vM=;
- b=bLFApDz7kYfYQpG/SxVEBdzhHHdZeio+mR6jJd5R/oT+pzL1PzhIi/xSUcvaOjNn+fUGez
- 2GGH0DcbnWi+aZfVI/xLbraVoop4Gv/JVNcRT/i3MU7kG+xbN9HMZNn8sSzzlv5cTbMBVg
- Tr7Ltg/zRc163B75J2TvbNO63DsIBKo=
-Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
- [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=OmHGq2YBSrUZRnZBY9aYZnb602JzGcqkQDS053vc4jA=;
+ b=GcZ4UQTED4ltROcBrIzR0WfeNakh8JkHqzE+xkYD3vWul/aZlRo+6TBDOMVSy3BJyeZvg2
+ cWAGyz8E4H2ZU4T7nspc3U0KCqu1ULtgevQypAf/gNEIo3Ha+4ncilnoFhjqgSbWdbRZmA
+ mpiP31lmDTZDOk1lpfTFIOdKNshL2PA=
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-400-_ShyNQfmMqeMC1N1bfF2pg-1; Tue, 10 Sep 2024 08:02:06 -0400
-X-MC-Unique: _ShyNQfmMqeMC1N1bfF2pg-1
-Received: by mail-qt1-f200.google.com with SMTP id
- d75a77b69052e-4582e9502bbso17946941cf.0
- for <qemu-trivial@nongnu.org>; Tue, 10 Sep 2024 05:02:06 -0700 (PDT)
+ us-mta-614-6R8JBu-kODa1jbQVlC0qhA-1; Tue, 10 Sep 2024 08:03:41 -0400
+X-MC-Unique: 6R8JBu-kODa1jbQVlC0qhA-1
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-45693689d68so15766051cf.3
+ for <qemu-trivial@nongnu.org>; Tue, 10 Sep 2024 05:03:40 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725969726; x=1726574526;
+ d=1e100.net; s=20230601; t=1725969820; x=1726574620;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=UMoEThv69Nx8btEv8MQge7OD9DyBaR+J6mVU846W8vM=;
- b=PEZfUvy0GNs05icz8bnC3FdzKU1dOIvVKQiYdcazYGgOZrF/GZywUmGLq50p03UQCd
- 9CythjDdpjo6Hj61jvSMCVxeMfsrz/cTM9RnffuG8Gw/hi50SBBQXr8fzkUKAf+eOQDJ
- VlT3d3NF92GMRIBpG9NHxeo/fB/dZmq5+WeyJdNMP4XU6IqUNj+lu8jmJEtm0HakLFU9
- goe72+mSDRCFtDrNk+j8HVgkmfPzHG1xeegrc4CU9ON3wMk4LEPeznzPqlhi8pd45CrI
- QvqapBJtcm2GnF+Kk64SUuhBGct6eDGMXa4iR6sTvURRRvsrjy/MjiIUtjmFTJinRDIi
- JqlA==
+ bh=OmHGq2YBSrUZRnZBY9aYZnb602JzGcqkQDS053vc4jA=;
+ b=fKWrh9U3T//caOHThisOsWfX7HuWQQoPgUXTcqnKe8MCWIkGKuS7VTunabUoKq6bVy
+ hGDmwzJ6NraqvLaX73FiqFroauwvANH2U8Xd+1A63qLzyy8Qq/+Vsn6FSz6bYEo93MqD
+ JqPnIH+7MLKs9LCB+QOGiHLThQyUkX3+H47M/W5Btqm29PhZFgtAszZz5WvnaMXwo6pl
+ LjUnL99IjUZIf2TU2hL+7G0v9hzSoIaed+E7Wbg806fDdjY0FTocuILTpcQA3s/v6AA7
+ +Ue8jggSP6GZ5XmTpQs9rN7ewPFNOgR1h0ZHQ2KmNKsJdG+NxI7eIkDOVq1c28KayNQI
+ t2SQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWHwTEcA/zVg3OYXn65mHimLghhVoeA50Zt0/qFVgl/HsAfhtE+tV4zhC6wXcYI3yD0gKVJ4rkZSJncQuI=@nongnu.org
-X-Gm-Message-State: AOJu0Yyj3KhIU3fp+Sw0b5nifV7sQXaMTTvTxgXtGreAEXJuZ29Zagmm
- pQFzqPk3F+yWMXxHdgW/cAT/gNNY3xmAaKcpTA4PbKaY7Xd3BefLokhm9ExVQIFBfGRg2GG0Jvr
- J8NEgp55H7FD9Sv1vSA+M+F+J0obzA06/qr1qbTrVjN00kYIGEMJbqho=
-X-Received: by 2002:ac8:5990:0:b0:458:34fb:5d65 with SMTP id
- d75a77b69052e-45834fb6247mr89808261cf.23.1725969725766; 
- Tue, 10 Sep 2024 05:02:05 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF1J6TO1xa2YH0Wzo60dva/7rEsDX+yFZz5vLSuPZ32pXsqzJEh+TITo/F+5e4DeB+GpejkXw==
-X-Received: by 2002:ac8:5990:0:b0:458:34fb:5d65 with SMTP id
- d75a77b69052e-45834fb6247mr89807641cf.23.1725969725272; 
- Tue, 10 Sep 2024 05:02:05 -0700 (PDT)
+ AJvYcCVZgZ1NCH3IMbkgHtK8l+9g1c7/FIcIGzkeLV+Plys2HIWynjVHdlmtLioe0G/er7j/6TtWKoWAmRvCdx8=@nongnu.org
+X-Gm-Message-State: AOJu0YwCD5zTqfYc4TBWbBJhNJu2ly9QGlFw61YyulUJcmiJomQarG7I
+ HFGkOsMjIsaD27IZi5mhHxw3+hVvOxNHLNThLdCFzGMonDuhv+eb1Myu5pI6hGHQDUDEwTwMq/B
+ WPd8vufo1mIMXGeqLxcI4am43jXWiUqsAj9ZH1+4vG8WpdVxA0zXfRhI=
+X-Received: by 2002:a05:622a:1902:b0:456:795a:27cc with SMTP id
+ d75a77b69052e-4580c68dd7cmr213557311cf.13.1725969820143; 
+ Tue, 10 Sep 2024 05:03:40 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHzQ+Ovg4Yht/Ro7L/MODa1QRRGkXAzgGcsZRXfNPGbLa4YCxF7QCqjKEuSagDCS0PyxFJrQg==
+X-Received: by 2002:a05:622a:1902:b0:456:795a:27cc with SMTP id
+ d75a77b69052e-4580c68dd7cmr213556201cf.13.1725969819332; 
+ Tue, 10 Sep 2024 05:03:39 -0700 (PDT)
 Received: from [192.168.0.6] (ip-109-43-178-122.web.vodafone.de.
  [109.43.178.122]) by smtp.gmail.com with ESMTPSA id
- d75a77b69052e-45822e7723asm28734621cf.22.2024.09.10.05.02.02
+ d75a77b69052e-45825f40fbbsm27385201cf.23.2024.09.10.05.03.36
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Sep 2024 05:02:04 -0700 (PDT)
-Message-ID: <3d2ec94c-42c3-46f4-be64-24abe3bb5e24@redhat.com>
-Date: Tue, 10 Sep 2024 14:02:01 +0200
+ Tue, 10 Sep 2024 05:03:39 -0700 (PDT)
+Message-ID: <ca2cb3ab-f3fb-48f9-8526-cd92f8550018@redhat.com>
+Date: Tue, 10 Sep 2024 14:03:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 3/5] license: Update deprecated SPDX tag LGPL-2.0+ to
- LGPL-2.0-or-later
+Subject: Re: [PATCH 4/5] license: Update deprecated SPDX tag GPL-2.0+ to
+ GPL-2.0-or-later
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -72,7 +72,7 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-trivial@nongnu.org
 References: <20240910115131.28766-1-philmd@linaro.org>
- <20240910115131.28766-4-philmd@linaro.org>
+ <20240910115131.28766-5-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -116,7 +116,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240910115131.28766-4-philmd@linaro.org>
+In-Reply-To: <20240910115131.28766-5-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -143,20 +143,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Sep 2024 12:02:12 -0000
+X-List-Received-Date: Tue, 10 Sep 2024 12:04:13 -0000
 
 On 10/09/2024 13.51, Philippe Mathieu-Daudé wrote:
-> The 'LGPL-2.0+' license identifier has been deprecated since license
-> list version 2.0rc2 [1] and replaced by the 'LGPL-2.0-or-later' [2]
+> The 'GPL-2.0+' license identifier has been deprecated since license
+> list version 2.0rc2 [1] and replaced by the 'GPL-2.0-or-later' [2]
 > tag.
 > 
-> [1] https://spdx.org/licenses/LGPL-2.0+.html
-> [2] https://spdx.org/licenses/LGPL-2.0-or-later.html
+> [1] https://spdx.org/licenses/GPL-2.0+.html
+> [2] https://spdx.org/licenses/GPL-2.0-or-later.html
 > 
 > Mechanical patch running:
 > 
->    $ sed -i -e s/LGPL-2.0+/LGPL-2.0-or-later/ \
->      $(git grep -l 'SPDX-License-Identifier: LGPL-2.0+$')
+>    $ sed -i -e s/GPL-2.0+/GPL-2.0-or-later/ \
+>      $(git grep -l 'SPDX-License-Identifier: GPL-2.0+$')
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
