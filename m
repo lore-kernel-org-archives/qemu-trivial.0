@@ -1,54 +1,54 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1snzPk-0004Jx-2W
+	id 1snzPk-0004Lm-Ex
 	for mharc-qemu-trivial@gnu.org; Tue, 10 Sep 2024 07:52:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1snzPV-00045V-JZ
- for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 07:51:59 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1snzPh-0004C8-M9
+ for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 07:52:06 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1snzPS-0006Xq-IH
- for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 07:51:53 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-5c3ca32971cso996343a12.0
- for <qemu-trivial@nongnu.org>; Tue, 10 Sep 2024 04:51:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1snzPf-0006a4-UD
+ for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 07:52:05 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-5c26852aff1so6344930a12.3
+ for <qemu-trivial@nongnu.org>; Tue, 10 Sep 2024 04:52:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1725969109; x=1726573909; darn=nongnu.org;
+ d=linaro.org; s=google; t=1725969121; x=1726573921; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=S0tP38q2aXeMtCrKpnNgEUV5n804wzkdrcUKmPP1+h0=;
- b=kSnLSsrUEFdPc6I9xKqoTH3UFAbmoOGg6/0qmx8B0sCbxlOq3LxgcQEPezDDL6RWX4
- ph95tO6IDCDpPbcKty/8sgrM64YiL5HgSjkYKQfJwHCQHU1XKwQKDZCMqwfBF1JzSnET
- 5kUD9ekLsCGakPwu3MOTD8r0kxURtENbYN3lLj7Bukroine2EV5hxPUVs4ftlHWGSsKp
- qR9HTrGOuFJAMyZd0JGmMtul+6MNkJtA9XUC/R2pscAHHDra0UkFsBv3Q+vrW+n5N4lU
- 5wqzueLujSlJ1ZwVdTMqFSqRLf6akfHFIDXfeMHeKQz81K1dW3GmKLAMnl4Ptr46WAnK
- hdMg==
+ bh=q0NBguyBRzjLDeNAbNyinwyekBYn7oqEADIiej2ZBjc=;
+ b=am4icO5nyaH19qtBeLqZo81VoPfzA9srv6+EzrSNXMtVl9tQP9JMFtx5e2vzW5DdJm
+ SpB/qZiVZNc3B+4h74+jtf5V4GPTVvA11IzW8tI9sY/pgvxDIsKiYGCOsgB1svf5lh5B
+ S/QlVOP0dhJCqtyrz+s8pRgBaRB2gxAZ8Lcqnyl+XhOBIKU9/DRwLfMhI/LgqEXUENNP
+ Ae/p3mBRZ457VLa19+2Va6NYqofVTeix6ONAMlZ7wVuN0hpp9XdVQqPP3xnvatGggKr8
+ G9QdnSTAUrY3PTP5yOJS5KP5TdWA+0YnY5tePZctpwH/poN+wuDIRjs56LiEcuY6nbz+
+ EwwQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725969109; x=1726573909;
+ d=1e100.net; s=20230601; t=1725969121; x=1726573921;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=S0tP38q2aXeMtCrKpnNgEUV5n804wzkdrcUKmPP1+h0=;
- b=KdAKlIMvkzPst7phP8Y4OlPhzntk9sCjlQmtQfQrxI9Q+mcXSfVGai04HZLnqbrdKC
- x7dIMPfi6qchJ52bdArcsTGauR1lRiXDdpeCZrqanPfeieqPlhtPHAO8dY6axMavBhgH
- 6RZoJbTOgbRWPP6Vyn/lWv0AgcfO+37OIALkdft2FGRrLo2mKWzxx8gEr5cVb/UhKIYf
- FUy1/x/plAPzQMQB/5PFlnYRH/Vdu/0QdjmPytOrmQRnt0FiwvDCEM4HE/3+Q2HSFFGm
- 3r1gIFujSeZi3AAFMdTHFt7PPhr+4Fmn4dGntLq9B5Gju0o5H/yCexMN8AOc/acpU1IF
- 6MvQ==
+ bh=q0NBguyBRzjLDeNAbNyinwyekBYn7oqEADIiej2ZBjc=;
+ b=My2ncxCfzRuC6KHF2MIIBLiTcz/qrxeoB6dGkvaT497hRezE1PUS4GTh41LOEuEciA
+ Vgk94hqiOoz/2QvLMkxUbvEv8eUrZFpAQtb6S79N0Vbry/yo43QrrprIQFYymQWl+LgZ
+ +5eD+MGy/g+4wn5ehAAdGiAzJdjZHDonMX3A8B0+hHkhn12JCSeZqKaPiJbMYgnnHera
+ 8W/4Smzdo3AC9c0TJU4inh0rMJZRYOb6qajfmg4nhGe1oUOCX+Dcrr9gHN2u1Y6LV2/v
+ YV7VoxWJRugzI5JS2Q0ZQnLeYAmJxcjVbg+3tzPPBnB8shgw902tZpuCQXvnRKvKr1xl
+ chBA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXIMiSJ6Lah3aCgUOuXBF3L7Sj/grnI1a8wKvoYP5SlqG05zVzSNZ5B9GIOzfDXasrGyiA9yWCne76mzpM=@nongnu.org
-X-Gm-Message-State: AOJu0YzauOxuVMrLgzpvqvBsQTnGo/NuJx96Qt3PNPkXrYZpkm5MwgBg
- K3lxP2AcmxXSLRmk1Ro/5tUsysoRhVx7KX7KRkRcM/bbqzaJ3Pw9AqkgcyMvHoE=
-X-Google-Smtp-Source: AGHT+IEzXBUCDbooUfQmm1Y7MsfG8eOhWmJ4LhAsjX0o+QtCoHa6colNT/ObDxaXfyjiD47WeQWfIw==
-X-Received: by 2002:a05:6402:448a:b0:5c2:632e:fad7 with SMTP id
- 4fb4d7f45d1cf-5c3dc7955famr10749585a12.15.1725969108435; 
- Tue, 10 Sep 2024 04:51:48 -0700 (PDT)
+ AJvYcCU6diAkfbXvLRolDYDhMafGLf+w7lGcw9irqkZzJPzA1u37QFCBhLGk8OPdQwzmwVFxH/CbnDXU0EpaZ24=@nongnu.org
+X-Gm-Message-State: AOJu0Ywu+fQKuMkE1noo3cVb4c24heEvXsl5LwZjsIDP2oOvHR14MDxA
+ zs7QM/2+rlxAHYq39tmg4+3LDe+kcoSzY9sguoqX2LsyCg9/+D3Eg4sYmHvRwGE=
+X-Google-Smtp-Source: AGHT+IFLUtKgiVKjTAiiToMM74KSl9Xr4BFBYXuqh8ijHDkCvBTxxIk9yWMmFlszalBiPSNuLFc6SA==
+X-Received: by 2002:a05:6402:13d0:b0:5be:bcdf:4110 with SMTP id
+ 4fb4d7f45d1cf-5c3e94d397fmr9406221a12.0.1725969121581; 
+ Tue, 10 Sep 2024 04:52:01 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.217.32])
  by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5c3ebd8cc33sm4188219a12.87.2024.09.10.04.51.46
+ 4fb4d7f45d1cf-5c3ebd8ce50sm4170171a12.84.2024.09.10.04.51.59
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 10 Sep 2024 04:51:47 -0700 (PDT)
+ Tue, 10 Sep 2024 04:52:01 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -59,18 +59,18 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-trivial@nongnu.org,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH 2/5] tests/functional: Correct typo in test_netdev_ethtool.py
- SPDX tag
-Date: Tue, 10 Sep 2024 13:51:28 +0200
-Message-ID: <20240910115131.28766-3-philmd@linaro.org>
+Subject: [PATCH 4/5] license: Update deprecated SPDX tag GPL-2.0+ to
+ GPL-2.0-or-later
+Date: Tue, 10 Sep 2024 13:51:30 +0200
+Message-ID: <20240910115131.28766-5-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240910115131.28766-1-philmd@linaro.org>
 References: <20240910115131.28766-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=philmd@linaro.org; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=philmd@linaro.org; helo=mail-ed1-x529.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -90,28 +90,74 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Sep 2024 11:52:04 -0000
+X-List-Received-Date: Tue, 10 Sep 2024 11:52:06 -0000
 
-Cc: Alex Bennée <alex.bennee@linaro.org>
-Fixes: 9f95111474 ("tests/avocado: re-factor igb test to avoid timeouts")
+The 'GPL-2.0+' license identifier has been deprecated since license
+list version 2.0rc2 [1] and replaced by the 'GPL-2.0-or-later' [2]
+tag.
+
+[1] https://spdx.org/licenses/GPL-2.0+.html
+[2] https://spdx.org/licenses/GPL-2.0-or-later.html
+
+Mechanical patch running:
+
+  $ sed -i -e s/GPL-2.0+/GPL-2.0-or-later/ \
+    $(git grep -l 'SPDX-License-Identifier: GPL-2.0+$')
+
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 ---
- tests/functional/test_netdev_ethtool.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ target/riscv/cpu-param.h | 2 +-
+ target/s390x/cpu-param.h | 2 +-
+ hw/nvram/fw_cfg-acpi.c   | 2 +-
+ hw/virtio/virtio-acpi.c  | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/tests/functional/test_netdev_ethtool.py b/tests/functional/test_netdev_ethtool.py
-index d5b911c918..ee1a397bd2 100755
---- a/tests/functional/test_netdev_ethtool.py
-+++ b/tests/functional/test_netdev_ethtool.py
-@@ -5,7 +5,7 @@
- # This test leverages ethtool's --test sequence to validate network
- # device behaviour.
- #
--# SPDX-License-Identifier: GPL-2.0-or-late
-+# SPDX-License-Identifier: GPL-2.0-or-later
+diff --git a/target/riscv/cpu-param.h b/target/riscv/cpu-param.h
+index 1fbd64939d..25686192c0 100644
+--- a/target/riscv/cpu-param.h
++++ b/target/riscv/cpu-param.h
+@@ -2,7 +2,7 @@
+  * RISC-V cpu parameters for qemu.
+  *
+  * Copyright (c) 2017-2018 SiFive, Inc.
+- * SPDX-License-Identifier: GPL-2.0+
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
  
- from unittest import skip
- from qemu_test import QemuSystemTest, Asset
+ #ifndef RISCV_CPU_PARAM_H
+diff --git a/target/s390x/cpu-param.h b/target/s390x/cpu-param.h
+index 11d23b600d..a05ffcf78d 100644
+--- a/target/s390x/cpu-param.h
++++ b/target/s390x/cpu-param.h
+@@ -2,7 +2,7 @@
+  * S/390 cpu parameters for qemu.
+  *
+  * Copyright (c) 2009 Ulrich Hecht
+- * SPDX-License-Identifier: GPL-2.0+
++ * SPDX-License-Identifier: GPL-2.0-or-later
+  */
+ 
+ #ifndef S390_CPU_PARAM_H
+diff --git a/hw/nvram/fw_cfg-acpi.c b/hw/nvram/fw_cfg-acpi.c
+index 58cdcd3121..2e6ef89b98 100644
+--- a/hw/nvram/fw_cfg-acpi.c
++++ b/hw/nvram/fw_cfg-acpi.c
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0+
++// SPDX-License-Identifier: GPL-2.0-or-later
+ /*
+  * Add fw_cfg device in DSDT
+  *
+diff --git a/hw/virtio/virtio-acpi.c b/hw/virtio/virtio-acpi.c
+index 230a669500..85becef03c 100644
+--- a/hw/virtio/virtio-acpi.c
++++ b/hw/virtio/virtio-acpi.c
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0+
++// SPDX-License-Identifier: GPL-2.0-or-later
+ /*
+  * virtio ACPI Support
+  *
 -- 
 2.45.2
 
