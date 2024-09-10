@@ -1,67 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1snzXk-0007Ek-Gu
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Sep 2024 08:00:26 -0400
+	id 1snzZW-0006NY-2C
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Sep 2024 08:02:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1snzXi-00076c-9l
- for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 08:00:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1snzZT-0006AH-P6
+ for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 08:02:11 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1snzXg-000824-RX
- for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 08:00:22 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1snzZS-0008KV-19
+ for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 08:02:11 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1725969620;
+ s=mimecast20190719; t=1725969728;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=9FFtlVjBG1wkPKnV7v8IjARwdBHUtoj3VO5tGdOQ6/w=;
- b=Av6zXVd2Q/OvOLB84XiwfhxsAd5vtoU/b2SUzkBIP47jbG/m/JYvDPDnM3HfXFftIBDKK+
- JP30DJuNi44XEzljTzfVqvhHIqqfLQA6Hvd6hggdnkyJ9MvWdnBnH9ht6DFQnmoXRoooPm
- 5mzpgScTCIRJcfWzQJYGPoM/n78Zr24=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=UMoEThv69Nx8btEv8MQge7OD9DyBaR+J6mVU846W8vM=;
+ b=bLFApDz7kYfYQpG/SxVEBdzhHHdZeio+mR6jJd5R/oT+pzL1PzhIi/xSUcvaOjNn+fUGez
+ 2GGH0DcbnWi+aZfVI/xLbraVoop4Gv/JVNcRT/i3MU7kG+xbN9HMZNn8sSzzlv5cTbMBVg
+ Tr7Ltg/zRc163B75J2TvbNO63DsIBKo=
+Received: from mail-qt1-f200.google.com (mail-qt1-f200.google.com
+ [209.85.160.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-325-7W1k6kP-NKiaU0eJ2u7-ZQ-1; Tue, 10 Sep 2024 08:00:19 -0400
-X-MC-Unique: 7W1k6kP-NKiaU0eJ2u7-ZQ-1
-Received: by mail-qv1-f69.google.com with SMTP id
- 6a1803df08f44-6c368bbf8faso120232086d6.0
- for <qemu-trivial@nongnu.org>; Tue, 10 Sep 2024 05:00:19 -0700 (PDT)
+ us-mta-400-_ShyNQfmMqeMC1N1bfF2pg-1; Tue, 10 Sep 2024 08:02:06 -0400
+X-MC-Unique: _ShyNQfmMqeMC1N1bfF2pg-1
+Received: by mail-qt1-f200.google.com with SMTP id
+ d75a77b69052e-4582e9502bbso17946941cf.0
+ for <qemu-trivial@nongnu.org>; Tue, 10 Sep 2024 05:02:06 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725969618; x=1726574418;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=9FFtlVjBG1wkPKnV7v8IjARwdBHUtoj3VO5tGdOQ6/w=;
- b=d9jx3ViWKqPyoelCFtbFqJuzTJinzuybs0ohEX6/1WOI/bUVrvJ3ZoW+ZvQ0mWmMQy
- 1Io+3n6QbrMN0ECPCvhSGbyQPYRHrnVgDekPUHzhbmUceU7+nxE7PRuTNuwmqU1X45cw
- PzCsW8c4j+mmOa5J5QDhLQEpmC0yNRflqx9+5fZkoeEI57CZ8MJKI08eLJoehLDqjpA/
- zJFDT4VVjlHhbj3vTZCDnNKPGQY9DQ3xXmM44iB3dLhxPmRYojM2+WOyOdLY3a4hxmQt
- 2Zhf1Nxgk6IpP4Ty5E1bTUs9u+qtYBnQJImU6WW3noPgDQgGPfqZLDDkgHNnpGcARj8e
- MVHQ==
+ d=1e100.net; s=20230601; t=1725969726; x=1726574526;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UMoEThv69Nx8btEv8MQge7OD9DyBaR+J6mVU846W8vM=;
+ b=PEZfUvy0GNs05icz8bnC3FdzKU1dOIvVKQiYdcazYGgOZrF/GZywUmGLq50p03UQCd
+ 9CythjDdpjo6Hj61jvSMCVxeMfsrz/cTM9RnffuG8Gw/hi50SBBQXr8fzkUKAf+eOQDJ
+ VlT3d3NF92GMRIBpG9NHxeo/fB/dZmq5+WeyJdNMP4XU6IqUNj+lu8jmJEtm0HakLFU9
+ goe72+mSDRCFtDrNk+j8HVgkmfPzHG1xeegrc4CU9ON3wMk4LEPeznzPqlhi8pd45CrI
+ QvqapBJtcm2GnF+Kk64SUuhBGct6eDGMXa4iR6sTvURRRvsrjy/MjiIUtjmFTJinRDIi
+ JqlA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUIIhHsHD907ozlgbAZJajh/+RUf/C54a/8RWmN5RqoHkAvmFuPRsNjF63xBzsUOdLf7S0rsjcmMrI6E30=@nongnu.org
-X-Gm-Message-State: AOJu0YyNOe3ezJ09A49KdV4p9rKjtkIFD8DesA5q9bpgZfOErqWiFqk3
- IObCluev1JoSBq9YG+mlhBPYhLROWGZ6kOju+m/TzSZu03l6bJQBN1UdXtatJRR8TrqhQnOu8oX
- PNUBNw829ywil9/+dI2IJmxeU6Ty2XGSV2RiWOAYL1FjN+RSzDtkI0mQ=
-X-Received: by 2002:a05:6214:588b:b0:6c5:51f0:3b20 with SMTP id
- 6a1803df08f44-6c554d1d08fmr56359376d6.6.1725969618434; 
- Tue, 10 Sep 2024 05:00:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHRPfutO7NXo5f7GfoDUtK266nUTVJqc8SM1d9hRD2pxABA8YWuHSwtZ9MDLzdZLc/EpqNT+Q==
-X-Received: by 2002:a05:6214:588b:b0:6c5:51f0:3b20 with SMTP id
- 6a1803df08f44-6c554d1d08fmr56358476d6.6.1725969617886; 
- Tue, 10 Sep 2024 05:00:17 -0700 (PDT)
+ AJvYcCWHwTEcA/zVg3OYXn65mHimLghhVoeA50Zt0/qFVgl/HsAfhtE+tV4zhC6wXcYI3yD0gKVJ4rkZSJncQuI=@nongnu.org
+X-Gm-Message-State: AOJu0Yyj3KhIU3fp+Sw0b5nifV7sQXaMTTvTxgXtGreAEXJuZ29Zagmm
+ pQFzqPk3F+yWMXxHdgW/cAT/gNNY3xmAaKcpTA4PbKaY7Xd3BefLokhm9ExVQIFBfGRg2GG0Jvr
+ J8NEgp55H7FD9Sv1vSA+M+F+J0obzA06/qr1qbTrVjN00kYIGEMJbqho=
+X-Received: by 2002:ac8:5990:0:b0:458:34fb:5d65 with SMTP id
+ d75a77b69052e-45834fb6247mr89808261cf.23.1725969725766; 
+ Tue, 10 Sep 2024 05:02:05 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF1J6TO1xa2YH0Wzo60dva/7rEsDX+yFZz5vLSuPZ32pXsqzJEh+TITo/F+5e4DeB+GpejkXw==
+X-Received: by 2002:ac8:5990:0:b0:458:34fb:5d65 with SMTP id
+ d75a77b69052e-45834fb6247mr89807641cf.23.1725969725272; 
+ Tue, 10 Sep 2024 05:02:05 -0700 (PDT)
 Received: from [192.168.0.6] (ip-109-43-178-122.web.vodafone.de.
  [109.43.178.122]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6c5347747b3sm29492546d6.122.2024.09.10.05.00.15
+ d75a77b69052e-45822e7723asm28734621cf.22.2024.09.10.05.02.02
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Sep 2024 05:00:17 -0700 (PDT)
-Message-ID: <86138a3a-a845-4cb3-860f-c3146a3dca1f@redhat.com>
-Date: Tue, 10 Sep 2024 14:00:12 +0200
+ Tue, 10 Sep 2024 05:02:04 -0700 (PDT)
+Message-ID: <3d2ec94c-42c3-46f4-be64-24abe3bb5e24@redhat.com>
+Date: Tue, 10 Sep 2024 14:02:01 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/5] NSIS: Simplify license description
+Subject: Re: [PATCH 3/5] license: Update deprecated SPDX tag LGPL-2.0+ to
+ LGPL-2.0-or-later
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -71,7 +72,7 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-trivial@nongnu.org
 References: <20240910115131.28766-1-philmd@linaro.org>
- <20240910115131.28766-2-philmd@linaro.org>
+ <20240910115131.28766-4-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -115,21 +116,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240910115131.28766-2-philmd@linaro.org>
+In-Reply-To: <20240910115131.28766-4-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.145,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,19 +143,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Sep 2024 12:00:22 -0000
+X-List-Received-Date: Tue, 10 Sep 2024 12:02:12 -0000
 
 On 10/09/2024 13.51, Philippe Mathieu-Daudé wrote:
-> Since the "2 | 3+" expression can be simplified as "2+",
-> it is pointless to mention the GPLv3 license.
+> The 'LGPL-2.0+' license identifier has been deprecated since license
+> list version 2.0rc2 [1] and replaced by the 'LGPL-2.0-or-later' [2]
+> tag.
 > 
-> Add the corresponding SPDX identifier to remove all doubt.
+> [1] https://spdx.org/licenses/LGPL-2.0+.html
+> [2] https://spdx.org/licenses/LGPL-2.0-or-later.html
+> 
+> Mechanical patch running:
+> 
+>    $ sed -i -e s/LGPL-2.0+/LGPL-2.0-or-later/ \
+>      $(git grep -l 'SPDX-License-Identifier: LGPL-2.0+$')
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   qemu.nsi | 4 +++-
->   1 file changed, 3 insertions(+), 1 deletion(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
+
 
 
