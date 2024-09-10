@@ -1,68 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1snzTB-0003vi-HE
-	for mharc-qemu-trivial@gnu.org; Tue, 10 Sep 2024 07:55:42 -0400
+	id 1snzXk-0007Ek-Gu
+	for mharc-qemu-trivial@gnu.org; Tue, 10 Sep 2024 08:00:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1snzT8-0003lx-RC
- for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 07:55:39 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1snzXi-00076c-9l
+ for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 08:00:22 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1snzT7-0007MD-20
- for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 07:55:38 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1snzXg-000824-RX
+ for qemu-trivial@nongnu.org; Tue, 10 Sep 2024 08:00:22 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1725969335;
+ s=mimecast20190719; t=1725969620;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=/r1rT2HoAtzuCUNSk93dVbDRG1LJYBroGh9BJl+Ljn4=;
- b=OVFOjPDNd2V8AWPcb4vrGFqk2v9ss11Ie1rRuRe8w59sTECCeFziWJW+pYH/LTYPALq5WP
- bkH3DF0mtZ4oYmReMxRgbuebSoODEgJ6F69eZ+047XcjE8N8eCJFr0Rk+HNujU1pSgy3y6
- RPQkOL6YID9Dfdn1JyLq4rnJtK+0ahA=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=9FFtlVjBG1wkPKnV7v8IjARwdBHUtoj3VO5tGdOQ6/w=;
+ b=Av6zXVd2Q/OvOLB84XiwfhxsAd5vtoU/b2SUzkBIP47jbG/m/JYvDPDnM3HfXFftIBDKK+
+ JP30DJuNi44XEzljTzfVqvhHIqqfLQA6Hvd6hggdnkyJ9MvWdnBnH9ht6DFQnmoXRoooPm
+ 5mzpgScTCIRJcfWzQJYGPoM/n78Zr24=
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-593-bF8ma23cPEOLkqRuwWGIdw-1; Tue, 10 Sep 2024 07:55:34 -0400
-X-MC-Unique: bF8ma23cPEOLkqRuwWGIdw-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-42cb6ed7f9dso19636415e9.3
- for <qemu-trivial@nongnu.org>; Tue, 10 Sep 2024 04:55:34 -0700 (PDT)
+ us-mta-325-7W1k6kP-NKiaU0eJ2u7-ZQ-1; Tue, 10 Sep 2024 08:00:19 -0400
+X-MC-Unique: 7W1k6kP-NKiaU0eJ2u7-ZQ-1
+Received: by mail-qv1-f69.google.com with SMTP id
+ 6a1803df08f44-6c368bbf8faso120232086d6.0
+ for <qemu-trivial@nongnu.org>; Tue, 10 Sep 2024 05:00:19 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1725969333; x=1726574133;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=/r1rT2HoAtzuCUNSk93dVbDRG1LJYBroGh9BJl+Ljn4=;
- b=MKtuIfuMAyemhoFBI5hS62DnUhBrwvcHtFcaaK5AEbga/h4EA6qrplOYQdyCvwEByl
- nDzYvmJFmE8onkVXz5VwI7RN/glW0jWOBB5d5CDEV5LexhKLctNzBwRD0Fd1FNbkXqWX
- nbugPx0WugrKBBTc0tsvJrW7hyo6sJAibKpt+uy9SJnZrfoJv5WhTSIVWxOvhtJD35/+
- FLFkC+y6k+PuV1r2Ag5doi5v+JtxvEr8WDmYSPGMEQrIowhT18tuQDWEHL6nWoO0Wc1D
- bwCrRG17Z1bSANPTwnp2Bx+RwNyv8uLTTYRQ1n/2nA9EdajWg8fhzM+Pnx1yMnZKH6CC
- mzAw==
+ d=1e100.net; s=20230601; t=1725969618; x=1726574418;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=9FFtlVjBG1wkPKnV7v8IjARwdBHUtoj3VO5tGdOQ6/w=;
+ b=d9jx3ViWKqPyoelCFtbFqJuzTJinzuybs0ohEX6/1WOI/bUVrvJ3ZoW+ZvQ0mWmMQy
+ 1Io+3n6QbrMN0ECPCvhSGbyQPYRHrnVgDekPUHzhbmUceU7+nxE7PRuTNuwmqU1X45cw
+ PzCsW8c4j+mmOa5J5QDhLQEpmC0yNRflqx9+5fZkoeEI57CZ8MJKI08eLJoehLDqjpA/
+ zJFDT4VVjlHhbj3vTZCDnNKPGQY9DQ3xXmM44iB3dLhxPmRYojM2+WOyOdLY3a4hxmQt
+ 2Zhf1Nxgk6IpP4Ty5E1bTUs9u+qtYBnQJImU6WW3noPgDQgGPfqZLDDkgHNnpGcARj8e
+ MVHQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWMjSvOVqs7ibMayVzw6qNqVWKGLUyvTlTWJaaCQ5fZdHCy/dywUXp9lR0/JQadauHY7XIUcDE8wtEdwgU=@nongnu.org
-X-Gm-Message-State: AOJu0YzNFvLUG7YFx+J6BjI4e5FVatLcTjDe1ctw48aMd+Bgg5bLbf70
- WoWKaLh7c98E/4y8SOEovwIetcxNgeDK1+0CQ5t7ulwuPun9WdAnSmXvxG6DvSpQKloJQ1LLYKO
- MSUnbhq0EmkpsHjNNCYt51f+xDkSsqYP/CGfgbAETozD0QCQVlb0YviE=
-X-Received: by 2002:a05:600c:358a:b0:42c:b950:6821 with SMTP id
- 5b1f17b1804b1-42cb9506a4amr50021465e9.19.1725969333216; 
- Tue, 10 Sep 2024 04:55:33 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF5DbvCEVn7RNrRIidnLZJQs+FkgRaJI7+uNdZey5/Dmz80FFB4Dem/sb1HBtzCa6+9YvYJoA==
-X-Received: by 2002:a05:600c:358a:b0:42c:b950:6821 with SMTP id
- 5b1f17b1804b1-42cb9506a4amr50021235e9.19.1725969332703; 
- Tue, 10 Sep 2024 04:55:32 -0700 (PDT)
+ AJvYcCUIIhHsHD907ozlgbAZJajh/+RUf/C54a/8RWmN5RqoHkAvmFuPRsNjF63xBzsUOdLf7S0rsjcmMrI6E30=@nongnu.org
+X-Gm-Message-State: AOJu0YyNOe3ezJ09A49KdV4p9rKjtkIFD8DesA5q9bpgZfOErqWiFqk3
+ IObCluev1JoSBq9YG+mlhBPYhLROWGZ6kOju+m/TzSZu03l6bJQBN1UdXtatJRR8TrqhQnOu8oX
+ PNUBNw829ywil9/+dI2IJmxeU6Ty2XGSV2RiWOAYL1FjN+RSzDtkI0mQ=
+X-Received: by 2002:a05:6214:588b:b0:6c5:51f0:3b20 with SMTP id
+ 6a1803df08f44-6c554d1d08fmr56359376d6.6.1725969618434; 
+ Tue, 10 Sep 2024 05:00:18 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHRPfutO7NXo5f7GfoDUtK266nUTVJqc8SM1d9hRD2pxABA8YWuHSwtZ9MDLzdZLc/EpqNT+Q==
+X-Received: by 2002:a05:6214:588b:b0:6c5:51f0:3b20 with SMTP id
+ 6a1803df08f44-6c554d1d08fmr56358476d6.6.1725969617886; 
+ Tue, 10 Sep 2024 05:00:17 -0700 (PDT)
 Received: from [192.168.0.6] (ip-109-43-178-122.web.vodafone.de.
  [109.43.178.122]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42cc1375189sm17320605e9.1.2024.09.10.04.55.31
+ 6a1803df08f44-6c5347747b3sm29492546d6.122.2024.09.10.05.00.15
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 10 Sep 2024 04:55:32 -0700 (PDT)
-Message-ID: <f8d7ddf5-d470-402c-ada3-d94259661df0@redhat.com>
-Date: Tue, 10 Sep 2024 13:55:30 +0200
+ Tue, 10 Sep 2024 05:00:17 -0700 (PDT)
+Message-ID: <86138a3a-a845-4cb3-860f-c3146a3dca1f@redhat.com>
+Date: Tue, 10 Sep 2024 14:00:12 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/5] tests/functional: Correct typo in
- test_netdev_ethtool.py SPDX tag
+Subject: Re: [PATCH 1/5] NSIS: Simplify license description
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: Richard Henderson <richard.henderson@linaro.org>,
@@ -72,7 +71,7 @@ Cc: Richard Henderson <richard.henderson@linaro.org>,
  =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  qemu-trivial@nongnu.org
 References: <20240910115131.28766-1-philmd@linaro.org>
- <20240910115131.28766-3-philmd@linaro.org>
+ <20240910115131.28766-2-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -116,7 +115,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240910115131.28766-3-philmd@linaro.org>
+In-Reply-To: <20240910115131.28766-2-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -143,29 +142,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 10 Sep 2024 11:55:39 -0000
+X-List-Received-Date: Tue, 10 Sep 2024 12:00:22 -0000
 
 On 10/09/2024 13.51, Philippe Mathieu-Daudé wrote:
-> Cc: Alex Bennée <alex.bennee@linaro.org>
-> Fixes: 9f95111474 ("tests/avocado: re-factor igb test to avoid timeouts")
+> Since the "2 | 3+" expression can be simplified as "2+",
+> it is pointless to mention the GPLv3 license.
+> 
+> Add the corresponding SPDX identifier to remove all doubt.
+> 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   tests/functional/test_netdev_ethtool.py | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/tests/functional/test_netdev_ethtool.py b/tests/functional/test_netdev_ethtool.py
-> index d5b911c918..ee1a397bd2 100755
-> --- a/tests/functional/test_netdev_ethtool.py
-> +++ b/tests/functional/test_netdev_ethtool.py
-> @@ -5,7 +5,7 @@
->   # This test leverages ethtool's --test sequence to validate network
->   # device behaviour.
->   #
-> -# SPDX-License-Identifier: GPL-2.0-or-late
-> +# SPDX-License-Identifier: GPL-2.0-or-later
->   
->   from unittest import skip
->   from qemu_test import QemuSystemTest, Asset
+>   qemu.nsi | 4 +++-
+>   1 file changed, 3 insertions(+), 1 deletion(-)
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
