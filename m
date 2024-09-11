@@ -1,68 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1soP2g-0001E9-Qt
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Sep 2024 11:14:06 -0400
+	id 1soP2l-0001ZZ-Mf
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Sep 2024 11:14:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1soP1J-0003gb-Ky
- for qemu-trivial@nongnu.org; Wed, 11 Sep 2024 11:12:42 -0400
-Received: from mail-ej1-x629.google.com ([2a00:1450:4864:20::629])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1soP1Q-00047g-Gy
+ for qemu-trivial@nongnu.org; Wed, 11 Sep 2024 11:12:48 -0400
+Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1soP1G-0001Jw-TS
- for qemu-trivial@nongnu.org; Wed, 11 Sep 2024 11:12:36 -0400
-Received: by mail-ej1-x629.google.com with SMTP id
- a640c23a62f3a-a8d0d0aea3cso696703866b.3
- for <qemu-trivial@nongnu.org>; Wed, 11 Sep 2024 08:12:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1soP1N-0001Ki-Ro
+ for qemu-trivial@nongnu.org; Wed, 11 Sep 2024 11:12:44 -0400
+Received: by mail-ej1-x631.google.com with SMTP id
+ a640c23a62f3a-a7a81bd549eso239041066b.3
+ for <qemu-trivial@nongnu.org>; Wed, 11 Sep 2024 08:12:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1726067553; x=1726672353; darn=nongnu.org;
+ d=linaro.org; s=google; t=1726067560; x=1726672360; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=RnEXofH39QOzGuHkMNSmPSGC7FdtUJnuQkfgBew8Hmo=;
- b=ad0jAWSaIy+wC9VaW8KbeWayvvHqsN0/KTX5x9Jsqh6aVIzN0OkXqfv7fVTI7OWroG
- jj2qCVSVMcLiQCj1jGatGp5DyQnMbL92uqKYsBrxYQGolS/N2QfPULV4XZ/ZwPG+X55I
- 3sXDzyXvVEYbhtuQxoVmw+c7iseB3fmT0zSd1oaGi3lbPF7/hzQsONBpMkvud8KkzDk5
- /2GGF2hYBTsvEygttK7DRGDR1q3WR+sP7Hw7Ho4epM7jSM04sCA4WJPfSzUx5THPUpSe
- lXqUgBpXeFZFNhYbQy7uFj4Bu0bxa00OGEigze6g/d42YEXYNjbRNV7OeJED9dTh7BWC
- /nfg==
+ bh=EB6WE0Md5naMBpceBvItyS6hBeXESBfSCn2OSsVLoDw=;
+ b=P6B/jGPtlA0lUiIwOxzuxnChDKwjk8yBnPK6ALqDo2pCNNuHsessNQqbMD9jVbZLxg
+ eMrj8zzE0Y+qERdnTm2JXHTWiRyKG2/LM6jmVLdjhkZaAj66IxPT+4UVSH2h5h2rxTGj
+ 2s1Y8OyraX8jJBoB+ZvYokxUr1kVJDWTL9lKCW3n9Eq2Xs5DXgw5TvbUo2WS5NrWGRFF
+ svXsWYPnSCNAGHVEg2ui0jOhXoT4YG/3N7H4sgkzncbuxehnDuAUlC1TB8fhGHH80FzI
+ 4cYYIZB+148KOngow4slAHgo54crnU7Jar7640YyY96JTnMmWP+j5zHmec4iLIZPSsKU
+ 2y1w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1726067553; x=1726672353;
+ d=1e100.net; s=20230601; t=1726067560; x=1726672360;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=RnEXofH39QOzGuHkMNSmPSGC7FdtUJnuQkfgBew8Hmo=;
- b=J1AN4uCwvZWKvsWype/qejBqMDoKYXoVouxsL9tcVkDuojc2jWy1DBWvW00axjWPjY
- AsATWYkDsvd61yKAfsgMv2+Ajklq+0CUQdWl8cQLMyXFhxERKPVPa9X5Q7fVceRkG8LY
- 17zb6uzm630rJfoP+T9eDb3rBhBkSs4qS6ivmYP/pwHUHzEGN5LwbEl/yjcSyJvUCrDr
- 0HewByVUb63YTrEiMQbYiSARiq5ftuqMmd9hhPbL/Ag4XwmHdkIyPmVRWJmRGsLB8O5O
- Y2Q+lTnqQe/dJ1P9bKQj8zvBo9WRpW6N7AlyOVtW4e7HtSZMo6o1tpQ6Oqps2rOm21h3
- jfog==
-X-Gm-Message-State: AOJu0YwNpez9p6G/A94gwyu5caiL3EKaEhbvrDjy4irGr1cc5C17yPLD
- 85fVjdsDxRPOdeyfGTRtklxaEUpvr0DR5mD79Hmg5XouAcpaCtWvMLW3uc0tibF5BKIExYT1t9E
- m
-X-Google-Smtp-Source: AGHT+IEROw3Lzxj5s8aJR0x8RAiR6/KmarGjwk3SRoYGuKsUijTzfPw1jSdD7eW01NEVjpBYKvyGBA==
-X-Received: by 2002:a17:906:d552:b0:a8d:555f:eed1 with SMTP id
- a640c23a62f3a-a8ffab6d5f6mr466952166b.31.1726067552890; 
- Wed, 11 Sep 2024 08:12:32 -0700 (PDT)
+ bh=EB6WE0Md5naMBpceBvItyS6hBeXESBfSCn2OSsVLoDw=;
+ b=eQA31v8hiRon+z3BUsxs6sTsW1fiUgfhZa9urh5azsBydDgevTIGSw76dE7WBmMqrN
+ WBK3R2Gobh4L1DQeIB2ud76a2iSA/RpyzeG0biTX0KN3v8WmmlA8JI7pATZo9oXQAC4Y
+ JNc88Oj1iWg2Il3XCA7aPGEWQVSuqezvFMF5v+pJaZPwVOKWhPzXMjxlrwvwpaEbarLH
+ TX0lWiOSnV4V9lpxsurL3RJIJ5+c4sht/10hKTmiwhKQ9jo4evfqda6mMwgy2ZHos57y
+ 5dPQnANlcjbmGgBxUq519NkZe4iQQcuHIsA9rkquNeRo84rev0sqVx6yfNDB88J1fx+w
+ wF9A==
+X-Gm-Message-State: AOJu0Yw2K820LkDbGNFlOSRCJ9Bra3ikA/0c+/xo5StDK1mHHewNCG9s
+ k7wIvSgBUeXhXY+G/LuotEPwMNb3D3zOkRm4AatfxiK22Kn1OuzhkBLag/VRbIS3ld1gx6c0q22
+ y
+X-Google-Smtp-Source: AGHT+IEJSfw3tXilZJx41yJjCzAAJNc1Ghha5WL8BVQHP/URtqW30OhrbWYZGW63Yy+emL8BETgbBQ==
+X-Received: by 2002:a17:906:4fca:b0:a8d:28dc:9e2b with SMTP id
+ a640c23a62f3a-a9004a66ac2mr349831766b.44.1726067559917; 
+ Wed, 11 Sep 2024 08:12:39 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.196.107])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a8d25835a76sm625728966b.39.2024.09.11.08.12.31
+ a640c23a62f3a-a8d25835ad4sm623928466b.21.2024.09.11.08.12.37
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 11 Sep 2024 08:12:32 -0700 (PDT)
+ Wed, 11 Sep 2024 08:12:38 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-Subject: [PATCH v3 4/5] license: Update deprecated SPDX tag GPL-2.0+ to
- GPL-2.0-or-later
-Date: Wed, 11 Sep 2024 17:12:05 +0200
-Message-ID: <20240911151206.60368-5-philmd@linaro.org>
+Subject: [PATCH v3 5/5] license: Update deprecated SPDX tag GPL-2.0 to
+ GPL-2.0-only
+Date: Wed, 11 Sep 2024 17:12:06 +0200
+Message-ID: <20240911151206.60368-6-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
 In-Reply-To: <20240911151206.60368-1-philmd@linaro.org>
 References: <20240911151206.60368-1-philmd@linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::629;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x629.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::631;
+ envelope-from=philmd@linaro.org; helo=mail-ej1-x631.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -82,121 +82,386 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Sep 2024 15:12:49 -0000
+X-List-Received-Date: Wed, 11 Sep 2024 15:12:53 -0000
 
-The 'GPL-2.0+' license identifier has been deprecated since license
-list version 2.0rc2 [1] and replaced by the 'GPL-2.0-or-later' [2]
-tag.
+The 'GPL-2.0' license identifier has been deprecated since license
+list version 3.0 [1] and replaced by the 'GPL-2.0-only' tag [2].
 
-[1] https://spdx.org/licenses/GPL-2.0+.html
-[2] https://spdx.org/licenses/GPL-2.0-or-later.html
+[1] https://spdx.org/licenses/GPL-2.0.html
+[2] https://spdx.org/licenses/GPL-2.0-only.html
 
 Mechanical patch running:
 
-  $ sed -i -e s/GPL-2.0+/GPL-2.0-or-later/ \
-    $(git grep -lP 'SPDX-License-Identifier: \W+GPL-2.0\+[ $]' \
+  $ sed -i -e s/GPL-2.0/GPL-2.0-only/ \
+    $(git grep -l 'SPDX-License-Identifier: GPL-2.0[ $]' \
         | egrep -v '^linux-headers|^include/standard-headers')
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 ---
- hw/core/uboot_image.h           | 2 +-
- include/hw/nvram/fw_cfg_acpi.h  | 2 +-
- include/hw/usb/dwc2-regs.h      | 2 +-
- include/hw/virtio/virtio-acpi.h | 2 +-
- target/riscv/cpu-param.h        | 2 +-
- target/s390x/cpu-param.h        | 2 +-
- hw/nvram/fw_cfg-acpi.c          | 2 +-
- hw/virtio/virtio-acpi.c         | 2 +-
- 8 files changed, 8 insertions(+), 8 deletions(-)
+ hw/m68k/bootinfo.h                    | 2 +-
+ hw/net/igb_regs.h                     | 2 +-
+ include/qemu/crc-ccitt.h              | 2 +-
+ tests/tcg/loongarch64/system/regdef.h | 2 +-
+ linux-user/alpha/syscall.tbl          | 2 +-
+ linux-user/alpha/syscallhdr.sh        | 2 +-
+ linux-user/arm/syscallhdr.sh          | 2 +-
+ linux-user/hppa/syscall.tbl           | 2 +-
+ linux-user/hppa/syscallhdr.sh         | 2 +-
+ linux-user/i386/syscallhdr.sh         | 2 +-
+ linux-user/m68k/syscall.tbl           | 2 +-
+ linux-user/m68k/syscallhdr.sh         | 2 +-
+ linux-user/microblaze/syscall.tbl     | 2 +-
+ linux-user/microblaze/syscallhdr.sh   | 2 +-
+ linux-user/mips/syscall_o32.tbl       | 2 +-
+ linux-user/mips/syscallhdr.sh         | 2 +-
+ linux-user/mips64/syscall_n32.tbl     | 2 +-
+ linux-user/mips64/syscall_n64.tbl     | 2 +-
+ linux-user/mips64/syscallhdr.sh       | 2 +-
+ linux-user/ppc/syscall.tbl            | 2 +-
+ linux-user/ppc/syscallhdr.sh          | 2 +-
+ linux-user/s390x/syscall.tbl          | 2 +-
+ linux-user/s390x/syscallhdr.sh        | 2 +-
+ linux-user/sh4/syscall.tbl            | 2 +-
+ linux-user/sh4/syscallhdr.sh          | 2 +-
+ linux-user/sparc/syscall.tbl          | 2 +-
+ linux-user/sparc/syscallhdr.sh        | 2 +-
+ linux-user/x86_64/syscallhdr.sh       | 2 +-
+ linux-user/xtensa/syscall.tbl         | 2 +-
+ linux-user/xtensa/syscallhdr.sh       | 2 +-
+ scripts/kernel-doc                    | 2 +-
+ 31 files changed, 31 insertions(+), 31 deletions(-)
 
-diff --git a/hw/core/uboot_image.h b/hw/core/uboot_image.h
-index 18ac293359..e4dcfb08f0 100644
---- a/hw/core/uboot_image.h
-+++ b/hw/core/uboot_image.h
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: GPL-2.0+ */
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
+diff --git a/hw/m68k/bootinfo.h b/hw/m68k/bootinfo.h
+index 0e6e3eea87..70c1dc0e8c 100644
+--- a/hw/m68k/bootinfo.h
++++ b/hw/m68k/bootinfo.h
+@@ -1,5 +1,5 @@
  /*
-  * (C) Copyright 2008 Semihalf
+- * SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++ * SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
   *
-diff --git a/include/hw/nvram/fw_cfg_acpi.h b/include/hw/nvram/fw_cfg_acpi.h
-index b39eb0490f..dfd2a44ef0 100644
---- a/include/hw/nvram/fw_cfg_acpi.h
-+++ b/include/hw/nvram/fw_cfg_acpi.h
+  * Bootinfo tags from linux bootinfo.h and bootinfo-mac.h:
+  * This is an easily parsable and extendable structure containing all
+diff --git a/hw/net/igb_regs.h b/hw/net/igb_regs.h
+index e5a47eab64..4dc4c31da2 100644
+--- a/hw/net/igb_regs.h
++++ b/hw/net/igb_regs.h
 @@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: GPL-2.0+ */
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
+-/* SPDX-License-Identifier: GPL-2.0 */
++/* SPDX-License-Identifier: GPL-2.0-only */
  /*
-  * ACPI support for fw_cfg
+  * This is copied + edited from kernel header files in
+  * drivers/net/ethernet/intel/igb
+diff --git a/include/qemu/crc-ccitt.h b/include/qemu/crc-ccitt.h
+index 8918dafe07..ce28e29720 100644
+--- a/include/qemu/crc-ccitt.h
++++ b/include/qemu/crc-ccitt.h
+@@ -8,7 +8,7 @@
   *
-diff --git a/include/hw/usb/dwc2-regs.h b/include/hw/usb/dwc2-regs.h
-index 0bf3f2aa17..523b112c5e 100644
---- a/include/hw/usb/dwc2-regs.h
-+++ b/include/hw/usb/dwc2-regs.h
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: (GPL-2.0+ OR BSD-3-Clause) */
-+/* SPDX-License-Identifier: (GPL-2.0-or-later OR BSD-3-Clause) */
- /*
-  * Imported from the Linux kernel file drivers/usb/dwc2/hw.h, commit
-  * a89bae709b3492b478480a2c9734e7e9393b279c ("usb: dwc2: Move
-diff --git a/include/hw/virtio/virtio-acpi.h b/include/hw/virtio/virtio-acpi.h
-index cace2a315f..cdfbd943ae 100644
---- a/include/hw/virtio/virtio-acpi.h
-+++ b/include/hw/virtio/virtio-acpi.h
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: GPL-2.0+ */
-+/* SPDX-License-Identifier: GPL-2.0-or-later */
- /*
-  * ACPI support for virtio
-  */
-diff --git a/target/riscv/cpu-param.h b/target/riscv/cpu-param.h
-index 1fbd64939d..25686192c0 100644
---- a/target/riscv/cpu-param.h
-+++ b/target/riscv/cpu-param.h
-@@ -2,7 +2,7 @@
-  * RISC-V cpu parameters for qemu.
+  * From Linux kernel v5.10 include/linux/crc-ccitt.h
   *
-  * Copyright (c) 2017-2018 SiFive, Inc.
-- * SPDX-License-Identifier: GPL-2.0+
-+ * SPDX-License-Identifier: GPL-2.0-or-later
+- * SPDX-License-Identifier: GPL-2.0
++ * SPDX-License-Identifier: GPL-2.0-only
   */
  
- #ifndef RISCV_CPU_PARAM_H
-diff --git a/target/s390x/cpu-param.h b/target/s390x/cpu-param.h
-index 11d23b600d..a05ffcf78d 100644
---- a/target/s390x/cpu-param.h
-+++ b/target/s390x/cpu-param.h
-@@ -2,7 +2,7 @@
-  * S/390 cpu parameters for qemu.
-  *
-  * Copyright (c) 2009 Ulrich Hecht
-- * SPDX-License-Identifier: GPL-2.0+
-+ * SPDX-License-Identifier: GPL-2.0-or-later
+ #ifndef CRC_CCITT_H
+diff --git a/tests/tcg/loongarch64/system/regdef.h b/tests/tcg/loongarch64/system/regdef.h
+index faa09b2377..b586b4e86d 100644
+--- a/tests/tcg/loongarch64/system/regdef.h
++++ b/tests/tcg/loongarch64/system/regdef.h
+@@ -1,4 +1,4 @@
+-/* SPDX-License-Identifier: GPL-2.0 */
++/* SPDX-License-Identifier: GPL-2.0-only */
+ /*
+  * Copyright (c) 2021 Loongson Technology Corporation Limited
   */
+diff --git a/linux-user/alpha/syscall.tbl b/linux-user/alpha/syscall.tbl
+index 3000a2e8ee..3fa3ea436d 100644
+--- a/linux-user/alpha/syscall.tbl
++++ b/linux-user/alpha/syscall.tbl
+@@ -1,4 +1,4 @@
+-# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+ #
+ # system call numbers and entry vectors for alpha
+ #
+diff --git a/linux-user/alpha/syscallhdr.sh b/linux-user/alpha/syscallhdr.sh
+index 55cafe6abf..6da0c957e2 100644
+--- a/linux-user/alpha/syscallhdr.sh
++++ b/linux-user/alpha/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
  
- #ifndef S390_CPU_PARAM_H
-diff --git a/hw/nvram/fw_cfg-acpi.c b/hw/nvram/fw_cfg-acpi.c
-index 58cdcd3121..2e6ef89b98 100644
---- a/hw/nvram/fw_cfg-acpi.c
-+++ b/hw/nvram/fw_cfg-acpi.c
+ in="$1"
+ out="$2"
+diff --git a/linux-user/arm/syscallhdr.sh b/linux-user/arm/syscallhdr.sh
+index 4c952b2cfb..692fd6a76e 100644
+--- a/linux-user/arm/syscallhdr.sh
++++ b/linux-user/arm/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/linux-user/hppa/syscall.tbl b/linux-user/hppa/syscall.tbl
+index aabc37f8ca..6361e97974 100644
+--- a/linux-user/hppa/syscall.tbl
++++ b/linux-user/hppa/syscall.tbl
 @@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0+
-+// SPDX-License-Identifier: GPL-2.0-or-later
- /*
-  * Add fw_cfg device in DSDT
-  *
-diff --git a/hw/virtio/virtio-acpi.c b/hw/virtio/virtio-acpi.c
-index 230a669500..85becef03c 100644
---- a/hw/virtio/virtio-acpi.c
-+++ b/hw/virtio/virtio-acpi.c
+-# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+ #
+ # system call numbers and entry vectors for parisc
+ #
+diff --git a/linux-user/hppa/syscallhdr.sh b/linux-user/hppa/syscallhdr.sh
+index ac91a95762..bf1c1d4f30 100644
+--- a/linux-user/hppa/syscallhdr.sh
++++ b/linux-user/hppa/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/linux-user/i386/syscallhdr.sh b/linux-user/i386/syscallhdr.sh
+index b2eca96db7..938a793d2a 100644
+--- a/linux-user/i386/syscallhdr.sh
++++ b/linux-user/i386/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/linux-user/m68k/syscall.tbl b/linux-user/m68k/syscall.tbl
+index 79c2d24c89..98d90a3e53 100644
+--- a/linux-user/m68k/syscall.tbl
++++ b/linux-user/m68k/syscall.tbl
 @@ -1,4 +1,4 @@
--// SPDX-License-Identifier: GPL-2.0+
-+// SPDX-License-Identifier: GPL-2.0-or-later
- /*
-  * virtio ACPI Support
-  *
+-# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+ #
+ # system call numbers and entry vectors for m68k
+ #
+diff --git a/linux-user/m68k/syscallhdr.sh b/linux-user/m68k/syscallhdr.sh
+index eeb4d01d34..39b11dd05e 100644
+--- a/linux-user/m68k/syscallhdr.sh
++++ b/linux-user/m68k/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/linux-user/microblaze/syscall.tbl b/linux-user/microblaze/syscall.tbl
+index b11395a20c..04bbd854b5 100644
+--- a/linux-user/microblaze/syscall.tbl
++++ b/linux-user/microblaze/syscall.tbl
+@@ -1,4 +1,4 @@
+-# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+ #
+ # system call numbers and entry vectors for microblaze
+ #
+diff --git a/linux-user/microblaze/syscallhdr.sh b/linux-user/microblaze/syscallhdr.sh
+index f55dce8a62..b42b669154 100644
+--- a/linux-user/microblaze/syscallhdr.sh
++++ b/linux-user/microblaze/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/linux-user/mips/syscall_o32.tbl b/linux-user/mips/syscall_o32.tbl
+index d560c467a8..9c3fe03bdc 100644
+--- a/linux-user/mips/syscall_o32.tbl
++++ b/linux-user/mips/syscall_o32.tbl
+@@ -1,4 +1,4 @@
+-# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+ #
+ # system call numbers and entry vectors for mips
+ #
+diff --git a/linux-user/mips/syscallhdr.sh b/linux-user/mips/syscallhdr.sh
+index 761e3e47dd..cd7043ef5a 100644
+--- a/linux-user/mips/syscallhdr.sh
++++ b/linux-user/mips/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/linux-user/mips64/syscall_n32.tbl b/linux-user/mips64/syscall_n32.tbl
+index 9220909526..dc228e6b25 100644
+--- a/linux-user/mips64/syscall_n32.tbl
++++ b/linux-user/mips64/syscall_n32.tbl
+@@ -1,4 +1,4 @@
+-# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+ #
+ # system call numbers and entry vectors for mips
+ #
+diff --git a/linux-user/mips64/syscall_n64.tbl b/linux-user/mips64/syscall_n64.tbl
+index 9cd1c34f31..ddd59079ce 100644
+--- a/linux-user/mips64/syscall_n64.tbl
++++ b/linux-user/mips64/syscall_n64.tbl
+@@ -1,4 +1,4 @@
+-# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+ #
+ # system call numbers and entry vectors for mips
+ #
+diff --git a/linux-user/mips64/syscallhdr.sh b/linux-user/mips64/syscallhdr.sh
+index ed5a45165a..a4339b2041 100644
+--- a/linux-user/mips64/syscallhdr.sh
++++ b/linux-user/mips64/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/linux-user/ppc/syscall.tbl b/linux-user/ppc/syscall.tbl
+index 8f052ff405..51f4efb199 100644
+--- a/linux-user/ppc/syscall.tbl
++++ b/linux-user/ppc/syscall.tbl
+@@ -1,4 +1,4 @@
+-# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+ #
+ # system call numbers and entry vectors for powerpc
+ #
+diff --git a/linux-user/ppc/syscallhdr.sh b/linux-user/ppc/syscallhdr.sh
+index 6c44e0eaad..6e8b93d673 100644
+--- a/linux-user/ppc/syscallhdr.sh
++++ b/linux-user/ppc/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/linux-user/s390x/syscall.tbl b/linux-user/s390x/syscall.tbl
+index 0690263df1..f713903bcc 100644
+--- a/linux-user/s390x/syscall.tbl
++++ b/linux-user/s390x/syscall.tbl
+@@ -1,4 +1,4 @@
+-# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+ #
+ # System call table for s390
+ #
+diff --git a/linux-user/s390x/syscallhdr.sh b/linux-user/s390x/syscallhdr.sh
+index 85a99c48de..ac22d422b0 100755
+--- a/linux-user/s390x/syscallhdr.sh
++++ b/linux-user/s390x/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/linux-user/sh4/syscall.tbl b/linux-user/sh4/syscall.tbl
+index 0b91499ebd..d0f7cdb42c 100644
+--- a/linux-user/sh4/syscall.tbl
++++ b/linux-user/sh4/syscall.tbl
+@@ -1,4 +1,4 @@
+-# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+ #
+ # system call numbers and entry vectors for sh
+ #
+diff --git a/linux-user/sh4/syscallhdr.sh b/linux-user/sh4/syscallhdr.sh
+index 080790556a..cb3a5de711 100644
+--- a/linux-user/sh4/syscallhdr.sh
++++ b/linux-user/sh4/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/linux-user/sparc/syscall.tbl b/linux-user/sparc/syscall.tbl
+index e34cc30ef2..5eb04edc9a 100644
+--- a/linux-user/sparc/syscall.tbl
++++ b/linux-user/sparc/syscall.tbl
+@@ -1,4 +1,4 @@
+-# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+ #
+ # system call numbers and entry vectors for sparc
+ #
+diff --git a/linux-user/sparc/syscallhdr.sh b/linux-user/sparc/syscallhdr.sh
+index 34a99dc832..938a02bb48 100644
+--- a/linux-user/sparc/syscallhdr.sh
++++ b/linux-user/sparc/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/linux-user/x86_64/syscallhdr.sh b/linux-user/x86_64/syscallhdr.sh
+index 182be52a74..988256b6c6 100644
+--- a/linux-user/x86_64/syscallhdr.sh
++++ b/linux-user/x86_64/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/linux-user/xtensa/syscall.tbl b/linux-user/xtensa/syscall.tbl
+index fd2f30227d..2900f53c54 100644
+--- a/linux-user/xtensa/syscall.tbl
++++ b/linux-user/xtensa/syscall.tbl
+@@ -1,4 +1,4 @@
+-# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
++# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
+ #
+ # system call numbers and entry vectors for xtensa
+ #
+diff --git a/linux-user/xtensa/syscallhdr.sh b/linux-user/xtensa/syscallhdr.sh
+index eef0644c94..dc787fbbfe 100644
+--- a/linux-user/xtensa/syscallhdr.sh
++++ b/linux-user/xtensa/syscallhdr.sh
+@@ -1,5 +1,5 @@
+ #!/bin/sh
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ in="$1"
+ out="$2"
+diff --git a/scripts/kernel-doc b/scripts/kernel-doc
+index 240923d509..fec83f53ed 100755
+--- a/scripts/kernel-doc
++++ b/scripts/kernel-doc
+@@ -1,5 +1,5 @@
+ #!/usr/bin/env perl
+-# SPDX-License-Identifier: GPL-2.0
++# SPDX-License-Identifier: GPL-2.0-only
+ 
+ use warnings;
+ use strict;
 -- 
 2.45.2
 
