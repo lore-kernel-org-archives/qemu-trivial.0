@@ -1,67 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1soP1J-0003h0-PZ
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Sep 2024 11:12:44 -0400
+	id 1soP1Y-0004eF-FA
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Sep 2024 11:12:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1soP12-0002Tq-Ll
- for qemu-trivial@nongnu.org; Wed, 11 Sep 2024 11:12:24 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1soP0w-00023U-Fj
+ for qemu-trivial@nongnu.org; Wed, 11 Sep 2024 11:12:16 -0400
+Received: from mail-lf1-x12d.google.com ([2a00:1450:4864:20::12d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1soP0z-0001Hn-KP
- for qemu-trivial@nongnu.org; Wed, 11 Sep 2024 11:12:19 -0400
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-a8d0d0aea3cso696665566b.3
- for <qemu-trivial@nongnu.org>; Wed, 11 Sep 2024 08:12:16 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1soP0u-0001Gu-Fk
+ for qemu-trivial@nongnu.org; Wed, 11 Sep 2024 11:12:14 -0400
+Received: by mail-lf1-x12d.google.com with SMTP id
+ 2adb3069b0e04-5356aa9a0afso11681390e87.2
+ for <qemu-trivial@nongnu.org>; Wed, 11 Sep 2024 08:12:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1726067535; x=1726672335; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=C6fs1IUTb9TPohRF9BBRWmVTfcqz5qZnUo2BPeCal4E=;
- b=f8caxWHhJZiWO7x9aCSYJxqZOjGtYytgOrWhNGzWIvTVTC3yP0iO7+XgpFMdkGjxOY
- mDUn+TuLNxXPS6Sw1X5gpSqmxbQMd6m1ku6aus/jOj3AKKmldvtjrM6KDEIZeT/Xa/QN
- CORcRIa1jgZlFFOwv6zT6RB5XSLzZ0rIO261AVr6CUObbMya+h7d56Kfa7MkDqiF4Wtm
- L05pBv2r48fEOT1QERvmlspC08Ofo078Ag2B97NzIyEAlAUfvQz1ha9thRFHQfF/YRYM
- 2SoFqON8qS086BqJNaheQlijlRal6RT1IWfOJyVGQkA9Z2rUHpvHDOpyHLY5+f0AjeEw
- CK9w==
+ d=linaro.org; s=google; t=1726067530; x=1726672330; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=B9oM8Ne18x0eSKs2eGImbQDt47h4Zb8ccSIXYvNWAjg=;
+ b=mJayO/a+c0eoCtZDpCGhPu0tdGJGeqTmcETQT/+kgNqKFlGSasEKtSvZeXJ1tZ5b6H
+ Wr7K6EQE4s2lrFG9C5MF36prCP/aW2QsF7VLFYsf+Ti42xSBqsDPvKOx+8WNsgwL65NF
+ R8mQPj61QPDOnsat8zw0Tc3WgWIwrSGnOSWJXrrOTBZIEtdm9HlEFEb48xKedSAKP+q6
+ RZD61Mr7Eky56b70mgb5DOo6sZ/3T+30JjtH8BH9CxGlN7InQ/0jZDzvr0V9oiW/4hqh
+ 6T1s2VsRZAZHypRuZRb914NBCcsi4rUdaO6pTooWezAxSjStr8u8KOaMMvM6mj77sCgP
+ +GUA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1726067535; x=1726672335;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=C6fs1IUTb9TPohRF9BBRWmVTfcqz5qZnUo2BPeCal4E=;
- b=UHQUYjdaABnjIK3/M+ny3s6ABI/Zy6A9C5iZsC9LGbkZc5EDm10/RmhcK8jGhElflF
- GlHZqw6HP+beDeceen0dg4jLiMFedft57IeOrmLhnbU4wFTvpF3ns0iiHmk+SfxNRFaL
- OFr8OIXfKDLzGr5pWMUG6xWAIC9r/r80BndkoGs4WyfAIpkx8azyweeJyXTsh5zTSdk3
- BeTqjvSKtop9aOx3Pk2ZlkO0TcSThApthl8LjNrGUZOqbswq2LtFn5ms7KbIKWX9Vdmx
- BIODBJDcWXi9oNj4Yt1/cjheM7sysfrTDwJZBEcycmhGjvroeS6OY4KfLXl6nQs9Myo6
- /AoA==
-X-Gm-Message-State: AOJu0YwwsMUWVz+qbLt66B8i+dRpte8r68QxYc+NWic0ZCIipgRsLRMT
- KTw01dKYe0WJPFSx8qjvuCP5Ons1sLeBM8MVvW36XjUhklErdFKcVII5Z54HXC8=
-X-Google-Smtp-Source: AGHT+IGo6R2XSv1js1cRDObLgzNHOxBnfDzrJwBvvPiW2xMsHCcXyzA1FX1VYQwBzdRID1Rmn8nBPg==
-X-Received: by 2002:a17:907:7294:b0:a86:96d1:d1f with SMTP id
- a640c23a62f3a-a8ffaadafdbmr488357866b.26.1726067535402; 
- Wed, 11 Sep 2024 08:12:15 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1726067530; x=1726672330;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=B9oM8Ne18x0eSKs2eGImbQDt47h4Zb8ccSIXYvNWAjg=;
+ b=CE4ygC6ZXlciASSLbPPHjj8c2SrsGRpBFHbQ4iKW1+wpzLoKb4184wPJd7eLecuABb
+ pLFi8BJx1LeS+g3evXPqnKkAaZbAoQGP+bTz+jwUvPo04sOMsM5aTAC4FrNmW42tSwtL
+ 8lvLn7L3bGnSFMMGhN4nAQUIFDmY/qb04MBFmpD5p1sa5NZloYvaBRVlg+mK6P/h8zU9
+ JpigyKKNyJIHWXnEJhkgWvu1V7xu0nqEuKpEU3G/miQ5BWO5rw6yGvWTE6pboK2njNsI
+ ErwIM5kkM3jcWuVnAoUo+zak64MvqpXccHv3c7qf3EW+Q5TLgZM+VotYN2PMlMP3HWmc
+ KQpw==
+X-Gm-Message-State: AOJu0YzhcDybDSRfpYqJtPhzRqyEuwMRwI+BHszxiWRQhfVnZL+fTf6P
+ IBzgsrrn24bfBTkRY8k7i0LR/o3Q1+UPTUKC1yd50dUP/rzGJlV7JVxpT+VTHH1uu/P37KNIXj7
+ M
+X-Google-Smtp-Source: AGHT+IHPRcLm4FnWUA6AOh9rEKiut+/J70ZAHoCbo9uxNzlNuI1UUKqrSPh76VqbQXTu9EOvwVKwPg==
+X-Received: by 2002:a05:6512:3b10:b0:533:c9d:a01f with SMTP id
+ 2adb3069b0e04-536587a6704mr14952557e87.4.1726067529788; 
+ Wed, 11 Sep 2024 08:12:09 -0700 (PDT)
 Received: from m1x-phil.lan ([176.187.196.107])
  by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a8d258338a2sm626940566b.43.2024.09.11.08.12.14
+ a640c23a62f3a-a8d25926ee8sm627279466b.50.2024.09.11.08.12.08
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 11 Sep 2024 08:12:15 -0700 (PDT)
+ Wed, 11 Sep 2024 08:12:09 -0700 (PDT)
 From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-Subject: [PATCH v3 1/5] tests/functional: Correct typo in
- test_netdev_ethtool.py SPDX tag
-Date: Wed, 11 Sep 2024 17:12:02 +0200
-Message-ID: <20240911151206.60368-2-philmd@linaro.org>
+Subject: [PATCH v3 0/5] license: Fix typos and update SPDX tags
+Date: Wed, 11 Sep 2024 17:12:01 +0200
+Message-ID: <20240911151206.60368-1-philmd@linaro.org>
 X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240911151206.60368-1-philmd@linaro.org>
-References: <20240911151206.60368-1-philmd@linaro.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x633.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12d;
+ envelope-from=philmd@linaro.org; helo=mail-lf1-x12d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -81,30 +78,96 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Sep 2024 15:12:32 -0000
+X-List-Received-Date: Wed, 11 Sep 2024 15:12:23 -0000
+X-List-Received-Date: Wed, 11 Sep 2024 15:12:23 -0000
 
-Cc: Alex Bennée <alex.bennee@linaro.org>
-Fixes: 9f95111474 ("tests/avocado: re-factor igb test to avoid timeouts")
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
+Series fully reviewed (thanks Thomas & Richard)
+
+Since v2:
+. Updated few missed "2 | 3+" expressions
+
+Since v1:
+. Updated regex to cover all GPL-2.0* cases.
+
+- Fix a pair of typos
+- Upgrade the deprecated GPL-2.0+/LGPL-2.0+ SPDX tags
+  to GPL-2.0-only / GPL-2.0-or-later / LGPL-2.0-or-later.
+
+Philippe Mathieu-Daudé (5):
+  tests/functional: Correct typo in test_netdev_ethtool.py SPDX tag
+  license: Simplify GPL-2.0-or-later license descriptions
+  license: Update deprecated SPDX tag LGPL-2.0+ to LGPL-2.0-or-later
+  license: Update deprecated SPDX tag GPL-2.0+ to GPL-2.0-or-later
+  license: Update deprecated SPDX tag GPL-2.0 to GPL-2.0-only
+
+ hw/core/uboot_image.h                   | 2 +-
+ hw/m68k/bootinfo.h                      | 2 +-
+ hw/net/igb_regs.h                       | 2 +-
+ include/gdbstub/syscalls.h              | 2 +-
+ include/gdbstub/user.h                  | 2 +-
+ include/hw/nvram/fw_cfg_acpi.h          | 2 +-
+ include/hw/usb/dwc2-regs.h              | 2 +-
+ include/hw/virtio/virtio-acpi.h         | 2 +-
+ include/qemu/crc-ccitt.h                | 2 +-
+ include/qemu/timed-average.h            | 4 +++-
+ target/alpha/cpu-param.h                | 2 +-
+ target/arm/cpu-param.h                  | 2 +-
+ target/cris/cpu-param.h                 | 2 +-
+ target/hppa/cpu-param.h                 | 2 +-
+ target/i386/cpu-param.h                 | 2 +-
+ target/m68k/cpu-param.h                 | 2 +-
+ target/microblaze/cpu-param.h           | 2 +-
+ target/mips/cpu-param.h                 | 2 +-
+ target/openrisc/cpu-param.h             | 2 +-
+ target/ppc/cpu-param.h                  | 2 +-
+ target/riscv/cpu-param.h                | 2 +-
+ target/s390x/cpu-param.h                | 2 +-
+ target/sh4/cpu-param.h                  | 2 +-
+ target/sparc/cpu-param.h                | 2 +-
+ tests/tcg/loongarch64/system/regdef.h   | 2 +-
+ target/sparc/insns.decode               | 2 +-
+ block/vdi.c                             | 4 +++-
+ gdbstub/gdbstub.c                       | 2 +-
+ gdbstub/syscalls.c                      | 2 +-
+ gdbstub/system.c                        | 2 +-
+ gdbstub/user-target.c                   | 2 +-
+ gdbstub/user.c                          | 2 +-
+ hw/net/eepro100.c                       | 4 +++-
+ hw/nvram/fw_cfg-acpi.c                  | 2 +-
+ hw/ppc/rs6000_mc.c                      | 4 +++-
+ hw/virtio/virtio-acpi.c                 | 2 +-
+ util/timed-average.c                    | 4 +++-
+ linux-user/alpha/syscall.tbl            | 2 +-
+ linux-user/alpha/syscallhdr.sh          | 2 +-
+ linux-user/arm/syscallhdr.sh            | 2 +-
+ linux-user/hppa/syscall.tbl             | 2 +-
+ linux-user/hppa/syscallhdr.sh           | 2 +-
+ linux-user/i386/syscallhdr.sh           | 2 +-
+ linux-user/m68k/syscall.tbl             | 2 +-
+ linux-user/m68k/syscallhdr.sh           | 2 +-
+ linux-user/microblaze/syscall.tbl       | 2 +-
+ linux-user/microblaze/syscallhdr.sh     | 2 +-
+ linux-user/mips/syscall_o32.tbl         | 2 +-
+ linux-user/mips/syscallhdr.sh           | 2 +-
+ linux-user/mips64/syscall_n32.tbl       | 2 +-
+ linux-user/mips64/syscall_n64.tbl       | 2 +-
+ linux-user/mips64/syscallhdr.sh         | 2 +-
+ linux-user/ppc/syscall.tbl              | 2 +-
+ linux-user/ppc/syscallhdr.sh            | 2 +-
+ linux-user/s390x/syscall.tbl            | 2 +-
+ linux-user/s390x/syscallhdr.sh          | 2 +-
+ linux-user/sh4/syscall.tbl              | 2 +-
+ linux-user/sh4/syscallhdr.sh            | 2 +-
+ linux-user/sparc/syscall.tbl            | 2 +-
+ linux-user/sparc/syscallhdr.sh          | 2 +-
+ linux-user/x86_64/syscallhdr.sh         | 2 +-
+ linux-user/xtensa/syscall.tbl           | 2 +-
+ linux-user/xtensa/syscallhdr.sh         | 2 +-
+ qemu.nsi                                | 4 +++-
+ scripts/kernel-doc                      | 2 +-
  tests/functional/test_netdev_ethtool.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ 66 files changed, 78 insertions(+), 66 deletions(-)
 
-diff --git a/tests/functional/test_netdev_ethtool.py b/tests/functional/test_netdev_ethtool.py
-index d5b911c918..ee1a397bd2 100755
---- a/tests/functional/test_netdev_ethtool.py
-+++ b/tests/functional/test_netdev_ethtool.py
-@@ -5,7 +5,7 @@
- # This test leverages ethtool's --test sequence to validate network
- # device behaviour.
- #
--# SPDX-License-Identifier: GPL-2.0-or-late
-+# SPDX-License-Identifier: GPL-2.0-or-later
- 
- from unittest import skip
- from qemu_test import QemuSystemTest, Asset
 -- 
 2.45.2
 
