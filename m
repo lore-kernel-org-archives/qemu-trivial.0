@@ -1,75 +1,131 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1soP2l-0001ZZ-Mf
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Sep 2024 11:14:08 -0400
+	id 1sp3Vq-0007VA-Sm
+	for mharc-qemu-trivial@gnu.org; Fri, 13 Sep 2024 06:26:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1soP1Q-00047g-Gy
- for qemu-trivial@nongnu.org; Wed, 11 Sep 2024 11:12:48 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1soP1N-0001Ki-Ro
- for qemu-trivial@nongnu.org; Wed, 11 Sep 2024 11:12:44 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-a7a81bd549eso239041066b.3
- for <qemu-trivial@nongnu.org>; Wed, 11 Sep 2024 08:12:41 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1726067560; x=1726672360; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=EB6WE0Md5naMBpceBvItyS6hBeXESBfSCn2OSsVLoDw=;
- b=P6B/jGPtlA0lUiIwOxzuxnChDKwjk8yBnPK6ALqDo2pCNNuHsessNQqbMD9jVbZLxg
- eMrj8zzE0Y+qERdnTm2JXHTWiRyKG2/LM6jmVLdjhkZaAj66IxPT+4UVSH2h5h2rxTGj
- 2s1Y8OyraX8jJBoB+ZvYokxUr1kVJDWTL9lKCW3n9Eq2Xs5DXgw5TvbUo2WS5NrWGRFF
- svXsWYPnSCNAGHVEg2ui0jOhXoT4YG/3N7H4sgkzncbuxehnDuAUlC1TB8fhGHH80FzI
- 4cYYIZB+148KOngow4slAHgo54crnU7Jar7640YyY96JTnMmWP+j5zHmec4iLIZPSsKU
- 2y1w==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sp3Vn-0007SP-Vu
+ for qemu-trivial@nongnu.org; Fri, 13 Sep 2024 06:26:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sp3Vm-0003VK-Cw
+ for qemu-trivial@nongnu.org; Fri, 13 Sep 2024 06:26:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1726223204;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=W0wmGWtqmVxk02rNWMqPGnZXlsog05mTZFAKmWBpe64=;
+ b=RaZPmaP0L9coSKAU0+eReY5OOy1qQvu3+NpsaTreVR3S8a12+EDlMnQ7rP1qyNnjEgUntd
+ w+JuiyUFgkAGUOKs53BsiBZwOVbntW42Di2T9hoYweyvXFgf70gy+3BkDa08kfJ/N5oFX3
+ JOtKYl8AE17DF/ldAbSoEK9WH8AVTx0=
+Received: from mail-lj1-f199.google.com (mail-lj1-f199.google.com
+ [209.85.208.199]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-642-iBmOqWZPO-2vkgRb75920Q-1; Fri, 13 Sep 2024 06:26:43 -0400
+X-MC-Unique: iBmOqWZPO-2vkgRb75920Q-1
+Received: by mail-lj1-f199.google.com with SMTP id
+ 38308e7fff4ca-2f6642367e3so5953521fa.1
+ for <qemu-trivial@nongnu.org>; Fri, 13 Sep 2024 03:26:42 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1726067560; x=1726672360;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=EB6WE0Md5naMBpceBvItyS6hBeXESBfSCn2OSsVLoDw=;
- b=eQA31v8hiRon+z3BUsxs6sTsW1fiUgfhZa9urh5azsBydDgevTIGSw76dE7WBmMqrN
- WBK3R2Gobh4L1DQeIB2ud76a2iSA/RpyzeG0biTX0KN3v8WmmlA8JI7pATZo9oXQAC4Y
- JNc88Oj1iWg2Il3XCA7aPGEWQVSuqezvFMF5v+pJaZPwVOKWhPzXMjxlrwvwpaEbarLH
- TX0lWiOSnV4V9lpxsurL3RJIJ5+c4sht/10hKTmiwhKQ9jo4evfqda6mMwgy2ZHos57y
- 5dPQnANlcjbmGgBxUq519NkZe4iQQcuHIsA9rkquNeRo84rev0sqVx6yfNDB88J1fx+w
- wF9A==
-X-Gm-Message-State: AOJu0Yw2K820LkDbGNFlOSRCJ9Bra3ikA/0c+/xo5StDK1mHHewNCG9s
- k7wIvSgBUeXhXY+G/LuotEPwMNb3D3zOkRm4AatfxiK22Kn1OuzhkBLag/VRbIS3ld1gx6c0q22
- y
-X-Google-Smtp-Source: AGHT+IEJSfw3tXilZJx41yJjCzAAJNc1Ghha5WL8BVQHP/URtqW30OhrbWYZGW63Yy+emL8BETgbBQ==
-X-Received: by 2002:a17:906:4fca:b0:a8d:28dc:9e2b with SMTP id
- a640c23a62f3a-a9004a66ac2mr349831766b.44.1726067559917; 
- Wed, 11 Sep 2024 08:12:39 -0700 (PDT)
-Received: from m1x-phil.lan ([176.187.196.107])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a8d25835ad4sm623928466b.21.2024.09.11.08.12.37
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 11 Sep 2024 08:12:38 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Subject: [PATCH v3 5/5] license: Update deprecated SPDX tag GPL-2.0 to
- GPL-2.0-only
-Date: Wed, 11 Sep 2024 17:12:06 +0200
-Message-ID: <20240911151206.60368-6-philmd@linaro.org>
-X-Mailer: git-send-email 2.45.2
-In-Reply-To: <20240911151206.60368-1-philmd@linaro.org>
-References: <20240911151206.60368-1-philmd@linaro.org>
+ d=1e100.net; s=20230601; t=1726223201; x=1726828001;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=W0wmGWtqmVxk02rNWMqPGnZXlsog05mTZFAKmWBpe64=;
+ b=fhNyQLQ1vadZJFwm89/RTehGOlQ8BFHD1Aa0QSWtiZP4Rwd2cDkFSAGNAcDhudZ1qz
+ PcSOa/E2gudjavNTOS2lEnBABBm6Dozw4g6mvqt0TMs5T0esppl/o4ghxtm3d11JzJY+
+ itKtPGtdwdMUsGv1W897k9ee4gG9AtLoHLBLl1uzJDw6MGlLJb48qlqPoodW81mUOcWJ
+ Jz5SjXBuR8/CLbWJkK9/ArB9+kJTNbdYNvZlA7SqhrgiS/B6kRYxP85lV5LavhSbKIOE
+ JnirzWlrFsbundZ1mJdgchIDKdICAc6QPOBHVoC5HIbXY8mXBbqd3xxBy9iHRb+A5jp7
+ 6/DQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCU1O7n8kk8+pd+7a1jIIyM16YeL57NbdxiHsrkePFlC0OCfhg+EtxoF0ivBvK1nZ+eRlp8F2wIoYKTknls=@nongnu.org
+X-Gm-Message-State: AOJu0YynJEPd60AVvi/eZ/ODybgnt2sAxquhZlTN+Ksid5crn1FlufGX
+ lK8EAwvqxiyP0SRCeiU9bqguTDsFvGztGbXC864ZpjF+mzeVjl4Dt4tRcZSxw8a/wx+WnTNGrUG
+ rKGdmUgJbHiJRRnTPzZCdyEQauFY/vVs/KteyuiDL2Os8tliuYZgvkM4=
+X-Received: by 2002:a05:651c:b11:b0:2ef:2ba5:d214 with SMTP id
+ 38308e7fff4ca-2f7918e4af7mr19476921fa.4.1726223201477; 
+ Fri, 13 Sep 2024 03:26:41 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEK0R+09wfiuu3URlzuiSAx3BfoOTmk1JP01JZAlVU7T2IFcvPcDaAxh8OO4aw7qeIggBlF6A==
+X-Received: by 2002:a05:651c:b11:b0:2ef:2ba5:d214 with SMTP id
+ 38308e7fff4ca-2f7918e4af7mr19476651fa.4.1726223200804; 
+ Fri, 13 Sep 2024 03:26:40 -0700 (PDT)
+Received: from [192.168.0.6] (ip-109-43-178-122.web.vodafone.de.
+ [109.43.178.122]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-5c3ebd523b4sm7540507a12.51.2024.09.13.03.26.39
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 13 Sep 2024 03:26:40 -0700 (PDT)
+Message-ID: <b227d5e6-9566-4c35-9201-1617498bbf21@redhat.com>
+Date: Fri, 13 Sep 2024 12:26:38 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=philmd@linaro.org; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/loongarch/virt: Add description for virt machine type
+To: Bibo Mao <maobibo@loongson.cn>, Song Gao <gaosong@loongson.cn>,
+ qemu-devel@nongnu.org
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Markus Armbruster <armbru@redhat.com>, QEMU Trivial
+ <qemu-trivial@nongnu.org>, qemu-stable <qemu-stable@nongnu.org>
+References: <20240913095202.2007024-1-maobibo@loongson.cn>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240913095202.2007024-1-maobibo@loongson.cn>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.143,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,387 +138,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Sep 2024 15:12:53 -0000
+X-List-Received-Date: Fri, 13 Sep 2024 10:26:48 -0000
 
-The 'GPL-2.0' license identifier has been deprecated since license
-list version 3.0 [1] and replaced by the 'GPL-2.0-only' tag [2].
+On 13/09/2024 11.52, Bibo Mao wrote:
+> The description about virt machine type is removed by mistake, add
+> new description here. Here is output result with command
+> "./qemu-system-loongarch64 -M help"
+> 
+> Supported machines are:
+> none                 empty machine
+> virt                 QEMU LoongArch Virtual Machine (default)
+> x-remote             Experimental remote machine
+> 
+> Without the patch, it shows as follows:
+> Supported machines are:
+> none                 empty machine
+> virt                 (null) (default)
+> x-remote             Experimental remote machine
+> 
+> Fixes: ef2f11454c(hw/loongarch/virt: Replace Loongson IPI with LoongArch IPI)
+> Signed-off-by: Bibo Mao <maobibo@loongson.cn>
+> ---
+>   hw/loongarch/virt.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/hw/loongarch/virt.c b/hw/loongarch/virt.c
+> index 29040422aa..8e80110b24 100644
+> --- a/hw/loongarch/virt.c
+> +++ b/hw/loongarch/virt.c
+> @@ -1390,6 +1390,7 @@ static void virt_class_init(ObjectClass *oc, void *data)
+>       mc->init = virt_init;
+>       mc->default_cpu_type = LOONGARCH_CPU_TYPE_NAME("la464");
+>       mc->default_ram_id = "loongarch.ram";
+> +    mc->desc = "QEMU LoongArch Virtual Machine";
+>       mc->max_cpus = LOONGARCH_MAX_CPUS;
+>       mc->is_default = 1;
+>       mc->default_kernel_irqchip_split = false;
+> 
+> base-commit: 4b7ea33074450bc6148c8e1545d78f179e64adb4
 
-[1] https://spdx.org/licenses/GPL-2.0.html
-[2] https://spdx.org/licenses/GPL-2.0-only.html
-
-Mechanical patch running:
-
-  $ sed -i -e s/GPL-2.0/GPL-2.0-only/ \
-    $(git grep -l 'SPDX-License-Identifier: GPL-2.0[ $]' \
-        | egrep -v '^linux-headers|^include/standard-headers')
-
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
----
- hw/m68k/bootinfo.h                    | 2 +-
- hw/net/igb_regs.h                     | 2 +-
- include/qemu/crc-ccitt.h              | 2 +-
- tests/tcg/loongarch64/system/regdef.h | 2 +-
- linux-user/alpha/syscall.tbl          | 2 +-
- linux-user/alpha/syscallhdr.sh        | 2 +-
- linux-user/arm/syscallhdr.sh          | 2 +-
- linux-user/hppa/syscall.tbl           | 2 +-
- linux-user/hppa/syscallhdr.sh         | 2 +-
- linux-user/i386/syscallhdr.sh         | 2 +-
- linux-user/m68k/syscall.tbl           | 2 +-
- linux-user/m68k/syscallhdr.sh         | 2 +-
- linux-user/microblaze/syscall.tbl     | 2 +-
- linux-user/microblaze/syscallhdr.sh   | 2 +-
- linux-user/mips/syscall_o32.tbl       | 2 +-
- linux-user/mips/syscallhdr.sh         | 2 +-
- linux-user/mips64/syscall_n32.tbl     | 2 +-
- linux-user/mips64/syscall_n64.tbl     | 2 +-
- linux-user/mips64/syscallhdr.sh       | 2 +-
- linux-user/ppc/syscall.tbl            | 2 +-
- linux-user/ppc/syscallhdr.sh          | 2 +-
- linux-user/s390x/syscall.tbl          | 2 +-
- linux-user/s390x/syscallhdr.sh        | 2 +-
- linux-user/sh4/syscall.tbl            | 2 +-
- linux-user/sh4/syscallhdr.sh          | 2 +-
- linux-user/sparc/syscall.tbl          | 2 +-
- linux-user/sparc/syscallhdr.sh        | 2 +-
- linux-user/x86_64/syscallhdr.sh       | 2 +-
- linux-user/xtensa/syscall.tbl         | 2 +-
- linux-user/xtensa/syscallhdr.sh       | 2 +-
- scripts/kernel-doc                    | 2 +-
- 31 files changed, 31 insertions(+), 31 deletions(-)
 
-diff --git a/hw/m68k/bootinfo.h b/hw/m68k/bootinfo.h
-index 0e6e3eea87..70c1dc0e8c 100644
---- a/hw/m68k/bootinfo.h
-+++ b/hw/m68k/bootinfo.h
-@@ -1,5 +1,5 @@
- /*
-- * SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+ * SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
-  *
-  * Bootinfo tags from linux bootinfo.h and bootinfo-mac.h:
-  * This is an easily parsable and extendable structure containing all
-diff --git a/hw/net/igb_regs.h b/hw/net/igb_regs.h
-index e5a47eab64..4dc4c31da2 100644
---- a/hw/net/igb_regs.h
-+++ b/hw/net/igb_regs.h
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: GPL-2.0 */
-+/* SPDX-License-Identifier: GPL-2.0-only */
- /*
-  * This is copied + edited from kernel header files in
-  * drivers/net/ethernet/intel/igb
-diff --git a/include/qemu/crc-ccitt.h b/include/qemu/crc-ccitt.h
-index 8918dafe07..ce28e29720 100644
---- a/include/qemu/crc-ccitt.h
-+++ b/include/qemu/crc-ccitt.h
-@@ -8,7 +8,7 @@
-  *
-  * From Linux kernel v5.10 include/linux/crc-ccitt.h
-  *
-- * SPDX-License-Identifier: GPL-2.0
-+ * SPDX-License-Identifier: GPL-2.0-only
-  */
- 
- #ifndef CRC_CCITT_H
-diff --git a/tests/tcg/loongarch64/system/regdef.h b/tests/tcg/loongarch64/system/regdef.h
-index faa09b2377..b586b4e86d 100644
---- a/tests/tcg/loongarch64/system/regdef.h
-+++ b/tests/tcg/loongarch64/system/regdef.h
-@@ -1,4 +1,4 @@
--/* SPDX-License-Identifier: GPL-2.0 */
-+/* SPDX-License-Identifier: GPL-2.0-only */
- /*
-  * Copyright (c) 2021 Loongson Technology Corporation Limited
-  */
-diff --git a/linux-user/alpha/syscall.tbl b/linux-user/alpha/syscall.tbl
-index 3000a2e8ee..3fa3ea436d 100644
---- a/linux-user/alpha/syscall.tbl
-+++ b/linux-user/alpha/syscall.tbl
-@@ -1,4 +1,4 @@
--# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
- #
- # system call numbers and entry vectors for alpha
- #
-diff --git a/linux-user/alpha/syscallhdr.sh b/linux-user/alpha/syscallhdr.sh
-index 55cafe6abf..6da0c957e2 100644
---- a/linux-user/alpha/syscallhdr.sh
-+++ b/linux-user/alpha/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/arm/syscallhdr.sh b/linux-user/arm/syscallhdr.sh
-index 4c952b2cfb..692fd6a76e 100644
---- a/linux-user/arm/syscallhdr.sh
-+++ b/linux-user/arm/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/hppa/syscall.tbl b/linux-user/hppa/syscall.tbl
-index aabc37f8ca..6361e97974 100644
---- a/linux-user/hppa/syscall.tbl
-+++ b/linux-user/hppa/syscall.tbl
-@@ -1,4 +1,4 @@
--# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
- #
- # system call numbers and entry vectors for parisc
- #
-diff --git a/linux-user/hppa/syscallhdr.sh b/linux-user/hppa/syscallhdr.sh
-index ac91a95762..bf1c1d4f30 100644
---- a/linux-user/hppa/syscallhdr.sh
-+++ b/linux-user/hppa/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/i386/syscallhdr.sh b/linux-user/i386/syscallhdr.sh
-index b2eca96db7..938a793d2a 100644
---- a/linux-user/i386/syscallhdr.sh
-+++ b/linux-user/i386/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/m68k/syscall.tbl b/linux-user/m68k/syscall.tbl
-index 79c2d24c89..98d90a3e53 100644
---- a/linux-user/m68k/syscall.tbl
-+++ b/linux-user/m68k/syscall.tbl
-@@ -1,4 +1,4 @@
--# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
- #
- # system call numbers and entry vectors for m68k
- #
-diff --git a/linux-user/m68k/syscallhdr.sh b/linux-user/m68k/syscallhdr.sh
-index eeb4d01d34..39b11dd05e 100644
---- a/linux-user/m68k/syscallhdr.sh
-+++ b/linux-user/m68k/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/microblaze/syscall.tbl b/linux-user/microblaze/syscall.tbl
-index b11395a20c..04bbd854b5 100644
---- a/linux-user/microblaze/syscall.tbl
-+++ b/linux-user/microblaze/syscall.tbl
-@@ -1,4 +1,4 @@
--# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
- #
- # system call numbers and entry vectors for microblaze
- #
-diff --git a/linux-user/microblaze/syscallhdr.sh b/linux-user/microblaze/syscallhdr.sh
-index f55dce8a62..b42b669154 100644
---- a/linux-user/microblaze/syscallhdr.sh
-+++ b/linux-user/microblaze/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/mips/syscall_o32.tbl b/linux-user/mips/syscall_o32.tbl
-index d560c467a8..9c3fe03bdc 100644
---- a/linux-user/mips/syscall_o32.tbl
-+++ b/linux-user/mips/syscall_o32.tbl
-@@ -1,4 +1,4 @@
--# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
- #
- # system call numbers and entry vectors for mips
- #
-diff --git a/linux-user/mips/syscallhdr.sh b/linux-user/mips/syscallhdr.sh
-index 761e3e47dd..cd7043ef5a 100644
---- a/linux-user/mips/syscallhdr.sh
-+++ b/linux-user/mips/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/mips64/syscall_n32.tbl b/linux-user/mips64/syscall_n32.tbl
-index 9220909526..dc228e6b25 100644
---- a/linux-user/mips64/syscall_n32.tbl
-+++ b/linux-user/mips64/syscall_n32.tbl
-@@ -1,4 +1,4 @@
--# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
- #
- # system call numbers and entry vectors for mips
- #
-diff --git a/linux-user/mips64/syscall_n64.tbl b/linux-user/mips64/syscall_n64.tbl
-index 9cd1c34f31..ddd59079ce 100644
---- a/linux-user/mips64/syscall_n64.tbl
-+++ b/linux-user/mips64/syscall_n64.tbl
-@@ -1,4 +1,4 @@
--# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
- #
- # system call numbers and entry vectors for mips
- #
-diff --git a/linux-user/mips64/syscallhdr.sh b/linux-user/mips64/syscallhdr.sh
-index ed5a45165a..a4339b2041 100644
---- a/linux-user/mips64/syscallhdr.sh
-+++ b/linux-user/mips64/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/ppc/syscall.tbl b/linux-user/ppc/syscall.tbl
-index 8f052ff405..51f4efb199 100644
---- a/linux-user/ppc/syscall.tbl
-+++ b/linux-user/ppc/syscall.tbl
-@@ -1,4 +1,4 @@
--# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
- #
- # system call numbers and entry vectors for powerpc
- #
-diff --git a/linux-user/ppc/syscallhdr.sh b/linux-user/ppc/syscallhdr.sh
-index 6c44e0eaad..6e8b93d673 100644
---- a/linux-user/ppc/syscallhdr.sh
-+++ b/linux-user/ppc/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/s390x/syscall.tbl b/linux-user/s390x/syscall.tbl
-index 0690263df1..f713903bcc 100644
---- a/linux-user/s390x/syscall.tbl
-+++ b/linux-user/s390x/syscall.tbl
-@@ -1,4 +1,4 @@
--# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
- #
- # System call table for s390
- #
-diff --git a/linux-user/s390x/syscallhdr.sh b/linux-user/s390x/syscallhdr.sh
-index 85a99c48de..ac22d422b0 100755
---- a/linux-user/s390x/syscallhdr.sh
-+++ b/linux-user/s390x/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/sh4/syscall.tbl b/linux-user/sh4/syscall.tbl
-index 0b91499ebd..d0f7cdb42c 100644
---- a/linux-user/sh4/syscall.tbl
-+++ b/linux-user/sh4/syscall.tbl
-@@ -1,4 +1,4 @@
--# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
- #
- # system call numbers and entry vectors for sh
- #
-diff --git a/linux-user/sh4/syscallhdr.sh b/linux-user/sh4/syscallhdr.sh
-index 080790556a..cb3a5de711 100644
---- a/linux-user/sh4/syscallhdr.sh
-+++ b/linux-user/sh4/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/sparc/syscall.tbl b/linux-user/sparc/syscall.tbl
-index e34cc30ef2..5eb04edc9a 100644
---- a/linux-user/sparc/syscall.tbl
-+++ b/linux-user/sparc/syscall.tbl
-@@ -1,4 +1,4 @@
--# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
- #
- # system call numbers and entry vectors for sparc
- #
-diff --git a/linux-user/sparc/syscallhdr.sh b/linux-user/sparc/syscallhdr.sh
-index 34a99dc832..938a02bb48 100644
---- a/linux-user/sparc/syscallhdr.sh
-+++ b/linux-user/sparc/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/x86_64/syscallhdr.sh b/linux-user/x86_64/syscallhdr.sh
-index 182be52a74..988256b6c6 100644
---- a/linux-user/x86_64/syscallhdr.sh
-+++ b/linux-user/x86_64/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/linux-user/xtensa/syscall.tbl b/linux-user/xtensa/syscall.tbl
-index fd2f30227d..2900f53c54 100644
---- a/linux-user/xtensa/syscall.tbl
-+++ b/linux-user/xtensa/syscall.tbl
-@@ -1,4 +1,4 @@
--# SPDX-License-Identifier: GPL-2.0 WITH Linux-syscall-note
-+# SPDX-License-Identifier: GPL-2.0-only WITH Linux-syscall-note
- #
- # system call numbers and entry vectors for xtensa
- #
-diff --git a/linux-user/xtensa/syscallhdr.sh b/linux-user/xtensa/syscallhdr.sh
-index eef0644c94..dc787fbbfe 100644
---- a/linux-user/xtensa/syscallhdr.sh
-+++ b/linux-user/xtensa/syscallhdr.sh
-@@ -1,5 +1,5 @@
- #!/bin/sh
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- in="$1"
- out="$2"
-diff --git a/scripts/kernel-doc b/scripts/kernel-doc
-index 240923d509..fec83f53ed 100755
---- a/scripts/kernel-doc
-+++ b/scripts/kernel-doc
-@@ -1,5 +1,5 @@
- #!/usr/bin/env perl
--# SPDX-License-Identifier: GPL-2.0
-+# SPDX-License-Identifier: GPL-2.0-only
- 
- use warnings;
- use strict;
--- 
-2.45.2
+CC:-ing qemu-stable for getting it fixed in the next stable release of 9.1, too.
 
 
