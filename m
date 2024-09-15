@@ -1,59 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sp6Ck-00036Q-Kt
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Sep 2024 09:19:18 -0400
+	id 1spqCU-0003mw-Sx
+	for mharc-qemu-trivial@gnu.org; Sun, 15 Sep 2024 10:26:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sp6Ca-0002ws-TW
- for qemu-trivial@nongnu.org; Fri, 13 Sep 2024 09:19:10 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1spoov-0006NL-VI; Sun, 15 Sep 2024 08:57:42 -0400
+Received: from zproxy4.enst.fr ([137.194.2.223])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sp6CY-00028Z-P8
- for qemu-trivial@nongnu.org; Fri, 13 Sep 2024 09:19:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1726233546;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=6Wq2gz2kJ2DpqJ0edWlOFNLeL/UQkcdpUB9mWh98cNQ=;
- b=D/tNLBgFN5HoMMS7wC+EqYdD3uf7/XO61hMys/uyVKiT8AeH5C5f86n3frneoxG9JnfB7t
- B+epDEMfxUndby/VkCZsKRxet8ekgFzU3FsIJ/fSIMBbhFkItmXGZUx2zx0qN1O/Skk3Tr
- bF8YD4ZGdAx4/q/h4Lvu9jRUh1NZE0s=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-332-gjZEIDtbMiyXcomOa7yPZQ-1; Fri,
- 13 Sep 2024 09:19:03 -0400
-X-MC-Unique: gjZEIDtbMiyXcomOa7yPZQ-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 37EEF193E8D1; Fri, 13 Sep 2024 13:19:02 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.193.15])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 18C0A19560AB; Fri, 13 Sep 2024 13:18:59 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
+ id 1spoot-0003c6-9d; Sun, 15 Sep 2024 08:57:41 -0400
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy4.enst.fr (Postfix) with ESMTP id AB901207A0;
+ Sun, 15 Sep 2024 14:57:33 +0200 (CEST)
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
+ id wXTK8bTEcPei; Sun, 15 Sep 2024 14:57:33 +0200 (CEST)
+Received: from localhost (localhost [IPv6:::1])
+ by zproxy4.enst.fr (Postfix) with ESMTP id 16B372074D;
+ Sun, 15 Sep 2024 14:57:33 +0200 (CEST)
+DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 16B372074D
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
+ s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1726405053;
+ bh=61IWChj066lC9mznhlQQqTTzjbiEacGVJFsxPyAEhhg=;
+ h=From:To:Date:Message-ID:MIME-Version;
+ b=I5Ao+IIOdcUvb9i44/9u34fcDHRZ7eLuNYu7oSEpRK2lQQHhxYKWkCy42jwsFFewJ
+ 3o2JnNOvVzC0TI14qncbYqTVkujOjtOAOwcIW+h9bV9SpAz1in4rPxpbbdbt47QFWl
+ J1s3LRm/23uRIRiKfX4OX2FL/4NuYlBApkmzbols=
+X-Virus-Scanned: amavis at enst.fr
+Received: from zproxy4.enst.fr ([IPv6:::1])
+ by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
+ id rOHjoqyqAgXH; Sun, 15 Sep 2024 14:57:32 +0200 (CEST)
+Received: from inesv-Inspiron-3501.enst.fr (unknown
+ [IPv6:2a04:8ec0:0:124::190c])
+ by zproxy4.enst.fr (Postfix) with ESMTPSA id 0059F2070E;
+ Sun, 15 Sep 2024 14:57:31 +0200 (CEST)
+From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, mzamazal@redhat.com,
- "Michael S . Tsirkin" <mst@redhat.com>, qemu-arm@nongnu.org
-Subject: [PATCH] hw/virtio/Kconfig: Include vhost-user-scmi only on arm targets
-Date: Fri, 13 Sep 2024 15:18:58 +0200
-Message-ID: <20240913131858.418407-1-thuth@redhat.com>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>,
+ =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
+Subject: [PATCH] hw/display: Fix mirrored output in dm163
+Date: Sun, 15 Sep 2024 14:57:00 +0200
+Message-ID: <20240915125725.33099-1-ines.varhol@telecom-paris.fr>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=137.194.2.223;
+ envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy4.enst.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.147,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sun, 15 Sep 2024 10:26:05 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,27 +70,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Sep 2024 13:19:10 -0000
+X-List-Received-Date: Sun, 15 Sep 2024 12:57:45 -0000
 
-The System Control and Management Interface is specific to arm
-machines, so don't include this device in non-arm targets.
+DM163 is an emulated 8x8 LED matrix. This commit flips the image
+horizontally so it's rendered the same way as on the hardware.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
 ---
- hw/virtio/Kconfig | 2 +-
+ hw/display/dm163.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/virtio/Kconfig b/hw/virtio/Kconfig
-index aa63ff7fd4..bea5be4d4a 100644
---- a/hw/virtio/Kconfig
-+++ b/hw/virtio/Kconfig
-@@ -109,4 +109,4 @@ config VHOST_USER_SND
- config VHOST_USER_SCMI
-     bool
-     default y
--    depends on VIRTIO && VHOST_USER
-+    depends on VIRTIO && VHOST_USER && ARM
--- 
-2.46.0
+diff --git a/hw/display/dm163.c b/hw/display/dm163.c
+index f92aee371d..75a91f62bd 100644
+--- a/hw/display/dm163.c
++++ b/hw/display/dm163.c
+@@ -271,7 +271,7 @@ static uint32_t *update_display_of_row(DM163State *s,=
+ uint32_t *dest,
+                                        unsigned row)
+ {
+     for (unsigned _ =3D 0; _ < LED_SQUARE_SIZE; _++) {
+-        for (int x =3D 0; x < RGB_MATRIX_NUM_COLS * LED_SQUARE_SIZE; x++=
+) {
++        for (int x =3D RGB_MATRIX_NUM_COLS * LED_SQUARE_SIZE - 1; x >=3D=
+ 0; x--) {
+             /* UI layer guarantees that there's 32 bits per pixel (Mar 2=
+024) */
+             *dest++ =3D s->buffer[s->buffer_idx_of_row[row]][x / LED_SQU=
+ARE_SIZE];
+         }
+--=20
+2.45.2
 
 
