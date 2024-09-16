@@ -1,64 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1spqCU-0003mw-Sx
-	for mharc-qemu-trivial@gnu.org; Sun, 15 Sep 2024 10:26:06 -0400
+	id 1sq9iK-0002YI-TU
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Sep 2024 07:16:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1spoov-0006NL-VI; Sun, 15 Sep 2024 08:57:42 -0400
-Received: from zproxy4.enst.fr ([137.194.2.223])
+ (Exim 4.90_1) (envelope-from <mzamazal@redhat.com>)
+ id 1sq9iI-0002Vq-Sj
+ for qemu-trivial@nongnu.org; Mon, 16 Sep 2024 07:16:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ines.varhol@telecom-paris.fr>)
- id 1spoot-0003c6-9d; Sun, 15 Sep 2024 08:57:41 -0400
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id AB901207A0;
- Sun, 15 Sep 2024 14:57:33 +0200 (CEST)
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10032) with ESMTP
- id wXTK8bTEcPei; Sun, 15 Sep 2024 14:57:33 +0200 (CEST)
-Received: from localhost (localhost [IPv6:::1])
- by zproxy4.enst.fr (Postfix) with ESMTP id 16B372074D;
- Sun, 15 Sep 2024 14:57:33 +0200 (CEST)
-DKIM-Filter: OpenDKIM Filter v2.10.3 zproxy4.enst.fr 16B372074D
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=telecom-paris.fr;
- s=A35C7578-1106-11E5-A17F-C303FDDA8F2E; t=1726405053;
- bh=61IWChj066lC9mznhlQQqTTzjbiEacGVJFsxPyAEhhg=;
- h=From:To:Date:Message-ID:MIME-Version;
- b=I5Ao+IIOdcUvb9i44/9u34fcDHRZ7eLuNYu7oSEpRK2lQQHhxYKWkCy42jwsFFewJ
- 3o2JnNOvVzC0TI14qncbYqTVkujOjtOAOwcIW+h9bV9SpAz1in4rPxpbbdbt47QFWl
- J1s3LRm/23uRIRiKfX4OX2FL/4NuYlBApkmzbols=
-X-Virus-Scanned: amavis at enst.fr
-Received: from zproxy4.enst.fr ([IPv6:::1])
- by localhost (zproxy4.enst.fr [IPv6:::1]) (amavis, port 10026) with ESMTP
- id rOHjoqyqAgXH; Sun, 15 Sep 2024 14:57:32 +0200 (CEST)
-Received: from inesv-Inspiron-3501.enst.fr (unknown
- [IPv6:2a04:8ec0:0:124::190c])
- by zproxy4.enst.fr (Postfix) with ESMTPSA id 0059F2070E;
- Sun, 15 Sep 2024 14:57:31 +0200 (CEST)
-From: =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Laurent Vivier <laurent@vivier.eu>,
- Peter Maydell <peter.maydell@linaro.org>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>,
- =?UTF-8?q?In=C3=A8s=20Varhol?= <ines.varhol@telecom-paris.fr>
-Subject: [PATCH] hw/display: Fix mirrored output in dm163
-Date: Sun, 15 Sep 2024 14:57:00 +0200
-Message-ID: <20240915125725.33099-1-ines.varhol@telecom-paris.fr>
-X-Mailer: git-send-email 2.45.2
+ (Exim 4.90_1) (envelope-from <mzamazal@redhat.com>)
+ id 1sq9iH-0002Qv-3h
+ for qemu-trivial@nongnu.org; Mon, 16 Sep 2024 07:16:14 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1726485372;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=kyi0gXmnoxT6hg320Z+exO/+kWwl0GnTdJC8MFADhwU=;
+ b=Gt+bwboydbLYD+2kf8BV5cNU4aNcJewODX22RqQQoAP1FxGg9ZsofbEunJGOZ2/o6qq5Na
+ XHpDUVWZDZBMkXBB+rPsVuYoljOEVS1xrORxaoRPYIJNJVj4OnMzwOa9MLoNoGbHQymf0H
+ VvR8wbZcsrDMRDj1JILffHz2TXrls8Q=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-333-T0oklOxVOWmKbtcXyy38sg-1; Mon, 16 Sep 2024 07:15:02 -0400
+X-MC-Unique: T0oklOxVOWmKbtcXyy38sg-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-42e611963c2so5942095e9.1
+ for <qemu-trivial@nongnu.org>; Mon, 16 Sep 2024 04:15:01 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1726485301; x=1727090101;
+ h=mime-version:user-agent:message-id:date:references:in-reply-to
+ :subject:cc:to:from:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=kyi0gXmnoxT6hg320Z+exO/+kWwl0GnTdJC8MFADhwU=;
+ b=sgV7aUy6X/oJ7t7sZQe0GGxxfKk9Dgx8V80dLTOXTnifolPiLNVlbev3E5o8/1BJd8
+ MNoigO7resh+xq9MMjWvThz5dnjjUseITccTYe8eO5DfEamumblkByfqbUFy7TPBZAc7
+ AsrfF8fkX5gUaam6ohfOf5tzLgyFjP4swD1IYpDgR+a6mhcSSjZ7rFQxe2syUGrZ0B/+
+ tUecjYs3MpM8ZeKoXnuaL6IW8r7zzQl+/PK0dBTiWmmRCvPX2roZ5aOaRpizqrLDr96R
+ i9Hl7TbJXiOX+pVh7zUxkSH9s4Nbojeg3DA2A4DyiEJOIAsCclb2x2uzP7Be6ADpXChd
+ dNhQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXwoy6kiF5KZf43u65/i97fWwdQr4WYmN0RzMGbqwcK3m0yPOYjMbiP2YQ9vsbLpoWx3dlvuL8NSzteMDk=@nongnu.org
+X-Gm-Message-State: AOJu0Yx78NMdf2xAJXgbY6TAHVmp2mmsYzr/nYT/D6MNNQDKBvWzYcvx
+ BRELU1GRHTSCPOWng9U6dcxlv+P5tovv4MfFAb3ziqCHDjB2TqvDW91Hfd8SIpf3LEhYsygv4xE
+ qZOB9feFwbmPbctmcButD0FGmCgCtuBAgS3gS4kxD5eURElLSrQq4sz8=
+X-Received: by 2002:a05:600c:3b0f:b0:42c:cd7c:a196 with SMTP id
+ 5b1f17b1804b1-42cdb54cf19mr115742025e9.17.1726485301025; 
+ Mon, 16 Sep 2024 04:15:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEkL030V5o6h8N0e4K/E0JIlCgdrENjj1iL033Va/Be4tYEFuSb/R0heWs45zlDoixLU3F8RQ==
+X-Received: by 2002:a05:600c:3b0f:b0:42c:cd7c:a196 with SMTP id
+ 5b1f17b1804b1-42cdb54cf19mr115741755e9.17.1726485300553; 
+ Mon, 16 Sep 2024 04:15:00 -0700 (PDT)
+Received: from nuthatch (ip-77-48-47-2.net.vodafone.cz. [77.48.47.2])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-42e62989024sm26841555e9.36.2024.09.16.04.14.59
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 16 Sep 2024 04:15:00 -0700 (PDT)
+From: Milan Zamazal <mzamazal@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,  "Michael S . Tsirkin"
+ <mst@redhat.com>,  qemu-arm@nongnu.org
+Subject: Re: [PATCH] hw/virtio/Kconfig: Include vhost-user-scmi only on arm
+ targets
+In-Reply-To: <20240913131858.418407-1-thuth@redhat.com> (Thomas Huth's message
+ of "Fri, 13 Sep 2024 15:18:58 +0200")
+References: <20240913131858.418407-1-thuth@redhat.com>
+Date: Mon, 16 Sep 2024 13:14:59 +0200
+Message-ID: <87cyl3alzg.fsf@redhat.com>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=137.194.2.223;
- envelope-from=ines.varhol@telecom-paris.fr; helo=zproxy4.enst.fr
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=mzamazal@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 15 Sep 2024 10:26:05 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -70,35 +94,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 15 Sep 2024 12:57:45 -0000
+X-List-Received-Date: Mon, 16 Sep 2024 11:16:15 -0000
 
-DM163 is an emulated 8x8 LED matrix. This commit flips the image
-horizontally so it's rendered the same way as on the hardware.
+Thomas Huth <thuth@redhat.com> writes:
 
-Signed-off-by: In=C3=A8s Varhol <ines.varhol@telecom-paris.fr>
----
- hw/display/dm163.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> The System Control and Management Interface is specific to arm
+> machines, so don't include this device in non-arm targets.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-diff --git a/hw/display/dm163.c b/hw/display/dm163.c
-index f92aee371d..75a91f62bd 100644
---- a/hw/display/dm163.c
-+++ b/hw/display/dm163.c
-@@ -271,7 +271,7 @@ static uint32_t *update_display_of_row(DM163State *s,=
- uint32_t *dest,
-                                        unsigned row)
- {
-     for (unsigned _ =3D 0; _ < LED_SQUARE_SIZE; _++) {
--        for (int x =3D 0; x < RGB_MATRIX_NUM_COLS * LED_SQUARE_SIZE; x++=
-) {
-+        for (int x =3D RGB_MATRIX_NUM_COLS * LED_SQUARE_SIZE - 1; x >=3D=
- 0; x--) {
-             /* UI layer guarantees that there's 32 bits per pixel (Mar 2=
-024) */
-             *dest++ =3D s->buffer[s->buffer_idx_of_row[row]][x / LED_SQU=
-ARE_SIZE];
-         }
---=20
-2.45.2
+Reviewed-by: Milan Zamazal <mzamazal@redhat.com>
+
+Thank you,
+Milan
+
+> ---
+>  hw/virtio/Kconfig | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/hw/virtio/Kconfig b/hw/virtio/Kconfig
+> index aa63ff7fd4..bea5be4d4a 100644
+> --- a/hw/virtio/Kconfig
+> +++ b/hw/virtio/Kconfig
+> @@ -109,4 +109,4 @@ config VHOST_USER_SND
+>  config VHOST_USER_SCMI
+>      bool
+>      default y
+> -    depends on VIRTIO && VHOST_USER
+> +    depends on VIRTIO && VHOST_USER && ARM
 
 
