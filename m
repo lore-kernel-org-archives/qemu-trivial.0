@@ -1,77 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sqdEx-0001xn-7N
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Sep 2024 14:47:55 -0400
+	id 1sqduc-0003zy-Lj
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Sep 2024 15:30:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_mathbern@quicinc.com>)
- id 1sqdEv-0001wj-JW; Tue, 17 Sep 2024 14:47:53 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sqduP-0003ZC-N6
+ for qemu-trivial@nongnu.org; Tue, 17 Sep 2024 15:30:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <quic_mathbern@quicinc.com>)
- id 1sqdEt-0006pc-K6; Tue, 17 Sep 2024 14:47:53 -0400
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 48HGHHDY003273;
- Tue, 17 Sep 2024 18:47:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
- cc:content-transfer-encoding:content-type:date:from:message-id
- :mime-version:subject:to; s=qcppdkim1; bh=gvs7LqF+xtFGfN6thtTWry
- siI/92KfpTLHMHjZtddRg=; b=FMb02qzJ/8mmZtWJjoSjvX4B+Mj6M5tujdGDah
- jheK04Qkk39N0SxErgq2GptOkudDeMDMgPC11EKzf6c8A+RC8SXEUW7Qu2Wz6Qsj
- yEYp636/IOSF6gG2pr77lyFjmgCtmfhNHAhnz5bMo53GTbBngef5spNydjSl38+w
- m7c7jNtmKyBSzMPJUiHfNh28kXE8pE5vHekWFPZCOyNqrlBG8RmOp8o2LCdENdBs
- 2po4gGaWZACqXro9UUPC+dCAEA/iISKL/jaRKUCI7w4MFuLCYFny88nzp+q7LIOW
- z1B/buJC9pLbYwkyW8uflvM23tIa4S6MnxzNcpWVQqQMcqJw==
-Received: from nalasppmta01.qualcomm.com (Global_NAT1.qualcomm.com
- [129.46.96.20])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 41n4jhqtve-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 17 Sep 2024 18:47:40 +0000 (GMT)
-Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com
- [10.47.209.196])
- by NALASPPMTA01.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 48HIlc6q009775
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 17 Sep 2024 18:47:38 GMT
-Received: from hu-mathbern-lv.qualcomm.com (10.49.16.6) by
- nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
- (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
- 15.2.1544.9; Tue, 17 Sep 2024 11:47:38 -0700
-From: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
-To: <qemu-devel@nongnu.org>
-CC: <balaton@eik.bme.hu>, <mst@redhat.com>, <bcain@quicinc.com>,
- <qemu-trivial@nongnu.org>
-Subject: [PATCH] hw: fix memory leak in IRQState allocation
-Date: Tue, 17 Sep 2024 15:47:28 -0300
-Message-ID: <6f0b480e1f0fbeb9550d447dcbeda920f1869d2d.1726598846.git.quic_mathbern@quicinc.com>
-X-Mailer: git-send-email 2.37.2
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sqduN-0006ns-By
+ for qemu-trivial@nongnu.org; Tue, 17 Sep 2024 15:30:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1726601440;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=wT45EcmUFavWIsSLHZ4amtxidsrBg1JvFHgCMTmHcdE=;
+ b=N7IMQyeGoZq2nwFs0exESNTE+4m8IUNA6IY6Di+ZuJkS/4epO3qB31JHdIU1uvFSCmzwUr
+ qRE1vjvkk4euzqsh4FGomIu4nErQArftuHntYd/0yU7pwJv+YUrwL2gG696o7ktBxwdJgx
+ GajZZp4tEAbLxpH107f0fWWAzdo9ZJU=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-121-P5rtHR4mOLS3mCbfJI6oRA-1; Tue,
+ 17 Sep 2024 15:30:35 -0400
+X-MC-Unique: P5rtHR4mOLS3mCbfJI6oRA-1
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BC05119560AE; Tue, 17 Sep 2024 19:30:33 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.192.54])
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id ACB4F19560AA; Tue, 17 Sep 2024 19:30:30 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>
+Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org, Jia Liu <proljc@gmail.com>
+Subject: [PATCH] tests/qemu-iotests/testenv: Use the "virt" machine for or1k
+Date: Tue, 17 Sep 2024 21:30:28 +0200
+Message-ID: <20240917193028.320400-1-thuth@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.49.16.6]
-X-ClientProxiedBy: nalasex01a.na.qualcomm.com (10.47.209.196) To
- nalasex01a.na.qualcomm.com (10.47.209.196)
-X-QCInternal: smtphost
-X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
- signatures=585085
-X-Proofpoint-ORIG-GUID: 09_5WzyaVgyuJS2giFnFeESq81pqY2EO
-X-Proofpoint-GUID: 09_5WzyaVgyuJS2giFnFeESq81pqY2EO
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
- definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- clxscore=1011 phishscore=0 impostorscore=0 bulkscore=0 adultscore=0
- suspectscore=0 lowpriorityscore=0 malwarescore=0 spamscore=0 mlxscore=0
- mlxlogscore=884 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2408220000 definitions=main-2409170134
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=quic_mathbern@quicinc.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,61 +65,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Sep 2024 18:47:54 -0000
+X-List-Received-Date: Tue, 17 Sep 2024 19:30:53 -0000
 
-At e72a7f65c1 (hw: Move declaration of IRQState to header and add init
-function, 2024-06-29), we've changed qemu_allocate_irq() to use a
-combination of g_new() + object_initialize() instead of
-IRQ(object_new()). The latter sets obj->free, so that that the memory is
-properly cleaned when the object is finalized, but the former doesn't.
+When compiling QEMU just with "--target-list=or1k-softmmu", there
+are 8 iotests failing that try to use PCI devices - but the default
+or1k machine does not have a PCI bus. The "virt" machine is better
+suited for running the iotests than the or1k default machine since
+it provides PCI and thus e.g. support for virtio-blk and virtio-scsi,
+too. With this change, there are no failing iotests anymore when
+using the qemu-system-or1k binary for running the tests.
 
-Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/core/irq.c | 19 +++++++++++--------
- 1 file changed, 11 insertions(+), 8 deletions(-)
+ tests/qemu-iotests/testenv.py | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/core/irq.c b/hw/core/irq.c
-index db95ffc18f..7d80de1ca6 100644
---- a/hw/core/irq.c
-+++ b/hw/core/irq.c
-@@ -34,13 +34,19 @@ void qemu_set_irq(qemu_irq irq, int level)
-     irq->handler(irq->opaque, irq->n, level);
- }
- 
-+static void qemu_init_irq_fields(IRQState *irq, qemu_irq_handler handler,
-+                                 void *opaque, int n)
-+{
-+    irq->handler = handler;
-+    irq->opaque = opaque;
-+    irq->n = n;
-+}
-+
- void qemu_init_irq(IRQState *irq, qemu_irq_handler handler, void *opaque,
-                    int n)
- {
-     object_initialize(irq, sizeof(*irq), TYPE_IRQ);
--    irq->handler = handler;
--    irq->opaque = opaque;
--    irq->n = n;
-+    qemu_init_irq_fields(irq, handler, opaque, n);
- }
- 
- qemu_irq *qemu_extend_irqs(qemu_irq *old, int n_old, qemu_irq_handler handler,
-@@ -66,11 +72,8 @@ qemu_irq *qemu_allocate_irqs(qemu_irq_handler handler, void *opaque, int n)
- 
- qemu_irq qemu_allocate_irq(qemu_irq_handler handler, void *opaque, int n)
- {
--    IRQState *irq;
--
--    irq = g_new(IRQState, 1);
--    qemu_init_irq(irq, handler, opaque, n);
--
-+    IRQState *irq = IRQ(object_new(TYPE_IRQ));
-+    qemu_init_irq_fields(irq, handler, opaque, n);
-     return irq;
- }
- 
+diff --git a/tests/qemu-iotests/testenv.py b/tests/qemu-iotests/testenv.py
+index c8848f2ec2..0b32eec119 100644
+--- a/tests/qemu-iotests/testenv.py
++++ b/tests/qemu-iotests/testenv.py
+@@ -240,6 +240,7 @@ def __init__(self, source_dir: str, build_dir: str,
+             ('aarch64', 'virt'),
+             ('avr', 'mega2560'),
+             ('m68k', 'virt'),
++            ('or1k', 'virt'),
+             ('riscv32', 'virt'),
+             ('riscv64', 'virt'),
+             ('rx', 'gdbsim-r5f562n8'),
 -- 
-2.37.2
+2.46.0
 
 
