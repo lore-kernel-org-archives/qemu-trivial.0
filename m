@@ -1,62 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sqe7O-0001ZK-Fn
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Sep 2024 15:44:10 -0400
+	id 1sqhSF-0007dn-DV
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Sep 2024 19:17:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sqe7N-0001Vn-Bn
- for qemu-trivial@nongnu.org; Tue, 17 Sep 2024 15:44:09 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1sqhSD-0007cP-9J; Tue, 17 Sep 2024 19:17:53 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sqe7K-0008Ph-MH
- for qemu-trivial@nongnu.org; Tue, 17 Sep 2024 15:44:09 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1726602245;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=/vTFKYrVWtbPUtrVzAHaOzaFyWQq6yLE5JaksArqqI4=;
- b=exqKas7f2mJYsyPQSCk3oDddUokxrfczV/4w7jF9vJQT/x2H6qx6nlwAq0WAoGc2Iupxzi
- 9MGKKWGWMw3/Bub84MIkxtYwrFECJ/P3Q9DPZuCzMucQ6uthqarroqU/j9wxnuFENecMsS
- Jy7+ZyEPwEO0SbRkW1cejae2gyeiRcY=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-675-HTb3XZ8KMzCG8oWD3gpiyw-1; Tue,
- 17 Sep 2024 15:44:04 -0400
-X-MC-Unique: HTb3XZ8KMzCG8oWD3gpiyw-1
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 925C71955D57; Tue, 17 Sep 2024 19:44:02 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.54])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C030830001A1; Tue, 17 Sep 2024 19:43:57 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>
-Subject: [PATCH] tests/qemu-iotests/testenv: Use the "r2d" machine for
- sh4/sh4eb
-Date: Tue, 17 Sep 2024 21:43:50 +0200
-Message-ID: <20240917194350.429971-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1sqhSB-0007ul-Cw; Tue, 17 Sep 2024 19:17:53 -0400
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 0C4954E600F;
+ Wed, 18 Sep 2024 01:17:46 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id 83MRX-ehTNyj; Wed, 18 Sep 2024 01:17:44 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 0CC8D4E6000; Wed, 18 Sep 2024 01:17:44 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 09233746F60;
+ Wed, 18 Sep 2024 01:17:44 +0200 (CEST)
+Date: Wed, 18 Sep 2024 01:17:44 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+cc: qemu-devel@nongnu.org, mst@redhat.com, bcain@quicinc.com, 
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] hw: fix memory leak in IRQState allocation
+In-Reply-To: <6f0b480e1f0fbeb9550d447dcbeda920f1869d2d.1726598846.git.quic_mathbern@quicinc.com>
+Message-ID: <bd9bb785-8166-0cb0-b61a-80a139a7e1b1@eik.bme.hu>
+References: <6f0b480e1f0fbeb9550d447dcbeda920f1869d2d.1726598846.git.quic_mathbern@quicinc.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -69,32 +51,70 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Sep 2024 19:44:09 -0000
+X-List-Received-Date: Tue, 17 Sep 2024 23:17:53 -0000
 
-Commit 0ea0538fae516f9b4 removed the default machine of the sh4
-binaries, so a lot of iotests are failing now without such a default
-machine. Teach the iotest harness to use the "r2d" machine instead
-to fix this problem.
+On Tue, 17 Sep 2024, Matheus Tavares Bernardino wrote:
+> At e72a7f65c1 (hw: Move declaration of IRQState to header and add init
+> function, 2024-06-29), we've changed qemu_allocate_irq() to use a
+> combination of g_new() + object_initialize() instead of
+> IRQ(object_new()). The latter sets obj->free, so that that the memory is
+> properly cleaned when the object is finalized, but the former doesn't.
+>
+> Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/qemu-iotests/testenv.py | 2 ++
- 1 file changed, 2 insertions(+)
+Sorry for breaking it, I did not know about that feature of object_new. 
+Thanks for fixing it.
 
-diff --git a/tests/qemu-iotests/testenv.py b/tests/qemu-iotests/testenv.py
-index 0b32eec119..6326e46b7b 100644
---- a/tests/qemu-iotests/testenv.py
-+++ b/tests/qemu-iotests/testenv.py
-@@ -244,6 +244,8 @@ def __init__(self, source_dir: str, build_dir: str,
-             ('riscv32', 'virt'),
-             ('riscv64', 'virt'),
-             ('rx', 'gdbsim-r5f562n8'),
-+            ('sh4', 'r2d'),
-+            ('sh4eb', 'r2d'),
-             ('tricore', 'tricore_testboard')
-         )
-         for suffix, machine in machine_map:
--- 
-2.46.0
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+Fixes: e72a7f65c1 (hw: Move declaration of IRQState to header and add init function)
 
+Regards,
+BALATON Zoltan
+
+> ---
+> hw/core/irq.c | 19 +++++++++++--------
+> 1 file changed, 11 insertions(+), 8 deletions(-)
+>
+> diff --git a/hw/core/irq.c b/hw/core/irq.c
+> index db95ffc18f..7d80de1ca6 100644
+> --- a/hw/core/irq.c
+> +++ b/hw/core/irq.c
+> @@ -34,13 +34,19 @@ void qemu_set_irq(qemu_irq irq, int level)
+>     irq->handler(irq->opaque, irq->n, level);
+> }
+>
+> +static void qemu_init_irq_fields(IRQState *irq, qemu_irq_handler handler,
+> +                                 void *opaque, int n)
+> +{
+> +    irq->handler = handler;
+> +    irq->opaque = opaque;
+> +    irq->n = n;
+> +}
+> +
+> void qemu_init_irq(IRQState *irq, qemu_irq_handler handler, void *opaque,
+>                    int n)
+> {
+>     object_initialize(irq, sizeof(*irq), TYPE_IRQ);
+> -    irq->handler = handler;
+> -    irq->opaque = opaque;
+> -    irq->n = n;
+> +    qemu_init_irq_fields(irq, handler, opaque, n);
+> }
+>
+> qemu_irq *qemu_extend_irqs(qemu_irq *old, int n_old, qemu_irq_handler handler,
+> @@ -66,11 +72,8 @@ qemu_irq *qemu_allocate_irqs(qemu_irq_handler handler, void *opaque, int n)
+>
+> qemu_irq qemu_allocate_irq(qemu_irq_handler handler, void *opaque, int n)
+> {
+> -    IRQState *irq;
+> -
+> -    irq = g_new(IRQState, 1);
+> -    qemu_init_irq(irq, handler, opaque, n);
+> -
+> +    IRQState *irq = IRQ(object_new(TYPE_IRQ));
+> +    qemu_init_irq_fields(irq, handler, opaque, n);
+>     return irq;
+> }
+>
+>
 
