@@ -1,45 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sqUuT-00061K-QI
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Sep 2024 05:54:13 -0400
+	id 1sqVMo-000821-3f
+	for mharc-qemu-trivial@gnu.org; Tue, 17 Sep 2024 06:23:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sqUuR-0005zt-BH; Tue, 17 Sep 2024 05:54:11 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sqUuP-0000kK-Hv; Tue, 17 Sep 2024 05:54:10 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 9D0718FA06;
- Tue, 17 Sep 2024 12:53:47 +0300 (MSK)
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 85B2E13DDFD;
- Tue, 17 Sep 2024 12:54:02 +0300 (MSK)
-Message-ID: <9732ed11-ed5f-4b2a-99bb-7de629148d95@tls.msk.ru>
-Date: Tue, 17 Sep 2024 12:54:02 +0300
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sqVMm-0007z6-GG
+ for qemu-trivial@nongnu.org; Tue, 17 Sep 2024 06:23:28 -0400
+Received: from mail-lf1-x132.google.com ([2a00:1450:4864:20::132])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1sqVMk-0004jp-NY
+ for qemu-trivial@nongnu.org; Tue, 17 Sep 2024 06:23:28 -0400
+Received: by mail-lf1-x132.google.com with SMTP id
+ 2adb3069b0e04-53653ff0251so4740376e87.0
+ for <qemu-trivial@nongnu.org>; Tue, 17 Sep 2024 03:23:26 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1726568604; x=1727173404; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=1VepKD5AHEkXWgFp2Tf2s1/T3c5CzElQVbAc95xRRNw=;
+ b=C5FU50y2ymLpfrJmFU+0gW2bL6pdCP1XAtGJN9Mvn8PAnQSnlX8QWgKHx0PRAF9Ilf
+ RDsh7HycKNsV0akGJTA2acJXBQ3qd8gqy9su54yedNYuRKyze+4wsTdWkHyw6s+vedx+
+ Q1R5GwpsvQ5j5XU2ylJo78KpalGSQre7v167nAN1D8bDSONFiU2VoujJ1UZFC9IOvLRz
+ 34uzL+hvm7WsGgSb5xfl/d8DeJL6BBorm5Y5E3SW5CwfnqdfbvAKl/HyB8jvVtx2W+AJ
+ LUZxADNMS5IYsIjc5H9PiFent317rIELdcAcxUHqLAUuQrxtm9TZA+z3w8lioMIZ5tJX
+ fgOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1726568604; x=1727173404;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=1VepKD5AHEkXWgFp2Tf2s1/T3c5CzElQVbAc95xRRNw=;
+ b=DywDbmpWw6/aGprwQb/tNaCXQCUjaNoIT5UAYLsD7DmsQD6bgJQmcMAMa3ToocUN8d
+ qYKtkpJQbr5lGKBh/bXVX6v1c9RM7TTljv8gzOV94QY01oysai7WQB1FCcJd3QqYB2oi
+ ONmeOoMSxKMaxRfhU1WDgkLPCyj8SAHS9jWV0K5tmLxc/G939KHbCgzxs0ysPVVDc1Nd
+ 01GClRPhaQtR26bvlb13WO/7nHpEi8zAVHkJadQPnFl//CAOh0i5CAzzmCK7WNZfmY+N
+ Xb68mYKhs4ehWPz5ESjhRaB/f/wt6IU8ubplHBrWBWhSfnAGLUS8OiuOxXDubEzWxPDl
+ WghA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXTgWiw1JjPYTGxUfHahGEsUxjLy4z9CmqzYmhZL3fwNWKnsB4QB53qGLoGgaQGzgP0sESAExjsNYdexqs=@nongnu.org
+X-Gm-Message-State: AOJu0YzdvF2NXN1lJWVnhodQnOp0vZCGhF0bHpOBK45bcX8otwhzL9On
+ du+j4mPFgZxWTPuVx6LIcF8POOs7MlIixFnu3CIffqdIBRLwsHtLD6GsTpsujocdmPqLTABykeK
+ 56EMOtJT4plbVMR8FVlFoz5Wz+/tS7ErkNu9P7Q==
+X-Google-Smtp-Source: AGHT+IHjggBhB+TylOGLSEpqKrqz4C/ZRQ+dKVd5pOXk8O2raD6q8eQBMKsniGHjmAPKNOzBRnnIfky7/mHuW//KlQY=
+X-Received: by 2002:a05:6512:3ca5:b0:535:6cde:5c4d with SMTP id
+ 2adb3069b0e04-5367feb9b81mr8731694e87.3.1726568604429; Tue, 17 Sep 2024
+ 03:23:24 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/display: Fix mirrored output in dm163
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: =?UTF-8?Q?In=C3=A8s_Varhol?= <ines.varhol@telecom-paris.fr>,
- qemu-devel@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, Laurent Vivier <laurent@vivier.eu>,
- Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-trivial@nongnu.org
 References: <20240915125725.33099-1-ines.varhol@telecom-paris.fr>
  <10b98c97-ff2a-430f-ab76-66cc5948b0f8@tls.msk.ru>
  <CAFEAcA_xsqUbCcgstwJWmF2uUWJGskZ04r6dNkiNpQPYbrMg2w@mail.gmail.com>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <CAFEAcA_xsqUbCcgstwJWmF2uUWJGskZ04r6dNkiNpQPYbrMg2w@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ <9732ed11-ed5f-4b2a-99bb-7de629148d95@tls.msk.ru>
+In-Reply-To: <9732ed11-ed5f-4b2a-99bb-7de629148d95@tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 17 Sep 2024 11:23:13 +0100
+Message-ID: <CAFEAcA_wjfCyxCtNn_UuEU2q6pGgzWUepxiEb3Mnebu=0cvNZA@mail.gmail.com>
+Subject: Re: [PATCH] hw/display: Fix mirrored output in dm163
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: =?UTF-8?B?SW7DqHMgVmFyaG9s?= <ines.varhol@telecom-paris.fr>, 
+ qemu-devel@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>, 
+ Laurent Vivier <laurent@vivier.eu>,
+ Arnaud Minier <arnaud.minier@telecom-paris.fr>, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x132.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -52,22 +84,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Sep 2024 09:54:12 -0000
+X-List-Received-Date: Tue, 17 Sep 2024 10:23:28 -0000
 
-On 17.09.2024 12:39, Peter Maydell wrote:
+On Tue, 17 Sept 2024 at 10:54, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>
+> On 17.09.2024 12:39, Peter Maydell wrote:
+>
+> >> This is an interesting device, I wonder if it is used by anyone?
+> >
+> > The device is used by the Arm b-l475e-iot01a board.
+>
+> I mean if it is actually used in practice, - there's just 1 commit
+> for this file - it's addition in Apr this year, and that's all.
+> If the image is inverted, I wonder how it worked and no one
+> noticed :)
 
->> This is an interesting device, I wonder if it is used by anyone?
-> 
-> The device is used by the Arm b-l475e-iot01a board.
+This is a fairly new board, and the authors are gradually
+adding its devices.
 
-I mean if it is actually used in practice, - there's just 1 commit
-for this file - it's addition in Apr this year, and that's all.
-If the image is inverted, I wonder how it worked and no one
-noticed :)
-
-There's no problem with that, anyway.
-
-Thanks,
-
-/mjt
+-- PMM
 
