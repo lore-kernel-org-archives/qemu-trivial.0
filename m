@@ -1,69 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1squCs-0003Mh-7a
-	for mharc-qemu-trivial@gnu.org; Wed, 18 Sep 2024 08:54:54 -0400
+	id 1sqwqR-0003bP-KJ
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Sep 2024 11:43:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1squCl-0003L3-EA
- for qemu-trivial@nongnu.org; Wed, 18 Sep 2024 08:54:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <quic_mathbern@quicinc.com>)
+ id 1sqwqM-0003Zr-Pt; Wed, 18 Sep 2024 11:43:50 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1squCg-0002ob-Ke
- for qemu-trivial@nongnu.org; Wed, 18 Sep 2024 08:54:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1726664081;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=7CPKzqWFUNfs70joePKYe1MxfeTWxjajpAUGeaSPGwM=;
- b=DQwSptNoZR3lSXWBqOYZelBkGA1bvZ0nIQ9igXXdjaPSZ5hiZci4TFc3nsvnHbWMwA8u0h
- BFRz6wVNcPqKtFZH2wcFOuIDvEDt3MWqHAxthcEvlg687wc8ht+FI/HF6HVJtvprHwVu/Q
- jgdp0htmO+7y+fzqhhf8GJvdbZPvLJA=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-209-56R3K1_oOmmxjev7e2YvGg-1; Wed,
- 18 Sep 2024 08:54:36 -0400
-X-MC-Unique: 56R3K1_oOmmxjev7e2YvGg-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2C624193BF46; Wed, 18 Sep 2024 12:54:35 +0000 (UTC)
-Received: from redhat.com (unknown [10.45.225.110])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9A90219560AA; Wed, 18 Sep 2024 12:54:31 +0000 (UTC)
-Date: Wed, 18 Sep 2024 14:54:27 +0200
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: dave@treblig.org
-Cc: pbonzini@redhat.com, eduardo@habkost.net, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/sysbus: Remove unused sysbus_mmio_unmap
-Message-ID: <ZurNgydF-6GZmYm6@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20240918122753.22411-1-dave@treblig.org>
+ (Exim 4.90_1) (envelope-from <quic_mathbern@quicinc.com>)
+ id 1sqwqK-00078Z-Qg; Wed, 18 Sep 2024 11:43:50 -0400
+Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 48I9qCwN028312;
+ Wed, 18 Sep 2024 15:43:45 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=quicinc.com; h=
+ cc:content-transfer-encoding:content-type:date:from:message-id
+ :mime-version:subject:to; s=qcppdkim1; bh=5YSxt0EoUtH7oi3UnDlnTX
+ IGtLrjoQmgOtWPYe8UFJM=; b=TXeRLzvboka+of+FjZiRwwjJzlLMruhXyeIRSN
+ VPaS31qJOMo/3gLmyGipBW5Wcydcn1oYJxVtitk8nUurPQSGoc8ij0F+p1o9cAlB
+ pCVnvh6EMqPSUpu+mtUVt3OWPc6F9ZQYfVDrRsIJ7phC+rDdKduzDZntwmcrzUGn
+ G+UMU4j2hW9wETt6klC9T2cZS+hlIQ+isqfPCxB2rMbsdvHUTCYuLx39y0yZiopb
+ SvrEKt0CFwwd1AcsCXT1UWxagtDaGDMzkL0ocI602eY33wsINshHZERPOVduu9bC
+ bNC987Vhz+JwZ93FIKs0JGg6DkwZXLigNSk/AP6WHRJHebpA==
+Received: from nalasppmta02.qualcomm.com (Global_NAT1.qualcomm.com
+ [129.46.96.20])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 41n4j6tgdx-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 18 Sep 2024 15:43:44 +0000 (GMT)
+Received: from nalasex01a.na.qualcomm.com (nalasex01a.na.qualcomm.com
+ [10.47.209.196])
+ by NALASPPMTA02.qualcomm.com (8.18.1.2/8.18.1.2) with ESMTPS id 48IFhhOx009047
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Wed, 18 Sep 2024 15:43:43 GMT
+Received: from hu-mathbern-lv.qualcomm.com (10.49.16.6) by
+ nalasex01a.na.qualcomm.com (10.47.209.196) with Microsoft SMTP Server
+ (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id
+ 15.2.1544.9; Wed, 18 Sep 2024 08:43:43 -0700
+From: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+To: <qemu-devel@nongnu.org>
+CC: <balaton@eik.bme.hu>, <mst@redhat.com>, <bcain@quicinc.com>,
+ <qemu-trivial@nongnu.org>
+Subject: [PATCH v2] hw: fix memory leak in IRQState allocation
+Date: Wed, 18 Sep 2024 12:43:34 -0300
+Message-ID: <1723deb603afec3fa69a75970cef9aac62d57d62.1726674185.git.quic_mathbern@quicinc.com>
+X-Mailer: git-send-email 2.37.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20240918122753.22411-1-dave@treblig.org>
-User-Agent: Mutt/2.2.12 (2023-09-09)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain
+X-Originating-IP: [10.49.16.6]
+X-ClientProxiedBy: nalasex01a.na.qualcomm.com (10.47.209.196) To
+ nalasex01a.na.qualcomm.com (10.47.209.196)
+X-QCInternal: smtphost
+X-Proofpoint-Virus-Version: vendor=nai engine=6200 definitions=5800
+ signatures=585085
+X-Proofpoint-ORIG-GUID: 4115vGIlfc8bX6xD-5G3jd9FmHsqdkxn
+X-Proofpoint-GUID: 4115vGIlfc8bX6xD-5G3jd9FmHsqdkxn
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1039,Hydra:6.0.680,FMLib:17.12.60.29
+ definitions=2024-09-06_09,2024-09-06_01,2024-09-02_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 mlxlogscore=888
+ mlxscore=0 malwarescore=0 bulkscore=0 priorityscore=1501 clxscore=1015
+ adultscore=0 suspectscore=0 lowpriorityscore=0 spamscore=0 impostorscore=0
+ classifier=spam adjust=0 reason=mlx scancount=1 engine=8.19.0-2408220000
+ definitions=main-2409180103
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=quic_mathbern@quicinc.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -76,67 +85,66 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Sep 2024 12:54:50 -0000
+X-List-Received-Date: Wed, 18 Sep 2024 15:43:51 -0000
 
-On Wed, Sep 18, 2024 at 01:27:53PM +0100, dave@treblig.org wrote:
-> From: "Dr. David Alan Gilbert" <dave@treblig.org>
-> 
-> The last use of sysbus_mmio_unmap was removed by
->   981b1c6266 ("spapr/xive: rework the mapping the KVM memory regions")
-> 
-> Remove it.
-> 
-> Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
-> ---
->  hw/core/sysbus.c    | 10 ----------
->  include/hw/sysbus.h |  1 -
->  2 files changed, 11 deletions(-)
+At e72a7f65c1 (hw: Move declaration of IRQState to header and add init
+function, 2024-06-29), we've changed qemu_allocate_irq() to use a
+combination of g_new() + object_initialize() instead of
+IRQ(object_new()). The latter sets obj->free, so that that the memory is
+properly cleaned when the object is finalized, but the former doesn't.
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Fixes: e72a7f65c1 (hw: Move declaration of IRQState to header and add init function)
+Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
+Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+---
+In v2: adjusted function init_irq_fields name to reflect it is not
+public and added BALATON's Reviewed-by
 
-> 
-> diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
-> index ad34fb7344..e64d99c8ed 100644
-> --- a/hw/core/sysbus.c
-> +++ b/hw/core/sysbus.c
-> @@ -154,16 +154,6 @@ static void sysbus_mmio_map_common(SysBusDevice *dev, int n, hwaddr addr,
->      }
->  }
->  
-> -void sysbus_mmio_unmap(SysBusDevice *dev, int n)
-> -{
-> -    assert(n >= 0 && n < dev->num_mmio);
-> -
-> -    if (dev->mmio[n].addr != (hwaddr)-1) {
-> -        memory_region_del_subregion(get_system_memory(), dev->mmio[n].memory);
-> -        dev->mmio[n].addr = (hwaddr)-1;
-> -    }
-> -}
-> -
->  void sysbus_mmio_map(SysBusDevice *dev, int n, hwaddr addr)
->  {
->      sysbus_mmio_map_common(dev, n, addr, false, 0);
-> diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
-> index 3cb29a480e..c9b1e0e90e 100644
-> --- a/include/hw/sysbus.h
-> +++ b/include/hw/sysbus.h
-> @@ -82,7 +82,6 @@ qemu_irq sysbus_get_connected_irq(SysBusDevice *dev, int n);
->  void sysbus_mmio_map(SysBusDevice *dev, int n, hwaddr addr);
->  void sysbus_mmio_map_overlap(SysBusDevice *dev, int n, hwaddr addr,
->                               int priority);
-> -void sysbus_mmio_unmap(SysBusDevice *dev, int n);
->  
->  bool sysbus_realize(SysBusDevice *dev, Error **errp);
->  bool sysbus_realize_and_unref(SysBusDevice *dev, Error **errp);
-> -- 
-> 2.46.0
-> 
+ hw/core/irq.c | 19 +++++++++++--------
+ 1 file changed, 11 insertions(+), 8 deletions(-)
 
-With regards,
-Daniel
+diff --git a/hw/core/irq.c b/hw/core/irq.c
+index db95ffc18f..7d5b0038c1 100644
+--- a/hw/core/irq.c
++++ b/hw/core/irq.c
+@@ -34,13 +34,19 @@ void qemu_set_irq(qemu_irq irq, int level)
+     irq->handler(irq->opaque, irq->n, level);
+ }
+ 
++static void init_irq_fields(IRQState *irq, qemu_irq_handler handler,
++                            void *opaque, int n)
++{
++    irq->handler = handler;
++    irq->opaque = opaque;
++    irq->n = n;
++}
++
+ void qemu_init_irq(IRQState *irq, qemu_irq_handler handler, void *opaque,
+                    int n)
+ {
+     object_initialize(irq, sizeof(*irq), TYPE_IRQ);
+-    irq->handler = handler;
+-    irq->opaque = opaque;
+-    irq->n = n;
++    init_irq_fields(irq, handler, opaque, n);
+ }
+ 
+ qemu_irq *qemu_extend_irqs(qemu_irq *old, int n_old, qemu_irq_handler handler,
+@@ -66,11 +72,8 @@ qemu_irq *qemu_allocate_irqs(qemu_irq_handler handler, void *opaque, int n)
+ 
+ qemu_irq qemu_allocate_irq(qemu_irq_handler handler, void *opaque, int n)
+ {
+-    IRQState *irq;
+-
+-    irq = g_new(IRQState, 1);
+-    qemu_init_irq(irq, handler, opaque, n);
+-
++    IRQState *irq = IRQ(object_new(TYPE_IRQ));
++    init_irq_fields(irq, handler, opaque, n);
+     return irq;
+ }
+ 
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.37.2
 
 
