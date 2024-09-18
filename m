@@ -1,45 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sqiOs-0000kf-UA
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Sep 2024 20:18:31 -0400
+	id 1squCs-0003Mh-7a
+	for mharc-qemu-trivial@gnu.org; Wed, 18 Sep 2024 08:54:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dave@treblig.org>)
- id 1sqiOr-0000jk-QE; Tue, 17 Sep 2024 20:18:30 -0400
-Received: from mx.treblig.org ([2a00:1098:5b::1])
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1squCl-0003L3-EA
+ for qemu-trivial@nongnu.org; Wed, 18 Sep 2024 08:54:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dave@treblig.org>)
- id 1sqiOq-0007kh-1d; Tue, 17 Sep 2024 20:18:29 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
- ; s=bytemarkmx;
- h=MIME-Version:Message-ID:Date:Subject:From:Content-Type:From
- :Subject; bh=NIZ9CevHyKnMjtjd6Im/4I0L6VZ6smkjC8yC3U2DLwU=; b=CbZjzb6cpKpF33mJ
- y2A7RXmwu/MXh5XHeWxN6FpvFDjtSmZhHSq5lEIluDwBIoY9PO6UfxiNjSivDCMnse7LPD00gwNzy
- x5VvESZrdTKqbPuIc7flX1cPQ+wzt9MbBqwthLOU+IYFU5DeG8VO6Qvff2IfnUqEYQNt4P0OvsYmD
- vR3qQwCwb8ti9cUq7zMMq4ZExp9CAQ5PG09rVcezmCu4QjstDq8jpAfW00xdfufZY6CMAn3PBcP2P
- O8waERfo0QXWkUlc0Cipf7878cLJ0m/P1I0Jc65xHZQT9LRXyICnVFxLV5xP8nOpunKPTzwmqVMkr
- qtwyHTxnSFYY7F4nLA==;
-Received: from localhost ([127.0.0.1] helo=dalek.home.treblig.org)
- by mx.treblig.org with esmtp (Exim 4.96)
- (envelope-from <dave@treblig.org>) id 1sqiOn-006DmB-06;
- Wed, 18 Sep 2024 00:18:25 +0000
-From: dave@treblig.org
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	"Dr. David Alan Gilbert" <dave@treblig.org>
-Subject: [PATCH] envlist: Remove unused envlist_parse
-Date: Wed, 18 Sep 2024 01:18:23 +0100
-Message-ID: <20240918001823.185701-1-dave@treblig.org>
-X-Mailer: git-send-email 2.46.0
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1squCg-0002ob-Ke
+ for qemu-trivial@nongnu.org; Wed, 18 Sep 2024 08:54:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1726664081;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=7CPKzqWFUNfs70joePKYe1MxfeTWxjajpAUGeaSPGwM=;
+ b=DQwSptNoZR3lSXWBqOYZelBkGA1bvZ0nIQ9igXXdjaPSZ5hiZci4TFc3nsvnHbWMwA8u0h
+ BFRz6wVNcPqKtFZH2wcFOuIDvEDt3MWqHAxthcEvlg687wc8ht+FI/HF6HVJtvprHwVu/Q
+ jgdp0htmO+7y+fzqhhf8GJvdbZPvLJA=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-209-56R3K1_oOmmxjev7e2YvGg-1; Wed,
+ 18 Sep 2024 08:54:36 -0400
+X-MC-Unique: 56R3K1_oOmmxjev7e2YvGg-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2C624193BF46; Wed, 18 Sep 2024 12:54:35 +0000 (UTC)
+Received: from redhat.com (unknown [10.45.225.110])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9A90219560AA; Wed, 18 Sep 2024 12:54:31 +0000 (UTC)
+Date: Wed, 18 Sep 2024 14:54:27 +0200
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: dave@treblig.org
+Cc: pbonzini@redhat.com, eduardo@habkost.net, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] hw/sysbus: Remove unused sysbus_mmio_unmap
+Message-ID: <ZurNgydF-6GZmYm6@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20240918122753.22411-1-dave@treblig.org>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dave@treblig.org;
- helo=mx.treblig.org
+In-Reply-To: <20240918122753.22411-1-dave@treblig.org>
+User-Agent: Mutt/2.2.12 (2023-09-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -52,123 +76,67 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 18 Sep 2024 00:18:30 -0000
+X-List-Received-Date: Wed, 18 Sep 2024 12:54:50 -0000
 
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
+On Wed, Sep 18, 2024 at 01:27:53PM +0100, dave@treblig.org wrote:
+> From: "Dr. David Alan Gilbert" <dave@treblig.org>
+> 
+> The last use of sysbus_mmio_unmap was removed by
+>   981b1c6266 ("spapr/xive: rework the mapping the KVM memory regions")
+> 
+> Remove it.
+> 
+> Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
+> ---
+>  hw/core/sysbus.c    | 10 ----------
+>  include/hw/sysbus.h |  1 -
+>  2 files changed, 11 deletions(-)
 
-envlist_parse, envlist_parse_set, envlist_parse_unset were added
-in 2009 but never used, see:
-  04a6dfebb6 ("linux-user: Add generic env variable handling")
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 
-Remove them.
+> 
+> diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+> index ad34fb7344..e64d99c8ed 100644
+> --- a/hw/core/sysbus.c
+> +++ b/hw/core/sysbus.c
+> @@ -154,16 +154,6 @@ static void sysbus_mmio_map_common(SysBusDevice *dev, int n, hwaddr addr,
+>      }
+>  }
+>  
+> -void sysbus_mmio_unmap(SysBusDevice *dev, int n)
+> -{
+> -    assert(n >= 0 && n < dev->num_mmio);
+> -
+> -    if (dev->mmio[n].addr != (hwaddr)-1) {
+> -        memory_region_del_subregion(get_system_memory(), dev->mmio[n].memory);
+> -        dev->mmio[n].addr = (hwaddr)-1;
+> -    }
+> -}
+> -
+>  void sysbus_mmio_map(SysBusDevice *dev, int n, hwaddr addr)
+>  {
+>      sysbus_mmio_map_common(dev, n, addr, false, 0);
+> diff --git a/include/hw/sysbus.h b/include/hw/sysbus.h
+> index 3cb29a480e..c9b1e0e90e 100644
+> --- a/include/hw/sysbus.h
+> +++ b/include/hw/sysbus.h
+> @@ -82,7 +82,6 @@ qemu_irq sysbus_get_connected_irq(SysBusDevice *dev, int n);
+>  void sysbus_mmio_map(SysBusDevice *dev, int n, hwaddr addr);
+>  void sysbus_mmio_map_overlap(SysBusDevice *dev, int n, hwaddr addr,
+>                               int priority);
+> -void sysbus_mmio_unmap(SysBusDevice *dev, int n);
+>  
+>  bool sysbus_realize(SysBusDevice *dev, Error **errp);
+>  bool sysbus_realize_and_unref(SysBusDevice *dev, Error **errp);
+> -- 
+> 2.46.0
+> 
 
-Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
----
- include/qemu/envlist.h |  2 --
- util/envlist.c         | 69 ------------------------------------------
- 2 files changed, 71 deletions(-)
-
-diff --git a/include/qemu/envlist.h b/include/qemu/envlist.h
-index 6006dfae44..b2883f6659 100644
---- a/include/qemu/envlist.h
-+++ b/include/qemu/envlist.h
-@@ -7,8 +7,6 @@ envlist_t *envlist_create(void);
- void envlist_free(envlist_t *);
- int envlist_setenv(envlist_t *, const char *);
- int envlist_unsetenv(envlist_t *, const char *);
--int envlist_parse_set(envlist_t *, const char *);
--int envlist_parse_unset(envlist_t *, const char *);
- char **envlist_to_environ(const envlist_t *, size_t *);
- 
- #endif /* ENVLIST_H */
-diff --git a/util/envlist.c b/util/envlist.c
-index db937c0427..15fdbb109d 100644
---- a/util/envlist.c
-+++ b/util/envlist.c
-@@ -12,9 +12,6 @@ struct envlist {
-     size_t el_count;                        /* number of entries */
- };
- 
--static int envlist_parse(envlist_t *envlist,
--    const char *env, int (*)(envlist_t *, const char *));
--
- /*
-  * Allocates new envlist and returns pointer to it.
-  */
-@@ -51,72 +48,6 @@ envlist_free(envlist_t *envlist)
-     g_free(envlist);
- }
- 
--/*
-- * Parses comma separated list of set/modify environment
-- * variable entries and updates given enlist accordingly.
-- *
-- * For example:
-- *     envlist_parse(el, "HOME=foo,SHELL=/bin/sh");
-- *
-- * inserts/sets environment variables HOME and SHELL.
-- *
-- * Returns 0 on success, errno otherwise.
-- */
--int
--envlist_parse_set(envlist_t *envlist, const char *env)
--{
--    return (envlist_parse(envlist, env, &envlist_setenv));
--}
--
--/*
-- * Parses comma separated list of unset environment variable
-- * entries and removes given variables from given envlist.
-- *
-- * Returns 0 on success, errno otherwise.
-- */
--int
--envlist_parse_unset(envlist_t *envlist, const char *env)
--{
--    return (envlist_parse(envlist, env, &envlist_unsetenv));
--}
--
--/*
-- * Parses comma separated list of set, modify or unset entries
-- * and calls given callback for each entry.
-- *
-- * Returns 0 in case of success, errno otherwise.
-- */
--static int
--envlist_parse(envlist_t *envlist, const char *env,
--    int (*callback)(envlist_t *, const char *))
--{
--    char *tmpenv, *envvar;
--    char *envsave = NULL;
--    int ret = 0;
--    assert(callback != NULL);
--
--    if ((envlist == NULL) || (env == NULL))
--        return (EINVAL);
--
--    tmpenv = g_strdup(env);
--    envsave = tmpenv;
--
--    do {
--        envvar = strchr(tmpenv, ',');
--        if (envvar != NULL) {
--            *envvar = '\0';
--        }
--        if ((*callback)(envlist, tmpenv) != 0) {
--            ret = errno;
--            break;
--        }
--        tmpenv = envvar + 1;
--    } while (envvar != NULL);
--
--    g_free(envsave);
--    return ret;
--}
--
- /*
-  * Sets environment value to envlist in similar manner
-  * than putenv(3).
+With regards,
+Daniel
 -- 
-2.46.0
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
