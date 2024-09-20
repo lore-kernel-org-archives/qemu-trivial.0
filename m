@@ -1,76 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1srXpA-0001jX-6P
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2024 03:13:05 -0400
+	id 1srYGs-00069O-2Q
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2024 03:41:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1srXp2-0001hj-CN; Fri, 20 Sep 2024 03:12:56 -0400
+ id 1srYGq-00067E-Vj; Fri, 20 Sep 2024 03:41:40 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1srXp0-0004MG-22; Fri, 20 Sep 2024 03:12:55 -0400
+ id 1srYGo-0000Ay-HB; Fri, 20 Sep 2024 03:41:40 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id D329890839;
- Fri, 20 Sep 2024 10:12:28 +0300 (MSK)
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 7CD9F1409AA;
- Fri, 20 Sep 2024 10:12:48 +0300 (MSK)
-Message-ID: <42b6d6da-4ca0-490d-abe3-5bcf1ce9c331@tls.msk.ru>
-Date: Fri, 20 Sep 2024 10:12:47 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/5] license: Fix typos and update SPDX tags
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20240911151206.60368-1-philmd@linaro.org>
-Content-Language: en-US, ru-RU
+ by isrv.corpit.ru (Postfix) with ESMTP id ADFCF90857;
+ Fri, 20 Sep 2024 10:41:15 +0300 (MSK)
+Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 5D32E1409DA;
+ Fri, 20 Sep 2024 10:41:35 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <20240911151206.60368-1-philmd@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-trivial@nongnu.org
+Subject: [PULL 01/22] mark <zlib.h> with for-crc32 in a consistent manner
+Date: Fri, 20 Sep 2024 10:41:13 +0300
+Message-Id: <20240920074134.664961-2-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20240920074134.664961-1-mjt@tls.msk.ru>
+References: <20240920074134.664961-1-mjt@tls.msk.ru>
+MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -92,32 +47,243 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Sep 2024 07:12:57 -0000
+X-List-Received-Date: Fri, 20 Sep 2024 07:41:41 -0000
 
-On 11.09.2024 18:12, Philippe Mathieu-Daudé wrote:
-> Series fully reviewed (thanks Thomas & Richard)
-> 
-> Since v2:
-> . Updated few missed "2 | 3+" expressions
-> 
-> Since v1:
-> . Updated regex to cover all GPL-2.0* cases.
-> 
-> - Fix a pair of typos
-> - Upgrade the deprecated GPL-2.0+/LGPL-2.0+ SPDX tags
->    to GPL-2.0-only / GPL-2.0-or-later / LGPL-2.0-or-later.
-> 
-> Philippe Mathieu-Daudé (5):
->    tests/functional: Correct typo in test_netdev_ethtool.py SPDX tag
->    license: Simplify GPL-2.0-or-later license descriptions
->    license: Update deprecated SPDX tag LGPL-2.0+ to LGPL-2.0-or-later
->    license: Update deprecated SPDX tag GPL-2.0+ to GPL-2.0-or-later
->    license: Update deprecated SPDX tag GPL-2.0 to GPL-2.0-only
+in many cases, <zlib.h> is only included for crc32 function,
+and in some of them, there's a comment saying that, but in
+a different way.  In one place (hw/net/rtl8139.c), there was
+another #include added between the comment and <zlib.h> include.
 
-Picked up for the trivial-patches tree, minus the cris hunk in 3/5.
+Make all such comments to be on the same line as #include, make
+it consistent, and also add a few missing comments, including
+hw/nvram/mac_nvram.c which uses adler32 instead.
 
-Thanks,
+There's no code changes.
 
-/mjt
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/net/cadence_gem.c             | 2 +-
+ hw/net/dp8393x.c                 | 2 +-
+ hw/net/ftgmac100.c               | 3 +--
+ hw/net/i82596.c                  | 2 +-
+ hw/net/imx_fec.c                 | 3 +--
+ hw/net/lan9118.c                 | 3 +--
+ hw/net/mcf_fec.c                 | 3 +--
+ hw/net/npcm7xx_emc.c             | 3 +--
+ hw/net/rtl8139.c                 | 4 +---
+ hw/net/smc91c111.c               | 3 +--
+ hw/net/stellaris_enet.c          | 2 +-
+ hw/nvram/mac_nvram.c             | 2 +-
+ target/arm/helper.c              | 2 +-
+ target/arm/tcg/helper-a64.c      | 2 +-
+ target/loongarch/tcg/op_helper.c | 2 +-
+ 15 files changed, 15 insertions(+), 23 deletions(-)
+
+diff --git a/hw/net/cadence_gem.c b/hw/net/cadence_gem.c
+index 44a5e65b8f..526739887c 100644
+--- a/hw/net/cadence_gem.c
++++ b/hw/net/cadence_gem.c
+@@ -23,7 +23,7 @@
+  */
+ 
+ #include "qemu/osdep.h"
+-#include <zlib.h> /* For crc32 */
++#include <zlib.h> /* for crc32 */
+ 
+ #include "hw/irq.h"
+ #include "hw/net/cadence_gem.h"
+diff --git a/hw/net/dp8393x.c b/hw/net/dp8393x.c
+index 09d708f989..c0977308ba 100644
+--- a/hw/net/dp8393x.c
++++ b/hw/net/dp8393x.c
+@@ -27,7 +27,7 @@
+ #include "qapi/error.h"
+ #include "qemu/module.h"
+ #include "qemu/timer.h"
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ #include "qom/object.h"
+ #include "trace.h"
+ 
+diff --git a/hw/net/ftgmac100.c b/hw/net/ftgmac100.c
+index 178a11675d..478356ee3e 100644
+--- a/hw/net/ftgmac100.c
++++ b/hw/net/ftgmac100.c
+@@ -24,8 +24,7 @@
+ #include "hw/qdev-properties.h"
+ #include "migration/vmstate.h"
+ 
+-/* For crc32 */
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ 
+ /*
+  * FTGMAC100 registers
+diff --git a/hw/net/i82596.c b/hw/net/i82596.c
+index 6cc8292a65..d786086a51 100644
+--- a/hw/net/i82596.c
++++ b/hw/net/i82596.c
+@@ -19,7 +19,7 @@
+ #include "qemu/module.h"
+ #include "trace.h"
+ #include "i82596.h"
+-#include <zlib.h>       /* For crc32 */
++#include <zlib.h> /* for crc32 */
+ 
+ #if defined(ENABLE_DEBUG)
+ #define DBG(x)          x
+diff --git a/hw/net/imx_fec.c b/hw/net/imx_fec.c
+index f9265de18b..6294d29202 100644
+--- a/hw/net/imx_fec.c
++++ b/hw/net/imx_fec.c
+@@ -33,8 +33,7 @@
+ #include "net/eth.h"
+ #include "trace.h"
+ 
+-/* For crc32 */
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ 
+ #define IMX_MAX_DESC    1024
+ 
+diff --git a/hw/net/lan9118.c b/hw/net/lan9118.c
+index 5a49601497..db28a0ef30 100644
+--- a/hw/net/lan9118.c
++++ b/hw/net/lan9118.c
+@@ -22,8 +22,7 @@
+ #include "qapi/error.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+-/* For crc32 */
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ #include "qom/object.h"
+ 
+ //#define DEBUG_LAN9118
+diff --git a/hw/net/mcf_fec.c b/hw/net/mcf_fec.c
+index 2898ad22d8..037cd2028e 100644
+--- a/hw/net/mcf_fec.c
++++ b/hw/net/mcf_fec.c
+@@ -16,8 +16,7 @@
+ #include "hw/net/mii.h"
+ #include "hw/qdev-properties.h"
+ #include "hw/sysbus.h"
+-/* For crc32 */
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ 
+ //#define DEBUG_FEC 1
+ 
+diff --git a/hw/net/npcm7xx_emc.c b/hw/net/npcm7xx_emc.c
+index 31e488d138..7307a13400 100644
+--- a/hw/net/npcm7xx_emc.c
++++ b/hw/net/npcm7xx_emc.c
+@@ -29,8 +29,7 @@
+ 
+ #include "qemu/osdep.h"
+ 
+-/* For crc32 */
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ 
+ #include "hw/irq.h"
+ #include "hw/qdev-clock.h"
+diff --git a/hw/net/rtl8139.c b/hw/net/rtl8139.c
+index 1b78deb14c..bc56075c0d 100644
+--- a/hw/net/rtl8139.c
++++ b/hw/net/rtl8139.c
+@@ -48,10 +48,8 @@
+  *  2011-Mar-22  Benjamin Poirier:  Implemented VLAN offloading
+  */
+ 
+-/* For crc32 */
+-
+ #include "qemu/osdep.h"
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ 
+ #include "hw/pci/pci_device.h"
+ #include "hw/qdev-properties.h"
+diff --git a/hw/net/smc91c111.c b/hw/net/smc91c111.c
+index c5338dd49e..180ba5c791 100644
+--- a/hw/net/smc91c111.c
++++ b/hw/net/smc91c111.c
+@@ -17,8 +17,7 @@
+ #include "qapi/error.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+-/* For crc32 */
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ #include "qom/object.h"
+ 
+ /* Number of 2k memory pages available.  */
+diff --git a/hw/net/stellaris_enet.c b/hw/net/stellaris_enet.c
+index 08e5393151..9ebff296c4 100644
+--- a/hw/net/stellaris_enet.c
++++ b/hw/net/stellaris_enet.c
+@@ -15,7 +15,7 @@
+ #include "net/net.h"
+ #include "qemu/log.h"
+ #include "qemu/module.h"
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ #include "qom/object.h"
+ 
+ //#define DEBUG_STELLARIS_ENET 1
+diff --git a/hw/nvram/mac_nvram.c b/hw/nvram/mac_nvram.c
+index fef34e7f41..e47e52a677 100644
+--- a/hw/nvram/mac_nvram.c
++++ b/hw/nvram/mac_nvram.c
+@@ -35,7 +35,7 @@
+ #include "qemu/module.h"
+ #include "qemu/error-report.h"
+ #include "trace.h"
+-#include <zlib.h>
++#include <zlib.h> /* for adler32 */
+ 
+ #define DEF_SYSTEM_SIZE 0xc10
+ 
+diff --git a/target/arm/helper.c b/target/arm/helper.c
+index 0a582c1cd3..3f77b40734 100644
+--- a/target/arm/helper.c
++++ b/target/arm/helper.c
+@@ -19,7 +19,7 @@
+ #include "qemu/crc32c.h"
+ #include "qemu/qemu-print.h"
+ #include "exec/exec-all.h"
+-#include <zlib.h> /* For crc32 */
++#include <zlib.h> /* for crc32 */
+ #include "hw/irq.h"
+ #include "sysemu/cpu-timers.h"
+ #include "sysemu/kvm.h"
+diff --git a/target/arm/tcg/helper-a64.c b/target/arm/tcg/helper-a64.c
+index 21a9abd90a..56b431faf5 100644
+--- a/target/arm/tcg/helper-a64.c
++++ b/target/arm/tcg/helper-a64.c
+@@ -33,7 +33,7 @@
+ #include "qemu/int128.h"
+ #include "qemu/atomic128.h"
+ #include "fpu/softfloat.h"
+-#include <zlib.h> /* For crc32 */
++#include <zlib.h> /* for crc32 */
+ 
+ /* C2.4.7 Multiply and divide */
+ /* special cases for 0 and LLONG_MIN are mandated by the standard */
+diff --git a/target/loongarch/tcg/op_helper.c b/target/loongarch/tcg/op_helper.c
+index fe79c62fa4..b17208e5b9 100644
+--- a/target/loongarch/tcg/op_helper.c
++++ b/target/loongarch/tcg/op_helper.c
+@@ -14,7 +14,7 @@
+ #include "exec/cpu_ldst.h"
+ #include "internals.h"
+ #include "qemu/crc32c.h"
+-#include <zlib.h>
++#include <zlib.h> /* for crc32 */
+ #include "cpu-csr.h"
+ 
+ /* Exceptions helpers */
+-- 
+2.39.5
 
 
