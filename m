@@ -1,30 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1srYGs-00069p-6z
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2024 03:41:42 -0400
+	id 1srYGx-0006Uj-KO
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2024 03:41:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1srYGr-00067F-2F; Fri, 20 Sep 2024 03:41:41 -0400
+ id 1srYGu-0006Jv-Vr; Fri, 20 Sep 2024 03:41:44 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1srYGo-0000Av-Jw; Fri, 20 Sep 2024 03:41:40 -0400
+ id 1srYGt-0000Bq-5S; Fri, 20 Sep 2024 03:41:44 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 3DC6190856;
- Fri, 20 Sep 2024 10:41:15 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id C666D90859;
+ Fri, 20 Sep 2024 10:41:16 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id E9D021409D9;
- Fri, 20 Sep 2024 10:41:34 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id 555DB1409DC;
+ Fri, 20 Sep 2024 10:41:36 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-trivial@nongnu.org
-Subject: [PULL 00/22] Trivial patches for 2024-09-20
-Date: Fri, 20 Sep 2024 10:41:12 +0300
-Message-Id: <20240920074134.664961-1-mjt@tls.msk.ru>
+Subject: [PULL 03/22] linux-user/syscall.c: eliminate other explicit LFS usages
+Date: Fri, 20 Sep 2024 10:41:15 +0300
+Message-Id: <20240920074134.664961-4-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20240920074134.664961-1-mjt@tls.msk.ru>
+References: <20240920074134.664961-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -46,170 +47,106 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Sep 2024 07:41:41 -0000
+X-List-Received-Date: Fri, 20 Sep 2024 07:41:45 -0000
 
-The following changes since commit 01dc65a3bc262ab1bec8fe89775e9bbfa627becb:
+Since we alwasy build with LFS enabled, and with -D_FILE_OFFSET_BITS=64
+in particular, there is no need to use 64bit versions of various system
+calls and constants, regular ones will do just fine.  Eliminate a few
+last uses of the following constructs in linux-user/syscall.c:
+  off64_t
+  ftruncate64()
+  lseek64()
+  pread64()
+  pwrite64()
 
-  Merge tag 'pull-target-arm-20240919' of https://git.linaro.org/people/pmaydell/qemu-arm into staging (2024-09-19 14:15:15 +0100)
+This way it can be built on systems where the 64bit variants of
+everything is not defined (since the system always uses 64bit
+variants), such as on recent MUSL.
 
-are available in the Git repository at:
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2215
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+---
+ linux-user/syscall.c | 16 ++++++++--------
+ 1 file changed, 8 insertions(+), 8 deletions(-)
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 48c459e515..a666986189 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -7265,7 +7265,7 @@ static inline abi_long target_truncate64(CPUArchState *cpu_env, const char *arg1
+         arg2 = arg3;
+         arg3 = arg4;
+     }
+-    return get_errno(truncate64(arg1, target_offset64(arg2, arg3)));
++    return get_errno(truncate(arg1, target_offset64(arg2, arg3)));
+ }
+ #endif
+ 
+@@ -7279,7 +7279,7 @@ static inline abi_long target_ftruncate64(CPUArchState *cpu_env, abi_long arg1,
+         arg2 = arg3;
+         arg3 = arg4;
+     }
+-    return get_errno(ftruncate64(arg1, target_offset64(arg2, arg3)));
++    return get_errno(ftruncate(arg1, target_offset64(arg2, arg3)));
+ }
+ #endif
+ 
+@@ -8664,7 +8664,7 @@ static int do_getdents(abi_long dirfd, abi_long arg2, abi_long count)
+     void *tdirp;
+     int hlen, hoff, toff;
+     int hreclen, treclen;
+-    off64_t prev_diroff = 0;
++    off_t prev_diroff = 0;
+ 
+     hdirp = g_try_malloc(count);
+     if (!hdirp) {
+@@ -8717,7 +8717,7 @@ static int do_getdents(abi_long dirfd, abi_long arg2, abi_long count)
+              * Return what we have, resetting the file pointer to the
+              * location of the first record not returned.
+              */
+-            lseek64(dirfd, prev_diroff, SEEK_SET);
++            lseek(dirfd, prev_diroff, SEEK_SET);
+             break;
+         }
+ 
+@@ -8751,7 +8751,7 @@ static int do_getdents64(abi_long dirfd, abi_long arg2, abi_long count)
+     void *tdirp;
+     int hlen, hoff, toff;
+     int hreclen, treclen;
+-    off64_t prev_diroff = 0;
++    off_t prev_diroff = 0;
+ 
+     hdirp = g_try_malloc(count);
+     if (!hdirp) {
+@@ -8793,7 +8793,7 @@ static int do_getdents64(abi_long dirfd, abi_long arg2, abi_long count)
+              * Return what we have, resetting the file pointer to the
+              * location of the first record not returned.
+              */
+-            lseek64(dirfd, prev_diroff, SEEK_SET);
++            lseek(dirfd, prev_diroff, SEEK_SET);
+             break;
+         }
+ 
+@@ -11524,7 +11524,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+                 return -TARGET_EFAULT;
+             }
+         }
+-        ret = get_errno(pread64(arg1, p, arg3, target_offset64(arg4, arg5)));
++        ret = get_errno(pread(arg1, p, arg3, target_offset64(arg4, arg5)));
+         unlock_user(p, arg2, ret);
+         return ret;
+     case TARGET_NR_pwrite64:
+@@ -11541,7 +11541,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+                 return -TARGET_EFAULT;
+             }
+         }
+-        ret = get_errno(pwrite64(arg1, p, arg3, target_offset64(arg4, arg5)));
++        ret = get_errno(pwrite(arg1, p, arg3, target_offset64(arg4, arg5)));
+         unlock_user(p, arg2, 0);
+         return ret;
+ #endif
+-- 
+2.39.5
 
-for you to fetch changes up to 06e2329636f9c05b046ccf8aa1b245bbdfb01263:
-
-  license: Update deprecated SPDX tag GPL-2.0 to GPL-2.0-only (2024-09-20 10:11:59 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2024-09-20
-
-Various things.  Including explicit-LFS usage removal for linux-user
-which allows qemu to be built on musl, some minor tests fixes, removals
-of unused functions, license tag fixes, and others.
-
-----------------------------------------------------------------
-Bibo Mao (1):
-      hw/loongarch/virt: Add description for virt machine type
-
-Dr. David Alan Gilbert (3):
-      envlist: Remove unused envlist_parse
-      hw/sysbus: Remove unused sysbus_mmio_unmap
-      util/cutils: Remove unused qemu_get_exec_dir
-
-Inès Varhol (1):
-      hw/display: Fix mirrored output in dm163
-
-Mark Cave-Ayland (1):
-      hw/mips/jazz: fix typo in in-built NIC alias
-
-Michael Tokarev (3):
-      mark <zlib.h> with for-crc32 in a consistent manner
-      linux-user/syscall.c: drop 64 suffix from flock64 &Co
-      linux-user/syscall.c: eliminate other explicit LFS usages
-
-Philippe Mathieu-Daudé (8):
-      tests/unit: Really build pbkdf test on macOS
-      target/hexagon: Rename macros.inc -> macros.h.inc
-      tests/bench: Rename test_akcipher_keys.inc -> test_akcipher_keys.c.inc
-      tests/functional: Correct typo in test_netdev_ethtool.py SPDX tag
-      license: Simplify GPL-2.0-or-later license descriptions
-      license: Update deprecated SPDX tag LGPL-2.0+ to LGPL-2.0-or-later
-      license: Update deprecated SPDX tag GPL-2.0+ to GPL-2.0-or-later
-      license: Update deprecated SPDX tag GPL-2.0 to GPL-2.0-only
-
-Tejas Vipin (1):
-      ppc: fix incorrect spelling of PowerMac
-
-Thomas Huth (4):
-      hw/virtio/Kconfig: Include vhost-user-scmi only on arm targets
-      tests/qemu-iotests/testenv: Use the "virt" machine for or1k
-      tests/qemu-iotests/testenv: Use the "r2d" machine for sh4/sh4eb
-      tests/functional: Put the or1k_sim test into the slow category
-
- block/vdi.c                                        |  4 +-
- docs/system/ppc/powermac.rst                       |  4 +-
- gdbstub/gdbstub.c                                  |  2 +-
- gdbstub/syscalls.c                                 |  2 +-
- gdbstub/system.c                                   |  2 +-
- gdbstub/user-target.c                              |  2 +-
- gdbstub/user.c                                     |  2 +-
- hw/core/sysbus.c                                   | 10 ---
- hw/core/uboot_image.h                              |  2 +-
- hw/display/dm163.c                                 |  2 +-
- hw/loongarch/virt.c                                |  1 +
- hw/m68k/bootinfo.h                                 |  2 +-
- hw/mips/jazz.c                                     |  2 +-
- hw/net/cadence_gem.c                               |  2 +-
- hw/net/dp8393x.c                                   |  2 +-
- hw/net/eepro100.c                                  |  4 +-
- hw/net/ftgmac100.c                                 |  3 +-
- hw/net/i82596.c                                    |  2 +-
- hw/net/igb_regs.h                                  |  2 +-
- hw/net/imx_fec.c                                   |  3 +-
- hw/net/lan9118.c                                   |  3 +-
- hw/net/mcf_fec.c                                   |  3 +-
- hw/net/npcm7xx_emc.c                               |  3 +-
- hw/net/rtl8139.c                                   |  4 +-
- hw/net/smc91c111.c                                 |  3 +-
- hw/net/stellaris_enet.c                            |  2 +-
- hw/nvram/fw_cfg-acpi.c                             |  2 +-
- hw/nvram/mac_nvram.c                               |  2 +-
- hw/ppc/mac_newworld.c                              |  2 +-
- hw/ppc/mac_oldworld.c                              |  2 +-
- hw/ppc/rs6000_mc.c                                 |  4 +-
- hw/virtio/Kconfig                                  |  2 +-
- hw/virtio/virtio-acpi.c                            |  2 +-
- include/gdbstub/syscalls.h                         |  2 +-
- include/gdbstub/user.h                             |  2 +-
- include/hw/nvram/fw_cfg_acpi.h                     |  2 +-
- include/hw/sysbus.h                                |  1 -
- include/hw/usb/dwc2-regs.h                         |  2 +-
- include/hw/virtio/virtio-acpi.h                    |  2 +-
- include/qemu/crc-ccitt.h                           |  2 +-
- include/qemu/cutils.h                              |  5 +-
- include/qemu/envlist.h                             |  2 -
- include/qemu/timed-average.h                       |  4 +-
- linux-user/alpha/syscall.tbl                       |  2 +-
- linux-user/alpha/syscallhdr.sh                     |  2 +-
- linux-user/arm/syscallhdr.sh                       |  2 +-
- linux-user/hppa/syscall.tbl                        |  2 +-
- linux-user/hppa/syscallhdr.sh                      |  2 +-
- linux-user/i386/syscallhdr.sh                      |  2 +-
- linux-user/m68k/syscall.tbl                        |  2 +-
- linux-user/m68k/syscallhdr.sh                      |  2 +-
- linux-user/microblaze/syscall.tbl                  |  2 +-
- linux-user/microblaze/syscallhdr.sh                |  2 +-
- linux-user/mips/syscall_o32.tbl                    |  2 +-
- linux-user/mips/syscallhdr.sh                      |  2 +-
- linux-user/mips64/syscall_n32.tbl                  |  2 +-
- linux-user/mips64/syscall_n64.tbl                  |  2 +-
- linux-user/mips64/syscallhdr.sh                    |  2 +-
- linux-user/ppc/syscall.tbl                         |  2 +-
- linux-user/ppc/syscallhdr.sh                       |  2 +-
- linux-user/s390x/syscall.tbl                       |  2 +-
- linux-user/s390x/syscallhdr.sh                     |  2 +-
- linux-user/sh4/syscall.tbl                         |  2 +-
- linux-user/sh4/syscallhdr.sh                       |  2 +-
- linux-user/sparc/syscall.tbl                       |  2 +-
- linux-user/sparc/syscallhdr.sh                     |  2 +-
- linux-user/syscall.c                               | 78 +++++++++++-----------
- linux-user/x86_64/syscallhdr.sh                    |  2 +-
- linux-user/xtensa/syscall.tbl                      |  2 +-
- linux-user/xtensa/syscallhdr.sh                    |  2 +-
- qemu.nsi                                           |  4 +-
- scripts/kernel-doc                                 |  2 +-
- target/alpha/cpu-param.h                           |  2 +-
- target/arm/cpu-param.h                             |  2 +-
- target/arm/helper.c                                |  2 +-
- target/arm/tcg/helper-a64.c                        |  2 +-
- target/hexagon/gen_idef_parser_funcs.py            |  2 +-
- target/hexagon/idef-parser/README.rst              |  4 +-
- .../idef-parser/{macros.inc => macros.h.inc}       |  0
- target/hexagon/meson.build                         |  2 +-
- target/hppa/cpu-param.h                            |  2 +-
- target/i386/cpu-param.h                            |  2 +-
- target/loongarch/tcg/op_helper.c                   |  2 +-
- target/m68k/cpu-param.h                            |  2 +-
- target/microblaze/cpu-param.h                      |  2 +-
- target/mips/cpu-param.h                            |  2 +-
- target/openrisc/cpu-param.h                        |  2 +-
- target/ppc/cpu-param.h                             |  2 +-
- target/riscv/cpu-param.h                           |  2 +-
- target/s390x/cpu-param.h                           |  2 +-
- target/sh4/cpu-param.h                             |  2 +-
- target/sparc/cpu-param.h                           |  2 +-
- target/sparc/insns.decode                          |  2 +-
- tests/bench/benchmark-crypto-akcipher.c            |  2 +-
- ..._akcipher_keys.inc => test_akcipher_keys.c.inc} |  0
- tests/functional/meson.build                       |  2 +-
- tests/functional/test_netdev_ethtool.py            |  2 +-
- tests/qemu-iotests/testenv.py                      |  3 +
- tests/tcg/loongarch64/system/regdef.h              |  2 +-
- tests/unit/test-crypto-pbkdf.c                     |  2 +-
- util/cutils.c                                      |  5 --
- util/envlist.c                                     | 69 -------------------
- util/timed-average.c                               |  4 +-
- 103 files changed, 149 insertions(+), 233 deletions(-)
- rename target/hexagon/idef-parser/{macros.inc => macros.h.inc} (100%)
- rename tests/bench/{test_akcipher_keys.inc => test_akcipher_keys.c.inc} (100%)
 
