@@ -1,27 +1,28 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1srYIB-0004u0-N0
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2024 03:43:03 -0400
+	id 1srYIE-0005EZ-3U
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2024 03:43:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1srYI7-0004Ra-Do; Fri, 20 Sep 2024 03:42:59 -0400
+ id 1srYIA-0004qU-SU; Fri, 20 Sep 2024 03:43:03 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1srYI5-0000LG-1b; Fri, 20 Sep 2024 03:42:59 -0400
+ id 1srYI8-0000Lo-SI; Fri, 20 Sep 2024 03:43:02 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id E95D990869;
- Fri, 20 Sep 2024 10:41:25 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id F2C869086B;
+ Fri, 20 Sep 2024 10:41:26 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 906371409EC;
- Fri, 20 Sep 2024 10:41:45 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id 94CAC1409EE;
+ Fri, 20 Sep 2024 10:41:46 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 19/22] license: Simplify GPL-2.0-or-later license descriptions
-Date: Fri, 20 Sep 2024 10:41:31 +0300
-Message-Id: <20240920074134.664961-20-mjt@tls.msk.ru>
+Subject: [PULL 21/22] license: Update deprecated SPDX tag GPL-2.0+ to
+ GPL-2.0-or-later
+Date: Fri, 20 Sep 2024 10:41:33 +0300
+Message-Id: <20240920074134.664961-22-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20240920074134.664961-1-mjt@tls.msk.ru>
 References: <20240920074134.664961-1-mjt@tls.msk.ru>
@@ -48,140 +49,124 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Sep 2024 07:43:00 -0000
+X-List-Received-Date: Fri, 20 Sep 2024 07:43:04 -0000
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Since the "2 | 3+" expression can be simplified as "2+",
-it is pointless to mention the GPLv3 license.
+The 'GPL-2.0+' license identifier has been deprecated since license
+list version 2.0rc2 [1] and replaced by the 'GPL-2.0-or-later' [2]
+tag.
 
-Add the corresponding SPDX identifier to remove all doubt.
+[1] https://spdx.org/licenses/GPL-2.0+.html
+[2] https://spdx.org/licenses/GPL-2.0-or-later.html
 
+Mechanical patch running:
+
+  $ sed -i -e s/GPL-2.0+/GPL-2.0-or-later/ \
+    $(git grep -lP 'SPDX-License-Identifier: \W+GPL-2.0\+[ $]' \
+        | egrep -v '^linux-headers|^include/standard-headers')
+
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- block/vdi.c                  | 4 +++-
- hw/net/eepro100.c            | 4 +++-
- hw/ppc/rs6000_mc.c           | 4 +++-
- include/qemu/timed-average.h | 4 +++-
- qemu.nsi                     | 4 +++-
- util/timed-average.c         | 4 +++-
- 6 files changed, 18 insertions(+), 6 deletions(-)
+ hw/core/uboot_image.h           | 2 +-
+ hw/nvram/fw_cfg-acpi.c          | 2 +-
+ hw/virtio/virtio-acpi.c         | 2 +-
+ include/hw/nvram/fw_cfg_acpi.h  | 2 +-
+ include/hw/usb/dwc2-regs.h      | 2 +-
+ include/hw/virtio/virtio-acpi.h | 2 +-
+ target/riscv/cpu-param.h        | 2 +-
+ target/s390x/cpu-param.h        | 2 +-
+ 8 files changed, 8 insertions(+), 8 deletions(-)
 
-diff --git a/block/vdi.c b/block/vdi.c
-index 6363da08ce..149e15c831 100644
---- a/block/vdi.c
-+++ b/block/vdi.c
-@@ -3,10 +3,12 @@
+diff --git a/hw/core/uboot_image.h b/hw/core/uboot_image.h
+index 18ac293359..e4dcfb08f0 100644
+--- a/hw/core/uboot_image.h
++++ b/hw/core/uboot_image.h
+@@ -1,4 +1,4 @@
+-/* SPDX-License-Identifier: GPL-2.0+ */
++/* SPDX-License-Identifier: GPL-2.0-or-later */
+ /*
+  * (C) Copyright 2008 Semihalf
   *
-  * Copyright (c) 2009, 2012 Stefan Weil
+diff --git a/hw/nvram/fw_cfg-acpi.c b/hw/nvram/fw_cfg-acpi.c
+index 58cdcd3121..2e6ef89b98 100644
+--- a/hw/nvram/fw_cfg-acpi.c
++++ b/hw/nvram/fw_cfg-acpi.c
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0+
++// SPDX-License-Identifier: GPL-2.0-or-later
+ /*
+  * Add fw_cfg device in DSDT
   *
+diff --git a/hw/virtio/virtio-acpi.c b/hw/virtio/virtio-acpi.c
+index 230a669500..85becef03c 100644
+--- a/hw/virtio/virtio-acpi.c
++++ b/hw/virtio/virtio-acpi.c
+@@ -1,4 +1,4 @@
+-// SPDX-License-Identifier: GPL-2.0+
++// SPDX-License-Identifier: GPL-2.0-or-later
+ /*
+  * virtio ACPI Support
+  *
+diff --git a/include/hw/nvram/fw_cfg_acpi.h b/include/hw/nvram/fw_cfg_acpi.h
+index b39eb0490f..dfd2a44ef0 100644
+--- a/include/hw/nvram/fw_cfg_acpi.h
++++ b/include/hw/nvram/fw_cfg_acpi.h
+@@ -1,4 +1,4 @@
+-/* SPDX-License-Identifier: GPL-2.0+ */
++/* SPDX-License-Identifier: GPL-2.0-or-later */
+ /*
+  * ACPI support for fw_cfg
+  *
+diff --git a/include/hw/usb/dwc2-regs.h b/include/hw/usb/dwc2-regs.h
+index 0bf3f2aa17..523b112c5e 100644
+--- a/include/hw/usb/dwc2-regs.h
++++ b/include/hw/usb/dwc2-regs.h
+@@ -1,4 +1,4 @@
+-/* SPDX-License-Identifier: (GPL-2.0+ OR BSD-3-Clause) */
++/* SPDX-License-Identifier: (GPL-2.0-or-later OR BSD-3-Clause) */
+ /*
+  * Imported from the Linux kernel file drivers/usb/dwc2/hw.h, commit
+  * a89bae709b3492b478480a2c9734e7e9393b279c ("usb: dwc2: Move
+diff --git a/include/hw/virtio/virtio-acpi.h b/include/hw/virtio/virtio-acpi.h
+index cace2a315f..cdfbd943ae 100644
+--- a/include/hw/virtio/virtio-acpi.h
++++ b/include/hw/virtio/virtio-acpi.h
+@@ -1,4 +1,4 @@
+-/* SPDX-License-Identifier: GPL-2.0+ */
++/* SPDX-License-Identifier: GPL-2.0-or-later */
+ /*
+  * ACPI support for virtio
+  */
+diff --git a/target/riscv/cpu-param.h b/target/riscv/cpu-param.h
+index 1fbd64939d..25686192c0 100644
+--- a/target/riscv/cpu-param.h
++++ b/target/riscv/cpu-param.h
+@@ -2,7 +2,7 @@
+  * RISC-V cpu parameters for qemu.
+  *
+  * Copyright (c) 2017-2018 SiFive, Inc.
+- * SPDX-License-Identifier: GPL-2.0+
 + * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-  * This program is free software: you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation, either version 2 of the License, or
-- * (at your option) version 3 or any later version.
-+ * (at your option) any later version.
-  *
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/hw/net/eepro100.c b/hw/net/eepro100.c
-index d9a70c4544..c8a88b9813 100644
---- a/hw/net/eepro100.c
-+++ b/hw/net/eepro100.c
-@@ -6,10 +6,12 @@
-  * Portions of the code are copies from grub / etherboot eepro100.c
-  * and linux e100.c.
-  *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-  * This program is free software: you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation, either version 2 of the License, or
-- * (at your option) version 3 or any later version.
-+ * (at your option) any later version.
-  *
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/hw/ppc/rs6000_mc.c b/hw/ppc/rs6000_mc.c
-index e6ec4b4c40..07b0b664d9 100644
---- a/hw/ppc/rs6000_mc.c
-+++ b/hw/ppc/rs6000_mc.c
-@@ -3,10 +3,12 @@
-  *
-  * Copyright (c) 2017 Hervé Poussineau
-  *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-  * This program is free software: you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation, either version 2 of the License, or
-- * (at your option) version 3 or any later version.
-+ * (at your option) any later version.
-  *
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/include/qemu/timed-average.h b/include/qemu/timed-average.h
-index 08245e7a10..dfd8d653fa 100644
---- a/include/qemu/timed-average.h
-+++ b/include/qemu/timed-average.h
-@@ -8,10 +8,12 @@
-  *   Benoît Canet <benoit.canet@nodalink.com>
-  *   Alberto Garcia <berto@igalia.com>
-  *
-+ * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-  * This program is free software: you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation, either version 2 of the License, or
-- * (at your option) version 3 or any later version.
-+ * (at your option) any later version.
-  *
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
-diff --git a/qemu.nsi b/qemu.nsi
-index 564d617d11..b186f223e1 100644
---- a/qemu.nsi
-+++ b/qemu.nsi
-@@ -7,7 +7,7 @@
- ; This program is free software: you can redistribute it and/or modify
- ; it under the terms of the GNU General Public License as published by
- ; the Free Software Foundation, either version 2 of the License, or
--; (at your option) version 3 or any later version.
-+; (at your option) any later version.
- ;
- ; This program is distributed in the hope that it will be useful,
- ; but WITHOUT ANY WARRANTY; without even the implied warranty of
-@@ -16,6 +16,8 @@
- ;
- ; You should have received a copy of the GNU General Public License
- ; along with this program.  If not, see <http://www.gnu.org/licenses/>.
-+;
-+; SPDX-License-Identifier: GPL-2.0-or-later
+  */
  
- ; NSIS_WIN32_MAKENSIS
- 
-diff --git a/util/timed-average.c b/util/timed-average.c
-index 2b49d532ce..5b5c22afd8 100644
---- a/util/timed-average.c
-+++ b/util/timed-average.c
-@@ -8,10 +8,12 @@
-  *   Benoît Canet <benoit.canet@nodalink.com>
-  *   Alberto Garcia <berto@igalia.com>
+ #ifndef RISCV_CPU_PARAM_H
+diff --git a/target/s390x/cpu-param.h b/target/s390x/cpu-param.h
+index 11d23b600d..a05ffcf78d 100644
+--- a/target/s390x/cpu-param.h
++++ b/target/s390x/cpu-param.h
+@@ -2,7 +2,7 @@
+  * S/390 cpu parameters for qemu.
   *
+  * Copyright (c) 2009 Ulrich Hecht
+- * SPDX-License-Identifier: GPL-2.0+
 + * SPDX-License-Identifier: GPL-2.0-or-later
-+ *
-  * This program is free software: you can redistribute it and/or modify
-  * it under the terms of the GNU General Public License as published by
-  * the Free Software Foundation, either version 2 of the License, or
-- * (at your option) version 3 or any later version.
-+ * (at your option) any later version.
-  *
-  * This program is distributed in the hope that it will be useful,
-  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  */
+ 
+ #ifndef S390_CPU_PARAM_H
 -- 
 2.39.5
 
