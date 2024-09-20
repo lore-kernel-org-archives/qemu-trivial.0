@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1srYH3-0006sv-Gy
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2024 03:41:53 -0400
+	id 1srYH7-00079W-Fr
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2024 03:41:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1srYH2-0006nJ-4W; Fri, 20 Sep 2024 03:41:52 -0400
+ id 1srYH5-00070D-71; Fri, 20 Sep 2024 03:41:55 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1srYGw-0000Cp-Bl; Fri, 20 Sep 2024 03:41:51 -0400
+ id 1srYGw-0000Cm-9Y; Fri, 20 Sep 2024 03:41:54 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id EAE7B9085B;
+ by isrv.corpit.ru (Postfix) with ESMTP id 4C7C49085A;
  Fri, 20 Sep 2024 10:41:17 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 6DC781409DE;
- Fri, 20 Sep 2024 10:41:37 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id EC9781409DD;
+ Fri, 20 Sep 2024 10:41:36 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-trivial@nongnu.org,
+Cc: Tejas Vipin <tejasvipin76@gmail.com>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 05/22] hw/mips/jazz: fix typo in in-built NIC alias
-Date: Fri, 20 Sep 2024 10:41:17 +0300
-Message-Id: <20240920074134.664961-6-mjt@tls.msk.ru>
+Subject: [PULL 04/22] ppc: fix incorrect spelling of PowerMac
+Date: Fri, 20 Sep 2024 10:41:16 +0300
+Message-Id: <20240920074134.664961-5-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20240920074134.664961-1-mjt@tls.msk.ru>
 References: <20240920074134.664961-1-mjt@tls.msk.ru>
@@ -48,37 +48,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Sep 2024 07:41:52 -0000
+X-List-Received-Date: Fri, 20 Sep 2024 07:41:55 -0000
 
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+From: Tejas Vipin <tejasvipin76@gmail.com>
 
-Commit e104edbb9d ("hw/mips/jazz: use qemu_find_nic_info()") contained a typo
-in the NIC alias which caused initialisation of the in-built dp83932 NIC to fail
-when using the normal -nic user,model=dp83932 command line.
+PowerMac is spelled as PowerMAC (Media Access Control) in some places.
+This is misleading.
 
-Fixes: e104edbb9d ("hw/mips/jazz: use qemu_find_nic_info()")
-Signed-off-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2297
+Signed-off-by: Tejas Vipin <tejasvipin76@gmail.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: David Woodhouse <dwmw@amazon.co.uk>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/mips/jazz.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/system/ppc/powermac.rst | 4 ++--
+ hw/ppc/mac_newworld.c        | 2 +-
+ hw/ppc/mac_oldworld.c        | 2 +-
+ 3 files changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/hw/mips/jazz.c b/hw/mips/jazz.c
-index 1bc17e69d3..0d44e19707 100644
---- a/hw/mips/jazz.c
-+++ b/hw/mips/jazz.c
-@@ -128,7 +128,7 @@ static void mips_jazz_init_net(IOMMUMemoryRegion *rc4030_dma_mr,
-     uint8_t *prom;
-     NICInfo *nd;
+diff --git a/docs/system/ppc/powermac.rst b/docs/system/ppc/powermac.rst
+index 04334ba210..3eac81c491 100644
+--- a/docs/system/ppc/powermac.rst
++++ b/docs/system/ppc/powermac.rst
+@@ -4,8 +4,8 @@ PowerMac family boards (``g3beige``, ``mac99``)
+ Use the executable ``qemu-system-ppc`` to simulate a complete PowerMac
+ PowerPC system.
  
--    nd = qemu_find_nic_info("dp8393x", true, "dp82932");
-+    nd = qemu_find_nic_info("dp8393x", true, "dp83932");
-     if (!nd) {
-         return;
-     }
+-- ``g3beige``              Heathrow based PowerMAC
+-- ``mac99``                Mac99 based PowerMAC
++- ``g3beige``              Heathrow based PowerMac
++- ``mac99``                Mac99 based PowerMac
+ 
+ Supported devices
+ -----------------
+diff --git a/hw/ppc/mac_newworld.c b/hw/ppc/mac_newworld.c
+index ff9e490c4e..9d249a506c 100644
+--- a/hw/ppc/mac_newworld.c
++++ b/hw/ppc/mac_newworld.c
+@@ -571,7 +571,7 @@ static void core99_machine_class_init(ObjectClass *oc, void *data)
+     MachineClass *mc = MACHINE_CLASS(oc);
+     FWPathProviderClass *fwc = FW_PATH_PROVIDER_CLASS(oc);
+ 
+-    mc->desc = "Mac99 based PowerMAC";
++    mc->desc = "Mac99 based PowerMac";
+     mc->init = ppc_core99_init;
+     mc->block_default_type = IF_IDE;
+     /* SMP is not supported currently */
+diff --git a/hw/ppc/mac_oldworld.c b/hw/ppc/mac_oldworld.c
+index 1981d3d8f6..eef3261002 100644
+--- a/hw/ppc/mac_oldworld.c
++++ b/hw/ppc/mac_oldworld.c
+@@ -411,7 +411,7 @@ static void heathrow_class_init(ObjectClass *oc, void *data)
+     MachineClass *mc = MACHINE_CLASS(oc);
+     FWPathProviderClass *fwc = FW_PATH_PROVIDER_CLASS(oc);
+ 
+-    mc->desc = "Heathrow based PowerMAC";
++    mc->desc = "Heathrow based PowerMac";
+     mc->init = ppc_heathrow_init;
+     mc->block_default_type = IF_IDE;
+     /* SMP is not supported currently */
 -- 
 2.39.5
 
