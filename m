@@ -1,28 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1srYHV-0000Zq-8K
-	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2024 03:42:22 -0400
+	id 1srYHf-0001Ro-6x
+	for mharc-qemu-trivial@gnu.org; Fri, 20 Sep 2024 03:42:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1srYHI-00080j-Jr; Fri, 20 Sep 2024 03:42:11 -0400
+ id 1srYHd-0001GX-3T; Fri, 20 Sep 2024 03:42:29 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1srYHH-0000Gl-0O; Fri, 20 Sep 2024 03:42:08 -0400
+ id 1srYHb-0000Gn-57; Fri, 20 Sep 2024 03:42:28 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 70C0590863;
- Fri, 20 Sep 2024 10:41:22 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id D0BE690862;
+ Fri, 20 Sep 2024 10:41:21 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 00DEF1409E6;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 787951409E5;
  Fri, 20 Sep 2024 10:41:41 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+Cc: "Dr. David Alan Gilbert" <dave@treblig.org>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 13/22] tests/qemu-iotests/testenv: Use the "virt" machine for
- or1k
-Date: Fri, 20 Sep 2024 10:41:25 +0300
-Message-Id: <20240920074134.664961-14-mjt@tls.msk.ru>
+Subject: [PULL 12/22] util/cutils: Remove unused qemu_get_exec_dir
+Date: Fri, 20 Sep 2024 10:41:24 +0300
+Message-Id: <20240920074134.664961-13-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20240920074134.664961-1-mjt@tls.msk.ru>
 References: <20240920074134.664961-1-mjt@tls.msk.ru>
@@ -48,38 +47,58 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 20 Sep 2024 07:42:15 -0000
+X-List-Received-Date: Fri, 20 Sep 2024 07:42:30 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: "Dr. David Alan Gilbert" <dave@treblig.org>
 
-When compiling QEMU just with "--target-list=or1k-softmmu", there
-are 8 iotests failing that try to use PCI devices - but the default
-or1k machine does not have a PCI bus. The "virt" machine is better
-suited for running the iotests than the or1k default machine since
-it provides PCI and thus e.g. support for virtio-blk and virtio-scsi,
-too. With this change, there are no failing iotests anymore when
-using the qemu-system-or1k binary for running the tests.
+qemu_get_exec_dir has been unused since commit:
+  5bebe03f51 ("util/cutils: Clean up global variable shadowing in get_relocated_path()")
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Remove it, and fix up a comment that pointed to it.
+
+Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- tests/qemu-iotests/testenv.py | 1 +
- 1 file changed, 1 insertion(+)
+ include/qemu/cutils.h | 5 +----
+ util/cutils.c         | 5 -----
+ 2 files changed, 1 insertion(+), 9 deletions(-)
 
-diff --git a/tests/qemu-iotests/testenv.py b/tests/qemu-iotests/testenv.py
-index c8848f2ec2..0b32eec119 100644
---- a/tests/qemu-iotests/testenv.py
-+++ b/tests/qemu-iotests/testenv.py
-@@ -240,6 +240,7 @@ def __init__(self, source_dir: str, build_dir: str,
-             ('aarch64', 'virt'),
-             ('avr', 'mega2560'),
-             ('m68k', 'virt'),
-+            ('or1k', 'virt'),
-             ('riscv32', 'virt'),
-             ('riscv64', 'virt'),
-             ('rx', 'gdbsim-r5f562n8'),
+diff --git a/include/qemu/cutils.h b/include/qemu/cutils.h
+index da15547bfb..34a9b9b220 100644
+--- a/include/qemu/cutils.h
++++ b/include/qemu/cutils.h
+@@ -241,13 +241,10 @@ int uleb128_decode_small(const uint8_t *in, uint32_t *n);
+ int qemu_pstrcmp0(const char **str1, const char **str2);
+ 
+ /* Find program directory, and save it for later usage with
+- * qemu_get_exec_dir().
++ * get_relocated_path().
+  * Try OS specific API first, if not working, parse from argv0. */
+ void qemu_init_exec_dir(const char *argv0);
+ 
+-/* Get the saved exec dir.  */
+-const char *qemu_get_exec_dir(void);
+-
+ /**
+  * get_relocated_path:
+  * @dir: the directory (typically a `CONFIG_*DIR` variable) to be relocated.
+diff --git a/util/cutils.c b/util/cutils.c
+index 42364039a5..9803f11a59 100644
+--- a/util/cutils.c
++++ b/util/cutils.c
+@@ -1144,11 +1144,6 @@ void qemu_init_exec_dir(const char *argv0)
+ #endif
+ }
+ 
+-const char *qemu_get_exec_dir(void)
+-{
+-    return exec_dir;
+-}
+-
+ char *get_relocated_path(const char *dir)
+ {
+     size_t prefix_len = strlen(CONFIG_PREFIX);
 -- 
 2.39.5
 
