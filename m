@@ -1,72 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1stlch-0005PN-O9
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Sep 2024 06:21:24 -0400
+	id 1stlgS-000654-GJ
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Sep 2024 06:25:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1stlcf-0005OO-Gt
- for qemu-trivial@nongnu.org; Thu, 26 Sep 2024 06:21:22 -0400
-Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1stlce-0000MA-0k
- for qemu-trivial@nongnu.org; Thu, 26 Sep 2024 06:21:21 -0400
-Received: by mail-wm1-x332.google.com with SMTP id
- 5b1f17b1804b1-42cb58d810eso12305935e9.0
- for <qemu-trivial@nongnu.org>; Thu, 26 Sep 2024 03:21:18 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1727346077; x=1727950877; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=ARgJuVYou0E4VVmswK8zO7oNcaiQjYHO4FNJULuCZqY=;
- b=Bly7Skad2DmbYApu4HjJ1YUXSvE47c+yulK2w+XeSEaqh3KDSbvrgUVt3XCsV+4xAc
- HNQYAdlkbGoH+7/RbxoV00/dXB8Y/9G3SjPN0mT3dLgrZF3f7MOjyPpNcqRvc8zBTsvE
- sWP28AZ1kZPnJ2pMzIvnwXk/pegIDJhkKRNIhuOLyDhH5L/1a8WKHtnwa0oyFt6Bw57W
- bFM0wEMkRyxJp52y67JQbvM0sw/i/AIKUVqcXD7kx+d3Rffzk3hmqdUpJBXFT44H+dq0
- +C1D7dCcP2ASsSVYHTAAfJI7DAHYBcjIqGM8fdB1+8Wiv70sUYtY1m1V4jts/QKuiF8M
- Dn7w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727346077; x=1727950877;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ARgJuVYou0E4VVmswK8zO7oNcaiQjYHO4FNJULuCZqY=;
- b=tq9nc90rpF6w8wBuX5dWTv7LS4aEa+NhtsmY+3BEgalEbTi6cVt31eXYlhBiZcECLd
- loxQDsq4ckvE8qUI0Zz0FlNkl2v0KhTdtKDblJK00rUVAZY/YDZ91EwTitW9D7RE1jeZ
- onkcyvi7Ix5u77yAHOE/Sjb1y1ZrKF9trMGCYj6KripiPPPTWKfIacnEj1KNVpFqTub3
- 0Au4a5nrTLbWwbu0kRRBX76GN3WS5ttE+sBpKc38ejmUXVsqbJwtZhuu7D4qCtNQnDyc
- CaPIbC5cylWpJpL3aazz2rdkBmX1MF8UlFRS+f5r/6XbuR/LiF3Tx1jIcuJUAiI/0v4H
- 3XQA==
-X-Gm-Message-State: AOJu0Yz4sj/PaHTvibTiW0OiYc5pw0+dOx9hUTjp18NYcLa7X3TidJ+C
- s8kWQFiSRHEiQtT9n021petVSidTBvfU/w/lfFpk2RblatVDfjB8uuV4bPs5bDI=
-X-Google-Smtp-Source: AGHT+IHLxGe33Ku/mE1BNbe3bmPbTA/m1VzdjLq3kcpNCSLVX57xfGFuUtjUZdaSLwOj4PCSLoXqQg==
-X-Received: by 2002:a5d:64ae:0:b0:374:c2a3:63cb with SMTP id
- ffacd0b85a97d-37ccda72703mr1930694f8f.0.1727346076656; 
- Thu, 26 Sep 2024 03:21:16 -0700 (PDT)
-Received: from localhost.localdomain (120.171.88.92.rev.sfr.net.
- [92.88.171.120]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37ccf3a4716sm1302184f8f.65.2024.09.26.03.21.15
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Thu, 26 Sep 2024 03:21:16 -0700 (PDT)
-From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
- "Michael S. Tsirkin" <mst@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PATCH] hw/audio/virtio-snd: Remove unnecessary "exec/tswap.h" header
-Date: Thu, 26 Sep 2024 12:21:13 +0200
-Message-ID: <20240926102113.64890-1-philmd@linaro.org>
-X-Mailer: git-send-email 2.45.2
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1stlgK-0005zJ-0k; Thu, 26 Sep 2024 06:25:08 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1stlgG-0000s9-TH; Thu, 26 Sep 2024 06:25:07 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id AF92A92957;
+ Thu, 26 Sep 2024 13:24:19 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id D1683146080;
+ Thu, 26 Sep 2024 13:24:48 +0300 (MSK)
+Message-ID: <4d4a326f-ef6d-4c37-bdbe-4f42a9005375@tls.msk.ru>
+Date: Thu, 26 Sep 2024 13:24:48 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::332;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] tests/qemu-iotests/testenv: Use the "r2d" machine for
+ sh4
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
+Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Yoshinori Sato <ysato@users.sourceforge.jp>,
+ Magnus Damm <magnus.damm@gmail.com>
+References: <20240925072420.14656-1-thuth@redhat.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <20240925072420.14656-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -79,31 +77,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Sep 2024 10:21:22 -0000
+X-List-Received-Date: Thu, 26 Sep 2024 10:25:12 -0000
 
-We were including the "exec/tswap.h" header to get
-target_words_bigendian() declaration, but since commit a276ec8e26
-("hw/audio/virtio-snd: Always use little endian audio format")
-removed this method call, we don't need this header anymore.
+25.09.2024 10:24, Thomas Huth wrote:
+> Commit 0ea0538fae516f9b4 removed the default machine of the sh4
+> binaries, so a lot of iotests are failing now without such a default
+> machine. Teach the iotest harness to use the "r2d" machine instead
+> to fix this problem.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   v2: "r2d" only works on little endian, so don't try to use it for sh4eb
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
----
- hw/audio/virtio-snd.c | 1 -
- 1 file changed, 1 deletion(-)
+Hm.  The v1 of this patch (with sh4eb addition) has already been merged
+to master.
 
-diff --git a/hw/audio/virtio-snd.c b/hw/audio/virtio-snd.c
-index 69838181dd..c5581d7b3d 100644
---- a/hw/audio/virtio-snd.c
-+++ b/hw/audio/virtio-snd.c
-@@ -20,7 +20,6 @@
- #include "qemu/log.h"
- #include "qemu/error-report.h"
- #include "qemu/lockable.h"
--#include "exec/tswap.h"
- #include "sysemu/runstate.h"
- #include "trace.h"
- #include "qapi/error.h"
--- 
-2.45.2
+I did a single pull request during my vacation (a week ago), and it contained
+a very fresh patch which received further discussion after I picked it up, but
+I haven't noticed.
 
+So we should now remove the already added sh4eb from there, it looks like.. :(
+
+I'll submit a patch doing that later today, hopefully.
+
+Thanks,
+
+/mjt
 
