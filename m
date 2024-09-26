@@ -1,135 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1stm9U-00009r-92
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Sep 2024 06:55:16 -0400
+	id 1stmmr-0002u6-55
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Sep 2024 07:35:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1stm9R-00007a-NX
- for qemu-trivial@nongnu.org; Thu, 26 Sep 2024 06:55:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1stm9O-0006gw-9A
- for qemu-trivial@nongnu.org; Thu, 26 Sep 2024 06:55:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1727348107;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=mw9WUsJEEnUswEYVSqI4oECc5l99gcPIonY/CcwUA64=;
- b=FKqupdk3AqFnCV03PK+4anSNR9NEg64aqEb+7Zn4PBnVaMcIWFBCYtkaZ7v/XdMVz31Yl2
- +nO34dGwUXfupVPTk2zw7eoJ86+19NF/5PqXgAfUR7nf48Nz25Eb18haVW/Y2CPqSaR7be
- wYPeH59rSRe3jS3UTz/odpK6A3YZtpM=
-Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
- [209.85.219.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-663-1TEJklwnMo-c_0Wr13E50g-1; Thu, 26 Sep 2024 06:55:06 -0400
-X-MC-Unique: 1TEJklwnMo-c_0Wr13E50g-1
-Received: by mail-qv1-f69.google.com with SMTP id
- 6a1803df08f44-6c35b3a220aso37365736d6.0
- for <qemu-trivial@nongnu.org>; Thu, 26 Sep 2024 03:55:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1stmmp-0002mk-CZ
+ for qemu-trivial@nongnu.org; Thu, 26 Sep 2024 07:35:55 -0400
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1stmmn-0004jy-Pv
+ for qemu-trivial@nongnu.org; Thu, 26 Sep 2024 07:35:55 -0400
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-42cb57f8b41so10796875e9.0
+ for <qemu-trivial@nongnu.org>; Thu, 26 Sep 2024 04:35:53 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1727350552; x=1727955352; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to
+ :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=bv/83AMKyF4owiura6pFp0WrCkZvXqKtoQfcxxozU+A=;
+ b=j2c19njE6uMgjcab588oKP7KprUg6mv4fsZc0JTtyzOmfyUpKI7mqTutre75qTcBtp
+ 4B+D/+XuyNff5y/Tlcylx51mho82MdwVaVnL0VfnHwpHkDKbECa1dBpJKTNfOhSC5io7
+ OFGJpLOJcW0pQA9SNq4tz2xEdpNiVTYZZKjEnIDINWpxit7v4BRK4HGVfm27HmPUDm3e
+ v1xp+GIgofRNui0PadxWEBC0/DP0N94TJVubSpxD0KVYIFwEozGXmlD+JeMxx8DbiPnt
+ aDm+KSQ3HS+6QsHa0THOiaiww6YlF5eWYWm4UheLDwY7irPsj0tEF1quiY5DFDgkrEX7
+ YOqw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727348106; x=1727952906;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=mw9WUsJEEnUswEYVSqI4oECc5l99gcPIonY/CcwUA64=;
- b=N6YSH4VurAjto+GIFS3s9TztDdzueEXrcC0ExBzSHS7wVFG5e/3JFY5Jrf0vCeQEXI
- QXeKCtRiuN4EfVNnGOmGoysOVW5drwjzZAhKcM7LcTAB8Ge475g1F0jwoBAAXBoEnzrH
- 2C011ngi7QFDqZdka0Erdl+UeN38oJltLr1Z+dcNqQeTlz4q8mgckZ0AxJd+ZX3flsSt
- zKzhprCyQK3HNMUAXh34MIHE8Lx0pWdr+GWkx3EQ/bwUXJi4yP2Qd9tTjZeBDyHFB1km
- NChSIGVMaEHT1zVULo9fhL9QCegSZXUnj+rpQIhw486UCpucEu77PE7iHKX/vFxUJPfO
- wgHA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUV3VO9RF3TUL/wtIfciV+i4XfjzuTCyTuEom9Zj2+/itndM2MX/xYScfdiAc7arfpa5+NRNRnE6fotbGc=@nongnu.org
-X-Gm-Message-State: AOJu0YxQ8LUtOyJiSeg+YeWyv5soYDrf+ASzuuVUKTrQQwtQwZVxOPCX
- dVlf17h8KRqHhPZbHzr8HUepzteWLdjU9Z+Mq9jJPUqqNwDv9euLmmt0Fw4B2frjzG7TVaM9FTs
- k3tKDVSv1wgTHx/ks3xI1ldXpr/kIEcQSshHgIRVEcKWmsTHmW2zCcVk=
-X-Received: by 2002:a05:6214:21c5:b0:6c3:69f9:fb49 with SMTP id
- 6a1803df08f44-6cb2f2c7417mr51879846d6.16.1727348106161; 
- Thu, 26 Sep 2024 03:55:06 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEc5Z5LSOeDYcdPL7vl56XgkchZXjZbHXVnF9Ny1sY22TtPK3UG2o4KWUYyRmB9c+p9fAtOXw==
-X-Received: by 2002:a05:6214:21c5:b0:6c3:69f9:fb49 with SMTP id
- 6a1803df08f44-6cb2f2c7417mr51879416d6.16.1727348105722; 
- Thu, 26 Sep 2024 03:55:05 -0700 (PDT)
-Received: from [192.168.0.7] (ip-109-42-48-176.web.vodafone.de.
- [109.42.48.176]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-6cb3951dac0sm955396d6.23.2024.09.26.03.55.02
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 26 Sep 2024 03:55:05 -0700 (PDT)
-Message-ID: <e2a50551-dd9d-45e7-a163-b98881347791@redhat.com>
-Date: Thu, 26 Sep 2024 12:55:00 +0200
+ d=1e100.net; s=20230601; t=1727350552; x=1727955352;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to
+ :references:user-agent:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=bv/83AMKyF4owiura6pFp0WrCkZvXqKtoQfcxxozU+A=;
+ b=SzO1BGbCWlWtveXr8kNRW/6NPCVoGZnzv7sDefr85ZHu5VorHEaaIki36RFX9++d3v
+ 1bX/Oyt4qGNYBXNR/JncgmDmm81Ct/Uv4EqBME8y8fcawgrwdu+cK2wIjSpp3OdM3Yee
+ HCHe3UW0AbIzAslT7nmSELFfH7gTfgmfD2yTZ4iRWFshAO41InkU3D9bBJmZTuPY6kix
+ kKdHq+XKdRtIQ1WeoKDwNF3k8rsYOw6+4jAClMwT8kpHLLrAhrflG8YIqDQ+dzKeLC2/
+ 2/Y/DzXcRwAt9i/ul/GIjGlymRO+o+8n1hbdWVsYFLYzGEY2196h9zV+slkeh6Y6i80L
+ iDoQ==
+X-Gm-Message-State: AOJu0YwzTrGm/0XA5EwQQhrEPelye4a98veR4Tjzh/7OnAAcHkB4eoB7
+ HF8SPD/JAKz9R6LipoHNVoJ2silrPdE97P+Trq7V3Bqq+svjOMyg6PZWV1kRfAQ=
+X-Google-Smtp-Source: AGHT+IGBMEaO6vmfwOkH9roFaNgsuFdkp47MUil497wEWWi4RU3NmZGOKKger0acfXazCYrawMgrRw==
+X-Received: by 2002:a5d:5d86:0:b0:37c:c4a0:418a with SMTP id
+ ffacd0b85a97d-37cc4a042c8mr4540059f8f.59.1727350551577; 
+ Thu, 26 Sep 2024 04:35:51 -0700 (PDT)
+Received: from meli-email.org (adsl-13.37.6.161.tellas.gr. [37.6.161.13])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-37ccd8ff16asm2041743f8f.54.2024.09.26.04.35.51
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 26 Sep 2024 04:35:51 -0700 (PDT)
+Date: Thu, 26 Sep 2024 14:35:10 +0300
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>,
+ qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ Michael S. Tsirkin <mst@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>
+Bcc: 
+Subject: Re: [PATCH] hw/audio/virtio-snd: Remove unnecessary "exec/tswap.h"
+ header
+User-Agent: meli 0.8.7
+References: <20240926102113.64890-1-philmd@linaro.org>
+In-Reply-To: <20240926102113.64890-1-philmd@linaro.org>
+Message-ID: <kf47q.xtqbzbv0rng0@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] tests/qemu-iotests/testenv: Use the "r2d" machine for
- sh4
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
- Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>
-References: <20240925072420.14656-1-thuth@redhat.com>
- <4d4a326f-ef6d-4c37-bdbe-4f42a9005375@tls.msk.ru>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <4d4a326f-ef6d-4c37-bdbe-4f42a9005375@tls.msk.ru>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset=utf-8; format=flowed
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-wm1-x32c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.131,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,33 +87,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Sep 2024 10:55:14 -0000
+X-List-Received-Date: Thu, 26 Sep 2024 11:35:55 -0000
 
-On 26/09/2024 12.24, Michael Tokarev wrote:
-> 25.09.2024 10:24, Thomas Huth wrote:
->> Commit 0ea0538fae516f9b4 removed the default machine of the sh4
->> binaries, so a lot of iotests are failing now without such a default
->> machine. Teach the iotest harness to use the "r2d" machine instead
->> to fix this problem.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   v2: "r2d" only works on little endian, so don't try to use it for sh4eb
-> 
-> Hm.  The v1 of this patch (with sh4eb addition) has already been merged
-> to master.
-> 
-> I did a single pull request during my vacation (a week ago), and it contained
-> a very fresh patch which received further discussion after I picked it up, but
-> I haven't noticed.
-> 
-> So we should now remove the already added sh4eb from there, it looks like.. :(
-> 
-> I'll submit a patch doing that later today, hopefully.
+On Thu, 26 Sep 2024 13:21, Philippe Mathieu-Daudé <philmd@linaro.org> wrote:
+>We were including the "exec/tswap.h" header to get
+>target_words_bigendian() declaration, but since commit a276ec8e26
+>("hw/audio/virtio-snd: Always use little endian audio format")
+>removed this method call, we don't need this header anymore.
+>
+>Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>---
+> hw/audio/virtio-snd.c | 1 -
+> 1 file changed, 1 deletion(-)
+>
+>diff --git a/hw/audio/virtio-snd.c b/hw/audio/virtio-snd.c
+>index 69838181dd..c5581d7b3d 100644
+>--- a/hw/audio/virtio-snd.c
+>+++ b/hw/audio/virtio-snd.c
+>@@ -20,7 +20,6 @@
+> #include "qemu/log.h"
+> #include "qemu/error-report.h"
+> #include "qemu/lockable.h"
+>-#include "exec/tswap.h"
+> #include "sysemu/runstate.h"
+> #include "trace.h"
+> #include "qapi/error.h"
+>-- 
+>2.45.2
+>
 
-I'm planning to provide a patch to remove sh4eb-softmmu completely (since it 
-is useless nowadays) ... I can add it there, too.
-
-  Thomas
-
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
