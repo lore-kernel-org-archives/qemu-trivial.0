@@ -1,62 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1stMO8-0005gf-FB
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Sep 2024 03:24:40 -0400
+	id 1stlHI-00051m-Ux
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Sep 2024 05:59:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1stMO6-0005ce-1M
- for qemu-trivial@nongnu.org; Wed, 25 Sep 2024 03:24:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1stMO3-0007Lg-AN
- for qemu-trivial@nongnu.org; Wed, 25 Sep 2024 03:24:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1727249074;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=cCqFgo9ceSP1QgFSQVcwRMtikl//VrQAxhDtqipy9Yo=;
- b=ZzYuo8zxxxRkSr6Y73U1qi8phCmON3MQzNxIUI+DhF2YtAjAEc92SFIK1yORMDhTTsJiTb
- YgYbTCOBRL1AGrmMp71uwG1Gn0mXrBOhpTPypecOfF82muFWmlReTHxEcstoMIjjjWOs7z
- t8XZWllrtxXauLawCPJgg3T6ptiYfHE=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-567-9WUPJiDyPZa7xiKm0dRblQ-1; Wed,
- 25 Sep 2024 03:24:28 -0400
-X-MC-Unique: 9WUPJiDyPZa7xiKm0dRblQ-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (unknown
- [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 978F01953948; Wed, 25 Sep 2024 07:24:27 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.193.206])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A14E719560B1; Wed, 25 Sep 2024 07:24:22 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>
-Cc: qemu-block@nongnu.org, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Yoshinori Sato <ysato@users.sourceforge.jp>,
- Magnus Damm <magnus.damm@gmail.com>
-Subject: [PATCH v2] tests/qemu-iotests/testenv: Use the "r2d" machine for sh4
-Date: Wed, 25 Sep 2024 09:24:20 +0200
-Message-ID: <20240925072420.14656-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1stlHH-00050P-Ut
+ for qemu-trivial@nongnu.org; Thu, 26 Sep 2024 05:59:15 -0400
+Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1stlHE-0005eV-09
+ for qemu-trivial@nongnu.org; Thu, 26 Sep 2024 05:59:15 -0400
+Received: by mail-ed1-x52c.google.com with SMTP id
+ 4fb4d7f45d1cf-5c876ed9c93so773790a12.2
+ for <qemu-trivial@nongnu.org>; Thu, 26 Sep 2024 02:59:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1727344750; x=1727949550; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=kE+xQ2mZaipeurpR6JeNsttlF4pSYhRTtpRYC9WWWKc=;
+ b=J1QRMeladfsq68JqjksMvdG9RvJn5b6MnKg0jH/7PwZbvXblVkOQ4e93TNp3dlqL15
+ rlUwlU2Iq29payFIn8rkj4P9FgntyszcP8kvZZI7aYTMeZ1fI6EFfy7ZllADButM3jbb
+ 7RMwIIXO1qnaNhehhp9XmOVTAr7xM/sAZ+hW1JIXM4MoUdnma67RPRxlFun/e5HbvnYc
+ RMieI7AnOxm3fv5SQ/9bX6AA1Hlyzc2XacJ7rpQkERwU4qFGPvixI3aJatNbWOuzyCXD
+ AvKCkLZ14h7V8wtZqnqAxo5owYay0FtLDzbnLr9XIZq2YN6rk0x4zQx7PNxnxYUDgTYv
+ i/cw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1727344750; x=1727949550;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=kE+xQ2mZaipeurpR6JeNsttlF4pSYhRTtpRYC9WWWKc=;
+ b=tEQpgFcTCws0X6dNUAMxvfXsCZ2d8F8XPtohV5nl4sPp6UoTY4kXL8XV+UYQ+sTzrJ
+ NzofxozKXNC1wdj8jCLJLVW+ff3JLKNaEV/GB2cUXbTyWKatVHefkoACsNEUl8vb+52w
+ QZzDSZjMmpc6eMmhmoz2wvNaZFjAbcB0z0adHfSd25+y2njDrYVx26E0Dgzx5addrBC3
+ YwL/GSGnfyI+8p5k9+O108hnK8XlD9te+RQ7bJriY+CftPPPHfAJSlhxV1b3pGAgGrrq
+ xv0gXjhwE9zaCp6n8hf72vntriZRZZxlNl9Oyr0Yi5ErfdMihFHJsh8N6zN44ne3cDc/
+ OCrQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUtM8ZefTOzEOglo+YTy96AoOkxk74cm7CrKQVkalGClkuyHsIXKuJoM118uR6l99Uv5Wlo9ef7zRElqs4=@nongnu.org
+X-Gm-Message-State: AOJu0YzHCzm/LnUS3mN0XxxBiVTUZ2eknh/WDc6AZ1RE8FIeyWqscuGo
+ hHmu96eispmWacJk6m/HKxOni32nBdCS7ZDPbv4rOm5AZRhTSYqV2OUIxptNkq93uLER6l5drdQ
+ jn9iyu4NxCXIr1kK9lwkSzXSMLXzvsEpdkX3NhQ==
+X-Google-Smtp-Source: AGHT+IFHmkhOxplo2eMccxZnipGgtJ5kFrnj7yVojrjo7wRlg02kdfAHOS/PilypLUYHcNiI7bDg0dG2AM5WjqivWqA=
+X-Received: by 2002:a05:6402:50cf:b0:5c7:2209:e709 with SMTP id
+ 4fb4d7f45d1cf-5c72209e850mr3421566a12.17.1727344749906; Thu, 26 Sep 2024
+ 02:59:09 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+References: <20240920074134.664961-1-mjt@tls.msk.ru>
+In-Reply-To: <20240920074134.664961-1-mjt@tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 26 Sep 2024 10:58:57 +0100
+Message-ID: <CAFEAcA-FaykofbvGUupL2y3K9XpgwH8uLsWvzLs2pQ_eh21Hdg@mail.gmail.com>
+Subject: Re: [PULL 00/22] Trivial patches for 2024-09-20
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.09,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -69,33 +76,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Sep 2024 07:24:38 -0000
+X-List-Received-Date: Thu, 26 Sep 2024 09:59:16 -0000
 
-Commit 0ea0538fae516f9b4 removed the default machine of the sh4
-binaries, so a lot of iotests are failing now without such a default
-machine. Teach the iotest harness to use the "r2d" machine instead
-to fix this problem.
+On Fri, 20 Sept 2024 at 08:42, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>
+> The following changes since commit 01dc65a3bc262ab1bec8fe89775e9bbfa627becb:
+>
+>   Merge tag 'pull-target-arm-20240919' of https://git.linaro.org/people/pmaydell/qemu-arm into staging (2024-09-19 14:15:15 +0100)
+>
+> are available in the Git repository at:
+>
+>   https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+>
+> for you to fetch changes up to 06e2329636f9c05b046ccf8aa1b245bbdfb01263:
+>
+>   license: Update deprecated SPDX tag GPL-2.0 to GPL-2.0-only (2024-09-20 10:11:59 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2024-09-20
+>
+> Various things.  Including explicit-LFS usage removal for linux-user
+> which allows qemu to be built on musl, some minor tests fixes, removals
+> of unused functions, license tag fixes, and others.
+>
+> ----------------------------------------------------------------
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v2: "r2d" only works on little endian, so don't try to use it for sh4eb
 
- tests/qemu-iotests/testenv.py | 1 +
- 1 file changed, 1 insertion(+)
+Applied, thanks.
 
-diff --git a/tests/qemu-iotests/testenv.py b/tests/qemu-iotests/testenv.py
-index 0b32eec119..8cd620c202 100644
---- a/tests/qemu-iotests/testenv.py
-+++ b/tests/qemu-iotests/testenv.py
-@@ -244,6 +244,7 @@ def __init__(self, source_dir: str, build_dir: str,
-             ('riscv32', 'virt'),
-             ('riscv64', 'virt'),
-             ('rx', 'gdbsim-r5f562n8'),
-+            ('sh4', 'r2d'),
-             ('tricore', 'tricore_testboard')
-         )
-         for suffix, machine in machine_map:
--- 
-2.46.0
+Please update the changelog at https://wiki.qemu.org/ChangeLog/9.2
+for any user-visible changes.
 
+-- PMM
 
