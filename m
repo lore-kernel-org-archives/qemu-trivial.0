@@ -1,63 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1stlHI-00051m-Ux
-	for mharc-qemu-trivial@gnu.org; Thu, 26 Sep 2024 05:59:18 -0400
+	id 1stlch-0005PN-O9
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Sep 2024 06:21:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1stlHH-00050P-Ut
- for qemu-trivial@nongnu.org; Thu, 26 Sep 2024 05:59:15 -0400
-Received: from mail-ed1-x52c.google.com ([2a00:1450:4864:20::52c])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1stlcf-0005OO-Gt
+ for qemu-trivial@nongnu.org; Thu, 26 Sep 2024 06:21:22 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1stlHE-0005eV-09
- for qemu-trivial@nongnu.org; Thu, 26 Sep 2024 05:59:15 -0400
-Received: by mail-ed1-x52c.google.com with SMTP id
- 4fb4d7f45d1cf-5c876ed9c93so773790a12.2
- for <qemu-trivial@nongnu.org>; Thu, 26 Sep 2024 02:59:11 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1stlce-0000MA-0k
+ for qemu-trivial@nongnu.org; Thu, 26 Sep 2024 06:21:21 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-42cb58d810eso12305935e9.0
+ for <qemu-trivial@nongnu.org>; Thu, 26 Sep 2024 03:21:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1727344750; x=1727949550; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=kE+xQ2mZaipeurpR6JeNsttlF4pSYhRTtpRYC9WWWKc=;
- b=J1QRMeladfsq68JqjksMvdG9RvJn5b6MnKg0jH/7PwZbvXblVkOQ4e93TNp3dlqL15
- rlUwlU2Iq29payFIn8rkj4P9FgntyszcP8kvZZI7aYTMeZ1fI6EFfy7ZllADButM3jbb
- 7RMwIIXO1qnaNhehhp9XmOVTAr7xM/sAZ+hW1JIXM4MoUdnma67RPRxlFun/e5HbvnYc
- RMieI7AnOxm3fv5SQ/9bX6AA1Hlyzc2XacJ7rpQkERwU4qFGPvixI3aJatNbWOuzyCXD
- AvKCkLZ14h7V8wtZqnqAxo5owYay0FtLDzbnLr9XIZq2YN6rk0x4zQx7PNxnxYUDgTYv
- i/cw==
+ d=linaro.org; s=google; t=1727346077; x=1727950877; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=ARgJuVYou0E4VVmswK8zO7oNcaiQjYHO4FNJULuCZqY=;
+ b=Bly7Skad2DmbYApu4HjJ1YUXSvE47c+yulK2w+XeSEaqh3KDSbvrgUVt3XCsV+4xAc
+ HNQYAdlkbGoH+7/RbxoV00/dXB8Y/9G3SjPN0mT3dLgrZF3f7MOjyPpNcqRvc8zBTsvE
+ sWP28AZ1kZPnJ2pMzIvnwXk/pegIDJhkKRNIhuOLyDhH5L/1a8WKHtnwa0oyFt6Bw57W
+ bFM0wEMkRyxJp52y67JQbvM0sw/i/AIKUVqcXD7kx+d3Rffzk3hmqdUpJBXFT44H+dq0
+ +C1D7dCcP2ASsSVYHTAAfJI7DAHYBcjIqGM8fdB1+8Wiv70sUYtY1m1V4jts/QKuiF8M
+ Dn7w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727344750; x=1727949550;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1727346077; x=1727950877;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=kE+xQ2mZaipeurpR6JeNsttlF4pSYhRTtpRYC9WWWKc=;
- b=tEQpgFcTCws0X6dNUAMxvfXsCZ2d8F8XPtohV5nl4sPp6UoTY4kXL8XV+UYQ+sTzrJ
- NzofxozKXNC1wdj8jCLJLVW+ff3JLKNaEV/GB2cUXbTyWKatVHefkoACsNEUl8vb+52w
- QZzDSZjMmpc6eMmhmoz2wvNaZFjAbcB0z0adHfSd25+y2njDrYVx26E0Dgzx5addrBC3
- YwL/GSGnfyI+8p5k9+O108hnK8XlD9te+RQ7bJriY+CftPPPHfAJSlhxV1b3pGAgGrrq
- xv0gXjhwE9zaCp6n8hf72vntriZRZZxlNl9Oyr0Yi5ErfdMihFHJsh8N6zN44ne3cDc/
- OCrQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUtM8ZefTOzEOglo+YTy96AoOkxk74cm7CrKQVkalGClkuyHsIXKuJoM118uR6l99Uv5Wlo9ef7zRElqs4=@nongnu.org
-X-Gm-Message-State: AOJu0YzHCzm/LnUS3mN0XxxBiVTUZ2eknh/WDc6AZ1RE8FIeyWqscuGo
- hHmu96eispmWacJk6m/HKxOni32nBdCS7ZDPbv4rOm5AZRhTSYqV2OUIxptNkq93uLER6l5drdQ
- jn9iyu4NxCXIr1kK9lwkSzXSMLXzvsEpdkX3NhQ==
-X-Google-Smtp-Source: AGHT+IFHmkhOxplo2eMccxZnipGgtJ5kFrnj7yVojrjo7wRlg02kdfAHOS/PilypLUYHcNiI7bDg0dG2AM5WjqivWqA=
-X-Received: by 2002:a05:6402:50cf:b0:5c7:2209:e709 with SMTP id
- 4fb4d7f45d1cf-5c72209e850mr3421566a12.17.1727344749906; Thu, 26 Sep 2024
- 02:59:09 -0700 (PDT)
+ bh=ARgJuVYou0E4VVmswK8zO7oNcaiQjYHO4FNJULuCZqY=;
+ b=tq9nc90rpF6w8wBuX5dWTv7LS4aEa+NhtsmY+3BEgalEbTi6cVt31eXYlhBiZcECLd
+ loxQDsq4ckvE8qUI0Zz0FlNkl2v0KhTdtKDblJK00rUVAZY/YDZ91EwTitW9D7RE1jeZ
+ onkcyvi7Ix5u77yAHOE/Sjb1y1ZrKF9trMGCYj6KripiPPPTWKfIacnEj1KNVpFqTub3
+ 0Au4a5nrTLbWwbu0kRRBX76GN3WS5ttE+sBpKc38ejmUXVsqbJwtZhuu7D4qCtNQnDyc
+ CaPIbC5cylWpJpL3aazz2rdkBmX1MF8UlFRS+f5r/6XbuR/LiF3Tx1jIcuJUAiI/0v4H
+ 3XQA==
+X-Gm-Message-State: AOJu0Yz4sj/PaHTvibTiW0OiYc5pw0+dOx9hUTjp18NYcLa7X3TidJ+C
+ s8kWQFiSRHEiQtT9n021petVSidTBvfU/w/lfFpk2RblatVDfjB8uuV4bPs5bDI=
+X-Google-Smtp-Source: AGHT+IHLxGe33Ku/mE1BNbe3bmPbTA/m1VzdjLq3kcpNCSLVX57xfGFuUtjUZdaSLwOj4PCSLoXqQg==
+X-Received: by 2002:a5d:64ae:0:b0:374:c2a3:63cb with SMTP id
+ ffacd0b85a97d-37ccda72703mr1930694f8f.0.1727346076656; 
+ Thu, 26 Sep 2024 03:21:16 -0700 (PDT)
+Received: from localhost.localdomain (120.171.88.92.rev.sfr.net.
+ [92.88.171.120]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-37ccf3a4716sm1302184f8f.65.2024.09.26.03.21.15
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 26 Sep 2024 03:21:16 -0700 (PDT)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ Manos Pitsidianakis <manos.pitsidianakis@linaro.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] hw/audio/virtio-snd: Remove unnecessary "exec/tswap.h" header
+Date: Thu, 26 Sep 2024 12:21:13 +0200
+Message-ID: <20240926102113.64890-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-References: <20240920074134.664961-1-mjt@tls.msk.ru>
-In-Reply-To: <20240920074134.664961-1-mjt@tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 26 Sep 2024 10:58:57 +0100
-Message-ID: <CAFEAcA-FaykofbvGUupL2y3K9XpgwH8uLsWvzLs2pQ_eh21Hdg@mail.gmail.com>
-Subject: Re: [PULL 00/22] Trivial patches for 2024-09-20
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52c;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52c.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -76,36 +79,31 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 26 Sep 2024 09:59:16 -0000
+X-List-Received-Date: Thu, 26 Sep 2024 10:21:22 -0000
 
-On Fri, 20 Sept 2024 at 08:42, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
-> The following changes since commit 01dc65a3bc262ab1bec8fe89775e9bbfa627becb:
->
->   Merge tag 'pull-target-arm-20240919' of https://git.linaro.org/people/pmaydell/qemu-arm into staging (2024-09-19 14:15:15 +0100)
->
-> are available in the Git repository at:
->
->   https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
->
-> for you to fetch changes up to 06e2329636f9c05b046ccf8aa1b245bbdfb01263:
->
->   license: Update deprecated SPDX tag GPL-2.0 to GPL-2.0-only (2024-09-20 10:11:59 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2024-09-20
->
-> Various things.  Including explicit-LFS usage removal for linux-user
-> which allows qemu to be built on musl, some minor tests fixes, removals
-> of unused functions, license tag fixes, and others.
->
-> ----------------------------------------------------------------
+We were including the "exec/tswap.h" header to get
+target_words_bigendian() declaration, but since commit a276ec8e26
+("hw/audio/virtio-snd: Always use little endian audio format")
+removed this method call, we don't need this header anymore.
 
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ hw/audio/virtio-snd.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-Applied, thanks.
+diff --git a/hw/audio/virtio-snd.c b/hw/audio/virtio-snd.c
+index 69838181dd..c5581d7b3d 100644
+--- a/hw/audio/virtio-snd.c
++++ b/hw/audio/virtio-snd.c
+@@ -20,7 +20,6 @@
+ #include "qemu/log.h"
+ #include "qemu/error-report.h"
+ #include "qemu/lockable.h"
+-#include "exec/tswap.h"
+ #include "sysemu/runstate.h"
+ #include "trace.h"
+ #include "qapi/error.h"
+-- 
+2.45.2
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/9.2
-for any user-visible changes.
-
--- PMM
 
