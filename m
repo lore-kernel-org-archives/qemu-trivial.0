@@ -1,71 +1,131 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1svIxH-0005on-Ra
-	for mharc-qemu-trivial@gnu.org; Mon, 30 Sep 2024 12:09:01 -0400
+	id 1svwYS-0000Mp-8U
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:26:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1svIxE-0005lY-JI
- for qemu-trivial@nongnu.org; Mon, 30 Sep 2024 12:08:57 -0400
-Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1svIxB-0002cY-SI
- for qemu-trivial@nongnu.org; Mon, 30 Sep 2024 12:08:55 -0400
-Received: by mail-ed1-x52d.google.com with SMTP id
- 4fb4d7f45d1cf-5c8967dd2c7so1631171a12.1
- for <qemu-trivial@nongnu.org>; Mon, 30 Sep 2024 09:08:51 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1727712530; x=1728317330; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=tuQSy4+uzylTJyF9z1JjEp55HsXGGY9v5j9uwyRAo7c=;
- b=iIy8DaebT/VOIixmSUacBfFKlEU79EcwBAW9rummJoje+mZxTRdMaym2M/OdDVpYGg
- lAXOu1dJ+ATThjRyeswixLyYCpYc5Pg71SpMo8kHfuGicFVr4UUqz9SKubJDEhPGiEtm
- wRYyFnCY2VRj/c8bwgixeY+3eDt7BCB6QSVavc7MQxMN/+524VzHGaoVMRtV/n8Nr5HN
- dCZZz2K2zThtqh3HyNkToH2eCkaxzlLGEnJDP//L2QBSRJTR8HHyNcw6I2epc7fbe+MR
- XXeqqv4lHZEZIs3VExz+hV/MPJJIGfMPRwzZMSOu4urpexMwCR7maPEcct9iaeQSy20W
- 782w==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwYL-0000MK-GG
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:25:53 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwYJ-0000We-VP
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:25:53 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1727864750;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=XMwMtz76lfJcPKySIzdnPKszxiHpDniIFN0UI66uwGE=;
+ b=ah5ddOroFfwElnQr37f2W7rE1eWJVwFx9yJW94Xvgpbo4/AgvgEXA51BFGVFHUGGOv6OGb
+ a6R9aEechh7tlUjn1U78FGE77BTLOwHgJ58b45c2W9Y37gAfpXG6QOzfPJ0d1kJYipWDt+
+ Suk5T1Ub3A6mLDTAvgaHY2Y6d/4qOdM=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-372-gBBrDcxaNSKdYFxs_ohHxA-1; Wed, 02 Oct 2024 06:25:49 -0400
+X-MC-Unique: gBBrDcxaNSKdYFxs_ohHxA-1
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-42cb6f3c476so49846425e9.0
+ for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:25:49 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727712530; x=1728317330;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1727864748; x=1728469548;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=tuQSy4+uzylTJyF9z1JjEp55HsXGGY9v5j9uwyRAo7c=;
- b=DJpXKmInrdgD2nwoQM+qFiuXLf8jXg0GB1a7iYPmT/eKuqIWELl1EadNuose51accH
- wT94AkTosGU+ul+ImXDAFVkYfAv8Duiu70pf0IlHEIvXVzzoIQSA9nbkiNtrjPRK3uAr
- R+AHFp76ETi0ejyt79RNGgu2cOeVNjhabuc6PFTgaD7Wm/L6HdM+rPBvDSb5cDijDPJ1
- MVNtksWAP1vV1OnAcITEdyw1pcdRMqvIQ+kQouJMroj5ZO3QUJ7PCUelW9UQ/fu/Yvdc
- oWhMeV5IiQodWTnq0CBTGr3hUY4uSIeQcOi3wysuIVOKJXt0N1FJX4tQejYSqF0of0SC
- 33bQ==
+ bh=XMwMtz76lfJcPKySIzdnPKszxiHpDniIFN0UI66uwGE=;
+ b=nRK5t1Cae0G4vaXsPIBROPctxgt5myXhlY8XxmO1z0J9i3B0iRyFXHCBhW8Jk0wlq1
+ JIELq2HjtKcTk2lG+Lx2wOn6ZmraaptVewVzc1t12A2Dj5Fe6yq6ZqsPfAvRKkiHJuRO
+ sgUgkzKFEnbcZOKGVax0CEDt+FpQOWbPrbc6LUjw55oon9ukCSJnv1ZryXvFatuLUuqz
+ QeMTn4EKb+C1d5hhLLrMAPI2d+asAKg44O6JfBaI4xhkgTLN5eNSrekoFL5CglGgx2KG
+ 8fPd6hrQ51V2M4q2wxTb8uo3vmhiefi9rbAEi2Ti5Bhmm++FY0SvB4dc/VYN63nlXG+1
+ l38g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUAOrrm7DYSRC5CCrJdq4sG6d2vMx8iPaaRAmMjBTcmS8rqAVa0nqm6eZVCvAD1xfBve3F5ZLrSfnnFjrY=@nongnu.org
-X-Gm-Message-State: AOJu0Yxm6+QArHbKm+FHWr9PCvwBPbsmuTJwGP2cw9J0tfVcuMrCyGu+
- zSd8jN/3thUj5dm1G0kM41DnfiPZtacGOagDXF+SDkbwX90gsNTc2hWTgLQQjIFgWdW0X46mSlt
- H02e8kAaAyJyjeIoQlF1fh7XYdTQSyGAE0SIOt7KPaQS8K3uQ
-X-Google-Smtp-Source: AGHT+IEkVH81nsUTmIOlKQMtUzDgAs+UMW1TeSfYGAw/bmggZL5jckB6UgB9XPBwXwv5L2E9lDXUZ738REsYrCqvvEA=
-X-Received: by 2002:a05:6402:42d6:b0:5bf:c8:78a with SMTP id
- 4fb4d7f45d1cf-5c8824e7e60mr12996770a12.17.1727712530091; Mon, 30 Sep 2024
- 09:08:50 -0700 (PDT)
+ AJvYcCUJRx7dWM6NH+w0H6nwYttRArn/OB07oeLX+vk38muJc1lomZVJ7Xb1qOS85rn7TX66N2z8VCSmiVM0pc8=@nongnu.org
+X-Gm-Message-State: AOJu0YwOhd5Fwxi/DCPyPcHfGCXiCNMqCQaQ0KItC9acuh6ZfBVI6jdZ
+ wZ+bGou2fkg31baR4Vngj60dbHgalDOUL6DW2xa4sUt+inKuUC+jtvbt+f4lwvyZR8yIeM+pmvK
+ JzCEgK9wciNlmp8MtX/jRC2incwzuRRT7ZcEeJn73lolUnNqjknifIrw=
+X-Received: by 2002:a05:600c:3b03:b0:42c:b63e:fea6 with SMTP id
+ 5b1f17b1804b1-42f777ee31amr21694795e9.22.1727864748359; 
+ Wed, 02 Oct 2024 03:25:48 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IF+jLvOZbOcEN+T8mygG4Xp+1ksnZoFvPLzjm0Rx8NQIi1TBH5V/5NqSM0WWZG1ZJ6kX9tmgw==
+X-Received: by 2002:a05:600c:3b03:b0:42c:b63e:fea6 with SMTP id
+ 5b1f17b1804b1-42f777ee31amr21694565e9.22.1727864747907; 
+ Wed, 02 Oct 2024 03:25:47 -0700 (PDT)
+Received: from [192.168.0.7] (ip-109-42-49-143.web.vodafone.de.
+ [109.42.49.143]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-42f79ff92desm14912885e9.40.2024.10.02.03.25.46
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 02 Oct 2024 03:25:47 -0700 (PDT)
+Message-ID: <408f72f4-4d18-46e6-9e8a-89542acaa306@redhat.com>
+Date: Wed, 2 Oct 2024 12:25:45 +0200
 MIME-Version: 1.0
-References: <1723deb603afec3fa69a75970cef9aac62d57d62.1726674185.git.quic_mathbern@quicinc.com>
-In-Reply-To: <1723deb603afec3fa69a75970cef9aac62d57d62.1726674185.git.quic_mathbern@quicinc.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 30 Sep 2024 17:08:38 +0100
-Message-ID: <CAFEAcA_YGoNywJ88CpHkPsxQpfHDa9V0K+y1jt6iyt6kh4PVdg@mail.gmail.com>
-Subject: Re: [PATCH v2] hw: fix memory leak in IRQState allocation
-To: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
-Cc: qemu-devel@nongnu.org, balaton@eik.bme.hu, mst@redhat.com, 
- bcain@quicinc.com, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x52d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/xen: Remove deadcode
+To: dave@treblig.org, sstabellini@kernel.org, anthony@xenproject.org,
+ paul@xen.org, edgar.iglesias@gmail.com
+Cc: xen-devel@lists.xenproject.org, qemu-devel@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20240917002212.330893-1-dave@treblig.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20240917002212.330893-1-dave@treblig.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -78,27 +138,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 30 Sep 2024 16:08:57 -0000
+X-List-Received-Date: Wed, 02 Oct 2024 10:25:53 -0000
 
-On Wed, 18 Sept 2024 at 16:44, Matheus Tavares Bernardino
-<quic_mathbern@quicinc.com> wrote:
->
-> At e72a7f65c1 (hw: Move declaration of IRQState to header and add init
-> function, 2024-06-29), we've changed qemu_allocate_irq() to use a
-> combination of g_new() + object_initialize() instead of
-> IRQ(object_new()). The latter sets obj->free, so that that the memory is
-> properly cleaned when the object is finalized, but the former doesn't.
->
-> Fixes: e72a7f65c1 (hw: Move declaration of IRQState to header and add init function)
-> Signed-off-by: Matheus Tavares Bernardino <quic_mathbern@quicinc.com>
-> Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+On 17/09/2024 02.22, dave@treblig.org wrote:
+> From: "Dr. David Alan Gilbert" <dave@treblig.org>
+> 
+> xen_be_copy_grant_refs is unused since 2019's
+>    19f87870ba ("xen: remove the legacy 'xen_disk' backend")
+> 
+> xen_config_dev_console is unused since 2018's
+>    6d7c06c213 ("Remove broken Xen PV domain builder")
+> 
+> Remove them.
+> 
+> Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
 > ---
-> In v2: adjusted function init_irq_fields name to reflect it is not
-> public and added BALATON's Reviewed-by
+>   hw/xen/xen-legacy-backend.c         | 18 ------------------
+>   hw/xen/xen_devconfig.c              |  8 --------
+>   include/hw/xen/xen-legacy-backend.h |  5 -----
+>   3 files changed, 31 deletions(-)
+> 
+> diff --git a/hw/xen/xen-legacy-backend.c b/hw/xen/xen-legacy-backend.c
+> index 5514184f9c..e8e1ee4f7d 100644
+> --- a/hw/xen/xen-legacy-backend.c
+> +++ b/hw/xen/xen-legacy-backend.c
+> @@ -147,24 +147,6 @@ void xen_be_unmap_grant_refs(struct XenLegacyDevice *xendev, void *ptr,
+>       }
+>   }
+>   
+> -int xen_be_copy_grant_refs(struct XenLegacyDevice *xendev,
+> -                           bool to_domain,
+> -                           XenGrantCopySegment segs[],
+> -                           unsigned int nr_segs)
+> -{
+> -    int rc;
+> -
+> -    assert(xendev->ops->flags & DEVOPS_FLAG_NEED_GNTDEV);
+> -
+> -    rc = qemu_xen_gnttab_grant_copy(xendev->gnttabdev, to_domain, xen_domid,
+> -                                    segs, nr_segs, NULL);
+> -    if (rc) {
+> -        xen_pv_printf(xendev, 0, "xengnttab_grant_copy failed: %s\n",
+> -                      strerror(-rc));
+> -    }
+> -    return rc;
+> -}
+> -
+>   /*
+>    * get xen backend device, allocate a new one if it doesn't exist.
+>    */
+> diff --git a/hw/xen/xen_devconfig.c b/hw/xen/xen_devconfig.c
+> index 2150869f60..45ae134b84 100644
+> --- a/hw/xen/xen_devconfig.c
+> +++ b/hw/xen/xen_devconfig.c
+> @@ -66,11 +66,3 @@ int xen_config_dev_vkbd(int vdev)
+>       xen_config_dev_dirs("vkbd", "vkbd", vdev, fe, be, sizeof(fe));
+>       return xen_config_dev_all(fe, be);
+>   }
+> -
+> -int xen_config_dev_console(int vdev)
+> -{
+> -    char fe[256], be[256];
+> -
+> -    xen_config_dev_dirs("console", "console", vdev, fe, be, sizeof(fe));
+> -    return xen_config_dev_all(fe, be);
+> -}
+> diff --git a/include/hw/xen/xen-legacy-backend.h b/include/hw/xen/xen-legacy-backend.h
+> index 943732b8d1..e198b120c5 100644
+> --- a/include/hw/xen/xen-legacy-backend.h
+> +++ b/include/hw/xen/xen-legacy-backend.h
+> @@ -50,10 +50,6 @@ void *xen_be_map_grant_refs(struct XenLegacyDevice *xendev, uint32_t *refs,
+>   void xen_be_unmap_grant_refs(struct XenLegacyDevice *xendev, void *ptr,
+>                                uint32_t *refs, unsigned int nr_refs);
+>   
+> -int xen_be_copy_grant_refs(struct XenLegacyDevice *xendev,
+> -                           bool to_domain, XenGrantCopySegment segs[],
+> -                           unsigned int nr_segs);
+> -
+>   static inline void *xen_be_map_grant_ref(struct XenLegacyDevice *xendev,
+>                                            uint32_t ref, int prot)
+>   {
+> @@ -70,6 +66,5 @@ static inline void xen_be_unmap_grant_ref(struct XenLegacyDevice *xendev,
+>   void xen_config_cleanup(void);
+>   int xen_config_dev_vfb(int vdev, const char *type);
+>   int xen_config_dev_vkbd(int vdev);
+> -int xen_config_dev_console(int vdev);
+>   
+>   #endif /* HW_XEN_LEGACY_BACKEND_H */
 
-I'll pick this one up via target-arm.next, unless anybody
-would prefer it to go via some other route.
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-thanks
--- PMM
 
