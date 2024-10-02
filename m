@@ -1,69 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1svwnH-0002aR-JD
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:41:19 -0400
+	id 1svwo4-00039i-4N
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:42:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwnF-0002a5-QK
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:41:18 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwo1-00039K-Sa
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:42:05 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwnE-0002Yg-0V
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:41:17 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwnm-0002a2-5J
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:42:05 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1727865671;
+ s=mimecast20190719; t=1727865709;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=6lvvepeCr/w31iiapTDJFAzQrCKLFbSQiEUqxFrebgw=;
- b=Gn/ex2SZoVCulmrevY6JOyRESszFqEmvlV8UtCvXswxhjVtZ+rohyh12tgYOQVmlYhjsgY
- k7hwKakhrcK+BBQrYKNiNYDRLTAyOPn2lcHpFufh784EKLhTLTgAoE/yvjXBLbFPk/Un9D
- 2hY3LInEaOJpqbOakdLV3+cvxmGVOHw=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=Jk+6uwbU3+q/YGIC1U4HcCbOtPCb9GLeymuWSf5rIMg=;
+ b=Aa0aHV9yR08KuxXZUDOC7PAj8yE7URqXX7l//wYAUvz0Gh9IHbRJUCS06egBn5i2L7ATdk
+ 7NZk03DeFsyu868rShtesQy6bxKAv3A0jHzsn6RmjaDx8eDeldbULua7co2q7lG/xpJz9n
+ HEx+CnTNlFgEuEYVnakCCxDut9So64Y=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-274-IoVAJPnYMdeQag3vg-J9PA-1; Wed, 02 Oct 2024 06:41:10 -0400
-X-MC-Unique: IoVAJPnYMdeQag3vg-J9PA-1
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-42cb89fbb8cso37404715e9.0
- for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:41:10 -0700 (PDT)
+ us-mta-510-2g4vfCzgMJOAyh4m-payKw-1; Wed, 02 Oct 2024 06:41:47 -0400
+X-MC-Unique: 2g4vfCzgMJOAyh4m-payKw-1
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-42cb940cd67so65296855e9.0
+ for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:41:47 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727865670; x=1728470470;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=6lvvepeCr/w31iiapTDJFAzQrCKLFbSQiEUqxFrebgw=;
- b=twLxX/8FMaErKAyA2xcHuJXgRyiqvH8KeefUSEJrNT1CzNJxjo9IJIQmf14y5J7wEA
- RvNQL+D6Y1v77f9LNKhb8MsnvREZJ1b5tYG8jY9JIZf1dq6n+LN3LaN60Te6WRPetCvb
- uSPVL99xSl38W5snu67lvt8XEhtfk+i8gSeZMt7465BGtPXmzgT6LOqC6jTQ5bzzudaR
- fjhwpiyIRc8NJDX8Lo9fl49SEGkvcEMDuipzu6ZCGP850987Gb5YEW3duC8vd7tagKkd
- tJMpWJgm2MU1WufdY9wU5lf//LCo5/li1/JUarfQ7CqGvrMfFAb4xHj85HhYNWSNaKJU
- F+0A==
+ d=1e100.net; s=20230601; t=1727865706; x=1728470506;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=Jk+6uwbU3+q/YGIC1U4HcCbOtPCb9GLeymuWSf5rIMg=;
+ b=gqCutgCJSvmuLezfATcpU+dRjFjGv7r90X8ctgXtgtflgkKVH+z3Rtagr/rv3fr0fY
+ tNUVdwwlTZWkI3stiR9ohu2Ga4K4KLNTFb5kjOrQ6mlKYbJsoYT9IXbsID2stOVbAVZf
+ 1PoTNa+gsqvbCjL0633u4QcfpjjzmmpOni/uyVXMrC3QUP8jryvUz1VC2UiT/z94jpzK
+ vzRwntBgVWkn4wIzkTjoXQ4jXBqlQIk9tyBnTqrJ7wXf+SNSU+v80ugU9HQ+JJSIafnS
+ gmcg4jcWAjBAtH6C0CLxr5WZ9B3/jrRc/ZqXesgP3H/ckM6xbh6Zz7MvKl1pm/QLLFpB
+ W1Qw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW5TFI6HS6/H4FTsN9Px9VT15XmwGwSngZhTGausanAM8wXemyhYxnKP4WrXeEx/OchraMbXNV7D8Yh8PI=@nongnu.org
-X-Gm-Message-State: AOJu0YyU5ylmeXvvg2X1qmqu6M4vJUJjTTN25hBTzA1mL0k29ogb2rwk
- ojuAt0E6rH1bHE2Oy9H+yuIRaeO53xidnoyAQMNodPO8eGJ7mYlByyc6hsRtCRgszM7VhvVFv5R
- X5rNzt+Ba8kloRppSjMR/03vst+yrnKHnzI3Hst3aZJbQa9/jX8n8G+8=
-X-Received: by 2002:a05:600c:4705:b0:42e:93f4:5383 with SMTP id
- 5b1f17b1804b1-42f777ecf6dmr16705535e9.23.1727865669626; 
- Wed, 02 Oct 2024 03:41:09 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGjrRCfjE5CyiCwnTqrjl0B3KeyzxI0sIDQFmmrnoK3wgcS4mE6nqKbQ1GsnTssSkyG5bCs/A==
-X-Received: by 2002:a05:600c:4705:b0:42e:93f4:5383 with SMTP id
- 5b1f17b1804b1-42f777ecf6dmr16705365e9.23.1727865669199; 
- Wed, 02 Oct 2024 03:41:09 -0700 (PDT)
+ AJvYcCX+hIRgkdsWV5uR9vxX/Dtx9cD8BrrFvHnjtHnSkYhpJTKU8cWQDLM5Rb7Q/Qd0FpT2Fex2+vL56lX+uWw=@nongnu.org
+X-Gm-Message-State: AOJu0YwGAJRvlvxN94eCMIZtlwDOAUaYI7GGvu/Xr8CbMZeyyXG1BFwF
+ SKyDHFTEWOdTkbnUjvDnwm8KogLvAQgQX7rQO4XUeNb0qnUdR7OgvVWpNCXqudmkfsL6L3oi2Co
+ 83GgE/wb2cm7xugDxG/wO3yBfS3MIdhueAnrPVgtHMY10bqphsKuCiHU=
+X-Received: by 2002:a05:6000:c9:b0:37c:d2e3:1298 with SMTP id
+ ffacd0b85a97d-37cfba19c9amr2397620f8f.55.1727865706496; 
+ Wed, 02 Oct 2024 03:41:46 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFsT/UcOOX1wF4XzUTMJamNALfDPq/+4M53dYqDtYVw6vCmJjwxLUBmA8EGusw1CZLiIXHbhg==
+X-Received: by 2002:a05:6000:c9:b0:37c:d2e3:1298 with SMTP id
+ ffacd0b85a97d-37cfba19c9amr2397587f8f.55.1727865706004; 
+ Wed, 02 Oct 2024 03:41:46 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-49-143.web.vodafone.de.
  [109.42.49.143]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42f7a00bc5csm15175585e9.45.2024.10.02.03.41.08
+ ffacd0b85a97d-37cd564d27csm13629502f8f.23.2024.10.02.03.41.45
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Oct 2024 03:41:08 -0700 (PDT)
-Message-ID: <2149788c-ea6a-4e6c-be95-b4daa5c5aefe@redhat.com>
-Date: Wed, 2 Oct 2024 12:41:07 +0200
+ Wed, 02 Oct 2024 03:41:45 -0700 (PDT)
+Message-ID: <31578ca3-4819-463a-85ba-d12aa784e377@redhat.com>
+Date: Wed, 2 Oct 2024 12:41:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] remote: Remove unused remote_iohub_finalize
-To: dave@treblig.org, elena.ufimtseva@oracle.com, jag.raman@oracle.com,
+Subject: Re: [PATCH] replay: Remove unused replay_disable_events
+To: dave@treblig.org, pavel.dovgaluk@ispras.ru, pbonzini@redhat.com,
  qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240919165852.322707-1-dave@treblig.org>
+References: <20240918234005.466999-1-dave@treblig.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -107,7 +108,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240919165852.322707-1-dave@treblig.org>
+In-Reply-To: <20240918234005.466999-1-dave@treblig.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -120,9 +121,7 @@ X-Spam_score: -2.2
 X-Spam_bar: --
 X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,56 +134,55 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Oct 2024 10:41:18 -0000
+X-List-Received-Date: Wed, 02 Oct 2024 10:42:06 -0000
 
-On 19/09/2024 18.58, dave@treblig.org wrote:
+On 19/09/2024 01.40, dave@treblig.org wrote:
 > From: "Dr. David Alan Gilbert" <dave@treblig.org>
 > 
-> remote_iohub_finalize has never been used.
+> replay_disable_events has been unused since 2019's
+>    c8aa7895eb ("replay: don't drain/flush bdrv queue while RR is working")
 > 
 > Remove it.
 > 
 > Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
 > ---
->   hw/remote/iohub.c         | 13 -------------
->   include/hw/remote/iohub.h |  1 -
->   2 files changed, 14 deletions(-)
+>   include/sysemu/replay.h | 2 --
+>   replay/replay-events.c  | 9 ---------
+>   2 files changed, 11 deletions(-)
 > 
-> diff --git a/hw/remote/iohub.c b/hw/remote/iohub.c
-> index 40dfee4bad..988d3285cc 100644
-> --- a/hw/remote/iohub.c
-> +++ b/hw/remote/iohub.c
-> @@ -33,19 +33,6 @@ void remote_iohub_init(RemoteIOHubState *iohub)
+> diff --git a/include/sysemu/replay.h b/include/sysemu/replay.h
+> index 8102fa54f0..cba74fa9bc 100644
+> --- a/include/sysemu/replay.h
+> +++ b/include/sysemu/replay.h
+> @@ -117,8 +117,6 @@ void replay_async_events(void);
+>   
+>   /* Asynchronous events queue */
+>   
+> -/*! Disables storing events in the queue */
+> -void replay_disable_events(void);
+>   /*! Enables storing events in the queue */
+>   void replay_enable_events(void);
+>   /*! Returns true when saving events is enabled */
+> diff --git a/replay/replay-events.c b/replay/replay-events.c
+> index af0721cc1a..2e46eda6bf 100644
+> --- a/replay/replay-events.c
+> +++ b/replay/replay-events.c
+> @@ -92,15 +92,6 @@ void replay_flush_events(void)
 >       }
 >   }
 >   
-> -void remote_iohub_finalize(RemoteIOHubState *iohub)
+> -void replay_disable_events(void)
 > -{
-> -    int pirq;
-> -
-> -    for (pirq = 0; pirq < REMOTE_IOHUB_NB_PIRQS; pirq++) {
-> -        qemu_set_fd_handler(event_notifier_get_fd(&iohub->resamplefds[pirq]),
-> -                            NULL, NULL, NULL);
-> -        event_notifier_cleanup(&iohub->irqfds[pirq]);
-> -        event_notifier_cleanup(&iohub->resamplefds[pirq]);
-> -        qemu_mutex_destroy(&iohub->irq_level_lock[pirq]);
+> -    if (replay_mode != REPLAY_MODE_NONE) {
+> -        events_enabled = false;
+> -        /* Flush events queue before waiting of completion */
+> -        replay_flush_events();
 > -    }
 > -}
 > -
->   int remote_iohub_map_irq(PCIDevice *pci_dev, int intx)
->   {
->       return pci_dev->devfn;
-> diff --git a/include/hw/remote/iohub.h b/include/hw/remote/iohub.h
-> index 6a8444f9a9..09ee6c77b6 100644
-> --- a/include/hw/remote/iohub.h
-> +++ b/include/hw/remote/iohub.h
-> @@ -37,6 +37,5 @@ void remote_iohub_set_irq(void *opaque, int pirq, int level);
->   void process_set_irqfd_msg(PCIDevice *pci_dev, MPQemuMsg *msg);
->   
->   void remote_iohub_init(RemoteIOHubState *iohub);
-> -void remote_iohub_finalize(RemoteIOHubState *iohub);
->   
->   #endif
+>   /*! Adds specified async event to the queue */
+>   void replay_add_event(ReplayAsyncEventKind event_kind,
+>                         void *opaque,
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
