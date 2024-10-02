@@ -1,71 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1svweE-0004FT-B5
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:31:58 -0400
+	id 1svwez-0005Fm-PN
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:32:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svweB-0004CM-OW
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:31:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwex-0005Ew-S8
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:32:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwe9-0001Fe-QX
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:31:55 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwev-0001Js-RR
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:32:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1727865112;
+ s=mimecast20190719; t=1727865161;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=ZZHqzKPFNCiDCKssaQGRs4slL1v6DbhhJkC+NtX1JgQ=;
- b=OMqUjAUU0JuTEVzvClZHkbFPGhiPW0QQ2dCY++sSIPGzrmLaM9D5qt3Wo+YYGQq8K6KZLD
- aTeW91laxE/DaUf+YhkAiOquAfMUhyJ8J6zJdsH4/ux/xisBA2Th4gGx3vOs48B7bddc7d
- /wlSZxAwGY3HYzK9wJsYrsD4HZjeXB8=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=KYNWL2OgBaC9xOww8LM3M9P2qa6NiLRgnOA9hqRYh40=;
+ b=G8Ado87quWOD+lil7K7hboH1JB70IYXBthSmosqutmWAoVPHOomlz+hYRcRVJW1zp6+52x
+ 6o09+Sond36oSG405OSUOZj+JcSdwSOu/m6ahlq3iz2AXHwTvwjA/f7Vma/G0Gy3vuIKlY
+ pMPyP8K7HS4tylyIL00DDT9lt6HLZr4=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-478-ThOayBPIMKqx-8v_R_6fVA-1; Wed, 02 Oct 2024 06:31:51 -0400
-X-MC-Unique: ThOayBPIMKqx-8v_R_6fVA-1
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-37ccd14a2f9so2499876f8f.0
- for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:31:51 -0700 (PDT)
+ us-mta-387-g60gbV-NNTq8AZHTcZSL5A-1; Wed, 02 Oct 2024 06:32:40 -0400
+X-MC-Unique: g60gbV-NNTq8AZHTcZSL5A-1
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-42caf073db8so54356755e9.3
+ for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:32:39 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727865110; x=1728469910;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=ZZHqzKPFNCiDCKssaQGRs4slL1v6DbhhJkC+NtX1JgQ=;
- b=Z61Iqb+vfwBQdRnE3sTjDF6Al6oM7DaQmUFjLIJyXwA34mMMxacbA+9fiWcmS6xBeb
- SpkyUaFnFOKacGP0xM+uXb1YLVSqlCzLsl0X86fAhbbgNHdBydxXy+1mCWdbnqGGEOtR
- v/nwoG8gSkON18PdOF+EfisirrobkCyvup3HTS6yfVw4uKQ3vi3At0/zjitvazCm72Tx
- vaRyypRFcpWYNWHzhJRzsxThd+UTKyAvSwCoVlM9FViFKT59fe5lFfH/x02DfrKZk7RS
- pyLcQIN4OX5YeLELeAdq42d3+YaU+xZxVCG/Kqhi/OOD+wKYT6Sc/uD/uTEpOQug/F69
- J3fA==
+ d=1e100.net; s=20230601; t=1727865159; x=1728469959;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=KYNWL2OgBaC9xOww8LM3M9P2qa6NiLRgnOA9hqRYh40=;
+ b=HQw+UL8Ss9VzRFJVT8sZP1ea2WgFdx5j96xt8dQ1UemOoJW+7sMa6bY1c6hmD0ugNm
+ 3prGM0GE90fXI5sYsr/8eFeccKWeZfYAqproZPSFWQXbBz+iqwdy3jbZlFr0wpgwPru7
+ L6jGYF4jf8famuW/Ci2NTbNoDTdJfsHBdKsEw8OJWRfPSkKLT9iCJTv7HrIKlOcdjWYM
+ J6l+0nuShBgLKOcRULuVb+20Mb15jx4fC7ez7RjwHpJOJkJJk/5zFTCVDitwAPAoELvD
+ gINXEV2IHZUvDi5q5lLluk2vs9J7N4ahVO0vkdUhnH6D9V+We+336azHtaewON10ipju
+ kYew==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVK2JoVAQYJ8s9Js/H0H+XOug9dR0x7JWMyEqIGxOJG3srGdekp3TgyXeo2yZMJoZmRsTCmssQS09u2UXg=@nongnu.org
-X-Gm-Message-State: AOJu0Yw2vCx/WOEoU/2S2XzdBapWtGARGcar1QiVtHdBQhCPYoqpwfwi
- M5MB2nhBBnF1PtCgNAgAR3RGQfKHt2hX+faF97964TEDTkk9OpADhxssfxY2fIRsvwWmzYcgCFx
- BGlzyeNwLC4U95oHHuxh0X8/9fYJ68oeBEzP3ce6T4p2UmArQnNTN8+TzQy7YtrMUug==
-X-Received: by 2002:adf:e7c4:0:b0:37c:c80e:d030 with SMTP id
- ffacd0b85a97d-37cfba0a72bmr1752167f8f.53.1727865110435; 
- Wed, 02 Oct 2024 03:31:50 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHqYnM07lwjwLsKDAHi+NVrNkglKFA+ef3B21NhhPlrK9bjHBjfybUVYjbxNRGLtU7TAaWqfQ==
-X-Received: by 2002:adf:e7c4:0:b0:37c:c80e:d030 with SMTP id
- ffacd0b85a97d-37cfba0a72bmr1752147f8f.53.1727865109968; 
- Wed, 02 Oct 2024 03:31:49 -0700 (PDT)
+ AJvYcCUyfEdnPbyoKXnxgpPKoYDpSteRC4xkikyd+oNu/uQfmyvBh6VDsmGjngFHb2E6TOoHoW6KGp8A+LV0jfc=@nongnu.org
+X-Gm-Message-State: AOJu0YytxfcP27PcCh2xuE6edFJ3SbSxWn3C3e0R+j7qQgVog579ZoJt
+ Ke1GbEIccAot7CHG7NkWY0NmMPT42AyDaUNoQbPm3XyYVxp+92imdzgaZXe8eLvmk/eS2v+DkUV
+ AeWAPjmxiatRI7iIICR6laVMF8rTgcuzpJqUAiyL9GM98nK7iAEOerW0=
+X-Received: by 2002:a05:600c:3b8b:b0:42c:cdcf:2fef with SMTP id
+ 5b1f17b1804b1-42f777c09cdmr18688185e9.15.1727865158927; 
+ Wed, 02 Oct 2024 03:32:38 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGKWLgfL+tvOL+8uBWnrYX9XyDuA2vFR8WdLnDKFB7H6I6rShPd0h4NJfP409rIydX+PMj0xA==
+X-Received: by 2002:a05:600c:3b8b:b0:42c:cdcf:2fef with SMTP id
+ 5b1f17b1804b1-42f777c09cdmr18688045e9.15.1727865158503; 
+ Wed, 02 Oct 2024 03:32:38 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-49-143.web.vodafone.de.
  [109.42.49.143]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37cd564d2e8sm13830500f8f.18.2024.10.02.03.31.48
+ ffacd0b85a97d-37cd572fbf6sm13649618f8f.74.2024.10.02.03.32.37
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Oct 2024 03:31:49 -0700 (PDT)
-Message-ID: <73ef9298-05ba-48ce-9d60-c1e2bf50d729@redhat.com>
-Date: Wed, 2 Oct 2024 12:31:48 +0200
+ Wed, 02 Oct 2024 03:32:38 -0700 (PDT)
+Message-ID: <24facf82-c3a2-47e0-98f8-e2b684a705f0@redhat.com>
+Date: Wed, 2 Oct 2024 12:32:37 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/char: Remove unused serial_set_frequency
-To: dave@treblig.org, mst@redhat.com, pbonzini@redhat.com,
+Subject: Re: [PATCH] linux-user: Remove unused handle_vm86_fault
+To: dave@treblig.org, richard.henderson@linaro.org, laurent@vivier.eu,
  QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
-References: <20240918144122.155351-1-dave@treblig.org>
+Cc: qemu-devel@nongnu.org
+References: <20240918141553.149521-1-dave@treblig.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -109,13 +109,13 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240918144122.155351-1-dave@treblig.org>
+In-Reply-To: <20240918141553.149521-1-dave@treblig.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -124,7 +124,7 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -137,56 +137,181 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Oct 2024 10:31:56 -0000
+X-List-Received-Date: Wed, 02 Oct 2024 10:32:44 -0000
 
-On 18/09/2024 16.41, dave@treblig.org wrote:
+On 18/09/2024 16.15, dave@treblig.org wrote:
 > From: "Dr. David Alan Gilbert" <dave@treblig.org>
 > 
-> serial_set_frequnecy has been unused since it was added in 2009:
->    038eaf82c8 ("serial: Add interface to set reference oscillator frequency")
+> handle_vm86_fault has been unused since:
+>    1ade5b2fed ("linux-user/i386: Split out maybe_handle_vm86_trap")
 > 
-> It looks like the 'baudbase' is now a property anyway so the wrapper
-> isn't needed.
-> 
-> Remove it.
+> Remove it, and it's local macros.
 > 
 > Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
 > ---
->   hw/char/serial.c         | 7 -------
->   include/hw/char/serial.h | 2 --
->   2 files changed, 9 deletions(-)
+>   linux-user/user-internals.h |   1 -
+>   linux-user/vm86.c           | 136 ------------------------------------
+>   2 files changed, 137 deletions(-)
 > 
-> diff --git a/hw/char/serial.c b/hw/char/serial.c
-> index d8b2db5082..6c5c4a23c7 100644
-> --- a/hw/char/serial.c
-> +++ b/hw/char/serial.c
-> @@ -951,13 +951,6 @@ static void serial_unrealize(DeviceState *dev)
->       qemu_unregister_reset(serial_reset, s);
+> diff --git a/linux-user/user-internals.h b/linux-user/user-internals.h
+> index 5c7f173ceb..46ffc093f4 100644
+> --- a/linux-user/user-internals.h
+> +++ b/linux-user/user-internals.h
+> @@ -102,7 +102,6 @@ int host_to_target_waitstatus(int status);
+>   /* vm86.c */
+>   void save_v86_state(CPUX86State *env);
+>   void handle_vm86_trap(CPUX86State *env, int trapno);
+> -void handle_vm86_fault(CPUX86State *env);
+>   int do_vm86(CPUX86State *env, long subfunction, abi_ulong v86_addr);
+>   #elif defined(TARGET_SPARC64)
+>   void sparc64_set_context(CPUSPARCState *env);
+> diff --git a/linux-user/vm86.c b/linux-user/vm86.c
+> index 9f512a2242..31a2d707cf 100644
+> --- a/linux-user/vm86.c
+> +++ b/linux-user/vm86.c
+> @@ -255,142 +255,6 @@ void handle_vm86_trap(CPUX86State *env, int trapno)
+>       }
 >   }
 >   
-> -/* Change the main reference oscillator frequency. */
-> -void serial_set_frequency(SerialState *s, uint32_t frequency)
+> -#define CHECK_IF_IN_TRAP() \
+> -      if ((ts->vm86plus.vm86plus.flags & TARGET_vm86dbg_active) && \
+> -          (ts->vm86plus.vm86plus.flags & TARGET_vm86dbg_TFpendig)) \
+> -                newflags |= TF_MASK
+> -
+> -#define VM86_FAULT_RETURN \
+> -        if ((ts->vm86plus.vm86plus.flags & TARGET_force_return_for_pic) && \
+> -            (ts->v86flags & (IF_MASK | VIF_MASK))) \
+> -            return_to_32bit(env, TARGET_VM86_PICRETURN); \
+> -        return
+> -
+> -void handle_vm86_fault(CPUX86State *env)
 > -{
-> -    s->baudbase = frequency;
-> -    serial_update_parameters(s);
+> -    CPUState *cs = env_cpu(env);
+> -    TaskState *ts = get_task_state(cs);
+> -    uint32_t csp, ssp;
+> -    unsigned int ip, sp, newflags, newip, newcs, opcode, intno;
+> -    int data32, pref_done;
+> -
+> -    csp = env->segs[R_CS].selector << 4;
+> -    ip = env->eip & 0xffff;
+> -
+> -    ssp = env->segs[R_SS].selector << 4;
+> -    sp = env->regs[R_ESP] & 0xffff;
+> -
+> -    LOG_VM86("VM86 exception %04x:%08x\n",
+> -             env->segs[R_CS].selector, env->eip);
+> -
+> -    data32 = 0;
+> -    pref_done = 0;
+> -    do {
+> -        opcode = vm_getb(env, csp, ip);
+> -        ADD16(ip, 1);
+> -        switch (opcode) {
+> -        case 0x66:      /* 32-bit data */     data32=1; break;
+> -        case 0x67:      /* 32-bit address */  break;
+> -        case 0x2e:      /* CS */              break;
+> -        case 0x3e:      /* DS */              break;
+> -        case 0x26:      /* ES */              break;
+> -        case 0x36:      /* SS */              break;
+> -        case 0x65:      /* GS */              break;
+> -        case 0x64:      /* FS */              break;
+> -        case 0xf2:      /* repnz */	      break;
+> -        case 0xf3:      /* rep */             break;
+> -        default: pref_done = 1;
+> -        }
+> -    } while (!pref_done);
+> -
+> -    /* VM86 mode */
+> -    switch(opcode) {
+> -    case 0x9c: /* pushf */
+> -        if (data32) {
+> -            vm_putl(env, ssp, sp - 4, get_vflags(env));
+> -            ADD16(env->regs[R_ESP], -4);
+> -        } else {
+> -            vm_putw(env, ssp, sp - 2, get_vflags(env));
+> -            ADD16(env->regs[R_ESP], -2);
+> -        }
+> -        env->eip = ip;
+> -        VM86_FAULT_RETURN;
+> -
+> -    case 0x9d: /* popf */
+> -        if (data32) {
+> -            newflags = vm_getl(env, ssp, sp);
+> -            ADD16(env->regs[R_ESP], 4);
+> -        } else {
+> -            newflags = vm_getw(env, ssp, sp);
+> -            ADD16(env->regs[R_ESP], 2);
+> -        }
+> -        env->eip = ip;
+> -        CHECK_IF_IN_TRAP();
+> -        if (data32) {
+> -            if (set_vflags_long(newflags, env))
+> -                return;
+> -        } else {
+> -            if (set_vflags_short(newflags, env))
+> -                return;
+> -        }
+> -        VM86_FAULT_RETURN;
+> -
+> -    case 0xcd: /* int */
+> -        intno = vm_getb(env, csp, ip);
+> -        ADD16(ip, 1);
+> -        env->eip = ip;
+> -        if (ts->vm86plus.vm86plus.flags & TARGET_vm86dbg_active) {
+> -            if ( (ts->vm86plus.vm86plus.vm86dbg_intxxtab[intno >> 3] >>
+> -                  (intno &7)) & 1) {
+> -                return_to_32bit(env, TARGET_VM86_INTx + (intno << 8));
+> -                return;
+> -            }
+> -        }
+> -        do_int(env, intno);
+> -        break;
+> -
+> -    case 0xcf: /* iret */
+> -        if (data32) {
+> -            newip = vm_getl(env, ssp, sp) & 0xffff;
+> -            newcs = vm_getl(env, ssp, sp + 4) & 0xffff;
+> -            newflags = vm_getl(env, ssp, sp + 8);
+> -            ADD16(env->regs[R_ESP], 12);
+> -        } else {
+> -            newip = vm_getw(env, ssp, sp);
+> -            newcs = vm_getw(env, ssp, sp + 2);
+> -            newflags = vm_getw(env, ssp, sp + 4);
+> -            ADD16(env->regs[R_ESP], 6);
+> -        }
+> -        env->eip = newip;
+> -        cpu_x86_load_seg(env, R_CS, newcs);
+> -        CHECK_IF_IN_TRAP();
+> -        if (data32) {
+> -            if (set_vflags_long(newflags, env))
+> -                return;
+> -        } else {
+> -            if (set_vflags_short(newflags, env))
+> -                return;
+> -        }
+> -        VM86_FAULT_RETURN;
+> -
+> -    case 0xfa: /* cli */
+> -        env->eip = ip;
+> -        clear_IF(env);
+> -        VM86_FAULT_RETURN;
+> -
+> -    case 0xfb: /* sti */
+> -        env->eip = ip;
+> -        if (set_IF(env))
+> -            return;
+> -        VM86_FAULT_RETURN;
+> -
+> -    default:
+> -        /* real VM86 GPF exception */
+> -        return_to_32bit(env, TARGET_VM86_UNKNOWN);
+> -        break;
+> -    }
 > -}
 > -
->   const MemoryRegionOps serial_io_ops = {
->       .read = serial_ioport_read,
->       .write = serial_ioport_write,
-> diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-> index 6e14099ee7..40aad21df3 100644
-> --- a/include/hw/char/serial.h
-> +++ b/include/hw/char/serial.h
-> @@ -93,8 +93,6 @@ struct SerialMM {
->   extern const VMStateDescription vmstate_serial;
->   extern const MemoryRegionOps serial_io_ops;
->   
-> -void serial_set_frequency(SerialState *s, uint32_t frequency);
-> -
->   #define TYPE_SERIAL "serial"
->   OBJECT_DECLARE_SIMPLE_TYPE(SerialState, SERIAL)
->   
+>   int do_vm86(CPUX86State *env, long subfunction, abi_ulong vm86_addr)
+>   {
+>       CPUState *cs = env_cpu(env);
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
