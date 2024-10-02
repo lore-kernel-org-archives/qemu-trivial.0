@@ -1,69 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1svwbD-0001BF-Gw
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:28:51 -0400
+	id 1svwcR-0001zr-S4
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:30:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwb9-0001At-Q7
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:28:48 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwcQ-0001zK-TD
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:30:07 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwb6-0000mN-2L
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:28:46 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwcP-000155-7W
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:30:06 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1727864923;
+ s=mimecast20190719; t=1727865004;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=p883nUjD9I9bH7pXn8fnsrsSdauN9+KrpyibHluFdfA=;
- b=JzYCtb5eq0iSQv1Usmc2WmgKFVn6SKuUADsaLPWCsToU2e4sfwZ3wBEzlNU41p+oY/2n0X
- VLdn598l+JXgq9FO/8pHlJPr/HDArg0NLG2y5L9SWIji3tYh7p9bMa0Ca7MZ1i6D4nfBNv
- 7G0NrSmMrIV9jW9M0lwT5MXze7VwBgc=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=IX7nuUOMUjsGUsuGWGQC7qxPPHIzgyhjeG0CmEToIBA=;
+ b=K4IwVfOEcuzOZpJ3WwwZp2YJ9Be6uUYtVnfaZ4oSpI9VVqzzeUBtUsG44yMogt0agfyLa/
+ UYgK3nOOXPAMyKxJGxWwUM79M/+Y+H6fLHunfvL6rCC9caJhyybd8lSxTDx5vkFBgbTv7k
+ 1U9ky9BuMmWjBO8jHVlXvgQBverocsY=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-581-o3Rycm4aP16EtO0fb7RYvA-1; Wed, 02 Oct 2024 06:28:39 -0400
-X-MC-Unique: o3Rycm4aP16EtO0fb7RYvA-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-42cb89fbb8bso40274555e9.3
- for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:28:39 -0700 (PDT)
+ us-mta-403-QoDkTgdiNUeSl-WM7plRJw-1; Wed, 02 Oct 2024 06:30:03 -0400
+X-MC-Unique: QoDkTgdiNUeSl-WM7plRJw-1
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-42cb115566eso65069535e9.2
+ for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:30:03 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727864918; x=1728469718;
+ d=1e100.net; s=20230601; t=1727865002; x=1728469802;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=p883nUjD9I9bH7pXn8fnsrsSdauN9+KrpyibHluFdfA=;
- b=D/pTtXoUae4vWwg9pD+00qjjwCdVQXDjkzf6eTGye9WBTCk0ykVjUb3ghx487ppYuA
- pmVJSk4oDljQpyGIQs5+YWY4Kji6U/JbFqxQOG3yGlOTcF6IXHjQ21oVKxH1a7tzp/jc
- PyJd8rlpqPy4B3du5Ww0GFPmQZnfBCK1kc2SO97q9i86v+1xsQKaGVbIO5ARFiGh2UDF
- 7rYYWHTqPMiOlnzmrCPxIveh2yK5idJB9+hbpoBikcsJYgaPnHSLP1t+6Qw2Q9K0JDzF
- x4hsLzSGlsx1zK/IBxg32PKlsiwupdC9aPyk9Ba7Je5m577Lhmf9DjSvX5vaTENW6sMs
- UCqg==
+ bh=IX7nuUOMUjsGUsuGWGQC7qxPPHIzgyhjeG0CmEToIBA=;
+ b=TV9qqFGpqi7Nyxl6Zu83b/FK9nUOHQIPHIhmUjCA12ElnaJl8BQ5UWka/Zw7JUvQc+
+ /8q0/blUwoxYqngwpNqXxmnsRjLBYA2SsPnp5PCq2lYiYuUY2gMtWk8/9xVcil93q3jc
+ 6kNs0icm/lXaam8UykqRKqoGbuyNKo8CZrkvvod37X7pq4vyw9SUUnLmUve1mINJGvDo
+ FGfR6VHWDAIKOIkEouXwAOFX9/Gbzv054Qibehs94ox7J7D1shpcubBiXlg+a4MZeHSw
+ ORRnkVGdSo847n4Y/T5YQCUR79jD1h5w86yexKON3mGCscFwa9NiaeWFsZnOKwdGEul+
+ TVRA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVgUyVHKcYDwxCNio3lDnr+q8BHOsAW4Eu8kJVWfDWFHlnv91mRes3hrNsz/GCRWerptnTOtJhtvKJk/yw=@nongnu.org
-X-Gm-Message-State: AOJu0YwgfyFQqbmL2jSG8U+rjdALdu/u505NOZEDAACRMF91968GQIff
- Tl5GcyGiVaCMLQPO8TAko+18Tz5SnYJ9+GjGCWm13ghE97K/ir4GBLXlXDeFDTI1TigcAb1ZrB+
- 0t3T7VVDZsuPm8PRGt6NTd1tvqdMQ5E8ayFgher3phUdORo0xc+WJG/Dd/RJBmns/OQ==
-X-Received: by 2002:a05:600c:4ec7:b0:426:6326:4cec with SMTP id
- 5b1f17b1804b1-42f7909736bmr14280625e9.29.1727864918520; 
- Wed, 02 Oct 2024 03:28:38 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFVZg9izWtAPUkmaPbNAuD46j3dKwKRkiLJULk5WIhEnC5f+NpEXMwEiu5qEgoANLja9V40Yg==
-X-Received: by 2002:a05:600c:4ec7:b0:426:6326:4cec with SMTP id
- 5b1f17b1804b1-42f7909736bmr14280415e9.29.1727864918175; 
- Wed, 02 Oct 2024 03:28:38 -0700 (PDT)
+ AJvYcCWv01oy2yVjFoE3fq2hWb3tfFMpsoUQ5kShBOvMMJx3NFlJjEYCKPA8GgSgBb+XbZvNVqwU2nE40Dv2AKI=@nongnu.org
+X-Gm-Message-State: AOJu0Yx1PBnxjOM/1RgyPkdcrr8ZtI0tB8vmbdlj9Nh1pxnNepAw3prL
+ kzZKl5vC8gSTS6Fg9u1IzHSVhdDKNtcpznVEV4mZBMqU7bt+W75e5m78jHYblYuntk5QP5Y4vdx
+ g/BQCAekj4+S142C70CuxxLLw0cDwgLX6llEXNr+Uj2w1wjD7zQ+HC8g=
+X-Received: by 2002:adf:e8d2:0:b0:374:c11c:c5ca with SMTP id
+ ffacd0b85a97d-37cfba0a75dmr2123733f8f.46.1727865002102; 
+ Wed, 02 Oct 2024 03:30:02 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFNHj+Ydlo1ab9AYsVb/g4W/+cW521RymdGL3c+NW6xLFsLnIpL5JvZ55g8bXh2LdjTQs6MbA==
+X-Received: by 2002:adf:e8d2:0:b0:374:c11c:c5ca with SMTP id
+ ffacd0b85a97d-37cfba0a75dmr2123711f8f.46.1727865001658; 
+ Wed, 02 Oct 2024 03:30:01 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-49-143.web.vodafone.de.
  [109.42.49.143]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42f79ff5b4asm14915925e9.35.2024.10.02.03.28.37
+ ffacd0b85a97d-37cd575de8fsm13558496f8f.116.2024.10.02.03.30.00
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Oct 2024 03:28:37 -0700 (PDT)
-Message-ID: <f62ac9a0-c119-4b77-8845-9353a7a294ec@redhat.com>
-Date: Wed, 2 Oct 2024 12:28:36 +0200
+ Wed, 02 Oct 2024 03:30:01 -0700 (PDT)
+Message-ID: <569ca97e-2463-48d7-a05c-abc4b7289658@redhat.com>
+Date: Wed, 2 Oct 2024 12:30:00 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] q35: Remove unused mch_mcfg_base
-To: dave@treblig.org, mst@redhat.com, marcel.apfelbaum@gmail.com,
- qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240918005132.187517-1-dave@treblig.org>
+Subject: Re: [PATCH] net: Remove deadcode
+To: dave@treblig.org, jasowang@redhat.com, qemu-devel@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20240918205258.444880-1-dave@treblig.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -107,7 +107,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240918005132.187517-1-dave@treblig.org>
+In-Reply-To: <20240918205258.444880-1-dave@treblig.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -135,57 +135,146 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Oct 2024 10:28:48 -0000
+X-List-Received-Date: Wed, 02 Oct 2024 10:30:07 -0000
 
-On 18/09/2024 02.51, dave@treblig.org wrote:
+On 18/09/2024 22.52, dave@treblig.org wrote:
 > From: "Dr. David Alan Gilbert" <dave@treblig.org>
 > 
-> mch_mcfg_base has been unused since it was added by
->    6f1426ab0f ("ich9: APIs for pc guest info")
-> back in 2013.
+> net_hub_port_find is unused since 2018's commit
+>    af1a5c3eb4 ("net: Remove the deprecated "vlan" parameter")
 > 
-> Remove it.
+> qemu_receive_packet_iov is unused since commit
+>    ffbd2dbd8e ("e1000e: Perform software segmentation for loopback")
+> 
+> in turn it was the last user of qemu_net_queue_receive_iov.
+> 
+> Remove them.
 > 
 > Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
 > ---
->   hw/pci-host/q35.c         | 10 ----------
->   include/hw/pci-host/q35.h |  2 --
->   2 files changed, 12 deletions(-)
+>   include/net/net.h   |  4 ----
+>   include/net/queue.h |  4 ----
+>   net/hub.c           | 25 -------------------------
+>   net/net.c           | 10 ----------
+>   net/queue.c         | 11 -----------
+>   5 files changed, 54 deletions(-)
 > 
-> diff --git a/hw/pci-host/q35.c b/hw/pci-host/q35.c
-> index d5a657a02a..f3e713318e 100644
-> --- a/hw/pci-host/q35.c
-> +++ b/hw/pci-host/q35.c
-> @@ -662,16 +662,6 @@ static void mch_realize(PCIDevice *d, Error **errp)
->                                      OBJECT(&mch->smram));
+> diff --git a/include/net/net.h b/include/net/net.h
+> index c8f679761b..cdd5b109b0 100644
+> --- a/include/net/net.h
+> +++ b/include/net/net.h
+> @@ -172,9 +172,6 @@ ssize_t qemu_sendv_packet_async(NetClientState *nc, const struct iovec *iov,
+>                                   int iovcnt, NetPacketSent *sent_cb);
+>   ssize_t qemu_send_packet(NetClientState *nc, const uint8_t *buf, int size);
+>   ssize_t qemu_receive_packet(NetClientState *nc, const uint8_t *buf, int size);
+> -ssize_t qemu_receive_packet_iov(NetClientState *nc,
+> -                                const struct iovec *iov,
+> -                                int iovcnt);
+>   ssize_t qemu_send_packet_raw(NetClientState *nc, const uint8_t *buf, int size);
+>   ssize_t qemu_send_packet_async(NetClientState *nc, const uint8_t *buf,
+>                                  int size, NetPacketSent *sent_cb);
+> @@ -307,7 +304,6 @@ void hmp_host_net_remove(Monitor *mon, const QDict *qdict);
+>   void netdev_add(QemuOpts *opts, Error **errp);
+>   
+>   int net_hub_id_for_client(NetClientState *nc, int *id);
+> -NetClientState *net_hub_port_find(int hub_id);
+>   
+>   #define DEFAULT_NETWORK_SCRIPT CONFIG_SYSCONFDIR "/qemu-ifup"
+>   #define DEFAULT_NETWORK_DOWN_SCRIPT CONFIG_SYSCONFDIR "/qemu-ifdown"
+> diff --git a/include/net/queue.h b/include/net/queue.h
+> index 9f2f289d77..2e686b1b61 100644
+> --- a/include/net/queue.h
+> +++ b/include/net/queue.h
+> @@ -59,10 +59,6 @@ ssize_t qemu_net_queue_receive(NetQueue *queue,
+>                                  const uint8_t *data,
+>                                  size_t size);
+>   
+> -ssize_t qemu_net_queue_receive_iov(NetQueue *queue,
+> -                                   const struct iovec *iov,
+> -                                   int iovcnt);
+> -
+>   ssize_t qemu_net_queue_send(NetQueue *queue,
+>                               NetClientState *sender,
+>                               unsigned flags,
+> diff --git a/net/hub.c b/net/hub.c
+> index 4c8a469a50..496a3d3b4b 100644
+> --- a/net/hub.c
+> +++ b/net/hub.c
+> @@ -193,31 +193,6 @@ NetClientState *net_hub_add_port(int hub_id, const char *name,
+>       return &port->nc;
 >   }
 >   
-> -uint64_t mch_mcfg_base(void)
+> -/**
+> - * Find a available port on a hub; otherwise create one new port
+> - */
+> -NetClientState *net_hub_port_find(int hub_id)
 > -{
-> -    bool ambiguous;
-> -    Object *o = object_resolve_path_type("", TYPE_MCH_PCI_DEVICE, &ambiguous);
-> -    if (!o) {
-> -        return 0;
+> -    NetHub *hub;
+> -    NetHubPort *port;
+> -    NetClientState *nc;
+> -
+> -    QLIST_FOREACH(hub, &hubs, next) {
+> -        if (hub->id == hub_id) {
+> -            QLIST_FOREACH(port, &hub->ports, next) {
+> -                nc = port->nc.peer;
+> -                if (!nc) {
+> -                    return &(port->nc);
+> -                }
+> -            }
+> -            break;
+> -        }
 > -    }
-> -    return MCH_HOST_BRIDGE_PCIEXBAR_DEFAULT;
+> -
+> -    nc = net_hub_add_port(hub_id, NULL, NULL);
+> -    return nc;
 > -}
 > -
->   static Property mch_props[] = {
->       DEFINE_PROP_UINT16("extended-tseg-mbytes", MCHPCIState, ext_tseg_mbytes,
->                          16),
-> diff --git a/include/hw/pci-host/q35.h b/include/hw/pci-host/q35.h
-> index 22fadfa3ed..ddafc3f2e3 100644
-> --- a/include/hw/pci-host/q35.h
-> +++ b/include/hw/pci-host/q35.h
-> @@ -181,8 +181,6 @@ struct Q35PCIHost {
->   #define MCH_PCIE_DEV                           1
->   #define MCH_PCIE_FUNC                          0
+>   /**
+>    * Print hub configuration
+>    */
+> diff --git a/net/net.c b/net/net.c
+> index fc1125111c..d9b23a8f8c 100644
+> --- a/net/net.c
+> +++ b/net/net.c
+> @@ -750,16 +750,6 @@ ssize_t qemu_receive_packet(NetClientState *nc, const uint8_t *buf, int size)
+>       return qemu_net_queue_receive(nc->incoming_queue, buf, size);
+>   }
 >   
-> -uint64_t mch_mcfg_base(void);
+> -ssize_t qemu_receive_packet_iov(NetClientState *nc, const struct iovec *iov,
+> -                                int iovcnt)
+> -{
+> -    if (!qemu_can_receive_packet(nc)) {
+> -        return 0;
+> -    }
 > -
->   /*
->    * Arbitrary but unique BNF number for IOAPIC device.
->    *
+> -    return qemu_net_queue_receive_iov(nc->incoming_queue, iov, iovcnt);
+> -}
+> -
+>   ssize_t qemu_send_packet_raw(NetClientState *nc, const uint8_t *buf, int size)
+>   {
+>       return qemu_send_packet_async_with_flags(nc, QEMU_NET_PACKET_FLAG_RAW,
+> diff --git a/net/queue.c b/net/queue.c
+> index c872d51df8..fb33856c18 100644
+> --- a/net/queue.c
+> +++ b/net/queue.c
+> @@ -193,17 +193,6 @@ ssize_t qemu_net_queue_receive(NetQueue *queue,
+>       return qemu_net_queue_deliver(queue, NULL, 0, data, size);
+>   }
+>   
+> -ssize_t qemu_net_queue_receive_iov(NetQueue *queue,
+> -                                   const struct iovec *iov,
+> -                                   int iovcnt)
+> -{
+> -    if (queue->delivering) {
+> -        return 0;
+> -    }
+> -
+> -    return qemu_net_queue_deliver_iov(queue, NULL, 0, iov, iovcnt);
+> -}
+> -
+>   ssize_t qemu_net_queue_send(NetQueue *queue,
+>                               NetClientState *sender,
+>                               unsigned flags,
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
