@@ -1,80 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sw14B-0003dC-ND
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 11:15:03 -0400
+	id 1sw1B1-0008M0-B1
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 11:22:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1sw14A-0003cG-0E
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 11:15:02 -0400
-Received: from mail-wr1-x42e.google.com ([2a00:1450:4864:20::42e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1sw148-0004DY-5v
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 11:15:01 -0400
-Received: by mail-wr1-x42e.google.com with SMTP id
- ffacd0b85a97d-37ce9644daaso2509055f8f.3
- for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 08:14:59 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1727882097; x=1728486897; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=F1MIQgPs+0xA8AvPQlQaLpUykGZqgvAuH2N6S+TT5O0=;
- b=YV6JfyGpL8tvxqYlNIIh+ZK51JsN90Pq04YUm/RxTat19wnrj+yX8lbuYVAUa+CtW3
- Eq4yJwXNLzhXPLwFub5oDPVcSOStIOXJCd5Dp/WHdxzsz0JbPcT1+bzHsLSHtosPOMir
- j8RxIZpuIHHrScZURFXNE9IcaGhikagNFw5Q/c8M9UZEitwwHXPQoHNixuYS2eyOiRFS
- 3t+7WChWx2IHbuOzI9FtfLHypuX53von8UHv14oyx53mpnyWX+b/Ka36/IpwtOaz0cse
- rYgvCbRclFo1ufZHbzWap87gIofE9y1QwBssauKo5K/I7Sd2aTddNoDXH72d0ZlAonpD
- ZJ4Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727882097; x=1728486897;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=F1MIQgPs+0xA8AvPQlQaLpUykGZqgvAuH2N6S+TT5O0=;
- b=kMGm4Gr2PM3IuDRNYz9+7+28zWHNyfaz0Tz9S+agugYGwL0/pz3/Z4G0QK83ppdpnB
- q0pMP0EIywQUEBdHaP7Mr3wbNOC2OLVCOKtWSZE4tunNlSfOGxUBSb/xE9lCEy2q3k5Y
- VpjD6fqBCu6JD5DSGTx6gSGoLkABOD3ibqcwrpmus8t/bPxXam/5N8BuAljhuDD+MaCF
- /cfvd4kCMvJBQ97koROH6D3oXt9YUxiEM6kuBGIY0fyNX3QGLO8u59OqVt8wFS8qXEUT
- Br3ZZLO5GwiGf+IH/wiKl9A/ftXWF6rLR4ZAHwWWzBDhk/ZYBUHtKIMy+Y9qQOhZXZgh
- fOVA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVLtswDTaiIFX9GmVC09OvbQGhFiXTP+idyq1d8WWtuoOYn3W04r1lkqvPbmC17zdEjxz8R/Blm7uc37gE=@nongnu.org
-X-Gm-Message-State: AOJu0Ywrq1OKfey8b0/WOTkyL4A41eEjDPib5+AU1fkflzw9ins+fpFb
- FRd81rzXsv2yzydHnEi7mnA0MOHV6oUpfrHL3jppUR3eFSFzKxo+IEkjoVFxbqQ=
-X-Google-Smtp-Source: AGHT+IHl0EmTzyRfZDY6mUGlm2Xl2Vpzo4c6NUpMyLdY8RLXIMD3KIs7mtDecLv+EgyRchUzkHCFGA==
-X-Received: by 2002:a5d:69c8:0:b0:377:9867:9028 with SMTP id
- ffacd0b85a97d-37cfba0a658mr2353526f8f.44.1727882097303; 
- Wed, 02 Oct 2024 08:14:57 -0700 (PDT)
-Received: from draig.lan ([85.9.250.243]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37cd57429e5sm14092592f8f.98.2024.10.02.08.14.56
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 02 Oct 2024 08:14:56 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B7A1B5F780;
- Wed,  2 Oct 2024 16:14:55 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org
-Subject: Re: [PATCH] tests/tcg/plugins: Remove remainder of the cris target
-In-Reply-To: <20241002143708.376707-1-thuth@redhat.com> (Thomas Huth's message
- of "Wed, 2 Oct 2024 16:37:08 +0200")
-References: <20241002143708.376707-1-thuth@redhat.com>
-User-Agent: mu4e 1.12.6; emacs 29.4
-Date: Wed, 02 Oct 2024 16:14:55 +0100
-Message-ID: <87ikuamt8w.fsf@draig.linaro.org>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sw1AI-0008A9-AT; Wed, 02 Oct 2024 11:21:26 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1sw1AC-0005GU-38; Wed, 02 Oct 2024 11:21:22 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 8B126948FF;
+ Wed,  2 Oct 2024 18:20:34 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 2A28014B09C;
+ Wed,  2 Oct 2024 18:21:13 +0300 (MSK)
+Message-ID: <cb09c375-6c3a-49c8-8e1a-d06e8174b22b@tls.msk.ru>
+Date: Wed, 2 Oct 2024 18:21:13 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::42e;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x42e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] vnc: fix crash when no console attached
+To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+Cc: akihiko.odaki@daynix.com, qemu-stable@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20240820131112.1267954-1-marcandre.lureau@redhat.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
+ bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
+ WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
+ 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
+ WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
+ zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
+ FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
+ CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
+ Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
+ LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
+ UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
+ SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
+ 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
+ K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
+ pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
+ GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
+ fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
+ AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
+ cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
+ HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
+ 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
+ rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
+ Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
+In-Reply-To: <20240820131112.1267954-1-marcandre.lureau@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,36 +73,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Oct 2024 15:15:02 -0000
+X-List-Received-Date: Wed, 02 Oct 2024 15:21:56 -0000
 
-Thomas Huth <thuth@redhat.com> writes:
+20.08.2024 16:11, marcandre.lureau@redhat.com wrote:
+> From: Marc-André Lureau <marcandre.lureau@redhat.com>
+> 
+> Since commit e99441a3793b5 ("ui/curses: Do not use console_select()")
+> qemu_text_console_put_keysym() no longer checks for NULL console
+> argument, which leads to a later crash:
+> 
+> Thread 1 "qemu-system-x86" received signal SIGSEGV, Segmentation fault.
+> 0x00005555559ee186 in qemu_text_console_handle_keysym (s=0x0, keysym=31) at ../ui/console-vc.c:332
+> 332	        } else if (s->echo && (keysym == '\r' || keysym == '\n')) {
+> (gdb) bt
+>   #0  0x00005555559ee186 in qemu_text_console_handle_keysym (s=0x0, keysym=31) at ../ui/console-vc.c:332
+>   #1  0x00005555559e18e5 in qemu_text_console_put_keysym (s=<optimized out>, keysym=<optimized out>) at ../ui/console.c:303
+>   #2  0x00005555559f2e88 in do_key_event (vs=vs@entry=0x5555579045c0, down=down@entry=1, keycode=keycode@entry=60, sym=sym@entry=65471) at ../ui/vnc.c:2034
+>   #3  0x00005555559f845c in ext_key_event (vs=0x5555579045c0, down=1, sym=65471, keycode=<optimized out>) at ../ui/vnc.c:2070
+>   #4  protocol_client_msg (vs=0x5555579045c0, data=<optimized out>, len=<optimized out>) at ../ui/vnc.c:2514
+>   #5  0x00005555559f515c in vnc_client_read (vs=0x5555579045c0) at ../ui/vnc.c:1607
+> 
+> Fixes: e99441a3793b5 ("ui/curses: Do not use console_select()")
+> Fixes: https://issues.redhat.com/browse/RHEL-50529
+> Cc: qemu-stable@nongnu.org
+> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 
-> The cris target has recently been removed (see commit 44e4075bf4 -
-> "target/cris: Remove the deprecated CRIS target"), but apparently this
-> line has been forgotten. So clean it up now.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+
+I'm picking this one up to trivial-patches tree, as no one else
+got to it so far.
+
+
+Thanks,
+
+/mjt
+
 > ---
->  tests/tcg/plugins/syscall.c | 1 -
->  1 file changed, 1 deletion(-)
->
-> diff --git a/tests/tcg/plugins/syscall.c b/tests/tcg/plugins/syscall.c
-> index 89dc7f49b1..ff452178b1 100644
-> --- a/tests/tcg/plugins/syscall.c
-> +++ b/tests/tcg/plugins/syscall.c
-> @@ -34,7 +34,6 @@ static const struct SyscallInfo arch_syscall_info[] =3D=
- {
->      { "arm", 4 },
->      { "armeb", 4 },
->      { "avr", -1 },
-> -    { "cris", -1 },
->      { "hexagon", 64 },
->      { "hppa", -1 },
->      { "i386", 4 },
+>   ui/vnc.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/ui/vnc.c b/ui/vnc.c
+> index dae5d51210..5057ec8680 100644
+> --- a/ui/vnc.c
+> +++ b/ui/vnc.c
+> @@ -1935,7 +1935,7 @@ static void do_key_event(VncState *vs, int down, int keycode, int sym)
+>       }
+>   
+>       qkbd_state_key_event(vs->vd->kbd, qcode, down);
+> -    if (!qemu_console_is_graphic(vs->vd->dcl.con)) {
+> +    if (QEMU_IS_TEXT_CONSOLE(vs->vd->dcl.con)) {
+>           QemuTextConsole *con = QEMU_TEXT_CONSOLE(vs->vd->dcl.con);
+>           bool numlock = qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_NUMLOCK);
+>           bool control = qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_CTRL);
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
 
