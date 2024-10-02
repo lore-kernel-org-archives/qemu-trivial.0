@@ -1,70 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1svwdd-0003Ay-9G
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:31:21 -0400
+	id 1svweE-0004FT-B5
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:31:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwdc-00037k-Aq
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:31:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svweB-0004CM-OW
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:31:55 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwda-0001BM-Ro
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:31:20 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwe9-0001Fe-QX
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:31:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1727865078;
+ s=mimecast20190719; t=1727865112;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=A1snHZpx6IsgSoZdp95wgfQFZ0AETdZ3wDPAQ8TryMY=;
- b=QwTW2hicEu92HUbwaWaCWOjli8t8YfOPob/xJIsgG2UIeKJczlEhviroJFLoKytH15bPOJ
- YQQI3CZQLYflQQvC84OWyyh2tQytYauruiaPehgFQT7AksMZRnqnbhnBmdjMr3WoGHlUjs
- O9OkH/ZHOVqvtoXGLj8N+vYBL0+jovs=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=ZZHqzKPFNCiDCKssaQGRs4slL1v6DbhhJkC+NtX1JgQ=;
+ b=OMqUjAUU0JuTEVzvClZHkbFPGhiPW0QQ2dCY++sSIPGzrmLaM9D5qt3Wo+YYGQq8K6KZLD
+ aTeW91laxE/DaUf+YhkAiOquAfMUhyJ8J6zJdsH4/ux/xisBA2Th4gGx3vOs48B7bddc7d
+ /wlSZxAwGY3HYzK9wJsYrsD4HZjeXB8=
+Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
+ [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-335-psrmjqI-NWS1MFo_qWWTNg-1; Wed, 02 Oct 2024 06:31:17 -0400
-X-MC-Unique: psrmjqI-NWS1MFo_qWWTNg-1
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-42cb33e6299so50018265e9.2
- for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:31:16 -0700 (PDT)
+ us-mta-478-ThOayBPIMKqx-8v_R_6fVA-1; Wed, 02 Oct 2024 06:31:51 -0400
+X-MC-Unique: ThOayBPIMKqx-8v_R_6fVA-1
+Received: by mail-wr1-f71.google.com with SMTP id
+ ffacd0b85a97d-37ccd14a2f9so2499876f8f.0
+ for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:31:51 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727865076; x=1728469876;
+ d=1e100.net; s=20230601; t=1727865110; x=1728469910;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:cc:to:subject:user-agent:mime-version:date
  :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=A1snHZpx6IsgSoZdp95wgfQFZ0AETdZ3wDPAQ8TryMY=;
- b=Z7TgBe+LBzqiDp/48I79M9E0bz0wddvpe7l/ISpOlFF8fzwAGoZ7ocZLvmkVjIZ91O
- M87z3HSeRsugHYaAcI6AiWBbYRDTsoyCRVWMwWlNZz3uVGOaNN6b8rDckbeSrylo8Hmq
- oydQRm8j1kB0mc9tj0VSis2KMjI5K65byjk4/LFSQpCkrpZMwWrM2tHSMI/PiQsGNrVN
- fk5inPUCgOc4hm6fZQHqqTQaMGatygxXlFWnNrDxMQvMlavaom/ey1yee2crCH9ZKWHt
- bnaMBquRuROmaxpvZZeZCqDrcJ1BL3wRmq83+RBsHQKSJqHdlNbqlF7LLZz9so7DncmQ
- 1h1Q==
+ bh=ZZHqzKPFNCiDCKssaQGRs4slL1v6DbhhJkC+NtX1JgQ=;
+ b=Z61Iqb+vfwBQdRnE3sTjDF6Al6oM7DaQmUFjLIJyXwA34mMMxacbA+9fiWcmS6xBeb
+ SpkyUaFnFOKacGP0xM+uXb1YLVSqlCzLsl0X86fAhbbgNHdBydxXy+1mCWdbnqGGEOtR
+ v/nwoG8gSkON18PdOF+EfisirrobkCyvup3HTS6yfVw4uKQ3vi3At0/zjitvazCm72Tx
+ vaRyypRFcpWYNWHzhJRzsxThd+UTKyAvSwCoVlM9FViFKT59fe5lFfH/x02DfrKZk7RS
+ pyLcQIN4OX5YeLELeAdq42d3+YaU+xZxVCG/Kqhi/OOD+wKYT6Sc/uD/uTEpOQug/F69
+ J3fA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUegr73l3gw6CrkY2e+t3+FpOg/N5HJAoHEzgK2pXQ8TzaiB2b3ZWygescLzsL1FpylERBxT5tKxQhTHkI=@nongnu.org
-X-Gm-Message-State: AOJu0YxFLJCPIKQVe2iK/CFBKyMDueXywghACA64fJpGmjgk7edG7PBa
- R9Vm7qijGB3C/ju42Ihk25a0dQfdcYDTc25/oO0e4zze3ct5vivrzLZ4CpX/Do/JqqhCBxrlyag
- JTUxPlYvhkLBLyK9z9qqtkQzKsnHEy5w+80DdhxmANsJBSOvtyJWpiDk=
-X-Received: by 2002:a05:600c:3108:b0:42c:ae30:fc4d with SMTP id
- 5b1f17b1804b1-42f777b64c9mr19409735e9.7.1727865075682; 
- Wed, 02 Oct 2024 03:31:15 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFklLSlrnAqc897+yoyJzMSaYvXDf1fk/tlM2FgZnlyfsS8H+q4/pzdtLpqO4NHfQTfqNOJFw==
-X-Received: by 2002:a05:600c:3108:b0:42c:ae30:fc4d with SMTP id
- 5b1f17b1804b1-42f777b64c9mr19409585e9.7.1727865075314; 
- Wed, 02 Oct 2024 03:31:15 -0700 (PDT)
+ AJvYcCVK2JoVAQYJ8s9Js/H0H+XOug9dR0x7JWMyEqIGxOJG3srGdekp3TgyXeo2yZMJoZmRsTCmssQS09u2UXg=@nongnu.org
+X-Gm-Message-State: AOJu0Yw2vCx/WOEoU/2S2XzdBapWtGARGcar1QiVtHdBQhCPYoqpwfwi
+ M5MB2nhBBnF1PtCgNAgAR3RGQfKHt2hX+faF97964TEDTkk9OpADhxssfxY2fIRsvwWmzYcgCFx
+ BGlzyeNwLC4U95oHHuxh0X8/9fYJ68oeBEzP3ce6T4p2UmArQnNTN8+TzQy7YtrMUug==
+X-Received: by 2002:adf:e7c4:0:b0:37c:c80e:d030 with SMTP id
+ ffacd0b85a97d-37cfba0a72bmr1752167f8f.53.1727865110435; 
+ Wed, 02 Oct 2024 03:31:50 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHqYnM07lwjwLsKDAHi+NVrNkglKFA+ef3B21NhhPlrK9bjHBjfybUVYjbxNRGLtU7TAaWqfQ==
+X-Received: by 2002:adf:e7c4:0:b0:37c:c80e:d030 with SMTP id
+ ffacd0b85a97d-37cfba0a72bmr1752147f8f.53.1727865109968; 
+ Wed, 02 Oct 2024 03:31:49 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-49-143.web.vodafone.de.
  [109.42.49.143]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-37cd56e6596sm13671419f8f.63.2024.10.02.03.31.14
+ ffacd0b85a97d-37cd564d2e8sm13830500f8f.18.2024.10.02.03.31.48
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Oct 2024 03:31:14 -0700 (PDT)
-Message-ID: <c9f57f07-b3ff-4724-94f0-3760c2bb0a50@redhat.com>
-Date: Wed, 2 Oct 2024 12:31:13 +0200
+ Wed, 02 Oct 2024 03:31:49 -0700 (PDT)
+Message-ID: <73ef9298-05ba-48ce-9d60-c1e2bf50d729@redhat.com>
+Date: Wed, 2 Oct 2024 12:31:48 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] util/iova-tree: Remove deadcode
-To: dave@treblig.org, peterx@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: qemu-devel@nongnu.org
-References: <20240918142515.153074-1-dave@treblig.org>
+Subject: Re: [PATCH] hw/char: Remove unused serial_set_frequency
+To: dave@treblig.org, mst@redhat.com, pbonzini@redhat.com,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
+References: <20240918144122.155351-1-dave@treblig.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -108,13 +109,13 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240918142515.153074-1-dave@treblig.org>
+In-Reply-To: <20240918144122.155351-1-dave@treblig.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -123,7 +124,7 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,100 +137,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Oct 2024 10:31:20 -0000
+X-List-Received-Date: Wed, 02 Oct 2024 10:31:56 -0000
 
-On 18/09/2024 16.25, dave@treblig.org wrote:
+On 18/09/2024 16.41, dave@treblig.org wrote:
 > From: "Dr. David Alan Gilbert" <dave@treblig.org>
 > 
-> iova_tree_find_address, and iova_tree_foreach have never been
-> used since the code was originally added by:
->    eecf5eedbd ("util: implement simple iova tree")
+> serial_set_frequnecy has been unused since it was added in 2009:
+>    038eaf82c8 ("serial: Add interface to set reference oscillator frequency")
 > 
-> Remove them.
+> It looks like the 'baudbase' is now a property anyway so the wrapper
+> isn't needed.
+> 
+> Remove it.
 > 
 > Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
 > ---
->   include/qemu/iova-tree.h | 25 -------------------------
->   util/iova-tree.c         | 23 -----------------------
->   2 files changed, 48 deletions(-)
+>   hw/char/serial.c         | 7 -------
+>   include/hw/char/serial.h | 2 --
+>   2 files changed, 9 deletions(-)
 > 
-> diff --git a/include/qemu/iova-tree.h b/include/qemu/iova-tree.h
-> index 2a10a7052e..44a45931d5 100644
-> --- a/include/qemu/iova-tree.h
-> +++ b/include/qemu/iova-tree.h
-> @@ -111,31 +111,6 @@ const DMAMap *iova_tree_find(const IOVATree *tree, const DMAMap *map);
->    */
->   const DMAMap *iova_tree_find_iova(const IOVATree *tree, const DMAMap *map);
->   
-> -/**
-> - * iova_tree_find_address:
-> - *
-> - * @tree: the iova tree to search from
-> - * @iova: the iova address to find
-> - *
-> - * Similar to iova_tree_find(), but it tries to find mapping with
-> - * range iova=iova & size=0.
-> - *
-> - * Return: same as iova_tree_find().
-> - */
-> -const DMAMap *iova_tree_find_address(const IOVATree *tree, hwaddr iova);
-> -
-> -/**
-> - * iova_tree_foreach:
-> - *
-> - * @tree: the iova tree to iterate on
-> - * @iterator: the iterator for the mappings, return true to stop
-> - *
-> - * Iterate over the iova tree.
-> - *
-> - * Return: 1 if found any overlap, 0 if not, <0 if error.
-> - */
-> -void iova_tree_foreach(IOVATree *tree, iova_tree_iterator iterator);
-> -
->   /**
->    * iova_tree_alloc_map:
->    *
-> diff --git a/util/iova-tree.c b/util/iova-tree.c
-> index 536789797e..06295e2755 100644
-> --- a/util/iova-tree.c
-> +++ b/util/iova-tree.c
-> @@ -115,13 +115,6 @@ const DMAMap *iova_tree_find_iova(const IOVATree *tree, const DMAMap *map)
->       return args.result;
+> diff --git a/hw/char/serial.c b/hw/char/serial.c
+> index d8b2db5082..6c5c4a23c7 100644
+> --- a/hw/char/serial.c
+> +++ b/hw/char/serial.c
+> @@ -951,13 +951,6 @@ static void serial_unrealize(DeviceState *dev)
+>       qemu_unregister_reset(serial_reset, s);
 >   }
 >   
-> -const DMAMap *iova_tree_find_address(const IOVATree *tree, hwaddr iova)
+> -/* Change the main reference oscillator frequency. */
+> -void serial_set_frequency(SerialState *s, uint32_t frequency)
 > -{
-> -    const DMAMap map = { .iova = iova, .size = 0 };
-> -
-> -    return iova_tree_find(tree, &map);
+> -    s->baudbase = frequency;
+> -    serial_update_parameters(s);
 > -}
 > -
->   static inline void iova_tree_insert_internal(GTree *gtree, DMAMap *range)
->   {
->       /* Key and value are sharing the same range data */
-> @@ -148,22 +141,6 @@ int iova_tree_insert(IOVATree *tree, const DMAMap *map)
->       return IOVA_OK;
->   }
+>   const MemoryRegionOps serial_io_ops = {
+>       .read = serial_ioport_read,
+>       .write = serial_ioport_write,
+> diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
+> index 6e14099ee7..40aad21df3 100644
+> --- a/include/hw/char/serial.h
+> +++ b/include/hw/char/serial.h
+> @@ -93,8 +93,6 @@ struct SerialMM {
+>   extern const VMStateDescription vmstate_serial;
+>   extern const MemoryRegionOps serial_io_ops;
 >   
-> -static gboolean iova_tree_traverse(gpointer key, gpointer value,
-> -                                gpointer data)
-> -{
-> -    iova_tree_iterator iterator = data;
-> -    DMAMap *map = key;
+> -void serial_set_frequency(SerialState *s, uint32_t frequency);
 > -
-> -    g_assert(key == value);
-> -
-> -    return iterator(map);
-> -}
-> -
-> -void iova_tree_foreach(IOVATree *tree, iova_tree_iterator iterator)
-> -{
-> -    g_tree_foreach(tree->tree, iova_tree_traverse, iterator);
-> -}
-> -
->   void iova_tree_remove(IOVATree *tree, DMAMap map)
->   {
->       const DMAMap *overlap;
+>   #define TYPE_SERIAL "serial"
+>   OBJECT_DECLARE_SIMPLE_TYPE(SerialState, SERIAL)
+>   
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
