@@ -1,69 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1svwoE-0003Uu-0l
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:42:18 -0400
+	id 1svwpO-0004UM-7g
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:43:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwoC-0003Rk-2O
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:42:16 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwpA-0004Tk-R4
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:43:19 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwoA-0002eQ-NB
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:42:15 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwp7-0002gC-SH
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:43:14 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1727865734;
+ s=mimecast20190719; t=1727865793;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=biPmuPpkrqekA6H9Bm40Z1QrtuWIvhatsbwVzg085u0=;
- b=XL6OQXhTQMAYKebUyfuVUEONw1ATdlCprT8/QUbF5RrL2oalAQ1T95A5gO5wNQU0qxqFFw
- Fduvmv9qLtT7DSeM/whSUwIZUMdvE1KTT2Kd8Z7+vxkLO7aKLlvmIr0OcCYtm31OfEbLce
- JD9N++mGNGhMT31ephLFIFOnvpH94bs=
+ bh=uaoyH1JLEp/2pIr4KBEExzIi3qSVppTrtmAri/LRB+o=;
+ b=HrW095NuB2OCDcbIi0drpRrtU+/kVQrGuKComjcGuXW8gIe/cgh034EvW0766qRraTKrIp
+ Mb6hRkIntChHn6ssR492Wm7YlcwNoU+s5PDlQXgqjG6S0zzQkpKVBNuLEiklO+AsJwAcXi
+ yp110O39w5rR3lNmehmkmGompPQjx+4=
 Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
  [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-695-B7xQDI0xODuxzCubGUmKEQ-1; Wed, 02 Oct 2024 06:42:12 -0400
-X-MC-Unique: B7xQDI0xODuxzCubGUmKEQ-1
+ us-mta-645-qmAUCqezP8yx0NcX5B1eTQ-1; Wed, 02 Oct 2024 06:43:11 -0400
+X-MC-Unique: qmAUCqezP8yx0NcX5B1eTQ-1
 Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-42cb080ab53so50181845e9.0
- for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:42:12 -0700 (PDT)
+ 5b1f17b1804b1-42cb0b0514bso54510205e9.1
+ for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:43:11 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727865731; x=1728470531;
+ d=1e100.net; s=20230601; t=1727865791; x=1728470591;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
  :from:references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=biPmuPpkrqekA6H9Bm40Z1QrtuWIvhatsbwVzg085u0=;
- b=j1cmCDLx81s6ete4+VQ6N2MMq6gFuEzI2/Ca8hVW4Fx/CMtxUMYQDicG39IuB+4j5K
- WargmHB/SKI1061YCzUgAFeO8MfcTcatfCAz8aZ6zf0949xxnDbogDadN9JVvkXSwPHZ
- 1ZTdZXR0n3pAn+QQ+T1TdXmw5JdP+u87yrlli5ck5ZpD+D68iNZHnQULfXbFRmDwEvwm
- 6RL2CjkdUpm3eBzSMr7BKLCsLJSFfPC8H7VFolJK5NWZvH1pf+1WKqBCoqNiRVthm8C4
- VFSBfFxQEV0tdsci3cUjO+pPKACu18bUmBEPF3Dr76fQsBnICu1a858tRDoXrbMA/le0
- 9HQw==
+ bh=uaoyH1JLEp/2pIr4KBEExzIi3qSVppTrtmAri/LRB+o=;
+ b=bW2gC1V0LsoWbMw3inYrez88jhiddpkiUu/8nQiFv+JU8lAhc0GfUwXaG2ITJNL5eo
+ yMkkoahNMG1KuLRo8S/1fIpO/2tKEfdk8pPfEe3Nu2+qvAfAHTn8CCT8HZa4EJMsjF9k
+ AGjOSXbz4JDl0Lkp96HvpCZuCpp4GZjqzxn3XDFs7ChjpG5olimQ+moosXfzyMwVayeX
+ lceCiWZkheRSF0IX2wxue+oYrGdgp6bTrrdIp4H4i0+UliZkyciofOJNEhdZzKX6/rMk
+ t4CroJVEnDgb/EEdEQ9DqXjhfasJMHIYSYqP2yPJ7vdJcaWmHWooUQIrH5mY3xWZ8Cjy
+ ciOw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWFdCRr+2des23befm7kz0QrkwUW8lLN1+3W3bEHqzwCaeLCHBSNmRtQJyALanP2I4LlrarzeEVLjSIFOY=@nongnu.org
-X-Gm-Message-State: AOJu0YzkIl+F3Y1GDNLaiOYDS/VkV9FQlbNSe/TcNcaMyBAKL4dSr8Pn
- SA9W1VwYX2sYHPBh1eEa5/EwDileY4KjYXExZoeAtzcwry2krAsnzlzk7nnVBL/1dqsOFReC9AN
- ze2PqvB5Ne44U9/7gA8tBGzlu+9nnq+T79ngsjVGnny3zKFqEQuIAKVM=
-X-Received: by 2002:a05:600c:1c98:b0:42c:bb41:a079 with SMTP id
- 5b1f17b1804b1-42f777b631bmr21872375e9.1.1727865731594; 
- Wed, 02 Oct 2024 03:42:11 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHhr+72AOrAx7SjYWAvmB1urrRChcFrMjz66oYhTp5MLgMsM7VSSHBAgba4OCyVghM71A/CFg==
-X-Received: by 2002:a05:600c:1c98:b0:42c:bb41:a079 with SMTP id
- 5b1f17b1804b1-42f777b631bmr21872135e9.1.1727865731157; 
- Wed, 02 Oct 2024 03:42:11 -0700 (PDT)
+ AJvYcCUzH1SKGo9KUYRFOvB/5TMPYdlG5E9T4wZ9rpLt73lfF3mr1qDSNMbAB8sZbK2VbN/ZG3gr+B8zmajXm30=@nongnu.org
+X-Gm-Message-State: AOJu0YxPAP8N/QgXD06/CozDiiZklm3XeMGvVFAuDZKv0MjbG0MS1Rq1
+ 1i08EgW+9iBmvHLhs9/NKmchC/RJK6gKmZLE93kOdbCImkVNMZHyFs5j7D53Uep8cEvx3nb6je2
+ fuVEDYkQQIDd1yRVcgG3a7Cq/H1IlPnpqFhcRdQeycJUH0hEc3sOCGgg=
+X-Received: by 2002:a05:600c:1d20:b0:42c:b905:2bf9 with SMTP id
+ 5b1f17b1804b1-42f777c1a6fmr20946275e9.16.1727865790673; 
+ Wed, 02 Oct 2024 03:43:10 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHY1YhCtW3gaCOkfoNUfFRQvZH/rOhpXoH8huasV9V4Ry2ZwGT/w2IuApsNcyWA5Ms2izjaxQ==
+X-Received: by 2002:a05:600c:1d20:b0:42c:b905:2bf9 with SMTP id
+ 5b1f17b1804b1-42f777c1a6fmr20946115e9.16.1727865790294; 
+ Wed, 02 Oct 2024 03:43:10 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-49-143.web.vodafone.de.
  [109.42.49.143]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42f7a01fc92sm15113775e9.36.2024.10.02.03.42.10
+ 5b1f17b1804b1-42f7728b382sm13826505e9.1.2024.10.02.03.43.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Oct 2024 03:42:10 -0700 (PDT)
-Message-ID: <edeb3df1-1a73-4c8b-8870-866221f7a30b@redhat.com>
-Date: Wed, 2 Oct 2024 12:42:09 +0200
+ Wed, 02 Oct 2024 03:43:09 -0700 (PDT)
+Message-ID: <03a317f1-1868-4a45-96f6-5797478a22da@redhat.com>
+Date: Wed, 2 Oct 2024 12:43:08 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/pci: Remove unused pcie_chassis_find_slot
-To: dave@treblig.org, mst@redhat.com, marcel.apfelbaum@gmail.com,
+Subject: Re: [PATCH] hw/net/rocker: Remove unused rocker_fp_ports
+To: dave@treblig.org, jiri@resnulli.us, jasowang@redhat.com,
  qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240918234748.468148-1-dave@treblig.org>
+References: <20240918231447.458796-1-dave@treblig.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -107,7 +107,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240918234748.468148-1-dave@treblig.org>
+In-Reply-To: <20240918231447.458796-1-dave@treblig.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -135,54 +135,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Oct 2024 10:42:16 -0000
+X-List-Received-Date: Wed, 02 Oct 2024 10:43:24 -0000
 
-On 19/09/2024 01.47, dave@treblig.org wrote:
+On 19/09/2024 01.14, dave@treblig.org wrote:
 > From: "Dr. David Alan Gilbert" <dave@treblig.org>
 > 
-> pcie_chassis_find_slot has been unused since it was added.
-> 
+> rocker_fp_ports hasn't been used since it was added back in 2015.
 > Remove it.
 > 
 > Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
 > ---
->   hw/pci/pcie_port.c         | 10 ----------
->   include/hw/pci/pcie_port.h |  1 -
->   2 files changed, 11 deletions(-)
+>   hw/net/rocker/rocker.c | 5 -----
+>   hw/net/rocker/rocker.h | 1 -
+>   2 files changed, 6 deletions(-)
 > 
-> diff --git a/hw/pci/pcie_port.c b/hw/pci/pcie_port.c
-> index 20ff2b39e8..9f978ba164 100644
-> --- a/hw/pci/pcie_port.c
-> +++ b/hw/pci/pcie_port.c
-> @@ -92,16 +92,6 @@ static PCIESlot *pcie_chassis_find_slot_with_chassis(struct PCIEChassis *c,
->       return s;
+> diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
+> index 1ab5852113..5e74acc969 100644
+> --- a/hw/net/rocker/rocker.c
+> +++ b/hw/net/rocker/rocker.c
+> @@ -134,11 +134,6 @@ RockerPortList *qmp_query_rocker_ports(const char *name, Error **errp)
+>       return list;
 >   }
 >   
-> -PCIESlot *pcie_chassis_find_slot(uint8_t chassis_number, uint16_t slot)
+> -uint32_t rocker_fp_ports(Rocker *r)
 > -{
-> -    struct PCIEChassis *c;
-> -    c = pcie_chassis_find(chassis_number);
-> -    if (!c) {
-> -        return NULL;
-> -    }
-> -    return pcie_chassis_find_slot_with_chassis(c, slot);
+> -    return r->fp_ports;
 > -}
 > -
->   int pcie_chassis_add_slot(struct PCIESlot *slot)
+>   static uint32_t rocker_get_pport_by_tx_ring(Rocker *r,
+>                                               DescRing *ring)
 >   {
->       struct PCIEChassis *c;
-> diff --git a/include/hw/pci/pcie_port.h b/include/hw/pci/pcie_port.h
-> index 90e6cf45b8..7cd7af8cfa 100644
-> --- a/include/hw/pci/pcie_port.h
-> +++ b/include/hw/pci/pcie_port.h
-> @@ -72,7 +72,6 @@ struct PCIESlot {
->   };
+> diff --git a/hw/net/rocker/rocker.h b/hw/net/rocker/rocker.h
+> index f85354d9d1..6e0962f47a 100644
+> --- a/hw/net/rocker/rocker.h
+> +++ b/hw/net/rocker/rocker.h
+> @@ -72,7 +72,6 @@ DECLARE_INSTANCE_CHECKER(Rocker, ROCKER,
+>                            TYPE_ROCKER)
 >   
->   void pcie_chassis_create(uint8_t chassis_number);
-> -PCIESlot *pcie_chassis_find_slot(uint8_t chassis, uint16_t slot);
->   int pcie_chassis_add_slot(struct PCIESlot *slot);
->   void pcie_chassis_del_slot(PCIESlot *s);
->   
+>   Rocker *rocker_find(const char *name);
+> -uint32_t rocker_fp_ports(Rocker *r);
+>   int rocker_event_link_changed(Rocker *r, uint32_t pport, bool link_up);
+>   int rocker_event_mac_vlan_seen(Rocker *r, uint32_t pport, uint8_t *addr,
+>                                  uint16_t vlan_id);
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
