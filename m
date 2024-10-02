@@ -1,70 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1svwcw-0002Dm-1q
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:30:38 -0400
+	id 1svwdd-0003Ay-9G
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:31:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwcr-00029j-G5
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:30:35 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwdc-00037k-Aq
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:31:20 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwcq-00017E-0M
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:30:33 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwda-0001BM-Ro
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:31:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1727865031;
+ s=mimecast20190719; t=1727865078;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=PqbvLNiWpttX6u++jFp56ODO73PpQrxGcq4nCzgmhJM=;
- b=cqz6N8PklHMYCveC7vdEdkok2AyPg/JSSzYe7zYEzvyuXwzbxG9Of+DPk9BzOahAWEmeoj
- v8kfFoUB9wYw6dFDz8lHn/hKgLHAlkpoH+2JS6mTCLilh6XdId3BAavXkpXOVbuVYggL+u
- k7c3pOTT/Yhh6zp9GwklOXu/+e6BcrA=
+ bh=A1snHZpx6IsgSoZdp95wgfQFZ0AETdZ3wDPAQ8TryMY=;
+ b=QwTW2hicEu92HUbwaWaCWOjli8t8YfOPob/xJIsgG2UIeKJczlEhviroJFLoKytH15bPOJ
+ YQQI3CZQLYflQQvC84OWyyh2tQytYauruiaPehgFQT7AksMZRnqnbhnBmdjMr3WoGHlUjs
+ O9OkH/ZHOVqvtoXGLj8N+vYBL0+jovs=
 Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
  [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-245-lEUZg_67P4m_o-ENYujAuQ-1; Wed, 02 Oct 2024 06:30:29 -0400
-X-MC-Unique: lEUZg_67P4m_o-ENYujAuQ-1
+ us-mta-335-psrmjqI-NWS1MFo_qWWTNg-1; Wed, 02 Oct 2024 06:31:17 -0400
+X-MC-Unique: psrmjqI-NWS1MFo_qWWTNg-1
 Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-42cb33e6299so50012685e9.2
- for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:30:29 -0700 (PDT)
+ 5b1f17b1804b1-42cb33e6299so50018265e9.2
+ for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:31:16 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727865028; x=1728469828;
+ d=1e100.net; s=20230601; t=1727865076; x=1728469876;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=PqbvLNiWpttX6u++jFp56ODO73PpQrxGcq4nCzgmhJM=;
- b=aOPqA33zWBG7PFr3w4qZwoHbNhVBff/kRIsbD+vB9iyXsVY9j0gT6YXYgAT7vmjOD6
- w8N374gnc7Tm79MWuQKGmDUjpUADgNoxaI8/EU+4S/ROsgz/1ht/+HFYk1Z1UmwTIZsf
- NckRWAKWSpZz+icO4Q89DWeiNtL2DduCoca0QRs6maU8X2UM45iggyBCPKc/kaWf5efC
- /sRl83j1VXyn+A0nWKTyRQsrGTbmXGp5RWnE684h6F1WEBR3i1eOnB77hRkjNPIBJKx7
- FyGDFkNo7yP8jJCpUHiJq84SVFEvkZU+FQ1Qyr776YqdaHGzkMf+WoHPf9LWZPpOWYY+
- Yfug==
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=A1snHZpx6IsgSoZdp95wgfQFZ0AETdZ3wDPAQ8TryMY=;
+ b=Z7TgBe+LBzqiDp/48I79M9E0bz0wddvpe7l/ISpOlFF8fzwAGoZ7ocZLvmkVjIZ91O
+ M87z3HSeRsugHYaAcI6AiWBbYRDTsoyCRVWMwWlNZz3uVGOaNN6b8rDckbeSrylo8Hmq
+ oydQRm8j1kB0mc9tj0VSis2KMjI5K65byjk4/LFSQpCkrpZMwWrM2tHSMI/PiQsGNrVN
+ fk5inPUCgOc4hm6fZQHqqTQaMGatygxXlFWnNrDxMQvMlavaom/ey1yee2crCH9ZKWHt
+ bnaMBquRuROmaxpvZZeZCqDrcJ1BL3wRmq83+RBsHQKSJqHdlNbqlF7LLZz9so7DncmQ
+ 1h1Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWO9o7n2qB1+jkEj+tNqc7FOTvIaOFiSbU4SpvuGLk/hIySG5weTzIvDqsPK6tl21VOCrDeuhC6fxj2qr4=@nongnu.org
-X-Gm-Message-State: AOJu0YwbNFkhoRGzRp0tA9DkzH+JHcJN4UA3IEmu2jZ0DkpQlFVkRBnK
- ROa+olQShFUKn5iEzMzsACsH5XmUJzeeHib43hatqiFmifRVQ2dcc04kht30hXULsXXyW71bPX9
- WZZ/DIfDMJ4oW8l8nOzmODGmjxFllAtoqDz79WCzQHP7sORrFHKpRj50=
-X-Received: by 2002:a05:600c:4f86:b0:42c:b80e:5e50 with SMTP id
- 5b1f17b1804b1-42f777633f9mr19500265e9.0.1727865027913; 
- Wed, 02 Oct 2024 03:30:27 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEUhlHhvZKYmIy8aOXdAMOaFHvvcoQm4a4E4dLiXjVNQH5fIQ2nxovGvoW0AoiFfzB3BMJVBw==
-X-Received: by 2002:a05:600c:4f86:b0:42c:b80e:5e50 with SMTP id
- 5b1f17b1804b1-42f777633f9mr19500025e9.0.1727865027494; 
- Wed, 02 Oct 2024 03:30:27 -0700 (PDT)
+ AJvYcCUegr73l3gw6CrkY2e+t3+FpOg/N5HJAoHEzgK2pXQ8TzaiB2b3ZWygescLzsL1FpylERBxT5tKxQhTHkI=@nongnu.org
+X-Gm-Message-State: AOJu0YxFLJCPIKQVe2iK/CFBKyMDueXywghACA64fJpGmjgk7edG7PBa
+ R9Vm7qijGB3C/ju42Ihk25a0dQfdcYDTc25/oO0e4zze3ct5vivrzLZ4CpX/Do/JqqhCBxrlyag
+ JTUxPlYvhkLBLyK9z9qqtkQzKsnHEy5w+80DdhxmANsJBSOvtyJWpiDk=
+X-Received: by 2002:a05:600c:3108:b0:42c:ae30:fc4d with SMTP id
+ 5b1f17b1804b1-42f777b64c9mr19409735e9.7.1727865075682; 
+ Wed, 02 Oct 2024 03:31:15 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFklLSlrnAqc897+yoyJzMSaYvXDf1fk/tlM2FgZnlyfsS8H+q4/pzdtLpqO4NHfQTfqNOJFw==
+X-Received: by 2002:a05:600c:3108:b0:42c:ae30:fc4d with SMTP id
+ 5b1f17b1804b1-42f777b64c9mr19409585e9.7.1727865075314; 
+ Wed, 02 Oct 2024 03:31:15 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-49-143.web.vodafone.de.
  [109.42.49.143]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42f7a01f4fasm14805785e9.38.2024.10.02.03.30.26
+ ffacd0b85a97d-37cd56e6596sm13671419f8f.63.2024.10.02.03.31.14
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Oct 2024 03:30:27 -0700 (PDT)
-Message-ID: <c03863be-2e55-423c-b541-73831b3ffa88@redhat.com>
-Date: Wed, 2 Oct 2024 12:30:25 +0200
+ Wed, 02 Oct 2024 03:31:14 -0700 (PDT)
+Message-ID: <c9f57f07-b3ff-4724-94f0-3760c2bb0a50@redhat.com>
+Date: Wed, 2 Oct 2024 12:31:13 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/net/net_rx_pkt: Remove deadcode
-To: dave@treblig.org, dmitry.fleytman@gmail.com, akihiko.odaki@daynix.com,
- jasowang@redhat.com, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240918225128.455043-1-dave@treblig.org>
+Subject: Re: [PATCH] util/iova-tree: Remove deadcode
+To: dave@treblig.org, peterx@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: qemu-devel@nongnu.org
+References: <20240918142515.153074-1-dave@treblig.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -108,7 +108,7 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240918225128.455043-1-dave@treblig.org>
+In-Reply-To: <20240918142515.153074-1-dave@treblig.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
@@ -136,73 +136,100 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Oct 2024 10:30:35 -0000
+X-List-Received-Date: Wed, 02 Oct 2024 10:31:20 -0000
 
-On 19/09/2024 00.51, dave@treblig.org wrote:
+On 18/09/2024 16.25, dave@treblig.org wrote:
 > From: "Dr. David Alan Gilbert" <dave@treblig.org>
 > 
-> net_rx_pkt_get_l3_hdr_offset and net_rx_pkt_get_iovec_len haven't
-> been used since they were added.
+> iova_tree_find_address, and iova_tree_foreach have never been
+> used since the code was originally added by:
+>    eecf5eedbd ("util: implement simple iova tree")
 > 
 > Remove them.
 > 
 > Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
 > ---
->   hw/net/net_rx_pkt.c | 13 -------------
->   hw/net/net_rx_pkt.h |  9 ---------
->   2 files changed, 22 deletions(-)
+>   include/qemu/iova-tree.h | 25 -------------------------
+>   util/iova-tree.c         | 23 -----------------------
+>   2 files changed, 48 deletions(-)
 > 
-> diff --git a/hw/net/net_rx_pkt.c b/hw/net/net_rx_pkt.c
-> index 32e5f3f9cf..cec1d0523d 100644
-> --- a/hw/net/net_rx_pkt.c
-> +++ b/hw/net/net_rx_pkt.c
-> @@ -209,12 +209,6 @@ void net_rx_pkt_get_protocols(struct NetRxPkt *pkt,
->       *l4hdr_proto = pkt->l4hdr_info.proto;
->   }
->   
-> -size_t net_rx_pkt_get_l3_hdr_offset(struct NetRxPkt *pkt)
-> -{
-> -    assert(pkt);
-> -    return pkt->l3hdr_off;
-> -}
-> -
->   size_t net_rx_pkt_get_l4_hdr_offset(struct NetRxPkt *pkt)
->   {
->       assert(pkt);
-> @@ -427,13 +421,6 @@ struct iovec *net_rx_pkt_get_iovec(struct NetRxPkt *pkt)
->       return pkt->vec;
->   }
->   
-> -uint16_t net_rx_pkt_get_iovec_len(struct NetRxPkt *pkt)
-> -{
-> -    assert(pkt);
-> -
-> -    return pkt->vec_len;
-> -}
-> -
->   void net_rx_pkt_set_vhdr(struct NetRxPkt *pkt,
->                               struct virtio_net_hdr *vhdr)
->   {
-> diff --git a/hw/net/net_rx_pkt.h b/hw/net/net_rx_pkt.h
-> index 55ec67a1a7..e8df9cfd52 100644
-> --- a/hw/net/net_rx_pkt.h
-> +++ b/hw/net/net_rx_pkt.h
-> @@ -267,15 +267,6 @@ net_rx_pkt_attach_data(struct NetRxPkt *pkt, const void *data,
+> diff --git a/include/qemu/iova-tree.h b/include/qemu/iova-tree.h
+> index 2a10a7052e..44a45931d5 100644
+> --- a/include/qemu/iova-tree.h
+> +++ b/include/qemu/iova-tree.h
+> @@ -111,31 +111,6 @@ const DMAMap *iova_tree_find(const IOVATree *tree, const DMAMap *map);
 >    */
->   struct iovec *net_rx_pkt_get_iovec(struct NetRxPkt *pkt);
+>   const DMAMap *iova_tree_find_iova(const IOVATree *tree, const DMAMap *map);
 >   
 > -/**
-> -* returns io vector length that holds the attached data
-> -*
-> -* @pkt:            packet
-> -* @ret:            IOVec length
-> -*
-> -*/
-> -uint16_t net_rx_pkt_get_iovec_len(struct NetRxPkt *pkt);
+> - * iova_tree_find_address:
+> - *
+> - * @tree: the iova tree to search from
+> - * @iova: the iova address to find
+> - *
+> - * Similar to iova_tree_find(), but it tries to find mapping with
+> - * range iova=iova & size=0.
+> - *
+> - * Return: same as iova_tree_find().
+> - */
+> -const DMAMap *iova_tree_find_address(const IOVATree *tree, hwaddr iova);
+> -
+> -/**
+> - * iova_tree_foreach:
+> - *
+> - * @tree: the iova tree to iterate on
+> - * @iterator: the iterator for the mappings, return true to stop
+> - *
+> - * Iterate over the iova tree.
+> - *
+> - * Return: 1 if found any overlap, 0 if not, <0 if error.
+> - */
+> -void iova_tree_foreach(IOVATree *tree, iova_tree_iterator iterator);
 > -
 >   /**
->    * prints rx packet data if debug is enabled
+>    * iova_tree_alloc_map:
 >    *
+> diff --git a/util/iova-tree.c b/util/iova-tree.c
+> index 536789797e..06295e2755 100644
+> --- a/util/iova-tree.c
+> +++ b/util/iova-tree.c
+> @@ -115,13 +115,6 @@ const DMAMap *iova_tree_find_iova(const IOVATree *tree, const DMAMap *map)
+>       return args.result;
+>   }
+>   
+> -const DMAMap *iova_tree_find_address(const IOVATree *tree, hwaddr iova)
+> -{
+> -    const DMAMap map = { .iova = iova, .size = 0 };
+> -
+> -    return iova_tree_find(tree, &map);
+> -}
+> -
+>   static inline void iova_tree_insert_internal(GTree *gtree, DMAMap *range)
+>   {
+>       /* Key and value are sharing the same range data */
+> @@ -148,22 +141,6 @@ int iova_tree_insert(IOVATree *tree, const DMAMap *map)
+>       return IOVA_OK;
+>   }
+>   
+> -static gboolean iova_tree_traverse(gpointer key, gpointer value,
+> -                                gpointer data)
+> -{
+> -    iova_tree_iterator iterator = data;
+> -    DMAMap *map = key;
+> -
+> -    g_assert(key == value);
+> -
+> -    return iterator(map);
+> -}
+> -
+> -void iova_tree_foreach(IOVATree *tree, iova_tree_iterator iterator)
+> -{
+> -    g_tree_foreach(tree->tree, iova_tree_traverse, iterator);
+> -}
+> -
+>   void iova_tree_remove(IOVATree *tree, DMAMap map)
+>   {
+>       const DMAMap *overlap;
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
