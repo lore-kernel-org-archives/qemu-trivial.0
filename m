@@ -1,69 +1,71 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1svwpO-0004UM-7g
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:43:31 -0400
+	id 1svwrF-0005Fp-5T
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 06:45:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwpA-0004Tk-R4
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:43:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwr5-0005Ee-Ob
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:45:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwp7-0002gC-SH
- for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:43:14 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1svwr3-0002vL-W8
+ for qemu-trivial@nongnu.org; Wed, 02 Oct 2024 06:45:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1727865793;
+ s=mimecast20190719; t=1727865912;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:mime-version:mime-version:content-type:content-type:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=uaoyH1JLEp/2pIr4KBEExzIi3qSVppTrtmAri/LRB+o=;
- b=HrW095NuB2OCDcbIi0drpRrtU+/kVQrGuKComjcGuXW8gIe/cgh034EvW0766qRraTKrIp
- Mb6hRkIntChHn6ssR492Wm7YlcwNoU+s5PDlQXgqjG6S0zzQkpKVBNuLEiklO+AsJwAcXi
- yp110O39w5rR3lNmehmkmGompPQjx+4=
+ bh=ue3DTV1r4Qpr0FPmYGYIUyFyOTcGLiCNiOvL4dHrRFE=;
+ b=dOjMW4qhw8ZZbL7EB3r7PqB+XY3ZQ7rvVhm3jR9cNY9Ce4aHQDhNAhg9l204APK8oqDqyk
+ hgUH+n7QuYEMWng7RelH7JdkGd40Tdf5SjotouY9pmleI/xVAf7Xmx9rN0qG4p+W7H99LP
+ sDVReKJ6Hf770CbZp0h+P8Qiy4UmNXE=
 Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
  [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-645-qmAUCqezP8yx0NcX5B1eTQ-1; Wed, 02 Oct 2024 06:43:11 -0400
-X-MC-Unique: qmAUCqezP8yx0NcX5B1eTQ-1
+ us-mta-126-hoGUYDlnMUeN7_HVvqKVKA-1; Wed, 02 Oct 2024 06:45:10 -0400
+X-MC-Unique: hoGUYDlnMUeN7_HVvqKVKA-1
 Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-42cb0b0514bso54510205e9.1
- for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:43:11 -0700 (PDT)
+ 5b1f17b1804b1-42e8bf0f5e8so42994895e9.2
+ for <qemu-trivial@nongnu.org>; Wed, 02 Oct 2024 03:45:10 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1727865791; x=1728470591;
+ d=1e100.net; s=20230601; t=1727865909; x=1728470709;
  h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=uaoyH1JLEp/2pIr4KBEExzIi3qSVppTrtmAri/LRB+o=;
- b=bW2gC1V0LsoWbMw3inYrez88jhiddpkiUu/8nQiFv+JU8lAhc0GfUwXaG2ITJNL5eo
- yMkkoahNMG1KuLRo8S/1fIpO/2tKEfdk8pPfEe3Nu2+qvAfAHTn8CCT8HZa4EJMsjF9k
- AGjOSXbz4JDl0Lkp96HvpCZuCpp4GZjqzxn3XDFs7ChjpG5olimQ+moosXfzyMwVayeX
- lceCiWZkheRSF0IX2wxue+oYrGdgp6bTrrdIp4H4i0+UliZkyciofOJNEhdZzKX6/rMk
- t4CroJVEnDgb/EEdEQ9DqXjhfasJMHIYSYqP2yPJ7vdJcaWmHWooUQIrH5mY3xWZ8Cjy
- ciOw==
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=ue3DTV1r4Qpr0FPmYGYIUyFyOTcGLiCNiOvL4dHrRFE=;
+ b=TUMxTdYQlt97zhmoU+DqLXNPZbxWwVTNKaEr2OK5jnmZ6GhUjMHfgcyqCV3iS4Whw1
+ wn6UbtelanegE3vU0A/LdPBwO8PPQEMISLMzm8fzE5vyYPtxMz65WL/8RnKCq6wghn1w
+ 337xJi5JZl7RL180jYDWcVdTPlURL/X9RlxAeutFhEXnUJXTStmWDX4n7Ud9Z7WByg0f
+ SHldjPGMB8nFwx5c9UZq0Dn2s7n6l/3zRTLijZY8qy1eT6oUOXvkArGEthpc94VWY82F
+ 3/EYjYG1dtj4YduYTCjCizpzAodKjIWRQfNTV9GWtOzdnueNcxDVmksS+fdlF+y6Ximx
+ lTwg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUzH1SKGo9KUYRFOvB/5TMPYdlG5E9T4wZ9rpLt73lfF3mr1qDSNMbAB8sZbK2VbN/ZG3gr+B8zmajXm30=@nongnu.org
-X-Gm-Message-State: AOJu0YxPAP8N/QgXD06/CozDiiZklm3XeMGvVFAuDZKv0MjbG0MS1Rq1
- 1i08EgW+9iBmvHLhs9/NKmchC/RJK6gKmZLE93kOdbCImkVNMZHyFs5j7D53Uep8cEvx3nb6je2
- fuVEDYkQQIDd1yRVcgG3a7Cq/H1IlPnpqFhcRdQeycJUH0hEc3sOCGgg=
-X-Received: by 2002:a05:600c:1d20:b0:42c:b905:2bf9 with SMTP id
- 5b1f17b1804b1-42f777c1a6fmr20946275e9.16.1727865790673; 
- Wed, 02 Oct 2024 03:43:10 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHY1YhCtW3gaCOkfoNUfFRQvZH/rOhpXoH8huasV9V4Ry2ZwGT/w2IuApsNcyWA5Ms2izjaxQ==
-X-Received: by 2002:a05:600c:1d20:b0:42c:b905:2bf9 with SMTP id
- 5b1f17b1804b1-42f777c1a6fmr20946115e9.16.1727865790294; 
- Wed, 02 Oct 2024 03:43:10 -0700 (PDT)
+ AJvYcCW9BLKcIeaDx+HYeZQhvBIl64KA9jTz2ZBS9Ss89+A4CVCzSoT0WhrdVD9EDWHvj+CHHa3xD6MByi6w1Rs=@nongnu.org
+X-Gm-Message-State: AOJu0Yw9bw9Im/yVnxqQVD705cmkYsgpMxODFY97LxJZUVZqI9J/Mnaj
+ sCudO+Mx9j2Zf7zH8qRMH+g/2Y9C15t1AeTVSjSqs7jWSMl/FyqhxzIHOXqxqfzCpb+6dHY4k8G
+ vGkk9j0QDr90vMoXdlHOYpOLjSorj+9trRb9TJAs6k7iPfEIyFNHymVU=
+X-Received: by 2002:a05:600c:1d1f:b0:42c:b22e:fbfa with SMTP id
+ 5b1f17b1804b1-42f777dba40mr17665555e9.21.1727865908337; 
+ Wed, 02 Oct 2024 03:45:08 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGNpO8ewpCb381GNY0IuIeaFhkGI8GrFRjdAQ2gOriciX5FxmXo3gtZsIdlp3qdfsUcLaj2Eg==
+X-Received: by 2002:a05:600c:1d1f:b0:42c:b22e:fbfa with SMTP id
+ 5b1f17b1804b1-42f777dba40mr17665375e9.21.1727865907874; 
+ Wed, 02 Oct 2024 03:45:07 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-49-143.web.vodafone.de.
  [109.42.49.143]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42f7728b382sm13826505e9.1.2024.10.02.03.43.09
+ 5b1f17b1804b1-42f7a01f4a4sm15185315e9.29.2024.10.02.03.45.06
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Oct 2024 03:43:09 -0700 (PDT)
-Message-ID: <03a317f1-1868-4a45-96f6-5797478a22da@redhat.com>
-Date: Wed, 2 Oct 2024 12:43:08 +0200
+ Wed, 02 Oct 2024 03:45:07 -0700 (PDT)
+Message-ID: <17c2adb4-9346-46dc-a93b-b0bfa3207cfe@redhat.com>
+Date: Wed, 2 Oct 2024 12:45:05 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/net/rocker: Remove unused rocker_fp_ports
-To: dave@treblig.org, jiri@resnulli.us, jasowang@redhat.com,
- qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240918231447.458796-1-dave@treblig.org>
+Subject: Re: [PATCH] block-backend: Remove deadcode
+To: dave@treblig.org, kwolf@redhat.com, hreitz@redhat.com,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: qemu-block@nongnu.org, qemu-devel@nongnu.org
+References: <20240917002056.330818-1-dave@treblig.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -107,13 +109,13 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20240918231447.458796-1-dave@treblig.org>
+In-Reply-To: <20240917002056.330818-1-dave@treblig.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -21
 X-Spam_score: -2.2
@@ -122,7 +124,7 @@ X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.144,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -135,48 +137,191 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Oct 2024 10:43:24 -0000
+X-List-Received-Date: Wed, 02 Oct 2024 10:45:16 -0000
 
-On 19/09/2024 01.14, dave@treblig.org wrote:
+On 17/09/2024 02.20, dave@treblig.org wrote:
 > From: "Dr. David Alan Gilbert" <dave@treblig.org>
 > 
-> rocker_fp_ports hasn't been used since it was added back in 2015.
-> Remove it.
+> blk_by_public last use was removed in 2017 by
+>    c61791fc23 ("block: add aio_context field in ThrottleGroupMember")
+> 
+> blk_activate last use was removed earlier this year by
+>    eef0bae3a7 ("migration: Remove block migration")
+> 
+> blk_add_insert_bs_notifier, blk_op_block_all, blk_op_unblock_all
+> last uses were removed in 2016 by
+>    ef8875b549 ("virtio-scsi: Remove op blocker for dataplane")
+> 
+> blk_iostatus_disable last use was removed in 2016 by
+>    66a0fae438 ("blockjob: Don't touch BDS iostatus")
+> 
+> Remove them.
 > 
 > Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
 > ---
->   hw/net/rocker/rocker.c | 5 -----
->   hw/net/rocker/rocker.h | 1 -
->   2 files changed, 6 deletions(-)
+>   block/block-backend.c                       | 73 ---------------------
+>   include/sysemu/block-backend-global-state.h |  8 ---
+>   2 files changed, 81 deletions(-)
 > 
-> diff --git a/hw/net/rocker/rocker.c b/hw/net/rocker/rocker.c
-> index 1ab5852113..5e74acc969 100644
-> --- a/hw/net/rocker/rocker.c
-> +++ b/hw/net/rocker/rocker.c
-> @@ -134,11 +134,6 @@ RockerPortList *qmp_query_rocker_ports(const char *name, Error **errp)
->       return list;
+> diff --git a/block/block-backend.c b/block/block-backend.c
+> index db6f9b92a3..7bea43bf72 100644
+> --- a/block/block-backend.c
+> +++ b/block/block-backend.c
+> @@ -853,15 +853,6 @@ BlockBackendPublic *blk_get_public(BlockBackend *blk)
+>       return &blk->public;
 >   }
 >   
-> -uint32_t rocker_fp_ports(Rocker *r)
+> -/*
+> - * Returns a BlockBackend given the associated @public fields.
+> - */
+> -BlockBackend *blk_by_public(BlockBackendPublic *public)
 > -{
-> -    return r->fp_ports;
+> -    GLOBAL_STATE_CODE();
+> -    return container_of(public, BlockBackend, public);
 > -}
 > -
->   static uint32_t rocker_get_pport_by_tx_ring(Rocker *r,
->                                               DescRing *ring)
->   {
-> diff --git a/hw/net/rocker/rocker.h b/hw/net/rocker/rocker.h
-> index f85354d9d1..6e0962f47a 100644
-> --- a/hw/net/rocker/rocker.h
-> +++ b/hw/net/rocker/rocker.h
-> @@ -72,7 +72,6 @@ DECLARE_INSTANCE_CHECKER(Rocker, ROCKER,
->                            TYPE_ROCKER)
+>   /*
+>    * Disassociates the currently associated BlockDriverState from @blk.
+>    */
+> @@ -1214,12 +1205,6 @@ BlockDeviceIoStatus blk_iostatus(const BlockBackend *blk)
+>       return blk->iostatus;
+>   }
 >   
->   Rocker *rocker_find(const char *name);
-> -uint32_t rocker_fp_ports(Rocker *r);
->   int rocker_event_link_changed(Rocker *r, uint32_t pport, bool link_up);
->   int rocker_event_mac_vlan_seen(Rocker *r, uint32_t pport, uint8_t *addr,
->                                  uint16_t vlan_id);
+> -void blk_iostatus_disable(BlockBackend *blk)
+> -{
+> -    GLOBAL_STATE_CODE();
+> -    blk->iostatus_enabled = false;
+> -}
+> -
+>   void blk_iostatus_reset(BlockBackend *blk)
+>   {
+>       GLOBAL_STATE_CODE();
+> @@ -2228,28 +2213,6 @@ void blk_set_enable_write_cache(BlockBackend *blk, bool wce)
+>       blk->enable_write_cache = wce;
+>   }
+>   
+> -void blk_activate(BlockBackend *blk, Error **errp)
+> -{
+> -    BlockDriverState *bs = blk_bs(blk);
+> -    GLOBAL_STATE_CODE();
+> -
+> -    if (!bs) {
+> -        error_setg(errp, "Device '%s' has no medium", blk->name);
+> -        return;
+> -    }
+> -
+> -    /*
+> -     * Migration code can call this function in coroutine context, so leave
+> -     * coroutine context if necessary.
+> -     */
+> -    if (qemu_in_coroutine()) {
+> -        bdrv_co_activate(bs, errp);
+> -    } else {
+> -        GRAPH_RDLOCK_GUARD_MAINLOOP();
+> -        bdrv_activate(bs, errp);
+> -    }
+> -}
+> -
+>   bool coroutine_fn blk_co_is_inserted(BlockBackend *blk)
+>   {
+>       BlockDriverState *bs = blk_bs(blk);
+> @@ -2380,36 +2343,6 @@ bool blk_op_is_blocked(BlockBackend *blk, BlockOpType op, Error **errp)
+>       return bdrv_op_is_blocked(bs, op, errp);
+>   }
+>   
+> -void blk_op_unblock(BlockBackend *blk, BlockOpType op, Error *reason)
+> -{
+> -    BlockDriverState *bs = blk_bs(blk);
+> -    GLOBAL_STATE_CODE();
+> -
+> -    if (bs) {
+> -        bdrv_op_unblock(bs, op, reason);
+> -    }
+> -}
+> -
+> -void blk_op_block_all(BlockBackend *blk, Error *reason)
+> -{
+> -    BlockDriverState *bs = blk_bs(blk);
+> -    GLOBAL_STATE_CODE();
+> -
+> -    if (bs) {
+> -        bdrv_op_block_all(bs, reason);
+> -    }
+> -}
+> -
+> -void blk_op_unblock_all(BlockBackend *blk, Error *reason)
+> -{
+> -    BlockDriverState *bs = blk_bs(blk);
+> -    GLOBAL_STATE_CODE();
+> -
+> -    if (bs) {
+> -        bdrv_op_unblock_all(bs, reason);
+> -    }
+> -}
+> -
+>   /**
+>    * Return BB's current AioContext.  Note that this context may change
+>    * concurrently at any time, with one exception: If the BB has a root node
+> @@ -2564,12 +2497,6 @@ void blk_add_remove_bs_notifier(BlockBackend *blk, Notifier *notify)
+>       notifier_list_add(&blk->remove_bs_notifiers, notify);
+>   }
+>   
+> -void blk_add_insert_bs_notifier(BlockBackend *blk, Notifier *notify)
+> -{
+> -    GLOBAL_STATE_CODE();
+> -    notifier_list_add(&blk->insert_bs_notifiers, notify);
+> -}
+> -
+>   BlockAcctStats *blk_get_stats(BlockBackend *blk)
+>   {
+>       IO_CODE();
+> diff --git a/include/sysemu/block-backend-global-state.h b/include/sysemu/block-backend-global-state.h
+> index 49c12b0fa9..9cc9b008ec 100644
+> --- a/include/sysemu/block-backend-global-state.h
+> +++ b/include/sysemu/block-backend-global-state.h
+> @@ -54,7 +54,6 @@ bool monitor_add_blk(BlockBackend *blk, const char *name, Error **errp);
+>   void monitor_remove_blk(BlockBackend *blk);
+>   
+>   BlockBackendPublic *blk_get_public(BlockBackend *blk);
+> -BlockBackend *blk_by_public(BlockBackendPublic *public);
+>   
+>   void blk_remove_bs(BlockBackend *blk);
+>   int blk_insert_bs(BlockBackend *blk, BlockDriverState *bs, Error **errp);
+> @@ -67,7 +66,6 @@ void blk_get_perm(BlockBackend *blk, uint64_t *perm, uint64_t *shared_perm);
+>   
+>   void blk_iostatus_enable(BlockBackend *blk);
+>   BlockDeviceIoStatus blk_iostatus(const BlockBackend *blk);
+> -void blk_iostatus_disable(BlockBackend *blk);
+>   void blk_iostatus_reset(BlockBackend *blk);
+>   int blk_attach_dev(BlockBackend *blk, DeviceState *dev);
+>   void blk_detach_dev(BlockBackend *blk, DeviceState *dev);
+> @@ -76,8 +74,6 @@ BlockBackend *blk_by_dev(void *dev);
+>   BlockBackend *blk_by_qdev_id(const char *id, Error **errp);
+>   void blk_set_dev_ops(BlockBackend *blk, const BlockDevOps *ops, void *opaque);
+>   
+> -void blk_activate(BlockBackend *blk, Error **errp);
+> -
+>   int blk_make_zero(BlockBackend *blk, BdrvRequestFlags flags);
+>   void blk_aio_cancel(BlockAIOCB *acb);
+>   int blk_commit_all(void);
+> @@ -91,9 +87,6 @@ bool blk_is_sg(BlockBackend *blk);
+>   void blk_set_enable_write_cache(BlockBackend *blk, bool wce);
+>   int blk_get_flags(BlockBackend *blk);
+>   bool blk_op_is_blocked(BlockBackend *blk, BlockOpType op, Error **errp);
+> -void blk_op_unblock(BlockBackend *blk, BlockOpType op, Error *reason);
+> -void blk_op_block_all(BlockBackend *blk, Error *reason);
+> -void blk_op_unblock_all(BlockBackend *blk, Error *reason);
+>   int blk_set_aio_context(BlockBackend *blk, AioContext *new_context,
+>                           Error **errp);
+>   void blk_add_aio_context_notifier(BlockBackend *blk,
+> @@ -105,7 +98,6 @@ void blk_remove_aio_context_notifier(BlockBackend *blk,
+>                                        void (*detach_aio_context)(void *),
+>                                        void *opaque);
+>   void blk_add_remove_bs_notifier(BlockBackend *blk, Notifier *notify);
+> -void blk_add_insert_bs_notifier(BlockBackend *blk, Notifier *notify);
+>   BlockBackendRootState *blk_get_root_state(BlockBackend *blk);
+>   void blk_update_root_state(BlockBackend *blk);
+>   bool blk_get_detect_zeroes_from_root_state(BlockBackend *blk);
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
