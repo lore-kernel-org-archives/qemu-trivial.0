@@ -1,52 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1swJTM-00032R-EB
-	for mharc-qemu-trivial@gnu.org; Thu, 03 Oct 2024 06:54:16 -0400
+	id 1swKlW-0004NS-Da
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Oct 2024 08:17:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1swJTL-00032E-MV; Thu, 03 Oct 2024 06:54:15 -0400
-Received: from mx.treblig.org ([2a00:1098:5b::1])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1swKlU-0004Mf-2i; Thu, 03 Oct 2024 08:17:04 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1swJTJ-0002DW-Ja; Thu, 03 Oct 2024 06:54:15 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
- ; s=bytemarkmx;
- h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
- :Subject; bh=q9UNtp49MNYmiKaSkbMeVLbUdltKc+oYNGZAz/h9oYI=; b=DitYZC0N8tuuPHnu
- C36IVAcm0yKXWUofSLjsMZXLJVSBpYB3hX0y7N5pWZW8YBTYkWvbsSQp067KTNOH3vWxVosgL3eN/
- ckhyw0zChlCn6yObbGA2GWwIHwYacTTyX13aS6T4qz31fB/N6TDEAelGLz06rvTkZ6yopZFe4cyYs
- KzZVUegJLXrFiIZaM9p0/EOaHZdKCv+3kN9XvBKYuehIyFOl8HVmmbvzqG/bWUXSyiW1+L/EMBH9t
- SvsQ+eEWmM7uKvVsn+jBWFCku8X6vec2QR/+vhAVDBzEXfF2z+wnoXW2WE9h4QntgmwkJT9qIeuD0
- SwaSnKJo+x6Tf68L7Q==;
-Received: from dg by mx.treblig.org with local (Exim 4.96)
- (envelope-from <dg@treblig.org>) id 1swJT8-008dMB-1p;
- Thu, 03 Oct 2024 10:54:02 +0000
-Date: Thu, 3 Oct 2024 10:54:02 +0000
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: dmitry.fleytman@gmail.com, akihiko.odaki@daynix.com,
- jasowang@redhat.com, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Subject: Re: [PATCH] hw/net/net_rx_pkt: Remove deadcode
-Message-ID: <Zv53ynWvaOycpgH7@gallifrey>
-References: <20240918225128.455043-1-dave@treblig.org>
- <2cd10ae8-8937-474a-b7fc-a98613416330@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1swKlR-0001k3-Vr; Thu, 03 Oct 2024 08:17:03 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id C866B94E58;
+ Thu,  3 Oct 2024 15:16:17 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id B3C4814B975;
+ Thu,  3 Oct 2024 15:16:57 +0300 (MSK)
+Received: (nullmailer pid 1173626 invoked by uid 1000);
+ Thu, 03 Oct 2024 12:16:57 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Alexander Bulekov <alxndr@bu.edu>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH trivial] gitlab-ci/build-oss-fuzz: print FAILED marker in case
+ the test failed and run all tests
+Date: Thu,  3 Oct 2024 15:16:56 +0300
+Message-Id: <20241003121656.1173612-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.5
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <2cd10ae8-8937-474a-b7fc-a98613416330@tls.msk.ru>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
-X-Uptime: 10:53:45 up 147 days, 22:07,  1 user,  load average: 0.10, 0.03, 0.00
-User-Agent: Mutt/2.2.12 (2023-09-09)
-Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
- helo=mx.treblig.org
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -59,30 +50,46 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 03 Oct 2024 10:54:16 -0000
+X-List-Received-Date: Thu, 03 Oct 2024 12:17:04 -0000
 
-* Michael Tokarev (mjt@tls.msk.ru) wrote:
-> 19.09.2024 01:51, dave@treblig.org wrote:
-> > From: "Dr. David Alan Gilbert" <dave@treblig.org>
-> > 
-> > net_rx_pkt_get_l3_hdr_offset and net_rx_pkt_get_iovec_len haven't
-> > been used since they were added.
-> > 
-> > Remove them.
-> 
-> Applied to the trivial-patches tree, removing net_rx_pkt_get_l3_hdr_offset()
-> prototype from hw/net/net_rx_pkt.h in the process)
+currently, if an oss-fuzz fails, the script does just `exit 1`
+without any additional output, and looking at the build log in
+the gitlab ci it is not clear what actually failed, without
+looking at build-oss-fuzz script and seeing this `exit 1`.
 
-Thanks, and to Akhiko for pointing out that header left over.
+Print easily recognizable error message about test failure, so
+it becomes obvious what exactly has failed.
 
-Dave
+While at it, continue running other tests even in case of
+failure, and exit non-zero if at least one test failed.
 
-> Thanks,
-> 
-> /mjt
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ .gitlab-ci.d/buildtest.yml | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/.gitlab-ci.d/buildtest.yml b/.gitlab-ci.d/buildtest.yml
+index 87848c2ffe..25c481e43a 100644
+--- a/.gitlab-ci.d/buildtest.yml
++++ b/.gitlab-ci.d/buildtest.yml
+@@ -628,12 +628,15 @@ build-oss-fuzz:
+     - CC="clang" CXX="clang++" CFLAGS="-fsanitize=address"
+       ./scripts/oss-fuzz/build.sh
+     - export ASAN_OPTIONS="fast_unwind_on_malloc=0"
++    - failures=0
+     - for fuzzer in $(find ./build-oss-fuzz/DEST_DIR/ -executable -type f
+                       | grep -v slirp); do
+         grep "LLVMFuzzerTestOneInput" ${fuzzer} > /dev/null 2>&1 || continue ;
+         echo Testing ${fuzzer} ... ;
+-        "${fuzzer}" -runs=1 -seed=1 || exit 1 ;
++        "${fuzzer}" -runs=1 -seed=1 || { echo "FAILED:"" ${fuzzer} exit code is $?"; failures=$(($failures+1)); };
+       done
++    - echo "Number of failures:"" $failures"
++    - test $failures = 0
+ 
+ build-tci:
+   extends: .native_build_job_template
 -- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+2.39.5
+
 
