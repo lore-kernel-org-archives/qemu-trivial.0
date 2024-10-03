@@ -1,64 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sw1B1-0008M0-B1
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Oct 2024 11:22:15 -0400
+	id 1swFv1-0008Fb-SR
+	for mharc-qemu-trivial@gnu.org; Thu, 03 Oct 2024 03:06:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sw1AI-0008A9-AT; Wed, 02 Oct 2024 11:21:26 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1swFux-0008Ex-Jg; Thu, 03 Oct 2024 03:06:31 -0400
+Received: from mout.kundenserver.de ([212.227.126.134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1sw1AC-0005GU-38; Wed, 02 Oct 2024 11:21:22 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 8B126948FF;
- Wed,  2 Oct 2024 18:20:34 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 2A28014B09C;
- Wed,  2 Oct 2024 18:21:13 +0300 (MSK)
-Message-ID: <cb09c375-6c3a-49c8-8e1a-d06e8174b22b@tls.msk.ru>
-Date: Wed, 2 Oct 2024 18:21:13 +0300
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1swFuu-0004ZL-TH; Thu, 03 Oct 2024 03:06:30 -0400
+Received: from quad ([82.64.211.94]) by mrelayeu.kundenserver.de (mreue009
+ [212.227.15.167]) with ESMTPSA (Nemesis) id 1MkHEH-1sCW1c46qP-00al1P; Thu, 03
+ Oct 2024 09:06:22 +0200
+From: Laurent Vivier <laurent@vivier.eu>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH] MAINTAINERS: remove gensyscalls.sh from the linux-user section
+Date: Thu,  3 Oct 2024 09:06:20 +0200
+Message-ID: <20241003070620.1080820-1-laurent@vivier.eu>
+X-Mailer: git-send-email 2.46.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] vnc: fix crash when no console attached
-To: marcandre.lureau@redhat.com, qemu-devel@nongnu.org
-Cc: akihiko.odaki@daynix.com, qemu-stable@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20240820131112.1267954-1-marcandre.lureau@redhat.com>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <20240820131112.1267954-1-marcandre.lureau@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+X-Provags-ID: V03:K1:ci2EeCpFxBub0NDLDFaq0HfxWNv80HZflO+U6VSK+J1BU/TfueM
+ b+NzzWK80lR8zt1e60lbQGfofyYd20O7G10UDyN6rCQGEXN6IYI4gb3ddN91fDhItIpMFbV
+ fY3vOEDdEDT/ZKzDCqvrjeaLAixHZs46V3BLNpkhsjiElndfp/CJDeO/fj6iaGiPjG5+KkI
+ syMjI6+0VldvuzRlc6JRg==
+UI-OutboundReport: notjunk:1;M01:P0:mrfK0UKEB9M=;3g9wl4VdsIzJxHhBXZ+bMDSQisY
+ 4KZoZZfJndmenWjxMICrlVcwppB1jyAwEf25s6dW22gvqfczdHFYFcj2kWqGeSOxJTjbogzL2
+ rCPnYpqmTYWq5Iy7gWeK/zcQMPqcdKPnR+1UHOU8oSpP3WpC5heWjphfUpGKmT9lR8ligub+F
+ Kne2C77ivY+6x/vZ96X26cQxwZJHEoJWkvcsrkVEV9c6S50KPC9b5mFu4NIIGWrNFLpoMv+W2
+ gIgEoSpWJopkjEAcHc3MSnsxzf/xbzx3Npnl77ykp5unfLuUk+TY5RH0OPJTuBo6GErX8KYmu
+ QpChtD6jbGHnbkh7BhOO7qeHHK7CQjS+uD6e2JSsSYteBvJDY/N8R8f6t9z5ALdhEKF4/QjhS
+ eP8snTG9TV3K0Xw1zzdB2b2veEI6qJ0nf9F4i3jQB9dxEW3wVswMoDu3vop1pSK5TmsqKFHTp
+ Fa/YEUZT0q3vsweUBEKPHh3VEpM9h1QPuf3pALylI8aOK5Dtuzz29FEzSJ/YilW2lhZFZjp8Q
+ 3NVjCRTzgjcEPPhMpqQRiz9h5GMU+JMUfv8VlzCiW9KPLjXal4zg+Isdh0sqIWG0RgQEc+n3Q
+ erKIuG+oXDQzcOyx2MIE32pB3zhD88M6/gtefLIoG90cc87L/sF6j0s+TLY9uWvBBo73Q9VpM
+ AJrE0DCYMponl8q3pqSGb1mF/9CiJEabB5elWsI0NheGSQfp3PeS4PZ3QgZPtQWafCVDoAAxv
+ kL6KpHX1o9I210LbcAq3u4iO2tIbNigDQ==
+Received-SPF: pass client-ip=212.227.126.134; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -73,57 +59,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Oct 2024 15:21:56 -0000
+X-List-Received-Date: Thu, 03 Oct 2024 07:06:33 -0000
 
-20.08.2024 16:11, marcandre.lureau@redhat.com wrote:
-> From: Marc-André Lureau <marcandre.lureau@redhat.com>
-> 
-> Since commit e99441a3793b5 ("ui/curses: Do not use console_select()")
-> qemu_text_console_put_keysym() no longer checks for NULL console
-> argument, which leads to a later crash:
-> 
-> Thread 1 "qemu-system-x86" received signal SIGSEGV, Segmentation fault.
-> 0x00005555559ee186 in qemu_text_console_handle_keysym (s=0x0, keysym=31) at ../ui/console-vc.c:332
-> 332	        } else if (s->echo && (keysym == '\r' || keysym == '\n')) {
-> (gdb) bt
->   #0  0x00005555559ee186 in qemu_text_console_handle_keysym (s=0x0, keysym=31) at ../ui/console-vc.c:332
->   #1  0x00005555559e18e5 in qemu_text_console_put_keysym (s=<optimized out>, keysym=<optimized out>) at ../ui/console.c:303
->   #2  0x00005555559f2e88 in do_key_event (vs=vs@entry=0x5555579045c0, down=down@entry=1, keycode=keycode@entry=60, sym=sym@entry=65471) at ../ui/vnc.c:2034
->   #3  0x00005555559f845c in ext_key_event (vs=0x5555579045c0, down=1, sym=65471, keycode=<optimized out>) at ../ui/vnc.c:2070
->   #4  protocol_client_msg (vs=0x5555579045c0, data=<optimized out>, len=<optimized out>) at ../ui/vnc.c:2514
->   #5  0x00005555559f515c in vnc_client_read (vs=0x5555579045c0) at ../ui/vnc.c:1607
-> 
-> Fixes: e99441a3793b5 ("ui/curses: Do not use console_select()")
-> Fixes: https://issues.redhat.com/browse/RHEL-50529
-> Cc: qemu-stable@nongnu.org
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+The file has been removed by c52e40596834
+("linux-user,loongarch: move to syscalltbl file").
 
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Laurent Vivier <laurent@vivier.eu>
+---
+ MAINTAINERS | 1 -
+ 1 file changed, 1 deletion(-)
 
-I'm picking this one up to trivial-patches tree, as no one else
-got to it so far.
-
-
-Thanks,
-
-/mjt
-
-> ---
->   ui/vnc.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/ui/vnc.c b/ui/vnc.c
-> index dae5d51210..5057ec8680 100644
-> --- a/ui/vnc.c
-> +++ b/ui/vnc.c
-> @@ -1935,7 +1935,7 @@ static void do_key_event(VncState *vs, int down, int keycode, int sym)
->       }
->   
->       qkbd_state_key_event(vs->vd->kbd, qcode, down);
-> -    if (!qemu_console_is_graphic(vs->vd->dcl.con)) {
-> +    if (QEMU_IS_TEXT_CONSOLE(vs->vd->dcl.con)) {
->           QemuTextConsole *con = QEMU_TEXT_CONSOLE(vs->vd->dcl.con);
->           bool numlock = qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_NUMLOCK);
->           bool control = qkbd_state_modifier_get(vs->vd->kbd, QKBD_MOD_CTRL);
+diff --git a/MAINTAINERS b/MAINTAINERS
+index ffacd60f4075..4a6b6ce6006f 100644
+--- a/MAINTAINERS
++++ b/MAINTAINERS
+@@ -3731,7 +3731,6 @@ F: configs/targets/*linux-user.mak
+ F: scripts/qemu-binfmt-conf.sh
+ F: scripts/update-syscalltbl.sh
+ F: scripts/update-mips-syscall-args.sh
+-F: scripts/gensyscalls.sh
+ 
+ Tiny Code Generator (TCG)
+ -------------------------
+-- 
+2.46.2
 
 
