@@ -1,89 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1swlGs-0007R9-6z
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:35:14 -0400
+	id 1swmZC-0002Dh-AK
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 13:58:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1swlGS-0006XS-N9
- for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 12:34:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1swlGQ-0006Ac-I9
- for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 12:34:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1728059685;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=VosZkryxUSxT370xwj32ayTSBQobfpGY1xY5tUlU3gw=;
- b=HsUOG/JbhoxDMQweTK39FBweJc32ZlqfAZiny/XurBb53KygnhWV3y9OnmI6FY1pVBfKjR
- t2Fy17vl9i3dhUKfzoA/F+yAuO2S5U8CfrRC0cin4e98kP0kttN3qZBVYTQE8jS2AekxM3
- zQKIFrfHDFaeyO68v0wjlIohm1ePp38=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-505-SzRenVYtN5m-JxbVvEeB0g-1; Fri, 04 Oct 2024 12:34:44 -0400
-X-MC-Unique: SzRenVYtN5m-JxbVvEeB0g-1
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-37cda7514f8so1225953f8f.0
- for <qemu-trivial@nongnu.org>; Fri, 04 Oct 2024 09:34:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1swmZ9-0002Cq-V3
+ for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 13:58:11 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
+ id 1swmZ8-0006bu-Cl
+ for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 13:58:11 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-a8a7596b7dfso424530966b.0
+ for <qemu-trivial@nongnu.org>; Fri, 04 Oct 2024 10:57:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1728064667; x=1728669467; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to
+ :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=uml7o5xPPexvJTnvPBC1eXY+yv2rWD3mcFHFe+jiAhA=;
+ b=cA3YA5EVRbmC9X9ZMZTbxYuQD69v+WT50kKlmxIYjJ1K8sl4yFJjBUKxAFSDyMqE8+
+ G915kZh7UvUTEm2vvCW0Nk2dNYGR9domppblYVAk8npqyc6tNJoKKFlApVDk09SvoCHu
+ po3W5gOil2Ar1dR3WB0L6T42TEuJMJnv2F6LXuNwhYd08DOF1be4GETMiPsCrQmEVvWa
+ gKGNaPHAgpCCyi9IjjngDWQp3JJv+bFr00vjD1UJLn7jFKAL4s5BafqxJLYRGhSLgBdM
+ B0xp4U/ZH/vaqUKTxTZP3WYmllPt9aVNB1o5AI6Ba7QqYzrVuDM4m9lDDou/UMY90xay
+ coGA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728059683; x=1728664483;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=VosZkryxUSxT370xwj32ayTSBQobfpGY1xY5tUlU3gw=;
- b=VCvvinUnFpZZhWUPS7pHepF49+fgjfs5x8+wTpo4HNl31FIcSeyENyZaXOmS2MjsSc
- ++TNBAZoZ96MKLoXMKuXqZyGT/UsJRIHj/ehWDRREjwUj8ImoaxCliNPOygngLRnZscF
- VpD4Z5TgKn4c4pQbc0gUBi+Qyf4/DdwRdoUluWe2EL60tM+bqqWlQYthyr8xzqx0Jjej
- ISK3HLq/0HUmkX/oG9AXOyU0vU9T8ibSbRMxoNPe2LNDO0sBx+apLnpaQ44M0LKDWtV1
- rmc4v3ShTibxI65tOWV9orIZ/hGqfg2Tyr0GTthHflkjmrKJjKmKXnAqZpV+MitKdnyg
- rviw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWESa/0Er8z1oGcj3QQ6/Gl/tM8GMnZLjdSunzCyoaLRuP5NpSNLXi0zuh6dZJu9y2Y10WA6Nwc+HFeq+I=@nongnu.org
-X-Gm-Message-State: AOJu0YxMbq1EH5+AF36YiJ2YzXDhCO2ycwACJxRvci2BXKzNHVutQGW9
- L0QYRTEwniUHaoL7k2tMJpP0oqThsNKIQUTz81gwzO4PYfase/Pq1ea71Hb4TAcI6/LzXs72iFk
- eaKkmemt79xB70esD6H/xExbl9c8saRho5jhqiwiN3+vJ4c4pXmOhJPM=
-X-Received: by 2002:adf:e412:0:b0:37c:fee5:bfc7 with SMTP id
- ffacd0b85a97d-37d049ef115mr5009000f8f.15.1728059683261; 
- Fri, 04 Oct 2024 09:34:43 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHt/dY/luTgOjLNty7OoWj/vwXkvJeOQCoUWpgNv4LcozFxRBS5GCivVI8McZeiBBDzVYoZLQ==
-X-Received: by 2002:adf:e412:0:b0:37c:fee5:bfc7 with SMTP id
- ffacd0b85a97d-37d049ef115mr5008985f8f.15.1728059682812; 
- Fri, 04 Oct 2024 09:34:42 -0700 (PDT)
-Received: from avogadro.local ([151.95.43.71])
+ d=1e100.net; s=20230601; t=1728064667; x=1728669467;
+ h=content-transfer-encoding:mime-version:message-id:in-reply-to
+ :references:user-agent:subject:cc:to:from:date:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=uml7o5xPPexvJTnvPBC1eXY+yv2rWD3mcFHFe+jiAhA=;
+ b=DOebZ9LW92lAcCBwpJNsqo86fCYgrkTj1xtVbRvpK2D2Hv42nkFvDcKWB777GSoOfK
+ CCb0PF89rq+QYakl2GfZpNJXMFsOkThMfWlHDs3SJXn/PROBJ42XXsTRJIhzORgfZAA2
+ nLZ85D65qeY4lCapZG4ayJiAFnLOd1/2zcS7LtZ7O17kcrLkn/dspr/JDyHH2N+Ef0A6
+ ATcfaLVBue2NNTh61KkC8wKtFi7TnVMqYS5doNqZ4IEfwsfo1wvbTbE6GGFYL3sYPLOh
+ n0bZdtmSP0I+3cxeFy2T+5/n2WNZti+P/vNb7O37s7q5F1D+ch9o0ZfZyjuGvgJIAM06
+ tgUw==
+X-Gm-Message-State: AOJu0Yym5Uhy9bZTkTxvz01lpkvqY0iuAgFOMxvr3UHQK66vlychvsZx
+ G9Za2fLq9O4ggo1X912dx54DtZnK0DuE67t4b0233sMVU6d+WBMO/l2F/xo5j9E=
+X-Google-Smtp-Source: AGHT+IGNQlWwarlacwsuvMAbwQEUSjMOA/7FvBUKojT85t4IOkaWs74dqrMKgo71BRsAWBB/V0Rr7A==
+X-Received: by 2002:a17:907:940c:b0:a8a:6db7:665d with SMTP id
+ a640c23a62f3a-a991cf73a24mr376363066b.17.1728064667363; 
+ Fri, 04 Oct 2024 10:57:47 -0700 (PDT)
+Received: from meli-email.org (adsl-74.37.6.1.tellas.gr. [37.6.1.74])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42f86a20537sm19461625e9.15.2024.10.04.09.34.42
+ a640c23a62f3a-a992e6655bbsm23307566b.96.2024.10.04.10.56.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Oct 2024 09:34:42 -0700 (PDT)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Ani Sinha <anisinha@redhat.com>, qemu-trivial@nongnu.org,
- zhao1.liu@intel.com, armbru@redhat.com
-Subject: [PULL 08/23] kvm: replace fprintf with error_report()/printf() in
- kvm_init()
-Date: Fri,  4 Oct 2024 18:34:00 +0200
-Message-ID: <20241004163415.951106-9-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.46.1
-In-Reply-To: <20241004163415.951106-1-pbonzini@redhat.com>
-References: <20241004163415.951106-1-pbonzini@redhat.com>
+ Fri, 04 Oct 2024 10:56:36 -0700 (PDT)
+Date: Fri, 04 Oct 2024 20:53:39 +0300
+From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+ Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>,
+ Brian Cain <bcain@quicinc.com>
+Bcc: 
+Subject: Re: [PATCH] tests/functional: Fix hash validation
+User-Agent: meli 0.8.7
+References: <20241004130225.217441-1-thuth@redhat.com>
+In-Reply-To: <20241004130225.217441-1-thuth@redhat.com>
+Message-ID: <kuf60.ek3w2mj9njb@linaro.org>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset=utf-8; format=flowed
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.146,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,125 +85,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Oct 2024 16:34:51 -0000
+X-List-Received-Date: Fri, 04 Oct 2024 17:58:12 -0000
 
-From: Ani Sinha <anisinha@redhat.com>
+On Fri, 04 Oct 2024 16:02, Thomas Huth <thuth@redhat.com> wrote:
+>The _check() function is supposed to check whether the hash of the
+>downloaded file matches the expected one. Unfortunately, during the
+>last rework of this function, the check was accidentally turned into
+>returning the hash value itself instead of a True/False value,
+>effectively accepting each hash as valid. Let's do a proper check
+>again now.
+>
+>Fixes:05e303210d ("tests/functional/qemu_test: Use Python hashlib ...")
+>Signed-off-by: Thomas Huth <thuth@redhat.com>
+>---
+> tests/functional/qemu_test/asset.py | 2 +-
+> 1 file changed, 1 insertion(+), 1 deletion(-)
+>
+>diff --git a/tests/functional/qemu_test/asset.py b/tests/functional/qemu_test/asset.py
+>index 3ec429217e..e47bfac035 100644
+>--- a/tests/functional/qemu_test/asset.py
+>+++ b/tests/functional/qemu_test/asset.py
+>@@ -57,7 +57,7 @@ def _check(self, cache_file):
+>                     break
+>                 hl.update(chunk)
+> 
+>-        return  hl.hexdigest()
+>+        return self.hash == hl.hexdigest()
+> 
+>     def valid(self):
+>         return self.cache_file.exists() and self._check(self.cache_file)
+>-- 
+>2.46.1
+>
+>
 
-error_report() is more appropriate for error situations. Replace fprintf with
-error_report() and error_printf() as appropriate. Some improvement in error
-reporting also happens as a part of this change. For example:
-
-From:
-$ ./qemu-system-x86_64 --accel kvm
-Could not access KVM kernel module: No such file or directory
-
-To:
-$ ./qemu-system-x86_64 --accel kvm
-qemu-system-x86_64: --accel kvm: Could not access KVM kernel module: No such file or directory
-
-CC: qemu-trivial@nongnu.org
-CC: zhao1.liu@intel.com
-CC: armbru@redhat.com
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
-Link: https://lore.kernel.org/r/20240828124539.62672-1-anisinha@redhat.com
-Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
----
- accel/kvm/kvm-all.c | 40 ++++++++++++++++++----------------------
- 1 file changed, 18 insertions(+), 22 deletions(-)
-
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index fe4cd721d9b..4c920b7bfe7 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2423,7 +2423,7 @@ static int kvm_init(MachineState *ms)
-     QLIST_INIT(&s->kvm_parked_vcpus);
-     s->fd = qemu_open_old(s->device ?: "/dev/kvm", O_RDWR);
-     if (s->fd == -1) {
--        fprintf(stderr, "Could not access KVM kernel module: %m\n");
-+        error_report("Could not access KVM kernel module: %m");
-         ret = -errno;
-         goto err;
-     }
-@@ -2433,13 +2433,13 @@ static int kvm_init(MachineState *ms)
-         if (ret >= 0) {
-             ret = -EINVAL;
-         }
--        fprintf(stderr, "kvm version too old\n");
-+        error_report("kvm version too old");
-         goto err;
-     }
- 
-     if (ret > KVM_API_VERSION) {
-         ret = -EINVAL;
--        fprintf(stderr, "kvm version not supported\n");
-+        error_report("kvm version not supported");
-         goto err;
-     }
- 
-@@ -2484,26 +2484,22 @@ static int kvm_init(MachineState *ms)
-     } while (ret == -EINTR);
- 
-     if (ret < 0) {
--        fprintf(stderr, "ioctl(KVM_CREATE_VM) failed: %d %s\n", -ret,
--                strerror(-ret));
-+        error_report("ioctl(KVM_CREATE_VM) failed: %s", strerror(-ret));
- 
- #ifdef TARGET_S390X
-         if (ret == -EINVAL) {
--            fprintf(stderr,
--                    "Host kernel setup problem detected. Please verify:\n");
--            fprintf(stderr, "- for kernels supporting the switch_amode or"
--                    " user_mode parameters, whether\n");
--            fprintf(stderr,
--                    "  user space is running in primary address space\n");
--            fprintf(stderr,
--                    "- for kernels supporting the vm.allocate_pgste sysctl, "
--                    "whether it is enabled\n");
-+            error_printf("Host kernel setup problem detected."
-+                         " Please verify:\n");
-+            error_printf("- for kernels supporting the"
-+                        " switch_amode or user_mode parameters, whether");
-+            error_printf(" user space is running in primary address space\n");
-+            error_printf("- for kernels supporting the vm.allocate_pgste"
-+                         " sysctl, whether it is enabled\n");
-         }
- #elif defined(TARGET_PPC)
-         if (ret == -EINVAL) {
--            fprintf(stderr,
--                    "PPC KVM module is not loaded. Try modprobe kvm_%s.\n",
--                    (type == 2) ? "pr" : "hv");
-+            error_printf("PPC KVM module is not loaded. Try modprobe kvm_%s.\n",
-+                         (type == 2) ? "pr" : "hv");
-         }
- #endif
-         goto err;
-@@ -2522,9 +2518,9 @@ static int kvm_init(MachineState *ms)
-                         nc->name, nc->num, soft_vcpus_limit);
- 
-             if (nc->num > hard_vcpus_limit) {
--                fprintf(stderr, "Number of %s cpus requested (%d) exceeds "
--                        "the maximum cpus supported by KVM (%d)\n",
--                        nc->name, nc->num, hard_vcpus_limit);
-+                error_report("Number of %s cpus requested (%d) exceeds "
-+                             "the maximum cpus supported by KVM (%d)",
-+                             nc->name, nc->num, hard_vcpus_limit);
-                 exit(1);
-             }
-         }
-@@ -2538,8 +2534,8 @@ static int kvm_init(MachineState *ms)
-     }
-     if (missing_cap) {
-         ret = -EINVAL;
--        fprintf(stderr, "kvm does not support %s\n%s",
--                missing_cap->name, upgrade_note);
-+        error_report("kvm does not support %s", missing_cap->name);
-+        error_printf("%s", upgrade_note);
-         goto err;
-     }
- 
--- 
-2.46.1
-
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
 
