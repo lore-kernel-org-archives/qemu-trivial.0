@@ -1,83 +1,44 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1swjmb-00068T-LA
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 10:59:54 -0400
+	id 1swkmv-0001si-JV
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:04:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1swjmX-000684-7b
- for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 10:59:49 -0400
-Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1swjmV-00009U-QU
- for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 10:59:48 -0400
-Received: by mail-ed1-x533.google.com with SMTP id
- 4fb4d7f45d1cf-5c88c9e45c2so5833408a12.0
- for <qemu-trivial@nongnu.org>; Fri, 04 Oct 2024 07:59:47 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1728053986; x=1728658786; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sQmtXYfuRety+5EaVJVCPl2n2fx6AN7rll/4Hv1oYtg=;
- b=umiCyhIDg5HycxgFNW+qA922hxlszzrcHJ2MUl3P4Ta7Hq082b40L/OY4wkrUGR8f/
- KD4sTlPa2AvG60nDbw4N8eIpe9onneLK7357P437+dXbrDbWlA4D9iqoKuQqtGAdHDAe
- byV6jj1ywMyeTEUitXMPvj2mbFH4Fi//ueY8FL8lbYcIriv47o4TK6xjrqNXIDOzNzbV
- OUMPnnKU/9hiMNkMKjfmiZR92f0J9HRfv16gfPusQvarCNdKyg20ua/JVKr+lqHxqD/8
- JcMZoC/zQZOjvAUyoeAoztVh7gKW7g4GArEDaVIt5p8UQZloKzLNdy3eNZKrLdp8nwGd
- N5UQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728053986; x=1728658786;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=sQmtXYfuRety+5EaVJVCPl2n2fx6AN7rll/4Hv1oYtg=;
- b=JAK41Evu6TCwjIAWJNR2ODiv8ahtrbde4eGRO+VxRegtV/Y5vylHHqi5c2k3o7erUa
- tLj+zRhZHknhwVWeRum1jaEVLERzO+DM5zNcRdziWiDanO6ID4r0H3LIEfoZY39AY2aj
- roXrOpJt4cmABqgWo+5eAwwuELsAZbd7ANOi4q6sh0DuW3smQSiljLOsWcAhkzdk8RtX
- dKPEq6uuei/9yY4jWEXreTxhzW4B7YlT/E48PS9SFOsdsxchjTFj6lv57Qul9DebL2Ey
- 5HC9BQxHgxpYWKWzn7V9DzEsXRPkfD6O6fu8V19sdtijqkQMv0ko1lVO9HAjkvoIcFlP
- VmwQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWG+WC71KdL2zgh9MdLgIUt9u2MXzAHwtceEZMIzqx+CPLS/3LQpmWWlbh8/FnWzGKU7CT20lS2Cl+kqt4=@nongnu.org
-X-Gm-Message-State: AOJu0Yz2Q0aAK4m5sk3D2rEatXDKLO3b80m8q37WuQW2gfxCxVMsizaT
- qAdxKxizUGs0bnTVCs5xYyLDhIeKggFYBnB1ELoLJpJIbTOGqomt41370s9QXqQ=
-X-Google-Smtp-Source: AGHT+IGdXSFVDUvR6LUp8RS3sTSRngp++bUgR6RhKWkUI7uIi0dwAbKgIxhJa39xcS0u5tLaVjLDZw==
-X-Received: by 2002:a05:6402:348e:b0:5c5:cb7f:e56a with SMTP id
- 4fb4d7f45d1cf-5c8c09f4689mr8151620a12.1.1728053985919; 
- Fri, 04 Oct 2024 07:59:45 -0700 (PDT)
-Received: from draig.lan ([85.9.250.243]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5c8ca3dd51dsm1946873a12.25.2024.10.04.07.59.44
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Oct 2024 07:59:45 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 33DC75F7A2;
- Fri,  4 Oct 2024 15:59:44 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,  Alexander Bulekov
- <alxndr@bu.edu>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
-Subject: Re: [PATCH trivial] gitlab-ci/build-oss-fuzz: print FAILED marker
- in case the test failed and run all tests
-In-Reply-To: <20241003121656.1173612-1-mjt@tls.msk.ru> (Michael Tokarev's
- message of "Thu, 3 Oct 2024 15:16:56 +0300")
-References: <20241003121656.1173612-1-mjt@tls.msk.ru>
-User-Agent: mu4e 1.12.6; emacs 29.4
-Date: Fri, 04 Oct 2024 15:59:44 +0100
-Message-ID: <87ploflxr3.fsf@draig.linaro.org>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1swkmP-0001nQ-Pp; Fri, 04 Oct 2024 12:03:49 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1swkmO-0001Tr-3s; Fri, 04 Oct 2024 12:03:45 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id D30F595566;
+ Fri,  4 Oct 2024 19:03:29 +0300 (MSK)
+Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with SMTP id 18CC914D974;
+ Fri,  4 Oct 2024 19:03:32 +0300 (MSK)
+Received: (nullmailer pid 1282505 invoked by uid 1000);
+ Fri, 04 Oct 2024 16:03:32 -0000
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 01/23] hw/audio/virtio-snd: Remove unnecessary "exec/tswap.h"
+ header
+Date: Fri,  4 Oct 2024 19:03:09 +0300
+Message-Id: <20241004160331.1282441-2-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20241004160331.1282441-1-mjt@tls.msk.ru>
+References: <20241004160331.1282441-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::533;
- envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x533.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,24 +51,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Oct 2024 14:59:50 -0000
+X-List-Received-Date: Fri, 04 Oct 2024 16:04:03 -0000
 
-Michael Tokarev <mjt@tls.msk.ru> writes:
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-> currently, if an oss-fuzz fails, the script does just `exit 1`
-> without any additional output, and looking at the build log in
-> the gitlab ci it is not clear what actually failed, without
-> looking at build-oss-fuzz script and seeing this `exit 1`.
->
-> Print easily recognizable error message about test failure, so
-> it becomes obvious what exactly has failed.
->
-> While at it, continue running other tests even in case of
-> failure, and exit non-zero if at least one test failed.
+We were including the "exec/tswap.h" header to get
+target_words_bigendian() declaration, but since commit a276ec8e26
+("hw/audio/virtio-snd: Always use little endian audio format")
+removed this method call, we don't need this header anymore.
 
-Queued to testing/next, thanks.
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/audio/virtio-snd.c | 1 -
+ 1 file changed, 1 deletion(-)
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+diff --git a/hw/audio/virtio-snd.c b/hw/audio/virtio-snd.c
+index 69838181dd..c5581d7b3d 100644
+--- a/hw/audio/virtio-snd.c
++++ b/hw/audio/virtio-snd.c
+@@ -20,7 +20,6 @@
+ #include "qemu/log.h"
+ #include "qemu/error-report.h"
+ #include "qemu/lockable.h"
+-#include "exec/tswap.h"
+ #include "sysemu/runstate.h"
+ #include "trace.h"
+ #include "qapi/error.h"
+-- 
+2.39.5
+
 
