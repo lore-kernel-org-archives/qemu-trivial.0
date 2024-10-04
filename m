@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1swkmz-0001us-Ep
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:04:21 -0400
+	id 1swkn0-0001wN-Jy
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:04:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1swkmu-0001sS-LK; Fri, 04 Oct 2024 12:04:17 -0400
+ id 1swkmx-0001tQ-C7; Fri, 04 Oct 2024 12:04:19 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1swkmg-0001X0-PG; Fri, 04 Oct 2024 12:04:16 -0400
+ id 1swkmv-0001Z4-Pc; Fri, 04 Oct 2024 12:04:19 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 1344E9556A;
+ by isrv.corpit.ru (Postfix) with ESMTP id 2DE119556C;
  Fri,  4 Oct 2024 19:03:30 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 4D67414D978;
+ by tsrv.corpit.ru (Postfix) with SMTP id 666A814D97A;
  Fri,  4 Oct 2024 19:03:32 +0300 (MSK)
-Received: (nullmailer pid 1282518 invoked by uid 1000);
+Received: (nullmailer pid 1282524 invoked by uid 1000);
  Fri, 04 Oct 2024 16:03:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: "Dr. David Alan Gilbert" <dave@treblig.org>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 05/23] hw/xen: Remove deadcode
-Date: Fri,  4 Oct 2024 19:03:13 +0300
-Message-Id: <20241004160331.1282441-6-mjt@tls.msk.ru>
+Subject: [PULL 07/23] net: Remove deadcode
+Date: Fri,  4 Oct 2024 19:03:15 +0300
+Message-Id: <20241004160331.1282441-8-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241004160331.1282441-1-mjt@tls.msk.ru>
 References: <20241004160331.1282441-1-mjt@tls.msk.ru>
@@ -53,93 +53,144 @@ X-List-Received-Date: Fri, 04 Oct 2024 16:04:19 -0000
 
 From: "Dr. David Alan Gilbert" <dave@treblig.org>
 
-xen_be_copy_grant_refs is unused since 2019's
-  19f87870ba ("xen: remove the legacy 'xen_disk' backend")
+net_hub_port_find is unused since 2018's commit
+  af1a5c3eb4 ("net: Remove the deprecated "vlan" parameter")
 
-xen_config_dev_console is unused since 2018's
-  6d7c06c213 ("Remove broken Xen PV domain builder")
+qemu_receive_packet_iov is unused since commit
+  ffbd2dbd8e ("e1000e: Perform software segmentation for loopback")
+
+in turn it was the last user of qemu_net_queue_receive_iov.
 
 Remove them.
 
 Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
-Acked-by: Anthony PERARD <anthony.perard@vates.tech>
-Reviewed-by: Edgar E. Iglesias <edgar.iglesias@amd.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/xen/xen-legacy-backend.c         | 18 ------------------
- hw/xen/xen_devconfig.c              |  8 --------
- include/hw/xen/xen-legacy-backend.h |  5 -----
- 3 files changed, 31 deletions(-)
+ include/net/net.h   |  4 ----
+ include/net/queue.h |  4 ----
+ net/hub.c           | 25 -------------------------
+ net/net.c           | 10 ----------
+ net/queue.c         | 11 -----------
+ 5 files changed, 54 deletions(-)
 
-diff --git a/hw/xen/xen-legacy-backend.c b/hw/xen/xen-legacy-backend.c
-index 5514184f9c..e8e1ee4f7d 100644
---- a/hw/xen/xen-legacy-backend.c
-+++ b/hw/xen/xen-legacy-backend.c
-@@ -147,24 +147,6 @@ void xen_be_unmap_grant_refs(struct XenLegacyDevice *xendev, void *ptr,
-     }
+diff --git a/include/net/net.h b/include/net/net.h
+index c8f679761b..cdd5b109b0 100644
+--- a/include/net/net.h
++++ b/include/net/net.h
+@@ -172,9 +172,6 @@ ssize_t qemu_sendv_packet_async(NetClientState *nc, const struct iovec *iov,
+                                 int iovcnt, NetPacketSent *sent_cb);
+ ssize_t qemu_send_packet(NetClientState *nc, const uint8_t *buf, int size);
+ ssize_t qemu_receive_packet(NetClientState *nc, const uint8_t *buf, int size);
+-ssize_t qemu_receive_packet_iov(NetClientState *nc,
+-                                const struct iovec *iov,
+-                                int iovcnt);
+ ssize_t qemu_send_packet_raw(NetClientState *nc, const uint8_t *buf, int size);
+ ssize_t qemu_send_packet_async(NetClientState *nc, const uint8_t *buf,
+                                int size, NetPacketSent *sent_cb);
+@@ -307,7 +304,6 @@ void hmp_host_net_remove(Monitor *mon, const QDict *qdict);
+ void netdev_add(QemuOpts *opts, Error **errp);
+ 
+ int net_hub_id_for_client(NetClientState *nc, int *id);
+-NetClientState *net_hub_port_find(int hub_id);
+ 
+ #define DEFAULT_NETWORK_SCRIPT CONFIG_SYSCONFDIR "/qemu-ifup"
+ #define DEFAULT_NETWORK_DOWN_SCRIPT CONFIG_SYSCONFDIR "/qemu-ifdown"
+diff --git a/include/net/queue.h b/include/net/queue.h
+index 9f2f289d77..2e686b1b61 100644
+--- a/include/net/queue.h
++++ b/include/net/queue.h
+@@ -59,10 +59,6 @@ ssize_t qemu_net_queue_receive(NetQueue *queue,
+                                const uint8_t *data,
+                                size_t size);
+ 
+-ssize_t qemu_net_queue_receive_iov(NetQueue *queue,
+-                                   const struct iovec *iov,
+-                                   int iovcnt);
+-
+ ssize_t qemu_net_queue_send(NetQueue *queue,
+                             NetClientState *sender,
+                             unsigned flags,
+diff --git a/net/hub.c b/net/hub.c
+index 4c8a469a50..496a3d3b4b 100644
+--- a/net/hub.c
++++ b/net/hub.c
+@@ -193,31 +193,6 @@ NetClientState *net_hub_add_port(int hub_id, const char *name,
+     return &port->nc;
  }
  
--int xen_be_copy_grant_refs(struct XenLegacyDevice *xendev,
--                           bool to_domain,
--                           XenGrantCopySegment segs[],
--                           unsigned int nr_segs)
+-/**
+- * Find a available port on a hub; otherwise create one new port
+- */
+-NetClientState *net_hub_port_find(int hub_id)
 -{
--    int rc;
+-    NetHub *hub;
+-    NetHubPort *port;
+-    NetClientState *nc;
 -
--    assert(xendev->ops->flags & DEVOPS_FLAG_NEED_GNTDEV);
--
--    rc = qemu_xen_gnttab_grant_copy(xendev->gnttabdev, to_domain, xen_domid,
--                                    segs, nr_segs, NULL);
--    if (rc) {
--        xen_pv_printf(xendev, 0, "xengnttab_grant_copy failed: %s\n",
--                      strerror(-rc));
+-    QLIST_FOREACH(hub, &hubs, next) {
+-        if (hub->id == hub_id) {
+-            QLIST_FOREACH(port, &hub->ports, next) {
+-                nc = port->nc.peer;
+-                if (!nc) {
+-                    return &(port->nc);
+-                }
+-            }
+-            break;
+-        }
 -    }
--    return rc;
+-
+-    nc = net_hub_add_port(hub_id, NULL, NULL);
+-    return nc;
 -}
 -
- /*
-  * get xen backend device, allocate a new one if it doesn't exist.
+ /**
+  * Print hub configuration
   */
-diff --git a/hw/xen/xen_devconfig.c b/hw/xen/xen_devconfig.c
-index 2150869f60..45ae134b84 100644
---- a/hw/xen/xen_devconfig.c
-+++ b/hw/xen/xen_devconfig.c
-@@ -66,11 +66,3 @@ int xen_config_dev_vkbd(int vdev)
-     xen_config_dev_dirs("vkbd", "vkbd", vdev, fe, be, sizeof(fe));
-     return xen_config_dev_all(fe, be);
+diff --git a/net/net.c b/net/net.c
+index fc1125111c..d9b23a8f8c 100644
+--- a/net/net.c
++++ b/net/net.c
+@@ -750,16 +750,6 @@ ssize_t qemu_receive_packet(NetClientState *nc, const uint8_t *buf, int size)
+     return qemu_net_queue_receive(nc->incoming_queue, buf, size);
  }
--
--int xen_config_dev_console(int vdev)
+ 
+-ssize_t qemu_receive_packet_iov(NetClientState *nc, const struct iovec *iov,
+-                                int iovcnt)
 -{
--    char fe[256], be[256];
+-    if (!qemu_can_receive_packet(nc)) {
+-        return 0;
+-    }
 -
--    xen_config_dev_dirs("console", "console", vdev, fe, be, sizeof(fe));
--    return xen_config_dev_all(fe, be);
+-    return qemu_net_queue_receive_iov(nc->incoming_queue, iov, iovcnt);
 -}
-diff --git a/include/hw/xen/xen-legacy-backend.h b/include/hw/xen/xen-legacy-backend.h
-index 943732b8d1..e198b120c5 100644
---- a/include/hw/xen/xen-legacy-backend.h
-+++ b/include/hw/xen/xen-legacy-backend.h
-@@ -50,10 +50,6 @@ void *xen_be_map_grant_refs(struct XenLegacyDevice *xendev, uint32_t *refs,
- void xen_be_unmap_grant_refs(struct XenLegacyDevice *xendev, void *ptr,
-                              uint32_t *refs, unsigned int nr_refs);
- 
--int xen_be_copy_grant_refs(struct XenLegacyDevice *xendev,
--                           bool to_domain, XenGrantCopySegment segs[],
--                           unsigned int nr_segs);
 -
- static inline void *xen_be_map_grant_ref(struct XenLegacyDevice *xendev,
-                                          uint32_t ref, int prot)
+ ssize_t qemu_send_packet_raw(NetClientState *nc, const uint8_t *buf, int size)
  {
-@@ -70,6 +66,5 @@ static inline void xen_be_unmap_grant_ref(struct XenLegacyDevice *xendev,
- void xen_config_cleanup(void);
- int xen_config_dev_vfb(int vdev, const char *type);
- int xen_config_dev_vkbd(int vdev);
--int xen_config_dev_console(int vdev);
+     return qemu_send_packet_async_with_flags(nc, QEMU_NET_PACKET_FLAG_RAW,
+diff --git a/net/queue.c b/net/queue.c
+index c872d51df8..fb33856c18 100644
+--- a/net/queue.c
++++ b/net/queue.c
+@@ -193,17 +193,6 @@ ssize_t qemu_net_queue_receive(NetQueue *queue,
+     return qemu_net_queue_deliver(queue, NULL, 0, data, size);
+ }
  
- #endif /* HW_XEN_LEGACY_BACKEND_H */
+-ssize_t qemu_net_queue_receive_iov(NetQueue *queue,
+-                                   const struct iovec *iov,
+-                                   int iovcnt)
+-{
+-    if (queue->delivering) {
+-        return 0;
+-    }
+-
+-    return qemu_net_queue_deliver_iov(queue, NULL, 0, iov, iovcnt);
+-}
+-
+ ssize_t qemu_net_queue_send(NetQueue *queue,
+                             NetClientState *sender,
+                             unsigned flags,
 -- 
 2.39.5
 
