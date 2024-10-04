@@ -1,78 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1swmZC-0002Dh-AK
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 13:58:14 -0400
+	id 1swn0p-0002WN-D7
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 14:26:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1swmZ9-0002Cq-V3
- for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 13:58:11 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1swn0k-0002VX-0x
+ for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 14:26:42 -0400
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <manos.pitsidianakis@linaro.org>)
- id 1swmZ8-0006bu-Cl
- for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 13:58:11 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-a8a7596b7dfso424530966b.0
- for <qemu-trivial@nongnu.org>; Fri, 04 Oct 2024 10:57:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1swn0i-0002ps-9f
+ for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 14:26:41 -0400
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-53993c115cfso3206956e87.2
+ for <qemu-trivial@nongnu.org>; Fri, 04 Oct 2024 11:26:39 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1728064667; x=1728669467; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to
- :references:user-agent:subject:cc:to:from:date:from:to:cc:subject
- :date:message-id:reply-to;
- bh=uml7o5xPPexvJTnvPBC1eXY+yv2rWD3mcFHFe+jiAhA=;
- b=cA3YA5EVRbmC9X9ZMZTbxYuQD69v+WT50kKlmxIYjJ1K8sl4yFJjBUKxAFSDyMqE8+
- G915kZh7UvUTEm2vvCW0Nk2dNYGR9domppblYVAk8npqyc6tNJoKKFlApVDk09SvoCHu
- po3W5gOil2Ar1dR3WB0L6T42TEuJMJnv2F6LXuNwhYd08DOF1be4GETMiPsCrQmEVvWa
- gKGNaPHAgpCCyi9IjjngDWQp3JJv+bFr00vjD1UJLn7jFKAL4s5BafqxJLYRGhSLgBdM
- B0xp4U/ZH/vaqUKTxTZP3WYmllPt9aVNB1o5AI6Ba7QqYzrVuDM4m9lDDou/UMY90xay
- coGA==
+ d=linaro.org; s=google; t=1728066398; x=1728671198; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=2yEjesP4qQwFvs3HmZf4KN/MQveFZrQn2HjkTmy5WOc=;
+ b=BLjUptsDZTjytVsLKBNfLkRE0Qom9Ea5Degdhb84GPdPJENYSvJAW19geLvjd426du
+ WbqxS6zl8TjGqjBaOQG/8GmfZAdXh8IUNAJ52pG0/Cdpk2A9o4M0ZfuncDUu37xPymqh
+ nrPUW0Z2u3mnsWEpLLUyPxEIJMnTMvuL9KffzzMn8mfdh65wMt7qlaUmbMDQI22qtU5s
+ q1GiJFGaXRbS/6yIoQ/rEr8guQBwlaYWWzFkpHGsVi3+/pFpK4atG/f0iimlXHDBQUga
+ 4XV1jTf8VfLljbys4+tzTm4c3yqFaoL+Vqb8oQAyTrRjxm4PjzaF+2Osz7IuFzoja2LK
+ m97g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728064667; x=1728669467;
- h=content-transfer-encoding:mime-version:message-id:in-reply-to
- :references:user-agent:subject:cc:to:from:date:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=uml7o5xPPexvJTnvPBC1eXY+yv2rWD3mcFHFe+jiAhA=;
- b=DOebZ9LW92lAcCBwpJNsqo86fCYgrkTj1xtVbRvpK2D2Hv42nkFvDcKWB777GSoOfK
- CCb0PF89rq+QYakl2GfZpNJXMFsOkThMfWlHDs3SJXn/PROBJ42XXsTRJIhzORgfZAA2
- nLZ85D65qeY4lCapZG4ayJiAFnLOd1/2zcS7LtZ7O17kcrLkn/dspr/JDyHH2N+Ef0A6
- ATcfaLVBue2NNTh61KkC8wKtFi7TnVMqYS5doNqZ4IEfwsfo1wvbTbE6GGFYL3sYPLOh
- n0bZdtmSP0I+3cxeFy2T+5/n2WNZti+P/vNb7O37s7q5F1D+ch9o0ZfZyjuGvgJIAM06
- tgUw==
-X-Gm-Message-State: AOJu0Yym5Uhy9bZTkTxvz01lpkvqY0iuAgFOMxvr3UHQK66vlychvsZx
- G9Za2fLq9O4ggo1X912dx54DtZnK0DuE67t4b0233sMVU6d+WBMO/l2F/xo5j9E=
-X-Google-Smtp-Source: AGHT+IGNQlWwarlacwsuvMAbwQEUSjMOA/7FvBUKojT85t4IOkaWs74dqrMKgo71BRsAWBB/V0Rr7A==
-X-Received: by 2002:a17:907:940c:b0:a8a:6db7:665d with SMTP id
- a640c23a62f3a-a991cf73a24mr376363066b.17.1728064667363; 
- Fri, 04 Oct 2024 10:57:47 -0700 (PDT)
-Received: from meli-email.org (adsl-74.37.6.1.tellas.gr. [37.6.1.74])
- by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a992e6655bbsm23307566b.96.2024.10.04.10.56.25
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Oct 2024 10:56:36 -0700 (PDT)
-Date: Fri, 04 Oct 2024 20:53:39 +0300
-From: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- Philippe Mathieu-Daud=?UTF-8?B?w6kg?=<philmd@linaro.org>,
- Brian Cain <bcain@quicinc.com>
-Bcc: 
-Subject: Re: [PATCH] tests/functional: Fix hash validation
-User-Agent: meli 0.8.7
-References: <20241004130225.217441-1-thuth@redhat.com>
-In-Reply-To: <20241004130225.217441-1-thuth@redhat.com>
-Message-ID: <kuf60.ek3w2mj9njb@linaro.org>
+ d=1e100.net; s=20230601; t=1728066398; x=1728671198;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=2yEjesP4qQwFvs3HmZf4KN/MQveFZrQn2HjkTmy5WOc=;
+ b=NbE41GWef52wQUiCyTx1dYJissGSdAwB1kSeDYYFfHUa5+yjdmBQdHxZwzskHyxsFP
+ y7zhO83U8wq5fefZGDWFQLDz2LpxETunMyNnBP5W1x6sJsngqgR/MiIs7YgqT1kZYaGC
+ WV2JDmWWM14ngM9KwnG2j1TqxSz7tKGgOZ01VFWAUMXMpboy3F1Nq/K+c5A7SZwttK24
+ FJ3vCwpqFOP1VApFestODN6z0yiDa8OyVmmknO2RKKC7gk4A7YA8yXGcKXyz40eRrIdg
+ ctcH9PXzYuDAaVtPH7bxhbfIY6+UHu1NHmh5FBOZ7nrOgDU5E379qVOJDAW9MFApdatE
+ Diqg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXhrl6CfF1jOxwV0z2/HFw4Rv+zEDsHQKiGDwAMl3Zjl6KMqvgR9vAaqm/Lg8/Wo1Mu/Bk8bPA8bYsfi9A=@nongnu.org
+X-Gm-Message-State: AOJu0YxnzU9L+Tf6Lv1smH1kAFmiujpdi6pCXFMHp8atwKw8A7ZfX5bL
+ zk2WE8S4sjwzbBp89xDcw+t/2RjHPXHWImgiXJlBVEFZGYIg9zefsO69YyNuXhpy4E58mM4JF4J
+ nc1DQsHBQ82Z2jfRMTh+7SH2k8LtMp3QdYecjrjzxxD6qpoKZ
+X-Google-Smtp-Source: AGHT+IEnO7qfCP1Jwtwc3yRwMmCi45qn91QDIo/eIoIxF5BWJ7azQmBL0S3B2SHBtSibSERW+cxcqZZnrrBPOd+Filg=
+X-Received: by 2002:a05:6512:3c97:b0:52e:91ff:4709 with SMTP id
+ 2adb3069b0e04-539ab87757amr2503893e87.21.1728066397895; Fri, 04 Oct 2024
+ 11:26:37 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain; charset=utf-8; format=flowed
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=manos.pitsidianakis@linaro.org; helo=mail-ej1-x62e.google.com
+References: <20241004160331.1282441-1-mjt@tls.msk.ru>
+In-Reply-To: <20241004160331.1282441-1-mjt@tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 4 Oct 2024 19:26:27 +0100
+Message-ID: <CAFEAcA-pBSDX=p7pqAHuA_B_yFnCi_-VhdAbec=HiETAe=ZWYA@mail.gmail.com>
+Subject: Re: [PULL 00/23] Trivial patches for 2024-10-04
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=peter.maydell@linaro.org; helo=mail-lf1-x12f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,39 +77,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Oct 2024 17:58:12 -0000
+X-List-Received-Date: Fri, 04 Oct 2024 18:26:43 -0000
 
-On Fri, 04 Oct 2024 16:02, Thomas Huth <thuth@redhat.com> wrote:
->The _check() function is supposed to check whether the hash of the
->downloaded file matches the expected one. Unfortunately, during the
->last rework of this function, the check was accidentally turned into
->returning the hash value itself instead of a True/False value,
->effectively accepting each hash as valid. Let's do a proper check
->again now.
+On Fri, 4 Oct 2024 at 17:07, Michael Tokarev <mjt@tls.msk.ru> wrote:
 >
->Fixes:05e303210d ("tests/functional/qemu_test: Use Python hashlib ...")
->Signed-off-by: Thomas Huth <thuth@redhat.com>
->---
-> tests/functional/qemu_test/asset.py | 2 +-
-> 1 file changed, 1 insertion(+), 1 deletion(-)
+> The following changes since commit 423be09ab9492735924e73a2d36069784441ebc6:
 >
->diff --git a/tests/functional/qemu_test/asset.py b/tests/functional/qemu_test/asset.py
->index 3ec429217e..e47bfac035 100644
->--- a/tests/functional/qemu_test/asset.py
->+++ b/tests/functional/qemu_test/asset.py
->@@ -57,7 +57,7 @@ def _check(self, cache_file):
->                     break
->                 hl.update(chunk)
-> 
->-        return  hl.hexdigest()
->+        return self.hash == hl.hexdigest()
-> 
->     def valid(self):
->         return self.cache_file.exists() and self._check(self.cache_file)
->-- 
->2.46.1
+>   Merge tag 'warn-pull-request' of https://gitlab.com/marcandre.lureau/qemu into staging (2024-10-03 10:32:54 +0100)
 >
+> are available in the Git repository at:
 >
+>   https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+>
+> for you to fetch changes up to 6b7d2f6e1896fb675e8518ed61c792d4dd92e034:
+>
+>   MAINTAINERS: Add myself as maintainer of e500 machines (2024-10-04 18:57:38 +0300)
+>
+> ----------------------------------------------------------------
+> trivial patches for 2024-10-04
+>
+> - many dead code removals by Dr. David Alan Gilbert
+> - forgotten minor bugfixes (vnc, resource freeing in qemu-keymap)
+> - some more..
 
-Reviewed-by: Manos Pitsidianakis <manos.pitsidianakis@linaro.org>
+
+Applied, thanks.
+
+Please update the changelog at https://wiki.qemu.org/ChangeLog/9.2
+for any user-visible changes.
+
+-- PMM
 
