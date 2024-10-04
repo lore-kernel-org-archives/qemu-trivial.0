@@ -1,60 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1swhxD-0001I2-6s
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 09:02:43 -0400
+	id 1swjmb-00068T-LA
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 10:59:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1swhx8-0001HJ-Kd
- for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 09:02:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1swhx6-0007n1-Ii
- for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 09:02:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1728046954;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=DtReNS6pT4fNYyHx94Lkyyryh1zP1mLYJecc8WY04KY=;
- b=bngIQSGzJCSFW4/1vVJ0FptSW66TzCk9THgcl2KmR+zjhVWJU98NPmXcTp1+FdjTSFzO0F
- jvJVYEo59W2MBp8+Z7bahDemsvFYt/Kudu+7NvT0bkbmO37dszOXiT0T9tg/DB30EO9ALS
- bIswDPmbEIh77Z0d/HdwsN8mwirgzo0=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-643-tydbeoHjOIa5kS9lTofiWQ-1; Fri,
- 04 Oct 2024 09:02:31 -0400
-X-MC-Unique: tydbeoHjOIa5kS9lTofiWQ-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F0BF21955F42; Fri,  4 Oct 2024 13:02:29 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.193.65])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 62EFB19560AE; Fri,  4 Oct 2024 13:02:26 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Brian Cain <bcain@quicinc.com>
-Subject: [PATCH] tests/functional: Fix hash validation
-Date: Fri,  4 Oct 2024 15:02:25 +0200
-Message-ID: <20241004130225.217441-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1swjmX-000684-7b
+ for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 10:59:49 -0400
+Received: from mail-ed1-x533.google.com ([2a00:1450:4864:20::533])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1swjmV-00009U-QU
+ for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 10:59:48 -0400
+Received: by mail-ed1-x533.google.com with SMTP id
+ 4fb4d7f45d1cf-5c88c9e45c2so5833408a12.0
+ for <qemu-trivial@nongnu.org>; Fri, 04 Oct 2024 07:59:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1728053986; x=1728658786; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=sQmtXYfuRety+5EaVJVCPl2n2fx6AN7rll/4Hv1oYtg=;
+ b=umiCyhIDg5HycxgFNW+qA922hxlszzrcHJ2MUl3P4Ta7Hq082b40L/OY4wkrUGR8f/
+ KD4sTlPa2AvG60nDbw4N8eIpe9onneLK7357P437+dXbrDbWlA4D9iqoKuQqtGAdHDAe
+ byV6jj1ywMyeTEUitXMPvj2mbFH4Fi//ueY8FL8lbYcIriv47o4TK6xjrqNXIDOzNzbV
+ OUMPnnKU/9hiMNkMKjfmiZR92f0J9HRfv16gfPusQvarCNdKyg20ua/JVKr+lqHxqD/8
+ JcMZoC/zQZOjvAUyoeAoztVh7gKW7g4GArEDaVIt5p8UQZloKzLNdy3eNZKrLdp8nwGd
+ N5UQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1728053986; x=1728658786;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=sQmtXYfuRety+5EaVJVCPl2n2fx6AN7rll/4Hv1oYtg=;
+ b=JAK41Evu6TCwjIAWJNR2ODiv8ahtrbde4eGRO+VxRegtV/Y5vylHHqi5c2k3o7erUa
+ tLj+zRhZHknhwVWeRum1jaEVLERzO+DM5zNcRdziWiDanO6ID4r0H3LIEfoZY39AY2aj
+ roXrOpJt4cmABqgWo+5eAwwuELsAZbd7ANOi4q6sh0DuW3smQSiljLOsWcAhkzdk8RtX
+ dKPEq6uuei/9yY4jWEXreTxhzW4B7YlT/E48PS9SFOsdsxchjTFj6lv57Qul9DebL2Ey
+ 5HC9BQxHgxpYWKWzn7V9DzEsXRPkfD6O6fu8V19sdtijqkQMv0ko1lVO9HAjkvoIcFlP
+ VmwQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWG+WC71KdL2zgh9MdLgIUt9u2MXzAHwtceEZMIzqx+CPLS/3LQpmWWlbh8/FnWzGKU7CT20lS2Cl+kqt4=@nongnu.org
+X-Gm-Message-State: AOJu0Yz2Q0aAK4m5sk3D2rEatXDKLO3b80m8q37WuQW2gfxCxVMsizaT
+ qAdxKxizUGs0bnTVCs5xYyLDhIeKggFYBnB1ELoLJpJIbTOGqomt41370s9QXqQ=
+X-Google-Smtp-Source: AGHT+IGdXSFVDUvR6LUp8RS3sTSRngp++bUgR6RhKWkUI7uIi0dwAbKgIxhJa39xcS0u5tLaVjLDZw==
+X-Received: by 2002:a05:6402:348e:b0:5c5:cb7f:e56a with SMTP id
+ 4fb4d7f45d1cf-5c8c09f4689mr8151620a12.1.1728053985919; 
+ Fri, 04 Oct 2024 07:59:45 -0700 (PDT)
+Received: from draig.lan ([85.9.250.243]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-5c8ca3dd51dsm1946873a12.25.2024.10.04.07.59.44
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 04 Oct 2024 07:59:45 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 33DC75F7A2;
+ Fri,  4 Oct 2024 15:59:44 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,  Alexander Bulekov
+ <alxndr@bu.edu>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>
+Subject: Re: [PATCH trivial] gitlab-ci/build-oss-fuzz: print FAILED marker
+ in case the test failed and run all tests
+In-Reply-To: <20241003121656.1173612-1-mjt@tls.msk.ru> (Michael Tokarev's
+ message of "Thu, 3 Oct 2024 15:16:56 +0300")
+References: <20241003121656.1173612-1-mjt@tls.msk.ru>
+User-Agent: mu4e 1.12.6; emacs 29.4
+Date: Fri, 04 Oct 2024 15:59:44 +0100
+Message-ID: <87ploflxr3.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::533;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x533.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.146,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -67,35 +90,24 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Oct 2024 13:02:38 -0000
+X-List-Received-Date: Fri, 04 Oct 2024 14:59:50 -0000
 
-The _check() function is supposed to check whether the hash of the
-downloaded file matches the expected one. Unfortunately, during the
-last rework of this function, the check was accidentally turned into
-returning the hash value itself instead of a True/False value,
-effectively accepting each hash as valid. Let's do a proper check
-again now.
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
-Fixes:05e303210d ("tests/functional/qemu_test: Use Python hashlib ...")
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/functional/qemu_test/asset.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+> currently, if an oss-fuzz fails, the script does just `exit 1`
+> without any additional output, and looking at the build log in
+> the gitlab ci it is not clear what actually failed, without
+> looking at build-oss-fuzz script and seeing this `exit 1`.
+>
+> Print easily recognizable error message about test failure, so
+> it becomes obvious what exactly has failed.
+>
+> While at it, continue running other tests even in case of
+> failure, and exit non-zero if at least one test failed.
 
-diff --git a/tests/functional/qemu_test/asset.py b/tests/functional/qemu_test/asset.py
-index 3ec429217e..e47bfac035 100644
---- a/tests/functional/qemu_test/asset.py
-+++ b/tests/functional/qemu_test/asset.py
-@@ -57,7 +57,7 @@ def _check(self, cache_file):
-                     break
-                 hl.update(chunk)
- 
--        return  hl.hexdigest()
-+        return self.hash == hl.hexdigest()
- 
-     def valid(self):
-         return self.cache_file.exists() and self._check(self.cache_file)
--- 
-2.46.1
+Queued to testing/next, thanks.
 
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 
