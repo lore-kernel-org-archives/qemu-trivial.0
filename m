@@ -1,29 +1,30 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1swkoN-0005hw-El
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:05:47 -0400
+	id 1swkoP-0005tN-B2
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:05:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1swkoK-0005Sa-5P; Fri, 04 Oct 2024 12:05:44 -0400
+ id 1swkoJ-0005QP-Eb; Fri, 04 Oct 2024 12:05:43 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1swkoI-0001yV-MV; Fri, 04 Oct 2024 12:05:43 -0400
+ id 1swkoH-0001xw-IM; Fri, 04 Oct 2024 12:05:43 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 08C559557C;
- Fri,  4 Oct 2024 19:03:31 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id F00D59557B;
+ Fri,  4 Oct 2024 19:03:30 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 42AC914D98A;
+ by tsrv.corpit.ru (Postfix) with SMTP id 3519814D989;
  Fri,  4 Oct 2024 19:03:33 +0300 (MSK)
-Received: (nullmailer pid 1282575 invoked by uid 1000);
+Received: (nullmailer pid 1282572 invoked by uid 1000);
  Fri, 04 Oct 2024 16:03:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Bernhard Beschow <shentey@gmail.com>, qemu-trivial@nongnu.org,
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 23/23] MAINTAINERS: Add myself as maintainer of e500 machines
-Date: Fri,  4 Oct 2024 19:03:31 +0300
-Message-Id: <20241004160331.1282441-24-mjt@tls.msk.ru>
+Subject: [PULL 22/23] docs/devel: Mention post_load hook restrictions where we
+ document the hook
+Date: Fri,  4 Oct 2024 19:03:30 +0300
+Message-Id: <20241004160331.1282441-23-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241004160331.1282441-1-mjt@tls.msk.ru>
 References: <20241004160331.1282441-1-mjt@tls.msk.ru>
@@ -50,45 +51,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Oct 2024 16:05:45 -0000
+X-List-Received-Date: Fri, 04 Oct 2024 16:05:44 -0000
 
-From: Bernhard Beschow <shentey@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
 
-Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-Reviewed-by: Cédric Le Goater <clg@redhat.com>
-Reviewed-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Accessing another device in a post_load hook is a bad idea, because
+the order of device save/restore is not fixed, and so this
+cross-device access makes the save/restore non-deterministic.
+
+We previously only flagged up this requirement in the
+record-and-replay developer docs; repeat it in the main migration
+documentation, where a developer trying to implement a post_load hook
+is more likely to see it.
+
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- MAINTAINERS | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+ docs/devel/migration/main.rst | 6 ++++++
+ docs/devel/replay.rst         | 3 +++
+ 2 files changed, 9 insertions(+)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index d013db1ccb..34fffcb5be 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -1378,8 +1378,9 @@ F: hw/pci-host/ppc4xx_pci.c
- F: tests/functional/test_ppc_bamboo.py
+diff --git a/docs/devel/migration/main.rst b/docs/devel/migration/main.rst
+index 784c899dca..c2857fc244 100644
+--- a/docs/devel/migration/main.rst
++++ b/docs/devel/migration/main.rst
+@@ -465,6 +465,12 @@ Examples of such API functions are:
+   - portio_list_set_address()
+   - portio_list_set_enabled()
  
- e500
-+M: Bernhard Beschow <shentey@gmail.com>
- L: qemu-ppc@nongnu.org
--S: Orphan
-+S: Odd Fixes
- F: hw/ppc/e500*
- F: hw/ppc/ppce500_spin.c
- F: hw/gpio/mpc8xxx.c
-@@ -1395,8 +1396,9 @@ F: docs/system/ppc/ppce500.rst
- F: tests/functional/test_ppc64_e500.py
++Since the order of device save/restore is not defined, you must
++avoid accessing or changing any other device's state in one of these
++callbacks. (For instance, don't do anything that calls ``update_irq()``
++in a ``post_load`` hook.) Otherwise, restore will not be deterministic,
++and this will break execution record/replay.
++
+ Iterative device migration
+ --------------------------
  
- mpc8544ds
-+M: Bernhard Beschow <shentey@gmail.com>
- L: qemu-ppc@nongnu.org
--S: Orphan
-+S: Odd Fixes
- F: hw/ppc/mpc8544ds.c
- F: hw/ppc/mpc8544_guts.c
- F: tests/functional/test_ppc_mpc8544ds.py
+diff --git a/docs/devel/replay.rst b/docs/devel/replay.rst
+index effd856f0c..40f58d9d4f 100644
+--- a/docs/devel/replay.rst
++++ b/docs/devel/replay.rst
+@@ -202,6 +202,9 @@ into the log.
+ Saving/restoring the VM state
+ -----------------------------
+ 
++Record/replay relies on VM state save and restore being complete and
++deterministic.
++
+ All fields in the device state structure (including virtual timers)
+ should be restored by loadvm to the same values they had before savevm.
+ 
 -- 
 2.39.5
 
