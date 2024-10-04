@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1swknw-0003Il-LF
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:05:20 -0400
+	id 1swkny-0003TH-Pa
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:05:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1swknu-00031t-Db; Fri, 04 Oct 2024 12:05:18 -0400
+ id 1swknw-0003FX-3q; Fri, 04 Oct 2024 12:05:20 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1swkns-0001fb-Bw; Fri, 04 Oct 2024 12:05:17 -0400
+ id 1swknu-0001wZ-H5; Fri, 04 Oct 2024 12:05:19 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id C8F8F95578;
+ by isrv.corpit.ru (Postfix) with ESMTP id D569195579;
  Fri,  4 Oct 2024 19:03:30 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 0F04214D986;
+ by tsrv.corpit.ru (Postfix) with SMTP id 1BB8C14D987;
  Fri,  4 Oct 2024 19:03:33 +0300 (MSK)
-Received: (nullmailer pid 1282563 invoked by uid 1000);
+Received: (nullmailer pid 1282566 invoked by uid 1000);
  Fri, 04 Oct 2024 16:03:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 19/23] tests/tcg/plugins: Remove remainder of the cris target
-Date: Fri,  4 Oct 2024 19:03:27 +0300
-Message-Id: <20241004160331.1282441-20-mjt@tls.msk.ru>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 20/23] hw/mips: Build fw_cfg.c once
+Date: Fri,  4 Oct 2024 19:03:28 +0300
+Message-Id: <20241004160331.1282441-21-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241004160331.1282441-1-mjt@tls.msk.ru>
 References: <20241004160331.1282441-1-mjt@tls.msk.ru>
@@ -50,34 +50,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Oct 2024 16:05:19 -0000
+X-List-Received-Date: Fri, 04 Oct 2024 16:05:21 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-The cris target has recently been removed (see commit 44e4075bf4 -
-"target/cris: Remove the deprecated CRIS target"), but apparently this
-line has been forgotten. So clean it up now.
+Nothing in fw_cfg.c requires target-specific knowledge,
+build it once for the 4 MIPS variants.
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- tests/tcg/plugins/syscall.c | 1 -
- 1 file changed, 1 deletion(-)
+ hw/mips/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/tcg/plugins/syscall.c b/tests/tcg/plugins/syscall.c
-index 89dc7f49b1..ff452178b1 100644
---- a/tests/tcg/plugins/syscall.c
-+++ b/tests/tcg/plugins/syscall.c
-@@ -34,7 +34,6 @@ static const struct SyscallInfo arch_syscall_info[] = {
-     { "arm", 4 },
-     { "armeb", 4 },
-     { "avr", -1 },
--    { "cris", -1 },
-     { "hexagon", 64 },
-     { "hppa", -1 },
-     { "i386", 4 },
+diff --git a/hw/mips/meson.build b/hw/mips/meson.build
+index ca37c42d90..fcbee53bb3 100644
+--- a/hw/mips/meson.build
++++ b/hw/mips/meson.build
+@@ -1,6 +1,6 @@
+ mips_ss = ss.source_set()
+ mips_ss.add(files('bootloader.c', 'mips_int.c'))
+-mips_ss.add(when: 'CONFIG_FW_CFG_MIPS', if_true: files('fw_cfg.c'))
++common_ss.add(when: 'CONFIG_FW_CFG_MIPS', if_true: files('fw_cfg.c'))
+ mips_ss.add(when: 'CONFIG_LOONGSON3V', if_true: files('loongson3_bootp.c', 'loongson3_virt.c'))
+ mips_ss.add(when: 'CONFIG_MALTA', if_true: files('malta.c'))
+ mips_ss.add(when: 'CONFIG_MIPS_CPS', if_true: files('cps.c'))
 -- 
 2.39.5
 
