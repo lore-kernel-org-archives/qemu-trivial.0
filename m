@@ -1,42 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1swkoP-0005tN-B2
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:05:49 -0400
+	id 1swlGs-0007R9-6z
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:35:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1swkoJ-0005QP-Eb; Fri, 04 Oct 2024 12:05:43 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1swlGS-0006XS-N9
+ for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 12:34:50 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1swkoH-0001xw-IM; Fri, 04 Oct 2024 12:05:43 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id F00D59557B;
- Fri,  4 Oct 2024 19:03:30 +0300 (MSK)
-Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 3519814D989;
- Fri,  4 Oct 2024 19:03:33 +0300 (MSK)
-Received: (nullmailer pid 1282572 invoked by uid 1000);
- Fri, 04 Oct 2024 16:03:32 -0000
-From: Michael Tokarev <mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
+ id 1swlGQ-0006Ac-I9
+ for qemu-trivial@nongnu.org; Fri, 04 Oct 2024 12:34:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1728059685;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=VosZkryxUSxT370xwj32ayTSBQobfpGY1xY5tUlU3gw=;
+ b=HsUOG/JbhoxDMQweTK39FBweJc32ZlqfAZiny/XurBb53KygnhWV3y9OnmI6FY1pVBfKjR
+ t2Fy17vl9i3dhUKfzoA/F+yAuO2S5U8CfrRC0cin4e98kP0kttN3qZBVYTQE8jS2AekxM3
+ zQKIFrfHDFaeyO68v0wjlIohm1ePp38=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-505-SzRenVYtN5m-JxbVvEeB0g-1; Fri, 04 Oct 2024 12:34:44 -0400
+X-MC-Unique: SzRenVYtN5m-JxbVvEeB0g-1
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-37cda7514f8so1225953f8f.0
+ for <qemu-trivial@nongnu.org>; Fri, 04 Oct 2024 09:34:44 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1728059683; x=1728664483;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=VosZkryxUSxT370xwj32ayTSBQobfpGY1xY5tUlU3gw=;
+ b=VCvvinUnFpZZhWUPS7pHepF49+fgjfs5x8+wTpo4HNl31FIcSeyENyZaXOmS2MjsSc
+ ++TNBAZoZ96MKLoXMKuXqZyGT/UsJRIHj/ehWDRREjwUj8ImoaxCliNPOygngLRnZscF
+ VpD4Z5TgKn4c4pQbc0gUBi+Qyf4/DdwRdoUluWe2EL60tM+bqqWlQYthyr8xzqx0Jjej
+ ISK3HLq/0HUmkX/oG9AXOyU0vU9T8ibSbRMxoNPe2LNDO0sBx+apLnpaQ44M0LKDWtV1
+ rmc4v3ShTibxI65tOWV9orIZ/hGqfg2Tyr0GTthHflkjmrKJjKmKXnAqZpV+MitKdnyg
+ rviw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWESa/0Er8z1oGcj3QQ6/Gl/tM8GMnZLjdSunzCyoaLRuP5NpSNLXi0zuh6dZJu9y2Y10WA6Nwc+HFeq+I=@nongnu.org
+X-Gm-Message-State: AOJu0YxMbq1EH5+AF36YiJ2YzXDhCO2ycwACJxRvci2BXKzNHVutQGW9
+ L0QYRTEwniUHaoL7k2tMJpP0oqThsNKIQUTz81gwzO4PYfase/Pq1ea71Hb4TAcI6/LzXs72iFk
+ eaKkmemt79xB70esD6H/xExbl9c8saRho5jhqiwiN3+vJ4c4pXmOhJPM=
+X-Received: by 2002:adf:e412:0:b0:37c:fee5:bfc7 with SMTP id
+ ffacd0b85a97d-37d049ef115mr5009000f8f.15.1728059683261; 
+ Fri, 04 Oct 2024 09:34:43 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHt/dY/luTgOjLNty7OoWj/vwXkvJeOQCoUWpgNv4LcozFxRBS5GCivVI8McZeiBBDzVYoZLQ==
+X-Received: by 2002:adf:e412:0:b0:37c:fee5:bfc7 with SMTP id
+ ffacd0b85a97d-37d049ef115mr5008985f8f.15.1728059682812; 
+ Fri, 04 Oct 2024 09:34:42 -0700 (PDT)
+Received: from avogadro.local ([151.95.43.71])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-42f86a20537sm19461625e9.15.2024.10.04.09.34.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 04 Oct 2024 09:34:42 -0700 (PDT)
+From: Paolo Bonzini <pbonzini@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 22/23] docs/devel: Mention post_load hook restrictions where we
- document the hook
-Date: Fri,  4 Oct 2024 19:03:30 +0300
-Message-Id: <20241004160331.1282441-23-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20241004160331.1282441-1-mjt@tls.msk.ru>
-References: <20241004160331.1282441-1-mjt@tls.msk.ru>
+Cc: Ani Sinha <anisinha@redhat.com>, qemu-trivial@nongnu.org,
+ zhao1.liu@intel.com, armbru@redhat.com
+Subject: [PULL 08/23] kvm: replace fprintf with error_report()/printf() in
+ kvm_init()
+Date: Fri,  4 Oct 2024 18:34:00 +0200
+Message-ID: <20241004163415.951106-9-pbonzini@redhat.com>
+X-Mailer: git-send-email 2.46.1
+In-Reply-To: <20241004163415.951106-1-pbonzini@redhat.com>
+References: <20241004163415.951106-1-pbonzini@redhat.com>
 MIME-Version: 1.0
+X-Mimecast-Spam-Score: 0
+X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.146,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -51,60 +96,125 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Oct 2024 16:05:44 -0000
+X-List-Received-Date: Fri, 04 Oct 2024 16:34:51 -0000
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: Ani Sinha <anisinha@redhat.com>
 
-Accessing another device in a post_load hook is a bad idea, because
-the order of device save/restore is not fixed, and so this
-cross-device access makes the save/restore non-deterministic.
+error_report() is more appropriate for error situations. Replace fprintf with
+error_report() and error_printf() as appropriate. Some improvement in error
+reporting also happens as a part of this change. For example:
 
-We previously only flagged up this requirement in the
-record-and-replay developer docs; repeat it in the main migration
-documentation, where a developer trying to implement a post_load hook
-is more likely to see it.
+From:
+$ ./qemu-system-x86_64 --accel kvm
+Could not access KVM kernel module: No such file or directory
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+To:
+$ ./qemu-system-x86_64 --accel kvm
+qemu-system-x86_64: --accel kvm: Could not access KVM kernel module: No such file or directory
+
+CC: qemu-trivial@nongnu.org
+CC: zhao1.liu@intel.com
+CC: armbru@redhat.com
+Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Signed-off-by: Ani Sinha <anisinha@redhat.com>
+Link: https://lore.kernel.org/r/20240828124539.62672-1-anisinha@redhat.com
+Signed-off-by: Paolo Bonzini <pbonzini@redhat.com>
 ---
- docs/devel/migration/main.rst | 6 ++++++
- docs/devel/replay.rst         | 3 +++
- 2 files changed, 9 insertions(+)
+ accel/kvm/kvm-all.c | 40 ++++++++++++++++++----------------------
+ 1 file changed, 18 insertions(+), 22 deletions(-)
 
-diff --git a/docs/devel/migration/main.rst b/docs/devel/migration/main.rst
-index 784c899dca..c2857fc244 100644
---- a/docs/devel/migration/main.rst
-+++ b/docs/devel/migration/main.rst
-@@ -465,6 +465,12 @@ Examples of such API functions are:
-   - portio_list_set_address()
-   - portio_list_set_enabled()
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index fe4cd721d9b..4c920b7bfe7 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2423,7 +2423,7 @@ static int kvm_init(MachineState *ms)
+     QLIST_INIT(&s->kvm_parked_vcpus);
+     s->fd = qemu_open_old(s->device ?: "/dev/kvm", O_RDWR);
+     if (s->fd == -1) {
+-        fprintf(stderr, "Could not access KVM kernel module: %m\n");
++        error_report("Could not access KVM kernel module: %m");
+         ret = -errno;
+         goto err;
+     }
+@@ -2433,13 +2433,13 @@ static int kvm_init(MachineState *ms)
+         if (ret >= 0) {
+             ret = -EINVAL;
+         }
+-        fprintf(stderr, "kvm version too old\n");
++        error_report("kvm version too old");
+         goto err;
+     }
  
-+Since the order of device save/restore is not defined, you must
-+avoid accessing or changing any other device's state in one of these
-+callbacks. (For instance, don't do anything that calls ``update_irq()``
-+in a ``post_load`` hook.) Otherwise, restore will not be deterministic,
-+and this will break execution record/replay.
-+
- Iterative device migration
- --------------------------
+     if (ret > KVM_API_VERSION) {
+         ret = -EINVAL;
+-        fprintf(stderr, "kvm version not supported\n");
++        error_report("kvm version not supported");
+         goto err;
+     }
  
-diff --git a/docs/devel/replay.rst b/docs/devel/replay.rst
-index effd856f0c..40f58d9d4f 100644
---- a/docs/devel/replay.rst
-+++ b/docs/devel/replay.rst
-@@ -202,6 +202,9 @@ into the log.
- Saving/restoring the VM state
- -----------------------------
+@@ -2484,26 +2484,22 @@ static int kvm_init(MachineState *ms)
+     } while (ret == -EINTR);
  
-+Record/replay relies on VM state save and restore being complete and
-+deterministic.
-+
- All fields in the device state structure (including virtual timers)
- should be restored by loadvm to the same values they had before savevm.
+     if (ret < 0) {
+-        fprintf(stderr, "ioctl(KVM_CREATE_VM) failed: %d %s\n", -ret,
+-                strerror(-ret));
++        error_report("ioctl(KVM_CREATE_VM) failed: %s", strerror(-ret));
+ 
+ #ifdef TARGET_S390X
+         if (ret == -EINVAL) {
+-            fprintf(stderr,
+-                    "Host kernel setup problem detected. Please verify:\n");
+-            fprintf(stderr, "- for kernels supporting the switch_amode or"
+-                    " user_mode parameters, whether\n");
+-            fprintf(stderr,
+-                    "  user space is running in primary address space\n");
+-            fprintf(stderr,
+-                    "- for kernels supporting the vm.allocate_pgste sysctl, "
+-                    "whether it is enabled\n");
++            error_printf("Host kernel setup problem detected."
++                         " Please verify:\n");
++            error_printf("- for kernels supporting the"
++                        " switch_amode or user_mode parameters, whether");
++            error_printf(" user space is running in primary address space\n");
++            error_printf("- for kernels supporting the vm.allocate_pgste"
++                         " sysctl, whether it is enabled\n");
+         }
+ #elif defined(TARGET_PPC)
+         if (ret == -EINVAL) {
+-            fprintf(stderr,
+-                    "PPC KVM module is not loaded. Try modprobe kvm_%s.\n",
+-                    (type == 2) ? "pr" : "hv");
++            error_printf("PPC KVM module is not loaded. Try modprobe kvm_%s.\n",
++                         (type == 2) ? "pr" : "hv");
+         }
+ #endif
+         goto err;
+@@ -2522,9 +2518,9 @@ static int kvm_init(MachineState *ms)
+                         nc->name, nc->num, soft_vcpus_limit);
+ 
+             if (nc->num > hard_vcpus_limit) {
+-                fprintf(stderr, "Number of %s cpus requested (%d) exceeds "
+-                        "the maximum cpus supported by KVM (%d)\n",
+-                        nc->name, nc->num, hard_vcpus_limit);
++                error_report("Number of %s cpus requested (%d) exceeds "
++                             "the maximum cpus supported by KVM (%d)",
++                             nc->name, nc->num, hard_vcpus_limit);
+                 exit(1);
+             }
+         }
+@@ -2538,8 +2534,8 @@ static int kvm_init(MachineState *ms)
+     }
+     if (missing_cap) {
+         ret = -EINVAL;
+-        fprintf(stderr, "kvm does not support %s\n%s",
+-                missing_cap->name, upgrade_note);
++        error_report("kvm does not support %s", missing_cap->name);
++        error_printf("%s", upgrade_note);
+         goto err;
+     }
  
 -- 
-2.39.5
+2.46.1
 
 
