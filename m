@@ -1,34 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1swkny-0003TH-Pa
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:05:23 -0400
+	id 1swko0-0003aI-PE
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:05:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1swknw-0003FX-3q; Fri, 04 Oct 2024 12:05:20 -0400
+ id 1swknx-0003MJ-B7; Fri, 04 Oct 2024 12:05:21 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1swknu-0001wZ-H5; Fri, 04 Oct 2024 12:05:19 -0400
+ id 1swknv-0001xD-SZ; Fri, 04 Oct 2024 12:05:21 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id D569195579;
+ by isrv.corpit.ru (Postfix) with ESMTP id E25509557A;
  Fri,  4 Oct 2024 19:03:30 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 1BB8C14D987;
+ by tsrv.corpit.ru (Postfix) with SMTP id 285B914D988;
  Fri,  4 Oct 2024 19:03:33 +0300 (MSK)
-Received: (nullmailer pid 1282566 invoked by uid 1000);
+Received: (nullmailer pid 1282569 invoked by uid 1000);
  Fri, 04 Oct 2024 16:03:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 20/23] hw/mips: Build fw_cfg.c once
-Date: Fri,  4 Oct 2024 19:03:28 +0300
-Message-Id: <20241004160331.1282441-21-mjt@tls.msk.ru>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 21/23] tests/functional: Fix hash validation
+Date: Fri,  4 Oct 2024 19:03:29 +0300
+Message-Id: <20241004160331.1282441-22-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241004160331.1282441-1-mjt@tls.msk.ru>
 References: <20241004160331.1282441-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -50,33 +49,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Oct 2024 16:05:21 -0000
+X-List-Received-Date: Fri, 04 Oct 2024 16:05:22 -0000
 
-From: Philippe Mathieu-Daudé <philmd@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
 
-Nothing in fw_cfg.c requires target-specific knowledge,
-build it once for the 4 MIPS variants.
+The _check() function is supposed to check whether the hash of the
+downloaded file matches the expected one. Unfortunately, during the
+last rework of this function, the check was accidentally turned into
+returning the hash value itself instead of a True/False value,
+effectively accepting each hash as valid. Let's do a proper check
+again now.
 
-Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Fixes:05e303210d ("tests/functional/qemu_test: Use Python hashlib ...")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/mips/meson.build | 2 +-
+ tests/functional/qemu_test/asset.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/mips/meson.build b/hw/mips/meson.build
-index ca37c42d90..fcbee53bb3 100644
---- a/hw/mips/meson.build
-+++ b/hw/mips/meson.build
-@@ -1,6 +1,6 @@
- mips_ss = ss.source_set()
- mips_ss.add(files('bootloader.c', 'mips_int.c'))
--mips_ss.add(when: 'CONFIG_FW_CFG_MIPS', if_true: files('fw_cfg.c'))
-+common_ss.add(when: 'CONFIG_FW_CFG_MIPS', if_true: files('fw_cfg.c'))
- mips_ss.add(when: 'CONFIG_LOONGSON3V', if_true: files('loongson3_bootp.c', 'loongson3_virt.c'))
- mips_ss.add(when: 'CONFIG_MALTA', if_true: files('malta.c'))
- mips_ss.add(when: 'CONFIG_MIPS_CPS', if_true: files('cps.c'))
+diff --git a/tests/functional/qemu_test/asset.py b/tests/functional/qemu_test/asset.py
+index 3ec429217e..e47bfac035 100644
+--- a/tests/functional/qemu_test/asset.py
++++ b/tests/functional/qemu_test/asset.py
+@@ -57,7 +57,7 @@ def _check(self, cache_file):
+                     break
+                 hl.update(chunk)
+ 
+-        return  hl.hexdigest()
++        return self.hash == hl.hexdigest()
+ 
+     def valid(self):
+         return self.cache_file.exists() and self._check(self.cache_file)
 -- 
 2.39.5
 
