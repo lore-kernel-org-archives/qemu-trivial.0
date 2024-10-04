@@ -1,29 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1swkn6-00021Z-MF
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:04:28 -0400
+	id 1swknS-0002OM-Qw
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Oct 2024 12:04:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1swkn1-0001x5-6r; Fri, 04 Oct 2024 12:04:23 -0400
+ id 1swknR-0002G7-65; Fri, 04 Oct 2024 12:04:49 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1swkmy-0001Zy-Q1; Fri, 04 Oct 2024 12:04:22 -0400
+ id 1swknP-0001bs-CE; Fri, 04 Oct 2024 12:04:48 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 46A369556E;
+ by isrv.corpit.ru (Postfix) with ESMTP id 7A55D95572;
  Fri,  4 Oct 2024 19:03:30 +0300 (MSK)
 Received: from tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with SMTP id 8175214D97C;
+ by tsrv.corpit.ru (Postfix) with SMTP id B45E514D980;
  Fri,  4 Oct 2024 19:03:32 +0300 (MSK)
-Received: (nullmailer pid 1282530 invoked by uid 1000);
+Received: (nullmailer pid 1282542 invoked by uid 1000);
  Fri, 04 Oct 2024 16:03:32 -0000
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: "Dr. David Alan Gilbert" <dave@treblig.org>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 09/23] hw/char: Remove unused serial_set_frequency
-Date: Fri,  4 Oct 2024 19:03:17 +0300
-Message-Id: <20241004160331.1282441-10-mjt@tls.msk.ru>
+Subject: [PULL 13/23] vhost: Remove unused vhost_dev_{load|save}_inflight
+Date: Fri,  4 Oct 2024 19:03:21 +0300
+Message-Id: <20241004160331.1282441-14-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241004160331.1282441-1-mjt@tls.msk.ru>
 References: <20241004160331.1282441-1-mjt@tls.msk.ru>
@@ -49,58 +49,108 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Oct 2024 16:04:23 -0000
+X-List-Received-Date: Fri, 04 Oct 2024 16:04:50 -0000
 
 From: "Dr. David Alan Gilbert" <dave@treblig.org>
 
-serial_set_frequnecy has been unused since it was added in 2009:
-  038eaf82c8 ("serial: Add interface to set reference oscillator frequency")
+vhost_dev_load_inflight and vhost_dev_save_inflight have been
+unused since they were added in 2019 by:
 
-It looks like the 'baudbase' is now a property anyway so the wrapper
-isn't needed.
+5ad204bf2a ("vhost-user: Support transferring inflight buffer between qemu and backend")
 
-Remove it.
+Remove them, and their helper vhost_dev_resize_inflight.
 
 Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+Reviewed-by: Stefano Garzarella <sgarzare@redhat.com>
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/char/serial.c         | 7 -------
- include/hw/char/serial.h | 2 --
- 2 files changed, 9 deletions(-)
+ hw/virtio/vhost.c         | 56 ---------------------------------------
+ include/hw/virtio/vhost.h |  2 --
+ 2 files changed, 58 deletions(-)
 
-diff --git a/hw/char/serial.c b/hw/char/serial.c
-index d8b2db5082..6c5c4a23c7 100644
---- a/hw/char/serial.c
-+++ b/hw/char/serial.c
-@@ -951,13 +951,6 @@ static void serial_unrealize(DeviceState *dev)
-     qemu_unregister_reset(serial_reset, s);
+diff --git a/hw/virtio/vhost.c b/hw/virtio/vhost.c
+index 7c5ef81b55..76f9b2aaad 100644
+--- a/hw/virtio/vhost.c
++++ b/hw/virtio/vhost.c
+@@ -1930,62 +1930,6 @@ void vhost_dev_free_inflight(struct vhost_inflight *inflight)
+     }
  }
  
--/* Change the main reference oscillator frequency. */
--void serial_set_frequency(SerialState *s, uint32_t frequency)
+-static int vhost_dev_resize_inflight(struct vhost_inflight *inflight,
+-                                     uint64_t new_size)
 -{
--    s->baudbase = frequency;
--    serial_update_parameters(s);
+-    Error *err = NULL;
+-    int fd = -1;
+-    void *addr = qemu_memfd_alloc("vhost-inflight", new_size,
+-                                  F_SEAL_GROW | F_SEAL_SHRINK | F_SEAL_SEAL,
+-                                  &fd, &err);
+-
+-    if (err) {
+-        error_report_err(err);
+-        return -ENOMEM;
+-    }
+-
+-    vhost_dev_free_inflight(inflight);
+-    inflight->offset = 0;
+-    inflight->addr = addr;
+-    inflight->fd = fd;
+-    inflight->size = new_size;
+-
+-    return 0;
 -}
 -
- const MemoryRegionOps serial_io_ops = {
-     .read = serial_ioport_read,
-     .write = serial_ioport_write,
-diff --git a/include/hw/char/serial.h b/include/hw/char/serial.h
-index 6e14099ee7..40aad21df3 100644
---- a/include/hw/char/serial.h
-+++ b/include/hw/char/serial.h
-@@ -93,8 +93,6 @@ struct SerialMM {
- extern const VMStateDescription vmstate_serial;
- extern const MemoryRegionOps serial_io_ops;
- 
--void serial_set_frequency(SerialState *s, uint32_t frequency);
+-void vhost_dev_save_inflight(struct vhost_inflight *inflight, QEMUFile *f)
+-{
+-    if (inflight->addr) {
+-        qemu_put_be64(f, inflight->size);
+-        qemu_put_be16(f, inflight->queue_size);
+-        qemu_put_buffer(f, inflight->addr, inflight->size);
+-    } else {
+-        qemu_put_be64(f, 0);
+-    }
+-}
 -
- #define TYPE_SERIAL "serial"
- OBJECT_DECLARE_SIMPLE_TYPE(SerialState, SERIAL)
+-int vhost_dev_load_inflight(struct vhost_inflight *inflight, QEMUFile *f)
+-{
+-    uint64_t size;
+-
+-    size = qemu_get_be64(f);
+-    if (!size) {
+-        return 0;
+-    }
+-
+-    if (inflight->size != size) {
+-        int ret = vhost_dev_resize_inflight(inflight, size);
+-        if (ret < 0) {
+-            return ret;
+-        }
+-    }
+-    inflight->queue_size = qemu_get_be16(f);
+-
+-    qemu_get_buffer(f, inflight->addr, size);
+-
+-    return 0;
+-}
+-
+ int vhost_dev_prepare_inflight(struct vhost_dev *hdev, VirtIODevice *vdev)
+ {
+     int r;
+diff --git a/include/hw/virtio/vhost.h b/include/hw/virtio/vhost.h
+index c75be46c06..461c168c37 100644
+--- a/include/hw/virtio/vhost.h
++++ b/include/hw/virtio/vhost.h
+@@ -338,8 +338,6 @@ void vhost_virtqueue_stop(struct vhost_dev *dev, struct VirtIODevice *vdev,
  
+ void vhost_dev_reset_inflight(struct vhost_inflight *inflight);
+ void vhost_dev_free_inflight(struct vhost_inflight *inflight);
+-void vhost_dev_save_inflight(struct vhost_inflight *inflight, QEMUFile *f);
+-int vhost_dev_load_inflight(struct vhost_inflight *inflight, QEMUFile *f);
+ int vhost_dev_prepare_inflight(struct vhost_dev *hdev, VirtIODevice *vdev);
+ int vhost_dev_set_inflight(struct vhost_dev *dev,
+                            struct vhost_inflight *inflight);
 -- 
 2.39.5
 
