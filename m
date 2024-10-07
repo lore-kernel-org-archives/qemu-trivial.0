@@ -1,67 +1,68 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sxgf0-0007hb-UY
-	for mharc-qemu-trivial@gnu.org; Mon, 07 Oct 2024 01:51:58 -0400
+	id 1sxgff-0008PV-FO
+	for mharc-qemu-trivial@gnu.org; Mon, 07 Oct 2024 01:52:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sxgew-0007fm-6l
- for qemu-trivial@nongnu.org; Mon, 07 Oct 2024 01:51:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sxgfe-0008OX-0x
+ for qemu-trivial@nongnu.org; Mon, 07 Oct 2024 01:52:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sxget-0002v5-RH
- for qemu-trivial@nongnu.org; Mon, 07 Oct 2024 01:51:53 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sxgfc-0002yz-MN
+ for qemu-trivial@nongnu.org; Mon, 07 Oct 2024 01:52:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1728280311;
+ s=mimecast20190719; t=1728280356;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=Gi4sk8sijrMGBZDK6Nx+8DIwJXiWUBxU/WNw2FbkdxM=;
- b=Gmx9HmI72eeDGvIPkqs3GU+K+R7y7r5751QZBuz8u0ieXrEtix+hSwM5jtPVQBmMEdNyEz
- Fs1j2QTMXIvNSefEzRixugGYzYYmZP4bbP/ldLbOe4H36gyaTbHanzypP3cGtnVk0stfSJ
- u5j46RQh4/XOfCGiy58VrLstRlHp1yY=
-Received: from mail-ej1-f69.google.com (mail-ej1-f69.google.com
- [209.85.218.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=5Dj1dTlLt4jsmyYk6Br6uj655OJk6uM/LReyGrsXXPE=;
+ b=XC3TuqsD06zItCZ6jAeyAKsqorXxs5fzoHKXdirwIzOo9eFzuo5r3jEnqB5HeIbFdwo2m5
+ WVoQfLubHTskOOR9bBxCGVU27Iibf0CtErkEP7xBi1mfQzgqE0A8Wu4a1vo/V4s4R7VJ9s
+ UiO6hyf0GV7uq88XMpbw4P8dYkZdw3A=
+Received: from mail-ej1-f71.google.com (mail-ej1-f71.google.com
+ [209.85.218.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-120-NCFjdvXmOk2w1MvwMHeW9g-1; Mon, 07 Oct 2024 01:51:49 -0400
-X-MC-Unique: NCFjdvXmOk2w1MvwMHeW9g-1
-Received: by mail-ej1-f69.google.com with SMTP id
- a640c23a62f3a-a993fa36b2dso193851866b.2
- for <qemu-trivial@nongnu.org>; Sun, 06 Oct 2024 22:51:48 -0700 (PDT)
+ us-mta-475-8hl4PIzFNKSql6fSZJAdHg-1; Mon, 07 Oct 2024 01:52:34 -0400
+X-MC-Unique: 8hl4PIzFNKSql6fSZJAdHg-1
+Received: by mail-ej1-f71.google.com with SMTP id
+ a640c23a62f3a-a994e6c8244so91196766b.1
+ for <qemu-trivial@nongnu.org>; Sun, 06 Oct 2024 22:52:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728280308; x=1728885108;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Gi4sk8sijrMGBZDK6Nx+8DIwJXiWUBxU/WNw2FbkdxM=;
- b=TIKRqk5sR2lStUnpodn/ssYVprdE06tDMy56VJfKK1az+Ol7df+lVD00UvVBxesRa2
- faazRrjw6HlEOYhSS7of+YQhkWighiNHMeHiogMYKZ6hUlp16hLVN6THLLrcHrCZdOVk
- T9am5o1jmKjG9xtJHJ5gArdqirs6OhrqE2Y/PBJXkduwiia+gLRn+oUrb+sQLhylxV0P
- LhGNdIi85lrOAMhZQNm0uOD9cu2G7aiJixd7E40VOQlSgpi+nGJTMK4FjTLt0lLN/Lrt
- 56z0KtpdcaPWgHmWmdIQZrD+Th3t9ZmCsQFvwrAffldZcEPoK6nY/lW42hVJCmUAIqPn
- M5fA==
+ d=1e100.net; s=20230601; t=1728280353; x=1728885153;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=5Dj1dTlLt4jsmyYk6Br6uj655OJk6uM/LReyGrsXXPE=;
+ b=pZB0ecE6LubK49N/UWpBDp+tZB3yB9R3HnRW1BAY+Ht1AVld00d2lqXQDOYEpkkJyG
+ 1Xgl3neO9zkPgPcSodyl7vbUVLyXLAhsUgrdb4woxXpS6YdXN7bZKmU4PqrdDOg6SVdb
+ Hv8OzaliEMd6KcMtRwrYxudVYxpd2sJnw4PgSdFNl/d+M18F6Au8IC6s6MnfQ4sW2YKW
+ dhy6OKq2YeWih0voXREi3poJ+BXMYz2sOSXujcBpwJdOR/PtubZYT1DDaUWGNT6ntXY7
+ PRdE9yETF+jf5ATI2k6CN4h8sC/EPYfrEaoIIjpNqxNBkbq8g9FIktWbEvOnKrBlMu+m
+ 0Sbw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXDOujcHpZp5bElSJn43zhmC4UwUrY46o8A0FKcwCHU25iQp+STMckXAB0iU8G2n70qORNGbOjtJh2AqYo=@nongnu.org
-X-Gm-Message-State: AOJu0YzSBN6v06DxX95GCDwDw92e+luQSA/Q96O2ujC9jOTo2aggeH8x
- YVuLPmBDpZrSp3ZQqafUf67S4n+5hw5IEO8Ri5sPBbuvxw0d0kYN6+VGwQ7q0JdGRVWNuD5to7X
- kdP8gGbNf6GJ4+aB0j75sIBR9ClvJHGLAFnlwQ6HDhLkdn2Syj9UDg+o=
-X-Received: by 2002:a17:906:f588:b0:a99:46dd:f397 with SMTP id
- a640c23a62f3a-a9946ddf725mr520331266b.64.1728280308000; 
- Sun, 06 Oct 2024 22:51:48 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFHMLWDKgwBJrS6BvwAW2WfVdkwuDU76BOvn6gTPuI3tz3gm+n0LpAJcsjrKv4t3nl1B/kSfw==
-X-Received: by 2002:a17:906:f588:b0:a99:46dd:f397 with SMTP id
- a640c23a62f3a-a9946ddf725mr520328366b.64.1728280307579; 
- Sun, 06 Oct 2024 22:51:47 -0700 (PDT)
+ AJvYcCWRqL5ylbnwzyRR4TI4b41Iu7tS8cRojJDHQVMKQRj6HqSTEH9QtK87xY/MkTZNsbhRWVCVupyVNtz9jQQ=@nongnu.org
+X-Gm-Message-State: AOJu0YxPw46rTkJeb0BZ1oozRsQMV2C3pFPeWYJqHXQM89zcbKpR78xZ
+ XMOPEVtEXaGtKyuayN8nsKbg9AxEgN6cFMXZswvPJDpgZCOq3M0Sfwbp352B5MxpA4TRk9jmbD+
+ ukpEA3uPaz53+vx78vZQ4WGaF5zmHYiD8YbvwUGqib1yOXabrw0dKFO0=
+X-Received: by 2002:a17:907:3f86:b0:a8d:6648:813f with SMTP id
+ a640c23a62f3a-a991bd04dfemr1132416366b.3.1728280353432; 
+ Sun, 06 Oct 2024 22:52:33 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHECP8hLKGTBBxHRUntVxOpYFW8TnJWlKWoQRX8xz0aCNhKCg4Z73dQ2TTLkUrSFbvAEIS2SA==
+X-Received: by 2002:a17:907:3f86:b0:a8d:6648:813f with SMTP id
+ a640c23a62f3a-a991bd04dfemr1132414766b.3.1728280353037; 
+ Sun, 06 Oct 2024 22:52:33 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-49-143.web.vodafone.de.
  [109.42.49.143]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-a9937dbb84csm302018766b.99.2024.10.06.22.51.45
+ a640c23a62f3a-a992e5bb208sm337209966b.22.2024.10.06.22.52.30
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 06 Oct 2024 22:51:47 -0700 (PDT)
-Message-ID: <16ad566b-7b13-420f-bc9f-9ea26e5f98a2@redhat.com>
-Date: Mon, 7 Oct 2024 07:51:45 +0200
+ Sun, 06 Oct 2024 22:52:31 -0700 (PDT)
+Message-ID: <be90e3ee-7584-4108-9a4c-0c4c711cd333@redhat.com>
+Date: Mon, 7 Oct 2024 07:52:29 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 02/16] exec/memop: Remove unused memop_big_endian() helper
+Subject: Re: [PATCH 03/16] linux-user/i386: Use explicit little-endian LD/ST
+ API
 To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
@@ -84,7 +85,7 @@ Cc: qemu-ppc@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  QEMU Trivial <qemu-trivial@nongnu.org>
 References: <20241003234211.53644-1-philmd@linaro.org>
- <20241003234211.53644-3-philmd@linaro.org>
+ <20241003234211.53644-4-philmd@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -128,13 +129,13 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20241003234211.53644-3-philmd@linaro.org>
+In-Reply-To: <20241003234211.53644-4-philmd@linaro.org>
 X-Mimecast-Spam-Score: 0
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -22
 X-Spam_score: -2.3
@@ -143,7 +144,7 @@ X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.151,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,32 +157,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 07 Oct 2024 05:51:54 -0000
+X-List-Received-Date: Mon, 07 Oct 2024 05:52:38 -0000
 
 On 04/10/2024 01.41, Philippe Mathieu-Daudé wrote:
-> Last use of memop_big_endian() was removed in commit 592134617c9
-> ("accel/tcg: Reorg system mode store helpers").
+> The x86 architecture uses little endianness. Directly use
+> the little-endian LD/ST API.
 > 
 > Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 > ---
->   include/exec/memop.h | 6 ------
->   1 file changed, 6 deletions(-)
+>   linux-user/i386/signal.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
-> diff --git a/include/exec/memop.h b/include/exec/memop.h
-> index f881fe7af4e..899ea0a2aae 100644
-> --- a/include/exec/memop.h
-> +++ b/include/exec/memop.h
-> @@ -164,10 +164,4 @@ static inline MemOp size_memop(unsigned size)
->       return (MemOp)ctz32(size);
->   }
->   
-> -/* Big endianness from MemOp.  */
-> -static inline bool memop_big_endian(MemOp op)
-> -{
-> -    return (op & MO_BSWAP) == MO_BE;
-> -}
-> -
+> diff --git a/linux-user/i386/signal.c b/linux-user/i386/signal.c
+> index cb90711834f..0f11dba831f 100644
+> --- a/linux-user/i386/signal.c
+> +++ b/linux-user/i386/signal.c
+> @@ -754,8 +754,8 @@ static bool restore_sigcontext(CPUX86State *env, struct target_sigcontext *sc)
+>       env->eip = tswapl(sc->rip);
 >   #endif
+>   
+> -    cpu_x86_load_seg(env, R_CS, lduw_p(&sc->cs) | 3);
+> -    cpu_x86_load_seg(env, R_SS, lduw_p(&sc->ss) | 3);
+> +    cpu_x86_load_seg(env, R_CS, lduw_le_p(&sc->cs) | 3);
+> +    cpu_x86_load_seg(env, R_SS, lduw_le_p(&sc->ss) | 3);
+>   
+>       tmpflags = tswapl(sc->eflags);
+>       env->eflags = (env->eflags & ~0x40DD5) | (tmpflags & 0x40DD5);
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
