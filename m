@@ -1,129 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1sy4HD-0007cJ-63
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Oct 2024 03:04:59 -0400
+	id 1szJ45-0000ob-EH
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Oct 2024 13:04:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sy4HB-0007bt-UA
- for qemu-trivial@nongnu.org; Tue, 08 Oct 2024 03:04:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <dg@treblig.org>)
+ id 1szJ43-0000hD-Dp; Fri, 11 Oct 2024 13:04:31 -0400
+Received: from mx.treblig.org ([2a00:1098:5b::1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1sy4HA-0007gX-Gm
- for qemu-trivial@nongnu.org; Tue, 08 Oct 2024 03:04:57 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1728371092;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=jXwqRO0NTyj9sOVfKvzCyYwSHnYuCAvLKJEYmldNc8Q=;
- b=a4Ohjg00g07IT4IUlsr+cjFO8zuAoVWcoXktUg1N1KHGN6uo1aqn0tj1UnPM1T3Z2Va7jA
- VxdCloaETqi83Gf5ZIzSoOEixDU/+6e8m+bV4aIPwn1081aq2cyQ4iRBNgn8cLxhxNJJfh
- g5KWenTVXxKliJPbok8gvMTD+14ytRI=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-185-2aA5SKyiOaO6wmyQ0RwIwA-1; Tue, 08 Oct 2024 03:04:50 -0400
-X-MC-Unique: 2aA5SKyiOaO6wmyQ0RwIwA-1
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-42caf073db8so46424585e9.3
- for <qemu-trivial@nongnu.org>; Tue, 08 Oct 2024 00:04:50 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728371089; x=1728975889;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=jXwqRO0NTyj9sOVfKvzCyYwSHnYuCAvLKJEYmldNc8Q=;
- b=jJIJHRXHV8oaADRpVeMA42Yfjns5G4Gas4PxGw28uZiIU8Ey9Z83D11Y3GSNn/GZIG
- Sxw6S4qkX78hPCEE4HMY/IfnK6np/PRQHcnNcFB1+y+bRBIb/0upwiPCACSw4lgAXTJI
- qXr4Iqrqd/g3aJkoOxenTB4/6s6cL6vGnOprJi+dAPtUVpR831pGPlzPCxiTXu0wTu3w
- eTlFGRkFOMBiRZBOFH1kk1M7oMKfEIjPPJINEjCVlbILGjoSxnwRGl+NA+r07pxQMctO
- ehB6jDbKAVxUogrNnQjqoFo44CBTLhVWS4gGw2GxFvHrOO6Wjz57aLQDx5as9B7WDxPq
- DAGQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV9xsSzEXKERFVpIQTxK7nePibkPThoZ3l/XvJMC3NJfmPfcL/VjV37o7xqweAjZ8GtGyFt0azmRTLJaHM=@nongnu.org
-X-Gm-Message-State: AOJu0YxEIILNdz+u/p/Ap45YHtkicYx0LOH8gIGp6tLDIqKd1RtzH/N/
- OSKqanlbxJDMEx4SeuA9orqhYhv1oCdids8lfbRLbIatjQe3LHJBc6p083xobEQeIaCywz40Uro
- VWV8WSxijHhS4QD04SYaVtKuJv+9Tm9gwIYYU6YmyOhN/AXG3T1dkslA=
-X-Received: by 2002:a05:600c:35c3:b0:428:f0c2:ef4a with SMTP id
- 5b1f17b1804b1-42f85aa817emr104824085e9.13.1728371089636; 
- Tue, 08 Oct 2024 00:04:49 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHQZIxHoz/ksAvG9XNUtt8i1Rkd9MhHrJCLwsovKOI+xLGtK+qoRQNrhZunbkhJqx4jkxolPA==
-X-Received: by 2002:a05:600c:35c3:b0:428:f0c2:ef4a with SMTP id
- 5b1f17b1804b1-42f85aa817emr104823845e9.13.1728371089245; 
- Tue, 08 Oct 2024 00:04:49 -0700 (PDT)
-Received: from [10.33.192.239] (nat-pool-str-t.redhat.com. [149.14.88.106])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-42f89ec61ecsm98548505e9.29.2024.10.08.00.04.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Oct 2024 00:04:48 -0700 (PDT)
-Message-ID: <71387c81-b0ef-44c8-8f94-9a9db4af5a0d@redhat.com>
-Date: Tue, 8 Oct 2024 09:04:47 +0200
+ (Exim 4.90_1) (envelope-from <dg@treblig.org>)
+ id 1szIhv-0007Hs-4o; Fri, 11 Oct 2024 12:41:41 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
+ ; s=bytemarkmx;
+ h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
+ :Subject; bh=0zqa5tnDqkjjfS8FhzEtcztGzsWJG65KY93UHFJK5fo=; b=VMpoc7pKBrS/mCqk
+ TWuNOyOzamuuTJ6UI6YtqpfdzasAUJS/EPiC4aGXrekv516kF5hLBOPVH8Qy1oZOrW0Pb2sQ+qr05
+ RaDWBMS73abzJkaGHxSUpnnJfNRVBkC8opakvkCANUyarIZT5Ju4JgWx1tMyE5Dj4xtlr3XWwvWae
+ lk6rP1jn4wN/sBDd48/+aIF4RckIH2HqQLdmM37Bp6W47UxT5jWd9lZx9z1UgOZ/oL4/YQzuMkD56
+ S2PBPIgeQDdP4x5ZkDHDzfGX+RvhqhgQPX5WANPfVKDOKP3lPYyuHfuSXSvR3am51OkLfZR97QlKb
+ 9clAtXaCRH7rowW1Kg==;
+Received: from dg by mx.treblig.org with local (Exim 4.96)
+ (envelope-from <dg@treblig.org>) id 1szIhc-00AYxy-3C;
+ Fri, 11 Oct 2024 16:41:20 +0000
+Date: Fri, 11 Oct 2024 16:41:20 +0000
+From: "Dr. David Alan Gilbert" <dave@treblig.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] linux-user/vm86: Fix compilation with Clang
+Message-ID: <ZwlVMKJG3adNfNTR@gallifrey>
+References: <20241011161845.417342-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] replace error_setg(&error_fatal, ...) with error_report()
-To: Tudor Gheorghiu <tudor.reda@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <ZwRgbNs4Hz-Drt2V@redaops>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <ZwRgbNs4Hz-Drt2V@redaops>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+In-Reply-To: <20241011161845.417342-1-thuth@redhat.com>
+X-Chocolate: 70 percent or better cocoa solids preferably
+X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
+X-Uptime: 16:41:03 up 156 days,  3:55,  1 user,  load average: 0.00, 0.01, 0.00
+User-Agent: Mutt/2.2.12 (2023-09-09)
+Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
+ helo=mx.treblig.org
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.153,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -136,29 +57,122 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Oct 2024 07:04:58 -0000
+X-List-Received-Date: Fri, 11 Oct 2024 17:04:32 -0000
 
-On 08/10/2024 00.27, Tudor Gheorghiu wrote:
-> According to include/qapi/error.h:
-> * Please don't error_setg(&error_fatal, ...), use error_report() and
-> * exit(), because that's more obvious.
+* Thomas Huth (thuth@redhat.com) wrote:
+> Since commit 95b9c27c81 ("linux-user: Remove unused handle_vm86_fault")
+> a bunch of other "static inline" function are now unused, too. Clang
+> warns about such unused "static inline" functions in .c files, so the
+> build currently breaks when compiling with "--enable-werror". Remove
+> the unused functions to get it going again.
 > 
-> Patch updates all instances of error_setg(&error_fatal, ...) with
-> error_report(...), adds the explicit exit(1) and removes redundant
-> return statements.
-> 
-> Signed-off-by: Tudor Gheorghiu <tudor.reda@gmail.com>
-> Suggested-by: Thomas Huth <thuth@redhat.com>
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2587
+> Fixes: 95b9c27c81 ("linux-user: Remove unused handle_vm86_fault")
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+
+Sorry about that - thanks for the fix!
+
+Reviewed-by: Dr. David Alan Gilbert <dave@treblig.org>
+
 > ---
->   hw/arm/allwinner-a10.c    | 5 +++--
->   hw/arm/allwinner-h3.c     | 4 ++--
->   hw/arm/allwinner-r40.c    | 4 ++--
->   hw/arm/xlnx-versal-virt.c | 4 ++--
->   hw/audio/soundhw.c        | 3 ++-
->   system/vl.c               | 3 ++-
->   6 files changed, 13 insertions(+), 10 deletions(-)
-
-Reviewed-by: Thomas Huth <thuth@redhat.com>
-
+>  linux-user/vm86.c | 65 -----------------------------------------------
+>  1 file changed, 65 deletions(-)
+> 
+> diff --git a/linux-user/vm86.c b/linux-user/vm86.c
+> index 31a2d707cf..5091d53fb8 100644
+> --- a/linux-user/vm86.c
+> +++ b/linux-user/vm86.c
+> @@ -47,30 +47,6 @@ static inline void vm_putw(CPUX86State *env, uint32_t segptr,
+>      cpu_stw_data(env, segptr + (reg16 & 0xffff), val);
+>  }
+>  
+> -static inline void vm_putl(CPUX86State *env, uint32_t segptr,
+> -                           unsigned int reg16, unsigned int val)
+> -{
+> -    cpu_stl_data(env, segptr + (reg16 & 0xffff), val);
+> -}
+> -
+> -static inline unsigned int vm_getb(CPUX86State *env,
+> -                                   uint32_t segptr, unsigned int reg16)
+> -{
+> -    return cpu_ldub_data(env, segptr + (reg16 & 0xffff));
+> -}
+> -
+> -static inline unsigned int vm_getw(CPUX86State *env,
+> -                                   uint32_t segptr, unsigned int reg16)
+> -{
+> -    return cpu_lduw_data(env, segptr + (reg16 & 0xffff));
+> -}
+> -
+> -static inline unsigned int vm_getl(CPUX86State *env,
+> -                                   uint32_t segptr, unsigned int reg16)
+> -{
+> -    return cpu_ldl_data(env, segptr + (reg16 & 0xffff));
+> -}
+> -
+>  void save_v86_state(CPUX86State *env)
+>  {
+>      CPUState *cs = env_cpu(env);
+> @@ -131,19 +107,6 @@ static inline void return_to_32bit(CPUX86State *env, int retval)
+>      env->regs[R_EAX] = retval;
+>  }
+>  
+> -static inline int set_IF(CPUX86State *env)
+> -{
+> -    CPUState *cs = env_cpu(env);
+> -    TaskState *ts = get_task_state(cs);
+> -
+> -    ts->v86flags |= VIF_MASK;
+> -    if (ts->v86flags & VIP_MASK) {
+> -        return_to_32bit(env, TARGET_VM86_STI);
+> -        return 1;
+> -    }
+> -    return 0;
+> -}
+> -
+>  static inline void clear_IF(CPUX86State *env)
+>  {
+>      CPUState *cs = env_cpu(env);
+> @@ -162,34 +125,6 @@ static inline void clear_AC(CPUX86State *env)
+>      env->eflags &= ~AC_MASK;
+>  }
+>  
+> -static inline int set_vflags_long(unsigned long eflags, CPUX86State *env)
+> -{
+> -    CPUState *cs = env_cpu(env);
+> -    TaskState *ts = get_task_state(cs);
+> -
+> -    set_flags(ts->v86flags, eflags, ts->v86mask);
+> -    set_flags(env->eflags, eflags, SAFE_MASK);
+> -    if (eflags & IF_MASK)
+> -        return set_IF(env);
+> -    else
+> -        clear_IF(env);
+> -    return 0;
+> -}
+> -
+> -static inline int set_vflags_short(unsigned short flags, CPUX86State *env)
+> -{
+> -    CPUState *cs = env_cpu(env);
+> -    TaskState *ts = get_task_state(cs);
+> -
+> -    set_flags(ts->v86flags, flags, ts->v86mask & 0xffff);
+> -    set_flags(env->eflags, flags, SAFE_MASK);
+> -    if (flags & IF_MASK)
+> -        return set_IF(env);
+> -    else
+> -        clear_IF(env);
+> -    return 0;
+> -}
+> -
+>  static inline unsigned int get_vflags(CPUX86State *env)
+>  {
+>      CPUState *cs = env_cpu(env);
+> -- 
+> 2.46.1
+> 
+-- 
+ -----Open up your eyes, open up your mind, open up your code -------   
+/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
+\        dave @ treblig.org |                               | In Hex /
+ \ _________________________|_____ http://www.treblig.org   |_______/
 
