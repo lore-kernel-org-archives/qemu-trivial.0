@@ -1,50 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1szJ45-0000ob-EH
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Oct 2024 13:04:33 -0400
+	id 1szJ4H-0000xf-Tz
+	for mharc-qemu-trivial@gnu.org; Fri, 11 Oct 2024 13:04:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1szJ43-0000hD-Dp; Fri, 11 Oct 2024 13:04:31 -0400
-Received: from mx.treblig.org ([2a00:1098:5b::1])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1szJ4D-0000hD-4x
+ for qemu-trivial@nongnu.org; Fri, 11 Oct 2024 13:04:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1szIhv-0007Hs-4o; Fri, 11 Oct 2024 12:41:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
- ; s=bytemarkmx;
- h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
- :Subject; bh=0zqa5tnDqkjjfS8FhzEtcztGzsWJG65KY93UHFJK5fo=; b=VMpoc7pKBrS/mCqk
- TWuNOyOzamuuTJ6UI6YtqpfdzasAUJS/EPiC4aGXrekv516kF5hLBOPVH8Qy1oZOrW0Pb2sQ+qr05
- RaDWBMS73abzJkaGHxSUpnnJfNRVBkC8opakvkCANUyarIZT5Ju4JgWx1tMyE5Dj4xtlr3XWwvWae
- lk6rP1jn4wN/sBDd48/+aIF4RckIH2HqQLdmM37Bp6W47UxT5jWd9lZx9z1UgOZ/oL4/YQzuMkD56
- S2PBPIgeQDdP4x5ZkDHDzfGX+RvhqhgQPX5WANPfVKDOKP3lPYyuHfuSXSvR3am51OkLfZR97QlKb
- 9clAtXaCRH7rowW1Kg==;
-Received: from dg by mx.treblig.org with local (Exim 4.96)
- (envelope-from <dg@treblig.org>) id 1szIhc-00AYxy-3C;
- Fri, 11 Oct 2024 16:41:20 +0000
-Date: Fri, 11 Oct 2024 16:41:20 +0000
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] linux-user/vm86: Fix compilation with Clang
-Message-ID: <ZwlVMKJG3adNfNTR@gallifrey>
-References: <20241011161845.417342-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1szILz-0004xk-Ke
+ for qemu-trivial@nongnu.org; Fri, 11 Oct 2024 12:19:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1728663532;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=0xq9oS9Q8pSgDX6vHbWASCKcp4gd4kByVEIjsyz6pf8=;
+ b=JlWosuGzYbYEycgFkQpmg2t91bLwzyVWWcRGqPWnI4Rbsy6KMs9nEwEn/n2b+NSMhqyWwq
+ WQg9cdgZUUAF3v/6RAXuwLLUlrsHLtAxalAkynFzH72pQw6ZCFZStUFr9erhvleK23Ontx
+ KAB34kYOyEkgEokiSkAOOz+MMT2LKhQ=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-678-V63sUWriPu64JHNXQBOcWg-1; Fri,
+ 11 Oct 2024 12:18:51 -0400
+X-MC-Unique: V63sUWriPu64JHNXQBOcWg-1
+Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D370819560AA; Fri, 11 Oct 2024 16:18:49 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.193.77])
+ by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 5998219560AA; Fri, 11 Oct 2024 16:18:47 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: dave@treblig.org, qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] linux-user/vm86: Fix compilation with Clang
+Date: Fri, 11 Oct 2024 18:18:45 +0200
+Message-ID: <20241011161845.417342-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <20241011161845.417342-1-thuth@redhat.com>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.1.0-21-amd64 (x86_64)
-X-Uptime: 16:41:03 up 156 days,  3:55,  1 user,  load average: 0.00, 0.01, 0.00
-User-Agent: Mutt/2.2.12 (2023-09-09)
-Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
- helo=mx.treblig.org
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.15,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -57,122 +65,111 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Oct 2024 17:04:32 -0000
+X-List-Received-Date: Fri, 11 Oct 2024 17:04:41 -0000
 
-* Thomas Huth (thuth@redhat.com) wrote:
-> Since commit 95b9c27c81 ("linux-user: Remove unused handle_vm86_fault")
-> a bunch of other "static inline" function are now unused, too. Clang
-> warns about such unused "static inline" functions in .c files, so the
-> build currently breaks when compiling with "--enable-werror". Remove
-> the unused functions to get it going again.
-> 
-> Fixes: 95b9c27c81 ("linux-user: Remove unused handle_vm86_fault")
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Since commit 95b9c27c81 ("linux-user: Remove unused handle_vm86_fault")
+a bunch of other "static inline" function are now unused, too. Clang
+warns about such unused "static inline" functions in .c files, so the
+build currently breaks when compiling with "--enable-werror". Remove
+the unused functions to get it going again.
 
-Sorry about that - thanks for the fix!
+Fixes: 95b9c27c81 ("linux-user: Remove unused handle_vm86_fault")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ linux-user/vm86.c | 65 -----------------------------------------------
+ 1 file changed, 65 deletions(-)
 
-Reviewed-by: Dr. David Alan Gilbert <dave@treblig.org>
-
-> ---
->  linux-user/vm86.c | 65 -----------------------------------------------
->  1 file changed, 65 deletions(-)
-> 
-> diff --git a/linux-user/vm86.c b/linux-user/vm86.c
-> index 31a2d707cf..5091d53fb8 100644
-> --- a/linux-user/vm86.c
-> +++ b/linux-user/vm86.c
-> @@ -47,30 +47,6 @@ static inline void vm_putw(CPUX86State *env, uint32_t segptr,
->      cpu_stw_data(env, segptr + (reg16 & 0xffff), val);
->  }
->  
-> -static inline void vm_putl(CPUX86State *env, uint32_t segptr,
-> -                           unsigned int reg16, unsigned int val)
-> -{
-> -    cpu_stl_data(env, segptr + (reg16 & 0xffff), val);
-> -}
-> -
-> -static inline unsigned int vm_getb(CPUX86State *env,
-> -                                   uint32_t segptr, unsigned int reg16)
-> -{
-> -    return cpu_ldub_data(env, segptr + (reg16 & 0xffff));
-> -}
-> -
-> -static inline unsigned int vm_getw(CPUX86State *env,
-> -                                   uint32_t segptr, unsigned int reg16)
-> -{
-> -    return cpu_lduw_data(env, segptr + (reg16 & 0xffff));
-> -}
-> -
-> -static inline unsigned int vm_getl(CPUX86State *env,
-> -                                   uint32_t segptr, unsigned int reg16)
-> -{
-> -    return cpu_ldl_data(env, segptr + (reg16 & 0xffff));
-> -}
-> -
->  void save_v86_state(CPUX86State *env)
->  {
->      CPUState *cs = env_cpu(env);
-> @@ -131,19 +107,6 @@ static inline void return_to_32bit(CPUX86State *env, int retval)
->      env->regs[R_EAX] = retval;
->  }
->  
-> -static inline int set_IF(CPUX86State *env)
-> -{
-> -    CPUState *cs = env_cpu(env);
-> -    TaskState *ts = get_task_state(cs);
-> -
-> -    ts->v86flags |= VIF_MASK;
-> -    if (ts->v86flags & VIP_MASK) {
-> -        return_to_32bit(env, TARGET_VM86_STI);
-> -        return 1;
-> -    }
-> -    return 0;
-> -}
-> -
->  static inline void clear_IF(CPUX86State *env)
->  {
->      CPUState *cs = env_cpu(env);
-> @@ -162,34 +125,6 @@ static inline void clear_AC(CPUX86State *env)
->      env->eflags &= ~AC_MASK;
->  }
->  
-> -static inline int set_vflags_long(unsigned long eflags, CPUX86State *env)
-> -{
-> -    CPUState *cs = env_cpu(env);
-> -    TaskState *ts = get_task_state(cs);
-> -
-> -    set_flags(ts->v86flags, eflags, ts->v86mask);
-> -    set_flags(env->eflags, eflags, SAFE_MASK);
-> -    if (eflags & IF_MASK)
-> -        return set_IF(env);
-> -    else
-> -        clear_IF(env);
-> -    return 0;
-> -}
-> -
-> -static inline int set_vflags_short(unsigned short flags, CPUX86State *env)
-> -{
-> -    CPUState *cs = env_cpu(env);
-> -    TaskState *ts = get_task_state(cs);
-> -
-> -    set_flags(ts->v86flags, flags, ts->v86mask & 0xffff);
-> -    set_flags(env->eflags, flags, SAFE_MASK);
-> -    if (flags & IF_MASK)
-> -        return set_IF(env);
-> -    else
-> -        clear_IF(env);
-> -    return 0;
-> -}
-> -
->  static inline unsigned int get_vflags(CPUX86State *env)
->  {
->      CPUState *cs = env_cpu(env);
-> -- 
-> 2.46.1
-> 
+diff --git a/linux-user/vm86.c b/linux-user/vm86.c
+index 31a2d707cf..5091d53fb8 100644
+--- a/linux-user/vm86.c
++++ b/linux-user/vm86.c
+@@ -47,30 +47,6 @@ static inline void vm_putw(CPUX86State *env, uint32_t segptr,
+     cpu_stw_data(env, segptr + (reg16 & 0xffff), val);
+ }
+ 
+-static inline void vm_putl(CPUX86State *env, uint32_t segptr,
+-                           unsigned int reg16, unsigned int val)
+-{
+-    cpu_stl_data(env, segptr + (reg16 & 0xffff), val);
+-}
+-
+-static inline unsigned int vm_getb(CPUX86State *env,
+-                                   uint32_t segptr, unsigned int reg16)
+-{
+-    return cpu_ldub_data(env, segptr + (reg16 & 0xffff));
+-}
+-
+-static inline unsigned int vm_getw(CPUX86State *env,
+-                                   uint32_t segptr, unsigned int reg16)
+-{
+-    return cpu_lduw_data(env, segptr + (reg16 & 0xffff));
+-}
+-
+-static inline unsigned int vm_getl(CPUX86State *env,
+-                                   uint32_t segptr, unsigned int reg16)
+-{
+-    return cpu_ldl_data(env, segptr + (reg16 & 0xffff));
+-}
+-
+ void save_v86_state(CPUX86State *env)
+ {
+     CPUState *cs = env_cpu(env);
+@@ -131,19 +107,6 @@ static inline void return_to_32bit(CPUX86State *env, int retval)
+     env->regs[R_EAX] = retval;
+ }
+ 
+-static inline int set_IF(CPUX86State *env)
+-{
+-    CPUState *cs = env_cpu(env);
+-    TaskState *ts = get_task_state(cs);
+-
+-    ts->v86flags |= VIF_MASK;
+-    if (ts->v86flags & VIP_MASK) {
+-        return_to_32bit(env, TARGET_VM86_STI);
+-        return 1;
+-    }
+-    return 0;
+-}
+-
+ static inline void clear_IF(CPUX86State *env)
+ {
+     CPUState *cs = env_cpu(env);
+@@ -162,34 +125,6 @@ static inline void clear_AC(CPUX86State *env)
+     env->eflags &= ~AC_MASK;
+ }
+ 
+-static inline int set_vflags_long(unsigned long eflags, CPUX86State *env)
+-{
+-    CPUState *cs = env_cpu(env);
+-    TaskState *ts = get_task_state(cs);
+-
+-    set_flags(ts->v86flags, eflags, ts->v86mask);
+-    set_flags(env->eflags, eflags, SAFE_MASK);
+-    if (eflags & IF_MASK)
+-        return set_IF(env);
+-    else
+-        clear_IF(env);
+-    return 0;
+-}
+-
+-static inline int set_vflags_short(unsigned short flags, CPUX86State *env)
+-{
+-    CPUState *cs = env_cpu(env);
+-    TaskState *ts = get_task_state(cs);
+-
+-    set_flags(ts->v86flags, flags, ts->v86mask & 0xffff);
+-    set_flags(env->eflags, flags, SAFE_MASK);
+-    if (flags & IF_MASK)
+-        return set_IF(env);
+-    else
+-        clear_IF(env);
+-    return 0;
+-}
+-
+ static inline unsigned int get_vflags(CPUX86State *env)
+ {
+     CPUState *cs = env_cpu(env);
 -- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+2.46.1
+
 
