@@ -1,87 +1,125 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1szMzk-0000sx-TL
-	for mharc-qemu-trivial@gnu.org; Fri, 11 Oct 2024 17:16:20 -0400
+	id 1szU4b-0000Ix-Dh
+	for mharc-qemu-trivial@gnu.org; Sat, 12 Oct 2024 00:49:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1szMzj-0000sk-AZ; Fri, 11 Oct 2024 17:16:19 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <PratikRajesh.Sampat@amd.com>)
+ id 1szQbf-0006Zx-Bw; Fri, 11 Oct 2024 21:07:43 -0400
+Received: from mail-dm6nam04on20613.outbound.protection.outlook.com
+ ([2a01:111:f403:2409::613]
+ helo=NAM04-DM6-obe.outbound.protection.outlook.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1szMzh-0005sQ-FH; Fri, 11 Oct 2024 17:16:19 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id B959F97994;
- Sat, 12 Oct 2024 00:16:00 +0300 (MSK)
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 60EE5152A46;
- Sat, 12 Oct 2024 00:16:13 +0300 (MSK)
-Message-ID: <e7502239-3b27-43e1-9776-0aa51245a87d@tls.msk.ru>
-Date: Sat, 12 Oct 2024 00:16:13 +0300
+ (Exim 4.90_1) (envelope-from <PratikRajesh.Sampat@amd.com>)
+ id 1szQbc-0004N8-Tm; Fri, 11 Oct 2024 21:07:42 -0400
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=PaQbAGCNvHPPdkIFvyY08iCNc23e1Ye+nHjrb65xLupk2J/AvbEdhZD/p6sNK/MfQ7cnzeji9apq58ucBjmCWsnTte6FVfD3ENQNXvN3QVOZOOowFW6534M1blfOWryxuWuHi0wu2fOgUtoHFIntti2xIkzHxtvT4xJVAYOpbRVbTMn8C5uaXndoNM8U55SZauRMHAvjdMeijTPNITDwfyIs6QbhSIfzkxoUZuT8Y8AkDyMn4fxoad1B4rS6KM6O6HMRiSYnURoDHr+goEiWSMmB/dZAFTdwJNW1oPmDxk8fjiRG6EfDRC+JlDz3Pg97frggX7CJkKxMeCx0O59d6g==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=dSWC5+Xn2zaxfGh3wr+I+HG1OPBux4tsM3cpI/d0jdA=;
+ b=Tv0EkjtKgNeyE3Pd07/RwUwfp9JUY9+R2bOJr7Re5K2wPnsl0AFiroU5SGp0juX2lyRLAd4xyIUk6ZSG6dF6nzrp6FbvwJaDlcFZsh59acovWqwq3UeStUzKpKyBTsV4WQNCmFp2qJwkGJY7V+tP9ta78j9r81xOeQbiiGXicQHaV0bAAOCkk/AkmXwFMZZNyOkn+fyZ8z/Tv1+6Ptsm16a4wGH329+Q2s4Z2LJmkriir11Uh1GKrVJ270sPdTZQN/ICU171j6suaFDi7fzqlh4aLFpFVurszolNNwTTJ1kWNTgAE0bkxuG8IiK1osCPSAYVKTmxD880Ui9nA3QdJw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
+ 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
+ (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
+ dkim=none (message not signed); arc=none (0)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=dSWC5+Xn2zaxfGh3wr+I+HG1OPBux4tsM3cpI/d0jdA=;
+ b=RDTZuyv893ojH7WTPx6F7vOmQBuSPI2agHwhbAkV31yJS5pBdPZnk+0qJv2y7Z7Q9XnSTmzHWe6QCTB5EVbD/6inETwZ6mHk8msqfTUuXej7ns0patjGtPuFAZi0vORMUUL/eCnVAK0hNEcoC7soIXaEtJpf/n2fNJJbesst54s=
+Received: from SN6PR01CA0022.prod.exchangelabs.com (2603:10b6:805:b6::35) by
+ LV2PR12MB5966.namprd12.prod.outlook.com (2603:10b6:408:171::21) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8026.23; Sat, 12 Oct
+ 2024 01:07:33 +0000
+Received: from SA2PEPF000015CB.namprd03.prod.outlook.com
+ (2603:10b6:805:b6:cafe::c7) by SN6PR01CA0022.outlook.office365.com
+ (2603:10b6:805:b6::35) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7982.34 via Frontend
+ Transport; Sat, 12 Oct 2024 01:07:33 +0000
+X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
+ smtp.mailfrom=amd.com; dkim=none (message not signed)
+ header.d=none;dmarc=pass action=none header.from=amd.com;
+Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
+ 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
+ client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
+Received: from SATLEXMB04.amd.com (165.204.84.17) by
+ SA2PEPF000015CB.mail.protection.outlook.com (10.167.241.201) with Microsoft
+ SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
+ 15.20.8048.13 via Frontend Transport; Sat, 12 Oct 2024 01:07:32 +0000
+Received: from AUSPRSAMPAT.amd.com (10.180.168.240) by SATLEXMB04.amd.com
+ (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 11 Oct
+ 2024 20:07:30 -0500
+From: "Pratik R. Sampat" <pratikrajesh.sampat@amd.com>
+To: <qemu-devel@nongnu.org>
+CC: <qemu-trivial@nongnu.org>
+Subject: [PATCH] pc-bios: Add amd-sev-es to edk2 json
+Date: Fri, 11 Oct 2024 20:07:24 -0500
+Message-ID: <20241012010724.107510-1-pratikrajesh.sampat@amd.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL 10/23] linux-user: Remove unused handle_vm86_fault
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: "Dr. David Alan Gilbert" <dave@treblig.org>, qemu-trivial@nongnu.org
-References: <20241004160331.1282441-1-mjt@tls.msk.ru>
- <20241004160331.1282441-11-mjt@tls.msk.ru>
- <c48513a2-a58f-4d41-a1c4-f04b82325894@redhat.com>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <c48513a2-a58f-4d41-a1c4-f04b82325894@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Content-Type: text/plain
+X-Originating-IP: [10.180.168.240]
+X-ClientProxiedBy: SATLEXMB04.amd.com (10.181.40.145) To SATLEXMB04.amd.com
+ (10.181.40.145)
+X-EOPAttributedMessage: 0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: SA2PEPF000015CB:EE_|LV2PR12MB5966:EE_
+X-MS-Office365-Filtering-Correlation-Id: 03b26fb0-45e7-47d7-d2ef-08dcea5a405b
+X-MS-Exchange-SenderADCheck: 1
+X-MS-Exchange-AntiSpam-Relay: 0
+X-Microsoft-Antispam: BCL:0;
+ ARA:13230040|1800799024|36860700013|376014|82310400026; 
+X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?PzKjJz1PopJLVWuSpsLPUz7uzdqqFUjuq6njjU53HRdBhiSq1ifmLUaFQSHw?=
+ =?us-ascii?Q?ZEe/iuTE5l/Ffb7SjPYpNCEjWw4SOKPhdmKzNGcb8w5K0UBipbICjJ2J35d4?=
+ =?us-ascii?Q?gGAjPd8ggo3v0CpkR+cpd08CG4A2c1my62y80Pz6MxhiiwLbkx65MFeALWN7?=
+ =?us-ascii?Q?bK5UOb0c9oFdM1Le1rUPlsHeT373Z87+sO2S7/JGvjKMbOjlyisHjjaYEtfw?=
+ =?us-ascii?Q?8xk/Uqh4ZO5zEu4CAD/uyCB+I0FBu1D7+5A7cAxOXWb7SyXnhjzFuhjEbsK0?=
+ =?us-ascii?Q?AEQ6DfW+Vx6xT6QSlUL/p+QAyS9FD7H/dOx130+CB88XmjV8oogD/3+pd+sb?=
+ =?us-ascii?Q?81BqYi3WPlO+fe8ac6AUP8Gkr3//ysiroQomZrMhb5Pwn9Mz7Sb21lC6IPnN?=
+ =?us-ascii?Q?N/z3AuEGHqyRBUkvGETVMTDKslMKoA0DIftIn5wwAplLpk5dRKi8L5Bc5O1o?=
+ =?us-ascii?Q?FPtl3I7SpkA49K1i6UxP1WEQS0Y4CJj6FkZM0XNXfRy1WcaxrgMffh71E29Y?=
+ =?us-ascii?Q?b49XVWH4y9fifp5DC91p16NV7RqOyXfJmTkp0dKrd3G/L24PieALAP0kJwDr?=
+ =?us-ascii?Q?blIrTyBYyuxGrKl0uqYaYB9U9j4t4NdvxRC6paddCoNTnXwR0CnoEDL09Ejp?=
+ =?us-ascii?Q?n3jK3Uam/OT+yssj6rJsGQ7+V09LegqyC46v8xgeAliV7EsaXojtpiWQ/jWc?=
+ =?us-ascii?Q?tyK+uiVST2XoyBqTS/jvr72d5fr4V/PVSMgVsNohXVANLy0yauq0QNB0m8kX?=
+ =?us-ascii?Q?qltzlonSuVPHphrHiZQf8wFzUrjjWt4+SfS4Dn2srxwIElbduLtTI+qJJ4vJ?=
+ =?us-ascii?Q?gSI3b7xnqH4Et467g3wN7pVqm7imHYgnazI7m8kiohiO38i+LiRLZVNG7c5L?=
+ =?us-ascii?Q?KGDsTozbSDAfkJTngk+KJ2sGLgv0JH8bDrMQKxb8Av1ZQZL0BklTm+lxrXVf?=
+ =?us-ascii?Q?5mIr0B1oCEr0B0afoX3lHbsQdRlMCI3bdenwLv3HQYh0Vzrc21Lvjy/chxrL?=
+ =?us-ascii?Q?z7qs6Y+cJq3MJl6YGw/yn78kJgwvqy596X/JdzNIrdgBpyhhtFnM/tdiSXcu?=
+ =?us-ascii?Q?zHNeSTlRMtgYRcT3skoDAX2zvE66d7rZzzah62TU65ojX2N7Asnw6JilXuNX?=
+ =?us-ascii?Q?E42N4vMkkv8XpfDl4MuvZlWfuq+R0k6JO8HJ+xSKD0IPELf4EDk1rPWs5jqq?=
+ =?us-ascii?Q?64WrmSu+GULJprbJNJsCv+8UllF2K0dNvgujp7kKkknJ7FVRJsERgq7J9e66?=
+ =?us-ascii?Q?p0wa+zaYoWV6H5P5wwtHesSFaRecRRsgc1hP2OiYusNi7DUH5FWIsppTfZwt?=
+ =?us-ascii?Q?ipe6DG4tzspCr8RMBdwfER1+sj24IB+eV9LX0TTIMaJbDflg1g9EYH4Encv8?=
+ =?us-ascii?Q?em/ix64ZSSzGIs9hRwi/FIvUe9PT?=
+X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
+ IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
+ SFS:(13230040)(1800799024)(36860700013)(376014)(82310400026); DIR:OUT;
+ SFP:1101; 
+X-OriginatorOrg: amd.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Oct 2024 01:07:32.6546 (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 03b26fb0-45e7-47d7-d2ef-08dcea5a405b
+X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
+X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
+ Helo=[SATLEXMB04.amd.com]
+X-MS-Exchange-CrossTenant-AuthSource: SA2PEPF000015CB.namprd03.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB5966
+Received-SPF: permerror client-ip=2a01:111:f403:2409::613;
+ envelope-from=PratikRajesh.Sampat@amd.com;
+ helo=NAM04-DM6-obe.outbound.protection.outlook.com
+X-Spam_score_int: -22
+X-Spam_score: -2.3
+X-Spam_bar: --
+X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.15,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 12 Oct 2024 00:49:47 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -93,34 +131,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 11 Oct 2024 21:16:19 -0000
+X-List-Received-Date: Sat, 12 Oct 2024 01:07:43 -0000
 
-On 11.10.2024 19:02, Thomas Huth wrote:
-> On 04/10/2024 18.03, Michael Tokarev wrote:
->> From: "Dr. David Alan Gilbert" <dave@treblig.org>
->>
->> handle_vm86_fault has been unused since:
->>    1ade5b2fed ("linux-user/i386: Split out maybe_handle_vm86_trap")
->>
->> Remove it, and it's local macros.
+With the default BIOS being compatible with amd-sev-es add the feature
+to the json to indicate it's support
 
-> FYI, looks like this broke compiling with Clang:
-> 
-> ../../devel/qemu/linux-user/vm86.c:50:20: error: unused function 
-> 'vm_putl' [-Werror,-Wunused-function]
->     50 | static inline void vm_putl(CPUX86State *env, uint32_t segptr,
->        |                    ^~~~~~~
-> ../../devel/qemu/linux-user/vm86.c:56:28: error: unused function 
-> 'vm_getb' [-Werror,-Wunused-function]
-...
+Signed-off-by: Pratik R. Sampat <pratikrajesh.sampat@amd.com>
+---
+ pc-bios/descriptors/60-edk2-x86_64.json | 1 +
+ 1 file changed, 1 insertion(+)
 
-Hm. I built it with clang before sending the MR.
-But it was clang16 - the most recent one on bookworm.  It
-does not show this issue :)
+diff --git a/pc-bios/descriptors/60-edk2-x86_64.json b/pc-bios/descriptors/60-edk2-x86_64.json
+index 968cb65cf9..4599c63f14 100644
+--- a/pc-bios/descriptors/60-edk2-x86_64.json
++++ b/pc-bios/descriptors/60-edk2-x86_64.json
+@@ -26,6 +26,7 @@
+     "features": [
+         "acpi-s3",
+         "amd-sev",
++        "amd-sev-es",
+         "verbose-dynamic"
+     ],
+     "tags": [
+-- 
+2.34.1
 
-Apparently I should upgrade clang somehow.
-
-Thank you for the fix!
-
-/mjt
 
