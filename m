@@ -1,125 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1szU4b-0000Ix-Dh
-	for mharc-qemu-trivial@gnu.org; Sat, 12 Oct 2024 00:49:49 -0400
+	id 1t02S0-0007u1-FG
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Oct 2024 13:32:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <PratikRajesh.Sampat@amd.com>)
- id 1szQbf-0006Zx-Bw; Fri, 11 Oct 2024 21:07:43 -0400
-Received: from mail-dm6nam04on20613.outbound.protection.outlook.com
- ([2a01:111:f403:2409::613]
- helo=NAM04-DM6-obe.outbound.protection.outlook.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <PratikRajesh.Sampat@amd.com>)
- id 1szQbc-0004N8-Tm; Fri, 11 Oct 2024 21:07:42 -0400
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=PaQbAGCNvHPPdkIFvyY08iCNc23e1Ye+nHjrb65xLupk2J/AvbEdhZD/p6sNK/MfQ7cnzeji9apq58ucBjmCWsnTte6FVfD3ENQNXvN3QVOZOOowFW6534M1blfOWryxuWuHi0wu2fOgUtoHFIntti2xIkzHxtvT4xJVAYOpbRVbTMn8C5uaXndoNM8U55SZauRMHAvjdMeijTPNITDwfyIs6QbhSIfzkxoUZuT8Y8AkDyMn4fxoad1B4rS6KM6O6HMRiSYnURoDHr+goEiWSMmB/dZAFTdwJNW1oPmDxk8fjiRG6EfDRC+JlDz3Pg97frggX7CJkKxMeCx0O59d6g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=dSWC5+Xn2zaxfGh3wr+I+HG1OPBux4tsM3cpI/d0jdA=;
- b=Tv0EkjtKgNeyE3Pd07/RwUwfp9JUY9+R2bOJr7Re5K2wPnsl0AFiroU5SGp0juX2lyRLAd4xyIUk6ZSG6dF6nzrp6FbvwJaDlcFZsh59acovWqwq3UeStUzKpKyBTsV4WQNCmFp2qJwkGJY7V+tP9ta78j9r81xOeQbiiGXicQHaV0bAAOCkk/AkmXwFMZZNyOkn+fyZ8z/Tv1+6Ptsm16a4wGH329+Q2s4Z2LJmkriir11Uh1GKrVJ270sPdTZQN/ICU171j6suaFDi7fzqlh4aLFpFVurszolNNwTTJ1kWNTgAE0bkxuG8IiK1osCPSAYVKTmxD880Ui9nA3QdJw==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass (sender ip is
- 165.204.84.17) smtp.rcpttodomain=nongnu.org smtp.mailfrom=amd.com; dmarc=pass
- (p=quarantine sp=quarantine pct=100) action=none header.from=amd.com;
- dkim=none (message not signed); arc=none (0)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=amd.com; s=selector1; 
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=dSWC5+Xn2zaxfGh3wr+I+HG1OPBux4tsM3cpI/d0jdA=;
- b=RDTZuyv893ojH7WTPx6F7vOmQBuSPI2agHwhbAkV31yJS5pBdPZnk+0qJv2y7Z7Q9XnSTmzHWe6QCTB5EVbD/6inETwZ6mHk8msqfTUuXej7ns0patjGtPuFAZi0vORMUUL/eCnVAK0hNEcoC7soIXaEtJpf/n2fNJJbesst54s=
-Received: from SN6PR01CA0022.prod.exchangelabs.com (2603:10b6:805:b6::35) by
- LV2PR12MB5966.namprd12.prod.outlook.com (2603:10b6:408:171::21) with
- Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8026.23; Sat, 12 Oct
- 2024 01:07:33 +0000
-Received: from SA2PEPF000015CB.namprd03.prod.outlook.com
- (2603:10b6:805:b6:cafe::c7) by SN6PR01CA0022.outlook.office365.com
- (2603:10b6:805:b6::35) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.7982.34 via Frontend
- Transport; Sat, 12 Oct 2024 01:07:33 +0000
-X-MS-Exchange-Authentication-Results: spf=pass (sender IP is 165.204.84.17)
- smtp.mailfrom=amd.com; dkim=none (message not signed)
- header.d=none;dmarc=pass action=none header.from=amd.com;
-Received-SPF: Pass (protection.outlook.com: domain of amd.com designates
- 165.204.84.17 as permitted sender) receiver=protection.outlook.com;
- client-ip=165.204.84.17; helo=SATLEXMB04.amd.com; pr=C
-Received: from SATLEXMB04.amd.com (165.204.84.17) by
- SA2PEPF000015CB.mail.protection.outlook.com (10.167.241.201) with Microsoft
- SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id
- 15.20.8048.13 via Frontend Transport; Sat, 12 Oct 2024 01:07:32 +0000
-Received: from AUSPRSAMPAT.amd.com (10.180.168.240) by SATLEXMB04.amd.com
- (10.181.40.145) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256) id 15.1.2507.39; Fri, 11 Oct
- 2024 20:07:30 -0500
-From: "Pratik R. Sampat" <pratikrajesh.sampat@amd.com>
-To: <qemu-devel@nongnu.org>
-CC: <qemu-trivial@nongnu.org>
-Subject: [PATCH] pc-bios: Add amd-sev-es to edk2 json
-Date: Fri, 11 Oct 2024 20:07:24 -0500
-Message-ID: <20241012010724.107510-1-pratikrajesh.sampat@amd.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1t02Rz-0007tT-4I
+ for qemu-trivial@nongnu.org; Sun, 13 Oct 2024 13:32:15 -0400
+Received: from mail-pg1-x52a.google.com ([2607:f8b0:4864:20::52a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1t02Rx-0003Uk-Hu
+ for qemu-trivial@nongnu.org; Sun, 13 Oct 2024 13:32:14 -0400
+Received: by mail-pg1-x52a.google.com with SMTP id
+ 41be03b00d2f7-7ea12e0dc7aso2191591a12.3
+ for <qemu-trivial@nongnu.org>; Sun, 13 Oct 2024 10:32:13 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1728840731; x=1729445531; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ZP0WMWfQsWND2hXfrlLLDuWYr+jxyVrzNmuLdqQXwOo=;
+ b=dDi3UkNNs7Ysu/MhGGB7N4jF4jCK+HVgnvjW9vjWxG0sNIcfi63tnGLWFihOBOV3BL
+ +lhWXtMg0H58LFZa0X8rKtqMv2lva9/JqQBxfQLsHk4G/8X/N0uPQ07NWTSeFLsbiHHQ
+ yxH9wEJ1QW3Xnn7gJ8D/ZeRL14ZI6Occ9DEMYUHSahcZg62U05xPXqAomYyKN1aGcpYA
+ XLrbtcpJfH7hgZA/h1+kriye3zmGphgbcQuWEM5mE+e7M48KAxidmh9xJBrId+94ovi8
+ aUCK3odWCENVgktmyEU/rBBUnuoqc4B0IxgNOB2wkvhgD0xaO3gLWWP5Wn+gLUjlO3Nh
+ E9kw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1728840731; x=1729445531;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZP0WMWfQsWND2hXfrlLLDuWYr+jxyVrzNmuLdqQXwOo=;
+ b=Db1n5ZnoKxqDaAoQ2nBp9/DalcWdUB7N16Y5jIw87nC8+vLCXsFWjsGNG822CIcCfH
+ YV57Y/ouc/jF+ERnqsF9Z8U2qbWdR+Nb5on6uDzkrmzJ7Su+zg7tIXv8Xv7lQgNiUXBk
+ rLmIX7VCB6xdCold8G3M1NKJ9N7Zu4GDKgaSyq6klpWQknXPIPiaOVJYOQlOebib0Vjb
+ vhMOWi3cYXycQmR87IigGCupEu/SOKdj7H1q/ISrRD4B30XyC5goc1xv4Xs+QKb8V+1J
+ cQvWTdzNhcMxMh8PubGE6vQf4doyvN1OUjJPpNaJoqPS/lBoEAVCDfiL6cdIoXS1Mcb4
+ b3Mw==
+X-Gm-Message-State: AOJu0YzFq8MbMPLXg/pGfu806ys8Qa6T+3YvCzcFozfmmzGWVHhZaMJC
+ TWMsg1Gb2Jtqb3W1yGzedFngekgGKrg1nwwSyL2ytWzSU7gG93Y2x67o/t8dvZg=
+X-Google-Smtp-Source: AGHT+IG/khCY2oUQiQzBUIi8BAD9cJHx2bRzxMq0kb6mBoLUjV+q0htrxkfrT34FRhDp1e15beXUsw==
+X-Received: by 2002:a05:6a20:c797:b0:1d3:5208:1ea6 with SMTP id
+ adf61e73a8af0-1d8c96ba5femr8821399637.45.1728840731187; 
+ Sun, 13 Oct 2024 10:32:11 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-81-121.tukw.qwest.net. [174.21.81.121])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-71e6164e825sm1022356b3a.61.2024.10.13.10.32.10
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sun, 13 Oct 2024 10:32:10 -0700 (PDT)
+Message-ID: <7ee485ed-dcab-48cf-8c1f-bd985e1609f4@linaro.org>
+Date: Sun, 13 Oct 2024 10:32:09 -0700
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] linux-user/vm86: Fix compilation with Clang
+To: Thomas Huth <thuth@redhat.com>, dave@treblig.org, qemu-devel@nongnu.org,
+ Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-trivial@nongnu.org
+References: <20241011161845.417342-1-thuth@redhat.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20241011161845.417342-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Content-Type: text/plain
-X-Originating-IP: [10.180.168.240]
-X-ClientProxiedBy: SATLEXMB04.amd.com (10.181.40.145) To SATLEXMB04.amd.com
- (10.181.40.145)
-X-EOPAttributedMessage: 0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: SA2PEPF000015CB:EE_|LV2PR12MB5966:EE_
-X-MS-Office365-Filtering-Correlation-Id: 03b26fb0-45e7-47d7-d2ef-08dcea5a405b
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|1800799024|36860700013|376014|82310400026; 
-X-Microsoft-Antispam-Message-Info: =?us-ascii?Q?PzKjJz1PopJLVWuSpsLPUz7uzdqqFUjuq6njjU53HRdBhiSq1ifmLUaFQSHw?=
- =?us-ascii?Q?ZEe/iuTE5l/Ffb7SjPYpNCEjWw4SOKPhdmKzNGcb8w5K0UBipbICjJ2J35d4?=
- =?us-ascii?Q?gGAjPd8ggo3v0CpkR+cpd08CG4A2c1my62y80Pz6MxhiiwLbkx65MFeALWN7?=
- =?us-ascii?Q?bK5UOb0c9oFdM1Le1rUPlsHeT373Z87+sO2S7/JGvjKMbOjlyisHjjaYEtfw?=
- =?us-ascii?Q?8xk/Uqh4ZO5zEu4CAD/uyCB+I0FBu1D7+5A7cAxOXWb7SyXnhjzFuhjEbsK0?=
- =?us-ascii?Q?AEQ6DfW+Vx6xT6QSlUL/p+QAyS9FD7H/dOx130+CB88XmjV8oogD/3+pd+sb?=
- =?us-ascii?Q?81BqYi3WPlO+fe8ac6AUP8Gkr3//ysiroQomZrMhb5Pwn9Mz7Sb21lC6IPnN?=
- =?us-ascii?Q?N/z3AuEGHqyRBUkvGETVMTDKslMKoA0DIftIn5wwAplLpk5dRKi8L5Bc5O1o?=
- =?us-ascii?Q?FPtl3I7SpkA49K1i6UxP1WEQS0Y4CJj6FkZM0XNXfRy1WcaxrgMffh71E29Y?=
- =?us-ascii?Q?b49XVWH4y9fifp5DC91p16NV7RqOyXfJmTkp0dKrd3G/L24PieALAP0kJwDr?=
- =?us-ascii?Q?blIrTyBYyuxGrKl0uqYaYB9U9j4t4NdvxRC6paddCoNTnXwR0CnoEDL09Ejp?=
- =?us-ascii?Q?n3jK3Uam/OT+yssj6rJsGQ7+V09LegqyC46v8xgeAliV7EsaXojtpiWQ/jWc?=
- =?us-ascii?Q?tyK+uiVST2XoyBqTS/jvr72d5fr4V/PVSMgVsNohXVANLy0yauq0QNB0m8kX?=
- =?us-ascii?Q?qltzlonSuVPHphrHiZQf8wFzUrjjWt4+SfS4Dn2srxwIElbduLtTI+qJJ4vJ?=
- =?us-ascii?Q?gSI3b7xnqH4Et467g3wN7pVqm7imHYgnazI7m8kiohiO38i+LiRLZVNG7c5L?=
- =?us-ascii?Q?KGDsTozbSDAfkJTngk+KJ2sGLgv0JH8bDrMQKxb8Av1ZQZL0BklTm+lxrXVf?=
- =?us-ascii?Q?5mIr0B1oCEr0B0afoX3lHbsQdRlMCI3bdenwLv3HQYh0Vzrc21Lvjy/chxrL?=
- =?us-ascii?Q?z7qs6Y+cJq3MJl6YGw/yn78kJgwvqy596X/JdzNIrdgBpyhhtFnM/tdiSXcu?=
- =?us-ascii?Q?zHNeSTlRMtgYRcT3skoDAX2zvE66d7rZzzah62TU65ojX2N7Asnw6JilXuNX?=
- =?us-ascii?Q?E42N4vMkkv8XpfDl4MuvZlWfuq+R0k6JO8HJ+xSKD0IPELf4EDk1rPWs5jqq?=
- =?us-ascii?Q?64WrmSu+GULJprbJNJsCv+8UllF2K0dNvgujp7kKkknJ7FVRJsERgq7J9e66?=
- =?us-ascii?Q?p0wa+zaYoWV6H5P5wwtHesSFaRecRRsgc1hP2OiYusNi7DUH5FWIsppTfZwt?=
- =?us-ascii?Q?ipe6DG4tzspCr8RMBdwfER1+sj24IB+eV9LX0TTIMaJbDflg1g9EYH4Encv8?=
- =?us-ascii?Q?em/ix64ZSSzGIs9hRwi/FIvUe9PT?=
-X-Forefront-Antispam-Report: CIP:165.204.84.17; CTRY:US; LANG:en; SCL:1; SRV:;
- IPV:CAL; SFV:NSPM; H:SATLEXMB04.amd.com; PTR:InfoDomainNonexistent; CAT:NONE;
- SFS:(13230040)(1800799024)(36860700013)(376014)(82310400026); DIR:OUT;
- SFP:1101; 
-X-OriginatorOrg: amd.com
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 12 Oct 2024 01:07:32.6546 (UTC)
-X-MS-Exchange-CrossTenant-Network-Message-Id: 03b26fb0-45e7-47d7-d2ef-08dcea5a405b
-X-MS-Exchange-CrossTenant-Id: 3dd8961f-e488-4e60-8e11-a82d994e183d
-X-MS-Exchange-CrossTenant-OriginalAttributedTenantConnectingIp: TenantId=3dd8961f-e488-4e60-8e11-a82d994e183d; Ip=[165.204.84.17];
- Helo=[SATLEXMB04.amd.com]
-X-MS-Exchange-CrossTenant-AuthSource: SA2PEPF000015CB.namprd03.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Anonymous
-X-MS-Exchange-CrossTenant-FromEntityHeader: HybridOnPrem
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: LV2PR12MB5966
-Received-SPF: permerror client-ip=2a01:111:f403:2409::613;
- envelope-from=PratikRajesh.Sampat@amd.com;
- helo=NAM04-DM6-obe.outbound.protection.outlook.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
+Received-SPF: pass client-ip=2607:f8b0:4864:20::52a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pg1-x52a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.15,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 12 Oct 2024 00:49:47 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -131,29 +84,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 12 Oct 2024 01:07:43 -0000
+X-List-Received-Date: Sun, 13 Oct 2024 17:32:15 -0000
 
-With the default BIOS being compatible with amd-sev-es add the feature
-to the json to indicate it's support
+On 10/11/24 09:18, Thomas Huth wrote:
+> Since commit 95b9c27c81 ("linux-user: Remove unused handle_vm86_fault")
+> a bunch of other "static inline" function are now unused, too. Clang
+> warns about such unused "static inline" functions in .c files, so the
+> build currently breaks when compiling with "--enable-werror". Remove
+> the unused functions to get it going again.
+> 
+> Fixes: 95b9c27c81 ("linux-user: Remove unused handle_vm86_fault")
+> Signed-off-by: Thomas Huth<thuth@redhat.com>
+> ---
+>   linux-user/vm86.c | 65 -----------------------------------------------
+>   1 file changed, 65 deletions(-)
 
-Signed-off-by: Pratik R. Sampat <pratikrajesh.sampat@amd.com>
----
- pc-bios/descriptors/60-edk2-x86_64.json | 1 +
- 1 file changed, 1 insertion(+)
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-diff --git a/pc-bios/descriptors/60-edk2-x86_64.json b/pc-bios/descriptors/60-edk2-x86_64.json
-index 968cb65cf9..4599c63f14 100644
---- a/pc-bios/descriptors/60-edk2-x86_64.json
-+++ b/pc-bios/descriptors/60-edk2-x86_64.json
-@@ -26,6 +26,7 @@
-     "features": [
-         "acpi-s3",
-         "amd-sev",
-+        "amd-sev-es",
-         "verbose-dynamic"
-     ],
-     "tags": [
--- 
-2.34.1
+And queued.
 
+
+r~
 
