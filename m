@@ -1,51 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1t0MiR-0007LH-Vt
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Oct 2024 11:10:36 -0400
+	id 1t0Mnc-0000wA-G0
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Oct 2024 11:15:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t0MiQ-0007Kt-Cb
- for qemu-trivial@nongnu.org; Mon, 14 Oct 2024 11:10:34 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1t0Mnb-0000vV-SS
+ for qemu-trivial@nongnu.org; Mon, 14 Oct 2024 11:15:55 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t0MiO-0007cs-R5
- for qemu-trivial@nongnu.org; Mon, 14 Oct 2024 11:10:34 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1t0MnZ-0008FU-J4
+ for qemu-trivial@nongnu.org; Mon, 14 Oct 2024 11:15:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1728918630;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=tatJhW1uqhERX+GEQHiFhh7w1BJntOTMvbo0xwCTZQ8=;
- b=U+NQYY13n9MvN5htgKruD3+A8vw1UaPetvEjGvKA2rvSDOh++exZGUrME5XP8l24yiC2Mh
- bKwBTQ7L+gJficJ0pExQblcAT8UF/SgC1WKYjDmqK85jBXVCEmy93l1P0VGlJoJ4pUqsUS
- vn/1j3T5lu9klPTVcqlII4jXijvJkhQ=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ s=mimecast20190719; t=1728918952;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=SwRIbhSQgz00zohy+puFdANXNUN00FcDgWKtUllVlBo=;
+ b=erxyfveA9XQ4I/du+VX0Wh7ByowEtsr+bh/jHDcb0pBymoRfEbtyoX/PsVgt8iefdJiNZT
+ wmsODx8IyjksC32y5G2/B4I58aCM7YPnLEBR5fXkBuw5e7VqwH5NyzMZ2vPIyljVi5CxUU
+ 5BZqKcNGdQeKtpZRvGqELymkye8CrqY=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-549-w-RqUK13Pc-0aEe2Np6SBg-1; Mon,
- 14 Oct 2024 11:10:28 -0400
-X-MC-Unique: w-RqUK13Pc-0aEe2Np6SBg-1
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-589-AR41EbHEM8KNCQNuyFYpjQ-1; Mon,
+ 14 Oct 2024 11:15:51 -0400
+X-MC-Unique: AR41EbHEM8KNCQNuyFYpjQ-1
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CEFCB19560B2; Mon, 14 Oct 2024 15:10:27 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.161])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 926AF19560A2; Mon, 14 Oct 2024 15:10:25 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Brad Smith <brad@comstyle.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] ui/console-vc: Silence warning about sprintf() on OpenBSD
-Date: Mon, 14 Oct 2024 17:10:23 +0200
-Message-ID: <20241014151023.85698-1-thuth@redhat.com>
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D17F71955D61; Mon, 14 Oct 2024 15:15:49 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.223])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 24DE319560A2; Mon, 14 Oct 2024 15:15:46 +0000 (UTC)
+Date: Mon, 14 Oct 2024 16:15:43 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org, Brad Smith <brad@comstyle.com>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] ui/console-vc: Silence warning about sprintf() on OpenBSD
+Message-ID: <Zw01n0A6xCG9mCm-@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20241014151023.85698-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20241014151023.85698-1-thuth@redhat.com>
+User-Agent: Mutt/2.2.12 (2023-09-09)
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
@@ -68,39 +75,57 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Oct 2024 15:10:34 -0000
+X-List-Received-Date: Mon, 14 Oct 2024 15:15:56 -0000
 
-The linker on OpenBSD complains:
+On Mon, Oct 14, 2024 at 05:10:23PM +0200, Thomas Huth wrote:
+> The linker on OpenBSD complains:
+> 
+>  ld: warning: console-vc.c:824 (../src/ui/console-vc.c:824)([...]):
+>  warning: sprintf() is often misused, please use snprintf()
+> 
+> Using snprintf() is certainly better here, so let's switch to that
+> function instead.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  ui/console-vc.c | 6 +++---
+>  1 file changed, 3 insertions(+), 3 deletions(-)
+> 
+> diff --git a/ui/console-vc.c b/ui/console-vc.c
+> index 8393d532e7..336a1520eb 100644
+> --- a/ui/console-vc.c
+> +++ b/ui/console-vc.c
+> @@ -821,9 +821,9 @@ static void vc_putchar(VCChardev *vc, int ch)
+>                      break;
+>                  case 6:
+>                      /* report cursor position */
+> -                    sprintf(response, "\033[%d;%dR",
+> -                           (s->y_base + s->y) % s->total_height + 1,
+> -                            s->x + 1);
+> +                    snprintf(response, sizeof(response), "\033[%d;%dR",
+> +                             (s->y_base + s->y) % s->total_height + 1,
+> +                             s->x + 1);
+>                      vc_respond_str(vc, response);
 
- ld: warning: console-vc.c:824 (../src/ui/console-vc.c:824)([...]):
- warning: sprintf() is often misused, please use snprintf()
+These two lines are the only place in the code that uses the
 
-Using snprintf() is certainly better here, so let's switch to that
-function instead.
+   char response[40];
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- ui/console-vc.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+so even better than switching to snprintf, how about just taking
+buffer size out of the picture:
 
-diff --git a/ui/console-vc.c b/ui/console-vc.c
-index 8393d532e7..336a1520eb 100644
---- a/ui/console-vc.c
-+++ b/ui/console-vc.c
-@@ -821,9 +821,9 @@ static void vc_putchar(VCChardev *vc, int ch)
-                     break;
-                 case 6:
-                     /* report cursor position */
--                    sprintf(response, "\033[%d;%dR",
--                           (s->y_base + s->y) % s->total_height + 1,
--                            s->x + 1);
-+                    snprintf(response, sizeof(response), "\033[%d;%dR",
-+                             (s->y_base + s->y) % s->total_height + 1,
-+                             s->x + 1);
-                     vc_respond_str(vc, response);
-                     break;
-                 }
+  g_autofree *response =
+      g_strdup_printf("\033[%d;%dR",
+                      (s->y_base + s->y) % s->total_height + 1,
+                      s->x + 1);
+  vc_respond_str(vc, response);
+
+
+With regards,
+Daniel
 -- 
-2.46.1
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
