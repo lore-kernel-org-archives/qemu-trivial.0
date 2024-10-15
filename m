@@ -1,87 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1t0fkw-0005Ye-3M
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Oct 2024 07:30:26 -0400
+	id 1t0h9q-0005aC-3P
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Oct 2024 09:00:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1t0fko-0005Xc-QH
- for qemu-trivial@nongnu.org; Tue, 15 Oct 2024 07:30:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1t0fkm-0004EN-JC
- for qemu-trivial@nongnu.org; Tue, 15 Oct 2024 07:30:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1728991815;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=MaRKN1kHntchFFmkQZ38W2nYmASUOefauZ+iX7KC2Xc=;
- b=b1rdDIQ5UESqH3RELUu1GkWwLM57fsvvK5sAZejt+WeyVTRu1dWGGCAcAnMGsRhlJWxysB
- Vg6IGhS8H8Y5O/IObBfDBLNTQiX5ceNHLOtmDqqXExHDyOgO9xWxTmpW7veiXlpeifnPJ3
- 9u5pMACk1BfJ8iDBAwG8m5fv86j8Eqo=
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-9-2jRrkOAaOIOlIW-vhFRyDg-1; Tue, 15 Oct 2024 07:30:12 -0400
-X-MC-Unique: 2jRrkOAaOIOlIW-vhFRyDg-1
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-7b11467e528so672070785a.3
- for <qemu-trivial@nongnu.org>; Tue, 15 Oct 2024 04:30:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1t0h9m-0005Xv-A9
+ for qemu-trivial@nongnu.org; Tue, 15 Oct 2024 09:00:10 -0400
+Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1t0h9k-0007FL-Jm
+ for qemu-trivial@nongnu.org; Tue, 15 Oct 2024 09:00:10 -0400
+Received: by mail-wm1-x32d.google.com with SMTP id
+ 5b1f17b1804b1-43123368ea9so28264665e9.0
+ for <qemu-trivial@nongnu.org>; Tue, 15 Oct 2024 06:00:06 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1728997206; x=1729602006; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=DY0mf9LgIKF/AWCH0RzXkvYKoekfHo8y6WDVdpvd44s=;
+ b=sBqGTHPstrVYFhxsX2jKB9UvWrOtup8oXFZERXdyo53HAcfKbAzEN0Z947HyPwvX+0
+ W0BnGK03Kf5Mq88QtiV93xqHOmB0eoYCW7C/jMTJ8Nm1h9y5bwturIjdgMmfo9yUnTFW
+ tlrSYjN/+xkVugvlwwr8gImt2cjDVNXS5hEW2w6PfVasAa2kppwxpUj5ByE6M0JOUcHS
+ MDC1NgqPfosC58su0vbvTlkOLbpdNbDALgA/5NzNA2ebcDTdXT3IYyzCnhogzhHwWylQ
+ zk8aLXC46Y8woQ07BQoX302ikq+uOZyWZXzc7As7U8/mMOPRBkVtprD9t6XQVdLZFdQA
+ KsDw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728991812; x=1729596612;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=MaRKN1kHntchFFmkQZ38W2nYmASUOefauZ+iX7KC2Xc=;
- b=G/E3bcpsXVQ5ldeiey0mf0DRe0VJ4lxDoRP10u8Qju0+H3Zot6xBMcy1m63/RY8xrB
- /vyRC+Q0eDkzE+OGlK0lMONxF61lR5P8voxg9AiC0iTGcFdD4T/75Ew66pMkixNN1PkG
- iHkPDznUh3fie5/9f3y+9Q2PPrXxc+qrR8rKMx4U5q+aMSo7lg+SOucTxoVkJoPLv2JY
- jh/7jPUKkNvulBp5x0yxUtuOt9BprDs5PxP3JgzEM4Weymu0Tziz+HxI+mIHoOlXGVqB
- 9oBAlMSFPY6rBK+53hCSz3SteUpfHHZs3veiHoS2WvE1tK7mlwIZcy1P9THevaqxt+5b
- shfg==
+ d=1e100.net; s=20230601; t=1728997206; x=1729602006;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=DY0mf9LgIKF/AWCH0RzXkvYKoekfHo8y6WDVdpvd44s=;
+ b=MZEz4tlAdOukiaoNQ76qbYfR/3hVftr0BtLcbP7rOoEjKunxeag+eYWs/EhsexFW0q
+ LQuZ3epDWRNwVqe7YjaKaT9jOYsEffbfVf/icKlv1sEueJGJwewA5tjh9YYLyKgVMwlj
+ H0MHVoFgWKA4Xsb96j53OKiZu2jEX3jtTiAcTtws3C1OZqTsSziZgfOdrMhADmU0l/w0
+ 6ny2hJ1EQUaCljqKvLJzTpMHPHGyDFZ8eTacaQYvTXd3o9JKQjCeHBibJHrvZqN7WfX9
+ qflAQRf3+MUQQfTEsUH74kd+KeUpBW/LCBrzTuK55Wl3L4Oy3upKr5dgbrcJM8wwzew3
+ 81FQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXVJDzyiQ05Fh84cQzkr2STsqGG/wsetLByWrj52MwVw4EieGZ9esy1x6G62hcsMN9Oa8aNzeldLwkHRf4=@nongnu.org
-X-Gm-Message-State: AOJu0YyT1a8G3uEZUsvRiczB+zRjJt84FWq7o/tMDvB2yi7Ye5rXyq8z
- PR5CoXtmQeAq6pecLGB2gsX7imn9wZZsTwQqqRVM0aonkQKTcKGMpGjM0yAIznYzdWD5zQumiyY
- gZgSNaoBiiVUJwERf4M6smdWn1FbB3NY43fNGDWYKK36jWTF1QdN/9GKn6yrVHL8bMAR3q4Nuwn
- x4ZLoSBRmam4YpwoKwL4m+K9PRwQf1aA==
-X-Received: by 2002:a05:620a:1a19:b0:7b1:1013:c27e with SMTP id
- af79cd13be357-7b1418a04fbmr2979585a.60.1728991811841; 
- Tue, 15 Oct 2024 04:30:11 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHA+h/FM3ua5qo5ZVbTaH3HmSx/KufISb/DTV0KFjurPcXGVJSY6QwBRLa1/fKo3O/vAhFi6MPiKMOmLK86Glo=
-X-Received: by 2002:a05:620a:1a19:b0:7b1:1013:c27e with SMTP id
- af79cd13be357-7b1418a04fbmr2976985a.60.1728991811522; Tue, 15 Oct 2024
- 04:30:11 -0700 (PDT)
-MIME-Version: 1.0
-References: <20241015112510.412471-1-thuth@redhat.com>
-In-Reply-To: <20241015112510.412471-1-thuth@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Tue, 15 Oct 2024 15:30:00 +0400
-Message-ID: <CAMxuvazGYBHJuNkYHMxcGZNMOzcVjehdXu9t8rbhb3xSGR1iGw@mail.gmail.com>
+ AJvYcCWvYo6eaWGTeMZ2iiZzGvsMpMtYy0CJncXZB5SMKjWY2HClpBqSwvK97Kgqew7VAXYgbwCWtUTzAiBI+Ro=@nongnu.org
+X-Gm-Message-State: AOJu0YzWyaHM4334G61OkEUxfnq8SJZUL7W1BWYaPas8WkguIDYTUZVA
+ WL6FyRcRQp1WdlGDQJStpEh8rJz7A0f3lrZXigaPGgI4kmFHRAfRRym4I4X+epI=
+X-Google-Smtp-Source: AGHT+IEVJUWjjnHzD2ZA7HyGw+poXazcA85f2tgniV7p9hzFAnv96zEOlgYdAFnPqTpJm8kGbDW8mQ==
+X-Received: by 2002:a05:600c:3b9c:b0:431:47d4:19d1 with SMTP id
+ 5b1f17b1804b1-43147d41c86mr7981155e9.1.1728997205576; 
+ Tue, 15 Oct 2024 06:00:05 -0700 (PDT)
+Received: from draig.lan ([85.9.250.243]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4313f6b1e77sm17454055e9.31.2024.10.15.06.00.04
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 15 Oct 2024 06:00:05 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 49F615F8C3;
+ Tue, 15 Oct 2024 14:00:04 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org,
+ Brad Smith <brad@comstyle.com>,  qemu-trivial@nongnu.org,  Daniel P .
+ =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Michael Tokarev
+ <mjt@tls.msk.ru>
 Subject: Re: [PATCH v2] ui/console-vc: Silence warning about sprintf() on
  OpenBSD
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Brad Smith <brad@comstyle.com>,
- qemu-trivial@nongnu.org, 
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Michael Tokarev <mjt@tls.msk.ru>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+In-Reply-To: <20241015112510.412471-1-thuth@redhat.com> (Thomas Huth's message
+ of "Tue, 15 Oct 2024 13:25:10 +0200")
+References: <20241015112510.412471-1-thuth@redhat.com>
+User-Agent: mu4e 1.12.6; emacs 29.4
+Date: Tue, 15 Oct 2024 14:00:04 +0100
+Message-ID: <877ca9a5d7.fsf@draig.linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mlureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.063,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,11 +92,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Oct 2024 11:30:23 -0000
+X-List-Received-Date: Tue, 15 Oct 2024 13:00:10 -0000
 
-On Tue, Oct 15, 2024 at 3:25=E2=80=AFPM Thomas Huth <thuth@redhat.com> wrot=
-e:
->
+Thomas Huth <thuth@redhat.com> writes:
+
 > The linker on OpenBSD complains:
 >
 >  ld: warning: console-vc.c:824 (../src/ui/console-vc.c:824)([...]):
@@ -109,38 +106,9 @@ e:
 >
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-> ---
->  v2: Use g_strdup_printf() instead of snprintf()
->
->  ui/console-vc.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/ui/console-vc.c b/ui/console-vc.c
-> index 8393d532e7..53fcee88f4 100644
-> --- a/ui/console-vc.c
-> +++ b/ui/console-vc.c
-> @@ -648,7 +648,7 @@ static void vc_putchar(VCChardev *vc, int ch)
->      QemuTextConsole *s =3D vc->console;
->      int i;
->      int x, y;
-> -    char response[40];
-> +    g_autofree char *response =3D NULL;
->
->      switch(vc->state) {
->      case TTY_STATE_NORM:
-> @@ -821,7 +821,7 @@ static void vc_putchar(VCChardev *vc, int ch)
->                      break;
->                  case 6:
->                      /* report cursor position */
-> -                    sprintf(response, "\033[%d;%dR",
-> +                    response =3D g_strdup_printf("\033[%d;%dR",
->                             (s->y_base + s->y) % s->total_height + 1,
->                              s->x + 1);
->                      vc_respond_str(vc, response);
-> --
-> 2.47.0
->
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 
