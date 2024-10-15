@@ -1,85 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1t0h9q-0005aC-3P
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Oct 2024 09:00:14 -0400
+	id 1t0ipp-0002iR-ER
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Oct 2024 10:47:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1t0h9m-0005Xv-A9
- for qemu-trivial@nongnu.org; Tue, 15 Oct 2024 09:00:10 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1t0ipb-0002gy-JS
+ for qemu-trivial@nongnu.org; Tue, 15 Oct 2024 10:47:29 -0400
+Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1t0h9k-0007FL-Jm
- for qemu-trivial@nongnu.org; Tue, 15 Oct 2024 09:00:10 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-43123368ea9so28264665e9.0
- for <qemu-trivial@nongnu.org>; Tue, 15 Oct 2024 06:00:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1t0ipW-0006vC-6q
+ for qemu-trivial@nongnu.org; Tue, 15 Oct 2024 10:47:23 -0400
+Received: by mail-pf1-x433.google.com with SMTP id
+ d2e1a72fcca58-71e453c7408so2601311b3a.2
+ for <qemu-trivial@nongnu.org>; Tue, 15 Oct 2024 07:47:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1728997206; x=1729602006; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=DY0mf9LgIKF/AWCH0RzXkvYKoekfHo8y6WDVdpvd44s=;
- b=sBqGTHPstrVYFhxsX2jKB9UvWrOtup8oXFZERXdyo53HAcfKbAzEN0Z947HyPwvX+0
- W0BnGK03Kf5Mq88QtiV93xqHOmB0eoYCW7C/jMTJ8Nm1h9y5bwturIjdgMmfo9yUnTFW
- tlrSYjN/+xkVugvlwwr8gImt2cjDVNXS5hEW2w6PfVasAa2kppwxpUj5ByE6M0JOUcHS
- MDC1NgqPfosC58su0vbvTlkOLbpdNbDALgA/5NzNA2ebcDTdXT3IYyzCnhogzhHwWylQ
- zk8aLXC46Y8woQ07BQoX302ikq+uOZyWZXzc7As7U8/mMOPRBkVtprD9t6XQVdLZFdQA
- KsDw==
+ d=linaro.org; s=google; t=1729003641; x=1729608441; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=oLU9JFZH41dRezNGjUIlFApdphtq84Y37lvITKPsGLo=;
+ b=HPt9cLRzVFPt2olwf5z/rSbi+p2PnKIRFU2bGUNwH1vv55BOGVEwPyWAdAqrtk6nBE
+ jwCo/88/TVl88CoJIV/+ugSPw+fsa2l7YObgA5suAUgG8uXvxcqC7UCL6hVeC/9MaiRr
+ VkMM6+VAveDyegdEQMCQI/SMCRtyvSN7OssfRqDgyZtdtWSyC9AMVY8u+uKeqKEaXa+l
+ Ju1+EiT7njxRfgoF4cuTUtTr1gWNY5JioHb+6SwKxaeNkbdGWvjK2g1jJrLzWAlMTg6o
+ jqAs2eMMrIefSHonF8xrf3Ic879suhgX41FKjIFTrRa7H6vcrBgE5m9A2gPOHYT0rgq6
+ 7ZKA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1728997206; x=1729602006;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=DY0mf9LgIKF/AWCH0RzXkvYKoekfHo8y6WDVdpvd44s=;
- b=MZEz4tlAdOukiaoNQ76qbYfR/3hVftr0BtLcbP7rOoEjKunxeag+eYWs/EhsexFW0q
- LQuZ3epDWRNwVqe7YjaKaT9jOYsEffbfVf/icKlv1sEueJGJwewA5tjh9YYLyKgVMwlj
- H0MHVoFgWKA4Xsb96j53OKiZu2jEX3jtTiAcTtws3C1OZqTsSziZgfOdrMhADmU0l/w0
- 6ny2hJ1EQUaCljqKvLJzTpMHPHGyDFZ8eTacaQYvTXd3o9JKQjCeHBibJHrvZqN7WfX9
- qflAQRf3+MUQQfTEsUH74kd+KeUpBW/LCBrzTuK55Wl3L4Oy3upKr5dgbrcJM8wwzew3
- 81FQ==
+ d=1e100.net; s=20230601; t=1729003641; x=1729608441;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=oLU9JFZH41dRezNGjUIlFApdphtq84Y37lvITKPsGLo=;
+ b=wtzps/Vn6Uwkm5IfxR7e7fhrw348mn3sVFrZckLf0FX6eIZg0CgIgRPuiyClYeS4Lr
+ u0tDrzzkMwOM38El4RuGjZnuPiL+Qv2FzUwmZVFH+n8c1AUVad9R2eeGYv45CK8jSI/c
+ qkLsIDfV7Od6NvMQ2r6CXRgwvGIWQuH4ndk2X9lSSVKqId4lqUYIMqrqz37l29GpvfpF
+ yxhYZ6yBad/M0SQBQP3pIo9WmWCJiCbmb5WbG59+BiBReNEvYSEuQ5FBeXviiLlQSwDT
+ BMUJRSDAKUA+G4tMC/ZvL7z7BEonQEtgMLFbeqxxDA/NgNdxinm3L7St3OTtC02UVsr4
+ xLZQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWvYo6eaWGTeMZ2iiZzGvsMpMtYy0CJncXZB5SMKjWY2HClpBqSwvK97Kgqew7VAXYgbwCWtUTzAiBI+Ro=@nongnu.org
-X-Gm-Message-State: AOJu0YzWyaHM4334G61OkEUxfnq8SJZUL7W1BWYaPas8WkguIDYTUZVA
- WL6FyRcRQp1WdlGDQJStpEh8rJz7A0f3lrZXigaPGgI4kmFHRAfRRym4I4X+epI=
-X-Google-Smtp-Source: AGHT+IEVJUWjjnHzD2ZA7HyGw+poXazcA85f2tgniV7p9hzFAnv96zEOlgYdAFnPqTpJm8kGbDW8mQ==
-X-Received: by 2002:a05:600c:3b9c:b0:431:47d4:19d1 with SMTP id
- 5b1f17b1804b1-43147d41c86mr7981155e9.1.1728997205576; 
- Tue, 15 Oct 2024 06:00:05 -0700 (PDT)
-Received: from draig.lan ([85.9.250.243]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4313f6b1e77sm17454055e9.31.2024.10.15.06.00.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Oct 2024 06:00:05 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 49F615F8C3;
- Tue, 15 Oct 2024 14:00:04 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org,
- Brad Smith <brad@comstyle.com>,  qemu-trivial@nongnu.org,  Daniel P .
- =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Michael Tokarev
- <mjt@tls.msk.ru>
+ AJvYcCXY1a2VKb80nA64sfEnm7fDhYWRbAme61ju2NnjUlY79GDpcYaXhWcJ80+nlKbgYxIoTi3a7NsUEM++2Cw=@nongnu.org
+X-Gm-Message-State: AOJu0YzS4wNY0x3GYLdfPPTx4nfRu45PlHbbQgnZK/x1MisrEn95KgcF
+ J77gDcvfZY1eUD54Ijtx3OBMieYXJYnfRlg149Y4KPS0CI2TT+cO0B9ctIV+zNsasISZCTqklIl
+ C
+X-Google-Smtp-Source: AGHT+IFW5cRIODPbiNm59YeWZaPskcbDW4uvUJsIIGwfJaMDcXJGXWP9bZmpI9h5ijsJFOVP8Qkr2g==
+X-Received: by 2002:a05:6a00:b87:b0:71e:19a:c48b with SMTP id
+ d2e1a72fcca58-71e4c1cfc30mr18172068b3a.22.1729003640713; 
+ Tue, 15 Oct 2024 07:47:20 -0700 (PDT)
+Received: from [192.168.0.4] (174-21-81-121.tukw.qwest.net. [174.21.81.121])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-71e773a2fd2sm1345111b3a.74.2024.10.15.07.47.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 15 Oct 2024 07:47:20 -0700 (PDT)
+Message-ID: <3a7da33b-c802-44f2-8478-ce4de64665a4@linaro.org>
+Date: Tue, 15 Oct 2024 07:47:18 -0700
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2] ui/console-vc: Silence warning about sprintf() on
  OpenBSD
-In-Reply-To: <20241015112510.412471-1-thuth@redhat.com> (Thomas Huth's message
- of "Tue, 15 Oct 2024 13:25:10 +0200")
+To: Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Brad Smith <brad@comstyle.com>, qemu-trivial@nongnu.org,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>
 References: <20241015112510.412471-1-thuth@redhat.com>
-User-Agent: mu4e 1.12.6; emacs 29.4
-Date: Tue, 15 Oct 2024 14:00:04 +0100
-Message-ID: <877ca9a5d7.fsf@draig.linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32d.google.com
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20241015112510.412471-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,23 +92,54 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Oct 2024 13:00:10 -0000
+X-List-Received-Date: Tue, 15 Oct 2024 14:47:34 -0000
 
-Thomas Huth <thuth@redhat.com> writes:
-
+On 10/15/24 04:25, Thomas Huth wrote:
 > The linker on OpenBSD complains:
->
->  ld: warning: console-vc.c:824 (../src/ui/console-vc.c:824)([...]):
->  warning: sprintf() is often misused, please use snprintf()
->
+> 
+>   ld: warning: console-vc.c:824 (../src/ui/console-vc.c:824)([...]):
+>   warning: sprintf() is often misused, please use snprintf()
+> 
 > Using g_strdup_printf() is certainly better here, so let's switch
 > to that function instead.
->
+> 
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   v2: Use g_strdup_printf() instead of snprintf()
+> 
+>   ui/console-vc.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/ui/console-vc.c b/ui/console-vc.c
+> index 8393d532e7..53fcee88f4 100644
+> --- a/ui/console-vc.c
+> +++ b/ui/console-vc.c
+> @@ -648,7 +648,7 @@ static void vc_putchar(VCChardev *vc, int ch)
+>       QemuTextConsole *s = vc->console;
+>       int i;
+>       int x, y;
+> -    char response[40];
+> +    g_autofree char *response = NULL;
+>   
+>       switch(vc->state) {
+>       case TTY_STATE_NORM:
+> @@ -821,7 +821,7 @@ static void vc_putchar(VCChardev *vc, int ch)
+>                       break;
+>                   case 6:
+>                       /* report cursor position */
+> -                    sprintf(response, "\033[%d;%dR",
+> +                    response = g_strdup_printf("\033[%d;%dR",
+>                              (s->y_base + s->y) % s->total_height + 1,
+>                               s->x + 1);
+>                       vc_respond_str(vc, response);
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+Could be better by limiting the scope of the variable to this case.
+But either way,
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+
+
+r~
+
+
 
