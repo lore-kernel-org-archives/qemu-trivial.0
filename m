@@ -1,85 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1t0ipp-0002iR-ER
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Oct 2024 10:47:42 -0400
+	id 1t0isl-0005YO-Jk
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Oct 2024 10:50:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1t0ipb-0002gy-JS
- for qemu-trivial@nongnu.org; Tue, 15 Oct 2024 10:47:29 -0400
-Received: from mail-pf1-x433.google.com ([2607:f8b0:4864:20::433])
+ id 1t0isi-0005WE-7R
+ for qemu-trivial@nongnu.org; Tue, 15 Oct 2024 10:50:40 -0400
+Received: from mail-pj1-x102c.google.com ([2607:f8b0:4864:20::102c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1t0ipW-0006vC-6q
- for qemu-trivial@nongnu.org; Tue, 15 Oct 2024 10:47:23 -0400
-Received: by mail-pf1-x433.google.com with SMTP id
- d2e1a72fcca58-71e453c7408so2601311b3a.2
- for <qemu-trivial@nongnu.org>; Tue, 15 Oct 2024 07:47:21 -0700 (PDT)
+ id 1t0isY-0007FZ-P0
+ for qemu-trivial@nongnu.org; Tue, 15 Oct 2024 10:50:38 -0400
+Received: by mail-pj1-x102c.google.com with SMTP id
+ 98e67ed59e1d1-2e2e88cb0bbso3041803a91.3
+ for <qemu-trivial@nongnu.org>; Tue, 15 Oct 2024 07:50:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1729003641; x=1729608441; darn=nongnu.org;
+ d=linaro.org; s=google; t=1729003806; x=1729608606; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=oLU9JFZH41dRezNGjUIlFApdphtq84Y37lvITKPsGLo=;
- b=HPt9cLRzVFPt2olwf5z/rSbi+p2PnKIRFU2bGUNwH1vv55BOGVEwPyWAdAqrtk6nBE
- jwCo/88/TVl88CoJIV/+ugSPw+fsa2l7YObgA5suAUgG8uXvxcqC7UCL6hVeC/9MaiRr
- VkMM6+VAveDyegdEQMCQI/SMCRtyvSN7OssfRqDgyZtdtWSyC9AMVY8u+uKeqKEaXa+l
- Ju1+EiT7njxRfgoF4cuTUtTr1gWNY5JioHb+6SwKxaeNkbdGWvjK2g1jJrLzWAlMTg6o
- jqAs2eMMrIefSHonF8xrf3Ic879suhgX41FKjIFTrRa7H6vcrBgE5m9A2gPOHYT0rgq6
- 7ZKA==
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=Rk+/FbCiHQ32J4q76H311+hrQgeaQw67dxOv7z9Wcek=;
+ b=XzNijK+oOYZFzXRI0QP8/+qBIoPGkIogOcsQz94x9pJls4WhrakmKxQ8DMoBDI9eb4
+ utbG8IUm7KZPiDdB5vUPNoDpXa3yVIU6XQIULFI1dRsBJv3/MaRTafT0vTvlMQrvilYg
+ vsfRlHZrKNNkQpmLOp+wUnBzr9eQ11hl1dwqHfsLnWlTOjFXGDabAeY1ClNAspCqzWqj
+ sCDhDhsQhIEvkHU4FSX0n/ryUuFdTAhlAzrjNqnl7brOhIUYMlmzOIoBGXo4jlA8HM1x
+ qSk1aMvsUJQQxPtDRTfJuhxgixw0zWqONPgEYiak2oAKzHQY6AMpLSuiSYumASYoGstj
+ 5j5w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729003641; x=1729608441;
+ d=1e100.net; s=20230601; t=1729003806; x=1729608606;
  h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :references:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oLU9JFZH41dRezNGjUIlFApdphtq84Y37lvITKPsGLo=;
- b=wtzps/Vn6Uwkm5IfxR7e7fhrw348mn3sVFrZckLf0FX6eIZg0CgIgRPuiyClYeS4Lr
- u0tDrzzkMwOM38El4RuGjZnuPiL+Qv2FzUwmZVFH+n8c1AUVad9R2eeGYv45CK8jSI/c
- qkLsIDfV7Od6NvMQ2r6CXRgwvGIWQuH4ndk2X9lSSVKqId4lqUYIMqrqz37l29GpvfpF
- yxhYZ6yBad/M0SQBQP3pIo9WmWCJiCbmb5WbG59+BiBReNEvYSEuQ5FBeXviiLlQSwDT
- BMUJRSDAKUA+G4tMC/ZvL7z7BEonQEtgMLFbeqxxDA/NgNdxinm3L7St3OTtC02UVsr4
- xLZQ==
+ bh=Rk+/FbCiHQ32J4q76H311+hrQgeaQw67dxOv7z9Wcek=;
+ b=TNwn1SZcJqqeMlHTp6At+lIvN+3TQkH1hjJcgWDzmY8z+08HcMV/CeV+eMK8Ydj8VR
+ /3UN6o4mGYTw7jVuFpE2lXYoOzTf2t1BFSpUkkGBGJoNolg/CmqyZdkGKNUYoOY5O35V
+ mNW2q4BwzZpCLe8i+h29837FODj5KjgGEdvBprH19SQdyrdLtmj3mSIQNQlYrq6VHGNg
+ DPv4ts1dKS5rPuMueCaQd6yeTuwG1h4QmVnAH2yDwUCSW7wZW2OOSdU/3KD015PjlSxC
+ N3N1dKpTNrWeqmBOtox4VdxQZYzJhXVps/Dec0PvFXo9OM6r6v9CuPCePlRa5kUnXlFR
+ gJYQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXY1a2VKb80nA64sfEnm7fDhYWRbAme61ju2NnjUlY79GDpcYaXhWcJ80+nlKbgYxIoTi3a7NsUEM++2Cw=@nongnu.org
-X-Gm-Message-State: AOJu0YzS4wNY0x3GYLdfPPTx4nfRu45PlHbbQgnZK/x1MisrEn95KgcF
- J77gDcvfZY1eUD54Ijtx3OBMieYXJYnfRlg149Y4KPS0CI2TT+cO0B9ctIV+zNsasISZCTqklIl
- C
-X-Google-Smtp-Source: AGHT+IFW5cRIODPbiNm59YeWZaPskcbDW4uvUJsIIGwfJaMDcXJGXWP9bZmpI9h5ijsJFOVP8Qkr2g==
-X-Received: by 2002:a05:6a00:b87:b0:71e:19a:c48b with SMTP id
- d2e1a72fcca58-71e4c1cfc30mr18172068b3a.22.1729003640713; 
- Tue, 15 Oct 2024 07:47:20 -0700 (PDT)
+ AJvYcCWdn7fajFV0uquORIYb62ux8iA/b9p5paM55TrQWh4UsIujq/ezsH0oJlDnwlhDeG0L6SuYX50PK8jy3D4=@nongnu.org
+X-Gm-Message-State: AOJu0Yw4O+K6Xt0Rud1k9dFlm959yjRSBgRaS90qvKLMQisROdk8NOLU
+ 98EV4W3ISjG1zvbQPwlL3kHp7ilLW9VV2EvhOg7LluWbkjZ0fH/aeJPQZMtOfwg=
+X-Google-Smtp-Source: AGHT+IE3JOVsYp9RZ51cS+h+UjKMEpSJi9nmKqOedw3tz8PcdpuXaSa6oC4Y9A+CfUl8Lt1UBIcesg==
+X-Received: by 2002:a17:90b:8d7:b0:2e2:eba1:a1a1 with SMTP id
+ 98e67ed59e1d1-2e3ab8e7b72mr510959a91.36.1729003806667; 
+ Tue, 15 Oct 2024 07:50:06 -0700 (PDT)
 Received: from [192.168.0.4] (174-21-81-121.tukw.qwest.net. [174.21.81.121])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-71e773a2fd2sm1345111b3a.74.2024.10.15.07.47.19
+ 98e67ed59e1d1-2e392ecdd37sm1867836a91.13.2024.10.15.07.50.05
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 15 Oct 2024 07:47:20 -0700 (PDT)
-Message-ID: <3a7da33b-c802-44f2-8478-ce4de64665a4@linaro.org>
-Date: Tue, 15 Oct 2024 07:47:18 -0700
+ Tue, 15 Oct 2024 07:50:06 -0700 (PDT)
+Message-ID: <345e96a9-7111-4727-9510-63c3d6deffbc@linaro.org>
+Date: Tue, 15 Oct 2024 07:50:04 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] ui/console-vc: Silence warning about sprintf() on
- OpenBSD
-To: Thomas Huth <thuth@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org
-Cc: Brad Smith <brad@comstyle.com>, qemu-trivial@nongnu.org,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Michael Tokarev <mjt@tls.msk.ru>
-References: <20241015112510.412471-1-thuth@redhat.com>
+Subject: Re: [PATCH] linux-user: Clean up unused header
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org,
+ qemu-trivial <qemu-trivial@nongnu.org>
+References: <20241015140922.385470-1-gustavo.romero@linaro.org>
 Content-Language: en-US
 From: Richard Henderson <richard.henderson@linaro.org>
-In-Reply-To: <20241015112510.412471-1-thuth@redhat.com>
+In-Reply-To: <20241015140922.385470-1-gustavo.romero@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::433;
- envelope-from=richard.henderson@linaro.org; helo=mail-pf1-x433.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::102c;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x102c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,54 +85,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Oct 2024 14:47:34 -0000
+X-List-Received-Date: Tue, 15 Oct 2024 14:50:40 -0000
 
-On 10/15/24 04:25, Thomas Huth wrote:
-> The linker on OpenBSD complains:
+On 10/15/24 07:09, Gustavo Romero wrote:
+> Clean up unused (already commented-out) header from syscall.c.
 > 
->   ld: warning: console-vc.c:824 (../src/ui/console-vc.c:824)([...]):
->   warning: sprintf() is often misused, please use snprintf()
-> 
-> Using g_strdup_printf() is certainly better here, so let's switch
-> to that function instead.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 > ---
->   v2: Use g_strdup_printf() instead of snprintf()
+>   linux-user/syscall.c | 1 -
+>   1 file changed, 1 deletion(-)
 > 
->   ui/console-vc.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/ui/console-vc.c b/ui/console-vc.c
-> index 8393d532e7..53fcee88f4 100644
-> --- a/ui/console-vc.c
-> +++ b/ui/console-vc.c
-> @@ -648,7 +648,7 @@ static void vc_putchar(VCChardev *vc, int ch)
->       QemuTextConsole *s = vc->console;
->       int i;
->       int x, y;
-> -    char response[40];
-> +    g_autofree char *response = NULL;
->   
->       switch(vc->state) {
->       case TTY_STATE_NORM:
-> @@ -821,7 +821,7 @@ static void vc_putchar(VCChardev *vc, int ch)
->                       break;
->                   case 6:
->                       /* report cursor position */
-> -                    sprintf(response, "\033[%d;%dR",
-> +                    response = g_strdup_printf("\033[%d;%dR",
->                              (s->y_base + s->y) % s->total_height + 1,
->                               s->x + 1);
->                       vc_respond_str(vc, response);
+> diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+> index 1354e75694..d1b0f7c5bb 100644
+> --- a/linux-user/syscall.c
+> +++ b/linux-user/syscall.c
+> @@ -54,7 +54,6 @@
+>   #include <utime.h>
+>   #include <sys/sysinfo.h>
+>   #include <sys/signalfd.h>
+> -//#include <sys/user.h>
+>   #include <netinet/in.h>
+>   #include <netinet/ip.h>
+>   #include <netinet/tcp.h>
 
-Could be better by limiting the scope of the variable to this case.
-But either way,
 
+Cc: qemu-trivial
 Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
 
 r~
-
-
 
