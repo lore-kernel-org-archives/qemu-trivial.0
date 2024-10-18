@@ -1,63 +1,90 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1t1psb-0004cS-TU
-	for mharc-qemu-trivial@gnu.org; Fri, 18 Oct 2024 12:31:09 -0400
+	id 1t1rJG-0007vV-JP
+	for mharc-qemu-trivial@gnu.org; Fri, 18 Oct 2024 14:02:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1t1psQ-0004bO-As; Fri, 18 Oct 2024 12:31:00 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1t1rJD-0007um-HK; Fri, 18 Oct 2024 14:02:44 -0400
+Received: from mx0b-001b2d01.pphosted.com ([148.163.158.5])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1t1psN-0006dV-H4; Fri, 18 Oct 2024 12:30:58 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 46F3699D47;
- Fri, 18 Oct 2024 19:30:30 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 238EB1578B6;
- Fri, 18 Oct 2024 19:30:53 +0300 (MSK)
-Message-ID: <b502d39d-f74d-4e8d-b645-cecce9e170b7@tls.msk.ru>
-Date: Fri, 18 Oct 2024 19:30:53 +0300
+ (Exim 4.90_1) (envelope-from <stefanb@linux.ibm.com>)
+ id 1t1rJB-0007Ub-Cd; Fri, 18 Oct 2024 14:02:43 -0400
+Received: from pps.filterd (m0353725.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 49IAiVpf008225;
+ Fri, 18 Oct 2024 18:02:39 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=pp1; bh=d5NZNk
+ Zqh78Lbl1qV5s3wd32xFybVl2w6L0EJQd8YJg=; b=VcQTKhUdTOPcLXF0xETShe
+ OxG/l3tipDxjXEcm7Xf/AlTGpw1q/0kcXsAsmnPKt/K5CTiwJek91nHHcQAoH6kY
+ hggkejKNnSkt3DjTaBe9pUrAuWqv+4i9ZGrSLAOwFnmul993fI8Ga784uFaYRFqZ
+ 5z7Z9OfhQi0V4I6c2zoje/eSvgZJDhZCkbyryl2nXl+HABYMIH35JvviI2l0Y+kb
+ Z/c8XZSKwK9TUUC00jE3pDWxKne7oWhWeEETlsLVQf6ieSgOIHAB3XL+4WoJfJxP
+ lAbZSjFoxEviKwDdWcRtIKJzhSnA1DFuUd+Wk+8RcQLExiNxLgp9wtnvzKr+yDHQ
+ ==
+Received: from ppma23.wdc07v.mail.ibm.com
+ (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 42as8aa5aq-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 18 Oct 2024 18:02:39 +0000 (GMT)
+Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
+ by ppma23.wdc07v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 49IF8EW1007025;
+ Fri, 18 Oct 2024 18:02:38 GMT
+Received: from smtprelay06.dal12v.mail.ibm.com ([172.16.1.8])
+ by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4284xknxyw-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Fri, 18 Oct 2024 18:02:38 +0000
+Received: from smtpav01.dal12v.mail.ibm.com (smtpav01.dal12v.mail.ibm.com
+ [10.241.53.100])
+ by smtprelay06.dal12v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 49II2bJQ42533252
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Fri, 18 Oct 2024 18:02:38 GMT
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id E67B558058;
+ Fri, 18 Oct 2024 18:02:37 +0000 (GMT)
+Received: from smtpav01.dal12v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 6C68D58061;
+ Fri, 18 Oct 2024 18:02:37 +0000 (GMT)
+Received: from [9.47.158.152] (unknown [9.47.158.152])
+ by smtpav01.dal12v.mail.ibm.com (Postfix) with ESMTP;
+ Fri, 18 Oct 2024 18:02:37 +0000 (GMT)
+Message-ID: <eadd4212-e662-4952-9e53-96e2c97f6c3b@linux.ibm.com>
+Date: Fri, 18 Oct 2024 14:02:36 -0400
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] replace error_setg(&error_fatal, ...) with error_report()
-To: Tudor Gheorghiu <tudor.reda@gmail.com>, Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <ZwRgbNs4Hz-Drt2V@redaops>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsBLBETIiwkBCADh3cFB56BQYPjtMZCfK6PSLR8lw8EB20rsrPeJtd91IoNZlnCjSoxd9Th1
- bLUR8YlpRJ2rjc6O1Bc04VghqUOHgS/tYt8vLjcGWixzdhSLJgPDK3QQZPAvBjMbCt1B6euC
- WuD87Pv5Udlpnzf4aMwxkgfTusx+ynae/o+T5r7tXD+isccbC3SiGhmAPxFyY3zGcFk4+Rxc
- 0tP8YY2FWE/baHu+lBDTUN79efWAkHhex1XzVZsV7ZD16rzDbXFK5m6ApvGJWlr5YDEEydTF
- WwmvwBfr4OINVxzEG/ujNiG4fpMf2NsnFGyB9aSbFjXZevB4qWkduYYW+xpK1EryszHtAAYp
- zSBNaWNoYWVsIFRva2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLAlgQTAQoAQAIbAwYLCQgHAwIE
- FQIIAwQWAgMBAh4BAheAAhkBFiEEbuGV0Yhuj/uBDUMkRXzgoIBEZcUFAmBbcjwFCS5e6jMA
- CgkQRXzgoIBEZcUTIQgA1hPsOF82pXxbcJXBMc4zB9OQu4AlnZvERoGyw7I2222QzaN3RFuj
- Fia//mapXzpIQNF08l/AA6cx+CKPeGnXwyZfF9fLa4RfifmdNKME8C00XlqnoJDZBGzq8yMy
- LAKDxl9OQWFcDwDxV+irg5U3fbtNVhvV0kLbS2TyQ0aU5w60ERS2NcyDWplOo7AOzZWChcA4
- UFf78oVdZdCW8YDtU0uQFhA9moNnrePy1HSFqduxnlFHEI+fDj/TiOm2ci48b8SBBJOIJFjl
- SBgH8+SfT9ZqkzhN9vh3YJ49831NwASVm0x1rDHcIwWD32VFZViZ3NjehogRNH9br0PSUYOC
- 3s7ATQRX2BjLAQgAnak3m0imYOkv2tO/olULFa686tlwuvl5kL0NWCdGQeXv2uMxy36szcrh
- K1uYhpiQv4r2qNd8BJtYlnYIK16N8GBdkplaDIHcBMbU4t+6bQzEIJIaWoq1hzakmHHngE2a
- pNMnUf/01GFvCRPlv3imkujE/5ILbagjtdyJaHF0wGOSlTnNT4W8j+zPJ/XK0I5EVQwtbmoc
- GY62LKxxz2pID6sPZV4zQVY4JdUQaFvOz1emnBxakkt0cq3Qnnqso1tjiy7vyH9CAwPR/48W
- fpK6dew4Fk+STYtBeixOTfSUS8qRS/wfpUeNa5RnEdTtFQ9IcjpQ/nPrvJJsu9FqwlpjMwAR
- AQABwsBlBBgBCAAPBQJX2BjLAhsMBQkSzAMAAAoJEEV84KCARGXFUKcH/jqKETECkbyPktdP
- cWVqw2ZIsmGxMkIdnZTbPwhORseGXMHadQODayhU9GWfCDdSPkWDWzMamD+qStfl9MhlVT60
- HTbo6wu1W/ogUS70qQPTY9IfsvAj6f8TlSlK0eLMa3s2UxL2oe5FkNs2CnVeRlr4Yqvp/ZQV
- 6LXtew4GPRrmplUT/Cre9QIUqR4pxYCQaMoOXQQw3Y0csBwoDYUQujn3slbDJRIweHoppBzT
- rM6ZG5ldWQN3n3d71pVuv80guylX8+TSB8Mvkqwb5I36/NAFKl0CbGbTuQli7SmNiTAKilXc
- Y5Uh9PIrmixt0JrmGVRzke6+11mTjVlio/J5dCM=
-In-Reply-To: <ZwRgbNs4Hz-Drt2V@redaops>
+Subject: Re: [PATCH] tests: Wait for migration completion on destination QEMU
+ to avoid failures
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-stable@nongnu.org
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ marcandre.lureau@redhat.com, Fabiano Rosas <farosas@suse.de>
+References: <20241016152159.1168722-1-stefanb@linux.ibm.com>
+ <a3462080-f37d-45c9-a220-d3475b25997f@tls.msk.ru>
+Content-Language: en-US
+From: Stefan Berger <stefanb@linux.ibm.com>
+In-Reply-To: <a3462080-f37d-45c9-a220-d3475b25997f@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+X-TM-AS-GCONF: 00
+X-Proofpoint-GUID: CYGBSZw74hEX_yduHoN3Q92cmONePMIJ
+X-Proofpoint-ORIG-GUID: CYGBSZw74hEX_yduHoN3Q92cmONePMIJ
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
+ definitions=2024-10-15_01,2024-10-11_01,2024-09-30_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 mlxscore=0
+ lowpriorityscore=0 suspectscore=0 mlxlogscore=728 phishscore=0
+ adultscore=0 impostorscore=0 priorityscore=1501 spamscore=0 malwarescore=0
+ bulkscore=0 classifier=spam adjust=0 reason=mlx scancount=1
+ engine=8.19.0-2409260000 definitions=main-2410180113
+Received-SPF: pass client-ip=148.163.158.5; envelope-from=stefanb@linux.ibm.com;
+ helo=mx0b-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
+X-Spam_bar: --
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -72,49 +99,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 18 Oct 2024 16:31:02 -0000
+X-List-Received-Date: Fri, 18 Oct 2024 18:02:44 -0000
 
-08.10.2024 01:27, Tudor Gheorghiu wrote:
-> According to include/qapi/error.h:
-> * Please don't error_setg(&error_fatal, ...), use error_report() and
-> * exit(), because that's more obvious.
+
+
+On 10/18/24 12:23 PM, Michael Tokarev wrote:
+> 16.10.2024 18:21, Stefan Berger wrote:
+>> Rather than waiting for the completion of migration on the source side,
+>> wait for it on the destination QEMU side to avoid accessing the TPM TIS
+>> memory mapped registers before QEMU could restore their state. This
+>> error condition could be triggered on busy systems where the destination
+>> QEMU did not have enough time to restore the TIS state while the test 
+>> case
+>> was already reading its registers. The test case was for example reading
+>> the STS register and received an unexpected value (0xffffffff), which
+>> lead to a segmentation fault later on due to trying to read 0xffff bytes
+>> from the TIS into a buffer.
+>>
+>> Cc: qemu-stable@nongnu.org
+>> Reported-by: Fabiano Rosas <farosas@suse.de>
+>> Signed-off-by: Stefan Berger <stefanb@linux.ibm.com>
 > 
-> Patch updates all instances of error_setg(&error_fatal, ...) with
-> error_report(...), adds the explicit exit(1) and removes redundant
-> return statements.
+> Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 > 
-> Signed-off-by: Tudor Gheorghiu <tudor.reda@gmail.com>
-> Suggested-by: Thomas Huth <thuth@redhat.com>
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/2587
+> Queued for qemu-stable, though this one might better be applied through
+> the test tree.
 
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Thanks.  I actually already sent it as part of my PR today...
 
-
-> @@ -49,9 +50,9 @@ void allwinner_a10_bootrom_setup(AwA10State *s, BlockBackend *blk)
->       g_autofree uint8_t *buffer = g_new0(uint8_t, rom_size);
->   
->       if (blk_pread(blk, 8 * KiB, rom_size, buffer, 0) < 0) {
-> -        error_setg(&error_fatal, "%s: failed to read BlockBackend data",
-> +        error_report("%s: failed to read BlockBackend data",
->                      __func__);
-> -        return;
-> +        exit(1);
->       }
-
-I queued this patch to qemu-trivial, with additional change, - folding this __func__ to
-the previous line, since there's no need to split the line anymore.  Like this:
-
-      if (blk_pread(blk, 8 * KiB, rom_size, buffer, 0) < 0) {
--        error_setg(&error_fatal, "%s: failed to read BlockBackend data",
--                   __func__);
--        return;
-+        error_report("%s: failed to read BlockBackend data", __func__);
-+        exit(1);
-      }
-
-Here and in 2 other allwinner-* files.
-
-Thanks,
-
-/mjt
+> 
+> Thanks,
+> 
+> /mjt
 
