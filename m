@@ -1,71 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1t3v0M-00082u-EY
-	for mharc-qemu-trivial@gnu.org; Thu, 24 Oct 2024 06:23:48 -0400
+	id 1t4rSH-0007BJ-Kt
+	for mharc-qemu-trivial@gnu.org; Sat, 26 Oct 2024 20:48:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t3v0F-000821-Qr
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2024 06:23:41 -0400
-Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t3v0B-0007VP-Ap
- for qemu-trivial@nongnu.org; Thu, 24 Oct 2024 06:23:37 -0400
-Received: by mail-wr1-x431.google.com with SMTP id
- ffacd0b85a97d-37d4b0943c7so484145f8f.1
- for <qemu-trivial@nongnu.org>; Thu, 24 Oct 2024 03:23:33 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1729765412; x=1730370212; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=u8yCiViDHhU/JoC7HoI+6GT/YVXrZnCmwOJeWprysjE=;
- b=RwQLTDi0YfzUfBh5prQYbLikpXYBAboQufU1AxxVcgJ8aLnTU4Sbm81XSj8hACJzTD
- oCDh8dtZ3qtkpKidMpjubpzIMydYTyfPdQrOO5dZ+Fep7Tx3LrTBAcYq1I0VieIHq5aw
- eh221DPqnmdJS2huII2UZJ0w1gmMgpq4kR0OdpcSPBI8OlC6ik3BvY7rafZfi1oCdYaw
- p1ByXJPOrq2mZnQqX9XYu6ROXsBvsBnAL8dWidhExkOQhlYrz+wnZyCYLXtGfE5KDue7
- Jr2bH98bReJGZOtDfwj+wIwG7F7Eb5CIOKXSsROKh45TqUeRb+AlL+TYjJvSpRhqVbJu
- kYxw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1729765412; x=1730370212;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=u8yCiViDHhU/JoC7HoI+6GT/YVXrZnCmwOJeWprysjE=;
- b=atl7RehqHqPgXjd5g6zmD0wnjxLuVcQiUHWO0bGs/m1/xIL4NXH0fv5/f7SxFpVUcK
- v6RjHQLdY+n7WpmqD7To7uMbbVQvbF0NxoYTN+ysxYjNN7I3ZNCTj/xgQlegLr27mo7T
- BY1mFUc2CMiT3jG1Aq7rrrFGFhiG4mK9x6VJXHh7VPWs8cIpaZ3965a3s3P4thzEOcL/
- RRyaVvUZrtzZJBple/c6yIgAuNBqL9Ht5jr5TG7+S6k7gSStKMHiIenVIhmv1cVB1dyO
- dXuKItvmw7Tc74bIa1pjGqeudfV+wAfJ9+rv3jRNj+v77A2vDUDXJf5ckbmZNuS+Jj+h
- hkiA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXSIvlIicTOFakIEfZpKyracR+MfcK6q8ec8HY67mm4r705DH61hlauUeVKBFd5uXXRzYUrz3MLS6eRpng=@nongnu.org
-X-Gm-Message-State: AOJu0Yx6NtVuDur/JE5kf8FCcM0u+pK+fSQCjGpvAsmNlvan7oedQsGt
- jlXjT3athOfXLFXKQnS7o1NLBb5anHFae6ZBLp3W46nsPxiCF7q/hAgRZcPGP1IoYnUonrgLM0Z
- 9oniKn/Pu3mnAveLZoVvKPOAzjctJiSaajmJhqrt4NiBr+meK
-X-Google-Smtp-Source: AGHT+IHbT9y73W6rkexFcedasOsEPUrpFXN4/f51UMTPKqJhIx7JC+j7K/VDjVI7GaJgVEOiMBO9tskT3fLVfLeCGw4=
-X-Received: by 2002:adf:ef03:0:b0:37d:493c:f7b8 with SMTP id
- ffacd0b85a97d-3803ac84066mr1047826f8f.2.1729765412023; Thu, 24 Oct 2024
- 03:23:32 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1t4r6l-0004P8-CP; Sat, 26 Oct 2024 20:26:15 -0400
+Received: from mail-a.sr.ht ([46.23.81.152])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1t4r6h-0000Q5-20; Sat, 26 Oct 2024 20:26:12 -0400
+DKIM-Signature: a=rsa-sha256; bh=tvgSp1LVa2B1ISPg+tfS0oNA8PdFbts0KqLiCV7PTGE=; 
+ c=simple/simple; d=git.sr.ht;
+ h=From:Date:Subject:Reply-to:To:Cc; 
+ q=dns/txt; s=20240113; t=1729988769; v=1;
+ b=GL6K3jUKltM1vA0rE6KA4z3EtGBGQppK/2QRsEvNO36uQL2AlIP1XuMWA8mdG1EoDMhmDy8i
+ PogNeIYstjZ3gvG1Vb86F4w1jDknpu9c+u4JQK3+90euK6425dVRm0of20sJ97tiZt1ZKf9DvDu
+ G1lTb0X3hhiPy1ygxkS0W/9PAoHlOTRqJG98ku9QfU+5bOOTTw8rj1B5H8yrlFBgL1YfgNEjHZ2
+ PoNkg+Xdhg8IQKbDWb7s4Avdn5pTk3HORQaMdN3WUHucJgocjVaTLfhj69TdDRlUOyYQzQaQVBs
+ JRLz+iay3jM6QtGOdmqiRpgq4yMD4HZCDnvZ0ywcTM4SA==
+Received: from git.sr.ht (unknown [46.23.81.155])
+ by mail-a.sr.ht (Postfix) with ESMTPSA id E9FD9200CB;
+ Sun, 27 Oct 2024 00:26:08 +0000 (UTC)
+From: ~axelheider <axelheider@git.sr.ht>
+Date: Sun, 27 Oct 2024 00:26:08 +0000
+Subject: [PATCH qemu.git 0/1] hw/intc/sifive_plic: add const qualifier to
+ signature
 MIME-Version: 1.0
-References: <20241022061533.1304493-1-mjt@tls.msk.ru>
-In-Reply-To: <20241022061533.1304493-1-mjt@tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 24 Oct 2024 11:23:20 +0100
-Message-ID: <CAFEAcA9dULCs15JWsvX2AhQ801sj7hxUN=u3Xh827a4yRTvKpQ@mail.gmail.com>
-Subject: Re: [PULL 0/5] Trivial patches for 2024-10-22
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::431;
- envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Message-ID: <172998876893.15131.3277963343932581039-0@git.sr.ht>
+X-Mailer: git.sr.ht
+Reply-to: ~axelheider <axelheider@gmx.de>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=46.23.81.152; envelope-from=outgoing@sr.ht;
+ helo=mail-a.sr.ht
+X-Spam_score_int: 4
+X-Spam_score: 0.4
+X-Spam_bar: /
+X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, FREEMAIL_FORGED_REPLYTO=2.095,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 26 Oct 2024 20:48:27 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -77,31 +55,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 24 Oct 2024 10:23:41 -0000
+X-List-Received-Date: Sun, 27 Oct 2024 00:26:16 -0000
 
-On Tue, 22 Oct 2024 at 07:16, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
-> The following changes since commit cc5adbbd50d81555b8eb73602ec16fde40b55be4:
->
->   Merge tag 'pull-tpm-2024-10-18-1' of https://github.com/stefanberger/qemu-tpm into staging (2024-10-18 15:45:02 +0100)
->
-> are available in the Git repository at:
->
->   https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
->
-> for you to fetch changes up to 5ae3ec63631a907ba474094df99594cd545590df:
->
->   replace error_setg(&error_fatal, ...) with error_report() (2024-10-21 22:40:47 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2024-10-22
->
+Add const qualifier to function signature. The function does not modify
+the string. This allows passing read-only strings also.
 
+Axel Heider (1):
+  hw/intc/sifive_plic: add const qualifier to signature
 
-Applied, thanks.
+ hw/intc/sifive_plic.c         | 2 +-
+ include/hw/intc/sifive_plic.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/9.2
-for any user-visible changes.
-
--- PMM
+-- 
+2.45.2
 
