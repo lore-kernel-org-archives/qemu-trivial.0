@@ -1,89 +1,79 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1t84Gn-0003M9-Fd
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2024 16:05:54 -0500
+	id 1t8637-0002wh-GR
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2024 17:59:53 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1t84Gk-0003L1-Ey
- for qemu-trivial@nongnu.org; Mon, 04 Nov 2024 16:05:50 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1t84Gi-0005GY-4W
- for qemu-trivial@nongnu.org; Mon, 04 Nov 2024 16:05:49 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1730754346;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=y1W8qMTzmc/wmoX2fFpOYJHtHzp6CM0hX7vN3XVw4RY=;
- b=GrTd087E0h+eekVR3k7ja8CS0tMy1Wij9hYADUoQdCoIQu1OfV//X5TnJx6o+G/pz0V0+F
- P/mBnaN7oeDlgaB/JMEGQxY3NoJt+kbej+SexyYrIgAbqWJmX19vA3SvTG7L9FeF++Bl/g
- qTRsXigx5oPVci4P6Te+pk/PaPOrvPQ=
-Received: from mail-ed1-f70.google.com (mail-ed1-f70.google.com
- [209.85.208.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-628-ZIOAhdrMO42OkjoEGDb3aQ-1; Mon, 04 Nov 2024 16:05:45 -0500
-X-MC-Unique: ZIOAhdrMO42OkjoEGDb3aQ-1
-Received: by mail-ed1-f70.google.com with SMTP id
- 4fb4d7f45d1cf-5c95b050667so4705437a12.2
- for <qemu-trivial@nongnu.org>; Mon, 04 Nov 2024 13:05:45 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730754344; x=1731359144;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1t8635-0002vl-Hz; Mon, 04 Nov 2024 17:59:51 -0500
+Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1t8634-0007av-6m; Mon, 04 Nov 2024 17:59:51 -0500
+Received: by mail-ua1-x92f.google.com with SMTP id
+ a1e0cc1a2514c-84fc9005dccso1442212241.3; 
+ Mon, 04 Nov 2024 14:59:49 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1730761188; x=1731365988; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=y1W8qMTzmc/wmoX2fFpOYJHtHzp6CM0hX7vN3XVw4RY=;
- b=ZEkyhMeE4rJ01pBZr3aQMnnuqkDbn7DGC3nNdbbXbXYYVV6hkO87TMNMbHL9MDmQOJ
- +H+Bt7/izbe+u5dnMyJQVbAP2wfEyJP96JQz7y97dms7taAddBAyH14paHVpDgndEa9c
- AzRT2YXp4IzfuF4Mdu7CC6y1TTRAlmwicgypC/wvzN1fugUqj+RUoQQfPrnEst1HTfM3
- mYUz4lgdinOAGlZ9HNtg0DEbD0z92KNiI+bfR9kYHNPaZL6cOMRTyJ8Z0wcejPumjiER
- OlaMSoLdjqLXY4vddbVSGwBikxXZbB8bMVgRoR9UZI5o2pThXuJMfJ0VUARWE6qoYMlx
- 65Fw==
+ bh=Zvd9wShwo7OQ5/3OA47T4DwiJoGFqiTKeuO/fhc4yoE=;
+ b=KZWDjck4Xuro+6NJf2QyYqz8MhzMKbxxrcvMxvbst33So0Y1r7WwRgF3Ca7ams7UXQ
+ SFyCSXk70fLbwLy9YjDCIAJcOqf+YqAu3DGpoo/JI7jHbsrM1iuT6n+nGzy09MpQF1mi
+ vqlbtAJ8Nesujxv7xJwYmCxCvWAhwMqL/PUMXBvH6i4vP0kRmxGIEie5Rutngj3HJywb
+ n/0fBKx82/i/9J/wg2uCiDpejbIVvjby+OHUQj+Xb5VXsBEJp2zMN4+IEU/R9lZRbJxw
+ 9S+sCDc4rXTpmwquruHZPKkbFt0Oo0QuC23WkfhEDa3UHuEFi+22z804ROI+gR2eacFM
+ Sg9w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1730761188; x=1731365988;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Zvd9wShwo7OQ5/3OA47T4DwiJoGFqiTKeuO/fhc4yoE=;
+ b=J39zrZaiI1r3PThR7Es8k/L+W2lccTEnugqlqz9Bhg53TinxI4TBm24fHVkwnGYObF
+ MMG27fR0Nv2ebpWeyrTr4XECKSKwo0yNjqLq/GhhqqLZTMgmDZfRHyzWp5jQtoJ2Yf90
+ zvU0OiX8Y20HaJ5lH75Bu8CxEALtvhQJsThoFE0EJSS5Vqn3NWLuDbmmN0ak5dzpZePj
+ uiZ70ul8TRYCBiT5Lh4KL1gJF+8taEqX9Q7OBNuS6GHJi6Ofkm2OUScWzBhgYTEsOXlY
+ bk2KbzMub7rBgOKQ5ZDLVmk5F05yPaFBXeiY5JNLfWvtKZJsJCtvAWMWlC9aMqlNUiQg
+ qQhw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUrZeCgliqmDSxtl5covssKAacX0BMXF9JzJvzELc+mrX3CENWzfUF0ohWRF9Ujn/Fh+dyQeyUAxSmxpMc=@nongnu.org
-X-Gm-Message-State: AOJu0YzR6fgAVTl9TaQB4LSn88ou2r9TJuwdxdTW7lAcb5W2GAH4OZtU
- rV7Ja4YQvg5oypNnS2zlMdeHTUArLer6Ej2JaSqioHKPl6D6TSvuESIteevf4VmHAbI0tAmBw9v
- LIFs6I9NZntIEtuUmkwleYYQ8LteYewoatg1FlHSxLftBypELxLz0GO8=
-X-Received: by 2002:a05:6402:34d1:b0:5c9:6ae4:332e with SMTP id
- 4fb4d7f45d1cf-5cea967a284mr14175961a12.8.1730754344156; 
- Mon, 04 Nov 2024 13:05:44 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IEimZNn07o87EOuLe5muomRglOfncRjDqVqInm7Zg0iTEpVIJLheUmlDyDhrLLR0D5buExIzA==
-X-Received: by 2002:a05:6402:34d1:b0:5c9:6ae4:332e with SMTP id
- 4fb4d7f45d1cf-5cea967a284mr14175903a12.8.1730754342188; 
- Mon, 04 Nov 2024 13:05:42 -0800 (PST)
-Received: from redhat.com ([2.52.14.134]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-5cee6b0fac0sm293771a12.79.2024.11.04.13.05.39
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 04 Nov 2024 13:05:41 -0800 (PST)
-Date: Mon, 4 Nov 2024 16:05:37 -0500
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>,
- Jonathan Cameron <Jonathan.Cameron@huawei.com>,
- Ankit Agrawal <ankita@nvidia.com>, Igor Mammedov <imammedo@redhat.com>,
- "Huang, Ying" <ying.huang@intel.com>,
- Ani Sinha <anisinha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
-Subject: [PULL 04/65] hw/acpi/GI: Fix trivial parameter alignment issue.
-Message-ID: <dc55a90e295e05b6246b0b152a854612467e417f.1730754238.git.mst@redhat.com>
-References: <cover.1730754238.git.mst@redhat.com>
+ AJvYcCU61TDXwenjgMY2M5EG2wB7AJ/jlShSeV9aiwZhVGNghl06IVNijFr0ZnWcmCyuOt7GLifstWjCwX1o@nongnu.org,
+ AJvYcCWnNSAtdtZbVNfDdl85iALkZUpWeRA37Th+XMcMhVe2+WijnT2L88dzrLoZ5JgRhZQXn4wpPVTlquaH2GS+@nongnu.org,
+ AJvYcCXdyAOdGcF3RYipsLNuzxPeuG+/UcU5ZL4fILpZ22Smr5Dn5vCUl5rhmoDJjT+9ZzPp6EyulEtWrB7KLw==@nongnu.org
+X-Gm-Message-State: AOJu0YzOjIJah9T7/NnhSE4XgmbLAD/hqbBh7J18EKPBUxY8dT1OO12V
+ KVQ+nCDiV9MtucTIcWDszVloKboD78urSWnbSg/2q4BLc6uwqfva7Vq9F0i4735jW74EjcwQam5
+ XuyfQE3JvHVPGDbzQVP5YbTUq0yg=
+X-Google-Smtp-Source: AGHT+IFQ8X6U6m5Y/1OuUVZ+kDiGisJbrxbBtyKG3y/ZDBPGQdBP9gUWyFRRvCZ3AUQ8JhR2nBzQU8MZ/KXxZhLHPEg=
+X-Received: by 2002:a05:6102:3595:b0:4a4:841f:bb98 with SMTP id
+ ada2fe7eead31-4a9543a418bmr15786318137.24.1730761188628; Mon, 04 Nov 2024
+ 14:59:48 -0800 (PST)
 MIME-Version: 1.0
-In-Reply-To: <cover.1730754238.git.mst@redhat.com>
-X-Mailer: git-send-email 2.27.0.106.g8ac3dc51b1
-X-Mutt-Fcc: =sent
-X-Mimecast-Spam-Score: 0
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
-X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+References: <20241104163504.305955-1-thuth@redhat.com>
+In-Reply-To: <20241104163504.305955-1-thuth@redhat.com>
+From: Alistair Francis <alistair23@gmail.com>
+Date: Tue, 5 Nov 2024 08:59:22 +1000
+Message-ID: <CAKmqyKMR0yJph-iF0WKzqFu6rGZy9CPjhBOKCdkG7JnF2ONWHQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/char/sifive_uart: Fix broken UART on big endian hosts
+To: Thomas Huth <thuth@redhat.com>
+Cc: Alistair Francis <Alistair.Francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, 
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::92f;
+ envelope-from=alistair23@gmail.com; helo=mail-ua1-x92f.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,37 +86,49 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Nov 2024 21:05:50 -0000
+X-List-Received-Date: Mon, 04 Nov 2024 22:59:52 -0000
 
-From: Jonathan Cameron <Jonathan.Cameron@huawei.com>
+On Tue, Nov 5, 2024 at 2:35=E2=80=AFAM Thomas Huth <thuth@redhat.com> wrote=
+:
+>
+> Casting a "uint32_t *" to a "uint8_t *" to get to the lowest 8-bit
+> part of the value does not work on big endian hosts. We've got to
+> take the proper detour through an 8-bit variable.
+>
+> Fixes: 53c1557b23 ("hw/char: sifive_uart: Print uart characters async")
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Before making additional modification, tidy up this misleading indentation.
+Urgh!
 
-Reviewed-by: Ankit Agrawal <ankita@nvidia.com>
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
-Tested-by: "Huang, Ying" <ying.huang@intel.com>
-Signed-off-by: Jonathan Cameron <Jonathan.Cameron@huawei.com>
-Message-Id: <20240916171017.1841767-3-Jonathan.Cameron@huawei.com>
-Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
----
- hw/acpi/acpi_generic_initiator.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Thanks for the fix
 
-diff --git a/hw/acpi/acpi_generic_initiator.c b/hw/acpi/acpi_generic_initiator.c
-index 3d2b567999..4a02c19468 100644
---- a/hw/acpi/acpi_generic_initiator.c
-+++ b/hw/acpi/acpi_generic_initiator.c
-@@ -133,7 +133,7 @@ static int build_all_acpi_generic_initiators(Object *obj, void *opaque)
- 
-     dev_handle.segment = 0;
-     dev_handle.bdf = PCI_BUILD_BDF(pci_bus_num(pci_get_bus(pci_dev)),
--                                               pci_dev->devfn);
-+                                   pci_dev->devfn);
- 
-     build_srat_generic_pci_initiator_affinity(table_data,
-                                               gi->node, &dev_handle);
--- 
-MST
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
 
+Alistair
+
+> ---
+>  hw/char/sifive_uart.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
+> diff --git a/hw/char/sifive_uart.c b/hw/char/sifive_uart.c
+> index aeb45d3601..5ae2a29ed6 100644
+> --- a/hw/char/sifive_uart.c
+> +++ b/hw/char/sifive_uart.c
+> @@ -174,10 +174,11 @@ sifive_uart_write(void *opaque, hwaddr addr,
+>  {
+>      SiFiveUARTState *s =3D opaque;
+>      uint32_t value =3D val64;
+> +    uint8_t ch =3D value;
+>
+>      switch (addr) {
+>      case SIFIVE_UART_TXFIFO:
+> -        sifive_uart_write_tx_fifo(s, (uint8_t *) &value, 1);
+> +        sifive_uart_write_tx_fifo(s, &ch, 1);
+>          return;
+>      case SIFIVE_UART_IE:
+>          s->ie =3D val64;
+> --
+> 2.47.0
+>
+>
 
