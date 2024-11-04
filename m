@@ -1,58 +1,58 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1t8637-0002wh-GR
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2024 17:59:53 -0500
+	id 1t8693-0005kU-Au
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2024 18:06:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1t8635-0002vl-Hz; Mon, 04 Nov 2024 17:59:51 -0500
-Received: from mail-ua1-x92f.google.com ([2607:f8b0:4864:20::92f])
+ id 1t8690-0005jm-LI; Mon, 04 Nov 2024 18:05:58 -0500
+Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1t8634-0007av-6m; Mon, 04 Nov 2024 17:59:51 -0500
-Received: by mail-ua1-x92f.google.com with SMTP id
- a1e0cc1a2514c-84fc9005dccso1442212241.3; 
- Mon, 04 Nov 2024 14:59:49 -0800 (PST)
+ id 1t868z-0008Sa-9g; Mon, 04 Nov 2024 18:05:58 -0500
+Received: by mail-qk1-x733.google.com with SMTP id
+ af79cd13be357-7b1488fde46so386564285a.2; 
+ Mon, 04 Nov 2024 15:05:56 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1730761188; x=1731365988; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1730761555; x=1731366355; darn=nongnu.org;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Zvd9wShwo7OQ5/3OA47T4DwiJoGFqiTKeuO/fhc4yoE=;
- b=KZWDjck4Xuro+6NJf2QyYqz8MhzMKbxxrcvMxvbst33So0Y1r7WwRgF3Ca7ams7UXQ
- SFyCSXk70fLbwLy9YjDCIAJcOqf+YqAu3DGpoo/JI7jHbsrM1iuT6n+nGzy09MpQF1mi
- vqlbtAJ8Nesujxv7xJwYmCxCvWAhwMqL/PUMXBvH6i4vP0kRmxGIEie5Rutngj3HJywb
- n/0fBKx82/i/9J/wg2uCiDpejbIVvjby+OHUQj+Xb5VXsBEJp2zMN4+IEU/R9lZRbJxw
- 9S+sCDc4rXTpmwquruHZPKkbFt0Oo0QuC23WkfhEDa3UHuEFi+22z804ROI+gR2eacFM
- Sg9w==
+ bh=v7MANB0FoRxyVUOM9dZ2lrwnBCg67tKUbgcXwtlfdw4=;
+ b=I+knGR+av4584AioYP5aCtgF5DgqO2va1D9ibs2hd5856drd+CHV3cWpCeQkQLkQBz
+ lf1TtzD2OtptwVOPWbGqM+Covo+FKqpwKsu1D7eX1D9Z9Qui5WZtzxV2vB950uIZSZDt
+ L7D9jiI0IXuj1smEBdBm3RWQmQDV3/naCnBqSY4HXipzhkomVGanzFSEZltxTC7KGBFV
+ IMK6NdvyQtYBzRw2TPafbSd6QbeXpbGBSn7v1lQdgntiIkM8cH/ysVJ3IFzSf9n8vxnb
+ ekAkDCH+yqv1x1CU5bUas3r4Dtr6FJYm5uYQaa0kkOI3CiUuqFbVZbYRdYaDgT2k6kXy
+ Si8A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730761188; x=1731365988;
+ d=1e100.net; s=20230601; t=1730761555; x=1731366355;
  h=content-transfer-encoding:cc:to:subject:message-id:date:from
  :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=Zvd9wShwo7OQ5/3OA47T4DwiJoGFqiTKeuO/fhc4yoE=;
- b=J39zrZaiI1r3PThR7Es8k/L+W2lccTEnugqlqz9Bhg53TinxI4TBm24fHVkwnGYObF
- MMG27fR0Nv2ebpWeyrTr4XECKSKwo0yNjqLq/GhhqqLZTMgmDZfRHyzWp5jQtoJ2Yf90
- zvU0OiX8Y20HaJ5lH75Bu8CxEALtvhQJsThoFE0EJSS5Vqn3NWLuDbmmN0ak5dzpZePj
- uiZ70ul8TRYCBiT5Lh4KL1gJF+8taEqX9Q7OBNuS6GHJi6Ofkm2OUScWzBhgYTEsOXlY
- bk2KbzMub7rBgOKQ5ZDLVmk5F05yPaFBXeiY5JNLfWvtKZJsJCtvAWMWlC9aMqlNUiQg
- qQhw==
+ bh=v7MANB0FoRxyVUOM9dZ2lrwnBCg67tKUbgcXwtlfdw4=;
+ b=W53vUtGi0NKDARNx+cbBdNJJSVIVnDI/5nP2Q0QeywPKFKA1qqfABPEU860BOuEISx
+ bekb0nhemCOtXWajI0yzCE/uSs8yAPT7K1pXQzDWPzprLBoxQOLzjlpnW8MUADRdglo+
+ S8q81ZNU6a4H/PVnRl6enhnLwHhAe41dyJDx1x6tc8sQwkyGDBetF2kyifBG+iTPAvkF
+ kHTzQmGnejEKogp71r1OsPazKB+nkBLGwcnEkKCTk/gozrB+I9B/bditxiwiRbhz7GOR
+ 0jkkBCa0R1T+heKCsuolAAg9Xu/oeaxNhs61tmEhjAi4OE4I0imNe+3lf2N3BOlFMg7t
+ tvxw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCU61TDXwenjgMY2M5EG2wB7AJ/jlShSeV9aiwZhVGNghl06IVNijFr0ZnWcmCyuOt7GLifstWjCwX1o@nongnu.org,
- AJvYcCWnNSAtdtZbVNfDdl85iALkZUpWeRA37Th+XMcMhVe2+WijnT2L88dzrLoZ5JgRhZQXn4wpPVTlquaH2GS+@nongnu.org,
- AJvYcCXdyAOdGcF3RYipsLNuzxPeuG+/UcU5ZL4fILpZ22Smr5Dn5vCUl5rhmoDJjT+9ZzPp6EyulEtWrB7KLw==@nongnu.org
-X-Gm-Message-State: AOJu0YzOjIJah9T7/NnhSE4XgmbLAD/hqbBh7J18EKPBUxY8dT1OO12V
- KVQ+nCDiV9MtucTIcWDszVloKboD78urSWnbSg/2q4BLc6uwqfva7Vq9F0i4735jW74EjcwQam5
- XuyfQE3JvHVPGDbzQVP5YbTUq0yg=
-X-Google-Smtp-Source: AGHT+IFQ8X6U6m5Y/1OuUVZ+kDiGisJbrxbBtyKG3y/ZDBPGQdBP9gUWyFRRvCZ3AUQ8JhR2nBzQU8MZ/KXxZhLHPEg=
-X-Received: by 2002:a05:6102:3595:b0:4a4:841f:bb98 with SMTP id
- ada2fe7eead31-4a9543a418bmr15786318137.24.1730761188628; Mon, 04 Nov 2024
- 14:59:48 -0800 (PST)
+ AJvYcCUZL7VhZADByQ5UnuCpPQsVKcMI2oDf7L4fIJK3oEYbuJDJlv7qjg9WZklFN4cP/Ma7zLNBh4m/gibv@nongnu.org,
+ AJvYcCW1EJ6WBf9/0wTN8wAd8y+5v8UXsz6KJArUctYkUnG/+VFJSP49YshlM1xjSydags4UPU7C/XT2jEdg/A5g@nongnu.org,
+ AJvYcCWO+qwH27OaaFg07+j+uAGo+b/vGCZGPdWMM08d+iq0Cl8LWjEBC3H/84Aem/A4B3VSfxoRRSURezkoHA==@nongnu.org
+X-Gm-Message-State: AOJu0Yw5woqof++lz518fhNUOr+jA8eXXUQ+mT03jmwexWOG/11BvLo9
+ QX4MBkaNWyovtW3TKoTmGfDdiYY/uWNzc/xFMeLBciLrCs0HOoHv1Oc3R79+gV6KHd3puCMw6xE
+ wAi4eTwuwtOLAgI9IJC0WCPEPET8=
+X-Google-Smtp-Source: AGHT+IFIfaTheuuvcvF0vo7sFE5da7dv6arCXGGGI6OdGggk5wPsifYEg3Mw3AkBrT7nQHikIYIWHp4Fe9V9/haj1Mg=
+X-Received: by 2002:a05:620a:2904:b0:7a9:a991:f6d7 with SMTP id
+ af79cd13be357-7b193f4dcb4mr4731034485a.48.1730761555561; Mon, 04 Nov 2024
+ 15:05:55 -0800 (PST)
 MIME-Version: 1.0
 References: <20241104163504.305955-1-thuth@redhat.com>
 In-Reply-To: <20241104163504.305955-1-thuth@redhat.com>
 From: Alistair Francis <alistair23@gmail.com>
-Date: Tue, 5 Nov 2024 08:59:22 +1000
-Message-ID: <CAKmqyKMR0yJph-iF0WKzqFu6rGZy9CPjhBOKCdkG7JnF2ONWHQ@mail.gmail.com>
+Date: Tue, 5 Nov 2024 09:05:29 +1000
+Message-ID: <CAKmqyKPYmv1VfMQKMa+fTzaSmwpbwGAUSvhdZTAPYfmPpc+zUQ@mail.gmail.com>
 Subject: Re: [PATCH] hw/char/sifive_uart: Fix broken UART on big endian hosts
 To: Thomas Huth <thuth@redhat.com>
 Cc: Alistair Francis <Alistair.Francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
@@ -64,8 +64,8 @@ Cc: Alistair Francis <Alistair.Francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::92f;
- envelope-from=alistair23@gmail.com; helo=mail-ua1-x92f.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::733;
+ envelope-from=alistair23@gmail.com; helo=mail-qk1-x733.google.com
 X-Spam_score_int: -17
 X-Spam_score: -1.8
 X-Spam_bar: -
@@ -86,7 +86,7 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Nov 2024 22:59:52 -0000
+X-List-Received-Date: Mon, 04 Nov 2024 23:05:59 -0000
 
 On Tue, Nov 5, 2024 at 2:35=E2=80=AFAM Thomas Huth <thuth@redhat.com> wrote=
 :
@@ -98,11 +98,9 @@ On Tue, Nov 5, 2024 at 2:35=E2=80=AFAM Thomas Huth <thuth@redhat.com> wrote=
 > Fixes: 53c1557b23 ("hw/char: sifive_uart: Print uart characters async")
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Urgh!
+Thanks!
 
-Thanks for the fix
-
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Applied to riscv-to-apply.next
 
 Alistair
 
