@@ -1,77 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1t7xTS-0000pG-KB
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2024 08:50:30 -0500
+	id 1t8037-0007ql-34
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2024 11:35:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t7xTQ-0000or-IL
- for qemu-trivial@nongnu.org; Mon, 04 Nov 2024 08:50:29 -0500
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1t7xTO-0003xa-J6
- for qemu-trivial@nongnu.org; Mon, 04 Nov 2024 08:50:28 -0500
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-5cacb76e924so5466675a12.0
- for <qemu-trivial@nongnu.org>; Mon, 04 Nov 2024 05:50:26 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1730728225; x=1731333025; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=dS1gayiJU2kFB+GNxmbWJy3bmw1afim8OPvFaUJ+fX8=;
- b=JAEPYEMXsajplrHf9LIN/3MIN7vbdCAYUk1M9e4AkAC62vMGoxZQ29EJUq3zgFUdLN
- x0mjt9g+StvjAEAZk7jshjuFpwnfOGuGKx2OAG+1WM9Au9j3WkvQzmuXlKEUkU/dVYgW
- dzkC0tsqQtCTGi8bwuhkSmtAnBfKixuunJ5Dn84XSYI0wR/WZCEkcyTwl9xOvdw+OSod
- ujN+P1g/uhmaeTa/abgIruQchHUr/NFIZvV4PzZ2qspMn1htJgHdO5lZFKNYKdBvRuI8
- fe1Z6qGnDbmO1Tc69x6g7UatCluWlsC0n8SI9KgN6aSNeyJSYE5ogMEwcwS9I3JAsJxQ
- tY3A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1730728225; x=1731333025;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=dS1gayiJU2kFB+GNxmbWJy3bmw1afim8OPvFaUJ+fX8=;
- b=YsfvTbCQXzX6FzxYAyfkb7wKZRCKAOA1ri59HhI8F5WPR0pjvWiqWes5m8Y4NEfhVI
- +c+e9ZlKugFmTx7K5EITUmjBQtR7xA+ejIC57JMxjDgtXVdLRliwoOKeywnCEcY5yVVf
- V/knJtWPwTkW7ZNF4MoUQjgq2WX1RxCFajU79VycCp1R8eZTzksfOjAYSvbzMlpxybRi
- hVm+1XS0rHtEUlwTij++JK9EZPbuoaM08LaTZQw7j6GaH8CLAAcV6MGbGhugkuBHsdLl
- mVykov/YPQguO0td3yLPNxAI351pnU9fVU+jR66u5CGgD0rxrwhtk29Dr57DCCxyGcv1
- uCPw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWx4vkp/Z2xSWoven9VKNO1s1N/E1FzfArb13eKmE29PVgHz6z7FsZ16DqnMtctDWcNAlGfIUHpc1IT0gI=@nongnu.org
-X-Gm-Message-State: AOJu0Yz4cMMSdHWer/S5ckk1IOiMdbj7+sv9uEj5Mcjr+9A9AOlVSKdM
- nWD++LFZhg0bvBJkriKsPwvC58Sl5GAJRKvWQlOTV66mjo48CMC1v7Lvus4yeG3QGUz/8OG8Fnp
- //Wlij5ZApgmBZXkXyblBIMA6jzyJlqTievnR4g==
-X-Google-Smtp-Source: AGHT+IHHavkMWX1D/OD3UnB/vwbifrtrkLBZoShFb+46QOC+tKCc88HSiAlLdH677LH0cUTfMohVmsQqLWWjCCV1C0w=
-X-Received: by 2002:a05:6402:2695:b0:5c2:6d16:ad5e with SMTP id
- 4fb4d7f45d1cf-5ceb92a7bc4mr9226036a12.19.1730728224900; Mon, 04 Nov 2024
- 05:50:24 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t8033-0007pv-Hw
+ for qemu-trivial@nongnu.org; Mon, 04 Nov 2024 11:35:25 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t8032-000306-4Y
+ for qemu-trivial@nongnu.org; Mon, 04 Nov 2024 11:35:25 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1730738122;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=/48wIK5DE80qGmqw0yIE/LG8E3OVVASTxKv9PepSHdI=;
+ b=hTkUfkX/SXmASxcGh1ReCT7rb3Pf2POgPIOo73z/zr3+wN/THezbfUst8vMMai0m0UZ7nW
+ fwH6WCA5SC8jJGjAaFg1vwEZGbtrllrl7MNr4WY0ntpK2Tg0wIO2X5bHGNQEwIe+kMeo1u
+ RQKwy6P2P0bVM7LteWzUjQGh5xEAFW8=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-587-L2dr0qugPVmv6S8XjEBABg-1; Mon,
+ 04 Nov 2024 11:35:17 -0500
+X-MC-Unique: L2dr0qugPVmv6S8XjEBABg-1
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4B2011956064; Mon,  4 Nov 2024 16:35:16 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.39.193.126])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id D6ADB19560A2; Mon,  4 Nov 2024 16:35:10 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Alistair Francis <Alistair.Francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org
+Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Thomas Huth <thuth@redhat.com>
+Subject: [PATCH] hw/char/sifive_uart: Fix broken UART on big endian hosts
+Date: Mon,  4 Nov 2024 17:35:04 +0100
+Message-ID: <20241104163504.305955-1-thuth@redhat.com>
 MIME-Version: 1.0
-References: <20241103143330.123596-1-shentey@gmail.com>
-In-Reply-To: <20241103143330.123596-1-shentey@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 4 Nov 2024 13:50:13 +0000
-Message-ID: <CAFEAcA_6TTBzuP=wcweMZLJKSNVz4qxT+yHOVUmPqZU-VmWPQg@mail.gmail.com>
-Subject: Re: [PATCH v2 0/4] Trivial ARM changes
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Paolo Bonzini <pbonzini@redhat.com>,
- Jean-Christophe Dubois <jcd@tribudubois.net>, qemu-arm@nongnu.org, 
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,27 +71,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Nov 2024 13:50:29 -0000
+X-List-Received-Date: Mon, 04 Nov 2024 16:35:25 -0000
 
-On Sun, 3 Nov 2024 at 14:34, Bernhard Beschow <shentey@gmail.com> wrote:
->
-> This series improves the tracing experience in three devices used in ARM
-> context. It also removes a duplicate statement in an IMX watchdog.
->
-> v2:
-> * Fix format strings in trace events for imx_gpt (Phil)
-> * Add patch for tmp105 which improves tracing
->
-> Bernhard Beschow (4):
->   hw/rtc/ds1338: Trace send and receive operations
->   hw/timer/imx_gpt: Convert DPRINTF to trace events
->   hw/watchdog/wdt_imx2: Remove redundant assignment
->   hw/sensor/tmp105: Convert printf() to trace event, add tracing for
->     read/write access
+Casting a "uint32_t *" to a "uint8_t *" to get to the lowest 8-bit
+part of the value does not work on big endian hosts. We've got to
+take the proper detour through an 8-bit variable.
 
+Fixes: 53c1557b23 ("hw/char: sifive_uart: Print uart characters async")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/char/sifive_uart.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
+diff --git a/hw/char/sifive_uart.c b/hw/char/sifive_uart.c
+index aeb45d3601..5ae2a29ed6 100644
+--- a/hw/char/sifive_uart.c
++++ b/hw/char/sifive_uart.c
+@@ -174,10 +174,11 @@ sifive_uart_write(void *opaque, hwaddr addr,
+ {
+     SiFiveUARTState *s = opaque;
+     uint32_t value = val64;
++    uint8_t ch = value;
+ 
+     switch (addr) {
+     case SIFIVE_UART_TXFIFO:
+-        sifive_uart_write_tx_fifo(s, (uint8_t *) &value, 1);
++        sifive_uart_write_tx_fifo(s, &ch, 1);
+         return;
+     case SIFIVE_UART_IE:
+         s->ie = val64;
+-- 
+2.47.0
 
-Applied to target-arm.next, thanks.
-
--- PMM
 
