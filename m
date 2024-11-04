@@ -1,64 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1t8037-0007ql-34
-	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2024 11:35:29 -0500
+	id 1t806V-0000kd-JH
+	for mharc-qemu-trivial@gnu.org; Mon, 04 Nov 2024 11:39:00 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t8033-0007pv-Hw
- for qemu-trivial@nongnu.org; Mon, 04 Nov 2024 11:35:25 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1t8032-000306-4Y
- for qemu-trivial@nongnu.org; Mon, 04 Nov 2024 11:35:25 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1730738122;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=/48wIK5DE80qGmqw0yIE/LG8E3OVVASTxKv9PepSHdI=;
- b=hTkUfkX/SXmASxcGh1ReCT7rb3Pf2POgPIOo73z/zr3+wN/THezbfUst8vMMai0m0UZ7nW
- fwH6WCA5SC8jJGjAaFg1vwEZGbtrllrl7MNr4WY0ntpK2Tg0wIO2X5bHGNQEwIe+kMeo1u
- RQKwy6P2P0bVM7LteWzUjQGh5xEAFW8=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-587-L2dr0qugPVmv6S8XjEBABg-1; Mon,
- 04 Nov 2024 11:35:17 -0500
-X-MC-Unique: L2dr0qugPVmv6S8XjEBABg-1
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4B2011956064; Mon,  4 Nov 2024 16:35:16 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.193.126])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D6ADB19560A2; Mon,  4 Nov 2024 16:35:10 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Alistair Francis <Alistair.Francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
- Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Thomas Huth <thuth@redhat.com>
-Subject: [PATCH] hw/char/sifive_uart: Fix broken UART on big endian hosts
-Date: Mon,  4 Nov 2024 17:35:04 +0100
-Message-ID: <20241104163504.305955-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t806P-0000jq-Ti
+ for qemu-trivial@nongnu.org; Mon, 04 Nov 2024 11:38:55 -0500
+Received: from mail-wr1-x431.google.com ([2a00:1450:4864:20::431])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1t806N-0003C0-9T
+ for qemu-trivial@nongnu.org; Mon, 04 Nov 2024 11:38:53 -0500
+Received: by mail-wr1-x431.google.com with SMTP id
+ ffacd0b85a97d-37d538fe5f2so2958126f8f.2
+ for <qemu-trivial@nongnu.org>; Mon, 04 Nov 2024 08:38:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1730738329; x=1731343129; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=fXdY23zSMIOxlisonKVew/D+w5UQnBSolsTL3tXLl+o=;
+ b=Xw7SgvD6Bj5ovIy51e73/fCB52dYDxUgD6arPn8dMerminCNUx0vfox5syuuar5ROy
+ B0SNrnt9/ExgwzVLPDl0GplM+T7tuhjRPBI3DAeI9xjZZe7o7zzLloUTZ0j9aV3WNPaC
+ MlVaUsG5zTcssIlacmyXi/pb440U9VhhdVJZhYOQ1D2xnRZnBayG+rd6W31AOloCpONo
+ FDT6SrnxHux8hjnWt+xjcjkDX7wv04vLzrsg5zNQ4XNld/qOBrqbGFE/ZBOfFyJesYpg
+ xPY6igYZGcUr8p0zpqH8dmZpabQL30T7uHEHbYJ28KhhwvdhmPqYQ5ljOxB63ieUuVj5
+ f8Lg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1730738329; x=1731343129;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=fXdY23zSMIOxlisonKVew/D+w5UQnBSolsTL3tXLl+o=;
+ b=RrhSnP6rFqrTnh5ZLZBSvbJE9yEfZva3b2zreKwVJ22CaCM82cv5cL3CtaQF2fw2DP
+ U233rXUjjl9MaXsEP0k2XSqMv70v1LD6kTVjpA8C94HauwZttViZFKZvfLnu/YrnIDo2
+ 88xKdkA0hG/oe3YhXfhiTABe1vkDCYtDciOxmHMHFosQBldOuumrBbFVRErUC097eeyE
+ VfN9TBoPSopLPKm4M+KzlID2mHelfAxVwJj+UbgX7W8CshpxXxpW5epeE4tj8n4+wdNC
+ L8et7Gnz4ols7SkvdBqqtedRqJ0LFPb3Op950R47s9iuSbCjPfj33x9oqexVsFwQznsF
+ dLiQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWhrHZoxiQLbppUsdw87UokfdOaSGky61ZfJ4pFvqZoc/96jdz25JP6PvGkftzRrpVSaYD5eLn472vYnN8=@nongnu.org
+X-Gm-Message-State: AOJu0YwWAZ5ygC4n0lwS+OYpE63uar58OiH+AIzTktGBqQGq8tS8HxQZ
+ +IDc1v+PTRCyuvtzHLWa5Hsaf7I0d9xdSY7exFauzrbuvJOyi6HooGiYEXXHEKARolzhePGJW8K
+ 6NDTLz/tEODHkDTjcWXFxcVYfIqXIlFgWflZiGQ==
+X-Google-Smtp-Source: AGHT+IGsR7nnVO5svFFhdHh94HtSd/pkYdD8et1+URk6CDOu917YA6x1iDZVy5BMf96keIQQ1JD2/ZlSoPTrP3NQim4=
+X-Received: by 2002:a05:6000:1446:b0:37d:52db:a0a7 with SMTP id
+ ffacd0b85a97d-381be7adcf9mr12674763f8f.2.1730738328924; Mon, 04 Nov 2024
+ 08:38:48 -0800 (PST)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -23
-X-Spam_score: -2.4
+References: <20241104163504.305955-1-thuth@redhat.com>
+In-Reply-To: <20241104163504.305955-1-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 4 Nov 2024 16:38:37 +0000
+Message-ID: <CAFEAcA9RjN+bZ4PWMBwrF7GosKpWg=oVyHb7kfK0anW2a4Ww3g@mail.gmail.com>
+Subject: Re: [PATCH] hw/char/sifive_uart: Fix broken UART on big endian hosts
+To: Thomas Huth <thuth@redhat.com>
+Cc: Alistair Francis <Alistair.Francis@wdc.com>, Bin Meng <bmeng.cn@gmail.com>,
+ Palmer Dabbelt <palmer@dabbelt.com>, qemu-riscv@nongnu.org, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, 
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::431;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wr1-x431.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.34,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -71,36 +83,23 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 04 Nov 2024 16:35:25 -0000
+X-List-Received-Date: Mon, 04 Nov 2024 16:38:55 -0000
 
-Casting a "uint32_t *" to a "uint8_t *" to get to the lowest 8-bit
-part of the value does not work on big endian hosts. We've got to
-take the proper detour through an 8-bit variable.
+On Mon, 4 Nov 2024 at 16:35, Thomas Huth <thuth@redhat.com> wrote:
+>
+> Casting a "uint32_t *" to a "uint8_t *" to get to the lowest 8-bit
+> part of the value does not work on big endian hosts. We've got to
+> take the proper detour through an 8-bit variable.
+>
+> Fixes: 53c1557b23 ("hw/char: sifive_uart: Print uart characters async")
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/char/sifive_uart.c | 3 ++-
+>  1 file changed, 2 insertions(+), 1 deletion(-)
+>
 
-Fixes: 53c1557b23 ("hw/char: sifive_uart: Print uart characters async")
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/char/sifive_uart.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/hw/char/sifive_uart.c b/hw/char/sifive_uart.c
-index aeb45d3601..5ae2a29ed6 100644
---- a/hw/char/sifive_uart.c
-+++ b/hw/char/sifive_uart.c
-@@ -174,10 +174,11 @@ sifive_uart_write(void *opaque, hwaddr addr,
- {
-     SiFiveUARTState *s = opaque;
-     uint32_t value = val64;
-+    uint8_t ch = value;
- 
-     switch (addr) {
-     case SIFIVE_UART_TXFIFO:
--        sifive_uart_write_tx_fifo(s, (uint8_t *) &value, 1);
-+        sifive_uart_write_tx_fifo(s, &ch, 1);
-         return;
-     case SIFIVE_UART_IE:
-         s->ie = val64;
--- 
-2.47.0
-
+thanks
+-- PMM
 
