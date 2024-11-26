@@ -1,46 +1,46 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tFyBI-0006nr-PD
-	for mharc-qemu-trivial@gnu.org; Tue, 26 Nov 2024 11:12:53 -0500
+	id 1tFyBL-0006pC-Q7
+	for mharc-qemu-trivial@gnu.org; Tue, 26 Nov 2024 11:12:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1tFyBD-0006mc-0g; Tue, 26 Nov 2024 11:12:47 -0500
+ id 1tFyBC-0006mX-2M; Tue, 26 Nov 2024 11:12:47 -0500
 Received: from mgamail.intel.com ([192.198.163.16])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1tFyBB-0000g2-Fu; Tue, 26 Nov 2024 11:12:46 -0500
+ id 1tFyBA-0000fl-6T; Tue, 26 Nov 2024 11:12:45 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1732637566; x=1764173566;
+ t=1732637564; x=1764173564;
  h=from:to:cc:subject:date:message-id:in-reply-to:
  references:mime-version:content-transfer-encoding;
- bh=0oaJEibH+FOP2hyVlMA0xFu8KZX3CJL3iZrEw7r/6/A=;
- b=mBrV4MOapO+fbS5PG5yobu47fv9v4nR0FGp3psqLec6fVLnp2XVonUDn
- zjzFsUW1soBTTnDYSPv0uYPTLR9lieKSfSAgoJNHJqMP2qr0YsLh9SIed
- +7oqPI8lhezWmuuUawYsNlKIIG5BPdNV8h6JtKnT7QPyS5XJesZCsGL1v
- XUFfo8kqQ6AFzrdxSZ3rWiXLilRPaNrA29aOv7e7CJngRdDq35NMR4S5g
- FIDjFJjljoPhVLEF8ASC3ImXUJ9YqstoQAwwn9cHMPUS0rGz2DUd+Jj6U
- Nw9rSrZ7zTsxDfWNeG4kq8D4lUN2l53aJYP7RF65XVcMU4/TFUhYb8SeS g==;
-X-CSE-ConnectionGUID: eSJ/AjKQTaec6aGlO6FuiQ==
-X-CSE-MsgGUID: woKecO4dSVe8fMrQMXvMDw==
-X-IronPort-AV: E=McAfee;i="6700,10204,11268"; a="20399395"
-X-IronPort-AV: E=Sophos;i="6.12,186,1728975600"; d="scan'208";a="20399395"
+ bh=wTYR6sEj7FpEEgZC6d2tvMR+RRZObWL5PjGhWIrCUt8=;
+ b=h6hnXYzX2IsLR4iUzgZzVdZuWvuWQeFdS8/3I1LwXukUITKCgnbQ3/Yr
+ 5NGHMLyXzLYZS/8t4aiPlUQGDd50BAcyTHmCN3rr5nkp3gd8wDUBrlfLo
+ j+WN8xX7xj0iCc/WDcmZ+hxVm5/03+OPCI0E8pjQQVER2lsZaqGoAKkSl
+ euFu2TvxdhNUZbQtSfCnSRHElsbXIkCnEXFF5ByGctRJqKXWw6MaHdWZp
+ I8IXgdBmdqkW328Pc8tzOwM6FrelQwdzDvAngDU7D5U2qkhFzPcsmNqBx
+ Lp61rlDbtjUxvVIjMc041kbUj7arSjioglc/BfZ6/wvUpYMsyNwg8RGyB g==;
+X-CSE-ConnectionGUID: f7Awuw6WRFGGZEBrVVlScw==
+X-CSE-MsgGUID: ZjOBy3F7Qhm6/HtoowB0vg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11268"; a="20399391"
+X-IronPort-AV: E=Sophos;i="6.12,186,1728975600"; d="scan'208";a="20399391"
 Received: from fmviesa006.fm.intel.com ([10.60.135.146])
  by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Nov 2024 08:12:44 -0800
-X-CSE-ConnectionGUID: 0dwSVV9BTJua9o0puNA80Q==
-X-CSE-MsgGUID: Q2eu35jvQRyaxEmQR9L0aA==
+ 26 Nov 2024 08:12:42 -0800
+X-CSE-ConnectionGUID: YyO1dzIaRN6giLhVDvrs8Q==
+X-CSE-MsgGUID: OWDh59O8S1OjuQo/xA8a3w==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.12,186,1728975600"; d="scan'208";a="91277672"
+X-IronPort-AV: E=Sophos;i="6.12,186,1728975600"; d="scan'208";a="91277668"
 Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.36])
- by fmviesa006.fm.intel.com with ESMTP; 26 Nov 2024 08:12:43 -0800
+ by fmviesa006.fm.intel.com with ESMTP; 26 Nov 2024 08:12:41 -0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: Paolo Bonzini <pbonzini@redhat.com>, "Michael S . Tsirkin" <mst@redhat.com>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
  Zhao Liu <zhao1.liu@intel.com>
-Subject: [PATCH 2/2] hw/timer/hpet: Drop the unused macro
-Date: Wed, 27 Nov 2024 00:30:46 +0800
-Message-Id: <20241126163046.3344931-3-zhao1.liu@intel.com>
+Subject: [PATCH 1/2] hw/timer/hpet: Fix comment about capabilities register
+Date: Wed, 27 Nov 2024 00:30:45 +0800
+Message-Id: <20241126163046.3344931-2-zhao1.liu@intel.com>
 X-Mailer: git-send-email 2.34.1
 In-Reply-To: <20241126163046.3344931-1-zhao1.liu@intel.com>
 References: <20241126163046.3344931-1-zhao1.liu@intel.com>
@@ -70,29 +70,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Tue, 26 Nov 2024 16:12:48 -0000
 
-HPET_TN_CFG_BITS_READONLY_OR_RESERVED is not used in any place since
-HPET_TN_CFG_WRITE_MASK has been already used to check and fix the
-writable bits in hpet_ram_write().
+HPETState.capability stores the emulated value for "general capabilities
+and id register" instead of "main counter register".
 
-Drop this unused macro.
+Fix the comment to accurately reflect this.
 
 Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- include/hw/timer/hpet.h | 1 -
- 1 file changed, 1 deletion(-)
+ hw/timer/hpet.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/hw/timer/hpet.h b/include/hw/timer/hpet.h
-index d17a8d43199e..71e8c62453d1 100644
---- a/include/hw/timer/hpet.h
-+++ b/include/hw/timer/hpet.h
-@@ -58,7 +58,6 @@
- #define HPET_TN_CFG_WRITE_MASK  0x7f4e
- #define HPET_TN_INT_ROUTE_SHIFT      9
- #define HPET_TN_INT_ROUTE_CAP_SHIFT 32
--#define HPET_TN_CFG_BITS_READONLY_OR_RESERVED 0xffff80b1U
+diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
+index 5399f1b2a3f7..0f3dfe9f945b 100644
+--- a/hw/timer/hpet.c
++++ b/hw/timer/hpet.c
+@@ -736,7 +736,7 @@ static void hpet_realize(DeviceState *dev, Error **errp)
+         timer->state = s;
+     }
  
- struct hpet_fw_entry
- {
+-    /* 64-bit main counter; LegacyReplacementRoute. */
++    /* 64-bit General Capabilities and ID Register; LegacyReplacementRoute. */
+     s->capability = 0x8086a001ULL;
+     s->capability |= (s->num_timers - 1) << HPET_ID_NUM_TIM_SHIFT;
+     s->capability |= ((uint64_t)(HPET_CLK_PERIOD * FS_PER_NS) << 32);
 -- 
 2.34.1
 
