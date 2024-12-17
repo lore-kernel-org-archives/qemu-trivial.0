@@ -1,199 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tNF6F-00087h-Av
-	for mharc-qemu-trivial@gnu.org; Mon, 16 Dec 2024 12:41:43 -0500
+	id 1tNMXh-0004ul-Qx
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Dec 2024 20:38:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonah.palmer@oracle.com>)
- id 1tNEw3-0002Tx-M1; Mon, 16 Dec 2024 12:31:12 -0500
-Received: from mx0b-00069f02.pphosted.com ([205.220.177.32])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jonah.palmer@oracle.com>)
- id 1tNEvy-0002fn-K7; Mon, 16 Dec 2024 12:31:11 -0500
-Received: from pps.filterd (m0333520.ppops.net [127.0.0.1])
- by mx0b-00069f02.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 4BGHQjLn017668;
- Mon, 16 Dec 2024 17:31:02 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=oracle.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=
- corp-2023-11-20; bh=9cQp9BPYiFSaAROTNU9Nm+z7GjpYVv+7Z9yozPQhydg=; b=
- oQrs04Zv0utOkIC5rSZTc2mevCZzsPCXCLRcnkFFm+r7yy2WUBx0clor/YvgOgJM
- uahlEtZ+gLlFdIhEYjyjM9ZjHOs6KUVk+NQY9g4HVOuBwqt4x1S0UkISZmyF0Dst
- IcIUcMuV2To8gqtIrzEzM3KULUdYNmTNxiynqQEfcrfQQj5r4voGz7aVwmkRbYhv
- WuDmBrRTfze5Qbi1irVHqwoWMGMCoP7yj3BWepnRPaARCG3XMWZ9V2Hq28ZztAC0
- R0gcxA3IYj26QWthIxmTmh11RharmaLxy8/l9fSjIr9sBb4zearUJvAPIaVAeUzz
- cxOdFQDbVfhurVqxhasMsA==
-Received: from phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com
- (phxpaimrmta02.appoci.oracle.com [147.154.114.232])
- by mx0b-00069f02.pphosted.com (PPS) with ESMTPS id 43h22ckuk2-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 16 Dec 2024 17:31:02 +0000 (GMT)
-Received: from pps.filterd
- (phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com [127.0.0.1])
- by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (8.18.1.2/8.18.1.2)
- with ESMTP id 4BGH034Q006411; Mon, 16 Dec 2024 17:31:01 GMT
-Received: from nam02-dm3-obe.outbound.protection.outlook.com
- (mail-dm3nam02lp2045.outbound.protection.outlook.com [104.47.56.45])
- by phxpaimrmta02.imrmtpd1.prodappphxaev1.oraclevcn.com (PPS) with ESMTPS id
- 43h0f8a81h-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Mon, 16 Dec 2024 17:31:01 +0000
-ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
- b=IPb7b8MZaLsIgGGu9+m9z+iwMgqb+CGkIlNMIByi5CRys8iUjiRIWeCqbk7/fufBB7aPo+hBA1Dqa+zV0P9ANsV3hDiBa92+rJQbViO9kM1PFRh3N3reH272yj0xrtBJ18fGVR/AQ7npcjR2rDmMLtxtXIA4nSP5aln74iykKiuV6Z45s6SelbwH6X4oHtGcBd46CBzQs9pf1LqjAcf47D5OFlzWGbb3SCJ4o6UnyGwDrNNEK2wJIJGqkHp85phPrRBQWOWcRBoVUNcrQwBB78Lmt59PZyVfEvPS7gG63W8XrmnRdetUspQL8PShfBqqMVU91IBXDawtaC1oUhvioQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
- s=arcselector10001;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
- bh=9cQp9BPYiFSaAROTNU9Nm+z7GjpYVv+7Z9yozPQhydg=;
- b=iZFYxELq1xgDlSBADvPqrvA+bGz4mqcePVISIDRFNnQrqO6evf5Fo5agzizDoUn6O7p9I8kD3yfk8CRzfB9i/X3BTqNbB/bzbhQVNen3B5kVXqVONxWpWGunSPZnjwXV4n36xNtiDRTPqAR5dC48S9HnMhdFcL6ri3VdS437U5D4oF37rHN/MDilnQWXNH4FZMGjgdVlqG006y1j+siG5ixcE1firqgYm/myI6xT2znLc7J1vpQS9nVu3QYvUnlYMKbSzFRydHAFJ7c9EqDmOGDbdiuI/JovcGL+I787BFlRHok+LuGHns88y8kTrr4QHqKFxhNeq02JCw7CxunBoA==
-ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
- smtp.mailfrom=oracle.com; dmarc=pass action=none header.from=oracle.com;
- dkim=pass header.d=oracle.com; arc=none
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1tNMXY-0004qi-Ub
+ for qemu-trivial@nongnu.org; Mon, 16 Dec 2024 20:38:25 -0500
+Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1tNMXV-0001Ef-O0
+ for qemu-trivial@nongnu.org; Mon, 16 Dec 2024 20:38:23 -0500
+Received: by mail-pg1-x534.google.com with SMTP id
+ 41be03b00d2f7-7f46d5d1ad5so3430484a12.3
+ for <qemu-trivial@nongnu.org>; Mon, 16 Dec 2024 17:38:21 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oracle.onmicrosoft.com; s=selector2-oracle-onmicrosoft-com;
- h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
- bh=9cQp9BPYiFSaAROTNU9Nm+z7GjpYVv+7Z9yozPQhydg=;
- b=DrQe3S68/Nvu7BCVk/jy1Nm0dkwUu914GTn/DlxAdBS926JeSoWJcv+6/2k+UZmcTyLJflSI4mb7lvOI3MFVY14h/Q54BIZ5NwQ1CvGJt7XbLjZSRnFQAVIpoldiM6uE9gA07hqPfmKI3LgVttLIQKaCgCYNlpRMCZ6i8efPZkM=
-Received: from PH0PR10MB4664.namprd10.prod.outlook.com (2603:10b6:510:41::11)
- by PH0PR10MB7080.namprd10.prod.outlook.com (2603:10b6:510:28c::6)
- with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.8251.22; Mon, 16 Dec
- 2024 17:30:59 +0000
-Received: from PH0PR10MB4664.namprd10.prod.outlook.com
- ([fe80::7635:ba00:5d5:c935]) by PH0PR10MB4664.namprd10.prod.outlook.com
- ([fe80::7635:ba00:5d5:c935%4]) with mapi id 15.20.8251.015; Mon, 16 Dec 2024
- 17:30:59 +0000
-Message-ID: <c9341f03-ecc2-4a62-860a-35ff2b660651@oracle.com>
-Date: Mon, 16 Dec 2024 12:30:57 -0500
+ d=linaro.org; s=google; t=1734399500; x=1735004300; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=17sle2ol5/VlndT97jJOm0rWRhLgcec3mPbKepTzUJs=;
+ b=pBcNGMZQkP3/ngyy2NUsckfTDVJY2Yffz++UHGZZNYDuDEvzD9mKS3Nlt8vGzEiC4c
+ qcumOm9TGXa91BjqyrM+qkpzbfCEE3HdQ1+1XHdbWuKa3gPpXP0Ea1PpJXLhYUo4NdNj
+ eC/ECNg+WyObaERFNejoJVZcr0z66Vu4BIpJN8leUmR4w7+CuM/WXuN+Vx/QhrAXEMAY
+ AYIotojPgDsRpi8jhMHlQFva9tcg2xHv0vyUTeT154LDAMBzGSC1YRt2IOIx/A1WNgYG
+ mQt76eJyetpRkoTsRRZnhMPHT3k7rqy5odU5AG5rQTyfUCTw9FKcsGyY4409sToZFloc
+ doAg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1734399500; x=1735004300;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=17sle2ol5/VlndT97jJOm0rWRhLgcec3mPbKepTzUJs=;
+ b=goiSMTQmUyXgLTZawMCafksJy7WP9NUBVVVnSgyOVFjYczzEyZ/7cEJ13tiguKRUXe
+ MW7Xc3nF0ivav1vEqCvv3V5rLAsXOPHfE9DVqLHCfs4bDILjBtv14xr8gTc52WhJRssT
+ J4sfSN5rxEiyWCHsPbzlHXXK/hWjOyJgcOpry459gchvIhbuRVWYHiM0+8t810dEgHPY
+ LzScX5/sGfuXe8DQ46pLjQ8NyYb1jp4ZT8MSzx5h1EFE8635TeqLZgPYeWcYrWoQxu3H
+ Ld63CcHCVq59Dlt93Ap7sFmN5w6l0FcHKG77adHPamyqNQeEvKLQ+kTA1hCBbiDDWyLW
+ OrYQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVlRxf6yxgbiESYtPwy66vkuiyo3ttz6Z6q/yorO3NzuYCEZTY8QpVa1GsuL1tzwqqM2P+IbR8iiCw379s=@nongnu.org
+X-Gm-Message-State: AOJu0YzyctfR6rtJ8hFhz8n3nbXMay3eyikCZvlt9Lfv4Ve757Ea7lDO
+ byoMkjjsTO/xY9ERAPUJiA8TvxnI1rDZw7wCe3XKlXuTJka8hFMz/EQV/aHRfN4=
+X-Gm-Gg: ASbGncuWz7IwkHhfmEUFNd8k4zBBVdzyq6bx3gV5EZ3IUhGLDp8eKYU9U362+wcPFzT
+ 9E/32Zw/kwzG9hg9KKMQZhPoubx2GmVNdE/hHaSATtK8MajVdvVqCZd+VkgRuf01/JGVgxbD+Z5
+ 9Z/YjUMOpwZXzvjQd4Aq2+nh2U/IoUJi1kr3oao1RStPYE7P221rDmAixWjzsH1f3KkMGo9dtkr
+ dq78dNy9cjUYot5AQ170Muu+xv4VY2f8fDn5l9VNplchQzXGL518hRtKN3TTPdt8zNe0ouuUdNs
+ PIIuYB+eZ3xn5AtR1abFoI3LirhL
+X-Google-Smtp-Source: AGHT+IHvdKf4myfKBlpqcNHb8QCOJS+jHawrYo4DWUyAnek8lUZOfPgbe9ttHfDE3SWoYW2Bug3CLA==
+X-Received: by 2002:a17:90b:3c8a:b0:2ea:a25d:3baa with SMTP id
+ 98e67ed59e1d1-2f28fb52241mr21369921a91.5.1734399500202; 
+ Mon, 16 Dec 2024 17:38:20 -0800 (PST)
+Received: from [192.168.1.67] (216-180-64-156.dyn.novuscom.net.
+ [216.180.64.156]) by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-218a1dbac63sm49238145ad.5.2024.12.16.17.38.19
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 16 Dec 2024 17:38:19 -0800 (PST)
+Message-ID: <3f6f2d79-753a-4dc4-8ff5-6eb6c801a9c7@linaro.org>
+Date: Mon, 16 Dec 2024 17:38:19 -0800
+MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] qmp: update vhost-user protocol feature maps
-To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, qemu-trivial@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, aesteve@redhat.com,
- hreitz@redhat.com
-References: <20241216170914.1346403-1-lvivier@redhat.com>
+Subject: Re: [PATCH] vvfat: fix ubsan issue in create_long_filename
 Content-Language: en-US
-From: Jonah Palmer <jonah.palmer@oracle.com>
-In-Reply-To: <20241216170914.1346403-1-lvivier@redhat.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: qemu-block@nongnu.org, alex.bennee@linaro.org,
+ Kevin Wolf <kwolf@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
+ peter.maydell@linaro.org
+References: <20241204195111.2921141-1-pierrick.bouvier@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+In-Reply-To: <20241204195111.2921141-1-pierrick.bouvier@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-X-ClientProxiedBy: MN2PR11CA0016.namprd11.prod.outlook.com
- (2603:10b6:208:23b::21) To PH0PR10MB4664.namprd10.prod.outlook.com
- (2603:10b6:510:41::11)
-MIME-Version: 1.0
-X-MS-PublicTrafficType: Email
-X-MS-TrafficTypeDiagnostic: PH0PR10MB4664:EE_|PH0PR10MB7080:EE_
-X-MS-Office365-Filtering-Correlation-Id: 26748b03-f0c9-4901-0af8-08dd1df767d8
-X-MS-Exchange-SenderADCheck: 1
-X-MS-Exchange-AntiSpam-Relay: 0
-X-Microsoft-Antispam: BCL:0;
- ARA:13230040|376014|1800799024|366016|10070799003|7053199007; 
-X-Microsoft-Antispam-Message-Info: =?utf-8?B?U1FYVWtzTDFGb1pTVTh0NGlyb3JJd1Z0MFVWaTZDUGlIT0I3dXFGU1NxVmFt?=
- =?utf-8?B?MmJCa054TEQra1E5WmpCQjJRZnVWTUxQbUFrc3dlUWNGR3F1VmZ6L3puOHpO?=
- =?utf-8?B?ZDNsZERyL0N6OUliUHFTWC9wMHdXbjNJMW5VZUh0TVU1WHFsaFRJRmpuczN4?=
- =?utf-8?B?VlJRQ3ZWRm9RUjFKZUxoeVRRL3lPYkJzVDVlSHp2ZVdOU0IxTlNiakdKTCtM?=
- =?utf-8?B?b3hlTUp6Qkx2MUk0ZEZWY0ZTejNTa1oyeDlvN0RNZXNtd3IrU1QwWlFHYWxP?=
- =?utf-8?B?cGpWVnNXZW8xVFNrOGUxNjd5VTE2eUJOSEJEQkVTMCtncnVsK2dWQTlCamhn?=
- =?utf-8?B?VlovUDJpZWZDa21wMDdaWkRBQ3lNNzlybGp4ZzBETGdEOFp4ZlJUT1hPVlh4?=
- =?utf-8?B?MGlJbng1K3cxT3RUREVON0l3VkowUHJMamdsVGZFK0dET1MzeXhVajJPTDRT?=
- =?utf-8?B?WGtaTzRaWUJjTG1FUEFUcDZCQWY0QitzY1pPaDgzNFZWQ3lybVdtRTE0Z0gx?=
- =?utf-8?B?ckpYVUJZNUc0bUxobUJHZTRGS2p6b3hJOE9PbmdIR3M3RnlQa1ZHL2JJSHI4?=
- =?utf-8?B?b0kwWGJkaENYcDEvLzBYVzFnUjJHZnhkeFRiN2hHb0VQNFo1QVhDKzJITlBE?=
- =?utf-8?B?SkMxUmJpL25lVDlOcjBpcXNDbTJjMkI0SnkzQ1ZQeXdEQ2RLOThoekVtd2VR?=
- =?utf-8?B?UnIyWmg2WmROdFlobFVTMVdJTERrYy9yUGhSbW8waFppSDRxU0ltOW15NzNY?=
- =?utf-8?B?T1NxN29lR1JFdk40cXZrS0JtL3JlOGorQ09UaFk2cFZSbjNXYTdXVnlNVFp0?=
- =?utf-8?B?VzFnNWZZSHdjaGh5QkNGUm5Nc1BsWkROMEdvTml1VGlCK1B0ZDNkOHRKZ01I?=
- =?utf-8?B?cENYKzdqcHluSkFKN0FTWC91bjRTS1JvYkRKbVBRMDFmRVNnbnV2S2dDcGtQ?=
- =?utf-8?B?em0zKzVVaTl0REdhU3NGL0pEWHg4Sngzcm1pZTRrTEpBK042K2M3SUN0VHhV?=
- =?utf-8?B?c2llK3hDUzV5blZ1RkNrbnJ6R2FqNWlLWHdNbHNiYkM0cTdtZGJmYXkydm11?=
- =?utf-8?B?bEF2dnlGMXpqUzJibkFFT2dZRThFcjFrOXVKSFpJME80Z0tVVWFFYWZYNytT?=
- =?utf-8?B?UmE4L3VyNlN5VzFiMFZHQUVKdGxqMzI2ZklkWllyVW9DUVJCbVAyNVg0UEdz?=
- =?utf-8?B?UEw5U2pQdzBxYkl0ZDRxeVdJdzk3Wlh4Y2pOL3RwR1RiaWYzZ3BUUnBFTlox?=
- =?utf-8?B?QzVFWUpTcmtrUkFMcW9lVWdhRGZOK05GZHV5ZDVwbEx6cXpZcDZwb1cvNHEv?=
- =?utf-8?B?U0JiREQrWGljM2VtTjBNZHBZOTFoMjJvNjZtVDVobEQwT0NpV2diYjc3ckZS?=
- =?utf-8?B?a0Y4QXZ1YkljRG95eDNiL1daaXBDWVhkYlcvcVdkRnhVSU12bTVpZTU2N2lN?=
- =?utf-8?B?Y0Y1dGZKa1EzYWlhSEx0ek91WW8zeVpiNVRtanA3K1AyMG5QRCtVNXNRZ1Az?=
- =?utf-8?B?Tk1WZ25VZmptekdEVnZqaVFpck5CZVIxV1dER1l1dFFleU83MnNRdFo1akZY?=
- =?utf-8?B?NEtpakhCQXRYeDFVTVRtWG04L2poSHdPZTNxb0hiVWp1eTUvbmZCQWVrTkYz?=
- =?utf-8?B?K09LcGUybXpsQTBoc1c3N2NVVUE2c3pHeW1MUUM4WXNWZWhDSWtzS1dPUmIz?=
- =?utf-8?B?VUREYVNPcmVVenJEVjRPSWlaU1lZYXFJZ0pHKzYyYURudVZrbU40MW15NE5E?=
- =?utf-8?B?M1RCUVZRbEc0YWhwRWJ6THdic2l4ZkgrWUlGN2Jqay8zcVFjRExVTVd4c2R6?=
- =?utf-8?B?Nm5mQS90a2xKaHJ0UTNZOEJJSEh0cDlZVHBRSThuQzEyd0RTRUJLVEQvNUZX?=
- =?utf-8?Q?TmkNp9KRntYAQ?=
-X-Forefront-Antispam-Report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
- IPV:NLI; SFV:NSPM; H:PH0PR10MB4664.namprd10.prod.outlook.com; PTR:; CAT:NONE;
- SFS:(13230040)(376014)(1800799024)(366016)(10070799003)(7053199007); DIR:OUT;
- SFP:1101; 
-X-MS-Exchange-AntiSpam-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-MessageData-0: =?utf-8?B?cW5TQ3FlZkdTWGJjOXQyREhtT3lRdThpOFdxRHRZM2VhSjc1blJtdjNQek1K?=
- =?utf-8?B?SldDSC9CS0RVR1hLNU9xZXllZmtpVE81WXdaaitRTGU4eG1hZlZzOS9mbGJz?=
- =?utf-8?B?YzQ0cUdaTlI3b0FNUGU2KzcvWUEzbWFZMVpaQWZCM0lXQ25qVUhVbEduTHJT?=
- =?utf-8?B?K0U1TVJFTEJScEp3Z1BKZFRMK0hXNVMrU1VuVWJUU2h2NGUrZ2VpYmZwYUdl?=
- =?utf-8?B?ZmNZTG9ueTdlOFQ3T0c2MnFqamw5VWZxbTkzMVZicENFZXd1MEpJOXhJWlpH?=
- =?utf-8?B?cFpEbjlNb2NTR01OZGtrS2xna1JWK0ZScVd4VWtuNGxPb1ZQOVRXSmRvL2dY?=
- =?utf-8?B?Yi94dDJkQ2dHYi9mb2tpQ0JNK0JmM0RRYTA2NUwyMnlzYkRNTFZCUG5mZTVK?=
- =?utf-8?B?VEIzNTBpMzlHNER4cmZFUW9hUUY5QTkzZ3dSRnJzR1N5T1NIZW82OXlDK1JI?=
- =?utf-8?B?UVVkaHB5em5USlo1S1pHaG5xTTFsRHBPWkIwNnVCWFIvQWxHQ1l5eWtoNlVI?=
- =?utf-8?B?cjJna2haYTBSYVJ6VWZIM1hJczJUcEk3REs2RnMySWhNYVpQZVQreHNkRnJw?=
- =?utf-8?B?T1dwUGZnbVJqaTJBaWdCMThyaVMrNEJaenBseFFkRmREZFhmOVVuOTZGT0lk?=
- =?utf-8?B?S0tDQ1ZaMFkyTHppUzVmMGEzd1IyU21ZTThUY1lVRkgxL3g2d0RXZU5aSXQ2?=
- =?utf-8?B?QVlwWmw5MFZsUU1wajF6N3ozNm5hT2JVc0JlQVJTakxHcC9DUkErRTBWMFB6?=
- =?utf-8?B?L21MMWZ4aVJKb0QvL1RwRlVGK0xKcVROZkovUlpiakIySld2UlVIeFpSUVls?=
- =?utf-8?B?UExHV3hkbFowdWduQm9jQnFIY0J1ZG1MZjVKc2dQZzJjRHhLNzNTTHAwSlE4?=
- =?utf-8?B?ZjNlekNUMmZrdm1ldXoyeVVWYldLZkxQaVMvUjBuMzdWczVuMGxKdy9tbS92?=
- =?utf-8?B?WTE1eUFFYjVtcCtmRHRJNVpzM2FXaU93MDg3MUR5RHo4RG9IVE1ydi96QXZY?=
- =?utf-8?B?TUgyai8wVUlKb0VqZWtmVTYzM214ZER4a0dNVHVMcUVKbUJSRTYrZTVHaDZ2?=
- =?utf-8?B?K0VwazRWRGpiUGl0dFhRQXNsL3ljVlRGTktpVTI1V01qTFpZcDNIQURoOVRH?=
- =?utf-8?B?WW43M1RCdE5FQkZ1RGgwdzhYT3o2ekttVHNPT1RJbEJYMEZCZWdUZy93cHN2?=
- =?utf-8?B?QUIvZTIvY1dOb1ltSzVRSHlFWkFKVGE5QWc3RDg2d2w3TENJWGIwQSt1Y3Rz?=
- =?utf-8?B?eVdWVmYwQ0d1WGtTcHkyd2htc214eTFKRWlkbWpaWlM1Y3pScnE4TDg2MDRP?=
- =?utf-8?B?MmgyUWNuSm44dFBYQ3Z2dHUzNGc1MDBaZDY5YVE4RVU0bzBSeWlNVVRWYWZT?=
- =?utf-8?B?UXpHQk9lZ2lUVFE1Mms0MkQxaTJpc1pITlAxZEI4NlV6NmdieVBQVVdkMlZR?=
- =?utf-8?B?SU1neFpKaU5PckRGN05yc1JvMkdKSm1zWGlLVnNCcEovdzRLL25tV2xoclp5?=
- =?utf-8?B?RjlROHlGRStVeGVVRmx6b2RkY0FqVExEQmJ2VFNJYjJaTWFuL3huYWx4cWdr?=
- =?utf-8?B?emNhZnk0anV6QzlUUTYrK0tBcFB0VTkweTdoUmNDSExBVGxSRjJ3cUFlZkJR?=
- =?utf-8?B?QWZyYkpPalVoeW5tTzBpSVRmY0lGYXYybVRuck5zak0zRjVTSC9oMVhkMHpM?=
- =?utf-8?B?OFJoQ1Z0Q2k1dm9SNlVNL010bnkxNmNTdkVxT0RaejFuR3VtVUVCSDN5VWxC?=
- =?utf-8?B?MFhBay8vdExydFRIYzJ3ZzBNOGJtSFprQnBxcTlkVXBZOW94MElrRmtpS2k0?=
- =?utf-8?B?MWNBMzNyOTlRbXYxdWNHT0M3RkIwUFVwVVdTclZQeXErc0VuN2cyOUNKNHAx?=
- =?utf-8?B?Vy9PTUx1RTFBVVF4MUg3Z3ZRYUN5QU96RUZJOGNxV09ibVBJTmFiWEd5eHlX?=
- =?utf-8?B?SkdkZDZmQlZRZFZZd05NSERka3JRUVJKcHJMMVR6MitjRExEOFBjZjNMSG5H?=
- =?utf-8?B?aVA4NnVuWlMzdU01azZWQWIvQWp1cmJhclNQQkVucTYwVlZrSjg5OE9hZFF2?=
- =?utf-8?B?VFhPT25jbzJwMm9wYjlpMEl2TUozZit5bHhSWktuMk1GQ2YrL2VHd3VPbWJW?=
- =?utf-8?B?dWZFSWZ1K2JReG1BWVNXOWt5ZlJBZEJLOEN6Zzdod2xOVlJDTFVtZmltdXpE?=
- =?utf-8?Q?wuk1SPjJ42YRfkeg1KFba7A=3D?=
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
-X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: Nzidzl6v2Y5Plu19hvCrRDEqIDtdOK1jVfB55RsdawiyRsEZQ/3hcN0uW40rjAPegzBlTf/1GeftNCBRJjDZOaZndWhLoyXey6E0HmbfQC1aIrjMw0cU7kMZelXKIKWjDk2/akXF7pw5q8eZ3sb4Zg/BQTytY2HOGlwoIE909xahgYhHSSQSukrCk2e1TP4EADhIFeX//ba4d52CdlPwv6QWBTHEpBXbWdT9uIY2Zi0ZD39osUKD25EYLLG+p7etR8uNKayuuv8izYToOT7aden2GmI2qjsZ1p1nJ0FrkZIljx22F7FbDY6T7CWFn3BkvjUZ5/SE2ABccqOd2gNqv1tJOQQyc3U/rWPqxbLLuUEWJrBNJCptxfm39T2vxqOtIAWCreBKWgeVk0LhRFaz//ufiLI4rvhYTqZiYduNcIK+2fbD5F4w+MxUxQKxE/ElvVzQksJiwjyjtYhjG9ddL6BMjYKzxo1aQW+/iP/JfuCcZ17XhWdlenRWX5I4XwGpUClHQwmNsU5tOz2TN2dY5rONEeHuPIr40TzynJH6zO5Mv5VUohbeAtRAfg1y0LEj3u19vS90IYlzvfnRYUNqmLEDRClx0nVAE4QA5iCgtT4=
-X-OriginatorOrg: oracle.com
-X-MS-Exchange-CrossTenant-Network-Message-Id: 26748b03-f0c9-4901-0af8-08dd1df767d8
-X-MS-Exchange-CrossTenant-AuthSource: PH0PR10MB4664.namprd10.prod.outlook.com
-X-MS-Exchange-CrossTenant-AuthAs: Internal
-X-MS-Exchange-CrossTenant-OriginalArrivalTime: 16 Dec 2024 17:30:59.6126 (UTC)
-X-MS-Exchange-CrossTenant-FromEntityHeader: Hosted
-X-MS-Exchange-CrossTenant-Id: 4e2c6054-71cb-48f1-bd6c-3a9705aca71b
-X-MS-Exchange-CrossTenant-MailboxType: HOSTED
-X-MS-Exchange-CrossTenant-UserPrincipalName: 3tGeOizPmBgLbMs3rjIba9Mvwsj7asZTC2PYkHFPPyTlp5D3jPsAaBrACoGPprYjxe7lUlqOZCxBWygmic1b6A==
-X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR10MB7080
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1057,Hydra:6.0.680,FMLib:17.12.68.34
- definitions=2024-12-16_07,2024-12-16_01,2024-11-22_01
-X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 adultscore=0
- phishscore=0
- malwarescore=0 bulkscore=0 spamscore=0 mlxlogscore=999 suspectscore=0
- mlxscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.12.0-2411120000 definitions=main-2412160146
-X-Proofpoint-GUID: za4mJ88AVmFVpO4kd6ASmNfzIq0AI962
-X-Proofpoint-ORIG-GUID: za4mJ88AVmFVpO4kd6ASmNfzIq0AI962
-Received-SPF: pass client-ip=205.220.177.32;
- envelope-from=jonah.palmer@oracle.com; helo=mx0b-00069f02.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x534.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 16 Dec 2024 12:41:42 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -205,44 +92,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 16 Dec 2024 17:31:22 -0000
+X-List-Received-Date: Tue, 17 Dec 2024 01:38:27 -0000
 
-
-
-On 12/16/24 12:09 PM, Laurent Vivier wrote:
-> Add VHOST_USER_PROTOCOL_F_SHARED_OBJECT and
-> VHOST_USER_PROTOCOL_F_DEVICE_STATE protocol feature maps to
-> the virtio introspection.
+On 12/4/24 11:51, Pierrick Bouvier wrote:
+> Found with test sbsaref introduced in [1].
 > 
-> Cc: jonah.palmer@oracle.com
-> Fixes: 160947666276 ("vhost-user: add shared_object msg")
-> Cc: aesteve@redhat.com
-> Fixes: cda83adc62b6 ("vhost-user: Interface for migration state transfer")
-> Cc: hreitz@redhat.com
-> Signed-off-by: Laurent Vivier <lvivier@redhat.com>
+> [1] https://patchew.org/QEMU/20241203213629.2482806-1-pierrick.bouvier@linaro.org/
+> 
+> ../block/vvfat.c:433:24: runtime error: index 14 out of bounds for type 'uint8_t [11]'
+>      #0 0x56151a66b93a in create_long_filename ../block/vvfat.c:433
+>      #1 0x56151a66f3d7 in create_short_and_long_name ../block/vvfat.c:725
+>      #2 0x56151a670403 in read_directory ../block/vvfat.c:804
+>      #3 0x56151a674432 in init_directories ../block/vvfat.c:964
+>      #4 0x56151a67867b in vvfat_open ../block/vvfat.c:1258
+>      #5 0x56151a3b8e19 in bdrv_open_driver ../block.c:1660
+>      #6 0x56151a3bb666 in bdrv_open_common ../block.c:1985
+>      #7 0x56151a3cadb9 in bdrv_open_inherit ../block.c:4153
+>      #8 0x56151a3c8850 in bdrv_open_child_bs ../block.c:3731
+>      #9 0x56151a3ca832 in bdrv_open_inherit ../block.c:4098
+>      #10 0x56151a3cbe40 in bdrv_open ../block.c:4248
+>      #11 0x56151a46344f in blk_new_open ../block/block-backend.c:457
+>      #12 0x56151a388bd9 in blockdev_init ../blockdev.c:612
+>      #13 0x56151a38ab2d in drive_new ../blockdev.c:1006
+>      #14 0x5615190fca41 in drive_init_func ../system/vl.c:649
+>      #15 0x56151aa796dd in qemu_opts_foreach ../util/qemu-option.c:1135
+>      #16 0x5615190fd2b6 in configure_blockdev ../system/vl.c:708
+>      #17 0x56151910a307 in qemu_create_early_backends ../system/vl.c:2004
+>      #18 0x561519113fcf in qemu_init ../system/vl.c:3685
+>      #19 0x56151a7e438e in main ../system/main.c:47
+>      #20 0x7f72d1a46249 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+>      #21 0x7f72d1a46304 in __libc_start_main_impl ../csu/libc-start.c:360
+>      #22 0x561517e98510 in _start (/home/user/.work/qemu/build/qemu-system-aarch64+0x3b9b510)
+> 
+> The offset used can easily go beyond entry->name size. It's probably a
+> bug, but I don't have the time to dive into vfat specifics for now.
+> 
+> This change solves the ubsan issue, and is functionally equivalent, as
+> anything written past the entry->name array would not be read anyway.
+> 
+> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 > ---
->   hw/virtio/virtio-qmp.c | 6 ++++++
->   1 file changed, 6 insertions(+)
+>   block/vvfat.c | 4 ++++
+>   1 file changed, 4 insertions(+)
 > 
-> diff --git a/hw/virtio/virtio-qmp.c b/hw/virtio/virtio-qmp.c
-> index cccc6fe76183..8a32a3b1052c 100644
-> --- a/hw/virtio/virtio-qmp.c
-> +++ b/hw/virtio/virtio-qmp.c
-> @@ -121,6 +121,12 @@ static const qmp_virtio_feature_map_t vhost_user_protocol_map[] = {
->       FEATURE_ENTRY(VHOST_USER_PROTOCOL_F_STATUS, \
->               "VHOST_USER_PROTOCOL_F_STATUS: Querying and notifying back-end "
->               "device status supported"),
-> +    FEATURE_ENTRY(VHOST_USER_PROTOCOL_F_SHARED_OBJECT, \
-> +            "VHOST_USER_PROTOCOL_F_SHARED_OBJECT: Backend shared object "
-> +            "supported"),
-> +    FEATURE_ENTRY(VHOST_USER_PROTOCOL_F_DEVICE_STATE, \
-> +            "VHOST_USER_PROTOCOL_F_DEVICE_STATE: Backend device state transfer "
-> +            "supported"),
->       { -1, "" }
->   };
->   
-Signed-off-by: Jonah Palmer <jonah.palmer@oracle.com>
----
-Jonah
+> diff --git a/block/vvfat.c b/block/vvfat.c
+> index 8ffe8b3b9bf..f2eafaa9234 100644
+> --- a/block/vvfat.c
+> +++ b/block/vvfat.c
+> @@ -426,6 +426,10 @@ static direntry_t *create_long_filename(BDRVVVFATState *s, const char *filename)
+>           else if(offset<22) offset=14+offset-10;
+>           else offset=28+offset-22;
+>           entry=array_get(&(s->directory),s->directory.next-1-(i/26));
+> +        /* ensure we don't write anything past entry->name */
+> +        if (offset >= sizeof(entry->name)) {
+> +            continue;
+> +        }
+>           if (i >= 2 * length + 2) {
+>               entry->name[offset] = 0xff;
+>           } else if (i % 2 == 0) {
 
+cc qemu-trivial.
 
