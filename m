@@ -1,85 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tNerL-0005JK-CN
-	for mharc-qemu-trivial@gnu.org; Tue, 17 Dec 2024 16:12:03 -0500
+	id 1tOCHJ-0002Mo-Bf
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Dec 2024 03:53:05 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1tNerK-0005In-3T
- for qemu-trivial@nongnu.org; Tue, 17 Dec 2024 16:12:02 -0500
-Received: from mail-pf1-x436.google.com ([2607:f8b0:4864:20::436])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1tNerI-0001Gm-LK
- for qemu-trivial@nongnu.org; Tue, 17 Dec 2024 16:12:01 -0500
-Received: by mail-pf1-x436.google.com with SMTP id
- d2e1a72fcca58-728f28744c5so5377811b3a.1
- for <qemu-trivial@nongnu.org>; Tue, 17 Dec 2024 13:11:58 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1734469918; x=1735074718; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=iVQheL5sfpfsPf8LOc0lx9kGU26P7wcAvZn8IDeXaDs=;
- b=I1Iknq1I2q6c/qLjsa8lVFrvUqkYvfn57isOo14Bzh1fX3Q8wztlCbICAuELCQhqfi
- DtX3gxQfUCtlBFOT/dTesWqw28rp63dyfY3RRFpIXpUVBfw2q637HaNKKkcBl509hSQI
- x2Z6cBgqbdZ/UkiVahCrQgQbjgPPDslKr59224/znMWC0ArE83pVHUCiVunBN+UEXI5X
- PmQRmrQELCcX7WisdlRNT0CEeUutPv7LB7uVYu9YgTFnhD4R+qmGJvG98fxNdRtqn+b6
- mp2VMbZbI8Ax06c9QsRNNj7hgPLOFFi9hCeL+4h/tiDU7yeDeW/csF1YvsuJiTnFOO++
- 3AsQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734469918; x=1735074718;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=iVQheL5sfpfsPf8LOc0lx9kGU26P7wcAvZn8IDeXaDs=;
- b=kPGMtkyI010oZQwJuC0PsBYxyxqI974cuT49lc2tVtp5YS2SFb+/zduI0nbfqtzWNB
- E/he8/3g0LeF4I4aex9fDmcfB6ZMnMImZ807Zi+Ie4E60TsMsbF0J8jE0a2fv8QSwTPC
- IN0C9ohVV1fqW9vEiapTh3k+fvUHtv2CmhLQMj+733PSqcnYp1ytGSEKOKIvRN41v2Sn
- 3UJnzI3oyZMLeg1GFeC2COI4osz0gzZzNY02pNCo6v8mD1j/a3EtWu8c12744RVHmcDL
- sLrDyzij8WA+R6z9Bh2tJj5EnHP+X/NkxUjvdXB7nonpAdf2gdop4JK2ice+na9sw6Jh
- eiLA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUEE+nG+jqBLZLfF2FsysbbKZ7VnTBQo/PbDUwpK5DRdCP78UTrg8hl4dNj2AqFWah1dB45aKhj7qxSoDI=@nongnu.org
-X-Gm-Message-State: AOJu0YwuGJgon51t3OfcTxmiAbZfxWQdlXw8CHXZWv3H7Ab9zicURL89
- koFikTyflL6PTqFtTDMKHuhaLclJBM+ls8XFurv7czI+Yi97iA95zcXsHwnOq+A=
-X-Gm-Gg: ASbGncuVxnuGhQpTgG1Y7gvTR+ONzgZZ5eLPykZpQjXas5uZdP1EZxxBKTdZrldsTbZ
- RCCzexqtR+sIbfIwfQSRkA1CiONKInP+MJ3F8+lhAyHlWMzucucB8z9HRV7A4o7iBXReMu/XWg6
- +gF5V3qa1f3JnlzmPU04cWxWSZUc7kUtOFyMq9Fku1OlYIE6sItpIMiQXuZfnrXnTUfdSaBi0/1
- aD3LGs7Cy0eEotiMkABGauv0G7gRPpZ4AFRhJqIVf+sE9vdHfzcpvfp6ZMk9+OGAdDNUA==
-X-Google-Smtp-Source: AGHT+IGc0fR6JkKqsCulnAbjxbUeqxVzDKnuT4Q/Fdm4CxYCxlBf5p7HrdWfysAuWRzRjXEoaWkJpw==
-X-Received: by 2002:a05:6a00:14c8:b0:727:3cd0:1145 with SMTP id
- d2e1a72fcca58-72a8d0313dcmr646758b3a.2.1734469917761; 
- Tue, 17 Dec 2024 13:11:57 -0800 (PST)
-Received: from [192.168.1.67] ([38.39.164.180])
- by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-72918bce39csm7362539b3a.189.2024.12.17.13.11.57
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Dec 2024 13:11:57 -0800 (PST)
-Message-ID: <4ba9f5c6-9ed5-4bdf-b4a7-60ac420fe9b7@linaro.org>
-Date: Tue, 17 Dec 2024 13:11:56 -0800
+ (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1tOCHI-0002Ma-Gj
+ for qemu-trivial@nongnu.org; Thu, 19 Dec 2024 03:53:04 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1tOCHH-0001EB-60
+ for qemu-trivial@nongnu.org; Thu, 19 Dec 2024 03:53:04 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1734598382;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=rWbtMfwnWBywnZatq079oxPpSXU9USMm3HCByRx9/hE=;
+ b=bPd+jJxVZ9Miqi1er7ivmeAtEELK2/EhMv7AS0jJjBsrapzQxS8qrllGCbxhDrxzBXxAyj
+ 2XcCiIIYtiL5vma4xM7l1aH+2dUEUpPd8NOEFhz0dl3u4MIqBvqBv6ZFqwUFvEDRnaY9k6
+ cYBc6mgYlJ+x/k5327+GEinHkMYYiDk=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-451-hmHt9e1eNmO6uA_d_Km0iQ-1; Thu,
+ 19 Dec 2024 03:51:50 -0500
+X-MC-Unique: hmHt9e1eNmO6uA_d_Km0iQ-1
+X-Mimecast-MFC-AGG-ID: hmHt9e1eNmO6uA_d_Km0iQ
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3241F19560B5
+ for <qemu-trivial@nongnu.org>; Thu, 19 Dec 2024 08:51:49 +0000 (UTC)
+Received: from fedora.redhat.com (unknown [10.72.112.148])
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 5B5271956096; Thu, 19 Dec 2024 08:51:46 +0000 (UTC)
+From: Han Han <hhan@redhat.com>
+To: qemu-trivial@nongnu.org
+Cc: Han Han <hhan@redhat.com>
+Subject: [PATCH] target/i386/cpu: Fix notes for CPU models
+Date: Thu, 19 Dec 2024 16:51:38 +0800
+Message-ID: <20241219085141.1857343-1-hhan@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] contrib/plugins/bbv.c: Start bb index from 1
-Content-Language: en-US
-To: ckf104 <1900011634@pku.edu.cn>, qemu-trivial@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
- <ma.mandourr@gmail.com>,
- "open list:All patches CC here" <qemu-devel@nongnu.org>
-References: <20241217142413.148978-1-1900011634@pku.edu.cn>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20241217142413.148978-1-1900011634@pku.edu.cn>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::436;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x436.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 3ioAlIe6EEDhZRTBBnWu-E4lC9Blt6F38eSnXoCIDac_1734598309
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=hhan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -31
+X-Spam_score: -3.2
+X-Spam_bar: ---
+X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1.116,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,34 +71,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 17 Dec 2024 21:12:02 -0000
+X-List-Received-Date: Thu, 19 Dec 2024 08:53:04 -0000
 
-Hi,
+Signed-off-by: Han Han <hhan@redhat.com>
+---
+ target/i386/cpu.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-On 12/17/24 06:24, ckf104 wrote:
-> Standard simpoint tool reqeusts that index of basic block index starts from 1.
-> 
-> Signed-off-by: ckf104 <1900011634@pku.edu.cn>
-> ---
->   contrib/plugins/bbv.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/contrib/plugins/bbv.c b/contrib/plugins/bbv.c
-> index a5256517dd..b9da6f815e 100644
-> --- a/contrib/plugins/bbv.c
-> +++ b/contrib/plugins/bbv.c
-> @@ -109,7 +109,7 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
->           bb = g_new(Bb, 1);
->           bb->vaddr = vaddr;
->           bb->count = qemu_plugin_scoreboard_new(sizeof(uint64_t));
-> -        bb->index = g_hash_table_size(bbs);
-> +        bb->index = g_hash_table_size(bbs) + 1;
->           g_hash_table_replace(bbs, &bb->vaddr, bb);
->       }
->       g_rw_lock_writer_unlock(&bbs_lock);
-
-thanks for this fix.
-
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index 5253399459..820571761d 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -3691,6 +3691,7 @@ static const X86CPUDefinition builtin_x86_defs[] = {
+             },
+             {
+                 .version = 4,
++                .note = "IBRS, EPT switching, no TSX",
+                 .props = (PropValue[]) {
+                     { "vmx-eptp-switching", "on" },
+                     { /* end of list */ }
+@@ -3825,7 +3826,7 @@ static const X86CPUDefinition builtin_x86_defs[] = {
+               },
+             },
+             { .version = 4,
+-              .note = "ARCH_CAPABILITIES, no TSX",
++              .note = "ARCH_CAPABILITIES, EPT switching, no TSX",
+               .props = (PropValue[]) {
+                   { "vmx-eptp-switching", "on" },
+                   { /* end of list */ }
+-- 
+2.47.1
 
 
