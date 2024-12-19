@@ -1,73 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tODTq-0005GU-G3
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Dec 2024 05:10:06 -0500
+	id 1tOI3D-0005xF-7Z
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Dec 2024 10:02:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tODTh-0005Ey-VR
- for qemu-trivial@nongnu.org; Thu, 19 Dec 2024 05:10:00 -0500
-Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tOI2X-0005sT-Rx
+ for qemu-trivial@nongnu.org; Thu, 19 Dec 2024 10:02:14 -0500
+Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tODTf-0000ff-RU
- for qemu-trivial@nongnu.org; Thu, 19 Dec 2024 05:09:57 -0500
-Received: by mail-wm1-x32e.google.com with SMTP id
- 5b1f17b1804b1-4362f61757fso5740225e9.2
- for <qemu-trivial@nongnu.org>; Thu, 19 Dec 2024 02:09:54 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tOI2W-0005jX-CA
+ for qemu-trivial@nongnu.org; Thu, 19 Dec 2024 10:02:13 -0500
+Received: by mail-wm1-x32c.google.com with SMTP id
+ 5b1f17b1804b1-436249df846so6468775e9.3
+ for <qemu-trivial@nongnu.org>; Thu, 19 Dec 2024 07:02:12 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1734602993; x=1735207793; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:cc:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=G44sjWScclXWFU1Kar6tCC+bW6+DUC78F/r2qGeOD/U=;
- b=gUaFrejluJsPNIg2KBzkF88CCMY5wI6RECEEK66Nxrr/wJB7u3HzjFYnhd/w5B72pJ
- Itt4Kzu7q8pKs2y9ZeX8QZojMkU1pNnj/u5G1t+ZurNG6gd/oAgdmlsj7/qzIOVwLXce
- x8yfaKXT+cbgQ2sOhwsNy02cKXYHePg8wpTpgL/O3A1v59THRXls0+Guma78wXEDqe5/
- +bMOkPSgngAbXcJossQlZrNyHAjs+rF+xyzJ6NnXWhceBfEDX1bjNmGWzW+GA5DEhaz/
- zzPyD0F4TDBY+s4Vqe97myOzdyBQULwMlmUZl8hb/lmt3j7T+3ApL1IJe7czjmkM6NM+
- U07Q==
+ d=linaro.org; s=google; t=1734620531; x=1735225331; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=Sj4tna4Z0twHl9GwjSd+TF0OnlVxhb9xhFrT4hAdmYU=;
+ b=f28fNMXpPGltBNUX4znb33GkaeFcWV1tvtyAPrcQ/KtnIxph4q3w1F/qfJUg+kf6yk
+ 1b9YkRBzyOUfL4vp2iou7irplMCNuDpNIuJoOIuasnskH6TXFN+CLPaets1qmBbmHg8V
+ DFoykRUbzD61R/4jweUOJLNi1ylr/pOoS1y3y7vfiVa76pOOrLQ/L0kwnV+8CnRxoA78
+ 7T+vgXaZegBhPAYmSYay26SdZUMfoc9s20LenJLATyPzCkJLVIvJa3eLZsBqa3oxOyqg
+ T3zrmkQA7gdMMM4yKwoFUNC/XnUV62ysyCVGwcajMPySkDy6RyE2EdTqQ+3uJfzXkL45
+ IN9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734602993; x=1735207793;
- h=content-transfer-encoding:in-reply-to:from:cc:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=G44sjWScclXWFU1Kar6tCC+bW6+DUC78F/r2qGeOD/U=;
- b=pKkGKQcAHM6pE4X/C4F30tnDS3dmjhw6f6SVvcsDcV1NUj+EUn+pBMHtkvwejc1Agc
- PIfLcBbBajZBLNqDZy8KQOUFiS8GIKdtVO1HOutb8SpMISTbgUiJl0IYA7VkcHtjuO7x
- anJZgzQLxksD2A8g6N4f7DL3L6Hxo3L1tZTixY0qloq8z1uoX39ejgf9/yJxWmWMvErm
- 6M+usxRFuqWTjP4vWnkrQ3yjpHJjswkhKRu9UgpVbDupBw544XPDq3+UcsNy+4nbIqMk
- Fd6doh5/MAAUJsc7SH9xuudJwaml6WXXGz2qh1HmKqd81WhIc1LFyBLLEmL799zgeWEn
- LOBg==
+ d=1e100.net; s=20230601; t=1734620531; x=1735225331;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=Sj4tna4Z0twHl9GwjSd+TF0OnlVxhb9xhFrT4hAdmYU=;
+ b=eneYjQex2gECCYYSM9yztoCSPXwn+/ny/sxH9kOvpD/oj+EyYe3rFotMI757/mtV0M
+ 9HGUw9KIZLkErWX8OWEZzjMOJ9MrGI8awihQknYtlTH9kyzur4uMFcjshdwQ1daQ97pf
+ zjLR5KCN8VDKzODA7TCXCe/S8j0d+/Pj9hentYWtBRIZi/lVVEfFdtLDFQT+whbtRoKo
+ m/N+GgPplbmgLnfx5Mgk/PpNgJjWMnC9xvbC1Y3Uw2wRmGjqvIHiwSVeNQ0kQeYfzOrM
+ RsharhkzcOhBYsQBx6mwGtEx+vWcE//xjYvJ9dbHcHAW6SZ9ctrXqqfkpaWLVqCfqaW1
+ 6rFA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCULb/iO7bVLDpsjDJEWajNY4PRA0w4SeecLpntCvmlAalLKZt/EYkXULca2xT5oxWavaRjpJsOK7tpeL1g=@nongnu.org
-X-Gm-Message-State: AOJu0Yw+fU48wpXsWfqZAvfTtbmjmiYI+ASA3yQ0QElTZ0Mej4O07l7B
- FOAaZmv/9smahnGFJgDzQNteXAkRTEnDH6P66h8BcmDD5s3aWAIgab/7XqZjDnA=
-X-Gm-Gg: ASbGncvNKySzC39Je9lgbmUEHqb8IfhjVi6hmLbbIW5DyHBP8y10qciA2rhoG0+2axM
- 9N0Ca3xrUlmL3XitXHhcGtKMWzYJbQaHXGAUcVmCf8p2ti3SHsRw2MmCuALdcBPOwF3KPExeqtI
- kEyHQGlzqguaxsjhXCM0z8OCiuOU7RQM4J++BkhgpT9YiF1ytoHP/ANjQsRuqMHg8nElNc37Q3U
- bVZAwQPEnER6VE4bxpFVuPf0wOGb3fWz1Ywxby0PSYOR3xT0QuYP8qe/AxxyKCgKJM=
-X-Google-Smtp-Source: AGHT+IEMx3VVDNyttIDt5PRM8AHIJsCPXwsQ/OWZGXl6hBymKCmQlps978WP7C2smuGSJYjuCdSoqQ==
-X-Received: by 2002:a05:600c:19d2:b0:434:ff25:199f with SMTP id
- 5b1f17b1804b1-436553f4ff3mr44733565e9.26.1734602992856; 
- Thu, 19 Dec 2024 02:09:52 -0800 (PST)
-Received: from [192.168.1.117] ([78.196.4.158])
+ AJvYcCUfOdH3KJJ7GM2CI8Jslg5SmvAsFhJ5+JV6Iioh7+wfRu5Q0KuCTxENscIdZfPdRcQhccW4+h2N23xAykU=@nongnu.org
+X-Gm-Message-State: AOJu0Yx0PCZS4nmc6Gmjg+JdUWj/Ey2cJ2yyOhvuVbs8JyVg6T415qqF
+ LaZXgmau7RItVq4Zs9xsh+t1AcmWaonaqGXTtTnYiCJyGh/TWszRH/3ET/BT3eM=
+X-Gm-Gg: ASbGncvY2WXplMFxU1G9LcrZFM4r4ekSdiShWD8x85r+XEiymkKg3BnTxze3QjddALq
+ /gr74aihw2yEWGtomqBs+nd7uE8qCW0UTeeG5ItaHW3toM48+tkt+a8NY07s6tvldMtvpLjSSrW
+ KVY+jAKqyuLMB9OX97XDcZnrF7KFuOPHt77r/aGS7KjHI5jUsIZ4qHgk1UMznBma63A5oOJEPo+
+ Y4FR0zopurfk3V1G5MVlQnoZbeCY9EQ9BZ6FO8gmmRJtJXnROcqH4o0Dve5nuZ+fXr34gC7J43f
+ 0wpH
+X-Google-Smtp-Source: AGHT+IE7KKHSAzT043Xr0dOkTrTFtwkzJ9UJzR94dSa8EbX+7orbrwwrIwFTK7EPSax8fFTpnplgrg==
+X-Received: by 2002:a05:600c:1909:b0:434:a525:7257 with SMTP id
+ 5b1f17b1804b1-4365c7c9684mr29636245e9.21.1734620530460; 
+ Thu, 19 Dec 2024 07:02:10 -0800 (PST)
+Received: from localhost.localdomain ([78.196.4.158])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-43656a0b361sm47713145e9.0.2024.12.19.02.09.52
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Dec 2024 02:09:52 -0800 (PST)
-Message-ID: <be91046d-dbe0-4701-9346-09521bdc5c4c@linaro.org>
-Date: Thu, 19 Dec 2024 11:09:51 +0100
+ ffacd0b85a97d-38a1c8472casm1777613f8f.45.2024.12.19.07.02.09
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 19 Dec 2024 07:02:10 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>, devel@lists.libvirt.org,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH 1/3] docs: Correct '-runas' and '-fsdev/-virtfs proxy'
+ indentation
+Date: Thu, 19 Dec 2024 16:02:01 +0100
+Message-ID: <20241219150203.55212-2-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
+In-Reply-To: <20241219150203.55212-1-philmd@linaro.org>
+References: <20241219150203.55212-1-philmd@linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/i386/cpu: Fix notes for CPU models
-To: Han Han <hhan@redhat.com>, qemu-trivial@nongnu.org
-References: <20241219085141.1857343-1-hhan@redhat.com>
-Content-Language: en-US
-Cc: Chenyi Qiang <chenyi.qiang@intel.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20241219085141.1857343-1-hhan@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -87,38 +92,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Dec 2024 10:10:01 -0000
+X-List-Received-Date: Thu, 19 Dec 2024 15:02:14 -0000
 
-On 19/12/24 09:51, Han Han wrote:
+Use the same style for deprecated / removed commands.
 
-Fixes: 644e3c5d812 ("missing vmx features for Skylake-Server and 
-Cascadelake-Server")
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ docs/about/deprecated.rst       | 2 +-
+ docs/about/removed-features.rst | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-> Signed-off-by: Han Han <hhan@redhat.com>
-> ---
->   target/i386/cpu.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
-> 
-> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-> index 5253399459..820571761d 100644
-> --- a/target/i386/cpu.c
-> +++ b/target/i386/cpu.c
-> @@ -3691,6 +3691,7 @@ static const X86CPUDefinition builtin_x86_defs[] = {
->               },
->               {
->                   .version = 4,
-> +                .note = "IBRS, EPT switching, no TSX",
->                   .props = (PropValue[]) {
->                       { "vmx-eptp-switching", "on" },
->                       { /* end of list */ }
-> @@ -3825,7 +3826,7 @@ static const X86CPUDefinition builtin_x86_defs[] = {
->                 },
->               },
->               { .version = 4,
-> -              .note = "ARCH_CAPABILITIES, no TSX",
-> +              .note = "ARCH_CAPABILITIES, EPT switching, no TSX",
->                 .props = (PropValue[]) {
->                     { "vmx-eptp-switching", "on" },
->                     { /* end of list */ }
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 267892b62f2..d6809f94ea1 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -75,7 +75,7 @@ marked deprecated since 9.0, users have to ensure that all the topology members
+ described with -smp are supported by the target machine.
+ 
+ ``-runas`` (since 9.1)
+-----------------------
++''''''''''''''''''''''
+ 
+ Use ``-run-with user=..`` instead.
+ 
+diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+index 9bebee795c0..68fe0b47f9f 100644
+--- a/docs/about/removed-features.rst
++++ b/docs/about/removed-features.rst
+@@ -518,7 +518,7 @@ and later do not support it because the virtio-scsi device was introduced for
+ full SCSI support.  Use virtio-scsi instead when SCSI passthrough is required.
+ 
+ ``-fsdev proxy`` and ``-virtfs proxy`` (since 9.2)
+-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++''''''''''''''''''''''''''''''''''''''''''''''''''
+ 
+ The 9p ``proxy`` filesystem backend driver was originally developed to
+ enhance security by dispatching low level filesystem operations from 9p
+-- 
+2.47.1
 
 
