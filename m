@@ -1,64 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tOCHJ-0002Mo-Bf
-	for mharc-qemu-trivial@gnu.org; Thu, 19 Dec 2024 03:53:05 -0500
+	id 1tODTq-0005GU-G3
+	for mharc-qemu-trivial@gnu.org; Thu, 19 Dec 2024 05:10:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1tOCHI-0002Ma-Gj
- for qemu-trivial@nongnu.org; Thu, 19 Dec 2024 03:53:04 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1tOCHH-0001EB-60
- for qemu-trivial@nongnu.org; Thu, 19 Dec 2024 03:53:04 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1734598382;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=rWbtMfwnWBywnZatq079oxPpSXU9USMm3HCByRx9/hE=;
- b=bPd+jJxVZ9Miqi1er7ivmeAtEELK2/EhMv7AS0jJjBsrapzQxS8qrllGCbxhDrxzBXxAyj
- 2XcCiIIYtiL5vma4xM7l1aH+2dUEUpPd8NOEFhz0dl3u4MIqBvqBv6ZFqwUFvEDRnaY9k6
- cYBc6mgYlJ+x/k5327+GEinHkMYYiDk=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-451-hmHt9e1eNmO6uA_d_Km0iQ-1; Thu,
- 19 Dec 2024 03:51:50 -0500
-X-MC-Unique: hmHt9e1eNmO6uA_d_Km0iQ-1
-X-Mimecast-MFC-AGG-ID: hmHt9e1eNmO6uA_d_Km0iQ
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3241F19560B5
- for <qemu-trivial@nongnu.org>; Thu, 19 Dec 2024 08:51:49 +0000 (UTC)
-Received: from fedora.redhat.com (unknown [10.72.112.148])
- by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5B5271956096; Thu, 19 Dec 2024 08:51:46 +0000 (UTC)
-From: Han Han <hhan@redhat.com>
-To: qemu-trivial@nongnu.org
-Cc: Han Han <hhan@redhat.com>
-Subject: [PATCH] target/i386/cpu: Fix notes for CPU models
-Date: Thu, 19 Dec 2024 16:51:38 +0800
-Message-ID: <20241219085141.1857343-1-hhan@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tODTh-0005Ey-VR
+ for qemu-trivial@nongnu.org; Thu, 19 Dec 2024 05:10:00 -0500
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tODTf-0000ff-RU
+ for qemu-trivial@nongnu.org; Thu, 19 Dec 2024 05:09:57 -0500
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4362f61757fso5740225e9.2
+ for <qemu-trivial@nongnu.org>; Thu, 19 Dec 2024 02:09:54 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1734602993; x=1735207793; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:cc:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=G44sjWScclXWFU1Kar6tCC+bW6+DUC78F/r2qGeOD/U=;
+ b=gUaFrejluJsPNIg2KBzkF88CCMY5wI6RECEEK66Nxrr/wJB7u3HzjFYnhd/w5B72pJ
+ Itt4Kzu7q8pKs2y9ZeX8QZojMkU1pNnj/u5G1t+ZurNG6gd/oAgdmlsj7/qzIOVwLXce
+ x8yfaKXT+cbgQ2sOhwsNy02cKXYHePg8wpTpgL/O3A1v59THRXls0+Guma78wXEDqe5/
+ +bMOkPSgngAbXcJossQlZrNyHAjs+rF+xyzJ6NnXWhceBfEDX1bjNmGWzW+GA5DEhaz/
+ zzPyD0F4TDBY+s4Vqe97myOzdyBQULwMlmUZl8hb/lmt3j7T+3ApL1IJe7czjmkM6NM+
+ U07Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1734602993; x=1735207793;
+ h=content-transfer-encoding:in-reply-to:from:cc:content-language
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=G44sjWScclXWFU1Kar6tCC+bW6+DUC78F/r2qGeOD/U=;
+ b=pKkGKQcAHM6pE4X/C4F30tnDS3dmjhw6f6SVvcsDcV1NUj+EUn+pBMHtkvwejc1Agc
+ PIfLcBbBajZBLNqDZy8KQOUFiS8GIKdtVO1HOutb8SpMISTbgUiJl0IYA7VkcHtjuO7x
+ anJZgzQLxksD2A8g6N4f7DL3L6Hxo3L1tZTixY0qloq8z1uoX39ejgf9/yJxWmWMvErm
+ 6M+usxRFuqWTjP4vWnkrQ3yjpHJjswkhKRu9UgpVbDupBw544XPDq3+UcsNy+4nbIqMk
+ Fd6doh5/MAAUJsc7SH9xuudJwaml6WXXGz2qh1HmKqd81WhIc1LFyBLLEmL799zgeWEn
+ LOBg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCULb/iO7bVLDpsjDJEWajNY4PRA0w4SeecLpntCvmlAalLKZt/EYkXULca2xT5oxWavaRjpJsOK7tpeL1g=@nongnu.org
+X-Gm-Message-State: AOJu0Yw+fU48wpXsWfqZAvfTtbmjmiYI+ASA3yQ0QElTZ0Mej4O07l7B
+ FOAaZmv/9smahnGFJgDzQNteXAkRTEnDH6P66h8BcmDD5s3aWAIgab/7XqZjDnA=
+X-Gm-Gg: ASbGncvNKySzC39Je9lgbmUEHqb8IfhjVi6hmLbbIW5DyHBP8y10qciA2rhoG0+2axM
+ 9N0Ca3xrUlmL3XitXHhcGtKMWzYJbQaHXGAUcVmCf8p2ti3SHsRw2MmCuALdcBPOwF3KPExeqtI
+ kEyHQGlzqguaxsjhXCM0z8OCiuOU7RQM4J++BkhgpT9YiF1ytoHP/ANjQsRuqMHg8nElNc37Q3U
+ bVZAwQPEnER6VE4bxpFVuPf0wOGb3fWz1Ywxby0PSYOR3xT0QuYP8qe/AxxyKCgKJM=
+X-Google-Smtp-Source: AGHT+IEMx3VVDNyttIDt5PRM8AHIJsCPXwsQ/OWZGXl6hBymKCmQlps978WP7C2smuGSJYjuCdSoqQ==
+X-Received: by 2002:a05:600c:19d2:b0:434:ff25:199f with SMTP id
+ 5b1f17b1804b1-436553f4ff3mr44733565e9.26.1734602992856; 
+ Thu, 19 Dec 2024 02:09:52 -0800 (PST)
+Received: from [192.168.1.117] ([78.196.4.158])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43656a0b361sm47713145e9.0.2024.12.19.02.09.52
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 19 Dec 2024 02:09:52 -0800 (PST)
+Message-ID: <be91046d-dbe0-4701-9346-09521bdc5c4c@linaro.org>
+Date: Thu, 19 Dec 2024 11:09:51 +0100
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 3ioAlIe6EEDhZRTBBnWu-E4lC9Blt6F38eSnXoCIDac_1734598309
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=hhan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -31
-X-Spam_score: -3.2
-X-Spam_bar: ---
-X-Spam_report: (-3.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-1.116,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/i386/cpu: Fix notes for CPU models
+To: Han Han <hhan@redhat.com>, qemu-trivial@nongnu.org
+References: <20241219085141.1857343-1-hhan@redhat.com>
+Content-Language: en-US
+Cc: Chenyi Qiang <chenyi.qiang@intel.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20241219085141.1857343-1-hhan@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -71,35 +87,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 19 Dec 2024 08:53:04 -0000
+X-List-Received-Date: Thu, 19 Dec 2024 10:10:01 -0000
 
-Signed-off-by: Han Han <hhan@redhat.com>
----
- target/i386/cpu.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+On 19/12/24 09:51, Han Han wrote:
 
-diff --git a/target/i386/cpu.c b/target/i386/cpu.c
-index 5253399459..820571761d 100644
---- a/target/i386/cpu.c
-+++ b/target/i386/cpu.c
-@@ -3691,6 +3691,7 @@ static const X86CPUDefinition builtin_x86_defs[] = {
-             },
-             {
-                 .version = 4,
-+                .note = "IBRS, EPT switching, no TSX",
-                 .props = (PropValue[]) {
-                     { "vmx-eptp-switching", "on" },
-                     { /* end of list */ }
-@@ -3825,7 +3826,7 @@ static const X86CPUDefinition builtin_x86_defs[] = {
-               },
-             },
-             { .version = 4,
--              .note = "ARCH_CAPABILITIES, no TSX",
-+              .note = "ARCH_CAPABILITIES, EPT switching, no TSX",
-               .props = (PropValue[]) {
-                   { "vmx-eptp-switching", "on" },
-                   { /* end of list */ }
--- 
-2.47.1
+Fixes: 644e3c5d812 ("missing vmx features for Skylake-Server and 
+Cascadelake-Server")
+
+> Signed-off-by: Han Han <hhan@redhat.com>
+> ---
+>   target/i386/cpu.c | 3 ++-
+>   1 file changed, 2 insertions(+), 1 deletion(-)
+> 
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index 5253399459..820571761d 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -3691,6 +3691,7 @@ static const X86CPUDefinition builtin_x86_defs[] = {
+>               },
+>               {
+>                   .version = 4,
+> +                .note = "IBRS, EPT switching, no TSX",
+>                   .props = (PropValue[]) {
+>                       { "vmx-eptp-switching", "on" },
+>                       { /* end of list */ }
+> @@ -3825,7 +3826,7 @@ static const X86CPUDefinition builtin_x86_defs[] = {
+>                 },
+>               },
+>               { .version = 4,
+> -              .note = "ARCH_CAPABILITIES, no TSX",
+> +              .note = "ARCH_CAPABILITIES, EPT switching, no TSX",
+>                 .props = (PropValue[]) {
+>                     { "vmx-eptp-switching", "on" },
+>                     { /* end of list */ }
 
 
