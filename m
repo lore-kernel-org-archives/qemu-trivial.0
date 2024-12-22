@@ -1,87 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tPI22-0005GS-Cf
-	for mharc-qemu-trivial@gnu.org; Sun, 22 Dec 2024 04:13:50 -0500
+	id 1tPTlL-0001gp-Ey
+	for mharc-qemu-trivial@gnu.org; Sun, 22 Dec 2024 16:45:24 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tPI1z-0005Fv-FG; Sun, 22 Dec 2024 04:13:48 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tPI1y-0003zr-2C; Sun, 22 Dec 2024 04:13:47 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 0DE92C8CCB;
- Sun, 22 Dec 2024 12:13:12 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id A7C1318DB72;
- Sun, 22 Dec 2024 12:13:42 +0300 (MSK)
-Message-ID: <6f1dcbe9-3a7e-475b-92ef-14f1d04ffc2e@tls.msk.ru>
-Date: Sun, 22 Dec 2024 12:13:42 +0300
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1tPTlI-0001fx-LT
+ for qemu-trivial@nongnu.org; Sun, 22 Dec 2024 16:45:21 -0500
+Received: from mail-pl1-x636.google.com ([2607:f8b0:4864:20::636])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1tPTlH-0001vD-3U
+ for qemu-trivial@nongnu.org; Sun, 22 Dec 2024 16:45:20 -0500
+Received: by mail-pl1-x636.google.com with SMTP id
+ d9443c01a7336-2163b0c09afso31867035ad.0
+ for <qemu-trivial@nongnu.org>; Sun, 22 Dec 2024 13:45:16 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google; t=1734903915; x=1735508715; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=6Jx370CFTAl7yh8PdG3ZOseQcMn3UXlcTs+5VqFVgwk=;
+ b=et0WTLoWD9UufgsKKbUhxIEYwwyy84tL+OWUUpB1VzBsVegAI/0knDv53dQ/mmUNqW
+ UmMF6+VxYPPasa7KU2UIXbelhtnIWU78BT0AILdMMG6RVJ/QHp8xN7VsUQ63aDN2Z+Zu
+ vF19w8skXuMhsDdFWA9Lb9Md66i9ap0BW2OX8W5z2aJTWF+zl0GyTinHquYuAXIsrWq3
+ 9pRZm7GgLEA4OHGPa7Cc/VRpF6bugNj5HtUilrpaAwFizm0k3VQoQj8bTbB+XVawx9VH
+ AWmNMIgZKiNoByMvSjNJBE+E0w49ISu3BRcpDf5nJ2jMLpXVU11Z3Gbt5LlXBSFDOnjI
+ vMcA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1734903915; x=1735508715;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=6Jx370CFTAl7yh8PdG3ZOseQcMn3UXlcTs+5VqFVgwk=;
+ b=Rdf5ID9xV4hQsCXa4lC/EAYCF6O14sp41OSAOjR0hCc+sNu9zkDYZ5A41RnhqK+NHw
+ ZiMwEF+hXQOiBTQLgJvRmFbeLS7d7iZD1Cn7SCD+qthiM/gMWtozoamZa+JOVek7GxuN
+ 0zdgKyFeh9kUFb4KZLbccop11tmUkicrV65fG4tfLr7qkttZEXpwrv9pDPkJ1qsY1VaP
+ Z+Ou/rHqMmihB/WT2HwBhgnDiM6+Ogal9awgGACTQZeJC9MrByCfhfy/DT00o2on+vb9
+ tX6x3ioOqXgX0QoeXSWFTwmEx2lrVmm2TOoRL4LusY4gfPpXIfkv66fdlgq6X1zLVpXC
+ 3bNw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVJBRNhawXd86+nwKUxrBzFav5GDwgaG+EO4JKIuYIIOXQyRDiifsQaBCS1bKNAEh8Y8RlpWiD0QskPHOo=@nongnu.org
+X-Gm-Message-State: AOJu0Yz3Qn9mG3q8C1sJlXEN2rRAWC4dneHMxJV+yu4S/4PselslSb3b
+ E0tSVcgBgITwpcakAcgeibx9EHX/ZTeMgZnoJSk+IOWa6j+4y7PRpLq2ERkzSy8=
+X-Gm-Gg: ASbGnct06Etl7GXNkJGtkgrid7o7GueMooJ3c6kAoGv3cFdWwzO7xbRI7JPhOTKtARt
+ 7Uioy8jdHcRdE+uCf4zAy7sINEkhcFAdaPUqFjPBZftM+Q9NliAj3RPXzNrzunSKhhDol6LInEn
+ 7GcCyR7HO12u8iT+wXgoDV1upGpEv6Tvh8WYdI9Y2e/31gvg65wAFA8Xj5zm87DPh6MuZ0ZKvA1
+ B3Ow7LBKXvje4F1hUoiuFgGQ6HcFBvIyjkCNrw2l2qRwm+9qXL7vUQZaZBJF8xcbhjZJMT8mgTJ
+ 8PrnYLs=
+X-Google-Smtp-Source: AGHT+IFKH9jwIo9aJMZrUJYkYeESxx2qnXCyqi01O2xyG92HUKJAvukWHW3gK6CRyMjpfQ7hL4ZwJg==
+X-Received: by 2002:a17:902:d2c3:b0:216:69ca:7714 with SMTP id
+ d9443c01a7336-219e6e85c30mr145820255ad.11.1734903915653; 
+ Sun, 22 Dec 2024 13:45:15 -0800 (PST)
+Received: from grind.dc1.ventanamicro.com ([187.101.65.72])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-219dc9f7312sm60737175ad.225.2024.12.22.13.45.12
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 22 Dec 2024 13:45:15 -0800 (PST)
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, alistair.francis@wdc.com, bmeng@tinylab.org,
+ liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com, palmer@rivosinc.com,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH] hw/riscv/riscv-iommu-sys.c: fix duplicated 'table_size'
+Date: Sun, 22 Dec 2024 18:45:07 -0300
+Message-ID: <20241222214507.2173648-1-dbarboza@ventanamicro.com>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] qmp: update vhost-user protocol feature maps
-To: Jonah Palmer <jonah.palmer@oracle.com>,
- Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-stable@nongnu.org, qemu-trivial@nongnu.org,
- "Michael S. Tsirkin" <mst@redhat.com>, aesteve@redhat.com, hreitz@redhat.com
-References: <20241216170914.1346403-1-lvivier@redhat.com>
- <c9341f03-ecc2-4a62-860a-35ff2b660651@oracle.com>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <c9341f03-ecc2-4a62-860a-35ff2b660651@oracle.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::636;
+ envelope-from=dbarboza@ventanamicro.com; helo=mail-pl1-x636.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,15 +88,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 22 Dec 2024 09:13:49 -0000
+X-List-Received-Date: Sun, 22 Dec 2024 21:45:21 -0000
 
-16.12.2024 20:30, Jonah Palmer wrote:
-...
+Trivial fix for the following ticket:
 
-> Signed-off-by: Jonah Palmer <jonah.palmer@oracle.com>
-Should this be a Reviewed-by instead?
+CID 1568580:  Incorrect expression  (EVALUATION_ORDER)
+In "table_size = table_size = n_vectors * 16U",
+    "table_size" is written twice with the same value.
 
-Thanks,
+Cc: qemu-trivial@nongnu.org
+Cc: Peter Maydell <peter.maydell@linaro.org>
+Resolves: Coverity CID 1568580
+Fixes: 01c1caa9d1 ("hw/riscv/virt.c, riscv-iommu-sys.c: add MSIx support")
+Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+---
+ hw/riscv/riscv-iommu-sys.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-/mjt
+diff --git a/hw/riscv/riscv-iommu-sys.c b/hw/riscv/riscv-iommu-sys.c
+index 28153f38da..65b24fb07d 100644
+--- a/hw/riscv/riscv-iommu-sys.c
++++ b/hw/riscv/riscv-iommu-sys.c
+@@ -121,7 +121,7 @@ static void riscv_iommu_sysdev_init_msi(RISCVIOMMUStateSys *s,
+                                         uint32_t n_vectors)
+ {
+     RISCVIOMMUState *iommu = &s->iommu;
+-    uint32_t table_size = table_size = n_vectors * PCI_MSIX_ENTRY_SIZE;
++    uint32_t table_size = n_vectors * PCI_MSIX_ENTRY_SIZE;
+     uint32_t table_offset = RISCV_IOMMU_REG_MSI_CONFIG;
+     uint32_t pba_size = QEMU_ALIGN_UP(n_vectors, 64) / 8;
+     uint32_t pba_offset = RISCV_IOMMU_REG_MSI_CONFIG + 256;
+-- 
+2.47.1
+
 
