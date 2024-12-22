@@ -1,28 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tPHoA-0001bo-VQ
-	for mharc-qemu-trivial@gnu.org; Sun, 22 Dec 2024 03:59:30 -0500
+	id 1tPI0K-0004WQ-2l
+	for mharc-qemu-trivial@gnu.org; Sun, 22 Dec 2024 04:12:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tPHoA-0001bb-8V; Sun, 22 Dec 2024 03:59:30 -0500
+ id 1tPI0F-0004Vf-3y; Sun, 22 Dec 2024 04:12:00 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tPHo8-000218-Rf; Sun, 22 Dec 2024 03:59:30 -0500
+ id 1tPI0C-0003kd-O2; Sun, 22 Dec 2024 04:11:58 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 2DCF9C8C8D;
- Sun, 22 Dec 2024 11:58:56 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id F3022C8CC0;
+ Sun, 22 Dec 2024 12:11:20 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id CAC3A18DB5F;
- Sun, 22 Dec 2024 11:59:26 +0300 (MSK)
-Message-ID: <710b775b-41b6-40ae-8467-dea9ddc3ecf9@tls.msk.ru>
-Date: Sun, 22 Dec 2024 11:59:26 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id 9375C18DB71;
+ Sun, 22 Dec 2024 12:11:51 +0300 (MSK)
+Message-ID: <514c2c90-4c0f-486e-857d-fa0360c47d38@tls.msk.ru>
+Date: Sun, 22 Dec 2024 12:11:51 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/i386/cpu: Fix notes for CPU models
-To: Han Han <hhan@redhat.com>, qemu-trivial@nongnu.org,
- qemu-devel <qemu-devel@nongnu.org>
-References: <20241219085141.1857343-1-hhan@redhat.com>
+Subject: Re: [PATCH] contrib/plugins/bbv.c: Start bb index from 1
+To: ckf104 <1900011634@pku.edu.cn>, qemu-trivial@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
+ <ma.mandourr@gmail.com>, Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ QEMU-Devel <qemu-devel@nongnu.org>
+References: <20241217142413.148978-1-1900011634@pku.edu.cn>
 Content-Language: en-US, ru-RU
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
@@ -68,7 +71,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  YPkzzso6HT7rlapB5nulYmplJZSZ4RmE1ATZKf+wUPocDu6N10LtBNbwHWTT5NLtxNJAJAvl
  ojis6H1kRWZE/n5buyPY2NYeyWfjjrerOYt3er55n4C1I88RSCTGeejVmXWuo65QD2epvzE6
  3GgKngeVm7shlp7+d3D3+fAAHTvulQQqV3jOodz+B4yzuZ7WljkNrmrWrH8aI4uA98c=
-In-Reply-To: <20241219085141.1857343-1-hhan@redhat.com>
+In-Reply-To: <20241217142413.148978-1-1900011634@pku.edu.cn>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -91,14 +94,20 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 22 Dec 2024 08:59:30 -0000
+X-List-Received-Date: Sun, 22 Dec 2024 09:12:02 -0000
 
-19.12.2024 11:51, Han Han wrote:
-...
+17.12.2024 17:24, ckf104 wrote:
+> Standard simpoint tool reqeusts that index of basic block index starts from 1.
 
-Applied to the trivial-patches tree, thank you!
+While this patch is a trivial one-liner, but the underlying issue requires at least
+a minimal understanding of what it is all about, what *is* bbv to begin with, what
+`simpoint' is.  I'm not sure it really is a trivial material?
 
-Please do Cc: qemu-devel@ the next time.
+> Signed-off-by: ckf104 <1900011634@pku.edu.cn>
+
+Do we accept such SoBs these days?
+
+Thanks,
 
 /mjt
 
