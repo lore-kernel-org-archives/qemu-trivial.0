@@ -1,86 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tPUnK-0002ak-CU
-	for mharc-qemu-trivial@gnu.org; Sun, 22 Dec 2024 17:51:30 -0500
+	id 1tPXGl-0000eu-R6
+	for mharc-qemu-trivial@gnu.org; Sun, 22 Dec 2024 20:30:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1tPUnH-0002aC-5C
- for qemu-trivial@nongnu.org; Sun, 22 Dec 2024 17:51:28 -0500
-Received: from mail-pg1-x529.google.com ([2607:f8b0:4864:20::529])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1tPUnC-0001Al-1R
- for qemu-trivial@nongnu.org; Sun, 22 Dec 2024 17:51:24 -0500
-Received: by mail-pg1-x529.google.com with SMTP id
- 41be03b00d2f7-7fd17f2312bso2570217a12.0
- for <qemu-trivial@nongnu.org>; Sun, 22 Dec 2024 14:51:20 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1734907879; x=1735512679; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=9O5asO7pYq/pHHiRROp7oqru8ZWyu6V95BNoLY8F+aI=;
- b=UkQXKKfKGGRc66RZClX4a8y2hU1s/WGbQ/jL2NgFR/2d44VbMfBKTGsX5tc7V4AU0M
- 2HOm9rasbfHbq4znZE3O5uOXCjrCsrBIys7XxlLsIXHk7C2l9CNEAou1jBnm4H5wbItJ
- p27pny1BgKINf5ooBzHFPNZCqPQNQ26n9DkQK3Z1llG6vuTiCuHnsnyw2nvvmnLIMxRk
- GT/Yb+ymQhJN/n5OywuT25xSCQDcCwoNiaWQ6tFx44HGJTKnu1Pxxg/RrlGsmtzavQgT
- yr2nYeoVhgr9Cc30snQ/YPgq0lcni6qz5+JKT5VO5RlzY9tUxCOezQwVI0VuvQAEgXnY
- Kw/g==
+ (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1tPXGi-0000da-Bk
+ for qemu-trivial@nongnu.org; Sun, 22 Dec 2024 20:30:00 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1tPXGf-0000Vy-14
+ for qemu-trivial@nongnu.org; Sun, 22 Dec 2024 20:29:59 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1734917393;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=7hA3AZRVD4+1UKEu0JMZr10iSIMDRUaEYs3uUl+qSoE=;
+ b=I87IEQhMZwB/8ClNHZqAvuB7RUPsLR/djdLqzWDqj1+x58HRp5+1FO4k6bBn0E8XtWVsF7
+ vm/uZjKOeugB/3KBO97Z3wfeK922dlCBiSjvHsRy+PjK/K/wv93Vp5GR8TRDREbP0eQpJM
+ MXur8Jqj0ytK4/hv1nxw7oPzEmlmqNw=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-407-HYmH8oEvOIueJIC0BFFqsQ-1; Sun, 22 Dec 2024 20:29:51 -0500
+X-MC-Unique: HYmH8oEvOIueJIC0BFFqsQ-1
+X-Mimecast-MFC-AGG-ID: HYmH8oEvOIueJIC0BFFqsQ
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-aab9f30ac00so303417866b.3
+ for <qemu-trivial@nongnu.org>; Sun, 22 Dec 2024 17:29:50 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734907879; x=1735512679;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=9O5asO7pYq/pHHiRROp7oqru8ZWyu6V95BNoLY8F+aI=;
- b=McYtoGzlTzkhq89NgaZoyqJVGyF+OuXwkeTTrYiftkGfxTRzf1XXfM14ImcGCLuRYK
- Ui6+nDBJ93RufxppjuD+DYEEoYaJ7wgT9T46oxHdRqVDhNC+n7BNHn9C17hhRLgZl4mr
- CcWH/SyP/BOs8ieVDfYIUzf5YEGrJx4qQGLoypcDhUUCcspb6X5c5zoUfLP8KYU//j0B
- b/SrqCSfM13rVotNcr4G2v83MXUOhIc9dU1siEivDKncRtP0pSn8Utiei0qTQiq8KoID
- djMalZTdHG7f/4poY+997dZ0+IuWU4vzBLYVaeogOiJIRTJlpQKIOsmXSm7Cz+cPSXVJ
- 1qqA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCU5R3dx7DNLatRpVnDc2/vxVMNhIc8vBGczzPndmAFQG+rPD+kDh8nXdjrDU7EuyQJkvVuANev5tXAGab0=@nongnu.org
-X-Gm-Message-State: AOJu0YzQXO2gbd4sG7rWJKZYqNJVE54a+UgzBxbI3sW9BsvFj8QD1NBo
- kMKFstCSM0fROBe6bgMdjo/dBGRW86MAXlfTOeyFPoW/j44vTGWGz8mrW0Urtdk=
-X-Gm-Gg: ASbGncsPu5FsKywGcxc+3oj4UwrwrHTDZrhdiYhs11RMNcHgw0wiadNt8jEvXkGm5LO
- po5cpFmiZyYjN6NW3dEq8T3u5DAHAzVrdXIpfwQU/jk7lOnmxgaxuXRR4ecnf0nbJB0xsy+pREo
- 9sYOngt4jDwEv2ohxVIxAmV43Y1OOcXTQgM3x1X0bC4fXXLsYrGGcGi7iMqbXJT41ZFbfGC+5aq
- PAvfu13lmIi8bxXORoDPjvqn0wCHwYlCBjFUOYTdiUMU47NkwF5mGq1UFT4J4r/G1Qi4A==
-X-Google-Smtp-Source: AGHT+IF6eO24UJw77C1AD54w7rcWghttUwpJzai3v1vqxSE6zf5Rr2e67jSZM3idN9hrI8bDUWI4zQ==
-X-Received: by 2002:a17:90b:2d88:b0:2ea:7fd8:9dc1 with SMTP id
- 98e67ed59e1d1-2f452e4c515mr15142434a91.18.1734907879206; 
- Sun, 22 Dec 2024 14:51:19 -0800 (PST)
-Received: from [192.168.1.67] ([38.39.164.180])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-219dc9d97casm61116385ad.138.2024.12.22.14.51.18
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 22 Dec 2024 14:51:18 -0800 (PST)
-Message-ID: <d0e08dc6-b4c1-4c14-9aff-5e726f04792a@linaro.org>
-Date: Sun, 22 Dec 2024 14:51:17 -0800
+ d=1e100.net; s=20230601; t=1734917390; x=1735522190;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=7hA3AZRVD4+1UKEu0JMZr10iSIMDRUaEYs3uUl+qSoE=;
+ b=uquKaZVcL9TOZoXXEJAzR06sHO2yuTYNu526O0Oj1IUgdyY4KslqKSoZ6XpoUE/D3i
+ 9CQ1Ol+qcSJvr+wihGZLOKfaL6JOFFb5eGupnZugdQc0UBUv1BIsqXlwpZEnQ5mxWtp0
+ klvSba0+gMm7eDC0Ey/NLSqsBRALZ/QMQB0hpdoEXOnDsFuvri1tssVSbrZcZ29JP6Tx
+ CZ2ilcFWNainho6mydfyePds6vpWyq4EWM/3KDmlhuAczkh1mBLEw8TxqqP1PxIpCZAV
+ ud9P285x5WYerwRmOSxTxCxag55nGLQzSesOmOryF2hfyFiMK/u0nAAT9AgP1OEQBkPr
+ knbg==
+X-Gm-Message-State: AOJu0Ywe8ZOZrTEiU/8XQgKDaLzkveA7wb5MedxGSS8CuDM7JSmWN2ka
+ 5BlCfGV+R6wwLm9EcBfPDTfPFx6GVKEgKxrrwhmf/I2oGf656vFB6ygWo/WPNbCiOfpzH8Ganjg
+ rw1ewbaldoZhbY9xv4YqblTd9y+PuJFf4Uf4VAw/EvUbN1gO8Jp1CU3G/E1m3V3fABgT1GHNfRM
+ B/JVFE5rn6BsZxsXd4PzsBnynRO3X/2A==
+X-Gm-Gg: ASbGnctbbdoR7Qn2t88zstPoWeAqXqS5U3g8+bmkwx8q8vCBE/7B4hfVfvZ1L7zrhVE
+ w0W5mGvxMcDFkKWj19xouHdCqIbEHL+FMqmnm6rg=
+X-Received: by 2002:a17:907:94c2:b0:aa6:19c9:ad08 with SMTP id
+ a640c23a62f3a-aac334f31e9mr1019650466b.48.1734917389905; 
+ Sun, 22 Dec 2024 17:29:49 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFh/SCuGFH17Wt8QTW7Xb7oYn+uANG7jweu+1VS+Sne54cVlEXIwyekuvJh2kadoXhF0ff0aEB3Sp1Eet+3WkY=
+X-Received: by 2002:a17:907:94c2:b0:aa6:19c9:ad08 with SMTP id
+ a640c23a62f3a-aac334f31e9mr1019648966b.48.1734917389641; Sun, 22 Dec 2024
+ 17:29:49 -0800 (PST)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] contrib/plugins/bbv.c: Start bb index from 1
-To: Michael Tokarev <mjt@tls.msk.ru>, ckf104 <1900011634@pku.edu.cn>,
- qemu-trivial@nongnu.org
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Alexandre Iooss <erdnaxe@crans.org>, Mahmoud Mandour
- <ma.mandourr@gmail.com>, QEMU-Devel <qemu-devel@nongnu.org>
-References: <20241217142413.148978-1-1900011634@pku.edu.cn>
- <514c2c90-4c0f-486e-857d-fa0360c47d38@tls.msk.ru>
-Content-Language: en-US
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <514c2c90-4c0f-486e-857d-fa0360c47d38@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::529;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x529.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+References: <20241219085141.1857343-1-hhan@redhat.com>
+ <710b775b-41b6-40ae-8467-dea9ddc3ecf9@tls.msk.ru>
+In-Reply-To: <710b775b-41b6-40ae-8467-dea9ddc3ecf9@tls.msk.ru>
+From: Han Han <hhan@redhat.com>
+Date: Mon, 23 Dec 2024 09:29:38 +0800
+Message-ID: <CAHjf+S-OeNVT=KQxVEg6MW4efVTfXy1iTb85QyL6Zja62PD0fw@mail.gmail.com>
+Subject: Re: [PATCH] target/i386/cpu: Fix notes for CPU models
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: fFvSh2MiUklyU-S3WH01PfrDp0cG_SA_Y2-c2fH2dCE_1734917390
+X-Mimecast-Originator: redhat.com
+Content-Type: multipart/alternative; boundary="000000000000b97ada0629e5eee7"
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=hhan@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.143,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,29 +88,50 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 22 Dec 2024 22:51:28 -0000
+X-List-Received-Date: Mon, 23 Dec 2024 01:30:01 -0000
 
-On 12/22/24 01:11, Michael Tokarev wrote:
-> 17.12.2024 17:24, ckf104 wrote:
->> Standard simpoint tool reqeusts that index of basic block index starts from 1.
-> 
-> While this patch is a trivial one-liner, but the underlying issue requires at least
-> a minimal understanding of what it is all about, what *is* bbv to begin with, what
-> `simpoint' is.  I'm not sure it really is a trivial material?
+--000000000000b97ada0629e5eee7
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+On Sun, Dec 22, 2024 at 4:59=E2=80=AFPM Michael Tokarev <mjt@tls.msk.ru> wr=
+ote:
+
+> 19.12.2024 11:51, Han Han wrote:
+> ...
+>
+> Applied to the trivial-patches tree, thank you!
+>
+> Please do Cc: qemu-devel@ the next time.
+>
+> OK. Thanks for your advice
+
+> /mjt
+>
 >
 
-This fix is alright.
-This plugin generated data for a binary analysis tool (named Simpoint) 
-that needs specific data named basic block vectors (bbv).
+--000000000000b97ada0629e5eee7
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
 
-I didn't use it myself, I trust this change.
+<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
+mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Dec 22,=
+ 2024 at 4:59=E2=80=AFPM Michael Tokarev &lt;<a href=3D"mailto:mjt@tls.msk.=
+ru">mjt@tls.msk.ru</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
+" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
+padding-left:1ex">19.12.2024 11:51, Han Han wrote:<br>
+...<br>
+<br>
+Applied to the trivial-patches tree, thank you!<br>
+<br>
+Please do Cc: qemu-devel@ the next time.<br>
+<br></blockquote><div>OK. Thanks for your advice<br></div><blockquote class=
+=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
+b(204,204,204);padding-left:1ex">
+/mjt<br>
+<br>
+</blockquote></div></div>
 
->> Signed-off-by: ckf104 <1900011634@pku.edu.cn>
-> 
-> Do we accept such SoBs these days?
-> 
-> Thanks,
-> 
-> /mjt
+--000000000000b97ada0629e5eee7--
 
 
