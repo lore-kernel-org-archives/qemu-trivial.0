@@ -1,81 +1,98 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tPXGl-0000eu-R6
-	for mharc-qemu-trivial@gnu.org; Sun, 22 Dec 2024 20:30:06 -0500
+	id 1tPpa2-0007fw-9Q
+	for mharc-qemu-trivial@gnu.org; Mon, 23 Dec 2024 16:03:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1tPXGi-0000da-Bk
- for qemu-trivial@nongnu.org; Sun, 22 Dec 2024 20:30:00 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jiaxun.yang@flygoat.com>)
+ id 1tPpa0-0007eq-Ay; Mon, 23 Dec 2024 16:03:08 -0500
+Received: from fout-a4-smtp.messagingengine.com ([103.168.172.147])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <hhan@redhat.com>) id 1tPXGf-0000Vy-14
- for qemu-trivial@nongnu.org; Sun, 22 Dec 2024 20:29:59 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1734917393;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=7hA3AZRVD4+1UKEu0JMZr10iSIMDRUaEYs3uUl+qSoE=;
- b=I87IEQhMZwB/8ClNHZqAvuB7RUPsLR/djdLqzWDqj1+x58HRp5+1FO4k6bBn0E8XtWVsF7
- vm/uZjKOeugB/3KBO97Z3wfeK922dlCBiSjvHsRy+PjK/K/wv93Vp5GR8TRDREbP0eQpJM
- MXur8Jqj0ytK4/hv1nxw7oPzEmlmqNw=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-407-HYmH8oEvOIueJIC0BFFqsQ-1; Sun, 22 Dec 2024 20:29:51 -0500
-X-MC-Unique: HYmH8oEvOIueJIC0BFFqsQ-1
-X-Mimecast-MFC-AGG-ID: HYmH8oEvOIueJIC0BFFqsQ
-Received: by mail-ej1-f70.google.com with SMTP id
- a640c23a62f3a-aab9f30ac00so303417866b.3
- for <qemu-trivial@nongnu.org>; Sun, 22 Dec 2024 17:29:50 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1734917390; x=1735522190;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=7hA3AZRVD4+1UKEu0JMZr10iSIMDRUaEYs3uUl+qSoE=;
- b=uquKaZVcL9TOZoXXEJAzR06sHO2yuTYNu526O0Oj1IUgdyY4KslqKSoZ6XpoUE/D3i
- 9CQ1Ol+qcSJvr+wihGZLOKfaL6JOFFb5eGupnZugdQc0UBUv1BIsqXlwpZEnQ5mxWtp0
- klvSba0+gMm7eDC0Ey/NLSqsBRALZ/QMQB0hpdoEXOnDsFuvri1tssVSbrZcZ29JP6Tx
- CZ2ilcFWNainho6mydfyePds6vpWyq4EWM/3KDmlhuAczkh1mBLEw8TxqqP1PxIpCZAV
- ud9P285x5WYerwRmOSxTxCxag55nGLQzSesOmOryF2hfyFiMK/u0nAAT9AgP1OEQBkPr
- knbg==
-X-Gm-Message-State: AOJu0Ywe8ZOZrTEiU/8XQgKDaLzkveA7wb5MedxGSS8CuDM7JSmWN2ka
- 5BlCfGV+R6wwLm9EcBfPDTfPFx6GVKEgKxrrwhmf/I2oGf656vFB6ygWo/WPNbCiOfpzH8Ganjg
- rw1ewbaldoZhbY9xv4YqblTd9y+PuJFf4Uf4VAw/EvUbN1gO8Jp1CU3G/E1m3V3fABgT1GHNfRM
- B/JVFE5rn6BsZxsXd4PzsBnynRO3X/2A==
-X-Gm-Gg: ASbGnctbbdoR7Qn2t88zstPoWeAqXqS5U3g8+bmkwx8q8vCBE/7B4hfVfvZ1L7zrhVE
- w0W5mGvxMcDFkKWj19xouHdCqIbEHL+FMqmnm6rg=
-X-Received: by 2002:a17:907:94c2:b0:aa6:19c9:ad08 with SMTP id
- a640c23a62f3a-aac334f31e9mr1019650466b.48.1734917389905; 
- Sun, 22 Dec 2024 17:29:49 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFh/SCuGFH17Wt8QTW7Xb7oYn+uANG7jweu+1VS+Sne54cVlEXIwyekuvJh2kadoXhF0ff0aEB3Sp1Eet+3WkY=
-X-Received: by 2002:a17:907:94c2:b0:aa6:19c9:ad08 with SMTP id
- a640c23a62f3a-aac334f31e9mr1019648966b.48.1734917389641; Sun, 22 Dec 2024
- 17:29:49 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <jiaxun.yang@flygoat.com>)
+ id 1tPpZy-0006Iu-Bq; Mon, 23 Dec 2024 16:03:08 -0500
+Received: from phl-compute-09.internal (phl-compute-09.phl.internal
+ [10.202.2.49])
+ by mailfout.phl.internal (Postfix) with ESMTP id 864B5138015F;
+ Mon, 23 Dec 2024 16:03:05 -0500 (EST)
+Received: from phl-imap-12 ([10.202.2.86])
+ by phl-compute-09.internal (MEProxy); Mon, 23 Dec 2024 16:03:05 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=flygoat.com; h=
+ cc:cc:content-transfer-encoding:content-type:content-type:date
+ :date:from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to; s=fm3; t=1734987785;
+ x=1735074185; bh=ypcMPSjv/uITj3BrmR2Z765Y0a4x2DwJ7cNotejkEO4=; b=
+ AO8tVWVr4BAio3lP1MuXig95JB1yiG1LW82Ht4SCyAxgC1wfYEDvSUBFrDanIkrN
+ XQCH5zyJsEX6UBqdvCvuD+zWEYQLT8lUbBaQZS0o1YeZIrSSEW8shQYwilAO+Gyu
+ R9Kw9CsgbS3b4awsfkF4jfxfLj8PDhgTgxTa5MjlBl778xC3OWgGik9pllS//Eou
+ E9PAaUJU8gc0s/I/d7HvNlrx26t/GBsNS9LxNS2KGnbbd/FQ5fn1yg7IiWAdOZBT
+ qSAUyyGsJ7YTyhYI4M4TddR18iiRILNmbE7hr4GPXcE/3ftCKRbIBespPoN7BHsq
+ FiAFvZIuNt6FJhA1czuRBQ==
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
+ messagingengine.com; h=cc:cc:content-transfer-encoding
+ :content-type:content-type:date:date:feedback-id:feedback-id
+ :from:from:in-reply-to:in-reply-to:message-id:mime-version
+ :references:reply-to:subject:subject:to:to:x-me-proxy
+ :x-me-sender:x-me-sender:x-sasl-enc; s=fm2; t=1734987785; x=
+ 1735074185; bh=ypcMPSjv/uITj3BrmR2Z765Y0a4x2DwJ7cNotejkEO4=; b=P
+ hpOnsxF28aNv+oeODHzo87Zow6jhqmc4ij5BvV8xUWZPB5JGWT8fjydhAhLE6dDZ
+ 8/q5qc11BPtr2vHknJSbjnP+ILdVCoJRcmOr62puMikF0AMptX3iO0kq51Vg/W/V
+ sIkD6E8JTNMgHcX22JmSSws9qHY2csNez3OZ35+QA7E2k/yuLgwB0g5BMhszoZ/j
+ YoPbtj+uKVDUH1aPpqrzasL3BXriBhSxBJAciEkYX1F4W/5KYZzqvHg0msjPpfbB
+ Zw5s6tCZhffay0ditLui38O+jCiri9Xx4wvZFR+SHsVAk0+ZR058+3Mx6W+F+/yN
+ +zUHRdd7kIrrquCuME5mg==
+X-ME-Sender: <xms:CdBpZ6G3NilPeu5h8u2sWNM1oJnRKBR7ysyHvQDQ_Q1yeHvpnhOaBg>
+ <xme:CdBpZ7XxqONODs8xZxgJSO9Oav6s67-HwWJTLRCiebvFMEL08V-kDqoDDyOyrxjsP
+ a71UsuNLx49uvUVGNk>
+X-ME-Proxy-Cause: gggruggvucftvghtrhhoucdtuddrgeefuddrudduvddgkedtucetufdoteggodetrfdotf
+ fvucfrrhhofhhilhgvmecuhfgrshhtofgrihhlpdggtfgfnhhsuhgsshgtrhhisggvpdfu
+ rfetoffkrfgpnffqhgenuceurghilhhouhhtmecufedttdenucesvcftvggtihhpihgvnh
+ htshculddquddttddmnecujfgurhepofggfffhvfevkfgjfhfutgfgsehtqhertdertdej
+ necuhfhrohhmpedflfhirgiguhhnucgjrghnghdfuceojhhirgiguhhnrdihrghnghesfh
+ hlhihgohgrthdrtghomheqnecuggftrfgrthhtvghrnhepffekveettdeuveefhfekhfdu
+ gfegteejffejudeuheeujefgleduveekuddtueehnecuffhomhgrihhnpehkvghrnhgvlh
+ drohhrghenucevlhhushhtvghrufhiiigvpedtnecurfgrrhgrmhepmhgrihhlfhhrohhm
+ pehjihgrgihunhdrhigrnhhgsehflhihghhorghtrdgtohhmpdhnsggprhgtphhtthhope
+ ejpdhmohguvgepshhmthhpohhuthdprhgtphhtthhopegrlhgvgidrsggvnhhnvggvsehl
+ ihhnrghrohdrohhrghdprhgtphhtthhopehphhhilhhmugeslhhinhgrrhhordhorhhgpd
+ hrtghpthhtohepqhgvmhhuqdguvghvvghlsehnohhnghhnuhdrohhrghdprhgtphhtthho
+ pehqvghmuhdqthhrihhvihgrlhesnhhonhhgnhhurdhorhhgpdhrtghpthhtoheprghrmh
+ gsrhhusehrvgguhhgrthdrtghomhdprhgtphhtthhopegsvghrrhgrnhhgvgesrhgvughh
+ rghtrdgtohhmpdhrtghpthhtohepthhhuhhthhesrhgvughhrghtrdgtohhm
+X-ME-Proxy: <xmx:CdBpZ0LgU3heg_k2PhNGXvJJVt5iSjOmAuUG7Sqz-xX0ogior7TCYw>
+ <xmx:CdBpZ0E07dRu_dVLTqou7OAPJV-PO8pYsSmxuNJewjOOGSH5VHkX4Q>
+ <xmx:CdBpZwVqIYwsNiySIykf_IbZvavj5qDrjHDFuJmF87ugFWw9d5nKJw>
+ <xmx:CdBpZ3M-_ULuW6EU1jRchWPkxxig87q6yYG7RWC5O6fBhw2ilEmx7g>
+ <xmx:CdBpZyJHtSRtPS_YBH9GMG1JmcNb_cY7NSkf8P9j18wKWJMQdxMly5gQ>
+Feedback-ID: ifd894703:Fastmail
+Received: by mailuser.phl.internal (Postfix, from userid 501)
+ id 2E4151C20066; Mon, 23 Dec 2024 16:03:05 -0500 (EST)
+X-Mailer: MessagingEngine.com Webmail Interface
 MIME-Version: 1.0
-References: <20241219085141.1857343-1-hhan@redhat.com>
- <710b775b-41b6-40ae-8467-dea9ddc3ecf9@tls.msk.ru>
-In-Reply-To: <710b775b-41b6-40ae-8467-dea9ddc3ecf9@tls.msk.ru>
-From: Han Han <hhan@redhat.com>
-Date: Mon, 23 Dec 2024 09:29:38 +0800
-Message-ID: <CAHjf+S-OeNVT=KQxVEg6MW4efVTfXy1iTb85QyL6Zja62PD0fw@mail.gmail.com>
-Subject: Re: [PATCH] target/i386/cpu: Fix notes for CPU models
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-trivial@nongnu.org, qemu-devel <qemu-devel@nongnu.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: fFvSh2MiUklyU-S3WH01PfrDp0cG_SA_Y2-c2fH2dCE_1734917390
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000b97ada0629e5eee7"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=hhan@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -21
-X-Spam_score: -2.2
+Date: Mon, 23 Dec 2024 21:02:44 +0000
+From: "Jiaxun Yang" <jiaxun.yang@flygoat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ "QEMU devel" <qemu-devel@nongnu.org>,
+ "QEMU Trivial" <qemu-trivial@nongnu.org>
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ "Thomas Huth" <thuth@redhat.com>, "Markus Armbruster" <armbru@redhat.com>
+Message-Id: <b827ff72-27d4-4d1f-9622-8b2a507f4b11@app.fastmail.com>
+In-Reply-To: <804d9b8d-5593-4884-b184-ecfe079917ae@linaro.org>
+References: <20241222-b4-config-v1-1-b3667beb30a4@flygoat.com>
+ <d5c580f6-e871-4670-8d38-05f9205828f5@linaro.org>
+ <804d9b8d-5593-4884-b184-ecfe079917ae@linaro.org>
+Subject: Re: [PATCH] Add a b4 configuration file
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=103.168.172.147;
+ envelope-from=jiaxun.yang@flygoat.com; helo=fout-a4-smtp.messagingengine.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.143,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,50 +105,102 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Dec 2024 01:30:01 -0000
+X-List-Received-Date: Mon, 23 Dec 2024 21:03:09 -0000
 
---000000000000b97ada0629e5eee7
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
 
-On Sun, Dec 22, 2024 at 4:59=E2=80=AFPM Michael Tokarev <mjt@tls.msk.ru> wr=
-ote:
 
-> 19.12.2024 11:51, Han Han wrote:
-> ...
+=E5=9C=A82024=E5=B9=B412=E6=9C=8823=E6=97=A5=E5=8D=81=E4=BA=8C=E6=9C=88 =
+=E4=B8=8B=E5=8D=8812:24=EF=BC=8CPhilippe Mathieu-Daud=C3=A9=E5=86=99=E9=81=
+=93=EF=BC=9A
+> On 23/12/24 13:18, Philippe Mathieu-Daud=C3=A9 wrote:
+>> Hi Jiaxun,
+>>=20
+>> On 22/12/24 17:53, Jiaxun Yang wrote:
+>>> b4 [1] is a convenient tool to manage patch series with mailing list
+>>> working flow.
+>>>
+>>> Add a project default config file to match QEMU's mailing list=20
+>>> conventions
+>>> as well as adopting differences on scripting.
+>>>
+>>> Examples of b4:
+>>>
+>>> ```
+>>> $ b4 prep --check
+>>> Checking patches using:
+>>> =C2=A0=C2=A0 scripts/checkpatch.pl -q --terse --no-summary --mailbac=
+k -
+>>>
+>>> ---
+>>> Signed-off-by: Jiaxun Yang <jiaxun.yang@flygoat.com>
+>>> ---
+>>> =E2=97=8F cc5a4c890fed: Add a b4 configuration file
+>>> =C2=A0=C2=A0 =E2=97=8F checkpatch.pl: 27: WARNING: added, moved or d=
+eleted file(s), does=20
+>>> MAINTAINERS need updating?
+>>> ---
+>>> Success: 0, Warning: 1, Error: 0
+>>> ```
+>>>
+>>> ```
+>>> $ b4 prep -c
+>>> Will collect To: addresses using echo
+>>> Will collect Cc: addresses using get_maintainer.pl
+>>> Collecting To/Cc addresses
+>>> =C2=A0=C2=A0=C2=A0=C2=A0 + To: qemu-devel@nongnu.org
+>>> ---
+>>> You can trim/expand this list with: b4 prep --edit-cover
+>>> Invoking git-filter-repo to update the cover letter.
+>>> New history written in 0.02 seconds...
+>>> Completely finished after 0.06 seconds
+>>> ```
+>>>
+>>> [1]: https://b4.docs.kernel.org/
+>>>
+>>> Signed-off-by: Jiaxun Yang <jiaxun.yang@flygoat.com>
+>>> ---
+>>> =C2=A0 .b4-config | 10 ++++++++++
+>>> =C2=A0 1 file changed, 10 insertions(+)
+>>>
+>>> diff --git a/.b4-config b/.b4-config
+>>> new file mode 100644
+>>> index=20
+>>> 0000000000000000000000000000000000000000..5feac15642958350c457d1769b=
+f881184ae1a79f
+>>> --- /dev/null
+>>> +++ b/.b4-config
+>>> @@ -0,0 +1,10 @@
+>>> +#
+>>> +# Common b4 settings that can be used to send patches to QEMU upstr=
+eam.
+>>> +# https://b4.docs.kernel.org/
+>>> +#
+>>> +
+>>> +[b4]
+>>> +=C2=A0=C2=A0=C2=A0 send-series-to =3D qemu-devel@nongnu.org
+>>> +=C2=A0=C2=A0=C2=A0 send-auto-to-cmd =3D echo
+>>> +=C2=A0=C2=A0=C2=A0 send-auto-cc-cmd =3D scripts/get_maintainer.pl -=
+-noroles --=20
+>>> norolestats --nogit --nogit-fallback
+>>> +=C2=A0=C2=A0=C2=A0 prep-perpatch-check-cmd =3D scripts/checkpatch.p=
+l -q --terse --no-=20
+>>> summary --mailback -
+>>=20
+>> I also have in my config:
+>>=20
+>>  =C2=A0 searchmask =3D https://lore.kernel.org/qemu-devel/?x=3Dm&t=3D=
+1&q=3D%s
+>>  =C2=A0 linkmask =3D https://lore.kernel.org/qemu-devel/%s
+>>=20
+>> Do you mind if I include that in your patch or prefer a different one?
+
+Thanks! I=E2=80=99m happy with your additions.
+
 >
-> Applied to the trivial-patches tree, thank you!
->
-> Please do Cc: qemu-devel@ the next time.
->
-> OK. Thanks for your advice
+> Posted here:=20
+> https://lore.kernel.org/qemu-devel/20241223122347.8438-1-philmd@linaro=
+.org/
 
-> /mjt
->
->
-
---000000000000b97ada0629e5eee7
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
-mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Dec 22,=
- 2024 at 4:59=E2=80=AFPM Michael Tokarev &lt;<a href=3D"mailto:mjt@tls.msk.=
-ru">mjt@tls.msk.ru</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote=
-" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);=
-padding-left:1ex">19.12.2024 11:51, Han Han wrote:<br>
-...<br>
-<br>
-Applied to the trivial-patches tree, thank you!<br>
-<br>
-Please do Cc: qemu-devel@ the next time.<br>
-<br></blockquote><div>OK. Thanks for your advice<br></div><blockquote class=
-=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rg=
-b(204,204,204);padding-left:1ex">
-/mjt<br>
-<br>
-</blockquote></div></div>
-
---000000000000b97ada0629e5eee7--
-
+--=20
+- Jiaxun
 
