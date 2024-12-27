@@ -1,85 +1,89 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tRJyj-00011c-LK
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Dec 2024 18:42:49 -0500
+	id 1tRK6L-0003ET-0p
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Dec 2024 18:50:41 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1tRJyi-00011G-2R
- for qemu-trivial@nongnu.org; Fri, 27 Dec 2024 18:42:48 -0500
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ id 1tRK6C-0003Dk-0k
+ for qemu-trivial@nongnu.org; Fri, 27 Dec 2024 18:50:34 -0500
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1tRJyg-0001FE-Ga
- for qemu-trivial@nongnu.org; Fri, 27 Dec 2024 18:42:47 -0500
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-aa69107179cso1264037766b.0
- for <qemu-trivial@nongnu.org>; Fri, 27 Dec 2024 15:42:44 -0800 (PST)
+ id 1tRK69-0002At-QO
+ for qemu-trivial@nongnu.org; Fri, 27 Dec 2024 18:50:31 -0500
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-5d3f28881d6so10664136a12.1
+ for <qemu-trivial@nongnu.org>; Fri, 27 Dec 2024 15:50:29 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1735342961; x=1735947761; darn=nongnu.org;
+ d=linaro.org; s=google; t=1735343428; x=1735948228; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CeHqPtKRdkusRhZWBT4Z4qnn/ZmNQ8VL2ZQ7cJD4NgY=;
- b=tfU+SGTP/mim+3Rv3NS+5gosYO8Zlrgdqe13P57Jo8BdDj5PJuNiSoa27W4LVcO5/H
- IAPeH56a0dNMiQHb62TeDs6PvSdrlr0HpMAPy5F2+Wf8EIVG2MZYdwL+2SLJaIvqpIBp
- QCkk50BbKLymSX2u9aGiWLzLIrh1CP0i+w6Wk+MSQ9sNWbb3I31U73rJwCzOOxp9GsNb
- jN5DpZ/iD5n+dcRfh4OBvRCwJBYq+s/efwbknz+oaaMtsMBE8biebZJDBZAn86rT8u9D
- zJaCs50a0KQCp5SynsPaOM8yQmStiVGwVyUYs0/ck+4klCQbWQrcyafBh4jiCq+Fa/8C
- kMOw==
+ bh=dF+1ER+/8M5BNCjZEF+X8u8bl/QJ5STyGXKopeSSf/g=;
+ b=saGaT466QwmOYMzEpIQQQnVdJuzpiz93ayhlzr1HoZC2hp4dObYZafpNIk4zmqaoRw
+ CxDKGyjlLjixuCoRXsrB3TuZ1SeWDylrHMCwXJIzk1JADTb3UEFjNBYZXeVz1DRS8XX3
+ djvnxqDQ5mabI0PaUgWLLPOSaKeH9AqzHpsrAsYIsXzdVqIj9bqZldtlbp33RG1h4elR
+ Emu3UQe9EqIjiHGGMyvcAObk6I4f7OO+8nwbW/+5st8ORMlwsryRN55IrXCigNc+CGGo
+ Nqnyuveg5Q0rcrAGaQbwaRAavisflLndvCRJLQ1JdJoU1PJ3CG3oKcSAvpHswtZsDhZq
+ 1kyA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1735342961; x=1735947761;
+ d=1e100.net; s=20230601; t=1735343428; x=1735948228;
  h=content-transfer-encoding:mime-version:message-id:date:user-agent
  :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=CeHqPtKRdkusRhZWBT4Z4qnn/ZmNQ8VL2ZQ7cJD4NgY=;
- b=SiJxbQxgIebVJychp0EPv5e/c3j9PU8DqI6E6fp1AO4He5INWTwuv7lKyQT8Y/CuV0
- SWHb/n7m2YHUTlIN08KiCEBE+jDFcZFUnaGHMOU8L4ufMx8eSdM2F0aEIn8lxPOD3LPK
- wi1l88z4IzMDdyHyNNI+408IlR2EzNlEdsA5IoiuLDtcrA46jRFObPPGozIE98UEwj8u
- Z+ZZ91/Zienv8/XWZ6kwr7r2s3mHBBJMBF3fFTUTMZXlQbhN5uLZIkcO+m6jI41kqgbd
- nnn+C888iqWwaQcYTlzF2y1tHiS/0HxgQJuQtFUEqUx0TOLYFbbmTSztrSbfOBq5zjQV
- jjew==
+ bh=dF+1ER+/8M5BNCjZEF+X8u8bl/QJ5STyGXKopeSSf/g=;
+ b=KU/hph5CykKEc6JOPLO6ngWPFvnCgPBGsxJYo/wJLAxD2RDDkOlZuCG8Nh+HitFNqo
+ cRvITOVKYZT6/PkidGY3LlOL7pVyLN+f70G/szf27MQELyKSQhQ2N2DEzRcgitdhIxcI
+ QqRm1XHixtoJaTWbzCKnc4dDdyOmjsOymuF2E41KnrvMircdWeVUjPUcSHdVqFQwZX/H
+ SQ1Kg32dvyiQKlWNCnu8bx/BWQX7ba2FVMSloK7D7GN9St8W2uT+4fkQw5N1AWvjpnJT
+ CbLQ6btvnvVBZl5b+9GF8i/PAKkkUhS5Vz91xb7vaXf+FOhVqp6H1tpc4ib/dFCCwEW6
+ a8wg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXqkEBT151SZBPpiAL5sUXbK8uVixIdTZGVY2jLCwe+jQRtM5D79ITvaa0zzH5mKLFFQuqdY7VGmc0nEbM=@nongnu.org
-X-Gm-Message-State: AOJu0Yz321Shqjqgexl0cc2sI9XfnOaExSVKEjoCzHVDjthcCWQB3Wya
- YBKxuIuKGwQzrOF0gyJscnYvgGNQw0HTtq7+AWmWkJhUQ1uHZMrekBsLwzPh672WEFAnRmATCff
- yaPA=
-X-Gm-Gg: ASbGncuix9psJ7bx0LRP4DYf/Mrf8+AO/ewVN3wLVrjCdHyAk2jen2zVHfReIqKRxtI
- IkzU2g/mWiI/y3LWfB+9j9JL1JEOWNuDb1Zcj/58mEiIDeNs6Fpu2mWw+vg3AGE+ks/ycsodln1
- Ru/R632FRY1xnKwFrhSQReMNT6D+gpY9eZHni3Vj8aVY6083kv+NG3iWSq5e22w/aHmW45BR1Ye
- GHZFwDAgJsJ2bIyClXGb/fxLNcR7FttMH06cWGdyBaoAX1TLmf96w0=
-X-Google-Smtp-Source: AGHT+IGgcu4a3OEtLs3246M8b8Ex9GUNsttt3Csoku/cBw9X9YBjN56hLXHZEINk8ibUgbFC2JsrnA==
-X-Received: by 2002:a17:907:7d9e:b0:aab:7588:f411 with SMTP id
- a640c23a62f3a-aac2b94645amr2632043866b.25.1735342961317; 
- Fri, 27 Dec 2024 15:42:41 -0800 (PST)
+ AJvYcCVxlmVEQPgtq5CHX0G3+CTgT5/I9IiDSfD5mz/VKXjssDQdd1/b2eN/TgycWX0QCvN2SYTWdteO+A63Aus=@nongnu.org
+X-Gm-Message-State: AOJu0YxYJ/FoLzazUcIu2pU2Jj77nQgcNSe2ZAxnVpdp0qa6MfAFJfMX
+ Blhy4cN9dGYpY7KIMG4vFp37jkylbbPZPWPucAd59Xyy/wMZ2E9OMhf5hAPTOrw7LpZ5rIN4JAj
+ RBqk=
+X-Gm-Gg: ASbGncvKEa8ItFt1Uz/X6g5L916tlKaRw3y3UvDRRYgxckhUrwBfCHK7obdlstRU49H
+ uJbE7uOHIVfhbo2V/3FLo38hU9KvqkAZZSY2akhD7CVVh2/3AOD6V9Iw6A7P9GUbKwkXQp3AZsW
+ krRPnaS4JizScwxTIDZOXivi6CPbcohggUBRoiZnaMWkUAK76PE69giwnrhppZgIGArZHB+HCfH
+ d1L2bhbIxGsAB5Mggjh+vNsl7XaITBAz2W0Pqjn9B62EXt77UpbvwA=
+X-Google-Smtp-Source: AGHT+IH024CGNL0vaFGyQxmU2N5OwtSoSA3A+E46Fs3n4bfmwRfkgZo+IorD9Dcl/Ni7I5mH6/dp4Q==
+X-Received: by 2002:a05:6402:2790:b0:5d0:e73c:b7f0 with SMTP id
+ 4fb4d7f45d1cf-5d81de1c241mr69356297a12.28.1735343426438; 
+ Fri, 27 Dec 2024 15:50:26 -0800 (PST)
 Received: from draig.lan ([85.9.250.243]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-aac0efe497dsm1173484466b.132.2024.12.27.15.42.40
+ a640c23a62f3a-aac0efe41a6sm1191383266b.102.2024.12.27.15.50.24
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 27 Dec 2024 15:42:40 -0800 (PST)
+ Fri, 27 Dec 2024 15:50:25 -0800 (PST)
 Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id B005F5F792;
- Fri, 27 Dec 2024 23:42:39 +0000 (GMT)
+ by draig.lan (Postfix) with ESMTP id 56C145F792;
+ Fri, 27 Dec 2024 23:50:23 +0000 (GMT)
 From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
-Cc: qemu-devel@nongnu.org,  philmd@linaro.org,  qemu-trivial@nongnu.org
-Subject: Re: [PATCH] gdbstub/user-target: fix gdbserver int format (%d -> %x)
-In-Reply-To: <20241227170413.72438-1-dominik.b.czarnota@gmail.com> (Dominik
- Czarnota's message of "Fri, 27 Dec 2024 18:04:13 +0100")
-References: <20241227170413.72438-1-dominik.b.czarnota@gmail.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: ckf104 <1900011634@pku.edu.cn>,  qemu-trivial@nongnu.org,  Alexandre
+ Iooss <erdnaxe@crans.org>,  Mahmoud Mandour <ma.mandourr@gmail.com>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>,  QEMU-Devel
+ <qemu-devel@nongnu.org>
+Subject: Re: [PATCH] contrib/plugins/bbv.c: Start bb index from 1
+In-Reply-To: <514c2c90-4c0f-486e-857d-fa0360c47d38@tls.msk.ru> (Michael
+ Tokarev's message of "Sun, 22 Dec 2024 12:11:51 +0300")
+References: <20241217142413.148978-1-1900011634@pku.edu.cn>
+ <514c2c90-4c0f-486e-857d-fa0360c47d38@tls.msk.ru>
 User-Agent: mu4e 1.12.8; emacs 29.4
-Date: Fri, 27 Dec 2024 23:42:39 +0000
-Message-ID: <87bjwwlmkw.fsf@draig.linaro.org>
+Date: Fri, 27 Dec 2024 23:50:23 +0000
+Message-ID: <875xn4lm80.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62e.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,96 +96,38 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Dec 2024 23:42:48 -0000
+X-List-Received-Date: Fri, 27 Dec 2024 23:50:36 -0000
 
-Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com> writes:
+Michael Tokarev <mjt@tls.msk.ru> writes:
 
-> From: disconnect3d <dominik.b.czarnota@gmail.com>
+> 17.12.2024 17:24, ckf104 wrote:
+>> Standard simpoint tool reqeusts that index of basic block index starts f=
+rom 1.
+>
+> While this patch is a trivial one-liner, but the underlying issue require=
+s at least
+> a minimal understanding of what it is all about, what *is* bbv to begin w=
+ith, what
+> `simpoint' is.  I'm not sure it really is a trivial material?
+>
+>> Signed-off-by: ckf104 <1900011634@pku.edu.cn>
+>
+> Do we accept such SoBs these days?
 
-You might want to fix your author attribution here.
+The guidance is covered here: https://qemu.readthedocs.io/en/master/devel/s=
+ubmitting-a-patch.html#patch-emails-must-include-a-signed-off-by-line
+
+The wording: "It is the identity you choose to be known by in the
+community, but should not be anonymous, nor misrepresent whom you are"
+implies you should be identifiable to assert you can submit code and
+currently this email only shows up for this patch so is functionally
+anonymous I think?
+
 
 >
-> This commit fixes an incorrect format string for formatting integers
-> provided to GDB when debugging a target run in QEMU user mode.
+> Thanks,
 >
-> The correct format is hexadecimal for both success and errno values,
-> some of which can be seen here [0].
->
-> [0]
-> https://github.com/bminor/binutils-gdb/blob/e65a355022d0dc6b5707310876a72=
-b5693ec0aa5/gdbserver/hostio.cc#L196-L213
-
-The spec isn't totally clear on this but it seems the match
-remote_hostio_parse_result() as well:
-
-  /* Check for ",errno".  */
-  if (*p =3D=3D ',')
-    {
-      errno =3D 0;
-      *remote_errno =3D (fileio_error) strtol (p + 1, &p2, 16);
-      if (errno !=3D 0 || p + 1 =3D=3D p2)
-	return -1;
-      p =3D p2;
-    }
-
-So: Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
-
-
-You are also missing a s-o-b: https://qemu.readthedocs.io/en/master/devel/s=
-ubmitting-a-patch.html#id29
-
-
-> ---
->  gdbstub/user-target.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
->
-> diff --git a/gdbstub/user-target.c b/gdbstub/user-target.c
-> index 22bf4008c0..4bfcf78aaa 100644
-> --- a/gdbstub/user-target.c
-> +++ b/gdbstub/user-target.c
-> @@ -317,9 +317,9 @@ void gdb_handle_v_file_open(GArray *params, void *use=
-r_ctx)
->      int fd =3D open(filename, flags, mode);
->  #endif
->      if (fd < 0) {
-> -        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
-> +        g_string_printf(gdbserver_state.str_buf, "F-1,%x", errno);
->      } else {
-> -        g_string_printf(gdbserver_state.str_buf, "F%d", fd);
-> +        g_string_printf(gdbserver_state.str_buf, "F%x", fd);
->      }
->      gdb_put_strbuf();
->  }
-> @@ -329,7 +329,7 @@ void gdb_handle_v_file_close(GArray *params, void *us=
-er_ctx)
->      int fd =3D gdb_get_cmd_param(params, 0)->val_ul;
->=20=20
->      if (close(fd) =3D=3D -1) {
-> -        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
-> +        g_string_printf(gdbserver_state.str_buf, "F-1,%x", errno);
->          gdb_put_strbuf();
->          return;
->      }
-> @@ -352,7 +352,7 @@ void gdb_handle_v_file_pread(GArray *params, void *us=
-er_ctx)
->=20=20
->      ssize_t n =3D pread(fd, buf, bufsiz, offset);
->      if (n < 0) {
-> -        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
-> +        g_string_printf(gdbserver_state.str_buf, "F-1,%x", errno);
->          gdb_put_strbuf();
->          return;
->      }
-> @@ -375,7 +375,7 @@ void gdb_handle_v_file_readlink(GArray *params, void =
-*user_ctx)
->      ssize_t n =3D readlink(filename, buf, BUFSIZ);
->  #endif
->      if (n < 0) {
-> -        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
-> +        g_string_printf(gdbserver_state.str_buf, "F-1,%x", errno);
->          gdb_put_strbuf();
->          return;
->      }
+> /mjt
 
 --=20
 Alex Benn=C3=A9e
