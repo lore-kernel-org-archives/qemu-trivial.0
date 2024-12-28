@@ -1,27 +1,29 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tRVUl-0003Bj-S3
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Dec 2024 07:00:41 -0500
+	id 1tRVUp-0003Cf-IG
+	for mharc-qemu-trivial@gnu.org; Sat, 28 Dec 2024 07:00:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tRVUZ-00039l-EM; Sat, 28 Dec 2024 07:00:33 -0500
+ id 1tRVUW-00039e-9W; Sat, 28 Dec 2024 07:00:33 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tRVUX-0006h2-Hl; Sat, 28 Dec 2024 07:00:27 -0500
+ id 1tRVUT-0006gJ-PW; Sat, 28 Dec 2024 07:00:24 -0500
 Received: from localhost.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by isrv.corpit.ru (Postfix) with ESMTP id A44A0CC83A;
+ by isrv.corpit.ru (Postfix) with ESMTP id A072FCC839;
  Sat, 28 Dec 2024 14:59:39 +0300 (MSK)
 Received: by localhost.tls.msk.ru (Postfix, from userid 1000)
- id 42B704615C; Sat, 28 Dec 2024 14:54:46 +0300 (MSK)
+ id 4856D46162; Sat, 28 Dec 2024 14:54:46 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Subject: [PULL 00/11] Trivial patches for 2024-12-28
-Date: Sat, 28 Dec 2024 14:54:35 +0300
-Message-Id: <20241228115446.2478706-1-mjt@tls.msk.ru>
+Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 03/11] hw/timer/hpet: Drop the unused macro
+Date: Sat, 28 Dec 2024 14:54:38 +0300
+Message-Id: <20241228115446.2478706-4-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20241228115446.2478706-1-mjt@tls.msk.ru>
+References: <20241228115446.2478706-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -47,56 +49,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 X-List-Received-Date: Sat, 28 Dec 2024 12:00:33 -0000
 
-The following changes since commit 38d0939b86e2eef6f6a622c6f1f7befda0146595:
+From: Zhao Liu <zhao1.liu@intel.com>
 
-  Merge tag 'pull-vfio-20241226' of https://github.com/legoater/qemu into staging (2024-12-26 04:38:38 -0500)
+HPET_TN_CFG_BITS_READONLY_OR_RESERVED is not used in any place since
+HPET_TN_CFG_WRITE_MASK has been already used to check and fix the
+writable bits in hpet_ram_write().
 
-are available in the Git repository at:
+Drop this unused macro.
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ include/hw/timer/hpet.h | 1 -
+ 1 file changed, 1 deletion(-)
 
-for you to fetch changes up to 1e3d4d9a1a32ac6835f0d295a5117851c421fb5d:
+diff --git a/include/hw/timer/hpet.h b/include/hw/timer/hpet.h
+index d17a8d4319..71e8c62453 100644
+--- a/include/hw/timer/hpet.h
++++ b/include/hw/timer/hpet.h
+@@ -58,7 +58,6 @@
+ #define HPET_TN_CFG_WRITE_MASK  0x7f4e
+ #define HPET_TN_INT_ROUTE_SHIFT      9
+ #define HPET_TN_INT_ROUTE_CAP_SHIFT 32
+-#define HPET_TN_CFG_BITS_READONLY_OR_RESERVED 0xffff80b1U
+ 
+ struct hpet_fw_entry
+ {
+-- 
+2.39.5
 
-  qmp: update vhost-user protocol feature maps (2024-12-28 14:42:53 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2024-12-28
-
-----------------------------------------------------------------
-Daniel Henrique Barboza (1):
-      hw/riscv/riscv-iommu-sys.c: fix duplicated 'table_size'
-
-Han Han (1):
-      target/i386/cpu: Fix notes for CPU models
-
-Laurent Vivier (1):
-      qmp: update vhost-user protocol feature maps
-
-Philippe Mathieu-Daudé (3):
-      docs: Correct '-runas' and '-fsdev/-virtfs proxy' indentation
-      docs: Correct release of TCG trace-events removal
-      docs: Replace 'since' -> 'removed in' in removed-features.rst
-
-Pierrick Bouvier (2):
-      docs/devel: remove dead video link for sourcehut submit process
-      vvfat: fix ubsan issue in create_long_filename
-
-Zhao Liu (2):
-      hw/timer/hpet: Fix comment about capabilities register
-      hw/timer/hpet: Drop the unused macro
-
-ckf104 (1):
-      contrib/plugins/bbv.c: Start bb index from 1
-
- block/vvfat.c                     |  4 ++++
- contrib/plugins/bbv.c             |  2 +-
- docs/about/deprecated.rst         |  2 +-
- docs/about/removed-features.rst   | 24 ++++++++++++------------
- docs/devel/submitting-a-patch.rst |  5 +----
- hw/riscv/riscv-iommu-sys.c        |  2 +-
- hw/timer/hpet.c                   |  2 +-
- hw/virtio/virtio-qmp.c            |  6 ++++++
- include/hw/timer/hpet.h           |  1 -
- target/i386/cpu.c                 |  3 ++-
- 10 files changed, 29 insertions(+), 22 deletions(-)
 
