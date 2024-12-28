@@ -1,30 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tRVPO-00064a-5f
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Dec 2024 06:55:06 -0500
+	id 1tRVPQ-00065T-9q
+	for mharc-qemu-trivial@gnu.org; Sat, 28 Dec 2024 06:55:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tRVPM-00063i-BD; Sat, 28 Dec 2024 06:55:04 -0500
+ id 1tRVPN-00064Y-Ke; Sat, 28 Dec 2024 06:55:06 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tRVPK-0005lT-LX; Sat, 28 Dec 2024 06:55:04 -0500
+ id 1tRVPK-0005mQ-Sf; Sat, 28 Dec 2024 06:55:05 -0500
 Received: from localhost.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by isrv.corpit.ru (Postfix) with ESMTP id 6E0D4CC822;
+ by isrv.corpit.ru (Postfix) with ESMTP id 7501CCC823;
  Sat, 28 Dec 2024 14:54:06 +0300 (MSK)
 Received: by localhost.tls.msk.ru (Postfix, from userid 1000)
- id 45E0846160; Sat, 28 Dec 2024 14:54:46 +0300 (MSK)
+ id 4D0D646166; Sat, 28 Dec 2024 14:54:46 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 02/11] hw/timer/hpet: Fix comment about capabilities register
-Date: Sat, 28 Dec 2024 14:54:37 +0300
-Message-Id: <20241228115446.2478706-3-mjt@tls.msk.ru>
+Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 05/11] docs: Correct '-runas' and '-fsdev/-virtfs proxy'
+ indentation
+Date: Sat, 28 Dec 2024 14:54:40 +0300
+Message-Id: <20241228115446.2478706-6-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241228115446.2478706-1-mjt@tls.msk.ru>
 References: <20241228115446.2478706-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -46,35 +48,47 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 Dec 2024 11:55:04 -0000
+X-List-Received-Date: Sat, 28 Dec 2024 11:55:06 -0000
 
-From: Zhao Liu <zhao1.liu@intel.com>
+From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-HPETState.capability stores the emulated value for "general capabilities
-and id register" instead of "main counter register".
+Use the same style for deprecated / removed commands.
 
-Fix the comment to accurately reflect this.
-
-Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/timer/hpet.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ docs/about/deprecated.rst       | 2 +-
+ docs/about/removed-features.rst | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/timer/hpet.c b/hw/timer/hpet.c
-index 2a45410c0d..1c8c6c69ef 100644
---- a/hw/timer/hpet.c
-+++ b/hw/timer/hpet.c
-@@ -736,7 +736,7 @@ static void hpet_realize(DeviceState *dev, Error **errp)
-         timer->state = s;
-     }
+diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
+index 267892b62f..d6809f94ea 100644
+--- a/docs/about/deprecated.rst
++++ b/docs/about/deprecated.rst
+@@ -75,7 +75,7 @@ marked deprecated since 9.0, users have to ensure that all the topology members
+ described with -smp are supported by the target machine.
  
--    /* 64-bit main counter; LegacyReplacementRoute. */
-+    /* 64-bit General Capabilities and ID Register; LegacyReplacementRoute. */
-     s->capability = 0x8086a001ULL;
-     s->capability |= (s->num_timers - 1) << HPET_ID_NUM_TIM_SHIFT;
-     s->capability |= ((uint64_t)(HPET_CLK_PERIOD * FS_PER_NS) << 32);
+ ``-runas`` (since 9.1)
+-----------------------
++''''''''''''''''''''''
+ 
+ Use ``-run-with user=..`` instead.
+ 
+diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
+index 9bebee795c..68fe0b47f9 100644
+--- a/docs/about/removed-features.rst
++++ b/docs/about/removed-features.rst
+@@ -518,7 +518,7 @@ and later do not support it because the virtio-scsi device was introduced for
+ full SCSI support.  Use virtio-scsi instead when SCSI passthrough is required.
+ 
+ ``-fsdev proxy`` and ``-virtfs proxy`` (since 9.2)
+-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
++''''''''''''''''''''''''''''''''''''''''''''''''''
+ 
+ The 9p ``proxy`` filesystem backend driver was originally developed to
+ enhance security by dispatching low level filesystem operations from 9p
 -- 
 2.39.5
 
