@@ -1,27 +1,26 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tRVPQ-00065T-9q
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Dec 2024 06:55:08 -0500
+	id 1tRVPS-00066w-D7
+	for mharc-qemu-trivial@gnu.org; Sat, 28 Dec 2024 06:55:10 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tRVPN-00064Y-Ke; Sat, 28 Dec 2024 06:55:06 -0500
+ id 1tRVPQ-00065q-PX; Sat, 28 Dec 2024 06:55:09 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tRVPK-0005mQ-Sf; Sat, 28 Dec 2024 06:55:05 -0500
+ id 1tRVPO-0005y0-W2; Sat, 28 Dec 2024 06:55:08 -0500
 Received: from localhost.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by isrv.corpit.ru (Postfix) with ESMTP id 7501CCC823;
+ by isrv.corpit.ru (Postfix) with ESMTP id 7B578CC825;
  Sat, 28 Dec 2024 14:54:06 +0300 (MSK)
 Received: by localhost.tls.msk.ru (Postfix, from userid 1000)
- id 4D0D646166; Sat, 28 Dec 2024 14:54:46 +0300 (MSK)
+ id 4F9C346168; Sat, 28 Dec 2024 14:54:46 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
  qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 05/11] docs: Correct '-runas' and '-fsdev/-virtfs proxy'
- indentation
-Date: Sat, 28 Dec 2024 14:54:40 +0300
-Message-Id: <20241228115446.2478706-6-mjt@tls.msk.ru>
+Subject: [PULL 06/11] docs: Correct release of TCG trace-events removal
+Date: Sat, 28 Dec 2024 14:54:41 +0300
+Message-Id: <20241228115446.2478706-7-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
 In-Reply-To: <20241228115446.2478706-1-mjt@tls.msk.ru>
 References: <20241228115446.2478706-1-mjt@tls.msk.ru>
@@ -48,47 +47,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 Dec 2024 11:55:06 -0000
+X-List-Received-Date: Sat, 28 Dec 2024 11:55:09 -0000
 
 From: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Use the same style for deprecated / removed commands.
+TCG trace-events were deprecated before the v6.2 release,
+and removed for v7.0.
 
 Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- docs/about/deprecated.rst       | 2 +-
- docs/about/removed-features.rst | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ docs/about/removed-features.rst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/docs/about/deprecated.rst b/docs/about/deprecated.rst
-index 267892b62f..d6809f94ea 100644
---- a/docs/about/deprecated.rst
-+++ b/docs/about/deprecated.rst
-@@ -75,7 +75,7 @@ marked deprecated since 9.0, users have to ensure that all the topology members
- described with -smp are supported by the target machine.
- 
- ``-runas`` (since 9.1)
------------------------
-+''''''''''''''''''''''
- 
- Use ``-run-with user=..`` instead.
- 
 diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index 9bebee795c..68fe0b47f9 100644
+index 68fe0b47f9..e3a87f3f55 100644
 --- a/docs/about/removed-features.rst
 +++ b/docs/about/removed-features.rst
-@@ -518,7 +518,7 @@ and later do not support it because the virtio-scsi device was introduced for
- full SCSI support.  Use virtio-scsi instead when SCSI passthrough is required.
+@@ -1087,8 +1087,8 @@ processor IP (see `Intel discontinuance notification`_).
+ TCG introspection features
+ --------------------------
  
- ``-fsdev proxy`` and ``-virtfs proxy`` (since 9.2)
--^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-+''''''''''''''''''''''''''''''''''''''''''''''''''
+-TCG trace-events (since 6.2)
+-''''''''''''''''''''''''''''
++TCG trace-events (removed in 7.0)
++'''''''''''''''''''''''''''''''''
  
- The 9p ``proxy`` filesystem backend driver was originally developed to
- enhance security by dispatching low level filesystem operations from 9p
+ The ability to add new TCG trace points had bit rotted and as the
+ feature can be replicated with TCG plugins it was removed. If
 -- 
 2.39.5
 
