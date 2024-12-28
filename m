@@ -1,39 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tRVen-0007Wr-E8
-	for mharc-qemu-trivial@gnu.org; Sat, 28 Dec 2024 07:11:02 -0500
+	id 1tRb6u-0002rB-Fp
+	for mharc-qemu-trivial@gnu.org; Sat, 28 Dec 2024 13:00:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tRVeN-0007UF-E2; Sat, 28 Dec 2024 07:10:36 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1tRb6i-0002mk-1B
+ for qemu-trivial@nongnu.org; Sat, 28 Dec 2024 13:00:15 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tRVeG-0001ow-JN; Sat, 28 Dec 2024 07:10:33 -0500
-Received: from localhost.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by isrv.corpit.ru (Postfix) with ESMTP id F162ECC850;
- Sat, 28 Dec 2024 15:09:39 +0300 (MSK)
-Received: by localhost.tls.msk.ru (Postfix, from userid 1000)
- id 593F146175; Sat, 28 Dec 2024 14:54:46 +0300 (MSK)
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: ckf104 <1900011634@pku.edu.cn>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 10/11] contrib/plugins/bbv.c: Start bb index from 1
-Date: Sat, 28 Dec 2024 14:54:45 +0300
-Message-Id: <20241228115446.2478706-11-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20241228115446.2478706-1-mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1tRb6e-0005tV-02
+ for qemu-trivial@nongnu.org; Sat, 28 Dec 2024 13:00:09 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1735408803;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=+0rS91l/fZ2E9Vvjp5ubIjNqc7c2BhUyMszT7r2gXnU=;
+ b=Vrl+rVZujgaKYpHuYWZcJK166Vnf7BV3sOYOFJ/eFCSNF8ea3K+Wssqm5tmDjNS5rRF6g9
+ 3DH0Y2BW1pknFSXxT3h8jWkz94pVR16yVUnS8KPfbnQUZjxfse53hXX4gQNT3QEm//+c+v
+ 4ItRd40aRko78YCK6D0E2FXGRIcTAP8=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-381-BSL5GvG2MzWo5lt-L0SVyw-1; Sat,
+ 28 Dec 2024 12:59:59 -0500
+X-MC-Unique: BSL5GvG2MzWo5lt-L0SVyw-1
+X-Mimecast-MFC-AGG-ID: BSL5GvG2MzWo5lt-L0SVyw
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B17F01956086; Sat, 28 Dec 2024 17:59:56 +0000 (UTC)
+Received: from localhost (unknown [10.2.16.17])
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 3BBBF19560B1; Sat, 28 Dec 2024 17:59:48 +0000 (UTC)
+Date: Sat, 28 Dec 2024 12:58:27 -0500
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PULL 00/11] Trivial patches for 2024-12-28
+Message-ID: <20241228175827.GA1024359@fedora>
 References: <20241228115446.2478706-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="nX4/hvIHGZ5V5RAS"
+Content-Disposition: inline
+In-Reply-To: <20241228115446.2478706-1-mjt@tls.msk.ru>
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.134,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -46,34 +73,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 28 Dec 2024 12:10:48 -0000
+X-List-Received-Date: Sat, 28 Dec 2024 18:00:16 -0000
 
-From: ckf104 <1900011634@pku.edu.cn>
 
-Standard simpoint tool reqeusts that index of basic block index starts from 1.
+--nX4/hvIHGZ5V5RAS
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-Signed-off-by: ckf104 <1900011634@pku.edu.cn>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- contrib/plugins/bbv.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Applied, thanks.
 
-diff --git a/contrib/plugins/bbv.c b/contrib/plugins/bbv.c
-index a5256517dd..b9da6f815e 100644
---- a/contrib/plugins/bbv.c
-+++ b/contrib/plugins/bbv.c
-@@ -109,7 +109,7 @@ static void vcpu_tb_trans(qemu_plugin_id_t id, struct qemu_plugin_tb *tb)
-         bb = g_new(Bb, 1);
-         bb->vaddr = vaddr;
-         bb->count = qemu_plugin_scoreboard_new(sizeof(uint64_t));
--        bb->index = g_hash_table_size(bbs);
-+        bb->index = g_hash_table_size(bbs) + 1;
-         g_hash_table_replace(bbs, &bb->vaddr, bb);
-     }
-     g_rw_lock_writer_unlock(&bbs_lock);
--- 
-2.39.5
+Please update the changelog at https://wiki.qemu.org/ChangeLog/10.0 for any user-visible changes.
+
+--nX4/hvIHGZ5V5RAS
+Content-Type: application/pgp-signature; name="signature.asc"
+
+-----BEGIN PGP SIGNATURE-----
+
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmdwPEMACgkQnKSrs4Gr
+c8hs7Af+JmR0dAXZP2zqwdDn9G6Yo8MtkyyM+JmUVPu/os7wSq6SNr78HO6bs6sh
+iI3wag3EahabtfIrEGYD/t3bkqeEH75HbIBZw8ylTill9+2hjYoViQAf/qObHGIo
+vM8NHyDrif3cpJVlL4wXTSA3cl7TPIdsvhQuahYDkZ+TDpQfRHlvghCYLQJEXZb7
+NswGqn1wlHh5ObZOlR2uo0ptB2wqZELMFVTNZ42co9m0JeHl++0aKBGoJN89ekS2
+ZS97PriUYgI5bCI8lpSRIUroi6vNV5sS/rmCsli5QWQ6c7nOA2N+8iRMhPRWKZ0p
+rlV40VebFxyters2pB8fT1ONHZEBFg==
+=Cd31
+-----END PGP SIGNATURE-----
+
+--nX4/hvIHGZ5V5RAS--
 
 
