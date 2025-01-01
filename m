@@ -1,38 +1,92 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tSe5u-0004Sf-Mu
-	for mharc-qemu-trivial@gnu.org; Tue, 31 Dec 2024 10:23:43 -0500
+	id 1tStfe-0001tw-7j
+	for mharc-qemu-trivial@gnu.org; Wed, 01 Jan 2025 03:01:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tSe5r-0004Ra-B5; Tue, 31 Dec 2024 10:23:39 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1tStfc-0001tI-Th
+ for qemu-trivial@nongnu.org; Wed, 01 Jan 2025 03:01:36 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tSe5o-0004b6-EN; Tue, 31 Dec 2024 10:23:38 -0500
-Received: from localhost.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by isrv.corpit.ru (Postfix) with ESMTP id 1BF91CE0CB;
- Tue, 31 Dec 2024 18:22:40 +0300 (MSK)
-Received: by localhost.tls.msk.ru (Postfix, from userid 1000)
- id A8E0E4640B; Tue, 31 Dec 2024 18:23:24 +0300 (MSK)
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Subject: [PULL 0/1] Trivial patches for 2024-12-31
-Date: Tue, 31 Dec 2024 18:23:23 +0300
-Message-Id: <20241231152324.3307386-1-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.5
+ (Exim 4.90_1) (envelope-from <anisinha@redhat.com>)
+ id 1tStfb-0002ff-HC
+ for qemu-trivial@nongnu.org; Wed, 01 Jan 2025 03:01:36 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1735718493;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=FnZjgfMp2hnZzssqi/eKxK96bf9FbqeXP5z6jyJrV9E=;
+ b=LhG9rbv+M/Xxlzjc2B9JJwJjH5aA+wud8nBwFTBU2SiI4kBvEPWC0w6b7s38I7WmzwfHSu
+ eTH9HMlcdbeiwXi5oGOqjEvOkTFcxv6bXPoeQZO7YIkd/twfG2OSdtqDhlvImRONqLZa2l
+ Xe8xgXM3VyyKx0SBro/gwmP/td0YK2M=
+Received: from mail-pj1-f70.google.com (mail-pj1-f70.google.com
+ [209.85.216.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-627-bWqDdlhlOyOJAb6LJPTw8w-1; Wed, 01 Jan 2025 03:01:32 -0500
+X-MC-Unique: bWqDdlhlOyOJAb6LJPTw8w-1
+X-Mimecast-MFC-AGG-ID: bWqDdlhlOyOJAb6LJPTw8w
+Received: by mail-pj1-f70.google.com with SMTP id
+ 98e67ed59e1d1-2eeeb5b7022so14669493a91.0
+ for <qemu-trivial@nongnu.org>; Wed, 01 Jan 2025 00:01:31 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1735718491; x=1736323291;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=FnZjgfMp2hnZzssqi/eKxK96bf9FbqeXP5z6jyJrV9E=;
+ b=g+ADDUXmSGOSrcxT58TN2MM5qvX8oLjHiLbQbTtH7d9MTD6YIwgjyqxjt7Y4q6U5nP
+ TAxuGyIwiX8Moy7RiyjIPTWjcaJKcZk0tsHMhlZb9nWFeAObk6CWMcUmr/mHlcEo4xY1
+ vZ1bvb2xZ4DaARWwpiOvk3Xm/N2YmPx8orsGyJtXQ1djW/xPwYbozeJjjd5Xpo89CorU
+ M6uJJPqtSYPS4sbjV/2aRVuCLyyO1xiV3yV8Adu+cp8AbcqIoo+paIzdKOgHdROWH6BJ
+ KO5bAcYf7Y6nx8XGLBP84RAacB11BFnZgIfJcJnUVYg5eE9aPPi80Qzo1QcBYNsN5Kzd
+ jknw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUPB7l2s2+KRmrksaVbUZZHVv8Ua0bsanTdx5d7R+w2xVFvXoS7cPFEeiTYxD619eYfw3milJ7GeCk4ax0=@nongnu.org
+X-Gm-Message-State: AOJu0Yw3pQWnFM1tIVadgGlM1sjkdHyrezPnYLA8hdx6oDxojrw8RI0Q
+ kjKc06+c/5iIOE+U5LsxS0YnsxOLcPBXN7g8RpvhKWsRTMeP11l3rca/JPw3ZCndtIcG0ri/i3S
+ ryyPzY1DB+zwqZU5ukXX1FFjw2wRRc6Gj3Ll1rYfpYCP3Y7Ypf3N+4lE=
+X-Gm-Gg: ASbGncuAWWjEOECy4fbPRk/RYVlPT73GZsIBXTpN+pclKxTKAxOvfwQcT1GiYqQvWU8
+ ge179boJePU/gHu8mku4PP9PGLof9u7NwtpKjaeKkJ2jL1i3cr3cSKlroGJrE/d6GN5SpfMTUw8
+ bh5HiZ1RcJivCKcNpGYrtXV/CYkPID1pIFXfwmm3HXTa3b0Rw6WyyRVcsD7ZwYPDet2X4f+/o/E
+ ZZI9g1w/t3cI6M//1RzGc4MdBg3YuW4Ku9dQsUvyHvS4SGLgJDDQB8J/8XTEGIXO1T/433KebJc
+ 1Q==
+X-Received: by 2002:a17:90a:dfcd:b0:2ee:964e:67ce with SMTP id
+ 98e67ed59e1d1-2f452dee953mr57154291a91.3.1735718491081; 
+ Wed, 01 Jan 2025 00:01:31 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IGVQYOcO0capxlxAA3OcMq/8yY8q3+84XWEOmkIVC0alXpAxuvRiW8iZIJj0KESh9tlt9cBdA==
+X-Received: by 2002:a17:90a:dfcd:b0:2ee:964e:67ce with SMTP id
+ 98e67ed59e1d1-2f452dee953mr57154261a91.3.1735718490644; 
+ Wed, 01 Jan 2025 00:01:30 -0800 (PST)
+Received: from localhost.localdomain ([115.96.136.4])
+ by smtp.googlemail.com with ESMTPSA id
+ 98e67ed59e1d1-2f4477c852csm23730220a91.22.2025.01.01.00.01.27
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 01 Jan 2025 00:01:29 -0800 (PST)
+From: Ani Sinha <anisinha@redhat.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Ani Sinha <anisinha@redhat.com>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: [PATCH] docs: update copyright date to the year 2025
+Date: Wed,  1 Jan 2025 13:31:16 +0530
+Message-ID: <20250101080116.1050336-1-anisinha@redhat.com>
+X-Mailer: git-send-email 2.45.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: r4uTahuw51Ns2ACQM6tUo_VcahPD3SMQsJuOt8CYdvQ_1735718491
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=anisinha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -42
+X-Spam_score: -4.3
+X-Spam_bar: ----
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.188,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -45,31 +99,45 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 31 Dec 2024 15:23:39 -0000
+X-List-Received-Date: Wed, 01 Jan 2025 08:01:37 -0000
 
-The following changes since commit 7c89e226f878539b633dde3fd9c9f061c34094e3:
+We are already in January 2025! Update copyright notices.
 
-  Merge tag 'pull-request-2024-12-29' of https://gitlab.com/huth/qemu into staging (2024-12-29 03:25:41 -0500)
+Cc: peter.maydell@linaro.org
+Cc: qemu-trivial@nongnu.org
+Signed-off-by: Ani Sinha <anisinha@redhat.com>
+---
+ docs/conf.py              | 2 +-
+ include/qemu/help-texts.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-are available in the Git repository at:
+diff --git a/docs/conf.py b/docs/conf.py
+index 164a8ee8b2..31bb9a3789 100644
+--- a/docs/conf.py
++++ b/docs/conf.py
+@@ -87,7 +87,7 @@
+ 
+ # General information about the project.
+ project = u'QEMU'
+-copyright = u'2024, The QEMU Project Developers'
++copyright = u'2025, The QEMU Project Developers'
+ author = u'The QEMU Project Developers'
+ 
+ # The version info for the project you're documenting, acts as replacement for
+diff --git a/include/qemu/help-texts.h b/include/qemu/help-texts.h
+index 353ab2ad8b..bc8fab9169 100644
+--- a/include/qemu/help-texts.h
++++ b/include/qemu/help-texts.h
+@@ -2,7 +2,7 @@
+ #define QEMU_HELP_TEXTS_H
+ 
+ /* Copyright string for -version arguments, About dialogs, etc */
+-#define QEMU_COPYRIGHT "Copyright (c) 2003-2024 " \
++#define QEMU_COPYRIGHT "Copyright (c) 2003-2025 " \
+     "Fabrice Bellard and the QEMU Project developers"
+ 
+ /* Bug reporting information for --help arguments, About dialogs, etc */
+-- 
+2.45.2
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
-
-for you to fetch changes up to d8d17d2bf6181cdc9b8ef3db862006ddb6af12d4:
-
-  Revert "vvfat: fix ubsan issue in create_long_filename" (2024-12-31 18:20:41 +0300)
-
-----------------------------------------------------------------
-This is just a revert of a previous commit which were pulled
-through trivial-patches before but which is obviously wrong.
-It is a bugfix to restore the broken vvfat functionality.
-Fixing of the ubsan test should be done differently.
-
-I'm sorry for this mishap.
-----------------------------------------------------------------
-Michael Tokarev (1):
-      Revert "vvfat: fix ubsan issue in create_long_filename"
-
- block/vvfat.c | 4 ----
- 1 file changed, 4 deletions(-)
 
