@@ -1,112 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tTTLB-0004OX-0s
-	for mharc-qemu-trivial@gnu.org; Thu, 02 Jan 2025 17:06:53 -0500
+	id 1tTg5G-0003wK-0W
+	for mharc-qemu-trivial@gnu.org; Fri, 03 Jan 2025 06:43:18 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1tTTL6-0004EV-Ez; Thu, 02 Jan 2025 17:06:48 -0500
-Received: from smtp-out2.suse.de ([2a07:de40:b251:101:10:150:64:2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>)
- id 1tTTL4-0007A0-WE; Thu, 02 Jan 2025 17:06:48 -0500
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
- [IPv6:2a07:de40:b281:104:10:150:64:97])
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1tTg5E-0003vH-4O
+ for qemu-trivial@nongnu.org; Fri, 03 Jan 2025 06:43:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1tTg5C-0000Do-Az
+ for qemu-trivial@nongnu.org; Fri, 03 Jan 2025 06:43:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1735904591;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=GbbnoXYi8vumOwR9t+gdddIUMaxEXsmhheh1fffy3G8=;
+ b=CmevW31sYhYg2I0GiMMthK+y10q268Us5bxI+Tm3taasGw1+GmzcMr9XQ21qjDOMV2zRej
+ FAe7ts1aTBwaw9ITvFKgk5XaU/3wS/ELbWO3NVTyGWtT82TfrKbhYgUhbUuFacVT0YOcW+
+ RGdzPn20TVCQQN6JtWxTvFJaDdegibI=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-678-2tAAdk7lMcC8o4Ri3gdsTQ-1; Fri,
+ 03 Jan 2025 06:43:07 -0500
+X-MC-Unique: 2tAAdk7lMcC8o4Ri3gdsTQ-1
+X-Mimecast-MFC-AGG-ID: 2tAAdk7lMcC8o4Ri3gdsTQ
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by smtp-out2.suse.de (Postfix) with ESMTPS id 5ED9D1F76E;
- Thu,  2 Jan 2025 22:06:45 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1735855605; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BQ9qjoRM4jkG5sve6+kc7w1GTquDUDYCKplBq7BGOgo=;
- b=Yebi2VUqFYv1YzHzPTp5oAJsXesmDE9N4vBuwPblAhZSughaNFzDr+WYmjqZNgscYfvE1Z
- VPxCBQUh7sdQHrFkSbFmki2i8oxOGXiNG8taFHv6CGAsZWU8vPRDlg5bcYcwxFs/xRlf0t
- bUyiZ+Goxi8g6ZJTy2SOc3rOlm1QQ1E=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1735855605;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BQ9qjoRM4jkG5sve6+kc7w1GTquDUDYCKplBq7BGOgo=;
- b=BnG7al+Aoz0Z6we670NUxQXCC/OZ3T+KXaN5ljEIEKYB5aOA8dx9qQmBesSiTuld9kigzt
- u4W7dBPmmPWQLgBw==
-Authentication-Results: smtp-out2.suse.de;
- dkim=pass header.d=suse.de header.s=susede2_rsa header.b=Yebi2VUq;
- dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=BnG7al+A
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1735855605; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BQ9qjoRM4jkG5sve6+kc7w1GTquDUDYCKplBq7BGOgo=;
- b=Yebi2VUqFYv1YzHzPTp5oAJsXesmDE9N4vBuwPblAhZSughaNFzDr+WYmjqZNgscYfvE1Z
- VPxCBQUh7sdQHrFkSbFmki2i8oxOGXiNG8taFHv6CGAsZWU8vPRDlg5bcYcwxFs/xRlf0t
- bUyiZ+Goxi8g6ZJTy2SOc3rOlm1QQ1E=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1735855605;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=BQ9qjoRM4jkG5sve6+kc7w1GTquDUDYCKplBq7BGOgo=;
- b=BnG7al+Aoz0Z6we670NUxQXCC/OZ3T+KXaN5ljEIEKYB5aOA8dx9qQmBesSiTuld9kigzt
- u4W7dBPmmPWQLgBw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id E26D8132EA;
- Thu,  2 Jan 2025 22:06:43 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id yEkVKfMNd2emeQAAD6G6ig
- (envelope-from <farosas@suse.de>); Thu, 02 Jan 2025 22:06:43 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: qemu-devel@nongnu.org
-Cc: Ani Sinha <anisinha@redhat.com>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: [PULL 8/8] qtest/fw-cfg: remove compiled out code
-Date: Thu,  2 Jan 2025 19:06:29 -0300
-Message-Id: <20250102220629.11351-9-farosas@suse.de>
-X-Mailer: git-send-email 2.35.3
-In-Reply-To: <20250102220629.11351-1-farosas@suse.de>
-References: <20250102220629.11351-1-farosas@suse.de>
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 63CBC195604F; Fri,  3 Jan 2025 11:43:06 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.141])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AF0C21956056; Fri,  3 Jan 2025 11:43:03 +0000 (UTC)
+Date: Fri, 3 Jan 2025 11:43:00 +0000
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Ani Sinha <anisinha@redhat.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+ qemu-devel@nongnu.org
+Subject: Re: [PATCH] docs: update copyright date to the year 2025
+Message-ID: <Z3fNRM0SSmYGB_y9@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <20250101080116.1050336-1-anisinha@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-X-Rspamd-Queue-Id: 5ED9D1F76E
-X-Spam-Score: -3.50
-X-Rspamd-Action: no action
-X-Spamd-Result: default: False [-3.50 / 50.00]; BAYES_HAM(-2.99)[99.95%];
- NEURAL_HAM_LONG(-1.00)[-1.000]; MID_CONTAINS_FROM(1.00)[];
- R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
- MX_GOOD(-0.01)[]; RCVD_VIA_SMTP_AUTH(0.00)[]; ARC_NA(0.00)[];
- SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
- RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from]; 
- TO_DN_SOME(0.00)[]; MIME_TRACE(0.00)[0:+];
- ASN(0.00)[asn:25478, ipnet:::/0, country:RU];
- RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
- RCVD_TLS_ALL(0.00)[]; RCPT_COUNT_THREE(0.00)[4];
- FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
- FUZZY_BLOCKED(0.00)[rspamd.com]; RCVD_COUNT_TWO(0.00)[2];
- TO_MATCH_ENVRCPT_ALL(0.00)[];
- DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:dkim,suse.de:mid,suse.de:email,imap1.dmz-prg2.suse.org:rdns,imap1.dmz-prg2.suse.org:helo];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- DKIM_TRACE(0.00)[suse.de:+]
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
-Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:2;
- envelope-from=farosas@suse.de; helo=smtp-out2.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+In-Reply-To: <20250101080116.1050336-1-anisinha@redhat.com>
+User-Agent: Mutt/2.2.13 (2024-03-09)
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -42
+X-Spam_score: -4.3
 X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-4.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-2.185,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,39 +74,61 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 02 Jan 2025 22:06:51 -0000
+X-List-Received-Date: Fri, 03 Jan 2025 11:43:16 -0000
 
-From: Ani Sinha <anisinha@redhat.com>
+On Wed, Jan 01, 2025 at 01:31:16PM +0530, Ani Sinha wrote:
+> We are already in January 2025! Update copyright notices.
+> 
+> Cc: peter.maydell@linaro.org
+> Cc: qemu-trivial@nongnu.org
+> Signed-off-by: Ani Sinha <anisinha@redhat.com>
+> ---
+>  docs/conf.py              | 2 +-
+>  include/qemu/help-texts.h | 2 +-
+>  2 files changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/docs/conf.py b/docs/conf.py
+> index 164a8ee8b2..31bb9a3789 100644
+> --- a/docs/conf.py
+> +++ b/docs/conf.py
+> @@ -87,7 +87,7 @@
+>  
+>  # General information about the project.
+>  project = u'QEMU'
+> -copyright = u'2024, The QEMU Project Developers'
+> +copyright = u'2025, The QEMU Project Developers'
+>  author = u'The QEMU Project Developers'
 
-Remove code that is already compiled out. This prevents confusion.
+How about we make this consistent with the help-texts.h  file
+by making it cover the range of dates, as stuff that was authored
+in 2024 and before , doesn't magically change its copyright date
+to 2025, only new contribs get that.
 
-CC: qemu-trivial@nongnu.org
-Signed-off-by: Ani Sinha <anisinha@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Message-Id: <20250101081555.1050736-1-anisinha@redhat.com>
-Signed-off-by: Fabiano Rosas <farosas@suse.de>
----
- tests/qtest/fw_cfg-test.c | 6 ------
- 1 file changed, 6 deletions(-)
+>  
+>  # The version info for the project you're documenting, acts as replacement for
+> diff --git a/include/qemu/help-texts.h b/include/qemu/help-texts.h
+> index 353ab2ad8b..bc8fab9169 100644
+> --- a/include/qemu/help-texts.h
+> +++ b/include/qemu/help-texts.h
+> @@ -2,7 +2,7 @@
+>  #define QEMU_HELP_TEXTS_H
+>  
+>  /* Copyright string for -version arguments, About dialogs, etc */
+> -#define QEMU_COPYRIGHT "Copyright (c) 2003-2024 " \
+> +#define QEMU_COPYRIGHT "Copyright (c) 2003-2025 " \
+>      "Fabrice Bellard and the QEMU Project developers"
+>  
+>  /* Bug reporting information for --help arguments, About dialogs, etc */
+> -- 
+> 2.45.2
+> 
+> 
 
-diff --git a/tests/qtest/fw_cfg-test.c b/tests/qtest/fw_cfg-test.c
-index 5dc807ba23..e48b34afa5 100644
---- a/tests/qtest/fw_cfg-test.c
-+++ b/tests/qtest/fw_cfg-test.c
-@@ -243,12 +243,6 @@ int main(int argc, char **argv)
-     qtest_add_func("fw_cfg/ram_size", test_fw_cfg_ram_size);
-     qtest_add_func("fw_cfg/nographic", test_fw_cfg_nographic);
-     qtest_add_func("fw_cfg/nb_cpus", test_fw_cfg_nb_cpus);
--#if 0
--    qtest_add_func("fw_cfg/machine_id", test_fw_cfg_machine_id);
--    qtest_add_func("fw_cfg/kernel", test_fw_cfg_kernel);
--    qtest_add_func("fw_cfg/initrd", test_fw_cfg_initrd);
--    qtest_add_func("fw_cfg/boot_device", test_fw_cfg_boot_device);
--#endif
-     qtest_add_func("fw_cfg/max_cpus", test_fw_cfg_max_cpus);
-     qtest_add_func("fw_cfg/numa", test_fw_cfg_numa);
-     qtest_add_func("fw_cfg/boot_menu", test_fw_cfg_boot_menu);
+With regards,
+Daniel
 -- 
-2.35.3
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
