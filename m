@@ -1,98 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tW4S6-0007Nj-Io
-	for mharc-qemu-trivial@gnu.org; Thu, 09 Jan 2025 21:08:46 -0500
+	id 1tW8tb-0005B3-Mj
+	for mharc-qemu-trivial@gnu.org; Fri, 10 Jan 2025 01:53:27 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1tW2QC-0007tM-Hv; Thu, 09 Jan 2025 18:58:40 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <iii@linux.ibm.com>)
- id 1tW2QA-000854-K8; Thu, 09 Jan 2025 18:58:40 -0500
-Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 509NwOa0000885;
- Thu, 9 Jan 2025 23:58:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=pp1; bh=7hGvMX
- HUFksZznJIkLa/iu1DdXX6JGQBuO+1KdJW5wE=; b=ig6MEew/7D8klItpKXonF+
- Keh4cLlwh4n+MRcR47tZh55hKj97VKXPBh3WPedAT3BesyHJWv9bQbeV7m2vwSqT
- bw1TPcxmNm1vL9qeq6RMn5VJfW5MlPx1klW3vp84mVbFqQUvvu3S0RRjMIGz3GME
- 6KNfuS66y7gCmWQuNpGwb+cyAbP5VUWJdJOtDANUgA0xgM40i4NOySgsakw4ynic
- GaQLucbcIUO0zquIYZxCr5S4b3ojVk2WdX+GVHE7iIq3qAOj3PGVOIMNNU4J4EwC
- D8h7OsrWNJ06ur5Ds/FkDpdywfOFdf7yY/mYV/iz8eqvhhCZwoC2ozHtvlyZU1sQ
- ==
-Received: from pps.reinject (localhost [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 442rkhr015-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 09 Jan 2025 23:58:35 +0000 (GMT)
-Received: from m0353729.ppops.net (m0353729.ppops.net [127.0.0.1])
- by pps.reinject (8.18.0.8/8.18.0.8) with ESMTP id 509NwYsE000987;
- Thu, 9 Jan 2025 23:58:34 GMT
-Received: from ppma21.wdc07v.mail.ibm.com
- (5b.69.3da9.ip4.static.sl-reverse.com [169.61.105.91])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 442rkhr013-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 09 Jan 2025 23:58:34 +0000 (GMT)
-Received: from pps.filterd (ppma21.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma21.wdc07v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 509K6xg3013659;
- Thu, 9 Jan 2025 23:58:33 GMT
-Received: from smtprelay03.fra02v.mail.ibm.com ([9.218.2.224])
- by ppma21.wdc07v.mail.ibm.com (PPS) with ESMTPS id 43ygap7mea-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 09 Jan 2025 23:58:33 +0000
-Received: from smtpav04.fra02v.mail.ibm.com (smtpav04.fra02v.mail.ibm.com
- [10.20.54.103])
- by smtprelay03.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 509NwVY547383002
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 9 Jan 2025 23:58:31 GMT
-Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 438F62004B;
- Thu,  9 Jan 2025 23:58:31 +0000 (GMT)
-Received: from smtpav04.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id DFAB820040;
- Thu,  9 Jan 2025 23:58:30 +0000 (GMT)
-Received: from [127.0.0.1] (unknown [9.152.108.100])
- by smtpav04.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Thu,  9 Jan 2025 23:58:30 +0000 (GMT)
-Message-ID: <d49cfe80f72cc06dd43181f64427b75fd3a58007.camel@linux.ibm.com>
-Subject: Re: [PATCH] gdbstub/user-target: fix gdbserver int format (%d -> %x)
-From: Ilya Leoshkevich <iii@linux.ibm.com>
-To: "Dominik 'Disconnect3d' Czarnota" <dominik.b.czarnota@gmail.com>,
- qemu-devel@nongnu.org
-Cc: alex.bennee@linaro.org, philmd@linaro.org, qemu-trivial@nongnu.org
-Date: Fri, 10 Jan 2025 00:58:30 +0100
-In-Reply-To: <20241227170413.72438-1-dominik.b.czarnota@gmail.com>
-References: <20241227170413.72438-1-dominik.b.czarnota@gmail.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-User-Agent: Evolution 3.52.4 (3.52.4-2.fc40) 
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tW8tZ-0005AJ-Uy
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2025 01:53:25 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tW8tY-0004MK-Ff
+ for qemu-trivial@nongnu.org; Fri, 10 Jan 2025 01:53:25 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-4363ae65100so18335115e9.0
+ for <qemu-trivial@nongnu.org>; Thu, 09 Jan 2025 22:53:23 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1736492002; x=1737096802; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=NysGpnhz+JRhaaLwqNVketbtskncAzhW/+7oJdgz4r4=;
+ b=aB+bZH3AYFv5u/2XMSSRnv5Sx766xfgz2m1CNU92SI+FE7YSN5fbyehN3aFPaUzd8T
+ XXRuMIVw6DcVHWQHVXaQpoLv7fxrrAo3vsRHk3ePcMG1p5Rl7V0/O8MVMAWtRKtWcSwe
+ /197DiN/MKW7JQz3Tgz2u53LhN+QWKuaIRHzef8XPAmC51XDuLtxDPz8UCm7Y48vdyNa
+ TNZgcUcmU4S9UcDNrRWbpbGu4WTZVocsKVXhXZE9P2Ds+WJVwSvxI6blC5eFRVRAwTN6
+ otV6DpPdGVHQgaNa3ssQhEWwvEFQYf6tS7MQ/8IZYtiShBe5yXJ6EMfFFO23l4iRtHnh
+ uIjg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1736492002; x=1737096802;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=NysGpnhz+JRhaaLwqNVketbtskncAzhW/+7oJdgz4r4=;
+ b=CfMYKqjRnMwWJ+29P1ukq0MhpuzDmkI+DcExm6KPxchtC96C9uJUiO3ubqMriBLWw/
+ 1rHGuIiAtp0N/kbrGuUikV34yNrFWQIlWWS+wQhGH9kcIR8/TKinIVG563pytvA6vt7r
+ sBZLntBoNStVeMxzvWIJgTxo4TmdG5AmGl7QjCSs0ffMx2Fxl54q2vJDqD35gVb114v5
+ qDR2FuDdXYZLRJYOM+7Wrutoxa0/Le+ATMG8pnfmkwrm4Zy3DqMWIJ+d9f5I6qAfVFMP
+ /cTiajw2UM1P9ja7/CK6yrGE6balfXOKIkBrxB3eKE3s8Egq84tC8w8J/vbdDBKbizAR
+ uS6A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVVZXECOyWuyBqyL56bs25ssBUPFWjjXjDwW68ELekzS0sfBhmWO+xJ98qPS1PztGJhnHAggoSpkffTLA4=@nongnu.org
+X-Gm-Message-State: AOJu0Yx5UEnuVAf69ZpACVmBn9f78Z5OiNMPqHXkVVhUAvTGPSB4bLE9
+ 77mfjtQkITIjoUdnDiHnDFxttz97UEsOXq4GR9WGWAym7giATLyyoCaoM9iE+kw=
+X-Gm-Gg: ASbGncuvy2fwnYK7/G87bbm+F47W6nHELhihEoDTDUBA0qguHIqI247LuSxsyAUsjdN
+ 4IGxzUUizIuveoslImf8JRV6M42CZn3mjzb+BEXXeq90jxrPsy741FtLZAAiuRShAnazA3UaBLc
+ wbv3dLlj8r59tDKM1yWtQJZ8UdbyIQ0ILIlaTnBANbDnAbKQ7aT+vVQRKaOCbL2liRjs6C8dYUc
+ vzisUkO+oEKadUuqTIk8WyOiwlwLUTli5eyZl2ySfoyUI+kgpWrKB58Qt0hQL2ZTRxzRsZUwoiz
+ YqfjydJhrDZFRk56yFoytGxjez4=
+X-Google-Smtp-Source: AGHT+IFjkW/LHk5V3Ii4A5kY2kxRjWTF5f6MfDNWIRjZLL1uP8uQRGhhqKrl2W9Bzj3Cm/HzBIfHUw==
+X-Received: by 2002:a05:600c:46c3:b0:434:fbe2:4f with SMTP id
+ 5b1f17b1804b1-436e26e1d21mr27193915e9.23.1736492002171; 
+ Thu, 09 Jan 2025 22:53:22 -0800 (PST)
+Received: from [192.168.1.74] (88-187-86-199.subs.proxad.net. [88.187.86.199])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-38a8e37e36asm3631044f8f.5.2025.01.09.22.53.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 09 Jan 2025 22:53:21 -0800 (PST)
+Message-ID: <debbd5de-718f-4940-b428-91ce6f0d5ee5@linaro.org>
+Date: Fri, 10 Jan 2025 07:53:20 +0100
 MIME-Version: 1.0
-X-TM-AS-GCONF: 00
-X-Proofpoint-ORIG-GUID: AuTtCYh1Fv94VnKpgEOF2afe1ft_bbdg
-X-Proofpoint-GUID: i9uqhxs4pBAAW2hgi6t1dpQrgIO1S991
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1051,Hydra:6.0.680,FMLib:17.12.62.30
- definitions=2024-10-15_01,2024-10-11_01,2024-09-30_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- clxscore=1011 bulkscore=0
- mlxscore=0 suspectscore=0 phishscore=0 impostorscore=0 adultscore=0
- malwarescore=0 priorityscore=1501 mlxlogscore=999 lowpriorityscore=0
- spamscore=0 classifier=spam adjust=0 reason=mlx scancount=1
- engine=8.19.0-2411120000 definitions=main-2501090185
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=iii@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] qmp: update vhost-user protocol feature maps
+To: Jonah Palmer <jonah.palmer@oracle.com>, Michael Tokarev <mjt@tls.msk.ru>, 
+ Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
+Cc: qemu-stable@nongnu.org, qemu-trivial@nongnu.org,
+ "Michael S. Tsirkin" <mst@redhat.com>, aesteve@redhat.com, hreitz@redhat.com
+References: <20241216170914.1346403-1-lvivier@redhat.com>
+ <c9341f03-ecc2-4a62-860a-35ff2b660651@oracle.com>
+ <6f1dcbe9-3a7e-475b-92ef-14f1d04ffc2e@tls.msk.ru>
+ <511cf8f8-03ea-4375-abe0-317ac3131b1d@oracle.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <511cf8f8-03ea-4375-abe0-317ac3131b1d@oracle.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32f.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H2=-0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 09 Jan 2025 21:08:44 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,112 +93,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 09 Jan 2025 23:58:40 -0000
+X-List-Received-Date: Fri, 10 Jan 2025 06:53:26 -0000
 
-On Fri, 2024-12-27 at 18:04 +0100, Dominik 'Disconnect3d' Czarnota
-wrote:
-> From: disconnect3d <dominik.b.czarnota@gmail.com>
->=20
-> This commit fixes an incorrect format string for formatting integers
-> provided to GDB when debugging a target run in QEMU user mode.
->=20
-> The correct format is hexadecimal for both success and errno values,
-> some of which can be seen here [0].
->=20
+On 6/1/25 14:25, Jonah Palmer wrote:
+> 
+> 
+> On 12/22/24 4:13 AM, Michael Tokarev wrote:
+>> 16.12.2024 20:30, Jonah Palmer wrote:
+>> ...
+>>
+>>> Signed-off-by: Jonah Palmer <jonah.palmer@oracle.com>
+>> Should this be a Reviewed-by instead?
+>>
+>> Thanks,
+>>
+>> /mjt
+> 
+> Oof, yes, it should've been. My apologies, I was on vacation and only 
+> saw this just now.
 
-Nice catch, I haven't tested this with a lot of fds. After adding
-3</dev/null 4</dev/null [...] 9</dev/null to an emulated program,
-I get:
-
-(gdb) info proc mappings
-process 37804
-warning: unable to open /proc file '/proc/37804/maps'
-
-And with your fix:
-
-(gdb) info proc mappings
-process 37816
-Mapped address spaces:
-
-          Start Addr           End Addr       Size     Offset  Perms=20
-objfile
-       0x2aa00000000      0x2aa0123d000  0x123d000        0x0  r-xp =20
-/home/iii/myrepos/wasmtime/target/s390x-unknown-linux-
-gnu/debug/deps/filetests-fab17457420757a9
-[...]
-
-I would recommend the following tags:
-
-Fixes: e282010b2e1e ("gdbstub: Add support for info proc mappings")
-Cc: qemu-stable@nongnu.org
-
-In any case:
-
-Reviewed-by: Ilya Leoshkevich <iii@linux.ibm.com>
-
-> [0]
-> https://github.com/bminor/binutils-gdb/blob/e65a355022d0dc6b5707310876a72=
-b5693ec0aa5/gdbserver/hostio.cc#L196-L213
-> ---
-> =C2=A0gdbstub/user-target.c | 10 +++++-----
-> =C2=A01 file changed, 5 insertions(+), 5 deletions(-)
->=20
-> diff --git a/gdbstub/user-target.c b/gdbstub/user-target.c
-> index 22bf4008c0..4bfcf78aaa 100644
-> --- a/gdbstub/user-target.c
-> +++ b/gdbstub/user-target.c
-> @@ -317,9 +317,9 @@ void gdb_handle_v_file_open(GArray *params, void
-> *user_ctx)
-> =C2=A0=C2=A0=C2=A0=C2=A0 int fd =3D open(filename, flags, mode);
-> =C2=A0#endif
-> =C2=A0=C2=A0=C2=A0=C2=A0 if (fd < 0) {
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_string_printf(gdbserver_sta=
-te.str_buf, "F-1,%d", errno);
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_string_printf(gdbserver_sta=
-te.str_buf, "F-1,%x", errno);
-> =C2=A0=C2=A0=C2=A0=C2=A0 } else {
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_string_printf(gdbserver_sta=
-te.str_buf, "F%d", fd);
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_string_printf(gdbserver_sta=
-te.str_buf, "F%x", fd);
-> =C2=A0=C2=A0=C2=A0=C2=A0 }
-> =C2=A0=C2=A0=C2=A0=C2=A0 gdb_put_strbuf();
-> =C2=A0}
-> @@ -329,7 +329,7 @@ void gdb_handle_v_file_close(GArray *params, void
-> *user_ctx)
-> =C2=A0=C2=A0=C2=A0=C2=A0 int fd =3D gdb_get_cmd_param(params, 0)->val_ul;
-> =C2=A0
-> =C2=A0=C2=A0=C2=A0=C2=A0 if (close(fd) =3D=3D -1) {
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_string_printf(gdbserver_sta=
-te.str_buf, "F-1,%d", errno);
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_string_printf(gdbserver_sta=
-te.str_buf, "F-1,%x", errno);
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 gdb_put_strbuf();
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
-> =C2=A0=C2=A0=C2=A0=C2=A0 }
-> @@ -352,7 +352,7 @@ void gdb_handle_v_file_pread(GArray *params, void
-> *user_ctx)
-> =C2=A0
-> =C2=A0=C2=A0=C2=A0=C2=A0 ssize_t n =3D pread(fd, buf, bufsiz, offset);
-> =C2=A0=C2=A0=C2=A0=C2=A0 if (n < 0) {
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_string_printf(gdbserver_sta=
-te.str_buf, "F-1,%d", errno);
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_string_printf(gdbserver_sta=
-te.str_buf, "F-1,%x", errno);
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 gdb_put_strbuf();
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
-> =C2=A0=C2=A0=C2=A0=C2=A0 }
-> @@ -375,7 +375,7 @@ void gdb_handle_v_file_readlink(GArray *params,
-> void *user_ctx)
-> =C2=A0=C2=A0=C2=A0=C2=A0 ssize_t n =3D readlink(filename, buf, BUFSIZ);
-> =C2=A0#endif
-> =C2=A0=C2=A0=C2=A0=C2=A0 if (n < 0) {
-> -=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_string_printf(gdbserver_sta=
-te.str_buf, "F-1,%d", errno);
-> +=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 g_string_printf(gdbserver_sta=
-te.str_buf, "F-1,%x", errno);
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 gdb_put_strbuf();
-> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 return;
-> =C2=A0=C2=A0=C2=A0=C2=A0 }
+Already merged as commit 1e3d4d9a1a32ac6835f0d295a5117851c421fb5d.
 
 
