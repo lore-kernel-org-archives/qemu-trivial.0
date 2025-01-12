@@ -1,77 +1,77 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tX1pD-0007uU-Mb
-	for mharc-qemu-trivial@gnu.org; Sun, 12 Jan 2025 12:32:35 -0500
+	id 1tX28E-0002TS-9V
+	for mharc-qemu-trivial@gnu.org; Sun, 12 Jan 2025 12:52:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tX1p2-0007ti-NO
- for qemu-trivial@nongnu.org; Sun, 12 Jan 2025 12:32:25 -0500
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1tX28C-0002TA-J2
+ for qemu-trivial@nongnu.org; Sun, 12 Jan 2025 12:52:12 -0500
+Received: from mail-pl1-x62f.google.com ([2607:f8b0:4864:20::62f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tX1p0-0000Sy-O4
- for qemu-trivial@nongnu.org; Sun, 12 Jan 2025 12:32:24 -0500
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-43623f0c574so25400935e9.2
- for <qemu-trivial@nongnu.org>; Sun, 12 Jan 2025 09:32:21 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1tX28A-0002EX-TJ
+ for qemu-trivial@nongnu.org; Sun, 12 Jan 2025 12:52:12 -0500
+Received: by mail-pl1-x62f.google.com with SMTP id
+ d9443c01a7336-215770613dbso42848975ad.2
+ for <qemu-trivial@nongnu.org>; Sun, 12 Jan 2025 09:52:09 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1736703140; x=1737307940; darn=nongnu.org;
+ d=linaro.org; s=google; t=1736704328; x=1737309128; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=1UVOydxaBftTDJA9IS2xai9YhUYwPPnbCWE3Z0cGEos=;
- b=mwdMb+5cvvRlk7sfByOtKkS5DgMoxxPSK2I52vgqNv6Jwk0rLOsEehwQv/3vyfa6UO
- oQDf7I3+TFhxJ69yWZp/9vlEtErj06IvqOtBTX0u16htjp2eIMue6LrhN2pn5LTrPpgR
- VHsptFBPkoyFHmYurcAhQKDnokJn0DO6m/+iA5hU4mHNqkXWj8Ak68A3IwU+65P6sHhm
- LT5voxc/BvjpZv4lyjBH4b5qDI00ta67+5mjmbc+WN0Y31luk+QDy3Ze0GAXGKhLcbKJ
- R+3EFpGZRPJKZV/wMjVdqKTKD1QnDeX1cj0ZI6wQGvXJv8C58bV7Y63r2DttGI/jSdaY
- h72Q==
+ bh=nrj9LdmClEjvzcWeexh+VwC/9/Q4bvfAYui3iYSCF4o=;
+ b=vneU5k0hIVDFT5jv6mAMiCq27z4bV0+AngV/3Jf0Sgn5nABcfpW6FjP6dYom5S1A3d
+ cDQY1lnOwVlWQ3HvZbpYoujHND926TzdV+qTSrIzhfbAz4/YEkD31f3nuPk6yjQ2XW3m
+ Ts+lzsvmOEDwasvgQ4Wb3/1fpK9jLcZk0qROl9wr1kwwqh3TeAj+Ue6hcbIC7PEyvqjL
+ l3BcuPcoHDVO0L1p9P4RQA6nu2snRkGt8hnQr7gPYZd6XPzuAS3Z9up17Q8jaXOiaour
+ NVFTj6FjdJnBf0UWZLbfBkKaz5t1raIo7TyOc+IGBpqEeIfsv7VMBo8qy4ZObHyMNrz8
+ VHsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1736703140; x=1737307940;
+ d=1e100.net; s=20230601; t=1736704328; x=1737309128;
  h=content-transfer-encoding:in-reply-to:from:content-language
  :references:cc:to:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=1UVOydxaBftTDJA9IS2xai9YhUYwPPnbCWE3Z0cGEos=;
- b=by4FRh5vYy1RNONWd5PoHjc/BWDy28/DmdokQah+HjMPRbRJv+L0jqHt2T7m1V4H1d
- XAxa4y9A+exhEr4Wzjby7iJqgEhOzFtWxNECwQ5+taS00C514FHB8k2uPHn0nPvA6q6f
- 81ekkVvoBcqyLDrv25kI3OQbzCVRX6ZxXRziuC4R4Scz80xCeynieKwELoV281ebwTwY
- LZZ+gCtURd8k3FYQQHOXmG4NWXLtFozCP0inZ6IcW1wgwrU9jQ4yx0jRWyc+tOavJs3q
- 4rss804ZG6Dxy4wLEHpWMx/fcR6n8JRhXOnY1pzmJB+YQcEN1nIYBh3qD0Zw2HHKFaoj
- LR7w==
+ bh=nrj9LdmClEjvzcWeexh+VwC/9/Q4bvfAYui3iYSCF4o=;
+ b=LKrEAkPb0gDJlLzOelxiSH3fU2ZsRl13LANb2T6c68OiIX5lgV1xQrklwf4ZYnwS0s
+ tOpukux5dcMVFT+b0Xg2n8FiCHyvBJq5tHuV0q/ckFRo6WnMLdulonkQ1bMb2ZREEh1T
+ +9Zq/CGf5ayd+zLSCC3wiZFft8lPc2Fo5lwC1LBbD9k8mviUFwZIvtoGFZzX2q2xn3YA
+ VdAzgqblhNy/+ooJ8VTnG2XoDwsbSR/jlGgYWWQhRAycNRDYLYClTzncLtdIHCqq2sNy
+ fyt30rt7H11g8JR78foGL7vB1y8B7jf5d6sVyHhFIr9MuLyMFvVidzLEdaYkiySG0rF3
+ 3tHA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWUghVvelH7ItdopDuG21n9+AbU5qq2ZGJmk3Akc6QmBM6YoCI22h/T/INPtH5+Ri6bORLvvqkFswRxX7c=@nongnu.org
-X-Gm-Message-State: AOJu0YzxL03fa2PFGeTZsr7HZ/pQzhoED4Kf+ldj38VJKd9xWAdZBmMJ
- S2OvTFgMMn7wk6GPNv8qGPyRopa+NlE5JFAEZ8fEw2s76NLknj+IwGP5bqT7KNA=
-X-Gm-Gg: ASbGncsPf4BjU3HfCWxCJZZ62EloUTgXL6D9g70RC4TeEB70xUdHnngS32x/z3joqCB
- Q1ZzIZfsl5vErbhcm4xw7/RMgx+lw6wbNUqo8A6d+WWLZifMjPdTPYBzKS3pmv/1kAXZoolLX/7
- /Q1B5+9S2BMTHH7eK2gPKizLCt0uDeGUpDRyWK3h3nSCn6uV0ToXZ/OgL1T4o9GNJsYv1OjoVDp
- 3cO6XLOn2igwl6aRg6WSYVfHn5VPiZ26W3Xrz7Ria0xXyXHd+uoAX+UhKhL/gHefSzCEo7Z7UYM
- Mpx2ciXSB0AUn28Mg8kyp2Rm
-X-Google-Smtp-Source: AGHT+IHFUTM6Id7P83aAS9QsAOgf/6TcYIGBszhhu24Fer1eQ2bzoQTEREuq0Fh997gB7OtcN0QBiQ==
-X-Received: by 2002:a5d:6d87:0:b0:385:ef2f:92ad with SMTP id
- ffacd0b85a97d-38a872f7f80mr15690677f8f.10.1736703140233; 
- Sun, 12 Jan 2025 09:32:20 -0800 (PST)
-Received: from [192.168.69.181] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38a8e383dedsm10266969f8f.35.2025.01.12.09.32.19
+ AJvYcCWWpvzVW34cgaSMVs3XaCKYly4fmSq9kKUwXV3ORRkkWmq8HZMBlxJ7MEdaFRCC/NhwUDGjo8Giy9X2kME=@nongnu.org
+X-Gm-Message-State: AOJu0Yy7kzqvQLYWjF0stkkMdtZpp7QJCQHL/7siMxRlvhfqDhRJz+zk
+ AnEBzVATm0DETWG9+q90SQ0F7xIQc+GL++tVAly/rdsJqP/3QHUJmROXbUtg7Hk=
+X-Gm-Gg: ASbGncv/BH2ik9zBSmkqO5ytrrDsEIRj2p17w+FKXhRTlx8T5Eg7HNBjtyBw1uR6IxW
+ 4IAOJ3uBOodqYC4n6yxlIhTd1LIRgA/SKZkRS9idi383MrXkGHcywIpwTczPfxG7NLPdlM14mUf
+ FI7Tixyniel573BrAjBQgI4/4z2xWzKTyKogUFRILWdO/tHYEVXaq9X1ZkQXi3Jexj02asZuzB9
+ VlseNnmslGDLiAEAiMUgUfWNHmf4BhNCfbKX452CJoj20TaB2QeUoAKc63Sgfr2R1zq2w==
+X-Google-Smtp-Source: AGHT+IHbNTMW66CqkXtH2NxMJRDQ4cUUjOCrMBFWT88wMNiO7QQHsWgRE+stvlkJeDYYcbCBXNldfw==
+X-Received: by 2002:a05:6a00:bd2:b0:72d:3b2e:fef9 with SMTP id
+ d2e1a72fcca58-72d3b2f00f1mr13987974b3a.20.1736704328402; 
+ Sun, 12 Jan 2025 09:52:08 -0800 (PST)
+Received: from [192.168.1.67] ([38.39.164.180])
+ by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-72d405485c2sm4533004b3a.5.2025.01.12.09.52.07
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 12 Jan 2025 09:32:19 -0800 (PST)
-Message-ID: <dd12a227-0990-42b7-b241-301bca90915c@linaro.org>
-Date: Sun, 12 Jan 2025 18:32:19 +0100
+ Sun, 12 Jan 2025 09:52:07 -0800 (PST)
+Message-ID: <21dedb00-a958-4a57-98a2-922328133947@linaro.org>
+Date: Sun, 12 Jan 2025 09:52:07 -0800
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] scripts/nsis.py: Run dependency check for each DLL file
  only once
 To: Stefan Weil <sw@weilnetz.de>, Bin Meng <bin.meng@windriver.com>,
  John Snow <jsnow@redhat.com>, Cleber Rosa <crosa@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20250111215244.1680931-1-sw@weilnetz.de>
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 In-Reply-To: <20250111215244.1680931-1-sw@weilnetz.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62f;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -91,9 +91,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 12 Jan 2025 17:32:28 -0000
+X-List-Received-Date: Sun, 12 Jan 2025 17:52:12 -0000
 
-On 11/1/25 22:52, Stefan Weil via wrote:
+On 1/11/25 13:52, Stefan Weil via wrote:
 > Each DLL should only be checked once for dependencies, but
 > several hundred (781 in my test) unneeded checks were done.
 > 
@@ -144,6 +144,6 @@ On 11/1/25 22:52, Stefan Weil via wrote:
 >                   shutil.copy(dep, dllfile)
 >   
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
 
