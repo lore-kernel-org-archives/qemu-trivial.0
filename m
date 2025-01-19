@@ -1,84 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tZGlH-0001U8-Al
-	for mharc-qemu-trivial@gnu.org; Sat, 18 Jan 2025 16:53:47 -0500
+	id 1tZJnF-0008Mh-NB
+	for mharc-qemu-trivial@gnu.org; Sat, 18 Jan 2025 20:08:01 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tZGlF-0001TN-JS; Sat, 18 Jan 2025 16:53:45 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tZJnD-0008La-BE; Sat, 18 Jan 2025 20:07:59 -0500
+Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tZGlD-0005Ls-UD; Sat, 18 Jan 2025 16:53:45 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id BA628DA996;
- Sun, 19 Jan 2025 00:53:28 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 556F219EAF6;
- Sun, 19 Jan 2025 00:53:39 +0300 (MSK)
-Message-ID: <3c5a1fa3-460f-42cc-8a09-c0d7d948dbf2@tls.msk.ru>
-Date: Sun, 19 Jan 2025 00:53:39 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] vvfat: refresh writing long filename
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org, =?UTF-8?Q?Volker_R=C3=BCmelin?=
- <vr_qemu@t-online.de>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-block@nongnu.org,
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1tZJnB-0002bD-Gb; Sat, 18 Jan 2025 20:07:59 -0500
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 4B3894E6000;
+ Sun, 19 Jan 2025 02:07:53 +0100 (CET)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id jGuCkFNVtorc; Sun, 19 Jan 2025 02:07:51 +0100 (CET)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 5032C4E6005; Sun, 19 Jan 2025 02:07:51 +0100 (CET)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 4DD8074577D;
+ Sun, 19 Jan 2025 02:07:51 +0100 (CET)
+Date: Sun, 19 Jan 2025 02:07:51 +0100 (CET)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Michael Tokarev <mjt@tls.msk.ru>
+cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>, 
+ Hanna Reitz <hreitz@redhat.com>, 
+ =?ISO-8859-15?Q?Volker_R=FCmelin?= <vr_qemu@t-online.de>, 
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-block@nongnu.org, 
  qemu-trivial@nongnu.org
-References: <20250118213552.0F4FC19EAE7@tsrv.corpit.ru>
-Content-Language: en-US, ru-RU
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <20250118213552.0F4FC19EAE7@tsrv.corpit.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+Subject: Re: [PATCH] vvfat: refresh writing long filename
+In-Reply-To: <7b87000c-bdb4-41c0-8fe0-9bb0c4e8cd85@tls.msk.ru>
+Message-ID: <e77b7bcf-8629-3034-fd2b-9d9bd3744f07@eik.bme.hu>
+References: <20250118182109.2695C19E94D@tsrv.corpit.ru>
+ <df622cbd-32a1-29b3-5518-fa4d5e1d7c40@eik.bme.hu>
+ <7b87000c-bdb4-41c0-8fe0-9bb0c4e8cd85@tls.msk.ru>
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="3866299591-1871395700-1737248871=:91016"
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -93,27 +58,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sat, 18 Jan 2025 21:53:46 -0000
+X-List-Received-Date: Sun, 19 Jan 2025 01:08:00 -0000
 
-19.01.2025 00:26, Michael Tokarev wrote:
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-> +static unsigned write_lfn_part(uint8_t *dest, unsigned dsize,
-> +                               const gunichar2 *lptr, const gunichar2 *lend)
-> +{
-> +    unsigned i = 0;
-> +    for (; i < dsize / 2 && lptr + i <= lend; ++i) { /* incl. trailing U+0000 */
-> +        /* can't use cpu_to_be16() since dest is unaligned */
-> +        dest[i / 2 + 0] = lptr[i] & 0xff;
-> +        dest[i / 2 + 1] = lptr[i] >> 8;
-> +    }
+--3866299591-1871395700-1737248871=:91016
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-this obviously should be dest[i * 2], not dest[i / 2].
+On Sun, 19 Jan 2025, Michael Tokarev wrote:
+> 18.01.2025 23:54, BALATON Zoltan wrote:
+>>> +typedef struct lfn_direntry_t {
+>>> +    uint8_t sequence;
+>>> +    uint8_t name01[10];
+>>> +    uint8_t attributes;
+>>> +    uint8_t direntry_type;
+>>> +    uint8_t sfn_checksum;
+>>> +    uint8_t name0e[12];
+>>> +    uint16_t begin;
+>>> +    uint8_t name1c[4];
+>>> +} QEMU_PACKED lfn_direntry_t;
+>
+>>> +static unsigned write_lfn_part(uint8_t *dest, unsigned dsize,
+>>> +                               const gunichar2 *lptr, const gunichar2 
+>>> *lend)
+>>> +{
+>>> +    unsigned i;
+>>> +    for(i = 0; i < dsize / 2 && lptr + i < lend; ++i) {
+>>> +        dest[i / 2 + 0] = lptr[i] & 0xff;
+>>> +        dest[i / 2 + 1] = lptr[i] >> 8;
+>> 
+>> Why not uint16_t and maybe cpu_to_le (or whatever that's called) if needed? 
+>> May be simpler than handling it byte by byte.
+>
+> The dest array is unaligned - this is, eg, name01 in the above struct.
+> Will it work to use entry->name01[i] = cpu_to_le16(lptr[i]) here,
+> provided lfn_direntry_t=>name is declared as uint16_t name[5] ?
 
-And now I wonder what's the testcase for this code. I used
+I think it should work, I don't see why it would not. The compiler should 
+be able to figure out how to handle unaligned data where needed, you 
+should not need to do that by hand. Or I think you'd get a warning if it 
+would not work.
 
-   qemu-system-x86_64 ... -drive file=vfat:dir,..
+Regards,
+BALATON Zoltan
 
-but this code is not run.  Wtf.
-
-/mjt
+> I haven't done programming for quite a while... ;)
+>
+> /mjt
+>
+>
+--3866299591-1871395700-1737248871=:91016--
 
