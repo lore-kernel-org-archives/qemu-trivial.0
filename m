@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tZRff-0003A1-6R
-	for mharc-qemu-trivial@gnu.org; Sun, 19 Jan 2025 04:32:43 -0500
+	id 1tZSbR-0001U0-TO
+	for mharc-qemu-trivial@gnu.org; Sun, 19 Jan 2025 05:32:25 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tZRfd-000390-Gq; Sun, 19 Jan 2025 04:32:41 -0500
+ id 1tZSbM-0001Sx-Ks; Sun, 19 Jan 2025 05:32:20 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tZRfb-0005tP-PI; Sun, 19 Jan 2025 04:32:41 -0500
+ id 1tZSbK-0005AJ-Qk; Sun, 19 Jan 2025 05:32:20 -0500
 Received: from localhost.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by isrv.corpit.ru (Postfix) with ESMTP id 3D38FDAEB8;
- Sun, 19 Jan 2025 12:32:22 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 81E79DAF65;
+ Sun, 19 Jan 2025 13:32:02 +0300 (MSK)
 Received: by localhost.tls.msk.ru (Postfix, from userid 1000)
- id 9E4C450B6D; Sun, 19 Jan 2025 12:32:33 +0300 (MSK)
+ id EB99850B7E; Sun, 19 Jan 2025 13:32:13 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun, 19 Jan 2025 12:15:51 +0300
-Subject: [PATCH] vvfat: create_long_filename: fix out-of-bounds array access
+Date: Sun, 19 Jan 2025 13:29:05 +0300
+Subject: [PATCH] vvfat: create_long_filename(): refresh
 To: qemu-devel@nongnu.org,
  =?UTF-8?q?Volker=20R=C3=BCmelin?= <vr_qemu@t-online.de>
 Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-block@nongnu.org,
  qemu-trivial@nongnu.org
-Message-Id: <20250119093233.9E4C450B6D@localhost.tls.msk.ru>
+Message-Id: <20250119103213.EB99850B7E@localhost.tls.msk.ru>
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
 X-Spam_score_int: -68
@@ -42,77 +42,94 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 19 Jan 2025 09:32:42 -0000
+X-List-Received-Date: Sun, 19 Jan 2025 10:32:24 -0000
 
-create_long_filename() intentionally uses direntry_t->name[8+3] array
-as a larger array.  This works, but makes statid code analysis tools
-unhappy.  The problem here is that a directory entry holding long file
-name is significantly different from regular directory entry, and the
-name is split into several parts within the entry, not just in regular
-8+3 name field.
-
-Treat the entry as array of bytes instead.  This fixes the OOB access
-from the compiler/tools PoV, but does not change the resulting code
-in any way.
-
-Keep the existing code style.
+add comments explaining what is going on (since long file names are really weird),
+rewrite the second loop to do one UTF16 char at a time instead of byte,
+and fix coding style.
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- block/vvfat.c | 11 +++++------
- 1 file changed, 5 insertions(+), 6 deletions(-)
+ block/vvfat.c | 54 +++++++++++++++++++++++++++++----------------------
+ 1 file changed, 31 insertions(+), 23 deletions(-)
 
-This code is really ugly and insanely ineffecient.
-But LFN is also ugly.
-
-I think this one is the best for now.
-
-Another patch might optimize the second loop quite a bit,
-add comments (since it is really difficult to understand,
-especially since lfn is so weird), and fix coding style.
+on top of the previous patch
 
 diff --git a/block/vvfat.c b/block/vvfat.c
-index bb80dfb177..b53e3b452b 100644
+index b53e3b452b..4827288756 100644
 --- a/block/vvfat.c
 +++ b/block/vvfat.c
-@@ -403,7 +403,6 @@ static direntry_t *create_long_filename(BDRVVVFATState *s, const char *filename)
+@@ -401,7 +401,7 @@ static void init_mbr(BDRVVVFATState *s, int cyls, int heads, int secs)
+ 
+ static direntry_t *create_long_filename(BDRVVVFATState *s, const char *filename)
  {
-     int number_of_entries, i;
+-    int number_of_entries, i;
++    unsigned nents, i;
      glong length;
--    direntry_t *entry;
  
      gunichar2 *longname = g_utf8_to_utf16(filename, -1, NULL, &length, NULL);
-     if (!longname) {
-@@ -414,24 +413,24 @@ static direntry_t *create_long_filename(BDRVVVFATState *s, const char *filename)
-     number_of_entries = DIV_ROUND_UP(length * 2, 26);
- 
-     for(i=0;i<number_of_entries;i++) {
--        entry=array_get_next(&(s->directory));
-+        direntry_t *entry=array_get_next(&(s->directory));
-         entry->attributes=0xf;
-         entry->reserved[0]=0;
-         entry->begin=0;
-         entry->name[0]=(number_of_entries-i)|(i==0?0x40:0);
+@@ -410,31 +410,39 @@ static direntry_t *create_long_filename(BDRVVVFATState *s, const char *filename)
+         return NULL;
      }
-     for(i=0;i<26*number_of_entries;i++) {
-+        unsigned char *entry=array_get(&(s->directory),s->directory.next-1-(i/26));
-         int offset=(i%26);
-         if(offset<10) offset=1+offset;
-         else if(offset<22) offset=14+offset-10;
-         else offset=28+offset-22;
--        entry=array_get(&(s->directory),s->directory.next-1-(i/26));
-         if (i >= 2 * length + 2) {
--            entry->name[offset] = 0xff;
-+            entry[offset] = 0xff;
-         } else if (i % 2 == 0) {
--            entry->name[offset] = longname[i / 2] & 0xff;
-+            entry[offset] = longname[i / 2] & 0xff;
-         } else {
--            entry->name[offset] = longname[i / 2] >> 8;
-+            entry[offset] = longname[i / 2] >> 8;
+ 
+-    number_of_entries = DIV_ROUND_UP(length * 2, 26);
+-
+-    for(i=0;i<number_of_entries;i++) {
+-        direntry_t *entry=array_get_next(&(s->directory));
+-        entry->attributes=0xf;
+-        entry->reserved[0]=0;
+-        entry->begin=0;
+-        entry->name[0]=(number_of_entries-i)|(i==0?0x40:0);
+-    }
+-    for(i=0;i<26*number_of_entries;i++) {
+-        unsigned char *entry=array_get(&(s->directory),s->directory.next-1-(i/26));
+-        int offset=(i%26);
+-        if(offset<10) offset=1+offset;
+-        else if(offset<22) offset=14+offset-10;
+-        else offset=28+offset-22;
+-        if (i >= 2 * length + 2) {
+-            entry[offset] = 0xff;
+-        } else if (i % 2 == 0) {
+-            entry[offset] = longname[i / 2] & 0xff;
+-        } else {
+-            entry[offset] = longname[i / 2] >> 8;
++    /*
++     * long file name is split into multiple directory entries,
++     * 13 UTF16 chars (26 bytes) in each,
++     * in reverse order.
++     */
++    nents = DIV_ROUND_UP(length, 13);
++
++    for (i = 0; i < nents; ++i) { /* allocate and basic init */
++        direntry_t *entry = array_get_next(&s->directory);
++        entry->attributes = 0xf;
++        entry->reserved[0] = 0;
++        entry->begin = 0;
++        entry->name[0] = (nents - i) | (i == 0 ? 0x40 : 0);
++    }
++
++    /* write 13 chars of name to each entry, entries in reverse order */
++    for (i = 0; i < nents * 13; ++i) {
++        unsigned char *entry =
++           array_get(&s->directory, s->directory.next - 1 - i / 13);
++        unsigned off = i % 13;
++        /* each entry has 3 different places for the name: */
++        off = off < 5 ? off * 2 + 1 /* bytes 1..10, 5 chars 0..4, unaligned */
++            : off < 11 ? (off - 5) * 2 + 14 /* bytes 14..25, 6 chars 5..10 */
++            :            (off - 11) * 2 + 28; /* bytes 28..31, 2 chars 11..12 */
++        if (i <= length) { /* name and trailing U+0000 */
++            entry[off + 0] = longname[i] & 0xff;
++            entry[off + 1] = longname[i] >> 8;
++        } else { /* fill remaining parts with U+FFFF */
++            entry[off + 0] = entry[off + 1] = 0xff;
          }
      }
      g_free(longname);
+-    return array_get(&(s->directory),s->directory.next-number_of_entries);
++    return array_get(&s->directory, s->directory.next - nents);
+ }
+ 
+ static char is_free(const direntry_t* direntry)
 -- 
 2.39.5
 
