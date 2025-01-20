@@ -1,35 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tZSbR-0001U0-TO
-	for mharc-qemu-trivial@gnu.org; Sun, 19 Jan 2025 05:32:25 -0500
+	id 1ta0H1-0006GT-31
+	for mharc-qemu-trivial@gnu.org; Mon, 20 Jan 2025 17:29:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tZSbM-0001Sx-Ks; Sun, 19 Jan 2025 05:32:20 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tZSbK-0005AJ-Qk; Sun, 19 Jan 2025 05:32:20 -0500
-Received: from localhost.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by isrv.corpit.ru (Postfix) with ESMTP id 81E79DAF65;
- Sun, 19 Jan 2025 13:32:02 +0300 (MSK)
-Received: by localhost.tls.msk.ru (Postfix, from userid 1000)
- id EB99850B7E; Sun, 19 Jan 2025 13:32:13 +0300 (MSK)
-From: Michael Tokarev <mjt@tls.msk.ru>
-Date: Sun, 19 Jan 2025 13:29:05 +0300
-Subject: [PATCH] vvfat: create_long_filename(): refresh
-To: qemu-devel@nongnu.org,
- =?UTF-8?q?Volker=20R=C3=BCmelin?= <vr_qemu@t-online.de>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org
-Message-Id: <20250119103213.EB99850B7E@localhost.tls.msk.ru>
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ (Exim 4.90_1) (envelope-from <dominik.b.czarnota@gmail.com>)
+ id 1ta0Gx-0006G0-FD; Mon, 20 Jan 2025 17:29:32 -0500
+Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <dominik.b.czarnota@gmail.com>)
+ id 1ta0Gv-0002d0-HY; Mon, 20 Jan 2025 17:29:31 -0500
+Received: by mail-ej1-x633.google.com with SMTP id
+ a640c23a62f3a-aa689a37dd4so939631866b.3; 
+ Mon, 20 Jan 2025 14:29:26 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1737412164; x=1738016964; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=JNuI6F34CaAr2EXYPzwQhJW//zyLJWT68fhJ/Taz9IM=;
+ b=MKDTx6/WjpJ9VsaYMzzIY4Kb4GTq6dQSXCoksmAJkMoKuS27ARLqQpAQPvv/tgXyLU
+ tvsZLULmlwRq0HF3sF0DE9TeoWBe8dEWyNfBQqxC1aFaZ70qVwQ34+QPdeTwZecV/LLp
+ JEGkfscMFJWVjLiPfXXqoa0T6yRP8Mc6vGHy8WhUCPuqm9xY/bbq/yPiE+XLT7XQGS6E
+ 2POyvakdE3N3eLWgFRxFmBqgjSCvu1F6OG4Nuj/HQ3uI0ZevWK3ILfJmRvnSkv9xqQkw
+ RcQ0m8l0CnlyD9RTrIsGHL5CR4GngcEFoIhjVr+qF5uid2ZRt8PxDltIeU5d4DO89vE0
+ D2+g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1737412164; x=1738016964;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=JNuI6F34CaAr2EXYPzwQhJW//zyLJWT68fhJ/Taz9IM=;
+ b=Gl1VOTVOzuljwZmzBEhp3QptHLTVGO+Utioii+KPtsK9CLZ26dRFuXk2aFV4nv01P2
+ +R4t2ZOl0MrPnrCSMIj6TxgUWOTT3zKJYfg8GmCJxrEKB5LSNBMda88SaNXZKfjKS1mM
+ boBYKDumAR8v6zb0EDAcRFKEj3wCQchfoHy2tShSZ9MxxugBQAz91yxdTMlBw0Ay5/MF
+ 4+Q5w7f7TNcWDSyH5LQyfu5xCGhE2PUF6oPpzPdmtxCSLUqMRPfTrnK88h6htgxkVbH6
+ MBen4XSWxy+jqnFFOUQs7f2t0lOa6XpwxwfS5c3oAphCi0C36uxERC6WY4G5L5MPPXNn
+ 40IA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWC4dD1MMRHcld6qaFYKSVfRVr9Ggbes5e4UPQq6HtcpyCnmELWz2x9oBvt66xQWxqY/xWW+yHomEzledo=@nongnu.org
+X-Gm-Message-State: AOJu0Yz3r69ZEOkg+Drw7BAmIWl113q/o8V/vRooaSmHRysPvDCG5rCl
+ OdjVgMxTsx98UA8ePYKTJ0r5SWa9uuwSbkdYgg4Q0rjySa01+hHCu7w7Gb848AE=
+X-Gm-Gg: ASbGncvFBxGyywp8c84ESDPJhdoDsQm2cjT6A/NkvIq5Lpe6I6CETJer63TbSfo7EBt
+ 40YsA9Jg4hwD18Qf0VH/2IC3fsmHa9w+jydtjn63Uhax/aIcd9nmqyEO4XFeckNkg+OD2X1JPv5
+ CFdESsb9czVwJmS/0Oedj7eilO4LbNp3VskGn2uC8bRuXTJTmVe2umBLA8ckO6T/XOyxJnqNZe4
+ DOswedQDx1BDtpGPJ/Up4ANuPN0+25L7rq5E2u8wK5uMmFIaV2lVzVmG9OzkOUAY8tFdo2r9FI1
+ ZrCqxNOe2zK+kEPAh6HiuVMLdvkbx+MKLsMRloi2kT4k/E8ZALH76IBB8wpB9A==
+X-Google-Smtp-Source: AGHT+IHxbu9QV4aDQTFRArTihgj854Qug58xAo6INuqie8Bj6RquCPYC2mPQ8xPamcrRp5yb/udXYA==
+X-Received: by 2002:a17:907:7faa:b0:a9e:b150:a99d with SMTP id
+ a640c23a62f3a-ab38b1b45aamr1454180466b.5.1737412163852; 
+ Mon, 20 Jan 2025 14:29:23 -0800 (PST)
+Received: from localhost.localdomain (77-255-209-16.dynamic.inetia.pl.
+ [77.255.209.16]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-ab384f86fe9sm672380266b.135.2025.01.20.14.29.23
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 20 Jan 2025 14:29:23 -0800 (PST)
+From: Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: alex.bennee@linaro.org, philmd@linaro.org, qemu-trivial@nongnu.org,
+ mjt@tls.msk.ru,
+ Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
+Subject: [PATCH v2] gdbstub/user-target: fix gdbserver int format (%d -> %x)
+Date: Mon, 20 Jan 2025 23:28:58 +0100
+Message-Id: <20250120222858.39547-1-dominik.b.czarnota@gmail.com>
+X-Mailer: git-send-email 2.30.2
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::633;
+ envelope-from=dominik.b.czarnota@gmail.com; helo=mail-ej1-x633.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -42,95 +85,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 19 Jan 2025 10:32:24 -0000
+X-List-Received-Date: Mon, 20 Jan 2025 22:29:33 -0000
 
-add comments explaining what is going on (since long file names are really weird),
-rewrite the second loop to do one UTF16 char at a time instead of byte,
-and fix coding style.
+This commit fixes an incorrect format string for formatting integers
+provided to GDB when debugging a target run in QEMU user mode.
 
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+The correct format is hexadecimal for both success and errno values,
+some of which can be seen here [0].
+
+[0] https://github.com/bminor/binutils-gdb/blob/e65a355022d0dc6b5707310876a72b5693ec0aa5/gdbserver/hostio.cc#L196-L213
+
+Signed-off-by: Dominik 'Disconnect3d' Czarnota <dominik.b.czarnota@gmail.com>
 ---
- block/vvfat.c | 54 +++++++++++++++++++++++++++++----------------------
- 1 file changed, 31 insertions(+), 23 deletions(-)
+ gdbstub/user-target.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-on top of the previous patch
-
-diff --git a/block/vvfat.c b/block/vvfat.c
-index b53e3b452b..4827288756 100644
---- a/block/vvfat.c
-+++ b/block/vvfat.c
-@@ -401,7 +401,7 @@ static void init_mbr(BDRVVVFATState *s, int cyls, int heads, int secs)
- 
- static direntry_t *create_long_filename(BDRVVVFATState *s, const char *filename)
- {
--    int number_of_entries, i;
-+    unsigned nents, i;
-     glong length;
- 
-     gunichar2 *longname = g_utf8_to_utf16(filename, -1, NULL, &length, NULL);
-@@ -410,31 +410,39 @@ static direntry_t *create_long_filename(BDRVVVFATState *s, const char *filename)
-         return NULL;
+diff --git a/gdbstub/user-target.c b/gdbstub/user-target.c
+index 22bf4008c0..4bfcf78aaa 100644
+--- a/gdbstub/user-target.c
++++ b/gdbstub/user-target.c
+@@ -317,9 +317,9 @@ void gdb_handle_v_file_open(GArray *params, void *user_ctx)
+     int fd = open(filename, flags, mode);
+ #endif
+     if (fd < 0) {
+-        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
++        g_string_printf(gdbserver_state.str_buf, "F-1,%x", errno);
+     } else {
+-        g_string_printf(gdbserver_state.str_buf, "F%d", fd);
++        g_string_printf(gdbserver_state.str_buf, "F%x", fd);
      }
- 
--    number_of_entries = DIV_ROUND_UP(length * 2, 26);
--
--    for(i=0;i<number_of_entries;i++) {
--        direntry_t *entry=array_get_next(&(s->directory));
--        entry->attributes=0xf;
--        entry->reserved[0]=0;
--        entry->begin=0;
--        entry->name[0]=(number_of_entries-i)|(i==0?0x40:0);
--    }
--    for(i=0;i<26*number_of_entries;i++) {
--        unsigned char *entry=array_get(&(s->directory),s->directory.next-1-(i/26));
--        int offset=(i%26);
--        if(offset<10) offset=1+offset;
--        else if(offset<22) offset=14+offset-10;
--        else offset=28+offset-22;
--        if (i >= 2 * length + 2) {
--            entry[offset] = 0xff;
--        } else if (i % 2 == 0) {
--            entry[offset] = longname[i / 2] & 0xff;
--        } else {
--            entry[offset] = longname[i / 2] >> 8;
-+    /*
-+     * long file name is split into multiple directory entries,
-+     * 13 UTF16 chars (26 bytes) in each,
-+     * in reverse order.
-+     */
-+    nents = DIV_ROUND_UP(length, 13);
-+
-+    for (i = 0; i < nents; ++i) { /* allocate and basic init */
-+        direntry_t *entry = array_get_next(&s->directory);
-+        entry->attributes = 0xf;
-+        entry->reserved[0] = 0;
-+        entry->begin = 0;
-+        entry->name[0] = (nents - i) | (i == 0 ? 0x40 : 0);
-+    }
-+
-+    /* write 13 chars of name to each entry, entries in reverse order */
-+    for (i = 0; i < nents * 13; ++i) {
-+        unsigned char *entry =
-+           array_get(&s->directory, s->directory.next - 1 - i / 13);
-+        unsigned off = i % 13;
-+        /* each entry has 3 different places for the name: */
-+        off = off < 5 ? off * 2 + 1 /* bytes 1..10, 5 chars 0..4, unaligned */
-+            : off < 11 ? (off - 5) * 2 + 14 /* bytes 14..25, 6 chars 5..10 */
-+            :            (off - 11) * 2 + 28; /* bytes 28..31, 2 chars 11..12 */
-+        if (i <= length) { /* name and trailing U+0000 */
-+            entry[off + 0] = longname[i] & 0xff;
-+            entry[off + 1] = longname[i] >> 8;
-+        } else { /* fill remaining parts with U+FFFF */
-+            entry[off + 0] = entry[off + 1] = 0xff;
-         }
-     }
-     g_free(longname);
--    return array_get(&(s->directory),s->directory.next-number_of_entries);
-+    return array_get(&s->directory, s->directory.next - nents);
+     gdb_put_strbuf();
  }
+@@ -329,7 +329,7 @@ void gdb_handle_v_file_close(GArray *params, void *user_ctx)
+     int fd = gdb_get_cmd_param(params, 0)->val_ul;
  
- static char is_free(const direntry_t* direntry)
+     if (close(fd) == -1) {
+-        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
++        g_string_printf(gdbserver_state.str_buf, "F-1,%x", errno);
+         gdb_put_strbuf();
+         return;
+     }
+@@ -352,7 +352,7 @@ void gdb_handle_v_file_pread(GArray *params, void *user_ctx)
+ 
+     ssize_t n = pread(fd, buf, bufsiz, offset);
+     if (n < 0) {
+-        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
++        g_string_printf(gdbserver_state.str_buf, "F-1,%x", errno);
+         gdb_put_strbuf();
+         return;
+     }
+@@ -375,7 +375,7 @@ void gdb_handle_v_file_readlink(GArray *params, void *user_ctx)
+     ssize_t n = readlink(filename, buf, BUFSIZ);
+ #endif
+     if (n < 0) {
+-        g_string_printf(gdbserver_state.str_buf, "F-1,%d", errno);
++        g_string_printf(gdbserver_state.str_buf, "F-1,%x", errno);
+         gdb_put_strbuf();
+         return;
+     }
 -- 
-2.39.5
+2.30.2
 
 
