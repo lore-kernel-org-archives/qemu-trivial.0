@@ -1,64 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tcU3E-000789-DG
-	for mharc-qemu-trivial@gnu.org; Mon, 27 Jan 2025 13:41:43 -0500
+	id 1tcgSH-00005y-Mu
+	for mharc-qemu-trivial@gnu.org; Tue, 28 Jan 2025 02:56:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tcU35-00076I-0H
- for qemu-trivial@nongnu.org; Mon, 27 Jan 2025 13:41:27 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tcU33-0008Pr-LC
- for qemu-trivial@nongnu.org; Mon, 27 Jan 2025 13:41:26 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1738003281;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=rTaPrg0IoYoY+eotrFYGL8MkYeklufPg23zNOwyQWyg=;
- b=OWuK42kf2DqdPLwdm0sTwCVXWCbVipeLYL6utot/RmA0FvMGOLOox36raR0GABahPFEYal
- cPOkp7KKQwCB8zMwXRoTkJSe8agL4ReYekgpa75G19JjAwLFZfJO6N0lyXT5L7Q1/fSgaI
- 11q8KR02A+xC/aUEVw8dC/FP0jCr7TA=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-435-splC_zm9OwaN765lqQM91g-1; Mon,
- 27 Jan 2025 13:41:20 -0500
-X-MC-Unique: splC_zm9OwaN765lqQM91g-1
-X-Mimecast-MFC-AGG-ID: splC_zm9OwaN765lqQM91g
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AEBFE1801F17; Mon, 27 Jan 2025 18:41:17 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.39.192.99])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id D09621800348; Mon, 27 Jan 2025 18:41:13 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-trivial@nongnu.org
-Subject: [PATCH] tests/functional/test_mips_malta: Fix comment about
- endianness of the test
-Date: Mon, 27 Jan 2025 19:41:10 +0100
-Message-ID: <20250127184112.108122-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tcgRu-0007jw-OH
+ for qemu-trivial@nongnu.org; Tue, 28 Jan 2025 02:56:00 -0500
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tcgRq-0000DJ-VH
+ for qemu-trivial@nongnu.org; Tue, 28 Jan 2025 02:55:53 -0500
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-436202dd7f6so60880405e9.0
+ for <qemu-trivial@nongnu.org>; Mon, 27 Jan 2025 23:55:50 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1738050949; x=1738655749; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=IuWgJybtWqvmOGLDQYpEV91S4HSMgGB+RXFMYZWQ394=;
+ b=opmiBsSkx4CjN7Oct2REqO8u4okTQUn5ndNNr9RpccuLIFo4boYmiOeHRtNZIETxid
+ qYvoJPRep+Z/mxZspkjlGRoml3LS0LYZRLPaRKTEn9EFIQiNvyJwZKwJtyltW1QDFush
+ XSUOsdkcnmB+J466uoH+x3efPYFc76mc56ENCD5o36l+1CCg6OhMCReDN3G29/3G0ijP
+ LxGg0KQU6J6rJ47BqohQ9326SNIAXbu1mZDEkaDYbm+D45Kx48bKF2DZyNhf/7ZG09XQ
+ SLLP+Z3ZyolX++03qyQw4kZryVKlIVn+rocv0WS1XPbfmthbXWzRGU3YNDV15lH1peNo
+ RfwA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1738050949; x=1738655749;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=IuWgJybtWqvmOGLDQYpEV91S4HSMgGB+RXFMYZWQ394=;
+ b=euKOwFkw9Hdkxzz/MHyJfmxpw7oDojSejxIUgsbDVZ0VJbqyIeKF7p8lP1/LsSswX1
+ cIDDuQ8PeH8Anx4HeyirPhbN3GfBgQ1n1Hbj8gVK8nUbVMeEH5n5IAg8O2o2dIdbNEMB
+ iJWc+ZYxefTjWJkqSkrGooPoqgM9Av/bPAFOkggaezo6Xc82/sepP9f2h8xdivCYrSPQ
+ vihBNv5yfMtdmmR1X590kCKYSy24nIFdZyr+poB8AtntyVWlFMMSY/aTkYtX76BMgzYR
+ Vv2sVvcwgNGnxxEet4iIwdlZjbu2yGwgC81LhWMgZ7DRK1CXReEECCro0hvh1G4mWQRg
+ oa/A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXbIMmbv2N6ts/RAD2dVBFiGqzLcriqfLBETPPSx0Ss808H264zWO6m+C0FjvTdKu6a9EtaW+O5mHQ+KEQ=@nongnu.org
+X-Gm-Message-State: AOJu0Yzh9jAKPJJxooJNP6Xap1yy2xxiMm6LUSu0K7Zpf5dE+16ydInV
+ m328/d0z8Ha1qMYff4rP4q/cPutwouTbOYGjcMwTP2xiQ53V+M7nQWNrNQ0LjtI=
+X-Gm-Gg: ASbGnctzrj2jetFtnkcxw00YpC5cA8lG8hUhxKd1IZqjnGdGcGOADuPP0816kG/NypW
+ 5PVYgQ/NvKUKYlv47PNPGf4yVk6ZjohyWYuxxr0IvRZ5UlQ9h/tYK07YL1diKZjZGhyhVftkjhV
+ Y2Fb0ZZ+0peCQoDF/bRbPVy+b6NMzeK1Bv0eJMtKsoZngQTZuaelxIrynOAlEXifvIa1kVhn1+b
+ YAMZhz45ZM8AzhzXlHQWEMQkwiUZSKOWl5ZwI/u8zWeOCshujl10MGV0RCqKYhR1x/7cFDVQWZc
+ 0hL7nZZWxbUEFOuoMxPMoMkMBAgYj62Y/EG+V9XaoCauP7Se3l2QTTLpGQc=
+X-Google-Smtp-Source: AGHT+IHJqQgQESqxWn7+L56tYCQdm0A/ZVa6qpgbQIGagCFW5cSRc0wFh4AuRzK9AfZRh2kyfvpVjA==
+X-Received: by 2002:a05:600c:5119:b0:434:fa61:fdfb with SMTP id
+ 5b1f17b1804b1-438913f0620mr386306645e9.18.1738050949138; 
+ Mon, 27 Jan 2025 23:55:49 -0800 (PST)
+Received: from [192.168.69.151] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-438bd5732edsm158318675e9.36.2025.01.27.23.55.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 27 Jan 2025 23:55:48 -0800 (PST)
+Message-ID: <b8933aed-5a35-4385-9526-c60a4412070d@linaro.org>
+Date: Tue, 28 Jan 2025 08:55:47 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] tests/functional/test_mips_malta: Fix comment about
+ endianness of the test
+To: Thomas Huth <thuth@redhat.com>, Aurelien Jarno <aurelien@aurel32.net>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-trivial@nongnu.org
+References: <20250127184112.108122-1-thuth@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250127184112.108122-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -33
-X-Spam_score: -3.4
-X-Spam_bar: ---
-X-Spam_report: (-3.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.3,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
  T_SCC_BODY_TEXT_LINE=-0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -72,29 +91,34 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 27 Jan 2025 18:41:28 -0000
+X-List-Received-Date: Tue, 28 Jan 2025 07:56:11 -0000
 
-This test is for the big endian MIPS target, not for the little endian
-target.
+On 27/1/25 19:41, Thomas Huth wrote:
+> This test is for the big endian MIPS target, not for the little endian
+> target.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   tests/functional/test_mips_malta.py | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/functional/test_mips_malta.py b/tests/functional/test_mips_malta.py
+> index 3b15038d89..eaf372255b 100755
+> --- a/tests/functional/test_mips_malta.py
+> +++ b/tests/functional/test_mips_malta.py
+> @@ -1,6 +1,6 @@
+>   #!/usr/bin/env python3
+>   #
+> -# Functional tests for the little-endian 32-bit MIPS Malta board
+> +# Functional tests for the big-endian 32-bit MIPS Malta board
+>   #
+>   # Copyright (c) Philippe Mathieu-Daudé <f4bug@amsat.org>
+>   #
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- tests/functional/test_mips_malta.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Oops
 
-diff --git a/tests/functional/test_mips_malta.py b/tests/functional/test_mips_malta.py
-index 3b15038d89..eaf372255b 100755
---- a/tests/functional/test_mips_malta.py
-+++ b/tests/functional/test_mips_malta.py
-@@ -1,6 +1,6 @@
- #!/usr/bin/env python3
- #
--# Functional tests for the little-endian 32-bit MIPS Malta board
-+# Functional tests for the big-endian 32-bit MIPS Malta board
- #
- # Copyright (c) Philippe Mathieu-Daudé <f4bug@amsat.org>
- #
--- 
-2.48.1
+Fixes: 79cb4a14cb6 ("tests/functional: Convert mips32eb 4Kc Malta tests")
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
