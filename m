@@ -1,79 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tdSH5-0003aU-Jr
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Jan 2025 05:59:55 -0500
+	id 1tdT0C-0000Hi-Uw
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Jan 2025 06:46:32 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tdSH2-0003SD-La; Thu, 30 Jan 2025 05:59:52 -0500
+ id 1tdT0B-0000HF-C5; Thu, 30 Jan 2025 06:46:31 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tdSH0-0005qy-Q3; Thu, 30 Jan 2025 05:59:52 -0500
+ id 1tdT09-0004Sg-Nd; Thu, 30 Jan 2025 06:46:31 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id C5388E2F4C;
- Thu, 30 Jan 2025 13:59:17 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 7560E1A7E1D;
- Thu, 30 Jan 2025 13:59:46 +0300 (MSK)
-Message-ID: <bdfbb882-65d2-40da-8bd6-7dcb5fea8ace@tls.msk.ru>
-Date: Thu, 30 Jan 2025 13:59:46 +0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] vvfat: create_long_filename: fix out-of-bounds array
- access
+ by isrv.corpit.ru (Postfix) with ESMTP id 7BF8DE2F8D;
+ Thu, 30 Jan 2025 14:45:56 +0300 (MSK)
+Received: from gandalf.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 4C4871A7E68;
+ Thu, 30 Jan 2025 14:46:25 +0300 (MSK)
+Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
+ id 41A58523D7; Thu, 30 Jan 2025 14:46:25 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org, =?UTF-8?Q?Volker_R=C3=BCmelin?=
- <vr_qemu@t-online.de>
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org
-References: <20250119093233.9E4C450B6D@localhost.tls.msk.ru>
-Content-Language: en-US, ru-RU
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- xsFNBGYpLkcBEACsajkUXU2lngbm6RyZuCljo19q/XjZTMikctzMoJnBGVSmFV66kylUghxs
- HDQQF2YZJbnhSVt/mP6+V7gG6MKR5gYXYxLmypgu2lJdqelrtGf1XtMrobG6kuKFiD8OqV6l
- 2M5iyOZT3ydIFOUX0WB/B9Lz9WcQ6zYO9Ohm92tiWWORCqhAnwZy4ua/nMZW3RgO7bM6GZKt
- /SFIorK9rVqzv40D6KNnSyeWfqf4WN3EvEOozMfWrXbEqA7kvd6ShjJoe1FzCEQ71Fj9dQHL
- DZG+44QXvN650DqEtQ4RW9ozFk3Du9u8lbrXC5cqaCIO4dx4E3zxIddqf6xFfu4Oa5cotCM6
- /4dgxDoF9udvmC36qYta+zuDsnAXrYSrut5RBb0moez/AR8HD/cs/dS360CLMrl67dpmA+XD
- 7KKF+6g0RH46CD4cbj9c2egfoBOc+N5XYyr+6ejzeZNf40yjMZ9SFLrcWp4yQ7cpLsSz08lk
- a0RBKTpNWJdblviPQaLW5gair3tyJR+J1ER1UWRmKErm+Uq0VgLDBDQoFd9eqfJjCwuWZECp
- z2JUO+zBuGoKDzrDIZH2ErdcPx3oSlVC2VYOk6H4cH1CWr9Ri8i91ClivRAyVTbs67ha295B
- y4XnxIVaZU+jJzNgLvrXrkI1fTg4FJSQfN4W5BLCxT4sq8BDtwARAQABzSBNaWNoYWVsIFRv
- a2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLBlAQTAQoAPhYhBJ2L4U4/Kp3XkZko8WGtPZjs3yyO
- BQJmKS5HAhsDBQkSzAMABQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEGGtPZjs3yyOZSAP
- /ibilK1gbHqEI2zR2J59Dc0tjtbByVmQ8IMh0SYU3j1jeUoku2UCgdnGKpwvLXtwZINgdl6Q
- cEaDBRX6drHLJFAi/sdgwVgdnDxaWVJO/ZIN/uJI0Tx7+FSAk8CWSa4IWUOzPNmtrDfb4z6v
- G36rppY8bTNKbX6nWFXuv2LXQr7g6+kKnbwv4QFpD+UFF1CrLm3byMq4ikdBXpZx030qBL61
- b7PrfXcBLao0357kWGH6C2Zu4wBnDUJwGi68pI5rzSRAFyAQsE89sjLdR1yFoBH8NiFnAQXP
- LA8Am9FMsC7D/bi/kwKTJdcZvzdGU1HG6tJvXLWC+nqGpJNBzRdDpjqtxNuL76vVd/JbsFMS
- JchLN+01fNQ5FHglvkd6md7vO+ULq+r9An5hMiDoRbYVUOBN8uiYNk+qKbdgSfbhsgPURqHi
- 1bXkgMeMasqWbGMe7iBW/YH2ePfZ6HuKLNQDCkiWZYPQZvyXHvQHjuJJ5+US81tkqM+Q6Snq
- 0L/O/LD0qLlbinHrcx0abg06VXBoYmGICJpf/3hhWQM4f+B/5w4vpl8q0B6Osz01pBUBfYak
- CiYCNHMWWVZkW9ZnY7FWiiPOu8iE1s5oPYqBljk3FNUk04SDKMF5TxL87I2nMBnVnvp0ZAuY
- k9ojiLqlhaKnZ1+zwmwmPmXzFSwlyMczPUMSzsFNBGYpLkcBEAC0mxV2j5M1x7GiXqxNVyWy
- OnlWqJkbkoyMlWFSErf+RUYlC9qVGwUihgsgEhQMg0nJiSISmU3vsNEx5j0T13pTEyWXWBdS
- XtZpNEW1lZ2DptoGg+6unpvxd2wn+dqzJqlpr4AY3vc95q4Za/NptWtSCsyJebZ7DxCCkzET
- tzbbnCjW1souCETrMy+G916w1gJkz4V1jLlRMEEoJHLrr1XKDdJRk/34AqXPKOzILlWRFK6s
- zOWa80/FNQV5cvjc2eN1HsTMFY5hjG3zOZb60WqwTisJwArjQbWKF49NLHp/6MpiSXIxF/FU
- jcVYrEk9sKHN+pERnLqIjHA8023whDWvJide7f1V9lrVcFt0zRIhZOp0IAE86E3stSJhZRhY
- xyIAx4dpDrw7EURLOhu+IXLeEJbtW89tp2Ydm7TVAt5iqBubpHpGTWV7hwPRQX2w2MBq1hCn
- K5Xx79omukJisbLqG5xUCR1RZBUfBlYnArssIZSOpdJ9wWMK+fl5gn54cs+yziUYU3Tgk0fJ
- t0DzQsgfd2JkxOEzJACjJWti2Gh3szmdgdoPEJH1Og7KeqbOu2mVCJm+2PrNlzCybOZuHOV5
- +vSarkb69qg9nU+4ZGX1m+EFLDqVUt1g0SjY6QmM5yjGBA46G3dwTEV0/u5Wh7idNT0mRg8R
- eP/62iTL55AM6QARAQABwsF8BBgBCgAmFiEEnYvhTj8qndeRmSjxYa09mOzfLI4FAmYpLkcC
- GwwFCRLMAwAACgkQYa09mOzfLI53ag/+ITb3WW9iqvbjDueV1ZHwUXYvebUEyQV7BFofaJbJ
- Sr7ek46iYdV4Jdosvq1FW+mzuzrhT+QzadEfYmLKrQV4EK7oYTyQ5hcch55eX00o+hyBHqM2
- RR/B5HGLYsuyQNv7a08dAUmmi9eAktQ29IfJi+2Y+S1okAEkWFxCUs4EE8YinCrVergB/MG5
- S7lN3XxITIaW00faKbqGtNqij3vNxua7UenN8NHNXTkrCgA+65clqYI3MGwpqkPnXIpTLGl+
- wBI5S540sIjhgrmWB0trjtUNxe9QcTGHoHtLeGX9QV5KgzNKoUNZsyqh++CPXHyvcN3OFJXm
- VUNRs/O3/b1capLdrVu+LPd6Zi7KAyWUqByPkK18+kwNUZvGsAt8WuVQF5telJ6TutfO8xqT
- FUzuTAHE+IaRU8DEnBpqv0LJ4wqqQ2MeEtodT1icXQ/5EDtM7OTH231lJCR5JxXOnWPuG6el
- YPkzzso6HT7rlapB5nulYmplJZSZ4RmE1ATZKf+wUPocDu6N10LtBNbwHWTT5NLtxNJAJAvl
- ojis6H1kRWZE/n5buyPY2NYeyWfjjrerOYt3er55n4C1I88RSCTGeejVmXWuo65QD2epvzE6
- 3GgKngeVm7shlp7+d3D3+fAAHTvulQQqV3jOodz+B4yzuZ7WljkNrmrWrH8aI4uA98c=
-In-Reply-To: <20250119093233.9E4C450B6D@localhost.tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Samuel Thibault <samuel.thibault@gnu.org>,
+ Thomas Huth <thuth@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH v2] net/slirp: libslirp 4.8.0 compatibility
+Date: Thu, 30 Jan 2025 14:46:21 +0300
+Message-Id: <20250130114621.857046-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.39.5
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
 X-Spam_score_int: -68
@@ -81,7 +34,7 @@ X-Spam_score: -6.9
 X-Spam_bar: ------
 X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,87 +47,93 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Jan 2025 10:59:53 -0000
+X-List-Received-Date: Thu, 30 Jan 2025 11:46:31 -0000
 
-19.01.2025 12:15, Michael Tokarev wrote:
-> create_long_filename() intentionally uses direntry_t->name[8+3] array
-> as a larger array.  This works, but makes statid code analysis tools
-> unhappy.  The problem here is that a directory entry holding long file
-> name is significantly different from regular directory entry, and the
-> name is split into several parts within the entry, not just in regular
-> 8+3 name field.
-> 
-> Treat the entry as array of bytes instead.  This fixes the OOB access
-> from the compiler/tools PoV, but does not change the resulting code
-> in any way.
-> 
-> Keep the existing code style.
+Update the code in net/slirp.c to be compatible with
+libslirp 4.8.0, which deprecated slirp_pollfds_fill()
+and started using slirp_os_socket type for sockets
+(which is a 64-bit integer on win64) for all callbacks
+starting with version 6 of the interface.
 
-Hi!
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+v2: update other callbacks too, use version 6 of the interface
 
-Can we either get some R-b's for this fix, or should we apply
-the code-rework patch by Volker?  This theme is stalled for quite
-some time now, and the fix isn't in the tree yet.
+ net/slirp.c | 25 +++++++++++++++++--------
+ 1 file changed, 17 insertions(+), 8 deletions(-)
 
-Thanks,
-
-/mjt
-
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> ---
->   block/vvfat.c | 11 +++++------
->   1 file changed, 5 insertions(+), 6 deletions(-)
-> 
-> This code is really ugly and insanely ineffecient.
-> But LFN is also ugly.
-> 
-> I think this one is the best for now.
-> 
-> Another patch might optimize the second loop quite a bit,
-> add comments (since it is really difficult to understand,
-> especially since lfn is so weird), and fix coding style.
-> 
-> diff --git a/block/vvfat.c b/block/vvfat.c
-> index bb80dfb177..b53e3b452b 100644
-> --- a/block/vvfat.c
-> +++ b/block/vvfat.c
-> @@ -403,7 +403,6 @@ static direntry_t *create_long_filename(BDRVVVFATState *s, const char *filename)
->   {
->       int number_of_entries, i;
->       glong length;
-> -    direntry_t *entry;
->   
->       gunichar2 *longname = g_utf8_to_utf16(filename, -1, NULL, &length, NULL);
->       if (!longname) {
-> @@ -414,24 +413,24 @@ static direntry_t *create_long_filename(BDRVVVFATState *s, const char *filename)
->       number_of_entries = DIV_ROUND_UP(length * 2, 26);
->   
->       for(i=0;i<number_of_entries;i++) {
-> -        entry=array_get_next(&(s->directory));
-> +        direntry_t *entry=array_get_next(&(s->directory));
->           entry->attributes=0xf;
->           entry->reserved[0]=0;
->           entry->begin=0;
->           entry->name[0]=(number_of_entries-i)|(i==0?0x40:0);
->       }
->       for(i=0;i<26*number_of_entries;i++) {
-> +        unsigned char *entry=array_get(&(s->directory),s->directory.next-1-(i/26));
->           int offset=(i%26);
->           if(offset<10) offset=1+offset;
->           else if(offset<22) offset=14+offset-10;
->           else offset=28+offset-22;
-> -        entry=array_get(&(s->directory),s->directory.next-1-(i/26));
->           if (i >= 2 * length + 2) {
-> -            entry->name[offset] = 0xff;
-> +            entry[offset] = 0xff;
->           } else if (i % 2 == 0) {
-> -            entry->name[offset] = longname[i / 2] & 0xff;
-> +            entry[offset] = longname[i / 2] & 0xff;
->           } else {
-> -            entry->name[offset] = longname[i / 2] >> 8;
-> +            entry[offset] = longname[i / 2] >> 8;
->           }
->       }
->       g_free(longname);
+diff --git a/net/slirp.c b/net/slirp.c
+index eb9a456ed4..2d2a58a6ee 100644
+--- a/net/slirp.c
++++ b/net/slirp.c
+@@ -247,7 +247,14 @@ static void net_slirp_timer_mod(void *timer, int64_t expire_timer,
+     timer_mod(&t->timer, expire_timer);
+ }
+ 
+-static void net_slirp_register_poll_fd(int fd, void *opaque)
++#if !SLIRP_CHECK_VERSION(4,8,0)
++# define slirp_os_socket int
++# define slirp_pollfds_fill_socket slirp_pollfds_fill
++# define register_poll_sock register_poll_fd
++# define unregister_poll_sock unregister_poll_fd
++#endif
++
++static void net_slirp_register_poll_sock(slirp_os_socket fd, void *opaque)
+ {
+ #ifdef WIN32
+     AioContext *ctxt = qemu_get_aio_context();
+@@ -260,7 +267,7 @@ static void net_slirp_register_poll_fd(int fd, void *opaque)
+ #endif
+ }
+ 
+-static void net_slirp_unregister_poll_fd(int fd, void *opaque)
++static void net_slirp_unregister_poll_sock(slirp_os_socket fd, void *opaque)
+ {
+ #ifdef WIN32
+     if (WSAEventSelect(fd, NULL, 0) != 0) {
+@@ -286,8 +293,8 @@ static const SlirpCb slirp_cb = {
+ #endif
+     .timer_free = net_slirp_timer_free,
+     .timer_mod = net_slirp_timer_mod,
+-    .register_poll_fd = net_slirp_register_poll_fd,
+-    .unregister_poll_fd = net_slirp_unregister_poll_fd,
++    .register_poll_socket = net_slirp_register_poll_sock,
++    .unregister_poll_socket = net_slirp_unregister_poll_sock,
+     .notify = net_slirp_notify,
+ };
+ 
+@@ -314,7 +321,7 @@ static int slirp_poll_to_gio(int events)
+     return ret;
+ }
+ 
+-static int net_slirp_add_poll(int fd, int events, void *opaque)
++static int net_slirp_add_poll(slirp_os_socket fd, int events, void *opaque)
+ {
+     GArray *pollfds = opaque;
+     GPollFD pfd = {
+@@ -363,8 +370,8 @@ static void net_slirp_poll_notify(Notifier *notifier, void *data)
+ 
+     switch (poll->state) {
+     case MAIN_LOOP_POLL_FILL:
+-        slirp_pollfds_fill(s->slirp, &poll->timeout,
+-                           net_slirp_add_poll, poll->pollfds);
++        slirp_pollfds_fill_socket(s->slirp, &poll->timeout,
++                                  net_slirp_add_poll, poll->pollfds);
+         break;
+     case MAIN_LOOP_POLL_OK:
+     case MAIN_LOOP_POLL_ERR:
+@@ -629,7 +636,9 @@ static int net_slirp_init(NetClientState *peer, const char *model,
+ 
+     s = DO_UPCAST(SlirpState, nc, nc);
+ 
+-    cfg.version = SLIRP_CHECK_VERSION(4,7,0) ? 4 : 1;
++    cfg.version =
++         SLIRP_CHECK_VERSION(4,8,0) ? 6 :
++         SLIRP_CHECK_VERSION(4,7,0) ? 4 : 1;
+     cfg.restricted = restricted;
+     cfg.in_enabled = ipv4;
+     cfg.vnetwork = net;
+-- 
+2.39.5
 
 
