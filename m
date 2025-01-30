@@ -1,32 +1,31 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tdRKR-0004Qo-At
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Jan 2025 04:59:19 -0500
+	id 1tdRLb-0005YA-IJ
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Jan 2025 05:00:31 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tdRKQ-0004Q4-1D; Thu, 30 Jan 2025 04:59:18 -0500
+ id 1tdRLE-0005Ea-Vy; Thu, 30 Jan 2025 05:00:12 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tdRKO-0005aW-8S; Thu, 30 Jan 2025 04:59:17 -0500
+ id 1tdRLC-0005rd-Ri; Thu, 30 Jan 2025 05:00:08 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 96EE3E2EC2;
- Thu, 30 Jan 2025 12:58:38 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 3B642E2EC5;
+ Thu, 30 Jan 2025 12:59:36 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 39B8F1A7DCD;
- Thu, 30 Jan 2025 12:59:07 +0300 (MSK)
-Message-ID: <85be953b-7166-4353-85c0-7e15b9ec6423@tls.msk.ru>
-Date: Thu, 30 Jan 2025 12:59:07 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id DE8B11A7DD2;
+ Thu, 30 Jan 2025 13:00:04 +0300 (MSK)
+Message-ID: <69971687-7f7e-436b-888c-14e22fff8900@tls.msk.ru>
+Date: Thu, 30 Jan 2025 13:00:04 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/21] hw/i386/pc: Remove unused pc_compat_2_3 declarations
-To: Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>, qemu-devel@nongnu.org,
- QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: qemu-block@nongnu.org
-References: <20250115232247.30364-1-philmd@linaro.org>
- <20250115232247.30364-2-philmd@linaro.org>
- <9ee34c5f-d65c-447a-b128-96cf44b94b6e@redhat.com>
+Subject: Re: [PATCH 0/2] net: Fix announce_self with vhost
+To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
+Cc: Jason Wang <jasowang@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ qemu-stable <qemu-stable@nongnu.org>
+References: <20250117111709.970789-1-lvivier@redhat.com>
+ <f508fd5f-23c6-4f0c-8fdc-bfedd5a9e9e0@tls.msk.ru>
+ <06f5b8c8-1d06-43aa-80ae-d7ef384d34a6@redhat.com>
 Content-Language: en-US, ru-RU
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
@@ -72,9 +71,9 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  YPkzzso6HT7rlapB5nulYmplJZSZ4RmE1ATZKf+wUPocDu6N10LtBNbwHWTT5NLtxNJAJAvl
  ojis6H1kRWZE/n5buyPY2NYeyWfjjrerOYt3er55n4C1I88RSCTGeejVmXWuo65QD2epvzE6
  3GgKngeVm7shlp7+d3D3+fAAHTvulQQqV3jOodz+B4yzuZ7WljkNrmrWrH8aI4uA98c=
-In-Reply-To: <9ee34c5f-d65c-447a-b128-96cf44b94b6e@redhat.com>
+In-Reply-To: <06f5b8c8-1d06-43aa-80ae-d7ef384d34a6@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
 X-Spam_score_int: -68
@@ -95,24 +94,14 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Jan 2025 09:59:18 -0000
+X-List-Received-Date: Thu, 30 Jan 2025 10:00:30 -0000
 
-17.01.2025 11:52, Thomas Huth wrote:
-> On 16/01/2025 00.22, Philippe Mathieu-Daudé wrote:
->> We removed the implementations in commit 46a2bd52571
->> ("hw/i386/pc: Remove deprecated pc-i440fx-2.3 machine")
->> but forgot to remove the declarations. Do it now.
->>
->> Fixes: 46a2bd52571 ("hw/i386/pc: Remove deprecated pc-i440fx-2.3 machine")
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+30.01.2025 12:29, Laurent Vivier wrote:
+> When do you plan to send the PR for them?
 
-Thomas, such pick-ups from larger series may not be a good idea
-for qemu-trivial in general.  But this one looks okay'ish since
-the series is about 2.4 and 2.5 machines :)
+Um, sorry for the delay.  Will do ASAP.
 
-Philippe, are you okay with merging this one through qemu-trivial?
-
-Thanks,
+Thank you for the reminder!
 
 /mjt
 
