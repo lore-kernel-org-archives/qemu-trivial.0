@@ -1,32 +1,33 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tdUh7-0002cM-K2
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Jan 2025 08:34:57 -0500
+	id 1tdUh8-0002d4-HS
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Jan 2025 08:34:58 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tdUh2-0002aG-37; Thu, 30 Jan 2025 08:34:52 -0500
+ id 1tdUh6-0002cB-KM; Thu, 30 Jan 2025 08:34:57 -0500
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tdUh0-0002WL-7G; Thu, 30 Jan 2025 08:34:51 -0500
+ id 1tdUh4-0002Wp-3c; Thu, 30 Jan 2025 08:34:56 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id DCAFBE303E;
+ by isrv.corpit.ru (Postfix) with ESMTP id EB630E3041;
  Thu, 30 Jan 2025 16:34:18 +0300 (MSK)
 Received: from gandalf.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id CBBBE1A7F85;
+ by tsrv.corpit.ru (Postfix) with ESMTP id DB47C1A7F88;
  Thu, 30 Jan 2025 16:34:47 +0300 (MSK)
 Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
- id C377552400; Thu, 30 Jan 2025 16:34:47 +0300 (MSK)
+ id CA10552406; Thu, 30 Jan 2025 16:34:47 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-trivial@nongnu.org
-Subject: [PULL 0/7] Trivial patches for 2025-01-30
-Date: Thu, 30 Jan 2025 16:34:40 +0300
-Message-Id: <20250130133447.873566-1-mjt@tls.msk.ru>
+Subject: [PULL 3/7] vvfat: create_long_filename: fix out-of-bounds array access
+Date: Thu, 30 Jan 2025 16:34:43 +0300
+Message-Id: <20250130133447.873566-4-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250130133447.873566-1-mjt@tls.msk.ru>
+References: <20250130133447.873566-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -48,58 +49,69 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Jan 2025 13:34:53 -0000
+X-List-Received-Date: Thu, 30 Jan 2025 13:34:58 -0000
 
-The following changes since commit 871af84dd599fab68c8ed414d9ecbdb2bcfc5801:
+create_long_filename() intentionally uses direntry_t->name[8+3] array
+as a larger array.  This works, but makes static code analysis tools
+unhappy.  The problem here is that a directory entry holding long file
+name is significantly different from regular directory entry, and the
+name is split into several parts within the entry, not just in regular
+8+3 name field.
 
-  Merge tag 'for-upstream' of https://gitlab.com/bonzini/qemu into staging (2025-01-29 09:51:03 -0500)
+Treat the entry as array of bytes instead.  This fixes the OOB access
+from the compiler/tools PoV, but does not change the resulting code
+in any way.
 
-are available in the Git repository at:
+Keep the existing code style.
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ block/vvfat.c | 11 +++++------
+ 1 file changed, 5 insertions(+), 6 deletions(-)
 
-for you to fetch changes up to 6a784f12000582b9f0f40fadc967ad474fc27c7b:
+diff --git a/block/vvfat.c b/block/vvfat.c
+index 8ffe8b3b9b..bfbcc5562c 100644
+--- a/block/vvfat.c
++++ b/block/vvfat.c
+@@ -403,7 +403,6 @@ static direntry_t *create_long_filename(BDRVVVFATState *s, const char *filename)
+ {
+     int number_of_entries, i;
+     glong length;
+-    direntry_t *entry;
+ 
+     gunichar2 *longname = g_utf8_to_utf16(filename, -1, NULL, &length, NULL);
+     if (!longname) {
+@@ -414,24 +413,24 @@ static direntry_t *create_long_filename(BDRVVVFATState *s, const char *filename)
+     number_of_entries = DIV_ROUND_UP(length * 2, 26);
+ 
+     for(i=0;i<number_of_entries;i++) {
+-        entry=array_get_next(&(s->directory));
++        direntry_t *entry=array_get_next(&(s->directory));
+         entry->attributes=0xf;
+         entry->reserved[0]=0;
+         entry->begin=0;
+         entry->name[0]=(number_of_entries-i)|(i==0?0x40:0);
+     }
+     for(i=0;i<26*number_of_entries;i++) {
++        unsigned char *entry=array_get(&(s->directory),s->directory.next-1-(i/26));
+         int offset=(i%26);
+         if(offset<10) offset=1+offset;
+         else if(offset<22) offset=14+offset-10;
+         else offset=28+offset-22;
+-        entry=array_get(&(s->directory),s->directory.next-1-(i/26));
+         if (i >= 2 * length + 2) {
+-            entry->name[offset] = 0xff;
++            entry[offset] = 0xff;
+         } else if (i % 2 == 0) {
+-            entry->name[offset] = longname[i / 2] & 0xff;
++            entry[offset] = longname[i / 2] & 0xff;
+         } else {
+-            entry->name[offset] = longname[i / 2] >> 8;
++            entry[offset] = longname[i / 2] >> 8;
+         }
+     }
+     g_free(longname);
+-- 
+2.39.5
 
-  hw/i386/pc: Remove unused pc_compat_2_3 declarations (2025-01-30 13:01:22 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2025-01-30
-
-Just a few of them.  Including some bugfixes.
-
-----------------------------------------------------------------
-Dominik 'Disconnect3d' Czarnota (1):
-      gdbstub/user-target: fix gdbserver int format (%d -> %x)
-
-Laurent Vivier (2):
-      net: Fix announce_self
-      net/dump: Correctly compute Ethernet packet offset
-
-Michael Tokarev (1):
-      vvfat: create_long_filename: fix out-of-bounds array access
-
-Philippe Mathieu-Daudé (2):
-      licenses: Remove SPDX tags not being license identifier for Linaro
-      hw/i386/pc: Remove unused pc_compat_2_3 declarations
-
-Thomas Huth (1):
-      tests/functional/test_mips_malta: Fix comment about endianness of the test
-
- accel/tcg/vcpu-state.h                           |  9 +++++++--
- block/vvfat.c                                    | 11 +++++------
- gdbstub/user-target.c                            | 10 +++++-----
- hw/misc/ivshmem-flat.c                           |  5 +++--
- include/hw/i386/pc.h                             |  3 ---
- include/hw/misc/ivshmem-flat.h                   |  5 +++--
- net/dump.c                                       |  3 ++-
- net/net.c                                        |  1 +
- scripts/qom-cast-macro-clean-cocci-gen.py        |  7 +++++--
- target/m68k/semihosting-stub.c                   |  7 +++++--
- target/mips/tcg/system/semihosting-stub.c        |  5 +++--
- tests/functional/test_aarch64_sbsaref.py         |  8 +++++---
- tests/functional/test_aarch64_sbsaref_alpine.py  |  8 +++++---
- tests/functional/test_aarch64_sbsaref_freebsd.py |  8 +++++---
- tests/functional/test_mips_malta.py              |  2 +-
- tests/qtest/libqos/virtio-scmi.c                 |  2 +-
- 16 files changed, 56 insertions(+), 38 deletions(-)
 
