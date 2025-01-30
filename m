@@ -1,78 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tdRlv-0007bv-Go
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Jan 2025 05:27:43 -0500
+	id 1tdSFD-0001zH-Hf
+	for mharc-qemu-trivial@gnu.org; Thu, 30 Jan 2025 05:57:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tdRlt-0007a6-U2
- for qemu-trivial@nongnu.org; Thu, 30 Jan 2025 05:27:41 -0500
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tdSF5-0001xa-DX
+ for qemu-trivial@nongnu.org; Thu, 30 Jan 2025 05:57:52 -0500
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tdRlr-0000wm-SO
- for qemu-trivial@nongnu.org; Thu, 30 Jan 2025 05:27:41 -0500
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-436341f575fso6396405e9.1
- for <qemu-trivial@nongnu.org>; Thu, 30 Jan 2025 02:27:38 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tdSF2-0005ZG-1W
+ for qemu-trivial@nongnu.org; Thu, 30 Jan 2025 05:57:51 -0500
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-4361c705434so4519205e9.3
+ for <qemu-trivial@nongnu.org>; Thu, 30 Jan 2025 02:57:47 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738232857; x=1738837657; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=0HEnfd3vYGqVopqupIod4qfD+i2GZ/7R21Dp9JwJvKQ=;
- b=el9KjAMWWRbkGnU5xP+Ldqt8fWycHx9D8ZI0G7sy7+ATVCevSsmy4FpmR+jh0Q2/B4
- PvKOzzHVqw2PEec9esX6XY5A7UjLAVvdscdaR6FDp+UT1Mc8Z1LyI8c46KDQ64ekGA/q
- 8b6LHSRRHK8Adf5GaXnomHoGK3s9LVNk1O3pautoPf8r+32Hu/vfZ94uBXxtpvejt244
- +GA6h13LET020K6/Zp8MmUBkz1uUd8GwIgd3/Khzl2hwV2+os5J1ltfUd3K1IpTSYhc6
- uerZaA22FF1fIJ3pjkQ+4PjPMDZzdFmKM1gXBzg20okOBAJ6IZsOD9qMr7sMOWcehI9v
- mFqg==
+ d=linaro.org; s=google; t=1738234666; x=1738839466; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=fr2CD/GU550QMTVq1Op/yguGo73Udn87bNpQQH97sF8=;
+ b=kCdCLxiJQ0hH7CMIrrGy+B92CI+54cANoBd3Yt3OGizFg5tZkeUeCYN/+/8+FO8K7t
+ GqU3le6Bn3+WIlpSs/qOIH9t5BQePp2lS9AuIrtf3AoQOSX6jMEouTxkrm5hGJDeF/0c
+ Nb9QzeRVxA2+s+i/sJNCIHt8taa9rUf6pGXLYxPBw+wbOj7mrSEIejrB/qiUd+OyJIOt
+ OjLtvBq+1kKNel6J2rtHBFv+dFJGtYxLUIK5l7DmiHvJG0Rj4W3EVTtHFUypMJudjI92
+ JeBIAwZ2QCG5dmhzlKE71c9xHxhI298Dj2ZNpNE2KmspfsRj8vXS12nd1gmFCGe93LLS
+ vLXA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738232857; x=1738837657;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=0HEnfd3vYGqVopqupIod4qfD+i2GZ/7R21Dp9JwJvKQ=;
- b=PDw2bTA14ICc1yLSxOzpATVwv4HS3ZsGZ+5KxE0Fa2rfwgqC+01Hy/Sx7XNn31OuFu
- BjDP/oaOJAnU59vRLBXJTA8z+cwYJPwHUNUj1QzaG3pdF0kI2ZWxefG1nFqocjXXP+nk
- MwEn3Ye0ooUXd0HmJ1i7Yu8y5lsAmOtwUg7JZYygz55k4+qNZssDI5Jlsy6EHeOQvzaI
- mK4Xbkc5lMDxowyQ7xHUKkycVUpPB/33WyTLkZi+c/OE/PA0cy6eMj7+vsvTYJUF1BmD
- PbzF9DKPpCtaMdng1zQXh8+WR/FL3MsmvV3OfZQpjkjc854nfa3EATOuDRSHijdUtg00
- p+aQ==
+ d=1e100.net; s=20230601; t=1738234666; x=1738839466;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=fr2CD/GU550QMTVq1Op/yguGo73Udn87bNpQQH97sF8=;
+ b=UkJ9hbF3/myCmI5O87zaA/JgDqxyg4zz2gMtDcJZdZpdPavZjlHwhzYvz3r1mYNu6l
+ IagAOlXxtPeUZnOelWMhydEzLBZATNoE1/ril/vPJySnLXd0zBcYvoaGs4y9GC8/nyQ7
+ Lqv3wWBcPfhS13J07c9DvC2Gfo51cjZr3/8beijFlNcmsce2gP8PcmWQnxhPUyo502xm
+ JvcSO3pKsewoAvpKacBqpBO4s8eKPeoPRZrGOIjIUTZ1RrYqjAWOr3FM5FJ0OIwYVhzr
+ DnaOpYAVyvWLp8uAKeoCtbude33ZkAtO292hd/RVRHdg2c1/q8RIEqH/1lc2Z2vbHkkR
+ hHGA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCW7xfqh3KsT1LvH7JsoZVJcpI+9My10mGneTDR5/RoAA03Dun+sq+QDN6gjshxtExRUR7HFY0GAtwWNuWM=@nongnu.org
-X-Gm-Message-State: AOJu0YzWUB32iK6W9ueHQP53bblp2iaQj6XvkDwWfTccABoSlBw8h5DQ
- BDBom6vSIl2Jrrpg9LWtBZtOrcBm3Pxe3X0rNbwWRrXxV5FlphOhLIbbp5rJ4Iw=
-X-Gm-Gg: ASbGncsQFbNZjgudKvKTPObKJNM9IjemVQxgR9+SlW5GfM1UyiEVAqWbZ1DiRUQLTUm
- Y4Up65xgfplTItVD7SAKh3uxEhumBHlihhR9+914Ni2G987gIBxN5zf8+knsaNmgYQPiq00iOE7
- Zr59jeJEGNmYnsO/Fka+6rPpDEY8cbJnzUqsc/m8fznGtiSWXFKTGF56B3E9HDq0W8gR1qPiu+4
- y5SqxbXUpYmlwYn4Gpo2tSCdGM3S35INVtQYgcD79vau5cmjUbVwWyd+nqlBv8COaejTALhtp19
- 5WiyOjnogsVsTBffAJEuPxEYajgdGE0ZR1KGEFuN8Sl+HfrMmPkBQZKg0DY=
-X-Google-Smtp-Source: AGHT+IG/OObATeVJ4F8gvOa86e4bHj3xhKH5FL5eUJxfjbJiWbSRKF1uJhqxBfZwv7gU0XIUQbUAqQ==
-X-Received: by 2002:a05:600c:3c82:b0:430:57e8:3c7e with SMTP id
- 5b1f17b1804b1-438dc4251f2mr50749615e9.28.1738232856658; 
- Thu, 30 Jan 2025 02:27:36 -0800 (PST)
-Received: from [192.168.69.235] (88-187-86-199.subs.proxad.net.
+ AJvYcCWLBNlgj885lGM3Dou7xS5mlaxH2/VtplE/jo2XP/GWqKlknpYZeX8zAf+PE5HzaCzy2oz2NtVQRi0UpVg=@nongnu.org
+X-Gm-Message-State: AOJu0YwtqQEZ6awQrCcNs9AKTI+uJo775mImwbUNHpOz84WCD7WFNBLG
+ YpRdhah0Cs9gMScA4pffjKsRJUYsTj6TwX30iqXFGBPJ/hSNNt1JL4cyECq92dGl4imyoLinPfx
+ 2vVY=
+X-Gm-Gg: ASbGncvv5FjnDdWs76KTvKlgB/cdRKGWVQEvDhXYRsp+jxHcw1zBOLqdEshNvRO2mNk
+ uXGYcBOWk7eZ1JKsHfTK9DngZX4/Tq5Zueg8vUZ6joWNWwX3Zy8tjLVEhODlJIth+pjCk1CQN0m
+ hqqSIwC0fCfSObnHKybsswbZGk024qHa/sQCrsh+sRCFtJTL1dwstDZWlHQBEvbyMY/M2ylQZyM
+ CaLj6MO0I0slBsmajt9MspPdfJf/oeQ0eyszm15IdzvF8Zb+0Q0u7K67OD3mRDWqrUZG1MwaFpL
+ SDNelu9novDVjOnI26ZX01XSYl8N1E01ToDOR9nJwJr6HKuRhSrjHJNQuCGQuxauXA==
+X-Google-Smtp-Source: AGHT+IHiWPCv3g4rNBP1MEfLKRIH15mkf4gbwh9fNgLBInO8fFGWVYA6YfT9Gy0ia7qawe6rSXycrg==
+X-Received: by 2002:a5d:59af:0:b0:385:fd24:3303 with SMTP id
+ ffacd0b85a97d-38c51664ff5mr6526661f8f.0.1738234665814; 
+ Thu, 30 Jan 2025 02:57:45 -0800 (PST)
+Received: from localhost.localdomain (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-438e245f49dsm17990325e9.35.2025.01.30.02.27.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Jan 2025 02:27:36 -0800 (PST)
-Message-ID: <7bea68e1-855b-41c2-be28-bf94a1b43cc3@linaro.org>
-Date: Thu, 30 Jan 2025 11:27:35 +0100
+ ffacd0b85a97d-38c5c0ec7e6sm1647347f8f.19.2025.01.30.02.57.44
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Thu, 30 Jan 2025 02:57:45 -0800 (PST)
+From: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
+ Stefan Hajnoczi <stefanha@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-ppc@nongnu.org, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH] overall: Remove unnecessary g_strdup_printf() calls
+Date: Thu, 30 Jan 2025 11:57:43 +0100
+Message-ID: <20250130105743.1355-1-philmd@linaro.org>
+X-Mailer: git-send-email 2.47.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 01/21] hw/i386/pc: Remove unused pc_compat_2_3 declarations
-To: Michael Tokarev <mjt@tls.msk.ru>, Thomas Huth <thuth@redhat.com>,
- qemu-devel@nongnu.org, QEMU Trivial <qemu-trivial@nongnu.org>
-Cc: qemu-block@nongnu.org
-References: <20250115232247.30364-1-philmd@linaro.org>
- <20250115232247.30364-2-philmd@linaro.org>
- <9ee34c5f-d65c-447a-b128-96cf44b94b6e@redhat.com>
- <85be953b-7166-4353-85c0-7e15b9ec6423@tls.msk.ru>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <85be953b-7166-4353-85c0-7e15b9ec6423@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -92,24 +90,131 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Jan 2025 10:27:42 -0000
+X-List-Received-Date: Thu, 30 Jan 2025 10:57:53 -0000
 
-On 30/1/25 10:59, Michael Tokarev wrote:
-> 17.01.2025 11:52, Thomas Huth wrote:
->> On 16/01/2025 00.22, Philippe Mathieu-Daudé wrote:
->>> We removed the implementations in commit 46a2bd52571
->>> ("hw/i386/pc: Remove deprecated pc-i440fx-2.3 machine")
->>> but forgot to remove the declarations. Do it now.
->>>
->>> Fixes: 46a2bd52571 ("hw/i386/pc: Remove deprecated pc-i440fx-2.3 
->>> machine")
->>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> 
-> Thomas, such pick-ups from larger series may not be a good idea
-> for qemu-trivial in general.  But this one looks okay'ish since
-> the series is about 2.4 and 2.5 machines :)
-> 
-> Philippe, are you okay with merging this one through qemu-trivial?
+Replace g_strdup_printf("%s", value) -> g_strdup(value)
+to avoid unnecessary string formatting.
 
-Sure! Even appreciated :)
+Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+ crypto/hash-afalg.c | 2 +-
+ hw/ppc/spapr_caps.c | 2 +-
+ plugins/loader.c    | 2 +-
+ target/i386/cpu.c   | 2 +-
+ trace/simple.c      | 2 +-
+ ui/console.c        | 4 +---
+ ui/gtk.c            | 3 +--
+ util/module.c       | 2 +-
+ 8 files changed, 8 insertions(+), 11 deletions(-)
+
+diff --git a/crypto/hash-afalg.c b/crypto/hash-afalg.c
+index 8c0ce5b5200..bd3fe3b4272 100644
+--- a/crypto/hash-afalg.c
++++ b/crypto/hash-afalg.c
+@@ -59,7 +59,7 @@ qcrypto_afalg_hash_format_name(QCryptoHashAlgo alg,
+     if (is_hmac) {
+         name = g_strdup_printf("hmac(%s)", alg_name);
+     } else {
+-        name = g_strdup_printf("%s", alg_name);
++        name = g_strdup(alg_name);
+     }
+ 
+     return name;
+diff --git a/hw/ppc/spapr_caps.c b/hw/ppc/spapr_caps.c
+index 7edd1383601..904bff87ce1 100644
+--- a/hw/ppc/spapr_caps.c
++++ b/hw/ppc/spapr_caps.c
+@@ -1034,7 +1034,7 @@ void spapr_caps_add_properties(SpaprMachineClass *smc)
+     for (i = 0; i < ARRAY_SIZE(capability_table); i++) {
+         SpaprCapabilityInfo *cap = &capability_table[i];
+         g_autofree char *name = g_strdup_printf("cap-%s", cap->name);
+-        g_autofree char *desc = g_strdup_printf("%s", cap->description);
++        g_autofree char *desc = g_strdup(cap->description);
+ 
+         object_class_property_add(klass, name, cap->type,
+                                   cap->get, cap->set,
+diff --git a/plugins/loader.c b/plugins/loader.c
+index ebc01da9c6e..99686b54666 100644
+--- a/plugins/loader.c
++++ b/plugins/loader.c
+@@ -128,7 +128,7 @@ static int plugin_add(void *opaque, const char *name, const char *value,
+                 /* Will treat arg="argname" as "argname=on" */
+                 fullarg = g_strdup_printf("%s=%s", value, "on");
+             } else {
+-                fullarg = g_strdup_printf("%s", value);
++                fullarg = g_strdup(value);
+             }
+             warn_report("using 'arg=%s' is deprecated", value);
+             error_printf("Please use '%s' directly\n", fullarg);
+diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+index b5dd60d2812..72ab147e851 100644
+--- a/target/i386/cpu.c
++++ b/target/i386/cpu.c
+@@ -6166,7 +6166,7 @@ static void x86_cpu_list_entry(gpointer data, gpointer user_data)
+         desc = g_strdup_printf("%s [%s]", model_id, cc->model->note);
+     }
+     if (!desc) {
+-        desc = g_strdup_printf("%s", model_id);
++        desc = g_strdup(model_id);
+     }
+ 
+     if (cc->model && cc->model->cpudef->deprecation_note) {
+diff --git a/trace/simple.c b/trace/simple.c
+index 18af590cf7b..c0aba00cb7f 100644
+--- a/trace/simple.c
++++ b/trace/simple.c
+@@ -366,7 +366,7 @@ void st_set_trace_file(const char *file)
+         /* Type cast needed for Windows where getpid() returns an int. */
+         trace_file_name = g_strdup_printf(CONFIG_TRACE_FILE "-" FMT_pid, (pid_t)getpid());
+     } else {
+-        trace_file_name = g_strdup_printf("%s", file);
++        trace_file_name = g_strdup(file);
+     }
+ 
+     st_set_trace_file_enabled(saved_enable);
+diff --git a/ui/console.c b/ui/console.c
+index 914ed2cc76b..6456e8dd908 100644
+--- a/ui/console.c
++++ b/ui/console.c
+@@ -1386,9 +1386,7 @@ char *qemu_console_get_label(QemuConsole *con)
+                                        object_get_typename(c->device),
+                                        c->head);
+             } else {
+-                return g_strdup_printf("%s", dev->id ?
+-                                       dev->id :
+-                                       object_get_typename(c->device));
++                return g_strdup(dev->id ? : object_get_typename(c->device));
+             }
+         }
+         return g_strdup("VGA");
+diff --git a/ui/gtk.c b/ui/gtk.c
+index c0237431489..59bda83da65 100644
+--- a/ui/gtk.c
++++ b/ui/gtk.c
+@@ -1944,8 +1944,7 @@ static GSList *gd_vc_vte_init(GtkDisplayState *s, VirtualConsole *vc,
+     vcd->console = vc;
+ 
+     snprintf(buffer, sizeof(buffer), "vc%d", idx);
+-    vc->label = g_strdup_printf("%s", vc->vte.chr->label
+-                                ? vc->vte.chr->label : buffer);
++    vc->label = g_strdup(vc->vte.chr->label ? : buffer);
+     group = gd_vc_menu_init(s, vc, idx, group, view_menu);
+ 
+     vc->vte.terminal = vte_terminal_new();
+diff --git a/util/module.c b/util/module.c
+index 3eb0f06df16..1aa2079d013 100644
+--- a/util/module.c
++++ b/util/module.c
+@@ -234,7 +234,7 @@ int module_load(const char *prefix, const char *name, Error **errp)
+ 
+     search_dir = getenv("QEMU_MODULE_DIR");
+     if (search_dir != NULL) {
+-        dirs[n_dirs++] = g_strdup_printf("%s", search_dir);
++        dirs[n_dirs++] = g_strdup(search_dir);
+     }
+     dirs[n_dirs++] = get_relocated_path(CONFIG_QEMU_MODDIR);
+ 
+-- 
+2.47.1
+
 
