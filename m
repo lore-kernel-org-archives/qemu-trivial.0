@@ -1,82 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tdcUu-0004tp-Q1
-	for mharc-qemu-trivial@gnu.org; Thu, 30 Jan 2025 16:54:52 -0500
+	id 1teJJ2-0003C5-4F
+	for mharc-qemu-trivial@gnu.org; Sat, 01 Feb 2025 14:37:28 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tdcUu-0004th-5x
- for qemu-trivial@nongnu.org; Thu, 30 Jan 2025 16:54:52 -0500
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tdcUm-0002tg-BH
- for qemu-trivial@nongnu.org; Thu, 30 Jan 2025 16:54:51 -0500
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-3862a921123so960779f8f.3
- for <qemu-trivial@nongnu.org>; Thu, 30 Jan 2025 13:54:43 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1738274081; x=1738878881; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=X6cOHChUiLm1Lkp1lZc4xhZKxfhQwGE8VXRWiTHbK8U=;
- b=FxXvDED8E9ouukrj+802KDupcFGPxAiI8Bmhd0pz6R5N/I+lRoC/DykJPlAo3yBDxD
- ubiMmkT7rep8krM+j5CXYL298oOF3jeTUx4sIdNjVt0FQSGeuKXlYY1L2YQ0zxIAzrM2
- Mj1poscPQWiH597e3asv2u3cav5P9s6a3ozTEBk9Ev1JSxZblsO3X5oOiJPrJxYlOgXz
- ziH8nX4wVw4WScc1mp3lri8qhTSp90hAxvTBru31LlCzg8at6RqTZo8MBMLn72cGjSl3
- iEvx4MfMtHG0xOy+hgVOdob30iLKsnGeIPH6qLtogVFnpFqUCrwFCVQgg4xC3nV/AFWW
- C2oA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1738274081; x=1738878881;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=X6cOHChUiLm1Lkp1lZc4xhZKxfhQwGE8VXRWiTHbK8U=;
- b=bGlP/7+qIDadiQMNK9gNMoYhPbeLzEpd7hIGPEynD0TiDwkH0kNX+Cs50Qn7Rr5/VE
- IG3O9Tadgc+dtTZ8EwGYMxibsuQ3Ceud1QnBmwBh5gXO1oSWMJeYBACKNubZ4xFvNJZi
- miAaCxAhBINwz0aOK8ULNCan5f/rJXTGFQyxl4TXGAdTlX72pJsgUd9eV9L0yrbJPKAU
- yjpEEi0MmCWQal7i3u1OZan8BUm5x5cSwM1P/1erOqrDksKnEXVIpjDF6oYoXLzQa8Rb
- OvMfm15MaXFbSi+yT6+0pLo7qwUVRP5q5rL7BKZF0P92G5JoHoqBlKvEAdxQD6M/oIBD
- tcRA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCURxEcANT9P3oJY6kIJpsp6SIgVPpfSK61FWdazNpDA540xBbZztEcjZ5XH5iQFcZ7R19q3KrD/luypYv4=@nongnu.org
-X-Gm-Message-State: AOJu0Yxj7cDzEV9SIXERwTxBMB5DLANVRSs1Hn64/xgsfsfwNNCMTx9V
- YggH89WmZFDb67/MkW/vSW1K07SNUh78vmJGXCZ0ho35PHnV/YNRxlGC6O1BH53LoighmlnZeaH
- 8zG0=
-X-Gm-Gg: ASbGnctfGlSD5MNMTlaLWcIav7o8FvyuFjiz43SO9NLSmUXKNYebQHJtDBYK/rDgbnk
- 6cY2mUHXuF+E3kqqFCz/3NjLUg7RrhiBNtu6WxSpMcfVper5W/2fU/cS9EzjuWiXywJXE8axpt8
- 8q0RYo0DaSyMY0MzZWGAI78iqnPtOhR4y/ytXQlHHU/E/qYOXl10OaLACN5JnSBcSBBefIp1saP
- ZKTVorcmaQt/9fqagBjhyTKRHQpaU+yT2Tv3DwxqP1i4RZwBLdYCbngoLFEO2l7oF01ngR2RsXR
- BbtyL3ioxBnqbEXUwY64l8ZhhZurYxgkJ+LZRJUh84m3U+uBz9oR6HUJOWE=
-X-Google-Smtp-Source: AGHT+IGmfuE34/iS7t/ABilOONPgh204qTrBC5hThmK7Epdqbo9BO6wPS9yuRfYvPmiHjsHNMN5woA==
-X-Received: by 2002:a05:6000:1862:b0:38c:5d42:1528 with SMTP id
- ffacd0b85a97d-38c5d4218cemr3425899f8f.40.1738274081479; 
- Thu, 30 Jan 2025 13:54:41 -0800 (PST)
-Received: from [192.168.69.198] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-38c5c1cf560sm2994173f8f.89.2025.01.30.13.54.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Jan 2025 13:54:40 -0800 (PST)
-Message-ID: <883592af-e85a-4140-b728-1380b764ce28@linaro.org>
-Date: Thu, 30 Jan 2025 22:54:39 +0100
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1teJIt-0003Ay-3Q; Sat, 01 Feb 2025 14:37:20 -0500
+Received: from isrv.corpit.ru ([86.62.121.231])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1teJIo-0003vm-D2; Sat, 01 Feb 2025 14:37:17 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 0FCB3E3DD2;
+ Sat, 01 Feb 2025 22:36:26 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 80F1A1AA2B8;
+ Sat,  1 Feb 2025 22:36:58 +0300 (MSK)
+Message-ID: <9080590d-d823-473e-833e-d726490f1b18@tls.msk.ru>
+Date: Sat, 1 Feb 2025 22:36:58 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3] hw/usb/hcd-ehci: Fix debug printf format string
-To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-References: <20250124124713.64F8C4E6031@zero.eik.bme.hu>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250124124713.64F8C4E6031@zero.eik.bme.hu>
+Subject: Re: [PATCH 0/2] net: Fix announce_self with vhost
+To: Laurent Vivier <lvivier@redhat.com>, qemu-devel@nongnu.org
+Cc: Jason Wang <jasowang@redhat.com>, QEMU Trivial <qemu-trivial@nongnu.org>, 
+ qemu-stable@nongnu.org
+References: <20250117111709.970789-1-lvivier@redhat.com>
+ <fee03f11-bcf5-4586-abc1-2d38ce6a7f9c@redhat.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <fee03f11-bcf5-4586-abc1-2d38ce6a7f9c@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -89,19 +93,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 30 Jan 2025 21:54:52 -0000
+X-List-Received-Date: Sat, 01 Feb 2025 19:37:26 -0000
 
-On 24/1/25 13:47, BALATON Zoltan wrote:
-> The variable is uint64_t so needs %PRIu64 instead of %d.
+17.01.2025 17:05, Laurent Vivier wrote:
+> CC: qemu-stable and qemu-trivial.
 > 
-> Fixes: 3ae7eb88c47 ("ehci: fix overflow in frame timer code")
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
-> v3: Fixed commit message to match what the patch actually does
-> 
->   hw/usb/hcd-ehci.c | 3 ++-
->   1 file changed, 2 insertions(+), 1 deletion(-)
+> On 17/01/2025 12:17, Laurent Vivier wrote:
+>> announce_self that sends a RARP packet after migration
+>> or with announce_self QMP/HMP command doesn't work with
+>> vhost because of the vnet headers.
+>>
+>> announce_self is the only user of QEMU_NET_PACKET_FLAG_RAW and
+>> this flag is not correctly managed.
+>>
+>> This series fix a problem with this flag in filter-dump and in
+>> qemu_deliver_packet_iov().
+>>
+>> Laurent Vivier (2):
+>>    net: Fix announce_self
+>>    net/dump: Correctly compute Ethernet packet offset
 
-Patch queued, thanks.
+Is this one - "Correctly compute Ethernet packet offset" - needed for
+older stable series too, like 8.2 and 7.2 (currently active ones)?
+
+Since it doesn't apply without 4b52d63249 (tap: Remove qemu_using_vnet_hdr()).
+
+Thanks,
+
+/mjt
 
