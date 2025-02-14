@@ -1,44 +1,66 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tiofo-0000bH-43
-	for mharc-qemu-trivial@gnu.org; Fri, 14 Feb 2025 00:55:36 -0500
+	id 1tjwRw-0008FL-Gg
+	for mharc-qemu-trivial@gnu.org; Mon, 17 Feb 2025 03:25:56 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tiofl-0000aq-Ni; Fri, 14 Feb 2025 00:55:33 -0500
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1tjwRv-0008EN-4i
+ for qemu-trivial@nongnu.org; Mon, 17 Feb 2025 03:25:55 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tiofk-00084f-3G; Fri, 14 Feb 2025 00:55:33 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id C7B2AEAB0F;
- Fri, 14 Feb 2025 08:55:12 +0300 (MSK)
-Received: from gandalf.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id C6BF81B5FC5;
- Fri, 14 Feb 2025 08:55:20 +0300 (MSK)
-Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
- id B08B453466; Fri, 14 Feb 2025 08:55:20 +0300 (MSK)
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Michael Roth <michael.roth@amd.com>, qemu-trivial@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-stable@nongnu.org
-Subject: [PULL 4/4] make-release: don't rely on $CWD when excluding subproject
- directories
-Date: Fri, 14 Feb 2025 08:55:20 +0300
-Message-Id: <20250214055520.3159764-5-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250214055520.3159764-1-mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1tjwRt-0001zd-FD
+ for qemu-trivial@nongnu.org; Mon, 17 Feb 2025 03:25:54 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1739780752;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=WFRAqMjXrBcal1cwlLwxE/5+ZmE0PyV8w6wcxJSSizw=;
+ b=XXGgkzetcnbvh/wvgnvLmOjj4/vrFEIl+8HqqpbwOnoiuuhkzNX236629SDoiSXUCN4i6k
+ U6wDv6//V9pu3JM3cN9nntBjArn9NQP96/ukMTmpvxfAxfsOBpxUdFj2+yMGVKeV1M2iGR
+ 52Rvgx9niHnBrcpWiFgn/GWNg7NpjWI=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-685-WsXlNQYiMMKiDFsBjOLybg-1; Mon,
+ 17 Feb 2025 03:25:46 -0500
+X-MC-Unique: WsXlNQYiMMKiDFsBjOLybg-1
+X-Mimecast-MFC-AGG-ID: WsXlNQYiMMKiDFsBjOLybg_1739780745
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A25C9180056F; Mon, 17 Feb 2025 08:25:45 +0000 (UTC)
+Received: from localhost (unknown [10.2.16.15])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 20CEC180056F; Mon, 17 Feb 2025 08:25:40 +0000 (UTC)
+Date: Fri, 14 Feb 2025 11:58:51 -0500
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PULL 0/4] Trivial patches for 2025-02-14
+Message-ID: <20250214165851.GA757250@fedora>
 References: <20250214055520.3159764-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="QZCGoMWnwTZPQTrg"
+Content-Disposition: inline
+In-Reply-To: <20250214055520.3159764-1-mjt@tls.msk.ru>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -34
+X-Spam_score: -3.5
+X-Spam_bar: ---
+X-Spam_report: (-3.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.382,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -51,73 +73,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 14 Feb 2025 05:55:34 -0000
+X-List-Received-Date: Mon, 17 Feb 2025 08:25:55 -0000
 
-From: Michael Roth <michael.roth@amd.com>
 
-The current logic scans qemu.git/subprojects/ from *.wrap files to
-determine whether or not to include the associated directories in the
-release tarballs. However, the script assumes that it is being run from
-the top-level of the source directory, which may not always be the case.
-In particular, when generating releases via, e.g.:
+--QZCGoMWnwTZPQTrg
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
 
-  make qemu-9.2.1.tar.xz
+Applied, thanks.
 
-the $CWD will either be an arbitrary external build directory, or
-qemu.git/build, and the exclusions will not be processed as expected.
-Fix this by using the $src parameter passed to the script as the root
-directory for the various subproject/ paths referenced by this logic.
+Please update the changelog at https://wiki.qemu.org/ChangeLog/10.0 for any user-visible changes.
 
-Also, the error case at the beginning of the subproject_dir() will not
-result in the error message being printed, and will instead produce an
-error message about "error" not being a valid command. Fix this by using
-basic shell commands.
+--QZCGoMWnwTZPQTrg
+Content-Type: application/pgp-signature; name="signature.asc"
 
-Fixes: be27b5149c86 ("make-release: only leave tarball of wrap-file subprojects")
-Cc: Paolo Bonzini <pbonzini@redhat.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-stable@nongnu.org
-Signed-off-by: Michael Roth <michael.roth@amd.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- scripts/make-release | 9 +++++----
- 1 file changed, 5 insertions(+), 4 deletions(-)
+-----BEGIN PGP SIGNATURE-----
 
-diff --git a/scripts/make-release b/scripts/make-release
-index 2885e87210..1b89b3423a 100755
---- a/scripts/make-release
-+++ b/scripts/make-release
-@@ -11,8 +11,9 @@
- # See the COPYING file in the top-level directory.
- 
- function subproject_dir() {
--    if test ! -f "subprojects/$1.wrap"; then
--      error "scripts/archive-source.sh should only process wrap subprojects"
-+    if test ! -f "$src/subprojects/$1.wrap"; then
-+      echo "scripts/archive-source.sh should only process wrap subprojects"
-+      exit 1
-     fi
- 
-     # Print the directory key of the wrap file, defaulting to the
-@@ -26,7 +27,7 @@ function subproject_dir() {
-       -e    's///p' \
-       -e    'q' \
-       -e '}' \
--      "subprojects/$1.wrap")
-+      "$src/subprojects/$1.wrap")
- 
-     echo "${dir:-$1}"
- }
-@@ -76,7 +77,7 @@ popd
- exclude=(--exclude=.git)
- # include the tarballs in subprojects/packagecache but not their expansion
- for sp in $SUBPROJECTS; do
--    if grep -xqF "[wrap-file]" subprojects/$sp.wrap; then
-+    if grep -xqF "[wrap-file]" $src/subprojects/$sp.wrap; then
-       exclude+=(--exclude=subprojects/"$(subproject_dir $sp)")
-     fi
- done
--- 
-2.39.5
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmevdksACgkQnKSrs4Gr
+c8idjAf9EVp0r/PykhK6Fgp8XD2x/NgVLiA9jHaYIHyhyPcT5aiZ126ouaTTzZ73
+jdRMyGftmnlVtaoYIvz0gA8vyV7/3XTB7bsSN/16+d5TfEfdf1B7CLAIh4Ok8O8J
+OKYqZ2KcBdbnyrIjuXp03UmBNEdvljQH+XoN90SrJwxOb720ZB4pgwb/5G+ZRsL0
+aKGyLlulTZMIO2AvAdKNelJaFghyv8My8YCbz1nUOKd1m8RcJKpjtlke3Hwl6U5g
+2SyFQ4f7vCLOIjnv6TOY63EB04DCYtoAqIavyUGQAHFTlCdgv2EzPgH9TBofiMk9
+7pSMNLOEu4dCeMehlQYqn0W6ImzLCw==
+=COG/
+-----END PGP SIGNATURE-----
+
+--QZCGoMWnwTZPQTrg--
 
 
