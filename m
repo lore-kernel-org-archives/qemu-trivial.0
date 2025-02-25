@@ -1,83 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tmUX3-00062I-Jc
-	for mharc-qemu-trivial@gnu.org; Mon, 24 Feb 2025 04:13:45 -0500
+	id 1tn3tR-0004r1-CD
+	for mharc-qemu-trivial@gnu.org; Tue, 25 Feb 2025 17:59:13 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tmUX1-00061x-0x
- for qemu-trivial@nongnu.org; Mon, 24 Feb 2025 04:13:43 -0500
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1tmUWy-0002kM-Ak
- for qemu-trivial@nongnu.org; Mon, 24 Feb 2025 04:13:42 -0500
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-43aac0390e8so1912725e9.2
- for <qemu-trivial@nongnu.org>; Mon, 24 Feb 2025 01:13:39 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1740388418; x=1740993218; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=/pxXgM/jJQ1y7JldAYYgpxkyydMmBle6xYMKLcPlQ44=;
- b=EgpqSL/2QjvEIQDpg9coElLun5CAr5tKTMBl+r1BL9nYvSLZr0LacqsYNaLiLC/U+d
- DACo1vkOR5/PVxLRG4PDP6sIP1p7wRqz7rbs2qE1nVEgo9hjNLi7nvkoXDGOSo4gGxHO
- QbaUnRBZN9SVp7WnGGHLpWi8Y8SNwk32l52OyNR6bgLkVkrg7r6qxlPZvq/pMiyXMWuG
- EKecjr3qiNYv6PNuuvaQha49hxUwiVbZ6YfnaXVEc5UGymeedMh5D98t5jjyMD3iBL4k
- bF2aO/s7Fx65/zrN3zkqHoEludhQfT+rv1jhox77QmapM/ZoFXpdxBUmxVN2KaVGMaSq
- tbBQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1740388418; x=1740993218;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=/pxXgM/jJQ1y7JldAYYgpxkyydMmBle6xYMKLcPlQ44=;
- b=MxmMBt1q8qObaq4W8H/zzIn9WgA0NhNSOqS6V9ZRr/lb7djD4ZKQ4TCRNV9ir3MMAu
- jt/lDNxl5eVw7W1ZglIqLMX0XA8VmXE6g3n9nUpiA9djjoSS3uA88hWzlPXShGBG72jb
- vkGe5UCwB2opX0xrY/D3qSNr/dCKumv+hYrvQPD/qYesfHYA3SPbvSFtx7X4WmoGuskd
- 0vj4Tn7aLcRmk/v9Lz6c+DUGLs5Chsea/KBpU6nmVLYHOzAAv/T/3I4j1DYcvoiJulVy
- Hw6HcSoWq2qZr65BUX/54H1uX/wKj+GHXsvotjIAH7PmtknA/aJiSoWIW48/ZB3rKY4R
- sNPQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV5aA/qmMlLxOGJ8NzSvnG5VSTcCQK1TUYdl7JEzyYtFaGPXRT/9SbViO1oci6JQDg6OCVCyPXSHG9meeM=@nongnu.org
-X-Gm-Message-State: AOJu0Yz0sSeuVOzkvE47zkLyHLryjVdGCP+3o7V+z97gNX76ghgT4qo8
- UTSdNRl0CwTvPWO4uD8JAYxqvaCBC85BEYdQ6p1jkn2TQy8fe2zPBD+JT4U8FgM=
-X-Gm-Gg: ASbGncuEC/5g+0tPGE8JHwMj4JfdQeOaieUPRcdHZl/8ZT0cb8MhVz7L3cq4AyCROfD
- BWRg3FQY725FbqNniSoESdjiqdDh7WnJJ1Q298sKubsw2emQIKfdRY0W+ugrsKz6d96M+NE9FF+
- 7dDxPzOwuk9Kb3T0zOQaX/wtjJrJLUQGaCWlHAWWGBKaNKwOiBU9CztOMyErVdUXhCXsunM0ezL
- l0zCs735vXDUML/5pYgzpYRmPwcgvA4Q19AAe9MZ3mNr5UoRVi485WwHcIgjwpZV8qeVnR7T2fs
- wO91pm7YyzxRKX3joluTVi8IXhxy+iiWNl2DHyZcm1/v0z6yrlZc3GvrwcPpjJIhUWb8OA==
-X-Google-Smtp-Source: AGHT+IH2udHSwUNErSUylpjdwGrSfckpA+qNe/rHNu2Ysc9Z70q716OZFGPGThfbBCi52l6KiJJE8Q==
-X-Received: by 2002:a05:600c:1c13:b0:439:98b0:f911 with SMTP id
- 5b1f17b1804b1-439ae1e9aa8mr112740885e9.10.1740388417661; 
- Mon, 24 Feb 2025 01:13:37 -0800 (PST)
-Received: from [192.168.69.196] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-439b02e486csm99133075e9.18.2025.02.24.01.13.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 24 Feb 2025 01:13:37 -0800 (PST)
-Message-ID: <bf35aad7-17f1-4ab7-a9d8-118eb531f8fa@linaro.org>
-Date: Mon, 24 Feb 2025 10:13:36 +0100
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1tn3tP-0004qS-TM; Tue, 25 Feb 2025 17:59:11 -0500
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1tn3tN-0001TH-Vt; Tue, 25 Feb 2025 17:59:11 -0500
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID;
+ bh=CIQZtTxZ9dSzJ63DwaSEAqQOseP0TJPTyoSVi6I177I=; b=U77c1/V4eDJ2H/ZCTQvlfEpOpE
+ hhFHiWNsqar0LB+9g7fWRSgKSl0tKQSf3MT4cB9a+/7iXJsB5Vc9vuCuJAj0Dstpgh27h/Mt00Mw9
+ FF0dSJ4vSZTH6RFuCHK/VnbTUTKIoKznfJLMPk1qYFlb45ng1LYjH9MaUMwxNQALxDrlo9W0qFpwL
+ 2yUj1qvNXp6ZhC2FXIZ2u/gbzZl7ZPAWqJRdLnv8dzj+oug9mQGM87o4ID8DkahmiT2uDmba2cSK6
+ 1u2oGYlBU63tReNiWyK/8yIyRc0ergiazfAUWXvYo5eqW41unPWCqan8WCqQdzyweMBV19OPghHmh
+ 4uUBrHtsPPDY3EzCnD6kqFBswSKdkjiL7l/aotzjuQjT9KQBs54jQxn8xHeZZP7VzgZFlFBzBv+OD
+ F7uc+6+ifOwZtOCnBQRzAtr0TGveZuYAhLWeBFcZ92COIxAgT03hx5wrekE3dc7GHZfXdlDhDJiUs
+ KxprxABzSU9h364mTGbXfyoHZt+kVRwa4BXbJ8HPoySWwQG+liYsscPQmUL9TcoXkdZ/tXJGEUQzz
+ Zt+VlsPNqYz1KyjyxpWrq+7Af4LScUQFKJ1IIq03z6i55suwYcemsDvE86xxEEbb0xHe5LLSaCCSc
+ mIXRH9B7PGwLtDm+CuMygJqMwZSbQRsHxNOdLqWm4=;
+Received: from [2a02:8012:2f01:0:bfa1:1a8d:fd43:3eec]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1tn3sK-00068j-UE; Tue, 25 Feb 2025 22:58:09 +0000
+Message-ID: <0b12354f-2e47-4520-ae28-e08c3990d6cb@ilande.co.uk>
+Date: Tue, 25 Feb 2025 22:58:57 +0000
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/misc/macio: Improve trace logs
 To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
  qemu-ppc@nongnu.org, qemu-trivial@nongnu.org
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- Jd Lyons <lyons_dj@yahoo.com>
+Cc: Jd Lyons <lyons_dj@yahoo.com>
 References: <20250222122850.9D8B84E603D@zero.eik.bme.hu>
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
 In-Reply-To: <20250222122850.9D8B84E603D@zero.eik.bme.hu>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32c.google.com
+Content-Transfer-Encoding: 7bit
+X-SA-Exim-Connect-IP: 2a02:8012:2f01:0:bfa1:1a8d:fd43:3eec
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH] hw/misc/macio: Improve trace logs
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,9 +90,10 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 24 Feb 2025 09:13:43 -0000
+X-List-Received-Date: Tue, 25 Feb 2025 22:59:12 -0000
 
-On 22/2/25 13:28, BALATON Zoltan wrote:
+On 22/02/2025 12:28, BALATON Zoltan wrote:
+
 > Add macio_gpio_read trace event and use that in macio_gpio_read()
 > instead of macio_gpio_write. Also change log message to match
 > macio_timer_{read,write}.
@@ -102,7 +103,40 @@ On 22/2/25 13:28, BALATON Zoltan wrote:
 >   hw/misc/macio/gpio.c       | 2 +-
 >   hw/misc/macio/trace-events | 3 ++-
 >   2 files changed, 3 insertions(+), 2 deletions(-)
+> 
+> diff --git a/hw/misc/macio/gpio.c b/hw/misc/macio/gpio.c
+> index 7cad62819a..4364afc84a 100644
+> --- a/hw/misc/macio/gpio.c
+> +++ b/hw/misc/macio/gpio.c
+> @@ -135,7 +135,7 @@ static uint64_t macio_gpio_read(void *opaque, hwaddr addr, unsigned size)
+>           }
+>       }
+>   
+> -    trace_macio_gpio_write(addr, val);
+> +    trace_macio_gpio_read(addr, val);
+>       return val;
+>   }
+>   
+> diff --git a/hw/misc/macio/trace-events b/hw/misc/macio/trace-events
+> index ad4b9d1c08..055a407aeb 100644
+> --- a/hw/misc/macio/trace-events
+> +++ b/hw/misc/macio/trace-events
+> @@ -18,7 +18,8 @@ macio_timer_read(uint64_t addr, unsigned len, uint32_t val) "read addr 0x%"PRIx6
+>   macio_set_gpio(int gpio, bool state) "setting GPIO %d to %d"
+>   macio_gpio_irq_assert(int gpio) "asserting GPIO %d"
+>   macio_gpio_irq_deassert(int gpio) "deasserting GPIO %d"
+> -macio_gpio_write(uint64_t addr, uint64_t val) "addr: 0x%"PRIx64" value: 0x%"PRIx64
+> +macio_gpio_write(uint64_t addr, uint64_t val) "addr 0x%"PRIx64" val 0x%"PRIx64
+> +macio_gpio_read(uint64_t addr, uint64_t val) "addr 0x%"PRIx64" val 0x%"PRIx64
+>   
+>   # pmu.c
+>   pmu_adb_poll(int olen) "ADB autopoll, olen=%d"
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+
+
+ATB,
+
+Mark.
 
 
