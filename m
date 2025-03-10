@@ -1,79 +1,75 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tra0R-00009W-P3
-	for mharc-qemu-trivial@gnu.org; Mon, 10 Mar 2025 06:05:07 -0400
+	id 1traSf-0006Ap-VK
+	for mharc-qemu-trivial@gnu.org; Mon, 10 Mar 2025 06:34:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tra0P-00006x-Ij
- for qemu-trivial@nongnu.org; Mon, 10 Mar 2025 06:05:05 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1traSe-00068Q-JO
+ for qemu-trivial@nongnu.org; Mon, 10 Mar 2025 06:34:16 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1tra0N-0005VI-N0
- for qemu-trivial@nongnu.org; Mon, 10 Mar 2025 06:05:05 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1traSd-000285-3O
+ for qemu-trivial@nongnu.org; Mon, 10 Mar 2025 06:34:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1741601102;
+ s=mimecast20190719; t=1741602853;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=DeIWIZK2S1qhkB/CFQuEBp4qiN/DuSqkS7RTlaMsUYQ=;
- b=bhwHHVTuotjk62fbVF8XSknv4MddNutfN84g1XuuFuNkW3BjEry+BBJ/b8wwrJKICVznz9
- i56A8swX/gv4QCZvBbU/UW4zHdu+eU7Vaiz8TTaEVswHiYAQ8u5XSGpW6X17LHyEdo+qmI
- a4D81QTt7IeQDNPrmVD31fD5MuLbF4A=
-Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
- [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=S+X1w8qj+EQLOiCss80tgKQ/+FMcj7AAXy1RyHeLR7g=;
+ b=EYd4DHiiBATk5MtwDI5k50BxxIRbwk5LR1WLbnJdb3CnYOP84RvGWv906Anh6jr63N/FP/
+ nljqa39DnlkdGpt5A6AN3PXiudqolhcXAQeC2q3A1kLUzWw5sVmdBpb7sJd3JaR6l3t49t
+ 2JhVOSXufHOEtKkjEy2ypZPaSLjkaP0=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-433-Ia1Z1wB3PhGhsrvGN1HgjA-1; Mon, 10 Mar 2025 06:04:59 -0400
-X-MC-Unique: Ia1Z1wB3PhGhsrvGN1HgjA-1
-X-Mimecast-MFC-AGG-ID: Ia1Z1wB3PhGhsrvGN1HgjA_1741601099
-Received: by mail-wr1-f69.google.com with SMTP id
- ffacd0b85a97d-3912539665cso2228853f8f.1
- for <qemu-trivial@nongnu.org>; Mon, 10 Mar 2025 03:04:59 -0700 (PDT)
+ us-mta-568-y687I__WObqvDdc6zurp3A-1; Mon, 10 Mar 2025 06:34:12 -0400
+X-MC-Unique: y687I__WObqvDdc6zurp3A-1
+X-Mimecast-MFC-AGG-ID: y687I__WObqvDdc6zurp3A_1741602851
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-43bd8fd03a2so18101755e9.3
+ for <qemu-trivial@nongnu.org>; Mon, 10 Mar 2025 03:34:12 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1741601098; x=1742205898;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=DeIWIZK2S1qhkB/CFQuEBp4qiN/DuSqkS7RTlaMsUYQ=;
- b=PJSNaD7rfDyIV1lMxLwFJanV6xVZ6Wy1CBngKizezOZtcsP/vGRRnNAicOabMpy6kd
- FT0baIDciPJED97OyuLdlZpSXz2NY3QquZjOZp/c0T6+BAeO1tjx6L8NpxU6BkKqqXYH
- Or5k57Z4z9iDyW/wDExes5fAGYvUklHxj+wwe6fVAcgqzvuPRGaZMJ12jPU5mvph+6mD
- zo/Q1QRFc4k7m62yfYp7cpQjaWlLvkXxDFDclpARdR/5zAvZn2EbeZP/sAqK54wcKu1L
- DHuX5ABRwCenppLQR+HUq6LqpEbZGf7JlcXn+iP8c75wt5cr62rWgzFpTqHNHsNsdPX8
- j4pA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX6l92ieewoZhrhHajiq5A+Ndy9ZlAtY+TuGxxrN7qHUqJyuptZO0IgCFGNIzE2h3wrq1HgOZof9Ti5ktc=@nongnu.org
-X-Gm-Message-State: AOJu0YyjZZkPS6T99s/FcDbIxelaOuqDx3TXfJlxLm4ZaYRKhaRYzucS
- L+6DESP7A+ulb3pf/3PjDQjuHe/mn/BgDZz/8JqHIM/4RkPiyVnQZNkrWvZoKtS59gaDxTJd9mk
- zyVnGLXbF+Ef/cVSBv/J2PhNSinSCwcl1MaVBu+IJkOCim85CEfJmw2M=
-X-Gm-Gg: ASbGncv7GYh1CgxTdaTMQFquZbqmTJzPd+wLnQX6jmwFO2Za4c6m3h7fuxYOk69WfMf
- LhJKldmG4jjMgdmVjNSwmHhERPHOzNEIN+ii0tTcCaFEDgaBImhWga9U/hlhmukS3kmPvUWgROV
- H5Mak8/hSHqOEoiYA0IvswCF24ZZfqyOAooyfTLF/5+lNsvoDoSpSeW29KCV+FXhj16MGZuQkSx
- F9hDT0lYuOXz5Gg7YiE+30XvB1toEcGAIooWRXMkkTp4wAAgFYLrJVIjnkkUIYE5m+NUXbMTLwT
- j9vg9Z5BuAF4BVK9jj3vXkaxuRi6bkH8+C75ZInnUpGJbQg=
-X-Received: by 2002:a5d:5f82:0:b0:391:3156:6be with SMTP id
- ffacd0b85a97d-3913aeedecdmr5822164f8f.7.1741601098633; 
- Mon, 10 Mar 2025 03:04:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IF5i4iR5TnZlMlro7CYHgcJqrKzRT/NLw9cj5C6UhITwg/ifb1831MgaFx8b+Iz13fNFLTR7A==
-X-Received: by 2002:a5d:5f82:0:b0:391:3156:6be with SMTP id
- ffacd0b85a97d-3913aeedecdmr5822144f8f.7.1741601098311; 
- Mon, 10 Mar 2025 03:04:58 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1741602851; x=1742207651;
+ h=content-transfer-encoding:in-reply-to:autocrypt:cc:content-language
+ :from:references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=S+X1w8qj+EQLOiCss80tgKQ/+FMcj7AAXy1RyHeLR7g=;
+ b=dwwjTi+/aIS4/SQA4oxlH/2aVHG7EenE4Ut31aJLwT4GctrFswNAZiLP+TB0Lui+LZ
+ l1ZBVaa3JJuxUEKgN97590zaDMeEPVVZ5JRp+QkB100dCF99dYDVgsPkpOpyPW6kGUeS
+ hIw+FYmn0l/3SxRCuaxyfQKE2Slf3YwQf4LELDoNJmrIrTra2OFxmAzj3YfVlpslf6Zs
+ bJgjoJVYOgTqDRpnkT6M+g/oCyWSMabgM3gGtEan8G0Xu+KpPrNeqTBhGsxXdfY43D2L
+ teiiKc7dRjvsx6vayqiDTf+seCqT1B+9x90GZ8MglZu8RCcp5eRwSybIiWMoH+6Ckg2N
+ aEIw==
+X-Gm-Message-State: AOJu0YzlGlW4BAo1GtBfMLcUGqcECaU6eeQS+KqcgN3MVbX1TdkVId/t
+ i4sx5ji2LAL5aNObaCtwMAuxCriJztoU6VOO6r8onbikQ5mMeFlJ79DHA5e1TXq5vY73IfMCf5h
+ ZLeEYhPvCQ+MYTKD+itWu888IMgPFCXrsQaUUuBA2J1Xn5nPh/YA8voBw4Irg16s=
+X-Gm-Gg: ASbGncs+j6Em3/a3/OWX596Zm/uJMuCHL8CdTeGCzsN7ROblKa629bWGNBtZUBwcJPk
+ M5+F1bBONk4iDl4YGzVMbN6PvV/Ls77YTTd5bQvvLeG9f2zTLrxnqGuZQ04tWtkm0nYr+5B6BDZ
+ 2EPnwt/PJzU09QOfP9uuF8vi6kidkRFXepXuD7ID3ay5biE8OpfPDSwIHm1tV+Yo5gP28yAkTGa
+ ZM4A4bOiQ/i3JC4wCTG5OpIw0hI338jEkLmUTO//jYpj70uvwhvM3xIedJm1ylHTJ+cSYwjUE/5
+ b8SisQcIAZ30uDovVJJuUUR2IKkRciire8UwVt1+ZUswQf8=
+X-Received: by 2002:a05:600c:3b1d:b0:43c:fe15:41d4 with SMTP id
+ 5b1f17b1804b1-43cfe15436emr6642735e9.18.1741602851268; 
+ Mon, 10 Mar 2025 03:34:11 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IGC1jXUHAjH9vlgcWQn7VJCCekYeZ8/o15IpKWI6vSp4AOKXzQx6lokKbi89beXFmcNOfOgSg==
+X-Received: by 2002:a05:600c:3b1d:b0:43c:fe15:41d4 with SMTP id
+ 5b1f17b1804b1-43cfe15436emr6642595e9.18.1741602850926; 
+ Mon, 10 Mar 2025 03:34:10 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-51-231.web.vodafone.de.
  [109.42.51.231]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3912c0e3250sm14470539f8f.61.2025.03.10.03.04.57
+ ffacd0b85a97d-3912c0e1476sm14452086f8f.70.2025.03.10.03.34.09
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 10 Mar 2025 03:04:57 -0700 (PDT)
-Message-ID: <57e13dec-20b2-427e-a9c8-4d3a77ceec38@redhat.com>
-Date: Mon, 10 Mar 2025 11:04:56 +0100
+ Mon, 10 Mar 2025 03:34:10 -0700 (PDT)
+Message-ID: <55210662-b291-4cfc-a56a-82a1b4133694@redhat.com>
+Date: Mon, 10 Mar 2025 11:34:09 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] tests/functional: Require 'user' netdev for ppc64 e500
- test
-To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org
-Cc: Bernhard Beschow <shentey@gmail.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20250308071328.193694-1-clg@redhat.com>
+Subject: Re: [PATCH] tests/functional: Bump up arm_replay timeout
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-arm@nongnu.org,
+ qemu-devel@nongnu.org
+References: <20250310102830.3752440-1-peter.maydell@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
+Cc: QEMU Trivial <qemu-trivial@nongnu.org>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
  yYkTm9+7zBUc0sW5AuPGR/dp3pSLX/yFWsA/UB4nJsHqgDvDU7BImSeiTrnpMOTXb7Arw2a2
@@ -116,21 +112,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250308071328.193694-1-clg@redhat.com>
+In-Reply-To: <20250310102830.3752440-1-peter.maydell@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 4_pxJRkICqDaFRHIT1wU2pI3Ao9omot0JinFLkrQFsw_1741601099
+X-Mimecast-MFC-PROC-ID: CA8OMEbci7tbaAdJ2zKF7vgfctoUrrxddCmHVtli2eE_1741602851
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -145,32 +141,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 10 Mar 2025 10:05:06 -0000
+X-List-Received-Date: Mon, 10 Mar 2025 10:34:16 -0000
 
-On 08/03/2025 08.13, Cédric Le Goater wrote:
-> When commit 72cdd672e18c extended the ppc64 e500 test to add network
-> support, it forgot to require the 'user' netdev backend. Fix that.
+On 10/03/2025 11.28, Peter Maydell wrote:
+> On my machine the arm_replay test takes over 2 minutes to run
+> in a config with Rust enabled and debug enabled:
 > 
-> Fixes: 72cdd672e18c ("tests/functional: Replace the ppc64 e500 advent calendar test")
-> Signed-off-by: Cédric Le Goater <clg@redhat.com>
+> $ time (cd build/rust ; PYTHONPATH=../../python:../../tests/functional
+> QEMU_TEST_QEMU_BINARY=./qemu-system-arm ./pyvenv/bin/python3
+> ../../tests/functional/test_arm_replay.py)
+> TAP version 13
+> ok 1 test_arm_replay.ArmReplay.test_cubieboard
+> ok 2 test_arm_replay.ArmReplay.test_vexpressa9
+> ok 3 test_arm_replay.ArmReplay.test_virt
+> 1..3
+> 
+> real    2m16.564s
+> user    2m13.461s
+> sys     0m3.523s
+> 
+> Bump up the timeout to 4 minutes.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 > ---
->   tests/functional/test_ppc64_e500.py | 1 +
+>   tests/functional/meson.build | 1 +
 >   1 file changed, 1 insertion(+)
 > 
-> diff --git a/tests/functional/test_ppc64_e500.py b/tests/functional/test_ppc64_e500.py
-> index 9ce7ae6c4798..f5fcad9f6b66 100755
-> --- a/tests/functional/test_ppc64_e500.py
-> +++ b/tests/functional/test_ppc64_e500.py
-> @@ -20,6 +20,7 @@ class E500Test(LinuxKernelTest):
->   
->       def test_ppc64_e500_buildroot(self):
->           self.set_machine('ppce500')
-> +        self.require_netdev('user')
->           self.cpu = 'e5500'
-
-Thanks, that should fix the issue that I saw in the 
-"functional-cfi-ppc64-s390x" job in the gitlab CI (which uses 
---disable-slirp indeed)!
+> diff --git a/tests/functional/meson.build b/tests/functional/meson.build
+> index 97c3f4ad4e9..608732bec63 100644
+> --- a/tests/functional/meson.build
+> +++ b/tests/functional/meson.build
+> @@ -31,6 +31,7 @@ test_timeouts = {
+>     'arm_orangepi' : 540,
+>     'arm_quanta_gsj' : 240,
+>     'arm_raspi2' : 120,
+> +  'arm_replay' : 240,
+>     'arm_tuxrun' : 240,
+>     'arm_sx1' : 360,
+>     'intel_iommu': 300,
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
