@@ -1,42 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1tvXac-0003Of-Bf
-	for mharc-qemu-trivial@gnu.org; Fri, 21 Mar 2025 04:18:51 -0400
+	id 1tvnMi-0005Eo-Ow
+	for mharc-qemu-trivial@gnu.org; Fri, 21 Mar 2025 21:09:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tvXa2-0003AH-8l; Fri, 21 Mar 2025 04:18:16 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1tvnMg-0005EY-Bl
+ for qemu-trivial@nongnu.org; Fri, 21 Mar 2025 21:09:30 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1tvXZv-0007iz-Rn; Fri, 21 Mar 2025 04:18:09 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 78B6B10549F;
- Fri, 21 Mar 2025 11:16:48 +0300 (MSK)
-Received: from gandalf.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id D71A31D0FCD;
- Fri, 21 Mar 2025 11:17:51 +0300 (MSK)
-Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
- id C1EC156BAB; Fri, 21 Mar 2025 11:17:51 +0300 (MSK)
-From: Michael Tokarev <mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1tvnMd-0002x3-E7
+ for qemu-trivial@nongnu.org; Fri, 21 Mar 2025 21:09:29 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1742605764;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=xMFE+OKQXPk6+GcAKOzrqDTIPIMbEsdcGAmWO/K5+ok=;
+ b=UVX1QbZcWy130QKlavlTFG7m2EvL9tf/QWP2erIXFgCje/JCrU/WKUZj+6vKoPxYa1cjtQ
+ f/6rbLRSKejIkDjTjYC2f3zCdKaLyRo2IRWrkqFhQ8Y5zhQUbr6VM6TpPyvRapktGVp8qX
+ bgdc857LvhIiERkDYXFddU/c3T0tdss=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-63-ZEpSOToVPfqa-74BEAAyXA-1; Fri,
+ 21 Mar 2025 21:09:20 -0400
+X-MC-Unique: ZEpSOToVPfqa-74BEAAyXA-1
+X-Mimecast-MFC-AGG-ID: ZEpSOToVPfqa-74BEAAyXA_1742605758
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 461B71945103; Sat, 22 Mar 2025 01:09:12 +0000 (UTC)
+Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.64.66])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 740A819373C4; Sat, 22 Mar 2025 01:08:59 +0000 (UTC)
+From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: Akihiko Odaki <akihiko.odaki@daynix.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 3/3] mailmap: Update email address for Akihiko Odaki
-Date: Fri, 21 Mar 2025 11:17:51 +0300
-Message-Id: <20250321081751.1999498-4-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250321081751.1999498-1-mjt@tls.msk.ru>
-References: <20250321081751.1999498-1-mjt@tls.msk.ru>
+Cc: Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Peter Xu <peterx@redhat.com>,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
+ Lukas Straub <lukasstraub2@web.de>, Fabiano Rosas <farosas@suse.de>,
+ Eduardo Habkost <eduardo@habkost.net>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, qemu-trivial@nongnu.org,
+ Jason Wang <jasowang@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Laurent Vivier <laurent@vivier.eu>, Yanan Wang <wangyanan55@huawei.com>,
+ John Snow <jsnow@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, qemu-block@nongnu.org,
+ Zhenwei Pi <pizhenwei@bytedance.com>, Mads Ynddal <mads@ynddal.dk>,
+ Gerd Hoffmann <kraxel@redhat.com>, Michael Roth <michael.roth@amd.com>,
+ Eric Blake <eblake@redhat.com>, Jiri Pirko <jiri@resnulli.us>
+Subject: [PATCH 0/4] qapi: add auto-generated return docs
+Date: Fri, 21 Mar 2025 21:08:53 -0400
+Message-ID: <20250322010857.309490-1-jsnow@redhat.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.332,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -49,32 +88,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 21 Mar 2025 08:18:29 -0000
+X-List-Received-Date: Sat, 22 Mar 2025 01:09:31 -0000
 
-From: Akihiko Odaki <akihiko.odaki@daynix.com>
-
-It's too late but better than never.
-
-Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- .mailmap | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/.mailmap b/.mailmap
-index 5f6df414e1..33fe75400f 100644
---- a/.mailmap
-+++ b/.mailmap
-@@ -67,6 +67,7 @@ Andrey Drobyshev <andrey.drobyshev@virtuozzo.com> Andrey Drobyshev via <qemu-blo
- BALATON Zoltan <balaton@eik.bme.hu> BALATON Zoltan via <qemu-ppc@nongnu.org>
- 
- # Next, replace old addresses by a more recent one.
-+Akihiko Odaki <akihiko.odaki@daynix.com> <akihiko.odaki@gmail.com>
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com> <aleksandar.markovic@mips.com>
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com> <aleksandar.markovic@imgtec.com>
- Aleksandar Markovic <aleksandar.qemu.devel@gmail.com> <amarkovic@wavecomp.com>
--- 
-2.39.5
+Basically RFC quality, I'm sure there's going to be a ton of back and=0D
+forth on the doc phrasing changes. Ah well.=0D
+=0D
+John Snow (4):=0D
+  docs/qapi-domain: add return-nodesc=0D
+  docs, qapi: generate undocumented return sections=0D
+  qapi: remove trivial "Returns:" sections=0D
+  qapi: rephrase return docs to avoid type name=0D
+=0D
+ docs/devel/qapi-domain.rst | 30 ++++++++++++++++++++++++++++++=0D
+ docs/sphinx/qapi_domain.py |  8 ++++++++=0D
+ docs/sphinx/qapidoc.py     | 14 ++++++++------=0D
+ qapi/audio.json            |  2 --=0D
+ qapi/block-core.json       | 14 +++-----------=0D
+ qapi/block-export.json     |  2 +-=0D
+ qapi/block.json            |  2 +-=0D
+ qapi/char.json             |  8 --------=0D
+ qapi/control.json          |  5 ++---=0D
+ qapi/cryptodev.json        |  2 --=0D
+ qapi/dump.json             |  5 ++---=0D
+ qapi/introspect.json       |  6 +++---=0D
+ qapi/job.json              |  2 +-=0D
+ qapi/machine-target.json   |  9 +++------=0D
+ qapi/machine.json          | 22 ----------------------=0D
+ qapi/migration.json        | 12 ------------=0D
+ qapi/misc-target.json      | 14 +-------------=0D
+ qapi/misc.json             | 12 ++----------=0D
+ qapi/net.json              |  2 +-=0D
+ qapi/pci.json              |  2 +-=0D
+ qapi/qdev.json             |  3 +--=0D
+ qapi/qom.json              |  8 +++-----=0D
+ qapi/rocker.json           |  4 ----=0D
+ qapi/run-state.json        |  2 --=0D
+ qapi/stats.json            |  2 +-=0D
+ qapi/tpm.json              |  4 ----=0D
+ qapi/trace.json            |  2 +-=0D
+ qapi/ui.json               | 10 +---------=0D
+ qapi/virtio.json           |  8 +++-----=0D
+ qapi/yank.json             |  1 -=0D
+ scripts/qapi/parser.py     | 11 +++++++++++=0D
+ scripts/qapi/schema.py     |  3 +++=0D
+ 32 files changed, 91 insertions(+), 140 deletions(-)=0D
+=0D
+-- =0D
+2.48.1=0D
+=0D
 
 
