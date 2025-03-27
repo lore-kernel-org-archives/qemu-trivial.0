@@ -1,82 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1txWth-0003gL-UO
-	for mharc-qemu-trivial@gnu.org; Wed, 26 Mar 2025 15:58:46 -0400
+	id 1txheT-0004s7-2l
+	for mharc-qemu-trivial@gnu.org; Thu, 27 Mar 2025 03:27:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1txWte-0003dq-Ll
- for qemu-trivial@nongnu.org; Wed, 26 Mar 2025 15:58:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1txheQ-0004rH-Pm
+ for qemu-trivial@nongnu.org; Thu, 27 Mar 2025 03:27:42 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1txWtb-0008Kr-3h
- for qemu-trivial@nongnu.org; Wed, 26 Mar 2025 15:58:42 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1txheO-0000up-FX
+ for qemu-trivial@nongnu.org; Thu, 27 Mar 2025 03:27:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1743019118;
+ s=mimecast20190719; t=1743060459;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=E7/cT8odGIwsVDppA9+AzgyMdi6K8Q9X/4nrZa1HWck=;
- b=NuBl8hab3l1nbHqiocbzlAvTx0SHZxZTjfVdiXh88JbTl/mdRyNK0O4m08C2ZxCicPU14p
- pZSKOvdtcGVk+ofypnaBWKV8Kc42fw6JFI4PQ0kBW7TUWfF+yjPBs0Db9nYc8P11dFi05a
- ddC8ZP9kD9qZps6eONIYcLRnagfNSiw=
+ bh=DubE5UoFWzPzzHp3H+HUqKhUqK7dYazF7KVKriZzk6s=;
+ b=OXso15Qnnyh77A1TKl1+eK7QA5A9G4COY8nLcgO+/FSib3G5lhM2LIQsLwOVDgEPV59CvI
+ wIfBMUxk+FORr5Gp3JGhbOS0kGqXEwxtGmFQlrkDqBR/In9SxlU43+pkKrDpm6ylg9KV9n
+ H/z/nkW75k04O3OJM3ljZCgcfg9WUGU=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-140-8OHieB8bMxmt_nfLt7H-hg-1; Wed,
- 26 Mar 2025 15:58:32 -0400
-X-MC-Unique: 8OHieB8bMxmt_nfLt7H-hg-1
-X-Mimecast-MFC-AGG-ID: 8OHieB8bMxmt_nfLt7H-hg_1743019106
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-197-aCW0x2PcNTGyxPlKO4SNbg-1; Thu,
+ 27 Mar 2025 03:27:35 -0400
+X-MC-Unique: aCW0x2PcNTGyxPlKO4SNbg-1
+X-Mimecast-MFC-AGG-ID: aCW0x2PcNTGyxPlKO4SNbg_1743060452
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 93DDA18004A9; Wed, 26 Mar 2025 19:58:26 +0000 (UTC)
-Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.89.152])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 822811801762; Wed, 26 Mar 2025 19:58:19 +0000 (UTC)
-From: John Snow <jsnow@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Jason Wang <jasowang@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- Fabiano Rosas <farosas@suse.de>, Paolo Bonzini <pbonzini@redhat.com>,
- John Snow <jsnow@redhat.com>, Mads Ynddal <mads@ynddal.dk>,
- Hanna Reitz <hreitz@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- "Michael S. Tsirkin" <mst@redhat.com>, qemu-trivial@nongnu.org,
- Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Yanan Wang <wangyanan55@huawei.com>, qemu-block@nongnu.org,
- Lukas Straub <lukasstraub2@web.de>, Jiri Pirko <jiri@resnulli.us>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Michael Tokarev <mjt@tls.msk.ru>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Zhenwei Pi <pizhenwei@bytedance.com>,
- Eric Blake <eblake@redhat.com>, Peter Xu <peterx@redhat.com>,
- Ani Sinha <anisinha@redhat.com>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Kevin Wolf <kwolf@redhat.com>, Michael Roth <michael.roth@amd.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>
-Subject: [PATCH v2 3/4] qapi: remove trivial "Returns:" sections
-Date: Wed, 26 Mar 2025 15:57:55 -0400
-Message-ID: <20250326195756.330817-4-jsnow@redhat.com>
-In-Reply-To: <20250326195756.330817-1-jsnow@redhat.com>
-References: <20250326195756.330817-1-jsnow@redhat.com>
+ id 563421801A12; Thu, 27 Mar 2025 07:27:30 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.22.74.4])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CF3091801751; Thu, 27 Mar 2025 07:27:21 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 11ADB21E66C5; Thu, 27 Mar 2025 08:27:19 +0100 (CET)
+From: Markus Armbruster <armbru@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel@nongnu.org,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>,  Peter Xu <peterx@redhat.com>,  "Gonglei
+ (Arei)" <arei.gonglei@huawei.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,  Paolo Bonzini <pbonzini@redhat.com>,  Daniel P.
+ =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Ani Sinha
+ <anisinha@redhat.com>,  Michael
+ Tokarev <mjt@tls.msk.ru>,  Lukas Straub <lukasstraub2@web.de>,  Fabiano
+ Rosas <farosas@suse.de>,  Eduardo Habkost <eduardo@habkost.net>,  Stefan
+ Berger <stefanb@linux.vnet.ibm.com>,  qemu-trivial@nongnu.org,  Jason Wang
+ <jasowang@redhat.com>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,  Peter Maydell
+ <peter.maydell@linaro.org>,  Laurent Vivier <laurent@vivier.eu>,  Yanan
+ Wang <wangyanan55@huawei.com>,  Zhao Liu <zhao1.liu@intel.com>,  Stefan
+ Hajnoczi <stefanha@redhat.com>,  Kevin Wolf <kwolf@redhat.com>,  "Michael
+ S. Tsirkin" <mst@redhat.com>,  qemu-block@nongnu.org,  Zhenwei Pi
+ <pizhenwei@bytedance.com>,  Mads Ynddal <mads@ynddal.dk>,  Gerd Hoffmann
+ <kraxel@redhat.com>,  Michael Roth <michael.roth@amd.com>,  Eric Blake
+ <eblake@redhat.com>,  Jiri Pirko <jiri@resnulli.us>
+Subject: Re: [PATCH 3/4] qapi: remove trivial "Returns:" sections
+In-Reply-To: <CAFn=p-ZJT0p7LHiBPn5deZnGSq6vtyF5b8G7pmmzUyRPtDURtQ@mail.gmail.com>
+ (John Snow's message of "Wed, 26 Mar 2025 15:46:32 -0400")
+References: <20250322010857.309490-1-jsnow@redhat.com>
+ <20250322010857.309490-4-jsnow@redhat.com>
+ <87bjtpmop6.fsf@pond.sub.org>
+ <CAFn=p-ZJT0p7LHiBPn5deZnGSq6vtyF5b8G7pmmzUyRPtDURtQ@mail.gmail.com>
+Date: Thu, 27 Mar 2025 08:27:19 +0100
+Message-ID: <8734ez2aso.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -91,515 +95,147 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 26 Mar 2025 19:58:42 -0000
+X-List-Received-Date: Thu, 27 Mar 2025 07:27:43 -0000
 
-The new qapidoc transmogrifier can generate "Returns" statements with
-type information just fine, so we can remove it from the source where it
-doesn't add anything particularly novel or helpful and just repeats the
-type info.
+John Snow <jsnow@redhat.com> writes:
 
-This patch does not touch Returns: lines that add some information
-(potentially helpful, potentially not) but repeats the type information
-to remove that type.
+> On Tue, Mar 25, 2025 at 5:42=E2=80=AFAM Markus Armbruster <armbru@redhat.=
+com> wrote:
+>
+>> John Snow <jsnow@redhat.com> writes:
+>>
+>> > The new qapidoc transmogrifier can generate "Returns" statements with
+>> > type information just fine, so we can remove it from the source where =
+it
+>> > doesn't add anything particularly novel or helpful and just repeats the
+>> > type info.
+>> >
+>> > This patch does not touch Returns: lines that add some information
+>> > (potentially helpful, potentially not) but repeats the type information
+>> > to remove that type.
+>> >
+>> > Signed-off-by: John Snow <jsnow@redhat.com>
+>>
+>> This is a clear improvement for the generated docs.  For instance,
+>> blockdev-snapshot-delete-internal-sync goes from
+>>
+>>     Return:
+>>        "SnapshotInfo" -- SnapshotInfo
+>>
+>> to
+>>
+>>     Return:
+>>        "SnapshotInfo"
+>>
+>> However, I see that *triplicated* in my testing.  I observed similar
+>> issues with the previous patch, so let's discuss that there and ignore
+>> it here.
+>>
+>> The impact on schema file egonomics is less clear.
+>>
+>> This patch removes a bunch of "Returns:" sections that make the
+>> generated docs look bad.  How can we stop people from writing such
+>> sections?
 
-Signed-off-by: John Snow <jsnow@redhat.com>
----
- qapi/audio.json          |  2 --
- qapi/block-core.json     |  8 --------
- qapi/char.json           |  8 --------
- qapi/cryptodev.json      |  2 --
- qapi/machine-target.json |  2 --
- qapi/machine.json        | 22 ----------------------
- qapi/migration.json      | 12 ------------
- qapi/misc-target.json    | 12 ------------
- qapi/misc.json           |  7 -------
- qapi/rocker.json         |  4 ----
- qapi/run-state.json      |  2 --
- qapi/tpm.json            |  4 ----
- qapi/ui.json             |  8 --------
- qapi/virtio.json         |  2 --
- qapi/yank.json           |  1 -
- 15 files changed, 96 deletions(-)
+Plan A: catch it in review.  If that turns out to be overly bothersome,
+we need to think about better tooling.
 
-diff --git a/qapi/audio.json b/qapi/audio.json
-index dd5a58d13e6..d49ca4cae47 100644
---- a/qapi/audio.json
-+++ b/qapi/audio.json
-@@ -535,8 +535,6 @@
- #
- # Returns information about audiodev configuration
- #
--# Returns: array of @Audiodev
--#
- # Since: 8.0
- ##
- { 'command': 'query-audiodevs',
-diff --git a/qapi/block-core.json b/qapi/block-core.json
-index b1937780e19..92b2e368b72 100644
---- a/qapi/block-core.json
-+++ b/qapi/block-core.json
-@@ -1949,8 +1949,6 @@
- # @flat: Omit the nested data about backing image ("backing-image"
- #     key) if true.  Default is false (Since 5.0)
- #
--# Returns: the list of BlockDeviceInfo
--#
- # Since: 2.0
- #
- # .. qmp-example::
-@@ -2464,9 +2462,6 @@
- #
- # @unstable: This command is meant for debugging.
- #
--# Returns:
--#     BlockDirtyBitmapSha256
--#
- # Errors:
- #     - If @node is not a valid block device, DeviceNotFound
- #     - If @name is not found or if hashing has failed, GenericError
-@@ -6157,9 +6152,6 @@
- #
- # @name: optional the snapshot's name to be deleted
- #
--# Returns:
--#     SnapshotInfo
--#
- # Errors:
- #     - If @device is not a valid block device, GenericError
- #     - If snapshot not found, GenericError
-diff --git a/qapi/char.json b/qapi/char.json
-index dde2f9538f8..6a82db0d156 100644
---- a/qapi/char.json
-+++ b/qapi/char.json
-@@ -36,8 +36,6 @@
- #
- # Returns information about current character devices.
- #
--# Returns: a list of @ChardevInfo
--#
- # Since: 0.14
- #
- # .. qmp-example::
-@@ -82,8 +80,6 @@
- #
- # Returns information about character device backends.
- #
--# Returns: a list of @ChardevBackendInfo
--#
- # Since: 2.0
- #
- # .. qmp-example::
-@@ -772,8 +768,6 @@
- #
- # @backend: backend type and parameters
- #
--# Returns: ChardevReturn.
--#
- # Since: 1.4
- #
- # .. qmp-example::
-@@ -812,8 +806,6 @@
- #
- # @backend: new backend type and parameters
- #
--# Returns: ChardevReturn.
--#
- # Since: 2.10
- #
- # .. qmp-example::
-diff --git a/qapi/cryptodev.json b/qapi/cryptodev.json
-index 04d0e21d209..e8371b9d950 100644
---- a/qapi/cryptodev.json
-+++ b/qapi/cryptodev.json
-@@ -96,8 +96,6 @@
- #
- # Returns information about current crypto devices.
- #
--# Returns: a list of @QCryptodevInfo
--#
- # Since: 8.0
- ##
- { 'command': 'query-cryptodev', 'returns': ['QCryptodevInfo']}
-diff --git a/qapi/machine-target.json b/qapi/machine-target.json
-index 541f93eeb78..37e75520094 100644
---- a/qapi/machine-target.json
-+++ b/qapi/machine-target.json
-@@ -391,8 +391,6 @@
- #
- # Return a list of supported virtual CPU definitions
- #
--# Returns: a list of CpuDefinitionInfo
--#
- # Since: 1.2
- ##
- { 'command': 'query-cpu-definitions', 'returns': ['CpuDefinitionInfo'],
-diff --git a/qapi/machine.json b/qapi/machine.json
-index a6b8795b09e..415d39a1d68 100644
---- a/qapi/machine.json
-+++ b/qapi/machine.json
-@@ -101,8 +101,6 @@
- #
- # Returns information about all virtual CPUs.
- #
--# Returns: list of @CpuInfoFast
--#
- # Since: 2.12
- #
- # .. qmp-example::
-@@ -218,8 +216,6 @@
- #
- # @unstable: Argument @compat-props is experimental.
- #
--# Returns: a list of MachineInfo
--#
- # Since: 1.2
- #
- # .. qmp-example::
-@@ -268,8 +264,6 @@
- #
- # Return information on the current virtual machine.
- #
--# Returns: CurrentMachineParams
--#
- # Since: 4.0
- ##
- { 'command': 'query-current-machine', 'returns': 'CurrentMachineParams' }
-@@ -291,8 +285,6 @@
- #
- # Return information about the target for this QEMU
- #
--# Returns: TargetInfo
--#
- # Since: 1.2
- ##
- { 'command': 'query-target', 'returns': 'TargetInfo' }
-@@ -316,8 +308,6 @@
- #
- # Query the guest UUID information.
- #
--# Returns: The @UuidInfo for the guest
--#
- # Since: 0.14
- #
- # .. qmp-example::
-@@ -469,8 +459,6 @@
- #
- # Returns information about KVM acceleration
- #
--# Returns: @KvmInfo
--#
- # Since: 0.14
- #
- # .. qmp-example::
-@@ -932,8 +920,6 @@
- #
- # Returns information for all memory backends.
- #
--# Returns: a list of @Memdev.
--#
- # Since: 2.1
- #
- # .. qmp-example::
-@@ -1049,8 +1035,6 @@
- #
- # TODO: Better documentation; currently there is none.
- #
--# Returns: a list of HotpluggableCPU objects.
--#
- # Since: 2.7
- #
- # .. qmp-example::
-@@ -1172,9 +1156,6 @@
- #
- # Return information about the balloon device.
- #
--# Returns:
--#     @BalloonInfo
--#
- # Errors:
- #     - If the balloon driver is enabled but not functional because
- #       the KVM kernel module cannot support it, KVMMissingCap
-@@ -1238,9 +1219,6 @@
- # Returns the hv-balloon driver data contained in the last received
- # "STATUS" message from the guest.
- #
--# Returns:
--#     @HvBalloonInfo
--#
- # Errors:
- #     - If no hv-balloon device is present, guest memory status
- #       reporting is not enabled or no guest memory status report
-diff --git a/qapi/migration.json b/qapi/migration.json
-index 8b9c53595c4..b0e9452e7fa 100644
---- a/qapi/migration.json
-+++ b/qapi/migration.json
-@@ -286,8 +286,6 @@
- # is active there will be another json-object with RAM migration
- # status.
- #
--# Returns: @MigrationInfo
--#
- # Since: 0.14
- #
- # .. qmp-example::
-@@ -537,8 +535,6 @@
- #
- # Returns information about the current migration capabilities status
- #
--# Returns: @MigrationCapabilityStatus
--#
- # Since: 1.2
- #
- # .. qmp-example::
-@@ -1322,8 +1318,6 @@
- #
- # Returns information about the current migration parameters
- #
--# Returns: @MigrationParameters
--#
- # Since: 2.4
- #
- # .. qmp-example::
-@@ -1904,8 +1898,6 @@
- #
- # Query replication status while the vm is running.
- #
--# Returns: A @ReplicationStatus object showing the status.
--#
- # .. qmp-example::
- #
- #     -> { "execute": "query-xen-replication-status" }
-@@ -1958,8 +1950,6 @@
- #
- # Query COLO status while the vm is running.
- #
--# Returns: A @COLOStatus object showing the status.
--#
- # .. qmp-example::
- #
- #     -> { "execute": "query-colo-status" }
-@@ -2333,8 +2323,6 @@
- #
- # @deprecated: This command is deprecated with no replacement yet.
- #
--# Returns: @MigrationThreadInfo
--#
- # Since: 7.2
- ##
- { 'command': 'query-migrationthreads',
-diff --git a/qapi/misc-target.json b/qapi/misc-target.json
-index 8d70bd24d8c..59a8f5b2bed 100644
---- a/qapi/misc-target.json
-+++ b/qapi/misc-target.json
-@@ -129,8 +129,6 @@
- #
- # Returns information about SEV
- #
--# Returns: @SevInfo
--#
- # Since: 2.12
- #
- # .. qmp-example::
-@@ -205,8 +203,6 @@
- # This command is used to get the SEV capabilities, and is supported
- # on AMD X86 platforms only.
- #
--# Returns: SevCapability objects.
--#
- # Since: 2.12
- #
- # .. qmp-example::
-@@ -259,8 +255,6 @@
- # @mnonce: a random 16 bytes value encoded in base64 (it will be
- #     included in report)
- #
--# Returns: SevAttestationReport objects.
--#
- # Since: 6.1
- #
- # .. qmp-example::
-@@ -324,8 +318,6 @@
- # This command is ARM-only.  It will return a list of GICCapability
- # objects that describe its capability bits.
- #
--# Returns: a list of GICCapability objects.
--#
- # Since: 2.6
- #
- # .. qmp-example::
-@@ -382,8 +374,6 @@
- #
- # Returns information about SGX
- #
--# Returns: @SGXInfo
--#
- # Since: 6.2
- #
- # .. qmp-example::
-@@ -401,8 +391,6 @@
- #
- # Returns information from host SGX capabilities
- #
--# Returns: @SGXInfo
--#
- # Since: 6.2
- #
- # .. qmp-example::
-diff --git a/qapi/misc.json b/qapi/misc.json
-index 559b66f2017..de5dd531071 100644
---- a/qapi/misc.json
-+++ b/qapi/misc.json
-@@ -56,8 +56,6 @@
- #
- # Return the name information of a guest.
- #
--# Returns: @NameInfo of the guest
--#
- # Since: 0.14
- #
- # .. qmp-example::
-@@ -332,9 +330,6 @@
- #
- # @opaque: A free-form string that can be used to describe the fd.
- #
--# Returns:
--#     @AddfdInfo
--#
- # Errors:
- #     - If file descriptor was not received, GenericError
- #     - If @fdset-id is a negative value, GenericError
-@@ -415,8 +410,6 @@
- #
- # Return information describing all fd sets.
- #
--# Returns: A list of @FdsetInfo
--#
- # Since: 1.2
- #
- # .. note:: The list of fd sets is shared by all monitor connections.
-diff --git a/qapi/rocker.json b/qapi/rocker.json
-index 51aa5b49307..d1714a08d71 100644
---- a/qapi/rocker.json
-+++ b/qapi/rocker.json
-@@ -28,8 +28,6 @@
- #
- # @name: switch name
- #
--# Returns: @Rocker information
--#
- # Since: 2.4
- #
- # .. qmp-example::
-@@ -98,8 +96,6 @@
- #
- # @name: port name
- #
--# Returns: a list of @RockerPort information
--#
- # Since: 2.4
- #
- # .. qmp-example::
-diff --git a/qapi/run-state.json b/qapi/run-state.json
-index ce95cfa46b7..ff2d694ee2f 100644
---- a/qapi/run-state.json
-+++ b/qapi/run-state.json
-@@ -119,8 +119,6 @@
- #
- # Query the run status of the VM
- #
--# Returns: @StatusInfo reflecting the VM
--#
- # Since: 0.14
- #
- # .. qmp-example::
-diff --git a/qapi/tpm.json b/qapi/tpm.json
-index a16a72edb98..f749e6869df 100644
---- a/qapi/tpm.json
-+++ b/qapi/tpm.json
-@@ -27,8 +27,6 @@
- #
- # Return a list of supported TPM models
- #
--# Returns: a list of TpmModel
--#
- # Since: 1.5
- #
- # .. qmp-example::
-@@ -58,8 +56,6 @@
- #
- # Return a list of supported TPM types
- #
--# Returns: a list of TpmType
--#
- # Since: 1.5
- #
- # .. qmp-example::
-diff --git a/qapi/ui.json b/qapi/ui.json
-index c536d4e5241..46843bdbefa 100644
---- a/qapi/ui.json
-+++ b/qapi/ui.json
-@@ -325,8 +325,6 @@
- #
- # Returns information about the current SPICE server
- #
--# Returns: @SpiceInfo
--#
- # Since: 0.14
- #
- # .. qmp-example::
-@@ -656,8 +654,6 @@
- #
- # Returns information about the current VNC server
- #
--# Returns: @VncInfo
--#
- # Since: 0.14
- #
- # .. qmp-example::
-@@ -687,8 +683,6 @@
- #
- # Returns a list of vnc servers.  The list can be empty.
- #
--# Returns: a list of @VncInfo2
--#
- # Since: 2.3
- ##
- { 'command': 'query-vnc-servers', 'returns': ['VncInfo2'],
-@@ -1564,8 +1558,6 @@
- #
- # Returns information about display configuration
- #
--# Returns: @DisplayOptions
--#
- # Since: 3.1
- ##
- { 'command': 'query-display-options',
-diff --git a/qapi/virtio.json b/qapi/virtio.json
-index d351d2166ef..93c576a21da 100644
---- a/qapi/virtio.json
-+++ b/qapi/virtio.json
-@@ -847,8 +847,6 @@
- #
- # @unstable: This command is meant for debugging.
- #
--# Returns: VirtioQueueElement information
--#
- # Since: 7.2
- #
- # .. qmp-example::
-diff --git a/qapi/yank.json b/qapi/yank.json
-index 30f46c97c98..9bd8ecce27f 100644
---- a/qapi/yank.json
-+++ b/qapi/yank.json
-@@ -102,7 +102,6 @@
- #
- # Query yank instances.  See @YankInstance for more information.
- #
--# Returns: list of @YankInstance
- #
- # .. qmp-example::
- #
--- 
-2.48.1
+>> Developers tend to refer to the schema file instead of the generated
+>> documentation.  Information is spread across doc comment and schema
+>> code.  Both describe the syntactic structure.  Only the schema code has
+>> types, optional, and such.  The doc comment describes semantics.  In
+>> practice, skimming the doc comment is often enough.
+>>
+>> Except for the return value.  The doc comment's "Returns:" section is
+>> optional.  When it's absent, the generated docs are bad (but this patch
+>> fixes that).  Moreover, the doc comment doesn't fully describe the
+>> syntactic structure then.  Unwary readers may not be aware of that trap,
+>> and miss the return value.
+
+I've since pondered this some more, and also talked with John.
+
+When doc comments look like they provide a certain kind of information,
+but they are actually unrealiable, that's less than ideal for its
+readers.
+
+This has always been the case for member / argument descriptions.  We
+didn't require them initially, and when we started to, things had gotten
+so bad that I had to provide an escape hatch: pragma
+documentation-exceptions still lists 44 offenders in qapi/ and one in
+qga/.
+
+Most of the offenders are doc bugs.  But not all: documenting the
+members of QKeyCode one by one would be silly.
+
+It has also always been the case for return value descriptions.  We
+still don't require them.  Your series uncovered ten in qapi/ and one in
+qga/.  Your series adds 46 in qapi/.  Possibly more after review of the
+last patch.  Missing Returns goes from rare to common.
+
+This does not create doc bugs.  Generated documentation actually
+improves.
+
+I figure developers just have to mind that the doc comment need not be
+complete.
+
+>> The inliner you posted before needs to know where the inlined stuff
+>> goes.  Obvious when there are argument descriptions or a "Returns:".
+>> For the cases where we have nothing useful, you proposed an explicit
+>> marker "Details:" (how exactly it's spelled doesn't matter here, only
+>> that an explicit marker can be necessary).  Could removing "Returns:"
+>> make the marker necessary more often?  Can our tooling reliably detect
+>> the need for the marker?
+>>
+>
+> Well, tooling can at least be certain when it isn't certain.
+>
+> The warning I have in my inliner branch-fork-whatever now basically just
+> looks at the sections and if there's non-plaintext sections between the
+> start and the ending, it treats the beginning as intro and the ending as
+> details.
+
+The non-plaintext sections are: Returns, Errors, Since, TODO.
+
+Returns and Errors are reliable anchors for the inliner.  The inliner
+inlines argument sections.  They need to go next to Returns / Errors
+sections, if any, because they get rendered together in as single
+two-column thing.
+
+Since feels useless as an anchor.  Does the inline ignore it?  I don't
+remember.  Every definition doc should have it, and we commonly put it
+at the very end (currently 776 out of 984 times).  When we don't, it's
+usually followed by examples only, and occasionally by notes.  Putting
+it always last would be better.  If we manage to replace handwritten by
+computed since information, Since goes away.
+
+TODO is the odd duck.  It can go anywhere, which makes its use as anchor
+questionable.  It's rare (I count 7 instances).  One of them presses it
+into service to separate intro and example (commit 14b48aaab92).  Your
+inliner series has a replacement for this hack; I believe the
+replacement can serve as a reliable anchor.
+
+> In the case there is *nothing else at all*, i.e. no returns, no
+> arguments/members, no errors, no features - i.e. it's a single QAPIDoc
+> Section - the inliner will count the *paragraphs*. If it's *one* paragrap=
+h,
+> it deduces that it's an intro section and does not consider it ambiguous.
+> If there are multiple paragraphs, however, that's when it emits a warning.
+
+This is a heuristic.  We'll discuss it in review of the inliner.
+
+> A computer is never going to be able to reliably determine *intent*, but
+> syntactically I think that's a pretty narrow circumstance to yelp over:
+> "Documentation contains only a single plaintext section that consists of
+> two or more paragraphs". In practice, that's a reasonably rare occurrence
+> and is most likely to occur with query commands that take no arguments,
+
+... or refer to a complex type for their arguments ...
+
+> have no features, and do not document return value semantics.
+
+... and do not document errors.
+
+I'd be interested in the existing instances if you can track them down
+easily.
 
 
