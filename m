@@ -1,84 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1ty5Cv-0000Hg-Lt
-	for mharc-qemu-trivial@gnu.org; Fri, 28 Mar 2025 04:36:54 -0400
+	id 1tyOwr-0006Ic-VV
+	for mharc-qemu-trivial@gnu.org; Sat, 29 Mar 2025 01:41:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ty5Cr-0000Go-Q4
- for qemu-trivial@nongnu.org; Fri, 28 Mar 2025 04:36:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1tyOwp-0006I0-So; Sat, 29 Mar 2025 01:41:35 -0400
+Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1ty5Cp-0003DH-E9
- for qemu-trivial@nongnu.org; Fri, 28 Mar 2025 04:36:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1743151006;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=jQo3SYbIH2xS24gQn/PqAMrTv2PngwzkiXR2mQRDI14=;
- b=K10HJvMjyt+jCSuRFxa6vDnRklD1522jTOKC3AotuMiSlo6RJkFGkNoOTu7k+ax3xLhJL1
- AKjuJyxD0xGZA1cYTooWL7M0HoGKajDIFrFv0yAf/pn/r/pCkFO4VGD9HsNDMk5KcW7NXW
- wy9zp+rdYr+2gGfGDbS/2pm5ssI2leY=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-228-AXUkay0XM6yeRFdtpwKGIA-1; Fri,
- 28 Mar 2025 04:36:42 -0400
-X-MC-Unique: AXUkay0XM6yeRFdtpwKGIA-1
-X-Mimecast-MFC-AGG-ID: AXUkay0XM6yeRFdtpwKGIA_1743151000
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9FCD5180049D; Fri, 28 Mar 2025 08:36:37 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.16])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E9B5730001A1; Fri, 28 Mar 2025 08:36:27 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 4D43F21E6773; Fri, 28 Mar 2025 09:36:25 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: John Snow <jsnow@redhat.com>
-Cc: qemu-devel@nongnu.org,  Jason Wang <jasowang@redhat.com>,  Zhao Liu
- <zhao1.liu@intel.com>,  Fabiano Rosas <farosas@suse.de>,  Paolo Bonzini
- <pbonzini@redhat.com>,  Mads Ynddal <mads@ynddal.dk>,  Hanna Reitz
- <hreitz@redhat.com>,  Eduardo Habkost <eduardo@habkost.net>,  "Michael S.
- Tsirkin" <mst@redhat.com>,  qemu-trivial@nongnu.org,  =?utf-8?Q?Marc-Andr?=
- =?utf-8?Q?=C3=A9?= Lureau
- <marcandre.lureau@redhat.com>,  Yanan Wang <wangyanan55@huawei.com>,
- qemu-block@nongnu.org,  Lukas Straub <lukasstraub2@web.de>,  Jiri Pirko
- <jiri@resnulli.us>,  Stefan Berger <stefanb@linux.vnet.ibm.com>,  Gerd
- Hoffmann <kraxel@redhat.com>,  Peter Maydell <peter.maydell@linaro.org>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Michael
- Tokarev <mjt@tls.msk.ru>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Laurent
- Vivier <laurent@vivier.eu>,  Zhenwei Pi <pizhenwei@bytedance.com>,  Eric
- Blake <eblake@redhat.com>,  Peter Xu <peterx@redhat.com>,  Ani Sinha
- <anisinha@redhat.com>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,  Kevin Wolf
- <kwolf@redhat.com>,  Michael Roth <michael.roth@amd.com>,  Stefan Hajnoczi
- <stefanha@redhat.com>,  "Gonglei (Arei)" <arei.gonglei@huawei.com>
-Subject: Re: [PATCH v2 4/4] qapi: rephrase return docs to avoid type name
-In-Reply-To: <20250326195756.330817-5-jsnow@redhat.com> (John Snow's message
- of "Wed, 26 Mar 2025 15:57:56 -0400")
-References: <20250326195756.330817-1-jsnow@redhat.com>
- <20250326195756.330817-5-jsnow@redhat.com>
-Date: Fri, 28 Mar 2025 09:36:25 +0100
-Message-ID: <87jz89mu0m.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1tyOwn-0003nL-Ou; Sat, 29 Mar 2025 01:41:35 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 9175C10A97E;
+ Sat, 29 Mar 2025 08:40:01 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 6A2DE1DB2DE;
+ Sat, 29 Mar 2025 08:41:17 +0300 (MSK)
+Message-ID: <a5f19b09-f222-4747-8b52-b2fd67a6832e@tls.msk.ru>
+Date: Sat, 29 Mar 2025 08:41:17 +0300
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] migration: fix SEEK_CUR offset calculation in
+ qio_channel_block_seek
+To: Marco Cavenati <Marco.Cavenati@eurecom.fr>, Peter Xu <peterx@redhat.com>, 
+ Fabiano Rosas <farosas@suse.de>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20250326162230.3323199-1-Marco.Cavenati@eurecom.fr>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20250326162230.3323199-1-Marco.Cavenati@eurecom.fr>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -68
+X-Spam_score: -6.9
+X-Spam_bar: ------
+X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,208 +93,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 28 Mar 2025 08:36:50 -0000
+X-List-Received-Date: Sat, 29 Mar 2025 05:41:36 -0000
 
-John Snow <jsnow@redhat.com> writes:
-
-> Well, I tried. Maybe not very hard. Sorry!
-
-No need to be sorry!  Kick-starting discussion with limited effort is
-better than a big effort going into a direction that turns out to be
-unwanted once we discuss it.
-
-Instead of just rephrasing Returns descriptions, I'd like us to consider
-both Returns and intro.  See below for why.
-
-> Signed-off-by: John Snow <jsnow@redhat.com>
+26.03.2025 19:22, Marco Cavenati wrote:
+> The SEEK_CUR case in qio_channel_block_seek was incorrectly using the
+> 'whence' parameter instead of the 'offset' parameter when calculating the
+> new position.
+> 
+> Fixes: 65cf200a51ddc6d0a28ecceac30dc892233cddd7 ("migration: introduce a QIOChannel impl for BlockDriverState VMState")
+> 
+> Signed-off-by: Marco Cavenati <Marco.Cavenati@eurecom.fr>
 > ---
->  qapi/block-core.json     | 6 +++---
->  qapi/block-export.json   | 2 +-
->  qapi/block.json          | 2 +-
->  qapi/control.json        | 5 ++---
->  qapi/dump.json           | 5 ++---
->  qapi/introspect.json     | 6 +++---
->  qapi/job.json            | 2 +-
->  qapi/machine-target.json | 7 +++----
->  qapi/misc-target.json    | 2 +-
->  qapi/misc.json           | 5 ++---
->  qapi/net.json            | 2 +-
->  qapi/pci.json            | 2 +-
->  qapi/qdev.json           | 3 +--
->  qapi/qom.json            | 8 +++-----
->  qapi/stats.json          | 2 +-
->  qapi/trace.json          | 2 +-
->  qapi/ui.json             | 2 +-
->  qapi/virtio.json         | 6 +++---
->  18 files changed, 31 insertions(+), 38 deletions(-)
->
-> diff --git a/qapi/block-core.json b/qapi/block-core.json
-> index 92b2e368b72..eb97b70cd80 100644
-> --- a/qapi/block-core.json
-> +++ b/qapi/block-core.json
-> @@ -763,7 +763,7 @@
-   ##
-   # @query-block:
->  #
->  # Get a list of BlockInfo for all virtual block devices.
->  #
-> -# Returns: a list of @BlockInfo describing each virtual block device.
-> +# Returns: a list describing each virtual block device.
->  #     Filter nodes that were created implicitly are skipped over.
->  #
->  # Since: 0.14
-> @@ -1168,7 +1168,7 @@
-   ##
-   # @query-blockstats:
-   #
-   # Query the @BlockStats for all virtual block devices.
-   #
-   # @query-nodes: If true, the command will query all the block nodes
-   #     that have a node name, in a list which will include "parent"
-   #     information, but not "backing".  If false or omitted, the
-   #     behavior is as before - query all the device backends,
-   #     recursively including their "parent" and "backing".  Filter
->  #     nodes that were created implicitly are skipped over in this
->  #     mode.  (Since 2.3)
->  #
-> -# Returns: A list of @BlockStats for each virtual block devices.
-> +# Returns: A list of statistics for each virtual block device.
->  #
->  # Since: 0.14
->  #
-> @@ -1440,7 +1440,7 @@
-   ##
-   # @query-block-jobs:
->  #
->  # Return information about long-running block device operations.
->  #
-> -# Returns: a list of @BlockJobInfo for each active block job
-> +# Returns: a list of job info for each active block job
->  #
->  # Since: 1.1
->  ##
+>   migration/channel-block.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/migration/channel-block.c b/migration/channel-block.c
+> index fff8d87094..b0477f5b6d 100644
+> --- a/migration/channel-block.c
+> +++ b/migration/channel-block.c
+> @@ -123,7 +123,7 @@ qio_channel_block_seek(QIOChannel *ioc,
+>           bioc->offset = offset;
+>           break;
+>       case SEEK_CUR:
+> -        bioc->offset += whence;
+> +        bioc->offset += offset;
+>           break;
+>       case SEEK_END:
+>           error_setg(errp, "Size of VMstate region is unknown");
 
-Stopping here, because I believe this is already enough to make a useful
-observation.
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 
-There's overlap between query-FOO's intro and Returns.  The intro
-describes the command's purpose, and the purpose of a query-FOO is to
-return certain information.  Returns describes the value returned.  Both
-talk about the same thing, namely the value returned.
+This is a (trivial) bugfix, I'd say it should be in 10.0.
+Will you guys send a pullreq for the block layer, or should
+I make a single-patch pullreq from the trivial tree?
 
-Why two prose descriptions of the value returned?  Wouldn't one be
-better?
+Thanks,
 
-Let's try.  We need to choose where to put it, intro or Returns.
-
-When Returns comes right after intro, putting it into Returns can work
-fine, because the command's purpose still comes first.  For instance:
-
-   ##
-   # @query-block:
-   #
-   # Return information about all virtual block devices.  Filter nodes
-   # that were created implicitly are skipped over.
-
-renders like
-
-    Command query-block (Since: 0.14)
-
-       Return information about all virtual block devices. Filter nodes
-       that were created implicitly are skipped over.
-
-       Return:
-          ["BlockInfo"]
-
-and
-
-   ##
-   # @query-block:
-   #
-   # Returns: Information about all virtual block devices.
-   #     Filter nodes that were created implicitly are skipped over.
-
-renders like
-
-    Command query-block (Since: 0.14)
-
-       Return:
-          ["BlockInfo"] -- Information about all virtual block
-          devices. Filter nodes that were created implicitly are skipped
-          over.
-
-Both work.
-
-But when there's something in between, intro is preferable.  For
-instance:
-
-   ##
-   # @query-blockstats:
-   #
-   # Return statistics for all virtual block devices.
-   #
-   # @query-nodes: If true, the command will query all the block nodes
-   #     that have a node name, in a list which will include "parent"
-   #     information, but not "backing".  If false or omitted, the
-   #     behavior is as before - query all the device backends,
-   #     recursively including their "parent" and "backing".  Filter
-   #     nodes that were created implicitly are skipped over in this
-   #     mode.  (Since 2.3)
-
-renders like
-
-    Command query-blockstats (Since: 0.14)
-
-       Return statistics for all virtual block devices.
-
-       Arguments:
-          * **query-nodes** ("boolean", *optional*) -- If true, the
-            command will query all the block nodes that have a node name,
-            in a list which will include "parent" information, but not
-            "backing".  If false or omitted, the behavior is as before -
-            query all the device backends, recursively including their
-            "parent" and "backing".  Filter nodes that were created
-            implicitly are skipped over in this mode.  (Since 2.3)
-
-       Return:
-          ["BlockStats"]
-
-while
-
-   ##
-   # @query-blockstats:
-   #
-   # @query-nodes: If true, the command will query all the block nodes
-   #     that have a node name, in a list which will include "parent"
-   #     information, but not "backing".  If false or omitted, the
-   #     behavior is as before - query all the device backends,
-   #     recursively including their "parent" and "backing".  Filter
-   #     nodes that were created implicitly are skipped over in this
-   #     mode.  (Since 2.3)
-   #
-   # Returns: Statistics for all virtual block devices
-
-renders like
-
-    Command query-blockstats (Since: 0.14)
-
-       Arguments:
-          * **query-nodes** ("boolean", *optional*) -- If true, the
-            command will query all the block nodes that have a node name,
-            in a list which will include "parent" information, but not
-            "backing".  If false or omitted, the behavior is as before -
-            query all the device backends, recursively including their
-            "parent" and "backing".  Filter nodes that were created
-            implicitly are skipped over in this mode.  (Since 2.3)
-
-       Return:
-          ["BlockStats"] -- Statistics for all virtual block devices
-
-I much prefer the former, because it puts the command's purpose where it
-belongs: first.
-
-Perhaps we should simply use the intro always.
-
-Thoughts?
-
+/mjt
 
