@@ -1,48 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u1PaD-0000hR-RL
-	for mharc-qemu-trivial@gnu.org; Sun, 06 Apr 2025 08:58:43 -0400
+	id 1u2BU5-0003M8-9x
+	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2025 12:07:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <integral@archlinuxcn.org>)
- id 1u1Lez-0007Ha-IT; Sun, 06 Apr 2025 04:47:21 -0400
-Received: from wiki.archlinuxcn.org ([104.245.9.4])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <integral@archlinuxcn.org>)
- id 1u1Lew-0005J0-Rx; Sun, 06 Apr 2025 04:47:21 -0400
-DKIM-Signature: a=rsa-sha256; bh=+TeWFmBLBkc+qOf6FxmxhHxvL5gsapneF1/gnQxpywk=; 
- c=relaxed/relaxed; d=archlinuxcn.org;
- h=Subject:Subject:Sender:To:To:Cc:Cc:From:From:Date:Date:MIME-Version:MIME-Version:Content-Type:Content-Transfer-Encoding:Content-Transfer-Encoding:Reply-To:In-Reply-To:Message-Id:Message-Id:References:Autocrypt:Openpgp;
- i=@archlinuxcn.org; s=default; t=1743929232; v=1; x=1744361232;
- b=jssXJnm9kKxIvw/lnX9cKZbsgC0P6ff1f60fZIK3Rz675PPiu8jeP1xI19Pl28SutrIxnEgi
- vScpZIu7KyLX65nEEwy3kx4zjk5hiSzn5xMEZjGl5a/FEHYWeZzPyYB1bVbIsD1/dmxik32VJgJ
- sc+tYtLOK3YZm2KU1ZdS9PWp4uYFaaRtJVybjzpCeFAZJ3GIHq82G6b3E75Qdv3nl7vbo3LxbIw
- dNX1PM/eZ2J9KMXJgR+9+s/tNdKMniH8ltgKYtvbGRLvt5YRBV83bBob+w47x9S/PavR9ns575d
- 5km4U5dSu10yDfNymeJzD/+cJyCdS2m579ruV3TuaQ7Og==
-Received: by wiki.archlinuxcn.org (envelope-sender
- <integral@archlinuxcn.org>) with ESMTPS id 43effe2c; Sun, 06 Apr 2025
- 16:47:12 +0800
-From: Integral <integral@archlinuxcn.org>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: Integral <integral@archlinuxcn.org>
-Subject: [PATCH] docs: replace `-hda` with `-drive` & update `root=` kernel
- parameter
-Date: Sun,  6 Apr 2025 16:45:18 +0800
-Message-ID: <20250406084515.95461-4-integral@archlinuxcn.org>
-X-Mailer: git-send-email 2.49.0
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1u2BU1-0003Kw-W0; Tue, 08 Apr 2025 12:07:30 -0400
+Received: from mgamail.intel.com ([198.175.65.21])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1u2BTt-0007cX-UR; Tue, 08 Apr 2025 12:07:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1744128442; x=1775664442;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=HYRYFKnwlvNLLwRiYaYqmnF8qqgcQeGuqHSpmQRRW80=;
+ b=RwsuibMxtGmXsyL7hmQsiZsiXaLLzXocdcUvPO1H/1yP064rMImdflkT
+ kvl9ivqJYo6fis14W8mnH2Tzvh/5wpH9Q7nobPtfkq7I+vZD2OQ4mt4gx
+ KW8CEpyZ5A/I472ROLuyLwQw/1yJWM3+hyW3+rek3Fl6/VZTOHCKPhMAI
+ Vjt8JZzoGuusGUKDtonwj3pG2yDmyVNpqTNP9e/6zpMar8zalWAU7H4Fj
+ eHJ4z56dneZZF8ziVuEjv8dlx+eegYHAnr6GT0apKBEGgCAINbevQ2nu/
+ UfRuGtAfx7gLylDErW1N0xMPtT6opEFxx0spAWxC/j6OXgyGcQvw1ras4 g==;
+X-CSE-ConnectionGUID: YgCPhg94T5WEdzlFHKXYAA==
+X-CSE-MsgGUID: Q5dl03n2QMy8v/J9wuhWPA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11397"; a="45466513"
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="45466513"
+Received: from fmviesa010.fm.intel.com ([10.60.135.150])
+ by orvoesa113.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 08 Apr 2025 09:06:52 -0700
+X-CSE-ConnectionGUID: a4nxDZwHQ5OmprGUqjcv6w==
+X-CSE-MsgGUID: wrBFuuAVQVSaSs1ZtckZdg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,198,1739865600"; d="scan'208";a="128820082"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
+ by fmviesa010.fm.intel.com with ESMTP; 08 Apr 2025 09:06:50 -0700
+From: Zhao Liu <zhao1.liu@intel.com>
+To: =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH] scripts/checkpatch: Fix typo in SPDX-License-Identifier
+ keyword
+Date: Wed,  9 Apr 2025 00:27:02 +0800
+Message-Id: <20250408162702.2350565-1-zhao1.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=104.245.9.4;
- envelope-from=integral@archlinuxcn.org; helo=wiki.archlinuxcn.org
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=198.175.65.21; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -51
+X-Spam_score: -5.2
+X-Spam_bar: -----
+X-Spam_report: (-5.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.845,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sun, 06 Apr 2025 08:58:36 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -54,71 +67,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 06 Apr 2025 08:47:22 -0000
+X-List-Received-Date: Tue, 08 Apr 2025 16:07:31 -0000
 
-According to QEMU manual:
+Fix the typo in the error message to help `grep` the example:
 
-Older options like `-hda` are essentially macros which expand into
-`-drive` options for various drive interfaces. The original forms
-bake in a lot of assumptions from the days when QEMU was emulating a
-legacy PC, they are not recommended for modern configurations.
+ERROR: New file '***' requires 'SPDX-License-Identifer'
 
-Signed-off-by: Integral <integral@archlinuxcn.org>
+Fixes: fa4d79c64dae ("scripts: mandate that new files have SPDX-License-Identifier")
+Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 ---
- docs/system/gdb.rst         | 2 +-
- docs/system/linuxboot.rst   | 6 +++---
- docs/system/target-mips.rst | 2 +-
- 3 files changed, 5 insertions(+), 5 deletions(-)
+ scripts/checkpatch.pl | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/docs/system/gdb.rst b/docs/system/gdb.rst
-index 4228cb56bb..d50470b135 100644
---- a/docs/system/gdb.rst
-+++ b/docs/system/gdb.rst
-@@ -20,7 +20,7 @@ connection, use the ``-gdb dev`` option instead of ``-s``. See
- 
- .. parsed-literal::
- 
--   |qemu_system| -s -S -kernel bzImage -hda rootdisk.img -append "root=/dev/hda"
-+   |qemu_system| -s -S -kernel bzImage -drive file=rootdisk.img,format=raw -append "root=/dev/sda"
- 
- QEMU will launch but will silently wait for gdb to connect.
- 
-diff --git a/docs/system/linuxboot.rst b/docs/system/linuxboot.rst
-index 5db2e560dc..2328b4a73d 100644
---- a/docs/system/linuxboot.rst
-+++ b/docs/system/linuxboot.rst
-@@ -11,7 +11,7 @@ The syntax is:
- 
- .. parsed-literal::
- 
--   |qemu_system| -kernel bzImage -hda rootdisk.img -append "root=/dev/hda"
-+   |qemu_system| -kernel bzImage -drive file=rootdisk.img,format=raw -append "root=/dev/sda"
- 
- Use ``-kernel`` to provide the Linux kernel image and ``-append`` to
- give the kernel command line arguments. The ``-initrd`` option can be
-@@ -23,8 +23,8 @@ virtual serial port and the QEMU monitor to the console with the
- 
- .. parsed-literal::
- 
--   |qemu_system| -kernel bzImage -hda rootdisk.img \
--                    -append "root=/dev/hda console=ttyS0" -nographic
-+   |qemu_system| -kernel bzImage -drive file=rootdisk.img,format=raw \
-+                    -append "root=/dev/sda console=ttyS0" -nographic
- 
- Use Ctrl-a c to switch between the serial console and the monitor (see
- :ref:`GUI_keys`).
-diff --git a/docs/system/target-mips.rst b/docs/system/target-mips.rst
-index 83239fb9df..9028c3b304 100644
---- a/docs/system/target-mips.rst
-+++ b/docs/system/target-mips.rst
-@@ -112,5 +112,5 @@ https://mipsdistros.mips.com/LinuxDistro/nanomips/kernels/v4.15.18-432-gb2eb9a8b
- Start system emulation of Malta board with nanoMIPS I7200 CPU::
- 
-    qemu-system-mipsel -cpu I7200 -kernel <kernel_image_file> \
--       -M malta -serial stdio -m <memory_size> -hda <disk_image_file> \
-+       -M malta -serial stdio -m <memory_size> -drive file=<disk_image_file>,format=raw \
-        -append "mem=256m@0x0 rw console=ttyS0 vga=cirrus vesa=0x111 root=/dev/sda"
+diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+index 6ae9d7febee8..365892de0428 100755
+--- a/scripts/checkpatch.pl
++++ b/scripts/checkpatch.pl
+@@ -1688,11 +1688,11 @@ sub process {
+ 			    /\.(c|h|py|pl|sh|json|inc|Makefile)$/) {
+ 			    # source code files MUST have SPDX license declared
+ 			    ERROR("New file '$expect_spdx_file' requires " .
+-				  "'SPDX-License-Identifer'");
++				  "'SPDX-License-Identifier'");
+ 			} else {
+ 			    # Other files MAY have SPDX license if appropriate
+ 			    WARN("Does new file '$expect_spdx_file' need " .
+-				 "'SPDX-License-Identifer'?");
++				 "'SPDX-License-Identifier'?");
+ 			}
+ 		    }
+ 		    $expect_spdx = 1;
 -- 
-2.49.0
+2.34.1
 
 
