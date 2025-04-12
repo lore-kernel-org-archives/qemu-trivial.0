@@ -1,85 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u2E88-00078T-O8
-	for mharc-qemu-trivial@gnu.org; Tue, 08 Apr 2025 14:57:04 -0400
+	id 1u3fHv-0001nn-29
+	for mharc-qemu-trivial@gnu.org; Sat, 12 Apr 2025 14:09:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u2E86-0006uw-Ej
- for qemu-trivial@nongnu.org; Tue, 08 Apr 2025 14:57:02 -0400
-Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ (Exim 4.90_1) (envelope-from <arthur.sengileyev@gmail.com>)
+ id 1u3fHk-0001fU-AB; Sat, 12 Apr 2025 14:08:57 -0400
+Received: from mail-lj1-x234.google.com ([2a00:1450:4864:20::234])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u2E7v-0004Js-K4
- for qemu-trivial@nongnu.org; Tue, 08 Apr 2025 14:57:02 -0400
-Received: by mail-wm1-x334.google.com with SMTP id
- 5b1f17b1804b1-43cf05f0c3eso38999735e9.0
- for <qemu-trivial@nongnu.org>; Tue, 08 Apr 2025 11:56:49 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <arthur.sengileyev@gmail.com>)
+ id 1u3fHg-0005Ic-O5; Sat, 12 Apr 2025 14:08:55 -0400
+Received: by mail-lj1-x234.google.com with SMTP id
+ 38308e7fff4ca-30effbfaf4aso28651331fa.3; 
+ Sat, 12 Apr 2025 11:08:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1744138608; x=1744743408; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=Aar0fJ7Vs4z1geDlA6Q01FVDg7iAx6AqY33ZS2R/YkM=;
- b=jwNKARXBKbnXnOCJ6a99cY2TDrEywIAcxRC3yUIQGgVBHWSkNpmdO710uUzAt6REe+
- YcUCqNkofQFlQttC18wA6IJ+gsi679Nl7ynw5+PIhqs5XIFtjIH9KWjCf+7hmJCOrK9k
- dReLmtTLmcSVOnrRL0GploqABmhF4rY8ILsNdh1RDr4lPghs1PVm3JN/HTwN1Vg5fQXV
- /4W4yENisUSV2lTLjuXwzPrZyIRIlPPEdxsOUoLJn/9BLXvztl3nWb3XsvBj5x+2MyqE
- gM53rDu2ukhXB8Ox7D9tD1CE8hHkEq8BITjKDRnr7EgZ2C/QbiOQtLSewQBAV5kYeZNV
- e3SA==
+ d=gmail.com; s=20230601; t=1744481328; x=1745086128; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=eTeQINHtOJdpGFDL7OobHFAVylbSYWG/0glbsWwisUc=;
+ b=H2Lb9VlD3+JCZ4UXKsb/Ygvoqh1BRozWVXuqVMbhHhEbXjq2lPK5FxMv79LDdViSBr
+ VrIZXExFA0RghXzKtoaT/jzvJf1P8o6IUEZeqgeSFxczWvscK0k2vGe3SBFSdacz7d1S
+ qQL46zLpQxd6/4tEW3KxW4kAA6wTcWrJMEj07fPbToxSF2gBRLs/dZ1VuEsNpU0i8crr
+ NioD+4OdUc0g+9nqnwmrbdaMYVjbdmD9ps4MgwAa+YfH5OZJYZ90gKPuczbWonPg7ca5
+ ZgUBtWorx9LqWtpXUsFg2qCwRo9Mx3oweDfWJAbo38GbNPXuHdd3gtrph3cby7cNB7pl
+ 6y0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744138608; x=1744743408;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=Aar0fJ7Vs4z1geDlA6Q01FVDg7iAx6AqY33ZS2R/YkM=;
- b=vK9AgUgo+L6/9BekllOviZrelTbSRdttVWGYAdyPisDH++xB3MQqWKMjL5SGDyqHXl
- 9Nuv9Ayn5gpLOYLQe71qZktaZPigUmwq56P7bdUjHRM5D9QE/0t8nFkxkVPJv9F36cCS
- Cpl6K0MISz9t/1qWCQbkskG4E76J2AZ+aofkzofY/9gbaaO2NrLAawd8RP3zlN0wHJH6
- vBLkbm3OxinST2wClmufILc7jq62XmJVy8SAktKQtzVf0vNYkYBVuImr+koEGsc7m7EF
- 4saoMpS+u0Pw6xWULeQibKNQGtccjCTM3mVlF8aff0rzimhC77cnozU312TQmZP0lT/B
- r8zg==
+ d=1e100.net; s=20230601; t=1744481328; x=1745086128;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=eTeQINHtOJdpGFDL7OobHFAVylbSYWG/0glbsWwisUc=;
+ b=nBLlJTAf2MmH8P0lcGEFm2FLugifCnSZ+wdz5HU7tBOB2C5GiaS6oJzoqD6ymgz642
+ CeWIiKmU9xfFdT7rJ2W0OWbXWZp3y7TsHs6QhJVcmVaHyj9hjjmQt5nV/0UfHbO7rZ7/
+ DeS9OzNv41HPlXzesXinW99DAkcJTDVFECNSnW8ttIslPaHH+dQMCZIOJEhEBIaYLSiY
+ f6G+Hc0ANtEGA5IvVfjcnUO0qh89jfJK8IiLhvheyMm2rqnsPe+xOXSCeAW5FwBXaC4L
+ xyn/mjZMay1l5ALXDMHxV8grOwSnH8cYKBlckqna+a4XttfbcTMrPcliSNKYEhTXNYwO
+ r3fw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWx0hTYuOMgaEYDyx0SzzleP/H2P6ReFCDHXJNsfb89Smyk486xdqm8WPdjaH67FlNjqxfC0ZoqjgIYyrg=@nongnu.org
-X-Gm-Message-State: AOJu0YxKvVGEfmfRKeax5c+1OrQGOE5g4gwqLGw/nj981dYxGDMu8aCW
- vsOfN/r5uZdwU7e0m89zWRMTY/JOvVsFCzPTBzfKk0yU4lQkr5uHEwqXPzanxwO56CBvydt1KzQ
- ifeQ=
-X-Gm-Gg: ASbGncu/qYl8TEvPqLFuGeWLA9yIO/lCCVi9fAVdJn28Zz0b2uPN76xsYGOR2a0BCnf
- 5jwomDqDCCkrTfVVWmDu+a8iGqpYvyTfTxv5R9U3qGN8WEpg9aUs4njBKSZLP5c2p+IewLDcLta
- 9JD125KAOu12yJRH+f51rdDfLeFJmAzUxam2s8Se7wPuU1vwyjzyvgNHmZgGjVs6EbB1HubGvJa
- VTNPK001z1VNXGQMQuvTgHYBvrNNxMRkncykVHDXFfcyS0FLcI8JAoIfKG3nt19ac6hEDL7105G
- eG7mSdePejnoYMK4erk3DHiJQhMnUGLwGR+n8oBhuNmEGN8M9pdN8VMjRyZ/vSWbeFkVXbaeBJF
- BfcdHRBX19AuJ
-X-Google-Smtp-Source: AGHT+IF7r+OdHif1nTU2mBrUYmvofGlvkInl34cpcpHmVd5KfXG5VkXIRiGC4sT7Wh8qiV9M5gBm4g==
-X-Received: by 2002:a05:6000:1863:b0:39c:1424:3246 with SMTP id
- ffacd0b85a97d-39d87aa1e43mr292400f8f.2.1744138607827; 
- Tue, 08 Apr 2025 11:56:47 -0700 (PDT)
-Received: from [192.168.69.238] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-39c301a732asm15876480f8f.30.2025.04.08.11.56.47
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 08 Apr 2025 11:56:47 -0700 (PDT)
-Message-ID: <151210e9-1969-4e55-99d2-53dc7e9d9864@linaro.org>
-Date: Tue, 8 Apr 2025 20:56:46 +0200
+ AJvYcCUzmZSgxoIGb8iR5l8pE1fUNW99+/NhMg0Xy7ug8mp1oIyEAwTvHeVioN1vhO9VOLb69DHgZuwZIZjZm0I=@nongnu.org
+X-Gm-Message-State: AOJu0Yw5Xaim71WaiBv0eOuA9MvvexeoB3RS34UjUo0THtMP8oRT/7wk
+ 37nEXZqrAsDEBC5Iqftb/n5IeBBFMnsHm5vQ3GrU7yApOgAptbYXGJKcOrDh
+X-Gm-Gg: ASbGncvu9ITnJ4DvBddvsTsCNLfdqiTUEj/DbMjbfssFV/DM1eru9n15K7UnFslcy7k
+ BkWQyEnA83uDR1EJni/9KhPesQu3aM4kSxfmweRB8YwzyUqxnhfymMstaDzrfZP1j7gwFvvnMnH
+ 2dibg+s7zQWKB40UvFTgac9GgXEzj+Ayyyj3X0NMjxj7wTAinN+KpwdYMfXT5xqtYWnZwMgkj9z
+ w/r6ynQ/UbB53u+CK2iFu2hrXmeRNzZkss9e5oQD9VPvgCsbTvjcOWCQwwuViunDOK2I2qKRbpk
+ v/jwOMtcfYULTGQNNuszsEeamGIp/fISRt5CeHXs4Kk1qgXLdJmuP5C+sw4FbCqVBgMJ0XEybA=
+ =
+X-Google-Smtp-Source: AGHT+IHnBfEfKpo8B0ayRb+8SxcLJnq/r7hEFW/I5CXlnm0X9v5aeOde9bQYMpzW44w05WSTMiAO3g==
+X-Received: by 2002:a2e:9a12:0:b0:30b:bdb0:f09d with SMTP id
+ 38308e7fff4ca-31049a80161mr27003581fa.32.1744481328170; 
+ Sat, 12 Apr 2025 11:08:48 -0700 (PDT)
+Received: from glider-mk2.mshome.net ([87.246.149.32])
+ by smtp.gmail.com with ESMTPSA id
+ 38308e7fff4ca-30f465f83ffsm11486471fa.101.2025.04.12.11.08.47
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 12 Apr 2025 11:08:47 -0700 (PDT)
+From: Arthur Sengileyev <arthur.sengileyev@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Cleber Rosa <crosa@redhat.com>, John Snow <jsnow@redhat.com>,
+ Stefan Weil <sw@weilnetz.de>,
+ Arthur Sengileyev <arthur.sengileyev@gmail.com>
+Subject: [PATCH] Fix objdump output parser in "nsis.py"
+Date: Sat, 12 Apr 2025 21:08:30 +0300
+Message-ID: <20250412180830.52742-1-arthur.sengileyev@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] scripts/checkpatch: Fix typo in SPDX-License-Identifier
- keyword
-To: Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
- <berrange@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-References: <20250408162702.2350565-1-zhao1.liu@intel.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250408162702.2350565-1-zhao1.liu@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::334;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::234;
+ envelope-from=arthur.sengileyev@gmail.com; helo=mail-lj1-x234.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,18 +87,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 08 Apr 2025 18:57:03 -0000
+X-List-Received-Date: Sat, 12 Apr 2025 18:08:58 -0000
 
-On 8/4/25 18:27, Zhao Liu wrote:
-> Fix the typo in the error message to help `grep` the example:
-> 
-> ERROR: New file '***' requires 'SPDX-License-Identifer'
-> 
-> Fixes: fa4d79c64dae ("scripts: mandate that new files have SPDX-License-Identifier")
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> ---
->   scripts/checkpatch.pl | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+In msys2 distribution objdump from gcc is using single tab character
+prefix, but objdump from clang is using 4 white space characters instead.
+The script will not identify any dll dependencies for a QEMU build
+generated with clang. This in turn will fail the build, because there
+will be no files inside dlldir and no setup file will be created.
+Instead of checking for whitespace in prefix use lstrip to accommodate
+for differences in outputs.
 
-Patch queued, thanks!
+Signed-off-by: Arthur Sengileyev <arthur.sengileyev@gmail.com>
+---
+ scripts/nsis.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/scripts/nsis.py b/scripts/nsis.py
+index af4e064819..8f469634eb 100644
+--- a/scripts/nsis.py
++++ b/scripts/nsis.py
+@@ -23,7 +23,7 @@ def find_deps(exe_or_dll, search_path, analyzed_deps):
+     output = subprocess.check_output(["objdump", "-p", exe_or_dll], text=True)
+     output = output.split("\n")
+     for line in output:
+-        if not line.startswith("\tDLL Name: "):
++        if not line.lstrip().startswith("DLL Name: "):
+             continue
+ 
+         dep = line.split("DLL Name: ")[1].strip()
+-- 
+2.43.0
+
 
