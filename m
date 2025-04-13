@@ -1,42 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u3wwG-0000u6-UG
-	for mharc-qemu-trivial@gnu.org; Sun, 13 Apr 2025 08:59:56 -0400
+	id 1u4136-0003Mc-7v
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Apr 2025 13:23:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1u3wwB-0000sA-OE; Sun, 13 Apr 2025 08:59:52 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1u3ww9-0007v0-GC; Sun, 13 Apr 2025 08:59:51 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 5826E116A4E;
- Sun, 13 Apr 2025 15:57:57 +0300 (MSK)
-Received: from gandalf.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id E5F821EEE7B;
- Sun, 13 Apr 2025 15:59:37 +0300 (MSK)
-Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
- id D2B1D58525; Sun, 13 Apr 2025 15:59:37 +0300 (MSK)
-From: Michael Tokarev <mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <ziqiaokong@gmail.com>)
+ id 1u4134-0003MC-3k; Sun, 13 Apr 2025 13:23:14 -0400
+Received: from mail-pf1-x434.google.com ([2607:f8b0:4864:20::434])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <ziqiaokong@gmail.com>)
+ id 1u4132-0008DA-J8; Sun, 13 Apr 2025 13:23:13 -0400
+Received: by mail-pf1-x434.google.com with SMTP id
+ d2e1a72fcca58-736b350a22cso2928141b3a.1; 
+ Sun, 13 Apr 2025 10:23:11 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1744564990; x=1745169790; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=B6r3JOqX0rcIOcKKbyD5aOl6OOJA0RRWKsrVkEzoHaE=;
+ b=OPQIoLW+T7ScpOK3g1FiSrhiJ353QYKLrV1QlJcc9IKQa8BcxgL51b92kikLrHo/hm
+ q4N/Zb5UI/bXoKXzqOYzpD74B7MP0DrCo98Ltqm4NIJcR9kmgS+1eVkcrmYhAKGekKw5
+ NNZJeofkmSv3UCcYfUYpc3GMrDEkzZPqoGgQOO5x09+QFLK6PE0qBGwNuw/gNaS5+ROw
+ cm/ADze4OMJJvinN6Jp4S1Z+Xu+KTLPSySvUSpMjPBR4q90LmGZaGkxNHSudCB8sKvC0
+ lvluuIRaFlWa0vS2f82KRrktBgS73N8wm2lMeX9ffmJsy0mCd7WQErUbiXAusFrR8/f5
+ fV/w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1744564990; x=1745169790;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=B6r3JOqX0rcIOcKKbyD5aOl6OOJA0RRWKsrVkEzoHaE=;
+ b=VrWgWYhAvItPyeKe2z7TWVTb2ymajJVj9ZtDhVec6ne1KDc7YKTFy8bijH2J3DaDRE
+ og1ntUEKyyFSMCsosfcw0DvVhYSzcYkIxoniU3w53/Wh+D9RDpwYny+ajTs6rjmBr90p
+ 0/zixIC92ej58N39EylN14hyeTU9f/MS6N7WQcifasRmVcMygJd2RSVnMbhY+esgmBeQ
+ z456pYHmPvHMBGl9N1Q3W2/TZKZEOsQY2bX+xADPp2zCDHDHOWezP5Yg6q9kMGOXy2A1
+ FSWTd4gDsOE2axdJbxr2vw1fRUuc8UA/VxUWuT4tNibAu1ySn+WfW776JO4dBo3kZdfJ
+ iljw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWEOEy7QZRl1YJzllmm0A5NFYj2iyoCNdB+kwSLZtpFl+uiIfb8BDvP+QteXuEUVH76r2z7INn07MVz+bU=@nongnu.org
+X-Gm-Message-State: AOJu0YyjfAVmrj3X347N5xTssarMZXWyLzmqkLA8Z1ulhqttnZ7fXFS5
+ vzRg2eKgVLBUbdwzvAdKO6tC4GIvNe5sm6o+xNqDqCfPWP5FYgz3syXZNQ==
+X-Gm-Gg: ASbGncs8861O5dh8qxrxUnXgYfI88+7p7rsBeVGSO+de072PSqhgyiNLCpXBcwGagL0
+ 7yU+ha7luXIKiOM6pX2d85DGgvDwkvYw4eMaN74jwhKYkXKEKgNW8qrGvEzbIZT+PmFtNrirwpv
+ gMXDZBEUSA2CptmP21Ns693aLX5ZX3oZ/v0ZxjXVwHYXqV0I+lm3w7PvMJ/S2bA3wNXciLbVh62
+ yelow9w6myuWmHUw6bUKIwiGw+XeiWWlR4E11HxMty2LM9hDHOHFqJtzd4r33lWc1GfHyHV156K
+ OZ5JXw/hE1BqeAga9k7JTqWpZ4GQdE42Vwf9gRg+
+X-Google-Smtp-Source: AGHT+IHJUgUiwWXAiEOLjPFWub/8H2tExGNFZM1etrv97FXh9DHrou5LdBorOUCsaIpWcRwLQuvTvw==
+X-Received: by 2002:a05:6a00:21c4:b0:736:ba49:97bb with SMTP id
+ d2e1a72fcca58-73bd11a8470mr12321671b3a.5.1744564989730; 
+ Sun, 13 Apr 2025 10:23:09 -0700 (PDT)
+Received: from station.lan ([155.69.190.63]) by smtp.gmail.com with ESMTPSA id
+ d2e1a72fcca58-73bd230e4adsm5381989b3a.142.2025.04.13.10.23.08
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sun, 13 Apr 2025 10:23:09 -0700 (PDT)
+From: Ziqiao Kong <ziqiaokong@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Arthur Sengileyev <arthur.sengileyev@gmail.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 2/3] Fix objdump output parser in "nsis.py"
-Date: Sun, 13 Apr 2025 15:59:36 +0300
-Message-Id: <20250413125937.2448971-3-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.39.5
-In-Reply-To: <20250413125937.2448971-1-mjt@tls.msk.ru>
-References: <20250413125937.2448971-1-mjt@tls.msk.ru>
+Cc: ziqiaokong@gmail.com, qemu-trivial@nongnu.org, alistair.francis@wdc.com,
+ richard.henderson@linaro.org
+Subject: [PATCH 0/1] Fix endless translation loop of riscv
+Date: Mon, 14 Apr 2025 01:22:41 +0800
+Message-Id: <20250413172242.3430944-1-ziqiaokong@gmail.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::434;
+ envelope-from=ziqiaokong@gmail.com; helo=mail-pf1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -49,40 +83,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 13 Apr 2025 12:59:53 -0000
+X-List-Received-Date: Sun, 13 Apr 2025 17:23:14 -0000
 
-From: Arthur Sengileyev <arthur.sengileyev@gmail.com>
+Hello! I'm Ziqiao Kong, the maintainer of Unicorn Engine, a fork of
+QEMU. When I port Unicorn Engine to s390x, I notice there is a bug in
+the implementation of RISCV MMU. It uses qemu_map_ram_ptr to get a
+pointer and reads it directly, instead of bswap or address_space_ldl,
+which causes an endless translation loop on big endian systems like
+s390x I'm working on. Therefore, a quick fix to this is to call
+cpu_to_le64 for cmpxchg as this patch shows.
 
-In msys2 distribution objdump from gcc is using single tab character
-prefix, but objdump from clang is using 4 white space characters instead.
-The script will not identify any dll dependencies for a QEMU build
-generated with clang. This in turn will fail the build, because there
-will be no files inside dlldir and no setup file will be created.
-Instead of checking for whitespace in prefix use lstrip to accommodate
-for differences in outputs.
+This patch passes our unit tests and the error is somewhat obvious
+(unhandled endianness discrepancy). Therefore, I'm rather confident
+that QEMU aslo needs this patch. Given the changes are small and don't
+impact most popular little endian platforms, I think this fits into
+trivial patches.
 
-Signed-off-by: Arthur Sengileyev <arthur.sengileyev@gmail.com>
-Reviewed-by: Stefan Weil <sw@weilnetz.de>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- scripts/nsis.py | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Ziqiao Kong (1):
+  target/riscv: fix endless translation loop on big endian systems
 
-diff --git a/scripts/nsis.py b/scripts/nsis.py
-index af4e064819..8f469634eb 100644
---- a/scripts/nsis.py
-+++ b/scripts/nsis.py
-@@ -23,7 +23,7 @@ def find_deps(exe_or_dll, search_path, analyzed_deps):
-     output = subprocess.check_output(["objdump", "-p", exe_or_dll], text=True)
-     output = output.split("\n")
-     for line in output:
--        if not line.startswith("\tDLL Name: "):
-+        if not line.lstrip().startswith("DLL Name: "):
-             continue
- 
-         dep = line.split("DLL Name: ")[1].strip()
+ target/riscv/cpu_helper.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
 -- 
-2.39.5
+2.34.1
 
 
