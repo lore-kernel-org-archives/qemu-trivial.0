@@ -1,30 +1,32 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u3vBH-00015W-9w
-	for mharc-qemu-trivial@gnu.org; Sun, 13 Apr 2025 07:07:19 -0400
+	id 1u3vBJ-00016G-KR
+	for mharc-qemu-trivial@gnu.org; Sun, 13 Apr 2025 07:07:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1u3vB0-00013c-Es; Sun, 13 Apr 2025 07:07:04 -0400
+ id 1u3vAx-00013R-C7; Sun, 13 Apr 2025 07:07:01 -0400
 Received: from isrv.corpit.ru ([86.62.121.231])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1u3vAy-00009i-Li; Sun, 13 Apr 2025 07:07:02 -0400
+ id 1u3vAu-00008l-4V; Sun, 13 Apr 2025 07:06:57 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id E8C5F116998;
+ by isrv.corpit.ru (Postfix) with ESMTP id C646E116997;
  Sun, 13 Apr 2025 14:05:02 +0300 (MSK)
 Received: from gandalf.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 34E571EEDF7;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 3F4981EEDF9;
  Sun, 13 Apr 2025 14:06:43 +0300 (MSK)
 Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
- id 2774B58519; Sun, 13 Apr 2025 14:06:43 +0300 (MSK)
+ id 2B5EF5851D; Sun, 13 Apr 2025 14:06:43 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Subject: [PULL 0/2] Trivial patches for 2025-04-13
-Date: Sun, 13 Apr 2025 14:06:41 +0300
-Message-Id: <20250413110643.2438368-1-mjt@tls.msk.ru>
+Cc: Arthur Sengileyev <arthur.sengileyev@gmail.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 2/2] Fix objdump output parser in "nsis.py"
+Date: Sun, 13 Apr 2025 14:06:43 +0300
+Message-Id: <20250413110643.2438368-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.39.5
+In-Reply-To: <20250413110643.2438368-1-mjt@tls.msk.ru>
+References: <20250413110643.2438368-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
@@ -47,36 +49,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 13 Apr 2025 11:07:16 -0000
+X-List-Received-Date: Sun, 13 Apr 2025 11:07:15 -0000
 
-The following changes since commit 56c6e249b6988c1b6edc2dd34ebb0f1e570a1365:
+From: Arthur Sengileyev <arthur.sengileyev@gmail.com>
 
-  Update version for v10.0.0-rc3 release (2025-04-09 04:33:10 -0400)
+In msys2 distribution objdump from gcc is using single tab character
+prefix, but objdump from clang is using 4 white space characters instead.
+The script will not identify any dll dependencies for a QEMU build
+generated with clang. This in turn will fail the build, because there
+will be no files inside dlldir and no setup file will be created.
+Instead of checking for whitespace in prefix use lstrip to accommodate
+for differences in outputs.
 
-are available in the Git repository at:
+Signed-off-by: Arthur Sengileyev <arthur.sengileyev@gmail.com>
+Reviewed-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ scripts/nsis.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+diff --git a/scripts/nsis.py b/scripts/nsis.py
+index af4e064819..8f469634eb 100644
+--- a/scripts/nsis.py
++++ b/scripts/nsis.py
+@@ -23,7 +23,7 @@ def find_deps(exe_or_dll, search_path, analyzed_deps):
+     output = subprocess.check_output(["objdump", "-p", exe_or_dll], text=True)
+     output = output.split("\n")
+     for line in output:
+-        if not line.startswith("\tDLL Name: "):
++        if not line.lstrip().startswith("DLL Name: "):
+             continue
+ 
+         dep = line.split("DLL Name: ")[1].strip()
+-- 
+2.39.5
 
-for you to fetch changes up to b0b5af62ef9eaf25246cdd433a4eb69361298ee4:
-
-  Fix objdump output parser in "nsis.py" (2025-04-13 13:45:41 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2025-04-13
-
-two very small fixes for 10.0, if it's not too late
-----------------------------------------------------------------
-Arthur Sengileyev (1):
-      Fix objdump output parser in "nsis.py"
-
-Stefan Weil (1):
-      docs: Fix some typos (found by codespell and typos)
-
- docs/about/deprecated.rst  | 4 ++--
- docs/devel/codebase.rst    | 6 +++---
- docs/devel/qapi-domain.rst | 4 ++--
- include/exec/memory.h      | 4 ++--
- qapi/qdev.json             | 2 +-
- scripts/nsis.py            | 2 +-
- 6 files changed, 11 insertions(+), 11 deletions(-)
 
