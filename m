@@ -1,77 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u4HoW-0008Hk-Tx
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Apr 2025 07:17:20 -0400
+	id 1u4L2Q-0004b7-5L
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Apr 2025 10:43:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ziqiaokong@gmail.com>)
- id 1u4HoS-0008HD-KS; Mon, 14 Apr 2025 07:17:16 -0400
-Received: from mail-vk1-xa2d.google.com ([2607:f8b0:4864:20::a2d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ziqiaokong@gmail.com>)
- id 1u4HoQ-0002Aw-JK; Mon, 14 Apr 2025 07:17:16 -0400
-Received: by mail-vk1-xa2d.google.com with SMTP id
- 71dfb90a1353d-52446b21cfdso1780988e0c.1; 
- Mon, 14 Apr 2025 04:17:13 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1744629433; x=1745234233; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=FwU/3duoMzPmCLBmlSEEpQ+EfCjeAWRzJJ1nwlpKUxY=;
- b=YT6JQv501ie46YIu3Nglydh/iRADyVAlcsMgHMuf8w3Wx3PqSKgHOb//jZ/UUhYfbV
- pYT2BkqQ/WyiWmGBlvMq8ZgVGd5ZipjqQaiV+7OkQ2mx7W8m+vkpd/4zP4D6Af2xrBFc
- Z7ehq/88SpUwj1O/beJL1RW+N7t5y775qSlOF/3gRnIGppV48KDjM2UzrVYaJ/wAwB7y
- YDTekP30HlJcWX4lDDOHjbAoZea/wMO0RlfsGeuQLwR/EZSf8027bBmaKrEHl05Tblwd
- teW0+dkeQRscF82nu8gFUA3Vv7V4xGLqqDUyhIE6/+J6CnQKbNFB7fE2WWPXs99ldukZ
- f9oA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744629433; x=1745234233;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=FwU/3duoMzPmCLBmlSEEpQ+EfCjeAWRzJJ1nwlpKUxY=;
- b=Dz5KIhkzIuGkOrzo/MLM/NCSClJzxvG+0MPCZsaR/P6PflQbVyPZwEzaGswZLT2f00
- yUhGjUGXXgOkBatN5BzMpzLYx5J+/3dXoyQRxh4gI205t6NQ9K5IEeaT8IBBxhRTNmEy
- 2WP5JQEG6NIgel+HNROhDA25y0411fqH+HoDcbwi4M8jPyObbZ5apPvqfpW/CEN/pVAT
- PUsXFBCM20xBD5IfeamxnG9/gzdxpsdbycRBaI1AZ4Lywzh24qVAhc60nmw3xkRmG37o
- 1luZGxXU1sVumSfULKmJBrbiJWPhhsT/KW7hTTaheEXKefZQh8kXwjLGiQlhJSm3cLVh
- n2fA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWK8taDMhJXKumQCpcguRxEiOeGxZCTWL8vxLfI6vZFiGURnWsoON7g4wwDL/l20iIZMzsjNXOrfXK8/b4=@nongnu.org
-X-Gm-Message-State: AOJu0YwjP135qnSTr8IMEw9PlJbHkU4yKZewL/U827iOFlgXEa51hqSn
- SAb/oWbVnAWfWKaihdVkLdv/NJQd7PNKlCq6gC9ZmP3V3cmBSjYoiP+fovgHzSpjpORI526B8GJ
- wKUeMAksqPUxYuPc1ZjjGcTf6jHTJCfdc
-X-Gm-Gg: ASbGncs2EuiQs+EWi3IxtsgcQLuRfOt2vp1UHYxBwEbVv9zPUitVAkVhlrIGHnZkwVJ
- bYdsmUHHqET1FqMlQPGfiDP2jJjrC6PaMeyqgORyuqL27lzxQ9w6b83uo+agd2adKkI/gmQ3gSN
- skCYVUT5srBPCxfnhoNz67Tg==
-X-Google-Smtp-Source: AGHT+IEpy+/cAdKGWOTVqhnbJQN5yxJs38MxXbyz85OxySPY+/rDwZxMhk8szWuKREUW8K7WHSdfsWALGYi72J3w7JA=
-X-Received: by 2002:a05:6122:8c6:b0:526:720:704 with SMTP id
- 71dfb90a1353d-527c359743fmr6494705e0c.7.1744629432657; Mon, 14 Apr 2025
- 04:17:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1u4L2J-0004Zq-NG
+ for qemu-trivial@nongnu.org; Mon, 14 Apr 2025 10:43:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
+ id 1u4L2I-0000P5-0V
+ for qemu-trivial@nongnu.org; Mon, 14 Apr 2025 10:43:47 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1744641823;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=lFVVnSzyb9FDUrIfAz46FvkvnVICAsiHlfUYX0fzRIw=;
+ b=ZAhWAS/21wd/dIBZkYLJT9gKHdgkCVxqNF7/ENlxjHo3PMqMg03fUGcifH7jAgjZ21h8Ke
+ 16BqTsFQkn+B+1HoKo1zcRnlzsUaBXOoCCdJEDvQc+5rxqWrXYkfsv1FuUhgP3e1S4V2cN
+ 5CTI8seIOgcphzFmJ8gCp2LnIyZoRVI=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-629-_0WzAfJHOdS344sUHFCCDQ-1; Mon,
+ 14 Apr 2025 10:43:40 -0400
+X-MC-Unique: _0WzAfJHOdS344sUHFCCDQ-1
+X-Mimecast-MFC-AGG-ID: _0WzAfJHOdS344sUHFCCDQ_1744641819
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6EEAB19560AB; Mon, 14 Apr 2025 14:43:38 +0000 (UTC)
+Received: from localhost (unknown [10.2.16.100])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id C58BE18009BC; Mon, 14 Apr 2025 14:43:37 +0000 (UTC)
+Date: Mon, 14 Apr 2025 10:43:36 -0400
+From: Stefan Hajnoczi <stefanha@redhat.com>
+To: Stefan Weil <sw@weilnetz.de>
+Cc: Arthur Sengileyev <arthur.sengileyev@gmail.com>, qemu-devel@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>,
+ Cleber Rosa <crosa@redhat.com>, John Snow <jsnow@redhat.com>
+Subject: Re: [PATCH for-10.0] Fix objdump output parser in "nsis.py"
+Message-ID: <20250414144336.GA117758@fedora>
+References: <20250412180830.52742-1-arthur.sengileyev@gmail.com>
+ <d0f79ab8-5e02-4f9d-aa6b-acf8220e5d11@weilnetz.de>
 MIME-Version: 1.0
-References: <20250414034626.3491489-1-ziqiaokong@gmail.com>
- <20250414034626.3491489-2-ziqiaokong@gmail.com>
- <3c9e1adc-eb4e-49f4-be32-b273a5a161b8@linaro.org>
-In-Reply-To: <3c9e1adc-eb4e-49f4-be32-b273a5a161b8@linaro.org>
-From: Ziqiao Kong <ziqiaokong@gmail.com>
-Date: Mon, 14 Apr 2025 19:17:00 +0800
-X-Gm-Features: ATxdqUEuKvhtpv_hqx2zhvx-lskXItBGJAWym2WazV_QVc-PR4ipIt4qRhHFGYc
-Message-ID: <CAM0BWNCVU3GNqAe-stRRYytqC2H7G2iC8Wmpe3sz0u4kkUpYDg@mail.gmail.com>
-Subject: Re: [PATCH v2 1/1] target/riscv: fix endless translation loop on big
- endian systems
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, alistair.francis@wdc.com, 
- richard.henderson@linaro.org
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a2d;
- envelope-from=ziqiaokong@gmail.com; helo=mail-vk1-xa2d.google.com
+Content-Type: multipart/signed; micalg=pgp-sha256;
+ protocol="application/pgp-signature"; boundary="DqzfdfZwe9OJl8fC"
+Content-Disposition: inline
+In-Reply-To: <d0f79ab8-5e02-4f9d-aa6b-acf8220e5d11@weilnetz.de>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -85,82 +75,78 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Apr 2025 11:17:19 -0000
+X-List-Received-Date: Mon, 14 Apr 2025 14:43:52 -0000
 
-On Mon, Apr 14, 2025 at 6:41=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> Hi,
->
-> On 14/4/25 05:46, Ziqiao Kong wrote:
-> > On big endian systems, pte and updated_pte hold big endian host data
-> > while pte_pa points to little endian target data. This means the branch
-> > at cpu_helper.c:1669 will be always satisfied and restart translation,
-> > causing an endless translation loop.
-> >
->
-> Cc: qemu-stable@nongnu.org
-> Fixes: 0c3e702aca7 ("RISC-V CPU Helpers")
->
-> > Signed-off-by: Ziqiao Kong <ziqiaokong@gmail.com>
+
+--DqzfdfZwe9OJl8fC
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Content-Transfer-Encoding: quoted-printable
+
+On Sat, Apr 12, 2025 at 08:19:50PM +0200, Stefan Weil wrote:
+> Am 12.04.25 um 20:08 schrieb Arthur Sengileyev:
+>=20
+> > In msys2 distribution objdump from gcc is using single tab character
+> > prefix, but objdump from clang is using 4 white space characters instea=
+d.
+> > The script will not identify any dll dependencies for a QEMU build
+> > generated with clang. This in turn will fail the build, because there
+> > will be no files inside dlldir and no setup file will be created.
+> > Instead of checking for whitespace in prefix use lstrip to accommodate
+> > for differences in outputs.
+> >=20
+> > Signed-off-by: Arthur Sengileyev <arthur.sengileyev@gmail.com>
 > > ---
-> >   target/riscv/cpu_helper.c | 4 ++--
-> >   1 file changed, 2 insertions(+), 2 deletions(-)
-> >
-> > diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-> > index 6c4391d96b..bc146771c8 100644
-> > --- a/target/riscv/cpu_helper.c
-> > +++ b/target/riscv/cpu_helper.c
-> > @@ -1662,9 +1662,9 @@ static int get_physical_address(CPURISCVState *en=
-v, hwaddr *physical,
-> >               target_ulong *pte_pa =3D qemu_map_ram_ptr(mr->ram_block, =
-addr1);
-> >               target_ulong old_pte;
-> >               if (riscv_cpu_sxl(env) =3D=3D MXL_RV32) {
-> > -                old_pte =3D qatomic_cmpxchg((uint32_t *)pte_pa, pte, u=
-pdated_pte);
-> > +                old_pte =3D qatomic_cmpxchg((uint32_t *)pte_pa, cpu_to=
-_le32(pte), cpu_to_le32(updated_pte));
-> >               } else {
-> > -                old_pte =3D qatomic_cmpxchg(pte_pa, pte, updated_pte);
-> > +                old_pte =3D qatomic_cmpxchg(pte_pa, cpu_to_le64(pte), =
-cpu_to_le64(updated_pte));
-> >               }
-> >               if (old_pte !=3D pte) {
-> >                   goto restart;
->
-> If PTEs are always stored in LE order, maybe what we want is earlier:
->
-> -- >8 --
-> diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-> index 619c76cc001..b6ac2800240 100644
-> --- a/target/riscv/cpu_helper.c
-> +++ b/target/riscv/cpu_helper.c
-> @@ -1464,5 +1464,5 @@ static int get_physical_address(CPURISCVState
-> *env, hwaddr *physical,
->           if (riscv_cpu_mxl(env) =3D=3D MXL_RV32) {
-> -            pte =3D address_space_ldl(cs->as, pte_addr, attrs, &res);
-> +            pte =3D address_space_ldl_le(cs->as, pte_addr, attrs, &res);
->           } else {
-> -            pte =3D address_space_ldq(cs->as, pte_addr, attrs, &res);
-> +            pte =3D address_space_ldq_le(cs->as, pte_addr, attrs, &res);
+> >   scripts/nsis.py | 2 +-
+> >   1 file changed, 1 insertion(+), 1 deletion(-)
+> >=20
+> > diff --git a/scripts/nsis.py b/scripts/nsis.py
+> > index af4e064819..8f469634eb 100644
+> > --- a/scripts/nsis.py
+> > +++ b/scripts/nsis.py
+> > @@ -23,7 +23,7 @@ def find_deps(exe_or_dll, search_path, analyzed_deps):
+> >       output =3D subprocess.check_output(["objdump", "-p", exe_or_dll],=
+ text=3DTrue)
+> >       output =3D output.split("\n")
+> >       for line in output:
+> > -        if not line.startswith("\tDLL Name: "):
+> > +        if not line.lstrip().startswith("DLL Name: "):
+> >               continue
+> >           dep =3D line.split("DLL Name: ")[1].strip()
+>=20
+>=20
+> Thanks. I use nearly the same code `if not line.strip().startswith("DLL
+> Name: "):` in my builds for WoA.
+>=20
+> @Stefan, can this trivial patch still be applied for 10.0?
 
-Unfortunately, this doesn't work in two ways:
+Yes, it is included in Michael Tokarev's latest trivial patches pull
+request.
 
-1. Note pte is used in the following code and that means pte must hold
-a correct value from the
-view of host endian (in my case, big endian not little endian).
-2. address_space_ldq_le will dispatch to ldq_le_p, while
-address_space_leq will dispatch to ldq_p.
-However, on little endian targets, ldq_p is an alias of ldq_le_p so
-making no effects.
+> I had planned to replace the whole code with objdump by platform independ=
+ent
+> Python code, but that's a larger change, and I missed the deadline.
+>=20
+>=20
+> Reviewed-by: Stefan Weil <sw@weilnetz.de>
+>=20
+>=20
 
-Per my testing, this patch doesn't have any effect indeed. To have a
-brief view what is happening,
-see the logs just before atomic_cmpxchg:
+--DqzfdfZwe9OJl8fC
+Content-Type: application/pgp-signature; name=signature.asc
 
-pte_pa 0xf14000000000000 =3D=3D pte 0x140f ? updated_pte 0x144f
+-----BEGIN PGP SIGNATURE-----
 
->           }
-> ---
+iQEzBAEBCAAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmf9HxgACgkQnKSrs4Gr
+c8hvZQgAmS2Tvkzr+kbkuEJPvPbPEhA9WPv5AVpQnmqvWRZTLPw4m8LpeDB82LYg
+INOESp++X/k4kuBeKeH/p2qKprD/C/EdGGO6VexkU4EXdwJbt1il9QzXB/gg8gMp
+RyjbaDLoBuIRdS8jbZyFUQF/2oREF2ABf4fPGh5kVdPCS2HvXtSyraZRiu0Teu7r
+LiweRXbO+MPaEBxr6tSdzzcrowFPBigiQAF6QRzcmj59TinmrGEtzC+dMdnwnztW
+HNKCJu5y9xZS1BnPzFaA9QakTyzpCGXK9zxeNzehHBJ0nXNaRV7rCgbmSa6sOqoU
+3IYR+NdWFwLDtVs2adIoj5Q8C9cVwQ==
+=i4vd
+-----END PGP SIGNATURE-----
+
+--DqzfdfZwe9OJl8fC--
+
 
