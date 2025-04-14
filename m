@@ -1,84 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u4GBt-0002nZ-C6
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Apr 2025 05:33:22 -0400
+	id 1u4H2u-0003fG-Ti
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Apr 2025 06:28:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1u4GBW-0002lb-4i; Mon, 14 Apr 2025 05:32:58 -0400
-Received: from isrv.corpit.ru ([86.62.121.231])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1u4GBT-00052Y-2H; Mon, 14 Apr 2025 05:32:57 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id CB82A117120;
- Mon, 14 Apr 2025 12:31:05 +0300 (MSK)
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id BDD6E1EF9B6;
- Mon, 14 Apr 2025 12:32:47 +0300 (MSK)
-Message-ID: <e7c37e26-6ec4-45a9-90dc-c5654c2d1948@tls.msk.ru>
-Date: Mon, 14 Apr 2025 12:32:47 +0300
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u4H2b-0003VJ-HU
+ for qemu-trivial@nongnu.org; Mon, 14 Apr 2025 06:27:54 -0400
+Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u4H2Z-0004O9-TN
+ for qemu-trivial@nongnu.org; Mon, 14 Apr 2025 06:27:49 -0400
+Received: by mail-wr1-x42d.google.com with SMTP id
+ ffacd0b85a97d-3913958ebf2so3702090f8f.3
+ for <qemu-trivial@nongnu.org>; Mon, 14 Apr 2025 03:27:47 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1744626466; x=1745231266; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=nw6FxYmwHgRNC4ScC/+LyigaJpiSB50GMw0KegQkYgE=;
+ b=iHY0DXcvV03JTD0qvs9JfhTow7j6cfRokGAAHotszuA/DaU+DFSz2Y6vXH1M4E7I8W
+ RJXlfz21+2t1hWfCcjfR03ThNKnPZyC6dOMbN27ThrXhhTOt7i96Jm6oM8afkLGtrk3n
+ fVTJrF/JvkgJxiF3Qzigs6fNwpx1GW6ip1rBSCUFZ4QgA8KQaqD/Pahz5foOuFupsT5E
+ 69MPfRofKRhE7Sij2xZ+jd80Y78kP7vJNdfAKBVdZBoo7HXubtALmCALylDM48m0cQWF
+ sSWEy3Gn/GSJ8tjwIYJwwJZt7Rhz27lXkH6RFEM9mSiiLeWfBuzpBBtWvVhM0SPTMePg
+ xxzQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1744626466; x=1745231266;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=nw6FxYmwHgRNC4ScC/+LyigaJpiSB50GMw0KegQkYgE=;
+ b=j093QYYRdipHPcT/Yy9+S9dIB7sDEMG0ojgGdStDKXEi5EtsanDrCJW7tLy5NVs+Zx
+ BhJjAZAOKu/SBqBo+/EeAcein2nmx3fo4/tGHSQgNuut7fsvM2+uoS+PxwamIjysJTdH
+ j6HSBsf/iU1qb+dJrEY7mNEkmT3G2eASXEhMYgE79zF6kOlE5hKqSWu4lAO9AnbTH9Sf
+ rTU40M5SSiCd3iWDFwq+4vpkpqqVSnaOort361pNZaEct5ul4CiO/ByhXw4SBpNkMoNm
+ oA/WGuBbnQRA3reiJse5xjfkUrmwgNTf8GaTanCIGRV38LvTCxbazggo3XjX8riUaxUZ
+ a9cw==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXtujThsk3aZyis2AHUAN+em0Af8NDkObGeAH+uliDFIBLWDj4q4w9e2Wismxa3w/lCNKgA/2NfE5DELiU=@nongnu.org
+X-Gm-Message-State: AOJu0YzFkQ/xAJY/j8zGgSS2mHpdybrAC7a0svodwYZ0StMfr8DohXYj
+ oUaJFQtp/XhUw2g00PP7euURZd7b8Pcimyk/YZnePSUcZp3XShLefvJJktJdE/U=
+X-Gm-Gg: ASbGncv04pS8eEGE/uQUKRgeQM8SpAMUNdWDJF0zoks0sccgr4nCvkaaJ4SFJSYRbyZ
+ AxKwPerik4pHm7vzpQ7vk0l6BUkTH6IbHSN/LeVByU4EnX+WXV8KvLHXjZjd1A4rEthtlixkWbC
+ zJe0HtoaMxQT87BE8eSUut8AvsN8f72F9Bfvwsr+vN7u99JKEUan8RHU98LHNQs8Dme7EroLPpd
+ x81AlkVpHC74bJ5EX+sNgtov2YjbuMHCD0KfeiH48Ce87OGXh4BVataF0XSEaM0jATMJBpLvkTH
+ bAqeTwF5qxiL7Y62t/JuJ7iS/NxiUjo7b1zKFRjTnb1Ooi6bi4m0IBT45XlgfrwEnPiAcJf9oZE
+ Y01XmDk/EZqNXjGsL/CM=
+X-Google-Smtp-Source: AGHT+IE8VUtvhsurQq3hKMpmDBPQJ6fgvtij4XStQQn7oAtKoqMlE93th2b99P625Ngx9nrZoE5V1Q==
+X-Received: by 2002:a05:6000:1acf:b0:38d:d0ca:fbad with SMTP id
+ ffacd0b85a97d-39ea51f46d0mr9230109f8f.14.1744626466020; 
+ Mon, 14 Apr 2025 03:27:46 -0700 (PDT)
+Received: from [192.168.69.238] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43f2075fc83sm179431915e9.26.2025.04.14.03.27.44
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 14 Apr 2025 03:27:45 -0700 (PDT)
+Message-ID: <14350aa4-95d0-460a-bab4-ee82dfb2460e@linaro.org>
+Date: Mon, 14 Apr 2025 12:27:44 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PULL v2 0/3] Trivial patches for 2025-04-13
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20250413125937.2448971-1-mjt@tls.msk.ru>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <20250413125937.2448971-1-mjt@tls.msk.ru>
+Subject: Re: [PATCH for-10.0] docs: Fix some typos (found by codespell and
+ typos)
+To: Stefan Weil <sw@weilnetz.de>, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Thomas Huth <thuth@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ Peter Xu <peterx@redhat.com>, David Hildenbrand <david@redhat.com>,
+ Eric Blake <eblake@redhat.com>, Eduardo Habkost <eduardo@habkost.net>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+References: <20250412181147.1046898-1-sw@weilnetz.de>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250412181147.1046898-1-sw@weilnetz.de>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=86.62.121.231; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -68
-X-Spam_score: -6.9
-X-Spam_bar: ------
-X-Spam_report: (-6.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_HI=-5,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -91,31 +94,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Apr 2025 09:33:00 -0000
+X-List-Received-Date: Mon, 14 Apr 2025 10:28:02 -0000
 
-On 13.04.2025 15:59, Michael Tokarev wrote:
-> The following changes since commit 56c6e249b6988c1b6edc2dd34ebb0f1e570a1365:
-> 
->    Update version for v10.0.0-rc3 release (2025-04-09 04:33:10 -0400)
-> 
-> are available in the Git repository at:
-> 
->    https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
-> 
-> for you to fetch changes up to d08c08320a3580108b442d5eff296f0925fae4f0:
-> 
->    docs: Document removal of 64-bit on 32-bit emulation (2025-04-13 15:57:56 +0300)
-> 
-> ----------------------------------------------------------------
-> trivial patches for 2025-04-13
-> 
-> 3 small changes for 10.0 if it's not too late
-> 
-> v2: + "docs: Document removal of 64-bit on 32-bit emulation"
+On 12/4/25 20:11, Stefan Weil via wrote:
+> Signed-off-by: Stefan Weil <sw@weilnetz.de>
+> ---
+>   docs/about/deprecated.rst  | 4 ++--
+>   docs/devel/codebase.rst    | 6 +++---
+>   docs/devel/qapi-domain.rst | 4 ++--
+>   include/exec/memory.h      | 4 ++--
+>   qapi/qdev.json             | 2 +-
+>   5 files changed, 10 insertions(+), 10 deletions(-)
 
-I've added new R-by's, new commit id is
-f3ca7ca22271ac7c1b997092d72ad36517618fb5, actual patches are
-the same.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-/mjt
 
