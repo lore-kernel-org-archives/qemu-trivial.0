@@ -1,89 +1,73 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u4NlM-0002ju-Qh
-	for mharc-qemu-trivial@gnu.org; Mon, 14 Apr 2025 13:38:30 -0400
+	id 1u4PU8-00047N-DW
+	for mharc-qemu-trivial@gnu.org; Mon, 14 Apr 2025 15:28:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u4NlE-0002j8-8F
- for qemu-trivial@nongnu.org; Mon, 14 Apr 2025 13:38:22 -0400
-Received: from mail-wr1-x42d.google.com ([2a00:1450:4864:20::42d])
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1u4PU6-00046u-4i; Mon, 14 Apr 2025 15:28:46 -0400
+Received: from mail-ed1-x530.google.com ([2a00:1450:4864:20::530])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u4Nl4-0000N5-IP
- for qemu-trivial@nongnu.org; Mon, 14 Apr 2025 13:38:16 -0400
-Received: by mail-wr1-x42d.google.com with SMTP id
- ffacd0b85a97d-39c0e0bc733so3988685f8f.1
- for <qemu-trivial@nongnu.org>; Mon, 14 Apr 2025 10:38:06 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <stefanha@gmail.com>)
+ id 1u4PU3-0004qq-Ou; Mon, 14 Apr 2025 15:28:45 -0400
+Received: by mail-ed1-x530.google.com with SMTP id
+ 4fb4d7f45d1cf-5e66407963fso8726931a12.2; 
+ Mon, 14 Apr 2025 12:28:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1744652285; x=1745257085; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=rUvpMz/wZkmDjLL+SoPmJyVaKdotCY03nMuxDIhiDKE=;
- b=IWfYiiOFXTTOwOL8HyocoAXrfFqYQbafykwcWiQXqX7VqI2twgO5bed7IF+cOWBTdp
- 7jawF8+QkQduwrkvoa5UUVxj6KBS1OFnwYo7i493zCykIe54ff2RQDasv7goPfF3TR5t
- 8iMJWnbJUAiSo7aewlwt6H1caSv2GvUWDzJVElkXTovqlHr+E9wqSj6hZCD6cDu0v1BG
- Tlw43ALzYM1o3IBb+a6nD5dunwNJNasRiTPN5StQUki8BwHY2UHgx0X9EJz59nbHeVl1
- MIZsxLTpjL0+IuHgJSWxifcO8mjJrJEsa3QlNgojdPiOMBKbe34rVi0ufcS77ASjROBP
- kL8w==
+ d=gmail.com; s=20230601; t=1744658921; x=1745263721; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=l1zzlrDIDwaTayR2kV3gq/FOGLB5fEU+SLShVH4iQ9U=;
+ b=DgQOZFxeE7R2lwVmczMY1iBFJDUYCDa2i5gAan7A+G8gJ7RJqjov16jGKl7ZlywvUO
+ F1daAMg9lAQ5XGBcKuytADTrNyGjrq+VN4h7nrQrCTQySapYj7IcaY+APvshGoeApNgb
+ /13519rnKLNSwXhGmPO9BD6LBAPHYy3sQzdhro9y/kIDI11UI5MUdBzYt4AWFtPBzTOM
+ 1n/7uIl3egsixRpTySdW5kZT8k4lJ1fYaENZEOdDw6Xc8O3ssnKjOOuw8AOHIRldoJok
+ bUySpgesJwHCi/BxSesOqksjgBKW8glsZwsj5qqchyApNb2ZoXikAQSfgbHga7xjpy8B
+ 16FQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744652285; x=1745257085;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=rUvpMz/wZkmDjLL+SoPmJyVaKdotCY03nMuxDIhiDKE=;
- b=KqY4EuhYVHgyVXpS/TJP9Qw8RzX7cdyUuVuMaAYLiaT/MswseQC4qIkVCFzOGqBP0q
- 0blIbnAmmgRwqaQadAnGDVVul91tKtbEqeLOsOzC1ItY3Nmjm1aJ93isglO8yz/kK6MY
- dc6dep5ff8D+2ep1YYSH9VWdlM9BARkkk2Np+eILX8gCM7J+Yk2WNsdFsgi8m5NIxDNu
- XtsJB3PfAQ9s1n/jfIQWT1HDisBEISHCii59M2LwPyUsnkO228iANzoCIFyEOINKLURV
- 6rHYAoYMkAKqR5SpzpUeN9FQ16pIXhtdUBXis2iS7Mb1RSOADJcyWg6leGenfZdxz4eQ
- Q7fg==
+ d=1e100.net; s=20230601; t=1744658921; x=1745263721;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=l1zzlrDIDwaTayR2kV3gq/FOGLB5fEU+SLShVH4iQ9U=;
+ b=Py6/Q+pggu7fimMpLh3sVsuO3SE6hcMO+KOrrjwTHLe0fMwgjbnSPoDoh37gq+Jnpm
+ 2QDhzKM3navrmBgX1hb8/mCBAqMqb2EfDKekVYO3zbexouRs4ln0uoX18VxUS0Pc4bUg
+ pwZSu/QzzPqFkBFA/w4+GPN85vb/DZyQutErBPpDQcN64QFMgyRfrE0Hhfg+qv6iLQ9v
+ 7xDmBU4cesYHYgE7ki8D7SaH8bv+rKBuO8uoj/FHBh5iN/QXawBOlu6dVRpuwH2/F94F
+ 0SLRj3kN4v8cYsv8t/D5oKzV30aGAi/YzH6CeOk8sGE51ZoOBsBj8Gyf4ZX282ikRayB
+ LP3w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVqNN4rmBC/s9Re/rir9X43WLmGLS4z9hE8h0Kr4XoeybWfEkIyhviW7FmaycLYtAYGWTXhJ3fcalSqL6k=@nongnu.org
-X-Gm-Message-State: AOJu0YyS5fK4OLvS/e76Cv6RiNiO27LsbT3rzquqPQUxTqVrmAUROCQq
- SoxtduHaCGuc7mb7hun/BJNdn2ZmFxT+qw24B/jcW4HnIaPTiIJfiBlFwD2mfoZLJdoiTZx0VyT
- u
-X-Gm-Gg: ASbGncubQE+mo9MVGhN2yYAfxZIcPOApp3VqNQ1nUEGg7gFaTDz4JiUoK/AMr6fMyV7
- 6h47U7ilJtGx8dZdyV0eVMbuqR3p3tPnAZeQFqpQ+ryFun+Bw0BnKFjlPc1YihfU2KuQElc6RjS
- RciNCqnqdB+MGBpR3jTxmD7gforAUjwfXQ4TMkEX9aoDz2FfIGBgpfU9gZDBUoR8Pcdh0Wz8p2K
- W2nqZ5/BtyWJ5UB0J6WFrnT8Ja+M0UwEW1ro5hiH64Nszadzbntxd1cyYjSLETr2zeeLcNt/puV
- 4z+7BFmBsp5p9Og2LGOKA6acxKjx0vXCRNGaQRWxtz+vZJRQzjClzWmqQxSIMLOXrQSEo5ej53g
- Nl/mAi91u
-X-Google-Smtp-Source: AGHT+IFRmTNwVO4CDBFt8mh63rPkqOxlP/YoS43YSpCGdbBBfbWqeIrHwxjpqmtRpaTXhNP+2+OIqw==
-X-Received: by 2002:a5d:59a3:0:b0:390:e1e0:1300 with SMTP id
- ffacd0b85a97d-39eaaea4548mr10454339f8f.33.1744652284995; 
- Mon, 14 Apr 2025 10:38:04 -0700 (PDT)
-Received: from [192.168.69.238] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-39eaf43cd17sm11672174f8f.78.2025.04.14.10.38.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 14 Apr 2025 10:38:04 -0700 (PDT)
-Message-ID: <c566eed5-605f-4aeb-8841-dae4e591fcb3@linaro.org>
-Date: Mon, 14 Apr 2025 19:38:03 +0200
+ AJvYcCUeWX+/UeUqGBiXeCERvAbUWKQHfoxZB2ejU1oiTWgJvjYH2Oc8Y63uf5kbFlEgf+4cu6O7N7RNdhf2ldY=@nongnu.org
+X-Gm-Message-State: AOJu0Yw+My2E6CFI23/zO/XKcUkMQbxhNkgezhdBVLR3vdQxC0/CnzKg
+ Qf6mEkMNoL9M/o+60QDyJW8bUM0cRSnMcGHwqDYw/XBjJHxZEWjZmMiLs/93wQn00X61/98MFLH
+ Q/MI4YqaRzgh0hVhlU+fJtxtRgO4dSWgm
+X-Gm-Gg: ASbGncupHE5zWATdEk9bf65HdiiE5n09LugGe78rAUzIQ07MPODk+5drtYYYeQEW0ST
+ t2waAKi/RuXA8RSJRFFELY5Ci5Yd00ozNXkDgPhz6DGUQ6/pBYVJkP5oinqoe7f8jzfXoyg1hnG
+ 88jFPP6idVjJSA3DqGFXpl
+X-Google-Smtp-Source: AGHT+IHNC9Fk46mn4Qyf5fB47lZR+qViduwuDBK1PHcJThfEAkEG1OrCqbWqsfei8gkp+iCYsd5P+LrxcEwr7D+Ml+4=
+X-Received: by 2002:a05:6402:448e:b0:5f3:7f32:3b04 with SMTP id
+ 4fb4d7f45d1cf-5f37f32430fmr9958444a12.29.1744658921072; Mon, 14 Apr 2025
+ 12:28:41 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2 1/1] target/riscv: fix endless translation loop on big
- endian systems
-To: Ziqiao Kong <ziqiaokong@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, alistair.francis@wdc.com, 
- richard.henderson@linaro.org, Paolo Bonzini <pbonzini@redhat.com>
-References: <20250414034626.3491489-1-ziqiaokong@gmail.com>
- <20250414034626.3491489-2-ziqiaokong@gmail.com>
- <3c9e1adc-eb4e-49f4-be32-b273a5a161b8@linaro.org>
- <CAM0BWNCVU3GNqAe-stRRYytqC2H7G2iC8Wmpe3sz0u4kkUpYDg@mail.gmail.com>
- <CAM0BWND3dr=_nZHXSoV2jzkXPXd=hViX6vM0cUMZ2Uru+TD6GQ@mail.gmail.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <CAM0BWND3dr=_nZHXSoV2jzkXPXd=hViX6vM0cUMZ2Uru+TD6GQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42d;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42d.google.com
+References: <20250413125937.2448971-1-mjt@tls.msk.ru>
+ <e7c37e26-6ec4-45a9-90dc-c5654c2d1948@tls.msk.ru>
+In-Reply-To: <e7c37e26-6ec4-45a9-90dc-c5654c2d1948@tls.msk.ru>
+From: Stefan Hajnoczi <stefanha@gmail.com>
+Date: Mon, 14 Apr 2025 15:28:29 -0400
+X-Gm-Features: ATxdqUF_ufb-31qZyy-2EQZ_p6fzLbr5lmOurv4JNA-nLc1vnIEIpgG8VIpV37I
+Message-ID: <CAJSP0QV2Q=+RikDpa5N94XjxXd+R+AfH8dOU1ADQPBSeeXk9sw@mail.gmail.com>
+Subject: Re: [PULL v2 0/3] Trivial patches for 2025-04-13
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::530;
+ envelope-from=stefanha@gmail.com; helo=mail-ed1-x530.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,99 +80,9 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 14 Apr 2025 17:38:27 -0000
+X-List-Received-Date: Mon, 14 Apr 2025 19:28:47 -0000
 
-Hi,
+Applied, thanks!
 
-On 14/4/25 18:59, Ziqiao Kong wrote:
-> Hello Philippe,
-> 
-> Any further concern regarding this series? I certainly would like to investigate
-> and help =).
-
-Short term I can't keep looking because I'm busy with other stuffs and
-tagged this patch for another review, because there is some endianness
-code smell in get_physical_address(). I understand your change fixes
-your issue, but I'm skeptical about it, in part because there are no
-such use in the whole code base. My change suggestion is just a starting
-point, more is needed.
-
-> 
-> Bests,
-> Ziqiao
-> 
-> On Mon, Apr 14, 2025 at 7:17 PM Ziqiao Kong <ziqiaokong@gmail.com> wrote:
->>
->> On Mon, Apr 14, 2025 at 6:41 PM Philippe Mathieu-Daudé
->> <philmd@linaro.org> wrote:
->>>
->>> Hi,
->>>
->>> On 14/4/25 05:46, Ziqiao Kong wrote:
->>>> On big endian systems, pte and updated_pte hold big endian host data
->>>> while pte_pa points to little endian target data. This means the branch
->>>> at cpu_helper.c:1669 will be always satisfied and restart translation,
->>>> causing an endless translation loop.
->>>>
->>>
->>> Cc: qemu-stable@nongnu.org
->>> Fixes: 0c3e702aca7 ("RISC-V CPU Helpers")
->>>
->>>> Signed-off-by: Ziqiao Kong <ziqiaokong@gmail.com>
->>>> ---
->>>>    target/riscv/cpu_helper.c | 4 ++--
->>>>    1 file changed, 2 insertions(+), 2 deletions(-)
->>>>
->>>> diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
->>>> index 6c4391d96b..bc146771c8 100644
->>>> --- a/target/riscv/cpu_helper.c
->>>> +++ b/target/riscv/cpu_helper.c
->>>> @@ -1662,9 +1662,9 @@ static int get_physical_address(CPURISCVState *env, hwaddr *physical,
->>>>                target_ulong *pte_pa = qemu_map_ram_ptr(mr->ram_block, addr1);
->>>>                target_ulong old_pte;
->>>>                if (riscv_cpu_sxl(env) == MXL_RV32) {
->>>> -                old_pte = qatomic_cmpxchg((uint32_t *)pte_pa, pte, updated_pte);
->>>> +                old_pte = qatomic_cmpxchg((uint32_t *)pte_pa, cpu_to_le32(pte), cpu_to_le32(updated_pte));
->>>>                } else {
->>>> -                old_pte = qatomic_cmpxchg(pte_pa, pte, updated_pte);
->>>> +                old_pte = qatomic_cmpxchg(pte_pa, cpu_to_le64(pte), cpu_to_le64(updated_pte));
->>>>                }
->>>>                if (old_pte != pte) {
->>>>                    goto restart;
->>>
->>> If PTEs are always stored in LE order, maybe what we want is earlier:
->>>
->>> -- >8 --
->>> diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
->>> index 619c76cc001..b6ac2800240 100644
->>> --- a/target/riscv/cpu_helper.c
->>> +++ b/target/riscv/cpu_helper.c
->>> @@ -1464,5 +1464,5 @@ static int get_physical_address(CPURISCVState
->>> *env, hwaddr *physical,
->>>            if (riscv_cpu_mxl(env) == MXL_RV32) {
->>> -            pte = address_space_ldl(cs->as, pte_addr, attrs, &res);
->>> +            pte = address_space_ldl_le(cs->as, pte_addr, attrs, &res);
->>>            } else {
->>> -            pte = address_space_ldq(cs->as, pte_addr, attrs, &res);
->>> +            pte = address_space_ldq_le(cs->as, pte_addr, attrs, &res);
->>
->> Unfortunately, this doesn't work in two ways:
->>
->> 1. Note pte is used in the following code and that means pte must hold
->> a correct value from the
->> view of host endian (in my case, big endian not little endian).
->> 2. address_space_ldq_le will dispatch to ldq_le_p, while
->> address_space_leq will dispatch to ldq_p.
->> However, on little endian targets, ldq_p is an alias of ldq_le_p so
->> making no effects.
->>
->> Per my testing, this patch doesn't have any effect indeed. To have a
->> brief view what is happening,
->> see the logs just before atomic_cmpxchg:
->>
->> pte_pa 0xf14000000000000 == pte 0x140f ? updated_pte 0x144f
->>
->>>            }
->>> ---
-
+Stefan
 
