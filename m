@@ -1,78 +1,83 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u4bGM-0007VS-KT
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Apr 2025 04:03:26 -0400
+	id 1u4hLV-000550-02
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Apr 2025 10:33:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ziqiaokong@gmail.com>)
- id 1u4bGA-0007TJ-OM; Tue, 15 Apr 2025 04:03:11 -0400
-Received: from mail-pg1-x532.google.com ([2607:f8b0:4864:20::532])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1u4hLF-000524-64
+ for qemu-trivial@nongnu.org; Tue, 15 Apr 2025 10:32:52 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ziqiaokong@gmail.com>)
- id 1u4bG8-0000ak-Cz; Tue, 15 Apr 2025 04:03:10 -0400
-Received: by mail-pg1-x532.google.com with SMTP id
- 41be03b00d2f7-aee79a0f192so3469369a12.3; 
- Tue, 15 Apr 2025 01:03:07 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1u4hLD-00077i-8k
+ for qemu-trivial@nongnu.org; Tue, 15 Apr 2025 10:32:48 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-22403cbb47fso60360795ad.0
+ for <qemu-trivial@nongnu.org>; Tue, 15 Apr 2025 07:32:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1744704186; x=1745308986; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=fVdc1YwIRV2GyTbuh3vK0eXda9+aM0GBapiUKLD+4mY=;
- b=aG8Wmks5KYKe7NPNYAphLjxk6TQMQHopa9Z3bsRR4OojtWbU8zkQufdNooaT8bvyOn
- TgohpT/pRjVoIEvXPi/plPy7FFRUA8jhezNY4hOaweRaAWekoXEbzqb1glRyoGh8VJOG
- hQ4wVl4KhiZ0aMLHv3KnYIuBmsxUFSBLK9Tr/eUdh8qX6cnVt0LAz2Hd4Ow2f3oO59wc
- kvmmfuKrs1S5ao0zRYGkj3Gd7NoFWYl6VrzvFsKjM4eYeDDykISfMAPEmLGf3eieTEaP
- 85/jkPYsawAvaDOl3ZzJ4klR78OK+clqv55AUyEQ2gTWsH/4P3QT9JDUDJ/XcBeanmsD
- wdbw==
+ d=linaro.org; s=google; t=1744727565; x=1745332365; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=4Fyj57vGaBc0roMh6YMQRRh+zQ5VOzli8l2LQL3dC2c=;
+ b=SUc9tLNCO+7f60PBqtcBGxrxoFIKM8il6pUGdV9ZPJoE5pcpfhMXP+fLX4nx8ZrwF6
+ KJdSF5TZyphdHzuMxiAf6BKsYMTIshwJ3eii5kFgKA0bWlmBEKLMhgruTTPkuIn0Mh4F
+ BXAp4vBpz/jfDKIoEbro69GVJuNCkU5TDzmxLK1Y4sUr+GA53ZTzKW8dDrntUCc7BFjc
+ 3sddarUgt5WJIj4y3DP2y+X5rceKCvInCTuNNLmzVCYIqJzgqWNGz51Oc6ZRzgrziLwb
+ 2TCAaP3wzWSOGbv6TW6T9cJxr7gENlJzg+yGITWiY2n+ImhgkJ4KdZPF/G73J3VttGRZ
+ ajEw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744704186; x=1745308986;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=fVdc1YwIRV2GyTbuh3vK0eXda9+aM0GBapiUKLD+4mY=;
- b=nlAHsXZt90thy1tvRFxerQ905gnu+l1Yu5J3PJ7LCbxmeE2YDdJBsOmg06g/omDyqt
- ISRTg6p0yjCdNdi5+X/hM0vFGB4qbhmBL2//IpasgDvALNBzoYfsYBFLpjnw3KB3wtwm
- y+vxU6bp0P3F3ZmA86qcyghs/7GujSzT7VtQt/IjRXk5Rwd2/Du0XfQrBMPJwMK+Tvrb
- wY6Qx0Y5EvSCq7XW4t+ZdHnPPXil0IR/P/UVlgdOrJNiQ8VvwLf5mv64tPET7Ndgxy+f
- 5PidU2BOYg9sS0CuqPj6lJbgK1QU61B5hPYVoQkap/ISi/GE35MLe+5FXy1BqJgvHmCo
- +/EQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVbDJcuKuv6G6yKqg4dlRyDRgBdJJUDSKfM6MLY9iYT3yNVeasXrOfPrU8+fF5iKvD0Nttekqt+e15FE+E=@nongnu.org
-X-Gm-Message-State: AOJu0YxdPgUEqRzj9wQH+pzoz89Lnm8g2bDvuyJyvYnlH7u3oBBNIvFL
- eyD0gJnKRxsYY2u43lHoxEOybV7halORlOzACwW8odvPXmUdy68jRvBKDLus
-X-Gm-Gg: ASbGncugY1QEZdAIIv4jTaLTDmXX8t/T0fnw1996pPS0yE4LxMHh8urxSSoR7pQ1FD1
- C5T9JNL1MT/brKgzZPBC9SZlKcP/rKXv45/MuZ7stEDWf2B/K1D+Hzj+bIuFd6x+uosa+iBL5u3
- 6bXbzl8OpOiNxLqM8uqqAsbpg8NbWby+1YEJgTQOegKOiKJnRrckTUtb4VUrCiCaiRmmZPFAya9
- Lo5sf2Q9ZLYf/yMbGqyG8kr5Go4mWQejwypU86OkUyA4CEUz54+5L2N63/VCFeaTKYCBACIL3uk
- JbzHWqFZHG/WEEPDhZtKFS9TuBrmon/w31wl2geD
-X-Google-Smtp-Source: AGHT+IEM6SnnT4U83vT5Oyz6uNGi46RbIwqHKC2BsaBiibjfZPH1Ry1tWzRNVnR00RGIqksYWev95g==
-X-Received: by 2002:a17:90b:2551:b0:2ff:7ad4:77af with SMTP id
- 98e67ed59e1d1-3082378e72cmr23084739a91.20.1744704186243; 
- Tue, 15 Apr 2025 01:03:06 -0700 (PDT)
-Received: from station.lan ([155.69.190.63]) by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-306dd12b5c5sm12640745a91.24.2025.04.15.01.03.04
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 15 Apr 2025 01:03:05 -0700 (PDT)
-From: Ziqiao Kong <ziqiaokong@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: ziqiaokong@gmail.com, qemu-trivial@nongnu.org, alistair.francis@wdc.com,
- richard.henderson@linaro.org, philmd@linaro.org, pbonzini@redhat.com
-Subject: [PATCH v3 1/1] target/riscv: fix endless translation loop on big
- endian systems
-Date: Tue, 15 Apr 2025 16:02:54 +0800
-Message-Id: <20250415080254.3667878-2-ziqiaokong@gmail.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20250415080254.3667878-1-ziqiaokong@gmail.com>
-References: <20250415080254.3667878-1-ziqiaokong@gmail.com>
+ d=1e100.net; s=20230601; t=1744727565; x=1745332365;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=4Fyj57vGaBc0roMh6YMQRRh+zQ5VOzli8l2LQL3dC2c=;
+ b=DyYFxiCMWSWHA2Eo+HZr8InVzpAll1cpUy+3EWTiEi8KeSziIOxnD8xUPZGm3G8JKL
+ Tvkj9g+WHXA6myUsAzi4LwfWyPR9aw9dmOCirubA5qACJWX+8T03TOCwPfYxRxghrXn7
+ 9n7R267PFh/Xetp4s7XAFdTRDk13ao+/NzWoRAueYn2tevAsk8WoLiV5RhF/9uullRm0
+ ihAmWh+JdZdLEka+PcMW2B3n+ggxWl83Ou4ckr4Ry5CAMCWarOajwShxgAS2KE/KDBz2
+ 3zaW023YWk5pbQUyASPRPCckALSL3S8ELGsbQ9oz5pNgZXOt54mVrRicafaDVCWGJkJ1
+ ncvQ==
+X-Gm-Message-State: AOJu0YwNwTlIUWF1VaPfP9/2DFvKdQkIB16fdSblcetBCDSEBunrGtQ8
+ 1gr+D4pzNU4CS2V4j6b6q/ENH6AbLUE0hNzFND5w/pAU07IY6Z7kJzvkzmFUd0g=
+X-Gm-Gg: ASbGncuv9y/Jz/D2FseolddhcDJbJyiZSDI13zWJ2cZqTiVXz9HIqvTf5rESH2t5vI5
+ vnVZ2DHF8lxzcPxld7LDL8cp9fQDmIEGtxVPn5c3UoXvsiki59EH/LaVeDV/WBY0qAA3I469pAd
+ Ar/jVAHzqNxDG9cD4fcLZUewJP6tBF6a2iDSdGd/Ge4JGp9VC1TL+dHTFJR0b+YBKOEN9gKHi//
+ idM1lSLYe5W+zchyhVazaQF9ROeV47Fx1DX4/5ClB3AU09RHd/wpXYX8iNLK0uFkr+BKI2Yrd54
+ mRiFiKJQYbnCUipCZFtF1rsmx8EyS3M7Q7QIQgC7lEaitv5Plno6D4o5+qOp/HmGZ+qKCbTmDeE
+ cE7FV3ZM=
+X-Google-Smtp-Source: AGHT+IE/T0ATNx9AQ45DOWA46yhQAzAv5Rm50r2Eus84buuBj0enEWnWQgB6F4aK2N9cn8Klm6jejg==
+X-Received: by 2002:a17:902:eb8d:b0:223:5e54:c521 with SMTP id
+ d9443c01a7336-22bea3f1542mr237904995ad.0.1744727564445; 
+ Tue, 15 Apr 2025 07:32:44 -0700 (PDT)
+Received: from [192.168.0.4] (71-212-47-143.tukw.qwest.net. [71.212.47.143])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-22ac7c971bfsm118249105ad.123.2025.04.15.07.32.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 15 Apr 2025 07:32:44 -0700 (PDT)
+Message-ID: <de4fba03-c9dd-4ff9-8f4d-8feaff52703b@linaro.org>
+Date: Tue, 15 Apr 2025 07:32:41 -0700
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::532;
- envelope-from=ziqiaokong@gmail.com; helo=mail-pg1-x532.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 1/1] target/riscv: fix endless translation loop on big
+ endian systems
+To: Ziqiao Kong <ziqiaokong@gmail.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, alistair.francis@wdc.com, philmd@linaro.org,
+ pbonzini@redhat.com
+References: <20250415080254.3667878-1-ziqiaokong@gmail.com>
+ <20250415080254.3667878-2-ziqiaokong@gmail.com>
+Content-Language: en-US
+From: Richard Henderson <richard.henderson@linaro.org>
+In-Reply-To: <20250415080254.3667878-2-ziqiaokong@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -87,45 +92,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Apr 2025 08:03:18 -0000
+X-List-Received-Date: Tue, 15 Apr 2025 14:32:54 -0000
 
-On big endian systems, pte and updated_pte hold big endian host data
-while pte_pa points to little endian target data. This means the branch
-at cpu_helper.c:1669 will be always satisfied and restart translation,
-causing an endless translation loop.
+On 4/15/25 01:02, Ziqiao Kong wrote:
+> On big endian systems, pte and updated_pte hold big endian host data
+> while pte_pa points to little endian target data. This means the branch
+> at cpu_helper.c:1669 will be always satisfied and restart translation,
+> causing an endless translation loop.
+> 
+> The correctness of this patch can be deduced by:
+> 
+> old_pte will hold value either from cpu_to_le32/64(pte) or
+> cpu_to_le32/64(updated_pte), both of wich is litte endian. After that,
+> an in-place conversion by le32/64_to_cpu(old_pte) ensures that old_pte
+> now is in native endian, same with pte. Therefore, the endianness of the
+> both side of if (old_pte != pte) is correct.
+> 
+> Signed-off-by: Ziqiao Kong<ziqiaokong@gmail.com>
+> ---
+>   target/riscv/cpu_helper.c | 6 ++++--
+>   1 file changed, 4 insertions(+), 2 deletions(-)
 
-The correctness of this patch can be deduced by:
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 
-old_pte will hold value either from cpu_to_le32/64(pte) or 
-cpu_to_le32/64(updated_pte), both of wich is litte endian. After that, 
-an in-place conversion by le32/64_to_cpu(old_pte) ensures that old_pte 
-now is in native endian, same with pte. Therefore, the endianness of the
-both side of if (old_pte != pte) is correct. 
 
-Signed-off-by: Ziqiao Kong <ziqiaokong@gmail.com>
----
- target/riscv/cpu_helper.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
-
-diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-index 6c4391d96b..3233b66e7e 100644
---- a/target/riscv/cpu_helper.c
-+++ b/target/riscv/cpu_helper.c
-@@ -1662,9 +1662,11 @@ static int get_physical_address(CPURISCVState *env, hwaddr *physical,
-             target_ulong *pte_pa = qemu_map_ram_ptr(mr->ram_block, addr1);
-             target_ulong old_pte;
-             if (riscv_cpu_sxl(env) == MXL_RV32) {
--                old_pte = qatomic_cmpxchg((uint32_t *)pte_pa, pte, updated_pte);
-+                old_pte = qatomic_cmpxchg((uint32_t *)pte_pa, cpu_to_le32(pte), cpu_to_le32(updated_pte));
-+                old_pte = le32_to_cpu(old_pte);
-             } else {
--                old_pte = qatomic_cmpxchg(pte_pa, pte, updated_pte);
-+                old_pte = qatomic_cmpxchg(pte_pa, cpu_to_le64(pte), cpu_to_le64(updated_pte));
-+                old_pte = le64_to_cpu(old_pte);
-             }
-             if (old_pte != pte) {
-                 goto restart;
--- 
-2.34.1
-
+r~
 
