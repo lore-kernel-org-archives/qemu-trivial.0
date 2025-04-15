@@ -1,54 +1,70 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u4aLJ-0003LP-V7
-	for mharc-qemu-trivial@gnu.org; Tue, 15 Apr 2025 03:04:26 -0400
+	id 1u4aW4-00076M-DC
+	for mharc-qemu-trivial@gnu.org; Tue, 15 Apr 2025 03:15:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ziqiaokong@gmail.com>)
- id 1u4aLG-0003KT-Fe; Tue, 15 Apr 2025 03:04:22 -0400
-Received: from mail-vs1-xe31.google.com ([2607:f8b0:4864:20::e31])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u4aVw-00074W-Fx
+ for qemu-trivial@nongnu.org; Tue, 15 Apr 2025 03:15:28 -0400
+Received: from mail-wm1-x332.google.com ([2a00:1450:4864:20::332])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ziqiaokong@gmail.com>)
- id 1u4aLD-0001Fc-Hd; Tue, 15 Apr 2025 03:04:22 -0400
-Received: by mail-vs1-xe31.google.com with SMTP id
- ada2fe7eead31-4c6cf5e4cd5so123844137.2; 
- Tue, 15 Apr 2025 00:04:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u4aVt-0002vg-Qj
+ for qemu-trivial@nongnu.org; Tue, 15 Apr 2025 03:15:24 -0400
+Received: by mail-wm1-x332.google.com with SMTP id
+ 5b1f17b1804b1-43cfa7e7f54so32807895e9.1
+ for <qemu-trivial@nongnu.org>; Tue, 15 Apr 2025 00:15:20 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1744700658; x=1745305458; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=tZmOA0EGwvGVxO5KJ0tZZHGlzGWd9vn2JKSA5zm7LSI=;
- b=V1rnlxto+LYvDYRN492L5EOm49CaNlrEmpwdzvxLRjUXNCVyvFaETPLw9hTtUQGEFx
- cc818OQQRixoRNcWYKsnwHJXl57w6lW3cd3xuQSsdhjJBGYjU6HjpauaHNFFfRVrnNOL
- kxoDoZgILH9V7iJWX7picYTZ+9vWOs4TJYoutjiXqvg0djNtPS0U0EBtpmQzH1e7U8Q4
- n2eTMHVSOfgR2rftO2vEabPY0AOq9X+nLsYQ4oPotP6kv8SIjOYQJaZVjPJOCyx4dECB
- XcYEfPAVp9mWv1yEjvQRQsd8YnD8QlkK3hDqTCAevIC3cw7asZH/JyKAcc5wt0qYvDUP
- zDpw==
+ d=linaro.org; s=google; t=1744701319; x=1745306119; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=ZL0XsFAjJStMlS2GESi+b2JFXXnWD2/r3K+/HTN1YHM=;
+ b=LAjp16GCA7OvhSatFIsHXOiYvyhXpzyl5fUTtSL6qCTOAAKqdL1tdMgCvxSYrU+9K5
+ J5xL3exvX2Smx62ZV3IaaaBGEPnaQY6s0CgL0ahSSqh2y10T1FNDlDUFj3pwWl9BffSx
+ omff2A+XUrPQlRMZzC+PLxNpBxmRycpzjaqlJmW8+KpSnxfdr7hy+La5zTjR7UdeZyIU
+ W9xo9RSa1TtNpCa2hp73Pzh741jrGYUdgR3CeBJmcHFralzg4ryST3nmZI01xTVnEd5Y
+ r5yZXm47CbLbjrbv32ETm7HS6MaLV2ChszhM1PPRQmcKDltt6OzEjwFbIkoth7BS+fPV
+ pHVA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744700658; x=1745305458;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=tZmOA0EGwvGVxO5KJ0tZZHGlzGWd9vn2JKSA5zm7LSI=;
- b=mQJfO2xYQb7Ye97yJN5LkpKW/rUE1nOTCofvgK/loF+1x347xmsfYH06wCZvZmABzc
- TovlM4hBieUPn9zWTRTSbncIErn+GWmsPOVkukxz7YjDhlksxnuMyvax18+2dmigNOyH
- FUsPTY47bzoHsjcC43/qYZTnazGUstarhzYIfB1CthH/SQbqVXXrFcQmI9Ikve9l4Il2
- Xas1oBFJHAWUS0KC/PsWnUmEbYDonaP99CZwERD3ZuOSQqgBYpXmdRHeggR+DuAr3ry4
- a5TvCqhFQHiwWkVjsOyZrROhU+ERhEeAB9bVWcCPYUURiRHxS85RDsC/xhsg40bqGPqq
- 2FEA==
+ d=1e100.net; s=20230601; t=1744701319; x=1745306119;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=ZL0XsFAjJStMlS2GESi+b2JFXXnWD2/r3K+/HTN1YHM=;
+ b=I1YdJkUYuYQX3qdc8iPlgf5MpwTh2Ev/CxKVz1b8+eFAhNzVfZBZcbPdwnbUdpdzWS
+ rXCk4uwBlL3Az6K9ryKnKmpchEteXMn8WScGCL1CJr5/evbKyAmHZO3nQyYnugqxcqOR
+ nORTief4ZDOTW83ZLRJ3i5QohP6azftlS5rxC5F/mPNOocufRL6AIs/NYBiTEldzq+zK
+ LmlwxOAwKLICRRM/v4XxDxRNYqmAJ5jRhW8Gk7Y99em7UGJISjrdn3wBYuiWhLLssDsw
+ F0uOdOL7WVAq/+dy5PiYJsqU5919ToPooxr7mH/QzlPKBzheFv7k5MCvSYUcwGdOhsT+
+ HnuA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX1sqQoIL5yq6aL+0+WXFwkLckdrvQaxyeetdPq6BMd8ogVDm/DSh6ri2cPoa6xvE6xx2sqtNnFlawRnuk=@nongnu.org
-X-Gm-Message-State: AOJu0YyzKrb0aSydVYJiCfg5+rww0hB7x6D0f1nxsMjUGMqyw+sFJpdv
- 1nXY64x0s1Emk+peo7Ej2jKx9+Od0L6AVEtBB1weBCQoNWIECxUMNmk7N+XIkF1qC0twdFME2yE
- S14QQHTbQ2Aof7BZcLxlkvdLoZ6A=
-X-Gm-Gg: ASbGncvWnAEOgzXCSjpTBRKe3dc7FQlPl17dOuCVcQWLefe1mXo7FNRbVEK1M9/GH6C
- /sx0h0HrCPU8i9tA4Yw5KgJn6s7wLhNysWuFT7ZJW62ddLkm947RXTBSuZhCapg/mgYIjlQG7EC
- pHS2YenTXC8lY75bK1w2sWhw==
-X-Google-Smtp-Source: AGHT+IGt+o042B+NzTtA7h3oumJiGRQ60f6EL6g112SyqklNWvlX5xqkSwxQ8H/4jbmcyKPOalSi2I/gPZgF1ZeByx4=
-X-Received: by 2002:a05:6102:e14:b0:4bb:e36f:6a35 with SMTP id
- ada2fe7eead31-4c9e4f17decmr9997382137.14.1744700657796; Tue, 15 Apr 2025
- 00:04:17 -0700 (PDT)
+ AJvYcCWNRlUPpgR1py260ReU4PVDjyRTuuMTHBtXlFwyjk27iHg0rv4IZ0WL7T2yothJ3XYh/+ku+fhyjSboYnM=@nongnu.org
+X-Gm-Message-State: AOJu0YwsYKLLzGJjlReSaXjbxEmp5gEA3A2ukiztczLS9R7c9JNKxp+e
+ 34c8oGbWjTYfPKs3I6qfQOZOUSlQeIWrBZrW2XqdC20kic6ooj/lzQnymIUzgiI=
+X-Gm-Gg: ASbGnctJzPAxfirV5cB/fnYODIeqE1Rhf9hy/woEKtPqHOXS7h3RycYJv7AFH5P52LG
+ bRqZ17m4eKy9nKjCX1yTbpCEimUrRC4JMfJxFrYFa2EgnhFPrAm56QqEtoBwXXsg+pimfyMpJgF
+ kwB20I+ey7kA5D67E3JrTjiqp/XE0wBNQMxB4IeEUp0NcVKHGpmSAgATTEpo5l9X62W008bKlUO
+ WKYWpWrmsZmZ2khxSHGYkc8YBDxcI9frJlH81eGPrVatqkSnhHm18mh0L3KQEnvSHyhvOQSrGPi
+ VkVQfJKulZiY1Ak0ECbhE19pSPt76MafFY6tFIGw6w/k/blM5i4cCRHnA0J3PWHO9ITTxaCercg
+ KtaIHrciW
+X-Google-Smtp-Source: AGHT+IFoWSpWm5oZvNzp0OMAe1rqwb9fvwh5nUqBsOhSIVIWuyV3G6A2qBdJtFWMQ7aMYyiPxt1XEQ==
+X-Received: by 2002:a05:600c:5122:b0:43b:baf7:76e4 with SMTP id
+ 5b1f17b1804b1-43f99874f7emr15036655e9.1.1744701318910; 
+ Tue, 15 Apr 2025 00:15:18 -0700 (PDT)
+Received: from [192.168.69.238] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-43f20625eeesm200949345e9.11.2025.04.15.00.15.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 15 Apr 2025 00:15:18 -0700 (PDT)
+Message-ID: <7d2e61de-17da-4a6b-b9c8-2ff14fdce15f@linaro.org>
+Date: Tue, 15 Apr 2025 09:15:17 +0200
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2 1/1] target/riscv: fix endless translation loop on big
+ endian systems
+To: Ziqiao Kong <ziqiaokong@gmail.com>
+Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org,
+ alistair.francis@wdc.com, Richard Henderson <richard.henderson@linaro.org>,
+ Paolo Bonzini <pbonzini@redhat.com>
 References: <20250414034626.3491489-1-ziqiaokong@gmail.com>
  <20250414034626.3491489-2-ziqiaokong@gmail.com>
  <3c9e1adc-eb4e-49f4-be32-b273a5a161b8@linaro.org>
@@ -56,26 +72,19 @@ References: <20250414034626.3491489-1-ziqiaokong@gmail.com>
  <CAM0BWND3dr=_nZHXSoV2jzkXPXd=hViX6vM0cUMZ2Uru+TD6GQ@mail.gmail.com>
  <c566eed5-605f-4aeb-8841-dae4e591fcb3@linaro.org>
  <CAM0BWNBNrjJ6UuF+TRtkuEesLatnY1pzSjyaiPVDeKSMF8no-A@mail.gmail.com>
-In-Reply-To: <CAM0BWNBNrjJ6UuF+TRtkuEesLatnY1pzSjyaiPVDeKSMF8no-A@mail.gmail.com>
-From: Ziqiao Kong <ziqiaokong@gmail.com>
-Date: Tue, 15 Apr 2025 15:04:05 +0800
-X-Gm-Features: ATxdqUEeR-UI9N5_JOGizXtzwfRWBeGXMbDiihSfq9TptR9cOuxcPJwLwd06Rrc
-Message-ID: <CAM0BWNBGAJ-scbhXAQ2s2Y=w3WhJ5pR72xSA5Xf+bsbk73cL6w@mail.gmail.com>
-Subject: Re: [PATCH v2 1/1] target/riscv: fix endless translation loop on big
- endian systems
-To: =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@linaro.org>
-Cc: QEMU Developers <qemu-devel@nongnu.org>, qemu-trivial@nongnu.org, 
- alistair.francis@wdc.com, Richard Henderson <richard.henderson@linaro.org>, 
- Paolo Bonzini <pbonzini@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::e31;
- envelope-from=ziqiaokong@gmail.com; helo=mail-vs1-xe31.google.com
+ <CAM0BWNBGAJ-scbhXAQ2s2Y=w3WhJ5pR72xSA5Xf+bsbk73cL6w@mail.gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <CAM0BWNBGAJ-scbhXAQ2s2Y=w3WhJ5pR72xSA5Xf+bsbk73cL6w@mail.gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::332;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x332.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -90,155 +99,155 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Tue, 15 Apr 2025 07:04:23 -0000
+X-List-Received-Date: Tue, 15 Apr 2025 07:15:30 -0000
 
-Accidentally not cc all recipients. Sorry for the confusion. Below is
-the duplicated message:
+On 15/4/25 09:04, Ziqiao Kong wrote:
+> Accidentally not cc all recipients. Sorry for the confusion. Below is
+> the duplicated message:
+> 
+> Hello Philippe,
+> 
+> On Tue, Apr 15, 2025 at 1:38 AM Philippe Mathieu-Daudé
+> <philmd@linaro.org> wrote:
+>>
+>> Hi,
+>>
+>> On 14/4/25 18:59, Ziqiao Kong wrote:
+>>> Hello Philippe,
+>>>
+>>> Any further concern regarding this series? I certainly would like to investigate
+>>> and help =).
+>>
+>> Short term I can't keep looking because I'm busy with other stuffs and
+>> tagged this patch for another review, because there is some endianness
+>> code smell in get_physical_address(). I understand your change fixes
+>> your issue, but I'm skeptical about it, in part because there are no
+>> such use in the whole code base. My change suggestion is just a starting
+>> point, more is needed.
+> 
+> Thanks for responding.
+> 
+> Actually, the pattern of this usage is actually very common in the code base and
+> that's why I fixed in this way. Sorry I should have put this in the
+> cover letter to
+> justify my fix. Below is an incomplete list of the code using this pattern:
+> 
+> - target/i386/tcg/system/excp_helper.c:129
+> 
+> if (likely(in->haddr)) {
+> old = cpu_to_le32(old);
+> new = cpu_to_le32(new);
+> return qatomic_cmpxchg((uint32_t *)in->haddr, old, new) == old;
+> }
+> 
+> - target/arm/ptw.c: 840
+> 
+> if (ptw->out_be) {
+> old_val = cpu_to_be64(old_val);
+> new_val = cpu_to_be64(new_val);
+> cur_val = qatomic_cmpxchg__nocheck((uint64_t *)host, old_val, new_val);
+> cur_val = be64_to_cpu(cur_val);
+> } else {
+> old_val = cpu_to_le64(old_val);
+> new_val = cpu_to_le64(new_val);
+> cur_val = qatomic_cmpxchg__nocheck((uint64_t *)host, old_val, new_val);
+> cur_val = le64_to_cpu(cur_val);
+> }
 
-Hello Philippe,
+Doh OK...
 
-On Tue, Apr 15, 2025 at 1:38=E2=80=AFAM Philippe Mathieu-Daud=C3=A9
-<philmd@linaro.org> wrote:
->
-> Hi,
->
-> On 14/4/25 18:59, Ziqiao Kong wrote:
-> > Hello Philippe,
-> >
-> > Any further concern regarding this series? I certainly would like to in=
-vestigate
-> > and help =3D).
->
-> Short term I can't keep looking because I'm busy with other stuffs and
-> tagged this patch for another review, because there is some endianness
-> code smell in get_physical_address(). I understand your change fixes
-> your issue, but I'm skeptical about it, in part because there are no
-> such use in the whole code base. My change suggestion is just a starting
-> point, more is needed.
+> 
+> You might want to do a `grep -rn "qatomic_cmpxchg" .` to see all matches.
+> 
+> 
+>>
+>>>
+>>> Bests,
+>>> Ziqiao
+>>>
+>>> On Mon, Apr 14, 2025 at 7:17 PM Ziqiao Kong <ziqiaokong@gmail.com> wrote:
+>>>>
+>>>> On Mon, Apr 14, 2025 at 6:41 PM Philippe Mathieu-Daudé
+>>>> <philmd@linaro.org> wrote:
+>>>>>
+>>>>> Hi,
+>>>>>
+>>>>> On 14/4/25 05:46, Ziqiao Kong wrote:
+>>>>>> On big endian systems, pte and updated_pte hold big endian host data
+>>>>>> while pte_pa points to little endian target data. This means the branch
+>>>>>> at cpu_helper.c:1669 will be always satisfied and restart translation,
+>>>>>> causing an endless translation loop.
+>>>>>>
+>>>>>
+>>>>> Cc: qemu-stable@nongnu.org
+>>>>> Fixes: 0c3e702aca7 ("RISC-V CPU Helpers")
+>>>>>
+>>>>>> Signed-off-by: Ziqiao Kong <ziqiaokong@gmail.com>
+>>>>>> ---
+>>>>>>     target/riscv/cpu_helper.c | 4 ++--
+>>>>>>     1 file changed, 2 insertions(+), 2 deletions(-)
+>>>>>>
+>>>>>> diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
+>>>>>> index 6c4391d96b..bc146771c8 100644
+>>>>>> --- a/target/riscv/cpu_helper.c
+>>>>>> +++ b/target/riscv/cpu_helper.c
+>>>>>> @@ -1662,9 +1662,9 @@ static int get_physical_address(CPURISCVState *env, hwaddr *physical,
+>>>>>>                 target_ulong *pte_pa = qemu_map_ram_ptr(mr->ram_block, addr1);
+>>>>>>                 target_ulong old_pte;
+>>>>>>                 if (riscv_cpu_sxl(env) == MXL_RV32) {
+>>>>>> -                old_pte = qatomic_cmpxchg((uint32_t *)pte_pa, pte, updated_pte);
+>>>>>> +                old_pte = qatomic_cmpxchg((uint32_t *)pte_pa, cpu_to_le32(pte), cpu_to_le32(updated_pte));
 
-Thanks for responding.
+Then don't we need:
 
-Actually, the pattern of this usage is actually very common in the code bas=
-e and
-that's why I fixed in this way. Sorry I should have put this in the
-cover letter to
-justify my fix. Below is an incomplete list of the code using this pattern:
+     old_pte = le32_to_cpu(old_pte);
 
-- target/i386/tcg/system/excp_helper.c:129
+>>>>>>                 } else {
+>>>>>> -                old_pte = qatomic_cmpxchg(pte_pa, pte, updated_pte);
+>>>>>> +                old_pte = qatomic_cmpxchg(pte_pa, cpu_to_le64(pte), cpu_to_le64(updated_pte));
 
-if (likely(in->haddr)) {
-old =3D cpu_to_le32(old);
-new =3D cpu_to_le32(new);
-return qatomic_cmpxchg((uint32_t *)in->haddr, old, new) =3D=3D old;
-}
+     old_pte = le64_to_cpu(old_pte);
 
-- target/arm/ptw.c: 840
+?
 
-if (ptw->out_be) {
-old_val =3D cpu_to_be64(old_val);
-new_val =3D cpu_to_be64(new_val);
-cur_val =3D qatomic_cmpxchg__nocheck((uint64_t *)host, old_val, new_val);
-cur_val =3D be64_to_cpu(cur_val);
-} else {
-old_val =3D cpu_to_le64(old_val);
-new_val =3D cpu_to_le64(new_val);
-cur_val =3D qatomic_cmpxchg__nocheck((uint64_t *)host, old_val, new_val);
-cur_val =3D le64_to_cpu(cur_val);
-}
+>>>>>>                 }
+>>>>>>                 if (old_pte != pte) {
+>>>>>>                     goto restart;
+>>>>>
+>>>>> If PTEs are always stored in LE order, maybe what we want is earlier:
+>>>>>
+>>>>> -- >8 --
+>>>>> diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
+>>>>> index 619c76cc001..b6ac2800240 100644
+>>>>> --- a/target/riscv/cpu_helper.c
+>>>>> +++ b/target/riscv/cpu_helper.c
+>>>>> @@ -1464,5 +1464,5 @@ static int get_physical_address(CPURISCVState
+>>>>> *env, hwaddr *physical,
+>>>>>             if (riscv_cpu_mxl(env) == MXL_RV32) {
+>>>>> -            pte = address_space_ldl(cs->as, pte_addr, attrs, &res);
+>>>>> +            pte = address_space_ldl_le(cs->as, pte_addr, attrs, &res);
+>>>>>             } else {
+>>>>> -            pte = address_space_ldq(cs->as, pte_addr, attrs, &res);
+>>>>> +            pte = address_space_ldq_le(cs->as, pte_addr, attrs, &res);
+>>>>
+>>>> Unfortunately, this doesn't work in two ways:
+>>>>
+>>>> 1. Note pte is used in the following code and that means pte must hold
+>>>> a correct value from the
+>>>> view of host endian (in my case, big endian not little endian).
+>>>> 2. address_space_ldq_le will dispatch to ldq_le_p, while
+>>>> address_space_leq will dispatch to ldq_p.
+>>>> However, on little endian targets, ldq_p is an alias of ldq_le_p so
+>>>> making no effects.
+>>>>
+>>>> Per my testing, this patch doesn't have any effect indeed. To have a
+>>>> brief view what is happening,
+>>>> see the logs just before atomic_cmpxchg:
+>>>>
+>>>> pte_pa 0xf14000000000000 == pte 0x140f ? updated_pte 0x144f
+>>>>
+>>>>>             }
+>>>>> ---
+>>
 
-You might want to do a `grep -rn "qatomic_cmpxchg" .` to see all matches.
-
-
->
-> >
-> > Bests,
-> > Ziqiao
-> >
-> > On Mon, Apr 14, 2025 at 7:17=E2=80=AFPM Ziqiao Kong <ziqiaokong@gmail.c=
-om> wrote:
-> >>
-> >> On Mon, Apr 14, 2025 at 6:41=E2=80=AFPM Philippe Mathieu-Daud=C3=A9
-> >> <philmd@linaro.org> wrote:
-> >>>
-> >>> Hi,
-> >>>
-> >>> On 14/4/25 05:46, Ziqiao Kong wrote:
-> >>>> On big endian systems, pte and updated_pte hold big endian host data
-> >>>> while pte_pa points to little endian target data. This means the bra=
-nch
-> >>>> at cpu_helper.c:1669 will be always satisfied and restart translatio=
-n,
-> >>>> causing an endless translation loop.
-> >>>>
-> >>>
-> >>> Cc: qemu-stable@nongnu.org
-> >>> Fixes: 0c3e702aca7 ("RISC-V CPU Helpers")
-> >>>
-> >>>> Signed-off-by: Ziqiao Kong <ziqiaokong@gmail.com>
-> >>>> ---
-> >>>>    target/riscv/cpu_helper.c | 4 ++--
-> >>>>    1 file changed, 2 insertions(+), 2 deletions(-)
-> >>>>
-> >>>> diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-> >>>> index 6c4391d96b..bc146771c8 100644
-> >>>> --- a/target/riscv/cpu_helper.c
-> >>>> +++ b/target/riscv/cpu_helper.c
-> >>>> @@ -1662,9 +1662,9 @@ static int get_physical_address(CPURISCVState =
-*env, hwaddr *physical,
-> >>>>                target_ulong *pte_pa =3D qemu_map_ram_ptr(mr->ram_blo=
-ck, addr1);
-> >>>>                target_ulong old_pte;
-> >>>>                if (riscv_cpu_sxl(env) =3D=3D MXL_RV32) {
-> >>>> -                old_pte =3D qatomic_cmpxchg((uint32_t *)pte_pa, pte=
-, updated_pte);
-> >>>> +                old_pte =3D qatomic_cmpxchg((uint32_t *)pte_pa, cpu=
-_to_le32(pte), cpu_to_le32(updated_pte));
-> >>>>                } else {
-> >>>> -                old_pte =3D qatomic_cmpxchg(pte_pa, pte, updated_pt=
-e);
-> >>>> +                old_pte =3D qatomic_cmpxchg(pte_pa, cpu_to_le64(pte=
-), cpu_to_le64(updated_pte));
-> >>>>                }
-> >>>>                if (old_pte !=3D pte) {
-> >>>>                    goto restart;
-> >>>
-> >>> If PTEs are always stored in LE order, maybe what we want is earlier:
-> >>>
-> >>> -- >8 --
-> >>> diff --git a/target/riscv/cpu_helper.c b/target/riscv/cpu_helper.c
-> >>> index 619c76cc001..b6ac2800240 100644
-> >>> --- a/target/riscv/cpu_helper.c
-> >>> +++ b/target/riscv/cpu_helper.c
-> >>> @@ -1464,5 +1464,5 @@ static int get_physical_address(CPURISCVState
-> >>> *env, hwaddr *physical,
-> >>>            if (riscv_cpu_mxl(env) =3D=3D MXL_RV32) {
-> >>> -            pte =3D address_space_ldl(cs->as, pte_addr, attrs, &res)=
-;
-> >>> +            pte =3D address_space_ldl_le(cs->as, pte_addr, attrs, &r=
-es);
-> >>>            } else {
-> >>> -            pte =3D address_space_ldq(cs->as, pte_addr, attrs, &res)=
-;
-> >>> +            pte =3D address_space_ldq_le(cs->as, pte_addr, attrs, &r=
-es);
-> >>
-> >> Unfortunately, this doesn't work in two ways:
-> >>
-> >> 1. Note pte is used in the following code and that means pte must hold
-> >> a correct value from the
-> >> view of host endian (in my case, big endian not little endian).
-> >> 2. address_space_ldq_le will dispatch to ldq_le_p, while
-> >> address_space_leq will dispatch to ldq_p.
-> >> However, on little endian targets, ldq_p is an alias of ldq_le_p so
-> >> making no effects.
-> >>
-> >> Per my testing, this patch doesn't have any effect indeed. To have a
-> >> brief view what is happening,
-> >> see the logs just before atomic_cmpxchg:
-> >>
-> >> pte_pa 0xf14000000000000 =3D=3D pte 0x140f ? updated_pte 0x144f
-> >>
-> >>>            }
-> >>> ---
->
 
