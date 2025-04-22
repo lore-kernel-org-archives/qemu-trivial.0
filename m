@@ -1,84 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u7Y6e-0006h1-RF
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Apr 2025 07:17:32 -0400
+	id 1u7ZoQ-0005BQ-Lo
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Apr 2025 09:06:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u7Y6Z-0006cs-8s
- for qemu-trivial@nongnu.org; Wed, 23 Apr 2025 07:17:27 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u7Y6X-0001t7-Cp
- for qemu-trivial@nongnu.org; Wed, 23 Apr 2025 07:17:26 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-39c1efbefc6so3960295f8f.1
- for <qemu-trivial@nongnu.org>; Wed, 23 Apr 2025 04:17:24 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1745407043; x=1746011843; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=j3dF8XsoLGRcZL9i4eMNjIcEEBRNDL3P/zQ+KH091kg=;
- b=LGgfqeM7b7juBzojFb/S3Jk1wwBqbslngcM8QyZYyoTQfRr9wEpg1GJjTux7hGOEzt
- 6S3BtLAXArKcciYfPh4vqXsY7UpALgUXViF+Pg638s3vhJbNf82mJBbzD9z7FgixfVdU
- CH3bESe14mOqqWVOQygjfNt4wD6bGhob7ZgMPHip3tb9aG6J993cPqz3srS0lceZh4oJ
- j/DQyG0e64sGFWsKjegXfBIB2xjeY5bsSCcV+NXq+oXHJbmLoMZA1auUofWSrXrcuAjR
- 7i8gG9HxcqFM9pW3AG8J+T9Plr35u/2BhJGf7+9iMJ+A6HfVMzBSqvLKL53rXz0v7I0L
- ci8A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1745407043; x=1746011843;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=j3dF8XsoLGRcZL9i4eMNjIcEEBRNDL3P/zQ+KH091kg=;
- b=hmH/SUcJH0c6iT/Zec3R+kGkThS6OaNq+c4dQ0IzFs0DMCC+R3PlX2rNv6R2YrXt2s
- nLaIi/q8baVZ5qOJ+ycdfHiI8HtFjeXL4Yd7RdXzt1zfXT7EWAIMrX3rBdP+nIm/XRj6
- /DJzqCNlsfBLOc8iI8xDsZOB2FQthAs04Z21I/Rc4mkikLGnafnxBfYbkVsS8lUicjTQ
- S/XFUucPEHYsZkpEzOVQ/5Copiwdp2bCYvg8vfwZZmQ0d4iO6RknYDBjp/zBa8Z0g+J8
- mxcDmAAYd0tLe1/6ObJ8pTFSAOIji7Sp4wfLjKCeQ/1NKgq6yRdTturYrSbCT+a6OQPP
- upCg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWV9Mh1C4ZYvYyJtZ6Beaa1Ubgdechu66F+sFqcroumbd5QtWNSRa/OI6X6GP7T6smGmlhEx63tKbqcL98=@nongnu.org
-X-Gm-Message-State: AOJu0YxMaUxmkNSR7v1lp05CKweNRyfHf+pSknEiuPDXqXIsGTGqGN+N
- bby/12mVzv7d7xYyHvpx7/JfcbprWYqEt+6En7jxs+LI8ywOpqJFjpQ28APxWSs=
-X-Gm-Gg: ASbGncs6GR1vYaM/5w+13fUZpbh2Czlo9fXLYwsCRY2z/NYO9MdQmsOGtebwHs85NR3
- F/XVMH5v7JAx9XxCs6TkQzFxTPujho52tQHX9LhOpJgs5xlZOCeAIQNF+sqOVxzzO+ThQzEW7A1
- 7W7tVcuGxh980VndapIdA6dopVbPDxEaM2xPka2pOPBVwXBvi4ZC4QNT+TMBq7EZs177v7ZLro9
- KUGqVmXSTUSljjRI8n/d2JMlsu9wh6xTX9WlMteQ58hZQw4XH5zUbtOliwxfFSQ2dIk+AUBhETN
- ZdoYqCEIGWfk6r06J9QY5S4CfOtRVEoou34prELqYp7rv5K/Bg0OQE+jiuUbVDJWmXTwaz5ECC5
- 5PiuOp7ZW
-X-Google-Smtp-Source: AGHT+IEvVwh/VQ70BdSL8QgdtRDKO4sWiTXUso9bOL8qOYX5UoySIFKYPqrWGH2eHHdVRo5YNZ+/Dg==
-X-Received: by 2002:a5d:64e4:0:b0:38f:37f3:5ca9 with SMTP id
- ffacd0b85a97d-39efbaf1126mr15081984f8f.50.1745407043214; 
- Wed, 23 Apr 2025 04:17:23 -0700 (PDT)
-Received: from [192.168.69.169] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-39efa4a4b9csm18073196f8f.84.2025.04.23.04.17.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 23 Apr 2025 04:17:22 -0700 (PDT)
-Message-ID: <fc3846bc-8443-435e-afa6-11fde4d3cf97@linaro.org>
-Date: Wed, 23 Apr 2025 13:17:21 +0200
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1u7UwW-0007bv-Id; Wed, 23 Apr 2025 03:54:52 -0400
+Received: from mail-a.sr.ht ([46.23.81.152])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1u7UwR-0004yE-SZ; Wed, 23 Apr 2025 03:54:52 -0400
+DKIM-Signature: a=rsa-sha256; bh=JK3oAK8L/MMlxU8luzMFG3Munc7mTZPKsq7E4Di/6Lk=; 
+ c=simple/simple; d=git.sr.ht;
+ h=From:Date:Subject:Reply-to:To:Cc; 
+ q=dns/txt; s=20240113; t=1745394883; v=1;
+ b=E6/Igbz/UKitnx6UoL0zG0UgoIXAEcmtAvxR0TJ1QQgfUqhqOQ/B4Bcl8XHfzBL7Pc1tXYmP
+ PX/1WAVgoBXXkqT/t3ebZ6mC10dxJ2axcg2s0iin8MFKFeZFMOjg9nAOr4wa7bciDI8fy/VQV/X
+ CiSykSPCDkxKy7J4FQEzfTilIvz51+3MdJGW5hv3Wob6nCGC5HBJBSsFNPtTlHC0pmRdqDGZqcD
+ jpkJgEgWwgGf7bBVWbcxSjmNgb8U9J8SJsJnh9leutmCZo3/5l0/f9hnUK/fsZZ38Jdbb0YrJ+w
+ 1vZnhQu87XGX6lrtOMSKoq64ln9q3q2KNXWVbRjIOchIA==
+Received: from git.sr.ht (unknown [46.23.81.155])
+ by mail-a.sr.ht (Postfix) with ESMTPSA id 1AC0F21391;
+ Wed, 23 Apr 2025 07:54:43 +0000 (UTC)
+From: ~liushuyu <liushuyu@git.sr.ht>
+Date: Tue, 22 Apr 2025 10:35:00 +0800
+Subject: [PATCH qemu] linux-user/syscall.c: add translation logic for
+ epoll_pwait2 syscall
+Message-ID: <174539488306.23673.10433396305045773139-0@git.sr.ht>
+X-Mailer: git.sr.ht
+Reply-to: ~liushuyu <liushuyu011@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, liushuyu@aosc.io
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/intc/i8259: Remove unused DEBUG_PIC define
-To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20250423101125.B243A55C592@zero.eik.bme.hu>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250423101125.B243A55C592@zero.eik.bme.hu>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=46.23.81.152; envelope-from=outgoing@sr.ht;
+ helo=mail-a.sr.ht
+X-Spam_score_int: 20
+X-Spam_score: 2.0
+X-Spam_bar: ++
+X-Spam_report: (2.0 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_24_48=1.34,
+ DKIM_INVALID=0.1, DKIM_SIGNED=0.1, FREEMAIL_FORGED_REPLYTO=2.095,
+ FREEMAIL_REPLYTO_END_DIGIT=0.25, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 23 Apr 2025 09:06:49 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -90,18 +56,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Apr 2025 11:17:28 -0000
+X-List-Received-Date: Wed, 23 Apr 2025 07:54:54 -0000
 
-On 23/4/25 12:11, BALATON Zoltan wrote:
-> The debug printfs were converted to traces so this define is now unused.
-> 
-> Fixes: 0880a87300 (i8259: convert DPRINTFs into trace)
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> ---
->   hw/intc/i8259.c | 5 +----
->   1 file changed, 1 insertion(+), 4 deletions(-)
+From: Zixing Liu <liushuyu@aosc.io>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: Zixing Liu <liushuyu@aosc.io>
+---
+ linux-user/syscall.c | 36 ++++++++++++++++++++++++++++++++----
+ 1 file changed, 32 insertions(+), 4 deletions(-)
 
-and queued, thanks!
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 8bfe4912e1..6906e7ba38 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -711,6 +711,11 @@ safe_syscall5(int, ppoll, struct pollfd *, ufds, unsigne=
+d int, nfds,
+ safe_syscall6(int, epoll_pwait, int, epfd, struct epoll_event *, events,
+               int, maxevents, int, timeout, const sigset_t *, sigmask,
+               size_t, sigsetsize)
++#if defined(__NR_epoll_pwait2)
++safe_syscall6(int, epoll_pwait2, int, epfd, struct epoll_event *, events,
++              int, maxevents, struct timespec *, timeout, const sigset_t *, =
+sigmask,
++              size_t, sigsetsize)
++#endif
+ #if defined(__NR_futex)
+ safe_syscall6(int,futex,int *,uaddr,int,op,int,val, \
+               const struct timespec *,timeout,int *,uaddr2,int,val3)
+@@ -13363,19 +13368,22 @@ static abi_long do_syscall1(CPUArchState *cpu_env, =
+int num, abi_long arg1,
+     }
+ #endif
+=20
+-#if defined(TARGET_NR_epoll_wait) || defined(TARGET_NR_epoll_pwait)
++#if defined(TARGET_NR_epoll_wait) || defined(TARGET_NR_epoll_pwait) || defin=
+ed(TARGET_NR_epoll_pwait2)
+ #if defined(TARGET_NR_epoll_wait)
+     case TARGET_NR_epoll_wait:
+ #endif
+ #if defined(TARGET_NR_epoll_pwait)
+     case TARGET_NR_epoll_pwait:
++#endif
++#if defined(TARGET_NR_epoll_pwait2)
++    case TARGET_NR_epoll_pwait2:
+ #endif
+     {
+         struct target_epoll_event *target_ep;
+         struct epoll_event *ep;
+         int epfd =3D arg1;
+         int maxevents =3D arg3;
+-        int timeout =3D arg4;
++        abi_long timeout =3D arg4;
+=20
+         if (maxevents <=3D 0 || maxevents > TARGET_EP_MAX_EVENTS) {
+             return -TARGET_EINVAL;
+@@ -13396,6 +13404,9 @@ static abi_long do_syscall1(CPUArchState *cpu_env, in=
+t num, abi_long arg1,
+         switch (num) {
+ #if defined(TARGET_NR_epoll_pwait)
+         case TARGET_NR_epoll_pwait:
++#if defined(TARGET_NR_epoll_pwait2)
++        case TARGET_NR_epoll_pwait2:
++#endif
+         {
+             sigset_t *set =3D NULL;
+=20
+@@ -13406,8 +13417,25 @@ static abi_long do_syscall1(CPUArchState *cpu_env, i=
+nt num, abi_long arg1,
+                 }
+             }
+=20
+-            ret =3D get_errno(safe_epoll_pwait(epfd, ep, maxevents, timeout,
+-                                             set, SIGSET_T_SIZE));
++            if (num =3D=3D TARGET_NR_epoll_pwait) {
++                ret =3D get_errno(safe_epoll_pwait(epfd, ep, maxevents, (int=
+)timeout,
++                                                 set, SIGSET_T_SIZE));
++            } else {
++#if defined(TARGET_NR_epoll_pwait2)
++                struct timespec hspec;
++                struct timespec *ts_arg =3D NULL;
++                if (timeout) {
++                    if (target_to_host_timespec(&hspec, (abi_ulong)timeout))=
+ {
++                        return -TARGET_EFAULT;
++                    }
++                    ts_arg =3D &hspec;
++                }
++                ret =3D get_errno(safe_epoll_pwait2(epfd, ep, maxevents, ts_=
+arg,
++                                              set, SIGSET_T_SIZE));
++#else
++                return -TARGET_ENOSYS;
++#endif
++            }
+=20
+             if (set) {
+                 finish_sigsuspend_mask(ret);
+--=20
+2.45.3
 
