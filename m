@@ -1,75 +1,36 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u4viV-00021p-DY
-	for mharc-qemu-trivial@gnu.org; Wed, 16 Apr 2025 01:53:47 -0400
+	id 1u7X4o-00078J-Gj
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Apr 2025 06:11:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1u4viT-000219-Fs; Wed, 16 Apr 2025 01:53:45 -0400
-Received: from mail-vk1-xa2e.google.com ([2607:f8b0:4864:20::a2e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1u4viS-0000eS-5r; Wed, 16 Apr 2025 01:53:45 -0400
-Received: by mail-vk1-xa2e.google.com with SMTP id
- 71dfb90a1353d-524168b16d3so5506136e0c.0; 
- Tue, 15 Apr 2025 22:53:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1744782822; x=1745387622; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=awZExRevPW6ijiKnOK5pcpL/ssFfPxmm3s1coNKpI88=;
- b=dJXF3k08lIDB519xwqx4tZtl76SXHHXnxYAEaTSGp8/+94Z8u1Cb81R3fV1Fzxoafa
- KsvEtpJM0AaIRlqAYdrMRI6szaaA6cC9LM2rbGAoYeCyQQAe5TO7WSWS/uMGakvg6YD1
- wfCIG+IKHUYwYnxhzqmFqYjmp0+a90S/Fok0CXkBqPh2l1bJDjwh3gyWGgR2OE2BgNFi
- 5PB32hy1BoHVFH1NSP0vJJhNdeeZ8/AegpT5S4xgnlG7dD6AgMp2yBqhlZ7UHBJvEjyp
- 9X20UEnmUK+ZfUMgnaEjedIGjUQh/U/O+0hRFSr87I1zgX9dqLUZNQrWhujt3vuty6Qk
- 2PNA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1744782822; x=1745387622;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=awZExRevPW6ijiKnOK5pcpL/ssFfPxmm3s1coNKpI88=;
- b=g1PEVP5bmD5xgtYA51+m6JVYOQxDqTdlaOt0bbmUjl4iYI4OPsHRE093CsefaRIpL8
- SJZJ/xsMik4wTCNiLXRaycsfDGpQxTNk9VAJullDZ2GS/gucc445gPsvGYI4wXMaAij2
- HvrrZdc8r4ArzTcno9JUiBGU+UYnq+oB87Jk/t3CyKuc9r+/Y3NFIMOU5qIMORrLXyr0
- i1oomwdGeN/mX/uFVfBHQtYZI4pG+MVyUxrOAmIVx03MfxDkczfjg6eMIiHXgmjRVqiI
- 5Ogih2xtmPMlRuTtOiRK1jCZYR0n9t1b3I7NCnh4/mHzpYKxN0QJ6fni0YXnu8eDvX11
- tftA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUOB0LdiBsqegItQ6UsDvD9DbH8D+LxcMWu6H4QkJep2Blc02/IXHuznhWZI5UBIcSZb1iVrCJ8MajMfp8=@nongnu.org
-X-Gm-Message-State: AOJu0YxqDGRU4FPlMO0/yTRB/sDOYVHpREGk1Q0JqlAO6zxqFXCLrE7Q
- 4m+/3RHJzQ09dc+iHWrSfmydIZi6mNACQlnl0LNImhIAs5nMG3ok2aXjw+CIyow+NA8V3bCYEt4
- mtxsN+85dWl0knvrOod/hYl+l3EQ=
-X-Gm-Gg: ASbGncvp019ZPzDwLyLbMlFVuBZtWzO4n8uBfgD+FXNWRYYYkvxOHK0JEvuJrcOhuTO
- tiaiPdBAUH13fnAc3E7Ewd4/jSIxd1u8saRnEhQBrva9YN5dp0v0Isj8Lj9Orn5YIOT0pqIDxIq
- YOKKOh3xWq1LF4qcLOxPhOQ2P6hSJ1WMJjHjHh0WDZ9dWcMMbsI/1N
-X-Google-Smtp-Source: AGHT+IGfJD90KBsfZeTntiZF3Uzg1AVVz93SMx+NLemnY79UPIixv/IAuTlkCsWhaa+ZkcorNiROzuZN2Ov3/3ip9Bs=
-X-Received: by 2002:a05:6122:218f:b0:518:91b3:5e37 with SMTP id
- 71dfb90a1353d-5290dfe1bb1mr233452e0c.5.1744782822458; Tue, 15 Apr 2025
- 22:53:42 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250415080254.3667878-1-ziqiaokong@gmail.com>
-In-Reply-To: <20250415080254.3667878-1-ziqiaokong@gmail.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Wed, 16 Apr 2025 15:53:16 +1000
-X-Gm-Features: ATxdqUEjSVpkEiHm98uXd7atWS2djH4ruTefhs2bY5ggxYKs59CwFmwrjBQ80r8
-Message-ID: <CAKmqyKNy4E_PRYcaXnJ7ca3AyZyHzt0Rquw4b0E3Qa_w9E7qZQ@mail.gmail.com>
-Subject: Re: [PATCH v3 0/1] Fix endless translation loop of riscv
-To: Ziqiao Kong <ziqiaokong@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, alistair.francis@wdc.com, 
- richard.henderson@linaro.org, philmd@linaro.org, pbonzini@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a2e;
- envelope-from=alistair23@gmail.com; helo=mail-vk1-xa2e.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1u7X4m-00077D-SH; Wed, 23 Apr 2025 06:11:32 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1u7X4k-00036F-Fw; Wed, 23 Apr 2025 06:11:32 -0400
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id A33F655D239;
+ Wed, 23 Apr 2025 12:11:27 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id LPSV24Hed0Zm; Wed, 23 Apr 2025 12:11:25 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id B243A55C592; Wed, 23 Apr 2025 12:11:25 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+Subject: [PATCH] hw/intc/i8259: Remove unused DEBUG_PIC define
+To: qemu-devel@nongnu.org,
+    qemu-trivial@nongnu.org
+Cc: Michael S. Tsirkin <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+Message-Id: <20250423101125.B243A55C592@zero.eik.bme.hu>
+Date: Wed, 23 Apr 2025 12:11:25 +0200 (CEST)
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -83,36 +44,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 16 Apr 2025 05:53:46 -0000
+X-List-Received-Date: Wed, 23 Apr 2025 10:11:33 -0000
 
-On Tue, Apr 15, 2025 at 6:05=E2=80=AFPM Ziqiao Kong <ziqiaokong@gmail.com> =
-wrote:
->
-> This version fixes the return value `old_pte` not correctly handled in
-> my previous patch.
->
-> This patch refers to common usages of qatomic_cmpxchg like those in
-> target/i386/tcg/system/excp_helper.c and target/arm/ptw.c. I also add
-> a brief explanation of the correctness in the commit message.
->
-> Thanks Philippe Mathieu-Daud=C3=A9 for offering previous review for my
-> previous patch!
->
-> Ziqiao Kong (1):
->   target/riscv: fix endless translation loop on big endian systems
+The debug printfs were converted to traces so this define is now unused.
 
-Thanks!
+Fixes: 0880a87300 (i8259: convert DPRINTFs into trace)
+Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+---
+ hw/intc/i8259.c | 5 +----
+ 1 file changed, 1 insertion(+), 4 deletions(-)
 
-Applied to riscv-to-apply.next
+diff --git a/hw/intc/i8259.c b/hw/intc/i8259.c
+index d88b20f40b..6a204f7d21 100644
+--- a/hw/intc/i8259.c
++++ b/hw/intc/i8259.c
+@@ -32,10 +32,7 @@
+ #include "trace.h"
+ #include "qom/object.h"
+ 
+-/* debug PIC */
+-//#define DEBUG_PIC
+-
+-//#define DEBUG_IRQ_LATENCY
++/*#define DEBUG_IRQ_LATENCY*/
+ 
+ #define TYPE_I8259 "isa-i8259"
+ typedef struct PICClass PICClass;
+-- 
+2.41.3
 
-Alistair
-
->
->  target/riscv/cpu_helper.c | 6 ++++--
->  1 file changed, 4 insertions(+), 2 deletions(-)
->
-> --
-> 2.34.1
->
->
 
