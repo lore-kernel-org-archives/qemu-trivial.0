@@ -1,36 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u7X4o-00078J-Gj
-	for mharc-qemu-trivial@gnu.org; Wed, 23 Apr 2025 06:11:34 -0400
+	id 1u7Y6e-0006h1-RF
+	for mharc-qemu-trivial@gnu.org; Wed, 23 Apr 2025 07:17:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1u7X4m-00077D-SH; Wed, 23 Apr 2025 06:11:32 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1u7X4k-00036F-Fw; Wed, 23 Apr 2025 06:11:32 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id A33F655D239;
- Wed, 23 Apr 2025 12:11:27 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id LPSV24Hed0Zm; Wed, 23 Apr 2025 12:11:25 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id B243A55C592; Wed, 23 Apr 2025 12:11:25 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-Subject: [PATCH] hw/intc/i8259: Remove unused DEBUG_PIC define
-To: qemu-devel@nongnu.org,
-    qemu-trivial@nongnu.org
-Cc: Michael S. Tsirkin <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-Message-Id: <20250423101125.B243A55C592@zero.eik.bme.hu>
-Date: Wed, 23 Apr 2025 12:11:25 +0200 (CEST)
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u7Y6Z-0006cs-8s
+ for qemu-trivial@nongnu.org; Wed, 23 Apr 2025 07:17:27 -0400
+Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u7Y6X-0001t7-Cp
+ for qemu-trivial@nongnu.org; Wed, 23 Apr 2025 07:17:26 -0400
+Received: by mail-wr1-x434.google.com with SMTP id
+ ffacd0b85a97d-39c1efbefc6so3960295f8f.1
+ for <qemu-trivial@nongnu.org>; Wed, 23 Apr 2025 04:17:24 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1745407043; x=1746011843; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=j3dF8XsoLGRcZL9i4eMNjIcEEBRNDL3P/zQ+KH091kg=;
+ b=LGgfqeM7b7juBzojFb/S3Jk1wwBqbslngcM8QyZYyoTQfRr9wEpg1GJjTux7hGOEzt
+ 6S3BtLAXArKcciYfPh4vqXsY7UpALgUXViF+Pg638s3vhJbNf82mJBbzD9z7FgixfVdU
+ CH3bESe14mOqqWVOQygjfNt4wD6bGhob7ZgMPHip3tb9aG6J993cPqz3srS0lceZh4oJ
+ j/DQyG0e64sGFWsKjegXfBIB2xjeY5bsSCcV+NXq+oXHJbmLoMZA1auUofWSrXrcuAjR
+ 7i8gG9HxcqFM9pW3AG8J+T9Plr35u/2BhJGf7+9iMJ+A6HfVMzBSqvLKL53rXz0v7I0L
+ ci8A==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1745407043; x=1746011843;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=j3dF8XsoLGRcZL9i4eMNjIcEEBRNDL3P/zQ+KH091kg=;
+ b=hmH/SUcJH0c6iT/Zec3R+kGkThS6OaNq+c4dQ0IzFs0DMCC+R3PlX2rNv6R2YrXt2s
+ nLaIi/q8baVZ5qOJ+ycdfHiI8HtFjeXL4Yd7RdXzt1zfXT7EWAIMrX3rBdP+nIm/XRj6
+ /DJzqCNlsfBLOc8iI8xDsZOB2FQthAs04Z21I/Rc4mkikLGnafnxBfYbkVsS8lUicjTQ
+ S/XFUucPEHYsZkpEzOVQ/5Copiwdp2bCYvg8vfwZZmQ0d4iO6RknYDBjp/zBa8Z0g+J8
+ mxcDmAAYd0tLe1/6ObJ8pTFSAOIji7Sp4wfLjKCeQ/1NKgq6yRdTturYrSbCT+a6OQPP
+ upCg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWV9Mh1C4ZYvYyJtZ6Beaa1Ubgdechu66F+sFqcroumbd5QtWNSRa/OI6X6GP7T6smGmlhEx63tKbqcL98=@nongnu.org
+X-Gm-Message-State: AOJu0YxMaUxmkNSR7v1lp05CKweNRyfHf+pSknEiuPDXqXIsGTGqGN+N
+ bby/12mVzv7d7xYyHvpx7/JfcbprWYqEt+6En7jxs+LI8ywOpqJFjpQ28APxWSs=
+X-Gm-Gg: ASbGncs6GR1vYaM/5w+13fUZpbh2Czlo9fXLYwsCRY2z/NYO9MdQmsOGtebwHs85NR3
+ F/XVMH5v7JAx9XxCs6TkQzFxTPujho52tQHX9LhOpJgs5xlZOCeAIQNF+sqOVxzzO+ThQzEW7A1
+ 7W7tVcuGxh980VndapIdA6dopVbPDxEaM2xPka2pOPBVwXBvi4ZC4QNT+TMBq7EZs177v7ZLro9
+ KUGqVmXSTUSljjRI8n/d2JMlsu9wh6xTX9WlMteQ58hZQw4XH5zUbtOliwxfFSQ2dIk+AUBhETN
+ ZdoYqCEIGWfk6r06J9QY5S4CfOtRVEoou34prELqYp7rv5K/Bg0OQE+jiuUbVDJWmXTwaz5ECC5
+ 5PiuOp7ZW
+X-Google-Smtp-Source: AGHT+IEvVwh/VQ70BdSL8QgdtRDKO4sWiTXUso9bOL8qOYX5UoySIFKYPqrWGH2eHHdVRo5YNZ+/Dg==
+X-Received: by 2002:a5d:64e4:0:b0:38f:37f3:5ca9 with SMTP id
+ ffacd0b85a97d-39efbaf1126mr15081984f8f.50.1745407043214; 
+ Wed, 23 Apr 2025 04:17:23 -0700 (PDT)
+Received: from [192.168.69.169] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-39efa4a4b9csm18073196f8f.84.2025.04.23.04.17.22
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 23 Apr 2025 04:17:22 -0700 (PDT)
+Message-ID: <fc3846bc-8443-435e-afa6-11fde4d3cf97@linaro.org>
+Date: Wed, 23 Apr 2025 13:17:21 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/intc/i8259: Remove unused DEBUG_PIC define
+To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
+References: <20250423101125.B243A55C592@zero.eik.bme.hu>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250423101125.B243A55C592@zero.eik.bme.hu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::434;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x434.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -44,33 +90,18 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 23 Apr 2025 10:11:33 -0000
+X-List-Received-Date: Wed, 23 Apr 2025 11:17:28 -0000
 
-The debug printfs were converted to traces so this define is now unused.
+On 23/4/25 12:11, BALATON Zoltan wrote:
+> The debug printfs were converted to traces so this define is now unused.
+> 
+> Fixes: 0880a87300 (i8259: convert DPRINTFs into trace)
+> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
+> ---
+>   hw/intc/i8259.c | 5 +----
+>   1 file changed, 1 insertion(+), 4 deletions(-)
 
-Fixes: 0880a87300 (i8259: convert DPRINTFs into trace)
-Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
----
- hw/intc/i8259.c | 5 +----
- 1 file changed, 1 insertion(+), 4 deletions(-)
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-diff --git a/hw/intc/i8259.c b/hw/intc/i8259.c
-index d88b20f40b..6a204f7d21 100644
---- a/hw/intc/i8259.c
-+++ b/hw/intc/i8259.c
-@@ -32,10 +32,7 @@
- #include "trace.h"
- #include "qom/object.h"
- 
--/* debug PIC */
--//#define DEBUG_PIC
--
--//#define DEBUG_IRQ_LATENCY
-+/*#define DEBUG_IRQ_LATENCY*/
- 
- #define TYPE_I8259 "isa-i8259"
- typedef struct PICClass PICClass;
--- 
-2.41.3
-
+and queued, thanks!
 
