@@ -1,77 +1,81 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u8GWs-0006Ed-Da
-	for mharc-qemu-trivial@gnu.org; Fri, 25 Apr 2025 06:43:34 -0400
+	id 1u9UGE-00088n-7m
+	for mharc-qemu-trivial@gnu.org; Mon, 28 Apr 2025 15:35:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u8GWq-00066u-PW
- for qemu-trivial@nongnu.org; Fri, 25 Apr 2025 06:43:32 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1u9UGC-00086U-F0
+ for qemu-trivial@nongnu.org; Mon, 28 Apr 2025 15:35:24 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1u8GWp-0000YX-4e
- for qemu-trivial@nongnu.org; Fri, 25 Apr 2025 06:43:32 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-43cf848528aso14597365e9.2
- for <qemu-trivial@nongnu.org>; Fri, 25 Apr 2025 03:43:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1u9UGA-0000x7-6j
+ for qemu-trivial@nongnu.org; Mon, 28 Apr 2025 15:35:24 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-225df540edcso62860235ad.0
+ for <qemu-trivial@nongnu.org>; Mon, 28 Apr 2025 12:35:21 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1745577808; x=1746182608; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=linaro.org; s=google; t=1745868920; x=1746473720; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=ctMLHAH8RP3OZzhYF8QHmpkJ3aP35KVo0Te9zm3lY0Q=;
- b=GgjmFsFLjYM7ZmWKKnz9Wi48WwuIv92PuUeqxufxxuXG88V1adl2hgwy4/ondiv93P
- HTNeoCPP3CiLw/Q+QCfqe9cRkvFoZPTUoNzrBb5+ub3bYkY2Oh9ljFz/XbEUxOW7zcsA
- oF/xEh4JnxyA/CdEmWaR3o/C4RNPvpG2EJTyahRNcHTywtT2QFC7y0nsfXOKG6hL32gt
- XfBeq08hcIg+OFcJgwUm3wCF7h61CEk2nh3lpvcGzw0sXnxGpBkoQh6vfbV0NPF5MST+
- bjhlFL2XUiATG2/xV+JGe4Bi8KsgRp6TpZxf3fRWoQMa+3koZh3QO6mEvL/B+qGG8Pu3
- e6Fw==
+ bh=M3koL5YcaNhfuFyfmgiA4zQ3oQ2TQe2oURd+Ul39PKs=;
+ b=EWOrXHqzYgPBq9DWMlOLnWj8MaVOS2CYK6PhTuXN/Ycx93JR7YfMiLLyJcb3wLukK1
+ p5S7tr3/4QVE19rAauDlZ+rZaqjK9kT54zuMflUGcSru+NPfx9Pv/Bt449JtcbaxGrnL
+ RVqiAjCTfhMVI3wa6PIFSSfQupa7IBFhINhd1U1tbxJsF1zYfh0W0uJ7Jw7ROww6TX3g
+ 1fnZy+zVQiA2Czzj2Fik8tHjYt7bpJG4KIszIcUQNz3C33BqOtWE6CnQYe5DxuA1nJ0B
+ Kvc3WtQJgxsEg2MITFdeLJaKP1tgdaDiOF+kdAqCUYjr7ycDX8fCsqG0qV1ev5OeiMop
+ p1LA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1745577808; x=1746182608;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
+ d=1e100.net; s=20230601; t=1745868920; x=1746473720;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
+ :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=ctMLHAH8RP3OZzhYF8QHmpkJ3aP35KVo0Te9zm3lY0Q=;
- b=a2N1tYkXdQ6nVAAH9L2Szsx6eAUNgB/9vvs8Y5npz4E6UmGM1xwQWXIAWlwgeuX2R1
- 0WtYGAnrn3e0rw6mUYdtqKhnr8ZyxrhSyhaA24w+vA1n99IfsJAJTH5LFKi0xHfvQoPk
- OnGuMN6WOTpgTsz8OWPEVxsPS1riKCJb3f7iUhgRovykr36DOu2iDoo9iUB9SBzBE5ky
- Evh094S33KpvZIAtHELRvNvwLHYETJpxXF6zE0gYNglARH9VNDGL5xlFF6mcuFweKI1i
- HIHUgAvrbfJbwuxnYuLa3q5bIkjEGumkU1FSIbmlLc7zj7eOCVb9eRm3n5Al7/v0XyJE
- fNuw==
+ bh=M3koL5YcaNhfuFyfmgiA4zQ3oQ2TQe2oURd+Ul39PKs=;
+ b=Iy8yq/JQP23kQe2op3fS8xmz8UAoWpnUii1pz7rzoGTGcWX2e5z/4UiuucNsQ4JJQz
+ MKpEOVHE2tJgdhrEW6f5FCLGmsn0mwS/TkMpA1ptNNRi/c57j4DQlAVNMvlAVDJg45wU
+ dmqEKpI1ZmkZvt10+//tMGuZwpK3cZvHllzBOau4OAAJgs23+J1AEYvfMYp499KOk8i5
+ VAleuOjhXOVI72UmClP6Yw1UEbHYBePMHfJ5WKHd5lL+kU5FkE9OHpTH8n11PMAfl70o
+ 3k0AJu4sT75LybnxDy38jQJatAAQMbV9newsLlrDvrKwX24ftJxcxY5PSe6Jca0jPkaA
+ 6Q4Q==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWWyusyEwFyiEBEsb/qWjyubHKgK+R+9Wye3LbiwjUKCXspMjghKkY60a93Xh96vHOYcSwdhE9apmUYwYU=@nongnu.org
-X-Gm-Message-State: AOJu0YxuCbfP6bzsDONi3Y5dzhJyCbK/kZFjKGd5D0bQQ1h3T3hX1SJ1
- tAFR8HWbO5GLgSo59KUSPNNrfkY6D6MwL2RM/ZjCtb+9E9qWoJd6vR6qN3X5dUrLi71o9OdC3BX
- e
-X-Gm-Gg: ASbGnctOZf0shbwYC5b/acodeQWgvSDg4j/BNged9oJLxmb4Cd62DTLy5tmBE08DxKT
- dddiXVn9qHxMnbYT+EIaQ1o6ALvosmHWPAFtV8msm9cv9k1UYEIdBgvZTAX8CdsNWLhPUOZYb0r
- AfPOgS9tpL+o98URF7+0I6L+rSwrNmghOXFj0nzEBYDrfsfRDXtw3qLYMc6/AjP+6HGLmb0iTYx
- eUTUXxlyZSyFXAJeUFmpKkqNrFkSXqYytCoVRgmIzKfzSP/X6eFRTkDVoYDgs2CwbDvBjf5G5vi
- vt8SQzEUr63VCpx49bbfkU3xSIpqCFbJ1rHGoCCLm3B24xnyNDoszE5ipxvq/Au31/nXq2wOk16
- C/fWfVJI7
-X-Google-Smtp-Source: AGHT+IFEKqrKVqoWyAvST75KvrPWfZW/LUag+p6hrQeU/QYCFUT7DpYo9k1uIwPoPxzlFELGvQ/btQ==
-X-Received: by 2002:a05:600c:4e51:b0:43d:7a:471f with SMTP id
- 5b1f17b1804b1-440a66059b0mr16289825e9.18.1745577808607; 
- Fri, 25 Apr 2025 03:43:28 -0700 (PDT)
-Received: from [192.168.69.169] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-440a530a6e9sm20463615e9.16.2025.04.25.03.43.27
+ AJvYcCUSn1dZS7z3uFVLnt+msvahicS2DcsfSm5aBEmFpQoBOxvQHIGq7PO9IDBMcSfo2HYanogULfMcCUXMLh0=@nongnu.org
+X-Gm-Message-State: AOJu0YzIHCGag72wOaptDawZhssVA3DYcJgwS5g1A5lML8UymIw1WB81
+ E6grxxDovr0efrnJPOG8F3M3l0USx/x8DZoPQj4ziYqNE+2dOQt2vPXpijm11bo=
+X-Gm-Gg: ASbGnct7RxQFiYr1IfbHt+042oCNbzzgzcPmIpZmHa3bsfhinPu++bHwXVg1I+YADp9
+ 4zniH4tY8d5X/uxN5kkaWVmG0FG/WPEQyPG4+71r4wTmLPrMKRycqwo10JB+XRZdU/LSjAwKvdt
+ KL1z7it5VgWlP/v3WF8i8+w41DTc3LEkNk82WbZuN1ZDDD/Q+z7yAU0SoXmKYHCiMjU2KMJ8wVO
+ kfRWlP8DPR5/dmM9DYkTd4mCTpPJoBvYdBzl4zibFahorz0O3YvG8XMwJT6k/lrgvzFkfJKJOPd
+ 5FUhHimbvmve+26XweOYnYgQ90odzwPh1oylZn/P6ctjsHXfPmHsGA==
+X-Google-Smtp-Source: AGHT+IFhvvI72SNKWtKdFoZVMVjbSNn4SyyPJHtJtWoEcbBBiEh/YosjK0z6aNweqRZIBP1loCDwBw==
+X-Received: by 2002:a17:902:cf10:b0:224:7a4:b31 with SMTP id
+ d9443c01a7336-22de6bfdeb1mr5058875ad.6.1745868920571; 
+ Mon, 28 Apr 2025 12:35:20 -0700 (PDT)
+Received: from [192.168.1.87] ([38.41.223.211])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-22dc8463eebsm51449825ad.189.2025.04.28.12.35.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 25 Apr 2025 03:43:28 -0700 (PDT)
-Message-ID: <1cd89855-a8a0-4e69-81db-2ef0eab63506@linaro.org>
-Date: Fri, 25 Apr 2025 12:43:27 +0200
+ Mon, 28 Apr 2025 12:35:20 -0700 (PDT)
+Message-ID: <88d6e264-4793-4095-8bb6-bc45621abeea@linaro.org>
+Date: Mon, 28 Apr 2025 12:35:19 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/intc/i8259: Remove unused DEBUG_PIC define
-To: BALATON Zoltan <balaton@eik.bme.hu>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>
-References: <20250423101125.B243A55C592@zero.eik.bme.hu>
+Subject: Re: [PATCH] docs/devel/build-environment: enhance MSYS2 instructions
 Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250423101125.B243A55C592@zero.eik.bme.hu>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>
+References: <20250305213853.3685771-1-pierrick.bouvier@linaro.org>
+ <b28bf347-aa8e-405e-8009-025aaf61a984@linaro.org>
+In-Reply-To: <b28bf347-aa8e-405e-8009-025aaf61a984@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -91,16 +95,36 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 25 Apr 2025 10:43:33 -0000
+X-List-Received-Date: Mon, 28 Apr 2025 19:35:24 -0000
 
-On 23/4/25 12:11, BALATON Zoltan wrote:
-> The debug printfs were converted to traces so this define is now unused.
+On 3/24/25 10:47 AM, Pierrick Bouvier wrote:
+> On 3/5/25 13:38, Pierrick Bouvier wrote:
+>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>> ---
+>>    docs/devel/build-environment.rst | 4 ++--
+>>    1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/docs/devel/build-environment.rst b/docs/devel/build-environment.rst
+>> index f133ef2e012..661f6ea8504 100644
+>> --- a/docs/devel/build-environment.rst
+>> +++ b/docs/devel/build-environment.rst
+>> @@ -97,11 +97,11 @@ build QEMU in MSYS2 itself.
+>>    
+>>    ::
+>>    
+>> -    pacman -S wget
+>> +    pacman -S wget base-devel git
+>>        wget https://raw.githubusercontent.com/msys2/MINGW-packages/refs/heads/master/mingw-w64-qemu/PKGBUILD
+>>        # Some packages may be missing for your environment, installation will still
+>>        # be done though.
+>> -    makepkg -s PKGBUILD || true
+>> +    makepkg --syncdeps --nobuild PKGBUILD || true
+>>    
+>>    Build on windows-aarch64
+>>    ++++++++++++++++++++++++
 > 
-> Fixes: 0880a87300 (i8259: convert DPRINTFs into trace)
-> Signed-off-by: BALATON Zoltan <balaton@eik.bme.hu>
-> ---
->   hw/intc/i8259.c | 5 +----
->   1 file changed, 1 insertion(+), 4 deletions(-)
+> Gentle ping on this trivial change for doc.
+>
 
-Patch queued, thanks.
+Another gentle ping on this trivial doc change.
 
