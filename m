@@ -1,131 +1,133 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uA3au-0006A6-GV
-	for mharc-qemu-trivial@gnu.org; Wed, 30 Apr 2025 05:19:08 -0400
+	id 1uA4Nz-0002ry-5b
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Apr 2025 06:09:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1uA3as-00069U-TW
- for qemu-trivial@nongnu.org; Wed, 30 Apr 2025 05:19:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uA4Nd-0002mK-HL
+ for qemu-trivial@nongnu.org; Wed, 30 Apr 2025 06:09:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
- id 1uA3aq-000219-O6
- for qemu-trivial@nongnu.org; Wed, 30 Apr 2025 05:19:06 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uA4Nb-0007tH-Iw
+ for qemu-trivial@nongnu.org; Wed, 30 Apr 2025 06:09:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746004742;
+ s=mimecast20190719; t=1746007765;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=jzwE6QCq91tArz4D84Pao3ihQ5y7mMKVo1ptewkYyKc=;
- b=A40PRRQ0uLcsLAiDY6Nhi0AvO4eXEVgM6VITfH9nDntm2ZYYMOsuN+43teCaKBqgr3AwRz
- Pv8L42sDmXcRWHE/aT3i/gENZD7gU6ZX0ejQfpdgLzxv4l0YYWch4ItJAQLZVxm8LwPamn
- yGJ7OrZD5J3geBEcRmeZk22zLkJ5vKQ=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=nEXwRBGZ/dtdtNRGKgE/34N1gqkxrrK4jcQDdJQA3cA=;
+ b=SoFqPorzH3RyEnI9nDnCl69kFkRVeVH30To/bssX+eHVdgP+snn3iX2EDWHbCJUM0F67JK
+ 40MsGTnSbHt7AKuMit4OqveKNBUS6uQkU7IONc+m+Yj2qi2wY3MBQ0egK9yx+JnJHrZ4Kh
+ FWwhPDqeEFVysqzb7jmXe+Z+7jeMS9I=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-228-FCk0z4nuN8ePDHHBXfI4UQ-1; Wed, 30 Apr 2025 05:19:00 -0400
-X-MC-Unique: FCk0z4nuN8ePDHHBXfI4UQ-1
-X-Mimecast-MFC-AGG-ID: FCk0z4nuN8ePDHHBXfI4UQ_1746004739
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3978ef9a284so2313017f8f.3
- for <qemu-trivial@nongnu.org>; Wed, 30 Apr 2025 02:19:00 -0700 (PDT)
+ us-mta-97-lozw6bwEOcqIqiGjhOuy-g-1; Wed, 30 Apr 2025 06:09:24 -0400
+X-MC-Unique: lozw6bwEOcqIqiGjhOuy-g-1
+X-Mimecast-MFC-AGG-ID: lozw6bwEOcqIqiGjhOuy-g_1746007763
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-43efa869b0aso43018805e9.3
+ for <qemu-trivial@nongnu.org>; Wed, 30 Apr 2025 03:09:24 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746004739; x=1746609539;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=jzwE6QCq91tArz4D84Pao3ihQ5y7mMKVo1ptewkYyKc=;
- b=iDiKr45DWF/nrW+krjue3sCPC6YW1JGdipJo0SVwWh3lmux8XLJbl96K5mkIHo8sdu
- DTRFDFDLeKi34I9mQKrte0CJR+ni9IF9839gFWhBQOXSK6Etzi+2Lym+bfla6Ayj3RYY
- x+7uKX6aParEpl75N8utoTbw8KWzaozftE/ookroIC7UaPCxjbOrjF8WwD96Uax50/S4
- Tl1IYU9PHr/WRO3blBEjtAfKLAJkVe/ApsbpYLmbRpuxc8dWVHtzHLFupOWj5nJGq4Y/
- QejPBS67maHu7ctzEoM0PmA3PhBI9PXArL/oD7PLDcZXuXYlPF6FBd9qabWmHRpRKGqp
- qnvA==
+ d=1e100.net; s=20230601; t=1746007763; x=1746612563;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=nEXwRBGZ/dtdtNRGKgE/34N1gqkxrrK4jcQDdJQA3cA=;
+ b=GtowWDM+G4IxVsBuoa0yKBqapEU4FODwKQhZjEFpi2trCUkrzyT9XabKAYxjw+biiR
+ /YUa78VnbrAZwK4MC/hLSP+Rx5ujiUxuk2rlZna1GGdd7R1APXHo3BcVQmO5VkFLDL95
+ OcZFiWovGb1rStMtHgYWbHnhy5wkgx1Lz4yLrMKLEaPfbb7asSDwoW0PAImL7tA2so1O
+ o1MWMe2otgpxZHqhlAm+CCxCAuMbPdOs8dVJj/ByC40NsbBlevCY/54YXY4H9T25X/9x
+ 7IX4i51LAirCxKfWFyNWjmeisxNL+qllnwLW2kx4QiKUhXdQwJ7BAzgDMfqHstGA4PON
+ JxlA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXMyCuQmRNcac4wtuIZVt3r2wmKG+XeN1zP8/4GoOB8hoJLRCn0OHBlHEhP6XBx2ILioF3kToM3UwemCBo=@nongnu.org
-X-Gm-Message-State: AOJu0YwaTlRRJuanxI9xw0aQd0yU84+kuVyArpPjmCHV+v0caylDl6YO
- y8eoC5M6J0QGQQMkXg6i6KZA6htZlVq1YnkN89ObmhBDg+wOtPQkE8QSJV7qeaxDhIRizJA0Ndt
- 0Uq3hrwEXwYNi0KpsL8J0tYiKLJqadtZQ9o+HgwgdaHD/V2VqPj6pRG4=
-X-Gm-Gg: ASbGncsOAC4ejf7ppM7pY7UCxHUSlJuk0Lwp8GmxmkNKZ6VuUW5LwIpjATsMqZ/54/8
- sPUNLtP3yGqbT0Imo/2HodVLSTJAA/smllnOIsq+yWXt3rR0woWgOIUYbPcVILpy4svyWvm36qi
- qr20UKIC9LMAkOPGRKjTNPmdYaJzdPI/MG9weoOd5aH5rO1Hz0scm+ZqnHX1LqJgkyVDI3Hs9KJ
- 4ItGClTEGAsWVpL7hESvucbIWsUPB+iudQoLMsCP6vQZekh1kEUNnlczVg6RQVkaTjfjVg0sGb3
- UTHZxww0xOowyAwnFdAfK0rGO96iAZxwCtd+xFCSz7XHlrGdNYg=
-X-Received: by 2002:a05:6000:40dd:b0:390:df75:ddc4 with SMTP id
- ffacd0b85a97d-3a08ff50ae7mr1245299f8f.44.1746004739457; 
- Wed, 30 Apr 2025 02:18:59 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFvaVvKpyGT3HHGFb7GzEO6hjGXQIkZOJvBvoIatA+/SaNGiOt7EgC1KawguG20UH4MdWd1vQ==
-X-Received: by 2002:a05:6000:40dd:b0:390:df75:ddc4 with SMTP id
- ffacd0b85a97d-3a08ff50ae7mr1245289f8f.44.1746004739153; 
- Wed, 30 Apr 2025 02:18:59 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:e10:ef90:343a:68f:2e91:95c?
- ([2a01:e0a:e10:ef90:343a:68f:2e91:95c])
+ AJvYcCUK8nsHCcKZ2XO0Q6j7kjr4eMIltDRTQ3aJjEXIt/hC5g1mqp8G39kWXnG/KFcnKai7vxObpI2Kw2iFr7U=@nongnu.org
+X-Gm-Message-State: AOJu0Yyar9E1Xy1TU2PREdtgsWDxb+JdiL1r3TvMl8DKSq9+tjFXU8IK
+ 2evXCKCVlRWfRu3waDvMBV/nDMzLle7sydH21yv1RStaS+ajFEAZs0j/2bptTssmMLFH9przs1F
+ 38d8kv3JSQ2PWx6ltkb8akKo9Q2C+U0gOGdTeme2YM/Uai7DUeVLRQs4=
+X-Gm-Gg: ASbGnctYeqVITzIg956BQoa9EIRLhTrd+cAKLNsJaoMS1oYbXCvy1jAjmkKnY5yzWIX
+ /lneEL0Ehty2UTCSJDPGeuEZdoIrAWq4UyGkXw+QCUxtt/1Yq4W050EjKchl5AHv+kk8RPmtSVn
+ F6iiPH/bQ11XT57x5/T7NpWX2hg2ukecufPPepKmA4ORLkjx8Z3kIhk3Flg2S9QnregpoI/VMWX
+ P+2yXi5nMxu5SFD9YGIK6Rz79aR8IjKzYqcKmYWaUQlRFlIO2/s6EwXNnacyKQp4YYBSQwTlptx
+ 1PKU94bOwFvsi7o3t/8N6czPIALKWR9KS+QM0JHo
+X-Received: by 2002:a05:600c:1c21:b0:43c:fe15:41cb with SMTP id
+ 5b1f17b1804b1-441b1f3a3f2mr23743105e9.15.1746007763435; 
+ Wed, 30 Apr 2025 03:09:23 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IHuMrhqSmqC6JYgThXx1apTBwLiTTehuBiMB+ySfVHxgOBwtKoqV2U4dxMRVlhGHNAfG7kPMw==
+X-Received: by 2002:a05:600c:1c21:b0:43c:fe15:41cb with SMTP id
+ 5b1f17b1804b1-441b1f3a3f2mr23742805e9.15.1746007762990; 
+ Wed, 30 Apr 2025 03:09:22 -0700 (PDT)
+Received: from [192.168.0.7] (ip-109-42-49-87.web.vodafone.de. [109.42.49.87])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a073ca4cbcsm16184688f8f.25.2025.04.30.02.18.58
+ 5b1f17b1804b1-441b3ae0c19sm11942275e9.24.2025.04.30.03.09.21
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 30 Apr 2025 02:18:58 -0700 (PDT)
-Message-ID: <33cf1878-643e-4eb4-9a4c-9ae90abba0f2@redhat.com>
-Date: Wed, 30 Apr 2025 11:18:58 +0200
+ Wed, 30 Apr 2025 03:09:22 -0700 (PDT)
+Message-ID: <06666850-90a1-4b4a-b454-53df477de215@redhat.com>
+Date: Wed, 30 Apr 2025 12:09:21 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] Running with `--enable-ubsan` leads to a qtest failure:
-To: Nabih Estefan <nabihestefan@google.com>, qemu-devel@nongnu.org
-Cc: pbonzini@redhat.com, farosas@suse.de, sriram.yagnaraman@ericsson.com,
- akihiko.odaki@daynix.com, QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20250429155621.2028198-1-nabihestefan@google.com>
-From: Laurent Vivier <lvivier@redhat.com>
-Autocrypt: addr=lvivier@redhat.com; keydata=
- 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
-In-Reply-To: <20250429155621.2028198-1-nabihestefan@google.com>
+Subject: Re: [PATCH] docs/devel/build-environment: enhance MSYS2 instructions
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+References: <20250305213853.3685771-1-pierrick.bouvier@linaro.org>
+ <b28bf347-aa8e-405e-8009-025aaf61a984@linaro.org>
+ <88d6e264-4793-4095-8bb6-bc45621abeea@linaro.org>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <88d6e264-4793-4095-8bb6-bc45621abeea@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 6AMqHcSBCFPwl9S4qkVnpWuVkDaqLh_H2ZSVUGBBI7c_1746004739
+X-Mimecast-MFC-PROC-ID: sRLaK99gCts9BtVbd1h1QJ6qcHfntfXJtNj6fydUzyA_1746007763
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=lvivier@redhat.com;
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -25
 X-Spam_score: -2.6
@@ -134,7 +136,7 @@ X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.489,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -147,44 +149,43 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 30 Apr 2025 09:19:07 -0000
+X-List-Received-Date: Wed, 30 Apr 2025 10:09:31 -0000
 
-CC Trivial
+On 28/04/2025 21.35, Pierrick Bouvier wrote:
+> On 3/24/25 10:47 AM, Pierrick Bouvier wrote:
+>> On 3/5/25 13:38, Pierrick Bouvier wrote:
+>>> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>>> ---
+>>>    docs/devel/build-environment.rst | 4 ++--
+>>>    1 file changed, 2 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/docs/devel/build-environment.rst b/docs/devel/build- 
+>>> environment.rst
+>>> index f133ef2e012..661f6ea8504 100644
+>>> --- a/docs/devel/build-environment.rst
+>>> +++ b/docs/devel/build-environment.rst
+>>> @@ -97,11 +97,11 @@ build QEMU in MSYS2 itself.
+>>>    ::
+>>> -    pacman -S wget
+>>> +    pacman -S wget base-devel git
+>>>        wget https://raw.githubusercontent.com/msys2/MINGW-packages/refs/ 
+>>> heads/master/mingw-w64-qemu/PKGBUILD
+>>>        # Some packages may be missing for your environment, installation 
+>>> will still
+>>>        # be done though.
+>>> -    makepkg -s PKGBUILD || true
+>>> +    makepkg --syncdeps --nobuild PKGBUILD || true
+>>>    Build on windows-aarch64
+>>>    ++++++++++++++++++++++++
+>>
+>> Gentle ping on this trivial change for doc.
+>>
+> 
+> Another gentle ping on this trivial doc change.
 
-On 29/04/2025 17:56, Nabih Estefan wrote:
-> v2: used ldl_le_p and lduw_l_p instead of memcpy as per upstream
-> suggestion.
-> 
-> ```
-> ../tests/qtest/libqos/igb.c:106:5: runtime error: load of misaligned address 0x562040be8e33 for type 'uint32_t', which requires 4 byte alignment
-> ```
-> Instead of straight casting the uint8_t array, we use memcpy to assure
-> alignment is correct against uint32_t and uint16_t.
-> 
-> Signed-off-by: Nabih Estefan <nabihestefan@google.com>
-> ---
->   tests/qtest/libqos/igb.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/tests/qtest/libqos/igb.c b/tests/qtest/libqos/igb.c
-> index f40c4ec4cd..2e0bb58617 100644
-> --- a/tests/qtest/libqos/igb.c
-> +++ b/tests/qtest/libqos/igb.c
-> @@ -104,10 +104,10 @@ static void igb_pci_start_hw(QOSGraphObject *obj)
->       e1000e_macreg_write(&d->e1000e, E1000_RDT(0), 0);
->       e1000e_macreg_write(&d->e1000e, E1000_RDH(0), 0);
->       e1000e_macreg_write(&d->e1000e, E1000_RA,
-> -                        le32_to_cpu(*(uint32_t *)address));
-> +                        ldl_le_p((uint32_t *)address));
->       e1000e_macreg_write(&d->e1000e, E1000_RA + 4,
->                           E1000_RAH_AV | E1000_RAH_POOL_1 |
-> -                        le16_to_cpu(*(uint16_t *)(address + 4)));
-> +                        lduw_le_p((uint16_t *)(address + 4)));
->   
->       /* Set supported receive descriptor mode */
->       e1000e_macreg_write(&d->e1000e,
+Not really my turf, I don't have much clue about the MSYS2 environment, but 
+since there were no objections, I can add it to my next PR.
 
-Reviewed-by: Laurent Vivier <lvivier@redhat.com>
-Tested-by: Laurent Vivier <lvivier@redhat.com>
+  Thomas
 
 
