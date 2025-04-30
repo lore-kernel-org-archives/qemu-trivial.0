@@ -1,88 +1,140 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1u9UGE-00088n-7m
-	for mharc-qemu-trivial@gnu.org; Mon, 28 Apr 2025 15:35:26 -0400
+	id 1uA3au-0006A6-GV
+	for mharc-qemu-trivial@gnu.org; Wed, 30 Apr 2025 05:19:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1u9UGC-00086U-F0
- for qemu-trivial@nongnu.org; Mon, 28 Apr 2025 15:35:24 -0400
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1u9UGA-0000x7-6j
- for qemu-trivial@nongnu.org; Mon, 28 Apr 2025 15:35:24 -0400
-Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-225df540edcso62860235ad.0
- for <qemu-trivial@nongnu.org>; Mon, 28 Apr 2025 12:35:21 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1745868920; x=1746473720; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=M3koL5YcaNhfuFyfmgiA4zQ3oQ2TQe2oURd+Ul39PKs=;
- b=EWOrXHqzYgPBq9DWMlOLnWj8MaVOS2CYK6PhTuXN/Ycx93JR7YfMiLLyJcb3wLukK1
- p5S7tr3/4QVE19rAauDlZ+rZaqjK9kT54zuMflUGcSru+NPfx9Pv/Bt449JtcbaxGrnL
- RVqiAjCTfhMVI3wa6PIFSSfQupa7IBFhINhd1U1tbxJsF1zYfh0W0uJ7Jw7ROww6TX3g
- 1fnZy+zVQiA2Czzj2Fik8tHjYt7bpJG4KIszIcUQNz3C33BqOtWE6CnQYe5DxuA1nJ0B
- Kvc3WtQJgxsEg2MITFdeLJaKP1tgdaDiOF+kdAqCUYjr7ycDX8fCsqG0qV1ev5OeiMop
- p1LA==
+ (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
+ id 1uA3as-00069U-TW
+ for qemu-trivial@nongnu.org; Wed, 30 Apr 2025 05:19:06 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <lvivier@redhat.com>)
+ id 1uA3aq-000219-O6
+ for qemu-trivial@nongnu.org; Wed, 30 Apr 2025 05:19:06 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1746004742;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=jzwE6QCq91tArz4D84Pao3ihQ5y7mMKVo1ptewkYyKc=;
+ b=A40PRRQ0uLcsLAiDY6Nhi0AvO4eXEVgM6VITfH9nDntm2ZYYMOsuN+43teCaKBqgr3AwRz
+ Pv8L42sDmXcRWHE/aT3i/gENZD7gU6ZX0ejQfpdgLzxv4l0YYWch4ItJAQLZVxm8LwPamn
+ yGJ7OrZD5J3geBEcRmeZk22zLkJ5vKQ=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-228-FCk0z4nuN8ePDHHBXfI4UQ-1; Wed, 30 Apr 2025 05:19:00 -0400
+X-MC-Unique: FCk0z4nuN8ePDHHBXfI4UQ-1
+X-Mimecast-MFC-AGG-ID: FCk0z4nuN8ePDHHBXfI4UQ_1746004739
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-3978ef9a284so2313017f8f.3
+ for <qemu-trivial@nongnu.org>; Wed, 30 Apr 2025 02:19:00 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1745868920; x=1746473720;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=M3koL5YcaNhfuFyfmgiA4zQ3oQ2TQe2oURd+Ul39PKs=;
- b=Iy8yq/JQP23kQe2op3fS8xmz8UAoWpnUii1pz7rzoGTGcWX2e5z/4UiuucNsQ4JJQz
- MKpEOVHE2tJgdhrEW6f5FCLGmsn0mwS/TkMpA1ptNNRi/c57j4DQlAVNMvlAVDJg45wU
- dmqEKpI1ZmkZvt10+//tMGuZwpK3cZvHllzBOau4OAAJgs23+J1AEYvfMYp499KOk8i5
- VAleuOjhXOVI72UmClP6Yw1UEbHYBePMHfJ5WKHd5lL+kU5FkE9OHpTH8n11PMAfl70o
- 3k0AJu4sT75LybnxDy38jQJatAAQMbV9newsLlrDvrKwX24ftJxcxY5PSe6Jca0jPkaA
- 6Q4Q==
+ d=1e100.net; s=20230601; t=1746004739; x=1746609539;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=jzwE6QCq91tArz4D84Pao3ihQ5y7mMKVo1ptewkYyKc=;
+ b=iDiKr45DWF/nrW+krjue3sCPC6YW1JGdipJo0SVwWh3lmux8XLJbl96K5mkIHo8sdu
+ DTRFDFDLeKi34I9mQKrte0CJR+ni9IF9839gFWhBQOXSK6Etzi+2Lym+bfla6Ayj3RYY
+ x+7uKX6aParEpl75N8utoTbw8KWzaozftE/ookroIC7UaPCxjbOrjF8WwD96Uax50/S4
+ Tl1IYU9PHr/WRO3blBEjtAfKLAJkVe/ApsbpYLmbRpuxc8dWVHtzHLFupOWj5nJGq4Y/
+ QejPBS67maHu7ctzEoM0PmA3PhBI9PXArL/oD7PLDcZXuXYlPF6FBd9qabWmHRpRKGqp
+ qnvA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUSn1dZS7z3uFVLnt+msvahicS2DcsfSm5aBEmFpQoBOxvQHIGq7PO9IDBMcSfo2HYanogULfMcCUXMLh0=@nongnu.org
-X-Gm-Message-State: AOJu0YzIHCGag72wOaptDawZhssVA3DYcJgwS5g1A5lML8UymIw1WB81
- E6grxxDovr0efrnJPOG8F3M3l0USx/x8DZoPQj4ziYqNE+2dOQt2vPXpijm11bo=
-X-Gm-Gg: ASbGnct7RxQFiYr1IfbHt+042oCNbzzgzcPmIpZmHa3bsfhinPu++bHwXVg1I+YADp9
- 4zniH4tY8d5X/uxN5kkaWVmG0FG/WPEQyPG4+71r4wTmLPrMKRycqwo10JB+XRZdU/LSjAwKvdt
- KL1z7it5VgWlP/v3WF8i8+w41DTc3LEkNk82WbZuN1ZDDD/Q+z7yAU0SoXmKYHCiMjU2KMJ8wVO
- kfRWlP8DPR5/dmM9DYkTd4mCTpPJoBvYdBzl4zibFahorz0O3YvG8XMwJT6k/lrgvzFkfJKJOPd
- 5FUhHimbvmve+26XweOYnYgQ90odzwPh1oylZn/P6ctjsHXfPmHsGA==
-X-Google-Smtp-Source: AGHT+IFhvvI72SNKWtKdFoZVMVjbSNn4SyyPJHtJtWoEcbBBiEh/YosjK0z6aNweqRZIBP1loCDwBw==
-X-Received: by 2002:a17:902:cf10:b0:224:7a4:b31 with SMTP id
- d9443c01a7336-22de6bfdeb1mr5058875ad.6.1745868920571; 
- Mon, 28 Apr 2025 12:35:20 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
+ AJvYcCXMyCuQmRNcac4wtuIZVt3r2wmKG+XeN1zP8/4GoOB8hoJLRCn0OHBlHEhP6XBx2ILioF3kToM3UwemCBo=@nongnu.org
+X-Gm-Message-State: AOJu0YwaTlRRJuanxI9xw0aQd0yU84+kuVyArpPjmCHV+v0caylDl6YO
+ y8eoC5M6J0QGQQMkXg6i6KZA6htZlVq1YnkN89ObmhBDg+wOtPQkE8QSJV7qeaxDhIRizJA0Ndt
+ 0Uq3hrwEXwYNi0KpsL8J0tYiKLJqadtZQ9o+HgwgdaHD/V2VqPj6pRG4=
+X-Gm-Gg: ASbGncsOAC4ejf7ppM7pY7UCxHUSlJuk0Lwp8GmxmkNKZ6VuUW5LwIpjATsMqZ/54/8
+ sPUNLtP3yGqbT0Imo/2HodVLSTJAA/smllnOIsq+yWXt3rR0woWgOIUYbPcVILpy4svyWvm36qi
+ qr20UKIC9LMAkOPGRKjTNPmdYaJzdPI/MG9weoOd5aH5rO1Hz0scm+ZqnHX1LqJgkyVDI3Hs9KJ
+ 4ItGClTEGAsWVpL7hESvucbIWsUPB+iudQoLMsCP6vQZekh1kEUNnlczVg6RQVkaTjfjVg0sGb3
+ UTHZxww0xOowyAwnFdAfK0rGO96iAZxwCtd+xFCSz7XHlrGdNYg=
+X-Received: by 2002:a05:6000:40dd:b0:390:df75:ddc4 with SMTP id
+ ffacd0b85a97d-3a08ff50ae7mr1245299f8f.44.1746004739457; 
+ Wed, 30 Apr 2025 02:18:59 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFvaVvKpyGT3HHGFb7GzEO6hjGXQIkZOJvBvoIatA+/SaNGiOt7EgC1KawguG20UH4MdWd1vQ==
+X-Received: by 2002:a05:6000:40dd:b0:390:df75:ddc4 with SMTP id
+ ffacd0b85a97d-3a08ff50ae7mr1245289f8f.44.1746004739153; 
+ Wed, 30 Apr 2025 02:18:59 -0700 (PDT)
+Received: from ?IPV6:2a01:e0a:e10:ef90:343a:68f:2e91:95c?
+ ([2a01:e0a:e10:ef90:343a:68f:2e91:95c])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-22dc8463eebsm51449825ad.189.2025.04.28.12.35.19
+ ffacd0b85a97d-3a073ca4cbcsm16184688f8f.25.2025.04.30.02.18.58
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Apr 2025 12:35:20 -0700 (PDT)
-Message-ID: <88d6e264-4793-4095-8bb6-bc45621abeea@linaro.org>
-Date: Mon, 28 Apr 2025 12:35:19 -0700
+ Wed, 30 Apr 2025 02:18:58 -0700 (PDT)
+Message-ID: <33cf1878-643e-4eb4-9a4c-9ae90abba0f2@redhat.com>
+Date: Wed, 30 Apr 2025 11:18:58 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] docs/devel/build-environment: enhance MSYS2 instructions
+Subject: Re: [PATCH v2] Running with `--enable-ubsan` leads to a qtest failure:
+To: Nabih Estefan <nabihestefan@google.com>, qemu-devel@nongnu.org
+Cc: pbonzini@redhat.com, farosas@suse.de, sriram.yagnaraman@ericsson.com,
+ akihiko.odaki@daynix.com, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20250429155621.2028198-1-nabihestefan@google.com>
+From: Laurent Vivier <lvivier@redhat.com>
+Autocrypt: addr=lvivier@redhat.com; keydata=
+ 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
+In-Reply-To: <20250429155621.2028198-1-nabihestefan@google.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 6AMqHcSBCFPwl9S4qkVnpWuVkDaqLh_H2ZSVUGBBI7c_1746004739
+X-Mimecast-Originator: redhat.com
 Content-Language: en-US
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Thomas Huth <thuth@redhat.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
-References: <20250305213853.3685771-1-pierrick.bouvier@linaro.org>
- <b28bf347-aa8e-405e-8009-025aaf61a984@linaro.org>
-In-Reply-To: <b28bf347-aa8e-405e-8009-025aaf61a984@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=lvivier@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -25
+X-Spam_score: -2.6
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.489,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -95,36 +147,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 28 Apr 2025 19:35:24 -0000
+X-List-Received-Date: Wed, 30 Apr 2025 09:19:07 -0000
 
-On 3/24/25 10:47 AM, Pierrick Bouvier wrote:
-> On 3/5/25 13:38, Pierrick Bouvier wrote:
->> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
->> ---
->>    docs/devel/build-environment.rst | 4 ++--
->>    1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/docs/devel/build-environment.rst b/docs/devel/build-environment.rst
->> index f133ef2e012..661f6ea8504 100644
->> --- a/docs/devel/build-environment.rst
->> +++ b/docs/devel/build-environment.rst
->> @@ -97,11 +97,11 @@ build QEMU in MSYS2 itself.
->>    
->>    ::
->>    
->> -    pacman -S wget
->> +    pacman -S wget base-devel git
->>        wget https://raw.githubusercontent.com/msys2/MINGW-packages/refs/heads/master/mingw-w64-qemu/PKGBUILD
->>        # Some packages may be missing for your environment, installation will still
->>        # be done though.
->> -    makepkg -s PKGBUILD || true
->> +    makepkg --syncdeps --nobuild PKGBUILD || true
->>    
->>    Build on windows-aarch64
->>    ++++++++++++++++++++++++
+CC Trivial
+
+On 29/04/2025 17:56, Nabih Estefan wrote:
+> v2: used ldl_le_p and lduw_l_p instead of memcpy as per upstream
+> suggestion.
 > 
-> Gentle ping on this trivial change for doc.
->
+> ```
+> ../tests/qtest/libqos/igb.c:106:5: runtime error: load of misaligned address 0x562040be8e33 for type 'uint32_t', which requires 4 byte alignment
+> ```
+> Instead of straight casting the uint8_t array, we use memcpy to assure
+> alignment is correct against uint32_t and uint16_t.
+> 
+> Signed-off-by: Nabih Estefan <nabihestefan@google.com>
+> ---
+>   tests/qtest/libqos/igb.c | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/tests/qtest/libqos/igb.c b/tests/qtest/libqos/igb.c
+> index f40c4ec4cd..2e0bb58617 100644
+> --- a/tests/qtest/libqos/igb.c
+> +++ b/tests/qtest/libqos/igb.c
+> @@ -104,10 +104,10 @@ static void igb_pci_start_hw(QOSGraphObject *obj)
+>       e1000e_macreg_write(&d->e1000e, E1000_RDT(0), 0);
+>       e1000e_macreg_write(&d->e1000e, E1000_RDH(0), 0);
+>       e1000e_macreg_write(&d->e1000e, E1000_RA,
+> -                        le32_to_cpu(*(uint32_t *)address));
+> +                        ldl_le_p((uint32_t *)address));
+>       e1000e_macreg_write(&d->e1000e, E1000_RA + 4,
+>                           E1000_RAH_AV | E1000_RAH_POOL_1 |
+> -                        le16_to_cpu(*(uint16_t *)(address + 4)));
+> +                        lduw_le_p((uint16_t *)(address + 4)));
+>   
+>       /* Set supported receive descriptor mode */
+>       e1000e_macreg_write(&d->e1000e,
 
-Another gentle ping on this trivial doc change.
+Reviewed-by: Laurent Vivier <lvivier@redhat.com>
+Tested-by: Laurent Vivier <lvivier@redhat.com>
+
 
