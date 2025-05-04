@@ -1,64 +1,64 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uBhLN-0007RV-DH
-	for mharc-qemu-trivial@gnu.org; Sun, 04 May 2025 17:57:53 -0400
+	id 1uBhLO-0007SR-7J
+	for mharc-qemu-trivial@gnu.org; Sun, 04 May 2025 17:57:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uBhLK-0007Pq-QQ
- for qemu-trivial@nongnu.org; Sun, 04 May 2025 17:57:50 -0400
+ id 1uBhLN-0007RY-G2
+ for qemu-trivial@nongnu.org; Sun, 04 May 2025 17:57:53 -0400
 Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uBhLJ-0005BH-D3
- for qemu-trivial@nongnu.org; Sun, 04 May 2025 17:57:50 -0400
+ id 1uBhLM-0005Br-5H
+ for qemu-trivial@nongnu.org; Sun, 04 May 2025 17:57:53 -0400
 Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-22c33ac23edso41003315ad.0
- for <qemu-trivial@nongnu.org>; Sun, 04 May 2025 14:57:49 -0700 (PDT)
+ d9443c01a7336-22e15aea506so26218365ad.1
+ for <qemu-trivial@nongnu.org>; Sun, 04 May 2025 14:57:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1746395868; x=1747000668; darn=nongnu.org;
+ d=linaro.org; s=google; t=1746395870; x=1747000670; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=56ybfnwzUbGIYEktCHIqmHOykTepTgv6Xlf9ny+yrcs=;
- b=Rh7ExY9fsx2UUMBh8pkC/L8n8hCJzjABBmGurLSwrVwpIdPravJusqbAlKXarfVI0v
- SorkEj3mzc1UM4deIB5zKIEuA3e3TBBiYOTWSvjLVROQR6zdrcJpVGznM26Fq6upFUE+
- Hpia/2hunK1aGwYI2zt1xl8r9WtLT2vCtSFo6CYfTqoVZWMY9z3poDeYBpWChGlcnAGc
- p/L7TxweVy4m7L179lxxGZuPKHTX810DfircD7k6ZaNq121bGafcyd2T/jd6GlzSMke4
- fUec6mEs9OMrOQmajmbQKcfxOtbW8rPjLdnbCDaZclolqvi22I9q63eXxs7QBwPyd8Kr
- kM2A==
+ bh=zwc13b8kC9Z5he0z0xvhp1yrhhR7Vt1vlSABNOYVc1M=;
+ b=LGQzhjBgt2ttE9oJZgT7ocBsB0XIUL8ipEyqdR4Z1JNyf9vZI0sdwavhYBSpqwJTRc
+ D2C4sz7FkFFvssT7mKatxvoa8iVVetQV+gV0TX6wvmrhwLUIs3Ux3/gFlo2bmYH5G8L0
+ fyWZuycALRVIKvleHBrdrRxHSuhGLQanxiVKFN3SbVCatkG8V8sZI94deCc7pmBni4BK
+ +/oJcOOMgDjQcTFkTgg6Gr7YmFsuct9gh4A+d98YgKkpSeSned1+KZtOaU+eKFiRZiE8
+ phlDSf1toMTqljM+rdDb9NLa/i69xwk0Rgu28zG3byM8XhzlkMb2+V0B/kk8H/7AgHnj
+ l3NQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746395868; x=1747000668;
+ d=1e100.net; s=20230601; t=1746395870; x=1747000670;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=56ybfnwzUbGIYEktCHIqmHOykTepTgv6Xlf9ny+yrcs=;
- b=aa7sbIVrRgTO9mq2+lE3Pq6WjN0hvmtldTGq89qeJJhFLYeyEN06s9nFocD9+5oaKu
- u1hqOQqaawecAfuVos8VJEHWVDoSDGqlAJlGTph4W/7QLIXdMAMPjBP+JoI65cDNAJNI
- ZGJ67w6j4HSp8NCwupl3q2zwqRkohyE7tFuRucGiRuJl/BW8Ej4hLgPQ611FbKANdAC2
- 9RqH0Plj8kwuVKEnt6V6LVNlpP8txolKeWzHQaRZhUE4pF6EkLXG1tkNiJw3LBswcBs4
- 7RFvkzGfC5+z9a3CtgjkG8RfpEMxeLMpc1uF7u3Y4nkcRGDRbgu794xFKQ6i/iaeS/UO
- QsuQ==
-X-Gm-Message-State: AOJu0Ywu0TKe3Ic0N8R6VJh/ccwrMbKXhnWBmSjEmHGL4DreQSrx6tde
- Fn6//DXWlCjQjM54dfeirk+pKFjzp+icvwf0USkm1+1fla2fHUw8YxRwQhKrI14=
-X-Gm-Gg: ASbGnctM9EEhICrsz210q2z7n2d9BZprmrPfIOOKfHmXk3DPv0bvYLFIU+i5gaVEDQi
- Jma2rhjAv6zVlGq0uIpICeBfYxr3XZxQbAlrHY15R1i9ZexQCqe/g2sT292/SQnOH1y/wnxryEP
- VparwA7OBFR4ZOgd1INMiTYvh0cfRlPtM81dpz8dsn2hz8LK4VgG1+YOwf1zBafm6GiJEf9AKzM
- rIaOCKrvfmwJf9DJFf3uZLafThCRH+dQvblscwZA9gMeyQ7yQ1a6uCTHv3fntscOefFsp9h5kGB
- Ml18aUEfQAQVzmfv3KcmkLYFSh8SX+S5o64MmPeJna4Fm9Pi8Q1uAwYHIlM=
-X-Google-Smtp-Source: AGHT+IHVPC4FyzJd0HAZEcXwZiKDeTCdiv/lusHXrf+t9gii4gUOEAFX9IdMsS6N6mTKZEpEIIVhiQ==
-X-Received: by 2002:a17:902:d543:b0:21f:85af:4bbf with SMTP id
- d9443c01a7336-22e1e8f569bmr70470725ad.20.1746395868242; 
- Sun, 04 May 2025 14:57:48 -0700 (PDT)
+ bh=zwc13b8kC9Z5he0z0xvhp1yrhhR7Vt1vlSABNOYVc1M=;
+ b=Nkx4s9PTY9rswVGgS5v2krOv0fUic7O8yV5KPOFmZrIDpUUKbOgW6haWzsAt6Ho9hz
+ Fd2xTkqpOViI5Xk3CxDxLgpsbVKqXKsl5x/pUd6etfiN+viUZpRWQ91iQ2d4MaQbIQgf
+ pZuBBJgIueZ7HwlMZ+j/Zmpe3PRqjWth7heTtsMI/APMV1BGiuBi0svGdyOMRjNAti9o
+ v5nfM6Tf1VL9C2nO82N7MRf/BPdgb8Jn7RXp3Dd8DedB+JMcUqNfsR/EyQCpXyptNhmz
+ YwoMXdGpRpO3Cevk+Sk59G1Qs4voeJ25DxOLsHHh0pIrC7oPZkHBKA2L1V7jlr2bQ9Zj
+ Z7YA==
+X-Gm-Message-State: AOJu0YwBfeNBoZzY16NIq3ZwNHpqtPB0zl1AhNnPBqaJTuOsgBlsId3l
+ oDLa1vswajJlzWyo81ODQMTZWEcDN81ZoWkokdVhf2W0wWTg4T1UPK8MixsmaZw=
+X-Gm-Gg: ASbGncsk98EYh7MtErg8lTVXwmj++XhNVwDrHtxyebAvdj+wmpyKeOVCWTWuxcaRsa7
+ jpLwDYW1juA3JNTlPH2Q6r0nl7z3efqRRFUfHsBUDAykzgfxbvPdmRpvEuxXMIkBIraBfNbhhnt
+ EGGn6nt2p0a8fiZHbZFxn7oehEE+BuR51+wNc7cZMZIDvCia3cgCf/rZgHEFjHZdIQU3xAAsupZ
+ ZC5oiE13YKYzZ4Zoznk5P5GQR20bv7qYe26H8QFeI2MCxfjkfGQbDuQIyW6E1b2j4f7hMEBWbsG
+ jUhGSxqzpkEPE3EhzweiieUSGxTrLpqfSNb2PC8vaugV9km8
+X-Google-Smtp-Source: AGHT+IECbiCHIB9yXeZyP/73ydQgOkmKcL7fDhfifpt8nRB3vdpLxi/bJq0+dAIeGnkTNsGzJmDT0w==
+X-Received: by 2002:a17:902:dacf:b0:224:24d5:f20a with SMTP id
+ d9443c01a7336-22e1eaeecf4mr93104875ad.48.1746395870493; 
+ Sun, 04 May 2025 14:57:50 -0700 (PDT)
 Received: from gromero0.. ([200.150.181.215]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-22e152204fesm41664875ad.137.2025.05.04.14.57.46
+ d9443c01a7336-22e152204fesm41664875ad.137.2025.05.04.14.57.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 04 May 2025 14:57:47 -0700 (PDT)
+ Sun, 04 May 2025 14:57:50 -0700 (PDT)
 From: Gustavo Romero <gustavo.romero@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, philmd@linaro.org, alex.bennee@linaro.org,
  gustavo.romero@linaro.org
-Subject: [PATCH] hw/net/e1000: Remove stray empty comment in header
-Date: Sun,  4 May 2025 21:56:32 +0000
-Message-Id: <20250504215639.54860-4-gustavo.romero@linaro.org>
+Subject: [PATCH] qom/object: Fix typo in comment
+Date: Sun,  4 May 2025 21:56:33 +0000
+Message-Id: <20250504215639.54860-5-gustavo.romero@linaro.org>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -83,29 +83,28 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 04 May 2025 21:57:51 -0000
+X-List-Received-Date: Sun, 04 May 2025 21:57:53 -0000
 
-In the header file, remove a stray empty comment in the Offload Context
-Descriptor struct.
+Fix duplicate preposition in comment.
 
 Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
- hw/net/e1000x_regs.h | 2 +-
+ qom/object.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/net/e1000x_regs.h b/hw/net/e1000x_regs.h
-index cd896fc0ca..e9a74de6f4 100644
---- a/hw/net/e1000x_regs.h
-+++ b/hw/net/e1000x_regs.h
-@@ -900,7 +900,7 @@ struct e1000_context_desc {
-             uint16_t tucse;     /* TCP checksum end */
-         } tcp_fields;
-     } upper_setup;
--    uint32_t cmd_and_length;    /* */
-+    uint32_t cmd_and_length;
-     union {
-         uint32_t data;
-         struct {
+diff --git a/qom/object.c b/qom/object.c
+index 664f0f24ae..7b013f40a0 100644
+--- a/qom/object.c
++++ b/qom/object.c
+@@ -485,7 +485,7 @@ bool object_apply_global_props(Object *obj, const GPtrArray *props,
+  * Slot 0: accelerator's global property defaults
+  * Slot 1: machine's global property defaults
+  * Slot 2: global properties from legacy command line option
+- * Each is a GPtrArray of of GlobalProperty.
++ * Each is a GPtrArray of GlobalProperty.
+  * Applied in order, later entries override earlier ones.
+  */
+ static GPtrArray *object_compat_props[3];
 -- 
 2.34.1
 
