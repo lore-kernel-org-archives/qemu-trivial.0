@@ -1,69 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uBhLW-0007Zs-7u
-	for mharc-qemu-trivial@gnu.org; Sun, 04 May 2025 17:58:02 -0400
+	id 1uBhLY-0007dJ-6S
+	for mharc-qemu-trivial@gnu.org; Sun, 04 May 2025 17:58:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uBhLU-0007Xd-Do
- for qemu-trivial@nongnu.org; Sun, 04 May 2025 17:58:00 -0400
-Received: from mail-pl1-x631.google.com ([2607:f8b0:4864:20::631])
+ id 1uBhLW-0007Zq-7v
+ for qemu-trivial@nongnu.org; Sun, 04 May 2025 17:58:02 -0400
+Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uBhLS-0005D2-Ky
- for qemu-trivial@nongnu.org; Sun, 04 May 2025 17:58:00 -0400
-Received: by mail-pl1-x631.google.com with SMTP id
- d9443c01a7336-22c336fcdaaso42788775ad.3
- for <qemu-trivial@nongnu.org>; Sun, 04 May 2025 14:57:58 -0700 (PDT)
+ id 1uBhLU-0005DI-Ih
+ for qemu-trivial@nongnu.org; Sun, 04 May 2025 17:58:01 -0400
+Received: by mail-pl1-x634.google.com with SMTP id
+ d9443c01a7336-227c7e57da2so33713115ad.0
+ for <qemu-trivial@nongnu.org>; Sun, 04 May 2025 14:58:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1746395877; x=1747000677; darn=nongnu.org;
+ d=linaro.org; s=google; t=1746395879; x=1747000679; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=T30H+Xqi+D11ghfM6nKfQX3kyu+3U71s0mbiqhW/0/s=;
- b=Pdql+r8rx25wcbdLqYhCuGSz5nCZ5G8dLSku0WrvlGhXkJ/BttljvjXgoxNtRYqQUK
- 4C8aVqjomPJoDcA6MOAx4DQLIT2o+AxAu6NH98neUaiOaeRZv2ugd3/L7vrioKeSrKI/
- RPL66q+R/xaM5NPcwNHLcmpap5+TGCHr1xcBCsKtlJxR2UETAk0sWTkiUnSeJrLwI4a0
- 6vMDsRllX3R8AXkENmqXG3WpnT2DkW05nS7tVrpRHKExODQcGn2eRErtO/+w+sUBvEes
- nY0zqHqA9r+zExtp18gbcShs7uAhIzxQzQ++NGo7eIgU6ItnpAn+pccU4K7L8xXt3eHU
- z2kw==
+ bh=qsgJuJeIe1Kv1++9ujzrFlsebKeMRf8m5C9gM5J4SiI=;
+ b=ple+dYG74uF6DbsErlcDqWGcR1v8RP43bJbYnwU914colck+Sb7NgwH32RVGuc4N9O
+ gUYSjExHeI/hmDeGAyrPVimmJsplSBrujyqbDCdflGnSCDtMt5FX8mJCDDjmyqjfhQWq
+ z5DwOtPgnuFqWtr+fe+r+Ok/V3pyLbTIGf8VieFUYIuJLDQ/3kXSwz4Tq9tstaOgTUzK
+ WyoXCeWNBUsfcdrlQiBi2jFk0wSBUu7JkZ+JB+/SB5RqjOGR3eDjy16LydACW5YYTg08
+ vEuEIed5JlXWdx6wXhRmWrw0ouhUW6LlXkXd9VRfbVpn809wYY7hsqzelO8j47XxquGB
+ uWnQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746395877; x=1747000677;
+ d=1e100.net; s=20230601; t=1746395879; x=1747000679;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=T30H+Xqi+D11ghfM6nKfQX3kyu+3U71s0mbiqhW/0/s=;
- b=lh2t7TWyjX5F4O2nDf5DlybXCwKN1RzzzKnprtA2FDZaAzWxKigs8ykiOLxH3qJn6+
- nxDshJBq0cKwLeCLLKi9Jp7R1pUQvnSK2shpi5ihEN1g1AQUB8vMShc+RdxTtLmI/9di
- +KPwlAVTD1kI8Unr0RWaJ+tk1Be9IxYmhaE6zAe6EoQVMCeBXJdcTpr3Pvz8nGaBaJps
- fu+jDRBZFr9BVfL9gjIiXdJzZfD+b87hESXs80clj3JdaflrpZX+NjO84otCOWNKJEvx
- lPP9PWVM7lruAd6y8aTHmQO9DZOBbzx3O/YrlRDS/12o/F6s3FVwlFwXFzQTSaBBgxg7
- ZrJw==
-X-Gm-Message-State: AOJu0YwxXALm4sf6UV7fbdTL5zpcdzTJl/NsS9BIHDQJEfRywhLwxB2B
- wkK6AKbsPVkRp+WwEw4SQe0wQWVb44xhsNZ/zQ87J+3VGBQqj7EY6LBCW7+Gjhw=
-X-Gm-Gg: ASbGncurA2O6j0zOQ6MfeyrgYdWASNBdjHpLTOGkgeEz2xfJWg3ksjkOzfi9Xcd/NN5
- ilvvwcZy3RiviYU8KQ/BXLRJ0V4NqS6e450g1h5sHmYMLkGMTkq6PxT7bUPx1JAuXyOmlYdewNw
- 1Z3R2Y8esTVOIw5Ax0TBYQTJ2Wn9CDtMA6gqG+aaJH9V7vXTdOf/9qxFvJcGkMeeGEVRM2g9Pku
- 59CxUPkWwJ7MvmcwP5cQ/AaAD2gPd9XzJbXLyZhIOjb9MI40gpqhJebhF0Z7nZr60NbJj8T8wTL
- hKgSeYL61Tw0vElpjI2bUSnl/Z+Fs3rkIsrNDUoH9W13U0rc
-X-Google-Smtp-Source: AGHT+IFLOYo2VF9CCIcRfjuhSTmt7XVXCxZ/TEOLp6sfRYPRnAGNb5E/aa3DrqbfoYXE3MAPRWeKPA==
-X-Received: by 2002:a17:902:f686:b0:223:635d:3e2a with SMTP id
- d9443c01a7336-22e1e909934mr73071745ad.23.1746395877119; 
- Sun, 04 May 2025 14:57:57 -0700 (PDT)
+ bh=qsgJuJeIe1Kv1++9ujzrFlsebKeMRf8m5C9gM5J4SiI=;
+ b=JNa7hn6/p2U2+w1u4yCVyv0YQTjwxf0tLNPlw4Szt4OKoj84u/zTnG6vi+CsScaU8o
+ P19s46I9dOKxdVJ3XZA1IgtPSbGJIQiczXgHJO3ymXQrSiBh4E2sFiS3tKcun4Dm6OGY
+ 4Y/5oHB5Oq1r7Ov7CN+88x8R1PZg7/ejgeIL8UB0WWSGVFyYmzZGwVLI7/6J5va8T9+9
+ esvb8DH3bJVnlPLiiEMHuxEUfiPZlzYalp0Stzh2k+bJvFsAjbwe5tAfzfkG19T+9d7b
+ MwNTYdI+2X62e1zfwqaEtO3MlQhitBKz5VG0VDMePm0ElqQPBkwCEjqfmBdjFptZIVFX
+ K/FA==
+X-Gm-Message-State: AOJu0YywR/O+ZyON1ozzm/T/X0qLWpuapxjTUuE8fw3N7OFNgb8k9D87
+ NEyY2fXSvSmgDQ7wMsA2fJyGS37Dooct0LvzAig02waQ7t+9O+4dKZt6UF3WG4Q=
+X-Gm-Gg: ASbGnctnddfpOMYcT0PezBxxd2A3Jq/jlINWNmjF6RDdkCdnYBZyjOVR5HiUL2Jpdvq
+ 6uPY5wcvavHOmCk4aaxImZSKSpjvtNHuIJ6FZT5Py1aHLafA34fY4bVpzLo3+AsfyZV9sEkfEFE
+ JqtTVGIAN1SGQTVPz1Y+Dmu8qT6ScGGGVcGBjyMd2unjbr+8aoLb5znQpBemT3/ggJU+Q8zBS32
+ zK7VxgBiHbtj+NIcy2eJc7OrbsoggoiQS755KSOifVQoCbFIIgWgHMuqfBjUgZzd1VrgCDRVZhx
+ 3JIJSDIzdImodBxePJJ4wzQhdfG+ZK/YVwA2vjv25/bkocKW
+X-Google-Smtp-Source: AGHT+IGZef+QXCdY3KweeEVKuIgzrjIfQkNCJ+TFcEAn+yTaqv1u2PdJdM8I87U5AKf9hw956BNn4g==
+X-Received: by 2002:a17:903:13d0:b0:224:a74:28c2 with SMTP id
+ d9443c01a7336-22e1e8f9aefmr71941085ad.29.1746395879352; 
+ Sun, 04 May 2025 14:57:59 -0700 (PDT)
 Received: from gromero0.. ([200.150.181.215]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-22e152204fesm41664875ad.137.2025.05.04.14.57.55
+ d9443c01a7336-22e152204fesm41664875ad.137.2025.05.04.14.57.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 04 May 2025 14:57:56 -0700 (PDT)
+ Sun, 04 May 2025 14:57:58 -0700 (PDT)
 From: Gustavo Romero <gustavo.romero@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, philmd@linaro.org, alex.bennee@linaro.org,
  gustavo.romero@linaro.org
-Subject: [PATCH] hw/i386/acpi-build: Fix typo in function name
-Date: Sun,  4 May 2025 21:56:36 +0000
-Message-Id: <20250504215639.54860-8-gustavo.romero@linaro.org>
+Subject: [PATCH] hw/i386/acpi-build: Update document reference
+Date: Sun,  4 May 2025 21:56:37 +0000
+Message-Id: <20250504215639.54860-9-gustavo.romero@linaro.org>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::631;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x631.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x634.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -83,49 +83,29 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 04 May 2025 21:58:00 -0000
+X-List-Received-Date: Sun, 04 May 2025 21:58:02 -0000
 
-Fix missing "i" in the name of the function responsible for adding the call to
-the PCI notification method (PCNT) in the ACPI table.
+Update the reference for QEMU's ACPI PCI hotplug device interface. Also,
+use the possessive form in the comment.
 
 Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
- hw/i386/acpi-build.c | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+ hw/i386/acpi-build.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/i386/acpi-build.c b/hw/i386/acpi-build.c
-index b5836417a0..f40ad062f9 100644
---- a/hw/i386/acpi-build.c
-+++ b/hw/i386/acpi-build.c
-@@ -589,8 +589,8 @@ void build_append_pci_bus_devices(Aml *parent_scope, PCIBus *bus)
-     }
- }
+diff --git a/hw/i386/acpi-build.h b/hw/i386/acpi-build.h
+index 0dce155c8c..275ec058a1 100644
+--- a/hw/i386/acpi-build.h
++++ b/hw/i386/acpi-build.h
+@@ -5,7 +5,7 @@
  
--static bool build_append_notfication_callback(Aml *parent_scope,
--                                              const PCIBus *bus)
-+static bool build_append_notification_callback(Aml *parent_scope,
-+                                               const PCIBus *bus)
- {
-     Aml *method;
-     PCIBus *sec;
-@@ -604,7 +604,7 @@ static bool build_append_notfication_callback(Aml *parent_scope,
-             continue;
-         }
-         nr_notifiers = nr_notifiers +
--                       build_append_notfication_callback(br_scope, sec);
-+                       build_append_notification_callback(br_scope, sec);
-         /*
-          * add new child scope to parent
-          * and keep track of bus that have PCNT,
-@@ -1773,7 +1773,7 @@ build_dsdt(GArray *table_data, BIOSLinker *linker,
-         PCIBus *b = PCI_HOST_BRIDGE(pci_host)->bus;
+ extern const struct AcpiGenericAddress x86_nvdimm_acpi_dsmio;
  
-         scope = aml_scope("\\_SB.PCI0");
--        has_pcnt = build_append_notfication_callback(scope, b);
-+        has_pcnt = build_append_notification_callback(scope, b);
-         if (has_pcnt) {
-             aml_append(dsdt, scope);
-         }
+-/* PCI Hot-plug registers bases. See docs/spec/acpi_pci_hotplug.txt */
++/* PCI Hot-plug registers' base. See docs/specs/acpi_pci_hotplug.rst */
+ #define ACPI_PCIHP_SEJ_BASE 0x8
+ #define ACPI_PCIHP_BNMR_BASE 0x10
+ 
 -- 
 2.34.1
 
