@@ -1,69 +1,69 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uBhLO-0007SR-7J
-	for mharc-qemu-trivial@gnu.org; Sun, 04 May 2025 17:57:54 -0400
+	id 1uBhLS-0007W9-9H
+	for mharc-qemu-trivial@gnu.org; Sun, 04 May 2025 17:57:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uBhLN-0007RY-G2
- for qemu-trivial@nongnu.org; Sun, 04 May 2025 17:57:53 -0400
-Received: from mail-pl1-x634.google.com ([2607:f8b0:4864:20::634])
+ id 1uBhLP-0007T1-Gb
+ for qemu-trivial@nongnu.org; Sun, 04 May 2025 17:57:55 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uBhLM-0005Br-5H
- for qemu-trivial@nongnu.org; Sun, 04 May 2025 17:57:53 -0400
-Received: by mail-pl1-x634.google.com with SMTP id
- d9443c01a7336-22e15aea506so26218365ad.1
- for <qemu-trivial@nongnu.org>; Sun, 04 May 2025 14:57:51 -0700 (PDT)
+ id 1uBhLO-0005CC-2K
+ for qemu-trivial@nongnu.org; Sun, 04 May 2025 17:57:55 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-2254e0b4b79so56203455ad.2
+ for <qemu-trivial@nongnu.org>; Sun, 04 May 2025 14:57:53 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1746395870; x=1747000670; darn=nongnu.org;
+ d=linaro.org; s=google; t=1746395872; x=1747000672; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=zwc13b8kC9Z5he0z0xvhp1yrhhR7Vt1vlSABNOYVc1M=;
- b=LGQzhjBgt2ttE9oJZgT7ocBsB0XIUL8ipEyqdR4Z1JNyf9vZI0sdwavhYBSpqwJTRc
- D2C4sz7FkFFvssT7mKatxvoa8iVVetQV+gV0TX6wvmrhwLUIs3Ux3/gFlo2bmYH5G8L0
- fyWZuycALRVIKvleHBrdrRxHSuhGLQanxiVKFN3SbVCatkG8V8sZI94deCc7pmBni4BK
- +/oJcOOMgDjQcTFkTgg6Gr7YmFsuct9gh4A+d98YgKkpSeSned1+KZtOaU+eKFiRZiE8
- phlDSf1toMTqljM+rdDb9NLa/i69xwk0Rgu28zG3byM8XhzlkMb2+V0B/kk8H/7AgHnj
- l3NQ==
+ bh=/tk0gbWoG4ApvXZ5c0JKBgUdcITDobE9RIrWnb6spIQ=;
+ b=uQ+eRlOtBzBq7CikOTB055G8LygEOkXihgGfPUQMtIW3HLQaDquot6F5pHZbqBFVC2
+ chgyJYwYWWgngWLvLgVF0bIWiN2l+o77dngAONAF1MqJHee81nJDld/979Ij8wB23iV9
+ RtoqZlDdyEezkUlIG08ddtZpHTJlHis9ijHT2oDMuvP8/02kbV4/qczWZdDsDzhGq7K5
+ ueWg+HF812GxrZLkIuQKXuJr0WcnjmCPSBjU1eNA8zGoQjCVffPGvOuPcj5XV9Io2awU
+ E6dKii4w/IHYNG7F02YbFI/A6AOkI6M+wvEsKaNUU4pgJjOEY749HGwP3O7YDduGE76r
+ vjfw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746395870; x=1747000670;
+ d=1e100.net; s=20230601; t=1746395872; x=1747000672;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=zwc13b8kC9Z5he0z0xvhp1yrhhR7Vt1vlSABNOYVc1M=;
- b=Nkx4s9PTY9rswVGgS5v2krOv0fUic7O8yV5KPOFmZrIDpUUKbOgW6haWzsAt6Ho9hz
- Fd2xTkqpOViI5Xk3CxDxLgpsbVKqXKsl5x/pUd6etfiN+viUZpRWQ91iQ2d4MaQbIQgf
- pZuBBJgIueZ7HwlMZ+j/Zmpe3PRqjWth7heTtsMI/APMV1BGiuBi0svGdyOMRjNAti9o
- v5nfM6Tf1VL9C2nO82N7MRf/BPdgb8Jn7RXp3Dd8DedB+JMcUqNfsR/EyQCpXyptNhmz
- YwoMXdGpRpO3Cevk+Sk59G1Qs4voeJ25DxOLsHHh0pIrC7oPZkHBKA2L1V7jlr2bQ9Zj
- Z7YA==
-X-Gm-Message-State: AOJu0YwBfeNBoZzY16NIq3ZwNHpqtPB0zl1AhNnPBqaJTuOsgBlsId3l
- oDLa1vswajJlzWyo81ODQMTZWEcDN81ZoWkokdVhf2W0wWTg4T1UPK8MixsmaZw=
-X-Gm-Gg: ASbGncsk98EYh7MtErg8lTVXwmj++XhNVwDrHtxyebAvdj+wmpyKeOVCWTWuxcaRsa7
- jpLwDYW1juA3JNTlPH2Q6r0nl7z3efqRRFUfHsBUDAykzgfxbvPdmRpvEuxXMIkBIraBfNbhhnt
- EGGn6nt2p0a8fiZHbZFxn7oehEE+BuR51+wNc7cZMZIDvCia3cgCf/rZgHEFjHZdIQU3xAAsupZ
- ZC5oiE13YKYzZ4Zoznk5P5GQR20bv7qYe26H8QFeI2MCxfjkfGQbDuQIyW6E1b2j4f7hMEBWbsG
- jUhGSxqzpkEPE3EhzweiieUSGxTrLpqfSNb2PC8vaugV9km8
-X-Google-Smtp-Source: AGHT+IECbiCHIB9yXeZyP/73ydQgOkmKcL7fDhfifpt8nRB3vdpLxi/bJq0+dAIeGnkTNsGzJmDT0w==
-X-Received: by 2002:a17:902:dacf:b0:224:24d5:f20a with SMTP id
- d9443c01a7336-22e1eaeecf4mr93104875ad.48.1746395870493; 
- Sun, 04 May 2025 14:57:50 -0700 (PDT)
+ bh=/tk0gbWoG4ApvXZ5c0JKBgUdcITDobE9RIrWnb6spIQ=;
+ b=BC1aKaOkglgaBVjCAmCKxB3hxFxmFdjJilGRIBbSIJCfEqwyJlxzFEhc0XRprflW2V
+ ab/EIVZVRdH9NGDpDVyLopHYGZffCYDF4SDVp6Kfpgg6LQFTbBUtb5I+JAaLOH+iMxAy
+ xSBMZx+5MqUx3JMbcZpnqj9BW4h7JoSXaJT62x0Xs8LJngu4FkcK5ih6x1lkKa1bhTbj
+ QAImrZ9KBJzyD0rmoKfEgY6CfayRmxdmdN7rYHzpEXoFBMSOM5HUj80Tvg3eaDPbsaqw
+ X+CGHGkv2/b910YADZLS/Ya9tFmW4xszfQmRQ1XM3RLPZzRLrWzGfEfrSrv3Tih76wbA
+ qdrQ==
+X-Gm-Message-State: AOJu0YzSPApVelq6Mmif2n8Slp7l3xhKHYeoLHzmujZ6duDfCWNvyire
+ 1ywM6P7wWwzlMtLsBAtBvbThiAemmyKiRHc5Wkt1h6+UN+DmMDRzhqrrTGovHQY=
+X-Gm-Gg: ASbGncusn0+b725V3jEK+abEbjNplCVj69L4dcSJkPmL4J4yEz1I72hseqwAX/p79/U
+ 0nqOEy8GwDHMgYKmnBV50T6Jm7ZDELGVcB2CgaAMn7cZi7RnBsuVHcs4lH7NJ7aX4zQ+kyi4O5a
+ xXJuI664j3j4hSObG+G9jSc8AvPZV8vEw03XPKeKwHcabCX118b6dwikeLC4n4slbhcLXW+Kyhk
+ zvK8jwtSZmF4z3MGoUHvarGREMDsSwRlf9hyW/bug5RncifKoOgMtWClCquM20LrKmCf5Tmdgco
+ RJDrRP8LtOcp2zUOq/43kBO9E/OhdJHKoVJMuLf2euPxI9zd
+X-Google-Smtp-Source: AGHT+IHX4B3MtSbPeoHfu5rcPv/UTsigKurblHN2gBuy1xugWg/RnALJkq6fkZSYL6exMOXH8S9yiA==
+X-Received: by 2002:a17:902:ef02:b0:224:2717:7993 with SMTP id
+ d9443c01a7336-22e1eadac90mr79083055ad.45.1746395872673; 
+ Sun, 04 May 2025 14:57:52 -0700 (PDT)
 Received: from gromero0.. ([200.150.181.215]) by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-22e152204fesm41664875ad.137.2025.05.04.14.57.48
+ d9443c01a7336-22e152204fesm41664875ad.137.2025.05.04.14.57.50
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 04 May 2025 14:57:50 -0700 (PDT)
+ Sun, 04 May 2025 14:57:52 -0700 (PDT)
 From: Gustavo Romero <gustavo.romero@linaro.org>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, philmd@linaro.org, alex.bennee@linaro.org,
  gustavo.romero@linaro.org
-Subject: [PATCH] qom/object: Fix typo in comment
-Date: Sun,  4 May 2025 21:56:33 +0000
-Message-Id: <20250504215639.54860-5-gustavo.romero@linaro.org>
+Subject: [PATCH] hw/core/machine: Fix indentation
+Date: Sun,  4 May 2025 21:56:34 +0000
+Message-Id: <20250504215639.54860-6-gustavo.romero@linaro.org>
 X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::634;
- envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x634.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=gustavo.romero@linaro.org; helo=mail-pl1-x632.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -83,28 +83,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Sun, 04 May 2025 21:57:53 -0000
+X-List-Received-Date: Sun, 04 May 2025 21:57:55 -0000
 
-Fix duplicate preposition in comment.
+Fix indentation for some elements in the hardware compat arrays.
 
 Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 ---
- qom/object.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/core/machine.c | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-diff --git a/qom/object.c b/qom/object.c
-index 664f0f24ae..7b013f40a0 100644
---- a/qom/object.c
-+++ b/qom/object.c
-@@ -485,7 +485,7 @@ bool object_apply_global_props(Object *obj, const GPtrArray *props,
-  * Slot 0: accelerator's global property defaults
-  * Slot 1: machine's global property defaults
-  * Slot 2: global properties from legacy command line option
-- * Each is a GPtrArray of of GlobalProperty.
-+ * Each is a GPtrArray of GlobalProperty.
-  * Applied in order, later entries override earlier ones.
-  */
- static GPtrArray *object_compat_props[3];
+diff --git a/hw/core/machine.c b/hw/core/machine.c
+index ed01798d37..b8ae155dfa 100644
+--- a/hw/core/machine.c
++++ b/hw/core/machine.c
+@@ -41,7 +41,7 @@ GlobalProperty hw_compat_10_0[] = {};
+ const size_t hw_compat_10_0_len = G_N_ELEMENTS(hw_compat_10_0);
+ 
+ GlobalProperty hw_compat_9_2[] = {
+-    {"arm-cpu", "backcompat-pauth-default-use-qarma5", "true"},
++    { "arm-cpu", "backcompat-pauth-default-use-qarma5", "true"},
+     { "virtio-balloon-pci", "vectors", "0" },
+     { "virtio-balloon-pci-transitional", "vectors", "0" },
+     { "virtio-balloon-pci-non-transitional", "vectors", "0" },
+@@ -58,12 +58,12 @@ GlobalProperty hw_compat_9_1[] = {
+ const size_t hw_compat_9_1_len = G_N_ELEMENTS(hw_compat_9_1);
+ 
+ GlobalProperty hw_compat_9_0[] = {
+-    {"arm-cpu", "backcompat-cntfrq", "true" },
++    { "arm-cpu", "backcompat-cntfrq", "true" },
+     { "scsi-hd", "migrate-emulated-scsi-request", "false" },
+     { "scsi-cd", "migrate-emulated-scsi-request", "false" },
+-    {"vfio-pci", "skip-vsc-check", "false" },
++    { "vfio-pci", "skip-vsc-check", "false" },
+     { "virtio-pci", "x-pcie-pm-no-soft-reset", "off" },
+-    {"sd-card", "spec_version", "2" },
++    { "sd-card", "spec_version", "2" },
+ };
+ const size_t hw_compat_9_0_len = G_N_ELEMENTS(hw_compat_9_0);
+ 
 -- 
 2.34.1
 
