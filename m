@@ -1,74 +1,74 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uBsmp-0001Oc-VC
-	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2025 06:11:01 -0400
+	id 1uBsnT-0001nq-Gk
+	for mharc-qemu-trivial@gnu.org; Mon, 05 May 2025 06:11:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uBsmc-0001Mq-PP
- for qemu-trivial@nongnu.org; Mon, 05 May 2025 06:10:48 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uBsnL-0001k4-O5
+ for qemu-trivial@nongnu.org; Mon, 05 May 2025 06:11:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uBsma-0007Xo-M0
- for qemu-trivial@nongnu.org; Mon, 05 May 2025 06:10:45 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uBsnJ-0007em-1B
+ for qemu-trivial@nongnu.org; Mon, 05 May 2025 06:11:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1746439843;
+ s=mimecast20190719; t=1746439887;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=2rbs7uE9AzW5Lz6299cFbziFS9WPgT/b3YpLtHriDIw=;
- b=YxNaTMiaO1TODyW60Deqed4cCIVRp2J5cHML5RyzfY6MuRlo/paFAfV/yAi1CqVtJ/CRBt
- 3uo2qDv7xPfqK9cgDSZS17TaAi9+iOsv5D0fxxR70YjQwRFlJyl8yEeA2uyME3PQrKbB29
- IC1L651xZvyd+frVSrvGikaDchGK8Ak=
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=vY9Sse6qLU4yXX+OFkxtxctaHzVh/d4bNnbXds5ox7M=;
+ b=Z8jT8a6o4jC4F+H88TUVYEnSROG3/+rJ9t6yKdX21fZE30v45D30flxaNAcG5mlBV91nK7
+ WVUSqZAjpFry9I8eU8WVSm4R2T61avXUDhBP11PjDhMR/RkyfgAYGjvkwgI3WY4KHZzOdT
+ iJFvbnGPp1JasP596INLRmIw02KbyAc=
+Received: from mail-wr1-f69.google.com (mail-wr1-f69.google.com
+ [209.85.221.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-226-2vo_zH6UMo6nhB7pf6kBWA-1; Mon, 05 May 2025 06:10:42 -0400
-X-MC-Unique: 2vo_zH6UMo6nhB7pf6kBWA-1
-X-Mimecast-MFC-AGG-ID: 2vo_zH6UMo6nhB7pf6kBWA_1746439841
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3a07a867a4dso2055908f8f.3
- for <qemu-trivial@nongnu.org>; Mon, 05 May 2025 03:10:42 -0700 (PDT)
+ us-mta-231-2x7o38PXMQm9qwNHFbr4lg-1; Mon, 05 May 2025 06:11:25 -0400
+X-MC-Unique: 2x7o38PXMQm9qwNHFbr4lg-1
+X-Mimecast-MFC-AGG-ID: 2x7o38PXMQm9qwNHFbr4lg_1746439885
+Received: by mail-wr1-f69.google.com with SMTP id
+ ffacd0b85a97d-39c184b20a2so1173181f8f.1
+ for <qemu-trivial@nongnu.org>; Mon, 05 May 2025 03:11:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746439841; x=1747044641;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=2rbs7uE9AzW5Lz6299cFbziFS9WPgT/b3YpLtHriDIw=;
- b=BzZJkSw3qG3mEJYSJAPVRayXMmefgaw6N5kqGsBbdjyK8GSIx1dSQ43lED0oU5FNFH
- vTXRW/Rmw+K6ZyMbtOgWJFbgpEsd+7l6AMCWvguc968myrxrzcRqf5c9Ti1SiXsXQVm9
- ojWuIjZ8W4jgJR3bHUwkqzkOCplVdWV1ZU3t3/szZViwCo8g61CqCRa1bVFN0Dd+4FSs
- kfW46Es69cj+QFBmBNW7BECXuGcBGipOg/8ccMAoq2L3IIC1UGF0nE79f6dndVueOBc/
- 0rmcYSo6OvX7onWwgQSNNXsmtol7Z3Gw5jvfMfI1dKmsi063xmyKI+yTu0brkHDRvPBE
- n6cg==
-X-Gm-Message-State: AOJu0YwkYzaA3Ydp2Op1JboGpyL68AWosgtVDO5GQrJCglD1XRuUEpwz
- 3rHMz/UFuimzvPk1erc+qQNyxZUZMRbioTvWFwtHNdg/mqGN/aJGMrKZu9afY5oqwzmn6jTtk6f
- iPKlZ6bUwUWglTMwP1/1uQKajYtsZ4jFxHUmym+eaOdr9oBTyhf2KuJc=
-X-Gm-Gg: ASbGncvFb5TmUlEoXTIvbugKnI4LlfWVULaXwBmgY0HGt10VgitYLroNU7t9u9yJnzR
- Cp7S4xrD0QHcueHQ/aErNnmK8LA0T5akKiO6SILG8fiaCq21Zx1uDAWXga1a6wZAWQsxuyua+JF
- oOOXWE1+XH/LhVaHAWrv/SV5FigHnFLYyYAmZVUwFCfOWhBKCxFptR/sDg7aneEdGzh0BbXAWfV
- cEqfj8T7xeBTiwNSWxDNzG82qgzcZxPaDmRiSBZh/JjcwOmD39bwMs8HEfkHwU6zrdevdXPmgRT
- LtcYIs1NzYG+7YS9xcfw72mWTYTKsfcQvDIsSOOo
-X-Received: by 2002:a05:6000:290c:b0:39c:cc7:3db6 with SMTP id
- ffacd0b85a97d-3a09fd753b0mr4464789f8f.19.1746439841282; 
- Mon, 05 May 2025 03:10:41 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IEqMp8144TKwRQUvjzBAcpiE64upZdMtXFUOiZXlIH54mSRhiNKOGP+j4x1rCu3IbfvmiMTHA==
-X-Received: by 2002:a05:6000:290c:b0:39c:cc7:3db6 with SMTP id
- ffacd0b85a97d-3a09fd753b0mr4464771f8f.19.1746439840931; 
- Mon, 05 May 2025 03:10:40 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1746439885; x=1747044685;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=vY9Sse6qLU4yXX+OFkxtxctaHzVh/d4bNnbXds5ox7M=;
+ b=AD2L6TnpfyJkDrygRU82HMZkE8I3gNlQkzY6QJSS1RDJn6ZtYc/a7NtkgGGn/gqRgL
+ yhHAU8e5VmWyMrVH9GW8lZLPKxtPE3XNEMqcyzkjOwd6RuZuKqS6dmTr6PEAN4HR3OZ5
+ zsAsRNhEPQL8qolMbUYcrnHcPD2x00D0e7Jsc7pZuJ978P4/aNDTZehEKgGhTOiMjLpL
+ WW5AlLuTa1pxTQqadWFUwMhF/l6ADkuEYtA9HLZ+58ZiCdpoMPDuBQx51C9uVU1SyZMi
+ LnIct9po6ZLc5x/iAlb3NWNyLOM52kj57T388PSx5Qpm+TFwkt5OTVXbyxxxI8sYv5NU
+ jOPw==
+X-Gm-Message-State: AOJu0YzUBJtxqtr/VQVlrouBVQbDEmAFEyQcW6SEUb1Z6hZyOTRHMiro
+ 5qyWQ6COsCjxYfbF9SkPPVGTbAdqsV0Xys7DWeG2OLs4QZiFnexbprd5abF+qSxvA6ruc57zCYn
+ jLUyHfUn7KNjLWAf+KLusNnpSwFVgwrGHpd8MrG2BwD3pYS7/O6E3aJQ=
+X-Gm-Gg: ASbGncsfJAL0VGT4CLEJ7YWIumDM5jOnvjC5SWGST+Os5cDHEGd03Vb57q0uPH9Bchk
+ KD9jaikbG5z7+Y75mmDxZAB1niD+cWAl+7RsBTLazheluo1lLwRuIpFRNORxnXPkLA1F7suRTJd
+ ofuhHxNzW2irdnzuIMfbruQX1tpWLhRVugspTySgl9y36F4gURdlIOIcSXxIvcGzc3D6YblWdJ2
+ 1Uu90eXf+ZG1FWBzgokZD3mM5bIJu4MoMg3E+evT1JvqHwl6VUq0jmrTMTtCkmKOzespofJfa+6
+ cyseCg4zcwb94rUEOIJLRURr4vvof9PkZa3kHii0
+X-Received: by 2002:a05:6000:178f:b0:3a0:8826:d9df with SMTP id
+ ffacd0b85a97d-3a09fdd6f89mr4662675f8f.49.1746439884771; 
+ Mon, 05 May 2025 03:11:24 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFNo4eafI5RbACmF7QQBU98lVVbJSfI+uQQ8K2wpItDuMk0TNbHw0itIw7ozrJwrxDAFr7Wlw==
+X-Received: by 2002:a05:6000:178f:b0:3a0:8826:d9df with SMTP id
+ ffacd0b85a97d-3a09fdd6f89mr4662658f8f.49.1746439884339; 
+ Mon, 05 May 2025 03:11:24 -0700 (PDT)
 Received: from [192.168.0.7] (ip-109-42-49-87.web.vodafone.de. [109.42.49.87])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a099ae7b45sm9766225f8f.46.2025.05.05.03.10.40
+ ffacd0b85a97d-3a099ae344esm9760237f8f.25.2025.05.05.03.11.23
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 05 May 2025 03:10:40 -0700 (PDT)
-Message-ID: <55970655-386d-4cac-a70b-1eca0fad8696@redhat.com>
-Date: Mon, 5 May 2025 12:10:39 +0200
+ Mon, 05 May 2025 03:11:23 -0700 (PDT)
+Message-ID: <0cd8b486-630f-4168-ab89-92f2e1843a09@redhat.com>
+Date: Mon, 5 May 2025 12:11:22 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/net/e1000: Remove stray empty comment in header
+Subject: Re: [PATCH] hw/pci-host/gpex-acpi: Fix typo in comment
 To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org, philmd@linaro.org, alex.bennee@linaro.org
-References: <20250504215639.54860-4-gustavo.romero@linaro.org>
+References: <20250504215639.54860-1-gustavo.romero@linaro.org>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -112,14 +112,14 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20250504215639.54860-4-gustavo.romero@linaro.org>
+In-Reply-To: <20250504215639.54860-1-gustavo.romero@linaro.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ZIvP8UJze2W8Wc9v6nEvqXayGWVGRLLNS7Z8ZB9-tbI_1746439841
+X-Mimecast-MFC-PROC-ID: wNYbfzZ7q9UULjmM1LLRvU8UyQ10-MBjd0iQm-hswrw_1746439885
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -44
 X-Spam_score: -4.5
@@ -128,7 +128,7 @@ X-Spam_report: (-4.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.411,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=-1, RCVD_IN_MSPIKE_WL=-0.01,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -141,34 +141,30 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 05 May 2025 10:10:48 -0000
+X-List-Received-Date: Mon, 05 May 2025 10:11:34 -0000
 
 On 04/05/2025 23.56, Gustavo Romero wrote:
-> In the header file, remove a stray empty comment in the Offload Context
-> Descriptor struct.
+> Fix typo in a comment about the creation of the ACPI CRS method.
 > 
 > Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 > ---
->   hw/net/e1000x_regs.h | 2 +-
+>   hw/pci-host/gpex-acpi.c | 2 +-
 >   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/hw/net/e1000x_regs.h b/hw/net/e1000x_regs.h
-> index cd896fc0ca..e9a74de6f4 100644
-> --- a/hw/net/e1000x_regs.h
-> +++ b/hw/net/e1000x_regs.h
-> @@ -900,7 +900,7 @@ struct e1000_context_desc {
->               uint16_t tucse;     /* TCP checksum end */
->           } tcp_fields;
->       } upper_setup;
-> -    uint32_t cmd_and_length;    /* */
-> +    uint32_t cmd_and_length;
->       union {
->           uint32_t data;
->           struct {
+> diff --git a/hw/pci-host/gpex-acpi.c b/hw/pci-host/gpex-acpi.c
+> index e8b4c64c5f..0aba47c71c 100644
+> --- a/hw/pci-host/gpex-acpi.c
+> +++ b/hw/pci-host/gpex-acpi.c
+> @@ -182,7 +182,7 @@ void acpi_dsdt_add_gpex(Aml *scope, struct GPEXConfig *cfg)
+>   
+>               /*
+>                * Resources defined for PXBs are composed of the following parts:
+> -             * 1. The resources the pci-brige/pcie-root-port need.
+> +             * 1. The resources the pci-bridge/pcie-root-port need.
+>                * 2. The resources the devices behind pxb need.
+>                */
+>               crs = build_crs(PCI_HOST_BRIDGE(BUS(bus)->parent), &crs_range_set,
 
-There is another one in hw/net/eepro100.c ...
-
-Anyway,
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
