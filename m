@@ -4,85 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1234CD6E4A
-	for <qemu-trivial@archiver.kernel.org>; Fri, 29 May 2026 14:01:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE48FCD6E49
+	for <qemu-trivial@archiver.kernel.org>; Sat, 30 May 2026 15:25:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wSxlk-0003p8-AI; Fri, 29 May 2026 10:01:00 -0400
+	id 1wTLYI-0004KP-Q3; Sat, 30 May 2026 11:24:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1wSxle-0003nW-53
- for qemu-trivial@nongnu.org; Fri, 29 May 2026 10:00:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1wSxlc-0006th-HH
- for qemu-trivial@nongnu.org; Fri, 29 May 2026 10:00:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1780063251;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=fwdXh824kP+j9SBL7IEbD6J46bZ3P0kQRlPXbipqwBk=;
- b=LOt9eOK1Lt54ZtlvUCMVTVFjnWU55Z16jKxLaOf6RIBjNwojc6WIBfwcmI2H9flXrCkGmP
- bv5YiXnIGpX5yPmbTUe5P9rTXIIkYt6JBtbia8eoo5RTqERT09Y4j8rDQRH4NLqcSvHaad
- teHx/vOYcsaWBfyk55431g79e832MG8=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-345-qmk_69ZBOkav-QSwo9qotw-1; Fri,
- 29 May 2026 10:00:43 -0400
-X-MC-Unique: qmk_69ZBOkav-QSwo9qotw-1
-X-Mimecast-MFC-AGG-ID: qmk_69ZBOkav-QSwo9qotw_1780063237
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 526A91956053; Fri, 29 May 2026 14:00:37 +0000 (UTC)
-Received: from localhost (unknown [10.67.32.9])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CB48319560A3; Fri, 29 May 2026 14:00:35 +0000 (UTC)
-From: Cornelia Huck <cohuck@redhat.com>
-To: Alexandra Winter <wintera@linux.ibm.com>, Heiko Carstens
- <hca@linux.ibm.com>, Christian Borntraeger <borntraeger@linux.ibm.com>,
- Hendrik Brueckner <brueckner@linux.ibm.com>
-Cc: Halil Pasic <pasic@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>, Sven Schnelle
- <svens@linux.ibm.com>, Gautam Gala <ggala@linux.ibm.com>, Eric Farman
- <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>, Ilya
- Leoshkevich <iii@linux.ibm.com>, Thomas Richter <tmricht@linux.ibm.com>,
- Shrikanth Hegde <sshegde@linux.ibm.com>, Mete Durlu <meted@linux.ibm.com>,
- Richard Henderson
- <richard.henderson@linaro.org>, David Hildenbrand <david@kernel.org>,
- qemu-stable@nongnu.org, qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- qemu-s390x@nongnu.org, Alexandra Winter <wintera@linux.ibm.com>
-Subject: Re: [PATCH] target/s390x: Make container ids in SysIB_15x 1-based
-In-Reply-To: <20260511134909.43802-1-wintera@linux.ibm.com>
-Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
- Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
- 153243,
- =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
- Avril Crosse O'Flaherty"
-References: <20260511134909.43802-1-wintera@linux.ibm.com>
-User-Agent: Notmuch/0.39 (https://notmuchmail.org)
-Date: Fri, 29 May 2026 16:00:30 +0200
-Message-ID: <878q92mi2p.fsf@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wTLY4-0004Id-2e
+ for qemu-trivial@nongnu.org; Sat, 30 May 2026 11:24:29 -0400
+Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wTLY1-0004xq-Eb
+ for qemu-trivial@nongnu.org; Sat, 30 May 2026 11:24:27 -0400
+Received: by mail-wr1-x430.google.com with SMTP id
+ ffacd0b85a97d-45ed18d8a1bso3154770f8f.0
+ for <qemu-trivial@nongnu.org>; Sat, 30 May 2026 08:24:17 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1780154656; x=1780759456; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=0hqgiRMBKGtlNdV4BJds8dgSspVGSRdXfb8rAv6leL0=;
+ b=H5BMwk4OgexdR2KlxKhCSYvWQa7ytRllv7ql3H7kBZja9aBLpL/aJToxQS8qGRqPwu
+ 7HzRQuyfkrmMKeHeCzJQToPdaS8slUJUIePeFRpTL0pGjyv1sdTmLBi+2pvUnJOPGara
+ fz8/aX//J+zwFbG6uQ25yz6fOxyMcFsVIMQzy+og6v8i53EYe/FWIs5nxG7ThaWvDDg2
+ HFa7eqIys7LR+0InKzVmWsFaopbTshY3uTT6n2DuQK1CUv8fv5YlmgdWYPmD6kv4gUko
+ i5Je0eKgPoxSBTurDW/gZEaQV6nN8AEj83ZJDiWembFgHBJHYGFu0hsHTLPDH4ShHUh2
+ OFJg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1780154656; x=1780759456;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=0hqgiRMBKGtlNdV4BJds8dgSspVGSRdXfb8rAv6leL0=;
+ b=dogo0RNzImKba8+SzfOIdzO04RrtM1XFs1hUzWwFmJw5rb/clmKHP2qqaGVfFo0DEN
+ ltaqbDhq73caUo5TPvl2lwXkHTltcERNPxMdwCdqEl+7+f4JdVxrJvEh3uXD95cWiubX
+ 3MB0inmMitxCKFgS//VLR52wrHWS3iBTxA0kaeq8rA9hQkM3gaBLG6U4BfImOUGnWPlI
+ SZN2MwOYbvxJSX9mM4Mq3AnSgQ/c4eDDrP5/j1HYV1fhAGejh73ot7qgz77tY/UAUlge
+ wZOYEC/UgjdISie/pqiqrE8Uebc9gfi9PtbsidVnbo2dWUsGG7JtQTPYFVt1JJgZd6u4
+ GdCg==
+X-Gm-Message-State: AOJu0YzpLDKDpOryI+/QttyLkWQu+NlYgyYc49wUrodwvN8Zj8XaZiK9
+ jvEHiD4enUi4VtfrdXn1a4Jw8ajGGc5UgGzVGg8BfslsLWdJ9gKVWiQNucwNW1XlhaM=
+X-Gm-Gg: Acq92OGEow++E/wOhCQUccMmQjBKefJdRvKmvql/Z/IiEmItVpSyQDWS1l+Cp/FCWJb
+ KBe3zbXpKVpBg+jUyDhnJEC1Vy/wwxMGICqm7oEOnyIdEJmdyx6H9CjY55T31AxOWBfOmhzeBHC
+ NS0TakSuuni6ZpjR58G1YEyEFlknOnP8drC8i0+6qAfdYTU9U7X+fnMQiI8+BtvBlc0h6W9bsn7
+ BT6wNPo2s7JdgDIoiPyLKosGgOJIEpshJhKZdSwSK2WzYgxDbR6ArWLcaq0waZghJyUnA6StvW4
+ QbRTTYLG0A6WM3DkfrxpqsKcOJa5dRbvLEpkTXiiBkR+MAKfERelm/j1gkWgGb8hMEMdB4OGtzH
+ TQ1zX0OGZ7NP2jxQpIJ041+RvPeSFtuVLmPf6PAg0j6gdfvy69c18LkWvoVfwRD7xFoP61uGTvs
+ wGYS7b2mHgv3apo0+6ZlBjH22NUBBxIE8esQjqe/IsBOMyNIe01GoMC1Lb5ouWJX2fcF5r1rB9g
+ W63
+X-Received: by 2002:a5d:6e11:0:b0:45e:f28e:a00d with SMTP id
+ ffacd0b85a97d-45ef6b3aa6cmr5930135f8f.16.1780154656193; 
+ Sat, 30 May 2026 08:24:16 -0700 (PDT)
+Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-45ef34b47eesm12638888f8f.9.2026.05.30.08.24.15
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Sat, 30 May 2026 08:24:15 -0700 (PDT)
+Message-ID: <69baf1f7-417b-4a57-bc72-177c7e1d85c9@linaro.org>
+Date: Mon, 5 May 2025 08:49:28 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: 1ZnlE2sCOfv3PTeX972j-aYnJ3zWc10BHQNa6I0ioWM_1780063237
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/i386/acpi-build: Fix typo in function name
+To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, alex.bennee@linaro.org
+References: <20250504215639.54860-8-gustavo.romero@linaro.org>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250504215639.54860-8-gustavo.romero@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::430;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x430.google.com
+X-Spam_score_int: 13
+X-Spam_score: 1.3
+X-Spam_bar: +
+X-Spam_report: (1.3 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_96_XX=3.405,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -99,37 +101,15 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Mon, May 11 2026, Alexandra Winter <wintera@linux.ibm.com> wrote:
-
-> The Container Id in a container-type TLE of SysIB_15x is defined as 8-bit
-> unsigned nonzero integer. Make stsi fc 15 emulation architecture compliant,
-> by starting the container ids at 1 for the lowest numbered container.
->
-> The qemu misbehaviour without this patch becomes obvious due to a recently
-> proposed kernel fix. Older linux kernels pass the container ids from stsi
-> fc15 unchanged to sysfs, i.e. starting at 1 on s390 hardware. This resulted
-> in off-by-one values when compared to the values from HMC. A Linux kernel
-> fix is being proposed to correct the sysfs topology ids by -1, so they
-> start at 0, e.g. when displayed by 'lscpu -ye'. In case a KVM guest with a
-> fixed kernel runs on a host with a qemu without this fix, this can result
-> in container ids erroneously being shown as 255.
-> Example (Fixed guest on unfixed qemu):
-> $ lscpu -ye
-> CPU NODE DRAWER BOOK SOCKET CORE L1d:L1i:L2 ONLINE CONFIGURED POLARIZATION ADDRESS
->   0    0    255  255    255    0 0:0:0         yes yes        vert-medium  0
->   1    0    255  255      0    1 1:1:1         yes yes        vert-medium  1
-> After this fix:
-> $ lscpu -ye
-> CPU NODE DRAWER BOOK SOCKET CORE L1d:L1i:L2 ONLINE CONFIGURED POLARIZATION ADDRESS
->   0    0      0    0      0    0 0:0:0         yes yes        vert-medium  0
->   1    0      0    0      1    1 1:1:1         yes yes        vert-medium  1
->
-> Fixes: f4f54b582f ("target/s390x/cpu topology: handle STSI(15) and build the SYSIB")
-> Signed-off-by: Alexandra Winter <wintera@linux.ibm.com>
+On 4/5/25 23:56, Gustavo Romero wrote:
+> Fix missing "i" in the name of the function responsible for adding the call to
+> the PCI notification method (PCNT) in the ACPI table.
+> 
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
 > ---
->  target/s390x/kvm/stsi-topology.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+>   hw/i386/acpi-build.c | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
 
-Thanks, queued to s390-next.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
