@@ -1,71 +1,67 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uDPYH-00013d-WB
-	for mharc-qemu-trivial@gnu.org; Fri, 09 May 2025 11:22:18 -0400
+	id 1uDPeZ-0005ml-Uf
+	for mharc-qemu-trivial@gnu.org; Fri, 09 May 2025 11:28:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uDPYG-00013N-BQ
- for qemu-trivial@nongnu.org; Fri, 09 May 2025 11:22:16 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uDPeV-0005da-RS
+ for qemu-trivial@nongnu.org; Fri, 09 May 2025 11:28:43 -0400
+Received: from mail-yb1-xb2d.google.com ([2607:f8b0:4864:20::b2d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <gustavo.romero@linaro.org>)
- id 1uDPYD-0007Fh-Ng
- for qemu-trivial@nongnu.org; Fri, 09 May 2025 11:22:15 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-3a0b9625662so1669451f8f.3
- for <qemu-trivial@nongnu.org>; Fri, 09 May 2025 08:22:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uDPeT-0008Kj-8H
+ for qemu-trivial@nongnu.org; Fri, 09 May 2025 11:28:43 -0400
+Received: by mail-yb1-xb2d.google.com with SMTP id
+ 3f1490d57ef6-e6dd991a0e6so1955695276.1
+ for <qemu-trivial@nongnu.org>; Fri, 09 May 2025 08:28:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1746804131; x=1747408931; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=Q3L8IJ7smViU/9Uzo6s+QEqifWFFE9joZ/9cY8U16AU=;
- b=dNaQqEdFq75sT9/sVEVxswdcC8MXhrxeSK/bArJusxEkLjTv88s6TfqjDoMuhiKT9L
- l0kwA3rusS9yj5uShcwnK8HvZKoVXu9vuZXmDlKKjxcBiAcRPDWR475D1TmlkE7z55wP
- AHgUKhFOLpab8ZejINPDck7jEoXo1scCmK0e296JmH4AiGEQ51njkt6fPBghv8mkNv/0
- ANhAsxjCrTtPFGYJj8jfTho8j86Qa6hZPBPMvpyxUJUyz/jI0IdYN8id8xSHLd5PWbq8
- Rz1BurdpL89DauULcY4lnc2xjC9Dq5MetMDg1Rq+6r/MSMJHfGAEk1aB15eyIWQALkmg
- 85MQ==
+ d=linaro.org; s=google; t=1746804515; x=1747409315; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=fm+ll4+BV5oVu4s3b2y9Tr8jYcVIflrqUCDYZvDl7K4=;
+ b=sJqZ9h/4xfByWcy9qTF6ArQqq6GBMXnz+J+psgAZJiOZMVjUN9f9HKIYZjiHGhGR6+
+ l9rcLGPfNwUrgteFLEK5TFN85zhFzAu29Cimq+Ml/8zDFIN3mw6Hn24ie4XbB7j+aTIv
+ GONc42rQKlbcmZ1vDv25RT04KAvL5hiiGRYmmIX4pGrKemVXdbwu4rENSa6UVWHKkGWo
+ 04fwL285MF2WzTYnflRKVIUcijwbcKw9Y7dAqdzAd6aStBaVv0vACxx3r0AIzAe6febh
+ or/28gkOHQYe7d/abLbPkiLzc+BozFOwy0XiK/6z3bqujpETtiH3UQx6o95wJQNvvRD0
+ xe1Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1746804131; x=1747408931;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1746804515; x=1747409315;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=Q3L8IJ7smViU/9Uzo6s+QEqifWFFE9joZ/9cY8U16AU=;
- b=tclRbl/GFtjTAsYgEScwZY5Shzr7hpOAhjSe02UIAlo4CMeLM8WLCUlKDn4NBSw7iT
- PrksXJ4lDt2IW20cDypBIToP8vmVaYGDRfiy/WVsKrQ6CHKytAUCQcJRn8lJiSur1qvy
- 6JRNEhV7VpYqcdQHO/ZH5Nyk7JU8x2i1U4onO35Pv99pXVrxFz4fGmIjjn94hLB/wIgB
- hEFV0eTeuUvYPqsREcYHxxfcjXTT8ENL6rEWUlzpAbMfnCBI09S/lui6wehZ/FxTtL/H
- tdPDnVbL1ci57JzVuJ12W2BXE82sWWkomwGQpSm4WxS0+ruSOQ6oKyk72mF60PyZ2p/K
- c9zA==
-X-Gm-Message-State: AOJu0Yw+beKRFALmvVUAnF/lZ3pRgdcH/Ps+RJtij94296WoQf7IarLD
- uSdiHn0EwxMw2/wVkcwSDF0dQxr0xEkUkzNUbrRt8tnMExHvqvaprTIHXiWiv95/eOxwOO44RyY
- Ets4=
-X-Gm-Gg: ASbGncvwQ9Y/OfO0bUaI1apkNq0At63K6p51Ci9pV6l8B9RJz/iF7+UrbmxynszkoFL
- VkVSbUA8eq4lTrAciqXoyCu94et56Oh8SQ4T5fN5INUfeMM/Jj5GRZQ91gMH0klKU/awg7TOOSS
- JRqAHHOA5wom9ataAzZhsM2jvg+Ld/8QjtmFx0xZT7QYrih0cura3B6yYY6RnlpsSgtD9P4ySiu
- SqoqOSn1axwQ8epLsrPV/s5M7lDqHV3IiSxc9IUCHf4XWQtMgelAgnAcGfgx+sFJIcUp6sE/F/8
- Bz2f+0moRxIdBjYCt1EUQbwF7k7riRyBqyr5TTTiDrriHPXLD7YXF+cXAZG0GOJO8sr3GA==
-X-Google-Smtp-Source: AGHT+IF3vVv1IG7UetPvXYgwUy6xO7Ann44GxXpkx3dB6hlBYUqvuUt4VMMw3LfDpbItgFKuoOaw4Q==
-X-Received: by 2002:a05:6000:2481:b0:3a0:bb2b:14e3 with SMTP id
- ffacd0b85a97d-3a1f647864fmr3530730f8f.33.1746804131241; 
- Fri, 09 May 2025 08:22:11 -0700 (PDT)
-Received: from xps13.. (83.69.114.89.rev.vodafone.pt. [89.114.69.83])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a1f58ecb46sm3611817f8f.30.2025.05.09.08.22.10
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 09 May 2025 08:22:10 -0700 (PDT)
-From: Gustavo Romero <gustavo.romero@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	gustavo.romero@linaro.org
-Subject: [PATCH] docs/devel/testing/functional: Fix typo
-Date: Fri,  9 May 2025 16:21:58 +0100
-Message-ID: <20250509152201.19085-1-gustavo.romero@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ bh=fm+ll4+BV5oVu4s3b2y9Tr8jYcVIflrqUCDYZvDl7K4=;
+ b=ull+k/uvEfzRKnJpSFKjqouItACLZLk8OSBa9QwJPJSiMQ+LB2XUVTdWFQGQGgzBLz
+ HN1o/ZVcPogdRWU7LoSTS2xY28Fy+lOthWESLf/hLGkUnr2tCx226RUL316iIgFgOjK8
+ Ah/noPzkJxzZvQg12JHxfQaPn3eBeYAXP8TCBJma+AhL2vHk7Ys2hZjm4PDxNSjundqG
+ dSgwVcMakU2UO3cKOXvnRKpG21NzjBNAdNvA9ITUJPNU2LSMrLvphk548OtMPZcwY241
+ aX4ZIzm6nvwURyx1jTgV/ssYIpWL+P1mqvAGPQWAvMG/hx1/OGyXW2sZN3c+s/0ysDrO
+ 0v4A==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX6tq5p+5XocR9XrTvWPTFHq7SazH/0Q9A9robevSzdyRobopWbS6C0CqDoGOYWvJxAxDApf6px1jcidW4=@nongnu.org
+X-Gm-Message-State: AOJu0YwCCABpAYZCo0xD2fKk1/JO0JfHVXXsVuGmzSno2D2B/T2fwEnh
+ BskGAxrC/EtVEffJ2uSnYIKzah530/ljcLnQ4b0Z4lNdPq7eD1x+mvXmCtbxFoRj+itJFtGfpPa
+ pengTn9IZPi0hLP5idpQavJPDguU2tQgsbyHSkwdDjvjvoaun
+X-Gm-Gg: ASbGncutJYbZqVoRz4tAsaZdL5UFk1NPTWt4jkRSLBST3Vr2PJSpV/mH2wrZ+amIBQO
+ nZTRrl3M63DRPfnYYWHYfp1xRD5UyjvjA00iso/09lfhrD3F3vP+IKv4BNcj5y3E0Y32aycrEqX
+ gDuBxF/H8YnZNJim36JkVmuKM=
+X-Google-Smtp-Source: AGHT+IENDeYY9LBNvez25bPsLlT8ghYueLU0289NgzWNF4aZ7khnipyWn4o+ih6GSWfhAKK7XFPyLFyyVL0g7PneVOM=
+X-Received: by 2002:a05:6902:2008:b0:e78:f073:b378 with SMTP id
+ 3f1490d57ef6-e78fdd90486mr4946072276.43.1746804515542; Fri, 09 May 2025
+ 08:28:35 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=gustavo.romero@linaro.org; helo=mail-wr1-x430.google.com
+References: <20250509152201.19085-1-gustavo.romero@linaro.org>
+In-Reply-To: <20250509152201.19085-1-gustavo.romero@linaro.org>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 9 May 2025 16:28:11 +0100
+X-Gm-Features: ATxdqUGglpZndWYFS-wY94E5MDXRisbnNbKOoJOLAxrY6etxDsaL5hHrNrRI2oE
+Message-ID: <CAFEAcA9p5GY2eQkLi41h_m-r2-g=T6eE8vGsza3933rejeB72A@mail.gmail.com>
+Subject: Re: [PATCH] docs/devel/testing/functional: Fix typo
+To: Gustavo Romero <gustavo.romero@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b2d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -85,29 +81,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 09 May 2025 15:22:16 -0000
+X-List-Received-Date: Fri, 09 May 2025 15:28:44 -0000
 
-Fix the duplication of the word 'run'.
+On Fri, 9 May 2025 at 16:22, Gustavo Romero <gustavo.romero@linaro.org> wrote:
+>
+> Fix the duplication of the word 'run'.
+>
+> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
+> ---
+>  docs/devel/testing/functional.rst | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/docs/devel/testing/functional.rst b/docs/devel/testing/functional.rst
+> index 8030cb4299..9e56dd1b11 100644
+> --- a/docs/devel/testing/functional.rst
+> +++ b/docs/devel/testing/functional.rst
+> @@ -274,7 +274,7 @@ speed mode in the meson.build file, while the "quick" speed mode is
+>  fine for functional tests that can be run without downloading files.
+>  ``make check`` then only runs the quick functional tests along with
+>  the other quick tests from the other test suites. If you choose to
+> -run only run ``make check-functional``, the "thorough" tests will be
+> +run only ``make check-functional``, the "thorough" tests will be
+>  executed, too. And to run all functional tests along with the others,
+>  you can use something like::
 
-Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
----
- docs/devel/testing/functional.rst | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/docs/devel/testing/functional.rst b/docs/devel/testing/functional.rst
-index 8030cb4299..9e56dd1b11 100644
---- a/docs/devel/testing/functional.rst
-+++ b/docs/devel/testing/functional.rst
-@@ -274,7 +274,7 @@ speed mode in the meson.build file, while the "quick" speed mode is
- fine for functional tests that can be run without downloading files.
- ``make check`` then only runs the quick functional tests along with
- the other quick tests from the other test suites. If you choose to
--run only run ``make check-functional``, the "thorough" tests will be
-+run only ``make check-functional``, the "thorough" tests will be
- executed, too. And to run all functional tests along with the others,
- you can use something like::
- 
--- 
-2.43.0
-
+thanks
+-- PMM
 
