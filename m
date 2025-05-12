@@ -1,67 +1,57 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uEX6b-0004KH-E2
-	for mharc-qemu-trivial@gnu.org; Mon, 12 May 2025 13:38:24 -0400
+	id 1uEgfz-00067T-S7
+	for mharc-qemu-trivial@gnu.org; Mon, 12 May 2025 23:51:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uEX6S-0004Du-Ov
- for qemu-trivial@nongnu.org; Mon, 12 May 2025 13:38:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uEX6P-0005AX-Af
- for qemu-trivial@nongnu.org; Mon, 12 May 2025 13:38:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747071487;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=WqNfHmWPhUVslGpb0lYOmAAGEG75LGfExo6OBFv6M8I=;
- b=cRdHA2a/4T0iJPnG+7wbo18fo2Wu5HrkE4dEm/DJtSuOxsd59PWEdKiKPKeEuTCG8lbGbR
- rcfT1aa0d/3l3RDCTqyncMAGPAbIlH6kIN1oiIAis45TjPRGjFM8cyi2rwlA8ifLWCBuHs
- 9m/DNpTCNOgmRnol4pA4R8i+FefeAeI=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-94-_k0uBCvDNFi6LDt3LeonAg-1; Mon,
- 12 May 2025 13:38:03 -0400
-X-MC-Unique: _k0uBCvDNFi6LDt3LeonAg-1
-X-Mimecast-MFC-AGG-ID: _k0uBCvDNFi6LDt3LeonAg_1747071482
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5F7FB1800261; Mon, 12 May 2025 17:38:02 +0000 (UTC)
-Received: from localhost (unknown [10.2.16.161])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 605D419560A3; Mon, 12 May 2025 17:37:59 +0000 (UTC)
-Date: Mon, 12 May 2025 13:37:57 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org
-Subject: Re: [PULL v3 00/21] Trivial patches for 2025-05-07
-Message-ID: <20250512173757.GA153259@fedora>
-References: <20250509205629.674225-1-mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <patch@thomaslambertz.de>)
+ id 1uEb7O-0006Q1-8R
+ for qemu-trivial@nongnu.org; Mon, 12 May 2025 17:55:26 -0400
+Received: from mail-108-mta229.mxroute.com ([136.175.108.229])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <patch@thomaslambertz.de>)
+ id 1uEb7M-0002ZZ-GR
+ for qemu-trivial@nongnu.org; Mon, 12 May 2025 17:55:25 -0400
+Received: from filter006.mxroute.com ([136.175.111.3] filter006.mxroute.com)
+ (Authenticated sender: mN4UYu2MZsgR)
+ by mail-108-mta229.mxroute.com (ZoneMTA) with ESMTPSA id
+ 196c67a2c490008631.002 for <qemu-trivial@nongnu.org>
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
+ Mon, 12 May 2025 21:50:17 +0000
+X-Zone-Loop: 5b4e739525f72bebefe8135e587602fcbd135dec3d89
+X-Originating-IP: [136.175.111.3]
+Message-ID: <7fb0245b-7221-4cca-abb6-111095f7eea5@thomaslambertz.de>
+Date: Mon, 12 May 2025 23:50:10 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="HQGdqdBQJnBEHcZ7"
-Content-Disposition: inline
-In-Reply-To: <20250509205629.674225-1-mjt@tls.msk.ru>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -35
-X-Spam_score: -3.6
-X-Spam_bar: ---
-X-Spam_report: (-3.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.551,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+User-Agent: Mozilla Thunderbird
+Content-Language: en-US
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, philmd@linaro.org
+From: Thomas Lambertz <patch@thomaslambertz.de>
+Subject: [PATCH] hw/usb/dev-hid: Support side and extra mouse buttons for
+ usb-tablet
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+X-AntiAbuse: This header was added to track abuse,
+ please include it with any abuse report
+X-AntiAbuse: Primary Hostname - aus.mxroute.com
+X-AntiAbuse: Original Domain - nongnu.org
+X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
+X-AntiAbuse: Sender Address Domain - thomaslambertz.de
+X-Get-Message-Sender-Via: aus.mxroute.com: authenticated_id:
+ mail@thomaslambertz.de
+X-Authenticated-Sender: aus.mxroute.com: mail@thomaslambertz.de
+X-Source: 
+X-Source-Args: 
+X-Source-Dir: 
+Received-SPF: pass client-ip=136.175.108.229;
+ envelope-from=patch@thomaslambertz.de; helo=mail-108-mta229.mxroute.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 12 May 2025 23:51:30 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -73,32 +63,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 May 2025 17:38:17 -0000
+X-List-Received-Date: Mon, 12 May 2025 21:55:26 -0000
 
+The necessary plumbing for side- and extra mouse buttons to reach
+usb-tablet is already done. But the descriptor advertises three buttons
+max. Increase this to 5. Buttons are now identical to usb-mouse.
 
---HQGdqdBQJnBEHcZ7
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Signed-off-by: Thomas Lambertz <patch@thomaslambertz.de>
+---
+  hw/usb/dev-hid.c | 6 +++---
+  1 file changed, 3 insertions(+), 3 deletions(-)
 
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/10.1 for any user-visible changes.
-
---HQGdqdBQJnBEHcZ7
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmgiMfUACgkQnKSrs4Gr
-c8hhEgf+Nugde2/8kOXRohrgvqWOUEAqWlIA5oPWHVbhC8W3F+bJ0TQaf9oGQyqP
-Naj4ovhmEYgi+WwlXYxpIn+T4a9TBmNgZMa8hCo8GqV+dgNZRhdjtARwu5/LXIcg
-avJZw2EZK0gJZvsAx7ISoqIQQJSgGurow5NVikgrlcuyAfbJmsdUmOdjeDzf5J68
-Vveh9cURNkGGNViIo3K3oeo/7U9Et6Xf/dNcxzTFk89uqvECZ0TRlQL8IQa5Pk8W
-pzYferzja4SdSJg1L0lzNzu7WYqPj7XsosBNHWv0CnvD7dmUam9GDnUm/Zr9pq4g
-vkXNrXoaC8uhuhEaxPkAplOCm/rBIA==
-=5EHS
------END PGP SIGNATURE-----
-
---HQGdqdBQJnBEHcZ7--
+diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
+index 54d064e54e..96623aa322 100644
+--- a/hw/usb/dev-hid.c
++++ b/hw/usb/dev-hid.c
+@@ -491,14 +491,14 @@ static const uint8_t qemu_tablet_hid_report_descriptor[] = {
+      0xa1, 0x00,		/*   Collection (Physical) */
+      0x05, 0x09,		/*     Usage Page (Button) */
+      0x19, 0x01,		/*     Usage Minimum (1) */
+-    0x29, 0x03,		/*     Usage Maximum (3) */
++    0x29, 0x05,		/*     Usage Maximum (5) */
+      0x15, 0x00,		/*     Logical Minimum (0) */
+      0x25, 0x01,		/*     Logical Maximum (1) */
+-    0x95, 0x03,		/*     Report Count (3) */
++    0x95, 0x05,		/*     Report Count (5) */
+      0x75, 0x01,		/*     Report Size (1) */
+      0x81, 0x02,		/*     Input (Data, Variable, Absolute) */
+      0x95, 0x01,		/*     Report Count (1) */
+-    0x75, 0x05,		/*     Report Size (5) */
++    0x75, 0x03,		/*     Report Size (3) */
+      0x81, 0x01,		/*     Input (Constant) */
+      0x05, 0x01,		/*     Usage Page (Generic Desktop) */
+      0x09, 0x30,		/*     Usage (X) */
+-- 
+2.43.0
 
 
