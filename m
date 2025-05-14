@@ -1,55 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uFEu1-000058-L3
-	for mharc-qemu-trivial@gnu.org; Wed, 14 May 2025 12:24:18 -0400
+	id 1uFFOA-0007XT-JA
+	for mharc-qemu-trivial@gnu.org; Wed, 14 May 2025 12:55:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1uFEtw-0008Pp-5n; Wed, 14 May 2025 12:24:12 -0400
-Received: from zero.eik.bme.hu ([152.66.115.2])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1uFEtu-0000yg-2h; Wed, 14 May 2025 12:24:11 -0400
-Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 0358855BC02;
- Wed, 14 May 2025 18:24:06 +0200 (CEST)
-X-Virus-Scanned: amavisd-new at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id cQKUllqPe2qA; Wed, 14 May 2025 18:24:03 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 42A6055C0CE; Wed, 14 May 2025 18:24:03 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 40987745682;
- Wed, 14 May 2025 18:24:03 +0200 (CEST)
-Date: Wed, 14 May 2025 18:24:03 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Zhao Liu <zhao1.liu@intel.com>
-cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
- =?ISO-8859-15?Q?Daniel_P_=2E_Berrang=E9?= <berrange@redhat.com>, 
- Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org, 
- qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>, 
- Christian Borntraeger <borntraeger@linux.ibm.com>, 
- Thomas Huth <thuth@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>, 
- Ilya Leoshkevich <iii@linux.ibm.com>, qemu-s390x@nongnu.org
-Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
- OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-In-Reply-To: <aCS8aHsF+VAuj01D@intel.com>
-Message-ID: <7dec9c8e-93d6-81f0-b075-e29b8ede44a2@eik.bme.hu>
-References: <20250514084957.2221975-1-zhao1.liu@intel.com>
- <20250514084957.2221975-9-zhao1.liu@intel.com>
- <e0146386-ccf4-44ba-b58f-0bb4d3317f89@redhat.com>
- <aCS8aHsF+VAuj01D@intel.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uFFO8-0007WV-2e
+ for qemu-trivial@nongnu.org; Wed, 14 May 2025 12:55:24 -0400
+Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uFFO5-0006Lh-Rg
+ for qemu-trivial@nongnu.org; Wed, 14 May 2025 12:55:23 -0400
+Received: by mail-wm1-x331.google.com with SMTP id
+ 5b1f17b1804b1-43cf848528aso271175e9.2
+ for <qemu-trivial@nongnu.org>; Wed, 14 May 2025 09:55:21 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1747241719; x=1747846519; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=5YmH83DL5qCu2KgAqq3e5Mot8qF1ZcGRJ0pxxN+rW0Y=;
+ b=Cf8j+fxpdgPDcSLD48/qoR8ntiGmF+8zRbsmtbBmTjhAVeAuK7/6cunGJVpmW0JvL/
+ oxsFkbikRTE7eJyBaYsBPNxGrsLvtXUwrzGDl2+TXDqiPkvMbS7g7L4j1j5fy+nD/0JL
+ WOx55VLtKAHqsfIiIR7ibTjTHmW9frL/WcCjp4dOjX4PlpCc4c4sbmvJqKZTXx2eS/y1
+ mw7eLkCcBJVk7lx/f46m6Y7DViwBUvuOkxRj8k72dL6dIavSOaDJCoTO35QpTMSsXNtu
+ Sy3ZtupYnqXbPMgy9WDWBg/6d5x7wdDCcsmIeo6RIlaKD3kOmCzXJB+LFTBg5UTws3WI
+ Q5wA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1747241719; x=1747846519;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=5YmH83DL5qCu2KgAqq3e5Mot8qF1ZcGRJ0pxxN+rW0Y=;
+ b=IfQcauMjkgpa2RqgBanS5+XxcPgCedOkj2tRRaNK+orAUictANEcOLknrx0nbgyQ5o
+ f/SMqbNhF1mX+uzdbPbriuPajoGuQMWtmTNns+MV7w9fLyJJbbUl0ZNwSU3FvIdBrn+I
+ 9ymFmj/XzV9mEKT6/NxL97mhQUFb/weF131YdkQDy6HXwh5Rp2LjlK/XZgo7mmtOqZ7C
+ qdP2P1cf6/uZ9XnhBvTb/TJZM6AIk/MMC7RykGHWE3HbL50BXBGqKxLFVNw6Ec8XeGSw
+ k+Pll0GNU9GYwo+w8D9zLeKrV64HOSogdqFxlEel7LbbAkKh0qdibpYoXSTYjpdlD+uO
+ JrFQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVm4P2CVmS11EGUEqlGRPaXI937Ux4uToa6Mfybdy0xdb2URT1G1oTJOwVKUGXUU2MEgJ9uFqV5Kfo+/ic=@nongnu.org
+X-Gm-Message-State: AOJu0Yw7sYGQd6o3j4P9GzuoTWtI02uAeVay10Vou7YyXiSJOUvMQaej
+ B7zjilGRSIp5qO92apaFg1Av0fj+ox5QWWI+Nj0C01Nz0XNhsThGQPio3uKhwn0=
+X-Gm-Gg: ASbGncvyqW925kZBV+2PCTccQMFc4S9b14Xe2cKNRj9obd9yWUBVSloO3aUTHXKlgAB
+ VQflVOmQjF8PK0AMwWfTB/r8XlldvE8WQ8ikhMZ3S8Iq5PEyHpawIkwxUcgds8W83dD8DdtbRSY
+ E1BJU4hPReD6xl48o+DAh3a2+RbNn12bLMidjKNQOAr6n6QiMeYniPqPPnx4zAsdlQTBnDRYsIr
+ stv4NRSeL7WKqIgTs0KdVG4laYRaVrIxv3wrG+YGFV4RO3ixsTHF8Hvd6jX/SgW+jevjgMbPj8N
+ BbGUYLgSdWDKjcqNEz/Sf2+bSoYbhk3WcIEARYnd8ZvHUdjQiiC4vO+yT/XI0gSF4zxnxp9VDR3
+ y+aAGE8KEw+VjIVCIV3kuWWMCY16A
+X-Google-Smtp-Source: AGHT+IFGTmOgrNZAMcWEtFGHGlA0YOqV/sL0anwCJgY5gjRcMmrErrxpuCAIcvrXcG2hbHEWuycqVA==
+X-Received: by 2002:a05:600c:a42:b0:442:cd13:f15d with SMTP id
+ 5b1f17b1804b1-442f217a65fmr35862965e9.29.1747241719502; 
+ Wed, 14 May 2025 09:55:19 -0700 (PDT)
+Received: from [10.61.1.248] (110.8.30.213.rev.vodafone.pt. [213.30.8.110])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-442f3369138sm40081985e9.8.2025.05.14.09.55.18
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 14 May 2025 09:55:19 -0700 (PDT)
+Message-ID: <bb021456-83d4-4a7b-96fe-0ddc1c0fac7a@linaro.org>
+Date: Wed, 14 May 2025 17:55:18 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
- helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 9/9] ui/console-vc: Consolidate OBJECT_DEFINE_SIMPLE_TYPE
+To: Zhao Liu <zhao1.liu@intel.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>
+References: <20250514084957.2221975-1-zhao1.liu@intel.com>
+ <20250514084957.2221975-10-zhao1.liu@intel.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250514084957.2221975-10-zhao1.liu@intel.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::331;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x331.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -62,44 +93,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 May 2025 16:24:15 -0000
+X-List-Received-Date: Wed, 14 May 2025 16:55:24 -0000
 
-On Wed, 14 May 2025, Zhao Liu wrote:
->>> +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest,
->>> +                                          s390_pv_guest,
->>> +                                          S390_PV_GUEST,
->>> +                                          CONFIDENTIAL_GUEST_SUPPORT,
->>> +                                          { TYPE_USER_CREATABLE },
->>> +                                          { NULL })
->>
->> I'll note that existing callers of OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
->> happily ignore the line limit and put it into a single line.
->>
->> (which ends up looking better IMHO)
->
-> Ok, I'll onor the existing conventions (which I'll apply to other
-> patches as well).
+On 14/5/25 10:49, Zhao Liu wrote:
+> The QOM types of QemuTextConsole and QemuFixedTextConsole are declared
+> by OBJECT_DECLARE_SIMPLE_TYPE, which means they don't need the class!
+> 
+> Therefore, use OBJECT_DEFINE_SIMPLE_TYPE to implement the type, then
+> there's no need for class definition.
+> 
+> Cc: "Marc-André Lureau" <marcandre.lureau@redhat.com>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
+>   ui/console-vc.c | 14 ++++++++------
+>   1 file changed, 8 insertions(+), 6 deletions(-)
 
-There are two line limits. If something is clearer on one line you could 
-exceed the normal 80 chars and put up to 90 chars on one line for which 
-checkpatch will issue a warning that can be ignored for these cases. Over 
-90 lines checkpatch will give an error and I think you should not ignore 
-that. Maybe try to put as much on one line as possible instead of new line 
-after each argument but without exceeding the 80 chars or if the whole 
-line fits in 90 chars then use that. Or maybe do not indent second line 
-under ( but with 4 spaces then you can fit it in two lines but lines over 
-90 chars are undesirable.
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Regards,
-BALATON Zoltan
-
->> Reviewed-by: David Hildenbrand <david@redhat.com>
->
-> Thanks!
->
-> Regards,
-> Zhao
->
->
->
 
