@@ -1,44 +1,47 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uFEmq-0000c3-Th
-	for mharc-qemu-trivial@gnu.org; Wed, 14 May 2025 12:16:53 -0400
+	id 1uFEu1-000058-L3
+	for mharc-qemu-trivial@gnu.org; Wed, 14 May 2025 12:24:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1uFEmg-0000Vf-QO; Wed, 14 May 2025 12:16:47 -0400
+ id 1uFEtw-0008Pp-5n; Wed, 14 May 2025 12:24:12 -0400
 Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1uFEma-0008QH-DF; Wed, 14 May 2025 12:16:41 -0400
+ id 1uFEtu-0000yg-2h; Wed, 14 May 2025 12:24:11 -0400
 Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id ADD5455CA4E;
- Wed, 14 May 2025 18:16:33 +0200 (CEST)
+ by zero.eik.bme.hu (Postfix) with ESMTP id 0358855BC02;
+ Wed, 14 May 2025 18:24:06 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at eik.bme.hu
 Received: from zero.eik.bme.hu ([127.0.0.1])
  by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id IYIIGMZu_Ksr; Wed, 14 May 2025 18:16:31 +0200 (CEST)
+ with ESMTP id cQKUllqPe2qA; Wed, 14 May 2025 18:24:03 +0200 (CEST)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id A735C55CA4D; Wed, 14 May 2025 18:16:31 +0200 (CEST)
+ id 42A6055C0CE; Wed, 14 May 2025 18:24:03 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id A5440745682;
- Wed, 14 May 2025 18:16:31 +0200 (CEST)
-Date: Wed, 14 May 2025 18:16:31 +0200 (CEST)
+ by zero.eik.bme.hu (Postfix) with ESMTP id 40987745682;
+ Wed, 14 May 2025 18:24:03 +0200 (CEST)
+Date: Wed, 14 May 2025 18:24:03 +0200 (CEST)
 From: BALATON Zoltan <balaton@eik.bme.hu>
 To: Zhao Liu <zhao1.liu@intel.com>
-cc: Paolo Bonzini <pbonzini@redhat.com>, 
- =?UTF-8?Q?Daniel_P_=2E_Berrang=EF=BF=BD?= <berrange@redhat.com>, 
+cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?ISO-8859-15?Q?Daniel_P_=2E_Berrang=E9?= <berrange@redhat.com>, 
  Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org, 
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH 2/9] docs/devel/qom: Fix the doc about
- OBJECT_DECLARE_SIMPLE_TYPE
-In-Reply-To: <aCS6pLuiFaeEmeEu@intel.com>
-Message-ID: <abd48771-90ba-fd25-e59f-3c6f90d5c0e5@eik.bme.hu>
+ qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Thomas Huth <thuth@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Ilya Leoshkevich <iii@linux.ibm.com>, qemu-s390x@nongnu.org
+Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
+ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+In-Reply-To: <aCS8aHsF+VAuj01D@intel.com>
+Message-ID: <7dec9c8e-93d6-81f0-b075-e29b8ede44a2@eik.bme.hu>
 References: <20250514084957.2221975-1-zhao1.liu@intel.com>
- <20250514084957.2221975-3-zhao1.liu@intel.com>
- <c179270c-d636-e20a-2043-38c09b81b4c6@eik.bme.hu>
- <aCS6pLuiFaeEmeEu@intel.com>
+ <20250514084957.2221975-9-zhao1.liu@intel.com>
+ <e0146386-ccf4-44ba-b58f-0bb4d3317f89@redhat.com>
+ <aCS8aHsF+VAuj01D@intel.com>
 MIME-Version: 1.0
-Content-Type: multipart/mixed;
- boundary="3866299591-1059840066-1747239391=:95746"
+Content-Type: text/plain; charset=US-ASCII; format=flowed
 Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
  helo=zero.eik.bme.hu
 X-Spam_score_int: -18
@@ -59,92 +62,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 May 2025 16:16:50 -0000
-
-  This message is in MIME format.  The first part should be readable text,
-  while the remaining parts are likely unreadable without MIME-aware tools.
-
---3866299591-1059840066-1747239391=:95746
-Content-Type: text/plain; charset=iso-8859-1; format=flowed
-Content-Transfer-Encoding: 8BIT
+X-List-Received-Date: Wed, 14 May 2025 16:24:15 -0000
 
 On Wed, 14 May 2025, Zhao Liu wrote:
-> On Wed, May 14, 2025 at 02:06:14PM +0200, BALATON Zoltan wrote:
->> Date: Wed, 14 May 2025 14:06:14 +0200
->> From: BALATON Zoltan <balaton@eik.bme.hu>
->> Subject: Re: [PATCH 2/9] docs/devel/qom: Fix the doc about
->>  OBJECT_DECLARE_SIMPLE_TYPE
+>>> +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest,
+>>> +                                          s390_pv_guest,
+>>> +                                          S390_PV_GUEST,
+>>> +                                          CONFIDENTIAL_GUEST_SUPPORT,
+>>> +                                          { TYPE_USER_CREATABLE },
+>>> +                                          { NULL })
 >>
->> On Wed, 14 May 2025, Zhao Liu wrote:
->>> Currently, the expansion example of OBJECT_DECLARE_SIMPLE_TYPE "roughly"
->>> reflects what OBJECT_DECLARE_TYPE is doing.
->>>
->>> Why "roughly"? Because this line -
->>>
->>>>    G_DEFINE_AUTOPTR_CLEANUP_FUNC(MyDeviceClass, object_unref)
->>>
->>> - is also wrong for OBJECT_DECLARE_TYPE.
->>>
->>> Fix the expansion example of OBJECT_DECLARE_SIMPLE_TYPE, especially
->>> drop that definition of MyDeviceClass.
->>>
->>> Cc: Paolo Bonzini <pbonzini@redhat.com>
->>> Cc: "Daniel P. Berrangé" <berrange@redhat.com>
->>> Cc: Eduardo Habkost <eduardo@habkost.net>
->>> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
->>> ---
->>> docs/devel/qom.rst | 11 +----------
->>> 1 file changed, 1 insertion(+), 10 deletions(-)
->>>
->>> diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
->>> index 5870745ba27b..185f4c2f5921 100644
->>> --- a/docs/devel/qom.rst
->>> +++ b/docs/devel/qom.rst
->>> @@ -326,21 +326,12 @@ This is equivalent to the following:
->>>    :caption: Expansion from declaring a simple type
->>>
->>>    typedef struct MyDevice MyDevice;
->>> -   typedef struct MyDeviceClass MyDeviceClass;
->>>
->>> -   G_DEFINE_AUTOPTR_CLEANUP_FUNC(MyDeviceClass, object_unref)
->>> +   G_DEFINE_AUTOPTR_CLEANUP_FUNC(MyDevice, object_unref)
->>>
->>> -   #define MY_DEVICE_GET_CLASS(void *obj) \
->>> -           OBJECT_GET_CLASS(MyDeviceClass, obj, TYPE_MY_DEVICE)
->>> -   #define MY_DEVICE_CLASS(void *klass) \
->>> -           OBJECT_CLASS_CHECK(MyDeviceClass, klass, TYPE_MY_DEVICE)
->>>    #define MY_DEVICE(void *obj)
->>>            OBJECT_CHECK(MyDevice, obj, TYPE_MY_DEVICE)
->>>
->>> -   struct MyDeviceClass {
->>> -       DeviceClass parent_class;
->>> -   };
->>> -
->>> The 'struct MyDevice' needs to be declared separately.
->>> If the type requires virtual functions to be declared in the class
->>> struct, then the alternative OBJECT_DECLARE_TYPE() macro can be
+>> I'll note that existing callers of OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+>> happily ignore the line limit and put it into a single line.
 >>
->> Maybe you need to adjust the text here about OBJECT_DECLARE_TYPE here and
->> show how to define Class sturct?
+>> (which ends up looking better IMHO)
 >
-> Then it's not easy to organize the structure in this document, since
-> most of the content is now make "OBJECT_DECLARE_SIMPLE_TYPE" as well as
-> "OBJECT_DEFINE_SIMPLE_TYPE" as examples... I'm a bit unsure, and we can
-> wait and see what others would say.
->
-> BTW, I found I missed this sentence:
->
-> "(OBJECT_DECLARE_TYPE) This does the same as OBJECT_DECLARE_SIMPLE_TYPE(),
-> but without the 'struct MyDeviceClass' definition."
->
-> It should be: This does the same as OBJECT_DECLARE_SIMPLE_TYPE(),
-> but with the class type.
+> Ok, I'll onor the existing conventions (which I'll apply to other
+> patches as well).
 
-Yes that's what I meant. If you remove the class example then how will 
-readers know how to define that so a new example for that may be needed 
-but you can wait for others' opinion too.
+There are two line limits. If something is clearer on one line you could 
+exceed the normal 80 chars and put up to 90 chars on one line for which 
+checkpatch will issue a warning that can be ignored for these cases. Over 
+90 lines checkpatch will give an error and I think you should not ignore 
+that. Maybe try to put as much on one line as possible instead of new line 
+after each argument but without exceeding the 80 chars or if the whole 
+line fits in 90 chars then use that. Or maybe do not indent second line 
+under ( but with 4 spaces then you can fit it in two lines but lines over 
+90 chars are undesirable.
 
 Regards,
 BALATON Zoltan
---3866299591-1059840066-1747239391=:95746--
+
+>> Reviewed-by: David Hildenbrand <david@redhat.com>
+>
+> Thanks!
+>
+> Regards,
+> Zhao
+>
+>
+>
 
