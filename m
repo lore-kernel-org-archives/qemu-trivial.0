@@ -1,70 +1,49 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uFE63-0004n5-HJ
-	for mharc-qemu-trivial@gnu.org; Wed, 14 May 2025 11:32:39 -0400
+	id 1uFEk0-00075G-8l
+	for mharc-qemu-trivial@gnu.org; Wed, 14 May 2025 12:13:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uFE5g-0004GT-Ea; Wed, 14 May 2025 11:32:21 -0400
-Received: from mgamail.intel.com ([198.175.65.11])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1uFEjm-0006g4-GQ; Wed, 14 May 2025 12:13:46 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uFE5e-00018V-HG; Wed, 14 May 2025 11:32:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747236735; x=1778772735;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=PIjFnfnYW+H9SVImmOI0C1OSncQ/MUhmxQEZA/8kCt0=;
- b=d/fcDRVSjjB1THJzrQIw+QS8qbINwZBfDLs56Zpl3t2mFUYzHfClvWrV
- D64tMLM/Mm5rdkNQAX5ldMVMh8rw1dXJpfGUlIp0zLJpV59Fi2c39sw0E
- iS6DqYHhGJOjxtt8QIZO6GNT1e2ZLN0Gd6pshsl70I3ALa+5T533X58hR
- 7A5eo2I2wUm82iFziO4qtCBpYKPjQx7vQKH+oHtW/yhZ/VaT5wqSIvHCn
- K6SiWaVOlMS7WQZDpP7cJj2VH96nNZ1gSTAr93yB19azUWUoWRXdf/XhQ
- Ynaj8/R3kpiuPNsM40nsTNRn/C6fTnxMPp27bqqGJFvMtYQRZAfaiYTqx w==;
-X-CSE-ConnectionGUID: zbqly3kTS0iJjR0Ijs3Xhg==
-X-CSE-MsgGUID: wA85CKvkRqSks3bRqTeXRQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11433"; a="59366817"
-X-IronPort-AV: E=Sophos;i="6.15,288,1739865600"; d="scan'208";a="59366817"
-Received: from fmviesa007.fm.intel.com ([10.60.135.147])
- by orvoesa103.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 14 May 2025 08:32:11 -0700
-X-CSE-ConnectionGUID: /LRnnEpSTMuXggeUjxigKw==
-X-CSE-MsgGUID: ktthpLA7TESE/mgTNTnYWw==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,288,1739865600"; d="scan'208";a="138128811"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by fmviesa007.fm.intel.com with ESMTP; 14 May 2025 08:32:07 -0700
-Date: Wed, 14 May 2025 23:53:12 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: David Hildenbrand <david@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Daniel P =?iso-8859-1?Q?=2E_Berrang=E9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, qemu-s390x@nongnu.org
-Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
- OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-Message-ID: <aCS8aHsF+VAuj01D@intel.com>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1uFEjj-0007t2-SN; Wed, 14 May 2025 12:13:42 -0400
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 69EF155BC02;
+ Wed, 14 May 2025 18:13:35 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id FzcH6DRRnUzI; Wed, 14 May 2025 18:13:33 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id 1F4E555CA5C; Wed, 14 May 2025 18:13:33 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 115E1745682;
+ Wed, 14 May 2025 18:13:33 +0200 (CEST)
+Date: Wed, 14 May 2025 18:13:33 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Zhao Liu <zhao1.liu@intel.com>
+cc: Paolo Bonzini <pbonzini@redhat.com>, 
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=EF=BF=BD?= <berrange@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org, 
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH 1/9] qom/object: Improve the doc of macros related with
+ simple type
+In-Reply-To: <aCS3gS3+qdxZof75@intel.com>
+Message-ID: <e034853a-beaf-f5d8-4eb3-069538b012c6@eik.bme.hu>
 References: <20250514084957.2221975-1-zhao1.liu@intel.com>
- <20250514084957.2221975-9-zhao1.liu@intel.com>
- <e0146386-ccf4-44ba-b58f-0bb4d3317f89@redhat.com>
+ <20250514084957.2221975-2-zhao1.liu@intel.com>
+ <e213c4bf-1b26-f1c3-c3ed-10c2adff4a5d@eik.bme.hu>
+ <aCS3gS3+qdxZof75@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <e0146386-ccf4-44ba-b58f-0bb4d3317f89@redhat.com>
-Received-SPF: pass client-ip=198.175.65.11; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -60
-X-Spam_score: -6.1
-X-Spam_bar: ------
-X-Spam_report: (-6.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -78,28 +57,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 May 2025 15:32:34 -0000
+X-List-Received-Date: Wed, 14 May 2025 16:13:54 -0000
 
-> > +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest,
-> > +                                          s390_pv_guest,
-> > +                                          S390_PV_GUEST,
-> > +                                          CONFIDENTIAL_GUEST_SUPPORT,
-> > +                                          { TYPE_USER_CREATABLE },
-> > +                                          { NULL })
-> 
-> I'll note that existing callers of OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-> happily ignore the line limit and put it into a single line.
-> 
-> (which ends up looking better IMHO)
+On Wed, 14 May 2025, Zhao Liu wrote:
+> Hi BALATON,
 
-Ok, I'll onor the existing conventions (which I'll apply to other
-patches as well).
+In case you did not know:
+https://en.wikipedia.org/wiki/Name_order#Hungary
 
-> Reviewed-by: David Hildenbrand <david@redhat.com>
+> On Wed, May 14, 2025 at 02:02:48PM +0200, BALATON Zoltan wrote:
+>> Date: Wed, 14 May 2025 14:02:48 +0200
+>> From: BALATON Zoltan <balaton@eik.bme.hu>
+>> Subject: Re: [PATCH 1/9] qom/object: Improve the doc of macros related with
+>>  simple type
+>>
+>> On Wed, 14 May 2025, Zhao Liu wrote:
+>>> There're 2 changes:
+>>> - For OBJECT_DECLARE_SIMPLE_TYPE:
+>>>
+>>>   Since a clase may not only has virtual method, but also field, thus
+>>
+>> class may not only have virtual methods but also fields, clarify when class
+>> is not needed
+>
+> Thanks for the polish! It sounds better.
 
-Thanks!
+It's also grammatically more correct. But I'm not a native English speaker 
+so may still be wrong.
+
+>>>   mention when class is not needed for either, then there is no need
+>>>   to have the class.
+>>>
+>>> - For OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES:
+>>>
+>>>   And the words like OBJECT_DEFINE_SIMPLE_TYPE about when the type is
+>>>   declared by OBJECT_DECLARE_SIMPLE_TYPE, then user should consider
+>>>   to define the type via OBJECT_DEFINE_SIMPLE_TYPE or
+>>>   OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES.
+>>>
+>>> Cc: Paolo Bonzini <pbonzini@redhat.com>
+>>> Cc: "Daniel P. Berrang?" <berrange@redhat.com>
+>>> Cc: Eduardo Habkost <eduardo@habkost.net>
+>>> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+>>> ---
+>>> include/qom/object.h | 5 +++--
+>>> 1 file changed, 3 insertions(+), 2 deletions(-)
+>>>
+>>> diff --git a/include/qom/object.h b/include/qom/object.h
+>>> index 1d5b03372429..14f84ae454d3 100644
+>>> --- a/include/qom/object.h
+>>> +++ b/include/qom/object.h
+>>> @@ -249,7 +249,7 @@ struct Object
+>>>  * declared.
+>>>  *
+>>>  * This macro should be used unless the class struct needs to have
+>>> - * virtual methods declared.
+>>> + * virtual methods or fields declared.
+>>>  */
+>>> #define OBJECT_DECLARE_SIMPLE_TYPE(InstanceType, MODULE_OBJ_NAME) \
+>>>     typedef struct InstanceType InstanceType; \
+>>> @@ -402,7 +402,8 @@ struct Object
+>>>  *
+>>>  * This is a variant of OBJECT_DEFINE_TYPE_EXTENDED, which is suitable for
+>>>  * the case of a non-abstract type, with interfaces, and with no requirement
+>>> - * for a class struct.
+>>> + * for a class struct. If you declared your type with OBJECT_DECLARE_SIMPLE_TYPE
+>>> + * then this is probably the right choice for defining it.
+>>
+>> Is "probably" correct here? Is it a must or can still use other defining
+>> macros?
+>
+> Yes, because there's another choice: OBJECT_DEFINE_SIMPLE_TYPE.
+>
+>> If correct maybe saying "this might be the right choice" is simpler.
+>
+> :-) I copied this sentence from the documentation of
+> OBJECT_DEFINE_SIMPLE_TYPE. The difference between these 2 macros is
+> OBJECT_DEFINE_SIMPLE_TYPE doesn't support interface.
+>
+> So I'd like to keep this sentence, consistent with the description of
+> OBJECT_DEFINE_SIMPLE_TYPE.
+
+OK in that case no problem to keep consistency. It still sounds a bit 
+unspecific for documentation to me because it leaves the question open of 
+what is it when it's not the right choice but if this is already there 
+then that's another unrelated question.
 
 Regards,
-Zhao
-
+BALATON Zoltan
 
