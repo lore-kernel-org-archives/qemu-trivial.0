@@ -1,57 +1,62 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uEgfz-00067T-S7
-	for mharc-qemu-trivial@gnu.org; Mon, 12 May 2025 23:51:31 -0400
+	id 1uF7U6-0006Yc-RX
+	for mharc-qemu-trivial@gnu.org; Wed, 14 May 2025 04:29:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <patch@thomaslambertz.de>)
- id 1uEb7O-0006Q1-8R
- for qemu-trivial@nongnu.org; Mon, 12 May 2025 17:55:26 -0400
-Received: from mail-108-mta229.mxroute.com ([136.175.108.229])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <patch@thomaslambertz.de>)
- id 1uEb7M-0002ZZ-GR
- for qemu-trivial@nongnu.org; Mon, 12 May 2025 17:55:25 -0400
-Received: from filter006.mxroute.com ([136.175.111.3] filter006.mxroute.com)
- (Authenticated sender: mN4UYu2MZsgR)
- by mail-108-mta229.mxroute.com (ZoneMTA) with ESMTPSA id
- 196c67a2c490008631.002 for <qemu-trivial@nongnu.org>
- (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384);
- Mon, 12 May 2025 21:50:17 +0000
-X-Zone-Loop: 5b4e739525f72bebefe8135e587602fcbd135dec3d89
-X-Originating-IP: [136.175.111.3]
-Message-ID: <7fb0245b-7221-4cca-abb6-111095f7eea5@thomaslambertz.de>
-Date: Mon, 12 May 2025 23:50:10 +0200
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1uF7U5-0006V4-BK; Wed, 14 May 2025 04:29:01 -0400
+Received: from mgamail.intel.com ([198.175.65.10])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1uF7U2-0006Fg-Ov; Wed, 14 May 2025 04:29:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1747211339; x=1778747339;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=egObq7r+bAUf06a07tyz1db9wNYsBeBm+FIL2c4bTpk=;
+ b=ApB1ofOmwYVtXN4COedsSVOwFVuBaNiXRCvTHBUkLsXWgeB3ZiGTkTCL
+ phaLd9peE7F1BcpvyNRrbFcwlLmRXcBssHRq/G8BP+z0B7JNOspubOjll
+ ghL0rEvh7we86SurWCa5XRQn5ABj/ZVFmsG0o1txVK4Qg21TeTz7dFEMl
+ tikOJrDQDhXRpCK0Nq8Nc7u8nC7EmUsgVkQq1zt5M8qcnt0eAw//GXopA
+ yY6JAKYwRwJL4GrNCKqbq6CiUnZep4ghCNlCBUn15Fz0MCHQgzxkpLiVI
+ kuNXgoSntpImcQQ2N7v1nox320i/YSFpuhvHxgB2Hh4C0BVbFXnH8pzOO w==;
+X-CSE-ConnectionGUID: RZGOl9klT2is/Sg2gjqEoQ==
+X-CSE-MsgGUID: G5acNfiSRRCsluhR75KhbA==
+X-IronPort-AV: E=McAfee;i="6700,10204,11432"; a="66505563"
+X-IronPort-AV: E=Sophos;i="6.15,287,1739865600"; d="scan'208";a="66505563"
+Received: from fmviesa001.fm.intel.com ([10.60.135.141])
+ by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 14 May 2025 01:28:55 -0700
+X-CSE-ConnectionGUID: /ajFYO2HT1CTKSRzKHxO9A==
+X-CSE-MsgGUID: zTsZLN5wSDO/sn1lXmS3EQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,287,1739865600"; d="scan'208";a="169065802"
+Received: from liuzhao-optiplex-7080.sh.intel.com ([10.239.160.39])
+ by fmviesa001.fm.intel.com with ESMTP; 14 May 2025 01:28:52 -0700
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Zhao Liu <zhao1.liu@intel.com>
+Subject: [PATCH 0/9] qom: Consolidate OBJECT_{DEFINE|DECLARE}_SIMPLE_TYPE*
+Date: Wed, 14 May 2025 16:49:48 +0800
+Message-Id: <20250514084957.2221975-1-zhao1.liu@intel.com>
+X-Mailer: git-send-email 2.34.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Content-Language: en-US
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, philmd@linaro.org
-From: Thomas Lambertz <patch@thomaslambertz.de>
-Subject: [PATCH] hw/usb/dev-hid: Support side and extra mouse buttons for
- usb-tablet
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-AntiAbuse: This header was added to track abuse,
- please include it with any abuse report
-X-AntiAbuse: Primary Hostname - aus.mxroute.com
-X-AntiAbuse: Original Domain - nongnu.org
-X-AntiAbuse: Originator/Caller UID/GID - [47 12] / [47 12]
-X-AntiAbuse: Sender Address Domain - thomaslambertz.de
-X-Get-Message-Sender-Via: aus.mxroute.com: authenticated_id:
- mail@thomaslambertz.de
-X-Authenticated-Sender: aus.mxroute.com: mail@thomaslambertz.de
-X-Source: 
-X-Source-Args: 
-X-Source-Dir: 
-Received-SPF: pass client-ip=136.175.108.229;
- envelope-from=patch@thomaslambertz.de; helo=mail-108-mta229.mxroute.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=198.175.65.10; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -58
+X-Spam_score: -5.9
+X-Spam_bar: -----
+X-Spam_report: (-5.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.549,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 12 May 2025 23:51:30 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,40 +68,51 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 12 May 2025 21:55:26 -0000
+X-List-Received-Date: Wed, 14 May 2025 08:29:01 -0000
 
-The necessary plumbing for side- and extra mouse buttons to reach
-usb-tablet is already done. But the descriptor advertises three buttons
-max. Increase this to 5. Buttons are now identical to usb-mouse.
+Hi,
 
-Signed-off-by: Thomas Lambertz <patch@thomaslambertz.de>
+When I read the qom doc (qom.rst) about OBJECT_DECLARE_SIMPLE_TYPE, I
+found there's the wrong example. So I tried to fix the doc and cleaned
+up the relevant code case to correctly show that for simple type, the
+class definition is not needed.
+
+This series tries to:
+
+ * fix & improve the documentation of OBJECT_{DEFINE|DECLARE}_SIMPLE_TYPE*,
+
+ * and clean up several cases that could have used simple type macros
+   (mainly by dropping unneeded class definitions).
+
+Thanks and Best Regards,
+Zhao
 ---
-  hw/usb/dev-hid.c | 6 +++---
-  1 file changed, 3 insertions(+), 3 deletions(-)
+Zhao Liu (9):
+  qom/object: Improve the doc of macros related with simple type
+  docs/devel/qom: Fix the doc about OBJECT_DECLARE_SIMPLE_TYPE
+  hw/acpi/pci: Consolidate OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+  hw/char/sh_serial: Consolidate
+    OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+  hw/hyperv/hv-balloon: Consolidate
+    OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+  hw/ppc/pef: Consolidate OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+  hw/core/resetcontainer: Consolidate OBJECT_DECLARE_SIMPLE_TYPE
+  target/s390x/kvm/pv: Consolidate
+    OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+  ui/console-vc: Consolidate OBJECT_DEFINE_SIMPLE_TYPE
 
-diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
-index 54d064e54e..96623aa322 100644
---- a/hw/usb/dev-hid.c
-+++ b/hw/usb/dev-hid.c
-@@ -491,14 +491,14 @@ static const uint8_t qemu_tablet_hid_report_descriptor[] = {
-      0xa1, 0x00,		/*   Collection (Physical) */
-      0x05, 0x09,		/*     Usage Page (Button) */
-      0x19, 0x01,		/*     Usage Minimum (1) */
--    0x29, 0x03,		/*     Usage Maximum (3) */
-+    0x29, 0x05,		/*     Usage Maximum (5) */
-      0x15, 0x00,		/*     Logical Minimum (0) */
-      0x25, 0x01,		/*     Logical Maximum (1) */
--    0x95, 0x03,		/*     Report Count (3) */
-+    0x95, 0x05,		/*     Report Count (5) */
-      0x75, 0x01,		/*     Report Size (1) */
-      0x81, 0x02,		/*     Input (Data, Variable, Absolute) */
-      0x95, 0x01,		/*     Report Count (1) */
--    0x75, 0x05,		/*     Report Size (5) */
-+    0x75, 0x03,		/*     Report Size (3) */
-      0x81, 0x01,		/*     Input (Constant) */
-      0x05, 0x01,		/*     Usage Page (Generic Desktop) */
-      0x09, 0x30,		/*     Usage (X) */
+ docs/devel/qom.rst               | 11 +----------
+ hw/acpi/pci.c                    | 24 ++++++++----------------
+ hw/char/sh_serial.c              |  4 +---
+ hw/hyperv/hv-balloon.c           |  8 ++------
+ hw/ppc/pef.c                     | 17 ++++++-----------
+ include/hw/core/resetcontainer.h |  2 +-
+ include/qom/object.h             |  5 +++--
+ target/s390x/kvm/pv.c            | 18 ++++++------------
+ ui/console-vc.c                  | 14 ++++++++------
+ 9 files changed, 36 insertions(+), 67 deletions(-)
+
 -- 
-2.43.0
+2.34.1
 
 
