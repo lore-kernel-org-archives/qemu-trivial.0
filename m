@@ -1,27 +1,27 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uFAZj-0003at-WD
-	for mharc-qemu-trivial@gnu.org; Wed, 14 May 2025 07:47:08 -0400
+	id 1uFAmI-0000wr-RH
+	for mharc-qemu-trivial@gnu.org; Wed, 14 May 2025 08:00:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1uFAZU-0003ZM-Q6; Wed, 14 May 2025 07:46:48 -0400
+ id 1uFAmA-0000Pr-CK; Wed, 14 May 2025 07:59:55 -0400
 Received: from zero.eik.bme.hu ([152.66.115.2])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1uFAZR-0004Ml-LI; Wed, 14 May 2025 07:46:48 -0400
+ id 1uFAm8-0000JJ-41; Wed, 14 May 2025 07:59:54 -0400
 Received: from zero.eik.bme.hu (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 12BC355D21A;
- Wed, 14 May 2025 13:46:23 +0200 (CEST)
+ by zero.eik.bme.hu (Postfix) with ESMTP id D05FE55CA4D;
+ Wed, 14 May 2025 13:59:42 +0200 (CEST)
 X-Virus-Scanned: amavisd-new at eik.bme.hu
 Received: from zero.eik.bme.hu ([127.0.0.1])
  by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
- with ESMTP id aIapBQrQMQxB; Wed, 14 May 2025 13:46:21 +0200 (CEST)
+ with ESMTP id fG6MpeYc1IIr; Wed, 14 May 2025 13:59:40 +0200 (CEST)
 Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id 1588F55D22A; Wed, 14 May 2025 13:46:21 +0200 (CEST)
+ id CAAC655CA5C; Wed, 14 May 2025 13:59:40 +0200 (CEST)
 Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id 1369A745682;
- Wed, 14 May 2025 13:46:21 +0200 (CEST)
-Date: Wed, 14 May 2025 13:46:21 +0200 (CEST)
+ by zero.eik.bme.hu (Postfix) with ESMTP id C8A50745682;
+ Wed, 14 May 2025 13:59:40 +0200 (CEST)
+Date: Wed, 14 May 2025 13:59:40 +0200 (CEST)
 From: BALATON Zoltan <balaton@eik.bme.hu>
 To: Zhao Liu <zhao1.liu@intel.com>
 cc: Paolo Bonzini <pbonzini@redhat.com>, 
@@ -32,10 +32,11 @@ cc: Paolo Bonzini <pbonzini@redhat.com>,
  Harsh Prateek Bora <harshpb@linux.ibm.com>, qemu-ppc@nongnu.org
 Subject: Re: [PATCH 6/9] hw/ppc/pef: Consolidate
  OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-In-Reply-To: <20250514084957.2221975-7-zhao1.liu@intel.com>
-Message-ID: <0b162bfe-27ed-371e-d46d-22de58f73a37@eik.bme.hu>
+In-Reply-To: <0b162bfe-27ed-371e-d46d-22de58f73a37@eik.bme.hu>
+Message-ID: <9f684f97-86ee-3e51-f1cd-569f3bc9a462@eik.bme.hu>
 References: <20250514084957.2221975-1-zhao1.liu@intel.com>
  <20250514084957.2221975-7-zhao1.liu@intel.com>
+ <0b162bfe-27ed-371e-d46d-22de58f73a37@eik.bme.hu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=US-ASCII; format=flowed
 Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
@@ -58,68 +59,75 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 14 May 2025 11:46:52 -0000
+X-List-Received-Date: Wed, 14 May 2025 12:00:00 -0000
 
-On Wed, 14 May 2025, Zhao Liu wrote:
-> The QOM type of PefGuest is declared by OBJECT_DECLARE_SIMPLE_TYPE,
-> which means it doesn't need the class!
+On Wed, 14 May 2025, BALATON Zoltan wrote:
+> On Wed, 14 May 2025, Zhao Liu wrote:
+>> The QOM type of PefGuest is declared by OBJECT_DECLARE_SIMPLE_TYPE,
+>> which means it doesn't need the class!
+>> 
+>> Therefore, use OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES to implement
+>> the type, then there's no need for class definition.
+>> 
+>> Cc: Nicholas Piggin <npiggin@gmail.com>
+>> Cc: Daniel Henrique Barboza <danielhb413@gmail.com>
+>> Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>
+>> Cc: qemu-ppc@nongnu.org
+>> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+>> ---
+>> hw/ppc/pef.c | 17 ++++++-----------
+>> 1 file changed, 6 insertions(+), 11 deletions(-)
+>> 
+>> diff --git a/hw/ppc/pef.c b/hw/ppc/pef.c
+>> index 254f5707876f..1832791ee533 100644
+>> --- a/hw/ppc/pef.c
+>> +++ b/hw/ppc/pef.c
+>> @@ -20,11 +20,6 @@
+>> OBJECT_DECLARE_SIMPLE_TYPE(PefGuest, PEF_GUEST)
+>> 
+>> typedef struct PefGuest PefGuest;
+>> -typedef struct PefGuestClass PefGuestClass;
+>> -
+>> -struct PefGuestClass {
+>> -    ConfidentialGuestSupportClass parent_class;
+>> -};
+>> 
+>> /**
+>>  * PefGuest:
+>> @@ -121,12 +116,12 @@ static int pef_kvm_reset(ConfidentialGuestSupport 
+>> *cgs, Error **errp)
+>>     return kvmppc_svm_off(errp);
+>> }
+>> 
+>> -OBJECT_DEFINE_TYPE_WITH_INTERFACES(PefGuest,
+>> -                                   pef_guest,
+>> -                                   PEF_GUEST,
+>> -                                   CONFIDENTIAL_GUEST_SUPPORT,
+>> -                                   { TYPE_USER_CREATABLE },
+>> -                                   { NULL })
+>> +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(PefGuest,
+>> +                                          pef_guest,
+>> +                                          PEF_GUEST,
+>> +                                          CONFIDENTIAL_GUEST_SUPPORT,
+>> +                                          { TYPE_USER_CREATABLE },
+>> +                                          { NULL })
 >
-> Therefore, use OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES to implement
-> the type, then there's no need for class definition.
->
-> Cc: Nicholas Piggin <npiggin@gmail.com>
-> Cc: Daniel Henrique Barboza <danielhb413@gmail.com>
-> Cc: Harsh Prateek Bora <harshpb@linux.ibm.com>
-> Cc: qemu-ppc@nongnu.org
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> ---
-> hw/ppc/pef.c | 17 ++++++-----------
-> 1 file changed, 6 insertions(+), 11 deletions(-)
->
-> diff --git a/hw/ppc/pef.c b/hw/ppc/pef.c
-> index 254f5707876f..1832791ee533 100644
-> --- a/hw/ppc/pef.c
-> +++ b/hw/ppc/pef.c
-> @@ -20,11 +20,6 @@
-> OBJECT_DECLARE_SIMPLE_TYPE(PefGuest, PEF_GUEST)
->
-> typedef struct PefGuest PefGuest;
-> -typedef struct PefGuestClass PefGuestClass;
-> -
-> -struct PefGuestClass {
-> -    ConfidentialGuestSupportClass parent_class;
-> -};
->
-> /**
->  * PefGuest:
-> @@ -121,12 +116,12 @@ static int pef_kvm_reset(ConfidentialGuestSupport *cgs, Error **errp)
->     return kvmppc_svm_off(errp);
-> }
->
-> -OBJECT_DEFINE_TYPE_WITH_INTERFACES(PefGuest,
-> -                                   pef_guest,
-> -                                   PEF_GUEST,
-> -                                   CONFIDENTIAL_GUEST_SUPPORT,
-> -                                   { TYPE_USER_CREATABLE },
-> -                                   { NULL })
-> +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(PefGuest,
-> +                                          pef_guest,
-> +                                          PEF_GUEST,
-> +                                          CONFIDENTIAL_GUEST_SUPPORT,
-> +                                          { TYPE_USER_CREATABLE },
-> +                                          { NULL })
+> Maybe also change the name while at it because the WITH_INTERFACES macros 
+> usually allow to pass an interfaces list instead of the single hardcoded 
+> USER_CREATABLE interface here so if such variant is added it would clash. 
+> Better call this something that shows this is PEF specific or just use the 
+> appropriate macro from qemu/object.h to define it.
 
-Maybe also change the name while at it because the WITH_INTERFACES macros 
-usually allow to pass an interfaces list instead of the single hardcoded 
-USER_CREATABLE interface here so if such variant is added it would clash. 
-Better call this something that shows this is PEF specific or just use the 
-appropriate macro from qemu/object.h to define it.
+Ignore this, I've found the rest of the series and now see better what 
+it's about. Sorry for the noise.
 
 Regards,
 BALATON Zoltan
 
+>> 
+>> static void pef_guest_class_init(ObjectClass *oc, const void *data)
+>> {
+>> 
 >
-> static void pef_guest_class_init(ObjectClass *oc, const void *data)
-> {
 >
 
