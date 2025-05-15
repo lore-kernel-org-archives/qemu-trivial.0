@@ -1,64 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uFYeY-0005AJ-I6
-	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2025 09:29:39 -0400
+	id 1uFYpG-0004RM-Do
+	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2025 09:40:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uFYeP-000511-Cj; Thu, 15 May 2025 09:29:29 -0400
-Received: from mgamail.intel.com ([198.175.65.10])
+ id 1uFYpE-0004Qt-6G; Thu, 15 May 2025 09:40:40 -0400
+Received: from mgamail.intel.com ([192.198.163.19])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uFYeJ-0004eZ-LF; Thu, 15 May 2025 09:29:26 -0400
+ id 1uFYp9-00060F-A7; Thu, 15 May 2025 09:40:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747315764; x=1778851764;
+ t=1747316435; x=1778852435;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=nD4jIMzPEL9GlBRMVD8jm1YlOuSAxd1LZIi/qkLyWyA=;
- b=Fvki2vRJyNjhad6+Qy58SR22nQs5CQQxJa0Cx9BKzB3JNPIDnSy55ykH
- tn+En0eIX4WCUl/vO12QWt8V5yb34oCFqFCYyF90Y8XSlmGmr1O6fJSGE
- PLteH2/0yAxC8QuVi3SHGkqZ7nGzGUK+ZMrxARVx5EgABRSnQVXBpeSIp
- rhVigrm0VnI2RA2pZ5JvRDxj7q79k0vlHmgDJqVnAR2IPiNVukjuWGFDL
- KxUS6qrFQEwmakrdZ0gFJiMprjRDaEjrJeZIrkeHbyEQ1jzueweQonflO
- jqMoZFtcGGNjYPJrPp97ubUUM/94XHqQ98/obgYqzuE13OCCGFcPLNBtk Q==;
-X-CSE-ConnectionGUID: NbWoZR5+Sfi047jRu5WFLQ==
-X-CSE-MsgGUID: I1ZWHCMeQcmR4zLMMd+kmA==
-X-IronPort-AV: E=McAfee;i="6700,10204,11434"; a="66658082"
-X-IronPort-AV: E=Sophos;i="6.15,291,1739865600"; d="scan'208";a="66658082"
-Received: from fmviesa003.fm.intel.com ([10.60.135.143])
- by orvoesa102.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2025 06:29:19 -0700
-X-CSE-ConnectionGUID: M8NdgvHtQnKdJ4IAlWQcfw==
-X-CSE-MsgGUID: McE69DKsTyyJ1kCYn0ABkw==
+ bh=t/dBJRztTq4O8xEEobmmrrFdz5C0wJIG2Qexj3Seeto=;
+ b=Lo12hO7LtbzvJj0fTTjXDk1YrZ6Qh6Xpq6IMnGjS+sf4z4L0FlRJatea
+ maUoPxfUyfRAPysu043vX+fykEHHH85rZkCImOnB77PkJ10BY0EaBs6+h
+ upCgcuDVg8THUzoKnMQpS+hyaKVdF2BNWGnH69ebCpBT2zNOea9lLmSVZ
+ xlyjj9cH0Tbt7zogYggPkDTPQ55h/2pRJ2RmFCFSHZfRLKWLn/uzX4f4X
+ i8hdQMIFBs/QHtbwMV17A3s1umHx1iYAXrwpP+akIDy5L2l58jqldbWF8
+ e7jb3fTQnfX11UUJRY+mS+ufEQ9hCVbcFesZra+qGtEsNKFYEq72/Tzzu Q==;
+X-CSE-ConnectionGUID: jujWPTz9TI6Ygo9gHl18vw==
+X-CSE-MsgGUID: WRYjJYACRpayTnMIzp53Fg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11434"; a="48370717"
+X-IronPort-AV: E=Sophos;i="6.15,291,1739865600"; d="scan'208";a="48370717"
+Received: from orviesa002.jf.intel.com ([10.64.159.142])
+ by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 May 2025 06:40:31 -0700
+X-CSE-ConnectionGUID: +gU1JbZYQd6M8WXm8bGWsQ==
+X-CSE-MsgGUID: DaNzT0bDTauGgbxs3/bZxg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,291,1739865600"; d="scan'208";a="142386727"
+X-IronPort-AV: E=Sophos;i="6.15,291,1739865600"; d="scan'208";a="169309570"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.39])
- by fmviesa003.fm.intel.com with ESMTP; 15 May 2025 06:29:16 -0700
-Date: Thu, 15 May 2025 21:50:20 +0800
+ by orviesa002.jf.intel.com with ESMTP; 15 May 2025 06:40:29 -0700
+Date: Thu, 15 May 2025 22:01:34 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Daniel P =?utf-8?B?LiBCZXJyYW5n77+9?= <berrange@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, qemu-s390x@nongnu.org
-Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
- OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-Message-ID: <aCXxHEVZb8+ZCW/m@intel.com>
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH 1/9] qom/object: Improve the doc of macros related with
+ simple type
+Message-ID: <aCXzvi3C0PRwWiF6@intel.com>
 References: <20250514084957.2221975-1-zhao1.liu@intel.com>
- <20250514084957.2221975-9-zhao1.liu@intel.com>
- <e0146386-ccf4-44ba-b58f-0bb4d3317f89@redhat.com>
- <aCS8aHsF+VAuj01D@intel.com>
- <7dec9c8e-93d6-81f0-b075-e29b8ede44a2@eik.bme.hu>
+ <20250514084957.2221975-2-zhao1.liu@intel.com>
+ <e213c4bf-1b26-f1c3-c3ed-10c2adff4a5d@eik.bme.hu>
+ <aCS3gS3+qdxZof75@intel.com>
+ <e034853a-beaf-f5d8-4eb3-069538b012c6@eik.bme.hu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <7dec9c8e-93d6-81f0-b075-e29b8ede44a2@eik.bme.hu>
-Received-SPF: pass client-ip=198.175.65.10; envelope-from=zhao1.liu@intel.com;
+In-Reply-To: <e034853a-beaf-f5d8-4eb3-069538b012c6@eik.bme.hu>
+Received-SPF: pass client-ip=192.198.163.19; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -60
 X-Spam_score: -6.1
@@ -80,49 +76,109 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 May 2025 13:29:32 -0000
+X-List-Received-Date: Thu, 15 May 2025 13:40:40 -0000
 
-On Wed, May 14, 2025 at 06:24:03PM +0200, BALATON Zoltan wrote:
-> Date: Wed, 14 May 2025 18:24:03 +0200
+On Wed, May 14, 2025 at 06:13:33PM +0200, BALATON Zoltan wrote:
+> Date: Wed, 14 May 2025 18:13:33 +0200
 > From: BALATON Zoltan <balaton@eik.bme.hu>
-> Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
->  OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+> Subject: Re: [PATCH 1/9] qom/object: Improve the doc of macros related with
+>  simple type
 > 
 > On Wed, 14 May 2025, Zhao Liu wrote:
-> > > > +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest,
-> > > > +                                          s390_pv_guest,
-> > > > +                                          S390_PV_GUEST,
-> > > > +                                          CONFIDENTIAL_GUEST_SUPPORT,
-> > > > +                                          { TYPE_USER_CREATABLE },
-> > > > +                                          { NULL })
-> > > 
-> > > I'll note that existing callers of OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-> > > happily ignore the line limit and put it into a single line.
-> > > 
-> > > (which ends up looking better IMHO)
-> > 
-> > Ok, I'll onor the existing conventions (which I'll apply to other
-> > patches as well).
+> > Hi BALATON,
 > 
-> There are two line limits. If something is clearer on one line you could
-> exceed the normal 80 chars and put up to 90 chars on one line for which
-> checkpatch will issue a warning that can be ignored for these cases. Over 90
-> lines checkpatch will give an error and I think you should not ignore that.
+> In case you did not know:
+> https://en.wikipedia.org/wiki/Name_order#Hungary
+> 
+> > On Wed, May 14, 2025 at 02:02:48PM +0200, BALATON Zoltan wrote:
+> > > Date: Wed, 14 May 2025 14:02:48 +0200
+> > > From: BALATON Zoltan <balaton@eik.bme.hu>
+> > > Subject: Re: [PATCH 1/9] qom/object: Improve the doc of macros related with
+> > >  simple type
+> > > 
+> > > On Wed, 14 May 2025, Zhao Liu wrote:
+> > > > There're 2 changes:
+> > > > - For OBJECT_DECLARE_SIMPLE_TYPE:
+> > > > 
+> > > >   Since a clase may not only has virtual method, but also field, thus
+> > > 
+> > > class may not only have virtual methods but also fields, clarify when class
+> > > is not needed
+> > 
+> > Thanks for the polish! It sounds better.
+> 
+> It's also grammatically more correct. But I'm not a native English speaker
+> so may still be wrong.
 
-Thank you. This makes sense!
+Neither am I. But I like this advice.
 
-> Maybe try to put as much on one line as possible instead of new line after
-> each argument but without exceeding the 80 chars or if the whole line fits
-> in 90 chars then use that. Or maybe do not indent second line under ( but
-> with 4 spaces then you can fit it in two lines but lines over 90 chars are
-> undesirable.
+> > > >   mention when class is not needed for either, then there is no need
+> > > >   to have the class.
+> > > > 
+> > > > - For OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES:
+> > > > 
+> > > >   And the words like OBJECT_DEFINE_SIMPLE_TYPE about when the type is
+> > > >   declared by OBJECT_DECLARE_SIMPLE_TYPE, then user should consider
+> > > >   to define the type via OBJECT_DEFINE_SIMPLE_TYPE or
+> > > >   OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES.
+> > > > 
+> > > > Cc: Paolo Bonzini <pbonzini@redhat.com>
+> > > > Cc: "Daniel P. Berrang?" <berrange@redhat.com>
+> > > > Cc: Eduardo Habkost <eduardo@habkost.net>
+> > > > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> > > > ---
+> > > > include/qom/object.h | 5 +++--
+> > > > 1 file changed, 3 insertions(+), 2 deletions(-)
+> > > > 
+> > > > diff --git a/include/qom/object.h b/include/qom/object.h
+> > > > index 1d5b03372429..14f84ae454d3 100644
+> > > > --- a/include/qom/object.h
+> > > > +++ b/include/qom/object.h
+> > > > @@ -249,7 +249,7 @@ struct Object
+> > > >  * declared.
+> > > >  *
+> > > >  * This macro should be used unless the class struct needs to have
+> > > > - * virtual methods declared.
+> > > > + * virtual methods or fields declared.
+> > > >  */
+> > > > #define OBJECT_DECLARE_SIMPLE_TYPE(InstanceType, MODULE_OBJ_NAME) \
+> > > >     typedef struct InstanceType InstanceType; \
+> > > > @@ -402,7 +402,8 @@ struct Object
+> > > >  *
+> > > >  * This is a variant of OBJECT_DEFINE_TYPE_EXTENDED, which is suitable for
+> > > >  * the case of a non-abstract type, with interfaces, and with no requirement
+> > > > - * for a class struct.
+> > > > + * for a class struct. If you declared your type with OBJECT_DECLARE_SIMPLE_TYPE
+> > > > + * then this is probably the right choice for defining it.
+> > > 
+> > > Is "probably" correct here? Is it a must or can still use other defining
+> > > macros?
+> > 
+> > Yes, because there's another choice: OBJECT_DEFINE_SIMPLE_TYPE.
+> > 
+> > > If correct maybe saying "this might be the right choice" is simpler.
+> > 
+> > :-) I copied this sentence from the documentation of
+> > OBJECT_DEFINE_SIMPLE_TYPE. The difference between these 2 macros is
+> > OBJECT_DEFINE_SIMPLE_TYPE doesn't support interface.
+> > 
+> > So I'd like to keep this sentence, consistent with the description of
+> > OBJECT_DEFINE_SIMPLE_TYPE.
+> 
+> OK in that case no problem to keep consistency. It still sounds a bit
+> unspecific for documentation to me because it leaves the question open of
+> what is it when it's not the right choice but if this is already there then
+> that's another unrelated question.
 
-HMM, I understand you mean:
+I get your point.
 
-OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest, s390_pv_guest,
-    S390_PV_GUEST, CONFIDENTIAL_GUEST_SUPPORT, { TYPE_USER_CREATABLE }, { NULL })
+Before this sentance, the doc said "This is a variant of
+OBJECT_DEFINE_TYPE_EXTENDED, which is suitable for the common case of a
+non-abstract type, without any interfaces, and with no requirement for a
+class struct."
 
-The second line is 82 chars and now I think this version is better.
+IMO it's the pretty accurate description about in which case this macro
+is used. This description could clarify your question :-).
 
 Thanks,
 Zhao
