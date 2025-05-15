@@ -1,80 +1,78 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uFbCE-0001zU-Kv
-	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2025 12:12:36 -0400
+	id 1uFcfa-00012D-V8
+	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2025 13:46:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1uFbBy-0001uA-D5
- for qemu-trivial@nongnu.org; Thu, 15 May 2025 12:12:20 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1uFbBw-0001FY-6e
- for qemu-trivial@nongnu.org; Thu, 15 May 2025 12:12:18 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747325533;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:in-reply-to:in-reply-to:  references:references;
- bh=f+03C0qHpYv2bqXKgJN1iu3MnRwSFPJv40ItqYcQPyk=;
- b=GbCuP1qF0EIlyqwlsuXFC2iyGZT2YQ6hTWQ+XucQKeIewvMK/xXGbLIoMuw8CSFRNcpp6y
- /g9kjn0b+cC4NePC1maC20Oc/8noPAH21TPB3100+tU8KAzc71XV+naZa6gN/3u0TopmSY
- TZeQFs7g/+utwZlwzUs/ynoeWCpak9g=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-202-VG3p0nEtN1KzMYGzeo2ivA-1; Thu,
- 15 May 2025 12:12:10 -0400
-X-MC-Unique: VG3p0nEtN1KzMYGzeo2ivA-1
-X-Mimecast-MFC-AGG-ID: VG3p0nEtN1KzMYGzeo2ivA_1747325526
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id A409F19560AE; Thu, 15 May 2025 16:12:05 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.135])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8CC75180087A; Thu, 15 May 2025 16:11:59 +0000 (UTC)
-Date: Thu, 15 May 2025 17:11:56 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: Zhao Liu <zhao1.liu@intel.com>, David Hildenbrand <david@redhat.com>,
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uFcfS-0000zk-Hq
+ for qemu-trivial@nongnu.org; Thu, 15 May 2025 13:46:50 -0400
+Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
+ id 1uFcfQ-0004fI-Lx
+ for qemu-trivial@nongnu.org; Thu, 15 May 2025 13:46:50 -0400
+Received: by mail-pf1-x42a.google.com with SMTP id
+ d2e1a72fcca58-7423df563d6so1421126b3a.0
+ for <qemu-trivial@nongnu.org>; Thu, 15 May 2025 10:46:48 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1747331207; x=1747936007; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=rVsacexuhDTK9h99dudm/8TY6NWVjrdnKMHqsB0i42Y=;
+ b=i+7WG0pPC744b8+dGfj4xN+sRj18wcHeTFCmHXnTvZ+HZIqr4Uz4UFOCywiISldzZJ
+ +08SS6yBK+kGgcIfF8w/TIm06cwYCB017Vms1HdeCoktLHDtDMH/owVaBc8+LS3hEv1N
+ oP8Y5foLU3cN/bFZlzYoH+oSHLMJb5V6/CHwSFylImzovcd3SfVtjcQrLGd86jt0T1Ja
+ BsBSay5Pw1Qe88rFZd3zDyk0Lb+herXRa6XRgDI9f8qqeTvbBGVdUB7PDB2gDleUmwct
+ gx3VjtsKm8qfK0zyhc7uCNmDrrgcT7aRSYmhA0iJzYnfCzDjB5qA60AcDnkg6i8bEVRY
+ idSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1747331207; x=1747936007;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=rVsacexuhDTK9h99dudm/8TY6NWVjrdnKMHqsB0i42Y=;
+ b=gsPC0gqerp5/8IudslqGcel3v+px8ekeFk9BARgbD2W62hQrUk88hWgWONC3AGS9U0
+ a7gUMsPStN9sLCYDiYgfygoTAuQNM+k4Y6/s82lrY8D5v3UHlfPlPzdURXjFpEyddo0f
+ oZVhmASzCOeFDdPrrVuydFpLheFRMoynEWMJDxUgsykDt2kJ/lTxQLO9kkhNZ19ZFJc7
+ iEY9J0FZZddgRR5VIy8XD3U1k9i0e+G3f7xtb3efdTBgmZPYZ0+TPiBDcOZnize9HuAK
+ w8+V+8up38aQ2mLMNE2KZrDNFDUIfpMwqq1pliX/c+HdMQUNkPcs8jHf6VhAYwyG2fYk
+ Kfbg==
+X-Gm-Message-State: AOJu0Yz7ZxR1/VdYDp4fkrv+IYwobzHP0mAYryEk4SjfR+bJmY4YA0G0
+ /lS0RzDcsnVnLvv2NjSH+m/j9gjRTABhfbKUwEIZzb0Dlw8ZFXk8GRSbKsVxZIbX+c3jS5jOxSg
+ 16wpE
+X-Gm-Gg: ASbGncudaP4twzdEmWmhlHBauMd6ZXobD+Xq957oZEYmrxemOyIc4Vtho21plJ7Oya1
+ LWLVYNcYYPqRL/HGc4jX0s0FW9vtTLVr90TxJso9IE0KCdSjyC9oeAr1fUzgVQi2QgPO1GykOti
+ iw8NJwvA+HlLdRyYGF80Q14R2UtIa4NkJy9yw3didzeoq2dhuCJaQEauXszG53Yxjj9+9DusxrI
+ vc0BpsolGTnPqUaKIaC3VKcYcuknVaQVM3Inyd+7m7V2ZvoK7ojiI8vdtMwpIghXIJx19fIRu+r
+ GPc4+OuXMwqvJIykOkBheLixL85+xvgtamumW+P4wTbRxVGfBDA=
+X-Google-Smtp-Source: AGHT+IEAYa2bH9UaWLLfI4vADebdaLPcMS2f4ELCGRWN3SnZr75CjPCYFWxaR9waE0NhVC1Ftu6C0g==
+X-Received: by 2002:a05:6a00:856:b0:73f:ff25:90b3 with SMTP id
+ d2e1a72fcca58-742a98b7f48mr367356b3a.24.1747331206980; 
+ Thu, 15 May 2025 10:46:46 -0700 (PDT)
+Received: from pc.. ([38.41.223.211]) by smtp.gmail.com with ESMTPSA id
+ 41be03b00d2f7-b26eaf8e05fsm172370a12.39.2025.05.15.10.46.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 15 May 2025 10:46:46 -0700 (PDT)
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, npiggin@gmail.com,
  Paolo Bonzini <pbonzini@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, qemu-s390x@nongnu.org
-Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
- OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-Message-ID: <aCYSTHiXtBsjw510@redhat.com>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-References: <20250514084957.2221975-1-zhao1.liu@intel.com>
- <20250514084957.2221975-9-zhao1.liu@intel.com>
- <e0146386-ccf4-44ba-b58f-0bb4d3317f89@redhat.com>
- <aCS8aHsF+VAuj01D@intel.com>
- <7dec9c8e-93d6-81f0-b075-e29b8ede44a2@eik.bme.hu>
- <aCXxHEVZb8+ZCW/m@intel.com>
- <c2466a27-8f8a-780d-ff78-491921bb41e5@eik.bme.hu>
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Subject: [PATCH] system/main: comment lock rationale
+Date: Thu, 15 May 2025 10:46:41 -0700
+Message-ID: <20250515174641.4000309-1-pierrick.bouvier@linaro.org>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-In-Reply-To: <c2466a27-8f8a-780d-ff78-491921bb41e5@eik.bme.hu>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42a.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,68 +85,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 May 2025 16:12:24 -0000
+X-List-Received-Date: Thu, 15 May 2025 17:46:50 -0000
 
-On Thu, May 15, 2025 at 05:41:40PM +0200, BALATON Zoltan wrote:
-> On Thu, 15 May 2025, Zhao Liu wrote:
-> > On Wed, May 14, 2025 at 06:24:03PM +0200, BALATON Zoltan wrote:
-> > > Date: Wed, 14 May 2025 18:24:03 +0200
-> > > From: BALATON Zoltan <balaton@eik.bme.hu>
-> > > Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
-> > >  OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-> > > 
-> > > On Wed, 14 May 2025, Zhao Liu wrote:
-> > > > > > +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest,
-> > > > > > +                                          s390_pv_guest,
-> > > > > > +                                          S390_PV_GUEST,
-> > > > > > +                                          CONFIDENTIAL_GUEST_SUPPORT,
-> > > > > > +                                          { TYPE_USER_CREATABLE },
-> > > > > > +                                          { NULL })
-> > > > > 
-> > > > > I'll note that existing callers of OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-> > > > > happily ignore the line limit and put it into a single line.
-> > > > > 
-> > > > > (which ends up looking better IMHO)
-> > > > 
-> > > > Ok, I'll onor the existing conventions (which I'll apply to other
-> > > > patches as well).
-> > > 
-> > > There are two line limits. If something is clearer on one line you could
-> > > exceed the normal 80 chars and put up to 90 chars on one line for which
-> > > checkpatch will issue a warning that can be ignored for these cases. Over 90
-> > > lines checkpatch will give an error and I think you should not ignore that.
-> > 
-> > Thank you. This makes sense!
-> > 
-> > > Maybe try to put as much on one line as possible instead of new line after
-> > > each argument but without exceeding the 80 chars or if the whole line fits
-> > > in 90 chars then use that. Or maybe do not indent second line under ( but
-> > > with 4 spaces then you can fit it in two lines but lines over 90 chars are
-> > > undesirable.
-> > 
-> > HMM, I understand you mean:
-> > 
-> > OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest, s390_pv_guest,
-> >    S390_PV_GUEST, CONFIDENTIAL_GUEST_SUPPORT, { TYPE_USER_CREATABLE }, { NULL })
-> > 
-> > The second line is 82 chars and now I think this version is better.
-> 
-> Yes and maybe can even fit in 80 chars if using { } instead of { NULL }.
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+---
+ system/main.c | 13 +++++++++++++
+ 1 file changed, 13 insertions(+)
 
-Personally, once you have to break the line, I would be inclined
-to have *nothing* after the '(' on the first line, and then break
-at the list of interfaces. ie
-
- OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(
-    S390PVGuest, s390_pv_guest, S390_PV_GUEST, CONFIDENTIAL_GUEST_SUPPORT,
-    { TYPE_USER_CREATABLE }, { NULL })
- 
-
-With regards,
-Daniel
+diff --git a/system/main.c b/system/main.c
+index 1c022067349..b8f7157cc34 100644
+--- a/system/main.c
++++ b/system/main.c
+@@ -69,8 +69,21 @@ int (*qemu_main)(void) = os_darwin_cfrunloop_main;
+ int main(int argc, char **argv)
+ {
+     qemu_init(argc, argv);
++
++    /*
++     * qemu_init acquires the BQL and replay mutex lock. BQL is acquired when
++     * initializing cpus, to block associated threads until initialization is
++     * complete. Replay_mutex lock is acquired on initialization, because it
++     * must be held when configuring icount_mode.
++     *
++     * On MacOS, qemu main event loop runs in a background thread, as main
++     * thread must be reserved for UI. Thus, we need to transfer lock ownership,
++     * and the simplest way to do that is to release them, and reacquire them
++     * from qemu_default_main.
++     */
+     bql_unlock();
+     replay_mutex_unlock();
++
+     if (qemu_main) {
+         QemuThread main_loop_thread;
+         qemu_thread_create(&main_loop_thread, "qemu_main",
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.47.2
 
 
