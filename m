@@ -1,60 +1,60 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uFYpG-0004RM-Do
-	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2025 09:40:42 -0400
+	id 1uFYsD-0006sn-C9
+	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2025 09:43:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uFYpE-0004Qt-6G; Thu, 15 May 2025 09:40:40 -0400
-Received: from mgamail.intel.com ([192.198.163.19])
+ id 1uFYsA-0006sJ-JR; Thu, 15 May 2025 09:43:42 -0400
+Received: from mgamail.intel.com ([198.175.65.20])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uFYp9-00060F-A7; Thu, 15 May 2025 09:40:39 -0400
+ id 1uFYs7-0006Bf-T3; Thu, 15 May 2025 09:43:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
  d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747316435; x=1778852435;
+ t=1747316620; x=1778852620;
  h=date:from:to:cc:subject:message-id:references:
  mime-version:in-reply-to;
- bh=t/dBJRztTq4O8xEEobmmrrFdz5C0wJIG2Qexj3Seeto=;
- b=Lo12hO7LtbzvJj0fTTjXDk1YrZ6Qh6Xpq6IMnGjS+sf4z4L0FlRJatea
- maUoPxfUyfRAPysu043vX+fykEHHH85rZkCImOnB77PkJ10BY0EaBs6+h
- upCgcuDVg8THUzoKnMQpS+hyaKVdF2BNWGnH69ebCpBT2zNOea9lLmSVZ
- xlyjj9cH0Tbt7zogYggPkDTPQ55h/2pRJ2RmFCFSHZfRLKWLn/uzX4f4X
- i8hdQMIFBs/QHtbwMV17A3s1umHx1iYAXrwpP+akIDy5L2l58jqldbWF8
- e7jb3fTQnfX11UUJRY+mS+ufEQ9hCVbcFesZra+qGtEsNKFYEq72/Tzzu Q==;
-X-CSE-ConnectionGUID: jujWPTz9TI6Ygo9gHl18vw==
-X-CSE-MsgGUID: WRYjJYACRpayTnMIzp53Fg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11434"; a="48370717"
-X-IronPort-AV: E=Sophos;i="6.15,291,1739865600"; d="scan'208";a="48370717"
-Received: from orviesa002.jf.intel.com ([10.64.159.142])
- by fmvoesa113.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2025 06:40:31 -0700
-X-CSE-ConnectionGUID: +gU1JbZYQd6M8WXm8bGWsQ==
-X-CSE-MsgGUID: DaNzT0bDTauGgbxs3/bZxg==
+ bh=vo8dXV13XWPnvGDJsJGGv/48U5eWE6FGfZ9So83la7s=;
+ b=OSPRTdJrMuaIcMiPoAFzEM0nIYxjHG1Y/yvzVQ45Nl24K7rsr6n6MJlO
+ HG3sHNxHECPGYYCwjPlxTjEuHernTzRQLANP9SaOj5siJP15hHS0EiK+Z
+ oHeswUR0gTkTqY5ut1/HTLE3dTSzf89oGc2Je8YWToxs3Uay20wCgZOhv
+ EWdlN+BsXBevv609gaITDRvCCW25oGPKW4NsNDG7ws3gZAjx9HW+vTPYi
+ RP/l7YwTFseZ/aPSaEKWe/6yWvORicb7sG1y5pd5/QBdmrFOuzxEc2Cod
+ +rW7orCkzicufxvMVXLC7jgginsw8MCxXVoo1zOq5WSvvrXmwafSfTNsf g==;
+X-CSE-ConnectionGUID: 24pRkiJTS6m5ohdf16sdQQ==
+X-CSE-MsgGUID: zCqpHDKwQt63Xc6XXc1Trg==
+X-IronPort-AV: E=McAfee;i="6700,10204,11434"; a="48938980"
+X-IronPort-AV: E=Sophos;i="6.15,291,1739865600"; d="scan'208";a="48938980"
+Received: from fmviesa006.fm.intel.com ([10.60.135.146])
+ by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 May 2025 06:43:17 -0700
+X-CSE-ConnectionGUID: XG2nW+kYS/2H2M6o98BD3g==
+X-CSE-MsgGUID: jFWGAzGtRXqRvQUqNX39Wg==
 X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,291,1739865600"; d="scan'208";a="169309570"
+X-IronPort-AV: E=Sophos;i="6.15,291,1739865600"; d="scan'208";a="138254307"
 Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
  ([10.239.160.39])
- by orviesa002.jf.intel.com with ESMTP; 15 May 2025 06:40:29 -0700
-Date: Thu, 15 May 2025 22:01:34 +0800
+ by fmviesa006.fm.intel.com with ESMTP; 15 May 2025 06:43:16 -0700
+Date: Thu, 15 May 2025 22:04:20 +0800
 From: Zhao Liu <zhao1.liu@intel.com>
 To: BALATON Zoltan <balaton@eik.bme.hu>
 Cc: Paolo Bonzini <pbonzini@redhat.com>,
  Daniel P =?utf-8?B?LiBCZXJyYW5n77+9?= <berrange@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org
-Subject: Re: [PATCH 1/9] qom/object: Improve the doc of macros related with
- simple type
-Message-ID: <aCXzvi3C0PRwWiF6@intel.com>
+Subject: Re: [PATCH 2/9] docs/devel/qom: Fix the doc about
+ OBJECT_DECLARE_SIMPLE_TYPE
+Message-ID: <aCX0ZF6G6sbRvKg6@intel.com>
 References: <20250514084957.2221975-1-zhao1.liu@intel.com>
- <20250514084957.2221975-2-zhao1.liu@intel.com>
- <e213c4bf-1b26-f1c3-c3ed-10c2adff4a5d@eik.bme.hu>
- <aCS3gS3+qdxZof75@intel.com>
- <e034853a-beaf-f5d8-4eb3-069538b012c6@eik.bme.hu>
+ <20250514084957.2221975-3-zhao1.liu@intel.com>
+ <c179270c-d636-e20a-2043-38c09b81b4c6@eik.bme.hu>
+ <aCS6pLuiFaeEmeEu@intel.com>
+ <abd48771-90ba-fd25-e59f-3c6f90d5c0e5@eik.bme.hu>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=us-ascii
 Content-Disposition: inline
-In-Reply-To: <e034853a-beaf-f5d8-4eb3-069538b012c6@eik.bme.hu>
-Received-SPF: pass client-ip=192.198.163.19; envelope-from=zhao1.liu@intel.com;
+In-Reply-To: <abd48771-90ba-fd25-e59f-3c6f90d5c0e5@eik.bme.hu>
+Received-SPF: pass client-ip=198.175.65.20; envelope-from=zhao1.liu@intel.com;
  helo=mgamail.intel.com
 X-Spam_score_int: -60
 X-Spam_score: -6.1
@@ -76,111 +76,95 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 May 2025 13:40:40 -0000
+X-List-Received-Date: Thu, 15 May 2025 13:43:43 -0000
 
-On Wed, May 14, 2025 at 06:13:33PM +0200, BALATON Zoltan wrote:
-> Date: Wed, 14 May 2025 18:13:33 +0200
+On Wed, May 14, 2025 at 06:16:31PM +0200, BALATON Zoltan wrote:
+> Date: Wed, 14 May 2025 18:16:31 +0200
 > From: BALATON Zoltan <balaton@eik.bme.hu>
-> Subject: Re: [PATCH 1/9] qom/object: Improve the doc of macros related with
->  simple type
+> Subject: Re: [PATCH 2/9] docs/devel/qom: Fix the doc about
+>  OBJECT_DECLARE_SIMPLE_TYPE
 > 
 > On Wed, 14 May 2025, Zhao Liu wrote:
-> > Hi BALATON,
-> 
-> In case you did not know:
-> https://en.wikipedia.org/wiki/Name_order#Hungary
-> 
-> > On Wed, May 14, 2025 at 02:02:48PM +0200, BALATON Zoltan wrote:
-> > > Date: Wed, 14 May 2025 14:02:48 +0200
+> > On Wed, May 14, 2025 at 02:06:14PM +0200, BALATON Zoltan wrote:
+> > > Date: Wed, 14 May 2025 14:06:14 +0200
 > > > From: BALATON Zoltan <balaton@eik.bme.hu>
-> > > Subject: Re: [PATCH 1/9] qom/object: Improve the doc of macros related with
-> > >  simple type
+> > > Subject: Re: [PATCH 2/9] docs/devel/qom: Fix the doc about
+> > >  OBJECT_DECLARE_SIMPLE_TYPE
 > > > 
 > > > On Wed, 14 May 2025, Zhao Liu wrote:
-> > > > There're 2 changes:
-> > > > - For OBJECT_DECLARE_SIMPLE_TYPE:
+> > > > Currently, the expansion example of OBJECT_DECLARE_SIMPLE_TYPE "roughly"
+> > > > reflects what OBJECT_DECLARE_TYPE is doing.
 > > > > 
-> > > >   Since a clase may not only has virtual method, but also field, thus
-> > > 
-> > > class may not only have virtual methods but also fields, clarify when class
-> > > is not needed
-> > 
-> > Thanks for the polish! It sounds better.
-> 
-> It's also grammatically more correct. But I'm not a native English speaker
-> so may still be wrong.
-
-Neither am I. But I like this advice.
-
-> > > >   mention when class is not needed for either, then there is no need
-> > > >   to have the class.
+> > > > Why "roughly"? Because this line -
 > > > > 
-> > > > - For OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES:
+> > > > >    G_DEFINE_AUTOPTR_CLEANUP_FUNC(MyDeviceClass, object_unref)
 > > > > 
-> > > >   And the words like OBJECT_DEFINE_SIMPLE_TYPE about when the type is
-> > > >   declared by OBJECT_DECLARE_SIMPLE_TYPE, then user should consider
-> > > >   to define the type via OBJECT_DEFINE_SIMPLE_TYPE or
-> > > >   OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES.
+> > > > - is also wrong for OBJECT_DECLARE_TYPE.
+> > > > 
+> > > > Fix the expansion example of OBJECT_DECLARE_SIMPLE_TYPE, especially
+> > > > drop that definition of MyDeviceClass.
 > > > > 
 > > > > Cc: Paolo Bonzini <pbonzini@redhat.com>
 > > > > Cc: "Daniel P. Berrang?" <berrange@redhat.com>
 > > > > Cc: Eduardo Habkost <eduardo@habkost.net>
 > > > > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
 > > > > ---
-> > > > include/qom/object.h | 5 +++--
-> > > > 1 file changed, 3 insertions(+), 2 deletions(-)
+> > > > docs/devel/qom.rst | 11 +----------
+> > > > 1 file changed, 1 insertion(+), 10 deletions(-)
 > > > > 
-> > > > diff --git a/include/qom/object.h b/include/qom/object.h
-> > > > index 1d5b03372429..14f84ae454d3 100644
-> > > > --- a/include/qom/object.h
-> > > > +++ b/include/qom/object.h
-> > > > @@ -249,7 +249,7 @@ struct Object
-> > > >  * declared.
-> > > >  *
-> > > >  * This macro should be used unless the class struct needs to have
-> > > > - * virtual methods declared.
-> > > > + * virtual methods or fields declared.
-> > > >  */
-> > > > #define OBJECT_DECLARE_SIMPLE_TYPE(InstanceType, MODULE_OBJ_NAME) \
-> > > >     typedef struct InstanceType InstanceType; \
-> > > > @@ -402,7 +402,8 @@ struct Object
-> > > >  *
-> > > >  * This is a variant of OBJECT_DEFINE_TYPE_EXTENDED, which is suitable for
-> > > >  * the case of a non-abstract type, with interfaces, and with no requirement
-> > > > - * for a class struct.
-> > > > + * for a class struct. If you declared your type with OBJECT_DECLARE_SIMPLE_TYPE
-> > > > + * then this is probably the right choice for defining it.
+> > > > diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
+> > > > index 5870745ba27b..185f4c2f5921 100644
+> > > > --- a/docs/devel/qom.rst
+> > > > +++ b/docs/devel/qom.rst
+> > > > @@ -326,21 +326,12 @@ This is equivalent to the following:
+> > > >    :caption: Expansion from declaring a simple type
+> > > > 
+> > > >    typedef struct MyDevice MyDevice;
+> > > > -   typedef struct MyDeviceClass MyDeviceClass;
+> > > > 
+> > > > -   G_DEFINE_AUTOPTR_CLEANUP_FUNC(MyDeviceClass, object_unref)
+> > > > +   G_DEFINE_AUTOPTR_CLEANUP_FUNC(MyDevice, object_unref)
+> > > > 
+> > > > -   #define MY_DEVICE_GET_CLASS(void *obj) \
+> > > > -           OBJECT_GET_CLASS(MyDeviceClass, obj, TYPE_MY_DEVICE)
+> > > > -   #define MY_DEVICE_CLASS(void *klass) \
+> > > > -           OBJECT_CLASS_CHECK(MyDeviceClass, klass, TYPE_MY_DEVICE)
+> > > >    #define MY_DEVICE(void *obj)
+> > > >            OBJECT_CHECK(MyDevice, obj, TYPE_MY_DEVICE)
+> > > > 
+> > > > -   struct MyDeviceClass {
+> > > > -       DeviceClass parent_class;
+> > > > -   };
+> > > > -
+> > > > The 'struct MyDevice' needs to be declared separately.
+> > > > If the type requires virtual functions to be declared in the class
+> > > > struct, then the alternative OBJECT_DECLARE_TYPE() macro can be
 > > > 
-> > > Is "probably" correct here? Is it a must or can still use other defining
-> > > macros?
+> > > Maybe you need to adjust the text here about OBJECT_DECLARE_TYPE here and
+> > > show how to define Class sturct?
 > > 
-> > Yes, because there's another choice: OBJECT_DEFINE_SIMPLE_TYPE.
+> > Then it's not easy to organize the structure in this document, since
+> > most of the content is now make "OBJECT_DECLARE_SIMPLE_TYPE" as well as
+> > "OBJECT_DEFINE_SIMPLE_TYPE" as examples... I'm a bit unsure, and we can
+> > wait and see what others would say.
 > > 
-> > > If correct maybe saying "this might be the right choice" is simpler.
+> > BTW, I found I missed this sentence:
 > > 
-> > :-) I copied this sentence from the documentation of
-> > OBJECT_DEFINE_SIMPLE_TYPE. The difference between these 2 macros is
-> > OBJECT_DEFINE_SIMPLE_TYPE doesn't support interface.
+> > "(OBJECT_DECLARE_TYPE) This does the same as OBJECT_DECLARE_SIMPLE_TYPE(),
+> > but without the 'struct MyDeviceClass' definition."
 > > 
-> > So I'd like to keep this sentence, consistent with the description of
-> > OBJECT_DEFINE_SIMPLE_TYPE.
+> > It should be: This does the same as OBJECT_DECLARE_SIMPLE_TYPE(),
+> > but with the class type.
 > 
-> OK in that case no problem to keep consistency. It still sounds a bit
-> unspecific for documentation to me because it leaves the question open of
-> what is it when it's not the right choice but if this is already there then
-> that's another unrelated question.
+> Yes that's what I meant. If you remove the class example then how will
+> readers know how to define that so a new example for that may be needed but
+> you can wait for others' opinion too.
 
-I get your point.
-
-Before this sentance, the doc said "This is a variant of
-OBJECT_DEFINE_TYPE_EXTENDED, which is suitable for the common case of a
-non-abstract type, without any interfaces, and with no requirement for a
-class struct."
-
-IMO it's the pretty accurate description about in which case this macro
-is used. This description could clarify your question :-).
+The new example deserves another separate patch. I'll think about how to
+describe it.
 
 Thanks,
 Zhao
+
 
 
