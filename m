@@ -1,68 +1,55 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uFYsD-0006sn-C9
-	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2025 09:43:45 -0400
+	id 1uFais-0006JZ-Bh
+	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2025 11:42:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uFYsA-0006sJ-JR; Thu, 15 May 2025 09:43:42 -0400
-Received: from mgamail.intel.com ([198.175.65.20])
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1uFaib-0005hM-M9; Thu, 15 May 2025 11:41:59 -0400
+Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uFYs7-0006Bf-T3; Thu, 15 May 2025 09:43:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747316620; x=1778852620;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:in-reply-to;
- bh=vo8dXV13XWPnvGDJsJGGv/48U5eWE6FGfZ9So83la7s=;
- b=OSPRTdJrMuaIcMiPoAFzEM0nIYxjHG1Y/yvzVQ45Nl24K7rsr6n6MJlO
- HG3sHNxHECPGYYCwjPlxTjEuHernTzRQLANP9SaOj5siJP15hHS0EiK+Z
- oHeswUR0gTkTqY5ut1/HTLE3dTSzf89oGc2Je8YWToxs3Uay20wCgZOhv
- EWdlN+BsXBevv609gaITDRvCCW25oGPKW4NsNDG7ws3gZAjx9HW+vTPYi
- RP/l7YwTFseZ/aPSaEKWe/6yWvORicb7sG1y5pd5/QBdmrFOuzxEc2Cod
- +rW7orCkzicufxvMVXLC7jgginsw8MCxXVoo1zOq5WSvvrXmwafSfTNsf g==;
-X-CSE-ConnectionGUID: 24pRkiJTS6m5ohdf16sdQQ==
-X-CSE-MsgGUID: zCqpHDKwQt63Xc6XXc1Trg==
-X-IronPort-AV: E=McAfee;i="6700,10204,11434"; a="48938980"
-X-IronPort-AV: E=Sophos;i="6.15,291,1739865600"; d="scan'208";a="48938980"
-Received: from fmviesa006.fm.intel.com ([10.60.135.146])
- by orvoesa112.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2025 06:43:17 -0700
-X-CSE-ConnectionGUID: XG2nW+kYS/2H2M6o98BD3g==
-X-CSE-MsgGUID: jFWGAzGtRXqRvQUqNX39Wg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,291,1739865600"; d="scan'208";a="138254307"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by fmviesa006.fm.intel.com with ESMTP; 15 May 2025 06:43:16 -0700
-Date: Thu, 15 May 2025 22:04:20 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- Daniel P =?utf-8?B?LiBCZXJyYW5n77+9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH 2/9] docs/devel/qom: Fix the doc about
- OBJECT_DECLARE_SIMPLE_TYPE
-Message-ID: <aCX0ZF6G6sbRvKg6@intel.com>
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1uFaiS-000611-KI; Thu, 15 May 2025 11:41:57 -0400
+Received: from zero.eik.bme.hu (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 992BD55C0D0;
+ Thu, 15 May 2025 17:41:42 +0200 (CEST)
+X-Virus-Scanned: amavisd-new at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by zero.eik.bme.hu (zero.eik.bme.hu [127.0.0.1]) (amavisd-new, port 10028)
+ with ESMTP id PduU3-ndk5SU; Thu, 15 May 2025 17:41:40 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id B04F655BC02; Thu, 15 May 2025 17:41:40 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id ADEA0745683;
+ Thu, 15 May 2025 17:41:40 +0200 (CEST)
+Date: Thu, 15 May 2025 17:41:40 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Zhao Liu <zhao1.liu@intel.com>
+cc: David Hildenbrand <david@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>, 
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=EF=BF=BD?= <berrange@redhat.com>, 
+ Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org, 
+ qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>, 
+ Christian Borntraeger <borntraeger@linux.ibm.com>, 
+ Thomas Huth <thuth@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>, 
+ Ilya Leoshkevich <iii@linux.ibm.com>, qemu-s390x@nongnu.org
+Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
+ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+In-Reply-To: <aCXxHEVZb8+ZCW/m@intel.com>
+Message-ID: <c2466a27-8f8a-780d-ff78-491921bb41e5@eik.bme.hu>
 References: <20250514084957.2221975-1-zhao1.liu@intel.com>
- <20250514084957.2221975-3-zhao1.liu@intel.com>
- <c179270c-d636-e20a-2043-38c09b81b4c6@eik.bme.hu>
- <aCS6pLuiFaeEmeEu@intel.com>
- <abd48771-90ba-fd25-e59f-3c6f90d5c0e5@eik.bme.hu>
+ <20250514084957.2221975-9-zhao1.liu@intel.com>
+ <e0146386-ccf4-44ba-b58f-0bb4d3317f89@redhat.com>
+ <aCS8aHsF+VAuj01D@intel.com>
+ <7dec9c8e-93d6-81f0-b075-e29b8ede44a2@eik.bme.hu>
+ <aCXxHEVZb8+ZCW/m@intel.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <abd48771-90ba-fd25-e59f-3c6f90d5c0e5@eik.bme.hu>
-Received-SPF: pass client-ip=198.175.65.20; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -60
-X-Spam_score: -6.1
-X-Spam_bar: ------
-X-Spam_report: (-6.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=US-ASCII; format=flowed
+Received-SPF: pass client-ip=2001:738:2001:2001::2001;
+ envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,95 +63,53 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 May 2025 13:43:43 -0000
+X-List-Received-Date: Thu, 15 May 2025 15:42:11 -0000
 
-On Wed, May 14, 2025 at 06:16:31PM +0200, BALATON Zoltan wrote:
-> Date: Wed, 14 May 2025 18:16:31 +0200
-> From: BALATON Zoltan <balaton@eik.bme.hu>
-> Subject: Re: [PATCH 2/9] docs/devel/qom: Fix the doc about
->  OBJECT_DECLARE_SIMPLE_TYPE
-> 
-> On Wed, 14 May 2025, Zhao Liu wrote:
-> > On Wed, May 14, 2025 at 02:06:14PM +0200, BALATON Zoltan wrote:
-> > > Date: Wed, 14 May 2025 14:06:14 +0200
-> > > From: BALATON Zoltan <balaton@eik.bme.hu>
-> > > Subject: Re: [PATCH 2/9] docs/devel/qom: Fix the doc about
-> > >  OBJECT_DECLARE_SIMPLE_TYPE
-> > > 
-> > > On Wed, 14 May 2025, Zhao Liu wrote:
-> > > > Currently, the expansion example of OBJECT_DECLARE_SIMPLE_TYPE "roughly"
-> > > > reflects what OBJECT_DECLARE_TYPE is doing.
-> > > > 
-> > > > Why "roughly"? Because this line -
-> > > > 
-> > > > >    G_DEFINE_AUTOPTR_CLEANUP_FUNC(MyDeviceClass, object_unref)
-> > > > 
-> > > > - is also wrong for OBJECT_DECLARE_TYPE.
-> > > > 
-> > > > Fix the expansion example of OBJECT_DECLARE_SIMPLE_TYPE, especially
-> > > > drop that definition of MyDeviceClass.
-> > > > 
-> > > > Cc: Paolo Bonzini <pbonzini@redhat.com>
-> > > > Cc: "Daniel P. Berrang?" <berrange@redhat.com>
-> > > > Cc: Eduardo Habkost <eduardo@habkost.net>
-> > > > Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> > > > ---
-> > > > docs/devel/qom.rst | 11 +----------
-> > > > 1 file changed, 1 insertion(+), 10 deletions(-)
-> > > > 
-> > > > diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
-> > > > index 5870745ba27b..185f4c2f5921 100644
-> > > > --- a/docs/devel/qom.rst
-> > > > +++ b/docs/devel/qom.rst
-> > > > @@ -326,21 +326,12 @@ This is equivalent to the following:
-> > > >    :caption: Expansion from declaring a simple type
-> > > > 
-> > > >    typedef struct MyDevice MyDevice;
-> > > > -   typedef struct MyDeviceClass MyDeviceClass;
-> > > > 
-> > > > -   G_DEFINE_AUTOPTR_CLEANUP_FUNC(MyDeviceClass, object_unref)
-> > > > +   G_DEFINE_AUTOPTR_CLEANUP_FUNC(MyDevice, object_unref)
-> > > > 
-> > > > -   #define MY_DEVICE_GET_CLASS(void *obj) \
-> > > > -           OBJECT_GET_CLASS(MyDeviceClass, obj, TYPE_MY_DEVICE)
-> > > > -   #define MY_DEVICE_CLASS(void *klass) \
-> > > > -           OBJECT_CLASS_CHECK(MyDeviceClass, klass, TYPE_MY_DEVICE)
-> > > >    #define MY_DEVICE(void *obj)
-> > > >            OBJECT_CHECK(MyDevice, obj, TYPE_MY_DEVICE)
-> > > > 
-> > > > -   struct MyDeviceClass {
-> > > > -       DeviceClass parent_class;
-> > > > -   };
-> > > > -
-> > > > The 'struct MyDevice' needs to be declared separately.
-> > > > If the type requires virtual functions to be declared in the class
-> > > > struct, then the alternative OBJECT_DECLARE_TYPE() macro can be
-> > > 
-> > > Maybe you need to adjust the text here about OBJECT_DECLARE_TYPE here and
-> > > show how to define Class sturct?
-> > 
-> > Then it's not easy to organize the structure in this document, since
-> > most of the content is now make "OBJECT_DECLARE_SIMPLE_TYPE" as well as
-> > "OBJECT_DEFINE_SIMPLE_TYPE" as examples... I'm a bit unsure, and we can
-> > wait and see what others would say.
-> > 
-> > BTW, I found I missed this sentence:
-> > 
-> > "(OBJECT_DECLARE_TYPE) This does the same as OBJECT_DECLARE_SIMPLE_TYPE(),
-> > but without the 'struct MyDeviceClass' definition."
-> > 
-> > It should be: This does the same as OBJECT_DECLARE_SIMPLE_TYPE(),
-> > but with the class type.
-> 
-> Yes that's what I meant. If you remove the class example then how will
-> readers know how to define that so a new example for that may be needed but
-> you can wait for others' opinion too.
+On Thu, 15 May 2025, Zhao Liu wrote:
+> On Wed, May 14, 2025 at 06:24:03PM +0200, BALATON Zoltan wrote:
+>> Date: Wed, 14 May 2025 18:24:03 +0200
+>> From: BALATON Zoltan <balaton@eik.bme.hu>
+>> Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
+>>  OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+>>
+>> On Wed, 14 May 2025, Zhao Liu wrote:
+>>>>> +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest,
+>>>>> +                                          s390_pv_guest,
+>>>>> +                                          S390_PV_GUEST,
+>>>>> +                                          CONFIDENTIAL_GUEST_SUPPORT,
+>>>>> +                                          { TYPE_USER_CREATABLE },
+>>>>> +                                          { NULL })
+>>>>
+>>>> I'll note that existing callers of OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+>>>> happily ignore the line limit and put it into a single line.
+>>>>
+>>>> (which ends up looking better IMHO)
+>>>
+>>> Ok, I'll onor the existing conventions (which I'll apply to other
+>>> patches as well).
+>>
+>> There are two line limits. If something is clearer on one line you could
+>> exceed the normal 80 chars and put up to 90 chars on one line for which
+>> checkpatch will issue a warning that can be ignored for these cases. Over 90
+>> lines checkpatch will give an error and I think you should not ignore that.
+>
+> Thank you. This makes sense!
+>
+>> Maybe try to put as much on one line as possible instead of new line after
+>> each argument but without exceeding the 80 chars or if the whole line fits
+>> in 90 chars then use that. Or maybe do not indent second line under ( but
+>> with 4 spaces then you can fit it in two lines but lines over 90 chars are
+>> undesirable.
+>
+> HMM, I understand you mean:
+>
+> OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest, s390_pv_guest,
+>    S390_PV_GUEST, CONFIDENTIAL_GUEST_SUPPORT, { TYPE_USER_CREATABLE }, { NULL })
+>
+> The second line is 82 chars and now I think this version is better.
 
-The new example deserves another separate patch. I'll think about how to
-describe it.
+Yes and maybe can even fit in 80 chars if using { } instead of { NULL }.
 
-Thanks,
-Zhao
-
-
+Regards,
+BALATON Zoltan
 
