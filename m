@@ -1,54 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uFlL8-0005aB-7t
-	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2025 23:02:26 -0400
+	id 1uFpnQ-0004Nv-MI
+	for mharc-qemu-trivial@gnu.org; Fri, 16 May 2025 03:47:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uFlL7-0005Zm-4g; Thu, 15 May 2025 23:02:25 -0400
-Received: from mgamail.intel.com ([192.198.163.18])
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1uFpnP-0004Ml-Ev
+ for qemu-trivial@nongnu.org; Fri, 16 May 2025 03:47:55 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
- id 1uFlL5-0002PJ-9S; Thu, 15 May 2025 23:02:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1747364543; x=1778900543;
- h=date:from:to:cc:subject:message-id:references:
- mime-version:content-transfer-encoding:in-reply-to;
- bh=T6a4JpmpVPPBxMlEtCwTWcpYCmTHuhKCQK3n2fiJ2oo=;
- b=f5qMqGLBIPuHdaJR0A1SWJJ1XyKKjNrp+BzI4SI5zTh0WmjagW4Kb8yO
- C2irwzanIrfXeUHq0mr9e2JaE4smQ+02Q2vmm2v7tAUc9gDUPa43jkIF8
- sObNbmNiDwZHlP9PxccwYs8voy1pSXn6ueERZiPISHpE8LPU97HAtb3bf
- 5f4kq+HoGg6Et+dXnqCDLeSBXLwQhzLoNRKxJWyz5l8bi/ebzIqVs0qO6
- +ynR0kj63ngrCcnUxXwvcZKkg+NwnT3wJytjEU58ndeGStbbobajMwHkH
- 6TRcRGttvuiee9XEZkgD41sFHlsX2hpgUhRz2AYe8bSVTbxq7GM3CG+iJ g==;
-X-CSE-ConnectionGUID: xqrHJTeQR8ytyqDciodGAg==
-X-CSE-MsgGUID: 63gXb6OERTW+EEyAlPczVQ==
-X-IronPort-AV: E=McAfee;i="6700,10204,11434"; a="48579999"
-X-IronPort-AV: E=Sophos;i="6.15,293,1739865600"; d="scan'208";a="48579999"
-Received: from orviesa003.jf.intel.com ([10.64.159.143])
- by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 15 May 2025 20:02:20 -0700
-X-CSE-ConnectionGUID: BJug3vzhSF6XIdgWu2AGog==
-X-CSE-MsgGUID: B76+3srHRlS5nypoDzUhdg==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.15,293,1739865600"; d="scan'208";a="143329249"
-Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
- ([10.239.160.39])
- by orviesa003.jf.intel.com with ESMTP; 15 May 2025 20:02:16 -0700
-Date: Fri, 16 May 2025 11:23:21 +0800
-From: Zhao Liu <zhao1.liu@intel.com>
-To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
-Cc: BALATON Zoltan <balaton@eik.bme.hu>, David Hildenbrand <david@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
+ (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1uFpnL-0000Q7-VS
+ for qemu-trivial@nongnu.org; Fri, 16 May 2025 03:47:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1747381669;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=7IHi2JoajN6y8n/tT9OYiAX9fqR8ZvSlGeEMZmH6v6U=;
+ b=fZa4P5iFZQG18qBIUwskZRzpZXaQhBj6l0e/JVI6tgAeRVk1LeFpH6Q90HoEF/KLaZ83h0
+ Z/CXMKYndcze/Po4ZJq2pCw2jJ2Wuu7SSGxGAtWa/5egHpXMczLcbI0UQHmgl+P+HIg3nP
+ TB0Gm1ZbxNnTldiLZJyvwRXHwKiWSms=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-552-kkJhN4DmNcanK8kcnIbojg-1; Fri, 16 May 2025 03:47:46 -0400
+X-MC-Unique: kkJhN4DmNcanK8kcnIbojg-1
+X-Mimecast-MFC-AGG-ID: kkJhN4DmNcanK8kcnIbojg_1747381665
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-43ea256f039so14356925e9.0
+ for <qemu-trivial@nongnu.org>; Fri, 16 May 2025 00:47:45 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1747381664; x=1747986464;
+ h=content-transfer-encoding:in-reply-to:organization:autocrypt
+ :content-language:from:references:cc:to:subject:user-agent
+ :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=7IHi2JoajN6y8n/tT9OYiAX9fqR8ZvSlGeEMZmH6v6U=;
+ b=bUc9XXErz+euI7xdnxtUNje3ykyC4CCuhwUXjbgytvKMhGJLYwFJEp0eSp91MeZ+5c
+ 4R5kPV04kkxis4s6V8Q+IfrIw5UCm1wAIAFQJHSxkd84iDzDo/HxloGV3X47K28F/ka+
+ /dcTsXIKmfGSlFAr2Zk33eHtkLDju5FWwIFgNrD3IoFFDSafxVhON+XIghTcaHbaIfUT
+ 4CiyUwpHugC2lLJ3/F8r5XoCYOymy0Q8p3fdoqs2Oc0BUttUzw0JTWjAJ3EkK5P4O42j
+ 1PsbMH/uIvKSdBqAWA8MuAtiVMWfPope2Qmsao3l+Ff6bdHCo2EpwJ/siG2jJjH5KD0p
+ zbpg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCX30eVl2AHPkBrHucKfHqUooXlCzL6NPZMibBuOS7RmHTD+H014fG02Ne1+jvAHTHP2f7EE6ydFgtS7kdI=@nongnu.org
+X-Gm-Message-State: AOJu0YxVg6K1NtghFdJT5MJqhJmN5Txe1RhaWG+hJy72Cv3q6nejURwY
+ 1ugwcEvBwAhDVllkJfcWqBS+E0KJa7R3wqHzVPU/ifoPakpYHM9Dc8uFs6qLwKDEVhMRb4Y9GLa
+ Ge6KgVjXfoHLHI9sqoVZ2yWVLhY+vb7dYc9qoDVlNGvfMQjtgOWvwiyHgwM0=
+X-Gm-Gg: ASbGncsv2iYWFoIB1Pks3EOse6nXUlb4WAgswMSzFhZ8dhV571rs79PNheP1MwzUF3N
+ A2yIT5SK8Lg7KIKTBRvXvnojS8WK5g7+73Zwxt8e2Nzi3Fq/Os4UpY5koRCIXGoESxr/8xlLFzQ
+ BnEdVhpNdQcKMaE/mq1qgxvnlXj52JxkIdYKM2l0I7pxq3YtESGP+O+6x2OpMrWAMok8JY52/8M
+ vNf2iOwdEOYdnZwDE3f0bHxN3/Gq1garVKPkrAHwlNehru0fFfmHCZjdMA4VBFWdXZ3UJqzEzKH
+ yN5bv4mGnKa7nWaynIS6wnR3j5gaaER2mp0Z2Ls//CM1I9YL9igNbM5yvQoUOFmJYsOUv+OvLpD
+ q08sPUZu+niS7HcoFTiUg/ZSNIB/gfpeyEeVoDyc=
+X-Received: by 2002:a05:600c:3114:b0:439:6118:c188 with SMTP id
+ 5b1f17b1804b1-442fd63c6f6mr18502035e9.19.1747381664686; 
+ Fri, 16 May 2025 00:47:44 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IES3YeWi3Ip3CwTZobDsOrW8KY2q9hLWMgcfhBv1Im/wcP74LKzoNXFEcqg5CPNF+BdLpxAig==
+X-Received: by 2002:a05:600c:3114:b0:439:6118:c188 with SMTP id
+ 5b1f17b1804b1-442fd63c6f6mr18501835e9.19.1747381664328; 
+ Fri, 16 May 2025 00:47:44 -0700 (PDT)
+Received: from ?IPV6:2003:d8:2f47:4700:e6f9:f453:9ece:7602?
+ (p200300d82f474700e6f9f4539ece7602.dip0.t-ipconnect.de.
+ [2003:d8:2f47:4700:e6f9:f453:9ece:7602])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-442fd583f3dsm23755035e9.30.2025.05.16.00.47.43
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 16 May 2025 00:47:43 -0700 (PDT)
+Message-ID: <d864bd65-a6cd-4190-8350-65aa9817c44e@redhat.com>
+Date: Fri, 16 May 2025 09:47:42 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
+ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+To: Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>
+Cc: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>, 
  Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  Thomas Huth <thuth@redhat.com>,
  Richard Henderson <richard.henderson@linaro.org>,
  Ilya Leoshkevich <iii@linux.ibm.com>, qemu-s390x@nongnu.org
-Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
- OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-Message-ID: <aCavqdZ/PI461DDe@intel.com>
 References: <20250514084957.2221975-1-zhao1.liu@intel.com>
  <20250514084957.2221975-9-zhao1.liu@intel.com>
  <e0146386-ccf4-44ba-b58f-0bb4d3317f89@redhat.com>
@@ -56,22 +88,70 @@ References: <20250514084957.2221975-1-zhao1.liu@intel.com>
  <7dec9c8e-93d6-81f0-b075-e29b8ede44a2@eik.bme.hu>
  <aCXxHEVZb8+ZCW/m@intel.com>
  <c2466a27-8f8a-780d-ff78-491921bb41e5@eik.bme.hu>
- <aCYSTHiXtBsjw510@redhat.com>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
+ <aCYSTHiXtBsjw510@redhat.com> <aCavqdZ/PI461DDe@intel.com>
+From: David Hildenbrand <david@redhat.com>
+Autocrypt: addr=david@redhat.com; keydata=
+ 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
+ WNyWQQ==
+Organization: Red Hat
+In-Reply-To: <aCavqdZ/PI461DDe@intel.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: egVtSZ4q7d8TRowT9qJCGYx3RFkGukWWZrTUfsrALpc_1747381665
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <aCYSTHiXtBsjw510@redhat.com>
-Received-SPF: pass client-ip=192.198.163.18; envelope-from=zhao1.liu@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -60
-X-Spam_score: -6.1
-X-Spam_bar: ------
-X-Spam_report: (-6.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -37
+X-Spam_score: -3.8
+X-Spam_bar: ---
+X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,76 +164,87 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 May 2025 03:02:25 -0000
+X-List-Received-Date: Fri, 16 May 2025 07:47:55 -0000
 
-On Thu, May 15, 2025 at 05:11:56PM +0100, Daniel P. Berrangé wrote:
-> Date: Thu, 15 May 2025 17:11:56 +0100
-> From: "Daniel P. Berrangé" <berrange@redhat.com>
-> Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
->  OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+On 16.05.25 05:23, Zhao Liu wrote:
+> On Thu, May 15, 2025 at 05:11:56PM +0100, Daniel P. BerrangÃ© wrote:
+>> Date: Thu, 15 May 2025 17:11:56 +0100
+>> From: "Daniel P. BerrangÃ©" <berrange@redhat.com>
+>> Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
+>>   OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+>>
+>> On Thu, May 15, 2025 at 05:41:40PM +0200, BALATON Zoltan wrote:
+>>> On Thu, 15 May 2025, Zhao Liu wrote:
+>>>> On Wed, May 14, 2025 at 06:24:03PM +0200, BALATON Zoltan wrote:
+>>>>> Date: Wed, 14 May 2025 18:24:03 +0200
+>>>>> From: BALATON Zoltan <balaton@eik.bme.hu>
+>>>>> Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
+>>>>>   OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+>>>>>
+>>>>> On Wed, 14 May 2025, Zhao Liu wrote:
+>>>>>>>> +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest,
+>>>>>>>> +                                          s390_pv_guest,
+>>>>>>>> +                                          S390_PV_GUEST,
+>>>>>>>> +                                          CONFIDENTIAL_GUEST_SUPPORT,
+>>>>>>>> +                                          { TYPE_USER_CREATABLE },
+>>>>>>>> +                                          { NULL })
+>>>>>>>
+>>>>>>> I'll note that existing callers of OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+>>>>>>> happily ignore the line limit and put it into a single line.
+>>>>>>>
+>>>>>>> (which ends up looking better IMHO)
+>>>>>>
+>>>>>> Ok, I'll onor the existing conventions (which I'll apply to other
+>>>>>> patches as well).
+>>>>>
+>>>>> There are two line limits. If something is clearer on one line you could
+>>>>> exceed the normal 80 chars and put up to 90 chars on one line for which
+>>>>> checkpatch will issue a warning that can be ignored for these cases. Over 90
+>>>>> lines checkpatch will give an error and I think you should not ignore that.
+>>>>
+>>>> Thank you. This makes sense!
+>>>>
+>>>>> Maybe try to put as much on one line as possible instead of new line after
+>>>>> each argument but without exceeding the 80 chars or if the whole line fits
+>>>>> in 90 chars then use that. Or maybe do not indent second line under ( but
+>>>>> with 4 spaces then you can fit it in two lines but lines over 90 chars are
+>>>>> undesirable.
+>>>>
+>>>> HMM, I understand you mean:
+>>>>
+>>>> OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest, s390_pv_guest,
+>>>>     S390_PV_GUEST, CONFIDENTIAL_GUEST_SUPPORT, { TYPE_USER_CREATABLE }, { NULL })
+>>>>
+>>>> The second line is 82 chars and now I think this version is better.
+>>>
+>>> Yes and maybe can even fit in 80 chars if using { } instead of { NULL }.
+>>
+>> Personally, once you have to break the line, I would be inclined
+>> to have *nothing* after the '(' on the first line, and then break
+>> at the list of interfaces. ie
+>>
+>>   OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(
+>>      S390PVGuest, s390_pv_guest, S390_PV_GUEST, CONFIDENTIAL_GUEST_SUPPORT,
+>>      { TYPE_USER_CREATABLE }, { NULL })
+>>   
 > 
-> On Thu, May 15, 2025 at 05:41:40PM +0200, BALATON Zoltan wrote:
-> > On Thu, 15 May 2025, Zhao Liu wrote:
-> > > On Wed, May 14, 2025 at 06:24:03PM +0200, BALATON Zoltan wrote:
-> > > > Date: Wed, 14 May 2025 18:24:03 +0200
-> > > > From: BALATON Zoltan <balaton@eik.bme.hu>
-> > > > Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
-> > > >  OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-> > > > 
-> > > > On Wed, 14 May 2025, Zhao Liu wrote:
-> > > > > > > +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest,
-> > > > > > > +                                          s390_pv_guest,
-> > > > > > > +                                          S390_PV_GUEST,
-> > > > > > > +                                          CONFIDENTIAL_GUEST_SUPPORT,
-> > > > > > > +                                          { TYPE_USER_CREATABLE },
-> > > > > > > +                                          { NULL })
-> > > > > > 
-> > > > > > I'll note that existing callers of OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-> > > > > > happily ignore the line limit and put it into a single line.
-> > > > > > 
-> > > > > > (which ends up looking better IMHO)
-> > > > > 
-> > > > > Ok, I'll onor the existing conventions (which I'll apply to other
-> > > > > patches as well).
-> > > > 
-> > > > There are two line limits. If something is clearer on one line you could
-> > > > exceed the normal 80 chars and put up to 90 chars on one line for which
-> > > > checkpatch will issue a warning that can be ignored for these cases. Over 90
-> > > > lines checkpatch will give an error and I think you should not ignore that.
-> > > 
-> > > Thank you. This makes sense!
-> > > 
-> > > > Maybe try to put as much on one line as possible instead of new line after
-> > > > each argument but without exceeding the 80 chars or if the whole line fits
-> > > > in 90 chars then use that. Or maybe do not indent second line under ( but
-> > > > with 4 spaces then you can fit it in two lines but lines over 90 chars are
-> > > > undesirable.
-> > > 
-> > > HMM, I understand you mean:
-> > > 
-> > > OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest, s390_pv_guest,
-> > >    S390_PV_GUEST, CONFIDENTIAL_GUEST_SUPPORT, { TYPE_USER_CREATABLE }, { NULL })
-> > > 
-> > > The second line is 82 chars and now I think this version is better.
-> > 
-> > Yes and maybe can even fit in 80 chars if using { } instead of { NULL }.
+> This version looks better! Thank you all for your patience.
 > 
-> Personally, once you have to break the line, I would be inclined
-> to have *nothing* after the '(' on the first line, and then break
-> at the list of interfaces. ie
-> 
->  OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(
->     S390PVGuest, s390_pv_guest, S390_PV_GUEST, CONFIDENTIAL_GUEST_SUPPORT,
->     { TYPE_USER_CREATABLE }, { NULL })
->  
+> (How to elegantly break lines is indeed a matter of taste, and I've
+> improved in this area now with your help :-).)
 
-This version looks better! Thank you all for your patience.
+Sorry for starting this :) And thanks for your patience.
 
-(How to elegantly break lines is indeed a matter of taste, and I've
-improved in this area now with your help :-).)
+Back when I added a OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES, I did it 
+just like everybody else:
 
-Regards,
-Zhao
+Cram it all into a single line because it's all unbelievable unreadable 
+already, no need to fake that breaking lines would improve that in any 
+way ...
 
+-- 
+Cheers,
+
+David / dhildenb
 
 
