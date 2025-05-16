@@ -1,81 +1,76 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uFchE-0002LC-8J
-	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2025 13:48:40 -0400
+	id 1uFlL8-0005aB-7t
+	for mharc-qemu-trivial@gnu.org; Thu, 15 May 2025 23:02:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uFchC-0002H6-7T
- for qemu-trivial@nongnu.org; Thu, 15 May 2025 13:48:38 -0400
-Received: from mail-pg1-x534.google.com ([2607:f8b0:4864:20::534])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1uFchA-0004n5-FR
- for qemu-trivial@nongnu.org; Thu, 15 May 2025 13:48:37 -0400
-Received: by mail-pg1-x534.google.com with SMTP id
- 41be03b00d2f7-af5085f7861so833957a12.3
- for <qemu-trivial@nongnu.org>; Thu, 15 May 2025 10:48:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1747331315; x=1747936115; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=oLwzgiF2QXOiO+DlqGVZ+Wa8vcprRAO/KS09deuijTo=;
- b=KakxsTqeB/A4XxBhXYeyrkEYxoc0vuqPiWaYwGPtl2fkc9TaE8St10FssUEWolENuj
- TZLY0nfaml/nDN5ZEzZajmZYyCXxYWCyz2EjbtDZlatnPbRmqow2yQLOaZTCJ+Sk0VFJ
- dPeosY5T4F/0jB0Iiu+J4NI/1bwjGf0Dn5XTgTp2O7Apl2vs9iHqQcZXHT08pkbfQy65
- qEp9tzFr7GxBUUqeUdpxs2cn5K7y3ra3IT+BeODXHW2Le5CjT0aPnd9w2bWmod6E2rhi
- +Pg9oMRxR+SmQr5sn3/Blf+LupkFy/xsmfLg3X8mo/K1OeMowPmedkmkccoqNeLbN0dh
- 3X1Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747331315; x=1747936115;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=oLwzgiF2QXOiO+DlqGVZ+Wa8vcprRAO/KS09deuijTo=;
- b=CNpqj+cN43wUsFbZmuaowr1vDyQ02qwUiif/xujnbIOdLos6E3RTGD3fpLM06HGSaG
- 1Sd3cwJpc/qERo8vlNi0CVna5oOUFxRP5IkrOEhn+rilW04eNeuY+GxpLgx0fPB5P+f6
- bOs5RyjmsAj41pLnYKbHPTnG3WA3SzrSU3cz4RC8/o/VMmC2Y//Mj+BoXkMA140kI7I3
- qTSdG24deEZ29Hm/qK8zCd53L55/TQsSfyYGZ9lH62tyqj57jxuJD/ZcUspB1qMdR2Oa
- hBp8LI2QSbm/wKv3rRiOBzwy88vpHtzbuLamM9cMmpRKLjN1lcxKRzUSB6lRVbUm09wC
- lMQQ==
-X-Gm-Message-State: AOJu0YwVUX/jzPyxiqPex2bvGAUZ+S6/0Jq4/Tp462ZAMrtA2Hj4OUAE
- i5eTesKbQoUDmbV1zVKVxRqZ5detcg+ZegDo8ZtKmFtSMPWBuxRo68CmlPwHL237X84=
-X-Gm-Gg: ASbGnctdVFLnYJAPZT6TCy8coDo+AGZebP5PYfitcNmKFqmjSMmCOZ6Wt+C62yDx2K1
- /QTJB05Jalbvo8LCxGXDrh8tgaGOn/28E/L0DgtEhVL8+a99ZNeQSWohZZrsjRVcb5iZCLEtf7Y
- Lc18DRRdfqdQSkrj8kh7Fj825ZYYoOvRMjmFXIjy+IxlYxlk/g8DjS1pZiddaBmYXnylJQrxaA0
- IppEWsqs4eWJXQPBl0exePCCtAeNOh2GfmbQOfTd04Y/a9K6qSb8iCHYXNEA0aGtoTCsHCjRfMF
- ONaVw3kKsBGj57h0Ti6J7v4kLxZJC9t+FGnpU8KwJsWhvKhyvCTHU4EpSYNQwfGn
-X-Google-Smtp-Source: AGHT+IHMYHRC0sQEs0b8OvFjP0Q7Czw4Cu2mnDF/8QZ8JoUR5F2R4nUCHrEP0npRBdM0xU1nGolT4A==
-X-Received: by 2002:a17:903:41d0:b0:223:4d5e:789d with SMTP id
- d9443c01a7336-231d43b3ba9mr5656265ad.19.1747331314889; 
- Thu, 15 May 2025 10:48:34 -0700 (PDT)
-Received: from [192.168.1.87] ([38.41.223.211])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-231d4e97dadsm553855ad.141.2025.05.15.10.48.34
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 15 May 2025 10:48:34 -0700 (PDT)
-Message-ID: <7f90ec6a-e0d9-4155-ae91-edc687360894@linaro.org>
-Date: Thu, 15 May 2025 10:48:33 -0700
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1uFlL7-0005Zm-4g; Thu, 15 May 2025 23:02:25 -0400
+Received: from mgamail.intel.com ([192.198.163.18])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1uFlL5-0002PJ-9S; Thu, 15 May 2025 23:02:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1747364543; x=1778900543;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:content-transfer-encoding:in-reply-to;
+ bh=T6a4JpmpVPPBxMlEtCwTWcpYCmTHuhKCQK3n2fiJ2oo=;
+ b=f5qMqGLBIPuHdaJR0A1SWJJ1XyKKjNrp+BzI4SI5zTh0WmjagW4Kb8yO
+ C2irwzanIrfXeUHq0mr9e2JaE4smQ+02Q2vmm2v7tAUc9gDUPa43jkIF8
+ sObNbmNiDwZHlP9PxccwYs8voy1pSXn6ueERZiPISHpE8LPU97HAtb3bf
+ 5f4kq+HoGg6Et+dXnqCDLeSBXLwQhzLoNRKxJWyz5l8bi/ebzIqVs0qO6
+ +ynR0kj63ngrCcnUxXwvcZKkg+NwnT3wJytjEU58ndeGStbbobajMwHkH
+ 6TRcRGttvuiee9XEZkgD41sFHlsX2hpgUhRz2AYe8bSVTbxq7GM3CG+iJ g==;
+X-CSE-ConnectionGUID: xqrHJTeQR8ytyqDciodGAg==
+X-CSE-MsgGUID: 63gXb6OERTW+EEyAlPczVQ==
+X-IronPort-AV: E=McAfee;i="6700,10204,11434"; a="48579999"
+X-IronPort-AV: E=Sophos;i="6.15,293,1739865600"; d="scan'208";a="48579999"
+Received: from orviesa003.jf.intel.com ([10.64.159.143])
+ by fmvoesa112.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 15 May 2025 20:02:20 -0700
+X-CSE-ConnectionGUID: BJug3vzhSF6XIdgWu2AGog==
+X-CSE-MsgGUID: B76+3srHRlS5nypoDzUhdg==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.15,293,1739865600"; d="scan'208";a="143329249"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.39])
+ by orviesa003.jf.intel.com with ESMTP; 15 May 2025 20:02:16 -0700
+Date: Fri, 16 May 2025 11:23:21 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>
+Cc: BALATON Zoltan <balaton@eik.bme.hu>, David Hildenbrand <david@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Thomas Huth <thuth@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Ilya Leoshkevich <iii@linux.ibm.com>, qemu-s390x@nongnu.org
+Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
+ OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+Message-ID: <aCavqdZ/PI461DDe@intel.com>
+References: <20250514084957.2221975-1-zhao1.liu@intel.com>
+ <20250514084957.2221975-9-zhao1.liu@intel.com>
+ <e0146386-ccf4-44ba-b58f-0bb4d3317f89@redhat.com>
+ <aCS8aHsF+VAuj01D@intel.com>
+ <7dec9c8e-93d6-81f0-b075-e29b8ede44a2@eik.bme.hu>
+ <aCXxHEVZb8+ZCW/m@intel.com>
+ <c2466a27-8f8a-780d-ff78-491921bb41e5@eik.bme.hu>
+ <aCYSTHiXtBsjw510@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] system/main: comment lock rationale
-Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, npiggin@gmail.com,
- Paolo Bonzini <pbonzini@redhat.com>
-References: <20250515174641.4000309-1-pierrick.bouvier@linaro.org>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-In-Reply-To: <20250515174641.4000309-1-pierrick.bouvier@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::534;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pg1-x534.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <aCYSTHiXtBsjw510@redhat.com>
+Received-SPF: pass client-ip=192.198.163.18; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -60
+X-Spam_score: -6.1
+X-Spam_bar: ------
+X-Spam_report: (-6.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -89,47 +84,76 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Thu, 15 May 2025 17:48:38 -0000
+X-List-Received-Date: Fri, 16 May 2025 03:02:25 -0000
 
-On 5/15/25 10:46 AM, Pierrick Bouvier wrote:
-> Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-> ---
->   system/main.c | 13 +++++++++++++
->   1 file changed, 13 insertions(+)
+On Thu, May 15, 2025 at 05:11:56PM +0100, Daniel P. Berrangé wrote:
+> Date: Thu, 15 May 2025 17:11:56 +0100
+> From: "Daniel P. Berrangé" <berrange@redhat.com>
+> Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
+>  OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
 > 
-> diff --git a/system/main.c b/system/main.c
-> index 1c022067349..b8f7157cc34 100644
-> --- a/system/main.c
-> +++ b/system/main.c
-> @@ -69,8 +69,21 @@ int (*qemu_main)(void) = os_darwin_cfrunloop_main;
->   int main(int argc, char **argv)
->   {
->       qemu_init(argc, argv);
-> +
-> +    /*
-> +     * qemu_init acquires the BQL and replay mutex lock. BQL is acquired when
-> +     * initializing cpus, to block associated threads until initialization is
-> +     * complete. Replay_mutex lock is acquired on initialization, because it
-> +     * must be held when configuring icount_mode.
-> +     *
-> +     * On MacOS, qemu main event loop runs in a background thread, as main
-> +     * thread must be reserved for UI. Thus, we need to transfer lock ownership,
-> +     * and the simplest way to do that is to release them, and reacquire them
-> +     * from qemu_default_main.
-> +     */
->       bql_unlock();
->       replay_mutex_unlock();
-> +
->       if (qemu_main) {
->           QemuThread main_loop_thread;
->           qemu_thread_create(&main_loop_thread, "qemu_main",
+> On Thu, May 15, 2025 at 05:41:40PM +0200, BALATON Zoltan wrote:
+> > On Thu, 15 May 2025, Zhao Liu wrote:
+> > > On Wed, May 14, 2025 at 06:24:03PM +0200, BALATON Zoltan wrote:
+> > > > Date: Wed, 14 May 2025 18:24:03 +0200
+> > > > From: BALATON Zoltan <balaton@eik.bme.hu>
+> > > > Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
+> > > >  OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+> > > > 
+> > > > On Wed, 14 May 2025, Zhao Liu wrote:
+> > > > > > > +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest,
+> > > > > > > +                                          s390_pv_guest,
+> > > > > > > +                                          S390_PV_GUEST,
+> > > > > > > +                                          CONFIDENTIAL_GUEST_SUPPORT,
+> > > > > > > +                                          { TYPE_USER_CREATABLE },
+> > > > > > > +                                          { NULL })
+> > > > > > 
+> > > > > > I'll note that existing callers of OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
+> > > > > > happily ignore the line limit and put it into a single line.
+> > > > > > 
+> > > > > > (which ends up looking better IMHO)
+> > > > > 
+> > > > > Ok, I'll onor the existing conventions (which I'll apply to other
+> > > > > patches as well).
+> > > > 
+> > > > There are two line limits. If something is clearer on one line you could
+> > > > exceed the normal 80 chars and put up to 90 chars on one line for which
+> > > > checkpatch will issue a warning that can be ignored for these cases. Over 90
+> > > > lines checkpatch will give an error and I think you should not ignore that.
+> > > 
+> > > Thank you. This makes sense!
+> > > 
+> > > > Maybe try to put as much on one line as possible instead of new line after
+> > > > each argument but without exceeding the 80 chars or if the whole line fits
+> > > > in 90 chars then use that. Or maybe do not indent second line under ( but
+> > > > with 4 spaces then you can fit it in two lines but lines over 90 chars are
+> > > > undesirable.
+> > > 
+> > > HMM, I understand you mean:
+> > > 
+> > > OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest, s390_pv_guest,
+> > >    S390_PV_GUEST, CONFIDENTIAL_GUEST_SUPPORT, { TYPE_USER_CREATABLE }, { NULL })
+> > > 
+> > > The second line is 82 chars and now I think this version is better.
+> > 
+> > Yes and maybe can even fit in 80 chars if using { } instead of { NULL }.
+> 
+> Personally, once you have to break the line, I would be inclined
+> to have *nothing* after the '(' on the first line, and then break
+> at the list of interfaces. ie
+> 
+>  OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(
+>     S390PVGuest, s390_pv_guest, S390_PV_GUEST, CONFIDENTIAL_GUEST_SUPPORT,
+>     { TYPE_USER_CREATABLE }, { NULL })
+>  
 
-This was requested previously by Nicholas:
-https://lore.kernel.org/qemu-devel/D97QJO5Z909K.368VVIBFA17TA@gmail.com/
+This version looks better! Thank you all for your patience.
 
-I sent this patch to qemu-devel some time ago, but it was never reviewed 
-nor pulled, despite multiple pings, so I'm trying again with qemu-trivial.
+(How to elegantly break lines is indeed a matter of taste, and I've
+improved in this area now with your help :-).)
 
 Regards,
-Pierrick
+Zhao
+
+
 
