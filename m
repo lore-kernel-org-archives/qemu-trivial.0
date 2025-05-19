@@ -1,157 +1,87 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uFpnQ-0004Nv-MI
-	for mharc-qemu-trivial@gnu.org; Fri, 16 May 2025 03:47:56 -0400
+	id 1uH1Ca-00057l-W5
+	for mharc-qemu-trivial@gnu.org; Mon, 19 May 2025 10:10:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1uFpnP-0004Ml-Ev
- for qemu-trivial@nongnu.org; Fri, 16 May 2025 03:47:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mhej@vps-ovh.mhejs.net>)
+ id 1uH1CX-00054L-Fd; Mon, 19 May 2025 10:10:45 -0400
+Received: from vps-ovh.mhejs.net ([145.239.82.108])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <david@redhat.com>) id 1uFpnL-0000Q7-VS
- for qemu-trivial@nongnu.org; Fri, 16 May 2025 03:47:55 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1747381669;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=7IHi2JoajN6y8n/tT9OYiAX9fqR8ZvSlGeEMZmH6v6U=;
- b=fZa4P5iFZQG18qBIUwskZRzpZXaQhBj6l0e/JVI6tgAeRVk1LeFpH6Q90HoEF/KLaZ83h0
- Z/CXMKYndcze/Po4ZJq2pCw2jJ2Wuu7SSGxGAtWa/5egHpXMczLcbI0UQHmgl+P+HIg3nP
- TB0Gm1ZbxNnTldiLZJyvwRXHwKiWSms=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-552-kkJhN4DmNcanK8kcnIbojg-1; Fri, 16 May 2025 03:47:46 -0400
-X-MC-Unique: kkJhN4DmNcanK8kcnIbojg-1
-X-Mimecast-MFC-AGG-ID: kkJhN4DmNcanK8kcnIbojg_1747381665
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-43ea256f039so14356925e9.0
- for <qemu-trivial@nongnu.org>; Fri, 16 May 2025 00:47:45 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747381664; x=1747986464;
- h=content-transfer-encoding:in-reply-to:organization:autocrypt
- :content-language:from:references:cc:to:subject:user-agent
- :mime-version:date:message-id:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to;
- bh=7IHi2JoajN6y8n/tT9OYiAX9fqR8ZvSlGeEMZmH6v6U=;
- b=bUc9XXErz+euI7xdnxtUNje3ykyC4CCuhwUXjbgytvKMhGJLYwFJEp0eSp91MeZ+5c
- 4R5kPV04kkxis4s6V8Q+IfrIw5UCm1wAIAFQJHSxkd84iDzDo/HxloGV3X47K28F/ka+
- /dcTsXIKmfGSlFAr2Zk33eHtkLDju5FWwIFgNrD3IoFFDSafxVhON+XIghTcaHbaIfUT
- 4CiyUwpHugC2lLJ3/F8r5XoCYOymy0Q8p3fdoqs2Oc0BUttUzw0JTWjAJ3EkK5P4O42j
- 1PsbMH/uIvKSdBqAWA8MuAtiVMWfPope2Qmsao3l+Ff6bdHCo2EpwJ/siG2jJjH5KD0p
- zbpg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX30eVl2AHPkBrHucKfHqUooXlCzL6NPZMibBuOS7RmHTD+H014fG02Ne1+jvAHTHP2f7EE6ydFgtS7kdI=@nongnu.org
-X-Gm-Message-State: AOJu0YxVg6K1NtghFdJT5MJqhJmN5Txe1RhaWG+hJy72Cv3q6nejURwY
- 1ugwcEvBwAhDVllkJfcWqBS+E0KJa7R3wqHzVPU/ifoPakpYHM9Dc8uFs6qLwKDEVhMRb4Y9GLa
- Ge6KgVjXfoHLHI9sqoVZ2yWVLhY+vb7dYc9qoDVlNGvfMQjtgOWvwiyHgwM0=
-X-Gm-Gg: ASbGncsv2iYWFoIB1Pks3EOse6nXUlb4WAgswMSzFhZ8dhV571rs79PNheP1MwzUF3N
- A2yIT5SK8Lg7KIKTBRvXvnojS8WK5g7+73Zwxt8e2Nzi3Fq/Os4UpY5koRCIXGoESxr/8xlLFzQ
- BnEdVhpNdQcKMaE/mq1qgxvnlXj52JxkIdYKM2l0I7pxq3YtESGP+O+6x2OpMrWAMok8JY52/8M
- vNf2iOwdEOYdnZwDE3f0bHxN3/Gq1garVKPkrAHwlNehru0fFfmHCZjdMA4VBFWdXZ3UJqzEzKH
- yN5bv4mGnKa7nWaynIS6wnR3j5gaaER2mp0Z2Ls//CM1I9YL9igNbM5yvQoUOFmJYsOUv+OvLpD
- q08sPUZu+niS7HcoFTiUg/ZSNIB/gfpeyEeVoDyc=
-X-Received: by 2002:a05:600c:3114:b0:439:6118:c188 with SMTP id
- 5b1f17b1804b1-442fd63c6f6mr18502035e9.19.1747381664686; 
- Fri, 16 May 2025 00:47:44 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IES3YeWi3Ip3CwTZobDsOrW8KY2q9hLWMgcfhBv1Im/wcP74LKzoNXFEcqg5CPNF+BdLpxAig==
-X-Received: by 2002:a05:600c:3114:b0:439:6118:c188 with SMTP id
- 5b1f17b1804b1-442fd63c6f6mr18501835e9.19.1747381664328; 
- Fri, 16 May 2025 00:47:44 -0700 (PDT)
-Received: from ?IPV6:2003:d8:2f47:4700:e6f9:f453:9ece:7602?
- (p200300d82f474700e6f9f4539ece7602.dip0.t-ipconnect.de.
- [2003:d8:2f47:4700:e6f9:f453:9ece:7602])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-442fd583f3dsm23755035e9.30.2025.05.16.00.47.43
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 16 May 2025 00:47:43 -0700 (PDT)
-Message-ID: <d864bd65-a6cd-4190-8350-65aa9817c44e@redhat.com>
-Date: Fri, 16 May 2025 09:47:42 +0200
+ (Exim 4.90_1) (envelope-from <mhej@vps-ovh.mhejs.net>)
+ id 1uH1CV-0003NQ-8p; Mon, 19 May 2025 10:10:45 -0400
+Received: from MUA
+ by vps-ovh.mhejs.net with esmtpsa  (TLS1.3) tls TLS_AES_128_GCM_SHA256
+ (Exim 4.98.1) (envelope-from <mhej@vps-ovh.mhejs.net>)
+ id 1uH1CJ-000000041eN-2vA4; Mon, 19 May 2025 16:10:31 +0200
+Message-ID: <c7a626c2-b9f8-4403-a362-df8c1c664cce@maciej.szmigiero.name>
+Date: Mon, 19 May 2025 16:10:26 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
+Subject: Re: [PATCH 5/9] hw/hyperv/hv-balloon: Consolidate
  OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-To: Zhao Liu <zhao1.liu@intel.com>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>
-Cc: BALATON Zoltan <balaton@eik.bme.hu>, Paolo Bonzini <pbonzini@redhat.com>, 
+To: Zhao Liu <zhao1.liu@intel.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Halil Pasic <pasic@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Ilya Leoshkevich <iii@linux.ibm.com>, qemu-s390x@nongnu.org
+ qemu-trivial@nongnu.org
 References: <20250514084957.2221975-1-zhao1.liu@intel.com>
- <20250514084957.2221975-9-zhao1.liu@intel.com>
- <e0146386-ccf4-44ba-b58f-0bb4d3317f89@redhat.com>
- <aCS8aHsF+VAuj01D@intel.com>
- <7dec9c8e-93d6-81f0-b075-e29b8ede44a2@eik.bme.hu>
- <aCXxHEVZb8+ZCW/m@intel.com>
- <c2466a27-8f8a-780d-ff78-491921bb41e5@eik.bme.hu>
- <aCYSTHiXtBsjw510@redhat.com> <aCavqdZ/PI461DDe@intel.com>
-From: David Hildenbrand <david@redhat.com>
-Autocrypt: addr=david@redhat.com; keydata=
- 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
- WNyWQQ==
-Organization: Red Hat
-In-Reply-To: <aCavqdZ/PI461DDe@intel.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: egVtSZ4q7d8TRowT9qJCGYx3RFkGukWWZrTUfsrALpc_1747381665
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
+ <20250514084957.2221975-6-zhao1.liu@intel.com>
+Content-Language: en-US, pl-PL
+From: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>
+Autocrypt: addr=mail@maciej.szmigiero.name; keydata=
+ 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
+In-Reply-To: <20250514084957.2221975-6-zhao1.liu@intel.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=david@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -37
-X-Spam_score: -3.8
-X-Spam_bar: ---
-X-Spam_report: (-3.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.686,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Sender: mhej@vps-ovh.mhejs.net
+Received-SPF: pass client-ip=145.239.82.108;
+ envelope-from=mhej@vps-ovh.mhejs.net; helo=vps-ovh.mhejs.net
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -164,87 +94,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 16 May 2025 07:47:55 -0000
+X-List-Received-Date: Mon, 19 May 2025 14:10:47 -0000
 
-On 16.05.25 05:23, Zhao Liu wrote:
-> On Thu, May 15, 2025 at 05:11:56PM +0100, Daniel P. Berrangé wrote:
->> Date: Thu, 15 May 2025 17:11:56 +0100
->> From: "Daniel P. Berrangé" <berrange@redhat.com>
->> Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
->>   OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
->>
->> On Thu, May 15, 2025 at 05:41:40PM +0200, BALATON Zoltan wrote:
->>> On Thu, 15 May 2025, Zhao Liu wrote:
->>>> On Wed, May 14, 2025 at 06:24:03PM +0200, BALATON Zoltan wrote:
->>>>> Date: Wed, 14 May 2025 18:24:03 +0200
->>>>> From: BALATON Zoltan <balaton@eik.bme.hu>
->>>>> Subject: Re: [PATCH 8/9] target/s390x/kvm/pv: Consolidate
->>>>>   OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
->>>>>
->>>>> On Wed, 14 May 2025, Zhao Liu wrote:
->>>>>>>> +OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest,
->>>>>>>> +                                          s390_pv_guest,
->>>>>>>> +                                          S390_PV_GUEST,
->>>>>>>> +                                          CONFIDENTIAL_GUEST_SUPPORT,
->>>>>>>> +                                          { TYPE_USER_CREATABLE },
->>>>>>>> +                                          { NULL })
->>>>>>>
->>>>>>> I'll note that existing callers of OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
->>>>>>> happily ignore the line limit and put it into a single line.
->>>>>>>
->>>>>>> (which ends up looking better IMHO)
->>>>>>
->>>>>> Ok, I'll onor the existing conventions (which I'll apply to other
->>>>>> patches as well).
->>>>>
->>>>> There are two line limits. If something is clearer on one line you could
->>>>> exceed the normal 80 chars and put up to 90 chars on one line for which
->>>>> checkpatch will issue a warning that can be ignored for these cases. Over 90
->>>>> lines checkpatch will give an error and I think you should not ignore that.
->>>>
->>>> Thank you. This makes sense!
->>>>
->>>>> Maybe try to put as much on one line as possible instead of new line after
->>>>> each argument but without exceeding the 80 chars or if the whole line fits
->>>>> in 90 chars then use that. Or maybe do not indent second line under ( but
->>>>> with 4 spaces then you can fit it in two lines but lines over 90 chars are
->>>>> undesirable.
->>>>
->>>> HMM, I understand you mean:
->>>>
->>>> OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(S390PVGuest, s390_pv_guest,
->>>>     S390_PV_GUEST, CONFIDENTIAL_GUEST_SUPPORT, { TYPE_USER_CREATABLE }, { NULL })
->>>>
->>>> The second line is 82 chars and now I think this version is better.
->>>
->>> Yes and maybe can even fit in 80 chars if using { } instead of { NULL }.
->>
->> Personally, once you have to break the line, I would be inclined
->> to have *nothing* after the '(' on the first line, and then break
->> at the list of interfaces. ie
->>
->>   OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES(
->>      S390PVGuest, s390_pv_guest, S390_PV_GUEST, CONFIDENTIAL_GUEST_SUPPORT,
->>      { TYPE_USER_CREATABLE }, { NULL })
->>   
+On 14.05.2025 10:49, Zhao Liu wrote:
+> The QOM type of HvBalloon is declared by OBJECT_DECLARE_SIMPLE_TYPE,
+> which means it doesn't need the class!
 > 
-> This version looks better! Thank you all for your patience.
+> Therefore, use OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES to implement
+> the type, then there's no need for class definition.
 > 
-> (How to elegantly break lines is indeed a matter of taste, and I've
-> improved in this area now with your help :-).)
+> Cc: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
+> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
+> ---
 
-Sorry for starting this :) And thanks for your patience.
+Acked-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
 
-Back when I added a OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES, I did it 
-just like everybody else:
-
-Cram it all into a single line because it's all unbelievable unreadable 
-already, no need to fake that breaking lines would improve that in any 
-way ...
-
--- 
-Cheers,
-
-David / dhildenb
+Thanks,
+Maciej
 
 
