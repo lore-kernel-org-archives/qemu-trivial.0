@@ -1,87 +1,82 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uH1Ca-00057l-W5
-	for mharc-qemu-trivial@gnu.org; Mon, 19 May 2025 10:10:49 -0400
+	id 1uI4Bl-0008HN-2V
+	for mharc-qemu-trivial@gnu.org; Thu, 22 May 2025 07:34:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mhej@vps-ovh.mhejs.net>)
- id 1uH1CX-00054L-Fd; Mon, 19 May 2025 10:10:45 -0400
-Received: from vps-ovh.mhejs.net ([145.239.82.108])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mhej@vps-ovh.mhejs.net>)
- id 1uH1CV-0003NQ-8p; Mon, 19 May 2025 10:10:45 -0400
-Received: from MUA
- by vps-ovh.mhejs.net with esmtpsa  (TLS1.3) tls TLS_AES_128_GCM_SHA256
- (Exim 4.98.1) (envelope-from <mhej@vps-ovh.mhejs.net>)
- id 1uH1CJ-000000041eN-2vA4; Mon, 19 May 2025 16:10:31 +0200
-Message-ID: <c7a626c2-b9f8-4403-a362-df8c1c664cce@maciej.szmigiero.name>
-Date: Mon, 19 May 2025 16:10:26 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/9] hw/hyperv/hv-balloon: Consolidate
- OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES
-To: Zhao Liu <zhao1.liu@intel.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-devel@nongnu.org,
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1uI4Be-0008E7-2q
+ for qemu-trivial@nongnu.org; Thu, 22 May 2025 07:34:11 -0400
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
+ id 1uI4BY-0008K1-Hh
+ for qemu-trivial@nongnu.org; Thu, 22 May 2025 07:34:09 -0400
+Received: by mail-qk1-x72c.google.com with SMTP id
+ af79cd13be357-7c597760323so893379485a.3
+ for <qemu-trivial@nongnu.org>; Thu, 22 May 2025 04:34:02 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=ventanamicro.com; s=google; t=1747913641; x=1748518441; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=pvtJvKwED2g/sZa1Pk53e57hJmDqDX/ksZLl4/V2mTo=;
+ b=fa9nWotXASHcE/BB3lSkmxrgoDHp7wyE4wRgqk2Um99P2NvpCn2l2LS4JxVTbAaR1E
+ RQZGsUgTExS+/qudrnQ0ZeBa4CNRma2qfPw4Rcuntlwgyuu9rQUJvD06R0/xDw0WmH8b
+ aabQ+dkODmaV6tsQIYroL86Z1HTgJ6xCosemmHbLrZSN2dkt3ZXYTRtHPGaoMvkTE8lO
+ fK7plEqY+6+OjU3+3asqmbICjsj+3YTg3x8N4B7BfWVkWoKVBZW+QpWGXam2GoodMzwq
+ btK20KGy/kuk4RC6HhJk+eLWgeDe353oU82DOXBCw6bjZWLrKKy/oW/ZArA/7LDz827e
+ YcFQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1747913641; x=1748518441;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=pvtJvKwED2g/sZa1Pk53e57hJmDqDX/ksZLl4/V2mTo=;
+ b=V3vKdYaAkUUFl3YjyaqHosOydmGf+Q3ZbKMvBLUF5hVGk2uVTAJ84gNVM2bJ7kAYUe
+ JOD8mMrDw+kj4qPQsBuZyLMiqipwlE1nGC1TSG3PmUL3869L+Nz/IGmQvfDUh7YEUaHx
+ xcgnLIPfbbdwGUI7G+CeuFsmcnzzAwk19AP3+jh7rnLmahlgNgluZxT+qBgk5KSYPaXi
+ oyxsCfBssPWLuPEMukdH0So/U4o38D/AuEvpm8UXPXz71MyRDMnADMCDWjSYWFppAM/Y
+ Q4jOD7OaUkg3t1LTa331K1nw9o/kHFav5R7fYz3qj0JJ7FLEJL9njxTOKaF6hDYx1XLQ
+ siHg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVfuCcnSqd841mafX7Ku3TkVsQVgU4vb3Ax3H+BtV7vbZENlwUWHDGx1/d0f/8qaAL7BVFTdQYch3lhe04=@nongnu.org
+X-Gm-Message-State: AOJu0Yx/kZwKPBNxkN2JgdUIp5VexCgm3LSAuGPHBxAH0GMJFwNcrgxY
+ YIIxnQQMNntAJGadH0xyxsXoqsTDUfzMVZnJiI/req6Fr6MVSKaEUuSSEwvG1TtiavaKK81b5iH
+ GFAI7
+X-Gm-Gg: ASbGncumJfQUuUtLvSali1V/rEccreRKVo+9v2Vhgl3v8YMcuMShrBsvKhErupim5LX
+ gomh5QE9b8ebjVnL72A3a4qp9/HCKgWuSx+LScs3pVakvXcbj8HpyzRmkEHhXGOhArjiYzokALZ
+ s9tt1StUmmyB8IdFPzC59V2jc6Pi0KamIc9XVZBDIepRp4XofDsZfcsaGDHrxok5vu+wGcjN9Ok
+ DVvpUQWFgrtIexjmNI7VQXTR2UEDs0zqRlQViNqf0SQBN+9hfjaVjRrBzHhnASNmhgxMqdPW8j2
+ yxTH70qZ853XG5rZ8+LNq+J+7zuLmONyoZVc1QtflLGj/s8/yLPDlSY=
+X-Google-Smtp-Source: AGHT+IFo5+kejL+1q9pTU9z+PYylIyDVyGojvS6ukE9jY+rlX+f4ftGNkfHM4KjSbiiKIPQWGIQKrQ==
+X-Received: by 2002:a05:6122:88c:b0:52a:cdd8:fc33 with SMTP id
+ 71dfb90a1353d-52dba614e02mr19310817e0c.0.1747913630748; 
+ Thu, 22 May 2025 04:33:50 -0700 (PDT)
+Received: from grind.. ([2804:7f0:bcc0:906e:57d5:dca2:1ab3:20de])
+ by smtp.gmail.com with ESMTPSA id
+ 71dfb90a1353d-52dbab6c0c2sm11514466e0c.42.2025.05.22.04.33.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 22 May 2025 04:33:50 -0700 (PDT)
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, alistair.francis@wdc.com, liwei1518@gmail.com,
+ zhiwei_liu@linux.alibaba.com, palmer@dabbelt.com,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
  qemu-trivial@nongnu.org
-References: <20250514084957.2221975-1-zhao1.liu@intel.com>
- <20250514084957.2221975-6-zhao1.liu@intel.com>
-Content-Language: en-US, pl-PL
-From: "Maciej S. Szmigiero" <mail@maciej.szmigiero.name>
-Autocrypt: addr=mail@maciej.szmigiero.name; keydata=
- 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
-In-Reply-To: <20250514084957.2221975-6-zhao1.liu@intel.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Sender: mhej@vps-ovh.mhejs.net
-Received-SPF: pass client-ip=145.239.82.108;
- envelope-from=mhej@vps-ovh.mhejs.net; helo=vps-ovh.mhejs.net
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- HEADER_FROM_DIFFERENT_DOMAINS=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Subject: [PATCH] target/riscv/cpu.c: fix zama16b order in isa_edata_arr[]
+Date: Thu, 22 May 2025 08:33:44 -0300
+Message-ID: <20250522113344.823294-1-dbarboza@ventanamicro.com>
+X-Mailer: git-send-email 2.49.0
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72c;
+ envelope-from=dbarboza@ventanamicro.com; helo=mail-qk1-x72c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,22 +89,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 19 May 2025 14:10:47 -0000
+X-List-Received-Date: Thu, 22 May 2025 11:34:12 -0000
 
-On 14.05.2025 10:49, Zhao Liu wrote:
-> The QOM type of HvBalloon is declared by OBJECT_DECLARE_SIMPLE_TYPE,
-> which means it doesn't need the class!
-> 
-> Therefore, use OBJECT_DEFINE_SIMPLE_TYPE_WITH_INTERFACES to implement
-> the type, then there's no need for class definition.
-> 
-> Cc: "Maciej S. Szmigiero" <maciej.szmigiero@oracle.com>
-> Signed-off-by: Zhao Liu <zhao1.liu@intel.com>
-> ---
+Put it after zalrsc and before zawrs.
 
-Acked-by: Maciej S. Szmigiero <maciej.szmigiero@oracle.com>
+Cc: qemu-trivial@nongnu.org
+Fixes: a60ce58fd9 ("target/riscv: Support Zama16b extension")
+Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+---
+ target/riscv/cpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
-Maciej
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index 629ac37501..fe21e0fb44 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -127,8 +127,8 @@ const RISCVIsaExtData isa_edata_arr[] = {
+     ISA_EXT_DATA_ENTRY(zaamo, PRIV_VERSION_1_12_0, ext_zaamo),
+     ISA_EXT_DATA_ENTRY(zabha, PRIV_VERSION_1_13_0, ext_zabha),
+     ISA_EXT_DATA_ENTRY(zacas, PRIV_VERSION_1_12_0, ext_zacas),
+-    ISA_EXT_DATA_ENTRY(zama16b, PRIV_VERSION_1_13_0, ext_zama16b),
+     ISA_EXT_DATA_ENTRY(zalrsc, PRIV_VERSION_1_12_0, ext_zalrsc),
++    ISA_EXT_DATA_ENTRY(zama16b, PRIV_VERSION_1_13_0, ext_zama16b),
+     ISA_EXT_DATA_ENTRY(zawrs, PRIV_VERSION_1_12_0, ext_zawrs),
+     ISA_EXT_DATA_ENTRY(zfa, PRIV_VERSION_1_12_0, ext_zfa),
+     ISA_EXT_DATA_ENTRY(zfbfmin, PRIV_VERSION_1_12_0, ext_zfbfmin),
+-- 
+2.49.0
 
 
