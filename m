@@ -1,79 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uIKmz-0000PY-3d
-	for mharc-qemu-trivial@gnu.org; Fri, 23 May 2025 01:17:50 -0400
+	id 1uIX53-0000bI-0l
+	for mharc-qemu-trivial@gnu.org; Fri, 23 May 2025 14:25:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1uIKmo-0000OA-GS; Fri, 23 May 2025 01:17:38 -0400
-Received: from mail-vk1-xa33.google.com ([2607:f8b0:4864:20::a33])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1uIKml-0006af-O9; Fri, 23 May 2025 01:17:38 -0400
-Received: by mail-vk1-xa33.google.com with SMTP id
- 71dfb90a1353d-52410fb2afeso5748866e0c.3; 
- Thu, 22 May 2025 22:17:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1747977454; x=1748582254; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=tJMRmx/pYEwa9T6EEOgKU1jspKNqvj9etLxJNDGFFAU=;
- b=aKGHsZKgLmG3VmxocuoFN5x9x8Ytw5fduckFXUTc77cw7laY5o9OOXRfKxPJ3+VS3x
- Hctg7bGHlPhDWScoKyPDkkwKylv6O0H0jKqashVBjeneL+80i/o918P8tWwEtM3thJFE
- TbKNxlpXU/7H3XiLgqhSjOZCePJmdwhIIG37PQm7c1pvmOt2VvCdUPHRWwo5Bo43on+O
- +stbYSUTnUNFlg7rjEaSEDNahUOfG9YE/PJzt/BslNy53WNzhWZ009d94UupfmaNpiOr
- gWlJtTbyEWQRq8FsP/b1oyMbAS8R+UbPL0oNaCDMRy8gks9MlYhuRH0RqVWRnyeRjUYt
- Wedg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1747977454; x=1748582254;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=tJMRmx/pYEwa9T6EEOgKU1jspKNqvj9etLxJNDGFFAU=;
- b=W9DpOIKs3+M1rl7YD2a5Q+fq091B5yKkPf5DXwj8TKczw/dDlBmCcWXed+Vz0PQcY6
- U8OEE+CBewzNzKf1AbofN1tSsIAYo/tpsFumaBZvp4lRoo2Giu/Dfh5rL8kb0sHMvoNO
- Om/utSM+whAyHJgConUmI4y6kcQdhLXNFIyOQYbATzuDsMhGdaBa4XZkHXPh7Crw8JBS
- auUENKIRLXJFvI5Hehq3rJn7DRmXPA3Y6IxmEs0x8G4GEBvNlIhWfoHHp3bBSZPa6bOc
- NCVuaBEdyWaN6z1RrhIysYic6dwW9KYKWD3o96OqNvhbtYV9yCOlAFmyILxcU/z7KEbr
- WhvA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUWJhNMpy390NBEXAIZW9YTXyP0uW1x39NuMGxo0Q1cuI3yGYOx+XtBlf5A++6m0vX9xIgAx91vA6RN@nongnu.org,
- AJvYcCX+UMF8KatuwimcUL8Ymd1P6AFyRm5W3Q/VrCIt8zeyVjlhAs/HxHI2TnknuWo5mkIawfwLx54GjTAAVqH9@nongnu.org
-X-Gm-Message-State: AOJu0YyRDuGGmFK+NDLsL83ZaLK0Rou5qSrcvO2oKK2U48k1lKIUwP+i
- RSGC59Tg4uoMCLR0vD5y+Ryl+erZqAPH/xO5JHVCnVVMImZ5/r+tNVkTDmRmmIklQTHPcw6Thoz
- RQiJ0M9KorOQPqCiN/NBxJIBnnath6ic=
-X-Gm-Gg: ASbGncsQQj59HkCbTWAeTG2RNUHRJPphsIbfaGy8LhFQKzvDTLKc6gb3mYybrBeCkCO
- h8xbAaR2YmJw6RvHI9RsCX7GL00ZGmp8FHGeii277pMfB/gYa3U+sHL48ObjE/DONdDmwmzRjmJ
- mXqprR2hkNhHyw4BT3SqC1oOUaf/tPtkHM40j4hBf3xZyzRbCtXX0DrgLSRxruMWsNFDh/xURyA
- g==
-X-Google-Smtp-Source: AGHT+IHQJDKxSgb9M8XoodvTkaQ0mxIBj2DOMHLX2TPrJmFM0hAV+REaPvGBGMUT9ID67P8SQv6I4vngNXEziPXZ/E0=
-X-Received: by 2002:a05:6122:7cf:b0:520:98ec:b25c with SMTP id
- 71dfb90a1353d-52f1fcc506dmr1180962e0c.1.1747977453762; Thu, 22 May 2025
- 22:17:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1uIX4z-0000Y5-6t
+ for qemu-trivial@nongnu.org; Fri, 23 May 2025 14:25:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1uIX4x-00036j-Ng
+ for qemu-trivial@nongnu.org; Fri, 23 May 2025 14:25:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1748024711;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=MowPuyafokaa+aumB5Q/UtEV3bsIZFGBtc/UrpEe/8c=;
+ b=UBGQj4QmdHAG/XCpF3QZ4MSjRlTLEPeF/+lS8/UpmNEHrE1MRyTljdZpau4fB6nzQCloaV
+ niaN6aXRwCvRcmeXCfQRIzpF63GN19JWrTbxK7Z6RHf1FZhVlZ4F8qTnCcKb2PaD2BxMMG
+ I4yU29n5m9MbSB3Fvd7UqstRFyLGNnQ=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-354-MqYExDCqNLu2jwXVtATxbw-1; Fri,
+ 23 May 2025 14:25:06 -0400
+X-MC-Unique: MqYExDCqNLu2jwXVtATxbw-1
+X-Mimecast-MFC-AGG-ID: MqYExDCqNLu2jwXVtATxbw_1748024704
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5995E195608C; Fri, 23 May 2025 18:25:02 +0000 (UTC)
+Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.64.78])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 01B0F1944A89; Fri, 23 May 2025 18:24:50 +0000 (UTC)
+From: John Snow <jsnow@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Kevin Wolf <kwolf@redhat.com>, Peter Maydell <peter.maydell@linaro.org>,
+ Yanan Wang <wangyanan55@huawei.com>, Jiri Pirko <jiri@resnulli.us>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Lukas Straub <lukasstraub2@web.de>, Peter Xu <peterx@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Jason Wang <jasowang@redhat.com>,
+ Stefan Hajnoczi <stefanha@redhat.com>, Eric Blake <eblake@redhat.com>,
+ qemu-trivial@nongnu.org, Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, qemu-block@nongnu.org,
+ Mads Ynddal <mads@ynddal.dk>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, John Snow <jsnow@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Fabiano Rosas <farosas@suse.de>,
+ Zhao Liu <zhao1.liu@intel.com>, Zhenwei Pi <pizhenwei@bytedance.com>,
+ Ani Sinha <anisinha@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ Laurent Vivier <laurent@vivier.eu>
+Subject: [PATCH v3 0/4] qapi: add auto-generated return docs
+Date: Fri, 23 May 2025 14:24:38 -0400
+Message-ID: <20250523182442.54469-1-jsnow@redhat.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-References: <20250522113344.823294-1-dbarboza@ventanamicro.com>
-In-Reply-To: <20250522113344.823294-1-dbarboza@ventanamicro.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 23 May 2025 15:17:07 +1000
-X-Gm-Features: AX0GCFsKYcsHVANWiGBEAMw-HiOuN1juC0s0aomK_HDZxClkArUGcyHDZ13Owoc
-Message-ID: <CAKmqyKNcmG=ZnAOaVHK6EW_gyMBm0ZC0nZ1-+tHcqU3DQTejwA@mail.gmail.com>
-Subject: Re: [PATCH] target/riscv/cpu.c: fix zama16b order in isa_edata_arr[]
-To: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, alistair.francis@wdc.com, 
- liwei1518@gmail.com, zhiwei_liu@linux.alibaba.com, palmer@dabbelt.com, 
- qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::a33;
- envelope-from=alistair23@gmail.com; helo=mail-vk1-xa33.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -23
+X-Spam_score: -2.4
+X-Spam_bar: --
+X-Spam_report: (-2.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.287,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -86,43 +87,56 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 23 May 2025 05:17:43 -0000
+X-List-Received-Date: Fri, 23 May 2025 18:25:15 -0000
 
-On Thu, May 22, 2025 at 9:35=E2=80=AFPM Daniel Henrique Barboza
-<dbarboza@ventanamicro.com> wrote:
->
-> Put it after zalrsc and before zawrs.
->
-> Cc: qemu-trivial@nongnu.org
-> Fixes: a60ce58fd9 ("target/riscv: Support Zama16b extension")
-> Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+v3: rebased on top of python-qapi-linting (v4) pull request;=0D
+    removed commits that are no longer needed.=0D
+    Markus: I forget where we left off... shall we refresh?=0D
+=0D
+v2: fix multi-return-sections bug :(=0D
+=0D
+John Snow (4):=0D
+  docs/qapi-domain: add return-nodesc=0D
+  docs, qapi: generate undocumented return sections=0D
+  qapi: remove trivial "Returns:" sections=0D
+  qapi: rephrase return docs to avoid type name=0D
+=0D
+ docs/devel/qapi-domain.rst | 30 ++++++++++++++++++++++++++++++=0D
+ docs/sphinx/qapi_domain.py |  8 ++++++++=0D
+ docs/sphinx/qapidoc.py     | 14 ++++++++------=0D
+ qapi/audio.json            |  2 --=0D
+ qapi/block-core.json       | 14 +++-----------=0D
+ qapi/block-export.json     |  2 +-=0D
+ qapi/block.json            |  2 +-=0D
+ qapi/char.json             |  8 --------=0D
+ qapi/control.json          |  5 ++---=0D
+ qapi/cryptodev.json        |  2 --=0D
+ qapi/dump.json             |  5 ++---=0D
+ qapi/introspect.json       |  6 +++---=0D
+ qapi/job.json              |  2 +-=0D
+ qapi/machine-target.json   |  9 +++------=0D
+ qapi/machine.json          | 22 ----------------------=0D
+ qapi/migration.json        | 12 ------------=0D
+ qapi/misc-target.json      | 14 +-------------=0D
+ qapi/misc.json             | 12 ++----------=0D
+ qapi/net.json              |  2 +-=0D
+ qapi/pci.json              |  2 +-=0D
+ qapi/qdev.json             |  3 +--=0D
+ qapi/qom.json              |  8 +++-----=0D
+ qapi/rocker.json           |  4 ----=0D
+ qapi/run-state.json        |  2 --=0D
+ qapi/stats.json            |  2 +-=0D
+ qapi/tpm.json              |  4 ----=0D
+ qapi/trace.json            |  2 +-=0D
+ qapi/ui.json               | 10 +---------=0D
+ qapi/virtio.json           |  8 +++-----=0D
+ qapi/yank.json             |  1 -=0D
+ scripts/qapi/parser.py     | 15 +++++++++++++++=0D
+ scripts/qapi/schema.py     |  3 +++=0D
+ 32 files changed, 95 insertions(+), 140 deletions(-)=0D
+=0D
+-- =0D
+2.48.1=0D
+=0D
 
-Thanks!
-
-Applied to riscv-to-apply.next
-
-Alistair
-
-> ---
->  target/riscv/cpu.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
->
-> diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-> index 629ac37501..fe21e0fb44 100644
-> --- a/target/riscv/cpu.c
-> +++ b/target/riscv/cpu.c
-> @@ -127,8 +127,8 @@ const RISCVIsaExtData isa_edata_arr[] =3D {
->      ISA_EXT_DATA_ENTRY(zaamo, PRIV_VERSION_1_12_0, ext_zaamo),
->      ISA_EXT_DATA_ENTRY(zabha, PRIV_VERSION_1_13_0, ext_zabha),
->      ISA_EXT_DATA_ENTRY(zacas, PRIV_VERSION_1_12_0, ext_zacas),
-> -    ISA_EXT_DATA_ENTRY(zama16b, PRIV_VERSION_1_13_0, ext_zama16b),
->      ISA_EXT_DATA_ENTRY(zalrsc, PRIV_VERSION_1_12_0, ext_zalrsc),
-> +    ISA_EXT_DATA_ENTRY(zama16b, PRIV_VERSION_1_13_0, ext_zama16b),
->      ISA_EXT_DATA_ENTRY(zawrs, PRIV_VERSION_1_12_0, ext_zawrs),
->      ISA_EXT_DATA_ENTRY(zfa, PRIV_VERSION_1_12_0, ext_zfa),
->      ISA_EXT_DATA_ENTRY(zfbfmin, PRIV_VERSION_1_12_0, ext_zfbfmin),
-> --
-> 2.49.0
->
->
 
