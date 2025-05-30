@@ -1,102 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uKyYH-0008E8-58
-	for mharc-qemu-trivial@gnu.org; Fri, 30 May 2025 08:09:33 -0400
+	id 1uL1oD-0006lE-BN
+	for mharc-qemu-trivial@gnu.org; Fri, 30 May 2025 11:38:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1uKyYG-0008Dk-6R
- for qemu-trivial@nongnu.org; Fri, 30 May 2025 08:09:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1uL1oC-0006kp-AP
+ for qemu-trivial@nongnu.org; Fri, 30 May 2025 11:38:12 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1uKyYE-0004uw-0F
- for qemu-trivial@nongnu.org; Fri, 30 May 2025 08:09:31 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1uL1oA-0008Bg-KX
+ for qemu-trivial@nongnu.org; Fri, 30 May 2025 11:38:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1748606968;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1748619489;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Y36I0mm1fE8F59v3MNks+MQO5UzMqRoWnWNZcNkjuNY=;
- b=QV8yQXFjSfp+phLnArttaeI3OIFLR7Ph2IwzykAProe9zfIKifbfuYSCTcAB4LfMCE5d3r
- Ezk22WBy7xPJIKfGhjunWNP17QmBVpEG1+n5fGyjMOTTcbSUCnvm0TDtfGxsdsh1Mhlhph
- qscS1ARhEWM6Lw6ZMwM8rg1hZkK2BOU=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-652-fPoTRI2yMUOXUtKVDul2Ag-1; Fri, 30 May 2025 08:09:27 -0400
-X-MC-Unique: fPoTRI2yMUOXUtKVDul2Ag-1
-X-Mimecast-MFC-AGG-ID: fPoTRI2yMUOXUtKVDul2Ag_1748606966
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-3a4fac7fa27so142721f8f.0
- for <qemu-trivial@nongnu.org>; Fri, 30 May 2025 05:09:27 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1748606966; x=1749211766;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=Y36I0mm1fE8F59v3MNks+MQO5UzMqRoWnWNZcNkjuNY=;
- b=Ih93rfHJgVczxpo2A8IqZ4A8ulnS3uEsC5+2yXeVvW+FVbh6WMtr1ey+ke+f96xcx4
- 5P3Rgev0LTMZeQrQ0fX0WZdrMRphGtoazxALpXXPzM87/s8b1X8XzwuaWZaPm4NMAdTI
- i2WXfmkk0lLbadtRE4nUAazPXjlPOR2+AbLuMPx+yss9dC/AqepZej8zue7Psk+wXvGB
- 2Tyr13+2TdDyaMpKgbwx69n+VtyVjxOkxFJ9XwyScHzyl2O7XVeLN8C1kfnyUP3KmVhY
- PCj02z9OZ+g9zsdIhBiQJzAOh2oYlDfMCGXQhHcnjytFKsdOwNzI+lNp5Q2sj5Hx5Mfj
- N7EA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXZJohi6Fn4XDPoV85j5IppeioD80nUB8N/s9Ez5oJ5jX+yt6inRTydfeVzRlJFz5CQtZUVST75N5iqaMo=@nongnu.org
-X-Gm-Message-State: AOJu0YwJu68R+aF1+jCyMEdD0Qxx81SWkN2+4XNw8yTb1qY9bvRaojz9
- BWhmgfJzPGtaQ8eyLebJwCtSdp58qqrAlP2Z5Mga1BMM+DjkiUmVkOgBfS5+U2APpjNgFfACxsl
- xxD0fLlNiKybE8ePvd1/TQZ51KGqwaKuJzRr7fGLjVCjAd178iuMhvRjPQp4=
-X-Gm-Gg: ASbGncveTSG3+8DahS2AvI8XJHuQ4rEJTihHfF7alvBi8OPBSf+YeEiw0PY7mzQHW/Q
- 3Hl1dvWSs/wFidXD2cAzrBqoBA9h/arx9O9dSecugUEVd4CMsDdTKZCA9CywPQE+1otry86e0S7
- lfpdDH9cBZO7GQoqxFnSe3rWIe0Pf5Kq+o0b5qW4MJH4e1W9o/YvSDXt7rtZxAVsuluxTXNgXaZ
- SspYfhCaYD0ryKUwFKDk7OxgWCaCNbdfdr+b6tSxu71NFiQtC7krHLIyXNTga0DbaJ3LZJdyFab
- WkdZSQ==
-X-Received: by 2002:a5d:64ed:0:b0:3a4:f72a:b19d with SMTP id
- ffacd0b85a97d-3a4f7a3baa5mr2364561f8f.8.1748606966338; 
- Fri, 30 May 2025 05:09:26 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFHpmPiSVjIeMfszOTcwlCD8JLRILKP2Abehpiig7iFqcfCFQvkdj/a/1cBHrDo1Mhl0JtX0w==
-X-Received: by 2002:a5d:64ed:0:b0:3a4:f72a:b19d with SMTP id
- ffacd0b85a97d-3a4f7a3baa5mr2364504f8f.8.1748606965837; 
- Fri, 30 May 2025 05:09:25 -0700 (PDT)
-Received: from redhat.com ([2a0d:6fc0:1517:1000:ea83:8e5f:3302:3575])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a4f00a00d4sm4694585f8f.92.2025.05.30.05.09.22
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 30 May 2025 05:09:25 -0700 (PDT)
-Date: Fri, 30 May 2025 08:09:21 -0400
-From: "Michael S. Tsirkin" <mst@redhat.com>
-To: John Snow <jsnow@redhat.com>
-Cc: qemu-devel@nongnu.org, Kevin Wolf <kwolf@redhat.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Yanan Wang <wangyanan55@huawei.com>, Jiri Pirko <jiri@resnulli.us>,
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
- Lukas Straub <lukasstraub2@web.de>, Peter Xu <peterx@redhat.com>,
- Michael Roth <michael.roth@amd.com>, Jason Wang <jasowang@redhat.com>,
- Stefan Hajnoczi <stefanha@redhat.com>,
- Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>,
- =?iso-8859-1?Q?Marc-Andr=E9?= Lureau <marcandre.lureau@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, qemu-block@nongnu.org,
- Mads Ynddal <mads@ynddal.dk>, Stefan Berger <stefanb@linux.vnet.ibm.com>,
- Paolo Bonzini <pbonzini@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
- Fabiano Rosas <farosas@suse.de>, Zhao Liu <zhao1.liu@intel.com>,
- Zhenwei Pi <pizhenwei@bytedance.com>, Ani Sinha <anisinha@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Daniel =?iso-8859-1?Q?P=2E_Berrang=E9?= <berrange@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- Laurent Vivier <laurent@vivier.eu>
-Subject: Re: [PATCH v3 0/4] qapi: add auto-generated return docs
-Message-ID: <20250530080853-mutt-send-email-mst@kernel.org>
-References: <20250523182442.54469-1-jsnow@redhat.com>
+ bh=G3msaTiIXkgzlqvH4DuyIlG+91cFxj2PufezYbsAIXg=;
+ b=UtAcrVQ6JXEqTIQARyoCI6cytfsq7zZrpMaFxNOp+muQmKX//6xpiziZugZseto01JCsh+
+ jPHJYPpYN8ke5CouRgu3Aw9DG05nsQ4LbxWKZfQhREoDrfxy5DPEpiLdDiP8Eg7AzhTx0N
+ h1/wKnYw5WQT5VQoFkiY7glImUIQglA=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-301-z_so5igdM2a10LVXJ9QZug-1; Fri,
+ 30 May 2025 11:38:06 -0400
+X-MC-Unique: z_so5igdM2a10LVXJ9QZug-1
+X-Mimecast-MFC-AGG-ID: z_so5igdM2a10LVXJ9QZug_1748619485
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 21881195608C; Fri, 30 May 2025 15:38:05 +0000 (UTC)
+Received: from redhat.com (unknown [10.42.28.173])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A57E6180087C; Fri, 30 May 2025 15:38:02 +0000 (UTC)
+Date: Fri, 30 May 2025 16:37:59 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Matheus Tavares Bernardino <matheus.bernardino@oss.qualcomm.com>
+Cc: qemu-devel@nongnu.org, jmarcin@redhat.com, qemu-trivial@nongnu.org,
+ pbonzini@redhat.com, vsementsov@yandex-team.ru, brian.cain@oss.qualcomm.com
+Subject: Re: [PATCH] tests/unit/test-util-sockets: fix mem-leak on error object
+Message-ID: <aDnQ14zjpVWHja49@redhat.com>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+References: <518d94c7db20060b2a086cf55ee9bffab992a907.1748280011.git.matheus.bernardino@oss.qualcomm.com>
 MIME-Version: 1.0
-In-Reply-To: <20250523182442.54469-1-jsnow@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: IrCd9P4U-JUYXf3fYOFJLDOzij5L2X5nyZvMuUfF2_A_1748606966
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=us-ascii
+Content-Type: text/plain; charset=utf-8
 Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+Content-Transfer-Encoding: 8bit
+In-Reply-To: <518d94c7db20060b2a086cf55ee9bffab992a907.1748280011.git.matheus.bernardino@oss.qualcomm.com>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -49
 X-Spam_score: -5.0
@@ -118,66 +77,26 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 30 May 2025 12:09:32 -0000
+X-List-Received-Date: Fri, 30 May 2025 15:38:12 -0000
 
-On Fri, May 23, 2025 at 02:24:38PM -0400, John Snow wrote:
-> v3: rebased on top of python-qapi-linting (v4) pull request;
->     removed commits that are no longer needed.
->     Markus: I forget where we left off... shall we refresh?
+On Mon, May 26, 2025 at 10:20:55AM -0700, Matheus Tavares Bernardino wrote:
+> The test fails with --enable-asan as the error struct is never freed.
+> In the case where the test expects a success but it fails, let's also
+> report the error for debugging (it will be freed internally).
 > 
-> v2: fix multi-return-sections bug :(
+> Fixes 316e8ee8d6 ("util/qemu-sockets: Refactor inet_parse() to use QemuOpts")
+> Signed-off-by: Matheus Tavares Bernardino <matheus.bernardino@oss.qualcomm.com>
+> ---
+>  tests/unit/test-util-sockets.c | 4 ++++
+>  1 file changed, 4 insertions(+)
 
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
 
-LGTM
-My bits:
-
-Acked-by: Michael S. Tsirkin <mst@redhat.com>
-
-feel free to merge
-
-
-> John Snow (4):
->   docs/qapi-domain: add return-nodesc
->   docs, qapi: generate undocumented return sections
->   qapi: remove trivial "Returns:" sections
->   qapi: rephrase return docs to avoid type name
-> 
->  docs/devel/qapi-domain.rst | 30 ++++++++++++++++++++++++++++++
->  docs/sphinx/qapi_domain.py |  8 ++++++++
->  docs/sphinx/qapidoc.py     | 14 ++++++++------
->  qapi/audio.json            |  2 --
->  qapi/block-core.json       | 14 +++-----------
->  qapi/block-export.json     |  2 +-
->  qapi/block.json            |  2 +-
->  qapi/char.json             |  8 --------
->  qapi/control.json          |  5 ++---
->  qapi/cryptodev.json        |  2 --
->  qapi/dump.json             |  5 ++---
->  qapi/introspect.json       |  6 +++---
->  qapi/job.json              |  2 +-
->  qapi/machine-target.json   |  9 +++------
->  qapi/machine.json          | 22 ----------------------
->  qapi/migration.json        | 12 ------------
->  qapi/misc-target.json      | 14 +-------------
->  qapi/misc.json             | 12 ++----------
->  qapi/net.json              |  2 +-
->  qapi/pci.json              |  2 +-
->  qapi/qdev.json             |  3 +--
->  qapi/qom.json              |  8 +++-----
->  qapi/rocker.json           |  4 ----
->  qapi/run-state.json        |  2 --
->  qapi/stats.json            |  2 +-
->  qapi/tpm.json              |  4 ----
->  qapi/trace.json            |  2 +-
->  qapi/ui.json               | 10 +---------
->  qapi/virtio.json           |  8 +++-----
->  qapi/yank.json             |  1 -
->  scripts/qapi/parser.py     | 15 +++++++++++++++
->  scripts/qapi/schema.py     |  3 +++
->  32 files changed, 95 insertions(+), 140 deletions(-)
-> 
-> -- 
-> 2.48.1
-> 
+With regards,
+Daniel
+-- 
+|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
+|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
+|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
 
 
