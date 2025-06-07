@@ -1,57 +1,50 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uNWUY-0004Et-2w
-	for mharc-qemu-trivial@gnu.org; Fri, 06 Jun 2025 08:48:14 -0400
+	id 1uNtfS-0008TU-6q
+	for mharc-qemu-trivial@gnu.org; Sat, 07 Jun 2025 09:33:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ethan84@andestech.com>)
- id 1uNU8v-0003Bj-NJ
- for qemu-trivial@nongnu.org; Fri, 06 Jun 2025 06:17:49 -0400
-Received: from 60-248-80-70.hinet-ip.hinet.net ([60.248.80.70]
- helo=Atcsqr.andestech.com)
+ (Exim 4.90_1) (envelope-from <philmb3487@proton.me>)
+ id 1uNnOp-0003yJ-D8
+ for qemu-trivial@nongnu.org; Sat, 07 Jun 2025 02:51:30 -0400
+Received: from mail-0301.mail-europe.com ([188.165.51.139])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ethan84@andestech.com>)
- id 1uNU8k-0000ta-NT
- for qemu-trivial@nongnu.org; Fri, 06 Jun 2025 06:17:43 -0400
-Received: from Atcsqr.andestech.com (localhost [127.0.0.2] (may be forged))
- by Atcsqr.andestech.com with ESMTP id 5569w2E5058295
- for <qemu-trivial@nongnu.org>; Fri, 6 Jun 2025 17:58:02 +0800 (+08)
- (envelope-from ethan84@andestech.com)
-Received: from mail.andestech.com (ATCPCS31.andestech.com [10.0.1.89])
- by Atcsqr.andestech.com with ESMTPS id 5569vhDH058237
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Fri, 6 Jun 2025 17:57:43 +0800 (+08)
- (envelope-from ethan84@andestech.com)
-Received: from atcpcw16.andestech.com (10.0.1.106) by ATCPCS31.andestech.com
- (10.0.1.89) with Microsoft SMTP Server (TLS) id 14.3.498.0; Fri, 6 Jun 2025
- 17:57:43 +0800
-From: Ethan Chen <ethan84@andestech.com>
-To: <qemu-devel@nongnu.org>
-CC: <qemu-trivial@nongnu.org>, <richard.henderson@linaro.org>,
- <pbonzini@redhat.com>, Ethan Chen <ethan84@andestech.com>
-Subject: [PATCH] qemu-options.hx: Fix reversed description of icount sleep
- behavior
-Date: Fri, 6 Jun 2025 17:57:28 +0800
-Message-ID: <20250606095728.3672832-1-ethan84@andestech.com>
-X-Mailer: git-send-email 2.42.0.345.gaab89be2eb.dirty
+ (Exim 4.90_1) (envelope-from <philmb3487@proton.me>)
+ id 1uNnOl-0003HI-3D
+ for qemu-trivial@nongnu.org; Sat, 07 Jun 2025 02:51:26 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
+ s=vvswtje47zghnir5teajfiecyq.protonmail; t=1749279076; x=1749538276;
+ bh=uJNj4Jagtot6LBECduBjwKUFgQoSyFRKjvden+AF9Fo=;
+ h=Date:To:From:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+ Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector:
+ List-Unsubscribe:List-Unsubscribe-Post;
+ b=k4KYpePaPM04ZZwW4tUH5MZejOkZD/f1FoxnuprHrZzuupqjYbst5JexB0Vlyp8QW
+ eH3Fq2TYvBmS5RzJbUoONhyrz30xfKn8BQRhRZQgfGH6jd2PHUFDK3WY5Yhg+QknVr
+ 2M/pk+I+6ibzR4tNySGn2XIOS813LYE9Dd6m2tfT95PACpt/xNuVmtlzxsqDsi78WJ
+ sMyckgokHKXCe/UtEm5hekY+s/HfrO77PLAJCu8desOW3tUu/P18GOAHhpIHf5j9W/
+ 7FgkD8k8jFMr/qfmDfGQq/9rzw6EqPc+pGjv05GHmRfMTtuQ3usIl4s1HB3O61vX9H
+ GSnsXm9WDL10Q==
+Date: Sat, 07 Jun 2025 06:51:12 +0000
+To: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+From: philmb3487 <philmb3487@proton.me>
+Subject: trivial patch qemu
+Message-ID: <HnyjTNqwrfGusE44bnM7kuLuj13Di1VgXN-dXVHMOSnfgCUhoipOVIoVS1WQaKrJxmEDy9XJGdlQj6zVTIdJE0QVlfBhfbcckFFWRRP56uY=@proton.me>
+Feedback-ID: 109714282:user:proton
+X-Pm-Message-ID: 4a3ae8ac0e1cb5bcb7254f280c8d7013ff64c1a2
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.0.1.106]
-X-DKIM-Results: atcpcs31.andestech.com; dkim=none;
-X-DNSRBL: 
-X-SPAM-SOURCE-CHECK: pass
-X-MAIL: Atcsqr.andestech.com 5569w2E5058295
-Received-SPF: pass client-ip=60.248.80.70; envelope-from=ethan84@andestech.com;
- helo=Atcsqr.andestech.com
-X-Spam_score_int: -8
-X-Spam_score: -0.9
-X-Spam_bar: /
-X-Spam_report: (-0.9 / 5.0 requ) BAYES_00=-1.9, PDS_RDNS_DYNAMIC_FP=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RDNS_DYNAMIC=0.982, SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- TVD_RCVD_IP=0.001 autolearn=no autolearn_force=no
+Content-Type: multipart/alternative;
+ boundary="b1=_HrP8UJUO7obh0eJsUr1C309QIf7RZZn9pqfr9nZqF3E"
+Received-SPF: pass client-ip=188.165.51.139; envelope-from=philmb3487@proton.me;
+ helo=mail-0301.mail-europe.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 06 Jun 2025 08:48:12 -0400
+X-Mailman-Approved-At: Sat, 07 Jun 2025 09:33:01 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,41 +56,92 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 06 Jun 2025 10:17:49 -0000
+X-List-Received-Date: Sat, 07 Jun 2025 06:51:31 -0000
 
-The documentation for the -icount option incorrectly describes the behavior
-of the sleep suboption. Based on the actual implementation and system
-behavior, the effects of sleep=on and sleep=off were inadvertently reversed.
-This commit updates the description to reflect their intended functionality.
+--b1=_HrP8UJUO7obh0eJsUr1C309QIf7RZZn9pqfr9nZqF3E
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: base64
 
-Signed-off-by: Ethan Chen <ethan84@andestech.com>
----
- qemu-options.hx | 8 ++++----
- 1 file changed, 4 insertions(+), 4 deletions(-)
+VGhlIHRyYWNpbmcgZnVuY3Rpb24gZm9yIHRoZSB3cml0ZSBjYXNlIGluY29ycmVjdGx5IGhhcyBw
+YXJhbWV0ZXJzIHN3aXRjaGVkIGFyb3VuZC4gU28gb3JkZXIgdGhlbSBpbiB0aGUgY29ycmVjdCB3
+YXkuCgpTaWduZWQtb2ZmLWJ5OiBQaGlsaXBwZSBNaWNoYXVkLUJvdWRyZWF1bHQgPHBoaWxtYjM0
+ODdAcHJvdG9uLm1lPgoKLS0tIGEvaHcvbWlzYy9zdG0zMl9yY2MuYworKysgYi9ody9taXNjL3N0
+bTMyX3JjYy5jCkBAIC02MCw3ICs2MCw3IEBAIHN0YXRpYyB2b2lkIHN0bTMyX3JjY193cml0ZSh2
+b2lkICpvcGFxdWUsIGh3YWRkciBhZGRyLAp1aW50MzJfdCB2YWx1ZSA9IHZhbDY0Owp1aW50MzJf
+dCBwcmV2X3ZhbHVlLCBuZXdfdmFsdWUsIGlycV9vZmZzZXQ7CgotIHRyYWNlX3N0bTMyX3JjY193
+cml0ZSh2YWx1ZSwgYWRkcik7CisgdHJhY2Vfc3RtMzJfcmNjX3dyaXRlKGFkZHIsIHZhbHVlKTsK
+CmlmIChhZGRyID4gU1RNMzJfUkNDX0RDS0NGR1IyKSB7CnFlbXVfbG9nX21hc2soTE9HX0dVRVNU
+X0VSUk9SLCAiJXM6IEJhZCBvZmZzZXQgMHglIkhXQUREUl9QUkl4IlxuIiwKClNlbnQgd2l0aCBb
+UHJvdG9uIE1haWxdKGh0dHBzOi8vcHJvdG9uLm1lL21haWwvaG9tZSkgc2VjdXJlIGVtYWlsLg==
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 7eb8e02b4b..1f862b19a6 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -4936,13 +4936,13 @@ SRST
-     with actual performance.
- 
-     When the virtual cpu is sleeping, the virtual time will advance at
--    default speed unless ``sleep=on`` is specified. With
--    ``sleep=on``, the virtual time will jump to the next timer
-+    default speed unless ``sleep=off`` is specified. With
-+    ``sleep=off``, the virtual time will jump to the next timer
-     deadline instantly whenever the virtual cpu goes to sleep mode and
-     will not advance if no timer is enabled. This behavior gives
-     deterministic execution times from the guest point of view.
--    The default if icount is enabled is ``sleep=off``.
--    ``sleep=on`` cannot be used together with either ``shift=auto``
-+    The default if icount is enabled is ``sleep=on``.
-+    ``sleep=off`` cannot be used together with either ``shift=auto``
-     or ``align=on``.
- 
-     ``align=on`` will activate the delay algorithm which will try to
--- 
-2.34.1
+--b1=_HrP8UJUO7obh0eJsUr1C309QIf7RZZn9pqfr9nZqF3E
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: base64
+
+PGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDE0
+cHg7Ij5UaGUgdHJhY2luZyBmdW5jdGlvbiBmb3IgdGhlIHdyaXRlIGNhc2UgaW5jb3JyZWN0bHkg
+aGFzIHBhcmFtZXRlcnMgc3dpdGNoZWQgYXJvdW5kLiBTbyBvcmRlciB0aGVtIGluIHRoZSBjb3Jy
+ZWN0IHdheS48L2Rpdj48ZGl2IHN0eWxlPSJmb250LWZhbWlseTogQXJpYWwsIHNhbnMtc2VyaWY7
+IGZvbnQtc2l6ZTogMTRweDsiPjxicj48L2Rpdj48ZGl2IHN0eWxlPSJmb250LWZhbWlseTogQXJp
+YWwsIHNhbnMtc2VyaWY7IGZvbnQtc2l6ZTogMTRweDsiPjxwcmU+U2lnbmVkLW9mZi1ieTogUGhp
+bGlwcGUgTWljaGF1ZC1Cb3VkcmVhdWx0ICZsdDtwaGlsbWIzNDg3QHByb3Rvbi5tZSZndDsNCjwv
+cHJlPjxicj48YnI+PC9kaXY+PGRpdiBzdHlsZT0iZm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNl
+cmlmOyBmb250LXNpemU6IDE0cHg7Ij48c3BhbiBzdHlsZT0iZm9udC1mYW1pbHk6bW9ub3NwYWNl
+Ij48c3BhbiBzdHlsZT0iZm9udC13ZWlnaHQ6IGJvbGQ7IGNvbG9yOiByZ2IoMCwgMCwgMCk7IGJh
+Y2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiPi0tLSBhL2h3L21pc2Mvc3RtMzJf
+cmNjLmM8L3NwYW4+PHNwYW4gc3R5bGU9ImNvbG9yOiByZ2IoMCwgMCwgMCk7IGJhY2tncm91bmQt
+Y29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiPjwvc3Bhbj48YnI+PHNwYW4gc3R5bGU9ImZvbnQt
+d2VpZ2h0OiBib2xkOyBjb2xvcjogcmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2Io
+MjU1LCAyNTUsIDI1NSk7Ij4rKysgYi9ody9taXNjL3N0bTMyX3JjYy5jPC9zcGFuPjxzcGFuIHN0
+eWxlPSJjb2xvcjogcmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUs
+IDI1NSk7Ij48L3NwYW4+PGJyPjxzcGFuIHN0eWxlPSJjb2xvcjogcmdiKDI0LCAxNzgsIDE3OCk7
+IGJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiPkBAIC02MCw3ICs2MCw3IEBA
+PC9zcGFuPjxzcGFuIHN0eWxlPSJjb2xvcjogcmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5kLWNvbG9y
+OiByZ2IoMjU1LCAyNTUsIDI1NSk7Ij4gc3RhdGljIHZvaWQgc3RtMzJfcmNjX3dyaXRlKHZvaWQg
+Km9wYXF1ZSwgaHdhZGRyIGFkZHIsPC9zcGFuPjxzcGFuIHN0eWxlPSJjb2xvcjogcmdiKDAsIDAs
+IDApOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7Ij48L3NwYW4+PGJyPjxz
+cGFuIHN0eWxlPSJjb2xvcjogcmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1
+LCAyNTUsIDI1NSk7Ij4gJm5ic3A7Jm5ic3A7Jm5ic3A7Jm5ic3A7dWludDMyX3QgdmFsdWUgPSB2
+YWw2NDs8L3NwYW4+PHNwYW4gc3R5bGU9ImNvbG9yOiByZ2IoMCwgMCwgMCk7IGJhY2tncm91bmQt
+Y29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiPjwvc3Bhbj48YnI+PHNwYW4gc3R5bGU9ImNvbG9y
+OiByZ2IoMCwgMCwgMCk7IGJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiPiAm
+bmJzcDsmbmJzcDsmbmJzcDsmbmJzcDt1aW50MzJfdCBwcmV2X3ZhbHVlLCBuZXdfdmFsdWUsIGly
+cV9vZmZzZXQ7PC9zcGFuPjxzcGFuIHN0eWxlPSJjb2xvcjogcmdiKDAsIDAsIDApOyBiYWNrZ3Jv
+dW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7Ij48L3NwYW4+PGJyPjxzcGFuIHN0eWxlPSJj
+b2xvcjogcmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7
+Ij4gPC9zcGFuPjxzcGFuIHN0eWxlPSJjb2xvcjogcmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5kLWNv
+bG9yOiByZ2IoMjU1LCAyNTUsIDI1NSk7Ij4mbmJzcDs8L3NwYW4+PGJyPjxzcGFuIHN0eWxlPSJj
+b2xvcjogcmdiKDE3OCwgMjQsIDI0KTsgYmFja2dyb3VuZC1jb2xvcjogcmdiKDI1NSwgMjU1LCAy
+NTUpOyI+LSAmbmJzcDsmbmJzcDsmbmJzcDt0cmFjZV9zdG0zMl9yY2Nfd3JpdGUodmFsdWUsIGFk
+ZHIpOzwvc3Bhbj48c3BhbiBzdHlsZT0iY29sb3I6IHJnYigwLCAwLCAwKTsgYmFja2dyb3VuZC1j
+b2xvcjogcmdiKDI1NSwgMjU1LCAyNTUpOyI+PC9zcGFuPjxicj48c3BhbiBzdHlsZT0iY29sb3I6
+IHJnYigyNCwgMTc4LCAyNCk7IGJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsi
+PisgJm5ic3A7Jm5ic3A7Jm5ic3A7dHJhY2Vfc3RtMzJfcmNjX3dyaXRlKGFkZHIsIHZhbHVlKTs8
+L3NwYW4+PHNwYW4gc3R5bGU9ImNvbG9yOiByZ2IoMCwgMCwgMCk7IGJhY2tncm91bmQtY29sb3I6
+IHJnYigyNTUsIDI1NSwgMjU1KTsiPjwvc3Bhbj48YnI+PHNwYW4gc3R5bGU9ImNvbG9yOiByZ2Io
+MCwgMCwgMCk7IGJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiPiA8L3NwYW4+
+PHNwYW4gc3R5bGU9ImNvbG9yOiByZ2IoMCwgMCwgMCk7IGJhY2tncm91bmQtY29sb3I6IHJnYigy
+NTUsIDI1NSwgMjU1KTsiPiZuYnNwOzwvc3Bhbj48YnI+PHNwYW4gc3R5bGU9ImNvbG9yOiByZ2Io
+MCwgMCwgMCk7IGJhY2tncm91bmQtY29sb3I6IHJnYigyNTUsIDI1NSwgMjU1KTsiPiAmbmJzcDsm
+bmJzcDsmbmJzcDsmbmJzcDtpZiAoYWRkciAmZ3Q7IFNUTTMyX1JDQ19EQ0tDRkdSMikgezwvc3Bh
+bj48c3BhbiBzdHlsZT0iY29sb3I6IHJnYigwLCAwLCAwKTsgYmFja2dyb3VuZC1jb2xvcjogcmdi
+KDI1NSwgMjU1LCAyNTUpOyI+PC9zcGFuPjxicj48c3BhbiBzdHlsZT0iY29sb3I6IHJnYigwLCAw
+LCAwKTsgYmFja2dyb3VuZC1jb2xvcjogcmdiKDI1NSwgMjU1LCAyNTUpOyI+ICZuYnNwOyZuYnNw
+OyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwOyZuYnNwO3FlbXVfbG9nX21hc2soTE9HX0dV
+RVNUX0VSUk9SLCAiJXM6IEJhZCBvZmZzZXQgMHglIkhXQUREUl9QUkl4IlxuIiw8L3NwYW4+PGJy
+PjxzcGFuIHN0eWxlPSJjb2xvcjogcmdiKDAsIDAsIDApOyBiYWNrZ3JvdW5kLWNvbG9yOiByZ2Io
+MjU1LCAyNTUsIDI1NSk7Ij48L3NwYW4+PGJyPjwvc3Bhbj48YnI+PC9kaXY+PGRpdiBzdHlsZT0i
+Zm9udC1mYW1pbHk6IEFyaWFsLCBzYW5zLXNlcmlmOyBmb250LXNpemU6IDE0cHg7Ij48YnI+PC9k
+aXY+DQo8ZGl2IGNsYXNzPSJwcm90b25tYWlsX3NpZ25hdHVyZV9ibG9jayIgc3R5bGU9ImZvbnQt
+ZmFtaWx5OiBBcmlhbCwgc2Fucy1zZXJpZjsgZm9udC1zaXplOiAxNHB4OyI+DQogICAgPGRpdiBj
+bGFzcz0icHJvdG9ubWFpbF9zaWduYXR1cmVfYmxvY2stdXNlciBwcm90b25tYWlsX3NpZ25hdHVy
+ZV9ibG9jay1lbXB0eSI+DQogICAgICAgIA0KICAgICAgICAgICAgPC9kaXY+DQogICAgDQogICAg
+ICAgICAgICA8ZGl2IGNsYXNzPSJwcm90b25tYWlsX3NpZ25hdHVyZV9ibG9jay1wcm90b24iPg0K
+ICAgICAgICBTZW50IHdpdGggPGEgdGFyZ2V0PSJfYmxhbmsiIGhyZWY9Imh0dHBzOi8vcHJvdG9u
+Lm1lL21haWwvaG9tZSI+UHJvdG9uIE1haWw8L2E+IHNlY3VyZSBlbWFpbC4NCiAgICA8L2Rpdj4N
+CjwvZGl2Pg0K
+
+
+--b1=_HrP8UJUO7obh0eJsUr1C309QIf7RZZn9pqfr9nZqF3E--
 
 
