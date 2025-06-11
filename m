@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uPQAm-0002mH-9j
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:27:40 -0400
+	id 1uPQAt-00030c-Qh
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:27:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9q-0001ax-Ib
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:44 -0400
+ id 1uPQ9t-0001cp-8R
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:47 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9g-0001Hg-VC
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:42 -0400
+ id 1uPQ9h-0001Je-CW
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666370;
+ s=mimecast20190719; t=1749666384;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mm98qXn5IDmt3E297nVLvHl5ngbngtyzaU5/4dIyXnw=;
- b=OmRx0aR8nKs1UnbqFH55GSxG5J4cR26tz/h9u/YavUJOo8AY0hq5BUcy5PIYZKBH4yY2KE
- ypE1fT/MA365eSHfR1qR0ZxmSXt+xlBNyYZxRelRNUuDJJSdx2/7zBhQLOvx8JDaeem0Xg
- bEl78CTIfrhLH4qg2vWSR9jxZk1Hg0I=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=HrDpLNUDxNjCCWyN7dPnjdzORIrSgivckyj7LOAAsYg=;
+ b=UpsfjTcFHl9SCwkY8kJQGX5phxdHolAQFG1zEyCTN/jxYDY/5jXPI5wsXpb0TSG3lT5UdB
+ uhsYFGNx/DsccCQUi/LDJ4xuVo0L+CtsG3W6CFOY8D26AayLNWspq0wyh9+4vG4Wg+nJ4d
+ P1voVoiA8ZI3HAA1/LnCKmk9Wt04vLg=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-591-E9XgjjYEMhqIillSL_vM_Q-1; Wed,
- 11 Jun 2025 14:26:07 -0400
-X-MC-Unique: E9XgjjYEMhqIillSL_vM_Q-1
-X-Mimecast-MFC-AGG-ID: E9XgjjYEMhqIillSL_vM_Q_1749666364
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-61-0fmQl1_hOTK9_fyKainSSA-1; Wed,
+ 11 Jun 2025 14:26:19 -0400
+X-MC-Unique: 0fmQl1_hOTK9_fyKainSSA-1
+X-Mimecast-MFC-AGG-ID: 0fmQl1_hOTK9_fyKainSSA_1749666375
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0D00B195608E; Wed, 11 Jun 2025 18:26:03 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9893418002A2; Wed, 11 Jun 2025 18:26:14 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id F008819560A3; Wed, 11 Jun 2025 18:26:00 +0000 (UTC)
+ id 85D4319560A3; Wed, 11 Jun 2025 18:26:12 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -67,10 +67,10 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 03/31] block: skip automatic zero-init of large array in
- ioq_submit
-Date: Wed, 11 Jun 2025 14:25:05 -0400
-Message-ID: <20250611182533.200590-4-stefanha@redhat.com>
+Subject: [PULL 06/31] chardev/char-socket: skip automatic zero-init of large
+ array
+Date: Wed, 11 Jun 2025 14:25:08 -0400
+Message-ID: <20250611182533.200590-7-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
@@ -99,38 +99,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Jun 2025 18:26:45 -0000
+X-List-Received-Date: Wed, 11 Jun 2025 18:26:48 -0000
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'ioq_submit' method has a struct array that is 8k in size.
-Skip the automatic zero-init of this array to eliminate the
-performance overhead in the I/O hot path.
+The 'tcp_chr_read' method has a 4k byte array used for copying
+data between the socket and device. Skip the automatic zero-init
+of this array to eliminate the performance overhead in the I/O
+hot path.
 
-The 'iocbs' array will selectively initialized when processing
-the I/O data.
+The 'buf' array will be fully initialized when reading data off
+the network socket.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-id: 20250610123709.835102-4-berrange@redhat.com
+Message-id: 20250610123709.835102-7-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- block/linux-aio.c | 2 +-
+ chardev/char-socket.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/block/linux-aio.c b/block/linux-aio.c
-index 407369f5c9..c200e7ad20 100644
---- a/block/linux-aio.c
-+++ b/block/linux-aio.c
-@@ -291,7 +291,7 @@ static void ioq_submit(LinuxAioState *s)
+diff --git a/chardev/char-socket.c b/chardev/char-socket.c
+index e8dd2931dc..1e8313915b 100644
+--- a/chardev/char-socket.c
++++ b/chardev/char-socket.c
+@@ -497,7 +497,7 @@ static gboolean tcp_chr_read(QIOChannel *chan, GIOCondition cond, void *opaque)
  {
-     int ret, len;
-     struct qemu_laiocb *aiocb;
--    struct iocb *iocbs[MAX_EVENTS];
-+    QEMU_UNINITIALIZED struct iocb *iocbs[MAX_EVENTS];
-     QSIMPLEQ_HEAD(, qemu_laiocb) completed;
+     Chardev *chr = CHARDEV(opaque);
+     SocketChardev *s = SOCKET_CHARDEV(opaque);
+-    uint8_t buf[CHR_READ_BUF_LEN];
++    QEMU_UNINITIALIZED uint8_t buf[CHR_READ_BUF_LEN];
+     int len, size;
  
-     do {
+     if ((s->state != TCP_CHARDEV_STATE_CONNECTED) ||
 -- 
 2.49.0
 
