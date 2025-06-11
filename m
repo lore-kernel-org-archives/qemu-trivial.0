@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uPQ9z-0001nj-LC
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:26:53 -0400
+	id 1uPQA5-0001r6-LP
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:26:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9l-0001WZ-Jb
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:37 -0400
+ id 1uPQ9r-0001bQ-C9
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:44 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9g-0001ID-ME
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:36 -0400
+ id 1uPQ9g-0001GJ-VN
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666373;
+ s=mimecast20190719; t=1749666364;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=mt7Eev/XPLmMMdxpFyBJo5Jewpv1gUUY+0ePO6YtQ/c=;
- b=ZtUxJoFRrMljj1bWE18YRV1+vK7K1JlO/nuXwRQMEyfXH4T9FitWyAN+4MzAfYeKD5GyjT
- 8WKzHu1DAt4bBEAwOinqKLvVilZ6jcy/VscNhik1x8bp1EmYyeN0jmc1EdnGznEAGtfDCL
- cBHlHd0AJttrM408PL7LwdiX1VVPP0k=
+ bh=UQNXH4s6oZwiIt3/fk9WMce4UX8+i3+RrT8bw0pK+dY=;
+ b=Xi+rB8/uGnWpjp/dmnjut/CwhDmUr4q3+1dg78nHmr59E/BjUyiYzTsKccjnEkoWVSgJiN
+ SYO50zRO+ZTpdOiCDbsNmMNIP0r2dx9V7j4iBHI/0oaBhNenny/rZCjw/lH1lXvduloEJs
+ TuwCxXsM+KYt2y9Q5G6aYcBJcZybwUM=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-657-cE_DP5rNMDGSzqy0Vv7YPQ-1; Wed,
- 11 Jun 2025 14:26:09 -0400
-X-MC-Unique: cE_DP5rNMDGSzqy0Vv7YPQ-1
-X-Mimecast-MFC-AGG-ID: cE_DP5rNMDGSzqy0Vv7YPQ_1749666366
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-479-FQt9AiT3P5azAo_his_eOA-1; Wed,
+ 11 Jun 2025 14:25:59 -0400
+X-MC-Unique: FQt9AiT3P5azAo_his_eOA-1
+X-Mimecast-MFC-AGG-ID: FQt9AiT3P5azAo_his_eOA_1749666356
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4ED6918002A4; Wed, 11 Jun 2025 18:26:05 +0000 (UTC)
+ id 3AE341800283; Wed, 11 Jun 2025 18:25:54 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 254A31800284; Wed, 11 Jun 2025 18:26:04 +0000 (UTC)
+ id 389FA18003FC; Wed, 11 Jun 2025 18:25:50 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -67,9 +67,10 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 04/31] chardev/char-fd: skip automatic zero-init of large array
-Date: Wed, 11 Jun 2025 14:25:06 -0400
-Message-ID: <20250611182533.200590-5-stefanha@redhat.com>
+Subject: [PULL 01/31] include/qemu/compiler: add QEMU_UNINITIALIZED attribute
+ macro
+Date: Wed, 11 Jun 2025 14:25:03 -0400
+Message-ID: <20250611182533.200590-2-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
@@ -98,39 +99,64 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Jun 2025 18:26:39 -0000
+X-List-Received-Date: Wed, 11 Jun 2025 18:26:45 -0000
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+The QEMU_UNINITIALIZED macro is to be used to skip the default compiler
+variable initialization done by -ftrivial-auto-var-init=zero.
 
-The 'fd_chr_read' method has a 4k byte array used for copying
-data between the socket and device. Skip the automatic zero-init
-of this array to eliminate the performance overhead in the I/O
-hot path.
+Use this in cases where there a method in the device I/O path (or other
+important hot paths), that has large variables on the stack. A rule of
+thumb is that "large" means a method with 4kb data in the local stack
+frame. Any variables which are KB in size, should be annotated with this
+attribute, to pre-emptively eliminate any potential overhead from the
+compiler zero'ing memory.
 
-The 'buf' array will be fully initialized when reading data off
-the network socket.
+Given that this turns off a security hardening feature, when using this
+to flag variables, it is important that the code is double-checked to
+ensure there is no possible use of uninitialized data in the method.
 
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-id: 20250610123709.835102-5-berrange@redhat.com
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Message-id: 20250610123709.835102-2-berrange@redhat.com
+[DB: split off patch & rewrite guidance on when to use the annotation]
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- chardev/char-fd.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ include/qemu/compiler.h | 20 ++++++++++++++++++++
+ 1 file changed, 20 insertions(+)
 
-diff --git a/chardev/char-fd.c b/chardev/char-fd.c
-index 23bfe3c0b1..6f03adf872 100644
---- a/chardev/char-fd.c
-+++ b/chardev/char-fd.c
-@@ -50,7 +50,7 @@ static gboolean fd_chr_read(QIOChannel *chan, GIOCondition cond, void *opaque)
-     Chardev *chr = CHARDEV(opaque);
-     FDChardev *s = FD_CHARDEV(opaque);
-     int len;
--    uint8_t buf[CHR_READ_BUF_LEN];
-+    QEMU_UNINITIALIZED uint8_t buf[CHR_READ_BUF_LEN];
-     ssize_t ret;
+diff --git a/include/qemu/compiler.h b/include/qemu/compiler.h
+index 496dac5ac1..65b89958d3 100644
+--- a/include/qemu/compiler.h
++++ b/include/qemu/compiler.h
+@@ -207,6 +207,26 @@
+ # define QEMU_USED
+ #endif
  
-     len = sizeof(buf);
++/*
++ * Disable -ftrivial-auto-var-init on a local variable.
++ *
++ * Use this in cases where there a method in the device I/O path (or other
++ * important hot paths), that has large variables on the stack. A rule of
++ * thumb is that "large" means a method with 4kb data in the local stack
++ * frame. Any variables which are KB in size, should be annotated with this
++ * attribute, to pre-emptively eliminate any potential overhead from the
++ * compiler's implicit zero'ing of memory.
++ *
++ * Given that this turns off a security hardening feature, when using this
++ * to flag variables, it is important that the code is double-checked to
++ * ensure there is no possible use of uninitialized data in the method.
++ */
++#if __has_attribute(uninitialized)
++# define QEMU_UNINITIALIZED __attribute__((uninitialized))
++#else
++# define QEMU_UNINITIALIZED
++#endif
++
+ /*
+  * http://clang.llvm.org/docs/ThreadSafetyAnalysis.html
+  *
 -- 
 2.49.0
 
