@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uPQAi-0002cW-NL
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:27:36 -0400
+	id 1uPQAm-0002mH-9j
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:27:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9r-0001bY-Mw
+ id 1uPQ9q-0001ax-Ib
  for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:44 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9g-0001Jn-Vo
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:43 -0400
+ id 1uPQ9g-0001Hg-VC
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666385;
+ s=mimecast20190719; t=1749666370;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=6KBxYExeSIO+wAZqDocNq5N46kWlKpuMH4htwSA8I7o=;
- b=DJ5l8iwmcSAO8c0/J2YxPvGwX0Lez2eNIsNGo0XyTZthez1LIYaTcpwabwEYCXZL6L5BjG
- ID1kKs39E8Ahgcf9Ga9stVjTSlzTvRcgoPdNlVWl1mw19TxOIbAqp4P+RRY5QwiWbvnWdA
- qt3iFpV5YhU7xRg+A+wXYQ/H2Vsz3bM=
+ bh=mm98qXn5IDmt3E297nVLvHl5ngbngtyzaU5/4dIyXnw=;
+ b=OmRx0aR8nKs1UnbqFH55GSxG5J4cR26tz/h9u/YavUJOo8AY0hq5BUcy5PIYZKBH4yY2KE
+ ypE1fT/MA365eSHfR1qR0ZxmSXt+xlBNyYZxRelRNUuDJJSdx2/7zBhQLOvx8JDaeem0Xg
+ bEl78CTIfrhLH4qg2vWSR9jxZk1Hg0I=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-423-7HAgH3vrNMOZl3uftiPVJA-1; Wed,
- 11 Jun 2025 14:26:21 -0400
-X-MC-Unique: 7HAgH3vrNMOZl3uftiPVJA-1
-X-Mimecast-MFC-AGG-ID: 7HAgH3vrNMOZl3uftiPVJA_1749666378
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-591-E9XgjjYEMhqIillSL_vM_Q-1; Wed,
+ 11 Jun 2025 14:26:07 -0400
+X-MC-Unique: E9XgjjYEMhqIillSL_vM_Q-1
+X-Mimecast-MFC-AGG-ID: E9XgjjYEMhqIillSL_vM_Q_1749666364
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EB5F21955F45; Wed, 11 Jun 2025 18:26:17 +0000 (UTC)
+ id 0D00B195608E; Wed, 11 Jun 2025 18:26:03 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E468218003FC; Wed, 11 Jun 2025 18:26:15 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id F008819560A3; Wed, 11 Jun 2025 18:26:00 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -67,15 +67,16 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 07/31] hw/audio/ac97: skip automatic zero-init of large arrays
-Date: Wed, 11 Jun 2025 14:25:09 -0400
-Message-ID: <20250611182533.200590-8-stefanha@redhat.com>
+Subject: [PULL 03/31] block: skip automatic zero-init of large array in
+ ioq_submit
+Date: Wed, 11 Jun 2025 14:25:05 -0400
+Message-ID: <20250611182533.200590-4-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -102,44 +103,34 @@ X-List-Received-Date: Wed, 11 Jun 2025 18:26:45 -0000
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'read_audio' & 'write_audio' methods have a 4k byte array used
-for copying data between the audio backend and device. Skip the
-automatic zero-init of these arrays to eliminate the performance
-overhead in the I/O hot path.
+The 'ioq_submit' method has a struct array that is 8k in size.
+Skip the automatic zero-init of this array to eliminate the
+performance overhead in the I/O hot path.
 
-The 'tmpbuf' array will be fully initialized when reading data from
-the audio backend and/or device memory.
+The 'iocbs' array will selectively initialized when processing
+the I/O data.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-id: 20250610123709.835102-8-berrange@redhat.com
+Message-id: 20250610123709.835102-4-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/audio/ac97.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ block/linux-aio.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/audio/ac97.c b/hw/audio/ac97.c
-index 669a0463cc..eb7a847080 100644
---- a/hw/audio/ac97.c
-+++ b/hw/audio/ac97.c
-@@ -886,7 +886,7 @@ static void nabm_writel(void *opaque, uint32_t addr, uint32_t val)
- static int write_audio(AC97LinkState *s, AC97BusMasterRegs *r,
-                        int max, int *stop)
+diff --git a/block/linux-aio.c b/block/linux-aio.c
+index 407369f5c9..c200e7ad20 100644
+--- a/block/linux-aio.c
++++ b/block/linux-aio.c
+@@ -291,7 +291,7 @@ static void ioq_submit(LinuxAioState *s)
  {
--    uint8_t tmpbuf[4096];
-+    QEMU_UNINITIALIZED uint8_t tmpbuf[4096];
-     uint32_t addr = r->bd.addr;
-     uint32_t temp = r->picb << 1;
-     uint32_t written = 0;
-@@ -959,7 +959,7 @@ static void write_bup(AC97LinkState *s, int elapsed)
- static int read_audio(AC97LinkState *s, AC97BusMasterRegs *r,
-                       int max, int *stop)
- {
--    uint8_t tmpbuf[4096];
-+    QEMU_UNINITIALIZED uint8_t tmpbuf[4096];
-     uint32_t addr = r->bd.addr;
-     uint32_t temp = r->picb << 1;
-     uint32_t nread = 0;
+     int ret, len;
+     struct qemu_laiocb *aiocb;
+-    struct iocb *iocbs[MAX_EVENTS];
++    QEMU_UNINITIALIZED struct iocb *iocbs[MAX_EVENTS];
+     QSIMPLEQ_HEAD(, qemu_laiocb) completed;
+ 
+     do {
 -- 
 2.49.0
 
