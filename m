@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uPQBE-00041P-Dd
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:28:08 -0400
+	id 1uPQBH-0004HL-J8
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:28:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQA3-0001qR-V3
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:56 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1uPQA2-0001po-5k
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQA0-0001V7-Pb
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:55 -0400
+ id 1uPQ9t-0001Sb-RF
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:53 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666410;
+ s=mimecast20190719; t=1749666405;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=AWdb0Sqw9fzzDH4yTo03Hj/NjPCQHDhEN+9qHe2StXY=;
- b=iQtNOU/fJ5T/jLbcvTVnyK2WUOLTdz+IUfDMbys1yWH/fa6OeFWD37MKYDb1Jbkf0c3kBW
- rs8fOu3uqq9sjl7xcmAW/AsJKW45iOUSEJh7ZiEIPHWltkkhsXCn+qo1sXG2tLANR6rGs0
- FQGW9ZkedFb2gny/D/cwc+VcNFcTiEI=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=im3waQOttvXRq21y6DO+WT6rky//dGN0HZp3WTaOmSo=;
+ b=dH4UK6X5+8FRdxksYF1NUf+w9xatOOYAUj9hRKuMc3s7ZyDWF8dSJ4ev9viOQWp9X7Yv7O
+ jcjvZJRiVclCXb3WNT3jvGQMAyjCSj5vYiQuWtjMqbYnCJ/Ol+mmMY6TQSsY+6eFfbWBUT
+ TW8RRmo6M5+D0tsQ8G8EXxET43mrVJw=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-462-dh4qVUhPNIWR5eVZoiLTEw-1; Wed,
- 11 Jun 2025 14:26:49 -0400
-X-MC-Unique: dh4qVUhPNIWR5eVZoiLTEw-1
-X-Mimecast-MFC-AGG-ID: dh4qVUhPNIWR5eVZoiLTEw_1749666405
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-267-FkF2Su1ZOYS-Chr4rc82RA-1; Wed,
+ 11 Jun 2025 14:26:41 -0400
+X-MC-Unique: FkF2Su1ZOYS-Chr4rc82RA-1
+X-Mimecast-MFC-AGG-ID: FkF2Su1ZOYS-Chr4rc82RA_1749666398
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9ED5E19560A2; Wed, 11 Jun 2025 18:26:45 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5473E1955F2C; Wed, 11 Jun 2025 18:26:38 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id ACEC31956094; Wed, 11 Jun 2025 18:26:44 +0000 (UTC)
+ id 6B2DA19560A3; Wed, 11 Jun 2025 18:26:37 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -67,17 +67,17 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 15/31] hw/dma/xlnx_csu_dma: skip automatic zero-init of large
+Subject: [PULL 13/31] hw/audio/via-ac97: skip automatic zero-init of large
  array
-Date: Wed, 11 Jun 2025 14:25:17 -0400
-Message-ID: <20250611182533.200590-16-stefanha@redhat.com>
+Date: Wed, 11 Jun 2025 14:25:15 -0400
+Message-ID: <20250611182533.200590-14-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -99,37 +99,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Jun 2025 18:27:00 -0000
+X-List-Received-Date: Wed, 11 Jun 2025 18:26:57 -0000
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'xlnx_csu_dma_src_notify' method has a 4k byte array used for
-copying DMA data. Skip the automatic zero-init of this array to
-eliminate the performance overhead in the I/O hot path.
+The 'out_cb' method has a 4k byte array used for copying data
+between the audio backend and device. Skip the automatic zero-init
+of this array to eliminate the performance overhead in the I/O hot
+path.
 
-The 'buf' array will be fully initialized when data is copied.
+The 'tmpbuf' array will be fully initialized when reading data from
+device memory.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-id: 20250610123709.835102-16-berrange@redhat.com
+Message-id: 20250610123709.835102-14-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/dma/xlnx_csu_dma.c | 2 +-
+ hw/audio/via-ac97.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/dma/xlnx_csu_dma.c b/hw/dma/xlnx_csu_dma.c
-index 3db3904d83..d8c7da1a50 100644
---- a/hw/dma/xlnx_csu_dma.c
-+++ b/hw/dma/xlnx_csu_dma.c
-@@ -287,7 +287,7 @@ static uint32_t xlnx_csu_dma_advance(XlnxCSUDMA *s, uint32_t len)
- static void xlnx_csu_dma_src_notify(void *opaque)
- {
-     XlnxCSUDMA *s = XLNX_CSU_DMA(opaque);
--    unsigned char buf[4 * 1024];
-+    QEMU_UNINITIALIZED unsigned char buf[4 * 1024];
-     size_t rlen = 0;
+diff --git a/hw/audio/via-ac97.c b/hw/audio/via-ac97.c
+index 1e0a5c7398..d5231e1cf2 100644
+--- a/hw/audio/via-ac97.c
++++ b/hw/audio/via-ac97.c
+@@ -175,7 +175,7 @@ static void out_cb(void *opaque, int avail)
+     ViaAC97SGDChannel *c = &s->aur;
+     int temp, to_copy, copied;
+     bool stop = false;
+-    uint8_t tmpbuf[4096];
++    QEMU_UNINITIALIZED uint8_t tmpbuf[4096];
  
-     ptimer_transaction_begin(s->src_timer);
+     if (c->stat & STAT_PAUSED) {
+         return;
 -- 
 2.49.0
 
