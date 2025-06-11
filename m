@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uPQBs-0005QG-IL
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:28:48 -0400
+	id 1uPQBw-0005i3-HK
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:28:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAO-00022b-7i
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:21 -0400
+ id 1uPQAP-00023D-T0
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:22 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAJ-0001cI-M6
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:15 -0400
+ id 1uPQAL-0001dp-TE
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666429;
+ s=mimecast20190719; t=1749666431;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=DA+s4Ip/ag7ChTelqOTkfJ0xAlR4kkpE9uIMvxvue8g=;
- b=ConDMXqy6J+wVlzrsm+hjvtpuhxXw5SMgScgILl3/RIprdA5DTvui4uNHvRoE6iD2BWUcP
- /jQPhe/meLjnL1wxhcMSn8tex2vqZvSTuF2Mv51gNd7iP3DRHwJLcAlSVkSnEBIJPfSu7o
- /lo8nO3b7/AJPPAl3jL08f3/kQy6sWk=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=GRUOwrPa9aDe+BByn7DHtlAgJL5D74m+C48N+bMyyao=;
+ b=Cev/1dxeuwLiCLgkSuP+wUcYeWS2lzUFq9L0QAP5P9xd0oQ0yG9EhS+i3Swfu+rz2gbDQ1
+ oxvB43UG/TsE5s7e6vt9HFOwxXKH522BI0DgKoMTWKBgoQJENOjjB1/AfQgspwOUNCNssp
+ pdckWgL97RzdVZZIdOX6B/4adm2e0YY=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-421-KZTdJYYaNVyTK7d4JhVIcA-1; Wed,
- 11 Jun 2025 14:27:06 -0400
-X-MC-Unique: KZTdJYYaNVyTK7d4JhVIcA-1
-X-Mimecast-MFC-AGG-ID: KZTdJYYaNVyTK7d4JhVIcA_1749666422
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-455-7oaliND1OX6iyJ8Ymqxw2Q-1; Wed,
+ 11 Jun 2025 14:27:08 -0400
+X-MC-Unique: 7oaliND1OX6iyJ8Ymqxw2Q-1
+X-Mimecast-MFC-AGG-ID: 7oaliND1OX6iyJ8Ymqxw2Q_1749666425
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C5F981956048; Wed, 11 Jun 2025 18:27:02 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DCA1B195605C; Wed, 11 Jun 2025 18:27:04 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id F07FC18003FC; Wed, 11 Jun 2025 18:27:00 +0000 (UTC)
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 262AE30002C3; Wed, 11 Jun 2025 18:27:04 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -67,16 +67,15 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 21/31] hw/net/virtio-net: skip automatic zero-init of large
- arrays
-Date: Wed, 11 Jun 2025 14:25:23 -0400
-Message-ID: <20250611182533.200590-22-stefanha@redhat.com>
+Subject: [PULL 22/31] hw/net/xgamc: skip automatic zero-init of large array
+Date: Wed, 11 Jun 2025 14:25:24 -0400
+Message-ID: <20250611182533.200590-23-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -103,40 +102,34 @@ X-List-Received-Date: Wed, 11 Jun 2025 18:27:27 -0000
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'virtio_net_receive_rcu' method has three arrays with
-VIRTQUEUE_MAX_SIZE elements, which are apprixmately 32k in
-size used for copying data between guest and host. Skip the
-automatic zero-init of these arrays to eliminate the
-performance overhead in the I/O hot path.
+The 'xgmac_enet_send' method has a 8k byte array used for copying
+data between guest and host. Skip the automatic zero-init of this
+array to eliminate the performance overhead in the I/O hot path.
 
-The three arrays will be selectively initialized as required
-when processing network buffers.
+The 'frame' buffer will be fully initialized when reading guest
+memory to fetch the data to send.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-id: 20250610123709.835102-22-berrange@redhat.com
+Message-id: 20250610123709.835102-23-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/net/virtio-net.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/net/xgmac.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/net/virtio-net.c b/hw/net/virtio-net.c
-index 221252e00a..eb93607b8c 100644
---- a/hw/net/virtio-net.c
-+++ b/hw/net/virtio-net.c
-@@ -1911,9 +1911,9 @@ static ssize_t virtio_net_receive_rcu(NetClientState *nc, const uint8_t *buf,
-     VirtIONet *n = qemu_get_nic_opaque(nc);
-     VirtIONetQueue *q;
-     VirtIODevice *vdev = VIRTIO_DEVICE(n);
--    VirtQueueElement *elems[VIRTQUEUE_MAX_SIZE];
--    size_t lens[VIRTQUEUE_MAX_SIZE];
--    struct iovec mhdr_sg[VIRTQUEUE_MAX_SIZE];
-+    QEMU_UNINITIALIZED VirtQueueElement *elems[VIRTQUEUE_MAX_SIZE];
-+    QEMU_UNINITIALIZED size_t lens[VIRTQUEUE_MAX_SIZE];
-+    QEMU_UNINITIALIZED struct iovec mhdr_sg[VIRTQUEUE_MAX_SIZE];
-     struct virtio_net_hdr_v1_hash extra_hdr;
-     unsigned mhdr_cnt = 0;
-     size_t offset, i, guest_offset, j;
+diff --git a/hw/net/xgmac.c b/hw/net/xgmac.c
+index 9c87c4e70f..d45f872467 100644
+--- a/hw/net/xgmac.c
++++ b/hw/net/xgmac.c
+@@ -207,7 +207,7 @@ static void xgmac_enet_send(XgmacState *s)
+     struct desc bd;
+     int frame_size;
+     int len;
+-    uint8_t frame[8192];
++    QEMU_UNINITIALIZED uint8_t frame[8192];
+     uint8_t *ptr;
+ 
+     ptr = frame;
 -- 
 2.49.0
 
