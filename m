@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uPQAt-00030c-Qh
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:27:47 -0400
+	id 1uPQB1-0003GU-KH
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:27:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9t-0001cp-8R
+ id 1uPQ9u-0001d2-KD
  for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:47 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9h-0001Je-CW
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:44 -0400
+ id 1uPQ9k-0001MI-TG
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666384;
+ s=mimecast20190719; t=1749666395;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=HrDpLNUDxNjCCWyN7dPnjdzORIrSgivckyj7LOAAsYg=;
- b=UpsfjTcFHl9SCwkY8kJQGX5phxdHolAQFG1zEyCTN/jxYDY/5jXPI5wsXpb0TSG3lT5UdB
- uhsYFGNx/DsccCQUi/LDJ4xuVo0L+CtsG3W6CFOY8D26AayLNWspq0wyh9+4vG4Wg+nJ4d
- P1voVoiA8ZI3HAA1/LnCKmk9Wt04vLg=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=tOmeR+7YKB0Um31qhvM3CwNMwBeIMA6XIJySMb2QpY4=;
+ b=JBfdqhHYHIn2RfgDNUvePAg9HTXRO+Dq0vaOxDuwN0QrC9IiPZFtfdkI6IoHe1oQjSMkVN
+ 2kBsqUAzchWZ/ZPnHL3xy3xvY6DNMNcYctRdYXOkp4QsjZOJFjInZazin5yiIkUBdfy+oO
+ 6Vje5prNcMKi7RyKMi+IBPTA/SbsafE=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-61-0fmQl1_hOTK9_fyKainSSA-1; Wed,
- 11 Jun 2025 14:26:19 -0400
-X-MC-Unique: 0fmQl1_hOTK9_fyKainSSA-1
-X-Mimecast-MFC-AGG-ID: 0fmQl1_hOTK9_fyKainSSA_1749666375
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-157-u0FD2h3PP0KIDu8Q0n65Hw-1; Wed,
+ 11 Jun 2025 14:26:32 -0400
+X-MC-Unique: u0FD2h3PP0KIDu8Q0n65Hw-1
+X-Mimecast-MFC-AGG-ID: u0FD2h3PP0KIDu8Q0n65Hw_1749666388
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9893418002A2; Wed, 11 Jun 2025 18:26:14 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 66D92195608F; Wed, 11 Jun 2025 18:26:28 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 85D4319560A3; Wed, 11 Jun 2025 18:26:12 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 8E91119560B2; Wed, 11 Jun 2025 18:26:22 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -67,16 +67,15 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 06/31] chardev/char-socket: skip automatic zero-init of large
- array
-Date: Wed, 11 Jun 2025 14:25:08 -0400
-Message-ID: <20250611182533.200590-7-stefanha@redhat.com>
+Subject: [PULL 09/31] hw/audio/es1370: skip automatic zero-init of large array
+Date: Wed, 11 Jun 2025 14:25:11 -0400
+Message-ID: <20250611182533.200590-10-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -103,35 +102,35 @@ X-List-Received-Date: Wed, 11 Jun 2025 18:26:48 -0000
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'tcp_chr_read' method has a 4k byte array used for copying
-data between the socket and device. Skip the automatic zero-init
-of this array to eliminate the performance overhead in the I/O
-hot path.
+The 'es1370_transfer_audio' method has a 4k byte array used for
+copying data between the audio backend and device. Skip the automatic
+zero-init of this array to eliminate the performance overhead in
+the I/O hot path.
 
-The 'buf' array will be fully initialized when reading data off
-the network socket.
+The 'tmpbuf' array will be fully initialized when reading data from
+the audio backend and/or device memory.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-id: 20250610123709.835102-7-berrange@redhat.com
+Message-id: 20250610123709.835102-10-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- chardev/char-socket.c | 2 +-
+ hw/audio/es1370.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/chardev/char-socket.c b/chardev/char-socket.c
-index e8dd2931dc..1e8313915b 100644
---- a/chardev/char-socket.c
-+++ b/chardev/char-socket.c
-@@ -497,7 +497,7 @@ static gboolean tcp_chr_read(QIOChannel *chan, GIOCondition cond, void *opaque)
+diff --git a/hw/audio/es1370.c b/hw/audio/es1370.c
+index 8efb969212..a6a32a6348 100644
+--- a/hw/audio/es1370.c
++++ b/hw/audio/es1370.c
+@@ -604,7 +604,7 @@ static uint64_t es1370_read(void *opaque, hwaddr addr, unsigned size)
+ static void es1370_transfer_audio (ES1370State *s, struct chan *d, int loop_sel,
+                                    int max, bool *irq)
  {
-     Chardev *chr = CHARDEV(opaque);
-     SocketChardev *s = SOCKET_CHARDEV(opaque);
--    uint8_t buf[CHR_READ_BUF_LEN];
-+    QEMU_UNINITIALIZED uint8_t buf[CHR_READ_BUF_LEN];
-     int len, size;
- 
-     if ((s->state != TCP_CHARDEV_STATE_CONNECTED) ||
+-    uint8_t tmpbuf[4096];
++    QEMU_UNINITIALIZED uint8_t tmpbuf[4096];
+     size_t to_transfer;
+     uint32_t addr = d->frame_addr;
+     int sc = d->scount & 0xffff;
 -- 
 2.49.0
 
