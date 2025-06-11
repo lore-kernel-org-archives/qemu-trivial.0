@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uPQCl-0006kU-Q4
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:29:44 -0400
+	id 1uPQCp-00072t-Av
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:29:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAa-0002Cz-I4
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1uPQAe-0002PD-Ow
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAR-0001gF-Pg
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:24 -0400
+ id 1uPQAa-0001ju-5E
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666437;
+ s=mimecast20190719; t=1749666446;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=e+4l0naTET+aaMWzQ/pVz9X7Jz1w04ke4T2Xq1wrDPY=;
- b=C38/+vl82MUct1+dF3vKtfgsprM0REKSkiEsGYT1+Rx086aCUiseXDLSmp9R41IuAaW+u5
- /PapdmmVb6X91LMIdkURpF2eF4y9oArCcUI3hAzSMWIB/kJYwkt8K7eTCAZBduIpMkwjFW
- k86cqfWReF5em/nYTJ/EBSFoQznNw1c=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ bh=zUBueujoaF3SY5nslIqDYxh56xsOS9uQEUGXk8GVXVA=;
+ b=bDj7gevdHd69xPI+5k0mzznKWgvosvrkfkmoDPOhfy4LV/E92ltGtkveeS16EspzU4FR+T
+ 0cbNEV2q84vKWSkIMNZAPoj4QdkruNV3XvfyOH4551eVlr1VDTe4oACm/NCD1UY0HWGQBZ
+ XiKVRFM+YaYmyP87r3OWJ6ckVF91Da8=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-78-yx9W_04IMmyJ0cqeGcc-ow-1; Wed,
- 11 Jun 2025 14:27:13 -0400
-X-MC-Unique: yx9W_04IMmyJ0cqeGcc-ow-1
-X-Mimecast-MFC-AGG-ID: yx9W_04IMmyJ0cqeGcc-ow_1749666428
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-449-1rVyhgshO_qYMZhU75p1IQ-1; Wed,
+ 11 Jun 2025 14:27:18 -0400
+X-MC-Unique: 1rVyhgshO_qYMZhU75p1IQ-1
+X-Mimecast-MFC-AGG-ID: 1rVyhgshO_qYMZhU75p1IQ_1749666434
 Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 770501955F69; Wed, 11 Jun 2025 18:27:08 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C71401956058; Wed, 11 Jun 2025 18:27:13 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
  by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4DB291956087; Wed, 11 Jun 2025 18:27:06 +0000 (UTC)
+ id ED68519560A2; Wed, 11 Jun 2025 18:27:12 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -68,16 +68,17 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Klaus Jensen <k.jensen@samsung.com>
-Subject: [PULL 23/31] hw/nvme/ctrl: skip automatic zero-init of large arrays
-Date: Wed, 11 Jun 2025 14:25:25 -0400
-Message-ID: <20250611182533.200590-24-stefanha@redhat.com>
+Subject: [PULL 25/31] hw/ppc/spapr_tpm_proxy: skip automatic zero-init of
+ large arrays
+Date: Wed, 11 Jun 2025 14:25:27 -0400
+Message-ID: <20250611182533.200590-26-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -86,7 +87,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,63 +100,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Jun 2025 18:27:30 -0000
+X-List-Received-Date: Wed, 11 Jun 2025 18:27:33 -0000
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'nvme_map_sgl' method has a 256 element array used for copying
-data from the device. Skip the automatic zero-init of this array
-to eliminate the performance overhead in the I/O hot path.
+The 'tpm_execute' method has a pair of 4k arrays used for copying
+data between guest and host. Skip the automatic zero-init of these
+arrays to eliminate the performance overhead in the I/O hot path.
 
-The 'segment' array will be fully initialized when reading data from
-the device.
-
-The 'nme_changed_nslist' method has a 4k byte array that is manually
-initialized with memset(). The compiler ought to be intelligent
-enough to turn the memset() into a static initialization operation,
-and thus not duplicate the automatic zero-init. Replacing memset()
-with '{}' makes it unambiguous that the array is statically initialized.
+The two arrays will be fully initialized when reading data from
+guest memory or reading data from the proxy FD.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
-Message-id: 20250610123709.835102-24-berrange@redhat.com
+Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>
+Message-id: 20250610123709.835102-26-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/nvme/ctrl.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ hw/ppc/spapr_tpm_proxy.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/hw/nvme/ctrl.c b/hw/nvme/ctrl.c
-index fd935507bc..220002830d 100644
---- a/hw/nvme/ctrl.c
-+++ b/hw/nvme/ctrl.c
-@@ -1057,7 +1057,8 @@ static uint16_t nvme_map_sgl(NvmeCtrl *n, NvmeSg *sg, NvmeSglDescriptor sgl,
-      */
- #define SEG_CHUNK_SIZE 256
+diff --git a/hw/ppc/spapr_tpm_proxy.c b/hw/ppc/spapr_tpm_proxy.c
+index 862eeaa50a..1297b3ad56 100644
+--- a/hw/ppc/spapr_tpm_proxy.c
++++ b/hw/ppc/spapr_tpm_proxy.c
+@@ -41,8 +41,8 @@ static ssize_t tpm_execute(SpaprTpmProxy *tpm_proxy, target_ulong *args)
+     target_ulong data_in_size = args[2];
+     uint64_t data_out = ppc64_phys_to_real(args[3]);
+     target_ulong data_out_size = args[4];
+-    uint8_t buf_in[TPM_SPAPR_BUFSIZE];
+-    uint8_t buf_out[TPM_SPAPR_BUFSIZE];
++    QEMU_UNINITIALIZED uint8_t buf_in[TPM_SPAPR_BUFSIZE];
++    QEMU_UNINITIALIZED uint8_t buf_out[TPM_SPAPR_BUFSIZE];
+     ssize_t ret;
  
--    NvmeSglDescriptor segment[SEG_CHUNK_SIZE], *sgld, *last_sgld;
-+    QEMU_UNINITIALIZED NvmeSglDescriptor segment[SEG_CHUNK_SIZE];
-+    NvmeSglDescriptor *sgld, *last_sgld;
-     uint64_t nsgld;
-     uint32_t seg_len;
-     uint16_t status;
-@@ -5128,7 +5129,7 @@ static uint16_t nvme_error_info(NvmeCtrl *n, uint8_t rae, uint32_t buf_len,
- static uint16_t nvme_changed_nslist(NvmeCtrl *n, uint8_t rae, uint32_t buf_len,
-                                     uint64_t off, NvmeRequest *req)
- {
--    uint32_t nslist[1024];
-+    uint32_t nslist[1024] = {};
-     uint32_t trans_len;
-     int i = 0;
-     uint32_t nsid;
-@@ -5138,7 +5139,6 @@ static uint16_t nvme_changed_nslist(NvmeCtrl *n, uint8_t rae, uint32_t buf_len,
-         return NVME_INVALID_FIELD | NVME_DNR;
-     }
- 
--    memset(nslist, 0x0, sizeof(nslist));
-     trans_len = MIN(sizeof(nslist) - off, buf_len);
- 
-     while ((nsid = find_first_bit(n->changed_nsids, NVME_CHANGED_NSID_SIZE)) !=
+     trace_spapr_tpm_execute(data_in, data_in_size, data_out, data_out_size);
 -- 
 2.49.0
 
