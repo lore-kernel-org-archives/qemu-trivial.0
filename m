@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uPQAe-0002Q0-Ty
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:27:33 -0400
+	id 1uPQAf-0002Sy-F2
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:27:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9l-0001WV-H1
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:37 -0400
+ id 1uPQ9p-0001ao-Rx
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:44 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9g-0001KG-KL
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:36 -0400
+ id 1uPQ9g-0001If-PP
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:40 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666387;
+ s=mimecast20190719; t=1749666378;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=O+7OFQBZxd+Nmat7sdVrdGixlbTcW+usn+WRWhkWZmc=;
- b=U3r+aS+VrcFH5U2FN7zTXfFFJl4AB4C5TNUXzHJUbnD/BHnnwUPrkMk7HzzJ20e602zBYO
- kmYXVqDzLkn+7Cbo7wsyuSKJ8AW1G7E0jJojLcol9VumKfRjwN+8pZ21Wr+YzorblOb7cT
- auLlhLwei5FbIobKWhTIbebF2FLFPQc=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=a+3IbSd15/rc8GUbCSOu3df+NumonRFcoNFm3e5bolg=;
+ b=W5YC/ufbgj/aCKl8a+V4KQ/+4QjDYr/BoMbk1nvzjj3+ndhONUSbcnfyUHThqTXobTk8sO
+ 6mmm39DnwVpGibIdm8SYAAJB+WkMTVBhY+1qBPTOBW1qs6cFHg0+AYKzmNFYlXk2uveeCP
+ 5z1JxeDzQZmgo23VqAPBMMW5NN5DHio=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-468-oT-YHPVcO2Os6-8OnAC1NA-1; Wed,
- 11 Jun 2025 14:26:25 -0400
-X-MC-Unique: oT-YHPVcO2Os6-8OnAC1NA-1
-X-Mimecast-MFC-AGG-ID: oT-YHPVcO2Os6-8OnAC1NA_1749666381
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-622-Q6Hs_-hbPnyFGqvz5I4myw-1; Wed,
+ 11 Jun 2025 14:26:16 -0400
+X-MC-Unique: Q6Hs_-hbPnyFGqvz5I4myw-1
+X-Mimecast-MFC-AGG-ID: Q6Hs_-hbPnyFGqvz5I4myw_1749666372
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 220F6195608E; Wed, 11 Jun 2025 18:26:21 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 216D1180028F; Wed, 11 Jun 2025 18:26:11 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1FA1519560AF; Wed, 11 Jun 2025 18:26:19 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 624F218003FC; Wed, 11 Jun 2025 18:26:06 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -67,16 +67,15 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 08/31] hw/audio/cs4231a: skip automatic zero-init of large
- arrays
-Date: Wed, 11 Jun 2025 14:25:10 -0400
-Message-ID: <20250611182533.200590-9-stefanha@redhat.com>
+Subject: [PULL 05/31] chardev/char-pty: skip automatic zero-init of large array
+Date: Wed, 11 Jun 2025 14:25:07 -0400
+Message-ID: <20250611182533.200590-6-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -86,7 +85,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,50 +98,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Jun 2025 18:26:39 -0000
-X-List-Received-Date: Wed, 11 Jun 2025 18:26:39 -0000
+X-List-Received-Date: Wed, 11 Jun 2025 18:26:45 -0000
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'cs_write_audio' method has a pair of byte arrays, one 4k in size
-and one 8k, which are used in converting audio samples. Skip the
-automatic zero-init of these arrays to eliminate the performance
-overhead in the I/O hot path.
+The 'pty_chr_read' method has a 4k byte array used for copying
+data between the PTY and device. Skip the automatic zero-init
+of this array to eliminate the performance overhead in the I/O
+hot path.
 
-The 'tmpbuf' array will be fully initialized when reading a block of
-data from the guest. The 'linbuf' array will be fully initialized
-when converting the audio samples.
+The 'buf' array will be fully initialized when reading data off
+the PTY.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-id: 20250610123709.835102-9-berrange@redhat.com
+Message-id: 20250610123709.835102-6-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/audio/cs4231a.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ chardev/char-pty.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/audio/cs4231a.c b/hw/audio/cs4231a.c
-index eb9a45805b..6dfff202ff 100644
---- a/hw/audio/cs4231a.c
-+++ b/hw/audio/cs4231a.c
-@@ -528,7 +528,7 @@ static int cs_write_audio (CSState *s, int nchan, int dma_pos,
-                            int dma_len, int len)
- {
-     int temp, net;
--    uint8_t tmpbuf[4096];
-+    QEMU_UNINITIALIZED uint8_t tmpbuf[4096];
-     IsaDmaClass *k = ISADMA_GET_CLASS(s->isa_dma);
+diff --git a/chardev/char-pty.c b/chardev/char-pty.c
+index c28554e6e0..674e9b3f14 100644
+--- a/chardev/char-pty.c
++++ b/chardev/char-pty.c
+@@ -154,7 +154,7 @@ static gboolean pty_chr_read(QIOChannel *chan, GIOCondition cond, void *opaque)
+     Chardev *chr = CHARDEV(opaque);
+     PtyChardev *s = PTY_CHARDEV(opaque);
+     gsize len;
+-    uint8_t buf[CHR_READ_BUF_LEN];
++    QEMU_UNINITIALIZED uint8_t buf[CHR_READ_BUF_LEN];
+     ssize_t ret;
  
-     temp = len;
-@@ -547,7 +547,7 @@ static int cs_write_audio (CSState *s, int nchan, int dma_pos,
-         copied = k->read_memory(s->isa_dma, nchan, tmpbuf, dma_pos, to_copy);
-         if (s->tab) {
-             int i;
--            int16_t linbuf[4096];
-+            QEMU_UNINITIALIZED int16_t linbuf[4096];
- 
-             for (i = 0; i < copied; ++i)
-                 linbuf[i] = s->tab[tmpbuf[i]];
+     len = sizeof(buf);
 -- 
 2.49.0
 
