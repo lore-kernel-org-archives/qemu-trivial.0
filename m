@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uPQDX-0000oE-TP
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:30:32 -0400
+	id 1uPQDk-0001Rb-9X
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:30:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAp-0002sn-PT
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:43 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1uPQAm-0002ln-5a
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAm-0001sL-G6
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:42 -0400
+ id 1uPQAh-0001p9-CW
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666459;
+ s=mimecast20190719; t=1749666454;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GuZNk0F1bodSwirhOG/JBltWIHXjauSG+o14JA3+usQ=;
- b=Vb5J6MWHGscVqRJx+WTowz0L9az5oIKq9tguqSHG3cyVBNijHWDTvtjZGh/DBvesEPI2I1
- 77yWTZ3pestQ0Ud28EkYqM8ftT6uC2VMrnyZxAJR+EDS6REQC6XQJHNAXiXlCGWPotVKOS
- KNshBwC2vCN3h5S+gdz+c+huA3yMH7U=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=FU8wL7XxDJ9uyH0nMB1l6aLZjdzSp7OBD7R4cqOfBZU=;
+ b=KrE7lCvpX2L2UoLuD916efhPFn553DWSet4scXcnBguH4bJXy8zKV3gMAVWDoCF7gvHyph
+ REy3O+uHELYySJGjNCxB/8LE/N+qsZvIQ0a7hgHas0+iy/oP008l2KHjXJ3ySCowAyEYGI
+ Xp/LcPlmh7u5w+h8Yr/TeJ2B32c+tY0=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-119-IlUTyrPmOYmn9OcCGGCdvw-1; Wed,
- 11 Jun 2025 14:27:33 -0400
-X-MC-Unique: IlUTyrPmOYmn9OcCGGCdvw-1
-X-Mimecast-MFC-AGG-ID: IlUTyrPmOYmn9OcCGGCdvw_1749666450
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-626-BRevhgz1MY-FqReGZ6l7FQ-1; Wed,
+ 11 Jun 2025 14:27:30 -0400
+X-MC-Unique: BRevhgz1MY-FqReGZ6l7FQ-1
+X-Mimecast-MFC-AGG-ID: BRevhgz1MY-FqReGZ6l7FQ_1749666446
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F35F919560B4; Wed, 11 Jun 2025 18:27:29 +0000 (UTC)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6243E195608B; Wed, 11 Jun 2025 18:27:26 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 964ED18003FC; Wed, 11 Jun 2025 18:27:27 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id A198518002B5; Wed, 11 Jun 2025 18:27:25 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -68,16 +68,16 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Klaus Jensen <k.jensen@samsung.com>
-Subject: [PULL 31/31] net/stream: skip automatic zero-init of large array
-Date: Wed, 11 Jun 2025 14:25:33 -0400
-Message-ID: <20250611182533.200590-32-stefanha@redhat.com>
+Subject: [PULL 30/31] net/socket: skip automatic zero-init of large array
+Date: Wed, 11 Jun 2025 14:25:32 -0400
+Message-ID: <20250611182533.200590-31-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -86,7 +86,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,11 +99,11 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Jun 2025 18:27:44 -0000
+X-List-Received-Date: Wed, 11 Jun 2025 18:27:41 -0000
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'net_stream_send' method has a 68k byte array used for copying
+The 'net_socket_send' method has a 68k byte array used for copying
 data between guest and host. Skip the automatic zero-init of this
 array to eliminate the performance overhead in the I/O hot path.
 
@@ -114,25 +114,25 @@ Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
 Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>
-Message-id: 20250610123709.835102-32-berrange@redhat.com
+Message-id: 20250610123709.835102-31-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- net/stream.c | 2 +-
+ net/socket.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/net/stream.c b/net/stream.c
-index 4de5613844..6152d2a05e 100644
---- a/net/stream.c
-+++ b/net/stream.c
-@@ -148,7 +148,7 @@ static gboolean net_stream_send(QIOChannel *ioc,
-     NetStreamState *s = data;
+diff --git a/net/socket.c b/net/socket.c
+index 8e3702e1f3..784dda686f 100644
+--- a/net/socket.c
++++ b/net/socket.c
+@@ -157,7 +157,7 @@ static void net_socket_send(void *opaque)
+     NetSocketState *s = opaque;
      int size;
      int ret;
--    char buf1[NET_BUFSIZE];
-+    QEMU_UNINITIALIZED char buf1[NET_BUFSIZE];
-     const char *buf;
+-    uint8_t buf1[NET_BUFSIZE];
++    QEMU_UNINITIALIZED uint8_t buf1[NET_BUFSIZE];
+     const uint8_t *buf;
  
-     size = qio_channel_read(s->ioc, buf1, sizeof(buf1), NULL);
+     size = recv(s->fd, buf1, sizeof(buf1), 0);
 -- 
 2.49.0
 
