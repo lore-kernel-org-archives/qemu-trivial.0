@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uPQDB-0007mu-5D
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:30:16 -0400
+	id 1uPQDJ-0007vv-Fv
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:30:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAa-0002Cv-HH
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:30 -0400
+ id 1uPQAc-0002K7-Be
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:31 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAW-0001hg-Nx
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:27 -0400
+ id 1uPQAY-0001i5-4f
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:29 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666441;
+ s=mimecast20190719; t=1749666442;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=p1SjgeEm1cCSQpMWJ1zjwqMu3sNMaHNBwc1JeIdOkvs=;
- b=c95GjZXsiZzj2TVhdBHSKbmeRg9G+cKJmSfsIRO7cuJjn0YQiUpNkjPBC2Ces24HI6R4Yv
- aveovdqQk9ArHf7cuUIq+/Qwm3Vat1sX1pfd2RlqNHx+FYsORmn5WcE/8rK3e5ka5Lermq
- U0xHmRe8N3PPrKqCWe1jH7GJ5XSC6Ws=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=f128TMvyALcEvw2Q1PgUkPtT2l4n4rQQAsIOgSwd6Bw=;
+ b=ZwTMuszvTdyjnFGbh4TnWqjlz+QHxRyTAO3IC1/TptVJ0NB5UvSrIE6ivWZLLH8OD0O29s
+ 6RZNEt44YsEaeR8sVsozhQgaKbUwqCt2UTt/M/ZVuZS8UkJLrSAZG0/KWCIEyWZenViQkx
+ 3f4G9QXUxJ3lrkXSeDrmuq0esf6sSuQ=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-280-4wV7N0SwMw-Ternp8fqqqA-1; Wed,
- 11 Jun 2025 14:27:17 -0400
-X-MC-Unique: 4wV7N0SwMw-Ternp8fqqqA-1
-X-Mimecast-MFC-AGG-ID: 4wV7N0SwMw-Ternp8fqqqA_1749666431
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-98-mSrFx_MUMsimIImP4xTVHA-1; Wed,
+ 11 Jun 2025 14:27:20 -0400
+X-MC-Unique: mSrFx_MUMsimIImP4xTVHA-1
+X-Mimecast-MFC-AGG-ID: mSrFx_MUMsimIImP4xTVHA_1749666436
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BE99319560BA; Wed, 11 Jun 2025 18:27:11 +0000 (UTC)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D1B0119560B6; Wed, 11 Jun 2025 18:27:15 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C8B6E19560AF; Wed, 11 Jun 2025 18:27:09 +0000 (UTC)
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 1B8CB195609D; Wed, 11 Jun 2025 18:27:15 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -68,15 +68,15 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Klaus Jensen <k.jensen@samsung.com>
-Subject: [PULL 24/31] hw/ppc/pnv_occ: skip automatic zero-init of large struct
-Date: Wed, 11 Jun 2025 14:25:26 -0400
-Message-ID: <20250611182533.200590-25-stefanha@redhat.com>
+Subject: [PULL 26/31] hw/usb/hcd-ohci: skip automatic zero-init of large array
+Date: Wed, 11 Jun 2025 14:25:28 -0400
+Message-ID: <20250611182533.200590-27-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -99,40 +99,40 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Jun 2025 18:27:30 -0000
+X-List-Received-Date: Wed, 11 Jun 2025 18:27:32 -0000
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'occ_model_tick' method has a 12k struct used for copying
+The 'ohci_service_iso_td' method has a 8k byte array used for copying
 data between guest and host. Skip the automatic zero-init of this
-struct to eliminate the performance overhead in the I/O hot path.
+array to eliminate the performance overhead in the I/O hot path.
 
-The 'dynamic_data' buffer will be fully initialized when reading
-data from the guest.
+The 'buf' array will be fully initialized when reading data from guest
+memory.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
 Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>
-Message-id: 20250610123709.835102-25-berrange@redhat.com
+Message-id: 20250610123709.835102-27-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/ppc/pnv_occ.c | 2 +-
+ hw/usb/hcd-ohci.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/ppc/pnv_occ.c b/hw/ppc/pnv_occ.c
-index fa6f31cb8d..24b789c191 100644
---- a/hw/ppc/pnv_occ.c
-+++ b/hw/ppc/pnv_occ.c
-@@ -789,7 +789,7 @@ static bool occ_opal_process_command(PnvOCC *occ,
- 
- static bool occ_model_tick(PnvOCC *occ)
- {
--    struct occ_dynamic_data dynamic_data;
-+    QEMU_UNINITIALIZED struct occ_dynamic_data dynamic_data;
- 
-     if (!occ_read_dynamic_data(occ, &dynamic_data, NULL)) {
-         /* Can't move OCC state field to safe because we can't map it! */
+diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
+index 71b54914d3..72a9f9f474 100644
+--- a/hw/usb/hcd-ohci.c
++++ b/hw/usb/hcd-ohci.c
+@@ -577,7 +577,7 @@ static int ohci_service_iso_td(OHCIState *ohci, struct ohci_ed *ed)
+     USBDevice *dev;
+     USBEndpoint *ep;
+     USBPacket *pkt;
+-    uint8_t buf[8192];
++    QEMU_UNINITIALIZED uint8_t buf[8192];
+     bool int_req;
+     struct ohci_iso_td iso_td;
+     uint32_t addr;
 -- 
 2.49.0
 
