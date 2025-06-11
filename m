@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uPQDP-0008W0-D0
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:30:23 -0400
+	id 1uPQDS-0000O0-SG
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:30:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAj-0002eA-5R
+ id 1uPQAj-0002fP-Jw
  for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:37 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQAc-0001l5-48
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:36 -0400
+ id 1uPQAe-0001nX-C8
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666447;
+ s=mimecast20190719; t=1749666451;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GkQJxxqIb7abXJVfUSauncS5q94lB96LQMTClKO0AaU=;
- b=LqpEn7Ga/6p+yn/yletyS1VWhlT4fxfDQed44HhaGMAIQyIJHjL4iXKKRxUh31jEW0amUX
- w3XbBYkBmBEgA54Fa84d+ZQ+4TLBvkcpaStRr0dIuQVXbGTFoQRylIbsM2Dd/hpivsa2Dr
- GV5cm57XSrLvLDhyfjjziCif7h2sHBo=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=TKCERI53LuMk8TuYkm/wkoeKkMg0tToLNccvF0Tm5YY=;
+ b=Nro1EOPw5YmilNT6CfynIpnTZxwc5VRJpAcLWK45rB63JiKuJmTWyXKBb5g7iGEWnUWQFB
+ HHQMvAf7UrKePl2iiqh3pRP5m3bo7BhF9Oz1Uf/e4QLGR3aQJbVVKhuyLZB19+uyzjM+BA
+ xbhS26DYcqoSmbpAT4rrsOyv+G9WaNw=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-617-EuRogx8FOqqC9-X06jtGCw-1; Wed,
- 11 Jun 2025 14:27:23 -0400
-X-MC-Unique: EuRogx8FOqqC9-X06jtGCw-1
-X-Mimecast-MFC-AGG-ID: EuRogx8FOqqC9-X06jtGCw_1749666439
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-135-GFsYugu_M6SpL27G8L--Yw-1; Wed,
+ 11 Jun 2025 14:27:28 -0400
+X-MC-Unique: GFsYugu_M6SpL27G8L--Yw-1
+X-Mimecast-MFC-AGG-ID: GFsYugu_M6SpL27G8L--Yw_1749666444
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E92BA1955F4A; Wed, 11 Jun 2025 18:27:18 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 49F531809C82; Wed, 11 Jun 2025 18:27:24 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2781818002B7; Wed, 11 Jun 2025 18:27:17 +0000 (UTC)
+ id 65B6618002B6; Wed, 11 Jun 2025 18:27:23 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -68,10 +68,9 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Klaus Jensen <k.jensen@samsung.com>
-Subject: [PULL 27/31] hw/scsi/lsi53c895a: skip automatic zero-init of large
- array
-Date: Wed, 11 Jun 2025 14:25:29 -0400
-Message-ID: <20250611182533.200590-28-stefanha@redhat.com>
+Subject: [PULL 29/31] hw/ufs/lu: skip automatic zero-init of large array
+Date: Wed, 11 Jun 2025 14:25:31 -0400
+Message-ID: <20250611182533.200590-30-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
@@ -87,7 +86,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -100,39 +99,41 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Jun 2025 18:27:37 -0000
+X-List-Received-Date: Wed, 11 Jun 2025 18:27:38 -0000
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'lsi_memcpy' method has a 4k byte array used for copying data
-to/from the device. Skip the automatic zero-init of this array to
-eliminate the performance overhead in the I/O hot path.
+The 'ufs_emulate_scsi_cmd' method has a 4k byte array used for
+copying data from the device. Skip the automatic zero-init of
+this array to eliminate the performance overhead in the I/O hot
+path.
 
-The 'buf' array will be fully initialized when data is copied.
+The 'outbuf' array will be fully initialized when data is copied
+from the guest.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
 Reviewed-by: Klaus Jensen <k.jensen@samsung.com>
 Reviewed-by: Harsh Prateek Bora <harshpb@linux.ibm.com>
-Message-id: 20250610123709.835102-28-berrange@redhat.com
+Message-id: 20250610123709.835102-30-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/scsi/lsi53c895a.c | 2 +-
+ hw/ufs/lu.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/scsi/lsi53c895a.c b/hw/scsi/lsi53c895a.c
-index f4f2ef321e..9ea4aa0a85 100644
---- a/hw/scsi/lsi53c895a.c
-+++ b/hw/scsi/lsi53c895a.c
-@@ -1112,7 +1112,7 @@ bad:
- static void lsi_memcpy(LSIState *s, uint32_t dest, uint32_t src, int count)
+diff --git a/hw/ufs/lu.c b/hw/ufs/lu.c
+index 57b307ea56..2d8ffd72c5 100644
+--- a/hw/ufs/lu.c
++++ b/hw/ufs/lu.c
+@@ -194,7 +194,7 @@ static int ufs_emulate_wlun_inquiry(UfsRequest *req, uint8_t *outbuf,
+ static UfsReqResult ufs_emulate_scsi_cmd(UfsLu *lu, UfsRequest *req)
  {
-     int n;
--    uint8_t buf[LSI_BUF_SIZE];
-+    QEMU_UNINITIALIZED uint8_t buf[LSI_BUF_SIZE];
- 
-     trace_lsi_memcpy(dest, src, count);
-     while (count) {
+     uint8_t lun = lu->lun;
+-    uint8_t outbuf[4096];
++    QEMU_UNINITIALIZED uint8_t outbuf[4096];
+     uint8_t sense_buf[UFS_SENSE_SIZE];
+     uint8_t scsi_status;
+     int len = 0;
 -- 
 2.49.0
 
