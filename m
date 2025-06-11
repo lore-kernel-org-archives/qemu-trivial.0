@@ -1,43 +1,43 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uPQBA-0003iW-8y
-	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:28:04 -0400
+	id 1uPQBD-0003uN-Cu
+	for mharc-qemu-trivial@gnu.org; Wed, 11 Jun 2025 14:28:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQA1-0001o5-3Z
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:53 -0400
+ id 1uPQAJ-0001xf-Pg
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:13 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1uPQ9s-0001Ra-Uh
- for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:26:52 -0400
+ id 1uPQA8-0001Yu-Qd
+ for qemu-trivial@nongnu.org; Wed, 11 Jun 2025 14:27:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1749666403;
+ s=mimecast20190719; t=1749666419;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UpwIHbzvu7jlclXB/9FN3lLirxVS/6Y80YtOZqhOwSU=;
- b=K2I4enIAXkiQiBs7SK8kpiudEet6qskFBI4hha0BKtf+NEFsctxWGc//6i+rwb9R7L3d9W
- a4qOZ6Jp9s2e4KEG1WtnisIFTeWnMSoaidHsJXMxkRkKF+avMWGfD5+VX72bd615NmBoXW
- EC+PovoNWLpMPJU77TQUMDtCc7jW9SA=
+ bh=98MBMcUSEptGVNIPVLyiue7Ww+HKRSay/z2TDY8nvFw=;
+ b=K5Y36Z+kKA9ZmXdd6Nf0Brv2n24yeViX+LjvI+N25hroy9J39t3oYxysJ5RqPVBV7WOqS2
+ /2CaEaMlXrlbyfFrjMODjrv11hQhYyT8rEOGjfFSHN/sC4QyxY+PVn4TodmrnRFCn2weT+
+ x7nchSzue77RLHju52nx2Ahi/peCAXQ=
 Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-21-SdR7kE7NN5KcDoOsCTUOhg-1; Wed,
- 11 Jun 2025 14:26:39 -0400
-X-MC-Unique: SdR7kE7NN5KcDoOsCTUOhg-1
-X-Mimecast-MFC-AGG-ID: SdR7kE7NN5KcDoOsCTUOhg_1749666396
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-317-AELjrSb9N5yl-IVITRhf6w-1; Wed,
+ 11 Jun 2025 14:26:56 -0400
+X-MC-Unique: AELjrSb9N5yl-IVITRhf6w-1
+X-Mimecast-MFC-AGG-ID: AELjrSb9N5yl-IVITRhf6w_1749666412
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1F42E18089B6; Wed, 11 Jun 2025 18:26:36 +0000 (UTC)
+ id 76D7C18089B5; Wed, 11 Jun 2025 18:26:51 +0000 (UTC)
 Received: from localhost (unknown [10.2.16.122])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8E0A230002C3; Wed, 11 Jun 2025 18:26:34 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id B00EF19560AF; Wed, 11 Jun 2025 18:26:49 +0000 (UTC)
 From: Stefan Hajnoczi <stefanha@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
@@ -67,15 +67,15 @@ Cc: qemu-ppc@nongnu.org, Daniel Henrique Barboza <danielhb413@gmail.com>,
  Christian Borntraeger <borntraeger@linux.ibm.com>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@kaod.org>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>
-Subject: [PULL 12/31] hw/audio/sb16: skip automatic zero-init of large array
-Date: Wed, 11 Jun 2025 14:25:14 -0400
-Message-ID: <20250611182533.200590-13-stefanha@redhat.com>
+Subject: [PULL 17/31] hw/hyperv/syndbg: skip automatic zero-init of large array
+Date: Wed, 11 Jun 2025 14:25:19 -0400
+Message-ID: <20250611182533.200590-18-stefanha@redhat.com>
 In-Reply-To: <20250611182533.200590-1-stefanha@redhat.com>
 References: <20250611182533.200590-1-stefanha@redhat.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -98,39 +98,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 11 Jun 2025 18:26:53 -0000
+X-List-Received-Date: Wed, 11 Jun 2025 18:27:15 -0000
 
 From: Daniel P. Berrangé <berrange@redhat.com>
 
-The 'write_audio' method has a 4k byte array used for copying data
-between the audio backend and device. Skip the automatic zero-init
-of this array to eliminate the performance overhead in the I/O hot
-path.
+The 'handle_recv_msg' method has a 4k byte array used for copying
+data between the network socket and guest memory. Skip the automatic
+zero-init of this array to eliminate the performance overhead in the
+I/O hot path.
 
-The 'tmpbuf' array will be fully initialized when reading data from
-device memory.
+The 'data_buf' array will be fully initialized when data is read
+off the network socket.
 
 Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
 Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-Message-id: 20250610123709.835102-13-berrange@redhat.com
+Message-id: 20250610123709.835102-18-berrange@redhat.com
 Signed-off-by: Stefan Hajnoczi <stefanha@redhat.com>
 ---
- hw/audio/sb16.c | 2 +-
+ hw/hyperv/syndbg.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/hw/audio/sb16.c b/hw/audio/sb16.c
-index 19fd3b9020..bac64118fe 100644
---- a/hw/audio/sb16.c
-+++ b/hw/audio/sb16.c
-@@ -1181,7 +1181,7 @@ static int write_audio (SB16State *s, int nchan, int dma_pos,
-     IsaDma *isa_dma = nchan == s->dma ? s->isa_dma : s->isa_hdma;
-     IsaDmaClass *k = ISADMA_GET_CLASS(isa_dma);
-     int temp, net;
--    uint8_t tmpbuf[4096];
-+    QEMU_UNINITIALIZED uint8_t tmpbuf[4096];
- 
-     temp = len;
-     net = 0;
+diff --git a/hw/hyperv/syndbg.c b/hw/hyperv/syndbg.c
+index 8b8a14750d..ac7e15f6f1 100644
+--- a/hw/hyperv/syndbg.c
++++ b/hw/hyperv/syndbg.c
+@@ -192,7 +192,7 @@ static uint16_t handle_recv_msg(HvSynDbg *syndbg, uint64_t outgpa,
+ {
+     uint16_t ret;
+     g_assert(MSG_BUFSZ >= qemu_target_page_size());
+-    uint8_t data_buf[MSG_BUFSZ];
++    QEMU_UNINITIALIZED uint8_t data_buf[MSG_BUFSZ];
+     hwaddr out_len;
+     void *out_data;
+     ssize_t recv_byte_count;
 -- 
 2.49.0
 
