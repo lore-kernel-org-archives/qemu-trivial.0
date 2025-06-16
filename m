@@ -1,76 +1,65 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uQ0N9-00033E-GM
-	for mharc-qemu-trivial@gnu.org; Fri, 13 Jun 2025 05:06:52 -0400
+	id 1uR2es-0001Hn-D6
+	for mharc-qemu-trivial@gnu.org; Mon, 16 Jun 2025 01:45:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uQ0My-0002z5-WF
- for qemu-trivial@nongnu.org; Fri, 13 Jun 2025 05:06:42 -0400
-Received: from mail-yb1-xb2a.google.com ([2607:f8b0:4864:20::b2a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1uQ0Mu-0002dI-65
- for qemu-trivial@nongnu.org; Fri, 13 Jun 2025 05:06:38 -0400
-Received: by mail-yb1-xb2a.google.com with SMTP id
- 3f1490d57ef6-e819aa98e7aso1737415276.2
- for <qemu-trivial@nongnu.org>; Fri, 13 Jun 2025 02:06:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1749805595; x=1750410395; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=74HaimTdbSL1bD+t0uPPJJc0xDzsWxH7INW1uQ7Wgsg=;
- b=F0F2g5A610Op4rDg1z187JzKrh+jUpb7MFtXfTXaOc3znfDRWbCUXpRnBtn6pFKGXG
- GkT41jEtyAIP+kW24kyCKxJbryO3qorallxLkRkTxQEk8LDW+wVLPqefxfQWdSj3cGdH
- ZtuTg74RsR6x+HtFVRWCDR8I1tHIhcMbrh+UJp0+z3dUcXFRGencU+5NIL9X1EWwVdEq
- swPN5st+f7LbFzWfFBPYPqB33K9nMJV7adQS++dZn2QuRfrGps/bJJcuBkjl7uvRcTJ/
- /k4hbpHyQe1GcADjDl85Q1Q7KExlYan41oLBB0TYl4uiIZ+d1XDo5Q4a+w99ExBAE9A0
- omDQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1749805595; x=1750410395;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=74HaimTdbSL1bD+t0uPPJJc0xDzsWxH7INW1uQ7Wgsg=;
- b=S4F9JxqTs5+lbTDNUmUHHDpvrGowTKS81l49d80ZbXVAzoRLSeFQ+avox3BpVqwjTB
- A3wEAWCfxMgY8zIu36/ZyHOlrOFZHDV0RcqW3+ALUsjAiy3aDzwv0UNqzS4Xk8Lo7S4X
- M2dbQgRAqc+mzkIw4HEEjLDihKdilLbhzDb6z4AsXqupOo05ajQsdma+ZNLoq6K05qO+
- gog6OwUP3AZL1l/oKZoOYux6ldyVFqUDK3yU9QuW1dOKnUrKFGlViKaPv8nf1FVp4fNv
- FrRGOo0neh78g0JlBfSgLJiutO56D7JQIYeuST+rGVDCL/1uCpKfeIHJye8MDLp8oClC
- ODOQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCX2iQm+8ENIH5guSWzCL4z1q4DJNw5qQlFhGWkisCpE/PKFY1Q30OpStX+B6cZhLuq1SlpGUZ4gSUePCRY=@nongnu.org
-X-Gm-Message-State: AOJu0YxhuSPcTeHPC7451PSOeKKiLbo5k9kvUHgisK/eWhDPdRvuL1SX
- I/uPdoV4CaO7aKogZaNHL+srLEJCgfj9gi01KmkXSEenxYxkiEEuKVAnIt9tuJ0VSdnuOIg/DFg
- 60T5zQJoz325Jxo0wFTb/PqZdyk4Nqsj8meq3tY7mXQ==
-X-Gm-Gg: ASbGncvWkcX7GRI1Tb5BdTy5vPgvtSv35nWmaGwIW5MOutot+2Yhg4CdgM3siWSw9Fc
- r+AKja45enpkSM1KQtO4+Dg8Pwh6HDThU4seWGjjx3L8ogs4lqA2IuKvwI4QS5PJmXVK+KdF1+2
- 3bUPCdenGItDVQxyyM+xmKxEwb6S+WuR5jNXBuuacdCZpS
-X-Google-Smtp-Source: AGHT+IEQeOVp/cROfGsvPraYIEIXrJg1jDCevuBkj2fp/SbY0dwcENZZ5X7PfR8cywNdYGB8HxIUyWQKdhZDEVviHVE=
-X-Received: by 2002:a05:690c:9987:b0:710:ea78:8ff with SMTP id
- 00721157ae682-7116372a3c4mr35744737b3.23.1749805594972; Fri, 13 Jun 2025
- 02:06:34 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1uR2ei-0001CZ-Sw
+ for qemu-trivial@nongnu.org; Mon, 16 Jun 2025 01:45:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1uR2eg-0007qV-Nk
+ for qemu-trivial@nongnu.org; Mon, 16 Jun 2025 01:45:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1750052712;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=Qwff3nWQXvSMruSgJmawrDVwQHKyN42/EoGomjHhuyc=;
+ b=SGKifuXSN+rtStpKrbIIZa+TmBoaIWgf42mLYM2RXiba4+6bsf6alm54Vnmj+rx8czYql8
+ SPCDsazR84Mp816qv1g+gXTYlFMgnZeiU3y0osaVwAg4wd3zyQ2Cn68dYCipknvJRCoWXu
+ kbagJvras8+2DsPIuos3F15pU0BJ+ds=
+Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-39-Ehg6MLWBPem2DlQ5H3Ov2g-1; Mon,
+ 16 Jun 2025 01:45:10 -0400
+X-MC-Unique: Ehg6MLWBPem2DlQ5H3Ov2g-1
+X-Mimecast-MFC-AGG-ID: Ehg6MLWBPem2DlQ5H3Ov2g_1750052709
+Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id BBBB719560A7; Mon, 16 Jun 2025 05:45:08 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.11])
+ by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 402381956094; Mon, 16 Jun 2025 05:45:08 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id AED6F21E6A27; Mon, 16 Jun 2025 07:45:05 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Andrew Kreimer <algonell@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] docs: remove repeated word
+In-Reply-To: <20250615143353.5542-1-algonell@gmail.com> (Andrew Kreimer's
+ message of "Sun, 15 Jun 2025 17:33:03 +0300")
+References: <20250615143353.5542-1-algonell@gmail.com>
+Date: Mon, 16 Jun 2025 07:45:05 +0200
+Message-ID: <87jz5cw87y.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-References: <20250606095728.3672832-1-ethan84@andestech.com>
-In-Reply-To: <20250606095728.3672832-1-ethan84@andestech.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 13 Jun 2025 10:06:23 +0100
-X-Gm-Features: AX0GCFvvruDwIttjmKmLlPI6bD-XAps0bWdNIgWNGtn5ht7pmBnF1jnDTsgfn88
-Message-ID: <CAFEAcA-LhiOL2OJEJzsSTTQ1=QWXOAB=h+yv25szH9SJ3CpmFw@mail.gmail.com>
-Subject: Re: [PATCH] qemu-options.hx: Fix reversed description of icount sleep
- behavior
-To: Ethan Chen <ethan84@andestech.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- richard.henderson@linaro.org, pbonzini@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b2a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yb1-xb2a.google.com
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,51 +72,33 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 13 Jun 2025 09:06:44 -0000
+X-List-Received-Date: Mon, 16 Jun 2025 05:45:19 -0000
 
-On Fri, 6 Jun 2025 at 10:58, Ethan Chen via <qemu-devel@nongnu.org> wrote:
+Cc: qemu-trivial
+
+Andrew Kreimer <algonell@gmail.com> writes:
+
+> The word 'find' appears twice, remove the extra one.
 >
-> The documentation for the -icount option incorrectly describes the behavior
-> of the sleep suboption. Based on the actual implementation and system
-> behavior, the effects of sleep=on and sleep=off were inadvertently reversed.
-> This commit updates the description to reflect their intended functionality.
->
-> Signed-off-by: Ethan Chen <ethan84@andestech.com>
+> Signed-off-by: Andrew Kreimer <algonell@gmail.com>
 > ---
->  qemu-options.hx | 8 ++++----
->  1 file changed, 4 insertions(+), 4 deletions(-)
+>  docs/system/introduction.rst | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
 >
-> diff --git a/qemu-options.hx b/qemu-options.hx
-> index 7eb8e02b4b..1f862b19a6 100644
-> --- a/qemu-options.hx
-> +++ b/qemu-options.hx
-> @@ -4936,13 +4936,13 @@ SRST
->      with actual performance.
->
->      When the virtual cpu is sleeping, the virtual time will advance at
-> -    default speed unless ``sleep=on`` is specified. With
-> -    ``sleep=on``, the virtual time will jump to the next timer
-> +    default speed unless ``sleep=off`` is specified. With
-> +    ``sleep=off``, the virtual time will jump to the next timer
->      deadline instantly whenever the virtual cpu goes to sleep mode and
->      will not advance if no timer is enabled. This behavior gives
->      deterministic execution times from the guest point of view.
-> -    The default if icount is enabled is ``sleep=off``.
-> -    ``sleep=on`` cannot be used together with either ``shift=auto``
-> +    The default if icount is enabled is ``sleep=on``.
-> +    ``sleep=off`` cannot be used together with either ``shift=auto``
->      or ``align=on``.
+> diff --git a/docs/system/introduction.rst b/docs/system/introduction.rst
+> index 338d3745c3..4cd46b5b8f 100644
+> --- a/docs/system/introduction.rst
+> +++ b/docs/system/introduction.rst
+> @@ -81,7 +81,7 @@ may not be optimal for modern systems.
+>  
+>  For a non-x86 system where we emulate a broad range of machine types,
+>  the command lines are generally more explicit in defining the machine
+> -and boot behaviour. You will find often find example command lines in
+> +and boot behaviour. You will often find example command lines in
+>  the :ref:`system-targets-ref` section of the manual.
+>  
+>  While the project doesn't want to discourage users from using the
 
-Whoops. It looks like I introduced this error in commit fa647905e6baae
-where I converted the previous unhelpful "sleep=on|off" to say
-specifically whether it meant sleep=on or sleep=off: I got it
-the wrong way around.
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
 
-Confirmed against the icount-common.c code that our default is
-indeed sleep=on and that the incompatibility with shift=auto
-and align=on is the sleep=off setting.
-
-Applied to target-arm.next, thanks.
-
--- PMM
 
