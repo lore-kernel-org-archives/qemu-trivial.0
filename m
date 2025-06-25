@@ -1,63 +1,61 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uTeNy-000634-5C
-	for mharc-qemu-trivial@gnu.org; Mon, 23 Jun 2025 06:26:46 -0400
+	id 1uULUc-00054q-Cg
+	for mharc-qemu-trivial@gnu.org; Wed, 25 Jun 2025 04:28:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1uTeNt-0005yN-HU; Mon, 23 Jun 2025 06:26:41 -0400
-Received: from mgamail.intel.com ([192.198.163.9])
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1uULUT-00053t-K6
+ for qemu-trivial@nongnu.org; Wed, 25 Jun 2025 04:28:21 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1uTeNk-0000kV-Mw; Mon, 23 Jun 2025 06:26:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1750674392; x=1782210392;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=q2VQBL7Mh+cxs+WNQGG/PLk4d6ldYIcloZMCG49WyTw=;
- b=Qh7FFPtMBQKREWlhla2H4eIqmUQHsQRlvuCNr84+OeMo1PCHk8S0tePH
- MCgh1+3iMVqGwn1kDCUlrJMxRI/wOoBxrwUml7OFgqfxpGEbCkdNw3Kux
- PuJzQNsd23woifSFe1JSwcPyuyq17/D8oeW/+VauXJIvWxH3yeQrnnc0H
- Ed+JuB4guIME4KqXpAfZ12FgcNhzpOxJqJd7lX6MWOc8Ru0mWX+heDtry
- FmzmbRV3t2Qtp3WGNInrCnmMv0LmLnIzkhNRl7r6EIrvvkA0dKsNFDB9+
- eQkjA1wCkIIZr17Q1d90RaGjcFj0FyOCYOkGUt0zoXxFcWDPyxChm7tmD A==;
-X-CSE-ConnectionGUID: IA+dNZV0Q2i294Uo7t02Ag==
-X-CSE-MsgGUID: RC3ECSnNQseXmJKHS70k/A==
-X-IronPort-AV: E=McAfee;i="6800,10657,11472"; a="63565446"
-X-IronPort-AV: E=Sophos;i="6.16,258,1744095600"; d="scan'208";a="63565446"
-Received: from fmviesa001.fm.intel.com ([10.60.135.141])
- by fmvoesa103.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jun 2025 03:26:29 -0700
-X-CSE-ConnectionGUID: ijBtim1+TjyvAi65ncgvsQ==
-X-CSE-MsgGUID: vbLLatrDRrW14D0CnS01OQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,258,1744095600"; d="scan'208";a="182427932"
-Received: from spr-s2600bt.bj.intel.com ([10.240.192.127])
- by smtpauth.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 23 Jun 2025 03:26:26 -0700
-From: Zhenzhong Duan <zhenzhong.duan@intel.com>
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1uULUQ-00060g-C2
+ for qemu-trivial@nongnu.org; Wed, 25 Jun 2025 04:28:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1750840094;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=5AUAYcGfRWYprJv275nmuF6gbXK19rGN9VLixUtbHGc=;
+ b=CIV5lClkZyjSFzQf+GL+X5qAnZJBbeqdqPQUMoZwASQDkNfTg+fMoFyXl+to+lid1M/CXB
+ GYDEo2HmPAAN85C/+ZrnhnAgiKCwLZoSp4xtH7kjMn43wlN7afuTnpKrKyxjaexhgRi4qt
+ ju+Xhy2bK6XRf04F33GO2vG0+jHsbB4=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-31-dYGy9erBOK6W4Gz6e69bxQ-1; Wed,
+ 25 Jun 2025 04:28:11 -0400
+X-MC-Unique: dYGy9erBOK6W4Gz6e69bxQ-1
+X-Mimecast-MFC-AGG-ID: dYGy9erBOK6W4Gz6e69bxQ_1750840089
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7F8EC180121D; Wed, 25 Jun 2025 08:28:09 +0000 (UTC)
+Received: from merkur.redhat.com (unknown [10.45.225.230])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id F3F95180045B; Wed, 25 Jun 2025 08:28:05 +0000 (UTC)
+From: Kevin Wolf <kwolf@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: alex.williamson@redhat.com, clg@redhat.com, eric.auger@redhat.com,
- steven.sistare@oracle.com, chao.p.peng@intel.com,
- Zhenzhong Duan <zhenzhong.duan@intel.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org (open list:Trivial patches)
-Subject: [PATCH 0/4] Some trivial live update fixes
-Date: Mon, 23 Jun 2025 18:22:31 +0800
-Message-Id: <20250623102235.94877-1-zhenzhong.duan@intel.com>
-X-Mailer: git-send-email 2.34.1
+Cc: kwolf@redhat.com, pasic@linux.ibm.com, borntraeger@linux.ibm.com,
+ farman@linux.ibm.com, thuth@redhat.com, qemu-s390x@nongnu.org,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] hw/s390x/ccw-device: Fix memory leak in loadparm setter
+Date: Wed, 25 Jun 2025 10:27:51 +0200
+Message-ID: <20250625082751.24896-1-kwolf@redhat.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=192.198.163.9;
- envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,33 +68,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Mon, 23 Jun 2025 10:26:41 -0000
+X-List-Received-Date: Wed, 25 Jun 2025 08:28:22 -0000
 
-Hi
+Commit bdf12f2a fixed the setter for the "loadparm" machine property,
+which gets a string from a visitor, passes it to s390_ipl_fmt_loadparm()
+and then forgot to free it. It left another instance of the same problem
+unfixed in the "loadparm" device property. Fix it.
 
-These are trivial VFIO live update fixes in corner cases.
+Signed-off-by: Kevin Wolf <kwolf@redhat.com>
+---
+ hw/s390x/ccw-device.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-1) open /dev/vfio/vfio fail trigger SIGSEGV
-2) mdev hotplug trigger qemu abort
-3) potential SIGSEGV when unmap-all-vaddr failed
-3) potential vfio_container_post_load failure
-
-Thanks
-Zhenzhong
-
-Zhenzhong Duan (4):
-  vfio/container: Fix SIGSEGV when open container file fails
-  vfio/container: fails mdev hotplug if add migration blocker failed
-  vfio/container: Fix potential SIGSEGV when recover from
-    unmap-all-vaddr failure
-  vfio/container: Fix vfio_container_post_load()
-
- include/hw/vfio/vfio-cpr.h |  7 ++++---
- hw/vfio/container.c        | 12 +++++++++---
- hw/vfio/cpr-legacy.c       | 23 +++++++++--------------
- 3 files changed, 22 insertions(+), 20 deletions(-)
-
+diff --git a/hw/s390x/ccw-device.c b/hw/s390x/ccw-device.c
+index 19c2238f76..8be1813b9e 100644
+--- a/hw/s390x/ccw-device.c
++++ b/hw/s390x/ccw-device.c
+@@ -57,7 +57,7 @@ static void ccw_device_set_loadparm(Object *obj, Visitor *v,
+                                  Error **errp)
+ {
+     CcwDevice *dev = CCW_DEVICE(obj);
+-    char *val;
++    g_autofree char *val = NULL;
+     int index;
+ 
+     index = object_property_get_int(obj, "bootindex", NULL);
 -- 
-2.34.1
+2.49.0
 
 
