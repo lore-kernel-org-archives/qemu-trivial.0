@@ -1,103 +1,80 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uUYTP-0003GL-EP
-	for mharc-qemu-trivial@gnu.org; Wed, 25 Jun 2025 18:20:07 -0400
+	id 1uUsfp-0000Se-5Z
+	for mharc-qemu-trivial@gnu.org; Thu, 26 Jun 2025 15:54:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pasic@linux.ibm.com>)
- id 1uUYTJ-0003D6-9D; Wed, 25 Jun 2025 18:20:03 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1uUsfm-0000Rq-2M
+ for qemu-trivial@nongnu.org; Thu, 26 Jun 2025 15:54:15 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pasic@linux.ibm.com>)
- id 1uUYTD-00066x-Fn; Wed, 25 Jun 2025 18:20:01 -0400
-Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 55PJ96ux000567;
- Wed, 25 Jun 2025 22:19:46 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=pp1; bh=AjK0vb
- XwdrD9WpqFJM8pGOncavRnpNJY0Ji7n61FGEg=; b=ncOk9duo7XXJZsMRtvrQ6f
- Z2CWuR02xDoxHoK26tqpS4VYGwaDWGXokS0Hl6VLW5gYoepN8B9ZNfo5obR5Gj7b
- 3hdiIJJwFtsl4wlBJruAGon+fOr204C0Of8tfNYqoTZ6vgtXAKgvBTrJOimWD7oP
- 0dtYY8jrBrcBQ/jyShGtKY4b4IiXpenGTCOXd43OtAo4ca02FQQkDF+AXWtGUnw9
- k8JGHdI97PA9rlWFkhT6rFUcy0QCzO+rXzxpfmwt+Uzcn5vKjIhnK+Uwc7J3lHle
- 4/5LRZEYM2Q4OKQlWCeEQBgH3b9iZh8RQzSFOFh8WqjjiUgtxksYQC7CfsldFDvQ
- ==
-Received: from ppma22.wdc07v.mail.ibm.com
- (5c.69.3da9.ip4.static.sl-reverse.com [169.61.105.92])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 47dm8jjahp-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 25 Jun 2025 22:19:46 +0000 (GMT)
-Received: from pps.filterd (ppma22.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma22.wdc07v.mail.ibm.com (8.18.1.2/8.18.1.2) with ESMTP id 55PKhfhK030487;
- Wed, 25 Jun 2025 22:19:45 GMT
-Received: from smtprelay03.fra02v.mail.ibm.com ([9.218.2.224])
- by ppma22.wdc07v.mail.ibm.com (PPS) with ESMTPS id 47e7f03pd6-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Wed, 25 Jun 2025 22:19:45 +0000
-Received: from smtpav03.fra02v.mail.ibm.com (smtpav03.fra02v.mail.ibm.com
- [10.20.54.102])
- by smtprelay03.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 55PMJf0X54657304
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Wed, 25 Jun 2025 22:19:41 GMT
-Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 2C38220043;
- Wed, 25 Jun 2025 22:19:41 +0000 (GMT)
-Received: from smtpav03.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 87E5C20040;
- Wed, 25 Jun 2025 22:19:40 +0000 (GMT)
-Received: from li-ce58cfcc-320b-11b2-a85c-85e19b5285e0 (unknown [9.111.66.135])
- by smtpav03.fra02v.mail.ibm.com (Postfix) with SMTP;
- Wed, 25 Jun 2025 22:19:40 +0000 (GMT)
-Date: Thu, 26 Jun 2025 00:19:36 +0200
-From: Halil Pasic <pasic@linux.ibm.com>
-To: Kevin Wolf <kwolf@redhat.com>
-Cc: qemu-devel@nongnu.org, borntraeger@linux.ibm.com, farman@linux.ibm.com,
- thuth@redhat.com, qemu-s390x@nongnu.org, qemu-trivial@nongnu.org, Halil
- Pasic <pasic@linux.ibm.com>
-Subject: Re: [PATCH] hw/s390x/ccw-device: Fix memory leak in loadparm setter
-Message-ID: <20250626001936.69cd77dd.pasic@linux.ibm.com>
-In-Reply-To: <20250625082751.24896-1-kwolf@redhat.com>
-References: <20250625082751.24896-1-kwolf@redhat.com>
-Organization: IBM
-X-Mailer: Claws Mail 3.17.8 (GTK+ 2.24.32; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1uUsfb-0004yG-6V
+ for qemu-trivial@nongnu.org; Thu, 26 Jun 2025 15:54:13 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1750967637;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=2Acdmgqx3JlB6C7vyrkWlKGIncyEECmo5kGK6ydG8qI=;
+ b=Wq+pZkkbpS8XAl4Lidd80WYbYzRxG2S4q6G4eTqqtw+FNSMs+vG5eoZi2k6pO0eSJMgc65
+ 4lxfbR95CvI70aE6xm5OsB8r/b0dIW9TOKNkPQO9nVKI3vk6ks4czg493Qio56z35ek18F
+ 9lGxcWvnYYiKvpekMP57H4fgEpc3K98=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-138-1_WkTurZMNCTVtJCfzQMVQ-1; Thu,
+ 26 Jun 2025 15:53:55 -0400
+X-MC-Unique: 1_WkTurZMNCTVtJCfzQMVQ-1
+X-Mimecast-MFC-AGG-ID: 1_WkTurZMNCTVtJCfzQMVQ_1750967633
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2967B1944A83; Thu, 26 Jun 2025 19:53:49 +0000 (UTC)
+Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.65.58])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 0458C30002C0; Thu, 26 Jun 2025 19:53:38 +0000 (UTC)
+From: John Snow <jsnow@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Jason Wang <jasowang@redhat.com>, Eduardo Habkost <eduardo@habkost.net>,
+ Peter Maydell <peter.maydell@linaro.org>, Jiri Pirko <jiri@resnulli.us>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ qemu-trivial@nongnu.org, "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ Laurent Vivier <laurent@vivier.eu>, Peter Xu <peterx@redhat.com>,
+ Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Zhao Liu <zhao1.liu@intel.com>, Fabiano Rosas <farosas@suse.de>,
+ Yanan Wang <wangyanan55@huawei.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Markus Armbruster <armbru@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Michael Roth <michael.roth@amd.com>, Zhenwei Pi <pizhenwei@bytedance.com>,
+ Lukas Straub <lukasstraub2@web.de>, John Snow <jsnow@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>,
+ Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ Eric Blake <eblake@redhat.com>, qemu-block@nongnu.org,
+ Mads Ynddal <mads@ynddal.dk>
+Subject: [PATCH v5 0/4] qapi: add auto-generated return docs
+Date: Thu, 26 Jun 2025 15:53:33 -0400
+Message-ID: <20250626195337.2158250-1-jsnow@redhat.com>
+Content-Type: text/plain; charset="utf-8"
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUwNjI1MDE3MyBTYWx0ZWRfX+w9kGbt/5Agv
- Q2GI1zwyQ+1UL2KD5jJhISur5JKE6CwNYjhdSR5myyvptZxFxNo450TNA3wFuPM2j6DBtrUJU4o
- 1xRn3ajn/Kx86gy2nXTPboqfiopM1cLLk8twNCnTARLmyXKHtkVwo0GOjqOVRVK2Z7wwgpHsrjY
- xlIPKHhadI6u8JWQLxyMHqznC9BdjBLcJhOpDYvyt13LqK6o1L6I+kg0FqlFzQes75VShG/XGJV
- cCZk8Pm08ihjfh4TpiSpyCvDYRf9JATLaQwDkrS5eV2WTNSa15UgrQSaUGKoR0I71805Pat5obP
- S2tRYg4d5Prpom7GESWW9BJGXWo5tRA4ZWihoOFd45nspBl91DodmcVx66GIKS91RLJRj8hIXz2
- B28sdZ3F1686nV+1+iFnHuSCedf3Bj/Zr6x7KYBJXK7kpUVSvnS1HNOFCVGwLL2KzVe2Q0QI
-X-Proofpoint-GUID: uVePDg6TfuONB9-v3zw8CJpHeyFGP185
-X-Proofpoint-ORIG-GUID: uVePDg6TfuONB9-v3zw8CJpHeyFGP185
-X-Authority-Analysis: v=2.4 cv=combk04i c=1 sm=1 tr=0 ts=685c7602 cx=c_pps
- a=5BHTudwdYE3Te8bg5FgnPg==:117 a=5BHTudwdYE3Te8bg5FgnPg==:17
- a=kj9zAlcOel0A:10 a=6IFa9wvqVegA:10 a=20KFwNOVAAAA:8 a=VnNF1IyMAAAA:8
- a=4aWnE0LmemOYjQLa29cA:9 a=CjuIK1q_8ugA:10
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1099,Hydra:6.1.7,FMLib:17.12.80.40
- definitions=2025-06-25_08,2025-06-25_01,2025-03-28_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- priorityscore=1501
- malwarescore=0 spamscore=0 adultscore=0 mlxlogscore=866 clxscore=1011
- impostorscore=0 suspectscore=0 mlxscore=0 phishscore=0 lowpriorityscore=0
- bulkscore=0 classifier=spam authscore=0 authtc=n/a authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.19.0-2505280000
- definitions=main-2506250173
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=pasic@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+Content-Transfer-Encoding: quoted-printable
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_PASS=-0.001, T_SPF_HELO_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,17 +87,65 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 25 Jun 2025 22:20:03 -0000
+X-List-Received-Date: Thu, 26 Jun 2025 19:54:15 -0000
 
-On Wed, 25 Jun 2025 10:27:51 +0200
-Kevin Wolf <kwolf@redhat.com> wrote:
+This series adds the ability for the new QAPIDoc system to generate=0D
+"Returns:" documentation based on the return type declared in the Schema=0D
+even when no explicit documentation is found in the QAPI source. As a=0D
+result and as an immediate cleanup, trivial return statements are=0D
+removed and remaining Return documentation is revised to avoid=0D
+re-stating the return type, which is always generated automatically.=0D
+=0D
+v5: rebased, implemented Markus' preferred insertion algorithm=0D
+=0D
+v4: rebased on origin/master (2025-06-12)=0D
+=0D
+v3: rebased on top of python-qapi-linting (v4) pull request;=0D
+    removed commits that are no longer needed.=0D
+=0D
+v2: fix multi-return-sections bug :(=0D
+=0D
+John Snow (4):=0D
+  docs/qapi-domain: add return-nodesc=0D
+  docs, qapi: generate undocumented return sections=0D
+  qapi: remove trivial "Returns:" sections=0D
+  qapi: rephrase return docs to avoid type name=0D
+=0D
+ docs/devel/qapi-domain.rst | 30 ++++++++++++++++++++++++++++++=0D
+ docs/sphinx/qapi_domain.py |  8 ++++++++=0D
+ docs/sphinx/qapidoc.py     | 14 ++++++++------=0D
+ qapi/audio.json            |  2 --=0D
+ qapi/block-core.json       | 14 +++-----------=0D
+ qapi/block-export.json     |  2 +-=0D
+ qapi/block.json            |  2 +-=0D
+ qapi/char.json             |  8 --------=0D
+ qapi/control.json          |  5 ++---=0D
+ qapi/cryptodev.json        |  2 --=0D
+ qapi/dump.json             |  5 ++---=0D
+ qapi/introspect.json       |  6 +++---=0D
+ qapi/job.json              |  2 +-=0D
+ qapi/machine.json          | 22 ----------------------=0D
+ qapi/migration.json        | 12 ------------=0D
+ qapi/misc-i386.json        | 12 +-----------=0D
+ qapi/misc.json             | 12 ++----------=0D
+ qapi/net.json              |  2 +-=0D
+ qapi/pci.json              |  2 +-=0D
+ qapi/qdev.json             |  3 +--=0D
+ qapi/qom.json              |  8 +++-----=0D
+ qapi/rocker.json           |  4 ----=0D
+ qapi/run-state.json        |  2 --=0D
+ qapi/stats.json            |  2 +-=0D
+ qapi/tpm.json              |  4 ----=0D
+ qapi/trace.json            |  2 +-=0D
+ qapi/ui.json               | 10 +---------=0D
+ qapi/virtio.json           |  8 +++-----=0D
+ qapi/yank.json             |  1 -=0D
+ scripts/qapi/parser.py     | 34 ++++++++++++++++++++++++++++++++++=0D
+ scripts/qapi/schema.py     |  3 +++=0D
+ 31 files changed, 111 insertions(+), 132 deletions(-)=0D
+=0D
+-- =0D
+2.48.1=0D
+=0D
 
-> Commit bdf12f2a fixed the setter for the "loadparm" machine property,
-> which gets a string from a visitor, passes it to s390_ipl_fmt_loadparm()
-> and then forgot to free it. It left another instance of the same problem
-> unfixed in the "loadparm" device property. Fix it.
-> 
-> Signed-off-by: Kevin Wolf <kwolf@redhat.com>
-
-Reviewed-by: Halil Pasic <pasic@linux.ibm.com>
 
