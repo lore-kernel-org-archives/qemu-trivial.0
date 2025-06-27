@@ -1,63 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uV2iV-00040l-CB
-	for mharc-qemu-trivial@gnu.org; Fri, 27 Jun 2025 02:37:43 -0400
+	id 1uV8Dz-0005sL-Q7
+	for mharc-qemu-trivial@gnu.org; Fri, 27 Jun 2025 08:30:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1uV2iU-00040P-IK; Fri, 27 Jun 2025 02:37:42 -0400
-Received: from mgamail.intel.com ([192.198.163.16])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1uV8Dy-0005rY-4l
+ for qemu-trivial@nongnu.org; Fri, 27 Jun 2025 08:30:34 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <zhenzhong.duan@intel.com>)
- id 1uV2iK-0004FY-Vh; Fri, 27 Jun 2025 02:37:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1751006253; x=1782542253;
- h=from:to:cc:subject:date:message-id:mime-version:
- content-transfer-encoding;
- bh=02n+ln4ZAVekoLispeAc9CR+frqW6AI6cRuTmz8wIP4=;
- b=S7c5M+ix2TekSEE05ePwblfazav+vgOo/gyMBLmRmMSSfcMPlMNfkw5C
- 6C8/ZSF+pTCISx+/6RbyeoykkN0M8O0+WVEwnwuJDihW0Fnq8YgAhNZnW
- n5qqU7oAnM7uSwLpsp6uNS+z6VoFSKlgpdBHsv9jw32UADs5175h/lVFR
- FuvkXdOMQf4kqn1ayDJjS9jUOTE24cHAMlHD3nTB6dvRUYuXUt2KcCvrs
- vyTP44/qXo88L6FxFar85UlYLTBOUeIXuGXh0LM+6g4E9DFRz7W7B7zEX
- 0DBbBngSe2LKKfpd9mM77KXyBKmTwZW1CYHxVqQizgb6yaLdRDiQ0cmkJ Q==;
-X-CSE-ConnectionGUID: j390e9InQRCdMA7I81i7VA==
-X-CSE-MsgGUID: NTefJXMYR1G67cdTzXqQJQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11476"; a="40931458"
-X-IronPort-AV: E=Sophos;i="6.16,269,1744095600"; d="scan'208";a="40931458"
-Received: from fmviesa010.fm.intel.com ([10.60.135.150])
- by fmvoesa110.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jun 2025 23:37:26 -0700
-X-CSE-ConnectionGUID: Tg55MPK/RPKrSfrbmv0yhQ==
-X-CSE-MsgGUID: l1fvF24hS86WUKQL/bwYMA==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.16,269,1744095600"; d="scan'208";a="153438091"
-Received: from spr-s2600bt.bj.intel.com ([10.240.192.127])
- by fmviesa010-auth.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 26 Jun 2025 23:37:24 -0700
-From: Zhenzhong Duan <zhenzhong.duan@intel.com>
-To: qemu-devel@nongnu.org
-Cc: alex.williamson@redhat.com, clg@redhat.com, eric.auger@redhat.com,
- steven.sistare@oracle.com, chao.p.peng@intel.com,
- Zhenzhong Duan <zhenzhong.duan@intel.com>,
- Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org (open list:Trivial patches)
-Subject: [PATCH v2 0/2] Some trivial live update fixes
-Date: Fri, 27 Jun 2025 14:33:30 +0800
-Message-Id: <20250627063332.5173-1-zhenzhong.duan@intel.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1uV8Dq-0001XP-I5
+ for qemu-trivial@nongnu.org; Fri, 27 Jun 2025 08:30:33 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1751027423;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=gKKkc6z345jmH26p5rMRiYRworieKPgNQxfolOC5M6o=;
+ b=CO1J5xQgDO6LADlFoYbdd60u8PFxSYjIPwp9Uux5fGQf8r3rEOo2mtQq1NtmkdSECc/voG
+ 7LRvgnnyLoSvV8bi2QhSrzohRlc4nDcZSlEEveEAfuM8GBo/GDI6OEoYmYB2W3kQY/dSph
+ IJ6QdGc4qdOfS5eQYk8+hy1maF/78wg=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-308--LDZ0dzmOH6IXxerUueOPg-1; Fri,
+ 27 Jun 2025 08:30:19 -0400
+X-MC-Unique: -LDZ0dzmOH6IXxerUueOPg-1
+X-Mimecast-MFC-AGG-ID: -LDZ0dzmOH6IXxerUueOPg_1751027416
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1BCB518089B7; Fri, 27 Jun 2025 12:30:14 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.10])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 04EE0180045B; Fri, 27 Jun 2025 12:30:11 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 576D021E6A27; Fri, 27 Jun 2025 14:30:08 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel@nongnu.org,  Jason Wang <jasowang@redhat.com>,  Eduardo
+ Habkost <eduardo@habkost.net>,  Peter Maydell <peter.maydell@linaro.org>,
+ Jiri Pirko <jiri@resnulli.us>,  Vladimir Sementsov-Ogievskiy
+ <vsementsov@yandex-team.ru>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>,
+ Michael Tokarev <mjt@tls.msk.ru>,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
+ <marcandre.lureau@redhat.com>,  qemu-trivial@nongnu.org,  "Gonglei (Arei)"
+ <arei.gonglei@huawei.com>,  Laurent Vivier <laurent@vivier.eu>,  Peter Xu
+ <peterx@redhat.com>,  Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,  Zhao
+ Liu <zhao1.liu@intel.com>,  Fabiano Rosas <farosas@suse.de>,  Yanan Wang
+ <wangyanan55@huawei.com>,  Gerd Hoffmann <kraxel@redhat.com>,  Paolo
+ Bonzini <pbonzini@redhat.com>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>, Michael Roth <michael.roth@amd.com>,  Zhenwei Pi
+ <pizhenwei@bytedance.com>,  Lukas Straub <lukasstraub2@web.de>,  Hanna
+ Reitz <hreitz@redhat.com>,  Stefan Hajnoczi <stefanha@redhat.com>,  Ani
+ Sinha <anisinha@redhat.com>,  Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>,  Kevin Wolf <kwolf@redhat.com>,
+ Eric Blake <eblake@redhat.com>,  qemu-block@nongnu.org,  Mads Ynddal
+ <mads@ynddal.dk>
+Subject: Re: [PATCH v5 2/4] docs, qapi: generate undocumented return sections
+In-Reply-To: <20250626195337.2158250-3-jsnow@redhat.com> (John Snow's message
+ of "Thu, 26 Jun 2025 15:53:35 -0400")
+References: <20250626195337.2158250-1-jsnow@redhat.com>
+ <20250626195337.2158250-3-jsnow@redhat.com>
+Date: Fri, 27 Jun 2025 14:30:08 +0200
+Message-ID: <877c0xl63z.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=192.198.163.16;
- envelope-from=zhenzhong.duan@intel.com; helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,34 +92,190 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 27 Jun 2025 06:37:42 -0000
+X-List-Received-Date: Fri, 27 Jun 2025 12:30:34 -0000
 
-Hi
+John Snow <jsnow@redhat.com> writes:
 
-These are trivial VFIO live update fixes in corner cases.
+> This patch changes the qapidoc parser to generate stub Return value
+> documentation for any command that has a return value but does not have
+> a "Returns:" doc section.
+>
+> The stubs include just the type name, which will be rendered with a
+> cross-reference link in the HTML output.
+>
+> Signed-off-by: John Snow <jsnow@redhat.com>
 
-1) potential SIGSEGV when unmap-all-vaddr failed
-2) potential vfio_container_post_load failure
+Might want to briefly explain placement of the auto-generated return
+value documentation.
 
-Thanks
-Zhenzhong
+The cover letter claims you implemented the placement I suggested:
 
-Changelog:
-v2:
-- drop patch1,2 in v1 as they are merged
-- squashed "local save" parts of patch3 into patch4 (Steve)
-- s/DMA_MAP_FUNC/dma_map_fn (Steve)
+1. If we have arguments, return goes right after them.
 
-Zhenzhong Duan (2):
-  vfio/container: Fix potential SIGSEGV when recover from
-    unmap-all-vaddr failure
-  vfio/container: Fix vfio_container_post_load()
+2. Else if we have errors, return goes right before them.
 
- include/hw/vfio/vfio-cpr.h |  7 ++++---
- hw/vfio/cpr-legacy.c       | 23 +++++++++--------------
- 2 files changed, 13 insertions(+), 17 deletions(-)
+3. Else if we have features, return goes right before them.
 
--- 
-2.34.1
+4. Else return goes right after the intro (might require a few more TODO
+   hacks to terminate the intro).
+
+This patch adds auto-generated return value documentation where we have
+none.
+
+The next patch replaces handwritten by auto-generated return value
+documentation where these are at least as good.  Moves the return value
+docs in some cases.
+
+Let's check placement.  Skip to the end for a summary of findings.
+
+First the additions (this patch):
+
+* x-debug-query-block-graph
+
+  Title, intro, features, return
+
+  1. doesn't apply, 2. doesn't apply, 3. applies: return should go right
+  before features.  It's afterwards.  Unexpected.
+
+* query-tpm
+
+  Title, intro, return, example
+
+  4. applies.  Good.
+
+* query-dirty-rate
+
+  Title, intro, arguments, return, examples
+
+  1. applies.  Good.
+
+* query-vcpu-dirty-limit
+
+  Title, intro, return, example
+
+  4. applies.  Good.
+
+* query-vm-generation-id
+
+  Title, intro, return
+
+  4. applies.  Good.
+
+* query-memory-size-summary
+
+  Title, intro, example, return
+
+  4. applies.  Why is return after example here, and before example
+  elsewhere?
+
+  Turns out elsewhere we have Since: between intro and .. qmp-example::
+  terminating the intro.  Slighly unusual, Since: more often the last in
+  the comment block).
+
+  Except for query-memory-size-summary, which does have Since: at the
+  very and, and uses the TODO hack instead to terminate the intro.
+
+  So, the placement algorithm works as intended here.  We just need to
+  terminate the intro here as well.
+
+* query-memory-devices
+
+  Title, intro, return, example
+
+  4. applies.  Good.
+
+* query-acpi-ospm-status
+
+  Title, intro, return, example
+
+  4. applies.  Good.
+
+* query-stats-schemas
+
+  Title, intro, arguments, return, note
+
+  1. applies.  Good.
+
+Check placement of moved returns (next patch):
+
+* x-debug-block-dirty-bitmap-sha256
+
+  Title, intro, arguments, features, errors, return
+
+  1. applies: return should go right after arguments.  Its at the end.
+  Unexpected.
+
+* query-xen-replication-status
+
+  Title, intro, example, return
+
+  Return after example instead of before.  This is just like
+  query-memory-size-summary: placement algorithm works as intended,
+  intro needs a terminator.
+
+* query-colo-status
+
+  Title, intro, example, return
+
+  Likewise.
+
+* query-machines
+
+  Title, intro, arguments, return, features, example
+
+  1. applies.  Okay.
+
+* query-balloon
+
+  Title, intro, errors, return, example
+
+  2. applies: return should go right before errors.  It's afterwards.
+  Unexpected.
+
+* query-hv-balloon-status-report
+
+  Title, intro, errors, return, example
+
+  Likewise.
+
+* query-yank
+
+  Title, intro, example, return
+
+  Another one just like query-memory-size-summary: placement algorithm
+  works as intended, intro needs a terminator.
+
+* query-sev-capabilities
+
+  Title, intro, errors, return, example
+
+  Like query-ballon.
+
+* x-query-virtio-queue-element
+
+  Title, intro, arguments, return, features, example
+
+  1. applies.  Good.
+
+
+Summary of findings:
+
+1. If we have arguments, return goes right after them.
+
+   Works as intended, except for x-debug-block-dirty-bitmap-sha256.
+   Odd.
+
+2. Else if we have errors, return goes right before them.
+
+   You seem to place it afterwards instead.
+
+3. Else if we have features, return goes right before them.
+
+   You seem to place it afterwards instead.
+
+4. Else return goes right after the intro (might require a few more TODO
+   hacks to terminate the intro).
+
+   Yes, we need several of them.
 
 
