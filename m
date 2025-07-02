@@ -1,63 +1,88 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uWsj4-0001JJ-5h
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jul 2025 04:21:54 -0400
+	id 1uWt6G-0006Hy-4Y
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Jul 2025 04:45:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWsj2-0001J2-HH
- for qemu-trivial@nongnu.org; Wed, 02 Jul 2025 04:21:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWsiz-0004A4-Od
- for qemu-trivial@nongnu.org; Wed, 02 Jul 2025 04:21:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751444507;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=xk424RQ1ZwDMTwBH2RMNfL83+gFiQj0dMd6/NPEnP58=;
- b=UK3Wbh1Gd11jsXDKwFk4sQTSZ0/PntfvKzng0CCfuMjlMhVc/MYKN1lgg3dNlX3eR9o79S
- v+7Ua65aJNNhgYSq1H2mbvDx0FSX+eHKoCe9bMLWIMxi0WxUws5YLEpUa0bX+bUU9akN6a
- smnP+waB4H7KSQJ1bg/0ZTiE8P2TMWk=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-612-KUySrqKSMB6OER04QCH8Lw-1; Wed,
- 02 Jul 2025 04:21:43 -0400
-X-MC-Unique: KUySrqKSMB6OER04QCH8Lw-1
-X-Mimecast-MFC-AGG-ID: KUySrqKSMB6OER04QCH8Lw_1751444502
-Received: from mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.40])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B3CD01944AA9; Wed,  2 Jul 2025 08:21:42 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.45.224.120])
- by mx-prod-int-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9591019560AB; Wed,  2 Jul 2025 08:21:40 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: Zhao Liu <zhao1.liu@intel.com>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] docs/system/target-i386: Remove the sentence about RHEL 7
- being supported
-Date: Wed,  2 Jul 2025 10:21:38 +0200
-Message-ID: <20250702082138.23109-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1uWt6A-0006HC-Sw
+ for qemu-trivial@nongnu.org; Wed, 02 Jul 2025 04:45:48 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1uWt68-0001o4-Sv
+ for qemu-trivial@nongnu.org; Wed, 02 Jul 2025 04:45:46 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-ae0de0c03e9so981529066b.2
+ for <qemu-trivial@nongnu.org>; Wed, 02 Jul 2025 01:45:42 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1751445940; x=1752050740; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=EkPC+xflEyh58hMWVG+t45AJTZEdXM5JQ6CwJJJFexs=;
+ b=j+aKBDK3bnCMm7K7A0QRZmS1GyuI51/QhS5v6fjgihQlkCShJe7PODTRLf7IvyK9Pf
+ R6QyJSIv3WpxhUe6rbnigMsSIfByTKdHPK/IBWFKVpqUA+K5R26zc5mZYrrUT4VcYy28
+ cGB5y9DCfMDnLmKl+Mba0qrqMnZ3+vPcO6kqYky+NaKvcVFu8FTGtREMe7XxNU/vbUhd
+ qDEp3SVNh8xd+7u0ygvjZ6RHsRDHX8CaMJVGDCtIFwX0GMC9MS+ZG1PBSN5uiY/PnD5R
+ gqZ32VSzoiL2EYD2rTi9D8NwfmaY+G8N+yegwnoDf1bunyiRSJqx3eHkZ01GC7oN1FVB
+ mnFw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1751445940; x=1752050740;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=EkPC+xflEyh58hMWVG+t45AJTZEdXM5JQ6CwJJJFexs=;
+ b=amg8iCKTCtUVUjy7wR1qK/lKhtxtiHBano12MvnNuWwRKVlJwTwvKsXJkpDC3isNDd
+ +HVFlVP4QFY5CNR6EKUF9zjF59J9yJSkjUTy9zIecSSq7RxtV5E9zh/g6wPtstieL027
+ pMo5cpyqMbS8cngRj9azy725u8hEp1JslFKHUA5e7j7soA7mfSXZcEyHeMoJIS77sPok
+ LBd6t/HalJO9BuHfzi4H3J2ePgiSljn6RPzgjAYbkitUrronGH3OeTqckWZSOI0uldEx
+ j4aGIH3VsR2RB4uBHQRM7w9YGkqmHa0BXRALLYu7yXDyQwVnfHhBKNWcZGLsGipMqBGy
+ DXnA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXRu1JlSbymJWCqsHrubMgbZPTBg6prBjJex7wwzYkeUYv8cLOa+bgZgXTEze0RCXvo2Qvz5q9asUmyYEI=@nongnu.org
+X-Gm-Message-State: AOJu0Yxp5XgQ11DE5d/H3aHheKMQMHeQBy8DxmE373nhhDR0xE0CScZJ
+ 62MtWJm5bKDuklBkprcXutpJlkkC9GmkmeuYP8fw7fPEa3dIDq6a/hp+3Y0vuDGgY4PzctY+5wb
+ zMVm4sqY=
+X-Gm-Gg: ASbGnct+aRTL2J76BE00NN/CQB0c7xUU4LrPvU4cMbA1GiOzKT6FGNurnvzipg0XCfd
+ +XPoXwqzuajhQkIp4Ve+qlxXn+CFskpDo+zvJJISKHj2YIDukA77C44vdy6BmZNlHt6Ti45Q+8Q
+ LNqI08ugA1W8zWICyEiaEuWOmPznefVuNAtI7lTHxwJBIK8rrGkrFqD1T6OP7GEiqT03dzPiwoU
+ 4oea5pqhd3+byNCVkSGD1YzEp1GtL7j9FREstB4H+uFWmlB4Ige9zJvad2RLdxD8beaUQlz+RNk
+ aDnfpYpmxgrGKdZ8HUGYgkE2xlXRn+uKhIo4MeMPqdtbcb6fmFyegY/99wExzxY=
+X-Google-Smtp-Source: AGHT+IEVxUH7oMwDwObWpMbe8WbFxVuANAWzJhGt2tlc56v71xNu1CVww1/cqC4iApoRpvp9aDXKVQ==
+X-Received: by 2002:a17:907:7fa8:b0:ae3:5e27:8e66 with SMTP id
+ a640c23a62f3a-ae3c2bdcc36mr207648166b.27.1751445940571; 
+ Wed, 02 Jul 2025 01:45:40 -0700 (PDT)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-60c828e1a96sm8672319a12.19.2025.07.02.01.45.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 02 Jul 2025 01:45:39 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id F0A225F8BE;
+ Wed, 02 Jul 2025 09:45:38 +0100 (BST)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>,  qemu-devel@nongnu.org,  Zhao Liu
+ <zhao1.liu@intel.com>,  qemu-trivial@nongnu.org
+Subject: Re: [PATCH] docs/system/target-i386: Remove the sentence about RHEL
+ 7 being supported
+In-Reply-To: <20250702082138.23109-1-thuth@redhat.com> (Thomas Huth's message
+ of "Wed, 2 Jul 2025 10:21:38 +0200")
+References: <20250702082138.23109-1-thuth@redhat.com>
+User-Agent: mu4e 1.12.11; emacs 30.1
+Date: Wed, 02 Jul 2025 09:45:38 +0100
+Message-ID: <877c0rf0b1.fsf@draig.linaro.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.40
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x62e.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,32 +95,21 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Jul 2025 08:21:53 -0000
+X-List-Received-Date: Wed, 02 Jul 2025 08:45:50 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+Thomas Huth <thuth@redhat.com> writes:
 
-According to our "Supported build platforms" policy, RHEL 7 is not
-supported anymore, so let's remove the related sentence from the x86
-documentation.
+> From: Thomas Huth <thuth@redhat.com>
+>
+> According to our "Supported build platforms" policy, RHEL 7 is not
+> supported anymore, so let's remove the related sentence from the x86
+> documentation.
+>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- docs/system/target-i386.rst | 4 +---
- 1 file changed, 1 insertion(+), 3 deletions(-)
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
-diff --git a/docs/system/target-i386.rst b/docs/system/target-i386.rst
-index 43b09c79d6b..2374391397c 100644
---- a/docs/system/target-i386.rst
-+++ b/docs/system/target-i386.rst
-@@ -37,6 +37,4 @@ OS requirements
- ~~~~~~~~~~~~~~~
- 
- On x86_64 hosts, the default set of CPU features enabled by the KVM
--accelerator require the host to be running Linux v4.5 or newer. Red Hat
--Enterprise Linux 7 is also supported, since the required
--functionality was backported.
-+accelerator require the host to be running Linux v4.5 or newer.
--- 
-2.50.0
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 
