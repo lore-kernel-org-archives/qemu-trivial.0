@@ -1,63 +1,63 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uWqZd-0000m5-Di
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jul 2025 02:04:01 -0400
+	id 1uWqqN-0006mV-Q9
+	for mharc-qemu-trivial@gnu.org; Wed, 02 Jul 2025 02:21:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWqZL-0000jz-Ox
- for qemu-trivial@nongnu.org; Wed, 02 Jul 2025 02:03:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1uWqqM-0006m4-TS; Wed, 02 Jul 2025 02:21:18 -0400
+Received: from mgamail.intel.com ([192.198.163.10])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uWqZC-0004fa-Hz
- for qemu-trivial@nongnu.org; Wed, 02 Jul 2025 02:03:42 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1751436209;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=BL4N4vQUHRolZ4DvmG3fojJiew3wsR9YAjpgmgCVCXk=;
- b=AT7zKBtUyZNGfzpP3wKMtvUCSo7yLBioykbod0XnTW+UCqRHweHoWzVaFi7fQ0d2JwAR0n
- 1/jdPyBQ+UILgBkSy5oOTpOV75LNcmP7lYOEFR0LVtSEYymUA2M9z+N3QbG+sJpBITAa8m
- +G2xmVn2zsw7NUGt2iE46Zw+/kh9o7w=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-279-WQ_eRFWENs2ee4mZhZ6sXw-1; Wed,
- 02 Jul 2025 02:03:26 -0400
-X-MC-Unique: WQ_eRFWENs2ee4mZhZ6sXw-1
-X-Mimecast-MFC-AGG-ID: WQ_eRFWENs2ee4mZhZ6sXw_1751436205
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 779421955D4E; Wed,  2 Jul 2025 06:03:25 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.45.224.120])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 24BAB18003FC; Wed,  2 Jul 2025 06:03:21 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org,
-	qemu-stable@nongnu.org,
-	qemu-trivial@nongnu.org
-Subject: [PATCH] accel/kvm: Adjust the note about the minimum required kernel
- version
-Date: Wed,  2 Jul 2025 08:03:19 +0200
-Message-ID: <20250702060319.13091-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <zhao1.liu@intel.com>)
+ id 1uWqqJ-0000MV-6h; Wed, 02 Jul 2025 02:21:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
+ t=1751437275; x=1782973275;
+ h=date:from:to:cc:subject:message-id:references:
+ mime-version:in-reply-to;
+ bh=KDE7bcX47aDBLE8+1wi3xHJx7irP5QBRBP1cPyNpGEo=;
+ b=S1odRBYjEpI/BIUqYM4kOJNSETBc7U0+0u2Mo3ZkeyOqFiTic5Xp2rFz
+ WIVVlqnwkaJl7ouYvOlTxcbcNwotYMGcyTilh5Y1/XFjxsYPuHadidGhk
+ FUuc2rS4prqX8WrhkuK/0ZYQBXKtBMWHbZP5p86vyVppTsE+BDvUsOcwg
+ FHMRIDc+umupqySwj5ZZDfCr1EFPMC4OTrWNTMbtCMGCCj6zoPjDXoIsC
+ v53Gcc585TD6esu7EX2QXyyZJPisGBzU3bZ0yzubTquraXLo33hu5OSoJ
+ IJLVFypWAaqa8efYPZM/eCPrOy893bnpfVUFywjx6d5DGr8cP1V+TMx17 A==;
+X-CSE-ConnectionGUID: v7EedJXyQ4Ok6SoCk7SCgg==
+X-CSE-MsgGUID: MkXSxus7RISQUaVqEVbjmA==
+X-IronPort-AV: E=McAfee;i="6800,10657,11481"; a="65069877"
+X-IronPort-AV: E=Sophos;i="6.16,281,1744095600"; d="scan'208";a="65069877"
+Received: from orviesa001.jf.intel.com ([10.64.159.141])
+ by fmvoesa104.fm.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
+ 01 Jul 2025 23:21:10 -0700
+X-CSE-ConnectionGUID: 2DOTjRfKRXCZODe51K6jvQ==
+X-CSE-MsgGUID: hIXI8E1kSa2EoaubLjUqNQ==
+X-ExtLoop1: 1
+X-IronPort-AV: E=Sophos;i="6.16,281,1744095600"; d="scan'208";a="191160559"
+Received: from liuzhao-optiplex-7080.sh.intel.com (HELO localhost)
+ ([10.239.160.39])
+ by orviesa001.jf.intel.com with ESMTP; 01 Jul 2025 23:21:09 -0700
+Date: Wed, 2 Jul 2025 14:42:33 +0800
+From: Zhao Liu <zhao1.liu@intel.com>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
+ kvm@vger.kernel.org, qemu-stable@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] accel/kvm: Adjust the note about the minimum required
+ kernel version
+Message-ID: <aGTU2enBBQj7lu3E@intel.com>
+References: <20250702060319.13091-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+In-Reply-To: <20250702060319.13091-1-thuth@redhat.com>
+Received-SPF: pass client-ip=192.198.163.10; envelope-from=zhao1.liu@intel.com;
+ helo=mgamail.intel.com
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,37 +70,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Jul 2025 06:03:50 -0000
+X-List-Received-Date: Wed, 02 Jul 2025 06:21:19 -0000
 
-From: Thomas Huth <thuth@redhat.com>
+On Wed, Jul 02, 2025 at 08:03:19AM +0200, Thomas Huth wrote:
+> Date: Wed,  2 Jul 2025 08:03:19 +0200
+> From: Thomas Huth <thuth@redhat.com>
+> Subject: [PATCH] accel/kvm: Adjust the note about the minimum required
+>  kernel version
+> 
+> From: Thomas Huth <thuth@redhat.com>
+> 
+> Since commit 126e7f78036 ("kvm: require KVM_CAP_IOEVENTFD and
+> KVM_CAP_IOEVENTFD_ANY_LENGTH") we require at least kernel 4.4 to
+> be able to use KVM. Adjust the upgrade_note accordingly.
+> While we're at it, remove the text about kvm-kmod and the
+> SourceForge URL since this is not actively maintained anymore.
+> 
+> Fixes: 126e7f78036 ("kvm: require KVM_CAP_IOEVENTFD and KVM_CAP_IOEVENTFD_ANY_LENGTH")
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  accel/kvm/kvm-all.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
 
-Since commit 126e7f78036 ("kvm: require KVM_CAP_IOEVENTFD and
-KVM_CAP_IOEVENTFD_ANY_LENGTH") we require at least kernel 4.4 to
-be able to use KVM. Adjust the upgrade_note accordingly.
-While we're at it, remove the text about kvm-kmod and the
-SourceForge URL since this is not actively maintained anymore.
+I just mentioned the kernel version in another patch thread. I found
+x86 doc said it requires v4.5 or newer ("OS requirements" section in
+docs/system/target-i386.rst).
 
-Fixes: 126e7f78036 ("kvm: require KVM_CAP_IOEVENTFD and KVM_CAP_IOEVENTFD_ANY_LENGTH")
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- accel/kvm/kvm-all.c | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
-
-diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
-index d095d1b98f8..e3302b087f4 100644
---- a/accel/kvm/kvm-all.c
-+++ b/accel/kvm/kvm-all.c
-@@ -2571,8 +2571,7 @@ static int kvm_init(MachineState *ms)
- {
-     MachineClass *mc = MACHINE_GET_CLASS(ms);
-     static const char upgrade_note[] =
--        "Please upgrade to at least kernel 2.6.29 or recent kvm-kmod\n"
--        "(see http://sourceforge.net/projects/kvm).\n";
-+        "Please upgrade to at least kernel 4.4.\n";
-     const struct {
-         const char *name;
-         int num;
--- 
-2.50.0
-
+> diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+> index d095d1b98f8..e3302b087f4 100644
+> --- a/accel/kvm/kvm-all.c
+> +++ b/accel/kvm/kvm-all.c
+> @@ -2571,8 +2571,7 @@ static int kvm_init(MachineState *ms)
+>  {
+>      MachineClass *mc = MACHINE_GET_CLASS(ms);
+>      static const char upgrade_note[] =
+> -        "Please upgrade to at least kernel 2.6.29 or recent kvm-kmod\n"
+> -        "(see http://sourceforge.net/projects/kvm).\n";
+> +        "Please upgrade to at least kernel 4.4.\n";
+>      const struct {
+>          const char *name;
+>          int num;
+> -- 
+> 2.50.0
+> 
+> 
 
