@@ -1,83 +1,86 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uWtVs-0007xQ-Gg
-	for mharc-qemu-trivial@gnu.org; Wed, 02 Jul 2025 05:12:20 -0400
+	id 1uXZls-0000P6-QL
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Jul 2025 02:19:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uWtVq-0007wX-D7
- for qemu-trivial@nongnu.org; Wed, 02 Jul 2025 05:12:18 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1uWtVl-0007Pt-HQ
- for qemu-trivial@nongnu.org; Wed, 02 Jul 2025 05:12:18 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4538a2fc7ffso44077105e9.0
- for <qemu-trivial@nongnu.org>; Wed, 02 Jul 2025 02:12:12 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1751447530; x=1752052330; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=kFBWLajcalmmXrx/a1UaeBauyTYYBLmg9BJXhbcBxtU=;
- b=YOcmR2I9w1RGAvrFF9BcKToi5n/pWSSjzuleMVOOKnzYo7b7BLlsNGzUCRqOfjERPx
- qlHYJUsYfWYJSA/ZqIkjMVSG3ucG+aVDDgtevrZn6W+/OfLToOVhC35OjNxN8hpLJKSe
- P9Y/nOlZpbXb+2i0bzXtJ/IMnBF6EydTop5sq+Q241nTB+IlDXcPUJEkgV3Qq9FYS9U7
- Zw9ZSrtRUAgacyH37Eht8dAQoEUg1DiH0cIpBBjAqXiZDFJSErdBhQZT29vsvec5VBvu
- aDABaCt/+ZxlwqQp5lPiTm6iBg2viqcqePg/94Q4256KBJx5UV4x/BUIoNjHoTMSxBFi
- JX9w==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751447530; x=1752052330;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=kFBWLajcalmmXrx/a1UaeBauyTYYBLmg9BJXhbcBxtU=;
- b=BlB/msCWalMTgQvKBJPYetLaJqbnfcoQwvDzXmNEzoRnIxYoD3Ia8fKuLuM8YBV/Bk
- jbYKa0oDOnQtf86u0/9z+jw731SKuh4IW62kEQEICFFqG+a7PyhH/QzgayzxDylGyR/g
- UDteEzcPy7DEi/iv4L/A8Wzb7wY5YN37HyEiRxQxyCnv9rxUkTYngBe79bbcVpdUd7Ov
- 8B0EQRvtWAxoeaW1qmB2wNu+WHZsU/5IIrkOu6vYuQIb+y/Zade6BrsQdIFpr3PTk2Mv
- YlKiHZWl5QbV7uAiSNLKjWbHTMsRBJuyJl1oIk8IDWqP62kP63EH88+aCONwD28ZI11B
- 4j8g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWakQbPtW+hsUx8AUDQbF6cKeCv84xH9sB9m8pf5KqhbaTScJiFSRQLWTkmsMMIUiqVTaic2ZNZcw+68JQ=@nongnu.org
-X-Gm-Message-State: AOJu0YwD0iTLZygfqKPe8ySE85+kH7fi+loVV/VsKhP4B3bsfdeLczkI
- wbi6ywLPlybXMzSZtd2jenOjhJfW06rHCz4EYs0aKZrPYvWsNnaw36rEzFPFkmESKeE=
-X-Gm-Gg: ASbGncsv5nUi/FmdhlaQGUT4abN1xNHH8XIS+mMXga83KWmU1dvwbeX/CFbaVtZ1hL2
- wrp+JYFq3TC0qzQ5lcuXWqgEVnSH49nyVS2pkar2VIDfsE7CQ0PWkrByW3rQoGoaFljxmAxgyuu
- MazMejRedCTLkUyuAEceFhs60dDPOrXrF2sp2su1W3hk414bS4L9swKl6TrI+wsqVWliunQw10L
- 4CPUHS3eWhmyYxQPYds9wSysZRsW7E5HzJtZ2nFsmdAAXuE6ksRUOrbx1X5XzZPoXAAD9NIb96I
- 1c47snndA10993JV4gmwsto3ncevBILvV6ynwJBKW+qDoH4ALh47bsRHd1f5E6UwncVE+cwykMh
- Y+pglgHAZQXHQVo8J+bxbZbqhHz/39A==
-X-Google-Smtp-Source: AGHT+IEvw67+QDLEMfYgM0ShPdp7SyTnTOfZX15HNJAs7ojrm9bY3KQsCgoHZ+cdrX0vfa+RxU0qCg==
-X-Received: by 2002:a05:600c:1f90:b0:43b:c857:e9d7 with SMTP id
- 5b1f17b1804b1-454a3c1e6d6mr18279265e9.5.1751447530288; 
- Wed, 02 Jul 2025 02:12:10 -0700 (PDT)
-Received: from [192.168.69.166] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3a892e52a5asm15686079f8f.54.2025.07.02.02.12.08
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 02 Jul 2025 02:12:09 -0700 (PDT)
-Message-ID: <5bc1b43d-764f-4f6b-ba1c-d929193abc50@linaro.org>
-Date: Wed, 2 Jul 2025 11:12:07 +0200
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1uXZlr-0000O6-21; Fri, 04 Jul 2025 02:19:39 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1uXZlp-0007Xu-61; Fri, 04 Jul 2025 02:19:38 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id A65EB1332B5;
+ Fri, 04 Jul 2025 09:19:09 +0300 (MSK)
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id A773F23AE14;
+ Fri,  4 Jul 2025 09:19:24 +0300 (MSK)
+Message-ID: <2825ccc0-9d99-42e4-b6ab-24c8cdc2c2f2@tls.msk.ru>
+Date: Fri, 4 Jul 2025 09:19:24 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] docs/system/target-i386: Remove the sentence about RHEL 7
- being supported
+Subject: Re: [PATCH] accel/kvm: Adjust the note about the minimum required
+ kernel version
 To: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
  qemu-devel@nongnu.org
-Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org
-References: <20250702082138.23109-1-thuth@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250702082138.23109-1-thuth@redhat.com>
+Cc: kvm@vger.kernel.org, qemu-stable@nongnu.org, qemu-trivial@nongnu.org
+References: <20250702060319.13091-1-thuth@redhat.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20250702060319.13091-1-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.237, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,20 +93,22 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Wed, 02 Jul 2025 09:12:19 -0000
+X-List-Received-Date: Fri, 04 Jul 2025 06:19:39 -0000
 
-On 2/7/25 10:21, Thomas Huth wrote:
+On 02.07.2025 09:03, Thomas Huth wrote:
 > From: Thomas Huth <thuth@redhat.com>
 > 
-> According to our "Supported build platforms" policy, RHEL 7 is not
-> supported anymore, so let's remove the related sentence from the x86
-> documentation.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   docs/system/target-i386.rst | 4 +---
->   1 file changed, 1 insertion(+), 3 deletions(-)
+> Since commit 126e7f78036 ("kvm: require KVM_CAP_IOEVENTFD and
+> KVM_CAP_IOEVENTFD_ANY_LENGTH") we require at least kernel 4.4 to
+> be able to use KVM. Adjust the upgrade_note accordingly.
+> While we're at it, remove the text about kvm-kmod and the
+> SourceForge URL since this is not actively maintained anymore.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Let's be consistent and require kernel 4.5.
 
+With this, applied to qemu-trivial (keeping Philippe's R-b).
+
+Thanks,
+
+/mjt
 
