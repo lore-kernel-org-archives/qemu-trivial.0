@@ -1,86 +1,85 @@
 Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uXZls-0000P6-QL
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Jul 2025 02:19:40 -0400
+	id 1uXeLp-0001zb-CX
+	for mharc-qemu-trivial@gnu.org; Fri, 04 Jul 2025 07:13:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1uXZlr-0000O6-21; Fri, 04 Jul 2025 02:19:39 -0400
-Received: from isrv.corpit.ru ([212.248.84.144])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1uXZlp-0007Xu-61; Fri, 04 Jul 2025 02:19:38 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id A65EB1332B5;
- Fri, 04 Jul 2025 09:19:09 +0300 (MSK)
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id A773F23AE14;
- Fri,  4 Jul 2025 09:19:24 +0300 (MSK)
-Message-ID: <2825ccc0-9d99-42e4-b6ab-24c8cdc2c2f2@tls.msk.ru>
-Date: Fri, 4 Jul 2025 09:19:24 +0300
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1uXeLa-0001qK-R6; Fri, 04 Jul 2025 07:12:51 -0400
+Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
+ id 1uXeLZ-0002cq-1F; Fri, 04 Jul 2025 07:12:50 -0400
+Received: by mail-pl1-x62a.google.com with SMTP id
+ d9443c01a7336-236192f8770so5821835ad.0; 
+ Fri, 04 Jul 2025 04:12:46 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1751627565; x=1752232365; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=s6UGTgPYir33A0rgIBH+C4iVYyQtEZW7GZky2on9WjU=;
+ b=QjYJCxhtVICYs5lG54LZAopHkXNbhHAOwVpfek4dMj3rwgo5nWxIaK9T8GQWX2wBfd
+ 2Of1BDi5+Muw7leP/WcejQJlCa0uYwZms5ASvS/WYAqgDVIHbjIz6ijrSs6c7PN0QYhk
+ SJ5MG/0Fi+tQHm3Ny6+AYm6R2lqDi1+3MpkFFtu8/sOOst4JibLo4/KEh0uLMqVi//4D
+ uP5ABFRFRtR0m+GQZ7LbRIEySMad5vTOEjv3LN2rHjnRuEtPgBC2uCeZeNZwjDh527gq
+ I6HVKsgnbWQmJnoT+ga4oFQntt8Y5hlFdUCmwTbNorV9XtuDdVuqRbP9v4cyoTdlBESz
+ riOQ==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1751627565; x=1752232365;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=s6UGTgPYir33A0rgIBH+C4iVYyQtEZW7GZky2on9WjU=;
+ b=P8UOpSl3TGRltn2Kf3u6BZ8rA5s24Bht24ohoyAtchvVKfF8UIAPfObVA1PPT3Y98x
+ P78BwOJg84UnN0u9q1iDqIRChL5sFZDXHI9Yp07BLQ9XM1kISeam4edzLhOvwP/5s4Yq
+ lbEiQ+WlwneAikHOB/MOdPYkVLi3sat69wrAZUVrxWA46ai4ZsZnEskjHspCurBqmRn4
+ ADbY0TVmtlv8GMvzMPn8HsFjIGNzVyCvCDXI/2J1I/kgLZwXmBe3pk2s7K8OMYHcpYTY
+ KVbCE/3g/aAMcbf/n8dYQRjHORW9MSIMvmWm8QhT7eSMXb5AEw/hmQhDhncNlUhNfp5W
+ 5dCg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCWKImpDQ6trDm3joNWynfe5HfSahSVOq9QF6rWxd/XlbQRSIB5xIj5ZHzVSEmaMjv/jbP3SW6G1omPwv9M=@nongnu.org
+X-Gm-Message-State: AOJu0YxtPZ6UiqJkorukaW6GxalUs9SRqz24XK6VQ9mu1vTvMgTpJEUy
+ I8Qm18bY9WH/6Yf4z+slF8+U0gjwgKkuFVuJDxjTCxbDBNopTqpgBOnJDZxopA==
+X-Gm-Gg: ASbGnculzt6hglV4yzIJqpskNE+LSy0QxGP6w4iCjXUAhQ2PjqgLY/JH6O6t5cJnV03
+ HSxIIzlcbkDOkgt4qwgGU0gpwA1jts/leUlee2DZEe48x0mDk67rPAWORPXK1otsdOPGjMzZ/4q
+ uEJZHvHeixzsggi60AktH6ciJfUNbe1AlABjByIbneTHbROk2nSCToEZidZ0EHabfpjPjTwpFNl
+ v0u2hey3/9W2oT56DEp6ZyRYa4EFdhNfOqnHsBRtNr7apexbNMpjaX404uXJaQQviMZK5/WWNNo
+ KKra0sTU1ewaJLf5AEw0eX28HFTrC5YLbmK5mg2TBS3gJbe7KbexR2TVJb94JYjZABw1KCU9i5w
+ 9RKOPosPts/wNOAan+9jNDSSoKQ7KQKx/qG7RMJWEe4UxzWwF2RByoHaEQh34Zi/dibE=
+X-Google-Smtp-Source: AGHT+IHs6p+BA2JJOIcVeEjWoz6p3TD+YAHGkfDpP0BUEy1TbBBo1sAF1L2jkKy+hDijgRZjyK22TA==
+X-Received: by 2002:a17:903:11c8:b0:234:11e2:f41 with SMTP id
+ d9443c01a7336-23c84ad0d7cmr39714455ad.6.1751627564972; 
+ Fri, 04 Jul 2025 04:12:44 -0700 (PDT)
+Received: from toolbx.alistair23.me
+ (2403-580b-97e8-0-82ce-f179-8a79-69f4.ip6.aussiebb.net.
+ [2403:580b:97e8:0:82ce:f179:8a79:69f4])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-23c8431a206sm18002655ad.28.2025.07.04.04.12.42
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 04 Jul 2025 04:12:44 -0700 (PDT)
+From: alistair23@gmail.com
+X-Google-Original-From: alistair.francis@wdc.com
+To: qemu-devel@nongnu.org
+Cc: alistair23@gmail.com, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ qemu-trivial@nongnu.org, Alistair Francis <alistair.francis@wdc.com>
+Subject: [PULL 05/40] target/riscv/cpu.c: fix zama16b order in isa_edata_arr[]
+Date: Fri,  4 Jul 2025 21:11:32 +1000
+Message-ID: <20250704111207.591994-6-alistair.francis@wdc.com>
+X-Mailer: git-send-email 2.50.0
+In-Reply-To: <20250704111207.591994-1-alistair.francis@wdc.com>
+References: <20250704111207.591994-1-alistair.francis@wdc.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] accel/kvm: Adjust the note about the minimum required
- kernel version
-To: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-devel@nongnu.org
-Cc: kvm@vger.kernel.org, qemu-stable@nongnu.org, qemu-trivial@nongnu.org
-References: <20250702060319.13091-1-thuth@redhat.com>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <20250702060319.13091-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -16
-X-Spam_score: -1.7
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
+ envelope-from=alistair23@gmail.com; helo=mail-pl1-x62a.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
 X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.237, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -93,22 +92,37 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Jul 2025 06:19:39 -0000
+X-List-Received-Date: Fri, 04 Jul 2025 11:12:54 -0000
 
-On 02.07.2025 09:03, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
-> 
-> Since commit 126e7f78036 ("kvm: require KVM_CAP_IOEVENTFD and
-> KVM_CAP_IOEVENTFD_ANY_LENGTH") we require at least kernel 4.4 to
-> be able to use KVM. Adjust the upgrade_note accordingly.
-> While we're at it, remove the text about kvm-kmod and the
-> SourceForge URL since this is not actively maintained anymore.
+From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
 
-Let's be consistent and require kernel 4.5.
+Put it after zalrsc and before zawrs.
 
-With this, applied to qemu-trivial (keeping Philippe's R-b).
+Cc: qemu-trivial@nongnu.org
+Fixes: a60ce58fd9 ("target/riscv: Support Zama16b extension")
+Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
+Message-ID: <20250522113344.823294-1-dbarboza@ventanamicro.com>
+Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+---
+ target/riscv/cpu.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Thanks,
+diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
+index 629ac37501..fe21e0fb44 100644
+--- a/target/riscv/cpu.c
++++ b/target/riscv/cpu.c
+@@ -127,8 +127,8 @@ const RISCVIsaExtData isa_edata_arr[] = {
+     ISA_EXT_DATA_ENTRY(zaamo, PRIV_VERSION_1_12_0, ext_zaamo),
+     ISA_EXT_DATA_ENTRY(zabha, PRIV_VERSION_1_13_0, ext_zabha),
+     ISA_EXT_DATA_ENTRY(zacas, PRIV_VERSION_1_12_0, ext_zacas),
+-    ISA_EXT_DATA_ENTRY(zama16b, PRIV_VERSION_1_13_0, ext_zama16b),
+     ISA_EXT_DATA_ENTRY(zalrsc, PRIV_VERSION_1_12_0, ext_zalrsc),
++    ISA_EXT_DATA_ENTRY(zama16b, PRIV_VERSION_1_13_0, ext_zama16b),
+     ISA_EXT_DATA_ENTRY(zawrs, PRIV_VERSION_1_12_0, ext_zawrs),
+     ISA_EXT_DATA_ENTRY(zfa, PRIV_VERSION_1_12_0, ext_zfa),
+     ISA_EXT_DATA_ENTRY(zfbfmin, PRIV_VERSION_1_12_0, ext_zfbfmin),
+-- 
+2.50.0
 
-/mjt
 
