@@ -1,85 +1,88 @@
-Received: from list by lists.gnu.org with archive (Exim 4.90_1)
-	id 1uXeLp-0001zb-CX
-	for mharc-qemu-trivial@gnu.org; Fri, 04 Jul 2025 07:13:05 -0400
+Return-Path: <qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org>
+X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
+	aws-us-west-2-korg-lkml-1.web.codeaurora.org
+Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
+	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
+	(No client certificate requested)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A62C6C83F07
+	for <qemu-trivial@archiver.kernel.org>; Mon,  7 Jul 2025 14:34:47 +0000 (UTC)
+Received: from localhost ([::1] helo=lists1p.gnu.org)
+	by lists.gnu.org with esmtp (Exim 4.90_1)
+	(envelope-from <qemu-trivial-bounces@nongnu.org>)
+	id 1uYmvb-0000oB-IS; Mon, 07 Jul 2025 10:34:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1uXeLa-0001qK-R6; Fri, 04 Jul 2025 07:12:51 -0400
-Received: from mail-pl1-x62a.google.com ([2607:f8b0:4864:20::62a])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uYmle-0001eG-9l
+ for qemu-trivial@nongnu.org; Mon, 07 Jul 2025 10:24:27 -0400
+Received: from mail-wm1-x329.google.com ([2a00:1450:4864:20::329])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1uXeLZ-0002cq-1F; Fri, 04 Jul 2025 07:12:50 -0400
-Received: by mail-pl1-x62a.google.com with SMTP id
- d9443c01a7336-236192f8770so5821835ad.0; 
- Fri, 04 Jul 2025 04:12:46 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uYmlU-0003h9-7e
+ for qemu-trivial@nongnu.org; Mon, 07 Jul 2025 10:24:25 -0400
+Received: by mail-wm1-x329.google.com with SMTP id
+ 5b1f17b1804b1-451d6ade159so27771065e9.1
+ for <qemu-trivial@nongnu.org>; Mon, 07 Jul 2025 07:24:15 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1751627565; x=1752232365; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=s6UGTgPYir33A0rgIBH+C4iVYyQtEZW7GZky2on9WjU=;
- b=QjYJCxhtVICYs5lG54LZAopHkXNbhHAOwVpfek4dMj3rwgo5nWxIaK9T8GQWX2wBfd
- 2Of1BDi5+Muw7leP/WcejQJlCa0uYwZms5ASvS/WYAqgDVIHbjIz6ijrSs6c7PN0QYhk
- SJ5MG/0Fi+tQHm3Ny6+AYm6R2lqDi1+3MpkFFtu8/sOOst4JibLo4/KEh0uLMqVi//4D
- uP5ABFRFRtR0m+GQZ7LbRIEySMad5vTOEjv3LN2rHjnRuEtPgBC2uCeZeNZwjDh527gq
- I6HVKsgnbWQmJnoT+ga4oFQntt8Y5hlFdUCmwTbNorV9XtuDdVuqRbP9v4cyoTdlBESz
- riOQ==
+ d=linaro.org; s=google; t=1751898254; x=1752503054; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=4HaH+kUume+fg2FMjUxdlmgquGzVKExAQM709OB1vig=;
+ b=V9voB1tmh+1GWjqaDZde3m75jFY8BOiYwAhXejco7gDfskaJCrmAEezRR03LwEdFYZ
+ vAdZUf7eUf0CouoVQLbyl3wQKibuV6kssD39iwJ6VF1XLS9SOhszKs9MgH0Q/j6niRYx
+ ZRKqb/BmhzSMooQLDjpxoeeBnKBylK4wfaylHSAMnUg6xJEtclII9RjPBhevxd2DLEOW
+ l6Vv8kAQmnGcKE1zPU/SBfPYkObBReRLMp74bMauiKtCuuvIJqU5PF8TmqyTinX1wmvk
+ r/vbHl/jAYKkx+ozDtR0v+h/hZEWM6yCAuLxIoO7Fm2XmG4H8PrkGyfuV7d3YD4fo9kF
+ x7rg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1751627565; x=1752232365;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=s6UGTgPYir33A0rgIBH+C4iVYyQtEZW7GZky2on9WjU=;
- b=P8UOpSl3TGRltn2Kf3u6BZ8rA5s24Bht24ohoyAtchvVKfF8UIAPfObVA1PPT3Y98x
- P78BwOJg84UnN0u9q1iDqIRChL5sFZDXHI9Yp07BLQ9XM1kISeam4edzLhOvwP/5s4Yq
- lbEiQ+WlwneAikHOB/MOdPYkVLi3sat69wrAZUVrxWA46ai4ZsZnEskjHspCurBqmRn4
- ADbY0TVmtlv8GMvzMPn8HsFjIGNzVyCvCDXI/2J1I/kgLZwXmBe3pk2s7K8OMYHcpYTY
- KVbCE/3g/aAMcbf/n8dYQRjHORW9MSIMvmWm8QhT7eSMXb5AEw/hmQhDhncNlUhNfp5W
- 5dCg==
+ d=1e100.net; s=20230601; t=1751898254; x=1752503054;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=4HaH+kUume+fg2FMjUxdlmgquGzVKExAQM709OB1vig=;
+ b=G+towZNsQMiowa6dU+a/Tz6ySj41nGJKO+SwHKBfeVR/emNxdGuFvYMaZPmoM67J7w
+ niHJHKR4CYqmBvdKHUk3GCxIAecLYheOR9+IP6CxkG4tue8JC84Pyk0yymfeo0/bHRKc
+ hG5i6Wzf0qDNZZl2seh+AKUfs4lhyCSR02vJN6GXtVeR06iV8Tn60d8dvmwxAm9XgEfF
+ zU4ZKYoYOmDuSl4X7Q4wljZFWWtLXvgxwvsQ1huEBiOEn+wJytM7kZeQ4RvozPxuc10F
+ D0OnmsqO7/SHL3K45UwCsVkCjwTxqQeM6YLf1pQb7BAwNCRsGC+7IsB49ziCtMO2foah
+ GVIA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWKImpDQ6trDm3joNWynfe5HfSahSVOq9QF6rWxd/XlbQRSIB5xIj5ZHzVSEmaMjv/jbP3SW6G1omPwv9M=@nongnu.org
-X-Gm-Message-State: AOJu0YxtPZ6UiqJkorukaW6GxalUs9SRqz24XK6VQ9mu1vTvMgTpJEUy
- I8Qm18bY9WH/6Yf4z+slF8+U0gjwgKkuFVuJDxjTCxbDBNopTqpgBOnJDZxopA==
-X-Gm-Gg: ASbGnculzt6hglV4yzIJqpskNE+LSy0QxGP6w4iCjXUAhQ2PjqgLY/JH6O6t5cJnV03
- HSxIIzlcbkDOkgt4qwgGU0gpwA1jts/leUlee2DZEe48x0mDk67rPAWORPXK1otsdOPGjMzZ/4q
- uEJZHvHeixzsggi60AktH6ciJfUNbe1AlABjByIbneTHbROk2nSCToEZidZ0EHabfpjPjTwpFNl
- v0u2hey3/9W2oT56DEp6ZyRYa4EFdhNfOqnHsBRtNr7apexbNMpjaX404uXJaQQviMZK5/WWNNo
- KKra0sTU1ewaJLf5AEw0eX28HFTrC5YLbmK5mg2TBS3gJbe7KbexR2TVJb94JYjZABw1KCU9i5w
- 9RKOPosPts/wNOAan+9jNDSSoKQ7KQKx/qG7RMJWEe4UxzWwF2RByoHaEQh34Zi/dibE=
-X-Google-Smtp-Source: AGHT+IHs6p+BA2JJOIcVeEjWoz6p3TD+YAHGkfDpP0BUEy1TbBBo1sAF1L2jkKy+hDijgRZjyK22TA==
-X-Received: by 2002:a17:903:11c8:b0:234:11e2:f41 with SMTP id
- d9443c01a7336-23c84ad0d7cmr39714455ad.6.1751627564972; 
- Fri, 04 Jul 2025 04:12:44 -0700 (PDT)
-Received: from toolbx.alistair23.me
- (2403-580b-97e8-0-82ce-f179-8a79-69f4.ip6.aussiebb.net.
- [2403:580b:97e8:0:82ce:f179:8a79:69f4])
+ AJvYcCWky9Rn083xVSHuiL24HyEKMC81zP31d8HvlXRpNNEAAjZezId0nstQ35KKBMx88s1zOtqadHJjD2C8vg4=@nongnu.org
+X-Gm-Message-State: AOJu0YyQ41kbGTwzb64haaIB3okON+FiuupHDQaeyc/zUrLLYzxYXhN4
+ qmZACOy38Ei5ZqH2oxCjcjnZ0ubH3H80IZkqJpUab5P7q73NPXmtdh75FwVWLUvyQR8=
+X-Gm-Gg: ASbGncvhLbkQLSMNu3wwTX/y0o7gABqt8zNkc4r7OK+uQYfiqupnXjqyx5w6GD1xVYM
+ XbE9HvxDFeBW3g+upkUOH9S44G1HpgByil3CAk3pYlrW0Lm7FeiCyZZAljG6d0IZe5Xdj91vyqb
+ qgNcJqI+vKxlucS9mAxyS2njU9zOO1dACO0A5J1F7dxFypyOxo0e5kOaOouCvD6smrtNO+u0k2I
+ RGApU8NC3oNyuR3iGcZ4BAZ27jNe2U4Ysh2c2dyXxQPt0qggMcAI7L7SuKuIYr4tGM3/vR7koub
+ np6BZD73JAuPLC+fnxk2CRcywcyqgLhz3ZZBgJ7qVbr2KXy2H+Vf9x5o9FMZWFT4fbhL
+X-Google-Smtp-Source: AGHT+IHMCbBO+MCD1RhezlGF/6JUHeqLHzsIJIHVxKvjRbhObjxIY35cDl4Bcsp/u6M1S6aCQ1xvMQ==
+X-Received: by 2002:a05:600c:540f:b0:445:1984:247d with SMTP id
+ 5b1f17b1804b1-454b4e67f8bmr114513615e9.7.1751898254207; 
+ Mon, 07 Jul 2025 07:24:14 -0700 (PDT)
+Received: from orth.archaic.org.uk (orth.archaic.org.uk. [2001:8b0:1d0::2])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-23c8431a206sm18002655ad.28.2025.07.04.04.12.42
+ 5b1f17b1804b1-454c2732201sm49234665e9.29.2025.07.07.07.24.13
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 04 Jul 2025 04:12:44 -0700 (PDT)
-From: alistair23@gmail.com
-X-Google-Original-From: alistair.francis@wdc.com
-To: qemu-devel@nongnu.org
-Cc: alistair23@gmail.com, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- qemu-trivial@nongnu.org, Alistair Francis <alistair.francis@wdc.com>
-Subject: [PULL 05/40] target/riscv/cpu.c: fix zama16b order in isa_edata_arr[]
-Date: Fri,  4 Jul 2025 21:11:32 +1000
-Message-ID: <20250704111207.591994-6-alistair.francis@wdc.com>
-X-Mailer: git-send-email 2.50.0
-In-Reply-To: <20250704111207.591994-1-alistair.francis@wdc.com>
-References: <20250704111207.591994-1-alistair.francis@wdc.com>
+ Mon, 07 Jul 2025 07:24:13 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Gerd Hoffmann <kraxel@redhat.com>
+Subject: [PATCH] hw/uefi: Create and use trace.h wrapper header
+Date: Mon,  7 Jul 2025 15:24:12 +0100
+Message-ID: <20250707142412.558561-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62a;
- envelope-from=alistair23@gmail.com; helo=mail-pl1-x62a.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2a00:1450:4864:20::329;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x329.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -92,37 +95,88 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-X-List-Received-Date: Fri, 04 Jul 2025 11:12:54 -0000
+Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
+Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
+The documentation of the trace subsystem (docs/devel/tracing.rst)
+says that each subdirectory which uses trace events should create a
+wrapper trace.h file which includes the trace/trace-foo.h generated
+header, and that .c files then #include "trace.h".
 
-Put it after zalrsc and before zawrs.
+We didn't follow this pattern in hw/uefi/.  Correct this by creating
+and using the trace.h wrapper header.
 
-Cc: qemu-trivial@nongnu.org
-Fixes: a60ce58fd9 ("target/riscv: Support Zama16b extension")
-Signed-off-by: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Reviewed-by: Alistair Francis <alistair.francis@wdc.com>
-Message-ID: <20250522113344.823294-1-dbarboza@ventanamicro.com>
-Signed-off-by: Alistair Francis <alistair.francis@wdc.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- target/riscv/cpu.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/uefi/trace.h              | 2 ++
+ hw/uefi/var-service-core.c   | 2 +-
+ hw/uefi/var-service-policy.c | 2 +-
+ hw/uefi/var-service-utils.c  | 2 +-
+ hw/uefi/var-service-vars.c   | 2 +-
+ 5 files changed, 6 insertions(+), 4 deletions(-)
+ create mode 100644 hw/uefi/trace.h
 
-diff --git a/target/riscv/cpu.c b/target/riscv/cpu.c
-index 629ac37501..fe21e0fb44 100644
---- a/target/riscv/cpu.c
-+++ b/target/riscv/cpu.c
-@@ -127,8 +127,8 @@ const RISCVIsaExtData isa_edata_arr[] = {
-     ISA_EXT_DATA_ENTRY(zaamo, PRIV_VERSION_1_12_0, ext_zaamo),
-     ISA_EXT_DATA_ENTRY(zabha, PRIV_VERSION_1_13_0, ext_zabha),
-     ISA_EXT_DATA_ENTRY(zacas, PRIV_VERSION_1_12_0, ext_zacas),
--    ISA_EXT_DATA_ENTRY(zama16b, PRIV_VERSION_1_13_0, ext_zama16b),
-     ISA_EXT_DATA_ENTRY(zalrsc, PRIV_VERSION_1_12_0, ext_zalrsc),
-+    ISA_EXT_DATA_ENTRY(zama16b, PRIV_VERSION_1_13_0, ext_zama16b),
-     ISA_EXT_DATA_ENTRY(zawrs, PRIV_VERSION_1_12_0, ext_zawrs),
-     ISA_EXT_DATA_ENTRY(zfa, PRIV_VERSION_1_12_0, ext_zfa),
-     ISA_EXT_DATA_ENTRY(zfbfmin, PRIV_VERSION_1_12_0, ext_zfbfmin),
+diff --git a/hw/uefi/trace.h b/hw/uefi/trace.h
+new file mode 100644
+index 00000000000..6aa1c938960
+--- /dev/null
++++ b/hw/uefi/trace.h
+@@ -0,0 +1,2 @@
++/* SPDX-License-Identifier: GPL-2.0-or-later */
++#include "trace/trace-hw_uefi.h"
+diff --git a/hw/uefi/var-service-core.c b/hw/uefi/var-service-core.c
+index 4836a0cb811..feec5a59583 100644
+--- a/hw/uefi/var-service-core.c
++++ b/hw/uefi/var-service-core.c
+@@ -12,7 +12,7 @@
+ #include "hw/uefi/var-service-api.h"
+ #include "hw/uefi/var-service-edk2.h"
+ 
+-#include "trace/trace-hw_uefi.h"
++#include "trace.h"
+ 
+ static int uefi_vars_pre_load(void *opaque)
+ {
+diff --git a/hw/uefi/var-service-policy.c b/hw/uefi/var-service-policy.c
+index 3b1155fe4ea..58da4adbeba 100644
+--- a/hw/uefi/var-service-policy.c
++++ b/hw/uefi/var-service-policy.c
+@@ -14,7 +14,7 @@
+ #include "hw/uefi/var-service-api.h"
+ #include "hw/uefi/var-service-edk2.h"
+ 
+-#include "trace/trace-hw_uefi.h"
++#include "trace.h"
+ 
+ static void calc_policy(uefi_var_policy *pol);
+ 
+diff --git a/hw/uefi/var-service-utils.c b/hw/uefi/var-service-utils.c
+index c9ef46570f4..258013f436a 100644
+--- a/hw/uefi/var-service-utils.c
++++ b/hw/uefi/var-service-utils.c
+@@ -8,7 +8,7 @@
+ 
+ #include "hw/uefi/var-service.h"
+ 
+-#include "trace/trace-hw_uefi.h"
++#include "trace.h"
+ 
+ /* ------------------------------------------------------------------ */
+ 
+diff --git a/hw/uefi/var-service-vars.c b/hw/uefi/var-service-vars.c
+index 7f98d77a38d..37d05b71cf7 100644
+--- a/hw/uefi/var-service-vars.c
++++ b/hw/uefi/var-service-vars.c
+@@ -12,7 +12,7 @@
+ #include "hw/uefi/var-service-api.h"
+ #include "hw/uefi/var-service-edk2.h"
+ 
+-#include "trace/trace-hw_uefi.h"
++#include "trace.h"
+ 
+ #define EFI_VARIABLE_ATTRIBUTE_SUPPORTED                                \
+     (EFI_VARIABLE_NON_VOLATILE |                                        \
 -- 
-2.50.0
+2.43.0
 
 
