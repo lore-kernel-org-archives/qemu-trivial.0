@@ -4,49 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3110AC83F1B
-	for <qemu-trivial@archiver.kernel.org>; Fri, 11 Jul 2025 13:56:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CACB1C83F1B
+	for <qemu-trivial@archiver.kernel.org>; Fri, 11 Jul 2025 17:23:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1uaEEX-0006H5-Fp; Fri, 11 Jul 2025 09:56:13 -0400
+	id 1uaHSV-0001Qy-Oh; Fri, 11 Jul 2025 13:22:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1uaEEQ-00061F-Lf
- for qemu-trivial@nongnu.org; Fri, 11 Jul 2025 09:56:07 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1uaHST-0001P4-IJ
+ for qemu-trivial@nongnu.org; Fri, 11 Jul 2025 13:22:49 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1uaEEO-0003G5-Jc
- for qemu-trivial@nongnu.org; Fri, 11 Jul 2025 09:56:06 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1uaHSR-0002v7-5l
+ for qemu-trivial@nongnu.org; Fri, 11 Jul 2025 13:22:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752242161;
+ s=mimecast20190719; t=1752254565;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=M5TVHEFg8WK/rWD3bzTI+jxFa/UAo3D45mPFwRsaurw=;
- b=KC8tnVwCDHh2FWXp8HRPz5i8YdCDsM8D/8e01CD7eph8rKUFiufB6kyepqobWPicPXlb/R
- /JMY/MViBWWNpp8TM4u619hbDOU5HuviluaJS9CFvmNJ+cTvlD5ztA/lq6MSZEq7QMGBS5
- fCc8qvJi0XELWgxxXwJ0VxRJ+7AlyW8=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=hKq7s+o9FSe0v9gxOi1oL2fSecjASgBXq6NTvNcZRBQ=;
+ b=YuamtjpJP64IjlPri5EdYl37lAUFzaYlSOXln7xZv3Hv5Yfy0jGg55CxJVEGePtmVU0gS1
+ nGTVkd6f4nsRE84ZsGW5jfKe4xPugiA8+mPoyme44LcAHhWk5nJTHz/Agim7edGX2SPDrK
+ Lf2XFSL/E2BB7byidoMawdhI4l01LBQ=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-607-thkfgdIjM4eJdbAfDd9jow-1; Fri,
- 11 Jul 2025 09:56:00 -0400
-X-MC-Unique: thkfgdIjM4eJdbAfDd9jow-1
-X-Mimecast-MFC-AGG-ID: thkfgdIjM4eJdbAfDd9jow_1752242155
-Received: from mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.15])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-180-kPy_lqiyNpWXlKYAfF2bKg-1; Fri,
+ 11 Jul 2025 13:22:44 -0400
+X-MC-Unique: kPy_lqiyNpWXlKYAfF2bKg-1
+X-Mimecast-MFC-AGG-ID: kPy_lqiyNpWXlKYAfF2bKg_1752254561
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 38CFF1809C89; Fri, 11 Jul 2025 13:55:54 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 996BA1956095; Fri, 11 Jul 2025 17:22:38 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.45.242.6])
- by mx-prod-int-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DD78D1956094; Fri, 11 Jul 2025 13:55:50 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D31C319560A3; Fri, 11 Jul 2025 17:22:36 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 5A8B421E6A27; Fri, 11 Jul 2025 15:55:48 +0200 (CEST)
+ id 45AA121E6A27; Fri, 11 Jul 2025 19:22:34 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: John Snow <jsnow@redhat.com>
 Cc: qemu-devel@nongnu.org,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
@@ -69,19 +68,18 @@ Cc: qemu-devel@nongnu.org,  =?utf-8?Q?Marc-Andr=C3=A9?= Lureau
  Reitz <hreitz@redhat.com>,  Zhenwei Pi <pizhenwei@bytedance.com>,  Stefan
  Berger <stefanb@linux.vnet.ibm.com>,  Michael Roth <michael.roth@amd.com>,
  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Subject: Re: [PATCH v6 4/4] qapi: rephrase return docs to avoid type name
-In-Reply-To: <20250711051045.51110-5-jsnow@redhat.com> (John Snow's message of
- "Fri, 11 Jul 2025 01:10:45 -0400")
+Subject: Re: [PATCH v6 1/4] docs/qapi-domain: add return-nodesc
+In-Reply-To: <20250711051045.51110-2-jsnow@redhat.com> (John Snow's message of
+ "Fri, 11 Jul 2025 01:10:42 -0400")
 References: <20250711051045.51110-1-jsnow@redhat.com>
- <20250711051045.51110-5-jsnow@redhat.com>
-Date: Fri, 11 Jul 2025 15:55:48 +0200
-Message-ID: <877c0eygpn.fsf@pond.sub.org>
+ <20250711051045.51110-2-jsnow@redhat.com>
+Date: Fri, 11 Jul 2025 19:22:34 +0200
+Message-ID: <87jz4eskv9.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.15
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -90,7 +88,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,106 +106,92 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 John Snow <jsnow@redhat.com> writes:
 
-> Well, I tried. Maybe not very hard. Sorry!
-
-Recommend to explain *why* we want to avoid the type name.
-
-  "Returns: <description>" is rendered like "Return: <Type> =E2=80=93
-  <description>".  Mentioning the type in the description again is
-  commonly redundant.  Rephrase such descriptions not to.
-
+> This form is used to annotate a return type without an accompanying
+> description, for when there is no "Returns:" information in the source
+> doc, but we have a return type we want to generate a cross-reference to.
+>
+> The syntax is:
+>
+> :return-nodesc: TypeName
+>
+> It's primarily necessary because Sphinx always expects both a type and a
+> description for the prior form and will format it accordingly. To have a
+> reasonable rendering when the body is missing, we need to use a
+> different info field list entirely.
+>
 > Signed-off-by: John Snow <jsnow@redhat.com>
 > ---
->  qapi/block-core.json   | 6 +++---
->  qapi/block-export.json | 2 +-
->  qapi/block.json        | 2 +-
->  qapi/control.json      | 5 ++---
->  qapi/dump.json         | 5 ++---
->  qapi/introspect.json   | 6 +++---
->  qapi/job.json          | 2 +-
->  qapi/misc-i386.json    | 2 +-
->  qapi/misc.json         | 5 ++---
->  qapi/net.json          | 2 +-
->  qapi/pci.json          | 2 +-
->  qapi/qdev.json         | 3 +--
->  qapi/qom.json          | 8 +++-----
->  qapi/stats.json        | 2 +-
->  qapi/trace.json        | 2 +-
->  qapi/ui.json           | 2 +-
->  qapi/virtio.json       | 6 +++---
->  17 files changed, 28 insertions(+), 34 deletions(-)
+>  docs/devel/qapi-domain.rst | 30 ++++++++++++++++++++++++++++++
+>  docs/sphinx/qapi_domain.py |  8 ++++++++
+>  2 files changed, 38 insertions(+)
 >
-> diff --git a/qapi/block-core.json b/qapi/block-core.json
-> index d64f482d9bd..f18db3149a3 100644
-> --- a/qapi/block-core.json
-> +++ b/qapi/block-core.json
-> @@ -763,7 +763,7 @@
->  #
->  # Get a list of BlockInfo for all virtual block devices.
+> diff --git a/docs/devel/qapi-domain.rst b/docs/devel/qapi-domain.rst
+> index 11238723c2d..204abb72ff4 100644
+> --- a/docs/devel/qapi-domain.rst
+> +++ b/docs/devel/qapi-domain.rst
+> @@ -242,6 +242,36 @@ Example::
+>               }
+>  
+>  
+> +``:return-nodesc:``
+> +-------------------
+> +
+> +Document the return type of a QAPI command, without an accompanying description.
 
-Mentioning the type in the intro is commonly just as redundant as in
-Returns:.
+Recommend to break the long line.
 
->  #
-> -# Returns: a list of @BlockInfo describing each virtual block device.
-> +# Returns: a list describing each virtual block device.
+> +
+> +:availability: This field list is only available in the body of the
+> +               Command directive.
+> +:syntax: ``:return-nodesc: type``
+> +:type: `sphinx.util.docfields.Field
+> +       <https://pydoc.dev/sphinx/latest/sphinx.util.docfields.Field.html?private=1>`_
+> +
+> +
+> +Example::
+> +
+> +   .. qapi:command:: query-replay
+> +      :since: 5.2
+> +
+> +      Retrieve the record/replay information.  It includes current
+> +      instruction count which may be used for ``replay-break`` and
+> +      ``replay-seek`` commands.
+> +
+> +      :return-nodesc: ReplayInfo
+> +
+> +      .. qmp-example::
+> +
+> +          -> { "execute": "query-replay" }
+> +          <- { "return": {
+> +                 "mode": "play", "filename": "log.rr", "icount": 220414 }
+> +             }
+> +
 
-"A list" is arguably just as redundant as the list's element type.
+Same example as in :return:, except for the :return-nodesc: line.  Fine
+with me.
 
-The entire line is pretty redundant with the intro.
+>  ``:value:``
+>  -----------
+>  
+> diff --git a/docs/sphinx/qapi_domain.py b/docs/sphinx/qapi_domain.py
+> index ebc46a72c61..f561dc465f8 100644
+> --- a/docs/sphinx/qapi_domain.py
+> +++ b/docs/sphinx/qapi_domain.py
+> @@ -532,6 +532,14 @@ class QAPICommand(QAPIObject):
+>                  names=("return",),
+>                  can_collapse=True,
+>              ),
+> +            # :return-nodesc: TypeName
+> +            CompatField(
+> +                "returnvalue",
+> +                label=_("Return"),
+> +                names=("return-nodesc",),
+> +                bodyrolename="type",
+> +                has_arg=False,
+> +            ),
+>          ]
+>      )
 
->  #     Filter nodes that were created implicitly are skipped over.
->  #
->  # Since: 0.14
-> @@ -1168,7 +1168,7 @@
-   ##
-   # @query-blockstats:
-   #
-   # Query the `BlockStats` for all virtual block devices.
-   #
-   # @query-nodes: If true, the command will query all the block nodes
-   #     that have a node name, in a list which will include "parent"
-   #     information, but not "backing".  If false or omitted, the
-   #     behavior is as before - query all the device backends,
-   #     recursively including their "parent" and "backing".  Filter
->  #     nodes that were created implicitly are skipped over in this
->  #     mode.  (Since 2.3)
->  #
-> -# Returns: A list of @BlockStats for each virtual block devices.
-> +# Returns: A list of statistics for each virtual block device.
-
-Again, the entire line is pretty redundant with the intro.
-
->  #
->  # Since: 0.14
->  #
-> @@ -1440,7 +1440,7 @@
->  #
->  # Return information about long-running block device operations.
->  #
-> -# Returns: a list of @BlockJobInfo for each active block job
-> +# Returns: a list of job info for each active block job
-
-Best not to abbreviate "information" to "info".
-
->  #
->  # Since: 1.1
->  ##
-
-I need to stop here to take care of another series.  Gut feeling so far:
-right direction, doesn't go far enough.
-
-Choices:
-
-* Go far enough.  Too close to the freeze for that, I'm afraid.
-
-* Merge it basically as is, come back later to finish the job.
-
-* Drop it for now, adjust your "QAPI: add cross-references to qapi docs"
-  to enclose the type names not removed in `backquotes`.
-
-Thoughts?
-
-[...]
+Acked-by: Markus Armbruster <armbru@redhat.com>
 
 
