@@ -4,38 +4,39 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9AB45C83F1D
-	for <qemu-trivial@archiver.kernel.org>; Sun, 13 Jul 2025 09:12:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9E167C83F17
+	for <qemu-trivial@archiver.kernel.org>; Sun, 13 Jul 2025 09:12:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1uasjw-0003Te-04; Sun, 13 Jul 2025 05:11:21 -0400
+	id 1uaskA-0003kq-QX; Sun, 13 Jul 2025 05:11:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1uasjt-0003Nc-DP; Sun, 13 Jul 2025 05:11:17 -0400
+ id 1uasjx-0003VD-Ti; Sun, 13 Jul 2025 05:11:22 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1uasjh-00070v-Eo; Sun, 13 Jul 2025 05:11:16 -0400
+ id 1uasjv-00072S-Pd; Sun, 13 Jul 2025 05:11:21 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id A9C4F1362E2;
+ by isrv.corpit.ru (Postfix) with ESMTP id D84F21362E4;
  Sun, 13 Jul 2025 12:10:58 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 70C16245F4D;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 9550D245F4F;
  Sun, 13 Jul 2025 12:10:59 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Thomas Lambertz <patch@thomaslambertz.de>, qemu-trivial@nongnu.org,
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 1/6] hw/usb/dev-hid: Support side and extra mouse buttons for
- usb-tablet
-Date: Sun, 13 Jul 2025 12:10:43 +0300
-Message-ID: <20250713091059.35165-2-mjt@tls.msk.ru>
+Subject: [PULL 3/6] accel/kvm: Adjust the note about the minimum required
+ kernel version
+Date: Sun, 13 Jul 2025 12:10:45 +0300
+Message-ID: <20250713091059.35165-4-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.2
 In-Reply-To: <20250713091059.35165-1-mjt@tls.msk.ru>
 References: <20250713091059.35165-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -60,40 +61,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Thomas Lambertz <patch@thomaslambertz.de>
+From: Thomas Huth <thuth@redhat.com>
 
-The necessary plumbing for side- and extra mouse buttons to reach
-usb-tablet is already done. But the descriptor advertises three buttons
-max. Increase this to 5. Buttons are now identical to usb-mouse.
+Since commit 126e7f78036 ("kvm: require KVM_CAP_IOEVENTFD and
+KVM_CAP_IOEVENTFD_ANY_LENGTH") we require at least kernel 4.5 to
+be able to use KVM. Adjust the upgrade_note accordingly.
+While we're at it, remove the text about kvm-kmod and the
+SourceForge URL since this is not actively maintained anymore.
 
-Signed-off-by: Thomas Lambertz <patch@thomaslambertz.de>
+Fixes: 126e7f78036 ("kvm: require KVM_CAP_IOEVENTFD and KVM_CAP_IOEVENTFD_ANY_LENGTH")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/usb/dev-hid.c | 6 +++---
- 1 file changed, 3 insertions(+), 3 deletions(-)
+ accel/kvm/kvm-all.c | 3 +--
+ 1 file changed, 1 insertion(+), 2 deletions(-)
 
-diff --git a/hw/usb/dev-hid.c b/hw/usb/dev-hid.c
-index 54d064e54e..96623aa322 100644
---- a/hw/usb/dev-hid.c
-+++ b/hw/usb/dev-hid.c
-@@ -491,14 +491,14 @@ static const uint8_t qemu_tablet_hid_report_descriptor[] = {
-     0xa1, 0x00,		/*   Collection (Physical) */
-     0x05, 0x09,		/*     Usage Page (Button) */
-     0x19, 0x01,		/*     Usage Minimum (1) */
--    0x29, 0x03,		/*     Usage Maximum (3) */
-+    0x29, 0x05,		/*     Usage Maximum (5) */
-     0x15, 0x00,		/*     Logical Minimum (0) */
-     0x25, 0x01,		/*     Logical Maximum (1) */
--    0x95, 0x03,		/*     Report Count (3) */
-+    0x95, 0x05,		/*     Report Count (5) */
-     0x75, 0x01,		/*     Report Size (1) */
-     0x81, 0x02,		/*     Input (Data, Variable, Absolute) */
-     0x95, 0x01,		/*     Report Count (1) */
--    0x75, 0x05,		/*     Report Size (5) */
-+    0x75, 0x03,		/*     Report Size (3) */
-     0x81, 0x01,		/*     Input (Constant) */
-     0x05, 0x01,		/*     Usage Page (Generic Desktop) */
-     0x09, 0x30,		/*     Usage (X) */
+diff --git a/accel/kvm/kvm-all.c b/accel/kvm/kvm-all.c
+index a106d1ba0f..78fc2d26fc 100644
+--- a/accel/kvm/kvm-all.c
++++ b/accel/kvm/kvm-all.c
+@@ -2606,8 +2606,7 @@ static int kvm_init(AccelState *as, MachineState *ms)
+ {
+     MachineClass *mc = MACHINE_GET_CLASS(ms);
+     static const char upgrade_note[] =
+-        "Please upgrade to at least kernel 2.6.29 or recent kvm-kmod\n"
+-        "(see http://sourceforge.net/projects/kvm).\n";
++        "Please upgrade to at least kernel 4.5.\n";
+     const struct {
+         const char *name;
+         int num;
 -- 
 2.47.2
 
