@@ -4,42 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 978B4C83F1B
-	for <qemu-trivial@archiver.kernel.org>; Wed, 16 Jul 2025 22:21:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0CCEC83F1B
+	for <qemu-trivial@archiver.kernel.org>; Wed, 16 Jul 2025 22:21:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ucAVC-00070V-Fk; Wed, 16 Jul 2025 18:21:27 -0400
+	id 1ucAVU-0007JG-0y; Wed, 16 Jul 2025 18:21:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1ucA8O-000858-Td; Wed, 16 Jul 2025 17:57:53 -0400
+ id 1ucA8O-00084v-ST; Wed, 16 Jul 2025 17:57:53 -0400
 Received: from mail-a.sr.ht ([46.23.81.152])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
- id 1ucA8M-0002ER-5v; Wed, 16 Jul 2025 17:57:52 -0400
-DKIM-Signature: a=rsa-sha256; bh=Dao29EJjjBOlo4oHPBJ6YArZt4cbue4HuSvnNUCfFU8=; 
+ id 1ucA8M-0002ET-5E; Wed, 16 Jul 2025 17:57:52 -0400
+DKIM-Signature: a=rsa-sha256; bh=Zf4dPYfRzBQpH7+u8KHYEm6a6uMIHYYozbV511IKdSk=; 
  c=simple/simple; d=git.sr.ht;
- h=From:Date:Subject:Reply-to:To:Cc; 
- q=dns/txt; s=20240113; t=1752703065; v=1;
- b=cVKINOKpYYorzpualq6vKP5YmASd3ehlavdDwx0Kd/GBhsdx+kmT/iV1yzE+ci0AgjcvMX9l
- ehgTmAPTCAMFlWNN3PFVHBTNSkQ8c8R0pGGBp++yKlwoy6iobQiWTAHZj7vw9cVpQPh8+95jes2
- pi+qfGPSE53VVjgiujZGveNLsEEwU7Yon8gOnlz3Xm8brDP1pjmr9wggxNHBmB7q5e/pq973OiO
- qd0LkilUcIbKgIm2GyZ/FuRfwTAQ718T7J5BW1zorjhG1DZyEdVQUh2o4iOztrSrGHEhyjlIZrr
- v6z8wixdDTqyAcpeirPR9ZFduGDDjD/ML9YMjTYSkzeDA==
+ h=From:Date:Subject:Reply-to:In-Reply-To:To:Cc; q=dns/txt; s=20240113;
+ t=1752703065; v=1;
+ b=XhX36YzGbMRiwBEqNxcB3NFQYDRBv4nKoRoVQzdElzAE4Mc998shCmEoxiKNYTxmvHbdsAwv
+ Zp5uSn62rM+Zf/M2Ajp1tcKVWrIMY9GfUGQrixcy57utFhuhe0yLgxIYo7mRJpS8nChS4xOlaG3
+ WyPNVn7JBPNvq2+SClT80P1ugGZii6aqGe55C203GfRzU6U/rVbYobfy9fDBDFGjlNYKnReLCkC
+ iZKzM1ReiuLgMYBRjHR4t6PiOUWTA02+ssdMBXHVvFNJr9AzapJgA9Ksv+2J0ZnUKHl/K0CpKbl
+ mfFrMStNcTC0rpZmMqM4qSa6GQUt0HQI75ZwIPdZevLOA==
 Received: from git.sr.ht (unknown [46.23.81.155])
- by mail-a.sr.ht (Postfix) with ESMTPSA id 1C53B22641;
+ by mail-a.sr.ht (Postfix) with ESMTPSA id 51CA822663;
  Wed, 16 Jul 2025 21:57:45 +0000 (UTC)
 From: ~wojtekka <wojtekka@git.sr.ht>
-Date: Wed, 16 Jul 2025 21:57:45 +0000
-Subject: [PATCH qemu 0/2] Add support for flat m68k binaries
-MIME-Version: 1.0
-Message-ID: <175270306503.19369.144677794735042916-0@git.sr.ht>
+Date: Wed, 16 Jul 2025 21:24:54 +0200
+Subject: [PATCH qemu 1/2] Don't reverse bFLT endianess when not needed
+Message-ID: <175270306503.19369.144677794735042916-1@git.sr.ht>
 X-Mailer: git.sr.ht
+In-Reply-To: <175270306503.19369.144677794735042916-0@git.sr.ht>
 To: qemu-devel@nongnu.org
 Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
+MIME-Version: 1.0
 Received-SPF: pass client-ip=46.23.81.152; envelope-from=outgoing@sr.ht;
  helo=mail-a.sr.ht
 X-Spam_score_int: -16
@@ -66,21 +67,60 @@ Reply-To: ~wojtekka <wojtekka@toxygen.net>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Flat m68k binaries apparently don't work out of the box and those two
-tiny patches fixed that for me. On top of that they didn't break
-support for ARM flat binaries (tested with test_arm_bflt.py) nor m68k
-ELF binaries (tested static busybox from Debian). Unfortunately
-I wasn't able to find any root filesystem for m68k uClinux so I didn't
-prepare any test similar to test_arm_bflt.py.
+From: Wojtek Kaniewski <wojtekka@toxygen.net>
 
-Wojtek Kaniewski (2):
-  Don't reverse bFLT endianess when not needed
-  Fill out m68k PIC register
+bFLT format is big-endian. get_user_ual() returns host value so for
+little-endian target and little-endian host it's necessary to reverse
+words using ntohl(). For big-endian targets we end up with incorrect
+endianess:
 
- linux-user/elfload.c  | 1 +
+    $ qemu-m68k-static ./test
+    BINFMT_FLAT: reloc outside program 0x801f0000 (0 - 0x41f0/0x1e40)
+    Aborted (core dumped)
+
+For comparison the output of `flthdr` follows:
+
+    $ m68k-elf-flthdr -P ./test
+    ./test
+        Magic:        bFLT
+        Rev:          4
+        Build Date:   Tue Jul 15 23:02:00 2025
+        Entry:        0x44
+        Data Start:   0x1e80
+        Data End:     0x205c
+        BSS End:      0x40a0
+        Stack Size:   0x1000
+        Reloc Start:  0x205c
+        Reloc Count:  0x17
+        Flags:        0x2 ( Has-PIC-GOT )
+        Relocs:
+        #	reloc      (  address )	data
+        0	0x00001f80 (0x00001f80)	3c200000
+                  ^^^^^^^^
+        1	0x00001f84 (0x00001f84)	3c300000
+        2	0x00001f88 (0x00001f88)	3c200000
+        ...
+
+Signed-off-by: Wojtek Kaniewski <wojtekka@toxygen.net>
+---
  linux-user/flatload.c | 2 ++
- 2 files changed, 3 insertions(+)
+ 1 file changed, 2 insertions(+)
 
+diff --git a/linux-user/flatload.c b/linux-user/flatload.c
+index 4beb3ed1b9..afaff4ac44 100644
+--- a/linux-user/flatload.c
++++ b/linux-user/flatload.c
+@@ -413,7 +413,9 @@ static int load_flat_file(struct linux_binprm * bprm,
+                relocated first).  */
+             if (get_user_ual(relval, reloc + i * sizeof(abi_ulong)))
+                 return -EFAULT;
++#if !TARGET_BIG_ENDIAN
+             relval = ntohl(relval);
++#endif
+             if (flat_set_persistent(relval, &persistent))
+                 continue;
+             addr = flat_get_relocate_addr(relval);
 -- 
 2.45.3
+
 
