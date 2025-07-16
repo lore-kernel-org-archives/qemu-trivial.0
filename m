@@ -4,73 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8DC78C83F22
-	for <qemu-trivial@archiver.kernel.org>; Tue, 15 Jul 2025 20:01:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 978B4C83F1B
+	for <qemu-trivial@archiver.kernel.org>; Wed, 16 Jul 2025 22:21:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ublqQ-00062K-Eb; Tue, 15 Jul 2025 16:01:42 -0400
+	id 1ucAVC-00070V-Fk; Wed, 16 Jul 2025 18:21:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1ublkZ-0002dP-7Y
- for qemu-trivial@nongnu.org; Tue, 15 Jul 2025 15:55:39 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1ucA8O-000858-Td; Wed, 16 Jul 2025 17:57:53 -0400
+Received: from mail-a.sr.ht ([46.23.81.152])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1ublkV-0005QR-E2
- for qemu-trivial@nongnu.org; Tue, 15 Jul 2025 15:55:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1752609334;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=x6hS2kX5vJ9fM9+vMxEbYMd2hmIuQpCdSfG7JcgzXGk=;
- b=QwMhrDcOwZiW4PPyWgMCaJz2kUZekpbNjYijDHG39qP3CVPLQUhWbwuRvqIr1PmXzqLKJe
- nkzxv5Shzs4y57dUp+JAacRZdout8X0+r99LWXuiSkl0SkC7kmPYjDHBQ3o25KIMrOMlU/
- TBzkwqHZzoD9GJ4uWAtxSuN0WM5bNhM=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-691-wuPXrJXYPMmVA6D9MD8Gpg-1; Tue,
- 15 Jul 2025 15:55:29 -0400
-X-MC-Unique: wuPXrJXYPMmVA6D9MD8Gpg-1
-X-Mimecast-MFC-AGG-ID: wuPXrJXYPMmVA6D9MD8Gpg_1752609328
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4F5D718002A9; Tue, 15 Jul 2025 19:55:27 +0000 (UTC)
-Received: from localhost (unknown [10.2.16.12])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7DE6E197702B; Tue, 15 Jul 2025 19:55:25 +0000 (UTC)
-Date: Tue, 15 Jul 2025 15:50:17 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org
-Subject: Re: [PULL 0/6] Trivial patches for 2025-07-13
-Message-ID: <20250715195017.GA242254@fedora>
-References: <20250713091059.35165-1-mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1ucA8M-0002ER-5v; Wed, 16 Jul 2025 17:57:52 -0400
+DKIM-Signature: a=rsa-sha256; bh=Dao29EJjjBOlo4oHPBJ6YArZt4cbue4HuSvnNUCfFU8=; 
+ c=simple/simple; d=git.sr.ht;
+ h=From:Date:Subject:Reply-to:To:Cc; 
+ q=dns/txt; s=20240113; t=1752703065; v=1;
+ b=cVKINOKpYYorzpualq6vKP5YmASd3ehlavdDwx0Kd/GBhsdx+kmT/iV1yzE+ci0AgjcvMX9l
+ ehgTmAPTCAMFlWNN3PFVHBTNSkQ8c8R0pGGBp++yKlwoy6iobQiWTAHZj7vw9cVpQPh8+95jes2
+ pi+qfGPSE53VVjgiujZGveNLsEEwU7Yon8gOnlz3Xm8brDP1pjmr9wggxNHBmB7q5e/pq973OiO
+ qd0LkilUcIbKgIm2GyZ/FuRfwTAQ718T7J5BW1zorjhG1DZyEdVQUh2o4iOztrSrGHEhyjlIZrr
+ v6z8wixdDTqyAcpeirPR9ZFduGDDjD/ML9YMjTYSkzeDA==
+Received: from git.sr.ht (unknown [46.23.81.155])
+ by mail-a.sr.ht (Postfix) with ESMTPSA id 1C53B22641;
+ Wed, 16 Jul 2025 21:57:45 +0000 (UTC)
+From: ~wojtekka <wojtekka@git.sr.ht>
+Date: Wed, 16 Jul 2025 21:57:45 +0000
+Subject: [PATCH qemu 0/2] Add support for flat m68k binaries
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="W7xiTtneZtIlLRFI"
-Content-Disposition: inline
-In-Reply-To: <20250713091059.35165-1-mjt@tls.msk.ru>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Message-ID: <175270306503.19369.144677794735042916-0@git.sr.ht>
+X-Mailer: git.sr.ht
+To: qemu-devel@nongnu.org
+Cc: Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=46.23.81.152; envelope-from=outgoing@sr.ht;
+ helo=mail-a.sr.ht
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 16 Jul 2025 18:20:29 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -82,33 +62,25 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
+Reply-To: ~wojtekka <wojtekka@toxygen.net>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
+Flat m68k binaries apparently don't work out of the box and those two
+tiny patches fixed that for me. On top of that they didn't break
+support for ARM flat binaries (tested with test_arm_bflt.py) nor m68k
+ELF binaries (tested static busybox from Debian). Unfortunately
+I wasn't able to find any root filesystem for m68k uClinux so I didn't
+prepare any test similar to test_arm_bflt.py.
 
---W7xiTtneZtIlLRFI
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Wojtek Kaniewski (2):
+  Don't reverse bFLT endianess when not needed
+  Fill out m68k PIC register
 
-Applied, thanks.
+ linux-user/elfload.c  | 1 +
+ linux-user/flatload.c | 2 ++
+ 2 files changed, 3 insertions(+)
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/10.1 for any user-visible changes.
-
---W7xiTtneZtIlLRFI
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmh2sPkACgkQnKSrs4Gr
-c8gpoQgAwKr4zRDACmMWRrpsNXNoqNY5Xm665IrKM9Yqw32VeFJaos1D5QqD8ftZ
-6j0aAZPQjLBpAXNfA0EQMeRrHghenDVe+kClLnzBfOnOfN0q6VlSU82yAijREQlv
-6eYVDhQMwNq8BEdJriD6GqsiToNGCGK0haGlomx/5s/hO4cSsX52aDw08ltTH4NE
-ySlITLeERoH8xJVKDyBGoXfm+48UrpPmsvW8tf5owLhAxOqcHuBgZyVSjrPECgei
-9zPQczesEMIY2SjBl843E28u1OFeu481zpROoPUWb/FG7K7mq0zYQuAh0DvIFk81
-1X3h+PLbdVs4m11dwCcr6GhUgYhWTA==
-=AlAD
------END PGP SIGNATURE-----
-
---W7xiTtneZtIlLRFI--
-
+-- 
+2.45.3
 
