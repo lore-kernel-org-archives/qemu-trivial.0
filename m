@@ -4,33 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8D46FC87FCA
-	for <qemu-trivial@archiver.kernel.org>; Fri, 25 Jul 2025 15:57:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE580C87FCE
+	for <qemu-trivial@archiver.kernel.org>; Sun, 27 Jul 2025 21:57:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ufKmv-0005Ca-VN; Fri, 25 Jul 2025 11:56:50 -0400
+	id 1ug9M6-0004iO-Nr; Sun, 27 Jul 2025 17:56:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1ufKlL-0002vd-FR; Fri, 25 Jul 2025 11:55:12 -0400
+ id 1ug9Ky-00043V-Lt; Sun, 27 Jul 2025 17:55:20 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1ufKlJ-0004vF-5u; Fri, 25 Jul 2025 11:55:11 -0400
+ id 1ug9Kw-00073w-Lu; Sun, 27 Jul 2025 17:55:20 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id EBC9C13A3AA;
- Fri, 25 Jul 2025 18:55:02 +0300 (MSK)
-Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 2649E24FC7F;
- Fri, 25 Jul 2025 18:55:05 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id A28AA13A97E;
+ Mon, 28 Jul 2025 00:55:06 +0300 (MSK)
+Received: from think4mjt.origo (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 8195F25118F;
+ Mon, 28 Jul 2025 00:55:12 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Subject: [PULL for-10.1 0/1] Trivial patches for 2025-07-25
-Date: Fri, 25 Jul 2025 18:55:00 +0300
-Message-ID: <20250725155504.2409-1-mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Hao Wu <wuhaotsh@google.com>, Peter Maydell <peter.maydell@linaro.org>
+Subject: [PATCH trivial for 10.1] roms/Makefile: fix npcmNxx_bootrom build
+ rules
+Date: Mon, 28 Jul 2025 00:55:07 +0300
+Message-ID: <20250727215511.807880-1-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -57,30 +58,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-The following changes since commit 9e601684dc24a521bb1d23215a63e5c6e79ea0bb:
+Since commit 70ce076fa6dff60, the actual rom source dirs
+are subdirs of vbootrom/ submodule, not in top-level of it.
 
-  Update version for the v10.1.0-rc0 release (2025-07-22 15:48:48 -0400)
+Fixes: 70ce076fa6dff60 "roms: Update vbootrom to 1287b6e"
 
-are available in the Git repository at:
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ roms/Makefile | 8 ++++----
+ 1 file changed, 4 insertions(+), 4 deletions(-)
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+diff --git a/roms/Makefile b/roms/Makefile
+index beff58d9d5..6af68a922f 100644
+--- a/roms/Makefile
++++ b/roms/Makefile
+@@ -193,12 +193,12 @@ qboot:
+ 	cp qboot/build/bios.bin ../pc-bios/qboot.rom
+ 
+ npcm7xx_bootrom:
+-	$(MAKE) -C vbootrom CROSS_COMPILE=$(arm_cross_prefix)
+-	cp vbootrom/npcm7xx_bootrom.bin ../pc-bios/npcm7xx_bootrom.bin
++	$(MAKE) -C vbootrom/npcm7xx CROSS_COMPILE=$(arm_cross_prefix)
++	cp vbootrom/npcm7xx/npcm7xx_bootrom.bin ../pc-bios/npcm7xx_bootrom.bin
+ 
+ npcm8xx_bootrom:
+-	$(MAKE) -C vbootrom CROSS_COMPILE=$(aarch64_cross_prefix)
+-	cp vbootrom/npcm8xx_bootrom.bin ../pc-bios/npcm8xx_bootrom.bin
++	$(MAKE) -C vbootrom/npcm8xx CROSS_COMPILE=$(aarch64_cross_prefix)
++	cp vbootrom/npcm8xx/npcm8xx_bootrom.bin ../pc-bios/npcm8xx_bootrom.bin
+ 
+ hppa-firmware:
+ 	$(MAKE) -C seabios-hppa parisc
+-- 
+2.47.2
 
-for you to fetch changes up to b8882becd572d3afb888c836a6ffc7f92c17d1c5:
-
-  hw/display/qxl-render.c: fix qxl_unpack_chunks() chunk size calculation (2025-07-25 09:42:11 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2025-07-25
-
-There's a single patch in this pullreq, fixing a longstanding
-bug in qxl.  The change, while isn't exactly trivial, is clear
-enough, hopefully, to go through trivial-patches.  This area in
-qemu is basically unmaintained.
-
-----------------------------------------------------------------
-Michael Tokarev (1):
-      hw/display/qxl-render.c: fix qxl_unpack_chunks() chunk size calculation
-
- hw/display/qxl-render.c | 11 ++++++++++-
- 1 file changed, 10 insertions(+), 1 deletion(-)
 
