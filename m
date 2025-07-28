@@ -4,91 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CA2DC83F17
-	for <qemu-trivial@archiver.kernel.org>; Mon, 28 Jul 2025 15:41:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F583C83F17
+	for <qemu-trivial@archiver.kernel.org>; Mon, 28 Jul 2025 17:30:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ugPyF-000868-0w; Mon, 28 Jul 2025 11:40:59 -0400
+	id 1ugRgP-0003EK-4c; Mon, 28 Jul 2025 13:30:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ugPyA-0007Sj-4V
- for qemu-trivial@nongnu.org; Mon, 28 Jul 2025 11:40:54 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ugPy7-0002SF-2s
- for qemu-trivial@nongnu.org; Mon, 28 Jul 2025 11:40:53 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-3b78310b296so1040206f8f.2
- for <qemu-trivial@nongnu.org>; Mon, 28 Jul 2025 08:40:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1753717249; x=1754322049; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id:from:to
- :cc:subject:date:message-id:reply-to;
- bh=clWmwPIvlE/uJUsDm2T1onrs09ie61Lz/tDRVg0acxg=;
- b=YeG+ckthrlgntRVLf31/r4Cu1ZHIAFb5SeZ4xq0nqPenh8oL5u9IZn9b1zQQbN/1hC
- nGpv38os/KomAUBMY0bsX/WHzc67rr2Ku5Z+zTfkMl8LWE+u4e+s5ljV8iHEU5gHEPI/
- l2MmFfGFaS4T3BOEPzxr+blvHlqvo+KiJdsKrMU9ITRts4MfiZit8n6XHLLACXpCl11J
- ttClWP58SeQRG8dm2wIgkx/oE7BCxX/dzIkkRJsdL9nD79R3va3vwJ40WBjRa9f6KhSJ
- EJChuMAjI2fmZVBsO1LV7NP++YfMScIIKUX1Zs8xZmW1QawSzhPVwp/pujZSJFf0jcJd
- 5s6A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753717249; x=1754322049;
- h=content-transfer-encoding:in-reply-to:content-language:references
- :cc:to:from:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=clWmwPIvlE/uJUsDm2T1onrs09ie61Lz/tDRVg0acxg=;
- b=wgPbNvFgE9m9tHz7qCnZ5Q1j/CdXR8Wq8tMHNdqSztjbKrn8oNxCp4Den8gAo+oM/v
- /pK96jTd/6ZmKA3rq87PBU6RPb/pGQZCdXnPW2/bEqZHx0nahIuFFTU73TtyItZzT477
- PbXE2FX0F/FG1QdkIfTFBmxUYCAgiFYVnxgWHA3/ampf1Ew7bhtpb2zzS/3zRz22xzj9
- l/URbOazgFP6XITX6Nfv7ak+3iRLJ0q3RK+rJsuind+ptj3n0y7G0aLScMA4oOQzmt+s
- B13pSJUsVtXmEJe1YL1rhxtrTVKKsd10+TtufCMer7kDABct/mH2DjG7RLJIFQseyhyQ
- TVDQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWvujwZxRhNF6uY6DToFvP6HAiRyCz9Or0ND250bftO/NfajlB5LdzTXvmFN+tuBZFjV5wn4zcBupZrQgE=@nongnu.org
-X-Gm-Message-State: AOJu0YyG0QQHqwvPH2fVBxm+sHh147FZrxzX+0VV2fHtZQAql6R1LIKl
- R/Qh0YpSY+8qFAPOaq3Q4nRNTd3SHr3IjSELQuiEHgjG80KdICv54Q8vETPlqi9cg0b/9jL0t0n
- yjuy7
-X-Gm-Gg: ASbGncs/TiVFddtfNXyEgD2DH1IRaYaea+d6iE7EzGwAUYXdfeS0iOtfERQ44KGhNA9
- JBE7JNZfXK16mI+GQ5uWBlOtDpV2AQlyHuj6w95ceaJGgmAZskTV0AVONsGqHqClpqO2h8uFtMU
- Aiv5pEmgHiVrsoRH3sWCqpgYUdeu1rpfXEg7g1tCs9qByepKO/yroG4uu4hrtEBaB4r3yTQuCYr
- q6xQWLiNIKEVC9N5FkH2m3FEohHkXb/ku7vk5RfFkDeoWPpVnfg7xHX11bLND3hcIBUwuX+p45D
- oUbRJTUTQShlse3yHc/70cvm16cG1oRKRRB2eLoO5YNu9xVkDZut0wSuUho5AkTLg0ndMuvhzIK
- GqPw01gODYzbIOEol44Otm462SnPikOrfz91D4LgKIgGXJYqfE8W/bwvPf9y/J1Ajzw==
-X-Google-Smtp-Source: AGHT+IHPcE+k/WmwZbRhgKMu43FdnjtR/zsViUUtbcX7mSUgjIwP2DkUsMia7dQ6Ay9g8fMZ9l7uWA==
-X-Received: by 2002:a05:6000:2382:b0:3b7:8d80:e382 with SMTP id
- ffacd0b85a97d-3b78d80ea5bmr318913f8f.4.1753717248896; 
- Mon, 28 Jul 2025 08:40:48 -0700 (PDT)
-Received: from [192.168.69.209] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3b78cf1f571sm739366f8f.22.2025.07.28.08.40.48
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 28 Jul 2025 08:40:48 -0700 (PDT)
-Message-ID: <1adc2441-3522-43d4-ae04-973a1cf66010@linaro.org>
-Date: Mon, 28 Jul 2025 17:40:47 +0200
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ugRgE-0002lo-Hl
+ for qemu-trivial@nongnu.org; Mon, 28 Jul 2025 13:30:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1ugRgA-00061Q-L6
+ for qemu-trivial@nongnu.org; Mon, 28 Jul 2025 13:30:28 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1753723825;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=eUoKj/NKwS1Na52rnIVQy+Sv4r/p2PoH+hWl9VDYsC4=;
+ b=Br4OtaYEuhVCZ1UaCQgQxCLlFRTPRLwI4Z/SmgxnQzF/chClD+rM8C+MBE7pFN3tREGuqQ
+ hQ5hK6o2A0d/8olXmmaFbraUi7SIOcHwBFqHseMXCdbB9vu1S2Q/f+q+Fff9+OZKwcQ0DI
+ xN+ehUF8d8FB9CTfn4BtSL2622XY+/s=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-640-NsCFXRGlPSqY1l_d9p9Ypw-1; Mon,
+ 28 Jul 2025 13:30:21 -0400
+X-MC-Unique: NsCFXRGlPSqY1l_d9p9Ypw-1
+X-Mimecast-MFC-AGG-ID: NsCFXRGlPSqY1l_d9p9Ypw_1753723820
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 91B4E1956089; Mon, 28 Jul 2025 17:30:20 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.45.224.117])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 8085330001B1; Mon, 28 Jul 2025 17:30:17 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Michael Roth <michael.roth@amd.com>,
+ Kostiantyn Kostiuk <kkostiuk@redhat.com>
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] qga: Fix ubsan warning
+Date: Mon, 28 Jul 2025 19:30:16 +0200
+Message-ID: <20250728173016.314460-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/mips/malta: Silence warning from ubsan
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: Aurelien Jarno <aurelien@aurel32.net>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org
-References: <20250728115152.187728-1-thuth@redhat.com>
- <43b37539-e4eb-465c-85e8-b7c83324910f@linaro.org>
-Content-Language: en-US
-In-Reply-To: <43b37539-e4eb-465c-85e8-b7c83324910f@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x429.google.com
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,63 +79,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 28/7/25 15:25, Philippe Mathieu-Daudé wrote:
-> Hi Thomas,
-> 
-> On 28/7/25 13:51, Thomas Huth wrote:
->> From: Thomas Huth <thuth@redhat.com>
->>
->> When compiling QEMU with --enable-ubsan there is a undefined behavior
->> warning when using the malta machine:
->>
->>   hw/mips/malta.c:1200:32: runtime error: addition of unsigned offset
->>    to 0x7fb620600000 overflowed to 0x7fb6205fffff
->>   SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior hw/mips/ 
->> malta.c:1200:32
->>
->> To fix the issue, check the bios_size whether we really loaded the
->> firmware before trying to byte-swap the instructions here.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   hw/mips/malta.c | 2 +-
->>   1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/mips/malta.c b/hw/mips/malta.c
->> index cbdbb210568..47dd4016cfd 100644
->> --- a/hw/mips/malta.c
->> +++ b/hw/mips/malta.c
->> @@ -1190,7 +1190,7 @@ void mips_malta_init(MachineState *machine)
->>            * In little endian mode the 32bit words in the bios are 
->> swapped,
->>            * a neat trick which allows bi-endian firmware.
->>            */
->> -        if (!TARGET_BIG_ENDIAN) {
->> +        if (!TARGET_BIG_ENDIAN && bios_size > 0) {
->>               uint32_t *end, *addr;
->>               const size_t swapsize = MIN(bios_size, 0x3e0000);
->>               addr = rom_ptr(FLASH_ADDRESS, swapsize);
+From: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+When compiling QEMU with --enable-ubsan there is a undefined behavior
+warning when running "make check":
 
-and queued, thanks!
+ .../qga/commands-linux.c:452:15: runtime error: applying non-zero offset 5 to null pointer
+ #0 0x55ea7b89450c in build_guest_fsinfo_for_pci_dev ..../qga/commands-linux.c:452:15
 
-> 
-> What about:
-> 
-> -- >8 --
-> @@ -1180,7 +1180,7 @@ void mips_malta_init(MachineState *machine)
->               } else {
->                   bios_size = -1;
->               }
-> -            if ((bios_size < 0 || bios_size > BIOS_SIZE) &&
-> +            if ((bios_size <= 0 || bios_size > BIOS_SIZE) &&
->                   machine->firmware && !qtest_enabled()) {
->                   error_report("Could not load MIPS bios '%s'", machine- 
->  >firmware);
->                   exit(1);
-> ---
-> 
-> ?
+Add a check to avoid incrementing the NULL pointer here.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ qga/commands-linux.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+diff --git a/qga/commands-linux.c b/qga/commands-linux.c
+index 9e8a934b9a6..caf7c3ca22b 100644
+--- a/qga/commands-linux.c
++++ b/qga/commands-linux.c
+@@ -449,7 +449,9 @@ static bool build_guest_fsinfo_for_pci_dev(char const *syspath,
+         has_ata = true;
+     } else {
+         p = strstr(syspath, "/host");
+-        q = p + 5;
++        if (p) {
++            q = p + 5;
++        }
+     }
+     if (p && sscanf(q, "%u", &host) == 1) {
+         has_host = true;
+-- 
+2.50.1
 
 
