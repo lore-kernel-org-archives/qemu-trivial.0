@@ -4,72 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A3F67C83F17
-	for <qemu-trivial@archiver.kernel.org>; Mon, 28 Jul 2025 15:20:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7AA50C83F17
+	for <qemu-trivial@archiver.kernel.org>; Mon, 28 Jul 2025 15:25:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ugPeH-0006TY-9p; Mon, 28 Jul 2025 11:20:24 -0400
+	id 1ugPig-0002QE-4Y; Mon, 28 Jul 2025 11:24:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1ugPeA-000610-3N
- for qemu-trivial@nongnu.org; Mon, 28 Jul 2025 11:20:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ugPid-0002H5-Lz; Mon, 28 Jul 2025 11:24:51 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1ugPe4-0008AZ-R3
- for qemu-trivial@nongnu.org; Mon, 28 Jul 2025 11:20:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1753716005;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=/9mdkJiaEIu48KKBXZB3x0p0llX29VqyVZbeuMhXWRA=;
- b=HYxlYPDFR7s3q5iaeiZ6njr46JX7KyCxoQhdrezkH6KKEv4ihJWRlkQ35mSPTGQ2M9z1q3
- mGpO5SBbv+KTMB9zB8UGydE1w0x6ZjjQMoZExjOYCq5/jZCsHcwbnxFguBUcKy5Ofk53bc
- GVjb0MBSbLe9PaNLLz8D4br8SHCDXmo=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-442-lXoTGFbCPCOKHF7Gmrj0Vg-1; Mon,
- 28 Jul 2025 11:20:03 -0400
-X-MC-Unique: lXoTGFbCPCOKHF7Gmrj0Vg-1
-X-Mimecast-MFC-AGG-ID: lXoTGFbCPCOKHF7Gmrj0Vg_1753716003
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9852D19560B1; Mon, 28 Jul 2025 15:20:02 +0000 (UTC)
-Received: from localhost (unknown [10.2.16.147])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id CAF1119560A2; Mon, 28 Jul 2025 15:19:59 +0000 (UTC)
-Date: Mon, 28 Jul 2025 11:19:58 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org
-Subject: Re: [PULL for-10.1 0/1] Trivial patches for 2025-07-25
-Message-ID: <20250728151958.GA71237@fedora>
-References: <20250725155504.2409-1-mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ugPib-0000Do-Np; Mon, 28 Jul 2025 11:24:51 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id E131713AF74;
+ Mon, 28 Jul 2025 18:24:38 +0300 (MSK)
+Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 64F992517CD;
+ Mon, 28 Jul 2025 18:24:46 +0300 (MSK)
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Eric Auger <eric.auger@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PATCH for 10.1] hw/pci-host/gpex-acpi: PCI_EXPRESS_GENERIC_BRIDGE:
+ select ACPI_PCI instead of imply'ing it
+Date: Mon, 28 Jul 2025 18:24:45 +0300
+Message-ID: <20250728152445.23917-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="6QuUkPfvkHQ1VTLL"
-Content-Disposition: inline
-In-Reply-To: <20250725155504.2409-1-mjt@tls.msk.ru>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: permerror client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,30 +58,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
+Commit af151d50eac24 added dependency on hw/i386/acpi-build.c
+(where this function is defined) to hw/pci-host/gpex-acpi.
+But acpi-build.c is only built when ACPI_PCI is enabled,
+and the build fails at link time if it is not.  So ACPI_PCI
+becomes a hard dependency of PCI_EXPRESS_GENERIC_BRIDGE.
+Fix it.
 
---6QuUkPfvkHQ1VTLL
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Fixes: af151d50eac24 "hw/pci-host/gpex-acpi: Use build_pci_host_bridge_osc_method"
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/pci-host/Kconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/10.1 for any user-visible changes.
-
---6QuUkPfvkHQ1VTLL
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmiHlR4ACgkQnKSrs4Gr
-c8hseAgApYB+nVBCj3fuG4Yc1PJKnPmwMe95nXoxzQdDABhfBYkYK8DS+javlkpU
-mNbfdppUNxn2MExl3OPCZuumH+oEUR99lMUZrYuVZDeaxbylP2WN3OS48V5IlucO
-f9pg86OrTOU0ZUSxqjtMW3SAItbg89WjaIFum6D1eFd7m1ScrNApsLQzO3U9hG/G
-2Hs5dfP/8dPyVQzy+H/mpgsWa0A+m7RE7wy11ct7sboahJazG1JpMNFongR4AEDb
-BidlqWZKfDW8+7A1VQgafiXEDurNDOn/9lm0pR3TqiJqr7SjUfcbu7tUSBM8NNaU
-JpjWHzMERyT/X+VcxEn6exOK9ZgeIg==
-=fSj1
------END PGP SIGNATURE-----
-
---6QuUkPfvkHQ1VTLL--
+diff --git a/hw/pci-host/Kconfig b/hw/pci-host/Kconfig
+index 9824fa188d..19b6605c7f 100644
+--- a/hw/pci-host/Kconfig
++++ b/hw/pci-host/Kconfig
+@@ -54,7 +54,7 @@ config PCI_EXPRESS_Q35
+ config PCI_EXPRESS_GENERIC_BRIDGE
+     bool
+     select PCI_EXPRESS
+-    imply ACPI_PCI
++    select ACPI_PCI
+ 
+ config PCI_EXPRESS_XILINX
+     bool
+-- 
+2.47.2
 
 
