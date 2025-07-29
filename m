@@ -4,97 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77C44C83F26
-	for <qemu-trivial@archiver.kernel.org>; Tue, 29 Jul 2025 06:58:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 93225C87FCC
+	for <qemu-trivial@archiver.kernel.org>; Tue, 29 Jul 2025 07:54:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ugeI9-0002Bs-Qu; Tue, 29 Jul 2025 02:58:30 -0400
+	id 1ugf9o-0002wB-Qs; Tue, 29 Jul 2025 03:53:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1ugeI5-00028F-9k
- for qemu-trivial@nongnu.org; Tue, 29 Jul 2025 02:58:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1ugeI3-0002gu-KZ
- for qemu-trivial@nongnu.org; Tue, 29 Jul 2025 02:58:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1753772300;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=6bXEycGxrweoSjffj68ANTMmIwgmbop3om08l0bvsXk=;
- b=DwdGNcEuVZiO1uLlC5kILnv9TKw4w6W8NkmS5JT9oPnTRG9K2KcIExnig4sWpVRh9u5KYs
- reQqUbqs88GD7xou2kv2j8hbRmL1xEHcNYlxWMlF/hkcsihWSKFTAsTEwOouUjXI8DVvh/
- kDc+YoxXYPGOlRTPJ+JKXEhqS7haCgI=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-314-eg_KepPWMqmL_l01BFzBGA-1; Tue, 29 Jul 2025 02:58:18 -0400
-X-MC-Unique: eg_KepPWMqmL_l01BFzBGA-1
-X-Mimecast-MFC-AGG-ID: eg_KepPWMqmL_l01BFzBGA_1753772298
-Received: by mail-qv1-f72.google.com with SMTP id
- 6a1803df08f44-70749d4c689so27471796d6.1
- for <qemu-trivial@nongnu.org>; Mon, 28 Jul 2025 23:58:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ugf9l-0002ku-Nm
+ for qemu-trivial@nongnu.org; Tue, 29 Jul 2025 03:53:53 -0400
+Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ugf9j-0000Mm-SC
+ for qemu-trivial@nongnu.org; Tue, 29 Jul 2025 03:53:53 -0400
+Received: by mail-wr1-x436.google.com with SMTP id
+ ffacd0b85a97d-3b77673fd78so2520682f8f.0
+ for <qemu-trivial@nongnu.org>; Tue, 29 Jul 2025 00:53:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1753775630; x=1754380430; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=daFnnClwoI8UI4l2E7ICtx4BnOkRUbAb2tnloyYUGwQ=;
+ b=ILXlFQDO8Tr7ivh6/ZGzsEGWKKFn/3UGNbQAbMmY/RVWoFCBPLFQ2nkgUjA23mjSUz
+ ISOHL4evKh+OvT3odRSgNGC9zTeRwud5odlqqrrXKOQhuY4VA9aRzhdVMYKiXtxciWoP
+ 8jZj0C34pE3YeD0E5RWIjGU7IiSOw+dK6qNJgnadzS24Dr9WQu9CVO1f7NvJhJHGm2jA
+ SW7CzIVGCeCwlp+m41oGiw4dyBUboUrmKhkOCI5QiqQapwHq+t32rYLapmSiGeSjtVL0
+ rkGVeC75mzYO+551ynke0UUw15+jImIowglHa8xFwEvloIxIURHt3YJk6u1lqba2vOhu
+ tS0g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1753772298; x=1754377098;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=6bXEycGxrweoSjffj68ANTMmIwgmbop3om08l0bvsXk=;
- b=Neng9vDSmardmULwoJXazkfd4ZhF+zesL0nMkdfd7nIdxNu/O9LPHHRScoNHzgJ2Mo
- 7fmqViLz0tVF5+6NWGBaioKBVyA7SMzbFDOj5KpCUYPX78sTD2+7nOVCwyPT6Sfs/UXa
- wIubeHhp3wuCWp6NwIeqlDPdtOctjne866jeuQ8/jjUhCtAdXvZPWHlEUYRF/TnWCHBa
- tozo5NFRzsMhYhzXV+A6TvcEGO3SJ/2vYpQfvMf4Ze+j5PYt21wFbGiz/Cel5jj2cMzb
- q7phnu3cpRkaEb8yvEKrjLfSDORoS7iTXhzyEnD1xfmZJ+s2DXdczYn7pYLMTnnMt6tH
- wxxQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUTXUp+6KtviSCaOkO629v6I10MGGqk2RYo0ffBP4JKOSuDexI+YxtR+oKNhCrOzJAB08debJxw2BzHFuY=@nongnu.org
-X-Gm-Message-State: AOJu0Yz9QuUrdpW3M6/m+sXezNwsM5deGpejdV3PKLqRyLdiAL0qX1HP
- lYwn15Oj2yE/3fy+VzFQJXPF9P++qZwBo9LotqdWUNYsqU00hw2xm9ZZKh3SJRRGHLB+O5GmcsR
- euUsJjnFIXicLSszbs4omDOBFAr8uUHhuXFH8Uw5AIswnLZqL+6xiPQAXGd2F3Odk5OlwIt1p45
- hkYitPYhCVDs4t96Q1Y7I4/zYz0xQNo8jt4g==
-X-Gm-Gg: ASbGncvjwZaL2+7g1AAEqa3Z9Hewmtvxp3Hi83RmqbOKG+mn18Z+6obXXD/Bh68qU/3
- E6wqrRNbsDCYdwMKT642w5bBBnhWRDcODWjWKrHpvUWehs62zRMqNv3eDB8ViiI2SpLuPI8aUvD
- 8ebolb6RY1yhAOzNlj/YSOfTk=
-X-Received: by 2002:ad4:5c6a:0:b0:707:43cd:4a63 with SMTP id
- 6a1803df08f44-70743cd4c85mr104478266d6.18.1753772298016; 
- Mon, 28 Jul 2025 23:58:18 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGc5o8PDzY7yqC+m6RWeFRqnlBN/C+KPwj16LIZAzKcsNGhdsoDNmvatCvchZN0UL8laawvZw9WkfCE3haG6AU=
-X-Received: by 2002:ad4:5c6a:0:b0:707:43cd:4a63 with SMTP id
- 6a1803df08f44-70743cd4c85mr104478176d6.18.1753772297702; Mon, 28 Jul 2025
- 23:58:17 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1753775630; x=1754380430;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=daFnnClwoI8UI4l2E7ICtx4BnOkRUbAb2tnloyYUGwQ=;
+ b=BVC5Lhh5ZDrFRxtRH0Wv8DJcpmm19Mj5nGscfFTWW7LlV3LMeaTKM1dWMFIUho78aN
+ lg38x33SPpNi2FmOAuYcDdJqWSQQxIrLoeTM3Rgl1tyAkRIu/XmZdwlhdBjfhXgrVkGS
+ 7NbK+wsk6IgNyCsgZiVt75Aahbr1pyGPPOiO8pewvyOXWYS71G06lNbzjitBBNXTrWku
+ ByxWfeM97YTH1q9nd6Wu0eVhctqEzBIREflQBg7eOMXf2yX6PTe7iF7m6xbeVAg0COrr
+ f00QwJM98pegv57ZO9/lvGncJfwlkE89S/N/nfLL/Kk2TWZNndn9t8+wY7uWILwVdt+9
+ nkSw==
+X-Gm-Message-State: AOJu0YzomVadNZCqCY4q0ZzDJv0ZNRaKEsXRycFDDMxMyd0hsHjONnEL
+ 4idAFMX2ViJXo5LETXFjGA0KetEcqjEW/uE/R62xMfQ2PYWL96hCKCBuaim8gXwcRFw=
+X-Gm-Gg: ASbGncuEr75tRUTC4O5fm2EDXvsOkw/76Eokek/OgW/aUE1x5lzEmVu+dvN48k/iLKQ
+ cBvqbJ46N34XWer07R00tH0tOFjHpAYI8m+22f/W7JlrQilAnCQtFdEHRQ5nbk58RArRIw7/uuO
+ 0efADqj8CLOsU51GLfV6H3Geafz2m6Gu8O8oF7/Pd0tcziAKF0RYZ725c+VtLvBg9E/HQDDHVhi
+ mGCIf3mpH0jCU5vvkIh7NP4mRc8fLoafEMH5LFFhYs1AmsU2tPD6D79AkxgVx6Ftyemg9H0B5ET
+ CGN6FplY3lh+hRTi5hdfLZeaHkVSEwS6oXj8DPUAYd/j8CURfOY7FetRgdD0G8FJJIgurh+Udcy
+ DmRv57J7fBEsrq/gyE5W3YhDFvbdFR56/Zq85PaJTis9i9ZkLTPwJYDA+0dTbyYLCupmUCCwoNH
+ 5f
+X-Google-Smtp-Source: AGHT+IHeKswrAsNGeC9Px4PQ7DfKYDYvBkEJqCQiMHCg6VwCae136XzVAtNn3KJrrPh6WpnRooKRFA==
+X-Received: by 2002:a05:6000:1aca:b0:3b7:84fc:ef4c with SMTP id
+ ffacd0b85a97d-3b784fcf176mr4941457f8f.6.1753775629914; 
+ Tue, 29 Jul 2025 00:53:49 -0700 (PDT)
+Received: from [192.168.69.209] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3b7822d8cbasm9246341f8f.68.2025.07.29.00.53.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 29 Jul 2025 00:53:49 -0700 (PDT)
+Message-ID: <29fff141-3d78-49bd-8f83-fe16035857a7@linaro.org>
+Date: Tue, 29 Jul 2025 09:53:48 +0200
 MIME-Version: 1.0
-References: <20250728173016.314460-1-thuth@redhat.com>
- <aIe5E5NaMCGhoiLZ@redhat.com>
- <1501b69c-6920-4319-bd8a-550243cb3daa@redhat.com>
-In-Reply-To: <1501b69c-6920-4319-bd8a-550243cb3daa@redhat.com>
-From: Kostiantyn Kostiuk <kkostiuk@redhat.com>
-Date: Tue, 29 Jul 2025 09:58:05 +0300
-X-Gm-Features: Ac12FXyBFnu73O1atrqeFeyVWBHzZTfGCXgfUyk3delvXup2LR4MJsqFCLyK3KM
-Message-ID: <CAPMcbCor6zVh+C8VoprThvekd17s_HC4rVMKO4KnOi+cnyH84Q@mail.gmail.com>
-Subject: Re: [PATCH] qga: Fix ubsan warning
-To: Thomas Huth <thuth@redhat.com>
-Cc: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- qemu-devel@nongnu.org, Michael Roth <michael.roth@amd.com>,
- qemu-trivial@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: CaLf3B2qZRfppMXzS_sLcm9nw9N1z1Jumbnh1KZedHM_1753772298
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="000000000000d265ce063b0bee54"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kkostiuk@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH trivial for 10.1] roms/Makefile: fix npcmNxx_bootrom build
+ rules
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Hao Wu <wuhaotsh@google.com>,
+ Peter Maydell <peter.maydell@linaro.org>
+References: <20250727215511.807880-1-mjt@tls.msk.ru>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250727215511.807880-1-mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::436;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,158 +102,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
---000000000000d265ce063b0bee54
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 27/7/25 23:55, Michael Tokarev wrote:
+> Since commit 70ce076fa6dff60, the actual rom source dirs
+> are subdirs of vbootrom/ submodule, not in top-level of it.
+> 
+> Fixes: 70ce076fa6dff60 "roms: Update vbootrom to 1287b6e"
+> 
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>   roms/Makefile | 8 ++++----
+>   1 file changed, 4 insertions(+), 4 deletions(-)
+> 
+> diff --git a/roms/Makefile b/roms/Makefile
+> index beff58d9d5..6af68a922f 100644
+> --- a/roms/Makefile
+> +++ b/roms/Makefile
+> @@ -193,12 +193,12 @@ qboot:
+>   	cp qboot/build/bios.bin ../pc-bios/qboot.rom
+>   
+>   npcm7xx_bootrom:
+> -	$(MAKE) -C vbootrom CROSS_COMPILE=$(arm_cross_prefix)
+> -	cp vbootrom/npcm7xx_bootrom.bin ../pc-bios/npcm7xx_bootrom.bin
+> +	$(MAKE) -C vbootrom/npcm7xx CROSS_COMPILE=$(arm_cross_prefix)
+> +	cp vbootrom/npcm7xx/npcm7xx_bootrom.bin ../pc-bios/npcm7xx_bootrom.bin
+>   
+>   npcm8xx_bootrom:
+> -	$(MAKE) -C vbootrom CROSS_COMPILE=$(aarch64_cross_prefix)
+> -	cp vbootrom/npcm8xx_bootrom.bin ../pc-bios/npcm8xx_bootrom.bin
+> +	$(MAKE) -C vbootrom/npcm8xx CROSS_COMPILE=$(aarch64_cross_prefix)
+> +	cp vbootrom/npcm8xx/npcm8xx_bootrom.bin ../pc-bios/npcm8xx_bootrom.bin
 
-LGTM
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Tested-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+(note: not working on macOS, only Linux)
 
-On Tue, Jul 29, 2025 at 9:02=E2=80=AFAM Thomas Huth <thuth@redhat.com> wrot=
-e:
+Queued adding:
 
-> On 28/07/2025 19.53, Daniel P. Berrang=C3=A9 wrote:
-> > On Mon, Jul 28, 2025 at 07:30:16PM +0200, Thomas Huth wrote:
-> >> From: Thomas Huth <thuth@redhat.com>
-> >>
-> >> When compiling QEMU with --enable-ubsan there is a undefined behavior
-> >> warning when running "make check":
-> >>
-> >>   .../qga/commands-linux.c:452:15: runtime error: applying non-zero
-> offset 5 to null pointer
-> >>   #0 0x55ea7b89450c in build_guest_fsinfo_for_pci_dev
-> ..../qga/commands-linux.c:452:15
-> >>
-> >> Add a check to avoid incrementing the NULL pointer here.
-> >>
-> >> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> >> ---
-> >>   qga/commands-linux.c | 4 +++-
-> >>   1 file changed, 3 insertions(+), 1 deletion(-)
-> >>
-> >> diff --git a/qga/commands-linux.c b/qga/commands-linux.c
-> >> index 9e8a934b9a6..caf7c3ca22b 100644
-> >> --- a/qga/commands-linux.c
-> >> +++ b/qga/commands-linux.c
-> >> @@ -449,7 +449,9 @@ static bool build_guest_fsinfo_for_pci_dev(char
-> const *syspath,
-> >>           has_ata =3D true;
-> >>       } else {
-> >>           p =3D strstr(syspath, "/host");
-> >> -        q =3D p + 5;
-> >> +        if (p) {
-> >> +            q =3D p + 5;
-> >> +        }
-> >>       }
-> >>       if (p && sscanf(q, "%u", &host) =3D=3D 1) {
-> >
-> > q is always non-NULL if p is non-NULL, so this is safe, but I would be
-> more
-> > happy with this changing to 'q && sscanf' to eliminate the indirection.
->
-> If we agree to do a bigger change here, I'd rather drop the "q" pointer
-> completely and use a new integer variable instead, something like:
->
->      int offset;
->      ...
->      p =3D strstr(syspath, "/ata");
->      if (p) {
->          offset =3D 4;
->          has_ata =3D true;
->      } else {
->          offset =3D 5;
->          p =3D strstr(syspath, "/host");
->      }
->      if (p && sscanf(p + offset, "%u", &host) =3D=3D 1) {
->          ...
->      }
->
-> WDYT?
->
->    Thomas
->
->
+Fixes: 269b7effd90 ("pc-bios: Add NPCM8XX vBootrom")
 
---000000000000d265ce063b0bee54
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><div>LGTM</div></div><br><div class=3D"gm=
-ail_quote gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On T=
-ue, Jul 29, 2025 at 9:02=E2=80=AFAM Thomas Huth &lt;<a href=3D"mailto:thuth=
-@redhat.com">thuth@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"=
-gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(20=
-4,204,204);padding-left:1ex">On 28/07/2025 19.53, Daniel P. Berrang=C3=A9 w=
-rote:<br>
-&gt; On Mon, Jul 28, 2025 at 07:30:16PM +0200, Thomas Huth wrote:<br>
-&gt;&gt; From: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=
-=3D"_blank">thuth@redhat.com</a>&gt;<br>
-&gt;&gt;<br>
-&gt;&gt; When compiling QEMU with --enable-ubsan there is a undefined behav=
-ior<br>
-&gt;&gt; warning when running &quot;make check&quot;:<br>
-&gt;&gt;<br>
-&gt;&gt;=C2=A0 =C2=A0.../qga/commands-linux.c:452:15: runtime error: applyi=
-ng non-zero offset 5 to null pointer<br>
-&gt;&gt;=C2=A0 =C2=A0#0 0x55ea7b89450c in build_guest_fsinfo_for_pci_dev ..=
-../qga/commands-linux.c:452:15<br>
-&gt;&gt;<br>
-&gt;&gt; Add a check to avoid incrementing the NULL pointer here.<br>
-&gt;&gt;<br>
-&gt;&gt; Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com"=
- target=3D"_blank">thuth@redhat.com</a>&gt;<br>
-&gt;&gt; ---<br>
-&gt;&gt;=C2=A0 =C2=A0qga/commands-linux.c | 4 +++-<br>
-&gt;&gt;=C2=A0 =C2=A01 file changed, 3 insertions(+), 1 deletion(-)<br>
-&gt;&gt;<br>
-&gt;&gt; diff --git a/qga/commands-linux.c b/qga/commands-linux.c<br>
-&gt;&gt; index 9e8a934b9a6..caf7c3ca22b 100644<br>
-&gt;&gt; --- a/qga/commands-linux.c<br>
-&gt;&gt; +++ b/qga/commands-linux.c<br>
-&gt;&gt; @@ -449,7 +449,9 @@ static bool build_guest_fsinfo_for_pci_dev(cha=
-r const *syspath,<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0has_ata =3D true;<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0} else {<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0p =3D strstr(syspath, &quo=
-t;/host&quot;);<br>
-&gt;&gt; -=C2=A0 =C2=A0 =C2=A0 =C2=A0 q =3D p + 5;<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 if (p) {<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 q =3D p + 5;<br>
-&gt;&gt; +=C2=A0 =C2=A0 =C2=A0 =C2=A0 }<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0}<br>
-&gt;&gt;=C2=A0 =C2=A0 =C2=A0 =C2=A0if (p &amp;&amp; sscanf(q, &quot;%u&quot=
-;, &amp;host) =3D=3D 1) {<br>
-&gt; <br>
-&gt; q is always non-NULL if p is non-NULL, so this is safe, but I would be=
- more<br>
-&gt; happy with this changing to &#39;q &amp;&amp; sscanf&#39; to eliminate=
- the indirection.<br>
-<br>
-If we agree to do a bigger change here, I&#39;d rather drop the &quot;q&quo=
-t; pointer <br>
-completely and use a new integer variable instead, something like:<br>
-<br>
-=C2=A0 =C2=A0 =C2=A0int offset;<br>
-=C2=A0 =C2=A0 =C2=A0...<br>
-=C2=A0 =C2=A0 =C2=A0p =3D strstr(syspath, &quot;/ata&quot;);<br>
-=C2=A0 =C2=A0 =C2=A0if (p) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0offset =3D 4;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0has_ata =3D true;<br>
-=C2=A0 =C2=A0 =C2=A0} else {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0offset =3D 5;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0p =3D strstr(syspath, &quot;/host&quot;);=
-<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-=C2=A0 =C2=A0 =C2=A0if (p &amp;&amp; sscanf(p + offset, &quot;%u&quot;, &am=
-p;host) =3D=3D 1) {<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0...<br>
-=C2=A0 =C2=A0 =C2=A0}<br>
-<br>
-WDYT?<br>
-<br>
-=C2=A0 =C2=A0Thomas<br>
-<br>
-</blockquote></div></div>
-
---000000000000d265ce063b0bee54--
-
+Thanks!
 
