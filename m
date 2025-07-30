@@ -4,80 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F03DC83F26
-	for <qemu-trivial@archiver.kernel.org>; Tue, 29 Jul 2025 13:17:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FC9AC87FC9
+	for <qemu-trivial@archiver.kernel.org>; Wed, 30 Jul 2025 07:27:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ugkCw-0000sH-Cs; Tue, 29 Jul 2025 09:17:30 -0400
-Received: from eggs.gnu.org ([209.51.188.92])
+	id 1uh1Dl-0003aw-CL; Wed, 30 Jul 2025 03:27:29 -0400
+Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1ugkCi-0000Uk-1X
- for qemu-trivial@nongnu.org; Tue, 29 Jul 2025 09:17:22 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uh1Di-0003WW-V7
+ for qemu-trivial@nongnu.org; Wed, 30 Jul 2025 03:27:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1ugkCe-0002Zg-8A
- for qemu-trivial@nongnu.org; Tue, 29 Jul 2025 09:17:15 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uh1Dg-0002tF-Dz
+ for qemu-trivial@nongnu.org; Wed, 30 Jul 2025 03:27:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1753795028;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=A46pdvu3P8sVMAVxEZjlM/QkpXNT6aCO2+WxlHevqcU=;
- b=bLxdIscp36mTOQlL44BlyhKoYTuraDKdhET2IECsc19lRoC3JCzbHynFB4hJLvUxdki/VP
- v5k7KUIYhu3d3taFU32HI7cq8wbWlDLAYdB7KJRECdrTeI8+KYrVMNfgPX7XuHRdRFelp6
- 6q9X20TgeTd29exNkUgILtSc4X2+UVE=
-Received: from mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com
+ s=mimecast20190719; t=1753860440;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=nPI7pdlOcMz7QrP0SBU39anyG80W4Kt/XP9FRi6Jd1I=;
+ b=BGz+Mbw6LFKvPxDpe7YjUWAxhpjSdmUUJqGeqnE1prBCftAZtZ4BNmisC3bPD42klINvsX
+ cEZ/HUyWw1i2P+P3W8z8W3Y269c7Pj8Qi5S56S1PsnDlmYEJEYWb9+uhpv2hykWRq7SB9w
+ 51kWIimIxKJYNScsSLVu+dsMao89NQU=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-314-HNYTd7FgNs2GY06vlk4H_Q-1; Tue,
- 29 Jul 2025 09:17:04 -0400
-X-MC-Unique: HNYTd7FgNs2GY06vlk4H_Q-1
-X-Mimecast-MFC-AGG-ID: HNYTd7FgNs2GY06vlk4H_Q_1753795023
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-207-BR3DqirsPLGnywzHHvm0vg-1; Wed,
+ 30 Jul 2025 03:27:15 -0400
+X-MC-Unique: BR3DqirsPLGnywzHHvm0vg-1
+X-Mimecast-MFC-AGG-ID: BR3DqirsPLGnywzHHvm0vg_1753860435
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-02.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0F1631956089; Tue, 29 Jul 2025 13:17:03 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.12])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 43CFF19560A2; Tue, 29 Jul 2025 13:17:00 +0000 (UTC)
-Date: Tue, 29 Jul 2025 14:16:56 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: Markus Armbruster <armbru@redhat.com>, qemu-devel@nongnu.org,
- sstabellini@kernel.org, anthony@xenproject.org, paul@xen.org,
- edgar.iglesias@gmail.com, xen-devel@lists.xenproject.org,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/display/xenfb: Replace unreachable code by abort()
-Message-ID: <aIjJyH_Vy0LzHH4z@redhat.com>
-References: <20250729111226.3627499-1-armbru@redhat.com>
- <14fff91b-7434-4d90-adb1-ebbe3f51d605@linaro.org>
- <87v7nbdwfx.fsf@pond.sub.org>
- <15536eea-5a66-4dff-b4bd-8a43fbfa9365@linaro.org>
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A19F819560B2; Wed, 30 Jul 2025 07:27:14 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.45.224.104])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 8235F18003FC; Wed, 30 Jul 2025 07:27:11 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org, Michael Roth <michael.roth@amd.com>,
+ Kostiantyn Kostiuk <kkostiuk@redhat.com>
+Cc: qemu-trivial@nongnu.org,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Subject: [PATCH v2] qga: Fix ubsan warning
+Date: Wed, 30 Jul 2025 09:27:09 +0200
+Message-ID: <20250730072709.27077-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <15536eea-5a66-4dff-b4bd-8a43fbfa9365@linaro.org>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,64 +78,62 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Tue, Jul 29, 2025 at 02:59:46PM +0200, Philippe Mathieu-Daudé wrote:
-> On 29/7/25 14:16, Markus Armbruster wrote:
-> > Philippe Mathieu-Daudé <philmd@linaro.org> writes:
-> > 
-> > > On 29/7/25 13:12, Markus Armbruster wrote:
-> > > > xenfb_mouse_event() has a switch statement whose controlling
-> > > > expression move->axis is an enum InputAxis.  The enum values are
-> > > > INPUT_AXIS_X and INPUT_AXIS_Y, encoded as 0 and 1.  The switch has a
-> > > > case for both axes.  In addition, it has an unreachable default label.
-> > > > This convinces Coverity that move->axis can be greater than 1.  It
-> > > > duly reports a buffer overrun when it is used to subscript an array
-> > > > with two elements.
-> > > > Replace the unreachable code by abort().
-> > > > Resolves: Coverity CID 1613906
-> > > > Signed-off-by: Markus Armbruster <armbru@redhat.com>
-> > > > ---
-> > > >    hw/display/xenfb.c | 3 +--
-> > > >    1 file changed, 1 insertion(+), 2 deletions(-)
-> > > > diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
-> > > > index 22822fecea..5e6c691779 100644
-> > > > --- a/hw/display/xenfb.c
-> > > > +++ b/hw/display/xenfb.c
-> > > > @@ -283,8 +283,7 @@ static void xenfb_mouse_event(DeviceState *dev, QemuConsole *src,
-> > > >                    scale = surface_height(surface) - 1;
-> > > >                    break;
-> > > >                default:
-> > > > -                scale = 0x8000;
-> > > > -                break;
-> > > > +                abort();
-> > > 
-> > > We prefer GLib g_assert_not_reached() over abort() because it displays
-> > > the file, line number & function before aborting.
-> > 
-> > The purpose of this line is to tell the compiler we can't get there,
-> > with the least amount of ceremony.
-> > 
-> > We have ~600 calls of abort().
-> 
-> And ~1600 of g_assert_not_reached() =)
-> 
-> $ git grep -w 'abort();' | wc -l
->      556
-> $ git grep -w 'g_assert_not_reached();' | wc -l
->     1551
+From: Thomas Huth <thuth@redhat.com>
 
-Sounds like we could create a gitlab issue for "replace abort with
-g_assert_not_reached" that could be a easy on-ramp for someone to
-start contributing.
+When compiling QEMU with --enable-ubsan there is a undefined behavior
+warning when running "make check":
 
-With regards,
-Daniel
+ .../qga/commands-linux.c:452:15: runtime error: applying non-zero offset 5 to null pointer
+ #0 0x55ea7b89450c in build_guest_fsinfo_for_pci_dev ..../qga/commands-linux.c:452:15
+
+Fix it by avoiding the additional pointer variable here and use an
+"offset" integer variable instead.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v2: Use an integer offset variable instead for checking for a NULL pointer
+
+ qga/commands-linux.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
+
+diff --git a/qga/commands-linux.c b/qga/commands-linux.c
+index 9e8a934b9a6..0c41eb97190 100644
+--- a/qga/commands-linux.c
++++ b/qga/commands-linux.c
+@@ -400,10 +400,10 @@ static bool build_guest_fsinfo_for_pci_dev(char const *syspath,
+                                            Error **errp)
+ {
+     unsigned int pci[4], host, hosts[8], tgt[3];
+-    int i, nhosts = 0, pcilen;
++    int i, offset, nhosts = 0, pcilen;
+     GuestPCIAddress *pciaddr = disk->pci_controller;
+     bool has_ata = false, has_host = false, has_tgt = false;
+-    char *p, *q, *driver = NULL;
++    char *p, *driver = NULL;
+     bool ret = false;
+ 
+     p = strstr(syspath, "/devices/pci");
+@@ -445,13 +445,13 @@ static bool build_guest_fsinfo_for_pci_dev(char const *syspath,
+ 
+     p = strstr(syspath, "/ata");
+     if (p) {
+-        q = p + 4;
++        offset = 4;
+         has_ata = true;
+     } else {
+         p = strstr(syspath, "/host");
+-        q = p + 5;
++        offset = 5;
+     }
+-    if (p && sscanf(q, "%u", &host) == 1) {
++    if (p && sscanf(p + offset, "%u", &host) == 1) {
+         has_host = true;
+         nhosts = build_hosts(syspath, p, has_ata, hosts,
+                              ARRAY_SIZE(hosts), errp);
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.50.1
 
 
