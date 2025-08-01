@@ -4,34 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63292C87FCB
-	for <qemu-trivial@archiver.kernel.org>; Fri,  1 Aug 2025 11:54:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96AE9C87FCA
+	for <qemu-trivial@archiver.kernel.org>; Fri,  1 Aug 2025 12:49:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1uhoLO-0003vf-J0; Fri, 01 Aug 2025 07:54:39 -0400
+	id 1uhpCh-0004On-EC; Fri, 01 Aug 2025 08:49:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1uhoKI-0001gj-Pp; Fri, 01 Aug 2025 07:53:33 -0400
+ id 1uhosg-0001TH-0O; Fri, 01 Aug 2025 08:29:02 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1uhoKF-0006lI-PF; Fri, 01 Aug 2025 07:53:30 -0400
+ id 1uhosa-0004tB-J2; Fri, 01 Aug 2025 08:29:01 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id C585413CB33;
- Fri, 01 Aug 2025 14:53:03 +0300 (MSK)
-Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 95F4E254A5E;
- Fri,  1 Aug 2025 14:53:17 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id BECDD13CB5A;
+ Fri, 01 Aug 2025 15:28:36 +0300 (MSK)
+Received: from think4mjt.origo (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 2C7B8254A9B;
+ Fri,  1 Aug 2025 15:28:51 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: Michael Roth <michael.roth@amd.com>,
- Kostiantyn Kostiuk <kkostiuk@redhat.com>, qemu-devel@nongnu.org
+To: qemu-devel@nongnu.org, qemu-block@nongnu.org,
+ Eric Blake <eblake@redhat.com>, Kevin Wolf <kwolf@redhat.com>
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-trivial@nongnu.org
-Subject: [PATCH trivial] qga: correctly write to /sys/power/state on linux
-Date: Fri,  1 Aug 2025 14:53:14 +0300
-Message-ID: <20250801115316.6845-1-mjt@tls.msk.ru>
+Subject: [PATCH trivial] tests/qemu-iotests/tests/mirror-sparse: skip if
+ O_DIRECT is not supported
+Date: Fri,  1 Aug 2025 15:28:49 +0300
+Message-ID: <20250801122850.27632-1-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -58,60 +59,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Commit v9.0.0-343-g2048129625 introduced usage of
-g_file_set_contents() function to write to /sys/power/state.
-This function uses G_FILE_SET_CONTENTS_CONSISTENT flag to
-g_file_set_contents_full(), which is implemented by creating
-a temp file in the same directory and renaming it to the final
-destination.  Which is not how sysfs works.
+This test uses cache.direct=true, but does not check if O_DIRECT
+is supported by the underlying filesystem, and fails, for example,
+on a tmpfs (which is rather common on various auto-builders, in CI,
+etc).
 
-Here, there's not a big deal to do open/write/close - it becomes
-almost the same as using g_file_set_contents[_full]().  But it
-does not have surprises like this.
+Fix this by using _require_o_direct.
 
-Also, since this is linux code, it should be ok to use %m in
-the error reporting function.
+This example shows where our testing framework is significantly
+lacking.  In this test, qemu produces an error message on stderr
+at startup, because it can't use O_DIRECT mode.  But this error
+message is not shown anywhere at all, even when running this test
+separately outside of meson framework, - stderr is completely
+hidden, and the only error we're getting is
 
-Fixes: 2048129625 "qga/commands-posix: don't do fork()/exec() when suspending via sysfs"
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3057
+ +Timeout waiting for capabilities on handle 0
+
+so it's rather painful to find what the actual error is.  I think
+that besides this change, we should also change the testing framework
+to show stderr at least in case of test failure, and especially when
+the failure occurs at the very beginning when we're checking for
+sanity.
+
+Fixes: c0ddcb2cbc146e "tests: Add iotest mirror-sparse for recent patches"
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- qga/commands-linux.c | 14 ++++++++------
- 1 file changed, 8 insertions(+), 6 deletions(-)
+ tests/qemu-iotests/tests/mirror-sparse | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/qga/commands-linux.c b/qga/commands-linux.c
-index 9e8a934b9a..9dc0c82503 100644
---- a/qga/commands-linux.c
-+++ b/qga/commands-linux.c
-@@ -1400,20 +1400,22 @@ static bool linux_sys_state_supports_mode(SuspendMode mode, Error **errp)
+diff --git a/tests/qemu-iotests/tests/mirror-sparse b/tests/qemu-iotests/tests/mirror-sparse
+index cfcaa600ab..19843a622c 100755
+--- a/tests/qemu-iotests/tests/mirror-sparse
++++ b/tests/qemu-iotests/tests/mirror-sparse
+@@ -41,6 +41,7 @@ _supported_fmt qcow2 raw  # Format of the source. dst is always raw file
+ _supported_proto file
+ _supported_os Linux
+ _require_disk_usage
++_require_o_direct
  
- static void linux_sys_state_suspend(SuspendMode mode, Error **errp)
- {
--    g_autoptr(GError) local_gerr = NULL;
-     const char *sysfile_strs[3] = {"disk", "mem", NULL};
-     const char *sysfile_str = sysfile_strs[mode];
-+    int fd;
- 
-     if (!sysfile_str) {
-         error_setg(errp, "unknown guest suspend mode");
-         return;
-     }
- 
--    if (!g_file_set_contents(LINUX_SYS_STATE_FILE, sysfile_str,
--                             -1, &local_gerr)) {
--        error_setg(errp, "suspend: cannot write to '%s': %s",
--                   LINUX_SYS_STATE_FILE, local_gerr->message);
--        return;
-+    fd = open(LINUX_SYS_STATE_FILE, O_WRONLY);
-+    if (fd < 0 || write(fd, sysfile_str, strlen(sysfile_str)) < 0) {
-+        error_setg(errp, "suspend: cannot write to '%s': %m",
-+                   LINUX_SYS_STATE_FILE);
-+    }
-+    if (fd >= 0) {
-+        close(fd);
-     }
- }
- 
+ echo
+ echo "=== Initial image setup ==="
 -- 
 2.47.2
 
