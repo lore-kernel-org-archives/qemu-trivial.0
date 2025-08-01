@@ -4,66 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69341C83F26
-	for <qemu-trivial@archiver.kernel.org>; Wed, 30 Jul 2025 12:59:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C34F0C87FD2
+	for <qemu-trivial@archiver.kernel.org>; Fri,  1 Aug 2025 06:02:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1uh6Ns-0002BS-6s; Wed, 30 Jul 2025 08:58:17 -0400
+	id 1uhiqy-0005pN-UZ; Fri, 01 Aug 2025 02:02:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1uh5Gm-0005Uj-BQ
- for qemu-trivial@nongnu.org; Wed, 30 Jul 2025 07:47:08 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uhiqF-00057e-Np
+ for qemu-trivial@nongnu.org; Fri, 01 Aug 2025 02:02:11 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1uh5Gg-0007kb-7V
- for qemu-trivial@nongnu.org; Wed, 30 Jul 2025 07:46:51 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1uhiqD-0004He-T1
+ for qemu-trivial@nongnu.org; Fri, 01 Aug 2025 02:02:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1753876003;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=RFk5n0dVuGfabHz2QjDPk2QRVP3F3OpgWK2xMxOdqwY=;
- b=Q4HZASlBCjBP1giL9RaoapHV5vhlPO7Mwc6G54lizVaqqzIVm1KDbsZn6H6GoQLUwLp68Y
- T0032YiicfI6pfX432YNxH+RBxKWGgmPFt2dmQ6JJgEwxLBjX/y0UhPX1Pow4zfJCUIIph
- 05ZhDw8IdlBW7OFrJ2Ob0pcmZ0ewsDI=
+ s=mimecast20190719; t=1754028123;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=xY/vyLWMiPt1HzBTJL1PdPZ9hLpuMMxqRkwmaKEayzQ=;
+ b=EJcrq5mM8v+5r7l7AQfn4C2eL96PgS9PEKz4VDqxw9CEhUnGEzMkzR4auefOmAlwhJU5eV
+ wPzly0SxIAQ1ZDxzbfVB3BnytThJjX84z4MhOIXeJfFKeZXEQY2jsArFE0KtJ0Z1yEsMA0
+ IsPAXDfCBcUR/HYnpc2Kkaz82lSIlQo=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-528-DXDQ3ftXNNeMejvFA0MExw-1; Wed,
- 30 Jul 2025 07:46:41 -0400
-X-MC-Unique: DXDQ3ftXNNeMejvFA0MExw-1
-X-Mimecast-MFC-AGG-ID: DXDQ3ftXNNeMejvFA0MExw_1753876000
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-584-Llgl-wwGPvmi-4sA10s5LQ-1; Fri,
+ 01 Aug 2025 02:01:59 -0400
+X-MC-Unique: Llgl-wwGPvmi-4sA10s5LQ-1
+X-Mimecast-MFC-AGG-ID: Llgl-wwGPvmi-4sA10s5LQ_1754028118
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3CCA91800261; Wed, 30 Jul 2025 11:46:40 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.92])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EFA421800286; Wed, 30 Jul 2025 11:46:37 +0000 (UTC)
-Date: Wed, 30 Jul 2025 12:46:34 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Michael Roth <michael.roth@amd.com>,
- Kostiantyn Kostiuk <kkostiuk@redhat.com>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH v2] qga: Fix ubsan warning
-Message-ID: <aIoGGtrNZYjCfmk2@redhat.com>
-References: <20250730072709.27077-1-thuth@redhat.com>
+ id 0257E18002A5; Fri,  1 Aug 2025 06:01:58 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.44.32.37])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id D80B51800D86; Fri,  1 Aug 2025 06:01:53 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Song Gao <gaosong@loongson.cn>, Bibo Mao <maobibo@loongson.cn>,
+ qemu-devel@nongnu.org
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] hw/intc/loongarch_pch_pic: Fix ubsan warning and endianness
+ issue
+Date: Fri,  1 Aug 2025 08:01:52 +0200
+Message-ID: <20250801060152.22224-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20250730072709.27077-1-thuth@redhat.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -71,8 +64,8 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,37 +78,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Wed, Jul 30, 2025 at 09:27:09AM +0200, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
-> 
-> When compiling QEMU with --enable-ubsan there is a undefined behavior
-> warning when running "make check":
-> 
->  .../qga/commands-linux.c:452:15: runtime error: applying non-zero offset 5 to null pointer
->  #0 0x55ea7b89450c in build_guest_fsinfo_for_pci_dev ..../qga/commands-linux.c:452:15
-> 
-> Fix it by avoiding the additional pointer variable here and use an
-> "offset" integer variable instead.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  v2: Use an integer offset variable instead for checking for a NULL pointer
-> 
->  qga/commands-linux.c | 10 +++++-----
->  1 file changed, 5 insertions(+), 5 deletions(-)
+From: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+When booting the Linux kernel from tests/functional/test_loongarch64_virt.py
+with a QEMU that has been compiled with --enable-ubsan, there is
+a warning like this:
 
+ .../hw/intc/loongarch_pch_pic.c:171:46: runtime error: index 512 out of
+  bounds for type 'uint8_t[64]' (aka 'unsigned char[64]')
+ SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
+  .../hw/intc/loongarch_pch_pic.c:171:46
+ .../hw/intc/loongarch_pch_pic.c:175:45: runtime error: index 256 out of
+  bounds for type 'uint8_t[64]' (aka 'unsigned char[64]')
+ SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
+  .../hw/intc/loongarch_pch_pic.c:175:45
 
-With regards,
-Daniel
+It happens because "addr" is added first before substracting the base
+(PCH_PIC_HTMSI_VEC or PCH_PIC_ROUTE_ENTRY).
+Additionally, this code looks like it is not endianness safe, since
+it uses a 64-bit pointer to write values into an array of 8-bit values.
+
+Thus rework the code to use the stq_le_p / ldq_le_p helpers here
+and make sure that we do not create pointers with undefined behavior
+by accident.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/intc/loongarch_pch_pic.c | 15 ++++++++-------
+ 1 file changed, 8 insertions(+), 7 deletions(-)
+
+diff --git a/hw/intc/loongarch_pch_pic.c b/hw/intc/loongarch_pch_pic.c
+index c4b242dbf41..32f01aabf0e 100644
+--- a/hw/intc/loongarch_pch_pic.c
++++ b/hw/intc/loongarch_pch_pic.c
+@@ -110,10 +110,10 @@ static uint64_t pch_pic_read(void *opaque, hwaddr addr, uint64_t field_mask)
+         val = s->int_polarity;
+         break;
+     case PCH_PIC_HTMSI_VEC ... PCH_PIC_HTMSI_VEC_END:
+-        val = *(uint64_t *)(s->htmsi_vector + addr - PCH_PIC_HTMSI_VEC);
++        val = ldq_le_p(&s->htmsi_vector[addr - PCH_PIC_HTMSI_VEC]);
+         break;
+     case PCH_PIC_ROUTE_ENTRY ... PCH_PIC_ROUTE_ENTRY_END:
+-        val = *(uint64_t *)(s->route_entry + addr - PCH_PIC_ROUTE_ENTRY);
++        val = ldq_le_p(&s->route_entry[addr - PCH_PIC_ROUTE_ENTRY]);
+         break;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR,
+@@ -129,7 +129,8 @@ static void pch_pic_write(void *opaque, hwaddr addr, uint64_t value,
+ {
+     LoongArchPICCommonState *s = LOONGARCH_PIC_COMMON(opaque);
+     uint32_t offset;
+-    uint64_t old, mask, data, *ptemp;
++    uint64_t old, mask, data;
++    void *ptemp;
+ 
+     offset = addr & 7;
+     addr -= offset;
+@@ -168,12 +169,12 @@ static void pch_pic_write(void *opaque, hwaddr addr, uint64_t value,
+         s->int_polarity = (s->int_polarity & ~mask) | data;
+         break;
+     case PCH_PIC_HTMSI_VEC ... PCH_PIC_HTMSI_VEC_END:
+-        ptemp = (uint64_t *)(s->htmsi_vector + addr - PCH_PIC_HTMSI_VEC);
+-        *ptemp = (*ptemp & ~mask) | data;
++        ptemp = &s->htmsi_vector[addr - PCH_PIC_HTMSI_VEC];
++        stq_le_p(ptemp, (ldq_le_p(ptemp) & ~mask) | data);
+         break;
+     case PCH_PIC_ROUTE_ENTRY ... PCH_PIC_ROUTE_ENTRY_END:
+-        ptemp = (uint64_t *)(s->route_entry + addr - PCH_PIC_ROUTE_ENTRY);
+-        *ptemp = (*ptemp & ~mask) | data;
++        ptemp = (uint64_t *)&s->route_entry[addr - PCH_PIC_ROUTE_ENTRY];
++        stq_le_p(ptemp, (ldq_le_p(ptemp) & ~mask) | data);
+         break;
+     default:
+         qemu_log_mask(LOG_GUEST_ERROR,
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.50.1
 
 
