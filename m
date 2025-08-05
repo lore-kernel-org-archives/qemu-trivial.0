@@ -4,71 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB3AEC87FCB
-	for <qemu-trivial@archiver.kernel.org>; Fri,  1 Aug 2025 13:43:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB93C87FD1
+	for <qemu-trivial@archiver.kernel.org>; Tue,  5 Aug 2025 17:24:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1uhq2a-0008JU-DU; Fri, 01 Aug 2025 09:43:21 -0400
+	id 1ujLOA-0001ze-MX; Tue, 05 Aug 2025 13:23:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <maobibo@loongson.cn>)
- id 1uhjUf-000848-0V; Fri, 01 Aug 2025 02:43:55 -0400
-Received: from mail.loongson.cn ([114.242.206.163])
- by eggs.gnu.org with esmtp (Exim 4.90_1)
- (envelope-from <maobibo@loongson.cn>)
- id 1uhjUb-00044D-Nq; Fri, 01 Aug 2025 02:43:52 -0400
-Received: from loongson.cn (unknown [10.20.42.62])
- by gateway (Coremail) with SMTP id _____8Axx2kaYoxoipI2AQ--.8245S3;
- Fri, 01 Aug 2025 14:43:38 +0800 (CST)
-Received: from [10.20.42.62] (unknown [10.20.42.62])
- by front1 (Coremail) with SMTP id qMiowJCxdOQWYoxo77AwAA--.46386S3;
- Fri, 01 Aug 2025 14:43:36 +0800 (CST)
-Subject: Re: [PATCH] hw/intc/loongarch_pch_pic: Fix ubsan warning and
- endianness issue
-To: Thomas Huth <thuth@redhat.com>, Song Gao <gaosong@loongson.cn>,
- qemu-devel@nongnu.org
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org
-References: <20250801060152.22224-1-thuth@redhat.com>
-From: Bibo Mao <maobibo@loongson.cn>
-Message-ID: <553df0b0-5997-d1a9-c981-02117c378fb2@loongson.cn>
-Date: Fri, 1 Aug 2025 14:41:52 +0800
-User-Agent: Mozilla/5.0 (X11; Linux loongarch64; rv:68.0) Gecko/20100101
- Thunderbird/68.7.0
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujLNj-0001vM-Fe
+ for qemu-trivial@nongnu.org; Tue, 05 Aug 2025 13:23:25 -0400
+Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujLNg-0002UR-Ir
+ for qemu-trivial@nongnu.org; Tue, 05 Aug 2025 13:23:23 -0400
+Received: by mail-wm1-x330.google.com with SMTP id
+ 5b1f17b1804b1-458b49c98a7so27027905e9.1
+ for <qemu-trivial@nongnu.org>; Tue, 05 Aug 2025 10:23:19 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1754414598; x=1755019398; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=IZv9bGcWL6z0iBVfwUWSebX5ZqCCCDM9v3eDId9H3OU=;
+ b=Cfdgsw2QSNRDkTFPfJsWDQ8djaZ53LU7JybVkFIaMZAMZn5xg7Vu1K7mm83sqlfvzL
+ +Q0QQYRZPc5OUNwJh+5j2bowYqpC1NqXMlSRhG8ydUXPnbzAxSvuF6C4GL4MJdQ++Dtb
+ sDuzlkZu4bOlIQKy9bb3SRoCPHULo9VqLZXkiktNq/WvQcID6URv1ir6mMcVrLGrOe2j
+ gRF9hRD3JUyzpjSLPCB9pTTV/uKp/jqkvrBO9zrCVORCBIox4ShlC38xOdkCybNcDC9C
+ kmi6V3PWE2ByK4xfj0mZJSXov3jXGFLHctqU3HMtossq/dlN/I/6wbDw4I62BpBzIxzf
+ i30Q==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754414598; x=1755019398;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=IZv9bGcWL6z0iBVfwUWSebX5ZqCCCDM9v3eDId9H3OU=;
+ b=C1ujy8yK8AzSw73DqJCT0TlUrD8hoS6yLENVrNG3biT6mo7EjBmVmMQuWViUY06Uq8
+ 7JaNO1Y5e8rsfJDc8Y3GxVgfoHuIP7FW+9NGKB39XDJFb6r3L98F8xzk0fGJEFoRt2vI
+ F3gK6wEVyFB5lovdYjAyTytL82DA/8fRS9mJ4Tax6Cj1iL3DWXeKyJGCUHI88FvtYqWl
+ GVM58In78eSRqDjJZ/CWaUNzdU2B2fVvoQyTAk/FLyZp+C+nt49QlP72dlmNvXJ2Cugi
+ c0QXXyHyvkSqBT2Mpj/+2cWM4Tl6tteH7FAWdGOPv1pqFP+VkklBKA0bXV5kOFT7BqAw
+ cTgw==
+X-Gm-Message-State: AOJu0YypDpY1fFYO3T35rZfSovYZrYPJbjWUxHkCOjUr5qP6/2tFax1Z
+ /7QRtYKPgoFA1QgioR/Vhzv9ylpRNwTmF43rT1K3g5r9ynuVY50CDX8jlmkhx5jp6dw=
+X-Gm-Gg: ASbGncs0EkKXHLZi3PP8WFGKlH8ccambjhjUFUBjB7/aUT4HS78Gsbu3mdjRtlth7AC
+ EhAv1HdceOhjKb/xVZwjomJkuhHO/DK8n4xyLRNZhrY4ae68XcNxRdO6cylhSJqiQVYHMVcS61n
+ GnNJp3UP5Bb82q8iuHBO0Xq6is+P26CY8lkPm+MtQAB9bOVogKZihvDmHI1TfLtzw3wod+zz3sp
+ uXpPghWSAbJWpsp/xQocI6CRUUX2G8ajUT8OidsKy745a4MCI54Dl8DDh3Qii6xZba1Og/t7I+A
+ GmTQvbqkIVCqZ4BwkGXynX2Oi3DweRyUsfSlGHPVWOTY8EimG+G4J2wGdkkIfOTKTqcHxrCF0Cb
+ iQH6U9o7YiNrCzdpSmYkgMAbP00EdnvvtGrA9mr7HQR+6ZMLNcnxVIacqDTap+f6OZQ==
+X-Google-Smtp-Source: AGHT+IHai8LtRlHPcDbYxa0cYWufwqfOPGunSJuvtV1fAs0J7QAxLeW55yH7q/BSN+OUoLhdZ12jAw==
+X-Received: by 2002:a05:600c:35c8:b0:459:da89:b06 with SMTP id
+ 5b1f17b1804b1-459da890c07mr79727205e9.16.1754414598436; 
+ Tue, 05 Aug 2025 10:23:18 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-458953cfd10sm274257275e9.21.2025.08.05.10.23.17
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 05 Aug 2025 10:23:17 -0700 (PDT)
+Message-ID: <7893945e-6287-4f32-9e93-f28c39c7bdc8@linaro.org>
+Date: Tue, 5 Aug 2025 19:23:16 +0200
 MIME-Version: 1.0
-In-Reply-To: <20250801060152.22224-1-thuth@redhat.com>
-Content-Type: text/plain; charset=utf-8; format=flowed
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH-for-10.1] tests/qemu-iotests/tests/mirror-sparse: skip if
+ O_DIRECT is not supported
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
+ qemu-block@nongnu.org, Eric Blake <eblake@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>
+Cc: qemu-trivial@nongnu.org
+References: <20250801122850.27632-1-mjt@tls.msk.ru>
 Content-Language: en-US
-Content-Transfer-Encoding: 8bit
-X-CM-TRANSID: qMiowJCxdOQWYoxo77AwAA--.46386S3
-X-CM-SenderInfo: xpdruxter6z05rqj20fqof0/
-X-Coremail-Antispam: 1Uk129KBj93XoWxCF47Xr1rZr1rCrW7tryrAFc_yoW5uF4fpF
- W3CryYyr4kJFZFgas7Aw1UZrW7Wrn7W34Ygan0k340k39xZrykZFyUJa97ZFyYk348Jr1U
- XF45Ww1Y9a47WabCm3ZEXasCq-sJn29KB7ZKAUJUUUU8529EdanIXcx71UUUUU7KY7ZEXa
- sCq-sGcSsGvfJ3Ic02F40EFcxC0VAKzVAqx4xG6I80ebIjqfuFe4nvWSU5nxnvy29KBjDU
- 0xBIdaVrnRJUUUvYb4IE77IF4wAFF20E14v26r1j6r4UM7CY07I20VC2zVCF04k26cxKx2
- IYs7xG6rWj6s0DM7CIcVAFz4kK6r106r15M28lY4IEw2IIxxk0rwA2F7IY1VAKz4vEj48v
- e4kI8wA2z4x0Y4vE2Ix0cI8IcVAFwI0_Gr0_Xr1l84ACjcxK6xIIjxv20xvEc7CjxVAFwI
- 0_Gr0_Cr1l84ACjcxK6I8E87Iv67AKxVWxJr0_GcWl84ACjcxK6I8E87Iv6xkF7I0E14v2
- 6F4UJVW0owAS0I0E0xvYzxvE52x082IY62kv0487Mc804VCY07AIYIkI8VC2zVCFFI0UMc
- 02F40EFcxC0VAKzVAqx4xG6I80ewAv7VC0I7IYx2IY67AKxVWUJVWUGwAv7VC2z280aVAF
- wI0_Jr0_Gr1lOx8S6xCaFVCjc4AY6r1j6r4UM4x0Y48IcVAKI48JMxk0xIA0c2IEe2xFo4
- CEbIxvr21l42xK82IYc2Ij64vIr41l4I8I3I0E4IkC6x0Yz7v_Jr0_Gr1lx2IqxVAqx4xG
- 67AKxVWUJVWUGwC20s026x8GjcxK67AKxVWUGVWUWwC2zVAF1VAY17CE14v26r126r1DMI
- IYrxkI7VAKI48JMIIF0xvE2Ix0cI8IcVAFwI0_Jr0_JF4lIxAIcVC0I7IYx2IY6xkF7I0E
- 14v26r1j6r4UMIIF0xvE42xK8VAvwI8IcIk0rVWUJVWUCwCI42IY6I8E87Iv67AKxVWUJV
- W8JwCI42IY6I8E87Iv6xkF7I0E14v26r1j6r4UYxBIdaVFxhVjvjDU0xZFpf9x07j8yCJU
- UUUU=
-Received-SPF: pass client-ip=114.242.206.163; envelope-from=maobibo@loongson.cn;
- helo=mail.loongson.cn
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250801122850.27632-1-mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::330;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, NICE_REPLY_A=-0.789,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Fri, 01 Aug 2025 09:36:10 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,83 +102,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-
-
-On 2025/8/1 下午2:01, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
+On 1/8/25 14:28, Michael Tokarev wrote:
+> This test uses cache.direct=true, but does not check if O_DIRECT
+> is supported by the underlying filesystem, and fails, for example,
+> on a tmpfs (which is rather common on various auto-builders, in CI,
+> etc).
 > 
-> When booting the Linux kernel from tests/functional/test_loongarch64_virt.py
-> with a QEMU that has been compiled with --enable-ubsan, there is
-> a warning like this:
+> Fix this by using _require_o_direct.
 > 
->   .../hw/intc/loongarch_pch_pic.c:171:46: runtime error: index 512 out of
->    bounds for type 'uint8_t[64]' (aka 'unsigned char[64]')
->   SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
->    .../hw/intc/loongarch_pch_pic.c:171:46
->   .../hw/intc/loongarch_pch_pic.c:175:45: runtime error: index 256 out of
->    bounds for type 'uint8_t[64]' (aka 'unsigned char[64]')
->   SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
->    .../hw/intc/loongarch_pch_pic.c:175:45
+> This example shows where our testing framework is significantly
+> lacking.  In this test, qemu produces an error message on stderr
+> at startup, because it can't use O_DIRECT mode.  But this error
+> message is not shown anywhere at all, even when running this test
+> separately outside of meson framework, - stderr is completely
+> hidden, and the only error we're getting is
 > 
-> It happens because "addr" is added first before substracting the base
-> (PCH_PIC_HTMSI_VEC or PCH_PIC_ROUTE_ENTRY).
-> Additionally, this code looks like it is not endianness safe, since
-> it uses a 64-bit pointer to write values into an array of 8-bit values.
+>   +Timeout waiting for capabilities on handle 0
 > 
-> Thus rework the code to use the stq_le_p / ldq_le_p helpers here
-> and make sure that we do not create pointers with undefined behavior
-> by accident.
+> so it's rather painful to find what the actual error is.  I think
+> that besides this change, we should also change the testing framework
+> to show stderr at least in case of test failure, and especially when
+> the failure occurs at the very beginning when we're checking for
+> sanity.
 > 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> Fixes: c0ddcb2cbc146e "tests: Add iotest mirror-sparse for recent patches"
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 > ---
->   hw/intc/loongarch_pch_pic.c | 15 ++++++++-------
->   1 file changed, 8 insertions(+), 7 deletions(-)
+>   tests/qemu-iotests/tests/mirror-sparse | 1 +
+>   1 file changed, 1 insertion(+)
 > 
-> diff --git a/hw/intc/loongarch_pch_pic.c b/hw/intc/loongarch_pch_pic.c
-> index c4b242dbf41..32f01aabf0e 100644
-> --- a/hw/intc/loongarch_pch_pic.c
-> +++ b/hw/intc/loongarch_pch_pic.c
-> @@ -110,10 +110,10 @@ static uint64_t pch_pic_read(void *opaque, hwaddr addr, uint64_t field_mask)
->           val = s->int_polarity;
->           break;
->       case PCH_PIC_HTMSI_VEC ... PCH_PIC_HTMSI_VEC_END:
-> -        val = *(uint64_t *)(s->htmsi_vector + addr - PCH_PIC_HTMSI_VEC);
-> +        val = ldq_le_p(&s->htmsi_vector[addr - PCH_PIC_HTMSI_VEC]);
->           break;
->       case PCH_PIC_ROUTE_ENTRY ... PCH_PIC_ROUTE_ENTRY_END:
-> -        val = *(uint64_t *)(s->route_entry + addr - PCH_PIC_ROUTE_ENTRY);
-> +        val = ldq_le_p(&s->route_entry[addr - PCH_PIC_ROUTE_ENTRY]);
->           break;
->       default:
->           qemu_log_mask(LOG_GUEST_ERROR,
-> @@ -129,7 +129,8 @@ static void pch_pic_write(void *opaque, hwaddr addr, uint64_t value,
->   {
->       LoongArchPICCommonState *s = LOONGARCH_PIC_COMMON(opaque);
->       uint32_t offset;
-> -    uint64_t old, mask, data, *ptemp;
-> +    uint64_t old, mask, data;
-> +    void *ptemp;
+> diff --git a/tests/qemu-iotests/tests/mirror-sparse b/tests/qemu-iotests/tests/mirror-sparse
+> index cfcaa600ab..19843a622c 100755
+> --- a/tests/qemu-iotests/tests/mirror-sparse
+> +++ b/tests/qemu-iotests/tests/mirror-sparse
+> @@ -41,6 +41,7 @@ _supported_fmt qcow2 raw  # Format of the source. dst is always raw file
+>   _supported_proto file
+>   _supported_os Linux
+>   _require_disk_usage
+> +_require_o_direct
+
+Could the correct use be:
+
+   _supported_cache_modes none directsync
+
+?
+
 >   
->       offset = addr & 7;
->       addr -= offset;
-> @@ -168,12 +169,12 @@ static void pch_pic_write(void *opaque, hwaddr addr, uint64_t value,
->           s->int_polarity = (s->int_polarity & ~mask) | data;
->           break;
->       case PCH_PIC_HTMSI_VEC ... PCH_PIC_HTMSI_VEC_END:
-> -        ptemp = (uint64_t *)(s->htmsi_vector + addr - PCH_PIC_HTMSI_VEC);
-> -        *ptemp = (*ptemp & ~mask) | data;
-> +        ptemp = &s->htmsi_vector[addr - PCH_PIC_HTMSI_VEC];
-> +        stq_le_p(ptemp, (ldq_le_p(ptemp) & ~mask) | data);
->           break;
->       case PCH_PIC_ROUTE_ENTRY ... PCH_PIC_ROUTE_ENTRY_END:
-> -        ptemp = (uint64_t *)(s->route_entry + addr - PCH_PIC_ROUTE_ENTRY);
-> -        *ptemp = (*ptemp & ~mask) | data;
-> +        ptemp = (uint64_t *)&s->route_entry[addr - PCH_PIC_ROUTE_ENTRY];
-> +        stq_le_p(ptemp, (ldq_le_p(ptemp) & ~mask) | data);
->           break;
->       default:
->           qemu_log_mask(LOG_GUEST_ERROR,
-> 
-Reviewed-by: Bibo Mao <maobibo@loongson.cn>
+>   echo
+>   echo "=== Initial image setup ==="
 
 
