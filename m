@@ -4,89 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DB93C87FD1
-	for <qemu-trivial@archiver.kernel.org>; Tue,  5 Aug 2025 17:24:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4A2FBC87FCB
+	for <qemu-trivial@archiver.kernel.org>; Tue,  5 Aug 2025 17:57:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ujLOA-0001ze-MX; Tue, 05 Aug 2025 13:23:50 -0400
+	id 1ujLu0-0000Bf-5E; Tue, 05 Aug 2025 13:56:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujLNj-0001vM-Fe
- for qemu-trivial@nongnu.org; Tue, 05 Aug 2025 13:23:25 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujLNg-0002UR-Ir
- for qemu-trivial@nongnu.org; Tue, 05 Aug 2025 13:23:23 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-458b49c98a7so27027905e9.1
- for <qemu-trivial@nongnu.org>; Tue, 05 Aug 2025 10:23:19 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754414598; x=1755019398; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=IZv9bGcWL6z0iBVfwUWSebX5ZqCCCDM9v3eDId9H3OU=;
- b=Cfdgsw2QSNRDkTFPfJsWDQ8djaZ53LU7JybVkFIaMZAMZn5xg7Vu1K7mm83sqlfvzL
- +Q0QQYRZPc5OUNwJh+5j2bowYqpC1NqXMlSRhG8ydUXPnbzAxSvuF6C4GL4MJdQ++Dtb
- sDuzlkZu4bOlIQKy9bb3SRoCPHULo9VqLZXkiktNq/WvQcID6URv1ir6mMcVrLGrOe2j
- gRF9hRD3JUyzpjSLPCB9pTTV/uKp/jqkvrBO9zrCVORCBIox4ShlC38xOdkCybNcDC9C
- kmi6V3PWE2ByK4xfj0mZJSXov3jXGFLHctqU3HMtossq/dlN/I/6wbDw4I62BpBzIxzf
- i30Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754414598; x=1755019398;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=IZv9bGcWL6z0iBVfwUWSebX5ZqCCCDM9v3eDId9H3OU=;
- b=C1ujy8yK8AzSw73DqJCT0TlUrD8hoS6yLENVrNG3biT6mo7EjBmVmMQuWViUY06Uq8
- 7JaNO1Y5e8rsfJDc8Y3GxVgfoHuIP7FW+9NGKB39XDJFb6r3L98F8xzk0fGJEFoRt2vI
- F3gK6wEVyFB5lovdYjAyTytL82DA/8fRS9mJ4Tax6Cj1iL3DWXeKyJGCUHI88FvtYqWl
- GVM58In78eSRqDjJZ/CWaUNzdU2B2fVvoQyTAk/FLyZp+C+nt49QlP72dlmNvXJ2Cugi
- c0QXXyHyvkSqBT2Mpj/+2cWM4Tl6tteH7FAWdGOPv1pqFP+VkklBKA0bXV5kOFT7BqAw
- cTgw==
-X-Gm-Message-State: AOJu0YypDpY1fFYO3T35rZfSovYZrYPJbjWUxHkCOjUr5qP6/2tFax1Z
- /7QRtYKPgoFA1QgioR/Vhzv9ylpRNwTmF43rT1K3g5r9ynuVY50CDX8jlmkhx5jp6dw=
-X-Gm-Gg: ASbGncs0EkKXHLZi3PP8WFGKlH8ccambjhjUFUBjB7/aUT4HS78Gsbu3mdjRtlth7AC
- EhAv1HdceOhjKb/xVZwjomJkuhHO/DK8n4xyLRNZhrY4ae68XcNxRdO6cylhSJqiQVYHMVcS61n
- GnNJp3UP5Bb82q8iuHBO0Xq6is+P26CY8lkPm+MtQAB9bOVogKZihvDmHI1TfLtzw3wod+zz3sp
- uXpPghWSAbJWpsp/xQocI6CRUUX2G8ajUT8OidsKy745a4MCI54Dl8DDh3Qii6xZba1Og/t7I+A
- GmTQvbqkIVCqZ4BwkGXynX2Oi3DweRyUsfSlGHPVWOTY8EimG+G4J2wGdkkIfOTKTqcHxrCF0Cb
- iQH6U9o7YiNrCzdpSmYkgMAbP00EdnvvtGrA9mr7HQR+6ZMLNcnxVIacqDTap+f6OZQ==
-X-Google-Smtp-Source: AGHT+IHai8LtRlHPcDbYxa0cYWufwqfOPGunSJuvtV1fAs0J7QAxLeW55yH7q/BSN+OUoLhdZ12jAw==
-X-Received: by 2002:a05:600c:35c8:b0:459:da89:b06 with SMTP id
- 5b1f17b1804b1-459da890c07mr79727205e9.16.1754414598436; 
- Tue, 05 Aug 2025 10:23:18 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-458953cfd10sm274257275e9.21.2025.08.05.10.23.17
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 Aug 2025 10:23:17 -0700 (PDT)
-Message-ID: <7893945e-6287-4f32-9e93-f28c39c7bdc8@linaro.org>
-Date: Tue, 5 Aug 2025 19:23:16 +0200
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ujLts-00009T-Sg; Tue, 05 Aug 2025 13:56:36 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ujLtT-00028S-8M; Tue, 05 Aug 2025 13:56:16 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 95D3813EA4B;
+ Tue, 05 Aug 2025 20:55:44 +0300 (MSK)
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 723E225794F;
+ Tue,  5 Aug 2025 20:56:06 +0300 (MSK)
+Message-ID: <4f0a804d-d448-4dc0-97e1-20b3f669c8a2@tls.msk.ru>
+Date: Tue, 5 Aug 2025 20:56:06 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH-for-10.1] tests/qemu-iotests/tests/mirror-sparse: skip if
  O_DIRECT is not supported
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org,
- qemu-block@nongnu.org, Eric Blake <eblake@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, qemu-block@nongnu.org, Eric Blake
+ <eblake@redhat.com>, Kevin Wolf <kwolf@redhat.com>
 Cc: qemu-trivial@nongnu.org
 References: <20250801122850.27632-1-mjt@tls.msk.ru>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250801122850.27632-1-mjt@tls.msk.ru>
+ <7893945e-6287-4f32-9e93-f28c39c7bdc8@linaro.org>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ xsFNBGYpLkcBEACsajkUXU2lngbm6RyZuCljo19q/XjZTMikctzMoJnBGVSmFV66kylUghxs
+ HDQQF2YZJbnhSVt/mP6+V7gG6MKR5gYXYxLmypgu2lJdqelrtGf1XtMrobG6kuKFiD8OqV6l
+ 2M5iyOZT3ydIFOUX0WB/B9Lz9WcQ6zYO9Ohm92tiWWORCqhAnwZy4ua/nMZW3RgO7bM6GZKt
+ /SFIorK9rVqzv40D6KNnSyeWfqf4WN3EvEOozMfWrXbEqA7kvd6ShjJoe1FzCEQ71Fj9dQHL
+ DZG+44QXvN650DqEtQ4RW9ozFk3Du9u8lbrXC5cqaCIO4dx4E3zxIddqf6xFfu4Oa5cotCM6
+ /4dgxDoF9udvmC36qYta+zuDsnAXrYSrut5RBb0moez/AR8HD/cs/dS360CLMrl67dpmA+XD
+ 7KKF+6g0RH46CD4cbj9c2egfoBOc+N5XYyr+6ejzeZNf40yjMZ9SFLrcWp4yQ7cpLsSz08lk
+ a0RBKTpNWJdblviPQaLW5gair3tyJR+J1ER1UWRmKErm+Uq0VgLDBDQoFd9eqfJjCwuWZECp
+ z2JUO+zBuGoKDzrDIZH2ErdcPx3oSlVC2VYOk6H4cH1CWr9Ri8i91ClivRAyVTbs67ha295B
+ y4XnxIVaZU+jJzNgLvrXrkI1fTg4FJSQfN4W5BLCxT4sq8BDtwARAQABzSBNaWNoYWVsIFRv
+ a2FyZXYgPG1qdEB0bHMubXNrLnJ1PsLBlAQTAQoAPhYhBJ2L4U4/Kp3XkZko8WGtPZjs3yyO
+ BQJmKS5HAhsDBQkSzAMABQsJCAcCBhUKCQgLAgQWAgMBAh4BAheAAAoJEGGtPZjs3yyOZSAP
+ /ibilK1gbHqEI2zR2J59Dc0tjtbByVmQ8IMh0SYU3j1jeUoku2UCgdnGKpwvLXtwZINgdl6Q
+ cEaDBRX6drHLJFAi/sdgwVgdnDxaWVJO/ZIN/uJI0Tx7+FSAk8CWSa4IWUOzPNmtrDfb4z6v
+ G36rppY8bTNKbX6nWFXuv2LXQr7g6+kKnbwv4QFpD+UFF1CrLm3byMq4ikdBXpZx030qBL61
+ b7PrfXcBLao0357kWGH6C2Zu4wBnDUJwGi68pI5rzSRAFyAQsE89sjLdR1yFoBH8NiFnAQXP
+ LA8Am9FMsC7D/bi/kwKTJdcZvzdGU1HG6tJvXLWC+nqGpJNBzRdDpjqtxNuL76vVd/JbsFMS
+ JchLN+01fNQ5FHglvkd6md7vO+ULq+r9An5hMiDoRbYVUOBN8uiYNk+qKbdgSfbhsgPURqHi
+ 1bXkgMeMasqWbGMe7iBW/YH2ePfZ6HuKLNQDCkiWZYPQZvyXHvQHjuJJ5+US81tkqM+Q6Snq
+ 0L/O/LD0qLlbinHrcx0abg06VXBoYmGICJpf/3hhWQM4f+B/5w4vpl8q0B6Osz01pBUBfYak
+ CiYCNHMWWVZkW9ZnY7FWiiPOu8iE1s5oPYqBljk3FNUk04SDKMF5TxL87I2nMBnVnvp0ZAuY
+ k9ojiLqlhaKnZ1+zwmwmPmXzFSwlyMczPUMSzsFNBGYpLkcBEAC0mxV2j5M1x7GiXqxNVyWy
+ OnlWqJkbkoyMlWFSErf+RUYlC9qVGwUihgsgEhQMg0nJiSISmU3vsNEx5j0T13pTEyWXWBdS
+ XtZpNEW1lZ2DptoGg+6unpvxd2wn+dqzJqlpr4AY3vc95q4Za/NptWtSCsyJebZ7DxCCkzET
+ tzbbnCjW1souCETrMy+G916w1gJkz4V1jLlRMEEoJHLrr1XKDdJRk/34AqXPKOzILlWRFK6s
+ zOWa80/FNQV5cvjc2eN1HsTMFY5hjG3zOZb60WqwTisJwArjQbWKF49NLHp/6MpiSXIxF/FU
+ jcVYrEk9sKHN+pERnLqIjHA8023whDWvJide7f1V9lrVcFt0zRIhZOp0IAE86E3stSJhZRhY
+ xyIAx4dpDrw7EURLOhu+IXLeEJbtW89tp2Ydm7TVAt5iqBubpHpGTWV7hwPRQX2w2MBq1hCn
+ K5Xx79omukJisbLqG5xUCR1RZBUfBlYnArssIZSOpdJ9wWMK+fl5gn54cs+yziUYU3Tgk0fJ
+ t0DzQsgfd2JkxOEzJACjJWti2Gh3szmdgdoPEJH1Og7KeqbOu2mVCJm+2PrNlzCybOZuHOV5
+ +vSarkb69qg9nU+4ZGX1m+EFLDqVUt1g0SjY6QmM5yjGBA46G3dwTEV0/u5Wh7idNT0mRg8R
+ eP/62iTL55AM6QARAQABwsF8BBgBCgAmFiEEnYvhTj8qndeRmSjxYa09mOzfLI4FAmYpLkcC
+ GwwFCRLMAwAACgkQYa09mOzfLI53ag/+ITb3WW9iqvbjDueV1ZHwUXYvebUEyQV7BFofaJbJ
+ Sr7ek46iYdV4Jdosvq1FW+mzuzrhT+QzadEfYmLKrQV4EK7oYTyQ5hcch55eX00o+hyBHqM2
+ RR/B5HGLYsuyQNv7a08dAUmmi9eAktQ29IfJi+2Y+S1okAEkWFxCUs4EE8YinCrVergB/MG5
+ S7lN3XxITIaW00faKbqGtNqij3vNxua7UenN8NHNXTkrCgA+65clqYI3MGwpqkPnXIpTLGl+
+ wBI5S540sIjhgrmWB0trjtUNxe9QcTGHoHtLeGX9QV5KgzNKoUNZsyqh++CPXHyvcN3OFJXm
+ VUNRs/O3/b1capLdrVu+LPd6Zi7KAyWUqByPkK18+kwNUZvGsAt8WuVQF5telJ6TutfO8xqT
+ FUzuTAHE+IaRU8DEnBpqv0LJ4wqqQ2MeEtodT1icXQ/5EDtM7OTH231lJCR5JxXOnWPuG6el
+ YPkzzso6HT7rlapB5nulYmplJZSZ4RmE1ATZKf+wUPocDu6N10LtBNbwHWTT5NLtxNJAJAvl
+ ojis6H1kRWZE/n5buyPY2NYeyWfjjrerOYt3er55n4C1I88RSCTGeejVmXWuo65QD2epvzE6
+ 3GgKngeVm7shlp7+d3D3+fAAHTvulQQqV3jOodz+B4yzuZ7WljkNrmrWrH8aI4uA98c=
+In-Reply-To: <7893945e-6287-4f32-9e93-f28c39c7bdc8@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,53 +107,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 1/8/25 14:28, Michael Tokarev wrote:
-> This test uses cache.direct=true, but does not check if O_DIRECT
-> is supported by the underlying filesystem, and fails, for example,
-> on a tmpfs (which is rather common on various auto-builders, in CI,
-> etc).
-> 
-> Fix this by using _require_o_direct.
-> 
-> This example shows where our testing framework is significantly
-> lacking.  In this test, qemu produces an error message on stderr
-> at startup, because it can't use O_DIRECT mode.  But this error
-> message is not shown anywhere at all, even when running this test
-> separately outside of meson framework, - stderr is completely
-> hidden, and the only error we're getting is
-> 
->   +Timeout waiting for capabilities on handle 0
-> 
-> so it's rather painful to find what the actual error is.  I think
-> that besides this change, we should also change the testing framework
-> to show stderr at least in case of test failure, and especially when
-> the failure occurs at the very beginning when we're checking for
-> sanity.
-> 
-> Fixes: c0ddcb2cbc146e "tests: Add iotest mirror-sparse for recent patches"
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> ---
->   tests/qemu-iotests/tests/mirror-sparse | 1 +
->   1 file changed, 1 insertion(+)
-> 
-> diff --git a/tests/qemu-iotests/tests/mirror-sparse b/tests/qemu-iotests/tests/mirror-sparse
-> index cfcaa600ab..19843a622c 100755
-> --- a/tests/qemu-iotests/tests/mirror-sparse
-> +++ b/tests/qemu-iotests/tests/mirror-sparse
-> @@ -41,6 +41,7 @@ _supported_fmt qcow2 raw  # Format of the source. dst is always raw file
->   _supported_proto file
->   _supported_os Linux
->   _require_disk_usage
-> +_require_o_direct
+On 05.08.2025 20:23, Philippe Mathieu-Daudé wrote:
 
-Could the correct use be:
+>> diff --git a/tests/qemu-iotests/tests/mirror-sparse b/tests/qemu- 
+>> iotests/tests/mirror-sparse
+>> index cfcaa600ab..19843a622c 100755
+>> --- a/tests/qemu-iotests/tests/mirror-sparse
+>> +++ b/tests/qemu-iotests/tests/mirror-sparse
+>> @@ -41,6 +41,7 @@ _supported_fmt qcow2 raw  # Format of the source. 
+>> dst is always raw file
+>>   _supported_proto file
+>>   _supported_os Linux
+>>   _require_disk_usage
+>> +_require_o_direct
+> 
+> Could the correct use be:
+> 
+>    _supported_cache_modes none directsync
 
-   _supported_cache_modes none directsync
+Yes that works too.  I've no idea which is "better" - we've
+a bit too many options here, I think.  I'll change it to your
+suggestion.
 
-?
+Thanks,
 
->   
->   echo
->   echo "=== Initial image setup ==="
-
+/mjt
 
