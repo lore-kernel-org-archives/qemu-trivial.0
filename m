@@ -4,74 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 952A2C87FCB
-	for <qemu-trivial@archiver.kernel.org>; Tue,  5 Aug 2025 18:57:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5ADCC87FD1
+	for <qemu-trivial@archiver.kernel.org>; Wed,  6 Aug 2025 06:41:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ujMqO-0004v7-L3; Tue, 05 Aug 2025 14:57:04 -0400
+	id 1ujXqF-0007GW-0x; Wed, 06 Aug 2025 02:41:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1ujMqN-0004tD-Qj
- for qemu-trivial@nongnu.org; Tue, 05 Aug 2025 14:57:03 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1ujMqL-0002WM-D0
- for qemu-trivial@nongnu.org; Tue, 05 Aug 2025 14:57:03 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1754420220;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=H5jVk7S1ieIIic15Ul/woefn+M6w8sYZDNYuN6H+cWc=;
- b=PpSOu+AmQHEjYyvjOSxrL2fhZLkFVZpgTk7hl1bpMfz1sjx4fOI+DW1hByLctjRf/0b7Iu
- Hz6vfRX1ofaTaaUSDdOjIVNojv6+vd9KIXrIOGazRUN5q86igG2bWzqEWATyjKdpSws3SO
- LFjhzPg1ZQV3qyBm3rTXeCLw1Yfkh/A=
-Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-641-kf4CO8JyMbSnJ7lWwPe6cQ-1; Tue,
- 05 Aug 2025 14:56:56 -0400
-X-MC-Unique: kf4CO8JyMbSnJ7lWwPe6cQ-1
-X-Mimecast-MFC-AGG-ID: kf4CO8JyMbSnJ7lWwPe6cQ_1754420215
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 7567619560AD; Tue,  5 Aug 2025 18:56:55 +0000 (UTC)
-Received: from localhost (unknown [10.2.16.205])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id CF3303000199; Tue,  5 Aug 2025 18:56:53 +0000 (UTC)
-Date: Tue, 5 Aug 2025 14:56:52 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Michael Roth <michael.roth@amd.com>,
- Kostiantyn Kostiuk <kkostiuk@redhat.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH trivial] qga: correctly write to /sys/power/state on linux
-Message-ID: <20250805185652.GA21648@fedora>
-References: <20250801115316.6845-1-mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujXqD-0007Dl-BH
+ for qemu-trivial@nongnu.org; Wed, 06 Aug 2025 02:41:37 -0400
+Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujXqB-0003oh-PF
+ for qemu-trivial@nongnu.org; Wed, 06 Aug 2025 02:41:37 -0400
+Received: by mail-wm1-x336.google.com with SMTP id
+ 5b1f17b1804b1-458aee6e86aso31891025e9.3
+ for <qemu-trivial@nongnu.org>; Tue, 05 Aug 2025 23:41:35 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1754462494; x=1755067294; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=3Qt+eug0h86j0yWuF7BVqKm/dcYHS8LW1wSkDD2sulU=;
+ b=rBU9rwGcFyO6tUv9+1Ic89vfsYCNPwrLsX17TT/ZfvSlM+tpxO2Gv/94HjLbfE0BCx
+ seO9elTLCAkUx64pW/bIg8SPZ6m86PXyD50biJBy4XDMvq8wuFUvxTLXdJr70PkeSBgA
+ QVmXFw52nMo4qvGVHr5waBbijiuBpc6Vbesu6Lh3SbGQfGD4qYli+4kFUmnjVZPobumv
+ scagCt7IBVUfljvgY+Kgwdfrjo5m7BOHQIAVAvwPMrPdldpUkxc7RKkG/ngm/oFyHOnS
+ cQODtE08x/1WTeKv/bSIkzXWWw0UzAdO1mqWeRw/Jzmku1trUq70QGelN3Fngev3zqM7
+ oKWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1754462494; x=1755067294;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=3Qt+eug0h86j0yWuF7BVqKm/dcYHS8LW1wSkDD2sulU=;
+ b=ktYgXzYQd+Y0dgu4tC4hDDZOIkU7ez829y7udi3qW/AKKy9qi/8G3Qj71HyVFxcHHV
+ aRFQmxEWQtoQsFXn88p4wx8/VW1ehSSrwjsf8uYxam0u+q9Rog5ilCj5SvnsMuvDmtCo
+ QcTpXsZZ0Krj4+NoWtBlQu2uaJNPwb58YB1iY7v/oYoSrUKKk+EJr/sBal3y5AxUW7jz
+ rYYGbDjGmO6af19BkKRZ7UoHuTqioJqZSjg5aPVjyWc03blmGiAbYSxBMj9UaUDLE4Cd
+ +c5q4lX6YiwVXZR6zgsro0bmoC4QoZaDvioPA7r0/82zMAXOjsK5LdWqcjrk9HAzL+bb
+ BabQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVXat8QL3fOB/lieUA+8RPgQUIjr7c8g6cat9obJv4QdVYqLU2soLKML00GR6AIzJ90lNVrXXoBTwspOAg=@nongnu.org
+X-Gm-Message-State: AOJu0Yz+ZFJG/DEKLHlGROqrsuliv4dNOfcmiW65f25NmVtxeyO2CBCE
+ +UlBklPwT9hO0r1AyX7xGBamLzQz+Ty/tWsC+CzeWXtv+Y+7u/DxShgz90J3M55gtVY=
+X-Gm-Gg: ASbGncsiZ7cFKLdE3emzxsmXvMawkw7tyU4zpgjoQQWOWGwan74QCljwKHp/43+/SvN
+ waf3GUfkkadY6mwDg4YlrbuxmvzcuhY40sKkaEw10EGcXzlCKQbXUYuQXJasKjOPbyAnXnndXzW
+ GTKMg7Tqbq48XPd/unIZHcPYPGToCTHuMlUE/1H2fXAJvhCpSmfssIocErm+KMsmRscPFxcm3t9
+ hQaRIFdWCY8jVUqqKzKcXL8pw73zuKZkI4asbFSAiayaWP3uLE4f4yK2QRQpgJr3yn8KxKTP3xH
+ 6UAh7j0KuXyCI5zQ3r+bRiODlTESTEZbJ+79BYbzd1hvO/nCL9HIHu9FrSNTPNUntAXeQwhSfYY
+ 1RPbU7HwXLTY49wVM5hx8HLwZh4DafDJtLdoIm0qEf7ALXNxZNHCA6ukoP85u8844PA==
+X-Google-Smtp-Source: AGHT+IG41H7bClF4Q0juvT9pARqsJwyuwu8sMLVLbqKGhpFtZd7rwv+YMTcL3OAxfxMZaj1cHgtLdw==
+X-Received: by 2002:a05:600c:4f4c:b0:450:d37d:7c with SMTP id
+ 5b1f17b1804b1-459e95af955mr4331695e9.21.1754462493743; 
+ Tue, 05 Aug 2025 23:41:33 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-459e58400f5sm32839855e9.2.2025.08.05.23.41.32
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 05 Aug 2025 23:41:33 -0700 (PDT)
+Message-ID: <95cd67ab-fbaf-4720-bda0-25356ea6ba49@linaro.org>
+Date: Wed, 6 Aug 2025 08:41:32 +0200
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="RJABWiiByk+zHZ6y"
-Content-Disposition: inline
-In-Reply-To: <20250801115316.6845-1-mjt@tls.msk.ru>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/intc/loongarch_pch_pic: Fix ubsan warning and
+ endianness issue
+To: Thomas Huth <thuth@redhat.com>, Song Gao <gaosong@loongson.cn>,
+ Bibo Mao <maobibo@loongson.cn>, qemu-devel@nongnu.org
+Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org
+References: <20250801060152.22224-1-thuth@redhat.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20250801060152.22224-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::336;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,52 +103,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-
---RJABWiiByk+zHZ6y
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-Content-Transfer-Encoding: quoted-printable
-
-On Fri, Aug 01, 2025 at 02:53:14PM +0300, Michael Tokarev wrote:
-> Commit v9.0.0-343-g2048129625 introduced usage of
-> g_file_set_contents() function to write to /sys/power/state.
-> This function uses G_FILE_SET_CONTENTS_CONSISTENT flag to
-> g_file_set_contents_full(), which is implemented by creating
-> a temp file in the same directory and renaming it to the final
-> destination.  Which is not how sysfs works.
->=20
-> Here, there's not a big deal to do open/write/close - it becomes
-> almost the same as using g_file_set_contents[_full]().  But it
-> does not have surprises like this.
->=20
-> Also, since this is linux code, it should be ok to use %m in
-> the error reporting function.
->=20
-> Fixes: 2048129625 "qga/commands-posix: don't do fork()/exec() when suspen=
-ding via sysfs"
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3057
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+On 1/8/25 08:01, Thomas Huth wrote:
+> From: Thomas Huth <thuth@redhat.com>
+> 
+> When booting the Linux kernel from tests/functional/test_loongarch64_virt.py
+> with a QEMU that has been compiled with --enable-ubsan, there is
+> a warning like this:
+> 
+>   .../hw/intc/loongarch_pch_pic.c:171:46: runtime error: index 512 out of
+>    bounds for type 'uint8_t[64]' (aka 'unsigned char[64]')
+>   SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
+>    .../hw/intc/loongarch_pch_pic.c:171:46
+>   .../hw/intc/loongarch_pch_pic.c:175:45: runtime error: index 256 out of
+>    bounds for type 'uint8_t[64]' (aka 'unsigned char[64]')
+>   SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
+>    .../hw/intc/loongarch_pch_pic.c:175:45
+> 
+> It happens because "addr" is added first before substracting the base
+> (PCH_PIC_HTMSI_VEC or PCH_PIC_ROUTE_ENTRY).
+> Additionally, this code looks like it is not endianness safe, since
+> it uses a 64-bit pointer to write values into an array of 8-bit values.
+> 
+> Thus rework the code to use the stq_le_p / ldq_le_p helpers here
+> and make sure that we do not create pointers with undefined behavior
+> by accident.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  qga/commands-linux.c | 14 ++++++++------
->  1 file changed, 8 insertions(+), 6 deletions(-)
+>   hw/intc/loongarch_pch_pic.c | 15 ++++++++-------
+>   1 file changed, 8 insertions(+), 7 deletions(-)
 
-Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
-
---RJABWiiByk+zHZ6y
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmiSU/QACgkQnKSrs4Gr
-c8jNlQf/QAqqiPaxi3sH/LvmDxEZLtdO2jqtFwISJpHg5YNZtEbcPKhvx4YMk+wS
-dIMCAsxaZv8WQEhH2JYwXljO6i5YgVF+EVN8w2JyI9tRGi1LC4RxOkS6JNnrf5pC
-vFDtP79P6XYQZPfFaY1oX2wj8MaH7LjSRsCxCvqyKBDUvgeNBOC41tr335X5rZHJ
-wQacCw9vk9GwuRsit8J73aONuvLWSUAjKdsTTqT6uwXWl7wR8EiCqAcImiisT+d8
-cTysZlSrkECIo4TwPveQ/ZzUDpFH1IAjReqltqKoCma9/7F9JBqnh7LjKUxBEbJt
-XXgNXaY0d4H7Jhxesj3ZFSGkwjfvsw==
-=uRh0
------END PGP SIGNATURE-----
-
---RJABWiiByk+zHZ6y--
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
