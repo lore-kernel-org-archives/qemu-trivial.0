@@ -4,65 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0090FC87FD3
-	for <qemu-trivial@archiver.kernel.org>; Wed,  6 Aug 2025 16:09:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64647C87FDA
+	for <qemu-trivial@archiver.kernel.org>; Wed,  6 Aug 2025 20:47:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ujggY-0003em-Br; Wed, 06 Aug 2025 12:08:14 -0400
+	id 1ujl2J-00055j-Vf; Wed, 06 Aug 2025 16:47:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wojtekka@toxygen.net>)
- id 1ujfr1-0002n0-7x; Wed, 06 Aug 2025 11:14:59 -0400
-Received: from sender2-of-o55.zoho.eu ([136.143.171.55])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <wojtekka@toxygen.net>)
- id 1ujfqz-0006PU-Bm; Wed, 06 Aug 2025 11:14:58 -0400
-ARC-Seal: i=1; a=rsa-sha256; t=1754493288; cv=none; d=zohomail.eu; s=zohoarc; 
- b=iHeCyGBynqzFcXPKnHSWinoLxEgglhCmnzJcS2Gkqkxx7tLzmiC81Z7DA1k+YjM080716/wEMcini3N630lWyozBc3fr2jfqxOMIof/tr6u92Yd1JEpO4oZUU0dOtoyUppVLKNw1uNhjF0b3M4SmTtxvDKhh8j3YoJbSTSSp+SE=
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=zohomail.eu;
- s=zohoarc; t=1754493288;
- h=Content-Type:Content-Transfer-Encoding:Cc:Cc:Date:Date:From:From:In-Reply-To:MIME-Version:Message-ID:References:Subject:Subject:To:To:Message-Id:Reply-To;
- bh=ujgz+ZrlhTRCgwpLXv/5o6qTwG3nJq9mjFcFXeyvx6g=; 
- b=KRvrjIflc2uyh07Ohb6jQJ5iJTnWrqrw82bNflZlse85hZSmkY6jPlsbXl1CWtT1KIvNErxC0RcQ7kp5TZNRQtkr5yX8DJYcknY+uaQV7JdoupiSHTEbTHJMQV26j6bcBGcMzY/TL3oe1MD/TjkT2XQPOtwg5ej76HgVyLkHWjE=
-ARC-Authentication-Results: i=1; mx.zohomail.eu;
- dkim=pass  header.i=toxygen.net;
- spf=pass  smtp.mailfrom=wojtekka@toxygen.net;
- dmarc=pass header.from=<wojtekka@toxygen.net>
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; t=1754493288; 
- s=zmail; d=toxygen.net; i=wojtekka@toxygen.net;
- h=Message-ID:Subject:Subject:From:From:To:To:Cc:Cc:Date:Date:In-Reply-To:References:Content-Type:Content-Transfer-Encoding:MIME-Version:Message-Id:Reply-To;
- bh=ujgz+ZrlhTRCgwpLXv/5o6qTwG3nJq9mjFcFXeyvx6g=;
- b=ZKi3RUS5SFOrTBaw17q1KIyxfMTSpIPIdjMNxM08oLzRF3aLLo1iIsh+C2pZjPQW
- 110mN0olGfpkeAsxhDTiXYMxZtp+meTccqrVkHwgW+yiwQ4dtL8p2ViibQk4SptWgHr
- /ZXSYcxCrMwBEts6hpcuYdRbqJ8Agv/dYOMcLTQU=
-Received: by mx.zoho.eu with SMTPS id 175449328548041.81503987997121;
- Wed, 6 Aug 2025 17:14:45 +0200 (CEST)
-Message-ID: <64eab7c0760b9e8742feca2aa68dea94d6bfe631.camel@toxygen.net>
-Subject: Re: [PATCH qemu 1/2] Don't reverse bFLT endianess when not needed
-From: Wojtek Kaniewski <wojtekka@toxygen.net>
-To: Laurent Vivier <laurent@vivier.eu>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Date: Wed, 06 Aug 2025 17:14:44 +0200
-In-Reply-To: <e1fe443a-b715-41e8-a292-98449468e321@vivier.eu>
-References: <175270306503.19369.144677794735042916-1@git.sr.ht>
- <e1fe443a-b715-41e8-a292-98449468e321@vivier.eu>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: base64
-User-Agent: Evolution 3.54.3 (3.54.3-1.fc41) 
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1ujl2G-00054g-RN; Wed, 06 Aug 2025 16:46:56 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]
+ helo=mail.v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1ujl2F-0004BR-2p; Wed, 06 Aug 2025 16:46:56 -0400
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id 0EF51DA1C16;
+ Wed, 06 Aug 2025 22:46:52 +0200 (CEST)
+Authentication-Results: mail.v2201612906741603.powersrv.de; dkim=none;
+ spf=softfail (mail.v2201612906741603.powersrv.de: 188.68.58.204 is neither
+ permitted nor denied by domain of stefan@weilnetz.de)
+ smtp.mailfrom=stefan@weilnetz.de; 
+ dmarc=fail reason="No valid SPF,
+ No valid DKIM" header.from=weilnetz.de (policy=none)
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+ id DE97C46003A; Wed, 06 Aug 2025 22:46:51 +0200 (CEST)
+To: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH for-10.1] meson: Fix brlapi compile test for Windows builds
+Date: Wed,  6 Aug 2025 22:45:58 +0200
+Message-ID: <20250806204624.510091-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-X-ZohoMailClient: External
-Received-SPF: pass client-ip=136.143.171.55; envelope-from=wojtekka@toxygen.net;
- helo=sender2-of-o55.zoho.eu
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+X-Spamd-Result: default: False [2.10 / 12.00]; VIOLATED_DIRECT_SPF(3.50)[];
+ BAYES_HAM(-3.00)[100.00%]; MID_CONTAINS_FROM(1.00)[];
+ FORGED_SENDER(0.30)[sw@weilnetz.de,stefan@weilnetz.de];
+ ONCE_RECEIVED(0.20)[];
+ DMARC_POLICY_SOFTFAIL(0.10)[weilnetz.de : No valid SPF, No valid
+ DKIM,quarantine,sampled_out]; MIME_GOOD(-0.10)[text/plain];
+ RCVD_NO_TLS_LAST(0.10)[];
+ ASN(0.00)[asn:197540, ipnet:188.68.56.0/22, country:DE];
+ TO_DN_SOME(0.00)[]; RCVD_COUNT_ONE(0.00)[1];
+ MIME_TRACE(0.00)[0:+]; ARC_NA(0.00)[]; R_DKIM_NA(0.00)[];
+ TO_MATCH_ENVRCPT_ALL(0.00)[]; FROM_HAS_DN(0.00)[];
+ RCPT_COUNT_SEVEN(0.00)[7];
+ FROM_NEQ_ENVFROM(0.00)[sw@weilnetz.de,stefan@weilnetz.de];
+ R_SPF_SOFTFAIL(0.00)[~all:c];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[qemu.weilnetz.de:helo,qemu.weilnetz.de:rdns]
+X-Rspamd-Server: v2201612906741603
+X-Rspamd-Action: no action
+X-Rspamd-Queue-Id: 0EF51DA1C16
+X-Spamd-Bar: ++
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: 14
+X-Spam_score: 1.4
+X-Spam_bar: +
+X-Spam_report: (1.4 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_SBL_CSS=3.335,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 06 Aug 2025 11:27:28 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -74,68 +82,68 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
+Reply-to:  Stefan Weil <sw@weilnetz.de>
+From:  Stefan Weil via <qemu-trivial@nongnu.org>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-T24gVGh1LCAyMDI1LTA3LTE3IGF0IDA4OjQ4ICswMjAwLCBMYXVyZW50IFZpdmllciB3cm90ZToK
-PiBMZSAxNi8wNy8yMDI1IMOgIDIxOjI0LCB+d29qdGVra2EgYSDDqWNyaXTCoDoKPiA+IEZyb206
-IFdvanRlayBLYW5pZXdza2kgPHdvanRla2thQHRveHlnZW4ubmV0Pgo+ID4gCj4gPiBiRkxUIGZv
-cm1hdCBpcyBiaWctZW5kaWFuLiBnZXRfdXNlcl91YWwoKSByZXR1cm5zIGhvc3QgdmFsdWUgc28g
-Zm9yCj4gPiBsaXR0bGUtZW5kaWFuIHRhcmdldCBhbmQgbGl0dGxlLWVuZGlhbiBob3N0IGl0J3Mg
-bmVjZXNzYXJ5IHRvCj4gPiByZXZlcnNlCj4gPiB3b3JkcyB1c2luZyBudG9obCgpLiBGb3IgYmln
-LWVuZGlhbiB0YXJnZXRzIHdlIGVuZCB1cCB3aXRoCj4gPiBpbmNvcnJlY3QKPiA+IGVuZGlhbmVz
-czoKPiA+IAo+ID4gwqDCoMKgwqAgJCBxZW11LW02OGstc3RhdGljIC4vdGVzdAo+ID4gwqDCoMKg
-wqAgQklORk1UX0ZMQVQ6IHJlbG9jIG91dHNpZGUgcHJvZ3JhbSAweDgwMWYwMDAwICgwIC0KPiA+
-IDB4NDFmMC8weDFlNDApCj4gPiDCoMKgwqDCoCBBYm9ydGVkIChjb3JlIGR1bXBlZCkKPiA+IAo+
-ID4gRm9yIGNvbXBhcmlzb24gdGhlIG91dHB1dCBvZiBgZmx0aGRyYCBmb2xsb3dzOgo+ID4gCj4g
-PiDCoMKgwqDCoCAkIG02OGstZWxmLWZsdGhkciAtUCAuL3Rlc3QKPiA+IMKgwqDCoMKgIC4vdGVz
-dAo+ID4gwqDCoMKgwqDCoMKgwqDCoCBNYWdpYzrCoMKgwqDCoMKgwqDCoCBiRkxUCj4gPiDCoMKg
-wqDCoMKgwqDCoMKgIFJldjrCoMKgwqDCoMKgwqDCoMKgwqAgNAo+ID4gwqDCoMKgwqDCoMKgwqDC
-oCBCdWlsZCBEYXRlOsKgwqAgVHVlIEp1bCAxNSAyMzowMjowMCAyMDI1Cj4gPiDCoMKgwqDCoMKg
-wqDCoMKgIEVudHJ5OsKgwqDCoMKgwqDCoMKgIDB4NDQKPiA+IMKgwqDCoMKgwqDCoMKgwqAgRGF0
-YSBTdGFydDrCoMKgIDB4MWU4MAo+ID4gwqDCoMKgwqDCoMKgwqDCoCBEYXRhIEVuZDrCoMKgwqDC
-oCAweDIwNWMKPiA+IMKgwqDCoMKgwqDCoMKgwqAgQlNTIEVuZDrCoMKgwqDCoMKgIDB4NDBhMAo+
-ID4gwqDCoMKgwqDCoMKgwqDCoCBTdGFjayBTaXplOsKgwqAgMHgxMDAwCj4gPiDCoMKgwqDCoMKg
-wqDCoMKgIFJlbG9jIFN0YXJ0OsKgIDB4MjA1Ywo+ID4gwqDCoMKgwqDCoMKgwqDCoCBSZWxvYyBD
-b3VudDrCoCAweDE3Cj4gPiDCoMKgwqDCoMKgwqDCoMKgIEZsYWdzOsKgwqDCoMKgwqDCoMKgIDB4
-MiAoIEhhcy1QSUMtR09UICkKPiA+IMKgwqDCoMKgwqDCoMKgwqAgUmVsb2NzOgo+ID4gwqDCoMKg
-wqDCoMKgwqDCoCAjCXJlbG9jwqDCoMKgwqDCoCAowqAgYWRkcmVzcyApCWRhdGEKPiA+IMKgwqDC
-oMKgwqDCoMKgwqAgMAkweDAwMDAxZjgwICgweDAwMDAxZjgwKQkzYzIwMDAwMAo+ID4gwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIF5eXl5eXl5eCj4gPiDCoMKgwqDCoMKgwqDC
-oMKgIDEJMHgwMDAwMWY4NCAoMHgwMDAwMWY4NCkJM2MzMDAwMDAKPiA+IMKgwqDCoMKgwqDCoMKg
-wqAgMgkweDAwMDAxZjg4ICgweDAwMDAxZjg4KQkzYzIwMDAwMAo+ID4gwqDCoMKgwqDCoMKgwqDC
-oCAuLi4KPiA+IAo+ID4gU2lnbmVkLW9mZi1ieTogV29qdGVrIEthbmlld3NraSA8d29qdGVra2FA
-dG94eWdlbi5uZXQ+Cj4gPiAtLS0KPiA+IMKgIGxpbnV4LXVzZXIvZmxhdGxvYWQuYyB8IDIgKysK
-PiA+IMKgIDEgZmlsZSBjaGFuZ2VkLCAyIGluc2VydGlvbnMoKykKPiA+IAo+ID4gZGlmZiAtLWdp
-dCBhL2xpbnV4LXVzZXIvZmxhdGxvYWQuYyBiL2xpbnV4LXVzZXIvZmxhdGxvYWQuYwo+ID4gaW5k
-ZXggNGJlYjNlZDFiOS4uYWZhZmY0YWM0NCAxMDA2NDQKPiA+IC0tLSBhL2xpbnV4LXVzZXIvZmxh
-dGxvYWQuYwo+ID4gKysrIGIvbGludXgtdXNlci9mbGF0bG9hZC5jCj4gPiBAQCAtNDEzLDcgKzQx
-Myw5IEBAIHN0YXRpYyBpbnQgbG9hZF9mbGF0X2ZpbGUoc3RydWN0IGxpbnV4X2JpbnBybSAqCj4g
-PiBicHJtLAo+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgcmVsb2NhdGVkIGZp
-cnN0KS7CoCAqLwo+ID4gwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgaWYgKGdldF91c2VyX3Vh
-bChyZWx2YWwsIHJlbG9jICsgaSAqCj4gPiBzaXplb2YoYWJpX3Vsb25nKSkpCj4gPiDCoMKgwqDC
-oMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJldHVybiAtRUZBVUxUOwo+ID4gKyNpZiAhVEFS
-R0VUX0JJR19FTkRJQU4KPiA+IMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgIHJlbHZhbCA9IG50
-b2hsKHJlbHZhbCk7Cj4gPiArI2VuZGlmCj4gPiDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDCoCBp
-ZiAoZmxhdF9zZXRfcGVyc2lzdGVudChyZWx2YWwsICZwZXJzaXN0ZW50KSkKPiA+IMKgwqDCoMKg
-wqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqAgY29udGludWU7Cj4gPiDCoMKgwqDCoMKgwqDCoMKg
-wqDCoMKgwqDCoCBhZGRyID0gZmxhdF9nZXRfcmVsb2NhdGVfYWRkcihyZWx2YWwpOwo+IAo+IEkg
-dGhpbmsgdGhlIG50b2hsKCkgc2hvdWxkIGJlIHJlbW92ZWQgdG90YWxseSBhbmQKPiBmbGF0X3Nl
-dF9wZXJzaXN0ZW50KCkgCj4gc2hvdWxkIHVzZSBwdXRfdXNlcl91YWwoKS4KPiAKPiBDb3VsZCB5
-b3UgdGVzdCB0aGlzPwoKZmxhdF9zZXRfcGVyc2lzdGVudCgpIGlzIGp1c3QgYSBuby1vcCBtYWNy
-byBjb3BpZWQgZnJvbSBMaW51eCBrZXJuZWwKaW1wbGVtZW50YXRpb24gYW5kIGhhcyBiZWVuIHJl
-bW92ZWQgZnJvbSB0aGUgdXBzdHJlYW0gYSBjb3VwbGUgb2YgeWVhcnMKYWdvIFsxXS4gVGhlIGFj
-dHVhbCBhZGRyZXNzIGlzIHJlbG9jYXRlZCBieSBmbGF0X2dldF9yZWxvY2F0ZV9hZGRyKCkgYQps
-aW5lIGJlbG93IHNvIGl0IG5lZWRzIHRvIGJlIGluIGhvc3QtZW5kaWFuLiBEcm9wcGluZyBudG9o
-bCgpIHdvdWxkCmJyZWFrIGl0IGZvciBsaXR0bGUtZW5kaWFuIHRhcmdldHMgYmVjYXVzZSBiRkxU
-IGJ5IGRlZmluaXRpb24gaXMgYmlnLQplbmRpYW4uCgpJcyB0aGVyZSBhIG1hY3JvIHNpbWlsYXIg
-dG8gZ2V0X3VzZXJfdWFsKCkgYnV0IHdpdGhvdXQgYW55IGVuZGlhbmVzcwpjb252ZXJzaW9uPyBU
-aGUgY2xvc2VzdCB0aGluZyBJIGZvdW5kIHdhcyBsZGxfcCgpLCBidXQgSSBhc3N1bWUgaXQncwpu
-b3QgdGhlIGJlc3QgaWRlYSBkdWUgdG8gbGFjayBvZiBsb2NraW5nLgoKKEFuZCBzb3JyeSBmb3Ig
-c3VjaCBhIGxhdGUgcmVzcG9uc2UuIEkgaGF2ZW4ndCB1c2VkIG1haWxpbmcgbGlzdHMgZm9yCnll
-YXJzIGFuZCBpdCB0b29rIG1lIHdheSB0b28gbG9uZyB0byBnZXQgbXkgb2xkIGUtbWFpbCBhY2Nv
-dW50IHRvIHdvcmsKcHJvcGVybHkuKQoKUmVnYXJkcywKV29qdGVrCgpbMV0KaHR0cHM6Ly9naXRo
-dWIuY29tL3RvcnZhbGRzL2xpbnV4L2NvbW1pdC8yZjMxOTZkNDliMWUxMGYxZDRiYzY0Y2NlMDBk
-Yzk1ZmRlMmIwY2UxCgo=
+brlapi__openConnection returns a brlapi_fileDescriptor which is a pointer
+for Windows builds.
+
+The test for brlapi fails with cross builds on Debian trixie
+(x86_64-w64-mingw32-gcc (GCC) 14-win32):
+
+testfile.c:4:30: error: returning 'brlapi_fileDescriptor' {aka 'void *'} from a function with return type 'int' makes integer from pointer without a cast [-Wint-conversion]
+    4 |      int main(void) { return brlapi__openConnection (NULL, NULL, NULL); }
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------
+../../../meson.build:1607: WARNING: could not link brlapi, disabling
+
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+---
+
+I think that this patch is trivial because it does not change
+anything for Linux.
+
+Note that this patch only fixes the configure test and allows builds
+with the Braille API for Windows.
+
+A similar change can be applied to chardev/baum.c and will be sent
+separately because it is not required for 10.1.
+
+Note that for 64 bit Windows there is an issue because brlapi_fileDescriptor
+is a 64 bit pointer while QEMU assumes int for file descriptors. But the
+good news is that the resulting code seems to work nevertheless – at least
+the people who asked me for Braille support on Windows are satisfied as
+far as I know.
+
+Regards,
+Stefan W.
+
+
+ meson.build | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index e53cd5b413..d6abe1917e 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1586,9 +1586,11 @@ if not get_option('brlapi').auto() or have_system
+   brlapi = cc.find_library('brlapi', has_headers: ['brlapi.h'],
+                          required: get_option('brlapi'))
+   if brlapi.found() and not cc.links('''
+-     #include <brlapi.h>
+-     #include <stddef.h>
+-     int main(void) { return brlapi__openConnection (NULL, NULL, NULL); }''', dependencies: brlapi)
++    #include <brlapi.h>
++    #include <stddef.h>
++    int main(void) {
++      return brlapi__openConnection(NULL, NULL, NULL) == BRLAPI_INVALID_FILE_DESCRIPTOR;
++    }''', dependencies: brlapi)
+     brlapi = not_found
+     if get_option('brlapi').enabled()
+       error('could not link brlapi')
+-- 
+2.47.2
 
 
