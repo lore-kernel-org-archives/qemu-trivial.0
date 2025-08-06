@@ -4,90 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A5ADCC87FD1
-	for <qemu-trivial@archiver.kernel.org>; Wed,  6 Aug 2025 06:41:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44871C87FCB
+	for <qemu-trivial@archiver.kernel.org>; Wed,  6 Aug 2025 07:30:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ujXqF-0007GW-0x; Wed, 06 Aug 2025 02:41:39 -0400
+	id 1ujYbW-00079N-Me; Wed, 06 Aug 2025 03:30:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujXqD-0007Dl-BH
- for qemu-trivial@nongnu.org; Wed, 06 Aug 2025 02:41:37 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujXqB-0003oh-PF
- for qemu-trivial@nongnu.org; Wed, 06 Aug 2025 02:41:37 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-458aee6e86aso31891025e9.3
- for <qemu-trivial@nongnu.org>; Tue, 05 Aug 2025 23:41:35 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754462494; x=1755067294; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=3Qt+eug0h86j0yWuF7BVqKm/dcYHS8LW1wSkDD2sulU=;
- b=rBU9rwGcFyO6tUv9+1Ic89vfsYCNPwrLsX17TT/ZfvSlM+tpxO2Gv/94HjLbfE0BCx
- seO9elTLCAkUx64pW/bIg8SPZ6m86PXyD50biJBy4XDMvq8wuFUvxTLXdJr70PkeSBgA
- QVmXFw52nMo4qvGVHr5waBbijiuBpc6Vbesu6Lh3SbGQfGD4qYli+4kFUmnjVZPobumv
- scagCt7IBVUfljvgY+Kgwdfrjo5m7BOHQIAVAvwPMrPdldpUkxc7RKkG/ngm/oFyHOnS
- cQODtE08x/1WTeKv/bSIkzXWWw0UzAdO1mqWeRw/Jzmku1trUq70QGelN3Fngev3zqM7
- oKWA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754462494; x=1755067294;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=3Qt+eug0h86j0yWuF7BVqKm/dcYHS8LW1wSkDD2sulU=;
- b=ktYgXzYQd+Y0dgu4tC4hDDZOIkU7ez829y7udi3qW/AKKy9qi/8G3Qj71HyVFxcHHV
- aRFQmxEWQtoQsFXn88p4wx8/VW1ehSSrwjsf8uYxam0u+q9Rog5ilCj5SvnsMuvDmtCo
- QcTpXsZZ0Krj4+NoWtBlQu2uaJNPwb58YB1iY7v/oYoSrUKKk+EJr/sBal3y5AxUW7jz
- rYYGbDjGmO6af19BkKRZ7UoHuTqioJqZSjg5aPVjyWc03blmGiAbYSxBMj9UaUDLE4Cd
- +c5q4lX6YiwVXZR6zgsro0bmoC4QoZaDvioPA7r0/82zMAXOjsK5LdWqcjrk9HAzL+bb
- BabQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVXat8QL3fOB/lieUA+8RPgQUIjr7c8g6cat9obJv4QdVYqLU2soLKML00GR6AIzJ90lNVrXXoBTwspOAg=@nongnu.org
-X-Gm-Message-State: AOJu0Yz+ZFJG/DEKLHlGROqrsuliv4dNOfcmiW65f25NmVtxeyO2CBCE
- +UlBklPwT9hO0r1AyX7xGBamLzQz+Ty/tWsC+CzeWXtv+Y+7u/DxShgz90J3M55gtVY=
-X-Gm-Gg: ASbGncsiZ7cFKLdE3emzxsmXvMawkw7tyU4zpgjoQQWOWGwan74QCljwKHp/43+/SvN
- waf3GUfkkadY6mwDg4YlrbuxmvzcuhY40sKkaEw10EGcXzlCKQbXUYuQXJasKjOPbyAnXnndXzW
- GTKMg7Tqbq48XPd/unIZHcPYPGToCTHuMlUE/1H2fXAJvhCpSmfssIocErm+KMsmRscPFxcm3t9
- hQaRIFdWCY8jVUqqKzKcXL8pw73zuKZkI4asbFSAiayaWP3uLE4f4yK2QRQpgJr3yn8KxKTP3xH
- 6UAh7j0KuXyCI5zQ3r+bRiODlTESTEZbJ+79BYbzd1hvO/nCL9HIHu9FrSNTPNUntAXeQwhSfYY
- 1RPbU7HwXLTY49wVM5hx8HLwZh4DafDJtLdoIm0qEf7ALXNxZNHCA6ukoP85u8844PA==
-X-Google-Smtp-Source: AGHT+IG41H7bClF4Q0juvT9pARqsJwyuwu8sMLVLbqKGhpFtZd7rwv+YMTcL3OAxfxMZaj1cHgtLdw==
-X-Received: by 2002:a05:600c:4f4c:b0:450:d37d:7c with SMTP id
- 5b1f17b1804b1-459e95af955mr4331695e9.21.1754462493743; 
- Tue, 05 Aug 2025 23:41:33 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-459e58400f5sm32839855e9.2.2025.08.05.23.41.32
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 Aug 2025 23:41:33 -0700 (PDT)
-Message-ID: <95cd67ab-fbaf-4720-bda0-25356ea6ba49@linaro.org>
-Date: Wed, 6 Aug 2025 08:41:32 +0200
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1ujYbJ-000761-L9
+ for qemu-trivial@nongnu.org; Wed, 06 Aug 2025 03:30:17 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1ujYbG-0005Dh-BF
+ for qemu-trivial@nongnu.org; Wed, 06 Aug 2025 03:30:16 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1754465412;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=a6+g7nd94Bk/4TEewIZlSAr/luvcCrHVaNG8ghCZsn8=;
+ b=MNYbgFrWNB/zitB6x3Swd8yYzUhTzcBi1HvKmYjMAPB/FjLcvBtvLadR/SZDDtldn11aas
+ w7ehCgQxADK0bvNrcZi49340NQNBZr1YUt5gC9K+lO/yo10t++ExIuuEzxOv5gSHgUCZ/Y
+ m0osm15D4zMMgFio5Dvpr9ZihCHw63o=
+Received: from mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-446-ZEcGD5nAMv6WArx2yBdsqQ-1; Wed,
+ 06 Aug 2025 03:30:10 -0400
+X-MC-Unique: ZEcGD5nAMv6WArx2yBdsqQ-1
+X-Mimecast-MFC-AGG-ID: ZEcGD5nAMv6WArx2yBdsqQ_1754465409
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-04.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DD9A919560AD; Wed,  6 Aug 2025 07:30:07 +0000 (UTC)
+Received: from redhat.com (unknown [10.45.224.228])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6F1E0180047F; Wed,  6 Aug 2025 07:30:04 +0000 (UTC)
+Date: Wed, 6 Aug 2025 09:30:01 +0200
+From: Kevin Wolf <kwolf@redhat.com>
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: Philippe =?iso-8859-1?Q?Mathieu-Daud=E9?= <philmd@linaro.org>,
+ qemu-devel@nongnu.org, qemu-block@nongnu.org,
+ Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH-for-10.1] tests/qemu-iotests/tests/mirror-sparse: skip if
+ O_DIRECT is not supported
+Message-ID: <aJMEeVr1BU-abnNb@redhat.com>
+References: <20250801122850.27632-1-mjt@tls.msk.ru>
+ <7893945e-6287-4f32-9e93-f28c39c7bdc8@linaro.org>
+ <4f0a804d-d448-4dc0-97e1-20b3f669c8a2@tls.msk.ru>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/intc/loongarch_pch_pic: Fix ubsan warning and
- endianness issue
-To: Thomas Huth <thuth@redhat.com>, Song Gao <gaosong@loongson.cn>,
- Bibo Mao <maobibo@loongson.cn>, qemu-devel@nongnu.org
-Cc: Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-trivial@nongnu.org
-References: <20250801060152.22224-1-thuth@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250801060152.22224-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Type: text/plain; charset=iso-8859-1
+Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+In-Reply-To: <4f0a804d-d448-4dc0-97e1-20b3f669c8a2@tls.msk.ru>
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=kwolf@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,36 +89,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 1/8/25 08:01, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
+Am 05.08.2025 um 19:56 hat Michael Tokarev geschrieben:
+> On 05.08.2025 20:23, Philippe Mathieu-DaudÈ wrote:
 > 
-> When booting the Linux kernel from tests/functional/test_loongarch64_virt.py
-> with a QEMU that has been compiled with --enable-ubsan, there is
-> a warning like this:
+> > > diff --git a/tests/qemu-iotests/tests/mirror-sparse b/tests/qemu-
+> > > iotests/tests/mirror-sparse
+> > > index cfcaa600ab..19843a622c 100755
+> > > --- a/tests/qemu-iotests/tests/mirror-sparse
+> > > +++ b/tests/qemu-iotests/tests/mirror-sparse
+> > > @@ -41,6 +41,7 @@ _supported_fmt qcow2 raw† # Format of the source.
+> > > dst is always raw file
+> > > † _supported_proto file
+> > > † _supported_os Linux
+> > > † _require_disk_usage
+> > > +_require_o_direct
+> > 
+> > Could the correct use be:
+> > 
+> >  † _supported_cache_modes none directsync
 > 
->   .../hw/intc/loongarch_pch_pic.c:171:46: runtime error: index 512 out of
->    bounds for type 'uint8_t[64]' (aka 'unsigned char[64]')
->   SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
->    .../hw/intc/loongarch_pch_pic.c:171:46
->   .../hw/intc/loongarch_pch_pic.c:175:45: runtime error: index 256 out of
->    bounds for type 'uint8_t[64]' (aka 'unsigned char[64]')
->   SUMMARY: UndefinedBehaviorSanitizer: undefined-behavior
->    .../hw/intc/loongarch_pch_pic.c:175:45
-> 
-> It happens because "addr" is added first before substracting the base
-> (PCH_PIC_HTMSI_VEC or PCH_PIC_ROUTE_ENTRY).
-> Additionally, this code looks like it is not endianness safe, since
-> it uses a 64-bit pointer to write values into an array of 8-bit values.
-> 
-> Thus rework the code to use the stq_le_p / ldq_le_p helpers here
-> and make sure that we do not create pointers with undefined behavior
-> by accident.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   hw/intc/loongarch_pch_pic.c | 15 ++++++++-------
->   1 file changed, 8 insertions(+), 7 deletions(-)
+> Yes that works too.  I've no idea which is "better" - we've
+> a bit too many options here, I think.  I'll change it to your
+> suggestion.
 
-Reviewed-by: Philippe Mathieu-Daud√© <philmd@linaro.org>
+No, _require_o_direct is better because it directly checks if files in
+the scratch directory support O_DIRECT, which is what we need here
+because the test unconditionally opens the file this way:
+
+    -blockdev '{"driver":"file", "cache":{"direct":true, "no-flush":false},
+                "filename":"'"$TEST_IMG.base"'", "node-name":"src-file"}' \
+
+_supported_cache_modes is about the cache mode requested on the command
+line when running qemu-iotests, which is not what we're interested in.
+The relevant call doesn't even consider the command line option. It
+still "fixes" the failure because requesting "none" or "directsync"
+makes it do the O_DIRECT check, too.
+
+But the effect is different: With "_supported_cache_modes none
+directsync", the test will always be skipped if on the command line
+"writeback" was requested (it's the default, so we'll skip the test by
+default - that's a bad idea). With _require_o_direct it will only be
+skipped if the filesystem really doesn't support O_DIRECT.
+
+Kevin
 
 
