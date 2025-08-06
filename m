@@ -4,94 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FE56C87FD1
-	for <qemu-trivial@archiver.kernel.org>; Wed,  6 Aug 2025 07:34:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5465C87FD1
+	for <qemu-trivial@archiver.kernel.org>; Wed,  6 Aug 2025 07:57:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ujYei-0001SI-3g; Wed, 06 Aug 2025 03:33:48 -0400
+	id 1ujZ1J-0002w5-FZ; Wed, 06 Aug 2025 03:57:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujYeg-0001QT-Hx
- for qemu-trivial@nongnu.org; Wed, 06 Aug 2025 03:33:46 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1ujYee-0005az-As
- for qemu-trivial@nongnu.org; Wed, 06 Aug 2025 03:33:46 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-459ddf8acf1so19041085e9.0
- for <qemu-trivial@nongnu.org>; Wed, 06 Aug 2025 00:33:43 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1754465622; x=1755070422; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=MDXt8hiJNiCikqs/DNNUeXOi9aIDDwzfHoOQe8f5FCc=;
- b=U8BkXDApK/vxbk2xkXxifbEOrMYHJDjx5+JOu53xs5ezchyfax2P2wci84sKO0GaDe
- RkbaDyG3uKzjuPexCZPCJ57HTE1suuK2LBmVcJQ4jM45FqtU0fXSXhcQ9JsHZrnMCj72
- Y/PoSu7nWM+dExHL10g4Hfwz7EryEkWLRc2spFDr2PeNZbNZJJJBj+Vfo42aeaTnTL9m
- sNXkWPElt7aoOVyqDFOzDhhkc3mLqti6b4m/sPI4YP4j19Xyx0q1hwcghWH+onKLzdF+
- 70yAZzbWctWInPY+eIVyPBRwqbTkXgO2xgYlqRr8tbps8wBJSMKhCBySd/y77WmEEMmo
- lVuQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1754465622; x=1755070422;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=MDXt8hiJNiCikqs/DNNUeXOi9aIDDwzfHoOQe8f5FCc=;
- b=CaYUJp0xj/PFYugDFzNeNFCAtgfY+E0vfKIh4U2+P1YfNSJqzZuNVi+dwRCK7+Xc3v
- 7+5IzjJOuo38U87UsYFHSUfrGuzItDCJ3pxxml/1Sg/rbXQN2PzOFvZlNb5SBHgGDrU4
- TDlSZDifsKWOSOGrQnPgxErPCyFhD0ZSgGP6coLyiAsLEaNRvyp34GU1XCJG/UBFObs7
- 8mqcQh4tu1wId7gI9YuM8r9iGWJxDFkpT9ANJFQXcPt2jQzdc4qh4Y+U3IDu7qveF4He
- ZMTmeT/whaWMElJ3vrAm874aM0t8B1n0PZrU3vtNxd2PGdPyINse2ElKTpbij0YCNh+J
- wNdw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXg230GSDgadZxFEkIuHXTrV9ZafF45Ak5noELiHre41ozpjdFYTuoVCwbf/MXCEH+cXLwhnk7pG4gRON8=@nongnu.org
-X-Gm-Message-State: AOJu0YzDqfRajjiiF8V//FuqzR8g2ApbBo066+61XLfCAmj/1eemSkyY
- QiaLcBAR4w1VGchTWQpgwKDQApKzClBcUX7Gen8Prb7Fn4P+bLgTZ+ol58mWwe5qEPRbRiJzTnQ
- +XVW6
-X-Gm-Gg: ASbGncsOmwPsAuPOhltWcVVpvZbEPUeCaZFwfHj5C7hs4YIFtQ0Z1tXhwd8OWcVyulQ
- jWj28Ddv1lpC4Fl40KmIEPUsMOCQ2+rW6xQ5dwdE7I8K/2Qp4CgblBkkfjdhFjuPoId5sSlqIEf
- z4fvqaEuvDgsK6J3yd3nX1sLWtr5qcHfUfv3dAh8kS7hqoFlYqWEWHH+q+Xf8ICEY0tdm6sLMSZ
- vDZ3bAHlpgSomMeeZbb5EOeR5p7K6fUKblPFlArOFvPsvswf1L17QfGMYEMOPjGPx3jnQL+9Xga
- ThTAsJ/WrtYx98SSE48v1oQ4szcnYQqwOVUe6d0Z8Z1hoOSi0usmZhRPA3KZWr4yoF9Ct7ZCKBr
- ft2PMyKSOh9T+CL54Tn0/Sc2W83tLAJNDZNbgvufRKu/0k5zk2PwEx/2dOPARRZNWQA==
-X-Google-Smtp-Source: AGHT+IEyQEogh0sVItHVkhtL29dgka4/FvE41aPZg0+flWwbg8up5Jy10zvM8bA9EvSmR23QXUxJaQ==
-X-Received: by 2002:a05:600c:5494:b0:456:27a4:50ac with SMTP id
- 5b1f17b1804b1-459e70e6952mr11674695e9.23.1754465622233; 
- Wed, 06 Aug 2025 00:33:42 -0700 (PDT)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-459dcb86d6asm94696645e9.5.2025.08.06.00.33.41
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 06 Aug 2025 00:33:41 -0700 (PDT)
-Message-ID: <0270c97f-2c26-477d-bb22-9f67059ad72a@linaro.org>
-Date: Wed, 6 Aug 2025 09:33:40 +0200
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ujZ12-0002h1-Mz; Wed, 06 Aug 2025 03:56:52 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ujZ10-000217-4e; Wed, 06 Aug 2025 03:56:52 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 5DF7313EC5D;
+ Wed, 06 Aug 2025 10:56:14 +0300 (MSK)
+Received: from think4mjt.origo (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 5DA022585E2;
+ Wed,  6 Aug 2025 10:56:37 +0300 (MSK)
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
+ Eric Blake <eblake@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>
+Subject: [PATCH trivial] tests/qemu-iotests/tests/mirror-sparse: actually
+ require O_DIRECT
+Date: Wed,  6 Aug 2025 10:56:31 +0300
+Message-ID: <20250806075635.3290-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH-for-10.1] tests/qemu-iotests/tests/mirror-sparse: skip if
- O_DIRECT is not supported
-To: Kevin Wolf <kwolf@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-block@nongnu.org,
- Eric Blake <eblake@redhat.com>, qemu-trivial@nongnu.org
-References: <20250801122850.27632-1-mjt@tls.msk.ru>
- <7893945e-6287-4f32-9e93-f28c39c7bdc8@linaro.org>
- <4f0a804d-d448-4dc0-97e1-20b3f669c8a2@tls.msk.ru>
- <aJMEeVr1BU-abnNb@redhat.com>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <aJMEeVr1BU-abnNb@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x333.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,49 +60,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 6/8/25 09:30, Kevin Wolf wrote:
-> Am 05.08.2025 um 19:56 hat Michael Tokarev geschrieben:
->> On 05.08.2025 20:23, Philippe Mathieu-Daudé wrote:
->>
->>>> diff --git a/tests/qemu-iotests/tests/mirror-sparse b/tests/qemu-
->>>> iotests/tests/mirror-sparse
->>>> index cfcaa600ab..19843a622c 100755
->>>> --- a/tests/qemu-iotests/tests/mirror-sparse
->>>> +++ b/tests/qemu-iotests/tests/mirror-sparse
->>>> @@ -41,6 +41,7 @@ _supported_fmt qcow2 raw  # Format of the source.
->>>> dst is always raw file
->>>>    _supported_proto file
->>>>    _supported_os Linux
->>>>    _require_disk_usage
->>>> +_require_o_direct
->>>
->>> Could the correct use be:
->>>
->>>     _supported_cache_modes none directsync
->>
->> Yes that works too.  I've no idea which is "better" - we've
->> a bit too many options here, I think.  I'll change it to your
->> suggestion.
-> 
-> No, _require_o_direct is better because it directly checks if files in
-> the scratch directory support O_DIRECT, which is what we need here
-> because the test unconditionally opens the file this way:
-> 
->      -blockdev '{"driver":"file", "cache":{"direct":true, "no-flush":false},
->                  "filename":"'"$TEST_IMG.base"'", "node-name":"src-file"}' \
-> 
-> _supported_cache_modes is about the cache mode requested on the command
-> line when running qemu-iotests, which is not what we're interested in.
-> The relevant call doesn't even consider the command line option. It
-> still "fixes" the failure because requesting "none" or "directsync"
-> makes it do the O_DIRECT check, too.
-> 
-> But the effect is different: With "_supported_cache_modes none
-> directsync", the test will always be skipped if on the command line
-> "writeback" was requested (it's the default, so we'll skip the test by
-> default - that's a bad idea). With _require_o_direct it will only be
-> skipped if the filesystem really doesn't support O_DIRECT.
+Commit c0ddcb2cbc146e introduced the test which uses cache=direct
+mode, without checking if the scratch filesystem supports O_DIRECT.
+A subsequent commit, afeb002e0ad49d, tried to fix that issue, but
+instead of checking for o_direct, it checked for
+`_supported_cache_modes none directsync`, which is not what the
+original mirror-sparse test uses.  Fix both by actually checking
+for o_direct.
 
-Oops, sorry for the bad suggestion :/
+Fixes: c0ddcb2cbc146e "tests: Add iotest mirror-sparse for recent patches"
+Fixes: afeb002e0ad49d "tests/qemu-iotests/tests/mirror-sparse: skip if O_DIRECT is not supported"
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+This is what happens when rushing for last-minute
+pre-release fixes..  I'm sorry for this.
+
+ tests/qemu-iotests/tests/mirror-sparse | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/tests/qemu-iotests/tests/mirror-sparse b/tests/qemu-iotests/tests/mirror-sparse
+index 3b183eea88..ee7101bd50 100755
+--- a/tests/qemu-iotests/tests/mirror-sparse
++++ b/tests/qemu-iotests/tests/mirror-sparse
+@@ -40,7 +40,7 @@ cd ..
+ _supported_fmt qcow2 raw  # Format of the source. dst is always raw file
+ _supported_proto file
+ _supported_os Linux
+-_supported_cache_modes none directsync
++_require_o_direct
+ _require_disk_usage
+ 
+ echo
+-- 
+2.47.2
 
 
