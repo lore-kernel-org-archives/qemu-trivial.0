@@ -4,34 +4,35 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4340C87FCF
-	for <qemu-trivial@archiver.kernel.org>; Thu,  7 Aug 2025 20:50:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5139CC87FCA
+	for <qemu-trivial@archiver.kernel.org>; Thu,  7 Aug 2025 20:51:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1uk7Z8-0005Et-GE; Thu, 07 Aug 2025 16:50:24 -0400
+	id 1uk7ZE-0005Jp-9Z; Thu, 07 Aug 2025 16:50:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1uk7Z4-0005C9-2P; Thu, 07 Aug 2025 16:50:18 -0400
+ id 1uk7Z7-0005E6-KA; Thu, 07 Aug 2025 16:50:22 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1uk7Z0-0007UP-IE; Thu, 07 Aug 2025 16:50:17 -0400
+ id 1uk7Z5-0007jD-KY; Thu, 07 Aug 2025 16:50:21 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id EAAC513F361;
- Thu, 07 Aug 2025 23:49:24 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 1512B13F363;
+ Thu, 07 Aug 2025 23:49:25 +0300 (MSK)
 Received: from localhost.localdomain (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id BC14A25A009;
+ by tsrv.corpit.ru (Postfix) with ESMTP id E90E425A00B;
  Thu,  7 Aug 2025 23:49:50 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Subject: [PULL for-10.1 0/2] Trivial patches for 2025-08-07 v2
-Date: Thu,  7 Aug 2025 23:49:31 +0300
-Message-ID: <20250807204942.490526-1-mjt@tls.msk.ru>
+Cc: Stefan Weil via <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 2/2] meson: Fix brlapi compile test for Windows builds
+Date: Thu,  7 Aug 2025 23:49:33 +0300
+Message-ID: <20250807204942.490526-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250807204942.490526-1-mjt@tls.msk.ru>
+References: <20250807204942.490526-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
@@ -57,32 +58,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-The following changes since commit cd21ee5b27b22ae66c103d36516aa5077881aa3d:
+From: Stefan Weil via <qemu-trivial@nongnu.org>
 
-  Merge tag 'ui-pull-request' of https://gitlab.com/marcandre.lureau/qemu into staging (2025-08-07 11:02:50 -0400)
+brlapi__openConnection returns a brlapi_fileDescriptor which is a pointer
+for Windows builds.
 
-are available in the Git repository at:
+The test for brlapi fails with cross builds on Debian trixie
+(x86_64-w64-mingw32-gcc (GCC) 14-win32):
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+testfile.c:4:30: error: returning 'brlapi_fileDescriptor' {aka 'void *'} from a function with return type 'int' makes integer from pointer without a cast [-Wint-conversion]
+    4 |      int main(void) { return brlapi__openConnection (NULL, NULL, NULL); }
+      |                              ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------
+../../../meson.build:1607: WARNING: could not link brlapi, disabling
 
-for you to fetch changes up to fa36bb8072a7ec2cee0d95bc0f927345de4ce8a9:
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
+Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ meson.build | 8 +++++---
+ 1 file changed, 5 insertions(+), 3 deletions(-)
 
-  meson: Fix brlapi compile test for Windows builds (2025-08-07 23:47:08 +0300)
+diff --git a/meson.build b/meson.build
+index a7b3c683ce..50c774a195 100644
+--- a/meson.build
++++ b/meson.build
+@@ -1586,9 +1586,11 @@ if not get_option('brlapi').auto() or have_system
+   brlapi = cc.find_library('brlapi', has_headers: ['brlapi.h'],
+                          required: get_option('brlapi'))
+   if brlapi.found() and not cc.links('''
+-     #include <brlapi.h>
+-     #include <stddef.h>
+-     int main(void) { return brlapi__openConnection (NULL, NULL, NULL); }''', dependencies: brlapi)
++    #include <brlapi.h>
++    #include <stddef.h>
++    int main(void) {
++      return brlapi__openConnection(NULL, NULL, NULL) == BRLAPI_INVALID_FILE_DESCRIPTOR;
++    }''', dependencies: brlapi)
+     brlapi = not_found
+     if get_option('brlapi').enabled()
+       error('could not link brlapi')
+-- 
+2.47.2
 
-----------------------------------------------------------------
-trivial patches for 2025-08-07 v2
-
-A fix for for a bugfix for mirror-sparse test,
-and brlapi compile test fix for Windows builds.
-
-----------------------------------------------------------------
-Michael Tokarev (1):
-      tests/qemu-iotests/tests/mirror-sparse: actually require O_DIRECT
-
-Stefan Weil (1):
-      meson: Fix brlapi compile test for Windows builds
-
- meson.build                            | 8 +++++---
- tests/qemu-iotests/tests/mirror-sparse | 2 +-
- 2 files changed, 6 insertions(+), 4 deletions(-)
 
