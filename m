@@ -4,72 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ADD2C87FCB
-	for <qemu-trivial@archiver.kernel.org>; Fri,  8 Aug 2025 20:09:50 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89D6BC87FCB
+	for <qemu-trivial@archiver.kernel.org>; Sat,  9 Aug 2025 05:47:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ukTP3-00083G-6S; Fri, 08 Aug 2025 16:09:25 -0400
+	id 1ukcQT-0000YK-9C; Sat, 09 Aug 2025 01:47:29 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1ukTP1-00082a-OP
- for qemu-trivial@nongnu.org; Fri, 08 Aug 2025 16:09:24 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ukcQE-0000Re-Dd; Sat, 09 Aug 2025 01:47:15 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1ukTOz-0006SI-6I
- for qemu-trivial@nongnu.org; Fri, 08 Aug 2025 16:09:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1754683758;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=GzXxYE55E28JTUWcfz0tPPCZru58WzltobAfxnVtDhU=;
- b=MXs4p5KbIqEozsLYLqQ9ft4fJrV1xIE0RwkGgMDSSn5QNotSUZgVnE0LIWoV2jUfjTCyHF
- TCL8qluX2tAC6MCfdvTy4Pxk0LC1Yvt4CEbAeAuHQykr6MaNWQT3D/eCRY8i929aM8+c9B
- RfZqtg3eOlUJbtNCzKLkAvz1X/dwXNQ=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-219-iVtN6zPgP1GmBcxz0ipVAQ-1; Fri,
- 08 Aug 2025 16:09:16 -0400
-X-MC-Unique: iVtN6zPgP1GmBcxz0ipVAQ-1
-X-Mimecast-MFC-AGG-ID: iVtN6zPgP1GmBcxz0ipVAQ_1754683755
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D87DA1800352; Fri,  8 Aug 2025 20:09:13 +0000 (UTC)
-Received: from localhost (unknown [10.2.16.42])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1972719560AD; Fri,  8 Aug 2025 20:09:10 +0000 (UTC)
-Date: Fri, 8 Aug 2025 16:06:20 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org
-Subject: Re: [PULL for-10.1 0/2] Trivial patches for 2025-08-07 v2
-Message-ID: <20250808200620.GA164830@fedora>
-References: <20250807204942.490526-1-mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1ukcQC-0001pU-5e; Sat, 09 Aug 2025 01:47:14 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 12773140006;
+ Sat, 09 Aug 2025 08:46:27 +0300 (MSK)
+Received: from think4mjt.origo (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 423A025C264;
+ Sat,  9 Aug 2025 08:46:55 +0300 (MSK)
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org,
+	Stefan Weil <sw@weilnetz.de>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: [PATCH trivial] chardev/baum.c: fix error return check for windows
+Date: Sat,  9 Aug 2025 08:46:53 +0300
+Message-ID: <20250809054654.562361-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.47.2
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="nRPxBGx+kv3MRv00"
-Content-Disposition: inline
-In-Reply-To: <20250807204942.490526-1-mjt@tls.msk.ru>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -85,30 +60,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
+Commit 3736506e25ac7bb "meson: Fix brlapi compile test for
+Windows builds" fixed brlapi configure-time test to use
+BRLAPI_INVALID_FILE_DESCRIPTOR instead of -1, b/c on windows,
+it is not -1.  But the same test is used at run time when
+initing brlapi in chardev/baum.c.  Fix this one too.
 
---nRPxBGx+kv3MRv00
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ chardev/baum.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Applied, thanks.
-
-Please update the changelog at https://wiki.qemu.org/ChangeLog/10.1 for any user-visible changes.
-
---nRPxBGx+kv3MRv00
-Content-Type: application/pgp-signature; name=signature.asc
-
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmiWWLwACgkQnKSrs4Gr
-c8gaiQgAgQbeA10Rpwc/5ndJ2fym3B7aJjxPRX0QUSs7KAEU8/S0xoJqZ57unc9E
-THfVXNoNaEZfLjob8pmMb4dyEuWFBN8n5+fTvnC1N0gVy/9HzbnazRkU/FMo59wu
-+U7XzfVFbM1Q9VpGAmdyYY7Pp/kbdqjCO5YPjGNSrA04SJIZGbyWHXRJJfuq7EEV
-BFYl5+C4sky8qkL1dCts6C+Fic8ADQUMP+AUhiD4NtofUV8rT1tLkWUh894+nyS6
-cdKqTdWH25YZjUhYlykvvucjm66Pyo5yPUoVf/FN7/AJicx105GDCUKDc1P/PUwX
-w1TxuOpU4Rcho/1UajuXRhwh2HGGog==
-=G6fd
------END PGP SIGNATURE-----
-
---nRPxBGx+kv3MRv00--
+diff --git a/chardev/baum.c b/chardev/baum.c
+index f3e8cd27f0..ecbcd2e5c6 100644
+--- a/chardev/baum.c
++++ b/chardev/baum.c
+@@ -654,7 +654,7 @@ static void baum_chr_open(Chardev *chr,
+     baum->brlapi = handle;
+ 
+     baum->brlapi_fd = brlapi__openConnection(handle, NULL, NULL);
+-    if (baum->brlapi_fd == -1) {
++    if (baum->brlapi_fd == BRLAPI_INVALID_FILE_DESCRIPTOR) {
+         error_setg(errp, "brlapi__openConnection: %s",
+                    brlapi_strerror(brlapi_error_location()));
+         g_free(handle);
+-- 
+2.47.2
 
 
