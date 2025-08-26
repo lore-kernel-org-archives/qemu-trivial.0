@@ -4,98 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B2070CA0FED
-	for <qemu-trivial@archiver.kernel.org>; Tue, 26 Aug 2025 21:28:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5B92CA0FF0
+	for <qemu-trivial@archiver.kernel.org>; Tue, 26 Aug 2025 21:53:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1ur1DE-0003bo-LC; Tue, 26 Aug 2025 17:28:18 -0400
+	id 1ur1b0-0000aD-US; Tue, 26 Aug 2025 17:52:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1ur1D6-0003XY-6h
- for qemu-trivial@nongnu.org; Tue, 26 Aug 2025 17:28:08 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1ur1D3-0000EQ-K5
- for qemu-trivial@nongnu.org; Tue, 26 Aug 2025 17:28:08 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1756243680;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1ur1ay-0000Zh-8z
+ for qemu-trivial@nongnu.org; Tue, 26 Aug 2025 17:52:48 -0400
+Received: from smtp-out1.suse.de ([2a07:de40:b251:101:10:150:64:1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1ur1au-0004k3-QP
+ for qemu-trivial@nongnu.org; Tue, 26 Aug 2025 17:52:48 -0400
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
+ [IPv6:2a07:de40:b281:104:10:150:64:97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id 11D0721266;
+ Tue, 26 Aug 2025 21:52:39 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1756245159; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=5ky0SJpiPhbi6tJKr855XwA4Hgq9rsqFKwYVfBKO3Cw=;
- b=TYswtL7OaMfJHKgKd/zzXMb+eZqq1YCKyq1cp4a5pcLb0Z+1UxIAax2GNFIKu6Kb7iILED
- IhuNP+OG746zuATneO6WCCcw1rNyzsuBPFJSKAzhxwYY1D59VmJARfEggfY9tb2n3PpMu1
- Cw9mJLW8uSP/pkZHloqWI1kUv53cQaA=
-Received: from mail-yw1-f199.google.com (mail-yw1-f199.google.com
- [209.85.128.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-567-vgvV8i47MTq2LyYZLIbAjw-1; Tue, 26 Aug 2025 17:27:59 -0400
-X-MC-Unique: vgvV8i47MTq2LyYZLIbAjw-1
-X-Mimecast-MFC-AGG-ID: vgvV8i47MTq2LyYZLIbAjw_1756243678
-Received: by mail-yw1-f199.google.com with SMTP id
- 00721157ae682-71fee811ed4so5715727b3.1
- for <qemu-trivial@nongnu.org>; Tue, 26 Aug 2025 14:27:59 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1756243678; x=1756848478;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=5ky0SJpiPhbi6tJKr855XwA4Hgq9rsqFKwYVfBKO3Cw=;
- b=N04eXYMENvDQlG0syC2HJ/Wtp3Kd4oJGxrYWdK5cAJnmbA+22FwtWj2+BAAK4HQYmS
- +ms0rQG+w5J6XZPJTzSGuegLV/PHJGQRQXXZ+t8Ih8u0LzRK/83KJjfaP/GLHEj9VYai
- tqDJ/TOwG9pX1IlCqfV5lTIWtKjF1sSXks8PZS/4b5GSnQXBL2AZAJF+MyNVdTETJkxB
- pKTi1vbF6ENERnSr+Wj+J23Wdkgcg37vw+A3SrpbSu2FdbQ2tor0z6w2GV60cYSk+fuO
- T6oE22vbp/g1cILmJFeIPvwIyQ2ABv+AwXGCwfZDzwoJNfWahFkLWuU6YMycTvmENxw6
- 9KEw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUe9hQKgZSPnczaRSkdx2C7WRhnsBGxg3qr0W2h2ts9a/KRYVzBEdxB7VqDcdBZq2D56rrK+7ZnrTwfL3g=@nongnu.org
-X-Gm-Message-State: AOJu0YwUr0TgdfPrxAcXoob2Vq/D9tQnUA/eecQiQXq+L3g+/F/a5dKT
- G2wUBO1ZlT9GCA/eptAuodka87lQLrSJW/8RGOD+JpPXAKo5PrW3AVDu76qfLCExhI5qz8K4YPI
- YnosbM76xqoWncBEBXHQH1ML0rqrQ5fT3pxqL12ZfU1rK37KUBCigqYxrzvY=
-X-Gm-Gg: ASbGncsiq7Y0JGrOOhHA5vH4MIGOMjiW8Pv8vBPD635BGNTDV/ktZ1LbXXfjinBz1Q3
- 3x3zQILxNDbmHG/3YtxFNZA7SljcSDRFoNqMYFHdbfbKBIzg6bU/P3WEA66vAHmd68c2PhMfdvc
- 6g0HgDHFgMeoJVnFdZNPaDBSPRTjXfDlaT7tNe+sk9rZPpniWuHHhxq4aEuFKgLNXUcBueq7LB6
- gA4rLP4/GRbTKnQTPZcKVwPuVe0iUU6KTO9WKtZSLPzojHz4VOD6Nny6sdL44qcbQ662KjXQgnI
- t1+2yMdSPCyPllydaN0oMyohkk+6bW1X
-X-Received: by 2002:a05:690c:64c2:b0:71f:9a36:d332 with SMTP id
- 00721157ae682-72132cd7798mr33037167b3.27.1756243678496; 
- Tue, 26 Aug 2025 14:27:58 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IH38QT9GrhuJKn+2Z/fzyJnt7wYtrhE1kDIfOcax70UAAJ8Yx5kG7DPSQZWCv6zlXXz+zuq0Q==
-X-Received: by 2002:a05:690c:64c2:b0:71f:9a36:d332 with SMTP id
- 00721157ae682-72132cd7798mr33036977b3.27.1756243677973; 
- Tue, 26 Aug 2025 14:27:57 -0700 (PDT)
-Received: from x1.local ([174.89.135.121]) by smtp.gmail.com with ESMTPSA id
- 00721157ae682-71ff18ea7a3sm26820817b3.69.2025.08.26.14.27.57
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 26 Aug 2025 14:27:57 -0700 (PDT)
-Date: Tue, 26 Aug 2025 17:27:44 -0400
-From: Peter Xu <peterx@redhat.com>
+ bh=CwPIdL0NWwvEkieq0eu1e0ds0YFIVTFLsbJMqK780Ng=;
+ b=uJKPSDrcA4IpOPO6Ld2XI9Mxix8kvFzFQRTRYi/4XmHx9B16ESRTn1pg6VoqGIrOvXC4XQ
+ kzshuly9d3VDORcYXc5H+NcnnxOgp/k9Wuoa/AcuFyv0Sr26g4MmWgxeB0tSZrj7xHJCDM
+ gBeD3DEER357n+JF3N9+RWyVo5f/AFo=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1756245159;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=CwPIdL0NWwvEkieq0eu1e0ds0YFIVTFLsbJMqK780Ng=;
+ b=Dq++VEeIcmuFW+cKKklYQBOGhNaysWQSt8cjWX7Oogj4W4BHTP/U+GYYPyFlFuVZ/R8HcT
+ 8iY7NxC+7YPoc0BQ==
+Authentication-Results: smtp-out1.suse.de;
+ dkim=pass header.d=suse.de header.s=susede2_rsa header.b=uJKPSDrc;
+ dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=Dq++VEeI
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1756245159; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=CwPIdL0NWwvEkieq0eu1e0ds0YFIVTFLsbJMqK780Ng=;
+ b=uJKPSDrcA4IpOPO6Ld2XI9Mxix8kvFzFQRTRYi/4XmHx9B16ESRTn1pg6VoqGIrOvXC4XQ
+ kzshuly9d3VDORcYXc5H+NcnnxOgp/k9Wuoa/AcuFyv0Sr26g4MmWgxeB0tSZrj7xHJCDM
+ gBeD3DEER357n+JF3N9+RWyVo5f/AFo=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1756245159;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=CwPIdL0NWwvEkieq0eu1e0ds0YFIVTFLsbJMqK780Ng=;
+ b=Dq++VEeIcmuFW+cKKklYQBOGhNaysWQSt8cjWX7Oogj4W4BHTP/U+GYYPyFlFuVZ/R8HcT
+ 8iY7NxC+7YPoc0BQ==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 80EF813479;
+ Tue, 26 Aug 2025 21:52:38 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id N1hwEKYsrmjNTQAAD6G6ig
+ (envelope-from <farosas@suse.de>); Tue, 26 Aug 2025 21:52:38 +0000
+From: Fabiano Rosas <farosas@suse.de>
 To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: farosas@suse.de, Marco.Cavenati@eurecom.fr, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
+Cc: Marco.Cavenati@eurecom.fr, mjt@tls.msk.ru, peterx@redhat.com,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org, Akihiko Odaki
+ <odaki@rsg.ci.i.u-tokyo.ac.jp>
 Subject: Re: [PATCH] migration: fix SEEK_CUR offset calculation in
  qio_channel_block_seek
-Message-ID: <aK4m0MtycEi32--U@x1.local>
+In-Reply-To: <dc23eaca-15f5-40be-89d0-2247cfe1f716@tls.msk.ru>
 References: <871pudmlmj.fsf@suse.de>
  <dc23eaca-15f5-40be-89d0-2247cfe1f716@tls.msk.ru>
+Date: Tue, 26 Aug 2025 18:52:35 -0300
+Message-ID: <87plchkaxo.fsf@suse.de>
 MIME-Version: 1.0
-In-Reply-To: <dc23eaca-15f5-40be-89d0-2247cfe1f716@tls.msk.ru>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: o2sRMXtxUlUsfT_I3y3qk_r_f6MNlblvSS5_4xULmkU_1756243678
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain
+X-Rspamd-Queue-Id: 11D0721266
+X-Rspamd-Action: no action
+X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
+X-Spamd-Result: default: False [-4.50 / 50.00]; BAYES_HAM(-2.99)[99.97%];
+ NEURAL_HAM_LONG(-1.00)[-1.000];
+ R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ NEURAL_HAM_SHORT(-0.20)[-1.000]; MIME_GOOD(-0.10)[text/plain];
+ MX_GOOD(-0.01)[]; FUZZY_RATELIMITED(0.00)[rspamd.com];
+ RCVD_VIA_SMTP_AUTH(0.00)[]; MISSING_XM_UA(0.00)[];
+ MIME_TRACE(0.00)[0:+]; ARC_NA(0.00)[];
+ RCPT_COUNT_SEVEN(0.00)[7]; RCVD_TLS_ALL(0.00)[];
+ TO_DN_SOME(0.00)[]; FROM_EQ_ENVFROM(0.00)[];
+ FROM_HAS_DN(0.00)[]; MID_RHS_MATCH_FROM(0.00)[];
+ RCVD_COUNT_TWO(0.00)[2];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ TO_MATCH_ENVRCPT_ALL(0.00)[]; DKIM_TRACE(0.00)[suse.de:+]
+Received-SPF: pass client-ip=2a07:de40:b251:101:10:150:64:1;
+ envelope-from=farosas@suse.de; helo=smtp-out1.suse.de
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,57 +122,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Tue, Aug 26, 2025 at 11:32:20PM +0300, Michael Tokarev wrote:
+Michael Tokarev <mjt@tls.msk.ru> writes:
+
++CC Akihiko
+
 > Hi!
-> 
+>
 > This is
-> 
+>
 > commit c0b32426ce56182c1ce2a12904f3a702c2ecc460
 > Author: Marco Cavenati <Marco.Cavenati@eurecom.fr>
 > Date:   Wed Mar 26 17:22:30 2025 +0100
-> 
->     migration: fix SEEK_CUR offset calculation in qio_channel_block_seek
-> 
+>
+>      migration: fix SEEK_CUR offset calculation in qio_channel_block_seek
+>
 > which went to 10.0.0-rc2, and has been cherry-picked to
 > 7.2 and 9.2 stable series.
-> 
+>
 > Reportedly it breaks migration in 7.2.18 and up.  Which is
 > kinda strange, as it shouldn't do any harm?
-> 
+>
+
+Yeah, this is not it. Unless you're using colo or mapped-ram.
+
 > https://bugs.debian.org/1112044
-> 
+>
 > any guess what's going on?
+>
 
-The only thing I can think of is, when it used to save to some file /
-snapshot, then if the old image was stored with some wrong offsets (due to
-wrong seek()s) then a new QEMU with correct offsets will instead read wrong
-data even if they started to do the right things..
+The virtio changes are probably the issue. One of them touches
+mhdr.num_buffers, under mergeable_rx_bufs, which is migrated state. The
+flag in turn depends on VIRTIO_NET_F_MRG_RXBUF, which is set on the
+cmdline with -device virtio-net-pci,mrg_rxbuf= but also reset by
+virtio_set_features_nocheck, if I'm reading this right.
 
-The reporter says:
+Let's ask Akihiko.
 
-        This occurs during live-migrating a guest onto a host with u15,
-        migrating it back fixes the softlocks. A reset is required to fix
-        it but is only required when the receiving host is on the latest
-        version.
-
-So it's a host-to-host live migration.  Is that using TCP as URI?  The
-problem is I don't even think TCP layer should use io_seek at all.
-
-qio_channel_io_seek() is only used in below (except VFIO when used with
-multifd, that doesn't look like what the reporter was using..):
-
-*** migration/file.c:
-file_start_outgoing_migration[121] if (offset && qio_channel_io_seek(ioc, offset, SEEK_SET, errp) < 0) {
-file_start_incoming_migration[190] qio_channel_io_seek(QIO_CHANNEL(fioc), offset, SEEK_SET, errp) < 0) {
-
-*** migration/qemu-file.c:
-qemu_set_offset[611]           ret = qio_channel_io_seek(f->ioc, off, whence, &err);
-qemu_get_offset[624]           ret = qio_channel_io_seek(f->ioc, 0, SEEK_CUR, &err);
-
-All these references are about file migrations, not generic live
-migrations..
-
--- 
-Peter Xu
-
+> Thanks,
+>
+> /mjt
 
