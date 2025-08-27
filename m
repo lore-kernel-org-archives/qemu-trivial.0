@@ -4,93 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 904C0CA0EFF
-	for <qemu-trivial@archiver.kernel.org>; Wed, 27 Aug 2025 07:00:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48B11CA0EFF
+	for <qemu-trivial@archiver.kernel.org>; Wed, 27 Aug 2025 08:05:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1urA8l-000176-B2; Wed, 27 Aug 2025 03:00:15 -0400
+	id 1urB9B-0005y3-7l; Wed, 27 Aug 2025 04:04:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1urA8a-00010e-1Y; Wed, 27 Aug 2025 03:00:04 -0400
-Received: from isrv.corpit.ru ([212.248.84.144])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1urB8d-0005Xb-Rl
+ for qemu-trivial@nongnu.org; Wed, 27 Aug 2025 04:04:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1urA8W-0001i2-LZ; Wed, 27 Aug 2025 03:00:03 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 095F814C017;
- Wed, 27 Aug 2025 09:59:28 +0300 (MSK)
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id D24A5269534;
- Wed, 27 Aug 2025 09:59:53 +0300 (MSK)
-Message-ID: <348e96f0-532e-449e-a928-b4fd1b4f9f70@tls.msk.ru>
-Date: Wed, 27 Aug 2025 09:59:52 +0300
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1urB8Z-0003Rg-L8
+ for qemu-trivial@nongnu.org; Wed, 27 Aug 2025 04:04:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1756281845;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=LE+P3bRUP2E1+CDMzNLWyM2HXRUT6ojfbcwqmem+oM0=;
+ b=TmT2unxJzCCUPbwn5c4Ro+1q/dLnnZDLvAzMHoCpB/YLKaeAzfpadxDgCpiSszBrQt/+cE
+ l/HJltto6X6SEgdBkhR8XkvulsxO+P/kocMPhtdNYH1uiswcltAKiLPZVL3ICF3i7ZJdlh
+ UB4RT9fqR5SZ8Pk/03txm7AnRve8pG8=
+Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
+ [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-584-NlclY8AvMLa8zs112bSunQ-1; Wed, 27 Aug 2025 04:04:03 -0400
+X-MC-Unique: NlclY8AvMLa8zs112bSunQ-1
+X-Mimecast-MFC-AGG-ID: NlclY8AvMLa8zs112bSunQ_1756281842
+Received: by mail-wr1-f72.google.com with SMTP id
+ ffacd0b85a97d-3c79f0a5babso1255735f8f.0
+ for <qemu-trivial@nongnu.org>; Wed, 27 Aug 2025 01:04:02 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1756281842; x=1756886642;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=LE+P3bRUP2E1+CDMzNLWyM2HXRUT6ojfbcwqmem+oM0=;
+ b=jNze5KlMf9QR4KVJqK10xcLz9h+NAr/J70CA0CNNZFmyauhzcgYK2YnsT0ocMg92KB
+ QOTRxNFATOuEjZ4hwNKVHv/8JC5NDk1WE9EL/o5HNXj6Eof9fEvQyI6O0Vka5Tn2hNdD
+ YgwRywuAjgqRZnVdvta3EVBTE4CuDUK1X5ptfd6sBFiujqtLp+tmEk9pU80GllaTLyAi
+ VrhlbqeCUg1tF1gWY+Gu7xPrL5i9dKjuaKls8gzX6lm10QefBj01phZMMkCUFCl9p8tE
+ VnOsE+RpOonj3k+OIQBNUAt71/x6T2rgT7v6APuTu+SCGtjVeX+DE9mZvse/PiuNQO7R
+ stoQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCV+yAysVUqewnDjEXB6pcFnxDZmzL0pJbzfV893KeAvbpGKfeQnNlcTQaUdI48NXM2IGpMbxjN05mW3hVc=@nongnu.org
+X-Gm-Message-State: AOJu0Yy5NzEI/DKaUO+awpX85JOyUFO3RVhS8g78gU4VAy3aV9hzy/Vj
+ nChpAjHrPTe4rUPIyCs5PpVLSkvXzKCogfivm0xmJHDnvX2RkYYuEBVZOi1BaFEMqR/JweFPCjC
+ S9qTfNgUIh7C2WE3nxRwuxQZ3moxNLaoODTCIDtmXvV+1bJIAh8b7pe/0Xfk=
+X-Gm-Gg: ASbGncuzB/kOBH/OMQ1xoZ8M+texGpsF0NSdaOzi+WTeEutL1+dwmuns8CeW9+sxA/u
+ HnYL9dwh2UkYwbIv0w8VaQ/ANgwE292IZn71zF9tbyrdaWKqpMbW79UBKk4DpMi+keLCR8xy746
+ Z7zz851ztsmUymajfa/xKQjUvVgXlAq/I60mRRejCSEnp4vYw3UGprR2cAIlIkx6B1BUwCsdOx9
+ sgFPo4fqUi+ASg31zEOvymU1W4eswwaqqVTtziv59zKfgz493lLxhE995OTshAQYN2Ujjy6TXEE
+ jb1DqGfRBWPS2P16PjTkJHScP5DEjD+dG4M5oXmULT9i20xXh4+RdEWXCokI7hJ3yPlG4xf6o6O
+ tCGKD
+X-Received: by 2002:a05:6000:4383:b0:3c5:9e0f:7607 with SMTP id
+ ffacd0b85a97d-3c5dc734286mr13427454f8f.33.1756281841783; 
+ Wed, 27 Aug 2025 01:04:01 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IEXWUxumYr7retucVGT8tJoNIjREdTtbh3QALl4HJjZToU8rtyWxR1HkARGxfcErte8h3/8jQ==
+X-Received: by 2002:a05:6000:4383:b0:3c5:9e0f:7607 with SMTP id
+ ffacd0b85a97d-3c5dc734286mr13427420f8f.33.1756281841307; 
+ Wed, 27 Aug 2025 01:04:01 -0700 (PDT)
+Received: from [192.168.0.6] (ltea-047-064-113-247.pools.arcor-ip.net.
+ [47.64.113.247]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-3c70e4ba078sm21348825f8f.4.2025.08.27.01.04.00
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 27 Aug 2025 01:04:00 -0700 (PDT)
+Message-ID: <cd274edb-fd19-4e06-806c-cc8f30b6f32f@redhat.com>
+Date: Wed, 27 Aug 2025 10:03:59 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] virtio: Call set_features during reset (was: migration:
- fix SEEK_CUR offset calculation in qio_channel_block_seek)
-To: Fabiano Rosas <farosas@suse.de>
-Cc: Marco.Cavenati@eurecom.fr, peterx@redhat.com, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-References: <871pudmlmj.fsf@suse.de>
- <dc23eaca-15f5-40be-89d0-2247cfe1f716@tls.msk.ru> <87plchkaxo.fsf@suse.de>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <87plchkaxo.fsf@suse.de>
+Subject: Re: [PATCH] docs: fix typo in xive doc
+To: Aditya Gupta <adityag@linux.ibm.com>,
+ Gautam Menghani <gautam@linux.ibm.com>
+Cc: qemu-devel@nongnu.org, qemu-ppc@nongnu.org,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20250827053228.519707-1-adityag@linux.ibm.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20250827053228.519707-1-adityag@linux.ibm.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: 3SWRFgK3kS6IZRgsdDZqPUQRuylk0i6ePT3H9uH6eEA_1756281842
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,79 +158,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 27.08.2025 00:52, Fabiano Rosas wrote:
-> Michael Tokarev <mjt@tls.msk.ru> writes:
+On 27/08/2025 07.32, Aditya Gupta wrote:
+> "Interrupt Pending Buffer" IPB, which got written as IBP due to typo.
 > 
-> +CC Akihiko
+> The "IPB" register is also mentioned in same doc multiple times.
 > 
->> Hi!
->>
->> This is
->>
->> commit c0b32426ce56182c1ce2a12904f3a702c2ecc460
->> Author: Marco Cavenati <Marco.Cavenati@eurecom.fr>
->> Date:   Wed Mar 26 17:22:30 2025 +0100
->>
->>       migration: fix SEEK_CUR offset calculation in qio_channel_block_seek
->>
->> which went to 10.0.0-rc2, and has been cherry-picked to
->> 7.2 and 9.2 stable series.
->>
->> Reportedly it breaks migration in 7.2.18 and up.  Which is
->> kinda strange, as it shouldn't do any harm?
->>
+> Signed-off-by: Aditya Gupta <adityag@linux.ibm.com>
+> ---
+>   docs/specs/ppc-xive.rst | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Yeah, this is not it. Unless you're using colo or mapped-ram.
-> 
->> https://bugs.debian.org/1112044
->>
->> any guess what's going on?
->>
-> 
-> The virtio changes are probably the issue. One of them touches
-> mhdr.num_buffers, under mergeable_rx_bufs, which is migrated state. The
-> flag in turn depends on VIRTIO_NET_F_MRG_RXBUF, which is set on the
-> cmdline with -device virtio-net-pci,mrg_rxbuf= but also reset by
-> virtio_set_features_nocheck, if I'm reading this right.
-> 
-> Let's ask Akihiko.
+> diff --git a/docs/specs/ppc-xive.rst b/docs/specs/ppc-xive.rst
+> index 83d43f658b90..968cc760d466 100644
+> --- a/docs/specs/ppc-xive.rst
+> +++ b/docs/specs/ppc-xive.rst
+> @@ -157,7 +157,7 @@ Interrupt flow from an O/S perspective
+>   
+>   After an event data has been enqueued in the O/S Event Queue, the IVPE
+>   raises the bit corresponding to the priority of the pending interrupt
+> -in the register IBP (Interrupt Pending Buffer) to indicate that an
+> +in the register IPB (Interrupt Pending Buffer) to indicate that an
+>   event is pending in one of the 8 priority queues. The Pending
+>   Interrupt Priority Register (PIPR) is also updated using the IPB. This
+>   register represent the priority of the most favored pending
 
-The reporter just reported that they used the wrong commit id, --
-actually, the issue is caused by ce1431615292dc735597db4062834b:
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
-commit ce1431615292dc735597db4062834bfb271381bc
-Author: Akihiko Odaki <odaki@rsg.ci.i.u-tokyo.ac.jp>
-Date:   Mon Apr 21 21:17:20 2025 +0900
-
-     virtio: Call set_features during reset
-
-     virtio-net expects set_features() will be called when the feature set
-     used by the guest changes to update the number of virtqueues but it is
-     not called during reset, which will clear all features, leaving the
-     queues added for VIRTIO_NET_F_MQ or VIRTIO_NET_F_RSS. Not only these
-     extra queues are visible to the guest, they will cause segmentation
-     fault during migration.
-
-     Call set_features() during reset to remove those queues for virtio-net
-     as we call set_status(). It will also prevent similar bugs for
-     virtio-net and other devices in the future.
-
-     Fixes: f9d6dbf0bf6e ("virtio-net: remove virtio queues if the guest 
-doesn't support multiqueue")
-     Buglink: https://issues.redhat.com/browse/RHEL-73842
-     Cc: qemu-stable@nongnu.org
-     Signed-off-by: Akihiko Odaki <akihiko.odaki@daynix.com>
-     Message-Id: <20250421-reset-v2-1-e4c1ead88ea1@daynix.com>
-     Reviewed-by: Michael S. Tsirkin <mst@redhat.com>
-     Signed-off-by: Michael S. Tsirkin <mst@redhat.com>
-     (cherry picked from commit 0caed25cd171c611781589b5402161d27d57229c)
-     Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-
-(so commit 0caed25cd171c611781589b5402161 in master).
-
-So yes, this one looks much more real in this context.
-
-Thanks,
-
-/mjt
 
