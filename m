@@ -4,34 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AB322CA1009
-	for <qemu-trivial@archiver.kernel.org>; Wed,  3 Sep 2025 08:02:17 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0612CA0FF2
+	for <qemu-trivial@archiver.kernel.org>; Wed,  3 Sep 2025 08:03:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1utiRY-0003cF-1b; Wed, 03 Sep 2025 04:02:14 -0400
+	id 1utiS9-0004rZ-2v; Wed, 03 Sep 2025 04:02:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1utiPP-0001C1-9q; Wed, 03 Sep 2025 04:00:00 -0400
+ id 1utiPS-0001EI-OQ; Wed, 03 Sep 2025 04:00:09 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1utiPM-0005zA-IL; Wed, 03 Sep 2025 03:59:59 -0400
+ id 1utiPQ-0005zn-QH; Wed, 03 Sep 2025 04:00:02 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id CD93314F539;
+ by isrv.corpit.ru (Postfix) with ESMTP id E54C914F53B;
  Wed, 03 Sep 2025 10:59:51 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 3975026E184;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 528A526E186;
  Wed,  3 Sep 2025 10:59:53 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Subject: [PULL 0/5] Trivial patches for 2025-09-03
-Date: Wed,  3 Sep 2025 10:59:45 +0300
-Message-ID: <20250903075952.481585-1-mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ qemu-stable@qemu.org
+Subject: [PULL 2/5] block/curl: fix curl internal handles handling
+Date: Wed,  3 Sep 2025 10:59:47 +0300
+Message-ID: <20250903075952.481585-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.2
+In-Reply-To: <20250903075952.481585-1-mjt@tls.msk.ru>
+References: <20250903075952.481585-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -58,42 +60,57 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-The following changes since commit 8415b0619f65bff12f10c774659df92d3f61daca:
+block/curl.c uses CURLMOPT_SOCKETFUNCTION to register a socket callback.
+According to the documentation, this callback is called not just with
+application-created sockets but also with internal curl sockets, - and
+for such sockets, user data pointer is not set by the application, so
+the result qemu crashing.
 
-  Merge tag 'qga-pull-2025-08-29-v2' of https://github.com/kostyanf14/qemu into staging (2025-09-02 12:07:05 +0200)
+Pass BDRVCURLState directly to the callback function as user pointer,
+instead of relying on CURLINFO_PRIVATE.
 
-are available in the Git repository at:
+This problem started happening with update of libcurl from 8.9 to 8.10 --
+apparently with this change curl started using private handles more.
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+(CURLINFO_PRIVATE is used in one more place, in curl_multi_check_completion() -
+it might need a similar fix too)
 
-for you to fetch changes up to 25fef09ce17ac1ae22638a0b57d97c2bd5cd7d83:
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3081
+Cc: qemu-stable@qemu.org
+Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ block/curl.c | 7 ++-----
+ 1 file changed, 2 insertions(+), 5 deletions(-)
 
-  docs: fix typo in xive doc (2025-09-03 10:57:50 +0300)
+diff --git a/block/curl.c b/block/curl.c
+index 5467678024..00b949ea45 100644
+--- a/block/curl.c
++++ b/block/curl.c
+@@ -162,13 +162,9 @@ static int curl_timer_cb(CURLM *multi, long timeout_ms, void *opaque)
+ static int curl_sock_cb(CURL *curl, curl_socket_t fd, int action,
+                         void *userp, void *sp)
+ {
+-    BDRVCURLState *s;
+-    CURLState *state = NULL;
++    BDRVCURLState *s = userp;
+     CURLSocket *socket;
+ 
+-    curl_easy_getinfo(curl, CURLINFO_PRIVATE, (char **)&state);
+-    s = state->s;
+-
+     socket = g_hash_table_lookup(s->sockets, GINT_TO_POINTER(fd));
+     if (!socket) {
+         socket = g_new0(CURLSocket, 1);
+@@ -605,6 +601,7 @@ static void curl_attach_aio_context(BlockDriverState *bs,
+     assert(!s->multi);
+     s->multi = curl_multi_init();
+     s->aio_context = new_context;
++    curl_multi_setopt(s->multi, CURLMOPT_SOCKETDATA, s);
+     curl_multi_setopt(s->multi, CURLMOPT_SOCKETFUNCTION, curl_sock_cb);
+     curl_multi_setopt(s->multi, CURLMOPT_TIMERDATA, s);
+     curl_multi_setopt(s->multi, CURLMOPT_TIMERFUNCTION, curl_timer_cb);
+-- 
+2.47.2
 
-----------------------------------------------------------------
-trivial patches for 2025-09-03
-
-A few assorted fixes.
-Including not-so-trivial (but simple) fix for curl (https)
-block protocol with recent curl versions.
-
-----------------------------------------------------------------
-Aditya Gupta (1):
-      docs: fix typo in xive doc
-
-Michael Tokarev (2):
-      block/curl: fix curl internal handles handling
-      block/curl: drop old/unuspported curl version checks
-
-Philippe Mathieu-Daudé (1):
-      scripts/coverity-scan/COMPONENTS.md: Add a 'plugins' category
-
-Stefan Weil (1):
-      chardev/baum: Fix compiler warning for Windows builds
-
- block/curl.c                        | 20 +++-----------------
- chardev/baum.c                      |  8 ++++++--
- docs/specs/ppc-xive.rst             |  2 +-
- scripts/coverity-scan/COMPONENTS.md |  3 +++
- 4 files changed, 13 insertions(+), 20 deletions(-)
 
