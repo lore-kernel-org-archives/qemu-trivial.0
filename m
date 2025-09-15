@@ -4,92 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 29F61CAC582
-	for <qemu-trivial@archiver.kernel.org>; Sun, 14 Sep 2025 10:30:24 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41DB0CAC592
+	for <qemu-trivial@archiver.kernel.org>; Mon, 15 Sep 2025 19:28:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1uxjzp-0003Fe-Tt; Sun, 14 Sep 2025 06:30:15 -0400
+	id 1uyEs3-0000kZ-7a; Mon, 15 Sep 2025 15:28:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1uxjzo-0003FO-Le; Sun, 14 Sep 2025 06:30:12 -0400
-Received: from isrv.corpit.ru ([212.248.84.144])
+ (Exim 4.90_1) (envelope-from <aokblast@FreeBSD.org>)
+ id 1uyDcM-0006kW-T0
+ for qemu-trivial@nongnu.org; Mon, 15 Sep 2025 14:08:00 -0400
+Received: from mx2.freebsd.org ([96.47.72.81])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1uxjzf-0001qs-SW; Sun, 14 Sep 2025 06:30:12 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 3E11C1535CD;
- Sun, 14 Sep 2025 13:29:43 +0300 (MSK)
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id C715427FD66;
- Sun, 14 Sep 2025 13:29:47 +0300 (MSK)
-Message-ID: <27e60aa5-8d97-4d5c-a85c-18bc6b24aeb4@tls.msk.ru>
-Date: Sun, 14 Sep 2025 13:29:47 +0300
+ (Exim 4.90_1) (envelope-from <aokblast@FreeBSD.org>)
+ id 1uyDc9-00075b-61
+ for qemu-trivial@nongnu.org; Mon, 15 Sep 2025 14:07:57 -0400
+Received: from mx1.freebsd.org (mx1.freebsd.org [IPv6:2610:1c1:1:606c::19:1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits)
+ client-signature RSA-PSS (4096 bits))
+ (Client CN "mx1.freebsd.org", Issuer "R13" (verified OK))
+ by mx2.freebsd.org (Postfix) with ESMTPS id 4cQY0Y0qTdz3bhQ;
+ Mon, 15 Sep 2025 18:07:41 +0000 (UTC)
+ (envelope-from aokblast@FreeBSD.org)
+Received: from smtp.freebsd.org (smtp.freebsd.org [96.47.72.83])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256
+ client-signature RSA-PSS (4096 bits) client-digest SHA256)
+ (Client CN "smtp.freebsd.org", Issuer "R13" (verified OK))
+ by mx1.freebsd.org (Postfix) with ESMTPS id 4cQY0X6Zrmz40qb;
+ Mon, 15 Sep 2025 18:07:40 +0000 (UTC)
+ (envelope-from aokblast@FreeBSD.org)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=freebsd.org; s=dkim;
+ t=1757959661;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=y5iZOiBz3EKL+JDBDLNnXVa3Tvew1gt5q/PBP92eE7M=;
+ b=kO3m8B3lP+45GmjUe0fJqahnXaBkChyxBMk15u8pr7fq7MiSlBRHzpLlFqmRPXnStq+8Ie
+ CP31V7QxW89O2WYXC01KjVotGwdmusJ7SGcHazmnSlC8AwaJlcwpui+CJHoX+Dd29Ynl7D
+ xsbKcCK2stI4ldIzYM4NetM9LsN1XZrOJB3aOxy6h2ZFJu+IYsfVxq+wqSgEGrnyO5FXvx
+ /pHREUyKi92WNPY1HpOL8Zg28iuch97UuBbtGFRlgxB0cNQItyLAlJSlXn3lDb1zlNLGTr
+ y7rBqsjwVDx7fwrQE8qupF0aaNQqjNiAkoZ0HoZTw+x96KMzDVDDP816KCdFUQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=freebsd.org;
+ s=dkim; t=1757959660;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=y5iZOiBz3EKL+JDBDLNnXVa3Tvew1gt5q/PBP92eE7M=;
+ b=gJAe9WerhqtCBmNVoffr1WAx3srgM67YatC8mbrSYus0QA9KUaNa64MFk4JtDOdQZ4OH/K
+ HYT4Zle3P+77ChtWc9Vl3GTEoocMNQRq4xVfI5JNrtyvzby0DQt8hQgFvQHw/4Kuh16uKH
+ ScwhZX9L7ZRph5TC7kAk2uPh+S/2TZ7ZDqIjPgBn8Y5Eygkid5WHPlMrS/mpEPfFHLbm1h
+ zL1qU0TljdQO1mLzHKYuNxH4I5dn87CpDAyIeJKkRJSqVn+nthJnZjEUBFREC8rSb/K1Bv
+ pN2oB2f7fvCQ2P0nJmn0zPeRCzURxIGKCupJ/hMtRayOIKesQ4NBz3JjKYYJnw==
+ARC-Seal: i=1; s=dkim; d=freebsd.org; t=1757959660; a=rsa-sha256; cv=none;
+ b=uR28/0F1Dd0QrGL5g5xcwDVjSJ/80YsfOyZBDp7pVVyKGZn2NR7sfFy0RT2f2ixBuqGFk7
+ NjMUmBfOnrhnjsEH8PpWZ9I36jlv7RKzJfNTVgWwp89NV/z2A8ajlXfLo4yVUuuUT0GFpx
+ 8BSRCk4ZyJTMuDvAe3s7rRRKZL8XYGtb2ZLcDC5z3oVnp8uA8QiFCUT25TxLEAlqIjEy8y
+ fM9VXFZXQy+UzdDEWHMLVk4W0T2/qqOw6KDTIApM3Pmpl3wSnYYwpGVSDBPeIQdb5W0Mhj
+ pAumcLUXCEkN4EWZyZyx568bczyfeU4RXfyB5nc83xw2oVaq3NzWFAwXjvth7w==
+ARC-Authentication-Results: i=1;
+	mx1.freebsd.org;
+	none
+Received: from localhost.localdomain
+ (2001-b011-3808-f06a-a66b-b6ff-fe3d-469a.dynamic-ip6.hinet.net
+ [IPv6:2001:b011:3808:f06a:a66b:b6ff:fe3d:469a])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (Client did not present a certificate)
+ (Authenticated sender: aokblast)
+ by smtp.freebsd.org (Postfix) with ESMTPSA id 4cQY0W0FFvz1C6f;
+ Mon, 15 Sep 2025 18:07:38 +0000 (UTC)
+ (envelope-from aokblast@FreeBSD.org)
+From: ShengYi Hung <aokblast@FreeBSD.org>
+To: qemu-trivial@nongnu.org
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ ShengYi Hung <aokblast@FreeBSD.org>
+Subject: [PATCH] wdt_i6300esb: fix incorrect mask for interrupt type
+Date: Mon, 15 Sep 2025 14:07:33 -0400
+Message-ID: <20250915180733.75054-1-aokblast@FreeBSD.org>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial] ui/gtk: Fix callback function signature
-To: Filip Hejsek <filip.hejsek@gmail.com>, qemu-devel@nongnu.org
-Cc: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-trivial@nongnu.org
-References: <20250913-fix-signature-v1-1-974d16871432@gmail.com>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <20250913-fix-signature-v1-1-974d16871432@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=96.47.72.81; envelope-from=aokblast@FreeBSD.org;
+ helo=mx2.freebsd.org
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.035,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 15 Sep 2025 15:28:13 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -104,15 +113,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 13.09.2025 01:58, Filip Hejsek wrote:
-> The correct type for opaque pointer is gpointer,
-> not gpointer * (which is a pointer to a pointer).
-> 
-> Signed-off-by: Filip Hejsek <filip.hejsek@gmail.com>
+According to Intel 6300ESB Controller Hub Datasheet 14.4.15, the interrupt
+type mask should be 0x03 (0b11) instead of 0x11. In the original
+implementation, when we want to disable all interrupt by setting the
+value to 0x03, we will get 0x01 which is incorrect when we want to read
+the value again. However, there is no problem whe considering the correct behavior
+since 0x01 is reserved and unused just like 0x03. This patch is just a
+fix to return the register value.
 
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: ShengYi Hung <aokblast@FreeBSD.org>
+---
+ hw/watchdog/wdt_i6300esb.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-and picked up for the trivial-patches tree.  Thanks!
+diff --git a/hw/watchdog/wdt_i6300esb.c b/hw/watchdog/wdt_i6300esb.c
+index bb8a2766b6..3aa01b8d68 100644
+--- a/hw/watchdog/wdt_i6300esb.c
++++ b/hw/watchdog/wdt_i6300esb.c
+@@ -55,7 +55,7 @@
+ /* Config register bits */
+ #define ESB_WDT_REBOOT  (0x01 << 5)   /* Enable reboot on timeout          */
+ #define ESB_WDT_FREQ    (0x01 << 2)   /* Decrement frequency               */
+-#define ESB_WDT_INTTYPE (0x11 << 0)   /* Interrupt type on timer1 timeout  */
++#define ESB_WDT_INTTYPE (0x03 << 0)   /* Interrupt type on timer1 timeout  */
+ 
+ /* Reload register bits */
+ #define ESB_WDT_RELOAD  (0x01 << 8)    /* prevent timeout                   */
+-- 
+2.50.1
 
-/mjt
 
