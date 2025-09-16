@@ -4,53 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 153A6CAC599
-	for <qemu-trivial@archiver.kernel.org>; Tue, 16 Sep 2025 13:50:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E71BFCAC599
+	for <qemu-trivial@archiver.kernel.org>; Tue, 16 Sep 2025 14:09:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1uyW40-0008Di-Or; Tue, 16 Sep 2025 09:49:45 -0400
+	id 1uyWN6-0000bX-Rl; Tue, 16 Sep 2025 10:09:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <guobin@linux.alibaba.com>)
- id 1uyOeG-0002LX-9J; Tue, 16 Sep 2025 01:54:40 -0400
-Received: from [115.124.30.112] (helo=out30-112.freemail.mail.aliyun.com)
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <guobin@linux.alibaba.com>)
- id 1uyOeA-0004D0-RK; Tue, 16 Sep 2025 01:54:39 -0400
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uyWN5-0000ab-95
+ for qemu-trivial@nongnu.org; Tue, 16 Sep 2025 10:09:27 -0400
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1uyWN2-0005nr-F7
+ for qemu-trivial@nongnu.org; Tue, 16 Sep 2025 10:09:27 -0400
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-72c3b247827so43691127b3.1
+ for <qemu-trivial@nongnu.org>; Tue, 16 Sep 2025 07:09:23 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linux.alibaba.com; s=default;
- t=1758002055; h=From:To:Subject:Date:Message-Id:MIME-Version;
- bh=PiwFxUnyG8dWIbP8fQG2LupwKBRzKhZ4u6pzMFSkzBo=;
- b=UXc14f5To8M9YFK1FeVenqez2Cj30cTDCWU8Jj+mDZVm/mM3pFl9qMR4Zcj1LAzQFF0d9jzg7UxaBig2+z+cevN71EvGIdlQ1Jl3aI49cseZyRLXUb6BCOuOJiGgcoYYE1VTyDWGNlHlbNLZjygRPe2L0FsOS83jvYFKEtL13Mc=
-Received: from localhost(mailfrom:guobin@linux.alibaba.com
- fp:SMTPD_---0Wo76ENp_1758001731 cluster:ay36) by smtp.aliyun-inc.com;
- Tue, 16 Sep 2025 13:48:57 +0800
-From: Bin Guo <guobin@linux.alibaba.com>
-To: qemu-devel@nongnu.org
-Cc: kwolf@redhat.com, hreitz@redhat.com, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: [PATCH] block/monitor: Use hmp_handle_error to report error
-Date: Tue, 16 Sep 2025 13:48:50 +0800
-Message-Id: <20250916054850.40963-1-guobin@linux.alibaba.com>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+ d=linaro.org; s=google; t=1758031762; x=1758636562; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=rBnw5wHMf5QAkmfvITJZI8gIrqDUotC+chL8JdKkWZY=;
+ b=HRNY6pM3OgL4Y/S5i9imiyTt0MILjXrEjF8nUzs1zhs6x2kcDu6jMQrwpCPdWctOA3
+ gob0JhmI7G764lGmL0pU7LYF6kDb5BqK5FZroMXe7MIqOly0n6PKMhUkef21bipMzWd2
+ 62uMI1x/3X3tdDpHpPqC2yY2xfEbflFcu0AakELjH8GqU531pJbPjaPgIdlJpVlRDmbe
+ KV88X56KEgh0gMzwB6XOz2b/O+xquTKCCNPjlocWVjIhZb9FCjm+0CJUwR4NydtvmvwF
+ zoV9u6fcALKLfth8GV399DfKX4byy903paywTikPbiCHZB6EjPzqzC28GP81lTl8CvJZ
+ E6IA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1758031762; x=1758636562;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=rBnw5wHMf5QAkmfvITJZI8gIrqDUotC+chL8JdKkWZY=;
+ b=O6yZYKKBaOhPu+6VKXl5SbGCcKWYlPHDNP1mARw5zqV/gZrmYMqlN0daVHI03wa6bC
+ m8c46FC3AzwFFhtMZTbyFVnS9ugi8vp1WBhe6wM+FvaPExQTEzGW5uAiAsz01+WSwks0
+ t/nhV0jh8G1sl1bAiWy883cnHygqYFy7dtYUWi4ADPrtQDKx1Uzea3f/4EIrSq6qtjcH
+ f2Af9CN6HD33tNApaofeAeD/BJFMBIHr4vvZtNNryqOrbcwSHH2O/h0nhop67/g71X/Z
+ fihI6hwRZEqOtDt7u+VawRwirazAg4J4+nCTvSU1Cn204Zcjms8n8InvquQJ4NENl3Dn
+ dOeQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUljURPG04csbFoybys69hwOJbJ4nni5VVyR8uc08/natVq/sQn5aEBA9KtUW/MdhxukWqITslFZ60EWL0=@nongnu.org
+X-Gm-Message-State: AOJu0Yx5c7ok/3UOK6SlFVhPjggCWon+r8OhpfcculYxFVk4F6OijCo/
+ ro8IOkG5YhkMWhXfEBVJ14BVO/DNqm6i0nzYnh+5bU0ZhNZX6rv5R9e8JjIEa8jkWHC4Qf90Uhp
+ NwqB8iwZN1hzE3ACtrVG+qKVYKnlmUtGMMil4tw9HNA==
+X-Gm-Gg: ASbGncuxkd/NIAVTdMNW4T+7Dy5Ga9SP9Etbye9o/HYgVSVQBw5vAja3mJATRD3XT/K
+ vztF3Dc2QHbjmtAVRYCk1Mgocx4dkiYa+2LmP1QAtcx7wmrb3jvcdXSTcmz74twNUg0/YwG4ekr
+ 1CWjCWwxv1x0l5sQ7hI9kJ7f9jX/Vjg+vlIOtjDJQ5HsBAeFGR1LTNvTYqNtJP+EX4Hc5cIGl8X
+ PLQ3gSp
+X-Google-Smtp-Source: AGHT+IEMYTYJMW0I8kkNnXpHiEwJEJFK+/XPzHCXI738j3mIhI5whmvrBSrl+Iwlq6PZuoyCnCFE/NTGjv6MOPEA2W0=
+X-Received: by 2002:a05:690c:6105:b0:721:69f6:d403 with SMTP id
+ 00721157ae682-730623e2b12mr147747457b3.11.1758031761934; Tue, 16 Sep 2025
+ 07:09:21 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-Host-Lookup-Failed: Reverse DNS lookup failed for 115.124.30.112 (deferred)
-Received-SPF: pass client-ip=115.124.30.112;
- envelope-from=guobin@linux.alibaba.com;
- helo=out30-112.freemail.mail.aliyun.com
-X-Spam_score_int: -166
-X-Spam_score: -16.7
-X-Spam_bar: ----------------
-X-Spam_report: (-16.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, ENV_AND_HDR_SPF_MATCH=-0.5,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001, UNPARSEABLE_RELAY=0.001, USER_IN_DEF_DKIM_WL=-7.5,
- USER_IN_DEF_SPF_WL=-7.5 autolearn=no autolearn_force=no
+References: <tencent_E89CB2B19584679F7D6FF370ADEEC2992707@qq.com>
+In-Reply-To: <tencent_E89CB2B19584679F7D6FF370ADEEC2992707@qq.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 16 Sep 2025 15:09:10 +0100
+X-Gm-Features: Ac12FXyP6M_7DabWncJukQVfTySqsBMW-w4jhHCDwGu0PVS-sRa9jsx2XVGsKj4
+Message-ID: <CAFEAcA9s1fCej4rpsKAgb61w1_hoUoptDa9uNQncpx0TjbX_hQ@mail.gmail.com>
+Subject: Re: [PATCH] hw/net/can: Remove redundant status bit setting in
+ can_sja1000
+To: SillyZ <1357816113@qq.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 16 Sep 2025 09:49:42 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -65,175 +95,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-According to writing-monitor-commands.rst, best practice is to
-use the 'hmp_handle_error' function, which ensures that the
-message gets an 'Error: ' prefix.
+On Tue, 16 Sept 2025 at 14:50, SillyZ <1357816113@qq.com> wrote:
+>
+> In PeliCAN mode reception, the RBS (Receive Buffer Status) bit
+> is set twice at line 842 and 845 with identical operations:
+>   s->status_pel |= 0x01;
+>   s->status_pel |= (1 << 0);
+>
+> Between these two operations, only interrupt_pel is modified and
+> status_pel bit 4 is cleared, neither affecting bit 0. The second
+> operation is redundant.
+>
+> This cleanup aligns PeliCAN mode with BasicCAN mode, which correctly
+> sets this bit only once (line 883).
+>
+> Signed-off-by: SillyZ <1357816113@qq.com>
+> ---
+>  hw/net/can/can_sja1000.c | 1 -
+>  1 file changed, 1 deletion(-)
+>
+> diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
+> index 5b6ba9df6c..6b08e977a1 100644
+> --- a/hw/net/can/can_sja1000.c
+> +++ b/hw/net/can/can_sja1000.c
+> @@ -842,7 +842,6 @@ ssize_t can_sja_receive(CanBusClientState *client, const qemu_can_frame *frames,
+>          s->status_pel |= 0x01; /* Set the Receive Buffer Status. DS-p23 */
+>          s->interrupt_pel |= 0x01;
+>          s->status_pel &= ~(1 << 4);
+> -        s->status_pel |= (1 << 0);
+>          can_sja_update_pel_irq(s);
+>      } else { /* BasicCAN mode */
+>
 
-Signed-off-by: Bin Guo <guobin@linux.alibaba.com>
----
- block/monitor/block-hmp-cmds.c | 43 +++++++++++++++++-----------------
- 1 file changed, 22 insertions(+), 21 deletions(-)
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
-diff --git a/block/monitor/block-hmp-cmds.c b/block/monitor/block-hmp-cmds.c
-index 282d1c386e..2f79a7360d 100644
---- a/block/monitor/block-hmp-cmds.c
-+++ b/block/monitor/block-hmp-cmds.c
-@@ -62,7 +62,7 @@ static void hmp_drive_add_node(Monitor *mon, const char *optstr)
- {
-     QemuOpts *opts;
-     QDict *qdict;
--    Error *local_err = NULL;
-+    Error *err = NULL;
- 
-     opts = qemu_opts_parse_noisily(&qemu_drive_opts, optstr, false);
-     if (!opts) {
-@@ -73,19 +73,19 @@ static void hmp_drive_add_node(Monitor *mon, const char *optstr)
- 
-     if (!qdict_get_try_str(qdict, "node-name")) {
-         qobject_unref(qdict);
--        error_report("'node-name' needs to be specified");
-+        error_setg(&err, "'node-name' needs to be specified");
-         goto out;
-     }
- 
--    BlockDriverState *bs = bds_tree_init(qdict, &local_err);
-+    BlockDriverState *bs = bds_tree_init(qdict, &err);
-     if (!bs) {
--        error_report_err(local_err);
-         goto out;
-     }
- 
-     bdrv_set_monitor_owned(bs);
- out:
-     qemu_opts_del(opts);
-+    hmp_handle_error(mon, err);
- }
- 
- void hmp_drive_add(Monitor *mon, const QDict *qdict)
-@@ -109,7 +109,6 @@ void hmp_drive_add(Monitor *mon, const QDict *qdict)
-     mc = MACHINE_GET_CLASS(current_machine);
-     dinfo = drive_new(opts, mc->block_default_type, &err);
-     if (err) {
--        error_report_err(err);
-         qemu_opts_del(opts);
-         goto err;
-     }
-@@ -123,7 +122,7 @@ void hmp_drive_add(Monitor *mon, const QDict *qdict)
-         monitor_printf(mon, "OK\n");
-         break;
-     default:
--        monitor_printf(mon, "Can't hot-add drive to type %d\n", dinfo->type);
-+        error_setg(&err, "Can't hot-add drive to type %d", dinfo->type);
-         goto err;
-     }
-     return;
-@@ -134,6 +133,7 @@ err:
-         monitor_remove_blk(blk);
-         blk_unref(blk);
-     }
-+    hmp_handle_error(mon, err);
- }
- 
- void hmp_drive_del(Monitor *mon, const QDict *qdict)
-@@ -141,36 +141,32 @@ void hmp_drive_del(Monitor *mon, const QDict *qdict)
-     const char *id = qdict_get_str(qdict, "id");
-     BlockBackend *blk;
-     BlockDriverState *bs;
--    Error *local_err = NULL;
-+    Error *err = NULL;
- 
-     GLOBAL_STATE_CODE();
-     bdrv_graph_rdlock_main_loop();
- 
-     bs = bdrv_find_node(id);
-     if (bs) {
--        qmp_blockdev_del(id, &local_err);
--        if (local_err) {
--            error_report_err(local_err);
--        }
-+        qmp_blockdev_del(id, &err);
-         goto unlock;
-     }
- 
-     blk = blk_by_name(id);
-     if (!blk) {
--        error_report("Device '%s' not found", id);
-+        error_setg(&err, "Device '%s' not found", id);
-         goto unlock;
-     }
- 
-     if (!blk_legacy_dinfo(blk)) {
--        error_report("Deleting device added with blockdev-add"
-+        error_setg(&err, "Deleting device added with blockdev-add"
-                      " is not supported");
-         goto unlock;
-     }
- 
-     bs = blk_bs(blk);
-     if (bs) {
--        if (bdrv_op_is_blocked(bs, BLOCK_OP_TYPE_DRIVE_DEL, &local_err)) {
--            error_report_err(local_err);
-+        if (bdrv_op_is_blocked(bs, BLOCK_OP_TYPE_DRIVE_DEL, &err)) {
-             goto unlock;
-         }
- 
-@@ -196,6 +192,7 @@ void hmp_drive_del(Monitor *mon, const QDict *qdict)
- 
- unlock:
-     bdrv_graph_rdunlock_main_loop();
-+    hmp_handle_error(mon, err);
- }
- 
- void hmp_commit(Monitor *mon, const QDict *qdict)
-@@ -203,6 +200,7 @@ void hmp_commit(Monitor *mon, const QDict *qdict)
-     const char *device = qdict_get_str(qdict, "device");
-     BlockBackend *blk;
-     int ret;
-+    Error *err = NULL;
- 
-     GLOBAL_STATE_CODE();
-     GRAPH_RDLOCK_GUARD_MAINLOOP();
-@@ -214,22 +212,25 @@ void hmp_commit(Monitor *mon, const QDict *qdict)
- 
-         blk = blk_by_name(device);
-         if (!blk) {
--            error_report("Device '%s' not found", device);
--            return;
-+            error_setg(&err, "Device '%s' not found", device);
-+            goto end;
-         }
- 
-         bs = bdrv_skip_implicit_filters(blk_bs(blk));
- 
-         if (!blk_is_available(blk)) {
--            error_report("Device '%s' has no medium", device);
--            return;
-+            error_setg(&err, "Device '%s' has no medium", device);
-+            goto end;
-         }
- 
-         ret = bdrv_commit(bs);
-     }
-     if (ret < 0) {
--        error_report("'commit' error for '%s': %s", device, strerror(-ret));
-+        error_setg(&err, "'commit' error for '%s': %s", device, strerror(-ret));
-     }
-+
-+end:
-+    hmp_handle_error(mon, err);
- }
- 
- void hmp_drive_mirror(Monitor *mon, const QDict *qdict)
-@@ -890,7 +891,7 @@ void hmp_info_snapshots(Monitor *mon, const QDict *qdict)
- 
-     bs = bdrv_all_find_vmstate_bs(NULL, false, NULL, &err);
-     if (!bs) {
--        error_report_err(err);
-+        hmp_handle_error(mon, err);
-         return;
-     }
- 
--- 
-2.39.5
-
+thanks
+-- PMM
 
