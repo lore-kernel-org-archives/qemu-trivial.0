@@ -4,89 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12F8DCAC599
-	for <qemu-trivial@archiver.kernel.org>; Wed, 17 Sep 2025 14:46:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 689E4CAC59A
+	for <qemu-trivial@archiver.kernel.org>; Wed, 17 Sep 2025 15:42:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1uytPw-0005QE-Vu; Wed, 17 Sep 2025 10:45:57 -0400
+	id 1uyuHj-0001Ci-2P; Wed, 17 Sep 2025 11:41:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1uytPv-0005Ps-K6; Wed, 17 Sep 2025 10:45:56 -0400
-Received: from isrv.corpit.ru ([212.248.84.144])
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1uyuHd-000182-LS; Wed, 17 Sep 2025 11:41:28 -0400
+Received: from mout.kundenserver.de ([217.72.192.75])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1uytPt-0005vL-FM; Wed, 17 Sep 2025 10:45:55 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 74EED154F89;
- Wed, 17 Sep 2025 17:45:41 +0300 (MSK)
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 9093328318C;
- Wed, 17 Sep 2025 17:45:48 +0300 (MSK)
-Message-ID: <8c01dc12-d636-4a04-8abf-55c72c020d0b@tls.msk.ru>
-Date: Wed, 17 Sep 2025 17:45:48 +0300
+ (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
+ id 1uyuHF-0004Ho-8E; Wed, 17 Sep 2025 11:41:22 -0400
+Received: from [192.168.100.1] ([82.64.211.94]) by mrelayeu.kundenserver.de
+ (mreue106 [213.165.67.119]) with ESMTPSA (Nemesis) id
+ 1MEmtx-1v9ehN2WJn-004gwj; Wed, 17 Sep 2025 17:40:34 +0200
+Message-ID: <13a10abd-00a9-4c70-84e5-f62409e73215@vivier.eu>
+Date: Wed, 17 Sep 2025 17:40:33 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/net/can: Remove redundant status bit setting in
- can_sja1000
-To: SillyZ <1357816113@qq.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <tencent_E89CB2B19584679F7D6FF370ADEEC2992707@qq.com>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <tencent_E89CB2B19584679F7D6FF370ADEEC2992707@qq.com>
+Subject: Re: [PATCH trivial] vhost-user-test: remove trailing newlines in
+ g_test_message() calls
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>
+References: <20250917142919.928244-1-mjt@tls.msk.ru>
+Content-Language: fr
+From: Laurent Vivier <laurent@vivier.eu>
+Autocrypt: addr=laurent@vivier.eu; keydata=
+ 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
+In-Reply-To: <20250917142919.928244-1-mjt@tls.msk.ru>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
+Content-Transfer-Encoding: 8bit
+X-Provags-ID: V03:K1:NtO23hB4oy8kLq0V4rdlYphgX6r9W2ZPzY5tpByImG/Sp9KIy2n
+ idXLcQ16jl++68DfbHgy+igeaZ/9T6OrId5dZ4LunfZ6cCsIWMMQaP7RNGO7tR1A/uYNANV
+ 0sYXA/H15rjOOdr3mj2VPnpK342F/KwCGxHUhrEA9+xPT6Z8MIV4ns0ocOxGyJDoh0ctguu
+ u+HIeUSaIVncNShGXobyQ==
+UI-OutboundReport: notjunk:1;M01:P0:V6xMKL9y9G0=;FvW/8TZGQWkZBedU/8YoTBNtqO/
+ MY2lsDVN/e52dC5QIbnF9jl8IuInRwexSfkiwEV2XVhI/1FE376gO5zwJVnegwDZ8UY0illRX
+ VTW2jDEw9COq1Iam7PYXTTONS4qY2BNz2qKMBKIQ4S99M0HJgERrQy9rRVtGuNo3/4fQixNd1
+ 8pdtVO8MDjEPqA0pvNOL+6lqUbV1VG/x1BgzixTmD8F3nOBNEmzj2zJTd/tHGc9rUUQ0JcdGB
+ fz6ZLFOCUoMuyp8A9zwVThioYKgEzlAhBuwMtrquGO0qKcSoSo0x8sqAzeiXgk2jqDgb2XKW9
+ gQQu1kteJSrb05eI0hTJVNwqL2BbeTpB5IVT+kVSOGmO+nfPX4nNXh2d/opxJtJr6OlX8Vhk4
+ 3jTB+UdL416fWxLdFu70nU5180UknGqAsOX05sdaz6ecLzl3qPA/Uxu5TF2KBtkBjD9Up1LEa
+ JtSG3hDKUqLkRCrAjdf43bOaWgmtC4MRj644+gkxornMKntMZEv15EHXMoXck+CbUtVkAuWxy
+ /2rBjviTHBlzcvha/9VysElP1edeXt4YBxi4zhNDFL/TUbfVfGwvSyHd84M+FzIVxK7nIqNO4
+ /7DBFThCTFkwqa9WjwNA5MiF7HIVlPUW+Pa0GoAGG4e+tjp0XvUYxtdtdzubHkpRqGjw1DPIl
+ iSW3XgcK/DEb4pC3W7ZmB793u4DcLS5DzSRQRKRnf+CZMPh13T++9CmSaYLvnhm26LsYatv7E
+ Lps35qkzTNR/H6HYXi9msT3Et2fCtse37vismkzetC6CEiFOd68r9yjsq/XO0b2ClW4rjKALw
+ xkZT8CwfBA7Z4GF6U3Ni1zn+IFBaO1pGgg43KguQNOkI7CBJoWcy5lmq2SBnTLEyCmXIHBits
+ lgR1RwmXsNgLvylXaLw5h4g1c8Yo8OL/6hbSFQahBDTqrk2/BisIIcVftw6jzDeevounXrnIG
+ bBMpIRjzQyqpfJISCYoZqj2QoKuk/xeJHXvZxbcWpKm8LiEOo6YwBlNs0lAyVZ46HVsenKSm1
+ 724QPH8emgDlLGYrJ4CzRLUOKjR2wgvg1djl9387D6iXB+0kTBvMddF04yOx01HjwCePGkaTw
+ mGjT5gwaBZDIN/euy/5iBbgqBOxOGbCb/X0InFUxpmWTTT9hRV7WJbv19VrhGQKovFslXA5hU
+ nNQ/ubZSiQA8ChQNYofOA7HfuobgWLvasHA7sa2kT1FPppxuWvseWL0KRvOW0vtxfnFOD9mzl
+ 0EXJhXOE0gUmO77s9XVY9kbgCzbWYdsmhHLiZEcwOf0hp8+riplFNx9dQTMWxNXMNQT05C77u
+ dKkw1ax6Kn1/sLYCmv4PX4dF2EjqQ+QU7B3mv8XaNunogSyQegfUXsTpUV7MyANsdiuO2fh6y
+ 4n9z/Bo3BKQSmp8gQIwjg+SSkhy6ZPd8FFy2khHG1RTlmLpYi1KQArGNZhIGYTSuh4oykrsbX
+ oS2dxK3DTYQPQVyiQ9M00DNiD6unkVnEwTYSwcoJo76eQj4znKHLUhEEAznt7IHq4AEvcy/Gs
+ hycVkO8uzLLmBqeh2XnLOjIF/yylWlKvvYPq8CukFuwz+i+VrbBvf/i/72LXK5iVJaALDxNec
+ XQSXt6nexsMCdQDgvgMTDgsZA5WvWxqBr9932LpwUXucb2BVYNwyu9Gu4fsySGrJnWvr0InIa
+ P5TphH6wNr2c27ck5MUGJ5y1Dc2+Ii6YrhpDXr6BlCWtOCSqfuRSxUnfSFUyMZ0CKza38ruZN
+ sHF6sYM5cALzGMTYH9DVZpYDoKaQ0jLu0OQ==
+Received-SPF: pass client-ip=217.72.192.75; envelope-from=laurent@vivier.eu;
+ helo=mout.kundenserver.de
 X-Spam_score_int: -18
 X-Spam_score: -1.9
 X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
@@ -104,26 +131,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 16.09.2025 11:10, SillyZ wrote:
-> In PeliCAN mode reception, the RBS (Receive Buffer Status) bit
-> is set twice at line 842 and 845 with identical operations:
->    s->status_pel |= 0x01;
->    s->status_pel |= (1 << 0);
+Le 17/09/2025 à 16:29, Michael Tokarev a écrit :
+> Fixes: c9a1ea9c52 Revert "tests/qtest: use qos_printf instead of g_test_message"
 > 
-> Between these two operations, only interrupt_pel is modified and
-> status_pel bit 4 is cleared, neither affecting bit 0. The second
-> operation is redundant.
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>   tests/qtest/vhost-user-test.c | 14 +++++++-------
+>   1 file changed, 7 insertions(+), 7 deletions(-)
 > 
-> This cleanup aligns PeliCAN mode with BasicCAN mode, which correctly
-> sets this bit only once (line 883).
-> 
-> Signed-off-by: SillyZ <1357816113@qq.com>
 
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-
-And applied to the trivial-patches tree.
-
-Thanks,
-
-/mjt
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
 
