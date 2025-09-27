@@ -4,92 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80A1FCAC5AC
-	for <qemu-trivial@archiver.kernel.org>; Tue, 23 Sep 2025 13:37:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9BB7CCAC5B9
+	for <qemu-trivial@archiver.kernel.org>; Sat, 27 Sep 2025 08:44:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v13C3-0008Mp-UV; Tue, 23 Sep 2025 09:36:36 -0400
+	id 1v2QXb-0006jC-T3; Sat, 27 Sep 2025 04:44:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v13Bv-0008F2-Rs
- for qemu-trivial@nongnu.org; Tue, 23 Sep 2025 09:36:24 -0400
-Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v13Bo-0000mG-2j
- for qemu-trivial@nongnu.org; Tue, 23 Sep 2025 09:36:22 -0400
-Received: by mail-wm1-x32f.google.com with SMTP id
- 5b1f17b1804b1-46cbdf513d7so24913725e9.2
- for <qemu-trivial@nongnu.org>; Tue, 23 Sep 2025 06:36:05 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758634562; x=1759239362; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=PfUtgFeSbjMRyCAmZlAogG0hou7P3YxK0T9Pbp0hsN0=;
- b=rMo0Nwt+dL5QJJJzhsiEsDSGTLGdjvmkb/iOvxaMoJ98fGhsmxUSCXBKjntluYi0/W
- 4Yb6cIoa5a3lXhCYsGYdaCag0ehPJENvdSHxu7/BWEyXHc2aoYBQIqss9Eu5eLTLFp+M
- BdeiJZ4ocWLWSol/7AOg2NLDiwAv+TSaCpcNNDa4KpUwgq2UBN/ubBS+yofoiccrOS5N
- tWUAfwqEf4U3Z1+00h6j+5dg5fUC1+ZWaYB1VivmoSg9rUc5M2ugFQrOpeUyl36oP0cg
- ApOKhlq7uDQmSyp32V7ZVM55YpN1wTzV2AyawKg4Go4oStvXaDyZme41AVqfNy+rMyK8
- O4Sw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758634562; x=1759239362;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=PfUtgFeSbjMRyCAmZlAogG0hou7P3YxK0T9Pbp0hsN0=;
- b=Gsu71MZ2+lASkLShuyjj3jyGahY0ODbZgEF+z1i7RWmm4qsms3cW9RWKbf23aBg0Sz
- PkEKkcUYaADDXUiKw3tWEzIu4JYmI53wqM65YlnVk+UfSUWjrwbqxxP7NQWx8XRoaZjX
- cspz3LASMUnwQEnyIThpDH27shFh6zNPEL1WYNuvpLBP0mv3PrgdCSSqUXNt7QF/0L27
- Re1Wfa5EzeImW2lGY2km3tAl5jzgmWqHMVKtmR8hrbdZ6I0rke1pk7BrdK6lsUBWqjr5
- JvMDu0r9ROw66QavcmBHxkzaWIwAab9rsIto2stkTsVo8D4CSbNxKZQda1KlLbDGqFg8
- bTEw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWeHqkH7LuuDitNhb2jOJmGGUE7VTVk6idZ48vQ2QKlJuiJ/B6PCuhz4LTNY9Nw2m4lJUUZxA/S5wUX1W4=@nongnu.org
-X-Gm-Message-State: AOJu0YxhRnuuVFrV1coIMoVwxEvovDdWUP8O6PLk3GV1l0uk0KkjP6j0
- kojMGCrM3RwlCMU8NpMyPbJWLFM7b81DzHZU3eemhruxtZ2a2UReSb1NAJvb7L+Meww=
-X-Gm-Gg: ASbGncuXWwA3qZbmUG4tONWD9iYhz+YeQrPJv4ByILXA27N/DH9e1LYTJTRCqfCVefh
- gwlWcUsurxd2EjQ6ZxgT2zKzEmxlU8JIiRzl0XuXP3ulJ5zP0bxX3X7rmAfMNw1mtU4zaVAkKhS
- S6Qz2Olr+50JpDx4kgDYicaW1Qu3ayDpFCFtdFhgUVGLj+xtIZP+6fPhnWZZuC5BOvH6NJDqZvK
- kiTu+imtOneEjs+W8zh40iW1mDlJXonKDF6pBUjJHdkamglsYuFaSA0QmjIEKbh7/h1cYgxL6wW
- sfp2CfEHsm0/AgchGtheqmr/Dmhmiz1ionjbiTxtbgOPDnjqGN30caTm7QkQW+HrynuOX1nyde8
- XtA3bwbsdoxbO2QXL7ZCdpCgcZUACNwkJCA==
-X-Google-Smtp-Source: AGHT+IFru5XOFoGpQltCHL+uwZ29k5D8S/2Af362p8XHi2BvCKhKMPKczQ1Pa1ffcnvO59bIkiJkFA==
-X-Received: by 2002:a05:600c:4fc7:b0:45f:286e:49a8 with SMTP id
- 5b1f17b1804b1-46e1e0564famr31599495e9.30.1758634562413; 
- Tue, 23 Sep 2025 06:36:02 -0700 (PDT)
-Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-3fe9dbf13f3sm8139152f8f.50.2025.09.23.06.36.01
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 23 Sep 2025 06:36:01 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id DFC355F8AD;
- Tue, 23 Sep 2025 14:36:00 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: qemu-devel@nongnu.org,  qemu-trivial@nongnu.org
-Subject: Re: [PATCH] docs/specs/spdm.rst: Fix typo in x86_64 architecture name
-In-Reply-To: <20250923120118.858581-1-peter.maydell@linaro.org> (Peter
- Maydell's message of "Tue, 23 Sep 2025 13:01:18 +0100")
-References: <20250923120118.858581-1-peter.maydell@linaro.org>
-User-Agent: mu4e 1.12.12; emacs 30.1
-Date: Tue, 23 Sep 2025 14:36:00 +0100
-Message-ID: <87bjn1mgu7.fsf@draig.linaro.org>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1v2QXa-0006iu-JM; Sat, 27 Sep 2025 04:44:26 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1v2QXR-0003fU-Sg; Sat, 27 Sep 2025 04:44:26 -0400
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 3F514158546;
+ Sat, 27 Sep 2025 11:43:58 +0300 (MSK)
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 0EB4A291560;
+ Sat, 27 Sep 2025 11:44:01 +0300 (MSK)
+Message-ID: <e0dee54b-7e58-4028-b639-1cc5a41720fe@tls.msk.ru>
+Date: Sat, 27 Sep 2025 11:44:00 +0300
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] ui/spice: Fix abort on SPICE client connect
+To: Mohamed Akram <mohd.akram@outlook.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <A759ECC2-6B53-4B3E-A005-7D06BA403FCB@outlook.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <A759ECC2-6B53-4B3E-A005-7D06BA403FCB@outlook.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,17 +104,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Peter Maydell <peter.maydell@linaro.org> writes:
+On 20.09.2025 23:55, Mohamed Akram wrote:
+> The BQL is already locked by the main loop, so avoid locking again
+> unless needed to not trigger an assertion failure.
+> 
+> Signed-off-by: Mohamed Akram <mohd.akram@outlook.com>
 
-> The spdm.rst docs call the 64-bit x86 architecture "x64-64".
-> This is a typo; correct it to our canonical name for the
-> architecture, "x86_64".
->
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3070
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+And applied to the trivial-pathes tree.  Thank you!
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+/mjt
 
