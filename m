@@ -4,92 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85CEBCAC5B0
-	for <qemu-trivial@archiver.kernel.org>; Sat, 27 Sep 2025 09:27:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AB06CAC5B0
+	for <qemu-trivial@archiver.kernel.org>; Sat, 27 Sep 2025 11:42:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v2RCa-0007No-UI; Sat, 27 Sep 2025 05:26:49 -0400
+	id 1v2TJ9-0006yR-MB; Sat, 27 Sep 2025 07:41:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1v2RCa-0007Mw-AM; Sat, 27 Sep 2025 05:26:48 -0400
-Received: from isrv.corpit.ru ([212.248.84.144])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1v2RCO-000228-L9; Sat, 27 Sep 2025 05:26:47 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 2B75C158592;
- Sat, 27 Sep 2025 12:26:23 +0300 (MSK)
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 08C3F2915A0;
- Sat, 27 Sep 2025 12:26:26 +0300 (MSK)
-Message-ID: <70dc22ae-3fb9-4575-afa2-4d25c97e52c2@tls.msk.ru>
-Date: Sat, 27 Sep 2025 12:26:25 +0300
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v2TJ6-0006yA-Hz
+ for qemu-trivial@nongnu.org; Sat, 27 Sep 2025 07:41:40 -0400
+Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v2TIq-0001nk-8l
+ for qemu-trivial@nongnu.org; Sat, 27 Sep 2025 07:41:38 -0400
+Received: by mail-yx1-xb130.google.com with SMTP id
+ 956f58d0204a3-63497c2a27dso2970544d50.1
+ for <qemu-trivial@nongnu.org>; Sat, 27 Sep 2025 04:41:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1758973274; x=1759578074; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=GMKvrp0MqbLwp8F96ZDIAPIFW2PZrSbwl1gcupYPuEY=;
+ b=mOe70+uU/Kl5L1VRzft7UVBdm0AzjWp8Qr/TLKEKnbHIZ80Jo3wx+zmimL0WhINHY3
+ SbaVItvndMOS8qhYUxR4I/KMq2KpOLgPDhCjq5F2oup+3KoGFwWEkHStS9F9UxCKhSfF
+ RZRfKoB9K0tdONAJa3ArfGH5NohCvzYnC4pPoBCdEIthMYemOiBCsS2K88FfrMGYc/Gw
+ UiZid/0lnV0mAzHyQbVn0K5rTi79NJN4cFy9aIEYIoWtiMK2UYtFVEiGBDASaZvGD9wt
+ YqPM3G1JVZ8dlpgMkzBLF2DNf6Y+IqHPk4RNTWV7t7eu4eaA0YBFHSXHn1eq8jZC0ftd
+ DyGA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1758973274; x=1759578074;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=GMKvrp0MqbLwp8F96ZDIAPIFW2PZrSbwl1gcupYPuEY=;
+ b=iPM03cIJrZx7mphsRnom7a9R40MFAKGLKLomEYuPv/t9adMhEH4QlbZypqY+RdIaCH
+ srRbmoRZTvmRXu54PLSFAAjndi6SMWKiuH7tOazJNvftoM3mldZ93UyktHlwgSH1uLUv
+ 6RsNpbaPP3mfqWOeZRsWmtjENBe88OuvuzPduvYRRigm+jfaNoZxD222gMiwxR3zVAhK
+ UQ8NOHOAc4uzu+clag2IjpQKjlutHR+0jAcIiUyKVBQFP9lKkRsu55oLA7bPoHg/ZZDs
+ bbwlgGm8Ekt514Oo8EtknpT5Bx42xPVRPg6vs59WwGPmAc7wKKvMneTFRmsn7Ev/mbJZ
+ 1hnA==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVPQN9A4yMUFz92qFCBhoceOLatgdvI+ZTrR1P0MHY0/98Ynx3mp6yvFVkaIQLwk5ehdvcuNrwZrT3uz/0=@nongnu.org
+X-Gm-Message-State: AOJu0Yz4aj4is66cpd+LSuCfuiFR5gwdQCjYvGGQMGxUYtX58bQBIuGL
+ tepj8YicQrr06VQv2YsDm/2NY94xz7hMjTefhm0gLPuin1KVEwP5zZzTk3J9/mWvgNAMkzO5dYW
+ iRaeIdjmV4uW02usKlPVr2NFaFBovJO/xKjS/5gkZ2w==
+X-Gm-Gg: ASbGncvATVdiloMjPxRIaNbcLdT76d7kvQz9hCwQATUiV+jexLyLIpDb6aWVtZTNcMH
+ lnhUhW/k+4kVRecicSE4cEOrW1E7sYAlC0ehBInlICsDWy6Xf6YH1CdGSMONJI1NVBQ3Bsq34YK
+ tR26coRSj+mdN3KdrWKO/+jdvu+YKCOC6dKeI8h0ReyS73iSVCEVuO4eZ8cSMWqIkfABqz+unT5
+ wMJmisPpr59n02+fH8=
+X-Google-Smtp-Source: AGHT+IHgv0NLn7Tgrf2/uHSVlMJQmm78eJSVA+eXtaksPZEbEoOFl9dI240mnrk9P70qf4mBOsOsZR96S6zfXFOBtTk=
+X-Received: by 2002:a05:690e:150b:b0:633:a1c0:9b2e with SMTP id
+ 956f58d0204a3-6361a5efe8bmr12157922d50.0.1758973274187; Sat, 27 Sep 2025
+ 04:41:14 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] ui/spice: Fix abort on SPICE client connect
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: Mohamed Akram <mohd.akram@outlook.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <A759ECC2-6B53-4B3E-A005-7D06BA403FCB@outlook.com>
- <e0dee54b-7e58-4028-b639-1cc5a41720fe@tls.msk.ru>
-Content-Language: en-US, ru-RU
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <e0dee54b-7e58-4028-b639-1cc5a41720fe@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+References: <20250922065714.93081-1-nanliu@redhat.com>
+ <CAFEAcA8pLFu6eOK5N+E97qo5PCp3OW3BRfYNSEL7=YQS6+eh2g@mail.gmail.com>
+ <fcf01a1c-3503-4397-a41b-d453ca2b7df9@tls.msk.ru>
+In-Reply-To: <fcf01a1c-3503-4397-a41b-d453ca2b7df9@tls.msk.ru>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 27 Sep 2025 12:41:02 +0100
+X-Gm-Features: AS18NWCl2vmd8McL-LYcfVZGpcCAL51dal_IGyoTd3s7_XBml9fI0fwUz-5_N8g
+Message-ID: <CAFEAcA_BR4VEsZrq1eq19E6iguk49W=Fx2OKQvkvTZ7_6Pd0KA@mail.gmail.com>
+Subject: Re: [PATCH] docs/devel: Correct uefi-vars-x64 device name
+To: Michael Tokarev <mjt@tls.msk.ru>
+Cc: nanliu <nanliu@redhat.com>, qemu-devel@nongnu.org, kraxel@redhat.com, 
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,23 +97,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 27.09.2025 11:44, Michael Tokarev wrote:
-> On 20.09.2025 23:55, Mohamed Akram wrote:
->> The BQL is already locked by the main loop, so avoid locking again
->> unless needed to not trigger an assertion failure.
->>
->> Signed-off-by: Mohamed Akram <mohd.akram@outlook.com>
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3070
-> Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-> 
-> And applied to the trivial-pathes tree.  Thank you!
+On Sat, 27 Sept 2025 at 09:48, Michael Tokarev <mjt@tls.msk.ru> wrote:
+>
+> On 23.09.2025 14:57, Peter Maydell wrote:
+>
+> > We could probably also correct the bit of the text in this file
+> > that currently reads "depend on SMM emulation on x64" to either
+> > say "x86" or "x86_64".
+>
+> This one will be a bit more than trivial :)  I for one don't know
+> if this is related to any x86 or to x86_64 only.
 
-Um.  This is definitely NOT a trivial change, it shouldn't
-go through trivial-patches.  While the change itself is a
-one-liner, but the logic behind this is.. non-trivial.
+I just mean exactly and specifically the one place in this
+file which says "x64" and ought to say either "x86" or
+"x86_64". To me a single word change is pretty trivial,
+especially since nowhere else in our docs do we use "x64".
 
-Thanks,
-
-/mjt
+-- PMM
 
