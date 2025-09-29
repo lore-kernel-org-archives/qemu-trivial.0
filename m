@@ -4,85 +4,104 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1AB06CAC5B0
-	for <qemu-trivial@archiver.kernel.org>; Sat, 27 Sep 2025 11:42:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E5498CAC5B0
+	for <qemu-trivial@archiver.kernel.org>; Mon, 29 Sep 2025 13:02:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v2TJ9-0006yR-MB; Sat, 27 Sep 2025 07:41:45 -0400
+	id 1v3DW3-0002cg-PY; Mon, 29 Sep 2025 09:02:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v2TJ6-0006yA-Hz
- for qemu-trivial@nongnu.org; Sat, 27 Sep 2025 07:41:40 -0400
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v2TIq-0001nk-8l
- for qemu-trivial@nongnu.org; Sat, 27 Sep 2025 07:41:38 -0400
-Received: by mail-yx1-xb130.google.com with SMTP id
- 956f58d0204a3-63497c2a27dso2970544d50.1
- for <qemu-trivial@nongnu.org>; Sat, 27 Sep 2025 04:41:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1758973274; x=1759578074; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=GMKvrp0MqbLwp8F96ZDIAPIFW2PZrSbwl1gcupYPuEY=;
- b=mOe70+uU/Kl5L1VRzft7UVBdm0AzjWp8Qr/TLKEKnbHIZ80Jo3wx+zmimL0WhINHY3
- SbaVItvndMOS8qhYUxR4I/KMq2KpOLgPDhCjq5F2oup+3KoGFwWEkHStS9F9UxCKhSfF
- RZRfKoB9K0tdONAJa3ArfGH5NohCvzYnC4pPoBCdEIthMYemOiBCsS2K88FfrMGYc/Gw
- UiZid/0lnV0mAzHyQbVn0K5rTi79NJN4cFy9aIEYIoWtiMK2UYtFVEiGBDASaZvGD9wt
- YqPM3G1JVZ8dlpgMkzBLF2DNf6Y+IqHPk4RNTWV7t7eu4eaA0YBFHSXHn1eq8jZC0ftd
- DyGA==
+ (Exim 4.90_1) (envelope-from <valentin.haudiquet@canonical.com>)
+ id 1v3CV2-0002dh-7Z
+ for qemu-trivial@nongnu.org; Mon, 29 Sep 2025 07:57:02 -0400
+Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <valentin.haudiquet@canonical.com>)
+ id 1v3CUp-0000g9-05
+ for qemu-trivial@nongnu.org; Mon, 29 Sep 2025 07:56:58 -0400
+Received: from mail-pg1-f198.google.com (mail-pg1-f198.google.com
+ [209.85.215.198])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 230553F27A
+ for <qemu-trivial@nongnu.org>; Mon, 29 Sep 2025 11:56:34 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
+ s=20210705; t=1759146994;
+ bh=SFghgQGJatviRfZ9+87Gkonq1exr2NEeNKOXqr4eExA=;
+ h=From:To:Cc:Subject:Date:Message-ID:MIME-Version;
+ b=mBkEqFeUuNp3UM+CiOxwTl0bNfz5ltAZTBKvYxn0Zf4C7lfGed+v2uh58xAF5oQiR
+ 8T9cmmiXPitw3ArDg9miRfNhwrlH9C/u60dlrtWFNttoIE81T7ch+ofYwiDKnAcO30
+ 58A8niQuYD7mA2+zrvO3uBhL4VQktJprHubNvDXeBu7yDvsVe+Fl7oEseTlutp2rzV
+ HFAlSZoMuJAADS/D7/5osC/OjH1I3GyRA0Bv9GpbYAwSOtAh/KtMBGTv71GtvoiUXT
+ i1KhG3xVseOIGzk1ivTI/pV6/oUUMFySCTt7dctaVfBU96Hg9fScCCGsJSi9DhkJte
+ PAFGGVkKfFDzg==
+Received: by mail-pg1-f198.google.com with SMTP id
+ 41be03b00d2f7-b56ae0c8226so3175861a12.2
+ for <qemu-trivial@nongnu.org>; Mon, 29 Sep 2025 04:56:34 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1758973274; x=1759578074;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ d=1e100.net; s=20230601; t=1759146992; x=1759751792;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=GMKvrp0MqbLwp8F96ZDIAPIFW2PZrSbwl1gcupYPuEY=;
- b=iPM03cIJrZx7mphsRnom7a9R40MFAKGLKLomEYuPv/t9adMhEH4QlbZypqY+RdIaCH
- srRbmoRZTvmRXu54PLSFAAjndi6SMWKiuH7tOazJNvftoM3mldZ93UyktHlwgSH1uLUv
- 6RsNpbaPP3mfqWOeZRsWmtjENBe88OuvuzPduvYRRigm+jfaNoZxD222gMiwxR3zVAhK
- UQ8NOHOAc4uzu+clag2IjpQKjlutHR+0jAcIiUyKVBQFP9lKkRsu55oLA7bPoHg/ZZDs
- bbwlgGm8Ekt514Oo8EtknpT5Bx42xPVRPg6vs59WwGPmAc7wKKvMneTFRmsn7Ev/mbJZ
- 1hnA==
+ bh=SFghgQGJatviRfZ9+87Gkonq1exr2NEeNKOXqr4eExA=;
+ b=BM5F60iWTB7t1Q2fZvQUDH/RUWloS581LuXdl756IDdLWp3J/kMCeigvG/AX9L+uqE
+ LVu2i3Gf5SVdEG1PDZaVAeWG847j1J0rOhDGiIQqF2igAtccAo3dfIx+n26DbTb/n8du
+ dqSE8OeurwhJhM9XXwNZPJQs2UWyd0jMHx0WFgrCSnp0hiWosVqWknK93d1Et09llVHB
+ 0Q/9HN5Uz4qZa37wlA4VmZZ7aWQb8X7j4WxBpc9peKoT/LB52kWpkdc+Y8zjdjd6cQY8
+ s3wscqulvjX05gIh65fj4oFsnTXjkXgydtCS1PEHBKBp6qH82XBwqrfSQpApgOoAhVt/
+ lPPw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVPQN9A4yMUFz92qFCBhoceOLatgdvI+ZTrR1P0MHY0/98Ynx3mp6yvFVkaIQLwk5ehdvcuNrwZrT3uz/0=@nongnu.org
-X-Gm-Message-State: AOJu0Yz4aj4is66cpd+LSuCfuiFR5gwdQCjYvGGQMGxUYtX58bQBIuGL
- tepj8YicQrr06VQv2YsDm/2NY94xz7hMjTefhm0gLPuin1KVEwP5zZzTk3J9/mWvgNAMkzO5dYW
- iRaeIdjmV4uW02usKlPVr2NFaFBovJO/xKjS/5gkZ2w==
-X-Gm-Gg: ASbGncvATVdiloMjPxRIaNbcLdT76d7kvQz9hCwQATUiV+jexLyLIpDb6aWVtZTNcMH
- lnhUhW/k+4kVRecicSE4cEOrW1E7sYAlC0ehBInlICsDWy6Xf6YH1CdGSMONJI1NVBQ3Bsq34YK
- tR26coRSj+mdN3KdrWKO/+jdvu+YKCOC6dKeI8h0ReyS73iSVCEVuO4eZ8cSMWqIkfABqz+unT5
- wMJmisPpr59n02+fH8=
-X-Google-Smtp-Source: AGHT+IHgv0NLn7Tgrf2/uHSVlMJQmm78eJSVA+eXtaksPZEbEoOFl9dI240mnrk9P70qf4mBOsOsZR96S6zfXFOBtTk=
-X-Received: by 2002:a05:690e:150b:b0:633:a1c0:9b2e with SMTP id
- 956f58d0204a3-6361a5efe8bmr12157922d50.0.1758973274187; Sat, 27 Sep 2025
- 04:41:14 -0700 (PDT)
+ AJvYcCUAHluAF2ZKN6m+j5GWGdWCsT0FKdig4z2zJe/q9tcW8bQ//yetspB1tOPtNQiWH6APGSa29qrTY2TUTIs=@nongnu.org
+X-Gm-Message-State: AOJu0Yw2z7eBcmaJis8trJGI86bL4ps5C+zjEaqBb3FB5VlW+zRmSF0S
+ sKKwKbMu5WlEKA2BIjzGwvW6h6MPgv1KZ6XEfgJLDK8stZaCM3wtTzNFtJA0G3Bcvu3LpFgSX+T
+ mAFTvcxdwMoVaCLpZwxCiPH0aT2FvnBH/tFJjn2cA4ZXuIrw1bySKK0eZtWeywptdRxrcC4OLsN
+ k=
+X-Gm-Gg: ASbGncsH44AibLvc/mW66PqjtzOJinHbG9dJCXhkWc4nr2he9rIqoGPMgs8ROvp/BAC
+ 0NEY5J8S0EvpeCpvfm8X+fNdmaWcLIsXhkaqUDJ2jxZGt5m3hy9+toyC2ZP8IkRjnpjwZW1+Air
+ KKzgvmJfUFqOv3VcwBS7ywx/vHanDjUrIJbpleaVuNeJtGLwqIEV0M//waCB2BArVVJqSAQ2ZY2
+ 2dQcorCE87iDVN0aRQVgwv0ft3qCcu6VerlomAkS0Nufo7pPFgFXvu2H2qq1C06bKTTAve+cNaX
+ gFWJvOChTBsou6FfNMLybV4ZDxkD5WVwRSkgcTpTBFRji2B3+RRFS/2Tm4RLZ5gtCyQFUvQstAj
+ sUJU0szbN0+6D1shtl/Ncqg==
+X-Received: by 2002:a17:90b:38cb:b0:32b:ca6f:1245 with SMTP id
+ 98e67ed59e1d1-3342a2437ffmr16621738a91.5.1759146992385; 
+ Mon, 29 Sep 2025 04:56:32 -0700 (PDT)
+X-Google-Smtp-Source: AGHT+IFASDBh8G2c1FURRDxpcfFNRhozl7nqUuj2qICqIVNqXX5nmMxG/DEOjlkpOfcYc3xFqA66xA==
+X-Received: by 2002:a17:90b:38cb:b0:32b:ca6f:1245 with SMTP id
+ 98e67ed59e1d1-3342a2437ffmr16621717a91.5.1759146992037; 
+ Mon, 29 Sep 2025 04:56:32 -0700 (PDT)
+Received: from k6.lan (atoulon-257-1-167-49.w83-113.abo.wanadoo.fr.
+ [83.113.30.49]) by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-338387256cdsm1042425a91.20.2025.09.29.04.56.26
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 29 Sep 2025 04:56:31 -0700 (PDT)
+From: Valentin Haudiquet <valentin.haudiquet@canonical.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, qemu-trivial@nongnu.org,
+ zhiwei_liu@linux.alibaba.com, dbarboza@ventanamicro.com,
+ liwei1518@gmail.com, alistair.francis@wdc.com, palmer@dabbelt.com,
+ vhaudiquet <vhaudiquet343@hotmail.fr>,
+ Valentin Haudiquet <valentin.haudiquet@canonical.com>
+Subject: [PATCH] target/riscv: Fix endianness swap on compressed instructions
+Date: Mon, 29 Sep 2025 13:55:43 +0200
+Message-ID: <20250929115543.1648157-1-valentin.haudiquet@canonical.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-References: <20250922065714.93081-1-nanliu@redhat.com>
- <CAFEAcA8pLFu6eOK5N+E97qo5PCp3OW3BRfYNSEL7=YQS6+eh2g@mail.gmail.com>
- <fcf01a1c-3503-4397-a41b-d453ca2b7df9@tls.msk.ru>
-In-Reply-To: <fcf01a1c-3503-4397-a41b-d453ca2b7df9@tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Sat, 27 Sep 2025 12:41:02 +0100
-X-Gm-Features: AS18NWCl2vmd8McL-LYcfVZGpcCAL51dal_IGyoTd3s7_XBml9fI0fwUz-5_N8g
-Message-ID: <CAFEAcA_BR4VEsZrq1eq19E6iguk49W=Fx2OKQvkvTZ7_6Pd0KA@mail.gmail.com>
-Subject: Re: [PATCH] docs/devel: Correct uefi-vars-x64 device name
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: nanliu <nanliu@redhat.com>, qemu-devel@nongnu.org, kraxel@redhat.com, 
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=185.125.188.122;
+ envelope-from=valentin.haudiquet@canonical.com;
+ helo=smtp-relay-internal-0.canonical.com
+X-Spam_score_int: -48
+X-Spam_score: -4.9
+X-Spam_bar: ----
+X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.513,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
  T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 29 Sep 2025 09:02:05 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -97,21 +116,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Sat, 27 Sept 2025 at 09:48, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
-> On 23.09.2025 14:57, Peter Maydell wrote:
->
-> > We could probably also correct the bit of the text in this file
-> > that currently reads "depend on SMM emulation on x64" to either
-> > say "x86" or "x86_64".
->
-> This one will be a bit more than trivial :)  I for one don't know
-> if this is related to any x86 or to x86_64 only.
+From: vhaudiquet <vhaudiquet343@hotmail.fr>
 
-I just mean exactly and specifically the one place in this
-file which says "x64" and ought to say either "x86" or
-"x86_64". To me a single word change is pretty trivial,
-especially since nowhere else in our docs do we use "x64".
+Three instructions were not using the endianness swap flag, which resulted in a bug on big-endian architectures.
 
--- PMM
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3131
+Buglink: https://bugs.launchpad.net/ubuntu/+source/qemu/+bug/2123828
+
+Signed-off-by: Valentin Haudiquet <valentin.haudiquet@canonical.com>
+---
+ target/riscv/insn_trans/trans_rvzce.c.inc | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/target/riscv/insn_trans/trans_rvzce.c.inc b/target/riscv/insn_trans/trans_rvzce.c.inc
+index c77c2b927b..dd15af0f54 100644
+--- a/target/riscv/insn_trans/trans_rvzce.c.inc
++++ b/target/riscv/insn_trans/trans_rvzce.c.inc
+@@ -88,13 +88,13 @@ static bool trans_c_lbu(DisasContext *ctx, arg_c_lbu *a)
+ static bool trans_c_lhu(DisasContext *ctx, arg_c_lhu *a)
+ {
+     REQUIRE_ZCB(ctx);
+-    return gen_load(ctx, a, MO_UW);
++    return gen_load(ctx, a, MO_TEUW);
+ }
+ 
+ static bool trans_c_lh(DisasContext *ctx, arg_c_lh *a)
+ {
+     REQUIRE_ZCB(ctx);
+-    return gen_load(ctx, a, MO_SW);
++    return gen_load(ctx, a, MO_TESW);
+ }
+ 
+ static bool trans_c_sb(DisasContext *ctx, arg_c_sb *a)
+@@ -106,7 +106,7 @@ static bool trans_c_sb(DisasContext *ctx, arg_c_sb *a)
+ static bool trans_c_sh(DisasContext *ctx, arg_c_sh *a)
+ {
+     REQUIRE_ZCB(ctx);
+-    return gen_store(ctx, a, MO_UW);
++    return gen_store(ctx, a, MO_TEUW);
+ }
+ 
+ #define X_S0    8
+-- 
+2.51.0
+
 
