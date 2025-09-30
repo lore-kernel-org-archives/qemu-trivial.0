@@ -4,77 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 087C4CCA468
-	for <qemu-trivial@archiver.kernel.org>; Tue, 30 Sep 2025 09:58:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4B81CCA468
+	for <qemu-trivial@archiver.kernel.org>; Tue, 30 Sep 2025 09:58:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v3X7V-0003M3-0V; Tue, 30 Sep 2025 05:58:08 -0400
+	id 1v3X7T-0003LA-Gz; Tue, 30 Sep 2025 05:58:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <grant@cylo.net>) id 1v3Wlc-0003nG-Hd
- for qemu-trivial@nongnu.org; Tue, 30 Sep 2025 05:35:28 -0400
-Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <grant@cylo.net>) id 1v3WlT-0001Qe-QV
- for qemu-trivial@nongnu.org; Tue, 30 Sep 2025 05:35:28 -0400
-Received: by mail-ej1-x62e.google.com with SMTP id
- a640c23a62f3a-b403bb7843eso344545166b.3
- for <qemu-trivial@nongnu.org>; Tue, 30 Sep 2025 02:35:16 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=cylo-net.20230601.gappssmtp.com; s=20230601; t=1759224913; x=1759829713;
- darn=nongnu.org; 
- h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
- :date:message-id:reply-to;
- bh=nNQOhBWxAwN+tCfdXUvKDVjrEEM+0houM9LjCgxD5jA=;
- b=0r92mJtCCNVWbPP/1IdmaxiYJn2k6lRAzMfLJwEbn3//XVXbew+E+SrmDfK1XuWqe7
- X5LItx9+34KMVXZSjOafeDXiTaZvFP1LIiLVePPwJAPNTZGrNXvD95MGaygjvuNhXFEm
- yUtltNnzRNkleoKS18DrUaMHqrQBYuAjWz2/DAC7I0qwNMmYRhnl7E9HIIVHBRxBFWI7
- 1cImLRCId1IKsT9am4A7d7iUaJNFElNvwinps5AsyeP9+j72NO+F6GjHi2Zs4fi6w+uQ
- bmEiOPwIJKnGiEziSMS8gfh5jXPtLppP75mViUMNBwJHzMetTcIXCYhwTjRGU9NSlnQk
- 70Wg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759224913; x=1759829713;
- h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
- :from:to:cc:subject:date:message-id:reply-to;
- bh=nNQOhBWxAwN+tCfdXUvKDVjrEEM+0houM9LjCgxD5jA=;
- b=uK24jVEk0GSIJsfEpGz9etjtcVL2yINnQcMJMr9ul17BOvyAqY7D4W5kYnMj3LM0Hc
- HFlzucAfVgS9vUi0ZBzjoQ+goUrL7HUg6Whktcj+fhpEIMaSKavv8wUSvx4i42obMMbN
- rkU4OXZAauaojOLI3RERaSjp3UhXeGKEPnUF9FqLtUJvOs8Ckj5+ETG7z67aqns34/nC
- k013OZOaRbi5sIzd16HYDK28+60vJujyEjh595ll5zfEbQ4tNzBneDaPJaY/co9Oot9s
- 2UVw1IMdvgZcAOHTfltdstNHxo4cn64e1sBn0V9TqxuE8n21jPM601LX6jC5MG7p7DjT
- 4gFA==
-X-Gm-Message-State: AOJu0Yyf7NSFZAW95fzYr/kYCyUisFhDUSzfpPZ9KoEyiZHTUx4htgaN
- tclFk0nYazcTn7OgIXmYHNitL2Jk3Bzo5hvIWZR0kNhjGogKhawxWKuiddKp/fCaQTCKcLS77Ws
- W7Kuva2i5lLmY98xL2KnUot2bDheNCcXV3BV5P/YD
-X-Gm-Gg: ASbGncu57gJLriF3mxUuB9mVBqdUNZAMRwp0ApJZh5HN/rD+xmlS8JghH+/BpdCdEau
- 5XUwJM3q6P2va0Y9S98WpvlWevj9SY3Z/jQMRmqPjIawwiGsFwwDBwjomZ4eHS13K/d2jbidMei
- 4YVZsVCkjuChTNaBBkZj+gTGxI79HU+wLo9XlhP3TQw9+/8azyva/zMFF4IlS2V9TApUuKIddCk
- klpsLB/Pvh4yBINkD81eVe8Mv0++mhqamVhxZubnzdwfBF9
-X-Google-Smtp-Source: AGHT+IETbiKODhQQ4PSeYM+Ri5cDLzACI+nQZRsKqqkghSvx6fnazRlqnNHd1cQDZ5eACu+a/O4VsaQuH7++vMgnOj0=
-X-Received: by 2002:a17:906:c113:b0:b2a:5fe5:87c7 with SMTP id
- a640c23a62f3a-b34b69423famr2413535666b.12.1759224912627; Tue, 30 Sep 2025
- 02:35:12 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <ben.dooks@codethink.co.uk>)
+ id 1v3UdF-0007iO-Ja; Tue, 30 Sep 2025 03:18:45 -0400
+Received: from imap4.hz.codethink.co.uk ([188.40.203.114])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <ben.dooks@codethink.co.uk>)
+ id 1v3Ud8-0004I3-Rs; Tue, 30 Sep 2025 03:18:39 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=codethink.co.uk; s=imap4-20230908; h=Sender:Content-Transfer-Encoding:
+ Content-Type:In-Reply-To:From:References:Cc:To:Subject:MIME-Version:Date:
+ Message-ID:Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:
+ Resent-Sender:Resent-To:Resent-Cc:Resent-Message-ID:List-Id:List-Help:
+ List-Unsubscribe:List-Subscribe:List-Post:List-Owner:List-Archive;
+ bh=kIuqZxp4Yh/C52yVukBIvOlMaFaQOLAprRWAbW01j3w=; b=BJ9Jlsn45MrEBamHZwxJcErl1B
+ x9zjoeCwvwolXgmy7z4SS37LrXipQoH1OAESZE3Q5ljqjw4ryGP9vCevISMnX4wTinr0MX/wgxM6L
+ 5VQ1hdItnerV5oW7SSc+OEe7wm7xRsxIqfVnw7TEus6NWyGMZCvYePngW4PxNK7UKukj6cC9gXdWc
+ ehiuoLr1Gn1l04fRsXckMIfSQrA4mSUghrfj1SsPt4MwsKWGnDutQLLpGNtiOTTTvUHkNA5yHOIsT
+ wenJF+XblRAsgbYfibFef53Ww+F+dU494kxvtc3SRDgaOdFqe0eOfOq66uN9mstPT1xEdBtx3AcKC
+ Z14Q1KsA==;
+Received: from [63.135.74.212] (helo=[192.168.1.249])
+ by imap4.hz.codethink.co.uk with esmtpsa  (Exim 4.94.2 #2 (Debian))
+ id 1v3Uct-004jqh-3Z; Tue, 30 Sep 2025 08:18:19 +0100
+Message-ID: <6be4bfa5-006c-40c1-b1d6-37eece96fca1@codethink.co.uk>
+Date: Tue, 30 Sep 2025 08:18:14 +0100
 MIME-Version: 1.0
-From: "Grant Millar | Cylo" <rid@cylo.io>
-Date: Tue, 30 Sep 2025 10:35:01 +0100
-X-Gm-Features: AS18NWArTSOpfpl9orxCYcoR8gqYDVtoKsv0iifeRLOVtXtYXY3czY2nK8WIj_s
-Message-ID: <CANdvy3dH9bBdopj_KUqaLD0Viq7uKn0jPObjqz6H7XvMgRnPrw@mail.gmail.com>
-Subject: [PATCH] ui/vnc: Fix NULL pointer dereference in vnc_disconnect_start
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
- envelope-from=grant@cylo.net; helo=mail-ej1-x62e.google.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] target/riscv: Fix endianness swap on compressed
+ instructions
+To: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-riscv@nongnu.org, qemu-trivial@nongnu.org,
+ zhiwei_liu@linux.alibaba.com, dbarboza@ventanamicro.com,
+ liwei1518@gmail.com, alistair.francis@wdc.com, palmer@dabbelt.com,
+ vhaudiquet <vhaudiquet343@hotmail.fr>, anjo@rev.ng,
+ Valentin Haudiquet <valentin.haudiquet@canonical.com>,
+ qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>
+References: <20250929115543.1648157-1-valentin.haudiquet@canonical.com>
+ <cc5b1d2c-90cb-4276-a192-fd0ce9e926e8@linaro.org>
+ <95dbbcf4-41fa-481b-9e23-96ed51f66264@canonical.com>
+Content-Language: en-GB
+From: Ben Dooks <ben.dooks@codethink.co.uk>
+Organization: Codethink Limited.
+In-Reply-To: <95dbbcf4-41fa-481b-9e23-96ed51f66264@canonical.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=188.40.203.114;
+ envelope-from=ben.dooks@codethink.co.uk; helo=imap4.hz.codethink.co.uk
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 30 Sep 2025 05:58:03 -0400
+X-Mailman-Approved-At: Tue, 30 Sep 2025 05:57:50 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,44 +81,118 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From 0d1c4ac000a66ef22b4a0cd0c4bedd840192096a Mon Sep 17 00:00:00 2001
-From: Rid <rid@cylo.io>
-Date: Tue, 30 Sep 2025 10:23:58 +0100
-Subject: [PATCH] ui/vnc: Fix NULL pointer dereference in vnc_disconnect_start
+On 30/09/2025 07:59, Heinrich Schuchardt wrote:
+> On 9/29/25 16:37, Philippe Mathieu-Daudé wrote:
+>> Hi,
+>>
+>>
+>> On 29/9/25 13:55, Valentin Haudiquet wrote:
+>>> From: vhaudiquet <vhaudiquet343@hotmail.fr>
+>>>
+>>> Three instructions were not using the endianness swap flag, which 
+>>> resulted in a bug on big-endian architectures.
+>>
+>> I suppose you mean "big-endian host architectures".
+>> If so, please clarify.
+> 
+> Hello Phil,
+> 
+> Ubuntu is providing QEMU to emulate RISC-V both on little-endian hosts 
+> like X86 and ARM as well as on big-endian hosts like the IBM S/390.
+> 
+> The Unprivileged RISC-V ISA Specification has this sentence:
+> 
+> "The base ISA has been defined to have a little-endian memory system, 
+> with big-endian or bi-endian as non-standard variants."
+> 
+> According to the Privileged RISC-V ISA Specification the mstatus and 
+> mstatush register may be used to set the endianness at runtime.
+> 
+> "The MBE, SBE, and UBE bits in mstatus and mstatush are WARL fields that 
+> control the endianness of memory accesses other than instruction 
+> fetches. Instruction fetches are always little-endian."
+> 
+> Currently RISC-V work focuses on little-endian targets but there is 
+> active community work to enable big-endian Linux for RISC-V.
+> 
+> Therefore a solution is required that considers both the host and the 
+> target endianness.
+> 
+>>
+>>>
+>>> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3131
+>>> Buglink: https://bugs.launchpad.net/ubuntu/+source/qemu/+bug/2123828
+>>>
+>>> Signed-off-by: Valentin Haudiquet <valentin.haudiquet@canonical.com>
+>>> ---
+>>>   target/riscv/insn_trans/trans_rvzce.c.inc | 6 +++---
+>>>   1 file changed, 3 insertions(+), 3 deletions(-)
+>>>
+>>> diff --git a/target/riscv/insn_trans/trans_rvzce.c.inc b/target/ 
+>>> riscv/ insn_trans/trans_rvzce.c.inc
+>>> index c77c2b927b..dd15af0f54 100644
+>>> --- a/target/riscv/insn_trans/trans_rvzce.c.inc
+>>> +++ b/target/riscv/insn_trans/trans_rvzce.c.inc
+>>> @@ -88,13 +88,13 @@ static bool trans_c_lbu(DisasContext *ctx, 
+>>> arg_c_lbu *a)
+>>>   static bool trans_c_lhu(DisasContext *ctx, arg_c_lhu *a)
+>>>   {
+>>>       REQUIRE_ZCB(ctx);
+>>> -    return gen_load(ctx, a, MO_UW);
+>>> +    return gen_load(ctx, a, MO_TEUW);
+>> NAck.
+>> Please do not use MO_TE* anymore. Use explicit endianness.
+>>
+>> So far all our RISC-V targets are little-endian:
+>>
+>>    $ git grep TARGET_BIG_ENDIAN configs/targets/riscv*
+>>    $
+>>
+>> If you are not worried about RISCV core running in BE mode
+>> (as we currently don't check MSTATUS_[USM]BE bits), your change
+>> should be:
+>>
+>>   -    return gen_load(ctx, a, MO_UW);
+>>   +    return gen_load(ctx, a, MO_UW | MO_LE);
+> 
+> I saw your patches to remove MO_TE from little-endian only targets like 
+> i386 but RISC-V is different.
+> 
+> We should foresee that in future RISC-V targets run in either little- 
+> endian or big-endian mode and implement our code accordingly.
+> 
+> When big-endian RISC-V comes upon QEMU, we should avoid duplicating the 
+> target code but reuse what we have.
+> 
+> MO_UW | MO_LE looks wrong in this context.
+> 
+> We should stay consistent with
+> 
+> target/riscv/insn_trans/trans_rvi.c.inc
+> target/riscv/insn_trans/trans_rvzfh.c.inc
+> target/riscv/insn_trans/trans_xthead.c.inc
+> 
+> which currently use MO_TEUW.
+> 
+> For the time being, I would suggest to stick to MO_TE* to maintain the 
+> information in which code locations we need to consider the target 
+> endianness.
+> 
+> Targets that can switch endianness at runtime (e.g. MIPS) use an 
+> architecture specific implemenation of mo_endian(ctx). When implementing 
+> big-endian RISC-V support in future, we can use the MO_TE occurrences as 
+> indicator where to use mo_endian() instead.
+> 
+> With these considerations in mind the current patch looks good to me.
+> 
+> Reviewed-by: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>
 
-When a WebSocket connection fails during the handshake, vs->ioc can be
-NULL when vnc_disconnect_start() is called, leading to a segmentation
-fault when qio_channel_close() tries to dereference it.
-
-This can be reproduced by sending incomplete HTTP requests to the
-WebSocket port:
-
-  for i in {1..100}; do
-    (echo -n "GET / HTTP/1.1" && sleep 0.05) | nc -w 1 <IP> <PORT> &
-  done
-
-Add a NULL check before calling qio_channel_close() to prevent the crash.
-
-Signed-off-by: Rid <rid@cylo.io>
----
- ui/vnc.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
-
-diff --git a/ui/vnc.c b/ui/vnc.c
-index 77c823bf2e..1669ed1b80 100644
---- a/ui/vnc.c
-+++ b/ui/vnc.c
-@@ -1301,7 +1301,9 @@ static void vnc_disconnect_start(VncState *vs)
-         g_source_remove(vs->ioc_tag);
-         vs->ioc_tag = 0;
-     }
--    qio_channel_close(vs->ioc, NULL);
-+    if (vs->ioc) {
-+        qio_channel_close(vs->ioc, NULL);
-+    }
-     vs->disconnecting = TRUE;
- }
+You've reminded me that we still haven't managed to get movement on
+the big-endian runtime patches.
 
 -- 
-2.39.5
+Ben Dooks				http://www.codethink.co.uk/
+Senior Engineer				Codethink - Providing Genius
+
+https://www.codethink.co.uk/privacy.html
 
