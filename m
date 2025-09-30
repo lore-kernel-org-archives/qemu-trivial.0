@@ -4,115 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0548DCCA470
-	for <qemu-trivial@archiver.kernel.org>; Tue, 30 Sep 2025 09:58:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73A11CCA468
+	for <qemu-trivial@archiver.kernel.org>; Tue, 30 Sep 2025 10:39:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v3X7O-0003JA-OC; Tue, 30 Sep 2025 05:57:59 -0400
+	id 1v3Xl7-0008J5-Tt; Tue, 30 Sep 2025 06:39:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <heinrich.schuchardt@canonical.com>)
- id 1v3ULF-00048m-Pc
- for qemu-trivial@nongnu.org; Tue, 30 Sep 2025 03:00:06 -0400
-Received: from smtp-relay-internal-0.canonical.com ([185.125.188.122])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <heinrich.schuchardt@canonical.com>)
- id 1v3ULA-00065C-0O
- for qemu-trivial@nongnu.org; Tue, 30 Sep 2025 03:00:03 -0400
-Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
- [209.85.221.70])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-relay-internal-0.canonical.com (Postfix) with ESMTPS id 153143FCD2
- for <qemu-trivial@nongnu.org>; Tue, 30 Sep 2025 06:59:52 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=canonical.com;
- s=20210705; t=1759215592;
- bh=RSDxpuwZGH57GBwNBPZDJ5sOSxOq0GzDmPaZnAvf2pI=;
- h=Message-ID:Date:MIME-Version:Subject:To:Cc:References:From:
- In-Reply-To:Content-Type;
- b=ruSeyiMudUp4Kx/1LABb5nDjyGsn5u7bkeDerJLdhjxGcI36H0j62GKSVPsADcC1u
- itSuhDQ+4Nxa48cgD4siRQxpN/GTm9KeQcO5GRiIOaFUbghAxryxyMHzJ+yM+Vw4G4
- 8XBh6egFMM7pJyfwQfuONUmKEK2K6RqGnv6sZxv8iFcHu1jH/PWmjwEzBx84oXZStx
- FbZJvInklj80Kr+zto1v7WivVry5uhkilSvSrGJjv30//soLYPcg9ewdPO3JLcpoO8
- uzD0Z+h6LU6I7f42MC6FzCnAkH54lREf99BUIsLKlHjNL4sIJKJhQGJ8kRzSmBIFDn
- lQN1oRYq+U9sw==
-Received: by mail-wr1-f70.google.com with SMTP id
- ffacd0b85a97d-3ece14b9231so3798598f8f.0
- for <qemu-trivial@nongnu.org>; Mon, 29 Sep 2025 23:59:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1v3Xl5-0008II-P4
+ for qemu-trivial@nongnu.org; Tue, 30 Sep 2025 06:38:59 -0400
+Received: from mail-qk1-x72c.google.com ([2607:f8b0:4864:20::72c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <marcandre.lureau@gmail.com>)
+ id 1v3Xl2-0006ER-4e
+ for qemu-trivial@nongnu.org; Tue, 30 Sep 2025 06:38:58 -0400
+Received: by mail-qk1-x72c.google.com with SMTP id
+ af79cd13be357-8275237837fso650114085a.2
+ for <qemu-trivial@nongnu.org>; Tue, 30 Sep 2025 03:38:54 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20230601; t=1759228732; x=1759833532; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=WoYiJPU4TPKpxug2gwmjqJ0efOalFzIZ4kRYARDeKgo=;
+ b=Roc4HjpyFWwje6AtYORWb0JMiNUUG9BGCw7Mh6e7S5PlGHsxPcoTkD7WhVbJiF6PHN
+ zKoicFvwrG84PAJFy1ABjSSQOX7nqk8gXSWLIs+IkHDTM2fw6trfBNnj8/jrdPNWnIbm
+ CDZxAm4FlSqlfsVqkK9zAYNFaJMKpE7vHY62bcmwKsF3lnSqbbkSk2N8JaFvvlEuyrU9
+ 91nJiw98zlmEtxuGGhUmB7wx8IXzfx+b2KPYgZCebriAxuFJqJp/IMCPzzkUEMUV6Ifw
+ 8invPk/0m8OogZo8myE0VFhIGzC7/STyLn06CeRfBGchPHo9/Z7po3JLmKS3a+CdGrSg
+ JzcQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759215591; x=1759820391;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=RSDxpuwZGH57GBwNBPZDJ5sOSxOq0GzDmPaZnAvf2pI=;
- b=t0liZQi+iHd5gYxglGeqsXQnvMnPmGe1+gw12caf4UrysIspG40ylAgQL2H3SmYUqK
- OweHW0MkdAAExCWik0EVu4W7SPXF4uopS1P4AGF9NCVxbtV52jKXMN7pApAdLU2gwJU5
- MKbR7ZYHcyOVNZ/igG0oc2uBfmZ2+55FI6m/nb8WkGwEZQsOeKvC/iUBu945Xj9zpwlP
- 4oBYqIzoOwpKxHlxrSIiN5lAp18nnuiQwVduaE2FIYuq0qBJeV2SDYH6r8ceTi2D9sjM
- Gt+MWIdRiJ93laUJwkfG6lnYwT11mYTjSyxg0fuqXJ+pd/SN+GpFG98IwmTYHANfdzJp
- ncWw==
+ d=1e100.net; s=20230601; t=1759228732; x=1759833532;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=WoYiJPU4TPKpxug2gwmjqJ0efOalFzIZ4kRYARDeKgo=;
+ b=kvFK47MRZQbDGVPgX0ShvIupJk2h+bzhiq8/gbCWd/OOt8r6gAH8y8sq5q0/qzyIzZ
+ OrCNhgAANW10J0zkBXqZdaaJH7NvYQWZvHIquUex+DycveFElL7E4+QC2GfKL0LJBfBW
+ 3cSV7ikvxcIG5ZL0LybaJyQ3+Z5B1X0Wb/DxZpuXI1Uxs641g8CXwDsV4gtjCV2d9Spf
+ hCewd2sRg4C6WTtnbI2uHWbh/gij0KDr3D2/qIm8l77EF/yNlQKSRklsSdILbvvMiwce
+ fwnC+lHa2FIB3NmhzaoFj9sj6B4saO00YsitaeG5cim8q/rS00cr6IQkwMua2dNOFlbt
+ AwTw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUqCT4MLUT+p499TNXuudS6WLTOUWTB24iZ83hgguWEIVQrPVPxZaJ9TjeroZynVQ/9RzUVl4bl+QyloV4=@nongnu.org
-X-Gm-Message-State: AOJu0YyvH+5AAdzHXUupXknR0/JfpZFS0vkqsIB1clR92QG3OhcfxHpU
- CAQTeOLitzu/DSlDgI/mm6VxcF4BuazKdICQ0ID4WChD0OQjwlvMX3OsCs+CZwqq0RrBtYKXFXM
- QxlkZy17bc+jDAjKCbarlj0I+YQ+Oq6LIP2b6DhSi74x026as4NDGMTI1shRr05UbBhO451fXuS
- Q=
-X-Gm-Gg: ASbGncvERFMUXd95shxFTySJKp1NmJ0dfchzqf1EDzQW+VqqNypmcyo8ji58NudzGuB
- L4QyDTpCEBIsNM6ZrmTj/KEu2cYi5KV6YarXC2AdkEiZMpGYrGVan2UUE4tY5pvbQSHhDq1OLBz
- 25h4ix8cA7dQv9u7jaSWjQihMcbEbCclizoP/9tFDczY2uEbmezh4jXEtxAaEl4h+glROp6JQhS
- jz9p3A/mgDKRTzVi7ZiTz68S9MA4MfmPeqB2SrSHCDL/abvtgF8JfIRuHTbmwJVRokkNCTennyo
- Jbe0SqlBjv5ZsxPiLraPPx34LOKjss0FL7mZVGR15kbwDyyru8emPy87a0EyhkHekJjouEhC3ns
- 3dF1lyiUIArc7Ym0jBsG5tnxDvwKjvWUwzvHAjBO1X54=
-X-Received: by 2002:a05:6000:4282:b0:3ec:b899:bc39 with SMTP id
- ffacd0b85a97d-40e50d6dfa2mr17561363f8f.58.1759215591504; 
- Mon, 29 Sep 2025 23:59:51 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IFzo/5mP/RJXntozTI8tJQETpQQ9Jnra2/RhVhUBfFboKGyMhWewn9Rba7MJ0PuoIXWolfWsQ==
-X-Received: by 2002:a05:6000:4282:b0:3ec:b899:bc39 with SMTP id
- ffacd0b85a97d-40e50d6dfa2mr17561337f8f.58.1759215591062; 
- Mon, 29 Sep 2025 23:59:51 -0700 (PDT)
-Received: from [192.168.123.154]
- (ip-005-147-080-091.um06.pools.vodafone-ip.de. [5.147.80.91])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e5b69bc0bsm7717795e9.3.2025.09.29.23.59.49
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 29 Sep 2025 23:59:50 -0700 (PDT)
-Message-ID: <95dbbcf4-41fa-481b-9e23-96ed51f66264@canonical.com>
-Date: Tue, 30 Sep 2025 08:59:48 +0200
+ AJvYcCUDrJjyN87hvTaHo7Gs6dZSEpGGpo0eP6/bDJCXfpXORh7Fx/dBwKC+OBEb0OutHygA+S9/j7HS3MF/t1w=@nongnu.org
+X-Gm-Message-State: AOJu0YywGRI0T6PnOKwcwEaKRhSlTvtkgdXgPiDuZUHfu1QQKk2Fimqa
+ ZUyZ1nVTu+78H5ntNmvQSoeuEP2TCuScx5664T8v3D2/jQuMLrbiEwmqt2k3TjWPsVWSiAPZV84
+ XIIKPIhkY32LhEqtUTllD1z6/yajlC5A=
+X-Gm-Gg: ASbGncvZ8L1ER2DoqY7Wr+nCYxk85NdW2DG17yOC0QHw/ox02ZWBFYi3sW9MpIraUkm
+ sE/J5HFam5HJGGW+wL3LAJFrlABe37aVnYSRQK/SphWW22XLLJiOinJ6qiPEt93T76kxHumMYRz
+ s5qngjwNS4gd/Aw+B6s6UJqZQejtlXhqII4mgRuZ6sjt/TYC/c68BLbwUbnVZIDnxlmOwzPmVLP
+ dd4PDwn8O9GLUt6HMgTuvqmh2pfHVjO7yRj0VNHE6Ah6ToaVOwXF+IK32hLzK76Erk8yiu27Fs=
+X-Google-Smtp-Source: AGHT+IGqVlBA4S6ajqk63LfWy0YKV+ZJwPmCZSwXNJ+VB61KpNkq3p4+3KtflxfrERKGqJI6pr3mzXvO1XcweLw8MLE=
+X-Received: by 2002:a05:620a:2988:b0:806:484e:7c39 with SMTP id
+ af79cd13be357-85ade962990mr2851355485a.14.1759228732085; Tue, 30 Sep 2025
+ 03:38:52 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/riscv: Fix endianness swap on compressed
- instructions
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Cc: qemu-riscv@nongnu.org, qemu-trivial@nongnu.org,
- zhiwei_liu@linux.alibaba.com, dbarboza@ventanamicro.com,
- liwei1518@gmail.com, alistair.francis@wdc.com, palmer@dabbelt.com,
- vhaudiquet <vhaudiquet343@hotmail.fr>, anjo@rev.ng,
- Valentin Haudiquet <valentin.haudiquet@canonical.com>,
- qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Anton Johansson via <qemu-devel@nongnu.org>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-References: <20250929115543.1648157-1-valentin.haudiquet@canonical.com>
- <cc5b1d2c-90cb-4276-a192-fd0ce9e926e8@linaro.org>
-Content-Language: en-US
-From: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>
-In-Reply-To: <cc5b1d2c-90cb-4276-a192-fd0ce9e926e8@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=185.125.188.122;
- envelope-from=heinrich.schuchardt@canonical.com;
- helo=smtp-relay-internal-0.canonical.com
-X-Spam_score_int: -48
-X-Spam_score: -4.9
-X-Spam_bar: ----
-X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.513,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+References: <CANdvy3dH9bBdopj_KUqaLD0Viq7uKn0jPObjqz6H7XvMgRnPrw@mail.gmail.com>
+In-Reply-To: <CANdvy3dH9bBdopj_KUqaLD0Viq7uKn0jPObjqz6H7XvMgRnPrw@mail.gmail.com>
+From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@gmail.com>
+Date: Tue, 30 Sep 2025 14:38:40 +0400
+X-Gm-Features: AS18NWBkj84Ls0TqYsuAS5etJx3QPDD9H68q_jzn016t7oCJbGG1VAqOLh-BsD4
+Message-ID: <CAJ+F1CJwGZ-+dder5+icmuqSvtQ=fjce1zfrGKamYuYxVxOX9w@mail.gmail.com>
+Subject: Re: [PATCH] ui/vnc: Fix NULL pointer dereference in
+ vnc_disconnect_start
+To: "Grant Millar | Cylo" <rid@cylo.io>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72c;
+ envelope-from=marcandre.lureau@gmail.com; helo=mail-qk1-x72c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 30 Sep 2025 05:57:46 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -127,118 +97,67 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 9/29/25 16:37, Philippe Mathieu-Daudé wrote:
-> Hi,
-> 
-> 
-> On 29/9/25 13:55, Valentin Haudiquet wrote:
->> From: vhaudiquet <vhaudiquet343@hotmail.fr>
->>
->> Three instructions were not using the endianness swap flag, which 
->> resulted in a bug on big-endian architectures.
-> 
-> I suppose you mean "big-endian host architectures".
-> If so, please clarify.
+Hi
 
-Hello Phil,
+On Tue, Sep 30, 2025 at 1:59=E2=80=AFPM Grant Millar | Cylo <rid@cylo.io> w=
+rote:
+>
+> From 0d1c4ac000a66ef22b4a0cd0c4bedd840192096a Mon Sep 17 00:00:00 2001
+> From: Rid <rid@cylo.io>
+> Date: Tue, 30 Sep 2025 10:23:58 +0100
+> Subject: [PATCH] ui/vnc: Fix NULL pointer dereference in vnc_disconnect_s=
+tart
+>
+> When a WebSocket connection fails during the handshake, vs->ioc can be
+> NULL when vnc_disconnect_start() is called, leading to a segmentation
+> fault when qio_channel_close() tries to dereference it.
+>
+> This can be reproduced by sending incomplete HTTP requests to the
+> WebSocket port:
+>
+>   for i in {1..100}; do
+>     (echo -n "GET / HTTP/1.1" && sleep 0.05) | nc -w 1 <IP> <PORT> &
+>   done
+>
 
-Ubuntu is providing QEMU to emulate RISC-V both on little-endian hosts 
-like X86 and ARM as well as on big-endian hosts like the IBM S/390.
+I tried to reproduce without success.
 
-The Unprivileged RISC-V ISA Specification has this sentence:
+Could you provide a backtrace?
 
-"The base ISA has been defined to have a little-endian memory system, 
-with big-endian or bi-endian as non-standard variants."
+> Add a NULL check before calling qio_channel_close() to prevent the crash.
+>
+> Signed-off-by: Rid <rid@cylo.io>
 
-According to the Privileged RISC-V ISA Specification the mstatus and 
-mstatush register may be used to set the endianness at runtime.
+Your mail is not properly formatted. git am fails.
+https://www.qemu.org/docs/master/devel/submitting-a-patch.html
 
-"The MBE, SBE, and UBE bits in mstatus and mstatush are WARL fields that 
-control the endianness of memory accesses other than instruction 
-fetches. Instruction fetches are always little-endian."
 
-Currently RISC-V work focuses on little-endian targets but there is 
-active community work to enable big-endian Linux for RISC-V.
+thanks
 
-Therefore a solution is required that considers both the host and the 
-target endianness.
+> ---
+>  ui/vnc.c | 4 +++-
+>  1 file changed, 3 insertions(+), 1 deletion(-)
+>
+> diff --git a/ui/vnc.c b/ui/vnc.c
+> index 77c823bf2e..1669ed1b80 100644
+> --- a/ui/vnc.c
+> +++ b/ui/vnc.c
+> @@ -1301,7 +1301,9 @@ static void vnc_disconnect_start(VncState *vs)
+>          g_source_remove(vs->ioc_tag);
+>          vs->ioc_tag =3D 0;
+>      }
+> -    qio_channel_close(vs->ioc, NULL);
+> +    if (vs->ioc) {
+> +        qio_channel_close(vs->ioc, NULL);
+> +    }
+>      vs->disconnecting =3D TRUE;
+>  }
+>
+> --
+> 2.39.5
+>
 
-> 
->>
->> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3131
->> Buglink: https://bugs.launchpad.net/ubuntu/+source/qemu/+bug/2123828
->>
->> Signed-off-by: Valentin Haudiquet <valentin.haudiquet@canonical.com>
->> ---
->>   target/riscv/insn_trans/trans_rvzce.c.inc | 6 +++---
->>   1 file changed, 3 insertions(+), 3 deletions(-)
->>
->> diff --git a/target/riscv/insn_trans/trans_rvzce.c.inc b/target/riscv/ 
->> insn_trans/trans_rvzce.c.inc
->> index c77c2b927b..dd15af0f54 100644
->> --- a/target/riscv/insn_trans/trans_rvzce.c.inc
->> +++ b/target/riscv/insn_trans/trans_rvzce.c.inc
->> @@ -88,13 +88,13 @@ static bool trans_c_lbu(DisasContext *ctx, 
->> arg_c_lbu *a)
->>   static bool trans_c_lhu(DisasContext *ctx, arg_c_lhu *a)
->>   {
->>       REQUIRE_ZCB(ctx);
->> -    return gen_load(ctx, a, MO_UW);
->> +    return gen_load(ctx, a, MO_TEUW);
-> NAck.
-> Please do not use MO_TE* anymore. Use explicit endianness.
-> 
-> So far all our RISC-V targets are little-endian:
-> 
->    $ git grep TARGET_BIG_ENDIAN configs/targets/riscv*
->    $
-> 
-> If you are not worried about RISCV core running in BE mode
-> (as we currently don't check MSTATUS_[USM]BE bits), your change
-> should be:
-> 
->   -    return gen_load(ctx, a, MO_UW);
->   +    return gen_load(ctx, a, MO_UW | MO_LE);
 
-I saw your patches to remove MO_TE from little-endian only targets like 
-i386 but RISC-V is different.
-
-We should foresee that in future RISC-V targets run in either 
-little-endian or big-endian mode and implement our code accordingly.
-
-When big-endian RISC-V comes upon QEMU, we should avoid duplicating the 
-target code but reuse what we have.
-
-MO_UW | MO_LE looks wrong in this context.
-
-We should stay consistent with
-
-target/riscv/insn_trans/trans_rvi.c.inc
-target/riscv/insn_trans/trans_rvzfh.c.inc
-target/riscv/insn_trans/trans_xthead.c.inc
-
-which currently use MO_TEUW.
-
-For the time being, I would suggest to stick to MO_TE* to maintain the 
-information in which code locations we need to consider the target 
-endianness.
-
-Targets that can switch endianness at runtime (e.g. MIPS) use an 
-architecture specific implemenation of mo_endian(ctx). When implementing 
-big-endian RISC-V support in future, we can use the MO_TE occurrences as 
-indicator where to use mo_endian() instead.
-
-With these considerations in mind the current patch looks good to me.
-
-Reviewed-by: Heinrich Schuchardt <heinrich.schuchardt@canonical.com>
-
-> 
->>   }
-> 
-> Regards,
-> 
-> Phil.
-> 
-> 
-
+--=20
+Marc-Andr=C3=A9 Lureau
 
