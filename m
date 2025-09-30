@@ -4,94 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 461CCCAC5B8
-	for <qemu-trivial@archiver.kernel.org>; Tue, 30 Sep 2025 07:22:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 087C4CCA468
+	for <qemu-trivial@archiver.kernel.org>; Tue, 30 Sep 2025 09:58:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v3UgO-0000Qx-I8; Tue, 30 Sep 2025 03:21:57 -0400
+	id 1v3X7V-0003M3-0V; Tue, 30 Sep 2025 05:58:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1v3UgK-0000QL-Rz
- for qemu-trivial@nongnu.org; Tue, 30 Sep 2025 03:21:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1v3UgC-0005TP-SU
- for qemu-trivial@nongnu.org; Tue, 30 Sep 2025 03:21:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759216898;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=AD9dpKMBG627AfVhXFMzkbtZ8FVc1kWYKYGJ3Vrt7L4=;
- b=N0Udig7X/hovV9tY/M1g5vs5r5SG8YG0udQaw0McTFX6ClrSaiid61Q0ZvmfmtiwL1pjkN
- PcaCTPuPWWPIUk3RZsFC2Bm8DUrcD+y4+Q8dUjV2JO2YaDeUZx0P2P1fZrFxJPfRtbeELE
- 8rcew/9WHOR6SoCebhPQocW+bt5A8H0=
-Received: from mail-pj1-f71.google.com (mail-pj1-f71.google.com
- [209.85.216.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-48-LU1pRwt_PLCerCXcUNP7sw-1; Tue, 30 Sep 2025 03:21:36 -0400
-X-MC-Unique: LU1pRwt_PLCerCXcUNP7sw-1
-X-Mimecast-MFC-AGG-ID: LU1pRwt_PLCerCXcUNP7sw_1759216895
-Received: by mail-pj1-f71.google.com with SMTP id
- 98e67ed59e1d1-334b0876195so5720619a91.1
- for <qemu-trivial@nongnu.org>; Tue, 30 Sep 2025 00:21:36 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <grant@cylo.net>) id 1v3Wlc-0003nG-Hd
+ for qemu-trivial@nongnu.org; Tue, 30 Sep 2025 05:35:28 -0400
+Received: from mail-ej1-x62e.google.com ([2a00:1450:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <grant@cylo.net>) id 1v3WlT-0001Qe-QV
+ for qemu-trivial@nongnu.org; Tue, 30 Sep 2025 05:35:28 -0400
+Received: by mail-ej1-x62e.google.com with SMTP id
+ a640c23a62f3a-b403bb7843eso344545166b.3
+ for <qemu-trivial@nongnu.org>; Tue, 30 Sep 2025 02:35:16 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=cylo-net.20230601.gappssmtp.com; s=20230601; t=1759224913; x=1759829713;
+ darn=nongnu.org; 
+ h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+ :date:message-id:reply-to;
+ bh=nNQOhBWxAwN+tCfdXUvKDVjrEEM+0houM9LjCgxD5jA=;
+ b=0r92mJtCCNVWbPP/1IdmaxiYJn2k6lRAzMfLJwEbn3//XVXbew+E+SrmDfK1XuWqe7
+ X5LItx9+34KMVXZSjOafeDXiTaZvFP1LIiLVePPwJAPNTZGrNXvD95MGaygjvuNhXFEm
+ yUtltNnzRNkleoKS18DrUaMHqrQBYuAjWz2/DAC7I0qwNMmYRhnl7E9HIIVHBRxBFWI7
+ 1cImLRCId1IKsT9am4A7d7iUaJNFElNvwinps5AsyeP9+j72NO+F6GjHi2Zs4fi6w+uQ
+ bmEiOPwIJKnGiEziSMS8gfh5jXPtLppP75mViUMNBwJHzMetTcIXCYhwTjRGU9NSlnQk
+ 70Wg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759216895; x=1759821695;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=AD9dpKMBG627AfVhXFMzkbtZ8FVc1kWYKYGJ3Vrt7L4=;
- b=FEjPI2KMB9sHqzh0wBj5I5Edd8g2W8Ayv8svpw3wQybZqwtRNy/MVUP4W09U3upEm6
- lg63J0KdVDWHGAbCR7Euy4BC5P4fCpbYCpZL0XbqV7QJJOYKtrcWud2Gnb4WFO5p6Ays
- n7UbQgtkch0Ljj/UXB93PFE6cmcoPTBCa4KNy1K2srph3XabR25u850diPM3iG8uax7F
- 1zELrcbr5az7p+KLV1fLqmqqhfipHL1eML4PvQjKkPOyfmCocAqsrRbA7l5RZcQ15jn9
- Brb4/SDrsDor1GRZVJXzOE5c6LAsq8AaqovPMY4sSIn43usu4X585/Y2cZQCCXYDm1sw
- XeGA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXsTqJ59//LTI2azuh63Uj7ZjZzxPzcfoJjGvaN9qW36Klh6H6xjP8CsxA4k/5vVqaaeX88cZpWevC4wjA=@nongnu.org
-X-Gm-Message-State: AOJu0Yx5eeICSAZWcbhFGq3z6QbF5TIzxv8ehtAgexfhpZVginJLLMHW
- qEOCFyf5Ngf3C2zMQuxmX9mzoqL0B2g+MzZmDfyDU0rAiMninYuIN4uwQ0nRSjKiorlZs1TDTIj
- awYXVq7rcaNU/SYZopHVRuamnXqLzmOHR20z7xrbOrAGFpriteTrGZg4yCEDdkGC08rkQt/iqtI
- 9GKaymP7/1dkDaWzJY4AEtdWg8Cva3IMPCHg==
-X-Gm-Gg: ASbGnct8fL8o0+5vewOcJob0ZsApTwL6bq8UeR2lo8DrQbfJ8VdsHv3h+R/xHoY26Gv
- aQJxqD+QcTFAJOLcKaKjjr0e5P18Bx0+qN4AB3OeHdFZLI8ei4osrVN328dxpYP48dfKdngwkT3
- et9bY4nCCi63GB2KdGWjEfusx7DMlHw13Whq8Pa3LAFhFfxKiKgOlvJm+VzB0=
-X-Received: by 2002:a17:90b:1647:b0:330:7a32:3290 with SMTP id
- 98e67ed59e1d1-3342a3471ccmr22758503a91.37.1759216895422; 
- Tue, 30 Sep 2025 00:21:35 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGQfSQZj3ar8v38+tKLzJDKivHUqgRzCRYqMwpzJlnjxqGZBojdkauY5QpqVIbaqGoc4tsEYxNEbJK747Wb61s=
-X-Received: by 2002:a17:90b:1647:b0:330:7a32:3290 with SMTP id
- 98e67ed59e1d1-3342a3471ccmr22758484a91.37.1759216894917; Tue, 30 Sep 2025
- 00:21:34 -0700 (PDT)
+ d=1e100.net; s=20230601; t=1759224913; x=1759829713;
+ h=cc:to:subject:message-id:date:from:mime-version:x-gm-message-state
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=nNQOhBWxAwN+tCfdXUvKDVjrEEM+0houM9LjCgxD5jA=;
+ b=uK24jVEk0GSIJsfEpGz9etjtcVL2yINnQcMJMr9ul17BOvyAqY7D4W5kYnMj3LM0Hc
+ HFlzucAfVgS9vUi0ZBzjoQ+goUrL7HUg6Whktcj+fhpEIMaSKavv8wUSvx4i42obMMbN
+ rkU4OXZAauaojOLI3RERaSjp3UhXeGKEPnUF9FqLtUJvOs8Ckj5+ETG7z67aqns34/nC
+ k013OZOaRbi5sIzd16HYDK28+60vJujyEjh595ll5zfEbQ4tNzBneDaPJaY/co9Oot9s
+ 2UVw1IMdvgZcAOHTfltdstNHxo4cn64e1sBn0V9TqxuE8n21jPM601LX6jC5MG7p7DjT
+ 4gFA==
+X-Gm-Message-State: AOJu0Yyf7NSFZAW95fzYr/kYCyUisFhDUSzfpPZ9KoEyiZHTUx4htgaN
+ tclFk0nYazcTn7OgIXmYHNitL2Jk3Bzo5hvIWZR0kNhjGogKhawxWKuiddKp/fCaQTCKcLS77Ws
+ W7Kuva2i5lLmY98xL2KnUot2bDheNCcXV3BV5P/YD
+X-Gm-Gg: ASbGncu57gJLriF3mxUuB9mVBqdUNZAMRwp0ApJZh5HN/rD+xmlS8JghH+/BpdCdEau
+ 5XUwJM3q6P2va0Y9S98WpvlWevj9SY3Z/jQMRmqPjIawwiGsFwwDBwjomZ4eHS13K/d2jbidMei
+ 4YVZsVCkjuChTNaBBkZj+gTGxI79HU+wLo9XlhP3TQw9+/8azyva/zMFF4IlS2V9TApUuKIddCk
+ klpsLB/Pvh4yBINkD81eVe8Mv0++mhqamVhxZubnzdwfBF9
+X-Google-Smtp-Source: AGHT+IETbiKODhQQ4PSeYM+Ri5cDLzACI+nQZRsKqqkghSvx6fnazRlqnNHd1cQDZ5eACu+a/O4VsaQuH7++vMgnOj0=
+X-Received: by 2002:a17:906:c113:b0:b2a:5fe5:87c7 with SMTP id
+ a640c23a62f3a-b34b69423famr2413535666b.12.1759224912627; Tue, 30 Sep 2025
+ 02:35:12 -0700 (PDT)
 MIME-Version: 1.0
-References: <20250930071419.117592-1-thuth@redhat.com>
-In-Reply-To: <20250930071419.117592-1-thuth@redhat.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Tue, 30 Sep 2025 11:21:23 +0400
-X-Gm-Features: AS18NWDVszFkr7CjcqTPdkxOvT8_wNmAXVJV4zeYxTN3mktGGhjCpwhmts7ahAk
-Message-ID: <CAMxuvax4qzyDQcKf6Fan_hJTggwa4fcMjaQH6Qhz=NWxvbwp4A@mail.gmail.com>
-Subject: Re: [PATCH] ui/icons/qemu.svg: Add metadata information (author,
- license) to the logo
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-stable@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: EBf_iimr3kbzaQ5zghixc0A1ytxcw52m1YOww7dCeZY_1759216895
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="0000000000001ae188063fff9a84"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=mlureau@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
-X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.513,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+From: "Grant Millar | Cylo" <rid@cylo.io>
+Date: Tue, 30 Sep 2025 10:35:01 +0100
+X-Gm-Features: AS18NWArTSOpfpl9orxCYcoR8gqYDVtoKsv0iifeRLOVtXtYXY3czY2nK8WIj_s
+Message-ID: <CANdvy3dH9bBdopj_KUqaLD0Viq7uKn0jPObjqz6H7XvMgRnPrw@mail.gmail.com>
+Subject: [PATCH] ui/vnc: Fix NULL pointer dereference in vnc_disconnect_start
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2a00:1450:4864:20::62e;
+ envelope-from=grant@cylo.net; helo=mail-ej1-x62e.google.com
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, HEADER_FROM_DIFFERENT_DOMAINS=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 30 Sep 2025 05:58:03 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -106,160 +89,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
---0000000000001ae188063fff9a84
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From 0d1c4ac000a66ef22b4a0cd0c4bedd840192096a Mon Sep 17 00:00:00 2001
+From: Rid <rid@cylo.io>
+Date: Tue, 30 Sep 2025 10:23:58 +0100
+Subject: [PATCH] ui/vnc: Fix NULL pointer dereference in vnc_disconnect_start
 
-Hi
+When a WebSocket connection fails during the handshake, vs->ioc can be
+NULL when vnc_disconnect_start() is called, leading to a segmentation
+fault when qio_channel_close() tries to dereference it.
 
-On Tue, Sep 30, 2025 at 11:14=E2=80=AFAM Thomas Huth <thuth@redhat.com> wro=
-te:
+This can be reproduced by sending incomplete HTTP requests to the
+WebSocket port:
 
-> From: Thomas Huth <thuth@redhat.com>
->
-> We've got two versions of the QEMU logo in the repository, one with
-> the whole word "QEMU" (pc-bios/qemu_logo.svg) and one that only contains
-> the letter "Q" (ui/icons/qemu.svg). While qemu_logo.svg contains the
-> proper metadata with license and author information, this is missing
-> from the ui/icons/qemu.svg file. Copy the meta data there so that
-> people have a chance to know the license of the file if they only
-> look at the qemu.svg file.
->
-> Closes: https://gitlab.com/qemu-project/qemu/-/issues/3139
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
->
+  for i in {1..100}; do
+    (echo -n "GET / HTTP/1.1" && sleep 0.05) | nc -w 1 <IP> <PORT> &
+  done
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+Add a NULL check before calling qio_channel_close() to prevent the crash.
 
+Signed-off-by: Rid <rid@cylo.io>
+---
+ ui/vnc.c | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
 
-> ---
->  ui/icons/qemu.svg | 21 ++++++++++++++++++++-
->  1 file changed, 20 insertions(+), 1 deletion(-)
->
-> diff --git a/ui/icons/qemu.svg b/ui/icons/qemu.svg
-> index 24ca23a1e95..f2500de3391 100644
-> --- a/ui/icons/qemu.svg
-> +++ b/ui/icons/qemu.svg
-> @@ -918,7 +918,26 @@
->          <dc:format>image/svg+xml</dc:format>
->          <dc:type
->             rdf:resource=3D"http://purl.org/dc/dcmitype/StillImage" />
-> -        <dc:title />
-> +        <dc:title>Kew the Angry Emu</dc:title>
-> +        <dc:creator>
-> +          <cc:Agent>
-> +            <dc:title>Beno=C3=AEt Canet</dc:title>
-> +          </cc:Agent>
-> +        </dc:creator>
-> +        <dc:rights>
-> +          <cc:Agent>
-> +            <dc:title>CC BY 3.0</dc:title>
-> +          </cc:Agent>
-> +        </dc:rights>
-> +        <dc:publisher>
-> +          <cc:Agent>
-> +            <dc:title>QEMU Community</dc:title>
-> +          </cc:Agent>
-> +        </dc:publisher>
-> +        <dc:date>2012-02-15</dc:date>
-> +        <cc:license
-> +           rdf:resource=3D"http://creativecommons.org/licenses/by/3.0/" =
-/>
-> +        <dc:source>
-> https://lists.gnu.org/archive/html/qemu-devel/2012-02/msg02865.html
-> </dc:source>
->        </cc:Work>
->      </rdf:RDF>
->    </metadata>
-> --
-> 2.51.0
->
->
+diff --git a/ui/vnc.c b/ui/vnc.c
+index 77c823bf2e..1669ed1b80 100644
+--- a/ui/vnc.c
++++ b/ui/vnc.c
+@@ -1301,7 +1301,9 @@ static void vnc_disconnect_start(VncState *vs)
+         g_source_remove(vs->ioc_tag);
+         vs->ioc_tag = 0;
+     }
+-    qio_channel_close(vs->ioc, NULL);
++    if (vs->ioc) {
++        qio_channel_close(vs->ioc, NULL);
++    }
+     vs->disconnecting = TRUE;
+ }
 
---0000000000001ae188063fff9a84
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr">Hi</div><br><div class=3D"gmail_quote gma=
-il_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Tue, Sep 30, 2=
-025 at 11:14=E2=80=AFAM Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com"=
->thuth@redhat.com</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quote"=
- style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204);p=
-adding-left:1ex">From: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" =
-target=3D"_blank">thuth@redhat.com</a>&gt;<br>
-<br>
-We&#39;ve got two versions of the QEMU logo in the repository, one with<br>
-the whole word &quot;QEMU&quot; (pc-bios/qemu_logo.svg) and one that only c=
-ontains<br>
-the letter &quot;Q&quot; (ui/icons/qemu.svg). While qemu_logo.svg contains =
-the<br>
-proper metadata with license and author information, this is missing<br>
-from the ui/icons/qemu.svg file. Copy the meta data there so that<br>
-people have a chance to know the license of the file if they only<br>
-look at the qemu.svg file.<br>
-<br>
-Closes: <a href=3D"https://gitlab.com/qemu-project/qemu/-/issues/3139" rel=
-=3D"noreferrer" target=3D"_blank">https://gitlab.com/qemu-project/qemu/-/is=
-sues/3139</a><br>
-Signed-off-by: Thomas Huth &lt;<a href=3D"mailto:thuth@redhat.com" target=
-=3D"_blank">thuth@redhat.com</a>&gt;<br></blockquote><div><br></div><div>Re=
-viewed-by: Marc-Andr=C3=A9 Lureau &lt;<a href=3D"mailto:marcandre.lureau@re=
-dhat.com">marcandre.lureau@redhat.com</a>&gt;</div><div>=C2=A0</div><blockq=
-uote class=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1p=
-x solid rgb(204,204,204);padding-left:1ex">
----<br>
-=C2=A0ui/icons/qemu.svg | 21 ++++++++++++++++++++-<br>
-=C2=A01 file changed, 20 insertions(+), 1 deletion(-)<br>
-<br>
-diff --git a/ui/icons/qemu.svg b/ui/icons/qemu.svg<br>
-index 24ca23a1e95..f2500de3391 100644<br>
---- a/ui/icons/qemu.svg<br>
-+++ b/ui/icons/qemu.svg<br>
-@@ -918,7 +918,26 @@<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&lt;dc:format&gt;image/svg+xml&lt;/dc:for=
-mat&gt;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0&lt;dc:type<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 rdf:resource=3D&quot;<a href=3D"h=
-ttp://purl.org/dc/dcmitype/StillImage" rel=3D"noreferrer" target=3D"_blank"=
->http://purl.org/dc/dcmitype/StillImage</a>&quot; /&gt;<br>
--=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;dc:title /&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;dc:title&gt;Kew the Angry Emu&lt;/dc:title=
-&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;dc:creator&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;cc:Agent&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;dc:title&gt;Beno=C3=AEt Cane=
-t&lt;/dc:title&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/cc:Agent&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/dc:creator&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;dc:rights&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;cc:Agent&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;dc:title&gt;CC BY 3.0&lt;/dc=
-:title&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/cc:Agent&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/dc:rights&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;dc:publisher&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;cc:Agent&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;dc:title&gt;QEMU Community&l=
-t;/dc:title&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/cc:Agent&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;/dc:publisher&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;dc:date&gt;2012-02-15&lt;/dc:date&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;cc:license<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0 =C2=A0rdf:resource=3D&quot;<a href=3D"h=
-ttp://creativecommons.org/licenses/by/3.0/" rel=3D"noreferrer" target=3D"_b=
-lank">http://creativecommons.org/licenses/by/3.0/</a>&quot; /&gt;<br>
-+=C2=A0 =C2=A0 =C2=A0 =C2=A0 &lt;dc:source&gt;<a href=3D"https://lists.gnu.=
-org/archive/html/qemu-devel/2012-02/msg02865.html" rel=3D"noreferrer" targe=
-t=3D"_blank">https://lists.gnu.org/archive/html/qemu-devel/2012-02/msg02865=
-.html</a>&lt;/dc:source&gt;<br>
-=C2=A0 =C2=A0 =C2=A0 =C2=A0&lt;/cc:Work&gt;<br>
-=C2=A0 =C2=A0 =C2=A0&lt;/rdf:RDF&gt;<br>
-=C2=A0 =C2=A0&lt;/metadata&gt;<br>
--- <br>
-2.51.0<br>
-<br>
-</blockquote></div></div>
-
---0000000000001ae188063fff9a84--
-
+-- 
+2.39.5
 
