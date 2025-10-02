@@ -4,69 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A147DCAC5B8
-	for <qemu-trivial@archiver.kernel.org>; Thu,  2 Oct 2025 13:29:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4E4FCAC5B8
+	for <qemu-trivial@archiver.kernel.org>; Thu,  2 Oct 2025 14:43:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v4JNG-00047N-9M; Thu, 02 Oct 2025 09:29:35 -0400
+	id 1v4KWW-0001J9-86; Thu, 02 Oct 2025 10:43:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1v4JNE-00046s-QS
- for qemu-trivial@nongnu.org; Thu, 02 Oct 2025 09:29:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <Marco.Cavenati@eurecom.fr>)
+ id 1v4KWQ-0001IA-2C; Thu, 02 Oct 2025 10:43:06 -0400
+Received: from smtp.eurecom.fr ([193.55.113.210])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kwolf@redhat.com>) id 1v4JN4-0003K9-Qz
- for qemu-trivial@nongnu.org; Thu, 02 Oct 2025 09:29:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759411746;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=bF5fWc1fclT13hLdnAfzAqIbK49bN/PxtTrFN4Ytt3s=;
- b=EjzbIGQpg172gZhAhN7dqrNbgVXPOQNNXH26XOkabuz4+EmE9QgoqLRKu7ZdQRqNW2EjfJ
- OHBEyOfXXX+OMQcIrOMZuksgp3k/EjioTmsvEZG3mES+f8T1IRQ+6sx1CXvEElvjPsm1HU
- 7/BdGon6oYJMQGN61ossSAE7rVOHx8U=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-581-fvTcIZBCN0KPNMw1AXqxRg-1; Thu,
- 02 Oct 2025 09:29:04 -0400
-X-MC-Unique: fvTcIZBCN0KPNMw1AXqxRg-1
-X-Mimecast-MFC-AGG-ID: fvTcIZBCN0KPNMw1AXqxRg_1759411744
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (Exim 4.90_1) (envelope-from <Marco.Cavenati@eurecom.fr>)
+ id 1v4KWI-0003p6-7D; Thu, 02 Oct 2025 10:43:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=eurecom.fr; i=@eurecom.fr; q=dns/txt; s=default;
+ t=1759416178; x=1790952178;
+ h=from:to:cc:subject:date:message-id:mime-version:
+ content-transfer-encoding;
+ bh=PIQW/7dCV76ZqB43MqKVv3Yw3r35T4rFvQT/xBp5Tfg=;
+ b=lZw9eD+kE2nUlbgI++8j0JRL+ZYXYFdLDl/YdjvMQz28jF/J3NrumG73
+ rLVHTEPXOHyznLyqivRbWvZzQKyQWK3e35/aLYqJR9Fq8CuOsKdtxJWoq
+ aS/ozUdRgRfDo846aY4h61UQJth9QI04TRFsKeP5lJI2hJam+BL9BdXtY c=;
+X-CSE-ConnectionGUID: AqNT9UY2Rd63r8V+MgYz3g==
+X-CSE-MsgGUID: 0xxv6ZU4RI6vApO4v/mMUw==
+X-IronPort-AV: E=Sophos;i="6.18,309,1751234400"; 
+   d="scan'208";a="3132514"
+Received: from waha.eurecom.fr (HELO smtps.eurecom.fr) ([10.3.2.236])
+ by drago1i.eurecom.fr with ESMTP; 02 Oct 2025 16:42:41 +0200
+Received: from marco-eurecom-desktop.s3.eurecom.fr (unknown [193.55.114.5])
+ (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B93431955D5B; Thu,  2 Oct 2025 13:29:03 +0000 (UTC)
-Received: from redhat.com (unknown [10.45.225.182])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F125730002C8; Thu,  2 Oct 2025 13:29:01 +0000 (UTC)
-Date: Thu, 2 Oct 2025 15:28:59 +0200
-From: Kevin Wolf <kwolf@redhat.com>
-To: Bin Guo <guobin@linux.alibaba.com>
-Cc: qemu-devel@nongnu.org, hreitz@redhat.com, qemu-block@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] block/monitor: Use hmp_handle_error to report error
-Message-ID: <aN5-Cm_2HFZ4wn2Q@redhat.com>
-References: <20250916054850.40963-1-guobin@linux.alibaba.com>
+ by smtps.eurecom.fr (Postfix) with ESMTPSA id 16D4E205A;
+ Thu,  2 Oct 2025 16:42:41 +0200 (CEST)
+From: Marco Cavenati <Marco.Cavenati@eurecom.fr>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Marco Cavenati <Marco.Cavenati@eurecom.fr>
+Subject: [PATCH] system/runstate: remove duplicate in runstate transitions
+Date: Thu,  2 Oct 2025 16:41:45 +0200
+Message-ID: <20251002144145.209819-1-Marco.Cavenati@eurecom.fr>
+X-Mailer: git-send-email 2.48.1
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20250916054850.40963-1-guobin@linux.alibaba.com>
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=kwolf@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=193.55.113.210;
+ envelope-from=Marco.Cavenati@eurecom.fr; helo=smtp.eurecom.fr
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.451,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,22 +72,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Am 16.09.2025 um 07:48 hat Bin Guo geschrieben:
-> According to writing-monitor-commands.rst, best practice is to
-> use the 'hmp_handle_error' function, which ensures that the
-> message gets an 'Error: ' prefix.
-> 
-> Signed-off-by: Bin Guo <guobin@linux.alibaba.com>
+Remove duplicate entry PRELAUNCH->INMIGRATE from runstate_transitions_def.
+Move PRELAUNCH->SUSPENDED entry with all the other PRELAUNCH->XXX entries.
 
->      if (!blk_legacy_dinfo(blk)) {
-> -        error_report("Deleting device added with blockdev-add"
-> +        error_setg(&err, "Deleting device added with blockdev-add"
->                       " is not supported");
->          goto unlock;
->      }
+Signed-off-by: Marco Cavenati <Marco.Cavenati@eurecom.fr>
+---
+ system/runstate.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-Thanks, fixed up the indentation here and applied to the block branch.
-
-Kevin
+diff --git a/system/runstate.c b/system/runstate.c
+index 6178b0091a..32467aa882 100644
+--- a/system/runstate.c
++++ b/system/runstate.c
+@@ -76,9 +76,6 @@ typedef struct {
+ } RunStateTransition;
+ 
+ static const RunStateTransition runstate_transitions_def[] = {
+-    { RUN_STATE_PRELAUNCH, RUN_STATE_INMIGRATE },
+-    { RUN_STATE_PRELAUNCH, RUN_STATE_SUSPENDED },
+-
+     { RUN_STATE_DEBUG, RUN_STATE_RUNNING },
+     { RUN_STATE_DEBUG, RUN_STATE_FINISH_MIGRATE },
+     { RUN_STATE_DEBUG, RUN_STATE_PRELAUNCH },
+@@ -118,6 +115,7 @@ static const RunStateTransition runstate_transitions_def[] = {
+     { RUN_STATE_PRELAUNCH, RUN_STATE_RUNNING },
+     { RUN_STATE_PRELAUNCH, RUN_STATE_FINISH_MIGRATE },
+     { RUN_STATE_PRELAUNCH, RUN_STATE_INMIGRATE },
++    { RUN_STATE_PRELAUNCH, RUN_STATE_SUSPENDED },
+ 
+     { RUN_STATE_FINISH_MIGRATE, RUN_STATE_RUNNING },
+     { RUN_STATE_FINISH_MIGRATE, RUN_STATE_PAUSED },
+-- 
+2.48.1
 
 
