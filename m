@@ -4,89 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1414CCA472
-	for <qemu-trivial@archiver.kernel.org>; Fri,  3 Oct 2025 01:08:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91D7BCAC5B0
+	for <qemu-trivial@archiver.kernel.org>; Sat,  4 Oct 2025 19:49:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v4UGN-0008TE-Ra; Thu, 02 Oct 2025 21:07:12 -0400
+	id 1v58FQ-0007XG-He; Sat, 04 Oct 2025 15:48:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1v4UGL-0008Sj-HD
- for qemu-trivial@nongnu.org; Thu, 02 Oct 2025 21:07:09 -0400
-Received: from mail-ej1-x633.google.com ([2a00:1450:4864:20::633])
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v56Mm-0003rP-Os
+ for qemu-trivial@nongnu.org; Sat, 04 Oct 2025 13:48:21 -0400
+Received: from mail-lf1-x12c.google.com ([2a00:1450:4864:20::12c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alistair23@gmail.com>)
- id 1v4UGF-0002VL-Sc
- for qemu-trivial@nongnu.org; Thu, 02 Oct 2025 21:07:08 -0400
-Received: by mail-ej1-x633.google.com with SMTP id
- a640c23a62f3a-b3dbf11fa9eso303696366b.0
- for <qemu-trivial@nongnu.org>; Thu, 02 Oct 2025 18:07:00 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v56Mj-0007UC-3V
+ for qemu-trivial@nongnu.org; Sat, 04 Oct 2025 13:48:20 -0400
+Received: by mail-lf1-x12c.google.com with SMTP id
+ 2adb3069b0e04-57f1b88354eso3339782e87.1
+ for <qemu-trivial@nongnu.org>; Sat, 04 Oct 2025 10:48:13 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1759453616; x=1760058416; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=dUJ1G4B6gGG3DgKRIsukrEL70OmCxl2X+s7iaMTB1lM=;
- b=G1S/AG2GMMR3FToFF5All3JPqCeWFhPqrKALU8RfFZZONbLYHX0MEvQsvmTQ2PJ83T
- EP3/O5ULX1CPDUTFFH6QfEALYz0Jl/+CSRLIW/bIvrTZfKhknoyUJP/yOxEkREBi6BwC
- VDLjfoLWyIoVezbD+22RMJCOg4zTC9yccAPMPtbAlgwDIfZc8vL03soLSkmnqjgDL8s1
- 0epJsGF7SyAKahvdUCaEakXQ12cvP9YZ5ntThTzKuhVbTKY41At/RDzBtw8oErTEcqmg
- 60TOIbJeLId5ofzXJG9GJF9Q2eIqXioq6mGyqK0BhqiMjRT9FeaFli50zWbMDwP+3X3H
- rOgQ==
+ d=gmail.com; s=20230601; t=1759600091; x=1760204891; darn=nongnu.org;
+ h=to:cc:date:message-id:subject:mime-version
+ :content-transfer-encoding:from:from:to:cc:subject:date:message-id
+ :reply-to; bh=vuzm8FeLO84xvcLhr8EGDm+15bWYBkiXGDkQ3fYG9w8=;
+ b=Ybpfp4seDpVzIUtnBPcLSTsPfnd1UO3aKNaAd8MbSiYAJ94KWUc4qHIBUsD/E9GqmR
+ ZrN0wlSUMzU3W5btZFVyx40ssPYurz/cUsY7rfA9PNzilXV99VcI+lDxj9VmND6BWU+/
+ IS/1FcKJC3SqshYRuLJN1wUypHltPeX5IFIx11AOOLq78I9GvIAK/m4ym0p6/ZhczNeI
+ 6hm7FnCkpdHhATNd78sSsUH1ERu7JY22raVPCcXdJXG3FJEn0hjyRobLnt/hIU9YULNN
+ h54mmgAYiEloNczs/64ORb5GmxrDqc/ulvpc2tXERADfT9pSjfYbTEHMn48MN3d4utR4
+ Nj0w==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759453616; x=1760058416;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
+ d=1e100.net; s=20230601; t=1759600091; x=1760204891;
+ h=to:cc:date:message-id:subject:mime-version
+ :content-transfer-encoding:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=dUJ1G4B6gGG3DgKRIsukrEL70OmCxl2X+s7iaMTB1lM=;
- b=hJt0uEDQ9fZh5f6XJICHqez5D2fzYd2jOshhTPyK52rgaUnpYHP7FSFEtvs99qYFrr
- 5PKaLvc3AFlkbAfPQFamaUTeUbk6AFs2y1DqN7h9jNKZB0xmauytJQ5uvcpEbkoumkln
- X99OVzliNbv1uoLKnqHr3jEmcAaxbeGejmttqrSn9xP06jnaH6zsDJobTamvEM91wdBm
- OnLRJSXf5vlMtC94rXF3ggWKNUxEkzMug8aiv03zr8NAiOw5b9YRnAw0pgnpnSy8nnUo
- 6UHTTd9VMv38VbchPi4UYvdrbqgVMYnigw8PRv5yKDTp3FBb9+8V9SyaLi4Fxk0J3pyX
- RLxQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCUmXCmnUDmsF94xlvnHZ4k3JoABVA/8ODTkapF7B1s86Og54S70chA981NBZAusmrxlZKh7ZqQott25rZE=@nongnu.org
-X-Gm-Message-State: AOJu0YwTNGWWgQnfRemAFYn+PXANNlc+hAo8tYggUGfLPZIyAJyDvYYX
- fEHLNGKXyzH44z09IZH6f/Nq5+3TqR0/qyDVb5K+yEt5Vc/A800u3yk0ZkssOdRFB2Ah5UZpvYr
- WkwBYy+yAgBj9xQ2f5mH95BD51XHKcEI=
-X-Gm-Gg: ASbGncuAJriHkpgP7Hbd3F932FekSYJQgUVYqyd3cjjsOnyAw0Ox5JdCoRpzD93rSHD
- fmWyDBd1LJMAbGvHlxIiuViX6mbT6yGcQ2tHq0Ps3hTCT91VZW3z4dxk5zHeCJSM8soGG29T3Lg
- glFdKo2dIKGFjH38VadO1yaIeCX2kue1sr3mYzCNap9iuNk4HBPeN6vlLJHn2WB5Vg6TaozOB15
- dv+fssSaWnIBIT0eR+ksbesI7a/x0z/DgGgATsAkrviFDSPK/dMgYXYHgJu8A==
-X-Google-Smtp-Source: AGHT+IFM/7JOB2qMO+pYWbdlGCbGLMS41DxU6Chfnus8j2/3SPPHzhrmm1t2ipiWUOxY2ncUuL7HVeb3DC7BTHdks9Y=
-X-Received: by 2002:a17:907:944d:b0:b2e:e87e:ef2e with SMTP id
- a640c23a62f3a-b49c34474b6mr151753766b.39.1759453616142; Thu, 02 Oct 2025
- 18:06:56 -0700 (PDT)
-MIME-Version: 1.0
-References: <20250929115543.1648157-1-valentin.haudiquet@canonical.com>
-In-Reply-To: <20250929115543.1648157-1-valentin.haudiquet@canonical.com>
-From: Alistair Francis <alistair23@gmail.com>
-Date: Fri, 3 Oct 2025 11:06:28 +1000
-X-Gm-Features: AS18NWBuckVfcsWCLtP_skD8anng53scByzxab0cbxP61calpZ1B1PfLyIjMR5g
-Message-ID: <CAKmqyKNvBF5hRjDZKNp1Bs-GecDqCu3inh-1-tsRaA9iyCU0ZA@mail.gmail.com>
-Subject: Re: [PATCH] target/riscv: Fix endianness swap on compressed
- instructions
-To: Valentin Haudiquet <valentin.haudiquet@canonical.com>
-Cc: qemu-devel@nongnu.org, qemu-riscv@nongnu.org, qemu-trivial@nongnu.org, 
- zhiwei_liu@linux.alibaba.com, dbarboza@ventanamicro.com, liwei1518@gmail.com, 
- alistair.francis@wdc.com, palmer@dabbelt.com, 
- vhaudiquet <vhaudiquet343@hotmail.fr>
-Content-Type: text/plain; charset="UTF-8"
+ bh=vuzm8FeLO84xvcLhr8EGDm+15bWYBkiXGDkQ3fYG9w8=;
+ b=iua3RMlp8Sc9xX3qoZW0Zl6mviUOIFz4kBLPZknmwyAbQ/H4cOncQwm5Mrt9LgEC4I
+ cNryfBGMvsbN1eVowVVlKlE7gn8n0IMTy3lHcGHlnYBPk1USBHzoMlaSO7j9BQzaKxH5
+ 6MCpUTkkQeaWK+g8+GfMe7AelrnEuB5Ed7cb6nO/O1Q773nSTHm/D142tbdWhuJhgkWd
+ 5FGs5YMlJLhA/fDnLDMzZqqkw8cIGR9xU0+FpC8i9hCPcST1UnJ3ShAuA19EfwDjfAZz
+ S9pF/laNKlxnFGQoNOvD50PE9pzayhxR/IKabdlV25L/HdyxpFb3J9rSHbWvWbwa/PIN
+ mpLQ==
+X-Gm-Message-State: AOJu0YzEf2b6cT1PSty/9/oDaz9LJFmBBHbRqrMdQDGzdAXRo1Uei4Ol
+ JhDrTq/0POKZ14+AZHqAbf07uD4lCSviKB7owyCMOxdKldFp8ggrBcwX
+X-Gm-Gg: ASbGnctDRB9fNnLKhbtUq9Hw9vUVDNxXq6WxZQv3mAUpsBhifKs8JfcGhKQsyS7mySW
+ fpbwkuRcMnUWEibRg7oi+HTLmKB3oSXLfqjeqwYN6YgX11eKURGVRyLE8qtFfQuYV2ZDiv/fqZA
+ hBYyUrdsHDaGca47jbpLIRDlzU+TcnN/7EQneNPltxV35saiwqjm4BYEAlrohaAWfRcpFB9w8Lh
+ BjNQC5uskXxmGA+5zJEIG9KrexCOSkyWxwcJnAmSx38QF5UkH+zUpOyaacAERfeXfCwTRrkm9uo
+ u0aM1dIZPC5a3Zr3MeJB0DoxwXDZfJNpygA9CNK1NJyculynE5OaH/BTc6PGAnyiC6KpWAphiEK
+ d5LqYHSbdD8XZszAUVAp1ssVUfevEDSbHaOxfm1bl/iPf5XqS
+X-Google-Smtp-Source: AGHT+IHiOkNR+s7Ffelj60WmPq4+KOPES10Pfvf3mEbBnOm2mk2kCFxZmOLzT+IKidFAKkJW/vif4Q==
+X-Received: by 2002:a05:6512:23a9:b0:58b:6f:719e with SMTP id
+ 2adb3069b0e04-58cba6c1968mr2335972e87.17.1759600090581; 
+ Sat, 04 Oct 2025 10:48:10 -0700 (PDT)
+Received: from smtpclient.apple ([2a02:6bf:8080:446::1:2b])
+ by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-58b0118d258sm3042216e87.66.2025.10.04.10.48.08
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Sat, 04 Oct 2025 10:48:10 -0700 (PDT)
+From: Alexander Gryanko <xpahos@gmail.com>
+Content-Type: text/plain;
+	charset=us-ascii
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::633;
- envelope-from=alistair23@gmail.com; helo=mail-ej1-x633.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3776.700.51.11.2\))
+Subject: [PATCH] system/runstate.c: Add a newline character to correctly log
+ guest errors
+Message-Id: <32D0DF37-A1B3-4532-B350-082E19E4EABB@gmail.com>
+Date: Sat, 4 Oct 2025 20:47:56 +0300
+Cc: qemu-trivial@nongnu.org,
+ =?utf-8?B?0JDQu9C10LrRgdCw0L3QtNGAINCT0YDRj9C90LrQvg==?= <xpahos@gmail.com>
+To: qemu-devel@nongnu.org
+X-Mailer: Apple Mail (2.3776.700.51.11.2)
+Received-SPF: pass client-ip=2a00:1450:4864:20::12c;
+ envelope-from=xpahos@gmail.com; helo=mail-lf1-x12c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 04 Oct 2025 15:48:50 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,63 +99,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Mon, Sep 29, 2025 at 11:02=E2=80=AFPM Valentin Haudiquet
-<valentin.haudiquet@canonical.com> wrote:
->
-> From: vhaudiquet <vhaudiquet343@hotmail.fr>
->
-> Three instructions were not using the endianness swap flag, which resulte=
-d in a bug on big-endian architectures.
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3131
-> Buglink: https://bugs.launchpad.net/ubuntu/+source/qemu/+bug/2123828
->
-> Signed-off-by: Valentin Haudiquet <valentin.haudiquet@canonical.com>
+The pvpanic handler calls the qemu_system_guest_panicked
+function with a NULL parameter, which results in the absence
+of a newline character in the guest error log.
+The qemu_system_guest_crashloaded function has no additional
+logic, but also omits the newline character.
+The qemu_system_guest_pvshutdown has no reporting in the
+guest error log.
 
-Thanks!
+Signed-off-by: Alexander Gryanko <xpahos@gmail.com>
+---
+system/runstate.c | 5 ++++-
+1 file changed, 4 insertions(+), 1 deletion(-)
 
-Applied to riscv-to-apply.next
+diff --git a/system/runstate.c b/system/runstate.c
+index 6178b0091a..8b4bf75cd6 100644
+--- a/system/runstate.c
++++ b/system/runstate.c
+@@ -674,18 +674,21 @@ void =
+qemu_system_guest_panicked(GuestPanicInformation *info)
+        }
 
-Alistair
+        qapi_free_GuestPanicInformation(info);
++    } else {
++        qemu_log_mask(LOG_GUEST_ERROR, "\n");
+    }
+}
 
-> ---
->  target/riscv/insn_trans/trans_rvzce.c.inc | 6 +++---
->  1 file changed, 3 insertions(+), 3 deletions(-)
->
-> diff --git a/target/riscv/insn_trans/trans_rvzce.c.inc b/target/riscv/ins=
-n_trans/trans_rvzce.c.inc
-> index c77c2b927b..dd15af0f54 100644
-> --- a/target/riscv/insn_trans/trans_rvzce.c.inc
-> +++ b/target/riscv/insn_trans/trans_rvzce.c.inc
-> @@ -88,13 +88,13 @@ static bool trans_c_lbu(DisasContext *ctx, arg_c_lbu =
-*a)
->  static bool trans_c_lhu(DisasContext *ctx, arg_c_lhu *a)
->  {
->      REQUIRE_ZCB(ctx);
-> -    return gen_load(ctx, a, MO_UW);
-> +    return gen_load(ctx, a, MO_TEUW);
->  }
->
->  static bool trans_c_lh(DisasContext *ctx, arg_c_lh *a)
->  {
->      REQUIRE_ZCB(ctx);
-> -    return gen_load(ctx, a, MO_SW);
-> +    return gen_load(ctx, a, MO_TESW);
->  }
->
->  static bool trans_c_sb(DisasContext *ctx, arg_c_sb *a)
-> @@ -106,7 +106,7 @@ static bool trans_c_sb(DisasContext *ctx, arg_c_sb *a=
-)
->  static bool trans_c_sh(DisasContext *ctx, arg_c_sh *a)
->  {
->      REQUIRE_ZCB(ctx);
-> -    return gen_store(ctx, a, MO_UW);
-> +    return gen_store(ctx, a, MO_TEUW);
->  }
->
->  #define X_S0    8
-> --
-> 2.51.0
->
->
+void qemu_system_guest_crashloaded(GuestPanicInformation *info)
+{
+-    qemu_log_mask(LOG_GUEST_ERROR, "Guest crash loaded");
++    qemu_log_mask(LOG_GUEST_ERROR, "Guest crash loaded\n");
+    qapi_event_send_guest_crashloaded(GUEST_PANIC_ACTION_RUN, info);
+    qapi_free_GuestPanicInformation(info);
+}
+
+void qemu_system_guest_pvshutdown(void)
+{
++    qemu_log_mask(LOG_GUEST_ERROR, "Guest shutdown requested\n");
+    qapi_event_send_guest_pvshutdown();
+    qemu_system_shutdown_request(SHUTDOWN_CAUSE_GUEST_SHUTDOWN);
+}
+
+---
+base-commit: 81e3121bef89bcd3ccb261899e5a36246199065d
+change-id: 20251004-add-newline-guest-error-log-62d68638b28c
+
+Best regards,
+--=20
+Alexander Gryanko <xpahos@gmail.com>
+
 
