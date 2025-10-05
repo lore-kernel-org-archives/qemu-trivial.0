@@ -4,75 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB794CAC5BB
-	for <qemu-trivial@archiver.kernel.org>; Sun,  5 Oct 2025 18:59:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D97BCCAC5BB
+	for <qemu-trivial@archiver.kernel.org>; Sun,  5 Oct 2025 22:22:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v5TwW-00050B-7j; Sun, 05 Oct 2025 14:58:48 -0400
+	id 1v5X6u-0003GE-VN; Sun, 05 Oct 2025 18:21:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5TwU-0004ze-Or
- for qemu-trivial@nongnu.org; Sun, 05 Oct 2025 14:58:46 -0400
-Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5X6u-0003Fy-0E
+ for qemu-trivial@nongnu.org; Sun, 05 Oct 2025 18:21:44 -0400
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5TwT-0004p5-7n
- for qemu-trivial@nongnu.org; Sun, 05 Oct 2025 14:58:46 -0400
-Received: by mail-lj1-x22d.google.com with SMTP id
- 38308e7fff4ca-36d77de259bso35980081fa.3
- for <qemu-trivial@nongnu.org>; Sun, 05 Oct 2025 11:58:43 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5X6s-0001lF-31
+ for qemu-trivial@nongnu.org; Sun, 05 Oct 2025 18:21:43 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id
+ 2adb3069b0e04-5797c8612b4so5472984e87.2
+ for <qemu-trivial@nongnu.org>; Sun, 05 Oct 2025 15:21:41 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1759690721; x=1760295521; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
+ d=gmail.com; s=20230601; t=1759702899; x=1760307699; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
  bh=nexgf6hd/Qhctp9El5zgWCdHTRWfKODP1WxaKeNvDkM=;
- b=aTOtNZLYYvRqLvoP5FibeRi5jziIm7donpzmpu+si01DTC6gjaamxHPnQWwCTAZYmi
- qhS+oFarFhTyED9YkNn2i79M/OtNA/IRhmrVwWRoagEKjQl+y4REbrHlJD3bH6haNls3
- xsWA7SrFcFq7gi2OWHbjQQeXvecNDS697q02k1W9rs9s9aLd1JyCBYV5TE1K+j5P5ztG
- xwVTn/jlEzoEglrmBpao2BVz/n8v1oxWFdTxUNzUNakTW4ZCGauXTnTVM6e1RXspOoH0
- QvfY4enINACI7hVz8c72Ljiva3jhQu2lsH8Q5kV2jEHZ9XGCF54lRgMt9RONFwyqW7uL
- kStw==
+ b=Mm1vSJ1S/EhB3QKRoGZbz067Ozlsz3sJAlIaNqSUoLRqyH6B5XETWI/Y7/V9EzQFjR
+ pfClSuf5/Jsj5NLNq0YC4YvxCHUrTcnOf3xJVeF9LEnzr7ekrQCU10of71pglJLbKPel
+ wA62t+aoUgK4RWNmx45p4YDfck+xLgqU2STkJlPNUqaFExSRsMVW9srFr20AyfJj4XuP
+ 0HNWbXhXI934vH10ACiISQDX2jjTXQ9pnRytIKBsSh0fQBq9prWvbtgrZWSCIttkEEZW
+ 4fVfUhR+2GUNBoFsNDaUI8Ki1Z6LILdpk4VdYAjjREik0pAmkoUlaYQnO9Dk5QvVAMTB
+ fSsQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759690721; x=1760295521;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
+ d=1e100.net; s=20230601; t=1759702899; x=1760307699;
+ h=content-transfer-encoding:mime-version:references:in-reply-to
+ :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
  bh=nexgf6hd/Qhctp9El5zgWCdHTRWfKODP1WxaKeNvDkM=;
- b=bjtR60IVOd+eTnIt0T4FT6X84GW9j9jf6MD8GtB9RwZEKZKJC9all7hA2oj1qhKkgx
- Zte7pavZjGYrWWgY5lWCUMfe/Sub8/vpj+TuxzElaVidedJ6Ro/GXQJ+1nWwmvD0nch6
- P0K4GtaHpW/GHK2j2+RsJXtZFIVsr1siIrpbMcaQmcoird4dj3WhYpZDYikYw/MSWFYJ
- u50cwM/ZlYY5h0b4y9icHGmf3IjRH8xhltbeXhliOXlWf3uUQ1U990R0MWJm+gxvEefS
- KNM1PlX7/CoXxHNr2SfABbaTBO0/FRl32RIFIqjZquZNBIf1gqcebNX/+vIB6vNQcaLE
- 19Ag==
+ b=nUI+xPybNZIaCE7ZPE+AxBT2r4bWUEji3AlBOy6Uc+mL3dMnP0dJfgYkLuM08om6Cx
+ HYK7HfOTYlm9STif1/N8D29xJb+ocj6mgjpmRAYZVY1FpqlkPSwfgrDvNQtlb+OYsF29
+ 3er6FfmhebkwqX59i4UtY40IYSq11sccczeG/JxFDOw9gtsXf9X3fQsoLV4uu6LrhoDW
+ NeZexTBdDzU68Hr2qEztmiNZw1Dk2ngFBKefcagmx2ufob0g7jCYw5TJY82cFKWSwXBk
+ HyBCvf4q6LH1ofKKHGLwkHKpAwk+guDOmKQHo2+bWKRaOCLEtvQdj5cS6j1NaYv5bNml
+ bfzw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXR8iGAOVGfKkcyBGGOBHWKg99mQ5zbEMo701lh/9tv8zHEUOBGnAHQnia0NzvdXaVWQsnBLdrLzrhrclc=@nongnu.org
-X-Gm-Message-State: AOJu0Yy2vy95tiKTjNjeW9Sy8HAAuOOIoHUazcFnjH5l+U1h8bdE8q95
- v9o3+73omh/gyFObVFS+Qq7iTEDYXn7uGyWbr+uOnLnViOyZYaeeVIzd
-X-Gm-Gg: ASbGncvqzYDPEwYWt5/kkrpET+6iTMmCUFZ+eT5rNn/honqhIZ+9LOfeO+hxGqjfcQS
- lN+88FEVCyWRX0o62v+kdIfuTi0p4z+hLiiNbjIswhx9qGpymY1QTb3FYWUA42hldlCEVWTiSJv
- iL03PCO+fz7QPh899DwaB7W6Ogz+eGL5I8XhykaD3tUCBykk7LhOeeQ3hbDvFkFFjsyw355E+R9
- FrhJBgWguz2SRPuqi8pX12J8ni9KGfcZcJFoo757fyBqePgdBJ6aiMDFTtKlPsm6NeJQCxMCA5B
- R41j9J6Lty1B/fADgIeNe8e9FAyPiPQm14C+V+7As9lxrF2/tYB/ybj2B+SoS+EHs1TmQChhR4H
- 8zC0FLO240XMmr15sKI6a0ST5mYdBWHcIkR1CiDHnck72CFk6sPrJr8Faw5BAn9ZHVg==
-X-Google-Smtp-Source: AGHT+IHGZzK+qFL/EMh8xEDEju2gdTFQ+4nuts5JR/meh2fYpAzXBvYHu89SWnN0KMN+M3BfBnIeUA==
-X-Received: by 2002:a2e:be8d:0:b0:372:8e46:3705 with SMTP id
- 38308e7fff4ca-374c3886fa3mr32017271fa.44.1759690721242; 
- Sun, 05 Oct 2025 11:58:41 -0700 (PDT)
+ AJvYcCVX4BkzZV9KWLArdFyLtJdhuh4T/iJotEdN0K3uEQHjQlRHEOB7LoqymnCk8jRVFuyaJtZbmZZtTvb3pJU=@nongnu.org
+X-Gm-Message-State: AOJu0YymTDtVeuv0P0f8YnJY72omnY4mTBMSzmOSG6qTup7BO9IqJ3BF
+ avBPzAa7BX6akaVAnv17Mn7FEjQjsDul0fVTbytubvx6QELJsF/QBKZD
+X-Gm-Gg: ASbGnctIJHxAQ30J/LeXE8+dNiCJztXMbB1CMyMOoxJBn/u6uiR/xp1MGxJdhOV2GnZ
+ KiFyvin3aNuiVjmt1Gm04GkzMdZ1hMQw4EBCCjqfsvg1n10nlrmuQz9zw4VviemgRKjv7FcQobh
+ 3T5PhdB/naOzPNZCC/QgBnH+eDW6LArX1Yl89YR9g0RfCp+G3/XJr70KAQbcn25lUuG6E8DkahL
+ xjbqwHDNGQV+g3A2YVENbb+Zeq2JjhRFDUhIB/Ye4hYSotXu8C8R7olZylqwlXNYKuUIiWbu01J
+ Y8gra2eJvfsS78O8xEQ6WqUbG0jXKjUwfptZSgBvm8vG/ARF0iGDkn/sAr4mzdjHA/fojW9qQHz
+ XIslIylwfKqsLLCCiiBzZRbU8/UgtvdNcyMoW3QDdKHJAy5ZMhcEsI5FXyDh0+TxGajzSmg==
+X-Google-Smtp-Source: AGHT+IHqiqq1Ga87SCS/M5ccId0NssfRavsYAMm5mFYo/OFF6nsontz+73I9fn0VLmka5OED/6AIsQ==
+X-Received: by 2002:a05:6512:3d27:b0:577:285f:32bd with SMTP id
+ 2adb3069b0e04-58cbbdd81eemr2742917e87.26.1759702898999; 
+ Sun, 05 Oct 2025 15:21:38 -0700 (PDT)
 Received: from xpahos-osx.yandex.net ([2a02:6bf:8080:c37::1:1])
  by smtp.gmail.com with ESMTPSA id
- 38308e7fff4ca-373ba49fd69sm37384161fa.43.2025.10.05.11.58.38
+ 2adb3069b0e04-58b0119ee99sm4351827e87.106.2025.10.05.15.21.36
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 05 Oct 2025 11:58:39 -0700 (PDT)
-From: Alexander Gryanko <xpahos@gmail.com>
-X-Google-Original-From: Alexander Gryanko <xpahos@yandex-team.ru>
+ Sun, 05 Oct 2025 15:21:37 -0700 (PDT)
+From: xpahos@gmail.com
 To: qemu-devel@nongnu.org
 Cc: pbonzini@redhat.com, qemu-trivial@nongnu.org,
  Alexander Gryanko <xpahos@gmail.com>
 Subject: [PATCH v2] system/runstate.c: Add a newline character to correctly
  log guest errors
-Date: Sun,  5 Oct 2025 21:58:34 +0300
-Message-ID: <32D0DF37-A1B3-4532-B350-082E19E4EABB@gmail.com>
+Date: Mon,  6 Oct 2025 01:21:27 +0300
+Message-Id: <20251004-add-newline-guest-error-log-v1-1-a61df1599936@gmail.com>
 X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+In-Reply-To: <32D0DF37-A1B3-4532-B350-082E19E4EABB@gmail.com>
+References: <32D0DF37-A1B3-4532-B350-082E19E4EABB@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 X-Change-ID: 20251004-add-newline-guest-error-log-62d68638b28c
@@ -85,15 +87,15 @@ X-Developer-Signature: v=1; a=ed25519-sha256; t=1759599468; l=1584;
 X-Developer-Key: i=xpahos@gmail.com; a=ed25519;
  pk=bsSvP3Tn7PVKgjJT3BMV3jlAwSqreKIM4099C1r51eg=
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
- envelope-from=xpahos@gmail.com; helo=mail-lj1-x22d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=xpahos@gmail.com; helo=mail-lf1-x12a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,7 +110,6 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
-Message-ID: <20251005185834.-gxMlKhpaFOMGicBr2tIAJBRcoIn4rRRGQluhy5x-9E@z>
 
 From: Alexander Gryanko <xpahos@gmail.com>
 
