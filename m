@@ -4,38 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3E8ACCD182
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A4420CAC5B8
 	for <qemu-trivial@archiver.kernel.org>; Sun,  5 Oct 2025 06:58:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v5IfG-0004wZ-1y; Sun, 05 Oct 2025 02:56:14 -0400
+	id 1v5IfE-0004uF-AX; Sun, 05 Oct 2025 02:56:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1v5IfB-0004q2-Sc; Sun, 05 Oct 2025 02:56:10 -0400
+ id 1v5If4-0004mt-Kr; Sun, 05 Oct 2025 02:56:02 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1v5If9-0007xx-JT; Sun, 05 Oct 2025 02:56:09 -0400
+ id 1v5If2-0007x4-Qw; Sun, 05 Oct 2025 02:56:02 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 31ED715A8EC;
- Sun, 05 Oct 2025 09:55:43 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id DA85815A8E9;
+ Sun, 05 Oct 2025 09:55:39 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 82D6B299481;
- Sun,  5 Oct 2025 09:55:46 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id 41DFB29947E;
+ Sun,  5 Oct 2025 09:55:43 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org,
+Cc: ShengYi Hung <aokblast@FreeBSD.org>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 7/8] docs/specs/spdm.rst: Fix typo in x86_64 architecture name
-Date: Sun,  5 Oct 2025 09:55:35 +0300
-Message-ID: <20251005065538.436862-8-mjt@tls.msk.ru>
+Subject: [PULL 4/8] hid: fix incorrect return value for hid
+Date: Sun,  5 Oct 2025 09:55:32 +0300
+Message-ID: <20251005065538.436862-5-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20251005065538.436862-1-mjt@tls.msk.ru>
 References: <20251005065538.436862-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -60,35 +59,32 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Peter Maydell <peter.maydell@linaro.org>
+From: ShengYi Hung <aokblast@FreeBSD.org>
 
-The spdm.rst docs call the 64-bit x86 architecture "x64-64".
-This is a typo; correct it to our canonical name for the
-architecture, "x86_64".
+The return value of hid_keyboard_write is used to set the packet's actual_length
+and pass to xhci directly to allow guest know how many byte actually processed.
+Therefore, return 1 to indicate a successful transfer or it will be
+considered as a wrong xfer.
 
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Alex Bennée <alex.bennee@linaro.org>
+Signed-off-by: ShengYi Hung <aokblast@FreeBSD.org>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- docs/specs/spdm.rst | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/input/hid.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/docs/specs/spdm.rst b/docs/specs/spdm.rst
-index f7de080ff0..0e3ad25bc6 100644
---- a/docs/specs/spdm.rst
-+++ b/docs/specs/spdm.rst
-@@ -102,7 +102,7 @@ Then you can add this to your QEMU command line:
- 
- At which point QEMU will try to connect to the SPDM server.
- 
--Note that if using x64-64 you will want to use the q35 machine instead
-+Note that if using x86_64 you will want to use the q35 machine instead
- of the default. So the entire QEMU command might look like this
- 
- .. code-block:: shell
+diff --git a/hw/input/hid.c b/hw/input/hid.c
+index 76bedc1844..de24cd0ef0 100644
+--- a/hw/input/hid.c
++++ b/hw/input/hid.c
+@@ -478,6 +478,7 @@ int hid_keyboard_write(HIDState *hs, uint8_t *buf, int len)
+             ledstate |= QEMU_CAPS_LOCK_LED;
+         }
+         kbd_put_ledstate(ledstate);
++        return 1;
+     }
+     return 0;
+ }
 -- 
 2.47.3
 
