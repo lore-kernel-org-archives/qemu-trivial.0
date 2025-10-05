@@ -4,38 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD658CAC5B8
-	for <qemu-trivial@archiver.kernel.org>; Sun,  5 Oct 2025 06:57:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 980F0CAC5BB
+	for <qemu-trivial@archiver.kernel.org>; Sun,  5 Oct 2025 06:57:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v5If7-0004nr-H0; Sun, 05 Oct 2025 02:56:05 -0400
+	id 1v5IfA-0004pS-Co; Sun, 05 Oct 2025 02:56:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1v5If2-0004lt-P9; Sun, 05 Oct 2025 02:56:00 -0400
+ id 1v5Iey-0004lc-Vb; Sun, 05 Oct 2025 02:55:57 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1v5If0-0007wc-WA; Sun, 05 Oct 2025 02:56:00 -0400
+ id 1v5Iev-0007vr-Bx; Sun, 05 Oct 2025 02:55:55 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id B3A5015A8E8;
- Sun, 05 Oct 2025 09:55:38 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id B704015A8E5;
+ Sun, 05 Oct 2025 09:55:35 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 40F9329947D;
- Sun,  5 Oct 2025 09:55:42 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id 5587829947A;
+ Sun,  5 Oct 2025 09:55:39 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-trivial@nongnu.org
-Subject: [PULL 3/8] vhost-user-test: remove trailing newlines in
- g_test_message() calls
-Date: Sun,  5 Oct 2025 09:55:31 +0300
-Message-ID: <20251005065538.436862-4-mjt@tls.msk.ru>
+Subject: [PULL 0/8] Trivial patches for 2025-10-05
+Date: Sun,  5 Oct 2025 09:55:28 +0300
+Message-ID: <20251005065538.436862-1-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20251005065538.436862-1-mjt@tls.msk.ru>
-References: <20251005065538.436862-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -60,75 +58,53 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Fixes: c9a1ea9c52 Revert "tests/qtest: use qos_printf instead of g_test_message"
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
+The following changes since commit bd6aa0d1e59d71218c3eee055bc8d222c6e1a628:
+
+  Merge tag 'staging-pull-request' of https://gitlab.com/peterx/qemu into staging (2025-10-04 09:10:58 -0700)
+
+are available in the Git repository at:
+
+  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+
+for you to fetch changes up to 0af5926a0feb0b69a127f5c24eaa605408fed2ec:
+
+  system/runstate: remove duplicate in runstate transitions (2025-10-05 09:46:06 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2025-10-05
+
+Just a bunch of tiny fixes everywhere.
+
+----------------------------------------------------------------
+Filip Hejsek (1):
+      ui/gtk: Fix callback function signature
+
+Marco Cavenati (1):
+      system/runstate: remove duplicate in runstate transitions
+
+Michael Tokarev (1):
+      vhost-user-test: remove trailing newlines in g_test_message() calls
+
+Peter Maydell (1):
+      docs/specs/spdm.rst: Fix typo in x86_64 architecture name
+
+ShengYi Hung (2):
+      hid: fix incorrect return value for hid
+      wdt_i6300esb: fix incorrect mask for interrupt type
+
+SillyZ (1):
+      hw/net/can: Remove redundant status bit setting in can_sja1000
+
+nanliu (1):
+      docs/devel: Correct uefi-vars-x64 device name
+
+ docs/devel/uefi-vars.rst      |  4 ++--
+ docs/specs/spdm.rst           |  2 +-
+ hw/input/hid.c                |  1 +
+ hw/net/can/can_sja1000.c      |  1 -
+ hw/watchdog/wdt_i6300esb.c    |  2 +-
+ system/runstate.c             |  4 +---
  tests/qtest/vhost-user-test.c | 14 +++++++-------
- 1 file changed, 7 insertions(+), 7 deletions(-)
-
-diff --git a/tests/qtest/vhost-user-test.c b/tests/qtest/vhost-user-test.c
-index 6ec4ec2d5a..609ff24059 100644
---- a/tests/qtest/vhost-user-test.c
-+++ b/tests/qtest/vhost-user-test.c
-@@ -391,7 +391,7 @@ static void chr_read(void *opaque, const uint8_t *buf, int size)
-          * We don't need to do anything here, the remote is just
-          * letting us know it is in charge. Just log it.
-          */
--        g_test_message("set_owner: start of session\n");
-+        g_test_message("set_owner: start of session");
-         break;
- 
-     case VHOST_USER_GET_PROTOCOL_FEATURES:
-@@ -417,7 +417,7 @@ static void chr_read(void *opaque, const uint8_t *buf, int size)
-          * the remote end to send this. There is no handshake reply so
-          * just log the details for debugging.
-          */
--        g_test_message("set_protocol_features: 0x%"PRIx64 "\n", msg.payload.u64);
-+        g_test_message("set_protocol_features: 0x%"PRIx64, msg.payload.u64);
-         break;
- 
-         /*
-@@ -425,11 +425,11 @@ static void chr_read(void *opaque, const uint8_t *buf, int size)
-          * address of the vrings but we can simply report them.
-          */
-     case VHOST_USER_SET_VRING_NUM:
--        g_test_message("set_vring_num: %d/%d\n",
-+        g_test_message("set_vring_num: %d/%d",
-                    msg.payload.state.index, msg.payload.state.num);
-         break;
-     case VHOST_USER_SET_VRING_ADDR:
--        g_test_message("set_vring_addr: 0x%"PRIx64"/0x%"PRIx64"/0x%"PRIx64"\n",
-+        g_test_message("set_vring_addr: 0x%"PRIx64"/0x%"PRIx64"/0x%"PRIx64,
-                    msg.payload.addr.avail_user_addr,
-                    msg.payload.addr.desc_user_addr,
-                    msg.payload.addr.used_user_addr);
-@@ -462,7 +462,7 @@ static void chr_read(void *opaque, const uint8_t *buf, int size)
-     case VHOST_USER_SET_VRING_CALL:
-         /* consume the fd */
-         if (!qemu_chr_fe_get_msgfds(chr, &fd, 1) && fd < 0) {
--            g_test_message("call fd: %d, do not set non-blocking\n", fd);
-+            g_test_message("call fd: %d, do not set non-blocking", fd);
-             break;
-         }
-         /*
-@@ -507,12 +507,12 @@ static void chr_read(void *opaque, const uint8_t *buf, int size)
-          * fully functioning vhost-user we would enable/disable the
-          * vring monitoring.
-          */
--        g_test_message("set_vring(%d)=%s\n", msg.payload.state.index,
-+        g_test_message("set_vring(%d)=%s", msg.payload.state.index,
-                    msg.payload.state.num ? "enabled" : "disabled");
-         break;
- 
-     default:
--        g_test_message("vhost-user: un-handled message: %d\n", msg.request);
-+        g_test_message("vhost-user: un-handled message: %d", msg.request);
-         break;
-     }
- 
--- 
-2.47.3
-
+ ui/gtk.c                      |  4 ++--
+ 8 files changed, 15 insertions(+), 17 deletions(-)
 
