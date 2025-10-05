@@ -4,36 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 980F0CAC5BB
-	for <qemu-trivial@archiver.kernel.org>; Sun,  5 Oct 2025 06:57:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAD1ACAC5BB
+	for <qemu-trivial@archiver.kernel.org>; Sun,  5 Oct 2025 06:57:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v5IfA-0004pS-Co; Sun, 05 Oct 2025 02:56:08 -0400
+	id 1v5IfB-0004q1-26; Sun, 05 Oct 2025 02:56:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1v5Iey-0004lc-Vb; Sun, 05 Oct 2025 02:55:57 -0400
+ id 1v5If1-0004lp-6g; Sun, 05 Oct 2025 02:56:00 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1v5Iev-0007vr-Bx; Sun, 05 Oct 2025 02:55:55 -0400
+ id 1v5Iez-0007wN-2c; Sun, 05 Oct 2025 02:55:58 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id B704015A8E5;
- Sun, 05 Oct 2025 09:55:35 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id C901615A8E7;
+ Sun, 05 Oct 2025 09:55:37 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 5587829947A;
- Sun,  5 Oct 2025 09:55:39 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id 3A22829947C;
+ Sun,  5 Oct 2025 09:55:41 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Subject: [PULL 0/8] Trivial patches for 2025-10-05
-Date: Sun,  5 Oct 2025 09:55:28 +0300
-Message-ID: <20251005065538.436862-1-mjt@tls.msk.ru>
+Cc: SillyZ <1357816113@qq.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 2/8] hw/net/can: Remove redundant status bit setting in
+ can_sja1000
+Date: Sun,  5 Oct 2025 09:55:30 +0300
+Message-ID: <20251005065538.436862-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20251005065538.436862-1-mjt@tls.msk.ru>
+References: <20251005065538.436862-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -58,53 +60,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-The following changes since commit bd6aa0d1e59d71218c3eee055bc8d222c6e1a628:
+From: SillyZ <1357816113@qq.com>
 
-  Merge tag 'staging-pull-request' of https://gitlab.com/peterx/qemu into staging (2025-10-04 09:10:58 -0700)
+In PeliCAN mode reception, the RBS (Receive Buffer Status) bit
+is set twice at line 842 and 845 with identical operations:
+  s->status_pel |= 0x01;
+  s->status_pel |= (1 << 0);
 
-are available in the Git repository at:
+Between these two operations, only interrupt_pel is modified and
+status_pel bit 4 is cleared, neither affecting bit 0. The second
+operation is redundant.
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+This cleanup aligns PeliCAN mode with BasicCAN mode, which correctly
+sets this bit only once (line 883).
 
-for you to fetch changes up to 0af5926a0feb0b69a127f5c24eaa605408fed2ec:
+Signed-off-by: SillyZ <1357816113@qq.com>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ hw/net/can/can_sja1000.c | 1 -
+ 1 file changed, 1 deletion(-)
 
-  system/runstate: remove duplicate in runstate transitions (2025-10-05 09:46:06 +0300)
+diff --git a/hw/net/can/can_sja1000.c b/hw/net/can/can_sja1000.c
+index 5b6ba9df6c..6b08e977a1 100644
+--- a/hw/net/can/can_sja1000.c
++++ b/hw/net/can/can_sja1000.c
+@@ -842,7 +842,6 @@ ssize_t can_sja_receive(CanBusClientState *client, const qemu_can_frame *frames,
+         s->status_pel |= 0x01; /* Set the Receive Buffer Status. DS-p23 */
+         s->interrupt_pel |= 0x01;
+         s->status_pel &= ~(1 << 4);
+-        s->status_pel |= (1 << 0);
+         can_sja_update_pel_irq(s);
+     } else { /* BasicCAN mode */
+ 
+-- 
+2.47.3
 
-----------------------------------------------------------------
-trivial patches for 2025-10-05
-
-Just a bunch of tiny fixes everywhere.
-
-----------------------------------------------------------------
-Filip Hejsek (1):
-      ui/gtk: Fix callback function signature
-
-Marco Cavenati (1):
-      system/runstate: remove duplicate in runstate transitions
-
-Michael Tokarev (1):
-      vhost-user-test: remove trailing newlines in g_test_message() calls
-
-Peter Maydell (1):
-      docs/specs/spdm.rst: Fix typo in x86_64 architecture name
-
-ShengYi Hung (2):
-      hid: fix incorrect return value for hid
-      wdt_i6300esb: fix incorrect mask for interrupt type
-
-SillyZ (1):
-      hw/net/can: Remove redundant status bit setting in can_sja1000
-
-nanliu (1):
-      docs/devel: Correct uefi-vars-x64 device name
-
- docs/devel/uefi-vars.rst      |  4 ++--
- docs/specs/spdm.rst           |  2 +-
- hw/input/hid.c                |  1 +
- hw/net/can/can_sja1000.c      |  1 -
- hw/watchdog/wdt_i6300esb.c    |  2 +-
- system/runstate.c             |  4 +---
- tests/qtest/vhost-user-test.c | 14 +++++++-------
- ui/gtk.c                      |  4 ++--
- 8 files changed, 15 insertions(+), 17 deletions(-)
 
