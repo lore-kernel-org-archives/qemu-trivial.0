@@ -4,81 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06AC3CAC5B8
-	for <qemu-trivial@archiver.kernel.org>; Mon,  6 Oct 2025 10:41:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ACD8CCA471
+	for <qemu-trivial@archiver.kernel.org>; Mon,  6 Oct 2025 11:53:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v5if7-0004oU-Kb; Mon, 06 Oct 2025 06:41:53 -0400
+	id 1v5jlk-0006SQ-2w; Mon, 06 Oct 2025 07:52:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v5if3-0004mw-3p
- for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 06:41:46 -0400
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5jlj-0006SI-FR
+ for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 07:52:43 -0400
+Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v5iew-0001XZ-Oc
- for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 06:41:44 -0400
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-71d60528734so52538097b3.2
- for <qemu-trivial@nongnu.org>; Mon, 06 Oct 2025 03:41:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5jlc-0002af-3J
+ for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 07:52:43 -0400
+Received: by mail-lf1-x12f.google.com with SMTP id
+ 2adb3069b0e04-57a59124323so3300383e87.2
+ for <qemu-trivial@nongnu.org>; Mon, 06 Oct 2025 04:52:33 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759747297; x=1760352097; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=vwrQcCJGIbsxvMRi/b1fe24qLHYm9LI3TINLoCmsLMc=;
- b=t4bQSWbS/xP4RpK/V46JyDHY8X0mBi3sdXeeWn0SSwva/1lAKHBD9DCu5JMYgzQXR0
- q/i6+NQMv9sRY9aT9ytP8DhjeT3DiZApEwfV7nJqpB3SbkKDqkp6D534QSksDjBIg6Hq
- LXjh5Gey8b/8smZJi+s86+A5xqrgQsgf3XV4QWkEOMfH2o7BzL/Lq/bmVWBbxUl6XIw2
- IbutdHa2AOiqZEjVdYzcTkXgeDgM4Z0ib/gqrqXlyp6wfp02pxW7+MDdKZ7U3H3Fuowf
- oYWCwj+DArrWE8waChFk17zJACh7TpAT56vu814WPwGxb6KMuP15BvBsD5dSqfKULNKM
- 4u1g==
+ d=gmail.com; s=20230601; t=1759751551; x=1760356351; darn=nongnu.org;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=YskWGD68uJvBj0jMWXqhQa5vmb1tAxTHbSj3LJXf0EQ=;
+ b=HN8aIjbdfbtv8b+nHf8RLC/w9uC67cz9MP8jWyx+vHtgdj7lxYijr0xGSSIM5izPLM
+ uslly4vhnPkm6vhzOoSMtn2Zym7fASarBu2A7Xd11NDJtzep1ZQEPhA2BxH/hZZLI2jU
+ 6YITZP4aBEYYP1f3+gkzCUR9v4uII1WzW3zgGRoaVzzvWnvJePglF98raKk0i4lhZhyp
+ rtY/N0eLBMMDAA+/C8AIF69lp5q5RADzogOKXjSJcbTruCOSuaIDA0n/KGRrWYQbRf3e
+ KYmojeiVLmjgR93Rgyg71NbkKEDqeubzf2npfkYB54aBggKfDTY+Bug00gTTO9ReF5ws
+ NhRg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759747297; x=1760352097;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=vwrQcCJGIbsxvMRi/b1fe24qLHYm9LI3TINLoCmsLMc=;
- b=csDTv1lHmuY2+VOt01MzM4EhR8u0OpfKSc4xqPKLeYlt502fvHpS5EJ0o1Ltjj+TgL
- zUZwp/S8q7Bjfn8jGroxclwBSJqSEXEI9b/HTF5ynZJ/6I/YmV29ea50yKjO1dcmJbfK
- yAaTL37J7HpUCh1eDc6aJRVVE2Zvc67gbAkXADXMRvxuz8PYp1EFLMGLpnqRSP+03p7y
- ubSN9LVaiUPotCjrxHMkLZ206x+IN7giMIXj9P63Np3SF1Y0I+Cza+d1zZhD1F6/GYbs
- HeTNPH/Li8XjfsFr9BtgzBo+oDS8g/DtOM/64z36SeamK/ww1chQ7IIglHFeLz4zEc0w
- 4fDg==
+ d=1e100.net; s=20230601; t=1759751551; x=1760356351;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=YskWGD68uJvBj0jMWXqhQa5vmb1tAxTHbSj3LJXf0EQ=;
+ b=wW7zNVVkhHeag8IAUvtJFiuapvE9N76sYn9CE6FV7AN7n7MLLutxcgw9zEZX3hzSb9
+ DqdaLU24BjNsIqUcRZ/4t2byVT/33v7+IXF8M5eGQu5S0OLADgR5oeyV0g/UPgMUF1is
+ O9SXMJcU7dIfKPT1r+rBp7AchoG71BtCNcY/tW2fFG9+zDPXxEf/IjGVukuJwplf+P89
+ PvBzjMFdxIBnjcGkJfmOdfueiS6ifys4d7F6KFbuagUDidkRi6O3gL58YOi6yygEXbfx
+ EOYxJwML35twbNfhD6b7bpuH2g9eolYojYlc72ABsEBpB+e9hDzwq7hV2GpyP/a6UMAD
+ 8G3w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWtHKFvfgVoHukKFpqFxs13IPOTEoYgmQo9Mv9kwLpmSoofqd/kJwE/mtJsY1mJPcdqya/jjoJilwqSdZU=@nongnu.org
-X-Gm-Message-State: AOJu0Yx+VTPcFG3xqJLWavrYD2Yx0/n36Ivcv82C5r9635j9O/yblUoB
- fbh0H3hiCNrjxpuauE67im4d2UiK6wkicxfpicX7rRGcuxJMtJTt6fAPQiqd9EtM8xnrXvSpcwx
- l997EIdRPGGjDoG1JiHRzlsJleXSSlM1N1KMeymC4/ElYNZCP/okB
-X-Gm-Gg: ASbGncu84fJwL4Ou71KclpfsJgXL9S6kIegg/cQxqzaBTqqAQ5EJQSdhxqy6J+imNdA
- MX3EewaCYUdUGHYvk2iYKZ3s8QkGWZG0h8FJv0Fsumd0C+zkQbiV+qPjIx7f59cfzCSNT1rZ75P
- NUDJ88+Q3FgCPqyNRajf3Ko8pOgM+P7vxLR6iTcoTsjUAAOnvgzZujk/BXHh2vzmtmsdVuKoH4s
- txIccL7fgDoGHLCTCuAY6Hnz591DATXnuq+uAoNXk2GKuo=
-X-Google-Smtp-Source: AGHT+IHMERTFx5EYN3CVOYqNP9Lw1HGa0Td0sIWgKn2ytuLOFeid3ejTjZUf5dSxY8/3eAbvuV97bsLfFKiYQrnFcHI=
-X-Received: by 2002:a05:690e:686:b0:636:1bb3:2d2d with SMTP id
- 956f58d0204a3-63b9a07fdf7mr8736537d50.22.1759747297216; Mon, 06 Oct 2025
- 03:41:37 -0700 (PDT)
-MIME-Version: 1.0
-References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
-In-Reply-To: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 6 Oct 2025 11:41:25 +0100
-X-Gm-Features: AS18NWB7RZ1o_mn8Z-KGl28zNr88Ka_Hgag4hcQFKeBpYzqAoYX_71A_p7MS-eQ
-Message-ID: <CAFEAcA_PbfzTAW2qeFao1MhPG=jn9dtzt0AzwL-aPCEULijsuw@mail.gmail.com>
+ AJvYcCVH825JygvppirQUhi/6xtjSqmLN032x6/LhgCVMKHSWS1vPGgbcvKf5FqmCMau0eCB3ypzgHE741kLfmw=@nongnu.org
+X-Gm-Message-State: AOJu0YzbCyQG+MnkPkXDtXsMfq1yQjvWz2rcV2oHRx+TPkWbiSQTLp1a
+ djaVcnqNkxhYIGSAdtgSN+a3GsuTLr0p4U0Hxs5CwfaBNstS0TVBLFFR
+X-Gm-Gg: ASbGncvBKvyb3qR/+qOAzcYv9hGmiyXMX/iiYUQmnynuBoQ1AvV8JRCOWsAveOaKUUK
+ Z1KynXvrkK4eGte4kevlmlRfu7aIiJeo1DORarhh0qlvI93UJ1nYh+XRVss5srrxevPiHKS2dz9
+ WQGW6saZSi9fp10aD4MLQrQDh+cfo3iaNDRRLovRjpKT6fuoAf2bp7FYdcOcFTs/rRBU9eS52Qu
+ yn5kyqHRaC+Lcz89cTHqCo8Pnh/N95ej0detRlNl5AY3W/6HjL+uOX3ifLQhXeNlaI6yuDeR9Q4
+ 9w9OaT8Cu117fYvfZdZ4IKOwZh12dN8g20Fk1+m8IOm2pevcRLpAaH0uunmgJb6gHCMMBx0CmJA
+ +2P3F1XIrhnT2VhkVqgUWfG1LOUqIcSwYwOgrWm4sIfLRh3y7Z0SJyIeYMrZj/xVcT4FKmS0=
+X-Google-Smtp-Source: AGHT+IH2DW8NUO2RXA2M2qymj65OLOc1M07jw495xWAisuZjiORubU0t862pejjdPOnmA1LRq4hMiA==
+X-Received: by 2002:a05:6512:3f05:b0:571:e01b:da9f with SMTP id
+ 2adb3069b0e04-58cbb06ade9mr3780461e87.31.1759751550501; 
+ Mon, 06 Oct 2025 04:52:30 -0700 (PDT)
+Received: from smtpclient.apple ([2a02:6bf:8011:f00:143:4fb8:4913:8a43])
+ by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-58b011b14aesm4995049e87.128.2025.10.06.04.52.29
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Mon, 06 Oct 2025 04:52:30 -0700 (PDT)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3776.700.51.11.2\))
 Subject: Re: [PATCH] hw/arm: add pvpanic mmio device for arm
-To: Alexander Gryanko <xpahos@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+From: Alexander Gryanko <xpahos@gmail.com>
+In-Reply-To: <CAFEAcA_PbfzTAW2qeFao1MhPG=jn9dtzt0AzwL-aPCEULijsuw@mail.gmail.com>
+Date: Mon, 6 Oct 2025 14:52:16 +0300
+Cc: qemu-devel@nongnu.org,
+ qemu-arm@nongnu.org,
+ qemu-trivial@nongnu.org
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <A1FB7B7D-603D-4D21-807E-17C1B18891CC@gmail.com>
+References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
+ <CAFEAcA_PbfzTAW2qeFao1MhPG=jn9dtzt0AzwL-aPCEULijsuw@mail.gmail.com>
+To: Peter Maydell <peter.maydell@linaro.org>
+X-Mailer: Apple Mail (2.3776.700.51.11.2)
+Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
+ envelope-from=xpahos@gmail.com; helo=mail-lf1-x12f.google.com
+X-Spam_score_int: -16
+X-Spam_score: -1.7
+X-Spam_bar: -
+X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -94,22 +103,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Sat, 4 Oct 2025 at 21:19, Alexander Gryanko <xpahos@gmail.com> wrote:
->
-> Currently, pvpanic is available in three device types: ISA,
-> MMIO, and PCI. For early stages of system initialisation
-> before PCI enumeration, only ISA and MMIO are suitable.
-> ISA is specific to the x86 platform; only MMIO devices
-> can be used for ARM. It is not possible to specify a
-> device as on the x86 platform (-device pvpanic); the
-> only possible way is to add an MMIO device to the dtb,
-> which can be implemented by manually adding new functions
-> to the QEMU code, as was done in the VMApple implementation.
+Would it be acceptable to add a new device like uefi-vars-sysbus that =
+can connect to the sysbus?
 
-No, thank you. I don't want to add more devices to "virt"
-than we have to. There is a PCI pvpanic device -- use
-that. Yes, you might have to do PCI enumeration in software.
 
-thanks
--- PMM
+> On 6 Oct 2025, at 13:41, Peter Maydell <peter.maydell@linaro.org> =
+wrote:
+>=20
+> On Sat, 4 Oct 2025 at 21:19, Alexander Gryanko <xpahos@gmail.com> =
+wrote:
+>>=20
+>> Currently, pvpanic is available in three device types: ISA,
+>> MMIO, and PCI. For early stages of system initialisation
+>> before PCI enumeration, only ISA and MMIO are suitable.
+>> ISA is specific to the x86 platform; only MMIO devices
+>> can be used for ARM. It is not possible to specify a
+>> device as on the x86 platform (-device pvpanic); the
+>> only possible way is to add an MMIO device to the dtb,
+>> which can be implemented by manually adding new functions
+>> to the QEMU code, as was done in the VMApple implementation.
+>=20
+> No, thank you. I don't want to add more devices to "virt"
+> than we have to. There is a PCI pvpanic device -- use
+> that. Yes, you might have to do PCI enumeration in software.
+>=20
+> thanks
+> -- PMM
+
 
