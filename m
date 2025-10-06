@@ -4,90 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3ACD8CCA471
-	for <qemu-trivial@archiver.kernel.org>; Mon,  6 Oct 2025 11:53:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4AAACAC5B8
+	for <qemu-trivial@archiver.kernel.org>; Mon,  6 Oct 2025 12:04:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v5jlk-0006SQ-2w; Mon, 06 Oct 2025 07:52:44 -0400
+	id 1v5jwq-0000kb-K6; Mon, 06 Oct 2025 08:04:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5jlj-0006SI-FR
- for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 07:52:43 -0400
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v5jwo-0000k6-Ga
+ for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 08:04:10 -0400
+Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v5jlc-0002af-3J
- for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 07:52:43 -0400
-Received: by mail-lf1-x12f.google.com with SMTP id
- 2adb3069b0e04-57a59124323so3300383e87.2
- for <qemu-trivial@nongnu.org>; Mon, 06 Oct 2025 04:52:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v5jwk-0003od-4F
+ for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 08:04:10 -0400
+Received: by mail-yx1-xb134.google.com with SMTP id
+ 956f58d0204a3-63605f6f926so4011657d50.0
+ for <qemu-trivial@nongnu.org>; Mon, 06 Oct 2025 05:04:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1759751551; x=1760356351; darn=nongnu.org;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=YskWGD68uJvBj0jMWXqhQa5vmb1tAxTHbSj3LJXf0EQ=;
- b=HN8aIjbdfbtv8b+nHf8RLC/w9uC67cz9MP8jWyx+vHtgdj7lxYijr0xGSSIM5izPLM
- uslly4vhnPkm6vhzOoSMtn2Zym7fASarBu2A7Xd11NDJtzep1ZQEPhA2BxH/hZZLI2jU
- 6YITZP4aBEYYP1f3+gkzCUR9v4uII1WzW3zgGRoaVzzvWnvJePglF98raKk0i4lhZhyp
- rtY/N0eLBMMDAA+/C8AIF69lp5q5RADzogOKXjSJcbTruCOSuaIDA0n/KGRrWYQbRf3e
- KYmojeiVLmjgR93Rgyg71NbkKEDqeubzf2npfkYB54aBggKfDTY+Bug00gTTO9ReF5ws
- NhRg==
+ d=linaro.org; s=google; t=1759752238; x=1760357038; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=UDE8Z7qyajMCaXMrzd0HtBzhao2U4HKL5heui9QTuYg=;
+ b=RZqUtSAp4Ba7olcpUI5b4g99MN067kLDv/9GllWcNdhPqr0f8sd84/K9eiw72XvWOG
+ mjxHI3Bza4EVIfAQJPyEKHwgOwLPRoFYEDBsKcieVKSUZ/egy64j/VekBU0Ury6wmzef
+ +rg+gLl/8Rn7JsUptnekb6VYMH6DJLbL+ZE8Eon4x7P7g6JV3SJHqoT1YkvJS2f1ArDb
+ IE9ojeLzFZ8QO6Mq7msTDQTl7K27UxcCcZEFbzr0jo+nNKOgx3HIeTPMcnWrjsviVWNy
+ TU3+QyEjtuwa0XI/73avgYWZmk8fLQGtdTKfGUxHZbZwX8AO7r6WcfEOAFL669hjvp1U
+ dQrw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759751551; x=1760356351;
- h=to:references:message-id:content-transfer-encoding:cc:date
- :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=YskWGD68uJvBj0jMWXqhQa5vmb1tAxTHbSj3LJXf0EQ=;
- b=wW7zNVVkhHeag8IAUvtJFiuapvE9N76sYn9CE6FV7AN7n7MLLutxcgw9zEZX3hzSb9
- DqdaLU24BjNsIqUcRZ/4t2byVT/33v7+IXF8M5eGQu5S0OLADgR5oeyV0g/UPgMUF1is
- O9SXMJcU7dIfKPT1r+rBp7AchoG71BtCNcY/tW2fFG9+zDPXxEf/IjGVukuJwplf+P89
- PvBzjMFdxIBnjcGkJfmOdfueiS6ifys4d7F6KFbuagUDidkRi6O3gL58YOi6yygEXbfx
- EOYxJwML35twbNfhD6b7bpuH2g9eolYojYlc72ABsEBpB+e9hDzwq7hV2GpyP/a6UMAD
- 8G3w==
+ d=1e100.net; s=20230601; t=1759752238; x=1760357038;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=UDE8Z7qyajMCaXMrzd0HtBzhao2U4HKL5heui9QTuYg=;
+ b=dEHOveicdxq+PxQOLKbAoACOtY6oL/88L8r/ZnJZAgeIiz7a1e64hHmlvl6mq5fojf
+ 9IRnNCF6yZmWHMhqRK66qh3dDKX7imcs1Hts+g1Uv+THfrOPYvE6ZAsWoN7DvQfN3vlf
+ dcEEgxmOivcYKX2jOSlay5Sxi6W5QGmmYWm/1MxaA78KgtjJxaCJMw1VhN2Q9DP22/SW
+ AhGQUEZq2OPvQ29qnRDegBj+wY+Wloel9sjR6wbmjK+rHgBeSBTH/pyZ+XfnaprIY+Iw
+ 7YGTNW+m6K414nyFoSs4hBdAzDyeqY0Mn2X/aFhbJL6c4peGPMheHzdqoP71U1fpQCTt
+ 7Nnw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVH825JygvppirQUhi/6xtjSqmLN032x6/LhgCVMKHSWS1vPGgbcvKf5FqmCMau0eCB3ypzgHE741kLfmw=@nongnu.org
-X-Gm-Message-State: AOJu0YzbCyQG+MnkPkXDtXsMfq1yQjvWz2rcV2oHRx+TPkWbiSQTLp1a
- djaVcnqNkxhYIGSAdtgSN+a3GsuTLr0p4U0Hxs5CwfaBNstS0TVBLFFR
-X-Gm-Gg: ASbGncvBKvyb3qR/+qOAzcYv9hGmiyXMX/iiYUQmnynuBoQ1AvV8JRCOWsAveOaKUUK
- Z1KynXvrkK4eGte4kevlmlRfu7aIiJeo1DORarhh0qlvI93UJ1nYh+XRVss5srrxevPiHKS2dz9
- WQGW6saZSi9fp10aD4MLQrQDh+cfo3iaNDRRLovRjpKT6fuoAf2bp7FYdcOcFTs/rRBU9eS52Qu
- yn5kyqHRaC+Lcz89cTHqCo8Pnh/N95ej0detRlNl5AY3W/6HjL+uOX3ifLQhXeNlaI6yuDeR9Q4
- 9w9OaT8Cu117fYvfZdZ4IKOwZh12dN8g20Fk1+m8IOm2pevcRLpAaH0uunmgJb6gHCMMBx0CmJA
- +2P3F1XIrhnT2VhkVqgUWfG1LOUqIcSwYwOgrWm4sIfLRh3y7Z0SJyIeYMrZj/xVcT4FKmS0=
-X-Google-Smtp-Source: AGHT+IH2DW8NUO2RXA2M2qymj65OLOc1M07jw495xWAisuZjiORubU0t862pejjdPOnmA1LRq4hMiA==
-X-Received: by 2002:a05:6512:3f05:b0:571:e01b:da9f with SMTP id
- 2adb3069b0e04-58cbb06ade9mr3780461e87.31.1759751550501; 
- Mon, 06 Oct 2025 04:52:30 -0700 (PDT)
-Received: from smtpclient.apple ([2a02:6bf:8011:f00:143:4fb8:4913:8a43])
- by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-58b011b14aesm4995049e87.128.2025.10.06.04.52.29
- (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
- Mon, 06 Oct 2025 04:52:30 -0700 (PDT)
-Content-Type: text/plain;
-	charset=us-ascii
-Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3776.700.51.11.2\))
-Subject: Re: [PATCH] hw/arm: add pvpanic mmio device for arm
-From: Alexander Gryanko <xpahos@gmail.com>
-In-Reply-To: <CAFEAcA_PbfzTAW2qeFao1MhPG=jn9dtzt0AzwL-aPCEULijsuw@mail.gmail.com>
-Date: Mon, 6 Oct 2025 14:52:16 +0300
-Cc: qemu-devel@nongnu.org,
- qemu-arm@nongnu.org,
- qemu-trivial@nongnu.org
-Content-Transfer-Encoding: quoted-printable
-Message-Id: <A1FB7B7D-603D-4D21-807E-17C1B18891CC@gmail.com>
+ AJvYcCWKoT/0HnIfzQA1qAI5ByytMDg4QrVtZHx4PRJPx9x/Vd13wRUbduiOjxbcwTaB0IGe0+6mOt/I4h2AZoE=@nongnu.org
+X-Gm-Message-State: AOJu0Yx/XjTkkUgYnC90b38YQzIF/junD1T/9M9B+8UHbLMvDR8YdHHA
+ Gvc7pBT98e2/ntEqG8y3hd49AFrhhNrfdtw46346NwiydV1453ZIACtqx8JpkyikDFphQOcRvjC
+ 9gp8E77+X2gMjxXqktffPTGRX+0NYeMRtxw7MBLOCOnO7suME4UTV
+X-Gm-Gg: ASbGncukHqOSQmSKkkqC8luqQ/3/PObMOG75c9WbpcRqdKywLxcCmzXaa2Tt0JpQDQE
+ Wq836nsKxcYOn8cxU7TDvIk4RWvaSnuNiCjk5ih5haIKbGKkqhSa6TpkHTfvK9Lga4eylXivDFC
+ Cr1hga2OAYX6mZ/OfQHvs6Oni/DDlmoEr3GltHCbs1M0Jqpv1GJts/o6w6tifTCSiXJG48NFCY5
+ w82uag2BOCUQnFa5t+tbVdkdTJipaae1elz
+X-Google-Smtp-Source: AGHT+IFXqHZtrVuGjLZn1QobnOxMXN/Jcf2T2mSyTeyzJwvvKcfV62sSz9/Nq1M5CdubhOHsDhig01Poxi0vNmK/jEo=
+X-Received: by 2002:a05:690e:ec7:b0:633:9631:2fe1 with SMTP id
+ 956f58d0204a3-63b9a05cdb5mr8677254d50.4.1759752237361; Mon, 06 Oct 2025
+ 05:03:57 -0700 (PDT)
+MIME-Version: 1.0
 References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
  <CAFEAcA_PbfzTAW2qeFao1MhPG=jn9dtzt0AzwL-aPCEULijsuw@mail.gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-X-Mailer: Apple Mail (2.3776.700.51.11.2)
-Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
- envelope-from=xpahos@gmail.com; helo=mail-lf1-x12f.google.com
-X-Spam_score_int: -16
-X-Spam_score: -1.7
-X-Spam_bar: -
-X-Spam_report: (-1.7 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
- DKIM_SIGNED=0.1, FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ <A1FB7B7D-603D-4D21-807E-17C1B18891CC@gmail.com>
+In-Reply-To: <A1FB7B7D-603D-4D21-807E-17C1B18891CC@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 6 Oct 2025 13:03:45 +0100
+X-Gm-Features: AS18NWApgEMzNDZO0kxtQwB4du5YI0fAGqNypH-mlecyAMviTJQmK4da_dNMK_4
+Message-ID: <CAFEAcA_F1OGcOQBw0xVG8g51t8v_kFz+oAtAve8mFMbKuJ6pog@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: add pvpanic mmio device for arm
+To: Alexander Gryanko <xpahos@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,31 +96,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Would it be acceptable to add a new device like uefi-vars-sysbus that =
-can connect to the sysbus?
+On Mon, 6 Oct 2025 at 12:52, Alexander Gryanko <xpahos@gmail.com> wrote:
+>
+> Would it be acceptable to add a new device like uefi-vars-sysbus that can connect to the sysbus?
 
+I'm not a fan of the dynamic-sysbus mechanism either.
+We end up using it for annoying cases where there is
+no way to use cleanly dynamically pluggable probeable
+bus for something. For pvpanic, there is a PCI pvpanic
+device, and PCI is dynamically pluggable and probeable
+in software.
 
-> On 6 Oct 2025, at 13:41, Peter Maydell <peter.maydell@linaro.org> =
-wrote:
->=20
-> On Sat, 4 Oct 2025 at 21:19, Alexander Gryanko <xpahos@gmail.com> =
-wrote:
->>=20
->> Currently, pvpanic is available in three device types: ISA,
->> MMIO, and PCI. For early stages of system initialisation
->> before PCI enumeration, only ISA and MMIO are suitable.
->> ISA is specific to the x86 platform; only MMIO devices
->> can be used for ARM. It is not possible to specify a
->> device as on the x86 platform (-device pvpanic); the
->> only possible way is to add an MMIO device to the dtb,
->> which can be implemented by manually adding new functions
->> to the QEMU code, as was done in the VMApple implementation.
->=20
-> No, thank you. I don't want to add more devices to "virt"
-> than we have to. There is a PCI pvpanic device -- use
-> that. Yes, you might have to do PCI enumeration in software.
->=20
-> thanks
-> -- PMM
-
+thanks
+-- PMM
 
