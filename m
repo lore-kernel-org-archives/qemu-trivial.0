@@ -4,86 +4,86 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E9BE4CCA470
-	for <qemu-trivial@archiver.kernel.org>; Mon,  6 Oct 2025 04:13:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1EC2CCA470
+	for <qemu-trivial@archiver.kernel.org>; Mon,  6 Oct 2025 04:13:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v5cag-0002n9-0I; Mon, 06 Oct 2025 00:12:50 -0400
+	id 1v5cbW-000395-SU; Mon, 06 Oct 2025 00:13:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v5cad-0002mn-Cq
- for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 00:12:47 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v5cbP-00035a-3A
+ for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 00:13:38 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v5cab-0004wo-IC
- for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 00:12:47 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-3f44000626bso2713320f8f.3
- for <qemu-trivial@nongnu.org>; Sun, 05 Oct 2025 21:12:44 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v5cbN-0004yP-2n
+ for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 00:13:34 -0400
+Received: by mail-wm1-x342.google.com with SMTP id
+ 5b1f17b1804b1-46b303f7469so27441685e9.1
+ for <qemu-trivial@nongnu.org>; Sun, 05 Oct 2025 21:13:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759723963; x=1760328763; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ d=linaro.org; s=google; t=1759724010; x=1760328810; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=7TL2S4y4tBH1AYTrLDVwmbGtgIo2li3NtoPmqfxWBfQ=;
- b=p6WouMXmVPWMJt0uaIYo6dv1V+aI2EBXO/fWCC94mUWGmnMYU6xephYCUw4gFuTXej
- 3/nXSobOva7pee3PnDjBpHKN53PpG1Xrub1Tm9FCvu8VGAXmsTAni7b2FAJlSHKSTQ8f
- ny8s7kfKFPeMIKZJV47V4TRX6zJDmslwTugMfYIx+tp/kmZCuRWUiEUt/7OsIXO/lCOM
- DMFeD5+b/44XLiis0opEFK3jH2y5KjC6VAFJK2L2Jf8OIx6hsFkm7mfttq3leR6Lyukj
- TVIFpHL2nQcK1mK+LoP5e7IcoiKC8IvDLXRsGNwUAbIELXxAZ3/Rm2wj/ilteLfG52d4
- K5wQ==
+ bh=mSCSzwRwaRfpqUx3t2B4UZXbIF9qMkIFjMUd8+SdCbg=;
+ b=VHymPSr4/Jp+Wft1F7lQT/hPx2ph/K+tEgMkXuNR/00bbLz+2acruVUzsEH5wa+cWd
+ dGs/kL4mN12WbCqRcYl68kQ/lgTjjGFyVaS9QnRIB/8EZ/hJt7q8uIyP2HiABTbVMwBI
+ /4D21Xt+CJGvLhmtk3MdX8xG4yW0GgYdeWdd/2ALsa/r85Qok9RlH2qfMDTqTdhzv1qU
+ U1N1ONKwDGOOmDW6kgiF9laGqch6YGbKeSaKf5Mgr5AJ7UGPXyIjqNASfEXB5ktqGG6g
+ 0TNzbFaty2EmXYZvCK8oWPOxF3tIe4sqebzUR6qU4PQVvscEN/Ya0tXihbLA/DbueYf4
+ yBAw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759723963; x=1760328763;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ d=1e100.net; s=20230601; t=1759724010; x=1760328810;
+ h=content-transfer-encoding:in-reply-to:references:cc:to:from
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=7TL2S4y4tBH1AYTrLDVwmbGtgIo2li3NtoPmqfxWBfQ=;
- b=wdTLg7lhMqH095afPnd5rzgoBb4zZqSEVXKW51EV5Vg7Gfo6IPfmVwMnDR847fkbby
- m/QnJEsf/UjVwnWzhbSg++kk8Sk7bZ5Y5WXcrG9OtsCytLXJi41ArlkVmdbFMhJ0N7nt
- 9WzkgIszXxRuyYhgRgEBIaewK+KYXMv86b8J+jVvl+AUrbBvJ99gDTsOudb8f8WH8ao3
- IyRpLe+YEurQu00ZpphGnb7BtcvvgpD/QyShvfBTgfNWhM0/c8Dy9m9cRgGZFrZCtC8D
- f11WZulFEhX+zkS2I3NN8AgJVfZiB9LCaMatYcIlgkOB25UBtKKrPwE/C5UBh3+h13+o
- 46eQ==
+ bh=mSCSzwRwaRfpqUx3t2B4UZXbIF9qMkIFjMUd8+SdCbg=;
+ b=aE89CerGRMSgMlN4GR7YO3RES50lB0gYi77bj6lWZeF0qYa1PqRoSYhHTRqZI+Q9cU
+ vCQVsW+yBLnbT1o10AuoFYtBUKxLh4V4DS60I1DRM6IbtfKvHWpOvZncXDXyV3cy9JLc
+ 7fDSVqrEy6VsrMRkt5E6VYJx4v27RXcupwQ/4WkL2UYHgPL/Zvlrh6mRybkkqc7ANOSr
+ oy/7zukCJjzN1z5KcuJ8iQ9JeWtP9UywP5d5uouwyuUy4ilQOKhb+WfbClPLjaIp1X6j
+ eV+su8rCwps+K57dj9BPK6xOfITiRTrLl4/1qXzSvM3sA7vuu/9SO2DKURPYdFGa5CsG
+ 9YWQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCViP54LbEVkwunSLHm+rcRH57IJ/xxCVQvU/tvCd93zgHxw5HGtOACEZMbjPLwFshNlZLkxlwnO20F/lq8=@nongnu.org
-X-Gm-Message-State: AOJu0YwcrDSFoFP3WCH33jEA73e1eCaeIYV9xiYB8QFdLIdkK8U+yK+P
- vonukoSd6xWYBVNGGTJb2zx/8EbEJ4zVNb5l4IsHQLruUUqakYvjY9vszncRWGl0oTYVJjVb8l1
- 9HI1YBUyUVQ==
-X-Gm-Gg: ASbGncuhxHmsadRQEAiNONJym+7540t9IsVScBA/OGPSYo0RV2CH6QM+pEx9A8ESl5K
- 8xXT5QL7t+39KgfcT0PD7odPDN2oAT4lWbURa0zpbLC9AOT6R6euPnMBwG7aekCvxH0+/uNq02a
- FO8R1KR4Eg9Hk4LfLmqUuKENHnpYAajBy01tPrgzIqXK5+0S97cQviz99WhDO17jFyiGzAnX3nJ
- Yjjv/IYnXjy60g9vN04L7cki8SKBsAPGGU+5HTmEFn1NMrqchZZ52yTGavIa/L/c1eqy9KRGrEP
- KfkpQkIv3JkrKC3rdU2foCHfDqapxZo1LA5ewSDF9sLDmdcGErRdigmVC0bftna+9nDGZ0zFJ4y
- +P3FvrwwkThdbzX3PfpX3lnJkAb3c6i1dErul89cJZxxKAOaUeKunhXuJvrmr5s+bZPWnXuoWeW
- BC30FL/FkdMqz2R68ABg==
-X-Google-Smtp-Source: AGHT+IHZV0DGVaUFFaPFtQVuPHq2KDQfzU/Ec7UYX4RHRi/ByDFrehd4adXxQmkiq/TizARbrI/RaQ==
-X-Received: by 2002:a5d:584c:0:b0:3f5:453:77e3 with SMTP id
- ffacd0b85a97d-4256713a129mr6016831f8f.6.1759723963633; 
- Sun, 05 Oct 2025 21:12:43 -0700 (PDT)
+ AJvYcCWyI8eAKtG1vvbxYL5F4t1yZZZoHWy9qCU8/PM9+gn98r8RlMaMV2GQIaG02Fm5yqd1K/udETP/uINTxF0=@nongnu.org
+X-Gm-Message-State: AOJu0YxiTv4zc3nCE9yStZ98JTceNPpIUlsC6NbiuKM0OWc7QQjYm2m2
+ N99hZtCdCE9NWX5tTzQrKqQVUEWIYXZN7LRQ+toirC3I1CnpfnDH/cavwRREwryV/nI=
+X-Gm-Gg: ASbGncuSf10tsWKpmCrTBTYyGgcHJoboHijfuxYXuF6n5r6zbQ5wpdco9qSQtEmTmJW
+ fvw1Ert/JQBY4NbF7AdIWXp/nCBGVf9l6E1CDueYh2f9iLjP5rqp3qUWJd/SI2Dp5n2G9oc8m75
+ EuFmgeF69AxJ0ywkydSEgQT0sryWNpnqGHmJ+dzvuG7bcOycL1p7+1IUiXsmyu+H/0+2vSRPcfy
+ rriCNuVqFQafEnXsjFvRFfXrK4D1wVNOCG5fIUaDn2g7emvhJ+5mB/gnSZ8GNp6tbJZ3oHNUmc6
+ wyGSe29covyIRmN9ktj0fHOdwyPpNa4glSWrhByaiWi+GJQII3hFHpFGfabzYEzxz4LwA9yHEaI
+ CmG5hAqmRTSTIoLjnj0kv8542nl2NROkQunOjc6mtALookGpbxWLqvwdYpDbJDdTR4cCLl1Nl3B
+ g0MfYNhIh289y0KvbTiKlQGT+rqi+e
+X-Google-Smtp-Source: AGHT+IEedF/kN3qVWtu0wiW8Asf9H290x0FWKY+sdPDKKuqPCLBFrFJW7kfdbyBRE8tsSjUl2If3fw==
+X-Received: by 2002:a05:600c:8b42:b0:46d:3a07:73cd with SMTP id
+ 5b1f17b1804b1-46e7113f6f4mr68683655e9.23.1759724009666; 
+ Sun, 05 Oct 2025 21:13:29 -0700 (PDT)
 Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e72359e0asm143195045e9.12.2025.10.05.21.12.42
+ 5b1f17b1804b1-46e72375b31sm147110775e9.20.2025.10.05.21.13.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 05 Oct 2025 21:12:43 -0700 (PDT)
-Message-ID: <d65a63ca-9c54-4855-979c-56b1c1b351a7@linaro.org>
-Date: Mon, 6 Oct 2025 06:12:42 +0200
+ Sun, 05 Oct 2025 21:13:29 -0700 (PDT)
+Message-ID: <86053cd3-fd3e-4b34-8bce-9a93ab3f72a6@linaro.org>
+Date: Mon, 6 Oct 2025 06:13:28 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] target/openrisc: Replace VMSTATE_UINTTL() ->
- VMSTATE_UINT32()
+Subject: Re: [PATCH] scripts/checkpatch: Avoid recommending legacy
+ qemu_bh_new_guarded()
 Content-Language: en-US
-To: qemu-devel@nongnu.org
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>,
- Anton Johansson <anjo@rev.ng>, Stafford Horne <shorne@gmail.com>,
- qemu-trivial@nongnu.org
-References: <20250925004855.59084-1-philmd@linaro.org>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250925004855.59084-1-philmd@linaro.org>
+To: qemu-devel@nongnu.org, qemu-block@nongnu.org,
+ Stefan Hajnoczi <stefanha@redhat.com>
+Cc: Alexander Bulekov <alxndr@bu.edu>, Thomas Huth <thuth@redhat.com>,
+ Darren Kenny <darren.kenny@oracle.com>, qemu-trivial@nongnu.org
+References: <20250924163911.51479-1-philmd@linaro.org>
+ <2891f8d5-e4ea-433f-84ba-a878875bb4d6@linaro.org>
+In-Reply-To: <2891f8d5-e4ea-433f-84ba-a878875bb4d6@linaro.org>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x342.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -106,38 +106,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-ping
+ping?
 
-On 25/9/25 02:48, Philippe Mathieu-Daudé wrote:
-> Both OpenRISCTLBEntry fields are of uint32_t type. Use the
-> appropriate VMSTATE_UINT32() macro.
+On 24/9/25 18:40, Philippe Mathieu-Daudé wrote:
+> (forgot to Cc qemu-block@nongnu.org)
 > 
-> There is no functional change (the migration stream is not
-> modified), because the OpenRISC targets are only built as 32-bit:
+> On 24/9/25 18:39, Philippe Mathieu-Daudé wrote:
+>> qemu_bh_new_guarded() is considered legacy since commit 9c86c97f12c
+>> ("async: Add an optional reentrancy guard to the BH API"); recommend
+>> the new API: aio_bh_new_guarded().
+>>
+>> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+>> ---
+>>   scripts/checkpatch.pl | 6 +++---
+>>   1 file changed, 3 insertions(+), 3 deletions(-)
+>>
+>> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
+>> index 91616c974f2..6a0c06bebb9 100755
+>> --- a/scripts/checkpatch.pl
+>> +++ b/scripts/checkpatch.pl
+>> @@ -3197,9 +3197,9 @@ sub process {
+>>           if ($line =~ /\bsignal\s*\(/ && !($line =~ /SIG_(?:IGN| 
+>> DFL)/)) {
+>>               ERROR("use sigaction to establish signal handlers; 
+>> signal is not portable\n" . $herecurr);
+>>           }
+>> -# recommend qemu_bh_new_guarded instead of qemu_bh_new
+>> -        if ($realfile =~ /.*\/hw\/.*/ && $line =~ / 
+>> \bqemu_bh_new\s*\(/) {
+>> -            ERROR("use qemu_bh_new_guarded() instead of qemu_bh_new() 
+>> to avoid reentrancy problems\n" . $herecurr);
+>> +# recommend aio_bh_new_guarded instead of legacy qemu_bh_new / 
+>> qemu_bh_new_guarded
+>> +        if ($realfile =~ /.*\/hw\/.*/ && $line =~ / 
+>> \bqemu_bh_new(_guarded)?\s*\(/) {
+>> +            ERROR("use aio_bh_new_guarded() instead of qemu_bh_new*() 
+>> to avoid reentrancy problems\n" . $herecurr);
+>>           }
+>>   # recommend aio_bh_new_guarded instead of aio_bh_new
+>>           if ($realfile =~ /.*\/hw\/.*/ && $line =~ / 
+>> \baio_bh_new\s*\(/) {
 > 
->    $ git grep TARGET_LONG_BITS configs/targets/or1k-*
->    configs/targets/or1k-linux-user.mak:5:TARGET_LONG_BITS=32
->    configs/targets/or1k-softmmu.mak:5:TARGET_LONG_BITS=32
-> 
-> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-> ---
->   target/openrisc/machine.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
-> 
-> diff --git a/target/openrisc/machine.c b/target/openrisc/machine.c
-> index 081c706d02c..fa054e528bd 100644
-> --- a/target/openrisc/machine.c
-> +++ b/target/openrisc/machine.c
-> @@ -26,8 +26,8 @@ static const VMStateDescription vmstate_tlb_entry = {
->       .version_id = 1,
->       .minimum_version_id = 1,
->       .fields = (const VMStateField[]) {
-> -        VMSTATE_UINTTL(mr, OpenRISCTLBEntry),
-> -        VMSTATE_UINTTL(tr, OpenRISCTLBEntry),
-> +        VMSTATE_UINT32(mr, OpenRISCTLBEntry),
-> +        VMSTATE_UINT32(tr, OpenRISCTLBEntry),
->           VMSTATE_END_OF_LIST()
->       }
->   };
 
 
