@@ -4,93 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1EC2CCA470
-	for <qemu-trivial@archiver.kernel.org>; Mon,  6 Oct 2025 04:13:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06AC3CAC5B8
+	for <qemu-trivial@archiver.kernel.org>; Mon,  6 Oct 2025 10:41:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v5cbW-000395-SU; Mon, 06 Oct 2025 00:13:42 -0400
+	id 1v5if7-0004oU-Kb; Mon, 06 Oct 2025 06:41:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v5cbP-00035a-3A
- for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 00:13:38 -0400
-Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v5if3-0004mw-3p
+ for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 06:41:46 -0400
+Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1v5cbN-0004yP-2n
- for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 00:13:34 -0400
-Received: by mail-wm1-x342.google.com with SMTP id
- 5b1f17b1804b1-46b303f7469so27441685e9.1
- for <qemu-trivial@nongnu.org>; Sun, 05 Oct 2025 21:13:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v5iew-0001XZ-Oc
+ for qemu-trivial@nongnu.org; Mon, 06 Oct 2025 06:41:44 -0400
+Received: by mail-yw1-x112d.google.com with SMTP id
+ 00721157ae682-71d60528734so52538097b3.2
+ for <qemu-trivial@nongnu.org>; Mon, 06 Oct 2025 03:41:38 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759724010; x=1760328810; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=mSCSzwRwaRfpqUx3t2B4UZXbIF9qMkIFjMUd8+SdCbg=;
- b=VHymPSr4/Jp+Wft1F7lQT/hPx2ph/K+tEgMkXuNR/00bbLz+2acruVUzsEH5wa+cWd
- dGs/kL4mN12WbCqRcYl68kQ/lgTjjGFyVaS9QnRIB/8EZ/hJt7q8uIyP2HiABTbVMwBI
- /4D21Xt+CJGvLhmtk3MdX8xG4yW0GgYdeWdd/2ALsa/r85Qok9RlH2qfMDTqTdhzv1qU
- U1N1ONKwDGOOmDW6kgiF9laGqch6YGbKeSaKf5Mgr5AJ7UGPXyIjqNASfEXB5ktqGG6g
- 0TNzbFaty2EmXYZvCK8oWPOxF3tIe4sqebzUR6qU4PQVvscEN/Ya0tXihbLA/DbueYf4
- yBAw==
+ d=linaro.org; s=google; t=1759747297; x=1760352097; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=vwrQcCJGIbsxvMRi/b1fe24qLHYm9LI3TINLoCmsLMc=;
+ b=t4bQSWbS/xP4RpK/V46JyDHY8X0mBi3sdXeeWn0SSwva/1lAKHBD9DCu5JMYgzQXR0
+ q/i6+NQMv9sRY9aT9ytP8DhjeT3DiZApEwfV7nJqpB3SbkKDqkp6D534QSksDjBIg6Hq
+ LXjh5Gey8b/8smZJi+s86+A5xqrgQsgf3XV4QWkEOMfH2o7BzL/Lq/bmVWBbxUl6XIw2
+ IbutdHa2AOiqZEjVdYzcTkXgeDgM4Z0ib/gqrqXlyp6wfp02pxW7+MDdKZ7U3H3Fuowf
+ oYWCwj+DArrWE8waChFk17zJACh7TpAT56vu814WPwGxb6KMuP15BvBsD5dSqfKULNKM
+ 4u1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759724010; x=1760328810;
- h=content-transfer-encoding:in-reply-to:references:cc:to:from
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=mSCSzwRwaRfpqUx3t2B4UZXbIF9qMkIFjMUd8+SdCbg=;
- b=aE89CerGRMSgMlN4GR7YO3RES50lB0gYi77bj6lWZeF0qYa1PqRoSYhHTRqZI+Q9cU
- vCQVsW+yBLnbT1o10AuoFYtBUKxLh4V4DS60I1DRM6IbtfKvHWpOvZncXDXyV3cy9JLc
- 7fDSVqrEy6VsrMRkt5E6VYJx4v27RXcupwQ/4WkL2UYHgPL/Zvlrh6mRybkkqc7ANOSr
- oy/7zukCJjzN1z5KcuJ8iQ9JeWtP9UywP5d5uouwyuUy4ilQOKhb+WfbClPLjaIp1X6j
- eV+su8rCwps+K57dj9BPK6xOfITiRTrLl4/1qXzSvM3sA7vuu/9SO2DKURPYdFGa5CsG
- 9YWQ==
+ d=1e100.net; s=20230601; t=1759747297; x=1760352097;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=vwrQcCJGIbsxvMRi/b1fe24qLHYm9LI3TINLoCmsLMc=;
+ b=csDTv1lHmuY2+VOt01MzM4EhR8u0OpfKSc4xqPKLeYlt502fvHpS5EJ0o1Ltjj+TgL
+ zUZwp/S8q7Bjfn8jGroxclwBSJqSEXEI9b/HTF5ynZJ/6I/YmV29ea50yKjO1dcmJbfK
+ yAaTL37J7HpUCh1eDc6aJRVVE2Zvc67gbAkXADXMRvxuz8PYp1EFLMGLpnqRSP+03p7y
+ ubSN9LVaiUPotCjrxHMkLZ206x+IN7giMIXj9P63Np3SF1Y0I+Cza+d1zZhD1F6/GYbs
+ HeTNPH/Li8XjfsFr9BtgzBo+oDS8g/DtOM/64z36SeamK/ww1chQ7IIglHFeLz4zEc0w
+ 4fDg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWyI8eAKtG1vvbxYL5F4t1yZZZoHWy9qCU8/PM9+gn98r8RlMaMV2GQIaG02Fm5yqd1K/udETP/uINTxF0=@nongnu.org
-X-Gm-Message-State: AOJu0YxiTv4zc3nCE9yStZ98JTceNPpIUlsC6NbiuKM0OWc7QQjYm2m2
- N99hZtCdCE9NWX5tTzQrKqQVUEWIYXZN7LRQ+toirC3I1CnpfnDH/cavwRREwryV/nI=
-X-Gm-Gg: ASbGncuSf10tsWKpmCrTBTYyGgcHJoboHijfuxYXuF6n5r6zbQ5wpdco9qSQtEmTmJW
- fvw1Ert/JQBY4NbF7AdIWXp/nCBGVf9l6E1CDueYh2f9iLjP5rqp3qUWJd/SI2Dp5n2G9oc8m75
- EuFmgeF69AxJ0ywkydSEgQT0sryWNpnqGHmJ+dzvuG7bcOycL1p7+1IUiXsmyu+H/0+2vSRPcfy
- rriCNuVqFQafEnXsjFvRFfXrK4D1wVNOCG5fIUaDn2g7emvhJ+5mB/gnSZ8GNp6tbJZ3oHNUmc6
- wyGSe29covyIRmN9ktj0fHOdwyPpNa4glSWrhByaiWi+GJQII3hFHpFGfabzYEzxz4LwA9yHEaI
- CmG5hAqmRTSTIoLjnj0kv8542nl2NROkQunOjc6mtALookGpbxWLqvwdYpDbJDdTR4cCLl1Nl3B
- g0MfYNhIh289y0KvbTiKlQGT+rqi+e
-X-Google-Smtp-Source: AGHT+IEedF/kN3qVWtu0wiW8Asf9H290x0FWKY+sdPDKKuqPCLBFrFJW7kfdbyBRE8tsSjUl2If3fw==
-X-Received: by 2002:a05:600c:8b42:b0:46d:3a07:73cd with SMTP id
- 5b1f17b1804b1-46e7113f6f4mr68683655e9.23.1759724009666; 
- Sun, 05 Oct 2025 21:13:29 -0700 (PDT)
-Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-46e72375b31sm147110775e9.20.2025.10.05.21.13.28
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 05 Oct 2025 21:13:29 -0700 (PDT)
-Message-ID: <86053cd3-fd3e-4b34-8bce-9a93ab3f72a6@linaro.org>
-Date: Mon, 6 Oct 2025 06:13:28 +0200
+ AJvYcCWtHKFvfgVoHukKFpqFxs13IPOTEoYgmQo9Mv9kwLpmSoofqd/kJwE/mtJsY1mJPcdqya/jjoJilwqSdZU=@nongnu.org
+X-Gm-Message-State: AOJu0Yx+VTPcFG3xqJLWavrYD2Yx0/n36Ivcv82C5r9635j9O/yblUoB
+ fbh0H3hiCNrjxpuauE67im4d2UiK6wkicxfpicX7rRGcuxJMtJTt6fAPQiqd9EtM8xnrXvSpcwx
+ l997EIdRPGGjDoG1JiHRzlsJleXSSlM1N1KMeymC4/ElYNZCP/okB
+X-Gm-Gg: ASbGncu84fJwL4Ou71KclpfsJgXL9S6kIegg/cQxqzaBTqqAQ5EJQSdhxqy6J+imNdA
+ MX3EewaCYUdUGHYvk2iYKZ3s8QkGWZG0h8FJv0Fsumd0C+zkQbiV+qPjIx7f59cfzCSNT1rZ75P
+ NUDJ88+Q3FgCPqyNRajf3Ko8pOgM+P7vxLR6iTcoTsjUAAOnvgzZujk/BXHh2vzmtmsdVuKoH4s
+ txIccL7fgDoGHLCTCuAY6Hnz591DATXnuq+uAoNXk2GKuo=
+X-Google-Smtp-Source: AGHT+IHMERTFx5EYN3CVOYqNP9Lw1HGa0Td0sIWgKn2ytuLOFeid3ejTjZUf5dSxY8/3eAbvuV97bsLfFKiYQrnFcHI=
+X-Received: by 2002:a05:690e:686:b0:636:1bb3:2d2d with SMTP id
+ 956f58d0204a3-63b9a07fdf7mr8736537d50.22.1759747297216; Mon, 06 Oct 2025
+ 03:41:37 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] scripts/checkpatch: Avoid recommending legacy
- qemu_bh_new_guarded()
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-To: qemu-devel@nongnu.org, qemu-block@nongnu.org,
- Stefan Hajnoczi <stefanha@redhat.com>
-Cc: Alexander Bulekov <alxndr@bu.edu>, Thomas Huth <thuth@redhat.com>,
- Darren Kenny <darren.kenny@oracle.com>, qemu-trivial@nongnu.org
-References: <20250924163911.51479-1-philmd@linaro.org>
- <2891f8d5-e4ea-433f-84ba-a878875bb4d6@linaro.org>
-In-Reply-To: <2891f8d5-e4ea-433f-84ba-a878875bb4d6@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::342;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x342.google.com
+References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
+In-Reply-To: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Mon, 6 Oct 2025 11:41:25 +0100
+X-Gm-Features: AS18NWB7RZ1o_mn8Z-KGl28zNr88Ka_Hgag4hcQFKeBpYzqAoYX_71A_p7MS-eQ
+Message-ID: <CAFEAcA_PbfzTAW2qeFao1MhPG=jn9dtzt0AzwL-aPCEULijsuw@mail.gmail.com>
+Subject: Re: [PATCH] hw/arm: add pvpanic mmio device for arm
+To: Alexander Gryanko <xpahos@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,46 +94,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-ping?
+On Sat, 4 Oct 2025 at 21:19, Alexander Gryanko <xpahos@gmail.com> wrote:
+>
+> Currently, pvpanic is available in three device types: ISA,
+> MMIO, and PCI. For early stages of system initialisation
+> before PCI enumeration, only ISA and MMIO are suitable.
+> ISA is specific to the x86 platform; only MMIO devices
+> can be used for ARM. It is not possible to specify a
+> device as on the x86 platform (-device pvpanic); the
+> only possible way is to add an MMIO device to the dtb,
+> which can be implemented by manually adding new functions
+> to the QEMU code, as was done in the VMApple implementation.
 
-On 24/9/25 18:40, Philippe Mathieu-Daudé wrote:
-> (forgot to Cc qemu-block@nongnu.org)
-> 
-> On 24/9/25 18:39, Philippe Mathieu-Daudé wrote:
->> qemu_bh_new_guarded() is considered legacy since commit 9c86c97f12c
->> ("async: Add an optional reentrancy guard to the BH API"); recommend
->> the new API: aio_bh_new_guarded().
->>
->> Signed-off-by: Philippe Mathieu-Daudé <philmd@linaro.org>
->> ---
->>   scripts/checkpatch.pl | 6 +++---
->>   1 file changed, 3 insertions(+), 3 deletions(-)
->>
->> diff --git a/scripts/checkpatch.pl b/scripts/checkpatch.pl
->> index 91616c974f2..6a0c06bebb9 100755
->> --- a/scripts/checkpatch.pl
->> +++ b/scripts/checkpatch.pl
->> @@ -3197,9 +3197,9 @@ sub process {
->>           if ($line =~ /\bsignal\s*\(/ && !($line =~ /SIG_(?:IGN| 
->> DFL)/)) {
->>               ERROR("use sigaction to establish signal handlers; 
->> signal is not portable\n" . $herecurr);
->>           }
->> -# recommend qemu_bh_new_guarded instead of qemu_bh_new
->> -        if ($realfile =~ /.*\/hw\/.*/ && $line =~ / 
->> \bqemu_bh_new\s*\(/) {
->> -            ERROR("use qemu_bh_new_guarded() instead of qemu_bh_new() 
->> to avoid reentrancy problems\n" . $herecurr);
->> +# recommend aio_bh_new_guarded instead of legacy qemu_bh_new / 
->> qemu_bh_new_guarded
->> +        if ($realfile =~ /.*\/hw\/.*/ && $line =~ / 
->> \bqemu_bh_new(_guarded)?\s*\(/) {
->> +            ERROR("use aio_bh_new_guarded() instead of qemu_bh_new*() 
->> to avoid reentrancy problems\n" . $herecurr);
->>           }
->>   # recommend aio_bh_new_guarded instead of aio_bh_new
->>           if ($realfile =~ /.*\/hw\/.*/ && $line =~ / 
->> \baio_bh_new\s*\(/) {
-> 
+No, thank you. I don't want to add more devices to "virt"
+than we have to. There is a PCI pvpanic device -- use
+that. Yes, you might have to do PCI enumeration in software.
 
+thanks
+-- PMM
 
