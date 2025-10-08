@@ -4,100 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79F99CCA470
-	for <qemu-trivial@archiver.kernel.org>; Tue,  7 Oct 2025 13:13:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 76874CAC5BB
+	for <qemu-trivial@archiver.kernel.org>; Wed,  8 Oct 2025 13:20:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v67UR-0006w3-Fw; Tue, 07 Oct 2025 09:12:27 -0400
+	id 1v6U5O-0006X6-4D; Wed, 08 Oct 2025 09:20:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1v67UQ-0006vl-CB
- for qemu-trivial@nongnu.org; Tue, 07 Oct 2025 09:12:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v6U5M-0006Wx-9a
+ for qemu-trivial@nongnu.org; Wed, 08 Oct 2025 09:20:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1v67UF-0002XJ-OW
- for qemu-trivial@nongnu.org; Tue, 07 Oct 2025 09:12:26 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1v6U58-0003xs-0a
+ for qemu-trivial@nongnu.org; Wed, 08 Oct 2025 09:20:01 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1759842726;
+ s=mimecast20190719; t=1759929582;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=XlaXJ+9IXOJ/jK+m5vTCfGHWuwuUqatOTwrroHpPze0=;
- b=AXt4x38RzT+0TrEGysVMTh3L54eFo3UQV4MdWe+NYShAKej2tomjkGBsP+KiTiss51CMuX
- Z6X3SwAJLYT9DEwt7x5Mx0jGIsLEznhT4n8woa0EQf5KL5ujFxpK9rz3ziZiyzfXG4aoCy
- 1j9ffwdCqqACaPIAFJyunibkR97+VVI=
-Received: from mail-wr1-f72.google.com (mail-wr1-f72.google.com
- [209.85.221.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-556-KCbMUTqJOYOZObvVS-VUXw-1; Tue, 07 Oct 2025 09:12:05 -0400
-X-MC-Unique: KCbMUTqJOYOZObvVS-VUXw-1
-X-Mimecast-MFC-AGG-ID: KCbMUTqJOYOZObvVS-VUXw_1759842724
-Received: by mail-wr1-f72.google.com with SMTP id
- ffacd0b85a97d-4256fae4b46so2015880f8f.0
- for <qemu-trivial@nongnu.org>; Tue, 07 Oct 2025 06:12:05 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759842724; x=1760447524;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=XlaXJ+9IXOJ/jK+m5vTCfGHWuwuUqatOTwrroHpPze0=;
- b=IvCSE1s6EKGP4zw/DyXRme3xbk/bUpva1Xz1+lriWtGYXFZ7eSSh79tCK7ajVMM7bZ
- DUs1319M/VS4brw7sf0/uGPgtphcO6iyAMDni7ne4dcJ6mtu1waXNzM7iPKM5vhgLa4i
- UmgJotXX5sIkJj3MO79u0rBagz1ym8gd+QuilcBH+O1VPAc+vxUf0m1mXt0aB8iTSGcU
- GdRS3twTUp/BtpZoc0V9G+su8LffjsonK0vMW4Ma21fMYngGxi8oieOjjHmNGrnvJ0t5
- y9bIIMwHIdKUD/VgULCEREiYDNBpJp3fytbax01306/kGfk7yF2/exE8ZIpjcU9IPHMT
- Sppg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCViDYH0mgV+XDFPvUPTkaSh519VYn5UoLQGNDclRjUd5cRurWnm3jrpkQjhluvYJoAkFhFdRhj4xM2bioY=@nongnu.org
-X-Gm-Message-State: AOJu0YzgxjAlL5ezSZF+17wbAek34hDV6G0W8drADxQmEYcU4mRcqTSK
- 3md2YSPHG2azZLJqRHzszR+jWSTky1y/lFUlXYR2rqLdVUIa8Vfgr/itWHfabzcjBYeec9BxkCI
- +qruIL83oPQVfS4JvvZcq4X5HXWWRGtASCqqftydOawfqJKmvB0QDsNDdk8U=
-X-Gm-Gg: ASbGncsrJg8QEy2gEO8PsEr0RSfUx9xGkHdg89rmLAyEFLmE7WHqZgzLKnI5YhQPx07
- YazXz2iAgDef/T5GrG+s5O5qJeKFA05FT52QQp+glYbYOqYZ/8PUbiQElUn4AdcSBKwjhNSPAQt
- bWpLsFvThAKHQtaIcN1b9obl2zBWdyk5j4DXYYfeOs/RuhcfPCyJkrCONaz7sfdtd/KzU9mti2q
- cavJ0ubsrTAEkEUa1SO7WlxQ5wRWepU4mWv8hcdf+Xl+ZPrFPouXi06R8PnwdVX54ZDvQLCeiyo
- uGEAh9K3BZLES9sadIW/gXj+HO1gH8tU/I+N
-X-Received: by 2002:a5d:588d:0:b0:410:3a4f:1298 with SMTP id
- ffacd0b85a97d-4256714d018mr11824138f8f.15.1759842724378; 
- Tue, 07 Oct 2025 06:12:04 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IGT7tdOb3f7jG19ZBDrImwLtnWHUbAeRUbWk2BcC92rUoxdRTRiqP6oot8pZjHCQhcH7rexKA==
-X-Received: by 2002:a5d:588d:0:b0:410:3a4f:1298 with SMTP id
- ffacd0b85a97d-4256714d018mr11824111f8f.15.1759842723902; 
- Tue, 07 Oct 2025 06:12:03 -0700 (PDT)
-Received: from fedora ([85.93.96.130]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4255d8a6b40sm25522990f8f.2.2025.10.07.06.12.03
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 07 Oct 2025 06:12:03 -0700 (PDT)
-Date: Tue, 7 Oct 2025 15:11:57 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: Alexander Gryanko <xpahos@gmail.com>
-Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- qemu-arm@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/arm: add pvpanic mmio device for arm
-Message-ID: <20251007151157.5a601c3e@fedora>
-In-Reply-To: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
-References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
-X-Mailer: Claws Mail 4.3.1 (GTK 3.24.49; x86_64-redhat-linux-gnu)
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=NqWFGXNqgimUWQ6vSVSIubD3VA2PiMFBKF5YjPCZn2M=;
+ b=L63VeHp74PoC4TU9TtDi8rwwLIJa0o5WHAJZCEBtged7SVhEtwnTkPUb7V7Dz1WArRucAO
+ +Gjg9cGIGeOkaeruOtnp+tUBlYjZAEEbBUHI7lwELabdwOKo/LlabVPJ4TekVxqB8tSgNz
+ PB1eGMug8ZnHzXenDLyelLVBATU4+6c=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-651-WB3Mtl0nN8uMFN0GCK3Q9A-1; Wed,
+ 08 Oct 2025 09:19:40 -0400
+X-MC-Unique: WB3Mtl0nN8uMFN0GCK3Q9A-1
+X-Mimecast-MFC-AGG-ID: WB3Mtl0nN8uMFN0GCK3Q9A_1759929580
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DD972180034D; Wed,  8 Oct 2025 13:19:39 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.44.32.220])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 467691956056; Wed,  8 Oct 2025 13:19:38 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: John Snow <jsnow@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+Subject: [PATCH] python/qemu: Replace some remaining "avocados" with
+ "functional tests"
+Date: Wed,  8 Oct 2025 15:19:36 +0200
+Message-ID: <20251008131936.71160-1-thuth@redhat.com>
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: nW7BOpfSqJYdKs3VikvZ-2F5TrWLM0UmSEG5QmS-nKc_1759842724
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -24
 X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.422,
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.442,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,108 +81,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Sat, 4 Oct 2025 23:19:09 +0300
-Alexander Gryanko <xpahos@gmail.com> wrote:
+From: Thomas Huth <thuth@redhat.com>
 
-> Currently, pvpanic is available in three device types: ISA,
-> MMIO, and PCI. For early stages of system initialisation
-> before PCI enumeration, only ISA and MMIO are suitable.
-> ISA is specific to the x86 platform; only MMIO devices
-> can be used for ARM. It is not possible to specify a
-> device as on the x86 platform (-device pvpanic); the
+The avocado tests have been replaced by the new functional tests,
+so also update this in the README.rst files in the python directory
+accordingly.
 
-perhaps ARM folsk know better, don't we have some
-user create-able sysbus devices? Can it be implemented
-as such, so we would avoid creating built-in device?
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ python/qemu/machine/README.rst | 2 +-
+ python/qemu/utils/README.rst   | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
 
-> only possible way is to add an MMIO device to the dtb,
-> which can be implemented by manually adding new functions
-> to the QEMU code, as was done in the VMApple implementation.
-> 
-> Signed-off-by: Alexander Gryanko <xpahos@gmail.com>
-> ---
-> hw/arm/virt.c         | 25 +++++++++++++++++++++++++
-> include/hw/arm/virt.h |  1 +
-> 2 files changed, 26 insertions(+)
-> 
-> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
-> index 02209fadcf..1059584b67 100644
-> --- a/hw/arm/virt.c
-> +++ b/hw/arm/virt.c
-> @@ -39,6 +39,7 @@
-> #include "hw/arm/virt.h"
-> #include "hw/block/flash.h"
-> #include "hw/display/ramfb.h"
-> +#include "hw/misc/pvpanic.h"
-> #include "net/net.h"
-> #include "system/device_tree.h"
-> #include "system/numa.h"
-> @@ -182,6 +183,7 @@ static const MemMapEntry base_memmap[] = {
->     [VIRT_UART0] =              { 0x09000000, 0x00001000 },
->     [VIRT_RTC] =                { 0x09010000, 0x00001000 },
->     [VIRT_FW_CFG] =             { 0x09020000, 0x00000018 },
-> +    [VIRT_PVPANIC] =            { 0x09021000, 0x00000002 },
->     [VIRT_GPIO] =               { 0x09030000, 0x00001000 },
->     [VIRT_UART1] =              { 0x09040000, 0x00001000 },
->     [VIRT_SMMU] =               { 0x09050000, SMMU_IO_LEN },
-> @@ -276,6 +278,27 @@ static bool ns_el2_virt_timer_present(void)
->         arm_feature(env, ARM_FEATURE_EL2) && cpu_isar_feature(aa64_vh, cpu);
-> }
-> 
-> +static void create_pvpanic(VirtMachineState *vms)
-> +{
-> +    char *nodename;
-> +    MachineState *ms = MACHINE(vms);
-> +    DeviceState *dev = qdev_new(TYPE_PVPANIC_MMIO_DEVICE);
-> +    SysBusDevice *s = SYS_BUS_DEVICE(dev);
-> +
-> +    hwaddr base = vms->memmap[VIRT_PVPANIC].base;
-> +    hwaddr size = vms->memmap[VIRT_PVPANIC].size;
-> +
-> +    sysbus_realize_and_unref(s, &error_fatal);
-> +    sysbus_mmio_map(s, 0, base);
-> +
-> +    nodename = g_strdup_printf("/pvpanic@%" PRIx64, base);
-> +    qemu_fdt_add_subnode(ms->fdt, nodename);
-> +    qemu_fdt_setprop_string(ms->fdt, nodename, "compatible",
-> +                            "qemu,pvpanic-mmio");
-> +    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
-> +                                 2, base, 2, size);
-> +}
-> +
-> static void create_fdt(VirtMachineState *vms)
-> {
->     MachineState *ms = MACHINE(vms);
-> @@ -2498,6 +2521,8 @@ static void machvirt_init(MachineState *machine)
->     create_pcie(vms);
->     create_cxl_host_reg_region(vms);
-> 
-> +    create_pvpanic(vms);
-
-given that virt is versioned machine type,
-we probably need a compat knob to disable it's creation on old machine types
-
-> +
->     if (has_ged && aarch64 && firmware_loaded && virt_is_acpi_enabled(vms)) {
->         vms->acpi_dev = create_acpi_ged(vms);
->     } else {
-> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
-> index ea2cff05b0..39bf07c9c1 100644
-> --- a/include/hw/arm/virt.h
-> +++ b/include/hw/arm/virt.h
-> @@ -81,6 +81,7 @@ enum {
->     VIRT_NVDIMM_ACPI,
->     VIRT_PVTIME,
->     VIRT_ACPI_PCIHP,
-> +    VIRT_PVPANIC,
->     VIRT_LOWMEMMAP_LAST,
-> };
-> 
-> 
-> ---
-> base-commit: bd6aa0d1e59d71218c3eee055bc8d222c6e1a628
-> change-id: 20251004-arm-pvpanic-84a7d7b67d8d
-> 
-> Best regards,
+diff --git a/python/qemu/machine/README.rst b/python/qemu/machine/README.rst
+index 8de2c3d7722..6554c693201 100644
+--- a/python/qemu/machine/README.rst
++++ b/python/qemu/machine/README.rst
+@@ -2,7 +2,7 @@ qemu.machine package
+ ====================
+ 
+ This package provides core utilities used for testing and debugging
+-QEMU. It is used by the iotests, vm tests, avocado tests, and several
++QEMU. It is used by the iotests, vm tests, functional tests, and several
+ other utilities in the ./scripts directory. It is not a fully-fledged
+ SDK and it is subject to change at any time.
+ 
+diff --git a/python/qemu/utils/README.rst b/python/qemu/utils/README.rst
+index d5f2da14540..5027f0b5f11 100644
+--- a/python/qemu/utils/README.rst
++++ b/python/qemu/utils/README.rst
+@@ -2,6 +2,6 @@ qemu.utils package
+ ==================
+ 
+ This package provides miscellaneous utilities used for testing and
+-debugging QEMU. It is used primarily by the vm and avocado tests.
++debugging QEMU. It is used primarily by the vm and functional tests.
+ 
+ See the documentation in ``__init__.py`` for more information.
+-- 
+2.51.0
 
 
