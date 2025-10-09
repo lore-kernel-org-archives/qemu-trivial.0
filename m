@@ -4,86 +4,76 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 017D1CCD187
-	for <qemu-trivial@archiver.kernel.org>; Thu,  9 Oct 2025 13:30:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ED209CCD185
+	for <qemu-trivial@archiver.kernel.org>; Thu,  9 Oct 2025 14:18:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v6qie-0001Uu-JM; Thu, 09 Oct 2025 09:30:09 -0400
+	id 1v6rTG-0002nZ-DF; Thu, 09 Oct 2025 10:18:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v6qia-0001U2-K2
- for qemu-trivial@nongnu.org; Thu, 09 Oct 2025 09:30:05 -0400
-Received: from mail-yx1-xb130.google.com ([2607:f8b0:4864:20::b130])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1v6qiP-0002nB-2F
- for qemu-trivial@nongnu.org; Thu, 09 Oct 2025 09:30:03 -0400
-Received: by mail-yx1-xb130.google.com with SMTP id
- 956f58d0204a3-63bc1aeb427so940698d50.3
- for <qemu-trivial@nongnu.org>; Thu, 09 Oct 2025 06:29:49 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760016588; x=1760621388; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sbe2ohX3gBWx9TzEYThFBXKqR6DwYNml6WgtMjtxVEM=;
- b=xozwEUrDHWjdXg1NMR0eQQ+OimviZWaRGZk4+cmwhdD6jojF4LPkOAQqi1Ba/Go5iu
- X9KQ9VYbWkno4lCaVCL7xx9wj6Z7nnbV/Lbp8hNH+ECrTMiBeNY8JwENJkiDyPY0Yhb0
- +99+StwSYF4fAOPqM8W/rG5yJ/iQus2AeRi/FZRrYI8FdyskJcMoScup6nMX3BYjIKlB
- H5L/MPtfSXu97eLjlay/n9xONnJL2AAAQKpDi+ZxLlESaaNtAIJtWdwrq5Kt7heuEqKM
- Ym/SSRhnsPiSGeFubzTpQL4XbpGUOg3VChRfIPBlbaKvpTgc5ElYUR94yC9kFbxbdPkj
- 5R2Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760016588; x=1760621388;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=sbe2ohX3gBWx9TzEYThFBXKqR6DwYNml6WgtMjtxVEM=;
- b=FcDrrZzJZyndoq+u4SSKQaEo0TQQiAjC9+tcxgnvm8whlUjigIlYnUEMozWshmcRZF
- kbStT10f/3Qh0IDv6EBpsTLtoXbPHFRwWPWwop88ybHNOOcJmaHmX2tvY8285Y09hd4+
- nzf9hThxigo0WgtYzx0RBscgFd2WYLab/Z8t66cK024Bvd1Wls29vVw+Y0YwXGiyHW6Q
- 9FtwT8Lem44ttXdRpOtRG5Nf4jEWE02RZa4LE3gWGsjtNXZO7eerLQn/AeYcTX/84ZiP
- az7lcP7Xd/wKLJwLmbOA2U3o5nruYqU3nKpshVxEoG2XTDVIBRNer93gyVc8CWrR4Ujg
- 6mvA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWxzZqqwo1teLj2+e11z5VxlgmrtNlz5T+iiBG4HH8qCvJnwLXmm+udvZqcpfXbwkDPFALwtYVk1Rnbzyc=@nongnu.org
-X-Gm-Message-State: AOJu0Ywi95u4ra8LbxE2vFCxTCVBGHUDtietQFMpeBh/Bxmo78i4x57Q
- mxcn64G8gAE+b05LRSP/kLlXzW2bLQRRug+7bnoPsd2z+bQkRwWtEEVZWe17NcLKzduht6Y1c8Z
- ZdlxpYlbVykm5f+iPftqmE4T+pmh1PQemOOMFtWTGjQ==
-X-Gm-Gg: ASbGncv27tSqP5Ep4cFoBpOdO0bahOd9fVj2WCDGEFgE9z2d3WpQpSCP04e68iUnEjt
- zwc6qznjUyxN2hDoRd4XQXCr+SM54OBWOOXztx4K/EfiKKsLdJLAA9qwO7voYAKZxEvwNevrmJa
- 6bf+iWA7UtHLTfnhW7LqNuw0x2tO+2D31VTFno4HyXpRIMH+6tBG5FolhWHH48wPeDpcaS0QY2j
- WK5c7hyYBVXQWFKMtiPm+WASJft4wzgteFnRkUP1tFnUW0=
-X-Google-Smtp-Source: AGHT+IH7Gq1Zbw2YoJORGs3HavzWbAbqOUe73lu9hljJfbhtwrvejjljWaJ5kl2jhEvXag1j4raHGr+fuzkIMl5rvwk=
-X-Received: by 2002:a53:c08c:0:b0:639:58f7:f6f2 with SMTP id
- 956f58d0204a3-63ccb91b8d5mr6030173d50.45.1760016588036; Thu, 09 Oct 2025
- 06:29:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1v6rTB-0002m8-Sa
+ for qemu-trivial@nongnu.org; Thu, 09 Oct 2025 10:18:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1v6rSz-0000tg-Ow
+ for qemu-trivial@nongnu.org; Thu, 09 Oct 2025 10:18:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1760019474;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=ymHKgbrV3naM8m+4hDW6vw3GtCo7y/Pec/5CASqYulw=;
+ b=RIopg012iCudbWB6FysXM7IHZb9dWthx/qf640RrRKlO8nOUA7Fbtpqc9Kv4aO2OOxPp39
+ oNDvYIFneCU1E3rddznJgEOIPR1m75QtgLN7V7k87YTciLwx/+ZXudCYKiCt40claG0RQj
+ kt0lb8iQOFRwrrelrdbf/N/FRROdFOI=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-306-8t-cpI_VOE6aQDIS5Os3pw-1; Thu,
+ 09 Oct 2025 10:17:51 -0400
+X-MC-Unique: 8t-cpI_VOE6aQDIS5Os3pw-1
+X-Mimecast-MFC-AGG-ID: 8t-cpI_VOE6aQDIS5Os3pw_1760019470
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id D0B311800592; Thu,  9 Oct 2025 14:17:49 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.6])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0551E18004D8; Thu,  9 Oct 2025 14:17:48 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 3527D21E6A27; Thu, 09 Oct 2025 16:17:46 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>
+Cc: qemu-devel@nongnu.org,  eblake@redhat.com,  jasowang@redhat.com,
+ devel@lists.libvirt.org,  pbonzini@redhat.com,
+ marcandre.lureau@redhat.com,  yc-core@yandex-team.ru,
+ d-tatianin@yandex-team.ru, qemu-trivial@nongnu.org
+Subject: Re: [PATCH 0/2] remove deprecated 'reconnect' options
+In-Reply-To: <20250924133309.334631-1-vsementsov@yandex-team.ru> (Vladimir
+ Sementsov-Ogievskiy's message of "Wed, 24 Sep 2025 16:33:07 +0300")
+References: <20250924133309.334631-1-vsementsov@yandex-team.ru>
+Date: Thu, 09 Oct 2025 16:17:46 +0200
+Message-ID: <877bx4p3at.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
- <20251007151157.5a601c3e@fedora>
- <DFAE42FB-786F-45D3-9FC5-C72DEC5A4301@gmail.com>
-In-Reply-To: <DFAE42FB-786F-45D3-9FC5-C72DEC5A4301@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 9 Oct 2025 14:29:36 +0100
-X-Gm-Features: AS18NWCziaeBCU380HB1vkLX8VJpnmIu0SBEocM74RLlbJr_6YVM8Q34MdZGMRY
-Message-ID: <CAFEAcA8LQi+nVztx7oz6yGaYgKvnECj_0Xom3NbxLAFK82hWTQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/arm: add pvpanic mmio device for arm
-To: Alexander Gryanko <xpahos@gmail.com>
-Cc: Igor Mammedov <imammedo@redhat.com>, qemu-devel@nongnu.org,
- qemu-arm@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb130.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.438,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,35 +89,21 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Thu, 9 Oct 2025 at 14:26, Alexander Gryanko <xpahos@gmail.com> wrote:
->
->
->
-> > On 7 Oct 2025, at 16:11, Igor Mammedov <imammedo@redhat.com> wrote:
-> >
-> > On Sat, 4 Oct 2025 23:19:09 +0300
-> > Alexander Gryanko <xpahos@gmail.com> wrote:
-> >
-> >> Currently, pvpanic is available in three device types: ISA,
-> >> MMIO, and PCI. For early stages of system initialisation
-> >> before PCI enumeration, only ISA and MMIO are suitable.
-> >> ISA is specific to the x86 platform; only MMIO devices
-> >> can be used for ARM. It is not possible to specify a
-> >> device as on the x86 platform (-device pvpanic); the
-> >
-> > perhaps ARM folsk know better, don't we have some
-> > user create-able sysbus devices? Can it be implemented
-> > as such, so we would avoid creating built-in device?
->
-> As a QEMU user, I expected there to be a way to specify a dtb from a file=
- that could be used as the actual device tree inside the virtual machine. P=
-erhaps there is a way to do this, but I am not very familiar with the QEMU =
-code and do not know how it should work.
+Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru> writes:
 
-You can generally use '-machine dtb=3Dfile.dtb'. But note that
-this entirely overrides any internally generated dtb file
-for machines that do that, so for those machine types it's
-mostly a helpful debugging tool.
+> They were deprecated in 9.2, now we can remove them.
+> New options to use are reconnect-ms.
 
--- PMM
+Acked-by: Markus Armbruster <armbru@redhat.com>
+
+Who would like to merge this?
+
+* Marc-Andr=C3=A9, since PATCH 1 is chardev
+
+* Jason, since PATCH 2 is net
+
+* Myself, since both touch qapi/
+
+* qemu-trivial
+
 
