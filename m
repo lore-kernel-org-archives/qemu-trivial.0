@@ -4,94 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 944F7CCA470
-	for <qemu-trivial@archiver.kernel.org>; Wed,  8 Oct 2025 15:02:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 268A9CCD184
+	for <qemu-trivial@archiver.kernel.org>; Thu,  9 Oct 2025 13:27:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v6Vfj-0005wR-Mw; Wed, 08 Oct 2025 11:01:44 -0400
+	id 1v6qfI-0000nF-7a; Thu, 09 Oct 2025 09:26:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v6Vfh-0005v6-An
- for qemu-trivial@nongnu.org; Wed, 08 Oct 2025 11:01:41 -0400
-Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v6qfF-0000mz-KH
+ for qemu-trivial@nongnu.org; Thu, 09 Oct 2025 09:26:38 -0400
+Received: from mail-lj1-x232.google.com ([2a00:1450:4864:20::232])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1v6VfZ-0002yQ-Pu
- for qemu-trivial@nongnu.org; Wed, 08 Oct 2025 11:01:40 -0400
-Received: by mail-wr1-x429.google.com with SMTP id
- ffacd0b85a97d-3ecdf2b1751so23773f8f.0
- for <qemu-trivial@nongnu.org>; Wed, 08 Oct 2025 08:01:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v6qf3-0002W9-I0
+ for qemu-trivial@nongnu.org; Thu, 09 Oct 2025 09:26:37 -0400
+Received: by mail-lj1-x232.google.com with SMTP id
+ 38308e7fff4ca-362acd22c78so8005371fa.2
+ for <qemu-trivial@nongnu.org>; Thu, 09 Oct 2025 06:26:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1759935685; x=1760540485; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ d=gmail.com; s=20230601; t=1760016376; x=1760621176; darn=nongnu.org;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4F5/hkfJsJMznZp9cQnW4c0cmQGf7sSVPlcxHG8kYOo=;
- b=TlM7GqmTAznl4xh1AX0D1dCYTu+48tmmhJAdqAW3BPb2Zm7zqHpEl0P/IeJhHxvwlS
- kPW+ximmNGriK2ZcuvEsIaCnErT8W8aMJZWet99t/XjxNAbZ19IOaLVAYk+1Hs7INE6i
- qI1eLAqPDMHouf3g1zl4f4qCh0uy1lCk+UYwGjYN4M/hqq2jwcsNtOEmFIWq+CUc1IRq
- w++zIwu+wSOmyesunfH7jux1u+chuTCuuemtzT99Q9xwjx/Os436xwt9Iwz5qQTVOeRY
- 3EorDJDMOjUnrafiYaPvyPWQDUjiBlm6j2jHPuHzWSI93LHEtJofPvADeYPSYdTIUWWg
- n4sA==
+ bh=nAgI9JeXuBKnRzaQOG8nK3oOjLGJCuXuDU+WMuN6Cw8=;
+ b=kfPabzQomPITt3IeIisquRcRPsyM9cVl0aenFlQLBYn7yFnBkGfrQQi1CRLMsmg1IB
+ Pgxqts+j9zRYrJS4O8iD3kMA9IFOM4e2866tNFPnbpbWGPg+6NgLm/bSxeiZ+hbjPlAI
+ JpS/Wrso3FF47dGHvFWACqcARr/FtimDmCthW2GNout/DqwU+E1uoS+O1EMfUNVZpuWQ
+ Oz8ul2DPCbyKNnNKgx4XqYZMoHQBTArIPvtzSfq67BabuWXcouRxdNTS0gOdpBpHfa/Z
+ sykJac8G8ACYBwsriLHm8xndhBcoJmvnfnRGENtl8rQ+LRu4r+7V0O4msX0FLzmepgXz
+ e9Gw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1759935685; x=1760540485;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=4F5/hkfJsJMznZp9cQnW4c0cmQGf7sSVPlcxHG8kYOo=;
- b=oBUZfoBpl3hhA/0s/peEMzAgFButuIKGdJZZernlHOGAe7lNtCelQh13ii1L07t+uw
- koG2c6pOoaaDYte5zqhCL50Z8ql3MiPkr8nlf0cIMTI+3dTalhRUoYlQOxtcnISz65H2
- MaSKb3ufbd7XWzwcwb20XUGHkoJDKnOG1ueOCB3DzX9+Nx7ijZBlqxZ1yWQHiAtU7qwn
- hWYQqJGxLlTFgosEXzgd8v6Yo1NHNP5SBb7ICbCMndZVQmT0qeBX5rSevbnWujXetdkc
- mJu9miyI9FQAkQqGJp3IWkNyyLPJSp/vqRiOfYylkSeh9PDmfxdBYpzRX4NzO/CNgZRZ
- +zQQ==
+ d=1e100.net; s=20230601; t=1760016376; x=1760621176;
+ h=to:references:message-id:content-transfer-encoding:cc:date
+ :in-reply-to:from:subject:mime-version:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=nAgI9JeXuBKnRzaQOG8nK3oOjLGJCuXuDU+WMuN6Cw8=;
+ b=OLtH7iTxgiMrDBMGejZG3ACc4Bw298DCu0VCImGlMemVawFMHuCVXrZl5TuW31RWLo
+ 6UgV5Ub/uiDs2PwdSZvfVHc4vzKvxexKiJTk9osFU3M0/Nk04/hRwxHwiNKFbf6vkjLH
+ sKhsRCCsNdpEcemJu9A3ngq3RyiC8HFGk4ci8zBgmck4Ic14fbSTsanu3SGc4BuRfTYS
+ Z1S8FkpKvOZcbCJFgHKdKnRjfGXDbpAA/pcDHy3cWY9OCsi+d1UzKwetK/YpFySOtjNs
+ 1FqKGxRRgIlyFu1y753si5ZvZb92SqlrL9db4eDUQMYcuW6qJt+FvBmkKtrSub+/XKlL
+ O1QA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCV303S8iF1y6Y3FPmDd+WJg7HE9FpxF3zXOhOsteePG7iNzluIDISWfI7zxD+ac1ZgS19l5ZaCzQbW20ZI=@nongnu.org
-X-Gm-Message-State: AOJu0YxzGZoAdz3tuyqTkmfRLcUPEqYxC7n5LYPd8avgGEgDT3tkwP/s
- P81DLYay/zhIIKMm2jqwShYYSOcfL79QSDZtGvofxd896sd6GYp05OFRJQ9sqLbsG3c=
-X-Gm-Gg: ASbGncs1TlHArGa2PF33eLcrKEUq3FVfnPja1mdjbiQGWeBOywvf4dg6RpN6Mq2VugD
- yOleGykjtf8sZUUhtA1ouu8UbH80fMkZzPU1Jv5BqBHZlOXeLlHRZvRUjg58rP6oaUe4DGji3hM
- 9TUSNI6OKfoPP1eaJ396svaHbiGPzuHov4zR8GQm+Nq/+yJ/30iW2n7P6jHrA8ohAYJVbwN8Mt/
- srY2wOKDGD+72JUt4bb9E067r8EqZoGz9TU8BO7Va12sOpLQtqjNF9qhNZte7ATFlIYhdNFmAM8
- rnv3pmwlQ6hft69LEtxwv/ShHaJfjxpn8buAt5a+PDddQg+PXEoiI/r7zK+ztMCLefFbYcxBjMA
- D9RrQRUZQr8KsfR9HNMxjBNnKJBnzy5UyZb1AXzljt8KZM3jOiTc=
-X-Google-Smtp-Source: AGHT+IG6xEEClz32xk2nxvde7P5Dj+DIbTfxWrK7w3LARm22M3QjfrBeHzABx0cIKBgx3pHLcf3m/w==
-X-Received: by 2002:a5d:64e5:0:b0:3e9:b208:f2d2 with SMTP id
- ffacd0b85a97d-4266e8e0a16mr2227267f8f.50.1759935684692; 
- Wed, 08 Oct 2025 08:01:24 -0700 (PDT)
-Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4255d8a6b5csm30513915f8f.5.2025.10.08.08.01.23
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 08 Oct 2025 08:01:23 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 036BB5F83B;
- Wed, 08 Oct 2025 16:01:23 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: John Snow <jsnow@redhat.com>,  qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] python/qemu: Replace some remaining "avocados" with
- "functional tests"
-In-Reply-To: <20251008131936.71160-1-thuth@redhat.com> (Thomas Huth's message
- of "Wed, 8 Oct 2025 15:19:36 +0200")
-References: <20251008131936.71160-1-thuth@redhat.com>
-User-Agent: mu4e 1.12.14-dev1; emacs 30.1
-Date: Wed, 08 Oct 2025 16:01:22 +0100
-Message-ID: <87ikgpxwsd.fsf@draig.linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
+ AJvYcCV+boeLnlQUtkIT2m9dn6dOjA9gUNhi+m3mMBTFGIlpBku2T27s5BADTTcPh7g5TCPR4N8k99kz0IjwrfA=@nongnu.org
+X-Gm-Message-State: AOJu0YzxeTt5Qnheq9kdP1oxjoIB1nCwyva45HoxqACkxfBuyl7+TrUc
+ mkI4rjP3/TaL9JlstbsKew5N8FAKkXf17ePw6gzfe/16O78LsLMwtE7J
+X-Gm-Gg: ASbGncv7q9+tTTFwGvgi8CoQyx4kH4r8z7d82tp5FY5BNWuwIKK9c+KOsybq2dG+ww3
+ jl222Lyd20LeRnYAgSJKsTSQEf54JzAy4EdIO0Ci7lvWVNPdTOgas2ez95SrMC48kmy+sFKQCXc
+ oNbCkf2UWwSR9hSPoS0P1htg0XHhQQDHUw30m6nwJ+OgG20MXraAwvBIMswkt1pRx5oOs5teJEO
+ AcekUtXsid5qA2xMh4CDQlC+a6KT0iBd8Ga33U5lBsCt7vXeTu8rPn2O7/18H85jHaEMdcnDHE9
+ FquPxt0YsUMV2y6gKOd2KjFXJh+W0c29GZZIe0MfXji7dubxxVTUSRGX5OftHpJXtjJG/DADagA
+ aHKHyYEAIUctD06BSNMuTRF7NhXV+GfZe15FL+z6B8JpMdDVw3BFbgYRoK2+B4uVxSaM=
+X-Google-Smtp-Source: AGHT+IHjiuO9UbyeCuxZon+kgxSWKPk9+qcnKqNmp4G5fH8RWkWbU/m6OmxQrcV7doazAP4Co1GVrg==
+X-Received: by 2002:a05:651c:1543:b0:35f:73ba:e758 with SMTP id
+ 38308e7fff4ca-37609cfa0a8mr20272801fa.1.1760016375638; 
+ Thu, 09 Oct 2025 06:26:15 -0700 (PDT)
+Received: from smtpclient.apple ([2a02:6bf:8011:f00:6191:211a:2507:cf35])
+ by smtp.gmail.com with ESMTPSA id
+ 38308e7fff4ca-375f39fca47sm28419641fa.16.2025.10.09.06.26.14
+ (version=TLS1_2 cipher=ECDHE-ECDSA-AES128-GCM-SHA256 bits=128/128);
+ Thu, 09 Oct 2025 06:26:15 -0700 (PDT)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3776.700.51.11.2\))
+Subject: Re: [PATCH] hw/arm: add pvpanic mmio device for arm
+From: Alexander Gryanko <xpahos@gmail.com>
+In-Reply-To: <20251007151157.5a601c3e@fedora>
+Date: Thu, 9 Oct 2025 16:25:59 +0300
+Cc: qemu-devel@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-arm@nongnu.org, qemu-trivial@nongnu.org
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::429;
- envelope-from=alex.bennee@linaro.org; helo=mail-wr1-x429.google.com
+Message-Id: <DFAE42FB-786F-45D3-9FC5-C72DEC5A4301@gmail.com>
+References: <CC5A0011-CD14-40F9-8023-8BF5F989BCCF@gmail.com>
+ <20251007151157.5a601c3e@fedora>
+To: Igor Mammedov <imammedo@redhat.com>
+X-Mailer: Apple Mail (2.3776.700.51.11.2)
+Received-SPF: pass client-ip=2a00:1450:4864:20::232;
+ envelope-from=xpahos@gmail.com; helo=mail-lj1-x232.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- T_SPF_TEMPERROR=0.01 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_PASS=-0.001,
+ T_SPF_HELO_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -107,19 +103,123 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Thomas Huth <thuth@redhat.com> writes:
 
-> From: Thomas Huth <thuth@redhat.com>
->
-> The avocado tests have been replaced by the new functional tests,
-> so also update this in the README.rst files in the python directory
-> accordingly.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
+> On 7 Oct 2025, at 16:11, Igor Mammedov <imammedo@redhat.com> wrote:
+>=20
+> On Sat, 4 Oct 2025 23:19:09 +0300
+> Alexander Gryanko <xpahos@gmail.com> wrote:
+>=20
+>> Currently, pvpanic is available in three device types: ISA,
+>> MMIO, and PCI. For early stages of system initialisation
+>> before PCI enumeration, only ISA and MMIO are suitable.
+>> ISA is specific to the x86 platform; only MMIO devices
+>> can be used for ARM. It is not possible to specify a
+>> device as on the x86 platform (-device pvpanic); the
+>=20
+> perhaps ARM folsk know better, don't we have some
+> user create-able sysbus devices? Can it be implemented
+> as such, so we would avoid creating built-in device?
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+As a QEMU user, I expected there to be a way to specify a dtb from a =
+file that could be used as the actual device tree inside the virtual =
+machine. Perhaps there is a way to do this, but I am not very familiar =
+with the QEMU code and do not know how it should work.
+
+>=20
+>> only possible way is to add an MMIO device to the dtb,
+>> which can be implemented by manually adding new functions
+>> to the QEMU code, as was done in the VMApple implementation.
+>>=20
+>> Signed-off-by: Alexander Gryanko <xpahos@gmail.com>
+>> ---
+>> hw/arm/virt.c         | 25 +++++++++++++++++++++++++
+>> include/hw/arm/virt.h |  1 +
+>> 2 files changed, 26 insertions(+)
+>>=20
+>> diff --git a/hw/arm/virt.c b/hw/arm/virt.c
+>> index 02209fadcf..1059584b67 100644
+>> --- a/hw/arm/virt.c
+>> +++ b/hw/arm/virt.c
+>> @@ -39,6 +39,7 @@
+>> #include "hw/arm/virt.h"
+>> #include "hw/block/flash.h"
+>> #include "hw/display/ramfb.h"
+>> +#include "hw/misc/pvpanic.h"
+>> #include "net/net.h"
+>> #include "system/device_tree.h"
+>> #include "system/numa.h"
+>> @@ -182,6 +183,7 @@ static const MemMapEntry base_memmap[] =3D {
+>>    [VIRT_UART0] =3D              { 0x09000000, 0x00001000 },
+>>    [VIRT_RTC] =3D                { 0x09010000, 0x00001000 },
+>>    [VIRT_FW_CFG] =3D             { 0x09020000, 0x00000018 },
+>> +    [VIRT_PVPANIC] =3D            { 0x09021000, 0x00000002 },
+>>    [VIRT_GPIO] =3D               { 0x09030000, 0x00001000 },
+>>    [VIRT_UART1] =3D              { 0x09040000, 0x00001000 },
+>>    [VIRT_SMMU] =3D               { 0x09050000, SMMU_IO_LEN },
+>> @@ -276,6 +278,27 @@ static bool ns_el2_virt_timer_present(void)
+>>        arm_feature(env, ARM_FEATURE_EL2) && cpu_isar_feature(aa64_vh, =
+cpu);
+>> }
+>>=20
+>> +static void create_pvpanic(VirtMachineState *vms)
+>> +{
+>> +    char *nodename;
+>> +    MachineState *ms =3D MACHINE(vms);
+>> +    DeviceState *dev =3D qdev_new(TYPE_PVPANIC_MMIO_DEVICE);
+>> +    SysBusDevice *s =3D SYS_BUS_DEVICE(dev);
+>> +
+>> +    hwaddr base =3D vms->memmap[VIRT_PVPANIC].base;
+>> +    hwaddr size =3D vms->memmap[VIRT_PVPANIC].size;
+>> +
+>> +    sysbus_realize_and_unref(s, &error_fatal);
+>> +    sysbus_mmio_map(s, 0, base);
+>> +
+>> +    nodename =3D g_strdup_printf("/pvpanic@%" PRIx64, base);
+>> +    qemu_fdt_add_subnode(ms->fdt, nodename);
+>> +    qemu_fdt_setprop_string(ms->fdt, nodename, "compatible",
+>> +                            "qemu,pvpanic-mmio");
+>> +    qemu_fdt_setprop_sized_cells(ms->fdt, nodename, "reg",
+>> +                                 2, base, 2, size);
+>> +}
+>> +
+>> static void create_fdt(VirtMachineState *vms)
+>> {
+>>    MachineState *ms =3D MACHINE(vms);
+>> @@ -2498,6 +2521,8 @@ static void machvirt_init(MachineState =
+*machine)
+>>    create_pcie(vms);
+>>    create_cxl_host_reg_region(vms);
+>>=20
+>> +    create_pvpanic(vms);
+>=20
+> given that virt is versioned machine type,
+> we probably need a compat knob to disable it's creation on old machine =
+types
+>=20
+>> +
+>>    if (has_ged && aarch64 && firmware_loaded && =
+virt_is_acpi_enabled(vms)) {
+>>        vms->acpi_dev =3D create_acpi_ged(vms);
+>>    } else {
+>> diff --git a/include/hw/arm/virt.h b/include/hw/arm/virt.h
+>> index ea2cff05b0..39bf07c9c1 100644
+>> --- a/include/hw/arm/virt.h
+>> +++ b/include/hw/arm/virt.h
+>> @@ -81,6 +81,7 @@ enum {
+>>    VIRT_NVDIMM_ACPI,
+>>    VIRT_PVTIME,
+>>    VIRT_ACPI_PCIHP,
+>> +    VIRT_PVPANIC,
+>>    VIRT_LOWMEMMAP_LAST,
+>> };
+>>=20
+>>=20
+>> ---
+>> base-commit: bd6aa0d1e59d71218c3eee055bc8d222c6e1a628
+>> change-id: 20251004-arm-pvpanic-84a7d7b67d8d
+>>=20
+>> Best regards,
+>=20
+
 
