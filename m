@@ -4,92 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75F10CCD187
-	for <qemu-trivial@archiver.kernel.org>; Sun, 12 Oct 2025 22:37:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48E4ACCA476
+	for <qemu-trivial@archiver.kernel.org>; Mon, 13 Oct 2025 11:11:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v84gh-00047J-QZ; Sun, 12 Oct 2025 18:37:11 -0400
+	id 1v8GSI-0001IW-NQ; Mon, 13 Oct 2025 07:11:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v84gf-00046W-K4
- for qemu-trivial@nongnu.org; Sun, 12 Oct 2025 18:37:09 -0400
-Received: from mail-lf1-x12f.google.com ([2a00:1450:4864:20::12f])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <xpahos@gmail.com>) id 1v84gd-0007pl-Rd
- for qemu-trivial@nongnu.org; Sun, 12 Oct 2025 18:37:09 -0400
-Received: by mail-lf1-x12f.google.com with SMTP id
- 2adb3069b0e04-57bb7ee3142so4195082e87.0
- for <qemu-trivial@nongnu.org>; Sun, 12 Oct 2025 15:37:07 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1760308625; x=1760913425; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=cA95iX4M9+Cz6iNCJ6BOuR7+8GDEhxJbdoNVkou25AA=;
- b=fz1JgJxG7RqcZHJMNtkHnka2QDAkhkYFMnwWK71YwbCaEnNKTif4jSUjzGKOPdX2dv
- ua7fFUVcEN8MAGLaurSfQq0lSUsaUvmBkU1VgxkLzYSZ0nPCKhwRNo8qbkOzG/GFKAGZ
- xnc5OZh9OVTW2wHH+7ItS2U0bP+YUruTVzVetvpFHH/jsqFuCpxkVuSJ7nC/9VGTaFm/
- 3fzJyk1qaVY15W7eRVbd9pEXdLwqJvdvsKep1SvaxpHL5YGBBoBPzfLrceoa0HyfU79B
- w6bbVDQWaH2L+pDv2kb1MXeJABil7cDQshSuUUzLFhdo+b5sA6JTfrDTm1RxPgMarURH
- 9tZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760308625; x=1760913425;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=cA95iX4M9+Cz6iNCJ6BOuR7+8GDEhxJbdoNVkou25AA=;
- b=QRsUbTxhemgKqs9lNiCUScWblaJk4mMpzvaBhia3iTDjWW/9mftxzch2kGxSXUirQ0
- yvGgEiVm5AkZdxJpsMDaqsHTywUEQQlr4z319yr8Tf6XmY57FwCQIQG8tyUo7C3y1Rn9
- O38KwnxsD/3ZuMYQVMxFmn/hKd9CyF0eGGEdTNqjREVKC5u53PfSWyDFkxJPBIVT+tO8
- N/3v05Fn2mDAkZYK4OA7lM7VNGwKvzvOj3wP/Q/4p/Fl/VBkAGg/qqMhT9WmAPaSHhq0
- 2tXCeS+ekpY59jRaKynGsgXijLLTRTKSAI6u0WG0IeFBSubzcUaDHCFbFhx7jRJF9G/m
- yVUA==
-X-Gm-Message-State: AOJu0YwJZxV1qfDKhsqyts+fYWyyJ7qBdWpUCP82VXksBct2sT0ExZYf
- 3N8svr/nTmnM6lv18Cul1NpYMMWMDqOngnzKfiONQHgza/yNfcqz0Lzf
-X-Gm-Gg: ASbGnctRL7vZPMTGS9J4guMVgEGEWUlTlC3P7EF9w6LBi3kvZn+fQ5zcflXF39Wg9/4
- Cm5/p3u2ybeVvnYmzqtbtbrDJxn6U6PAdd6jUtkotwH/XllXoWtspmadacb04SJlonaRiajU8Sx
- vbYQ9dZ3xPGoDlZiSXhmUtDFfPlRJQ94viKNQ7f6PUrCBAm8wQMN/4sOh9+yBLuHYLgtbyWQHOW
- AUQ41FZR+GSTGbZBQpsdhT2MXXG1BBUeFw30q7UgMUMcsaTMTtsTz73+IjvLD7oinnktwLnrENG
- wN1BlxWOLp0AdxEtmHLA9NFDu7osX5liFBG4on7RlvpeU0/BiW3L8t8XP2lwONmIgQAV5HYo2rj
- KaHlniKGitq59LkoEDuaBqIM5MCD9E+CjLI8/2W2k8oVLr1d+Yz+z10r/pLIdOFE9
-X-Google-Smtp-Source: AGHT+IF/fcaMvhuDRJ7Kyj/JpHVQn4ZHrTfSTCtbCHLmZaK86RsPbbFWYtAdrOMArcHTwohs0/fNRQ==
-X-Received: by 2002:a05:6512:b02:b0:587:6853:4caf with SMTP id
- 2adb3069b0e04-5906dd6d74bmr4917504e87.40.1760308624480; 
- Sun, 12 Oct 2025 15:37:04 -0700 (PDT)
-Received: from xpahos-osx.yandex.net ([2a02:6bf:8080:593::1:c])
- by smtp.gmail.com with ESMTPSA id
- 2adb3069b0e04-5908820d20bsm3421701e87.54.2025.10.12.15.37.01
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 12 Oct 2025 15:37:03 -0700 (PDT)
-From: xpahos@gmail.com
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1v8GSF-0001Hd-0r
+ for qemu-trivial@nongnu.org; Mon, 13 Oct 2025 07:11:03 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1v8GSA-0003Hh-C3
+ for qemu-trivial@nongnu.org; Mon, 13 Oct 2025 07:11:02 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1760353853;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=wTXHtL7x9n8pBFTn/HV8u3bXuDvcA7YfgwtGE1bNnJQ=;
+ b=JvgPUzz6SusWLtArb10vAnUU5GkVK0LRaKnYij52wPTozm6OIig1ADcw7ilywSM84EPrtC
+ ddye62dRat1x4KAVvS1oVEuRo7xGmZ2C7cbwUFCkzoaBKbrrSaL6D/h1eBBQctv+AYKtkp
+ 9uxLCQmE5Jv94soBfDh5e0MJkAM1EVU=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-252-Qnji2KRmPtGMliE5tch9Hg-1; Mon,
+ 13 Oct 2025 07:10:50 -0400
+X-MC-Unique: Qnji2KRmPtGMliE5tch9Hg-1
+X-Mimecast-MFC-AGG-ID: Qnji2KRmPtGMliE5tch9Hg_1760353849
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B1B6D180028C; Mon, 13 Oct 2025 11:10:48 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.45.242.19])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4D16D1954102; Mon, 13 Oct 2025 11:10:48 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id E2B7E21E6A27; Mon, 13 Oct 2025 13:10:45 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
 To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Alexander Gryanko <xpahos@gmail.com>,
- Gerd Hoffmann <kraxel@redhat.com>
-Subject: [PATCH] hw/uefi: fix properties list definition
-Date: Mon, 13 Oct 2025 01:36:10 +0300
-Message-Id: <20251012-pvvars-fix-props-v1-1-6ca31af626e0@gmail.com>
-X-Mailer: git-send-email 2.39.5 (Apple Git-154)
+Cc: sstabellini@kernel.org,  anthony@xenproject.org,  paul@xen.org,
+ edgar.iglesias@gmail.com,  xen-devel@lists.xenproject.org,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] hw/display/xenfb: Replace unreachable code by abort()
+In-Reply-To: <20250729111226.3627499-1-armbru@redhat.com> (Markus Armbruster's
+ message of "Tue, 29 Jul 2025 13:12:26 +0200")
+References: <20250729111226.3627499-1-armbru@redhat.com>
+Date: Mon, 13 Oct 2025 13:10:45 +0200
+Message-ID: <877bwz6oqy.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-X-Change-ID: 20251012-pvvars-fix-props-5a8509b47420
-X-Mailer: b4 0.14.3
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1760308348; l=976;
- i=xpahos@gmail.com; s=20251004; h=from:subject:message-id;
- bh=t0v8/1O3IYDylhQel+d8JeKG2uQXb7Rh0D3TRsufzRs=;
- b=V12Pkpg7EfOVLJDWszKpXvEWd6k54jkizHyHbAiTq53YXR42U0b+2n2OSnWh+eDtwi7183faY
- bFdnZorfOK8BtKL/3sCgP0ALB5oEtB6/kG6IWjnOmZO9wlDvM9Qi3w5
-X-Developer-Key: i=xpahos@gmail.com; a=ed25519;
- pk=bsSvP3Tn7PVKgjJT3BMV3jlAwSqreKIM4099C1r51eg=
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::12f;
- envelope-from=xpahos@gmail.com; helo=mail-lf1-x12f.google.com
+Content-Type: text/plain
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,36 +86,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Alexander Gryanko <xpahos@gmail.com>
+Ping?
 
-Added DEFINE_PROP_END_OF_LIST() to the Property structure definition.
-This fixes the device_class_set_legacy_reset error when accessing
-the prop->info field.
+Markus Armbruster <armbru@redhat.com> writes:
 
-Signed-off-by: Alexander Gryanko <xpahos@gmail.com>
----
- hw/uefi/var-service-sysbus.c | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/hw/uefi/var-service-sysbus.c b/hw/uefi/var-service-sysbus.c
-index a5aa218e26..a19591b1c3 100644
---- a/hw/uefi/var-service-sysbus.c
-+++ b/hw/uefi/var-service-sysbus.c
-@@ -39,6 +39,7 @@ static const Property uefi_vars_sysbus_properties[] = {
-                      state.disable_custom_mode, false),
-     DEFINE_PROP_BOOL("use-pio", uefi_vars_sysbus_state,
-                      state.use_pio, false),
-+    DEFINE_PROP_END_OF_LIST(),
- };
- 
- static void uefi_vars_sysbus_init(Object *obj)
-
----
-base-commit: f3f2ad119347e8c086b72282febcaac5d731b343
-change-id: 20251012-pvvars-fix-props-5a8509b47420
-
-Best regards,
--- 
-Alexander Gryanko <xpahos@gmail.com>
+> xenfb_mouse_event() has a switch statement whose controlling
+> expression move->axis is an enum InputAxis.  The enum values are
+> INPUT_AXIS_X and INPUT_AXIS_Y, encoded as 0 and 1.  The switch has a
+> case for both axes.  In addition, it has an unreachable default label.
+> This convinces Coverity that move->axis can be greater than 1.  It
+> duly reports a buffer overrun when it is used to subscript an array
+> with two elements.
+>
+> Replace the unreachable code by abort().
+>
+> Resolves: Coverity CID 1613906
+> Signed-off-by: Markus Armbruster <armbru@redhat.com>
+> ---
+>  hw/display/xenfb.c | 3 +--
+>  1 file changed, 1 insertion(+), 2 deletions(-)
+>
+> diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
+> index 22822fecea..5e6c691779 100644
+> --- a/hw/display/xenfb.c
+> +++ b/hw/display/xenfb.c
+> @@ -283,8 +283,7 @@ static void xenfb_mouse_event(DeviceState *dev, QemuConsole *src,
+>                  scale = surface_height(surface) - 1;
+>                  break;
+>              default:
+> -                scale = 0x8000;
+> -                break;
+> +                abort();
+>              }
+>              xenfb->axis[move->axis] = move->value * scale / 0x7fff;
+>          }
 
 
