@@ -4,75 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2367FCCD184
-	for <qemu-trivial@archiver.kernel.org>; Tue, 14 Oct 2025 07:43:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41679CCD18E
+	for <qemu-trivial@archiver.kernel.org>; Tue, 14 Oct 2025 08:37:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v8ZgK-0002Cp-Kf; Tue, 14 Oct 2025 03:42:52 -0400
+	id 1v8aWr-0008Tm-Hv; Tue, 14 Oct 2025 04:37:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1v8ZgH-0002Bx-SB
- for qemu-trivial@nongnu.org; Tue, 14 Oct 2025 03:42:50 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1v8ZgC-0006Ri-Lx
- for qemu-trivial@nongnu.org; Tue, 14 Oct 2025 03:42:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1760427763;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=SHUotR2nJ/K6X1C0pnOd/lK6tY2NnaYZKDc/xGnWPuI=;
- b=DolBCx8ocLqKyr8wV6hj9yN6zj2F9AriyDzVzgeIyZNUHgoAJNs9IETg+dOUKONyk2AcvA
- qkx2WyTgSGP4HXy6/CvnVtZpeAsPDqnOkEoiL0NxDTTBwDEqH5ThMZ6DkpVUY/IqYJUJ5N
- XTRW2uabVmUW/s5a53NWG8sX33scb2o=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-92-forSofwjOGKuPF4o34xyag-1; Tue,
- 14 Oct 2025 03:42:37 -0400
-X-MC-Unique: forSofwjOGKuPF4o34xyag-1
-X-Mimecast-MFC-AGG-ID: forSofwjOGKuPF4o34xyag_1760427756
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 02D341800366; Tue, 14 Oct 2025 07:42:36 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.19])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4F1D71800447; Tue, 14 Oct 2025 07:42:35 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id CF36621E6A27; Tue, 14 Oct 2025 09:42:32 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org,  sstabellini@kernel.org,  anthony@xenproject.org,
- paul@xen.org,  edgar.iglesias@gmail.com,  xen-devel@lists.xenproject.org,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/display/xenfb: Replace unreachable code by abort()
-In-Reply-To: <20C81C5B-912C-49B3-B50A-867C06C134B1@gmail.com> (Bernhard
- Beschow's message of "Mon, 13 Oct 2025 19:17:28 +0000")
-References: <20250729111226.3627499-1-armbru@redhat.com>
- <877bwz6oqy.fsf@pond.sub.org>
- <20C81C5B-912C-49B3-B50A-867C06C134B1@gmail.com>
-Date: Tue, 14 Oct 2025 09:42:32 +0200
-Message-ID: <87tt02ylnb.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v8aWq-0008TM-Sp
+ for qemu-trivial@nongnu.org; Tue, 14 Oct 2025 04:37:08 -0400
+Received: from mail-yw1-x1133.google.com ([2607:f8b0:4864:20::1133])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1v8aWo-0005Rj-0I
+ for qemu-trivial@nongnu.org; Tue, 14 Oct 2025 04:37:07 -0400
+Received: by mail-yw1-x1133.google.com with SMTP id
+ 00721157ae682-781421f5be8so15967417b3.1
+ for <qemu-trivial@nongnu.org>; Tue, 14 Oct 2025 01:37:04 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1760431023; x=1761035823; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=G2wXHawLphgjXMKUIBlNV42EVOVQetLfGGTkt4o3IG0=;
+ b=lX8oz2bzDkQTEuC+r6ZWKoyeJswSjYjVmyjV0NfgKWmfeQpagJ1DdvN3/tKiaKXTIn
+ 6pIvtBdAN8okJT7F9ekT31drRC/QA7MCHpMbElLP2gzvY5Pbo/PHZsw9pD/NfFbcXH7j
+ sBDGL+OZ+h47ucsREL2i6ZWf0eKmDi1xaYMTdmOMmT34AUAAbAi2TgayYF7fMDU118qa
+ +vNaApA0Gjb4k4KVb6ydk8EAsRYnH1kHkpNEsZelb9F4kZZMCLUUkzOlMXiHkVJz0LX6
+ VxTkCZ7fuvXJFF2e3jkZX6incEsa/0Nse2JrQJRqO1UzEUPVeyIRaRZi2SSsXNkg4zHy
+ 5mig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1760431023; x=1761035823;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=G2wXHawLphgjXMKUIBlNV42EVOVQetLfGGTkt4o3IG0=;
+ b=JDDu1bRDC0jtbT9rnHAtqi/GuFq71oMrUUEnmmQpHoUZplBYvVndetfen6CruBzy1q
+ HysGJtn6btXG/4dIJogao0mnJplqwtrZ1UzsQGI+3kucYiV+outewL12V5kTuoy/Trq1
+ 14d6A6QkAbmfOaADgmNZqM4rQz7I1Uq1N2RElrZc5g1ftfZ7T3DEzX6JFuPFSYmW0Rh7
+ FOaraqi9+Vto9V6Ac386WvV1av5suY1uW7YcvOLuwkNFYGG2LepDYH8WcW32+YE6Nawy
+ ivPCgzTu7lTK/0XLayXf9e7thAfXwn1C1VS5+GrNr2KKepUUO5lfD2rV8ZiGizPX5que
+ Te9Q==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCW1suW5Y9LXMj0tilrbvM0EqB38xFntiZjrKGIXVtqE6KwHJC4N1YWWDNQpMkXKgjCtX9Wx4wXiwS+pE50=@nongnu.org
+X-Gm-Message-State: AOJu0YyWHq5DNVc8nFBBwseqdxPnKDWawKn49goGjpfVypFwAuVh2YB5
+ SqeQINzl0wJmML+FRVTrSvKQXB1wbJAkbbjKdvzfH6XyT/2iUmTYcFuoWTcv4N2BFpW8pgJMU4B
+ bpKZdAzHXRAtcC02r92DgOXdq2/JF0utH3fOQEJhTtg==
+X-Gm-Gg: ASbGncvz+NdmQkyVsmKiumsy2VX27B42ANHtea5cHNVyWA0SuVCneSMA9chcVwt+BRV
+ dUsCR3gfr+wFLxsDVURMRH4vAjBhVPPLvVVYk2ksSYQvpYscPtB9bvCzDFuYZgRDvazwOGUG2ne
+ A2JNohYZK7sF7uuhWq5eF9NY1xLy/gcWKjeaev8BmoVEIjgYPZ2lxy+MMI1pCxZHNN4q8ZnO18/
+ kTU3upw3iuo8X9XE/x2coZwJ+MMraI=
+X-Google-Smtp-Source: AGHT+IECuBWW7Mr3bdnefo9hCmYHcFbwqlQRLyVDhb767ve9pQExfrgwAwUBBTHQcYKoTbM+UVDSaLdeF/fMGFZKDEA=
+X-Received: by 2002:a53:ea51:0:b0:63c:da95:21c7 with SMTP id
+ 956f58d0204a3-63cda9524edmr14064490d50.48.1760431023344; Tue, 14 Oct 2025
+ 01:37:03 -0700 (PDT)
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20250729111226.3627499-1-armbru@redhat.com>
+In-Reply-To: <20250729111226.3627499-1-armbru@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 14 Oct 2025 09:36:51 +0100
+X-Gm-Features: AS18NWDdnneHmaeFVDUQFGdg-xa0DZiF63LABZFsNDGIwihe3MoHxpb_nMM5usM
+Message-ID: <CAFEAcA-UrCD7mrmX_4dCK0urMmY5+qs=Y268WerQVq1c+7nB=Q@mail.gmail.com>
+Subject: Re: [PATCH] hw/display/xenfb: Replace unreachable code by abort()
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org, sstabellini@kernel.org, anthony@xenproject.org, 
+ paul@xen.org, edgar.iglesias@gmail.com, xen-devel@lists.xenproject.org, 
+ qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1133;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1133.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -88,45 +96,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Bernhard Beschow <shentey@gmail.com> writes:
-
-> Am 13. Oktober 2025 11:10:45 UTC schrieb Markus Armbruster <armbru@redhat.com>:
->>Ping?
->>
->>Markus Armbruster <armbru@redhat.com> writes:
->>
->>> xenfb_mouse_event() has a switch statement whose controlling
->>> expression move->axis is an enum InputAxis.  The enum values are
->>> INPUT_AXIS_X and INPUT_AXIS_Y, encoded as 0 and 1.  The switch has a
->>> case for both axes.  In addition, it has an unreachable default label.
->>> This convinces Coverity that move->axis can be greater than 1.  It
->>> duly reports a buffer overrun when it is used to subscript an array
->>> with two elements.
->>>
->>> Replace the unreachable code by abort().
->>>
->>> Resolves: Coverity CID 1613906
->>> Signed-off-by: Markus Armbruster <armbru@redhat.com>
->>> ---
->>>  hw/display/xenfb.c | 3 +--
->>>  1 file changed, 1 insertion(+), 2 deletions(-)
->>>
->>> diff --git a/hw/display/xenfb.c b/hw/display/xenfb.c
->>> index 22822fecea..5e6c691779 100644
->>> --- a/hw/display/xenfb.c
->>> +++ b/hw/display/xenfb.c
->>> @@ -283,8 +283,7 @@ static void xenfb_mouse_event(DeviceState *dev, QemuConsole *src,
->>>                  scale = surface_height(surface) - 1;
->>>                  break;
->>>              default:
->>> -                scale = 0x8000;
->>> -                break;
->>> +                abort();
+On Tue, 29 Jul 2025 at 12:14, Markus Armbruster <armbru@redhat.com> wrote:
 >
-> Don't we prefer g_assert_not_reached() these days, for more expressiveness?
+> xenfb_mouse_event() has a switch statement whose controlling
+> expression move->axis is an enum InputAxis.  The enum values are
+> INPUT_AXIS_X and INPUT_AXIS_Y, encoded as 0 and 1.  The switch has a
+> case for both axes.  In addition, it has an unreachable default label.
+> This convinces Coverity that move->axis can be greater than 1.  It
+> duly reports a buffer overrun when it is used to subscript an array
+> with two elements.
 
-See https://lore.kernel.org/qemu-devel/87v7nbdwfx.fsf@pond.sub.org/
+I think also that Coverity gets confused by QAPI's convention
+in generated code of defining enumerations like this:
 
-[...]
+typedef enum InputAxis {
+    INPUT_AXIS_X,
+    INPUT_AXIS_Y,
+    INPUT_AXIS__MAX,
+} InputAxis;
 
+Coverity thinks that INPUT_AXIS__MAX might be a valid
+value it can see in move->axis, because we defined the
+enum that way.
+
+In theory I suppose that since the __MAX value is only
+there to be an array or enumeration bound that we could
+emit code that #defines it rather than making it part
+of the enum.
+
+thanks
+-- PMM
 
