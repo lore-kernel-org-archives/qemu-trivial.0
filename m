@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D6786CCD199
-	for <qemu-trivial@archiver.kernel.org>; Fri, 17 Oct 2025 14:16:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3FE3CCD199
+	for <qemu-trivial@archiver.kernel.org>; Fri, 17 Oct 2025 14:16:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v9lCm-0004mc-To; Fri, 17 Oct 2025 10:13:17 -0400
+	id 1v9lCl-0004lv-Uz; Fri, 17 Oct 2025 10:13:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1v9lCg-0004jk-2q
- for qemu-trivial@nongnu.org; Fri, 17 Oct 2025 10:13:11 -0400
-Received: from mail-wm1-x32c.google.com ([2a00:1450:4864:20::32c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1v9lCQ-0005hQ-Hq
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1v9lCf-0004jE-JD
  for qemu-trivial@nongnu.org; Fri, 17 Oct 2025 10:13:09 -0400
-Received: by mail-wm1-x32c.google.com with SMTP id
- 5b1f17b1804b1-4711825a02bso8288385e9.2
- for <qemu-trivial@nongnu.org>; Fri, 17 Oct 2025 07:12:52 -0700 (PDT)
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1v9lCO-0005h3-V3
+ for qemu-trivial@nongnu.org; Fri, 17 Oct 2025 10:13:07 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-471131d6121so15681965e9.1
+ for <qemu-trivial@nongnu.org>; Fri, 17 Oct 2025 07:12:51 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1760710370; x=1761315170; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1760710369; x=1761315169; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=WqDslS9NKjHnUWYR3Oq3CSi9/FfiBOz9NHEnZxcZS80=;
- b=GnkqAxWl1yv5KVAZIaDW+SjmxQd+0rEjWu2xOrJIel5hpX/lMXKyjNzd6aq6ELLgza
- 4K2mMbfSpU4ng1Nil0rjcNVvrcYFG6Pg/p09GAilpcsXDbcSqfGDdM8C7O42Vh5G1exM
- XC4EHgswbFdziIzFoLN2f5vSTBeZIELMGUpdq6y2Pr5MbdGwJX3IZSb1YFNsw5e+S7LG
- nkF27u7Ju3Ih++XlRaKPn4EcnCEinWtVrDM48dnCgLHCpM21gY48XJdEXrR879XxAdQW
- GeIP4lV3+VB48Qi4N/NMuvjkJQy5H1Z6Jf5xe6E3/JvG/RuAPJ3AqJ3ji/xo+yuCNBEw
- 6nBg==
+ bh=HtQk0GJuCq/JgD3T73Q/ujEtbCnLstw5lfgjKUjPFqo=;
+ b=IbUvP/ttLHzkn03Vujr6uXLoSaDKtsfJhgXLxzEB3GdgcY1yQ8m5FFrYi2YuoUK5+C
+ GbqFIE0NSqBNomDp5ypzJc0ToGhpumJwPWGu7OTh+ECy6v9Q1CeQUyfkGyJ/j17ZkMLU
+ IR1cYEkO0476aMV4a5EwlNLcB2z0xsfU/UCp/2gvcsPA8RqpOnPqNacxkvqQiE1hLZrw
+ BM0+kG4nQnPdfLEXlFXgQ22GXzqBahtb9SU5eePp1+AlcJCDGUugiFmSbfvK6N2CFvTy
+ rpE5SJy02DaNCMinKgK47VYXnW1/5WrCBBey62shigz9Qh6877U9uIlIiRslb2ctY5pR
+ jLPA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760710370; x=1761315170;
+ d=1e100.net; s=20230601; t=1760710369; x=1761315169;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=WqDslS9NKjHnUWYR3Oq3CSi9/FfiBOz9NHEnZxcZS80=;
- b=ERD9cEDH0qzv0e/q6g/NQe0D/OIBQZzglNawwRQ17luop19XzvMhfvwEvnNYjt8Cc6
- RWpO7Cpktor5m224YpY3KSfp2JM1NtEgCTawqUFsWAq1q3YOcqtcnjdz9hrFHrxLXM+V
- 4QxLiANt5NWQF2noc/i0/txlCh8Yqzjcx3BA0I8eye5kUIsMiC+X2Kx6a+C+t2KeLajr
- 7tZcxPWVUx7WyMqwBC1SecXRR0JlyLcLYHyw/I3+7PSpxkg4uq0mEQB6KYooI+7NTog9
- u2MP83fpF47K+vsdrbKCzmr4xxZPRb6r/XDzeKaBA76u0vzb8ydpg+JBuf/D48u3EWId
- klow==
+ bh=HtQk0GJuCq/JgD3T73Q/ujEtbCnLstw5lfgjKUjPFqo=;
+ b=e1OiaB8lDL/BuSmourWWFNjpv2jjY0TbGVcU3zrnpunfbjbZymIsPPK/ivGhGrSty8
+ g1jFIrrc0BpjaZ5Gn0Y28FSkm7yTkepS8Nia0QPJtwqQGDPt4KP9bd6uZtk7boVoqXn4
+ oyGFVr9OxK12n8yr8j0Yd76RqVd7m6ygL5wCd34tsIBzEWEY9FZjvE/MqpDKMPzgtaZ/
+ TQUllXCMujqlSzDMhSkXZ3eokX+6WltTVOzIgvsKvH+u0TITcedAz3s6g3PWJ8JmRPzA
+ bH5F/nvjzwkHqgyf5SOE6Eh7jPyYwdH/2WkGf3s14LRttrY5MwlJGDitTONoCqoTnk9m
+ 0cRQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXTR/xhoJY0AW9ysX4STlFrZvABGk5ox/HOwXuIBnyY8eIeOElLR/2WiuhbXDJqPlf5ctYMhbVHm2i8drM=@nongnu.org
-X-Gm-Message-State: AOJu0YyIgFl3P4PPKZGLRCxOMaBwGJ54Z1wxbs/IRPd1p8LkrcOwMSCU
- N5ffkFFG8eQLWcIrGUWRBfsTHORj6eqtlhjR7lZfwEfhGBabk5cL98To
-X-Gm-Gg: ASbGncs0QJ0KyAC8/Z12J9qZfWeE8RBWxAGpMOrqa6xQEvzuXLPrRDTm5Bx39Dx1vbj
- rv1y9Xv3U9YlMDHd+0cwhokzHUJZ12cDcV8jx9Wz5Pcm+Sgemmf4u40yMSdQ4O9Fw+NQoIu8Bt4
- KhFciWvjx00ktU9fozkdBmpYJE7o9oDkxCY2oqNj/D0NwehTvQnBPCzWJ5u7zOUn6+g4vb0RXmH
- bF1wY1txuu/eXYQkYV1wiDJKbemLqeB9pl3bINWP0Z388eIJIbxcFIo1/2nYyOAQlo8motn3XmP
- qnZGCBp9xQHPue2c9wVCHpu0whJueApa9b5x93vgFEuMiIT8fcJNJPyhwmP6cC+xYkLQCsJTCJU
- czD0heRgYr6WW4phc16F8sgprj7IOBSd4FL7DcLG7gsYLvK7lgf3Oc66t5TZEZ7ltpKViEC932t
- +N/mo7hmtoLRc0cElZGbw0B45TSOUa4tJK
-X-Google-Smtp-Source: AGHT+IGYs584RAcS+bQviT9zSdPD1C3R1/CztDsteU1MEMn/nBmYwej5QPyS60IjXtCNMrEecg2MBA==
-X-Received: by 2002:a05:600c:64cf:b0:46e:3b81:c3f9 with SMTP id
- 5b1f17b1804b1-471178a80f7mr25809605e9.17.1760710370235; 
- Fri, 17 Oct 2025 07:12:50 -0700 (PDT)
+ AJvYcCXA6jhpGUdfWxkv8yKKVg+mo6kb0uwW1bdBtzHtXi4Yvq/Tn7Uqq/n2ejjhUUI7zsSK9oZYfk9Nv9a88BM=@nongnu.org
+X-Gm-Message-State: AOJu0Yy2gx1hzlQLB1+6+yeDSQHkz6awoUah/m2/7fxlvSIDTmMTdWBE
+ lMCRgqMQZjs4GndY2lYJcGzkdrM4SYnsLwVZR+Ssf50t9qeAtvElyiuE
+X-Gm-Gg: ASbGncueTxIwFiYzDLHL6KGOrtKWPJ970/VUQrK71y5FERjWOSvibrfiDjQm9DF2T/C
+ b12IKzATSU2iBEtevRYnCB+1JVxUrtSEh/RBY26L4Z04Eig2UK11H6qcWloBjv+hYdW15TXjBOM
+ hoBQejTBaXV1JwOMtR0enDzUmIHBR7WF7MWSOmSroQUH/nCpRWInbYCIp7ByZmU2edNmw3zfV7k
+ V1auKBH4UUnnWDhrswZDvZ1zAgtiW6o4JynFgdrb5Ze1oNrAVSIakSDRvU1Vudm40KFusiBny1V
+ yucLnKJS36TTOs7j8iWf0XGbdPXtv13qEvsV0Xek9zvveGzMsdnHy5ecfuLt6n2222JeC0lv5ov
+ WY0NPTN99IkP9YHJD/d6byjAy2epdhp2UNe8qZzz5puC7610PoqvqQhSW4dmVNXVcub2WJTExsK
+ vRDeyZVas+7sGNDZZAsEWaIxMzB2c/HT6ps/io+QLFzWg=
+X-Google-Smtp-Source: AGHT+IElsIb/+OVACplDy763YqEHBwFhKZ/w/iY2OrFjr2q46IPQug3eVaWvEqAmJxYiR/ktjpqWEQ==
+X-Received: by 2002:a05:600c:3e8f:b0:46f:a95d:e9e7 with SMTP id
+ 5b1f17b1804b1-471177ab11dmr32479285e9.0.1760710369052; 
+ Fri, 17 Oct 2025 07:12:49 -0700 (PDT)
 Received: from archlinux (pd95edc07.dip0.t-ipconnect.de. [217.94.220.7])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4710cb36e7csm51359675e9.2.2025.10.17.07.12.49
+ 5b1f17b1804b1-4710cb36e7csm51359675e9.2.2025.10.17.07.12.48
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Oct 2025 07:12:49 -0700 (PDT)
+ Fri, 17 Oct 2025 07:12:48 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Roman Bolshakov <rbolshakov@ddn.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -80,17 +80,16 @@ Cc: Roman Bolshakov <rbolshakov@ddn.com>, Laurent Vivier <laurent@vivier.eu>,
  Phil Dennis-Jordan <phil@philjordan.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  John Snow <jsnow@redhat.com>, kvm@vger.kernel.org,
  Laurent Vivier <lvivier@redhat.com>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 05/11] hw/rtc/mc146818rtc: Assert correct usage of
- mc146818rtc_set_cmos_data()
-Date: Fri, 17 Oct 2025 16:11:11 +0200
-Message-ID: <20251017141117.105944-6-shentey@gmail.com>
+Subject: [PATCH v2 04/11] hw/rtc/mc146818rtc: Use ARRAY_SIZE macro
+Date: Fri, 17 Oct 2025 16:11:10 +0200
+Message-ID: <20251017141117.105944-5-shentey@gmail.com>
 X-Mailer: git-send-email 2.51.1.dirty
 In-Reply-To: <20251017141117.105944-1-shentey@gmail.com>
 References: <20251017141117.105944-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32c;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32c.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -113,30 +112,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-The offset is never controlled by the guest, so any misuse constitutes a
-programming error and shouldn't be silently ignored. Fix this by using assert().
+Avoids the error-prone repetition of the array size.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/rtc/mc146818rtc.c | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ hw/rtc/mc146818rtc.c | 5 +++--
+ 1 file changed, 3 insertions(+), 2 deletions(-)
 
 diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
-index 5a89062b4c..8631386b9f 100644
+index 61e9c0bf99..5a89062b4c 100644
 --- a/hw/rtc/mc146818rtc.c
 +++ b/hw/rtc/mc146818rtc.c
-@@ -726,9 +726,8 @@ static uint64_t cmos_ioport_read(void *opaque, hwaddr addr,
+@@ -726,13 +726,14 @@ static uint64_t cmos_ioport_read(void *opaque, hwaddr addr,
  
  void mc146818rtc_set_cmos_data(MC146818RtcState *s, int addr, int val)
  {
--    if (addr >= 0 && addr < ARRAY_SIZE(s->cmos_data)) {
--        s->cmos_data[addr] = val;
--    }
-+    assert(addr >= 0 && addr < ARRAY_SIZE(s->cmos_data));
-+    s->cmos_data[addr] = val;
+-    if (addr >= 0 && addr <= 127)
++    if (addr >= 0 && addr < ARRAY_SIZE(s->cmos_data)) {
+         s->cmos_data[addr] = val;
++    }
  }
  
  int mc146818rtc_get_cmos_data(MC146818RtcState *s, int addr)
+ {
+-    assert(addr >= 0 && addr <= 127);
++    assert(addr >= 0 && addr < ARRAY_SIZE(s->cmos_data));
+     return s->cmos_data[addr];
+ }
+ 
 -- 
 2.51.1.dirty
 
