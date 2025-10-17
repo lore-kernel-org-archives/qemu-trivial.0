@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2D74ECCD195
-	for <qemu-trivial@archiver.kernel.org>; Fri, 17 Oct 2025 14:13:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B313CCD195
+	for <qemu-trivial@archiver.kernel.org>; Fri, 17 Oct 2025 14:14:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1v9lCU-0004dU-S8; Fri, 17 Oct 2025 10:12:58 -0400
+	id 1v9lCu-0004t7-AG; Fri, 17 Oct 2025 10:13:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1v9lCT-0004cf-8v
- for qemu-trivial@nongnu.org; Fri, 17 Oct 2025 10:12:57 -0400
-Received: from mail-wm1-x32d.google.com ([2a00:1450:4864:20::32d])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1v9lCs-0004ri-C9
+ for qemu-trivial@nongnu.org; Fri, 17 Oct 2025 10:13:22 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1v9lCM-0005f9-Dw
- for qemu-trivial@nongnu.org; Fri, 17 Oct 2025 10:12:56 -0400
-Received: by mail-wm1-x32d.google.com with SMTP id
- 5b1f17b1804b1-47112a73785so14863325e9.3
- for <qemu-trivial@nongnu.org>; Fri, 17 Oct 2025 07:12:48 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1v9lCV-0005kf-PI
+ for qemu-trivial@nongnu.org; Fri, 17 Oct 2025 10:13:22 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-46fc5e54cceso15079525e9.0
+ for <qemu-trivial@nongnu.org>; Fri, 17 Oct 2025 07:12:59 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1760710366; x=1761315166; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1760710378; x=1761315178; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=CFuBYoXthwAAHQXYSal9xNPgZEHCC/OlTSTKqa/XfA4=;
- b=HBe/Q+M+FQqmcb19I6gB6NwtH0UfyQyIUB8Anp5N0O43ChilinCZGfdevtC3np6x6S
- BVyj4YlFL459Lk66CQ90szBu4J6ZBWxMdGMAgD0TPZrcSZqOwY6102qdLBaoD9KSONGc
- puEcoDN75mcguzhZhebEu41Nz3N83lKfGg+7LwgynXxRB4Z3vTXINzFIG6h0v0phiBui
- glGkSC7GLLBZ+efc3zPuRk9YVVpcLlHVIIbnIHfGgHzkBr0Cvv/xB5NmvZibDhcY9ueR
- VDmSkMQHi+WwqSek1s2Kzny0Y4HpgY8TWJNOXiVmemBB0G0VB/EsaH8hCGWXDfrkp5R2
- Gz9Q==
+ bh=oQnslZlvL/ycghWXR/jv6T9Aq0fKGJTc5vHN36t+VJw=;
+ b=c5wykiyxzSpjQNSSy0pfMlC5KU3GMx4FO7WU5+prJpQOVbxKR8Y5A9pAab2pGNh89J
+ /p0XcqyCepHtAKFzvMKAHUBPsuffd2C5GIeTmlGK+0Ygcjqg4UUto4Y50fXf8ShKaTIo
+ x220rd/v8DSwE1b3hgjUwbsyJ+CxxJx2jcbr5ns6Mc04KAdtFCICrt/TLDTezsoPB1Fk
+ 7fv23mcxxqtdQvv9pSCtsQATU1WAoHBuDI1iBXh2fWoj4nYc0SrOK26Vwaw1hlLPZjzL
+ XI0DyKgD+o/SBPyuGu2GIzFJemIEYtqJQ9bmHt8Emfy6z083ijYdziP4M98kBCsdnrpj
+ ChXw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760710366; x=1761315166;
+ d=1e100.net; s=20230601; t=1760710378; x=1761315178;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=CFuBYoXthwAAHQXYSal9xNPgZEHCC/OlTSTKqa/XfA4=;
- b=eFeOHZvY1iCnAdNjGnAuApfVLqFb5Hyeg5PBo6TmIxhQQPZ5MFy+0q5+DkU2ZdjZfr
- viIusQ5LsVttKoeFfz2OI6/nhY4aH73BdGllkwoRPZKsHNa+FZLNhG7yjYzp7QZl5fL5
- Bsxi/vmdoSxrMtuGCwp+fIJK7qU3JEQa6Q+wKbSwy/tFWsNXh31i4459NuGwnuI2p+iM
- C0gkfPFy8YjxegAlEhZqD+TADaMoUM3NqLcjPOUXHW7WFr9sUIzNvO6si56Suaj7hEse
- g+2jZUnRNl+VnKgkF6IXbpzMrDdC5eqyBOngiWkSeR3QHjF1gql7eYY1MMY1ebCHVjs/
- re/Q==
+ bh=oQnslZlvL/ycghWXR/jv6T9Aq0fKGJTc5vHN36t+VJw=;
+ b=eGHvAp92Runmp3jOX+7TFL7rWcMcjBdpfPN10me+PlhztZ/BEGyzLE6hDz8frwAb8G
+ UBblWIAeAf+q8W6X5BfIPoSdUccN2ie29B5Afk9IXaJg5t8A3DlfyI0dH1uMeqOe+CSM
+ Ndv4kUnTSxSnYIHwVtQVjhtNGObf/b38tSjcJ8LAJ+b1yCRqBbX4hpVJvXEhZyqLdtPe
+ STRJOD+LnEcHStUPFwLYKUfARtfYy9Jrkg0njoAatt7P5AXmDLp932VqzpBkuKRX9g4h
+ DIr4bYST5AOfLk8NLPd1CAIPX3X7gm5ebt7Y/9mqHUYXdcMXABKVKC7pZhjcjqrGLpkO
+ 3qOg==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVvq3LQEH0r6eIUJHaKLS4G5I0tlugv2f7mMH8QrFbVSQUNIkfCGIGgJX57aLbPiEk/8MTJDjSWU28C5EM=@nongnu.org
-X-Gm-Message-State: AOJu0Yx+0xL7GDalFVy+YvhSR3fOjBK5cyNx79WEOaUo9v/k3SITEFy0
- CMvtW6duQWtChpDeZbd/Kbl3vg9dxmuFiLHRed9IvhNabkynYDS/DjeV
-X-Gm-Gg: ASbGncslVTrIomts2+1KB/5kDvJKpGBgSSn+pu40xZB671VDaYRKlwNK0dntycXs7yU
- 4nrkPn4OvfbjqJkTdaiYj3oMovITR4dy47cYry/ZOI0NC39CQfFo7AA3lw2poFthn1a3By0gGRo
- Gf2ASTIjSZhHBOpxNYDwDntMVsBcPA2CPqrxe6l+6qNJafeQ/ZduXCzTl/u3DzBJEYgbS72k28C
- WOMU1YamUg9nr89r7Tt0y7bnETV7DNAh9UXXdOBEUgNlg/C2dGPJ+Eb5Nz2/wNh2m22lHdc3dg+
- gBESGYovC7A2ERGTir+KmoJ7s6NnzrLrx8ChER8IYJk1gOQLTxRkWt0oiVdZ/wHhJ7pmGqcxoz5
- iaIXYur11iPCDhFG2SmeOKLpdn++ppB5EoPH8JLHHhgGKXYpWYuoqInwu1Qpy5RD5ydA0WYK+47
- 3v2Q3cRRtXmqyuSDba8yp/0iVfKLVGKv2m
-X-Google-Smtp-Source: AGHT+IGHj5C2eusACsFwArx+C7dtue7Nn7sN6TxgdAb/eWFrYxY0hNIfyjFi65Oo95iq3W/yO2xXEg==
-X-Received: by 2002:a05:6000:1865:b0:425:8bd2:24de with SMTP id
- ffacd0b85a97d-42704d145c9mr2514261f8f.9.1760710365572; 
- Fri, 17 Oct 2025 07:12:45 -0700 (PDT)
+ AJvYcCXfrc7+XbAewXUukjmVW/AGf3Y/LfTWS+jQ3HciWQN5Sf2jBDZD8SamlYUCIWXsfwQxIfFw90VeoeNfJmU=@nongnu.org
+X-Gm-Message-State: AOJu0Yz8P1Nt/PG0LE/vq/5xX0K5Ae3svCLgP275/Q4C0S3Cb/qpO/z2
+ yDdDusuio07EcoMPeEV/By0bfIvOYaYfZ6Skmzmtqmt0BVU2QU8IJZy8
+X-Gm-Gg: ASbGncv7LRxa0s1eQDBOECuRwc7s3ODuKxmSqT3Ipobut9ORbwu1aHeGMBsVMdqVd7j
+ vof5ujGCV/tOAeAN/92Gd9h3gUM6M21ARUf2FUWJXMG+aSozJGl2FH7C8Rz2iBdZGcJ2V1NTLcd
+ 4k2goMoWUW0a6H0DrQsSeES2DYC7k9h+P6KbqH79NcLs4s7ZfoqZu3/BL0BG3Jihr/jJMB4vTyN
+ 7c9IvkN+5TRXl2gK04cG5mIYHHf1ckH+45u9vJjuCYIG38YNB4fRV34guWgalEuakFbV+bqPn/a
+ zi2pwYo+sDmaOyEUG5l1hQAPpU11BHSIF2MCcnn+VYdbIS/21lYgztC3AmRWfbSht8GgL5GRpkZ
+ h4KyuOF41bpzqY97msyUJtFxslJ1zm33xyRRBcRlfgbwHskYXHTu4/r2+e4z+AmsgxiRi0hWtQZ
+ F+8b4IKihl45F94EfHveM/CaLASIgH8v4v
+X-Google-Smtp-Source: AGHT+IE3VdA3wZK4Q+OXcjfSwZbSfpo04I9zXOgWlNizZyarmBkO2VPXkxj5kadJ9tYwUN2d2fgUFA==
+X-Received: by 2002:a05:600c:37c7:b0:471:12ef:84be with SMTP id
+ 5b1f17b1804b1-47117900c2dmr26449135e9.22.1760710377632; 
+ Fri, 17 Oct 2025 07:12:57 -0700 (PDT)
 Received: from archlinux (pd95edc07.dip0.t-ipconnect.de. [217.94.220.7])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4710cb36e7csm51359675e9.2.2025.10.17.07.12.44
+ 5b1f17b1804b1-4710cb36e7csm51359675e9.2.2025.10.17.07.12.56
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Fri, 17 Oct 2025 07:12:45 -0700 (PDT)
+ Fri, 17 Oct 2025 07:12:57 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Roman Bolshakov <rbolshakov@ddn.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -80,23 +80,23 @@ Cc: Roman Bolshakov <rbolshakov@ddn.com>, Laurent Vivier <laurent@vivier.eu>,
  Phil Dennis-Jordan <phil@philjordan.eu>, Michael Tokarev <mjt@tls.msk.ru>,
  John Snow <jsnow@redhat.com>, kvm@vger.kernel.org,
  Laurent Vivier <lvivier@redhat.com>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v2 01/11] hw/timer/i8254: Add I/O trace events
-Date: Fri, 17 Oct 2025 16:11:07 +0200
-Message-ID: <20251017141117.105944-2-shentey@gmail.com>
+Subject: [PATCH v2 11/11] tests/qtest/ds1338-test: Reuse from_bcd()
+Date: Fri, 17 Oct 2025 16:11:17 +0200
+Message-ID: <20251017141117.105944-12-shentey@gmail.com>
 X-Mailer: git-send-email 2.51.1.dirty
 In-Reply-To: <20251017141117.105944-1-shentey@gmail.com>
 References: <20251017141117.105944-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::32d;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32d.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x333.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,60 +112,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Allows to see how the guest interacts with the device.
+from_bcd() is a public API function which can be unit-tested. Reuse it to avoid
+code duplication.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/timer/i8254.c      | 6 ++++++
- hw/timer/trace-events | 4 ++++
- 2 files changed, 10 insertions(+)
+ tests/qtest/ds1338-test.c | 12 ++++--------
+ 1 file changed, 4 insertions(+), 8 deletions(-)
 
-diff --git a/hw/timer/i8254.c b/hw/timer/i8254.c
-index 4b25c487f7..7033ebf50d 100644
---- a/hw/timer/i8254.c
-+++ b/hw/timer/i8254.c
-@@ -29,6 +29,7 @@
- #include "hw/timer/i8254.h"
- #include "hw/timer/i8254_internal.h"
- #include "qom/object.h"
-+#include "trace.h"
+diff --git a/tests/qtest/ds1338-test.c b/tests/qtest/ds1338-test.c
+index d12424d27f..b8d0e65ec4 100644
+--- a/tests/qtest/ds1338-test.c
++++ b/tests/qtest/ds1338-test.c
+@@ -18,16 +18,12 @@
+  */
  
- //#define DEBUG_PIT
+ #include "qemu/osdep.h"
++#include "qemu/bcd.h"
+ #include "libqtest.h"
+ #include "libqos/i2c.h"
  
-@@ -130,6 +131,8 @@ static void pit_ioport_write(void *opaque, hwaddr addr,
-     int channel, access;
-     PITChannelState *s;
+ #define DS1338_ADDR 0x68
  
-+    trace_pit_ioport_write(addr, val);
-+
-     addr &= 3;
-     if (addr == 3) {
-         channel = val >> 6;
-@@ -248,6 +251,9 @@ static uint64_t pit_ioport_read(void *opaque, hwaddr addr,
-             break;
-         }
-     }
-+
-+    trace_pit_ioport_read(addr, ret);
-+
-     return ret;
+-static inline uint8_t bcd2bin(uint8_t x)
+-{
+-    return ((x) & 0x0f) + ((x) >> 4) * 10;
+-}
+-
+ static void send_and_receive(void *obj, void *data, QGuestAllocator *alloc)
+ {
+     QI2CDevice *i2cdev = (QI2CDevice *)obj;
+@@ -39,9 +35,9 @@ static void send_and_receive(void *obj, void *data, QGuestAllocator *alloc)
+     i2c_read_block(i2cdev, 0, resp, sizeof(resp));
+ 
+     /* check retrieved time against local time */
+-    g_assert_cmpuint(bcd2bin(resp[4]), == , tm_ptr->tm_mday);
+-    g_assert_cmpuint(bcd2bin(resp[5]), == , 1 + tm_ptr->tm_mon);
+-    g_assert_cmpuint(2000 + bcd2bin(resp[6]), == , 1900 + tm_ptr->tm_year);
++    g_assert_cmpuint(from_bcd(resp[4]), == , tm_ptr->tm_mday);
++    g_assert_cmpuint(from_bcd(resp[5]), == , 1 + tm_ptr->tm_mon);
++    g_assert_cmpuint(2000 + from_bcd(resp[6]), == , 1900 + tm_ptr->tm_year);
  }
  
-diff --git a/hw/timer/trace-events b/hw/timer/trace-events
-index c5b6db49f5..2bb51f95ea 100644
---- a/hw/timer/trace-events
-+++ b/hw/timer/trace-events
-@@ -49,6 +49,10 @@ cmsdk_apb_dualtimer_read(uint64_t offset, uint64_t data, unsigned size) "CMSDK A
- cmsdk_apb_dualtimer_write(uint64_t offset, uint64_t data, unsigned size) "CMSDK APB dualtimer write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- cmsdk_apb_dualtimer_reset(void) "CMSDK APB dualtimer: reset"
- 
-+# i8254.c
-+pit_ioport_read(uint8_t addr, uint32_t value) "[0x%" PRIx8 "] -> 0x%" PRIx32
-+pit_ioport_write(uint8_t addr, uint32_t value) "[0x%" PRIx8 "] <- 0x%" PRIx32
-+
- # imx_gpt.c
- imx_gpt_set_freq(uint32_t clksrc, uint32_t freq) "Setting clksrc %u to %u Hz"
- imx_gpt_read(const char *name, uint64_t value) "%s -> 0x%08" PRIx64
+ static void ds1338_register_nodes(void)
 -- 
 2.51.1.dirty
 
