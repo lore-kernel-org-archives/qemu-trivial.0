@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BB6F4CCD195
-	for <qemu-trivial@archiver.kernel.org>; Sun, 19 Oct 2025 21:05:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE9F0CCD195
+	for <qemu-trivial@archiver.kernel.org>; Sun, 19 Oct 2025 21:05:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vAaYx-0007ND-BS; Sun, 19 Oct 2025 17:03:35 -0400
+	id 1vAaZE-0007Uq-8d; Sun, 19 Oct 2025 17:03:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAaYu-0007Lc-K1
- for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 17:03:32 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAaZ9-0007Sj-FG
+ for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 17:03:47 -0400
+Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAaYt-0001zg-0m
- for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 17:03:32 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-63c489f1e6cso2884724a12.1
- for <qemu-trivial@nongnu.org>; Sun, 19 Oct 2025 14:03:30 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAaZ6-00022o-15
+ for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 17:03:46 -0400
+Received: by mail-ed1-x534.google.com with SMTP id
+ 4fb4d7f45d1cf-63c3d7e2217so3760249a12.3
+ for <qemu-trivial@nongnu.org>; Sun, 19 Oct 2025 14:03:42 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1760907809; x=1761512609; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1760907822; x=1761512622; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=NYtLEyH2FfideJwdnFZ4JM8eULzVedauT+XtbsfYWyM=;
- b=O/0Onks4Q5sPZH9OaKbqChVK1t1GbJh+YfETYocDRJoM6mDM+Y5AfeYIQcM4kYqHOp
- kMvpujLQ1xYcrHGu34QOxCbpX4FvKkDx3bn/S50NEdrUqcMwAwYpyhMRv9BpSaLuKNni
- Gn5ftRLpCW25uLsevXMyE3zD2ACKRlkkZhRtJ3q/qeO6JVz2QuSlB6RAGHE0ErXRnfSl
- s2vO2ykgjPnhbrylX1+hphxEIll0QIRv1TNpmQL6VSCzON4nMIhcELJB1Aosnbekc7Iy
- fLKp7lRAHIYi+S88OS+8ojv/1hMXXoHFsEbePCorSEAZ7pJScAox5Xe5S134sJzaO5Or
- HVzA==
+ bh=4M6OPI3ZScUV1Z3V9YEwq0Mmh3V3HGR6RP7L9+iqOHI=;
+ b=RGBiyAzeh+I2fwE7FLEQTcgph2CwfsHeVVXBgGZGDaetEaKBUwkBdareYLl6JjyZ/G
+ itN9CfOud8S4vHcf1FJTq7KsdenzG9iy0viTWE7OM58yuKKLdAjn5wvpSG32vVu1l7PJ
+ ZPmNlgLp3i9G7NaTOMvC6XLdM0+r+NxyMtBtK9hl1utBGynTT+ylEw2x5hXMm+IFjdo9
+ bmnSTI2TnbOCduSH/Y/OiWM6apGDf85TUqBWP+4A5TPIshbRY+aqbK0kxzY6P5tAXjyX
+ 1W3hdCuALwuk0FoG7HwJLOPjbcmwIzHRQ35keFkGbqGbpE7lz8dMQYjF5rm+t5AgiHsN
+ 0+fQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760907809; x=1761512609;
+ d=1e100.net; s=20230601; t=1760907822; x=1761512622;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=NYtLEyH2FfideJwdnFZ4JM8eULzVedauT+XtbsfYWyM=;
- b=fHxCapRNlgFflh+RiaaabKOmZ4+dFDQv46HTonSC7a2Q7cSdYOaebRPTbkb05Z58UH
- hV7H9PNSMpSXTf+7oUsqTFO9P7fhumILgyfHwtmVPdkcxmhEVhoZmnwGpp2hka+IWI9z
- EmSc3JHIH3kjWOdylTX6bsbQxKI5YnKUDyg4XFwUoCqGNMrw0xn8PuTz7CPV6KtqNFIv
- +CJDPiwTY6tbLj+EWeJ2Vai4XVVYekXSbn9HF0P0PIiuZQA3tmLIfNZgm4qNjoGoJF8l
- lC2DmRf0x+bQCkiRMvilGgjaVKwqp4V945KFXAAUF3m5t8JPlCmZGb0xoCCB+eZcjto4
- 5dtg==
+ bh=4M6OPI3ZScUV1Z3V9YEwq0Mmh3V3HGR6RP7L9+iqOHI=;
+ b=IAWtSJ2o6OQJVCrzrzMW2Bgm9T38CJirHyiSm/lOR1FwmDj0DNcnVDTKZq7Z01r0j5
+ tztNyvROW/rxvJ05NExgmpQCnqAnOyHalPAqGQ0ZxynJNCrm+x7bljeflVP94Rc7uzoG
+ vJepVHXpOr8Dixab1vm3euOvMXb2ccDXcP/Am9dzc5G4pBRHoiB6yNaxQvWrdVbRlPGX
+ ruiunu0mpBxIEBeggxIRRlOqYDF2hOGCK/ssPZKjDLbFTCkkPgCV9d1R6mohgua4+ezB
+ dhmNy3gVXFhTglNRmNNC+FooR7+WbPmzyAxeLKeYhTJYUlBx8E7fz5B8/IZD3BLXlQC4
+ AGMQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUjl4gbLajxakmMVuPDdllbz1d6Q/FwYWEyH0xueCLkW18SR7FY1IPT6yN9i9KtSyYb1GoR7Jw+pnokTIQ=@nongnu.org
-X-Gm-Message-State: AOJu0YwyLHsHw3fwvgzbVYAVztAR7xcI55zcijfHOF0++Dq9oGPYzHrE
- Y2HLUA7mDhnQwTROdnq4nnLnYCsCnb1EMNqrg6M6xyZVWSldUucjUDmw
-X-Gm-Gg: ASbGncvm1UUakVKEf3GI84iEVfWwpc0Ahs7ePzXRbm+Cpm/va79DKG2i4ueB2S7CxbE
- j7ff2SG/xPfv2/v8Ru0l25W4clS7zzjoybvqY7OaFXZAKQUmeBVJQ2YF8uBkYENehM9o0SeI6gJ
- XxGnyCZAT1LM7nVUlgyVWkle9vV5sipisJ1uo+REsarG0+yOqyzBT944UsZwzN/oDWmG/dnz9bG
- MVArZ+YfWPLRk2cpM1o8aMgoQviXt/vQ/JpuervXy7Mps6pTgd2QUyvSXDpRATK4svdDE1Zvl4g
- WptHcJVmFb3v64FdE5m8b242IXZkc8s3EVZ46xLbvz5DaH7VH3+AvBZbHkiEQ+KDKzRa3baxhv0
- TPb6W1jdjpXsnMCLfJVGxtsKwehLTO0y6Zktjh0f0dtYEauL2v+ZsioOIXog1AdgVqGkaTPcRh+
- ulJ5ZqEoCEPRnuxkNHLFU7xD9HfodSEeHWDVfd3dvzuanXXu5XRYF3i8VN7g==
-X-Google-Smtp-Source: AGHT+IGYnIE2LGluxdoaFLFcoZghgUMjydsnhpN1IFNQiDdS64MjZIRWB4CUyErfVctu0dYes/zOGQ==
-X-Received: by 2002:aa7:d1c4:0:b0:633:14bb:dcb1 with SMTP id
- 4fb4d7f45d1cf-63bfde71dc3mr10725278a12.11.1760907809154; 
- Sun, 19 Oct 2025 14:03:29 -0700 (PDT)
+ AJvYcCVweF4AWArT+PbWM74EfqA+4ZcYu2e6AD0hes+qwSOtu7WJ1moPihO05iL5g163RRMoxXlDY21TT3KFpGE=@nongnu.org
+X-Gm-Message-State: AOJu0YxPTfAseIV5r4eRhWeAEmO7NGsVCERVQj1s83rYiKbaoC0YgdTB
+ k/et6+SUNjKYueUSM66gRxN6+UK4yahQveco1EwUPy/FebJo4Xvm5GbQ
+X-Gm-Gg: ASbGnct6o4L85Hn4CiaHjrTHU3yrOLiwWQAkQVB8xdV6doCQvObwz4YJfstm/KoZhTQ
+ ARgmAMEKSAKl1MiIUfZoYbV60IZXg4ZZ9LPwdi18s2e5z2fGTfoOC/RT63EQ0uGSpt4zBniHFgw
+ tmVLSYKasvmO/Lo0nZC+q66fNNiHcLbBuwKIUcbiijuJOUPQBmaNZOtmJFVdkqUCCeXGoH7qZMr
+ XKEl2wDi1FjwHdTPXW1zrEJsh3ry3Xi23G6282J8yBdgh4TbcSMv0Rbg1JMRz825MdkDO/kNz86
+ toZiUtUY3muAVN0nIvPlcf7gM2zkI6VRBtJzX3McLGbr6hngCsLTBCrS+5fMlnW8zgi2ijc9St1
+ IGJ2PfiVSWlmeDI/PwC6oGnnlpAtZuF6JjR37c0CJjmFOAXy8KFJommFaOLStN7yi36gPC7l6Pq
+ cDtHFuyz6FcHXcwPSD2+Uv99aDxy5if88fTAhQZQ663zjkUe8QsrGcEAcOUm26wNOrmo9K
+X-Google-Smtp-Source: AGHT+IGSAEruyy42RcbostlDmIvNL1l2atIU8PAtqHcOivFYyhlrRwD6QwsSK/hgSujyhUWyY/+Q2w==
+X-Received: by 2002:a05:6402:2681:b0:634:ba7e:f6c8 with SMTP id
+ 4fb4d7f45d1cf-63c1f6d5e1bmr9986226a12.34.1760907821475; 
+ Sun, 19 Oct 2025 14:03:41 -0700 (PDT)
 Received: from archlinux (dynamic-002-245-026-170.2.245.pool.telefonica.de.
  [2.245.26.170]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-63c4945f003sm5107655a12.27.2025.10.19.14.03.27
+ 4fb4d7f45d1cf-63c4945f003sm5107655a12.27.2025.10.19.14.03.39
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 19 Oct 2025 14:03:28 -0700 (PDT)
+ Sun, 19 Oct 2025 14:03:40 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
@@ -80,16 +80,17 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Fabiano Rosas <farosas@suse.de>, Gerd Hoffmann <kraxel@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>,
  Marcelo Tosatti <mtosatti@redhat.com>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v3 02/10] hw/audio/pcspk: Add I/O trace events
-Date: Sun, 19 Oct 2025 23:02:55 +0200
-Message-ID: <20251019210303.104718-3-shentey@gmail.com>
+Subject: [PATCH v3 08/10] hw/i386/apic: Ensure own APIC use in apic_msr_{read,
+ write}
+Date: Sun, 19 Oct 2025 23:03:01 +0200
+Message-ID: <20251019210303.104718-9-shentey@gmail.com>
 X-Mailer: git-send-email 2.51.1.dirty
 In-Reply-To: <20251019210303.104718-1-shentey@gmail.com>
 References: <20251019210303.104718-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x536.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::534;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x534.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,70 +113,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Allows to see how the guest interacts with the device.
+Avoids the `current_cpu` global and seems more robust by not "forgetting" the
+own APIC and then re-determining it by cpu_get_current_apic() which uses the
+global.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/audio/pcspk.c      | 10 +++++++++-
- hw/audio/trace-events |  4 ++++
- 2 files changed, 13 insertions(+), 1 deletion(-)
+ include/hw/i386/apic.h               |  4 ++--
+ hw/intc/apic.c                       | 10 ++--------
+ target/i386/hvf/hvf.c                |  4 ++--
+ target/i386/tcg/system/misc_helper.c |  4 ++--
+ 4 files changed, 8 insertions(+), 14 deletions(-)
 
-diff --git a/hw/audio/pcspk.c b/hw/audio/pcspk.c
-index a419161b5b..f8020593b0 100644
---- a/hw/audio/pcspk.c
-+++ b/hw/audio/pcspk.c
-@@ -34,6 +34,7 @@
- #include "hw/audio/pcspk.h"
- #include "qapi/error.h"
- #include "qom/object.h"
-+#include "trace.h"
+diff --git a/include/hw/i386/apic.h b/include/hw/i386/apic.h
+index 871f142888..6a0933f401 100644
+--- a/include/hw/i386/apic.h
++++ b/include/hw/i386/apic.h
+@@ -19,8 +19,8 @@ void apic_sipi(APICCommonState *s);
+ void apic_poll_irq(APICCommonState *s);
+ void apic_designate_bsp(APICCommonState *s, bool bsp);
+ int apic_get_highest_priority_irr(APICCommonState *s);
+-int apic_msr_read(int index, uint64_t *val);
+-int apic_msr_write(int index, uint64_t val);
++int apic_msr_read(APICCommonState *s, int index, uint64_t *val);
++int apic_msr_write(APICCommonState *s, int index, uint64_t val);
+ bool is_x2apic_mode(APICCommonState *s);
  
- #define PCSPK_BUF_LEN 1792
- #define PCSPK_SAMPLE_RATE 32000
-@@ -137,13 +138,18 @@ static uint64_t pcspk_io_read(void *opaque, hwaddr addr,
- {
-     PCSpkState *s = opaque;
-     PITChannelInfo ch;
-+    uint8_t val;
- 
-     pit_get_channel_info(s->pit, 2, &ch);
- 
-     s->dummy_refresh_clock ^= (1 << 4);
- 
--    return ch.gate | (s->data_on << 1) | s->dummy_refresh_clock |
-+    val = ch.gate | (s->data_on << 1) | s->dummy_refresh_clock |
-        (ch.out << 5);
-+
-+    trace_pcspk_io_read(s->iobase, val);
-+
-+    return val;
+ /* pc.c */
+diff --git a/hw/intc/apic.c b/hw/intc/apic.c
+index cb35c80c75..ba0eda3921 100644
+--- a/hw/intc/apic.c
++++ b/hw/intc/apic.c
+@@ -881,11 +881,8 @@ static uint64_t apic_mem_read(void *opaque, hwaddr addr, unsigned size)
+     return val;
  }
  
- static void pcspk_io_write(void *opaque, hwaddr addr, uint64_t val,
-@@ -152,6 +158,8 @@ static void pcspk_io_write(void *opaque, hwaddr addr, uint64_t val,
-     PCSpkState *s = opaque;
-     const int gate = val & 1;
+-int apic_msr_read(int index, uint64_t *val)
++int apic_msr_read(APICCommonState *s, int index, uint64_t *val)
+ {
+-    APICCommonState *s;
+-
+-    s = cpu_get_current_apic();
+     if (!s) {
+         return -1;
+     }
+@@ -1079,11 +1076,8 @@ static void apic_mem_write(void *opaque, hwaddr addr, uint64_t val,
+     apic_register_write(index, val);
+ }
  
-+    trace_pcspk_io_write(s->iobase, val);
-+
-     s->data_on = (val >> 1) & 1;
-     pit_set_gate(s->pit, 2, gate);
-     if (s->voice) {
-diff --git a/hw/audio/trace-events b/hw/audio/trace-events
-index b8ef572767..30f5921545 100644
---- a/hw/audio/trace-events
-+++ b/hw/audio/trace-events
-@@ -23,6 +23,10 @@ hda_audio_format(const char *stream, int chan, const char *fmt, int freq) "st %s
- hda_audio_adjust(const char *stream, int pos) "st %s, pos %d"
- hda_audio_overrun(const char *stream) "st %s"
+-int apic_msr_write(int index, uint64_t val)
++int apic_msr_write(APICCommonState *s, int index, uint64_t val)
+ {
+-    APICCommonState *s;
+-
+-    s = cpu_get_current_apic();
+     if (!s) {
+         return -1;
+     }
+diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
+index 8445cadece..33f723a76a 100644
+--- a/target/i386/hvf/hvf.c
++++ b/target/i386/hvf/hvf.c
+@@ -527,7 +527,7 @@ void hvf_simulate_rdmsr(CPUState *cs)
+         int ret;
+         int index = (uint32_t)env->regs[R_ECX] - MSR_APIC_START;
  
-+# pcspk.c
-+pcspk_io_read(uint16_t addr, uint8_t val) "[0x%"PRIx16"] -> 0x%"PRIx8
-+pcspk_io_write(uint16_t addr, uint8_t val) "[0x%"PRIx16"] <- 0x%"PRIx8
-+
- #via-ac97.c
- via_ac97_codec_write(uint8_t addr, uint16_t val) "0x%x <- 0x%x"
- via_ac97_sgd_fetch(uint32_t curr, uint32_t addr, char stop, char eol, char flag, uint32_t len) "curr=0x%x addr=0x%x %c%c%c len=%d"
+-        ret = apic_msr_read(index, &val);
++        ret = apic_msr_read(cpu->apic_state, index, &val);
+         if (ret < 0) {
+             x86_emul_raise_exception(env, EXCP0D_GPF, 0);
+         }
+@@ -638,7 +638,7 @@ void hvf_simulate_wrmsr(CPUState *cs)
+         int ret;
+         int index = (uint32_t)env->regs[R_ECX] - MSR_APIC_START;
+ 
+-        ret = apic_msr_write(index, data);
++        ret = apic_msr_write(cpu->apic_state, index, data);
+         if (ret < 0) {
+             x86_emul_raise_exception(env, EXCP0D_GPF, 0);
+         }
+diff --git a/target/i386/tcg/system/misc_helper.c b/target/i386/tcg/system/misc_helper.c
+index 9c3f5cc99b..0c32424d36 100644
+--- a/target/i386/tcg/system/misc_helper.c
++++ b/target/i386/tcg/system/misc_helper.c
+@@ -299,7 +299,7 @@ void helper_wrmsr(CPUX86State *env)
+         int index = (uint32_t)env->regs[R_ECX] - MSR_APIC_START;
+ 
+         bql_lock();
+-        ret = apic_msr_write(index, val);
++        ret = apic_msr_write(env_archcpu(env)->apic_state, index, val);
+         bql_unlock();
+         if (ret < 0) {
+             goto error;
+@@ -477,7 +477,7 @@ void helper_rdmsr(CPUX86State *env)
+         int index = (uint32_t)env->regs[R_ECX] - MSR_APIC_START;
+ 
+         bql_lock();
+-        ret = apic_msr_read(index, &val);
++        ret = apic_msr_read(x86_cpu->apic_state, index, &val);
+         bql_unlock();
+         if (ret < 0) {
+             raise_exception_err_ra(env, EXCP0D_GPF, 0, GETPC());
 -- 
 2.51.1.dirty
 
