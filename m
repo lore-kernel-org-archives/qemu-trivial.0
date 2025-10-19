@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CE9F0CCD195
-	for <qemu-trivial@archiver.kernel.org>; Sun, 19 Oct 2025 21:05:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D34ABCCD195
+	for <qemu-trivial@archiver.kernel.org>; Sun, 19 Oct 2025 21:05:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vAaZE-0007Uq-8d; Sun, 19 Oct 2025 17:03:52 -0400
+	id 1vAaZ3-0007RL-GF; Sun, 19 Oct 2025 17:03:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAaZ9-0007Sj-FG
- for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 17:03:47 -0400
-Received: from mail-ed1-x534.google.com ([2a00:1450:4864:20::534])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAaZ0-0007P1-NH
+ for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 17:03:39 -0400
+Received: from mail-ej1-x62a.google.com ([2a00:1450:4864:20::62a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAaZ6-00022o-15
- for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 17:03:46 -0400
-Received: by mail-ed1-x534.google.com with SMTP id
- 4fb4d7f45d1cf-63c3d7e2217so3760249a12.3
- for <qemu-trivial@nongnu.org>; Sun, 19 Oct 2025 14:03:42 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAaYy-00021I-9m
+ for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 17:03:37 -0400
+Received: by mail-ej1-x62a.google.com with SMTP id
+ a640c23a62f3a-b3f5e0e2bf7so737377066b.3
+ for <qemu-trivial@nongnu.org>; Sun, 19 Oct 2025 14:03:35 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1760907822; x=1761512622; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1760907815; x=1761512615; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=4M6OPI3ZScUV1Z3V9YEwq0Mmh3V3HGR6RP7L9+iqOHI=;
- b=RGBiyAzeh+I2fwE7FLEQTcgph2CwfsHeVVXBgGZGDaetEaKBUwkBdareYLl6JjyZ/G
- itN9CfOud8S4vHcf1FJTq7KsdenzG9iy0viTWE7OM58yuKKLdAjn5wvpSG32vVu1l7PJ
- ZPmNlgLp3i9G7NaTOMvC6XLdM0+r+NxyMtBtK9hl1utBGynTT+ylEw2x5hXMm+IFjdo9
- bmnSTI2TnbOCduSH/Y/OiWM6apGDf85TUqBWP+4A5TPIshbRY+aqbK0kxzY6P5tAXjyX
- 1W3hdCuALwuk0FoG7HwJLOPjbcmwIzHRQ35keFkGbqGbpE7lz8dMQYjF5rm+t5AgiHsN
- 0+fQ==
+ bh=WqDslS9NKjHnUWYR3Oq3CSi9/FfiBOz9NHEnZxcZS80=;
+ b=JdT50y4pTYhg+g9mxUO+Gozw1kBVM91ffYWoztdmf3OF5EOOVIwAAhdVGw7nXq3VRq
+ +ved9IA+EX39WIZBOITN9Rz52QSPsdFe7EKvtZH591CYtPNskX3Z+ojApxLVdvsPXXb/
+ I3pCTNWnMlLwpHBZLOItgmWoMn1xQDMh0EliU2m2oAY2OVlXgRk1NBbrYsZKFnzlKnk2
+ /F+08VhMwVSB0Um9GJ95pcVj70eqsDTrxA/E84Cwp7Bjnal/SWeFoAhT4GafuvszG2LE
+ RLIOcl92c67pxcj1AT4wI7Fmb82M4quQRtrE6KRaXRuxj984G2edFLxkEQvLRJrTcyYT
+ edPQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760907822; x=1761512622;
+ d=1e100.net; s=20230601; t=1760907815; x=1761512615;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=4M6OPI3ZScUV1Z3V9YEwq0Mmh3V3HGR6RP7L9+iqOHI=;
- b=IAWtSJ2o6OQJVCrzrzMW2Bgm9T38CJirHyiSm/lOR1FwmDj0DNcnVDTKZq7Z01r0j5
- tztNyvROW/rxvJ05NExgmpQCnqAnOyHalPAqGQ0ZxynJNCrm+x7bljeflVP94Rc7uzoG
- vJepVHXpOr8Dixab1vm3euOvMXb2ccDXcP/Am9dzc5G4pBRHoiB6yNaxQvWrdVbRlPGX
- ruiunu0mpBxIEBeggxIRRlOqYDF2hOGCK/ssPZKjDLbFTCkkPgCV9d1R6mohgua4+ezB
- dhmNy3gVXFhTglNRmNNC+FooR7+WbPmzyAxeLKeYhTJYUlBx8E7fz5B8/IZD3BLXlQC4
- AGMQ==
+ bh=WqDslS9NKjHnUWYR3Oq3CSi9/FfiBOz9NHEnZxcZS80=;
+ b=jaPDAmQ4VzVWa8zW/oJhlRN+DvDfWVO7tVbNzLJTU0yS8VUVr3W1C0GKpD14n6NFrR
+ MeeBTImdSIw0Qf6njyezq+3yrd0bRu2wyalBRMl3Zw/kUyK7NQa0awlnI/yWrvQHvxUN
+ nJBu1/rPGQuxmEyyT8+aJND60GWIApIng5PpH0+UufIgL/fMx1BwcxWYTVEW8hWygduT
+ orVkIK+C8RgkJdswQzVDqRlHS6gL1P86/mwFeg5EHmlO8DGCCfJJfWSfb3NwPsLTlsUu
+ cDugA4snP1CzEwxpT/Wh14qL7cH05icfptM5kXLAUtdDNnKSTqZN49aK4V+OT9vQyZSy
+ xCEQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVweF4AWArT+PbWM74EfqA+4ZcYu2e6AD0hes+qwSOtu7WJ1moPihO05iL5g163RRMoxXlDY21TT3KFpGE=@nongnu.org
-X-Gm-Message-State: AOJu0YxPTfAseIV5r4eRhWeAEmO7NGsVCERVQj1s83rYiKbaoC0YgdTB
- k/et6+SUNjKYueUSM66gRxN6+UK4yahQveco1EwUPy/FebJo4Xvm5GbQ
-X-Gm-Gg: ASbGnct6o4L85Hn4CiaHjrTHU3yrOLiwWQAkQVB8xdV6doCQvObwz4YJfstm/KoZhTQ
- ARgmAMEKSAKl1MiIUfZoYbV60IZXg4ZZ9LPwdi18s2e5z2fGTfoOC/RT63EQ0uGSpt4zBniHFgw
- tmVLSYKasvmO/Lo0nZC+q66fNNiHcLbBuwKIUcbiijuJOUPQBmaNZOtmJFVdkqUCCeXGoH7qZMr
- XKEl2wDi1FjwHdTPXW1zrEJsh3ry3Xi23G6282J8yBdgh4TbcSMv0Rbg1JMRz825MdkDO/kNz86
- toZiUtUY3muAVN0nIvPlcf7gM2zkI6VRBtJzX3McLGbr6hngCsLTBCrS+5fMlnW8zgi2ijc9St1
- IGJ2PfiVSWlmeDI/PwC6oGnnlpAtZuF6JjR37c0CJjmFOAXy8KFJommFaOLStN7yi36gPC7l6Pq
- cDtHFuyz6FcHXcwPSD2+Uv99aDxy5if88fTAhQZQ663zjkUe8QsrGcEAcOUm26wNOrmo9K
-X-Google-Smtp-Source: AGHT+IGSAEruyy42RcbostlDmIvNL1l2atIU8PAtqHcOivFYyhlrRwD6QwsSK/hgSujyhUWyY/+Q2w==
-X-Received: by 2002:a05:6402:2681:b0:634:ba7e:f6c8 with SMTP id
- 4fb4d7f45d1cf-63c1f6d5e1bmr9986226a12.34.1760907821475; 
- Sun, 19 Oct 2025 14:03:41 -0700 (PDT)
+ AJvYcCUMqoy100NMWTKDAEAXUwd0mPgCxdvDXVRxlVbrxDEjwOObXcdRMZ/6Vc7kJhcmHIOIQJvdeHcV3845uN8=@nongnu.org
+X-Gm-Message-State: AOJu0Yx/Ejq56YX5GnTnC3UhvPEole7c7/LUabOihgdHDerGKj2bnh+R
+ YqbwjoO58UtenncVPPMCtm3DNpoOgkwQ5bAKcWYrdaGKOzRKbWTJDzEm
+X-Gm-Gg: ASbGncvwfV3beLddi6q/P3GvRjaZsmTkV0pljdrMt/jpThRQ1POekDZJmpChxUYS7ex
+ 8lvcgOXBSVkkuTodcN/Qb7u2AfYmOfKFsF3QqcxHEdff9LbsKnRzhxEWyIRmLWqRW16gphsuAwD
+ vaC6AFpvu2elwu//Z70UO6/QywpWHQIZS5gQka+hq7TKupdXv82WJDoqdpywOa6ZutsGX2QINOq
+ UUJCZRXKtaMOtc93Sx9llOdy2zhrv8xa1u31ELgcIl41PsAl3ARQBWzJtn5kSkJH8Lpx7QaACbh
+ knPvqDDHNyYug1jU8YjYTffFob2YWTMw+xvj0+B/K/a5FJGpd4aoPXC6wMaZNQtTbiR2e7UhwJg
+ h735qWm6mijirW73XRqNKuOuqc2Ak9guTJXlL9KgmTNRgjQvsSj1gimV2/GmSIEQGzcUyjWo2F/
+ a/hCkUDnrgpL4lRx0zLSm2jsScg5kO8Ort4Z6SMyel+t67J5tMidquG2FF4v9UXj7w5z/q
+X-Google-Smtp-Source: AGHT+IGPfPy34v/udZLQXvm5jDIXrAZ61l/oD9nGQpnV8TbdI46dqjRmVUAcVk/yLDzjHgyLvbFqIQ==
+X-Received: by 2002:a17:907:728c:b0:b57:5353:1032 with SMTP id
+ a640c23a62f3a-b6472b5fab6mr1140469866b.5.1760907814623; 
+ Sun, 19 Oct 2025 14:03:34 -0700 (PDT)
 Received: from archlinux (dynamic-002-245-026-170.2.245.pool.telefonica.de.
  [2.245.26.170]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-63c4945f003sm5107655a12.27.2025.10.19.14.03.39
+ 4fb4d7f45d1cf-63c4945f003sm5107655a12.27.2025.10.19.14.03.33
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 19 Oct 2025 14:03:40 -0700 (PDT)
+ Sun, 19 Oct 2025 14:03:34 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
@@ -80,24 +80,24 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Fabiano Rosas <farosas@suse.de>, Gerd Hoffmann <kraxel@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>,
  Marcelo Tosatti <mtosatti@redhat.com>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v3 08/10] hw/i386/apic: Ensure own APIC use in apic_msr_{read,
- write}
-Date: Sun, 19 Oct 2025 23:03:01 +0200
-Message-ID: <20251019210303.104718-9-shentey@gmail.com>
+Subject: [PATCH v3 05/10] hw/rtc/mc146818rtc: Assert correct usage of
+ mc146818rtc_set_cmos_data()
+Date: Sun, 19 Oct 2025 23:02:58 +0200
+Message-ID: <20251019210303.104718-6-shentey@gmail.com>
 X-Mailer: git-send-email 2.51.1.dirty
 In-Reply-To: <20251019210303.104718-1-shentey@gmail.com>
 References: <20251019210303.104718-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::534;
- envelope-from=shentey@gmail.com; helo=mail-ed1-x534.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::62a;
+ envelope-from=shentey@gmail.com; helo=mail-ej1-x62a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,107 +113,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Avoids the `current_cpu` global and seems more robust by not "forgetting" the
-own APIC and then re-determining it by cpu_get_current_apic() which uses the
-global.
+The offset is never controlled by the guest, so any misuse constitutes a
+programming error and shouldn't be silently ignored. Fix this by using assert().
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- include/hw/i386/apic.h               |  4 ++--
- hw/intc/apic.c                       | 10 ++--------
- target/i386/hvf/hvf.c                |  4 ++--
- target/i386/tcg/system/misc_helper.c |  4 ++--
- 4 files changed, 8 insertions(+), 14 deletions(-)
+ hw/rtc/mc146818rtc.c | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/include/hw/i386/apic.h b/include/hw/i386/apic.h
-index 871f142888..6a0933f401 100644
---- a/include/hw/i386/apic.h
-+++ b/include/hw/i386/apic.h
-@@ -19,8 +19,8 @@ void apic_sipi(APICCommonState *s);
- void apic_poll_irq(APICCommonState *s);
- void apic_designate_bsp(APICCommonState *s, bool bsp);
- int apic_get_highest_priority_irr(APICCommonState *s);
--int apic_msr_read(int index, uint64_t *val);
--int apic_msr_write(int index, uint64_t val);
-+int apic_msr_read(APICCommonState *s, int index, uint64_t *val);
-+int apic_msr_write(APICCommonState *s, int index, uint64_t val);
- bool is_x2apic_mode(APICCommonState *s);
+diff --git a/hw/rtc/mc146818rtc.c b/hw/rtc/mc146818rtc.c
+index 5a89062b4c..8631386b9f 100644
+--- a/hw/rtc/mc146818rtc.c
++++ b/hw/rtc/mc146818rtc.c
+@@ -726,9 +726,8 @@ static uint64_t cmos_ioport_read(void *opaque, hwaddr addr,
  
- /* pc.c */
-diff --git a/hw/intc/apic.c b/hw/intc/apic.c
-index cb35c80c75..ba0eda3921 100644
---- a/hw/intc/apic.c
-+++ b/hw/intc/apic.c
-@@ -881,11 +881,8 @@ static uint64_t apic_mem_read(void *opaque, hwaddr addr, unsigned size)
-     return val;
+ void mc146818rtc_set_cmos_data(MC146818RtcState *s, int addr, int val)
+ {
+-    if (addr >= 0 && addr < ARRAY_SIZE(s->cmos_data)) {
+-        s->cmos_data[addr] = val;
+-    }
++    assert(addr >= 0 && addr < ARRAY_SIZE(s->cmos_data));
++    s->cmos_data[addr] = val;
  }
  
--int apic_msr_read(int index, uint64_t *val)
-+int apic_msr_read(APICCommonState *s, int index, uint64_t *val)
- {
--    APICCommonState *s;
--
--    s = cpu_get_current_apic();
-     if (!s) {
-         return -1;
-     }
-@@ -1079,11 +1076,8 @@ static void apic_mem_write(void *opaque, hwaddr addr, uint64_t val,
-     apic_register_write(index, val);
- }
- 
--int apic_msr_write(int index, uint64_t val)
-+int apic_msr_write(APICCommonState *s, int index, uint64_t val)
- {
--    APICCommonState *s;
--
--    s = cpu_get_current_apic();
-     if (!s) {
-         return -1;
-     }
-diff --git a/target/i386/hvf/hvf.c b/target/i386/hvf/hvf.c
-index 8445cadece..33f723a76a 100644
---- a/target/i386/hvf/hvf.c
-+++ b/target/i386/hvf/hvf.c
-@@ -527,7 +527,7 @@ void hvf_simulate_rdmsr(CPUState *cs)
-         int ret;
-         int index = (uint32_t)env->regs[R_ECX] - MSR_APIC_START;
- 
--        ret = apic_msr_read(index, &val);
-+        ret = apic_msr_read(cpu->apic_state, index, &val);
-         if (ret < 0) {
-             x86_emul_raise_exception(env, EXCP0D_GPF, 0);
-         }
-@@ -638,7 +638,7 @@ void hvf_simulate_wrmsr(CPUState *cs)
-         int ret;
-         int index = (uint32_t)env->regs[R_ECX] - MSR_APIC_START;
- 
--        ret = apic_msr_write(index, data);
-+        ret = apic_msr_write(cpu->apic_state, index, data);
-         if (ret < 0) {
-             x86_emul_raise_exception(env, EXCP0D_GPF, 0);
-         }
-diff --git a/target/i386/tcg/system/misc_helper.c b/target/i386/tcg/system/misc_helper.c
-index 9c3f5cc99b..0c32424d36 100644
---- a/target/i386/tcg/system/misc_helper.c
-+++ b/target/i386/tcg/system/misc_helper.c
-@@ -299,7 +299,7 @@ void helper_wrmsr(CPUX86State *env)
-         int index = (uint32_t)env->regs[R_ECX] - MSR_APIC_START;
- 
-         bql_lock();
--        ret = apic_msr_write(index, val);
-+        ret = apic_msr_write(env_archcpu(env)->apic_state, index, val);
-         bql_unlock();
-         if (ret < 0) {
-             goto error;
-@@ -477,7 +477,7 @@ void helper_rdmsr(CPUX86State *env)
-         int index = (uint32_t)env->regs[R_ECX] - MSR_APIC_START;
- 
-         bql_lock();
--        ret = apic_msr_read(index, &val);
-+        ret = apic_msr_read(x86_cpu->apic_state, index, &val);
-         bql_unlock();
-         if (ret < 0) {
-             raise_exception_err_ra(env, EXCP0D_GPF, 0, GETPC());
+ int mc146818rtc_get_cmos_data(MC146818RtcState *s, int addr)
 -- 
 2.51.1.dirty
 
