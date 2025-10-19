@@ -4,67 +4,67 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A0EA6CCD195
-	for <qemu-trivial@archiver.kernel.org>; Sun, 19 Oct 2025 21:05:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 25CC0CCD195
+	for <qemu-trivial@archiver.kernel.org>; Sun, 19 Oct 2025 21:05:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vAaZG-0007W4-Vh; Sun, 19 Oct 2025 17:03:54 -0400
+	id 1vAaZ6-0007S6-Sq; Sun, 19 Oct 2025 17:03:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAaZF-0007V8-7r
- for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 17:03:53 -0400
-Received: from mail-ej1-x632.google.com ([2a00:1450:4864:20::632])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAaZ4-0007RO-Ax
+ for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 17:03:42 -0400
+Received: from mail-ed1-x52d.google.com ([2a00:1450:4864:20::52d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAaZB-00023i-Ki
- for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 17:03:52 -0400
-Received: by mail-ej1-x632.google.com with SMTP id
- a640c23a62f3a-b3ee18913c0so697459066b.3
- for <qemu-trivial@nongnu.org>; Sun, 19 Oct 2025 14:03:47 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAaZ0-00021q-KG
+ for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 17:03:40 -0400
+Received: by mail-ed1-x52d.google.com with SMTP id
+ 4fb4d7f45d1cf-63befe5f379so4857699a12.1
+ for <qemu-trivial@nongnu.org>; Sun, 19 Oct 2025 14:03:37 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1760907827; x=1761512627; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1760907817; x=1761512617; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=oQnslZlvL/ycghWXR/jv6T9Aq0fKGJTc5vHN36t+VJw=;
- b=LpY0szDXKHb2hGm8477/xrqtA7rDzKAFs4rNIwDeFuWjyrx+k+zxTnAKVhCU3RWxpb
- lGeAOZIA58LiORMaiSbfDp+6/QlOTjbgFw61oIvuq4zHMfkhF3Ue6ST4mD+VPFzRGwDk
- MFRWd4lYmjnQP0GmP94+cMKB1EZ63ycgnjURQ2kPcHJHq9L4BDmU/3WCtUKPbNHfdi8m
- dFYCY3iWslhUXXpz4l1LqWXL7rzih/H7hD5iZVVSO2yvw2IWQusFT9tRmu39KE6V4Pdl
- 0+pqqRnPVUUGP1un3UL2Q2A58M//qrAuv8OlK/PvHOOLysuHyiQOBX+BqqnP9VSkknrQ
- Jcfg==
+ bh=BM6QgAOG34zDGb9jZI8DkkbGa1KuVCoA2kRHxsUOX8Q=;
+ b=SZv5Vr0iMObu4BhFpJxKBcIKHvlnaHn6agsoUIRZ7N4nhYHrvWjVw58B8b52CghCAF
+ SxwnHGJKygA1WZ9cumUg7PygRsypdBar8cVLaFAFWLiOiz7ik5mfj8vMcUx3aYSs8q0j
+ YUEMOzjvcDmu7spZWJpscvOhkh1bdWcmQjnr3sSY9x0gGDZfy/b45olGS7IgwvopzjYs
+ o8CDpW10IMnh4D8KlK17Vyv2r/hQUlkFVqYWaMnF4rKmxEyeUPcLW33N/Md5KE4djuRx
+ HM4uBHbdoGsLJW97bv3LxslYx/LLGw9yar2wLZmsx4xsG1uAOC8OqAue9RotQQ6AClw7
+ e/cQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760907827; x=1761512627;
+ d=1e100.net; s=20230601; t=1760907817; x=1761512617;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to;
- bh=oQnslZlvL/ycghWXR/jv6T9Aq0fKGJTc5vHN36t+VJw=;
- b=osPuwgvy2hrm8E33cdm4UUD/ky7Dz/y05DuDGfvOX5PhK0qAYeg63WWRWP2xHnaVth
- UwGLktxIHH4rvViCME38a8qV3LSdr3uH3k3iLxd9INpLx3xzm0OXx4ib3hfQx+k+C0uR
- Hh5hipEj52MwY30I1k5GtsG9J1XROK99YgryTfQn2z4y2zx4TbloSOBhOOw/8a1qxVmM
- ZL4pP9kkG7Lk67T6D52CSC1o8GHOgc/L0MnaFMtsJW5p3qlC92c27euwQa0NawJ2WBsC
- xrA9LNirytcWS/Y3UaOd4RJBrpyfrVbugZS73yyRc3DtwjHMNputH0XFATpVTPpPL/AO
- Hgog==
+ bh=BM6QgAOG34zDGb9jZI8DkkbGa1KuVCoA2kRHxsUOX8Q=;
+ b=GWMDMHLjF8xKcfv6fJOq1PYiT8G6CjOp3u2BlpN1dVN9eOK49Xxknb2z8Zk8IAlqPj
+ ABjL/2aaB4fJurw7eljry1+kGRnYBwUwlFaAVJLe8UrnLqeP07w7H+HKguQhI9aHzvrD
+ yy2CpxwiGMokIjDPOXHmzomGkswaPpoFSCAE4Z1seDGUBjA+LmhDc9eyIPibFvFbee0i
+ nkFPnXB06v8E1rcHuhjALeWNg6Mwn/9g5cAukF4SlxLBhMhWFh3nkzwOvCRv5afjxTIp
+ d5etdSU4Km7luz+lBh3DQj91IJxd6o1ka/2Z6RQX41Ivzf5CF0Rg0AN+K91Z2KzUJcku
+ 6eOw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUTg5L2MeOodDpl/IKOAf9ed1eaZWViW3imUy2HNqLY9zcHXg4Fi2LE61QNZ2KiP9jpduUGk6mgRH+Yf50=@nongnu.org
-X-Gm-Message-State: AOJu0YyxBtblJ/MPLcPCSunXjAhI27MMKv9w+yLkQdw0iXiksbmGrzE1
- ctHSzzwamU8AQVO0FUC8eZYs3VYhtp+0lPpl0XQ622nB6MVsGI49U752
-X-Gm-Gg: ASbGnctOJ26XHBw4IMkGgTTlgtw5Nrn8LgUxrluzkZ4ych7mVeQohYsZ4XtKmG36nXR
- OfNUkXHRzBM+isgVtHvp28Ta9fKZhAZaBCXG/H4cwB/CsGQ67QaWcbHlaJp4Dh42MJ+H+5cIXoQ
- IEpyxy26mf05ClovYj+Bm14jgPj//LS3fKWwZgywz9PAtcN52LaTrl9br45EPm81ArYUoGbU3yA
- lEErhxCcdpCvDWjWhTF7pU9on/cLBSvJSsirE458eZ3SCbdQIT2Iagsv4wVPlFEAj9u6F6yHWup
- 28uhvbzS/4yt0oGtyEkjwpNfhmbDIfk/sikJkUnbwImADpDP1xNKZFHL3R0hMzumwyDJwUtvgRd
- p7y008SoP0D9PyMlgmfL9tMloHzruowJcndviraxW8lC4y/O9RIiudkqqrBqq7c/eJar2oWRPeL
- IvpOXmW9iYgRfEyyq0N9EEmXBXuqBa3OJOXbBc3r95EgFMii5Tk70eZ5VjkK4QV5P2BPb6
-X-Google-Smtp-Source: AGHT+IFxPtXo9vzXd3rOAqwwxaNDvJIFsK7Eo1zA6M2lE6v+t/sNoVY4Repet5YBzuRnemWgklColw==
-X-Received: by 2002:a17:907:c06:b0:b3c:bd91:28a4 with SMTP id
- a640c23a62f3a-b6473045139mr1262880766b.28.1760907826411; 
- Sun, 19 Oct 2025 14:03:46 -0700 (PDT)
+ AJvYcCX3aH7UIG4M2EJFJDBB9M6A/tIVSFBypWxEmbw/+92QH+GiEmkiTp2OVG3AvFbyFx5WqLvEau/MiCP7d0k=@nongnu.org
+X-Gm-Message-State: AOJu0YwuAaW3PZgI+cC9HSzYdocYamaXALmVh/zYuR0lFYxX2/hEEmUu
+ +I0B5drMLmTmV3tR+gvUHof7Zbsv34HPB1k1i6eCnMmNdMDJAFGYNVUI
+X-Gm-Gg: ASbGnctaD2aBQpFihG7IHqGFkXY41t98w6PgRBX2beHUq14UjDhNpE8yf2mKVSR4+54
+ ivacqWXS5mqoQCNwWSmCnMp9wZBXQ+NUIhDveomxVs5S5rA67ZKJCWKSFv7p9OcFvHRJdIlCnjF
+ 8ZvRni75UnhSoOn99BCQ+xlfdQOR4608y5E7o6R4Y3dfKkPphldNjcb7pksS/Xfy/mvEb3KcF9i
+ dDaf6OqaR3clKphr1bocuUef27GzIDwT4Zb1kfCmjjAPb466SsnQYSe9qmALUCvAjrLeWzj4H7E
+ HwLbWw0DjBHfyKW+yRy87JfaKSyrY1wbVYNqcYmPACzWro4Q0+NWnmnzQhZ2SFl72hoPj1VPZtm
+ T6EXlBUtQLj3BuS9uNAGnIMBsXF9KpDFRL/EnlGuE1YSuXEeplpoMeTQFQtVjM+n+N9N82o2fz9
+ Xc7GNY2JS1s/bukTGsgV7nbUdcvvLqKqznfqgIBk1ZF+DkJWsBKjcbFmgpPQ==
+X-Google-Smtp-Source: AGHT+IHfMh7JlGToGTRe8mHgwHLoF57dHW5JvMJP8/YOMdu/h8U6uYCeh50ZViHOCSNzKzge6vlIQg==
+X-Received: by 2002:aa7:df90:0:b0:631:bb4e:111a with SMTP id
+ 4fb4d7f45d1cf-63c1f6dbea3mr8083588a12.34.1760907816588; 
+ Sun, 19 Oct 2025 14:03:36 -0700 (PDT)
 Received: from archlinux (dynamic-002-245-026-170.2.245.pool.telefonica.de.
  [2.245.26.170]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-63c4945f003sm5107655a12.27.2025.10.19.14.03.44
+ 4fb4d7f45d1cf-63c4945f003sm5107655a12.27.2025.10.19.14.03.34
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 19 Oct 2025 14:03:45 -0700 (PDT)
+ Sun, 19 Oct 2025 14:03:36 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
@@ -80,16 +80,17 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Fabiano Rosas <farosas@suse.de>, Gerd Hoffmann <kraxel@redhat.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>,
  Marcelo Tosatti <mtosatti@redhat.com>, Bernhard Beschow <shentey@gmail.com>
-Subject: [PATCH v3 10/10] tests/qtest/ds1338-test: Reuse from_bcd()
-Date: Sun, 19 Oct 2025 23:03:03 +0200
-Message-ID: <20251019210303.104718-11-shentey@gmail.com>
+Subject: [PATCH v3 06/10] hw/ide/ide-internal: Move dma_buf_commit() into ide
+ "namespace"
+Date: Sun, 19 Oct 2025 23:02:59 +0200
+Message-ID: <20251019210303.104718-7-shentey@gmail.com>
 X-Mailer: git-send-email 2.51.1.dirty
 In-Reply-To: <20251019210303.104718-1-shentey@gmail.com>
 References: <20251019210303.104718-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::632;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x632.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::52d;
+ envelope-from=shentey@gmail.com; helo=mail-ed1-x52d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -112,49 +113,111 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-from_bcd() is a public API function which can be unit-tested. Reuse it to avoid
-code duplication.
+The identifier suggests that it is a generic DMA function while it is tied
+to IDE. Fix this by adding an "ide_" prefix.
 
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- tests/qtest/ds1338-test.c | 12 ++++--------
- 1 file changed, 4 insertions(+), 8 deletions(-)
+ hw/ide/ide-internal.h |  2 +-
+ hw/ide/ahci.c         |  8 ++++----
+ hw/ide/core.c         | 10 +++++-----
+ 3 files changed, 10 insertions(+), 10 deletions(-)
 
-diff --git a/tests/qtest/ds1338-test.c b/tests/qtest/ds1338-test.c
-index d12424d27f..b8d0e65ec4 100644
---- a/tests/qtest/ds1338-test.c
-+++ b/tests/qtest/ds1338-test.c
-@@ -18,16 +18,12 @@
+diff --git a/hw/ide/ide-internal.h b/hw/ide/ide-internal.h
+index 0d64805da2..281d07c9d5 100644
+--- a/hw/ide/ide-internal.h
++++ b/hw/ide/ide-internal.h
+@@ -398,7 +398,7 @@ int64_t ide_get_sector(IDEState *s);
+ void ide_set_sector(IDEState *s, int64_t sector_num);
+ 
+ void ide_start_dma(IDEState *s, BlockCompletionFunc *cb);
+-void dma_buf_commit(IDEState *s, uint32_t tx_bytes);
++void ide_dma_buf_commit(IDEState *s, uint32_t tx_bytes);
+ void ide_dma_error(IDEState *s);
+ void ide_abort_command(IDEState *s);
+ 
+diff --git a/hw/ide/ahci.c b/hw/ide/ahci.c
+index 1303c21cb7..14bc66fb7f 100644
+--- a/hw/ide/ahci.c
++++ b/hw/ide/ahci.c
+@@ -1417,7 +1417,7 @@ static void ahci_pio_transfer(const IDEDMA *dma)
+     }
+ 
+     /* Update number of transferred bytes, destroy sglist */
+-    dma_buf_commit(s, size);
++    ide_dma_buf_commit(s, size);
+ 
+ out:
+     /* declare that we processed everything */
+@@ -1482,8 +1482,8 @@ static int32_t ahci_dma_prepare_buf(const IDEDMA *dma, int32_t limit)
+ 
+ /**
+  * Updates the command header with a bytes-read value.
+- * Called via dma_buf_commit, for both DMA and PIO paths.
+- * sglist destruction is handled within dma_buf_commit.
++ * Called via ide_dma_buf_commit, for both DMA and PIO paths.
++ * sglist destruction is handled within ide_dma_buf_commit.
   */
- 
- #include "qemu/osdep.h"
-+#include "qemu/bcd.h"
- #include "libqtest.h"
- #include "libqos/i2c.h"
- 
- #define DS1338_ADDR 0x68
- 
--static inline uint8_t bcd2bin(uint8_t x)
--{
--    return ((x) & 0x0f) + ((x) >> 4) * 10;
--}
--
- static void send_and_receive(void *obj, void *data, QGuestAllocator *alloc)
+ static void ahci_commit_buf(const IDEDMA *dma, uint32_t tx_bytes)
  {
-     QI2CDevice *i2cdev = (QI2CDevice *)obj;
-@@ -39,9 +35,9 @@ static void send_and_receive(void *obj, void *data, QGuestAllocator *alloc)
-     i2c_read_block(i2cdev, 0, resp, sizeof(resp));
+@@ -1511,7 +1511,7 @@ static int ahci_dma_rw_buf(const IDEDMA *dma, bool is_write)
+     }
  
-     /* check retrieved time against local time */
--    g_assert_cmpuint(bcd2bin(resp[4]), == , tm_ptr->tm_mday);
--    g_assert_cmpuint(bcd2bin(resp[5]), == , 1 + tm_ptr->tm_mon);
--    g_assert_cmpuint(2000 + bcd2bin(resp[6]), == , 1900 + tm_ptr->tm_year);
-+    g_assert_cmpuint(from_bcd(resp[4]), == , tm_ptr->tm_mday);
-+    g_assert_cmpuint(from_bcd(resp[5]), == , 1 + tm_ptr->tm_mon);
-+    g_assert_cmpuint(2000 + from_bcd(resp[6]), == , 1900 + tm_ptr->tm_year);
+     /* free sglist, update byte count */
+-    dma_buf_commit(s, l);
++    ide_dma_buf_commit(s, l);
+     s->io_buffer_index += l;
+ 
+     trace_ahci_dma_rw_buf(ad->hba, ad->port_no, l);
+diff --git a/hw/ide/core.c b/hw/ide/core.c
+index b14983ec54..8c380abf7c 100644
+--- a/hw/ide/core.c
++++ b/hw/ide/core.c
+@@ -827,7 +827,7 @@ static void ide_sector_read(IDEState *s)
+                                       ide_sector_read_cb, s);
  }
  
- static void ds1338_register_nodes(void)
+-void dma_buf_commit(IDEState *s, uint32_t tx_bytes)
++void ide_dma_buf_commit(IDEState *s, uint32_t tx_bytes)
+ {
+     if (s->bus->dma->ops->commit_buf) {
+         s->bus->dma->ops->commit_buf(s->bus->dma, tx_bytes);
+@@ -848,7 +848,7 @@ void ide_set_inactive(IDEState *s, bool more)
+ 
+ void ide_dma_error(IDEState *s)
+ {
+-    dma_buf_commit(s, 0);
++    ide_dma_buf_commit(s, 0);
+     ide_abort_command(s);
+     ide_set_inactive(s, false);
+     ide_bus_set_irq(s->bus);
+@@ -893,7 +893,7 @@ static void ide_dma_cb(void *opaque, int ret)
+     if (ret < 0) {
+         if (ide_handle_rw_error(s, -ret, ide_dma_cmd_to_retry(s->dma_cmd))) {
+             s->bus->dma->aiocb = NULL;
+-            dma_buf_commit(s, 0);
++            ide_dma_buf_commit(s, 0);
+             return;
+         }
+     }
+@@ -912,7 +912,7 @@ static void ide_dma_cb(void *opaque, int ret)
+     sector_num = ide_get_sector(s);
+     if (n > 0) {
+         assert(n * 512 == s->sg.size);
+-        dma_buf_commit(s, s->sg.size);
++        ide_dma_buf_commit(s, s->sg.size);
+         sector_num += n;
+         ide_set_sector(s, sector_num);
+         s->nsector -= n;
+@@ -944,7 +944,7 @@ static void ide_dma_cb(void *opaque, int ret)
+          * Reset the Active bit and don't raise the interrupt.
+          */
+         s->status = READY_STAT | SEEK_STAT;
+-        dma_buf_commit(s, 0);
++        ide_dma_buf_commit(s, 0);
+         goto eot;
+     }
+ 
 -- 
 2.51.1.dirty
 
