@@ -4,106 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37BE2CCD195
-	for <qemu-trivial@archiver.kernel.org>; Sun, 19 Oct 2025 22:39:32 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0CBA0CCD193
+	for <qemu-trivial@archiver.kernel.org>; Mon, 20 Oct 2025 06:07:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vAc38-0004XD-Dc; Sun, 19 Oct 2025 18:38:50 -0400
+	id 1vAj30-0007Oy-I5; Mon, 20 Oct 2025 02:07:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAc35-0004WD-H2
- for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 18:38:48 -0400
-Received: from mail-ej1-x635.google.com ([2a00:1450:4864:20::635])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vAj2y-0007OT-Rk
+ for qemu-trivial@nongnu.org; Mon, 20 Oct 2025 02:07:09 -0400
+Received: from mail-wm1-x32b.google.com ([2a00:1450:4864:20::32b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vAc33-0003bO-3t
- for qemu-trivial@nongnu.org; Sun, 19 Oct 2025 18:38:46 -0400
-Received: by mail-ej1-x635.google.com with SMTP id
- a640c23a62f3a-afcb7ae6ed0so690084266b.3
- for <qemu-trivial@nongnu.org>; Sun, 19 Oct 2025 15:38:35 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vAj2s-0002jk-Co
+ for qemu-trivial@nongnu.org; Mon, 20 Oct 2025 02:07:08 -0400
+Received: by mail-wm1-x32b.google.com with SMTP id
+ 5b1f17b1804b1-471b80b994bso17338395e9.3
+ for <qemu-trivial@nongnu.org>; Sun, 19 Oct 2025 23:06:56 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1760913514; x=1761518314; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=1fUlR3DVhrkXnHMUK4SdPqCGl1e6I+hLWWy62h9Hp4c=;
- b=h1mGxFhLVwA0sULH9tMaSn17oDepr+Sv9+joIC/YMDReaUqOthZt9zR+DfTc6DKBnX
- bQWvIlcf5t21QKsEiUHAeqmN+gTLdjEXg5Plda7LEzze0NvK7b3BEO4FMHsFJqPmGI6D
- aFmxBuJ8EDq4pYG+lbYRZbhlPvzEZEictoGl/MO071FEf2334KvDf/0nheXRpBQiuqBC
- kh0RQBkCIMsP+rRf6NMhhexMLIc7VPR8Rta/N8GFv9oaQl2e1lV/okvn6l+Lgk6IKZoi
- /FgBzM44Uzcc+iUn6YqKGPmUXOhhIwOJTzSzMbT/+2p0/A+OGyBWuaM89fYwiZ80viAl
- dmuw==
+ d=linaro.org; s=google; t=1760940415; x=1761545215; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=qlUtH9IPp3sHC1doAZ3214Uh+yQkI1bpAbLemOW71rw=;
+ b=M1JjVOKSyOnFJDg7rjmZhEoYG1WeuVFudZRajpR4ExMEpiwnKeWAaFpy8LkgOv2Q3f
+ AJoDibR0YWfreQMDQw23wUIYJZ/NwOKFHcJJujZe96U08+m4naGIeIxApHuxnrhWZ8rO
+ 1ohz3ZJV7mhV3DiSq5Z8Wyn8GAjWHDb2Lu8Bwd6Ptgs93tDqpQKxDPeO8TgBMXIdJ5QA
+ zPnUFbwWu3NnAK/Kie5rgQrn6soj7B0hOFpzhCGjrceeCOUWKgajsOSGvq99yleuCM1L
+ vYVknnKgVCzH1uzPmvE3sLcBbV1xTFNw/JFe2KzQExgleosbbrOmCfl86cuLB75U4+D0
+ 8MJA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760913514; x=1761518314;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to;
- bh=1fUlR3DVhrkXnHMUK4SdPqCGl1e6I+hLWWy62h9Hp4c=;
- b=QPNDFRZWZ3j4d1zSZMiWZYV7EUCAWpaUVVUnuVgDDwXglGoeB7LLUCK14tSpS/8OrU
- PO1OQrhA4jlW6PIBdPOX9jVL4y9Di2UcVR4324cCgXSuo92HmsxvkZQpc3vW7tvvQQow
- 6hg2mm8yQGD/peBSeBBJvP/w04afS7nK0R04E3rbB3R+BziP3nByS1puR2EZ4FxFvC3i
- a1BDlmbV2ygiC7drl0ZLmM0SdVTZ/JL5r/ghKJz9PyqLf3tAqnc5zP0KnDNU5DFDcobJ
- 0zQ3t4MwAH41vVrhSp9h7/Y02eApjjdL6wVpoTaiJLKvwU4j+u0AhATeo36gc9v/aWkl
- Pr0w==
+ d=1e100.net; s=20230601; t=1760940415; x=1761545215;
+ h=content-transfer-encoding:in-reply-to:from:content-language
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=qlUtH9IPp3sHC1doAZ3214Uh+yQkI1bpAbLemOW71rw=;
+ b=pA2ilvoj3ycojWjbv7Kzg9Es1DLFr4C7YViFZYPk5zV5GInWJJus0Fh047MvCA+/Se
+ d0ioDMVk4EUJvf2Wg+bxLSHZ20jCQ/hnnCOND5BfkOJrX6ETEPPEhSfbRyXCv3hTLHQA
+ MJ71LGujPOGB/egTUEM4Nsr1MWHvd0eHktJ03iazCMITm0vpV5QK+DgGE8UJDE8ngf+l
+ RPYRwrecyyrGBz2ODVP1CNxu0DdUxaG2tyul6Be4tP7bU0pg3d7HRniOF2UqVKzRZg9r
+ dCbxr/h6AMeaQMBCS1na9c4JMepKaq45YFK9q7jsmZeJEgvZhtzZHeU7PqLfCsQrnlaF
+ 5OuQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVcUVvNe7qxGrpl2rCAInI7ImpYCLVCwSdS4aLcF8eslLALtKPRCAUmN5xbjsqdzpaxyT0I5lPlj4rKAxc=@nongnu.org
-X-Gm-Message-State: AOJu0YzXLHPp4kspwhgNyJoJCUAw4tinXn/jjYtuohiiInKDrBll8XY4
- /piTTKF5J11RrZueBvhCZ7jbxFtU/PoZajSESREwUzxP50oQpVxYb1P3
-X-Gm-Gg: ASbGncs3PIkcP3F4MIK+7wU6jgWv2mq4oPEIUnF0C5+mX+Zd0zCLVRghEaG6hK/flmh
- 3Nf5iQVHMdO6auEZ6bIwKSEj+Oid3ihjImJ+cDGlkeDh8NdOoTOMIs3c+Y1euuQwZLK18FuYRwK
- afM7jf3ZltBaQlVfUFYgSNfzLmve9PrCZtjj3CkdtiIYvfwrcyAd+xio8DZ3n49QHeZLfvCg+fF
- 8pb94VMlx3PCtc5YsilyRSPH8IT+3S3oN7dDouEvipzP1t9hoZc9xktiaPjb+TKXCJxVNawBVfn
- UsRu07HvqBiQoInYRVdVmBhnggybX9erTy1PLdRUoeWg94HQAF4zc4H1Qz/KEfgwlihIXJdqqrF
- UOu9BBqa8rpXWc5s2fstWt7O0BBW5k5evqxp3XxnDZ78Hs3hvrCyoU+DCS3TtIBT6KVJSCYrk2s
- MAXGKSgLXYPLWqLPg0k0MG0RRJ6w43znnCKT53yt1GFX8b6eVIzl6Qoyxa+Qc724VYmGHPDh63y
- wFV2Sm09pZlbzy/eH0aW7GgiZL7aSQLtxq8IsNJbVQH
-X-Google-Smtp-Source: AGHT+IFY1AOFnz3uKVjIXWfRbHvZOYANfaygBNZ6f59WAGxWoNrkwB1vfYiS+VunXq5N8M44mfer0Q==
-X-Received: by 2002:a17:906:fe41:b0:b45:a6e6:97b4 with SMTP id
- a640c23a62f3a-b64764e2fd5mr1237253066b.50.1760913513550; 
- Sun, 19 Oct 2025 15:38:33 -0700 (PDT)
-Received: from ehlo.thunderbird.net
- (dynamic-2a02-3100-1c27-9400-31a8-03e5-9396-b647.310.pool.telefonica.de.
- [2a02:3100:1c27:9400:31a8:3e5:9396:b647])
- by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-63c48a928cesm5246447a12.7.2025.10.19.15.38.30
+ AJvYcCVw267brVuCdmTuMgTZYpD27cQQdEba5dKL7S9B4z0yw411U2JfC/H1g03lEaek7kqkwRj5hks5GsERXuU=@nongnu.org
+X-Gm-Message-State: AOJu0YxzPJ93z45edzfjVg6GyTsE+LNBWLKeRzpkNwQv/QpnHpONpq33
+ JJtvZwGjEbPSQmbBFZBqnc9s/fvVRQOvRimP7kbJmXoh+mzO5PxA1Om+oQdYs8e3FFE=
+X-Gm-Gg: ASbGncvko4HxMQCYkCNyELRXcCKntmldfE4xKAQcQNt9u3hMZUQaIAGQ98VHK06JJZB
+ iNnK0re1T78YpT4kKCedxMKMGBUE9gWnwyoPACmNUHLcENjVKPUOrzZIevcMS2l+aT4LlceJCmY
+ l4Y0fAP/p59LFtng4IV4PiJSlWwCJJ+dACnBuZkG8y/twyHe/SQEUmkFC+1USGEUuLq8Csv/BS1
+ nnYBnFt29Vu53/ju+Lyvw+XH6i5ADSOhx7f2OFZ433jgcjtmjz/O7ZdAqbkpkRBADoQPlAStxaf
+ T1QuVuIpK5Q8jkMcdL9avoW/acoZXB5iMNjLIWY1iRq+CLAUuAqGaUilWcerBBqeGawa379f/UB
+ iHD8wGPadTQ8a/kuk4ezu3NXIDDcJDQZXh/9QYL12EMeHlV0rXbmVCZMtowkiGzMLfZsoTZwrYb
+ Kx7bosmsIMbT5J/9mDP6Oq5j7rhp9YyxIX76hd6tmG5O4=
+X-Google-Smtp-Source: AGHT+IGIzaGVQ+2Sqqly0gl7oT9KK5YNtQmqRqHgen6/+1ZKol+zTGnyfJtb+/jrTxyd7S4zLal29Q==
+X-Received: by 2002:a05:600c:470d:b0:471:7c8:ddf7 with SMTP id
+ 5b1f17b1804b1-471178a7447mr74887475e9.14.1760940414968; 
+ Sun, 19 Oct 2025 23:06:54 -0700 (PDT)
+Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-471144b5c34sm224569535e9.10.2025.10.19.23.06.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 19 Oct 2025 15:38:32 -0700 (PDT)
-Date: Sun, 19 Oct 2025 22:38:28 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-CC: Roman Bolshakov <rbolshakov@ddn.com>, Laurent Vivier <laurent@vivier.eu>, 
- Eduardo Habkost <eduardo@habkost.net>, Cameron Esfahani <dirty@apple.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>,
- Marcelo Tosatti <mtosatti@redhat.com>, 
- Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>, Zhao Liu <zhao1.liu@intel.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Fabiano Rosas <farosas@suse.de>, qemu-trivial@nongnu.org,
- Gerd Hoffmann <kraxel@redhat.com>, qemu-block@nongnu.org,
- Phil Dennis-Jordan <phil@philjordan.eu>, John Snow <jsnow@redhat.com>,
- kvm@vger.kernel.org, Laurent Vivier <lvivier@redhat.com>
-Subject: =?US-ASCII?Q?Re=3A_=5BPATCH_v2_09/11=5D_hw/intc/apic=3A_Ensure_?=
- =?US-ASCII?Q?own_APIC_use_in_apic=5Fregister=5F=7Bread=2C_write=7D?=
-In-Reply-To: <3C9DA9B8-8836-42F6-85CD-AB60327363EC@gmail.com>
-References: <20251017141117.105944-1-shentey@gmail.com>
- <20251017141117.105944-10-shentey@gmail.com>
- <f074aed2-7702-4a4a-a7d5-7abeb29ea663@tls.msk.ru>
- <3C9DA9B8-8836-42F6-85CD-AB60327363EC@gmail.com>
-Message-ID: <BDA99DB9-7585-4C1A-9B4A-DC07AE78EBE6@gmail.com>
+ Sun, 19 Oct 2025 23:06:54 -0700 (PDT)
+Message-ID: <0ed67f0b-60ef-4ed6-82a8-2a56c7966dea@linaro.org>
+Date: Mon, 20 Oct 2025 08:06:52 +0200
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::635;
- envelope-from=shentey@gmail.com; helo=mail-ej1-x635.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v3 04/10] hw/rtc/mc146818rtc: Use ARRAY_SIZE macro
+To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
+Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Eduardo Habkost <eduardo@habkost.net>, Zhao Liu <zhao1.liu@intel.com>,
+ kvm@vger.kernel.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Cameron Esfahani <dirty@apple.com>, qemu-block@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
+ Laurent Vivier <lvivier@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Roman Bolshakov <rbolshakov@ddn.com>, Phil Dennis-Jordan
+ <phil@philjordan.eu>, John Snow <jsnow@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>, Gerd Hoffmann <kraxel@redhat.com>,
+ Sunil Muthuswamy <sunilmut@microsoft.com>,
+ Marcelo Tosatti <mtosatti@redhat.com>
+References: <20251019210303.104718-1-shentey@gmail.com>
+ <20251019210303.104718-5-shentey@gmail.com>
+Content-Language: en-US
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20251019210303.104718-5-shentey@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32b;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,52 +115,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
+On 19/10/25 23:02, Bernhard Beschow wrote:
+> Avoids the error-prone repetition of the array size.
+> 
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>   hw/rtc/mc146818rtc.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
 
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Am 17=2E Oktober 2025 19:34:36 UTC schrieb Bernhard Beschow <shentey@gmail=
-=2Ecom>:
->
->
->Am 17=2E Oktober 2025 14:58:50 UTC schrieb Michael Tokarev <mjt@tls=2Emsk=
-=2Eru>:
->>17=2E10=2E2025 17:11, Bernhard Beschow wrote:
->>> =2E=2E=2E In apic_mem_{read,write}, the
->>> own APIC instance is available as the opaque parameter
->>
->>> diff --git a/hw/intc/apic=2Ec b/hw/intc/apic=2Ec
->>
->>> @@ -876,7 +870,7 @@ static uint64_t apic_mem_read(void *opaque, hwaddr=
- addr, unsigned size)
->>>       }
->>>         index =3D (addr >> 4) & 0xff;
->>> -    apic_register_read(index, &val);
->>> +    apic_register_read(opaque, index, &val);
->>
->>I think it would be better to use local variable here:
->>
->> APICCommonState *s =3D opaque;
->>
->>and use it down the line=2E  Yes, there's just one usage, but it is
->>still clearer this way (in my opinion anyway)=2E
->>
->>Ditto in apic_mem_write=2E
->
->I agree=2E Will fix in the next iteration=2E
-
-I couldn't use the opaque parameter in v3 at all, so I needed an `APICComm=
-onState *s` anyway=2E
-
-Best regards,
-Bernhard
-
->
->Best regards,
->Bernhard
->
->>
->>But it's more a nitpick really=2E
->>
->>Thanks,
->>
->>/mjt
 
