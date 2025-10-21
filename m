@@ -4,103 +4,126 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45AABCCD1AF
-	for <qemu-trivial@archiver.kernel.org>; Tue, 21 Oct 2025 20:33:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14F63CCD1AA
+	for <qemu-trivial@archiver.kernel.org>; Tue, 21 Oct 2025 20:58:03 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vBJ1E-0005TJ-M9; Tue, 21 Oct 2025 16:31:44 -0400
+	id 1vBJQP-0008T8-3X; Tue, 21 Oct 2025 16:57:45 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBJ12-0005Kf-1D
- for qemu-trivial@nongnu.org; Tue, 21 Oct 2025 16:31:35 -0400
-Received: from mail-wm1-x336.google.com ([2a00:1450:4864:20::336])
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1vBJQH-0008Rj-Nb
+ for qemu-trivial@nongnu.org; Tue, 21 Oct 2025 16:57:38 -0400
+Received: from smtp-out1.suse.de ([195.135.223.130])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBJ0w-00063O-32
- for qemu-trivial@nongnu.org; Tue, 21 Oct 2025 16:31:31 -0400
-Received: by mail-wm1-x336.google.com with SMTP id
- 5b1f17b1804b1-4711f3c386eso30233645e9.0
- for <qemu-trivial@nongnu.org>; Tue, 21 Oct 2025 13:31:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761078683; x=1761683483; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=e46Xpd7tLYIKXwBbt7lbuURVIUXwhDVyJ1/luhq2CqY=;
- b=iD/H9g+cT/nQ66n994jErV6LFlKhc3cwqoXlwyk47j7BaL/Awg3RgzFA8Fk2sscwtz
- 4uv4TpgrHxFhU3mDnHqULFtfW2a5Y0Zivzkbma7p+O1d111mDlrxT6NAUZGZ0101E98w
- Vwn0o60u4AqUCTPBxKx3tlbnbnHc05B1aOlyCjS+Vhd2r98vO+xMKgQeP2n7JdtHDT4M
- WHSxCWrNxrxbJ2sRIC9lLm0ppc4nSjPoOaj22PXsNtiJ+3MOmIgmRtyOmURawTk1Vwte
- Y+cfmeJsK4ACWLQSLrx7qX9sIWo++NXaZtSaBMaICF7BqGvdFrx7fnCx4xuoDLJRpfa/
- rZcw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761078683; x=1761683483;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=e46Xpd7tLYIKXwBbt7lbuURVIUXwhDVyJ1/luhq2CqY=;
- b=hJ2N7a3v/09oryvx4wwz6aq9AJmF12Xu3az2pxB+jkmF/9mJ71VFDeSXBY7SHIUMW2
- vrxHrK6LbHF+aP/TH6uo/G2HCmxOwBapHvvHmQzmT7aPBOuLI8W4JB9OVG5MvvLzVXZO
- U4Pj8cX+ovF12i5kiCm9vkgnFzqvoWeGJcneUoEvEl+b2Voe98DQClHrbO7lS7SbeaKo
- LBscI22G4DLkmpe3EIsyQAiQJpBLiI93Upxw2PbFX0Q8o4qhqDl//9HKrWKAdlxK+Wxo
- 1965Jvt7iUa1wleLMhkrLcjYNrYSxVghgkOP4TT6DYHp7Jiav8GQdRQ9mXRfcPxiWSLz
- yPdQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXQ+o9ropCZRP171W9NCy7pThtMVf54JptlmdXxrbyeSfw8FzfOvI5CuyVvutWv2H9UJNyYCgxIwP1buBs=@nongnu.org
-X-Gm-Message-State: AOJu0Ywq6Hvo+IIklpjH0c+VIo9h2mVW+YviQdGY9MnEl2BSdIS0lHDw
- 82tjOIJ5CiMRPOrqaCCoKDn/fLaOlyzGhqIBpoUPFkpWZyqDzemkjjWreT90/Q2+TEw=
-X-Gm-Gg: ASbGncu5B0zCRZxDdr9SxWmBdMdTqregkqIFKklIk0S+Cln/PsBv8GG4CUN9+ae6no3
- nSWpdit+bZYKBJ1CCt3zPxae1J3d6Aek6h3SuyPC4VvlOf+M70sCREK7IaBxB2NDqgdbGGwZ3gN
- oMArR/3dlm523efLUVqBZ5GR68vAwldcM/Y9AO48/ozT3UGUlzO7kcEzvUnfvzTnlSThzZrbsyk
- f9z7JToYLdXrK6u0c+jdgISRk5rfquJOos3xlq+uSp1Om+VMGsrt8flh6yxoxhTLKbtAorywgQ7
- fis73Qfd8OCpY/c+ofsEDZt1V41yeu3K0+hK5yTHJI2kRTQ5MxFXIvond8Wvhza51MJzhkD7tdI
- oXMq8AuLpf5lkuS0sDTQPoUXQZXuuWiUdaBJdjrzPmtIxNlkbhmxRzyKZsleujyrT+ySvVUrbzZ
- Cib5C9khadLum/J8QcnI2PUwkakB+dVM00o4neJJm860wyN/g6CkDbdQ==
-X-Google-Smtp-Source: AGHT+IH3MFgzooHeifTv6goalvSCOCkji2kNHftd9bPXF0cgSvPl9wwmDkwJqJSwTixMtYZTPoNSRQ==
-X-Received: by 2002:a05:600c:190f:b0:470:feb2:e968 with SMTP id
- 5b1f17b1804b1-471178b125amr134414325e9.15.1761078683529; 
- Tue, 21 Oct 2025 13:31:23 -0700 (PDT)
-Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47496c14a26sm23142735e9.4.2025.10.21.13.31.21
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Oct 2025 13:31:22 -0700 (PDT)
-Message-ID: <e2b73955-13b6-4987-a24c-1b8998597d07@linaro.org>
-Date: Tue, 21 Oct 2025 22:31:21 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 09/10] hw/intc/apic: Pass APICCommonState to
- apic_register_{read, write}
-Content-Language: en-US
+ (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1vBJQF-0002Dy-4Q
+ for qemu-trivial@nongnu.org; Tue, 21 Oct 2025 16:57:37 -0400
+Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
+ [IPv6:2a07:de40:b281:104:10:150:64:97])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by smtp-out1.suse.de (Postfix) with ESMTPS id F064D21187;
+ Tue, 21 Oct 2025 20:57:23 +0000 (UTC)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1761080248; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=C8NgEsvKHw4S/0o9XZLFVi0wqJV4aLQ5QpnfJp2smIw=;
+ b=zl08H+V2b9H/odq9By+hsSd0SyjiAxMLGUMbgdWFgIAO4ivPMDY3Q6cO9AwSrkD6bOnH6B
+ p3WTBBYNbDaS8SowUl2lyVn/9fvgaWOc5hj9tyUjEc8DbQxqptqh6WRBQyESuLHc5ZzeJ4
+ MLX/Yf5CQFloWgsAhmVu8PpPyEpIJuE=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1761080248;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=C8NgEsvKHw4S/0o9XZLFVi0wqJV4aLQ5QpnfJp2smIw=;
+ b=Lxmwkk15+oyCtIe5tuK+g+bNdbZGbDTQAo8oCM74YQqO2P64ym3Z20FMm9KVpu8c7rzov+
+ PObXePgy6BuySoBA==
+Authentication-Results: smtp-out1.suse.de;
+ dkim=pass header.d=suse.de header.s=susede2_rsa header.b=pfsvATfO;
+ dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=sU2ngF7A
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
+ t=1761080243; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=C8NgEsvKHw4S/0o9XZLFVi0wqJV4aLQ5QpnfJp2smIw=;
+ b=pfsvATfOr9yXC6KGsBRsRphA7jv7d2FkHeTgsKyWjSssuJ4I5g4OPB2MyhoCBGQY6C+ce1
+ KDXj0TxAEYtkDVDPzU7FLiw/o24PCtSuvclM/InZYDd5zmhMlJ7+kJKWjjHjTCiA8d8d5x
+ VTO4R3RxSV7IvxozCVGqv9mXu+dMTIs=
+DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
+ s=susede2_ed25519; t=1761080243;
+ h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
+ mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=C8NgEsvKHw4S/0o9XZLFVi0wqJV4aLQ5QpnfJp2smIw=;
+ b=sU2ngF7AGrXZ23O04cXcj96A2vxU/7Gcry2UpvfN+MtV7Fklk+cgQlMKLG8EXrPv+nr8fK
+ K9hFHqgobgMvAnDw==
+Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
+ (No client certificate requested)
+ by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 688E9139D2;
+ Tue, 21 Oct 2025 20:57:23 +0000 (UTC)
+Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
+ by imap1.dmz-prg2.suse.org with ESMTPSA id SYMMC7Pz92hUXAAAD6G6ig
+ (envelope-from <farosas@suse.de>); Tue, 21 Oct 2025 20:57:23 +0000
+From: Fabiano Rosas <farosas@suse.de>
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- Laurent Vivier <laurent@vivier.eu>, "Michael S. Tsirkin" <mst@redhat.com>,
- Eduardo Habkost <eduardo@habkost.net>, Zhao Liu <zhao1.liu@intel.com>,
- kvm@vger.kernel.org, Michael Tokarev <mjt@tls.msk.ru>,
- Cameron Esfahani <dirty@apple.com>, qemu-block@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, qemu-trivial@nongnu.org,
- Laurent Vivier <lvivier@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Roman Bolshakov <rbolshakov@ddn.com>, Phil Dennis-Jordan
- <phil@philjordan.eu>, John Snow <jsnow@redhat.com>,
- Fabiano Rosas <farosas@suse.de>, Gerd Hoffmann <kraxel@redhat.com>,
- Sunil Muthuswamy <sunilmut@microsoft.com>,
- Marcelo Tosatti <mtosatti@redhat.com>
-References: <20251019210303.104718-1-shentey@gmail.com>
- <20251019210303.104718-10-shentey@gmail.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251019210303.104718-10-shentey@gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::336;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x336.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Cc: Laurent Vivier <lvivier@redhat.com>, Eduardo Habkost
+ <eduardo@habkost.net>, John Snow <jsnow@redhat.com>, Laurent Vivier
+ <laurent@vivier.eu>, kvm@vger.kernel.org, Zhao Liu <zhao1.liu@intel.com>,
+ qemu-trivial@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Sunil Muthuswamy
+ <sunilmut@microsoft.com>, Marcelo Tosatti <mtosatti@redhat.com>, Michael
+ Tokarev <mjt@tls.msk.ru>, Richard Henderson
+ <richard.henderson@linaro.org>, qemu-block@nongnu.org, Paolo Bonzini
+ <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Bernhard Beschow
+ <shentey@gmail.com>
+Subject: Re: [PATCH 8/8] tests/qtest/ds1338-test: Reuse from_bcd()
+In-Reply-To: <20251017113338.7953-9-shentey@gmail.com>
+References: <20251017113338.7953-1-shentey@gmail.com>
+ <20251017113338.7953-9-shentey@gmail.com>
+Date: Tue, 21 Oct 2025 17:57:20 -0300
+Message-ID: <87ikg8t1lb.fsf@suse.de>
+MIME-Version: 1.0
+Content-Type: text/plain
+X-Rspamd-Queue-Id: F064D21187
+X-Rspamd-Action: no action
+X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
+X-Spamd-Result: default: False [-2.80 / 50.00]; BAYES_HAM(-2.79)[99.09%];
+ SUSPICIOUS_RECIPS(1.50)[]; NEURAL_HAM_LONG(-1.00)[-1.000];
+ NEURAL_HAM_SHORT(-0.20)[-1.000];
+ R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ MIME_GOOD(-0.10)[text/plain]; MX_GOOD(-0.01)[];
+ TO_MATCH_ENVRCPT_ALL(0.00)[];
+ DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
+ RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from]; 
+ ARC_NA(0.00)[]; RCPT_COUNT_TWELVE(0.00)[19];
+ FREEMAIL_TO(0.00)[gmail.com,nongnu.org]; MIME_TRACE(0.00)[0:+];
+ SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
+ FREEMAIL_ENVRCPT(0.00)[gmail.com]; RCVD_TLS_ALL(0.00)[];
+ TO_DN_SOME(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
+ DNSWL_BLOCKED(0.00)[2a07:de40:b281:106:10:150:64:167:received,2a07:de40:b281:104:10:150:64:97:from];
+ FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
+ FREEMAIL_CC(0.00)[redhat.com,habkost.net,vivier.eu,vger.kernel.org,intel.com,nongnu.org,gmail.com,microsoft.com,tls.msk.ru,linaro.org];
+ MID_RHS_MATCH_FROM(0.00)[]; TAGGED_RCPT(0.00)[];
+ DKIM_TRACE(0.00)[suse.de:+];
+ RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
+ MISSING_XM_UA(0.00)[]; RCVD_VIA_SMTP_AUTH(0.00)[];
+ DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:dkim, suse.de:mid, suse.de:email,
+ imap1.dmz-prg2.suse.org:rdns, imap1.dmz-prg2.suse.org:helo]
+Received-SPF: pass client-ip=195.135.223.130; envelope-from=farosas@suse.de;
+ helo=smtp-out1.suse.de
+X-Spam_score_int: -43
+X-Spam_score: -4.4
+X-Spam_bar: ----
+X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,93 +139,12 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Hi Bernhard,
+Bernhard Beschow <shentey@gmail.com> writes:
 
-On 19/10/25 23:03, Bernhard Beschow wrote:
-> As per the previous patch, the APIC instance is already available in
-> apic_msr_{read,write}, so it can be passed along. It turns out that
-> the call to cpu_get_current_apic() is only required in
-> apic_mem_{read,write}, so it has been moved there. Longer term,
-> cpu_get_current_apic() could be removed entirely if
-> apic_mem_{read,write} is tied to a CPU's local address space.
-> 
+> from_bcd() is a public API function which can be unit-tested. Reuse it to avoid
+> code duplication.
+>
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->   hw/intc/apic.c | 35 ++++++++++++++++-------------------
->   1 file changed, 16 insertions(+), 19 deletions(-)
 
-
-> @@ -1054,12 +1046,17 @@ static int apic_register_write(int index, uint64_t val)
->   static void apic_mem_write(void *opaque, hwaddr addr, uint64_t val,
->                              unsigned size)
->   {
-> +    APICCommonState *s = cpu_get_current_apic();
->       int index = (addr >> 4) & 0xff;
->   
->       if (size < 4) {
->           return;
->       }
->   
-> +    if (!s) {
-> +        return;
-> +    }
-
-This is not the correct place to return...
-
->       if (addr > 0xfff || !index) {
->           /*
->            * MSI and MMIO APIC are at the same memory location,
-
-... because of this comment. See the (squashed) fix below.
-
-> @@ -1073,7 +1070,7 @@ static void apic_mem_write(void *opaque, hwaddr addr, uint64_t val,
->           return;
->       }
->   
-> -    apic_register_write(index, val);
-> +    apic_register_write(s, index, val);
->   }
-
--- >8 --
-diff --git a/hw/intc/apic.c b/hw/intc/apic.c
-index 077ef18686b..aad253af158 100644
---- a/hw/intc/apic.c
-+++ b/hw/intc/apic.c
-@@ -1046,30 +1046,30 @@ static int apic_register_write(APICCommonState 
-*s, int index, uint64_t val)
-  static void apic_mem_write(void *opaque, hwaddr addr, uint64_t val,
-                             unsigned size)
-  {
-      APICCommonState *s = cpu_get_current_apic();
-      int index = (addr >> 4) & 0xff;
-
-      if (size < 4) {
-          return;
-      }
-
--    if (!s) {
--        return;
--    }
--
-      if (addr > 0xfff || !index) {
-          /*
-           * MSI and MMIO APIC are at the same memory location,
-           * but actually not on the global bus: MSI is on PCI bus
-           * APIC is connected directly to the CPU.
-           * Mapping them on the global bus happens to work because
-           * MSI registers are reserved in APIC MMIO and vice versa.
-           */
-          MSIMessage msi = { .address = addr, .data = val };
-          apic_send_msi(&msi);
-          return;
-      }
-
-+    if (!s) {
-+        return;
-+    }
-+
-      apic_register_write(s, index, val);
-  }
-
----
+Reviewed-by: Fabiano Rosas <farosas@suse.de>
 
