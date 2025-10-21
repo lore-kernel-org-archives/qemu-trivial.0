@@ -4,90 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C5C1CCCD1A5
-	for <qemu-trivial@archiver.kernel.org>; Mon, 20 Oct 2025 20:11:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B40D2CCD1A7
+	for <qemu-trivial@archiver.kernel.org>; Tue, 21 Oct 2025 14:35:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vAwEL-0008KT-VG; Mon, 20 Oct 2025 16:11:48 -0400
+	id 1vBDSe-0000QI-Ri; Tue, 21 Oct 2025 10:35:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vAwE5-0008CZ-Sg
- for qemu-trivial@nongnu.org; Mon, 20 Oct 2025 16:11:35 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
+ (Exim 4.90_1)
+ (envelope-from <bounce+ea69ab.a38f4-qemu-trivial=nongnu.org@slonk.ing>)
+ id 1vBAxM-0008Du-9J
+ for qemu-trivial@nongnu.org; Tue, 21 Oct 2025 07:55:12 -0400
+Received: from m32-23.eu.mailgun.net ([141.193.32.23])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vAwE2-0002T9-SW
- for qemu-trivial@nongnu.org; Mon, 20 Oct 2025 16:11:29 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-426ff694c1fso311940f8f.2
- for <qemu-trivial@nongnu.org>; Mon, 20 Oct 2025 13:11:25 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1760991084; x=1761595884; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=BOC8KHQT5zdlkcCN6BWQC4klzoLQxyO82TNfKseWIAc=;
- b=IbEcmTFq6SUUM8Z3XdWu/ysRhFWyZunb4VGW/JLvW1p6UYyraTH/7VrWpZk4qSRBe3
- wgmciUZs6q3VjYegsTobiRZrSmHcW/VxPZljT4QVAFBJnhCdPq/gT5Vq0adfsR2gRh5n
- 4k64MRAi0jRdryfMyTqLON0qPmGUlQxW5cLzuPQif54Lbvh677qM6M+aOKjsNQJw1w98
- kOOA8+VFoz7+Gi7uwrPOk2KJAEC54snQGTlnH7xKfao/VGSfed3d5JkaxprrgLZLw7iZ
- +yREm4VkObbYoVfhMHFdYUwOuFboVvALN0Bum5TAtfGXTdX0C3pim6A6OSFolyY9eqj8
- Zwug==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1760991084; x=1761595884;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=BOC8KHQT5zdlkcCN6BWQC4klzoLQxyO82TNfKseWIAc=;
- b=IFRwuXqU8FPPOwd42eJqX70Tsh8A9pK6ZE5FSwF9o066J9Ju6J8r9lRpQvu6XXGLnS
- f/cFkke2/fU+2BxVELd31g23x4IG2a82fPuEMO9JTV0FqdiZoFJYXhKJuH5vKx4Wxn/W
- i4dZ/hyLATIeZq4Hwp/z7u3Uwi4R9XjTbdgxNDtbbODScxWGC3XaBdZJgElrp58m7eJw
- 2c4dIiLaCg6Q87SoQmeTCfiTHoUPti1pn41VIojpYkTSzy745macU3ShXFVANI4d8cgW
- 6O3to6VBiYPKTX09YrWEgQ1wyVs0mpa0A53iEFI4G9caaz2PVrtaJYrS3Od/1SqkgLYb
- zqog==
-X-Gm-Message-State: AOJu0YxaX7o92pJBYqu0JnCZjMa5nsAHsSaCeDxXifQgYVBi98+rP8+F
- SKGuhNr47Xnci8HVKPCQ44e7CAepI6MvTJKh46OK2+NvzBA+l/TBOASmR7OqbVHBOrF3neqGeyk
- XBckFRlw=
-X-Gm-Gg: ASbGncs+69YEd+oTlkuZNJv/fDiNCqB9OmX1AIcrkeL8hXU7Z7BsB11Ob2pZyKnBABD
- 3PKECS7alc3o+jEd08YLtvDVsUN5fiJsIlNyQhHIuQ8UoTzKgYbBVWTiE6X8+EJjV4HP8sjk4Ug
- njY26uEbNQhfVlyJXqttS2Ik7Bj1VTUd5jnPPOvWdia3WFznNNcWZWMnTlKsBIqq9K08l4zeZHG
- 1RJmp1yOumRKzo+qjmsuhVNsCav606qys1c3QOcEUC9NQGq/+degtmJIZSD8RhX68T38uE1H4Dc
- u0EwxfqxMtKreak7w0D9ugk7dSjNgpgwhOpL6AHJHbTpWWJVtPA2/eNVKx/VYxchQmDROVhjZDo
- XfnZZSsv2xuHfxZy8q59Cp7WL0yoGPMDIW/j6ercTgldTur+d5PzUK4/CHLX++5WL+i/wRAHajY
- /nfJyqnyxedmTzGlFMrsHna3AMq44172Rg/efEVyY1/UtYiC6ulczEFA==
-X-Google-Smtp-Source: AGHT+IGlQit8jxcVermT3Q3KqVwTt/gJVpp0fGqe/gGpdTsTpMenj6k695GicqExOZtqsoDkwoun8w==
-X-Received: by 2002:a05:6000:2010:b0:426:ff7c:86e4 with SMTP id
- ffacd0b85a97d-42704d8df97mr9521343f8f.19.1760991083917; 
- Mon, 20 Oct 2025 13:11:23 -0700 (PDT)
-Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-427f00b9fdfsm16692563f8f.40.2025.10.20.13.11.23
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 20 Oct 2025 13:11:23 -0700 (PDT)
-Message-ID: <dbb84bf7-2a5c-4c16-9dad-46669ad9b998@linaro.org>
-Date: Mon, 20 Oct 2025 22:11:22 +0200
+ (Exim 4.90_1)
+ (envelope-from <bounce+ea69ab.a38f4-qemu-trivial=nongnu.org@slonk.ing>)
+ id 1vBAxJ-0001wy-Db
+ for qemu-trivial@nongnu.org; Tue, 21 Oct 2025 07:55:11 -0400
+DKIM-Signature: a=rsa-sha256; v=1; c=relaxed/relaxed; d=slonk.ing; q=dns/txt;
+ s=mta; t=1761047703; x=1761054903; 
+ h=Content-Transfer-Encoding: Content-Type: Cc: To: To: Subject: Subject: From:
+ From: MIME-Version: Date: Message-ID: Sender: Sender; 
+ bh=6dveA7Bc3abeeRSBTidZ0/ShQem6EzpLqb7v5SFYum0=;
+ b=rA2VZvUz2O+K9l3uP5PBi3W3Gw4jB+qCc2Kmhg/hjxczupXOuMau63ZlWIgDn3WANEdaFYGQrBWp9nfAX7FC3bgnMHXGw6mepL6wHKloVep1El5k9N9/qDgBO6gZXAzDISTGO/KFcaMXGnOihjia7aV1pH259JU1EDAG9FdtyvDo/XIkPowQxEkBr47y03TGa1aeJ5KpmaR9txc9AM4AoC255oyrA0H0lkzZxmZ7lLmUR0G/aUzFVvEPYhwNiT9ItXTFv7C6sXyWqEVr9unMqulq17tnNLHgEymwei7pKJS6XzLERlkx/fjWWIW6bvv3FMzQrJGeg6Av2cdSm2VR2w==
+X-Mailgun-Sid: WyI0NTE0ZiIsInFlbXUtdHJpdmlhbEBub25nbnUub3JnIiwiYTM4ZjQiXQ==
+Received: from mail.slonk.ing (127.183.70.95.static.turk.net [95.70.183.127])
+ by
+ 6953e733b90d5ef343660439d7c29c450468d4a3aa3b1c95405cc0ef60d8ffd0 with SMTP id
+ 68f77497f52e2e44eb13b128; Tue, 21 Oct 2025 11:55:03 GMT
+X-Mailgun-Sending-Ip: 141.193.32.23
+DKIM-Signature: v=1; a=rsa-sha256; s=202407r; d=slonk.ing; c=relaxed/relaxed; 
+ h=To:Subject:From:Date:Message-ID; t=1761047701;
+ bh=6dveA7Bc3abeeRSBTidZ0/S
+ hQem6EzpLqb7v5SFYum0=; b=aVvwt44tmoagFknVMnzcB1/iOHZG/HVYNMS2KiXFk4Pi0et6t3
+ ylVnolG5AIBqzt7zLsQmjgjJFnEhPuMpaum5nOVm8Nf/QAlyJpXt8p0t0jFks5hFp0OquuB2wG8
+ 7ifbj7NVGwCBzh2xOMVb/QZg3efbpIR30HrflWB4hF2wRLJ6SKpMnh/BBcGzm/Gi8fMrp7C85xD
+ Fbdrurmu14WXy0Ihn5hIJt1aqKH+LPpmBEcBmo+OYWMJnEzw8cbHcOud0PNaWPqmBWSjCWnxcB+
+ 1t5ee7Uu5l/c/KjUweFCoJVDzpdGS24QmZfgZzTrJHKlP//a1r3AH9gqwXCazQwC+qA==;
+DKIM-Signature: v=1; a=ed25519-sha256; s=202407e; d=slonk.ing;
+ c=relaxed/relaxed; 
+ h=To:Subject:From:Date:Message-ID; t=1761047701; bh=6dveA7Bc3abeeRSBTidZ0/S
+ hQem6EzpLqb7v5SFYum0=; b=i8W4e1oBaB87vMlgeA9BX97CvfETwGFrugsBQn4ivEiVXu38gY
+ gDU2L8MfVo9tphZkGtz3D8FEEKXfUrAZDPBg==;
+Message-ID: <9051e5a9-92ad-4279-b8fd-f4cd92e05bac@slonk.ing>
+Date: Tue, 21 Oct 2025 14:55:01 +0300
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] MAINTAINERS: Add missing machine name in the Alpha section
+User-Agent: Betterbird (Linux)
+Subject: virtio-gpu refresh rate option
+To: qemu-devel@nongnu.org
 Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>,
- Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-References: <20251020140425.45003-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251020140425.45003-1-thuth@redhat.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
+Received-SPF: pass client-ip=141.193.32.23;
+ envelope-from=bounce+ea69ab.a38f4-qemu-trivial=nongnu.org@slonk.ing;
+ helo=m32-23.eu.mailgun.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 21 Oct 2025 10:35:35 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,23 +81,72 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
+Reply-to:  slonkazoid <slonkazoid@slonk.ing>
+From:  slonkazoid via <qemu-trivial@nongnu.org>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 20/10/25 16:04, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
-> 
-> Without a machine name here, get_maintainers.pl uses the "-----..."
-> separator for describing what the maintainer is taking care of:
-> 
->   $ scripts/get_maintainer.pl -f hw/alpha/dp264.c
->   Richard Henderson <richard.henderson@linaro.org> (maintainer:--------------)
->   qemu-devel@nongnu.org (open list:All patches CC here)
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   MAINTAINERS | 1 +
->   1 file changed, 1 insertion(+)
+currently, the virtio-gpu module does not set a refresh rate, making it 
+default to 75Hz in the qemu edid generation logic. i wrote a sloppy 
+patch that adds a `refresh_rate` option to virtio-gpu, which propagates 
+to all the devices based on it (i was interested in virtio-vga-gl). it's 
+not of much use by itself but when combined with something like Sunshine 
+or looking-glass, it can provide *far* smoother guest graphics than the 
+inbuilt display devices. i have done a bare minimum amount of manual 
+testing (virtio-vga-gl with venus XOR amdgpu drm native context 
+streaming video games) and it functions as intended, and should not 
+break the code path to fetch the refresh rate from the active display 
+device (?), however, i have never contributed to QEMU before and i don't 
+know the customs concerning testing, documentation, etc. if there's more 
+i should do, please tell me! if this is something that would benefit 
+QEMU, feel free to merge it. it's not a copyrightable change anyways.
 
-Patch queued, thanks.
+ From bf599519fcf0fb03bffc2ce82051c91472591f26 Mon Sep 17 00:00:00 2001
+From: slonkazoid <slonkazoid@slonk.ing> <mailto:slonkazoid@slonk.ing 
+<mailto:slonkazoid@slonk.ing>>
+Date: Tue, 21 Oct 2025 12:35:57 +0300
+Subject: [PATCH] add a refresh_rate option to virtio-gpu
+
+Signed-off-by: slonkazoid <slonkazoid@slonk.ing> 
+<mailto:slonkazoid@slonk.ing <mailto:slonkazoid@slonk.ing>>
+hw/display/virtio-gpu-base.c | 1 +
+include/hw/virtio/virtio-gpu.h | 4 +++-
+2 files changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/hw/display/virtio-gpu-base.c b/hw/display/virtio-gpu-base.c
+index 7269477a1c..8e3ae958bf 100644
+--- a/hw/display/virtio-gpu-base.c
++++ b/hw/display/virtio-gpu-base.c
+@@ -232,6 +232,7 @@ virtio_gpu_base_device_realize(DeviceState *qdev,
+
+g->req_state[0].width = g->conf.xres;
+g->req_state[0].height = g->conf.yres;
++ g->req_state[0].refresh_rate = g->conf.refresh_rate;
+
+g->hw_ops = &virtio_gpu_ops;
+for (i = 0; i < g->conf.max_outputs; i++) {
+diff --git a/include/hw/virtio/virtio-gpu.h b/include/hw/virtio/virtio-gpu.h
+index 9f16f89a36..8831514bb3 100644
+--- a/include/hw/virtio/virtio-gpu.h
++++ b/include/hw/virtio/virtio-gpu.h
+@@ -128,6 +128,7 @@ struct virtio_gpu_base_conf {
+uint32_t flags;
+uint32_t xres;
+uint32_t yres;
++ uint32_t refresh_rate;
+uint64_t hostmem;
+VirtIOGPUOutputList *outputs;
+};
+@@ -173,7 +174,8 @@ struct VirtIOGPUBaseClass {
+DEFINE_PROP_BIT("edid", _state, _conf.flags, \
+VIRTIO_GPU_FLAG_EDID_ENABLED, true), \
+DEFINE_PROP_UINT32("xres", _state, _conf.xres, 1280), \
+- DEFINE_PROP_UINT32("yres", _state, _conf.yres, 800)
++ DEFINE_PROP_UINT32("yres", _state, _conf.yres, 800), \
++ DEFINE_PROP_UINT32("refresh_rate", _state, _conf.refresh_rate, 60000)
+
+typedef struct VGPUDMABuf {
+QemuDmaBuf *buf;
+--
+2.51.0
 
