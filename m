@@ -4,73 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C07D6CCD184
-	for <qemu-trivial@archiver.kernel.org>; Tue, 21 Oct 2025 15:54:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2DF2FCCD1A7
+	for <qemu-trivial@archiver.kernel.org>; Tue, 21 Oct 2025 15:59:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vBEg1-0008Fv-Qm; Tue, 21 Oct 2025 11:53:35 -0400
+	id 1vBEk4-0002QU-6Z; Tue, 21 Oct 2025 11:57:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBEfy-0008Ez-Lo
- for qemu-trivial@nongnu.org; Tue, 21 Oct 2025 11:53:31 -0400
-Received: from mail-wr1-x436.google.com ([2a00:1450:4864:20::436])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBEjz-0002H1-N6
+ for qemu-trivial@nongnu.org; Tue, 21 Oct 2025 11:57:40 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBEfw-0007Pg-Dx
- for qemu-trivial@nongnu.org; Tue, 21 Oct 2025 11:53:30 -0400
-Received: by mail-wr1-x436.google.com with SMTP id
- ffacd0b85a97d-42557c5cedcso3313750f8f.0
- for <qemu-trivial@nongnu.org>; Tue, 21 Oct 2025 08:53:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBEjx-0007um-PF
+ for qemu-trivial@nongnu.org; Tue, 21 Oct 2025 11:57:39 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-46e6a6a5e42so31687025e9.0
+ for <qemu-trivial@nongnu.org>; Tue, 21 Oct 2025 08:57:36 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1761062006; x=1761666806; darn=nongnu.org;
+ d=linaro.org; s=google; t=1761062254; x=1761667054; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=KZ69YW3o/ePIBmzVDZBdMJkANEHjJp/sF786gwRA3Mw=;
- b=ffgDoE7tUvo61kUbQ8EZTfyea6XtlxefQy65z5RIz74/+ZDhc7yLreXTlpCXyxKVN8
- hmX10Ccf2dW+QS1xfa5VMNYnHl1Hdb6+wxdh+r3E0UkiZtt9g6epAzj7QZl50UveVoNj
- Xl9UydEy+j8ySJxlcvW4f2QUu8deMPeXNp6FG3X1EXw9N3Sz0qxTXEcDk13h9Zb5SiiP
- uA1w2+dYOnYMMq9ArX7WqWf1G5Je6GI4S67OBcN5Wu3uxEdsEJDTnDyCaqLjeNlVWqtl
- ntf5FSyZ6VXMaHaumDgbSztZ8pY27vzLjPFi3G183w5PMcbHVhqIX29YSpnVguOfLuNV
- cMsA==
+ bh=EmsKfQPb+phFt2HKZnH8E/xSwMnb6ZMpj9GAaYtCOVo=;
+ b=RlegZid1LrGl1NGudUsc+c8cPv2OW+BZ3sEySX63+OBjgXqMG6QdjACZN2uE3NUlYj
+ vg6B1zDwhiTMPqlnZ2JfAJz58DhV8EV5QR5hr9OPFjluD2zHExAWVdV6hJPCS17eZrnZ
+ BJhOdaCzQuZtnaoSiwjC/ixjZgpLOb5g/HTO8fV+M/M2/de3sem1M5zZlE/kNfH9M5k1
+ VMcbVEtJRQx8/4tWpmE6aP5M4F7jfVDzKe3BWK6hl2uSq+dQYn7N/zY1ZnCNfa4cHYNk
+ 0l9lC32zF0OR2tZmeWVdkjRWryXUpru49raSHZ1qnLq0Nt98AMbsHXd3FrMSPhl8A8/U
+ t4zQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761062006; x=1761666806;
+ d=1e100.net; s=20230601; t=1761062254; x=1761667054;
  h=content-transfer-encoding:in-reply-to:from:references:cc:to
  :content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=KZ69YW3o/ePIBmzVDZBdMJkANEHjJp/sF786gwRA3Mw=;
- b=YyDEqV6Un3EVA/aAKtJpqZaJathZYwibdaWoZvd2+YRO5GBgKqLXdkSolGYSdTOitS
- lrJarb1WkqEgALgAoHrNcIEwdBtcMGmg3L5beGWgDnUYK4MHjrj5Epe2yLJskYez8AoA
- T+uTbdXpuT0pPXTarVuqr00HjwFhujVw4xZMxMPJzrqx+S5c79tdlCOag1eM0ERxZkSG
- 3Zv3Yx1RNfJxlDxucY+ixQX9Q3GQZp2cf008eV+zcd9UidTxOizBh66v5TKdDWrGgr9l
- Z+GO7Q7qCT4jbT7uVtiCYVSkXKNfCggWfr3o6CiUPLATQ/QDel8TgHCWDqQh1OZRw56k
- jJug==
+ bh=EmsKfQPb+phFt2HKZnH8E/xSwMnb6ZMpj9GAaYtCOVo=;
+ b=cD7JTJkKyo56EeSf90o1Ngg+wJM1RNAQCq7WG1A875e2lLmjzxeqGxBekp+lsy4xPF
+ E/3jv5QEq5GRLEa2hs8XUlbH1RCQJcvCtWnuC62Jj8ZGC14zA7B1hIUApuNIvd4n8YaP
+ IMENFLZkiooS8z8yYFOfZ7qoCuxTOV19yI3vrmcu8FAe/EQF5EMpmftfTuxoJ91W/h7j
+ 6PbnwpX295WGMDgpYWtt4Gjnwd1fQANbkAdzPFoekz4ML80fhWeraNoYuJtuBZfXHRlM
+ noOJf6Ji/wPpNER1zQYPUl8Z6qoVXmic25xZH3lHjGvKBB0ZraZS66wdil2Jy4mh4nnu
+ Dnvw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWUBRU4XYAtCaKlY622d6XEju2dkOBho5wnYa+I5yd6hXxc1hVgPXCl6+AXc5QLpjXA5TYF3DtlOpby4AQ=@nongnu.org
-X-Gm-Message-State: AOJu0YwAxRCft+CjDnCxozQjHqgNHoq3KG9+anAK1pP3ZIpdCDCYZwZU
- uFqFz510S29/bzOYycUbsQAA9DHMCYGpJOorPEp9UFFEdCZS95WjEG/Czw08Kr8qbHg=
-X-Gm-Gg: ASbGncvvUwtbKgmKShgqW3kPyJ6kWWemrvCleF7+Zqr6EjXsFw+tp7wmNpw8AlVdOQm
- 5KMXOLf9IHhwtaItI0f4QELW4rOyjgq1BXF5NvuadLmxCe4cMQ9GXFIeFABdvwV4bwZcGapTl0C
- SPp50PpsuuymNwd+i8QmSrXBIrX4BmlC2SWdS0VqXq11QrCqkWv6N9UrqgLTFqOwpFq1ImVHh3s
- K6+RN1RYlMqnLE87g7EYc5XJVAxJw9CDf0LaKN32sTHdzhZNJ63y9P6IFFdVfmN1AjCnobICMFR
- plg8ZhsrJ5oxz+B4Lag1XOzT45zrpkOkV0+FFsaDpvJW1mz18myQg2dfW+TuCQo9X+ZP7jcLdbn
- +swqoDuux18TQhULNcamu/Ecppt/eZqcDGPg0btMSo5JJOdkGWx6k7fx4GRsoelnC1aGumxfQ0f
- fSnYvucsf/Uiu8j61h8pbYJG1lQnafwTPM4tGHk+h6Pnw=
-X-Google-Smtp-Source: AGHT+IHL2e+xkqrY2z45o8okqwvYRzoRFUyKTPAOhBYDif7RCGI5WWGGcqLjIX5xt/og3eQoETXiqw==
-X-Received: by 2002:a05:6000:290f:b0:428:436d:7d7e with SMTP id
- ffacd0b85a97d-428436d8072mr7663928f8f.60.1761062005961; 
- Tue, 21 Oct 2025 08:53:25 -0700 (PDT)
+ AJvYcCUbGzhfykhUcm+/+88S9SyGQ2fTGcb3hHxRDTrwE0JUez+GKz7E58S1TuXo6LDIn6YdCsCHjX72Jve1TRs=@nongnu.org
+X-Gm-Message-State: AOJu0YxvlIDZnPnybgJXLA7cwGnpfDl47KPi7oL9iujmc7njORmWPW+k
+ JtikyaXwXV7J1QgOWOtNeKeDRA+Eldax/jNVUWEqdYrKV5zvCTrv/I4gKREW52G10cM=
+X-Gm-Gg: ASbGnctPtXQBCxiFuYj8ckXJQ6/ptb+RQXBbEwTMvMMQTQx6a9TjsdlUx12AlVaIHl1
+ ARlkzR6bad1ivLnnhC8M1AIfigZqjH68seQLvc9wosVwQ/TKnQjl6YAf+4KIdRo1F2YotdTRPen
+ 1iNlb/VIFQyPTLadUgpQuyr7ZwOz/ZEs4amZZyTSZyJurWitgLcqsgjzbQr9Fj3/DsoaCv6mGgf
+ cbZYTHGIffQoXFDGAnmDESCA2S/HpqZlW2Mog0dmMgyVdKWClfwVNHgcsXgLyQHvIujFU9tW4Ka
+ 2GQVq0yO2ZCftI8QHQ2IUKyaNohhuykY49C45vZZpBt9zV6VTeYd0NmlAzeuGpco4YDSMfIOTY/
+ KyoSEkryhgQjJPvj3qFjiR/ZfRMT5ZM67p7nA+jLsSDn+yVf/Q5dlCnAlPODkpdNUaf6fN6eh5A
+ RT0gzwklk/003Z9Nf5tZpc++1AQoDUs7VcdljNiu+ZZbKGiQlA775/zA==
+X-Google-Smtp-Source: AGHT+IF1MmWzJKWbkzi17y79YgTkCd9mQLumlvX/g6V6H92HE0rBKfrbkoNhjBpfHnwGz+8efMIeKg==
+X-Received: by 2002:a05:600c:458b:b0:471:1702:f41a with SMTP id
+ 5b1f17b1804b1-47117919f1bmr138586925e9.33.1761062254190; 
+ Tue, 21 Oct 2025 08:57:34 -0700 (PDT)
 Received: from [192.168.69.221] (88-187-86-199.subs.proxad.net.
  [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-427ea5b3c56sm21201225f8f.18.2025.10.21.08.53.24
+ 5b1f17b1804b1-47154d3843csm201798655e9.11.2025.10.21.08.57.32
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Oct 2025 08:53:25 -0700 (PDT)
-Message-ID: <af8debe8-8bde-4e16-840e-9d1c760e23d0@linaro.org>
-Date: Tue, 21 Oct 2025 17:53:24 +0200
+ Tue, 21 Oct 2025 08:57:33 -0700 (PDT)
+Message-ID: <04c7e205-80f3-4f24-aa78-a68c63d2af7a@linaro.org>
+Date: Tue, 21 Oct 2025 17:57:32 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 05/10] hw/rtc/mc146818rtc: Assert correct usage of
- mc146818rtc_set_cmos_data()
+Subject: Re: [PATCH v3 07/10] hw/i386/apic: Prefer APICCommonState over
+ DeviceState
 Content-Language: en-US
 To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
 Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
@@ -87,13 +87,13 @@ Cc: Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
  Sunil Muthuswamy <sunilmut@microsoft.com>,
  Marcelo Tosatti <mtosatti@redhat.com>
 References: <20251019210303.104718-1-shentey@gmail.com>
- <20251019210303.104718-6-shentey@gmail.com>
+ <20251019210303.104718-8-shentey@gmail.com>
 From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251019210303.104718-6-shentey@gmail.com>
+In-Reply-To: <20251019210303.104718-8-shentey@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::436;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x436.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -116,17 +116,52 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 19/10/25 23:02, Bernhard Beschow wrote:
-> The offset is never controlled by the guest, so any misuse constitutes a
-> programming error and shouldn't be silently ignored. Fix this by using assert().
+On 19/10/25 23:03, Bernhard Beschow wrote:
+> Makes the APIC API more type-safe by resolving quite a few APIC_COMMON
+> downcasts.
 
-Would be nice to document the prototype.
+Nice!
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-
+> Like PICCommonState, the APICCommonState is now a public typedef while staying
+> an abstract datatype.
 > 
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
->   hw/rtc/mc146818rtc.c | 5 ++---
->   1 file changed, 2 insertions(+), 3 deletions(-)
+>   include/hw/i386/apic.h           | 33 +++++------
+>   include/hw/i386/apic_internal.h  |  7 +--
+>   target/i386/cpu.h                |  4 +-
+>   target/i386/kvm/kvm_i386.h       |  2 +-
+>   target/i386/whpx/whpx-internal.h |  2 +-
+>   hw/i386/kvm/apic.c               |  3 +-
+>   hw/i386/vapic.c                  |  2 +-
+>   hw/i386/x86-cpu.c                |  2 +-
+>   hw/intc/apic.c                   | 97 +++++++++++++-------------------
+>   hw/intc/apic_common.c            | 56 +++++++-----------
+>   target/i386/cpu-apic.c           | 18 +++---
+>   target/i386/cpu-dump.c           |  2 +-
+>   target/i386/cpu.c                |  2 +-
+>   target/i386/kvm/kvm.c            |  2 +-
+>   target/i386/whpx/whpx-apic.c     |  3 +-
+>   15 files changed, 95 insertions(+), 140 deletions(-)
+
+
+> -int apic_get_highest_priority_irr(DeviceState *dev)
+> +int apic_get_highest_priority_irr(APICCommonState *s)
+>   {
+> -    APICCommonState *s;
+> -
+> -    if (!dev) {
+> +    if (!s) {
+>           /* no interrupts */
+
+Pre-existing dubious check.
+
+>           return -1;
+>       }
+> -    s = APIC_COMMON(dev);
+>       return get_highest_priority_int(s->irr);
+>   }
+
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+
 
