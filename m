@@ -4,125 +4,116 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14F63CCD1AA
-	for <qemu-trivial@archiver.kernel.org>; Tue, 21 Oct 2025 20:58:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7D253CCD193
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Oct 2025 06:56:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vBJQP-0008T8-3X; Tue, 21 Oct 2025 16:57:45 -0400
+	id 1vBpEp-0002Sy-MQ; Thu, 23 Oct 2025 02:55:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1vBJQH-0008Rj-Nb
- for qemu-trivial@nongnu.org; Tue, 21 Oct 2025 16:57:38 -0400
-Received: from smtp-out1.suse.de ([195.135.223.130])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBpEo-0002Sc-1E
+ for qemu-trivial@nongnu.org; Thu, 23 Oct 2025 02:55:54 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <farosas@suse.de>) id 1vBJQF-0002Dy-4Q
- for qemu-trivial@nongnu.org; Tue, 21 Oct 2025 16:57:37 -0400
-Received: from imap1.dmz-prg2.suse.org (imap1.dmz-prg2.suse.org
- [IPv6:2a07:de40:b281:104:10:150:64:97])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by smtp-out1.suse.de (Postfix) with ESMTPS id F064D21187;
- Tue, 21 Oct 2025 20:57:23 +0000 (UTC)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1761080248; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=C8NgEsvKHw4S/0o9XZLFVi0wqJV4aLQ5QpnfJp2smIw=;
- b=zl08H+V2b9H/odq9By+hsSd0SyjiAxMLGUMbgdWFgIAO4ivPMDY3Q6cO9AwSrkD6bOnH6B
- p3WTBBYNbDaS8SowUl2lyVn/9fvgaWOc5hj9tyUjEc8DbQxqptqh6WRBQyESuLHc5ZzeJ4
- MLX/Yf5CQFloWgsAhmVu8PpPyEpIJuE=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1761080248;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=C8NgEsvKHw4S/0o9XZLFVi0wqJV4aLQ5QpnfJp2smIw=;
- b=Lxmwkk15+oyCtIe5tuK+g+bNdbZGbDTQAo8oCM74YQqO2P64ym3Z20FMm9KVpu8c7rzov+
- PObXePgy6BuySoBA==
-Authentication-Results: smtp-out1.suse.de;
- dkim=pass header.d=suse.de header.s=susede2_rsa header.b=pfsvATfO;
- dkim=pass header.d=suse.de header.s=susede2_ed25519 header.b=sU2ngF7A
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=suse.de; s=susede2_rsa;
- t=1761080243; h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=C8NgEsvKHw4S/0o9XZLFVi0wqJV4aLQ5QpnfJp2smIw=;
- b=pfsvATfOr9yXC6KGsBRsRphA7jv7d2FkHeTgsKyWjSssuJ4I5g4OPB2MyhoCBGQY6C+ce1
- KDXj0TxAEYtkDVDPzU7FLiw/o24PCtSuvclM/InZYDd5zmhMlJ7+kJKWjjHjTCiA8d8d5x
- VTO4R3RxSV7IvxozCVGqv9mXu+dMTIs=
-DKIM-Signature: v=1; a=ed25519-sha256; c=relaxed/relaxed; d=suse.de;
- s=susede2_ed25519; t=1761080243;
- h=from:from:reply-to:date:date:message-id:message-id:to:to:cc:cc:
- mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=C8NgEsvKHw4S/0o9XZLFVi0wqJV4aLQ5QpnfJp2smIw=;
- b=sU2ngF7AGrXZ23O04cXcj96A2vxU/7Gcry2UpvfN+MtV7Fklk+cgQlMKLG8EXrPv+nr8fK
- K9hFHqgobgMvAnDw==
-Received: from imap1.dmz-prg2.suse.org (localhost [127.0.0.1])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (4096 bits) server-digest SHA256)
- (No client certificate requested)
- by imap1.dmz-prg2.suse.org (Postfix) with ESMTPS id 688E9139D2;
- Tue, 21 Oct 2025 20:57:23 +0000 (UTC)
-Received: from dovecot-director2.suse.de ([2a07:de40:b281:106:10:150:64:167])
- by imap1.dmz-prg2.suse.org with ESMTPSA id SYMMC7Pz92hUXAAAD6G6ig
- (envelope-from <farosas@suse.de>); Tue, 21 Oct 2025 20:57:23 +0000
-From: Fabiano Rosas <farosas@suse.de>
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Laurent Vivier <lvivier@redhat.com>, Eduardo Habkost
- <eduardo@habkost.net>, John Snow <jsnow@redhat.com>, Laurent Vivier
- <laurent@vivier.eu>, kvm@vger.kernel.org, Zhao Liu <zhao1.liu@intel.com>,
- qemu-trivial@nongnu.org, Marcel Apfelbaum <marcel.apfelbaum@gmail.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Sunil Muthuswamy
- <sunilmut@microsoft.com>, Marcelo Tosatti <mtosatti@redhat.com>, Michael
- Tokarev <mjt@tls.msk.ru>, Richard Henderson
- <richard.henderson@linaro.org>, qemu-block@nongnu.org, Paolo Bonzini
- <pbonzini@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Bernhard Beschow
- <shentey@gmail.com>
-Subject: Re: [PATCH 8/8] tests/qtest/ds1338-test: Reuse from_bcd()
-In-Reply-To: <20251017113338.7953-9-shentey@gmail.com>
-References: <20251017113338.7953-1-shentey@gmail.com>
- <20251017113338.7953-9-shentey@gmail.com>
-Date: Tue, 21 Oct 2025 17:57:20 -0300
-Message-ID: <87ikg8t1lb.fsf@suse.de>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBpEm-0003rH-Es
+ for qemu-trivial@nongnu.org; Thu, 23 Oct 2025 02:55:53 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-471b80b994bso5483435e9.3
+ for <qemu-trivial@nongnu.org>; Wed, 22 Oct 2025 23:55:51 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1761202551; x=1761807351; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=yBjsiZOdEn77FHXbaFH/pyzY5kAYbLCRT+sJz0dq6fA=;
+ b=MAl0EdifKB7nEfBtFd4hmJ4NHsVqUegp720GrbjTUGvyCUMMC/sSoebrAhUxBuuceq
+ mYSlkBJzXrDb1XG5t/73Wmp9T/kPygmYbZ5iJdbInvW/3oMhSswTFconW+4fCKW5vYgs
+ rzTJbSG1jpwblLkjxNVwe5JK2ps/hxv6DcJEGK35B3Tloj/x7UplzX+Us0Hez13jNQOX
+ PzWzYg0diG8WxGCUVbI92bEU6WrzEB57DU+FXHNUsWKEpkQRki4ZS2rclW9C4FOPea+b
+ +062MqgYokmahzDF8VawksuMzdC2l7siO06+TVOV9rbNxECJcPKKqcNXJIceYKJxCApo
+ A/CA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1761202551; x=1761807351;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=yBjsiZOdEn77FHXbaFH/pyzY5kAYbLCRT+sJz0dq6fA=;
+ b=QDZgKBUl5VCcxFMSZXy/lj6HcZOkqieKL3P5D5ti2JVLQEeqb4QkX79lNtynBE000L
+ BPXiN/b56Zzi/3khuFoYrCm/vJHqiE18xsFJJ5DnbvHIsil8Ch0GQjFRKurVpndmCZTw
+ sR1VV3ZsX07w+Co24lCrowia8pZstvkQdbGTU3RpRwP7yP9bVrn8e3Zu78j55D5cSqB5
+ TsYggc5RXvek6XLBPAIeRt/vPMPPZcA1HmiGCZmS8ILRE/8NOPizqPAksAVnYINUw/0q
+ CwwTn6uvv8JIhfAQzzSYbXZEffSG24j/nY4jif0XL7ptjlHJntxmQoAm29aiEKAjT8OC
+ GgEw==
+X-Gm-Message-State: AOJu0YxbB5t1cjrl63wwG//Qft2V3/ixVdIVJcioKXGEqCiPqjXqoBti
+ h56OZPCfeSBDHBpg4SLYi+/Wvkujtmvw3nGCka565TjEbUiv/vBF8S9X+Naksb5hPzg=
+X-Gm-Gg: ASbGnctnX1i/bM2ePtRZ1SHXA4KBHl/49id6iZym7FN7upSqagqEOpuWdWNrel0YgC5
+ mfVfdfwto1G2jyL8TpnoXzZbhSAv3gL9Ep86VHlNbmAEAxCaWFO3AxuIoaEOWNR1cCjYBJwRqx/
+ 3z8qfhcW/MbBIlk97K1Ea+MdpHPQXM0RO2Dwu9HDeThIOdO66xo15aczA/ma8uccU4XViO3NyNq
+ EYtKdGjGUOWxUwjjEZCcI4TIdzW8uFKd3zt8v0C0JOqZkx8Gf54XLcDk1ObBtKMEPfBsM1fEt/r
+ ZfoX0WvlfmVscSf1ZMdBqKQyO5DOnhl9+FRj0vm3OTCz3KakrYBdjo5ADkjlxBUGuTm1tELxDKb
+ 9RaDrCtAPpeKxOKTfxMY9SLzoCYd1mjjbLgP0biQoZSE+imItANwI+V5N9XL6VLw+heoDFnPXRL
+ FyYOMTFOHhVc7pYdujcKTJm0MuQ2nhLkcGvauEd2CX4He2RfbtzhgYSQ==
+X-Google-Smtp-Source: AGHT+IFc7GZgQ+HjgYh3w9CjXImj+3Na+YnYobgCi3dJmLowW01x3YzXkb4t8JrWd9L/fU1Q9uMKFQ==
+X-Received: by 2002:a05:600c:4ec9:b0:46e:2562:e7b8 with SMTP id
+ 5b1f17b1804b1-471179123admr170521105e9.21.1761202550629; 
+ Wed, 22 Oct 2025 23:55:50 -0700 (PDT)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-429897ff3f5sm2354381f8f.22.2025.10.22.23.55.48
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 22 Oct 2025 23:55:50 -0700 (PDT)
+Message-ID: <c013adf2-9620-4766-8f5b-1000ed1a494a@linaro.org>
+Date: Thu, 23 Oct 2025 08:55:47 +0200
 MIME-Version: 1.0
-Content-Type: text/plain
-X-Rspamd-Queue-Id: F064D21187
-X-Rspamd-Action: no action
-X-Rspamd-Server: rspamd1.dmz-prg2.suse.org
-X-Spamd-Result: default: False [-2.80 / 50.00]; BAYES_HAM(-2.79)[99.09%];
- SUSPICIOUS_RECIPS(1.50)[]; NEURAL_HAM_LONG(-1.00)[-1.000];
- NEURAL_HAM_SHORT(-0.20)[-1.000];
- R_DKIM_ALLOW(-0.20)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- MIME_GOOD(-0.10)[text/plain]; MX_GOOD(-0.01)[];
- TO_MATCH_ENVRCPT_ALL(0.00)[];
- DKIM_SIGNED(0.00)[suse.de:s=susede2_rsa,suse.de:s=susede2_ed25519];
- RBL_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:104:10:150:64:97:from]; 
- ARC_NA(0.00)[]; RCPT_COUNT_TWELVE(0.00)[19];
- FREEMAIL_TO(0.00)[gmail.com,nongnu.org]; MIME_TRACE(0.00)[0:+];
- SPAMHAUS_XBL(0.00)[2a07:de40:b281:104:10:150:64:97:from];
- FREEMAIL_ENVRCPT(0.00)[gmail.com]; RCVD_TLS_ALL(0.00)[];
- TO_DN_SOME(0.00)[]; RCVD_COUNT_TWO(0.00)[2];
- DNSWL_BLOCKED(0.00)[2a07:de40:b281:106:10:150:64:167:received,2a07:de40:b281:104:10:150:64:97:from];
- FROM_EQ_ENVFROM(0.00)[]; FROM_HAS_DN(0.00)[];
- FREEMAIL_CC(0.00)[redhat.com,habkost.net,vivier.eu,vger.kernel.org,intel.com,nongnu.org,gmail.com,microsoft.com,tls.msk.ru,linaro.org];
- MID_RHS_MATCH_FROM(0.00)[]; TAGGED_RCPT(0.00)[];
- DKIM_TRACE(0.00)[suse.de:+];
- RECEIVED_SPAMHAUS_BLOCKED_OPENRESOLVER(0.00)[2a07:de40:b281:106:10:150:64:167:received];
- MISSING_XM_UA(0.00)[]; RCVD_VIA_SMTP_AUTH(0.00)[];
- DBL_BLOCKED_OPENRESOLVER(0.00)[suse.de:dkim, suse.de:mid, suse.de:email,
- imap1.dmz-prg2.suse.org:rdns, imap1.dmz-prg2.suse.org:helo]
-Received-SPF: pass client-ip=195.135.223.130; envelope-from=farosas@suse.de;
- helo=smtp-out1.suse.de
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] remove redundant typedef when use
+ OBJECT_DECLARE_SIMPLE_TYPE
+Content-Language: en-US
+To: Nguyen Dinh Phi <phind.uet@gmail.com>,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ Zhenwei Pi <pizhenwei@bytedance.com>, Alberto Garcia <berto@igalia.com>,
+ =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony PERARD <anthony@xenproject.org>, Paul Durrant <paul@xen.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>,
+ Peter Maydell <peter.maydell@linaro.org>,
+ Bernhard Beschow <shentey@gmail.com>, Jason Wang <jasowang@redhat.com>,
+ Huacai Chen <chenhuacai@kernel.org>, Jiaxun Yang <jiaxun.yang@flygoat.com>,
+ Nicholas Piggin <npiggin@gmail.com>,
+ Harsh Prateek Bora <harshpb@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Helge Deller <deller@gmx.de>, Tyrone Ting <kfting@nuvoton.com>,
+ Hao Wu <wuhaotsh@google.com>, Aditya Gupta <adityag@linux.ibm.com>,
+ Glenn Miles <milesg@linux.ibm.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
+ <liwei1518@gmail.com>, Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>, Fam Zheng <fam@euphon.net>,
+ Alex Williamson <alex@shazbot.org>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@redhat.com>, Laurent Vivier <lvivier@redhat.com>,
+ Amit Shah <amit@kernel.org>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Pavel Pisa <pisa@cmp.felk.cvut.cz>,
+ Francisco Iglesias <francisco.iglesias@amd.com>,
+ Vikram Garhwal <vikram.garhwal@bytedance.com>
+Cc: qemu-trivial@nongnu.org, qemu-devel@nongnu.org,
+ xen-devel@lists.xenproject.org, qemu-arm@nongnu.org, qemu-ppc@nongnu.org,
+ qemu-riscv@nongnu.org
+References: <20251023063429.1400398-1-phind.uet@gmail.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20251023063429.1400398-1-phind.uet@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -139,12 +130,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Bernhard Beschow <shentey@gmail.com> writes:
+On 23/10/25 08:34, Nguyen Dinh Phi wrote:
+> When OBJECT_DECLARE_SIMPLE_TYPE is used, it automatically provides
+> the typedef, so we don’t have to define it ourselves.
+> 
+> Signed-off-by: Nguyen Dinh Phi <phind.uet@gmail.com>
+> ---
+>   backends/cryptodev-lkcf.c               | 1 -
+>   hw/char/ipoctal232.c                    | 9 ++++-----
+>   hw/char/xen_console.c                   | 1 -
+>   hw/dma/pl330.c                          | 6 ++----
+>   hw/net/fsl_etsec/etsec.h                | 1 -
+>   hw/net/xen_nic.c                        | 2 --
+>   hw/pci-host/bonito.c                    | 7 +++----
+>   hw/ppc/pef.c                            | 1 -
+>   hw/usb/dev-mtp.c                        | 7 +++----
+>   hw/usb/dev-uas.c                        | 7 +++----
+>   include/hw/char/serial.h                | 1 -
+>   include/hw/input/lasips2.h              | 6 ++----
+>   include/hw/misc/auxbus.h                | 7 +++----
+>   include/hw/misc/bcm2835_mphi.h          | 7 ++-----
+>   include/hw/misc/npcm7xx_pwm.h           | 7 ++-----
+>   include/hw/pci-host/pnv_phb3.h          | 6 ++----
+>   include/hw/pci-host/pnv_phb4.h          | 8 ++++----
+>   include/hw/ppc/mac_dbdma.h              | 7 +++----
+>   include/hw/riscv/iommu.h                | 3 ---
+>   include/hw/scsi/scsi.h                  | 7 +++----
+>   include/hw/vfio/vfio-container-legacy.h | 5 ++---
+>   include/hw/virtio/virtio-serial.h       | 5 ++---
+>   include/net/can_emu.h                   | 7 +++----
+>   23 files changed, 43 insertions(+), 75 deletions(-)
 
-> from_bcd() is a public API function which can be unit-tested. Reuse it to avoid
-> code duplication.
->
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-Reviewed-by: Fabiano Rosas <farosas@suse.de>
 
