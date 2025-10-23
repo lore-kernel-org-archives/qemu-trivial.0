@@ -4,98 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 097BECCD1BC
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Oct 2025 14:33:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D780FCCD1BC
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Oct 2025 14:46:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vBwNc-0000Pw-7x; Thu, 23 Oct 2025 10:33:28 -0400
+	id 1vBwZw-0008Sa-Li; Thu, 23 Oct 2025 10:46:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1vBwNZ-0000AK-Id
- for qemu-trivial@nongnu.org; Thu, 23 Oct 2025 10:33:25 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1vBwNW-00028u-DM
- for qemu-trivial@nongnu.org; Thu, 23 Oct 2025 10:33:25 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761229999;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=g+DEaRGWFavcvPAdzstc9Bst74ovSImAqm6Qi6wTsoE=;
- b=WTbT+zkDXBJiHgDCnBDN/4Sk4PVftORywTWoFmBDxvMmSUoI5neJdn78GsDYxoUfdhAaxg
- SpTUnsJxqt/AM4ACRKf3EOpq4fGazDDjuccmqYSduEEMFkC0lp9VYUKP9WDM9TW6+zfcq3
- IfwkVjcSchXajUJPb5sZ7X/I+ZvkcJY=
-Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
- [209.85.160.199]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-668-ayOgbXp-NHyeSZN1rvLISQ-1; Thu, 23 Oct 2025 10:33:17 -0400
-X-MC-Unique: ayOgbXp-NHyeSZN1rvLISQ-1
-X-Mimecast-MFC-AGG-ID: ayOgbXp-NHyeSZN1rvLISQ_1761229996
-Received: by mail-qt1-f199.google.com with SMTP id
- d75a77b69052e-4e8984d8833so40442961cf.0
- for <qemu-trivial@nongnu.org>; Thu, 23 Oct 2025 07:33:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBwZu-0008Rq-85
+ for qemu-trivial@nongnu.org; Thu, 23 Oct 2025 10:46:11 -0400
+Received: from mail-wm1-x334.google.com ([2a00:1450:4864:20::334])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vBwZs-0004Hm-5m
+ for qemu-trivial@nongnu.org; Thu, 23 Oct 2025 10:46:10 -0400
+Received: by mail-wm1-x334.google.com with SMTP id
+ 5b1f17b1804b1-4710022571cso9721415e9.3
+ for <qemu-trivial@nongnu.org>; Thu, 23 Oct 2025 07:46:07 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1761230766; x=1761835566; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=Qp3pcsU2dEu0k14ENpLaGUQV2wB7bT2BOba+91AwC9c=;
+ b=u0rZLBmbU3CU/ZxdgQsFL3mp0kKCF6M2QxO1TjiAJYu6PP/soz4g23fpO5kjwODVfq
+ 5+LpTlwK+QIJE4ILUjrles9MTdpZ8t7IEpgIZ9AbJUaJbgJgm94BmFyx0RgN2PMEqUuJ
+ RYTnC+cntnwRRRSczUOH8G26edRQQfrdAuU+OsFvaDf1a16pN6WvXI9U+Mz8I0UO6AVp
+ f+Q6cTOfJcPqeqyS03svZ2wuka7HluCOA6lqXRxtURJaztn3Zy2gsyCQEgTRFs0svB5F
+ 4s7NaszvoG4S34ZSrQgUe9f0TV3Bet0T7zXZR2gYJES2PeC8uLmZfxUcDMIzbtInmmaA
+ kXLg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761229996; x=1761834796;
- h=in-reply-to:content-disposition:mime-version:references:message-id
- :subject:cc:to:from:date:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=g+DEaRGWFavcvPAdzstc9Bst74ovSImAqm6Qi6wTsoE=;
- b=jwRHwuuCoCij5k2rruXjLr+yI/W5rsVG7ZFoeGelhfr2YsN+7QNARkcx5qIuzs0OKe
- Nbo2S2vbwlPiKNW0Fg57204+hVXzb2oQrVdqRQkmEfP+sS0k8n4zGQcEHnQLBV/En9d0
- SAHTG6kIaKIr7OqIUbvY+YiRXblBjNEW626v+H4lnXSBxkXxYUVcqX0aQh9PEYQeYKLJ
- m+rSus2eydxQjLQYs0FIMjSyRA5H1IULvg5T+KTUXHH6Ehq41qaJKd6eRppqCdWOXJsW
- iMzUlq5zjFX5n3yWla2oarC2iM+jK4jS0/kOsmhEFwCbT3Vq6XOwHaOy8l/ccceDhxkg
- R01Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXJK62Q57v1FlGYu/eLdSOkpuv9naZVSiXu9i4JH8QFcp1MsCLK7oJ37+dyM52Ln14AuGAmVzxy8+UChsk=@nongnu.org
-X-Gm-Message-State: AOJu0Yzl8cuRWw32xpaF3umIeEfM2LSJhnfn3+bJ4SYjA0B6sQZaT3Zm
- 80QGg+4vpkDaV2hdp0QT4/WJAygBS8590mwsv/pH7PL4SlgXBK57LNrt8hFy9T4pMTiezNqVnMZ
- LIYBh1dgds3QXJKHNeQTBVgeaWo+X6CaG7qV5cbfDxmdmXcNFi2wKfoE+Fuc=
-X-Gm-Gg: ASbGnctk97fSGlC4N1QT2jNxCglQtrLE5YWbaEjpEV1DRJXP/jqDPjwW0Wl4iFWBRJL
- j9matg9ARMpD5esZEiDmd22lDRLY2P49LZ+hWw5o0nnxuMptRTBLfD44SZDzvJOOgJ4vC4D+UgP
- BTDyMcgXWwmGbQwuGnYjhZo3unec2lzWlzbHxUPwFeuZQKieHApZUxmACtJL2VMjKFG0IeRuC2X
- rLT0WVvQw+A9W2EX8/GvIt3I4YOoeX00Ohxq4Z6DKJA/QKqwlYjGq2AzOSckSEV/rqG0JybazeZ
- aa5TncBoxUHuuj00AruZUUd14bg54x6m8zze2PXMleQQDTQzNJpO1MUfk150anqfBUk=
-X-Received: by 2002:ac8:5f93:0:b0:4e7:216e:1fcd with SMTP id
- d75a77b69052e-4e89d35c9ebmr317131671cf.54.1761229996568; 
- Thu, 23 Oct 2025 07:33:16 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHied5OjtwhoYeyIx9Q7nJTiKxElPcQVirOIJ2rszQPPVyavsq0hgJZ2VfT8488dKEtsSlfMw==
-X-Received: by 2002:ac8:5f93:0:b0:4e7:216e:1fcd with SMTP id
- d75a77b69052e-4e89d35c9ebmr317131111cf.54.1761229996024; 
- Thu, 23 Oct 2025 07:33:16 -0700 (PDT)
-Received: from x1.local ([142.188.210.50]) by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-87f9e7f6a19sm15982606d6.55.2025.10.23.07.33.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 23 Oct 2025 07:33:15 -0700 (PDT)
-Date: Thu, 23 Oct 2025 10:33:12 -0400
-From: Peter Xu <peterx@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Fabiano Rosas <farosas@suse.de>
+ d=1e100.net; s=20230601; t=1761230766; x=1761835566;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=Qp3pcsU2dEu0k14ENpLaGUQV2wB7bT2BOba+91AwC9c=;
+ b=GuDhXNRZMtaPlWGEkGa8ZQiq4uWdQ0VCYGsOdEEIowIo7y5A4emrhlEjtg2L9/pgef
+ ulnUk3xzmqez/rrIrhpmh7pVq10sCnIWC4mfUEptmEwLpsqerPGlNYFD2MV2CcSVQSvg
+ DJWlH+Vzorum+R0QlQU/i3yVzzqSaJc0WJ/Z1Db3zOO4xB1Ij2/+4GjOVi+K3O6Rs/Rz
+ XXdTaoo/1MD+QSJZAgrMTwuEtYhC8Ohmbx0TWjA4Yb+FzqAHC0m3IM16KGOcay2tGrcu
+ NDTShlMtXxNBKx3mSsE0+ppvmpLE+CGzoDHbJ9vptWVOc4H48IJW75CEg8zpEciArubv
+ jTEw==
+X-Gm-Message-State: AOJu0YwuwrO+xBE3zvnfLufBbHbDyqfMvrFQQFcaZjh9CrhbNuI+gl9C
+ KgHHA2mul35eDexEl9Aj34Rt0lY0q+d5xFsizT/EwLN7BWdJFE9WiQQd6S9Uss3cynI=
+X-Gm-Gg: ASbGncsCbmQmKiNJaY/0mGKAmfexr4UMSSIx5Lb3uHRYemQcXpPB4d2UTnHn00p1Zak
+ /JLGgJXyMEGey//8YWi20c7zw6jlD/WSqux1diqpjlGhrQ8xpTrOvdRSmbbbqxjZdagwR+Dq1b/
+ NK0wRuxgjvO/JF5Yd7o3lvKJC1HZqhDPIbxCCzDmhhUXbrLhqVgWPGbU/EGmE/9gmT+wqraHO0T
+ EsJzvQF98WvpEqmKxtKozxGKpJW0VFf5hkAZWGoRnDjWDEDEV7nQ8mcE88dKl89wKlNa7XneHI9
+ AtY7jcYjonhYhS8O+1uAbATBiS153mh8EyVatNTsVJa4Ne9zs5bWhklX6UMKT3oWzx2koyh1cGW
+ ki46JuKefZuh6uMI82TGCIkjWBlkPL/X4XocOItKuNE0cTwqJ76RsrwNGAHEK65nwKp5C4YgPkm
+ UEY4Q4n/+ip1DzktmdK79eyiylZGJrCiRQI/X1CHOqhEk=
+X-Google-Smtp-Source: AGHT+IE486+GHoPqxGwVa66A7ZfMKoN5pHCSigRczAqY9dZXX4byWlO7S7mT/jRdyUyjNFyYCvkC2w==
+X-Received: by 2002:a05:600c:450c:b0:46e:38cc:d3e2 with SMTP id
+ 5b1f17b1804b1-47117906a23mr191876125e9.22.1761230765892; 
+ Thu, 23 Oct 2025 07:46:05 -0700 (PDT)
+Received: from [192.168.69.201] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-474949f0312sm62697415e9.0.2025.10.23.07.46.04
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 23 Oct 2025 07:46:05 -0700 (PDT)
+Message-ID: <b619588b-6b6f-43e5-893c-93e04b963ed3@linaro.org>
+Date: Thu, 23 Oct 2025 16:46:04 +0200
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2 2/2] migration/vmstate: remove
  VMSTATE_BUFFER_POINTER_UNSAFE macro
-Message-ID: <aPo8qL4zg3LEXMpq@x1.local>
+Content-Language: en-US
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Peter Xu <peterx@redhat.com>,
+ Fabiano Rosas <farosas@suse.de>
 References: <20251023135316.31128-1-mjt@tls.msk.ru>
  <20251023135316.31128-3-mjt@tls.msk.ru>
-MIME-Version: 1.0
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
 In-Reply-To: <20251023135316.31128-3-mjt@tls.msk.ru>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: WFSN4gmDxu2wfk4sPkaJ2ajy7Y5GbqdvxCDT0OCIV8E_1761229996
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::334;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x334.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,15 +103,17 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Thu, Oct 23, 2025 at 04:53:10PM +0300, Michael Tokarev wrote:
+On 23/10/25 15:53, Michael Tokarev wrote:
 > The only user of this macro was VirtIONet.vlans, which has been
 > converted to regular VMSTATE_BUFFER.
 > 
 > Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>   include/migration/vmstate.h | 9 ---------
+>   1 file changed, 9 deletions(-)
 
-Acked-by: Peter Xu <peterx@redhat.com>
+Yay!
 
--- 
-Peter Xu
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
