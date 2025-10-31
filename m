@@ -4,97 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD941CCF9FC
-	for <qemu-trivial@archiver.kernel.org>; Thu, 30 Oct 2025 13:22:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69987CCFA02
+	for <qemu-trivial@archiver.kernel.org>; Fri, 31 Oct 2025 20:49:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vESbU-0006Ss-RB; Thu, 30 Oct 2025 09:22:13 -0400
+	id 1vEw3o-0002eV-9C; Fri, 31 Oct 2025 16:49:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nanliu@redhat.com>) id 1vELWS-0002LJ-FW
- for qemu-trivial@nongnu.org; Thu, 30 Oct 2025 01:48:32 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <nanliu@redhat.com>) id 1vELWP-0000NI-9o
- for qemu-trivial@nongnu.org; Thu, 30 Oct 2025 01:48:31 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1761803304;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=zKDXzeGoT92LMljzjA5alHgmCQRBI+W+byfC8plt9yI=;
- b=GHMldwFLOEqZ1iHJW0U6BIUmwzGcc84okkZtTxJF5gK+WFBM1sR2RSWq7xq4P0AaBS+LXQ
- t7Zk+IkLrUoWy63vDXaMAPBGZf9AXUyfcHHlkAYYohF5zrLf+JuM2jSrKDlWK6LFblKDY0
- ZPFg98ARS3Sq6g4+yddBnCMa7T6z7Fw=
-Received: from mail-ed1-f71.google.com (mail-ed1-f71.google.com
- [209.85.208.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-639-Jv0gQbCeOFqa50uWN1lPPg-1; Thu, 30 Oct 2025 01:47:05 -0400
-X-MC-Unique: Jv0gQbCeOFqa50uWN1lPPg-1
-X-Mimecast-MFC-AGG-ID: Jv0gQbCeOFqa50uWN1lPPg_1761803224
-Received: by mail-ed1-f71.google.com with SMTP id
- 4fb4d7f45d1cf-63c348b15f9so498284a12.0
- for <qemu-trivial@nongnu.org>; Wed, 29 Oct 2025 22:47:05 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEw3l-0002cJ-Te
+ for qemu-trivial@nongnu.org; Fri, 31 Oct 2025 16:49:21 -0400
+Received: from mail-wm1-x342.google.com ([2a00:1450:4864:20::342])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vEw3d-0005k6-SQ
+ for qemu-trivial@nongnu.org; Fri, 31 Oct 2025 16:49:20 -0400
+Received: by mail-wm1-x342.google.com with SMTP id
+ 5b1f17b1804b1-46e6a689bd0so25563865e9.1
+ for <qemu-trivial@nongnu.org>; Fri, 31 Oct 2025 13:49:09 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1761943747; x=1762548547; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=K4vzKiOpSEPLbPdX9g4kxHhPangU7MLtZcrVapfDmrw=;
+ b=aDEWhpnzgefKUpnfWAWPY9eOVAk2Bpm9xxmD2ES9j8VhCMY6IP/EcYGGuYiNG1bAVD
+ q+B7vNKNNokZycOvk5VvsWsQzRcFclGIPCqLBrqoPvjbk/LUTRDvUdDsNnc/NMKiEtKk
+ NazsY0uzR9NW20UI177Bf1dBRtaSVgkW9WicmgII3f0C/abY8Ateduzbj7ZBbElu2+eU
+ C9sQGrWr2SHatC6KGym88W1xWprnKleRHICAbP4hoBCI6KQpE/q/Dj5xuU/Dku6jfnZK
+ CHQNrLgHPXXBwYNPdO01f8ozJibPy0k0OkH9kpraFG3HzJushu8sxXdqbVo2Wq+QrZig
+ lJxg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1761803224; x=1762408024;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=zKDXzeGoT92LMljzjA5alHgmCQRBI+W+byfC8plt9yI=;
- b=pAcnbFy9MyuXxwA05VTWt6fdpTVrk5s4wHWeiSGN7HyOEN9hRRyuqV5snr9ynE1jSZ
- Bl1DLQ5i/Qxsiu10APih3FrfldtL5XK8/6klOFxNOV2EJaN2s6j7+n8tKQ3OADcY5uL+
- doN879aaldl5hrMM8tg71+bBQrf5j8RpOxyN+e3JnZ5SDuXRVipNftcmQ52m4kHjLJEN
- Cx7jSqGMD7LY0t5FxwfomZQrQzTzXcw1ZsJRhAJowWFQhd0OAaVHyhvhxgKgk5EvRjMa
- pc2MKwRVnopQT2POnVYfSM3lYGxLe4hiu73kka4V7da++16Zitxh7BlPF3ONdpB2Xx3b
- jYBA==
+ d=1e100.net; s=20230601; t=1761943747; x=1762548547;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=K4vzKiOpSEPLbPdX9g4kxHhPangU7MLtZcrVapfDmrw=;
+ b=gjOp8OZ5C7HLmlSE7d/R6SWKoDDaN8HK+9UdHdnqqhlhuYqfRBaapQz41ZZwKXc6SN
+ 6OlhX4TzQQZN4NAENp4+fXovTRoUwZdwc516sQXq6gU1He8V4R+MQJv60oW+Yja4D/WQ
+ luv38ZWm90yE7aq+mKXQfK2td0Bhn3CvcffN7JZYHM1zhyhP0DJtj6I+8ATw4FS6J0G3
+ eOJlolQhC4rbNRIg+1kPan3tJPKHDSvw7KU7gMcWdgbn3RUHWagqu0wORp6DTAaVsGnd
+ G7CX1ViNPTU6BpzykgTTg9XdITZ1J+Zz99gM5msvbg40zgtIpA77sIFvAmVpXrdTSXlV
+ LMvQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWqMWzDqTcEYabXEkKCZVQwCKXn2lKGY//ghHiwTzZbien31n4vSlgWPJoX8GKogpdWKW34nO61EjmXw4I=@nongnu.org
-X-Gm-Message-State: AOJu0Yy90msldND7dH6KFQL2Tv9oolDy8AftnVWYjPv6SEFd7q7/YFq6
- 0Kid44r401l9xKw/LEl9ODO9oFMml8p7J319umdpaR3uoDDChbDw++Q753K+aAWQWoHh7wpQ8X7
- RmOuDUFdcG21QZlhVPIu+Zu7xlWJ9K3+S+5gn37FQrZnsC6SjYc9C8VDIE4Wbzl5Vaq/D8pjaL3
- X8bidsfiqWseSuXzlWpE1eqpnhx/I3/13+MA==
-X-Gm-Gg: ASbGnctiWEP6vtM4XkKfmgxFphNblNTVBMlpPVLha1l4Fm19zGWtvUTfakvl284CygH
- lV17kpL/cDYKNyO7ZlgkvIz3n1ykMyVXIIrn/gdKdaRq5h3bIrdtd8HfGEbyhr2pTp6M5cGk7QZ
- FBXbEhSOtIsSytAPR75wcI93JHsT9ku0sYsXoGBcW5EIZ2ifJa7ZBi/Kjt
-X-Received: by 2002:a05:6402:3553:b0:633:d0b7:d6d2 with SMTP id
- 4fb4d7f45d1cf-64061a3f66cmr1571639a12.18.1761803224236; 
- Wed, 29 Oct 2025 22:47:04 -0700 (PDT)
-X-Google-Smtp-Source: AGHT+IHv1p+gOEEmlhrPO8SsbzlyARRTmp7Hn7fRGHKuEIr0We62RhhnOazO3T6eYWOP9K6TIwjDSY9U8jkDvo3Vris=
-X-Received: by 2002:a05:6402:3553:b0:633:d0b7:d6d2 with SMTP id
- 4fb4d7f45d1cf-64061a3f66cmr1571626a12.18.1761803223816; Wed, 29 Oct 2025
- 22:47:03 -0700 (PDT)
+ AJvYcCW5zpZ2C3cLU9EOw5YmcwmKFZfg3YL+fBNOdqbjsUvcBt4rMTdHMt46Kxc2g/kHl5gP5KBiSr50W5N8eLM=@nongnu.org
+X-Gm-Message-State: AOJu0YweyNfdQxjKhnC7hELEA8W33yEf752kxq263nlWrvwe/0Xpybx5
+ 5m8sQczGers9Qd57fdiaFM07K9SkeeljSySJRFldp50aS2JxQ/7+QyEaCTAyYctbq85w3dbGaHW
+ 1JBf1mhzazMnD
+X-Gm-Gg: ASbGncumO4pUganLdCuvbjOzHBS/Q2qYfeE/L9GKlslhVIN7G1MGUv65NNI04+asHFE
+ kAZbQ5Nq4+RM6e/LXt1FKPpswLBsqeesY/wXU6/adJZeW+UrzlPplllGGFqyz35h1sWIvOpIreX
+ 7Bkj4mouy0jg4thcBu/bS5scwDkcrBzYMttRAHo/LS78Z8NuLjsLS3Nr9x7F9rKZB5/R496DoUi
+ UCEP/CGiqn3GEfgeis0dINqbzmEPax2C6V7mm6DjmPr266j9BFUieziwFh0x28ZNjF+mfKSDw5F
+ x7j020h4/JOUHTn3BeRkdIkkwL37TJ7TnjJ3TOkSQb3YTXTf4skqjGpouMwRN8L3JwdoSO+hlpS
+ oe7o3VoFmJ+BdXwEXLiTLAZyLtBA9bwUcnKzW0dguO65raHEW5L0UAzdOeerYjwa5nwPhRKv/Cz
+ i8iaquHeJhomiGrYzwXtdO5cTD1ZkSh5hRHHFO+a4KWa2zwOD9c4bjlTMAPvNurj/6kA==
+X-Google-Smtp-Source: AGHT+IGTm8J5MorjQnazo5DI+siLkW2PZYdFtm3Won7iNXGDYOMfmY2fBN8B3VXnbXdWMWJvW7g+fg==
+X-Received: by 2002:a05:600d:6352:b0:45f:28d2:bd38 with SMTP id
+ 5b1f17b1804b1-4773163825dmr22363895e9.18.1761943746917; 
+ Fri, 31 Oct 2025 13:49:06 -0700 (PDT)
+Received: from [192.168.1.17] (adijon-656-1-155-31.w90-33.abo.wanadoo.fr.
+ [90.33.190.31]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4773c394e6csm14053995e9.15.2025.10.31.13.49.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 31 Oct 2025 13:49:06 -0700 (PDT)
+Message-ID: <80c53cdb-45eb-48c5-978f-bcc30fe832bf@linaro.org>
+Date: Fri, 31 Oct 2025 21:49:05 +0100
 MIME-Version: 1.0
-References: <20250922065714.93081-1-nanliu@redhat.com>
- <CAFEAcA8pLFu6eOK5N+E97qo5PCp3OW3BRfYNSEL7=YQS6+eh2g@mail.gmail.com>
- <fcf01a1c-3503-4397-a41b-d453ca2b7df9@tls.msk.ru>
- <CAFEAcA_BR4VEsZrq1eq19E6iguk49W=Fx2OKQvkvTZ7_6Pd0KA@mail.gmail.com>
-In-Reply-To: <CAFEAcA_BR4VEsZrq1eq19E6iguk49W=Fx2OKQvkvTZ7_6Pd0KA@mail.gmail.com>
-From: NaNa Liu <nanliu@redhat.com>
-Date: Thu, 30 Oct 2025 13:46:52 +0800
-X-Gm-Features: AWmQ_bmMsu5UWgtKZu-L-DwXOOZmZTOPccIj-DRmRArJnWINPBcLK69IAOEkaPs
-Message-ID: <CANUVZAznv1aP5DH6pHEQBZGxczkoNVQfKR5oOV7eTyrk4rVrpQ@mail.gmail.com>
-Subject: Re: [PATCH] docs/devel: Correct uefi-vars-x64 device name
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org, kraxel@redhat.com,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 0Q016-qSR_Q8oSlNs3xwg6qKu7C5FgnuCAO73lgCLtg_1761803224
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="00000000000051eab7064259c7cd"
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=nanliu@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/xen: Avoid non-inclusive language in params.h
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: Stefano Stabellini <sstabellini@kernel.org>,
+ Anthony PERARD <anthony@xenproject.org>, Paul Durrant <paul@xen.org>,
+ "Edgar E. Iglesias" <edgar.iglesias@gmail.com>, qemu-trivial@nongnu.org
+References: <20251013111152.25807-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20251013111152.25807-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::342;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x342.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 30 Oct 2025 09:22:02 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -109,83 +105,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
---00000000000051eab7064259c7cd
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+On 13/10/25 13:11, Thomas Huth wrote:
+> From: Thomas Huth <thuth@redhat.com>
+> 
+> Copy the latest version of Xen's params.h to the QEMU repository:
+> 
+> https://xenbits.xen.org/gitweb/?p=xen.git;a=commitdiff;h=0291089f6ea81690f37035a124d54c51fa7ba097#patch8
+> 
+> With this patch, we get rid of a non-inclusive word in the comment
+> there.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   include/hw/xen/interface/hvm/params.h | 9 ++-------
+>   1 file changed, 2 insertions(+), 7 deletions(-)
 
-On Sat, Sep 27, 2025 at 7:41=E2=80=AFPM Peter Maydell <peter.maydell@linaro=
-.org>
-wrote:
-
-> On Sat, 27 Sept 2025 at 09:48, Michael Tokarev <mjt@tls.msk.ru> wrote:
-> >
-> > On 23.09.2025 14:57, Peter Maydell wrote:
-> >
-> > > We could probably also correct the bit of the text in this file
-> > > that currently reads "depend on SMM emulation on x64" to either
-> > > say "x86" or "x86_64".
-> >
-> > This one will be a bit more than trivial :)  I for one don't know
-> > if this is related to any x86 or to x86_64 only.
->
-> I just mean exactly and specifically the one place in this
-> file which says "x64" and ought to say either "x86" or
-> "x86_64". To me a single word change is pretty trivial,
-> especially since nowhere else in our docs do we use "x64".
->
-> This is to ensure consistency between the documentation and the API code
-(var-service-api.h) parameters and json file, which use "uefi-vars-x64".
-
-
-Thanks.
-Nana
-
-
-
-> -- PMM
->
->
-
---00000000000051eab7064259c7cd
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div dir=3D"ltr"><br></div><br><div class=3D"gmail_quote g=
-mail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Sat, Sep 27,=
- 2025 at 7:41=E2=80=AFPM Peter Maydell &lt;<a href=3D"mailto:peter.maydell@=
-linaro.org">peter.maydell@linaro.org</a>&gt; wrote:<br></div><blockquote cl=
-ass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid=
- rgb(204,204,204);padding-left:1ex">On Sat, 27 Sept 2025 at 09:48, Michael =
-Tokarev &lt;<a href=3D"mailto:mjt@tls.msk.ru" target=3D"_blank">mjt@tls.msk=
-.ru</a>&gt; wrote:<br>
-&gt;<br>
-&gt; On 23.09.2025 14:57, Peter Maydell wrote:<br>
-&gt;<br>
-&gt; &gt; We could probably also correct the bit of the text in this file<b=
-r>
-&gt; &gt; that currently reads &quot;depend on SMM emulation on x64&quot; t=
-o either<br>
-&gt; &gt; say &quot;x86&quot; or &quot;x86_64&quot;.<br>
-&gt;<br>
-&gt; This one will be a bit more than trivial :)=C2=A0 I for one don&#39;t =
-know<br>
-&gt; if this is related to any x86 or to x86_64 only.<br>
-<br>
-I just mean exactly and specifically the one place in this<br>
-file which says &quot;x64&quot; and ought to say either &quot;x86&quot; or<=
-br>
-&quot;x86_64&quot;. To me a single word change is pretty trivial,<br>
-especially since nowhere else in our docs do we use &quot;x64&quot;.<br>
-<br></blockquote><div>This is to ensure consistency between the documentati=
-on and the API code (var-service-api.h) parameters and json file, which use=
-=C2=A0&quot;uefi-vars-x64&quot;.<br></div><div><br></div><div><br></div><di=
-v>Thanks.</div><div>Nana</div><div><br></div><div>=C2=A0</div><blockquote c=
-lass=3D"gmail_quote" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px soli=
-d rgb(204,204,204);padding-left:1ex">
--- PMM<br>
-<br>
-</blockquote></div></div>
-
---00000000000051eab7064259c7cd--
-
+Merged as commit aba49488cb4.
 
