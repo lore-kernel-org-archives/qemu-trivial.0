@@ -4,34 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 42632CCFA03
-	for <qemu-trivial@archiver.kernel.org>; Sat,  1 Nov 2025 13:13:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A484CCFA03
+	for <qemu-trivial@archiver.kernel.org>; Sat,  1 Nov 2025 13:15:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vFBPk-000794-P7; Sat, 01 Nov 2025 09:13:04 -0400
+	id 1vFBSE-00083W-OJ; Sat, 01 Nov 2025 09:15:40 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1vFBPi-00078I-OB; Sat, 01 Nov 2025 09:13:02 -0400
+ id 1vFBRn-0007r0-Aj; Sat, 01 Nov 2025 09:15:11 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1vFBPf-0001ec-87; Sat, 01 Nov 2025 09:13:02 -0400
+ id 1vFBRc-0001w3-Kz; Sat, 01 Nov 2025 09:15:07 -0400
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id D2B4C1652E4;
- Sat, 01 Nov 2025 16:12:40 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 791381652E6;
+ Sat, 01 Nov 2025 16:14:45 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 97A24309F2B;
- Sat, 01 Nov 2025 16:12:52 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id 402FE309F2C;
+ Sat, 01 Nov 2025 16:14:57 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
  Rodrigo Dias Correa <r@drigo.nl>, Kostiantyn Kostiuk <kkostiuk@redhat.com>
-Subject: [PATCH trivial v2] qga: use access(2) to check for command existance
+Subject: [PATCH trivial v3] qga: use access(2) to check for command existance
  instead of questionable stat(2)
-Date: Sat,  1 Nov 2025 16:12:46 +0300
-Message-ID: <20251101131250.792706-1-mjt@tls.msk.ru>
+Date: Sat,  1 Nov 2025 16:14:55 +0300
+Message-ID: <20251101131456.792868-1-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
@@ -84,6 +84,8 @@ qga/commands-posix.c
 Fixes: c5b4afd4d56e "qga: Support guest shutdown of BusyBox-based systems"
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
+v3: and actually don't forget to commit the changes.
+    I'm sorry for the noize.
 v2: fix reverse logic of the access() tests.
     I should write code more often :)
 
@@ -91,7 +93,7 @@ v2: fix reverse logic of the access() tests.
  1 file changed, 3 insertions(+), 9 deletions(-)
 
 diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-index c7059857e4..0f4d6d96cc 100644
+index c7059857e4..7785150fe4 100644
 --- a/qga/commands-posix.c
 +++ b/qga/commands-posix.c
 @@ -213,12 +213,6 @@ out:
@@ -112,19 +114,19 @@ index c7059857e4..0f4d6d96cc 100644
      slog("guest-shutdown called, mode: %s", mode);
      if (!mode || strcmp(mode, "powerdown") == 0) {
 -        if (file_exists(POWEROFF_CMD_PATH)) {
-+        if (access(POWEROFF_CMD_PATH, X_OK)) {
++        if (access(POWEROFF_CMD_PATH, X_OK) == 0) {
              shutdown_cmd = POWEROFF_CMD_PATH;
          }
          shutdown_flag = powerdown_flag;
      } else if (strcmp(mode, "halt") == 0) {
 -        if (file_exists(HALT_CMD_PATH)) {
-+        if (access(HALT_CMD_PATH, X_OK)) {
++        if (access(HALT_CMD_PATH, X_OK) == 0) {
              shutdown_cmd = HALT_CMD_PATH;
          }
          shutdown_flag = halt_flag;
      } else if (strcmp(mode, "reboot") == 0) {
 -        if (file_exists(REBOOT_CMD_PATH)) {
-+        if (access(REBOOT_CMD_PATH, X_OK)) {
++        if (access(REBOOT_CMD_PATH, X_OK) == 0) {
              shutdown_cmd = REBOOT_CMD_PATH;
          }
          shutdown_flag = reboot_flag;
