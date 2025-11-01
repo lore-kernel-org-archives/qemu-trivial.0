@@ -4,46 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A484CCFA03
-	for <qemu-trivial@archiver.kernel.org>; Sat,  1 Nov 2025 13:15:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D2FCCCFA02
+	for <qemu-trivial@archiver.kernel.org>; Sun,  2 Nov 2025 00:41:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vFBSE-00083W-OJ; Sat, 01 Nov 2025 09:15:40 -0400
+	id 1vFMA5-0003ax-TM; Sat, 01 Nov 2025 20:41:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1vFBRn-0007r0-Aj; Sat, 01 Nov 2025 09:15:11 -0400
-Received: from isrv.corpit.ru ([212.248.84.144])
+ (Exim 4.90_1) (envelope-from <r@drigo.nl>) id 1vFL2A-0003JR-Gz
+ for qemu-trivial@nongnu.org; Sat, 01 Nov 2025 19:29:22 -0400
+Received: from smtp-bc0c.mail.infomaniak.ch ([45.157.188.12])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1vFBRc-0001w3-Kz; Sat, 01 Nov 2025 09:15:07 -0400
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 791381652E6;
- Sat, 01 Nov 2025 16:14:45 +0300 (MSK)
-Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 402FE309F2C;
- Sat, 01 Nov 2025 16:14:57 +0300 (MSK)
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
- Rodrigo Dias Correa <r@drigo.nl>, Kostiantyn Kostiuk <kkostiuk@redhat.com>
-Subject: [PATCH trivial v3] qga: use access(2) to check for command existance
- instead of questionable stat(2)
-Date: Sat,  1 Nov 2025 16:14:55 +0300
-Message-ID: <20251101131456.792868-1-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.47.3
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ (Exim 4.90_1) (envelope-from <r@drigo.nl>) id 1vFL26-0007Yl-Uk
+ for qemu-trivial@nongnu.org; Sat, 01 Nov 2025 19:29:22 -0400
+Received: from smtp-3-0000.mail.infomaniak.ch (smtp-3-0000.mail.infomaniak.ch
+ [10.4.36.107])
+ by smtp-3-3000.mail.infomaniak.ch (Postfix) with ESMTPS id 4czYvv0Np7z5n2;
+ Sun,  2 Nov 2025 00:29:15 +0100 (CET)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=drigo.nl;
+ s=20241108; t=1762039754;
+ bh=I0JWtZX0yQJNag8Hihbx+M4jmHoojRc7kpXpfJidF50=;
+ h=Date:Cc:Subject:From:To:References:In-Reply-To:From;
+ b=E9gACsgQizbD5/6lEkRPGSNOe8JP6cCqhcEpjse7UzlcrmpY5bN69uPqWu5q6d9N0
+ 2xkVZB+j/D0LQjCAcq0dv+/iLwCQWH8sptIvD/Bp7su+fmX8v15eKTCSdOWi/oZG+P
+ Mv0x5Ak3J+2PkXNyE3EFUqlG6ol8E24yZ/KTevnzn8uqh/CzNaaYTZ4FFIcbJaaB2i
+ +hle5T/WOcEQi6IiFBHa4XjmqssU8iOihxVobQ+OD/c04OiYxGKeW9s55LRfrbmEUj
+ y55e67YxpMD8zXGnflDz8voaxX2AS+ZhKC+HHoF2pOt1J2dcclzPe8gTslSgXfH8H3
+ szL64yJnREIRw==
+Received: from unknown by smtp-3-0000.mail.infomaniak.ch (Postfix) with ESMTPA
+ id 4czYvt3B9YzDJ1; Sun,  2 Nov 2025 00:29:14 +0100 (CET)
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Sun, 02 Nov 2025 00:29:14 +0100
+Message-Id: <DDXQYO68GHXQ.NZTDPMLYKROT@drigo.nl>
+Cc: <qemu-trivial@nongnu.org>, "Kostiantyn Kostiuk" <kkostiuk@redhat.com>
+Subject: Re: [PATCH trivial v3] qga: use access(2) to check for command
+ existance instead of questionable stat(2)
+From: "Rodrigo Dias Correa" <r@drigo.nl>
+To: "Michael Tokarev" <mjt@tls.msk.ru>, <qemu-devel@nongnu.org>
+X-Mailer: aerc 0.20.0
+References: <20251101131456.792868-1-mjt@tls.msk.ru>
+In-Reply-To: <20251101131456.792868-1-mjt@tls.msk.ru>
+X-Infomaniak-Routing: alpha
+Received-SPF: pass client-ip=45.157.188.12; envelope-from=r@drigo.nl;
+ helo=smtp-bc0c.mail.infomaniak.ch
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 01 Nov 2025 20:41:36 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -58,79 +74,160 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-The code checks existance of a command (halt/poweroff/reboot) by using
-stat(2) and immediately checking for S_ISLNK() on the returned stat
-struct.  This check will never be true, because stat(2) always follows
-symbolic links and hence will either return ENOENT (in case of dangling
-symlink) or the properties for the final target file.  It is lstat(2)
-which might return information about the symlink itself.  However, even
-there, we want to check the final file properties, not the first symlink.
+On Sat Nov 1, 2025 at 2:14 PM CET, Michael Tokarev wrote:
 
-This check - S_ISLNK - is harmful but useless in this case.  However, it
-is confusing and it helps the wrong usage of stat(2) to spread, so it is
-better to remove it.
+> The code checks existance of a command (halt/poweroff/reboot) by using
 
-Additionally, the code would better to check for the executable bits
-of the final file, not check if it's a regular file - it's sort of
-dubious to have anything but regular files in /sbin/.
+> stat(2) and immediately checking for S_ISLNK() on the returned stat
 
-But a POSIX system provides another command which suits the purpose
-perfectly: it is access(2).  And it is so simple that it's not
-necessary to create a separate function when usin it.
+> struct.  This check will never be true, because stat(2) always follows
 
-Replace stat(2) with access(X_OK) to check for file existance in
-qga/commands-posix.c
+> symbolic links and hence will either return ENOENT (in case of dangling
 
-Fixes: c5b4afd4d56e "qga: Support guest shutdown of BusyBox-based systems"
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
-v3: and actually don't forget to commit the changes.
-    I'm sorry for the noize.
-v2: fix reverse logic of the access() tests.
-    I should write code more often :)
+> symlink) or the properties for the final target file.  It is lstat(2)
 
- qga/commands-posix.c | 12 +++---------
- 1 file changed, 3 insertions(+), 9 deletions(-)
+> which might return information about the symlink itself.  However, even
 
-diff --git a/qga/commands-posix.c b/qga/commands-posix.c
-index c7059857e4..7785150fe4 100644
---- a/qga/commands-posix.c
-+++ b/qga/commands-posix.c
-@@ -213,12 +213,6 @@ out:
-     return retcode;
- }
- 
--static bool file_exists(const char *path)
--{
--    struct stat st;
--    return stat(path, &st) == 0 && (S_ISREG(st.st_mode) || S_ISLNK(st.st_mode));
--}
--
- #define POWEROFF_CMD_PATH "/sbin/poweroff"
- #define HALT_CMD_PATH "/sbin/halt"
- #define REBOOT_CMD_PATH "/sbin/reboot"
-@@ -245,17 +239,17 @@ void qmp_guest_shutdown(const char *mode, Error **errp)
- 
-     slog("guest-shutdown called, mode: %s", mode);
-     if (!mode || strcmp(mode, "powerdown") == 0) {
--        if (file_exists(POWEROFF_CMD_PATH)) {
-+        if (access(POWEROFF_CMD_PATH, X_OK) == 0) {
-             shutdown_cmd = POWEROFF_CMD_PATH;
-         }
-         shutdown_flag = powerdown_flag;
-     } else if (strcmp(mode, "halt") == 0) {
--        if (file_exists(HALT_CMD_PATH)) {
-+        if (access(HALT_CMD_PATH, X_OK) == 0) {
-             shutdown_cmd = HALT_CMD_PATH;
-         }
-         shutdown_flag = halt_flag;
-     } else if (strcmp(mode, "reboot") == 0) {
--        if (file_exists(REBOOT_CMD_PATH)) {
-+        if (access(REBOOT_CMD_PATH, X_OK) == 0) {
-             shutdown_cmd = REBOOT_CMD_PATH;
-         }
-         shutdown_flag = reboot_flag;
--- 
-2.47.3
+> there, we want to check the final file properties, not the first symlink.
+
+>
+
+> This check - S_ISLNK - is harmful but useless in this case.  However, it
+
+> is confusing and it helps the wrong usage of stat(2) to spread, so it is
+
+> better to remove it.
+
+>
+
+> Additionally, the code would better to check for the executable bits
+
+> of the final file, not check if it's a regular file - it's sort of
+
+> dubious to have anything but regular files in /sbin/.
+
+>
+
+> But a POSIX system provides another command which suits the purpose
+
+> perfectly: it is access(2).  And it is so simple that it's not
+
+> necessary to create a separate function when usin it.
+
+>
+
+> Replace stat(2) with access(X_OK) to check for file existance in
+
+> qga/commands-posix.c
+
+>
+
+> Fixes: c5b4afd4d56e "qga: Support guest shutdown of BusyBox-based systems=
+"
+
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+
+
+Reviewed-by: Rodrigo Dias Correa <r@drigo.nl>
+
+Thanks for fixing it.
+Rodrigo
+> ---
+
+> v3: and actually don't forget to commit the changes.
+
+>     I'm sorry for the noize.
+
+> v2: fix reverse logic of the access() tests.
+
+>     I should write code more often :)
+
+>
+
+>  qga/commands-posix.c | 12 +++---------
+
+>  1 file changed, 3 insertions(+), 9 deletions(-)
+
+>
+
+> diff --git a/qga/commands-posix.c b/qga/commands-posix.c
+
+> index c7059857e4..7785150fe4 100644
+
+> --- a/qga/commands-posix.c
+
+> +++ b/qga/commands-posix.c
+
+> @@ -213,12 +213,6 @@ out:
+
+>      return retcode;
+
+>  }
+
+> =20
+
+> -static bool file_exists(const char *path)
+
+> -{
+
+> -    struct stat st;
+
+> -    return stat(path, &st) =3D=3D 0 && (S_ISREG(st.st_mode) || S_ISLNK(s=
+t.st_mode));
+
+> -}
+
+> -
+
+>  #define POWEROFF_CMD_PATH "/sbin/poweroff"
+
+>  #define HALT_CMD_PATH "/sbin/halt"
+
+>  #define REBOOT_CMD_PATH "/sbin/reboot"
+
+> @@ -245,17 +239,17 @@ void qmp_guest_shutdown(const char *mode, Error **e=
+rrp)
+
+> =20
+
+>      slog("guest-shutdown called, mode: %s", mode);
+
+>      if (!mode || strcmp(mode, "powerdown") =3D=3D 0) {
+
+> -        if (file_exists(POWEROFF_CMD_PATH)) {
+
+> +        if (access(POWEROFF_CMD_PATH, X_OK) =3D=3D 0) {
+
+>              shutdown_cmd =3D POWEROFF_CMD_PATH;
+
+>          }
+
+>          shutdown_flag =3D powerdown_flag;
+
+>      } else if (strcmp(mode, "halt") =3D=3D 0) {
+
+> -        if (file_exists(HALT_CMD_PATH)) {
+
+> +        if (access(HALT_CMD_PATH, X_OK) =3D=3D 0) {
+
+>              shutdown_cmd =3D HALT_CMD_PATH;
+
+>          }
+
+>          shutdown_flag =3D halt_flag;
+
+>      } else if (strcmp(mode, "reboot") =3D=3D 0) {
+
+> -        if (file_exists(REBOOT_CMD_PATH)) {
+
+> +        if (access(REBOOT_CMD_PATH, X_OK) =3D=3D 0) {
+
+>              shutdown_cmd =3D REBOOT_CMD_PATH;
+
+>          }
+
+>          shutdown_flag =3D reboot_flag;
+
+
 
 
