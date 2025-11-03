@@ -4,96 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 497E5CCF9FE
-	for <qemu-trivial@archiver.kernel.org>; Mon,  3 Nov 2025 08:01:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 12B2ACCF9F8
+	for <qemu-trivial@archiver.kernel.org>; Mon,  3 Nov 2025 19:25:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vFpUo-0005k9-2x; Mon, 03 Nov 2025 03:00:58 -0500
+	id 1vG0Aq-0001Zq-62; Mon, 03 Nov 2025 14:25:04 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1vFpUa-0005fv-5n
- for qemu-trivial@nongnu.org; Mon, 03 Nov 2025 03:00:47 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vG0Ao-0001ZS-Q7
+ for qemu-trivial@nongnu.org; Mon, 03 Nov 2025 14:25:02 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <kkostiuk@redhat.com>)
- id 1vFpUN-0001zq-Vs
- for qemu-trivial@nongnu.org; Mon, 03 Nov 2025 03:00:42 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vG0Ae-0001nu-Rm
+ for qemu-trivial@nongnu.org; Mon, 03 Nov 2025 14:25:02 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762156827;
+ s=mimecast20190719; t=1762197887;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=WEOnqvrVe5lqRvRwouMSuCkR6COK8rXwo9PiUuo9tEc=;
- b=S+CgpU2yukHIpuj5guzHexgzWzlQWvFz2ZAdjKCigF8eNUQg4jOOxXEnlwF6+RFHYY4oEX
- HcP/C97DPobNKgi1mtS9dBm6sAcoNFWHPuT75MGQENd4Ykwg6BM7QuLyzQ10OBmUfD7X+m
- NZRLutCaj49WH0zbhdLw4rF9EuDtYWA=
-Received: from mail-qv1-f72.google.com (mail-qv1-f72.google.com
- [209.85.219.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-482-8sccPOiyNpC0q1Le2-SBoQ-1; Mon, 03 Nov 2025 03:00:25 -0500
-X-MC-Unique: 8sccPOiyNpC0q1Le2-SBoQ-1
-X-Mimecast-MFC-AGG-ID: 8sccPOiyNpC0q1Le2-SBoQ_1762156825
-Received: by mail-qv1-f72.google.com with SMTP id
- 6a1803df08f44-88044215975so101207386d6.1
- for <qemu-trivial@nongnu.org>; Mon, 03 Nov 2025 00:00:25 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762156825; x=1762761625;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=WEOnqvrVe5lqRvRwouMSuCkR6COK8rXwo9PiUuo9tEc=;
- b=pSxRADO8bujNE9IHkVWgHknyOHPPdU+72vLGbzHsta955vcd/0mnvZem6XO8tm6WYM
- MIZLsp8Rize6STk6Hrk7DLDJUq6O6TzrHZf+STLBFvYwfrTmauvlJqqMgobimrDg285/
- ccC3PxKInOSeGG2QdsJlvW9I+BrM9kfIXFqZE2+EkrRtc0fM+bx6piXp/apFO5OmWcX8
- 6yMF1eoL81y+w5aUkMKJabJO/e74BBc2dDUgUzoSfuGT928wds7DrY2wy9VvKHK2D332
- DBQjNJwCmRjdO4zLrj/9RhHQSI0WV+TB04qyitBYJ1bXSljzQLrmkm5eYgDuxJTGsnJ9
- IA0Q==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVQewyIuUkas6GJybICjPpvCoc7EhGqu/aVbGpY5bGH83K9w6JNdFrWyYh2F2MIelfpGqZ8yXtTvN252Cs=@nongnu.org
-X-Gm-Message-State: AOJu0YwuuvK9XIUYTH7IysIzClKssbR4hqWKEGI1bqeix5tFmdShYz+d
- tbpXwo+h9f6mTx3YoTMR2fFIfxhop511FntdK/iChzKmoKUXYB4j9yBFQI6IXQCHY9AIBB2SEiI
- BgBzH37yljI5VqGlLs2nOR8fLodZdOZ6MsGIZdHXlrX7dc6YSJof3HzXmLzL26XAnQdgbB0dnP7
- vTcKf1AUypkN+LQnYOnT4eazyFr379+mGJilDuzOJPpqsb
-X-Gm-Gg: ASbGnctRoyPnf3cGaD//D+SCaJmIh9pjW8e4fka3D2zuS8PKsxe8dLO6VpWMVxKApqD
- ckxFNWeKAbQzD0Z+VuDQcN6aH5GRIPdqy0lQfDlYga7adqVXDsRbY4v9brSYGbjW3RoN7QKWZlt
- +Q5+dFk5QmpPY/SAX1E8AL4XSFy0eCWWLF+Qx1WjKiV63ys7ueIc2AX4aR8Q==
-X-Received: by 2002:a05:6214:1d01:b0:880:4b27:1888 with SMTP id
- 6a1803df08f44-8804b272595mr68791906d6.3.1762156824905; 
- Mon, 03 Nov 2025 00:00:24 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IF1qEUI/ji5phzzEoagggFXrUYC2UIIeJn4HBlyYL2Gi6J9cT2vmZi4cuUvY6/qkTe5fkFYwziw6oblDyzBhqo=
-X-Received: by 2002:a05:6214:1d01:b0:880:4b27:1888 with SMTP id
- 6a1803df08f44-8804b272595mr68791476d6.3.1762156824395; Mon, 03 Nov 2025
- 00:00:24 -0800 (PST)
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=vqkKS9JGlo1RMbnwYGCV3TMVsvl0JFJzFF2uWZFBSuc=;
+ b=eZr9UoIPwYGytb6dTH4xVjl0esEmpM73l7TSPvq7qMBhaohW8j56XNPDSWLNoVYTbb6vLW
+ nGoqQ/IA/RYSRZMquPkECJ5Ir+iUuAVGxlqDkohGu0jwGpmUGBBGoG5dvUYGRLnb5jg9SD
+ blxET37lAqmXUbRktia8elDCCyA9yys=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-612-N2hCKHLlMGKjrn542TD6Dg-1; Mon,
+ 03 Nov 2025 14:24:43 -0500
+X-MC-Unique: N2hCKHLlMGKjrn542TD6Dg-1
+X-Mimecast-MFC-AGG-ID: N2hCKHLlMGKjrn542TD6Dg_1762197882
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 06C4B1956066; Mon,  3 Nov 2025 19:24:42 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.45.224.94])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 783D018004D8; Mon,  3 Nov 2025 19:24:38 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-devel@nongnu.org
+Cc: Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>
+Subject: [PATCH] tests/functional/mips64el: Silence issues reported by pylint
+Date: Mon,  3 Nov 2025 20:24:30 +0100
+Message-ID: <20251103192430.63278-1-thuth@redhat.com>
 MIME-Version: 1.0
-References: <20251101131456.792868-1-mjt@tls.msk.ru>
- <DDXQYO68GHXQ.NZTDPMLYKROT@drigo.nl>
- <7dd27991-9fd2-4efe-8fe9-0c8e61c182ee@tls.msk.ru>
-In-Reply-To: <7dd27991-9fd2-4efe-8fe9-0c8e61c182ee@tls.msk.ru>
-From: Kostiantyn Kostiuk <kkostiuk@redhat.com>
-Date: Mon, 3 Nov 2025 10:00:13 +0200
-X-Gm-Features: AWmQ_blsRTQHvEDPr1zDvnMhC9qxjBXnwyEzwDXuGlDXgU7WQFIceqQATZu_ioU
-Message-ID: <CAPMcbCp042BZuMMzuW-VXPj6UF8Z296Y_p=PEB_Sc1By6s5PMw@mail.gmail.com>
-Subject: Re: [PATCH trivial v3] qga: use access(2) to check for command
- existance instead of questionable stat(2)
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: Rodrigo Dias Correa <r@drigo.nl>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: FfGpeYj4YFfaIlo11MOf1XoWm1dd52Hvkn5bF8uWVKY_1762156825
-X-Mimecast-Originator: redhat.com
-Content-Type: multipart/alternative; boundary="0000000000008e9ad40642ac1bd4"
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=kkostiuk@redhat.com;
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HTML_MESSAGE=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01,
- RCVD_IN_MSPIKE_WL=-0.01, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ T_SPF_HELO_TEMPERROR=0.01,
+ T_SPF_TEMPERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,58 +82,108 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
---0000000000008e9ad40642ac1bd4
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
+From: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Kostiantyn Kostiuk <kkostiuk@redhat.com>
+Drop unused imports, annotate imports that are not at the top, but done
+on purpose in other locations, use f-strings where it makes sense, etc.
 
-Best Regards,
-Kostiantyn Kostiuk.
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/functional/mips64el/test_malta.py  | 15 ++++++++-------
+ tests/functional/mips64el/test_replay.py |  4 ++--
+ 2 files changed, 10 insertions(+), 9 deletions(-)
 
-
-On Sun, Nov 2, 2025 at 12:15=E2=80=AFPM Michael Tokarev <mjt@tls.msk.ru> wr=
-ote:
-
-> On 11/2/25 02:29, Rodrigo Dias Correa wrote:
-> ..> Thanks for fixing it.
->
-> Hi!
->
-> It wasn't really broken per se.  Just confusing.
->
-> Thanks,
->
-> /mjt
->
->
-
---0000000000008e9ad40642ac1bd4
-Content-Type: text/html; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-
-<div dir=3D"ltr"><div>Reviewed-by: Kostiantyn Kostiuk &lt;<a href=3D"mailto=
-:kkostiuk@redhat.com" target=3D"_blank">kkostiuk@redhat.com</a>&gt;</div><d=
-iv><br></div><div><div dir=3D"ltr" class=3D"gmail_signature" data-smartmail=
-=3D"gmail_signature"><div dir=3D"ltr"><div>Best Regards,</div><div>Kostiant=
-yn Kostiuk.</div></div></div></div><br></div><br><div class=3D"gmail_quote =
-gmail_quote_container"><div dir=3D"ltr" class=3D"gmail_attr">On Sun, Nov 2,=
- 2025 at 12:15=E2=80=AFPM Michael Tokarev &lt;<a href=3D"mailto:mjt@tls.msk=
-.ru">mjt@tls.msk.ru</a>&gt; wrote:<br></div><blockquote class=3D"gmail_quot=
-e" style=3D"margin:0px 0px 0px 0.8ex;border-left:1px solid rgb(204,204,204)=
-;padding-left:1ex">On 11/2/25 02:29, Rodrigo Dias Correa wrote:<br>
-..&gt; Thanks for fixing it.<br>
-<br>
-Hi!<br>
-<br>
-It wasn&#39;t really broken per se.=C2=A0 Just confusing.<br>
-<br>
-Thanks,<br>
-<br>
-/mjt<br>
-<br>
-</blockquote></div>
-
---0000000000008e9ad40642ac1bd4--
+diff --git a/tests/functional/mips64el/test_malta.py b/tests/functional/mips64el/test_malta.py
+index e37463dc291..bc750cb7ad6 100755
+--- a/tests/functional/mips64el/test_malta.py
++++ b/tests/functional/mips64el/test_malta.py
+@@ -10,7 +10,6 @@
+ # SPDX-License-Identifier: GPL-2.0-or-later
+ 
+ import os
+-import logging
+ 
+ from qemu_test import LinuxKernelTest, Asset
+ from qemu_test import exec_command_and_wait_for_pattern
+@@ -50,7 +49,7 @@ def test_mips64el_malta(self):
+         self.vm.add_args('-kernel', kernel_path,
+                          '-append', kernel_command_line)
+         self.vm.launch()
+-        console_pattern = 'Kernel command line: %s' % kernel_command_line
++        console_pattern = f'Kernel command line: {kernel_command_line}'
+         self.wait_for_console_pattern(console_pattern)
+ 
+     ASSET_KERNEL_3_19_3 = Asset(
+@@ -66,7 +65,7 @@ def test_mips64el_malta(self):
+         '75ba10cd35fb44e32948eeb26974f061b703c81c4ba2fab1ebcacf1d1bec3b61')
+ 
+     @skipUntrustedTest()
+-    def test_mips64el_malta_5KEc_cpio(self):
++    def test_mips64el_malta_5kec_cpio(self):
+         kernel_path = self.ASSET_KERNEL_3_19_3.fetch()
+         initrd_path = self.uncompress(self.ASSET_CPIO_R1)
+ 
+@@ -134,8 +133,8 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
+         Boot Linux kernel and check Tux logo is displayed on the framebuffer.
+         """
+ 
+-        import numpy as np
+-        import cv2
++        import numpy as np    # pylint: disable=import-outside-toplevel
++        import cv2            # pylint: disable=import-outside-toplevel
+ 
+         screendump_path = self.scratch_file('screendump.pbm')
+ 
+@@ -149,7 +148,7 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
+                                'clocksource=GIC console=tty0 console=ttyS0')
+         self.vm.add_args('-kernel', kernel_path,
+                          '-cpu', 'I6400',
+-                         '-smp', '%u' % cpu_cores_count,
++                         '-smp', str(cpu_cores_count),
+                          '-vga', 'std',
+                          '-append', kernel_command_line)
+         self.vm.launch()
+@@ -157,7 +156,7 @@ def do_test_i6400_framebuffer_logo(self, cpu_cores_count):
+         self.wait_for_console_pattern(framebuffer_ready)
+         self.vm.cmd('human-monitor-command', command_line='stop')
+         res = self.vm.cmd('human-monitor-command',
+-                          command_line='screendump %s' % screendump_path)
++                          command_line=f'screendump {screendump_path}')
+         if 'unknown command' in res:
+             self.skipTest('screendump not available')
+ 
+@@ -191,6 +190,8 @@ def test_mips_malta_i6400_framebuffer_logo_8cores(self):
+         self.do_test_i6400_framebuffer_logo(8)
+ 
+ 
++# Add the tests from the 32-bit mipsel file here, too.
++# pylint: disable=unused-import,wrong-import-position
+ from mipsel.test_malta import MaltaMachineYAMON
+ 
+ if __name__ == '__main__':
+diff --git a/tests/functional/mips64el/test_replay.py b/tests/functional/mips64el/test_replay.py
+index 05cc585f854..ce8dd28d722 100755
+--- a/tests/functional/mips64el/test_replay.py
++++ b/tests/functional/mips64el/test_replay.py
+@@ -23,7 +23,7 @@ def test_replay_mips64el_malta(self):
+         kernel_path = self.archive_extract(self.ASSET_KERNEL_2_63_2,
+                                     member='boot/vmlinux-2.6.32-5-5kc-malta')
+         kernel_command_line = self.KERNEL_COMMON_COMMAND_LINE + 'console=ttyS0'
+-        console_pattern = 'Kernel command line: %s' % kernel_command_line
++        console_pattern = f'Kernel command line: {kernel_command_line}'
+         self.run_rr(kernel_path, kernel_command_line, console_pattern, shift=5)
+ 
+ 
+@@ -40,7 +40,7 @@ def test_replay_mips64el_malta(self):
+         '75ba10cd35fb44e32948eeb26974f061b703c81c4ba2fab1ebcacf1d1bec3b61')
+ 
+     @skipUntrustedTest()
+-    def test_replay_mips64el_malta_5KEc_cpio(self):
++    def test_replay_mips64el_malta_5kec_cpio(self):
+         self.set_machine('malta')
+         self.cpu = '5KEc'
+         kernel_path = self.ASSET_KERNEL_3_19_3.fetch()
+-- 
+2.51.0
 
 
