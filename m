@@ -4,149 +4,118 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CD478CCFA05
-	for <qemu-trivial@archiver.kernel.org>; Wed,  5 Nov 2025 11:33:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50F18CCFA1A
+	for <qemu-trivial@archiver.kernel.org>; Tue, 11 Nov 2025 23:03:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vGblP-0002gN-3e; Wed, 05 Nov 2025 06:33:19 -0500
+	id 1vIxOF-0005Df-W9; Tue, 11 Nov 2025 18:03:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vGblN-0002fx-1I
- for qemu-trivial@nongnu.org; Wed, 05 Nov 2025 06:33:17 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <nmosier@stanford.edu>)
+ id 1vIwNb-0004X6-6s; Tue, 11 Nov 2025 16:58:23 -0500
+Received: from mx0a-00000d07.pphosted.com ([67.231.149.169])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vGblK-0004Xc-VE
- for qemu-trivial@nongnu.org; Wed, 05 Nov 2025 06:33:16 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762342393;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=/UMw9nswHEb4maATm3SJYi5gYDjZ2TkJAPA+qlGlTwY=;
- b=VWBY9MfqJ7wOYq1UFgYvMbOgaslXMA1KugUVgP4DugaKxDH87eKXzWikWC6zuYlnT/SjjN
- hQvjF4O/x8mYnYNGR16ssPWxhit5aUTGm1woQnN4JrFgNGbXjZH6vEUxEENHcHgIDoOgCK
- XnGgYfSK7Kv6wQaRyaAx6SBJfmLjONI=
-Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
- [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-584-V2EIFGwOMW-6NEboN636bg-1; Wed, 05 Nov 2025 06:33:12 -0500
-X-MC-Unique: V2EIFGwOMW-6NEboN636bg-1
-X-Mimecast-MFC-AGG-ID: V2EIFGwOMW-6NEboN636bg_1762342391
-Received: by mail-wm1-f72.google.com with SMTP id
- 5b1f17b1804b1-477212937eeso45117865e9.2
- for <qemu-trivial@nongnu.org>; Wed, 05 Nov 2025 03:33:12 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762342391; x=1762947191;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=/UMw9nswHEb4maATm3SJYi5gYDjZ2TkJAPA+qlGlTwY=;
- b=RiLO9dSyP0h6+jXTlJcGo4MdrFQTirY/A47oEVfn7KNA9RL3Bl9eqEsifSpQrlnhJz
- QsbQ4o2/4Q6zBSCdcqtJgIrbl1QgLk5NccddLyDBjnucJHH+NObppLKLL4b9zp2bt91c
- WzsW2oreoONBxyTq8S8AtvgX1jjJGEndvQXhlLZ31QZZ4xjf3oIgH6AC41KqhzFODJKH
- H9YOB1cNofmu3KNv8TWSPGW/C4V7/PFBcS6TtEGqS9HR28j6qs04ntWr7QxBpt9QaiNo
- lau7qn5eaokOt7q7+YaVQbpOOkVcB35x2PbHNp72tDnE5c+CGecxqb1YFCngPOYWwUK6
- 641g==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVFi2so2EAOMtu7qhY8Zf4ypCAPuCq2skOsxN4QEGs/VtY7SA9I8KJ6ZA0jJQAIRLvsLNreQgJgSwwWQ8I=@nongnu.org
-X-Gm-Message-State: AOJu0YwEG3TvMqSkdKzwMwy1Nh1eW9HlOuzg1adP4CBgdGQ0Cr7NmRTj
- sjFOl6eoi1Pb9db8IYFhN+D8scncI6TdPKlqy/0BggKOxkK9eEDhpAnccOy1UhTQXH0Fgv7pJCm
- JjcCbT5umbV/iC7j29+RAMiiq91J6bawbU1ip6n71abCgMzi+kVKWDxa2Lbk=
-X-Gm-Gg: ASbGnctRtDZwxsNXXL00gm3dtqRlvBLfZHan54cSOqmzrt8I8fn/N0BOGJWM5nHXbkS
- IovmJu8VJ1iZt4+zSTFZQCRxwf87oxLeXJlULIDldLY9yxjTuaaon5mN14R3SOIyItSOvMsXOeM
- KZHKRKoUi03Va2KNZovYPW0waSrrh/ay8xCzKECiflYmnRhlWHTHpb8ieRYeqwNpgerTu9n34qS
- Mx9ygNusuYhv0QXew8D1hO4xFgrg5g3N8+15MyE+g1PnZOjDY1Itn5rF9rBduwTLRn9pN2fReQE
- U+zRBvJ0VPj2PGP0XvqlcofP2qzl8tD93tQEQ/x4r52OGprwE9/gTiJaNPyOm7jNYOlcS6fCmqu
- 4DNtih+uKQvGPfLRs2iUqXOrXfzIpg3O54YolK2s=
-X-Received: by 2002:a05:600c:348f:b0:477:4345:7c59 with SMTP id
- 5b1f17b1804b1-4775ce52355mr25184455e9.40.1762342390969; 
- Wed, 05 Nov 2025 03:33:10 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFFBOfuPPGIty97KiLNatjfhIeG6CmPAjo/k8tuG9j4+onNNOvEicP9awECT7uMCaNj+iwvBw==
-X-Received: by 2002:a05:600c:348f:b0:477:4345:7c59 with SMTP id
- 5b1f17b1804b1-4775ce52355mr25184245e9.40.1762342390599; 
- Wed, 05 Nov 2025 03:33:10 -0800 (PST)
-Received: from [192.168.42.203] (tmo-083-103.customers.d1-online.com.
- [80.187.83.103]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4775ce2cde0sm45283105e9.15.2025.11.05.03.33.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 05 Nov 2025 03:33:10 -0800 (PST)
-Message-ID: <c0e39e96-c2c6-4cf6-b614-f54a3f9c7bb8@redhat.com>
-Date: Wed, 5 Nov 2025 12:33:09 +0100
+ (Exim 4.90_1) (envelope-from <nmosier@stanford.edu>)
+ id 1vIwNY-0006bo-Sp; Tue, 11 Nov 2025 16:58:22 -0500
+Received: from pps.filterd (m0342464.ppops.net [127.0.0.1])
+ by mx0a-00000d07.pphosted.com (8.18.1.2/8.18.1.2) with ESMTP id 5ABI5d50032276;
+ Tue, 11 Nov 2025 13:58:14 -0800
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=stanford.edu; h=
+ cc:content-transfer-encoding:content-type:date:from:message-id
+ :mime-version:subject:to; s=pps05272020; bh=WHcEqo/EFBnmLQwi/AMt
+ +0DUYs82gRLPKcS4RTKm3J8=; b=c3NvdVSgqOg2kPRxYF7PJkRJFLETWw37KIPp
+ 9CBxiO1pMtqiXA1sdK0INp1497PN7wc/SMxX30PaejBuXML1UPdAWaxAuUA5dJnS
+ XGafsmHLjG9FeV8Us1C7eu1ipwG1jE6dlUZHP6euA2b+/9hLDTqIkyWmzkUbjueV
+ Oa6PVf/6MHQa821yTBZYkTMqT6MTokL+l2g8TJiSNoBg922t4OSXCyqk5fN5qCHt
+ SnMyabnyhiYAUYF5LxjDAV9NcF9/1xSzc/iWXfaUPz+IZLMWvCd1J1ciOQ/xWX6S
+ PtBVqZOMl2O9cL99khPYFEuQUuqvjrISOagFVsI0uXociEtvrw==
+Received: from mx0b-00000d08.pphosted.com (mx0b-00000d08.pphosted.com
+ [67.231.152.67])
+ by mx0a-00000d07.pphosted.com (PPS) with ESMTPS id 4aat2cdfyh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 11 Nov 2025 13:58:13 -0800 (PST)
+Received: from pps.filterd (m0342825.ppops.net [127.0.0.1])
+ by m0342825.ppops.net (8.18.1.2/8.18.1.2) with ESMTP id 5ABK6AnL018059;
+ Tue, 11 Nov 2025 13:58:13 -0800
+Received: from pps.reinject (localhost [127.0.0.1])
+ by m0342825.ppops.net (PPS) with ESMTPS id 4ac14as7q8-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 11 Nov 2025 13:58:12 -0800 (PST)
+Received: from m0342825.ppops.net (m0342825.ppops.net [127.0.0.1])
+ by pps.reinject (8.18.1.12/8.18.0.8) with ESMTP id 5ABLup1N019486;
+ Tue, 11 Nov 2025 13:58:12 -0800
+Received: from smtp.stanford.edu (smtp4.stanford.edu [171.67.219.72])
+ by m0342825.ppops.net (PPS) with ESMTPS id 4ac14as7q6-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Tue, 11 Nov 2025 13:58:12 -0800 (PST)
+Received: from cafe-cet.stanford.edu (cafe-cet.stanford.edu [172.24.69.161])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ (Authenticated sender: nmosier@stanford.edu)
+ by smtp.stanford.edu (Postfix) with ESMTPSA id 37F059810B3;
+ Tue, 11 Nov 2025 13:58:11 -0800 (PST)
+From: Nicholas Mosier <nmosier@stanford.edu>
+Date: Tue, 11 Nov 2025 13:57:52 -0800
+Subject: [PATCH] i386/tcg/svm: fix comma operator typo
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] tests/functional/mips64el: Silence issues reported by
- pylint
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Jiaxun Yang <jiaxun.yang@flygoat.com>, qemu-devel@nongnu.org
-Cc: Aurelien Jarno <aurelien@aurel32.net>, Paolo Bonzini
- <pbonzini@redhat.com>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, qemu-trivial@nongnu.org
-References: <20251103192430.63278-1-thuth@redhat.com>
- <5dfe6daf-b8d6-4371-a4a4-6cf98977349f@linaro.org>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <5dfe6daf-b8d6-4371-a4a4-6cf98977349f@linaro.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: l82GuJysGouAeYU7B168II5JC7DJ7Pa87DH4ornURWU_1762342391
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20251111-i386-svm-vmexit-typo-fix-v1-1-49f0414472cd@stanford.edu>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAC/x2MSwqAMAwFryJZG7C1FfUq4kJt1Cz80JaiiHc3O
+ LsZeO+BQJ4pQJs94Clx4GMXUXkG0zrsCyE7cdCFtkpALusKQ9owbXRxxHifB8584WgnUo01Tls
+ DMj89Sf6vu/59P5LlMPVqAAAA
+X-Change-ID: 20251111-i386-svm-vmexit-typo-fix-b5ce1954d254
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org,
+ Nicholas Mosier <nmosier@stanford.edu>
+X-Mailer: b4 0.14.3
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1762898291; l=1515;
+ i=nmosier@stanford.edu; s=20251111; h=from:subject:message-id;
+ bh=YqhdKP8meyPzJFhYiJEWqdaXljbVXMoDtp0iAJM+Uvg=;
+ b=IVi0HYNN8k2PRA0iGacyHRtY7lBrPsGL9WJeIff895jWoFVSUNWSl3O2JQf0KD/0CSkkvF7tL
+ PY/rkH8kX4EC44UlMqoMU3wh3MEe8dG3rHhejTRtq4Y8A6QTUxOEq8U
+X-Developer-Key: i=nmosier@stanford.edu; a=ed25519;
+ pk=XjjXNIba23ZoFYPYMPd0ZwO7G1YZH4tzTWOg3crqj+Q=
+X-Proofpoint-GUID: 4wwLh2X7e_5l6v7eJAKXP_IX76WPNOot
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjUxMTExMDA2MCBTYWx0ZWRfXxxGFihXIatMW
+ qGtSY868mOUPfegtwJmHoqRBOaaSUN9YOf3xIamfh80C7tMAJms8VGTy+Fw+RVuveukTD0AufbT
+ MVS0g+G25tccTeFnsbMGteGnEJEp0CGrqFS40izEcUJpoDzQxBsNUtfqwRXWhMyNrEczlrvz5rD
+ 2fdTu9t/VbZx2gW9l+4UEEhEa/0QFc1WaUhDtl/fCCrXeEGRF8owyRVUSIqXf4muZiqeNsuURCo
+ k6YD8fuXOK5nMkIJxzoHKpeOx57viZVi1bGrYJb1c+knbRNbreg21EyqxYZgxC1S+gdb0QbOaoS
+ oudcfOZQRfcIAQEPb7TtS+sQQDYtvd+GfnOVOD3h4uLxXWHXQxU9c26jJUEskq6ry+qW66FVMuF
+ mHFAcwbMO5v8uqtDR7tfSXGYTLGNlg==
+X-Proofpoint-ORIG-GUID: Sj7cvKuiDwTqfOSyRBfuzMTeAO7NvGyz
+X-Authority-Analysis: v=2.4 cv=cZjfb3DM c=1 sm=1 tr=0 ts=6913b174 cx=c_pps
+ a=O10p7afQjo2e1L+5ghj5Aw==:117 a=IkcTkHD0fZMA:10 a=6UeiqGixMTsA:10
+ a=x7bEGLp0ZPQA:10 a=VkNPw1HP01LnGYTKEx00:22 a=6UpETPYAqtAy3kfSEAcA:9
+ a=QEXdDO2ut3YA:10 a=cPQSjfK2_nFv0Q5t_7PE:22
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-11_04,2025-11-11_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0 spamscore=0
+ lowpriorityscore=0 impostorscore=0 priorityscore=1501 clxscore=1011
+ suspectscore=0 adultscore=0 bulkscore=0 malwarescore=0 phishscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.19.0-2510240000 definitions=main-2511110060
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1121,Hydra:6.1.9,FMLib:17.12.100.49
+ definitions=2025-11-11_04,2025-11-11_03,2025-10-01_01
+Received-SPF: pass client-ip=67.231.149.169; envelope-from=nmosier@stanford.edu;
+ helo=mx0a-00000d07.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.517,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_NONE=0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 11 Nov 2025 18:03:07 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -161,35 +130,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 04/11/2025 16.02, Philippe Mathieu-Daudé wrote:
-> On 3/11/25 20:24, Thomas Huth wrote:
->> From: Thomas Huth <thuth@redhat.com>
->>
->> Drop unused imports, annotate imports that are not at the top, but done
->> on purpose in other locations, use f-strings where it makes sense, etc.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   tests/functional/mips64el/test_malta.py  | 15 ++++++++-------
->>   tests/functional/mips64el/test_replay.py |  4 ++--
->>   2 files changed, 10 insertions(+), 9 deletions(-)
-> 
-> 
->> -    def test_mips64el_malta_5KEc_cpio(self):
->> +    def test_mips64el_malta_5kec_cpio(self):
-> 
-> I don't see how helpful this warning is... Can't we disable it too?
+A comma operator inappropriately terminates an expression
+in svm_helper.c. Replace it with a semicolon.
 
-It's the preferred Python coding style:
+Signed-off-by: Nicholas Mosier <nmosier@stanford.edu>
+---
+As an apparent typo, line 742 in target/i386/tcg/system/svm_helper.c
+ends with a comma operator, rather than a statement-ending semicolon.
+This doesn't introduce any functionality bugs as the code is currently
+written, but could easily introduce bugs in the future if a new line
+of code is added following the comma operator.
 
-  https://peps.python.org/pep-0008/#function-and-variable-names
+This patch replaces the comma with a semicolon, as the original author
+probably intended.
+---
+ target/i386/tcg/system/svm_helper.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Question is whether we want to follow/enforce it in QEMU or not?
+diff --git a/target/i386/tcg/system/svm_helper.c b/target/i386/tcg/system/svm_helper.c
+index 505788b0e2..c32cc7ac30 100644
+--- a/target/i386/tcg/system/svm_helper.c
++++ b/target/i386/tcg/system/svm_helper.c
+@@ -742,7 +742,7 @@ void cpu_vmexit(CPUX86State *env, uint32_t exit_code, uint64_t exit_info_1,
+              exit_code);
+ 
+     x86_stq_phys(cs, env->vm_vmcb + offsetof(struct vmcb,
+-                                             control.exit_info_1), exit_info_1),
++                                             control.exit_info_1), exit_info_1);
+ 
+     /* remove any pending exception */
+     env->old_exception = -1;
 
-> Otherwise:
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+---
+base-commit: 593aee5df98b4a862ff8841a57ea3dbf22131a5f
+change-id: 20251111-i386-svm-vmexit-typo-fix-b5ce1954d254
 
-  Thanks,
-   Thomas
+Best regards,
+-- 
+Nicholas Mosier <nmosier@stanford.edu>
 
 
