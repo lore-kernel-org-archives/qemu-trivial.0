@@ -4,103 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 37547CCFA1A
-	for <qemu-trivial@archiver.kernel.org>; Wed, 12 Nov 2025 08:30:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E990CCEACEF
+	for <qemu-trivial@archiver.kernel.org>; Mon, 17 Nov 2025 08:39:01 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vJ6FF-0001Kh-Q5; Wed, 12 Nov 2025 03:30:26 -0500
+	id 1vKul5-0006OA-SL; Mon, 17 Nov 2025 03:38:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1vJ6FB-0001IK-LS
- for qemu-trivial@nongnu.org; Wed, 12 Nov 2025 03:30:21 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1vKul1-0006M3-9R; Mon, 17 Nov 2025 03:38:43 -0500
+Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1vJ6F7-0000Yi-AU
- for qemu-trivial@nongnu.org; Wed, 12 Nov 2025 03:30:20 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1762936212;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=OhXrSIc9huIh8pK72MIHZNpkDviqCEr4OyuU16Rp3K1V2YIj1GaDS26NCxO7tg48sCr4nm
- mwm467mJFD/XbOVywDSuqnH47DGLzHOGfi9RsGpw5IRrpWpug7QZLjYObsdjQ8mrzy9K+h
- BwQzI0mWjl/Isy1yyng2Mgn8R/6eXuY=
-Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
- [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-86-t1o0X9ahNUGqXRz_mS0QXg-1; Wed, 12 Nov 2025 03:30:11 -0500
-X-MC-Unique: t1o0X9ahNUGqXRz_mS0QXg-1
-X-Mimecast-MFC-AGG-ID: t1o0X9ahNUGqXRz_mS0QXg_1762936210
-Received: by mail-wm1-f70.google.com with SMTP id
- 5b1f17b1804b1-47113538d8cso2678925e9.1
- for <qemu-trivial@nongnu.org>; Wed, 12 Nov 2025 00:30:11 -0800 (PST)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1762936209; x=1763541009;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=cyh9GNwkSeiWX8VVWJet6cmrStrv1Y1BhHYKMAKCy08=;
- b=DA/NCMxrOCFVFCUNcEj7wUBDCDT5BwM/Lkw+5ft8CJb2zg+b28AyiqDZDK2JSjHVjP
- 3SQkH3s3O8CEupDS1Y2Gql8pZfHdb8KgLT7AkejkMTytepBASYyb6Nlz9ihNE9DkJp1Y
- 2Dcv5bVaAh/GEuscWOSF7Y3CMJ9PF+pExjMJxpzkvMAmcqVwz49BmU76JHG+Njde8eWC
- 3jpk+nrHHtitm5UB3tXGU1O30rPxK5SaWQiwHoV/i/cPDRtwrBAEPgDYIV05FET+D1o6
- V5CZbnxsGM4dsCebiL+WFTzoT0IJkthGD3d2gUjegPsJhtPdWcLDHxsuaZhuxLhLsZHQ
- REMQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXVjbh82qq6FWLDHEK7Ws7OMr7SboCR+L9M7ILuvmPoSqWcCgpC9RRebegtOoXB2SUy5CCCRPl0rbDO2Uc=@nongnu.org
-X-Gm-Message-State: AOJu0YxQq7BIFwOUsGI3Mpks7XUjbK3s+noPsYPkXtdjfsrWucrFS7au
- bLvKgbn7j79KOZcHwqkKG203Er0lmjAuU5wNvOEt/sj2tIrNfpsZWm6cJNKUta5auWN3i9muxPm
- igzhaHzH0rR67vR63E1s4H22RWYkBn8ieoKDIDKTtPZR2A2ldstn4L+FYL47OUk8yXXA=
-X-Gm-Gg: ASbGncvZwUqdDWuK3a1vDqY3MVByj871bRmXgyu4XjxloOkzpIvA22BkUOmC9YNgSi9
- nWHBYJl3XI2JeHGXt0In+10kXTapzQ+fOLW1PwnhicXivqsHDi0drLT1l6f4VUglH6E41SJECxY
- K4iyofZPG29VQ34i4hjkCX0HYYrfzG27bpl2iwBHZwvmg5luW/s7Hb72F+L2DxIOgdl38EUsDY+
- AJk/7dGjMFzef7/K36h1D0wWTvpgGvYNVO8e35KVKDHleMclSec/zhjKsSK2f41Veo9Kti5SDVx
- +n0x4gx2/vk2i0aniqgo88ihU8EqghIxAAVtAtzy0jZfOezijSt+Br/HAgLFHsjibFoH0SEiYg8
- sCZzk0D1JTpfKEpIqqRFQq7Pn222qJVfbWCZVBR4FGRDqwCNa1KBTspW/ov+4DafIw5eIiMAKWJ
- RR0k95Hw==
-X-Received: by 2002:a05:600c:c493:b0:475:dd9a:f786 with SMTP id
- 5b1f17b1804b1-477870be153mr16157665e9.40.1762936209310; 
- Wed, 12 Nov 2025 00:30:09 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFrPkZeoCx0w6wc2L0ze4J5LK1TOLmB4zvIQ8c5Q7FNViKH1YsR+V8oMsiuQCz2fHDdhmHENg==
-X-Received: by 2002:a05:600c:c493:b0:475:dd9a:f786 with SMTP id
- 5b1f17b1804b1-477870be153mr16157485e9.40.1762936208969; 
- Wed, 12 Nov 2025 00:30:08 -0800 (PST)
-Received: from [192.168.10.48] ([176.206.111.214])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-47787e51f54sm23548525e9.8.2025.11.12.00.30.08
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 12 Nov 2025 00:30:08 -0800 (PST)
-From: Paolo Bonzini <pbonzini@redhat.com>
-To: Nicholas Mosier <nmosier@stanford.edu>
-Cc: qemu-devel@nongnu.org, Richard Henderson <richard.henderson@linaro.org>,
- Eduardo Habkost <eduardo@habkost.net>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] i386/tcg/svm: fix comma operator typo
-Date: Wed, 12 Nov 2025 09:30:06 +0100
-Message-ID: <20251112083006.277792-1-pbonzini@redhat.com>
-X-Mailer: git-send-email 2.51.1
-In-Reply-To: <20251111-i386-svm-vmexit-typo-fix-v1-1-49f0414472cd@stanford.edu>
-References: 
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1vKukz-0005dJ-GI; Mon, 17 Nov 2025 03:38:43 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 6FBEB16AB34;
+ Mon, 17 Nov 2025 11:38:29 +0300 (MSK)
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 45E2831D906;
+ Mon, 17 Nov 2025 11:38:30 +0300 (MSK)
+Message-ID: <637696ee-f0a4-4e35-b281-0bd0b1089b09@tls.msk.ru>
+Date: Mon, 17 Nov 2025 11:38:30 +0300
 MIME-Version: 1.0
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Dq16f0jfJplA6vR-3gbbbrdUqqOw2Xo4HUoMGREUJFw_1762936210
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] qmp: Fix a typo for a USO feature
+To: Jack Wang <jinpu.wang@ionos.com>, mst@redhat.com, qemu-devel@nongnu.org
+Cc: yu.zhang@ionos.com, "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+References: <20251021053309.208957-1-jinpu.wang@ionos.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20251021053309.208957-1-jinpu.wang@ionos.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,8 +103,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Queued, thanks.
+On 10/21/25 08:33, Jack Wang wrote:
+> There is a copy & paste error, USO6 should be there.
+> 
+> Fixes: 58f81689789f ("qmp: update virtio feature maps, vhost-user-gpio introspection")
+> Signed-off-by: Jack Wang <jinpu.wang@ionos.com>
 
-Paolo
+It looks like this patch has been forgotten.
+I can push it through the trivial-patches queue
+if you like.
+
+Thanks,
+
+/mjt
+> diff --git a/hw/virtio/virtio-qmp.c b/hw/virtio/virtio-qmp.c
+> index b338344c6cca..968299fda0c9 100644
+> --- a/hw/virtio/virtio-qmp.c
+> +++ b/hw/virtio/virtio-qmp.c
+> @@ -299,7 +299,7 @@ static const qmp_virtio_feature_map_t virtio_net_feature_map[] = {
+>       FEATURE_ENTRY(VIRTIO_NET_F_GUEST_USO4, \
+>               "VIRTIO_NET_F_GUEST_USO4: Driver can receive USOv4"),
+>       FEATURE_ENTRY(VIRTIO_NET_F_GUEST_USO6, \
+> -            "VIRTIO_NET_F_GUEST_USO4: Driver can receive USOv6"),
+> +            "VIRTIO_NET_F_GUEST_USO6: Driver can receive USOv6"),
+>       FEATURE_ENTRY(VIRTIO_NET_F_HOST_USO, \
+>               "VIRTIO_NET_F_HOST_USO: Device can receive USO"),
+>       FEATURE_ENTRY(VIRTIO_NET_F_HASH_REPORT, \
 
 
