@@ -4,83 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78D61D1266C
-	for <qemu-trivial@archiver.kernel.org>; Tue,  2 Dec 2025 19:52:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48A9FD1266B
+	for <qemu-trivial@archiver.kernel.org>; Tue,  2 Dec 2025 19:53:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vQWQ5-0001Pc-DM; Tue, 02 Dec 2025 14:52:17 -0500
+	id 1vQWRX-0002t6-Cx; Tue, 02 Dec 2025 14:53:48 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vQWQ3-0001Oc-Vv
- for qemu-trivial@nongnu.org; Tue, 02 Dec 2025 14:52:16 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vQWRW-0002rx-CL
+ for qemu-trivial@nongnu.org; Tue, 02 Dec 2025 14:53:46 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vQWQ1-0005xL-Un
- for qemu-trivial@nongnu.org; Tue, 02 Dec 2025 14:52:15 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vQWRV-0006vw-0l
+ for qemu-trivial@nongnu.org; Tue, 02 Dec 2025 14:53:46 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1764705132;
+ s=mimecast20190719; t=1764705224;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=PD1fvQLkJMJDF+58rk3J/RU4+jmRzIeWZAHwg93WMA4=;
- b=CfNwwct90YCZg1Xzf+EXC8OwVvORdcxtW9P0ug1GT5EYDvZToRuyMmSbe1O+w954zd1mM1
- Uqx3wn385vrIV7yGjBDc7bwqFni0JvNgQC6zXP+1wwMIUNuzmSKXjLUdBRVC61b1zyBPus
- Og6T6xrAw/2o3UeX91HoiXVlyLCXGHY=
-Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
- [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=qRiNcCNBjrG5HCq6gQ1dLXxLIJ0/SIxRa90UqAduo2M=;
+ b=IVXPpUcXo2mg5rD8C2pb4+igUnbKoUCszuBs1JFwb4LG3s1hkGIKPVhh7aHeAFLOAve5/Q
+ 74t//nUuabK0YSC2dje3QNmiBNqjv2eW28XAH1s5mOLUXnKXYYQ4FAGsJgj7X0atNv2Zvx
+ 4If8r05fEnP6vtWX8BEZK50osSL7LAc=
+Received: from mail-ed1-f69.google.com (mail-ed1-f69.google.com
+ [209.85.208.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-526-gDkkeQRvOTO1bDm0tLhppg-1; Tue, 02 Dec 2025 14:52:10 -0500
-X-MC-Unique: gDkkeQRvOTO1bDm0tLhppg-1
-X-Mimecast-MFC-AGG-ID: gDkkeQRvOTO1bDm0tLhppg_1764705129
-Received: by mail-ej1-f70.google.com with SMTP id
- a640c23a62f3a-b73720562ceso427712166b.0
- for <qemu-trivial@nongnu.org>; Tue, 02 Dec 2025 11:52:10 -0800 (PST)
+ us-mta-605-S-dNhbXrNtazhyd8B_YyYw-1; Tue, 02 Dec 2025 14:53:31 -0500
+X-MC-Unique: S-dNhbXrNtazhyd8B_YyYw-1
+X-Mimecast-MFC-AGG-ID: S-dNhbXrNtazhyd8B_YyYw_1764705210
+Received: by mail-ed1-f69.google.com with SMTP id
+ 4fb4d7f45d1cf-64165abd7ffso7319950a12.0
+ for <qemu-trivial@nongnu.org>; Tue, 02 Dec 2025 11:53:31 -0800 (PST)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1764705129; x=1765309929;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20230601; t=1764705210; x=1765310010;
+ h=content-transfer-encoding:in-reply-to:autocrypt:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=PD1fvQLkJMJDF+58rk3J/RU4+jmRzIeWZAHwg93WMA4=;
- b=AQF4yeOeAYjEBjga08h+ET4pRYkSJJ4PlpFxrIQXuy7n6ywlYqrtO78xE0Hxu+yVRC
- 9wEVoIcfEkl1eYhfF66Eo302yCZMpWkpq4YfWxluCogrAew1D/+388aMiSfC5CVayk7i
- oY6mns2rGPtJlhBbakLv3wkMYnkjoajZ0MnYDaDiwhI0TQLT6AMrQUBJD390/l46LFZW
- 0LB9FtjTs4TV7xeYhaxS3wZot4jRZl5fhJr3Kaov5NMqKuU88Pf2pgHXtHAA45bpEnba
- JBoJpTXc5RuxbVWyteDQ5Ny+kFpH06x//ttOjZm7xFxcleddwQtchBz5dlrAwV92a670
- csfg==
+ bh=qRiNcCNBjrG5HCq6gQ1dLXxLIJ0/SIxRa90UqAduo2M=;
+ b=XO1rrxJm6+iydxbiBmHaBG1UMBHJNbijtSzrVutXMJkqq3Pny6IHHik2Lxa3El7elX
+ adQW5zYQx+iKfwhFrpWEDJH/pCjfgb6xZT9uzm+1hC6Tsu6n9voWVjx0DVOHmv9/R4z4
+ NWXkCeu2VYznpBeMOCQ0WcMQq1pI9jawZNVBmI4s4JCTySQAz6GdfM8bP0nU922DuToN
+ zxdXrfIxcIW8HPslBnW9It5NFwmHGADuPIIG5VwR66YB4qVXVaKqFD3eUWRj3Q8f2iXs
+ F2PbMUwgvJc9/dX8fDb6LRicLW3u3LalSlHO2ToFI3+ml+ohqX7NbAmlW+dQYr1T9i+E
+ coOA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVjJQTdP6L5JYetR0/3/xOK9TIbP6lOJkxn0zr22R4pvcERDyDYZUpDLJVGUScTSsRZR3EcxJVCCQt9YtE=@nongnu.org
-X-Gm-Message-State: AOJu0YyfPL2U2Oui08skGnt/s3jSBkMdtJtSLtIU/myYS99cXWMs2MZx
- eLdx5IcS+vOe1HRrxptjhZpNQRqmra3zSVGahn9xVNoaOhPNBOmUuLvo3iPPRkQiEgnpayMni7o
- xkZhFddF3jaZ/Eod9MljpzauqUyi5TioXgwWt1tu8csx0dHlfxZO9K8JVv1M=
-X-Gm-Gg: ASbGncs7GNiLSBPpn1H5fqwhjX4a3veUWyztVKXvG4yGcogsnziUy4QXDZqoM1lfTB6
- qzxzToYLF1Pca353ZQMfpr3dRbYKgW9SY64Njg99hOspfaOHoreZBEfS9QLIhb+Po1NT2DPfUbP
- oc9V7gXwj6udb9JEPasOwOHlBURxFIEFVOEGFeD/CybzH4fZj6sWjY+68PYusDe3wvrXHUlrJFK
- j1DuSBGci3ohgPiDTAPMlE3OChPHQkGbKcfLPzFvoaySgYA7TafcHL8JPs/M6vN4XY8N1nDTBSA
- u+P2fuqDEB/NZaspFsaCpt8UW4+YjbtM9YHHlCy3sCK8ka3a9vyEKXCY1zlxxEQ2E2qUA8zVTJQ
- kxOAzmg==
-X-Received: by 2002:a17:907:7e8f:b0:b72:134a:48c8 with SMTP id
- a640c23a62f3a-b76c53bff9emr3401014666b.14.1764705129410; 
- Tue, 02 Dec 2025 11:52:09 -0800 (PST)
-X-Google-Smtp-Source: AGHT+IFyYpagPt4RIr3KJtdh9ucvHdsJ4MBCp7NGUGXu6TnuDfhEC2Z5EZ9Me//L4xmrWBP2kNnd6Q==
-X-Received: by 2002:a17:907:7e8f:b0:b72:134a:48c8 with SMTP id
- a640c23a62f3a-b76c53bff9emr3401012766b.14.1764705128990; 
- Tue, 02 Dec 2025 11:52:08 -0800 (PST)
+ AJvYcCUF+mkbiKjYTOlskJe2OT8mo0mdn4z3CYoJjQh4LBTMxf1SHAmDXqZ6UzNplYXAYSDnsKX63WNucz9m8DI=@nongnu.org
+X-Gm-Message-State: AOJu0YwLvLOwy7IDawgRjK1JPd3Rf17DZMLHe8+go6SLtJ+NbMAXJU/0
+ tJ4I3HvLLXHPkYc38ERCznVY1T+a/VNeL/IwA5SjojYkoAp3g2vJ3OJO8L6sxq/3RsiCps0ph1Y
+ TaBahDQwKR2l0DFAf4Nk4HVs6xA0/zciZEXJRECdje7ngHhAnahAPsspv5PE=
+X-Gm-Gg: ASbGncs/mf7KLHAV3ek74LuyPZ+NfvSIci5gfc+wWVrvIUQoHcWTd41bw0J8fHJMsIY
+ Q/aI2ou+6RN+yKkmqPwsobKU47ErvE6LJOTwveVWiR1KXMKIfpvkEdj4E6FVlDyyTXv8kFvbOzN
+ n3i8sKqG5VnXJ9LMF+ICIcKlqHshwT2nRAtiV+NrC8kAFoowxuaBdqNF61EvoInGmaiQIC8m1hV
+ KyKeuQ5bZvkxTAfoWsNUgIWuj7fzm9FRA7M6mI7VA8BMT33s+oFqF6NCmGpHP3pCItS2hVVWQ/V
+ NhB26sVbNBD2cv1451CgeDmDXtaKSLoIjkQse5lMD5VPGYtLVryXe2iaJuaaNP0M5uyY8e+fHdH
+ mi84x5A==
+X-Received: by 2002:a05:6402:520c:b0:640:825e:ae82 with SMTP id
+ 4fb4d7f45d1cf-64554677479mr37545519a12.29.1764705209999; 
+ Tue, 02 Dec 2025 11:53:29 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFFZ1ZjEW8Ukjj2PVzvFspvRpbFchgWKJBuwn+yzEXSecasPeNO7+meB8NknchLD8+772tUsw==
+X-Received: by 2002:a05:6402:520c:b0:640:825e:ae82 with SMTP id
+ 4fb4d7f45d1cf-64554677479mr37545505a12.29.1764705209613; 
+ Tue, 02 Dec 2025 11:53:29 -0800 (PST)
 Received: from [192.168.0.5] ([47.64.115.41]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b76f51c6c12sm1584952766b.29.2025.12.02.11.52.07
+ 4fb4d7f45d1cf-64751035c3bsm16062308a12.19.2025.12.02.11.53.28
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 02 Dec 2025 11:52:08 -0800 (PST)
-Message-ID: <8ac1b4c8-5b6d-448f-9fbc-df5254c442cf@redhat.com>
-Date: Tue, 2 Dec 2025 20:52:06 +0100
+ Tue, 02 Dec 2025 11:53:29 -0800 (PST)
+Message-ID: <47138433-8a81-4a7e-8ce0-b96211df5ef0@redhat.com>
+Date: Tue, 2 Dec 2025 20:53:27 +0100
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 1/2] docs/devel: Correct typo
+Subject: Re: [PATCH 2/2] hw/9pfs: Correct typo
 To: AlanoSong@163.com, qemu-devel@nongnu.org
-Cc: alex.bennee@linaro.org, berrange@redhat.com,
+Cc: sstabellini@kernel.org, anthony@xenproject.org,
  QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20251202131934.17324-1-AlanoSong@163.com>
+References: <20251202132132.17636-1-AlanoSong@163.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -124,21 +124,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <20251202131934.17324-1-AlanoSong@163.com>
+In-Reply-To: <20251202132132.17636-1-AlanoSong@163.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: vhR5qF3yckKZ9AKdeJsRThOL1LE18YkqyYDlXQsedGE_1764705129
+X-Mimecast-MFC-PROC-ID: GuXERrgVCk1ticSOnHiZIk-y4YX2XRVbHvKfp8j2DRM_1764705210
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -156,36 +156,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 02/12/2025 14.19, AlanoSong@163.com wrote:
-> Correct typo in atomics.rst
+On 02/12/2025 14.21, AlanoSong@163.com wrote:
+> Correct comment typo in xen_9pfs_bh()
 > 
 > Signed-off-by: Alano Song <AlanoSong@163.com>
 > ---
->   docs/devel/atomics.rst | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+>   hw/9pfs/xen-9p-backend.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> diff --git a/docs/devel/atomics.rst b/docs/devel/atomics.rst
-> index 95c7b77c01..ea4ede4b8c 100644
-> --- a/docs/devel/atomics.rst
-> +++ b/docs/devel/atomics.rst
-> @@ -266,7 +266,7 @@ Splitting a loop can also be useful to reduce the number of barriers:
->       |   n = 0;                                 |     smp_mb_release();            |
->       |   for (i = 0; i < 10; i++) {             |     for (i = 0; i < 10; i++)     |
->       |     qatomic_store_release(&a[i], false); |       qatomic_set(&a[i], false); |
-> -    |     smp_mb();                            |     smb_mb();                    |
-> +    |     smp_mb();                            |     smp_mb();                    |
->       |     n += qatomic_read(&b[i]);            |     n = 0;                       |
->       |   }                                      |     for (i = 0; i < 10; i++)     |
->       |                                          |       n += qatomic_read(&b[i]);  |
-> @@ -283,7 +283,7 @@ as well) ``smp_wmb()``:
->       |                                          |     smp_mb_release();            |
->       |   for (i = 0; i < 10; i++) {             |     for (i = 0; i < 10; i++)     |
->       |     qatomic_store_release(&a[i], false); |       qatomic_set(&a[i], false); |
-> -    |     qatomic_store_release(&b[i], false); |     smb_wmb();                   |
-> +    |     qatomic_store_release(&b[i], false); |     smp_wmb();                   |
->       |   }                                      |     for (i = 0; i < 10; i++)     |
->       |                                          |       qatomic_set(&b[i], false); |
->       +------------------------------------------+----------------------------------+
+> diff --git a/hw/9pfs/xen-9p-backend.c b/hw/9pfs/xen-9p-backend.c
+> index 79359d911a..ca0fff5fa9 100644
+> --- a/hw/9pfs/xen-9p-backend.c
+> +++ b/hw/9pfs/xen-9p-backend.c
+> @@ -310,7 +310,7 @@ static void xen_9pfs_bh(void *opaque)
+>   
+>   again:
+>       wait = ring->co != NULL && qemu_coroutine_entered(ring->co);
+> -    /* paired with the smb_wmb barriers in xen_9pfs_init_in_iov_from_pdu */
+> +    /* paired with the smp_wmb barriers in xen_9pfs_init_in_iov_from_pdu */
+>       smp_rmb();
+>       if (wait) {
+>           cpu_relax();
 
 Reviewed-by: Thomas Huth <thuth@redhat.com>
 
