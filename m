@@ -4,57 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DA9CBD116F6
-	for <qemu-trivial@archiver.kernel.org>; Tue,  2 Dec 2025 12:31:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 78D61D1266C
+	for <qemu-trivial@archiver.kernel.org>; Tue,  2 Dec 2025 19:52:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vQPXI-0003kG-RT; Tue, 02 Dec 2025 07:31:19 -0500
+	id 1vQWQ5-0001Pc-DM; Tue, 02 Dec 2025 14:52:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1vQPXE-0003fJ-Mc; Tue, 02 Dec 2025 07:31:12 -0500
-Received: from mx.treblig.org ([2a00:1098:5b::1])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vQWQ3-0001Oc-Vv
+ for qemu-trivial@nongnu.org; Tue, 02 Dec 2025 14:52:16 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dg@treblig.org>)
- id 1vQPX5-0003y5-Cg; Tue, 02 Dec 2025 07:31:10 -0500
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed; d=treblig.org
- ; s=bytemarkmx;
- h=Content-Type:MIME-Version:Message-ID:Subject:From:Date:From
- :Subject; bh=eY93VA5WO1sOJnUzA2osW+b10UqCH17GYRpcQ5jA0Ds=; b=JtxEceRTUfDXAC4a
- d+9e2gOT1jevt1NM6MiLnnjkkVHhgsIvGbsYC32B2ix1LYYfEEPV8xN2/aBs3Vw1RpGfquTT3Jzd7
- EgcXOb8xDgNz1ety/8k8swUidGt+b8PzGTi+2cjFmIfmX88LjCJoN2zLwWbRYmepJIpkjZBs7tpKu
- l31PuDnLtQCnPvLnXnuMp0urc8cmGHmbvvisde0REhLpL8XFvjombA5+o5Lf7PVleZ2PdivIpBtCF
- vJoBkmGLiriTECnAkl4xfMTTAScP0nzKu38Pa+wxq47/n/ara5Fg7qVaq0Y6al7caA/MZzYGIzmD8
- WvroKVkGRDlA63oFwA==;
-Received: from dg by mx.treblig.org with local (Exim 4.98.2)
- (envelope-from <dg@treblig.org>) id 1vQPWy-00000007d5a-2v0z;
- Tue, 02 Dec 2025 12:30:56 +0000
-Date: Tue, 2 Dec 2025 12:30:56 +0000
-From: "Dr. David Alan Gilbert" <dave@treblig.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-trivial@nongnu.org, mjt@tls.msk.ru, laurent@vivier.eu,
- jak@jak-linux.org, qemu-devel@nongnu.org
-Subject: Re: [PATCH] qemu-options.hx: Replace deprecated -M example
-Message-ID: <aS7cACznSygGM2Xc@gallifrey>
-References: <20251202005740.299524-1-dave@treblig.org>
- <95dd7914-8e58-42e7-9988-cd7822f17bca@redhat.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vQWQ1-0005xL-Un
+ for qemu-trivial@nongnu.org; Tue, 02 Dec 2025 14:52:15 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1764705132;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=PD1fvQLkJMJDF+58rk3J/RU4+jmRzIeWZAHwg93WMA4=;
+ b=CfNwwct90YCZg1Xzf+EXC8OwVvORdcxtW9P0ug1GT5EYDvZToRuyMmSbe1O+w954zd1mM1
+ Uqx3wn385vrIV7yGjBDc7bwqFni0JvNgQC6zXP+1wwMIUNuzmSKXjLUdBRVC61b1zyBPus
+ Og6T6xrAw/2o3UeX91HoiXVlyLCXGHY=
+Received: from mail-ej1-f70.google.com (mail-ej1-f70.google.com
+ [209.85.218.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-526-gDkkeQRvOTO1bDm0tLhppg-1; Tue, 02 Dec 2025 14:52:10 -0500
+X-MC-Unique: gDkkeQRvOTO1bDm0tLhppg-1
+X-Mimecast-MFC-AGG-ID: gDkkeQRvOTO1bDm0tLhppg_1764705129
+Received: by mail-ej1-f70.google.com with SMTP id
+ a640c23a62f3a-b73720562ceso427712166b.0
+ for <qemu-trivial@nongnu.org>; Tue, 02 Dec 2025 11:52:10 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1764705129; x=1765309929;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=PD1fvQLkJMJDF+58rk3J/RU4+jmRzIeWZAHwg93WMA4=;
+ b=AQF4yeOeAYjEBjga08h+ET4pRYkSJJ4PlpFxrIQXuy7n6ywlYqrtO78xE0Hxu+yVRC
+ 9wEVoIcfEkl1eYhfF66Eo302yCZMpWkpq4YfWxluCogrAew1D/+388aMiSfC5CVayk7i
+ oY6mns2rGPtJlhBbakLv3wkMYnkjoajZ0MnYDaDiwhI0TQLT6AMrQUBJD390/l46LFZW
+ 0LB9FtjTs4TV7xeYhaxS3wZot4jRZl5fhJr3Kaov5NMqKuU88Pf2pgHXtHAA45bpEnba
+ JBoJpTXc5RuxbVWyteDQ5Ny+kFpH06x//ttOjZm7xFxcleddwQtchBz5dlrAwV92a670
+ csfg==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVjJQTdP6L5JYetR0/3/xOK9TIbP6lOJkxn0zr22R4pvcERDyDYZUpDLJVGUScTSsRZR3EcxJVCCQt9YtE=@nongnu.org
+X-Gm-Message-State: AOJu0YyfPL2U2Oui08skGnt/s3jSBkMdtJtSLtIU/myYS99cXWMs2MZx
+ eLdx5IcS+vOe1HRrxptjhZpNQRqmra3zSVGahn9xVNoaOhPNBOmUuLvo3iPPRkQiEgnpayMni7o
+ xkZhFddF3jaZ/Eod9MljpzauqUyi5TioXgwWt1tu8csx0dHlfxZO9K8JVv1M=
+X-Gm-Gg: ASbGncs7GNiLSBPpn1H5fqwhjX4a3veUWyztVKXvG4yGcogsnziUy4QXDZqoM1lfTB6
+ qzxzToYLF1Pca353ZQMfpr3dRbYKgW9SY64Njg99hOspfaOHoreZBEfS9QLIhb+Po1NT2DPfUbP
+ oc9V7gXwj6udb9JEPasOwOHlBURxFIEFVOEGFeD/CybzH4fZj6sWjY+68PYusDe3wvrXHUlrJFK
+ j1DuSBGci3ohgPiDTAPMlE3OChPHQkGbKcfLPzFvoaySgYA7TafcHL8JPs/M6vN4XY8N1nDTBSA
+ u+P2fuqDEB/NZaspFsaCpt8UW4+YjbtM9YHHlCy3sCK8ka3a9vyEKXCY1zlxxEQ2E2qUA8zVTJQ
+ kxOAzmg==
+X-Received: by 2002:a17:907:7e8f:b0:b72:134a:48c8 with SMTP id
+ a640c23a62f3a-b76c53bff9emr3401014666b.14.1764705129410; 
+ Tue, 02 Dec 2025 11:52:09 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IFyYpagPt4RIr3KJtdh9ucvHdsJ4MBCp7NGUGXu6TnuDfhEC2Z5EZ9Me//L4xmrWBP2kNnd6Q==
+X-Received: by 2002:a17:907:7e8f:b0:b72:134a:48c8 with SMTP id
+ a640c23a62f3a-b76c53bff9emr3401012766b.14.1764705128990; 
+ Tue, 02 Dec 2025 11:52:08 -0800 (PST)
+Received: from [192.168.0.5] ([47.64.115.41]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b76f51c6c12sm1584952766b.29.2025.12.02.11.52.07
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 02 Dec 2025 11:52:08 -0800 (PST)
+Message-ID: <8ac1b4c8-5b6d-448f-9fbc-df5254c442cf@redhat.com>
+Date: Tue, 2 Dec 2025 20:52:06 +0100
 MIME-Version: 1.0
-Content-Type: text/plain; charset=iso-8859-1
-Content-Disposition: inline
-In-Reply-To: <95dd7914-8e58-42e7-9988-cd7822f17bca@redhat.com>
-X-Chocolate: 70 percent or better cocoa solids preferably
-X-Operating-System: Linux/6.12.48+deb13-amd64 (x86_64)
-X-Uptime: 12:28:13 up 36 days, 12:04,  2 users,  load average: 0.07, 0.02, 0.00
-User-Agent: Mutt/2.2.13 (2024-03-09)
-Received-SPF: pass client-ip=2a00:1098:5b::1; envelope-from=dg@treblig.org;
- helo=mx.treblig.org
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH 1/2] docs/devel: Correct typo
+To: AlanoSong@163.com, qemu-devel@nongnu.org
+Cc: alex.bennee@linaro.org, berrange@redhat.com,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20251202131934.17324-1-AlanoSong@163.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20251202131934.17324-1-AlanoSong@163.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: vhR5qF3yckKZ9AKdeJsRThOL1LE18YkqyYDlXQsedGE_1764705129
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -70,36 +156,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-* Thomas Huth (thuth@redhat.com) wrote:
-> On 02/12/2025 01.57, dave@treblig.org wrote:
-> > From: "Dr. David Alan Gilbert" <dave@treblig.org>
-> > 
-> > The -M option was deprecated by -machine in 2011 by 80f52a669
-> > and isn't actually documented in the manpage, but is still used in
-> > one of the examples.  Replace it by -machine.
-> > -M still gets used all over the place in other docs, and I'm
-> > not sure I realised it was deprecated until Julian pointed out it
-> > wasn't actually documented.
+On 02/12/2025 14.19, AlanoSong@163.com wrote:
+> Correct typo in atomics.rst
 > 
-> -M is not mentioned in docs/about/deprecated.rst, so no, it's not officially
-> deprecated. And I think it's a nice short hand feature for an option that is
-> used very often, so I also don't think that we should ever remove it. Thus I
-> think it would be better to simply add it back to qemu-options.hx instead.
-
-Fair enough; I wasn't too sure which way this would go - I'm pretty
-sure I'd always used -M, but there again I saw libvirt used -machine
-now, and I'd frequently confused -m and -M so it did make some sense
-to move away from it.
-
-I'll cut another patch adding -M back.
-
-Dave
-
->  Thomas
+> Signed-off-by: Alano Song <AlanoSong@163.com>
+> ---
+>   docs/devel/atomics.rst | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
 > 
--- 
- -----Open up your eyes, open up your mind, open up your code -------   
-/ Dr. David Alan Gilbert    |       Running GNU/Linux       | Happy  \ 
-\        dave @ treblig.org |                               | In Hex /
- \ _________________________|_____ http://www.treblig.org   |_______/
+> diff --git a/docs/devel/atomics.rst b/docs/devel/atomics.rst
+> index 95c7b77c01..ea4ede4b8c 100644
+> --- a/docs/devel/atomics.rst
+> +++ b/docs/devel/atomics.rst
+> @@ -266,7 +266,7 @@ Splitting a loop can also be useful to reduce the number of barriers:
+>       |   n = 0;                                 |     smp_mb_release();            |
+>       |   for (i = 0; i < 10; i++) {             |     for (i = 0; i < 10; i++)     |
+>       |     qatomic_store_release(&a[i], false); |       qatomic_set(&a[i], false); |
+> -    |     smp_mb();                            |     smb_mb();                    |
+> +    |     smp_mb();                            |     smp_mb();                    |
+>       |     n += qatomic_read(&b[i]);            |     n = 0;                       |
+>       |   }                                      |     for (i = 0; i < 10; i++)     |
+>       |                                          |       n += qatomic_read(&b[i]);  |
+> @@ -283,7 +283,7 @@ as well) ``smp_wmb()``:
+>       |                                          |     smp_mb_release();            |
+>       |   for (i = 0; i < 10; i++) {             |     for (i = 0; i < 10; i++)     |
+>       |     qatomic_store_release(&a[i], false); |       qatomic_set(&a[i], false); |
+> -    |     qatomic_store_release(&b[i], false); |     smb_wmb();                   |
+> +    |     qatomic_store_release(&b[i], false); |     smp_wmb();                   |
+>       |   }                                      |     for (i = 0; i < 10; i++)     |
+>       |                                          |       qatomic_set(&b[i], false); |
+>       +------------------------------------------+----------------------------------+
+
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+
 
