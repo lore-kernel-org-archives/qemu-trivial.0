@@ -4,44 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E1975D12D55
-	for <qemu-trivial@archiver.kernel.org>; Wed,  3 Dec 2025 12:18:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DDF48D12D50
+	for <qemu-trivial@archiver.kernel.org>; Wed,  3 Dec 2025 12:39:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vQlny-0000QR-C9; Wed, 03 Dec 2025 07:17:58 -0500
+	id 1vQm8M-0000en-6r; Wed, 03 Dec 2025 07:39:02 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
- id 1vQlnv-0000PL-Sw; Wed, 03 Dec 2025 07:17:56 -0500
+ id 1vQm8F-0000dK-Ve; Wed, 03 Dec 2025 07:38:56 -0500
 Received: from kylie.crudebyte.com ([5.189.157.229])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <qemu_oss@crudebyte.com>)
- id 1vQlj1-0005jT-Ma; Wed, 03 Dec 2025 07:12:53 -0500
+ id 1vQm8E-0006vq-6o; Wed, 03 Dec 2025 07:38:55 -0500
 DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
  d=crudebyte.com; s=kylie; h=Content-Type:Content-Transfer-Encoding:
  MIME-Version:References:In-Reply-To:Message-ID:Date:Subject:Cc:To:From:
  Content-ID:Content-Description;
- bh=hPbCRtEx0Aylbs0pmVY/6rcU6UU/WC/vPI9krT1PqQs=; b=wjjSYoXt3FU5rcKRJiMVF0JxVs
- m8ETwFmfP/pHP3b7UGrtQwqJ0pU1EjMmR+J4ann9LCOfrdPZbOigOL1bvMOXpY+SEqYmve5dqk2FT
- Y9zwIxRswwrlCEMoVdxN1c+FQjhZeEMQqo+y1Lrh+KGOKyiXtb6ObcnlsD/6ncYmqkdAsR0pJ/wPj
- gkHZpaFwfs1X9/DLURSO3KYxeH0K9cu/y6C4T1eE1xjYY2AGCI5fFCEYPcwZfwSG8cd1tUoWJMQmY
- xCbJlfQuJ3QUwLIJTG26mPpwj/qOWnqXL8jxMxalLKW+KN/cMmdjq/bLwn5DjL9KislR3HMSRcrYP
- QHFGW/Fy0QkKhS3j8DlbfFtoUTDZ2A1xwncUnP4CYwBFAMUQgCCKQ0ygct11tv/hbIYb4mQTI1+Xi
- 0uXp9KSLcKP+7KIKTLMXnbpNJomvoM7KtJl2jrpqfnarsdryaLxMPW9QyS3+Fvy9W2q0CJfzu1j76
- zYNyJUCWil66NW0wjTasB1+dt8YWgOuVe3I5qK1H28yW68C+A0020j7QU6O+P6rPXUIwWKfW8mESj
- j3i5gs/1CRlVVWgWJqzIiLDCM5oSvuuVwjDzZxcN0es9hLIye6lZTQi7kzulcJSi31GpmwTuSqkkf
- bAqoV8HdG5lc0aYfzG6lswHrGVqh3txxqO5G+acy0=;
+ bh=m8zoo95n2aBfEFUrw3VI3r0Qc0YBatHFEv6FHIrKFYw=; b=fu7f7J12PHK8RNsXga7jDGBBmw
+ Lvv/M1Nv2HGNr99ZvY7nPTlpkq+WdhYGIAFor0/RG+3JKnBObG8aOJwS4lSFdDeu6jmITD+F3W35Z
+ 56zQzPPMpLePuff/on3a+ng9hi7CPQ1qL6qQMpGI/RIK5JjMr4Kltta31ZTeR2ggWf/KGX0k1QYbM
+ CTc/xlzwL2uSYDJdxOpACDJCVPLlTvKj154cCM19Z9pYEexyK4+Nw0deGQ70B4+hwYR8lwNLaOXI9
+ CPb5YRQer7yUr4L0aqh0Sa0V027XIQhLJguKVFyyA362/nQ+Kg5qSa/gwfXQ4ywW58npvdrgZIBpo
+ S5yy1Z47hUyLDD9hz14Nu9VU7Wmtr3N7Wu0vjCPpv+SHayYGgSYZQyTO65QLhrCq7WnbghBgEbNJO
+ eJD/GNLl7v8GYIzct4sF1bgfAeNM8h9p+wO/UaeGAYBQ6LeftkUeAGL4iDAsk3csSeiA+sdwOaUcM
+ KdOnGyWxyZ1lAb8SnBe09uwBGa15Y93cvrAIOfl0rwzVhljr10kyHQrNNpilGVwz3M8AQ1DVzF9gu
+ bLyKcvx/6dpPhwDvmFxB6Ky1LQR1DXj5ct+HTwipjLthcftvR4zxQd2pTd/47eGp6tY4Uqk7dD7YJ
+ yiXM9CKWNGtTeaH7S3Em8Ik12cyxDLn2szu10jfAs=;
 From: Christian Schoenebeck <qemu_oss@crudebyte.com>
 To: qemu-devel@nongnu.org
-Cc: sstabellini@kernel.org, anthony@xenproject.org,
+Cc: alex.bennee@linaro.org, berrange@redhat.com,
  Alano Song <AlanoSong@163.com>, AlanoSong@163.com,
- QEMU Trivial <qemu-trivial@nongnu.org>, Thomas Huth <thuth@redhat.com>
-Subject: Re: [PATCH 2/2] hw/9pfs: Correct typo
-Date: Wed, 03 Dec 2025 13:12:30 +0100
-Message-ID: <3383884.aeNJFYEL58@weasel>
-In-Reply-To: <20251202132132.17636-1-AlanoSong@163.com>
-References: <20251202132132.17636-1-AlanoSong@163.com>
+ QEMU Trivial <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH 1/2] docs/devel: Correct typo
+Date: Wed, 03 Dec 2025 13:38:48 +0100
+Message-ID: <10763876.nUPlyArG6x@weasel>
+In-Reply-To: <20251202131934.17324-1-AlanoSong@163.com>
+References: <20251202131934.17324-1-AlanoSong@163.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 7Bit
 Content-Type: text/plain; charset="utf-8"
@@ -69,39 +69,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Tuesday, 2 December 2025 14:21:32 CET AlanoSong@163.com wrote:
-> Correct comment typo in xen_9pfs_bh()
+On Tuesday, 2 December 2025 14:19:34 CET AlanoSong@163.com wrote:
+> Correct typo in atomics.rst
 > 
 > Signed-off-by: Alano Song <AlanoSong@163.com>
-
-Please send a set of associated patches with a cover letter next time. It 
-makes it easier for people when they are threaded together.
-
-I assume this patch can also be pushed through qemu-trivial, so:
+> ---
 
 Reviewed-by: Christian Schoenebeck <qemu_oss@crudebyte.com>
 
-Otherwise let me know and I'll push it through my 9p queue.
-
-/Christian
-
-> ---
->  hw/9pfs/xen-9p-backend.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/hw/9pfs/xen-9p-backend.c b/hw/9pfs/xen-9p-backend.c
-> index 79359d911a..ca0fff5fa9 100644
-> --- a/hw/9pfs/xen-9p-backend.c
-> +++ b/hw/9pfs/xen-9p-backend.c
-> @@ -310,7 +310,7 @@ static void xen_9pfs_bh(void *opaque)
-> 
->  again:
->      wait = ring->co != NULL && qemu_coroutine_entered(ring->co);
-> -    /* paired with the smb_wmb barriers in xen_9pfs_init_in_iov_from_pdu */
-> +    /* paired with the smp_wmb barriers in xen_9pfs_init_in_iov_from_pdu
-> */ smp_rmb();
->      if (wait) {
->          cpu_relax();
 
 
 
