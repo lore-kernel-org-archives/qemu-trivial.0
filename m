@@ -4,77 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 87F6ED3E78B
-	for <qemu-trivial@archiver.kernel.org>; Thu, 11 Dec 2025 03:32:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EE87ED41C36
+	for <qemu-trivial@archiver.kernel.org>; Thu, 11 Dec 2025 13:15:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vTXPa-000849-SO; Wed, 10 Dec 2025 22:32:15 -0500
+	id 1vTgV7-0008Nd-Dg; Thu, 11 Dec 2025 08:14:33 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xiaoyao.li@intel.com>)
- id 1vTXPX-00083P-7P; Wed, 10 Dec 2025 22:32:11 -0500
-Received: from mgamail.intel.com ([198.175.65.13])
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vTgV4-0008Mm-Mn
+ for qemu-trivial@nongnu.org; Thu, 11 Dec 2025 08:14:30 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xiaoyao.li@intel.com>)
- id 1vTXPT-0004a4-C9; Wed, 10 Dec 2025 22:32:10 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
- d=intel.com; i=@intel.com; q=dns/txt; s=Intel;
- t=1765423928; x=1796959928;
- h=message-id:date:mime-version:subject:to:cc:references:
- from:in-reply-to:content-transfer-encoding;
- bh=UDdOGxQwwovFx0PVnidZNaPWNNdCzKtTEqbECXf/6VQ=;
- b=W4VY0SBf3dFETCMyLjTsGF8LcZ1J3xiju0MwUgRQT5lgtnnu0TVKbGqS
- kopHH07Ig0etc7C5eM2rLY+I3xD8vrGJM+WTGcjLm0c0P1cA3dSvyx+Ag
- 7iuyhL+BSV1K/t7lmZxaI6ubY786HG13hwrvzX9ZSluR1d5vFEWFKZshh
- E8ll8tlMGe6APUhw+qgl1YMxuXXOWOU0ICwurLC3+itd9r5XfzbXPdqM6
- 86Fz6HFVS0GOzck4c4E76qZ4iePxIeO+/r1m/gIw9Vq0BnZDTC3D1UrXP
- TfO2lCPkXR+Ip8v5mPuK1DYFiV+2yh+hzMv4US+SDsD9NHDYz4MqLw2Ke g==;
-X-CSE-ConnectionGUID: 0roEQLJBSD2a56Ua8Io9bA==
-X-CSE-MsgGUID: uc07dF0FRgmN0vX7O8nIPQ==
-X-IronPort-AV: E=McAfee;i="6800,10657,11638"; a="78515729"
-X-IronPort-AV: E=Sophos;i="6.20,265,1758610800"; d="scan'208";a="78515729"
-Received: from orviesa010.jf.intel.com ([10.64.159.150])
- by orvoesa105.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Dec 2025 19:32:03 -0800
-X-CSE-ConnectionGUID: hwYxna3qRbGPJouULLV7QA==
-X-CSE-MsgGUID: t+SsGPxjRD2gipjS8kTBKQ==
-X-ExtLoop1: 1
-X-IronPort-AV: E=Sophos;i="6.20,265,1758610800"; d="scan'208";a="195950972"
-Received: from xiaoyaol-hp-g830.ccr.corp.intel.com (HELO [10.124.240.173])
- ([10.124.240.173])
- by orviesa010-auth.jf.intel.com with ESMTP/TLS/ECDHE-RSA-AES256-GCM-SHA384;
- 10 Dec 2025 19:31:59 -0800
-Message-ID: <048e2c5a-8e16-4625-8382-9478a8af5c9a@intel.com>
-Date: Thu, 11 Dec 2025 11:31:55 +0800
+ (Exim 4.90_1) (envelope-from <mst@redhat.com>) id 1vTgV1-0006X6-1R
+ for qemu-trivial@nongnu.org; Thu, 11 Dec 2025 08:14:30 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1765458865;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=iZTKgbl4nJ4pEmCnr3LUr8q+SVhkuFCdscPN5Jcb+Xc=;
+ b=Dc0M99o9UCFheUaaGDtP9kB1Nky/7gn8wR1wXJiSByXHRkn3Xm5TmnNNWd70zg8BeQcmB1
+ DHRffq1PdcKHaIfR97jn+j9UUETb0ItrDQUaiawjtEWZc4lBq3C3IzN2ljqU5RvIq6sPDN
+ t/SNCA7IZ8Yq5h0pm3DKKT9KtWLzjEM=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-596-lu6XUfZLM76Lf06d2t2B3g-1; Thu, 11 Dec 2025 08:14:24 -0500
+X-MC-Unique: lu6XUfZLM76Lf06d2t2B3g-1
+X-Mimecast-MFC-AGG-ID: lu6XUfZLM76Lf06d2t2B3g_1765458863
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-477939321e6so534625e9.0
+ for <qemu-trivial@nongnu.org>; Thu, 11 Dec 2025 05:14:23 -0800 (PST)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1765458862; x=1766063662;
+ h=in-reply-to:content-disposition:mime-version:references:message-id
+ :subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from:to:cc
+ :subject:date:message-id:reply-to;
+ bh=iZTKgbl4nJ4pEmCnr3LUr8q+SVhkuFCdscPN5Jcb+Xc=;
+ b=Hmkt6ypFBb1PuXWPbEh7+PooSTG/vWZZKSH0J6ThCaX5o27o7cxJHjgg3+MAiYJO+e
+ fv8nblYvxitH1Ze0R+zhF/e/e2HUGPXpPz5R4yWN0yF/kUHyw6gvhL1opD1PGGMUjl1t
+ 6BoB+XU0/+cxn7hL5Jpz9+W/pFlhSEQl6no/BPu1EfZX0FlG/bkXzT+v31Lpscih6JEX
+ BNDPYpj9IeHIPCE/5dpf/6SmIPtpnERMflvS8ljla3RCkBr32/g0Z0QoIX/zBlvjBOKu
+ NMwpjnUQSK8R+i+ssXtsJm65RNMl+Fv/u38+WT+5NBPy/uQgwBji5VDRckLopfGQ8/yq
+ TCpQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCUBIG13Ix4TejRbr19kju779b+ADlbnEEl87cqEZA1iWqH/3vdrnt3SUNjv7WROWOMt3+2G+7TSVFAdmuY=@nongnu.org
+X-Gm-Message-State: AOJu0Ywp+EqmAjIw5n+o/KWc7QdpwMkL+gsqo7VEbXWtDTHTNPj3IjHt
+ bKhGiV8hWk7K3N77TPJdql6bpr84O9sbZuVSMhbJ8QRGtLUsT66nDV5uRNPA2fXCR7uB5iLOPUw
+ 7rYCI3KlbNiJr7nC1zudvloKn+A9MnR4OfntLUltMtUXrCDPuSQlhutX0uILFdm4emDQ=
+X-Gm-Gg: AY/fxX6qeKfKmiOL8c77lA2u8TtAc91Ier4/ik4mYpjyntV/cDbe2tk2EDcvIvzlPRa
+ COY8qggA/4fQHFfP8zFw3WyKND7kjqy0OnoVViNVPYPNHOyo1M9tIfrfbFUSv08o9niitXahmuO
+ 9IVva4o/D+FJ3QEoLXhKvwpECv5BDr2K2r20hxMExImaaZERsb2YZ5Kg6HCv3u3BI9nqX/lKhrY
+ 5d+ClTUuYvakcUpy8g6sc5SY1dePir+YFJyfwrzJEHsC08IBukKkMhmfFD9oFxijRrRPOQUO590
+ J/RHn006BZiyfiNkwqIF1mUACwJZJGbWJ9GK7ufkh2IGBzh3Q2o3T99uMYvmFFm2cbEFrxFjzUc
+ u4AF0l8IppYTi+ZWcEnVfrdQeyZeEx/I=
+X-Received: by 2002:a05:600c:1c93:b0:471:d2f:7987 with SMTP id
+ 5b1f17b1804b1-47a837b9a4cmr65554515e9.26.1765458862524; 
+ Thu, 11 Dec 2025 05:14:22 -0800 (PST)
+X-Google-Smtp-Source: AGHT+IE5W0XdTUMaiS+g1tNbrTIUnknkLC9jNhaVkk7NoYSN0fJUjROIq5OOez700GNo4ceNiHUSxg==
+X-Received: by 2002:a05:600c:1c93:b0:471:d2f:7987 with SMTP id
+ 5b1f17b1804b1-47a837b9a4cmr65554145e9.26.1765458861897; 
+ Thu, 11 Dec 2025 05:14:21 -0800 (PST)
+Received: from redhat.com (IGLD-80-230-32-59.inter.net.il. [80.230.32.59])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-47a89d9c8acsm36059985e9.1.2025.12.11.05.14.20
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 11 Dec 2025 05:14:21 -0800 (PST)
+Date: Thu, 11 Dec 2025 08:14:19 -0500
+From: "Michael S. Tsirkin" <mst@redhat.com>
+To: Aaron Lo <aaronlo0929@gmail.com>
+Cc: qemu-devel@nongnu.org, David Hildenbrand <david@kernel.org>,
+ qemu-trivial@nongnu.org
+Subject: Re: [PATCH] virtio-balloon: only create statsq when
+ VIRTIO_BALLOON_F_STATS_VQ exists
+Message-ID: <20251211081246-mutt-send-email-mst@kernel.org>
+References: <20251211-balloon-check-stats-feature-v1-1-ae8951957b80@gmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] qemu-options.hx: Document -M as -machine alias
-To: Peter Maydell <peter.maydell@linaro.org>,
- "Dr. David Alan Gilbert" <dave@treblig.org>
-Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-trivial@nongnu.org, mjt@tls.msk.ru, laurent@vivier.eu,
- thuth@redhat.com, pbonzini@redhat.com, jak@jak-linux.org,
- qemu-devel@nongnu.org
-References: <20251203131511.153460-1-dave@treblig.org>
- <87a4zzu230.fsf@draig.linaro.org> <aTBCLbDbpXgkTLHr@gallifrey>
- <CAFEAcA-Uy0UQwGEK+f95BJmDripg1-8vhzPF5qRSY40=duhRUQ@mail.gmail.com>
-Content-Language: en-US
-From: Xiaoyao Li <xiaoyao.li@intel.com>
-In-Reply-To: <CAFEAcA-Uy0UQwGEK+f95BJmDripg1-8vhzPF5qRSY40=duhRUQ@mail.gmail.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=198.175.65.13; envelope-from=xiaoyao.li@intel.com;
- helo=mgamail.intel.com
-X-Spam_score_int: -43
-X-Spam_score: -4.4
-X-Spam_bar: ----
-X-Spam_report: (-4.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+In-Reply-To: <20251211-balloon-check-stats-feature-v1-1-ae8951957b80@gmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: dnhUs_BmY2NBec_gd8oP7IuoILUo0En9kh1nMq1Y_2I_1765458863
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=us-ascii
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=mst@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- HK_RANDOM_ENVFROM=0.001, HK_RANDOM_FROM=0.001, RCVD_IN_DNSWL_MED=-2.3,
- RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -90,109 +112,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 12/4/2025 12:06 AM, Peter Maydell wrote:
-> On Wed, 3 Dec 2025 at 14:00, Dr. David Alan Gilbert <dave@treblig.org> wrote:
->>
->> * Alex Bennée (alex.bennee@linaro.org) wrote:
->>> dave@treblig.org writes:
->>>
->>>> From: "Dr. David Alan Gilbert" <dave@treblig.org>
->>>>
->>>> -M is used heavily in documentation and scripts, but isn't actually
->>>> documented anywhere.
->>>> Document it as equivalent to -machine.
->>>>
->>>> Reported-by: Julian Andres Klode <jak@jak-linux.org>
->>>> Signed-off-by: Dr. David Alan Gilbert <dave@treblig.org>
->>>> ---
->>>>   qemu-options.hx | 12 +++++++-----
->>>>   1 file changed, 7 insertions(+), 5 deletions(-)
->>>>
->>>> diff --git a/qemu-options.hx b/qemu-options.hx
->>>> index fca2b7bc74..ec92723f10 100644
->>>> --- a/qemu-options.hx
->>>> +++ b/qemu-options.hx
->>>> @@ -44,6 +44,7 @@ DEF("machine", HAS_ARG, QEMU_OPTION_machine, \
->>>>   #endif
->>>>       "                memory-backend='backend-id' specifies explicitly provided backend for main RAM (default=none)\n"
->>>>       "                cxl-fmw.0.targets.0=firsttarget,cxl-fmw.0.targets.1=secondtarget,cxl-fmw.0.size=size[,cxl-fmw.0.interleave-granularity=granularity]\n"
->>>> +    "                sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid\n"
->>>>       "                smp-cache.0.cache=cachename,smp-cache.0.topology=topologylevel\n",
->>>>       QEMU_ARCH_ALL)
->>>>   SRST
->>>> @@ -179,6 +180,9 @@ SRST
->>>>
->>>>               -machine cxl-fmw.0.targets.0=cxl.0,cxl-fmw.0.targets.1=cxl.1,cxl-fmw.0.size=128G,cxl-fmw.0.interleave-granularity=512
->>>>
->>>> +    ``sgx-epc.0.memdev=@var{memid},sgx-epc.0.node=@var{numaid}``
->>>> +        Define an SGX EPC section.
->>>> +
->>>
->>> This seems unrelated.
->>>
->>>>       ``smp-cache.0.cache=cachename,smp-cache.0.topology=topologylevel``
->>>>           Define cache properties for SMP system.
->>>>
->>>> @@ -208,12 +212,10 @@ SRST
->>>>   ERST
->>>>
->>>>   DEF("M", HAS_ARG, QEMU_OPTION_M,
->>>> -    "                sgx-epc.0.memdev=memid,sgx-epc.0.node=numaid\n",
->>>> -    QEMU_ARCH_ALL)
->>>> -
->>>> +    "-M              as -machine\n", QEMU_ARCH_ALL)
->>>>   SRST
->>>> -``sgx-epc.0.memdev=@var{memid},sgx-epc.0.node=@var{numaid}``
->>>> -    Define an SGX EPC section.
->>>> +``-M``
->>>> +    as -machine.
+On Thu, Dec 11, 2025 at 03:05:49AM -0600, Aaron Lo wrote:
+> The VirtIO specification (section 5.5.2) states that the stats queue
+> is only present if the VIRTIO_BALLOON_F_STATS_VQ feature is
+> negotiated. QEMU currently creates the statsq unconditionally.
 > 
-> Surprisingly, this and -h/--help are our only two options where
-> we provide a short synonym. I note that this handling of -M
-> is not consistent with how we document -h/--help, where we
-> print both on a single line:
-> -h or -help     display this help and exit
+> This patch guards statsq creation so it occurs only when the
+> feature bit is enabled.
 > 
-> But it would be trickier to fit that in for -machine and
-> perhaps confusing given the suboptions.
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3188
 > 
->>> Did we have a merge conflict at some point that messed things up?
->>
->> It's not clear - it was the only option hanging around in -M and it was
->> already appearing wrong in the man output.
->> I wondered if it was some requirement to have *something* in the -M
->> definition so thought it best to move it at the same time.
-> 
-> It looks like this was incorrectly added under -M by
-> commit dfce81f1b9 ("vl: Add sgx compound properties to expose
-> SGX EPC sections to guest"), which should have put it under
-> -machine like all our other machine suboption documentation.
-> 
-> The result is that the sgx-epc documentation appears OK
-> in --help because the --help output just concatenates
-> everything so it gets tacked on after the -machine help,
-> but it is misrendered in the HTML docs:
-> https://qemu-project.gitlab.io/qemu/system/invocation.html
-> as it appears as if a top level option rather than one
-> indented to indicate that it's a machine sub-option.
-> So this change fixes that bug (and should ideally say so
-> in its commit message).
+> Signed-off-by: Aaron Lo <aaronlo0929@gmail.com>
 
-Yeah, I found this bug before and sent the fix: 
-https://lore.kernel.org/qemu-devel/20250714091953.448226-2-xiaoyao.li@intel.com/
 
-But I was occupied with other stuff then so that had no time to sent out 
-the v2.
+did you test this with linux guests and with
+free page hinting?
 
-> Before that it simply read
-> -HXCOMM Deprecated by -machine
-> -DEF("M", HAS_ARG, QEMU_OPTION_M, "", QEMU_ARCH_ALL)
+
+
+The issue is that sadly everyone is out of spec here.
+
+
+We will have to fix the spec.
+
+
+> ---
+>  hw/virtio/virtio-balloon.c | 9 +++++++--
+>  1 file changed, 7 insertions(+), 2 deletions(-)
 > 
-> (Commit dfce81f1b9 also silently dropped that "deprecated"
-> comment, which it shouldn't really have done.)
+> diff --git a/hw/virtio/virtio-balloon.c b/hw/virtio/virtio-balloon.c
+> index 02cdd807d7..f5d4d5f60c 100644
+> --- a/hw/virtio/virtio-balloon.c
+> +++ b/hw/virtio/virtio-balloon.c
+> @@ -892,7 +892,10 @@ static void virtio_balloon_device_realize(DeviceState *dev, Error **errp)
+>  
+>      s->ivq = virtio_add_queue(vdev, 128, virtio_balloon_handle_output);
+>      s->dvq = virtio_add_queue(vdev, 128, virtio_balloon_handle_output);
+> -    s->svq = virtio_add_queue(vdev, 128, virtio_balloon_receive_stats);
+> +
+> +    if (virtio_has_feature(s->host_features, VIRTIO_BALLOON_F_STATS_VQ)) {
+> +        s->svq = virtio_add_queue(vdev, 128, virtio_balloon_receive_stats);
+> +    }
+>  
+>      if (virtio_has_feature(s->host_features, VIRTIO_BALLOON_F_FREE_PAGE_HINT)) {
+>          s->free_page_vq = virtio_add_queue(vdev, VIRTQUEUE_MAX_SIZE,
+> @@ -932,7 +935,9 @@ static void virtio_balloon_device_unrealize(DeviceState *dev)
+>  
+>      virtio_delete_queue(s->ivq);
+>      virtio_delete_queue(s->dvq);
+> -    virtio_delete_queue(s->svq);
+> +    if (s->svq) {
+> +        virtio_delete_queue(s->svq);
+> +    }
+>      if (s->free_page_vq) {
+>          virtio_delete_queue(s->free_page_vq);
+>      }
 > 
-> thanks
-> -- PMM
+> ---
+> base-commit: 9c23f2a7b0b45277693a14074b1aaa827eecdb92
+> change-id: 20251211-balloon-check-stats-feature-7ea658e038ce
 > 
+> Best regards,
+> -- 
+> Aaron Lo <aaronlo0929@gmail.com>
 
 
