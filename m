@@ -4,90 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC4DDD68BE7
-	for <qemu-trivial@archiver.kernel.org>; Thu, 18 Dec 2025 07:51:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95702E784BF
+	for <qemu-trivial@archiver.kernel.org>; Thu, 25 Dec 2025 04:14:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vW8mh-0005Yw-B7; Thu, 18 Dec 2025 02:50:51 -0500
+	id 1vYcjb-0004Oc-G0; Wed, 24 Dec 2025 23:13:55 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vW8md-0005Y6-Q7
- for qemu-trivial@nongnu.org; Thu, 18 Dec 2025 02:50:48 -0500
-Received: from mail-wr1-x444.google.com ([2a00:1450:4864:20::444])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vW8ma-00044e-I5
- for qemu-trivial@nongnu.org; Thu, 18 Dec 2025 02:50:46 -0500
-Received: by mail-wr1-x444.google.com with SMTP id
- ffacd0b85a97d-430f9ffd4e8so681759f8f.0
- for <qemu-trivial@nongnu.org>; Wed, 17 Dec 2025 23:50:44 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1766044243; x=1766649043; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=BNuBMvcfRMJftO6hvS2QM/ySAK+YceG+Do76sWoYe0o=;
- b=BtIQ0N2s6GmdMwlx4WHBvMbrEbJnSRhjjilIUn3GAWZ8lq9Ok2bn0qaTJQaRVIaXIQ
- 8LPtp1vF5P0rfMlgWV/F4vA8Mcuc7ATg98M4I5qxSP3zEBw0vRZS38noY7HMruaFxB0k
- kSE4FxO8BQvGfK8tQ2wSbgBk7IrKNnDmgEz2sWgwLqyhuWuL4+i9X3kHp8RhT4FJXBJz
- QqiY0tjk3LFzs4Xw7JTp493H+0W+blmVl0x15MSqXNVo+PRJuYgjFF506khICm17kTHj
- WTIWnvy4THp/0QweH1YP+t/cRYeIvzModeJjSICwt1zpSakhtHrEWCGGaMv5/X/qrHoS
- 1aLg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766044243; x=1766649043;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BNuBMvcfRMJftO6hvS2QM/ySAK+YceG+Do76sWoYe0o=;
- b=FRRHs29pAkeZ2b4q0KIS3sYUVnhFdZ1Zzo65UtAwGPoKlQqMivnUglpPzud1pp+Zd/
- xDhTmiQhxgEtx65ZztHpvO/tSBR+31KccQIFowEkwLeDIYpPD42yKI/Fu1JBBjzaVSOI
- 9oVQwGN5oY9f+13uEkmpurvfOpm87sCUMSGum6duJwYDwf2OzsufYGFbvs0XENwyJ3mW
- ERY314SPQYzc2uHlSpFj10frSmqNXDD1JA7ROG8DHC8Z79jpAQmwARRxwhyPdDMvqwxd
- xFRx20pT63GsGvwwJxr3VJ1JVtxEi9ec/loGHY6oD1XWh34SCL//BToDRrdDule8hrp6
- NLJA==
-X-Gm-Message-State: AOJu0Yzobm4iJBzjCAVl5RJ1miPQlQfGXYQMu3NLYoXMlnsaZ9JUJTL3
- qzGwV0RZXWc9IT4d3Fzzp8234Zs5GYHzNl1AN86pJkGDGXrgxNnKf/ev9PuvXpv3XB/kf4q4hh+
- RoWIePtTfzg==
-X-Gm-Gg: AY/fxX5QRoGczmPgdEdDVkZIo89cFEnL34Rl+KctYvL/Nk1wGkLR7cRVGJ4ComfqHOm
- NJStMRXU22brhjzFovPRCV1gjAODBN1XfTwjj1dGYHSZxyBeTHtHoiKOxcSdt4v5H8qzyb616Ds
- X1Z+GkaUToADGb0Oe1Et2f11AYjLQ+awRgcs4Jvrz+7maC7T/9yawMjD9aV06e9YgG5vmjUDDGP
- gLFU4ymfn5xPwNUIYYLBZv+PEesk3Kq0EVtlQxMj9x9pW7SrgCdpnQUnucecwVfynY7ZGl6c70v
- ioXNVDPGiK8o94whze/CrGdSHLpnpjgZghtMImaPYSgtOxu2SnBsShqtWdVluoG/4zcq3XSw38W
- JO2CT0Zwh97f6M0dtm68i05r6PRG2UlO9qLeWp7S43eeTwXtNdjrw1YBSW2wSwdclbyxj864k3V
- Qd9vBkYXNf6r6pbx/tXGWhgKP5KtZRmSEbQBVCLZ1I8/Vqy+wkU7t4DA==
-X-Google-Smtp-Source: AGHT+IE/sk/Zaxi6Kn05S/nIUD/VoHHTMkLi7wP2/3qnhVmfuSDi3wxqB+seCrnUYZruKllxei1iRQ==
-X-Received: by 2002:adf:e588:0:b0:431:1c7:f967 with SMTP id
- ffacd0b85a97d-432447ac138mr2019724f8f.17.1766044242575; 
- Wed, 17 Dec 2025 23:50:42 -0800 (PST)
-Received: from [192.168.69.202] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4324493fd7esm3574073f8f.10.2025.12.17.23.50.40
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Wed, 17 Dec 2025 23:50:40 -0800 (PST)
-Message-ID: <ae1c0c21-a464-4893-ac11-c0e831056df9@linaro.org>
-Date: Thu, 18 Dec 2025 08:50:39 +0100
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] qemu-options.hx: use KiB, MiB, GiB for power-of-2 units
-Content-Language: en-US
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1vYcHj-0000H2-HF; Wed, 24 Dec 2025 22:45:07 -0500
+Received: from mail-a.sr.ht ([46.23.81.152])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <outgoing@sr.ht>)
+ id 1vYcHh-0002R7-5g; Wed, 24 Dec 2025 22:45:07 -0500
+DKIM-Signature: a=rsa-sha256; bh=R5SE7ijkLWVtoR1GyJ0BYJJbbZJ8IL73XPO+lp/c9C0=; 
+ c=simple/simple; d=git.sr.ht;
+ h=From:Date:Subject:Reply-to:To:Cc; 
+ q=dns/txt; s=20240113; t=1766634301; v=1;
+ b=HGHwLfcmJEsCE0y1riVbwZfxAd3dA8pUwN+kG5Ea3TM+rRdQ/vgxdIUDTwTDvCYCHxsCdBul
+ uN6zVFw7nxwiqhjbfSkFjDgSvnFH5tFURXXjhWpY3Ig8LjaWGTHpR8DJmxDmlLcxS66jlDpL2n2
+ 2qr7RY0t0Z/DLqW19tkQ+/S9UtYOFrdcVz43VDH3B7qPOt4KfhyespcMi5rHSt7sYTaSbzDAL8O
+ HvjjzCohCN2XykFalwlP1HhuR9NgiYHQDECc4KgDaBEmetceuVt7+w8mwrCZ+wit9m0Sh5GT089
+ inPQxwY6+Ivfppv5kcdKAww92FYc2v9a4hkiQ+HXybP5g==
+Received: from git.sr.ht (unknown [46.23.81.155])
+ by mail-a.sr.ht (Postfix) with ESMTPSA id EBD6224690;
+ Thu, 25 Dec 2025 03:45:00 +0000 (UTC)
+From: ~emckean <emckean@git.sr.ht>
+Date: Wed, 24 Dec 2025 22:28:18 -0500
+Subject: [PATCH qemu] hw/arm/max78000: Fix num-irq to match hardware
+ specification
+Message-ID: <176663430090.23028.16926971585326050904-0@git.sr.ht>
+X-Mailer: git.sr.ht
+To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-References: <20251218073208.160482-1-mjt@tls.msk.ru>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20251218073208.160482-1-mjt@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::444;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x444.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+Received-SPF: pass client-ip=46.23.81.152; envelope-from=outgoing@sr.ht;
+ helo=mail-a.sr.ht
+X-Spam_score_int: 4
+X-Spam_score: 0.4
+X-Spam_bar: /
+X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_INVALID=0.1,
+ DKIM_SIGNED=0.1, FREEMAIL_FORGED_REPLYTO=2.095,
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 24 Dec 2025 23:13:54 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,19 +63,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
+Reply-To: ~emckean <emckean@protonmail.com>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 18/12/25 08:32, Michael Tokarev wrote:
-> Use MiB &Co instead of MB &Co when the talk is about
-> power-of-two-based sizes, in qemu-options.hx.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/3222
-> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
-> ---
->   qemu-options.hx | 20 ++++++++++----------
->   1 file changed, 10 insertions(+), 10 deletions(-)
+From: Ethan McKean <emckean@protonmail.com>
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+The MAX78000 user guide Section 5.2 and Table 5-1 specify 119 interrupt
+entries. The previous value of 120 was based on a misreading of the
+table which spans three pages, with entries 0-104 on pages 102-103 and
+the remaining entries 105-118 on page 104.
 
+Signed-off-by: Ethan McKean <emckean@protonmail.com>
+---
+ hw/arm/max78000_soc.c | 8 +-------
+ 1 file changed, 1 insertion(+), 7 deletions(-)
+
+diff --git a/hw/arm/max78000_soc.c b/hw/arm/max78000_soc.c
+index 7f1856f5ba..1e2f66428d 100644
+--- a/hw/arm/max78000_soc.c
++++ b/hw/arm/max78000_soc.c
+@@ -88,13 +88,7 @@ static void max78000_soc_realize(DeviceState *dev_soc, Err=
+or **errp)
+=20
+     armv7m =3D DEVICE(&s->armv7m);
+=20
+-    /*
+-     * The MAX78000 user guide's Interrupt Vector Table section
+-     * suggests that there are 120 IRQs in the text, while only listing
+-     * 104 in table 5-1. Implement the more generous of the two.
+-     * This has not been tested in hardware.
+-     */
+-    qdev_prop_set_uint32(armv7m, "num-irq", 120);
++    qdev_prop_set_uint32(armv7m, "num-irq", 119);
+     qdev_prop_set_uint8(armv7m, "num-prio-bits", 3);
+     qdev_prop_set_string(armv7m, "cpu-type", ARM_CPU_TYPE_NAME("cortex-m4"));
+     qdev_prop_set_bit(armv7m, "enable-bitband", true);
+--=20
+2.49.1
 
