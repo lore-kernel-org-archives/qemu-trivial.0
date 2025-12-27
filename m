@@ -4,95 +4,73 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D395E8FDD5
-	for <qemu-trivial@archiver.kernel.org>; Sat, 27 Dec 2025 09:04:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EF40E8FDD8
+	for <qemu-trivial@archiver.kernel.org>; Sat, 27 Dec 2025 14:15:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vZQD4-00057u-Ks; Sat, 27 Dec 2025 04:03:38 -0500
+	id 1vZV57-0001bP-Sx; Sat, 27 Dec 2025 09:15:47 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1vZQD2-000571-FH
- for qemu-trivial@nongnu.org; Sat, 27 Dec 2025 04:03:36 -0500
-Received: from mail-pg1-x52d.google.com ([2607:f8b0:4864:20::52d])
+ (Exim 4.90_1) (envelope-from <neither@nut.email>) id 1vZQ43-0001MC-Nm
+ for qemu-trivial@nongnu.org; Sat, 27 Dec 2025 03:54:19 -0500
+Received: from mailgate01.uberspace.is ([95.143.172.20])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <dbarboza@ventanamicro.com>)
- id 1vZQCz-0005qj-Vm
- for qemu-trivial@nongnu.org; Sat, 27 Dec 2025 04:03:36 -0500
-Received: by mail-pg1-x52d.google.com with SMTP id
- 41be03b00d2f7-b6ce6d1d3dcso7462222a12.3
- for <qemu-trivial@nongnu.org>; Sat, 27 Dec 2025 01:03:33 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=ventanamicro.com; s=google; t=1766826212; x=1767431012; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=VbVQUs80GiGOCSQqQk+VysYiYqitbdlaNQWa1P/crgU=;
- b=icQ2Wl4EF1qlPXiRNNUTEM59qexZp2GrcHUCk4LKs3YGg5gfmIoM4plO12LKLJkVQ6
- Nd34i0//X3rLBgulIwATm7iRCTIudSJzndLyCzYcEepagUrkQmT9Gv/TPfUQRdXH10Zw
- A58lboKNvC5zYhIirpszmLQc7IKwq0s7O+093WXhbojr6OQqhgNN2HdRfhhVktyZ/6fH
- Jr7bB/NdGdI5hteyOp2u0dnkdk6y0qAaLk0nVQemAKcPFAbbHoEepvonvv8RqcWPyIp1
- OrAB2yVXM0PaXqOwl9jeJIOpQ+07t2CNZT7NUI5iOVOAQBrPgz5mf2qIbdpjje/K3bwD
- 7oUA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1766826212; x=1767431012;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=VbVQUs80GiGOCSQqQk+VysYiYqitbdlaNQWa1P/crgU=;
- b=vOJa6iZiWr5nC8Ap+NjXdbjhqeDVn1b1BLCGtKk6XmR+L5vhquirwAatB353BHE8Uv
- fcIVGArNpPJiMAPyNjkneOWJlXbdZ+XWkDIuIZQnMY19g3scgxgnmfHSVKwp8XRezb0m
- 9FtdBJRLAyLy8+9+yf/ZZFP3BGwaIukip0n3klhJSdsTxhH/HAlVJgUAH3bsxSsaPGWn
- arUFRmLXEMQ4cYq5GEn4bmWZngFzPMlMoi4AK018dljTrYMDJVrTUEfQyrBB4Q9AxOi1
- EB01s3MFYREjawyUVrvYWYzgnyD8En32hCeRful6Q0u+cRaqIYmoE6un2ut0/48cnHZ8
- XMWA==
-X-Gm-Message-State: AOJu0Ywk6uQ+7/L60GIsZXk2i088siBcolbdMKrTh1aZhERuQHDMShdI
- 4nErT44nBxNe+B1ckT5fVHSK9yB/aJ5bypUaX3tVqU+cNHVV9/r0lVXKb79PXM7DLe0=
-X-Gm-Gg: AY/fxX6RgeFp+ZHGQklO8kQqmTs+WVtTtAwO8Q0pfyT9xTTyUJSm4YLfssc54+93ibN
- ip4ZCSTOeo84PjrlwZnzLDGrPUATuzQO4g1TViTh+8bpFezwFXcvQz8+/Zj7NrcGRxs3qji1pOD
- m867KIpGT9PufiaGVA4RGHxfNkfKT49Uss2LTrVma7+vwn+vJZ9q/LKWzMtB2gGXHbqMvv5/2/F
- 0JDf+8AtTN6u2LkaD9UHebfsVgDFuuT06VA2gzcNJ2JfDndlMUmFylSbqb3TWFQ1dO2Pl57BvlD
- 3sUoPEEZQ4rhwCw4bkCh/IlL7udkWzoOqsyklS4UcmItyyy9Vbwce2hfOU2J0UE1HFaX8EWfWvF
- 5l9wZpht8T38DjB4/j7ly/Xk1SLL2ZGfJcQitgYK5X1HGjBIs9mduJQy5zTk3UKynorsp7t8bf2
- 2kF9oGI7vTYuZzLWP4JlZNMsp/ZfA=
-X-Google-Smtp-Source: AGHT+IE1nNZtLgh5hSGdmROCJypW3+SIGTbDKqLPHzKUtHhimw5jU01sklnkfxAhzPz84tqMR3e3gA==
-X-Received: by 2002:a05:7301:430c:b0:2b0:59f3:7746 with SMTP id
- 5a478bee46e88-2b05ecd7507mr16723475eec.40.1766826211845; 
- Sat, 27 Dec 2025 01:03:31 -0800 (PST)
-Received: from [192.168.68.110] ([187.101.184.177])
- by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-2b06a046e99sm64113483eec.6.2025.12.27.01.03.29
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 27 Dec 2025 01:03:31 -0800 (PST)
-Message-ID: <f9cb3ad3-1279-40ac-8fff-7b09d4e411db@ventanamicro.com>
-Date: Sat, 27 Dec 2025 06:03:27 -0300
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] tests: fix comment declaring runtime in rv64
+ (Exim 4.90_1) (envelope-from <neither@nut.email>) id 1vZQ41-0001ku-CR
+ for qemu-trivial@nongnu.org; Sat, 27 Dec 2025 03:54:19 -0500
+Received: from skiff.uberspace.de (skiff.uberspace.de [185.26.156.131])
+ by mailgate01.uberspace.is (Postfix) with ESMTPS id 5AC9460D3C
+ for <qemu-trivial@nongnu.org>; Sat, 27 Dec 2025 09:54:08 +0100 (CET)
+Received: (qmail 27282 invoked by uid 990); 27 Dec 2025 08:54:08 -0000
+Authentication-Results: skiff.uberspace.de;
+	auth=pass (plain)
+Received: from unknown (HELO unkown) (::1)
+ by skiff.uberspace.de (Haraka/3.0.1) with ESMTPSA;
+ Sat, 27 Dec 2025 09:54:08 +0100
+From: Julian Ganz <neither@nut.email>
+To: qemu-devel@nongnu.org
+Cc: Julian Ganz <neither@nut.email>, qemu-trivial@nongnu.org,
+ Palmer Dabbelt <palmer@dabbelt.com>,
+ Alistair Francis <alistair.francis@wdc.com>,
+ Weiwei Li <liwei1518@gmail.com>,
+ Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
+ Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
+ qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs)
+Subject: [PATCH] tests: fix comment declaring runtime in rv64
  interruptedmemory test
-To: Julian Ganz <neither@nut.email>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>, Weiwei Li
- <liwei1518@gmail.com>, Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- "open list:RISC-V TCG CPUs" <qemu-riscv@nongnu.org>
-References: <20251227085349.23808-1-neither@nut.email>
-From: Daniel Henrique Barboza <dbarboza@ventanamicro.com>
-Content-Language: en-US
-In-Reply-To: <20251227085349.23808-1-neither@nut.email>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::52d;
- envelope-from=dbarboza@ventanamicro.com; helo=mail-pg1-x52d.google.com
+Date: Sat, 27 Dec 2025 09:53:46 +0100
+Message-ID: <20251227085349.23808-1-neither@nut.email>
+X-Mailer: git-send-email 2.51.2
+MIME-Version: 1.0
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Bar: -
+X-Rspamd-Report: MID_CONTAINS_FROM(1) BAYES_HAM(-2.991974) MIME_GOOD(-0.1)
+ R_MISSING_CHARSET(0.5)
+X-Rspamd-Score: -1.591974
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=nut.email; s=uberspace;
+ h=from:to:cc:subject:date;
+ bh=bDOhklJZKzpwddgwnTDpyzmwJIi+r0iPIv63V8dbigw=;
+ b=H2W1CziceSMNdh1Q6GzBKRyW7uOLY8bYBH6muIbsIdZUOU/s0Pj9jf1d6FaRJo0q4rIvSOmW1X
+ LBK1YCRcBjFrqaM5YRpU/7QHdiqm901QaD89Bs6ZS8v/cxOBJoKLgVll/rlO3kiirDrGezkpRC7e
+ 9hLmJmgw5yuPNr5/ppe9ls372ZphloosJGRTPza6GC/Cbi0lW5Jrd+28Vl/ogK6S60tcyP2ApV51
+ pvy44+mV2YzCuz+aZ6bmpZ3el1E0jcz25l2excfksrqiBiaMOUu59lo7vwzg2ndkXyC1JCySPX1M
+ cSS5N89bPdc0Wq2jJFQ0Wwr+vR6Vzg12VkcAEd6uONnoLm0TedtZHGJhDNAkOFis6eGNyjAbNwcr
+ dtugcSsVZBypDaEBmtU9P84rl9zucSNHWMkwYrKjKyzmGKaYi89Km4S8wKeWiA/eIPU92kYLtSZP
+ gh/58XBTcaKYb1W72YgrdKjcW/IpPWeo9SO9jh2MlO1PF7LmkK9K90QXdWjRKobm//4uOUJAu6Jf
+ z3uhF0MWZR4FBMfkwSOOvLeGcAvpO5UsaKTnW2lAgPokXYUW8LUZEfA76pwHPlZMKmvIKk4PfkLp
+ fhAbMRrEN6A7l6oJKTGdkbspM2XeZxFowkC4arFPUfJhEwbn7Dl7Q7+qR/3AtIQtiastkPRCviJg
+ 4=
+Received-SPF: pass client-ip=95.143.172.20; envelope-from=neither@nut.email;
+ helo=mailgate01.uberspace.is
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Sat, 27 Dec 2025 09:15:38 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -107,38 +85,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
+The test attempts to trigger a regression for arount 30s. However, a
+comment just before the computation of the target wall clock time falsly
+declares the run time to be around 60s.
 
+This was the case already when we introduced the test in
 
-On 12/27/25 5:53 AM, Julian Ganz wrote:
-> The test attempts to trigger a regression for arount 30s. However, a
-> comment just before the computation of the target wall clock time falsly
-> declares the run time to be around 60s.
-> 
-> This was the case already when we introduced the test in
-> 
->      5241645c47a9987f4fcc65bab303a444966b7942
->      (tests: add test with interrupted memory accesses on rv64)
-> 
-> Signed-off-by: Julian Ganz <neither@nut.email>
-> ---
+    5241645c47a9987f4fcc65bab303a444966b7942
+    (tests: add test with interrupted memory accesses on rv64)
 
-Reviewed-by: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
+Signed-off-by: Julian Ganz <neither@nut.email>
+---
+ tests/tcg/riscv64/interruptedmemory.S | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
->   tests/tcg/riscv64/interruptedmemory.S | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/tests/tcg/riscv64/interruptedmemory.S b/tests/tcg/riscv64/interruptedmemory.S
-> index cd9073ee31..c154f93839 100644
-> --- a/tests/tcg/riscv64/interruptedmemory.S
-> +++ b/tests/tcg/riscv64/interruptedmemory.S
-> @@ -25,7 +25,7 @@ _start:
->   	li	a0, 0x03	# 8N1, DLAB=0
->   	sb	a0, 3(t1)
->   
-> -	# Run test for around 60s
-> +	# Run test for around 30s
->   	call	rtc_get
->   	li	t0, 30
->   	slli	t0, t0, 30 # Approx. 10e9 ns
+diff --git a/tests/tcg/riscv64/interruptedmemory.S b/tests/tcg/riscv64/interruptedmemory.S
+index cd9073ee31..c154f93839 100644
+--- a/tests/tcg/riscv64/interruptedmemory.S
++++ b/tests/tcg/riscv64/interruptedmemory.S
+@@ -25,7 +25,7 @@ _start:
+ 	li	a0, 0x03	# 8N1, DLAB=0
+ 	sb	a0, 3(t1)
+ 
+-	# Run test for around 60s
++	# Run test for around 30s
+ 	call	rtc_get
+ 	li	t0, 30
+ 	slli	t0, t0, 30 # Approx. 10e9 ns
+-- 
+2.51.2
 
 
