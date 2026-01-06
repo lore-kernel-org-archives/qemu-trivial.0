@@ -4,73 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3EF40E8FDD8
-	for <qemu-trivial@archiver.kernel.org>; Sat, 27 Dec 2025 14:15:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BDAF0CEFD0C
+	for <qemu-trivial@archiver.kernel.org>; Tue,  6 Jan 2026 22:22:25 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vZV57-0001bP-Sx; Sat, 27 Dec 2025 09:15:47 -0500
+	id 1vdFRG-0005hl-Bz; Tue, 06 Jan 2026 17:22:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <neither@nut.email>) id 1vZQ43-0001MC-Nm
- for qemu-trivial@nongnu.org; Sat, 27 Dec 2025 03:54:19 -0500
-Received: from mailgate01.uberspace.is ([95.143.172.20])
+ (Exim 4.90_1)
+ (envelope-from <bounce+e91484.97607e-qemu-trivial=nongnu.org@yodel.dev>)
+ id 1vdF9g-0008UR-St
+ for qemu-trivial@nongnu.org; Tue, 06 Jan 2026 17:03:56 -0500
+Received: from k57.kb8c70eb.use4.send.mailgun.net ([204.220.184.57])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <neither@nut.email>) id 1vZQ41-0001ku-CR
- for qemu-trivial@nongnu.org; Sat, 27 Dec 2025 03:54:19 -0500
-Received: from skiff.uberspace.de (skiff.uberspace.de [185.26.156.131])
- by mailgate01.uberspace.is (Postfix) with ESMTPS id 5AC9460D3C
- for <qemu-trivial@nongnu.org>; Sat, 27 Dec 2025 09:54:08 +0100 (CET)
-Received: (qmail 27282 invoked by uid 990); 27 Dec 2025 08:54:08 -0000
-Authentication-Results: skiff.uberspace.de;
-	auth=pass (plain)
-Received: from unknown (HELO unkown) (::1)
- by skiff.uberspace.de (Haraka/3.0.1) with ESMTPSA;
- Sat, 27 Dec 2025 09:54:08 +0100
-From: Julian Ganz <neither@nut.email>
+ (Exim 4.90_1)
+ (envelope-from <bounce+e91484.97607e-qemu-trivial=nongnu.org@yodel.dev>)
+ id 1vdF9e-0004gr-9R
+ for qemu-trivial@nongnu.org; Tue, 06 Jan 2026 17:03:56 -0500
+X-Mailgun-Sid: WyIxNjkyZSIsInFlbXUtdHJpdmlhbEBub25nbnUub3JnIiwiOTc2MDdlIl0=
+Received: from mail.yodel.dev (mail.yodel.dev [35.209.39.246]) by
+ 48be1b9fffe7a540cf3acbe3a6d898da2ddd5633bd7318dfffec6707d90c5c48 with SMTP id
+ 695d86c01804cccf5ca9f07b; Tue, 06 Jan 2026 22:03:44 GMT
+X-Mailgun-Sending-Ip: 204.220.184.57
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yodel.dev;
+ s=rsa2048; t=1767737023;
+ bh=TM0YFFpxn0xRwAIl/7fxZ3lZTuiRdep6mFmSWUzoFg0=;
+ h=X-Mailgun-Dkim:From:To:Cc:Subject:Date:Message-ID:MIME-Version:
+ Content-Transfer-Encoding:From:Reply-to:Subject:Date:Message-id:To:
+ Cc:Mime-version:Content-type:Content-transfer-encoding:In-reply-to:
+ References;
+ b=eULLb5iiqmMaSw+xXlGS9zx6dtmlRDDVnZX3tvox1HIvnl+HucFDLxzADEzRdf04V
+ 48QPE8UIkJYKCgOCfwU2HaavURErriO6hayuCofu77dXCFXX0oMIeYxDx/JItd81L+
+ iHkH2FxS9Hy1gMdfBipkTvk1J5IY7V/bQlZYGySGDZjyYTE8Qup7Z3YYmW29npent2
+ 7P8bqtNMvGofu1D0jlNN/yhyS448ot/w3rgaGLyUY0COUOu7y65tDvL03Fapb77Stg
+ b7++IiybLVBhjo+LMwpes8CEOPwFRtswT9DhFZd6tLo42Wipr3YHuHzVPsFVqzQ2NX
+ NKtqt/lorJk+w==
+X-Mailgun-Dkim: no
+X-Mailgun-Dkim: no
+From: Yodel Eldar <yodel.eldar@yodel.dev>
 To: qemu-devel@nongnu.org
-Cc: Julian Ganz <neither@nut.email>, qemu-trivial@nongnu.org,
- Palmer Dabbelt <palmer@dabbelt.com>,
- Alistair Francis <alistair.francis@wdc.com>,
- Weiwei Li <liwei1518@gmail.com>,
- Daniel Henrique Barboza <dbarboza@ventanamicro.com>,
- Liu Zhiwei <zhiwei_liu@linux.alibaba.com>,
- qemu-riscv@nongnu.org (open list:RISC-V TCG CPUs)
-Subject: [PATCH] tests: fix comment declaring runtime in rv64
- interruptedmemory test
-Date: Sat, 27 Dec 2025 09:53:46 +0100
-Message-ID: <20251227085349.23808-1-neither@nut.email>
-X-Mailer: git-send-email 2.51.2
+Cc: qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ Yodel Eldar <yodel.eldar@yodel.dev>
+Subject: [PATCH] tests/functional/qemu_test/testcase: Fix mismatched quotations
+Date: Tue,  6 Jan 2026 16:03:19 -0600
+Message-ID: <20260106220319.74785-1-yodel.eldar@yodel.dev>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-X-Rspamd-Bar: -
-X-Rspamd-Report: MID_CONTAINS_FROM(1) BAYES_HAM(-2.991974) MIME_GOOD(-0.1)
- R_MISSING_CHARSET(0.5)
-X-Rspamd-Score: -1.591974
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=nut.email; s=uberspace;
- h=from:to:cc:subject:date;
- bh=bDOhklJZKzpwddgwnTDpyzmwJIi+r0iPIv63V8dbigw=;
- b=H2W1CziceSMNdh1Q6GzBKRyW7uOLY8bYBH6muIbsIdZUOU/s0Pj9jf1d6FaRJo0q4rIvSOmW1X
- LBK1YCRcBjFrqaM5YRpU/7QHdiqm901QaD89Bs6ZS8v/cxOBJoKLgVll/rlO3kiirDrGezkpRC7e
- 9hLmJmgw5yuPNr5/ppe9ls372ZphloosJGRTPza6GC/Cbi0lW5Jrd+28Vl/ogK6S60tcyP2ApV51
- pvy44+mV2YzCuz+aZ6bmpZ3el1E0jcz25l2excfksrqiBiaMOUu59lo7vwzg2ndkXyC1JCySPX1M
- cSS5N89bPdc0Wq2jJFQ0Wwr+vR6Vzg12VkcAEd6uONnoLm0TedtZHGJhDNAkOFis6eGNyjAbNwcr
- dtugcSsVZBypDaEBmtU9P84rl9zucSNHWMkwYrKjKyzmGKaYi89Km4S8wKeWiA/eIPU92kYLtSZP
- gh/58XBTcaKYb1W72YgrdKjcW/IpPWeo9SO9jh2MlO1PF7LmkK9K90QXdWjRKobm//4uOUJAu6Jf
- z3uhF0MWZR4FBMfkwSOOvLeGcAvpO5UsaKTnW2lAgPokXYUW8LUZEfA76pwHPlZMKmvIKk4PfkLp
- fhAbMRrEN6A7l6oJKTGdkbspM2XeZxFowkC4arFPUfJhEwbn7Dl7Q7+qR/3AtIQtiastkPRCviJg
- 4=
-Received-SPF: pass client-ip=95.143.172.20; envelope-from=neither@nut.email;
- helo=mailgate01.uberspace.is
+Received-SPF: pass client-ip=204.220.184.57;
+ envelope-from=bounce+e91484.97607e-qemu-trivial=nongnu.org@yodel.dev;
+ helo=k57.kb8c70eb.use4.send.mailgun.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=0.001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 27 Dec 2025 09:15:38 -0500
+X-Mailman-Approved-At: Tue, 06 Jan 2026 17:22:05 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,34 +80,28 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-The test attempts to trigger a regression for arount 30s. However, a
-comment just before the computation of the target wall clock time falsly
-declares the run time to be around 60s.
+A debug string incorrectly mixes single-quotes with double-quotes,
+causing the variable within to be treated as a literal. Fix it.
 
-This was the case already when we introduced the test in
-
-    5241645c47a9987f4fcc65bab303a444966b7942
-    (tests: add test with interrupted memory accesses on rv64)
-
-Signed-off-by: Julian Ganz <neither@nut.email>
+Signed-off-by: Yodel Eldar <yodel.eldar@yodel.dev>
 ---
- tests/tcg/riscv64/interruptedmemory.S | 2 +-
+ tests/functional/qemu_test/testcase.py | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/tcg/riscv64/interruptedmemory.S b/tests/tcg/riscv64/interruptedmemory.S
-index cd9073ee31..c154f93839 100644
---- a/tests/tcg/riscv64/interruptedmemory.S
-+++ b/tests/tcg/riscv64/interruptedmemory.S
-@@ -25,7 +25,7 @@ _start:
- 	li	a0, 0x03	# 8N1, DLAB=0
- 	sb	a0, 3(t1)
+diff --git a/tests/functional/qemu_test/testcase.py b/tests/functional/qemu_test/testcase.py
+index 58f2740100..ff86c9d187 100644
+--- a/tests/functional/qemu_test/testcase.py
++++ b/tests/functional/qemu_test/testcase.py
+@@ -349,7 +349,7 @@ def require_netdev(self, netdevname):
+         helptxt = run([self.qemu_bin, '-M', 'none', '-netdev', 'help'],
+                       capture_output=True, check=True, encoding='utf8').stdout
+         if helptxt.find('\n' + netdevname + '\n') < 0:
+-            self.skipTest('no support for " + netdevname + " networking')
++            self.skipTest('no support for ' + netdevname + ' networking')
  
--	# Run test for around 60s
-+	# Run test for around 30s
- 	call	rtc_get
- 	li	t0, 30
- 	slli	t0, t0, 30 # Approx. 10e9 ns
+     def require_device(self, devicename):
+         helptxt = run([self.qemu_bin, '-M', 'none', '-device', 'help'],
 -- 
-2.51.2
+2.52.0
 
 
