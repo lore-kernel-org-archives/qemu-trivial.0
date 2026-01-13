@@ -4,35 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16D6CD2D0EB
-	for <qemu-trivial@archiver.kernel.org>; Tue, 13 Jan 2026 12:59:35 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D0F01D2D0EB
+	for <qemu-trivial@archiver.kernel.org>; Tue, 13 Jan 2026 12:59:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vfdzG-0000LR-Qb; Tue, 13 Jan 2026 07:59:08 -0500
+	id 1vfdzV-00013q-BD; Tue, 13 Jan 2026 07:59:21 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>) id 1vfdzF-0000Ec-2j
- for qemu-trivial@nongnu.org; Tue, 13 Jan 2026 07:59:06 -0500
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1vfdzK-0000X8-9Z; Tue, 13 Jan 2026 07:59:10 -0500
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>) id 1vfdzB-0000e6-4g
- for qemu-trivial@nongnu.org; Tue, 13 Jan 2026 07:59:04 -0500
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1vfdzH-0000er-DP; Tue, 13 Jan 2026 07:59:09 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 720DA17D9A2;
+ by isrv.corpit.ru (Postfix) with ESMTP id 98CB817D9A5;
  Tue, 13 Jan 2026 15:58:46 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 5DC8034C3F6;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 9009A34C3F9;
  Tue, 13 Jan 2026 15:58:51 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-user@nongnu.org
+To: qemu-user@nongnu.org,
+	qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH trivial 0/7] assume some linux syscalls are always present:
- epoll, splice, inotify
-Date: Tue, 13 Jan 2026 15:58:38 +0300
-Message-ID: <20260113125849.910112-1-mjt@tls.msk.ru>
+Subject: [PATCH 2/3] linux-user/syscall.c: consolidate statfs calls
+Date: Tue, 13 Jan 2026 15:58:41 +0300
+Message-ID: <20260113125849.910112-4-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260113125849.910112-1-mjt@tls.msk.ru>
+References: <20260113125849.910112-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
@@ -58,29 +60,121 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-There are numerous checks in the code wrt availability
-of linux subsystems.  It makes no sense to check for them
-anymore, since they're always present (since linux 2.6 or
-earlier).
+group statfs&fstatfs together, eliminate goto into
+a different case label, eliminate struct statfs global
+to all syscalls.  Ditto for statfs64.
 
-Michael Tokarev (7):
-  linux-user/syscall.c: assume splice is always present
-  meson.build: stop checking for splice()
-  linux-user: assume inotify sycalls are always present
-  meson.build: stop checking for inotify_init()
-  linux-user: assume epoll is always present
-  meson.build: do not check for epoll.h (CONFIG_EPOLL)
-  rename CONFIG_EPOLL_CREATE1 to CONFIG_EPOLL
+This makes code more readable and less scattered.
 
- linux-user/fd-trans.c     |  5 -----
- linux-user/fd-trans.h     |  4 ----
- linux-user/syscall.c      | 44 +++++++--------------------------------
- linux-user/syscall_defs.h |  3 ---
- meson.build               | 12 +----------
- util/aio-posix.h          |  4 ++--
- util/meson.build          |  2 +-
- 7 files changed, 11 insertions(+), 63 deletions(-)
+While at it, drop `#ifdef TARGET_NR_fstatfs` -- assume fstatfs()
+is present together with statfs() - just like for fstatfs64.
 
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ linux-user/syscall.c | 62 +++++++++++++++++++++++---------------------
+ 1 file changed, 32 insertions(+), 30 deletions(-)
+
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index d32299dddb..1f84c296d5 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -9457,10 +9457,6 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+     || defined(TARGET_NR_fstat) || defined(TARGET_NR_fstat64) \
+     || defined(TARGET_NR_statx)
+     struct stat st;
+-#endif
+-#if defined(TARGET_NR_statfs) || defined(TARGET_NR_statfs64) \
+-    || defined(TARGET_NR_fstatfs)
+-    struct statfs stfs;
+ #endif
+     void *p;
+ 
+@@ -10978,15 +10974,22 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+         return get_errno(setpriority(arg1, arg2, arg3));
+ #ifdef TARGET_NR_statfs
+     case TARGET_NR_statfs:
+-        if (!(p = lock_user_string(arg1))) {
+-            return -TARGET_EFAULT;
+-        }
+-        ret = get_errno(statfs(path(p), &stfs));
+-        unlock_user(p, arg1, 0);
+-    convert_statfs:
+-        if (!is_error(ret)) {
++    case TARGET_NR_fstatfs:
++        {
++            struct statf stfs;
+             struct target_statfs *target_stfs;
+-
++            if (num == TARGET_NR_statfs) {
++                if (!(p = lock_user_string(arg1))) {
++                    return -TARGET_EFAULT;
++                }
++                ret = get_errno(statfs(path(p), &stfs));
++                unlock_user(p, arg1, 0);
++            } else /* if (num == TARGET_NR_fstatfs) */ {
++                ret = get_errno(fstatfs(arg1, &stfs));
++            }
++            if (is_error(ret)) {
++                return ret;
++            }
+             if (!lock_user_struct(VERIFY_WRITE, target_stfs, arg2, 0))
+                 return -TARGET_EFAULT;
+             __put_user(stfs.f_type, &target_stfs->f_type);
+@@ -11003,25 +11006,27 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+             __put_user(stfs.f_flags, &target_stfs->f_flags);
+             memset(target_stfs->f_spare, 0, sizeof(target_stfs->f_spare));
+             unlock_user_struct(target_stfs, arg2, 1);
++            return ret;
+         }
+-        return ret;
+-#endif
+-#ifdef TARGET_NR_fstatfs
+-    case TARGET_NR_fstatfs:
+-        ret = get_errno(fstatfs(arg1, &stfs));
+-        goto convert_statfs;
+ #endif
+ #ifdef TARGET_NR_statfs64
+     case TARGET_NR_statfs64:
+-        if (!(p = lock_user_string(arg1))) {
+-            return -TARGET_EFAULT;
+-        }
+-        ret = get_errno(statfs(path(p), &stfs));
+-        unlock_user(p, arg1, 0);
+-    convert_statfs64:
+-        if (!is_error(ret)) {
++    case TARGET_NR_fstatfs64:
++        {
++            struct statfs stfs;
+             struct target_statfs64 *target_stfs;
+-
++            if (num == TARGET_NR_statfs64) {
++                if (!(p = lock_user_string(arg1))) {
++                    return -TARGET_EFAULT;
++                }
++                ret = get_errno(statfs(path(p), &stfs));
++                unlock_user(p, arg1, 0);
++                } else /* if (num == TARGET_NR_fstatfs64) */ {
++                ret = get_errno(fstatfs(arg1, &stfs));
++            }
++            if (is_error(ret)) {
++                return ret;
++            }
+             if (!lock_user_struct(VERIFY_WRITE, target_stfs, arg3, 0))
+                 return -TARGET_EFAULT;
+             __put_user(stfs.f_type, &target_stfs->f_type);
+@@ -11038,11 +11043,8 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+             __put_user(stfs.f_flags, &target_stfs->f_flags);
+             memset(target_stfs->f_spare, 0, sizeof(target_stfs->f_spare));
+             unlock_user_struct(target_stfs, arg3, 1);
++            return ret;
+         }
+-        return ret;
+-    case TARGET_NR_fstatfs64:
+-        ret = get_errno(fstatfs(arg1, &stfs));
+-        goto convert_statfs64;
+ #endif
+ #ifdef TARGET_NR_socketcall
+     case TARGET_NR_socketcall:
 -- 
 2.47.3
 
