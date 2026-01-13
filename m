@@ -4,33 +4,34 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5B401D2D0ED
-	for <qemu-trivial@archiver.kernel.org>; Tue, 13 Jan 2026 12:59:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 73AD9D2D0EB
+	for <qemu-trivial@archiver.kernel.org>; Tue, 13 Jan 2026 12:59:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vfdza-0001Q9-9B; Tue, 13 Jan 2026 07:59:26 -0500
+	id 1vfdzT-0000xE-G8; Tue, 13 Jan 2026 07:59:19 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>) id 1vfdzV-00012W-1j
- for qemu-trivial@nongnu.org; Tue, 13 Jan 2026 07:59:21 -0500
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1vfdzJ-0000Wm-V1; Tue, 13 Jan 2026 07:59:10 -0500
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>) id 1vfdzT-0000h7-Dz
- for qemu-trivial@nongnu.org; Tue, 13 Jan 2026 07:59:20 -0500
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1vfdzH-0000eq-DO; Tue, 13 Jan 2026 07:59:09 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id EDABA17D9AA;
+ by isrv.corpit.ru (Postfix) with ESMTP id 89BB017D9A4;
  Tue, 13 Jan 2026 15:58:46 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id E719E34C3FE;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 81F0A34C3F8;
  Tue, 13 Jan 2026 15:58:51 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-user@nongnu.org
+To: qemu-user@nongnu.org,
+	qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org,
 	Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PATCH trivial 5/7] linux-user: assume epoll is always present
-Date: Tue, 13 Jan 2026 15:58:46 +0300
-Message-ID: <20260113125849.910112-9-mjt@tls.msk.ru>
+Subject: [PATCH 1/3] linux-user/syscall.c: statfs: f_flags is always present
+Date: Tue, 13 Jan 2026 15:58:40 +0300
+Message-ID: <20260113125849.910112-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260113125849.910112-1-mjt@tls.msk.ru>
 References: <20260113125849.910112-1-mjt@tls.msk.ru>
@@ -59,89 +60,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-epoll is in linux since 2.6. epoll_init1 has been
-added in 2.6.27.  There's no need to check for its
-presence, including all other epoll-related syscalls.
-
-Modern architectures don't have epoll_create(), only
-epoll_create1(), so keep conditional around the former.
+statfs.f_flags is present since linux 2.6.
+There's no need to check for its existance anymore.
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- linux-user/syscall.c      | 10 ++--------
- linux-user/syscall_defs.h |  3 ---
- 2 files changed, 2 insertions(+), 11 deletions(-)
+ linux-user/syscall.c | 8 --------
+ 1 file changed, 8 deletions(-)
 
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index fad2bf3632..207c54db02 100644
+index 2060e561a2..d32299dddb 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -72,9 +72,7 @@
- #ifdef CONFIG_EVENTFD
- #include <sys/eventfd.h>
- #endif
--#ifdef CONFIG_EPOLL
- #include <sys/epoll.h>
+@@ -11000,11 +11000,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+             __put_user(stfs.f_fsid.__val[1], &target_stfs->f_fsid.val[1]);
+             __put_user(stfs.f_namelen, &target_stfs->f_namelen);
+             __put_user(stfs.f_frsize, &target_stfs->f_frsize);
+-#ifdef _STATFS_F_FLAGS
+             __put_user(stfs.f_flags, &target_stfs->f_flags);
+-#else
+-            __put_user(0, &target_stfs->f_flags);
 -#endif
- #ifdef CONFIG_ATTR
- #include "qemu/xattr.h"
- #endif
-@@ -13558,16 +13556,13 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
-     case TARGET_NR_signalfd:
-         return do_signalfd4(arg1, arg2, 0);
- #endif
--#if defined(CONFIG_EPOLL)
-+
- #if defined(TARGET_NR_epoll_create)
-     case TARGET_NR_epoll_create:
-         return get_errno(epoll_create(arg1));
- #endif
--#if defined(TARGET_NR_epoll_create1) && defined(CONFIG_EPOLL_CREATE1)
-     case TARGET_NR_epoll_create1:
-         return get_errno(epoll_create1(target_to_host_bitmask(arg1, fcntl_flags_tbl)));
--#endif
--#if defined(TARGET_NR_epoll_ctl)
-     case TARGET_NR_epoll_ctl:
-     {
-         struct epoll_event ep;
-@@ -13596,7 +13591,6 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+             memset(target_stfs->f_spare, 0, sizeof(target_stfs->f_spare));
+             unlock_user_struct(target_stfs, arg2, 1);
          }
-         return get_errno(epoll_ctl(arg1, arg2, arg3, epp));
-     }
+@@ -11039,11 +11035,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+             __put_user(stfs.f_fsid.__val[1], &target_stfs->f_fsid.val[1]);
+             __put_user(stfs.f_namelen, &target_stfs->f_namelen);
+             __put_user(stfs.f_frsize, &target_stfs->f_frsize);
+-#ifdef _STATFS_F_FLAGS
+             __put_user(stfs.f_flags, &target_stfs->f_flags);
+-#else
+-            __put_user(0, &target_stfs->f_flags);
 -#endif
- 
- #if defined(TARGET_NR_epoll_wait)
-     case TARGET_NR_epoll_wait:
-@@ -13682,7 +13676,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
-         g_free(ep);
-         return ret;
-     }
--#endif /* CONFIG_EPOLL */
-+
- #ifdef TARGET_NR_prlimit64
-     case TARGET_NR_prlimit64:
-     {
-diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
-index cd9ff709b8..20e2e7deac 100644
---- a/linux-user/syscall_defs.h
-+++ b/linux-user/syscall_defs.h
-@@ -2595,7 +2595,6 @@ struct target_drm_i915_getparam {
- #define FUTEX_CLOCK_REALTIME    256
- #define FUTEX_CMD_MASK          ~(FUTEX_PRIVATE_FLAG | FUTEX_CLOCK_REALTIME)
- 
--#ifdef CONFIG_EPOLL
- #if defined(TARGET_X86_64)
- #define TARGET_EPOLL_PACKED QEMU_PACKED
- #else
-@@ -2616,8 +2615,6 @@ struct target_epoll_event {
- 
- #define TARGET_EP_MAX_EVENTS (INT_MAX / sizeof(struct target_epoll_event))
- 
--#endif
--
- struct target_ucred {
-     abi_uint pid;
-     abi_uint uid;
+             memset(target_stfs->f_spare, 0, sizeof(target_stfs->f_spare));
+             unlock_user_struct(target_stfs, arg3, 1);
+         }
 -- 
 2.47.3
 
