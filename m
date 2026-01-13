@@ -4,84 +4,68 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA5B7D2D0EE
-	for <qemu-trivial@archiver.kernel.org>; Tue, 13 Jan 2026 13:19:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50569D2D10A
+	for <qemu-trivial@archiver.kernel.org>; Tue, 13 Jan 2026 14:15:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vfeBw-0003Kg-IT; Tue, 13 Jan 2026 08:12:12 -0500
+	id 1vffAM-0003rb-0Y; Tue, 13 Jan 2026 09:14:38 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vfeBu-0003Jh-L0
- for qemu-trivial@nongnu.org; Tue, 13 Jan 2026 08:12:10 -0500
-Received: from mail-yx1-xb12b.google.com ([2607:f8b0:4864:20::b12b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vfeBt-0002wP-7E
- for qemu-trivial@nongnu.org; Tue, 13 Jan 2026 08:12:10 -0500
-Received: by mail-yx1-xb12b.google.com with SMTP id
- 956f58d0204a3-644715aad1aso7781008d50.0
- for <qemu-trivial@nongnu.org>; Tue, 13 Jan 2026 05:12:08 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768309928; x=1768914728; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=sllnZarZq26uZAc+wtPOmNJKeYrKmmlVWQJwR/aLv18=;
- b=fXKUYGEU8tQDfbJhyKxJ5IGvNdLd0J28hwGHcg7LSfBXXH9hnixWNA5VCu0BKKyGnZ
- p1DTxToroN+2xpsfLWUkrR96oKNSGZoQy0DlqJ9ZvDclqDsyawDUdm/mgFldZGEFllNT
- 77mCEGlXhXqEmq5H1VIehPsOkpG5pr/MeYYOugETXg89lQ0DrMPHJOyKJ4Zdjl6nsTea
- lCDtqlxNM7VjKQ4KtbcY7IZxjgQTTioip/rBbp7S3aCLpI2pAIB79jEd0ArRTtgktylh
- GShc6K4WayLDrwbm/sqp8QSKmE2WLUP8EQ6JkUNkk5eCZJs8fixJunqPVC2xlcVwG+KH
- 5++g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768309928; x=1768914728;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=sllnZarZq26uZAc+wtPOmNJKeYrKmmlVWQJwR/aLv18=;
- b=RbjgF3WaOLc73f8xgwI1qjx2oB6y76NyZY8N3lBZ0zdp9wXN4TXROmCowzqaNLoVJ3
- Ad3oJsUwATAXfaSo1AI52yhhqVnTtom+WfwAe/pcGAyG5/9/0hgUadWHExspsXWPTgTu
- zupwZnLfQx2wI2MQIiYkwsa7HBCSg6dzA781wuuFRxr4dIFtDtMQNWp6D95oVvj04nOk
- NjMUhj4/2QU9KGzaK7nXOxn+yWqZGjOc/OsQV46q6XGLwi1A09oacOrKIZKedAnNToTc
- Hm9txD916/p1OIsRKTIEbfVoAYTtRQ0NRfvEuOs5rZhYygICXyZ/5F5vD2uBVrGYZvaR
- s8eg==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXn06oA7dvaKsg2k7q2U7yp6c3ObSV5OTjKaX7gZYzV1joeZ/l128AKJlCUsLJCRoyghrCaBlgS+vHWmnM=@nongnu.org
-X-Gm-Message-State: AOJu0Yz694j4pMN16Q2mBKCAmjxxsn5xwNo2ulinNMbYM+zXupCK+H7N
- nbu6yIDaB/k70ZjKF3aEB1IR8fHzKiXkBQIxpsAe7qiTLKzYIjELVN3uuins4RlCFa1PLUsskFU
- YpHol17uM0UGn6Qt7hiHHYB7cZvDLKgAHJyUDo68QjA==
-X-Gm-Gg: AY/fxX4ltTlkqz8CvnhZkOvwFRfIPhXNG1IoZlzLyLg76VOS2HJxR8rHizEGs36nCb8
- giNTTOmtiyniyA+CgvAUZ4fOWgL1SMzF3W42IMTZoWI0qfd9ZWrKOMOOfx3Tp/RJkLIvTPBK+j2
- /c3ukFBgviCmJqv0LnJcrqMhP84iEjNwOH0SWN0iloOUmX1iupUfXv8S30N/SnBvvuyup9cH5mF
- SseJrNno34ReOc679SMKpBfRuySutIpZL2amTV6b8i1uTUMXUojEMqf4rbnGn3KbFXRcSOW9FtF
- 8/Jr27oN2tOlRf9JxQ6bo6I=
-X-Google-Smtp-Source: AGHT+IHoQHVJdYGyr7t2bz9w6shpFAaiY7t6KX/eFKbOTtm88mRQYAdDDLCT59g7FRNXcZNgwGsrRrUbNlvZMRxohSA=
-X-Received: by 2002:a05:690e:118a:b0:63f:b605:b7f2 with SMTP id
- 956f58d0204a3-648f61ff3b3mr2681309d50.10.1768309927937; Tue, 13 Jan 2026
- 05:12:07 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vffAK-0003pr-Mf
+ for qemu-trivial@nongnu.org; Tue, 13 Jan 2026 09:14:36 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vffAJ-0003k6-7i
+ for qemu-trivial@nongnu.org; Tue, 13 Jan 2026 09:14:36 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1768313674;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=9HajdmobONRARRFgwe7OqKPM/j4e/rKBGfUCIx3mNbc=;
+ b=Z1dNhOa3PO68xk8CFWLFvYs998hxqwMmAnpl7B3h5TTYlzUCKmFPDla7FG2Nz4D2JdqQ3g
+ 06VUl1uXnjG3316cHP4ncFl/eXnz5hbkNiDIzJCKMQL5IYvRhk4kztF+L7Z+mQYVUReGH2
+ M217GX0skTFdCPNK2HJuzyQVAXz6HBs=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-686-7PDv_F6gMtiUoqA0NMKq6Q-1; Tue,
+ 13 Jan 2026 09:14:31 -0500
+X-MC-Unique: 7PDv_F6gMtiUoqA0NMKq6Q-1
+X-Mimecast-MFC-AGG-ID: 7PDv_F6gMtiUoqA0NMKq6Q_1768313670
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 065A31956061; Tue, 13 Jan 2026 14:14:30 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.45.226.23])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 8F02E19560BA; Tue, 13 Jan 2026 14:14:26 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Kevin Wolf <kwolf@redhat.com>,
+	qemu-block@nongnu.org
+Cc: Hanna Reitz <hreitz@redhat.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, Thomas Huth <thuth@redhat.com>
+Subject: [PATCH] tests/qemu-iotests: Use "gsed" for expressions that require
+ GNU sed
+Date: Tue, 13 Jan 2026 15:14:15 +0100
+Message-ID: <20260113141415.97281-1-thuth@redhat.com>
 MIME-Version: 1.0
-References: <20260113130008.910240-1-mjt@tls.msk.ru>
- <20260113130008.910240-2-mjt@tls.msk.ru>
-In-Reply-To: <20260113130008.910240-2-mjt@tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 13 Jan 2026 13:11:56 +0000
-X-Gm-Features: AZwV_Qhz86aVIko0N3iAKT9lXL6IaQnCAY2HKOp0_3adyOt_qFfHXH15lu3N7pU
-Message-ID: <CAFEAcA9Fe2mVx+tY7D7XaYxkJ8sg3akLBVar_ONHEePrjEZGsg@mail.gmail.com>
-Subject: Re: [PATCH trivial 1/7] linux-user/syscall.c: assume splice is always
- present
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12b.google.com
+Content-Transfer-Encoding: 8bit
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,18 +81,60 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Tue, 13 Jan 2026 at 13:00, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
-> splice() &Co are defined since linux 2.6.17.
-> Assume it is always present.
+From: Thomas Huth <thuth@redhat.com>
 
-Since we're calling the C functions here, the
-relevant version is glibc 2.5, but either way these
-have been around way longer than our minimum supported
-version.
+A bunch of tests are currently failing e.g. on FreeBSD like this:
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+ 082   fail       [13:38:58] [13:38:59]   0.5s                 output
+  mismatch (see .../build/tests/qemu-iotests/scratch/qcow2-file-082/082.out.bad)
+ --- .../src/tests/qemu-iotests/082.out
+ +++ .../build/tests/qemu-iotests/scratch/qcow2-file-082/082.out.bad
+ @@ -17,7 +17,7 @@
+  cluster_size: 4096
+  Format specific information:
+      compat: 1.1
+ -    compression type: COMPRESSION_TYPE
+ +    compression type: zlib
+      lazy refcounts: true
+      refcount bits: 16
+      corrupt: false
 
-thanks
--- PMM
+This happens because the sed statements require GNU sed. Let's use
+gsed in these spots to get it fixed.
+
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ tests/qemu-iotests/286       | 2 +-
+ tests/qemu-iotests/common.rc | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/tests/qemu-iotests/286 b/tests/qemu-iotests/286
+index 38216c2a0e2..cc6aacf0228 100755
+--- a/tests/qemu-iotests/286
++++ b/tests/qemu-iotests/286
+@@ -62,7 +62,7 @@ wait=yes _cleanup_qemu
+ 
+ echo 'Output structure:'
+ $QEMU_IMG snapshot -l "$TEST_IMG" | tail -n 1 | tr -s ' ' \
+-    | sed -e 's/\S\+/./g' \
++    | gsed -e 's/\S\+/./g' \
+     | sed -e 's/\./(snapshot ID)/' \
+           -e 's/\./(snapshot name)/' \
+           -e 's/\./(VM state size value)/' \
+diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
+index c0f8f0f8dfa..731e4b2b998 100644
+--- a/tests/qemu-iotests/common.rc
++++ b/tests/qemu-iotests/common.rc
+@@ -719,7 +719,7 @@ _img_info()
+     regex_json_spec_start='^ *"format-specific": \{'
+     regex_json_child_start='^ *"children": \['
+     $QEMU_IMG info $QEMU_IMG_EXTRA_ARGS "$@" "$TEST_IMG" 2>&1 | \
+-        sed -e "s#$REMOTE_TEST_DIR#TEST_DIR#g" \
++        gsed -e "s#$REMOTE_TEST_DIR#TEST_DIR#g" \
+             -e "s#$IMGPROTO:$TEST_DIR#TEST_DIR#g" \
+             -e "s#$TEST_DIR#TEST_DIR#g" \
+             -e "s#$SOCK_DIR/fuse-#TEST_DIR/#g" \
+-- 
+2.52.0
+
 
