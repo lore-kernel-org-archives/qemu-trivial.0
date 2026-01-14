@@ -4,68 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21243D29FF7
-	for <qemu-trivial@archiver.kernel.org>; Wed, 14 Jan 2026 11:56:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E2922D37E59
+	for <qemu-trivial@archiver.kernel.org>; Wed, 14 Jan 2026 15:54:23 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vfzUS-0005nc-2d; Wed, 14 Jan 2026 06:56:44 -0500
+	id 1vg3CC-0004Po-Si; Wed, 14 Jan 2026 10:54:08 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vfzUP-0005la-Ur
- for qemu-trivial@nongnu.org; Wed, 14 Jan 2026 06:56:41 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vg3CB-0004Oz-1B
+ for qemu-trivial@nongnu.org; Wed, 14 Jan 2026 10:54:07 -0500
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vfzUO-0004OK-Cy
- for qemu-trivial@nongnu.org; Wed, 14 Jan 2026 06:56:41 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vg3C9-0003KU-MC
+ for qemu-trivial@nongnu.org; Wed, 14 Jan 2026 10:54:06 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768391798;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=4fyqCJlR9BegwURpdeHQz7no89Au6P4NHo10k5As8oU=;
- b=VhKhXUs2ylXP44pGRUelHxqJPMBfjDpuXhjwJdy5zqGFrj2CTgVEg76nE5rc7ftMqZafYA
- byL14tnEQuIHMFXedc4y7KvknnXDxy7V7erfiIrYJlSslAOydG5JffYsMCiKkyXxenrDUt
- wrJoPi5sKspiBuPwFvnmPJpIOHQnoeU=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ s=mimecast20190719; t=1768406044;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=BrAY2T5uccnvXwlQLT1MN3DHNBaxIGxvo1kp/hGKA3g=;
+ b=XESLMYVtod3oqaMiNWhEUa9nanvfflTOI2iU/JGPIpbJUvtSsE6niNUEzR9G6uaKyh8E4k
+ 4StfELIMwvmi8xuNUdOgxaE9stsZC9IigiaHIRmQZUxDEEI7GvVo1pmf+EBqYoqHOz9xc6
+ UeRjkgbyjQXCS4xwlAgRH7POsMl5/Ss=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-343-03t2pm3PNaau4CBPbagl2Q-1; Wed,
- 14 Jan 2026 06:56:37 -0500
-X-MC-Unique: 03t2pm3PNaau4CBPbagl2Q-1
-X-Mimecast-MFC-AGG-ID: 03t2pm3PNaau4CBPbagl2Q_1768391796
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-15-nE6aWH3_MtSAeQSlOThK_A-1; Wed,
+ 14 Jan 2026 10:54:01 -0500
+X-MC-Unique: nE6aWH3_MtSAeQSlOThK_A-1
+X-Mimecast-MFC-AGG-ID: nE6aWH3_MtSAeQSlOThK_A_1768406040
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F284A195609D; Wed, 14 Jan 2026 11:56:35 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.41])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3648119560A2; Wed, 14 Jan 2026 11:56:34 +0000 (UTC)
-Date: Wed, 14 Jan 2026 11:56:30 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Paolo Bonzini <pbonzini@redhat.com>, qemu-devel@nongnu.org,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] configure: Set $PYTHON in the configuration of the
- optionroms
-Message-ID: <aWeEbq2CSQESPBH3@redhat.com>
-References: <20260114083306.18172-1-thuth@redhat.com>
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id B1AD919560B7; Wed, 14 Jan 2026 15:53:59 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.44.32.254])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 38C8030002D8; Wed, 14 Jan 2026 15:53:56 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ qemu-trivial@nongnu.org, gustavo.romero@linaro.org
+Subject: [PATCH] configure: Remove duplicated entry of --gdb in the help text
+Date: Wed, 14 Jan 2026 16:53:55 +0100
+Message-ID: <20260114155355.82096-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260114083306.18172-1-thuth@redhat.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
@@ -87,31 +77,39 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Wed, Jan 14, 2026 at 09:33:06AM +0100, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
-> 
-> pc-bios/optionrom/Makefile uses $(PYTHON) for running a Python script,
-> but this variable is never initialized here. So the script gets run
-> via its shebang line - which fails if the "python3" binary is not
-> available on the system. To fix this, write the PYTHON configuration
-> to the config.mak file of the optionroms.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  configure | 1 +
->  1 file changed, 1 insertion(+)
+From: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Since --gdb has recently been added to meson_options.txt, the help
+text shows up twice in the output of "./configure --help":
 
-With regards,
-Daniel
+ $ ./configure --help | grep gdb
+   --gdb=GDB-path           gdb to use for gdbstub tests [/usr/bin/gdb]
+   --gdb=VALUE              Path to GDB
+
+Remove the entry from "configure" to fix this duplication.
+
+Fixes: b46b3818cf8 ("tests/functional: Provide GDB to the functional tests")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ configure | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/configure b/configure
+index ef5157cf903..093dd7b01eb 100755
+--- a/configure
++++ b/configure
+@@ -899,7 +899,6 @@ Advanced options (experts only):
+   --cpu=CPU                Build for host CPU [$cpu]
+   --disable-containers     don't use containers for cross-building
+   --container-engine=TYPE  which container engine to use [$container_engine]
+-  --gdb=GDB-path           gdb to use for gdbstub tests [$gdb_bin]
+ EOF
+   meson_options_help
+ cat << EOF
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.52.0
 
 
