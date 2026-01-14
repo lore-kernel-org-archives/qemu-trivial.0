@@ -4,77 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4AFFD30CFE
-	for <qemu-trivial@archiver.kernel.org>; Wed, 14 Jan 2026 16:03:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B599D38FEF
+	for <qemu-trivial@archiver.kernel.org>; Wed, 14 Jan 2026 17:03:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vg3Ku-0000PG-4m; Wed, 14 Jan 2026 11:03:08 -0500
+	id 1vg4Gp-0005HN-KT; Wed, 14 Jan 2026 12:02:59 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vg3Kr-0000Mz-TC
- for qemu-trivial@nongnu.org; Wed, 14 Jan 2026 11:03:05 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vg3Kq-0005QP-1F
- for qemu-trivial@nongnu.org; Wed, 14 Jan 2026 11:03:05 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768406582;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=i8pr2NYKKmxvXjOq2LPeO/bAlHBjpUSxwJxWsOuJx8E=;
- b=epKCs1jGgK7XADiEi3d1LeBSGzqsvQDBezsh/xHXry2yzGFTrdCESgYXPpw+nvKKcT8jX3
- sxt1Unbjh97gJ20RcbAV0xZCsIs9rnmlT3JBeNIygNfa7/fDSaon22HAspuEipSwLxteO+
- yu0dMdhZ8F0Gm9QRSSdmjrpvDf76nsM=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-652-O2CQcfcePXy-NSpzoMolXA-1; Wed,
- 14 Jan 2026 11:02:58 -0500
-X-MC-Unique: O2CQcfcePXy-NSpzoMolXA-1
-X-Mimecast-MFC-AGG-ID: O2CQcfcePXy-NSpzoMolXA_1768406577
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B8624180034F; Wed, 14 Jan 2026 16:02:56 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.41])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EBE74180009E; Wed, 14 Jan 2026 16:02:54 +0000 (UTC)
-Date: Wed, 14 Jan 2026 16:02:51 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vg4Fe-0004UA-Py
+ for qemu-trivial@nongnu.org; Wed, 14 Jan 2026 12:01:58 -0500
+Received: from mail-wm1-x32f.google.com ([2a00:1450:4864:20::32f])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vg4Fc-0000Ap-8j
+ for qemu-trivial@nongnu.org; Wed, 14 Jan 2026 12:01:45 -0500
+Received: by mail-wm1-x32f.google.com with SMTP id
+ 5b1f17b1804b1-47ee76e8656so825725e9.0
+ for <qemu-trivial@nongnu.org>; Wed, 14 Jan 2026 09:01:42 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1768410101; x=1769014901; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=B9PwIxFVqudhs5izSnQFfuJDKUqCyCdBCiBL8qMkB50=;
+ b=hftjJ0rm2xJhIKS9shKixjLVX0w5yz6OO1ZAwfBLU9LVXMlnYI3QfPPRWXpeuYG9CS
+ 2O3UWL577yAyzg7dltCU+5YuGkkDQReOOJ5PmlPZsXv619rdQ5zWmz84ztMmQK+w1D18
+ 9XvUoZMma8cXntfeG26GwKIxQK2LAiwru53zw2DPOWCnTcqioh9mffobIjTLclzG4T7D
+ F2kYhUqYVH8u7fWLcOIZRqNgbSSAsa8xe3cXEabkhSAExnIsZEFpExUe5pDydTq6YIFW
+ VlGj5P9BoK0wQ6meFiqSH8D94ABMO//UOpgR+FJDdl5vjluo1IEqGae7kZXWU9NyqEVx
+ aUsw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768410101; x=1769014901;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=B9PwIxFVqudhs5izSnQFfuJDKUqCyCdBCiBL8qMkB50=;
+ b=KEvVerOkeKwujETVp08z+SMWKRlYqNdQydnHYYNf4gBwgGAYKgfZzcFVqkppQJUwsx
+ C2AoGuG2l9DGSXu5PrWZpKgx7+24oM+Da5bdRfuhcyU9sLKR6OyebE/IK8iQAZUh8wNK
+ oqsQQ24y0SjmsTMhq8shWx1YjZVNCKsY3w6C7iuqSezHbUdIMxxnwGu+jE+Gydm2P6SG
+ IeOUCYP+JCgCC5Ael7cu2taplXR7afLlSVloTo4n5PgqRxW+gwzhD6xcEhqUkPGbVGi6
+ IwXfN39dG295WBTMTNmVrKIyl2Sl7JTOZjMrpiyTqM9UDC9obcmBImO93+XqCYbrtCLE
+ /dTQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVARK1ZnSFjqH5Uq5S+kpFSHGm0w0Td8iEepFJgiRQugAP6ntGl04iOTjlEYPYn7ND8kzOcf5Vs+BgLDoU=@nongnu.org
+X-Gm-Message-State: AOJu0YwzZlZ7s8dQSGc/+VM6H7hpGnrh7tS+2TcIyoIroG2zXpy0QiF7
+ VEP0J6glFJE+qG19iGd/qzFmQA0WtgbPeDF4hXzdAo3AB18qgJR0IQDytgb540/9RoQ=
+X-Gm-Gg: AY/fxX4B2VG7uNFklBpMZUuEfqXgbgE2ssuAzHLuWDqUIjRheIa3Bqr/pmRwVwiuRZC
+ G4aKQND15w9JJxkEuAbBmAbxs4INynMZ3yYyLBPgtY/sO9OF8TW1vzF4AvXNjC5AURcnv0v81pf
+ 3xU186Et6mbDA2RP0xbVJn3lSi4V4II0elz5rtMhAk6cYiDK/ZekV+tw0sC8H3qaGAKmXDjtDi3
+ tZvlpIR8l/CMuh6jzxxYuuOOvnRN9FmqCvGCMNvjPzhjXvPlSXzGWDdzNX/xybXy7PLlzHO+nik
+ MPZ/Yt48pJnCT1oCpbeyB9EuF+8X6ylys8S414YSmRZBk82qOBBEVsfazR76zXSiY88Rvq+lWSa
+ l1zDaO5Hf9d/Yf4M1xvHXf4swMgT82sbIoU1H4wK79jKWBuJAzXqQhrZy/pW4PJasorBewOLUJH
+ f/+6s8UtkWklU=
+X-Received: by 2002:a05:600c:35c6:b0:477:a36f:1a57 with SMTP id
+ 5b1f17b1804b1-47ee32e5c66mr41852275e9.3.1768410100797; 
+ Wed, 14 Jan 2026 09:01:40 -0800 (PST)
+Received: from draig.lan ([185.126.160.19]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-47f4b267661sm929505e9.13.2026.01.14.09.01.39
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Wed, 14 Jan 2026 09:01:40 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 34D805F7EF;
+ Wed, 14 Jan 2026 17:01:39 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
 To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-trivial@nongnu.org, gustavo.romero@linaro.org
+Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-trivial@nongnu.org,  gustavo.romero@linaro.org
 Subject: Re: [PATCH] configure: Remove duplicated entry of --gdb in the help
  text
-Message-ID: <aWe-K1pFUrz9INVl@redhat.com>
+In-Reply-To: <20260114155355.82096-1-thuth@redhat.com> (Thomas Huth's message
+ of "Wed, 14 Jan 2026 16:53:55 +0100")
 References: <20260114155355.82096-1-thuth@redhat.com>
+User-Agent: mu4e 1.12.15-pre1; emacs 30.1
+Date: Wed, 14 Jan 2026 17:01:39 +0000
+Message-ID: <878qe0jfgs.fsf@draig.linaro.org>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
-Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260114155355.82096-1-thuth@redhat.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::32f;
+ envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x32f.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,36 +104,48 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Wed, Jan 14, 2026 at 04:53:55PM +0100, Thomas Huth wrote:
+Thomas Huth <thuth@redhat.com> writes:
+
 > From: Thomas Huth <thuth@redhat.com>
-> 
+>
 > Since --gdb has recently been added to meson_options.txt, the help
 > text shows up twice in the output of "./configure --help":
-> 
+>
 >  $ ./configure --help | grep gdb
->    --gdb=GDB-path           gdb to use for gdbstub tests [/usr/bin/gdb]
->    --gdb=VALUE              Path to GDB
-> 
+>    --gdb=3DGDB-path           gdb to use for gdbstub tests [/usr/bin/gdb]
+>    --gdb=3DVALUE              Path to GDB
+
+It's a shame to loose the default value - is there anyway for the meson
+version to show the auto-detected value?
+
+>
 > Remove the entry from "configure" to fix this duplication.
-> 
-> Fixes: b46b3818cf8 ("tests/functional: Provide GDB to the functional tests")
+>
+> Fixes: b46b3818cf8 ("tests/functional: Provide GDB to the functional test=
+s")
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
 >  configure | 1 -
 >  1 file changed, 1 deletion(-)
+>
+> diff --git a/configure b/configure
+> index ef5157cf903..093dd7b01eb 100755
+> --- a/configure
+> +++ b/configure
+> @@ -899,7 +899,6 @@ Advanced options (experts only):
+>    --cpu=3DCPU                Build for host CPU [$cpu]
+>    --disable-containers     don't use containers for cross-building
+>    --container-engine=3DTYPE  which container engine to use [$container_e=
+ngine]
+> -  --gdb=3DGDB-path           gdb to use for gdbstub tests [$gdb_bin]
+>  EOF
+>    meson_options_help
+>  cat << EOF
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
-
-
-With regards,
-Daniel
--- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
-
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 
