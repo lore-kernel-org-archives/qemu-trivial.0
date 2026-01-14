@@ -4,75 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91932D2D10F
-	for <qemu-trivial@archiver.kernel.org>; Tue, 13 Jan 2026 14:35:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFED9D31A28
+	for <qemu-trivial@archiver.kernel.org>; Wed, 14 Jan 2026 08:33:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vffTp-0004YC-FV; Tue, 13 Jan 2026 09:34:45 -0500
+	id 1vfwJc-0007gs-L9; Wed, 14 Jan 2026 03:33:20 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vffTJ-0004QQ-MW
- for qemu-trivial@nongnu.org; Tue, 13 Jan 2026 09:34:14 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vfwJY-0007bO-JU
+ for qemu-trivial@nongnu.org; Wed, 14 Jan 2026 03:33:17 -0500
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1vffTH-0006ZC-M5
- for qemu-trivial@nongnu.org; Tue, 13 Jan 2026 09:34:13 -0500
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vfwJX-0006eQ-CH
+ for qemu-trivial@nongnu.org; Wed, 14 Jan 2026 03:33:16 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768314851;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=Z0z6OpOegSWo+lRcDyawfWXccycFCage2yh+erT0Rh4=;
- b=jJeh7R+ZJxESjcSxuch8l7qX1Gmc8qO9JJX8VWYRpCjc4CSvhds0BaEM+zKbZK+iY7nZuG
- tutVyMCvYdboZ2PBbkcrRdU39JYQh4+RjTyq+Elk+LHIsvNW8SzUCqDblM+i/n6WvLwNmj
- RzYIaS5XyimC20oIF3VD9OX2m/FWQMY=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ s=mimecast20190719; t=1768379594;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=wfssziJG2rNWSpwbyWUkGDi+9K0T813TnKrCIIVFFvo=;
+ b=Vh5ApNsUPgiKJkoQRs5roG98jTlGKOSUwC1zKZpDXYrAAhYGPlY/3EDZsC59W7S5dHf4EI
+ 8BA4ZSCWXbsG91GuY0xTbPM1XUhiVZHayIeX4m4eJ+EWYUmuCldxTmO+yEZrAo8gkrsXRM
+ R84Y+PgMVwpdIumguAanOiYD0g97KK0=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-629-HJJfKSQuNdi6K_oAp4qk_g-1; Tue,
- 13 Jan 2026 09:34:07 -0500
-X-MC-Unique: HJJfKSQuNdi6K_oAp4qk_g-1
-X-Mimecast-MFC-AGG-ID: HJJfKSQuNdi6K_oAp4qk_g_1768314846
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-138-RPnIn6zVPPinFg7st-bIuQ-1; Wed,
+ 14 Jan 2026 03:33:11 -0500
+X-MC-Unique: RPnIn6zVPPinFg7st-bIuQ-1
+X-Mimecast-MFC-AGG-ID: RPnIn6zVPPinFg7st-bIuQ_1768379590
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C1FBB1955D8E; Tue, 13 Jan 2026 14:34:06 +0000 (UTC)
-Received: from redhat.com (unknown [10.42.28.87])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CA2031800240; Tue, 13 Jan 2026 14:34:04 +0000 (UTC)
-Date: Tue, 13 Jan 2026 14:34:01 +0000
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
- Hanna Reitz <hreitz@redhat.com>, qemu-devel@nongnu.org,
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 314D519560AD; Wed, 14 Jan 2026 08:33:10 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.44.32.254])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 4F1AA1956048; Wed, 14 Jan 2026 08:33:07 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  qemu-trivial@nongnu.org
-Subject: Re: [PATCH] tests/qemu-iotests: Use "gsed" for expressions that
- require GNU sed
-Message-ID: <aWZX2c2q7BUgIFz3@redhat.com>
-References: <20260113141415.97281-1-thuth@redhat.com>
+Subject: [PATCH] configure: Set $PYTHON in the configuration of the optionroms
+Date: Wed, 14 Jan 2026 09:33:06 +0100
+Message-ID: <20260114083306.18172-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-In-Reply-To: <20260113141415.97281-1-thuth@redhat.com>
-User-Agent: Mutt/2.2.14 (2025-02-20)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
@@ -87,46 +77,35 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Tue, Jan 13, 2026 at 03:14:15PM +0100, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
-> 
-> A bunch of tests are currently failing e.g. on FreeBSD like this:
-> 
->  082   fail       [13:38:58] [13:38:59]   0.5s                 output
->   mismatch (see .../build/tests/qemu-iotests/scratch/qcow2-file-082/082.out.bad)
->  --- .../src/tests/qemu-iotests/082.out
->  +++ .../build/tests/qemu-iotests/scratch/qcow2-file-082/082.out.bad
->  @@ -17,7 +17,7 @@
->   cluster_size: 4096
->   Format specific information:
->       compat: 1.1
->  -    compression type: COMPRESSION_TYPE
->  +    compression type: zlib
->       lazy refcounts: true
->       refcount bits: 16
->       corrupt: false
-> 
-> This happens because the sed statements require GNU sed. Let's use
-> gsed in these spots to get it fixed.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  tests/qemu-iotests/286       | 2 +-
->  tests/qemu-iotests/common.rc | 2 +-
->  2 files changed, 2 insertions(+), 2 deletions(-)
+From: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+pc-bios/optionrom/Makefile uses $(PYTHON) for running a Python script,
+but this variable is never initialized here. So the script gets run
+via its shebang line - which fails if the "python3" binary is not
+available on the system. To fix this, write the PYTHON configuration
+to the config.mak file of the optionroms.
 
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ configure | 1 +
+ 1 file changed, 1 insertion(+)
 
-With regards,
-Daniel
+diff --git a/configure b/configure
+index 55e0bd34256..f7e8d7ad4c8 100755
+--- a/configure
++++ b/configure
+@@ -1643,6 +1643,7 @@ probe_target_compiler() {
+ }
+ 
+ write_target_makefile() {
++  echo "PYTHON=$python"
+   echo "EXTRA_CFLAGS=$target_cflags"
+   if test -z "$target_cc" && test -z "$target_as"; then
+     test -z "$container_image" && error_exit "Internal error: could not find cross compiler for $1?"
 -- 
-|: https://berrange.com      -o-    https://www.flickr.com/photos/dberrange :|
-|: https://libvirt.org         -o-            https://fstop138.berrange.com :|
-|: https://entangle-photo.org    -o-    https://www.instagram.com/dberrange :|
+2.52.0
 
 
