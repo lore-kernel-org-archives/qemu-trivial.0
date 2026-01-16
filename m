@@ -4,69 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BE89D47CCD
-	for <qemu-trivial@archiver.kernel.org>; Fri, 16 Jan 2026 10:12:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B162FD47CD0
+	for <qemu-trivial@archiver.kernel.org>; Fri, 16 Jan 2026 10:36:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vggo4-0000WP-21; Fri, 16 Jan 2026 05:11:52 -0500
+	id 1vggy9-0005oK-7Y; Fri, 16 Jan 2026 05:22:17 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vggo2-0000W6-Ru
- for qemu-trivial@nongnu.org; Fri, 16 Jan 2026 05:11:50 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vggo1-0003tc-KD
- for qemu-trivial@nongnu.org; Fri, 16 Jan 2026 05:11:50 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1768558308;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:
- content-transfer-encoding:content-transfer-encoding;
- bh=sgfNqQGe0wF+3/a3I5XBHPbJT2Ywmf+OJAcZpZNGR/E=;
- b=ib5VCfcXxkEFqCPe3ijZUrU9cBlKT6Rlsfj2fe/OVRmqvrvHw8+YmqnWkee+qJBKyjyhG+
- awRVULfwmanV37m/6HqiisEnli/dugl+PUJ1NSmh9WT9o+vXooWBKUiV2CtznV8U6IC1Kj
- ieUA3wSysPeCebDy0jQ2Fq3PE6+BfF4=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-636-BTu4AdvjOK-dkbOvxJBm0g-1; Fri,
- 16 Jan 2026 05:11:45 -0500
-X-MC-Unique: BTu4AdvjOK-dkbOvxJBm0g-1
-X-Mimecast-MFC-AGG-ID: BTu4AdvjOK-dkbOvxJBm0g_1768558304
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B7D0E180047F; Fri, 16 Jan 2026 10:11:43 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.44.34.79])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id DC73B19560A7; Fri, 16 Jan 2026 10:11:40 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Paolo Bonzini <pbonzini@redhat.com>,
-	qemu-devel@nongnu.org
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vggxR-0005jK-9e
+ for qemu-trivial@nongnu.org; Fri, 16 Jan 2026 05:21:39 -0500
+Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vggxO-0004qL-UP
+ for qemu-trivial@nongnu.org; Fri, 16 Jan 2026 05:21:32 -0500
+Received: by mail-wm1-x32a.google.com with SMTP id
+ 5b1f17b1804b1-47ee76e8656so22135845e9.0
+ for <qemu-trivial@nongnu.org>; Fri, 16 Jan 2026 02:21:30 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1768558889; x=1769163689; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=GRCzJ1T/ii3BQ4yYHUykbzhUcAB2CL1japuElVPuk5U=;
+ b=fa35RRk0bYIt0oOn2jA7U1JbntIYV53FxOpq0FY/EwBGwVkF5DS/YokKfYwNektDc/
+ /EQrxaADHQZj/KJWzZeqpbSXUrKtxjKxD9IakOxvqDlcvkvcsAoyocgYZ/kfaf/2ykqT
+ /O+cwxqedBfol/Ov8ACe2vdDFErjC6Qts3qbLAAFukqZ9tYWl4e4fULks5PkUBT78fb7
+ d9e4Ewg7UbXi2Mr/Z9Bdth5FWa/qPF3U9ZDb2QjbOuwjg+3RW6bYOYYThVT1EC9hqK6n
+ +X3rX68nifxg7dRGdkueOwUVWMPo5y+qVlKy0fEwWm+ca1svK/Vw9gjvHAfRynZRUgFx
+ vmCg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20230601; t=1768558889; x=1769163689;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=GRCzJ1T/ii3BQ4yYHUykbzhUcAB2CL1japuElVPuk5U=;
+ b=wuiUU0xNqq5ov59Ke312I1RlnbTXXStb/hDsObhfqpMWA24G76tYdi9Qv4J61+tnJ5
+ ujakSiPTLu+YtvLK2OhB/p9ZPU8rRqE5uM/5c10fqpDJ1q7soDxUnGVD2deL2tqIgOoC
+ sNfB1IYmkUAevb6MsDLVIZ7Z7oSlV/z0kz49mEc8auZUBpO4UL5rgoeWW82+du9hOsAD
+ F38KvtvF6OoAf8nO0+H5vuE/5S8KpELCmUGPzcBr2nUDknG1oSI+f2dlU7Hi347ZnyH3
+ GB73IepYA/Z0iyFsLI3TBdEq3oRlwlxr4haAI7MztKVX2VNpJVhE1j6svwC8sjytiDHU
+ RncQ==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCXsQvHOCC6RrHhYsFybiVMNrIRGJ7/FKUuJw2Er8Q/UDLPbMTVibdAEGviqMoQgCBCqFXkxmDkeGfZynGA=@nongnu.org
+X-Gm-Message-State: AOJu0YyS4eOQWWWs4mxdBtwY3HJNXB8ym4HUzGI6CRbFw+vIE5MW0JX+
+ Fxd9Hek8YeStaZGgIJCUmTlQKo35AztBOMjlNXhduvmy9Dj56CRPDE+kpnnsmWDhdWU=
+X-Gm-Gg: AY/fxX6VTb0LZF/BGRW49qZU+0T1SZPn8pAT9xs6gIv7cXXobOb35j1qY7sMFKkAGKs
+ M/FVb0zFAevI4pR4ZeJrUWKbonhQkYl3Am7D2TyAL4EY//QUSqb5mPdhLV6GGhizERcjROigYP4
+ iPWD/CzVCJ+TatHdLYTI/PLumf6IyLCU8eUsIwl2TlGKsdRmmzuGvfzptLdTyWCtsEcj1gF3L6Y
+ w64Dp7Uv4SOLbtjEC9jToQmrM32nfgry+QRDVjU5LVebQjYR4NmtfjH93BPZSSdRSMPm4xFyaDL
+ QwVomz63JpWa7qFIqkvT2tf0gnsIX9Tthr8u9x5X+oMIf0LtSt+UEifg51LTrfZKQIEXhOf6Jt7
+ 1TEiPAqPLEt5Pz2vT1MlnIrXYClVfNmkafAgPxa5Tu0nkL5Xld+o3+vxqtY+XLs7Zvtn86EsHKx
+ fYRsNSDfQAU8zlzCOdqf1KcjTqk/DoJkn4YrpFWJj1biZJqkJJseStbQ==
+X-Received: by 2002:a05:600c:548d:b0:477:9fcf:3fe3 with SMTP id
+ 5b1f17b1804b1-4801e2a4c3bmr33809425e9.0.1768558889126; 
+ Fri, 16 Jan 2026 02:21:29 -0800 (PST)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-4356996dadbsm4338360f8f.21.2026.01.16.02.21.28
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 16 Jan 2026 02:21:28 -0800 (PST)
+Message-ID: <902e0196-b5f0-4222-a8b7-b98b8fc0a66f@linaro.org>
+Date: Fri, 16 Jan 2026 11:21:27 +0100
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] MAINTAINERS: Add docs/system/i386/ to the general x86
+ architecture section
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-devel@nongnu.org
 Cc: Zhao Liu <zhao1.liu@intel.com>,
  Pierrick Bouvier <pierrick.bouvier@linaro.org>,
  Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org
-Subject: [PATCH] MAINTAINERS: Add docs/system/i386/ to the general x86
- architecture section
-Date: Fri, 16 Jan 2026 11:11:39 +0100
-Message-ID: <20260116101139.269906-1-thuth@redhat.com>
-MIME-Version: 1.0
+References: <20260116101139.269906-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260116101139.269906-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x32a.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -82,29 +106,16 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+On 16/1/26 11:11, Thomas Huth wrote:
+> From: Thomas Huth <thuth@redhat.com>
+> 
+> We've got a section for generic x86 architecture support in our
+> MAINTAINERS file - this should cover the docs/system/i386/ folder, too.
+> 
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   MAINTAINERS | 1 +
+>   1 file changed, 1 insertion(+)
 
-We've got a section for generic x86 architecture support in our
-MAINTAINERS file - this should cover the docs/system/i386/ folder, too.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
-
-diff --git a/MAINTAINERS b/MAINTAINERS
-index 4ddbfba9f01..4324ff4287c 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -143,6 +143,7 @@ S: Maintained
- F: configs/devices/i386-softmmu/default.mak
- F: configs/targets/i386-softmmu.mak
- F: configs/targets/x86_64-softmmu.mak
-+F: docs/system/i386/
- F: docs/system/target-i386*
- F: target/i386/*.[ch]
- F: target/i386/Kconfig
--- 
-2.52.0
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
