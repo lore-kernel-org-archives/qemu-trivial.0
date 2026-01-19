@@ -4,92 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 53C12CA6000
-	for <qemu-trivial@archiver.kernel.org>; Mon, 19 Jan 2026 07:55:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0D75D29C2D
+	for <qemu-trivial@archiver.kernel.org>; Mon, 19 Jan 2026 14:07:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vhk5w-0002tm-3V; Mon, 19 Jan 2026 02:54:40 -0500
+	id 1vhpte-00046F-6d; Mon, 19 Jan 2026 09:06:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vhk5t-0002m3-3g
- for qemu-trivial@nongnu.org; Mon, 19 Jan 2026 02:54:37 -0500
-Received: from mail-pl1-x635.google.com ([2607:f8b0:4864:20::635])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1vhk5r-0004oU-Fh
- for qemu-trivial@nongnu.org; Mon, 19 Jan 2026 02:54:36 -0500
-Received: by mail-pl1-x635.google.com with SMTP id
- d9443c01a7336-2a0ac29fca1so25027165ad.2
- for <qemu-trivial@nongnu.org>; Sun, 18 Jan 2026 23:54:34 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768809273; x=1769414073; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=BHcqT8fmGMZPLrE9bCz2PMYzfC6jQO0b0+45gNyPNzY=;
- b=gsk9PTonwwpST9DxZYsFnaqZp10W78YPjM7mf0GYxomxy/Dl0w1bYztoDX0dkdI9yF
- S1PoK586/GrCt35Nis/oAG0Z4vO60kjtH4v8a0XiedcY2O3sfPwSD/+jOiHzrub0+hqi
- siF1EIVnJCcBaNNfIKoC1BYZ4NxbeAfvBsm//9GkII+IOP2Vyho/3D1w8HNov7GMp1Bh
- A6zPU6ed0mbPjgJQBpi+t4EEnesYJBNjlA31PBWRhyzLMFa6ZC76FW2tXN2on5xIvNb2
- KFCmv1GYJ8C1XP4BjIFbBREng5kVuYmmk6y9HitcytHJQpVEcLZpGPj/21v3ZdtQMFwl
- fjaA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768809273; x=1769414073;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=BHcqT8fmGMZPLrE9bCz2PMYzfC6jQO0b0+45gNyPNzY=;
- b=PjalIllnT27q58EYmUfvL7ehLyV5/U9XrEsRRFfTOCzpTH4R/gXmXrr1vLrED58Jkq
- G0E//tWpToWUFx1nsjcMItCNbGIjkI9AucbyCYGmarUl1mz4u2byHhPNv8yyZzwXf2eV
- I7QoHWpD/rkC1X7aHya4ayVOULWq75TaKAHNk3AD01MucqlR4V0Kgxdu88oGBNCRUT7D
- BBLBusi30NGpzjFa8X31zi8OMFfqStJPil++AgYt6aL8LvM8NxeRs0sI7gfrXD1k6p5n
- bpHv3TlBINevOHFffTMSPgDQBvtcME6l0hp400pGuPSU4Ld9/WoBNT6s82rhm2NQOha/
- RBOQ==
-X-Gm-Message-State: AOJu0YxdxzZ4N802QmiY03rI5MPKA3jye8XdlK0oJ2S2K2rqt443gLFw
- Kd68kJPD4UBh2Ynd/JGQoNgEzwjgRaVXxyTZdIJ7K/GykYCSm35EB8RbsyqDRaB3sJk=
-X-Gm-Gg: AZuq6aKLGmezTsrDJPI6PmdhoqA51KmY4a2rZg84ODUsAFPpdbYonmYhQ+GUzAelJAQ
- QN/VMjgO0n+Eyo8x563v86ENuBtrWdXnJBD3NE3z7LdrMcUcCw5xIKVcmv/FO1TrgZpEqyEkyh2
- 57dl4klXl4rQ6vahngO4Nv8zBw8i6/bBgToYq9houTd/MXwbfd97ylMQ9hriQmFXsYjQqsj6qdh
- 2iOaa79GCW9oREXFQj3F49tQfUum2hiHmZWfj//2a3wY4QZpDf0wr08doG4RnFUfq6gCYjN/WKY
- 9wcW/wPQVHHn8zV3JUaoAIlJSZPXNdFd2FVuZU1eispG968StnNCVxTcvfqf01O6LIotryqRt+r
- F56rdrY1vlAkOGF4VobDs3Dvw96p6MtHr2A9HBcTjoEjWqtPCsqZKDK4ic1Q8kATE9aUzMvC55U
- nyPBSlXKD+BHmAdUb0EoTwFG5f67PS1g==
-X-Received: by 2002:a17:903:41d2:b0:295:9627:8cbd with SMTP id
- d9443c01a7336-2a7175a5cbemr98275805ad.33.1768809273460; 
- Sun, 18 Jan 2026 23:54:33 -0800 (PST)
-Received: from [192.168.10.140] ([180.233.125.201])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2a7190abc62sm84920395ad.2.2026.01.18.23.54.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 18 Jan 2026 23:54:33 -0800 (PST)
-Message-ID: <e2b00c96-ecc2-4c47-9bc9-77957e9ba5ae@linaro.org>
-Date: Mon, 19 Jan 2026 18:54:28 +1100
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1vhptR-0003m8-L6; Mon, 19 Jan 2026 09:06:09 -0500
+Received: from isrv.corpit.ru ([212.248.84.144])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1vhptN-0006Vp-3y; Mon, 19 Jan 2026 09:06:09 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 9181D17FD45;
+ Mon, 19 Jan 2026 17:05:43 +0300 (MSK)
+Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 678CF350E60;
+ Mon, 19 Jan 2026 17:05:59 +0300 (MSK)
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-trivial@nongnu.org
+Subject: [PATCH trivial v2 3/7] linux-user: assume inotify sycalls are always
+ present
+Date: Mon, 19 Jan 2026 17:05:52 +0300
+Message-ID: <20260119140557.2167351-2-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260119140557.2167351-1-mjt@tls.msk.ru>
+References: <20260119140557.2167351-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial 7/7] rename CONFIG_EPOLL_CREATE1 to CONFIG_EPOLL
-To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20260113130008.910240-1-mjt@tls.msk.ru>
- <20260113130008.910240-11-mjt@tls.msk.ru>
- <5fa1630e-e557-4e23-adf6-3bdf695c81fe@linaro.org>
- <f795a93f-fcf4-4aba-952b-dbf53e3876c8@tls.msk.ru>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <f795a93f-fcf4-4aba-952b-dbf53e3876c8@tls.msk.ru>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::635;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x635.google.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,55 +60,126 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 1/19/26 18:50, Michael Tokarev wrote:
-> On 1/19/26 04:28, Richard Henderson wrote:
->> On 1/14/26 00:00, Michael Tokarev wrote:
->>> Since CONFIG_EPOLL is now unused, it's okay to
->>> perform this rename, to make it less ugly.
->>>
->>> Since epoll is linux-specific and is always
->>> present, we might as well make CONFIG_EPOLL equal
->>> to CONFIG_LINUX.
->>>
->>> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->>> ---
->>>   meson.build      | 2 +-
->>>   util/aio-posix.h | 4 ++--
->>>   util/meson.build | 2 +-
->>>   3 files changed, 4 insertions(+), 4 deletions(-)
->>>
->>> diff --git a/meson.build b/meson.build
->>> index f8b4f06049..552b34f34e 100644
->>> --- a/meson.build
->>> +++ b/meson.build
->>> @@ -2713,7 +2713,7 @@ config_host_data.set('CONFIG_INOTIFY1', have_inotify_init1)
->>>   # has_header_symbol
->>>   config_host_data.set('CONFIG_BLKZONED',
->>>                        cc.has_header_symbol('linux/blkzoned.h', 'BLKOPENZONE'))
->>> -config_host_data.set('CONFIG_EPOLL_CREATE1',
->>> +config_host_data.set('CONFIG_EPOLL',
->>>                        cc.has_header_symbol('sys/epoll.h', 'epoll_create1'))
->>
->> This is present in glibc 2.9, which is required.
->> Therefore you can drop this bit of configuration as well.
-> 
-> It's a bit more tricky, see my comment in the patch description
-> above.  Yes, epoll_create1 is now always present *on linux*.
-> But this particular test (cc.has_header_symbol) is run on all
-> platforms, not only on linux.  So if we drop this test, we'll
-> have to alias CONFIG_EPOLL to CONFIG_LINUX.  Because epoll is
-> used outside of linux-user too (eg in the main loop), and there,
-> the test is CONFIG_EPOLL, not CONFIG_LINUX.
-> 
-> So it might be possible to replace this test with something
-> like
-> 
->   config_host_data.set('CONFIG_EPOLL', config_host_data.get('CONFIG_LINUX')
-> 
-> but not drop it entirely.
+inotify_init() and other syscalls appeared in linux 2.6.13,
+inotify_init1() - in linux 2.6.27.
 
- From the patch description, I had expected s/CONFIG_EPOLL/CONFIG_LINUX/.
+There's no need to check their presence on linux anymore.
 
+Keep condition on TARGET_NR_inotify_init because modern
+architectures have only more generic inotify_init1().
 
-r~
+Other, not linux-specific, places of the code checks for
+inotify_init1() syscall only.
+
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ linux-user/fd-trans.c |  5 -----
+ linux-user/fd-trans.h |  4 ----
+ linux-user/syscall.c  | 19 ++-----------------
+ 3 files changed, 2 insertions(+), 26 deletions(-)
+
+diff --git a/linux-user/fd-trans.c b/linux-user/fd-trans.c
+index f83d1f79d5..64dd0745d2 100644
+--- a/linux-user/fd-trans.c
++++ b/linux-user/fd-trans.c
+@@ -18,9 +18,7 @@
+ #include <sys/signalfd.h>
+ #include <linux/unistd.h>
+ #include <linux/audit.h>
+-#ifdef CONFIG_INOTIFY
+ #include <sys/inotify.h>
+-#endif
+ #include <linux/netlink.h>
+ #ifdef CONFIG_RTNETLINK
+ #include <linux/rtnetlink.h>
+@@ -1861,8 +1859,6 @@ TargetFdTrans target_timerfd_trans = {
+     .host_to_target_data = swap_data_u64,
+ };
+ 
+-#if defined(CONFIG_INOTIFY) && (defined(TARGET_NR_inotify_init) || \
+-        defined(TARGET_NR_inotify_init1))
+ static abi_long host_to_target_data_inotify(void *buf, size_t len)
+ {
+     struct inotify_event *ev;
+@@ -1885,4 +1881,3 @@ static abi_long host_to_target_data_inotify(void *buf, size_t len)
+ TargetFdTrans target_inotify_trans = {
+     .host_to_target_data = host_to_target_data_inotify,
+ };
+-#endif
+diff --git a/linux-user/fd-trans.h b/linux-user/fd-trans.h
+index e14f96059c..3bbc15fa1f 100644
+--- a/linux-user/fd-trans.h
++++ b/linux-user/fd-trans.h
+@@ -141,9 +141,5 @@ extern TargetFdTrans target_netlink_audit_trans;
+ extern TargetFdTrans target_signalfd_trans;
+ extern TargetFdTrans target_eventfd_trans;
+ extern TargetFdTrans target_timerfd_trans;
+-#if (defined(TARGET_NR_inotify_init) && defined(__NR_inotify_init)) || \
+-    (defined(CONFIG_INOTIFY1) && defined(TARGET_NR_inotify_init1) && \
+-     defined(__NR_inotify_init1))
+ extern TargetFdTrans target_inotify_trans;
+ #endif
+-#endif
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 9d0e697981..1d35fe84d0 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -497,15 +497,7 @@ static int sys_renameat2(int oldfd, const char *old,
+ #endif
+ #endif /* TARGET_NR_renameat2 */
+ 
+-#ifdef CONFIG_INOTIFY
+ #include <sys/inotify.h>
+-#else
+-/* Userspace can usually survive runtime without inotify */
+-#undef TARGET_NR_inotify_init
+-#undef TARGET_NR_inotify_init1
+-#undef TARGET_NR_inotify_add_watch
+-#undef TARGET_NR_inotify_rm_watch
+-#endif /* CONFIG_INOTIFY  */
+ 
+ #if defined(TARGET_NR_prlimit64)
+ #ifndef __NR_prlimit64
+@@ -13258,8 +13250,8 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+     case TARGET_NR_futex_time64:
+         return do_futex(cpu, true, arg1, arg2, arg3, arg4, arg5, arg6);
+ #endif
+-#ifdef CONFIG_INOTIFY
+-#if defined(TARGET_NR_inotify_init)
++
++#ifdef TARGET_NR_inotify_init
+     case TARGET_NR_inotify_init:
+         ret = get_errno(inotify_init());
+         if (ret >= 0) {
+@@ -13267,7 +13259,6 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+         }
+         return ret;
+ #endif
+-#if defined(TARGET_NR_inotify_init1) && defined(CONFIG_INOTIFY1)
+     case TARGET_NR_inotify_init1:
+         ret = get_errno(inotify_init1(target_to_host_bitmask(arg1,
+                                           fcntl_flags_tbl)));
+@@ -13275,19 +13266,13 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+             fd_trans_register(ret, &target_inotify_trans);
+         }
+         return ret;
+-#endif
+-#if defined(TARGET_NR_inotify_add_watch)
+     case TARGET_NR_inotify_add_watch:
+         p = lock_user_string(arg2);
+         ret = get_errno(inotify_add_watch(arg1, path(p), arg3));
+         unlock_user(p, arg2, 0);
+         return ret;
+-#endif
+-#if defined(TARGET_NR_inotify_rm_watch)
+     case TARGET_NR_inotify_rm_watch:
+         return get_errno(inotify_rm_watch(arg1, arg2));
+-#endif
+-#endif
+ 
+ #if defined(TARGET_NR_mq_open) && defined(__NR_mq_open)
+     case TARGET_NR_mq_open:
+-- 
+2.47.3
+
 
