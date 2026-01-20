@@ -4,34 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D74F9D2ECF7
-	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 12:42:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5375FD2ECF7
+	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 12:42:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1viB01-0002a4-Vc; Tue, 20 Jan 2026 07:38:22 -0500
+	id 1viAzW-0001qN-Tx; Tue, 20 Jan 2026 07:37:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1viAyv-0001WK-0i; Tue, 20 Jan 2026 07:37:14 -0500
+ id 1viAyl-0001Ux-S9; Tue, 20 Jan 2026 07:37:05 -0500
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1viAyn-0002Wc-Ak; Tue, 20 Jan 2026 07:37:10 -0500
+ id 1viAyf-0002Ve-P1; Tue, 20 Jan 2026 07:37:02 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id D3E3C1802C3;
+ by isrv.corpit.ru (Postfix) with ESMTP id AFA111802C1;
  Tue, 20 Jan 2026 15:21:33 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 4F47235174C;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 2D5A935174A;
  Tue, 20 Jan 2026 15:21:51 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Julian Ganz <neither@nut.email>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 4/9] tests: fix comment declaring runtime in rv64
- interruptedmemory test
-Date: Tue, 20 Jan 2026 15:21:41 +0300
-Message-ID: <20260120122150.2254321-5-mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-trivial@nongnu.org
+Subject: [PULL 2/9] gdbstub: unlink the unix socket before bind()
+Date: Tue, 20 Jan 2026 15:21:39 +0300
+Message-ID: <20260120122150.2254321-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260120122150.2254321-1-mjt@tls.msk.ru>
 References: <20260120122150.2254321-1-mjt@tls.msk.ru>
@@ -60,37 +59,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Julian Ganz <neither@nut.email>
+This is another variant of doing what v9.2.0-1561-gfccb744f41c6
+"gdbstub: Try unlinking the unix socket before binding" did, but
+that commit introduced dependency on qemu-sockets.c which is
+more problematic for statically-linked qemu-user binaries.
 
-The test attempts to trigger a regression for arount 30s. However, a
-comment just before the computation of the target wall clock time falsly
-declares the run time to be around 60s.
-
-This was the case already when we introduced the test in
-
-    5241645c47a9987f4fcc65bab303a444966b7942
-    (tests: add test with interrupted memory accesses on rv64)
-
-Signed-off-by: Julian Ganz <neither@nut.email>
-Reviewed-by: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
+Reviewed-by: Ilya Leoshkevich <iii@linux.ibm.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- tests/tcg/riscv64/interruptedmemory.S | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ gdbstub/user.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/tests/tcg/riscv64/interruptedmemory.S b/tests/tcg/riscv64/interruptedmemory.S
-index cd9073ee31..c154f93839 100644
---- a/tests/tcg/riscv64/interruptedmemory.S
-+++ b/tests/tcg/riscv64/interruptedmemory.S
-@@ -25,7 +25,7 @@ _start:
- 	li	a0, 0x03	# 8N1, DLAB=0
- 	sb	a0, 3(t1)
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index 5e920a9b51..a2327c6135 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -337,6 +337,7 @@ static int gdbserver_open_socket(const char *path)
  
--	# Run test for around 60s
-+	# Run test for around 30s
- 	call	rtc_get
- 	li	t0, 30
- 	slli	t0, t0, 30 # Approx. 10e9 ns
+     sockaddr.sun_family = AF_UNIX;
+     pstrcpy(sockaddr.sun_path, sizeof(sockaddr.sun_path) - 1, path);
++    unlink(sockaddr.sun_path);
+     ret = bind(fd, (struct sockaddr *)&sockaddr, sizeof(sockaddr));
+     if (ret < 0) {
+         perror("bind socket");
 -- 
 2.47.3
 
