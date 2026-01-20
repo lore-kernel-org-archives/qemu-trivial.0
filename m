@@ -4,36 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54455D2ECE9
-	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 12:42:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D74F9D2ECF7
+	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 12:42:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1viB0R-00036p-Em; Tue, 20 Jan 2026 07:38:51 -0500
+	id 1viB01-0002a4-Vc; Tue, 20 Jan 2026 07:38:22 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1viAzF-0001ex-SQ; Tue, 20 Jan 2026 07:37:35 -0500
+ id 1viAyv-0001WK-0i; Tue, 20 Jan 2026 07:37:14 -0500
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1viAzA-0002YR-5f; Tue, 20 Jan 2026 07:37:31 -0500
+ id 1viAyn-0002Wc-Ak; Tue, 20 Jan 2026 07:37:10 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 990F31802DE;
- Tue, 20 Jan 2026 15:30:50 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id D3E3C1802C3;
+ Tue, 20 Jan 2026 15:21:33 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 20F2F35175C;
- Tue, 20 Jan 2026 15:31:08 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id 4F47235174C;
+ Tue, 20 Jan 2026 15:21:51 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Subject: [PULL v2 00/10] Trivial patches for 2026-01-20
-Date: Tue, 20 Jan 2026 15:30:50 +0300
-Message-ID: <20260120123107.2255178-1-mjt@tls.msk.ru>
+Cc: Julian Ganz <neither@nut.email>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 4/9] tests: fix comment declaring runtime in rv64
+ interruptedmemory test
+Date: Tue, 20 Jan 2026 15:21:41 +0300
+Message-ID: <20260120122150.2254321-5-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260120122150.2254321-1-mjt@tls.msk.ru>
+References: <20260120122150.2254321-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -58,55 +60,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-The following changes since commit 38879a667fbb4ef54c70de71494882615f600a64:
+From: Julian Ganz <neither@nut.email>
 
-  Merge tag 'pull-tcg-20260119' of https://gitlab.com/rth7680/qemu into staging (2026-01-19 09:04:31 +1100)
+The test attempts to trigger a regression for arount 30s. However, a
+comment just before the computation of the target wall clock time falsly
+declares the run time to be around 60s.
 
-are available in the Git repository at:
+This was the case already when we introduced the test in
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+    5241645c47a9987f4fcc65bab303a444966b7942
+    (tests: add test with interrupted memory accesses on rv64)
 
-for you to fetch changes up to f0de58ccf6566ad5cf04948788f9b0cfb8b960b4:
+Signed-off-by: Julian Ganz <neither@nut.email>
+Reviewed-by: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ tests/tcg/riscv64/interruptedmemory.S | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-  bsd-user/syscall_defs.h: define STAT_TIME_T_EXT only for 32 bits (2026-01-20 15:28:21 +0300)
+diff --git a/tests/tcg/riscv64/interruptedmemory.S b/tests/tcg/riscv64/interruptedmemory.S
+index cd9073ee31..c154f93839 100644
+--- a/tests/tcg/riscv64/interruptedmemory.S
++++ b/tests/tcg/riscv64/interruptedmemory.S
+@@ -25,7 +25,7 @@ _start:
+ 	li	a0, 0x03	# 8N1, DLAB=0
+ 	sb	a0, 3(t1)
+ 
+-	# Run test for around 60s
++	# Run test for around 30s
+ 	call	rtc_get
+ 	li	t0, 30
+ 	slli	t0, t0, 30 # Approx. 10e9 ns
+-- 
+2.47.3
 
-----------------------------------------------------------------
-trivial patches for 2026-01-20
-
-I'm also picking up the STAT_TIME_T_EXT fix from Pierrick
-(not resending whole series, just this additional patch)
-
-----------------------------------------------------------------
-Florian Hofhammer (1):
-      configure: add ppc target back to container tests
-
-Julian Ganz (1):
-      tests: fix comment declaring runtime in rv64 interruptedmemory test
-
-Michael Tokarev (3):
-      Revert "gdbstub: Try unlinking the unix socket before binding"
-      gdbstub: unlink the unix socket before bind()
-      qemu-options.hx: use KiB, MiB, GiB for power-of-2 units
-
-Pierrick Bouvier (2):
-      linux-user/aarch64/target_fcntl.h: add missing TARGET_O_LARGEFILE definition
-      bsd-user/syscall_defs.h: define STAT_TIME_T_EXT only for 32 bits
-
-Thomas Huth (3):
-      configure: Set $PYTHON in the configuration of the optionroms
-      tests/qemu-iotests: Use "gsed" for expressions that require GNU sed
-      MAINTAINERS: Add docs/system/i386/ to the general x86 architecture section
-
- MAINTAINERS                           |  1 +
- bsd-user/syscall_defs.h               |  2 +-
- configure                             |  3 ++-
- gdbstub/user.c                        | 30 +++++++++++++++++++++++++++---
- linux-user/aarch64/target_fcntl.h     |  1 +
- qemu-options.hx                       | 20 ++++++++++----------
- stubs/meson.build                     |  2 --
- tests/qemu-iotests/286                |  2 +-
- tests/qemu-iotests/common.rc          |  2 +-
- tests/tcg/riscv64/interruptedmemory.S |  2 +-
- util/meson.build                      |  2 --
- 11 files changed, 45 insertions(+), 22 deletions(-)
 
