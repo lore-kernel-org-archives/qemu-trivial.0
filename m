@@ -4,37 +4,37 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8C6BFD2ECF7
-	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 12:38:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FD92D2ECF7
+	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 12:39:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1viAzj-000266-Ua; Tue, 20 Jan 2026 07:38:07 -0500
+	id 1viAzY-0001tX-N5; Tue, 20 Jan 2026 07:37:52 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1viAzF-0001ez-Tl; Tue, 20 Jan 2026 07:37:35 -0500
+ id 1viAyr-0001Vh-9v; Tue, 20 Jan 2026 07:37:14 -0500
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1viAzA-0002YT-Pk; Tue, 20 Jan 2026 07:37:32 -0500
+ id 1viAyi-0002Vo-8q; Tue, 20 Jan 2026 07:37:05 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 055E11802C5;
- Tue, 20 Jan 2026 15:21:34 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id A50D51802E0;
+ Tue, 20 Jan 2026 15:30:50 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 801B035174E;
- Tue, 20 Jan 2026 15:21:51 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id 2D5BC35175D;
+ Tue, 20 Jan 2026 15:31:08 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 6/9] tests/qemu-iotests: Use "gsed" for expressions that
- require GNU sed
-Date: Tue, 20 Jan 2026 15:21:43 +0300
-Message-ID: <20260120122150.2254321-7-mjt@tls.msk.ru>
+Subject: [PULL 10/10] bsd-user/syscall_defs.h: define STAT_TIME_T_EXT only for
+ 32 bits
+Date: Tue, 20 Jan 2026 15:30:51 +0300
+Message-ID: <20260120123107.2255178-2-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260120122150.2254321-1-mjt@tls.msk.ru>
-References: <20260120122150.2254321-1-mjt@tls.msk.ru>
+In-Reply-To: <20260120123107.2255178-1-mjt@tls.msk.ru>
+References: <20260120123107.2255178-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -61,62 +61,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 
-A bunch of tests are currently failing e.g. on FreeBSD like this:
+Commit 369c1ba2b changed the wrong conditional "#if defined(__i386__)" to
+"#if defined(TARGET_I386)".
+However, TARGET_I386 is defined for target x86_64 also.
 
- 082   fail       [13:38:58] [13:38:59]   0.5s                 output
-  mismatch (see .../build/tests/qemu-iotests/scratch/qcow2-file-082/082.out.bad)
- --- .../src/tests/qemu-iotests/082.out
- +++ .../build/tests/qemu-iotests/scratch/qcow2-file-082/082.out.bad
- @@ -17,7 +17,7 @@
-  cluster_size: 4096
-  Format specific information:
-      compat: 1.1
- -    compression type: COMPRESSION_TYPE
- +    compression type: zlib
-      lazy refcounts: true
-      refcount bits: 16
-      corrupt: false
+This commit fixes it by identifying correctly 32 bits target.
 
-This happens because the sed statements require GNU sed. Let's use
-gsed in these spots to get it fixed.
+Found with:
+$ ./build/qemu-x86_64 \
+  -plugin ./build/contrib/plugins/libstoptrigger,icount=1000000 \
+  -plugin ./build/tests/tcg/plugins/libinsn \
+  -d plugin \
+  ./build/qemu-system-x86_64 --version
+ld-elf.so.1: /lib/libz.so.6: invalid file format
+cpu 0 insns: 59746
+total insns: 59746
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Fixes: 369c1ba2b ("Fix __i386__ test for TARGET_HAS_STAT_TIME_T_EXT")
+Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Warner Losh <imp@bsdimp.com>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- tests/qemu-iotests/286       | 2 +-
- tests/qemu-iotests/common.rc | 2 +-
- 2 files changed, 2 insertions(+), 2 deletions(-)
+ bsd-user/syscall_defs.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/qemu-iotests/286 b/tests/qemu-iotests/286
-index 38216c2a0e..cc6aacf022 100755
---- a/tests/qemu-iotests/286
-+++ b/tests/qemu-iotests/286
-@@ -62,7 +62,7 @@ wait=yes _cleanup_qemu
+diff --git a/bsd-user/syscall_defs.h b/bsd-user/syscall_defs.h
+index c49be32bdc..cc4b484f3a 100644
+--- a/bsd-user/syscall_defs.h
++++ b/bsd-user/syscall_defs.h
+@@ -247,7 +247,7 @@ struct target_freebsd11_stat {
+     unsigned int:(8 / 2) * (16 - (int)sizeof(struct target_freebsd_timespec));
+ } __packed;
  
- echo 'Output structure:'
- $QEMU_IMG snapshot -l "$TEST_IMG" | tail -n 1 | tr -s ' ' \
--    | sed -e 's/\S\+/./g' \
-+    | gsed -e 's/\S\+/./g' \
-     | sed -e 's/\./(snapshot ID)/' \
-           -e 's/\./(snapshot name)/' \
-           -e 's/\./(VM state size value)/' \
-diff --git a/tests/qemu-iotests/common.rc b/tests/qemu-iotests/common.rc
-index c0f8f0f8df..731e4b2b99 100644
---- a/tests/qemu-iotests/common.rc
-+++ b/tests/qemu-iotests/common.rc
-@@ -719,7 +719,7 @@ _img_info()
-     regex_json_spec_start='^ *"format-specific": \{'
-     regex_json_child_start='^ *"children": \['
-     $QEMU_IMG info $QEMU_IMG_EXTRA_ARGS "$@" "$TEST_IMG" 2>&1 | \
--        sed -e "s#$REMOTE_TEST_DIR#TEST_DIR#g" \
-+        gsed -e "s#$REMOTE_TEST_DIR#TEST_DIR#g" \
-             -e "s#$IMGPROTO:$TEST_DIR#TEST_DIR#g" \
-             -e "s#$TEST_DIR#TEST_DIR#g" \
-             -e "s#$SOCK_DIR/fuse-#TEST_DIR/#g" \
+-#if defined(TARGET_I386)
++#if defined(TARGET_I386) && !defined(TARGET_X86_64)
+ #define TARGET_HAS_STAT_TIME_T_EXT       1
+ #endif
+ 
 -- 
 2.47.3
 
