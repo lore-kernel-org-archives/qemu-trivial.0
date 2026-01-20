@@ -4,103 +4,94 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 449A3D2ED0F
-	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 09:39:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 14013D2ECF7
+	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 11:32:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vi8D4-0006RS-1G; Tue, 20 Jan 2026 04:39:38 -0500
+	id 1vi9yO-0006jt-SU; Tue, 20 Jan 2026 06:32:37 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vi8D2-0006Mu-7b
- for qemu-trivial@nongnu.org; Tue, 20 Jan 2026 04:39:36 -0500
-Received: from mail-yw1-x112d.google.com ([2607:f8b0:4864:20::112d])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1vi8D0-00072l-SC
- for qemu-trivial@nongnu.org; Tue, 20 Jan 2026 04:39:35 -0500
-Received: by mail-yw1-x112d.google.com with SMTP id
- 00721157ae682-793ee375a23so16540707b3.0
- for <qemu-trivial@nongnu.org>; Tue, 20 Jan 2026 01:39:32 -0800 (PST)
-ARC-Seal: i=1; a=rsa-sha256; t=1768901972; cv=none;
- d=google.com; s=arc-20240605;
- b=DwfhR+9K1kLIlqPUyb/vW5QwEbd6YwCafQJDY1mjX48+wdl/IeDDomkVh8Mk0Qe+i0
- ukXvrTNGl4p0/Tinc6uluFI/bf+9pqWxbRduW/q7kk39In44YEsMceqwOm39Ibc2vhWy
- B7G0rG3n3XgtgKqfF4xbIDMLGPnixwUtb3rz/oQExsOMgOX/tPlhwC2+ZDuSTBvwvvv2
- BJwpxULqu29b5wMRDGDBItZiORNT8NFL5R5SQs4rzbDKMDXew2ijKzSTBBdvJ9US6yu5
- ryC3kp0018OqxZ+0xMHwFS0Tku8Rry3NhdBQ/UegMkYIou3c2s1XF+ssgUppybBmdfrd
- o96g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=p8F9xJC5CefwY0Abxs8+Wa9Hku769lMVUPA+ypcmtJo=;
- fh=zQhBxpqXS43BQekkopw2zxE78tKY5kFd+HPpzqKdFok=;
- b=lS0Sbx82T/JQFAAzDnOZRocNibRc8vzODogYPXXLECwfu8CQFD8Qvxmbtn+Wy5DZeX
- NcHVfV8MsYWdf/9mvbnDu8BQuaVYE4w397z6np0CVQQnnyZId7mZ43BXGnNpP2W82ib1
- qqUK/9oiwlkhMP8mbfZFPSbJMIPO+rL+C+OAkgVGhDWvClpyzFU6EXabMtpeSEKixqJq
- fhBNWxGR6OBgigM19Gyqm4FQFoABndjJ0il30Pm4I9UirNgLYeZ5Y1WPzEYrJwnEsdcZ
- W3h/i4m3wl+Zn79+FuOiWAHeNP45+DR/PSHS5WhvUg0LaYjrVYhtKQqGTo0MCDhlQwV8
- 9PCw==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1768901972; x=1769506772; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=p8F9xJC5CefwY0Abxs8+Wa9Hku769lMVUPA+ypcmtJo=;
- b=iBFflFDN8Ya0kb5Q0hEc5bXosY1Qeb5nC50W9b0mLitZMm5bvgaSA+vZnuIxfOaCYH
- Cl6Edqx7B9hmoKoN0kQ1G6yBQn2RJ4BQKAudhrgU326+RtAYCtqXWhG8Ujt2PdjMCyS3
- qFQJyP6S3XZnrYbNvL3oMMVZupVZAxIYy0pqlX75IrNzjIhMxXVYtoMXw+y7mHV4lKlO
- H4zz58+8WM4GJcpLhfG+B6+pjkkZDE1WvV/twi0Hui2hL1EfMcw2WudjCfZAOb+TPYs1
- GkYvY3o9GuU6RGpqel8ffuJecCnQSOz2nqNHBi29OgpiIkrFaH2wX1sdygCIDSAsAvQP
- Ro9g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1768901972; x=1769506772;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=p8F9xJC5CefwY0Abxs8+Wa9Hku769lMVUPA+ypcmtJo=;
- b=T5x7OtKMGvfH7cY/Nv0sbUyiklO505OpF0j2eCgP4k7dBCR4qHFl7fa1aNrXVVorNK
- M99HuMuesn1mxBxjzkXnlnTOZeLp29w+Z+SkJK/hcqAxJkXfA/tQYQrerLmMJ55kx7Ro
- w8ye2UT1yZa2NXDfSmG+NT4E9XN96EYwAE9o2IotH+pR7m1jqbTm1vNZTu1XQVKrBqGg
- C1NxvLoqKfUFP2PnWbYx4R+UeM+V9JbpqvINbYsAcSHRw74PsMLLbE9gbyakVacZXY/j
- SoCU8aPFc7vEyKqVOVMpKLa0NtYleDartlraTNrRgpYxpRFojIUG3qMdQS2YGdiWgfIK
- OCrA==
-X-Forwarded-Encrypted: i=1;
- AJvYcCV6jqP0L+FTpGTMI92p0IGE20Sy+2gbKO/Qkad2ZwR8cmnK5cT0aazmdJddK+26A3wW0tUYsx4/gnNEpeo=@nongnu.org
-X-Gm-Message-State: AOJu0Yw8QaiGbjTZhNKXg0skm1EJZn4DUcg/35PzfuEq4ufpuQi7Doi8
- h0o87gAgZEnoJydu6hg03A3dgGXiq5UKwqVjcM3dg4gQULpr97p/tBV0DxIMnd3h7RrJNMcRtV9
- A1yVgY2raJ2VFnQ08+GqGoZYkDsOM6sU/1P2a7WOZeQ==
-X-Gm-Gg: AZuq6aKQfBYTlinOnMm0vLhVwGaiEqJltLddEwkJxJIC13s54H0rp0COHE4YQDSNLzl
- +mjgBGDSi9tamTsLd0TkTHsp7zLTdQAtdgmxIIQ1CX5FJ9vAgOXviJ9+spBCEDt6UypJdpM7oo0
- rGW9B4JniHCyw3M8rYGwIC3/BIXRPBVrDG+lz/xa6ejDL4kSzxgp2/bub35vHEoMFv8/m0CS0wG
- Gu/UvrUWx535s6Z2QFb3PYpJS51JaOu4N8E6WJKb25AIZQfsQtd5zckHN32+JGKK3WU7Q==
-X-Received: by 2002:a05:690c:6d84:b0:794:3a7:e4a0 with SMTP id
- 00721157ae682-79403a7e838mr20070107b3.23.1768901971519; Tue, 20 Jan 2026
- 01:39:31 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1vi9xt-0006Xm-R0; Tue, 20 Jan 2026 06:32:16 -0500
+Received: from isrv.corpit.ru ([212.248.84.144])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1vi9xq-00081L-1n; Tue, 20 Jan 2026 06:32:05 -0500
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 151B0180287;
+ Tue, 20 Jan 2026 14:31:33 +0300 (MSK)
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 65A653516D4;
+ Tue, 20 Jan 2026 14:31:50 +0300 (MSK)
+Message-ID: <bc463c63-ec0c-4666-a9ed-7c53e02a24c4@tls.msk.ru>
+Date: Tue, 20 Jan 2026 14:31:50 +0300
 MIME-Version: 1.0
-References: <20260114213227.3812-1-shentey@gmail.com>
-In-Reply-To: <20260114213227.3812-1-shentey@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 20 Jan 2026 09:39:19 +0000
-X-Gm-Features: AZwV_Qh7ikiAl9qlyWImqqvG1ssVxx8uwfWiZnqXgpeH4Hcv9Wuqb0U6HOmZiTY
-Message-ID: <CAFEAcA_t_-Xj=5VExfHk8mNDqa8DB4oxGRy89fgTZ2y1U6HU5w@mail.gmail.com>
-Subject: Re: [PATCH 0/2] imx8mp-evk trivial patches
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, 
- Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org, 
- Michael Tokarev <mjt@tls.msk.ru>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112d;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112d.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] configure: Remove duplicated entry of --gdb in the help
+ text
+To: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-trivial@nongnu.org, gustavo.romero@linaro.org
+References: <20260114155355.82096-1-thuth@redhat.com>
+ <878qe0jfgs.fsf@draig.linaro.org>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <878qe0jfgs.fsf@draig.linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -116,24 +107,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Wed, 14 Jan 2026 at 21:32, Bernhard Beschow <shentey@gmail.com> wrote:
->
-> This series contains just some quality of life improvements for imx8mp-evk
-> machine's CLI usage. The first patch removes the need to pass "-smp 4 -m 6G"
-> and the second one does not suggest passing redundant "-cpu host" when using
-> KVM.
->
-> Bernhard Beschow (2):
->   hw/arm/imx8mp-evk: Provide some defaults matching real hardware
->   docs/system/arm/imx8mp-evk: Avoid suggesting redundant CLI parameters
->
->  docs/system/arm/imx8mp-evk.rst | 4 ++--
->  hw/arm/imx8mp-evk.c            | 2 ++
->  2 files changed, 4 insertions(+), 2 deletions(-)
+On 1/14/26 20:01, Alex Bennée wrote:
+> Thomas Huth <thuth@redhat.com> writes:
+> 
+>> From: Thomas Huth <thuth@redhat.com>
+>>
+>> Since --gdb has recently been added to meson_options.txt, the help
+>> text shows up twice in the output of "./configure --help":
+>>
+>>   $ ./configure --help | grep gdb
+>>     --gdb=GDB-path           gdb to use for gdbstub tests [/usr/bin/gdb]
+>>     --gdb=VALUE              Path to GDB
+> 
+> It's a shame to loose the default value - is there anyway for the meson
+> version to show the auto-detected value?
 
+Maybe we can drop this line from meson but keep it in ./configure?
 
-
-Applied to target-arm.next, thanks.
-
--- PMM
+/mjt
 
