@@ -4,34 +4,33 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95EC6D2ECF7
-	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 12:40:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F9B6D2ECE9
+	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 12:41:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1viB06-0002jP-Gp; Tue, 20 Jan 2026 07:38:26 -0500
+	id 1viAzW-0001qO-Ty; Tue, 20 Jan 2026 07:37:51 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1viAyy-0001X4-La; Tue, 20 Jan 2026 07:37:18 -0500
+ id 1viAyf-0001T7-16; Tue, 20 Jan 2026 07:36:57 -0500
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1viAyu-0002X7-8X; Tue, 20 Jan 2026 07:37:13 -0500
+ id 1viAyd-0002V7-EC; Tue, 20 Jan 2026 07:36:56 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 1C1B11802C6;
+ by isrv.corpit.ru (Postfix) with ESMTP id 295DD1802C7;
  Tue, 20 Jan 2026 15:21:34 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 8D3D535174F;
+ by tsrv.corpit.ru (Postfix) with ESMTP id A3D11351750;
  Tue, 20 Jan 2026 15:21:51 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 7/9] MAINTAINERS: Add docs/system/i386/ to the general x86
- architecture section
-Date: Tue, 20 Jan 2026 15:21:44 +0300
-Message-ID: <20260120122150.2254321-8-mjt@tls.msk.ru>
+Cc: Florian Hofhammer <florian.hofhammer@fhofhammer.de>,
+ qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 8/9] configure: add ppc target back to container tests
+Date: Tue, 20 Jan 2026 15:21:45 +0300
+Message-ID: <20260120122150.2254321-9-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260120122150.2254321-1-mjt@tls.msk.ru>
 References: <20260120122150.2254321-1-mjt@tls.msk.ru>
@@ -61,33 +60,41 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+From: Florian Hofhammer <florian.hofhammer@fhofhammer.de>
 
-We've got a section for generic x86 architecture support in our
-MAINTAINERS file - this should cover the docs/system/i386/ folder, too.
+Commit 2ff8c9a298 removed support for 32-bit PPC hosts from the build
+system. Unfortunately, the patch also removed the 32-bit PPC target for
+containerized tests, which leads to an error when trying to run tests,
+e.g., with "make check-tcg":
+"make[1]: *** No rule to make target 'docker-image-debian-ppc-cross',
+needed by 'build-tcg-tests-ppc-linux-user'.  Stop."
 
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+This patch adds the PPC target back for containerized tests.
+
+Fixes: 2ff8c9a2984b ("buildsys: Remove support for 32-bit PPC hosts")
+Signed-off-by: Florian Hofhammer <florian.hofhammer@fhofhammer.de>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Zhao Liu <zhao1.liu@intel.com>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+[Mjt: specify commit subject in Fixes tag)
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- MAINTAINERS | 1 +
- 1 file changed, 1 insertion(+)
+ configure | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index c1e586c58f..81c013fea2 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -143,6 +143,7 @@ S: Maintained
- F: configs/devices/i386-softmmu/default.mak
- F: configs/targets/i386-softmmu.mak
- F: configs/targets/x86_64-softmmu.mak
-+F: docs/system/i386/
- F: docs/system/target-i386*
- F: target/i386/*.[ch]
- F: target/i386/Kconfig
+diff --git a/configure b/configure
+index 0d73eefc15..213880df89 100755
+--- a/configure
++++ b/configure
+@@ -1451,7 +1451,7 @@ probe_target_compiler() {
+         container_image=debian-all-test-cross
+         container_cross_prefix=mips64-linux-gnuabi64-
+         ;;
+-      ppc64|ppc64le)
++      ppc|ppc64|ppc64le)
+         container_image=debian-all-test-cross
+         container_cross_prefix=powerpc${target_arch#ppc}-linux-gnu-
+         ;;
 -- 
 2.47.3
 
