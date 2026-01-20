@@ -4,39 +4,38 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4FD92D2ECF7
-	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 12:39:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31066D2ECE9
+	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 12:39:15 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1viAzY-0001tX-N5; Tue, 20 Jan 2026 07:37:52 -0500
+	id 1viB07-0002lp-8X; Tue, 20 Jan 2026 07:38:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1viAyr-0001Vh-9v; Tue, 20 Jan 2026 07:37:14 -0500
+ id 1viAz6-0001ai-DI; Tue, 20 Jan 2026 07:37:30 -0500
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1viAyi-0002Vo-8q; Tue, 20 Jan 2026 07:37:05 -0500
+ id 1viAz1-0002Xn-5q; Tue, 20 Jan 2026 07:37:24 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id A50D51802E0;
- Tue, 20 Jan 2026 15:30:50 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 99C281802C0;
+ Tue, 20 Jan 2026 15:21:33 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 2D5BC35175D;
- Tue, 20 Jan 2026 15:31:08 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id 209D1351749;
+ Tue, 20 Jan 2026 15:21:51 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Pierrick Bouvier <pierrick.bouvier@linaro.org>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 10/10] bsd-user/syscall_defs.h: define STAT_TIME_T_EXT only for
- 32 bits
-Date: Tue, 20 Jan 2026 15:30:51 +0300
-Message-ID: <20260120123107.2255178-2-mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>,
+	qemu-trivial@nongnu.org
+Subject: [PULL 1/9] Revert "gdbstub: Try unlinking the unix socket before
+ binding"
+Date: Tue, 20 Jan 2026 15:21:38 +0300
+Message-ID: <20260120122150.2254321-2-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260120123107.2255178-1-mjt@tls.msk.ru>
-References: <20260120123107.2255178-1-mjt@tls.msk.ru>
+In-Reply-To: <20260120122150.2254321-1-mjt@tls.msk.ru>
+References: <20260120122150.2254321-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -61,47 +60,107 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+This reverts commit fccb744f41c69fec6fd92225fe907c6e69de5d44.
 
-Commit 369c1ba2b changed the wrong conditional "#if defined(__i386__)" to
-"#if defined(TARGET_I386)".
-However, TARGET_I386 is defined for target x86_64 also.
+This commit introduced dependency of linux-user on qemu-sockets.c.
+The latter includes handling of various socket types, while gdbstub
+only needs unix sockets.  Including different kinds of sockets
+makes it more problematic to build linux-user statically.
 
-This commit fixes it by identifying correctly 32 bits target.
+The original issue - the need to unlink unix socket before binding -
+will be addressed in the next change.
 
-Found with:
-$ ./build/qemu-x86_64 \
-  -plugin ./build/contrib/plugins/libstoptrigger,icount=1000000 \
-  -plugin ./build/tests/tcg/plugins/libinsn \
-  -d plugin \
-  ./build/qemu-system-x86_64 --version
-ld-elf.so.1: /lib/libz.so.6: invalid file format
-cpu 0 insns: 59746
-total insns: 59746
-
-Fixes: 369c1ba2b ("Fix __i386__ test for TARGET_HAS_STAT_TIME_T_EXT")
-Signed-off-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
-Reviewed-by: Warner Losh <imp@bsdimp.com>
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Reviewed-by: Ilya Leoshkevich <iii@linux.ibm.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- bsd-user/syscall_defs.h | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ gdbstub/user.c    | 29 ++++++++++++++++++++++++++---
+ stubs/meson.build |  2 --
+ util/meson.build  |  2 --
+ 3 files changed, 26 insertions(+), 7 deletions(-)
 
-diff --git a/bsd-user/syscall_defs.h b/bsd-user/syscall_defs.h
-index c49be32bdc..cc4b484f3a 100644
---- a/bsd-user/syscall_defs.h
-+++ b/bsd-user/syscall_defs.h
-@@ -247,7 +247,7 @@ struct target_freebsd11_stat {
-     unsigned int:(8 / 2) * (16 - (int)sizeof(struct target_freebsd_timespec));
- } __packed;
+diff --git a/gdbstub/user.c b/gdbstub/user.c
+index e233c59816..5e920a9b51 100644
+--- a/gdbstub/user.c
++++ b/gdbstub/user.c
+@@ -314,10 +314,12 @@ static bool gdb_accept_socket(int gdb_fd)
+     return true;
+ }
  
--#if defined(TARGET_I386)
-+#if defined(TARGET_I386) && !defined(TARGET_X86_64)
- #define TARGET_HAS_STAT_TIME_T_EXT       1
- #endif
+-static int gdbserver_open_socket(const char *path, Error **errp)
++static int gdbserver_open_socket(const char *path)
+ {
+     g_autoptr(GString) buf = g_string_new("");
++    struct sockaddr_un sockaddr = {};
+     const char *pid_placeholder;
++    int fd, ret;
  
+     pid_placeholder = strstr(path, "%d");
+     if (pid_placeholder != NULL) {
+@@ -327,7 +329,28 @@ static int gdbserver_open_socket(const char *path, Error **errp)
+         path = buf->str;
+     }
+ 
+-    return unix_listen(path, errp);
++    fd = socket(AF_UNIX, SOCK_STREAM, 0);
++    if (fd < 0) {
++        perror("create socket");
++        return -1;
++    }
++
++    sockaddr.sun_family = AF_UNIX;
++    pstrcpy(sockaddr.sun_path, sizeof(sockaddr.sun_path) - 1, path);
++    ret = bind(fd, (struct sockaddr *)&sockaddr, sizeof(sockaddr));
++    if (ret < 0) {
++        perror("bind socket");
++        close(fd);
++        return -1;
++    }
++    ret = listen(fd, 1);
++    if (ret < 0) {
++        perror("listen socket");
++        close(fd);
++        return -1;
++    }
++
++    return fd;
+ }
+ 
+ static bool gdb_accept_tcp(int gdb_fd)
+@@ -483,7 +506,7 @@ bool gdbserver_start(const char *args, Error **errp)
+     if (port > 0) {
+         gdb_fd = gdbserver_open_port(port, errp);
+     } else {
+-        gdb_fd = gdbserver_open_socket(port_or_path, errp);
++        gdb_fd = gdbserver_open_socket(port_or_path);
+     }
+     if (gdb_fd < 0) {
+         return false;
+diff --git a/stubs/meson.build b/stubs/meson.build
+index d3b551f4de..2b5fd8a88a 100644
+--- a/stubs/meson.build
++++ b/stubs/meson.build
+@@ -61,8 +61,6 @@ if have_user
+   if not have_system
+     stub_ss.add(files('qdev.c'))
+   endif
+-
+-  stub_ss.add(files('monitor-internal.c'))
+ endif
+ 
+ if have_system
+diff --git a/util/meson.build b/util/meson.build
+index 59e835a8d3..a0cfdc30ba 100644
+--- a/util/meson.build
++++ b/util/meson.build
+@@ -83,8 +83,6 @@ if have_block or have_ga
+   util_ss.add(files('qemu-coroutine.c', 'qemu-coroutine-lock.c', 'qemu-coroutine-io.c'))
+   util_ss.add(files(f'coroutine-@coroutine_backend@.c'))
+   util_ss.add(files('thread-pool.c', 'qemu-timer.c'))
+-endif
+-if have_block or have_ga or have_user
+   util_ss.add(files('qemu-sockets.c'))
+ endif
+ if have_block
 -- 
 2.47.3
 
