@@ -4,37 +4,36 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5375FD2ECF7
-	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 12:42:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B083ED2ECF7
+	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Jan 2026 12:45:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1viAzW-0001qN-Tx; Tue, 20 Jan 2026 07:37:51 -0500
+	id 1viAzI-0001fk-OQ; Tue, 20 Jan 2026 07:37:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1viAyl-0001Ux-S9; Tue, 20 Jan 2026 07:37:05 -0500
+ id 1viAya-0001OH-Mo; Tue, 20 Jan 2026 07:36:53 -0500
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1viAyf-0002Ve-P1; Tue, 20 Jan 2026 07:37:02 -0500
+ id 1viAyY-0002U6-FA; Tue, 20 Jan 2026 07:36:52 -0500
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id AFA111802C1;
+ by isrv.corpit.ru (Postfix) with ESMTP id 8F7231802BF;
  Tue, 20 Jan 2026 15:21:33 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 2D5A935174A;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 1331B351748;
  Tue, 20 Jan 2026 15:21:51 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-trivial@nongnu.org
-Subject: [PULL 2/9] gdbstub: unlink the unix socket before bind()
-Date: Tue, 20 Jan 2026 15:21:39 +0300
-Message-ID: <20260120122150.2254321-3-mjt@tls.msk.ru>
+Subject: [PULL 0/9] Trivial patches for 2026-01-20
+Date: Tue, 20 Jan 2026 15:21:37 +0300
+Message-ID: <20260120122150.2254321-1-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260120122150.2254321-1-mjt@tls.msk.ru>
-References: <20260120122150.2254321-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -59,30 +58,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-This is another variant of doing what v9.2.0-1561-gfccb744f41c6
-"gdbstub: Try unlinking the unix socket before binding" did, but
-that commit introduced dependency on qemu-sockets.c which is
-more problematic for statically-linked qemu-user binaries.
+The following changes since commit 38879a667fbb4ef54c70de71494882615f600a64:
 
-Reviewed-by: Ilya Leoshkevich <iii@linux.ibm.com>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- gdbstub/user.c | 1 +
- 1 file changed, 1 insertion(+)
+  Merge tag 'pull-tcg-20260119' of https://gitlab.com/rth7680/qemu into staging (2026-01-19 09:04:31 +1100)
 
-diff --git a/gdbstub/user.c b/gdbstub/user.c
-index 5e920a9b51..a2327c6135 100644
---- a/gdbstub/user.c
-+++ b/gdbstub/user.c
-@@ -337,6 +337,7 @@ static int gdbserver_open_socket(const char *path)
- 
-     sockaddr.sun_family = AF_UNIX;
-     pstrcpy(sockaddr.sun_path, sizeof(sockaddr.sun_path) - 1, path);
-+    unlink(sockaddr.sun_path);
-     ret = bind(fd, (struct sockaddr *)&sockaddr, sizeof(sockaddr));
-     if (ret < 0) {
-         perror("bind socket");
--- 
-2.47.3
+are available in the Git repository at:
 
+  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
+
+for you to fetch changes up to 83017c4aaa9e3ef80161443019764196dffdb654:
+
+  linux-user/aarch64/target_fcntl.h: add missing TARGET_O_LARGEFILE definition (2026-01-20 15:21:08 +0300)
+
+----------------------------------------------------------------
+trivial patches for 2026-01-20
+
+----------------------------------------------------------------
+Florian Hofhammer (1):
+      configure: add ppc target back to container tests
+
+Julian Ganz (1):
+      tests: fix comment declaring runtime in rv64 interruptedmemory test
+
+Michael Tokarev (3):
+      Revert "gdbstub: Try unlinking the unix socket before binding"
+      gdbstub: unlink the unix socket before bind()
+      qemu-options.hx: use KiB, MiB, GiB for power-of-2 units
+
+Pierrick Bouvier (1):
+      linux-user/aarch64/target_fcntl.h: add missing TARGET_O_LARGEFILE definition
+
+Thomas Huth (3):
+      configure: Set $PYTHON in the configuration of the optionroms
+      tests/qemu-iotests: Use "gsed" for expressions that require GNU sed
+      MAINTAINERS: Add docs/system/i386/ to the general x86 architecture section
+
+ MAINTAINERS                           |  1 +
+ configure                             |  3 ++-
+ gdbstub/user.c                        | 30 +++++++++++++++++++++++++++---
+ linux-user/aarch64/target_fcntl.h     |  1 +
+ qemu-options.hx                       | 20 ++++++++++----------
+ stubs/meson.build                     |  2 --
+ tests/qemu-iotests/286                |  2 +-
+ tests/qemu-iotests/common.rc          |  2 +-
+ tests/tcg/riscv64/interruptedmemory.S |  2 +-
+ util/meson.build                      |  2 --
+ 10 files changed, 44 insertions(+), 21 deletions(-)
 
