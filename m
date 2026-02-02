@@ -4,84 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 881F8E65268
-	for <qemu-trivial@archiver.kernel.org>; Sun,  1 Feb 2026 14:18:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A5D7E7DF13
+	for <qemu-trivial@archiver.kernel.org>; Mon,  2 Feb 2026 17:42:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vmYGt-000323-PC; Sun, 01 Feb 2026 09:17:51 -0500
+	id 1vmxwh-0001FZ-Sh; Mon, 02 Feb 2026 12:42:43 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vmYGs-000315-CI
- for qemu-trivial@nongnu.org; Sun, 01 Feb 2026 09:17:50 -0500
-Received: from mail-wm1-x341.google.com ([2a00:1450:4864:20::341])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vmxwf-0001F6-R4
+ for qemu-trivial@nongnu.org; Mon, 02 Feb 2026 12:42:41 -0500
+Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1vmYGq-0003Bd-KU
- for qemu-trivial@nongnu.org; Sun, 01 Feb 2026 09:17:50 -0500
-Received: by mail-wm1-x341.google.com with SMTP id
- 5b1f17b1804b1-47ee3a63300so39334925e9.2
- for <qemu-trivial@nongnu.org>; Sun, 01 Feb 2026 06:17:47 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1vmxwd-0005QE-UT
+ for qemu-trivial@nongnu.org; Mon, 02 Feb 2026 12:42:41 -0500
+Received: by mail-ej1-x630.google.com with SMTP id
+ a640c23a62f3a-b886fc047d5so894981266b.3
+ for <qemu-trivial@nongnu.org>; Mon, 02 Feb 2026 09:42:39 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1769955466; x=1770560266; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=1ByKVHzSQ9zHFazuT6oztAMja4HE91ec5VQ+otD7rQM=;
- b=HCCF+qD83Cp8ycUJaaxY5C9kaPCuCHVMIWXW52WpEio596Q9ka9oblaU0VR74Bmysv
- /qe9EA7uaO/K2LDpK+g7K3cfGAU2qt7DOuD113fcIzldiDFB8wuerdVKANLItq0YZdgc
- B9X0uHgg1IXphxPT+Rr6POS7+jj9daaoyEKpgThRDAZqohhbX92Q9quXb2YzbqLJTrKu
- yxPf2zkBiH/Dy0FMZGs3Y01poFmPzSEW8Ui0YMDmwvzXrD/Qb5dq98v09aVyRFpVdQ9g
- lco9s5T1/qt5ZEUkBVoBIlxsemBEzVTIHh/qUhjswaL+AEIeOKQA12W1p4ttq9RXISk+
- u0Ww==
+ d=linaro.org; s=google; t=1770054158; x=1770658958; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=A5iEbnZiMI5JktEUcqTFYwNIYDAbh15eacXWSPeJSYw=;
+ b=YZz2ji//mvpBefkveEKx9vGUfagAFxAgMFX9k3PXZr9GxWFijs74yuFXf7Uc/JYKq1
+ bWEPXuk5+JNAkmhFgldmZmzzWcsLHVlrWKWBx5VMSxs+0O6pBSp0dqJXI9Ynrra54hEz
+ kQR6608cs6j8QyCe6yl/3QTQl3ozP9jwxYufoxURW9pdnaWHBBi9kRBMepHNI41AmOCj
+ LRHu8E+w7taWrOcLz6fmpk10hvZgCRAceBqoTk78F7eNrbU0auwhRtjrHW2J1SDSmep3
+ EEmpGagOXuT0rfuNtiwy5JFm6JlhNlDh+qRC030HmsjiejLHFoYxLyJq0J7SgfTvTu5o
+ 1ggA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1769955466; x=1770560266;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=1ByKVHzSQ9zHFazuT6oztAMja4HE91ec5VQ+otD7rQM=;
- b=NmwDXwX9twE4KUJu9GwmcadfcyjgVbG7yLAsl1W6uOKblEvfm8DBEbkUV/alCT6Esf
- DdvmtGFMZKkDP9qVKVW1giZh8o4HzCwwt21sivMaGO4XP1eGDXZJy4EaZhVXTQyvgoB9
- wCUQoq5vEnciiYj0avNUbTB0eX2BM8DR/DPZtG+PxUT1SLbP67KQ4dda7xlhs2m9mzEo
- LYaWCBKvT4Yrq4PDwHEY0lsvvego870yNRhvLG7sUxAOGDxmw8t+8yVR7EeVEWv3c3oQ
- fxLvYdOvAjIonksIn/YXZ1WI2KoapCe1M4nd3zEQ3b9A1z4rDIAyIix4+zIsnb+APZ+S
- T6BQ==
-X-Gm-Message-State: AOJu0YxVntV6mTf95gUZF7p7axptICey0yEUktd0VMKAdqXkHcdskaMF
- xlDobz5GApg6bYYucAyKH111JOSLWYKxa9E/ZhNI/IesMXyEmLNFS2Es4R7R99W+WDo=
-X-Gm-Gg: AZuq6aIL/uirju6I+JfaxUChKqCO/IIhDnykvBjDmSE9MzyBQZMLIryZRwfYGwcwcVs
- tkI3FIGaK0jJhTNnDLUBVMN/XElvAvXWd84pW8iGYFaf9Ue7YhFB2a0pEEvBwjNFNonCNcZee0o
- LvDVsT06NKyd59AmY5I/hgkgKRsZXUS8R7nH72X5gEpwIzT/oMqm7QRdtW13QoK10b7YGmLieyh
- 6u3px7w35wB0hKSX9JBrqS+0XS9uI7xPjfhAj+b774jzz0IFFKSrYPbUjTAeAmQz41r1YhyZ0zH
- kRuYiVUtz+BQpp/vjDzYAvkG0yMI1bPAydTAynyX7JaepjYbT3bwb52bEOkZHVvCu8ETV+mQ7sb
- 3Gu/1lYpkj6w6heHvGW4Wc37Wu0ImB+NeGgi7343mGReIAowfeoS60ZjQPS5lr+yFSa8v6iu0RP
- X+PiwXpo4lAicV8j1/1SkpDMxTGWATaWLobb9cZJNPf3YrBrk2Z2rEvA==
-X-Received: by 2002:a05:600c:8b61:b0:477:a36f:1a57 with SMTP id
- 5b1f17b1804b1-482db456a60mr114746505e9.3.1769955466056; 
- Sun, 01 Feb 2026 06:17:46 -0800 (PST)
-Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-435e131ce70sm38253704f8f.27.2026.02.01.06.17.44
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sun, 01 Feb 2026 06:17:45 -0800 (PST)
-Message-ID: <c2a851eb-1164-403f-a1b1-c03edb4cfc8f@linaro.org>
-Date: Sun, 1 Feb 2026 15:17:44 +0100
+ d=1e100.net; s=20230601; t=1770054158; x=1770658958;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=A5iEbnZiMI5JktEUcqTFYwNIYDAbh15eacXWSPeJSYw=;
+ b=BEzUwe6knZlAts84kmePbZW9vR0kaCQkbCmeRqt8ZrghRYCK9lepvAWjNnaFThfnwD
+ cLcg981g0HLyey9BT0mOfzF32TM7L7RbpbVowgPwSStPMYJmmLk+Pi3IReFu8Rdq3mta
+ BbpQEMMukUGvvEuzgR61Fe3DNjvTilE+4N4Zzj2jz3mT5P0EEalz5oQJz9Wt40zSZk+B
+ uPnb7XNgkaaDIX9j19Dl1ultWwcz4JI+1ARGc4WES0D5+Vv/udVD2JxIFbJOPq1Fsy1m
+ 6Yk0p84xV5EdqaIXxhJVshKVf1D2oQcUfNGRhvFF6mDI7uPHXvI1yDOLsyw6yr00P4Lf
+ N44w==
+X-Forwarded-Encrypted: i=1;
+ AJvYcCVF477rD8uZ+kZrzMkwS3/96f5lycEfPgUBAm13g2FRQp9YSRQDhC3NYBPufRQI5KXXp2TiiE83JWaqZdQ=@nongnu.org
+X-Gm-Message-State: AOJu0YzmWNasLf+5G7ErN3yv2nxKUzp6Dvo/gnbSlzpgVdtcqPXWKxQu
+ TdjyDsunP/6WSpiINkJ3fzDjgTxGWfpZb7SWzJgsQNKtcwVOhofvOV8OR0cuG9JRzvY=
+X-Gm-Gg: AZuq6aLPLbeziWLG3p0Mcohp/5p3hPG7uqPLGZl6V8vt9kxnx9Gmmcx8X7mmo+Lck72
+ Mnc65dadu2HT7Fd7AmPA9XbKGqkwybBnORP1co08c8zAVxbhlw48DiQiDA+kmVoAgSI859b9WrA
+ 6s6yneMC1zR4kU0/yC/TvCf6lZOx7Y5HoBQoAxGurwZdDCu9RKNvxoaarTgKuGUypL2jeESovda
+ HHNbopcEBNWo+34thXHbI2D0lkyQ3wWuwIxfCbETIHW2+aV0odJUMhfD2gg5NBCunDyuHEWqsor
+ Er7HL+6lvNwb3h96yMl4+UdPKxlwvSpJLQWIwpKZfkOMK014dqCCB0Vh782qefiTXxpPs1x/fPT
+ co7w7V7dCEP2JW+9Dm6V/pSZOjlfEMW0809nEfG6dN44fhj5LOB1AMGbjfK0aKpv+hCWUl76P8n
+ bC22pFXJHwL96Hjd4hMsOjCA==
+X-Received: by 2002:a17:906:ee86:b0:b8d:7c0f:5bfc with SMTP id
+ a640c23a62f3a-b8dff7241camr757121366b.64.1770054157848; 
+ Mon, 02 Feb 2026 09:42:37 -0800 (PST)
+Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-b8dbeffed15sm884542866b.31.2026.02.02.09.42.36
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 02 Feb 2026 09:42:37 -0800 (PST)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id 50A9A5F7D8;
+ Mon, 02 Feb 2026 17:42:36 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: Thomas Huth <thuth@redhat.com>
+Cc: Michael Tokarev <mjt@tls.msk.ru>,  qemu-devel@nongnu.org,  Paolo Bonzini
+ <pbonzini@redhat.com>,  qemu-trivial@nongnu.org, gustavo.romero@linaro.org
+Subject: Re: [PATCH] configure: Remove duplicated entry of --gdb in the help
+ text
+In-Reply-To: <35b3750b-31ab-4120-8edd-74aa1ae5f0bf@redhat.com> (Thomas Huth's
+ message of "Tue, 20 Jan 2026 13:02:59 +0100")
+References: <20260114155355.82096-1-thuth@redhat.com>
+ <878qe0jfgs.fsf@draig.linaro.org>
+ <bc463c63-ec0c-4666-a9ed-7c53e02a24c4@tls.msk.ru>
+ <35b3750b-31ab-4120-8edd-74aa1ae5f0bf@redhat.com>
+User-Agent: mu4e 1.14.0-pre1; emacs 30.1
+Date: Mon, 02 Feb 2026 17:42:36 +0000
+Message-ID: <87tsvznisz.fsf@draig.linaro.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/ide, scsi-disk: Fix typo on the rotation_rate
- documentation
-To: Alberto Garcia <berto@igalia.com>, qemu-devel@nongnu.org,
- Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>,
- John Snow <jsnow@redhat.com>
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?=
- <berrange@redhat.com>
-References: <20260128102548.224237-1-berto@igalia.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-Content-Language: en-US
-In-Reply-To: <20260128102548.224237-1-berto@igalia.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::341;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x341.google.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::630;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x630.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -104,15 +110,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 28/1/26 11:25, Alberto Garcia wrote:
-> Correct values according to the Medium Rotation Rate field from the
-> Block Device Characteristics VPD page (B1h) of the SCSI specification.
-> 
-> Signed-off-by: Alberto Garcia <berto@igalia.com>
-> ---
->   hw/scsi/scsi-disk.c      | 2 +-
->   include/hw/ide/ide-dev.h | 2 +-
->   2 files changed, 2 insertions(+), 2 deletions(-)
+Thomas Huth <thuth@redhat.com> writes:
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+> On 20/01/2026 12.31, Michael Tokarev wrote:
+>> On 1/14/26 20:01, Alex Benn=C3=A9e wrote:
+>>> Thomas Huth <thuth@redhat.com> writes:
+>>>
+>>>> From: Thomas Huth <thuth@redhat.com>
+>>>>
+>>>> Since --gdb has recently been added to meson_options.txt, the help
+>>>> text shows up twice in the output of "./configure --help":
+>>>>
+>>>> =C2=A0 $ ./configure --help | grep gdb
+>>>> =C2=A0=C2=A0=C2=A0 --gdb=3DGDB-path=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
+=A0=C2=A0=C2=A0=C2=A0=C2=A0 gdb to use for gdbstub tests [/usr/bin/gdb]
+>>>> =C2=A0=C2=A0=C2=A0 --gdb=3DVALUE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
+=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Path to GDB
+>>>
+>>> It's a shame to loose the default value - is there anyway for the meson
+>>> version to show the auto-detected value?
+>> Maybe we can drop this line from meson but keep it in ./configure?
+>
+> The meson stuff is generated automatically, so no clue how that could
+> be done in a nice way?
+
+I tried the other way around and squashed the meson_options_help text
+with:
+
+  20260202174123.1943748-1-alex.bennee@linaro.org
+
+>
+>  Thomas
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 
