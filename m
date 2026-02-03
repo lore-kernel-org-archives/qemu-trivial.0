@@ -4,93 +4,66 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3936E83070
-	for <qemu-trivial@archiver.kernel.org>; Tue,  3 Feb 2026 10:02:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 64886E87852
+	for <qemu-trivial@archiver.kernel.org>; Tue,  3 Feb 2026 18:22:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vnDEa-0002qU-Bj; Tue, 03 Feb 2026 05:02:12 -0500
+	id 1vnL2k-0000eR-QV; Tue, 03 Feb 2026 13:22:30 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1vnDEY-0002qI-8s; Tue, 03 Feb 2026 05:02:10 -0500
-Received: from isrv.corpit.ru ([212.248.84.144])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1vnDEW-0005Fg-Hg; Tue, 03 Feb 2026 05:02:10 -0500
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id CDAD11855B8;
- Tue, 03 Feb 2026 13:01:20 +0300 (MSK)
-Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 89D5B35B7C0;
- Tue, 03 Feb 2026 13:02:03 +0300 (MSK)
-Message-ID: <c45b67f5-e308-470b-a7d6-c5a2da61827c@tls.msk.ru>
-Date: Tue, 3 Feb 2026 13:02:03 +0300
+ (Exim 4.90_1)
+ (envelope-from <bounce+e91484.97607e-qemu-trivial=nongnu.org@yodel.dev>)
+ id 1vnL2j-0000dv-BW
+ for qemu-trivial@nongnu.org; Tue, 03 Feb 2026 13:22:29 -0500
+Received: from k57.kb8c70eb.use4.send.mailgun.net ([204.220.184.57])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1)
+ (envelope-from <bounce+e91484.97607e-qemu-trivial=nongnu.org@yodel.dev>)
+ id 1vnL2h-0003Vr-U3
+ for qemu-trivial@nongnu.org; Tue, 03 Feb 2026 13:22:29 -0500
+X-Mailgun-Sid: WyIxNjkyZSIsInFlbXUtdHJpdmlhbEBub25nbnUub3JnIiwiOTc2MDdlIl0=
+Received: from mail.yodel.dev (mail.yodel.dev [35.209.39.246]) by
+ d5625f92ec748e676b1e2ef6343905c72ce53dd557a099c8ab9643e246702dba with SMTP id
+ 69823cdb39c23bd66636a5ae; Tue, 03 Feb 2026 18:22:19 GMT
+X-Mailgun-Sending-Ip: 204.220.184.57
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yodel.dev;
+ s=rsa2048; t=1770142938;
+ bh=CmoOMUsHxA+OPz/QIS9zmLkYe3g6/ZFRWRSxshy6GEo=;
+ h=X-Mailgun-Dkim:From:To:Cc:Subject:Date:Message-ID:MIME-Version:
+ Content-Transfer-Encoding:From:Reply-to:Subject:Date:Message-id:To:
+ Cc:Mime-version:Content-type:Content-transfer-encoding:In-reply-to:
+ References;
+ b=QHONZ6SfLbyEKCYI+mWf5sVNh/jjsc/oM8n8lsittEDlPsB/mw0G0Icls4TQNq2nd
+ D41PlGR784ZRywdP9wgRDUtQii7kLwlzYZFpqV+M3HNZxXiyDLj6QbxsECwJffZdWG
+ 9GXhRSOIXPSyQ6SIIJdYp83WUyk+FLEaHB50NNZTxPOiPhutgmgTS4sCxV/3fbKu7p
+ pyP2w69oCZ/AdTj/fyNUx+Rk21kvEbzpfiZCl+4Qfrolpqx83cMutaeWL3TxMd1Y4T
+ InMYmqcDDBUffidapskM1ht2SnWguUooOere6g962pRuk2hQ3SYrtQUksUjhcT3k1c
+ PYlNTUpnx3Nhw==
+X-Mailgun-Dkim: no
+X-Mailgun-Dkim: no
+From: Yodel Eldar <yodel.eldar@yodel.dev>
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+ Yodel Eldar <yodel.eldar@yodel.dev>
+Subject: [PATCH] tests/.../reverse_debugging: Remove unsatisfiable condition
+Date: Tue,  3 Feb 2026 12:21:53 -0600
+Message-ID: <20260203182153.75276-1-yodel.eldar@yodel.dev>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH trivial v2 7/7] rename CONFIG_EPOLL_CREATE1 to
- CONFIG_EPOLL, and stop checking for epoll in meson.build
-To: Richard Henderson <richard.henderson@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20260119140557.2167351-1-mjt@tls.msk.ru>
- <20260119140557.2167351-4-mjt@tls.msk.ru>
- <d104e4b0-94c4-4de4-84e7-1011253ab5f8@linaro.org>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-Autocrypt: addr=mjt@tls.msk.ru; keydata=
- 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
-In-Reply-To: <d104e4b0-94c4-4de4-84e7-1011253ab5f8@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Received-SPF: pass client-ip=204.220.184.57;
+ envelope-from=bounce+e91484.97607e-qemu-trivial=nongnu.org@yodel.dev;
+ helo=k57.kb8c70eb.use4.send.mailgun.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,51 +79,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 2/3/26 05:36, Richard Henderson wrote:
-> On 1/20/26 00:05, Michael Tokarev wrote:
->> Since CONFIG_EPOLL is now unused, it's okay to
->> perform this rename, to make it less ugly.
->>
->> Since epoll is linux-specific and is always present on linux,
->> define CONFIG_EPOLL to 1 on linux, without compile-time test.
->>
->> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
->> ---
->>   meson.build      | 3 +--
->>   util/aio-posix.h | 4 ++--
->>   util/meson.build | 2 +-
->>   3 files changed, 4 insertions(+), 5 deletions(-)
->>
->> diff --git a/meson.build b/meson.build
->> index f4eae50764..157189e306 100644
->> --- a/meson.build
->> +++ b/meson.build
->> @@ -2673,8 +2673,7 @@ config_host_data.set('CONFIG_INOTIFY1', 
->> have_inotify_init1)
->>   # has_header_symbol
->>   config_host_data.set('CONFIG_BLKZONED',
->>                        cc.has_header_symbol('linux/blkzoned.h', 
->> 'BLKOPENZONE'))
->> -config_host_data.set('CONFIG_EPOLL_CREATE1',
->> -                     cc.has_header_symbol('sys/epoll.h', 
->> 'epoll_create1'))
->> +config_host_data.set('CONFIG_EPOLL', host_os == 'linux')
-> 
-> I guess my question remains: Why keep CONFIG_EPOLL if it is identical to 
-> the existing CONFIG_LINUX?
+get_qemu_img() already skips the test if qemu-img is not found and does
+not return None. Eliminate the check for None on its result, and the
+unreachable skipTest() gated by it.
 
-It would be less obvious this way in the code.  When you've some
-#ifdef, when using CONFIG_EPOLL, it's much more obvious why it's here.
-When it's CONFIG_LINUX, you start to wonder which of the 100500
-different linux-only features this place is about.
+Signed-off-by: Yodel Eldar <yodel.eldar@yodel.dev>
+---
+ tests/functional/reverse_debugging.py | 3 ---
+ 1 file changed, 3 deletions(-)
 
-Current code very obviously uses configuration test for particular
-_feature_ (presence of epoll).  Yes, this interface is linux-specific,
-but in my view it is better to keep depending on particular feature,
-than to check of the os type or library version or something else like
-that.
+diff --git a/tests/functional/reverse_debugging.py b/tests/functional/reverse_debugging.py
+index 8e6f0b0e92..eaf178da49 100644
+--- a/tests/functional/reverse_debugging.py
++++ b/tests/functional/reverse_debugging.py
+@@ -73,9 +73,6 @@ def reverse_debugging(self, gdb_arch, shift=7, args=None, big_endian=False):
+         self.log.info('creating qcow2 image for VM snapshots')
+         image_path = os.path.join(self.workdir, 'disk.qcow2')
+         qemu_img = get_qemu_img(self)
+-        if qemu_img is None:
+-            self.skipTest('Could not find "qemu-img", which is required to '
+-                          'create the temporary qcow2 image')
+         out = check_output([qemu_img, 'create', '-f', 'qcow2', image_path, '128M'],
+                            encoding='utf8')
+         self.log.info("qemu-img: %s" % out)
+-- 
+2.53.0
 
-Thanks,
-
-/mjt
 
