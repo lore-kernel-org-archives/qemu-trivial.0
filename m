@@ -4,97 +4,95 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6A5D7E7DF13
-	for <qemu-trivial@archiver.kernel.org>; Mon,  2 Feb 2026 17:42:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41107E83041
+	for <qemu-trivial@archiver.kernel.org>; Tue,  3 Feb 2026 02:36:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vmxwh-0001FZ-Sh; Mon, 02 Feb 2026 12:42:43 -0500
+	id 1vn6HF-0002gd-4D; Mon, 02 Feb 2026 21:36:29 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vmxwf-0001F6-R4
- for qemu-trivial@nongnu.org; Mon, 02 Feb 2026 12:42:41 -0500
-Received: from mail-ej1-x630.google.com ([2a00:1450:4864:20::630])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1vn6HD-0002gM-Vk
+ for qemu-trivial@nongnu.org; Mon, 02 Feb 2026 21:36:27 -0500
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1vmxwd-0005QE-UT
- for qemu-trivial@nongnu.org; Mon, 02 Feb 2026 12:42:41 -0500
-Received: by mail-ej1-x630.google.com with SMTP id
- a640c23a62f3a-b886fc047d5so894981266b.3
- for <qemu-trivial@nongnu.org>; Mon, 02 Feb 2026 09:42:39 -0800 (PST)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1vn6HC-0004y3-C9
+ for qemu-trivial@nongnu.org; Mon, 02 Feb 2026 21:36:27 -0500
+Received: by mail-pj1-x1030.google.com with SMTP id
+ 98e67ed59e1d1-35334ea1f98so2315289a91.1
+ for <qemu-trivial@nongnu.org>; Mon, 02 Feb 2026 18:36:25 -0800 (PST)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1770054158; x=1770658958; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=A5iEbnZiMI5JktEUcqTFYwNIYDAbh15eacXWSPeJSYw=;
- b=YZz2ji//mvpBefkveEKx9vGUfagAFxAgMFX9k3PXZr9GxWFijs74yuFXf7Uc/JYKq1
- bWEPXuk5+JNAkmhFgldmZmzzWcsLHVlrWKWBx5VMSxs+0O6pBSp0dqJXI9Ynrra54hEz
- kQR6608cs6j8QyCe6yl/3QTQl3ozP9jwxYufoxURW9pdnaWHBBi9kRBMepHNI41AmOCj
- LRHu8E+w7taWrOcLz6fmpk10hvZgCRAceBqoTk78F7eNrbU0auwhRtjrHW2J1SDSmep3
- EEmpGagOXuT0rfuNtiwy5JFm6JlhNlDh+qRC030HmsjiejLHFoYxLyJq0J7SgfTvTu5o
- 1ggA==
+ d=linaro.org; s=google; t=1770086185; x=1770690985; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=XgeOt9/6xAZdBDWOTYcZcrZL4DZk6Feit8gyjfJfU/8=;
+ b=YP7p9MJabKq9sGPb9lmETF9zcELI2FQQiEGVqHWsC/pkD5gHKlKAn8muSp970M79ZG
+ PsR3+u3nz1dnSsAzQOeOMxJne5+it3eenvz8c3fNh5vIENFzOB35OCv88bUdAWgav+N6
+ Jsxf0erKIyWlJl0GUVc72DZs9dOrAqxbG6VopOykGXkQA11QV5I91ZqUXB/TULiUtOvz
+ zw7eQ63gj36jvxLx8xek7MxaKkHq931PWISsWAwMsMjJGJCbL0dTzHh4BvLGF7/9kagx
+ OtRVOcMrx/RVF0ctTCfMi51OD7rqeIhHhxtR0oO8BtXj7j9R8fyidVr5fHTfx/BMWxkm
+ b1tg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1770054158; x=1770658958;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=A5iEbnZiMI5JktEUcqTFYwNIYDAbh15eacXWSPeJSYw=;
- b=BEzUwe6knZlAts84kmePbZW9vR0kaCQkbCmeRqt8ZrghRYCK9lepvAWjNnaFThfnwD
- cLcg981g0HLyey9BT0mOfzF32TM7L7RbpbVowgPwSStPMYJmmLk+Pi3IReFu8Rdq3mta
- BbpQEMMukUGvvEuzgR61Fe3DNjvTilE+4N4Zzj2jz3mT5P0EEalz5oQJz9Wt40zSZk+B
- uPnb7XNgkaaDIX9j19Dl1ultWwcz4JI+1ARGc4WES0D5+Vv/udVD2JxIFbJOPq1Fsy1m
- 6Yk0p84xV5EdqaIXxhJVshKVf1D2oQcUfNGRhvFF6mDI7uPHXvI1yDOLsyw6yr00P4Lf
- N44w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCVF477rD8uZ+kZrzMkwS3/96f5lycEfPgUBAm13g2FRQp9YSRQDhC3NYBPufRQI5KXXp2TiiE83JWaqZdQ=@nongnu.org
-X-Gm-Message-State: AOJu0YzmWNasLf+5G7ErN3yv2nxKUzp6Dvo/gnbSlzpgVdtcqPXWKxQu
- TdjyDsunP/6WSpiINkJ3fzDjgTxGWfpZb7SWzJgsQNKtcwVOhofvOV8OR0cuG9JRzvY=
-X-Gm-Gg: AZuq6aLPLbeziWLG3p0Mcohp/5p3hPG7uqPLGZl6V8vt9kxnx9Gmmcx8X7mmo+Lck72
- Mnc65dadu2HT7Fd7AmPA9XbKGqkwybBnORP1co08c8zAVxbhlw48DiQiDA+kmVoAgSI859b9WrA
- 6s6yneMC1zR4kU0/yC/TvCf6lZOx7Y5HoBQoAxGurwZdDCu9RKNvxoaarTgKuGUypL2jeESovda
- HHNbopcEBNWo+34thXHbI2D0lkyQ3wWuwIxfCbETIHW2+aV0odJUMhfD2gg5NBCunDyuHEWqsor
- Er7HL+6lvNwb3h96yMl4+UdPKxlwvSpJLQWIwpKZfkOMK014dqCCB0Vh782qefiTXxpPs1x/fPT
- co7w7V7dCEP2JW+9Dm6V/pSZOjlfEMW0809nEfG6dN44fhj5LOB1AMGbjfK0aKpv+hCWUl76P8n
- bC22pFXJHwL96Hjd4hMsOjCA==
-X-Received: by 2002:a17:906:ee86:b0:b8d:7c0f:5bfc with SMTP id
- a640c23a62f3a-b8dff7241camr757121366b.64.1770054157848; 
- Mon, 02 Feb 2026 09:42:37 -0800 (PST)
-Received: from draig.lan ([185.124.0.126]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-b8dbeffed15sm884542866b.31.2026.02.02.09.42.36
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 02 Feb 2026 09:42:37 -0800 (PST)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id 50A9A5F7D8;
- Mon, 02 Feb 2026 17:42:36 +0000 (GMT)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Michael Tokarev <mjt@tls.msk.ru>,  qemu-devel@nongnu.org,  Paolo Bonzini
- <pbonzini@redhat.com>,  qemu-trivial@nongnu.org, gustavo.romero@linaro.org
-Subject: Re: [PATCH] configure: Remove duplicated entry of --gdb in the help
- text
-In-Reply-To: <35b3750b-31ab-4120-8edd-74aa1ae5f0bf@redhat.com> (Thomas Huth's
- message of "Tue, 20 Jan 2026 13:02:59 +0100")
-References: <20260114155355.82096-1-thuth@redhat.com>
- <878qe0jfgs.fsf@draig.linaro.org>
- <bc463c63-ec0c-4666-a9ed-7c53e02a24c4@tls.msk.ru>
- <35b3750b-31ab-4120-8edd-74aa1ae5f0bf@redhat.com>
-User-Agent: mu4e 1.14.0-pre1; emacs 30.1
-Date: Mon, 02 Feb 2026 17:42:36 +0000
-Message-ID: <87tsvznisz.fsf@draig.linaro.org>
+ d=1e100.net; s=20230601; t=1770086185; x=1770690985;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:cc:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=XgeOt9/6xAZdBDWOTYcZcrZL4DZk6Feit8gyjfJfU/8=;
+ b=Sy0GAo6gpwIy27BxIHwVA1cKZgLndn7HcCqUdiOjj9PrYGpK2zK6xFzEYMg0q0oANI
+ 0EQ9JRKb63vL8J8tPqfKzw+9da0FFdQ3m2nbLR4q8IsOP+nZHfxtiZMsu0TphX+JbeS4
+ EjQss0E9CoK3Hb86HTf2DjHS5hc3bBCUa6HQX2udexp6Lv6rMK241XhKKdzqAKS2hvys
+ /wklfOps2oNWEx8RNfoFLesf4AN00vV87ty6oqD0ycYNWOHA62Jw625zfo9pfFbRNJpn
+ TVkOvv9WDn4i+rO2MxyDDIjH+z4ZBS/GwhUcFPrtaPadJEA9+vnOwap/0vA68eGw+FDg
+ uJdQ==
+X-Gm-Message-State: AOJu0YwuGqqb01Q/XRXCB/VWnNPIwZYkiKnyB7V026rXH4hEgnzBCqvr
+ dbX3Rb9tQCe1vAajBKz9GtgkPhukgHrDglgtZ0mnhgwzSdYlleCuC6zh9oqUUDlatn/8VREi3Jp
+ DcKFXL76gLQ==
+X-Gm-Gg: AZuq6aIIaLAphfuHxAkDHEpo5gzrQQvFZ7PHNlLkAifux1Xf3rfLOw3N06ibMqymIkf
+ oshXoniL0xUwcnowO62oQH74YSF1BGoU7I1w9JnVtzmIDrR51c7v66PU+HmIr2ytQxfeimAFnnj
+ VkghWwZo0hfjPSvuVqSeBX93N3II/cRXUKzDXCsiGO/rwjDMgNuZiyJLoHTlhNhKapjAZhdvdik
+ 8WsAs3a8l+afiPpUvj2z5uDiUVt76M5AEEPO9c+7bt+JOXNHgkorSLdVQ47eQAzhRyEyIRKrZTW
+ V8FbRCxw72snCh7H1n06wkm7asJLP7kOaBJiNJ8HYLb7FDyl/2ihGgYkkE6rRPWlRTRuBXHa1kV
+ 4QktpwqNEH5UdvpL1PngbCR8Eb53lsFWI+p0JCQddBRAjrg1zzbt+vgfwpO5kvuPPajM/dgS4rx
+ W/c5S4x4wcILF2pReEIXiTiHpid718v5KVHQLD0tdWXuSQbNaf9lP5scL7SG43nzfNwC3bckJr3
+ jhaRGV3YmR6n8t2FiLhL1VYqEAykZZovUrY0ET2xQ==
+X-Received: by 2002:a17:90b:4b02:b0:340:d06d:ea73 with SMTP id
+ 98e67ed59e1d1-3543b3b24aemr11220496a91.19.1770086184614; 
+ Mon, 02 Feb 2026 18:36:24 -0800 (PST)
+Received: from ?IPV6:2401:d002:dc0f:2100:1047:c02f:591b:6a5c?
+ (bg30dhzn7h1zhjqnvj08.ip6.superloop.au.
+ [2401:d002:dc0f:2100:1047:c02f:591b:6a5c])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3543babe32fsm5729724a91.0.2026.02.02.18.36.21
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 02 Feb 2026 18:36:23 -0800 (PST)
+Message-ID: <d104e4b0-94c4-4de4-84e7-1011253ab5f8@linaro.org>
+Date: Tue, 3 Feb 2026 12:36:18 +1000
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::630;
- envelope-from=alex.bennee@linaro.org; helo=mail-ej1-x630.google.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH trivial v2 7/7] rename CONFIG_EPOLL_CREATE1 to
+ CONFIG_EPOLL, and stop checking for epoll in meson.build
+To: Michael Tokarev <mjt@tls.msk.ru>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20260119140557.2167351-1-mjt@tls.msk.ru>
+ <20260119140557.2167351-4-mjt@tls.msk.ru>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20260119140557.2167351-4-mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,39 +108,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Thomas Huth <thuth@redhat.com> writes:
+On 1/20/26 00:05, Michael Tokarev wrote:
+> Since CONFIG_EPOLL is now unused, it's okay to
+> perform this rename, to make it less ugly.
+> 
+> Since epoll is linux-specific and is always present on linux,
+> define CONFIG_EPOLL to 1 on linux, without compile-time test.
+> 
+> Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+> ---
+>   meson.build      | 3 +--
+>   util/aio-posix.h | 4 ++--
+>   util/meson.build | 2 +-
+>   3 files changed, 4 insertions(+), 5 deletions(-)
+> 
+> diff --git a/meson.build b/meson.build
+> index f4eae50764..157189e306 100644
+> --- a/meson.build
+> +++ b/meson.build
+> @@ -2673,8 +2673,7 @@ config_host_data.set('CONFIG_INOTIFY1', have_inotify_init1)
+>   # has_header_symbol
+>   config_host_data.set('CONFIG_BLKZONED',
+>                        cc.has_header_symbol('linux/blkzoned.h', 'BLKOPENZONE'))
+> -config_host_data.set('CONFIG_EPOLL_CREATE1',
+> -                     cc.has_header_symbol('sys/epoll.h', 'epoll_create1'))
+> +config_host_data.set('CONFIG_EPOLL', host_os == 'linux')
 
-> On 20/01/2026 12.31, Michael Tokarev wrote:
->> On 1/14/26 20:01, Alex Benn=C3=A9e wrote:
->>> Thomas Huth <thuth@redhat.com> writes:
->>>
->>>> From: Thomas Huth <thuth@redhat.com>
->>>>
->>>> Since --gdb has recently been added to meson_options.txt, the help
->>>> text shows up twice in the output of "./configure --help":
->>>>
->>>> =C2=A0 $ ./configure --help | grep gdb
->>>> =C2=A0=C2=A0=C2=A0 --gdb=3DGDB-path=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 gdb to use for gdbstub tests [/usr/bin/gdb]
->>>> =C2=A0=C2=A0=C2=A0 --gdb=3DVALUE=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 Path to GDB
->>>
->>> It's a shame to loose the default value - is there anyway for the meson
->>> version to show the auto-detected value?
->> Maybe we can drop this line from meson but keep it in ./configure?
->
-> The meson stuff is generated automatically, so no clue how that could
-> be done in a nice way?
+I guess my question remains: Why keep CONFIG_EPOLL if it is identical to the existing 
+CONFIG_LINUX?
 
-I tried the other way around and squashed the meson_options_help text
-with:
 
-  20260202174123.1943748-1-alex.bennee@linaro.org
-
->
->  Thomas
-
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+r~
 
