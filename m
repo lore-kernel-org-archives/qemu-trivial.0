@@ -4,70 +4,63 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C96EBEE6B45
-	for <qemu-trivial@archiver.kernel.org>; Fri,  6 Feb 2026 17:58:13 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 188B6EE0AC3
+	for <qemu-trivial@archiver.kernel.org>; Sat,  7 Feb 2026 10:24:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1voQ5n-0004Tr-4I; Fri, 06 Feb 2026 12:58:07 -0500
+	id 1vofTy-0001uJ-A5; Sat, 07 Feb 2026 05:24:06 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <heifetz@yandex-team.com>)
- id 1voQ5k-0004Sr-UD; Fri, 06 Feb 2026 12:58:05 -0500
-Received: from forwardcorp1d.mail.yandex.net
- ([2a02:6b8:c41:1300:1:45:d181:df01])
+ id 1vofTw-0001tK-6N; Sat, 07 Feb 2026 05:24:04 -0500
+Received: from forwardcorp1a.mail.yandex.net
+ ([2a02:6b8:c0e:500:1:45:d181:df01])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <heifetz@yandex-team.com>)
- id 1voQ5h-0007eN-Ny; Fri, 06 Feb 2026 12:58:04 -0500
-Received: from mail-nwsmtp-mxback-corp-main-90.klg.yp-c.yandex.net
- (mail-nwsmtp-mxback-corp-main-90.klg.yp-c.yandex.net
- [IPv6:2a02:6b8:c42:7527:0:640:60b9:0])
- by forwardcorp1d.mail.yandex.net (Yandex) with ESMTPS id 5B08C80784;
- Fri, 06 Feb 2026 20:57:56 +0300 (MSK)
-Received: from mail.yandex-team.ru (2a02:6b8:c43:d2c0:0:640:1a89:0
- [2a02:6b8:c43:d2c0:0:640:1a89:0])
- by mail-nwsmtp-mxback-corp-main-90.klg.yp-c.yandex.net (mxbackcorp/Yandex)
- with HTTPS id FaSLFj0ngmI0-sPwtQ70Q; Fri, 06 Feb 2026 20:57:56 +0300
+ id 1vofTt-0000Ql-4Z; Sat, 07 Feb 2026 05:24:03 -0500
+Received: from mail-nwsmtp-smtp-corp-main-69.vla.yp-c.yandex.net
+ (mail-nwsmtp-smtp-corp-main-69.vla.yp-c.yandex.net
+ [IPv6:2a02:6b8:c1f:3a87:0:640:845c:0])
+ by forwardcorp1a.mail.yandex.net (Yandex) with ESMTPS id 47C6BC01E0;
+ Sat, 07 Feb 2026 13:23:55 +0300 (MSK)
+Received: from [IPV6:2a02:6bf:8080:1d::1:1d] (unknown [2a02:6bf:8080:1d::1:1d])
+ by mail-nwsmtp-smtp-corp-main-69.vla.yp-c.yandex.net (smtpcorp/Yandex) with
+ ESMTPSA id ONMmEB1BsOs0-V8K5KqsJ; Sat, 07 Feb 2026 13:23:54 +0300
 X-Yandex-Fwd: 1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.com;
- s=default; t=1770400676;
- bh=5nbDeCGhSsfKzynAI4QF/8/9m1FnZ+GbvKWbudHYvTE=;
- h=Message-Id:References:Date:Cc:Subject:In-Reply-To:To:From;
- b=1B96Akkh5KPmz43UWnGbuSUiKS7n5OJh3i2yob4wJReoFc1Za2DsLYtdeBdlbpgsZ
- VZ2EM9IgblVeikxPohNvxz/iv+NlIwo7VZaxq3AjkQAoYrxUcc8arh7acCH+6CgAZZ
- A2I7hhDnOxtyvMp+TkgNQTdTGKDB9ovdJWYg3rVg=
-Authentication-Results: mail-nwsmtp-mxback-corp-main-90.klg.yp-c.yandex.net;
+ s=default; t=1770459835;
+ bh=X+nd4xjs40Srn2mE60xLtdmbiHS98KLk4LnP2ChDVGs=;
+ h=In-Reply-To:Cc:Date:References:To:Subject:From:Message-ID;
+ b=TFBYDWWw33ULcbcKam3ba4dAg14lNZWsMIIbhc2CnpfF05LCMxUH/B2cfIp0fS6dF
+ BoVfVqY9KP+IMnm1t1qK41joJEqPx8hfsfSgApelHHXnTljpwfLIVaxRQvk+2+kbP7
+ 2xmR8ongP64HJc5NVT6riKcxeAiVOoay7sErAbdA=
+Authentication-Results: mail-nwsmtp-smtp-corp-main-69.vla.yp-c.yandex.net;
  dkim=pass header.i=@yandex-team.com
-Received: by mail-sendbernar-corp-main-91.klg.yp-c.yandex.net
- (sendbernar/Yandex) with HTTPS id 560f5485bcdf8b5647ae960827f69ffe; 
- Fri, 06 Feb 2026 20:57:55 +0300
+Message-ID: <14605571-e078-4d93-9f0b-411889a70076@yandex-team.com>
+Date: Sat, 7 Feb 2026 15:23:24 +0500
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 From: Sergei Heifetz <heifetz@yandex-team.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-Cc: Laurent Vivier <laurent@vivier.eu>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
- "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-In-Reply-To: <CAFEAcA9TFgGrXx9TfC1jr=VOOJzoAQqirbDOyf2PU3cMXc9iLw@mail.gmail.com>
+Subject: Re: [PATCH 3/4] system/physmem.c: reorder usage and assertion of block
+To: Laurent Vivier <laurent@vivier.eu>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
 References: <20260204075754.21078-1-heifetz@yandex-team.com>
  <20260204075754.21078-4-heifetz@yandex-team.com>
  <722eb7df-0eb2-49c1-af07-90004ad46a8e@vivier.eu>
- <67851770384370@mail.yandex-team.ru>
- <CAFEAcA9TFgGrXx9TfC1jr=VOOJzoAQqirbDOyf2PU3cMXc9iLw@mail.gmail.com>
-Subject: Re: [PATCH 3/4] system/physmem.c: reorder usage and assertion of block
-MIME-Version: 1.0
-X-Mailer: Yamail [ http://yandex.ru ] 5.0
-Date: Fri, 06 Feb 2026 22:57:55 +0500
-Message-Id: <67741770400127@mail.yandex-team.ru>
-Content-Transfer-Encoding: base64
-Content-Type: text/html; charset=utf-8
-Received-SPF: pass client-ip=2a02:6b8:c41:1300:1:45:d181:df01;
- envelope-from=heifetz@yandex-team.com; helo=forwardcorp1d.mail.yandex.net
-X-Spam_score_int: -15
-X-Spam_score: -1.6
-X-Spam_bar: -
-X-Spam_report: (-1.6 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
- HTML_MIME_NO_HTML_TAG=0.377, MIME_HTML_ONLY=0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Language: en-US
+In-Reply-To: <722eb7df-0eb2-49c1-af07-90004ad46a8e@vivier.eu>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a02:6b8:c0e:500:1:45:d181:df01;
+ envelope-from=heifetz@yandex-team.com; helo=forwardcorp1a.mail.yandex.net
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,48 +76,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-PGRpdj48ZGl2PkhlbGxvLCBQZXRlci4gVGhhbmsgeW91IHZlcnkgbXVjaC4gSSBhcG9sb2dpemUg
-Zm9yIHRoZSBtaXN1bmRlcnN0YW5kaW5n4oCUSSBzaG91bGQgaGF2ZSByZWFkIExhdXJlbnQncyBt
-ZXNzYWdlIG1vcmUgY2FyZWZ1bGx5IHRvIHJlYWxpemUgdGhhdCB0aGVzZSBsaW5lcyBoYXZlIG5v
-dGhpbmcgdG8gZG8gd2l0aCBoaXMgY29tbWVudC4gSSdtIG5vdCB5ZXQgYWNjdXN0b21lZCB0byBj
-b21tdW5pY2F0aW5nIHZpYSBlbWFpbC4gSXQgbWFrZXMgcGVyZmVjdCBzZW5zZSBub3cuPC9kaXY+
-PC9kaXY+PGRpdj48YnIgLz48L2Rpdj48ZGl2PjxiciAvPjwvZGl2PjxkaXY+LS0tLS0tLS0tLS0t
-LS0tLTwvZGl2PgogICAgICAgICAgICAgICAgICAgICAgICA8ZGl2PtCa0L7QvNGDOiBTZXJnZWkg
-SGVpZmV0eiAoaGVpZmV0ekB5YW5kZXgtdGVhbS5jb20pOzxiciAvPjwvZGl2PgogICAgICAgICAg
-ICAgICAgICAgICAgICA8ZGl2PtCa0L7Qv9C40Y86IExhdXJlbnQgVml2aWVyIChsYXVyZW50QHZp
-dmllci5ldSksIHFlbXUtZGV2ZWxAbm9uZ251Lm9yZywgcWVtdS10cml2aWFsQG5vbmdudS5vcmc7
-PGJyIC8+PC9kaXY+CiAgICAgICAgICAgICAgICAgICAgICAgIDxkaXY+0KLQtdC80LA6IFtQQVRD
-SCAzLzRdIHN5c3RlbS9waHlzbWVtLmM6IHJlb3JkZXIgdXNhZ2UgYW5kIGFzc2VydGlvbiBvZiBi
-bG9jazs8YnIgLz48L2Rpdj4KICAgICAgICAgICAgICAgICAgICAgICAgPGRpdj4wNi4wMi4yMDI2
-LCAxODo0OSwgIlBldGVyIE1heWRlbGwiICZsdDtwZXRlci5tYXlkZWxsQGxpbmFyby5vcmcmZ3Q7
-OjxiciAvPjwvZGl2PgogICAgICAgICAgICAgICAgICAgICAgICA8YmxvY2txdW90ZT48cD5PbiBG
-cmksIDYgRmViIDIwMjYgYXQgMTM6MzMsIFNlcmdlaSBIZWlmZXR6ICZsdDs8YSBocmVmPSJtYWls
-dG86aGVpZmV0ekB5YW5kZXgtdGVhbS5jb20iPmhlaWZldHpAeWFuZGV4LXRlYW0uY29tPC9hPiZn
-dDsgd3JvdGU6PGJyIC8+PC9wPjxibG9ja3F1b3RlIGNsYXNzPSIyMTBlN2E4NDhlOGZjYjQ1d21p
-LXF1b3RlIj48YnIgLz48YnIgLz48YnIgLz7CoEFjY29yZGluZyB0byBjb2Rpbmcgc3R5bGUgKGRv
-Y3MvZGV2ZWwvc3R5bGUucnN0KTo8YnIgLz48YnIgLz7CoE1peGVkIGRlY2xhcmF0aW9ucyAoaW50
-ZXJsZWF2aW5nIHN0YXRlbWVudHMgYW5kIGRlY2xhcmF0aW9ucyB3aXRoaW48YnIgLz7CoGJsb2Nr
-cykgYXJlIGdlbmVyYWxseSBub3QgYWxsb3dlZC48YnIgLz48YnIgLz48YnIgLz7CoMKgwqDCoMKg
-wqDCoMKgbmV3c2l6ZSA9IFRBUkdFVF9QQUdFX0FMSUdOKG5ld3NpemUpOzxiciAvPsKgwqDCoMKg
-wqDCoMKgwqBuZXdzaXplID0gUkVBTF9IT1NUX1BBR0VfQUxJR04obmV3c2l6ZSk7PGJyIC8+PGJy
-IC8+PGJyIC8+PGJyIC8+wqBIZWxsbywgTGF1cmVudC4gUGxlYXNlIG5vdGUgdGhhdCBJIGRpZG4n
-dCB0b3VjaCB0aGVzZSBsaW5lcy48YnIgLz48L2Jsb2NrcXVvdGU+PHA+PGJyIC8+TGF1cmVudCdz
-IGNvbW1lbnQgaXMgbm90IGFib3V0IHRob3NlIHR3byBsaW5lcywgYnV0IGFib3V0PGJyIC8+dGhl
-IG9uZXMgYWJvdmUsIHRoYXQgeW91IGRvbid0IHF1b3RlIGluIHlvdXIgcmVwbHkuIChMYXVyZW50
-PGJyIC8+aXMgZm9sbG93aW5nIHRoZSB1c3VhbCBtYWlsaW5nIGxpc3Qgc3R5bGUgb2YgaW50ZXJs
-ZWF2ZWQgY29tbWVudGFyeSw8YnIgLz5zbyBoaXMgcmVtYXJrIGZvbGxvd3MgdGhlIHBhcnQgb2Yg
-eW91ciBlbWFpbCB0aGF0IGl0IGlzIGluPGJyIC8+cmVzcG9uc2UgdG8uKTxiciAvPjxiciAvPjwv
-cD48YmxvY2txdW90ZSBjbGFzcz0iMjEwZTdhODQ4ZThmY2I0NXdtaS1xdW90ZSI+wqBAQCAtMjA1
-NCwxMSArMjA1NCwxMSBAQCBzdGF0aWMgaW50IG1lbW9yeV90cnlfZW5hYmxlX21lcmdpbmcodm9p
-ZCAqYWRkciwgc2l6ZV90IGxlbik8YnIgLz7CoMKgwqDCoCovPGJyIC8+wqDCoMKgaW50IHFlbXVf
-cmFtX3Jlc2l6ZShSQU1CbG9jayAqYmxvY2ssIHJhbV9hZGRyX3QgbmV3c2l6ZSwgRXJyb3IgKipl
-cnJwKTxiciAvPsKgwqDCoHs8IS0tIC0tPjxiciAvPsKgKyAgICBhc3NlcnQoYmxvY2spOzxiciAv
-PsKgKzxiciAvPsKgwqDCoMKgwqDCoMKgY29uc3QgcmFtX2FkZHJfdCBvbGRzaXplID0gYmxvY2st
-Jmd0O3VzZWRfbGVuZ3RoOzxiciAvPsKgwqDCoMKgwqDCoMKgY29uc3QgcmFtX2FkZHJfdCB1bmFs
-aWduZWRfc2l6ZSA9IG5ld3NpemU7PGJyIC8+PGJyIC8+wqAtICAgIGFzc2VydChibG9jayk7PGJy
-IC8+wqAtPGJyIC8+PC9ibG9ja3F1b3RlPjxwPjxiciAvPllvdSd2ZSBtb3ZlZCBhIGNvZGUgbGlu
-ZSAodGhlIGFzc2VydCkgYWJvdmUgdGhlIGRlY2xhcmF0aW9uIGxpbmVzLCBzbzxiciAvPnRoZSBm
-dW5jdGlvbiB1c2VkIHRvIGZvbGxvdyB0aGlzIGNvZGluZyBzdHlsZSBydWxlLCBidXQgbm93IGl0
-IGRvZXNuJ3QuPGJyIC8+PGJyIC8+dGhhbmtzPGJyIC8+LS0gUE1NPGJyIC8+PC9wPjwvYmxvY2tx
-dW90ZT4=
+On 2/4/26 17:53, Laurent Vivier wrote:
+> Le 04/02/2026 à 08:57, Sergei Heifetz a écrit :
+>> Reorder the code so the assertion of block occurs before it is
+>> used in the subsequent lines.
+>>
+>> Signed-off-by: Sergei Heifetz <heifetz@yandex-team.com>
+>> ---
+>>   system/physmem.c | 4 ++--
+>>   1 file changed, 2 insertions(+), 2 deletions(-)
+>>
+>> diff --git a/system/physmem.c b/system/physmem.c
+>> index b0311f4531..4308e02940 100644
+>> --- a/system/physmem.c
+>> +++ b/system/physmem.c
+>> @@ -2054,11 +2054,11 @@ static int memory_try_enable_merging(void 
+>> *addr, size_t len)
+>>    */
+>>   int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)
+>>   {
+>> +    assert(block);
+>> +
+>>       const ram_addr_t oldsize = block->used_length;
+>>       const ram_addr_t unaligned_size = newsize;
+>>   -    assert(block);
+>> -
+>
+> According to coding style (docs/devel/style.rst):
+>
+> Mixed declarations (interleaving statements and declarations within
+> blocks) are generally not allowed.
+>
+>>       newsize = TARGET_PAGE_ALIGN(newsize);
+>>       newsize = REAL_HOST_PAGE_ALIGN(newsize);
+>
+> Thanks,
+> Laurent
+
+Should I remove the assertion altogether, then? I think the const 
+qualifier on oldsize is more useful than the assertion.
+
 
