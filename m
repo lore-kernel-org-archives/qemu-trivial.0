@@ -4,59 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 144E4EF06E3
-	for <qemu-trivial@archiver.kernel.org>; Sun,  8 Feb 2026 10:05:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8AEDEF06E3
+	for <qemu-trivial@archiver.kernel.org>; Sun,  8 Feb 2026 10:05:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vp1eL-0004NE-1j; Sun, 08 Feb 2026 05:04:17 -0500
+	id 1vp1eJ-0004MI-Ky; Sun, 08 Feb 2026 05:04:15 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <heifetz@yandex-team.com>)
- id 1vp1eB-0004JU-Iy; Sun, 08 Feb 2026 05:04:07 -0500
-Received: from forwardcorp1b.mail.yandex.net
- ([2a02:6b8:c02:900:1:45:d181:df01])
+ id 1vp1eB-0004JY-Jg; Sun, 08 Feb 2026 05:04:07 -0500
+Received: from forwardcorp1b.mail.yandex.net ([178.154.239.136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <heifetz@yandex-team.com>)
- id 1vp1e5-0001oM-VM; Sun, 08 Feb 2026 05:04:06 -0500
+ id 1vp1e6-0001oH-3W; Sun, 08 Feb 2026 05:04:06 -0500
 Received: from mail-nwsmtp-smtp-corp-main-34.sas.yp-c.yandex.net
  (mail-nwsmtp-smtp-corp-main-34.sas.yp-c.yandex.net
  [IPv6:2a02:6b8:c24:fa2:0:640:41ee:0])
- by forwardcorp1b.mail.yandex.net (Yandex) with ESMTPS id B5F0F80808;
- Sun, 08 Feb 2026 13:03:57 +0300 (MSK)
+ by forwardcorp1b.mail.yandex.net (Yandex) with ESMTPS id 37F1E807A0;
+ Sun, 08 Feb 2026 13:03:56 +0300 (MSK)
 Received: from heifetz-lin.yandex-team.ru (unknown [2a02:6bf:8080:d25::1:35])
  by mail-nwsmtp-smtp-corp-main-34.sas.yp-c.yandex.net
- (smtpcorp/Yandex) with ESMTPSA id t3Njcn1A4eA0-PUQt3wd7; 
- Sun, 08 Feb 2026 13:03:57 +0300
+ (smtpcorp/Yandex) with ESMTPSA id t3Njcn1A4eA0-XEyaHE3N; 
+ Sun, 08 Feb 2026 13:03:55 +0300
 X-Yandex-Fwd: 1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.com;
- s=default; t=1770545037;
- bh=Y8T3sQ7myYRXFcyLO/RPNCMgHh3wQJni+Ls0PXgNJQQ=;
- h=Message-Id:Date:In-Reply-To:Cc:Subject:References:To:From;
- b=gedQFLZWyh7OzNvkbaCHaFHWiQ3YPHnBJwbSFMt2lWDcuHs9PiVxx5sUYGT/frc9G
- T6VjSlA98R0cNg7ZFiBKExKwCIC1bkR8jRCV/oPJn+mKL6OGmqHe9oa0YJ2JVs7aFj
- eNmINtXAPCOPNqN585IBqx8fpbnGlxzFPtmW06uo=
+ s=default; t=1770545036;
+ bh=NcVTgQfdltUFZ8vG0tz1Y0VI7M2ieT6pmXKo4Edx40U=;
+ h=Message-Id:Date:Cc:Subject:To:From;
+ b=WfgEpcrt7/Q//tIY7z0IOv2/IzHFad5X9hoOrZVPOBla9fi9Ol9t4ysaM2Ws9g1to
+ W2nhoOqju0DlrSlIxcdn8cMovZ4EjxkGvKm3qq8PBvYt+PwJyWAaujhpwsG0DFem3/
+ /5BnBJkBy0gt6KdqQqjeP6UrOL3qLJHSLIn+Ayno=
 Authentication-Results: mail-nwsmtp-smtp-corp-main-34.sas.yp-c.yandex.net;
  dkim=pass header.i=@yandex-team.com
 From: Sergei Heifetz <heifetz@yandex-team.com>
 To: qemu-devel@nongnu.org
 Cc: qemu-trivial@nongnu.org
-Subject: [PATCH 3/4] system/physmem.c: remove useless assertion of block
-Date: Sun,  8 Feb 2026 15:03:53 +0500
-Message-Id: <20260208100354.116102-4-heifetz@yandex-team.com>
+Subject: [PATCH v2 0/4] Fix a few minor issues reported by Coverity 
+Date: Sun,  8 Feb 2026 15:03:50 +0500
+Message-Id: <20260208100354.116102-1-heifetz@yandex-team.com>
 X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260208100354.116102-1-heifetz@yandex-team.com>
-References: <20260208100354.116102-1-heifetz@yandex-team.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a02:6b8:c02:900:1:45:d181:df01;
+Received-SPF: pass client-ip=178.154.239.136;
  envelope-from=heifetz@yandex-team.com; helo=forwardcorp1b.mail.yandex.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -72,31 +70,25 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-It is useless to assert that block is not NULL because
-it is already dereferenced in the first line of the function.
+Hi. This patch series fixes several minor issues reported by our local
+Coverity installation.
 
-We could split the declaration and initialization of oldsize,
-but then we would need to remove the const qualifier.
-This seems worse, as the assertion would be almost useless anyway.
+Changes in v2:
+- Remove assert(block) in system/physmem.c instead of placing it
+  before the dereference.
 
-Signed-off-by: Sergei Heifetz <heifetz@yandex-team.com>
----
- system/physmem.c | 2 --
- 1 file changed, 2 deletions(-)
+Sergei Heifetz (4):
+  migration/savevm.c: reorder usage and assertion of mis->from_src_file
+  dump/dump.c: reorder usage and assertion of block
+  system/physmem.c: remove useless assertion of block
+  hw/usb/core.c: reorder usage and assertion of p->ep
 
-diff --git a/system/physmem.c b/system/physmem.c
-index b0311f4531..317b359ebe 100644
---- a/system/physmem.c
-+++ b/system/physmem.c
-@@ -2057,8 +2057,6 @@ int qemu_ram_resize(RAMBlock *block, ram_addr_t newsize, Error **errp)
-     const ram_addr_t oldsize = block->used_length;
-     const ram_addr_t unaligned_size = newsize;
- 
--    assert(block);
--
-     newsize = TARGET_PAGE_ALIGN(newsize);
-     newsize = REAL_HOST_PAGE_ALIGN(newsize);
- 
+ dump/dump.c        | 2 +-
+ hw/usb/core.c      | 2 +-
+ migration/savevm.c | 3 ++-
+ system/physmem.c   | 2 --
+ 4 files changed, 4 insertions(+), 5 deletions(-)
+
 -- 
 2.34.1
 
