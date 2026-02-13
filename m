@@ -4,121 +4,55 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C1B9FE9E2E0
-	for <qemu-trivial@archiver.kernel.org>; Wed, 11 Feb 2026 10:48:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17A7BEF99DF
+	for <qemu-trivial@archiver.kernel.org>; Fri, 13 Feb 2026 22:37:56 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vq7l3-0007Qt-P6; Wed, 11 Feb 2026 05:47:45 -0500
+	id 1vr1nI-00008y-Q0; Fri, 13 Feb 2026 17:37:49 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vq7l0-0007PM-Hq
- for qemu-trivial@nongnu.org; Wed, 11 Feb 2026 05:47:42 -0500
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <crichez@pm.me>) id 1vr1Au-0000nv-Fs
+ for qemu-trivial@nongnu.org; Fri, 13 Feb 2026 16:58:08 -0500
+Received: from mail-08.mail-europe.com ([57.129.93.249])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1vq7ky-0003db-UI
- for qemu-trivial@nongnu.org; Wed, 11 Feb 2026 05:47:42 -0500
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1770806859;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=XDjnfRiwbUgf0kDZhyZw2OUQ9XJ/7LCLml4RAKiRVVY=;
- b=abcHu5jMLrehlCL0HOM3Umbhareaw8vHvWjxirwZWNm5eC1C+5SXSCqYYQ69ZFDnec20t7
- cd5U/3vNH2NivqRSZzGudJevAbjZHC7KLtd6RKcmPfE2BN8VDlWR0KULDON4NfRxzNu3Ng
- 7Z9CzYZBfi2JwIYdYO0LFYW8Niz0WOQ=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-10-LoePglH-OHuGzqG7P_5CNw-1; Wed,
- 11 Feb 2026 05:47:35 -0500
-X-MC-Unique: LoePglH-OHuGzqG7P_5CNw-1
-X-Mimecast-MFC-AGG-ID: LoePglH-OHuGzqG7P_5CNw_1770806855
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B3AEB1956089; Wed, 11 Feb 2026 10:47:34 +0000 (UTC)
-Received: from [10.33.192.176] (dhcp-192-176.str.redhat.com [10.33.192.176])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id ADC4819560A3; Wed, 11 Feb 2026 10:47:32 +0000 (UTC)
-Message-ID: <d2726063-570b-4766-a8ab-1f1aa365e574@redhat.com>
-Date: Wed, 11 Feb 2026 11:47:31 +0100
+ (Exim 4.90_1) (envelope-from <crichez@pm.me>) id 1vr1Ar-0001Jj-7i
+ for qemu-trivial@nongnu.org; Fri, 13 Feb 2026 16:58:08 -0500
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pm.me;
+ s=protonmail3; t=1771019872; x=1771279072;
+ bh=46PDkYIs1PJ0gevHFfEmkZMBRlQ4IZCSlCTfA41mf7k=;
+ h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
+ Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
+ b=K7yuXvRGZEPYemeEMQuIAOF9Gr5pY8/Gaim2D6PrnCtVmT3yc4HXv3VYbg+f9We2j
+ OoSst1eZVbGnleS/m+bZ9kSscj8U8tFgTmycbP71x5mfHmeCebHb55a92e4QA+a7pb
+ ySIfzYliP2e8SsIdDXpBtN+plDVaCQfL5ONUdUShZK8vYTJZq9/G/i1HZQUUxCWHGN
+ M9QSLTc/5ae70jbc7J53XZ87Z8x3iSs+winQCPCARByHE5IffEkMQzpKdD9A/Y+fhJ
+ cbkjHAvKY77Kncqp2MrZImH4CM+y3cPRKCJ/UjrAAgv0aSOY2Ug5Wj0JTN900qXJOC
+ aZTNn7/WMwRpw==
+Date: Fri, 13 Feb 2026 21:57:47 +0000
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+From: Christopher Palmer-Richez <crichez@pm.me>
+Cc: Samuel Thibault <samuel.thibault@ens-lyon.org>,
+ Jason Wang <jasowang@redhat.com>, Christopher Palmer-Richez <crichez@pm.me>
+Subject: [PATCH] net/slirp: allow hostfwd socket paths with dashes
+Message-ID: <20260213-fix-hostfwd-unix-dash-v1-1-9e26fc2b63d6@pm.me>
+Feedback-ID: 5960063:user:proton
+X-Pm-Message-ID: eede0d838983f5b687a7d53726dd6a73156f882e
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 2/7] python/wheel: remove meson-1.9.0
-To: =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- qemu-devel@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>
-Cc: Gerd Hoffmann <kraxel@redhat.com>, John Snow <jsnow@redhat.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20260211-cleanups-v1-0-e63c96572389@redhat.com>
- <20260211-cleanups-v1-2-e63c96572389@redhat.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20260211-cleanups-v1-2-e63c96572389@redhat.com>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: ZyKM8QB7hQZwR-2k5qCaJWpeLT_9fZL5PNk5OAvRqt0_1770806855
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=57.129.93.249; envelope-from=crichez@pm.me;
+ helo=mail-08.mail-europe.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 13 Feb 2026 17:37:44 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -133,16 +67,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 11/02/2026 11.01, Marc-André Lureau wrote:
-> Leftover from commit 8c04b6a48b15a478ff3f9d152592a0ba503a31e4.
-> 
-> Signed-off-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-> ---
->   python/wheels/meson-1.9.0-py3-none-any.whl | Bin 1029634 -> 0 bytes
->   1 file changed, 0 insertions(+), 0 deletions(-)
-> 
-> diff --git a/python/wheels/meson-1.9.0-py3-none-any.whl b/python/wheels/meson-1.9.0-py3-none-any.whl
-> deleted file mode 100644
-Reviewed-by: Thomas Huth <thuth@redhat.com>
+Adds get_last_str_sep, a variant of get_str_sep that checks for the last
+occurence of a separator. Updates slirp_hostfwd to parse unix domain
+socket paths with dashes.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/347
+Signed-off-by: Christopher Palmer-Richez <crichez@pm.me>
+---
+QEMU added support for `-netdev user,hostfwd=3Dunix:/tmp/vm-:22` last year.
+The implementation detects the first dash, and interprets the right side
+of it as the guest address (or lack thereof). If the host socket path
+contains a dash, the invocation fails with "Bad guest address."
+
+This tiny patch adds a variant of the `get_str_sep` method previously
+used by `slirp_hostfwd`, but that detects the last occurence of a
+separator instead: `get_last_str_sep`. The only difference is the use of
+`strrchr` instead of `strchr`. `slirp_hostfwd` now uses it. It ignores
+dashes up to the last occurence, which allows unix domain socket paths
+with dashes.
+---
+ net/slirp.c | 22 +++++++++++++++++++++-
+ 1 file changed, 21 insertions(+), 1 deletion(-)
+
+diff --git a/net/slirp.c b/net/slirp.c
+index 04925f3318..968be9cc99 100644
+--- a/net/slirp.c
++++ b/net/slirp.c
+@@ -69,6 +69,26 @@ static int get_str_sep(char *buf, int buf_size, const ch=
+ar **pp, int sep)
+     return 0;
+ }
+=20
++static int get_last_str_sep(char *buf, int buf_size, const char **pp, int =
+sep)
++{
++    const char *p, *p1;
++    int len;
++    p =3D *pp;
++    p1 =3D strrchr(p, sep);
++    if (!p1)
++        return -1;
++    len =3D p1 - p;
++    p1++;
++    if (buf_size > 0) {
++        if (len > buf_size - 1)
++            len =3D buf_size - 1;
++        memcpy(buf, p, len);
++        buf[len] =3D '\0';
++    }
++    *pp =3D p1;
++    return 0;
++}
++
+ /* slirp network adapter */
+=20
+ #define SLIRP_CFG_HOSTFWD 1
+@@ -848,7 +868,7 @@ static int slirp_hostfwd(SlirpState *s, const char *red=
+ir_str, Error **errp)
+=20
+ #if !defined(WIN32) && SLIRP_CHECK_VERSION(4, 7, 0)
+     if (is_unix) {
+-        if (get_str_sep(buf, sizeof(buf), &p, '-') < 0) {
++        if (get_last_str_sep(buf, sizeof(buf), &p, '-') < 0) {
+             fail_reason =3D "Missing - separator";
+             goto fail_syntax;
+         }
+
+---
+base-commit: ece408818d27f745ef1b05fb3cc99a1e7a5bf580
+change-id: 20260213-fix-hostfwd-unix-dash-b3fe7b49a362
+
+Best regards,
+--=20
+Christopher Palmer-Richez <crichez@pm.me>
+
 
 
