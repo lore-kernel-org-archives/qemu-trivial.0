@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FE49EA8541
-	for <qemu-trivial@archiver.kernel.org>; Sun,  8 Mar 2026 20:35:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D62DDEA8545
+	for <qemu-trivial@archiver.kernel.org>; Sun,  8 Mar 2026 20:36:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vzKqZ-0007EH-6v; Sun, 08 Mar 2026 16:35:31 -0400
+	id 1vzKqe-0007J3-6h; Sun, 08 Mar 2026 16:35:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqX-0007CW-GO
- for qemu-trivial@nongnu.org; Sun, 08 Mar 2026 16:35:29 -0400
-Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqb-0007H4-Ph
+ for qemu-trivial@nongnu.org; Sun, 08 Mar 2026 16:35:33 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqV-00044B-R2
- for qemu-trivial@nongnu.org; Sun, 08 Mar 2026 16:35:29 -0400
-Received: by mail-wr1-x42b.google.com with SMTP id
- ffacd0b85a97d-439bcec8613so5413908f8f.3
- for <qemu-trivial@nongnu.org>; Sun, 08 Mar 2026 13:35:27 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqa-00045v-Db
+ for qemu-trivial@nongnu.org; Sun, 08 Mar 2026 16:35:33 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-48539cbb7b1so3165805e9.3
+ for <qemu-trivial@nongnu.org>; Sun, 08 Mar 2026 13:35:32 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773002126; x=1773606926; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773002131; x=1773606931; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=62gCgQG/SMP3y4B1tt6fRNn10YsHIOVvwcEBSzKHvaM=;
- b=H9CiWwTdI0ffNqa7x2o8w1HDo1bvXZaYuWr2YtskW3si4xmZMKfcqRZqhqt+w2RXup
- oV04fMrfalejFYFdQn0QfHuMHvlLvjmgSIlqaaxj+K+cLJ8ytq1yy3TM96hFmdm02G+e
- raBrF4AKlJn9k/fGN70YOTrEvS/u9NH/pcrr2uYi+AawJ4r3gfD6GRe9dcdQgQF1+6AV
- EytrcLbS2dyMhBTqv2SCG68PEaYAWB575YXKeba8Pj+909zi2E25Zq7vjunvb2KX5XGa
- gCCX3QZcqYASBblXgNtm6sZ+PpW5+k1OagDutm6aFINm57S3L3Yv8R645czJXC0kG7tb
- boxQ==
+ bh=2i4QWuXnsIYxEz7i8mpYTk9RDE3sISGydinWlpK7m7M=;
+ b=Y92nr9TPAx6rfQlHQmR6bGbSjC3Qw7Io7377HYBDIgojVQLpBg82maSG4xyW2mT6RN
+ 1GDJhTXwGhN7HZPR3E8TyrLgSGtZy0Dnwk7V1GUg6ioImpSBzu7sCzkPjGiUNYTQ/IHC
+ 10mRAp+udJOKaPqMbL5/2j+md9Ktt0nBDUMgl02xmVP6GNDAwqcXoohVxbB5bDwDbSNy
+ kj7hpKDnEO3O6t36aa01VUD9pyhpd1bhVjnqNroXJtptYRyWXlCqKszN6lw+RiYclbT0
+ 6c+tJ/wih3QELMAc8XdYkKMFT2Yyl+xMxIIaK39s7PA5NAdsa6pwO+4rDWyZq1iaGlWv
+ aJtw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773002126; x=1773606926;
+ d=1e100.net; s=20230601; t=1773002131; x=1773606931;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=62gCgQG/SMP3y4B1tt6fRNn10YsHIOVvwcEBSzKHvaM=;
- b=u/odMLwmH5KjnZS4Kx0PaSkWn7m6hr+RHJvgv2Z1on0HUfD6ZIZU6/twlXxk2SWSSl
- 9GBpH0sW9QzSFEM70xn16th4cFCMWk/36ekTSOp9gdlfteAAZGo8RIFtqSZ+m+5r0ErL
- 3NU/6xpBaZrzF8vg2dliu9Fr2VKdTAK+HYLfnbF66kr6kJsE2txd9+vJUmH7vndEwjSS
- LAwaI0R+B0Yk5HkaS3eL29BHdbs+rNwRe0tb4lTFwkLuIHIwB4JveWH7wdYSIF/MoGDJ
- vkqaKd8iPubY6M2rO0ME+QgYP1lorYVRHDGT7lZa4Kzk12a7wYEcKSaKhKI8r2lc4WT1
- jJEQ==
+ bh=2i4QWuXnsIYxEz7i8mpYTk9RDE3sISGydinWlpK7m7M=;
+ b=SVFW6dkCeZ3soVYTSsocfSKD9y4xzST5fhiAj59wRVmP1QH7H3E8C4/GCo6duCfXTL
+ izSvaIrfe9guDR18qrZaNVOqbJI5hBAP8M6gA33egQdJOgFsnzEbFxkcyfPuDFqBpE7k
+ 32KSK6Ny3juJlsRo8Gx7olTqDOJzJ2p7n4QOpc1pQE7HNtBSt3FEEqZR5AI3C3Kcfm9u
+ TwcIwesZ+/HsDORIvAJ51cllhlSzujwU4i97mwPR2IzseoshS8wIHSl2HjoQKnuNK9uD
+ ayK7JTWTrto2iN926zALgP+IV3Gz4gvXoQxHRNi5WjMiFk0RNBCvD2ciLzqgcllDosRc
+ OWuw==
 X-Forwarded-Encrypted: i=1;
- AJvYcCWCvolDQC2aEFj7Ws+TBDjtjeNnKXYGI5RRuhhSfsm3Dn8ZDpGtRTh7eopgtRV4aAqL7BLV8x6powrsh48=@nongnu.org
-X-Gm-Message-State: AOJu0YwCL8FyyoYJPEEgVM4WTTD0M6numaXGlnyDVK1t7Li4MMNaAZnp
- NodLnc+ephYiJ/B4D/s9rbykfz5fc+ALln1jnFXHuyvqd3KVbwD5xfG/
-X-Gm-Gg: ATEYQzynkT1PCCDxJJRI+0n5YXCtBtMGAa//Zgc+IZggm5WQ01r9+A6KspGeAipbxxu
- HrowffafZM8hP7lJ1BD3zyG08TqwCgivps0NU5d/HA47jColbqDMtafcVvc+48gyTxSR1DoeJHX
- 7malhd5saBB7/bEZbPo4Na0mGLNNtUkXKCEX8IrpZQBo6CgpqZD41AFHSkfg6uS2Qzq3ov2zkF0
- s4KKw9rhonmGlv4gKNIufPibutAR63eFBSj+wdR1JQgP60BHBiElxwua64a2uINajJVxYzBN3qF
- Iy4UdgJsW1AGuD+fEz3//yyBvnr+7abNFucWL3UeLHR1kckeihBFB72aG87QQV6/2FgBpTN6jL2
- cBYNoCIuSrz715JPog6U3XhD4N7/n5rahRh8fUwdGCPrizxm6jHvRzlNsBhZ4ae1T4TnwaaFLWm
- iTC77FeVqyEnvzR5bb2HucZhmBIU5K60huzHsDM+NK1d/JGZAYslRisoAI43Td4KuRccfara0A3
- AAklFQeIHf95g8iUdZNRq5kiRD2ZAnR4ZrsQAEcwg==
-X-Received: by 2002:a05:6000:258a:b0:439:b666:6cab with SMTP id
- ffacd0b85a97d-439da679715mr15229730f8f.40.1773002126096; 
- Sun, 08 Mar 2026 13:35:26 -0700 (PDT)
+ AJvYcCVZIRgcXC6/XK9F7qv1VooOHA5p2czwCzVMkGF5BDIUvZ2ilGRneepNQljdhSe61vasgcB7nfKqcM2gdO4=@nongnu.org
+X-Gm-Message-State: AOJu0YyiLnd+5TDU+Lb85TnhokZyfy7VrfBnz7qPUGb3DNgSdcv9wSaK
+ V343RsfbCm7eAy4tWOp1e53Q/tRF3ofo1sajonfESgrf/gBMDX4FNzDj
+X-Gm-Gg: ATEYQzyEz5T9ppQNd3PWH/HDfLoQYc7FUXORi8l/JaRUR2EkmklflhGQVSxpB2rkF/Y
+ Ywn+Aw6uGUaVmGLZgtalEx8/w2vA0m1a7GfFhqnOkCD6Gb4/K0QotjhUdcDfzYzhavN3bPkUAk1
+ V6PjD3GB0YxdhQZVTQ1ZdaP+PhLdCnx203a9fShifWIxz17fQuuybLFnBuUfDQG+gJD+OrRAJRe
+ wmWPd/PFLiwnjyxjhKMelmc1SNGdbRoV/tTcfEJSbD9fQ6azMEoG5OgPp3RxnV0H1jASAgTJ3wx
+ 4DLAeL3uv2Qi0wbLggHXeeN6FhMO8su6Nv80rB0oVJAjsqwsDtVfkX6Yx4IOf0qDWKx+8chy55P
+ ENvX65Y/OdsqWrHtyeivTIT6Vam08R2GaUHwEAyVbR7J1QeDaQnuZRBjO2WOL9W/MnFN8s5RKOC
+ eZ1/vwuGxNdFgJD5ukWAxwlHeZIXPDb5pRGsOsHr7WFkhUWSzt9dDDjviMrqT6uzO6haVGnsvo3
+ 6CIwEh7rv3fIg4FP5vquC/bUG1GxV0=
+X-Received: by 2002:a05:600c:64c7:b0:47a:7fdd:2906 with SMTP id
+ 5b1f17b1804b1-4852691ec50mr146662655e9.12.1773002130682; 
+ Sun, 08 Mar 2026 13:35:30 -0700 (PDT)
 Received: from Provence
  (dynamic-2a02-3100-25c6-8f00-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:25c6:8f00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439dae2bdf8sm20995508f8f.25.2026.03.08.13.35.25
+ ffacd0b85a97d-439dae2bdf8sm20995508f8f.25.2026.03.08.13.35.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 08 Mar 2026 13:35:25 -0700 (PDT)
+ Sun, 08 Mar 2026 13:35:30 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -75,18 +75,18 @@ Cc: Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Bernhard Beschow <shentey@gmail.com>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: [PATCH 1/5] hw/arm/fsl-imx8mp: Do not create redundant unimplemented
- devices
-Date: Sun,  8 Mar 2026 21:35:12 +0100
-Message-ID: <20260308203516.160103-2-shentey@gmail.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH 5/5] Revert "sysbus: add irq_routing_notifier"
+Date: Sun,  8 Mar 2026 21:35:16 +0100
+Message-ID: <20260308203516.160103-6-shentey@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260308203516.160103-1-shentey@gmail.com>
 References: <20260308203516.160103-1-shentey@gmail.com>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x42b.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,29 +109,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-The GPT devices are implemented. No need to create redundant
-unimplemented devices.
+The callback has been introduced in commit 715ca691daca ("sysbus: add
+irq_routing_notifier") for use in VFIO platform. Meanwhile, VFIO
+platform has been removed via commit 762c85543948 ("vfio: Remove 'vfio-
+platform'") which was its only user. Remove this unused code.
 
-Fixes: f8b26121762c ("hw/arm/fsl-imx8mp: Implement general purpose
-timers")
-cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>
+This reverts commit 715ca691daca081108b33306faa6fa102f0df8d8.
+
+cc: Cédric Le Goater <clg@redhat.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/arm/fsl-imx8mp.c | 1 +
- 1 file changed, 1 insertion(+)
+ include/hw/core/sysbus.h | 1 -
+ hw/core/sysbus.c         | 6 ------
+ 2 files changed, 7 deletions(-)
 
-diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-index 79f9142777..0119a18416 100644
---- a/hw/arm/fsl-imx8mp.c
-+++ b/hw/arm/fsl-imx8mp.c
-@@ -688,6 +688,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-         case FSL_IMX8MP_GIC_DIST:
-         case FSL_IMX8MP_GIC_REDIST:
-         case FSL_IMX8MP_GPIO1 ... FSL_IMX8MP_GPIO5:
-+        case FSL_IMX8MP_GPT1 ... FSL_IMX8MP_GPT6:
-         case FSL_IMX8MP_ECSPI1 ... FSL_IMX8MP_ECSPI3:
-         case FSL_IMX8MP_ENET1:
-         case FSL_IMX8MP_I2C1 ... FSL_IMX8MP_I2C6:
+diff --git a/include/hw/core/sysbus.h b/include/hw/core/sysbus.h
+index c0d18d9e00..f3c4259d29 100644
+--- a/include/hw/core/sysbus.h
++++ b/include/hw/core/sysbus.h
+@@ -50,7 +50,6 @@ struct SysBusDeviceClass {
+      * omitted then. (This is not considered a fatal error.)
+      */
+     char *(*explicit_ofw_unit_address)(const SysBusDevice *dev);
+-    void (*connect_irq_notifier)(SysBusDevice *dev, qemu_irq irq);
+ };
+ 
+ struct SysBusDevice {
+diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
+index 3adf2f2faf..3e1160ee92 100644
+--- a/hw/core/sysbus.c
++++ b/hw/core/sysbus.c
+@@ -104,13 +104,7 @@ qemu_irq sysbus_get_connected_irq(const SysBusDevice *dev, int n)
+ 
+ void sysbus_connect_irq(SysBusDevice *dev, int n, qemu_irq irq)
+ {
+-    SysBusDeviceClass *sbd = SYS_BUS_DEVICE_GET_CLASS(dev);
+-
+     qdev_connect_gpio_out_named(DEVICE(dev), SYSBUS_DEVICE_GPIO_IRQ, n, irq);
+-
+-    if (sbd->connect_irq_notifier) {
+-        sbd->connect_irq_notifier(dev, irq);
+-    }
+ }
+ 
+ /* Check whether an MMIO region exists */
 -- 
 2.53.0
 
