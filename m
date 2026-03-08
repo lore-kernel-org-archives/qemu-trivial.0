@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8324EEA8541
-	for <qemu-trivial@archiver.kernel.org>; Sun,  8 Mar 2026 20:37:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CEB3EA8541
+	for <qemu-trivial@archiver.kernel.org>; Sun,  8 Mar 2026 20:37:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vzKqa-0007Fd-8K; Sun, 08 Mar 2026 16:35:32 -0400
+	id 1vzKqc-0007Hw-7j; Sun, 08 Mar 2026 16:35:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqY-0007Dc-Gx
- for qemu-trivial@nongnu.org; Sun, 08 Mar 2026 16:35:30 -0400
-Received: from mail-wr1-x434.google.com ([2a00:1450:4864:20::434])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqa-0007Fp-OJ
+ for qemu-trivial@nongnu.org; Sun, 08 Mar 2026 16:35:32 -0400
+Received: from mail-wr1-x42c.google.com ([2a00:1450:4864:20::42c])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqW-00044N-Ue
- for qemu-trivial@nongnu.org; Sun, 08 Mar 2026 16:35:30 -0400
-Received: by mail-wr1-x434.google.com with SMTP id
- ffacd0b85a97d-439d8dc4ae4so1042860f8f.2
- for <qemu-trivial@nongnu.org>; Sun, 08 Mar 2026 13:35:28 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqZ-00045S-9n
+ for qemu-trivial@nongnu.org; Sun, 08 Mar 2026 16:35:32 -0400
+Received: by mail-wr1-x42c.google.com with SMTP id
+ ffacd0b85a97d-439b9b1900bso5417328f8f.1
+ for <qemu-trivial@nongnu.org>; Sun, 08 Mar 2026 13:35:30 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773002127; x=1773606927; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773002130; x=1773606930; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=TBkN0OXRGFMvrV2S5QZAiH2Wv1UWYT7/qi+m9sCjHKk=;
- b=CNcGv54lNxDSE3yue3N8ztXgTI5tmdLJLt8CbOQcipY8ChC4K4G9XnVz6qVLAFxZ5T
- FAJw7eziMcQ8Q1PQkebRtEEfj50pEtTnnhmKhX5FWxVPd+NEMvXRXMOpfnjkX6BtihwD
- NKT1n/vjaOiZCApN7OwfN+6Qd40nTGWVImXYUJaPMcWWPP8FARljh5L3mP4MUPAyy4rs
- MwHL3LXigJ3RV5jUaNp3KdGZd++RgJz4L++r9TA2fLVvfupJg0FQZDUpiH/JxC4EUhRD
- qSodm+FnnaWh2zr/FFmO43G9tf6uEVjYuBqoEClT0RmsqDQWTLxPqWiadTn47mWpJTXM
- 0ktQ==
+ bh=rGa+Qk9w7jO0yb09YCUU3MEUEX2jrREiC7pzktGBq9g=;
+ b=WpeSB+xPA7eTCjTbiNfNBL5Nl2d3gfJWuT1Osj8ZBhl4D57QmnWV4uGcLnL2CGDzJh
+ JB6KDJ1vdFsbQna+x/34y2actYmKAkb5pArxuPjFWOOzcRgVpX4JIFLTKbiG/dy4GNiL
+ ZAdmZEOgau6AYTORViBYtxFNsPKT8SrFBnnRbZErokzyuArelOoQmCH8bEsRrEhDbrHS
+ IZbXG9pIgoHj4Q+cwfpblrd1agJR1qTgZgKBEaKz6BbwbvZsIxg7jI8XNUDIoAlq4QlF
+ M/xh5UMz4beJap0vuBJta9SPX9qRsieAv7+4h72dCBdSlEDFxsyY1btFBacDKF5QIl64
+ fj9g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773002127; x=1773606927;
+ d=1e100.net; s=20230601; t=1773002130; x=1773606930;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=TBkN0OXRGFMvrV2S5QZAiH2Wv1UWYT7/qi+m9sCjHKk=;
- b=Sb+kcb1Iw7w/m7TAX0wYkVTjjtUuHrL78uMUoOq5d+WLwGnqOXO/myxewaCibMFnRz
- 8bDb1yNMZMTrazSpJhTYXude8YQm4OkKnfSYr1HwP8QFdmypaXS2bptftxI8flQpo2sg
- b4Qo5cGKZXuicByRzocS36TH11TPUiYVl9JPtzofAkxATMOGOO9ozmm7vhCL8mZPs7cP
- QlqUHZLOttNHNQgmG/vI12wq4aNDZiUlNBKUOWlznnRwIACSI5nAUHlYbpJv85QA4bvy
- +sbeNkSnFFqCfYxoEcV+dstx5G0zFIXn5T6iLwV0Wht0xjRltGtQPSx9QQuOFs0Rqfs2
- sFsQ==
+ bh=rGa+Qk9w7jO0yb09YCUU3MEUEX2jrREiC7pzktGBq9g=;
+ b=blWhqn/rsHPcTe/6jmRNLve85AU5jWhsRgqTJQ58274VWaPAMhbEH9laXBcOuHhKiu
+ 9nhWLatcJ0Ks2opW1vjj/HNdmqxoNiqhnZQNMPMWztItgGfOAaj8LZqS6Lp0nDiIdIp3
+ 4f4FIPrN1v/+AFcLCB4e19jpPLSZBtqGDTjWe4wZijLHPAD8elJaqkhq8QHyt1ETY2dq
+ WUfT47ZAp+ImLYcAQTLaCL3sNUWn/OCxLdmj9bgoFHR9vGC+SN1OMDpyGLb5b9raZGjR
+ 0MBs5Bw9s3A41grzMmuwibiUfRviyRdUPHPUR47dETQlmPbDhnloZ1gQPU9vF2CRaSVY
+ 6KlA==
 X-Forwarded-Encrypted: i=1;
- AJvYcCXVxf0ffkhyd/2q16j+QWd9nssj78MmBMXKdeD7dE7RyagV7seXLdEynSf4SMpxlDH1bMpR1szCx5gEllc=@nongnu.org
-X-Gm-Message-State: AOJu0YzFDtdc/nupZXC5dNDoWFqtWPzoXfr9+Fdq0WuzxeKRSWld8ezF
- rptPHtqMCNjPy3oHOaC6yjYO60qjgqi0WgkoUF0QDJQApJxkbWQqEK3f
-X-Gm-Gg: ATEYQzxkP7rl3g9sr9ynKVauFFDTyEQzglYi+HcEamVdF/S/NcI2D9LxFh5gS4QF3j/
- lc7HsTl9UIrKXgcuHmugv0p9YHeEqz7T4Dirn2UgMNjPMTFjvNp1ZbqyrpWAh+EFg+/EosTjEng
- XoTeyIGZ4OCEaDBTWg6SrR90ly4ChnLi3B+i9AeINKsR8jbr6hsJ+FsmvhxmMCtMqy/YQN++0mY
- VDg3N/0m7ZONI0EGtRSjgFIm4w/Olv/T9oaGSlyjkaeuT2KGdO8F1JBcCAjpKsNlq0jFe/+6+lR
- v0OnlNZiqMhcoY77ew10SaCsZrYOeM2/FRA5nlGIQMjy7N9z2H4QuWdQ9fpsuKSFQOLrB6TqOoq
- zYlR2Dt0WiK6BRlYpRfoL/zr/KbsbQCDAPvBpSqJ5bdkb319GQJHwvUswfP9jLcCEzh+X4/f5Ei
- NGyQYqJrUUQYx8p16nxA2eYbnXj2I3tNdGOPAFwFBPTizYa8LGvQ7QGZl0vBGUonSIojuJ1xz8f
- IySYV4lqoqUfUpFNCKrKMRKIu5RKDkgyFJ5y07l/Q==
-X-Received: by 2002:a5d:5d06:0:b0:439:b886:20d3 with SMTP id
- ffacd0b85a97d-439da35f64dmr16113282f8f.15.1773002127220; 
- Sun, 08 Mar 2026 13:35:27 -0700 (PDT)
+ AJvYcCXQv9Fr1xPF4KTC6zxEnYP7T206qAlL3PzFF7fXLzq2lLsVnkFGYUU+Zhb+YFBBdal+x/Snq11kSrxGaYc=@nongnu.org
+X-Gm-Message-State: AOJu0YzpB7GFdXy9DnEA8A3whiv3Ar1rZDWkClZs2ezgwWZTnMQ94wQI
+ RONyankK7QgmiFKBvrNCUaXkSaOOBFhibyqzhMPCJyjnCCUkcPNFTCJK
+X-Gm-Gg: ATEYQzxPy/CZuIgvvE7Nw1xpWYwpyqwOWHpN05TmBgU41gtT8nwFR540eanqHniysu4
+ XKyWLews+mIdNdyRWW/9ypraMhG7B9Hadk3HinnyyZnYx1ILUiVdNYwDYaLTAQ0dQUuSM0XekRv
+ DKFlmLS+dqYUSwhZsPJ7G6xuYc4P+3GbzUCmX7XjPoPjBQfEho5CfZHRlE5bcGhbuYAhoTpvy2T
+ iTh37unyrPty0NVMZlmn2yxJECwqrG0ESdG27qvWOiYIt3k03nvOZnBrvQ9xevDVYc3ACArU2br
+ NqbXF3+X1P1wlXtPigLgvDnrgGmcASzJMFYI3a/PQmDV3r9N50rsL0Kfx2BUOoxmywKrxpRmmjD
+ vuVPXhzcFihjc//cmt/oHhgvGaTsQCCun4EGR1Xaz6k9Reu/OkH+YJETTgxb6OCDuep0xdbafof
+ imlr44/ViOx6cWCdwISFztuE5bmTFoibo5AOhc1HY0STxCpT/Ww6NJhW98O0DKBEMqTUfwLb80D
+ XFPsSiAH/cIL702Zt8CRhoOIrJC3+k=
+X-Received: by 2002:a05:6000:4313:b0:439:a95b:3c43 with SMTP id
+ ffacd0b85a97d-439da65e31amr15851395f8f.21.1773002129604; 
+ Sun, 08 Mar 2026 13:35:29 -0700 (PDT)
 Received: from Provence
  (dynamic-2a02-3100-25c6-8f00-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:25c6:8f00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439dae2bdf8sm20995508f8f.25.2026.03.08.13.35.26
+ ffacd0b85a97d-439dae2bdf8sm20995508f8f.25.2026.03.08.13.35.28
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 08 Mar 2026 13:35:26 -0700 (PDT)
+ Sun, 08 Mar 2026 13:35:29 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -74,25 +74,24 @@ Cc: Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
  qemu-arm@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
  =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
- Bernhard Beschow <shentey@gmail.com>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: [PATCH 2/5] hw/arm/fsl-imx8mp: Fix parent of ocram memory region
-Date: Sun,  8 Mar 2026 21:35:13 +0100
-Message-ID: <20260308203516.160103-3-shentey@gmail.com>
+ Bernhard Beschow <shentey@gmail.com>
+Subject: [PATCH 4/5] system/vl: Fix reference count of machine object
+Date: Sun,  8 Mar 2026 21:35:15 +0100
+Message-ID: <20260308203516.160103-5-shentey@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260308203516.160103-1-shentey@gmail.com>
 References: <20260308203516.160103-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::434;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x434.google.com
-X-Spam_score_int: -10
-X-Spam_score: -1.1
-X-Spam_bar: -
-X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FORGED_GMAIL_RCVD=1,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::42c;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x42c.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,29 +107,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Rather than having a NULL parent, let the containing SoC object be the
-parent. This cleans up the QOM composition tree a bit.
+object_new_with_class() and object_property_add_child() leave a reference count
+of two while the QOM root is the sole owner. Fix the reference count to be one
+by calling object_unref() once.
 
-Fixes: 1aaf3478684f ("hw/arm/fsl-imx8mp: Add on-chip RAM")
-cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/arm/fsl-imx8mp.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ system/vl.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
-index 0119a18416..839c925e4a 100644
---- a/hw/arm/fsl-imx8mp.c
-+++ b/hw/arm/fsl-imx8mp.c
-@@ -671,7 +671,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
-                     fsl_imx8mp_memmap[FSL_IMX8MP_PCIE_PHY1].addr);
- 
-     /* On-Chip RAM */
--    if (!memory_region_init_ram(&s->ocram, NULL, "imx8mp.ocram",
-+    if (!memory_region_init_ram(&s->ocram, OBJECT(dev), "imx8mp.ocram",
-                                 fsl_imx8mp_memmap[FSL_IMX8MP_OCRAM].size,
-                                 errp)) {
-         return;
+diff --git a/system/vl.c b/system/vl.c
+index 38d7b849e0..91b390dafd 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -2197,6 +2197,7 @@ static void qemu_create_machine(QDict *qdict)
+     current_machine = MACHINE(object_new_with_class(OBJECT_CLASS(machine_class)));
+     object_property_add_child(object_get_root(), "machine",
+                               OBJECT(current_machine));
++    object_unref(current_machine);
+     qemu_create_machine_containers(OBJECT(current_machine));
+     object_property_add_child(machine_get_container("unattached"),
+                               "sysbus", OBJECT(sysbus_get_default()));
 -- 
 2.53.0
 
