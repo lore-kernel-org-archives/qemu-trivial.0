@@ -4,69 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C555AEA8545
-	for <qemu-trivial@archiver.kernel.org>; Sun,  8 Mar 2026 20:35:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2FE49EA8541
+	for <qemu-trivial@archiver.kernel.org>; Sun,  8 Mar 2026 20:35:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vzKqb-0007Ga-G2; Sun, 08 Mar 2026 16:35:33 -0400
+	id 1vzKqZ-0007EH-6v; Sun, 08 Mar 2026 16:35:31 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqZ-0007Ec-L5
- for qemu-trivial@nongnu.org; Sun, 08 Mar 2026 16:35:31 -0400
-Received: from mail-wr1-x42a.google.com ([2a00:1450:4864:20::42a])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqX-0007CW-GO
+ for qemu-trivial@nongnu.org; Sun, 08 Mar 2026 16:35:29 -0400
+Received: from mail-wr1-x42b.google.com ([2a00:1450:4864:20::42b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqY-00044z-5Y
- for qemu-trivial@nongnu.org; Sun, 08 Mar 2026 16:35:31 -0400
-Received: by mail-wr1-x42a.google.com with SMTP id
- ffacd0b85a97d-439c9bdc1eeso1486383f8f.3
- for <qemu-trivial@nongnu.org>; Sun, 08 Mar 2026 13:35:29 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1vzKqV-00044B-R2
+ for qemu-trivial@nongnu.org; Sun, 08 Mar 2026 16:35:29 -0400
+Received: by mail-wr1-x42b.google.com with SMTP id
+ ffacd0b85a97d-439bcec8613so5413908f8f.3
+ for <qemu-trivial@nongnu.org>; Sun, 08 Mar 2026 13:35:27 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773002129; x=1773606929; darn=nongnu.org;
+ d=gmail.com; s=20230601; t=1773002126; x=1773606926; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=ht0en4g7BEiKReMa2mnsHtL6XNX6arYhl4MswHJxcl8=;
- b=T3A7DnVYpUPWKv8BLxTSpn2rKSbwjBUSn2DSsl/8hkOdJp2iHbP9bsbvnJaBaFuyED
- NukXIcMy3zVKFyHdKKGPzadPbdeCJWwSr4Wcel9vyG9jHocT8Idi8yfN5UhLTRYh3jIE
- gOumEg6jjl7VEsQqpe+h1ocvXoxasIBwEEdaKM4DXKb3z4mhxZ/EMAOe1e5Q8YBJiWnZ
- JFS8RJreryIqthrGEmfoxCPQlL5FviJNj7iGpTXMgEhKA4puuuAE8hoMH2hYq7ahX4Wo
- AlsQfIo6LTQp8mW076ZdLResI8XJsXRiqkNJV5zgPzz9wJGVHX0k91h6hKLcNDC0DmJq
- 4tVg==
+ bh=62gCgQG/SMP3y4B1tt6fRNn10YsHIOVvwcEBSzKHvaM=;
+ b=H9CiWwTdI0ffNqa7x2o8w1HDo1bvXZaYuWr2YtskW3si4xmZMKfcqRZqhqt+w2RXup
+ oV04fMrfalejFYFdQn0QfHuMHvlLvjmgSIlqaaxj+K+cLJ8ytq1yy3TM96hFmdm02G+e
+ raBrF4AKlJn9k/fGN70YOTrEvS/u9NH/pcrr2uYi+AawJ4r3gfD6GRe9dcdQgQF1+6AV
+ EytrcLbS2dyMhBTqv2SCG68PEaYAWB575YXKeba8Pj+909zi2E25Zq7vjunvb2KX5XGa
+ gCCX3QZcqYASBblXgNtm6sZ+PpW5+k1OagDutm6aFINm57S3L3Yv8R645czJXC0kG7tb
+ boxQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773002129; x=1773606929;
+ d=1e100.net; s=20230601; t=1773002126; x=1773606926;
  h=content-transfer-encoding:mime-version:references:in-reply-to
  :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=ht0en4g7BEiKReMa2mnsHtL6XNX6arYhl4MswHJxcl8=;
- b=PYP//u6iZbgQv2sGL/vfNGGwTjg9xmk9UaX8Eb3dGTByi6FMmfHvTpTzFRlOPskGaz
- D2WyhCwKdYwqPtMbT5ldV8YgIAg+jjiEmPVCOwqKechsoVA6x7NkXDYCPD+h3H/vPHZZ
- fB9cTlSLtQgIOUTMBJglFzi2Ra0eN8ai2cs+xaXEklna5lrQ0KgBSdjN6j+pB3+HsRA4
- PVMKXFr8R8L6J4W3TshOj5dR6N8RL8Oen6bQPe+wSSp4JiQAvWY9HNnmfya2vqwYxR3e
- 7ZcYMsgXf1E8Y6GQIXiC4LSRY2a7KNlMPUyr/DBHsl841zKnvD0mrzQdKrmu1I8FvWfD
- /DXw==
+ bh=62gCgQG/SMP3y4B1tt6fRNn10YsHIOVvwcEBSzKHvaM=;
+ b=u/odMLwmH5KjnZS4Kx0PaSkWn7m6hr+RHJvgv2Z1on0HUfD6ZIZU6/twlXxk2SWSSl
+ 9GBpH0sW9QzSFEM70xn16th4cFCMWk/36ekTSOp9gdlfteAAZGo8RIFtqSZ+m+5r0ErL
+ 3NU/6xpBaZrzF8vg2dliu9Fr2VKdTAK+HYLfnbF66kr6kJsE2txd9+vJUmH7vndEwjSS
+ LAwaI0R+B0Yk5HkaS3eL29BHdbs+rNwRe0tb4lTFwkLuIHIwB4JveWH7wdYSIF/MoGDJ
+ vkqaKd8iPubY6M2rO0ME+QgYP1lorYVRHDGT7lZa4Kzk12a7wYEcKSaKhKI8r2lc4WT1
+ jJEQ==
 X-Forwarded-Encrypted: i=1;
- AJvYcCVN6uAQ9EaT6F2Ts6EjVUNHbYwV8Uy9lrrsLbTU67rYG3px6X3tgiTC0Nvxu09nAxjiNv5gSOPG+xvg2pw=@nongnu.org
-X-Gm-Message-State: AOJu0YwhC7iwWqgq+2D8Rk8ZqASTKog/oPfKhmqDF1COMsuHjz2yqwjW
- jg/IB2ziAbvo+VyHvUaoX69e8PJiHxnjpccLkoMYOf68p4xvYulCN3XZ
-X-Gm-Gg: ATEYQzw/ZL8G2Z7jxWIlNtLS1ciZCFFAPnwl8Ga4DjWfeHnbpCjgcqNeWWo40rvDGep
- Jr1wl87Nmxy2qC0RHVC5BGygHh/o9WtySCSucpTc7GkquFQy5W1Iu31Ma3XzwE4P1ZBZudj2qc6
- /nJsYz7o0Zmtn8SXDrqdq9/iINeRUKHOS/xfy8+TwUKhms1Hca3GrcaSiYoR+KM3P1sfjGY2lS7
- eSgPEUHx9VrDIk3HR0BksGbl5gt3kOCxyVcMgogjsl+L5vt74Jrc3dV56Ldf749nwp+rUM9TMkd
- 9MzM3uM/a1B0BrwJJbsRQV21E9m8QlTjixqx5RggboizPgWk7Bb8tvxDagS2kPsKwOe6PnwDr3F
- pQlHDgcFwvkrnU1Dd22Yna+lf1tpXV2uMADzz5fTfNNrDkF4HUea6vfsMwF81rHetVnEgWZJbUl
- mSWN3x7Kk0c/NKXEOB5Kc38j7ets4Yw06W3Di/yeLBH+KyMZDnGqGXW/uW1b5ONLEhHh2FVB1bu
- C5VnxtoYZdNQPTHPlldknIMuVUnZBY=
-X-Received: by 2002:a05:6000:4210:b0:439:becb:6286 with SMTP id
- ffacd0b85a97d-439da87c5a7mr15185221f8f.54.1773002128422; 
- Sun, 08 Mar 2026 13:35:28 -0700 (PDT)
+ AJvYcCWCvolDQC2aEFj7Ws+TBDjtjeNnKXYGI5RRuhhSfsm3Dn8ZDpGtRTh7eopgtRV4aAqL7BLV8x6powrsh48=@nongnu.org
+X-Gm-Message-State: AOJu0YwCL8FyyoYJPEEgVM4WTTD0M6numaXGlnyDVK1t7Li4MMNaAZnp
+ NodLnc+ephYiJ/B4D/s9rbykfz5fc+ALln1jnFXHuyvqd3KVbwD5xfG/
+X-Gm-Gg: ATEYQzynkT1PCCDxJJRI+0n5YXCtBtMGAa//Zgc+IZggm5WQ01r9+A6KspGeAipbxxu
+ HrowffafZM8hP7lJ1BD3zyG08TqwCgivps0NU5d/HA47jColbqDMtafcVvc+48gyTxSR1DoeJHX
+ 7malhd5saBB7/bEZbPo4Na0mGLNNtUkXKCEX8IrpZQBo6CgpqZD41AFHSkfg6uS2Qzq3ov2zkF0
+ s4KKw9rhonmGlv4gKNIufPibutAR63eFBSj+wdR1JQgP60BHBiElxwua64a2uINajJVxYzBN3qF
+ Iy4UdgJsW1AGuD+fEz3//yyBvnr+7abNFucWL3UeLHR1kckeihBFB72aG87QQV6/2FgBpTN6jL2
+ cBYNoCIuSrz715JPog6U3XhD4N7/n5rahRh8fUwdGCPrizxm6jHvRzlNsBhZ4ae1T4TnwaaFLWm
+ iTC77FeVqyEnvzR5bb2HucZhmBIU5K60huzHsDM+NK1d/JGZAYslRisoAI43Td4KuRccfara0A3
+ AAklFQeIHf95g8iUdZNRq5kiRD2ZAnR4ZrsQAEcwg==
+X-Received: by 2002:a05:6000:258a:b0:439:b666:6cab with SMTP id
+ ffacd0b85a97d-439da679715mr15229730f8f.40.1773002126096; 
+ Sun, 08 Mar 2026 13:35:26 -0700 (PDT)
 Received: from Provence
  (dynamic-2a02-3100-25c6-8f00-0219-99ff-feb2-2458.310.pool.telefonica.de.
  [2a02:3100:25c6:8f00:219:99ff:feb2:2458])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439dae2bdf8sm20995508f8f.25.2026.03.08.13.35.27
+ ffacd0b85a97d-439dae2bdf8sm20995508f8f.25.2026.03.08.13.35.25
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 08 Mar 2026 13:35:28 -0700 (PDT)
+ Sun, 08 Mar 2026 13:35:25 -0700 (PDT)
 From: Bernhard Beschow <shentey@gmail.com>
 To: qemu-devel@nongnu.org
 Cc: Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
@@ -76,23 +76,24 @@ Cc: Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
  Peter Maydell <peter.maydell@linaro.org>,
  Bernhard Beschow <shentey@gmail.com>,
  Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: [PATCH 3/5] hw/arm/imx8mp-evk: Fix reference count of SoC object
-Date: Sun,  8 Mar 2026 21:35:14 +0100
-Message-ID: <20260308203516.160103-4-shentey@gmail.com>
+Subject: [PATCH 1/5] hw/arm/fsl-imx8mp: Do not create redundant unimplemented
+ devices
+Date: Sun,  8 Mar 2026 21:35:12 +0100
+Message-ID: <20260308203516.160103-2-shentey@gmail.com>
 X-Mailer: git-send-email 2.53.0
 In-Reply-To: <20260308203516.160103-1-shentey@gmail.com>
 References: <20260308203516.160103-1-shentey@gmail.com>
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::42a;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x42a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::42b;
+ envelope-from=shentey@gmail.com; helo=mail-wr1-x42b.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,34 +109,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-object_new() leaves a reference count of one, and object_property_add_child()
-then leaves it at two. This would leak the SoC object if the machine object was
-destroyed since the machine is the SoC's sole owner. Fix this by converting to
-object_new_with_props() which gets the parenting and reference count right in
-one go.
+The GPT devices are implemented. No need to create redundant
+unimplemented devices.
 
-Fixes: a4eefc69b237 ("hw/arm: Add i.MX 8M Plus EVK board")
+Fixes: f8b26121762c ("hw/arm/fsl-imx8mp: Implement general purpose
+timers")
 cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>
 Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 ---
- hw/arm/imx8mp-evk.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ hw/arm/fsl-imx8mp.c | 1 +
+ 1 file changed, 1 insertion(+)
 
-diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
-index b84ac91a17..cfc3038c36 100644
---- a/hw/arm/imx8mp-evk.c
-+++ b/hw/arm/imx8mp-evk.c
-@@ -74,8 +74,8 @@ static void imx8mp_evk_init(MachineState *machine)
-         .modify_dtb = imx8mp_evk_modify_dtb,
-     };
- 
--    s = FSL_IMX8MP(object_new(TYPE_FSL_IMX8MP));
--    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
-+    s = FSL_IMX8MP(object_new_with_props(TYPE_FSL_IMX8MP, OBJECT(machine),
-+                                         "soc", &error_fatal, NULL));
-     object_property_set_uint(OBJECT(s), "fec1-phy-num", 1, &error_fatal);
-     sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
- 
+diff --git a/hw/arm/fsl-imx8mp.c b/hw/arm/fsl-imx8mp.c
+index 79f9142777..0119a18416 100644
+--- a/hw/arm/fsl-imx8mp.c
++++ b/hw/arm/fsl-imx8mp.c
+@@ -688,6 +688,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Error **errp)
+         case FSL_IMX8MP_GIC_DIST:
+         case FSL_IMX8MP_GIC_REDIST:
+         case FSL_IMX8MP_GPIO1 ... FSL_IMX8MP_GPIO5:
++        case FSL_IMX8MP_GPT1 ... FSL_IMX8MP_GPT6:
+         case FSL_IMX8MP_ECSPI1 ... FSL_IMX8MP_ECSPI3:
+         case FSL_IMX8MP_ENET1:
+         case FSL_IMX8MP_I2C1 ... FSL_IMX8MP_I2C6:
 -- 
 2.53.0
 
