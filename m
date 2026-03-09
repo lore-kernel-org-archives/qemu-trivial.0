@@ -4,71 +4,72 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC178EF3717
-	for <qemu-trivial@archiver.kernel.org>; Mon,  9 Mar 2026 17:19:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4911F4181F
+	for <qemu-trivial@archiver.kernel.org>; Mon,  9 Mar 2026 17:20:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vzeGb-00037z-Ei; Mon, 09 Mar 2026 13:19:42 -0400
+	id 1vzeHk-0004en-Mm; Mon, 09 Mar 2026 13:20:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vzeFg-0002Zu-Ns
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2026 13:18:54 -0400
-Received: from mail-pf1-x42a.google.com ([2607:f8b0:4864:20::42a])
+ id 1vzeHg-0004Xw-50
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2026 13:20:49 -0400
+Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vzeFc-00063v-5i
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2026 13:18:43 -0400
-Received: by mail-pf1-x42a.google.com with SMTP id
- d2e1a72fcca58-8297c035d28so1773029b3a.0
- for <qemu-trivial@nongnu.org>; Mon, 09 Mar 2026 10:18:39 -0700 (PDT)
+ id 1vzeHe-0006Vh-Cz
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2026 13:20:47 -0400
+Received: by mail-pl1-x62d.google.com with SMTP id
+ d9443c01a7336-2ae3a2f6007so66713085ad.2
+ for <qemu-trivial@nongnu.org>; Mon, 09 Mar 2026 10:20:46 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773076719; x=1773681519; darn=nongnu.org;
+ d=linaro.org; s=google; t=1773076845; x=1773681645; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=1SHZVk1p5DXSxoc1YpVBT7c4rDwJos0l3tnRPrksqR0=;
- b=jzDfymFSRkRfhqLcNgIVgZpoKaNUFBGByRMkoX6SSbPiEWqACabeczhyWkLCPlj0Jf
- sKoDXCllQhtx+/aL+PaclIpTboVRJj3chE3Lac4vtaepgT/YYd2ewvDz5uAtUQedeQIS
- TTf8xenzsUaGjJZbmu4SQffMC2URwyMLVakR+ZIbONocjoBY7ExBrrMpsB87FiQzacKe
- Kvh1NEOPJDuH8gHfBimyaymtjxjWcbsI9YrDd0gDZ+xC7m95cKBfpeZLphUMZcZgZwsn
- vlSYUwfP3O4ut5aB9/O/6etKyGVFCNYmh3T/aVNRo+sXhv7897zXrVCI7/3F2fBWSMlA
- qKLg==
+ bh=hDtI8B4BXa4IrZHwA4N+PDicZHttowlBxqy6GOozqNE=;
+ b=KOie64QAy012WcRvMuSKNhFlVFibzSfwkPqpaem/fN8joExQe7zDyK3LYff6Nd08D0
+ eVZQZk+IPBQ6efUkpwXWwKqZ3GrValwhu4fYYbfHvfUlQqbcW+kcR1Pa8V7HCzpl5vfo
+ Tsp++yt3ahHyne/fLtxwmY3stALQn4ol+bKcySsUTTIyWuGc5xpaRwTQI+MLFKuValCn
+ vfnQyo/c+16IPTg2U0Uzx2xrqyplN1SATveUTlJI1D2QSBl4N4ZoTebS3YVgMK/rlqJl
+ FXGGoosYKWuwWhKTv0zc83Z7MmupQ/A4ocE96A8/S/rMTtl8AD2h54fzPiLpCOlgzjI4
+ SGSQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773076719; x=1773681519;
+ d=1e100.net; s=20230601; t=1773076845; x=1773681645;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=1SHZVk1p5DXSxoc1YpVBT7c4rDwJos0l3tnRPrksqR0=;
- b=JZL9QyZck9+SS04e2zbE9OjZyKOwG4q/tUs2OzBeS1ZKLyXlyQF+GSHMyz/lYlpkiq
- /mFLbQQSMSPHnJNVj/dUCMTt4cNduCK+CHz50csBYgEt0hI/GanHOTZzITidnfzsHoDK
- aKYDtmm7P5PuPVPiGlXAgCOPFhja4lXUbxdRfZPy35c2Iv+166KbDFo7NsUvTbk5HdsE
- aAWLADC3vKNaOZvuEsN4wo1ASSIIrJYu7p1KyfAe8ZJVxg0DPtY5efTMGsBYqXKKyV/G
- bJv7kPB30zZu8y56ddKY315l4hhl9s3a2GPa9VYFXqWCoxUow9sk5ASNdHWuUx/bP3OD
- St2g==
+ bh=hDtI8B4BXa4IrZHwA4N+PDicZHttowlBxqy6GOozqNE=;
+ b=a5uOsdx4B7H4s7xLA68wEBdyEGQoICEhLVO9H2Sd/by0SYlmNSdYXx5h6DqhLt4YJh
+ rpTfy/M5JBGZqs4dgGBci2n0JlkM+qE8dWAaXejPc5YnuamOux4nfpt/s9OkqTJOvvqV
+ hWTKHt4xCwND+MbRINh40e7u/PUeLcEj4jbLnuS4EwUIO1idEDqiIaI7nBw2JiDJpxwZ
+ lyr6VQQAghybCC8ZmndEojQ/eAJZWlLUgB2+Jc//6fwiHaxkRYpcQMqy3drUSxY40wv3
+ xkcoQTCAGBlkibvIVIQOG/+VFKpcCxZLiYMVds6eTgeV6rHxw42lUMd5RgDrCUfeWhnm
+ Pn+w==
 X-Forwarded-Encrypted: i=1;
- AJvYcCUO22SkfdxmtGsivLynw0O9YwQEaX87mPYE+UQaFDMOTz9ZVEpCrlH4qJ8JMKPX0x2FapBvh7OsX9CzCac=@nongnu.org
-X-Gm-Message-State: AOJu0YwcsdM47nKp90IyqeX9hK7lCKW+nyjId1Kr2wDIGUR5RGDOfCws
- 7szYMr0+splrM8OSEZPMACr3SrlyC8AV67e3yHTUe/I7DMik8fT13R2tvBFcwCViTaY=
-X-Gm-Gg: ATEYQzyNd4itR+wlZEZ+2zodejPeoulcxDPAJ6GGhNB0aV4ibnTo/zjjnPCnQGx4yWc
- UMrIpUkzeZ5MpnzZe2JtKXFNu+ceV3Vx7jvNWFZ18H4tLODkcqYGxgMR7EpxnJsCRqJg9PqF3v6
- 1eDWVaqSddUnp/M7LiG3AArGoRm6UcIX/p0MgDFD2rzwlcniGjO0rUE19XRC7awQUCP7UY4F/3O
- KbmfTUvRbk+Abigxct0rouJ+Zn//mMEsNgWZrVMu3/3BpvEjW6wOxmRhtVhcTi8NAOQf6z0eNgP
- VgGQVHBe/jNcak1jvrJDvlHlBzZSd3BzSIm8UY6I2KaPUV/uWcz3yzn/MZRY7H0+Y+HNI/P4Rho
- xGoOJLokcR6Qi2HA9WC6XzoJhkfjR+jxFWJRMP7opi71KAF3WyiuHPwM6ubu3hEF4TSh/tTj7dO
- QTV7l6qHvtisNTp3IdoVvOWiD+Sa6ifh+RXF9WdC/CJEsOunbr956X7bm3LUBSxttwMia3
-X-Received: by 2002:a05:6a00:3d01:b0:7b9:8142:96f4 with SMTP id
- d2e1a72fcca58-829a2e4ab99mr10999036b3a.21.1773076718578; 
- Mon, 09 Mar 2026 10:18:38 -0700 (PDT)
+ AJvYcCWkQPDUvM/LYmdoX1Hi2FejBijIN7NtnzHjE/v4b8G11eBKHYdZ19mkHff3E4HJoX/G6gUlBBjDiTbJC5g=@nongnu.org
+X-Gm-Message-State: AOJu0YwtGbMnJj1OR2GAugBD/Ty3aABwBn1RtES6BuT/xIfnVxaDQvnK
+ ZS+86DAmvODl1+j68bZA1AqgTVvqRWk6OXlGiM20VCtiI6pgSbOTuQSdJQQF+UGQwRM=
+X-Gm-Gg: ATEYQzzoGNTZ5S40OJSnM9AiHQ1nHGodUWxn7SjJG/fOWTPeqK/q/naMrBRG+7/ISsJ
+ g4tNXVg+IvztdqfejiHGEFMc6zKYyTV1hQQX3ilxvUv/WiOwOyKVc3oPMo58TmsdH/2g9Cr4Jjb
+ iTPWl9vsCafnO410W3If01EH3+IgMe7CRQbuKTuqJACicBXL54Sadf6avRRR5jW7rj9OBZGuXR4
+ aVJGfTJlVYlFBcTDNn5bF3f8ixtfcEsbthpfcqTLUbQ0pJ1krGi+R41LS8ZJTnpSmABltCdSsDu
+ 78v1nBIoMeArjoswPA6TrK8gttO93J6QO9G1QtKaibmUwGOWkRbwlaM5aDb+3iPpemAEMIBsrUg
+ RvXNxoMIsrV+0Lq+LGw5BSyrm80ONfZW+DeqhIexXITSOsY7fPO6I5SHcyGKvnxaCOYsROPLThl
+ FhtKcCnbJs6qiuUnh7kip5WuFFKNGTBIeRIRGztmU7kegrHvHw/BNXZV2xFCZ5W7xRtAaJ0R9pg
+ JeIeCY=
+X-Received: by 2002:a17:902:ce83:b0:2ae:4e2b:f565 with SMTP id
+ d9443c01a7336-2ae823062f1mr119515925ad.0.1773076844749; 
+ Mon, 09 Mar 2026 10:20:44 -0700 (PDT)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d2e1a72fcca58-829aeea86b9sm11257368b3a.34.2026.03.09.10.18.37
+ d9443c01a7336-2ae83f759fdsm163952165ad.57.2026.03.09.10.20.43
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Mar 2026 10:18:38 -0700 (PDT)
-Message-ID: <9f1b74e5-0741-487e-a549-bfa64c8e2146@linaro.org>
-Date: Mon, 9 Mar 2026 10:18:37 -0700
+ Mon, 09 Mar 2026 10:20:44 -0700 (PDT)
+Message-ID: <64ff115b-83d4-489f-a826-dfc6028a37d0@linaro.org>
+Date: Mon, 9 Mar 2026 10:20:43 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH trivial] plugins: add missing docstrings to qemu-plugin.h
@@ -117,8 +118,8 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
 In-Reply-To: <CAFEAcA_WAnfxtCgfhX4oGa7eJhvs9aWgsU46CGGzgqNfBX28Dg@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::42a;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pf1-x42a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62d.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -173,41 +174,9 @@ On 3/9/26 9:35 AM, Peter Maydell wrote:
 > the _R and _W values as bit checks (i.e. _RW == _R | _W).
 > Is that intentional and can code using the API rely on it,
 > or must it strictly check against _R and _RW separately?
-> 
->> +/**
->> + * enum qemu_plugin_mem_value_type - size of memory value
->> + *
->> + * @QEMU_PLUGIN_MEM_VALUE_U8: unsigned 8-bit value
->> + * @QEMU_PLUGIN_MEM_VALUE_U16: unsigned 16-bit value
->> + * @QEMU_PLUGIN_MEM_VALUE_U32: unsigned 32-bit value
->> + * @QEMU_PLUGIN_MEM_VALUE_U64: unsigned 64-bit value
->> + * @QEMU_PLUGIN_MEM_VALUE_U128: unsigned 128-bit value
->> + */
->>   enum qemu_plugin_mem_value_type {
->>       QEMU_PLUGIN_MEM_VALUE_U8,
->>       QEMU_PLUGIN_MEM_VALUE_U16,
->> @@ -353,7 +369,13 @@ enum qemu_plugin_mem_value_type {
->>       QEMU_PLUGIN_MEM_VALUE_U128,
->>   };
-> 
-> In this enum, the values are set up such that if you have
-> a qemu_plugin_mem_value_type vt, then the size of the data
-> is (1 << vt) (i.e., a byte is 0, a short is 1, 32 bits are 2,
-> and so on up). Is that intentional and can code using the
-> API rely on it, or must it strictly use the enum only as
-> something to switch() on to select a length.
 >
 
-The latter, see it as something similar to Rust enums, or what theory 
-calls an Algebraic data type:
-https://doc.rust-lang.org/std/keyword.enum.html
-
-> I actually ran into that last one in tests/tcg/plugins/mem.c:
-> update_region_info() has a switch() on this enum which (among
-> other things) sets val_size in each case, because I didn't
-> know if it was guaranteed to work to set val_size = 1 << value.type.
-> 
-> thanks
-> -- PMM
+It's intentional, but if people explicitely check both, there is nothing 
+wrong with it.
 
 
