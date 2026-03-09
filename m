@@ -4,82 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4911F4181F
-	for <qemu-trivial@archiver.kernel.org>; Mon,  9 Mar 2026 17:20:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20D8DEF3718
+	for <qemu-trivial@archiver.kernel.org>; Mon,  9 Mar 2026 17:25:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1vzeHk-0004en-Mm; Mon, 09 Mar 2026 13:20:53 -0400
+	id 1vzeMU-0000cM-QT; Mon, 09 Mar 2026 13:25:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vzeHg-0004Xw-50
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2026 13:20:49 -0400
-Received: from mail-pl1-x62d.google.com ([2607:f8b0:4864:20::62d])
+ id 1vzeMA-0000HQ-I8
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2026 13:25:33 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1vzeHe-0006Vh-Cz
- for qemu-trivial@nongnu.org; Mon, 09 Mar 2026 13:20:47 -0400
-Received: by mail-pl1-x62d.google.com with SMTP id
- d9443c01a7336-2ae3a2f6007so66713085ad.2
- for <qemu-trivial@nongnu.org>; Mon, 09 Mar 2026 10:20:46 -0700 (PDT)
+ id 1vzeM6-0007AF-Kg
+ for qemu-trivial@nongnu.org; Mon, 09 Mar 2026 13:25:25 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id
+ d9443c01a7336-2ae46fc8ec1so59022795ad.3
+ for <qemu-trivial@nongnu.org>; Mon, 09 Mar 2026 10:25:22 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773076845; x=1773681645; darn=nongnu.org;
+ d=linaro.org; s=google; t=1773077121; x=1773681921; darn=nongnu.org;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :from:to:cc:subject:date:message-id:reply-to;
- bh=hDtI8B4BXa4IrZHwA4N+PDicZHttowlBxqy6GOozqNE=;
- b=KOie64QAy012WcRvMuSKNhFlVFibzSfwkPqpaem/fN8joExQe7zDyK3LYff6Nd08D0
- eVZQZk+IPBQ6efUkpwXWwKqZ3GrValwhu4fYYbfHvfUlQqbcW+kcR1Pa8V7HCzpl5vfo
- Tsp++yt3ahHyne/fLtxwmY3stALQn4ol+bKcySsUTTIyWuGc5xpaRwTQI+MLFKuValCn
- vfnQyo/c+16IPTg2U0Uzx2xrqyplN1SATveUTlJI1D2QSBl4N4ZoTebS3YVgMK/rlqJl
- FXGGoosYKWuwWhKTv0zc83Z7MmupQ/A4ocE96A8/S/rMTtl8AD2h54fzPiLpCOlgzjI4
- SGSQ==
+ bh=7oOFgLCjTGPgT8WrQcJ5xRlx0WQd4ReFZk+yVcQCQsw=;
+ b=kACX8cPCdT8r2/ajQ8GO50rAh8mfSCA4YyCrabRJEQBQNpbV10vTjxF87B3S5dnKS5
+ K8itYGYtQcN+owk3LWzUNsIlB5osPB4XV2zgL84PinL1QoVdKKUGTKf2WvIwVZGvoS1N
+ K+tMhHJeHX2WESfSxKdvjJ6hio44BAnFQgmYcmm81XmoDNCYujZrPmE5VqzinaJbJPH2
+ BX9GQmNSWb+iRW2R48YU792NmZD3syyoDmsuWD2h1caKeGFgVKrG8cZ5zsFAe1eeev+n
+ BLO4yXDNZpgJaTyzkA95K7qfE8cYUkGTFWvUGJISS0nz6t/MCHRXXMClWaC8cBurg0pZ
+ Xrsg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20230601; t=1773076845; x=1773681645;
+ d=1e100.net; s=20230601; t=1773077121; x=1773681921;
  h=content-transfer-encoding:in-reply-to:autocrypt:from:references:cc
  :to:content-language:subject:user-agent:mime-version:date:message-id
  :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
  :reply-to;
- bh=hDtI8B4BXa4IrZHwA4N+PDicZHttowlBxqy6GOozqNE=;
- b=a5uOsdx4B7H4s7xLA68wEBdyEGQoICEhLVO9H2Sd/by0SYlmNSdYXx5h6DqhLt4YJh
- rpTfy/M5JBGZqs4dgGBci2n0JlkM+qE8dWAaXejPc5YnuamOux4nfpt/s9OkqTJOvvqV
- hWTKHt4xCwND+MbRINh40e7u/PUeLcEj4jbLnuS4EwUIO1idEDqiIaI7nBw2JiDJpxwZ
- lyr6VQQAghybCC8ZmndEojQ/eAJZWlLUgB2+Jc//6fwiHaxkRYpcQMqy3drUSxY40wv3
- xkcoQTCAGBlkibvIVIQOG/+VFKpcCxZLiYMVds6eTgeV6rHxw42lUMd5RgDrCUfeWhnm
- Pn+w==
-X-Forwarded-Encrypted: i=1;
- AJvYcCWkQPDUvM/LYmdoX1Hi2FejBijIN7NtnzHjE/v4b8G11eBKHYdZ19mkHff3E4HJoX/G6gUlBBjDiTbJC5g=@nongnu.org
-X-Gm-Message-State: AOJu0YwtGbMnJj1OR2GAugBD/Ty3aABwBn1RtES6BuT/xIfnVxaDQvnK
- ZS+86DAmvODl1+j68bZA1AqgTVvqRWk6OXlGiM20VCtiI6pgSbOTuQSdJQQF+UGQwRM=
-X-Gm-Gg: ATEYQzzoGNTZ5S40OJSnM9AiHQ1nHGodUWxn7SjJG/fOWTPeqK/q/naMrBRG+7/ISsJ
- g4tNXVg+IvztdqfejiHGEFMc6zKYyTV1hQQX3ilxvUv/WiOwOyKVc3oPMo58TmsdH/2g9Cr4Jjb
- iTPWl9vsCafnO410W3If01EH3+IgMe7CRQbuKTuqJACicBXL54Sadf6avRRR5jW7rj9OBZGuXR4
- aVJGfTJlVYlFBcTDNn5bF3f8ixtfcEsbthpfcqTLUbQ0pJ1krGi+R41LS8ZJTnpSmABltCdSsDu
- 78v1nBIoMeArjoswPA6TrK8gttO93J6QO9G1QtKaibmUwGOWkRbwlaM5aDb+3iPpemAEMIBsrUg
- RvXNxoMIsrV+0Lq+LGw5BSyrm80ONfZW+DeqhIexXITSOsY7fPO6I5SHcyGKvnxaCOYsROPLThl
- FhtKcCnbJs6qiuUnh7kip5WuFFKNGTBIeRIRGztmU7kegrHvHw/BNXZV2xFCZ5W7xRtAaJ0R9pg
- JeIeCY=
-X-Received: by 2002:a17:902:ce83:b0:2ae:4e2b:f565 with SMTP id
- d9443c01a7336-2ae823062f1mr119515925ad.0.1773076844749; 
- Mon, 09 Mar 2026 10:20:44 -0700 (PDT)
+ bh=7oOFgLCjTGPgT8WrQcJ5xRlx0WQd4ReFZk+yVcQCQsw=;
+ b=D4hLj5gomfEJX8BqmKMy0+xOapuCAIh//rbm8bKbGk9+KFgsdUgANgBEVLKRAyAbIU
+ +QePHDS94irgu+zexn/Qopqq2t5o6hv51XCjJHdAZam/IBv5/9Jubo8p6hsXqqE4aY2U
+ ovXIkHTygviDdEh21C2KKZegJwRzVVoDX3/HbtMkCjHl+jy8L548AHTlONmfmmgWF+pR
+ azfKg6PVEOOyqEf6CwQcaxkgIqevluHplgD1s5eJ3o/z1RBlOXXsKf0U5pzy8qPcjxwZ
+ +sBOe4DFshNQ4kVOWiYRRvtKVF/uoWJKYtBd/GZlLdL6r0cHnkHdn/oYHhGM5VwKWkne
+ HK+g==
+X-Gm-Message-State: AOJu0YyS8YuFrFZeHI2qwNAlMc7IjOYecwVhDbzF0NqKclqAVyMwb17P
+ AbX6JcO+UtNJiNo+8Jc9Hh0PdABQwRrIsEnYSfMgVWdTA+HQl2U4lIxIcG1As5XSYtI=
+X-Gm-Gg: ATEYQzwIBegkUBXZcSRmpD3rW9tsX2T2vgd4e4J7bWFeObtjvICR+yvmSqLeAXNXmfs
+ mX5plgFKOZWp/bspX3OXwDY/hkaAkozDLfhhk3dO4kPxxDYZ8WP4icDPMKQxaKulooOPaxIrIu1
+ eHhAAKKTjO+V34m3NmyN709Ems9vLjyVJqr8SPlqb+txp9saWKuulH92N8AXIHtFOYYpEmyvZEz
+ UF3kqRzTdkxcA1Pitf9ZR6B63zMugupNiDHYzfj3zwQwD1pd6s7UoG/oxUdu0itmEgV7WTksXW3
+ A350hzW8AX27eJ30xATTH3du4Yazw3Q24LxJlgAHI0gUujOv2oysgS6WZix1X6CXCeb12efpIkq
+ oOomIGetCUf580rAeLMoQl6E74pOOW/O60ywhn/30F2w3OlUBx4bQNTjGcA2QDkQyYVf0dadJhJ
+ TpGiqC9jp4FoLNs4eZwNUbAzZfS7irIVmCBPbbOzesgPejr1o6f9zPAV+6qcIG6BQV8KtQ
+X-Received: by 2002:a17:903:3b8b:b0:29f:301a:f6cf with SMTP id
+ d9443c01a7336-2ae8243435emr108891965ad.35.1773077120607; 
+ Mon, 09 Mar 2026 10:25:20 -0700 (PDT)
 Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2ae83f759fdsm163952165ad.57.2026.03.09.10.20.43
+ d9443c01a7336-2ae83f74272sm123724855ad.47.2026.03.09.10.25.19
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 09 Mar 2026 10:20:44 -0700 (PDT)
-Message-ID: <64ff115b-83d4-489f-a826-dfc6028a37d0@linaro.org>
-Date: Mon, 9 Mar 2026 10:20:43 -0700
+ Mon, 09 Mar 2026 10:25:20 -0700 (PDT)
+Message-ID: <f624f3d9-aa11-406a-ac9b-f3fa2b103291@linaro.org>
+Date: Mon, 9 Mar 2026 10:25:19 -0700
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH trivial] plugins: add missing docstrings to qemu-plugin.h
 Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>,
- Florian Hofhammer <florian.hofhammer@epfl.ch>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, alex.bennee@linaro.org,
+To: Florian Hofhammer <florian.hofhammer@epfl.ch>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, alex.bennee@linaro.org,
  richard.henderson@linaro.org
 References: <20260309-add-missing-plugin-docs-v1-1-41dddcd177c8@epfl.ch>
- <CAFEAcA_WAnfxtCgfhX4oGa7eJhvs9aWgsU46CGGzgqNfBX28Dg@mail.gmail.com>
 From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
 Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  xsDNBGK9dgwBDACYuRpR31LD+BnJ0M4b5YnPZKbj+gyu82IDN0MeMf2PGf1sux+1O2ryzmnA
@@ -115,18 +110,18 @@ Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
  5SYuJaKzCAgNeAy3gUVUUPrUsul1oe2PeWMFUhWKrqko0/Qo4HkwTZY6S16drTMncoUahSAl
  X4Z3BbSPXPq0v1JJBYNBL9qmjULEX+NbtRd3v0OfB5L49sSAC2zIO8S9Cufiibqx3mxZTaJ1
  ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <CAFEAcA_WAnfxtCgfhX4oGa7eJhvs9aWgsU46CGGzgqNfBX28Dg@mail.gmail.com>
+In-Reply-To: <20260309-add-missing-plugin-docs-v1-1-41dddcd177c8@epfl.ch>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62d;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62d.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -142,41 +137,224 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 3/9/26 9:35 AM, Peter Maydell wrote:
-> On Mon, 9 Mar 2026 at 16:22, Florian Hofhammer
-> <florian.hofhammer@epfl.ch> wrote:
->>
->> This patch adds docstrings for typedefs and function declarations in
->> include/plugins/qemu-plugin.h that were previously missing. This
->> resolves inconsistencies in the docs, e.g., the description for
->> qemu_plugin_read_register() referring to qemu_plugin_register_flush_cb()
->> but code cache flush callbacks not being documented themselves.
->>
->> Signed-off-by: Florian Hofhammer <florian.hofhammer@epfl.ch>
+On 3/9/26 9:21 AM, Florian Hofhammer wrote:
+> This patch adds docstrings for typedefs and function declarations in
+> include/plugins/qemu-plugin.h that were previously missing. This
+> resolves inconsistencies in the docs, e.g., the description for
+> qemu_plugin_read_register() referring to qemu_plugin_register_flush_cb()
+> but code cache flush callbacks not being documented themselves.
 > 
-> I don't know this API either, so a couple of questions below
-> for those who do:
+> Signed-off-by: Florian Hofhammer <florian.hofhammer@epfl.ch>
+> ---
+> Hi,
 > 
->> +/**
->> + * enum qemu_plugin_mem_rw - type of memory access
->> + *
->> + * @QEMU_PLUGIN_MEM_R: memory read access only
->> + * @QEMU_PLUGIN_MEM_W: memory write access only
->> + * @QEMU_PLUGIN_MEM_RW: memory read and write access
->> + */
->>   enum qemu_plugin_mem_rw {
->>       QEMU_PLUGIN_MEM_R = 1,
->>       QEMU_PLUGIN_MEM_W,
->>       QEMU_PLUGIN_MEM_RW,
->>   };
+> While working on a QEMU plugin and browsing the online docs at
+> https://www.qemu.org/docs/master/devel/tcg-plugins.html, I noticed that
+> some of the API functions were not actually documented.
 > 
-> This define sets up the values such that you can use
-> the _R and _W values as bit checks (i.e. _RW == _R | _W).
-> Is that intentional and can code using the API rely on it,
-> or must it strictly check against _R and _RW separately?
+> I went through the include/plugins/qemu-plugin.h header file and added
+> docstrings where they were missing, hoping of course that I documented
+> the correct functionality based on my understanding of the plugin
+> internals.
+> 
+> I hope that's useful and I didn't miss anything!
 >
 
-It's intentional, but if people explicitely check both, there is nothing 
-wrong with it.
+Thanks for the effort, that's always welcome to add documentation on a 
+public API like this!
 
+> Best regards,
+> Florian
+> 
+> --
+> Florian Hofhammer
+> ---
+>   include/plugins/qemu-plugin.h | 98 ++++++++++++++++++++++++++++++++++++++-----
+>   1 file changed, 88 insertions(+), 10 deletions(-)
+> 
+> diff --git a/include/plugins/qemu-plugin.h b/include/plugins/qemu-plugin.h
+> index 827e8e1787..fcf5af52ed 100644
+> --- a/include/plugins/qemu-plugin.h
+> +++ b/include/plugins/qemu-plugin.h
+> @@ -339,12 +339,28 @@ enum qemu_plugin_cb_flags {
+>       QEMU_PLUGIN_CB_RW_REGS_PC,
+>   };
+>   
+> +/**
+> + * enum qemu_plugin_mem_rw - type of memory access
+> + *
+> + * @QEMU_PLUGIN_MEM_R: memory read access only
+> + * @QEMU_PLUGIN_MEM_W: memory write access only
+> + * @QEMU_PLUGIN_MEM_RW: memory read and write access
+> + */
+>   enum qemu_plugin_mem_rw {
+>       QEMU_PLUGIN_MEM_R = 1,
+>       QEMU_PLUGIN_MEM_W,
+>       QEMU_PLUGIN_MEM_RW,
+>   };
+>   
+> +/**
+> + * enum qemu_plugin_mem_value_type - size of memory value
+> + *
+> + * @QEMU_PLUGIN_MEM_VALUE_U8: unsigned 8-bit value
+> + * @QEMU_PLUGIN_MEM_VALUE_U16: unsigned 16-bit value
+> + * @QEMU_PLUGIN_MEM_VALUE_U32: unsigned 32-bit value
+> + * @QEMU_PLUGIN_MEM_VALUE_U64: unsigned 64-bit value
+> + * @QEMU_PLUGIN_MEM_VALUE_U128: unsigned 128-bit value
+> + */
+>   enum qemu_plugin_mem_value_type {
+>       QEMU_PLUGIN_MEM_VALUE_U8,
+>       QEMU_PLUGIN_MEM_VALUE_U16,
+> @@ -353,7 +369,13 @@ enum qemu_plugin_mem_value_type {
+>       QEMU_PLUGIN_MEM_VALUE_U128,
+>   };
+>   
+> -/* typedef qemu_plugin_mem_value - value accessed during a load/store */
+> +/**
+> + * typedef qemu_plugin_mem_value - value accessed during a load/store
+> + *
+> + * @type: the memory access size
+> + * @data: the value accessed during the memory operation (value after
+> + *        read/write)
+> + */
+>   typedef struct {
+>       enum qemu_plugin_mem_value_type type;
+>       union {
+> @@ -462,7 +484,6 @@ void qemu_plugin_register_vcpu_tb_exec_cond_cb(struct qemu_plugin_tb *tb,
+>    * @QEMU_PLUGIN_INLINE_ADD_U64: add an immediate value uint64_t
+>    * @QEMU_PLUGIN_INLINE_STORE_U64: store an immediate value uint64_t
+>    */
+> -
+>   enum qemu_plugin_op {
+>       QEMU_PLUGIN_INLINE_ADD_U64,
+>       QEMU_PLUGIN_INLINE_STORE_U64,
+> @@ -803,6 +824,20 @@ const void *qemu_plugin_request_time_control(void);
+>   QEMU_PLUGIN_API
+>   void qemu_plugin_update_ns(const void *handle, int64_t time);
+>   
+> +/**
+> + * typedef qemu_plugin_vcpu_syscall_cb_t - vCPU syscall callback function type
+> + * @id: plugin id
+> + * @vcpu_index: the executing vCPU
+> + * @num: the syscall number
+> + * @a1: the 1st syscall argument
+> + * @a2: the 2nd syscall argument
+> + * @a3: the 3rd syscall argument
+> + * @a4: the 4th syscall argument
+> + * @a5: the 5th syscall argument
+> + * @a6: the 6th syscall argument
+> + * @a7: the 7th syscall argument
+> + * @a8: the 8th syscall argument
+> + */
+>   typedef void
+>   (*qemu_plugin_vcpu_syscall_cb_t)(qemu_plugin_id_t id, unsigned int vcpu_index,
+>                                    int64_t num, uint64_t a1, uint64_t a2,
+> @@ -836,24 +871,61 @@ typedef bool
+>                                           uint64_t a6, uint64_t a7, uint64_t a8,
+>                                           uint64_t *sysret);
+>   
+> -QEMU_PLUGIN_API
+> -void qemu_plugin_register_vcpu_syscall_cb(qemu_plugin_id_t id,
+> -                                          qemu_plugin_vcpu_syscall_cb_t cb);
+> -
+> +/**
+> + * typedef qemu_plugin_vcpu_syscall_ret_cb_t - vCPU syscall return callback
+> + * function type
+> + * @id: plugin id
+> + * @vcpu_index: the executing vCPU
+> + * @num: the syscall number
+> + * @ret: the syscall return value
+> + */
+>   typedef void
+>   (*qemu_plugin_vcpu_syscall_ret_cb_t)(qemu_plugin_id_t id, unsigned int vcpu_idx,
+>                                        int64_t num, int64_t ret);
+>   
+> +/**
+> + * qemu_plugin_register_vcpu_syscall_cb() - register a syscall entry callback
+> + * @id: plugin id
+> + * @cb: callback of type qemu_plugin_vcpu_syscall_cb_t
+> + *
+> + * This registers a callback for every syscall executed by the guest. The @cb
+> + * function is executed before a syscall is handled by the host.
+> + */
+>   QEMU_PLUGIN_API
+> -void
+> -qemu_plugin_register_vcpu_syscall_ret_cb(qemu_plugin_id_t id,
+> -                                         qemu_plugin_vcpu_syscall_ret_cb_t cb);
+> +void qemu_plugin_register_vcpu_syscall_cb(qemu_plugin_id_t id,
+> +                                          qemu_plugin_vcpu_syscall_cb_t cb);
+>   
+> +/**
+> + * qemu_plugin_register_vcpu_syscall_filter_cb() - register a syscall filter
+> + * callback
+> + * @id: plugin id
+> + * @cb: callback of type qemu_plugin_vcpu_syscall_filter_cb_t
+> + *
+> + * This registers a callback for every syscall executed by the guest. The @cb
+> + * function is executed before a syscall is handled by the host. If the
+> + * callback returns true, the syscall is filtered and will not be executed by
+> + * the host. The callback must then set the syscall return value via the
+> + * corresponding pointer passed to it.
+> + */
+>   QEMU_PLUGIN_API
+>   void
+>   qemu_plugin_register_vcpu_syscall_filter_cb(qemu_plugin_id_t id,
+>                                               qemu_plugin_vcpu_syscall_filter_cb_t cb);
+>   
+> +/**
+> + * qemu_plugin_register_vcpu_syscall_ret_cb() - register a syscall entry
+> + * callback
+> + * @id: plugin id
+> + * @cb: callback of type qemu_plugin_vcpu_syscall_ret_cb_t
+> + *
+> + * This registers a callback for every syscall executed by the guest. The @cb
+> + * function is executed upon return from the host syscall before execution is
+> + * handed back to the guest.
+> + */
+> +QEMU_PLUGIN_API
+> +void
+> +qemu_plugin_register_vcpu_syscall_ret_cb(qemu_plugin_id_t id,
+> +                                         qemu_plugin_vcpu_syscall_ret_cb_t cb);
+>   
+>   /**
+>    * qemu_plugin_insn_disas() - return disassembly string for instruction
+> @@ -861,7 +933,6 @@ qemu_plugin_register_vcpu_syscall_filter_cb(qemu_plugin_id_t id,
+>    *
+>    * Returns an allocated string containing the disassembly
+>    */
+> -
+>   QEMU_PLUGIN_API
+>   char *qemu_plugin_insn_disas(const struct qemu_plugin_insn *insn);
+>   
+> @@ -888,6 +959,13 @@ QEMU_PLUGIN_API
+>   void qemu_plugin_vcpu_for_each(qemu_plugin_id_t id,
+>                                  qemu_plugin_vcpu_simple_cb_t cb);
+>   
+> +/**
+> + * qemu_plugin_register_flush_cb() - register code cache flush callback
+> + * @id: plugin ID
+> + * @cb: callback
+> + *
+> + * The @cb function is called every time the code cache is flushed.
+> + */
+
+Thanks, I was thinking to document this since someone asked a question 
+on IRC a few weeks ago.
+
+May you add here:
+"This callback can be used to free resources associated with existing 
+translated blocks in a plugin. @cb is guaranteed to run with all cpus 
+being stopped, thus no lock is required within it."
+
+>   QEMU_PLUGIN_API
+>   void qemu_plugin_register_flush_cb(qemu_plugin_id_t id,
+>                                      qemu_plugin_simple_cb_t cb);
+> 
+> ---
+> base-commit: 7608a95d2e0bd8c8d069ab77824d02586dd94648
+> change-id: 20260309-add-missing-plugin-docs-159d7ff315f9
+> 
+
+Regards,
+Pierrick
 
