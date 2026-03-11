@@ -4,42 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4248103E2E6
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD6D9103E2E5
 	for <qemu-trivial@archiver.kernel.org>; Wed, 11 Mar 2026 20:56:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w0Qap-0003nf-PI; Wed, 11 Mar 2026 16:55:47 -0400
+	id 1w0Qar-0003pd-0r; Wed, 11 Mar 2026 16:55:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1w0Qao-0003kk-9m; Wed, 11 Mar 2026 16:55:46 -0400
+ id 1w0Qaj-0003gj-At; Wed, 11 Mar 2026 16:55:41 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1w0Qal-0008FH-Bf; Wed, 11 Mar 2026 16:55:45 -0400
+ id 1w0QaX-00082u-R6; Wed, 11 Mar 2026 16:55:36 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1773262468; bh=f6Nx+HWByGmnQmKv2UQgmEd4UeKnLT2KP2r/nzZ06NM=;
+ t=1773262468; bh=2ZQAMKNvsoITqJfmAT8LBeZf1cS/n75aHcbFq2pkSWs=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=mDGLgadHZsf3KuyOl/VyviKs7TiWi7kLJtdR/xMDMFel41ViypF87XZT1CkqHupsW
- B4vYH1Nx1q2jNgAxrBKipUHB7QimlzT8vE5ugJJ8JQd4fonrM4Dj9ZRZlw38Hgmyze
- zSJpLFlN1H4EbiVcamTzCqVWmYme+7XpkIZHTImk9V9es2MHxIdTMhRMzJPR1Wd672
- PIrHdBpJvQu8aHfMGvS9mFrmwMGu7sFfDxT1zBKaLnsBEplClPqlGlzEHgQeU7jEJz
- LbA5sV77Ygq4aZSUoCunhZ7rMxtByVYkkU4KfHp5/veSdM5jpF3i80JB5OxU3HLgHA
- tKsX0X1sR720Q==
+ b=W62Dd+x3Q0ZX34W/x60hv1Ya0+/mdk208PL7pfZdTAMLHn1GiHigDmH4bkoNo6M28
+ r7BlDF9zir3+GmCvBjqYLLhJcMIMk9d+rTxbKQB/7MxL2AeZMGhAUg5XTlv7+vXnZx
+ EM5v3NfYcC7UMydARiqqc3oBh3wuK9vOxiAuM0pOBRxeOG/5l4j2LV7Z1AIgfaizmW
+ Q46yN068e7q+eQoc69mgWHW8+zcQD/EB+qLPWiq7f9/DrE8VKe/obwuoDFOJX4N/UB
+ Z0qqMwQsLnAFwB9JOS7h2b8K6IpleF1NexSFXTmX3/XqX3HX8bexLdPGv6xg6mG895
+ oIb7KrtcEBKyQ==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id F35661921F1;
+ by isrv.corpit.ru (Postfix) with ESMTP id DC1AF1921F0;
  Wed, 11 Mar 2026 23:54:28 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 5452D37C4D6;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 47BA537C4D5;
  Wed, 11 Mar 2026 23:55:07 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Michael Tokarev <mjt@tls.msk.ru>,
 	qemu-trivial@nongnu.org
-Subject: [PATCH trivial v2 4/7] meson.build: stop checking for inotify_init()
-Date: Wed, 11 Mar 2026 23:54:52 +0300
-Message-ID: <20260311205459.1101023-5-mjt@tls.msk.ru>
+Subject: [PATCH trivial v2 3/7] linux-user: assume inotify sycalls are always
+ present
+Date: Wed, 11 Mar 2026 23:54:51 +0300
+Message-ID: <20260311205459.1101023-4-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260311205459.1101023-1-mjt@tls.msk.ru>
 References: <20260311205459.1101023-1-mjt@tls.msk.ru>
@@ -69,37 +70,125 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-the only place in qemu which used the check for inotify_init()
-was linux-user, which now assumes inotify_init() is always
-present.  There's no need to check for this function anymore.
+inotify_init() and other syscalls appeared in linux 2.6.13,
+inotify_init1() - in linux 2.6.27.
+
+There's no need to check their presence on linux anymore.
+
+Keep condition on TARGET_NR_inotify_init because modern
+architectures have only more generic inotify_init1().
+
+Other, not linux-specific, places of the code checks for
+inotify_init1() syscall only.
 
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- meson.build | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ linux-user/fd-trans.c |  5 -----
+ linux-user/fd-trans.h |  4 ----
+ linux-user/syscall.c  | 19 ++-----------------
+ 3 files changed, 2 insertions(+), 26 deletions(-)
 
-diff --git a/meson.build b/meson.build
-index 97af137f3f..bc60f71825 100644
---- a/meson.build
-+++ b/meson.build
-@@ -2675,15 +2675,12 @@ endif
- config_host_data.set('CONFIG_ASAN_IFACE_FIBER', have_asan_fiber)
+diff --git a/linux-user/fd-trans.c b/linux-user/fd-trans.c
+index f83d1f79d5..64dd0745d2 100644
+--- a/linux-user/fd-trans.c
++++ b/linux-user/fd-trans.c
+@@ -18,9 +18,7 @@
+ #include <sys/signalfd.h>
+ #include <linux/unistd.h>
+ #include <linux/audit.h>
+-#ifdef CONFIG_INOTIFY
+ #include <sys/inotify.h>
+-#endif
+ #include <linux/netlink.h>
+ #ifdef CONFIG_RTNETLINK
+ #include <linux/rtnetlink.h>
+@@ -1861,8 +1859,6 @@ TargetFdTrans target_timerfd_trans = {
+     .host_to_target_data = swap_data_u64,
+ };
  
- inotify = not_found
--have_inotify_init = cc.has_header_symbol('sys/inotify.h', 'inotify_init')
- have_inotify_init1 = cc.has_header_symbol('sys/inotify.h', 'inotify_init1')
--if (have_inotify_init or have_inotify_init1) and not cc.has_function('inotify_init1')
-+if have_inotify_init1 and not cc.has_function('inotify_init1')
-   # FreeBSD 14 and older need libinotify-kqueue wrapper
-   inotify = cc.find_library('inotify')
--  have_inotify_init = have_inotify_init and inotify.found()
--  have_inotify_init1 = have_inotify_init1 and inotify.found()
-+  have_inotify_init1 = inotify.found()
- endif
--config_host_data.set('CONFIG_INOTIFY', have_inotify_init)
- config_host_data.set('CONFIG_INOTIFY1', have_inotify_init1)
+-#if defined(CONFIG_INOTIFY) && (defined(TARGET_NR_inotify_init) || \
+-        defined(TARGET_NR_inotify_init1))
+ static abi_long host_to_target_data_inotify(void *buf, size_t len)
+ {
+     struct inotify_event *ev;
+@@ -1885,4 +1881,3 @@ static abi_long host_to_target_data_inotify(void *buf, size_t len)
+ TargetFdTrans target_inotify_trans = {
+     .host_to_target_data = host_to_target_data_inotify,
+ };
+-#endif
+diff --git a/linux-user/fd-trans.h b/linux-user/fd-trans.h
+index e14f96059c..3bbc15fa1f 100644
+--- a/linux-user/fd-trans.h
++++ b/linux-user/fd-trans.h
+@@ -141,9 +141,5 @@ extern TargetFdTrans target_netlink_audit_trans;
+ extern TargetFdTrans target_signalfd_trans;
+ extern TargetFdTrans target_eventfd_trans;
+ extern TargetFdTrans target_timerfd_trans;
+-#if (defined(TARGET_NR_inotify_init) && defined(__NR_inotify_init)) || \
+-    (defined(CONFIG_INOTIFY1) && defined(TARGET_NR_inotify_init1) && \
+-     defined(__NR_inotify_init1))
+ extern TargetFdTrans target_inotify_trans;
+ #endif
+-#endif
+diff --git a/linux-user/syscall.c b/linux-user/syscall.c
+index 87f9c22b68..1f28e7e93f 100644
+--- a/linux-user/syscall.c
++++ b/linux-user/syscall.c
+@@ -514,15 +514,7 @@ static int sys_renameat2(int oldfd, const char *old,
+ #endif
+ #endif /* TARGET_NR_renameat2 */
  
- # has_header_symbol
+-#ifdef CONFIG_INOTIFY
+ #include <sys/inotify.h>
+-#else
+-/* Userspace can usually survive runtime without inotify */
+-#undef TARGET_NR_inotify_init
+-#undef TARGET_NR_inotify_init1
+-#undef TARGET_NR_inotify_add_watch
+-#undef TARGET_NR_inotify_rm_watch
+-#endif /* CONFIG_INOTIFY  */
+ 
+ #if defined(TARGET_NR_prlimit64)
+ #ifndef __NR_prlimit64
+@@ -13441,8 +13433,8 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+     case TARGET_NR_futex_time64:
+         return do_futex(cpu, true, arg1, arg2, arg3, arg4, arg5, arg6);
+ #endif
+-#ifdef CONFIG_INOTIFY
+-#if defined(TARGET_NR_inotify_init)
++
++#ifdef TARGET_NR_inotify_init
+     case TARGET_NR_inotify_init:
+         ret = get_errno(inotify_init());
+         if (ret >= 0) {
+@@ -13450,7 +13442,6 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+         }
+         return ret;
+ #endif
+-#if defined(TARGET_NR_inotify_init1) && defined(CONFIG_INOTIFY1)
+     case TARGET_NR_inotify_init1:
+         ret = get_errno(inotify_init1(target_to_host_bitmask(arg1,
+                                           fcntl_flags_tbl)));
+@@ -13458,19 +13449,13 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+             fd_trans_register(ret, &target_inotify_trans);
+         }
+         return ret;
+-#endif
+-#if defined(TARGET_NR_inotify_add_watch)
+     case TARGET_NR_inotify_add_watch:
+         p = lock_user_string(arg2);
+         ret = get_errno(inotify_add_watch(arg1, path(p), arg3));
+         unlock_user(p, arg2, 0);
+         return ret;
+-#endif
+-#if defined(TARGET_NR_inotify_rm_watch)
+     case TARGET_NR_inotify_rm_watch:
+         return get_errno(inotify_rm_watch(arg1, arg2));
+-#endif
+-#endif
+ 
+ #if defined(TARGET_NR_mq_open) && defined(__NR_mq_open)
+     case TARGET_NR_mq_open:
 -- 
 2.47.3
 
