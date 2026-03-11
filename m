@@ -4,40 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1DB6E104C007
-	for <qemu-trivial@archiver.kernel.org>; Wed, 11 Mar 2026 10:48:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 72A0C104C007
+	for <qemu-trivial@archiver.kernel.org>; Wed, 11 Mar 2026 10:52:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w0H6Y-0001dZ-Tu; Wed, 11 Mar 2026 06:47:55 -0400
+	id 1w0HAK-0003sm-GH; Wed, 11 Mar 2026 06:51:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1w0H6R-0001cS-AZ; Wed, 11 Mar 2026 06:47:48 -0400
+ id 1w0HAI-0003s3-7K; Wed, 11 Mar 2026 06:51:46 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1w0H6O-0001FN-LJ; Wed, 11 Mar 2026 06:47:47 -0400
+ id 1w0HAF-0001tR-OG; Wed, 11 Mar 2026 06:51:45 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1773226023; bh=k5HEHU3ymOSulB3iuObf0UP54o65Fq5C9v6Z25l3zGM=;
+ t=1773226263; bh=Nj1KpMQtGHcpUklGHYdtGXMQiVQ2Ut5f8Ryevcchn3s=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To;
- b=XYnCRmJnNq4iSGKAq4XWKUDzB62wKk2TKSv4yEktzGlj26tK6oNgBkzL35IeRgFeT
- iOerexPPf9oDOIgQSMZq52aLjVypmKCyfMp0/Hs/y1Q/vwM9dNsdkxbGSdJ9DFpw50
- kUwIEJBrsj9JzdUq/H/uK2gAGzq066M0qgrPxGVz5wSob7so+BE3UWUoOXa6TnBGxm
- M/Dy7XtBjEZwYgQBHgx+7Fh7f6N+ejHDzCT3FBeA+N1oPeYg74p9oL5pHfDMbKsd1Q
- vx0zHS0jeWkxySTtKSPrm5WeF8+RlKZVaUEeWxetKLvl7aEXiAnb7q/Z3u4EkvT1Kd
- GX7UGA+FNbtIg==
+ b=NB9tthzWhO+8tjXsVX2BajmlF8fzMETJsi3czoXkBebPdspv3XeU4v2O2szpM9mDM
+ kCHtgdma9B0/MM/cBv+Qzap8zGF6EK8JLny8enSkVBL4m7kNLQxEAzvX8KoRBqUpkd
+ jWcVcTHGi5tZ+1gZgb/uQ9DVh6hKyZyqdFa//yBhGC2On0Og1+iWfWOSRTuCxRn0lp
+ M0aL2k2d8xxEX619OpUADU9ycsj/GIhbu4fmsGjKQd8CQYRgAodOZc8Qn8603nX0wL
+ 0B/kDGQa7tUFkdNasEtc5E+v/VHfjokxtpZ+4xbQ5xlOyZg+3ySItHT2mMMB6Z9IzK
+ 4/Aye9yewmQuA==
 Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by isrv.corpit.ru (Postfix) with ESMTP id 43BE6191CAB;
- Wed, 11 Mar 2026 13:47:03 +0300 (MSK)
-Message-ID: <47a14220-139f-4be6-a19d-503924d5e90b@tls.msk.ru>
-Date: Wed, 11 Mar 2026 13:47:40 +0300
+ by isrv.corpit.ru (Postfix) with ESMTP id 82DA9191CB8;
+ Wed, 11 Mar 2026 13:51:03 +0300 (MSK)
+Message-ID: <53fb7795-e1c8-4380-8e8e-36cbb73e36a5@tls.msk.ru>
+Date: Wed, 11 Mar 2026 13:51:41 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 0/4] Fix a few minor issues reported by Coverity
+Subject: Re: [PATCH] target/i386: fix NULL pointer dereference in
+ legacy-cache=off handling
 To: Sergei Heifetz <heifetz@yandex-team.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20260208103958.121455-1-heifetz@yandex-team.com>
+Cc: Zhao Liu <zhao1.liu@intel.com>, qemu-trivial@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+References: <20260305060431.30347-1-heifetz@yandex-team.com>
 Content-Language: en-US, ru-RU
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
@@ -83,7 +85,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  YPkzzso6HT7rlapB5nulYmplJZSZ4RmE1ATZKf+wUPocDu6N10LtBNbwHWTT5NLtxNJAJAvl
  ojis6H1kRWZE/n5buyPY2NYeyWfjjrerOYt3er55n4C1I88RSCTGeejVmXWuo65QD2epvzE6
  3GgKngeVm7shlp7+d3D3+fAAHTvulQQqV3jOodz+B4yzuZ7WljkNrmrWrH8aI4uA98c=
-In-Reply-To: <20260208103958.121455-1-heifetz@yandex-team.com>
+In-Reply-To: <20260305060431.30347-1-heifetz@yandex-team.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
@@ -110,30 +112,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 08.02.2026 13:39, Sergei Heifetz wrote:
-> Hi. This patch series fixes several minor issues reported by our local
-> Coverity installation.
+On 05.03.2026 09:04, Sergei Heifetz wrote:
+> The check that xcc->model is not NULL occurs after it is dereferenced
+> inside x86_cpu_get_versioned_cache_info(), so something like
+> `-cpu host,legacy-cache=off` leads to a segfault rather than an error.
+> This patch fixes that.
 > 
-> Changes in v3:
-> - Nothing. I sent the second version of the series without the corresponding 'v2'
->    suffix by mistake. I apologise.
+> Fixes: cca0a000d06f897411a8a ("target/i386: allow versioned CPUs to specify new cache_info")
+> Signed-off-by: Sergei Heifetz <heifetz@yandex-team.com>
+> ---
+>   target/i386/cpu.c | 5 +++--
+>   1 file changed, 3 insertions(+), 2 deletions(-)
 > 
-> Changes in v2:
-> - Remove assert(block) in system/physmem.c instead of placing it
->    before the dereference.
-> 
-> Sergei Heifetz (4):
->    migration/savevm.c: reorder usage and assertion of mis->from_src_file
->    dump/dump.c: reorder usage and assertion of block
->    system/physmem.c: remove useless assertion of block
->    hw/usb/core.c: reorder usage and assertion of p->ep
+> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
+> index 01b64940b1..00645e1149 100644
+> --- a/target/i386/cpu.c
+> +++ b/target/i386/cpu.c
+> @@ -10023,8 +10023,9 @@ static void x86_cpu_realizefn(DeviceState *dev, Error **errp)
+>   
+>       /* Cache information initialization */
+>       if (!cpu->legacy_cache) {
+> -        const CPUCaches *cache_info =
+> -            x86_cpu_get_versioned_cache_info(cpu, xcc->model);
+> +        const CPUCaches *cache_info = xcc->model
+> +            ? x86_cpu_get_versioned_cache_info(cpu, xcc->model)
+> +            : NULL;
+>   
+>           if (!xcc->model || !cache_info) {
+>               g_autofree char *name = x86_cpu_class_get_model_name(xcc);
 
-Hi!
-
-I applied 3 patches from this series - all but the physmem.c one.
-It's ugly either way, so I'm not picking it up.  Sigh.
-
-Sorry it took so long.
+With this cache_info init, the condition in the next line can be
+simplified to just (!cache_info).  Dunno if it's worth the effort
+though.  I can fold this change into the patch at apply time if you're
+ok with it.
 
 Thanks,
 
