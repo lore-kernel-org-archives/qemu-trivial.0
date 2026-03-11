@@ -4,62 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81FE1106286B
-	for <qemu-trivial@archiver.kernel.org>; Wed, 11 Mar 2026 11:59:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 954641062884
+	for <qemu-trivial@archiver.kernel.org>; Wed, 11 Mar 2026 12:23:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w0ICz-0007ZA-92; Wed, 11 Mar 2026 07:58:37 -0400
+	id 1w0IbF-0004Nw-3i; Wed, 11 Mar 2026 08:23:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <heifetz@yandex-team.com>)
- id 1w0ICy-0007Ya-2R; Wed, 11 Mar 2026 07:58:36 -0400
-Received: from forwardcorp1d.mail.yandex.net
- ([2a02:6b8:c41:1300:1:45:d181:df01])
+ id 1w0Ib7-0004N2-UI; Wed, 11 Mar 2026 08:23:34 -0400
+Received: from forwardcorp1a.mail.yandex.net
+ ([2a02:6b8:c0e:500:1:45:d181:df01])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <heifetz@yandex-team.com>)
- id 1w0ICt-0004Xo-V3; Wed, 11 Mar 2026 07:58:34 -0400
-Received: from mail-nwsmtp-smtp-corp-main-56.klg.yp-c.yandex.net
- (mail-nwsmtp-smtp-corp-main-56.klg.yp-c.yandex.net
- [IPv6:2a02:6b8:c42:65a0:0:640:e1de:0])
- by forwardcorp1d.mail.yandex.net (Yandex) with ESMTPS id 49BB38080D;
- Wed, 11 Mar 2026 14:58:26 +0300 (MSK)
+ id 1w0Ib4-0001Z0-JM; Wed, 11 Mar 2026 08:23:33 -0400
+Received: from mail-nwsmtp-smtp-corp-main-83.vla.yp-c.yandex.net
+ (mail-nwsmtp-smtp-corp-main-83.vla.yp-c.yandex.net
+ [IPv6:2a02:6b8:c2d:3530:0:640:eca4:0])
+ by forwardcorp1a.mail.yandex.net (Yandex) with ESMTPS id ACF0AC01EC;
+ Wed, 11 Mar 2026 15:23:25 +0300 (MSK)
 Received: from localhost (unknown [2a02:6bf:8080:d28::1:5])
- by mail-nwsmtp-smtp-corp-main-56.klg.yp-c.yandex.net (smtpcorp/Yandex) with
- ESMTPSA id KwEVh20AoCg0-mxFcbJRa; Wed, 11 Mar 2026 14:58:25 +0300
+ by mail-nwsmtp-smtp-corp-main-83.vla.yp-c.yandex.net (smtpcorp/Yandex) with
+ ESMTPSA id ONFZe30AgW20-WMEZntLP; Wed, 11 Mar 2026 15:23:24 +0300
 X-Yandex-Fwd: 1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.com;
- s=default; t=1773230305;
- bh=tQ0rdDnnXtHbWKj1W6BSWmgy4M9VaftOr++QTeXAopA=;
+ s=default; t=1773231805;
+ bh=Wnz2UuNiumDUica7DAmbDu3dZ8T+Si/TMYchefJNgv0=;
  h=In-Reply-To:Subject:Cc:Message-Id:Date:References:To:From;
- b=D7okiDdJgpjKxIroHNn1hQ6fodMloaEUU3FxbAL33J+kXuVZnJjNhL6l0zTcZqDPp
- dU0tNIvFrGUwvwL55EsTx33qI5Wae6siINi+DLtolO6afv/jpbo3RApihBJ/PkJUez
- rGE+GjHuWmKTN/YydUxTt/OiSMX9EHawjmD0UhBY=
-Authentication-Results: mail-nwsmtp-smtp-corp-main-56.klg.yp-c.yandex.net;
+ b=EkvA/zSFD91QZb2A3Mcu7WLP1INSVIxXn6DEUZQwNnWjvsfiSHY7c6hjYJ9UVI39r
+ XU4s/Xph+XpPmWjUCiRyf5u1L1W9Mp81vNC1S4AFny/9skQeTMLTYJn4bxISd8iGW0
+ uwv239zQz3ZLiwynF4z5Ba2CrUK0Z7jWbj86kqJg=
+Authentication-Results: mail-nwsmtp-smtp-corp-main-83.vla.yp-c.yandex.net;
  dkim=pass header.i=@yandex-team.com
 Mime-Version: 1.0
 Content-Transfer-Encoding: quoted-printable
 Content-Type: text/plain; charset=UTF-8
-Date: Wed, 11 Mar 2026 16:58:20 +0500
-Message-Id: <DGZXOICHJ1AK.WIYHLG0GUZCT@yandex-team.com>
-Cc: "Zhao Liu" <zhao1.liu@intel.com>, <qemu-trivial@nongnu.org>, "Paolo
- Bonzini" <pbonzini@redhat.com>
-Subject: Re: [PATCH] target/i386: fix NULL pointer dereference in
- legacy-cache=off handling
+Date: Wed, 11 Mar 2026 17:23:23 +0500
+Message-Id: <DGZY7OWVZUVM.3EXO0OXP0OCGO@yandex-team.com>
+To: "Peter Maydell" <peter.maydell@linaro.org>, "Sergei Heifetz"
+ <heifetz@yandex-team.com>
+Cc: <qemu-devel@nongnu.org>, <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH v3 3/4] system/physmem.c: remove useless assertion of block
 From: "Sergei Heifetz" <heifetz@yandex-team.com>
-To: "Michael Tokarev" <mjt@tls.msk.ru>, "Sergei Heifetz"
- <heifetz@yandex-team.com>, <qemu-devel@nongnu.org>
 X-Mailer: aerc 0.21.0-119-g0a449d4a7ff3
-References: <20260305060431.30347-1-heifetz@yandex-team.com>
- <53fb7795-e1c8-4380-8e8e-36cbb73e36a5@tls.msk.ru>
-In-Reply-To: <53fb7795-e1c8-4380-8e8e-36cbb73e36a5@tls.msk.ru>
-Received-SPF: pass client-ip=2a02:6b8:c41:1300:1:45:d181:df01;
- envelope-from=heifetz@yandex-team.com; helo=forwardcorp1d.mail.yandex.net
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+References: <20260208103958.121455-1-heifetz@yandex-team.com>
+ <20260208103958.121455-4-heifetz@yandex-team.com>
+ <CAFEAcA92MKa1Q1xwamjsFja=-V5ag-JH4kM8xTFiu07RDCBbTQ@mail.gmail.com>
+In-Reply-To: <CAFEAcA92MKa1Q1xwamjsFja=-V5ag-JH4kM8xTFiu07RDCBbTQ@mail.gmail.com>
+Received-SPF: pass client-ip=2a02:6b8:c0e:500:1:45:d181:df01;
+ envelope-from=heifetz@yandex-team.com; helo=forwardcorp1a.mail.yandex.net
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -76,47 +76,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Wed Mar 11, 2026 at 3:51 PM +05, Michael Tokarev wrote:
-> On 05.03.2026 09:04, Sergei Heifetz wrote:
->> The check that xcc->model is not NULL occurs after it is dereferenced
->> inside x86_cpu_get_versioned_cache_info(), so something like
->> `-cpu host,legacy-cache=3Doff` leads to a segfault rather than an error.
->> This patch fixes that.
->>=20
->> Fixes: cca0a000d06f897411a8a ("target/i386: allow versioned CPUs to spec=
-ify new cache_info")
+On Wed Mar 11, 2026 at 3:51 PM +05, Peter Maydell wrote:
+> On Sun, 8 Feb 2026 at 10:41, Sergei Heifetz <heifetz@yandex-team.com> wro=
+te:
+>>
+>> It is useless to assert that block is not NULL because
+>> it is already dereferenced in the first line of the function.
+>>
+>> We could split the declaration and initialization of oldsize,
+>> but then we would need to remove the const qualifier.
+>> This seems worse, as the assertion would be almost useless anyway.
+>>
 >> Signed-off-by: Sergei Heifetz <heifetz@yandex-team.com>
->> ---
->>   target/i386/cpu.c | 5 +++--
->>   1 file changed, 3 insertions(+), 2 deletions(-)
->>=20
->> diff --git a/target/i386/cpu.c b/target/i386/cpu.c
->> index 01b64940b1..00645e1149 100644
->> --- a/target/i386/cpu.c
->> +++ b/target/i386/cpu.c
->> @@ -10023,8 +10023,9 @@ static void x86_cpu_realizefn(DeviceState *dev, =
-Error **errp)
->>  =20
->>       /* Cache information initialization */
->>       if (!cpu->legacy_cache) {
->> -        const CPUCaches *cache_info =3D
->> -            x86_cpu_get_versioned_cache_info(cpu, xcc->model);
->> +        const CPUCaches *cache_info =3D xcc->model
->> +            ? x86_cpu_get_versioned_cache_info(cpu, xcc->model)
->> +            : NULL;
->>  =20
->>           if (!xcc->model || !cache_info) {
->>               g_autofree char *name =3D x86_cpu_class_get_model_name(xcc=
-);
 >
-> With this cache_info init, the condition in the next line can be
-> simplified to just (!cache_info).=20
+> The commit message fails to note the information found during
+> review of the previous version:
+>  * this function is called from only two places
+>  * those places already either assert or assume that the
+>    block argument is not NULL
+> So the assertion is not getting us anything.
+>
+> With the commit message updated:
+>
+> Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+>
+> thanks
+> -- PMM
 
-Sure.
-
-> Dunno if it's worth the effort though.  I can fold this change into the
-> patch at apply time if you're ok with it.
-
-I'm fine with that if it's easier for you that way. Thank you.
-
+Sorry, I should've included this information in the commit
+message in the first place. I'll update it and resubmit
+the series. Thank you.
 
