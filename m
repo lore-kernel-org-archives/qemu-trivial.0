@@ -4,64 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C0DC51125806
-	for <qemu-trivial@archiver.kernel.org>; Wed, 11 Mar 2026 13:16:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58EAB1125807
+	for <qemu-trivial@archiver.kernel.org>; Wed, 11 Mar 2026 13:22:13 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w0JPc-0000rG-Ue; Wed, 11 Mar 2026 09:15:52 -0400
+	id 1w0JVn-0004wK-UZ; Wed, 11 Mar 2026 09:22:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <heifetz@yandex-team.com>)
- id 1w0JPR-0000mo-Bm; Wed, 11 Mar 2026 09:15:33 -0400
-Received: from forwardcorp1d.mail.yandex.net ([178.154.239.200])
+ id 1w0JVj-0004vN-3Z; Wed, 11 Mar 2026 09:22:03 -0400
+Received: from forwardcorp1b.mail.yandex.net
+ ([2a02:6b8:c02:900:1:45:d181:df01])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <heifetz@yandex-team.com>)
- id 1w0JPN-0000Mb-Gf; Wed, 11 Mar 2026 09:15:33 -0400
-Received: from mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net
- (mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net
- [IPv6:2a02:6b8:c0c:bf1f:0:640:c739:0])
- by forwardcorp1d.mail.yandex.net (Yandex) with ESMTPS id 156A580606;
- Wed, 11 Mar 2026 16:15:25 +0300 (MSK)
-Received: from heifetz-lin.yandex-team.ru (unknown [2a02:6bf:8080:d28::1:5])
- by mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net (smtpcorp/Yandex) with
- ESMTPSA id MFGaO30AdeA0-WCu8oipK; Wed, 11 Mar 2026 16:15:24 +0300
+ id 1w0JVg-0001xu-Ir; Wed, 11 Mar 2026 09:22:02 -0400
+Received: from mail-nwsmtp-smtp-corp-main-34.sas.yp-c.yandex.net
+ (mail-nwsmtp-smtp-corp-main-34.sas.yp-c.yandex.net
+ [IPv6:2a02:6b8:c24:fa2:0:640:41ee:0])
+ by forwardcorp1b.mail.yandex.net (Yandex) with ESMTPS id B3524807E2;
+ Wed, 11 Mar 2026 16:21:53 +0300 (MSK)
+Received: from localhost (unknown [2a02:6bf:8080:d28::1:5])
+ by mail-nwsmtp-smtp-corp-main-34.sas.yp-c.yandex.net (smtpcorp/Yandex) with
+ ESMTPSA id qLGU430AvuQ0-ePQEfJ0V; Wed, 11 Mar 2026 16:21:53 +0300
 X-Yandex-Fwd: 1
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex-team.com;
- s=default; t=1773234924;
- bh=aib1BAh5M0/WVaVVuWFg17CTYoL9n/LthhkUS9jzeSU=;
- h=Message-Id:Date:In-Reply-To:Cc:Subject:References:To:From;
- b=VNFO+oW8qUqstjz8iawyeIUPsWLxQ9qgZUSfuDp0wHLBSDHKlcGAmcbbodSQeTvwp
- SC5xvDIWTUNV+CoRjOVvK/AUQC4X/3I10UwmE4ocVFgVcWQXnNn7nRtX47Ghcu9FFT
- 2a3D43cyXKVsfXJGjvnJUQ8ATiYyUciOQLERYJeQ=
-Authentication-Results: mail-nwsmtp-smtp-corp-main-66.iva.yp-c.yandex.net;
+ s=default; t=1773235313;
+ bh=yJvGzfTWyPOmlHYTEJo5TJUPWV04olAz8TdIWEY1Yhs=;
+ h=In-Reply-To:Subject:Cc:Message-Id:Date:References:To:From;
+ b=Vi0eSqgpZLYrDlAda/TQQ6ZE+WWWxRFWeMFzH+gSZOGyxrtI6hJGbpYuPCRu15il0
+ pMJ9Pi9Jn7AdRxnY+U4FbwgWLgonqQmZRRXq1U4ubeadOyStih+8e5Ug79mglSj0a8
+ b9GxOhX/Fn6iBsxhX30hitBfIckMSVMNVhvkCkDM=
+Authentication-Results: mail-nwsmtp-smtp-corp-main-34.sas.yp-c.yandex.net;
  dkim=pass header.i=@yandex-team.com
-From: Sergei Heifetz <heifetz@yandex-team.com>
-To: qemu-devel@nongnu.org
-Cc: Fabiano Rosas <farosas@suse.de>,
- =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- Peter Xu <peterx@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-trivial@nongnu.org, Laurent Vivier <laurent@vivier.eu>
-Subject: [PATCH v4 1/4] migration/savevm.c: reorder usage and assertion of
- mis->from_src_file
-Date: Wed, 11 Mar 2026 18:15:19 +0500
-Message-Id: <20260311131522.58600-2-heifetz@yandex-team.com>
-X-Mailer: git-send-email 2.34.1
-In-Reply-To: <20260311131522.58600-1-heifetz@yandex-team.com>
-References: <20260311131522.58600-1-heifetz@yandex-team.com>
-MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=178.154.239.200;
- envelope-from=heifetz@yandex-team.com; helo=forwardcorp1d.mail.yandex.net
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Mime-Version: 1.0
+Content-Transfer-Encoding: quoted-printable
+Content-Type: text/plain; charset=UTF-8
+Date: Wed, 11 Mar 2026 18:21:52 +0500
+Message-Id: <DGZZGGO06GZ5.3UDKO7EUE6XMP@yandex-team.com>
+Cc: <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH v3 0/4] Fix a few minor issues reported by Coverity
+From: "Sergei Heifetz" <heifetz@yandex-team.com>
+To: "Michael Tokarev" <mjt@tls.msk.ru>, "Sergei Heifetz"
+ <heifetz@yandex-team.com>, <qemu-devel@nongnu.org>
+X-Mailer: aerc 0.21.0-119-g0a449d4a7ff3
+References: <20260208103958.121455-1-heifetz@yandex-team.com>
+ <47a14220-139f-4be6-a19d-503924d5e90b@tls.msk.ru>
+In-Reply-To: <47a14220-139f-4be6-a19d-503924d5e90b@tls.msk.ru>
+Received-SPF: pass client-ip=2a02:6b8:c02:900:1:45:d181:df01;
+ envelope-from=heifetz@yandex-team.com; helo=forwardcorp1b.mail.yandex.net
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -77,38 +74,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Reorder the code so the assertion of mis->from_src_file occurs before
-the call to migration_ioc_unregister_yank_from_file, which dereferences
-it in qemu_file_get_ioc.
+On Wed Mar 11, 2026 at 3:47 PM +05, Michael Tokarev wrote:
+> On 08.02.2026 13:39, Sergei Heifetz wrote:
+>> Hi. This patch series fixes several minor issues reported by our local
+>> Coverity installation.
+>>=20
+>> Changes in v3:
+>> - Nothing. I sent the second version of the series without the correspon=
+ding 'v2'
+>>    suffix by mistake. I apologise.
+>>=20
+>> Changes in v2:
+>> - Remove assert(block) in system/physmem.c instead of placing it
+>>    before the dereference.
+>>=20
+>> Sergei Heifetz (4):
+>>    migration/savevm.c: reorder usage and assertion of mis->from_src_file
+>>    dump/dump.c: reorder usage and assertion of block
+>>    system/physmem.c: remove useless assertion of block
+>>    hw/usb/core.c: reorder usage and assertion of p->ep
+>
+> Hi!
+>
+> I applied 3 patches from this series - all but the physmem.c one.
+> It's ugly either way, so I'm not picking it up.  Sigh.
 
-Fixes: 39675ffffb3394 ("migration: Move the yank unregister of channel_close out")
-Signed-off-by: Sergei Heifetz <heifetz@yandex-team.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
----
- migration/savevm.c | 3 ++-
- 1 file changed, 2 insertions(+), 1 deletion(-)
+I've just resubmitted the series with a change to the commit message of
+the `physmem.c` patch. As pointed out by Peter Maydell, there is a good
+reason to consider the assertion redundant.
 
-diff --git a/migration/savevm.c b/migration/savevm.c
-index 3dc812a7bbb..930a3391e35 100644
---- a/migration/savevm.c
-+++ b/migration/savevm.c
-@@ -2885,13 +2885,14 @@ static bool postcopy_pause_incoming(MigrationIncomingState *mis)
- 
-     assert(migrate_postcopy_ram());
- 
-+    assert(mis->from_src_file);
-+
-     /*
-      * Unregister yank with either from/to src would work, since ioc behind it
-      * is the same
-      */
-     migration_ioc_unregister_yank_from_file(mis->from_src_file);
- 
--    assert(mis->from_src_file);
-     qemu_file_shutdown(mis->from_src_file);
-     qemu_fclose(mis->from_src_file);
-     mis->from_src_file = NULL;
--- 
-2.34.1
+> Sorry it took so long.
 
+It's fine. Thank you.
 
