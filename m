@@ -4,43 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD6D9103E2E5
-	for <qemu-trivial@archiver.kernel.org>; Wed, 11 Mar 2026 20:56:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BFF07103E2E6
+	for <qemu-trivial@archiver.kernel.org>; Wed, 11 Mar 2026 20:56:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w0Qar-0003pd-0r; Wed, 11 Mar 2026 16:55:49 -0400
+	id 1w0Qau-0003sd-IV; Wed, 11 Mar 2026 16:55:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1w0Qaj-0003gj-At; Wed, 11 Mar 2026 16:55:41 -0400
+ id 1w0Qao-0003lD-FE; Wed, 11 Mar 2026 16:55:46 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1w0QaX-00082u-R6; Wed, 11 Mar 2026 16:55:36 -0400
+ id 1w0Qal-0008FI-CF; Wed, 11 Mar 2026 16:55:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1773262468; bh=2ZQAMKNvsoITqJfmAT8LBeZf1cS/n75aHcbFq2pkSWs=;
+ t=1773262469; bh=AcNMYIFDrEN54FI0tN/yss+Qg87nVMQ2Wyhg1uY/8v4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=W62Dd+x3Q0ZX34W/x60hv1Ya0+/mdk208PL7pfZdTAMLHn1GiHigDmH4bkoNo6M28
- r7BlDF9zir3+GmCvBjqYLLhJcMIMk9d+rTxbKQB/7MxL2AeZMGhAUg5XTlv7+vXnZx
- EM5v3NfYcC7UMydARiqqc3oBh3wuK9vOxiAuM0pOBRxeOG/5l4j2LV7Z1AIgfaizmW
- Q46yN068e7q+eQoc69mgWHW8+zcQD/EB+qLPWiq7f9/DrE8VKe/obwuoDFOJX4N/UB
- Z0qqMwQsLnAFwB9JOS7h2b8K6IpleF1NexSFXTmX3/XqX3HX8bexLdPGv6xg6mG895
- oIb7KrtcEBKyQ==
+ b=R/RpijkIDUEzvztXohHh74cU22bDDulRaPK5OTLZtkswPXyz7UD4D0W31/KyLmVNw
+ KYMxca1VodUoo5OaSODRmwDlfwQdO94FOzLQNuHnAIyi18ZTLtSz3BRe9d6KjyRRZv
+ 5iVKPt3shNIPb2wZOq4l9imSIsA5MbuRZ8II7RSvGPwBlL+p3TTI2OwzvliTITX09U
+ 5Yim/H0PV1xqPx0k7bR3QbutuJHfQfFXcrF0+h91IqZTNIRtH12U9hW011gAQhuA+V
+ lI0cuWqfgxsWjWZE6AH6/aNiRGZB6dMKxiksTZTO7vXnAoUfs4fvK56TR4jmFGxv/d
+ bapG7oELG7gsw==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id DC1AF1921F0;
- Wed, 11 Mar 2026 23:54:28 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 0E7561921F2;
+ Wed, 11 Mar 2026 23:54:29 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 47BA537C4D5;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 6B59637C4D7;
  Wed, 11 Mar 2026 23:55:07 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Subject: [PATCH trivial v2 3/7] linux-user: assume inotify sycalls are always
- present
-Date: Wed, 11 Mar 2026 23:54:51 +0300
-Message-ID: <20260311205459.1101023-4-mjt@tls.msk.ru>
+Cc: Michael Tokarev <mjt@tls.msk.ru>, qemu-trivial@nongnu.org,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH trivial v2 5/7] linux-user: assume epoll is always present
+Date: Wed, 11 Mar 2026 23:54:53 +0300
+Message-ID: <20260311205459.1101023-6-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260311205459.1101023-1-mjt@tls.msk.ru>
 References: <20260311205459.1101023-1-mjt@tls.msk.ru>
@@ -70,125 +69,91 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-inotify_init() and other syscalls appeared in linux 2.6.13,
-inotify_init1() - in linux 2.6.27.
+epoll is in linux since 2.6 (glibc 2.3.2).
+epoll_init1 has been added in 2.6.27 (glibc 2.9).
+There's no need to check for its presence, including all other
+epoll-related syscalls.
 
-There's no need to check their presence on linux anymore.
+Modern architectures don't have epoll_create(), only
+epoll_create1(), so keep conditional around the former.
 
-Keep condition on TARGET_NR_inotify_init because modern
-architectures have only more generic inotify_init1().
-
-Other, not linux-specific, places of the code checks for
-inotify_init1() syscall only.
-
+Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- linux-user/fd-trans.c |  5 -----
- linux-user/fd-trans.h |  4 ----
- linux-user/syscall.c  | 19 ++-----------------
- 3 files changed, 2 insertions(+), 26 deletions(-)
+ linux-user/syscall.c      | 10 ++--------
+ linux-user/syscall_defs.h |  3 ---
+ 2 files changed, 2 insertions(+), 11 deletions(-)
 
-diff --git a/linux-user/fd-trans.c b/linux-user/fd-trans.c
-index f83d1f79d5..64dd0745d2 100644
---- a/linux-user/fd-trans.c
-+++ b/linux-user/fd-trans.c
-@@ -18,9 +18,7 @@
- #include <sys/signalfd.h>
- #include <linux/unistd.h>
- #include <linux/audit.h>
--#ifdef CONFIG_INOTIFY
- #include <sys/inotify.h>
--#endif
- #include <linux/netlink.h>
- #ifdef CONFIG_RTNETLINK
- #include <linux/rtnetlink.h>
-@@ -1861,8 +1859,6 @@ TargetFdTrans target_timerfd_trans = {
-     .host_to_target_data = swap_data_u64,
- };
- 
--#if defined(CONFIG_INOTIFY) && (defined(TARGET_NR_inotify_init) || \
--        defined(TARGET_NR_inotify_init1))
- static abi_long host_to_target_data_inotify(void *buf, size_t len)
- {
-     struct inotify_event *ev;
-@@ -1885,4 +1881,3 @@ static abi_long host_to_target_data_inotify(void *buf, size_t len)
- TargetFdTrans target_inotify_trans = {
-     .host_to_target_data = host_to_target_data_inotify,
- };
--#endif
-diff --git a/linux-user/fd-trans.h b/linux-user/fd-trans.h
-index e14f96059c..3bbc15fa1f 100644
---- a/linux-user/fd-trans.h
-+++ b/linux-user/fd-trans.h
-@@ -141,9 +141,5 @@ extern TargetFdTrans target_netlink_audit_trans;
- extern TargetFdTrans target_signalfd_trans;
- extern TargetFdTrans target_eventfd_trans;
- extern TargetFdTrans target_timerfd_trans;
--#if (defined(TARGET_NR_inotify_init) && defined(__NR_inotify_init)) || \
--    (defined(CONFIG_INOTIFY1) && defined(TARGET_NR_inotify_init1) && \
--     defined(__NR_inotify_init1))
- extern TargetFdTrans target_inotify_trans;
- #endif
--#endif
 diff --git a/linux-user/syscall.c b/linux-user/syscall.c
-index 87f9c22b68..1f28e7e93f 100644
+index 1f28e7e93f..7832a1aba5 100644
 --- a/linux-user/syscall.c
 +++ b/linux-user/syscall.c
-@@ -514,15 +514,7 @@ static int sys_renameat2(int oldfd, const char *old,
+@@ -73,9 +73,7 @@
+ #ifdef CONFIG_EVENTFD
+ #include <sys/eventfd.h>
  #endif
- #endif /* TARGET_NR_renameat2 */
- 
--#ifdef CONFIG_INOTIFY
- #include <sys/inotify.h>
--#else
--/* Userspace can usually survive runtime without inotify */
--#undef TARGET_NR_inotify_init
--#undef TARGET_NR_inotify_init1
--#undef TARGET_NR_inotify_add_watch
--#undef TARGET_NR_inotify_rm_watch
--#endif /* CONFIG_INOTIFY  */
- 
- #if defined(TARGET_NR_prlimit64)
- #ifndef __NR_prlimit64
-@@ -13441,8 +13433,8 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
-     case TARGET_NR_futex_time64:
-         return do_futex(cpu, true, arg1, arg2, arg3, arg4, arg5, arg6);
+-#ifdef CONFIG_EPOLL
+ #include <sys/epoll.h>
+-#endif
+ #ifdef CONFIG_ATTR
+ #include "qemu/xattr.h"
  #endif
--#ifdef CONFIG_INOTIFY
--#if defined(TARGET_NR_inotify_init)
+@@ -13732,16 +13730,13 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+     case TARGET_NR_signalfd:
+         return do_signalfd4(arg1, arg2, 0);
+ #endif
+-#if defined(CONFIG_EPOLL)
 +
-+#ifdef TARGET_NR_inotify_init
-     case TARGET_NR_inotify_init:
-         ret = get_errno(inotify_init());
-         if (ret >= 0) {
-@@ -13450,7 +13442,6 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
-         }
-         return ret;
+ #if defined(TARGET_NR_epoll_create)
+     case TARGET_NR_epoll_create:
+         return get_errno(epoll_create(arg1));
  #endif
--#if defined(TARGET_NR_inotify_init1) && defined(CONFIG_INOTIFY1)
-     case TARGET_NR_inotify_init1:
-         ret = get_errno(inotify_init1(target_to_host_bitmask(arg1,
-                                           fcntl_flags_tbl)));
-@@ -13458,19 +13449,13 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
-             fd_trans_register(ret, &target_inotify_trans);
+-#if defined(TARGET_NR_epoll_create1) && defined(CONFIG_EPOLL_CREATE1)
+     case TARGET_NR_epoll_create1:
+         return get_errno(epoll_create1(target_to_host_bitmask(arg1, fcntl_flags_tbl)));
+-#endif
+-#if defined(TARGET_NR_epoll_ctl)
+     case TARGET_NR_epoll_ctl:
+     {
+         struct epoll_event ep;
+@@ -13770,7 +13765,6 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
          }
-         return ret;
--#endif
--#if defined(TARGET_NR_inotify_add_watch)
-     case TARGET_NR_inotify_add_watch:
-         p = lock_user_string(arg2);
-         ret = get_errno(inotify_add_watch(arg1, path(p), arg3));
-         unlock_user(p, arg2, 0);
-         return ret;
--#endif
--#if defined(TARGET_NR_inotify_rm_watch)
-     case TARGET_NR_inotify_rm_watch:
-         return get_errno(inotify_rm_watch(arg1, arg2));
--#endif
+         return get_errno(epoll_ctl(arg1, arg2, arg3, epp));
+     }
 -#endif
  
- #if defined(TARGET_NR_mq_open) && defined(__NR_mq_open)
-     case TARGET_NR_mq_open:
+ #if defined(TARGET_NR_epoll_wait)
+     case TARGET_NR_epoll_wait:
+@@ -13856,7 +13850,7 @@ static abi_long do_syscall1(CPUArchState *cpu_env, int num, abi_long arg1,
+         g_free(ep);
+         return ret;
+     }
+-#endif /* CONFIG_EPOLL */
++
+ #ifdef TARGET_NR_prlimit64
+     case TARGET_NR_prlimit64:
+     {
+diff --git a/linux-user/syscall_defs.h b/linux-user/syscall_defs.h
+index 20d862fd8b..aac8b0c574 100644
+--- a/linux-user/syscall_defs.h
++++ b/linux-user/syscall_defs.h
+@@ -2595,7 +2595,6 @@ struct target_drm_i915_getparam {
+ #define FUTEX_CLOCK_REALTIME    256
+ #define FUTEX_CMD_MASK          ~(FUTEX_PRIVATE_FLAG | FUTEX_CLOCK_REALTIME)
+ 
+-#ifdef CONFIG_EPOLL
+ #if defined(TARGET_X86_64)
+ #define TARGET_EPOLL_PACKED QEMU_PACKED
+ #else
+@@ -2616,8 +2615,6 @@ struct target_epoll_event {
+ 
+ #define TARGET_EP_MAX_EVENTS (INT_MAX / sizeof(struct target_epoll_event))
+ 
+-#endif
+-
+ struct target_ucred {
+     abi_uint pid;
+     abi_uint uid;
 -- 
 2.47.3
 
