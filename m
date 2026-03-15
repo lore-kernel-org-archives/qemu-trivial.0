@@ -4,84 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6929CD58B2B
-	for <qemu-trivial@archiver.kernel.org>; Sun, 15 Mar 2026 13:03:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BEF44F30280
+	for <qemu-trivial@archiver.kernel.org>; Sun, 15 Mar 2026 19:04:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w1l6v-0007Tl-2Q; Sun, 15 Mar 2026 09:02:25 -0400
+	id 1w1ql8-0002St-60; Sun, 15 Mar 2026 15:04:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <raghavendraaadhya@gmail.com>)
- id 1w1l6t-0007TJ-F3
- for qemu-trivial@nongnu.org; Sun, 15 Mar 2026 09:02:23 -0400
-Received: from mail-pl1-x630.google.com ([2607:f8b0:4864:20::630])
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1w1ql6-0002SX-PH
+ for qemu-trivial@nongnu.org; Sun, 15 Mar 2026 15:04:16 -0400
+Received: from mail-ed1-x529.google.com ([2a00:1450:4864:20::529])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <raghavendraaadhya@gmail.com>)
- id 1w1l6r-0003c5-Pk
- for qemu-trivial@nongnu.org; Sun, 15 Mar 2026 09:02:23 -0400
-Received: by mail-pl1-x630.google.com with SMTP id
- d9443c01a7336-2ad9f316d68so17546585ad.2
- for <qemu-trivial@nongnu.org>; Sun, 15 Mar 2026 06:02:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
+ id 1w1ql2-00025k-Go
+ for qemu-trivial@nongnu.org; Sun, 15 Mar 2026 15:04:16 -0400
+Received: by mail-ed1-x529.google.com with SMTP id
+ 4fb4d7f45d1cf-6634bb959a2so5160650a12.1
+ for <qemu-trivial@nongnu.org>; Sun, 15 Mar 2026 12:04:07 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20230601; t=1773579737; x=1774184537; darn=nongnu.org;
- h=cc:to:subject:date:from:message-id:from:to:cc:subject:date
+ d=linaro.org; s=google; t=1773601446; x=1774206246; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
  :message-id:reply-to;
- bh=GNIfAmKm5ApCc+B0mFDnttKVftHd6ynLG4xrxceTwoc=;
- b=PPSFCg5DL6KGPJsbWS2Qm1lGG4gfopzRT6X3lhjbyoavWZJaH9V8gbH0BV4xZwq1ub
- Gzb2T5BVjBzM74V8yG0eREwGkvOz2fDUMXdZa4NP5WgxtKqH27+emlWYY6znBRBXzIRw
- fGpK79aXN4Aqd+mUAFaHLHGOaeWAaZGc64tarRoT1PTMYjFHGmtPOLwtqkeYnRAt9WXz
- zN2U8SxmShhxb5xr0DhqXp865BZ2kAHn98Ehoi8329Eb0l+FN1qz+h8AanXP4iVervNi
- BG8gfcsSSYWHOXfZr26eueY2LHzAomn3HUSAjJL25J6nPCRv7ryhEwT2ZvzRTMqtghsm
- HYNg==
+ bh=lwV19h00vdzeJjzm0o6XW8dCysIrmtIE3gx61x9k82w=;
+ b=DzQ9WNcH8szT7X45JyudojLuSetEVeU0sP2pqKlkPTKdm6ikMJ8Kydir3KgIjRRF1V
+ FnXXPP6MNmqSlzMvi1PEpFnCXK6XyyN4y/rLvTJSx0FqV44ptWHzloFsBAilorVMsrZT
+ 5y+tqKFhHZQUX4OSGYPy4PKjmLCTyMeuH/LBfLPKE2esYoCFaPukcam6R7hZdfVotsS0
+ MbphcsOY6CWvRpca53vT2nrSKzYEyl3Ben7iJER+dyPf+AatYEbB7fcWDyhG+Pe/lJAX
+ uGddUKFJ5PQq83UPvJ7vtSw+IPMzUf7Z1CwJ5bCmWqJttai0y1Rat3E8z/n7I27fTqTz
+ JbrA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773579737; x=1774184537;
- h=cc:to:subject:date:from:message-id:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=GNIfAmKm5ApCc+B0mFDnttKVftHd6ynLG4xrxceTwoc=;
- b=UfC3McyXBsNE9hQe7pXtHNqKWTDUipYyn9KW6n+52DNOu/uzCmef/n2zkMH0Y66AX6
- yLSDNIP7WoUYpTzruPTjCATtYKOOAj91h4HNI8oDS/hJxNgmmkP3Sx5qzL8Kg1s0ia67
- 5RuCoEDGC9mSLAq8otbPJSyLZqd75Wi4Ua0tfcozUbro1aS9dRblexhNBj9/fiX42YBL
- 3cCYmBIfbcKZ3AVfW8Zx+Teq/FPLoIFhInVOrI5oFJt77f4ELU3zFAr32hIjuhwbgBrO
- pTu+xbSJsKMtErwwXbbv0nF+34hGA6krR9fhKmxygFXP5rILqSY7gs/7MgPzplFzED0G
- hdcw==
+ d=1e100.net; s=20251104; t=1773601446; x=1774206246;
+ h=content-transfer-encoding:mime-version:message-id:date:user-agent
+ :references:in-reply-to:subject:cc:to:from:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+ bh=lwV19h00vdzeJjzm0o6XW8dCysIrmtIE3gx61x9k82w=;
+ b=JJDeGwkwn++kRJrjQxE+stuValkumeJNUZ5zf85+//oVE6jrpUTKy/A4jdSbjBKzdD
+ cnkUvl82nWSIrbXdhcw8IGbEm51pZ+w8VNeKag/RAV31kJmGLIvVPYXNTCBYZdvK0qVT
+ 2f2X0ELhHfpGexdi94RoiySD6ETrwF3/YnpPwjY9zyfm+wjhB1lblYyCwAUaXETOiIfV
+ MwICt8m7mzY2mWU+wu4tF6pCEgvbDje0HS9O9AzJrseCbeuDWdclA7AGZxw2Y+AD6LoJ
+ 2ip7Wkq/d4R2w0cnF3woLg3QUAfFvTTUOnuDARMdyVQyE19ff4mr6dsAJRQGEyfg2Qrb
+ +R9g==
 X-Forwarded-Encrypted: i=1;
- AJvYcCX19H9PLTcTyHfYWPyHzO7NQiZbBE6mIvs8/5+Lq8X8D9tR3aJeCBTHbFz2C2omq1ZYuKOzWBZHqMFJ8lU=@nongnu.org
-X-Gm-Message-State: AOJu0YxVWCaTmPwBY6DtIXfMNrmsdKoFqQBip1QImtUJaTY555roUeJr
- z0bkGKmCYtOQdw4lwKQ3mKIxA8/CeGOlOD264yM6iyQ+oQrCcMIFg3qIo3k1CHOb
-X-Gm-Gg: ATEYQzyJvvJJIgkuQQPWnV3UyeSBqekFR4QkX+8+gtnMkhs5K8lciv4FLCKxw1IaxJK
- c1vdqPhFcyK7yJX+R0z4vzfpcGXfdrj5C8s3G3BVdpiFHLizoPGd7ZanQbtOaHAOBus99hYoc54
- RvY+7ZHcRuiozWHE/v39baZ0zqIivcOuoniEv5Hz1iaZJbK4zYdSUaVhNou0fu+b9BCKSJHeyZ8
- OgcZdjmK+VWrShDZlh5SzDX6YForoz21JyMCp+5kjwtIK/rtRVUigdpfeteeOopKv1/fVgRzppU
- LLliWDRYJNUd7r4ukEuJT6hq/sBeQkz+b+6utAHDajsneFERplW7hl6+02hdxu9JQH9KYispE6J
- jnIHiLtiOKaHHMStG01o81cVdYe8gqTbpWTQOM4Ycaa7pjnYzyt9FJpFibop5jjrUQ9yHCCGR0m
- hfZ7HzBHzy4Zo1vBx4NadhzeKSfb89cWxV7PB2cqqIxtNYwUCzpSju7Dy7k253YjKC4E6oZOlLb
- PtNhWvuUfXHrzLkYZR6OxyYEA==
-X-Received: by 2002:a17:903:2ec7:b0:2ae:7f84:79e3 with SMTP id
- d9443c01a7336-2aeca9c64eamr91020695ad.16.1773579736856; 
- Sun, 15 Mar 2026 06:02:16 -0700 (PDT)
-Received: from Obsi.localdomain ([49.43.240.32])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2aece56c2c4sm97450845ad.2.2026.03.15.06.02.14
+ AJvYcCWQqCvuH9VDQpYeXtCUqwhikPaXpiZK8ya20UPLI5K5LFWCkxW0ojBb9DyA6bmzUd7pNdzgDrzIVPXGLmI=@nongnu.org
+X-Gm-Message-State: AOJu0YwyfxSrm9ECqV774o7k4ake4bghhiKtDMfyXkhD5L2Da2MoCGIF
+ gk2CpgR36xP5QYnD4dfdstUT21BqHjfSz/tlVKQlGq/qG+603mrySlgagp7bLSMajQI=
+X-Gm-Gg: ATEYQzyaKPoXWgnB9eDy7p/8ZvtZf6ZwrLRY0a6I7xYtE+wwz51a9w+46CBK5bQ6aLG
+ QH4RhUA7K7T0HD2ZRZVHIU8Zj09ddPZDz5fahQ0/6jKsERhmFs7Wsf+ZvMp4ONoOnR1nHy3E/9e
+ tCEdkxauQ2AUWx64xFHDNe1KaCuAXUsrxGNnTJzFulB3/nriUILC7mhkeeSX2heeGq2+kmrb+zv
+ n9zHT4mpLLqSN82aVLY+5QlEvRbv4X523++UXGb2l+u79oW4C4u5789hQetoJdMddqFHm4jySCp
+ GnwzSopQtruXG847twPsayZCXl56gX+UGSf1fKpR1R2w5dg8KRlny5iPymfkeoVui69Swg6D4Q1
+ zorQhHy77yb+TXJGDBIUhaJcGH6aDXLLY9MzNJp3yBSHw2yuTZjTVfeDqfwfqPoCIXkd9xhuVvE
+ UkC3vm+8Mi5/8pfcql/sziKHg=
+X-Received: by 2002:a05:6402:254c:b0:664:38f1:8ba0 with SMTP id
+ 4fb4d7f45d1cf-66438f1905emr5193547a12.4.1773601445822; 
+ Sun, 15 Mar 2026 12:04:05 -0700 (PDT)
+Received: from draig.lan ([185.124.0.237]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-6634fbb9bedsm4021627a12.3.2026.03.15.12.04.02
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sun, 15 Mar 2026 06:02:16 -0700 (PDT)
-Message-ID: <69b6add8.170a0220.2bbc48.6528@mx.google.com>
-From: Aadhya-R <raghavendraaadhya@gmail.com>
-X-Google-Original-From: Aadhya-R <aadhyar.cs24@rvce.edu.in>
-Date: Sun, 15 Mar 2026 04:28:32 +0000
-Subject: [PATCH v3 1/2] disas/sparc: Fix integer overflow in compare_opcodes
-To: mark.cave-ayland@ilande.co.uk
-Cc: qemu-devel@nongnu.org,
-    qemu-trivial@nongnu.org
-Received-SPF: pass client-ip=2607:f8b0:4864:20::630;
- envelope-from=raghavendraaadhya@gmail.com; helo=mail-pl1-x630.google.com
-X-Spam_score_int: -5
-X-Spam_score: -0.6
-X-Spam_bar: /
-X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_06_12=1.543,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ Sun, 15 Mar 2026 12:04:03 -0700 (PDT)
+Received: from draig (localhost [IPv6:::1])
+ by draig.lan (Postfix) with ESMTP id AC5165F814;
+ Sun, 15 Mar 2026 19:04:01 +0000 (GMT)
+From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
+To: AADHYA R <aadhyar.cs24@rvce.edu.in>
+Cc: kraxel@redhat.com,  qemu-trivial@nongnu.org,  qemu-devel@nongnu.org
+Subject: Re: [PATCH] hw/audio/fmopl: Convert malloc/free to g_malloc/g_free
+In-Reply-To: <CABHAK8Nuabpy412TgdEqtNJ0tucrqqVupwnZCYrZGmfHFtH5tw@mail.gmail.com>
+ (AADHYA R.'s message of "Sun, 15 Mar 2026 00:59:29 +0530")
+References: <CABHAK8Nuabpy412TgdEqtNJ0tucrqqVupwnZCYrZGmfHFtH5tw@mail.gmail.com>
+User-Agent: mu4e 1.14.0-pre2; emacs 30.1
+Date: Sun, 15 Mar 2026 19:04:01 +0000
+Message-ID: <87qzpkkj8e.fsf@draig.linaro.org>
+MIME-Version: 1.0
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::529;
+ envelope-from=alex.bennee@linaro.org; helo=mail-ed1-x529.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,35 +105,123 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Change '1 << i' to '1ul << i' to prevent undefined behavior when shifting into the sign bit on the 31st iteration. Resolves SVACE static analyzer warning.
----
- disas/sparc.c | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+AADHYA R <aadhyar.cs24@rvce.edu.in> writes:
 
-diff --git a/disas/sparc.c b/disas/sparc.c
-index 5689533ce1..40c1164554 100644
---- a/disas/sparc.c
-+++ b/disas/sparc.c
-@@ -2515,7 +2515,7 @@ compare_opcodes (const void * a, const void * b)
-      another, it is important to order the opcodes in the right order.  */
-   for (i = 0; i < 32; ++i)
-     {
--      unsigned long int x = 1 << i;
-+      unsigned long int x = 1ul << i;
-       int x0 = (match0 & x) != 0;
-       int x1 = (match1 & x) != 0;
- 
-@@ -2525,7 +2525,7 @@ compare_opcodes (const void * a, const void * b)
- 
-   for (i = 0; i < 32; ++i)
-     {
--      unsigned long int x = 1 << i;
-+      unsigned long int x = 1ul << i;
-       int x0 = (lose0 & x) != 0;
-       int x1 = (lose1 & x) != 0;
- 
--- 
-2.43.0
+> As per the QEMU coding style guide, replace standard C malloc()
+> and free() with GLib's g_malloc() and g_free().
+>
+> Since g_malloc() safely aborts on out-of-memory errors, the
+> redundant NULL checks and their associated error-handling paths
+> have been removed.
+>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/issues/1798
+>
+> Signed-off-by: Aadhya-R <aadhyar.cs24@rvce.edu.in>
 
+Reviewed-by: Alex Benn=C3=A9e <alex.bennee@linaro.org>
 
+Although the whole file is fairly out of sync with modern QEMU
+standards. Other things to consider:
+
+  - #if 0 sections
+  - replace hand-written logs in favour of tracepoints where appropriate
+  - coding style clean-ups (mostly mandatory {}'s)
+
+Unfortunately the whole file is tabbed. Usually we keep cosmetic commits
+separate from logic changes.=20
+
+It would be nice to find something that exercised the YM emulation of
+the adlib card. Are you running anything in particular?
+
+> ---
+>  hw/audio/fmopl.c | 41 ++++++++++++-----------------------------
+>  1 file changed, 12 insertions(+), 29 deletions(-)
+>
+> diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
+> index a63ad0f04d..79e43d5410 100644
+> --- a/hw/audio/fmopl.c
+> +++ b/hw/audio/fmopl.c
+> @@ -50,7 +50,6 @@ static int opl_dbg_maxchip,opl_dbg_chip;
+>  /* attack/decay rate time rate */
+>  #define OPL_ARRATE     141280  /* RATE 4 =3D  2826.24ms @ 3.6MHz */
+>  #define OPL_DRRATE    1956000  /* RATE 4 =3D 39280.64ms @ 3.6MHz */
+> -
+>  #define DELTAT_MIXING_LEVEL (1) /* DELTA-T ADPCM MIXING LEVEL */
+>
+>  #define FREQ_BITS 24                   /* frequency turn          */
+> @@ -607,26 +606,10 @@ static int OPLOpenTable( void )
+>          double pom;
+>
+>          /* allocate dynamic tables */
+> -       if( (TL_TABLE =3D malloc(TL_MAX*2*sizeof(int32_t))) =3D=3D NULL)
+> -               return 0;
+> -       if( (SIN_TABLE =3D malloc(SIN_ENT*4 *sizeof(int32_t *))) =3D=3D N=
+ULL)
+> -       {
+> -               free(TL_TABLE);
+> -               return 0;
+> -       }
+> -       if( (AMS_TABLE =3D malloc(AMS_ENT*2 *sizeof(int32_t))) =3D=3D NUL=
+L)
+> -       {
+> -               free(TL_TABLE);
+> -               free(SIN_TABLE);
+> -               return 0;
+> -       }
+> -       if( (VIB_TABLE =3D malloc(VIB_ENT*2 *sizeof(int32_t))) =3D=3D NUL=
+L)
+> -       {
+> -               free(TL_TABLE);
+> -               free(SIN_TABLE);
+> -               free(AMS_TABLE);
+> -               return 0;
+> -       }
+> +    TL_TABLE =3D g_malloc(TL_MAX * 2 * sizeof(int32_t));
+> +    SIN_TABLE =3D g_malloc(SIN_ENT * 4 * sizeof(int32_t *));
+> +    AMS_TABLE =3D g_malloc(AMS_ENT * 2 * sizeof(int32_t));
+> +    VIB_TABLE =3D g_malloc(VIB_ENT * 2 * sizeof(int32_t));
+>       ENV_CURVE =3D g_new(int32_t, 2 * EG_ENT + 1);
+>          /* make total level table */
+>          for (t =3D 0;t < EG_ENT-1 ;t++){
+> @@ -696,10 +679,10 @@ static int OPLOpenTable( void )
+>  static void OPLCloseTable( void )
+>  {
+>       g_free(ENV_CURVE);
+> -       free(TL_TABLE);
+> -       free(SIN_TABLE);
+> -       free(AMS_TABLE);
+> -       free(VIB_TABLE);
+> +    g_free(TL_TABLE);
+> +    g_free(SIN_TABLE);
+> +    g_free(AMS_TABLE);
+> +    g_free(VIB_TABLE);
+>  }
+>
+>  /* CSM Key Control */
+> @@ -1082,9 +1065,9 @@ FM_OPL *OPLCreate(int clock, int rate)
+>          state_size  =3D sizeof(FM_OPL);
+>          state_size +=3D sizeof(OPL_CH)*max_ch;
+>          /* allocate memory block */
+> -       ptr =3D malloc(state_size);
+> -       if(ptr=3D=3DNULL) return NULL;
+> -       /* clear */
+> +    ptr =3D g_malloc(state_size);
+> +
+> +    /* clear */
+>          memset(ptr,0,state_size);
+>          OPL        =3D (FM_OPL *)ptr; ptr+=3Dsizeof(FM_OPL);
+>          OPL->P_CH  =3D (OPL_CH *)ptr; ptr+=3Dsizeof(OPL_CH)*max_ch;
+> @@ -1128,7 +1111,7 @@ void OPLDestroy(FM_OPL *OPL)
+>          }
+>  #endif
+>          OPL_UnLockTable();
+> -       free(OPL);
+> +    g_free(OPL);
+>  }
+>
+>  /* ----------  Option handlers ----------       */
+
+--=20
+Alex Benn=C3=A9e
+Virtualisation Tech Lead @ Linaro
 
