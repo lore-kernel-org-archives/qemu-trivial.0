@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 005BCEFCBBB
-	for <qemu-trivial@archiver.kernel.org>; Mon, 16 Mar 2026 07:12:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 58AA7EFCBD4
+	for <qemu-trivial@archiver.kernel.org>; Mon, 16 Mar 2026 07:12:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w226p-0000BQ-B9; Mon, 16 Mar 2026 03:11:27 -0400
+	id 1w226Z-00086X-AX; Mon, 16 Mar 2026 03:11:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1w2265-0007aN-Ca; Mon, 16 Mar 2026 03:10:44 -0400
+ id 1w225k-0007VL-I3; Mon, 16 Mar 2026 03:10:25 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1w2263-0007na-Jl; Mon, 16 Mar 2026 03:10:41 -0400
+ id 1w225d-0007kf-Tp; Mon, 16 Mar 2026 03:10:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1773645003; bh=CT78znMoqlimioiS3DCVYWSp9dDqIuP3u5vUnyJl+7Q=;
+ t=1773645002; bh=yS6wJVRyK2NZzmnCyDXLV5GJr4GKcXKiMWKEFsAE4xo=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=rItyYghhnhE/pkKNHGjhyI2Jk2rmGaRyAUmKgMG3cmC2wtfchB65EnEWScXqlEja7
- Yvn23IjYlcppzBwhPniitU14syuFVaAgPFMGoG9XeML5IB3zD69hm0lRJv3wJjbHxT
- 2dNHee4NuKQGLt0vGVoUFyAzCt5guUq7NAeRkndT7ZeROy2Nv/tzv8yaTz4lqEApeM
- AwtlwWf4FLchATKmgvMrBzDPxCmkZr0XACqd0EroaNqaQwgXXoNkkOtowVIS1HFIns
- eHqLilHzvfNvEpIbLhCAsOvbgBGiox+POdCR6lxW2fZYIPdYk9b5VYw9/eS56dFk5n
- QrrJSwkgHk7ZA==
+ b=IIG0MwG5Ld9LXWYQB4q+4UVxcU1f0N4lKjmPlfoYP6hANS04Qc77LwXA5A/obFsOr
+ BCfyBp/HaR42qG/2sQSYym0gNUHw/yHMefLqUuAHN+qBZDLMJl7wL/wgxljig/rEgk
+ TvwMTV59WZItjtWCrSYO8tHqmQC83NZRMBK54VgjSGG8xh7ht+ap22V0bMseF4eDkw
+ bVBD5RkPPzKaXlx8VQX6a0Z2zRDMm+0Uw7yNkxgft/fu8NWH8rVrSxLhhj77E2GkIR
+ i54Wwo3/wBQMovEDh7j9V67A0VpfiD4O26ECahG6qOs4ChuBP56FYB1KehBTVNohhr
+ My4NTHhizUiqg==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 236C2193C2D;
- Mon, 16 Mar 2026 10:10:03 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 9A015193C25;
+ Mon, 16 Mar 2026 10:10:02 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 23FE0380055;
- Mon, 16 Mar 2026 10:10:06 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id 97E6138004D;
+ Mon, 16 Mar 2026 10:10:05 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Subject: [PULL 11/14] meson.build: stop checking for inotify_init()
-Date: Mon, 16 Mar 2026 10:09:59 +0300
-Message-ID: <20260316071005.91624-12-mjt@tls.msk.ru>
+Cc: Sergei Heifetz <heifetz@yandex-team.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 03/14] dump/dump.c: reorder usage and assertion of block
+Date: Mon, 16 Mar 2026 10:09:51 +0300
+Message-ID: <20260316071005.91624-4-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260316071005.91624-1-mjt@tls.msk.ru>
 References: <20260316071005.91624-1-mjt@tls.msk.ru>
@@ -69,37 +69,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-the only place in qemu which used the check for inotify_init()
-was linux-user, which now assumes inotify_init() is always
-present.  There's no need to check for this function anymore.
+From: Sergei Heifetz <heifetz@yandex-team.com>
 
+Reorder the code so the assertion of block occurs before it is
+used in the subsequent lines.
+
+Signed-off-by: Sergei Heifetz <heifetz@yandex-team.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Peter Xu <peterx@redhat.com>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- meson.build | 7 ++-----
- 1 file changed, 2 insertions(+), 5 deletions(-)
+ dump/dump.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/meson.build b/meson.build
-index 59ed1a527a..a0f5e900be 100644
---- a/meson.build
-+++ b/meson.build
-@@ -2675,15 +2675,12 @@ endif
- config_host_data.set('CONFIG_ASAN_IFACE_FIBER', have_asan_fiber)
+diff --git a/dump/dump.c b/dump/dump.c
+index f7a99a7af2..80ed6c8d21 100644
+--- a/dump/dump.c
++++ b/dump/dump.c
+@@ -1288,6 +1288,7 @@ static bool get_next_page(GuestPhysBlock **blockptr, uint64_t *pfnptr,
+     /* block == NULL means the start of the iteration */
+     if (!block) {
+         block = QTAILQ_FIRST(&s->guest_phys_blocks.head);
++        assert(block);
+         *blockptr = block;
+         addr = block->target_start;
+         *pfnptr = dump_paddr_to_pfn(s, addr);
+@@ -1295,7 +1296,6 @@ static bool get_next_page(GuestPhysBlock **blockptr, uint64_t *pfnptr,
+         *pfnptr += 1;
+         addr = dump_pfn_to_paddr(s, *pfnptr);
+     }
+-    assert(block != NULL);
  
- inotify = not_found
--have_inotify_init = cc.has_header_symbol('sys/inotify.h', 'inotify_init')
- have_inotify_init1 = cc.has_header_symbol('sys/inotify.h', 'inotify_init1')
--if (have_inotify_init or have_inotify_init1) and not cc.has_function('inotify_init1')
-+if have_inotify_init1 and not cc.has_function('inotify_init1')
-   # FreeBSD 14 and older need libinotify-kqueue wrapper
-   inotify = cc.find_library('inotify')
--  have_inotify_init = have_inotify_init and inotify.found()
--  have_inotify_init1 = have_inotify_init1 and inotify.found()
-+  have_inotify_init1 = inotify.found()
- endif
--config_host_data.set('CONFIG_INOTIFY', have_inotify_init)
- config_host_data.set('CONFIG_INOTIFY1', have_inotify_init1)
- 
- # has_header_symbol
+     while (1) {
+         if (addr >= block->target_start && addr < block->target_end) {
 -- 
 2.47.3
 
