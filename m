@@ -4,71 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B22CF3381F
-	for <qemu-trivial@archiver.kernel.org>; Tue, 17 Mar 2026 08:59:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D911FD8748
+	for <qemu-trivial@archiver.kernel.org>; Tue, 17 Mar 2026 12:02:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w2QGl-00080U-15; Tue, 17 Mar 2026 04:59:19 -0400
+	id 1w2T8L-0008JU-Uo; Tue, 17 Mar 2026 08:02:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1w2QGM-0007by-Pj
- for qemu-trivial@nongnu.org; Tue, 17 Mar 2026 04:58:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1w2QGJ-00081t-Ou
- for qemu-trivial@nongnu.org; Tue, 17 Mar 2026 04:58:53 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773737931;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Nvo8ZxYpvNESWwYgT308QCI89GUADvG+DHcdOxlYT34=;
- b=VAQgfydw7pm4iikQo9OD8XYE8egM4w3Xtb44PHvbrcEd3sGP7UkfqXOJYyvnF6sZ37oR1a
- edGuWbyuhkBZc4TjT3YA9CS9KGSoMl6xNqHstc6jzeCBSEnLdp22IiFgkWe1QHOZTre3so
- bjJJ2vUd1307dEq43J5LqXs81brDuFg=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-21-_BfSUI-tNSmIhO-_mbupAQ-1; Tue,
- 17 Mar 2026 04:58:46 -0400
-X-MC-Unique: _BfSUI-tNSmIhO-_mbupAQ-1
-X-Mimecast-MFC-AGG-ID: _BfSUI-tNSmIhO-_mbupAQ_1773737925
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 705BC1956056; Tue, 17 Mar 2026 08:58:45 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.44.32.37])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id E07453000223; Tue, 17 Mar 2026 08:58:42 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
-	qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Markus Armbruster <armbru@redhat.com>,
- Artyom Tarasenko <atar4qemu@gmail.com>
-Subject: [PATCH] hw/sparc64/sun4u_iommu: Fix crash when introspecting
- sun4u-iommu from the CLI
-Date: Tue, 17 Mar 2026 09:58:39 +0100
-Message-ID: <20260317085839.445178-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w2T7x-0008CC-DF
+ for qemu-trivial@nongnu.org; Tue, 17 Mar 2026 08:02:27 -0400
+Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1w2T7r-0001Pw-Ra
+ for qemu-trivial@nongnu.org; Tue, 17 Mar 2026 08:02:24 -0400
+Received: by mail-wm1-x333.google.com with SMTP id
+ 5b1f17b1804b1-4853aec185aso46560505e9.1
+ for <qemu-trivial@nongnu.org>; Tue, 17 Mar 2026 05:02:18 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1773748937; x=1774353737; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=eEMVLLP1U//JG1yL/MKQCMAGHc16tRv91hnW1ImxWr0=;
+ b=Y417AQF5ASIKFM6g/29AqwazuZC0gnar+Jg+Wn+7qkphadUxpfNmdKlRNUY82phjVW
+ NPHpMtUNIdjR1D3pEDxxHq//ASTTWtqd0BnOPrQGBZhXozGp8MxPmwL+wOdbuC2QmKcT
+ RkCaKCo242SRJ/6M3cKzJaloKvjilYEtIGqThy/C/AFlpe0F+NMl2uUDe1leLWHSd7PG
+ mZU8xPXKoYi9oYm/sPK1+3szeu7tbCUYlH81EMwdupnu8tKPB2HE/L5EyugvBFTneVU1
+ gtmL613RkkHzIndvoDuCvvwtKXbm+5eOkCZINe9jhuBTSu8Q/BZafCU9oJZ3XyHh6Gid
+ G7jw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1773748937; x=1774353737;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=eEMVLLP1U//JG1yL/MKQCMAGHc16tRv91hnW1ImxWr0=;
+ b=FnG29RZeedOQ8UAfmmC7nqKhkVU0DYioaXHcDhnIHCskmzprWORsLJbXZLrhXMRmnN
+ hRVRrGiwH7hQUMpOtrFW2atgvSKlxVJEsnOsIYFawSSrXyndsxeCIRCS1B8dCmKn2cJc
+ BJSSPs0IJVoeqs6bEdZvPZtkl7DDEe2iU0KQjvcUSpwHRLuvVcgo7bfKkn0p0r0SnxN4
+ qQwbLVTnMx6mEyC61KYB6YpmeCyAJcpPiR0LUVdVpansEX5NaKk+DtetZJeowZ3WoYdn
+ 3DWhz1f64iRYTs1XYgWqzama1pV9tmK+oFpAQalqOONJg9v1MdUZ0xRk0TEF6vWnZnNO
+ CMwQ==
+X-Gm-Message-State: AOJu0YwYMet0sfLORD2/DPdpv3s/KuxvQX1QlqDDIDn6rNfdPLg0wE9/
+ ymxbifoiJw8eo7s9AhxA+lqXViCiZj2A5gU87tGaRx/VpHmwgYhnfLBah8AsltwXLho=
+X-Gm-Gg: ATEYQzya4o6tLObxzjxOrgBpBIRPlRGaafUxsExlwtOwumeFAmQeeMrad28n0MnhkR4
+ F4xyWKExB0vMhyzMbOO8RB4GUortrVhIhekMUzzapZVLlXE8kGRTtWeS/jPQ0FwWLl4DSnONZDD
+ eN2AGLi/U3s+Ik3dZs9OUmXLPhDKXRg9WGXIz2hSK5uMOX2DwVNbStFMPg1QRj8Sdom7VGan2dE
+ hoaEQB+4JV4glRt0rVLz3V1kM3MJVrsL/USM60UQ6AsEewmQqBMszAqwm4sMoUPIPhRK27xwpBT
+ k9vdf/z5yqGWGm2RDZ5b+Jr+LKdMKieLw8O5RceEvTDdkMGF0cPTrGjr9xlDND4epkzVM5+BQ9y
+ Xjgo5+E+zFw601QJtGDcl5l4dMp4sDEGhSNnW7lSuwvYr1D+FjLwZ8i9UEeI0ksmVzXyE/N3jRD
+ LyhnhnCWgnDeJgDwrEDmWdiEcQT62159JaJrRrtVJsvHT+aSvWlzBLm/5EcLDPB6Pktm+qMybou
+ FNPKbN8EFjrtbHTSJfcDiAyf0mjkUg=
+X-Received: by 2002:a05:600c:4592:b0:485:3dfc:57a with SMTP id
+ 5b1f17b1804b1-4855671044fmr284103325e9.32.1773748936871; 
+ Tue, 17 Mar 2026 05:02:16 -0700 (PDT)
+Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4856eae3037sm63596795e9.11.2026.03.17.05.02.15
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 17 Mar 2026 05:02:16 -0700 (PDT)
+From: Peter Maydell <peter.maydell@linaro.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
+Subject: [PATCH] configure: Remove unused variable default_cflags
+Date: Tue, 17 Mar 2026 12:02:15 +0000
+Message-ID: <20260317120215.2075164-1-peter.maydell@linaro.org>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 0aIIPSv5OG_Gm1jVXbE1Hy4cXWk24YR660Y0cVZ6xAA_1773737925
-X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
-X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Received-SPF: pass client-ip=2a00:1450:4864:20::333;
+ envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,64 +98,47 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+configure has a variable default_cflags, which was originally added
+in commit bafe78ad3bc4c ("contrib/plugins: use an independent
+makefile") as part of it setting up the build environment for
+contrib/plugins, which at the time used make.  However, we now build
+the plugins with meson, and in commit 55c84a72aba4 ("contrib/plugins:
+remove Makefile for contrib/plugins") we dropped the logic from
+configure that does that makefile setup, leaving default_cflags
+as an unused variable.
 
-QEMU currently crashes when introspecting the sun4u-iommu device from the
-command line interface:
+shellcheck helpfully reports this:
+      default_cflags='-O0 -g'
+      ^------------^ SC2034 (warning): default_cflags appears unused. Verify use (or export if used externally).
 
- $ ./qemu-system-sparc64 -display none -device sun4u-iommu,help
- qemu-system-sparc64: ../../devel/qemu/system/physmem.c:1401:
-  register_multipage: Assertion `num_pages' failed.
- Aborted (core dumped)
+Remove the unused variable.
 
-There does not seem to be a compelling reason for initializing the
-memory regions from the instance_init function, so let's simply move
-the code into a realize() function instead to fix this issue.
-
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
 ---
- hw/sparc64/sun4u_iommu.c | 11 ++++++-----
- 1 file changed, 6 insertions(+), 5 deletions(-)
+ configure | 2 --
+ 1 file changed, 2 deletions(-)
 
-diff --git a/hw/sparc64/sun4u_iommu.c b/hw/sparc64/sun4u_iommu.c
-index 0188ce35d29..fe9d47b822f 100644
---- a/hw/sparc64/sun4u_iommu.c
-+++ b/hw/sparc64/sun4u_iommu.c
-@@ -290,13 +290,14 @@ static void iommu_reset(DeviceState *d)
-     memset(s->regs, 0, IOMMU_NREGS * sizeof(uint64_t));
- }
+diff --git a/configure b/configure
+index cd1dadd8bb..42c45fe47a 100755
+--- a/configure
++++ b/configure
+@@ -248,7 +248,6 @@ for opt do
+   esac
+ done
  
--static void iommu_init(Object *obj)
-+static void iommu_realize(DeviceState *ds, Error **errp)
- {
--    IOMMUState *s = SUN4U_IOMMU(obj);
--    SysBusDevice *sbd = SYS_BUS_DEVICE(obj);
-+    IOMMUState *s = SUN4U_IOMMU(ds);
-+    SysBusDevice *sbd = SYS_BUS_DEVICE(ds);
-+    Object *obj = OBJECT(ds);
- 
-     memory_region_init_iommu(&s->iommu, sizeof(s->iommu),
--                             TYPE_SUN4U_IOMMU_MEMORY_REGION, OBJECT(s),
-+                             TYPE_SUN4U_IOMMU_MEMORY_REGION, obj,
-                              "iommu-sun4u", UINT64_MAX);
-     address_space_init(&s->iommu_as, MEMORY_REGION(&s->iommu), "iommu-as");
- 
-@@ -310,13 +311,13 @@ static void iommu_class_init(ObjectClass *klass, const void *data)
-     DeviceClass *dc = DEVICE_CLASS(klass);
- 
-     device_class_set_legacy_reset(dc, iommu_reset);
-+    dc->realize = iommu_realize;
- }
- 
- static const TypeInfo iommu_info = {
-     .name          = TYPE_SUN4U_IOMMU,
-     .parent        = TYPE_SYS_BUS_DEVICE,
-     .instance_size = sizeof(IOMMUState),
--    .instance_init = iommu_init,
-     .class_init    = iommu_class_init,
- };
- 
+-default_cflags='-O2 -g'
+ git_submodules_action="update"
+ docs="auto"
+ EXESUF=""
+@@ -707,7 +706,6 @@ for opt do
+       meson_option_parse --enable-debug-graph-lock ""
+       meson_option_parse --enable-debug-mutex ""
+       meson_option_add -Doptimization=0
+-      default_cflags='-O0 -g'
+   ;;
+   --disable-tcg) tcg="disabled"
+   ;;
 -- 
-2.53.0
+2.43.0
 
 
