@@ -4,85 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6D911FD8748
-	for <qemu-trivial@archiver.kernel.org>; Tue, 17 Mar 2026 12:02:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A261FD874E
+	for <qemu-trivial@archiver.kernel.org>; Tue, 17 Mar 2026 12:06:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w2T8L-0008JU-Uo; Tue, 17 Mar 2026 08:02:50 -0400
+	id 1w2TC9-0002PG-KR; Tue, 17 Mar 2026 08:06:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w2T7x-0008CC-DF
- for qemu-trivial@nongnu.org; Tue, 17 Mar 2026 08:02:27 -0400
-Received: from mail-wm1-x333.google.com ([2a00:1450:4864:20::333])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w2TB5-0001VC-8P
+ for qemu-trivial@nongnu.org; Tue, 17 Mar 2026 08:05:43 -0400
+Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w2T7r-0001Pw-Ra
- for qemu-trivial@nongnu.org; Tue, 17 Mar 2026 08:02:24 -0400
-Received: by mail-wm1-x333.google.com with SMTP id
- 5b1f17b1804b1-4853aec185aso46560505e9.1
- for <qemu-trivial@nongnu.org>; Tue, 17 Mar 2026 05:02:18 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w2TB1-0001zY-4f
+ for qemu-trivial@nongnu.org; Tue, 17 Mar 2026 08:05:36 -0400
+Received: by mail-wr1-x433.google.com with SMTP id
+ ffacd0b85a97d-439bcec8613so4336502f8f.3
+ for <qemu-trivial@nongnu.org>; Tue, 17 Mar 2026 05:05:34 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773748937; x=1774353737; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=eEMVLLP1U//JG1yL/MKQCMAGHc16tRv91hnW1ImxWr0=;
- b=Y417AQF5ASIKFM6g/29AqwazuZC0gnar+Jg+Wn+7qkphadUxpfNmdKlRNUY82phjVW
- NPHpMtUNIdjR1D3pEDxxHq//ASTTWtqd0BnOPrQGBZhXozGp8MxPmwL+wOdbuC2QmKcT
- RkCaKCo242SRJ/6M3cKzJaloKvjilYEtIGqThy/C/AFlpe0F+NMl2uUDe1leLWHSd7PG
- mZU8xPXKoYi9oYm/sPK1+3szeu7tbCUYlH81EMwdupnu8tKPB2HE/L5EyugvBFTneVU1
- gtmL613RkkHzIndvoDuCvvwtKXbm+5eOkCZINe9jhuBTSu8Q/BZafCU9oJZ3XyHh6Gid
- G7jw==
+ d=linaro.org; s=google; t=1773749133; x=1774353933; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=/8H5f9V1b4EuZBVKlgbOgqbu+Z/LMVrj1yIhPrbxncQ=;
+ b=xqnljpV1w5hnWTLNt0d0dY4xe8ykYcQKnFZsuu2ulflzzG7nDE8EYD8oT2g/dEkRRV
+ SdmeJTNroLV7vgwUpxF36SuRzDuzFwh2YLESBzg3tAnhAcs9ZQXYtDeEYCMISdDcfUCG
+ GxgYRSLL3NPcH0PiG4ZBRZDKuZvtdFpo8GvuxvQN0A/Nb3pIJzSr6dmaK/YFc36m9Eu/
+ RAh1lkhvjBES++C6KCcQtNbh93pfnwjJk68gA5r5zjgmcxr5c7AkWSf7NyGFwaCfwAzo
+ dTczcMFngmGOuxqNgotdHHhG9lc56m260W2ieKrAjmhhXKvdxIN3xxP4WQZdnAeF5iDk
+ WHCg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773748937; x=1774353737;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eEMVLLP1U//JG1yL/MKQCMAGHc16tRv91hnW1ImxWr0=;
- b=FnG29RZeedOQ8UAfmmC7nqKhkVU0DYioaXHcDhnIHCskmzprWORsLJbXZLrhXMRmnN
- hRVRrGiwH7hQUMpOtrFW2atgvSKlxVJEsnOsIYFawSSrXyndsxeCIRCS1B8dCmKn2cJc
- BJSSPs0IJVoeqs6bEdZvPZtkl7DDEe2iU0KQjvcUSpwHRLuvVcgo7bfKkn0p0r0SnxN4
- qQwbLVTnMx6mEyC61KYB6YpmeCyAJcpPiR0LUVdVpansEX5NaKk+DtetZJeowZ3WoYdn
- 3DWhz1f64iRYTs1XYgWqzama1pV9tmK+oFpAQalqOONJg9v1MdUZ0xRk0TEF6vWnZnNO
- CMwQ==
-X-Gm-Message-State: AOJu0YwYMet0sfLORD2/DPdpv3s/KuxvQX1QlqDDIDn6rNfdPLg0wE9/
- ymxbifoiJw8eo7s9AhxA+lqXViCiZj2A5gU87tGaRx/VpHmwgYhnfLBah8AsltwXLho=
-X-Gm-Gg: ATEYQzya4o6tLObxzjxOrgBpBIRPlRGaafUxsExlwtOwumeFAmQeeMrad28n0MnhkR4
- F4xyWKExB0vMhyzMbOO8RB4GUortrVhIhekMUzzapZVLlXE8kGRTtWeS/jPQ0FwWLl4DSnONZDD
- eN2AGLi/U3s+Ik3dZs9OUmXLPhDKXRg9WGXIz2hSK5uMOX2DwVNbStFMPg1QRj8Sdom7VGan2dE
- hoaEQB+4JV4glRt0rVLz3V1kM3MJVrsL/USM60UQ6AsEewmQqBMszAqwm4sMoUPIPhRK27xwpBT
- k9vdf/z5yqGWGm2RDZ5b+Jr+LKdMKieLw8O5RceEvTDdkMGF0cPTrGjr9xlDND4epkzVM5+BQ9y
- Xjgo5+E+zFw601QJtGDcl5l4dMp4sDEGhSNnW7lSuwvYr1D+FjLwZ8i9UEeI0ksmVzXyE/N3jRD
- LyhnhnCWgnDeJgDwrEDmWdiEcQT62159JaJrRrtVJsvHT+aSvWlzBLm/5EcLDPB6Pktm+qMybou
- FNPKbN8EFjrtbHTSJfcDiAyf0mjkUg=
-X-Received: by 2002:a05:600c:4592:b0:485:3dfc:57a with SMTP id
- 5b1f17b1804b1-4855671044fmr284103325e9.32.1773748936871; 
- Tue, 17 Mar 2026 05:02:16 -0700 (PDT)
-Received: from lanath.. (wildly.archaic.org.uk. [81.2.115.145])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4856eae3037sm63596795e9.11.2026.03.17.05.02.15
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 17 Mar 2026 05:02:16 -0700 (PDT)
-From: Peter Maydell <peter.maydell@linaro.org>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>
-Subject: [PATCH] configure: Remove unused variable default_cflags
-Date: Tue, 17 Mar 2026 12:02:15 +0000
-Message-ID: <20260317120215.2075164-1-peter.maydell@linaro.org>
-X-Mailer: git-send-email 2.43.0
+ d=1e100.net; s=20251104; t=1773749133; x=1774353933;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=/8H5f9V1b4EuZBVKlgbOgqbu+Z/LMVrj1yIhPrbxncQ=;
+ b=pAfusfuTmOc0gP5yoRhsE+y+S5ZIMalnw89hjkCk/3S11pSleMzHJJaW8QaVEfdakL
+ Jo+vd8nQjVIk4hSYiCnsSd7Jd1S7cc89gzfnR+G0q2KPVZTqrqKG5Lq8qJYKBapWCxfD
+ iVA6QQG9q+bEQHdHmqPauPQrD1Up4deqZn7fP4NeuxnkitNft8ZtIJEvI2TkPavQVtbr
+ X+j9M1CBcr9Sr4pz7xaEufROrloJxfAMH5VgoPVB5OPTgr83TwiHbuw/1516B229MCgm
+ QBnCljAVxi4hfl6F2Rgfooa1WgoQ3Us6qd1q6HbtvsMnIua6XJJv8R5S3UmjlNwMR4j+
+ pg1A==
+X-Gm-Message-State: AOJu0YxjmMqMeEfGvAsj3QuE8tyqd3q4v+xd/xrrl7DbeoBTEHgcv3lG
+ c8hCs/NbUU8z19sz14I3YKai8qnTNkSM6zUf1LPEMwePpjWvtm14k9MVOZT+0clQ/iM=
+X-Gm-Gg: ATEYQzwGUmAWX1l+ucvMOJtLvzyjKb8l2+be6yEsZQWXR9pfavqO+Uydprh21/MYLHw
+ 7+yNElUJjz0sVyfdC9Fr1PwTMdEQklK7V+O1IKcnxrR50CkxQwkTGujyChTQbkkBQ6KHUanRb8+
+ 238AU7NaGH0puw6NVwb9LFkRgn6+ArUgbVXHgc0yYFa4zqd6ayXGxMN9a8mNyRwrF9zKBNSE0JH
+ 4up7KllBGVqSiP4rMJfzZaT8ZSWvXibbhs+jq/zmJFy8eafzF2N5ktKzQVh3XuDxmG/hhe38FyY
+ Y7ChKYTiZmFrYZ6ez7k81v2Rp+KeVbCtcqmKpyrhX5wWK3c8IcpYa9WPHlBiVnwOvSbZ9smElYZ
+ pNO9YB/XZ9lwOo1Ybn+GIcYecDJcUtxkxscsEo8pW0RjZc1VCzcktYnb9zb5gFVbKyI6uzwr7He
+ gRuFMin0MUzIi4wTW99QDbREuyTpOnvVcTtx1YafjFes8zIyoOFQW0hv0EgwiKAAuEvA==
+X-Received: by 2002:a05:6000:26d3:b0:439:c550:d933 with SMTP id
+ ffacd0b85a97d-43a04dc3108mr31548451f8f.41.1773749133108; 
+ Tue, 17 Mar 2026 05:05:33 -0700 (PDT)
+Received: from [192.168.69.206] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-439fe20c473sm53032062f8f.24.2026.03.17.05.05.31
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 17 Mar 2026 05:05:32 -0700 (PDT)
+Message-ID: <596137df-e936-48e8-aca2-b0a10d98d2f2@linaro.org>
+Date: Tue, 17 Mar 2026 13:05:31 +0100
 MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] configure: Remove unused variable default_cflags
+Content-Language: en-US
+To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Pierrick Bouvier <pierrick.bouvier@linaro.org>
+References: <20260317120215.2075164-1-peter.maydell@linaro.org>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260317120215.2075164-1-peter.maydell@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::333;
- envelope-from=peter.maydell@linaro.org; helo=mail-wm1-x333.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::433;
+ envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,47 +102,48 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-configure has a variable default_cflags, which was originally added
-in commit bafe78ad3bc4c ("contrib/plugins: use an independent
-makefile") as part of it setting up the build environment for
-contrib/plugins, which at the time used make.  However, we now build
-the plugins with meson, and in commit 55c84a72aba4 ("contrib/plugins:
-remove Makefile for contrib/plugins") we dropped the logic from
-configure that does that makefile setup, leaving default_cflags
-as an unused variable.
+On 17/3/26 13:02, Peter Maydell wrote:
+> configure has a variable default_cflags, which was originally added
+> in commit bafe78ad3bc4c ("contrib/plugins: use an independent
+> makefile") as part of it setting up the build environment for
+> contrib/plugins, which at the time used make.  However, we now build
+> the plugins with meson, and in commit 55c84a72aba4 ("contrib/plugins:
+> remove Makefile for contrib/plugins") we dropped the logic from
+> configure that does that makefile setup, leaving default_cflags
+> as an unused variable.
+> 
+> shellcheck helpfully reports this:
+>        default_cflags='-O0 -g'
+>        ^------------^ SC2034 (warning): default_cflags appears unused. Verify use (or export if used externally).
+> 
+> Remove the unused variable.
+> 
+> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
+> ---
+>   configure | 2 --
+>   1 file changed, 2 deletions(-)
+> 
+> diff --git a/configure b/configure
+> index cd1dadd8bb..42c45fe47a 100755
+> --- a/configure
+> +++ b/configure
+> @@ -248,7 +248,6 @@ for opt do
+>     esac
+>   done
+>   
+> -default_cflags='-O2 -g'
+>   git_submodules_action="update"
+>   docs="auto"
+>   EXESUF=""
+> @@ -707,7 +706,6 @@ for opt do
+>         meson_option_parse --enable-debug-graph-lock ""
+>         meson_option_parse --enable-debug-mutex ""
+>         meson_option_add -Doptimization=0
+> -      default_cflags='-O0 -g'
+>     ;;
+>     --disable-tcg) tcg="disabled"
+>     ;;
 
-shellcheck helpfully reports this:
-      default_cflags='-O0 -g'
-      ^------------^ SC2034 (warning): default_cflags appears unused. Verify use (or export if used externally).
-
-Remove the unused variable.
-
-Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
----
- configure | 2 --
- 1 file changed, 2 deletions(-)
-
-diff --git a/configure b/configure
-index cd1dadd8bb..42c45fe47a 100755
---- a/configure
-+++ b/configure
-@@ -248,7 +248,6 @@ for opt do
-   esac
- done
- 
--default_cflags='-O2 -g'
- git_submodules_action="update"
- docs="auto"
- EXESUF=""
-@@ -707,7 +706,6 @@ for opt do
-       meson_option_parse --enable-debug-graph-lock ""
-       meson_option_parse --enable-debug-mutex ""
-       meson_option_add -Doptimization=0
--      default_cflags='-O0 -g'
-   ;;
-   --disable-tcg) tcg="disabled"
-   ;;
--- 
-2.43.0
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
 
