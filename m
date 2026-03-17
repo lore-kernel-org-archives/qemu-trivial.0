@@ -4,89 +4,54 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A261FD874E
-	for <qemu-trivial@archiver.kernel.org>; Tue, 17 Mar 2026 12:06:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A55F4FD876B
+	for <qemu-trivial@archiver.kernel.org>; Tue, 17 Mar 2026 13:34:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w2TC9-0002PG-KR; Tue, 17 Mar 2026 08:06:47 -0400
+	id 1w2UYc-0003lT-4O; Tue, 17 Mar 2026 09:34:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w2TB5-0001VC-8P
- for qemu-trivial@nongnu.org; Tue, 17 Mar 2026 08:05:43 -0400
-Received: from mail-wr1-x433.google.com ([2a00:1450:4864:20::433])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1w2TB1-0001zY-4f
- for qemu-trivial@nongnu.org; Tue, 17 Mar 2026 08:05:36 -0400
-Received: by mail-wr1-x433.google.com with SMTP id
- ffacd0b85a97d-439bcec8613so4336502f8f.3
- for <qemu-trivial@nongnu.org>; Tue, 17 Mar 2026 05:05:34 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773749133; x=1774353933; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=/8H5f9V1b4EuZBVKlgbOgqbu+Z/LMVrj1yIhPrbxncQ=;
- b=xqnljpV1w5hnWTLNt0d0dY4xe8ykYcQKnFZsuu2ulflzzG7nDE8EYD8oT2g/dEkRRV
- SdmeJTNroLV7vgwUpxF36SuRzDuzFwh2YLESBzg3tAnhAcs9ZQXYtDeEYCMISdDcfUCG
- GxgYRSLL3NPcH0PiG4ZBRZDKuZvtdFpo8GvuxvQN0A/Nb3pIJzSr6dmaK/YFc36m9Eu/
- RAh1lkhvjBES++C6KCcQtNbh93pfnwjJk68gA5r5zjgmcxr5c7AkWSf7NyGFwaCfwAzo
- dTczcMFngmGOuxqNgotdHHhG9lc56m260W2ieKrAjmhhXKvdxIN3xxP4WQZdnAeF5iDk
- WHCg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773749133; x=1774353933;
- h=content-transfer-encoding:in-reply-to:from:references:cc:to
- :content-language:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=/8H5f9V1b4EuZBVKlgbOgqbu+Z/LMVrj1yIhPrbxncQ=;
- b=pAfusfuTmOc0gP5yoRhsE+y+S5ZIMalnw89hjkCk/3S11pSleMzHJJaW8QaVEfdakL
- Jo+vd8nQjVIk4hSYiCnsSd7Jd1S7cc89gzfnR+G0q2KPVZTqrqKG5Lq8qJYKBapWCxfD
- iVA6QQG9q+bEQHdHmqPauPQrD1Up4deqZn7fP4NeuxnkitNft8ZtIJEvI2TkPavQVtbr
- X+j9M1CBcr9Sr4pz7xaEufROrloJxfAMH5VgoPVB5OPTgr83TwiHbuw/1516B229MCgm
- QBnCljAVxi4hfl6F2Rgfooa1WgoQ3Us6qd1q6HbtvsMnIua6XJJv8R5S3UmjlNwMR4j+
- pg1A==
-X-Gm-Message-State: AOJu0YxjmMqMeEfGvAsj3QuE8tyqd3q4v+xd/xrrl7DbeoBTEHgcv3lG
- c8hCs/NbUU8z19sz14I3YKai8qnTNkSM6zUf1LPEMwePpjWvtm14k9MVOZT+0clQ/iM=
-X-Gm-Gg: ATEYQzwGUmAWX1l+ucvMOJtLvzyjKb8l2+be6yEsZQWXR9pfavqO+Uydprh21/MYLHw
- 7+yNElUJjz0sVyfdC9Fr1PwTMdEQklK7V+O1IKcnxrR50CkxQwkTGujyChTQbkkBQ6KHUanRb8+
- 238AU7NaGH0puw6NVwb9LFkRgn6+ArUgbVXHgc0yYFa4zqd6ayXGxMN9a8mNyRwrF9zKBNSE0JH
- 4up7KllBGVqSiP4rMJfzZaT8ZSWvXibbhs+jq/zmJFy8eafzF2N5ktKzQVh3XuDxmG/hhe38FyY
- Y7ChKYTiZmFrYZ6ez7k81v2Rp+KeVbCtcqmKpyrhX5wWK3c8IcpYa9WPHlBiVnwOvSbZ9smElYZ
- pNO9YB/XZ9lwOo1Ybn+GIcYecDJcUtxkxscsEo8pW0RjZc1VCzcktYnb9zb5gFVbKyI6uzwr7He
- gRuFMin0MUzIi4wTW99QDbREuyTpOnvVcTtx1YafjFes8zIyoOFQW0hv0EgwiKAAuEvA==
-X-Received: by 2002:a05:6000:26d3:b0:439:c550:d933 with SMTP id
- ffacd0b85a97d-43a04dc3108mr31548451f8f.41.1773749133108; 
- Tue, 17 Mar 2026 05:05:33 -0700 (PDT)
-Received: from [192.168.69.206] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-439fe20c473sm53032062f8f.24.2026.03.17.05.05.31
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 17 Mar 2026 05:05:32 -0700 (PDT)
-Message-ID: <596137df-e936-48e8-aca2-b0a10d98d2f2@linaro.org>
-Date: Tue, 17 Mar 2026 13:05:31 +0100
+ (Exim 4.90_1) (envelope-from <crichez@pm.me>)
+ id 1w2UYU-0003kn-L9; Tue, 17 Mar 2026 09:33:55 -0400
+Received: from mail-06.mail-europe.com ([85.9.210.45])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <crichez@pm.me>)
+ id 1w2UYS-00063P-8D; Tue, 17 Mar 2026 09:33:54 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pm.me;
+ s=protonmail3; t=1773754417; x=1774013617;
+ bh=1xhhgeIBXKPFrSnKhC6zJwpYXfa1l5FyaWY1y36wj9E=;
+ h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
+ Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
+ Message-ID:BIMI-Selector;
+ b=UpnmH9mr6t2rMLt4BxUZcWU5EuQRa2Ln9L+UdmJdQmbHuYUdLBh4mIwc9NB/6LfUf
+ Vj9C8r9K3TZ9CYvOuPrdR0Xoltc3U7AYaklvaAPYg9DdKrGDeCk4RGp3Q0w9VhobHU
+ UpCQDj7sJ+4EP1fZdL5HWbr8EF1CBHk8exYEEu4eqgzRWLNKkDx9/6l7wZyTA3hu1i
+ kscbStxnN2s3oovKPczUmxqdh7UEYXypSSRHW9seoeHKOP7j8T+MIFZHmFEaI4siET
+ 5bOQS5+tD0UzGFPDTWYL7kwqJ1KsgDVX9wZorBBR4yE1byrIxE8ZxJLTLjSS2VjIFD
+ HOqqEK7R+0xqg==
+Date: Tue, 17 Mar 2026 13:33:33 +0000
+To: Michael Tokarev <mjt@tls.msk.ru>
+From: Christopher Richez <crichez@pm.me>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Subject: Re: [PATCH RFC] net/slirp: allow hostfwd socket paths with dashes
+Message-ID: <LDF3Kn5e3KSxpz1TFKB-WC_CeVNvAHtN8FIyWxtsKo6SaMelBeuSVbA7sMg5bx0VsCapFjpDG5z7Iqg9-bB1zCIYOO7O2MzThgv5GGOaU7s=@pm.me>
+In-Reply-To: <20260317083108.163043-1-mjt@tls.msk.ru>
+References: <20260317083108.163043-1-mjt@tls.msk.ru>
+Feedback-ID: 5960063:user:proton
+X-Pm-Message-ID: 8ee55c3d1c70948c367efd84a8e3afff55af5d38
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] configure: Remove unused variable default_cflags
-Content-Language: en-US
-To: Peter Maydell <peter.maydell@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Pierrick Bouvier <pierrick.bouvier@linaro.org>
-References: <20260317120215.2075164-1-peter.maydell@linaro.org>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20260317120215.2075164-1-peter.maydell@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::433;
- envelope-from=philmd@linaro.org; helo=mail-wr1-x433.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=85.9.210.45; envelope-from=crichez@pm.me;
+ helo=mail-06.mail-europe.com
+X-Spam_score_int: -3
+X-Spam_score: -0.4
+X-Spam_bar: /
+X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,48 +67,166 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 17/3/26 13:02, Peter Maydell wrote:
-> configure has a variable default_cflags, which was originally added
-> in commit bafe78ad3bc4c ("contrib/plugins: use an independent
-> makefile") as part of it setting up the build environment for
-> contrib/plugins, which at the time used make.  However, we now build
-> the plugins with meson, and in commit 55c84a72aba4 ("contrib/plugins:
-> remove Makefile for contrib/plugins") we dropped the logic from
-> configure that does that makefile setup, leaving default_cflags
-> as an unused variable.
-> 
-> shellcheck helpfully reports this:
->        default_cflags='-O0 -g'
->        ^------------^ SC2034 (warning): default_cflags appears unused. Verify use (or export if used externally).
-> 
-> Remove the unused variable.
-> 
-> Signed-off-by: Peter Maydell <peter.maydell@linaro.org>
-> ---
->   configure | 2 --
->   1 file changed, 2 deletions(-)
-> 
-> diff --git a/configure b/configure
-> index cd1dadd8bb..42c45fe47a 100755
-> --- a/configure
-> +++ b/configure
-> @@ -248,7 +248,6 @@ for opt do
->     esac
->   done
->   
-> -default_cflags='-O2 -g'
->   git_submodules_action="update"
->   docs="auto"
->   EXESUF=""
-> @@ -707,7 +706,6 @@ for opt do
->         meson_option_parse --enable-debug-graph-lock ""
->         meson_option_parse --enable-debug-mutex ""
->         meson_option_add -Doptimization=0
-> -      default_cflags='-O0 -g'
->     ;;
->     --disable-tcg) tcg="disabled"
->     ;;
+This is much neater than my patch for this, thank you for taking the time t=
+o do it this way!
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+-------- Original Message --------
+On Tuesday, 03/17/26 at 04:32 Michael Tokarev <mjt@tls.msk.ru> wrote:
+The format of hostfwd parameter is:
+  hostfwd=3Dhostpart-guestaddr:guestport
+so a minus sign can not be part of the hostpart.
+If hostpart specifies a unix socket path, this becomes problematic.
+
+To solve this, look for the LAST minus/dash char in the string,
+not first.
+
+Unfortunately, [-guestaddr] is optional (defaults to 10.0.0.15),
+so we still can't parse the thing in an uniform way.
+
+Extend get_str_sep() to accept one more parameter, to indicate if
+first or last separator is needed, and modify all callers to ask
+for first separator.  Update slirp_hostfwd to search for the last
+separator when parsing unix domain socket path.
+
+Inspired-by: Christopher Palmer-Richez <crichez@pm.me>
+Resolves: https://gitlab.com/qemu-project/qemu/-/issues/347
+---
+ net/slirp.c | 32 +++++++++++++++++++-------------
+ 1 file changed, 19 insertions(+), 13 deletions(-)
+
+diff --git a/net/slirp.c b/net/slirp.c
+index 04925f3318..804d430890 100644
+--- a/net/slirp.c
++++ b/net/slirp.c
+@@ -49,12 +49,18 @@
+ #include "migration/vmstate.h"
+ #include "migration/qemu-file-types.h"
+
+-static int get_str_sep(char *buf, int buf_size, const char **pp, int sep)
++typedef enum {
++    SEP_FIRST,
++    SEP_LAST
++} sep_type;
++
++static int get_str_sep(char *buf, int buf_size, const char **pp, int sep,
++                       sep_type which)
+ {
+     const char *p, *p1;
+     int len;
+     p =3D *pp;
+-    p1 =3D strchr(p, sep);
++    p1 =3D which =3D=3D SEP_FIRST ? strchr(p, sep) : strrchr(p, sep);
+     if (!p1)
+         return -1;
+     len =3D p1 - p;
+@@ -479,7 +485,7 @@ static int net_slirp_init(NetClientState *peer, const c=
+har *model,
+     }
+
+     if (vnetwork) {
+-        if (get_str_sep(buf, sizeof(buf), &vnetwork, '/') < 0) {
++        if (get_str_sep(buf, sizeof(buf), &vnetwork, '/', SEP_FIRST) < 0) =
+{
+             if (!inet_aton(vnetwork, &net)) {
+                 error_setg(errp, "Failed to parse netmask");
+                 return -1;
+@@ -760,7 +766,7 @@ void hmp_hostfwd_remove(Monitor *mon, const QDict *qdic=
+t)
+     }
+
+     p =3D src_str;
+-    if (!p || get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
++    if (!p || get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
+         goto fail_syntax;
+     }
+
+@@ -772,7 +778,7 @@ void hmp_hostfwd_remove(Monitor *mon, const QDict *qdic=
+t)
+         goto fail_syntax;
+     }
+
+-    if (get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
++    if (get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
+         goto fail_syntax;
+     }
+     if (buf[0] !=3D '\0' && !inet_aton(buf, &host_addr.sin_addr)) {
+@@ -827,7 +833,7 @@ static int slirp_hostfwd(SlirpState *s, const char *red=
+ir_str, Error **errp)
+     socklen_t host_addr_size;
+
+     p =3D redir_str;
+-    if (!p || get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
++    if (!p || get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
+         fail_reason =3D "No : separators";
+         goto fail_syntax;
+     }
+@@ -848,7 +854,7 @@ static int slirp_hostfwd(SlirpState *s, const char *red=
+ir_str, Error **errp)
+
+ #if !defined(WIN32) && SLIRP_CHECK_VERSION(4, 7, 0)
+     if (is_unix) {
+-        if (get_str_sep(buf, sizeof(buf), &p, '-') < 0) {
++        if (get_str_sep(buf, sizeof(buf), &p, '-', SEP_LAST) < 0) {
+             fail_reason =3D "Missing - separator";
+             goto fail_syntax;
+         }
+@@ -888,7 +894,7 @@ static int slirp_hostfwd(SlirpState *s, const char *red=
+ir_str, Error **errp)
+         host_addr.in.sin_family =3D AF_INET;
+         host_addr.in.sin_addr.s_addr =3D INADDR_ANY;
+
+-        if (get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
++        if (get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
+             fail_reason =3D "Missing : separator";
+             goto fail_syntax;
+         }
+@@ -898,7 +904,7 @@ static int slirp_hostfwd(SlirpState *s, const char *red=
+ir_str, Error **errp)
+             goto fail_syntax;
+         }
+
+-        if (get_str_sep(buf, sizeof(buf), &p, '-') < 0) {
++        if (get_str_sep(buf, sizeof(buf), &p, '-', SEP_FIRST) < 0) {
+             fail_reason =3D "Bad host port separator";
+             goto fail_syntax;
+         }
+@@ -913,7 +919,7 @@ static int slirp_hostfwd(SlirpState *s, const char *red=
+ir_str, Error **errp)
+         host_addr_size =3D sizeof(host_addr.in);
+     }
+
+-    if (get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
++    if (get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
+         fail_reason =3D "Missing guest address";
+         goto fail_syntax;
+     }
+@@ -1125,19 +1131,19 @@ static int slirp_guestfwd(SlirpState *s, const char=
+ *config_str, Error **errp)
+     int port;
+
+     p =3D config_str;
+-    if (get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
++    if (get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
+         goto fail_syntax;
+     }
+     if (strcmp(buf, "tcp") && buf[0] !=3D '\0') {
+         goto fail_syntax;
+     }
+-    if (get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
++    if (get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
+         goto fail_syntax;
+     }
+     if (buf[0] !=3D '\0' && !inet_aton(buf, &server)) {
+         goto fail_syntax;
+     }
+-    if (get_str_sep(buf, sizeof(buf), &p, '-') < 0) {
++    if (get_str_sep(buf, sizeof(buf), &p, '-', SEP_FIRST) < 0) {
+         goto fail_syntax;
+     }
+     port =3D strtol(buf, &end, 10);
+--
+2.47.3
+
+
 
 
