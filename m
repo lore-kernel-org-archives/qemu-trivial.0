@@ -4,52 +4,60 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A55F4FD876B
-	for <qemu-trivial@archiver.kernel.org>; Tue, 17 Mar 2026 13:34:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2A037FCD0A2
+	for <qemu-trivial@archiver.kernel.org>; Wed, 18 Mar 2026 17:45:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w2UYc-0003lT-4O; Tue, 17 Mar 2026 09:34:02 -0400
+	id 1w2uxb-0001At-J6; Wed, 18 Mar 2026 13:45:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <crichez@pm.me>)
- id 1w2UYU-0003kn-L9; Tue, 17 Mar 2026 09:33:55 -0400
-Received: from mail-06.mail-europe.com ([85.9.210.45])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <crichez@pm.me>)
- id 1w2UYS-00063P-8D; Tue, 17 Mar 2026 09:33:54 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=pm.me;
- s=protonmail3; t=1773754417; x=1774013617;
- bh=1xhhgeIBXKPFrSnKhC6zJwpYXfa1l5FyaWY1y36wj9E=;
- h=Date:To:From:Cc:Subject:Message-ID:In-Reply-To:References:
- Feedback-ID:From:To:Cc:Date:Subject:Reply-To:Feedback-ID:
- Message-ID:BIMI-Selector;
- b=UpnmH9mr6t2rMLt4BxUZcWU5EuQRa2Ln9L+UdmJdQmbHuYUdLBh4mIwc9NB/6LfUf
- Vj9C8r9K3TZ9CYvOuPrdR0Xoltc3U7AYaklvaAPYg9DdKrGDeCk4RGp3Q0w9VhobHU
- UpCQDj7sJ+4EP1fZdL5HWbr8EF1CBHk8exYEEu4eqgzRWLNKkDx9/6l7wZyTA3hu1i
- kscbStxnN2s3oovKPczUmxqdh7UEYXypSSRHW9seoeHKOP7j8T+MIFZHmFEaI4siET
- 5bOQS5+tD0UzGFPDTWYL7kwqJ1KsgDVX9wZorBBR4yE1byrIxE8ZxJLTLjSS2VjIFD
- HOqqEK7R+0xqg==
-Date: Tue, 17 Mar 2026 13:33:33 +0000
-To: Michael Tokarev <mjt@tls.msk.ru>
-From: Christopher Richez <crichez@pm.me>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Subject: Re: [PATCH RFC] net/slirp: allow hostfwd socket paths with dashes
-Message-ID: <LDF3Kn5e3KSxpz1TFKB-WC_CeVNvAHtN8FIyWxtsKo6SaMelBeuSVbA7sMg5bx0VsCapFjpDG5z7Iqg9-bB1zCIYOO7O2MzThgv5GGOaU7s=@pm.me>
-In-Reply-To: <20260317083108.163043-1-mjt@tls.msk.ru>
-References: <20260317083108.163043-1-mjt@tls.msk.ru>
-Feedback-ID: 5960063:user:proton
-X-Pm-Message-ID: 8ee55c3d1c70948c367efd84a8e3afff55af5d38
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1w2uxW-00019N-Kq; Wed, 18 Mar 2026 13:45:31 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]
+ helo=mail.v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1w2uxU-0005Lg-FE; Wed, 18 Mar 2026 13:45:30 -0400
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id 20CF7DA07A3;
+ Wed, 18 Mar 2026 18:45:23 +0100 (CET)
+Authentication-Results: mail.v2201612906741603.powersrv.de; dkim=none;
+ spf=temperror (mail.v2201612906741603.powersrv.de: error in processing during
+ lookup of stefan@weilnetz.de: DNS error) smtp.mailfrom=stefan@weilnetz.de
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+ id F2AFA460028; Wed, 18 Mar 2026 18:45:22 +0100 (CET)
+To: =?UTF-8?q?C=C3=A9sar=20Belley?= <cesar.belley@lse.epita.fr>,
+ Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH for-11.0.0] Fix include statement for u2f-emu.h
+Date: Wed, 18 Mar 2026 18:45:22 +0100
+Message-ID: <20260318174522.87902-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=85.9.210.45; envelope-from=crichez@pm.me;
- helo=mail-06.mail-europe.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
+Content-Transfer-Encoding: 8bit
+X-Rspamd-Server: v2201612906741603
+X-Rspamd-Queue-Id: 20CF7DA07A3
+X-Spamd-Bar: -
+X-Spamd-Result: default: False [-1.00 / 12.00]; BAYES_HAM(-3.00)[100.00%];
+ MID_CONTAINS_FROM(1.00)[]; R_MISSING_CHARSET(0.50)[];
+ FORGED_SENDER(0.30)[sw@weilnetz.de,stefan@weilnetz.de];
+ ONCE_RECEIVED(0.20)[]; MIME_GOOD(-0.10)[text/plain];
+ RCVD_NO_TLS_LAST(0.10)[]; MIME_TRACE(0.00)[0:+];
+ TO_DN_SOME(0.00)[]; RCVD_COUNT_ONE(0.00)[1];
+ TO_MATCH_ENVRCPT_ALL(0.00)[];
+ FROM_NEQ_ENVFROM(0.00)[sw@weilnetz.de,stefan@weilnetz.de];
+ RCPT_COUNT_FIVE(0.00)[6]; ARC_NA(0.00)[]; R_DKIM_NA(0.00)[];
+ R_SPF_DNSFAIL(0.00)[DNS failed]; FROM_HAS_DN(0.00)[]
+X-Rspamd-Action: no action
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
+X-Spam_score_int: -1
+X-Spam_score: -0.2
 X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+X-Spam_report: (-0.2 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
  SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -64,169 +72,103 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
+Reply-to:  Stefan Weil <sw@weilnetz.de>
+From:  Stefan Weil via <qemu-trivial@nongnu.org>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-This is much neater than my patch for this, thank you for taking the time t=
-o do it this way!
+All examples on https://github.com/Agnoctopus/libu2f-emu/ don't
+simply include u2f-emu.h without any added directory.
 
--------- Original Message --------
-On Tuesday, 03/17/26 at 04:32 Michael Tokarev <mjt@tls.msk.ru> wrote:
-The format of hostfwd parameter is:
-  hostfwd=3Dhostpart-guestaddr:guestport
-so a minus sign can not be part of the hostpart.
-If hostpart specifies a unix socket path, this becomes problematic.
+The additional include directory does not exist when libu2f
+was built with meson.
 
-To solve this, look for the LAST minus/dash char in the string,
-not first.
+It's up to pkgconfig to make sure that u2f-emu.h is found in any case.
 
-Unfortunately, [-guestaddr] is optional (defaults to 10.0.0.15),
-so we still can't parse the thing in an uniform way.
-
-Extend get_str_sep() to accept one more parameter, to indicate if
-first or last separator is needed, and modify all callers to ask
-for first separator.  Update slirp_hostfwd to search for the last
-separator when parsing unix domain socket path.
-
-Inspired-by: Christopher Palmer-Richez <crichez@pm.me>
-Resolves: https://gitlab.com/qemu-project/qemu/-/issues/347
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- net/slirp.c | 32 +++++++++++++++++++-------------
- 1 file changed, 19 insertions(+), 13 deletions(-)
 
-diff --git a/net/slirp.c b/net/slirp.c
-index 04925f3318..804d430890 100644
---- a/net/slirp.c
-+++ b/net/slirp.c
-@@ -49,12 +49,18 @@
- #include "migration/vmstate.h"
- #include "migration/qemu-file-types.h"
+libu2f-emu seems to be unmaintained. There are no Debian/Ubuntu packages,
+and I am afraid that it is also not part of the CI tests.
 
--static int get_str_sep(char *buf, int buf_size, const char **pp, int sep)
-+typedef enum {
-+    SEP_FIRST,
-+    SEP_LAST
-+} sep_type;
-+
-+static int get_str_sep(char *buf, int buf_size, const char **pp, int sep,
-+                       sep_type which)
- {
-     const char *p, *p1;
-     int len;
-     p =3D *pp;
--    p1 =3D strchr(p, sep);
-+    p1 =3D which =3D=3D SEP_FIRST ? strchr(p, sep) : strrchr(p, sep);
-     if (!p1)
-         return -1;
-     len =3D p1 - p;
-@@ -479,7 +485,7 @@ static int net_slirp_init(NetClientState *peer, const c=
-har *model,
-     }
+Should it be deprecated/removed?
 
-     if (vnetwork) {
--        if (get_str_sep(buf, sizeof(buf), &vnetwork, '/') < 0) {
-+        if (get_str_sep(buf, sizeof(buf), &vnetwork, '/', SEP_FIRST) < 0) =
-{
-             if (!inet_aton(vnetwork, &net)) {
-                 error_setg(errp, "Failed to parse netmask");
-                 return -1;
-@@ -760,7 +766,7 @@ void hmp_hostfwd_remove(Monitor *mon, const QDict *qdic=
-t)
-     }
+I recently was asked by a user to add it to QEMU for Windows.
+It seems to work basically, but the user also noticed some issues.
 
-     p =3D src_str;
--    if (!p || get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
-+    if (!p || get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
-         goto fail_syntax;
-     }
+Regards
+Stefan
 
-@@ -772,7 +778,7 @@ void hmp_hostfwd_remove(Monitor *mon, const QDict *qdic=
-t)
-         goto fail_syntax;
-     }
+Citing the user's feedback:
 
--    if (get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
-+    if (get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
-         goto fail_syntax;
-     }
-     if (buf[0] !=3D '\0' && !inet_aton(buf, &host_addr.sin_addr)) {
-@@ -827,7 +833,7 @@ static int slirp_hostfwd(SlirpState *s, const char *red=
-ir_str, Error **errp)
-     socklen_t host_addr_size;
+As promised, I have tested the u2f and so far, it works as expected.
+However, I do have a few notes.
 
-     p =3D redir_str;
--    if (!p || get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
-+    if (!p || get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
-         fail_reason =3D "No : separators";
-         goto fail_syntax;
-     }
-@@ -848,7 +854,7 @@ static int slirp_hostfwd(SlirpState *s, const char *red=
-ir_str, Error **errp)
+1)
+If you send the u2f emulation a malformed USB HID packet either to the HID Control EP
+or the HID Interrupt EP, it crashes QEmu. Windows will show the "busy" mouse cursor
+for a few seconds and then it will shut down QEmu. I am guessing the u2f emulation
+doesn't do much error checking on that part.
 
- #if !defined(WIN32) && SLIRP_CHECK_VERSION(4, 7, 0)
-     if (is_unix) {
--        if (get_str_sep(buf, sizeof(buf), &p, '-') < 0) {
-+        if (get_str_sep(buf, sizeof(buf), &p, '-', SEP_LAST) < 0) {
-             fail_reason =3D "Missing - separator";
-             goto fail_syntax;
-         }
-@@ -888,7 +894,7 @@ static int slirp_hostfwd(SlirpState *s, const char *red=
-ir_str, Error **errp)
-         host_addr.in.sin_family =3D AF_INET;
-         host_addr.in.sin_addr.s_addr =3D INADDR_ANY;
+2)
+There are two versions of the u2f, one dated 11/04/2017 and one dated 12/20/2023.
+The emulation is for the later, not the former. There is enough of a difference that it
+is not backward compatible. I wonder if a note can be placed in the documentation
+that the emulation is for the version dated 12/20/2023.
 
--        if (get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
-+        if (get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
-             fail_reason =3D "Missing : separator";
-             goto fail_syntax;
-         }
-@@ -898,7 +904,7 @@ static int slirp_hostfwd(SlirpState *s, const char *red=
-ir_str, Error **errp)
-             goto fail_syntax;
-         }
+old version (11/04/2017)
+https://fidoalliance.org/specs/fido-u2f-v1.2-ps-20170411/
 
--        if (get_str_sep(buf, sizeof(buf), &p, '-') < 0) {
-+        if (get_str_sep(buf, sizeof(buf), &p, '-', SEP_FIRST) < 0) {
-             fail_reason =3D "Bad host port separator";
-             goto fail_syntax;
-         }
-@@ -913,7 +919,7 @@ static int slirp_hostfwd(SlirpState *s, const char *red=
-ir_str, Error **errp)
-         host_addr_size =3D sizeof(host_addr.in);
-     }
+new version (12/20/2023)
+https://fidoalliance.org/specs/u2f-specs-master/
 
--    if (get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
-+    if (get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
-         fail_reason =3D "Missing guest address";
-         goto fail_syntax;
-     }
-@@ -1125,19 +1131,19 @@ static int slirp_guestfwd(SlirpState *s, const char=
- *config_str, Error **errp)
-     int port;
+3)
+If I don't send a "challenge" request first, the u2f seems to still process a successful
+transfer even though the CID value is invalid. I guess the emulation doesn't check
+for a valid CID before processing the request. This is a huge security problem, though
+only in emulation, not host related.
 
-     p =3D config_str;
--    if (get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
-+    if (get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
-         goto fail_syntax;
-     }
-     if (strcmp(buf, "tcp") && buf[0] !=3D '\0') {
-         goto fail_syntax;
-     }
--    if (get_str_sep(buf, sizeof(buf), &p, ':') < 0) {
-+    if (get_str_sep(buf, sizeof(buf), &p, ':', SEP_FIRST) < 0) {
-         goto fail_syntax;
-     }
-     if (buf[0] !=3D '\0' && !inet_aton(buf, &server)) {
-         goto fail_syntax;
-     }
--    if (get_str_sep(buf, sizeof(buf), &p, '-') < 0) {
-+    if (get_str_sep(buf, sizeof(buf), &p, '-', SEP_FIRST) < 0) {
-         goto fail_syntax;
-     }
-     port =3D strtol(buf, &end, 10);
---
+4) (not really a QEmu problem, but still worth mentioning)
+The specs don't specifically state that each transaction must be only a 64-byte
+USB transaction. For example, if you need to send a message that is two 64-byte packets,
+you must send them as individual USB transactions. You cannot send a single 128-byte USB transaction.
+After reading the specs a bit more, it is implied, but not directly specified.
+It took me a little trial and error to figure this out. I had a message that was more
+than 64 bytes and less than 128 bytes so I was sending a single 128-byte USB transaction.
+The u2f emulation didn't like this and only works if I send two consecutive 64-byte USB transactions.
+
+5)
+I only used the following in my command line:
+
+  -device u2f-emulated
+
+I did not try the 'passthru' nor the two following examples from the QEmu documentation.
+
+ -device u2f-emulated,dir=$dir
+ -device u2f-emulated,cert=$DIR1/$FILE1,priv=$DIR2/$FILE2,counter=$DIR3/$FILE3,entropy=$DIR4/$FILE4
+
+All in all, if you have a properly coded u2f driver, I believe the QEmu u2f emulation to work as expected.
+However, it does need some error checking added.
+
+
+
+ hw/usb/u2f-emulated.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/usb/u2f-emulated.c b/hw/usb/u2f-emulated.c
+index 196d05a83a..b82a315019 100644
+--- a/hw/usb/u2f-emulated.c
++++ b/hw/usb/u2f-emulated.c
+@@ -31,7 +31,7 @@
+ #include "hw/usb/usb.h"
+ #include "hw/core/qdev-properties.h"
+ 
+-#include <u2f-emu/u2f-emu.h>
++#include <u2f-emu.h>
+ 
+ #include "u2f.h"
+ 
+-- 
 2.47.3
-
-
 
 
