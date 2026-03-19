@@ -4,134 +4,171 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B61881091904
-	for <qemu-trivial@archiver.kernel.org>; Thu, 19 Mar 2026 18:42:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0073B1091912
+	for <qemu-trivial@archiver.kernel.org>; Thu, 19 Mar 2026 19:54:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w3IKR-00009b-IT; Thu, 19 Mar 2026 14:42:43 -0400
+	id 1w3JRX-00009s-Lk; Thu, 19 Mar 2026 15:54:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w3IKQ-00008u-3B
- for qemu-trivial@nongnu.org; Thu, 19 Mar 2026 14:42:42 -0400
-Received: from mail-pl1-x629.google.com ([2607:f8b0:4864:20::629])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <pierrick.bouvier@linaro.org>)
- id 1w3IKN-0006fj-E8
- for qemu-trivial@nongnu.org; Thu, 19 Mar 2026 14:42:41 -0400
-Received: by mail-pl1-x629.google.com with SMTP id
- d9443c01a7336-2ab46931cf1so19679315ad.0
- for <qemu-trivial@nongnu.org>; Thu, 19 Mar 2026 11:42:38 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1773945757; x=1774550557; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to;
- bh=2zEY3sRdBxwMoT/ejUW4SUFuI7keG9LgfeRpl/SD92I=;
- b=Ej4lsWBLQbKfSG5y441tcuSo6vvCDQCPayPdyVR1EP1Lk9kFRPU/AK/dwL/LtF359B
- RMtQ0/y+XwXlk9YNorXrazctoYMPHPj0tx2Gp6x3ATthRuoGthpKb/tE3qHC3buS6P+9
- LtJ/PO/lnV6HCTnf6zsEuTaVI4RCJMoHQyGeB6eBjRmieLTdrX6DC8e2FvL/lYHUhxNG
- 56gMIDo4/L07S+UxW1EJH+ta0B+r/PSdWRqv5j3yJe53rnZ59R6O3EtTNE/31bcL9ULY
- exPBXJEAG7onZ6xdT6K9azgU6Eg5EB7WwZcsTztSXl9bAttiIJvnJoskTExckaBy8M3V
- jBhQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1773945757; x=1774550557;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=2zEY3sRdBxwMoT/ejUW4SUFuI7keG9LgfeRpl/SD92I=;
- b=nfdc4fuWJBVbVmHPEMrBvpGf/UDyBt1e3/10vuK4JSv1qATf/jw5Ia9kx4tN+dDUFW
- 7JDFjGlMhLXXVB05Q6Wk5RFe2NnFMxgVKShX1yTSqMCH0rHoqJ3uj3H02Hd80Hu8JKN3
- fIgndiTA2BBM3oOiCB6ClMNN4OhBkVTC6ze5hbSItrwTBojeL0S3Fq5ySaxdKEsx20yR
- mkkSTCXAoneaB6k0a79AcVUdcrO869aNDevsW6zVMjhyf+9jCNS2MqWeCB4rfbTmTXYp
- vBwIJZli+MdEM2vDZk2UghbTMOZVoNH4v4O3YpbPiLmdHhSTCt5CZ2/Qc33eYjyZFJe1
- 8fyQ==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXyrXid6yrr5ZgCzMIcmLZ1+9U/Z6Dp5TIByvS8NNa9J4nSdCLXabFbTWWhY/ZyZo5dpFkffRlv9yzv+kE=@nongnu.org
-X-Gm-Message-State: AOJu0Yxhc2iDGegsO2U5sDeRLNsB8eXKDgFZuGv8MEhBLvmd4Tm4fw1M
- E5YjD4f/3yrFVNo6fq3tMWuQte8ALl74w3OjYDKkBbweJJkmCEOdJ4rGhRbDyh2i+2U=
-X-Gm-Gg: ATEYQzwHbP53r1sgF/gjxgvmZiYwpLVSyPNulNPtmIPzwZo4fvCgfDXJJIaDsustnC5
- C+0wAhYKFazFqUJd3y4sd6lYwwzcyC2r0eYmQFg3LPlzfmdrieA0N06xMxV4YKCWE7ww0kV+9fa
- OMJdmapagOJdpdjp3j9ogNSupFtOGoeuF6dWjR0gN3FTDybKddMWOe8uU13QhoK3Q4j23gRXtWS
- 90Hr3bT0uqr8hUeLkALuRlDgd1mjtcxg+bKukmBVfzAuAxYiauexqAkuQjdtKyqxVxq/zEaEQAp
- oH4qS+h53sxRLFTICvoMh4fYS7vuHva+7akHasBliRsppnqfNsVdJWhnByZS1c8eZjfkEQc3eao
- buJAHHLkWwAEonkCUrXi8epm8s5J7x5vfWOGyAr4qbtBMZsLOpKuoVIPcvNpVBdTxT0UHCJhXqG
- 02C4ubNo27ArHulP6h6BA0W4cLM77U0ZI3TQJhNQ8iYu/cTZv7bSvH5kifgluW7nupOT3a5M7/Z
- FUPvM0=
-X-Received: by 2002:a17:902:c94b:b0:2ae:7edd:c86f with SMTP id
- d9443c01a7336-2b077127329mr39785615ad.4.1773945757314; 
- Thu, 19 Mar 2026 11:42:37 -0700 (PDT)
-Received: from [192.168.1.87] (216-71-219-44.dyn.novuscom.net. [216.71.219.44])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2b06e5ef42asm80972245ad.40.2026.03.19.11.42.36
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Mar 2026 11:42:36 -0700 (PDT)
-Message-ID: <0301759f-803e-474a-979a-10a4d3ad2913@linaro.org>
-Date: Thu, 19 Mar 2026 11:42:36 -0700
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH for-11.0] Fix several typos in documentation (found by
- codespell)
-To: Stefan Weil <sw@weilnetz.de>, =?UTF-8?Q?Alex_Benn=C3=A9e?=
- <alex.bennee@linaro.org>, Alexandre Iooss <erdnaxe@crans.org>,
- Mahmoud Mandour <ma.mandourr@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>, Eric Blake <eblake@redhat.com>,
- Markus Armbruster <armbru@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, John Snow <jsnow@redhat.com>
-Cc: qemu-arm@nongnu.org, qemu-block@nongnu.org, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-References: <20260319183453.100545-1-sw@weilnetz.de>
-From: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+ (Exim 4.90_1) (envelope-from <saarnio@qti.qualcomm.com>)
+ id 1w3Fiu-0007GF-76; Thu, 19 Mar 2026 11:55:48 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <saarnio@qti.qualcomm.com>)
+ id 1w3Fir-0008Rl-Q0; Thu, 19 Mar 2026 11:55:47 -0400
+Received: from pps.filterd (m0279871.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 62JEWFmY2981638; Thu, 19 Mar 2026 15:55:43 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-type:date:from:in-reply-to:message-id:mime-version
+ :references:subject:to; s=qcppdkim1; bh=4G2Lmj5RNSkZyZhsf3D2oGA7
+ g542pcHgkDtBiT+Tuv0=; b=cXRqmwQphoyYL6UqJ+kyzZ0vO+6XeGNqMgz4SdAf
+ zaT9tau6Wv4C8muKt1ighTQIJyMO6ZsF4Nfry+6fS/tEhjRhWb5AtOLk0drd3Jf8
+ M2lh0US/AErRC+cbWQqhMKz557XJE/Uv4k40baceoNqVz3itM24LtJFBDZhPF4A7
+ EsYZ2eL/5BfA9lgc1X+eSbYqnnNgW1aiwx4x+nDW2CFy4VOzMZ5DuGQum71lTAZr
+ 9wmDWoQJPh09P3axps1kgkI0RDlBPph6mXJ6OXvQbkwOQDZK1U0bVoN9IN+SR36L
+ Vms5uNu1hV/ag2id9l6hGCcN19FdJjyL1dZjgo6lUxDxbw==
+Received: from cy3pr08cu001.outbound.protection.outlook.com
+ (mail-cy3pr08cu00106.outbound.protection.outlook.com [40.93.6.110])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4d0k0809bn-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Thu, 19 Mar 2026 15:55:43 +0000 (GMT)
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=PAKtcCwW03mClq4julRKoDJDNoG+txYy++5oksgMVLSCs/YTjkXFkVZcJCNScHthp2WltIa8o0krHbfBRdz4dTQmDW6C37Gp8eGWYsptX0sKUqkNV6hCSuQN2I3W9h4mcQKw90hV1RyJ+EcSDEbhNNfL+K0i52YtXGvTjvpx+fH53qCi2lHCteh2F4KJIBCuj9lHixwkIFdfX25+kt95dSl2GIHw+ODPqMJ+5XkVZHSiGTc982LdgR5px2lx/UnS9d/MRuP2r+aC/Txg31UJ9p9mUy21dUSbkRxt8DdxftO90yg0GeapBw6cSVQioDeci6PfU6IZdjx81Zj53rWEYQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=4G2Lmj5RNSkZyZhsf3D2oGA7g542pcHgkDtBiT+Tuv0=;
+ b=lf9bPQS+FHwccIkTuy6a4yWrOosDf1VcqX+rhibpAG5CmeDDvLcDaxtzB4wd4PD4O+8YXE35gNjhuo/ZrIeqi8pgXZAOlL0tLtOOLn2PXAHDh24KwoDetU5FVvi12dHbV+LOJM7vEzMWAD9shutbUZPOdF9jpsIMCRLMs/VSvDIh6O57G4unTf5zbrtemeOioSwDWKVLb5WgcCGw0VuQ5Hc4pNO1Nn1ukafMAyppV/1t3ZGTlkLbndrLIYluozjRw+1sba8eyKjKf/bx3CcNaigHnvIJMfYFfY3ppBHuDH8Fu85zPE2OdfQtRxg2e4ur2hrRVdBf8ln4BlKVOQEXGw==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=qti.qualcomm.com; dmarc=pass action=none
+ header.from=qti.qualcomm.com; dkim=pass header.d=qti.qualcomm.com; arc=none
+Received: from MN2PR02MB6622.namprd02.prod.outlook.com (2603:10b6:208:1df::21)
+ by MWHPR02MB10425.namprd02.prod.outlook.com (2603:10b6:303:28a::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9723.19; Thu, 19 Mar
+ 2026 15:55:40 +0000
+Received: from MN2PR02MB6622.namprd02.prod.outlook.com
+ ([fe80::6dd2:4e81:dacc:f239]) by MN2PR02MB6622.namprd02.prod.outlook.com
+ ([fe80::6dd2:4e81:dacc:f239%4]) with mapi id 15.20.9723.018; Thu, 19 Mar 2026
+ 15:55:40 +0000
+From: Steve Aarnio <saarnio@qti.qualcomm.com>
+To: Mohamed Mediouni <mohamed@unpredictable.fr>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>
+Subject: Re: [PATCH] meson.build: Add --enable-use-pdb option
+Thread-Topic: [PATCH] meson.build: Add --enable-use-pdb option
+Thread-Index: AQHctwlOUrDdM9odpUWgzwqG2/agnrW1EB2AgADx4v4=
+Date: Thu, 19 Mar 2026 15:55:40 +0000
+Message-ID: <MN2PR02MB66227C12455D077C5230D8879B4FA@MN2PR02MB6622.namprd02.prod.outlook.com>
+References: <MN2PR02MB6622718572E2A2B5E4EE3C039B4EA@MN2PR02MB6622.namprd02.prod.outlook.com>
+ <13DF1B88-DE82-4948-9749-A83D4163ACDE@unpredictable.fr>
+In-Reply-To: <13DF1B88-DE82-4948-9749-A83D4163ACDE@unpredictable.fr>
+Accept-Language: en-US
 Content-Language: en-US
-Autocrypt: addr=pierrick.bouvier@linaro.org; keydata=
- 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
- ZtfdHNZotF092MIH0IQC3poExQpV/WBYFAI=
-In-Reply-To: <20260319183453.100545-1-sw@weilnetz.de>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::629;
- envelope-from=pierrick.bouvier@linaro.org; helo=mail-pl1-x629.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Mentions: mohamed@unpredictable.fr
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+msip_labels: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: MN2PR02MB6622:EE_|MWHPR02MB10425:EE_
+x-ms-office365-filtering-correlation-id: 78adf8dc-f5a4-4978-ef96-08de85cff81d
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|1800799024|366016|8096899003|22082099003|18002099003|56012099003|7053199007|38070700021;
+x-microsoft-antispam-message-info: F3St2XtaxvZgTg+cbxZv/Xfs0RoXKubHyaywXdoMnJkRTMf1bOnJZbYF48zqLnPuHB4jQVClOTx87lmiSc+xZpDSm+AxeyZQYULdcsTVY8TcWNn3VPF+iU7a6mgs6S7iTi+tm/tWZJE9RDFSN4loIYcW862WFQuwrD4ipJT7UG9Bjw1m+Vufpz3md5RfPZhPSt6Ys0A0c1Ior8EmJCplo7WOtj5pgAUawc5C6zVJafzMlJVZ1RQ0bKeTQjuspxnsvDKCsKFBX4jidgDVBnC5pIh/ytPkLjSY5e05778HDY5QYNVMnaCS5iVzVkprjf+BGMNvDfn2QRDqPxfIcpW3GNxcnVIA8V3xhFIyx3K0/HTh2sfzyIFLKA+BnrJsaME0w53h2sAvepF1xTk9b2ZIdVoRw7eXXalnM74V+RkOE5bRuOXswQvjbPGq6ZmtKJFV+V7FbXT1CoAdPrvGtQx3HxjnVueRz2R3ehM15iwC23CKo4+W/14zTqDuiNRQinCtntZWddaenf9s8SAStW5ttQ48Br7ts6EgvKOR7ZGfjgSQ3GddcJaoSVn56SY0rRWkvW2oTTrUeL8ME/yPIg0kT8OUHNKr301rOxkbeHwUCtOl3w6/cljy51ZpizNl1e0ut3pFJot3svuxrwj2KclvXFus9Y1gpgcafSgv12Fx43iRFxykEaEurV3pYQVpyTY3i/lXiSx9D9aiTu9r/9lmkWnPEjPbLKjqO9YmnVdvlGmtHVDIXC/0M9H/2aEnsC1/H9b6xNYmbUveKyR/8N4pmVIutua/RRcjtBQqoInwlek=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:MN2PR02MB6622.namprd02.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(1800799024)(366016)(8096899003)(22082099003)(18002099003)(56012099003)(7053199007)(38070700021);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?iso-8859-1?Q?z0GvC/5bInTwXmpcAIrvLJ5gZSNFzCQw/zcRT0jOn+wnyE5/DB+MbZviOw?=
+ =?iso-8859-1?Q?/Qi1wKrURBBp6GTlGjFBaFXsG6+AsOlyAPqAjte4Lca7qc9sFxQpwqWmXz?=
+ =?iso-8859-1?Q?caS0FBpD4/4iI56JpxDzoVidvPhQCqFLAPIAU4Y2FfsGsCzzWSy/1WKRIO?=
+ =?iso-8859-1?Q?BijSG0Ef3WsFHjCith0btDf1ed9EDwyvlaWUXPh/bRhGc8aGYA4kEW7g0l?=
+ =?iso-8859-1?Q?imAuDApggTV/lEFYLcq/ZzvbIqjHonDN8ze3TOO8Mm52YUA2oYxK91SeFN?=
+ =?iso-8859-1?Q?XaJ83AycYXcrq5ULMzqM0t+FA3lD60Tfvr91HsCLFB+QliSN4KC8/cE0dE?=
+ =?iso-8859-1?Q?hJcNCN7MYbkCExQzwPEZQpiS+YUnubc3j01q72zTNPx/haAL6ELrOWPq6T?=
+ =?iso-8859-1?Q?mqpaDqVgyzkBxNGlxISZf9DS78clpjNJtcbWNmIcEeNc2TUuiiqIrFeNqk?=
+ =?iso-8859-1?Q?tzje9mRvpdbu6pV2tRBKutxIipk8ZfUDafGkFJRNBSoM/MReI/NY5Y70c/?=
+ =?iso-8859-1?Q?Mzc53J8Sff6D2kyNIuASqe4F94T/cjsUatjsVAdCt5bos+yUH3b6VT441L?=
+ =?iso-8859-1?Q?arJ7bwLh1Vm7OXyQUw6TnI2/xD3Je7QPSlK+40YK4tpxWVcGltNacrz3v6?=
+ =?iso-8859-1?Q?Q/XRbbMA5lWVmzO+4ivTVNSXJJtICjQsevfHZe07RdGpWGm/nZ6uMFkPPa?=
+ =?iso-8859-1?Q?0bCSUeQDEn62+coIQyhAIY8vgt4N0mVsyxEhSOtkzjq2WBPK8RELI9Sddz?=
+ =?iso-8859-1?Q?fxjxZ/MXb2CPM512Kb32v29MIyYciVBhou5ITwxPuGw6DthqqQHbmvUjZz?=
+ =?iso-8859-1?Q?wz2ItCi5vED2NkDSA/Vgp0iiEaO5UgmpK8zKXFODON7XtUFbLD1wykSk/2?=
+ =?iso-8859-1?Q?1S/A2Br6EjaH4P5kywbVphpefZrLkKtZFPwY5V+HfUOdrW033LvN1VR6D/?=
+ =?iso-8859-1?Q?wlhde8YDtJqvyLhyYgBbqDtE2wugReGj4v4x6M4eSE/niMHFbTxnXiKU0Y?=
+ =?iso-8859-1?Q?5LsHWMbPLBO35jxngp8NBbeouCcP4sW/6WvRiDDMQTrvh1UbunLR8U/tOB?=
+ =?iso-8859-1?Q?H95Y8mpEdkSqJ++XEkS8sPvUHQk1Wnhk7c3BHX79z/3/VAXbBEYhSXkSZo?=
+ =?iso-8859-1?Q?mVLYEThZhhTrsSR9huljkQp2OY00NAw4Z1qt1k8VK3uIWnQbL4/MTFY0He?=
+ =?iso-8859-1?Q?msy65kcrj49Mmu7pxp4JBlchslob0CEwUcwNHr+jTvH+9mRyKPPg255QFF?=
+ =?iso-8859-1?Q?0r90obdsOEU09HOH9l8LVlbfGP/GXEsrSMLKuJ3o9BB8Thz30ME7FCJfts?=
+ =?iso-8859-1?Q?PfatmQrmS/6x9OhlAmgh0CEqxZi/0uCPO4MPk698tAD/HE2Vt/gSiHX7bS?=
+ =?iso-8859-1?Q?oO7Uktfw+sz1z1LundQKAsVTS5cg2GUzWQG4e7jbUdBN0SEjZfKUX8EGNk?=
+ =?iso-8859-1?Q?0Q8OI2kd2Sz/vOm2M8NYZ2gkkD9UoH9RvkJhXgQpMhtUTHiA0A9nIr9r3V?=
+ =?iso-8859-1?Q?cQi6pH/7hC0KN4QudYQhMC4OdOLR2jGIRWnbeHOB1xutAJ2MyRL8bQsAGH?=
+ =?iso-8859-1?Q?xyZ38oaJwi+MFwvOQ3fbgJ/sSYdx4h6PtZEA4eGq1gL8VAuV4QhevBmmLK?=
+ =?iso-8859-1?Q?tXf1/YXtPShR8e9BH4GhH9YvfoD8+TooofAXaZdeZJwM0C7GF7Kd5wP8UZ?=
+ =?iso-8859-1?Q?Pe3pU7gAvYyTfsHAaejuND/0O7OCeswKdGz37ptxw1PE7sy8srBTtIb7io?=
+ =?iso-8859-1?Q?RKm9zh9YkGJtpGD0QMX3g/kaZoN4I3J2bnDa6D+aYAqrRnyS6GS2p2OLqA?=
+ =?iso-8859-1?Q?Dj70Nv3yUQ=3D=3D?=
+Content-Type: multipart/alternative;
+ boundary="_000_MN2PR02MB66227C12455D077C5230D8879B4FAMN2PR02MB6622namp_"
+MIME-Version: 1.0
+X-Exchange-RoutingPolicyChecked: mErOchk2q5ddnRXe+fRVoeb6I8aJPBl+1lJzuQaQ+mjjJsKQHODdV8k6V4Z1BIIqPZnBTu07DFEuZ11Hb+pOSPVNVLJhIbbEbdvi0CLcp9mHnuTbuKOvJo4aIX0wxNTQZl7UpOTM3SojoWx8n1cmeU1qOuDXufuU4a/0Tw5AorLhgXQPE1ZFmWXYY0EMizUHDn30rO/M7t8felnRypsQBzeBDndbbCMUNeRHcJe8BR1hSJqY0yPUQl4pVLQMtARL76vSncAjD09PCZ/OIUMhg+DIquajbakXy2pf0G55HtaHd3LNYFtF/jwD7XrlGYAIxY7IKr02S+YEncVZC4E89Q==
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: sVmlayVfL94sZxm/xUKG8eN016O/oWssxMw7Bu9jN8BgHaKRZa+peFeunLFMjBuUniL9+VRM4qJqykN2U4pa0l7Q8hboInB880T8folxA0P+BTcmK9q6Wii/Pgskol7W6WLNySoKz3TgjVXaaBQeuRuqwgAe+Kds9HWN0nwf9kpRas4fHpSe+RS8Jwo5ge2rwFyqleBrPUQLIWlMB3/7h36WkrhbomkcjhIY9/icuMjEyfkwQTTo7ZIDppAPZXMJMbh2D4ZdDlsTYfZOf+kZOkoaAkjgZv6GWhcB3ZvriOdNh3ObRvFSv4yQq6IPqaQlVJmW/KykVx1oaUN7R/isUGZ0Pz0bZzenaYowoyop+Ie6hLtvdeoKBddGqPR11kdbgIQq1x0rmjT408AMKk3H8+X78cy8md6Cm2Ow8hbVzhSpSjPLeYD9stMPCwbWTnOufLI9X6cp4u523ZZnpiYuV3jSqhZPXGhOe0UrwFxRWzgycdJ6vCWZpdAC+enhrKzAPGJjfR+baYMqXRGMyu2UKuT1kCla3YJDggSTkV5/47FObhEc03xSRQstCNl0f9WIcbwSyZ+mYpvFbUdtX+AA6gO+WLOa2WihfVOdniBOaUH7wTAC6gjc9AaciEjeAWXN
+X-OriginatorOrg: qti.qualcomm.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: MN2PR02MB6622.namprd02.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 78adf8dc-f5a4-4978-ef96-08de85cff81d
+X-MS-Exchange-CrossTenant-originalarrivaltime: 19 Mar 2026 15:55:40.0361 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 98e9ba89-e1a1-4e38-9007-8bdabc25de1d
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: Icy1fFpRmJBVS/P8mlwL08vVuYo2Pz3MOBxD9BpkO6NJ2+XTrTEGxXpri06jlZbH5iPEglT7r/eQeClpQtMOS4zLWGPyfLSeilXbdCKZBKE=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: MWHPR02MB10425
+X-Authority-Analysis: v=2.4 cv=MYhhep/f c=1 sm=1 tr=0 ts=69bc1c7f cx=c_pps
+ a=06rDlZIv6fgO+JiV9OBTRg==:117 a=z/mQ4Ysz8XfWz/Q5cLBRGdckG28=:19
+ a=lCpzRmAYbLLaTzLvsPZ7Mbvzbb8=:19 a=xqWC_Br6kY4A:10 a=Yq5XynenixoA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=3WHJM1ZQz_JShphwDgj5:22
+ a=EUspDBNiAAAA:8 a=CJT5CMB8Z0xqpqPZ4SYA:9 a=lqcHg5cX4UMA:10 a=wPNLvfGTeEIA:10
+ a=5sXUJ-gTCnI4zO2SYKcA:9 a=LI1SHMGvZk5kyGCz:21 a=frz4AuCg-hUA:10
+ a=_W_S_7VecoQA:10
+X-Proofpoint-ORIG-GUID: zt0It7I4o4iuOm2fdnM4Ajr5XoZzO71u
+X-Proofpoint-GUID: zt0It7I4o4iuOm2fdnM4Ajr5XoZzO71u
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzE5MDEyNiBTYWx0ZWRfX4OOO0dpaPiAV
+ eqrLKL/T2o0+9AtHNWV0Iv6GJWqMKlFwvDPOE/VyUS+RSmE6SfiDv9kZkHY5RQ/XkMmUxfAwruN
+ TLTPLPozlzycgVnV042P6OG27pSw/Qk7nUAn/BpAzbCU5oywReARCsznq9tm89Px9lJygq3AuAe
+ Z/5Rp7yXOn1jp9YcxIjja8pkvL3K8ChTf1zYJ/TXJrLZpJRHklSmVxGTZLuQyOTXz95LSUmfxId
+ ayn8+WIlfgrv4E9rLD29lAk/1LWbnR5isc4aFNIqG2/wXQp8mwhp83g2CletqdS5TjqekJ075No
+ KH458YB9YXSihQH9YkuMapSHoRjJEwh/6QFpQK2jqFzNwg/1Weqq42spw1kkGbwzEhc+JfTLaol
+ rnwRldyHeuhqYLkvxmLNVy4HvTnygyr2NaYKOsD3Tz0j/XhYOF/AmPsdTVzng+lAN4H/aswXnx1
+ gfD/UKPtnA7pPElU1Kw==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-19_02,2026-03-19_05,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ clxscore=1011 spamscore=0 suspectscore=0 phishscore=0 priorityscore=1501
+ lowpriorityscore=0 malwarescore=0 impostorscore=0 adultscore=0 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2603050001 definitions=main-2603190126
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=saarnio@qti.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -9
+X-Spam_score: -1.0
+X-Spam_bar: -
+X-Spam_report: (-1.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, HTML_MESSAGE=0.001,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_MSPIKE_H2=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 19 Mar 2026 15:54:05 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -146,31 +183,181 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 3/19/26 11:34 AM, Stefan Weil wrote:
-> Signed-off-by: Stefan Weil <sw@weilnetz.de>
-> 
-> These typos are part of the generated documentation.
-> Therefore they should be fixed in the new release.
-> 
-> More typos can be found in the remaining code, mostly in comments.
-> 
-> Regards,
-> Stefan
-> 
-> ---
->   contrib/plugins/traps.c        | 2 +-
->   docs/about/emulation.rst       | 2 +-
->   docs/devel/code-provenance.rst | 4 ++--
->   docs/system/tls.rst            | 8 ++++----
->   hw/arm/virt.c                  | 2 +-
->   include/hw/arm/virt.h          | 2 +-
->   include/plugins/qemu-plugin.h  | 2 +-
->   qapi/block-core.json           | 6 +++---
->   qapi/job.json                  | 2 +-
->   qapi/uefi.json                 | 2 +-
->   qemu-options.hx                | 4 ++--
->   11 files changed, 18 insertions(+), 18 deletions(-)
-> 
+--_000_MN2PR02MB66227C12455D077C5230D8879B4FAMN2PR02MB6622namp_
+Content-Type: text/plain; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
 
-Reviewed-by: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+>> On 18. Mar 2026, at 20:18, Steve Aarnio <saarnio@qti.qualcomm.com> wrote=
+:
+>>
+>> This option will (attempt to) modify the QEMU compile and link flags to
+>> emit PDB symbol files rather than the standard (DWARF?) symbol output
+>> from gcc/clang.
+>>
+>> This enables using native Windows debug tools (Windbg/Visual Studio) for
+>> debugging QEMU.
+>>
+>> Signed-off-by: Steve Aarnio <saarnio@qti.qualcomm.com>
+>
+>
+> Reviewed-by: Mohamed Mediouni <mohamed@unpredictable.fr>
+>
+> Already used something like this, it makes Windows debugging substantiall=
+y easier.
+
+@Mohamed Mediouni<mailto:mohamed@unpredictable.fr>, thank you for the quick=
+ review. First, thank you for your WHPX on AARCH64 Windows - no more waitin=
+g 20 minutes for the guest to boot, which is amazing. Second, regarding thi=
+s patch, are there other flags that you used for your work that I have miss=
+ed here? I've had reasonable success with these, just wondering if there's =
+something that I may have missed.
+
+>> ---
+>>  meson.build       | 5 +++++
+>> meson_options.txt | 2 ++
+>>  2 files changed, 7 insertions(+)
+>>
+>> diff --git a/meson.build b/meson.build
+>> index d7c4095b39..d27581e0c2 100644
+>> --- a/meson.build
+>> +++ b/meson.build
+>> @@ -692,6 +692,11 @@ endif
+>>   qemu_common_flags +=3D hardening_flags
+>>  +if get_option('debug') and get_option('use_pdb')
+>> +  qemu_common_flags +=3D cc.get_supported_arguments('-g','-gcodeview','=
+-gcolumn-info','-fno-omit-frame-pointer')
+>> +  qemu_ldflags +=3D cc.get_supported_link_arguments('-g','-Wl,--pdb=3D'=
+)
+>> +endif
+>> +
+>>  # Collect warning flags we want to set, sorted alphabetically
+>>  warn_flags =3D [
+>>    # First enable interesting warnings
+>> diff --git a/meson_options.txt b/meson_options.txt
+>> index 31d5916cfc..b1f3250d5c 100644
+>> --- a/meson_options.txt
+>> +++ b/meson_options.txt
+>> @@ -372,6 +372,8 @@ option('debug_stack_usage', type: 'boolean', value: =
+false,
+>>         description: 'measure coroutine stack usage')
+>>  option('qom_cast_debug', type: 'boolean', value: true,
+>>         description: 'cast debugging support')
+>> +option('use_pdb', type: 'boolean', value: false,
+>> +       description: 'use pdb symbol format on debug windows builds')
+>>  option('slirp_smbd', type : 'feature', value : 'auto',
+>>         description: 'use smbd (at path --smbd=3D*) in slirp networking'=
+)
+>>  --
+>> 2.53.0
+
+
+
+--_000_MN2PR02MB66227C12455D077C5230D8879B4FAMN2PR02MB6622namp_
+Content-Type: text/html; charset="iso-8859-1"
+Content-Transfer-Encoding: quoted-printable
+
+<html>
+<head>
+<meta http-equiv=3D"Content-Type" content=3D"text/html; charset=3Diso-8859-=
+1">
+<style type=3D"text/css" style=3D"display:none;"> P {margin-top:0;margin-bo=
+ttom:0;} </style>
+</head>
+<body dir=3D"ltr">
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 12pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<span style=3D"font-size: 11pt;">&gt;&gt; On 18. Mar 2026, at 20:18, Steve =
+Aarnio &lt;saarnio@qti.qualcomm.com&gt; wrote:<br>
+&gt;&gt;<br>
+&gt;&gt; This option will (attempt to) modify the QEMU compile and link fla=
+gs to<br>
+&gt;&gt; emit PDB symbol files rather than the standard (DWARF?) symbol out=
+put<br>
+&gt;&gt; from gcc/clang.<br>
+&gt;&gt;<br>
+&gt;&gt; This enables using native Windows debug tools (Windbg/Visual Studi=
+o) for<br>
+&gt;&gt; debugging QEMU.<br>
+&gt;&gt;<br>
+&gt;&gt; Signed-off-by: Steve Aarnio &lt;saarnio@qti.qualcomm.com&gt;<br>
+&gt;<br>
+&gt;<br>
+&gt; Reviewed-by: Mohamed Mediouni &lt;mohamed@unpredictable.fr&gt;<br>
+&gt;<br>
+&gt; Already used something like this, it makes Windows debugging substanti=
+ally easier.</span></div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<a class=3D"tWKOu mention ms-bgc-nlr ms-fcl-b" id=3D"OWAAM558902" href=3D"m=
+ailto:mohamed@unpredictable.fr">@Mohamed Mediouni</a>, thank you for the qu=
+ick review. First, thank you for your WHPX on AARCH64 Windows - no more wai=
+ting 20 minutes for the guest to boot,
+ which is amazing. Second, regarding this patch, are there other flags that=
+ you used for your work that I have missed here? I've had reasonable succes=
+s with these, just wondering if there's something that I may have missed.</=
+div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+<br>
+</div>
+<div style=3D"font-family: Aptos, Aptos_EmbeddedFont, Aptos_MSFontService, =
+Calibri, Helvetica, sans-serif; font-size: 11pt; color: rgb(0, 0, 0);" clas=
+s=3D"elementToProof">
+&gt;&gt; ---<br>
+&gt;&gt;&nbsp; meson.build&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | 5 +++++<br=
+>
+&gt;&gt; meson_options.txt | 2 ++<br>
+&gt;&gt;&nbsp; 2 files changed, 7 insertions(+)<br>
+&gt;&gt;<br>
+&gt;&gt; diff --git a/meson.build b/meson.build<br>
+&gt;&gt; index d7c4095b39..d27581e0c2 100644<br>
+&gt;&gt; --- a/meson.build<br>
+&gt;&gt; +++ b/meson.build<br>
+&gt;&gt; @@ -692,6 +692,11 @@ endif<br>
+&gt;&gt;&nbsp; &nbsp;qemu_common_flags +=3D hardening_flags<br>
+&gt;&gt;&nbsp; +if get_option('debug') and get_option('use_pdb')<br>
+&gt;&gt; +&nbsp; qemu_common_flags +=3D cc.get_supported_arguments('-g','-g=
+codeview','-gcolumn-info','-fno-omit-frame-pointer')<br>
+&gt;&gt; +&nbsp; qemu_ldflags +=3D cc.get_supported_link_arguments('-g','-W=
+l,--pdb=3D')<br>
+&gt;&gt; +endif<br>
+&gt;&gt; +<br>
+&gt;&gt;&nbsp; # Collect warning flags we want to set, sorted alphabeticall=
+y<br>
+&gt;&gt;&nbsp; warn_flags =3D [<br>
+&gt;&gt;&nbsp; &nbsp; # First enable interesting warnings<br>
+&gt;&gt; diff --git a/meson_options.txt b/meson_options.txt<br>
+&gt;&gt; index 31d5916cfc..b1f3250d5c 100644<br>
+&gt;&gt; --- a/meson_options.txt<br>
+&gt;&gt; +++ b/meson_options.txt<br>
+&gt;&gt; @@ -372,6 +372,8 @@ option('debug_stack_usage', type: 'boolean', v=
+alue: false,<br>
+&gt;&gt;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;description: 'measure coroutine s=
+tack usage')<br>
+&gt;&gt;&nbsp; option('qom_cast_debug', type: 'boolean', value: true,<br>
+&gt;&gt;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;description: 'cast debugging supp=
+ort')<br>
+&gt;&gt; +option('use_pdb', type: 'boolean', value: false,<br>
+&gt;&gt; +&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; description: 'use pdb symbol=
+ format on debug windows builds')<br>
+&gt;&gt;&nbsp; option('slirp_smbd', type : 'feature', value : 'auto',<br>
+&gt;&gt;&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;description: 'use smbd (at path -=
+-smbd=3D*) in slirp networking')<br>
+&gt;&gt;&nbsp; --<br>
+&gt;&gt; 2.53.0<br>
+<br>
+<br>
+</div>
+</body>
+</html>
+
+--_000_MN2PR02MB66227C12455D077C5230D8879B4FAMN2PR02MB6622namp_--
 
