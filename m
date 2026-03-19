@@ -4,62 +4,61 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A0E91090222
-	for <qemu-trivial@archiver.kernel.org>; Thu, 19 Mar 2026 12:57:54 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15629109024C
+	for <qemu-trivial@archiver.kernel.org>; Thu, 19 Mar 2026 16:08:55 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w3CwC-0005vG-BN; Thu, 19 Mar 2026 08:57:20 -0400
+	id 1w3FvR-0005ZD-Op; Thu, 19 Mar 2026 12:08:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xieyi@kylinos.cn>)
- id 1w38QV-00010f-PM; Thu, 19 Mar 2026 04:08:19 -0400
-Received: from mailgw.kylinos.cn ([124.126.103.232])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <xieyi@kylinos.cn>)
- id 1w38QS-0003EQ-MB; Thu, 19 Mar 2026 04:08:19 -0400
-X-UUID: bd3879ec236a11f1a21c59e7364eecb8-20260319
-X-CID-P-RULE: Release_Ham
-X-CID-O-INFO: VERSION:1.3.11, REQID:f393b899-93d1-44d7-8b95-6f3d0539194d, IP:0,
- U
- RL:0,TC:0,Content:0,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
- :release,TS:25
-X-CID-META: VersionHash:89c9d04, CLOUDID:f3f6983efa17a9e86663841bc7a8309b,
- BulkI
- D:nil,BulkQuantity:0,Recheck:0,SF:102|850|898,TC:nil,Content:0|15|50,EDM:5
- ,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
- :0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
-X-CID-BVR: 2,SSN|SDN
-X-CID-BAS: 2,SSN|SDN,0,_
-X-CID-FACTOR: TF_CID_SPAM_SNR
-X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
-X-UUID: bd3879ec236a11f1a21c59e7364eecb8-20260319
-X-User: xieyi@kylinos.cn
-Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
- (envelope-from <xieyi@kylinos.cn>)
- (Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
- with ESMTP id 367070779; Thu, 19 Mar 2026 16:07:57 +0800
-From: Yi Xie <xieyi@kylinos.cn>
-To: qemu-trivial@nongnu.org
-Cc: qemu-devel@nongnu.org,
-	xieyi <xieyi@kylinos.cn>
-Subject: [PATCH] tests: fix typo in char unit test comment
-Date: Thu, 19 Mar 2026 16:07:36 +0800
-Message-Id: <20260319080736.105367-1-xieyi@kylinos.cn>
-X-Mailer: git-send-email 2.25.1
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1w3FuT-0004xV-TH; Thu, 19 Mar 2026 12:07:48 -0400
+Received: from mail.weilnetz.de ([37.120.169.71]
+ helo=mail.v2201612906741603.powersrv.de)
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <stefan@weilnetz.de>)
+ id 1w3FuR-0004WT-13; Thu, 19 Mar 2026 12:07:45 -0400
+Received: from qemu.weilnetz.de (qemu.weilnetz.de [188.68.58.204])
+ by mail.v2201612906741603.powersrv.de (Postfix) with ESMTP id DC69ADA07A3;
+ Thu, 19 Mar 2026 17:07:39 +0100 (CET)
+Authentication-Results: mail.v2201612906741603.powersrv.de; dkim=none;
+ spf=temperror (mail.v2201612906741603.powersrv.de: error in processing during
+ lookup of stefan@weilnetz.de: DNS error) smtp.mailfrom=stefan@weilnetz.de
+Received: by qemu.weilnetz.de (Postfix, from userid 1000)
+ id B1FD6460028; Thu, 19 Mar 2026 17:07:39 +0100 (CET)
+To: Pierrick Bouvier <pierrick.bouvier@linaro.org>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Stefan Weil <sw@weilnetz.de>
+Subject: [PATCH for-11.0] docs: Update GitHub URL of libu2f-emu
+Date: Thu, 19 Mar 2026 17:07:39 +0100
+Message-ID: <20260319160739.98913-1-sw@weilnetz.de>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=124.126.103.232; envelope-from=xieyi@kylinos.cn;
- helo=mailgw.kylinos.cn
+X-Rspamd-Server: v2201612906741603
+X-Rspamd-Queue-Id: DC69ADA07A3
+X-Spamd-Bar: /
+X-Spamd-Result: default: False [-1.00 / 12.00]; BAYES_HAM(-3.00)[99.99%];
+ MID_CONTAINS_FROM(1.00)[]; R_MISSING_CHARSET(0.50)[];
+ FORGED_SENDER(0.30)[sw@weilnetz.de,stefan@weilnetz.de];
+ ONCE_RECEIVED(0.20)[]; MIME_GOOD(-0.10)[text/plain];
+ RCVD_NO_TLS_LAST(0.10)[]; MIME_TRACE(0.00)[0:+];
+ TO_DN_SOME(0.00)[]; RCVD_COUNT_ONE(0.00)[1];
+ TO_MATCH_ENVRCPT_ALL(0.00)[];
+ FROM_NEQ_ENVFROM(0.00)[sw@weilnetz.de,stefan@weilnetz.de];
+ RCPT_COUNT_THREE(0.00)[4]; ARC_NA(0.00)[]; R_DKIM_NA(0.00)[];
+ R_SPF_DNSFAIL(0.00)[DNS failed]; FROM_HAS_DN(0.00)[]
+X-Rspamd-Action: no action
+Received-SPF: pass client-ip=37.120.169.71; envelope-from=stefan@weilnetz.de;
+ helo=mail.v2201612906741603.powersrv.de
 X-Spam_score_int: -1
 X-Spam_score: -0.2
 X-Spam_bar: /
 X-Spam_report: (-0.2 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
- UNPARSEABLE_RELAY=0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 19 Mar 2026 08:57:19 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -71,30 +70,32 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
+Reply-to:  Stefan Weil <sw@weilnetz.de>
+From:  Stefan Weil via <qemu-trivial@nongnu.org>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: xieyi <xieyi@kylinos.cn>
+This avoids a redirect from the old to the new URL.
 
-Signed-off-by: xieyi <xieyi@kylinos.cn>
+Signed-off-by: Stefan Weil <sw@weilnetz.de>
 ---
- tests/unit/test-char.c | 2 +-
+ docs/system/devices/usb-u2f.rst | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/tests/unit/test-char.c b/tests/unit/test-char.c
-index 2869c4e09d..b88b557133 100644
---- a/tests/unit/test-char.c
-+++ b/tests/unit/test-char.c
-@@ -710,7 +710,7 @@ static void char_hub_test(void)
-         /*
-          * Now we are good to go, first repeat "lost" sequence, which
-          * was already consumed and drained by the ring buffers, but
--         * pipe have not recieved that yet.
-+         * the pipe has not received it yet.
-          */
-         ret = qemu_chr_fe_write(&chr_fe, (void *)"thisisit", 8);
-         g_assert_cmpint(ret, ==, 8);
+diff --git a/docs/system/devices/usb-u2f.rst b/docs/system/devices/usb-u2f.rst
+index 4f57d5c8c3..f7ca127cbb 100644
+--- a/docs/system/devices/usb-u2f.rst
++++ b/docs/system/devices/usb-u2f.rst
+@@ -41,7 +41,7 @@ requires a working libudev):
+ ----------------
+ 
+ ``u2f-emulated`` is a completely software emulated U2F device.
+-It uses `libu2f-emu <https://github.com/MattGorko/libu2f-emu>`__
++It uses `libu2f-emu <https://github.com/Agnoctopus/libu2f-emu>`__
+ for the U2F key emulation. libu2f-emu
+ provides a complete implementation of the U2F protocol device part for
+ all specified transports given by the FIDO Alliance.
 -- 
-2.25.1
+2.47.3
 
 
