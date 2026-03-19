@@ -4,77 +4,62 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CAADE108E1ED
-	for <qemu-trivial@archiver.kernel.org>; Thu, 19 Mar 2026 11:22:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A0E91090222
+	for <qemu-trivial@archiver.kernel.org>; Thu, 19 Mar 2026 12:57:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w3BSF-00030e-J3; Thu, 19 Mar 2026 07:22:19 -0400
+	id 1w3CwC-0005vG-BN; Thu, 19 Mar 2026 08:57:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w3BRp-0002LV-0t
- for qemu-trivial@nongnu.org; Thu, 19 Mar 2026 07:21:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <xieyi@kylinos.cn>)
+ id 1w38QV-00010f-PM; Thu, 19 Mar 2026 04:08:19 -0400
+Received: from mailgw.kylinos.cn ([124.126.103.232])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1w3BRm-000886-Id
- for qemu-trivial@nongnu.org; Thu, 19 Mar 2026 07:21:52 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1773919309;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=v5n2rzLTJOT6jhhqr0oksgbKEDds3CCeNC7nR8BZLR8=;
- b=TkvVt6PLD+Rw7rMvedga6xVFdkhhDeEl/fP9uACVJSW6HzZw4c4zHTGP7pDD7sR/gW7Io0
- FuaP14qu3056W3LQbQ1Q/Ppb82yMQT5Wzh3mfGVnoLMVsVPPcY5fWCYb74DqQrL9eV80az
- o4FJW+0/gvU5SKacjR7YNnZIZIl9frM=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-474-BAJQ4RMINe6DP5GCszuPKA-1; Thu,
- 19 Mar 2026 07:21:46 -0400
-X-MC-Unique: BAJQ4RMINe6DP5GCszuPKA-1
-X-Mimecast-MFC-AGG-ID: BAJQ4RMINe6DP5GCszuPKA_1773919305
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6D31B180034F; Thu, 19 Mar 2026 11:21:45 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.45.242.6])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 166251800107; Thu, 19 Mar 2026 11:21:45 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id B72A421E6937; Thu, 19 Mar 2026 12:21:42 +0100 (CET)
-From: Markus Armbruster <armbru@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>,
- qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,  Markus Armbruster
- <armbru@redhat.com>,  Artyom Tarasenko <atar4qemu@gmail.com>
-Subject: Re: [PATCH] hw/sparc64/sun4u_iommu: Fix crash when introspecting
- sun4u-iommu from the CLI
-In-Reply-To: <20260317085839.445178-1-thuth@redhat.com> (Thomas Huth's message
- of "Tue, 17 Mar 2026 09:58:39 +0100")
-References: <20260317085839.445178-1-thuth@redhat.com>
-Date: Thu, 19 Mar 2026 12:21:42 +0100
-Message-ID: <871phgawu1.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <xieyi@kylinos.cn>)
+ id 1w38QS-0003EQ-MB; Thu, 19 Mar 2026 04:08:19 -0400
+X-UUID: bd3879ec236a11f1a21c59e7364eecb8-20260319
+X-CID-P-RULE: Release_Ham
+X-CID-O-INFO: VERSION:1.3.11, REQID:f393b899-93d1-44d7-8b95-6f3d0539194d, IP:0,
+ U
+ RL:0,TC:0,Content:0,EDM:25,RT:0,SF:0,FILE:0,BULK:0,RULE:Release_Ham,ACTION
+ :release,TS:25
+X-CID-META: VersionHash:89c9d04, CLOUDID:f3f6983efa17a9e86663841bc7a8309b,
+ BulkI
+ D:nil,BulkQuantity:0,Recheck:0,SF:102|850|898,TC:nil,Content:0|15|50,EDM:5
+ ,IP:nil,URL:0,File:nil,RT:nil,Bulk:nil,QS:nil,BEC:nil,COL:0,OSI:0,OSA:0,AV
+ :0,LES:1,SPR:NO,DKR:0,DKP:0,BRR:0,BRE:0,ARC:0
+X-CID-BVR: 2,SSN|SDN
+X-CID-BAS: 2,SSN|SDN,0,_
+X-CID-FACTOR: TF_CID_SPAM_SNR
+X-CID-RHF: D41D8CD98F00B204E9800998ECF8427E
+X-UUID: bd3879ec236a11f1a21c59e7364eecb8-20260319
+X-User: xieyi@kylinos.cn
+Received: from localhost.localdomain [(10.44.16.150)] by mailgw.kylinos.cn
+ (envelope-from <xieyi@kylinos.cn>)
+ (Generic MTA with TLSv1.3 TLS_AES_256_GCM_SHA384 256/256)
+ with ESMTP id 367070779; Thu, 19 Mar 2026 16:07:57 +0800
+From: Yi Xie <xieyi@kylinos.cn>
+To: qemu-trivial@nongnu.org
+Cc: qemu-devel@nongnu.org,
+	xieyi <xieyi@kylinos.cn>
+Subject: [PATCH] tests: fix typo in char unit test comment
+Date: Thu, 19 Mar 2026 16:07:36 +0800
+Message-Id: <20260319080736.105367-1-xieyi@kylinos.cn>
+X-Mailer: git-send-email 2.25.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: hSOZOV8az3gF3cyQ0IOB8Z433gvXpWNoL3kKA2INhGs_1773919305
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -3
-X-Spam_score: -0.4
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=124.126.103.232; envelope-from=xieyi@kylinos.cn;
+ helo=mailgw.kylinos.cn
+X-Spam_score_int: -1
+X-Spam_score: -0.2
 X-Spam_bar: /
-X-Spam_report: (-0.4 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+X-Spam_report: (-0.2 / 5.0 requ) BAYES_00=-1.9,
  RCVD_IN_VALIDITY_RPBL_BLOCKED=0.819, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.903,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001,
+ UNPARSEABLE_RELAY=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 19 Mar 2026 08:57:19 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -89,25 +74,27 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Thomas Huth <thuth@redhat.com> writes:
+From: xieyi <xieyi@kylinos.cn>
 
-> From: Thomas Huth <thuth@redhat.com>
->
-> QEMU currently crashes when introspecting the sun4u-iommu device from the
-> command line interface:
->
->  $ ./qemu-system-sparc64 -display none -device sun4u-iommu,help
->  qemu-system-sparc64: ../../devel/qemu/system/physmem.c:1401:
->   register_multipage: Assertion `num_pages' failed.
->  Aborted (core dumped)
->
-> There does not seem to be a compelling reason for initializing the
-> memory regions from the instance_init function, so let's simply move
-> the code into a realize() function instead to fix this issue.
->
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: xieyi <xieyi@kylinos.cn>
+---
+ tests/unit/test-char.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-Reported-by: Markus Armbruster <armbru@redhat.com>
-Tested-by: Markus Armbruster <armbru@redhat.com>
+diff --git a/tests/unit/test-char.c b/tests/unit/test-char.c
+index 2869c4e09d..b88b557133 100644
+--- a/tests/unit/test-char.c
++++ b/tests/unit/test-char.c
+@@ -710,7 +710,7 @@ static void char_hub_test(void)
+         /*
+          * Now we are good to go, first repeat "lost" sequence, which
+          * was already consumed and drained by the ring buffers, but
+-         * pipe have not recieved that yet.
++         * the pipe has not received it yet.
+          */
+         ret = qemu_chr_fe_write(&chr_fe, (void *)"thisisit", 8);
+         g_assert_cmpint(ret, ==, 8);
+-- 
+2.25.1
 
 
