@@ -4,41 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D3A3BF46101
-	for <qemu-trivial@archiver.kernel.org>; Mon, 23 Mar 2026 13:03:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ADAB5F46101
+	for <qemu-trivial@archiver.kernel.org>; Mon, 23 Mar 2026 13:03:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w4evE-0002XO-7v; Mon, 23 Mar 2026 09:02:20 -0400
+	id 1w4evO-0002hT-73; Mon, 23 Mar 2026 09:02:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1w4etU-00028F-5n; Mon, 23 Mar 2026 09:01:00 -0400
+ id 1w4etU-00028G-6K; Mon, 23 Mar 2026 09:01:00 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1w4etS-0006b3-Av; Mon, 23 Mar 2026 09:00:31 -0400
+ id 1w4etS-0006ax-2L; Mon, 23 Mar 2026 09:00:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1774270805; bh=wwHUGGarCmbaL8dJjpjqkI/zpYoKiR0JviDKd9duN0U=;
+ t=1774270805; bh=dA/mM+TMJrDmRfclsXKHy52owWAOp95oB1OlZnWeP5A=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=mfS3SXGMK1LSBMbnjNW4B3ZZEJ21tk93RaRuDKlxg26LS1eJXaG6yW/MEKYC/keRo
- RnjPcCIY2ACF2RzL9oFiXtP/hr4v+m5S2a6U7VmmPPTOIRbw14f5NdOpiI41AhtZte
- dE79uln2VMzHggP06aK32UMO6McAa+Xu38Csc+lvDWXMyS5DjvxPg4mbmDzOM/Y8Bh
- zjrMD2CYmoKwvF13o4yxk7oEIMhhWEYuKh2J9QAYCYbHzh0llq8cG7/sLzv9/rNLbz
- +4JNjzvfpoYPnVjBpgd4ZqDfiR4UxsN2IfvTqaIqKHbhaMh6ZHR/aAUTyZdct1vx7N
- YFVKRnufPl1uw==
+ b=opf4Av3uPdQz9cHtfzVW/EScHTuztcnbDJXSqSR7s3PBZM4ue804RGvTOE2hnY2yI
+ 073nbeIhuvI+IkLnXWAH+/HXJOFGmtGEV2f5RHVWqUJX/ojany8QX1nGa7QR2//RMB
+ DVpbrSCCCI8Mdr17r7VpGk4zTS4BXAqMJqjfu0h8wwLGK5858KpDPGJ3+i8Plsiitb
+ +dIn0SoHfXQOfb+EZryWSnsCenroWSZIYrmVyubQKbXYMh1C6MvFmYnbcgj5vBsUBB
+ oIoGZ0YfcKE5hO3I/1Ua8roN3aAOFIBw4Lq4HXCMK4uKeuCL04766kgSQgNxhEQ8+B
+ tjyN6IsP4E36A==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 44204196973;
+ by isrv.corpit.ru (Postfix) with ESMTP id 2C2DF196972;
  Mon, 23 Mar 2026 16:00:05 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 0FADA385160;
- Mon, 23 Mar 2026 16:00:22 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id EBE8038515F;
+ Mon, 23 Mar 2026 16:00:21 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
 Cc: Stefan Weil via <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 3/4] docs: Update GitHub URL of libu2f-emu
-Date: Mon, 23 Mar 2026 16:00:15 +0300
-Message-ID: <20260323130021.376393-4-mjt@tls.msk.ru>
+Subject: [PULL 2/4] Fix include statement for u2f-emu.h
+Date: Mon, 23 Mar 2026 16:00:14 +0300
+Message-ID: <20260323130021.376393-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260323130021.376393-1-mjt@tls.msk.ru>
 References: <20260323130021.376393-1-mjt@tls.msk.ru>
@@ -70,28 +70,34 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 From: Stefan Weil via <qemu-trivial@nongnu.org>
 
-This avoids a redirect from the old to the new URL.
+All examples on https://github.com/Agnoctopus/libu2f-emu/ don't
+simply include u2f-emu.h without any added directory.
+
+The additional include directory does not exist when libu2f
+was built with meson.
+
+It's up to pkgconfig to make sure that u2f-emu.h is found in any case.
 
 Signed-off-by: Stefan Weil <sw@weilnetz.de>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- docs/system/devices/usb-u2f.rst | 2 +-
+ hw/usb/u2f-emulated.c | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/docs/system/devices/usb-u2f.rst b/docs/system/devices/usb-u2f.rst
-index 4f57d5c8c3..f7ca127cbb 100644
---- a/docs/system/devices/usb-u2f.rst
-+++ b/docs/system/devices/usb-u2f.rst
-@@ -41,7 +41,7 @@ requires a working libudev):
- ----------------
+diff --git a/hw/usb/u2f-emulated.c b/hw/usb/u2f-emulated.c
+index 196d05a83a..b82a315019 100644
+--- a/hw/usb/u2f-emulated.c
++++ b/hw/usb/u2f-emulated.c
+@@ -31,7 +31,7 @@
+ #include "hw/usb/usb.h"
+ #include "hw/core/qdev-properties.h"
  
- ``u2f-emulated`` is a completely software emulated U2F device.
--It uses `libu2f-emu <https://github.com/MattGorko/libu2f-emu>`__
-+It uses `libu2f-emu <https://github.com/Agnoctopus/libu2f-emu>`__
- for the U2F key emulation. libu2f-emu
- provides a complete implementation of the U2F protocol device part for
- all specified transports given by the FIDO Alliance.
+-#include <u2f-emu/u2f-emu.h>
++#include <u2f-emu.h>
+ 
+ #include "u2f.h"
+ 
 -- 
 2.47.3
 
