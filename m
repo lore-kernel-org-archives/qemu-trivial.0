@@ -4,102 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43AD8E9A779
-	for <qemu-trivial@archiver.kernel.org>; Tue, 24 Mar 2026 12:04:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67BF9106B53E
+	for <qemu-trivial@archiver.kernel.org>; Wed, 25 Mar 2026 13:50:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w50UU-0004gb-PR; Tue, 24 Mar 2026 08:04:10 -0400
+	id 1w5OcQ-0000Hv-TS; Wed, 25 Mar 2026 09:49:59 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w50UQ-0004ft-1O
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2026 08:04:09 -0400
-Received: from mail-yw1-x112b.google.com ([2607:f8b0:4864:20::112b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1w50UM-0003x7-DN
- for qemu-trivial@nongnu.org; Tue, 24 Mar 2026 08:04:04 -0400
-Received: by mail-yw1-x112b.google.com with SMTP id
- 00721157ae682-79ab50ee951so12622587b3.2
- for <qemu-trivial@nongnu.org>; Tue, 24 Mar 2026 05:04:00 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1774353839; cv=none;
- d=google.com; s=arc-20240605;
- b=RgVI3GVaWToRujzTh7JuzKCNv5fL8as52FlMdQfTe9T91cErPnjRF62i986EaeeP4t
- rGsYTTC3Y9Uxo2bKabIr6tfCxAVDRxWRhdQAEBp/AN5+pqD0ika+JBkIpCrS6QcfN2qf
- k7PibLnWjnJMbiWcDD2/DB4xL+DZtlwrAoaLlNdsLndUW0wfjsQ4V3LW2wFhT2p7isHA
- ZrKwoCxYkS69gPd6kAliXJom4jQb3b6JqCYhhn14nvWkE+FLXbEF8oQwljtOjX7xvzxp
- RhOkTMmFO3ngYW1OjJIbrmSVmQSlj1WvSy07hfSb2q+JEsmqprtoSbmJvxwbrGuAmuiU
- 9hYg==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=r7gq6yBnpG0O8tu5vXuylAbnJyVvKxBGP+f8Ge6CaOc=;
- fh=aOKVlMjWqflxt+q8VXDJei7LML4LJ1LiCg1m3EBuaqs=;
- b=F5llvjden2+rJgpp/Fa36ZTGAq2z96pyHgqjwU2Zfzovd9AAufXiNk/4RcrRY4B9Cz
- x95SQHqeFctMqzJ4bOSl6rljci0jo8EFKxpRLylTNLWU+MxtGGRHPXpLpdzgpNlOvjI1
- ykVbZCE8ROkIKJoG52rZ0YrvhLtzDzO9iAPBvAZgV2U9mSnEg/k530PApONtC9cOClDu
- 0knhzKhGTE/Q3fkWxQDpXrn/27hL/DA6jYIAuRuThezRRUQQ7ozPck13f3d1vORtCHJG
- 89rLXJts/jlCKva/IDUDmsCK5x59G53Iun7eJh1yyBGbATcbqojnQIg0OnCP0sC21Jpi
- gM1w==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1774353839; x=1774958639; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=r7gq6yBnpG0O8tu5vXuylAbnJyVvKxBGP+f8Ge6CaOc=;
- b=xsobDZ9vHoze+Uf17qQmmH66tC6WDmfthHoFVOw3iwq2e8MzgoQ1NMMx3uPsD7i8n7
- +mSUFaCF2ikV6qosc3KW6CCRju76otLFdaoo7gyUbFn9vjeaZGvjCQzS5u1vDLwzpaFH
- UJ5L6+1zL57NGMnObDItLOZ4EZzBFxd9uy5VMH/99RgJLvEbfjeXKA6P6EXMuagPwN4n
- V9fWsTaokjMT62sF1yLmijShG1YC1bOYRFGAoTTBDY+hSOaxPbHBdQLnQbmAnH0an1F/
- bdRJytSKik6mhI6zb9Do13zmqZcnbtTAsxAtJXyBwm9qMH/0i5wrllNBeAdST8Zzb+3q
- 0+Gw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1774353839; x=1774958639;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=r7gq6yBnpG0O8tu5vXuylAbnJyVvKxBGP+f8Ge6CaOc=;
- b=J86A247DMQx2Qai3YcT2pWAtQKOvotJXWnjP7prQMoL3/NWiFOcBVpbT7x1mSj1QnX
- cAdwCt8gPiCpwlXlsT7h0ZRZH3rsp+IdrsUISo36XoOATq69EXXyQu8YXMx4378JVQXO
- 9ja3yKKdfT5nb/+uPlL4/nRQd3JHl3nnkQinF8mV0jEUhza+vcPDYQklQIa5UccXgfup
- v+8radEuX+6jqnNafF882z0ozVUJZjCT2MevAdEVA4UIVf+EWtIhO7XbtS6esektKQwa
- PXy+hTE8uh+hPaH4uVVTm/neUx4EgUtpGSyYaegqxS377al265IjWJxpNxiWGfdJwIwO
- 1tFw==
-X-Forwarded-Encrypted: i=1;
- AJvYcCXJ4kwrlcT5w45EeDTqbNYQpOxbkDmJRN5UE6VqtyBoYk99eu01xWnVeCtQOQkx5Z5BuUhhfjnKS5b4gEo=@nongnu.org
-X-Gm-Message-State: AOJu0YxLpil7zifvzOIMQ8oNj/9EbgyfxXjtHR882OXZf/eX9939mtNm
- 6rKXOjjPZd1vnpZJOslsGnvlD2lM100rgUonlSSICTvMp15w+esBznoL8yvc/I9Tg6FdVfy5TAr
- UJdMoQTXyCBAW2KnTnvCnsARTqorPnDwd1G6V2F/hVA==
-X-Gm-Gg: ATEYQzz7uP9xVqjyKCxk4W/ceuvOL4I9/RKNkeUI4vIK2rCJuM2Mht0GjoTJp5paRAu
- uS0nbyiHLsmEo8n9pgBxSKFkBeqbq71mgyqHuFK9zTxWOGpAaZg4/ZkY8NlGLo4EJuBV2nJwJIQ
- /iSqQgo7VZk7bKgzny+MFehx8qq/DS/y9wArnxOAgY8zEJsSHfSf7MoYHeuCBzzXO5qvRbpunqG
- /wUlMrn18geHzO6xdmGsHBMliiPkMlRSLgqkOyfhQ4KxqczeNISONsKg/wvB2y8JfzocfUN8xIX
- P/t0LGBqLLhIl3l6Awe8cEqfvCYT5D9xoV+CXhT37vrPh2MgSiL/9y0kI5tg53/GXRA=
-X-Received: by 2002:a05:690c:e72c:b0:79a:5384:cb52 with SMTP id
- 00721157ae682-79a90c19cafmr125422487b3.48.1774353839083; Tue, 24 Mar 2026
- 05:03:59 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1w5OcH-0000EI-5q; Wed, 25 Mar 2026 09:49:50 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1w5OcE-0004fH-54; Wed, 25 Mar 2026 09:49:48 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
+ t=1774446552; bh=w/yW2JdOaTA242sD9GEvdWS8QtuOnxXKd8VVkS4H3RY=;
+ h=From:To:Cc:Subject:Date;
+ b=X9kyfpRvcFXOD3PcKP/1SpdhyOXVEHEKJBILd0zSH/8mCBE6hRFbWoQWHXIitRWFA
+ ttlCNU5jkIIU5nHs5Nb4E+5iQPsknzn1CLd4IvPohryqy9NYpyrPIf9wAP08x5+Shf
+ 1mdTQbasG1EoXfqK5vOTMNJlRxF5VJPWbdYf//IRmjEPijM9fpG+v9HrYo/KYk200p
+ c5DY42L6br51Xl9ZCvF7QlUgT6WBnKzrh0ouSnjIop5+YT7Utotz8SLExw91dnzghD
+ uznrHcWlHqrzmUDQtSJOTqoKKzBhRxwSVr5xwEz8qZXbvGes/lJ00iABOB73AEH4nx
+ sn5Xf9Py9ayLA==
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id 4D2AE197919;
+ Wed, 25 Mar 2026 16:49:12 +0300 (MSK)
+Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by tsrv.corpit.ru (Postfix) with ESMTP id E8785386E0A;
+ Wed, 25 Mar 2026 16:49:32 +0300 (MSK)
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: Michael Tokarev <mjt@tls.msk.ru>, Paolo Bonzini <pbonzini@redhat.com>,
+ =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
+ =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH trivial] util/meson.build: do not add cpuinfo-$arch to util_ss
+ for 32bit CPUs
+Date: Wed, 25 Mar 2026 16:49:26 +0300
+Message-ID: <20260325134932.765163-1-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.47.3
 MIME-Version: 1.0
-References: <20260323165736.386677-1-mjt@tls.msk.ru>
-In-Reply-To: <20260323165736.386677-1-mjt@tls.msk.ru>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 24 Mar 2026 12:03:47 +0000
-X-Gm-Features: AaiRm52atFp1oFeyE9BUGIMrK7S2CX7fx3BgaxuvPZO8wWw5I71JLfQz8UXUQBA
-Message-ID: <CAFEAcA_RTauRjGo0vBQ38w6eTQ3MasR3xurTaTfp8zVk8TC=Dg@mail.gmail.com>
-Subject: Re: [PULL v2 0/4] Trivial patches for 2026-03-23
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::112b;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x112b.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -115,33 +71,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Mon, 23 Mar 2026 at 16:58, Michael Tokarev <mjt@tls.msk.ru> wrote:
->
-> The following changes since commit eb153d8fd3be325a5aa7e1a6a73be8854eeaaf27:
->
->   Merge tag 'pull-target-arm-20260323' of https://gitlab.com/pm215/qemu into staging (2026-03-23 10:55:20 +0000)
->
-> are available in the Git repository at:
->
->   https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
->
-> for you to fetch changes up to b7ae542de40364cccb683a67e5f891d3ef69818f:
->
->   Fix several typos in documentation (found by codespell) (2026-03-23 19:55:24 +0300)
->
-> ----------------------------------------------------------------
-> trivial patches for 2026-03-23
->
-> minor u2f tweaks ny Stefan, and small docs/comments updates
->
-> v2: fix email address of Stefan.
->     (not resending the series)
+qemu dropped support for 32bit CPUs recently, so this change is an
+additional clean-up on top.  But in theory it will allow building
+qemu-guest-agent on a 32bit system.
 
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ util/meson.build | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
 
-Applied, thanks.
+diff --git a/util/meson.build b/util/meson.build
+index 33132c04ad..170e959d9b 100644
+--- a/util/meson.build
++++ b/util/meson.build
+@@ -116,13 +116,13 @@ endif
+ 
+ if cpu == 'aarch64'
+   util_ss.add(files('cpuinfo-aarch64.c'))
+-elif cpu in ['x86', 'x86_64']
++elif cpu == 'x86_64'
+   util_ss.add(files('cpuinfo-i386.c'))
+ elif cpu == 'loongarch64'
+   util_ss.add(files('cpuinfo-loongarch.c'))
+-elif cpu in ['ppc', 'ppc64']
++elif cpu == 'ppc64'
+   util_ss.add(files('cpuinfo-ppc.c'))
+-elif cpu in ['riscv32', 'riscv64']
++elif cpu = 'riscv64'
+   util_ss.add(files('cpuinfo-riscv.c'))
+ elif cpu == 's390x'
+   util_ss.add(files('s390x_pci_mmio.c'))
+-- 
+2.47.3
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/11.0
-for any user-visible changes.
-
--- PMM
 
