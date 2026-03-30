@@ -4,110 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 013CA1061B0F
-	for <qemu-trivial@archiver.kernel.org>; Mon, 30 Mar 2026 16:34:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 807061061B0F
+	for <qemu-trivial@archiver.kernel.org>; Mon, 30 Mar 2026 16:49:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w7FYp-0006Tk-FN; Mon, 30 Mar 2026 12:33:57 -0400
+	id 1w7Fo6-0002Y2-KQ; Mon, 30 Mar 2026 12:49:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1w7FYj-0006SS-NA
- for qemu-trivial@nongnu.org; Mon, 30 Mar 2026 12:33:51 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w7Fo0-0002Wm-0k
+ for qemu-trivial@nongnu.org; Mon, 30 Mar 2026 12:49:37 -0400
+Received: from ci-2006f-snip4-11.eps.apple.com ([57.103.90.191]
+ helo=outbound.ci.icloud.com)
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1w7FYh-0000oR-Dh
- for qemu-trivial@nongnu.org; Mon, 30 Mar 2026 12:33:49 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774888426;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=IUXK/6zCVQUmImS+Z8D24dtKQkIf1gSTL1biXaVApkk=;
- b=MUw2o3njjqnUnijXXwc3l4yscCCY3vk0IdM1R0HNKSsSPw8E/TW1VSTICws/RPhE60hb4G
- sRHcUjhxNMxThVuJnbXn3+HKJKosASuk+eaEud4DXx1+qsKidjYSH+FWylNQ8bnVKaq6rZ
- sm9B27BxTsNUen3uAZZJgkUNSS7Fg0U=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-499-9fbhnWOMPhS7U_GJLJHulQ-1; Mon,
- 30 Mar 2026 12:33:42 -0400
-X-MC-Unique: 9fbhnWOMPhS7U_GJLJHulQ-1
-X-Mimecast-MFC-AGG-ID: 9fbhnWOMPhS7U_GJLJHulQ_1774888421
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0833519560B1; Mon, 30 Mar 2026 16:33:41 +0000 (UTC)
-Received: from [10.44.35.213] (unknown [10.44.35.213])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6BBB61955D84; Mon, 30 Mar 2026 16:33:38 +0000 (UTC)
-Message-ID: <72de7dbb-ba81-4a59-9710-7e88707de31c@redhat.com>
-Date: Mon, 30 Mar 2026 18:33:24 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] thread-pool: signal condition variable while holding lock
-To: Stepan Popov <Stepan.Popov@kaspersky.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20260330130104.85200-1-Stepan.Popov@kaspersky.com>
-From: Paolo Bonzini <pbonzini@redhat.com>
-Autocrypt: addr=pbonzini@redhat.com; keydata=
- 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
-In-Reply-To: <20260330130104.85200-1-Stepan.Popov@kaspersky.com>
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: VlQqPFOoBgBiYLCzSOSxE8A4Hoxu946oCw0SGFDgvtI_1774888421
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 27
-X-Spam_score: 2.7
-X-Spam_bar: ++
-X-Spam_report: (2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.54,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1, RCVD_IN_VALIDITY_RPBL_BLOCKED=1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ (Exim 4.90_1) (envelope-from <mohamed@unpredictable.fr>)
+ id 1w7Fnv-0003Kp-U2
+ for qemu-trivial@nongnu.org; Mon, 30 Mar 2026 12:49:34 -0400
+Received: from outbound.ci.icloud.com (unknown [127.0.0.2])
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-10 (Postfix) with ESMTPS id
+ 018E61800169; Mon, 30 Mar 2026 16:49:23 +0000 (UTC)
+Dkim-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unpredictable.fr;
+ s=sig1; t=1774889365; x=1777481365;
+ bh=QD+ZefaqxbGHLuNSknPSMW7y3d42Wk1UUlLO+LdNqn4=;
+ h=Content-Type:Mime-Version:Subject:From:Date:Message-Id:To:x-icloud-hme;
+ b=B7nn9LkDHLtiU1Gnz+lXIfGur1MUi/UCfOz2dADTMoZ4rEocjBTuG4otPcrarJkNUKlAfxhnjLqu2tZLKYJU3MhQmtvURC9d2hevTY8LemwJQ38A/G1l6HqRiJVzJtUNlsgTCJnz5rext5xSUJ1Hz0m0aM7hYZq0y8ivaPQ8uL9KXlKbIolRVmHc+daxZKAazypB9tx9hzvKZb7V9I27QqTV2LOwtjFBH+oc0tVoP+PzgcMPnx7H/0wwffLL/rOjgA17B7lRlJQbxZ6lh4PhU2bonJU6b9ZNIaIN61zeUT4aeGFU8fcKGAl+BKE3nFaD2U86YDMTFL4Rb24srjzADA==
+mail-alias-created-date: 1752046281608
+Received: from smtpclient.apple (unknown [17.57.156.36])
+ by p00-icloudmta-asmtp-us-central-1k-60-percent-10 (Postfix) with ESMTPSA id
+ 69FFF1800178; Mon, 30 Mar 2026 16:49:22 +0000 (UTC)
+Content-Type: text/plain;
+	charset=us-ascii
+Mime-Version: 1.0 (Mac OS X Mail 16.0 \(3864.500.181\))
+Subject: Re: [PATCH] meson.build: Add --enable-use-pdb option
+From: Mohamed Mediouni <mohamed@unpredictable.fr>
+In-Reply-To: <b7d47483-167a-48bf-b494-87b2f7bfbe69@redhat.com>
+Date: Mon, 30 Mar 2026 18:49:10 +0200
+Cc: Steve Aarnio <saarnio@qti.qualcomm.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>,
+ "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
+Content-Transfer-Encoding: quoted-printable
+Message-Id: <1CCFA763-8BF1-4975-A758-F480BD9D314C@unpredictable.fr>
+References: <MN2PR02MB6622718572E2A2B5E4EE3C039B4EA@MN2PR02MB6622.namprd02.prod.outlook.com>
+ <b7d47483-167a-48bf-b494-87b2f7bfbe69@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>
+X-Mailer: Apple Mail (2.3864.500.181)
+X-Proofpoint-GUID: uqvK3fk1DjWE8aQ_xBzoCj2bbpMXQT2j
+X-Authority-Info-Out: v=2.4 cv=C9DkCAP+ c=1 sm=1 tr=0 ts=69caa994
+ cx=c_apl:c_pps:t_out a=2G65uMN5HjSv0sBfM2Yj2w==:117
+ a=2G65uMN5HjSv0sBfM2Yj2w==:17 a=kj9zAlcOel0A:10 a=Yq5XynenixoA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=Twlkf-z8AAAA:8 a=20KFwNOVAAAA:8 a=EUspDBNiAAAA:8
+ a=u95PIktiEcSF7GJu_fMA:9 a=CjuIK1q_8ugA:10 a=-74SuR6ZdpOK_LpdRCUo:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwMzMwMDEzNiBTYWx0ZWRfX5hptgcuSOtvd
+ 5KXs9EnUppfZZafez+rE7dYJcbmEYD+hdYl1Xh2CQnowNvDB7b78QFHzt8/0qjNQq1uo99JEEBe
+ P1xywDoNPBpuneG1HfMGiWSI0fCUHIsralfvhvqPpW51eamfeT1CGbF3HePyxHH82a8ovPWmeBV
+ pBMXc0QYC9OxjMjnJYWHxAr7vsMZvqDFy8SfWSbqFAD3oNRxfGfRHsGknMGW1+5D+/v8AFDULQY
+ es21Or5eU83HOajVfdSfYZZHcmW0Qs+mnvUOzZlP5p0J9YYpQOWdbIVbX6XYxaWuyEwvovZLbaU
+ cWM0viVbv4U4/XSkJJbioF0smMUz7iOTRaVnQDz7SX2c27+mXr6XYAj/rdA8m4=
+X-Proofpoint-ORIG-GUID: uqvK3fk1DjWE8aQ_xBzoCj2bbpMXQT2j
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-03-29_05,2026-03-28_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=notspam policy=default score=0
+ lowpriorityscore=0 bulkscore=0 suspectscore=0 mlxscore=0 spamscore=0
+ adultscore=0 malwarescore=0 phishscore=0 mlxlogscore=761 clxscore=1030
+ classifier=spam authscore=0 adjust=0 reason=mlx scancount=1
+ engine=8.22.0-2601150000 definitions=main-2603300136
+Received-SPF: pass client-ip=57.103.90.191;
+ envelope-from=mohamed@unpredictable.fr; helo=outbound.ci.icloud.com
+X-Spam_score_int: -7
+X-Spam_score: -0.8
+X-Spam_bar: /
+X-Spam_report: (-0.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -123,37 +95,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 3/30/26 15:01, Stepan Popov wrote:
-> Move qemu_cond_signal() inside the critical section protected by pool->lock.
-> Signaling while holding the lock imposes more predictable scheduling behavior.
-> 
-> Signed-off-by: Stepan Popov <Stepan.Popov@kaspersky.com>
-> ---
->   util/thread-pool.c | 2 +-
->   1 file changed, 1 insertion(+), 1 deletion(-)
-> 
-> diff --git a/util/thread-pool.c b/util/thread-pool.c
-> index 8f8cb38d5c..8e55aefd07 100644
-> --- a/util/thread-pool.c
-> +++ b/util/thread-pool.c
-> @@ -265,8 +265,8 @@ BlockAIOCB *thread_pool_submit_aio(ThreadPoolFunc *func, void *arg,
->           spawn_thread(pool);
->       }
->       QTAILQ_INSERT_TAIL(&pool->request_list, req, reqs);
-> -    qemu_mutex_unlock(&pool->lock);
->       qemu_cond_signal(&pool->request_cond);
-> +    qemu_mutex_unlock(&pool->lock);
->       return &req->common;
->   }
 
-In this code, in the past even very small changes had big impact on 
-performance.  So, without some measurement I am wary of taking this change.
 
-What is "more predictable scheduling behavior" is unclear, too.  If 
-thead_pool_submit_aio() is preempted between qemu_cond_signal() and 
-qemu_mutex_unlock(), then not only the waiting thread cannot start the 
-work, but the mutex is taken and no one else can submit other requests.
+> On 30. Mar 2026, at 18:33, Paolo Bonzini <pbonzini@redhat.com> wrote:
+>=20
+> On 3/18/26 20:18, Steve Aarnio wrote:
+>> This option will (attempt to) modify the QEMU compile and link flags =
+to
+>> emit PDB symbol files rather than the standard (DWARF?) symbol output
+>> from gcc/clang.
+>> This enables using native Windows debug tools (Windbg/Visual Studio) =
+for
+>> debugging QEMU.
+>> Signed-off-by: Steve Aarnio <saarnio@qti.qualcomm.com>
+>=20
+> I would prefer to have support for this in Meson itself, but anyway, I =
+have some questions below
+>=20
+>> +if get_option('debug') and get_option('use_pdb')
+>> +  qemu_common_flags +=3D =
+cc.get_supported_arguments('-g','-gcodeview','- =
+gcolumn-info','-fno-omit-frame-pointer')
+>=20
+> GCC documentation says -gcolumn-info enabled by default, also who is =
+enabling -fomit-frame-pointer so that you have to drop it?
 
-Paolo
+Hello,
+
+=
+https://clang.llvm.org/docs/ClangCommandLineReference.html#cmdoption-clang=
+-fomit-frame-pointer
+
+Clang documentation says:
+On many targets, -O1 and higher omit the frame pointer by default
+
+>=20
+>> +  qemu_ldflags +=3D =
+cc.get_supported_link_arguments('-g','-Wl,--pdb=3D')
+>=20
+> What linkers support --pdb=3D, and what goes after the equal sign?
+
+lld, and pdb=3D is enough to have an autogenerated path (output[.pdb]).
+
+gcc and GNU ld don't support this.
+
+>=20
+> Also, the update to scripts/meson-buildoptions.sh is missing, just =
+running "make" will regenerate it.
+>=20
+> Paolo
+>=20
+>=20
 
 
