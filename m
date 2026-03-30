@@ -4,58 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0146C1061B0F
-	for <qemu-trivial@archiver.kernel.org>; Mon, 30 Mar 2026 16:34:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 013CA1061B0F
+	for <qemu-trivial@archiver.kernel.org>; Mon, 30 Mar 2026 16:34:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w7FYs-0006UC-4S; Mon, 30 Mar 2026 12:33:58 -0400
+	id 1w7FYp-0006Tk-FN; Mon, 30 Mar 2026 12:33:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1w7FYm-0006T2-Q7
- for qemu-trivial@nongnu.org; Mon, 30 Mar 2026 12:33:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ id 1w7FYj-0006SS-NA
+ for qemu-trivial@nongnu.org; Mon, 30 Mar 2026 12:33:51 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <pbonzini@redhat.com>)
- id 1w7FYk-0000pK-QD
- for qemu-trivial@nongnu.org; Mon, 30 Mar 2026 12:33:52 -0400
+ id 1w7FYh-0000oR-Dh
+ for qemu-trivial@nongnu.org; Mon, 30 Mar 2026 12:33:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1774888430;
+ s=mimecast20190719; t=1774888426;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=EATB10RjB0LTDllTMDZXYHij/mQfy7ZamzgOG4aDnoI=;
- b=WP0ctNb80N1hXvXGj427TdvAL2cNi/Y8XLd6/Y5rcW8P1xEcrM625PMplTkEci9+pzuwQy
- Ma/wUReSFYdPA5EshgjYk7FLQFFye7YAxQXX3kL1PtA3KRAKT89ypzlWJz8YeM9vqvvcHB
- 6gim5iC8di+JZBRB92sD8teTt9arc10=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=IUXK/6zCVQUmImS+Z8D24dtKQkIf1gSTL1biXaVApkk=;
+ b=MUw2o3njjqnUnijXXwc3l4yscCCY3vk0IdM1R0HNKSsSPw8E/TW1VSTICws/RPhE60hb4G
+ sRHcUjhxNMxThVuJnbXn3+HKJKosASuk+eaEud4DXx1+qsKidjYSH+FWylNQ8bnVKaq6rZ
+ sm9B27BxTsNUen3uAZZJgkUNSS7Fg0U=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-610-IGxdj7sZONenADq2992fkg-1; Mon,
- 30 Mar 2026 12:33:46 -0400
-X-MC-Unique: IGxdj7sZONenADq2992fkg-1
-X-Mimecast-MFC-AGG-ID: IGxdj7sZONenADq2992fkg_1774888426
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-499-9fbhnWOMPhS7U_GJLJHulQ-1; Mon,
+ 30 Mar 2026 12:33:42 -0400
+X-MC-Unique: 9fbhnWOMPhS7U_GJLJHulQ-1
+X-Mimecast-MFC-AGG-ID: 9fbhnWOMPhS7U_GJLJHulQ_1774888421
 Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 921391956096; Mon, 30 Mar 2026 16:33:45 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0833519560B1; Mon, 30 Mar 2026 16:33:41 +0000 (UTC)
 Received: from [10.44.35.213] (unknown [10.44.35.213])
  by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 83FC81955D84; Mon, 30 Mar 2026 16:33:41 +0000 (UTC)
-Message-ID: <b7d47483-167a-48bf-b494-87b2f7bfbe69@redhat.com>
-Date: Mon, 30 Mar 2026 18:33:32 +0200
+ id 6BBB61955D84; Mon, 30 Mar 2026 16:33:38 +0000 (UTC)
+Message-ID: <72de7dbb-ba81-4a59-9710-7e88707de31c@redhat.com>
+Date: Mon, 30 Mar 2026 18:33:24 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] meson.build: Add --enable-use-pdb option
-To: Steve Aarnio <saarnio@qti.qualcomm.com>,
- "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-References: <MN2PR02MB6622718572E2A2B5E4EE3C039B4EA@MN2PR02MB6622.namprd02.prod.outlook.com>
+Subject: Re: [PATCH] thread-pool: signal condition variable while holding lock
+To: Stepan Popov <Stepan.Popov@kaspersky.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org
+References: <20260330130104.85200-1-Stepan.Popov@kaspersky.com>
 From: Paolo Bonzini <pbonzini@redhat.com>
 Autocrypt: addr=pbonzini@redhat.com; keydata=
  xsEhBFRCcBIBDqDGsz4K0zZun3jh+U6Z9wNGLKQ0kSFyjN38gMqU1SfP+TUNQepFHb/Gc0E2
@@ -92,21 +91,21 @@ Autocrypt: addr=pbonzini@redhat.com; keydata=
  JBrdmNZSQDz0iKmSrx8xkoXYfA3bgtFN8WJH2xgFL28XnqY4M6dLhJwV3z08tPSRqYFm4NMP
  dRsn0/7oymhneL8RthIvjDDQ5ktUjMe8LtHr70OZE/TT88qvEdhiIVUogHdo4qBrk41+gGQh
  b906Dudw5YhTJFU3nC6bbF2nrLlB4C/XSiH76ZvqzV0Z/cAMBo5NF/w=
-In-Reply-To: <MN2PR02MB6622718572E2A2B5E4EE3C039B4EA@MN2PR02MB6622.namprd02.prod.outlook.com>
+In-Reply-To: <20260330130104.85200-1-Stepan.Popov@kaspersky.com>
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: aFL1VkJOUpsd7arjoXu9kDBzlR1D43w-vJdXOIv3l5E_1774888426
+X-Mimecast-MFC-PROC-ID: VlQqPFOoBgBiYLCzSOSxE8A4Hoxu946oCw0SGFDgvtI_1774888421
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=pbonzini@redhat.com;
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=pbonzini@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 27
 X-Spam_score: 2.7
 X-Spam_bar: ++
 X-Spam_report: (2.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.54,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335,
  RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1, RCVD_IN_VALIDITY_RPBL_BLOCKED=1,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
@@ -124,32 +123,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 3/18/26 20:18, Steve Aarnio wrote:
-> This option will (attempt to) modify the QEMU compile and link flags to
-> emit PDB symbol files rather than the standard (DWARF?) symbol output
-> from gcc/clang.
+On 3/30/26 15:01, Stepan Popov wrote:
+> Move qemu_cond_signal() inside the critical section protected by pool->lock.
+> Signaling while holding the lock imposes more predictable scheduling behavior.
 > 
-> This enables using native Windows debug tools (Windbg/Visual Studio) for
-> debugging QEMU.
+> Signed-off-by: Stepan Popov <Stepan.Popov@kaspersky.com>
+> ---
+>   util/thread-pool.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
 > 
-> Signed-off-by: Steve Aarnio <saarnio@qti.qualcomm.com>
+> diff --git a/util/thread-pool.c b/util/thread-pool.c
+> index 8f8cb38d5c..8e55aefd07 100644
+> --- a/util/thread-pool.c
+> +++ b/util/thread-pool.c
+> @@ -265,8 +265,8 @@ BlockAIOCB *thread_pool_submit_aio(ThreadPoolFunc *func, void *arg,
+>           spawn_thread(pool);
+>       }
+>       QTAILQ_INSERT_TAIL(&pool->request_list, req, reqs);
+> -    qemu_mutex_unlock(&pool->lock);
+>       qemu_cond_signal(&pool->request_cond);
+> +    qemu_mutex_unlock(&pool->lock);
+>       return &req->common;
+>   }
 
-I would prefer to have support for this in Meson itself, but anyway, I 
-have some questions below
+In this code, in the past even very small changes had big impact on 
+performance.  So, without some measurement I am wary of taking this change.
 
-> +if get_option('debug') and get_option('use_pdb')
-> +  qemu_common_flags += cc.get_supported_arguments('-g','-gcodeview','- 
-> gcolumn-info','-fno-omit-frame-pointer')
-
-GCC documentation says -gcolumn-info enabled by default, also who is 
-enabling -fomit-frame-pointer so that you have to drop it?
-
-> +  qemu_ldflags += cc.get_supported_link_arguments('-g','-Wl,--pdb=')
-
-What linkers support --pdb=, and what goes after the equal sign?
-
-Also, the update to scripts/meson-buildoptions.sh is missing, just 
-running "make" will regenerate it.
+What is "more predictable scheduling behavior" is unclear, too.  If 
+thead_pool_submit_aio() is preempted between qemu_cond_signal() and 
+qemu_mutex_unlock(), then not only the waiting thread cannot start the 
+work, but the mutex is taken and no one else can submit other requests.
 
 Paolo
 
