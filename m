@@ -4,112 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 687FB10D14B0
-	for <qemu-trivial@archiver.kernel.org>; Mon, 30 Mar 2026 13:27:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 739AA10D14B4
+	for <qemu-trivial@archiver.kernel.org>; Mon, 30 Mar 2026 13:43:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1w7CeN-00062H-Me; Mon, 30 Mar 2026 09:27:27 -0400
+	id 1w7Ctr-0003DQ-7Y; Mon, 30 Mar 2026 09:43:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Stepan.Popov@kaspersky.com>)
- id 1w7CFN-0008GJ-Aw; Mon, 30 Mar 2026 09:01:40 -0400
-Received: from mx9.kaspersky-labs.com ([195.122.169.44])
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1w7Ctp-0003Bs-2A
+ for qemu-trivial@nongnu.org; Mon, 30 Mar 2026 09:43:25 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Stepan.Popov@kaspersky.com>)
- id 1w7CFL-0002H3-Fk; Mon, 30 Mar 2026 09:01:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kaspersky.com;
- s=mail202505; t=1774875681;
- bh=z/RHKpSmPkqQxuqWYQaF/0vmieLwibbWTvsHIKsi/GE=;
- h=From:To:Subject:Date:Message-ID:MIME-Version:Content-Type;
- b=qJhTgkZZA3F9rVKyahnmRJ9/rS6yjWL5Tt0m4ZO14Gxf2kfvyj4eHOs+s+7YEwsMN
- aZak8k5zHvlY5izw3+juanAEGKYib+uc7wG6E0DFA0L2zTmjcF1A54rr3hwDvHJOFK
- QCj/7L8vXydjwBIC07X8OtPjUVN/Z7m36STiwGQPve0R5UOxiamE9CWmNIyIaUORMW
- msJseSdk1yuQMJZh3fnfDO4szh+u2/3H6j4/wqcomx5MZWIEe1DuoVu2E0WsanL2qO
- /+GGN5y3TYOkkg873FOlMQkJEHRM0xC05SEBtJGLiLoGNDmCS8tbsXIZ6blRYR4gBh
- p2xu73IrjC+vQ==
-Received: from relay9.kaspersky-labs.com (localhost [127.0.0.1])
- by relay9.kaspersky-labs.com (Postfix) with ESMTP id B0D488A07DF;
- Mon, 30 Mar 2026 16:01:21 +0300 (MSK)
-Received: from mail-hq2.kaspersky.com (unknown [91.103.66.208])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (Client CN "mail-hq2.kaspersky.com",
- Issuer "Kaspersky MailRelays CA G3" (verified OK))
- by mailhub9.kaspersky-labs.com (Postfix) with ESMTPS id 85F4F8A32BB;
- Mon, 30 Mar 2026 16:01:21 +0300 (MSK)
-Received: from stepan-vm.localdomain (10.16.90.37) by HQMAILSRV1.avp.ru
- (10.64.57.51) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.37; Mon, 30 Mar
- 2026 16:01:14 +0300
-From: Stepan Popov <Stepan.Popov@kaspersky.com>
-To: <qemu-devel@nongnu.org>
-CC: <qemu-trivial@nongnu.org>, Paolo Bonzini <pbonzini@redhat.com>, Stepan
- Popov <Stepan.Popov@kaspersky.com>
-Subject: [PATCH] thread-pool: signal condition variable while holding lock
-Date: Mon, 30 Mar 2026 16:01:04 +0300
-Message-ID: <20260330130104.85200-1-Stepan.Popov@kaspersky.com>
-X-Mailer: git-send-email 2.34.1
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1w7Ctn-0002PA-1d
+ for qemu-trivial@nongnu.org; Mon, 30 Mar 2026 09:43:24 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1774878202;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:in-reply-to:in-reply-to:  references:references;
+ bh=21ztP/JKNYyajacLTv2VZBb+x/ur9yFC74QVg7IQS08=;
+ b=c86+KT+TabRAnvdQs/duM25UZBuhIqZbRaVbZHB+dggM/HDIoEh1bHLvsvWZ4j3mYaO33c
+ f5mHHaTo1of3XFmvKGO8eG6HZO4jG7qbhHK4fUtMvg7xLqhbaeW//Prl1Pah7SE5IoYUtb
+ Q1FVxd8XwfPxvJqoano+7yZZv8u/Q6Q=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-411-cZtcrZr2O42gSgdUZws1ew-1; Mon,
+ 30 Mar 2026 09:43:19 -0400
+X-MC-Unique: cZtcrZr2O42gSgdUZws1ew-1
+X-Mimecast-MFC-AGG-ID: cZtcrZr2O42gSgdUZws1ew_1774878197
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 06C1518002FD; Mon, 30 Mar 2026 13:43:17 +0000 (UTC)
+Received: from redhat.com (unknown [10.44.36.79])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 44B6C180035F; Mon, 30 Mar 2026 13:43:15 +0000 (UTC)
+Date: Mon, 30 Mar 2026 14:43:11 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
+To: Stepan Popov <Stepan.Popov@kaspersky.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>
+Subject: Re: [PATCH] thread-pool: signal condition variable while holding lock
+Message-ID: <acp97_c_brNSk7t4@redhat.com>
+References: <20260330130104.85200-1-Stepan.Popov@kaspersky.com>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Content-Type: text/plain
-X-Originating-IP: [10.16.90.37]
-X-ClientProxiedBy: HQMAILSRV4.avp.ru (10.64.57.54) To HQMAILSRV1.avp.ru
- (10.64.57.51)
-X-KSE-ServerInfo: HQMAILSRV1.avp.ru, 9
-X-KSE-AntiSpam-Interceptor-Info: scan successful
-X-KSE-AntiSpam-Version: 6.1.1, Database issued on: 03/30/2026 12:38:29
-X-KSE-AntiSpam-Status: KAS_STATUS_NOT_DETECTED
-X-KSE-AntiSpam-Method: none
-X-KSE-AntiSpam-Rate: 0
-X-KSE-AntiSpam-Info: Lua profiles 201777 [Mar 30 2026]
-X-KSE-AntiSpam-Info: Version: 6.1.1.22
-X-KSE-AntiSpam-Info: Envelope from: Stepan.Popov@kaspersky.com
-X-KSE-AntiSpam-Info: LuaCore: 95 0.3.95
- 0e4b6d4f1992c354ebd6a5cc3c5624a3b0aa8cbc
-X-KSE-AntiSpam-Info: {Tracking_cluster_exceptions}
-X-KSE-AntiSpam-Info: {Tracking_real_kaspersky_domains}
-X-KSE-AntiSpam-Info: {Tracking_black_eng_exceptions}
-X-KSE-AntiSpam-Info: {Tracking_from_domain_doesnt_match_to}
-X-KSE-AntiSpam-Info: kaspersky.com:7.1.1,5.0.1;
- d41d8cd98f00b204e9800998ecf8427e.com:7.1.1; 127.0.0.199:7.1.2
-X-KSE-AntiSpam-Info: {Tracking_white_helo}
-X-KSE-AntiSpam-Info: FromAlignment: s
-X-KSE-AntiSpam-Info: Rate: 0
-X-KSE-AntiSpam-Info: Status: not_detected
-X-KSE-AntiSpam-Info: Method: none
-X-KSE-Antiphishing-Info: Clean
-X-KSE-Antiphishing-ScanningType: Deterministic
-X-KSE-Antiphishing-Method: None
-X-KSE-Antiphishing-Bases: 03/30/2026 12:39:00
-X-KSE-AttachmentFiltering-Interceptor-Info: no applicable attachment filtering
- rules found
-X-KSE-Antivirus-Interceptor-Info: scan successful
-X-KSE-Antivirus-Info: Clean, bases: 3/30/2026 12:28:00 PM
-X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
-X-KSE-AttachmentFiltering-Interceptor-Info: no applicable attachment filtering
- rules found
-X-KSE-BulkMessagesFiltering-Scan-Result: InTheLimit
-X-KSMG-AntiPhishing: NotDetected
-X-KSMG-AntiSpam-Interceptor-Info: not scanned
-X-KSMG-AntiSpam-Status: not scanned, disabled by settings
-X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.1.1.8310,
- bases: 2026/03/30 05:24:00 #28352470
-X-KSMG-AntiVirus-Status: NotDetected, skipped
-X-KSMG-LinksScanning: NotDetected
-X-KSMG-Message-Action: skipped
-X-KSMG-Rule-ID: 52
-Received-SPF: pass client-ip=195.122.169.44;
- envelope-from=Stepan.Popov@kaspersky.com; helo=mx9.kaspersky-labs.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.54,
+In-Reply-To: <20260330130104.85200-1-Stepan.Popov@kaspersky.com>
+User-Agent: Mutt/2.2.14 (2025-02-20)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: AlldUPnRwkH_j-qlOwlkVMOiorsFBZLWWECElfpRrZQ_1774878197
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -5
+X-Spam_score: -0.6
+X-Spam_bar: /
+X-Spam_report: (-0.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.54,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1, RCVD_IN_VALIDITY_RPBL_BLOCKED=1,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_VALIDITY_CERTIFIED_BLOCKED=1,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 30 Mar 2026 09:27:22 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -121,32 +84,42 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Move qemu_cond_signal() inside the critical section protected by pool->lock.
-Signaling while holding the lock imposes more predictable scheduling behavior.
+On Mon, Mar 30, 2026 at 04:01:04PM +0300, Stepan Popov wrote:
+> Move qemu_cond_signal() inside the critical section protected by pool->lock.
+> Signaling while holding the lock imposes more predictable scheduling behavior.
+> 
+> Signed-off-by: Stepan Popov <Stepan.Popov@kaspersky.com>
+> ---
+>  util/thread-pool.c | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/util/thread-pool.c b/util/thread-pool.c
+> index 8f8cb38d5c..8e55aefd07 100644
+> --- a/util/thread-pool.c
+> +++ b/util/thread-pool.c
+> @@ -265,8 +265,8 @@ BlockAIOCB *thread_pool_submit_aio(ThreadPoolFunc *func, void *arg,
+>          spawn_thread(pool);
+>      }
+>      QTAILQ_INSERT_TAIL(&pool->request_list, req, reqs);
+> -    qemu_mutex_unlock(&pool->lock);
+>      qemu_cond_signal(&pool->request_cond);
+> +    qemu_mutex_unlock(&pool->lock);
+>      return &req->common;
+>  }
 
-Signed-off-by: Stepan Popov <Stepan.Popov@kaspersky.com>
----
- util/thread-pool.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+Doesn't this order mean that when the signal wakes up the waiting
+thread, that thread will get temporarily re-blocked waiting for
+'lock' to be released by the original thread too.
 
-diff --git a/util/thread-pool.c b/util/thread-pool.c
-index 8f8cb38d5c..8e55aefd07 100644
---- a/util/thread-pool.c
-+++ b/util/thread-pool.c
-@@ -265,8 +265,8 @@ BlockAIOCB *thread_pool_submit_aio(ThreadPoolFunc *func, void *arg,
-         spawn_thread(pool);
-     }
-     QTAILQ_INSERT_TAIL(&pool->request_list, req, reqs);
--    qemu_mutex_unlock(&pool->lock);
-     qemu_cond_signal(&pool->request_cond);
-+    qemu_mutex_unlock(&pool->lock);
-     return &req->common;
- }
- 
+With regards,
+Daniel
 -- 
-2.34.1
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
 
 
