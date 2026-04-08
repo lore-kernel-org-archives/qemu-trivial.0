@@ -1,51 +1,52 @@
 Return-Path: <qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
-Received: from lists.gnu.org (unknown [209.51.188.17])
+Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7A2A110F996A
-	for <qemu-trivial@archiver.kernel.org>; Wed,  8 Apr 2026 18:38:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A57E610F9973
+	for <qemu-trivial@archiver.kernel.org>; Wed,  8 Apr 2026 19:11:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wAXkx-0008UI-AD; Wed, 08 Apr 2026 14:36:03 -0400
+	id 1wAYIx-0007Iu-Ti; Wed, 08 Apr 2026 15:11:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wAXkv-0008TM-DR; Wed, 08 Apr 2026 14:36:01 -0400
+ id 1wAYGe-0004B9-C5; Wed, 08 Apr 2026 15:08:49 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wAQds-0000Pc-Ow; Wed, 08 Apr 2026 07:00:20 -0400
+ id 1wAQdt-0000Pe-2G; Wed, 08 Apr 2026 07:00:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1775645720; bh=yPuWulHjK9XHbqL5n11NbBkjSHKE9YvNKtuG5clkRXo=;
+ t=1775645720; bh=VK78BUyPrfqWz7lIc6GWBwkZlXECduU0RnUqcRxDBR4=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=Xeh8Vkgj8PvTf6iOOsnHgrCohwXkBTcAsIuoL4pmvmTVzjyOr7CUKBnjLByQ7EDg8
- pK2HUNC5cNkbuBty41CJKs3/hHlFqi96bb6g0GhZ45I5CvNGOry1WPNxm5moNi0iOY
- PZlgnxHsy2sf95HXPFc06kt/OJpswTBds9cxoZjDQY5m7c7SCV+v5FYOwixEJAVGBR
- F1oQVtfMVw5FX5QQsw0YfT4JZM5PlZ3f8qzPTFjU+2rPNzq7D71GI7zR8Jm9Pcop2s
- s3rRzbGnTOK+m2rDUHTD5lBJVnARPq3kIlcWRuo4EEZgKJ+OBs4w4dT9HurpatcS/e
- jUyN0XvrVmblA==
+ b=Kfeet/mHmCPzKlkcFRIbajEQXfPT/OZG4LGcXApMbAo8cNKDm5C2OwljZjpdlhU0O
+ N3LG5uo8/2JnrI+WRjcsx1LQ3m+OeJiRj2YDgZkKx36fYkIpBTVHwTAnOt2oyVZ6we
+ Pgn0ZF5mORrwIcDkvUFk8pIguJPAem0c9FNdjFJjYphq0lr3qfQPANfbWQYfucn/RG
+ od7ubtfBniR4TJN+fb5/d9OXNfghSIKnwqFphrSw2U8DgpO/X3fpBSV4CuHsha7HY6
+ 5/aTuvuCIoTozTBuW/N26AvTv7zAVcd+NkwT97rcG3+yxXZCqrzNeoSj2rglf4N/o1
+ VAZgB6goZssLw==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 13E5F19C29C;
+ by isrv.corpit.ru (Postfix) with ESMTP id 2442B19C29D;
  Wed, 08 Apr 2026 13:55:20 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 62B2C391676;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 744B6391677;
  Wed, 08 Apr 2026 13:56:07 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Helge Deller <deller@kernel.org>, qemu-trivial@nongnu.org,
- Helge Deller <deller@gmx.de>,
- Richard Henderson <richard.henderson@linaro.org>,
+Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
+ qemu-trivial@nongnu.org, qemu-stable@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 2/3] Allow building qemu tools on 32-bit hosts
-Date: Wed,  8 Apr 2026 13:55:57 +0300
-Message-ID: <20260408105605.172465-3-mjt@tls.msk.ru>
+Subject: [PULL 3/3] util: fix missing aio_wait sym in qemu guest agent only
+ build
+Date: Wed,  8 Apr 2026 13:55:58 +0300
+Message-ID: <20260408105605.172465-4-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260408105605.172465-1-mjt@tls.msk.ru>
 References: <20260408105605.172465-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -71,90 +72,50 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Helge Deller <deller@kernel.org>
+From: Daniel P. Berrangé <berrange@redhat.com>
 
-Qemu's tools like qemu-img are often needed on 32-bit platforms,
-although the actual qemu emulators have been discontinued on 32-bit.
+Configure QEMU with
 
-To allow building the tools on 32-bit this patch implements three small
-changes:
+ --disable-system --disable-user --disable-tools --enable-guest-agent
 
-a) The check in meson.build is changed to still error out if the user
-tries to build qemu-system or qemu-user on a 32-bit platform, but allows
-building tools (e.g. by "--enable-tools") alone.
+and the build with fail with
 
-b) The compile time check in atomic.h now checks against
-sizeof(uint64_t) so that 32-bit environments can still build
-successfully, while 128-bit atomic operations are prevented to sneak in.
+  FAILED: [code=1] qga/qemu-ga
+  ld: libqemuutil.a.p/qapi_qmp-dispatch.c.o: in function `do_qmp_dispatch_bh':
+  qapi/qmp-dispatch.c:140:(.text+0x5c): undefined reference to `aio_wait_kick'
 
-c) Allow linking against libatomic as long as we don't build the
-qemu-system and qemu-user binaries.
+This aio_kick() usage was recently introduced in qmp-dispatch.c
+without updating the build logic.
 
-Sucessfully tested on the 32-bit big-endian powerpc architecture.
-
-Signed-off-by: Helge Deller <deller@gmx.de>
-Suggested-by: Richard Henderson <richard.henderson@linaro.org>
-Reviewed-by: Richard Henderson <richard.henderson@linaro.org>
+Fixes commit fc1a2ec7da531223b3473185dc2584f8a7c6c659
+Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
+Cc: qemu-stable@nongnu.org
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- include/qemu/atomic.h |  6 +++---
- meson.build           | 16 ++++++++++++----
- 2 files changed, 15 insertions(+), 7 deletions(-)
+ util/meson.build | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/include/qemu/atomic.h b/include/qemu/atomic.h
-index dc9290084b..e4dd948863 100644
---- a/include/qemu/atomic.h
-+++ b/include/qemu/atomic.h
-@@ -58,11 +58,11 @@
+diff --git a/util/meson.build b/util/meson.build
+index c2d77bf9de..5d3fff0eea 100644
+--- a/util/meson.build
++++ b/util/meson.build
+@@ -79,6 +79,7 @@ endif
  
- /*
-  * Sanity check that the size of an atomic operation isn't "overly large".
-- * Despite the fact that e.g. i686 has 64-bit atomic operations, we do not
-+ * Despite the fact that e.g. x86-64 has 128-bit atomic operations, we do not
-  * want to use them because we ought not need them, and this lets us do a
-- * bit of sanity checking that other 32-bit hosts might build.
-+ * bit of sanity checking that other 32- and 64-bit hosts might build.
-  */
--#define ATOMIC_REG_SIZE  sizeof(void *)
-+#define ATOMIC_REG_SIZE  sizeof(uint64_t)
- 
- /* Weak atomic operations prevent the compiler moving other
-  * loads/stores past the atomic operation load/store. However there is
-diff --git a/meson.build b/meson.build
-index daa58e46a3..ab3e97eb9f 100644
---- a/meson.build
-+++ b/meson.build
-@@ -323,8 +323,8 @@ endif
- # Compiler flags #
- ##################
- 
--if cc.sizeof('void *') < 8
--  error('QEMU requires a 64-bit CPU host architecture')
-+if (cc.sizeof('void *') < 8) and (have_system or have_user)
-+  error('QEMU emulator requires a 64-bit CPU host architecture. Only tools may be built for 32-bit.')
+ if have_block or have_ga
+   util_ss.add(files('aiocb.c', 'async.c'))
++  util_ss.add(files('aio-wait.c'))
+   util_ss.add(files('base64.c'))
+   util_ss.add(files('main-loop.c'))
+   util_ss.add(files('qemu-coroutine.c', 'qemu-coroutine-lock.c', 'qemu-coroutine-io.c'))
+@@ -87,7 +88,6 @@ if have_block or have_ga
+   util_ss.add(files('qemu-sockets.c'))
  endif
- 
- foreach lang : all_languages
-@@ -423,8 +423,16 @@ endif
- #
- # Later checks assume we won't get atomic ops for int128 without
- # explicitly asking for -latomic, so we must disable GCC's new
--# automatic linking with the new -fno-link-libatomic flag
--qemu_isa_flags += cc.get_supported_arguments('-fno-link-libatomic')
-+# automatic linking with the new -fno-link-libatomic flag.
-+#
-+# When not building the emulators, but qemu helper tools only
-+# (e.g. on 32-bit hosts), libatomic is sometimes required and
-+# thus acceptable.
-+if (have_system or have_user)
-+  qemu_isa_flags += cc.get_supported_arguments('-fno-link-libatomic')
-+else
-+  qemu_ldflags += cc.get_supported_link_arguments('-latomic')
-+endif
- 
- qemu_common_flags = qemu_isa_flags + qemu_common_flags
- 
+ if have_block
+-  util_ss.add(files('aio-wait.c'))
+   util_ss.add(files('buffer.c'))
+   util_ss.add(files('bufferiszero.c'))
+   util_ss.add(files('hbitmap.c'))
 -- 
 2.47.3
 
