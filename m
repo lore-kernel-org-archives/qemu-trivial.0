@@ -4,59 +4,43 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A57E610F9973
-	for <qemu-trivial@archiver.kernel.org>; Wed,  8 Apr 2026 19:11:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4CB9510F9972
+	for <qemu-trivial@archiver.kernel.org>; Wed,  8 Apr 2026 19:31:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wAYIx-0007Iu-Ti; Wed, 08 Apr 2026 15:11:12 -0400
+	id 1wAYVd-0003ps-EG; Wed, 08 Apr 2026 15:24:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wAYGe-0004B9-C5; Wed, 08 Apr 2026 15:08:49 -0400
-Received: from isrv.corpit.ru ([212.248.84.144])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wAQdt-0000Pe-2G; Wed, 08 Apr 2026 07:00:20 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1775645720; bh=VK78BUyPrfqWz7lIc6GWBwkZlXECduU0RnUqcRxDBR4=;
- h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=Kfeet/mHmCPzKlkcFRIbajEQXfPT/OZG4LGcXApMbAo8cNKDm5C2OwljZjpdlhU0O
- N3LG5uo8/2JnrI+WRjcsx1LQ3m+OeJiRj2YDgZkKx36fYkIpBTVHwTAnOt2oyVZ6we
- Pgn0ZF5mORrwIcDkvUFk8pIguJPAem0c9FNdjFJjYphq0lr3qfQPANfbWQYfucn/RG
- od7ubtfBniR4TJN+fb5/d9OXNfghSIKnwqFphrSw2U8DgpO/X3fpBSV4CuHsha7HY6
- 5/aTuvuCIoTozTBuW/N26AvTv7zAVcd+NkwT97rcG3+yxXZCqrzNeoSj2rglf4N/o1
- VAZgB6goZssLw==
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 2442B19C29D;
- Wed, 08 Apr 2026 13:55:20 +0300 (MSK)
-Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 744B6391677;
- Wed, 08 Apr 2026 13:56:07 +0300 (MSK)
-From: Michael Tokarev <mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <dietmar@zilli.proxmox.com>)
+ id 1wAY4y-0006ek-OX; Wed, 08 Apr 2026 14:56:44 -0400
+Received: from [94.136.29.99] (helo=zilli.proxmox.com)
+ by eggs.gnu.org with esmtp (Exim 4.90_1)
+ (envelope-from <dietmar@zilli.proxmox.com>)
+ id 1wAPBA-0000Lv-AV; Wed, 08 Apr 2026 05:26:34 -0400
+Received: by zilli.proxmox.com (Postfix, from userid 1000)
+ id DCFF21C31BA; Wed, 08 Apr 2026 11:15:05 +0200 (CEST)
+From: Dietmar Maurer <dietmar@proxmox.com>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-trivial@nongnu.org, qemu-stable@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 3/3] util: fix missing aio_wait sym in qemu guest agent only
- build
-Date: Wed,  8 Apr 2026 13:55:58 +0300
-Message-ID: <20260408105605.172465-4-mjt@tls.msk.ru>
+Cc: qemu-trivial@nongnu.org,
+	Dietmar Maurer <dietmar@proxmox.com>
+Subject: [PATCH] qemu-keymap: fix altgr modifier lookup for newer
+ xkeyboard-config
+Date: Wed,  8 Apr 2026 11:14:59 +0200
+Message-ID: <20260408091459.4001711-1-dietmar@proxmox.com>
 X-Mailer: git-send-email 2.47.3
-In-Reply-To: <20260408105605.172465-1-mjt@tls.msk.ru>
-References: <20260408105605.172465-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
- RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Host-Lookup-Failed: Reverse DNS lookup failed for 94.136.29.99 (failed)
+Received-SPF: none client-ip=94.136.29.99;
+ envelope-from=dietmar@zilli.proxmox.com; helo=zilli.proxmox.com
+X-Spam_score_int: -10
+X-Spam_score: -1.1
+X-Spam_bar: -
+X-Spam_report: (-1.1 / 5.0 requ) BAYES_00=-1.9, NO_DNS_FOR_FROM=0.001,
+ RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
+ RDNS_NONE=0.793, SPF_HELO_NONE=0.001,
+ SPF_NONE=0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -72,50 +56,35 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Daniel P. Berrangé <berrange@redhat.com>
+xkeyboard-config 2.37 removed the "AltGr" virtual modifier in favor
+of mapping upper groups directly to Mod5. Since then,
+xkb_keymap_mod_get_index(map, "AltGr") returns XKB_MOD_INVALID, so
+AltGr-based keysyms were never generated.
 
-Configure QEMU with
+See: https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config/-/commit/473f9bc32f9ba869829cc0d06a75cd1f2560aa60
 
- --disable-system --disable-user --disable-tools --enable-guest-agent
+Try "AltGr" first, and fall back to "Mod5" for compatibility with
+both old and new xkeyboard-config versions.
 
-and the build with fail with
-
-  FAILED: [code=1] qga/qemu-ga
-  ld: libqemuutil.a.p/qapi_qmp-dispatch.c.o: in function `do_qmp_dispatch_bh':
-  qapi/qmp-dispatch.c:140:(.text+0x5c): undefined reference to `aio_wait_kick'
-
-This aio_kick() usage was recently introduced in qmp-dispatch.c
-without updating the build logic.
-
-Fixes commit fc1a2ec7da531223b3473185dc2584f8a7c6c659
-Signed-off-by: Daniel P. Berrangé <berrange@redhat.com>
-Cc: qemu-stable@nongnu.org
-Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Dietmar Maurer <dietmar@proxmox.com>
 ---
- util/meson.build | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ qemu-keymap.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
-diff --git a/util/meson.build b/util/meson.build
-index c2d77bf9de..5d3fff0eea 100644
---- a/util/meson.build
-+++ b/util/meson.build
-@@ -79,6 +79,7 @@ endif
+diff --git a/qemu-keymap.c b/qemu-keymap.c
+index 1c081db287..d4dccf456e 100644
+--- a/qemu-keymap.c
++++ b/qemu-keymap.c
+@@ -230,6 +230,9 @@ int main(int argc, char *argv[])
+     shift = get_mod(map, "Shift");
+     ctrl = get_mod(map, "Control");
+     altgr = get_mod(map, "AltGr");
++    if (!altgr) {
++        altgr = get_mod(map, "Mod5");
++    }
+     numlock = get_mod(map, "NumLock");
  
- if have_block or have_ga
-   util_ss.add(files('aiocb.c', 'async.c'))
-+  util_ss.add(files('aio-wait.c'))
-   util_ss.add(files('base64.c'))
-   util_ss.add(files('main-loop.c'))
-   util_ss.add(files('qemu-coroutine.c', 'qemu-coroutine-lock.c', 'qemu-coroutine-io.c'))
-@@ -87,7 +88,6 @@ if have_block or have_ga
-   util_ss.add(files('qemu-sockets.c'))
- endif
- if have_block
--  util_ss.add(files('aio-wait.c'))
-   util_ss.add(files('buffer.c'))
-   util_ss.add(files('bufferiszero.c'))
-   util_ss.add(files('hbitmap.c'))
+     state = xkb_state_new(map);
 -- 
 2.47.3
 
