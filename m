@@ -1,94 +1,102 @@
 Return-Path: <qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org>
 X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 	aws-us-west-2-korg-lkml-1.web.codeaurora.org
-Received: from lists.gnu.org (lists1p.gnu.org [209.51.188.17])
+Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1F7DDF459F7
-	for <qemu-trivial@archiver.kernel.org>; Fri, 10 Apr 2026 16:21:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6F9D9D58B04
+	for <qemu-trivial@archiver.kernel.org>; Sun, 12 Apr 2026 07:11:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
-	by lists.gnu.org with esmtp (Exim 4.90_1)
+	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wBEbp-00086l-0X; Fri, 10 Apr 2026 12:21:29 -0400
+	id 1wBoyG-0006W9-NV; Sun, 12 Apr 2026 03:11:04 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Stepan.Popov@kaspersky.com>)
- id 1wBEba-00084I-64; Fri, 10 Apr 2026 12:21:24 -0400
-Received: from mx9.kaspersky-labs.com ([195.122.169.44])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1wBoyD-0006VK-EN; Sun, 12 Apr 2026 03:11:01 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <Stepan.Popov@kaspersky.com>)
- id 1wBEbU-0003hF-Uj; Fri, 10 Apr 2026 12:21:11 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=kaspersky.com;
- s=mail202505; t=1775838056;
- bh=vX0FuAyL7+EYBtenR9PVe6o9OLI3BOOo+1olY2h6iqc=;
- h=From:To:Subject:Date:Message-ID:Content-Type:MIME-Version;
- b=JjFFk3d1KZ67T8JPUmCt/U+oA0vV/DCpb9haovJo3+rjQMWppP25PKOQeaSwwlUe4
- S+3frLiYhbCZrJLSceRzJpXnDkx5B4u9qffHBISfvXGDxVGumr4IFVv7FyWx+TsH55
- X2yHhk4rvBkA31UP26pvMTmQJg4I1ogf/k4wk+gPeyQazbUHjbQNBuzeDBe7iK4i8B
- vb2H+mAjgZB7a6qI0t8jP8XT0EWdlp+LSfgpiOUSZrgqrnD0OBl1JMjtqAO8+cEc7g
- BQM84IUJNXw6ie4cH7HLbd0WN6mDbcYEo7mYjSB9WgaS8uL/ckPPZ1O+42qxmv4k0H
- FheMHypA+VS1w==
-Received: from relay9.kaspersky-labs.com (localhost [127.0.0.1])
- by relay9.kaspersky-labs.com (Postfix) with ESMTP id 679728A09CD;
- Fri, 10 Apr 2026 19:20:56 +0300 (MSK)
-Received: from mail-hq2.kaspersky.com (unknown [91.103.66.203])
- (using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
- (Client CN "mail-hq2.kaspersky.com",
- Issuer "Kaspersky MailRelays CA G3" (verified OK))
- by mailhub9.kaspersky-labs.com (Postfix) with ESMTPS id 02A348A0926;
- Fri, 10 Apr 2026 19:20:56 +0300 (MSK)
-Received: from HQMAILSRV1.avp.ru (10.64.57.51) by HQMAILSRV5.avp.ru
- (10.64.57.55) with Microsoft SMTP Server (version=TLS1_2,
- cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.2.2562.37; Fri, 10 Apr
- 2026 19:20:55 +0300
-Received: from HQMAILSRV1.avp.ru ([fe80::44b0:5a05:5379:9408]) by
- HQMAILSRV1.avp.ru ([fe80::44b0:5a05:5379:9408%2]) with mapi id
- 15.02.2562.037; Fri, 10 Apr 2026 19:20:55 +0300
-From: Stepan Popov <Stepan.Popov@kaspersky.com>
-To: Paolo Bonzini <pbonzini@redhat.com>
-CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
- <qemu-trivial@nongnu.org>
-Subject: RE: [PATCH] thread-pool: signal condition variable while holding lock
-Thread-Topic: [PATCH] thread-pool: signal condition variable while holding lock
-Thread-Index: AQHcwEVK1KD1gN9aGUCOqvZG/Ut9mbXHEwYAgBFyemA=
-Date: Fri, 10 Apr 2026 16:20:55 +0000
-Message-ID: <a8d3b3528c1f4cdda076dc6fa0fe8a34@kaspersky.com>
-References: <20260330130104.85200-1-Stepan.Popov@kaspersky.com>
- <72de7dbb-ba81-4a59-9710-7e88707de31c@redhat.com>
-In-Reply-To: <72de7dbb-ba81-4a59-9710-7e88707de31c@redhat.com>
-Accept-Language: en-US
-Content-Language: en-US
-X-MS-Has-Attach: 
-X-MS-TNEF-Correlator: 
-x-originating-ip: [10.16.90.37]
-x-kse-serverinfo: HQMAILSRV5.avp.ru, 9
-x-kse-attachmentfiltering-interceptor-info: no applicable attachment filtering
- rules found
-x-kse-antivirus-interceptor-info: scan successful
-x-kse-antivirus-info: Clean, bases: 4/10/2026 2:36:00 PM
-x-kse-bulkmessagesfiltering-scan-result: InTheLimit
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: base64
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1wBoyB-0003WM-1B; Sun, 12 Apr 2026 03:11:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
+ t=1775977784; bh=b3I8f/WbGNwl7pTNhWOEryD9k7VgMyI9KvXlIh82FFo=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To;
+ b=sZPw+UAettb/aHIQoarhuANERdHc9mNU94OhhRqwaE497KXJ76aMIWhsrdZzDrh8H
+ xFxbTdO5YDjL0OVqTau+J5NNoe8zQZ/ZsaULNPZ2kFhBAzTSuKUHUrLdksr7yF+jlP
+ c2xaDiccg/PWyVwe7p9pqUp3Cl9fhUQvkS4LJmnGDjutb/akiFt1B4IBrDpvuoeY3t
+ +9Lz8Pkah8XgWlIH+R1PZKKS02S60bN+JOm6XPFnBec/j+ERTT72eQGvp+QwfBnxb1
+ wqnm1FjSAnLHKJjy5lYEAyLFWXWMfC29Mjd7tT8FEAq0bSwgGJr9xeFXRClLFV6hWm
+ moKVQSMetRBJA==
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by isrv.corpit.ru (Postfix) with ESMTP id 1E00E19D60D;
+ Sun, 12 Apr 2026 10:09:44 +0300 (MSK)
+Message-ID: <d0e6f8b4-200b-4ba8-adb2-5c29cc668d15@tls.msk.ru>
+Date: Sun, 12 Apr 2026 10:10:38 +0300
 MIME-Version: 1.0
-X-KSMG-AntiPhishing: NotDetected, bases: 2026/04/10 16:05:00
-X-KSMG-AntiSpam-Interceptor-Info: not scanned
-X-KSMG-AntiSpam-Status: not scanned, disabled by settings
-X-KSMG-AntiVirus: Kaspersky Secure Mail Gateway, version 2.1.1.8310,
- bases: 2026/04/10 14:35:00 #28384064
-X-KSMG-AntiVirus-Status: NotDetected, skipped
-X-KSMG-LinksScanning: NotDetected, bases: 2026/04/10 16:05:00
-X-KSMG-Message-Action: skipped
-X-KSMG-Rule-ID: 52
-Received-SPF: pass client-ip=195.122.169.44;
- envelope-from=Stepan.Popov@kaspersky.com; helo=mx9.kaspersky-labs.com
-X-Spam_score_int: -48
-X-Spam_score: -4.9
-X-Spam_bar: ----
-X-Spam_report: (-4.9 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.54,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_MED=-2.3, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001, RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] qemu-keymap: fix altgr modifier lookup for newer
+ xkeyboard-config
+To: Dietmar Maurer <dietmar@proxmox.com>, qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>
+References: <20260408091459.4001711-1-dietmar@proxmox.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20260408091459.4001711-1-dietmar@proxmox.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, RCVD_IN_VALIDITY_RPBL_BLOCKED=0.001,
+ RCVD_IN_VALIDITY_SAFE_BLOCKED=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -104,51 +112,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-UGFvbG8gQm9uemluaSA8cGJvbnppbmlAcmVkaGF0LmNvbT4gd3JvdGU6DQo+IE9uIDMvMzAvMjYg
-MTU6MDEsIFN0ZXBhbiBQb3BvdiB3cm90ZToNCj4gPiBNb3ZlIHFlbXVfY29uZF9zaWduYWwoKSBp
-bnNpZGUgdGhlIGNyaXRpY2FsIHNlY3Rpb24gcHJvdGVjdGVkIGJ5IHBvb2wtPmxvY2suDQo+ID4g
-U2lnbmFsaW5nIHdoaWxlIGhvbGRpbmcgdGhlIGxvY2sgaW1wb3NlcyBtb3JlIHByZWRpY3RhYmxl
-IHNjaGVkdWxpbmcgYmVoYXZpb3IuDQo+ID4NCj4gPiBTaWduZWQtb2ZmLWJ5OiBTdGVwYW4gUG9w
-b3YgPFN0ZXBhbi5Qb3BvdkBrYXNwZXJza3kuY29tPg0KPiA+IC0tLQ0KPiA+ICAgdXRpbC90aHJl
-YWQtcG9vbC5jIHwgMiArLQ0KPiA+ICAgMSBmaWxlIGNoYW5nZWQsIDEgaW5zZXJ0aW9uKCspLCAx
-IGRlbGV0aW9uKC0pDQo+ID4NCj4gPiBkaWZmIC0tZ2l0IGEvdXRpbC90aHJlYWQtcG9vbC5jIGIv
-dXRpbC90aHJlYWQtcG9vbC5jIGluZGV4IA0KPiA+IDhmOGNiMzhkNWMuLjhlNTVhZWZkMDcgMTAw
-NjQ0DQo+ID4gLS0tIGEvdXRpbC90aHJlYWQtcG9vbC5jDQo+ID4gKysrIGIvdXRpbC90aHJlYWQt
-cG9vbC5jDQo+ID4gQEAgLTI2NSw4ICsyNjUsOCBAQCBCbG9ja0FJT0NCICp0aHJlYWRfcG9vbF9z
-dWJtaXRfYWlvKFRocmVhZFBvb2xGdW5jICpmdW5jLCB2b2lkICphcmcsDQo+ID4gICAgICAgICAg
-IHNwYXduX3RocmVhZChwb29sKTsNCj4gPiAgICAgICB9DQo+ID4gICAgICAgUVRBSUxRX0lOU0VS
-VF9UQUlMKCZwb29sLT5yZXF1ZXN0X2xpc3QsIHJlcSwgcmVxcyk7DQo+ID4gLSAgICBxZW11X211
-dGV4X3VubG9jaygmcG9vbC0+bG9jayk7DQo+ID4gICAgICAgcWVtdV9jb25kX3NpZ25hbCgmcG9v
-bC0+cmVxdWVzdF9jb25kKTsNCj4gPiArICAgIHFlbXVfbXV0ZXhfdW5sb2NrKCZwb29sLT5sb2Nr
-KTsNCj4gPiAgICAgICByZXR1cm4gJnJlcS0+Y29tbW9uOw0KPiA+ICAgfQ0KPg0KPiBJbiB0aGlz
-IGNvZGUsIGluIHRoZSBwYXN0IGV2ZW4gdmVyeSBzbWFsbCBjaGFuZ2VzIGhhZCBiaWcgaW1wYWN0
-IG9uIA0KPiBwZXJmb3JtYW5jZS4gIFNvLCB3aXRob3V0IHNvbWUgbWVhc3VyZW1lbnQgSSBhbSB3
-YXJ5IG9mIHRha2luZyB0aGlzIGNoYW5nZS4NCj4NCj4gV2hhdCBpcyAibW9yZSBwcmVkaWN0YWJs
-ZSBzY2hlZHVsaW5nIGJlaGF2aW9yIiBpcyB1bmNsZWFyLCB0b28uICBJZiANCj4gdGhlYWRfcG9v
-bF9zdWJtaXRfYWlvKCkgaXMgcHJlZW1wdGVkIGJldHdlZW4gcWVtdV9jb25kX3NpZ25hbCgpIGFu
-ZCANCj4gcWVtdV9tdXRleF91bmxvY2soKSwgdGhlbiBub3Qgb25seSB0aGUgd2FpdGluZyB0aHJl
-YWQgY2Fubm90IHN0YXJ0IHRoZSANCj4gd29yaywgYnV0IHRoZSBtdXRleCBpcyB0YWtlbiBhbmQg
-bm8gb25lIGVsc2UgY2FuIHN1Ym1pdCBvdGhlciByZXF1ZXN0cy4NCg0KVGhhbmsgeW91IGZvciB5
-b3VyIGZlZWRiYWNrLiBJIHVuZGVyc3RhbmQgeW91ciBjb25jZXJuIGFib3V0IHBlcmZvcm1hbmNl
-Lg0KDQpUbyBleHBsYWluIHRoZSBtb3RpdmF0aW9uOiB3ZSBoYXZlIHNlZW4gcmVwZXRpdGl2ZSBk
-ZWFkbG9ja3MgaW4gcHJvZHVjdGlvbiBhZnRlciBydW5uaW5nIHFlbXUtaW1nIGluZm8gLS1vdXRw
-dXQ9anNvbiBpbWFnZS5xY293LiANClN1Ym1pdHRlciBpcyBzdHVjayBpbiBwdGhyZWFkX2NvbmRf
-c2lnbmFsICh0cnlpbmcgdG8gX19jb25kdmFyX3F1aWVzY2VfYW5kX3N3aXRjaF9nMSkgYW5kIHdh
-aXRlciBpbiBfX3B0aHJlYWRfY29uZF93YWl0X2NvbW1vbiAodHJ5aW5nIHRvIF9fY29uZHZhcl9j
-YW5jZWxfd2FpdGluZykuIA0KT3VyIGdsaWJjIHZlcnNpb24gaGFzIGEga25vd24gYnVnIGxlYWRp
-bmcgdG8gZGVhZGxvY2sgKFVidW50dSBHTElCQyAyLjM1LTB1YnVudHUzLjEzKToNCmh0dHBzOi8v
-c291cmNld2FyZS5vcmcvYnVnemlsbGEvc2hvd19idWcuY2dpP2lkPTI1ODQ3IChwdGhyZWFkX2Nv
-bmRfc2lnbmFsIGZhaWxlZCB0byB3YWtlIHVwIGR1ZSB0byBhIGJ1ZyBpbiB1bmRvaW5nIHN0ZWFs
-aW5nKS4NCg0KV2UgYXJlIG5vdCBzdXJlIGlmIHRoaXMgY2hhbmdlIHdpbGwgZml4IGl0LCANCmJ1
-dCBob2xkaW5nIHRoZSBtdXRleCB3aGlsZSBzaWduYWxpbmcgaXMgcHJlZmVycmVkIGZvciBwcmVk
-aWN0YWJsZSBzY2hlZHVsaW5nIGJlaGF2aW91ciwgDQphcyBzdGF0ZWQgaW4gdGhlIHB0aHJlYWQg
-bWFuIHBhZ2UgKGh0dHBzOi8vbGludXguZGllLm5ldC9tYW4vMy9wdGhyZWFkX2NvbmRfc2lnbmFs
-KS4gDQpUaGVvcmV0aWNhbGx5LCBpdCBjb3VsZCBoZWxwIHdpdGggc2ltaWxhciBwcm9ibGVtcy4N
-Cg0KVG8gbW92ZSBmb3J3YXJkLCBjb3VsZCB5b3Ugc3VnZ2VzdCBhIHNldCBvZiBiZW5jaG1hcmtz
-IHRoYXQgd291bGQgYmUgc2Vuc2l0aXZlIHRvIHRoaXMgY2hhbmdlPyANCk1heWJlIHRoZXJlIGFy
-ZSBleGlzdGluZyBzY3JpcHRzIG9yIHRvb2xzIHRoYXQgeW91IHdvdWxkIHJlY29tbWVuZCBydW5u
-aW5nPyANCldoaWNoIFFFTVUgdXNlIGNhc2VzIChibG9jayBJL08sIHZpcnRpby1zY3NpLCBmaWxl
-LWJhY2tlZCBkaXNrcywgZXRjLikgaGF2ZSBoaXN0b3JpY2FsbHkgc2hvd24gcGVyZm9ybWFuY2Ug
-Y2hhbmdlcyB3aXRoIHNpbWlsYXIgY2hhbmdlcz8NCg0KVGhhbmsgeW91IGFnYWluLg0KDQpCZXN0
-IHJlZ2FyZHMsDQpTdGVwYW4NCg0K
+On 08.04.2026 12:14, Dietmar Maurer wrote:
+> xkeyboard-config 2.37 removed the "AltGr" virtual modifier in favor
+> of mapping upper groups directly to Mod5. Since then,
+> xkb_keymap_mod_get_index(map, "AltGr") returns XKB_MOD_INVALID, so
+> AltGr-based keysyms were never generated.
+> 
+> See: https://gitlab.freedesktop.org/xkeyboard-config/xkeyboard-config/-/commit/473f9bc32f9ba869829cc0d06a75cd1f2560aa60
+> 
+> Try "AltGr" first, and fall back to "Mod5" for compatibility with
+> both old and new xkeyboard-config versions.
+
+Maybe we can go the other way 'round, namely, first try Mod5,
+and if that's not available, try AltGr?  This way, "current"
+way will be tried first, and "compat" way will be a last resort?
+
+But anyway,
+
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+
+Thanks,
+
+/mjt
 
