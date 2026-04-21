@@ -4,51 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17142F5A8C5
-	for <qemu-trivial@archiver.kernel.org>; Mon, 20 Apr 2026 21:05:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 88D59F327B9
+	for <qemu-trivial@archiver.kernel.org>; Tue, 21 Apr 2026 08:30:11 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wEvoF-0000Wy-CB; Mon, 20 Apr 2026 17:05:35 -0400
+	id 1wF6UN-00044L-Ad; Tue, 21 Apr 2026 04:29:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1wEvoA-0000QH-2a; Mon, 20 Apr 2026 17:05:30 -0400
-Received: from zero.eik.bme.hu ([2001:738:2001:2001::2001])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wF6UL-00043d-Qw
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2026 04:29:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
- id 1wEvo7-0003PW-3A; Mon, 20 Apr 2026 17:05:29 -0400
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id C9BC6596961;
- Mon, 20 Apr 2026 23:05:21 +0200 (CEST)
-X-Virus-Scanned: amavis at eik.bme.hu
-Received: from zero.eik.bme.hu ([127.0.0.1])
- by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
- id 2xn6xil5UJJB; Mon, 20 Apr 2026 23:05:19 +0200 (CEST)
-Received: by zero.eik.bme.hu (Postfix, from userid 432)
- id CA6C359695B; Mon, 20 Apr 2026 23:05:19 +0200 (CEST)
-Received: from localhost (localhost [127.0.0.1])
- by zero.eik.bme.hu (Postfix) with ESMTP id C8D8659695F;
- Mon, 20 Apr 2026 23:05:19 +0200 (CEST)
-Date: Mon, 20 Apr 2026 23:05:19 +0200 (CEST)
-From: BALATON Zoltan <balaton@eik.bme.hu>
-To: Osama Abdelkader <osama.abdelkader@gmail.com>
-cc: "open list:amigaone" <qemu-ppc@nongnu.org>, 
- "open list:All patches CC here" <qemu-devel@nongnu.org>, 
- qemu-trivial@nongnu.org
-Subject: Re: [PATCH] hw/ppc: remove duplicate include
-In-Reply-To: <20260420164058.335872-1-osama.abdelkader@gmail.com>
-Message-ID: <0587ebb7-06fc-5b96-bbfd-37d86475d718@eik.bme.hu>
-References: <20260420164058.335872-1-osama.abdelkader@gmail.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wF6UK-0008Lt-Dm
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2026 04:29:45 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1776760183;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=QaaiJUC2YBK4ZQi2KQoDSjX+y0kVGZ2x+704p/2Lf5c=;
+ b=agI1eKPq4ublM/uPLCn+Wi4bJERnaRXhIuylGvfhTNSNJH6Oxsn6by/zabDXI0/MUTQH25
+ k4omSPpBdbhwxp/ZrP6t5y65S1uiGjIaDGREexd4UYuUxp2NmmRbKbYaw9qASGf08EfMZE
+ 4Ea/Grsyx8yho0hFwW09fNW7eWnROng=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-404-6b2oZwZQOa27zC8lbWiIUg-1; Tue,
+ 21 Apr 2026 04:29:41 -0400
+X-MC-Unique: 6b2oZwZQOa27zC8lbWiIUg-1
+X-Mimecast-MFC-AGG-ID: 6b2oZwZQOa27zC8lbWiIUg_1776760180
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id CD5AC19560B2; Tue, 21 Apr 2026 08:29:39 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.44.49.140])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 9E9BC1800906; Tue, 21 Apr 2026 08:29:37 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org,
+	Michael Rolnik <mrolnik@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>,
+	qemu-trivial@nongnu.org
+Subject: [PATCH] hw/misc: Fix the valid access size to the avr-power device
+Date: Tue, 21 Apr 2026 10:29:35 +0200
+Message-ID: <20260421082935.85995-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII; format=flowed
-Received-SPF: pass client-ip=2001:738:2001:2001::2001;
- envelope-from=balaton@eik.bme.hu; helo=zero.eik.bme.hu
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: HoopqBF6VuBBzxxHBUgpKspFh22pZEwah3qEq5q8tG0_1776760180
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -64,30 +82,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Mon, 20 Apr 2026, Osama Abdelkader wrote:
-> hw/ppc/ppc.h is included twice
->
-> Signed-off-by: Osama Abdelkader <osama.abdelkader@gmail.com>
+From: Thomas Huth <thuth@redhat.com>
 
-Indeed, once is enough. Also cc'ing qemu-trivial list.
+Accessing the device with in non-single byte mode currently causes
+QEMU to abort:
 
-Reviewed-by: BALATON Zoltan <balaton@eik.bme.hu>
+ $ echo "writew 0x800064 0x4142" | \
+   ./qemu-system-avr -M mega2560 -display none -qtest stdio -accel qtest
+ [I 0.000000] OPENED
+ [R +0.001784] writew 0x800064 0x4142
+ qemu-system-avr: ../../devel/qemu/hw/misc/avr_power.c:58: avr_mask_write:
+  Assertion `offset == 0' failed.
+ Aborted                    (core dumped)
 
-> ---
-> hw/ppc/amigaone.c | 1 -
-> 1 file changed, 1 deletion(-)
->
-> diff --git a/hw/ppc/amigaone.c b/hw/ppc/amigaone.c
-> index 8074713fbe..9fba5ca03a 100644
-> --- a/hw/ppc/amigaone.c
-> +++ b/hw/ppc/amigaone.c
-> @@ -20,7 +20,6 @@
-> #include "hw/isa/vt82c686.h"
-> #include "hw/ide/pci.h"
-> #include "hw/i2c/smbus_eeprom.h"
-> -#include "hw/ppc/ppc.h"
-> #include "exec/cpu-common.h"
-> #include "system/block-backend.h"
-> #include "system/qtest.h"
->
+Set the valid max access size to 1 to fix the problem.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3393
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ hw/misc/avr_power.c | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/hw/misc/avr_power.c b/hw/misc/avr_power.c
+index f42cf4fd906..42be2656911 100644
+--- a/hw/misc/avr_power.c
++++ b/hw/misc/avr_power.c
+@@ -73,6 +73,9 @@ static const MemoryRegionOps avr_mask_ops = {
+     .impl = {
+         .max_access_size = 1,
+     },
++    .valid = {
++        .max_access_size = 1,
++    },
+ };
+ 
+ static void avr_mask_init(Object *dev)
+-- 
+2.53.0
+
 
