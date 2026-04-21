@@ -4,104 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BC216F327C9
-	for <qemu-trivial@archiver.kernel.org>; Tue, 21 Apr 2026 08:42:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9F20F327C8
+	for <qemu-trivial@archiver.kernel.org>; Tue, 21 Apr 2026 09:01:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wF6gM-0006Ij-BS; Tue, 21 Apr 2026 04:42:10 -0400
+	id 1wF6z9-00018O-Ig; Tue, 21 Apr 2026 05:01:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wF6gK-0006Hy-Fx
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2026 04:42:08 -0400
-Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wF6z7-00017d-Qh
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2026 05:01:34 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wF6gI-00038Z-TX
- for qemu-trivial@nongnu.org; Tue, 21 Apr 2026 04:42:08 -0400
-Received: by mail-yx1-xb131.google.com with SMTP id
- 956f58d0204a3-650789b22e3so4473266d50.1
- for <qemu-trivial@nongnu.org>; Tue, 21 Apr 2026 01:42:06 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1776760925; cv=none;
- d=google.com; s=arc-20240605;
- b=IPb/Empv5367tqC+zPk5F/L4JKtWz4kE/kcP2KoZ/syinz4l9uKRDsRfvooH+nCq7S
- 1+pzEqIno3NVGCttT49zVP1OQwQx/NdX5+1tEEjn4U+qbxiZmRfNrkm58d74UyYq34hH
- 9Yl3VsGDwPRmZdLl8+PWGo5hC2w7Gpq0zla0saHOLsoYm0CgghF/tTiLyqc9qvCG2RGu
- 0yL3XqaUR+QHofeIiWPU8fLcPvv1IRQMMhU6KW1XUc4E2TRItNu4fVajmQbk31kcLnK7
- go5QQpVskAANDf3zRJ1SUlOrmIEzWVuu+0zDLmv3HZwEHz69vaE4O4rGhk6YD6a4U2ha
- BPgw==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=pkN1JBmanUEOKiq6af58ThegBRjT5yctGC3q3GS1kYU=;
- fh=3sR8HFbOMl6VSvD5F80MyBA3jGmQCNekhVXHJuJTWCY=;
- b=gi+Qxyz3aan3MavX2J0E8GkiulWoxrp8wM5BbU3X6IRMW3jAL86S5Y2lJ93cR0fvqC
- FIeSgzPM9WQRp5gts3bMCLE3gsP1PDtp3KOM+7iT+NMKjovz7QMKSkZjw1uD/dUaQPL7
- phPN9RBHg4dPKTuJ6QTzDONkaT/ce89xQFx9rc4jBbVdWLiRvtqm3lPJ1A2PrU0rj7hq
- A2Gukg7XLa1oG72n4dof1ULRmUhiqK8rvd49ElCZdW/NJnwpXmTAX2f0nNb9wyhWYP0b
- xjeG5CrX0vaoIMrSYKxVXUWhIriUCo+SvTQMUgf4A7qj/py+CvXiqIje0LiCGo5JrK5P
- QVIQ==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wF6z6-0007Je-AW
+ for qemu-trivial@nongnu.org; Tue, 21 Apr 2026 05:01:33 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-4891c00e7aeso17884825e9.2
+ for <qemu-trivial@nongnu.org>; Tue, 21 Apr 2026 02:01:31 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1776760925; x=1777365725; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=pkN1JBmanUEOKiq6af58ThegBRjT5yctGC3q3GS1kYU=;
- b=rLlgR/DP4+Dpsnb1k3AXajrWpRNTHSZWpFe/QhLsdZAPcIkkaYk9DswaasRcuBBMnK
- TZLmniPUNco0OBiPyOArPyXbs/576x8fA/SSQa/NuNeL2+rbAA3f0OwVbNVkbaN1A5ub
- fhnURtcEPV/ds1yS96Rn2gl/pWMTJywoNZzv/1onCNPASST1qXkuLVawab3DaTNPL9V9
- TolTH63QVXZ1Vkstj9q/ZAs+jtvX3C+Rhoob76q01wvxN2DvVBXpGzKFc2uw02c3Jk9m
- z4YFfEzRM0TRrrzUZdt7aF79Yj8RKQ3h2wJ3afUzI9Z32lS5EfYjj2AtmZ3mmigLcRl7
- 2++g==
+ d=linaro.org; s=google; t=1776762090; x=1777366890; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=nXQ2IHDXTbEKPoc80gqzdwc+ZOiq9E9sWXaw5VmnG+I=;
+ b=TmboJgqGnoyhV9EhhjBBpVuYLip3hJjmq/hQdl1i36ctj5Jbq6Omxj3hz0WIJIrx2Z
+ 5Xesr9ZjvCv1pAzKzprhGZ2vxqUeAzE+OAEdDP9c8xzZyznIwVPcRXThjr3/w9m+Sq3r
+ 1dJt+OShoAmv1izd1faY8KaOikuvQHrDKIkJRMZFa3KaX/WZQlodQDzQ9WtAxX+oQ68+
+ oMdnzQfCMGdC0fQ9hMp+8oZNMGDi2PokTIzw/SDwKks5u/E2DIrD8hyX7qAz/Akyob+4
+ f4MzgFaMafernqrzB8ZpmWaQGKFGXo9CdL3gRPH5pqockMmGTSjErIhI2mO81cgvYM6U
+ uL4A==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1776760925; x=1777365725;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=pkN1JBmanUEOKiq6af58ThegBRjT5yctGC3q3GS1kYU=;
- b=oZmoACK6VEn9vA09+JkiW1noEJs3vrzZQihGI9PulcMvp4ZlzpYKaluft0mhnJ2SZU
- 5w1Oudi15owAHk2qdePSINscM+iJTlslVtHiS1yAlnhOj3cYiVthWqhSIRthyfnk6yzd
- qO5f+u0E/7zbO31o+7XDkbZCEu4C1sCPUSzrg4WOlrFwTAe6faJstAKOiPDEgEQkfDVT
- Xdrty/JhdNsgdLTWKU51dDha+PzqNVJ9N/E/sS/sIpvZMyh8q9fHwWpueGvadpHrCie/
- rught3fSmGqI+tjZg+4mtTHvVmjjFpBj1gg39lvHKf1yb4PByaruvdluL0wuDc7E3XEQ
- 3D4Q==
+ d=1e100.net; s=20251104; t=1776762090; x=1777366890;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=nXQ2IHDXTbEKPoc80gqzdwc+ZOiq9E9sWXaw5VmnG+I=;
+ b=JIvNGpPz67hVI71Ph+q6JoET00d+k7qe9oaWVaRFsC7rREJkjNOHN+l54+8F1ub2s+
+ tBkKffKrcWPxH3cs15h+aE9wpAUdA/+Fi2eFmDwL0QSpGnDjbdV26RcXOmZj7+HmMujd
+ vCasK5WtH7hGrxyqIYvsgO15W3vxOoG5j52JXHfyaC5ma0Gpa/TeLhB49C5HOltdbSJG
+ b2AburV0R0LMDboSySnMQypkcrwSSukwsaZCAHh3SAchdXRjZF1kJi4s5JqjjdvPzx69
+ U9Ca1Qrc+ZBidvfJYaSXnZoD5aSzbPNrGehZrll8nGEePiBMOrSVCQ9Zd7QW1X8xe4BE
+ mUZQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+z0jozn8IziXw6imj5Fvu9SdjlMt0AAM1thF254V+EkiyU4MDlCUnf1mi1HC9knLPV+PYBZo+y9tC4cRM=@nongnu.org
-X-Gm-Message-State: AOJu0YyVsWAVct/XqdyWf/jzwUKS0+ZEeXR6WiGfN3AT3biZnhkx9c6f
- +s+W+VLXIzuj3BmUKUAnqRBqAh5rsqCFxeLxnp0vjN/YT2CdGfEhh+tulylZv9drzl1hYmj6bOL
- zp/Su4Ru4xIbEn9L+oyXWnR8TGMOQqHWTbuEZQhlXEg==
-X-Gm-Gg: AeBDievm2/1x6N09Ffkpu/eUlz0GuAIWGlNMGeG1K6BdfFfmUs5G5nxtVTd/m1I1D00
- ykatvVmDJzC3nMt/NsBPEgZ+4qVLROQbuzwMBf4M/Xnia4qSo6hA2z5XBdzLDc+85X/ch9dixZT
- KVu6oofBYKd0uaiiWu8dgC18CBTNS6M6WcENdUk0zHGzKNOP280RbUVrMBZL96lpw3ZiR7i17Du
- c8J5HUn7fPM4Rgq5u5lfLyCYjeODD1qx99BSi7YP4LThwu0aZ69wBf50pq+rwljBQ5Bd59sw0kB
- yVtJKg0MHPtmxoWo8LF8913qKHNYkjmiDwlo/wCpDwQWPoDeCwXuSGf3imtCSBTRlo+9qPV1wjf
- 5GA==
-X-Received: by 2002:a05:690e:130e:b0:651:bc3b:75c7 with SMTP id
- 956f58d0204a3-65310804a7bmr16086869d50.11.1776760925553; Tue, 21 Apr 2026
- 01:42:05 -0700 (PDT)
+ AFNElJ/NatA4Y54JCyCtza302qur23u9uKUhtoM5+gQ7UNXgzgsuhrQhJzXHE9CcNTlpwzd03ROT6Axc/6gbplQ=@nongnu.org
+X-Gm-Message-State: AOJu0Yw4dlAlcpo6wEwuAvTikDGpqFU/iHJUAckzL9aDWrW7+9DpJyM3
+ lcYDmPRLd/sNlu9IPNiXhbLgI1rhsD7BB/SghpillQESeut69jWzXavtZJaPxI99jxw=
+X-Gm-Gg: AeBDietNHrQCK6RMnYRmoqSLNVhjR87ff8lok6cJZXQbYxV8qOgPHTXWertd6FNv7+Z
+ yC61OXZ3WwOXzxmrrG69qM6Jzd5xYbeUbgzMg3f3Sj9GAmteJ4Q76Gg7GU6ddcm33GuueeHVNcv
+ k9mVnujZz/AG7ue48MWpKitg8Bjue8wocbTPDYtZDDZxkBqxfhEvP/mzUaihekdobyDlZH9rYGA
+ 9IvPRLeDqA+eoI3zftGoFTMvUm+Bl2GUO2RzPTqwy5n3MjpuLIqwJHKqfYvMEiVRh9NuUzuMXU+
+ 1nZQ48ue7F2eW5xIOd7gVJRkDueMwL3sW8jV5fcLY+fzDy2BxdvI8ZdtUX6nzUenWlkN8bnFJHp
+ B9R/+rZhI/DcjDfSzSz2GgnnarsagHX9NVQZpIIMVjBlthE1vPP84qSnXy3n16dwSYitm3xGI9Y
+ uN4O+AVZMMKBM1SsYnooDbVQR0SqGmFs5fEercIo8PFLb19gFMbF4zr9WvHBNpHXT3b+mBYzaJq
+ JV2
+X-Received: by 2002:a05:600c:33a6:b0:489:1c1f:35f9 with SMTP id
+ 5b1f17b1804b1-4891c1f38b6mr64277975e9.9.1776762089935; 
+ Tue, 21 Apr 2026 02:01:29 -0700 (PDT)
+Received: from [192.168.69.228] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4891c08faffsm269481385e9.1.2026.04.21.02.01.29
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 21 Apr 2026 02:01:29 -0700 (PDT)
+Message-ID: <1a5a1371-421b-409f-bda2-63f1f29a3966@linaro.org>
+Date: Tue, 21 Apr 2026 11:01:28 +0200
 MIME-Version: 1.0
-References: <20260421082935.85995-1-thuth@redhat.com>
-In-Reply-To: <20260421082935.85995-1-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 21 Apr 2026 09:41:54 +0100
-X-Gm-Features: AQROBzBjzkjg82Uxm_550fvWhUsgz7_cl9OzZbdv5DNaq_GFpL9-x8n_64U9vOM
-Message-ID: <CAFEAcA9Yx_kSc0KYbJW1aJcuCpnhQ=1v4-cebq-Y7XO_+Y+=Rw@mail.gmail.com>
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] hw/misc: Fix the valid access size to the avr-power device
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Michael Rolnik <mrolnik@gmail.com>,
- qemu-trivial@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Michael Rolnik <mrolnik@gmail.com>
+Cc: Peter Maydell <peter.maydell@linaro.org>, qemu-trivial@nongnu.org
+References: <20260421082935.85995-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260421082935.85995-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -117,44 +104,29 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Tue, 21 Apr 2026 at 09:29, Thomas Huth <thuth@redhat.com> wrote:
->
+On 21/4/26 10:29, Thomas Huth wrote:
 > From: Thomas Huth <thuth@redhat.com>
->
+> 
 > Accessing the device with in non-single byte mode currently causes
 > QEMU to abort:
->
->  $ echo "writew 0x800064 0x4142" | \
->    ./qemu-system-avr -M mega2560 -display none -qtest stdio -accel qtest
->  [I 0.000000] OPENED
->  [R +0.001784] writew 0x800064 0x4142
->  qemu-system-avr: ../../devel/qemu/hw/misc/avr_power.c:58: avr_mask_write:
->   Assertion `offset == 0' failed.
->  Aborted                    (core dumped)
->
+> 
+>   $ echo "writew 0x800064 0x4142" | \
+>     ./qemu-system-avr -M mega2560 -display none -qtest stdio -accel qtest
+>   [I 0.000000] OPENED
+>   [R +0.001784] writew 0x800064 0x4142
+>   qemu-system-avr: ../../devel/qemu/hw/misc/avr_power.c:58: avr_mask_write:
+>    Assertion `offset == 0' failed.
+>   Aborted                    (core dumped)
+> 
 > Set the valid max access size to 1 to fix the problem.
->
+> 
 > Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3393
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/misc/avr_power.c | 3 +++
->  1 file changed, 3 insertions(+)
->
-> diff --git a/hw/misc/avr_power.c b/hw/misc/avr_power.c
-> index f42cf4fd906..42be2656911 100644
-> --- a/hw/misc/avr_power.c
-> +++ b/hw/misc/avr_power.c
-> @@ -73,6 +73,9 @@ static const MemoryRegionOps avr_mask_ops = {
->      .impl = {
->          .max_access_size = 1,
->      },
-> +    .valid = {
-> +        .max_access_size = 1,
-> +    },
->  };
+>   hw/misc/avr_power.c | 3 +++
+>   1 file changed, 3 insertions(+)
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
-thanks
--- PMM
+and queued, thanks!
 
