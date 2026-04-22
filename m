@@ -4,70 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79968F94CD8
-	for <qemu-trivial@archiver.kernel.org>; Wed, 22 Apr 2026 07:55:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9F02EF94CDF
+	for <qemu-trivial@archiver.kernel.org>; Wed, 22 Apr 2026 08:07:49 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wFSQ0-0003rR-1A; Wed, 22 Apr 2026 03:54:44 -0400
+	id 1wFScX-0001aR-Sj; Wed, 22 Apr 2026 04:07:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wFSPy-0003qP-2Y
- for qemu-trivial@nongnu.org; Wed, 22 Apr 2026 03:54:42 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wFSPw-0006gm-HJ
- for qemu-trivial@nongnu.org; Wed, 22 Apr 2026 03:54:41 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1776844479;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=fQ/Gm5mXI5uP0dB7l1HO9HAOWfvVCU1YytbxxGf+WmM=;
- b=HT4XlH2GIreU+i4XxZuR8i9pFX6B3CVpEpacMcAOeMdzBHnq50HYft/T/ApesUE/cZWO8H
- fXnVWmqiaUIBA/XcnqC4dTP0h9BFNNTMbHwVtdzwBqjEVu+IZ3UInBcmJZj4SyWHLox43R
- savU39cMdc1zb1g/AL68ivTesfyvdSA=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-350-qG8JdtsqP1ylpwKsf6gZEw-1; Wed,
- 22 Apr 2026 03:54:35 -0400
-X-MC-Unique: qG8JdtsqP1ylpwKsf6gZEw-1
-X-Mimecast-MFC-AGG-ID: qG8JdtsqP1ylpwKsf6gZEw_1776844474
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3A9971800454; Wed, 22 Apr 2026 07:54:34 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.44.49.99])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7863F19560B7; Wed, 22 Apr 2026 07:54:31 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Yoshinori Sato <yoshinori.sato@nifty.com>
-Cc: qemu-trivial@nongnu.org,
-	Aurelien Jarno <aurelien@aurel32.net>
-Subject: [PATCH] hw/sh4/sh7750: Remove forgotten abort() in the MM_ITLB_DATA
- handler
-Date: Wed, 22 Apr 2026 09:54:29 +0200
-Message-ID: <20260422075429.341409-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFScV-0001Zr-UA
+ for qemu-trivial@nongnu.org; Wed, 22 Apr 2026 04:07:40 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wFScU-0002Ln-DQ
+ for qemu-trivial@nongnu.org; Wed, 22 Apr 2026 04:07:39 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-488e1a8ac40so64434785e9.2
+ for <qemu-trivial@nongnu.org>; Wed, 22 Apr 2026 01:07:38 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1776845257; x=1777450057; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :from:to:cc:subject:date:message-id:reply-to;
+ bh=zSbmgQ4mUKO3noT9uImqlbfaB1HH+PFpn68SkuRwax0=;
+ b=hA+lkWMN6d8SmiUbYSX5AluH0DIIeJPWmwckbrnhyqJqcTYXo029/mmH7Cqahj5DlJ
+ RIqZJ1akdp1X3/DSBS3WN70UI4A5gLkTa0BiXIjdGuyyVrkpvDF4PS5ndY2e+ccyIUIK
+ lEWXMZQ0gilmYXEc7yJKFcmuz7Tgt4pTbpXKbh9S2pFiKB050q9gBQIOmUv5hOscIi8j
+ Nc6XrUE3zkZ0J4/7ChQGdUqdsWQuyxE6pXLKgE0/3spls26/OwaYZkIzZkXQKQWZ5i9E
+ gUIzT7lOLZ7wSeIMR23CMwxBprS+4RtKDqMfYxEwjyD7tl3v9axXc4WIgP/AofyulHCS
+ cfig==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1776845257; x=1777450057;
+ h=content-transfer-encoding:in-reply-to:from:references:cc:to
+ :content-language:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=zSbmgQ4mUKO3noT9uImqlbfaB1HH+PFpn68SkuRwax0=;
+ b=B8dNG04KbT1dnCjWBw3cxlEmNIaGOpXocGD+HXfwl1JgiooBamNhmgiLI23ZXLlRpr
+ xNc07q+/3ZUFXEDAklAo5s4uo2y2dahDY4Ly1RCB/5q+N0kCSdbsltK5RF+CWMGm1+0R
+ 2h9gjC23AzPjL9kwupCQ8LKKIXn0Kl4Qcs8gvjn3xe0wyKom4LEBUuyMdd6qIktjCMkM
+ mpNDG9CoPaVO7X85nExio/HsI2aF68j+Vx9+46HK/WV0ftriC0F//WMjQr/gvfitXhjj
+ 6Uf9DmDh5FinenAUWlPgwDBbif4oxtqh1m9WkudSXdQ1kIXKzokQ69xn/1qQfU1K2Nnh
+ LDPg==
+X-Gm-Message-State: AOJu0YxrMQmJx7RJF8tFcWC8nOjx2XcPUZEt4AXgOMSc18z+ateFYbfH
+ +cdaDvTo6H8WS8tDDsUUpV4MMoL/RWDBM9bkd801mBy1HLhXw0o6mSRD+L5gaGUjNSpPec9IIcS
+ 9h9mvNJU=
+X-Gm-Gg: AeBDietztWEE6RqNBkIvsRt30zJEYHJzqWsM7AfUY2qKSKuMzhOphu21EbxomcvLc0Q
+ ndbmVVR4DhH9J/G93JJ+DmAMagTevVDc7oADolcBzv/Nq4gYNkPZgfopUjomqm2XSzQN5iTF68g
+ uKZCOdKaJSYfuxXbq4QBp3cr0QO5nQH0OfOVuy4JNSvBQDe3I8jOod8lUMUSBNkX+uYBc4DaC6O
+ el8wZUhK7JgSI306gK3/K5KkoLk01aBboTezsrIYwYDRaJPoy/UIa8ip/awJG/TQA+KPG6ec3zM
+ MTvBJXSSSmXWPjrdDbPH53WYH3am3yjNIpZy4+cj9DlrkGGArP2eFyBHJ06UbcSctZ8+/YAPsFt
+ jbvw1JG4HkWZBj9ooAA9ptxBX1lcvEwOnYZyHnSpD0S+H37xedAqJesKYhpVFCwuKNeHDY75Y9D
+ Mg/Yk6tuMqsSh44NvEaLCEewQ7liUjacvTzgrXk7OJ1O0S31CT0vCdKspH6Ode1J5kFGDmq2fKT
+ VmA
+X-Received: by 2002:a05:600c:3f0c:b0:48a:563c:c8e0 with SMTP id
+ 5b1f17b1804b1-48a563cd16bmr75304245e9.1.1776845256395; 
+ Wed, 22 Apr 2026 01:07:36 -0700 (PDT)
+Received: from [192.168.69.210] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-43fe4e4d6casm39675477f8f.32.2026.04.22.01.07.35
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Wed, 22 Apr 2026 01:07:35 -0700 (PDT)
+Message-ID: <1012727b-f164-4543-b23b-bb68e4ddcd1d@linaro.org>
+Date: Wed, 22 Apr 2026 10:07:34 +0200
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: VzNoAwsi_QfD_uGHT-WFbINcteDmCdh40c8IvvGc7OE_1776844474
-X-Mimecast-Originator: redhat.com
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/sh4/sh7750: Remove forgotten abort() in the
+ MM_ITLB_DATA handler
+Content-Language: en-US
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Yoshinori Sato <yoshinori.sato@nifty.com>
+Cc: qemu-trivial@nongnu.org, Aurelien Jarno <aurelien@aurel32.net>
+References: <20260422075429.341409-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+In-Reply-To: <20260422075429.341409-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=philmd@linaro.org; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -83,43 +104,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+On 22/4/26 09:54, Thomas Huth wrote:
+> From: Thomas Huth <thuth@redhat.com>
+> 
+> QEMU currently aborts when the guest writes to the MM_ITLB_DATA register:
+> 
+>   echo "writel 0xf3000000 0x11223344" | \
+>    ./qemu-system-sh4 -M r2d -display none -accel qtest -qtest stdio
+>   [I 0.000000] OPENED
+>   [R +0.004476] writel 0xf3000000 0x11223344
+>   Aborted                    (core dumped)
+> 
+> Looking at the history of the code, the abort() here has likely just
+> been forgotten when the register handler had been implemented (it used
+> to be a reminder about unimplemented functionality initially):
+> 
+>   https://gitlab.com/qemu-project/qemu/-/commit/9f97309a70f12df5f9104f1f
+> 
+> Thus simply remove the abort() now to get rid of the problem.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3420
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   hw/sh4/sh7750.c | 1 -
+>   1 file changed, 1 deletion(-)
 
-QEMU currently aborts when the guest writes to the MM_ITLB_DATA register:
-
- echo "writel 0xf3000000 0x11223344" | \
-  ./qemu-system-sh4 -M r2d -display none -accel qtest -qtest stdio
- [I 0.000000] OPENED
- [R +0.004476] writel 0xf3000000 0x11223344
- Aborted                    (core dumped)
-
-Looking at the history of the code, the abort() here has likely just
-been forgotten when the register handler had been implemented (it used
-to be a reminder about unimplemented functionality initially):
-
- https://gitlab.com/qemu-project/qemu/-/commit/9f97309a70f12df5f9104f1f
-
-Thus simply remove the abort() now to get rid of the problem.
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3420
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/sh4/sh7750.c | 1 -
- 1 file changed, 1 deletion(-)
-
-diff --git a/hw/sh4/sh7750.c b/hw/sh4/sh7750.c
-index 3ae71f99fe5..6aa7f637734 100644
---- a/hw/sh4/sh7750.c
-+++ b/hw/sh4/sh7750.c
-@@ -687,7 +687,6 @@ static void sh7750_mmct_write(void *opaque, hwaddr addr,
-         break;
-     case MM_ITLB_DATA:
-         cpu_sh4_write_mmaped_itlb_data(&s->cpu->env, addr, mem_value);
--        abort();
-         break;
-     case MM_OCACHE_ADDR:
-     case MM_OCACHE_DATA:
--- 
-2.53.0
-
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
 
