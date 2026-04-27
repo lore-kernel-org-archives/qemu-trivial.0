@@ -4,94 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95918FF885E
-	for <qemu-trivial@archiver.kernel.org>; Mon, 27 Apr 2026 12:10:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB27EFF8860
+	for <qemu-trivial@archiver.kernel.org>; Mon, 27 Apr 2026 12:10:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wHKmi-00033B-BA; Mon, 27 Apr 2026 08:09:59 -0400
+	id 1wHKmx-0003Ci-6d; Mon, 27 Apr 2026 08:10:11 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wHKmQ-000310-2L
- for qemu-trivial@nongnu.org; Mon, 27 Apr 2026 08:09:42 -0400
-Received: from mail-wm1-x32a.google.com ([2a00:1450:4864:20::32a])
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wHKmO-00030q-1H
+ for qemu-trivial@nongnu.org; Mon, 27 Apr 2026 08:09:37 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wHKmJ-0007OQ-VU
- for qemu-trivial@nongnu.org; Mon, 27 Apr 2026 08:09:36 -0400
-Received: by mail-wm1-x32a.google.com with SMTP id
- 5b1f17b1804b1-4852b81c73aso84836185e9.3
- for <qemu-trivial@nongnu.org>; Mon, 27 Apr 2026 05:09:31 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wHKmJ-0007Nu-UQ
+ for qemu-trivial@nongnu.org; Mon, 27 Apr 2026 08:09:35 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-48374014a77so132790395e9.3
+ for <qemu-trivial@nongnu.org>; Mon, 27 Apr 2026 05:09:29 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1777291770; x=1777896570; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1777291768; x=1777896568; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:references
  :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
  :message-id:reply-to;
- bh=L2SW+jti4hwBr2oYpxyk8XaAWDPBfuVkiI5ZxMxXYk0=;
- b=s+5sGb0x2cvoqH5YI9frwefX8ylAJyF62jpv1BvtmnufCB/u9j75Z3MLsdnsdLWE4s
- XqAWrXpkF9mAtpPde1EXGXh+tQMRfrjBUtZIDp6d0gnstk2+n9i9abCCm4IkKLplzA/R
- jwEN0kKfRgFiXjVxg+IAHFgkHJbyOu1vu9ZjJQ2kiPqM13+W+WFYnhKqVVYNMu1GwD0m
- EYj9DOeMpquKdqThGxni5qR5+Zqux55LTE+iTp1x/O/ACfhfMC66sH52BDDE6Wt8Bgvq
- HVuNDxuNuYtrcBTcaYH1SYpuBcTx9lUPSErRvvg5iIMYR6pTaOUM9LsdEs/m0kabs3ny
- 981g==
+ bh=3WjVYn3dSJU8L9dHY3FzAmuZ8M9V1GR6U9VRPV23JNU=;
+ b=LFteNeks0+p4JHZMqWtjfEVAjCNY+6LQdWs3Cjnglajj75kZfL4OEO2Hn2ENMRuBFM
+ H821ZMuEts3joEXVi6+87x476j14DiVphSPTm5NaM56LuBhpeXBCZ/NsgMYfgJEYvjgP
+ y4MEVDHe6KwSp4N9VJfx6tg9y2KjQjU4oL0xCthQ7+rZdGeIVdkatSrXOPVdl0StaH0h
+ FKdS4NQXRVLZtqY0hIQQ/CHNf+rfJPYhtLSaZDWDqgkKPkv5odSkxyg7bBv86cABToBG
+ RS4bthPBWCjWFATGNhN0t+cNkFgyX1JmIN8ut0N0ORNiedJ3a/Bhbe2FS69FZ7eC3VI1
+ n/jA==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777291770; x=1777896570;
+ d=1e100.net; s=20251104; t=1777291768; x=1777896568;
  h=content-transfer-encoding:mime-version:message-id:references
  :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
  :to:cc:subject:date:message-id:reply-to;
- bh=L2SW+jti4hwBr2oYpxyk8XaAWDPBfuVkiI5ZxMxXYk0=;
- b=fk85NJA96Ek9db3TnLpMfxtCrZyUzF4wlpEHV+HesGvevMYjtwhrOyB2c5SGrlsl9f
- lWdWHUgoHQ4SxWSDKHzrY3YAZxxZg0pfl3XDnOey2Xnx77WBmLzQlDpv5SDUEbFhHyBu
- IPHtfMup8UnXqgpYFl/6CZlj946pf2YeQEVufoQoGAf2sDQ/t/QnC63issSUhOVxQKQe
- RJjNeh/9fflHGSX5TM87IrUYKnSdPhhoh5FIBBfoO7qcXEfhNpWPhxYy5GtbyW1SxFNg
- wkFGjegZrO5HWPmnEY9LO1PO1QhXsKt8ZAe1ZJ48FIKbS99i4XagfazEGOAuKvVoENZN
- KFGQ==
+ bh=3WjVYn3dSJU8L9dHY3FzAmuZ8M9V1GR6U9VRPV23JNU=;
+ b=GQeyOWhdKHEEBvLHS5M9WIQwkGOXERUwJqK826mSIDTzuGi6tCUfwDG+Ze+JC1XilE
+ b90E6KOPPpXQphIDz0k5+wMGpYuRZtYUw1ObTf2r7qzvgx6ina2knC52vacI1Z86Kt9v
+ QSYyduNEL7pXu7vod4YO2gDu4xMD1CbPNYmglwHMCsqu9IE2MNb9NhEaNZJQQRChzY/u
+ wpzYSNl1d1ujzd9KFF3DqMnxlwsO1DikvjngxfR0U1tc8WxQFqQup9hQUrGg7xx3Rq8Q
+ //z3/mn/cz7nDQbjcyzEyRg+ca4jP09/UQ7o0MzzZYtMRCygWkkfnIAtCC/ZHDMd0nGH
+ PuJQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8E/FL6/XdXn6ZNf/TDl0tIbOiJAOCUB6xgmoPhxLnlG9nCq25Ce5YyINXXtSsMjjg5k1Na5lz5ttHSQv0=@nongnu.org
-X-Gm-Message-State: AOJu0YyJOKbCzw8Ip0/zzW5F9r8TpjMmR25nQchPASYlTvMNcw8nYsGm
- Vw6ezDlAXJxsskL6q35CXsWGUuSlH3NynQxCsOBDRhWsKq2W11tN52iS
-X-Gm-Gg: AeBDievQvZDNPxiLiVF03+USex6IAkDfgqa5BWkiQQlxSZWivKYEldWy9t9zL6I1EXh
- nL++xBxgxRiAB47i9d7QGMzNiNB75qTeXPPJLWeLX9bGqgd6taogNJejyKx9up03+aWewXDoghA
- /Ni60L5wcWkF/vZaaZ6ep0zwsp/POzTI/AJGdNZ3BFPkcxm+P3MmA8Go08rH+XDSFvuMRXrURB3
- PWNu6KHkFxcckH7kg4v7SmWcuGFUb1u+EXg4Q7v2sy9kyxsRFw3BsBriTDGS7obIUET0pSzQfiP
- Mf6w8kNhPxM235rHvkupqPQ+tm3AyzuLtarRhmBgnf5uMXfFcWPc/YAI+nYZteGUSzGmbOeqT6D
- oCmEA+TmpdVMNtxpP2ZtJJWv3r7RWStP5r1pZvQeSFDAwj0K7CcGeyQGPtXhnmbyXgJIpl0YK1q
- i2prQ7FApTaPu/jQ+ONTwde4QGGg2MTpfQk/BCF+x4
-X-Received: by 2002:a05:600c:1389:b0:485:9a50:338d with SMTP id
- 5b1f17b1804b1-488fb739d3amr571794975e9.3.1777291769839; 
- Mon, 27 Apr 2026 05:09:29 -0700 (PDT)
+ AFNElJ/4kmEhowgsmVwuqur56uNNOZDZkcir02bBPj5OQIoFBmcCjthtOT8ubjSUULZe3UilZj9n14EuXEwfGFE=@nongnu.org
+X-Gm-Message-State: AOJu0YzZgjrywDj793LQ9AyKx2mZv1+OFnQ8wsh+qN1p47php+aJ3m+H
+ QPmi8LFOuMLP6vW/S9ZpfRPLutO8uH7VQKQ9rfohy3DnHlMDACBYCw1a
+X-Gm-Gg: AeBDieuFgFzR+QgCyHkDlRFT1wg2tYBA4+RMk6UEoEhyLYMkYXpAmsuyqsuWK5+Uadg
+ ALrIbKXEMpZLdU6EbLwS+jwtaWeGU6bYTzMd94CUQznllI3ZUS2ApFD5Z8bzfGUuXYKWLDuUixF
+ nd9jE2DfqP4+Z+wddUMjWc5iOjkJ14rCtnTXC8GOpXesl6kuyQLM186fHADefto/l9FThNTg5Pz
+ iwXZYel8kRHDLoyyvtW0jGEtTMoHPrv4F67SR3vFD7dM3GyinqwwI87Tnomq1vta66BQqdXn7WN
+ 3SOEUi0/giwAi8xCbtnpeRYaieh/DCKh6BSJV7V7tAbDuzMnfhL8a1+vJwLuFmQNaa1PYfLkCdi
+ YfdYFHhQ5fCg+4UnPI0qI3GXm140DLZ9iEGsVM/dRDkWiZzpI74iUa231l0GVFrgIgPVpa2H75E
+ qA9xYxHiAyASwrnVRL4MBCBa5JNZ2vi2MIi5Hvegaw
+X-Received: by 2002:a05:600c:c10a:b0:483:2c98:4368 with SMTP id
+ 5b1f17b1804b1-488fb771613mr462446925e9.18.1777291768323; 
+ Mon, 27 Apr 2026 05:09:28 -0700 (PDT)
 Received: from ehlo.thunderbird.net ([90.187.110.129])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4891cca5743sm567808705e9.9.2026.04.27.05.09.28
+ 5b1f17b1804b1-4891978ef6bsm265211835e9.4.2026.04.27.05.09.27
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 27 Apr 2026 05:09:29 -0700 (PDT)
-Date: Mon, 27 Apr 2026 10:29:14 +0000
+ Mon, 27 Apr 2026 05:09:27 -0700 (PDT)
+Date: Mon, 27 Apr 2026 10:30:09 +0000
 From: Bernhard Beschow <shentey@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>,
+To: =?ISO-8859-1?Q?C=E9dric_Le_Goater?= <clg@redhat.com>, qemu-devel@nongnu.org
+CC: Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini <pbonzini@redhat.com>,
+ Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
+ qemu-arm@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
  =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: Re: [PATCH 2/5] hw/arm/fsl-imx8mp: Fix parent of ocram memory region
-In-Reply-To: <CAFEAcA9cfiDB3+=K+MsHptujVhcPexwaf+1y8kHaV692ORAdgQ@mail.gmail.com>
+ Peter Maydell <peter.maydell@linaro.org>
+Subject: Re: [PATCH 5/5] Revert "sysbus: add irq_routing_notifier"
+In-Reply-To: <af77b92d-9303-4ed0-942d-6188e00ccdde@redhat.com>
 References: <20260308203516.160103-1-shentey@gmail.com>
- <20260308203516.160103-3-shentey@gmail.com>
- <CAFEAcA9cfiDB3+=K+MsHptujVhcPexwaf+1y8kHaV692ORAdgQ@mail.gmail.com>
-Message-ID: <A91F1062-BD9E-45B4-B0C2-12354C356A71@gmail.com>
+ <20260308203516.160103-6-shentey@gmail.com>
+ <af77b92d-9303-4ed0-942d-6188e00ccdde@redhat.com>
+Message-ID: <DF79ACA2-21B7-47B9-B9C1-0C08E9E50F16@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain;
  charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::32a;
- envelope-from=shentey@gmail.com; helo=mail-wm1-x32a.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=shentey@gmail.com; helo=mail-wm1-x32e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,47 +108,61 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 
 
-Am 10=2E M=C3=A4rz 2026 10:00:31 UTC schrieb Peter Maydell <peter=2Emaydel=
-l@linaro=2Eorg>:
->On Sun, 8 Mar 2026 at 20:35, Bernhard Beschow <shentey@gmail=2Ecom> wrote=
-:
->>
->> Rather than having a NULL parent, let the containing SoC object be the
->> parent=2E This cleans up the QOM composition tree a bit=2E
->>
->> Fixes:  ("hw/arm/fsl-imx8mp: Add on-chip RAM")
->> cc: Gaurav Sharma <gaurav=2Esharma_7@nxp=2Ecom>
+Am 9=2E M=C3=A4rz 2026 09:19:10 UTC schrieb "C=C3=A9dric Le Goater" <clg@r=
+edhat=2Ecom>:
+>On 3/8/26 21:35, Bernhard Beschow wrote:
+>> The callback has been introduced in commit 715ca691daca ("sysbus: add
+>> irq_routing_notifier") for use in VFIO platform=2E Meanwhile, VFIO
+>> platform has been removed via commit 762c85543948 ("vfio: Remove 'vfio-
+>> platform'") which was its only user=2E Remove this unused code=2E
+>>=20
+>> This reverts commit 715ca691daca081108b33306faa6fa102f0df8d8=2E
+>>=20
+>> cc: C=C3=A9dric Le Goater <clg@redhat=2Ecom>
 >> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
 >> ---
->>  hw/arm/fsl-imx8mp=2Ec | 2 +-
->>  1 file changed, 1 insertion(+), 1 deletion(-)
->>
->> diff --git a/hw/arm/fsl-imx8mp=2Ec b/hw/arm/fsl-imx8mp=2Ec
->> index 0119a18416=2E=2E839c925e4a 100644
->> --- a/hw/arm/fsl-imx8mp=2Ec
->> +++ b/hw/arm/fsl-imx8mp=2Ec
->> @@ -671,7 +671,7 @@ static void fsl_imx8mp_realize(DeviceState *dev, Er=
-ror **errp)
->>                      fsl_imx8mp_memmap[FSL_IMX8MP_PCIE_PHY1]=2Eaddr);
->>
->>      /* On-Chip RAM */
->> -    if (!memory_region_init_ram(&s->ocram, NULL, "imx8mp=2Eocram",
->> +    if (!memory_region_init_ram(&s->ocram, OBJECT(dev), "imx8mp=2Eocra=
-m",
->>                                  fsl_imx8mp_memmap[FSL_IMX8MP_OCRAM]=2E=
-size,
->>                                  errp)) {
->>          return;
+>>   include/hw/core/sysbus=2Eh | 1 -
+>>   hw/core/sysbus=2Ec         | 6 ------
+>>   2 files changed, 7 deletions(-)
+>>=20
+>> diff --git a/include/hw/core/sysbus=2Eh b/include/hw/core/sysbus=2Eh
+>> index c0d18d9e00=2E=2Ef3c4259d29 100644
+>> --- a/include/hw/core/sysbus=2Eh
+>> +++ b/include/hw/core/sysbus=2Eh
+>> @@ -50,7 +50,6 @@ struct SysBusDeviceClass {
+>>        * omitted then=2E (This is not considered a fatal error=2E)
+>>        */
+>>       char *(*explicit_ofw_unit_address)(const SysBusDevice *dev);
+>> -    void (*connect_irq_notifier)(SysBusDevice *dev, qemu_irq irq);
+>>   };
+>>     struct SysBusDevice {
+>> diff --git a/hw/core/sysbus=2Ec b/hw/core/sysbus=2Ec
+>> index 3adf2f2faf=2E=2E3e1160ee92 100644
+>> --- a/hw/core/sysbus=2Ec
+>> +++ b/hw/core/sysbus=2Ec
+>> @@ -104,13 +104,7 @@ qemu_irq sysbus_get_connected_irq(const SysBusDevi=
+ce *dev, int n)
+>>     void sysbus_connect_irq(SysBusDevice *dev, int n, qemu_irq irq)
+>>   {
+>> -    SysBusDeviceClass *sbd =3D SYS_BUS_DEVICE_GET_CLASS(dev);
+>> -
+>>       qdev_connect_gpio_out_named(DEVICE(dev), SYSBUS_DEVICE_GPIO_IRQ, =
+n, irq);
+>> -
+>> -    if (sbd->connect_irq_notifier) {
+>> -        sbd->connect_irq_notifier(dev, irq);
+>> -    }
+>>   }
+>>     /* Check whether an MMIO region exists */
 >
+>Reviewed-by: C=C3=A9dric Le Goater <clg@redhat=2Ecom>
 >
->This is a migration break, because qemu_ram_set_idstr()
->includes the qdev path of the owning device when it
->creates the name of the ramblock for migrating it=2E
->But since we haven't released anything with this change in
->it and this board isn't versioned either, that's not a problem=2E
+>Thanks,
+>
+>C=2E
 
-Do we still need to catch that? If so, how?
+Who will pick up this patch?
 
->
->-- PMM
+Best regards,
+Bernhard
 
