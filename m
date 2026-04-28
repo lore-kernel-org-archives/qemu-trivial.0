@@ -4,93 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3DCE5FF885D
-	for <qemu-trivial@archiver.kernel.org>; Tue, 28 Apr 2026 09:47:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56611FF885D
+	for <qemu-trivial@archiver.kernel.org>; Tue, 28 Apr 2026 09:52:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wHf1R-00012k-IK; Tue, 28 Apr 2026 05:46:29 -0400
+	id 1wHf6u-00035A-9m; Tue, 28 Apr 2026 05:52:08 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHf1P-00011s-Gr
- for qemu-trivial@nongnu.org; Tue, 28 Apr 2026 05:46:27 -0400
-Received: from mail-yw1-x1130.google.com ([2607:f8b0:4864:20::1130])
+ id 1wHf6t-00034m-1P
+ for qemu-trivial@nongnu.org; Tue, 28 Apr 2026 05:52:07 -0400
+Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHf1N-0004dw-Af
- for qemu-trivial@nongnu.org; Tue, 28 Apr 2026 05:46:27 -0400
-Received: by mail-yw1-x1130.google.com with SMTP id
- 00721157ae682-79db5e18ac6so129735397b3.1
- for <qemu-trivial@nongnu.org>; Tue, 28 Apr 2026 02:46:24 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777369584; cv=none;
+ id 1wHf6r-0006fc-IJ
+ for qemu-trivial@nongnu.org; Tue, 28 Apr 2026 05:52:06 -0400
+Received: by mail-yx1-xb136.google.com with SMTP id
+ 956f58d0204a3-651bf695701so9830102d50.2
+ for <qemu-trivial@nongnu.org>; Tue, 28 Apr 2026 02:52:05 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777369924; cv=none;
  d=google.com; s=arc-20240605;
- b=OYyEHsAFVd5Af1B8uy0gUraXZZG+Gmf8RnatgAnukSj//hcRql2LD+o1YntQcIEFVT
- u6e9kPHf7jFnOWQPlfAlHg+Ww8EO4mbHbRmbwbt4MmB2Kw1nYKgOKzP7y1DthwQFuJo4
- FrdsI1p85/xDIOKaDPrQiJSH9u6+8UcFgpQFBE2fbJPiowMaRKF6sBVXJExksD6ewrbq
- hbbhdBPcCAtsyX0su5ecjMVCKBOu1E/3qsFSiAqKd3qkPvO06kLP4jfbXHL2vOaozzAm
- j8Dntfr//pDG3fbNhRgwwwRhfkE+sY6lnwy8dijeDSUnojCsUzmFu8A5XHHkBWK6Gt+v
- DW/w==
+ b=GbLTIN3rNkLgBBrIIv8UHLBFaFVz4Tzu/wwKLigYXKLwN50do5hFpqVNpQMX6QVqNS
+ PuwDyhbBo6ZQ1Cosda2wdLEghtbzFipF6Ecq/W3JUesu6oxt1ln2DPx2fuB1Q+0nbSQm
+ b7Mh2dkC81rOevhkkWO1f8qEMPI4ZayTYvWNhtEhM5mhVWhw+gyHN2nQPdiCNh/OKoeI
+ JYKu8uDfKSwNk/0O6SzFUkQ/TMbUqsEpaFWm4la2CZDKhWIYX+Naxz0S6XAD4vntdzuM
+ 0hsy74pTHNOEAcB/ddklQiVxqSisOAPADxfib2e+AZIbe7b5x+0c2kS0SgtC0dCupjqP
+ Gm0Q==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=KnOTyoBONZL5lUhxgLh9D6qE6LWii5d0WK1ENz5fK6w=;
- fh=D8T84Kwn6AXwm5XOesq+5WX6oZ93xR2vaWeC70ZOYEw=;
- b=Sq4coKSmNs6cUQgj3hjskDvXeYGGqDlVqEeRXb4ygSTBZ3DCVRwxNs7cb/9jbVZDNg
- Rfm3ZSO3USEPk3sSDDPwHoZZubbXLk1/WB8eLpwVlZ60tdjWV/rcZLUNP4U5LB/EPLEH
- Knmlh97JCnrE6Ax0BA0QIwZFUk2DqZNC3ux5r3LzeaYAj7Y++Af53PRwdJgR3kkTFzG4
- nCG5jXfsjvAhfvCczxyYXMqEad0cdfGjITysd7m7b+teCFsEcy7MXgKrroNtflsB8Mrx
- 8MbOsTKMUne2BWMQ/puzcEuixrvPLPg/UQPDFZRkaMl7XRSKn459hnQhT+/A+rPdhe5b
- TjrQ==; darn=nongnu.org
+ bh=Jf83sOe0igZW+OLTsh7KdIXlnA6gpK2sB4ZNna8MjBY=;
+ fh=WwGPytxr2CQZF1/ep4rE9GqfOrwzX2MwFv4eC8jyfw0=;
+ b=SgW8EHyu1g102LTJnWMZWscpUB/EDrjceGEJhExxtIR0WOacAJY2KVVksb8K67R734
+ THgh5/5XA7GaUmSPMAwZd3n35VIfpZzvZGOxKnIp1txJZKrvfJjYGCxxzKXSx0jWLK9K
+ LxOC1h+GclU+JWpDKI92OSn5XAvbESuMiMLX/QpFKArzGL6+/NK8ihRChEnbVyQakhHi
+ GbSNWhsU8OxJ1prp5llJYYRnuyhIEALUQBGATWFQxM2cPogjxKG9iH27zDWTG9FYY7RE
+ etUhsXrQ+gFCttS6odVrilIbfGm7vz9tJysdLdxw0gSmrL2VWjk94N9qJKMWDAQv0w25
+ hw/w==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777369584; x=1777974384; darn=nongnu.org;
+ d=linaro.org; s=google; t=1777369924; x=1777974724; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=KnOTyoBONZL5lUhxgLh9D6qE6LWii5d0WK1ENz5fK6w=;
- b=PDxo7T4ZvJ1I1d8yg9i/oswde+NIVjkqjGiF5zorI4hY3IF7b9aYwIZM8Eqy8QgDFQ
- Cm4xTxdC0ShflmDEI3rn0ykqGooYZUCeAya/5NXdFBASbTqRqNiGbXX0i6at6hxXSh+B
- DhWhcKU5KShE1sV6I3XzZxYe1XWvVVko9TR/5M7kzBzKP91kXDVtR+tVeXSO9saW+uYB
- OxOj8xup25/Wm4ft4ga41jmn6CFOV3Lbmy02INdXNDNorbt00hjHxyE7UCsQWz8j0nQ9
- BbBr9O8JKLn4UiPHQbKs6UlAYsUPQbW6WjB/NlDQYB9EFjYNpVigteXNDVlPUzYkWoZA
- /PSg==
+ bh=Jf83sOe0igZW+OLTsh7KdIXlnA6gpK2sB4ZNna8MjBY=;
+ b=EKJB1l9KO+snjTd6eRM/5DLCoW7svOqmKFJUIC8RG4AyjKqw/0SweiDudlOJXkt1kV
+ Y3VLt8H5Kx5stU5kIoY8rTik8cVgbKmXINfNAEfAJBCdfX2/weU1GvlOtJITJCT7y9q1
+ 40AUlcKnH7GbELi/5qHumJ+hGlPYgcPYG86B8JgjrmETbZnot9yzqT2Q7jMzu917U8UX
+ qcaZ1S8flY6JBu/EeiGJoEHC/szFtnTd5OJvleUGbfaDBzlDMzJvCfiXu7BBQRYTZ1QQ
+ utKWu33KEssOvhhcQHbS9WvUTdUrRvST5aOSV4njDMDAlt4xeWXxeRO56i1K0f1oGNop
+ yyjw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777369584; x=1777974384;
+ d=1e100.net; s=20251104; t=1777369924; x=1777974724;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=KnOTyoBONZL5lUhxgLh9D6qE6LWii5d0WK1ENz5fK6w=;
- b=c6V08C+rBwQQMOsF4R7vxd0erh5W7xFtSVLaDsVfTZLFYPmmNMIU0l6cHpxiJLBJOg
- SOVA3bWkxwi+JWITJd+Xt30GE1PEp+MlZjv9OIjR+nycQt7aZvDV0j1vJy++8uPRkN6Q
- TpdGNh6Nf+5+15yF6fKSO0CMmLrsu895QveNBFJRFlhQc9Y3Zj6PS6upaSJpABU5K268
- sS4tBqpfMQFWuG0yw6Q3rz9MuSo7Z0RhVfFbtJs0bk+CPFtGiTK32LAGzFK4yrxMylUZ
- obkoMl0TBZAnI5vB1g0bF27w9CB+U5LRih9xpUMaNOm0roflYIFiqGTZi8muZRv66rcp
- iLmQ==
+ bh=Jf83sOe0igZW+OLTsh7KdIXlnA6gpK2sB4ZNna8MjBY=;
+ b=p/GA5Veyd7OLmQ/itJaD59GcY9a9zgtARwst6LRuOYixcbpHlQ3ZyfFjB1QDbeufA7
+ Mb9Ja+4HeTKDQUoTBpATqUEWYzmnIfUkGmPoa28fDmhPDTKDkCbj26jXR1ynpWfmUbCs
+ vjb1OWk7CWu+NEIKiJODoWHIPAo+fVo6EENf3RmURVlBNhIgy1htpwLAX9v0LJTU4ycA
+ xCgwUWTgH7QoBSZpFhNflCStjAdG9r70GZVbBkKQ6xtTGqu8WjMsOeku6Xva9pGT1Rnh
+ w5dGGbhl6skNX3rLWlEX8NlNZqUL8dakc8+FQDIM99vgdK4gQVtO5tI1faCCkd/N90hr
+ CUhg==
 X-Forwarded-Encrypted: i=1;
- AFNElJ84oMDv07ejszIY/ZyTmL+YcYbeDb/xpKcDktZN25Y4MjbMZP9i0KcWgHrh3GuwzhB6OdKph1sRpwJutfs=@nongnu.org
-X-Gm-Message-State: AOJu0YwE6yzJRPMdhk2/2Fr2kn1+WNt3I8Lz2R1HzqIoNYCWVWROFW4/
- OUvFTqO+zXkaltoQcwkAqE6PwXBxB8bVbm2dEpwdp2PYvL9bIINSIrlfc8c/YXd7yl+PKaJpo/W
- qKAyG1jsyP/oWps3vhxDU1VffJrByJ3gz8wTsfJSmyA==
-X-Gm-Gg: AeBDiesIQpyXFMZV1uzpu7tH2hV8GRG1MWWKKHQ6INiAbogQB7GbU9xtQ7kuPfDHvCE
- JZZejOvNls+SmEIqlbnx2iubLcMyVGwMJQygVJ4VCfyZyuRh8FK9duNQzh0TpivfmEYL7ShOC34
- YHBzBysEBjGra5ZreeJm02rx/+DckA9ukhpf6pBiownvWzMKFvoTri8Bzq11yzB1UHd0N2DqtEb
- /eRuiALyF5jvF/rbTOAdh8lrZPH0tslwUfhpQJ9BuT88oSjXLQaw6DI9laLQKL1QJVz7ZgQpVzT
- KwAlGfYHBtWcAft5yN/v0XfOqzzI0Pf3FG83s1MP6efxbzopkqVeX6SsrbCKT06RspxYH2X18gN
- m6A==
-X-Received: by 2002:a05:690e:b89:b0:654:99fd:4a1e with SMTP id
- 956f58d0204a3-65bee6e075bmr1723676d50.5.1777369583702; Tue, 28 Apr 2026
- 02:46:23 -0700 (PDT)
+ AFNElJ/n4GdMaH2dEhbS4Zr29AE9NUMtwZ0pXiuFRavXrxXkonDQsr4op5fyqco261u+u4IgQwooj+s7Tw4bBNw=@nongnu.org
+X-Gm-Message-State: AOJu0YwnhgXkx1MNVK4dveOYpe8FXXNI49CeMX8zbVLId3MZoXNiqIDs
+ OmmdxbcduoIfLrlwK+C8DUdBM0lK/1TuQFDWzRBAhHwiIZ1p5V9qfbv7zU7ug4dZ5YgEcIYBJ94
+ i/egwD1BPHnG72gxmwqU602v8XMUNe0hfA7SFouNvyg==
+X-Gm-Gg: AeBDiev0CpbINElKY6Mu0jdYUjU4Cr36jyeRIVgfJRWE4oNo5tN/MrW0X+4fBzYkg/P
+ RhrXBji7fG+y1hb66F4CVOeDzNKKhlpzhv06qtnOrjY66uNGb0/hKZR1QlxU5qP5D5YrQQV0g7u
+ fTi39SLOflnUDS4KIAtEiZV1ROcxqEXZKvLoNEHAZjOnsPsSY5Hc3TrbOzxbye2dWMnEVk/Xa5d
+ 1SJTaRXt+ep7XS8xgv0wMeWm9t7Ai5G1Wy0YIA6U38F5OYmWBih5wBEAxeCPbynlfTKFF6XERvJ
+ Z1erDd/TVyC5YT1S0LMpx1DRGHQqNuUTJ+1SwYx4L0Njqp48+UVMqYN0bkQv4H+QfF9NL4QnVre
+ Giw==
+X-Received: by 2002:a05:690e:4813:b0:654:a4fd:ebfc with SMTP id
+ 956f58d0204a3-65beed4b37dmr1477104d50.5.1777369924253; Tue, 28 Apr 2026
+ 02:52:04 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260308203516.160103-1-shentey@gmail.com>
- <20260308203516.160103-2-shentey@gmail.com>
-In-Reply-To: <20260308203516.160103-2-shentey@gmail.com>
+ <20260308203516.160103-4-shentey@gmail.com>
+In-Reply-To: <20260308203516.160103-4-shentey@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Apr 2026 10:46:11 +0100
-X-Gm-Features: AVHnY4Lp4-tZHtm8EalkPK5wy_ymIxgoTBUzDEEHaaA0m03tg5Dofjowu1o-E5U
-Message-ID: <CAFEAcA_o9_j05GmXT79TF2z_BqwxmTWeqaaapUOv+E4=P-hh-Q@mail.gmail.com>
-Subject: Re: [PATCH 1/5] hw/arm/fsl-imx8mp: Do not create redundant
- unimplemented devices
+Date: Tue, 28 Apr 2026 10:51:53 +0100
+X-Gm-Features: AVHnY4LN6oyQ5hgpGpRcO4ZdokEuLd-PlagZ965MDMbtumluQ7kS8dcp9G1gEZw
+Message-ID: <CAFEAcA_BFzFSOrXB9DorTftGYVmvP7gB8_+14fpwGEC6vasAeA@mail.gmail.com>
+Subject: Re: [PATCH 3/5] hw/arm/imx8mp-evk: Fix reference count of SoC object
 To: Bernhard Beschow <shentey@gmail.com>
 Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>, 
  Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
@@ -99,8 +98,8 @@ Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Gaurav Sharma <gaurav.sharma_7@nxp.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1130;
- envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1130.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -125,14 +124,37 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 On Sun, 8 Mar 2026 at 20:35, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> The GPT devices are implemented. No need to create redundant
-> unimplemented devices.
+> object_new() leaves a reference count of one, and object_property_add_child()
+> then leaves it at two. This would leak the SoC object if the machine object was
+> destroyed since the machine is the SoC's sole owner. Fix this by converting to
+> object_new_with_props() which gets the parenting and reference count right in
+> one go.
 >
-> Fixes: f8b26121762c ("hw/arm/fsl-imx8mp: Implement general purpose
-> timers")
+> Fixes: a4eefc69b237 ("hw/arm: Add i.MX 8M Plus EVK board")
 > cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>
 > Signed-off-by: Bernhard Beschow <shentey@gmail.com>
 > ---
+>  hw/arm/imx8mp-evk.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
+> index b84ac91a17..cfc3038c36 100644
+> --- a/hw/arm/imx8mp-evk.c
+> +++ b/hw/arm/imx8mp-evk.c
+> @@ -74,8 +74,8 @@ static void imx8mp_evk_init(MachineState *machine)
+>          .modify_dtb = imx8mp_evk_modify_dtb,
+>      };
+>
+> -    s = FSL_IMX8MP(object_new(TYPE_FSL_IMX8MP));
+> -    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
+> +    s = FSL_IMX8MP(object_new_with_props(TYPE_FSL_IMX8MP, OBJECT(machine),
+> +                                         "soc", &error_fatal, NULL));
+>      object_property_set_uint(OBJECT(s), "fec1-phy-num", 1, &error_fatal);
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
+
+There are more boards doing this as object_new / add_child / unref
+than with object_new_with_props(), but doing it in one call seems
+better than three.
 
 Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
 
