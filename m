@@ -4,109 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56611FF885D
-	for <qemu-trivial@archiver.kernel.org>; Tue, 28 Apr 2026 09:52:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17F4EFF886D
+	for <qemu-trivial@archiver.kernel.org>; Tue, 28 Apr 2026 16:21:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wHf6u-00035A-9m; Tue, 28 Apr 2026 05:52:08 -0400
+	id 1wHlBR-0001uu-0C; Tue, 28 Apr 2026 12:21:13 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHf6t-00034m-1P
- for qemu-trivial@nongnu.org; Tue, 28 Apr 2026 05:52:07 -0400
+ (Exim 4.90_1) (envelope-from <luc.fast2004@gmail.com>)
+ id 1wHlBQ-0001uX-8S
+ for qemu-trivial@nongnu.org; Tue, 28 Apr 2026 12:21:12 -0400
 Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wHf6r-0006fc-IJ
- for qemu-trivial@nongnu.org; Tue, 28 Apr 2026 05:52:06 -0400
+ (Exim 4.90_1) (envelope-from <luc.fast2004@gmail.com>)
+ id 1wHlBO-0006yj-Kj
+ for qemu-trivial@nongnu.org; Tue, 28 Apr 2026 12:21:12 -0400
 Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-651bf695701so9830102d50.2
- for <qemu-trivial@nongnu.org>; Tue, 28 Apr 2026 02:52:05 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777369924; cv=none;
- d=google.com; s=arc-20240605;
- b=GbLTIN3rNkLgBBrIIv8UHLBFaFVz4Tzu/wwKLigYXKLwN50do5hFpqVNpQMX6QVqNS
- PuwDyhbBo6ZQ1Cosda2wdLEghtbzFipF6Ecq/W3JUesu6oxt1ln2DPx2fuB1Q+0nbSQm
- b7Mh2dkC81rOevhkkWO1f8qEMPI4ZayTYvWNhtEhM5mhVWhw+gyHN2nQPdiCNh/OKoeI
- JYKu8uDfKSwNk/0O6SzFUkQ/TMbUqsEpaFWm4la2CZDKhWIYX+Naxz0S6XAD4vntdzuM
- 0hsy74pTHNOEAcB/ddklQiVxqSisOAPADxfib2e+AZIbe7b5x+0c2kS0SgtC0dCupjqP
- Gm0Q==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=Jf83sOe0igZW+OLTsh7KdIXlnA6gpK2sB4ZNna8MjBY=;
- fh=WwGPytxr2CQZF1/ep4rE9GqfOrwzX2MwFv4eC8jyfw0=;
- b=SgW8EHyu1g102LTJnWMZWscpUB/EDrjceGEJhExxtIR0WOacAJY2KVVksb8K67R734
- THgh5/5XA7GaUmSPMAwZd3n35VIfpZzvZGOxKnIp1txJZKrvfJjYGCxxzKXSx0jWLK9K
- LxOC1h+GclU+JWpDKI92OSn5XAvbESuMiMLX/QpFKArzGL6+/NK8ihRChEnbVyQakhHi
- GbSNWhsU8OxJ1prp5llJYYRnuyhIEALUQBGATWFQxM2cPogjxKG9iH27zDWTG9FYY7RE
- etUhsXrQ+gFCttS6odVrilIbfGm7vz9tJysdLdxw0gSmrL2VWjk94N9qJKMWDAQv0w25
- hw/w==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ 956f58d0204a3-651c5d525f6so10630464d50.3
+ for <qemu-trivial@nongnu.org>; Tue, 28 Apr 2026 09:21:10 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777369924; x=1777974724; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=Jf83sOe0igZW+OLTsh7KdIXlnA6gpK2sB4ZNna8MjBY=;
- b=EKJB1l9KO+snjTd6eRM/5DLCoW7svOqmKFJUIC8RG4AyjKqw/0SweiDudlOJXkt1kV
- Y3VLt8H5Kx5stU5kIoY8rTik8cVgbKmXINfNAEfAJBCdfX2/weU1GvlOtJITJCT7y9q1
- 40AUlcKnH7GbELi/5qHumJ+hGlPYgcPYG86B8JgjrmETbZnot9yzqT2Q7jMzu917U8UX
- qcaZ1S8flY6JBu/EeiGJoEHC/szFtnTd5OJvleUGbfaDBzlDMzJvCfiXu7BBQRYTZ1QQ
- utKWu33KEssOvhhcQHbS9WvUTdUrRvST5aOSV4njDMDAlt4xeWXxeRO56i1K0f1oGNop
- yyjw==
+ d=gmail.com; s=20251104; t=1777393269; x=1777998069; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=CKPpYdl5J5ki2kTMbn/T2wAohH8knYa1gzHgRuUyn5U=;
+ b=dDl/hCH3lVZehl9+AgDCuBd5kR9NTcYRTqtMS0sc8hYrYwt7j+qLsts6miZ/OEwCSe
+ RRb6B/3aR7q9rkk6qx9HdX5Hze0TqLdWdzcX8kltCB3hnz+0HApml7LOCISsjc9ONZzA
+ jx2VKY59Yt+vHQ8vpxGR1uEjWbHUWMPdxIx6oo1KXF7KrZn8eljkHtZb4hDvc+Re506W
+ ljHgLk1id7k1TGsBF61dSzXx3j+prm96B59Ipp8ZU7B3oWXhzRvOsGHaGWJ8UEMMpGLn
+ GGYgLQfaK2FGoaCZYmfTBafUQ0k57nJiIgNi5jfKNg2B02dg7RSibo44TrnudPxNUFxl
+ fh/Q==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777369924; x=1777974724;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1777393269; x=1777998069;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=Jf83sOe0igZW+OLTsh7KdIXlnA6gpK2sB4ZNna8MjBY=;
- b=p/GA5Veyd7OLmQ/itJaD59GcY9a9zgtARwst6LRuOYixcbpHlQ3ZyfFjB1QDbeufA7
- Mb9Ja+4HeTKDQUoTBpATqUEWYzmnIfUkGmPoa28fDmhPDTKDkCbj26jXR1ynpWfmUbCs
- vjb1OWk7CWu+NEIKiJODoWHIPAo+fVo6EENf3RmURVlBNhIgy1htpwLAX9v0LJTU4ycA
- xCgwUWTgH7QoBSZpFhNflCStjAdG9r70GZVbBkKQ6xtTGqu8WjMsOeku6Xva9pGT1Rnh
- w5dGGbhl6skNX3rLWlEX8NlNZqUL8dakc8+FQDIM99vgdK4gQVtO5tI1faCCkd/N90hr
- CUhg==
+ bh=CKPpYdl5J5ki2kTMbn/T2wAohH8knYa1gzHgRuUyn5U=;
+ b=NZGRIhuU9VN9OJIKEVw+UepKCXHfhQ6Abl94npatdHY4hp6ml/ySqGZtNaW7xvyaHI
+ LoVqm9OK7XegPMh5STOU2JPFce8t0Ypg+0PYizQN2EVaYfdkJ5VNP6d5O9ggegN6y/4w
+ TqD6M+kwOrv/9VR6bMlTeLLRC4f3llC3+MzqVcLOhST/867LiD4npPLM82mVItn2daBf
+ 4tIUfXk/ytjhRDywnhJQM3bPWzTEj6UbNcdzmtpyQdzraIk7/2FdygGvg8zfRja6ChWq
+ eYzD78Iam1TZcu/dWJa5gpqlKvtzjY0iS285YwsV9oqSKxN6jfvF+KNaqAMvJbRMXtLy
+ Lnow==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/n4GdMaH2dEhbS4Zr29AE9NUMtwZ0pXiuFRavXrxXkonDQsr4op5fyqco261u+u4IgQwooj+s7Tw4bBNw=@nongnu.org
-X-Gm-Message-State: AOJu0YwnhgXkx1MNVK4dveOYpe8FXXNI49CeMX8zbVLId3MZoXNiqIDs
- OmmdxbcduoIfLrlwK+C8DUdBM0lK/1TuQFDWzRBAhHwiIZ1p5V9qfbv7zU7ug4dZ5YgEcIYBJ94
- i/egwD1BPHnG72gxmwqU602v8XMUNe0hfA7SFouNvyg==
-X-Gm-Gg: AeBDiev0CpbINElKY6Mu0jdYUjU4Cr36jyeRIVgfJRWE4oNo5tN/MrW0X+4fBzYkg/P
- RhrXBji7fG+y1hb66F4CVOeDzNKKhlpzhv06qtnOrjY66uNGb0/hKZR1QlxU5qP5D5YrQQV0g7u
- fTi39SLOflnUDS4KIAtEiZV1ROcxqEXZKvLoNEHAZjOnsPsSY5Hc3TrbOzxbye2dWMnEVk/Xa5d
- 1SJTaRXt+ep7XS8xgv0wMeWm9t7Ai5G1Wy0YIA6U38F5OYmWBih5wBEAxeCPbynlfTKFF6XERvJ
- Z1erDd/TVyC5YT1S0LMpx1DRGHQqNuUTJ+1SwYx4L0Njqp48+UVMqYN0bkQv4H+QfF9NL4QnVre
- Giw==
-X-Received: by 2002:a05:690e:4813:b0:654:a4fd:ebfc with SMTP id
- 956f58d0204a3-65beed4b37dmr1477104d50.5.1777369924253; Tue, 28 Apr 2026
- 02:52:04 -0700 (PDT)
+ AFNElJ/erPXVjiwyHU0o0IJwXR/X2mNLLVFSMXZD4X3Nw6PuJmMxrI8pYUbAUEvIhJMhIv3B6fEcYvS8UqzD/NU=@nongnu.org
+X-Gm-Message-State: AOJu0YxJzSHIJuQq4/ha4UqAcRFRhLak5HzIrfk6embsKLYdpjftyUu5
+ zyfXoKC3eMpuNpYlGHrMh5LtlK1EOh68i5asQB/sQn9gTkcT8Fn5N583
+X-Gm-Gg: AeBDietmLNBGIpwZczsr6kgQ03xjIhCcP0nKZd8gUwZI4o4TECicUXl0cK3GvfV5B+6
+ BM9mXxcHVUyxBGiN52knZ0d9s1K/KvKlXzlkmLvjd5VAh4c66WgGfgZdmusuf0Ndot+srK/ujSr
+ msM68NDvrFYsmGKBrt0hMgV9NvjHDLyrz+GpCuS7PgQ8vWDYAMJSbwRxCK3lwMXttTJS3NpVsF2
+ l0OvihE9V6mEH1/dJU9ZbqEjJjqLR0DKMZCQh+wPEMszOBu6dModpGlJJbMB6jw7VTWT/vJEkA2
+ AbrhBexXPGybcKJBv1V5sPjGWlEhrDJ6YMCnOqDc/ChcxGcD7oyqQ+w+er3/PplALtAUvs2b+Gj
+ lOMi58BEZQALSVTh4J5T1ZhDcdpJS1HcVyeKgiuwF9C0d3M49dL4jFpHhfdMyKQz6l4Qi4EMErD
+ qIHVb5pSxEw0MfX0BaRACSYTNmE+czUgUIlIF1pdafUIsflbPqpGTr1bHe
+X-Received: by 2002:a53:de0f:0:b0:652:ec6c:e2ea with SMTP id
+ 956f58d0204a3-65bfb7051f4mr306082d50.50.1777393269452; 
+ Tue, 28 Apr 2026 09:21:09 -0700 (PDT)
+Received: from lucas-Vivobook-S14.ufscar.br
+ ([2801:b0:20:59:e35a:fdf0:bf7c:590a])
+ by smtp.gmail.com with ESMTPSA id
+ 956f58d0204a3-65bee29f1b4sm2099215d50.5.2026.04.28.09.21.06
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 28 Apr 2026 09:21:09 -0700 (PDT)
+From: Lucas Cardoso <luc.fast2004@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: kraxel@redhat.com, qemu-trivial@nongnu.org, marcandre.lureau@redhat.com,
+ Lucas Cardoso <luc.fast2004@gmail.com>
+Subject: [PATCH v2] hw/audio/fmopl.c: Convert malloc, free to g_malloc0,
+ g_new and g_free
+Date: Tue, 28 Apr 2026 13:20:48 -0300
+Message-ID: <20260428162048.2995097-1-luc.fast2004@gmail.com>
+X-Mailer: git-send-email 2.51.0
 MIME-Version: 1.0
-References: <20260308203516.160103-1-shentey@gmail.com>
- <20260308203516.160103-4-shentey@gmail.com>
-In-Reply-To: <20260308203516.160103-4-shentey@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 28 Apr 2026 10:51:53 +0100
-X-Gm-Features: AVHnY4LN6oyQ5hgpGpRcO4ZdokEuLd-PlagZ965MDMbtumluQ7kS8dcp9G1gEZw
-Message-ID: <CAFEAcA_BFzFSOrXB9DorTftGYVmvP7gB8_+14fpwGEC6vasAeA@mail.gmail.com>
-Subject: Re: [PATCH 3/5] hw/arm/imx8mp-evk: Fix reference count of SoC object
-To: Bernhard Beschow <shentey@gmail.com>
-Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>, 
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, 
- qemu-arm@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb136.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ envelope-from=luc.fast2004@gmail.com; helo=mail-yx1-xb136.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -122,42 +103,99 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Sun, 8 Mar 2026 at 20:35, Bernhard Beschow <shentey@gmail.com> wrote:
->
-> object_new() leaves a reference count of one, and object_property_add_child()
-> then leaves it at two. This would leak the SoC object if the machine object was
-> destroyed since the machine is the SoC's sole owner. Fix this by converting to
-> object_new_with_props() which gets the parenting and reference count right in
-> one go.
->
-> Fixes: a4eefc69b237 ("hw/arm: Add i.MX 8M Plus EVK board")
-> cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>
-> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
-> ---
->  hw/arm/imx8mp-evk.c | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
-> index b84ac91a17..cfc3038c36 100644
-> --- a/hw/arm/imx8mp-evk.c
-> +++ b/hw/arm/imx8mp-evk.c
-> @@ -74,8 +74,8 @@ static void imx8mp_evk_init(MachineState *machine)
->          .modify_dtb = imx8mp_evk_modify_dtb,
->      };
->
-> -    s = FSL_IMX8MP(object_new(TYPE_FSL_IMX8MP));
-> -    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
-> +    s = FSL_IMX8MP(object_new_with_props(TYPE_FSL_IMX8MP, OBJECT(machine),
-> +                                         "soc", &error_fatal, NULL));
->      object_property_set_uint(OBJECT(s), "fec1-phy-num", 1, &error_fatal);
->      sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
+In accordance with QEMU's coding style guidelines, replace raw memory
+allocation functions (malloc/free) with their GLib equivalents
+(g_new/g_malloc0/g_free/g_clear_pointer).
 
-There are more boards doing this as object_new / add_child / unref
-than with object_new_with_props(), but doing it in one call seems
-better than three.
+Also removes the old generic error-handling code from
+OPLOpenTable(), since the Glib functions abort the program automatically
+if memory is exhausted.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/1798
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+Signed-off-by: Lucas Cardoso <luc.fast2004@gmail.com>
+---
+v2: 
+- After some studying, I decided to follow Marc-André's feedback to use g_clear_pointer() instead of g_free(), on the OPLCloseTable function.
+ hw/audio/fmopl.c | 43 ++++++++++++-------------------------------
+ 1 file changed, 12 insertions(+), 31 deletions(-)
 
-thanks
--- PMM
+diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
+index a63ad0f04d..91fe806fd6 100644
+--- a/hw/audio/fmopl.c
++++ b/hw/audio/fmopl.c
+@@ -607,26 +607,10 @@ static int OPLOpenTable( void )
+ 	double pom;
+ 
+ 	/* allocate dynamic tables */
+-	if( (TL_TABLE = malloc(TL_MAX*2*sizeof(int32_t))) == NULL)
+-		return 0;
+-	if( (SIN_TABLE = malloc(SIN_ENT*4 *sizeof(int32_t *))) == NULL)
+-	{
+-		free(TL_TABLE);
+-		return 0;
+-	}
+-	if( (AMS_TABLE = malloc(AMS_ENT*2 *sizeof(int32_t))) == NULL)
+-	{
+-		free(TL_TABLE);
+-		free(SIN_TABLE);
+-		return 0;
+-	}
+-	if( (VIB_TABLE = malloc(VIB_ENT*2 *sizeof(int32_t))) == NULL)
+-	{
+-		free(TL_TABLE);
+-		free(SIN_TABLE);
+-		free(AMS_TABLE);
+-		return 0;
+-	}
++    TL_TABLE = g_new(int32_t, TL_MAX * 2);
++    SIN_TABLE = g_new(int32_t *, SIN_ENT * 4);
++    AMS_TABLE = g_new(int32_t, AMS_ENT * 2);
++    VIB_TABLE = g_new(int32_t, VIB_ENT * 2);
+     ENV_CURVE = g_new(int32_t, 2 * EG_ENT + 1);
+ 	/* make total level table */
+ 	for (t = 0;t < EG_ENT-1 ;t++){
+@@ -695,11 +679,11 @@ static int OPLOpenTable( void )
+ 
+ static void OPLCloseTable( void )
+ {
+-    g_free(ENV_CURVE);
+-	free(TL_TABLE);
+-	free(SIN_TABLE);
+-	free(AMS_TABLE);
+-	free(VIB_TABLE);
++    g_clear_pointer(&ENV_CURVE, g_free);
++    g_clear_pointer(&TL_TABLE, g_free);
++    g_clear_pointer(&SIN_TABLE, g_free);
++    g_clear_pointer(&AMS_TABLE, g_free);
++    g_clear_pointer(&VIB_TABLE, g_free);
+ }
+ 
+ /* CSM Key Control */
+@@ -1081,11 +1065,8 @@ FM_OPL *OPLCreate(int clock, int rate)
+ 	/* allocate OPL state space */
+ 	state_size  = sizeof(FM_OPL);
+ 	state_size += sizeof(OPL_CH)*max_ch;
+-	/* allocate memory block */
+-	ptr = malloc(state_size);
+-	if(ptr==NULL) return NULL;
+-	/* clear */
+-	memset(ptr,0,state_size);
++    /* allocate memory block and zero-initialize */
++    ptr = g_malloc0(state_size);
+ 	OPL        = (FM_OPL *)ptr; ptr+=sizeof(FM_OPL);
+ 	OPL->P_CH  = (OPL_CH *)ptr; ptr+=sizeof(OPL_CH)*max_ch;
+ 	/* set channel state pointer */
+@@ -1128,7 +1109,7 @@ void OPLDestroy(FM_OPL *OPL)
+ 	}
+ #endif
+ 	OPL_UnLockTable();
+-	free(OPL);
++    g_free(OPL);
+ }
+ 
+ /* ----------  Option handlers ----------       */
+-- 
+2.51.0
+
 
