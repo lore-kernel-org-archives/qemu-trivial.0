@@ -4,90 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17F4EFF886D
-	for <qemu-trivial@archiver.kernel.org>; Tue, 28 Apr 2026 16:21:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id BCA0AFF885A
+	for <qemu-trivial@archiver.kernel.org>; Tue, 28 Apr 2026 16:37:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wHlBR-0001uu-0C; Tue, 28 Apr 2026 12:21:13 -0400
+	id 1wHlR2-0004xi-GW; Tue, 28 Apr 2026 12:37:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <luc.fast2004@gmail.com>)
- id 1wHlBQ-0001uX-8S
- for qemu-trivial@nongnu.org; Tue, 28 Apr 2026 12:21:12 -0400
-Received: from mail-yx1-xb136.google.com ([2607:f8b0:4864:20::b136])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <luc.fast2004@gmail.com>)
- id 1wHlBO-0006yj-Kj
- for qemu-trivial@nongnu.org; Tue, 28 Apr 2026 12:21:12 -0400
-Received: by mail-yx1-xb136.google.com with SMTP id
- 956f58d0204a3-651c5d525f6so10630464d50.3
- for <qemu-trivial@nongnu.org>; Tue, 28 Apr 2026 09:21:10 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1777393269; x=1777998069; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=CKPpYdl5J5ki2kTMbn/T2wAohH8knYa1gzHgRuUyn5U=;
- b=dDl/hCH3lVZehl9+AgDCuBd5kR9NTcYRTqtMS0sc8hYrYwt7j+qLsts6miZ/OEwCSe
- RRb6B/3aR7q9rkk6qx9HdX5Hze0TqLdWdzcX8kltCB3hnz+0HApml7LOCISsjc9ONZzA
- jx2VKY59Yt+vHQ8vpxGR1uEjWbHUWMPdxIx6oo1KXF7KrZn8eljkHtZb4hDvc+Re506W
- ljHgLk1id7k1TGsBF61dSzXx3j+prm96B59Ipp8ZU7B3oWXhzRvOsGHaGWJ8UEMMpGLn
- GGYgLQfaK2FGoaCZYmfTBafUQ0k57nJiIgNi5jfKNg2B02dg7RSibo44TrnudPxNUFxl
- fh/Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777393269; x=1777998069;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=CKPpYdl5J5ki2kTMbn/T2wAohH8knYa1gzHgRuUyn5U=;
- b=NZGRIhuU9VN9OJIKEVw+UepKCXHfhQ6Abl94npatdHY4hp6ml/ySqGZtNaW7xvyaHI
- LoVqm9OK7XegPMh5STOU2JPFce8t0Ypg+0PYizQN2EVaYfdkJ5VNP6d5O9ggegN6y/4w
- TqD6M+kwOrv/9VR6bMlTeLLRC4f3llC3+MzqVcLOhST/867LiD4npPLM82mVItn2daBf
- 4tIUfXk/ytjhRDywnhJQM3bPWzTEj6UbNcdzmtpyQdzraIk7/2FdygGvg8zfRja6ChWq
- eYzD78Iam1TZcu/dWJa5gpqlKvtzjY0iS285YwsV9oqSKxN6jfvF+KNaqAMvJbRMXtLy
- Lnow==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/erPXVjiwyHU0o0IJwXR/X2mNLLVFSMXZD4X3Nw6PuJmMxrI8pYUbAUEvIhJMhIv3B6fEcYvS8UqzD/NU=@nongnu.org
-X-Gm-Message-State: AOJu0YxJzSHIJuQq4/ha4UqAcRFRhLak5HzIrfk6embsKLYdpjftyUu5
- zyfXoKC3eMpuNpYlGHrMh5LtlK1EOh68i5asQB/sQn9gTkcT8Fn5N583
-X-Gm-Gg: AeBDietmLNBGIpwZczsr6kgQ03xjIhCcP0nKZd8gUwZI4o4TECicUXl0cK3GvfV5B+6
- BM9mXxcHVUyxBGiN52knZ0d9s1K/KvKlXzlkmLvjd5VAh4c66WgGfgZdmusuf0Ndot+srK/ujSr
- msM68NDvrFYsmGKBrt0hMgV9NvjHDLyrz+GpCuS7PgQ8vWDYAMJSbwRxCK3lwMXttTJS3NpVsF2
- l0OvihE9V6mEH1/dJU9ZbqEjJjqLR0DKMZCQh+wPEMszOBu6dModpGlJJbMB6jw7VTWT/vJEkA2
- AbrhBexXPGybcKJBv1V5sPjGWlEhrDJ6YMCnOqDc/ChcxGcD7oyqQ+w+er3/PplALtAUvs2b+Gj
- lOMi58BEZQALSVTh4J5T1ZhDcdpJS1HcVyeKgiuwF9C0d3M49dL4jFpHhfdMyKQz6l4Qi4EMErD
- qIHVb5pSxEw0MfX0BaRACSYTNmE+czUgUIlIF1pdafUIsflbPqpGTr1bHe
-X-Received: by 2002:a53:de0f:0:b0:652:ec6c:e2ea with SMTP id
- 956f58d0204a3-65bfb7051f4mr306082d50.50.1777393269452; 
- Tue, 28 Apr 2026 09:21:09 -0700 (PDT)
-Received: from lucas-Vivobook-S14.ufscar.br
- ([2801:b0:20:59:e35a:fdf0:bf7c:590a])
- by smtp.gmail.com with ESMTPSA id
- 956f58d0204a3-65bee29f1b4sm2099215d50.5.2026.04.28.09.21.06
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 28 Apr 2026 09:21:09 -0700 (PDT)
-From: Lucas Cardoso <luc.fast2004@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: kraxel@redhat.com, qemu-trivial@nongnu.org, marcandre.lureau@redhat.com,
- Lucas Cardoso <luc.fast2004@gmail.com>
-Subject: [PATCH v2] hw/audio/fmopl.c: Convert malloc, free to g_malloc0,
- g_new and g_free
-Date: Tue, 28 Apr 2026 13:20:48 -0300
-Message-ID: <20260428162048.2995097-1-luc.fast2004@gmail.com>
-X-Mailer: git-send-email 2.51.0
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wHlR0-0004xJ-Rp
+ for qemu-trivial@nongnu.org; Tue, 28 Apr 2026 12:37:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wHlQx-0002NP-H9
+ for qemu-trivial@nongnu.org; Tue, 28 Apr 2026 12:37:17 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1777394233;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=Kj25SlUsmmALKk+qbpeQMijTUk7XTBdfa7B7QV3dyMk=;
+ b=P3uk51kfFctOz1s9Oia3KJxpj4nqFPGxFuP3QIzXDV1gu2dftgFgsVElud/mrlxwL9vsNo
+ oTQlgHccA66Spx/FigziHmHiqKcnUMHNFzFgN/z17MT5sRs62iGSrvf3wvmnFgnQNNnJzI
+ YFt1PODhi2gCR7EgsBPKU7sGQHrv7jw=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-470-P8OMpp1lOviOWtNdeS59gA-1; Tue,
+ 28 Apr 2026 12:37:10 -0400
+X-MC-Unique: P8OMpp1lOviOWtNdeS59gA-1
+X-Mimecast-MFC-AGG-ID: P8OMpp1lOviOWtNdeS59gA_1777394228
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6893F195609E; Tue, 28 Apr 2026 16:37:08 +0000 (UTC)
+Received: from thuth-p1g4.redhat.com (unknown [10.44.32.74])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 59B22300756E; Tue, 28 Apr 2026 16:37:04 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Alex Williamson <alex@shazbot.org>, Tomita Moeko <tomitamoeko@gmail.com>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] hw/vfio: Drop superfluous inclusion of hw-error.h
+Date: Tue, 28 Apr 2026 18:37:02 +0200
+Message-ID: <20260428163702.3224323-1-thuth@redhat.com>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: f6zYnhIil6ZYHGtRLnDxvDQw_VDOv6SXxkz9uFxB0is_1777394228
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b136;
- envelope-from=luc.fast2004@gmail.com; helo=mail-yx1-xb136.google.com
-X-Spam_score_int: -17
-X-Spam_score: -1.8
-X-Spam_bar: -
-X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -21
+X-Spam_score: -2.2
+X-Spam_bar: --
+X-Spam_report: (-2.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.109,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -103,99 +82,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-In accordance with QEMU's coding style guidelines, replace raw memory
-allocation functions (malloc/free) with their GLib equivalents
-(g_new/g_malloc0/g_free/g_clear_pointer).
+From: Thomas Huth <thuth@redhat.com>
 
-Also removes the old generic error-handling code from
-OPLOpenTable(), since the Glib functions abort the program automatically
-if memory is exhausted.
+None of these files use the hw_error() function, so there is no
+need to include hw-error.h here.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/1798
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Signed-off-by: Lucas Cardoso <luc.fast2004@gmail.com>
+Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
-v2: 
-- After some studying, I decided to follow Marc-André's feedback to use g_clear_pointer() instead of g_free(), on the OPLCloseTable function.
- hw/audio/fmopl.c | 43 ++++++++++++-------------------------------
- 1 file changed, 12 insertions(+), 31 deletions(-)
+ hw/vfio/device.c      | 1 -
+ hw/vfio/helpers.c     | 1 -
+ hw/vfio/igd.c         | 1 -
+ hw/vfio/kvm-helpers.c | 1 -
+ 4 files changed, 4 deletions(-)
 
-diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
-index a63ad0f04d..91fe806fd6 100644
---- a/hw/audio/fmopl.c
-+++ b/hw/audio/fmopl.c
-@@ -607,26 +607,10 @@ static int OPLOpenTable( void )
- 	double pom;
+diff --git a/hw/vfio/device.c b/hw/vfio/device.c
+index 3ffd69a579b..ccf14743e95 100644
+--- a/hw/vfio/device.c
++++ b/hw/vfio/device.c
+@@ -24,7 +24,6 @@
+ #include "hw/vfio/vfio-device.h"
+ #include "hw/vfio/pci.h"
+ #include "hw/core/iommu.h"
+-#include "hw/core/hw-error.h"
+ #include "trace.h"
+ #include "qapi/error.h"
+ #include "qemu/error-report.h"
+diff --git a/hw/vfio/helpers.c b/hw/vfio/helpers.c
+index 65c6dba0428..c719864b92f 100644
+--- a/hw/vfio/helpers.c
++++ b/hw/vfio/helpers.c
+@@ -24,7 +24,6 @@
  
- 	/* allocate dynamic tables */
--	if( (TL_TABLE = malloc(TL_MAX*2*sizeof(int32_t))) == NULL)
--		return 0;
--	if( (SIN_TABLE = malloc(SIN_ENT*4 *sizeof(int32_t *))) == NULL)
--	{
--		free(TL_TABLE);
--		return 0;
--	}
--	if( (AMS_TABLE = malloc(AMS_ENT*2 *sizeof(int32_t))) == NULL)
--	{
--		free(TL_TABLE);
--		free(SIN_TABLE);
--		return 0;
--	}
--	if( (VIB_TABLE = malloc(VIB_ENT*2 *sizeof(int32_t))) == NULL)
--	{
--		free(TL_TABLE);
--		free(SIN_TABLE);
--		free(AMS_TABLE);
--		return 0;
--	}
-+    TL_TABLE = g_new(int32_t, TL_MAX * 2);
-+    SIN_TABLE = g_new(int32_t *, SIN_ENT * 4);
-+    AMS_TABLE = g_new(int32_t, AMS_ENT * 2);
-+    VIB_TABLE = g_new(int32_t, VIB_ENT * 2);
-     ENV_CURVE = g_new(int32_t, 2 * EG_ENT + 1);
- 	/* make total level table */
- 	for (t = 0;t < EG_ENT-1 ;t++){
-@@ -695,11 +679,11 @@ static int OPLOpenTable( void )
+ #include "exec/cpu-common.h"
+ #include "hw/vfio/vfio-device.h"
+-#include "hw/core/hw-error.h"
+ #include "qapi/error.h"
+ #include "vfio-helpers.h"
  
- static void OPLCloseTable( void )
- {
--    g_free(ENV_CURVE);
--	free(TL_TABLE);
--	free(SIN_TABLE);
--	free(AMS_TABLE);
--	free(VIB_TABLE);
-+    g_clear_pointer(&ENV_CURVE, g_free);
-+    g_clear_pointer(&TL_TABLE, g_free);
-+    g_clear_pointer(&SIN_TABLE, g_free);
-+    g_clear_pointer(&AMS_TABLE, g_free);
-+    g_clear_pointer(&VIB_TABLE, g_free);
- }
+diff --git a/hw/vfio/igd.c b/hw/vfio/igd.c
+index 6aacf27284f..e091f21b6a3 100644
+--- a/hw/vfio/igd.c
++++ b/hw/vfio/igd.c
+@@ -16,7 +16,6 @@
+ #include "qapi/error.h"
+ #include "qapi/qmp/qerror.h"
+ #include "hw/core/boards.h"
+-#include "hw/core/hw-error.h"
+ #include "hw/nvram/fw_cfg.h"
+ #include "pci.h"
+ #include "pci-quirks.h"
+diff --git a/hw/vfio/kvm-helpers.c b/hw/vfio/kvm-helpers.c
+index d71c9590aaa..5e73dddc418 100644
+--- a/hw/vfio/kvm-helpers.c
++++ b/hw/vfio/kvm-helpers.c
+@@ -25,7 +25,6 @@
+ #include "system/kvm.h"
+ #include "exec/cpu-common.h"
+ #include "hw/vfio/vfio-device.h"
+-#include "hw/core/hw-error.h"
+ #include "qapi/error.h"
+ #include "vfio-helpers.h"
  
- /* CSM Key Control */
-@@ -1081,11 +1065,8 @@ FM_OPL *OPLCreate(int clock, int rate)
- 	/* allocate OPL state space */
- 	state_size  = sizeof(FM_OPL);
- 	state_size += sizeof(OPL_CH)*max_ch;
--	/* allocate memory block */
--	ptr = malloc(state_size);
--	if(ptr==NULL) return NULL;
--	/* clear */
--	memset(ptr,0,state_size);
-+    /* allocate memory block and zero-initialize */
-+    ptr = g_malloc0(state_size);
- 	OPL        = (FM_OPL *)ptr; ptr+=sizeof(FM_OPL);
- 	OPL->P_CH  = (OPL_CH *)ptr; ptr+=sizeof(OPL_CH)*max_ch;
- 	/* set channel state pointer */
-@@ -1128,7 +1109,7 @@ void OPLDestroy(FM_OPL *OPL)
- 	}
- #endif
- 	OPL_UnLockTable();
--	free(OPL);
-+    g_free(OPL);
- }
- 
- /* ----------  Option handlers ----------       */
 -- 
-2.51.0
+2.53.0
 
 
