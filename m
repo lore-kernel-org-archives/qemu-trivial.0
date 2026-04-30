@@ -4,143 +4,107 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E438FF886F
-	for <qemu-trivial@archiver.kernel.org>; Thu, 30 Apr 2026 09:51:02 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32BB7FF8875
+	for <qemu-trivial@archiver.kernel.org>; Thu, 30 Apr 2026 10:43:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wIO2h-00055C-NN; Thu, 30 Apr 2026 05:50:47 -0400
+	id 1wIOrC-0007NG-Iu; Thu, 30 Apr 2026 06:42:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wIO2d-00054B-PU
- for qemu-trivial@nongnu.org; Thu, 30 Apr 2026 05:50:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wIO2S-0007hY-MX
- for qemu-trivial@nongnu.org; Thu, 30 Apr 2026 05:50:37 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1777542627;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=MDnV0AY4VlGUr+gAszDJ3VsPdCUUQsGfr2dowpSPiYo=;
- b=chKQP5EJW3L24cQ8I8Had3O1ugpKhxvKxjABK7+ICE17V7TBzbNfiuscykaWAX2IkXYBwx
- 3TQ83U5Sn2dG7esmRua9h8+50qwfTDG4kU5145kNptC1q3sCsP4DBg0raHXKGuB66WeWHI
- RdjR0c8gttPRYE+gdkf2otqUQzIm6j0=
-Received: from mail-qv1-f70.google.com (mail-qv1-f70.google.com
- [209.85.219.70]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-29-RgqiCnHMPySfmMj0RS3VDw-1; Thu, 30 Apr 2026 05:50:25 -0400
-X-MC-Unique: RgqiCnHMPySfmMj0RS3VDw-1
-X-Mimecast-MFC-AGG-ID: RgqiCnHMPySfmMj0RS3VDw_1777542625
-Received: by mail-qv1-f70.google.com with SMTP id
- 6a1803df08f44-8a5f6110c1cso18742426d6.0
- for <qemu-trivial@nongnu.org>; Thu, 30 Apr 2026 02:50:25 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wIOrA-0007Lc-2A
+ for qemu-trivial@nongnu.org; Thu, 30 Apr 2026 06:42:56 -0400
+Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wIOr7-0004z5-Cw
+ for qemu-trivial@nongnu.org; Thu, 30 Apr 2026 06:42:55 -0400
+Received: by mail-yx1-xb12c.google.com with SMTP id
+ 956f58d0204a3-6563f83ae9fso831059d50.1
+ for <qemu-trivial@nongnu.org>; Thu, 30 Apr 2026 03:42:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777545772; cv=none;
+ d=google.com; s=arc-20240605;
+ b=Z6EPTP/aDHEAKBskudvuq4ovY85i/eOnArlH1HtCaMjtvCjXEthCK7e8yPBaN+Whk7
+ EaylRDv299+nixvKaqfOXG/jOzLxAYzPP3D7ugcdSPPk1ypCzPndjBqNbgubrS+YSk2W
+ Q/Sh5sILOo7o2Kbbs8lp7BCDHPCmDKQc+JFkIwMMTEqoVaTGwvBf5RMksocg+cp04hej
+ S224T9qiYJLx9B3psyk4KObXBwzDt/+HD9dzZ+AHI07YDeXzD+IcwMGPRZVRdGLCWFt5
+ GyUy6xSeWTmpm6UBhhHyz2gAfhmneFQgwVZnmYy2a0gQb/YqI8QgIBpBuLNLUzhgEqJM
+ sW0Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=2g0y1nWNZc+AxGadVPMcazKrF3IG5aUDZC2BcCua7G8=;
+ fh=A1AcCLu906gABPRANV1KdiAXTF/dNQlDRgWmUhsu/DA=;
+ b=h2/VBrBR+vxqOhq+hKw1LLqdMnjKfNibSW4zfmk1bYZieaRhMReWgwRZS7S6iAjPRF
+ hd4YoawEwfuj5TOp/HayyXHN1ZtTAp2nXBWzmv/uV0oPcKQcsvmzYzE4Dx2rAKUveOhv
+ TxwqhTuuJ9Q7iFR9d5rYv551qoTTEZOMuaI5wamau1rq37Yrnd7mMhCxiZY4AqHPr+K0
+ 8XTgrJh7N2izdfKguxIOF58Kd+3yFdbTbKdgJga0PQF8b6UcrdiWOJWaDCa56+O3rJAp
+ NBM9tdF/l1FqQVSWGyGGLTTja7Aw1/iQZyTqTYIeYSER30aAeJ0St/IqYKhn32u1bKQa
+ NZuA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1777545772; x=1778150572; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=2g0y1nWNZc+AxGadVPMcazKrF3IG5aUDZC2BcCua7G8=;
+ b=u2CXR4cBppGDhrV2A68ihgDWzSPPtclXe/tzhEm/X9Cbw74n7Q2A5MLTB3GXN7eEZV
+ kShllx9KuR5JPMGhAuq73WQsvacYgCY5JJRsVcl+LH75KMuMMkrsZ0ZvS6dSp9ZWURTJ
+ H2Hdx/nViUZp3vFShu//T71zWpWjOp8cUhkH4maciR5+s1lOwKLSzq+ehR4La3PiwcrC
+ vYpJXtiUI8LjvcRwcDVU5dMo1wwm1Bryf4faJXbLBjSdAdI15e4VFTdpD+kMYqXgPBQv
+ vltiKxr1vbeBPAyZ9s+BWdiNQVBAK0Nwqj1mzJ8pjlMnGKPHS/SCzWaQ7xMmWC3bx38x
+ 5Z1g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777542624; x=1778147424;
- h=content-transfer-encoding:in-reply-to:autocrypt:content-language
- :references:cc:to:from:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1777545772; x=1778150572;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=MDnV0AY4VlGUr+gAszDJ3VsPdCUUQsGfr2dowpSPiYo=;
- b=RlixL3w12Wmho2VMBU1e6inCrymq/hjWI5yj3hwXQ1UNan4n+SyAZ1aqWQ8jUqfLwM
- g4d1blx6Ph6RSDsRl8+gdFwX5DmoyOwZTexW5blyahYM3RVN9fcoZCNGTTJePOvqpWO4
- eVVMmxE/PchTgycKU1B8zQTfmxYeIdQ8vw4Y7fm9QS8zAUVa5Szx67YxF5RusuRUGuHS
- b1wQvpUFRVCbhDi4lfC3R7kBOW1d5q4sCsaEEkxomGFQGTEsMK3GZgJ2sOXIeavEVHJe
- sQ1mWvn/Y9/PGBTNaB5akurp3j0VIEU5VRu5yYlSiEQl5bOXQNmGZ0o1JaHyBmpzUKxw
- uffA==
+ bh=2g0y1nWNZc+AxGadVPMcazKrF3IG5aUDZC2BcCua7G8=;
+ b=SIInvHCj1LtXVpPpuwX0Pyd3QWuZ7knUMPvk5NWGqe3OIl/Sjo7e5kW5qHQRlTS2r0
+ Nxc9fd2g9yAzxgK99hpm6HSFmaj5AkP6CR7HhajvBVC0v6uTGRxsj7DYAJ2P6vvzueau
+ dzXkwCqPc+RdEd7IbicAT9cQ0fVfgoQ8be5MDp1BLgqFR5U7ZDIsau/6BUDib9tSV1MW
+ 6zqn1quazzJC/aSTi0S9OQkmwXmux/zeQPuaGUsKruBQEaw3IR1fI30wgn//C1ELRY2Q
+ D5Yv22JiDbOavGGNiYbi7MWuWvdvB2nDkPT5N+AW2aw/KWBv3VS1LVpLIlD2fjkkM/CM
+ pvBQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ98OinsB6k0WIcPzJpW+GtZ3j1XvxdK62fPhCvJsHYcYHwRY5YHMwtM3xk7UyOWz/s83AgI1Lu9mNyyb04=@nongnu.org
-X-Gm-Message-State: AOJu0Yyt5MhAn1xlYPPZkIgnfA3gpcG7nxT1/YoaBh6mNxfa825RuHOj
- yO6eCTXTs3lKHRj0Rnw1DGNkw+EZbeOpJiiZjrq5zg69AmP78eeONbatoatnw6lliHE+JrTGif9
- joEHNaHOeQO4jtpW+pw0P/DYVyBbCpfG5SJUHeYU+0il92Sh3Jk4cxpJwBrk=
-X-Gm-Gg: AeBDieu1ZsszSsRA1EnwvNK7RpcxghzvbJuCbmpNeXGsTfs3FRWT3iSvrLI8hIkXCfb
- CXjASIwRX+M2vcs7kjAm8lfA989324FYh2I7OE57t56vrqA529QT36szDWo3zwiIzTIgWWTQ9x7
- g9ZGOqZW75XPcp5QPwPYcZT6qc/LdWOLNWj1pmsoGKT6dLV61vEOKNdxE8oq0FzmNNo9qY01cWz
- fiDGCoO7RJ0PI/jy9I4qtSardY95Wy9uVukdhID1WDbQa4HSDwksyFSOOo56xlmLVlyNnppamEH
- OGfCxhxnYYI5zZDH/1YXniuuipSl6AVLQfrzEsA+rZxVB/a1f20zuhQtbLfRLqmvX7gfU4WYSb8
- OrkVAWG9eNrb7tdkP0+rmw6+zJ1m1Qq7UU8fuoXAQRU/QBYJg0h8ZB5cXXQ==
-X-Received: by 2002:a05:6214:3d0b:b0:89c:5110:751a with SMTP id
- 6a1803df08f44-8b3fecf1fbdmr29745616d6.44.1777542624627; 
- Thu, 30 Apr 2026 02:50:24 -0700 (PDT)
-X-Received: by 2002:a05:6214:3d0b:b0:89c:5110:751a with SMTP id
- 6a1803df08f44-8b3fecf1fbdmr29745066d6.44.1777542624093; 
- Thu, 30 Apr 2026 02:50:24 -0700 (PDT)
-Received: from [10.33.192.176] (nat-pool-str-t.redhat.com. [149.14.88.106])
- by smtp.gmail.com with ESMTPSA id
- 6a1803df08f44-8b3ff32ee6asm13743456d6.19.2026.04.30.02.50.22
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 30 Apr 2026 02:50:23 -0700 (PDT)
-Message-ID: <00c4ab4b-a58b-4de4-8e41-566b2cb7f920@redhat.com>
-Date: Thu, 30 Apr 2026 11:50:21 +0200
+ AFNElJ+j0CsiD8S3OX6DL3s0OAPasxaYnhWOsmeNVU1f6nQ0IXLIbUITqRiTHJz0hhoITZzB89xKfgnwE6sz7Rg=@nongnu.org
+X-Gm-Message-State: AOJu0YxO8L004XkGkemREwL4L/GMhjubORttBs/mm54HT1P3Shn8FRAZ
+ OKT5QncR259AtcPxUnS++ECH+j9E1wmABlHLUYzND53ziT+7yCxrnPkftCOGyW8GKVhp/FW5jk9
+ XK80mF80m6hlGYT5RtEFKqfyi4oCA1jwbpmirqAmazw==
+X-Gm-Gg: AeBDieusr7Fa9jccA2Ac/XpcWxLO8jB7l4NvkeZOPrixima3AjmZ+U3ymIOVSwpkOja
+ JUphkueC7a6zencByUX5+YtoMKz95+N7RdTdMi+XfLS5igWaJYqGvB4c1bJgultbjU1bUPYAEwQ
+ t+TQW+XHm/gneECK8H4w3Xmmi1T9mY2WCjhuKZErujyfPVcUAnQJi+/g4LRhH6tajSR5dfw9zMK
+ FwY1ab9wdZ2VDIU1fiZ/U+4H1tfVnsJAtOva1Kwxbgr8vnbdFVseGrMNCBgycT+5Zt6+bKL54X4
+ rZhIWb7ZVWLipEPxUkUanc8NTq9iIi7b8WbTD61oaZe05iu3wa0Tt2hq//vKYMIee1+PbDuWK1V
+ 9LjOwOPzJuq1i
+X-Received: by 2002:a53:d104:0:b0:64e:d610:71cf with SMTP id
+ 956f58d0204a3-65c18fce8afmr1242841d50.58.1777545771829; Thu, 30 Apr 2026
+ 03:42:51 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] hw/sparc64/sun4u: Mark unusable PCI busses as full to
- ease device plugging
-From: Thomas Huth <thuth@redhat.com>
-To: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20260309181452.83702-1-thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
-In-Reply-To: <20260309181452.83702-1-thuth@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: D1jmCqZv5NQV3ESSZ9hlT-FJTAwuRQ3rCicFacnnVxQ_1777542625
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
+References: <20260308203516.160103-1-shentey@gmail.com>
+In-Reply-To: <20260308203516.160103-1-shentey@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Thu, 30 Apr 2026 11:42:40 +0100
+X-Gm-Features: AVHnY4JM2dYns_HE7ObRADh3zyxX8nLpEzAfCcCKftBVuoCubM6J_aRvFr41S54
+Message-ID: <CAFEAcA8DbrVdRQK4Cy8gqU__FXYsTa0nZERqrd4he0Y1WRW7uA@mail.gmail.com>
+Subject: Re: [PATCH 0/5] Trivial cleanup
+To: Bernhard Beschow <shentey@gmail.com>
+Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>, 
+ Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org, 
+ qemu-arm@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,50 +120,43 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 09/03/2026 19.14, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
-> 
-> When trying to plug a PCI device to a Sparc64 machine, you currently
-> have to specify the right bus ("bus=pciB"), otherwise you get this error:
-> 
->   $ qemu-system-sparc64 -device virtio-scsi-pci
->   qemu-system-sparc64: -device virtio-scsi-pci: PCI: no slot/function
->   available for virtio-scsi-pci, all in use or reserved
-> 
-> This is quite annoying for the unexperienced users, and it also breaks
-> e.g. the iotests ("make check-block") when running with qemu-system-sparc64.
-> 
-> Mark the non-usable PCI busses as full now, so that QEMU can automatically
-> plug new PCI devices to the right "pciB" bus.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   v2: Do the change in the machine code, not in the sabre device
-> 
->   hw/sparc64/sun4u.c | 7 +++++++
->   1 file changed, 7 insertions(+)
-> 
-> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
-> index b8bda1eb816..37539535c6c 100644
-> --- a/hw/sparc64/sun4u.c
-> +++ b/hw/sparc64/sun4u.c
-> @@ -723,6 +723,13 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
->       fw_cfg_add_i16(fw_cfg, FW_CFG_SPARC64_DEPTH, graphic_depth);
->   
->       qemu_register_boot_set(fw_cfg_boot_set, fw_cfg);
-> +
-> +    /*
-> +     * Mark internal PCI busses as full so that the plugging of additional
-> +     * PCI devices happens on the right bus that still has free slots:
-> +     */
-> +    qbus_mark_full(&pci_bus->qbus);
-> +    qbus_mark_full(&pci_busA->qbus);
->   }
->   
->   enum {
+On Sun, 8 Mar 2026 at 20:35, Bernhard Beschow <shentey@gmail.com> wrote:
+>
+> This series contains some low-hanging fruit fixes I came up with when
+> investigating Rust for QEMU, especially QOM object lifecycle vs. the Drop trait.
+>
+> I noticed that no finalize methods were called in Rust sysbus devices when QEMU
+> quits, and neither are its C variants. What is probably missing in the first
+> place is a
+>
+>   object_unref(object_get_root());
+>
+> at the end of qemu_cleanup() in runstate.c (see TODO there). Adding it before
+> this series won't clean up machines since their refcount won't reach zero. With
+> this series applied this additional line will cause various issues when quitting
+> QEMU, allowing the problem to be investigated. Fixing it is beyond the scope of
+> this series (and my time budget).
+>
+> Testing done:
+> * `make check`
+> * Run imx8mp-evk with a Buildroot image
+>
+> Bernhard Beschow (5):
+>   hw/arm/fsl-imx8mp: Do not create redundant unimplemented devices
+>   hw/arm/fsl-imx8mp: Fix parent of ocram memory region
+>   hw/arm/imx8mp-evk: Fix reference count of SoC object
+>   system/vl: Fix reference count of machine object
+>   Revert "sysbus: add irq_routing_notifier"
 
-Friendly ping!
+Hi; I've applied patches 1, 2, 3 and 5 to target-arm.next, since
+they're all either arm-specific or the obviously-OK patch that
+deletes the unused connect_irq_notifier method.
 
-  Thomas
+Patch 4 (the system/vl one) I am not applying, because it hasn't been
+reviewed and I don't know enough to know if it's correct or not.
+(My guess is that it is correct.) You might want to repost
+it as a standalone patch to try to get it a bit more attention.
 
+thanks
+-- PMM
 
