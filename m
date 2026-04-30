@@ -4,100 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 32BB7FF8875
-	for <qemu-trivial@archiver.kernel.org>; Thu, 30 Apr 2026 10:43:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EB47FCD13DE
+	for <qemu-trivial@archiver.kernel.org>; Thu, 30 Apr 2026 15:40:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wIOrC-0007NG-Iu; Thu, 30 Apr 2026 06:42:58 -0400
+	id 1wITUo-0005kq-16; Thu, 30 Apr 2026 11:40:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIOrA-0007Lc-2A
- for qemu-trivial@nongnu.org; Thu, 30 Apr 2026 06:42:56 -0400
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ id 1wITUj-0005hp-AR
+ for qemu-trivial@nongnu.org; Thu, 30 Apr 2026 11:40:06 -0400
+Received: from mail-yx1-xb132.google.com ([2607:f8b0:4864:20::b132])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wIOr7-0004z5-Cw
- for qemu-trivial@nongnu.org; Thu, 30 Apr 2026 06:42:55 -0400
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-6563f83ae9fso831059d50.1
- for <qemu-trivial@nongnu.org>; Thu, 30 Apr 2026 03:42:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1777545772; cv=none;
+ id 1wITUg-0001wA-CA
+ for qemu-trivial@nongnu.org; Thu, 30 Apr 2026 11:40:05 -0400
+Received: by mail-yx1-xb132.google.com with SMTP id
+ 956f58d0204a3-651bc83e74aso971282d50.2
+ for <qemu-trivial@nongnu.org>; Thu, 30 Apr 2026 08:40:01 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777563601; cv=none;
  d=google.com; s=arc-20240605;
- b=Z6EPTP/aDHEAKBskudvuq4ovY85i/eOnArlH1HtCaMjtvCjXEthCK7e8yPBaN+Whk7
- EaylRDv299+nixvKaqfOXG/jOzLxAYzPP3D7ugcdSPPk1ypCzPndjBqNbgubrS+YSk2W
- Q/Sh5sILOo7o2Kbbs8lp7BCDHPCmDKQc+JFkIwMMTEqoVaTGwvBf5RMksocg+cp04hej
- S224T9qiYJLx9B3psyk4KObXBwzDt/+HD9dzZ+AHI07YDeXzD+IcwMGPRZVRdGLCWFt5
- GyUy6xSeWTmpm6UBhhHyz2gAfhmneFQgwVZnmYy2a0gQb/YqI8QgIBpBuLNLUzhgEqJM
- sW0Q==
+ b=UcIRpgmSUaMhXZAyqZdyDTaZHQR/BAR9yyDw4A2lOuzkjLd+v6wFUzfpmrbRlFq2ev
+ 3ngCaG+q19zwf0kevpBYGB7m3KMn3nDTKTg5ZdeaDxetee0YUecvvFqyVBeSO6LtUWda
+ KNXezmZHbuBj7VBvbnp4X1/Uy3A/G6m8a16zuAbV/0PwpfbYxB6wiExpTpRuupx0SCe8
+ DB3eBTNofY2Z4e6ywJx0/qOlt534gP6bogkSzWiciFW01JFpCYznVkvOgLydsY/Kxnon
+ HnWVAQiqU956xQfe1OuoyAR+ZPy8PiSn7qGhozU+kCgpW253VhdxNLUvgwXns7YMIVY4
+ QtrQ==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=2g0y1nWNZc+AxGadVPMcazKrF3IG5aUDZC2BcCua7G8=;
- fh=A1AcCLu906gABPRANV1KdiAXTF/dNQlDRgWmUhsu/DA=;
- b=h2/VBrBR+vxqOhq+hKw1LLqdMnjKfNibSW4zfmk1bYZieaRhMReWgwRZS7S6iAjPRF
- hd4YoawEwfuj5TOp/HayyXHN1ZtTAp2nXBWzmv/uV0oPcKQcsvmzYzE4Dx2rAKUveOhv
- TxwqhTuuJ9Q7iFR9d5rYv551qoTTEZOMuaI5wamau1rq37Yrnd7mMhCxiZY4AqHPr+K0
- 8XTgrJh7N2izdfKguxIOF58Kd+3yFdbTbKdgJga0PQF8b6UcrdiWOJWaDCa56+O3rJAp
- NBM9tdF/l1FqQVSWGyGGLTTja7Aw1/iQZyTqTYIeYSER30aAeJ0St/IqYKhn32u1bKQa
- NZuA==; darn=nongnu.org
+ bh=ReDWy72RBwlCfXkKdQA2a7wP1OoBOa5MlmjTpVb60nw=;
+ fh=1lP0zPo8L78NHQ6VR+K9ztKa2wpCSha6wZLb1v7gcMA=;
+ b=Ijin/qkYU0CdauB/OQCL6vj2NZZzzrMVMKOEQYxUvOpvehyaHKRjb141/KO1Ptsxbr
+ C0e9qRP04OXIOYkXDSMMXE4SoQ2CzTKvcirHDREi4QxjfD1yJqo3DHHzoBmKsGjoOJTH
+ kgCLtYR6KFg+eFJ0+hqZgETF48z6GN68fpY+CzNtKl0WGR4cj/46m68XZA0z8wBfo4wp
+ W9UCzdTbEo3zHcln2mYothcwVSkmoMjzKVDbbRVfDIRrSy29mXfGrzUq3CJOKVUOocP3
+ ow4voxvMbo8VTN+8tkvjfebDHQBcj6ysnlgBlTYr7bNdweG5td1QMHtqBx68vzAJqXo3
+ 5W3A==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1777545772; x=1778150572; darn=nongnu.org;
+ d=linaro.org; s=google; t=1777563601; x=1778168401; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=2g0y1nWNZc+AxGadVPMcazKrF3IG5aUDZC2BcCua7G8=;
- b=u2CXR4cBppGDhrV2A68ihgDWzSPPtclXe/tzhEm/X9Cbw74n7Q2A5MLTB3GXN7eEZV
- kShllx9KuR5JPMGhAuq73WQsvacYgCY5JJRsVcl+LH75KMuMMkrsZ0ZvS6dSp9ZWURTJ
- H2Hdx/nViUZp3vFShu//T71zWpWjOp8cUhkH4maciR5+s1lOwKLSzq+ehR4La3PiwcrC
- vYpJXtiUI8LjvcRwcDVU5dMo1wwm1Bryf4faJXbLBjSdAdI15e4VFTdpD+kMYqXgPBQv
- vltiKxr1vbeBPAyZ9s+BWdiNQVBAK0Nwqj1mzJ8pjlMnGKPHS/SCzWaQ7xMmWC3bx38x
- 5Z1g==
+ bh=ReDWy72RBwlCfXkKdQA2a7wP1OoBOa5MlmjTpVb60nw=;
+ b=VwKL/nJkikvNyFYp6LoqNCS5hZOwiL2C2KoXYAYje169uarkMz39pDaRv8szXZDR4d
+ 4sV/ERlL6OxZWOcXp8SVJL6xG0G5MUL5hA48sDc2UZR6f3SvxJCEYmX2HenBFIfaipY1
+ mJF3ua8PUnD+xvZjIyqJv+SUdPUcX09tCG91Z1+2ndKvJXy8kz1N/wkVRPfaDQIL63iq
+ RpDyR/WHdJlJpteD31M+Q7NMskWvN9c13V0OzFESNuMMNIWaTZLbzp8XzRtuT75X17a/
+ 8Cpb69OON7wIVmOhqHnVzaat756y6RQSHNn9s9twpsUZ5yFA4pdzPntW5Hu1YsQlKVw1
+ BmRQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777545772; x=1778150572;
+ d=1e100.net; s=20251104; t=1777563601; x=1778168401;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=2g0y1nWNZc+AxGadVPMcazKrF3IG5aUDZC2BcCua7G8=;
- b=SIInvHCj1LtXVpPpuwX0Pyd3QWuZ7knUMPvk5NWGqe3OIl/Sjo7e5kW5qHQRlTS2r0
- Nxc9fd2g9yAzxgK99hpm6HSFmaj5AkP6CR7HhajvBVC0v6uTGRxsj7DYAJ2P6vvzueau
- dzXkwCqPc+RdEd7IbicAT9cQ0fVfgoQ8be5MDp1BLgqFR5U7ZDIsau/6BUDib9tSV1MW
- 6zqn1quazzJC/aSTi0S9OQkmwXmux/zeQPuaGUsKruBQEaw3IR1fI30wgn//C1ELRY2Q
- D5Yv22JiDbOavGGNiYbi7MWuWvdvB2nDkPT5N+AW2aw/KWBv3VS1LVpLIlD2fjkkM/CM
- pvBQ==
+ bh=ReDWy72RBwlCfXkKdQA2a7wP1OoBOa5MlmjTpVb60nw=;
+ b=ZFVzNM5EyEy6RxuFkfjJ1Afc84rMoqAc1WMsZnOSUYAA8rWQssA4rXQS/G2lJxLdUm
+ EjzJwRJgCso5HRTFcCowpPk8kwpbYrg0YxE+k7ao0lJxHndjEd4U9QZjFZXga7AEoGdd
+ NNZY8d5EkhWtW8q8br0wRVd1xckhFYampn0V0uoVNFAkEnRlO2pD/WTFnRtrOvzn7GVi
+ POUidj+0wZ8ojCOsolfn6hR+TFxKH86fJrVAaz3yIF4yuPpb8Ie474V+JXGYXl/+NEq2
+ ww53qpXvCppvUOoyYVQR2TueFwquSr0yyvlBxmWk7lvRGOCVSlLYczeQ8vxWz3K6jY7/
+ xoGw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+j0CsiD8S3OX6DL3s0OAPasxaYnhWOsmeNVU1f6nQ0IXLIbUITqRiTHJz0hhoITZzB89xKfgnwE6sz7Rg=@nongnu.org
-X-Gm-Message-State: AOJu0YxO8L004XkGkemREwL4L/GMhjubORttBs/mm54HT1P3Shn8FRAZ
- OKT5QncR259AtcPxUnS++ECH+j9E1wmABlHLUYzND53ziT+7yCxrnPkftCOGyW8GKVhp/FW5jk9
- XK80mF80m6hlGYT5RtEFKqfyi4oCA1jwbpmirqAmazw==
-X-Gm-Gg: AeBDieusr7Fa9jccA2Ac/XpcWxLO8jB7l4NvkeZOPrixima3AjmZ+U3ymIOVSwpkOja
- JUphkueC7a6zencByUX5+YtoMKz95+N7RdTdMi+XfLS5igWaJYqGvB4c1bJgultbjU1bUPYAEwQ
- t+TQW+XHm/gneECK8H4w3Xmmi1T9mY2WCjhuKZErujyfPVcUAnQJi+/g4LRhH6tajSR5dfw9zMK
- FwY1ab9wdZ2VDIU1fiZ/U+4H1tfVnsJAtOva1Kwxbgr8vnbdFVseGrMNCBgycT+5Zt6+bKL54X4
- rZhIWb7ZVWLipEPxUkUanc8NTq9iIi7b8WbTD61oaZe05iu3wa0Tt2hq//vKYMIee1+PbDuWK1V
- 9LjOwOPzJuq1i
-X-Received: by 2002:a53:d104:0:b0:64e:d610:71cf with SMTP id
- 956f58d0204a3-65c18fce8afmr1242841d50.58.1777545771829; Thu, 30 Apr 2026
- 03:42:51 -0700 (PDT)
+ AFNElJ+R3PbMf0ISYdnZhgpULgXvpRAVjUN6bUXBPu/LAz9xn5p9T1KjHW1LumPprbnUDJ68XaiZ0PWAxZMusEc=@nongnu.org
+X-Gm-Message-State: AOJu0Yw3jAGrsaHyEu6y9infm1Iq7UoCxsNjrQRfgnVRPj7Sa8d4pvGZ
+ +DZn21mX//YA3NBP3NWNFbAORJNj23bsUGx1NEtQMEsfdl8HqBRZVd1mjmhp2vwKgyGmT9abLhj
+ Ok8qFvvu8C2a93kaHmdAZXZ4ZiLTkYTrMGzYl6SWj5A==
+X-Gm-Gg: AeBDieuOuCyYvPXhuOEfCejsZZ+sjKrAcfoEUF5XrN+QJK9oLs/gBm18u9IgqK06aAO
+ 7YRF63xDxBU5KsIhghEOyMvYJHRjjJ8GyfFHYYZcP+fYCoE08nW3qLlU8m2ldluxS/SdKxf8KnZ
+ wkBabajFGm/qNJGRJgoYczVZHQznbspK1XMRWvi2yclTVWYZ6W9VLIDsWgwQxnY3yBdWXOct3t7
+ I1TW57V4X1sipHnLs3mA+Lcxb5mwUjJyltAoQrEfjmEaiFC9wST4UVaF3mk73+HZQm4gY2sFWPQ
+ hJXS1MhFrMy6d3CcwJUaGPBOsRizWpN3KD9acXh/hbG23iDmVqcTdMiBhsa2sm6vB8VWr9SJNcq
+ dUg==
+X-Received: by 2002:a05:690e:1206:b0:658:ac79:ad4d with SMTP id
+ 956f58d0204a3-65c18f55fe5mr2776193d50.47.1777563600816; Thu, 30 Apr 2026
+ 08:40:00 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260308203516.160103-1-shentey@gmail.com>
-In-Reply-To: <20260308203516.160103-1-shentey@gmail.com>
+ <20260308203516.160103-4-shentey@gmail.com>
+In-Reply-To: <20260308203516.160103-4-shentey@gmail.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 30 Apr 2026 11:42:40 +0100
-X-Gm-Features: AVHnY4JM2dYns_HE7ObRADh3zyxX8nLpEzAfCcCKftBVuoCubM6J_aRvFr41S54
-Message-ID: <CAFEAcA8DbrVdRQK4Cy8gqU__FXYsTa0nZERqrd4he0Y1WRW7uA@mail.gmail.com>
-Subject: Re: [PATCH 0/5] Trivial cleanup
+Date: Thu, 30 Apr 2026 16:39:48 +0100
+X-Gm-Features: AVHnY4J8zxXW6fxl_n0y_3WVqX0LkzYyp3tUTgzLovV3Dib0GiEAegikkClToJw
+Message-ID: <CAFEAcA_cYDwOFP_h_pKyUQ0kKmT671iZiNntzMC5O5tF=1cC=A@mail.gmail.com>
+Subject: Re: [PATCH 3/5] hw/arm/imx8mp-evk: Fix reference count of SoC object
 To: Bernhard Beschow <shentey@gmail.com>
 Cc: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>, 
  Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
  qemu-trivial@nongnu.org, 
  qemu-arm@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Gaurav Sharma <gaurav.sharma_7@nxp.com>
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b132;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb132.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -122,41 +124,54 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 On Sun, 8 Mar 2026 at 20:35, Bernhard Beschow <shentey@gmail.com> wrote:
 >
-> This series contains some low-hanging fruit fixes I came up with when
-> investigating Rust for QEMU, especially QOM object lifecycle vs. the Drop trait.
+> object_new() leaves a reference count of one, and object_property_add_child()
+> then leaves it at two. This would leak the SoC object if the machine object was
+> destroyed since the machine is the SoC's sole owner. Fix this by converting to
+> object_new_with_props() which gets the parenting and reference count right in
+> one go.
 >
-> I noticed that no finalize methods were called in Rust sysbus devices when QEMU
-> quits, and neither are its C variants. What is probably missing in the first
-> place is a
+> Fixes: a4eefc69b237 ("hw/arm: Add i.MX 8M Plus EVK board")
+> cc: Gaurav Sharma <gaurav.sharma_7@nxp.com>
+> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
+> ---
+>  hw/arm/imx8mp-evk.c | 4 ++--
+>  1 file changed, 2 insertions(+), 2 deletions(-)
 >
->   object_unref(object_get_root());
+> diff --git a/hw/arm/imx8mp-evk.c b/hw/arm/imx8mp-evk.c
+> index b84ac91a17..cfc3038c36 100644
+> --- a/hw/arm/imx8mp-evk.c
+> +++ b/hw/arm/imx8mp-evk.c
+> @@ -74,8 +74,8 @@ static void imx8mp_evk_init(MachineState *machine)
+>          .modify_dtb = imx8mp_evk_modify_dtb,
+>      };
 >
-> at the end of qemu_cleanup() in runstate.c (see TODO there). Adding it before
-> this series won't clean up machines since their refcount won't reach zero. With
-> this series applied this additional line will cause various issues when quitting
-> QEMU, allowing the problem to be investigated. Fixing it is beyond the scope of
-> this series (and my time budget).
->
-> Testing done:
-> * `make check`
-> * Run imx8mp-evk with a Buildroot image
->
-> Bernhard Beschow (5):
->   hw/arm/fsl-imx8mp: Do not create redundant unimplemented devices
->   hw/arm/fsl-imx8mp: Fix parent of ocram memory region
->   hw/arm/imx8mp-evk: Fix reference count of SoC object
->   system/vl: Fix reference count of machine object
->   Revert "sysbus: add irq_routing_notifier"
+> -    s = FSL_IMX8MP(object_new(TYPE_FSL_IMX8MP));
+> -    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
+> +    s = FSL_IMX8MP(object_new_with_props(TYPE_FSL_IMX8MP, OBJECT(machine),
+> +                                         "soc", &error_fatal, NULL));
+>      object_property_set_uint(OBJECT(s), "fec1-phy-num", 1, &error_fatal);
+>      sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
 
-Hi; I've applied patches 1, 2, 3 and 5 to target-arm.next, since
-they're all either arm-specific or the obviously-OK patch that
-deletes the unused connect_irq_notifier method.
+Looking again at this, is this really right?
+object_property_add_child(...) creates the object (refcount 1),
+adds it as a child of the specified parent (refcount 2), then
+does object_unref() (refcount 1). Then in this code we call
+sysbus_realize_and_unref(), which calls qdev_realize_and_unref().
+That function:
+ * (indirectly) calls bus_add_child(), which takes a reference and
+   hands it to the link property on the parent (refcount 2)
+ * calls object_unref(), as its name suggests (refcount 1)
 
-Patch 4 (the system/vl one) I am not applying, because it hasn't been
-reviewed and I don't know enough to know if it's correct or not.
-(My guess is that it is correct.) You might want to repost
-it as a standalone patch to try to get it a bit more attention.
+So now we have the object with refcount 1, so it doesn't just
+vanish, but on the other hand both the QOM tree parent and the
+qbus tree parent think they own a reference to the object,
+so our refcount is wrong.
 
-thanks
+I think the existing code here was correct: we get a reference
+because we call object_new(), and then we drop it by calling
+the realize_and_unref function.
+
+I'm going to drop this patch from target-arm.next.
+
 -- PMM
 
