@@ -4,90 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 99728CD342C
-	for <qemu-trivial@archiver.kernel.org>; Mon,  4 May 2026 09:51:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06D91FF885A
+	for <qemu-trivial@archiver.kernel.org>; Mon,  4 May 2026 15:04:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wJpxK-00074H-EJ; Mon, 04 May 2026 05:51:14 -0400
+	id 1wJuq9-0000Lf-RH; Mon, 04 May 2026 11:04:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJpxI-00073O-Mv
- for qemu-trivial@nongnu.org; Mon, 04 May 2026 05:51:12 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJupk-0000JV-S2
+ for qemu-trivial@nongnu.org; Mon, 04 May 2026 11:03:52 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJpxH-0002cP-9P
- for qemu-trivial@nongnu.org; Mon, 04 May 2026 05:51:12 -0400
+ (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJupi-0006Qw-B3
+ for qemu-trivial@nongnu.org; Mon, 04 May 2026 11:03:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1777888270;
+ s=mimecast20190719; t=1777907020;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=52wy0Dh7nkanopS1ceq+TQvj14ZI6h+uYM7SZajvPVU=;
- b=GWMW1txg13AsRIlZGlWhnWtXsfMUEJ4iOX+/0W3dh3kx+l2fQC6f09Nc/9dguNyTm8QZfy
- iVUOfLQNKogd1VoffQG7E9eHXNENd7nTe+R5oOrNeKzV2wSdK6qY/mRwLQi9U3azwYzLqV
- HqPWMD6zVfpxTGKqujoAhPCy36M3X0A=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=7NWbYUlfYojAUrCSDBQDDaYJHdo6iDEYC4YMeGUXHFA=;
+ b=JfgATXdNJMwqRw0yRQQshYeqkHN/DC4I4C8UKDaBlr+AWB2/n0wAqvuB3kGqmeLXMNdTr3
+ s1esK3sy0l0RlkCEUT31FvEbrhu4Kg0keJkF003PjexejXsSBpIHDHFUtuOlITPGqacU3H
+ Ouz+985Te7pKO6flvNn0Op4OwbC95Sk=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-621-r0gaO0ntMuSj2sruTmvaBA-1; Mon, 04 May 2026 05:51:09 -0400
-X-MC-Unique: r0gaO0ntMuSj2sruTmvaBA-1
-X-Mimecast-MFC-AGG-ID: r0gaO0ntMuSj2sruTmvaBA_1777888268
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-48d0677b5f7so4890615e9.1
- for <qemu-trivial@nongnu.org>; Mon, 04 May 2026 02:51:09 -0700 (PDT)
+ us-mta-447-D-rQL2HKPByAXqKyVhcxvQ-1; Mon, 04 May 2026 11:03:38 -0400
+X-MC-Unique: D-rQL2HKPByAXqKyVhcxvQ-1
+X-Mimecast-MFC-AGG-ID: D-rQL2HKPByAXqKyVhcxvQ_1777907017
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-48a9592f666so13826995e9.1
+ for <qemu-trivial@nongnu.org>; Mon, 04 May 2026 08:03:38 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777888268; x=1778493068;
+ d=1e100.net; s=20251104; t=1777907017; x=1778511817;
  h=content-transfer-encoding:in-reply-to:autocrypt:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=52wy0Dh7nkanopS1ceq+TQvj14ZI6h+uYM7SZajvPVU=;
- b=EB6FTCbT43NwFRNyWS91XNSXhRJspkfc3K/sDIUCuJjuYIRJdbwBAlzaPkPnavb+6U
- lgXJ3M4hyyQn2Zji0bAIFRPXsEbOlGEKH0QaBo2L2OyK3K9g/tG1uLOonP69TAYNAFgq
- 6SEtHMQz4MUHe2Yf43KGHFp9mSzGc5pOAcbye4a0pDtlvtWpEIq586rv9XFeDh8bG9Rh
- eUOnZ6P7Qmi2LYZ3znZjzuT5woPpTgWk+69hXHb/DBrpDKAoRM2cagmuYuVL4R10d65z
- DI89RKSpNsLUFxKXYUN/aoBROaxz54O1sXgu7r2DGc1VARQGMD81oUlJwZsSkSQ/DxuJ
- QvZA==
+ bh=7NWbYUlfYojAUrCSDBQDDaYJHdo6iDEYC4YMeGUXHFA=;
+ b=OrJQ5pOv8cwM6PsD25wZU6h4gNrtbDXU1YY6ArNcdWShCJG06Ly24dJl/IbT+E28jj
+ mWrGcqEeoNJW3mpNdjESMgreK51fL1u4zDcuDVWIDnv3eTEgd1n9ruUBKIkorFN3OFFU
+ QjYnqUkSe2nHas01b7/V5IfE1nKnywodLrsqlfBC4oEaGf3ES+7kfewxHW3BHPPoL4sT
+ pbyXTM1o1OXDIlw+OLQcQNC3bcB0OV80mrFrkX5jBPq7bLd/c356C0lqgPqZ4tCYvmhA
+ 5+DrOZL+vJeA09vqc2mB+EhqtGFEvbYPSQuX0bbudJDBxXqQUwtGAaKqpr2xt+bveKK4
+ /sKA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8HoJ4Nhq7Pm00f3hyTrGWWCxS85DGi3Y01m2uUUxrb5iX3XP5PL5wIsZGakYF6yYcye5TEHN3vBbzujGg=@nongnu.org
-X-Gm-Message-State: AOJu0YwLzI2Hn8jTmvnW0o7tl3uVhSgaQ9e468iplzM6GiPKSKQH6iyw
- sZvmcGBTNih/ejRQ/tQJQ6Eu0Kbyh1tZyiofKA5rz9oTAviokN4pCdcgE3Y2/WUB7kE83n7Ro12
- fiijfJrYYgo5DOm9m6UMFPkbjpxQaJUeF1wW1MIE8A050LJu0d+ZfAhAO6Q43dxA0Ad0=
-X-Gm-Gg: AeBDietoVSHys6cQGGOqdf2YVWD42M0kP9Owrftd2PQjIhcCo8YfH2GIUb6CPYmOUJz
- eDel5Mfb7Yg//SgIsylaPTlDKVV6dpllTHEnPrBxc/PPW78+H5cwk6QgBwHmwoFamKR3W6DxX7l
- YqxLKCxWRaDCnY7r/m1fJUZHPt9veP017J15e2m3tplbpRQWSkZoUv20rtJA4YZ0N4x7naZ8wxU
- FJ5o9d/NTkinZZE9awxeVYTKNTKbPyQdT75/xileAJiNk7xpDqyR0bULg/djwmGaDifKD3XiuYY
- rtzLat3iN2ttJrqFlvLNdEPlW/g3Mgve/NpbCO10THxgU2EsE+ktKUtpjt5DVw3e5X6ra2FQs2R
- DL1X8jswzf7IL1iI+2CWGemB2ftKkvBn9TN6mlN/mKA4IiQMiV9BOrM5fhHPH2uACzFSMIxs=
-X-Received: by 2002:a05:600c:8b0f:b0:488:ab1d:dcc5 with SMTP id
- 5b1f17b1804b1-48a986734c9mr145401405e9.27.1777888267994; 
- Mon, 04 May 2026 02:51:07 -0700 (PDT)
-X-Received: by 2002:a05:600c:8b0f:b0:488:ab1d:dcc5 with SMTP id
- 5b1f17b1804b1-48a986734c9mr145400925e9.27.1777888267485; 
- Mon, 04 May 2026 02:51:07 -0700 (PDT)
+ AFNElJ/eNNxiE4v19mdTU+r66JaFIc61zjC8XIjeIW+zukJkkq7aldyaSEAIfOwVbE23JOgH/O7Fl1S5YkRoTtI=@nongnu.org
+X-Gm-Message-State: AOJu0YwGAam/Ze45yNBkfv6SQt5Ll2+RgflGhwGlK8ObLrNS8C2Ibukh
+ 5oaqW4SzBbYmApu92WzKyTVTKlesVtaIqyNcgdkcZDvKI7S80Ea6i/xiNThcaTppYpG7RiOheYP
+ PSdBN0WjBYtY6DFAmnhzhhCw+pgCEiGEY8nKqCu9aa7pNCvsktN8XXz8SWYI=
+X-Gm-Gg: AeBDiesCqAIx7wpE7x2GCl7AhvCk5ZHek9SQzbQOTxmUap5S/5PkNW265w+nBoF8h4p
+ kBLOlgTGSHBaiHbgVDPoQ5QW1VEVezYoZYwUCOZzE94SkScDFLF4aOYPIiBar7cKq643p/4S7WY
+ 04aDseMCgsteODpZld+aQm//kXtm4u6/83f9kE4dZm7KtfhAMymjiEOLYeVrgqkExac9lzkZp9s
+ Gu8xRpBmcMEJ/QeyPyYYe3xtFl+N1ZPwZuLV6s54g0gidlG3kFnFuJ4HBbj6EhWJQKFsifh+9KD
+ BkPV/nsBRy9DPb1OXMj8YcrXfFMAnng+iaSMAO9cZ+iW77F2mVXRR6oI4o7n9LZejed++Sko9YK
+ b6ymzo01ktyBSb4PuPAm9/AAkla+LO3ECav1U6HRglXUbzwFp2LN4uXXjOyuW8F5QV2dVYNU=
+X-Received: by 2002:a05:600c:33a2:b0:48a:5342:36b5 with SMTP id
+ 5b1f17b1804b1-48d0640ec5emr53436715e9.21.1777907017384; 
+ Mon, 04 May 2026 08:03:37 -0700 (PDT)
+X-Received: by 2002:a05:600c:33a2:b0:48a:5342:36b5 with SMTP id
+ 5b1f17b1804b1-48d0640ec5emr53436235e9.21.1777907016807; 
+ Mon, 04 May 2026 08:03:36 -0700 (PDT)
 Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
  ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48a8fe92b3asm86518015e9.4.2026.05.04.02.51.06
+ ffacd0b85a97d-44a8ef5299fsm25735600f8f.13.2026.05.04.08.03.35
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 May 2026 02:51:06 -0700 (PDT)
-Message-ID: <16c03bd7-5db7-43c0-a1ca-0bf904cba03d@redhat.com>
-Date: Mon, 4 May 2026 11:51:05 +0200
+ Mon, 04 May 2026 08:03:36 -0700 (PDT)
+Message-ID: <64e966e3-8450-40ff-98fd-479eee458b38@redhat.com>
+Date: Mon, 4 May 2026 17:03:35 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH 5/5] Revert "sysbus: add irq_routing_notifier"
-To: Bernhard Beschow <shentey@gmail.com>, qemu-devel@nongnu.org
-Cc: Eduardo Habkost <eduardo@habkost.net>, Paolo Bonzini
- <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
- <berrange@redhat.com>, Peter Maydell <peter.maydell@linaro.org>
-References: <20260308203516.160103-1-shentey@gmail.com>
- <20260308203516.160103-6-shentey@gmail.com>
- <af77b92d-9303-4ed0-942d-6188e00ccdde@redhat.com>
- <DF79ACA2-21B7-47B9-B9C1-0C08E9E50F16@gmail.com>
+Subject: Re: [PATCH] hw/vfio: Drop superfluous inclusion of hw-error.h
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
+Cc: Alex Williamson <alex@shazbot.org>, Tomita Moeko <tomitamoeko@gmail.com>, 
+ qemu-trivial@nongnu.org
+References: <20260428163702.3224323-1-thuth@redhat.com>
 From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
 Autocrypt: addr=clg@redhat.com; keydata=
  xsFNBFu8o3UBEADP+oJVJaWm5vzZa/iLgpBAuzxSmNYhURZH+guITvSySk30YWfLYGBWQgeo
@@ -132,21 +126,21 @@ Autocrypt: addr=clg@redhat.com; keydata=
  HQoPn9qrDJgsgcbBVc1gkUT6hnxShKPp4PlsZVMNjvPAnr5TEBgHkk54HQRhhwcYv1T2QumQ
  izDiU6iOrUzBThaMhZO3i927SG2DwWDVzZltKrCMD1aMPvb3NU8FOYRhNmIFR3fcalYr+9gD
  uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <DF79ACA2-21B7-47B9-B9C1-0C08E9E50F16@gmail.com>
+In-Reply-To: <20260428163702.3224323-1-thuth@redhat.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 5QwNjhXtK6wQpdCCBd3IB07gtj-oHOAcPUpTL7aiQ2M_1777888268
+X-Mimecast-MFC-PROC-ID: aDWh6pWALgzo0Tx7eptfb9TjIqNUim4Ttle30EZoDJk_1777907017
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US, fr
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -25
-X-Spam_score: -2.6
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.444,
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.444,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
  SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -163,64 +157,79 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 4/27/26 12:30, Bernhard Beschow wrote:
+On 4/28/26 18:37, Thomas Huth wrote:
+> From: Thomas Huth <thuth@redhat.com>
 > 
+> None of these files use the hw_error() function, so there is no
+> need to include hw-error.h here.
 > 
-> Am 9. März 2026 09:19:10 UTC schrieb "Cédric Le Goater" <clg@redhat.com>:
->> On 3/8/26 21:35, Bernhard Beschow wrote:
->>> The callback has been introduced in commit 715ca691daca ("sysbus: add
->>> irq_routing_notifier") for use in VFIO platform. Meanwhile, VFIO
->>> platform has been removed via commit 762c85543948 ("vfio: Remove 'vfio-
->>> platform'") which was its only user. Remove this unused code.
->>>
->>> This reverts commit 715ca691daca081108b33306faa6fa102f0df8d8.
->>>
->>> cc: Cédric Le Goater <clg@redhat.com>
->>> Signed-off-by: Bernhard Beschow <shentey@gmail.com>
->>> ---
->>>    include/hw/core/sysbus.h | 1 -
->>>    hw/core/sysbus.c         | 6 ------
->>>    2 files changed, 7 deletions(-)
->>>
->>> diff --git a/include/hw/core/sysbus.h b/include/hw/core/sysbus.h
->>> index c0d18d9e00..f3c4259d29 100644
->>> --- a/include/hw/core/sysbus.h
->>> +++ b/include/hw/core/sysbus.h
->>> @@ -50,7 +50,6 @@ struct SysBusDeviceClass {
->>>         * omitted then. (This is not considered a fatal error.)
->>>         */
->>>        char *(*explicit_ofw_unit_address)(const SysBusDevice *dev);
->>> -    void (*connect_irq_notifier)(SysBusDevice *dev, qemu_irq irq);
->>>    };
->>>      struct SysBusDevice {
->>> diff --git a/hw/core/sysbus.c b/hw/core/sysbus.c
->>> index 3adf2f2faf..3e1160ee92 100644
->>> --- a/hw/core/sysbus.c
->>> +++ b/hw/core/sysbus.c
->>> @@ -104,13 +104,7 @@ qemu_irq sysbus_get_connected_irq(const SysBusDevice *dev, int n)
->>>      void sysbus_connect_irq(SysBusDevice *dev, int n, qemu_irq irq)
->>>    {
->>> -    SysBusDeviceClass *sbd = SYS_BUS_DEVICE_GET_CLASS(dev);
->>> -
->>>        qdev_connect_gpio_out_named(DEVICE(dev), SYSBUS_DEVICE_GPIO_IRQ, n, irq);
->>> -
->>> -    if (sbd->connect_irq_notifier) {
->>> -        sbd->connect_irq_notifier(dev, irq);
->>> -    }
->>>    }
->>>      /* Check whether an MMIO region exists */
->>
->> Reviewed-by: Cédric Le Goater <clg@redhat.com>
->>
->> Thanks,
->>
->> C.
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   hw/vfio/device.c      | 1 -
+>   hw/vfio/helpers.c     | 1 -
+>   hw/vfio/igd.c         | 1 -
+>   hw/vfio/kvm-helpers.c | 1 -
+>   4 files changed, 4 deletions(-)
 > 
-> Who will pick up this patch?
-I would say this is a qdev related matter, so Paolo ?
+> diff --git a/hw/vfio/device.c b/hw/vfio/device.c
+> index 3ffd69a579b..ccf14743e95 100644
+> --- a/hw/vfio/device.c
+> +++ b/hw/vfio/device.c
+> @@ -24,7 +24,6 @@
+>   #include "hw/vfio/vfio-device.h"
+>   #include "hw/vfio/pci.h"
+>   #include "hw/core/iommu.h"
+> -#include "hw/core/hw-error.h"
+>   #include "trace.h"
+>   #include "qapi/error.h"
+>   #include "qemu/error-report.h"
+> diff --git a/hw/vfio/helpers.c b/hw/vfio/helpers.c
+> index 65c6dba0428..c719864b92f 100644
+> --- a/hw/vfio/helpers.c
+> +++ b/hw/vfio/helpers.c
+> @@ -24,7 +24,6 @@
+>   
+>   #include "exec/cpu-common.h"
+>   #include "hw/vfio/vfio-device.h"
+> -#include "hw/core/hw-error.h"
+>   #include "qapi/error.h"
+>   #include "vfio-helpers.h"
+>   
+> diff --git a/hw/vfio/igd.c b/hw/vfio/igd.c
+> index 6aacf27284f..e091f21b6a3 100644
+> --- a/hw/vfio/igd.c
+> +++ b/hw/vfio/igd.c
+> @@ -16,7 +16,6 @@
+>   #include "qapi/error.h"
+>   #include "qapi/qmp/qerror.h"
+>   #include "hw/core/boards.h"
+> -#include "hw/core/hw-error.h"
+>   #include "hw/nvram/fw_cfg.h"
+>   #include "pci.h"
+>   #include "pci-quirks.h"
+> diff --git a/hw/vfio/kvm-helpers.c b/hw/vfio/kvm-helpers.c
+> index d71c9590aaa..5e73dddc418 100644
+> --- a/hw/vfio/kvm-helpers.c
+> +++ b/hw/vfio/kvm-helpers.c
+> @@ -25,7 +25,6 @@
+>   #include "system/kvm.h"
+>   #include "exec/cpu-common.h"
+>   #include "hw/vfio/vfio-device.h"
+> -#include "hw/core/hw-error.h"
+>   #include "qapi/error.h"
+>   #include "vfio-helpers.h"
+>   
+
+
+Applied to
+
+     https://github.com/legoater/qemu vfio-next
+
+Please base future contributions on this branch.
 
 Thanks,
 
 C.
+
 
 
