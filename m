@@ -4,144 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 06D91FF885A
-	for <qemu-trivial@archiver.kernel.org>; Mon,  4 May 2026 15:04:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3BE86FF885A
+	for <qemu-trivial@archiver.kernel.org>; Tue,  5 May 2026 08:18:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wJuq9-0000Lf-RH; Mon, 04 May 2026 11:04:10 -0400
+	id 1wKAzD-0006tK-Hq; Tue, 05 May 2026 04:18:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJupk-0000JV-S2
- for qemu-trivial@nongnu.org; Mon, 04 May 2026 11:03:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <clg@redhat.com>) id 1wJupi-0006Qw-B3
- for qemu-trivial@nongnu.org; Mon, 04 May 2026 11:03:43 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1777907020;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=7NWbYUlfYojAUrCSDBQDDaYJHdo6iDEYC4YMeGUXHFA=;
- b=JfgATXdNJMwqRw0yRQQshYeqkHN/DC4I4C8UKDaBlr+AWB2/n0wAqvuB3kGqmeLXMNdTr3
- s1esK3sy0l0RlkCEUT31FvEbrhu4Kg0keJkF003PjexejXsSBpIHDHFUtuOlITPGqacU3H
- Ouz+985Te7pKO6flvNn0Op4OwbC95Sk=
-Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
- [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-447-D-rQL2HKPByAXqKyVhcxvQ-1; Mon, 04 May 2026 11:03:38 -0400
-X-MC-Unique: D-rQL2HKPByAXqKyVhcxvQ-1
-X-Mimecast-MFC-AGG-ID: D-rQL2HKPByAXqKyVhcxvQ_1777907017
-Received: by mail-wm1-f69.google.com with SMTP id
- 5b1f17b1804b1-48a9592f666so13826995e9.1
- for <qemu-trivial@nongnu.org>; Mon, 04 May 2026 08:03:38 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1777907017; x=1778511817;
- h=content-transfer-encoding:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wKAzB-0006sf-LR
+ for qemu-trivial@nongnu.org; Tue, 05 May 2026 04:18:33 -0400
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wKAz9-0007aN-O6
+ for qemu-trivial@nongnu.org; Tue, 05 May 2026 04:18:33 -0400
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-65c364b893aso3523535d50.0
+ for <qemu-trivial@nongnu.org>; Tue, 05 May 2026 01:18:31 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1777969110; cv=none;
+ d=google.com; s=arc-20240605;
+ b=jIeYqOzQ8T4h+chDQ0DPLFOQV7JvzAwFVVj4ps+Vwwd3TiMA/De0nHxdpQrD7eDOiL
+ +xzaj1nRn277Hk8FC4TG6eI7mT3ANvHXz4vFG4KIPxNxTJAyxdqSmDuBEBhYtHGlsZjJ
+ RJm5r49HdjWHClrAnhlXS4WEx9fq6lW0A+AIehM47Tpi2ka1iS+9j7KWUoM7ljD4lXnt
+ PLNya1NYyFkP7rV58CtyNMeMMSFsi+2+ZuiY8KwAdg9yZ4v/30jUM5vCYxK6vSeW0dyB
+ lBTGNSo8xFFqGfxcz1OjKi31dbw9EKOHSsDArk1ZiaHN712s6Rlq/9c0JKP7XpIZ5cUK
+ W3JQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=8iACR/gHRLBBLts9Z7rvitoq9zFPlMAA1icxYCWfZ40=;
+ fh=a0iOowalELMxWCeLJtiNwp4Y6NeOLvQdHmWoLVQzR2U=;
+ b=E292yS+J1FqlT+rjPfK8FTG8KX3+Iu8jXb8c/QZqUe6s70TdIo3uyCerju4t8kYeRX
+ NaQnBhxk/nuqJBmha52z6OvmyW6fLc7kTUIsAxH7ecjkGNSU2qgQ4tz06j8IANRtnUJE
+ 7afB9Wk7kR/2+AeJjvL+e1OO5TnieBS/gNdyLFWGboLAmhzcwGVRaobxiiucBZGTmcgG
+ dOWVoWt6iPv+UPpBQp9oTNy29mzn+BPuqUOrrj/+yarzxg4UkRa3gVb6iwNpremYTImi
+ 7B8iACJg/Z+libW8dmTNq9U7t9/4+IIr7zwYmyZTnwxuy1MkbqD5jlv1QHgEqfH5Tzsa
+ XpOA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1777969110; x=1778573910; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=7NWbYUlfYojAUrCSDBQDDaYJHdo6iDEYC4YMeGUXHFA=;
- b=OrJQ5pOv8cwM6PsD25wZU6h4gNrtbDXU1YY6ArNcdWShCJG06Ly24dJl/IbT+E28jj
- mWrGcqEeoNJW3mpNdjESMgreK51fL1u4zDcuDVWIDnv3eTEgd1n9ruUBKIkorFN3OFFU
- QjYnqUkSe2nHas01b7/V5IfE1nKnywodLrsqlfBC4oEaGf3ES+7kfewxHW3BHPPoL4sT
- pbyXTM1o1OXDIlw+OLQcQNC3bcB0OV80mrFrkX5jBPq7bLd/c356C0lqgPqZ4tCYvmhA
- 5+DrOZL+vJeA09vqc2mB+EhqtGFEvbYPSQuX0bbudJDBxXqQUwtGAaKqpr2xt+bveKK4
- /sKA==
+ bh=8iACR/gHRLBBLts9Z7rvitoq9zFPlMAA1icxYCWfZ40=;
+ b=aEwM+vOy/pueg9MJseugP8GoiWGUsitjro62CaY0DxigCOwb5YRxlXn0e/YpCCGJ4G
+ Cht5ykdwGB1HoUC/n9po8cGcm36l/vkyy0z2lXMn46o2RVpbhJEpLU+UZyVuVQLVe+ee
+ VSZHdaxEUiniJCG70hcDC1N/A0B0/d6vCglEZj4Fc47ROMkhub501mlCxhQ5+dc32Web
+ 0xYQyEf1s6QXpF6ZTBMLc31nfvoBEaRdhDjGjdsseYVoTTh0jGBTzFnT3m/o+TUOoGcQ
+ cYqArRym/XuCtqvfjze4+Nuli2nsvTYqAPum0GW9SMpWCh3ZxVWlzUoGFR5cqF0qXeTu
+ kJtg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1777969110; x=1778573910;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=8iACR/gHRLBBLts9Z7rvitoq9zFPlMAA1icxYCWfZ40=;
+ b=BtFfoomCZwcJ9w7a3mJ6Hu028oy2NBORh3m2SncJ7jS3sqjQIr6+9fPadsVfWazJd3
+ yfZCNChCE79kfmXwwhXE4iNB+VQJBFLYGuP5LSi+w0zq7/PQcffM9kKFCREH/a95qLQ8
+ zd3fwSx3Xd1DHpOEFSaAxi9iBxQFUKE1Gjj53ZsiE0WBo7PRHLeeSjrpO8cYY9TETM7a
+ /7/dOz5r04ZPt4F72lithkjZlOYACLEjlrVJWSon0Pk1uD8ZVzAuX1geA7hxP0Pp81mt
+ kyQ3bUgL4oTF5RVjaysjDqzwHU7pWsQKyTvbFRLRxgi4I3vYw6sHXlYItH5yZgsPJG6s
+ yaqw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/eNNxiE4v19mdTU+r66JaFIc61zjC8XIjeIW+zukJkkq7aldyaSEAIfOwVbE23JOgH/O7Fl1S5YkRoTtI=@nongnu.org
-X-Gm-Message-State: AOJu0YwGAam/Ze45yNBkfv6SQt5Ll2+RgflGhwGlK8ObLrNS8C2Ibukh
- 5oaqW4SzBbYmApu92WzKyTVTKlesVtaIqyNcgdkcZDvKI7S80Ea6i/xiNThcaTppYpG7RiOheYP
- PSdBN0WjBYtY6DFAmnhzhhCw+pgCEiGEY8nKqCu9aa7pNCvsktN8XXz8SWYI=
-X-Gm-Gg: AeBDiesCqAIx7wpE7x2GCl7AhvCk5ZHek9SQzbQOTxmUap5S/5PkNW265w+nBoF8h4p
- kBLOlgTGSHBaiHbgVDPoQ5QW1VEVezYoZYwUCOZzE94SkScDFLF4aOYPIiBar7cKq643p/4S7WY
- 04aDseMCgsteODpZld+aQm//kXtm4u6/83f9kE4dZm7KtfhAMymjiEOLYeVrgqkExac9lzkZp9s
- Gu8xRpBmcMEJ/QeyPyYYe3xtFl+N1ZPwZuLV6s54g0gidlG3kFnFuJ4HBbj6EhWJQKFsifh+9KD
- BkPV/nsBRy9DPb1OXMj8YcrXfFMAnng+iaSMAO9cZ+iW77F2mVXRR6oI4o7n9LZejed++Sko9YK
- b6ymzo01ktyBSb4PuPAm9/AAkla+LO3ECav1U6HRglXUbzwFp2LN4uXXjOyuW8F5QV2dVYNU=
-X-Received: by 2002:a05:600c:33a2:b0:48a:5342:36b5 with SMTP id
- 5b1f17b1804b1-48d0640ec5emr53436715e9.21.1777907017384; 
- Mon, 04 May 2026 08:03:37 -0700 (PDT)
-X-Received: by 2002:a05:600c:33a2:b0:48a:5342:36b5 with SMTP id
- 5b1f17b1804b1-48d0640ec5emr53436235e9.21.1777907016807; 
- Mon, 04 May 2026 08:03:36 -0700 (PDT)
-Received: from ?IPV6:2a01:e0a:280:24f0:9db0:474c:ff43:9f5c?
- ([2a01:e0a:280:24f0:9db0:474c:ff43:9f5c])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-44a8ef5299fsm25735600f8f.13.2026.05.04.08.03.35
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 04 May 2026 08:03:36 -0700 (PDT)
-Message-ID: <64e966e3-8450-40ff-98fd-479eee458b38@redhat.com>
-Date: Mon, 4 May 2026 17:03:35 +0200
+ AFNElJ91lj51TwbZNKAkctma9x9QIDoIcBCQVvcSu7tLH+6Dq4OY6zJlOXz8CuMXF7MTa5VtB1rDS5RlERb/xRA=@nongnu.org
+X-Gm-Message-State: AOJu0YybyTv96RePi+/OQOm2xyvKBcc+v/ff8BHIZp5Ja5YcYp+MgyIX
+ d7k08+qJjZq15Tc+B5PcxCE+rrnifywo+PEYc3aD1o1PzhVXmyX9B7CQ5J8vBprwx3eBWaqyHB5
+ Dksc45IxZqkcWPuTILGO0a+874g2fud1Uo2pFpufhGg==
+X-Gm-Gg: AeBDiesA8yOuua+oBSwkI6tf8lN25aSF9RsvIDDv1kC00bCa7c3Jpdv4UzU3rYPVtIl
+ HiyEt1tMJDV6w7whsdyMaR5jLIrsMZazSpRcTxKgTJo3UK09KmgNr7ZOnEKrnwb+YOBWRS5rzJu
+ frDg7w2GeEPWzDjejSuhb7T4TPscQMwMQHWyJX7ZXOW18zaRW67+1+He00CMo7NT0sWfLZwjp+r
+ wnmg4XGvScchnWb+weY5O92Up1sP8CvVXaPuCbyBPHGqpXTevpw0bmBiCFGAer2q5cQLD7d9Tkh
+ 8dWhLrMI/sUztVUHwrxKXsekFp+X4eehM3Yuma/iDO8cW6ZqJ/lVxjaZPBub0wwGD/RqTqidNKY
+ 3+g==
+X-Received: by 2002:a05:690e:4011:b0:652:e4d7:248a with SMTP id
+ 956f58d0204a3-65c3d974010mr13245379d50.7.1777969110486; Tue, 05 May 2026
+ 01:18:30 -0700 (PDT)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/vfio: Drop superfluous inclusion of hw-error.h
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: Alex Williamson <alex@shazbot.org>, Tomita Moeko <tomitamoeko@gmail.com>, 
- qemu-trivial@nongnu.org
 References: <20260428163702.3224323-1-thuth@redhat.com>
-From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
-Autocrypt: addr=clg@redhat.com; keydata=
- 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
- uVKe8BVz4atMOoktmt0GWTOC8P4=
-In-Reply-To: <20260428163702.3224323-1-thuth@redhat.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: aDWh6pWALgzo0Tx7eptfb9TjIqNUim4Ttle30EZoDJk_1777907017
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US, fr
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=clg@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+ <64e966e3-8450-40ff-98fd-479eee458b38@redhat.com>
+In-Reply-To: <64e966e3-8450-40ff-98fd-479eee458b38@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Tue, 5 May 2026 09:18:18 +0100
+X-Gm-Features: AVHnY4LSVjlAJniKh1AmKHkUxMDgBbitlvx7573C-CFsyHsZ5FjbaFQbRIkZO-M
+Message-ID: <CAFEAcA9HGWgJYvU_GVZCsxM7-WaR5QuwLES8aetPqD9jaLKr_A@mail.gmail.com>
+Subject: Re: [PATCH] hw/vfio: Drop superfluous inclusion of hw-error.h
+To: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org, 
+ Alex Williamson <alex@shazbot.org>, Tomita Moeko <tomitamoeko@gmail.com>,
+ qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.444,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -157,79 +121,24 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 4/28/26 18:37, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
-> 
-> None of these files use the hw_error() function, so there is no
-> need to include hw-error.h here.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   hw/vfio/device.c      | 1 -
->   hw/vfio/helpers.c     | 1 -
->   hw/vfio/igd.c         | 1 -
->   hw/vfio/kvm-helpers.c | 1 -
->   4 files changed, 4 deletions(-)
-> 
-> diff --git a/hw/vfio/device.c b/hw/vfio/device.c
-> index 3ffd69a579b..ccf14743e95 100644
-> --- a/hw/vfio/device.c
-> +++ b/hw/vfio/device.c
-> @@ -24,7 +24,6 @@
->   #include "hw/vfio/vfio-device.h"
->   #include "hw/vfio/pci.h"
->   #include "hw/core/iommu.h"
-> -#include "hw/core/hw-error.h"
->   #include "trace.h"
->   #include "qapi/error.h"
->   #include "qemu/error-report.h"
-> diff --git a/hw/vfio/helpers.c b/hw/vfio/helpers.c
-> index 65c6dba0428..c719864b92f 100644
-> --- a/hw/vfio/helpers.c
-> +++ b/hw/vfio/helpers.c
-> @@ -24,7 +24,6 @@
->   
->   #include "exec/cpu-common.h"
->   #include "hw/vfio/vfio-device.h"
-> -#include "hw/core/hw-error.h"
->   #include "qapi/error.h"
->   #include "vfio-helpers.h"
->   
-> diff --git a/hw/vfio/igd.c b/hw/vfio/igd.c
-> index 6aacf27284f..e091f21b6a3 100644
-> --- a/hw/vfio/igd.c
-> +++ b/hw/vfio/igd.c
-> @@ -16,7 +16,6 @@
->   #include "qapi/error.h"
->   #include "qapi/qmp/qerror.h"
->   #include "hw/core/boards.h"
-> -#include "hw/core/hw-error.h"
->   #include "hw/nvram/fw_cfg.h"
->   #include "pci.h"
->   #include "pci-quirks.h"
-> diff --git a/hw/vfio/kvm-helpers.c b/hw/vfio/kvm-helpers.c
-> index d71c9590aaa..5e73dddc418 100644
-> --- a/hw/vfio/kvm-helpers.c
-> +++ b/hw/vfio/kvm-helpers.c
-> @@ -25,7 +25,6 @@
->   #include "system/kvm.h"
->   #include "exec/cpu-common.h"
->   #include "hw/vfio/vfio-device.h"
-> -#include "hw/core/hw-error.h"
->   #include "qapi/error.h"
->   #include "vfio-helpers.h"
->   
+On Mon, 4 May 2026 at 16:04, C=C3=A9dric Le Goater <clg@redhat.com> wrote:
+> On 4/28/26 18:37, Thomas Huth wrote:
+> Applied to
+>
+>      https://github.com/legoater/qemu vfio-next
+>
+> Please base future contributions on this branch.
 
+In general I think it's better if we don't have odd subsystem
+specific requirements like this. The general assumption for
+QEMU patches should be that they are based on the current
+head-of-git. I don't want to have to remember that vfio
+is weird if I'm doing a patch that touches more than one
+part of the codebase. If you're accumulating so much
+stuff in vfio-next that it's problematic to have new
+patches based on head-of-git, then my feeling is that
+you're not sending pullreqs regularly enough.
 
-Applied to
-
-     https://github.com/legoater/qemu vfio-next
-
-Please base future contributions on this branch.
-
-Thanks,
-
-C.
-
-
+thanks
+-- PMM
 
