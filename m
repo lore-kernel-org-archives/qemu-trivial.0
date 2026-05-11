@@ -4,98 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BE845FF8855
-	for <qemu-trivial@archiver.kernel.org>; Tue,  5 May 2026 20:54:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5FC7ECD37BE
+	for <qemu-trivial@archiver.kernel.org>; Mon, 11 May 2026 14:29:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wKMmT-0002xH-Ew; Tue, 05 May 2026 16:54:13 -0400
+	id 1wMRcz-0006l6-7M; Mon, 11 May 2026 10:29:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wKMmN-0002vw-Tx
- for qemu-trivial@nongnu.org; Tue, 05 May 2026 16:54:08 -0400
-Received: from mail-wr1-x430.google.com ([2a00:1450:4864:20::430])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <shentey@gmail.com>) id 1wKMmL-0001Q4-6i
- for qemu-trivial@nongnu.org; Tue, 05 May 2026 16:54:07 -0400
-Received: by mail-wr1-x430.google.com with SMTP id
- ffacd0b85a97d-44ce78ab5feso2793154f8f.0
- for <qemu-trivial@nongnu.org>; Tue, 05 May 2026 13:54:04 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1778014443; x=1778619243; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:from:to:cc:subject:date
- :message-id:reply-to;
- bh=3OlMkUnK67P6OiqTbgbKmspu7e+U7zl/NOy2A2SBzKk=;
- b=KiLCzHTkuP8bcvK83ASSS/8SCb7V+j6GCnWs1wwImxheiHN+iIeTF8SpA2/zvsHQx+
- okkjR73RYkg6PuMPnFWeuzmwzQpnDVajRGhR9nnMSkF2gKuGo8luZkvOo5YeKOdAmtVu
- ZOBoaN1ojKxayJ6b5aUKwi2HBrU1rAeBL6AxkVCqxcOBNSK/VD9nX3XrMkvIE649ODl0
- Ue2ImL+3deGWVlBwvpv/A3krOXhx3Ru5PC8evXxjApfdaWAETUZu+TqixhcmyhlNufeq
- ew03cEWph0+CWsCWPVDmj0ZVx3NnCAhZv7cxisYFsfgD0Tro0m6dSvABc3cA9/j23ycn
- 3G/A==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1778014443; x=1778619243;
- h=content-transfer-encoding:mime-version:message-id:references
- :in-reply-to:subject:cc:to:from:date:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=3OlMkUnK67P6OiqTbgbKmspu7e+U7zl/NOy2A2SBzKk=;
- b=quAL4oAaGc51I7qi2wAimOogG93NIv0MRU4G/a9MJwz6jYdrt76o2+lzLKekcD6Ba/
- fEmLc+dO4DkGAzUfD1NsIMTZig+fMae3jVN8TvyllTA5kMtNujSBiMY0ESaplqeC3kZB
- v9BdMBveriFwg4i4ZYIvdd42fLtwAJ2NunBTUX4tzJtTZeLe8AwVtNcy9AE7v1PBS60W
- FGXff9teB9sb8esjslnXqidGHVEG6juQy6QspbLe2BLiTo+TspDLyqV0ILJcEdvobbDZ
- 36HOkQjr7PPK9zaPDuQbNJxg0Xo8tX6dvz3oMrW6W6SDKN7eydPLyEcHKIVIKM671Jp0
- ieJg==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+iJPRcyV8lhzbwS05qDxHrGargOBIBz0qlfQOV42kaZScXjz+ynU12y2fPghqGVjyoURFdCZGKO5i61uE=@nongnu.org
-X-Gm-Message-State: AOJu0Yzq7644eXT2TSBWClCGYmMS98I5MXXq8A8HPZfePeC19buLeF4K
- fQ6ig3xqTq53YE2Uz59cIZaDJCHvYanj0cr9QOsEhZKyqVFn0DYmr5tI
-X-Gm-Gg: AeBDietgR6b6h8Kp98gmKTUJ7sT3m8+fj5CFqfoe5OqXHGbaCaR+Y6ZhKWqspQybmDl
- nvqnb4cRj7Bb1t7tBm5LaQ67pZ+rwYqvsCGkrGw14iCSKUOuMPU3Sd5Q38iS8MjqmmW7TTGB1Wp
- gJgK5sXXvZiVkHBoCzGNgK3Bb5ZQ2eatAOsA/lBoXX4oYPQfc3B5AKeMs6Lr81TyRgh8tiguObI
- kC/UgV6d0Y2Bmh+k/XP8m3AIHaPAMaA3ajBrS+g13/W84ddqHZCcBvyNq903vdCMPBizW5MhyEA
- xaTzhaOZ7Qyqpnt/Oz0kAPHxuicgrGSJW+PdDkjx6log+e5E9YiA8CvjDc1GjL1VSxV+SG+Mv8j
- BNoQzo5XQtDrlN/k0UZZ9IEvuVHGSUXmQy14ET4Az0W0Hj4sMBaL6LGIrVJkWZJ50NZiydMhTUU
- pXAJdj4eN9V1KCqmQX2nD4zMwe3RoZsU2sVHMV5P1TybBbUEHsEVYpdcNJHLFTJa5JpbfPGQe25
- U5p4kmaQiaYwdiXc+pAoKVd/PiMyTInzFacoDpNdVlNE1rPoamkdSqr
-X-Received: by 2002:a05:6000:61e:b0:441:2335:ac3f with SMTP id
- ffacd0b85a97d-4515d4d114fmr1157861f8f.31.1778014443322; 
- Tue, 05 May 2026 13:54:03 -0700 (PDT)
-Received: from ehlo.thunderbird.net
- (dynamic-2a02-3100-2288-5100-c87f-e1c3-d3c0-0c97.310.pool.telefonica.de.
- [2a02:3100:2288:5100:c87f:e1c3:d3c0:c97])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4505238e7c0sm6410810f8f.3.2026.05.05.13.54.01
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 05 May 2026 13:54:01 -0700 (PDT)
-Date: Tue, 05 May 2026 20:53:57 +0000
-From: Bernhard Beschow <shentey@gmail.com>
-To: Peter Maydell <peter.maydell@linaro.org>
-CC: qemu-devel@nongnu.org, Eduardo Habkost <eduardo@habkost.net>,
- Paolo Bonzini <pbonzini@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- qemu-trivial@nongnu.org, qemu-arm@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>,
- =?ISO-8859-1?Q?Daniel_P=2E_Berrang=E9?= <berrange@redhat.com>,
- Gaurav Sharma <gaurav.sharma_7@nxp.com>
-Subject: Re: [PATCH 3/5] hw/arm/imx8mp-evk: Fix reference count of SoC object
-In-Reply-To: <CAFEAcA_cYDwOFP_h_pKyUQ0kKmT671iZiNntzMC5O5tF=1cC=A@mail.gmail.com>
-References: <20260308203516.160103-1-shentey@gmail.com>
- <20260308203516.160103-4-shentey@gmail.com>
- <CAFEAcA_cYDwOFP_h_pKyUQ0kKmT671iZiNntzMC5O5tF=1cC=A@mail.gmail.com>
-Message-ID: <842AA964-4C27-47B7-85AB-A26BC607BD5D@gmail.com>
+ (Exim 4.90_1) (envelope-from <wintera@linux.ibm.com>)
+ id 1wMR0n-0006YO-WC; Mon, 11 May 2026 09:49:34 -0400
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <wintera@linux.ibm.com>)
+ id 1wMR0m-0003nk-0N; Mon, 11 May 2026 09:49:33 -0400
+Received: from pps.filterd (m0360083.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 64B7AHQq2780021; Mon, 11 May 2026 13:49:24 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:date:from:message-id:mime-version
+ :subject:to; s=pp1; bh=g2vwvtwOodnc0kYOAA/WbkJwarTtpLyRgnu/FsF+Z
+ zs=; b=QME6DHNqqWxrJ61SOiqCADnjY8zDYmVbYX6t8WZttv6GK8BKI/LdEfe3Z
+ GgR3ieigxGXDcv/cKMsyz3UJJaAek9BQSVbdctwsnxxrGuMCz3E78tktjgtRt+YT
+ Xo3pvHkHbP3fQkhiZtJKD390DabygEx//KTfCX0NFAhCcFB89ZPE5xKqjiGLxMJE
+ fbHUnJWHnh2S336vPBFxGHZ4Zcqfnz00GIwOUhp1YK6ZqSkToGd/AvggpvuVxbrE
+ gp2iFjAEqNQ3IeSHBhdsoDh4DHhilWh+kErz8o/smiBXUgXw69vTL+CQmhfAkc9k
+ sm4w9cdARlqYfHeabHLQYIL55nW6Q==
+Received: from ppma11.dal12v.mail.ibm.com
+ (db.9e.1632.ip4.static.sl-reverse.com [50.22.158.219])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4e1ve70jqa-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 11 May 2026 13:49:24 +0000 (GMT)
+Received: from pps.filterd (ppma11.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma11.dal12v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 64BDdY1k007665;
+ Mon, 11 May 2026 13:49:23 GMT
+Received: from smtprelay04.fra02v.mail.ibm.com ([9.218.2.228])
+ by ppma11.dal12v.mail.ibm.com (PPS) with ESMTPS id 4e2hxy585s-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Mon, 11 May 2026 13:49:23 +0000 (GMT)
+Received: from smtpav07.fra02v.mail.ibm.com (smtpav07.fra02v.mail.ibm.com
+ [10.20.54.106])
+ by smtprelay04.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 64BDnIww13304096
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Mon, 11 May 2026 13:49:18 GMT
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id 572202004B;
+ Mon, 11 May 2026 13:49:18 +0000 (GMT)
+Received: from smtpav07.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id F086E20043;
+ Mon, 11 May 2026 13:49:17 +0000 (GMT)
+Received: from macbookpro.aag-de.ibm.com (unknown [9.52.217.250])
+ by smtpav07.fra02v.mail.ibm.com (Postfix) with ESMTP;
+ Mon, 11 May 2026 13:49:17 +0000 (GMT)
+From: Alexandra Winter <wintera@linux.ibm.com>
+To: Heiko Carstens <hca@linux.ibm.com>,
+ Christian Borntraeger <borntraeger@linux.ibm.com>,
+ Hendrik Brueckner <brueckner@linux.ibm.com>
+Cc: Halil Pasic <pasic@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>,
+ Sven Schnelle <svens@linux.ibm.com>, Gautam Gala <ggala@linux.ibm.com>,
+ Eric Farman <farman@linux.ibm.com>,
+ Matthew Rosato <mjrosato@linux.ibm.com>,
+ Ilya Leoshkevich <iii@linux.ibm.com>,
+ Thomas Richter <tmricht@linux.ibm.com>,
+ Shrikanth Hegde <sshegde@linux.ibm.com>, Mete Durlu <meted@linux.ibm.com>,
+ linux390-list@tuxmaker.boeblingen.de.ibm.com,
+ Richard Henderson <richard.henderson@linaro.org>,
+ David Hildenbrand <david@kernel.org>,
+ Cornelia Huck <cohuck@redhat.com>, qemu-stable@nongnu.org,
+ qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-s390x@nongnu.org,
+ Alexandra Winter <wintera@linux.ibm.com>
+Subject: [PATCH] target/s390x: Make container ids in SysIB_15x 1-based
+Date: Mon, 11 May 2026 15:49:09 +0200
+Message-Id: <20260511134909.43802-1-wintera@linux.ibm.com>
+X-Mailer: git-send-email 2.39.5 (Apple Git-154)
 MIME-Version: 1.0
-Content-Type: text/plain;
- charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::430;
- envelope-from=shentey@gmail.com; helo=mail-wr1-x430.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 8bit
+X-TM-AS-GCONF: 00
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTExMDE1MSBTYWx0ZWRfX4RmEbpJQ+SBW
+ SroNvDg1q3/mVMehwyQ/Oj67glQox3NGlnHr06cJuWQUmHrS+W4snfAgjaBclI/0jmDIIgXX6NB
+ g7WcfXeZUrkY4fy77zNfHByJHLkf5URdjexloh2M28JtI42VO5lJH5KP+a6jqwwxy7Y2cMzYuT8
+ ZaopBohssPwq5nnmtMBEv4JtF+xk6XkIUI6NnNettkHH7F0dht2Iqi5bUTFlukC8/r4ul+T+eFS
+ xKoLXZoTcFj2/T398kWFPcRgVWydgsmTuskQ9qa/4z0KrrpLKxt7AXFU6lyMqrcLQkAcSgrvUhG
+ 5Luqw2mtl22Uvky45NaRZLeMoef+NUMWnaXob6Jl3b4JzEfuCy81SUxryfi5nyJO2TB7+E1LD7R
+ x/wBGyT0jlAfu2NZBXlDU5p9lluqM36XQjeYKaqe4pVm814AL5XUmfydkbBFkusfrq0s3mkulsY
+ oOnkQ+mK/w3pik1zalg==
+X-Proofpoint-GUID: 6Kwztrkm7jZ41G2agRk-9fcXJRZmx7yk
+X-Proofpoint-ORIG-GUID: 6Kwztrkm7jZ41G2agRk-9fcXJRZmx7yk
+X-Authority-Analysis: v=2.4 cv=CeQ4Irrl c=1 sm=1 tr=0 ts=6a01de64 cx=c_pps
+ a=aDMHemPKRhS1OARIsFnwRA==:117 a=aDMHemPKRhS1OARIsFnwRA==:17
+ a=NGcC8JguVDcA:10 a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22
+ a=iQ6ETzBq9ecOQQE5vZCe:22 a=VnNF1IyMAAAA:8 a=q6vtooFActFUTKw_DCAA:9
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
+ definitions=2026-05-11_04,2026-05-08_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ impostorscore=0 clxscore=1011 adultscore=0 malwarescore=0 bulkscore=0
+ priorityscore=1501 phishscore=0 spamscore=0 lowpriorityscore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2604200000 definitions=main-2605110151
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=wintera@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 11 May 2026 10:28:59 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -110,74 +129,68 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
+The Container Id in a container-type TLE of SysIB_15x is defined as 8-bit
+unsigned nonzero integer. Make stsi fc 15 emulation architecture compliant,
+by starting the container ids at 1 for the lowest numbered container.
 
+The qemu misbehaviour without this patch becomes obvious due to a recently
+proposed kernel fix. Older linux kernels pass the container ids from stsi
+fc15 unchanged to sysfs, i.e. starting at 1 on s390 hardware. This resulted
+in off-by-one values when compared to the values from HMC. A Linux kernel
+fix is being proposed to correct the sysfs topology ids by -1, so they
+start at 0, e.g. when displayed by 'lscpu -ye'. In case a KVM guest with a
+fixed kernel runs on a host with a qemu without this fix, this can result
+in container ids erroneously being shown as 255.
+Example (Fixed guest on unfixed qemu):
+$ lscpu -ye
+CPU NODE DRAWER BOOK SOCKET CORE L1d:L1i:L2 ONLINE CONFIGURED POLARIZATION ADDRESS
+  0    0    255  255    255    0 0:0:0         yes yes        vert-medium  0
+  1    0    255  255      0    1 1:1:1         yes yes        vert-medium  1
+After this fix:
+$ lscpu -ye
+CPU NODE DRAWER BOOK SOCKET CORE L1d:L1i:L2 ONLINE CONFIGURED POLARIZATION ADDRESS
+  0    0      0    0      0    0 0:0:0         yes yes        vert-medium  0
+  1    0      0    0      1    1 1:1:1         yes yes        vert-medium  1
 
-Am 30=2E April 2026 15:39:48 UTC schrieb Peter Maydell <peter=2Emaydell@li=
-naro=2Eorg>:
->On Sun, 8 Mar 2026 at 20:35, Bernhard Beschow <shentey@gmail=2Ecom> wrote=
-:
->>
->> object_new() leaves a reference count of one, and object_property_add_c=
-hild()
->> then leaves it at two=2E This would leak the SoC object if the machine =
-object was
->> destroyed since the machine is the SoC's sole owner=2E Fix this by conv=
-erting to
->> object_new_with_props() which gets the parenting and reference count ri=
-ght in
->> one go=2E
->>
->> Fixes: a4eefc69b237 ("hw/arm: Add i=2EMX 8M Plus EVK board")
->> cc: Gaurav Sharma <gaurav=2Esharma_7@nxp=2Ecom>
->> Signed-off-by: Bernhard Beschow <shentey@gmail=2Ecom>
->> ---
->>  hw/arm/imx8mp-evk=2Ec | 4 ++--
->>  1 file changed, 2 insertions(+), 2 deletions(-)
->>
->> diff --git a/hw/arm/imx8mp-evk=2Ec b/hw/arm/imx8mp-evk=2Ec
->> index b84ac91a17=2E=2Ecfc3038c36 100644
->> --- a/hw/arm/imx8mp-evk=2Ec
->> +++ b/hw/arm/imx8mp-evk=2Ec
->> @@ -74,8 +74,8 @@ static void imx8mp_evk_init(MachineState *machine)
->>          =2Emodify_dtb =3D imx8mp_evk_modify_dtb,
->>      };
->>
->> -    s =3D FSL_IMX8MP(object_new(TYPE_FSL_IMX8MP));
->> -    object_property_add_child(OBJECT(machine), "soc", OBJECT(s));
->> +    s =3D FSL_IMX8MP(object_new_with_props(TYPE_FSL_IMX8MP, OBJECT(mac=
-hine),
->> +                                         "soc", &error_fatal, NULL));
->>      object_property_set_uint(OBJECT(s), "fec1-phy-num", 1, &error_fata=
-l);
->>      sysbus_realize_and_unref(SYS_BUS_DEVICE(s), &error_fatal);
->
->Looking again at this, is this really right?
->object_property_add_child(=2E=2E=2E) creates the object (refcount 1),
->adds it as a child of the specified parent (refcount 2), then
->does object_unref() (refcount 1)=2E Then in this code we call
->sysbus_realize_and_unref(), which calls qdev_realize_and_unref()=2E
->That function:
-> * (indirectly) calls bus_add_child(), which takes a reference and
->   hands it to the link property on the parent (refcount 2)
-> * calls object_unref(), as its name suggests (refcount 1)
->
->So now we have the object with refcount 1, so it doesn't just
->vanish, but on the other hand both the QOM tree parent and the
->qbus tree parent think they own a reference to the object,
->so our refcount is wrong=2E
->
->I think the existing code here was correct: we get a reference
->because we call object_new(), and then we drop it by calling
->the realize_and_unref function=2E
->
->I'm going to drop this patch from target-arm=2Enext=2E
+Fixes: f4f54b582f ("target/s390x/cpu topology: handle STSI(15) and build the SYSIB")
+Signed-off-by: Alexandra Winter <wintera@linux.ibm.com>
+---
+ target/s390x/kvm/stsi-topology.c | 10 +++++-----
+ 1 file changed, 5 insertions(+), 5 deletions(-)
 
-Yeah, makes sense=2E Thanks foe the clarification=2E
+diff --git a/target/s390x/kvm/stsi-topology.c b/target/s390x/kvm/stsi-topology.c
+index 301d41b68d..afd00da0e6 100644
+--- a/target/s390x/kvm/stsi-topology.c
++++ b/target/s390x/kvm/stsi-topology.c
+@@ -90,9 +90,9 @@ static int stsi_topology_fill_sysib(S390TopologyList *topology_list,
+     int last_drawer = -1;
+     int last_book = -1;
+     int last_socket = -1;
+-    int drawer_id = 0;
+-    int book_id = 0;
+-    int socket_id = 0;
++    int drawer_id = 1;
++    int book_id = 1;
++    int socket_id = 1;
+     int n = sizeof(SysIB_151x);
+ 
+     QTAILQ_FOREACH(entry, topology_list, next) {
+@@ -103,12 +103,12 @@ static int stsi_topology_fill_sysib(S390TopologyList *topology_list,
+         if (level > 3 && drawer_change) {
+             SYSIB_GUARD(n, sizeof(SYSIBContainerListEntry));
+             p = fill_container(p, 3, drawer_id++);
+-            book_id = 0;
++            book_id = 1;
+         }
+         if (level > 2 && book_change) {
+             SYSIB_GUARD(n, sizeof(SYSIBContainerListEntry));
+             p = fill_container(p, 2, book_id++);
+-            socket_id = 0;
++            socket_id = 1;
+         }
+         if (socket_change) {
+             SYSIB_GUARD(n, sizeof(SYSIBContainerListEntry));
+-- 
+2.39.5 (Apple Git-154)
 
-We'll need to fix imx8mm-evk now since it uses the same broken pattern (I =
-cc'd Gurav who incorporated this patch into his series)=2E I'll send a fix=
-=2E
-
-Best regards,
-Bernhard
 
