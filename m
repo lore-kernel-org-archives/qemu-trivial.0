@@ -4,123 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90B6FCD4F24
-	for <qemu-trivial@archiver.kernel.org>; Tue, 12 May 2026 14:48:21 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DB24CCD4F47
+	for <qemu-trivial@archiver.kernel.org>; Fri, 15 May 2026 14:11:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wMoP0-0003v3-8i; Tue, 12 May 2026 10:48:12 -0400
+	id 1wNtFp-0005Ob-4p; Fri, 15 May 2026 10:11:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brueckner@linux.ibm.com>)
- id 1wMoCm-0000od-Ny; Tue, 12 May 2026 10:35:30 -0400
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wNtFm-0005N8-DH
+ for qemu-trivial@nongnu.org; Fri, 15 May 2026 10:11:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <brueckner@linux.ibm.com>)
- id 1wMoCk-0000nS-VP; Tue, 12 May 2026 10:35:28 -0400
-Received: from pps.filterd (m0353729.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 64CBNtCZ2607277; Tue, 12 May 2026 14:35:17 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-type:date:from:in-reply-to:message-id:mime-version
- :references:sender:subject:to; s=pp1; bh=T09pv40A+807iJLFXd7FnOc
- 1c0nZ46Et8eqk2KpOAG8=; b=bG1OQYNeKEqSj9cqeOIZ+7sN+JM/jf2icMkG65S
- 5XMw0hRNl3KTUaaipn2APozooB2FWR/LAmQswLZ3lU+NgyKhxT5ZHGYxOOIideEx
- H8YRbBN7+rT89y6xHerKTfLeNEFY1i0XWVNJysnKKNQIyOekscjukuW+PiJLrDtH
- fQB9G4XeQ9JeOeyZTZ+lqKgu4plE0AiW8TSDrbweUHfpvGEml1TCU1hGLn2Hg+67
- QhCRIvROjEK8CRa/nelOa4IQl+9502raBJk19gbOrCT2pwEPoTLz4nvCzBafcWpC
- MaoB5zwteJamWJha4cvs2Q+P1v8k6qX4IlhNVrjq5pPUAvA==
-Received: from ppma23.wdc07v.mail.ibm.com
- (5d.69.3da9.ip4.static.sl-reverse.com [169.61.105.93])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4e3nv53h6d-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 12 May 2026 14:35:16 +0000 (GMT)
-Received: from pps.filterd (ppma23.wdc07v.mail.ibm.com [127.0.0.1])
- by ppma23.wdc07v.mail.ibm.com (8.18.1.7/8.18.1.7) with ESMTP id 64CEOXAc008270;
- Tue, 12 May 2026 14:35:15 GMT
-Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
- by ppma23.wdc07v.mail.ibm.com (PPS) with ESMTPS id 4e3nfgkg71-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Tue, 12 May 2026 14:35:15 +0000 (GMT)
-Received: from smtpav05.fra02v.mail.ibm.com (smtpav05.fra02v.mail.ibm.com
- [10.20.54.104])
- by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 64CEZAdW34275584
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Tue, 12 May 2026 14:35:10 GMT
-Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 7DE2A2004B;
- Tue, 12 May 2026 14:35:10 +0000 (GMT)
-Received: from smtpav05.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id 6A40D20043;
- Tue, 12 May 2026 14:35:10 +0000 (GMT)
-Received: from vela (unknown [9.52.206.27])
- by smtpav05.fra02v.mail.ibm.com (Postfix) with ESMTPS;
- Tue, 12 May 2026 14:35:10 +0000 (GMT)
-Received: from brueckner by vela with local (Exim 4.99.1)
- (envelope-from <brueckner@linux.ibm.com>) id 1wMoCU-00000000ZIN-0TI5;
- Tue, 12 May 2026 16:35:10 +0200
-Date: Tue, 12 May 2026 16:35:10 +0200
-From: Hendrik Brueckner <brueckner@linux.ibm.com>
-To: Alexandra Winter <wintera@linux.ibm.com>
-Cc: Heiko Carstens <hca@linux.ibm.com>,
- Christian Borntraeger <borntraeger@linux.ibm.com>,
- Hendrik Brueckner <brueckner@linux.ibm.com>,
- Halil Pasic <pasic@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
- Alexander Gordeev <agordeev@linux.ibm.com>,
- Sven Schnelle <svens@linux.ibm.com>, Gautam Gala <ggala@linux.ibm.com>,
- Eric Farman <farman@linux.ibm.com>,
- Matthew Rosato <mjrosato@linux.ibm.com>,
- Ilya Leoshkevich <iii@linux.ibm.com>,
- Thomas Richter <tmricht@linux.ibm.com>,
- Shrikanth Hegde <sshegde@linux.ibm.com>, Mete Durlu <meted@linux.ibm.com>,
- linux390-list@tuxmaker.boeblingen.de.ibm.com,
- Richard Henderson <richard.henderson@linaro.org>,
- David Hildenbrand <david@kernel.org>,
- Cornelia Huck <cohuck@redhat.com>, qemu-stable@nongnu.org,
- qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-s390x@nongnu.org
-Subject: Re: [PATCH] target/s390x: Make container ids in SysIB_15x 1-based
-Message-ID: <agM6nlfVdt3xAbe-@linux.ibm.com>
-References: <20260511134909.43802-1-wintera@linux.ibm.com>
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wNtFh-0003nr-Dn
+ for qemu-trivial@nongnu.org; Fri, 15 May 2026 10:11:00 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1778854254;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=HH/bGUDNwdcv2uSBsJ68cqnSxFkwSSn7GY94zUTPcvQ=;
+ b=OPLxiQo1PlaoYE38bwxGiymExCpITQ/QonYrvt36mfkygoaZWsf/iKfeod5AI4Sq3OBdXA
+ +Ewm8dxrxry9hJOmT4qzYrHlWO1de30giN6VCpZFeJWZLiPla8IwsCCQiJOV5IVd7Vk0kl
+ l1tT1WlIg86PWQzzR9LtDB8HAmGEUkM=
+Received: from mail-wm1-f72.google.com (mail-wm1-f72.google.com
+ [209.85.128.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-258-xIp8zOY4NUGI6kxU_qUsWg-1; Fri, 15 May 2026 10:10:53 -0400
+X-MC-Unique: xIp8zOY4NUGI6kxU_qUsWg-1
+X-Mimecast-MFC-AGG-ID: xIp8zOY4NUGI6kxU_qUsWg_1778854251
+Received: by mail-wm1-f72.google.com with SMTP id
+ 5b1f17b1804b1-48fe40b61a3so7548825e9.3
+ for <qemu-trivial@nongnu.org>; Fri, 15 May 2026 07:10:51 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1778854251; x=1779459051;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=HH/bGUDNwdcv2uSBsJ68cqnSxFkwSSn7GY94zUTPcvQ=;
+ b=VV/6IKSirOsZSsuruJ60Ns5hwbpyA+4YnvOmo3OsWL+XbsRIUhn8bTMnsyf0cNP+eI
+ wjXhOqmcAHRKJdidXks3lmcb+lOWMnEjkp2lUBk9Smhs7X/tZL+qAgSI7X2YSJHG6ZXZ
+ 4tlNf2cNfVMUdIAONO2A4nmRjSPbK51hyPNHh0EVtFBbS7uYc7r8UlQYe4iD2uqL3Cxn
+ uTFCiKnS+ZPF5qBhYgPYouJMPFEkEqysz40ka3ubn+UVUE10aP0p/NCD12dlJweUy7T5
+ HjjG64o98d9QI7KWR/X6MATdM9QTpv7zCu984m1qXZsRiOrEGPBTx5PRJ57zrClSmF5A
+ t1Sw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8+8WjqdrRFJkXchd/1H244p4AHeVFIvfwhW61IMeSNM3S6SbDpzM3SXlI4dxZld1sUTNxPifK5NIToXYE=@nongnu.org
+X-Gm-Message-State: AOJu0YxQwpogMN9hhGxFEfecSxUF0WFjr95xJjnJjvCpnGAlf2+HCGRq
+ 9Vm2u/WKdncrZziYgsMa7Mnm2mjtXPtrzIqoIWuTrr8ekKObO25JAFrs9UXdheSIgPG9OMAhhKR
+ //LlaI4TL3rKW0NywehUpQeH8vDKuEaKi6KqAgN+ADRHtSRtJndLusGapFEw=
+X-Gm-Gg: Acq92OE04F5xG111WWlaUzyO/BROSaQCSFJvK1dNnHvlEtKnzx8+lyUpSRi1ixoTb1N
+ cjE4gznIX8cBj8FdDao0aC+maDuL9HIu8v0oDuN1N1V3bjPmqgHIOzztNchF2xwWFlLeDXgDXVu
+ Z0AXGIT+0f1rClnJ1DPnYaXQWuvNfO/3JYN80YGx7A0tbOXplT8SfXeny6gJZaGGtIK6sm6QbyV
+ xIwsFHGO13ibo0VQ7BTmiE00eHfyjZx47EMbxIXi20nBqhpos4z0/gmcl4MzF7dLraBZoUUe66r
+ iNhb8sM8WqaCPPURVVKG/w/h24pr75UVPCquImivtj1+4CgBXOb/wtvErlUkta7zcGD3OWbWquR
+ iblBr+8+h90Y91Hd2Dg==
+X-Received: by 2002:a05:600c:37ca:b0:489:1b10:d896 with SMTP id
+ 5b1f17b1804b1-48fe59af198mr63730545e9.0.1778854250679; 
+ Fri, 15 May 2026 07:10:50 -0700 (PDT)
+X-Received: by 2002:a05:600c:37ca:b0:489:1b10:d896 with SMTP id
+ 5b1f17b1804b1-48fe59af198mr63729905e9.0.1778854250213; 
+ Fri, 15 May 2026 07:10:50 -0700 (PDT)
+Received: from [192.168.0.9] ([47.64.114.83]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48febf81970sm20321685e9.8.2026.05.15.07.10.49
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Fri, 15 May 2026 07:10:49 -0700 (PDT)
+Message-ID: <b4d40be0-b236-4f1a-af04-cc155c6088b7@redhat.com>
+Date: Fri, 15 May 2026 16:10:47 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
-In-Reply-To: <20260511134909.43802-1-wintera@linux.ibm.com>
-X-TM-AS-GCONF: 00
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNTEyMDE0OCBTYWx0ZWRfX9Cts7uwFBLRn
- TH8uAeMx9DXepR48wl8fvOJqXa6rd9uu949gDsDmWBF7FX4VQcHloi6bohB2iwMSqk/aK50E0Qk
- wb6T+1xY8f/wkH7PzOE8iFq9WzvFb0i+yFyCAiJjUFK4YwxKNXCheWZljbZBSb+6nv2CihdzzAN
- cyC6vLB4wEbI2XyaxW5KQlagx0YK1QLwigQu2hQj5woYnWHmfekzHa2DaMFfUmr/QUOBrj2OttU
- w/iu9Q6nFjsTHxVBjHM2Or+FWhRhCC2SFgrHQ/R4lmrdxFWDU/piqzeRRE6TmQCVU0cKomkmw5M
- G/J9CFnYtvgU+HDP3Rq6I5bAq1MIEWu4hZJvy+2pu3lKhlgzWQgt57uOkXtdHI0xzNOqsdgVlla
- 8RxFnevy5SCKv41/Ru1nD2e5zDgxp4Ghs9kXkh2NH91qV5SbBEXui+nryCAwAUqDkaA7CK6yz6f
- pnQhb2or0ZUPUy5mFhw==
-X-Proofpoint-ORIG-GUID: y0XlwJJ0orJiJIJXOWRFqJ8VjxzRdOyA
-X-Authority-Analysis: v=2.4 cv=Jc6Ma0KV c=1 sm=1 tr=0 ts=6a033aa4 cx=c_pps
- a=3Bg1Hr4SwmMryq2xdFQyZA==:117 a=3Bg1Hr4SwmMryq2xdFQyZA==:17
- a=kj9zAlcOel0A:10 a=NGcC8JguVDcA:10 a=VkNPw1HP01LnGYTKEx00:22
- a=RnoormkPH1_aCDwRdu11:22 a=uAbxVGIbfxUO_5tXvNgY:22 a=VnNF1IyMAAAA:8
- a=hgKO5acy12MQRdbuvIgA:9 a=CjuIK1q_8ugA:10
-X-Proofpoint-GUID: y0XlwJJ0orJiJIJXOWRFqJ8VjxzRdOyA
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.51,FMLib:17.12.100.49
- definitions=2026-05-11_05,2026-05-08_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- spamscore=0 priorityscore=1501 malwarescore=0 bulkscore=0 clxscore=1011
- phishscore=0 adultscore=0 lowpriorityscore=0 suspectscore=0 impostorscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2605050000 definitions=main-2605120148
-Received-SPF: pass client-ip=148.163.156.1;
- envelope-from=brueckner@linux.ibm.com; helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] tests/qtest: fix discarded const qualifier warning
+To: Matthew Penney <matt@matthewpenney.net>, qemu-devel@nongnu.org,
+ farosas@suse.de
+Cc: lvivier@redhat.com, Paolo Bonzini <pbonzini@redhat.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>, Stefan Hajnoczi <stefanha@redhat.com>
+References: <20260514191844.105888-1-matt@matthewpenney.net>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20260514191844.105888-1-matt@matthewpenney.net>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: gfwzMZTlCgTeiyYyLJq30PIZ1oZOKby_yC6_HJ8f9gA_1778854251
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Tue, 12 May 2026 10:47:33 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -135,32 +155,30 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Mon, May 11, 2026 at 03:49:09PM +0200, Alexandra Winter wrote:
-> The Container Id in a container-type TLE of SysIB_15x is defined as 8-bit
-> unsigned nonzero integer. Make stsi fc 15 emulation architecture compliant,
-> by starting the container ids at 1 for the lowest numbered container.
+On 14/05/2026 21.19, Matthew Penney wrote:
+> Modern compilers warn that the result of strstr() may discard
+> const qualifiers when assigned to a non-const pointer.
 > 
-> The qemu misbehaviour without this patch becomes obvious due to a recently
-> proposed kernel fix. Older linux kernels pass the container ids from stsi
-> fc15 unchanged to sysfs, i.e. starting at 1 on s390 hardware. This resulted
-> in off-by-one values when compared to the values from HMC. A Linux kernel
-> fix is being proposed to correct the sysfs topology ids by -1, so they
-> start at 0, e.g. when displayed by 'lscpu -ye'. In case a KVM guest with a
-> fixed kernel runs on a host with a qemu without this fix, this can result
-> in container ids erroneously being shown as 255.
-> Example (Fixed guest on unfixed qemu):
-> $ lscpu -ye
-> CPU NODE DRAWER BOOK SOCKET CORE L1d:L1i:L2 ONLINE CONFIGURED POLARIZATION ADDRESS
->   0    0    255  255    255    0 0:0:0         yes yes        vert-medium  0
->   1    0    255  255      0    1 1:1:1         yes yes        vert-medium  1
-> After this fix:
-> $ lscpu -ye
-> CPU NODE DRAWER BOOK SOCKET CORE L1d:L1i:L2 ONLINE CONFIGURED POLARIZATION ADDRESS
->   0    0      0    0      0    0 0:0:0         yes yes        vert-medium  0
->   1    0      0    0      1    1 1:1:1         yes yes        vert-medium  1
+> Make 'found' a const char * to fix the warning.
 > 
-> Fixes: f4f54b582f ("target/s390x/cpu topology: handle STSI(15) and build the SYSIB")
-> Signed-off-by: Alexandra Winter <wintera@linux.ibm.com>
+> Signed-off-by: Matthew Penney <matt@matthewpenney.net>
+> ---
+>   tests/qtest/libqtest.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/tests/qtest/libqtest.c b/tests/qtest/libqtest.c
+> index bf9284b9a1..b1e06ea364 100644
+> --- a/tests/qtest/libqtest.c
+> +++ b/tests/qtest/libqtest.c
+> @@ -2146,7 +2146,7 @@ bool mkimg(const char *file, const char *fmt, unsigned size_mb)
+>   bool qtest_verbose(const char *domain)
+>   {
+>       const char *log = getenv("QTEST_LOG");
+> -    char *found;
+> +    const char *found;
+>   
+>       assert(domain);
+Reviewed-by: Thomas Huth <thuth@redhat.com>
+Tested-by: Thomas Huth <thuth@redhat.com>
 
-Acked-by: Hendrik Brueckner <brueckner@linux.ibm.com>
 
