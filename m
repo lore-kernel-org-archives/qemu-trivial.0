@@ -4,48 +4,70 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04789CD4F3C
-	for <qemu-trivial@archiver.kernel.org>; Mon, 18 May 2026 12:43:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E00ECD4F50
+	for <qemu-trivial@archiver.kernel.org>; Mon, 18 May 2026 13:40:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wOxJV-00087G-Bi; Mon, 18 May 2026 08:43:17 -0400
+	id 1wOyCu-00052v-Tq; Mon, 18 May 2026 09:40:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <f.ebner@proxmox.com>)
- id 1wOxJO-000860-Lt; Mon, 18 May 2026 08:43:11 -0400
-Received: from proxmox-new.maurer-it.com ([94.136.29.106])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wOyCu-00052e-Bx
+ for qemu-trivial@nongnu.org; Mon, 18 May 2026 09:40:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <f.ebner@proxmox.com>)
- id 1wOxJM-0001Ph-Mm; Mon, 18 May 2026 08:43:10 -0400
-Received: from proxmox-new.maurer-it.com (localhost.localdomain [127.0.0.1])
- by proxmox-new.maurer-it.com (Proxmox) with ESMTP id 73913409DA;
- Mon, 18 May 2026 14:43:05 +0200 (CEST)
-Message-ID: <18a24552-15a7-4ae0-8325-cb7dd8a11773@proxmox.com>
-Date: Mon, 18 May 2026 14:43:04 +0200
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wOyCs-0007hj-SA
+ for qemu-trivial@nongnu.org; Mon, 18 May 2026 09:40:32 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779111629;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=3tOi+raTHMXceLcF0R8H4MmXYsLEwkQ1WQprPeDxA98=;
+ b=WEisDzWf7e/AS6tL+O4BTwwcqWu6XzNb3FbRPNMFWGeL2ZZAyWPAVeQe+KZbpKe/aiP7nf
+ aS0jXHFnXjeMq4GLs0CLzW9fc5CyulUoiIwm2HKgAfcjnJlTbdspjYQDc8j6xv1sY8zmvs
+ pNmBGkQWBSjPcaETHSplLfOuWrj4lM4=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-298-WuBgSzOPM0uXekokzzTMZQ-1; Mon,
+ 18 May 2026 09:40:25 -0400
+X-MC-Unique: WuBgSzOPM0uXekokzzTMZQ-1
+X-Mimecast-MFC-AGG-ID: WuBgSzOPM0uXekokzzTMZQ_1779111625
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6E82718002D0; Mon, 18 May 2026 13:40:24 +0000 (UTC)
+Received: from thuth-p1g4.redhat.corp
+ (headnet01.pony-001.prod.iad2.dc.redhat.com [10.2.32.101])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 2E16F19560A2; Mon, 18 May 2026 13:40:21 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Fabiano Rosas <farosas@suse.de>,
+	qemu-devel@nongnu.org
+Cc: Laurent Vivier <lvivier@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
+ qemu-trivial@nongnu.org
+Subject: [PATCH] system/qtest: Fix length parameter in the b64write code
+Date: Mon, 18 May 2026 15:40:20 +0200
+Message-ID: <20260518134020.1420932-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] system/vl: Free allocate memory for pid file name in
- case realpath() failed
-To: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?=
- <philmd@linaro.org>
-References: <20260518114514.684401-1-thuth@redhat.com>
-Content-Language: en-US
-From: Fiona Ebner <f.ebner@proxmox.com>
-In-Reply-To: <20260518114514.684401-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Bm-Milter-Handled: 55990f41-d878-4baa-be0a-ee34c49e34d2
-X-Bm-Transport-Timestamp: 1779108172714
-Received-SPF: pass client-ip=94.136.29.106; envelope-from=f.ebner@proxmox.com;
- helo=proxmox-new.maurer-it.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: PFuSINyhE5OERLjKMrbxtPbCSPl6LxMZ0UOxnQ2p8SY_1779111625
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -61,19 +83,34 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Am 18.05.26 um 1:45 PM schrieb Thomas Huth:
-> From: Thomas Huth <thuth@redhat.com>
-> 
-> In case realpath() fails, the code returns early in the function
-> qemu_maybe_daemonize(), without freeing the allocated memory. Add
-> a g_free() here to fix it.
-> And while we're at it, also free the memory in the qemu_unlink_pidfile()
-> function - it's not that important since QEMU is going to terminate anyway,
-> but some malloc sanitizers might still complain if we don't free it.
-> 
-> Fixes: dee2a4d4d2f ("vl: defuse PID file path resolve error")
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Fiona Ebner <f.ebner@proxmox.com>
+The b64write code has a sanity check that the given lengths matches
+the real length of the given data, and calculates the minimum of the
+two values to be on the safe side. However, the address_space_write()
+then uses the original value and ignores the calculated minimum. Use
+out_len here to fix the problem.
+
+Fixes: 70da30483e7 ("qtest: Use cpu address space instead of system memory")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ system/qtest.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/system/qtest.c b/system/qtest.c
+index a79d10d1361..d6db057b0a2 100644
+--- a/system/qtest.c
++++ b/system/qtest.c
+@@ -698,7 +698,7 @@ static void qtest_process_command(CharFrontend *chr, gchar **words)
+         }
+ 
+         address_space_write(first_cpu->as, addr, MEMTXATTRS_UNSPECIFIED, data,
+-                            len);
++                            out_len);
+ 
+         qtest_send(chr, "OK\n");
+     } else if (strcmp(words[0], "endianness") == 0) {
+-- 
+2.54.0
 
 
