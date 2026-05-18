@@ -4,47 +4,71 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 63909CD4F52
-	for <qemu-trivial@archiver.kernel.org>; Mon, 18 May 2026 09:29:42 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 543EBCD4F3C
+	for <qemu-trivial@archiver.kernel.org>; Mon, 18 May 2026 11:45:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wOuHs-0000Ky-MV; Mon, 18 May 2026 05:29:24 -0400
+	id 1wOwPV-0003el-4L; Mon, 18 May 2026 07:45:25 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <f.ebner@proxmox.com>)
- id 1wOuHl-0000Jm-6X; Mon, 18 May 2026 05:29:17 -0400
-Received: from proxmox-new.maurer-it.com ([94.136.29.106])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wOwPU-0003da-6u
+ for qemu-trivial@nongnu.org; Mon, 18 May 2026 07:45:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <f.ebner@proxmox.com>)
- id 1wOuHj-0006JC-Go; Mon, 18 May 2026 05:29:16 -0400
-Received: from proxmox-new.maurer-it.com (localhost.localdomain [127.0.0.1])
- by proxmox-new.maurer-it.com (Proxmox) with ESMTP id 8FCBF44B48;
- Mon, 18 May 2026 11:29:04 +0200 (CEST)
-Message-ID: <d915efb6-f9a9-491e-b17f-23334d943c02@proxmox.com>
-Date: Mon, 18 May 2026 11:29:03 +0200
-MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] system/vl: Free allocate memory for pid file name in case
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wOwPS-0002L5-Bb
+ for qemu-trivial@nongnu.org; Mon, 18 May 2026 07:45:23 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779104720;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=BeP7MqfAFIImF5aeolAeS2ZR22BLSSc3zOo7u4TV5aM=;
+ b=d4ENJxZkRSV47roU9izVwE7ODbdpZyVdH0GP5xgeEckBCJuU7cMuOSSyMBhAqwnapOs1YQ
+ Hb2k9hIu58iq8hNsPEvvQGslI7Atm5F9rA8pFVTkhjqIGG4wuhruFE9d17uisovjy7B9xA
+ KdzWtmbMbUGPE0TzvvLIyTiyEw54fwg=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-140-y1Kl0RImM8K2TNdEGYwAbA-1; Mon,
+ 18 May 2026 07:45:19 -0400
+X-MC-Unique: y1Kl0RImM8K2TNdEGYwAbA-1
+X-Mimecast-MFC-AGG-ID: y1Kl0RImM8K2TNdEGYwAbA_1779104718
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C61E618005B4; Mon, 18 May 2026 11:45:17 +0000 (UTC)
+Received: from thuth-p1g4.redhat.corp
+ (headnet01.pony-001.prod.iad2.dc.redhat.com [10.2.32.101])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id C07681800370; Mon, 18 May 2026 11:45:15 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: Paolo Bonzini <pbonzini@redhat.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, f.ebner@proxmox.com,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@linaro.org>
+Subject: [PATCH v2] system/vl: Free allocate memory for pid file name in case
  realpath() failed
-To: Thomas Huth <thuth@redhat.com>, Paolo Bonzini <pbonzini@redhat.com>,
- qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org
-References: <20260515143854.2010741-1-thuth@redhat.com>
-Content-Language: en-US
-From: Fiona Ebner <f.ebner@proxmox.com>
-In-Reply-To: <20260515143854.2010741-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 7bit
-X-Bm-Milter-Handled: 55990f41-d878-4baa-be0a-ee34c49e34d2
-X-Bm-Transport-Timestamp: 1779096532019
-Received-SPF: pass client-ip=94.136.29.106; envelope-from=f.ebner@proxmox.com;
- helo=proxmox-new.maurer-it.com
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Date: Mon, 18 May 2026 13:45:14 +0200
+Message-ID: <20260518114514.684401-1-thuth@redhat.com>
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: CG-_ASmRN8OL4DmeQ-Nd9rs96bQpUZpTKcIkfISjhQc_1779104718
+X-Mimecast-Originator: redhat.com
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
+X-Spam_bar: --
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -60,36 +84,45 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Am 15.05.26 um 4:39 PM schrieb Thomas Huth:
-> From: Thomas Huth <thuth@redhat.com>
-> 
-> In case realpath() fails, the code returns early in the function
-> qemu_maybe_daemonize(), without freeing the allocated memory. Add
-> a g_free() here to fix it.
-> 
-> Fixes: dee2a4d4d2f ("vl: defuse PID file path resolve error")
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
 
-Reviewed-by: Fiona Ebner <f.ebner@proxmox.com>
+In case realpath() fails, the code returns early in the function
+qemu_maybe_daemonize(), without freeing the allocated memory. Add
+a g_free() here to fix it.
+And while we're at it, also free the memory in the qemu_unlink_pidfile()
+function - it's not that important since QEMU is going to terminate anyway,
+but some malloc sanitizers might still complain if we don't free it.
 
-Thanks!
+Fixes: dee2a4d4d2f ("vl: defuse PID file path resolve error")
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ v2: Free memory in qemu_unlink_pidfile(), too
 
-> ---
->  system/vl.c | 1 +
->  1 file changed, 1 insertion(+)
-> 
-> diff --git a/system/vl.c b/system/vl.c
-> index d2f4044e5d8..7e2ed898240 100644
-> --- a/system/vl.c
-> +++ b/system/vl.c
-> @@ -2670,6 +2670,7 @@ static void qemu_maybe_daemonize(const char *pid_file)
->                  warn_report("not removing PID file on exit: cannot resolve PID "
->                              "file path: %s: %s", pid_file, strerror(errno));
->              }
-> +            g_free(pid_file_realpath);
->              return;
->          }
->  
+ system/vl.c | 3 +++
+ 1 file changed, 3 insertions(+)
 
+diff --git a/system/vl.c b/system/vl.c
+index d2f4044e5d8..a31b7f87230 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -1633,6 +1633,8 @@ static void qemu_unlink_pidfile(Notifier *n, void *data)
+ 
+     upn = DO_UPCAST(struct UnlinkPidfileNotifier, notifier, n);
+     unlink(upn->pid_file_realpath);
++    g_free(upn->pid_file_realpath);
++    upn->pid_file_realpath = NULL;
+ }
+ 
+ static const QEMUOption *lookup_opt(int argc, char **argv,
+@@ -2670,6 +2672,7 @@ static void qemu_maybe_daemonize(const char *pid_file)
+                 warn_report("not removing PID file on exit: cannot resolve PID "
+                             "file path: %s: %s", pid_file, strerror(errno));
+             }
++            g_free(pid_file_realpath);
+             return;
+         }
+ 
+-- 
+2.54.0
 
 
