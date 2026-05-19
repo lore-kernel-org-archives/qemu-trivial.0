@@ -4,138 +4,143 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4EFB8CD4F4A
-	for <qemu-trivial@archiver.kernel.org>; Mon, 18 May 2026 16:57:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C766BCD4F3C
+	for <qemu-trivial@archiver.kernel.org>; Tue, 19 May 2026 03:59:37 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wP1HS-0001ZX-A1; Mon, 18 May 2026 12:57:26 -0400
+	id 1wPBbx-0006IQ-6f; Mon, 18 May 2026 23:59:18 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1wP1HQ-0001ZF-Qr; Mon, 18 May 2026 12:57:24 -0400
-Received: from mout.kundenserver.de ([217.72.192.73])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wPBbt-0006Hb-3N
+ for qemu-trivial@nongnu.org; Mon, 18 May 2026 23:59:14 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <laurent@vivier.eu>)
- id 1wP1HP-0001ys-1J; Mon, 18 May 2026 12:57:24 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=vivier.eu;
- s=s1-ionos; t=1779123440; x=1779728240; i=laurent@vivier.eu;
- bh=1fLb/e1dql1yBEums0vJZcH3Bnjsk/7RXQbqIfPm8NY=;
- h=X-UI-Sender-Class:Message-ID:Date:MIME-Version:Subject:To:Cc:
- References:From:In-Reply-To:Content-Type:
- Content-Transfer-Encoding:cc:content-transfer-encoding:
- content-type:date:from:message-id:mime-version:reply-to:subject:
- to;
- b=ItS0VaMMEY5ubMP/t+l3qj+8DzaRObDVO0lgDUYhdpyEFx0A/y1YDq9cpOb4Srw1
- BqHUiwtYpz7VkCw6QLv31T8eYwVw0Wd/OCzOKuOu5Q52hjRFL3aue9/VObkpVH0gJ
- STrMOpOC43YbEmmcSbdAh9j+yZbhLBkYxaCwpNr1lSz4TFmthJMq28/QxSQRyPg8F
- xudhEWxmANy3iytf/B5ZkRb4BSQ8v0Rdj278riUJ1qYI/+Z1W60JOFESElEAQevd3
- IQtMqVXTI0m4f8thYck9SLtYBYj0xrQxG0Y1HGn+cnpj7tPYsIncgKlL1y2GkjZBd
- K2BnzuwZCcQEOUmj7g==
-X-UI-Sender-Class: 55c96926-9e95-11ee-ae09-1f7a4046a0f6
-Received: from client.hidden.invalid by mrelayeu.kundenserver.de (mreue106
- [212.227.17.181]) with ESMTPSA (Nemesis) id 1Mc0Er-1wwR9M3kj9-00pYQE; Mon, 18
- May 2026 18:57:19 +0200
-Message-ID: <d109c83a-114e-4211-afe9-240b7ee8409b@vivier.eu>
-Date: Mon, 18 May 2026 18:57:19 +0200
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wPBbq-0007mq-LH
+ for qemu-trivial@nongnu.org; Mon, 18 May 2026 23:59:12 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779163147;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=SZXk9n0GICLWrqnc79UERiMshy9yOKaaTKzI2r1bV1Y=;
+ b=BfPIGlHcSbFl/BA9QDWgIjzXpjc7VrTakCY1kbEYlRdtz7aKUJH23SwKkDLYo5ORO/AoXe
+ d0+Q6C0NhjgW/MG2SQrOqTkwca9SWJeD3CI8ZMzeFkKuunCjJFkUXeZ4FPF7nTsqtfLgDG
+ perR/hRXpmOp/qZj148b4LUqU2PIQW0=
+Received: from mail-wm1-f69.google.com (mail-wm1-f69.google.com
+ [209.85.128.69]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-643-IJUwR5ysP3u4ehr2Ckkzfw-1; Mon, 18 May 2026 23:59:06 -0400
+X-MC-Unique: IJUwR5ysP3u4ehr2Ckkzfw-1
+X-Mimecast-MFC-AGG-ID: IJUwR5ysP3u4ehr2Ckkzfw_1779163145
+Received: by mail-wm1-f69.google.com with SMTP id
+ 5b1f17b1804b1-48906aa28cbso27503015e9.0
+ for <qemu-trivial@nongnu.org>; Mon, 18 May 2026 20:59:06 -0700 (PDT)
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779163145; x=1779767945;
+ h=content-transfer-encoding:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=SZXk9n0GICLWrqnc79UERiMshy9yOKaaTKzI2r1bV1Y=;
+ b=ANJLhVnRIuO1nNFpY5mCwomTcfULqgOzc3Bt/fVD7/BIJWwz6dwtXMNpTcFkhU7Sca
+ elGt+eD8rXo89iCx7WiK49wt7OmU6mI226IUGNCjF777wkaPRRSPp9yfwOOmSPKcvqNI
+ H/WhhCL2j8yjgfl704E4RyGEFxjtcw9ctKro0UiyNLViNTzi4qhB/EMrF5wLG4rnyGGk
+ 9AGu9Iijpmu8tvs80PbQWKrwlQyDwrQvOw8QsWgrJfdfFHN6p0kBaHP1/TdwR7FFRxTF
+ 04Lj3RLtGhjrXSVFYpnGzB9wzuzw2fn6kRU0FbrhL28OhAN5nac3hSG9B40jDAddwx54
+ cxJQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ92eGRTZYZ3W7IXcMnIU9ycCV9x/mhifU70KN51fc0/JdaxtV3h1++ZrTm75m7jBJfxxOdpSW8eWOnw/+s=@nongnu.org
+X-Gm-Message-State: AOJu0YxwuXLaSRnte17Xxdv6h+F5GfbsspLOr83Aa7NgC5Pk4VVXFB2X
+ ItyK6sCt4yi6vt22lbXBSUOfQwcAYFLItgGEmoQRlW9Tdalb6sBmFNtMLmXrWuRSlC2aNuQGIRh
+ g88GzClKiJinpEPhS/OR08ZgdeNMqx8JvIz/TDRnRtqbQT2nXaQNpkWzNPlI=
+X-Gm-Gg: Acq92OHFXSI5V9JQd54Yu/P79gStwHfXlsnAopeQJVd0QNjc/rmNuP75YdGMq/mUxh3
+ IogQHw3lRZ5FjKeCEf/C0zHd1dC6bntQn/7V0qgUU9j+nyvHJbs+QIWF7Pn8GRvZOOvIlasS3qx
+ KDE7vQpHx3V6aVIfnCz1XQp34wmcw81ySFoujFk6nJduIjv+prgCoKPc276DH5tMGuBZLk/8F3y
+ YhIOjywk6P6+lTTyUnri3/TRL5zh54vyATszVssXHlD0ChNL9yidglnowGUm+dUhd4gyWQA2suS
+ AeDRi3zoXtJthLb98DO+Sa8xUyNQ0b7IJi981TWYRhQJ2xgUJVyisfdsEsD0EG77UykYDvtSWMz
+ fXJEmUcLQN5riWUPe8I4=
+X-Received: by 2002:a05:600c:c4a7:b0:48a:53cb:8604 with SMTP id
+ 5b1f17b1804b1-48fe539519dmr262103625e9.14.1779163144953; 
+ Mon, 18 May 2026 20:59:04 -0700 (PDT)
+X-Received: by 2002:a05:600c:c4a7:b0:48a:53cb:8604 with SMTP id
+ 5b1f17b1804b1-48fe539519dmr262103495e9.14.1779163144657; 
+ Mon, 18 May 2026 20:59:04 -0700 (PDT)
+Received: from [192.168.0.9] ([47.64.115.131])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-48fe4c833fcsm298009215e9.2.2026.05.18.20.59.03
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Mon, 18 May 2026 20:59:04 -0700 (PDT)
+Message-ID: <a829f2b5-d50a-4bef-bbe3-27995a9505fc@redhat.com>
+Date: Tue, 19 May 2026 05:59:02 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] system/rtc: Fix a possible year-2038 integer overflow
- problem
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org,
- =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>
-References: <20260518163408.1865629-1-thuth@redhat.com>
-Content-Language: fr
-From: Laurent Vivier <laurent@vivier.eu>
-Autocrypt: addr=laurent@vivier.eu; keydata=
- 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
-In-Reply-To: <20260518163408.1865629-1-thuth@redhat.com>
+Subject: Re: [PATCH] system/exit-with-parent.c: Close the file descriptor
+ before exit
+To: "Richard W.M. Jones" <rjones@redhat.com>, qemu-devel@nongnu.org
+Cc: berrange@redhat.com, lvivier@redhat.com, farosas@suse.de,
+ pbonzini@redhat.com, QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20260518184333.8505-1-rjones@redhat.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <20260518184333.8505-1-rjones@redhat.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: zxoczbQoYAdN7HBj2DLrW0992WM11j6Vy3G-EfpZ7Sk_1779163145
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: quoted-printable
-X-Provags-ID: V03:K1:64nd3I8BUkH33tp3AbpUJhvf2a4p8RX0apbymix9iaImlnqqnyJ
- 1EtZuoi8RSBWpT+6tp1IxSn66n32+fb2/kjZYpn0krb+nrIJYgoBZ+b9qADddHjfDzaQ254
- knEcRGhfIgZ0cNrjFQsn+QT79HYUBGYWOgOnK3oHppqDyAB+v76iBUgaP3USrCN+GsG0rKi
- fgDD81awG08EKRTUR/t3w==
-UI-OutboundReport: notjunk:1;M01:P0:UIZsJtjojiE=;kmCLR3+KAJ6OPtwURqjYIA44w30
- ksQEhelIdyFXVe+0+2hrtaXrlRilJwnj8pTy5VKVG47K1xDmUSXif1NGUdVlxdoqBvhlXJEY2
- RFNH3GAwz+JjS/7N8UY0zn7DZsOaz2/JuLAXqZjfTF2pcw1dGTRBW3LZ+2Et2L611Ae8SlEQ0
- 1l8SdHna4QvV8wGgZr9eWA6tLuuYnNvIKVegxoJwwSpDNvXaxQBQ3xxo15DLnkg/xhcHPiPo3
- hJ/RHZOt5CFeHSxZhtPP7Ysji4B7olEQl7KHpg9E+KHpl1hHjUrTrUEpe8CFRSDVJMCGVNp0G
- rZWgRBkxBY5N3qChx0oGi3jiVdqTRo0T18Q5HHvq2GvH8np84XFBQCQFhQAdfQQ39+s9Qhb1B
- 7S5nDc9TnphPtft9rWEGjF2fSi18PiKFEX2Mc5VT7GiimD0jJjMwqhI+VrVf5p1zbyDGWboYc
- oqm7RgNPvE8yXBPEq/XWfabGK/LABH8CUOWFVMol8tCp3MRj3BkYVy5K9GZi4BR3nfjMaY7OX
- iL4isIIe8xGyLrroEy9ywj5FJf1ikfk3JJ22ep0TVcD/uHe/eAeMejsQ12GikbJhBBu1HVkQ+
- sOup5bFe8leir/d/2x8gLvr1N2PIkk2wa9yoeZfh44/t+Z2YRsql7jaqgGojSS8I6tHmJp/BM
- yZLWmCLM1wmajHJHELvRAb6GGjlTtePHv4T9+vjxIJk8zqs4HhqkxIR18ctBnLU+J7w0Bhebw
- DDV1S0dYlQoaKZFvpJ6p+Zz64W64/sZXgLckEjwlzaUKr8sVV44BOeQepGk+T/Agk4ZwuYZfl
- CBysrd81cQ/Usv0D8TDs23XChGTseq+onULpZLWXWeXMZwxzddn4/UFFPQvE8v3ENYdu9ylgg
- jaomjsWKoxPe7e0rF5wNuQaIMssSRW2qLr/h7RFqKSI4l6o/50GyeXAm9ygmw1vlf1PvzYN9Y
- caxxY1cCRRapQNU/gr5+JlkZQdCUUuWdVA3cJSE1Gr91fpISgTWPZMu3sFDN4t5XFf9p0uTOF
- r2lX+QMmf8aeP5jnmFeptSeFC38p83YKdcMQmHAD6XvGIVLAE0tn1eNZbAeiE0daCAddDiSvz
- i6ArmwCE1n6Sucwr5i9ljRjG/W/YBWi8NE+j1xCRYdnUpP4/sScLBsvSn7VFJpUngyEc13MDy
- C/ptcUkcCPBQGm1xzsnjVacJUB4Tsy6Erh7Q+8P9p9uYIoZe+lQZeIsyitOcgX/WliHG1PfEQ
- aeQ6tmYYjDv6nxJmclPul8jvBCL+w4Ok/gKkhE2UwS4kAJkC7FWiNlxcFCKfyMkbgeosorgis
- +Ab+w/v379Tp18GyLFF7xJ/iSEcODd7p5z9s3sARL9igfMxyB7sLRmLwffK1Y9wy6UWegHnhW
- KeL+e9UDcfvM6EBak3b2QFJzGlCcyF1R7QyPy0aX8CCrpHL2rD2SM+rUg0/WpKZEw1XBgc56q
- xNRh/JXCf77THxswGz+QsP28n39Th6pgLZQbK9+/eEDuqMP1cwjghqZZn2yiV71UMvV1GwlNk
- e0qi+/eZNF6RQwg8ch/FLECcUfqoLLkIGxtdKytNklkT4rV8PURuEo9L6RssXIgXk9xuVWXlS
- TczmoPTe39IRE4a3kRRcUYS/vI/n3auuuheeOCTkITwiPGRp/fWr4F35qjSwMEstnejD5hP9s
- 0PhZRop1mC7QczXvUSEf2fUsJ9s2vo6yaEOe6M8EVIaJHav8LGozcm4phAQp0Yf9xnzIgRUia
- BLxhM2VtVw5XnI1ShmytE3FCNQuJTfSLDNiFH4GZahArv2EvBEp3phvX6tXMCKpu3tmUvVU05
- 3oRMpzS+RK4KQPnEFfNSJae9pzBgrQTlc2i8nfygGDaHSjjT4y9wzO+zgpDjCSluC3Eyb/44c
- w6LJrXVb1dETbwidU2iuNrC/AySDi2eqy8HP1KhT3b0cnGuujG4+HbEiskHX/gfQg83rMyy10
- 6XUa/oG8wfDeQCoCpSzrShOLlx0l6UQjcvNhctEg23rQsbtPQZ61+y6yON043MsGNa9L1uit2
- uUsoOPK7e6ycDVAkgkqTUB4li23TC19KofnaylBsW
-Received-SPF: pass client-ip=217.72.192.73; envelope-from=laurent@vivier.eu;
- helo=mout.kundenserver.de
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -151,48 +156,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Le 18/05/2026 =C3=A0 18:34, Thomas Huth a =C3=A9crit=C2=A0:
-> From: Thomas Huth <thuth@redhat.com>
->=20
-> rtc_realtime_clock_offset is initialized with:
->=20
->    rtc_realtime_clock_offset =3D qemu_clock_get_ms(QEMU_CLOCK_REALTIME) =
-/ 1000;
->=20
-> And QEMU_CLOCK_REALTIME might be based on gettimeofday() in certain
-> cases (see get_clock_realtime() in include/qemu/timer.h). So this
-> counter will exceed 32 bits in the year 2038, thus we should not
-> store this value in a normal integer variable. Change it to a time_t
-> to fix the problem.
-> And while we're at it, also adjust the nearby rtc_host_datetime_offset
-> variable to be on the safe side in the related code.
->=20
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On 18/05/2026 20.43, Richard W.M. Jones wrote:
+> On macOS we leak the open file descriptor in the background thread.
+> Close it before returning.
+> 
+> Link: https://lists.gnu.org/archive/html/qemu-devel/2026-05/msg04286.html
+> Reported-by: Thomas Huth
+> Fixes: commit 886898baad ("Implement -run-with exit-with-parent=on")
+> Signed-off-by: Richard W.M. Jones <rjones@redhat.com>
 > ---
->   v2: Use time_t instead of int64_t
->=20
->   system/rtc.c | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
->=20
-> diff --git a/system/rtc.c b/system/rtc.c
-> index f13dd392a76..018609a4f9a 100644
-> --- a/system/rtc.c
-> +++ b/system/rtc.c
-> @@ -41,8 +41,8 @@ static enum {
->       RTC_BASE_DATETIME,
->   } rtc_base_type =3D RTC_BASE_UTC;
->   static time_t rtc_ref_start_datetime;
-> -static int rtc_realtime_clock_offset; /* used only with QEMU_CLOCK_REAL=
-TIME */
-> -static int rtc_host_datetime_offset =3D -1; /* valid & used only with
-> +static time_t rtc_realtime_clock_offset; /* used only with QEMU_CLOCK_R=
-EALTIME */
-> +static time_t rtc_host_datetime_offset =3D -1; /* valid & used only wit=
-h
->                                                RTC_BASE_DATETIME */
->   QEMUClockType rtc_clock;
->   /***********************************************************/
+>   system/exit-with-parent.c | 1 +
+>   1 file changed, 1 insertion(+)
+> 
+> diff --git a/system/exit-with-parent.c b/system/exit-with-parent.c
+> index df65d2231a..d236944572 100644
+> --- a/system/exit-with-parent.c
+> +++ b/system/exit-with-parent.c
+> @@ -109,6 +109,7 @@ exit_with_parent_loop(void *vp)
+>           /* Behave like Linux and FreeBSD above, as if SIGTERM was sent */
+>           qemu_system_killed(SIGTERM, ppid);
+>       }
+> +    close(fd);
+>   
+>       return NULL;
+>   }
 
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Thomas Huth <thuth@redhat.com>
 
 
