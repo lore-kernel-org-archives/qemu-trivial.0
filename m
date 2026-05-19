@@ -4,94 +4,89 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95764CD4F57
-	for <qemu-trivial@archiver.kernel.org>; Tue, 19 May 2026 12:16:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC915CD4F5B
+	for <qemu-trivial@archiver.kernel.org>; Tue, 19 May 2026 20:20:39 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wPJMM-0006AH-HR; Tue, 19 May 2026 08:15:42 -0400
+	id 1wPQvP-0005ae-02; Tue, 19 May 2026 16:20:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wPJMK-00069c-Sx
- for qemu-trivial@nongnu.org; Tue, 19 May 2026 08:15:40 -0400
-Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wPQvH-0005Wl-E1
+ for qemu-trivial@nongnu.org; Tue, 19 May 2026 16:20:19 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <alex.bennee@linaro.org>)
- id 1wPJMI-0004ho-Vp
- for qemu-trivial@nongnu.org; Tue, 19 May 2026 08:15:40 -0400
-Received: by mail-wm1-x335.google.com with SMTP id
- 5b1f17b1804b1-4890d945eb4so24139175e9.0
- for <qemu-trivial@nongnu.org>; Tue, 19 May 2026 05:15:38 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1wPQvG-00052j-1O
+ for qemu-trivial@nongnu.org; Tue, 19 May 2026 16:20:15 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id
+ d9443c01a7336-2ba17c8cfacso38927305ad.2
+ for <qemu-trivial@nongnu.org>; Tue, 19 May 2026 13:20:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779192937; x=1779797737; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=w2NQjIjyumK2mXUiLmWfCFhx1hgkbPYL7k4RdOc49DU=;
- b=Eq8jLyuE83Q6thM63MlzCW7VmEpbr6kSQdsBaaVNmwN7J/mxE+0pr1djdBv+c+wbVc
- tNRGCvVLWtWZ0GN1tgTXJ1FFTz2hxYrov9gs7JRSP8hf0o+G1CWZf96AyjbnN+jKzvBi
- chrojKzWOcLdtI3VdVeEdFHoVxqDVSOJdRoGYST50tzFITRYple1FbRtcDWefcRPZvpO
- pOONwErVcLuDkl/IVabn9xsNcoGH6j/Rl4A92xfya0ODE/T/vMeZiGvAJK0i8JA8ExTF
- c5+tLUDVV/HUPAXqps8+hzML2yAKrKZgAZ59xsxyW/x2JxxVNUr/u/ncVwEgxPcA5/CY
- iTlQ==
+ d=linaro.org; s=google; t=1779222010; x=1779826810; darn=nongnu.org;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:to:subject:user-agent:mime-version:date:message-id:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=WX7x84E+DmnFKK6FwZ0UaKRZmCRHlVbSGDnyYPd/N/g=;
+ b=cAFT5FIbXIwetXeL0yVqIfJXkFQEmNPjRH1ZZpm7YUEvO7aF+7xzJejCrc9PnCa3jP
+ AbmUxyonbkQ/Z0S3NjBiPP0EuXI1668eS+MbkUZhhmM8KdibVd8hdV4ezOHP0FLF0/Rx
+ kdrBGlhlQ6IIpWbBRXLYBjCARPUrI1sWHnhQN26Hc19D7tMlMEKFjw2ifJb2HtSzdy9R
+ DiCRGXZbazKfspLLDbcr05wUnR0IZoRsKA/6hJeIANqv6zhve5N+34EKH48YE+8+tyiM
+ uJzfD/yNJShZtG/qo/NN9sQ4Tw4hF/t+ZjtYatkKUHH6A0vNjjf2rp80NiCgv7XG1Ydi
+ pJTQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779192937; x=1779797737;
- h=content-transfer-encoding:mime-version:message-id:date:user-agent
- :references:in-reply-to:subject:cc:to:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
- bh=w2NQjIjyumK2mXUiLmWfCFhx1hgkbPYL7k4RdOc49DU=;
- b=Ej7tDoe+9GCIGU3oze8rCmXw00APve7G8PTIs0aL4Zj8xKao6VVCuqq9FCAp1w3/0c
- M0b1pIIy6Txw1QZvv+BnxoehU2qJUrUS5JI9VUN4/mCvHUJidwbXeuAFyqukd2NXKIWE
- rw9l1TMB1FNOpO6Qs0HqV6WZJZmqI2qbA0Q/5Y1LZmPhoAcnRqtbFrzp25PH9NgRGbC4
- 3q9ooN6CstEGqoap8/YqJxWT6DJbhxfqOXM4JD9uPb7YMyOgDHP73NQe+ZW6BN4k5zkw
- YzKR1R6M9GZfw5BLI7qohKpSCF0m4CgYGPYV7YRKQN7/aicCKkMIq4y428p3RgPMBfzk
- nxLg==
+ d=1e100.net; s=20251104; t=1779222010; x=1779826810;
+ h=content-transfer-encoding:in-reply-to:content-language:from
+ :references:to:subject:user-agent:mime-version:date:message-id
+ :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+ :reply-to;
+ bh=WX7x84E+DmnFKK6FwZ0UaKRZmCRHlVbSGDnyYPd/N/g=;
+ b=FKJxxx32K6PrHcOJwXLDE+difP5WGmWFyPgFmlnjb+NwUDMJagFslK2lqaiGMIMRvV
+ G9jCKfMWmuJX3OwDh5HpbUAnhSGbPWjs/4tuctuqUCN+JbgeqD2UOwOyHNvlAAuMi7kl
+ DZwDtsjN7HgAlLVxTVT9XUnRy7dDTk2TxqpwjBtNcrH4Vbza66XWMP8y3iiEjSAT43MW
+ VheqVcg2/fpeTy6BroJ8MpPA/4BzgxJOUWxgFipISNPCzaAuHFqPZbpgrSplKRe0KMSA
+ nVPfmbm66LU9fTGGoWGl2tSkmPcc/Ezztzym0eIPNvY1VLW8bq257ShqqzVbqSRLEpnH
+ QTHA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8kQ/WK1dmAxESmPsGkQcXkyGZ9KjdN3rvW/J+/QO2JVJEUiSEAh1yMQYQLEbqVeiF0wg43S8E04r0Ze/s=@nongnu.org
-X-Gm-Message-State: AOJu0YyJmqDd6VTvvVvjdHDMwEKChtpiDJtn4MxsIpWUGQn8CoAHI+1U
- 0J5LCBCEN9fJwO4lS5d4ikdxni+GqQlWzbmdzPBOeOG52D2LytDZHzr/txpwKPsX7C0=
-X-Gm-Gg: Acq92OEa67dDnONS98JIBRP/50sZ+JQjv2K+LTZDqBVGbANKF5gGM5oJzTxf/IPaD4W
- rHEOi4Svhq7xGZF2GLsF1sqgdpRNaSekizV/72rSbvFwl8LwGslaDJqk7H4lPaii1m7Y2kSXMlE
- +isSF+AQJ/d5DAB33vgDaOVqC3XM9U9WIsnqwDojEXC4TN259TT6jyEKGoFsCR/xaqTuA3hAiOh
- sX03CJZ1J0EHaXHBhOmvKfgP7DvnLVmIVGWuKymkDBPikvKL4hDAub5obI+OkRn+4HZDabl4U/j
- CteDzzGIAZo3dPRSuByLc+N4O3OYlcUY52v7/qpAVlstQJuKx3TP2WERXk9Q3zQ+PqEmh66X1JL
- /zjzoiORRC5cNKXFpcqFFQHiwwD1V1yjROFurdi6ERUGvKihtVMAbaPlRWhbnfwwAVSWZRA8chF
- MscAAZJ6rKSvtZXexv0CzEpZM=
-X-Received: by 2002:a05:600c:609b:b0:485:3c2e:60d5 with SMTP id
- 5b1f17b1804b1-48fe4cadfeemr292665445e9.2.1779192936657; 
- Tue, 19 May 2026 05:15:36 -0700 (PDT)
-Received: from draig.lan ([185.124.0.195]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-48feaa2949asm153832375e9.1.2026.05.19.05.15.34
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Tue, 19 May 2026 05:15:35 -0700 (PDT)
-Received: from draig (localhost [IPv6:::1])
- by draig.lan (Postfix) with ESMTP id E2BAB5F81D;
- Tue, 19 May 2026 13:15:33 +0100 (BST)
-From: =?utf-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>
-To: Thomas Huth <thuth@redhat.com>
-Cc: Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@linaro.org>,  Daniel P.
- =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  qemu-devel@nongnu.org,  qemu-trivial@nongnu.org,
- Richard Henderson <richard.henderson@linaro.org>,  Cornelia Huck
- <cohuck@redhat.com>,  qemu-s390x <qemu-s390x@nongnu.org>
+ AFNElJ/5cT3R8nXmiewqmU6VwR55vfG2TbQZeFKoiEBB6RbxjxDZC1lBtOQtgGh9Qyhy9S6C00xHoD/f3hLS/2o=@nongnu.org
+X-Gm-Message-State: AOJu0YxkhzJSypUL3Rpp/KBwPEb+lW0klkNCy0Df9IxIkmdnTvS/+p4h
+ vp2e+cb1waqkOP81rqSNMl+hBIjmJoY55UEY+O1WK9NxK3fJgmcvkV+8+8TA159FXUY=
+X-Gm-Gg: Acq92OGItS2XynlST8Co18E6jaLgP4Y2xLBW6q2dW40kvXxZOQ5TapVVP63oMcgAfS5
+ hZPAMhFENbVK6Mt6BErw/txXZhJxWLl3OIObuJnTAn+cFzM3jLNIKILjdQxlej9jUML48xQMrAU
+ Fsx/tczClrawsDHSxPe39rofYWzdC+wEI8ZBWfUH/avF1m9wdt3sRgQgwvyFxI9joE11ZT9nuos
+ YZ2ZMOIC8JD+reNdkeXzEdlmJbkVnfMrDJqWXxsJIRhRReNtVvb/Lr/BRas9FFuFt/DKw7GCioL
+ thzqSDQazjbRvZXkXr9xsPPB1rVEnphbAW6qN4nUsSXJdsQ3bY2EBuVaNd14vvGxVJFt5lUOHjq
+ YFGcz+fIUx4Vb8RRfCmHBlYgrpshthfYtF5V8YV6kLSYKSirTdhEPo1P+gPnwT1LUDsdr4G1Cg1
+ AgVzGQlMjbyYl/j/yUb5CDp+8eEMRRfe8qfsH24WM/4lUjee4=
+X-Received: by 2002:a17:902:d5d0:b0:2b0:7531:b61e with SMTP id
+ d9443c01a7336-2bd7e97a6c2mr139604915ad.41.1779222010137; 
+ Tue, 19 May 2026 13:20:10 -0700 (PDT)
+Received: from [192.168.0.4] ([71.212.142.33])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2bd5d0fd384sm196292405ad.65.2026.05.19.13.20.09
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Tue, 19 May 2026 13:20:09 -0700 (PDT)
+Message-ID: <07cfc3ad-e828-41e5-859a-0667f63b22a9@linaro.org>
+Date: Tue, 19 May 2026 13:20:08 -0700
+MIME-Version: 1.0
+User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] system/rtc: Fix a possible year-2038 integer overflow
  problem
-In-Reply-To: <b70b35ef-1761-4624-9f98-7c1ae161ed9a@redhat.com> (Thomas Huth's
- message of "Tue, 19 May 2026 11:26:15 +0200")
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
 References: <20260518160255.1844308-1-thuth@redhat.com>
  <ags5_IDkvxClCdHm@redhat.com> <ags7xIsUG2DqX5vu@redhat.com>
  <dbc6464c-2685-46c4-803c-6af53d345083@linaro.org>
- <c9fa27e3-0939-4490-b350-7a625ebcdcdb@redhat.com>
- <b70b35ef-1761-4624-9f98-7c1ae161ed9a@redhat.com>
-User-Agent: mu4e 1.14.1; emacs 30.1
-Date: Tue, 19 May 2026 13:15:33 +0100
-Message-ID: <87mrxvbnoa.fsf@draig.linaro.org>
-MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::335;
- envelope-from=alex.bennee@linaro.org; helo=mail-wm1-x335.google.com
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <dbc6464c-2685-46c4-803c-6af53d345083@linaro.org>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -114,94 +109,22 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Thomas Huth <thuth@redhat.com> writes:
+On 5/19/26 01:24, Philippe Mathieu-Daudé wrote:
+>> IOW we only platform this fixes is 32-bit OS with 64-bit time_t.
+> 
+> "32-bit *host* OS".
+> 
+> Per ./configure script, we still allow:
+> - x86_64 x32 ABI      (CPU_CFLAGS="-mx32")
+> - sparc32             (CPU_CFLAGS="-m32 -mv8plus -mcpu=ultrasparc")
+> - s390                (CPU_CFLAGS="-m31")
 
-> On 19/05/2026 11.18, Thomas Huth wrote:
->> On 19/05/2026 10.24, Philippe Mathieu-Daud=C3=A9 wrote:
->>> On 18/5/26 18:18, Daniel P. Berrang=C3=A9 wrote:
->>>> On Mon, May 18, 2026 at 05:10:36PM +0100, Daniel P. Berrang=C3=A9 wrot=
-e:
->>>>> On Mon, May 18, 2026 at 06:02:55PM +0200, Thomas Huth wrote:
->>>>>> From: Thomas Huth <thuth@redhat.com>
->>>>>>
->>>>>> rtc_realtime_clock_offset is initialized with:
->>>>>>
->>>>>> =C2=A0=C2=A0 rtc_realtime_clock_offset =3D
->>>>>> qemu_clock_get_ms(QEMU_CLOCK_REALTIME) / 1000;
->>>>>>
->>>>>> And QEMU_CLOCK_REALTIME might be based on gettimeofday() in certain
->>>>>> cases (see get_clock_realtime() in include/qemu/timer.h). So this
->>>>>> counter will exceed 32 bits in the year 2038, thus we should not
->>>>>> store this value in a normal integer variable. Change it to an int64=
-_t
->>>>>> to fix the problem.
->>>>>> And while we're at it, also adjust the nearby rtc_host_datetime_offs=
-et
->>>>>> variable to be on the safe side in the related code.
->>>>>>
->>>>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
->>>>>> ---
->>>>>> =C2=A0 system/rtc.c | 4 ++--
->>>>>> =C2=A0 1 file changed, 2 insertions(+), 2 deletions(-)
->>>>>
->>>>> Reviewed-by: Daniel P. Berrang=C3=A9 <berrange@redhat.com>
->>>>
->>>> Actually on second reading I think this patch is not quite right.
->>>> The code which uses the value is:
->>>>
->>>> =C2=A0=C2=A0=C2=A0=C2=A0 time_t value =3D qemu_clock_get_ms(clock) / 1=
-000;
->>>> =C2=A0=C2=A0=C2=A0=C2=A0 switch (clock) {
->>>> =C2=A0=C2=A0=C2=A0=C2=A0 case QEMU_CLOCK_REALTIME:
->>>> =C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 value -=3D rtc_realti=
-me_clock_offset;
->>>>
->>>>
->>>> On 64-bit platforms 'int' was 64-bit already and so was time_t so we
->>>> have no bug to fix.
->>>>
->>>> On 32-bit platforms the patch fixes 'int' to 'int64' which is fine
->>>> but that int64 value is then subtracted from time_t which is usually
->>>> going to be 32-bit again, unless the OS was built with 64-bit time_t
->>>> on 32-bit which almost no one does.
->>>>
->>>> IOW we only platform this fixes is 32-bit OS with 64-bit time_t.
->>>
->>> "32-bit *host* OS".
->>>
->>> Per ./configure script, we still allow:
->>> - x86_64 x32 ABI=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0 (CPU_CFLAGS=3D"-mx32")
->> We should maybe deprecate that x32 ABI ...
->>=20
->>> - sparc32=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=
-=C2=A0=C2=A0 (CPU_CFLAGS=3D"-m32 -mv8plus -mcpu=3Dultrasparc")
->> ... and that one as well?
->>=20
->>> - s390=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=A0=C2=
-=A0=C2=A0=C2=A0=C2=A0=C2=A0 (CPU_CFLAGS=3D"-m31")
->> Uh, we really still allow 31-bit s390 hosts here? I think this could
->> be removed nowadays, also upstream kernel recently ditched the
->> 31-bit userspace:
->>  =C2=A0https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.gi=
-t/
->> commit/?id=3D8e0b986c59c67e08ada646249f834655a9e6da16
->> Question is whether we can remove it immediately, or whether it
->> needs to be deprecated first?
->
-> Ah, wait, we completely disallow disallow 32-bit hosts nowadays:
->
->  https://gitlab.com/qemu-project/qemu/-/commit/372ec46b9f1215f48a4717f2b7=
-ed969f65bfadc6
->
-> ... so these checks in the configure script are just dead code
-> nowadays that could be removed now? Or is there still some hidden
-> magic here that depends on these lines?
+All that is stuff that missed getting removed with the rest of 32-bit hosts.
 
-Didn't we re-enable 32 bit hosts for qemu-img and friends?
->
->  Thomas
+> otherwise falling back to TCI.
 
---=20
-Alex Benn=C3=A9e
-Virtualisation Tech Lead @ Linaro
+Even TCI is 64-bit now.
+
+
+r~
 
