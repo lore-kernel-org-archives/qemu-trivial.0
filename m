@@ -4,96 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC915CD4F5B
-	for <qemu-trivial@archiver.kernel.org>; Tue, 19 May 2026 20:20:39 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2788ECD4F3C
+	for <qemu-trivial@archiver.kernel.org>; Wed, 20 May 2026 12:15:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wPQvP-0005ae-02; Tue, 19 May 2026 16:20:23 -0400
+	id 1wPfpL-00066P-DN; Wed, 20 May 2026 08:15:07 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wPQvH-0005Wl-E1
- for qemu-trivial@nongnu.org; Tue, 19 May 2026 16:20:19 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
- id 1wPQvG-00052j-1O
- for qemu-trivial@nongnu.org; Tue, 19 May 2026 16:20:15 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-2ba17c8cfacso38927305ad.2
- for <qemu-trivial@nongnu.org>; Tue, 19 May 2026 13:20:11 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779222010; x=1779826810; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:to:subject:user-agent:mime-version:date:message-id:from
- :to:cc:subject:date:message-id:reply-to;
- bh=WX7x84E+DmnFKK6FwZ0UaKRZmCRHlVbSGDnyYPd/N/g=;
- b=cAFT5FIbXIwetXeL0yVqIfJXkFQEmNPjRH1ZZpm7YUEvO7aF+7xzJejCrc9PnCa3jP
- AbmUxyonbkQ/Z0S3NjBiPP0EuXI1668eS+MbkUZhhmM8KdibVd8hdV4ezOHP0FLF0/Rx
- kdrBGlhlQ6IIpWbBRXLYBjCARPUrI1sWHnhQN26Hc19D7tMlMEKFjw2ifJb2HtSzdy9R
- DiCRGXZbazKfspLLDbcr05wUnR0IZoRsKA/6hJeIANqv6zhve5N+34EKH48YE+8+tyiM
- uJzfD/yNJShZtG/qo/NN9sQ4Tw4hF/t+ZjtYatkKUHH6A0vNjjf2rp80NiCgv7XG1Ydi
- pJTQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779222010; x=1779826810;
- h=content-transfer-encoding:in-reply-to:content-language:from
- :references:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=WX7x84E+DmnFKK6FwZ0UaKRZmCRHlVbSGDnyYPd/N/g=;
- b=FKJxxx32K6PrHcOJwXLDE+difP5WGmWFyPgFmlnjb+NwUDMJagFslK2lqaiGMIMRvV
- G9jCKfMWmuJX3OwDh5HpbUAnhSGbPWjs/4tuctuqUCN+JbgeqD2UOwOyHNvlAAuMi7kl
- DZwDtsjN7HgAlLVxTVT9XUnRy7dDTk2TxqpwjBtNcrH4Vbza66XWMP8y3iiEjSAT43MW
- VheqVcg2/fpeTy6BroJ8MpPA/4BzgxJOUWxgFipISNPCzaAuHFqPZbpgrSplKRe0KMSA
- nVPfmbm66LU9fTGGoWGl2tSkmPcc/Ezztzym0eIPNvY1VLW8bq257ShqqzVbqSRLEpnH
- QTHA==
-X-Forwarded-Encrypted: i=1;
- AFNElJ/5cT3R8nXmiewqmU6VwR55vfG2TbQZeFKoiEBB6RbxjxDZC1lBtOQtgGh9Qyhy9S6C00xHoD/f3hLS/2o=@nongnu.org
-X-Gm-Message-State: AOJu0YxkhzJSypUL3Rpp/KBwPEb+lW0klkNCy0Df9IxIkmdnTvS/+p4h
- vp2e+cb1waqkOP81rqSNMl+hBIjmJoY55UEY+O1WK9NxK3fJgmcvkV+8+8TA159FXUY=
-X-Gm-Gg: Acq92OGItS2XynlST8Co18E6jaLgP4Y2xLBW6q2dW40kvXxZOQ5TapVVP63oMcgAfS5
- hZPAMhFENbVK6Mt6BErw/txXZhJxWLl3OIObuJnTAn+cFzM3jLNIKILjdQxlej9jUML48xQMrAU
- Fsx/tczClrawsDHSxPe39rofYWzdC+wEI8ZBWfUH/avF1m9wdt3sRgQgwvyFxI9joE11ZT9nuos
- YZ2ZMOIC8JD+reNdkeXzEdlmJbkVnfMrDJqWXxsJIRhRReNtVvb/Lr/BRas9FFuFt/DKw7GCioL
- thzqSDQazjbRvZXkXr9xsPPB1rVEnphbAW6qN4nUsSXJdsQ3bY2EBuVaNd14vvGxVJFt5lUOHjq
- YFGcz+fIUx4Vb8RRfCmHBlYgrpshthfYtF5V8YV6kLSYKSirTdhEPo1P+gPnwT1LUDsdr4G1Cg1
- AgVzGQlMjbyYl/j/yUb5CDp+8eEMRRfe8qfsH24WM/4lUjee4=
-X-Received: by 2002:a17:902:d5d0:b0:2b0:7531:b61e with SMTP id
- d9443c01a7336-2bd7e97a6c2mr139604915ad.41.1779222010137; 
- Tue, 19 May 2026 13:20:10 -0700 (PDT)
-Received: from [192.168.0.4] ([71.212.142.33])
- by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2bd5d0fd384sm196292405ad.65.2026.05.19.13.20.09
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 19 May 2026 13:20:09 -0700 (PDT)
-Message-ID: <07cfc3ad-e828-41e5-859a-0667f63b22a9@linaro.org>
-Date: Tue, 19 May 2026 13:20:08 -0700
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wPfpI-00065C-Mj
+ for qemu-trivial@nongnu.org; Wed, 20 May 2026 08:15:05 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wPfpG-0007w3-TZ
+ for qemu-trivial@nongnu.org; Wed, 20 May 2026 08:15:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779279301;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=tKWQhMlXovumiljBXFqOLlRnS9Le2mF36pZSI5K53eA=;
+ b=enYhmFsC3N5bugC0NRaxjDJroDlKInlQKtyVYXaeRB8rUwWO+J01KCUyFltrj/0lsrXjnf
+ ceb9kD15TU6j7yYQesG6eiF47S4Hpb6pQaQ8aZONJiRqHhoTWHBswHXl/DzI1bDJ5Znq4Y
+ MaFBDOp7/vRlQgugc1DPxRy7T45Q/9A=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-527-ak78N2pMNZa_ebBKsXpTVw-1; Wed,
+ 20 May 2026 08:14:57 -0400
+X-MC-Unique: ak78N2pMNZa_ebBKsXpTVw-1
+X-Mimecast-MFC-AGG-ID: ak78N2pMNZa_ebBKsXpTVw_1779279296
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E68781956095; Wed, 20 May 2026 12:14:55 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.2])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 44C201955D84; Wed, 20 May 2026 12:14:55 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id E123C21E6A01; Wed, 20 May 2026 14:14:52 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: qemu-trivial@nongnu.org
+Cc: J. =?utf-8?Q?Neusch=C3=A4fer?= <j.neuschaefer@9elements.com>,
+ qemu-devel@nongnu.org,
+ Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,  Daniel P.
+ =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@linaro.org>, Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Subject: Re: [PATCH] docs/devel: Fix typo (s/exist paths/exit paths/)
+In-Reply-To: <20260520-exist-v1-1-535f929a87ae@9elements.com>
+ ("J. =?utf-8?Q?Neusch=C3=A4fer=22's?= message of "Wed, 20 May 2026 08:44:12
+ +0200")
+References: <20260520-exist-v1-1-535f929a87ae@9elements.com>
+Date: Wed, 20 May 2026 14:14:52 +0200
+Message-ID: <87se7mz39f.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] system/rtc: Fix a possible year-2038 integer overflow
- problem
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-References: <20260518160255.1844308-1-thuth@redhat.com>
- <ags5_IDkvxClCdHm@redhat.com> <ags7xIsUG2DqX5vu@redhat.com>
- <dbc6464c-2685-46c4-803c-6af53d345083@linaro.org>
-From: Richard Henderson <richard.henderson@linaro.org>
-Content-Language: en-US
-In-Reply-To: <dbc6464c-2685-46c4-803c-6af53d345083@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=richard.henderson@linaro.org; helo=mail-pl1-x62e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: hYzv4oZCRWNeAMvafQvrw7_Luk2kfwxOSevVXjcxw9M_1779279296
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 8
+X-Spam_score: 0.8
+X-Spam_bar: /
+X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,22 +94,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 5/19/26 01:24, Philippe Mathieu-Daudé wrote:
->> IOW we only platform this fixes is 32-bit OS with 64-bit time_t.
-> 
-> "32-bit *host* OS".
-> 
-> Per ./configure script, we still allow:
-> - x86_64 x32 ABI      (CPU_CFLAGS="-mx32")
-> - sparc32             (CPU_CFLAGS="-m32 -mv8plus -mcpu=ultrasparc")
-> - s390                (CPU_CFLAGS="-m31")
+Nominating for qemu-trivial.
 
-All that is stuff that missed getting removed with the rest of 32-bit hosts.
+J. Neusch=C3=A4fer <j.neuschaefer@9elements.com> writes:
 
-> otherwise falling back to TCI.
+> In the discussion of control flow through a function, "exit paths" were m=
+eant.
+>
+> Signed-off-by: J. Neusch=C3=A4fer <j.neuschaefer@9elements.com>
+> ---
+>  docs/devel/style.rst | 2 +-
+>  1 file changed, 1 insertion(+), 1 deletion(-)
+>
+> diff --git a/docs/devel/style.rst b/docs/devel/style.rst
+> index b8edcf9316f059fe15415543098118b28fcaf99c..f4da16a0e83ca6fed205e2516=
+fff4ac2cc941d04 100644
+> --- a/docs/devel/style.rst
+> +++ b/docs/devel/style.rst
+> @@ -469,7 +469,7 @@ for a time/space trade-off like ``tlb_mmu_resize_lock=
+ed`` in the
+>  SoftMMU TLB code.
+> =20
+>  If the lifetime of the allocation is within the function and there are
+> -multiple exist paths you can also improve the readability of the code
+> +multiple exit paths you can also improve the readability of the code
+>  by using ``g_autofree`` and related annotations. See :ref:`autofree-ref`
+>  for more details.
+> =20
+>
+> ---
+> base-commit: 6d17fd91f6cf88df5cb2205e578640d72605cc43
+> change-id: 20260520-exist-b23e143e9bfe
+>
+> Best regards,
 
-Even TCI is 64-bit now.
-
-
-r~
 
