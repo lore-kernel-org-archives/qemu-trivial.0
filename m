@@ -4,79 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E002CD4F54
-	for <qemu-trivial@archiver.kernel.org>; Wed, 20 May 2026 12:20:51 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 67973CD5BB1
+	for <qemu-trivial@archiver.kernel.org>; Fri, 22 May 2026 12:57:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wPfuT-0001r1-1A; Wed, 20 May 2026 08:20:25 -0400
+	id 1wQPRC-0004kX-TX; Fri, 22 May 2026 08:57:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wPfuR-0001pU-5p
- for qemu-trivial@nongnu.org; Wed, 20 May 2026 08:20:23 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wPfuP-0001CP-91
- for qemu-trivial@nongnu.org; Wed, 20 May 2026 08:20:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1779279619;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=fcAjX18G8GGvj7W9mRJY0VQUjByqVfNPrHbNrV6E5xE=;
- b=EcYyy1f8j29LPJ7lTl2XDGjOev8fMug3ooOQoP0kopYQYK4lyllY+2z/48Q7CnOf3uvxdy
- 31iJTHQHkrEP3JxHoKj5OHqStiJjkcRm+tRnWkzpiHp48BYojjGND3hAuf/62ujkE77FCN
- ycsabKbbXa4jLWraTApXly/FnLWT79Y=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-606-hpJHQzgZNem0A6QXS9FzwQ-1; Wed,
- 20 May 2026 08:20:15 -0400
-X-MC-Unique: hpJHQzgZNem0A6QXS9FzwQ-1
-X-Mimecast-MFC-AGG-ID: hpJHQzgZNem0A6QXS9FzwQ_1779279614
-Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D9DEF195605B; Wed, 20 May 2026 12:20:13 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.2])
- by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 51914180034E; Wed, 20 May 2026 12:20:13 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id CB0BF21E6A01; Wed, 20 May 2026 14:20:10 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: J. =?utf-8?Q?Neusch=C3=A4fer?= <j.neuschaefer@9elements.com>
-Cc: qemu-devel@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Daniel P.
- =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Pierrick Bouvier
- <pierrick.bouvier@oss.qualcomm.com>, qemu-trivial@nongnu.org
-Subject: Re: [PATCH] docs/devel/qom: Fix some editing errors
-In-Reply-To: <20260520-qom-v1-1-baad87fefe4f@9elements.com> ("J.
- =?utf-8?Q?Neusch=C3=A4fer=22's?=
- message of "Wed, 20 May 2026 13:15:20 +0200")
-References: <20260520-qom-v1-1-baad87fefe4f@9elements.com>
-Date: Wed, 20 May 2026 14:20:10 +0200
-Message-ID: <87o6iaz30l.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <randomjack94dev@gmail.com>)
+ id 1wQKv5-0005OJ-H2
+ for qemu-trivial@nongnu.org; Fri, 22 May 2026 04:07:47 -0400
+Received: from mail-lj1-x22d.google.com ([2a00:1450:4864:20::22d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <randomjack94dev@gmail.com>)
+ id 1wQKv1-0002jH-Uq
+ for qemu-trivial@nongnu.org; Fri, 22 May 2026 04:07:46 -0400
+Received: by mail-lj1-x22d.google.com with SMTP id
+ 38308e7fff4ca-38e8292423fso48272231fa.0
+ for <qemu-trivial@nongnu.org>; Fri, 22 May 2026 01:07:40 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1779437259; x=1780042059; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=nPhCP0TNqZBQf/eUZJjjJdyyip7nhjXYU1GYT6M/8i8=;
+ b=ebIj84/mIY++KYV+M9u5PLqkpitm5tO28luM0fG8MU8DEB7+HwbFORcvFYAU/rl/2F
+ tSpBmn/6BWgD94RO75ZvnjswOObdcMPNBZB8ssN+X/kb183f8bUCrt1W7E6sMUPpr/tI
+ mQPq00+lDiX7w5CTZ6dAi7lVBqrupdM86j0sNxtijexDr38cgAbxWbdbAf0Pm6NlVuCZ
+ bKSi5dw+J2U5VoVSEzdzgXamk/M+VUt7wp/EMwq7sgqFJnncl5D/m17qil9cEFw/HBki
+ Sw3FRwMOZsn0wzAJlN0o//Pv8Oetr+GapU2BaQLavVu4R3nBBVcYvtLDUL7NzLZAl0pK
+ yvZw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1779437259; x=1780042059;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=nPhCP0TNqZBQf/eUZJjjJdyyip7nhjXYU1GYT6M/8i8=;
+ b=SrdfPdhwbgHaAzQKKd9Qo2U115KFmv+yoTzUXLjxDAKH/JEEE1/ceJN7fIWdk8SzoQ
+ SU0de1iGB0paM/yPrQBUf4qXniqNccUX5NHj6HsZ0JFRpgf6cee9O6zovdkGqo7nEyA7
+ BcaOf/7r+jiazAI9wVwrwhEVwhTB0Ntu2xwTFPNM44ZbqszMaOek6e7VsjV6aaDbxbL6
+ Hme2nS97hPntAEqGLJdqtIS/PPXEudnBLcy2JPPuGQi9C4U79bTg/PDaYmfCfCccSlDV
+ fj0XyL6RnupbuAsFp1zQXxszpGbAFGv3AREC0Tu/BP2Y37JrCZds9X20dKXBOhRhuPiC
+ uDjw==
+X-Gm-Message-State: AOJu0YxWqJ395pt6FwB1e3hCyA3OIe7asqdwM/OVEhrJaOmqRA4kk5hg
+ +acgMev3lGg0oHwTXqX/hH0+w2/qUzZRiJ4ugJo9F4fSm0kxtTD9TWED
+X-Gm-Gg: Acq92OEEHxSgDpNJTFPrLc/uF8wUx0xgJerlEZAxAmz+HtXN7abxLmILrSAJrRgl+Vi
+ hS6DJGJrOcNOJNvqzu7/Ub3Cr4U/HmstGVSZlhm/2p0yd9i74vXzUqA6yR8B4XSuoEJ/xKotxiP
+ GqzxtcuhBpIdmsOsj9Y2sYIvbkjAOLgWlvuT2i/IUR19oy4acsznLvK9u+hKAWwrCZu1vvuleke
+ qMwe2Qj5ndtdQ3X+4Ta9sRnFYaNRaXbpyh+f4YTIcv8qRaFej3wQbrmjXMaKFgZ076jopQpfpi7
+ vROu6EmcKhBAqu4gW8cYvym66e9u1E+hS+DWftRiECHZYQU+7iaPR8QeiG9DSWJ926tnA3VNCbX
+ veJVe3Apt6TWOc8Ym6Dk6PoVq8Wwi0fJvjmI9aeJLJAeWAqgVABQlW3waQxNdLpYYm3VZem3Fff
+ M9BH1h52S764Zd
+X-Received: by 2002:a05:6512:1084:b0:5aa:b6b:f6ef with SMTP id
+ 2adb3069b0e04-5aa323d79e6mr672703e87.45.1779437258424; 
+ Fri, 22 May 2026 01:07:38 -0700 (PDT)
+Received: from machine.. ([37.113.215.232]) by smtp.gmail.com with ESMTPSA id
+ 2adb3069b0e04-5aa32cf95c9sm239722e87.78.2026.05.22.01.07.37
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 22 May 2026 01:07:38 -0700 (PDT)
+From: Evgeny Kolmakov <randomjack94dev@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, stefanha@redhat.com, fam@euphon.net,
+ kwolf@redhat.com, hreitz@redhat.com, zhangckid@gmail.com,
+ lizhijian@fujitsu.com, jasowang@redhat.com,
+ Evgeny Kolmakov <randomjack94dev@gmail.com>
+Subject: [PATCH 0/2] Mechanical conversion to QEMU_LOCK_GUARD
+Date: Fri, 22 May 2026 11:06:42 +0300
+Message-ID: <20260522080644.9531-1-randomjack94dev@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: WaFunZZ7TB8bnTWFsKKRzXDaBQPNgtr2Grtivswj2rg_1779279614
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 8
-X-Spam_score: 0.8
-X-Spam_bar: /
-X-Spam_report: (0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::22d;
+ envelope-from=randomjack94dev@gmail.com; helo=mail-lj1-x22d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 22 May 2026 08:57:13 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -91,48 +99,20 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-J. Neusch=C3=A4fer <j.neuschaefer@9elements.com> writes:
+This trivial series replaces manual qemu_mutex_(un)lock() calls
+with the safer QEMU_LOCK_GUARD() macro in
+  net/colo-compare.c: colo_notify_compares_event(),
+  block/io.c: bdrv_co_get_self_request().
 
-> "devices have an two additional [...]" -> "devices have two additional",
-> and also a case of "were" vs. "where".
->
-> Signed-off-by: J. Neusch=C3=A4fer <j.neuschaefer@9elements.com>
-> ---
->  docs/devel/qom.rst | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
->
-> diff --git a/docs/devel/qom.rst b/docs/devel/qom.rst
-> index 5870745ba27b108726da0756aa2b90109d5e0bd6..935bb1004a7839c8e963985e7=
-65c866d5b980c53 100644
-> --- a/docs/devel/qom.rst
-> +++ b/docs/devel/qom.rst
-> @@ -435,14 +435,14 @@ OBJECT_DEFINE_ABSTRACT_TYPE() macro can be used ins=
-tead:
->  Device Life-cycle
->  =3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D
-> =20
-> -As class initialisation cannot fail devices have an two additional
-> +As class initialisation cannot fail, devices have two additional
->  methods to handle the creation of dynamic devices. The ``realize``
->  function is called with ``Error **`` pointer which should be set if
->  the device cannot complete its setup. Otherwise on successful
->  completion of the ``realize`` method the device object is added to the
->  QOM tree and made visible to the guest.
-> =20
-> -The reverse function is ``unrealize`` and should be were clean-up
-> +The reverse function is ``unrealize`` and should be where clean-up
->  code lives to tidy up after the system is done with the device.
-> =20
->  All devices can be instantiated by C code, however only some can
->
-> ---
-> base-commit: e89049b3ba5f1f0468bc0d294173345597514a1b
-> change-id: 20260520-qom-76537da673b6
->
-> Best regards,
+Evgeny Kolmakov (2):
+  net/colo-compare: Use QEMU_LOCK_GUARD to simplify mutex handling
+  block/io: Use QEMU_LOCK_GUARD to simplify mutex handling
 
-Reviewed-by: Markus Armbruster <armbru@redhat.com>
+ block/io.c         | 4 +---
+ net/colo-compare.c | 8 ++------
+ 2 files changed, 3 insertions(+), 9 deletions(-)
 
-Perhaps this could go via qemu-trivial (cc'ed).
+-- 
+2.43.0
 
 
