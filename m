@@ -4,107 +4,85 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B90FDCD5BD5
-	for <qemu-trivial@archiver.kernel.org>; Thu, 28 May 2026 09:18:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AA074CD4F54
+	for <qemu-trivial@archiver.kernel.org>; Thu, 28 May 2026 15:34:33 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wSWsK-000119-1p; Thu, 28 May 2026 05:18:00 -0400
+	id 1wSckF-0001PZ-6o; Thu, 28 May 2026 11:34:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSWsF-0000rl-Se
- for qemu-trivial@nongnu.org; Thu, 28 May 2026 05:17:56 -0400
-Received: from mail-yx1-xb135.google.com ([2607:f8b0:4864:20::b135])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wSWsD-0001v0-TB
- for qemu-trivial@nongnu.org; Thu, 28 May 2026 05:17:55 -0400
-Received: by mail-yx1-xb135.google.com with SMTP id
- 956f58d0204a3-65c0bda7f15so12524647d50.0
- for <qemu-trivial@nongnu.org>; Thu, 28 May 2026 02:17:53 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1779959873; cv=none;
- d=google.com; s=arc-20240605;
- b=N2J0Z/AbevAjwuTOhbeomcUGbmBvRPcrZL3Madjoc10knDNNYZnS9MtA79gIAm7+i3
- +A9YiGqyILIrJe4Lqkqn7o8QI6mJTF+A9DDcB6yt9ybJ7h23fYmlnIjztTuSh5AwdUu4
- VFvnCkTXTVvJhlVXBmrEQ7OVLNvv7bH48ZR9fBf49ExIc3DDk/ztA/uIAhlQd1RmadeP
- avGvGdwScffl5qUv7Bhag7Tq3fTkt4FdkHNr8hesrwtyTWcBt32W+OBsz9PgoV4wujEJ
- 9WYZAg+ZHadtvj/2Iweb+ZDGiwG1YGFrStWClCgYAJltlZrJm4wSXxtuQ/qbF7lsTk4d
- vBWQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=+BZipBpjvnBsXT09usZPYGe5z3DQXqqT8jDo94YrMeE=;
- fh=gcffyYpJmy2zfYRKVp38Ne7/kzIvOeVLXHBcD5sEMvs=;
- b=hgCBTqnFiOZWGFU3mqYdvd/W9kGECLs7khIBcJgV2qIumr9FiaKpNau5dvje9V4/Qd
- uNAvML47MnV62xjRO+zXVhNHwI4yXDTycweZ+0R231I0j4WKqCUpzfL9S0i+1mBV8wW8
- U4xyrEOLYGzaaHopNty4pYy8JgLUCIhTN7SVS12Yo76tRBif3jtcbXWiNpkM1rkDdBXv
- gC/qMl6ct3YtpPcLM9LDm6WZh/6gRyBUJOnXp2kiSr8wqwZ3QW5uMswOMgn1OcvdJHVI
- pBoDPh/MXAbru1z2FwMjCc378LhMfuUnfWxfuwAkcaaQDbsY1cCkpjgkNCyJaxaEuVMu
- qShg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1779959873; x=1780564673; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=+BZipBpjvnBsXT09usZPYGe5z3DQXqqT8jDo94YrMeE=;
- b=lqswIzhAaets/SqmT3USErgfFR4GlKDAUjlU66ciI2ruBq6SzusaZWjriqPHCogyEq
- 7nt/w9r4kV3nrON5m5vF+YEachIFarQYUo+AYFMoXGeOrXGmDhC/qmmM85a81a+khP0t
- hcf9SoYa/8mpIqZjD7VFckxBm1OVppWqmW/+lsCf2IJm5/beZK+odq3F6DV3hiD2rTtB
- TSaCpw5rBdybYPFKvWrwJegm2Rc9jcLn/4bijCpIiauiWdXeAMkn/RxAMvg/+QETr784
- 6+P9/jOrIrSYPyYJ4GMz8E0Oo9JaPl+kbQQNVurx6sNwfKP93K1n3tc4XkAHrYLCTVbm
- hcZQ==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1779959873; x=1780564673;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=+BZipBpjvnBsXT09usZPYGe5z3DQXqqT8jDo94YrMeE=;
- b=sdkCaFMVSNpTLMXpVpAfsbBiBxIBSiusoJKeqYmeSeUrI+6eYZcbDvLnFCFwAPNzI0
- 6FIGdM7NrsYaqsGe207h+m75ryS6g9c0nz9GQeIQvTWImrYPlxMfcGwARIdQe6NSjvYp
- PeWt4DdJZmS/gPwTJuxfWbjCbpApzBDN4hjlWTV9VQwcN41BENvCBiKaS+u8iqU0XYUZ
- kSJA5LbsQszBxVmvEb75gvz0o0zHvymsrOc/GCHsCcloaIXNna0lzD587DGw/SF5yY3E
- DeWeb7eVsSgJNRk8psTcnU2V+lNilxAv+8QqUI3glkaEb2Ot2pkbqxEDeL3dhAxAZBwJ
- z01A==
-X-Forwarded-Encrypted: i=1;
- AFNElJ8oIHBZ33/P74tQigVnIW3+s8sx4bjRFoo28pddwQcnE4Rzc7eJlW7nRXjjQMdwZ+uf/jGyE/VqaJZbLVY=@nongnu.org
-X-Gm-Message-State: AOJu0YwLOHjEo8EpewOu6jfi1io3HDA3qparfutd79W+APOYeirIMzIv
- FlAuQ8fr9WoXQp2lFNI6aC1cywtkw3wvRTDtOJ3iDflOqiztIAmd2S4Q1DEJEdsswdrrGbrkDMm
- lzIHT/FWL9AOKqEhiTQcxas+r3uS+NvbiQkTbt7mhMA==
-X-Gm-Gg: Acq92OHKgxDWn821zKWWZ9OEPEQd3RtaZ1roc7n/zBMLg1/t1qq4BRR3DK5pTItXKr3
- +T7ABqzXnn3bYKtZg5llAiNk2T+gQzhfIWEB6zfPyAA/GK9J1ym6XL5yRocGmkM05wmjjuuHVz6
- gBbzMGgR+F02M1itrbqj+RU6coYgQr8dMThEOaquC+iGyoLazureYr1bze1P98bl+JFD/4QiplN
- 4z7+kwSTLcVhBJGhlll5w19FhawUGA42JvHWJtxosJTjjAHKrUHy8K8M+2saG4oQql+fcWIRInn
- bi1zMdi+8ua2S9OFBsy1hSQBr0JocnCGoY8vm4R7PQd8uTFLHvQ+tZsdx5I/xbLA3e8cPZ+RwND
- GlA==
-X-Received: by 2002:a05:690e:1306:b0:657:eeac:6ba2 with SMTP id
- 956f58d0204a3-65f3f48186dmr19463682d50.46.1779959872611; Thu, 28 May 2026
- 02:17:52 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1wSckE-0001OJ-3R
+ for qemu-trivial@nongnu.org; Thu, 28 May 2026 11:34:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <cohuck@redhat.com>) id 1wSckA-00074t-Qv
+ for qemu-trivial@nongnu.org; Thu, 28 May 2026 11:34:01 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1779982436;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=pnmPn3NH0yQevU1t4SMBja33XUvgg1pAtFhfq0GzIj4=;
+ b=GZfduz0JET37/LTnijeLRQK2ZG3xyErN09LYLusAJw8qBCLvEXB3hUgHwkHvMTqGFwh+u0
+ TyrXMiTkFwubKgFZGuWC77RD3KocJ/AK7jbTUBPXRV/0shov15BZdBZEtth9NwXYEyIa3g
+ WLTMCvKnUW0sK8PfcHW6f7qt2EvOQ5Q=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-479-ShivFw4kNOOKHMI526_yUg-1; Thu,
+ 28 May 2026 11:33:52 -0400
+X-MC-Unique: ShivFw4kNOOKHMI526_yUg-1
+X-Mimecast-MFC-AGG-ID: ShivFw4kNOOKHMI526_yUg_1779982430
+Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 64C5C1800359; Thu, 28 May 2026 15:33:49 +0000 (UTC)
+Received: from localhost (unknown [10.44.49.185])
+ by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 30F1630001BB; Thu, 28 May 2026 15:33:47 +0000 (UTC)
+From: Cornelia Huck <cohuck@redhat.com>
+To: Christian Borntraeger <borntraeger@linux.ibm.com>, Alexandra Winter
+ <wintera@linux.ibm.com>, Heiko Carstens <hca@linux.ibm.com>, Hendrik
+ Brueckner <brueckner@linux.ibm.com>
+Cc: Halil Pasic <pasic@linux.ibm.com>, Vasily Gorbik <gor@linux.ibm.com>,
+ Alexander Gordeev <agordeev@linux.ibm.com>, Sven Schnelle
+ <svens@linux.ibm.com>, Gautam Gala <ggala@linux.ibm.com>, Eric Farman
+ <farman@linux.ibm.com>, Matthew Rosato <mjrosato@linux.ibm.com>, Ilya
+ Leoshkevich <iii@linux.ibm.com>, Thomas Richter <tmricht@linux.ibm.com>,
+ Shrikanth Hegde <sshegde@linux.ibm.com>, Mete Durlu <meted@linux.ibm.com>,
+ Richard Henderson <richard.henderson@linaro.org>, David Hildenbrand
+ <david@kernel.org>, qemu-stable@nongnu.org, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org, qemu-s390x@nongnu.org
+Subject: Re: [PATCH] target/s390x: Make container ids in SysIB_15x 1-based
+In-Reply-To: <9308b8e8-f2f8-4cd7-b25d-6f1f9573c6da@linux.ibm.com>
+Organization: "Red Hat GmbH, Sitz: Werner-von-Siemens-Ring 12, D-85630
+ Grasbrunn, Handelsregister: Amtsgericht =?utf-8?Q?M=C3=BCnchen=2C?= HRB
+ 153243,
+ =?utf-8?Q?Gesch=C3=A4ftsf=C3=BChrer=3A?= Ryan Barnhart, Charles Cachera,
+ Avril Crosse O'Flaherty"
+References: <20260511134909.43802-1-wintera@linux.ibm.com>
+ <9308b8e8-f2f8-4cd7-b25d-6f1f9573c6da@linux.ibm.com>
+User-Agent: Notmuch/0.39 (https://notmuchmail.org)
+Date: Thu, 28 May 2026 17:33:45 +0200
+Message-ID: <87ik87mtuu.fsf@redhat.com>
 MIME-Version: 1.0
-References: <20260527175705.152301-1-christian.barry@usp.br>
-In-Reply-To: <20260527175705.152301-1-christian.barry@usp.br>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 28 May 2026 10:17:40 +0100
-X-Gm-Features: AVHnY4KWH4MvTMUhzLxy1dB-ftoU7D35r3H2ac72n_hiU4LJCD90u04xoNJ0zIA
-Message-ID: <CAFEAcA_t_Rx1CupetKR=aC1U6skFYmo_2oG-PyVYdwfJmb5X6Q@mail.gmail.com>
-Subject: Re: [PATCH] disas: sparc: Fix integer overflow in compare_opcodes()
- for loop
-To: Christian Barry <christian.barry@usp.br>
-Cc: qemu-devel@nongnu.org, Artyom Tarasenko <atar4qemu@gmail.com>,
- qemu-trivial@nongnu.org, 
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, 
- Eduardo Augusto Cavalcanti <eduardoaugustoabc@ime.usp.br>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b135;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb135.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
+X-Mimecast-MFC-PROC-ID: gBq6bBTIkImybTGB7XZFdd_t4qzHgsaaiDoScgA8Nmw_1779982430
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=cohuck@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -24
+X-Spam_score: -2.5
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,64 +98,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Wed, 27 May 2026 at 20:56, Christian Barry <christian.barry@usp.br> wrote:
->
-> From: Christian Barry <christian.barry@usp.br>
->
-> Replaced left-shift of a literal 1 by i inside of two for loops in compare_opcodes() with a call to BIT(i). This makes it so 1 is interpreted as an unsigned long int, preventing overflows.
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/2618
->
-> Signed-off-by: Christian Barry <christian.barry@usp.br>
-> Co-developed-by: Eduardo Augusto Cavalcanti <eduardoaugustoabc@ime.usp.br>
-> Signed-off-by: Eduardo Augusto Cavalcanti <eduardoaugustoabc@ime.usp.br>
-> ---
->  disas/sparc.c | 5 +++--
->  1 file changed, 3 insertions(+), 2 deletions(-)
->
-> diff --git a/disas/sparc.c b/disas/sparc.c
-> index 5689533ce1..6fc057e3a2 100644
-> --- a/disas/sparc.c
-> +++ b/disas/sparc.c
-> @@ -27,6 +27,7 @@
->     see <http://www.gnu.org/licenses/>.  */
->
->  #include "qemu/osdep.h"
-> +#include "qemu/bitops.h"
->  #include "disas/dis-asm.h"
->
->  /* The SPARC opcode table (and other related data) is defined in
-> @@ -2515,7 +2516,7 @@ compare_opcodes (const void * a, const void * b)
->       another, it is important to order the opcodes in the right order.  */
->    for (i = 0; i < 32; ++i)
+On Tue, May 12 2026, Christian Borntraeger <borntraeger@linux.ibm.com> wrote:
 
-The loop boundary is 32, so i is at most 1.
-
->      {
-> -      unsigned long int x = 1 << i;
-> +      unsigned long int x = BIT(i);
-
-The loop boundary is 32, so i is at most 31. QEMU uses the
--fwrapv compiler option, so "1 << 31" is well defined,
-even though it shifts into the sign bit. It's worth noting
-in the commit message that we are not actually fixing any
-bug here, we are merely placating somebody's static analyzer.
-
->        int x0 = (match0 & x) != 0;
->        int x1 = (match1 & x) != 0;
+> Am 11.05.26 um 15:49 schrieb Alexandra Winter:
+>> The Container Id in a container-type TLE of SysIB_15x is defined as 8-bit
+>> unsigned nonzero integer. Make stsi fc 15 emulation architecture compliant,
+>> by starting the container ids at 1 for the lowest numbered container.
+>> 
+>> The qemu misbehaviour without this patch becomes obvious due to a recently
+>> proposed kernel fix. Older linux kernels pass the container ids from stsi
+>> fc15 unchanged to sysfs, i.e. starting at 1 on s390 hardware. This resulted
+>> in off-by-one values when compared to the values from HMC. A Linux kernel
+>> fix is being proposed to correct the sysfs topology ids by -1, so they
+>> start at 0, e.g. when displayed by 'lscpu -ye'. In case a KVM guest with a
+>> fixed kernel runs on a host with a qemu without this fix, this can result
+>> in container ids erroneously being shown as 255.
+>> Example (Fixed guest on unfixed qemu):
+>> $ lscpu -ye
+>> CPU NODE DRAWER BOOK SOCKET CORE L1d:L1i:L2 ONLINE CONFIGURED POLARIZATION ADDRESS
+>>    0    0    255  255    255    0 0:0:0         yes yes        vert-medium  0
+>>    1    0    255  255      0    1 1:1:1         yes yes        vert-medium  1
+>> After this fix:
+>> $ lscpu -ye
+>> CPU NODE DRAWER BOOK SOCKET CORE L1d:L1i:L2 ONLINE CONFIGURED POLARIZATION ADDRESS
+>>    0    0      0    0      0    0 0:0:0         yes yes        vert-medium  0
+>>    1    0      0    0      1    1 1:1:1         yes yes        vert-medium  1
+>> 
+>> Fixes: f4f54b582f ("target/s390x/cpu topology: handle STSI(15) and build the SYSIB")
+>> Signed-off-by: Alexandra Winter <wintera@linux.ibm.com>
 >
-> @@ -2525,7 +2526,7 @@ compare_opcodes (const void * a, const void * b)
+> Acked-by: Christian Borntraeger <borntraeger@linux.ibm.com>
 >
->    for (i = 0; i < 32; ++i)
->      {
-> -      unsigned long int x = 1 << i;
-> +      unsigned long int x = BIT(i);
->        int x0 = (lose0 & x) != 0;
->        int x1 = (lose1 & x) != 0;
+> I guess this should go via Connys s390 tree.
 
-If we're going to bother to change this not-a-bug, it would
-be  better to do it the way that upstream binutils did it,
-as noted in the gitlab issue: using "1ul".
+Yep, that makes sense.
 
--- PMM
 
