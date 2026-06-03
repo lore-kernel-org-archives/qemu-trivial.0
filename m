@@ -4,89 +4,103 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D5649CD6E49
-	for <qemu-trivial@archiver.kernel.org>; Sat, 30 May 2026 15:25:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C8E2CD6E55
+	for <qemu-trivial@archiver.kernel.org>; Wed,  3 Jun 2026 07:05:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wTLYP-0004Ne-4l; Sat, 30 May 2026 11:24:50 -0400
+	id 1wUfem-0001WQ-CO; Wed, 03 Jun 2026 03:04:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wTLY4-0004If-6C
- for qemu-trivial@nongnu.org; Sat, 30 May 2026 11:24:29 -0400
-Received: from mail-wm1-x330.google.com ([2a00:1450:4864:20::330])
+ (Exim 4.90_1) (envelope-from <tahsinahmed217@gmail.com>)
+ id 1wUcum-0000QG-0Z
+ for qemu-trivial@nongnu.org; Wed, 03 Jun 2026 00:09:12 -0400
+Received: from mail-qk1-x733.google.com ([2607:f8b0:4864:20::733])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <philmd@linaro.org>) id 1wTLY1-0004xl-Eo
- for qemu-trivial@nongnu.org; Sat, 30 May 2026 11:24:27 -0400
-Received: by mail-wm1-x330.google.com with SMTP id
- 5b1f17b1804b1-4904c1ce4c1so93223345e9.3
- for <qemu-trivial@nongnu.org>; Sat, 30 May 2026 08:24:17 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <tahsinahmed217@gmail.com>)
+ id 1wUcuk-0003wc-Im
+ for qemu-trivial@nongnu.org; Wed, 03 Jun 2026 00:09:11 -0400
+Received: by mail-qk1-x733.google.com with SMTP id
+ af79cd13be357-91587626a3eso106909985a.2
+ for <qemu-trivial@nongnu.org>; Tue, 02 Jun 2026 21:09:08 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780154655; x=1780759455; darn=nongnu.org;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :from:to:cc:subject:date:message-id:reply-to;
- bh=5lfSFK16M75PShE4mPiUfY0e9E1CdMU/HALcfKSeksU=;
- b=gtCqIdwhIAWDuzJvT2Ootk7dUob+mMfHFt+ZJE3aeruF68hI5ddh7zjlAWuaXCdkC6
- LhvHxddKdp3vbMLgmkfEpi4PHi/o2cQyC4QI8p6UoC01IUX4M+pMhjL7RlXypn8JH1X/
- u5YWxOnwM7kjgmwXBzYxmN834iWbJc5YDZ85T+vGqJqeiIBLLDsXPv9B4L8TVl1OgIDC
- yDHFYJIHJlZOz2NktWCt31phzJLsop5NL/hEgxmcuoX0KkChvsqbymRKayD7kig1C1x0
- AzHSWNAiuSzvzfJmLrSHTpEoWoaXMyVUQlmTzL3oWCTNGbSrXLNNRir78o7s07xccaN1
- Y+EQ==
+ d=gmail.com; s=20251104; t=1780459748; x=1781064548; darn=nongnu.org;
+ h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+ :date:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=FVvLPhtSjcR9JUA+chKlMdrtJg+0QqpGpLjLsEGQ0SE=;
+ b=cb0hxN9JjEZgylPlaWGs2EgCgrW2rkTnSpm6RhpBitLKC9fdLmDU4BFlRs6SvM9UNH
+ 8faNsXRlEhYno3VRYMlvSYGUhjDDQC5WtsMxJIqMqnWtPR/bBA0UiYQY3DkO/HotO4fG
+ p5iUPLTS8gpejUsQ5+VtmYtOJv8beaMVgryfX8t2eQpTr77AOpIDJJKykalRLsPTqDt5
+ Mbf9n18m5i4utQCsvdPFKqgfwjdpK8X2EA5tddQp+IKllgB+OBGpKibIfLXYpkzAbtoB
+ O6p1K+Oy3NBV7u9OD+3FzCu6ak1pOlcCtk15/fHFCk1iFJCnB7MaIdIWgu7eA6Q8CCH5
+ VExg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780154655; x=1780759455;
- h=content-transfer-encoding:in-reply-to:from:content-language
- :references:cc:to:subject:user-agent:mime-version:date:message-id
- :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
- :reply-to;
- bh=5lfSFK16M75PShE4mPiUfY0e9E1CdMU/HALcfKSeksU=;
- b=aVfMIIMZw5SlnufGtbVJEME0kKNlSAyblVNGkIV9B2bdjAHNEBvSefgKys3cIndo2o
- EVj5L1hE1A6U/22HaqlqVwUj1ORnt6vxZBSxUs17Xix+rt21tUZGUsEIp0BQIKsb/Gd+
- NEV4w+DI5qIQXQzeyllZKfA/VeWrJG4w0Z9N41INoVbK9hUsUNIjx/bkWsz+bQbagAQh
- v7QIN++5BgCbYvU19yEu4wyLuJggs7SFosDyOdWDB4Yq46S86XqQYoStc5Xie3z7rdwK
- hlLo2FXHyD6H/uqV/QWUHxoajvOJ9auFvd1DLWzXtFAfUveM+hSLKCTeYfPGWAuqqyLV
- agSA==
-X-Gm-Message-State: AOJu0YyDEzwrWzkn26lBbavlmjW3xuRnVJMU0W6mA7UPBEUb+ZErDr5u
- Omy1mXQQuaMuuQPqzv2amt6dUiq19VDWIfgrn4ltnOO+9Mi2wBij9SyVYQ5PBORFa7s=
-X-Gm-Gg: Acq92OFPM3B0AKEi0SLEp77iNOF1vHe7b9s7tV8qrPzXC55S6pfnpFcxDxLHIDKEGo6
- o6C86ouT4LEr/bqfoq2makMZ+oT+7dhdYo702DmYfmszuhTD/H9bQX9CB98f5UnJ//PHxtqJoYf
- sluGWKvkRnbqTU4kv/q06BgVpSP4vmV2Jv+MXhCCUBFG1CE+GihnFOs5sHKgo4/+5aDyKWhgtaN
- wow2elmLK/gXErU/CmIUspcBJO/rRbs8tKdT89P76qzypqA/+9iZtP9TwgjYNGW0aWoBZK3vheN
- lqJPZ9xIuMqpQtWSvM1Hm6L0QEg+cnqL2x4O9xj18Ci7U39NNOPkFcvMqcRxPFjfPktS/X3suCR
- j9pnJbow5zx8VZr0N0KU6+ypBerQnUYWp7zCzx08bhRAGRlLsS8Np24ClydI0cA6QZP+F/b4+yJ
- lulVrpTWRkAuTxn9eRZ1Ehe8hmyewzRrd7Jkz2d/pg+OwYjYo7tqpdKKgFkzwRelhS5+062zTXu
- N8D
-X-Received: by 2002:a05:600c:8582:b0:488:b187:3c with SMTP id
- 5b1f17b1804b1-490a29399fcmr55008995e9.14.1780154654892; 
- Sat, 30 May 2026 08:24:14 -0700 (PDT)
-Received: from [192.168.69.207] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-45ef34b47eesm12638888f8f.9.2026.05.30.08.24.13
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Sat, 30 May 2026 08:24:13 -0700 (PDT)
-Message-ID: <b304853d-b5e8-47ee-b1c5-cbe466b97abb@linaro.org>
-Date: Mon, 5 May 2025 08:48:28 +0200
+ d=1e100.net; s=20251104; t=1780459748; x=1781064548;
+ h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+ :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=FVvLPhtSjcR9JUA+chKlMdrtJg+0QqpGpLjLsEGQ0SE=;
+ b=rKRK8/iUdylecUnuRY/X/CwsIdDxsUk5RtAm0XI0OOnNcsMlveksLrKaMkCLLlWxwk
+ OfpIW+TEm7OD5WJj417u1KCPEYdlaM+Ez9edQcw7se2ZqdfrRu0givmdtYTwvWVmDhGj
+ me/nu+7BPE7SIAeOp1fmbwn3+gL04DL/siRJRsBd5VtDioSDkt0G2OMOMadG4Ds924Ko
+ MTD10gjDG66d465VG0VIl3lxzERVCfruih8F+kQjNlGiD/lHPAN/RvrX+a+6AL8YYp/R
+ yJZ1a7/k5EWA7IdXWk5tkO0ZjbCDVprx7Su9+RcPX1rf3o9NnqLy522TD6gUxSNOm/1F
+ PEOQ==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ9jt4aI/ByTTfBBiJgVpP4g5SxL4uRGFxHQVwnx2VrHTkmxY1AmeiHJYuQAb6kDP7OmKD7FKI6YUgEM1mA=@nongnu.org
+X-Gm-Message-State: AOJu0YzWfGvJVU+XA1J0XkItCf4CWSxkEVWrN/w6ocPEZZ245PbzxgJc
+ gxM8IT9CWqakuRhSjGwjPozYwk+zuEanoN446Dz1DUwhvqrpaKyvHDg+
+X-Gm-Gg: Acq92OFAcEA7S/aFnWZnvv1ZRANXFNH4n9P2ybrkXYMq6QGW5SIv2XrgHsKepUoIkAE
+ 4K+SXuKJsFE+CvwHpTW7azzGmjl6m+HXltGVS6jLZ390pZY1rGfoqzqd76GeK9FzUm1J8zH4GKR
+ nh0PBVl690IkbIjh1J5qgwv15dnHYXmqJWN1cp0SgiD0Qy+TrnRze63VqwGPfeLxsdXDHpFoYaH
+ 5FoP7vm/iUinIaaNjZ8ETVe7V5wp4sMYTAz9ZPcG5TzHoyqoFpFxRAqr5p59Tiirdz33+jEMr9+
+ IhFjauAPMexOvH8lDD32sjmJj/ufSJ6dyoD6uxqRk0X6e3jXwoC314w0MidirwgiuNUhrNDfQq2
+ xmxG9jLVHx5meSg71lItlnhdxBMUGJ6GjQAh7YE3Z/Bb3Eetk23YsIm8FwX+dl9tTZ4Jj/b7lU0
+ PJXs1gbriZ+NH/qILutTGWJdr70dsP0GKS3UtzQocvVo156rpe5PM=
+X-Received: by 2002:a05:620a:2406:10b0:915:6c4d:d74b with SMTP id
+ af79cd13be357-9158a7aa7d7mr236671685a.31.1780459747767; 
+ Tue, 02 Jun 2026 21:09:07 -0700 (PDT)
+Received: from cosmos.localdomain ([47.230.224.41])
+ by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-9158a37bae6sm132017185a.31.2026.06.02.21.09.05
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 02 Jun 2026 21:09:07 -0700 (PDT)
+From: tahsina13 <tahsinahmed217@gmail.com>
+Date: Wed, 03 Jun 2026 00:08:58 -0400
+Subject: [PATCH] system/cpus.c: Change qemu_cond_wait -> qemu_cond_wait_bql
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] hw/acpi/pcihp: Fix typo in function name
-To: Gustavo Romero <gustavo.romero@linaro.org>, qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, alex.bennee@linaro.org
-References: <20250504215639.54860-10-gustavo.romero@linaro.org>
-Content-Language: en-US
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@linaro.org>
-In-Reply-To: <20250504215639.54860-10-gustavo.romero@linaro.org>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::330;
- envelope-from=philmd@linaro.org; helo=mail-wm1-x330.google.com
-X-Spam_score_int: 13
-X-Spam_score: 1.3
-X-Spam_bar: +
-X-Spam_report: (1.3 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_96_XX=3.405,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260603-qemu_cond_wait_bql-v1-1-0d04f0d587cd@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAA/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
+ vPSU3UzU4B8JSMDIzMDMwMj3cLU3NL45Py8lPjyxMyS+KTCHF1jSwPLZNNUI3MjExMloMaCotS
+ 0zAqwodGxEH5xaVJWanIJyCSl2loA3lJ90XYAAAA=
+X-Change-ID: 20260602-qemu_cond_wait_bql-3909c5e27244
+To: qemu-devel@nongnu.org
+Cc: Richard Henderson <richard.henderson@linaro.org>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>, 
+ qemu-trivial@nongnu.org, tahsina13 <tahsinahmed217@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1780459745; l=1379;
+ i=tahsinahmed217@gmail.com; s=20260603; h=from:subject:message-id;
+ bh=8wUkmQvp4eac2gbo42vE4QAyVYFNtSicEAvecVTgQvM=;
+ b=6kryT1Wv65VAkKTPwU9mkNnE7A4cCWdmUPVdBOcxs3i0Dqkq3bD31jzEyxkBOvE3Cf/ccMOAx
+ XGfppltC29ECw7HoBz5GYteI9TLK7y7Ox2aQJ0fkZscAmmsvhaZqUTj
+X-Developer-Key: i=tahsinahmed217@gmail.com; a=ed25519;
+ pk=JfqIEYrQSsTnK0suzDJvT1w9PC0wESzl1NHgiFwAMQQ=
+Received-SPF: pass client-ip=2607:f8b0:4864:20::733;
+ envelope-from=tahsinahmed217@gmail.com; helo=mail-qk1-x733.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 03 Jun 2026 03:04:51 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -101,19 +115,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 4/5/25 23:56, Gustavo Romero wrote:
-> Fix typo in QEMU's ACPI PCI hotplug API function name that checks
-> whether a given bus is hotplug-capable.
-> 
-> Signed-off-by: Gustavo Romero <gustavo.romero@linaro.org>
-> ---
->   hw/acpi/acpi-pci-hotplug-stub.c | 2 +-
->   hw/acpi/ich9.c                  | 2 +-
->   hw/acpi/pcihp.c                 | 2 +-
->   hw/acpi/piix4.c                 | 2 +-
->   include/hw/acpi/pcihp.h         | 2 +-
->   5 files changed, 5 insertions(+), 5 deletions(-)
+Change qemu_cond_wait to qemu_cond_wait_bql when waiting on the bql.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Signed-off-by: tahsina13 <tahsinahmed217@gmail.com>
+---
+ system/cpus.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/system/cpus.c b/system/cpus.c
+index bded87feb1..33b33bd4e1 100644
+--- a/system/cpus.c
++++ b/system/cpus.c
+@@ -469,7 +469,7 @@ void qemu_process_cpu_events(CPUState *cpu)
+             slept = true;
+             qemu_plugin_vcpu_idle_cb(cpu);
+         }
+-        qemu_cond_wait(cpu->halt_cond, &bql);
++        qemu_cond_wait_bql(cpu->halt_cond);
+     }
+     if (slept) {
+         qemu_plugin_vcpu_resume_cb(cpu);
+@@ -654,7 +654,7 @@ void pause_all_vcpus(void)
+     replay_mutex_unlock();
+ 
+     while (!all_vcpus_paused()) {
+-        qemu_cond_wait(&qemu_pause_cond, &bql);
++        qemu_cond_wait_bql(&qemu_pause_cond);
+         /* FIXME: is this needed? */
+         CPU_FOREACH(cpu) {
+             qemu_cpu_kick(cpu);
+@@ -726,7 +726,7 @@ void qemu_init_vcpu(CPUState *cpu)
+     cpus_accel->create_vcpu_thread(cpu);
+ 
+     while (!cpu->created) {
+-        qemu_cond_wait(&qemu_cpu_cond, &bql);
++        qemu_cond_wait_bql(&qemu_cpu_cond);
+     }
+ }
+ 
+
+---
+base-commit: 405c32d2b18a683ba36301351af75125d9afda08
+change-id: 20260602-qemu_cond_wait_bql-3909c5e27244
+
+Best regards,
+--  
+tahsina13 <tahsinahmed217@gmail.com>
 
 
