@@ -4,87 +4,101 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 057FCCD6E75
-	for <qemu-trivial@archiver.kernel.org>; Thu,  4 Jun 2026 19:12:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B70EACD6E7E
+	for <qemu-trivial@archiver.kernel.org>; Fri,  5 Jun 2026 23:14:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wVDUa-0000RK-Nq; Thu, 04 Jun 2026 15:12:36 -0400
+	id 1wVdjw-0002C2-SH; Fri, 05 Jun 2026 19:14:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <ajinkyaudgirkar@gmail.com>)
- id 1wVAwS-0006kK-G7
- for qemu-trivial@nongnu.org; Thu, 04 Jun 2026 12:29:13 -0400
-Received: from mail-pg1-x535.google.com ([2607:f8b0:4864:20::535])
+ (Exim 4.90_1) (envelope-from <tahsinahmed217@gmail.com>)
+ id 1wVcsb-0007Kn-Lh
+ for qemu-trivial@nongnu.org; Fri, 05 Jun 2026 18:19:07 -0400
+Received: from mail-qk1-x72b.google.com ([2607:f8b0:4864:20::72b])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <ajinkyaudgirkar@gmail.com>)
- id 1wVAwO-0001RW-D1
- for qemu-trivial@nongnu.org; Thu, 04 Jun 2026 12:29:10 -0400
-Received: by mail-pg1-x535.google.com with SMTP id
- 41be03b00d2f7-c85d4b4245aso617315a12.1
- for <qemu-trivial@nongnu.org>; Thu, 04 Jun 2026 09:29:04 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <tahsinahmed217@gmail.com>)
+ id 1wVcsZ-0006bd-CT
+ for qemu-trivial@nongnu.org; Fri, 05 Jun 2026 18:19:05 -0400
+Received: by mail-qk1-x72b.google.com with SMTP id
+ af79cd13be357-9159da9bba5so179638085a.1
+ for <qemu-trivial@nongnu.org>; Fri, 05 Jun 2026 15:19:02 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1780590543; x=1781195343; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=EPgkZ7HBYYZmE75fClS/aa+EIZAOfW9QZxpiL3LdhoM=;
- b=MZqarSMOjkbNnKe7/DNrOXcS9Cbpu/pZ4bxemJOZ5GvQWhPHhrbuflBVuxNfdA8Nr2
- pUOmr1C/VIgpa603I6IinysYHxwz5TE2I+TVpTfDIaYAgx1Wy6HEu70mutLElZajO5gC
- OS6CiWM+Fvw/1I8b+z2Oc5zlEGoN+kf01CjCJpQEZKxtlrH7uBt5Lg2WYLeVjVp+jZSq
- Rc9m4upIcyiGF3Iile9Sm2pS8WKfBWQXapbXRr2haAV9rava3Cu7tscDqDihcgyy1dbA
- 7A9ZQNpGPZWl4aU4E9uax8FprOUFHW0rS3rLQlFvTNBjHK+vykFd7HSJUms2G5G4mzVU
- GR4g==
+ d=gmail.com; s=20251104; t=1780697941; x=1781302741; darn=nongnu.org;
+ h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+ :date:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=kWCvCbMuLrvzjTXWLz/A01J/l3SSgSOcIvIPUKXPcKk=;
+ b=qquYsJ9s9koDTeBPgWMJ+MuzsgVf10esqh0tRILfwm55uoThcKfIvYMNo6Ev62TXcI
+ LftOkTANamjm7yHhjlg/VU7rQYpjs75+GVMYjqykLPorIr7ajhWtSmmf1yoKAeLkLaPJ
+ pbeIFr/TnprEBLPVu9KXPYDR+/SlWkslSyTTz7ImBDlLx77pvpBKKcCpqYJh4CktdKGB
+ yOr7UU5M8mzb/oYM6V4LjBdaK3rMkuoamwd7RTlEFd4l+Uox5dDeOmVuIryA+n457gxw
+ zsLfqX4/BFbb4ERRHvw3hJVXvWzlIQN5jA8a41Kd4pfITy31BGjukKwB6SBJSsT4Xt0U
+ e+Ww==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780590543; x=1781195343;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1780697941; x=1781302741;
+ h=cc:to:message-id:content-transfer-encoding:mime-version:subject
+ :date:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=EPgkZ7HBYYZmE75fClS/aa+EIZAOfW9QZxpiL3LdhoM=;
- b=VZ8OqAgGEev1faBiGB5eeq62vSrlU9UeA/6prdDrmpy22BYGXf9vgwXwfFALdWLQ68
- SvlYiVxH5ZrQizrRXXw/3X+djmWkDMGpz1be4ceMNz4ih8pZElOKEA5+V2DIAYZ/qy24
- cDaN8x9p3gsJscva93N1KKhrC+D2Zkll7/REpM9yMnKXkS/FwYX3OUyWnx5MNFi80Lvi
- HvvbauH0IKKGL0dLw0HQ60OhICMI8EEqcI36uzB8srAAefLzG1swGLFdoVeiluCxW11r
- AevNEgRA57wgMGl3dNaaKf4O/NA9/pvsGehLS6dQsZl9ak9IevKY5GCFVvkNXBNRflN1
- dl4g==
-X-Gm-Message-State: AOJu0YxNITvreps8mGwIZywHj6UX+vWsthRq7t/EgOQ1jtg2rFD2Hmyp
- yxMkGGIQvSrYQix86ZHq62EvsfyIgKosEaUWMnpZMwPrXY7ZkqVm7BXe
-X-Gm-Gg: Acq92OHYpsCTbZ7v7k0fYVPuxQvYKht4eZBwJPE45JSs4WgOhh9K0fBrhNtyt9T2laf
- SMdjdMLfVcQIzA24UeyNTHY9hDRRZb1ltEvPhT14U7/7C3buK2kXWGj+JR6X7k0wm6xddTdN9rp
- Si7lNrR1Ue6HnCRs8uXAaeF1zu/u/DOZ73BkE7OHwtS1LTBsYosqLyHWTrnr7lvMIAp5aw8rFru
- 8A6u2SOvMjCS4SLe3oiOTE5gpvvqfXqXYzNNiRmQ5nciXhmbGfm6wdzisB2WdkdjvCR896GYvF3
- wIOIPCz8PstJ4tftCGZk9sK/RA+yMtONDw+N36/PFmj09k6XeRd2Yz+lINBJ2mwnORgA+UfB6l2
- oYAEDqK/Ic5Y0EC+S04Dg77Vb7KHcOPrz0/G2YZ3kJjnM80z7qWV0Lm5kfrWvuSfD806t9xrMa8
- lUPhLQ6Pd863KVYhlwrWDqAQXsrAkNYbHEFZ5V99lLuc+a
-X-Received: by 2002:a05:6a21:6196:b0:3b1:cce5:9140 with SMTP id
- adf61e73a8af0-3b4977f5e41mr10315429637.33.1780590543015; 
- Thu, 04 Jun 2026 09:29:03 -0700 (PDT)
-Received: from audgirka.redhat.corp ([171.50.203.65])
+ bh=kWCvCbMuLrvzjTXWLz/A01J/l3SSgSOcIvIPUKXPcKk=;
+ b=Nla1DW3XbrriRjjDXGGdTBFRPDxrY6zaxZausXOEkRqp1pmlUWASnEI482vBDVfXxC
+ 8cleoTbP/U+3BlDkLGz6VNqbJxM/+rycSPobBkTzajHeIDkc7Zuii3+OjWlSvXnEKjX7
+ BKlvbaQwCD4mx/+ROoX4qisL6jWoxsMxPoyte678HH/h9+OOk5H65yA/WtxxPoSXWVbw
+ 0MuNAWt3QKMD7T04yEKJtcADn4w9K+Os9Qn7T7yULhx4aR359tz563ng1FqjL01/x0NX
+ EvSIYVsPoeq5FsCcIINo+LmKfJZjNjh2yS6zIYfYsowUAp0pUcHZMfcPuJkavATkSxgD
+ 8wkA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ+pUK1Gqee0qSg/y4NfdSYTDiaNo1CGGDSXeOL0ZnA/0zhYeZJmvndZTYyUwU+mIv9qrOe1nXzp3BmoUTg=@nongnu.org
+X-Gm-Message-State: AOJu0Yy5Xb8nJvOTN9sW/0f8dBPmE8M4f4gyBU+7ole4Q9cRRF2RscV9
+ 0mtByZGSs3De4F0o0gFFHOKoAE7awF0GnegEOlFBsrFqf/03TsQ6Xhv3
+X-Gm-Gg: Acq92OH2u1Cpi37dVU6vX8HBkz2uF49CjJ0XTjq2YAjXHIBhoxpVZgkdm6yd1dnuYZh
+ xbdH1l/pMwgA8SdGzKTYzL5kGGjKXEvfw1slvkj1mhjBt3y1fJAUqsKjiclp81i8AU863oxmJJq
+ wTDesAoTih+0nVgRrmK4q/wO+tOdDlVVZcLztRJqok56R6cAy5VuhXUIVieFQ8UcNUquo6L5gIH
+ 9UTvuR7BMjtyIQIgTpu4F1/awHefI7q9RRJ6A+1Ml/zMKy6QoicTVKGTHg/8CxrwV7/hhL53tnN
+ NM7hioJDmpTrhLYmEM2aAYP+r7xgibCW5X6nvCAwel5/UxFd/9eZ7r5o6WaoAME2YVq20aXbrpc
+ +2EgLWc7JzV3vd8hjLB4Pp2EDAdRcTUsL6T/X93glH5kz99kcwH5UD971AzbeUO6lkHegkPhCKW
+ XMmFgf+lYgGHG1P00ro0VToihngPIUcZuemSY7O4gVwRxFSCwAFuE=
+X-Received: by 2002:a05:620a:8396:b0:915:9015:3413 with SMTP id
+ af79cd13be357-915a9de9ff4mr1055379485a.57.1780697941473; 
+ Fri, 05 Jun 2026 15:19:01 -0700 (PDT)
+Received: from cosmos.localdomain ([47.230.224.41])
  by smtp.gmail.com with ESMTPSA id
- 41be03b00d2f7-c85df034ab9sm5330420a12.5.2026.06.04.09.29.00
+ af79cd13be357-9158a238f8esm1020621285a.15.2026.06.05.15.19.00
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Thu, 04 Jun 2026 09:29:02 -0700 (PDT)
-From: Ajinkya Udgirkar <ajinkyaudgirkar@gmail.com>
-X-Google-Original-From: Ajinkya Udgirkar <audgirka@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Ajinkya Udgirkar <audgirka@redhat.com>,
- jcmvbkbc@gmail.com
-Subject: [PATCH] hw/xtensa: replace calloc with g_new0 in mx_pic
-Date: Thu,  4 Jun 2026 21:58:49 +0530
-Message-ID: <20260604162849.199541-1-audgirka@redhat.com>
-X-Mailer: git-send-email 2.54.0
+ Fri, 05 Jun 2026 15:19:01 -0700 (PDT)
+From: Tahsin Ahmed <tahsinahmed217@gmail.com>
+Date: Fri, 05 Jun 2026 18:18:49 -0400
+Subject: [PATCH] hw/scsi/scsi-bus.c: Change DO_UPCAST(SCSIBus, qbus, dev)
+ -> scsi_bus_from_device
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::535;
- envelope-from=ajinkyaudgirkar@gmail.com; helo=mail-pg1-x535.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: 7bit
+Message-Id: <20260605-scsi_bus_from_device-v1-1-eac51c49ac43@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAAAAAAAA/yXMWwqDMBBG4a3IPBtIUiq1WxEJufy2I1Qlo1IQ9
+ 960ffwezjlIkBlC9+qgjJ2F56nA1BXFp58eUJyKyWrb6EZflURhFzZxQ55fLpUkQt2AS+uN9cE
+ kKumSMfD7t+36v2ULI+L6fdF5fgAEPpkzeAAAAA==
+X-Change-ID: 20260605-scsi_bus_from_device-8ee39a12ab1d
+To: qemu-devel@nongnu.org
+Cc: Paolo Bonzini <pbonzini@redhat.com>, Fam Zheng <fam@euphon.net>, 
+ qemu-trivial@nongnu.org, Tahsin Ahmed <tahsinahmed217@gmail.com>
+X-Mailer: b4 0.15.2
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1780697940; l=3478;
+ i=tahsinahmed217@gmail.com; s=20260603; h=from:subject:message-id;
+ bh=7BkQuGEaPY2xhgLih2Ec3juBuQcO/VoNqmU+gPdhET8=;
+ b=N77xRvo8AeeKVNn9o2cJAHSy29llpvlD4mKJyaY1xpYusd5DIKKNRWh1SnwkDpko32AS1LhAO
+ Q/tlXRZQ5OcCNcYAygVyrTlLQwrlIl2UnZpT36177DpE8bJDSGhl3e9
+X-Developer-Key: i=tahsinahmed217@gmail.com; a=ed25519;
+ pk=JfqIEYrQSsTnK0suzDJvT1w9PC0wESzl1NHgiFwAMQQ=
+Received-SPF: pass client-ip=2607:f8b0:4864:20::72b;
+ envelope-from=tahsinahmed217@gmail.com; helo=mail-qk1-x72b.google.com
+X-Spam_score_int: 15
+X-Spam_score: 1.5
+X-Spam_bar: +
+X-Spam_report: (1.5 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
+ DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_ENVFROM_END_DIGIT=0.25,
+ FREEMAIL_FROM=0.001, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 04 Jun 2026 15:12:35 -0400
+X-Mailman-Approved-At: Fri, 05 Jun 2026 19:14:09 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -99,29 +113,95 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Replace libc calloc() with GLib g_new0() for consistency with the
-rest of the QEMU codebase. g_new0() aborts on allocation failure
-rather than returning NULL, which matches QEMU's allocation policy.
-
-Signed-off-by: Ajinkya Udgirkar <audgirka@redhat.com>
+Signed-off-by: Tahsin Ahmed <tahsinahmed217@gmail.com>
 ---
- hw/xtensa/mx_pic.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/scsi/scsi-bus.c | 17 ++++++++---------
+ 1 file changed, 8 insertions(+), 9 deletions(-)
 
-diff --git a/hw/xtensa/mx_pic.c b/hw/xtensa/mx_pic.c
-index 098c1aa..8ded3bc 100644
---- a/hw/xtensa/mx_pic.c
-+++ b/hw/xtensa/mx_pic.c
-@@ -343,7 +343,7 @@ static void xtensa_mx_pic_set_irq(void *opaque, int irq, int active)
- 
- XtensaMxPic *xtensa_mx_pic_init(unsigned n_irq)
+diff --git a/hw/scsi/scsi-bus.c b/hw/scsi/scsi-bus.c
+index dccb2f25b2..ef2f5be0ab 100644
+--- a/hw/scsi/scsi-bus.c
++++ b/hw/scsi/scsi-bus.c
+@@ -233,7 +233,7 @@ static void scsi_device_unrealize(SCSIDevice *s)
+ int scsi_bus_parse_cdb(SCSIDevice *dev, SCSICommand *cmd, uint8_t *buf,
+                        size_t buf_len, void *hba_private)
  {
--    XtensaMxPic *mx = calloc(1, sizeof(XtensaMxPic));
-+    XtensaMxPic *mx = g_new0(XtensaMxPic, 1);
+-    SCSIBus *bus = DO_UPCAST(SCSIBus, qbus, dev->qdev.parent_bus);
++    SCSIBus *bus = scsi_bus_from_device(dev);
+     int rc;
  
-     mx->n_irq = n_irq + 1;
-     mx->irq_inputs = qemu_allocate_irqs(xtensa_mx_pic_set_irq, mx,
--- 
-2.54.0
+     assert(cmd->len == 0);
+@@ -363,7 +363,7 @@ static bool scsi_bus_check_address(BusState *qbus, DeviceState *qdev, Error **er
+ static void scsi_qdev_realize(DeviceState *qdev, Error **errp)
+ {
+     SCSIDevice *dev = SCSI_DEVICE(qdev);
+-    SCSIBus *bus = DO_UPCAST(SCSIBus, qbus, dev->qdev.parent_bus);
++    SCSIBus *bus = scsi_bus_from_device(dev);
+     bool is_free;
+     Error *local_err = NULL;
+ 
+@@ -848,7 +848,7 @@ SCSIRequest *scsi_req_alloc(const SCSIReqOps *reqops, SCSIDevice *d,
+ SCSIRequest *scsi_req_new(SCSIDevice *d, uint32_t tag, uint32_t lun,
+                           uint8_t *buf, size_t buf_len, void *hba_private)
+ {
+-    SCSIBus *bus = DO_UPCAST(SCSIBus, qbus, d->qdev.parent_bus);
++    SCSIBus *bus = scsi_bus_from_device(d);
+     const SCSIReqOps *ops;
+     SCSIDeviceClass *sc = SCSI_DEVICE_GET_CLASS(d);
+     SCSIRequest *req;
+@@ -1481,7 +1481,7 @@ int scsi_req_parse_cdb(SCSIDevice *dev, SCSICommand *cmd, uint8_t *buf,
+ 
+ void scsi_device_report_change(SCSIDevice *dev, SCSISense sense)
+ {
+-    SCSIBus *bus = DO_UPCAST(SCSIBus, qbus, dev->qdev.parent_bus);
++    SCSIBus *bus = scsi_bus_from_device(dev);
+ 
+     scsi_device_set_ua(dev, sense);
+     if (bus->info->change) {
+@@ -1500,8 +1500,7 @@ void scsi_req_unref(SCSIRequest *req)
+ {
+     assert(qatomic_read(&req->refcount) > 0);
+     if (qatomic_fetch_dec(&req->refcount) == 1) {
+-        BusState *qbus = req->dev->qdev.parent_bus;
+-        SCSIBus *bus = DO_UPCAST(SCSIBus, qbus, qbus);
++        SCSIBus *bus = scsi_bus_from_device(req->dev);
+ 
+         if (bus->info->free_request && req->hba_private) {
+             bus->info->free_request(bus, req->hba_private);
+@@ -1797,7 +1796,7 @@ void scsi_device_purge_requests(SCSIDevice *sdev, SCSISense sense)
+ 
+ void scsi_device_drained_begin(SCSIDevice *sdev)
+ {
+-    SCSIBus *bus = DO_UPCAST(SCSIBus, qbus, sdev->qdev.parent_bus);
++    SCSIBus *bus = scsi_bus_from_device(sdev);
+     if (!bus) {
+         return;
+     }
+@@ -1819,7 +1818,7 @@ void scsi_device_drained_begin(SCSIDevice *sdev)
+ 
+ void scsi_device_drained_end(SCSIDevice *sdev)
+ {
+-    SCSIBus *bus = DO_UPCAST(SCSIBus, qbus, sdev->qdev.parent_bus);
++    SCSIBus *bus = scsi_bus_from_device(sdev);
+     if (!bus) {
+         return;
+     }
+@@ -1895,7 +1894,7 @@ static int get_scsi_requests(QEMUFile *f, void *pv, size_t size,
+                              const VMStateField *field)
+ {
+     SCSIDevice *s = pv;
+-    SCSIBus *bus = DO_UPCAST(SCSIBus, qbus, s->qdev.parent_bus);
++    SCSIBus *bus = scsi_bus_from_device(s);
+     int8_t sbyte;
+ 
+     while ((sbyte = qemu_get_sbyte(f)) > 0) {
+
+---
+base-commit: 29c042c6e9d4a09d4a0ac3fa54aeb7ee08ce0bdc
+change-id: 20260605-scsi_bus_from_device-8ee39a12ab1d
+
+Best regards,
+--  
+Tahsin Ahmed <tahsinahmed217@gmail.com>
 
 
