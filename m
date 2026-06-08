@@ -4,109 +4,92 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F0EB8CD8C92
-	for <qemu-trivial@archiver.kernel.org>; Mon,  8 Jun 2026 13:42:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD20ECD6E79
+	for <qemu-trivial@archiver.kernel.org>; Mon,  8 Jun 2026 21:29:54 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wWaFB-00008W-0d; Mon, 08 Jun 2026 09:42:21 -0400
+	id 1wWhX7-0003xW-LJ; Mon, 08 Jun 2026 17:29:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWaF5-0008T6-VD
- for qemu-trivial@nongnu.org; Mon, 08 Jun 2026 09:42:18 -0400
-Received: from mail-yx1-xb134.google.com ([2607:f8b0:4864:20::b134])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWaF4-0008Kt-HB
- for qemu-trivial@nongnu.org; Mon, 08 Jun 2026 09:42:15 -0400
-Received: by mail-yx1-xb134.google.com with SMTP id
- 956f58d0204a3-6611689dc10so1682730d50.1
- for <qemu-trivial@nongnu.org>; Mon, 08 Jun 2026 06:42:13 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1780926133; cv=none;
- d=google.com; s=arc-20240605;
- b=djfQHkwVv7RXZNnv05jQUYXwfUtDG+4ZfdKKfOd2m21n8Uanz7eiXAX+UhHoDot/Jj
- nlBYGrtkvYOciFNNTjJUkuHoS46vFxNFuGx/WbhQcRe7rAZv2j7T0UT6NohDyzvtz0ey
- IwK/3IxxbiAMUWLpIZJ9jtH2ehB07u5UNNtdgxCze5cHekw8wpD4zVdeOmUJ85wWJVTo
- yoPMImqF00ViADWFM+Ctr3VZRujeUrSYdtGmNszuVYgq/BEnd7JpnRM+9SUV1LTQ+u2S
- aCpadG9P7+AksrFqbEBI4xjFMrGMfxLnTUvQhmcTow0XFGoXC+W8SU5n7TzQiym4nFCQ
- bclQ==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=yztRxVw2QDyjtz3NSNd73YzdZcktuUTBZ7qaQ7mbGGM=;
- fh=JOMZTazbGLuAKKCfTjY8nOdycp22uHAVDuwnM4cxDOI=;
- b=YhL5RGgRRHKp5TbYi6Vbm5mISZW7mWg42Z40K+5wts9KVCN6OT5yiuBAr8YGnJeR7f
- Ah1pmCmoUPSVndd5tUdhiLIFeLL6fypZiSCurSaqZ00oFp+/BsCcBNiC+R2fzdUm9wUs
- UjwhiU5h1zX8KRgiJScCVfSMnNTimAq6lIlJ89ymXvf9uSuvoQCMijl4YVpHFRAbs8vp
- 409mPbd6qXYlkPhqMvEj47atpp3WqN/viZPwUw4SLgIaMmA7kY8LAuenrpd2zSw9wbEZ
- vh9Bk0NNI/aEw4+S7e47JQwyBIHk9p8uTALGh0draksEA6a+XbSt/S9+fVx3DvNQymzO
- Z2wA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1780926133; x=1781530933; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=yztRxVw2QDyjtz3NSNd73YzdZcktuUTBZ7qaQ7mbGGM=;
- b=Fnjp3LCBBi7Nnn5pVywWVC6FadiPS/h9QdZ6Td/RDigwPiN5P1Mm4rA/KBcDmeVAO0
- ArOCeEKF3+S2KIsenGMGsTrf5L7S2fHJatMwLveQP7pcopyzhzYguWXgHgJMnoD+8d3a
- 74VlIDlY8sqEtT0ONzcnaqlk65Xw2pwRy+YYj1LORenFPKmQegqx+JtQTL7iIZGkubOi
- /Cx3KRvTP/dbxcawI1n/hPJr0Zom2uUwVCy2SUV0zwK6HU3Au7cvttZVGb1STflz4ukG
- Bgs5H2nvGzRQ9zZ6y/8guGTKxr3Cohhtqhnogs/1JqfH/LvCTuOphLo+upT3x1nUbfSe
- hvBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780926133; x=1781530933;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=yztRxVw2QDyjtz3NSNd73YzdZcktuUTBZ7qaQ7mbGGM=;
- b=Y9qbx3dzkQKF1ksV9XCayUREQc2W5LGrH7d0MzwIroq9iH+zm/98IdMjORThF2xrrr
- LAaCWV3/tc9BYiTnV5XTuMbm3Xd+CdaZPl5Try2IQaawAQv1Zhml9DdsuDVnYsfb3Sn3
- 3gYwE24wdO8g1xRJy7Os22wCJpwJuCxavdRRxGh5oBeBXuXH5sHes9VmGV5N9qpFdQ8n
- FXH2A+PaTWP6Yqg8KYNN8LS7XEWkpkT4fGHZdQTJUhojnXZUgBE6Nqd/EE80Qo7dXfo5
- 0dHWhKNzuSDEX3tePOUnXnhID41Cpjr89dRCqskTbOUQxHPNtP8H+a7KzXhCCr8QCtXI
- BtAQ==
-X-Forwarded-Encrypted: i=1;
- AFNElJ8K7el1MT0lkT8FM3mJMENJCH7U3qNXhiV2E4zCdmfsEMOSNnC4oGhbdNSuNtG5phaay0ZzjPHKYIgCHvA=@nongnu.org
-X-Gm-Message-State: AOJu0YwPGYXuVwQBVlKMfpWsrj6WrIv+Z+LafupKdv+l1Ajrmp+1tl3B
- Xe1hlssQcAqjJwbMP4hTaSeTizXv+a/YFd/yRdtYVM0sYE22vNk+5Kevy2q04FFlQFmawqq6ns7
- CLboQbNYKiKMJfJWXTtTamFymsEC8iEZTwBilMjBf+Q==
-X-Gm-Gg: Acq92OEmaADFe5kuoEXnmG4C0MTMwyhTCrue+8tOQUTQoaIgbKxpUB3zL+PPTBcEgFl
- 9zVPTdDU4a+WOczrc13VTVu+rSZ/qAask6ibpEm0eiE1wm5nCU9hw87mPRz9qtW3L6AYrauRJbv
- IeUBYz9C5F3Rg2M68GeE6dDlRXnBIVBkSBbfTTUOEBS9HhPlTmuApcPXEhuIpfHtfSPv1+9AXbL
- FF5/Q0HamP7et7wOKUcUd9Z+VXZKyU0s+sX+rQ5LJ3Mb96tK5Xuwe79cOBLnjEN6L6SFz9+mSkz
- dFFO1QPe7MukF1ht731flursbtVqEuJuTP5kUCUF4sOXGwdxVrtHhMN7p442JcT2W4xoFNyI7pE
- GFQ==
-X-Received: by 2002:a05:690e:4805:b0:660:8e61:1a49 with SMTP id
- 956f58d0204a3-66106e4abb7mr9259269d50.18.1780926133079; Mon, 08 Jun 2026
- 06:42:13 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1wWhX5-0003x5-Ri; Mon, 08 Jun 2026 17:29:19 -0400
+Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1wWhX4-0006C9-7a; Mon, 08 Jun 2026 17:29:19 -0400
+DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
+ d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
+ In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
+ Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
+ :Resent-To:Resent-Cc:Resent-Message-ID;
+ bh=XfU+tBGOxhN/VzYCnFsTWUk482L4U4Qtz8x8+n2cXnA=; b=uafrgGiruVccSmCr2rFKOHQC6x
+ ah2FZxVbMBD9PwDnUHT1sbhiUKLxc4PvVhg2+IlHdm0tFCzFv/bbRzXYXVSXB3QFBnIyu+kTcgyPh
+ wIBM0XHLjpXVXFm/a8AfLG6NazwYKU0e0z1nC3If5kx28n+hhIiFgqV+tQQuq9F/8ArttUO/IX8fr
+ sl7VR62L88eyPgBzGo8UodrxYtdg9Q3JqQWxI3v1PhA9U7n6xjCgWjR2n1X1yaxCRqsAT5qVbwunl
+ nGV9KUJCBlbxDBqq9XUPcEOVnKmp4FvXae9lr5p8Kf3L8oc5fT8t2V7WMtbrZq+1gF9lo/f++VAJR
+ R8Wu+KULUFIoTHqoBfwCf2pIO/rqNl3LNp9PG3gJaakfMh2yhiiR3qr7OF8Mr09yl+GUm8EHMjz1S
+ 0o2AXfCdnkpc9ReNGa3K/mtHtSw0DRxZWpuLw+/ccL60c21qtf4OMM4AvnZnRdE4phOmPVO1Z/LSN
+ wpddvNXFK14ZYEb4dqOSqFAMeJAE9yaVM/UI+NHG03gS7A7/e466W2uMOBzayELe5SgbanzpGMVT9
+ n4QnmVglCzPY2rCpOSFK5Ej3sw3A+8S2ptRP4kGugrD2PgpLjHUBTmw3GLB+35RyydLDd7jq0NpQK
+ ohAgz2qqW2ALf0hnHgEl5oHGlM2g+WtOawVzRCMZA=;
+Received: from [2a02:8012:2f01:0:a345:6f5f:6224:aa51]
+ by mail.ilande.co.uk with esmtpsa (TLS1.3:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.92) (envelope-from <mark.cave-ayland@ilande.co.uk>)
+ id 1wWhTX-0004Us-R7; Mon, 08 Jun 2026 22:25:40 +0100
+Message-ID: <fcbe3d7f-64d4-4b13-b930-a81e77db4784@ilande.co.uk>
+Date: Mon, 8 Jun 2026 22:29:04 +0100
 MIME-Version: 1.0
-References: <20260428162048.2995097-1-luc.fast2004@gmail.com>
- <252f4369-68c4-4b34-a076-9c844b25720e@tls.msk.ru>
- <87y0gp17j6.fsf@draig.linaro.org>
-In-Reply-To: <87y0gp17j6.fsf@draig.linaro.org>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 8 Jun 2026 14:42:01 +0100
-X-Gm-Features: AVVi8Cf7m1O0i15R5TP8liS52je5HurvLYhOvTC_RNsApjTLdrrB-qNvnd_roO4
-Message-ID: <CAFEAcA8nmKBbhkxzgF2diV41pqez3=m5hnx_qUZ2+5DCLqG3ag@mail.gmail.com>
-Subject: Re: [PATCH v2] hw/audio/fmopl.c: Convert malloc, free to g_malloc0,
- g_new and g_free
-To: =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Lucas Cardoso <luc.fast2004@gmail.com>,
- qemu-devel@nongnu.org, 
- kraxel@redhat.com, qemu-trivial@nongnu.org, marcandre.lureau@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b134;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb134.google.com
+User-Agent: Mozilla Thunderbird
+To: Michael Tokarev <mjt@tls.msk.ru>, Thomas Huth <thuth@redhat.com>,
+ qemu-devel@nongnu.org
+Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20260309181452.83702-1-thuth@redhat.com>
+ <00c4ab4b-a58b-4de4-8e41-566b2cb7f920@redhat.com>
+ <124bd918-f2ab-43e2-bd2d-fc824de62c40@tls.msk.ru>
+Content-Language: en-US
+From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
+Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
+ xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
+ 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
+ E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
+ PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
+ PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
+ AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
+ eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
+ NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
+ mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
+ z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
+ T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
+ DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
+ y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
+ 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
+ 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
+ YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
+ Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
+ BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
+ opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
+ NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
+ Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
+ KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
+ imgcU9TTGC5qd9g=
+In-Reply-To: <124bd918-f2ab-43e2-bd2d-fc824de62c40@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-SA-Exim-Connect-IP: 2a02:8012:2f01:0:a345:6f5f:6224:aa51
+X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
+Subject: Re: [PATCH v2] hw/sparc64/sun4u: Mark unusable PCI busses as full to
+ ease device plugging
+X-SA-Exim-Version: 4.2.1 (built Wed, 08 May 2019 21:11:16 +0000)
+X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
+Received-SPF: pass client-ip=2001:41c9:1:41f::167;
+ envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -123,38 +106,62 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Mon, 8 Jun 2026 at 14:33, Alex Benn=C3=A9e <alex.bennee@linaro.org> wrot=
-e:
-> Yeah I just scanned though:
->
->   /* lock/unlock for common table */
->   static int OPL_LockTable(void)
->   {
->           num_lock++;
->           if(num_lock>1) return 0;
->           /* first time */
->           cur_chip =3D NULL;
->           /* allocate total level table (128kb space) */
->           if( !OPLOpenTable() )
->           {
->                   num_lock--;
->                   return -1;
->           }
->           return 0;
->   }
->
->
-> which needless to say is faking a lock with num_lock++ which should
-> totally be using qemu_mutex - although even that might need some
-> handling to make sure its initialised properly.
+On 08/06/2026 09:26, Michael Tokarev wrote:
 
-It's not really a lock -- it's just a reference count of the number
-of devices using the shared data tables (if you have two adlib
-sound cards in the system, they share the data). The locking here
-is provided by the big-qemu-lock, as usual (OPL_LockTable() is
-called from OPLCreate(), which is called from adlib_realizefn(),
-which will always be called with the BQL held).
+> On 30.04.2026 12:50, Thomas Huth wrote:
+>> On 09/03/2026 19.14, Thomas Huth wrote:
+>>> From: Thomas Huth <thuth@redhat.com>
+>>>
+>>> When trying to plug a PCI device to a Sparc64 machine, you currently
+>>> have to specify the right bus ("bus=pciB"), otherwise you get this error:
+>>>
+>>>   $ qemu-system-sparc64 -device virtio-scsi-pci
+>>>   qemu-system-sparc64: -device virtio-scsi-pci: PCI: no slot/function
+>>>   available for virtio-scsi-pci, all in use or reserved
+>>>
+>>> This is quite annoying for the unexperienced users, and it also breaks
+>>> e.g. the iotests ("make check-block") when running with qemu-system- sparc64.
+>>>
+>>> Mark the non-usable PCI busses as full now, so that QEMU can automatically
+>>> plug new PCI devices to the right "pciB" bus.
+>>>
+>>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>>> ---
+>>>   v2: Do the change in the machine code, not in the sabre device
+>>>
+>>>   hw/sparc64/sun4u.c | 7 +++++++
+>>>   1 file changed, 7 insertions(+)
+>>>
+>>> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+>>> index b8bda1eb816..37539535c6c 100644
+>>> --- a/hw/sparc64/sun4u.c
+>>> +++ b/hw/sparc64/sun4u.c
+>>> @@ -723,6 +723,13 @@ static void sun4uv_init(MemoryRegion *address_space_mem,
+>>>       fw_cfg_add_i16(fw_cfg, FW_CFG_SPARC64_DEPTH, graphic_depth);
+>>>       qemu_register_boot_set(fw_cfg_boot_set, fw_cfg);
+>>> +
+>>> +    /*
+>>> +     * Mark internal PCI busses as full so that the plugging of additional
+>>> +     * PCI devices happens on the right bus that still has free slots:
+>>> +     */
+>>> +    qbus_mark_full(&pci_bus->qbus);
+>>> +    qbus_mark_full(&pci_busA->qbus);
+>>>   }
+>>>   enum {
+>>
+>> Friendly ping!
+> 
+> This, being a simple change, somehow has not been reviewed still, so
+> it's sitting in the queue...
 
-thanks
--- PMM
+Yes, apologies - I've been absolutely flat out recently, and I've got a note to take 
+a look at this and Peter's patch as soon as I can.
+
+Is this fixing an urgent issue with "make check-block" or similar?
+
+
+ATB,
+
+Mark.
+
 
