@@ -4,44 +4,41 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97E6ECD8C8E
-	for <qemu-trivial@archiver.kernel.org>; Mon,  8 Jun 2026 08:27:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 122CACD8C92
+	for <qemu-trivial@archiver.kernel.org>; Mon,  8 Jun 2026 09:50:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wWVKE-0005Rx-AX; Mon, 08 Jun 2026 04:27:15 -0400
+	id 1wWWcP-0001Pz-7U; Mon, 08 Jun 2026 05:50:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wWVK9-0005Rb-6W; Mon, 08 Jun 2026 04:27:09 -0400
+ id 1wWWcM-0001OM-Ko; Mon, 08 Jun 2026 05:50:02 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wWVK6-0003Ic-FG; Mon, 08 Jun 2026 04:27:08 -0400
+ id 1wWWcJ-0001SN-Oa; Mon, 08 Jun 2026 05:50:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1780907207; bh=BCIfDLkGmxsBV3nYqCGaUKFOVyxxXBw5ohejgaCNjgA=;
+ t=1780912187; bh=MTOj3ZU441qz5/DZXDZZjvTjnwuSNwsyoXT3OQx0F1A=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To;
- b=vq0w5oef0RwFk47GawS+fEl30xLKqNYAFtmczlkWdOjhWn/xUiWFRsytuDpD+WXq0
- GDXQcIa4D6Zj4HNLjBRUIKHNKkjJbfjRL+gAAh1p7ZrYZUjOX45kWSj0aVpfFz3GgF
- BkzE/gqATjncqF7o+bsoGoReWNaJQFmuzyecwzz+47+IjUO3qNr7L6mM2Gn4vMoC5t
- LsAIXbTWgbJeoECkL2/drEdi221X2XWQS6/ZQyx3vaSJLrndi7uuVcNZxYCVCojT3e
- wD9zDezYWG3CV6e/6DobKT4sPonbSdLhCykVMc1GuCnrE9cIbATNVzPJqX8/f0M6QZ
- rSe2pcejf4xQQ==
+ b=bkkJkENMB6H+iaDlmWRz0rdkKB9BmoYIn23lBb3hhAuqo1pP772ockCow2vJhQX8L
+ DYkkuYsQoPbRJgGvd6A0NuHel9K1/8banzc0O9Hjt1+33Cy1HRpZSOuSh2oY0m/Tzm
+ Oq+/e219IcukQwRIxY8sSpuiv1OHb7wToOhNLiUYngTy4Qie7XiRZ0nJdob8kotAtQ
+ PP0LiZjlONERcQDk8nLIonPoM9BRdkeOOuuPcc3kj2i6rl/ub2sYg45Bm9pYPoSMYK
+ ujXIVG8hKd0ZB23DDnVTtYN3CCsFllB2/0rnmyhQAkBG30VTiAKTp2Ca3W0roqxPK+
+ fz2tyD1MbwP3Q==
 Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by isrv.corpit.ru (Postfix) with ESMTP id DE9251B5620;
- Mon, 08 Jun 2026 11:26:47 +0300 (MSK)
-Message-ID: <124bd918-f2ab-43e2-bd2d-fc824de62c40@tls.msk.ru>
-Date: Mon, 8 Jun 2026 11:26:55 +0300
+ by isrv.corpit.ru (Postfix) with ESMTP id 4F94B1B571B;
+ Mon, 08 Jun 2026 12:49:47 +0300 (MSK)
+Message-ID: <252f4369-68c4-4b34-a076-9c844b25720e@tls.msk.ru>
+Date: Mon, 8 Jun 2026 12:49:54 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] hw/sparc64/sun4u: Mark unusable PCI busses as full to
- ease device plugging
-To: Thomas Huth <thuth@redhat.com>,
- Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>
-References: <20260309181452.83702-1-thuth@redhat.com>
- <00c4ab4b-a58b-4de4-8e41-566b2cb7f920@redhat.com>
+Subject: Re: [PATCH v2] hw/audio/fmopl.c: Convert malloc, free to g_malloc0,
+ g_new and g_free
+To: Lucas Cardoso <luc.fast2004@gmail.com>, qemu-devel@nongnu.org
+Cc: kraxel@redhat.com, qemu-trivial@nongnu.org, marcandre.lureau@redhat.com
+References: <20260428162048.2995097-1-luc.fast2004@gmail.com>
 Content-Language: en-US, ru-RU
 From: Michael Tokarev <mjt@tls.msk.ru>
 Autocrypt: addr=mjt@tls.msk.ru; keydata=
@@ -87,7 +84,7 @@ Autocrypt: addr=mjt@tls.msk.ru; keydata=
  YPkzzso6HT7rlapB5nulYmplJZSZ4RmE1ATZKf+wUPocDu6N10LtBNbwHWTT5NLtxNJAJAvl
  ojis6H1kRWZE/n5buyPY2NYeyWfjjrerOYt3er55n4C1I88RSCTGeejVmXWuo65QD2epvzE6
  3GgKngeVm7shlp7+d3D3+fAAHTvulQQqV3jOodz+B4yzuZ7WljkNrmrWrH8aI4uA98c=
-In-Reply-To: <00c4ab4b-a58b-4de4-8e41-566b2cb7f920@redhat.com>
+In-Reply-To: <20260428162048.2995097-1-luc.fast2004@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
@@ -113,55 +110,151 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 30.04.2026 12:50, Thomas Huth wrote:
-> On 09/03/2026 19.14, Thomas Huth wrote:
->> From: Thomas Huth <thuth@redhat.com>
->>
->> When trying to plug a PCI device to a Sparc64 machine, you currently
->> have to specify the right bus ("bus=pciB"), otherwise you get this error:
->>
->>   $ qemu-system-sparc64 -device virtio-scsi-pci
->>   qemu-system-sparc64: -device virtio-scsi-pci: PCI: no slot/function
->>   available for virtio-scsi-pci, all in use or reserved
->>
->> This is quite annoying for the unexperienced users, and it also breaks
->> e.g. the iotests ("make check-block") when running with qemu-system- 
->> sparc64.
->>
->> Mark the non-usable PCI busses as full now, so that QEMU can 
->> automatically
->> plug new PCI devices to the right "pciB" bus.
->>
->> Signed-off-by: Thomas Huth <thuth@redhat.com>
->> ---
->>   v2: Do the change in the machine code, not in the sabre device
->>
->>   hw/sparc64/sun4u.c | 7 +++++++
->>   1 file changed, 7 insertions(+)
->>
->> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
->> index b8bda1eb816..37539535c6c 100644
->> --- a/hw/sparc64/sun4u.c
->> +++ b/hw/sparc64/sun4u.c
->> @@ -723,6 +723,13 @@ static void sun4uv_init(MemoryRegion 
->> *address_space_mem,
->>       fw_cfg_add_i16(fw_cfg, FW_CFG_SPARC64_DEPTH, graphic_depth);
->>       qemu_register_boot_set(fw_cfg_boot_set, fw_cfg);
->> +
->> +    /*
->> +     * Mark internal PCI busses as full so that the plugging of 
->> additional
->> +     * PCI devices happens on the right bus that still has free slots:
->> +     */
->> +    qbus_mark_full(&pci_bus->qbus);
->> +    qbus_mark_full(&pci_busA->qbus);
->>   }
->>   enum {
+On 28.04.2026 19:20, Lucas Cardoso wrote:
+> In accordance with QEMU's coding style guidelines, replace raw memory
+> allocation functions (malloc/free) with their GLib equivalents
+> (g_new/g_malloc0/g_free/g_clear_pointer).
 > 
-> Friendly ping!
+> Also removes the old generic error-handling code from
+> OPLOpenTable(), since the Glib functions abort the program automatically
+> if memory is exhausted.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/1798
+> Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> Signed-off-by: Lucas Cardoso <luc.fast2004@gmail.com>
+> ---
+> v2:
+> - After some studying, I decided to follow Marc-André's feedback to use g_clear_pointer() instead of g_free(), on the OPLCloseTable function.
+>   hw/audio/fmopl.c | 43 ++++++++++++-------------------------------
+>   1 file changed, 12 insertions(+), 31 deletions(-)
+> 
+> diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
 
-This, being a simple change, somehow has not been reviewed still, so
-it's sitting in the queue...
+> +    TL_TABLE = g_new(int32_t, TL_MAX * 2);
+> +    SIN_TABLE = g_new(int32_t *, SIN_ENT * 4);
+> +    AMS_TABLE = g_new(int32_t, AMS_ENT * 2);
+> +    VIB_TABLE = g_new(int32_t, VIB_ENT * 2);
+
+
+How about this:
+
+diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
+index a63ad0f04d..91a41f5fa9 100644
+--- a/hw/audio/fmopl.c
++++ b/hw/audio/fmopl.c
+@@ -175,18 +175,18 @@ static const int32_t SL_TABLE[16]={
+  /* TotalLevel : 48 24 12  6  3 1.5 0.75 (dB) */
+  /* TL_TABLE[ 0      to TL_MAX          ] : plus  section */
+  /* TL_TABLE[ TL_MAX to TL_MAX+TL_MAX-1 ] : minus section */
+-static int32_t *TL_TABLE;
++static int32_t TL_TABLE[TL_MAX*2];
+
+  /* pointers to TL_TABLE with sinwave output offset */
+-static int32_t **SIN_TABLE;
++static int32_t *SIN_TABLE[SIN_ENT * 4];
+
+  /* LFO table */
+-static int32_t *AMS_TABLE;
+-static int32_t *VIB_TABLE;
++static int32_t AMS_TABLE[AMS_ENT * 2];
++static int32_t VIB_TABLE[VIB_ENT * 2];
+
+  /* envelope output curve table */
+  /* attack + decay + OFF */
+-static int32_t *ENV_CURVE;
++static int32_t ENV_CURVE[2 * EG_ENT + 1];
+
+  /* multiple table */
+  #define ML 2
+@@ -606,28 +606,6 @@ static int OPLOpenTable( void )
+         int i,j;
+         double pom;
+
+-       /* allocate dynamic tables */
+-       if( (TL_TABLE = malloc(TL_MAX*2*sizeof(int32_t))) == NULL)
+-               return 0;
+-       if( (SIN_TABLE = malloc(SIN_ENT*4 *sizeof(int32_t *))) == NULL)
+-       {
+-               free(TL_TABLE);
+-               return 0;
+-       }
+-       if( (AMS_TABLE = malloc(AMS_ENT*2 *sizeof(int32_t))) == NULL)
+-       {
+-               free(TL_TABLE);
+-               free(SIN_TABLE);
+-               return 0;
+-       }
+-       if( (VIB_TABLE = malloc(VIB_ENT*2 *sizeof(int32_t))) == NULL)
+-       {
+-               free(TL_TABLE);
+-               free(SIN_TABLE);
+-               free(AMS_TABLE);
+-               return 0;
+-       }
+-    ENV_CURVE = g_new(int32_t, 2 * EG_ENT + 1);
+         /* make total level table */
+         for (t = 0;t < EG_ENT-1 ;t++){
+                 rate = ((1<<TL_BITS)-1)/pow(10,EG_STEP*t/20);   /* dB 
+-> voltage */
+@@ -693,15 +671,6 @@ static int OPLOpenTable( void )
+  }
+
+
+-static void OPLCloseTable( void )
+-{
+-    g_free(ENV_CURVE);
+-       free(TL_TABLE);
+-       free(SIN_TABLE);
+-       free(AMS_TABLE);
+-       free(VIB_TABLE);
+-}
+-
+  /* CSM Key Control */
+  static inline void CSMKeyControll(OPL_CH *CH)
+  {
+@@ -970,7 +939,6 @@ static void OPL_UnLockTable(void)
+         if(num_lock) return;
+         /* last time */
+         cur_chip = NULL;
+-       OPLCloseTable();
+  }
+
+  /*******************************************************************************/
+
+?
+
+> @@ -1081,11 +1065,8 @@ FM_OPL *OPLCreate(int clock, int rate)
+>   	/* allocate OPL state space */
+>   	state_size  = sizeof(FM_OPL);
+>   	state_size += sizeof(OPL_CH)*max_ch;
+> -	/* allocate memory block */
+> -	ptr = malloc(state_size);
+> -	if(ptr==NULL) return NULL;
+> -	/* clear */
+> -	memset(ptr,0,state_size);
+> +    /* allocate memory block and zero-initialize */
+> +    ptr = g_malloc0(state_size);
+>   	OPL        = (FM_OPL *)ptr; ptr+=sizeof(FM_OPL);
+>   	OPL->P_CH  = (OPL_CH *)ptr; ptr+=sizeof(OPL_CH)*max_ch;
+>   	/* set channel state pointer */
+> @@ -1128,7 +1109,7 @@ void OPLDestroy(FM_OPL *OPL)
+>   	}
+>   #endif
+>   	OPL_UnLockTable();
+> -	free(OPL);
+> +    g_free(OPL);
+>   }
+
+And this is a 2-piece allocation in one go.  Which is,
+by the way, is also fixed-size (state_size is constant).
+I'd either split it into two separate allocations, or better yet,
+made OPL->P_CH an array (instead of a pointer.
+
+This whole file needs quite some care.  Incomplete or wrong or out of
+place comments, mix of different coding styles, tricky allocations like
+this one which don't need to be tricky, etc..  Many different things.
+
+I dunno...
 
 /mjt
 
