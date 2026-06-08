@@ -4,107 +4,100 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 45AEACD8C90
-	for <qemu-trivial@archiver.kernel.org>; Sun,  7 Jun 2026 20:46:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 97E6ECD8C8E
+	for <qemu-trivial@archiver.kernel.org>; Mon,  8 Jun 2026 08:27:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wWKOE-0005uP-1B; Sun, 07 Jun 2026 16:46:38 -0400
+	id 1wWVKE-0005Rx-AX; Mon, 08 Jun 2026 04:27:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1wWKOB-0005tP-Gm
- for qemu-trivial@nongnu.org; Sun, 07 Jun 2026 16:46:35 -0400
-Received: from mail-qk1-x736.google.com ([2607:f8b0:4864:20::736])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <jcmvbkbc@gmail.com>)
- id 1wWKOA-0001GN-8E
- for qemu-trivial@nongnu.org; Sun, 07 Jun 2026 16:46:35 -0400
-Received: by mail-qk1-x736.google.com with SMTP id
- af79cd13be357-9158fbaa4bbso418553785a.1
- for <qemu-trivial@nongnu.org>; Sun, 07 Jun 2026 13:46:33 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1780865193; cv=none;
- d=google.com; s=arc-20240605;
- b=Ymgq7bFgqGnCCZ7KEa37uWpVIUaangrjNOsNv+Mr0HBslUlCZ+/jWubYt/DLz3CBP0
- iVSxE5lchFfZSl62Qb20zNMQozt6Bj9R/39vNAo4DTQZBGw/tsEo3829m90+qz2l9S4/
- bt8o23mB33GFnVbNhZJ7GEp4TaBUZUlWnR1otyyIWsHBAW4l/UJWurGSToTstpk7hVtg
- 2DhJ9fUjZ4TktrnOXYXHOt7CE2bES5sP7oi/hyQOkt7VmyiO4MwChk1ncyXCEbCUJxE+
- 0ixjUBcw6Np1j6MYt53j5clE9Ksjd+Pg+Aer++EASNWuYpggQQhnMNpuCIsmrKFvK1QE
- Gl0A==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=eQnjQoXnP+z8OYaeZT+X+pfOXJDNjEgiA1wJQR1dN90=;
- fh=b6Ca2+LzfPtFN9Im0kZwJS+Tmm1O9Y8y21iKR1g1hhk=;
- b=VPYw32v8Iv0BN5QYpRMDSisKzxugnzcxgV5sz7YusCgkDUboSu5p5lzcgMHLVozoiz
- 88AWy6/bfZuZWMB+uCDo0Cc5Fsnq8pGzpZGn1Ue4eCrXugMA/LQnHyQps4G9pzGiUNLI
- lJGeWgXVhaC44BmmO41PI1i4knIlkvZ2iFa5YrjOzJrFNAx8oRYnVm59ipXCsh/9GgR+
- fH6sGemzw8cp6bZK1HgAYJZIiHN2LM/dx8syiRbVjEBL5+FboSIR/QXZ11BZn+qS8OHB
- 3Ia/jBFvdY4Clf7xpV2s62hN5aqJKIqrIcuCNnitahlxaM2jI8AaHaRwr8d92/Vwg++D
- /gQA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1780865193; x=1781469993; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=eQnjQoXnP+z8OYaeZT+X+pfOXJDNjEgiA1wJQR1dN90=;
- b=ozJibbQPBn3tPFH7b6n/cNVlM5zTZsIfSZvU8WrwY0YMLDjmR/mTF//BnInDh3GHnA
- aHO9cly/OJG/hhj2triv6b+lULnUp6OoVR7V+EjODUPkxeLHxfnCoHRf/ISbXf2GSDc7
- jf6c7yAbtZ58+Hp0UCl4G8QeQoZKHufgeuXDEIN3kQ02HEclFDa0qRxL/qwhXEdEgB7W
- jxMlmgYgnCnuxaQprt8Vi2fOVf6cU6y4mpoDpfM6BJUvePXcRK6P867i6VoImzsiGy3u
- FRHQg/DF2jOOIFIOvJ+7rJ7AWBA+Oo37H1GmD2n6N4zGC9Kecz0y3mnyjX4zwnxHcxCS
- YVGw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1780865193; x=1781469993;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=eQnjQoXnP+z8OYaeZT+X+pfOXJDNjEgiA1wJQR1dN90=;
- b=FBw4ATNhWZcQ8WSsGEnZ/96B/OYgxqYDx89ICOPTOXmSGuTffSkK42KzxAv11yiRXX
- nConG5nwf24J8Y5I9OIBFAbhN4YfsCiteeAOKdz1mPNXKejQlIAyNFwovG/48imyQvc3
- 3GewAWlG5PNQIifY/OxH5WYxh8PYUt3S3nIGB0Kwu+ER3acPivTE/VM5QmAnyEKB8WGs
- LdpKxKWDchsCtjL0BBYGc5fR6tq8rIKZBzmqe71AYqToSNAdZNjQQfANlrgnDvkG3nDi
- HlWQP/L19ORGiAgqu+EG6q8wUXvq8Y9Cm8vlo39HgrSG7LYuFpsN5YQY+fdEJd+lFeog
- UoWw==
-X-Forwarded-Encrypted: i=1;
- AFNElJ9WQUhM67iuZAgxE9LLBHWB2em/Nw5wwln2V3Ow+XiSdHEmRfrTCK2yRvLBsTSqG75h6AagJW4yniPCkR0=@nongnu.org
-X-Gm-Message-State: AOJu0YxunUxqEMnYozX4uQ2kWY4GclObOt7kcXi4CwGl1bz4cxkSAOHr
- McySF1ZMIBBtOwUqXXvrq/VDKQKRZGCHH/jtnCUvai0+78K26kSrIHNvq6/pyUNDNDzVuO5eZxE
- Wj4kR4T5UPj7oSLunk/+f3FKVGxNBCxk=
-X-Gm-Gg: Acq92OHA3mVHW+wci0B2a6H9LfhWS5hyVyAHjuWeYhTaMDkvwHjAsErSTkTzHe/9M3u
- Wq+8OezmSRMcCUROtW0ALcqTwNTRoZFQCTazW2Nq8TFVqj7zuz+AA9TrCfY/q+BthhlD8i7AUXV
- /qQZdul912tXSeSlAtUiGqGAY1OgXYZ+uUf/gIw05u8g2waWHuLRrJ4QzYy/oAAGQxEdZrAz6W4
- Ta2bYGKkBPbjQ3tf7HR8WBe8g4YAw0A3yxnpIQqfXrMoPD1QRQvtIYmtVqAOGkS0HUOccZ7t4Re
- LWWtnGb00xjzsKNqbd+/w4zaFgZogCVvdShAjjKe02GLWJRtJEwhCKt5Ny/zAya6RCGBMuykqRG
- EupP5CA1zjcq0U77olM+6QgzmIs3+7fS1LkyZ
-X-Received: by 2002:a05:620a:690d:b0:915:8865:dc01 with SMTP id
- af79cd13be357-915a9da7f30mr2206249685a.46.1780865193005; Sun, 07 Jun 2026
- 13:46:33 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1wWVK9-0005Rb-6W; Mon, 08 Jun 2026 04:27:09 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1wWVK6-0003Ic-FG; Mon, 08 Jun 2026 04:27:08 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
+ t=1780907207; bh=BCIfDLkGmxsBV3nYqCGaUKFOVyxxXBw5ohejgaCNjgA=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To;
+ b=vq0w5oef0RwFk47GawS+fEl30xLKqNYAFtmczlkWdOjhWn/xUiWFRsytuDpD+WXq0
+ GDXQcIa4D6Zj4HNLjBRUIKHNKkjJbfjRL+gAAh1p7ZrYZUjOX45kWSj0aVpfFz3GgF
+ BkzE/gqATjncqF7o+bsoGoReWNaJQFmuzyecwzz+47+IjUO3qNr7L6mM2Gn4vMoC5t
+ LsAIXbTWgbJeoECkL2/drEdi221X2XWQS6/ZQyx3vaSJLrndi7uuVcNZxYCVCojT3e
+ wD9zDezYWG3CV6e/6DobKT4sPonbSdLhCykVMc1GuCnrE9cIbATNVzPJqX8/f0M6QZ
+ rSe2pcejf4xQQ==
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by isrv.corpit.ru (Postfix) with ESMTP id DE9251B5620;
+ Mon, 08 Jun 2026 11:26:47 +0300 (MSK)
+Message-ID: <124bd918-f2ab-43e2-bd2d-fc824de62c40@tls.msk.ru>
+Date: Mon, 8 Jun 2026 11:26:55 +0300
 MIME-Version: 1.0
-References: <20260604162849.199541-1-audgirka@redhat.com>
-In-Reply-To: <20260604162849.199541-1-audgirka@redhat.com>
-From: Max Filippov <jcmvbkbc@gmail.com>
-Date: Sun, 7 Jun 2026 13:46:22 -0700
-X-Gm-Features: AVVi8CffGr15_uQqnuTCg7lcEdGwrLM44w81uonYMbDbRlfta-OX6aH8XidhXjM
-Message-ID: <CAMo8BfJMJ+hf5MBptz-sFojCLAYdEsiduR1xbMhJs2kN1Ju-yQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/xtensa: replace calloc with g_new0 in mx_pic
-To: Ajinkya Udgirkar <ajinkyaudgirkar@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- Ajinkya Udgirkar <audgirka@redhat.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::736;
- envelope-from=jcmvbkbc@gmail.com; helo=mail-qk1-x736.google.com
-X-Spam_score_int: 4
-X-Spam_score: 0.4
-X-Spam_bar: /
-X-Spam_report: (0.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1, DKIM_VALID=-0.1,
- DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FROM_LOCAL_NOVOWEL=0.5, HK_RANDOM_ENVFROM=0.999, HK_RANDOM_FROM=0.999,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH v2] hw/sparc64/sun4u: Mark unusable PCI busses as full to
+ ease device plugging
+To: Thomas Huth <thuth@redhat.com>,
+ Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>, qemu-devel@nongnu.org
+Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
+ QEMU Trivial <qemu-trivial@nongnu.org>
+References: <20260309181452.83702-1-thuth@redhat.com>
+ <00c4ab4b-a58b-4de4-8e41-566b2cb7f920@redhat.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <00c4ab4b-a58b-4de4-8e41-566b2cb7f920@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -19
+X-Spam_score: -2.0
+X-Spam_bar: --
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,21 +113,55 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Thu, Jun 4, 2026 at 9:29=E2=80=AFAM Ajinkya Udgirkar
-<ajinkyaudgirkar@gmail.com> wrote:
->
-> Replace libc calloc() with GLib g_new0() for consistency with the
-> rest of the QEMU codebase. g_new0() aborts on allocation failure
-> rather than returning NULL, which matches QEMU's allocation policy.
->
-> Signed-off-by: Ajinkya Udgirkar <audgirka@redhat.com>
-> ---
->  hw/xtensa/mx_pic.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+On 30.04.2026 12:50, Thomas Huth wrote:
+> On 09/03/2026 19.14, Thomas Huth wrote:
+>> From: Thomas Huth <thuth@redhat.com>
+>>
+>> When trying to plug a PCI device to a Sparc64 machine, you currently
+>> have to specify the right bus ("bus=pciB"), otherwise you get this error:
+>>
+>>   $ qemu-system-sparc64 -device virtio-scsi-pci
+>>   qemu-system-sparc64: -device virtio-scsi-pci: PCI: no slot/function
+>>   available for virtio-scsi-pci, all in use or reserved
+>>
+>> This is quite annoying for the unexperienced users, and it also breaks
+>> e.g. the iotests ("make check-block") when running with qemu-system- 
+>> sparc64.
+>>
+>> Mark the non-usable PCI busses as full now, so that QEMU can 
+>> automatically
+>> plug new PCI devices to the right "pciB" bus.
+>>
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>   v2: Do the change in the machine code, not in the sabre device
+>>
+>>   hw/sparc64/sun4u.c | 7 +++++++
+>>   1 file changed, 7 insertions(+)
+>>
+>> diff --git a/hw/sparc64/sun4u.c b/hw/sparc64/sun4u.c
+>> index b8bda1eb816..37539535c6c 100644
+>> --- a/hw/sparc64/sun4u.c
+>> +++ b/hw/sparc64/sun4u.c
+>> @@ -723,6 +723,13 @@ static void sun4uv_init(MemoryRegion 
+>> *address_space_mem,
+>>       fw_cfg_add_i16(fw_cfg, FW_CFG_SPARC64_DEPTH, graphic_depth);
+>>       qemu_register_boot_set(fw_cfg_boot_set, fw_cfg);
+>> +
+>> +    /*
+>> +     * Mark internal PCI busses as full so that the plugging of 
+>> additional
+>> +     * PCI devices happens on the right bus that still has free slots:
+>> +     */
+>> +    qbus_mark_full(&pci_bus->qbus);
+>> +    qbus_mark_full(&pci_busA->qbus);
+>>   }
+>>   enum {
+> 
+> Friendly ping!
 
-Reviewed-by: Max Filippov <jcmvbkbc@gmail.com>
+This, being a simple change, somehow has not been reviewed still, so
+it's sitting in the queue...
 
---=20
-Thanks.
--- Max
+/mjt
 
