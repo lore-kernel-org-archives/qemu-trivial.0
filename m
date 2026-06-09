@@ -4,106 +4,106 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1FA70CD8CA8
-	for <qemu-trivial@archiver.kernel.org>; Tue,  9 Jun 2026 11:02:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 17F30CD8CA4
+	for <qemu-trivial@archiver.kernel.org>; Tue,  9 Jun 2026 14:55:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wWuEC-00021l-C3; Tue, 09 Jun 2026 07:02:40 -0400
+	id 1wWxrq-0005QO-3S; Tue, 09 Jun 2026 10:55:50 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWuDP-0001wa-IL
- for qemu-trivial@nongnu.org; Tue, 09 Jun 2026 07:01:55 -0400
-Received: from mail-yx1-xb131.google.com ([2607:f8b0:4864:20::b131])
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1wWxoG-0003ZK-7U
+ for qemu-trivial@nongnu.org; Tue, 09 Jun 2026 10:52:08 -0400
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWuDN-0005To-Ic
- for qemu-trivial@nongnu.org; Tue, 09 Jun 2026 07:01:51 -0400
-Received: by mail-yx1-xb131.google.com with SMTP id
- 956f58d0204a3-66061993294so5637785d50.3
- for <qemu-trivial@nongnu.org>; Tue, 09 Jun 2026 04:01:49 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781002908; cv=none;
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1wWxoE-0004ad-IF
+ for qemu-trivial@nongnu.org; Tue, 09 Jun 2026 10:52:07 -0400
+Received: by mail-qt1-x836.google.com with SMTP id
+ d75a77b69052e-5177d1ff061so2313551cf.1
+ for <qemu-trivial@nongnu.org>; Tue, 09 Jun 2026 07:52:04 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781016724; cv=none;
  d=google.com; s=arc-20240605;
- b=Zvt2QMxdlXHdImasj9yPYYsyQUGCtiPy1VqoN6S7CUny6aYFitazANOfYdKAOa/ApQ
- 3K8O8+ho6PBseeYhOIN4SkC7jY7ovZUZBb4A9pzGwbwUEibej9uMfvvSKQrfuL4Ypb+P
- /kAJFEb3qh7F9Kmi8xYq2qyweLHek0eF8HgEUi8WJS0/xJcpNjyN0E9XlEuJQ5pPG6Vl
- vwuRMQtbHamerndbHVreF5mS0tTs0YoblfPdABGA7ZC335AXwobA8IEH6DW0Fny0C09N
- KK34O6iEz9jdWXMQQ1SrM58nRRBxALCGFeR5lOE2KaWBXz+ATiD9y9WWdE8B0QntMRu0
- p08A==
+ b=QlehV9XcIIRVOQ7hu8JZR/j8Hf62vUUaQ7o0zrJOYCRNxDs1kuDV0durOSP1fk5GIf
+ gVGfX7tMga5LOHRr6VZP1oHRBK8IHBEGuuaR82qOqSPtD8NXzaarnex7dvlaAdzUdaiv
+ qNk+H8faCDE95mzkTT8O8GU21SdrcsMvxmejTUHnoF8A0PDALM7Z2gw6D3eGt2wTiahF
+ +rm1IP9+5WpmjQsrIyZOVudtWtZDksnQ1xTgNu4tc3gVWE/ibT7msprdVLv+VFcVPyeY
+ n5oPvYbfVZU10p8q5/E6snt+N3grCFrXHegFhE28wY2EQc6C+/0Ilb8/Xme7VjQqrePw
+ nDoA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=IWvx6N/trd7GUv7lRQQJVJ/o7RKzQvf1YBdlMGaL8p0=;
- fh=Z/1Bxf1SKsldcU1HcO3ENRq6sHiHEh0sBxFcBHMqUgY=;
- b=ahYwdvZIs74mypVVMUPlXarFuU6FOewX/KtGf5Mmfp2p84LMtAI5ThGJvGxPjxZ5Gf
- 5TAK2OaaGtyBMz2A+0d/c+GN2m/fbkuy/XKLLLQqN5Pez3zTuXDNV0CdQdcjupDe9E0b
- ykwEyw7wGTf8yeGl2pqxkd4hvRPZF3wkcJb/mHSKlxV1rinhZc5GoDU//ezl7ToBZmZh
- w/iRFZLwgfA1DPiO4W4+UHkrJIVc1vBJVnCNxs/XOIGnPYBImFarFY3LV/taJgLjxtFh
- YXzTBvdJibtjy1X8qCBkCB4Fz7NCT4tKW4xfqB+Y/RZzS5RCtd/I9KYq3+r5K6Mk0zkg
- z2xA==; darn=nongnu.org
+ bh=mT7L+1cUtlPaahWEj6bhvOX6q91ZJhOLDtmYP2cxvEQ=;
+ fh=RTMLXKCRyPyOLZ2JjUpr7Ho+CgDygkMl0je6keSc6+I=;
+ b=iSVFnlAQhb0ox89iXGPeyaJDX89qjVlk+h40R4XqaQbtWp7wKYmvA10Pj1z9UCkD/C
+ cBABLe0Bi5QG9QZOaih54L9uI/6EA0HdugQuONcnqXmkOmB+i43gz/5wiZGcf95h8Y6b
+ /QjHn/su0ugo2QpWCMvWd9m/XHpFT1rXCdZBznuOXRAc9XFvA2Fdjo3UiVSc1ls33YP9
+ +Jqg0RtGpi6LML9PXy7JLDN+9q2efdWKzpdeKO4MsTuMXZLjzo1GxPTANB86zDFYJPFG
+ TAWIDXhztDzUtnZPcKixj+s21grhAQs0jfL96UcGQe/DJOYjIxXdY8bN5agSQ6m0LlXO
+ 6N5A==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781002908; x=1781607708; darn=nongnu.org;
+ d=google.com; s=20251104; t=1781016724; x=1781621524; darn=nongnu.org;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=IWvx6N/trd7GUv7lRQQJVJ/o7RKzQvf1YBdlMGaL8p0=;
- b=j982zha9PMd0YJB2FolzjXg8DnxZPgzYM+fNPO2h7b43IL/z1IuRFeFZsbN/oBWVyq
- vrVXgYoCQ6gbuGPTz8Pa/sif8FxanER3ffotZ9Jp3Jz069G7HK01Fnp4nZYfAlG9jBw2
- yFRdK8v5cNiSU2Mqex2hqMSgG4mlhsWWtK8TNkqdPsRWvr+0xdS0yt7oCfsGSl/6gICZ
- PPh+7fIR4sfr1Xxt7ZP44beVKq+mKS9evTxsdfnCxjNKOR1XIXAqy1IO8q+VBjeCCD90
- kYDo+aoDyotgdOOPfXIIqViM4OjPXALZ3FdfuHNaTtDwhMCjIVngQ6oS6pqcofyrBVYW
- TkQg==
+ bh=mT7L+1cUtlPaahWEj6bhvOX6q91ZJhOLDtmYP2cxvEQ=;
+ b=guptycxe07D+Q47rkyJz8E6G1ni5nvujk9MaDtRU9zxbuC632g03ATblufsNM7Nqgo
+ Chnak9yjXXvinFHV4DlVziqv08nreyXkmLLhIRn4W+0CHmJri90QB3x8E6bi0G0sNriv
+ npLlX2SH1Htp9qpVm9Ydn6qFreiE/dqWHuhhmDu3Nu32K9zw4R4eDd2S9vMG0gmNaDMW
+ wNMY+EBSdtLjr2S0amoLLPzo2agmPLXVFNFo7cTx6J2ezyQFzw+elAz4iZC5F9Je8RFU
+ 1NKPmbMYzqYSlPZbc8VMNUD7o0R7HKAkWUEUBvNsUGX5vdDOkIqFtr46Rz9NdbLi3Ftj
+ 9HOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781002908; x=1781607708;
+ d=1e100.net; s=20251104; t=1781016724; x=1781621524;
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=IWvx6N/trd7GUv7lRQQJVJ/o7RKzQvf1YBdlMGaL8p0=;
- b=nHHuQQ/69XGC4uHRMnzWzM+lcarOyOiuphqatNfudTKJUTZq+2Dh627PVZY2rZ2l2f
- 610MmUvrpH/p8bKe+Jkq68jyuBAjZ5qJDoYqRca8dJEQq89+rCQU2wlTG1l/puwMawIq
- kvtu9sVBcMrahhI3gygAwvPhNulxO6puykVm5ki5A0TJAEn4ExD7ZiRlD1OmMtnUEtUG
- 67SledyJIfmbcug++WGZ/juZK4QfEWzA9ry4MBvt+IiEHWKCbTZY94APwMXo5s2dK9yz
- /1hdM0+VGivndVX3dPbUdU9O8nEAHwaK5HWZw7C8SB7UePvGqbTr8n4JC5H63dGs5CZa
- DRWQ==
+ bh=mT7L+1cUtlPaahWEj6bhvOX6q91ZJhOLDtmYP2cxvEQ=;
+ b=oi/UESJ0fQ/bulg+pIfe0+E2aW63xe6eGSwNHahcXtRwmQ+t/hnQlEMxBCzh2Ur89Z
+ 4FFcYgaER7C1SxQG5seG+BfBgbQsEWumv1cntgZS55RMRj32lR56fWkYNWQGllZQwSZx
+ X5KXdy4tpKfgOOTkVo8pdLJDGXGx/YkxPjbAOWyCdf+GU1hsX78glKiVf6HGTifJ2CVR
+ GdIuIgbZG28PQj59GZhSqwjuhiHB//Lcr8RQ2UffLwg/UcgEod17GlWrAZPQ9UqAqzl2
+ 88twXdznQvWcAYQu5NfC10yWzmdZ03MA9lUB+MogA0et6BIfkhBRfZHRdRCJQmJgBvb/
+ IIrQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8dJ8pK0BuVUgRaUdl1OEBq/BWzM+OPjEYOyez/2Dj4KWg89fhCPyxDID29OkTElb9ejLx9PN7pWSBDoJo=@nongnu.org
-X-Gm-Message-State: AOJu0YzYuK5rbx39cS+Ig1kqc1VOIPqi9FFuMmkNaWqlOIdMqpC44+XN
- 0TApWDvvaN2SWn4qTw5E7bwEGhtcmvtodyFKiDZwcfbRoNN98VSwrhizvN7YEnILp4Qm/88f7iM
- a2c01mRRMQZlVhd0GJ0s7gwIqdhTButXL2awfbGEJug==
-X-Gm-Gg: Acq92OGrUbuqFswIpPSwASVoN2PVYHKGEiVzFrsWkTQOGsr5ramioU+pYKlovrRYLnG
- iHwzXoZ9j0U68CakPRnRL3nV7DU0FAzVz5ZpxEvKFqc4bQzEOD6OB0KOvarCL8uNz5vxMgPyJqS
- b4ZXBrR07Kx6B20pq9Pw0ulOhrgLsnYIv0qgtj4Shef5suX7HeT5Vgxun3WuEDcp17IcTYgoSWV
- XHCxum0EocsAPUTGOevBnBlASgKHpNFoZiDn8YSSN1XciamT5DdlJDqFFD9ICiENYbZdbfaWW2T
- 0lzpn3tiQ12OFE3WzCVYVZLR6VWhYLjjPs9orbsRXVlP6gcjmFcPdvCs5WHzBfn0OJX2pglZp6H
- YlpkogK0rvJqO
-X-Received: by 2002:a05:690e:140d:b0:660:62e5:9300 with SMTP id
- 956f58d0204a3-6610779e02amr17201153d50.48.1781002908052; Tue, 09 Jun 2026
- 04:01:48 -0700 (PDT)
+ AFNElJ+mk/NRpi/0U5vJuy3YFB2h5Q+t/tnWpDK/NKluCeoF5M5OHwIStszmHVeJmLaQgbBQSAcZ8KufKZcNP2s=@nongnu.org
+X-Gm-Message-State: AOJu0Ywq6A6VpSqFddabZnw+XcrTZODRxdS+rNzAiRN8E58mYdDww79t
+ EaCpvFRzrvCL9iYo8eQZH21mlwWxRjAGnc6OeM5+ZYsKYF4C+tMzdy9FM4Yt1z+DJRGo9OaVk4j
+ xKEhqV3laesxh4YkEbfwGyC33V06oODpQ4yPtqidp
+X-Gm-Gg: Acq92OFjzuol3UWn++OiqYOUUDsH3DwMRt0c6VB4JgV7Ib/RS8ABIE5RovP9+kTdgP1
+ Dit7bddzrS5iwraO4S2y2omS0yq6sTiQKLdcnFsca4SEQA0AL0Yq2kDpKpkRsC3xq/JP0aCfPv7
+ obz4x5Ex/ahesqh0Q+5DBJyfNAh0wrJ3sXMonQIbdkS9ATas2xj3ASt+Jgig8cdyO1rcBAMFIwe
+ UwWWTm3kG6h85lVJb3WhOrJd/P8qQs9G2kFKWJkvF61uTBqlz8YID982TdqWfUk2JRFhPSSiG2u
+ GcNKBZcLfXp+R/HDkT52hpakAJy6GIJN2P6B05tbcU5lPuUwwA==
+X-Received: by 2002:ac8:6610:0:b0:510:f9b:fb5f with SMTP id
+ d75a77b69052e-51798298a3cmr32128971cf.16.1781016723550; Tue, 09 Jun 2026
+ 07:52:03 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260609105626.1038690-1-thuth@redhat.com>
-In-Reply-To: <20260609105626.1038690-1-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 Jun 2026 12:01:36 +0100
-X-Gm-Features: AVVi8Cc8oKQrydmGDQOBxXvHxwWMlyhEXLAqM4JoePjcSpmZv054gl6whVUi45E
-Message-ID: <CAFEAcA9O6b02VMuto8VzaEsVi3zTqNtQKG_RcMaPnNdPXGUBhw@mail.gmail.com>
+ <CAFEAcA9O6b02VMuto8VzaEsVi3zTqNtQKG_RcMaPnNdPXGUBhw@mail.gmail.com>
+In-Reply-To: <CAFEAcA9O6b02VMuto8VzaEsVi3zTqNtQKG_RcMaPnNdPXGUBhw@mail.gmail.com>
+From: Titus Rwantare <titusr@google.com>
+Date: Tue, 9 Jun 2026 07:51:20 -0700
+X-Gm-Features: AVVi8CcM3axo7mAEJOZp-nioF3imcVzHW2yLICbkWxeE6AKaOP-rr_nCCejynOc
+Message-ID: <CAMvPwGpvpHD+Sx-HZR4FFMJB+W8Rk8LoU0256Q=vwKAdC96HSQ@mail.gmail.com>
 Subject: Re: [PATCH] hw/i2c/pmbus_device: Fix a possible crash when requesting
  too many bytes
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Titus Rwantare <titusr@google.com>,
+To: Peter Maydell <peter.maydell@linaro.org>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b131;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb131.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
+ envelope-from=titusr@google.com; helo=mail-qt1-x836.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 09 Jun 2026 10:55:44 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -118,55 +118,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Tue, 9 Jun 2026 at 11:56, Thomas Huth <thuth@redhat.com> wrote:
+On Tue, 9 Jun 2026 at 04:01, Peter Maydell <peter.maydell@linaro.org> wrote:
 >
-> From: Thomas Huth <thuth@redhat.com>
+> On Tue, 9 Jun 2026 at 11:56, Thomas Huth <thuth@redhat.com> wrote:
+> >
+> > From: Thomas Huth <thuth@redhat.com>
+> >
+> > The pmbus_send_string() function contains an assert() statement that
+> > can be triggered by the guest code when requesting too many data
+> > without reading from the device in between. This should not be possible.
+> > pmbus_send() already has a similar logic, but it simply ignores the
+> > error after logging a message with qemu_log_mask(), so do the same now
+> > in pmbus_send_string() to fix the issue.
+> >
+> > Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3388
+> > Signed-off-by: Thomas Huth <thuth@redhat.com>
+> > ---
+> >  hw/i2c/pmbus_device.c | 7 ++++++-
+> >  1 file changed, 6 insertions(+), 1 deletion(-)
+> >
+> > diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
+> > index b1f9843f52e..6aa608a2998 100644
+> > --- a/hw/i2c/pmbus_device.c
+> > +++ b/hw/i2c/pmbus_device.c
+> > @@ -104,7 +104,12 @@ void pmbus_send_string(PMBusDevice *pmdev, const char *data)
+> >      }
+> >
+> >      size_t len = strlen(data);
+> > -    g_assert(len + pmdev->out_buf_len < SMBUS_DATA_MAX_LEN);
+> > +    if (len + pmdev->out_buf_len >= SMBUS_DATA_MAX_LEN) {
+> > +        qemu_log_mask(LOG_GUEST_ERROR,
+> > +                      "%s: requested too much data from PMBus device\n",
+> > +                      __func__);
+> > +        return;
+> > +    }
 >
-> The pmbus_send_string() function contains an assert() statement that
-> can be triggered by the guest code when requesting too many data
-> without reading from the device in between. This should not be possible.
-> pmbus_send() already has a similar logic, but it simply ignores the
-> error after logging a message with qemu_log_mask(), so do the same now
-> in pmbus_send_string() to fix the issue.
+> I had a look at this bug earlier, but was not sure that this is the
+> right thing. What happens is that the guest does something that
+> causes the device to queue up data X ready for the guest to
+> read, but then instead of reading it, the guest does another
+> "I would like data X please" action. My guess is that the way
+> the hardware handles this is probably not "add the second
+> copy of data X after the first one". Perhaps it is "drop the
+> data the guest didn't read, so the next guest read gets the
+> second lot of data, not the first". But maybe the spec really
+> does say "you can do things in the order 'ask for A, ask for
+> B, read data for A, read data for B".
 >
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3388
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  hw/i2c/pmbus_device.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
+> I couldn't conveniently find the pmbus spec to find out what
+> the hardware is supposed to do here. We need some input from
+> somebody who knows about pmbus.
 >
-> diff --git a/hw/i2c/pmbus_device.c b/hw/i2c/pmbus_device.c
-> index b1f9843f52e..6aa608a2998 100644
-> --- a/hw/i2c/pmbus_device.c
-> +++ b/hw/i2c/pmbus_device.c
-> @@ -104,7 +104,12 @@ void pmbus_send_string(PMBusDevice *pmdev, const char *data)
->      }
->
->      size_t len = strlen(data);
-> -    g_assert(len + pmdev->out_buf_len < SMBUS_DATA_MAX_LEN);
-> +    if (len + pmdev->out_buf_len >= SMBUS_DATA_MAX_LEN) {
-> +        qemu_log_mask(LOG_GUEST_ERROR,
-> +                      "%s: requested too much data from PMBus device\n",
-> +                      __func__);
-> +        return;
-> +    }
+> thanks
+> -- PMM
 
-I had a look at this bug earlier, but was not sure that this is the
-right thing. What happens is that the guest does something that
-causes the device to queue up data X ready for the guest to
-read, but then instead of reading it, the guest does another
-"I would like data X please" action. My guess is that the way
-the hardware handles this is probably not "add the second
-copy of data X after the first one". Perhaps it is "drop the
-data the guest didn't read, so the next guest read gets the
-second lot of data, not the first". But maybe the spec really
-does say "you can do things in the order 'ask for A, ask for
-B, read data for A, read data for B".
+Queueing reads are an implementation detail I decided on, not part of
+the spec. How the data gets discarded is up to the device
+manufacturer.
+There's a separate issue here though that I have a fix for.
+SMBUS_DATA_MAX_LEN in QEMU is for an older SMBus version and it needs
+to be increased.
 
-I couldn't conveniently find the pmbus spec to find out what
-the hardware is supposed to do here. We need some input from
-somebody who knows about pmbus.
-
-thanks
--- PMM
+I can set aside some time to bring the SMBus implementation up to
+date, but for now increasing it to 255 will put QEMU in line SMBus
+v3.3.
+-Titus
 
