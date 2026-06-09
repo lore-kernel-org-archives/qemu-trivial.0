@@ -4,107 +4,108 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF4A5CD8CB9
-	for <qemu-trivial@archiver.kernel.org>; Tue,  9 Jun 2026 15:26:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4E8CCD8CB9
+	for <qemu-trivial@archiver.kernel.org>; Tue,  9 Jun 2026 15:52:14 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wWyL0-0000bZ-AP; Tue, 09 Jun 2026 11:25:58 -0400
+	id 1wWyk8-0003xJ-Hz; Tue, 09 Jun 2026 11:51:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWyKw-0000Vj-Pn
- for qemu-trivial@nongnu.org; Tue, 09 Jun 2026 11:25:54 -0400
-Received: from mail-ed1-x536.google.com ([2a00:1450:4864:20::536])
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1wWyk6-0003uw-Mt
+ for qemu-trivial@nongnu.org; Tue, 09 Jun 2026 11:51:54 -0400
+Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wWyKu-0002Br-Lu
- for qemu-trivial@nongnu.org; Tue, 09 Jun 2026 11:25:54 -0400
-Received: by mail-ed1-x536.google.com with SMTP id
- 4fb4d7f45d1cf-6924a68e3f3so1204102a12.1
- for <qemu-trivial@nongnu.org>; Tue, 09 Jun 2026 08:25:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781018751; cv=none;
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1wWyk4-00070z-Qn
+ for qemu-trivial@nongnu.org; Tue, 09 Jun 2026 11:51:54 -0400
+Received: by mail-lf1-x12a.google.com with SMTP id
+ 2adb3069b0e04-5aa62bd04fbso30761e87.0
+ for <qemu-trivial@nongnu.org>; Tue, 09 Jun 2026 08:51:52 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781020311; cv=none;
  d=google.com; s=arc-20240605;
- b=SoKhZwe1VBbfwqaYHQimFcbdCc+HY8ZJDvAgnZ3UdaoaKyr9CZzneIiOa+hirItmPV
- HH0RXLfKZjHZCJmgxZryqscyphg3N3TkjFPrP5fdJ1fruY0Wf8aGItJFOi9Q4D4jYe/3
- wr3t9mPXdTw5B2qb+W9S+Ajj3hzqbrVzD+4Tvxy1EFuN6Ac09UxyemcBqtoAyxwKDLx0
- T2Y2v/wnnULsntd2ra+ANR36YObJaOZfw2xl6IUp+tLeXZ4zlBs9FYwal9M/DJ4kYL5G
- 4Vr0Sne3Uxs8dQI05umP0NxOSDB6LOGJh62iO5JpcbCGWjnWQBzQC7nOSiFC7Mm5VI2x
- yVuQ==
+ b=TuCTTkuM3j0rSEhhGyraKGeXbb6kUhUmVVUieD3y2ZyhjTy2fcB0sc0XAtUr+v60Y5
+ zAjemn4OuFR9FKNcK1ZiMXTi7Kbm3dZADox2bof/n4WhNTm9onqKi1N0nryY1lGcCQNG
+ 5MtyBnFD1Q5HHCFXnHeuTjixW1UxzxLHxhiqmtReceOY/IpcDGzv1lKuizctmsDpcOtF
+ Lv2LlMF/+xwETrbNBNOMcQfwYZmqtpg9TRMh1sg09HRb6cRRcwiIIzxLLXjppsod+bQL
+ s1u2WpEMBXhhhprlVQ1kbyUlzp5gX7Gii3pTMujSmyVtwjBno3daoA99QBe02npuhyDn
+ UqTA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=o7hZxrOxQsSfFXsDoeNg7xAeFrfoXUdRu0/vaXFQ7xY=;
- fh=caDspV5VEZivs2MTMPMKKyWwJsX2DPudyA01ZA3Qc4Q=;
- b=jm6kDXWkjOr5WV6NHKRBQdha9JXL3HEyny/bMrD4Ybw4QfFA8llvYPkk4vB9G5LDI7
- b+DvcA9wv3Z+bfSyq9s/dDLNo1i9jKxP1WorY6iFmHhmMOF1WH3RghX+b2X0c3nCh6th
- IesnR1nXBNJHV4lE8xADAfdIxa9k42sT7BIAkDok55Gt3RK32I0EUi91OXJp+rEaauuq
- mCluFixqBJYVWu9xSqwYHdmwwpBQR4ehybDsbECgs6nDaOzLdAhuy0VpnTXrOQW3T8n+
- vGI+gz8mGM/3/ZyCJctP6WNdfTbegqIJrccpMoKWFzp4JsKtJqRx1inX+sBlQgIXRfUD
- 8nxw==; darn=nongnu.org
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=wNVM8/XIQ+GMp2Km6P124CqDPpvEiW+D0aQeKgN3Az8=;
+ fh=CHABZT8yRuYaykAkw7/g96iLH7zlggYaTPK2Tt0gmaM=;
+ b=TIpwEq+MS6d+AjjbUg+RZ9OBXF805MfaPo1mcJ9VoTX9lbONNr0dMeLZMuV6KI3pOu
+ dyyM41PwmebO7TDkQ0NSPODGc2jKi2GrGybJeUyYlaEt9utgvh7brSU9jhDCS898YH4t
+ 4wNq8IbK7uyX1nDejKf80eUxzbkuxADiIite2D0BLzM0HAN4DhW4YnXzNd2NKeWhJM1i
+ nTIZUdGyXxmUZHgYMqC5+8tGld16jLB0ZfqFFxEnNdzSnz+CZddz+dSo0xcgqY/IEarj
+ MQsx34J7DjnFDiC+PEfQE41Urr2mV5EXfLBp6Yt8pnaXqibdPBCoJOpL3vJt9JaaqqOx
+ HALQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781018751; x=1781623551; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=o7hZxrOxQsSfFXsDoeNg7xAeFrfoXUdRu0/vaXFQ7xY=;
- b=eqhVwtcdaKQeArCD6FtycGKL7q1qZQ6cQ1GmgGkzDpl50mzaFNd87uWORVrsEAa3S8
- grqqV1IA5c5hZF99TRecLJCxO5oAvwSO4YRJ7ceU3+pyHuV3hho3k5jPFAPEuiSIKVH6
- smtbqWI3pozrzX5NedRQS90irhd13VhIA9XbWkpr7D/XfuBCyA5L5w5PAVKTadZuPQ2a
- Ke/R5ICvfUH8AjMO4l8UIHreEbI4ur1Ha8dCdSLlnX204JkAn6suW01wX+mslYUEmgSO
- PW9gpoPWCVw9FhD9mNKmZQI+J1yA7tY4nt1CjPkadMkovMaDgI1VeTOMHhn5Bb8aIGTJ
- 5pJg==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781018751; x=1781623551;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=google.com; s=20251104; t=1781020311; x=1781625111; darn=nongnu.org;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:from:to:cc:subject:date
  :message-id:reply-to;
- bh=o7hZxrOxQsSfFXsDoeNg7xAeFrfoXUdRu0/vaXFQ7xY=;
- b=deZ9+uwQUjh4LEsxhkGIrBVS2llC9nKcIyOFY2zxTK5JNRlhooVAM08vXGcvameHNZ
- BeqKn7mUqugOiWESjlChCSfJCrOLjniOgOYjGzZFkZU9Qrqu+yzdWtQ+XCxw4z9iZAXf
- dF9zhf+7fgQD/gOwnQTlxQ2WJXp4y6RRzrr1bqVAQ+f3cN5cks7URCoZ2/M4Z5FPOko9
- jJuyIspfamB/nBqPXeWNZUg+RSu8YjwFA6PhtesW83APC05NL5fTMIdTRI0+tiarcrhh
- RHG//YE3sVe6jvDlbM/IUUaoVgdJBQeAAR6jSRi0X991WdTq6zVg7lWpu3mbzW0sJujG
- Aopg==
+ bh=wNVM8/XIQ+GMp2Km6P124CqDPpvEiW+D0aQeKgN3Az8=;
+ b=OteLEIbV8juVlw/RPBoJOAsAF+aLOIsDIlV9cDniJbmZFze1L+6Xsk1tdib0Sp2yHq
+ mwQPFQgPTPAHT87Uc09sTy5Jblmm0B9wy9qTzAbwCxqG06B+RPfsiEgvHsvKbMFv6IRb
+ VdTehG7ed44u163Tu75pm7sK+7QJ3EhBiZ+bqQlaOs814XJVmQ5zlRFRk2ivRx8gB9W5
+ 0OAqN96UdzGWDV50I6HmKgF/3HE7YqH0RrwcIW2/YNMdGqRozZilBj0dTQYAtWJsE2uB
+ S8pjMas5enBEnZi0N5JMG0JAuB6Rb9lhMtFn52t1CRcfDttNfe+SyMswAMMtXCGEOeEM
+ JXHw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1781020311; x=1781625111;
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
+ :to:cc:subject:date:message-id:reply-to;
+ bh=wNVM8/XIQ+GMp2Km6P124CqDPpvEiW+D0aQeKgN3Az8=;
+ b=NsMiBXQV9J0g0XoGts6RZIk+JGNcDhFNo/8mjRDP3Qg9/65Mle1vEWZfbpR1uuzjwk
+ Fem2qj3ii1CeMi8GVg9tzkCHSgR5LoFgxw0UMI4oljPSIpmGgzlvJC6iTyWenfkwlVRd
+ Y6Kb8L0+Bq91mVNmYkLQXEUJD1OKkAGbY+ECk0Bfmfus4Zu/IE4wGc88Vymli3Kqw4Do
+ A2tqXrfYXV/lTMyeSFgofZg0K/Ug7ii2HxWSySLihilXc2LerntTfUWKpnvAlTbvb2eC
+ /TSFBH+heOBgUACiBR4rNRchfRuWR+7ZvJ0kKeZlIOboeo68otBKGmLRgiHvEKeiG+ow
+ luwQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ9w20eNwZ4bUSXe31wVc0wR0xUC28MConDVi+zwaIarlie5bldSw4Zx9fJqoQ8erOrLv8AeSQkca5eFE1Q=@nongnu.org
-X-Gm-Message-State: AOJu0YxFJcICHwgJcn24p8ioIBxsID/q2brHMkUeZ4xMk7pHzsaiC8g9
- 0lAVkhZ7LYUb45dtP20zxezz4dm47kTdI6ZsdIbOUHhvI8u3h2dht9nyYlHvEd/n/3bjyJ6H3C8
- k+iIYiAdD3wjs6S3VRspJkjw1w0WVvTQxoDx/0i3/tQ==
-X-Gm-Gg: Acq92OEybCbt3f4jYKtiwDkPfGDw4GmRCzxtLFHH5P8zJ9PdUGszN0rU6h5c1dKwpjm
- vMg27OVS0Wk7nxkgTcwQx+9JCNZ1AA95ovTUInHi23hfzZvntUwkuDobjmAUSq0BRQs4S0l14PY
- 2scev2eyRH2O0e2rkkjuUPviEVA8MRKv35jX2xr1txakwg9x3XsVtCC/C7NumfdsN8a5UEVS4vQ
- GRQn6Zyg9UFNpukP/DsSTtjwDPPq7RGjpiwKx2eKrbPWj8Q7xEuvjMWrNC6FvxThDHjTCb2QqLR
- WDR8nDf47pGkFTjyNrWqJzRqEwKJFB0Vpd6DxGs1c3FnoGP5oEoI4MNAseSPBZOdchjeoST/6SJ
- alA==
-X-Received: by 2002:a17:907:6e87:b0:bee:b5f2:639d with SMTP id
- a640c23a62f3a-bf370376bf2mr1047493266b.10.1781018750780; Tue, 09 Jun 2026
- 08:25:50 -0700 (PDT)
+ AFNElJ+7zSDTbBTX8BIOabAxUs8vcxWJJ9m2GQ5TEYc0LUOl2zfT2QRPSsXVLuwSjh2W1Ukd1Gc0Ai9Kqk5MqrQ=@nongnu.org
+X-Gm-Message-State: AOJu0Yy9ZnClpbvz/9vImJOwK1nC3wFAi/Q4FkG3ulSiPSLdNmUbg+fa
+ pZOw+wXm3ziwRXx8buVfIeed1LwVuCXc1yj/AyJfknOPwER4VFZthWJewzDvqdQ7deYZ8TX/KwM
+ ZR/vP6gD5mWul8lwrkxuv/vBoXK5UXUJfawccyzk0
+X-Gm-Gg: Acq92OHcdHNcdMu4/20sY6f3lGK9GQS+4mAxQzpV0jDVrcgpyRuNJ8+DiGI0OA7wGXz
+ WIGQE5nJqj8fmiEHKCwr2fHML7PcCBVG2DTgYpK5SWpyHSRYn51I4ncDXtCXbkbBxKBW1R7x5Hi
+ McZ9M3Nz+xD6SSHOiKRAAfVRKugJpSwYYensHALMfsazwS1Y3dQN3pqwYoVZCHmqCorFcvnxdom
+ ni8Lzm/RSKAXsALpYhBROmCc2UfEyhqLuc/v2qHq0AsNgqZ/tWrtBGffAl1e/PJf69tWfKoMzC9
+ xB+OfOIBHFpOt8gBwYUXKjb/bysmubFlXaMp/GlsdH1Ton8ZzQ==
+X-Received: by 2002:a05:6512:23a8:b0:5a8:73f1:4099 with SMTP id
+ 2adb3069b0e04-5aa8856cd45mr731268e87.0.1781020310309; Tue, 09 Jun 2026
+ 08:51:50 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260609105626.1038690-1-thuth@redhat.com>
  <CAFEAcA9O6b02VMuto8VzaEsVi3zTqNtQKG_RcMaPnNdPXGUBhw@mail.gmail.com>
  <CAMvPwGpvpHD+Sx-HZR4FFMJB+W8Rk8LoU0256Q=vwKAdC96HSQ@mail.gmail.com>
-In-Reply-To: <CAMvPwGpvpHD+Sx-HZR4FFMJB+W8Rk8LoU0256Q=vwKAdC96HSQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Tue, 9 Jun 2026 16:25:37 +0100
-X-Gm-Features: AVVi8CdB3SImlFLR632tnSYS0KHxqTkH9TALVmIC-IdIEoCpYoimC7lGmw54OfM
-Message-ID: <CAFEAcA9N_O7RZRU+SPTfB_ePasjVZvUsFPhndfQDuHgQ+4Q-5A@mail.gmail.com>
+ <CAFEAcA9N_O7RZRU+SPTfB_ePasjVZvUsFPhndfQDuHgQ+4Q-5A@mail.gmail.com>
+In-Reply-To: <CAFEAcA9N_O7RZRU+SPTfB_ePasjVZvUsFPhndfQDuHgQ+4Q-5A@mail.gmail.com>
+From: Titus Rwantare <titusr@google.com>
+Date: Tue, 9 Jun 2026 08:51:13 -0700
+X-Gm-Features: AVVi8Cdai3kcd1rD-r_4IKxs0gsOerSlPqiCRzTaBqR3URolkh9sVOzU02dxeO4
+Message-ID: <CAMvPwGpzAcDxeqSvQmOjzkQn6T91CAmTO31bNs0wmSMqQKG=Qg@mail.gmail.com>
 Subject: Re: [PATCH] hw/i2c/pmbus_device: Fix a possible crash when requesting
  too many bytes
-To: Titus Rwantare <titusr@google.com>
+To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2a00:1450:4864:20::536;
- envelope-from=peter.maydell@linaro.org; helo=mail-ed1-x536.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
+ envelope-from=titusr@google.com; helo=mail-lf1-x12a.google.com
+X-Spam_score_int: -175
+X-Spam_score: -17.6
+X-Spam_bar: -----------------
+X-Spam_report: (-17.6 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_MED=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ ENV_AND_HDR_SPF_MATCH=-0.5, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001, USER_IN_DEF_DKIM_WL=-7.5,
+ USER_IN_DEF_SPF_WL=-7.5 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -120,33 +121,61 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Tue, 9 Jun 2026 at 15:52, Titus Rwantare <titusr@google.com> wrote:
+   On Tue, 9 Jun 2026 at 08:25, Peter Maydell <peter.maydell@linaro.org> wr=
+ote:
 >
-> On Tue, 9 Jun 2026 at 04:01, Peter Maydell <peter.maydell@linaro.org> wrote:
-> > I had a look at this bug earlier, but was not sure that this is the
-> > right thing. What happens is that the guest does something that
-> > causes the device to queue up data X ready for the guest to
-> > read, but then instead of reading it, the guest does another
-> > "I would like data X please" action. My guess is that the way
-> > the hardware handles this is probably not "add the second
-> > copy of data X after the first one". Perhaps it is "drop the
-> > data the guest didn't read, so the next guest read gets the
-> > second lot of data, not the first". But maybe the spec really
-> > does say "you can do things in the order 'ask for A, ask for
-> > B, read data for A, read data for B".
+> On Tue, 9 Jun 2026 at 15:52, Titus Rwantare <titusr@google.com> wrote:
 > >
-> > I couldn't conveniently find the pmbus spec to find out what
-> > the hardware is supposed to do here. We need some input from
-> > somebody who knows about pmbus.
+> > On Tue, 9 Jun 2026 at 04:01, Peter Maydell <peter.maydell@linaro.org> w=
+rote:
+> > > I had a look at this bug earlier, but was not sure that this is the
+> > > right thing. What happens is that the guest does something that
+> > > causes the device to queue up data X ready for the guest to
+> > > read, but then instead of reading it, the guest does another
+> > > "I would like data X please" action. My guess is that the way
+> > > the hardware handles this is probably not "add the second
+> > > copy of data X after the first one". Perhaps it is "drop the
+> > > data the guest didn't read, so the next guest read gets the
+> > > second lot of data, not the first". But maybe the spec really
+> > > does say "you can do things in the order 'ask for A, ask for
+> > > B, read data for A, read data for B".
+> > >
+> > > I couldn't conveniently find the pmbus spec to find out what
+> > > the hardware is supposed to do here. We need some input from
+> > > somebody who knows about pmbus.
+>
+> > Queueing reads are an implementation detail I decided on, not part of
+> > the spec. How the data gets discarded is up to the device
+> > manufacturer.
+>
+> So what *does* the spec say? Does it just say that if you don't
+> read all the data before doing something else then it's all
+> unpredictable? Is there a way for the guest to get the device
+> back into a sane state after it's broken it like that?
+>
+> -- PMM
 
-> Queueing reads are an implementation detail I decided on, not part of
-> the spec. How the data gets discarded is up to the device
-> manufacturer.
+I'm not sure this can happen on hardware. The device puts all the
+bytes on the bus, and the controller can interrupt it with a Repeated
+START
 
-So what *does* the spec say? Does it just say that if you don't
-read all the data before doing something else then it's all
-unpredictable? Is there a way for the guest to get the device
-back into a sane state after it's broken it like that?
-
--- PMM
+SMBus v3.3 6.5:
+```
+The data formats implemented by SMBus are:
+=E2=80=A2 Controller-transmitter transmits to target-receiver: The transfer
+direction in this case is not changed.
+=E2=80=A2 Controller reads target immediately after the first byte: At the
+moment of the first acknowledgment (provided by the target-receiver)
+the controller-transmitter becomes a controller-receiver and the
+target-receiver becomes a target-transmitter.
+=E2=80=A2 Combined format: During a change of direction within a transfer, =
+the
+controller generates a REPEATED START condition and the target address
+but with the R/W#
+set to 1. In this case the controller receiver terminates the transfer
+by generating a NACK on the last byte of the transfer and a STOP
+condition.
+```
+Hmm, seems to me the data gets cleared with a change in direction.
+-Titus
 
