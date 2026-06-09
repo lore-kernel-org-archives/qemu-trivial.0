@@ -4,100 +4,99 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B4E8CCD8CB9
-	for <qemu-trivial@archiver.kernel.org>; Tue,  9 Jun 2026 15:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFAF3CD98C5
+	for <qemu-trivial@archiver.kernel.org>; Tue,  9 Jun 2026 16:03:22 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wWyk8-0003xJ-Hz; Tue, 09 Jun 2026 11:51:56 -0400
+	id 1wWysK-0006zI-98; Tue, 09 Jun 2026 12:00:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1wWyk6-0003uw-Mt
- for qemu-trivial@nongnu.org; Tue, 09 Jun 2026 11:51:54 -0400
-Received: from mail-lf1-x12a.google.com ([2a00:1450:4864:20::12a])
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1wWysF-0006vd-F3
+ for qemu-trivial@nongnu.org; Tue, 09 Jun 2026 12:00:19 -0400
+Received: from mail-qt1-x836.google.com ([2607:f8b0:4864:20::836])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1wWyk4-00070z-Qn
- for qemu-trivial@nongnu.org; Tue, 09 Jun 2026 11:51:54 -0400
-Received: by mail-lf1-x12a.google.com with SMTP id
- 2adb3069b0e04-5aa62bd04fbso30761e87.0
- for <qemu-trivial@nongnu.org>; Tue, 09 Jun 2026 08:51:52 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781020311; cv=none;
+ (Exim 4.90_1) (envelope-from <titusr@google.com>) id 1wWysB-0001mj-R5
+ for qemu-trivial@nongnu.org; Tue, 09 Jun 2026 12:00:18 -0400
+Received: by mail-qt1-x836.google.com with SMTP id
+ d75a77b69052e-5177d1ff061so2366421cf.1
+ for <qemu-trivial@nongnu.org>; Tue, 09 Jun 2026 09:00:10 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781020810; cv=none;
  d=google.com; s=arc-20240605;
- b=TuCTTkuM3j0rSEhhGyraKGeXbb6kUhUmVVUieD3y2ZyhjTy2fcB0sc0XAtUr+v60Y5
- zAjemn4OuFR9FKNcK1ZiMXTi7Kbm3dZADox2bof/n4WhNTm9onqKi1N0nryY1lGcCQNG
- 5MtyBnFD1Q5HHCFXnHeuTjixW1UxzxLHxhiqmtReceOY/IpcDGzv1lKuizctmsDpcOtF
- Lv2LlMF/+xwETrbNBNOMcQfwYZmqtpg9TRMh1sg09HRb6cRRcwiIIzxLLXjppsod+bQL
- s1u2WpEMBXhhhprlVQ1kbyUlzp5gX7Gii3pTMujSmyVtwjBno3daoA99QBe02npuhyDn
- UqTA==
+ b=PvlAbpR+Q5+qinrefXc9UzXyzaP/BJFzQyJdipqbFNw3G89RY4Yym/hOPrXe9BPULM
+ CGRF7ibAa1BJS2I5BiZzk97+32Vd0FfpPKBI5sDupfAQtAgc9680V5bt3ix1xQA5SDnF
+ wX2cGih7hKv0zElJPtiPYW3Y2zmH517+ijukHKz1opSCesF2rSRn/wO+EAGsJYAEuhr0
+ Gs3Enyh3CzJMXHnKwN3t+/HpkfviaQaRK7aCfArpdonwJWHTk5cifmqzH2ja4F3PbXlk
+ Oyy1RIDsbKgJbZ3+nw9yW55BKM6koHcogpZFZEsZ4gBoIFc6lc8ktf1Tu7uupWH3b7e7
+ 9RQA==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=wNVM8/XIQ+GMp2Km6P124CqDPpvEiW+D0aQeKgN3Az8=;
- fh=CHABZT8yRuYaykAkw7/g96iLH7zlggYaTPK2Tt0gmaM=;
- b=TIpwEq+MS6d+AjjbUg+RZ9OBXF805MfaPo1mcJ9VoTX9lbONNr0dMeLZMuV6KI3pOu
- dyyM41PwmebO7TDkQ0NSPODGc2jKi2GrGybJeUyYlaEt9utgvh7brSU9jhDCS898YH4t
- 4wNq8IbK7uyX1nDejKf80eUxzbkuxADiIite2D0BLzM0HAN4DhW4YnXzNd2NKeWhJM1i
- nTIZUdGyXxmUZHgYMqC5+8tGld16jLB0ZfqFFxEnNdzSnz+CZddz+dSo0xcgqY/IEarj
- MQsx34J7DjnFDiC+PEfQE41Urr2mV5EXfLBp6Yt8pnaXqibdPBCoJOpL3vJt9JaaqqOx
- HALQ==; darn=nongnu.org
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=TwwxK3FbqgNRzq9cSbI+NO5X1AaMIOH6AUHYNp5pS0c=;
+ fh=vf1vEeXi6B/6dFBOe4LTvCNvykFVFUNNHZPrOICD6F0=;
+ b=MbOkZXEVbCC6war0oK/BSX9nk56ixAhLNn+DAW4PnoQk+6EfpVyDYqMMARKlFBP5EW
+ g/eesZ9lGVhYhLOWS4549Q8244iI1KV+I+houB6p3kmf8F4fVxSUYdHc2hndAryevHma
+ h4PG8fT35k62ak/MrfhFEX/rSF0kkxMVuvQBJVVlX/s36hU91/zQVUNp0CRHuHgRAe5p
+ BFl9WvRwcfK0leKxToXiYlZcRpmbQHanhHpJCbJN4XSXnTdgY/e6KhAt+N2aovDR9Eot
+ tK3z9xHaONyFHPgDAtEoRFLk2LRUW2975ADyIf+ON65xNjZwIAHAJjuroVjYkluzt2Ak
+ M06w==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=google.com; s=20251104; t=1781020311; x=1781625111; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=wNVM8/XIQ+GMp2Km6P124CqDPpvEiW+D0aQeKgN3Az8=;
- b=OteLEIbV8juVlw/RPBoJOAsAF+aLOIsDIlV9cDniJbmZFze1L+6Xsk1tdib0Sp2yHq
- mwQPFQgPTPAHT87Uc09sTy5Jblmm0B9wy9qTzAbwCxqG06B+RPfsiEgvHsvKbMFv6IRb
- VdTehG7ed44u163Tu75pm7sK+7QJ3EhBiZ+bqQlaOs814XJVmQ5zlRFRk2ivRx8gB9W5
- 0OAqN96UdzGWDV50I6HmKgF/3HE7YqH0RrwcIW2/YNMdGqRozZilBj0dTQYAtWJsE2uB
- S8pjMas5enBEnZi0N5JMG0JAuB6Rb9lhMtFn52t1CRcfDttNfe+SyMswAMMtXCGEOeEM
- JXHw==
+ d=google.com; s=20251104; t=1781020810; x=1781625610; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=TwwxK3FbqgNRzq9cSbI+NO5X1AaMIOH6AUHYNp5pS0c=;
+ b=MDyA8+Hc4Qg68ca629kJTf/4xVNY9Fb4cL2Xay3sWEDYM0YUJ5ct0lTMQf5oEvp8VT
+ J9C8xz02PNKV015W0VNc/O+MknHtjxj6StVimMeCsUNz1/nK9+x1RJY5A4ERCwUPXcNy
+ HBYoUL+4yZkXxkNJeMNomkKTXhi/X+dtrsEpCCEl+i2SyLR4MB5uY4eZbE/gCRKWD/pD
+ 5bDbWkTjlBuWRss+Ut5VQUxSXk0d28uyThinObUiUE05CYyt7ims5/Pb9tZMwHPbQogq
+ bB8wAC5TDS2eHLVEoplw0RbodXVlk4hpOPGnDeyYr5cmACERAB/txtjF/xyQGi5Ovfn8
+ iuMw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781020311; x=1781625111;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=wNVM8/XIQ+GMp2Km6P124CqDPpvEiW+D0aQeKgN3Az8=;
- b=NsMiBXQV9J0g0XoGts6RZIk+JGNcDhFNo/8mjRDP3Qg9/65Mle1vEWZfbpR1uuzjwk
- Fem2qj3ii1CeMi8GVg9tzkCHSgR5LoFgxw0UMI4oljPSIpmGgzlvJC6iTyWenfkwlVRd
- Y6Kb8L0+Bq91mVNmYkLQXEUJD1OKkAGbY+ECk0Bfmfus4Zu/IE4wGc88Vymli3Kqw4Do
- A2tqXrfYXV/lTMyeSFgofZg0K/Ug7ii2HxWSySLihilXc2LerntTfUWKpnvAlTbvb2eC
- /TSFBH+heOBgUACiBR4rNRchfRuWR+7ZvJ0kKeZlIOboeo68otBKGmLRgiHvEKeiG+ow
- luwQ==
+ d=1e100.net; s=20251104; t=1781020810; x=1781625610;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=TwwxK3FbqgNRzq9cSbI+NO5X1AaMIOH6AUHYNp5pS0c=;
+ b=nr/co2+OQYSOMpBv1wXDf6Az0UlbNppXGgrMgGq2WCO8oXIiLWe1KW8vFKFD5SkiTF
+ 6S/ffVFdWZqsN+nGLT+aB/qiRGWFOjiCnN6j/4QOoi1m3ZDSh1GglIkbnVfiOSJHlI/7
+ SQsVRaDzQFS5dRO6qlOY+DAoXru50zg+HyS4jL4f3+pA1Yiu1qigg6N9CODEC8b7nZJm
+ tXoZmIJ7p0enBojqFHMdtFifyQFiomAFBHKXKpbLUMUsuYoV8twQRXCybyodebjSHWTm
+ 2JThMRqkeor65DLkTZhvbWS/EvNR4BqKqCUOb34h5n0jjCgOsgHlreqPToR1JXzR6NnB
+ iiQQ==
 X-Forwarded-Encrypted: i=1;
- AFNElJ+7zSDTbBTX8BIOabAxUs8vcxWJJ9m2GQ5TEYc0LUOl2zfT2QRPSsXVLuwSjh2W1Ukd1Gc0Ai9Kqk5MqrQ=@nongnu.org
-X-Gm-Message-State: AOJu0Yy9ZnClpbvz/9vImJOwK1nC3wFAi/Q4FkG3ulSiPSLdNmUbg+fa
- pZOw+wXm3ziwRXx8buVfIeed1LwVuCXc1yj/AyJfknOPwER4VFZthWJewzDvqdQ7deYZ8TX/KwM
- ZR/vP6gD5mWul8lwrkxuv/vBoXK5UXUJfawccyzk0
-X-Gm-Gg: Acq92OHcdHNcdMu4/20sY6f3lGK9GQS+4mAxQzpV0jDVrcgpyRuNJ8+DiGI0OA7wGXz
- WIGQE5nJqj8fmiEHKCwr2fHML7PcCBVG2DTgYpK5SWpyHSRYn51I4ncDXtCXbkbBxKBW1R7x5Hi
- McZ9M3Nz+xD6SSHOiKRAAfVRKugJpSwYYensHALMfsazwS1Y3dQN3pqwYoVZCHmqCorFcvnxdom
- ni8Lzm/RSKAXsALpYhBROmCc2UfEyhqLuc/v2qHq0AsNgqZ/tWrtBGffAl1e/PJf69tWfKoMzC9
- xB+OfOIBHFpOt8gBwYUXKjb/bysmubFlXaMp/GlsdH1Ton8ZzQ==
-X-Received: by 2002:a05:6512:23a8:b0:5a8:73f1:4099 with SMTP id
- 2adb3069b0e04-5aa8856cd45mr731268e87.0.1781020310309; Tue, 09 Jun 2026
- 08:51:50 -0700 (PDT)
+ AFNElJ/yF73GK6XsqYM8FRYH/LjRklwHC4ruGhqhGzDL/WmjxsyhrmXLAH+MXb3mgW9I1JMSyU24YqzZhA7tgik=@nongnu.org
+X-Gm-Message-State: AOJu0YxpDxy6gVYgV0aQn9wzRwf5YYMYxuuD7IHNNgXE3gI9Mhr/Mum3
+ jC2DwimFdGmfnC2UkoCOtE1kpRcB139HUwf653PNhymWcYClkJSGnx/hGOwFUsHdHrd7KJQysT2
+ Vq30XiYyaUDTEPYjle2Zh/ePJCjD+SpSsHTtMeTJF
+X-Gm-Gg: Acq92OFpK5zfYuStkt5UFm26ye84fkCLcIXJ3Cb9xBRbqflP1EcPdcwnSYHRclKdQPn
+ up5eE33N/bP50i7Eynjl7kOOJ/W9TmbZT9s276bWOhwMLOkn3KO2hNNmJzPqRE/ppgeiFFHQWFV
+ IE8cgoOQb7/NZSy7sWWR1DLAtZqMy3i6X8ogh0kBzUp82Doharp3GJgzLeO5ok5Am7v/rSGnyIb
+ zhyvpS/AEyTc4W9rOkM7fptQTtZiecrT6S9eYQwtIvvy+hKhKNv/QEj68aPinEpZV+v+RZJejCP
+ vhPGCOWZ9qpuUwE/QBjDx9MqlzP3880vOUd6cvf8ssPdSeznNQ==
+X-Received: by 2002:a05:622a:1b03:b0:50e:38f0:ccb2 with SMTP id
+ d75a77b69052e-5179826672fmr38760001cf.15.1781020807491; Tue, 09 Jun 2026
+ 09:00:07 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260609105626.1038690-1-thuth@redhat.com>
  <CAFEAcA9O6b02VMuto8VzaEsVi3zTqNtQKG_RcMaPnNdPXGUBhw@mail.gmail.com>
  <CAMvPwGpvpHD+Sx-HZR4FFMJB+W8Rk8LoU0256Q=vwKAdC96HSQ@mail.gmail.com>
  <CAFEAcA9N_O7RZRU+SPTfB_ePasjVZvUsFPhndfQDuHgQ+4Q-5A@mail.gmail.com>
-In-Reply-To: <CAFEAcA9N_O7RZRU+SPTfB_ePasjVZvUsFPhndfQDuHgQ+4Q-5A@mail.gmail.com>
+ <CAMvPwGpzAcDxeqSvQmOjzkQn6T91CAmTO31bNs0wmSMqQKG=Qg@mail.gmail.com>
+In-Reply-To: <CAMvPwGpzAcDxeqSvQmOjzkQn6T91CAmTO31bNs0wmSMqQKG=Qg@mail.gmail.com>
 From: Titus Rwantare <titusr@google.com>
-Date: Tue, 9 Jun 2026 08:51:13 -0700
-X-Gm-Features: AVVi8Cdai3kcd1rD-r_4IKxs0gsOerSlPqiCRzTaBqR3URolkh9sVOzU02dxeO4
-Message-ID: <CAMvPwGpzAcDxeqSvQmOjzkQn6T91CAmTO31bNs0wmSMqQKG=Qg@mail.gmail.com>
+Date: Tue, 9 Jun 2026 08:59:26 -0700
+X-Gm-Features: AVVi8CfSCk7cpvbPjjjcictp7Y5ynWYI7fOzBypElkdPKdJ7m307ZuXjj3z5Npc
+Message-ID: <CAMvPwGrnh9-UMv5919bLXLF8oLcyTa=coTdqh+1ALNvCKLmOJQ@mail.gmail.com>
 Subject: Re: [PATCH] hw/i2c/pmbus_device: Fix a possible crash when requesting
  too many bytes
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
  qemu-trivial@nongnu.org, qemu-arm@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::12a;
- envelope-from=titusr@google.com; helo=mail-lf1-x12a.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::836;
+ envelope-from=titusr@google.com; helo=mail-qt1-x836.google.com
 X-Spam_score_int: -175
 X-Spam_score: -17.6
 X-Spam_bar: -----------------
@@ -121,61 +120,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-   On Tue, 9 Jun 2026 at 08:25, Peter Maydell <peter.maydell@linaro.org> wr=
-ote:
->
-> On Tue, 9 Jun 2026 at 15:52, Titus Rwantare <titusr@google.com> wrote:
-> >
-> > On Tue, 9 Jun 2026 at 04:01, Peter Maydell <peter.maydell@linaro.org> w=
-rote:
-> > > I had a look at this bug earlier, but was not sure that this is the
-> > > right thing. What happens is that the guest does something that
-> > > causes the device to queue up data X ready for the guest to
-> > > read, but then instead of reading it, the guest does another
-> > > "I would like data X please" action. My guess is that the way
-> > > the hardware handles this is probably not "add the second
-> > > copy of data X after the first one". Perhaps it is "drop the
-> > > data the guest didn't read, so the next guest read gets the
-> > > second lot of data, not the first". But maybe the spec really
-> > > does say "you can do things in the order 'ask for A, ask for
-> > > B, read data for A, read data for B".
-> > >
-> > > I couldn't conveniently find the pmbus spec to find out what
-> > > the hardware is supposed to do here. We need some input from
-> > > somebody who knows about pmbus.
->
-> > Queueing reads are an implementation detail I decided on, not part of
-> > the spec. How the data gets discarded is up to the device
-> > manufacturer.
->
-> So what *does* the spec say? Does it just say that if you don't
-> read all the data before doing something else then it's all
-> unpredictable? Is there a way for the guest to get the device
-> back into a sane state after it's broken it like that?
->
-> -- PMM
+oops, the patch series that fixes this needs to be upstreamed.
 
-I'm not sure this can happen on hardware. The device puts all the
-bytes on the bus, and the controller can interrupt it with a Repeated
-START
-
-SMBus v3.3 6.5:
-```
-The data formats implemented by SMBus are:
-=E2=80=A2 Controller-transmitter transmits to target-receiver: The transfer
-direction in this case is not changed.
-=E2=80=A2 Controller reads target immediately after the first byte: At the
-moment of the first acknowledgment (provided by the target-receiver)
-the controller-transmitter becomes a controller-receiver and the
-target-receiver becomes a target-transmitter.
-=E2=80=A2 Combined format: During a change of direction within a transfer, =
-the
-controller generates a REPEATED START condition and the target address
-but with the R/W#
-set to 1. In this case the controller receiver terminates the transfer
-by generating a NACK on the last byte of the transfer and a STOP
-condition.
-```
-Hmm, seems to me the data gets cleared with a change in direction.
 -Titus
 
