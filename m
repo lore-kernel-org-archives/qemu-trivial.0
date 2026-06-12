@@ -4,43 +4,45 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A4F2CD98CE
-	for <qemu-trivial@archiver.kernel.org>; Fri, 12 Jun 2026 17:01:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 923D2CD98CE
+	for <qemu-trivial@archiver.kernel.org>; Fri, 12 Jun 2026 17:01:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wY5FV-0005Mi-5b; Fri, 12 Jun 2026 13:00:53 -0400
+	id 1wY5FX-0005U4-FE; Fri, 12 Jun 2026 13:00:55 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wY5Ek-00051u-P9; Fri, 12 Jun 2026 13:00:08 -0400
+ id 1wY5Ez-0005AE-NV; Fri, 12 Jun 2026 13:00:22 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wY5Eg-0005s0-4d; Fri, 12 Jun 2026 13:00:04 -0400
+ id 1wY5Ex-00068r-I5; Fri, 12 Jun 2026 13:00:20 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1781283582; bh=jf+LqF354WIcd0Q9aHL/iR3YqHUyqXbyNzoQ0gowshI=;
- h=From:To:Cc:Subject:Date;
- b=EpgATw+VzKGLFQZDY5tF06xzoPQsCstCunGbYz1SQBh+IKjyNl0D68TmYUMMIURYz
- dN1JgcNuEMZkhPW728KekAKqJuGs8tqbCjIQ5T5eIRh1GTAlIKLNOjttKR7HzZd5EQ
- RL0m8VdfNge/M2RqWoHgJDTrU/1mVuOXJderIeNZR1wsLLfeImYgpYgTYrUGhcD4Uo
- yIchT/Kd04T61rMYbmf79mkBgSTAFMbHUj3EkfXbN+jser+pWqasWj7ty2gaoraN3y
- mn/12bBMJkfNq0OIlYJQbfFQG1kpvKpT60IE8EXxlXdaDKMfPf+L96LPHSSsB2LF4v
- AOgf8QwhRPSUA==
+ t=1781283582; bh=iJFczm4Mkj6FVh+btnly1TBsvJWUTxtYdAijnu5GC5M=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=lCiSsQTvzNF7lH5NxfQ0zjHT/GhNgMZiobxq+oHZN57/xV8IFJpTP9MbHfq8q4vbx
+ 452vr4VRlr1dEHaNkAmjfn1do7dWVwDusCnjnb9DNUUh6mBHE0D2m1YwDtHeEOu7cv
+ OfcrgLNcxPmRdyFhikpwE31mSw664ixLzXL/FIy76jlk9pad5T81B+DuPLoyeHHxwX
+ D6rReQLNfnUFclXVM4BOuhS1zoJlParue28wcUkRRImIK96rRm/gDZ1DR8FyiDqJYt
+ o7kKb5yUKrfThaUTX4DkDCUGGtx68uwiklLRquOeDB21A9yuaFjPXn1jmg0OXf7g1C
+ HwqnldUx9TSiA==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 0BAFF1B6BC5;
+ by isrv.corpit.ru (Postfix) with ESMTP id 1D0351B6BCD;
  Fri, 12 Jun 2026 19:59:42 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 7A7593CE162;
- Fri, 12 Jun 2026 19:59:57 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id 1C8903CE16A;
+ Fri, 12 Jun 2026 19:59:58 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Subject: [PULL 0/8] Trivial patches for 2026-06-12
-Date: Fri, 12 Jun 2026 19:59:44 +0300
-Message-ID: <20260612165957.1779082-1-mjt@tls.msk.ru>
+Cc: Fiona Ebner <f.ebner@proxmox.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 8/8] qemu-options: fix typo in spelling of 'scheduler'
+Date: Fri, 12 Jun 2026 19:59:52 +0300
+Message-ID: <20260612165957.1779082-9-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260612165957.1779082-1-mjt@tls.msk.ru>
+References: <20260612165957.1779082-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
 Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
@@ -67,55 +69,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-The following changes since commit 193963218accbcf65f28ab1efa773ac6d1cc634c:
+From: Fiona Ebner <f.ebner@proxmox.com>
 
-  Merge tag 'pull-ufs-20260612' of https://gitlab.com/jeuk20.kim/qemu into staging (2026-06-12 09:01:07 -0400)
+Signed-off-by: Fiona Ebner <f.ebner@proxmox.com>
+Reviewed-by: Laurent Vivier <laurent@vivier.eu>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ qemu-options.hx | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-are available in the Git repository at:
+diff --git a/qemu-options.hx b/qemu-options.hx
+index 96ae41f787..2fd21519b2 100644
+--- a/qemu-options.hx
++++ b/qemu-options.hx
+@@ -5517,7 +5517,7 @@ DEF("sandbox", HAS_ARG, QEMU_OPTION_sandbox, \
+     "                    main QEMU process but will allow forks and execves to run unprivileged\n" \
+     "                use 'spawn' to avoid QEMU to spawn new threads or processes by\n" \
+     "                     blocking *fork and execve\n" \
+-    "                use 'resourcecontrol' to disable process affinity and schedular priority\n",
++    "                use 'resourcecontrol' to disable process affinity and scheduler priority\n",
+     QEMU_ARCH_ALL)
+ SRST
+ ``-sandbox arg[,obsolete=string][,elevateprivileges=string][,spawn=string][,resourcecontrol=string]``
+@@ -5534,7 +5534,7 @@ SRST
+         Disable \*fork and execve
+ 
+     ``resourcecontrol=string``
+-        Disable process affinity and schedular priority
++        Disable process affinity and scheduler priority
+ ERST
+ 
+ DEF("readconfig", HAS_ARG, QEMU_OPTION_readconfig,
+-- 
+2.47.3
 
-  https://gitlab.com/mjt0k/qemu.git tags/pull-trivial-patches
-
-for you to fetch changes up to 2a57339f89f47b4b1686f419fa2bbd6c0ea6e016:
-
-  qemu-options: fix typo in spelling of 'scheduler' (2026-06-12 19:43:21 +0300)
-
-----------------------------------------------------------------
-trivial patches for 2026-06-12
-
-a few small things here and there.
-
-the hostfwd one hasn't been reviewed for a few months, but it's
-simple enough.
-----------------------------------------------------------------
-Ajinkya Udgirkar (1):
-      hw/xtensa: replace calloc with g_new0 in mx_pic
-
-Ani Sinha (1):
-      igvm: spit out region size on error
-
-BALATON Zoltan (1):
-      hw/display/vga: Fix debug message
-
-Evgeny Kolmakov (2):
-      net/colo-compare: Use QEMU_LOCK_GUARD to simplify mutex handling
-      block/io: Use QEMU_LOCK_GUARD to simplify mutex handling
-
-Fiona Ebner (1):
-      qemu-options: fix typo in spelling of 'scheduler'
-
-Michael Tokarev (1):
-      net/slirp: allow hostfwd socket paths with dashes
-
-Thomas Huth (1):
-      system/rtc: Fix a possible year-2038 integer overflow problem
-
- backends/igvm.c    | 4 ++--
- block/io.c         | 4 +---
- hw/display/vga.c   | 2 +-
- hw/xtensa/mx_pic.c | 2 +-
- net/colo-compare.c | 8 ++------
- net/slirp.c        | 5 +++--
- qemu-options.hx    | 4 ++--
- system/rtc.c       | 4 ++--
- 8 files changed, 14 insertions(+), 19 deletions(-)
 
