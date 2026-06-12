@@ -4,42 +4,42 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 923D2CD98CE
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F35B2CD98D9
 	for <qemu-trivial@archiver.kernel.org>; Fri, 12 Jun 2026 17:01:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wY5FX-0005U4-FE; Fri, 12 Jun 2026 13:00:55 -0400
+	id 1wY5FV-0005N0-7L; Fri, 12 Jun 2026 13:00:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wY5Ez-0005AE-NV; Fri, 12 Jun 2026 13:00:22 -0400
+ id 1wY5Eu-000558-3p; Fri, 12 Jun 2026 13:00:19 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wY5Ex-00068r-I5; Fri, 12 Jun 2026 13:00:20 -0400
+ id 1wY5Es-00062m-Ba; Fri, 12 Jun 2026 13:00:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1781283582; bh=iJFczm4Mkj6FVh+btnly1TBsvJWUTxtYdAijnu5GC5M=;
+ t=1781283582; bh=PVRmFnUyvgeskurDtjhxSJQvHRrpe17ZA3bTgUIHziY=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=lCiSsQTvzNF7lH5NxfQ0zjHT/GhNgMZiobxq+oHZN57/xV8IFJpTP9MbHfq8q4vbx
- 452vr4VRlr1dEHaNkAmjfn1do7dWVwDusCnjnb9DNUUh6mBHE0D2m1YwDtHeEOu7cv
- OfcrgLNcxPmRdyFhikpwE31mSw664ixLzXL/FIy76jlk9pad5T81B+DuPLoyeHHxwX
- D6rReQLNfnUFclXVM4BOuhS1zoJlParue28wcUkRRImIK96rRm/gDZ1DR8FyiDqJYt
- o7kKb5yUKrfThaUTX4DkDCUGGtx68uwiklLRquOeDB21A9yuaFjPXn1jmg0OXf7g1C
- HwqnldUx9TSiA==
+ b=Rw0nzIRrhla9umcz5QIja6oNWfMmhCg2IeYCoRvbW3aFfbTiidANC1goeJJiKrkKJ
+ VmWJPGRG/Z9ezSt/ga1PV2wdGTDUi5LTnLCX0h8rl8vZBi3Zh+j7GH1q0s7Ty3BvnB
+ 4Nsd76cdnmfnR2kphjXFNIzQjWMMGP9AV3Q22nS1uVNiIOcatLbMs1PDi/L9/nf+rW
+ K+fP1L5MKv7hpr3j02koA0760BPc2CkIBFuSIZ0oFFnrHbo/ek5RwEzs5B09veLkje
+ XbriDcNUg8rRn9iAAGIR+MOPtr/eSfbHPzUuCfqcs3qng8vrXYKPqfmVser4VC6ud7
+ 4St/W6oQiPo5g==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 1D0351B6BCD;
+ by isrv.corpit.ru (Postfix) with ESMTP id 17EB61B6BCA;
  Fri, 12 Jun 2026 19:59:42 +0300 (MSK)
 Received: from think4mjt.tls.msk.ru (mjtthink.wg.tls.msk.ru [192.168.177.146])
- by tsrv.corpit.ru (Postfix) with ESMTP id 1C8903CE16A;
- Fri, 12 Jun 2026 19:59:58 +0300 (MSK)
+ by tsrv.corpit.ru (Postfix) with ESMTP id CA2DC3CE167;
+ Fri, 12 Jun 2026 19:59:57 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Fiona Ebner <f.ebner@proxmox.com>, qemu-trivial@nongnu.org,
+Cc: Evgeny Kolmakov <randomjack94dev@gmail.com>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 8/8] qemu-options: fix typo in spelling of 'scheduler'
-Date: Fri, 12 Jun 2026 19:59:52 +0300
-Message-ID: <20260612165957.1779082-9-mjt@tls.msk.ru>
+Subject: [PULL 5/8] block/io: Use QEMU_LOCK_GUARD to simplify mutex handling
+Date: Fri, 12 Jun 2026 19:59:49 +0300
+Message-ID: <20260612165957.1779082-6-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260612165957.1779082-1-mjt@tls.msk.ru>
 References: <20260612165957.1779082-1-mjt@tls.msk.ru>
@@ -69,39 +69,39 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Fiona Ebner <f.ebner@proxmox.com>
+From: Evgeny Kolmakov <randomjack94dev@gmail.com>
 
-Signed-off-by: Fiona Ebner <f.ebner@proxmox.com>
-Reviewed-by: Laurent Vivier <laurent@vivier.eu>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Replace qemu_mutex_(un)lock() calls with QEMU_LOCK_GUARD().
+
+Signed-off-by: Evgeny Kolmakov <randomjack94dev@gmail.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@linaro.org>
+Reviewed-by: Zhang Chen <zhangckid@gmail.com>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- qemu-options.hx | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ block/io.c | 4 +---
+ 1 file changed, 1 insertion(+), 3 deletions(-)
 
-diff --git a/qemu-options.hx b/qemu-options.hx
-index 96ae41f787..2fd21519b2 100644
---- a/qemu-options.hx
-+++ b/qemu-options.hx
-@@ -5517,7 +5517,7 @@ DEF("sandbox", HAS_ARG, QEMU_OPTION_sandbox, \
-     "                    main QEMU process but will allow forks and execves to run unprivileged\n" \
-     "                use 'spawn' to avoid QEMU to spawn new threads or processes by\n" \
-     "                     blocking *fork and execve\n" \
--    "                use 'resourcecontrol' to disable process affinity and schedular priority\n",
-+    "                use 'resourcecontrol' to disable process affinity and scheduler priority\n",
-     QEMU_ARCH_ALL)
- SRST
- ``-sandbox arg[,obsolete=string][,elevateprivileges=string][,spawn=string][,resourcecontrol=string]``
-@@ -5534,7 +5534,7 @@ SRST
-         Disable \*fork and execve
+diff --git a/block/io.c b/block/io.c
+index 6c0bbdcf1e..a916b236c3 100644
+--- a/block/io.c
++++ b/block/io.c
+@@ -719,14 +719,12 @@ BdrvTrackedRequest *coroutine_fn bdrv_co_get_self_request(BlockDriverState *bs)
+     Coroutine *self = qemu_coroutine_self();
+     IO_CODE();
  
-     ``resourcecontrol=string``
--        Disable process affinity and schedular priority
-+        Disable process affinity and scheduler priority
- ERST
+-    qemu_mutex_lock(&bs->reqs_lock);
++    QEMU_LOCK_GUARD(&bs->reqs_lock);
+     QLIST_FOREACH(req, &bs->tracked_requests, list) {
+         if (req->co == self) {
+-            qemu_mutex_unlock(&bs->reqs_lock);
+             return req;
+         }
+     }
+-    qemu_mutex_unlock(&bs->reqs_lock);
  
- DEF("readconfig", HAS_ARG, QEMU_OPTION_readconfig,
+     return NULL;
+ }
 -- 
 2.47.3
 
