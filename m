@@ -4,56 +4,88 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D480ACD98E4
-	for <qemu-trivial@archiver.kernel.org>; Wed, 17 Jun 2026 12:03:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A558CD98F0
+	for <qemu-trivial@archiver.kernel.org>; Wed, 17 Jun 2026 12:03:38 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wZozI-0004oX-9U; Wed, 17 Jun 2026 08:03:20 -0400
+	id 1wZozH-0004mg-0c; Wed, 17 Jun 2026 08:03:19 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lobanov-vla@yandex.ru>)
- id 1wZmqR-0005v6-MH; Wed, 17 Jun 2026 05:46:03 -0400
-Received: from forward100a.mail.yandex.net ([2a02:6b8:c0e:500:1:45:d181:d100])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <lobanov-vla@yandex.ru>)
- id 1wZmqP-0002N2-Gw; Wed, 17 Jun 2026 05:46:03 -0400
-Received: from mail-nwsmtp-smtp-production-main-64.vla.yp-c.yandex.net
- (mail-nwsmtp-smtp-production-main-64.vla.yp-c.yandex.net
- [IPv6:2a02:6b8:c1d:713f:0:640:12cb:0])
- by forward100a.mail.yandex.net (Yandex) with ESMTPS id 08BEDC06EA;
- Wed, 17 Jun 2026 12:45:54 +0300 (MSK)
-Received: by mail-nwsmtp-smtp-production-main-64.vla.yp-c.yandex.net (smtp)
- with ESMTPSA id ojNjJbpeaiE0-EMZIIV2J; 
- Wed, 17 Jun 2026 12:45:53 +0300
-X-Yandex-Fwd: 1
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=yandex.ru; s=mail;
- t=1781689553; bh=EVaD91U778GPavlRVIBviv08gdBWzqmegGsObBePI6A=;
- h=Message-ID:Date:Cc:Subject:To:From;
- b=KxB5rzlEutMzwkrbWQ6HQc4LPLnA1XdfWvI4XFcfjzjUmfWd01M6EEKgfUPKHay/R
- kp+fN0TsZlnax9sjrPgXDFlY8NqZbaNKkApKA6It9QvQULOCjpsaUDUqky1LERocMP
- J4nvBAJ/nh06+hkqbBMYrRPV8wPQHgXOObuGOnFg=
-Authentication-Results: mail-nwsmtp-smtp-production-main-64.vla.yp-c.yandex.net;
- dkim=pass header.i=@yandex.ru
-From: Vladimir Lobanov <lobanov-vla@yandex.ru>
-To: qemu-devel@nongnu.org
-Cc: qemu-block@nongnu.org, kwolf@redhat.com, hreitz@redhat.com,
- qemu-trivial@nongnu.org, Vladimir Lobanov <lobanov-vla@yandex.ru>
-Subject: [PATCH] block/curl: set User-Agent header
-Date: Wed, 17 Jun 2026 12:44:56 +0300
-Message-ID: <20260617094456.94880-1-lobanov-vla@yandex.ru>
-X-Mailer: git-send-email 2.50.1
+ (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
+ id 1wZorJ-0002Jf-Bb
+ for qemu-trivial@nongnu.org; Wed, 17 Jun 2026 07:55:05 -0400
+Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
+ id 1wZorH-0005z8-Kn
+ for qemu-trivial@nongnu.org; Wed, 17 Jun 2026 07:55:05 -0400
+Received: by mail-pl1-x62e.google.com with SMTP id
+ d9443c01a7336-2bf237e1433so69191585ad.1
+ for <qemu-trivial@nongnu.org>; Wed, 17 Jun 2026 04:55:03 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1781697302; x=1782302102; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=HuoZ1XF/SGtRMQNUv5o7lgVgKw3GW1pchp5QRRK8IPk=;
+ b=Zr4yCHxfwQKuphQl9w5v0iw1P1Oebhg52X/S9tY/9ty663qA/73EhVo7tHrHWp6GiU
+ EHHIpieQ+ymYPslVbYeCmO8pdHgS+nyqqq4+RvTGn8ZZhhSJuL0N1OBu25vDujZzlebX
+ K/537d9lcJd5I+g6zq0E8A9oY6J+fm3RTSsj5ZfL27NVbKZrqOPXl4Sdba9Oq+Vb8Ggu
+ nzTVe1xCm4K/j8Lxq1uJD3Hi3wjzOqauF4S01w1+I4lrjrfoWB/Q6m5cH3N2RuV6MOzy
+ WjQAPTa7ROOCq2LKjiGEJA/TmqKRyPojmD7FmIkW1sLA/NoRFow7liQ7zlK+FukcfG7E
+ 573w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1781697302; x=1782302102;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=HuoZ1XF/SGtRMQNUv5o7lgVgKw3GW1pchp5QRRK8IPk=;
+ b=bo5a6xvhi74Bsl3gUULKQsRBdfzwnYK64iLeKEAb6kOKvsBHH772tF/AnV171KAyf8
+ 7tYPBYXFPj5L+IOBLWG/WYrwfpX0uMpzPA1zrX/R822r0YZI9b0SvXcDhwCSTPKfRzzg
+ ZcnPXhftbuXMsiVEY+wENijY5XH7OEmYh93Y8kp9zOzqJ7TyySXba0nEfCexsQ8qXvdP
+ p8UkvR+AFV9/6NFDbWebOsj3olhlOhfyNKJwQRFh8RseJiMrED8ZbBE/Be+VvKn9s3PD
+ N6wkkgttv5T00psdY5FpXiaAKAajkJoERZKZoUIS5FGlzCScfJ96XI79suLuaJzedNen
+ qNEw==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8hWaje/BQ8PNCA0mw6kGIUHYFrtMdnfNJN0mUqhNbXPHjng2nRd4JbW5WgMYrVaUNUGAsHhjtkhj6gTCQ=@nongnu.org
+X-Gm-Message-State: AOJu0YwDb3Bkw6i5bJ0lNDf+BShS7DFR7UjMhHtA/Z4qskIuwQ6BzobE
+ G6kvSeb+i9SibPzeJzixnzPaO3RHcWIOIcKaCQgOkdQFAT9rC269D5AP
+X-Gm-Gg: AfdE7ckrpEAkcB+6+1MdMdzD6hP6ERCAayhIibP9Y2dYtwKLc/S3y0Jee55PmxbV/7A
+ 1HRSE7CGdgxhFArENyOzFAzQOuJgVvTOyZxYBe5Xck3m5JnviQxsSRwnyLV9l3+/meegvDW8NJc
+ Po1gr+mB8QSyW/8lMqkq1dqVSpGqrUu/CZRYOqdMo/6YV2p2D6Bo0jL3GIbkEOsl8CiUjjwn4Fd
+ pncbhpFc8DvHep0Wf/7LiPjusi5BjUNAY3u2TWPTEd5oKCchG3tp+BI3Ra3LsQmL+1y6ivNhZ99
+ lVm4NekCXqRUEBLzV4zrq7yttQ8dgM3NEi5PXU0OwEOtjEdPj4zz1IZ2heR0DG/ntEgWYZ+c9UZ
+ LKwQJNjHxQebl6vQAkM4bQq+67Syxby1lJs8HoN/SYyszcbtwra5jkL63eM2tGX0NXUWlP5EhSB
+ 8bRR9PRMtkxdTEdvA3OlidGKDj
+X-Received: by 2002:a17:902:f609:b0:2c1:b8af:18ab with SMTP id
+ d9443c01a7336-2c6bc20b7f0mr36324575ad.19.1781697301939; 
+ Wed, 17 Jun 2026 04:55:01 -0700 (PDT)
+Received: from localhost.localdomain ([82.40.42.115])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2c42f1f1014sm163576605ad.16.2026.06.17.04.54.57
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 17 Jun 2026 04:55:01 -0700 (PDT)
+From: jw_mac <163wangjack@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: peter.maydell@linaro.org, mjt@tls.msk.ru, laurent@vivier.eu,
+ jw_mac <77239050qq@gmail.com>, Wang <163wangjack@gamil.com>
+Subject: [PATCH trivial] Signed-off-by: jw_mac <163wangjack@gamil.com>
+Date: Wed, 17 Jun 2026 19:54:41 +0800
+Message-ID: <20260617115442.91715-1-163wangjack@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a02:6b8:c0e:500:1:45:d181:d100;
- envelope-from=lobanov-vla@yandex.ru; helo=forward100a.mail.yandex.net
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
+ envelope-from=163wangjack@gmail.com; helo=mail-pl1-x62e.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ FROM_STARTS_WITH_NUMS=0.738, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Wed, 17 Jun 2026 08:03:15 -0400
 X-BeenThere: qemu-trivial@nongnu.org
@@ -70,33 +102,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Some HTTP servers and WAFs (e.g. Amazon CloudFront) reject
-requests without a User-Agent header with 403 Forbidden. This
-makes qemu-img info and other curl-based operations fail on
-such URLs without any obvious indication of the root cause.
+From: jw_mac <77239050qq@gmail.com>
 
-Set a "QEMU/<version>" User-Agent string on all curl handles
-to ensure compatibility with these endpoints.
+hw/timer/imx_epit: Replace DPRINTF with trace events
 
-Signed-off-by: Vladimir Lobanov <lobanov-vla@yandex.ru>
+Clean up the codebase by removing the outdated DEBUG_IMX_EPIT
+and DPRINTF macros, replacing them with modern QEMU trace events.
+
+This also removes an empty and meaningless DPRINTF("\n") in the
+imx_epit_realize function.
+
+Signed-off-by: Wang <163wangjack@gamil.com>
 ---
- block/curl.c | 2 ++
- 1 file changed, 2 insertions(+)
+ hw/timer/imx_epit.c   | 25 +++++--------------------
+ hw/timer/trace-events |  8 ++++++++
+ 2 files changed, 13 insertions(+), 20 deletions(-)
 
-diff --git a/block/curl.c b/block/curl.c
-index 684c677ef7..1958eb80d1 100644
---- a/block/curl.c
-+++ b/block/curl.c
-@@ -482,6 +482,8 @@ static int curl_init_state(BDRVCURLState *s, CURLState *state)
-             }
-         }
-         if (curl_easy_setopt(state->curl, CURLOPT_TIMEOUT, (long)s->timeout) ||
-+            curl_easy_setopt(state->curl, CURLOPT_USERAGENT,
-+                             "QEMU/" QEMU_VERSION) ||
-             curl_easy_setopt(state->curl, CURLOPT_WRITEFUNCTION,
-                              (void *)curl_read_cb) ||
-             curl_easy_setopt(state->curl, CURLOPT_WRITEDATA, (void *)state) ||
+diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
+index c67a39f10c..476e2771b3 100644
+--- a/hw/timer/imx_epit.c
++++ b/hw/timer/imx_epit.c
+@@ -20,18 +20,7 @@
+ #include "hw/misc/imx_ccm.h"
+ #include "qemu/module.h"
+ #include "qemu/log.h"
+-
+-#ifndef DEBUG_IMX_EPIT
+-#define DEBUG_IMX_EPIT 0
+-#endif
+-
+-#define DPRINTF(fmt, args...) \
+-    do { \
+-        if (DEBUG_IMX_EPIT) { \
+-            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_EPIT, \
+-                                             __func__, ##args); \
+-        } \
+-    } while (0)
++#include "trace.h"
+ 
+ static const char *imx_epit_reg_name(uint32_t reg)
+ {
+@@ -80,7 +69,7 @@ static uint32_t imx_epit_get_freq(IMXEPITState *s)
+     uint32_t prescaler = 1 + extract32(s->cr, CR_PRESCALE_SHIFT, CR_PRESCALE_BITS);
+     uint32_t f_in = imx_ccm_get_clock_frequency(s->ccm, imx_epit_clocks[clksrc]);
+     uint32_t freq = f_in / prescaler;
+-    DPRINTF("ptimer frequency is %u\n", freq);
++    trace_imx_epit_get_freq(freq);
+     return freq;
+ }
+ 
+@@ -146,8 +135,7 @@ static uint64_t imx_epit_read(void *opaque, hwaddr offset, unsigned size)
+                       HWADDR_PRIx "\n", TYPE_IMX_EPIT, __func__, offset);
+         break;
+     }
+-
+-    DPRINTF("(%s) = 0x%08x\n", imx_epit_reg_name(offset >> 2), reg_value);
++    trace_imx_epit_read(imx_epit_reg_name(offset >> 2), reg_value);
+ 
+     return reg_value;
+ }
+@@ -328,8 +316,7 @@ static void imx_epit_write(void *opaque, hwaddr offset, uint64_t value,
+ {
+     IMXEPITState *s = IMX_EPIT(opaque);
+ 
+-    DPRINTF("(%s, value = 0x%08x)\n", imx_epit_reg_name(offset >> 2),
+-            (uint32_t)value);
++    trace_imx_epit_write(imx_epit_reg_name(offset >> 2), (uint32_t)value);
+ 
+     switch (offset >> 2) {
+     case 0: /* CR */
+@@ -362,7 +349,7 @@ static void imx_epit_cmp(void *opaque)
+     /* The cmp ptimer can't be running when the peripheral is disabled */
+     assert(s->cr & CR_EN);
+ 
+-    DPRINTF("sr was %d\n", s->sr);
++    trace_imx_epit_cmp(s->sr);
+     /* Set interrupt status bit SR.OCIF and update the interrupt state */
+     s->sr |= SR_OCIF;
+     imx_epit_update_int(s);
+@@ -399,8 +386,6 @@ static void imx_epit_realize(DeviceState *dev, Error **errp)
+     IMXEPITState *s = IMX_EPIT(dev);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+ 
+-    DPRINTF("\n");
+-
+     sysbus_init_irq(sbd, &s->irq);
+     memory_region_init_io(&s->iomem, OBJECT(s), &imx_epit_ops, s, TYPE_IMX_EPIT,
+                           0x00001000);
+diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+index ac5afe84e8..3c282800c6 100644
+--- a/hw/timer/trace-events
++++ b/hw/timer/trace-events
+@@ -122,3 +122,11 @@ hpet_ram_write_tn_cmp(uint8_t reg_off) "hpet_ram_writel HPET_TN_CMP + %" PRIu8
+ hpet_ram_write_invalid_tn_cmp(void) "invalid HPET_TN_CMP + 4 write"
+ hpet_ram_write_invalid(void) "invalid hpet_ram_writel"
+ hpet_ram_write_counter_write_while_enabled(void) "Writing counter while HPET enabled!"
++
++# imx_epit.c
++imx_epit_get_freq(uint32_t freq) "ptimer frequency is %u"
++imx_epit_read(const char *name, uint32_t value) "(%s) = 0x%08x"
++imx_epit_write(const char *name, uint32_t value) "(%s, value = 0x%08x)"
++imx_epit_cmp(uint32_t sr) "sr was %d"
++
++
 -- 
-2.50.1 (Apple Git-155)
+2.53.0
 
 
