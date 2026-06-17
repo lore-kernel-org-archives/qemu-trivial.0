@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1A558CD98F0
-	for <qemu-trivial@archiver.kernel.org>; Wed, 17 Jun 2026 12:03:38 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B44DCD98E4
+	for <qemu-trivial@archiver.kernel.org>; Wed, 17 Jun 2026 12:05:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wZozH-0004mg-0c; Wed, 17 Jun 2026 08:03:19 -0400
+	id 1wZp0n-00071u-Sl; Wed, 17 Jun 2026 08:04:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wZorJ-0002Jf-Bb
- for qemu-trivial@nongnu.org; Wed, 17 Jun 2026 07:55:05 -0400
-Received: from mail-pl1-x62e.google.com ([2607:f8b0:4864:20::62e])
+ id 1wZp0l-00070p-US
+ for qemu-trivial@nongnu.org; Wed, 17 Jun 2026 08:04:52 -0400
+Received: from mail-pj1-x1030.google.com ([2607:f8b0:4864:20::1030])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wZorH-0005z8-Kn
- for qemu-trivial@nongnu.org; Wed, 17 Jun 2026 07:55:05 -0400
-Received: by mail-pl1-x62e.google.com with SMTP id
- d9443c01a7336-2bf237e1433so69191585ad.1
- for <qemu-trivial@nongnu.org>; Wed, 17 Jun 2026 04:55:03 -0700 (PDT)
+ id 1wZp0k-0001oS-8y
+ for qemu-trivial@nongnu.org; Wed, 17 Jun 2026 08:04:51 -0400
+Received: by mail-pj1-x1030.google.com with SMTP id
+ 98e67ed59e1d1-36ba285e98bso5770090a91.2
+ for <qemu-trivial@nongnu.org>; Wed, 17 Jun 2026 05:04:49 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1781697302; x=1782302102; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1781697889; x=1782302689; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=HuoZ1XF/SGtRMQNUv5o7lgVgKw3GW1pchp5QRRK8IPk=;
- b=Zr4yCHxfwQKuphQl9w5v0iw1P1Oebhg52X/S9tY/9ty663qA/73EhVo7tHrHWp6GiU
- EHHIpieQ+ymYPslVbYeCmO8pdHgS+nyqqq4+RvTGn8ZZhhSJuL0N1OBu25vDujZzlebX
- K/537d9lcJd5I+g6zq0E8A9oY6J+fm3RTSsj5ZfL27NVbKZrqOPXl4Sdba9Oq+Vb8Ggu
- nzTVe1xCm4K/j8Lxq1uJD3Hi3wjzOqauF4S01w1+I4lrjrfoWB/Q6m5cH3N2RuV6MOzy
- WjQAPTa7ROOCq2LKjiGEJA/TmqKRyPojmD7FmIkW1sLA/NoRFow7liQ7zlK+FukcfG7E
- 573w==
+ bh=Pmyemtd2tBPHiSgwGu31+6185CPgr9ELPJ5HzFh6rR8=;
+ b=dV0wBZcgSMhcCsZJrGF5QgFwBbax9bkb0jdl1pJIGsSJUeC8ArW02F8vK5R49Wn9G1
+ z6DGUGtPZhJUcNkEYadA85vzI3SnVhauzCE5/MCR4+EBFbytjD8lslgJbwZbHR3F5u3Q
+ 5RcO/E+CGKAiupqOWxp0GGwGZl1InCUJIdbBN9WN/qmQZ9LT4CO76rS6Z5VtR4oYHYQC
+ JkvCiRRK+ceJZi1UwoZSajy062fLWFIA4jFZoAMa8qgw0MFweeHi1lvoTKVLxH2st31+
+ DTamfhrWRVEfBxvnuhtr9DitEwV5BwDblplumEe/z12FLZSIedoBeEPF8vTinqaz4Tct
+ OP2g==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781697302; x=1782302102;
+ d=1e100.net; s=20251104; t=1781697889; x=1782302689;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HuoZ1XF/SGtRMQNUv5o7lgVgKw3GW1pchp5QRRK8IPk=;
- b=bo5a6xvhi74Bsl3gUULKQsRBdfzwnYK64iLeKEAb6kOKvsBHH772tF/AnV171KAyf8
- 7tYPBYXFPj5L+IOBLWG/WYrwfpX0uMpzPA1zrX/R822r0YZI9b0SvXcDhwCSTPKfRzzg
- ZcnPXhftbuXMsiVEY+wENijY5XH7OEmYh93Y8kp9zOzqJ7TyySXba0nEfCexsQ8qXvdP
- p8UkvR+AFV9/6NFDbWebOsj3olhlOhfyNKJwQRFh8RseJiMrED8ZbBE/Be+VvKn9s3PD
- N6wkkgttv5T00psdY5FpXiaAKAajkJoERZKZoUIS5FGlzCScfJ96XI79suLuaJzedNen
- qNEw==
+ bh=Pmyemtd2tBPHiSgwGu31+6185CPgr9ELPJ5HzFh6rR8=;
+ b=Bf26jj3xbM8tAcWuL/t2ju2hthfQcYDAiQERxURJj75gpFkPV9q4PNlD7jXMrATCxg
+ fiu8wGicsZC5uRziqWHBI4YHO+KWenpCpka477or5pY3kNvt359IJNe7v+PKY2AU5BYG
+ Qd6+CcJy6hfgRHB5fQSnti41TEoTAikSiXSFukaECyjotPQ1Yt0E0gjdXypbJKAdB8dX
+ /PvZ6/JZI8TIvXknhSGCzYTu7NnaIjyBSp4568eJN8aAULUGwHiuKQZN82kfH/c4g6TW
+ 20N0YwGlYgE7SrKZG+WEDWelxOGUCGIlrxT8ahB/0y6ucXW1XLiT2bIpERzTaGBswu2W
+ jUXA==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8hWaje/BQ8PNCA0mw6kGIUHYFrtMdnfNJN0mUqhNbXPHjng2nRd4JbW5WgMYrVaUNUGAsHhjtkhj6gTCQ=@nongnu.org
-X-Gm-Message-State: AOJu0YwDb3Bkw6i5bJ0lNDf+BShS7DFR7UjMhHtA/Z4qskIuwQ6BzobE
- G6kvSeb+i9SibPzeJzixnzPaO3RHcWIOIcKaCQgOkdQFAT9rC269D5AP
-X-Gm-Gg: AfdE7ckrpEAkcB+6+1MdMdzD6hP6ERCAayhIibP9Y2dYtwKLc/S3y0Jee55PmxbV/7A
- 1HRSE7CGdgxhFArENyOzFAzQOuJgVvTOyZxYBe5Xck3m5JnviQxsSRwnyLV9l3+/meegvDW8NJc
- Po1gr+mB8QSyW/8lMqkq1dqVSpGqrUu/CZRYOqdMo/6YV2p2D6Bo0jL3GIbkEOsl8CiUjjwn4Fd
- pncbhpFc8DvHep0Wf/7LiPjusi5BjUNAY3u2TWPTEd5oKCchG3tp+BI3Ra3LsQmL+1y6ivNhZ99
- lVm4NekCXqRUEBLzV4zrq7yttQ8dgM3NEi5PXU0OwEOtjEdPj4zz1IZ2heR0DG/ntEgWYZ+c9UZ
- LKwQJNjHxQebl6vQAkM4bQq+67Syxby1lJs8HoN/SYyszcbtwra5jkL63eM2tGX0NXUWlP5EhSB
- 8bRR9PRMtkxdTEdvA3OlidGKDj
-X-Received: by 2002:a17:902:f609:b0:2c1:b8af:18ab with SMTP id
- d9443c01a7336-2c6bc20b7f0mr36324575ad.19.1781697301939; 
- Wed, 17 Jun 2026 04:55:01 -0700 (PDT)
+ AFNElJ8QCPVUh2YtjtX+XAsfXxrO6NU9jLqTNwnYIqOWS0A8DtEN5aOeZbZFxB6wJ/9EtdqCePf2EJWTcHMe57Y=@nongnu.org
+X-Gm-Message-State: AOJu0Yygz8NOtu9MmhGaCfkdCAfqChwUWKIGgnv7YCeT9KxmbY47ZWDg
+ LGV76QcxxxoSaIi92OWVagXT2V0bghpX7+1mavHHFw72RFyV/sTk+w7z
+X-Gm-Gg: AfdE7cknznwC+Kej30grS3d42FuKLYSjWiOWiCkwZwnTSzAbLsMRFTTKwnLq7CZefXT
+ GG1K2rIkHYFyy7IXS/J0XFvZStARhDcMLmTHLCxhRhRuMk5FwZQycAYJUgxM4RWtiR1YqP8mslm
+ renmQEbkOwXhnlwhNAiuR+I6T/awJt7xUAaDk1jiqs/iuFydDiRfrLOqppndfR2UIafvKwzaZ0t
+ KdEpqoWi/snJVIr7nfR3j0gw5WxS9iJmW6ubzfj7mEnIBqCgkd6IXnjytFuR6MnvYDZ6eSEvkGu
+ snvotNA6krZF+MTwwu8EMjMD3y60Fm/f/sG7Uo9j/rUDdmdWU4gUAr5LGOh8Ef+cFnXR4wRc+f0
+ ZfWdai0DA/fyWyNFj9o5CE+iEAPYY3tIyYFxpGFUVNhPJ+9NT4+E0Jl1oSFlZPBPA2ZrKEpkz71
+ 0O6hlL0yAu8118JeuLlD7lI5Fi
+X-Received: by 2002:a17:90b:3f84:b0:369:de03:29c8 with SMTP id
+ 98e67ed59e1d1-37c9ed01f9bmr3192172a91.23.1781697888749; 
+ Wed, 17 Jun 2026 05:04:48 -0700 (PDT)
 Received: from localhost.localdomain ([82.40.42.115])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2c42f1f1014sm163576605ad.16.2026.06.17.04.54.57
+ 98e67ed59e1d1-37cd2ee88ddsm23672a91.2.2026.06.17.05.04.44
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 17 Jun 2026 04:55:01 -0700 (PDT)
-From: jw_mac <163wangjack@gmail.com>
+ Wed, 17 Jun 2026 05:04:48 -0700 (PDT)
+From: jack wang <163wangjack@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-trivial@nongnu.org
 Cc: peter.maydell@linaro.org, mjt@tls.msk.ru, laurent@vivier.eu,
- jw_mac <77239050qq@gmail.com>, Wang <163wangjack@gamil.com>
-Subject: [PATCH trivial] Signed-off-by: jw_mac <163wangjack@gamil.com>
-Date: Wed, 17 Jun 2026 19:54:41 +0800
-Message-ID: <20260617115442.91715-1-163wangjack@gmail.com>
+ jack wang <163wangjack@gmail.com>
+Subject: [PATCH trivial v3] hw/timer/imx_epit: Replace DPRINTF with trace
+ events
+Date: Wed, 17 Jun 2026 20:04:29 +0800
+Message-ID: <20260617120429.95176-1-163wangjack@gmail.com>
 X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62e;
- envelope-from=163wangjack@gmail.com; helo=mail-pl1-x62e.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1030;
+ envelope-from=163wangjack@gmail.com; helo=mail-pj1-x1030.google.com
 X-Spam_score_int: -13
 X-Spam_score: -1.4
 X-Spam_bar: -
@@ -87,7 +88,6 @@ X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  FROM_STARTS_WITH_NUMS=0.738, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Wed, 17 Jun 2026 08:03:15 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -102,17 +102,13 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: jw_mac <77239050qq@gmail.com>
-
-hw/timer/imx_epit: Replace DPRINTF with trace events
-
 Clean up the codebase by removing the outdated DEBUG_IMX_EPIT
 and DPRINTF macros, replacing them with modern QEMU trace events.
 
 This also removes an empty and meaningless DPRINTF("\n") in the
 imx_epit_realize function.
 
-Signed-off-by: Wang <163wangjack@gamil.com>
+Signed-off-by: jack wang <163wangjack@gmail.com>
 ---
  hw/timer/imx_epit.c   | 25 +++++--------------------
  hw/timer/trace-events |  8 ++++++++
