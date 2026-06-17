@@ -4,81 +4,82 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1928CD98F1
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AD72CCD98E4
 	for <qemu-trivial@archiver.kernel.org>; Wed, 17 Jun 2026 12:03:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wZozE-0004i8-H2; Wed, 17 Jun 2026 08:03:16 -0400
+	id 1wZozE-0004iV-OF; Wed, 17 Jun 2026 08:03:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wZomC-0000sw-TW
- for qemu-trivial@nongnu.org; Wed, 17 Jun 2026 07:49:48 -0400
-Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ id 1wZowI-00033N-4P
+ for qemu-trivial@nongnu.org; Wed, 17 Jun 2026 08:00:14 -0400
+Received: from mail-pj1-x1035.google.com ([2607:f8b0:4864:20::1035])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wZomA-0003cg-5S
- for qemu-trivial@nongnu.org; Wed, 17 Jun 2026 07:49:48 -0400
-Received: by mail-pl1-x632.google.com with SMTP id
- d9443c01a7336-2c6c9e02e7dso1612465ad.2
- for <qemu-trivial@nongnu.org>; Wed, 17 Jun 2026 04:49:45 -0700 (PDT)
+ id 1wZowG-0008JF-9g
+ for qemu-trivial@nongnu.org; Wed, 17 Jun 2026 08:00:13 -0400
+Received: by mail-pj1-x1035.google.com with SMTP id
+ 98e67ed59e1d1-37cbcf49deaso227755a91.1
+ for <qemu-trivial@nongnu.org>; Wed, 17 Jun 2026 05:00:11 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1781696984; x=1782301784; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1781697610; x=1782302410; darn=nongnu.org;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=HuoZ1XF/SGtRMQNUv5o7lgVgKw3GW1pchp5QRRK8IPk=;
- b=Yukfyo4u71NPca1lFCyFX20MtuBdeE+0BSBxKb9Vfss7mieu1D5W8MeQTi368PToEX
- hE4fdYaK/VGuE854KL4RVKH7wY0YDgFmg3pMjNDe4S96BdNzzeasiO9U4pldIOmXU9SC
- OSNCC8oXqdlZV4hqGwq6jJ5pdQ20o+6OSWf7aEqOEIV0NSjrc40b/nSc4qDjdVEWvXvt
- RtxHMs14vBi0Eiqi+df/HBPWnQgC3kXpAX60hNIu1j8cKIR+98ja/fiLZgzBufyMrEsZ
- Rt+yW54FIYZ29wPeNI0RYITY3p4Y17bxDmQM9ZwJ4Hn1QdIbEqaAP1mjdk8B0GyG9tQN
- 4+7g==
+ bh=DcM1fU4v1GVwSrrIPjg6LuptyJklzv35LiIaFMncmqI=;
+ b=OHo9YKBLDacoCXOGQjtXdi7fZIASFl2E+qUBuoKOFhsvlLLTesz6zaco6Fc5CR5WFt
+ //jMaFCE4bFjzbautzeSWR3odwCPt6eblM8+Oc/UND73gfAsWivmx/Az9Knampnn/tIb
+ YHUoUHeC8gr3KTRX6WGXD1+B9fudgHy70McDF4PyWptVtfSEgmxWbFP0i5gv2uBjunrw
+ 42mNNegs6kWW4i00p0SlggEom7rAbHos9Pv9/k+oMY8ozoJgXBBQH7YI2nz29zPxrh2F
+ 6ixC4tkmlmts9DRAg7buWYEQRNVNKkzYb4qJ0wkmXMCm7re6JYWg6rJt/Lgro2HxuiLv
+ 2cOQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781696984; x=1782301784;
+ d=1e100.net; s=20251104; t=1781697610; x=1782302410;
  h=content-transfer-encoding:mime-version:message-id:date:subject:cc
  :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=HuoZ1XF/SGtRMQNUv5o7lgVgKw3GW1pchp5QRRK8IPk=;
- b=BTRD5q7nnxPzauXBA+OtnV0wdcik8tZpodx2G00rmuOuBqcq4GdDQUionWbwgmLO+E
- Epkba6u9XZrnzcS9ghJV8pSpV71k5kCCoRxOgpculJ2o47LBSmp0/w7Q7xvMJtXFRd0m
- 5WgdHeEhU47ho21/IDdn8gnCCjveipEtZgsW7BSnMGmZPerNhfgMlqi7eluxeQ5Ejtjz
- GgPFG4RUGTUdubb/Cy/NBdvp3MEG4j+dkYqRcrXZSuGo8MvkKuXnvUdp1iAmnkPIcLBH
- T/qFRfP2JUEB0t6lPKysNwfveG2UTDyV/2JDxKSpUjBYjJ2RveMgWasZq6RHuNyMc5N1
- ZZaA==
+ bh=DcM1fU4v1GVwSrrIPjg6LuptyJklzv35LiIaFMncmqI=;
+ b=LuO49kofyXzWRLLcrgVO78FgUf822RXL5N1mkesjJwIaztxo5MP+W9cEyIgkKoJghj
+ v1prLvbpB+8lBZMPEXz594sZaf9hHBe1PmZjADsrl/z38C22MY1x0dCk/IUQDq8IPwcF
+ Ku9Dj0/Ng52f+PX3YVdv05gsNitQgnkBwVGecItn7+m6vMqL7E8LMF3+gOGgg6SLzI4A
+ on2aCqCS71984orog94WNqYcLZmMWzsrBfnhcfkYPWTkq6VOsf8T1BteEldlmKEdld6U
+ 7uIMsWEAurvstzafXYbGDkl1H553oXR6yv5NHh9cxI9Kpw7C3viiw3LnvE6C3wM+oG8t
+ lTsw==
 X-Forwarded-Encrypted: i=1;
- AFNElJ8cAf0H6HHeMONN8yhAky8mlmgFN1s4jNejysYloWfIWOgkq3hs34ujulNOxHXhIIF/iWPX9aPScWU7AZc=@nongnu.org
-X-Gm-Message-State: AOJu0YwMTeMjWFQidmjxcSGnXjx76jNK+XfT69OzbdRODKdu/67h40kS
- NrlFDa33qIo8Tpt8rGF7ObAcWczJID8INApHWSexwRf/nXggGzakuJba
-X-Gm-Gg: AfdE7cl+VtEgnvkIPa1BuX7BdAd22y/AxChTd1D32Z4KA1kEo8SRS0IwdK9hc58UPYX
- P/KHJSM/GcTiI0tHdRr54HXe6jCj+l+niXIIZThDFcoGofQAcPh76oUrkt+lql1iqpqPecUyYpF
- iPqMcrLIejcvJu5iM2xy61IV+ESPbAK63/HWLSPHGNfqxURs2niYjb9KXUUxnacBDR+Ao0ejhYn
- Kp/AtzV7V2HcQmKD9sarbeZ4UWzpXI3BemKL3MxhSow5MchLGwptHpg7bE/ujZ1jICYRybUTAD+
- pg+3v0L+Vt7DXrRue6J0qvB6NDmNNAWsGIYreWsqtq9ZTlDhJJKpsLLxhY+uIEl2vbwnjjss4C6
- j7Yb611W7OwLMX03XNxpEwyj+76HlK/zGiuyGS//PnFPgFZi+WperDhHPt2xAp9Gwv9sDo2+fAi
- thkh1wiVZSJmDc8kiN5DLQyFKX
-X-Received: by 2002:a17:902:da8c:b0:2bf:175a:db61 with SMTP id
- d9443c01a7336-2c6bc099eb7mr33665965ad.7.1781696984033; 
- Wed, 17 Jun 2026 04:49:44 -0700 (PDT)
+ AFNElJ9kSyPdTD1OWdN2OD70/pG6AhfhSEWUIaPUV/TxjsEh4LwhIrMvtUXBG/DQ1XDZ1k4H8/tc8m4MeQ/v9cA=@nongnu.org
+X-Gm-Message-State: AOJu0YzSQG0b1fDryN/Ai2n0S/ZomI0RkuLnKslxXW8AoPuHN1H3ynFV
+ QvmGkfHq36MzZUToxlGExDAQDacttY5iUWx11mdTZ4c7rZpNy2oyFZeb
+X-Gm-Gg: AfdE7ck4zU+mPlJF8U5gh2CX1yJGqgsM9TAzT0CEwZam2G/2DPTsdZQ2t3K4XoehHR9
+ hqQOVq6JslY1YVsiIYphr5jQhkqjaccfWnZA8fBcb0LdBte5vDZ/BmDKybOZHbGtJSwI7xWPq4m
+ yP/ejAGM6xTs+bP70C58NmYvMmTYUTUja1dEU17sKnb0VOSBpHocB4C6pX4XrsRdnf/CQgyg9jb
+ jXX3SM8htKK/CejeFYAbIoejDgF+kcUFkyNQh8g32r257Pu2fJq+tqvrQYFKcO+ZEV5C0WHEB7O
+ DldejqvhBK8FqdCgfG5rIFiMNCdFCoSbQA9ThogbTPf9vR3fC3miBzxcL58q4ssOSeAZSuei827
+ A0OFdr3f+hMgCBK1TyT7Iq0xtGTtjn4pqZHKOe0JE2u7tMykkNiw4j1qy9Q7Tar8C1K+kHo3kR8
+ xbPHNqGm5YqH5XBYFErFZL2bqE
+X-Received: by 2002:a17:90b:3805:b0:36b:71e6:3df1 with SMTP id
+ 98e67ed59e1d1-37c930e0adbmr3542661a91.3.1781697610391; 
+ Wed, 17 Jun 2026 05:00:10 -0700 (PDT)
 Received: from localhost.localdomain ([82.40.42.115])
  by smtp.gmail.com with ESMTPSA id
- d9443c01a7336-2c43345e3ffsm164290415ad.71.2026.06.17.04.49.39
+ 98e67ed59e1d1-37c521ae039sm5912367a91.1.2026.06.17.05.00.05
  (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Wed, 17 Jun 2026 04:49:43 -0700 (PDT)
-From: jw_mac <163wangjack@gmail.com>
+ Wed, 17 Jun 2026 05:00:09 -0700 (PDT)
+From: Wang Yuxin <163wangjack@gmail.com>
 To: qemu-devel@nongnu.org,
 	qemu-arm@nongnu.org,
 	qemu-trivial@nongnu.org
 Cc: peter.maydell@linaro.org, mjt@tls.msk.ru, laurent@vivier.eu,
- jw_mac <77239050qq@gmail.com>, Wang <163wangjack@gamil.com>
-Subject: [PATCH trivial] Signed-off-by: jw_mac <163wangjack@gamil.com>
-Date: Wed, 17 Jun 2026 19:49:12 +0800
-Message-ID: <20260617114912.82494-1-163wangjack@gmail.com>
+ Wang Yuxin <163wangjack@gmail.com>
+Subject: [PATCH trivial v2] hw/timer/imx_epit: Replace DPRINTF with trace
+ events
+Date: Wed, 17 Jun 2026 19:59:49 +0800
+Message-ID: <20260617115949.93529-1-163wangjack@gmail.com>
 X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
- envelope-from=163wangjack@gmail.com; helo=mail-pl1-x632.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1035;
+ envelope-from=163wangjack@gmail.com; helo=mail-pj1-x1035.google.com
 X-Spam_score_int: -13
 X-Spam_score: -1.4
 X-Spam_bar: -
@@ -102,17 +103,14 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: jw_mac <77239050qq@gmail.com>
-
-hw/timer/imx_epit: Replace DPRINTF with trace events
-
 Clean up the codebase by removing the outdated DEBUG_IMX_EPIT
 and DPRINTF macros, replacing them with modern QEMU trace events.
 
 This also removes an empty and meaningless DPRINTF("\n") in the
 imx_epit_realize function.
 
-Signed-off-by: Wang <163wangjack@gamil.com>
+Signed-off-by: jw_mac <163wangjack@gmail.com>
+Signed-off-by: Wang Yuxin <163wangjack@gmail.com>
 ---
  hw/timer/imx_epit.c   | 25 +++++--------------------
  hw/timer/trace-events |  8 ++++++++
