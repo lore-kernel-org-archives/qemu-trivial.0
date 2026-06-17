@@ -4,73 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43CC3CD98CF
-	for <qemu-trivial@archiver.kernel.org>; Mon, 15 Jun 2026 14:49:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B1928CD98F1
+	for <qemu-trivial@archiver.kernel.org>; Wed, 17 Jun 2026 12:03:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wZ8cX-0007rZ-9E; Mon, 15 Jun 2026 10:49:02 -0400
+	id 1wZozE-0004i8-H2; Wed, 17 Jun 2026 08:03:16 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1wZ8cO-0007pE-0z
- for qemu-trivial@nongnu.org; Mon, 15 Jun 2026 10:48:55 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <stefanha@redhat.com>)
- id 1wZ8cE-0005aS-If
- for qemu-trivial@nongnu.org; Mon, 15 Jun 2026 10:48:47 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1781534898;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- in-reply-to:in-reply-to:references:references;
- bh=sgGZ+K1cmNieKC2xi7x004OJwDU4sM5KTO0KVH5cPws=;
- b=Hjg9egdB613TgpFNdAz2FbiyKP8LGv36tB0mPZEOzHIBQ4jOrQ6z+z2OCrRAqTPTAaqlHV
- NtdEyFrqMjNygUkkcWxroWwkIX1o16hPqixazOt7eE817FeVA2iqscXiC353hcfGVFR08+
- 0Y81rWiMKqL0/1qWIwueg5IBVVPf1uY=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-98-SzA-JGOkORy7ku_foZL1Rg-1; Mon,
- 15 Jun 2026 10:48:17 -0400
-X-MC-Unique: SzA-JGOkORy7ku_foZL1Rg-1
-X-Mimecast-MFC-AGG-ID: SzA-JGOkORy7ku_foZL1Rg_1781534896
-Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0CDA11955F10; Mon, 15 Jun 2026 14:48:16 +0000 (UTC)
-Received: from localhost (unknown [10.2.16.187])
- by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 08BE03189; Mon, 15 Jun 2026 14:48:13 +0000 (UTC)
-Date: Sat, 13 Jun 2026 19:40:33 -0400
-From: Stefan Hajnoczi <stefanha@redhat.com>
-To: Michael Tokarev <mjt@tls.msk.ru>
-Cc: qemu-devel@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
- qemu-trivial@nongnu.org
-Subject: Re: [PULL 0/8] Trivial patches for 2026-06-12
-Message-ID: <20260613234033.GA360236@fedora>
-References: <20260612165957.1779082-1-mjt@tls.msk.ru>
+ (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
+ id 1wZomC-0000sw-TW
+ for qemu-trivial@nongnu.org; Wed, 17 Jun 2026 07:49:48 -0400
+Received: from mail-pl1-x632.google.com ([2607:f8b0:4864:20::632])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
+ id 1wZomA-0003cg-5S
+ for qemu-trivial@nongnu.org; Wed, 17 Jun 2026 07:49:48 -0400
+Received: by mail-pl1-x632.google.com with SMTP id
+ d9443c01a7336-2c6c9e02e7dso1612465ad.2
+ for <qemu-trivial@nongnu.org>; Wed, 17 Jun 2026 04:49:45 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1781696984; x=1782301784; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=HuoZ1XF/SGtRMQNUv5o7lgVgKw3GW1pchp5QRRK8IPk=;
+ b=Yukfyo4u71NPca1lFCyFX20MtuBdeE+0BSBxKb9Vfss7mieu1D5W8MeQTi368PToEX
+ hE4fdYaK/VGuE854KL4RVKH7wY0YDgFmg3pMjNDe4S96BdNzzeasiO9U4pldIOmXU9SC
+ OSNCC8oXqdlZV4hqGwq6jJ5pdQ20o+6OSWf7aEqOEIV0NSjrc40b/nSc4qDjdVEWvXvt
+ RtxHMs14vBi0Eiqi+df/HBPWnQgC3kXpAX60hNIu1j8cKIR+98ja/fiLZgzBufyMrEsZ
+ Rt+yW54FIYZ29wPeNI0RYITY3p4Y17bxDmQM9ZwJ4Hn1QdIbEqaAP1mjdk8B0GyG9tQN
+ 4+7g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1781696984; x=1782301784;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=HuoZ1XF/SGtRMQNUv5o7lgVgKw3GW1pchp5QRRK8IPk=;
+ b=BTRD5q7nnxPzauXBA+OtnV0wdcik8tZpodx2G00rmuOuBqcq4GdDQUionWbwgmLO+E
+ Epkba6u9XZrnzcS9ghJV8pSpV71k5kCCoRxOgpculJ2o47LBSmp0/w7Q7xvMJtXFRd0m
+ 5WgdHeEhU47ho21/IDdn8gnCCjveipEtZgsW7BSnMGmZPerNhfgMlqi7eluxeQ5Ejtjz
+ GgPFG4RUGTUdubb/Cy/NBdvp3MEG4j+dkYqRcrXZSuGo8MvkKuXnvUdp1iAmnkPIcLBH
+ T/qFRfP2JUEB0t6lPKysNwfveG2UTDyV/2JDxKSpUjBYjJ2RveMgWasZq6RHuNyMc5N1
+ ZZaA==
+X-Forwarded-Encrypted: i=1;
+ AFNElJ8cAf0H6HHeMONN8yhAky8mlmgFN1s4jNejysYloWfIWOgkq3hs34ujulNOxHXhIIF/iWPX9aPScWU7AZc=@nongnu.org
+X-Gm-Message-State: AOJu0YwMTeMjWFQidmjxcSGnXjx76jNK+XfT69OzbdRODKdu/67h40kS
+ NrlFDa33qIo8Tpt8rGF7ObAcWczJID8INApHWSexwRf/nXggGzakuJba
+X-Gm-Gg: AfdE7cl+VtEgnvkIPa1BuX7BdAd22y/AxChTd1D32Z4KA1kEo8SRS0IwdK9hc58UPYX
+ P/KHJSM/GcTiI0tHdRr54HXe6jCj+l+niXIIZThDFcoGofQAcPh76oUrkt+lql1iqpqPecUyYpF
+ iPqMcrLIejcvJu5iM2xy61IV+ESPbAK63/HWLSPHGNfqxURs2niYjb9KXUUxnacBDR+Ao0ejhYn
+ Kp/AtzV7V2HcQmKD9sarbeZ4UWzpXI3BemKL3MxhSow5MchLGwptHpg7bE/ujZ1jICYRybUTAD+
+ pg+3v0L+Vt7DXrRue6J0qvB6NDmNNAWsGIYreWsqtq9ZTlDhJJKpsLLxhY+uIEl2vbwnjjss4C6
+ j7Yb611W7OwLMX03XNxpEwyj+76HlK/zGiuyGS//PnFPgFZi+WperDhHPt2xAp9Gwv9sDo2+fAi
+ thkh1wiVZSJmDc8kiN5DLQyFKX
+X-Received: by 2002:a17:902:da8c:b0:2bf:175a:db61 with SMTP id
+ d9443c01a7336-2c6bc099eb7mr33665965ad.7.1781696984033; 
+ Wed, 17 Jun 2026 04:49:44 -0700 (PDT)
+Received: from localhost.localdomain ([82.40.42.115])
+ by smtp.gmail.com with ESMTPSA id
+ d9443c01a7336-2c43345e3ffsm164290415ad.71.2026.06.17.04.49.39
+ (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
+ Wed, 17 Jun 2026 04:49:43 -0700 (PDT)
+From: jw_mac <163wangjack@gmail.com>
+To: qemu-devel@nongnu.org,
+	qemu-arm@nongnu.org,
+	qemu-trivial@nongnu.org
+Cc: peter.maydell@linaro.org, mjt@tls.msk.ru, laurent@vivier.eu,
+ jw_mac <77239050qq@gmail.com>, Wang <163wangjack@gamil.com>
+Subject: [PATCH trivial] Signed-off-by: jw_mac <163wangjack@gamil.com>
+Date: Wed, 17 Jun 2026 19:49:12 +0800
+Message-ID: <20260617114912.82494-1-163wangjack@gmail.com>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-Content-Type: multipart/signed; micalg=pgp-sha512;
- protocol="application/pgp-signature"; boundary="HRNyJwpuDbwlLvnc"
-Content-Disposition: inline
-In-Reply-To: <20260612165957.1779082-1-mjt@tls.msk.ru>
-X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=stefanha@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 21
-X-Spam_score: 2.1
-X-Spam_bar: ++
-X-Spam_report: (2.1 / 5.0 requ) BAYES_00=-1.9, DATE_IN_PAST_24_48=1.34,
- DKIMWL_WL_HIGH=-0.445, DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1,
- DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H5=0.001,
- RCVD_IN_MSPIKE_WL=0.001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::632;
+ envelope-from=163wangjack@gmail.com; helo=mail-pl1-x632.google.com
+X-Spam_score_int: -13
+X-Spam_score: -1.4
+X-Spam_bar: -
+X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ FROM_STARTS_WITH_NUMS=0.738, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Wed, 17 Jun 2026 08:03:15 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -85,30 +102,110 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
+From: jw_mac <77239050qq@gmail.com>
 
---HRNyJwpuDbwlLvnc
-Content-Type: text/plain; charset=us-ascii
-Content-Disposition: inline
+hw/timer/imx_epit: Replace DPRINTF with trace events
 
-Applied, thanks.
+Clean up the codebase by removing the outdated DEBUG_IMX_EPIT
+and DPRINTF macros, replacing them with modern QEMU trace events.
 
-Please update the changelog at https://wiki.qemu.org/ChangeLog/11.1 for any user-visible changes.
+This also removes an empty and meaningless DPRINTF("\n") in the
+imx_epit_realize function.
 
---HRNyJwpuDbwlLvnc
-Content-Type: application/pgp-signature; name=signature.asc
+Signed-off-by: Wang <163wangjack@gamil.com>
+---
+ hw/timer/imx_epit.c   | 25 +++++--------------------
+ hw/timer/trace-events |  8 ++++++++
+ 2 files changed, 13 insertions(+), 20 deletions(-)
 
------BEGIN PGP SIGNATURE-----
-
-iQEzBAEBCgAdFiEEhpWov9P5fNqsNXdanKSrs4Grc8gFAmot6nEACgkQnKSrs4Gr
-c8imJgf+NWHNrSz3zG8FcS6X/035nLLRNYfMa6Qfy2Suci5FKkbbHY7E8ejfeve/
-RSpDpRiqQEeTYQEsqaZai1HyJ92DUDcW5nlXRbsmvvD1X5CAMZPXwAb300IeUx2V
-Efk2rEB0b5j6LSXRHUjCCABYBTB/MIG/Ptvie+FjQNUasuGy8jFuxgyCAd6Wy114
-aggaBoT1fyUit/aASjEIXq2ijMhKw+PkXHakOxtpRKzm2vuHZMeSlJx+Nl34pI0D
-v9E2TCwg0tJwGlnomAn5nOWnnsTi4CP4j/AhEe1VLBwiPSLz6Tjmxivio9f00S/i
-RmUfO28pnFFe/+7v9a8ABpnzrUqh2A==
-=Dl2H
------END PGP SIGNATURE-----
-
---HRNyJwpuDbwlLvnc--
+diff --git a/hw/timer/imx_epit.c b/hw/timer/imx_epit.c
+index c67a39f10c..476e2771b3 100644
+--- a/hw/timer/imx_epit.c
++++ b/hw/timer/imx_epit.c
+@@ -20,18 +20,7 @@
+ #include "hw/misc/imx_ccm.h"
+ #include "qemu/module.h"
+ #include "qemu/log.h"
+-
+-#ifndef DEBUG_IMX_EPIT
+-#define DEBUG_IMX_EPIT 0
+-#endif
+-
+-#define DPRINTF(fmt, args...) \
+-    do { \
+-        if (DEBUG_IMX_EPIT) { \
+-            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX_EPIT, \
+-                                             __func__, ##args); \
+-        } \
+-    } while (0)
++#include "trace.h"
+ 
+ static const char *imx_epit_reg_name(uint32_t reg)
+ {
+@@ -80,7 +69,7 @@ static uint32_t imx_epit_get_freq(IMXEPITState *s)
+     uint32_t prescaler = 1 + extract32(s->cr, CR_PRESCALE_SHIFT, CR_PRESCALE_BITS);
+     uint32_t f_in = imx_ccm_get_clock_frequency(s->ccm, imx_epit_clocks[clksrc]);
+     uint32_t freq = f_in / prescaler;
+-    DPRINTF("ptimer frequency is %u\n", freq);
++    trace_imx_epit_get_freq(freq);
+     return freq;
+ }
+ 
+@@ -146,8 +135,7 @@ static uint64_t imx_epit_read(void *opaque, hwaddr offset, unsigned size)
+                       HWADDR_PRIx "\n", TYPE_IMX_EPIT, __func__, offset);
+         break;
+     }
+-
+-    DPRINTF("(%s) = 0x%08x\n", imx_epit_reg_name(offset >> 2), reg_value);
++    trace_imx_epit_read(imx_epit_reg_name(offset >> 2), reg_value);
+ 
+     return reg_value;
+ }
+@@ -328,8 +316,7 @@ static void imx_epit_write(void *opaque, hwaddr offset, uint64_t value,
+ {
+     IMXEPITState *s = IMX_EPIT(opaque);
+ 
+-    DPRINTF("(%s, value = 0x%08x)\n", imx_epit_reg_name(offset >> 2),
+-            (uint32_t)value);
++    trace_imx_epit_write(imx_epit_reg_name(offset >> 2), (uint32_t)value);
+ 
+     switch (offset >> 2) {
+     case 0: /* CR */
+@@ -362,7 +349,7 @@ static void imx_epit_cmp(void *opaque)
+     /* The cmp ptimer can't be running when the peripheral is disabled */
+     assert(s->cr & CR_EN);
+ 
+-    DPRINTF("sr was %d\n", s->sr);
++    trace_imx_epit_cmp(s->sr);
+     /* Set interrupt status bit SR.OCIF and update the interrupt state */
+     s->sr |= SR_OCIF;
+     imx_epit_update_int(s);
+@@ -399,8 +386,6 @@ static void imx_epit_realize(DeviceState *dev, Error **errp)
+     IMXEPITState *s = IMX_EPIT(dev);
+     SysBusDevice *sbd = SYS_BUS_DEVICE(dev);
+ 
+-    DPRINTF("\n");
+-
+     sysbus_init_irq(sbd, &s->irq);
+     memory_region_init_io(&s->iomem, OBJECT(s), &imx_epit_ops, s, TYPE_IMX_EPIT,
+                           0x00001000);
+diff --git a/hw/timer/trace-events b/hw/timer/trace-events
+index ac5afe84e8..3c282800c6 100644
+--- a/hw/timer/trace-events
++++ b/hw/timer/trace-events
+@@ -122,3 +122,11 @@ hpet_ram_write_tn_cmp(uint8_t reg_off) "hpet_ram_writel HPET_TN_CMP + %" PRIu8
+ hpet_ram_write_invalid_tn_cmp(void) "invalid HPET_TN_CMP + 4 write"
+ hpet_ram_write_invalid(void) "invalid hpet_ram_writel"
+ hpet_ram_write_counter_write_while_enabled(void) "Writing counter while HPET enabled!"
++
++# imx_epit.c
++imx_epit_get_freq(uint32_t freq) "ptimer frequency is %u"
++imx_epit_read(const char *name, uint32_t value) "(%s) = 0x%08x"
++imx_epit_write(const char *name, uint32_t value) "(%s, value = 0x%08x)"
++imx_epit_cmp(uint32_t sr) "sr was %d"
++
++
+-- 
+2.53.0
 
 
