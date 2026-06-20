@@ -4,106 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3968DCD4F26
-	for <qemu-trivial@archiver.kernel.org>; Fri, 19 Jun 2026 13:07:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9153CCD98E4
+	for <qemu-trivial@archiver.kernel.org>; Sat, 20 Jun 2026 17:20:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1waYwU-0005Ir-Ad; Fri, 19 Jun 2026 09:07:30 -0400
+	id 1wazMH-0005L1-Cm; Sat, 20 Jun 2026 13:19:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1waYwM-0004wR-8B
- for qemu-trivial@nongnu.org; Fri, 19 Jun 2026 09:07:23 -0400
-Received: from mail-yx1-xb133.google.com ([2607:f8b0:4864:20::b133])
+ (Exim 4.90_1) (envelope-from <randomjack94dev@gmail.com>)
+ id 1wazMG-0005KY-KF
+ for qemu-trivial@nongnu.org; Sat, 20 Jun 2026 13:19:52 -0400
+Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1waYwK-0004Ef-BV
- for qemu-trivial@nongnu.org; Fri, 19 Jun 2026 09:07:21 -0400
-Received: by mail-yx1-xb133.google.com with SMTP id
- 956f58d0204a3-6603d8697d2so2364874d50.0
- for <qemu-trivial@nongnu.org>; Fri, 19 Jun 2026 06:07:19 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1781874438; cv=none;
- d=google.com; s=arc-20240605;
- b=Jsj1HvKSPeZ3ozxKsjOllWHoTzRSZ50gV1fqI3Z7fPWLPamHV38u3orziATnNGerCX
- SS2Qtajz/yDgRgC8k/1bVc+bihdguonVU1hJwckJ4r1OAmCN/I3vwKz4r7FzNcDehd+W
- mH9fn7S5B/PmT0ISSlMopMLnphXQKK7bR2+OsLecJSnRqMBhf7yka3afwcy+9WD+K8+p
- DRkKZ+5tnmUUdFt1MAAYtUHC1kqqmv/Hj4HVv+O5XHk56GrWHNkkCmQ3+T7JTvePdJJ0
- 1Yy/9mfrSWM9uXDeJUR6aIWIoLyTLB7oBWcwV/5X1KdeiGn5QcIwU+qwCDgQ7NGQ1ZF6
- xp4w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=rFFKDju4GkbrwpYsMKyIDto5mDULKbew1mWJuXksimI=;
- fh=PoMGtGvOIsgxIvOzIUnHA5jdudCqj1wGRmygAOpLWRo=;
- b=FAO5vRP2ckJLBVCAStM45abxtFsnXShl2nJFfl3VRcQ3sV4j6S3+hUHjFpXiLJRnaP
- dEA7s69tmOsVIfQ4A1nEmlA98Idl+FAcWMXArY8AgdsFhrPN9AOshxX6GFh1hnT+RxOW
- AnSchsxKi5Ob+MqVkmZGO52lUxvzIVcS+pf1mJEZW4zBSHx/Ybqbxq31Wg/Zy//Mb1Cm
- AB2J70K/0l0qo6ZHP+tLMe5GgbXE9sDyKm6LVqLkOPkySJQb7UKGPukQcY4ujDJEqtmb
- kXV0ADNeZ/L6uHDzQPbO/4Gy9YW1RKoKwMDwGGAFmdcLY/R/MOwzRDtAduzKuC9IxAO3
- xQzg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <randomjack94dev@gmail.com>)
+ id 1wazME-0003SW-Tg
+ for qemu-trivial@nongnu.org; Sat, 20 Jun 2026 13:19:52 -0400
+Received: by mail-ed1-x535.google.com with SMTP id
+ 4fb4d7f45d1cf-6919f40a0c8so5693383a12.0
+ for <qemu-trivial@nongnu.org>; Sat, 20 Jun 2026 10:19:50 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1781874438; x=1782479238; darn=nongnu.org;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:from:to:cc:subject:date
- :message-id:reply-to;
- bh=rFFKDju4GkbrwpYsMKyIDto5mDULKbew1mWJuXksimI=;
- b=w0UfmMrSrJrQiszOyJBf7wqn3iHkIk4R2a47eqgumy3FpF5r2AnrSv+HOkzdGCTsGu
- C9i1D+4xplSQTQm1EH5aW2HoWU3MYMSa7hUy1zt4wPdqi1P5xPSnhXEAleXSRyAPTXOj
- Gr109dsikFTfnKsBjcwjidu8GoH9j4HyukThr+WfgTCibJnnf4dtlgs3pJ+xjpK9yr0b
- gIDoNtQ5Cur+CHxXFV6CYrmnjtYqcXg7ITpoIoxMliJYMRshLoDXk9CCHesa1Xc2NitD
- pntjgftJQ9CqEe0aG2DkvfjVU/ZSdLPoU/iRP8Q8GGJ4KGuLWDcDAouXBCOfKRQhyf6L
- Vwiw==
+ d=gmail.com; s=20251104; t=1781975989; x=1782580789; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=yz1lyzAp3fEIr0XZVsXsjafx7CnJK8+BCF69ozcnZOs=;
+ b=GbPtev8sCXAQyi0fNZqePTaO9QhgN9VkvAMXNal/U2eY6oOVtEU3jkeuFLvEJa2DOn
+ cjViX2oKkFd5dl0gKYLB5llGp3rYwd5TP63JLx4bTYBJMZdQDLtI4DbLTfEvAgVX1y1Y
+ 1tjO/3KDOjK3A03s2rek3odn0hd6BwQQi1GadzcsL9IOT88yOKYjT96EvSe5Tw6NWzt4
+ GAdQDyhYNm7RlMuYb4i7ALdzBugcV4yazi8Ow80TkOOawjNHgnZOXujIUTLR+AS2Ht2X
+ i0aI+1OV4tJVll6c49yf703yFH3nZEfvHsEwLL9rtTloqkiSxYzG87MPjvprn+TLF9g0
+ zTvw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781874438; x=1782479238;
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=rFFKDju4GkbrwpYsMKyIDto5mDULKbew1mWJuXksimI=;
- b=f8XPw1sFE2tLELoRnk1RXgHUXj7cwH4xy4X76b77FiyUMU5guGu+d+9hbocCyI7tPj
- cjWzloQy3R0N8yM6CZk38yubfQFuf7haSRLkVOSdw8b7hWL8xcg9gA7DZpK4p9xiWZdi
- bxEZc4yDDCLK6A7Md6r/CM4YwmeGgrqZo2NG4i1MD3+w6JGsl4VBfr7/6YXS3AxTz0V9
- mSmoWvFOaqY0PcOqu3dHIBmg8lSk13JM89wbSFyMtp0JjpNHcC333dWIC5rlAOffJaeu
- z7Ui3KSZX2wtU1dsPHh0iwEAt6nOofUeabBLhbHgk1b3+kP0BgM3ZZJxmnKu1Wxm3x3Z
- rNUA==
-X-Forwarded-Encrypted: i=1;
- AFNElJ+nO5r6w1lyh8dlCFezv+okAo995zG5nK8jMG+KcO4gIZ1H7wgWqn6lXRJEqPnMpGsYkkd1LjP9kcLLl/k=@nongnu.org
-X-Gm-Message-State: AOJu0YydODRCj2TWQLnyWU6JvSZ3stKgUblZ73wR+Zq599b75g0JjYGA
- gW2+0ZcIFMrWHhs5Iirl7VPp4fF7TYbTuOHsWL6qpmhEMduyHVeoNolt7wDaZlNJcDUfjBEao30
- KHvr8tsR+pVu6JYrC5beu5gIOGZXRMSI6jl/hkdroKw==
-X-Gm-Gg: AfdE7cme7eTR7yLj9zQAnRLQ0Mvx9FLTepxXAZQNmRVN+LaW21dcXbDp/XvzvvyqmX5
- 0jFJd/L7+iBDDxHyxq13v9ywemFFd68p2Bc4qhMS0mDxxvke5ZCNtOSic3hLHmi7sID7aUMbNVr
- 57pzX/Kuijc959S4CVVcJmDqfTsQkTGwvDdu0zj8rKxzJr1hG12bTipEp07LRGkO+XsjiY/Y0YI
- Cir9RVBZC07/wwWnBhclrqwAe3HTrfU9lf6x4WCwYUGCFBs0ePI/+wrdVkiUbWOsitd4+olTqF+
- mM423FbliBTTEO2WnuAe31BlDfdO5FM8xMhoYMuFM9UPERErpdg1cMCA
-X-Received: by 2002:a05:690e:4410:b0:660:3b18:57ea with SMTP id
- 956f58d0204a3-662fc7b2f35mr2523557d50.1.1781874438190; Fri, 19 Jun 2026
- 06:07:18 -0700 (PDT)
+ d=1e100.net; s=20251104; t=1781975989; x=1782580789;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=yz1lyzAp3fEIr0XZVsXsjafx7CnJK8+BCF69ozcnZOs=;
+ b=OghW085SrNy1uoCKFh9WYEnUEt907eULI62bqe6LGhucV/4gBaAkwVtXw2802NkpFR
+ bfHINjKr96pza8T02XiXlZ36K2gEFT/YqDUkcRlkesJLEIbnlx147athjYmmhst7MN4h
+ gCQJ678sdoshjB7QnghgO4WiIcr7J1TlnJoSLhRS6N/HEwcKTbmkXeLOvXE602BRpU/E
+ /+8J7ovuUp2wqyBMDKQalDbAPWayjqHS8bYSf/2zIbieZcacyfmz1tJ+rBfRDMOLesIt
+ vrNkMLx1WSBGvqkTOAvM5LuF1x7j1n4+8AbAxFDWoMr1GLFlt/gl2+eqSqWOIfXkcNyU
+ APPg==
+X-Gm-Message-State: AOJu0YzdT+f9asTQ0+PO3E0g9jNKQ1KxQOSVcZdIlIyqULDToommeBbR
+ ms0ByUV93NEaL9FC1GOCYjGp5+bCKA9crzalQQdeLzwX3pgaT+f/7TCS
+X-Gm-Gg: AfdE7ckHD+tjFFO9OdIyxvBfPwGiini+tAVZ0EEkQxwHxqJ1VzxmNnKwCcW/clHZBzA
+ iatpjlj63mqToLnqJ2cCSHtgqtkRWJXp9urqoIe4yLSSimDStYgh7z0lPjqkYQOnLK5ZUPUkRgD
+ hZbA4/w6og0yU28qh5kRI76SZO3igQLRY7sn0q4ubxnrSGfqz7oU+PHdKlnrRZIvVGiLcjMbyST
+ 61S4bOQChOoYp402MlSWeeE2jwqrUhpfha6YN8zvpRJTN6LX5ionGwfLJkbSE1Yn8YJNosa4Wkw
+ MzEqNL3MLUNIuWEAVu3bkQgNJqI2keniw89UcdZ1S/3TMkWgWmjzZPwkyFz2YQBMmBSCxjjq7y9
+ dEvYLkc4wAmJnKW6J6GMkXBXbfsI0c0pGHKxX9U180bMkj04ayUjKqAmpW7uB45L5yJPPt4yHcE
+ zmRxk7sFFzNE6EXFtX
+X-Received: by 2002:a05:6402:3548:b0:68f:c63f:1ed4 with SMTP id
+ 4fb4d7f45d1cf-696e52075camr4194556a12.27.1781975988671; 
+ Sat, 20 Jun 2026 10:19:48 -0700 (PDT)
+Received: from machine.. ([37.113.214.163]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-6977be31c73sm949835a12.17.2026.06.20.10.19.46
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Sat, 20 Jun 2026 10:19:47 -0700 (PDT)
+From: Evgeny Kolmakov <randomjack94dev@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Evgeny Kolmakov <randomjack94dev@gmail.com>
+Subject: [PATCH] hw/dma/soc_dma: Replace if-else chain with array lookup
+Date: Sat, 20 Jun 2026 20:13:18 +0300
+Message-ID: <20260620171318.24189-1-randomjack94dev@gmail.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-References: <20260617161406.14705-1-163wangjack@gmail.com>
-In-Reply-To: <20260617161406.14705-1-163wangjack@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 19 Jun 2026 14:07:07 +0100
-X-Gm-Features: AVVi8Cd19gW_Ptqpth0Sf-sYIXQ-4KXjfrcnnDk9wu7Kv-x9w7It7d8g-umcD0o
-Message-ID: <CAFEAcA8RGC-1k5B_Ex_YHC+w3sV2hLtWTkimt6dSca_OpXfphQ@mail.gmail.com>
-Subject: Re: [PATCH v5] hw/timer/imx_epit: Replace DPRINTF with trace events
-To: jack wang <163wangjack@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-arm@nongnu.org, qemu-trivial@nongnu.org, 
- mjt@tls.msk.ru, laurent@vivier.eu, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b133;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb133.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::535;
+ envelope-from=randomjack94dev@gmail.com; helo=mail-ed1-x535.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,20 +96,65 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Wed, 17 Jun 2026 at 17:14, jack wang <163wangjack@gmail.com> wrote:
->
-> Clean up the codebase by removing the outdated DEBUG_IMX_EPIT
-> and DPRINTF macros, replacing them with modern QEMU trace events.
->
-> This also removes an empty and meaningless DPRINTF("\n") in the
-> imx_epit_realize function.
->
-> Signed-off-by: jack wang <163wangjack@gmail.com>
-> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
-> ---
+Refactor transfer_fn assignment in soc_dma_ch_update()
+via array lookup as suggested by the TODO comment.
 
-Thanks for this patch; I've applied it to target-arm.next, and
-it should get into upstream git within a week or so.
+Signed-off-by: Evgeny Kolmakov <randomjack94dev@gmail.com>
+---
+ hw/dma/soc_dma.c | 29 +++++++++++++++++------------
+ 1 file changed, 17 insertions(+), 12 deletions(-)
 
--- PMM
+diff --git a/hw/dma/soc_dma.c b/hw/dma/soc_dma.c
+index d5c52b804f..a5b1ef9f61 100644
+--- a/hw/dma/soc_dma.c
++++ b/hw/dma/soc_dma.c
+@@ -163,6 +163,16 @@ static inline enum soc_dma_port_type soc_dma_ch_update_type(
+ 
+ void soc_dma_ch_update(struct soc_dma_ch_s *ch)
+ {
++    static const soc_dma_transfer_t transfer_fn[2][2] = {
++        [soc_dma_port_mem] = {
++            [soc_dma_port_mem] = transfer_mem2mem,
++            [soc_dma_port_fifo] = transfer_mem2fifo,
++        },
++        [soc_dma_port_fifo] = {
++            [soc_dma_port_mem] = transfer_fifo2mem,
++            [soc_dma_port_fifo] = transfer_fifo2fifo,
++        },
++    };
+     enum soc_dma_port_type src, dst;
+ 
+     src = soc_dma_ch_update_type(ch, 0);
+@@ -171,21 +181,16 @@ void soc_dma_ch_update(struct soc_dma_ch_s *ch)
+         ch->transfer_fn = ch->dma->transfer_fn;
+         return;
+     }
+-    dst = soc_dma_ch_update_type(ch, 1);
+ 
+-    /* TODO: use src and dst as array indices.  */
+-    if (src == soc_dma_port_mem && dst == soc_dma_port_mem)
+-        ch->transfer_fn = transfer_mem2mem;
+-    else if (src == soc_dma_port_mem && dst == soc_dma_port_fifo)
+-        ch->transfer_fn = transfer_mem2fifo;
+-    else if (src == soc_dma_port_fifo && dst == soc_dma_port_mem)
+-        ch->transfer_fn = transfer_fifo2mem;
+-    else if (src == soc_dma_port_fifo && dst == soc_dma_port_fifo)
+-        ch->transfer_fn = transfer_fifo2fifo;
+-    else
++    dst = soc_dma_ch_update_type(ch, 1);
++    if (dst == soc_dma_port_other) {
++        ch->update = 0;
+         ch->transfer_fn = ch->dma->transfer_fn;
++        return;
++    }
+ 
+-    ch->update = (dst != soc_dma_port_other);
++    ch->update = 1;
++    ch->transfer_fn = transfer_fn[src][dst];
+ }
+ 
+ static void soc_dma_ch_freq_update(struct dma_s *s)
+-- 
+2.43.0
+
 
