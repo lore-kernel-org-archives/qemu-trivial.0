@@ -4,83 +4,102 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9153CCD98E4
-	for <qemu-trivial@archiver.kernel.org>; Sat, 20 Jun 2026 17:20:10 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 95B86CD98E4
+	for <qemu-trivial@archiver.kernel.org>; Sat, 20 Jun 2026 20:23:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wazMH-0005L1-Cm; Sat, 20 Jun 2026 13:19:53 -0400
+	id 1wb2Dp-00075U-Oj; Sat, 20 Jun 2026 16:23:21 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <randomjack94dev@gmail.com>)
- id 1wazMG-0005KY-KF
- for qemu-trivial@nongnu.org; Sat, 20 Jun 2026 13:19:52 -0400
-Received: from mail-ed1-x535.google.com ([2a00:1450:4864:20::535])
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wb2Dn-000752-CR
+ for qemu-trivial@nongnu.org; Sat, 20 Jun 2026 16:23:19 -0400
+Received: from mail-yx1-xb129.google.com ([2607:f8b0:4864:20::b129])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <randomjack94dev@gmail.com>)
- id 1wazME-0003SW-Tg
- for qemu-trivial@nongnu.org; Sat, 20 Jun 2026 13:19:52 -0400
-Received: by mail-ed1-x535.google.com with SMTP id
- 4fb4d7f45d1cf-6919f40a0c8so5693383a12.0
- for <qemu-trivial@nongnu.org>; Sat, 20 Jun 2026 10:19:50 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wb2Dl-0005pM-05
+ for qemu-trivial@nongnu.org; Sat, 20 Jun 2026 16:23:19 -0400
+Received: by mail-yx1-xb129.google.com with SMTP id
+ 956f58d0204a3-6626cd98209so2895798d50.3
+ for <qemu-trivial@nongnu.org>; Sat, 20 Jun 2026 13:23:15 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1781986995; cv=none;
+ d=google.com; s=arc-20240605;
+ b=CAVZt9npBGz6LHe3fIxAoPgdRhS/KFMIYBTvdN4mcNBVmGBOSqu3eKLhsQqDwAtcUk
+ XGcBqLNDfzs0W9CseV5G6YDApJk0xEO54ADX7UOye0Sq++wsHnHVcBuYbCzdrcCxvvss
+ XeHMMhWiawsDCgHL1uc2oBATU4mxFbVaw0Y6+tVKfWg45NGdc8D0dQh7BE9+/s5IzFfB
+ P9HO98Ukow+qoQSEveJDlvHf9i5WqrovZMI7cHrrgEs+aG+K/lUperrJ1aPlZA+LLyqC
+ 3xNRGhdTzdYV6l/X30ltNs4iSl4o/SxDUqYLDiw7iAOKwXwFKNrf1aWmCvQNuk/WtyP+
+ g53Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20240605; 
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:dkim-signature;
+ bh=RUSAOhG+fFA5GklYlsz/KwE9hrrVDZgPAZwdexY6uk0=;
+ fh=xTnnjOYUhlmAcYNqH6uPZ4J9+8YY6hum3Nf9qlz+StI=;
+ b=I3gc0Rccj8tHBiYA2lKUJ/JxujFotojk76dB9kQDQ67ZKyEHcqSQAN1u5OChuD4ixR
+ 833WOoql5Yan8RFEcohAGpZhoCM0r6BxLrDzh0b+o4fuRQsfxyXt7J3Ti016cS76v6+U
+ E8rgPbfhb4oFg+nKOk8MjWbXxKUV5V6zv53E0ngA0bURX5OW9N+BN3N40SxdRxv/5KYU
+ WQlx8Oa13vfj6wvCd3LPWj7ZjZ/y2cnljl/aqN1jhck+Y/B0pRzL0Fpvbg2TNiOPm64t
+ x0hUeOxvJk9dmAcMtYWfS6jwnRlR/afvOzf5B/tBu2/im84kDnT4uBvx2LEj/a0Wm5n7
+ 3yIA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1781975989; x=1782580789; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:from:to:cc:subject:date:message-id:reply-to;
- bh=yz1lyzAp3fEIr0XZVsXsjafx7CnJK8+BCF69ozcnZOs=;
- b=GbPtev8sCXAQyi0fNZqePTaO9QhgN9VkvAMXNal/U2eY6oOVtEU3jkeuFLvEJa2DOn
- cjViX2oKkFd5dl0gKYLB5llGp3rYwd5TP63JLx4bTYBJMZdQDLtI4DbLTfEvAgVX1y1Y
- 1tjO/3KDOjK3A03s2rek3odn0hd6BwQQi1GadzcsL9IOT88yOKYjT96EvSe5Tw6NWzt4
- GAdQDyhYNm7RlMuYb4i7ALdzBugcV4yazi8Ow80TkOOawjNHgnZOXujIUTLR+AS2Ht2X
- i0aI+1OV4tJVll6c49yf703yFH3nZEfvHsEwLL9rtTloqkiSxYzG87MPjvprn+TLF9g0
- zTvw==
+ d=linaro.org; s=google; t=1781986995; x=1782591795; darn=nongnu.org;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:from:to:cc:subject:date:message-id:reply-to;
+ bh=RUSAOhG+fFA5GklYlsz/KwE9hrrVDZgPAZwdexY6uk0=;
+ b=gcAWaOTHtraGckuxP5jipY1epN+KMyWuNb5P/OR+4V36pLjjD536Id3fwTJhsKuhk8
+ kvLw2dhmi7SntSf0qu+Z/StWrBGhmfKB1s0oKeau6VWA4H0InCqrGkiT9YdMwn1RL/tU
+ RVfdk2uHBa2km9m040gxr5pi0Cc5RNyw+DT55Y0qaMjo7/x0PrkwYO0oE7UGuX+nBguQ
+ JHWqw7ABtcuXOTaDDg8+4KmMnrOa2yxP0yMmVX8zoYnQWxBloGqIYeErKimJGxADYADf
+ 6xQBrbRE0gKt60XVeqWBlUgZ95YE7BbBhDs2lGWVd/O7Y7GoaQ1HhORWS6wtFq7vleiN
+ chtg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1781975989; x=1782580789;
- h=content-transfer-encoding:mime-version:message-id:date:subject:cc
- :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1781986995; x=1782591795;
+ h=cc:to:subject:message-id:date:from:in-reply-to:references
+ :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=yz1lyzAp3fEIr0XZVsXsjafx7CnJK8+BCF69ozcnZOs=;
- b=OghW085SrNy1uoCKFh9WYEnUEt907eULI62bqe6LGhucV/4gBaAkwVtXw2802NkpFR
- bfHINjKr96pza8T02XiXlZ36K2gEFT/YqDUkcRlkesJLEIbnlx147athjYmmhst7MN4h
- gCQJ678sdoshjB7QnghgO4WiIcr7J1TlnJoSLhRS6N/HEwcKTbmkXeLOvXE602BRpU/E
- /+8J7ovuUp2wqyBMDKQalDbAPWayjqHS8bYSf/2zIbieZcacyfmz1tJ+rBfRDMOLesIt
- vrNkMLx1WSBGvqkTOAvM5LuF1x7j1n4+8AbAxFDWoMr1GLFlt/gl2+eqSqWOIfXkcNyU
- APPg==
-X-Gm-Message-State: AOJu0YzdT+f9asTQ0+PO3E0g9jNKQ1KxQOSVcZdIlIyqULDToommeBbR
- ms0ByUV93NEaL9FC1GOCYjGp5+bCKA9crzalQQdeLzwX3pgaT+f/7TCS
-X-Gm-Gg: AfdE7ckHD+tjFFO9OdIyxvBfPwGiini+tAVZ0EEkQxwHxqJ1VzxmNnKwCcW/clHZBzA
- iatpjlj63mqToLnqJ2cCSHtgqtkRWJXp9urqoIe4yLSSimDStYgh7z0lPjqkYQOnLK5ZUPUkRgD
- hZbA4/w6og0yU28qh5kRI76SZO3igQLRY7sn0q4ubxnrSGfqz7oU+PHdKlnrRZIvVGiLcjMbyST
- 61S4bOQChOoYp402MlSWeeE2jwqrUhpfha6YN8zvpRJTN6LX5ionGwfLJkbSE1Yn8YJNosa4Wkw
- MzEqNL3MLUNIuWEAVu3bkQgNJqI2keniw89UcdZ1S/3TMkWgWmjzZPwkyFz2YQBMmBSCxjjq7y9
- dEvYLkc4wAmJnKW6J6GMkXBXbfsI0c0pGHKxX9U180bMkj04ayUjKqAmpW7uB45L5yJPPt4yHcE
- zmRxk7sFFzNE6EXFtX
-X-Received: by 2002:a05:6402:3548:b0:68f:c63f:1ed4 with SMTP id
- 4fb4d7f45d1cf-696e52075camr4194556a12.27.1781975988671; 
- Sat, 20 Jun 2026 10:19:48 -0700 (PDT)
-Received: from machine.. ([37.113.214.163]) by smtp.gmail.com with ESMTPSA id
- 4fb4d7f45d1cf-6977be31c73sm949835a12.17.2026.06.20.10.19.46
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Sat, 20 Jun 2026 10:19:47 -0700 (PDT)
-From: Evgeny Kolmakov <randomjack94dev@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org,
-	Evgeny Kolmakov <randomjack94dev@gmail.com>
-Subject: [PATCH] hw/dma/soc_dma: Replace if-else chain with array lookup
-Date: Sat, 20 Jun 2026 20:13:18 +0300
-Message-ID: <20260620171318.24189-1-randomjack94dev@gmail.com>
-X-Mailer: git-send-email 2.43.0
+ bh=RUSAOhG+fFA5GklYlsz/KwE9hrrVDZgPAZwdexY6uk0=;
+ b=IrnuY0bBFm1619mhnIEv8eQE+isUmAJZp7uHMpDE1quld1LKPjhJc21Fwfqll/5Tpf
+ KOXaFndlx9gZVmREPP55ZKIjjjZSWPoYSGZXSbX9xTpQAxGnNH3VZBKfFNmIuFaK0F1m
+ AE4N7nGbI0KJr3fDCwOY5DWzLj5LPRz5yvECRHf6q7tpi3VbjhX2Z3VO/PNut+ZQPOWS
+ rU+RDMSnI+8mrQJwiBR8+wKM1GD1f5H4cUaRqAhemogD2141jmunDoXcL1JJ12dPyzF6
+ bnFwNA4kve3VrgdlU8UJkbzei05+RRzY19dv/sdypawcFeGmeR79mY1664swZVa8RsGw
+ KTGw==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RpqfDSJY5BzGHP8U+183LylYR1RjGJlWTGekt9mraWbTMVnEFQGmYz5g+H/1BEZUFqivwWX6rczYXLbBL8=@nongnu.org
+X-Gm-Message-State: AOJu0YxtlOrIPccfZA6LhiohEiBOhsNS3AObbRIL3lJMZFNfjK/DB/IB
+ Dtib+h53zwyXOL2DcxsKfzRoZccsu16rDgd1O+tjwF1U0+jmUjHQDLgkOkOhE0H8L/a0+fk+NHd
+ k3ZzBfs7jx3tUytgmB8nS+sb3YN36h/dtuBDM6VCxAQ==
+X-Gm-Gg: AfdE7cnPBsCeqnqDNtaZUCgK1qKwf6VP68bXDBvts1hn1ONzM3/qnFL20J2pdD/UTE6
+ 5gOC5zpyXm9ix8rnmwMrkUstKWaOdBrP+8IiP3QIMmb/AJ9Mv37B6xXvgKCWUPvxVZTRxO90N2R
+ NN1PyHxPWEbWMnHXI8xT8sLbM2ar4+9EIa/P5jhIc1hkOhUPJNVIqtlVl942O68gVkK0XxGSsdi
+ ahWG2dQkASKPLi+kjnXSXVb1WUyyMcHCMcynWIrqzpZj7iR7xmJ+nti5LjXW7wotL7qtt0j4zK0
+ 5AWz1HYE9YF+iBT4xTgbSFXgyJeApUXvf9qnY09C0SU5HLf2sTvHVXBm
+X-Received: by 2002:a05:690e:d48:b0:651:8d82:acc2 with SMTP id
+ 956f58d0204a3-662ffed7444mr7242271d50.63.1781986995038; Sat, 20 Jun 2026
+ 13:23:15 -0700 (PDT)
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2a00:1450:4864:20::535;
- envelope-from=randomjack94dev@gmail.com; helo=mail-ed1-x535.google.com
+References: <20260620171318.24189-1-randomjack94dev@gmail.com>
+In-Reply-To: <20260620171318.24189-1-randomjack94dev@gmail.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Sat, 20 Jun 2026 21:23:03 +0100
+X-Gm-Features: AVVi8Cc8sp4L0ipNZktBvLI74cn0aLYEOH3giG6BOSHJebxbeHlYKFkD1W2wcw0
+Message-ID: <CAFEAcA9_Cy1x46YQSawzmF_fc4GVq_77vyRF7TWwruBND9eCGg@mail.gmail.com>
+Subject: Re: [PATCH] hw/dma/soc_dma: Replace if-else chain with array lookup
+To: Evgeny Kolmakov <randomjack94dev@gmail.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Content-Type: text/plain; charset="UTF-8"
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b129;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb129.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -96,65 +115,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Refactor transfer_fn assignment in soc_dma_ch_update()
-via array lookup as suggested by the TODO comment.
+On Sat, 20 Jun 2026 at 18:20, Evgeny Kolmakov <randomjack94dev@gmail.com> wrote:
+>
+> Refactor transfer_fn assignment in soc_dma_ch_update()
+> via array lookup as suggested by the TODO comment.
+>
+> Signed-off-by: Evgeny Kolmakov <randomjack94dev@gmail.com>
 
-Signed-off-by: Evgeny Kolmakov <randomjack94dev@gmail.com>
----
- hw/dma/soc_dma.c | 29 +++++++++++++++++------------
- 1 file changed, 17 insertions(+), 12 deletions(-)
+Any particular reason why you're looking at this ancient
+code? It's used only by the omap SoC -- if we care enough
+to do anything to it then converting it to qdev is fairly
+high up the list...
 
-diff --git a/hw/dma/soc_dma.c b/hw/dma/soc_dma.c
-index d5c52b804f..a5b1ef9f61 100644
---- a/hw/dma/soc_dma.c
-+++ b/hw/dma/soc_dma.c
-@@ -163,6 +163,16 @@ static inline enum soc_dma_port_type soc_dma_ch_update_type(
- 
- void soc_dma_ch_update(struct soc_dma_ch_s *ch)
- {
-+    static const soc_dma_transfer_t transfer_fn[2][2] = {
-+        [soc_dma_port_mem] = {
-+            [soc_dma_port_mem] = transfer_mem2mem,
-+            [soc_dma_port_fifo] = transfer_mem2fifo,
-+        },
-+        [soc_dma_port_fifo] = {
-+            [soc_dma_port_mem] = transfer_fifo2mem,
-+            [soc_dma_port_fifo] = transfer_fifo2fifo,
-+        },
-+    };
-     enum soc_dma_port_type src, dst;
- 
-     src = soc_dma_ch_update_type(ch, 0);
-@@ -171,21 +181,16 @@ void soc_dma_ch_update(struct soc_dma_ch_s *ch)
-         ch->transfer_fn = ch->dma->transfer_fn;
-         return;
-     }
--    dst = soc_dma_ch_update_type(ch, 1);
- 
--    /* TODO: use src and dst as array indices.  */
--    if (src == soc_dma_port_mem && dst == soc_dma_port_mem)
--        ch->transfer_fn = transfer_mem2mem;
--    else if (src == soc_dma_port_mem && dst == soc_dma_port_fifo)
--        ch->transfer_fn = transfer_mem2fifo;
--    else if (src == soc_dma_port_fifo && dst == soc_dma_port_mem)
--        ch->transfer_fn = transfer_fifo2mem;
--    else if (src == soc_dma_port_fifo && dst == soc_dma_port_fifo)
--        ch->transfer_fn = transfer_fifo2fifo;
--    else
-+    dst = soc_dma_ch_update_type(ch, 1);
-+    if (dst == soc_dma_port_other) {
-+        ch->update = 0;
-         ch->transfer_fn = ch->dma->transfer_fn;
-+        return;
-+    }
- 
--    ch->update = (dst != soc_dma_port_other);
-+    ch->update = 1;
-+    ch->transfer_fn = transfer_fn[src][dst];
- }
- 
- static void soc_dma_ch_freq_update(struct dma_s *s)
--- 
-2.43.0
-
+thanks
+-- PMM
 
