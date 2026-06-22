@@ -4,110 +4,57 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4D8A3CDB46B
-	for <qemu-trivial@archiver.kernel.org>; Mon, 22 Jun 2026 10:23:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1E6F4CDB46F
+	for <qemu-trivial@archiver.kernel.org>; Mon, 22 Jun 2026 16:51:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wbboB-00027b-P9; Mon, 22 Jun 2026 06:23:17 -0400
+	id 1wbhs1-0004c5-H8; Mon, 22 Jun 2026 12:51:37 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wbbny-00025T-NU
- for qemu-trivial@nongnu.org; Mon, 22 Jun 2026 06:23:04 -0400
-Received: from mail-yx1-xb12a.google.com ([2607:f8b0:4864:20::b12a])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wbbnu-0008Os-Tw
- for qemu-trivial@nongnu.org; Mon, 22 Jun 2026 06:23:00 -0400
-Received: by mail-yx1-xb12a.google.com with SMTP id
- 956f58d0204a3-662ccb916c5so4272493d50.1
- for <qemu-trivial@nongnu.org>; Mon, 22 Jun 2026 03:22:57 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1782123777; cv=none;
- d=google.com; s=arc-20240605;
- b=fnJcYxDW+SfkIVsCMolQIiEobLaXUcAeCBHkyIjzxqxKCdCs78BNzoDlDUkG11MPeQ
- HAWda+O74368H/kvJQK/9xpBkSLByrSEXO/bkR12FBzbpO38S3KBPEc5Nb57py4htFRH
- z2nIQ+GR0DCmrGcDvnUpbyoiIZwy6qy9TTvyJLWGd5cPNeBPnkIel5YwYj3ug3pOfGIz
- qSqI4D+G+SHt1p3sTYpCLqc3MJKED1VNPPKZJoiA49iAENzQ7JLfe88rnkznqw7k3q6b
- 3Ee201p20WQj1OfApBvDOPNlLItaS/qZviDq7uJGD88qrH28wYjA6TnVknS3+zOsDhUK
- 6X5w==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20240605; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=k/HUmJlLMvc0aM+WDK4IfrdimbTRflTejHffYN89N5U=;
- fh=cMrR8dTWFhszXZv3w5sFlkKze2z/+2jfLQgiSMGYfhg=;
- b=Ogf/pkWIas04khrube8f1trT9Kh429n5MWEUmdFpPW/T8Rm3sOLqa0/ch3KxO4mWNc
- efDnHGngc9bnASsoRaXbStK1AcVpdEkFmQ8fGz0HpvXMEUqZ1JudWp3q9//WmZjHZvP1
- n9nIdqShaQF2GUv/QseQBXC+5JvodQ4JOas1IRO8ZmB+5Ac9ncaQmUYA18NGebIYKXXA
- 5qZx8+pGE8ph3GB3N4pAWEzjkK8Ac2n0qhGRawCHvaf/7zWZFxDVkG5QvwYqjI0dzVzp
- r0Ne+RZEsw8Jz780iRZ0xGOXVvqKhslacfFbXtfEC/DkHQzvi8CEwiLs8KWnhahm7K+6
- IW9w==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782123777; x=1782728577; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=k/HUmJlLMvc0aM+WDK4IfrdimbTRflTejHffYN89N5U=;
- b=Ob0HU2KnArMCDDoQRJ768ArwMSjVahBTkZohQgQMTU9WPpJpm38/f83Sly5IFuc4wT
- 3SXVaUEQOZeDSb6eYDDXsQAOBVbMbg9Hnvc88WCLC7Gf4afrd7fGJTmhbIByI9yH5DC/
- NFVvFYynUWegBc36rN6aHI4yCUNW5CwKf79xGs64cw5ou/DJymciOSMvmV3HPJdtxyxD
- J9Imit4mJCsGviVPcLKsjUXSv6NTGVqomK1c7w3hGmQFw8A9fqsJG7X95jfY/bxDx+E8
- 4jS9Nuzy1LhLbjTw1gQ33+UteT9anSpvfqsfbZYd2WHlcxkFV/LeE/TyaRiQ5UjmZqb2
- AG6g==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782123777; x=1782728577;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to;
- bh=k/HUmJlLMvc0aM+WDK4IfrdimbTRflTejHffYN89N5U=;
- b=o9KxtOT8t8wZjZNvrSS6cGxcN673iHutYtMG4N6DFJN7xuPo73zweNFwFyuWXP9Zh2
- mPnmw4bbPl8Oe/PnzJUkZV3lvyBfwxQMFZWmIgc1iPqx4gfAm4gUEwenzhKn4zkc/VJe
- M4vBqAz3mC3mCFae6dexzOlHfA+dax3A+F/OseyOGApoPgouyG66qHDXwxjVN44TXzb6
- 7n+h3XBAidzBkjoO8VELGdFoS6LR1hZWYIAktb7pH5XNcQo2XhEx0ICy9HUHmhJlRIA1
- v/6mUXYbC+70Uq6z07SNpvhfZ1NsCy7xNvvy4owl0CPNlvGSco7m/fc16bEJ7/fx22VP
- uusQ==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rp91kssnkYpZNFuWc0aJkdZKcCQ3BnG2DBZ5WkEbeC66VLxf/pdRZgKGDvmLjtsW0F6rKHV2+znTPv70a0=@nongnu.org
-X-Gm-Message-State: AOJu0YzwXOGWMLikyryQYU93EEKmy1ktuxFX2SSB5JXQazUbMOGTqTuX
- dPLzJ7BoublzVsCURs4Z9DK7YqdhpZRblyxAEwoiPZpBY19IEvrGbHKFmqgaZbBzeWc9ji7DssQ
- TEeaDwnrdaghXNUbzQh3xVRBk4ZtO3zuzDDQEQV4vbQ==
-X-Gm-Gg: AfdE7ckvSI/oRCSOoAOh7o2HnRzlCcsD28HgGhGXw5ETH4CedpIXo4hdqbE3BLiUlXG
- 0BoW24U4K6AI1IvzIhsHB3AtFWzaYWaP1rc8rYQlnmgXGGHFY50W5IOfZYacAeV0WKcFlqTFAC0
- DwaHqL6XNv3oeAjXcSqFhMoC72SQe5ubdkK7gCFN/jQrYlQWSTyr89j50UGVl9hZGPI/V4MFses
- kfDFshxDmowyfoxu8AaQpBs45iTGjyDSjva5fwmKGsOUS8W4NdI99Fr8rjoNkvlymur+/XFlws2
- 4Wrw+tCcObAR0Fs+wTTjdSzEIN8KtW6FiE8+ZP7s4gLDXjjR0fSxlDp6FyKgUzbNc0E=
-X-Received: by 2002:a05:690e:3cd:b0:660:ffe0:2dfe with SMTP id
- 956f58d0204a3-662fc9fcfbbmr9475639d50.37.1782123776661; Mon, 22 Jun 2026
- 03:22:56 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <leo@managarm.org>)
+ id 1wbhQe-00064G-Vs; Mon, 22 Jun 2026 12:23:21 -0400
+Received: from hades.hosts.managarm.org ([195.201.36.94])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <leo@managarm.org>)
+ id 1wbhQd-0005Zr-DP; Mon, 22 Jun 2026 12:23:20 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple; d=managarm.org; s=2021;
+ t=1782145395; bh=vb3PPKd8GLEVktpJWW33N1oTIWMJIZxE8aXOWrtXRAA=;
+ h=From:To:Cc:Subject:Date:From;
+ b=s6eV/1D6QzLga4kt6VT8elOrMvAAjXsshP/8/nYKq8k8uwiFjcbqE+wNDkIVPoy2g
+ fDawpsVIApGaRCJjBKLfw7heV4U2FKeSe3NGtbfrbQ8WE9sPxujDcoAwcYDwPWG9V3
+ 61xJkmJ9sqByg4muzn9++lZTCbW/Sa8O8RTnQ4JaW8Ycf8GKFJolLtFdJBMm4ggRkO
+ pfP8uRrDJbOoJTL+JfL/2vkqXJnHI4VT5jHALqMWXECYOmPUf53dVjPVbTl3RiCvV9
+ dqsp/9wejb1KlbxKnjpxUvVfRtbsVrHM3t5Y6LyQu+E+DLoAojJoeozcuebXAtQ4jP
+ l5409OAL3cZ8w==
+Received: from white.localdomain (pd9f9de93.dip0.t-ipconnect.de
+ [217.249.222.147])
+ by hades.hosts.managarm.org (Postfix) with ESMTPSA id 6F9493EE10;
+ Mon, 22 Jun 2026 16:23:15 +0000 (UTC)
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org, no92 <leo@managarm.org>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Jason Wang <jasowang@redhat.com>,
+ Yi Liu <yi.l.liu@intel.com>,
+ =?UTF-8?q?Cl=C3=A9ment=20Mathieu--Drif?= <clement.mathieu--drif@bull.com>,
+ Paolo Bonzini <pbonzini@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>
+Subject: [PATCH] hw/i386/x86-iommu: Correctly set pt bit in extended
+ capability register
+Date: Mon, 22 Jun 2026 18:21:37 +0200
+Message-ID: <20260622162138.1045170-1-leo@managarm.org>
+X-Mailer: git-send-email 2.54.0
 MIME-Version: 1.0
-References: <20260609105626.1038690-1-thuth@redhat.com>
- <CAFEAcA9O6b02VMuto8VzaEsVi3zTqNtQKG_RcMaPnNdPXGUBhw@mail.gmail.com>
- <CAMvPwGpvpHD+Sx-HZR4FFMJB+W8Rk8LoU0256Q=vwKAdC96HSQ@mail.gmail.com>
- <CAFEAcA9N_O7RZRU+SPTfB_ePasjVZvUsFPhndfQDuHgQ+4Q-5A@mail.gmail.com>
- <CAMvPwGpzAcDxeqSvQmOjzkQn6T91CAmTO31bNs0wmSMqQKG=Qg@mail.gmail.com>
- <CAMvPwGrnh9-UMv5919bLXLF8oLcyTa=coTdqh+1ALNvCKLmOJQ@mail.gmail.com>
-In-Reply-To: <CAMvPwGrnh9-UMv5919bLXLF8oLcyTa=coTdqh+1ALNvCKLmOJQ@mail.gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 22 Jun 2026 11:22:45 +0100
-X-Gm-Features: AVVi8CeuH3mh7XJlmeOdZH_8nSVPI7iYi8piPpYAqU995iKkIwQkqo8n5iqgam8
-Message-ID: <CAFEAcA-Te1aK8J-FPdpudm-3tQW9+kDdYgAa69tYXj2_TyLgVQ@mail.gmail.com>
-Subject: Re: [PATCH] hw/i2c/pmbus_device: Fix a possible crash when requesting
- too many bytes
-To: Titus Rwantare <titusr@google.com>
-Cc: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org, qemu-arm@nongnu.org
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12a;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12a.google.com
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=195.201.36.94; envelope-from=leo@managarm.org;
+ helo=hades.hosts.managarm.org
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Mon, 22 Jun 2026 12:51:35 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -119,30 +66,44 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
+Reply-to:  no92 <leo@managarm.org>
+From:  no92 via <qemu-trivial@nongnu.org>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Tue, 9 Jun 2026 at 17:00, Titus Rwantare <titusr@google.com> wrote:
->
-> oops, the patch series that fixes this needs to be upstreamed.
+With the changes in c7b2e22bd957, the `pt` bit was set in the (wrong)
+capability register, instead of the (correct) extended capability
+register.
 
-I see we have a patch that's been submitted:
-https://patchew.org/QEMU/20260614222131.5795-1-imaginos32@gmail.com/
-that fixes what the #3388 test case is actually running into
-(guest writes a 32 byte string to a device register, and so
-we lose the NUL terminator and strlen() returns a too-large
-value when the guest reads the string value back).
+Fixes: c7b2e22bd95710e404c393e9f563cfe7404220c1 ("hw/i386/x86-iommu: Remove X86IOMMUState::pt_supported field")
+Signed-off-by: no92 <leo@managarm.org>
+---
+ hw/i386/intel_iommu.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-But looking at the code it does also feel to me that there
-might be a bug in what the issue report description claimed
-it was testing, where the guest triggers multiple
-pmbus_send_string() calls without reading back the data,
-and the data piles up in the buffer and causes the assertion.
+diff --git a/hw/i386/intel_iommu.c b/hw/i386/intel_iommu.c
+index 744cdfd2e6..d1af7a3135 100644
+--- a/hw/i386/intel_iommu.c
++++ b/hw/i386/intel_iommu.c
+@@ -4988,7 +4988,7 @@ static void vtd_cap_init(IntelIOMMUState *s)
+ {
+     X86IOMMUState *x86_iommu = X86_IOMMU_DEVICE(s);
+ 
+-    s->cap = VTD_CAP_FRO | VTD_CAP_NFR | VTD_CAP_ND | VTD_ECAP_PT |
++    s->cap = VTD_CAP_FRO | VTD_CAP_NFR | VTD_CAP_ND |
+              VTD_CAP_MAMV | VTD_CAP_PSI | VTD_CAP_SSLPS | VTD_CAP_DRAIN |
+              VTD_CAP_ESRTPS | VTD_CAP_MGAW(s->aw_bits);
+     if (x86_iommu->dma_translation) {
+@@ -4999,7 +4999,7 @@ static void vtd_cap_init(IntelIOMMUState *s)
+                     s->cap |= VTD_CAP_SAGAW_48bit;
+             }
+     }
+-    s->ecap = VTD_ECAP_QI | VTD_ECAP_IRO;
++    s->ecap = VTD_ECAP_QI | VTD_ECAP_IRO | VTD_ECAP_PT;
+ 
+     if (x86_iommu_ir_supported(x86_iommu)) {
+         s->ecap |= VTD_ECAP_IR | VTD_ECAP_MHMV;
+-- 
+2.54.0
 
-Is the patch series you want to upstream a fix to the "no NUL
-terminator" problem, or to the "multiple send_string calls
-fill the buffer" problem?
-
-thanks
--- PMM
 
