@@ -4,89 +4,163 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 69AF0CDB47F
-	for <qemu-trivial@archiver.kernel.org>; Tue, 23 Jun 2026 17:05:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id ABFEBCDB470
+	for <qemu-trivial@archiver.kernel.org>; Wed, 24 Jun 2026 05:41:52 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wc4YI-0002KO-3H; Tue, 23 Jun 2026 13:04:46 -0400
+	id 1wcGMU-0003AZ-O0; Wed, 24 Jun 2026 01:41:22 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wc4YB-0002G1-ND
- for qemu-trivial@nongnu.org; Tue, 23 Jun 2026 13:04:39 -0400
-Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <163wangjack@gmail.com>)
- id 1wc4Y9-0003Lg-V3
- for qemu-trivial@nongnu.org; Tue, 23 Jun 2026 13:04:39 -0400
-Received: by mail-pj1-x1032.google.com with SMTP id
- 98e67ed59e1d1-36d5fd50d20so125077a91.1
- for <qemu-trivial@nongnu.org>; Tue, 23 Jun 2026 10:04:37 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1782234276; x=1782839076; darn=nongnu.org;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:from:to:cc:subject:date
- :message-id:reply-to;
- bh=oSaOMXjVoFPTW5HopszMbWR5/OiDDQVduHsnOIO0DKc=;
- b=cJZweZRLH2xm+A7vN8IFbqIjkU58oXe2PjNK5M0nCQl87aBuHerO6piKNjPMjAik7w
- pW05JyCffr1flwm1kQvt6Y/J1k1ooKuz2FaTCDxmfiypbLZIE+FEjITXKndBs1cDrmav
- TJeckgKBu4MJbVVKrk8usrUFv9+PNEQUxcffaknVUkOuFDnMCSWC+C3UqoSUSwkAd6m1
- Nk/l1oBjA6MtXlm8qyj6RAlKOTCZO0DvKeAXUy5uHWomGBHAQqWuPhBnjeguueU/O/VF
- 8mxYQGSE8/tiL7BVmXs7bcug9AVbKsRLkzbegWOTg3c4AHzzVuSPssiAQAMmf9BWVsU8
- qaeA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782234276; x=1782839076;
- h=content-transfer-encoding:mime-version:references:in-reply-to
- :message-id:date:subject:cc:to:from:x-gm-gg:x-gm-message-state:from
- :to:cc:subject:date:message-id:reply-to;
- bh=oSaOMXjVoFPTW5HopszMbWR5/OiDDQVduHsnOIO0DKc=;
- b=KWX6VbA72oOrf2kHRv3SIUV96XNW2muwZNDkRrd/GySF2e+xIGxTfswdlX/IF5fMry
- jMomrKYF6JrRvu/W0LoiAmie1GxB3x1P6v15Co2seDjw9tY2YjldHZRgQqM4a5Ya1Zis
- z842jdXmSI5iT4j8PMrSy0n8jLcxjvIrXQ8kOwAadK3oSG88RJEnQMju+7sie8A3SQiO
- QHrkadPuXl2xRikrcGeoXMGWsYPUIPu/c6Lf0def8IWB8QpZIygrxDxv7qbBUpqGsgI3
- w8lYT/wLPKllct6rOadxDwsoYjNMbItWLW4R9E6PrI2J13i7H2HRYA6Q0+LtcBkYropK
- Z43Q==
-X-Gm-Message-State: AOJu0YwWlA5CtpRlj6rndaoqMateBwk499M9GkrbUDdjR+YWlcI6RmxW
- /+A85OzZGjtqzgjhfCO49gZ2gYUbaTw+ndzaojUNQc+PdRtXUYoaHmCs
-X-Gm-Gg: AfdE7cleZzb58wA7E9vdH8QiCSpObFNOxPYLC4rCM8bqhO4+a4je8x94YajPcL6sFn0
- wtXA+DH5maW2AfWeWCmP5Z1SIs8P4HCOZp9fn33vxBHI70cK5fO+pz3zdqBoGQPM07r2bIE60kN
- m5/x/oFR0C+Fm7iA4kOJxoJ7JrfNhdvfa6Wg/jqm5RwVZHUtylSvOGppdv8RHFnLzHOAzuaALek
- NGOxf8kgDocI4MEeJetdapsaunfQPTBhHTlgGxyv7OFueXftnVP+vmyO7Oznv9DFy9lXweFWWnX
- /Rncj0pJ9VL1x02AxURsGXAtzPiy/UUiFR1+46PiJmhTtdKpcXGWGhq59oYAnQ7W4ECzfscuIrJ
- kYqeVylsEmRWOEzjW7Ao5ZYQ16A8eH5Zec8Emx3oq/hip6TM0Ru96Tbe+rJT/lBpuiA3ORY0zrH
- 3KOgRGBalcaKuUNwLtusBD/wjPA7a2iKujuo5UPA==
-X-Received: by 2002:a17:90b:5405:b0:36b:3ecd:88d2 with SMTP id
- 98e67ed59e1d1-37dd0d0d8d1mr4442368a91.3.1782234276101; 
- Tue, 23 Jun 2026 10:04:36 -0700 (PDT)
-Received: from localhost.localdomain ([212.135.211.99])
- by smtp.gmail.com with ESMTPSA id
- 98e67ed59e1d1-37d4f225870sm10242924a91.8.2026.06.23.10.04.33
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Tue, 23 Jun 2026 10:04:35 -0700 (PDT)
-From: jack wang <163wangjack@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, jack wang <163wangjack@gmail.com>,
- Peter Maydell <peter.maydell@linaro.org>,
- Jean-Christophe Dubois <jcd@tribudubois.net>,
- qemu-arm@nongnu.org (open list:i.MX25 PDK)
-Subject: [PATCH 2/3] hw/misc/imx25_ccm: Replace DPRINTF with trace events
-Date: Wed, 24 Jun 2026 01:03:53 +0800
-Message-ID: <20260623170354.43981-3-163wangjack@gmail.com>
-X-Mailer: git-send-email 2.53.0
-In-Reply-To: <20260623170354.43981-1-163wangjack@gmail.com>
-References: <20260623170354.43981-1-163wangjack@gmail.com>
+ (Exim 4.90_1) (envelope-from <clement.mathieu--drif@bull.com>)
+ id 1wcGMR-000390-Ry; Wed, 24 Jun 2026 01:41:20 -0400
+Received: from smarthost2.eviden.com ([80.78.11.83])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clement.mathieu--drif@bull.com>)
+ id 1wcGMO-0003MU-0W; Wed, 24 Jun 2026 01:41:18 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple;
+ d=bull.com; i=@bull.com; q=dns/txt; s=mail;
+ t=1782279676; x=1813815676;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=BwiWQyexpHEKIB3eefghYEbj9FDIRMw1sx3syCjPnIs=;
+ b=P7WyyRgRCwIXuokGS7PVvVfN0elBymu2jnvjyw4Km8ugzyFEWRN/zIFN
+ qmIS8vfHwB1InC3M2M2WchkHxb4nqj3bqhvLmMUTN+HTZURZkuHphNBQH
+ P0KxECsrG6nvRs31dH1kFO7ezMMaD6TNafFa/KGkfSO8xca32gC/Cbh/1
+ jYuH9tOkoSCU1LOTEBdbXHID0eCq1EZd/aUA/u4RnCMHvsNhXUe06VXPe
+ /baUT4f04wtHmZ6al/AB7a1bFvOX4ogPGfKiS2QjglbJaWKk6A9JhtHqr
+ 8e7GazKTO6T1H8BcFP2/a9vQ+85WYkaYCrZnu9cEF1oDDhDUalOFN8ax6 g==;
+X-CSE-ConnectionGUID: mxx/ookHSg69mqApWgPIuQ==
+X-CSE-MsgGUID: mOIDyHXFT2q+f0RJyXaCdQ==
+IronPort-SDR: 6a3b6dec_QNyiB7Yb98jIRYHtHAIrul5W3iZaSpgwBMLJkL950aJciRq
+ bMkPoo3xyFZw7cGG0UFu4rINq1uwPQDhyAsBqdA==
+X-IronPort-AV: E=Sophos;i="6.24,221,1774306800"; d="scan'208";a="48293940"
+X-MGA-submission: =?us-ascii?q?MDHQ/b01kKAo+uAgKu4M8sOXvzi8yGKTqjIAx2?=
+ =?us-ascii?q?pr0Dw7cZ7fFjGkQ40rkZHLwrgnbq1BVwYTcgBQVRensEa10iapIzwxUW?=
+ =?us-ascii?q?ufPfOyULstYdX4+0SJbJ7oJQayjUxHEK2+xbdFM/vWxKo4gw72I1XCmr?=
+ =?us-ascii?q?TWfuZehKIFqs7+K9aaBqzAvQ=3D=3D?=
+Received: from mail-northeuropeazon11012036.outbound.protection.outlook.com
+ (HELO DUZPR83CU001.outbound.protection.outlook.com) ([52.101.66.36])
+ by smarthost2.eviden.com with ESMTP/TLS/TLS_AES_256_GCM_SHA384;
+ 24 Jun 2026 07:40:59 +0200
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=LjYa8Y5Xc9gV3A3MJrhROHqWYG96H4nnXALyfHzhNu9qF+1FjWNgaHtzwLONb0vaqhhhXiPNmpKmNkLe7OS9xwncGiCqfJkkIWBfddTtW01Xhy+lS8OVela3aFzzIjJBGWlb8yK0A0tcqwwjBAouW9EHWLQHmi4UmFP8jQzlOw+VbX5qZNIvN2UV0BWlSVCb86JfKD4u97D1vTzAq1Z9uwxjEulq/WpwR2O8IWUrKKhw0QscWSRfhscnfaSf3oHDNGMx8NaGB1VPBAb8S57pXaV2cfY4fVFDvYxzQhlDBoDncSLhhlERhtgAARz8f6MDVEOuUPhCNamDIzgfMxR6qA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=BwiWQyexpHEKIB3eefghYEbj9FDIRMw1sx3syCjPnIs=;
+ b=McBisCx8CKu6PwSw60+GljFFUv6A9OlFqYovruzjBDi7PU3HmrQKciIGFH7NE29aCDDDmZBZby8Gx1jfe5xtW9NdJr5ZDilRyv56epOHB5ewFEMoNJP1BM7u1wk0I7Mp1oAf6agONUmp+8NnRK8slWQxYw9UT3jk6XvXBZ5g3V16GSSHmGU+TTvhJUTPFQUrOJRWSVs+AfTYR0b9wLPj1LQRQ0rnfTbi2luC9zKBBbchziyZaFLsWKscg6BbwSPR1CpmqkviGPsrv6xEleBnV2FI/nLYoydzX3ILu7TdKztlIQrXsJLq55YqWx0B0xD4aKjvTSG5DDuNvVd4dIS0UA==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=bull.com; dmarc=pass action=none header.from=bull.com;
+ dkim=pass header.d=bull.com; arc=none
+Received: from AM8PR07MB7602.eurprd07.prod.outlook.com (2603:10a6:20b:24b::7)
+ by PAWPR07MB10096.eurprd07.prod.outlook.com (2603:10a6:102:38a::14)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.159.13; Wed, 24 Jun
+ 2026 05:40:56 +0000
+Received: from AM8PR07MB7602.eurprd07.prod.outlook.com
+ ([fe80::4b08:9add:5e19:eaaf]) by AM8PR07MB7602.eurprd07.prod.outlook.com
+ ([fe80::4b08:9add:5e19:eaaf%6]) with mapi id 15.21.0159.013; Wed, 24 Jun 2026
+ 05:40:56 +0000
+From: =?utf-8?B?Q2zDqW1lbnQgTUFUSElFVS0tRFJJRg==?=
+ <clement.mathieu--drif@bull.com>
+To: "Michael S. Tsirkin" <mst@redhat.com>, no92 <leo@managarm.org>
+CC: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>, "qemu-trivial@nongnu.org"
+ <qemu-trivial@nongnu.org>,
+ "qemu-stable@nongnu.org" <qemu-stable@nongnu.org>, 
+ "yi.l.liu@intel.com" <yi.l.liu@intel.com>, Jason Wang <jasowang@redhat.com>,
+ Paolo Bonzini <pbonzini@redhat.com>, Richard Henderson
+ <richard.henderson@linaro.org>
+Subject: Re: [PATCH v2] hw/i386/x86-iommu: Correctly set pt bit in extended
+ capability register
+Thread-Topic: [PATCH v2] hw/i386/x86-iommu: Correctly set pt bit in extended
+ capability register
+Thread-Index: AQHdAumad8yR5iG+Wke7SeJVXLz6/LZL2xSAgAFXJYA=
+Date: Wed, 24 Jun 2026 05:40:56 +0000
+Message-ID: <0e37033a142f1831c1007825bf497c8c56e80b57.camel@bull.com>
+References: <20260623082223.1431499-1-leo@managarm.org>
+ <20260623051234-mutt-send-email-mst@kernel.org>
+In-Reply-To: <20260623051234-mutt-send-email-mst@kernel.org>
+Accept-Language: en-GB, fr-FR, en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: AM8PR07MB7602:EE_|PAWPR07MB10096:EE_
+x-ms-office365-filtering-correlation-id: aaf98356-2ec4-4f83-335a-08ded1b329c4
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|376014|366016|1800799024|23010399003|38070700021|18002099003|22082099003|13003099007|4133799003|56012099006|11063799006|4143699003;
+x-microsoft-antispam-message-info: jD4Y+33sjCFXOLL+K34qHf97Y/Z58obWdC3tsHKUWLmzqe21lqrPArOENV7+i6YgpJfHogcJg/vHLCKnAYrwdQK84bwFxnQiqhQJoCzfbknofMvSywjNYRXcni2fHlUmEinkbZ3vvcY1p5Ylq6rkyGD19/eMlT8vAzNFgWR/axgvqylV6GGX1ZKw2S0Xs/lCVVLCtLz0O+lBCTQRMArydhxpIssec2GKIMzG4WqqnPt+NM/CdZYK53DIv+ZtZ2iiQ5J1M2zq/jfGHUB8k0cnOiFBI4o75C3oFImoeI2yySk2GHyVoc00k6DV1tlKBg+I4z3a0+yb7fxZeHdBNJWP92WWsAgiBO8ioTmXXwMSgVJVwkJUzrGECc2syq/5iLzCQwiyqx28RgPZ7wQEYoncQSUIjekyuvpt44RUujDLC2LDReuyk3KbOqW1MbePk1DE0S+DG9qS4PtxcjBSPw5ZH0h4T8hmo5T73GWSvsBu4FafJ8Gmuq5O9i3ej9KNFge/AOdsit57hm/I6yA9PbIDznT7gaDnxYsurUwqO7U2Gphzb8TVa9uIuCo8HU24Pvh5K1Kvp6aam0XLrGQjxFjPZyRlZTlhO7r//veWg+JmLR4rNBJ7yjU5RnFL7Pa9wUCBGcBPp+WOll7Lk2KT+DHh5nNk+dM7j8gahAv1j9IFKuZwr39GudEt8x/RsYkS64IMtSUd9W2jQpqtT5MAvKmVJOtI5qGGkfzecMPhLCuteN0=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:AM8PR07MB7602.eurprd07.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(376014)(366016)(1800799024)(23010399003)(38070700021)(18002099003)(22082099003)(13003099007)(4133799003)(56012099006)(11063799006)(4143699003);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 1
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?WXI5L3M5UmpxTmgvS0cwdGMzMFh4N0E0Uk96UVk5RlhUY2FDU1Y0NTRyZFMx?=
+ =?utf-8?B?WDVzY3RONGNiUGgwYmMwRDhVMDJWU0lIV0QxZTNWMHkvQ09ZYS9JaFZ3VlNO?=
+ =?utf-8?B?WVBRTUs0eVdJMlB0WUR2bXpLZFo0V3ZTalFibE53eDVKQ2I4aUJFYXo1RXlZ?=
+ =?utf-8?B?eURnUEZCamIxdUVvYVRPSnZoWWhVb1ovQjdmVm14ZGpSTTlvZWVoeXZLdEtj?=
+ =?utf-8?B?M3ozMXdVS1pUTjlRaWtJS0lVZGdQMk9saG5ZWTdGRm1ZZTVhSEpCTjNSYkVU?=
+ =?utf-8?B?YzVrOGNyWXgySytuc2FTTFVyTHRENENBcnpYV1hWMjNIUWk0SHB0RHpDKzJE?=
+ =?utf-8?B?bERXSnI5R0JycVNIVlBhMUE1dkFVMGdndGw3N3dseUVEN0RPMTAybkVRcUxT?=
+ =?utf-8?B?bVlrUnlDZ2xTLzlpOUprK1NiUEhRd24zRmo2QldxYkVsdjhnb1p4S3pZamVi?=
+ =?utf-8?B?Mm9acFVWM2ZrZGNiMlpUN0FrSnV0b25BSXJpNVNvQTh2bkxnWERlQUc5UUZa?=
+ =?utf-8?B?QnAxb1FadTRsdW0yMm9hcGNlZWd5U3FPTkxUSHVQeU1WdWsycXNRc3FFRzVT?=
+ =?utf-8?B?dWxQRE5pSTdrSEpvUDNscGZRQnMrMmEvNFQyOEppd1FtblltQlBkMWdNQlN3?=
+ =?utf-8?B?cEVzREZxT0NtLzRack10N2hId29KQWFLQVYvbmV0OHJTOTBNL0dEcTM1U3dl?=
+ =?utf-8?B?dUFQd2xmaXJ0TStvQTFod1dqL0JHSXpMd0ozUTAyR0tjVy8rNm9nOFZMTklu?=
+ =?utf-8?B?R1JiKzJ5OFV1NlhSVy9PUENwWlcxK0x0TkhyNjludGpDZ1J3Rmp0QjFOUXB4?=
+ =?utf-8?B?K1R1bTl4U2g4Ymg4L0NhUXlJRlVLUXFVL2gwSktLSkgwaE5SQUVzbzFXMDh5?=
+ =?utf-8?B?RFB1dHpZT1R0WE56b1I0TVh0OW95QWFabnJFZk9NWDlobVhDTUdxMjR3QWFC?=
+ =?utf-8?B?bnFqbWR4L0ZBU01LWjlhcDk0dzN2NlNlRGp1RkRRdEhZOURONFlIUkpCZ0p6?=
+ =?utf-8?B?QTIwcitFMjVlc0Evd1VCTE8zZE8rT3pRSlM4S2o5Zkk4RVNxdDZpa3hEb2dm?=
+ =?utf-8?B?YldDQ1VKQXNkamoxRjY5UlNsTERTdEdOQSsvTzhmT1BJajJiNWZ0aThDVGZ2?=
+ =?utf-8?B?MjliZWhFeTN0YWplUlk4anJKK3lhaHU2UlkyWjNWdy9jcnNqS3hncXJQZ0l5?=
+ =?utf-8?B?eG92clpjRlhvdTdMQ1QyMDJVZExCQmN3am5nbVFacFJDSC93elRKMjVaK1FZ?=
+ =?utf-8?B?eWhDY0I1Qkw0QnZCRmZkVjY5UUIxNGo2ZmF0VXRsVkJJVGhZU0hOcVdpalNE?=
+ =?utf-8?B?REIzVFlYcjVXUlROYU5PU0xXY21rbFZGalNIN1F1bm53RGZ2R0xGbTYwcGk5?=
+ =?utf-8?B?WmZWYzhiMUpDRnpxUnkrYU14eTY1Z0MrRWx6c0d0cmhMZTlhRW5xcS9PSEwz?=
+ =?utf-8?B?dzM2dENsUGRSQU5HT20zQitPVUN1bE9pWnczZ05VMXpMOW1KOWhQV3d5RVVl?=
+ =?utf-8?B?YUFMTFlYQVF1WlJ6UER6by9ZSThaeEoxSERDV3BWWTdrOTg3UVlwM1VLaXBN?=
+ =?utf-8?B?V3FrdmhLZUlndktMeU1qQTlNN0dYSlF3bXZYZ1IwQ0FoWVBiTi9BcHdhY010?=
+ =?utf-8?B?MG9kMmNSUC8xS05HNC9XNnJDNnNZYTBhY0pGdmI4dmJEeFZkaWVCWGkxRGdm?=
+ =?utf-8?B?cFFjc3pBNjVVZkxwQ3g1Q0kzcXh5TVZ2TWFNanVUQjBOMk4vOVNTMXRndGRI?=
+ =?utf-8?B?QWVJV1lycUh5d0R5Q0pkSGpueVZFTzZsdEV2aG1CZzV1ZllmZkhXRzl1QVI2?=
+ =?utf-8?B?TE0wT1ZaVUY2L2RrK01URDdkeHk4akNzSVZLajRWRVVSeHFXZ25LRHJ6Nisz?=
+ =?utf-8?B?eTRMQWZYcHZJL3ZZOGp3Qms2WVgwWE85N2Fhb2laTWZFVUkrRE9NQ3l0T3ps?=
+ =?utf-8?B?dElDOXgwdVRwdjJhV1FnT2pBaElUUUpPaWdFV0RmbnVRWTVlay9WZkhKSGMv?=
+ =?utf-8?B?ZWltSXR1V2M2ZXl2UU5OYXZWWVhjbWl3bWl3Z3pHMW96QzkwQVBzOE5ZbU5i?=
+ =?utf-8?B?aGU2NUlMTVk3VnVJNHp6TjFXNFhCVEF2NE03QkVUU29semxYbDZJS0s4VDBG?=
+ =?utf-8?B?OUx4NXFTYXB6YWtUSWlFcVkyNi8vVFRJRzlzeHhUb01Dc1VFUnVmOG15M0ph?=
+ =?utf-8?B?aDNYYzk1ZVEvakd4Ync3S3lDWmpLT0luNkdrZkpwZDlkY2h5eFhBNm9QZS9Q?=
+ =?utf-8?B?b3lkSDd2amZlOVpwbW9IOE5lcUxNVkZrZzFhcXNmMjc4MThlNTFuSjhXZ1h3?=
+ =?utf-8?B?a2V2WGpoYmVoWXpSbGY3ZU5SaWdFbG9aN3dWelV2RGQ1OU9KZ0JKT3dNNTRD?=
+ =?utf-8?Q?JAPYwLBfgD44ocRLRf1+ozelvtUCgI7rXlSRE?=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <BB71C7C3B43CF44D85B32292568D5644@eurprd07.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
- envelope-from=163wangjack@gmail.com; helo=mail-pj1-x1032.google.com
-X-Spam_score_int: -13
-X-Spam_score: -1.4
-X-Spam_bar: -
-X-Spam_report: (-1.4 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- FROM_STARTS_WITH_NUMS=0.738, RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Exchange-RoutingPolicyChecked: NEqZBY/JTKzYO9BuXwnT/iTP5ccJbr7oJKr1RZDcwZZQBYcu3rFvAgl/p6QodpkC0m0BUZLW5gWfducMvDVklVeUsZ6+RkebsphOrykP5+sw11ZH+7PSS0LcAfzokUGtHau6e3LyrinNpazD64clWdJFNvsrRyFSPUYCMK3zIL7cVRNU+psWQiHHtz2VFgf9paWCF9sDxnad5RCl/n3l5lOHb+dRYDZwODszCB3nuRbAhhkzfW9h6URb1vHGjJUdy+WMuTFzzxG9pHAuqHUVpXQpK1FiCMFP5XfT3CS8Azj39Nhjs7GYHm+z92D+0E9M0YBsYGyDdjZxkkpLI3MIOw==
+X-OriginatorOrg: bull.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: AM8PR07MB7602.eurprd07.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: aaf98356-2ec4-4f83-335a-08ded1b329c4
+X-MS-Exchange-CrossTenant-originalarrivaltime: 24 Jun 2026 05:40:56.3167 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: 7d1c7785-2d8a-437d-b842-1ed5d8fbe00a
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: xZiLOy98cURro7CHer98LoncG/6CC5yMrrlX7EZ3Tg/C+49QQZS39lJBjM3KxKSRupjQRJd0Gqmn8qp0FClnJlXMMkJk3890AadkrgvLfEI=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PAWPR07MB10096
+Received-SPF: pass client-ip=80.78.11.83;
+ envelope-from=clement.mathieu--drif@bull.com; helo=smarthost2.eviden.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -102,145 +176,44 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
----
- hw/misc/imx25_ccm.c  | 34 ++++++++++------------------------
- hw/misc/trace-events |  9 +++++++++
- 2 files changed, 19 insertions(+), 24 deletions(-)
-
-diff --git a/hw/misc/imx25_ccm.c b/hw/misc/imx25_ccm.c
-index a6665d5535..1ee652a117 100644
---- a/hw/misc/imx25_ccm.c
-+++ b/hw/misc/imx25_ccm.c
-@@ -16,18 +16,8 @@
- #include "migration/vmstate.h"
- #include "qemu/log.h"
- #include "qemu/module.h"
-+#include "hw/misc/trace.h"
- 
--#ifndef DEBUG_IMX25_CCM
--#define DEBUG_IMX25_CCM 0
--#endif
--
--#define DPRINTF(fmt, args...) \
--    do { \
--        if (DEBUG_IMX25_CCM) { \
--            fprintf(stderr, "[%s]%s: " fmt , TYPE_IMX25_CCM, \
--                                             __func__, ##args); \
--        } \
--    } while (0)
- 
- static const char *imx25_ccm_reg_name(uint32_t reg)
- {
-@@ -118,12 +108,12 @@ static uint32_t imx25_ccm_get_mpll_clk(IMXCCMState *dev)
-         freq = imx_ccm_calc_pll(s->reg[IMX25_CCM_MPCTL_REG], CKIH_FREQ);
-     }
- 
--    DPRINTF("freq = %u\n", freq);
-+    trace_imx25_ccm_get_mpll_clk(freq);
- 
-     return freq;
- }
- 
--static uint32_t imx25_ccm_get_mcu_clk(IMXCCMState *dev)
-+static uint32_t imx25_ccm_get_mcu_clk(IMX25CCMState *dev)
- {
-     uint32_t freq;
-     IMX25CCMState *s = IMX25_CCM(dev);
-@@ -136,7 +126,7 @@ static uint32_t imx25_ccm_get_mcu_clk(IMXCCMState *dev)
- 
-     freq = freq / (1 + EXTRACT(s->reg[IMX25_CCM_CCTL_REG], ARM_CLK_DIV));
- 
--    DPRINTF("freq = %u\n", freq);
-+    trace_imx25_ccm_get_mcu_clk(freq);
- 
-     return freq;
- }
-@@ -149,7 +139,7 @@ static uint32_t imx25_ccm_get_ahb_clk(IMXCCMState *dev)
-     freq = imx25_ccm_get_mcu_clk(dev)
-            / (1 + EXTRACT(s->reg[IMX25_CCM_CCTL_REG], AHB_CLK_DIV));
- 
--    DPRINTF("freq = %u\n", freq);
-+    trace_imx25_ccm_get_ahb_clk(freq);
- 
-     return freq;
- }
-@@ -160,7 +150,7 @@ static uint32_t imx25_ccm_get_ipg_clk(IMXCCMState *dev)
- 
-     freq = imx25_ccm_get_ahb_clk(dev) / 2;
- 
--    DPRINTF("freq = %u\n", freq);
-+    trace_imx25_ccm_get_ipg_clk(freq);
- 
-     return freq;
- }
-@@ -168,7 +158,7 @@ static uint32_t imx25_ccm_get_ipg_clk(IMXCCMState *dev)
- static uint32_t imx25_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
- {
-     uint32_t freq = 0;
--    DPRINTF("Clock = %d)\n", clock);
-+    trace_imx25_ccm_get_clock_frequency(clock, freq);
- 
-     switch (clock) {
-     case CLK_NONE:
-@@ -186,7 +176,7 @@ static uint32_t imx25_ccm_get_clock_frequency(IMXCCMState *dev, IMXClk clock)
-         break;
-     }
- 
--    DPRINTF("Clock = %d) = %u\n", clock, freq);
-+    trace_imx25_ccm_get_clock_frequency(clock, freq);
- 
-     return freq;
- }
-@@ -195,8 +185,6 @@ static void imx25_ccm_reset(DeviceState *dev)
- {
-     IMX25CCMState *s = IMX25_CCM(dev);
- 
--    DPRINTF("\n");
--
-     memset(s->reg, 0, IMX25_CCM_MAX_REG * sizeof(uint32_t));
-     s->reg[IMX25_CCM_MPCTL_REG] = 0x800b2c01;
-     s->reg[IMX25_CCM_UPCTL_REG] = 0x84042800;
-@@ -238,8 +226,7 @@ static uint64_t imx25_ccm_read(void *opaque, hwaddr offset, unsigned size)
-                       HWADDR_PRIx "\n", TYPE_IMX25_CCM, __func__, offset);
-     }
- 
--    DPRINTF("reg[%s] => 0x%" PRIx32 "\n", imx25_ccm_reg_name(offset >> 2),
--            value);
-+    trace_imx25_ccm_read(imx25_ccm_reg_name(offset >> 2), value);
- 
-     return value;
- }
-@@ -249,8 +236,7 @@ static void imx25_ccm_write(void *opaque, hwaddr offset, uint64_t value,
- {
-     IMX25CCMState *s = (IMX25CCMState *)opaque;
- 
--    DPRINTF("reg[%s] <= 0x%" PRIx32 "\n", imx25_ccm_reg_name(offset >> 2),
--            (uint32_t)value);
-+    trace_imx25_ccm_write(imx25_ccm_reg_name(offset >> 2), (uint32_t)value);
- 
-     if (offset < 0x70) {
-         /*
-diff --git a/hw/misc/trace-events b/hw/misc/trace-events
-index fdb4844045..ebe9b4fb22 100644
---- a/hw/misc/trace-events
-+++ b/hw/misc/trace-events
-@@ -273,6 +273,15 @@ imx6_src_reset(void) ""
- imx7_src_read(const char *reg_name, uint32_t value) "reg[%s] => 0x%" PRIx32
- imx7_src_write(const char *reg_name, uint32_t value) "reg[%s] <= 0x%" PRIx32
- 
-+# imx25_ccm.c
-+imx25_ccm_get_mpll_clk(uint32_t freq) "freq = %u"
-+imx25_ccm_get_mcu_clk(uint32_t freq) "freq = %u"
-+imx25_ccm_get_ahb_clk(uint32_t freq) "freq = %u"
-+imx25_ccm_get_ipg_clk(uint32_t freq) "freq = %u"
-+imx25_ccm_get_clock_frequency(unsigned clock, uint32_t freq) "(clock = %d) = %u"
-+imx25_ccm_read(const char *reg, uint32_t value) "reg[%s] => 0x%" PRIx32
-+imx25_ccm_write(const char *reg, uint32_t value) "reg[%s] <= 0x%" PRIx32
-+
- # iotkit-sysinfo.c
- iotkit_sysinfo_read(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysInfo read: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
- iotkit_sysinfo_write(uint64_t offset, uint64_t data, unsigned size) "IoTKit SysInfo write: offset 0x%" PRIx64 " data 0x%" PRIx64 " size %u"
--- 
-2.53.0
-
+SnVzdCBub3RpY2VkIHRoYXQgdGhlIGNvbW1pdCB0aXRsZSBwcmVmaXggaXMgbm90IGNvcnJlY3Q6
+IHNAaHcvaTM4Ni94ODYtaW9tbXU6QGludGVsX2lvbW11Og0KDQpjbWQNCg0KT24gVHVlLCAyMDI2
+LTA2LTIzIGF0IDA1OjEyIC0wNDAwLCBNaWNoYWVsIFMuIFRzaXJraW4gd3JvdGU6DQo+IENhdXRp
+b246IEV4dGVybmFsIGVtYWlsLiBEbyBub3Qgb3BlbiBhdHRhY2htZW50cyBvciBjbGljayBsaW5r
+cywgdW5sZXNzIHRoaXMgZW1haWwgY29tZXMgZnJvbSBhIGtub3duIHNlbmRlciBhbmQgeW91IGtu
+b3cgdGhlIGNvbnRlbnQgaXMgc2FmZS4NCj4NCj4NCj4gT24gVHVlLCBKdW4gMjMsIDIwMjYgYXQg
+MTA6MjI6MjNBTSArMDIwMCwgbm85MiB3cm90ZToNCj4NCj4gPiBXaXRoIHRoZSBjaGFuZ2VzIGlu
+IGM3YjJlMjJiZDk1NywgdGhlIGBwdGAgYml0IHdhcyBzZXQgaW4gdGhlICh3cm9uZykNCj4gPiBj
+YXBhYmlsaXR5IHJlZ2lzdGVyLCBpbnN0ZWFkIG9mIHRoZSAoY29ycmVjdCkgZXh0ZW5kZWQgY2Fw
+YWJpbGl0eQ0KPiA+IHJlZ2lzdGVyLg0KPiA+DQo+ID4gRml4ZXM6IGM3YjJlMjJiZDk1NyAoImh3
+L2kzODYveDg2LWlvbW11OiBSZW1vdmUgWDg2SU9NTVVTdGF0ZTo6cHRfc3VwcG9ydGVkIGZpZWxk
+IikNCj4gPiBTaWduZWQtb2ZmLWJ5OiBubzkyIDxbbGVvQG1hbmFnYXJtLm9yZ10obWFpbHRvOmxl
+b0BtYW5hZ2FybS5vcmcpPg0KPiA+IFJldmlld2VkLWJ5OiBDbGVtZW50IE1hdGhpZXUtLURyaWYg
+PFtjbGVtZW50Lm1hdGhpZXUtLWRyaWZAYnVsbC5jb21dKG1haWx0bzpjbGVtZW50Lm1hdGhpZXUt
+LWRyaWZAYnVsbC5jb20pPg0KPiA+IFJldmlld2VkLWJ5OiBZaSBMaXUgPFt5aS5sLmxpdUBpbnRl
+bC5jb21dKG1haWx0bzp5aS5sLmxpdUBpbnRlbC5jb20pPg0KPiA+IC0tLQ0KPiA+IHYxOiBbaHR0
+cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDI2MDYyMjE2MjEzOC4xMDQ1MTcwLTEt
+bGVvQG1hbmFnYXJtLm9yZy9dKGh0dHBzOi8vbG9yZS5rZXJuZWwub3JnL3FlbXUtZGV2ZWwvMjAy
+NjA2MjIxNjIxMzguMTA0NTE3MC0xLWxlb0BtYW5hZ2FybS5vcmcvKQ0KPg0KPg0KPiBjaGFuZ2Vz
+IHNpbmNlIHYxPw0KPg0KPg0KPiA+ICBody9pMzg2L2ludGVsX2lvbW11LmMgfCA0ICsrLS0NCj4g
+PiAgMSBmaWxlIGNoYW5nZWQsIDIgaW5zZXJ0aW9ucygrKSwgMiBkZWxldGlvbnMoLSkNCj4gPg0K
+PiA+IGRpZmYgLS1naXQgYS9ody9pMzg2L2ludGVsX2lvbW11LmMgYi9ody9pMzg2L2ludGVsX2lv
+bW11LmMNCj4gPiBpbmRleCA3NDRjZGZkMmU2Li5kMWFmN2EzMTM1IDEwMDY0NA0KPiA+IC0tLSBh
+L2h3L2kzODYvaW50ZWxfaW9tbXUuYw0KPiA+ICsrKyBiL2h3L2kzODYvaW50ZWxfaW9tbXUuYw0K
+PiA+IEBAIC00OTg4LDcgKzQ5ODgsNyBAQCBzdGF0aWMgdm9pZCB2dGRfY2FwX2luaXQoSW50ZWxJ
+T01NVVN0YXRlICpzKQ0KPiA+ICB7DQo+ID4gICAgICBYODZJT01NVVN0YXRlICp4ODZfaW9tbXUg
+PSBYODZfSU9NTVVfREVWSUNFKHMpOw0KPiA+DQo+ID4gLSAgICBzLT5jYXAgPSBWVERfQ0FQX0ZS
+TyB8IFZURF9DQVBfTkZSIHwgVlREX0NBUF9ORCB8IFZURF9FQ0FQX1BUIHwNCj4gPiArICAgIHMt
+PmNhcCA9IFZURF9DQVBfRlJPIHwgVlREX0NBUF9ORlIgfCBWVERfQ0FQX05EIHwNCj4gPiAgICAg
+ICAgICAgICAgIFZURF9DQVBfTUFNViB8IFZURF9DQVBfUFNJIHwgVlREX0NBUF9TU0xQUyB8IFZU
+RF9DQVBfRFJBSU4gfA0KPiA+ICAgICAgICAgICAgICAgVlREX0NBUF9FU1JUUFMgfCBWVERfQ0FQ
+X01HQVcocy0+YXdfYml0cyk7DQo+ID4gICAgICBpZiAoeDg2X2lvbW11LT5kbWFfdHJhbnNsYXRp
+b24pIHsNCj4gPiBAQCAtNDk5OSw3ICs0OTk5LDcgQEAgc3RhdGljIHZvaWQgdnRkX2NhcF9pbml0
+KEludGVsSU9NTVVTdGF0ZSAqcykNCj4gPiAgICAgICAgICAgICAgICAgICAgICBzLT5jYXAgfD0g
+VlREX0NBUF9TQUdBV180OGJpdDsNCj4gPiAgICAgICAgICAgICAgfQ0KPiA+ICAgICAgfQ0KPiA+
+IC0gICAgcy0+ZWNhcCA9IFZURF9FQ0FQX1FJIHwgVlREX0VDQVBfSVJPOw0KPiA+ICsgICAgcy0+
+ZWNhcCA9IFZURF9FQ0FQX1FJIHwgVlREX0VDQVBfSVJPIHwgVlREX0VDQVBfUFQ7DQo+ID4NCj4g
+PiAgICAgIGlmICh4ODZfaW9tbXVfaXJfc3VwcG9ydGVkKHg4Nl9pb21tdSkpIHsNCj4gPiAgICAg
+ICAgICBzLT5lY2FwIHw9IFZURF9FQ0FQX0lSIHwgVlREX0VDQVBfTUhNVjsNCj4gPiAtLQ0KPiA+
+IDIuNTQuMA0KPg0KPg0K
 
