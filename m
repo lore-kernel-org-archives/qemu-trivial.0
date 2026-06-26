@@ -4,105 +4,90 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5C9BCDE001
-	for <qemu-trivial@archiver.kernel.org>; Thu, 25 Jun 2026 15:01:03 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 31DF9CDE011
+	for <qemu-trivial@archiver.kernel.org>; Fri, 26 Jun 2026 12:04:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wclZZ-0003Fv-SI; Thu, 25 Jun 2026 11:00:57 -0400
+	id 1wd5Hs-0005oN-2u; Fri, 26 Jun 2026 08:04:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wclZ6-0002m1-7O
- for qemu-trivial@nongnu.org; Thu, 25 Jun 2026 11:00:28 -0400
-Received: from mail-yx1-xb12e.google.com ([2607:f8b0:4864:20::b12e])
+ (Exim 4.90_1) (envelope-from <ziyifu970225@gmail.com>)
+ id 1wd1Zt-0000ri-Pb
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2026 04:06:21 -0400
+Received: from mail-wr1-x429.google.com ([2a00:1450:4864:20::429])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wclZ4-0004KY-BI
- for qemu-trivial@nongnu.org; Thu, 25 Jun 2026 11:00:27 -0400
-Received: by mail-yx1-xb12e.google.com with SMTP id
- 956f58d0204a3-6642887c602so2564558d50.3
- for <qemu-trivial@nongnu.org>; Thu, 25 Jun 2026 08:00:25 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1782399625; cv=none;
- d=google.com; s=arc-20260327;
- b=HCm8Dp1UL3YmcmEPwDIXw0eGiQZvLZxXOwTIDzeZFnhFjS1fm9bMewX02HdWXpNeJ/
- 910yN26JHjH2jLqX23rQG9/K5K3hgfRTyTXR0dcZPKyhORxpCxLrso+aKUtuvfNIcHvW
- ZnS5i8f16y5MCm3MmC4RLDHICSwVUsa6Q3+2hcqQFqWup1wTcmRfXTex6bA+OcgFxXJR
- GB2gX1+MM82I7dSnTHK0ZvWnj7J8iXJhRC5xtf2QLX1ppZwSI1dCp1YCghOd4yzAh9aX
- 4MLrrxzMCOnCrI83iyhES+YGkhDoxwH0Au3RsdSsipULKRkvTHxpa0O3ir9z0ZC3Epo5
- c+5g==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=dfgXG61S4y9QZs5MmI0UQgo4J1SUZuJMXX7wQ0cwHYI=;
- fh=3iqICKQIcAPZaOne6mpS/omhieeOCu6k/5G1hgHWGaI=;
- b=IGe69gg7y0JBrr4jUeABmegpnkidFo7zHT3FDtNuBrENYmS2EKOH6wq87ShOO2T+fO
- WEDKKtY7s56ASt3Bb3++vCPE9ltBRjxXtpp4Z1cRlgJkUy3NhxAUL/hKH2lWJyofeYOD
- Z0b6/0+ukg2VOz7Cqh2GX0/RtSs63fwlUqcxsIEdTk70RLkPzV6xMmJrtm7cm3kFVcZu
- VJIGmDwv/k7a5QXfOy5XVaOzBZ1RPv4J3GFLsSlSr6WDe82An7kYT7p3qAEDFcSjVTCB
- pfqH3qlAe5JpOhXO9k1OosY6DNzb7NI28sTSu1/a9EB9LLn/99qRR9sDVBByg527OKZU
- onyA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
+ (Exim 4.90_1) (envelope-from <ziyifu970225@gmail.com>)
+ id 1wd1Zs-0002Er-6V
+ for qemu-trivial@nongnu.org; Fri, 26 Jun 2026 04:06:21 -0400
+Received: by mail-wr1-x429.google.com with SMTP id
+ ffacd0b85a97d-4624a44e152so521419f8f.2
+ for <qemu-trivial@nongnu.org>; Fri, 26 Jun 2026 01:06:19 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1782399625; x=1783004425; darn=nongnu.org;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:from:to:cc:subject:date:message-id:reply-to;
- bh=dfgXG61S4y9QZs5MmI0UQgo4J1SUZuJMXX7wQ0cwHYI=;
- b=hHtHLtlyY4ZsIiu1OT2SDtn/eti7qbleLD4Xb4b7VfsUtL5Wq00bUkWV4wapGzLCFm
- rZ2apb/xFUG8Ggmq4XqU7JOPPwQl3lR3wetIhfX6UkmqSXGZvyG18Xh9OTCTEQRnGEEi
- Sut+YdKGjH5Yq9KRCZE3VqPz78FlsxSg0FrzfqNnY66xK5TZFiC8sjyaq00gYn3t6kHh
- CWDSV1mdXfaPzvTgtFXkil0k0rwRnnYYlHLJtNev12qSG82O2Zv4RfnlXtggv8l2XdD+
- d26LHdtF058Kuw0vP219quwbSIbdZXvp/TVTSN8zn8DH1VTwqOzY3Bhghy74ka5qbE64
- semg==
+ d=gmail.com; s=20251104; t=1782461178; x=1783065978; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=KHWAytSHm3rZiuxyO5V2zu9TvkYZv4XaAdR3/Rzb+d0=;
+ b=eMDEaPnZUR93cNZ7Qh2A18I6Hm3vBAkgGiLjVvSma0361sxHUB8IcZXIoEzFo8TMY0
+ fu40WszlT9sEPNFUDNygoxUSlN3Y6Mw5DccMCEU7gMDbZWeS3Ld/68v7t2OY6ox6Kqe1
+ 8dVjy1uE6WgZptWxO4fpLZr6yXsDO+TAHqy7/GTVeFC9yWeO7ZzgDEqXq3UPXGl0xWyJ
+ sb/702wy95P/fsSO6av6OWMemPTYHNxLkfoYpLKg58V5o6znmiVjNRNdk87aP3G1C3fs
+ pawkTzID/mX4j5FtjFb//7qu6UboWq9ycO85D/kdoV4gYzNguOstgQVUdRw4x5V284gO
+ vGSw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782399625; x=1783004425;
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1782461178; x=1783065978;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to;
- bh=dfgXG61S4y9QZs5MmI0UQgo4J1SUZuJMXX7wQ0cwHYI=;
- b=Knf16TehAQQdKWA3c6vk4/+agLyYxh2TrOsMAVPIIWSHEjkPcL9CgNkC42Yk+HCAKp
- /svERXSUZeKYdUQyfUH3uCda5ppk5fpPlGB7hYOaoDolZeLs0cR0QkmJ9YC4+f8WONgw
- Zg5vT2L7GJJBQsvDXcexhYyQ2InCOFHY1kYL3iT2WeXj8mQS3j/krQRT54az/cmrNhVY
- 63/iqD2HBhAU2uh+35Zoi7D41KyZg9wuLbphwp8QTm4YCdZqsk68N8A7lBkfqKyQrqqk
- u6iOTA9BpanplR1n7ky13idvt4MHvJzaF8JpD00qLV6buVnoCsYEECc98LzMSIVpkzWe
- US5Q==
-X-Forwarded-Encrypted: i=1;
- AHgh+RoiWDDt2Jx0g0L0CVLQdM69Ef8VRfP/Cg6TxEGHw6EIbr2g0JKoY2eoLJd9g/yIdf4viTJhoGBxdQdVmgw=@nongnu.org
-X-Gm-Message-State: AOJu0Yx2Rwgbj1hgM1vdAJbxJydeemVjMNb1pT9jSCkPGHcsGqVMB3a6
- AwPKn0AW6GZud10vF1mrfemH8LtpGwgnu4gZChhoY28CbJIKcDlAgbHqe6MNfuL9/1QGElm7yO2
- beGFJ8OvmucSE3j4HF9ehy3IRWPAYpfyqXrQL+YDkIw==
-X-Gm-Gg: AfdE7cmrbEONnUFnRMoDWvnRhCFEpjQ8QemsXOtd/ugt39lUvURi2uNrH+5W4pi1rwV
- O7rmaGN+tW5APaJC/TX/bd5eudrJmDiK4lWtKkwRk3AXgR9oq59XperziPCgFCbLEMCEWxjFNMC
- ulC2xWuLoI5vEPCsgwKQEvpBjd9iF63OxqTD9k6LBapWunVvB30e09XiNvU2mGIEAbqPZ9EnaXo
- 7l+7MZnqoZEh8L+mEAKw0X07vWtvHXN5psEO0AsPMjUJ/nBWVNom22Ou8RD4CQMoZr5fyzHuZeu
- 8GUw35p2hKr3aYr20Zl4wLBJO2wvamYiKnu6JawPsZ5jZ1Ad1l7X2QFu
-X-Received: by 2002:a05:690e:12c6:b0:65c:6dbc:39c4 with SMTP id
- 956f58d0204a3-664883cf072mr2064803d50.51.1782399624698; Thu, 25 Jun 2026
- 08:00:24 -0700 (PDT)
+ bh=KHWAytSHm3rZiuxyO5V2zu9TvkYZv4XaAdR3/Rzb+d0=;
+ b=Abt7KOZXfbkc7xf0qKdPNL0mjbZPDD4Y76DE4/dD8RZxjZhhnOnHRV5nV9knNw6VkF
+ czYRuxqHPyTdieBZ5lsp00Chz0fzcYkCvKXzTEAbYUGjBewe8WVM1yX4EIo8Ucry8V0M
+ oSI1OCH41BjGYcyspp5cmtAFFhtM9qhAoaiXMT4qRwkFnpvj4KTsMZsy4Uk2bqmUZayp
+ QBvoIXMjpBNHvldfSw2JaKGBb9yu+OP8PxYbp4Zx9UomzQTmgdUab/e4wPSZ6kSGrdcR
+ 3FuDldwIMDhMLiyTaKTDx8R7QljtaKgVv0J9ry6Af79wD1waR0vJgkzZI3A/EaeLTurJ
+ W64g==
+X-Gm-Message-State: AOJu0YxIQtlmZ5v02wjuWdEM94y/F7uRmmNjYfWcAHdi4WqbxAggowWN
+ NRkj7JEHpQ8eWnGAQl5scBm/ORzelfKHMdBYha+id1OLcw4OvG9/BOG/
+X-Gm-Gg: AfdE7cmQzy8Hl+r0NR9bLrRo+usz5iDTXE/xs9AFrCDU9NwCZZ0qlj+XMIE8K9y7/xp
+ wiMS/PPG+7puwbV7ieJoB+ASCQPii5Iy/MotS2+pUrdvdxVD1ulHazWZ3vyQK03GeafMZn/tcZ3
+ C6lup8dPgyLrEeEOIxKuGMFOf/xEttURewjZdddys8OXdDKK0eEFC3APAn3E3Y2n8dX990Y95Uc
+ QaLV3BBNvy6wMwaFFfzG5WOffyjWn/bnLc6FMDlHe0MjH/5U8SEfFRI4J25t1YQmOdK7hxGOebe
+ tfn6G6nu/1sEWevq8HKCohEamI5JSZQm122yF7ajtwonQDWAlynbwsK7Mg37iT8DVbLqIR9hYcr
+ mlzNhf2Olol1GSEhzKwiFue029PhuMUyKqCUtUku51ZV8LmWflXyTyPQ4OosR6Cs+WWISR+Hgsm
+ /RWlzlkOC/i5o=
+X-Received: by 2002:a05:600c:4745:b0:490:b355:9c70 with SMTP id
+ 5b1f17b1804b1-49266873f5bmr79323925e9.11.1782461177871; 
+ Fri, 26 Jun 2026 01:06:17 -0700 (PDT)
+Received: from nixos ([2a00:8180:2004:e00:d275:2473:944c:1937])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-46d3ba68d8dsm16777514f8f.27.2026.06.26.01.06.17
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 26 Jun 2026 01:06:17 -0700 (PDT)
+From: Ziyi Fu <ziyifu970225@gmail.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>,
+ Laurent Vivier <laurent@vivier.eu>,
+ BU Embedded <bu-embedded@cyberus-technology.de>,
+ Ziyi Fu <ziyi.fu@cyberus-technology.de>
+Subject: [PATCH] hw/usb: record async control completion for parameter
+ transfers
+Date: Fri, 26 Jun 2026 10:05:53 +0200
+Message-ID: <20260626080554.1656771-1-ziyifu970225@gmail.com>
+X-Mailer: git-send-email 2.51.2
 MIME-Version: 1.0
-References: <20260623170354.43981-1-163wangjack@gmail.com>
- <20260623170354.43981-4-163wangjack@gmail.com>
-In-Reply-To: <20260623170354.43981-4-163wangjack@gmail.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Thu, 25 Jun 2026 16:00:12 +0100
-X-Gm-Features: AVVi8Cd-jtKXwO_oqqYC44dGW1pgj8FSZMSOD21cEwgjob0sns7mLlNEW4K18PY
-Message-ID: <CAFEAcA-ALs7TtxySitahcYk_P=99uh5078Ux7==Kh4ER+EQPRA@mail.gmail.com>
-Subject: Re: [PATCH 3/3] hw/misc/imx31_ccm: Replace DPRINTF with trace events
-To: jack wang <163wangjack@gmail.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- "open list:i.MX31 (kzm)" <qemu-arm@nongnu.org>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12e;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12e.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::429;
+ envelope-from=ziyifu970225@gmail.com; helo=mail-wr1-x429.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 26 Jun 2026 08:03:56 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,17 +102,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Tue, 23 Jun 2026 at 18:04, jack wang <163wangjack@gmail.com> wrote:
->
-> ---
->  hw/misc/imx31_ccm.c  | 33 ++++++++++-----------------------
->  hw/misc/trace-events | 10 ++++++++++
->  2 files changed, 20 insertions(+), 23 deletions(-)
+From: Ziyi Fu <ziyi.fu@cyberus-technology.de>
 
-Other than the missing signed-off-by line,
+Record the completion side of parameter-based control transfers when they
+complete asynchronously. This lets pcap captures include descriptor
+response data for requests such as GET_DESCRIPTOR from usb-host devices.
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+The synchronous path already recorded the completion, but the async
+SETUP_STATE_PARAM path was missing it.
 
-thanks
--- PMM
+Signed-off-by: Ziyi Fu <ziyi.fu@cyberus-technology.de>
+---
+Tested with a usb-host HID keyboard on qemu-xhci. Before this change, the
+generated pcap contained GET_DESCRIPTOR submissions but not the corresponding
+completion payloads. After this change, the pcap contains the descriptor
+payloads and Wireshark can associate endpoint 0x81 with the HID interface.
+
+ hw/usb/core.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/hw/usb/core.c b/hw/usb/core.c
+index 9572a870cc..d71204c5c8 100644
+--- a/hw/usb/core.c
++++ b/hw/usb/core.c
+@@ -345,6 +345,7 @@ void usb_generic_async_ctrl_complete(USBDevice *s, USBPacket *p)
+             p->actual_length = 0;
+             usb_packet_copy(p, s->data_buf, s->setup_len);
+         }
++        usb_pcap_ctrl(p, false);
+         break;
+ 
+     default:
+-- 
+2.51.2
 
