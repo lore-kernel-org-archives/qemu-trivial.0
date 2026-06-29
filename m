@@ -4,83 +4,84 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 79701C43458
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D3D7C43602
 	for <qemu-trivial@archiver.kernel.org>; Tue, 30 Jun 2026 00:37:10 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1weMSP-0001qg-Et; Mon, 29 Jun 2026 20:36:09 -0400
+	id 1weMSP-0001qj-RI; Mon, 29 Jun 2026 20:36:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <randy.schifflin@gmail.com>)
- id 1weJri-00053p-8m
- for qemu-trivial@nongnu.org; Mon, 29 Jun 2026 17:50:07 -0400
-Received: from mail-dl1-x1233.google.com ([2607:f8b0:4864:20::1233])
+ id 1weJrh-00053I-8w
+ for qemu-trivial@nongnu.org; Mon, 29 Jun 2026 17:50:05 -0400
+Received: from mail-dl1-x1234.google.com ([2607:f8b0:4864:20::1234])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <randy.schifflin@gmail.com>)
- id 1weJre-0000J5-AM
- for qemu-trivial@nongnu.org; Mon, 29 Jun 2026 17:50:05 -0400
-Received: by mail-dl1-x1233.google.com with SMTP id
- a92af1059eb24-137335bc3caso7835842c88.0
- for <qemu-trivial@nongnu.org>; Mon, 29 Jun 2026 14:50:01 -0700 (PDT)
+ id 1weJre-0000IZ-11
+ for qemu-trivial@nongnu.org; Mon, 29 Jun 2026 17:50:04 -0400
+Received: by mail-dl1-x1234.google.com with SMTP id
+ a92af1059eb24-139a5f4ca15so4616375c88.1
+ for <qemu-trivial@nongnu.org>; Mon, 29 Jun 2026 14:50:00 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1782769801; x=1783374601; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:from:to:cc:subject:date:message-id
- :reply-to; bh=8lP9SVA9UjDXWbCF8REE5q6sngiCNF4hU3LBEWRVnkE=;
- b=dg9IqiET/sZ85hHm7frW5dVzPUOqRL5qA3iPvsTLfeKtLgvuqqGyyp3Qoa86QrcrNb
- /8OUAtNcM3uUfnpPz0pjR2AzPnRHL3xAOM+M7zEeRgwZ21Tv/1AIC8JASAM9mH3RZFiR
- LYPcasVn0kuhz3qyvI9lMlSUMyEA3yg8SR7FSrCRGMkTKZDhcMWfB9nX8oy5B5K1/oZy
- K+wH6Yl4UdFmWWeZHvigi0ufgmLHCC8uJvBpj4lma6U4UmCMuAlPOrleIAJ/pxqHFncn
- AkUGUHVVWpInRGJ1XwYVBRAkemgYS8u616QrA/C6oxo8m1peD5qZZIBP24rDTmKGVIW9
- k80w==
+ d=gmail.com; s=20251104; t=1782769799; x=1783374599; darn=nongnu.org;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:from:to:cc:subject:date:message-id:reply-to;
+ bh=WGTlCMTaNmjWL+c82D+GAHssal/es5ANEIcHqlDLGYE=;
+ b=PXSpP5xP3ov4w/K6oXPtTen5oF1Sup3LXwRf9dIrZkY88W9+PkjFB/fVxoiRR9WtzO
+ 1v6LKdMg+C1U33EwijZGxt7rO9v6hOib9wHq4meU7CtKweFoICVjzc2/Yy3SvGjgHgqp
+ ulVe+9uQ/c1urI7YBKn4pjl1GGE1SdPoT5liPFQqToi57yQAtaCauclE8Fgo/5BJiSD2
+ ARHUayaIkyxfhcNma3aAB7Nd1ip0We2bdSB+XGCYKKMu+rW3POKzWofDpxmcKGn2hCLm
+ Xcj8DhCqPs4YNksHri4cM37ca1f598/9MIhqdtulyvVuQrwm5Y3lUL+81Bgtii6wtPqo
+ l0zg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1782769801; x=1783374601;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
- :cc:subject:date:message-id:reply-to;
- bh=8lP9SVA9UjDXWbCF8REE5q6sngiCNF4hU3LBEWRVnkE=;
- b=P4fRWpf4wzC9SR2O2JfC2AO5Q8izUNilCdTp3XpTJ/dytvL8js+7kmXPTCeK6sT/sQ
- 5nOjUue1vPO0JezDjWtso4BJmCcARa4Mabe9Mz1rV3hPoAaZrZGavmew+BXwp3jLo8fs
- 8E9oou/DaOKA9lFA2v0yETZg1oy8a2QMnEWdn8gqjpbyL4j+/fhGN6FT/xk1+I3521At
- sWhfx/C2+syiIiZlKDGqACeDu+vX+yQiZ/l5SRYgjJ1W1mmZYNh7PESIF8HRRrMYSjyD
- QxBQUwyEauFWsltWZq6I9BtB9ImFY2vGYmvQoz8tDn5puI+thwMadsG93LPj04dW3azA
- 8BZw==
+ d=1e100.net; s=20251104; t=1782769799; x=1783374599;
+ h=cc:to:content-transfer-encoding:mime-version:message-id:date
+ :subject:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to;
+ bh=WGTlCMTaNmjWL+c82D+GAHssal/es5ANEIcHqlDLGYE=;
+ b=Q+7fvcXlCFQu3K29B9atcpuo8JsEEnyZrVF2UDUNVXKsL+InqpK0dixwAkYoRz72vu
+ jONgseoKV1dV/RG1yV52esF+HmcvDZmO2MXKaYr8tRS4fkMpYyovS9CwFxV4WjfqmNgo
+ QM2lctS3M4J+6e2pxI157R4i+/trsRU9Gkg5dDnaO5vRic1rRYVxAz8itDng/j4L+gtD
+ spYsh0Yz08BtUVdVmd2IgKv4bWAYRHwCAjrynJtF7vrhicSVZs8AhZVtK3IbO0LC5DXO
+ hqCcXJ8rkEck+t4M1QXKtDs48pTQLUbRb33PM10FdB7R/xjYwLuy1L3dR1521jFCpywL
+ Pd7Q==
 X-Forwarded-Encrypted: i=1;
- AFNElJ/F2J16a+L/O2bw+iv3sIkOsrmIydt7kyFXMP+ehfDdCSOi3krQov7w7ZvM8BhQsgg1X1wSXoOMtujliLo=@nongnu.org
-X-Gm-Message-State: AOJu0YwSMUL6kjyJUal+UB4M20q5V1vWZvFO0rDGq8I4vs7qKZvjk82/
- CHL/6LEKXGYXxiVfOWyWni8xxIU9fMi2AD8q/MXoaSMOhZ/3tUVuSkLk
-X-Gm-Gg: AfdE7clsTif8D6zNIglMdVoRJ9Z/ofn9iM7h7IAJRQEVpnqI7sguXSTRBD7cCHpCEt8
- mr1qDa0TR8/ld8zjIn9jK/Uqm6QfNcDpwsYeGkgQfKCO/rQd4LkNo1IIqeBaupF1Q7QQuWaolaC
- Cf5P6OwG8JaJVBjIiQgP+xakKcq9+JY5kL6rFAHrdv0SbIIRNzIsCQvA5AvH8i9kxc17CiEQTLz
- vyQ/1NOcU7mYj+/pcptH5JqnFdo01jjf8aWQTLAldxvVtTRNwqdE/C/dVblJU1fjBQCkhf6HMGY
- ItANeDI4E0jD35wjB8v5nqJhcOLjn8iGOx/mPm6qsZ/YYrWdcXMPfqgqXCcE7ffFQe5sNSdGro+
- PqB8xn+1bsGg8P0fS4mt2DOY8L3+g8ki9sZKsIMBUA1zRHBqAptQ6tGdbWmjdVML8Bl+qaHoAH2
- Yc27H6vc8b7OJuCHxI/LhQ8yGQ
-X-Received: by 2002:a05:701b:454b:10b0:13b:2bd6:1688 with SMTP id
- a92af1059eb24-13b2bd61871mr35190c88.39.1782769800572; 
- Mon, 29 Jun 2026 14:50:00 -0700 (PDT)
+ AFNElJ+fbG6QiQ2Gau59ZWyYhcL36KmrpcDLPQ/OzznQ73V8RuqRVxeXztPsawPs+c4Vu7XcMtqdU+slSh+JjCQ=@nongnu.org
+X-Gm-Message-State: AOJu0YwEQdzuIxaJiWJGUar6DX95K/Q49d7EhUxEcNbDTzKtmzcOn1ay
+ hDa4sAhI/vfyBOD7vsCPGhtR3KeLF2YrQuzxLFYkh5/+TQ2iZuzWi84J
+X-Gm-Gg: AfdE7cmBzghkb92+felynnK0nwbKAdW4NRI4Ydc9HKmFxsmIwkExSyrBC6Up3R/6w27
+ crKvy6g46wPK5GI6yzFD/VpuCyIhQtUiWjlO+716Ye3fiDsuyk4dPJC0u1mdAT3gSdNQuU82dZe
+ UVA5flkE6sUqKSMyyR1m8LGgq20U5JYXHpBA6ONT6wF7VbEu++NMcWGlC+ZFUZiqjDGcmswAjxZ
+ v+bIheZpoihAwN+Xvcnz1CNf9w2R9foLkiXo/FxvLy1UZatmFEoAqxcXgNxL+ZWo1P3ZFja2fMF
+ hDSs0XuLEYOKOEESXEFQ0t6LuT282X+T6OCQw9p2anYATf7ylKfSeA4bUGL6zAvirq2gAgr9KsI
+ 97kMQE8i3bcNMqGYI3LxawD+neg9Tn4FmK3Sq6BCRbZV7NYb3orgJ52pHTgCNv9ZcakMl11KoGy
+ MXLXfLsMk8r3VgBm34XSy72XQkTJq3d8AGOIE=
+X-Received: by 2002:a05:7022:672a:b0:138:6ef:45c6 with SMTP id
+ a92af1059eb24-13b2a1572d6mr698101c88.11.1782769798664; 
+ Mon, 29 Jun 2026 14:49:58 -0700 (PDT)
 Received: from devone.local ([2600:8801:100:1910:7665:6164:2268:839e])
  by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-13b2a9b425asm1755523c88.0.2026.06.29.14.49.59
+ a92af1059eb24-13b2a9b425asm1755523c88.0.2026.06.29.14.49.57
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 29 Jun 2026 14:50:00 -0700 (PDT)
+ Mon, 29 Jun 2026 14:49:58 -0700 (PDT)
 From: Randy Schifflin <randy.schifflin@gmail.com>
-Date: Mon, 29 Jun 2026 14:49:13 -0700
-Subject: [PATCH 2/2] target/sh4: fixup tcg for sh4 fipr/ftrv instructions
+Subject: [PATCH 0/2] Fixup TCG for SH-4 FPU instructions fipr and ftrv
+Date: Mon, 29 Jun 2026 14:49:11 -0700
+Message-Id: <20260629-fixup-sh4-tcg-fpu-instructions-b4-v1-0-4356b305f971@gmail.com>
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20260629-fixup-sh4-tcg-fpu-instructions-b4-v1-2-4356b305f971@gmail.com>
-References: <20260629-fixup-sh4-tcg-fpu-instructions-b4-v1-0-4356b305f971@gmail.com>
-In-Reply-To: <20260629-fixup-sh4-tcg-fpu-instructions-b4-v1-0-4356b305f971@gmail.com>
+X-B4-Tracking: v=1; b=H4sIAFfoQmoC/x2NQQqEMAwAvyI5G9BWCu5XFg/apppLLU0rC+LfN
+ 3icw8zcIFSYBD7dDYUuFj6Twth34I817YQclMEMxg3OzBj51zLKMWH1O8bckJPU0nxVU3CbcHb
+ WhzUGa7cI2smFVHof3+V5/ogmpS9zAAAA
 To: qemu-devel@nongnu.org
 Cc: Yoshinori Sato <yoshinori.sato@nifty.com>, qemu-trivial@nongnu.org, 
  Randy Schifflin <randy.schifflin@gmail.com>
 X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openssh-sha256; t=1782769797; l=2741;
+X-Developer-Signature: v=1; a=openssh-sha256; t=1782769797; l=1543;
  i=randy.schifflin@gmail.com; s=id_rsa; h=from:subject:message-id;
- bh=G8pGQipUKZ2gEWnvowuml1041wRXQUUAP+V52KmszEU=;
+ bh=e0pxemvG3paHBZEiGC0nBQq/kZztsz8Ft2VWtI8gfiE=;
  b=U1NIU0lHAAAAAQAAAZcAAAAHc3NoLXJzYQAAAAMBAAEAAAGBALXHj1ozDvr3TmWcPoueK1kIy
  Q3yQ7HL5bbiu8J+P0QBzcchmw5nwN0avQmreXhYuMhz40g0dhCJPnJqNHg1FBflQPz2cgY7Utm3
  9lQrK/CQqWsjRwXMinMR7LrmtMFp9+up7MzdXoxmTLgPsKJ/dQmx0rUHx++mUSl8zl7lHO50YVD
@@ -89,18 +90,18 @@ X-Developer-Signature: v=1; a=openssh-sha256; t=1782769797; l=2741;
  w1LPMkho650Iu9da5/0koNheHS2KAVC2FdPTyaxvqeFAsAB8fCprfh4lpShdcVpyChdd2KXFS53
  s9MAUQmZjG0pQvS/dqGCCDWqo7cY3J3VTMXwVtdzYkgZt5eMajL7z8VljXQ08ZgAStdizC/rHNg
  wy+fIL+6kgxvL/NhJwoiAWhC4D+xQY7SXjJGTvwAAAAZwYXRhdHQAAAAAAAAABnNoYTUxMgAAAZ
- QAAAAMcnNhLXNoYTItNTEyAAABgB/wZG3LQPRNDJDvg+/DDGeNtJzqBXLid65jW4xNq5UUerzRA
- vJfLE0M7+UTwZ/+6g+tG55K4oVUAREauCIowIR64a0RGiYT+xKKRhRNz5F0mSGQE7n18sDGwlO4
- QjJ1vL3+Bw9u1nJpyMgsAJPgsTtrIK03m1s7kBqZ1YSH3nCNCdvH84KJQSReRPDv0WWqppAUgyg
- T6vZ/SIk/N/Z5OImUtqxTWPxShlByWnD5zhF+Jpwf7X4fyYzXF3d6w/S4qxXVYlp4q73nMjRnmW
- b8NNTXwyhtsRb9lKy7xUoCw9Jve3jFx3v4b54fC+qZEijD/RvBL9P9QfBe7f5TsdIuXi8+29gD4
- 7v0zreir7lGMonxXgtpcyYwuc8eqt1NHnlJSXjDZrrlBRzBGGocE0+VwksEEU0Uqecsgp78V259
- VMSTCzaarU/BrkURx4zy4JmvUOqiBOczPdNuzXzJ789Sy6LPIIIS6vfOqMFxe0RbD0O2cW0GrVt
- DdDojLWqk7VWTOA==
+ QAAAAMcnNhLXNoYTItNTEyAAABgE/yhCozj36e122Elqm6r6fMgSclLZWoB/jciYEFYiQdsxV1b
+ h5s3kTY5exAKIFzv+VI0dpLCTBhgYhYo6iujgjOlou3nJnY2RJ0yufC+TumFePxKzEqUg+m3DO7
+ 44igrRPIRq8UbtHHXQDA92cBF7rHUqsK6etYZWQhpt/78TrN4pHkAaqz0F6EKhJJTz08QFYxIwk
+ QI1qnLkz57EIDDMf7dJvGtcpNmAlI5fE9EqrG4nFyyhYdGhPQ2gvqanAFLvUBknj+E4S8JLAyyT
+ ljrqul7ZSlOKKxjsTKElZp9FPCSRWVxi1cKYRwTbTaDudg+PktaeNcjcRTMVUmcc1CKZoZWRIT8
+ jpgw5lJ5c9HbkaHj7DkTNMm6w1cgZJKS/+rJSNJkgXRAK7cDwNh9dkvQk/O+0mz3gi1yK4QU37I
+ /puHbeBQhGhzUFjvjQsu98yvmliazFlnGHOHSfxxQtjR5ySWowoeSYfH+oG3Xi4MQaV754Hykzx
+ kau4F+reJk+172Q==
 X-Developer-Key: i=randy.schifflin@gmail.com; a=openssh;
  fpr=SHA256:7gww1tlDoVPb7symWGdTNhRWcHyTORA23OcjS8eyd8Y
-Received-SPF: pass client-ip=2607:f8b0:4864:20::1233;
- envelope-from=randy.schifflin@gmail.com; helo=mail-dl1-x1233.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1234;
+ envelope-from=randy.schifflin@gmail.com; helo=mail-dl1-x1234.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -109,7 +110,7 @@ X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Mon, 29 Jun 2026 20:36:07 -0400
+X-Mailman-Approved-At: Mon, 29 Jun 2026 20:36:06 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -124,78 +125,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Fixes TCG generation for sh4 `fipr` and `ftrv` instructions.
-Updates the current logic for these instructions to check the
-FPSCR register appropriately (according to the sh4 cpu manual, `fipr`
-and `ftrv` are only defined when the FPSCR register PR flag is 0).
-Also fixes the mth/nth-vector operands by multiplying by 4 to convert
-to the correct floating point register offset.
+SH-4 manual for reference: 
+https://0x04.net/~mwk/doc/sh/e602156_sh4.pdf
+
+There are two issues with the current TCG code generation
+for the `fipr` and `ftrv` instructions. Firstly, they incorrectly
+check that the PR flag of the FPSCR register is high. The manual
+states these instructions are only defined when that flag is 0.
+Secondly, they take as operands a vector index 0-3, but treat
+them as offsets into the floating point register list. Vectors
+span four floating point registers, and thus each index needs to be
+multiplied by 4 to translate to the correct register offset.
+
+This PR adds simple TCG tests for the `fipr` and `ftrv` instructions,
+and fixes the issues above by ensuring the PR flag of FPSCR is 0 and
+properly translating the vector index operand to its register offset.
 
 Signed-off-by: Randy Schifflin <randy.schifflin@gmail.com>
 ---
- target/sh4/op_helper.c |  2 +-
- target/sh4/translate.c | 15 +++++----------
- 2 files changed, 6 insertions(+), 11 deletions(-)
+Randy Schifflin (2):
+      target/sh4: add tests for sh4 fipr and ftrv instructions
+      target/sh4: fixup tcg for sh4 fipr/ftrv instructions
 
-diff --git a/target/sh4/op_helper.c b/target/sh4/op_helper.c
-index 90c065b217..777380f8e4 100644
---- a/target/sh4/op_helper.c
-+++ b/target/sh4/op_helper.c
-@@ -488,7 +488,7 @@ void helper_ftrv(CPUSH4State *env, uint32_t n)
-     float32 p;
- 
-     bank_matrix = (env->sr & FPSCR_FR) ? 0 : 16;
--    bank_vector = (env->sr & FPSCR_FR) ? 16 : 0;
-+    bank_vector = (env->sr & FPSCR_FR) ? 16 + n : n;
-     set_float_exception_flags(0, &env->fp_status);
-     for (i = 0 ; i < 4 ; i++) {
-         r[i] = float32_zero;
-diff --git a/target/sh4/translate.c b/target/sh4/translate.c
-index d38a6bd352..373950fd66 100644
---- a/target/sh4/translate.c
-+++ b/target/sh4/translate.c
-@@ -377,11 +377,6 @@ static inline void gen_store_fpr64(DisasContext *ctx, TCGv_i64 t, int reg)
-         goto do_illegal;                    \
-     }
- 
--#define CHECK_FPSCR_PR_1 \
--    if (!(ctx->tbflags & FPSCR_PR)) {       \
--        goto do_illegal;                    \
--    }
--
- #define CHECK_SH4A \
-     if (!(ctx->features & SH_FEATURE_SH4A)) { \
-         goto do_illegal;                      \
-@@ -1740,22 +1735,22 @@ static void _decode_opc(DisasContext * ctx)
-         return;
-     case 0xf0ed: /* fipr FVm,FVn */
-         CHECK_FPU_ENABLED
--        CHECK_FPSCR_PR_1
-+        CHECK_FPSCR_PR_0
-         {
--            TCGv m = tcg_constant_i32((ctx->opcode >> 8) & 3);
--            TCGv n = tcg_constant_i32((ctx->opcode >> 10) & 3);
-+            TCGv m = tcg_constant_i32(((ctx->opcode >> 8) & 3) << 2);
-+            TCGv n = tcg_constant_i32(((ctx->opcode >> 10) & 3) << 2);
-             gen_helper_fipr(tcg_env, m, n);
-             return;
-         }
-         break;
-     case 0xf0fd: /* ftrv XMTRX,FVn */
-         CHECK_FPU_ENABLED
--        CHECK_FPSCR_PR_1
-+        CHECK_FPSCR_PR_0
-         {
-             if ((ctx->opcode & 0x0300) != 0x0100) {
-                 goto do_illegal;
-             }
--            TCGv n = tcg_constant_i32((ctx->opcode >> 10) & 3);
-+            TCGv n = tcg_constant_i32(((ctx->opcode >> 10) & 3) << 2);
-             gen_helper_ftrv(tcg_env, n);
-             return;
-         }
+ target/sh4/op_helper.c        |  2 +-
+ target/sh4/translate.c        | 15 +++----
+ tests/tcg/sh4/Makefile.target |  7 +++
+ tests/tcg/sh4/test-fpu-fipr.c | 64 ++++++++++++++++++++++++++++
+ tests/tcg/sh4/test-fpu-ftrv.c | 99 +++++++++++++++++++++++++++++++++++++++++++
+ 5 files changed, 176 insertions(+), 11 deletions(-)
+---
+base-commit: 30e8a06b64aa58a3990ba39cb5d09531e7d265e0
+change-id: 20260629-fixup-sh4-tcg-fpu-instructions-b4-963cdafd33bf
 
+Best regards,
 -- 
-2.43.0
+Randy Schifflin <randy.schifflin@gmail.com>
 
 
