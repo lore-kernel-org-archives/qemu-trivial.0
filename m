@@ -4,103 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBD92C43458
-	for <qemu-trivial@archiver.kernel.org>; Tue,  7 Jul 2026 22:23:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA511C43458
+	for <qemu-trivial@archiver.kernel.org>; Thu,  9 Jul 2026 05:59:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1whECV-0007CC-61; Tue, 07 Jul 2026 18:23:35 -0400
+	id 1whhn1-00057Z-9w; Thu, 09 Jul 2026 01:59:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1whECT-0007Bf-By; Tue, 07 Jul 2026 18:23:33 -0400
-Received: from mail.ilande.co.uk ([2001:41c9:1:41f::167])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1whhmx-00056Q-Hq; Thu, 09 Jul 2026 01:59:12 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1whECR-0001CL-NV; Tue, 07 Jul 2026 18:23:33 -0400
-DKIM-Signature: v=1; a=rsa-sha256; q=dns/txt; c=relaxed/relaxed;
- d=ilande.co.uk; s=20220518; h=Subject:Content-Transfer-Encoding:Content-Type:
- In-Reply-To:From:References:Cc:To:MIME-Version:Date:Message-ID:Sender:
- Reply-To:Content-ID:Content-Description:Resent-Date:Resent-From:Resent-Sender
- :Resent-To:Resent-Cc:Resent-Message-ID;
- bh=76Z81uhRLsrpjl8+/vnICIpAk5DzTqC8ctyUuSuZ1sE=; b=Y8telTnyeuJfTXLcCRKCouKdQY
- W/3l0CgqT+Ggm4ozvbejUi2+tkedVmD1CC+gWLpbLSRo1v7Oo61xfrGfWnIKB3hGIzVzbh/hcW5V3
- NGLSc+ePrJbEFrtXj8MRXh4EuR7434cn7VnDeiztA03jwZDB+2qZHPR4oNii126TLpmGQdhuJHXYP
- /QO/2soPVkn/7Y6gh/geO2/DDMOA7y31j+GaGDxDqP+voIP0kVAvFkirSQLfkUf4fikenLKw1Y07I
- fM593tQN0NKFY6iMaqAqPRC0SQzhmlp5oOc9gPKEQj18alnQEvtwS2i4nlW4v2yPgEA9sETTgcsWs
- pwYYW8Pqyq8fHmVmzTWqH7Zj8edMRRPU4uOkssj+Diq5B/5ENYvDcsocgMaAzqY2vFIjJGM46fzVg
- zTO6bSQtI3rGJHXx6GhrMXCGyRW4200wkKSsBS5ef5b9XkZ47YoyTsfHNeKgcTw3NuzTBRRt8fPbY
- Qzyiq+tD2JRttIoZuydwLek0mF9cLT/WgzmfATJhgRjUdnn4Lxr01Ys5MLb13l6qclgW8q4FwsIJl
- omHkiVyyOiNVeCSwdSAOnpoRURXGuzgPlCd1FRx1LuLEOWGuUs9wHhEjZHLqWvgaqbqV7poEVviHW
- WeCoUIjA+FwMSfDuow8qGXW3zUDteupKmEc9sT4xU=;
-Received: from [2a02:8012:2f01:0:c7db:c036:80a0:714]
- by mail.ilande.co.uk with esmtpsa (TLS1.3) tls
- TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.94.2)
- (envelope-from <mark.cave-ayland@ilande.co.uk>)
- id 1whECG-001a7Z-RE; Tue, 07 Jul 2026 23:23:21 +0100
-Message-ID: <4e74e45a-f152-4d89-bb22-1591f431daad@ilande.co.uk>
-Date: Tue, 7 Jul 2026 23:23:23 +0100
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1whhmu-0004BB-Uv; Thu, 09 Jul 2026 01:59:11 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
+ t=1783576741; bh=hiBZ2iyoEi7Y70mvUX0R3K+qJgLQ+gacKt1c1MJq9bk=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To;
+ b=ZnAgRshiVh05ANUwscHQCMViuRMV6L4/HUYE9JE3cnIQkoiOYOsB/L8ijCJCrGdav
+ WmDJDXBIkAm2zjQ2HtYa2TdDEkWlY34uPxzaHeGMlJK6OfQq0NRkXNYgi3NJEn1kR3
+ 5iKEMy28dYxQc96ZYWobsww3ea+XqHdJGn6H1YBsHcekGijsWn90VpfTCE4jBwh0/p
+ vn+FdUdwfUdhih29QXPTr5RsvMqPbKHdyWjb4JYTjeBWwXwITMmnT2d6Wc42PI/6go
+ KcBzCPhjhab8gEei6h2LIG8hfTKEfDcp1f5EtFJNoDb0J2XXFS49GsgX2CbASaVfFR
+ nYfMijONBcKrQ==
+Received: from [192.168.177.146] (mjtthink.wg.tls.msk.ru [192.168.177.146])
+ by isrv.corpit.ru (Postfix) with ESMTP id 340BC1BF964;
+ Thu, 09 Jul 2026 08:59:01 +0300 (MSK)
+Message-ID: <4868627d-2780-4bf8-b457-07bbea7fef0e@tls.msk.ru>
+Date: Thu, 9 Jul 2026 08:59:04 +0300
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Peter Maydell <peter.maydell@linaro.org>
-Cc: Artyom Tarasenko <atar4qemu@gmail.com>,
- QEMU Trivial <qemu-trivial@nongnu.org>, Michael Tokarev <mjt@tls.msk.ru>
-References: <20260309181452.83702-1-thuth@redhat.com>
- <00c4ab4b-a58b-4de4-8e41-566b2cb7f920@redhat.com>
- <124bd918-f2ab-43e2-bd2d-fc824de62c40@tls.msk.ru>
- <fcbe3d7f-64d4-4b13-b930-a81e77db4784@ilande.co.uk>
- <df7a091c-a8a1-416a-acf3-28a0cbd8dd2f@redhat.com>
- <c7d6b801-449e-4f55-9c1d-ebec7a0e9595@redhat.com>
- <c0cd50bd-e054-48b6-af54-1050e13bb720@ilande.co.uk>
- <baf0b727-d53c-4717-b4e8-9c8603b2fa75@oss.qualcomm.com>
- <a60309be-c514-4b22-8970-ecfcf2b4fde7@oss.qualcomm.com>
- <c7b0d42c-4243-4f52-88ec-7f1deac160fc@ilande.co.uk>
- <fdb45ef0-a709-413a-bc55-1bfcab648033@oss.qualcomm.com>
- <e89903bb-d866-45ed-b5f5-fa0a6ef1a0c7@oss.qualcomm.com>
-Content-Language: en-US
-From: Mark Cave-Ayland <mark.cave-ayland@ilande.co.uk>
-Autocrypt: addr=mark.cave-ayland@ilande.co.uk; keydata=
- xsBNBFQJuzwBCADAYvxrwUh1p/PvUlNFwKosVtVHHplgWi5p29t58QlOUkceZG0DBYSNqk93
- 3JzBTbtd4JfFcSupo6MNNOrCzdCbCjZ64ik8ycaUOSzK2tKbeQLEXzXoaDL1Y7vuVO7nL9bG
- E5Ru3wkhCFc7SkoypIoAUqz8EtiB6T89/D9TDEyjdXUacc53R5gu8wEWiMg5MQQuGwzbQy9n
- PFI+mXC7AaEUqBVc2lBQVpAYXkN0EyqNNT12UfDLdxaxaFpUAE2pCa2LTyo5vn5hEW+i3VdN
- PkmjyPvL6DdY03fvC01PyY8zaw+UI94QqjlrDisHpUH40IUPpC/NB0LwzL2aQOMkzT2NABEB
- AAHNME1hcmsgQ2F2ZS1BeWxhbmQgPG1hcmsuY2F2ZS1heWxhbmRAaWxhbmRlLmNvLnVrPsLA
- eAQTAQIAIgUCVAm7PAIbAwYLCQgHAwIGFQgCCQoLBBYCAwECHgECF4AACgkQW8LFb64PMh9f
- NAgAuc3ObOEY8NbZko72AGrg2tWKdybcMVITxmcor4hb9155o/OWcA4IDbeATR6cfiDL/oxU
- mcmtXVgPqOwtW3NYAKr5g/FrZZ3uluQ2mtNYAyTFeALy8YF7N3yhs7LOcpbFP7tEbkSzoXNG
- z8iYMiYtKwttt40WaheWuRs0ZOLbs6yoczZBDhna3Nj0LA3GpeJKlaV03O4umjKJgACP1c/q
- T2Pkg+FCBHHFP454+waqojHp4OCBo6HyK+8I4wJRa9Z0EFqXIu8lTDYoggeX0Xd6bWeCFHK3
- DhD0/Xi/kegSW33unsp8oVcM4kcFxTkpBgj39dB4KwAUznhTJR0zUHf63M7ATQRUCbs8AQgA
- y7kyevA4bpetM/EjtuqQX4U05MBhEz/2SFkX6IaGtTG2NNw5wbcAfhOIuNNBYbw6ExuaJ3um
- 2uLseHnudmvN4VSJ5Hfbd8rhqoMmmO71szgT/ZD9MEe2KHzBdmhmhxJdp+zQNivy215j6H27
- 14mbC2dia7ktwP1rxPIX1OOfQwPuqlkmYPuVwZP19S4EYnCELOrnJ0m56tZLn5Zj+1jZX9Co
- YbNLMa28qsktYJ4oU4jtn6V79H+/zpERZAHmH40IRXdR3hA+Ye7iC/ZpWzT2VSDlPbGY9Yja
- Sp7w2347L5G+LLbAfaVoejHlfy/msPeehUcuKjAdBLoEhSPYzzdvEQARAQABwsBfBBgBAgAJ
- BQJUCbs8AhsMAAoJEFvCxW+uDzIfabYIAJXmBepHJpvCPiMNEQJNJ2ZSzSjhic84LTMWMbJ+
- opQgr5cb8SPQyyb508fc8b4uD8ejlF/cdbbBNktp3BXsHlO5BrmcABgxSP8HYYNsX0n9kERv
- NMToU0oiBuAaX7O/0K9+BW+3+PGMwiu5ml0cwDqljxfVN0dUBZnQ8kZpLsY+WDrIHmQWjtH+
- Ir6VauZs5Gp25XLrL6bh/SL8aK0BX6y79m5nhfKI1/6qtzHAjtMAjqy8ChPvOqVVVqmGUzFg
- KPsrrIoklWcYHXPyMLj9afispPVR8e0tMKvxzFBWzrWX1mzljbBlnV2n8BIwVXWNbgwpHSsj
- imgcU9TTGC5qd9g=
-In-Reply-To: <e89903bb-d866-45ed-b5f5-fa0a6ef1a0c7@oss.qualcomm.com>
+Subject: Re: [PATCH 0/2] Fixup TCG for SH-4 FPU instructions fipr and ftrv
+To: Randy Schifflin <randy.schifflin@gmail.com>, qemu-devel@nongnu.org
+Cc: Yoshinori Sato <yoshinori.sato@nifty.com>, qemu-trivial@nongnu.org,
+ qemu-stable <qemu-stable@nongnu.org>,
+ Richard Henderson <richard.henderson@linaro.org>
+References: <20260629-fixup-sh4-tcg-fpu-instructions-b4-v1-0-4356b305f971@gmail.com>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20260629-fixup-sh4-tcg-fpu-instructions-b4-v1-0-4356b305f971@gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-SA-Exim-Connect-IP: 2a02:8012:2f01:0:c7db:c036:80a0:714
-X-SA-Exim-Mail-From: mark.cave-ayland@ilande.co.uk
-Subject: Re: [PATCH v2] hw/sparc64/sun4u: Mark unusable PCI busses as full to
- ease device plugging
-X-SA-Exim-Version: 4.2.1 (built Sat, 13 Feb 2021 17:57:42 +0000)
-X-SA-Exim-Scanned: Yes (on mail.ilande.co.uk)
-Received-SPF: pass client-ip=2001:41c9:1:41f::167;
- envelope-from=mark.cave-ayland@ilande.co.uk; helo=mail.ilande.co.uk
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -117,55 +111,46 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 07/07/2026 09:42, Philippe Mathieu-Daudé wrote:
-
-> On 6/7/26 23:19, Philippe Mathieu-DaudÃ© wrote:
->> On 6/7/26 23:16, Mark Cave-Ayland wrote:
->>> On 06/07/2026 21:29, Philippe Mathieu-Daudé wrote:
->>>
+On 30.06.2026 00:49, Randy Schifflin wrote:
+> SH-4 manual for reference:
+> https://0x04.net/~mwk/doc/sh/e602156_sh4.pdf
 > 
->>>>> -    pci_bus = PCI_HOST_BRIDGE(sabre)->bus;
->>>>>       pci_busA = pci_bridge_get_sec_bus(sabre->bridgeA);
->>>>>       pci_busB = pci_bridge_get_sec_bus(sabre->bridgeB);
->>>>>
->>>>> -    /* Only in-built Simba APBs can exist on the root bus, slot 0 on busA is
->>>>> -       reserved (leaving no slots free after on-board devices) however slots
->>>>> -       0-3 are free on busB */
->>>>> -    pci_bus_set_slot_reserved_mask(pci_bus, 0xfffffffc);
->>>>> +    /*
->>>>> +     * Slot 0 on busA is reserved (leaving no slots free after on- board
->>>>> +     * devices) however slots 0-3 are free on busB
->>>>> +     */
->>>>>       pci_bus_set_slot_reserved_mask(pci_busA, 0xfffffff1);
->>>>>       pci_bus_set_slot_reserved_mask(pci_busB, 0xfffffff0);
->>>>>
->>>>> ---
->>>>>
->>>>> I'm still looking at the 2nd part, the reserved slots.
->>>>
->>>> (Because with this patch, the test passes as we can plug devices from
->>>> the command line, but they end plugged on pciA instead of pciB -- thus
->>>> the 2nd part missing).
->>>
->>> Thanks for taking a look, Phil. IIRC the reason I added slot_reserved_mask was so 
->>> that it was possible to populate pciA programatically in sun4uv_init(), and then 
->>> enable the mask so that specifying an additional PCI device using -device on the 
->>> command line without an explict PCI bus would cause the automatic allocation to 
->>> place the device on pciB.
->>
->> The slot_reserved_mask calls make sense, but AFAICT they don't work as
->> expected, since CLI devices are added on pciA. If you want to have a
->> look on top of this snippet, be my guest! Otherwise I'll continue
->> debugging that tomorrow, long day and late here :\
+> There are two issues with the current TCG code generation
+> for the `fipr` and `ftrv` instructions. Firstly, they incorrectly
+> check that the PR flag of the FPSCR register is high. The manual
+> states these instructions are only defined when that flag is 0.
+> Secondly, they take as operands a vector index 0-3, but treat
+> them as offsets into the floating point register list. Vectors
+> span four floating point registers, and thus each index needs to be
+> multiplied by 4 to translate to the correct register offset.
 > 
-> Generic PCI fix posted here:
-> https://lore.kernel.org/qemu-devel/20260707084050.32137-1-philmd@oss.qualcomm.com/
+> This PR adds simple TCG tests for the `fipr` and `ftrv` instructions,
+> and fixes the issues above by ensuring the PR flag of FPSCR is 0 and
+> properly translating the vector index operand to its register offset.
+> 
+> Signed-off-by: Randy Schifflin <randy.schifflin@gmail.com>
+> ---
+> Randy Schifflin (2):
+>        target/sh4: add tests for sh4 fipr and ftrv instructions
+>        target/sh4: fixup tcg for sh4 fipr/ftrv instructions
+> 
+>   target/sh4/op_helper.c        |  2 +-
+>   target/sh4/translate.c        | 15 +++----
+>   tests/tcg/sh4/Makefile.target |  7 +++
+>   tests/tcg/sh4/test-fpu-fipr.c | 64 ++++++++++++++++++++++++++++
+>   tests/tcg/sh4/test-fpu-ftrv.c | 99 +++++++++++++++++++++++++++++++++++++++++++
+>   5 files changed, 176 insertions(+), 11 deletions(-)
 
-Thanks Phil! I can confirm that this solves the issue for me.
 
+This looks like qemu-stable material.
+I'm picking this up for currently active qemu-stable series.
+Please let me know if I should not.
 
-ATB,
+It'd be nice to have the testcase applied to master too (I'll
+pick it up for stable series as well, if I wont forget :)
 
-Mark.
+Thanks,
+
+/mjt
 
 
