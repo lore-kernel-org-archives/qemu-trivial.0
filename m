@@ -4,71 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7F962C43458
-	for <qemu-trivial@archiver.kernel.org>; Fri, 10 Jul 2026 14:43:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0E258C43458
+	for <qemu-trivial@archiver.kernel.org>; Fri, 10 Jul 2026 15:36:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wiCS3-0002uR-Sj; Fri, 10 Jul 2026 10:43:39 -0400
+	id 1wiDGV-0001TB-Ct; Fri, 10 Jul 2026 11:35:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wiCS2-0002tu-UH
- for qemu-trivial@nongnu.org; Fri, 10 Jul 2026 10:43:38 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wiCS0-0006e6-Hu
- for qemu-trivial@nongnu.org; Fri, 10 Jul 2026 10:43:38 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783694615;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=Rjjb54whM4z+5hBS5wkUBZGXxjSeoZizGUm+LgjNj14=;
- b=XZgokw60piClzoLCf2yeTubp+kPujmNAWYXMjac7VWFfcu523kbydiLnj/rmhCWvD7UcaC
- mTESOzHNGocWrvncaMEE4fh0D8MhIjc5adUYvQnJVq7hJiKGDQ74Fh5rWU/kKjSTHhpcwI
- Y6BLWg4N6GbAysSg5wPIHLUybcXumao=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-2-rlF-5ISXNWSX_Czd2ICx1g-1; Fri,
- 10 Jul 2026 10:43:32 -0400
-X-MC-Unique: rlF-5ISXNWSX_Czd2ICx1g-1
-X-Mimecast-MFC-AGG-ID: rlF-5ISXNWSX_Czd2ICx1g_1783694611
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4B88118052C9; Fri, 10 Jul 2026 14:43:31 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.44.49.56])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id C5782195608F; Fri, 10 Jul 2026 14:43:28 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org,
- =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH v2] hw/usb/hcd-xhci: Turn guest-triggerable abort() into
- qemu_log_mask()
-Date: Fri, 10 Jul 2026 16:43:27 +0200
-Message-ID: <20260710144327.600572-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wiDGU-0001Sb-DK
+ for qemu-trivial@nongnu.org; Fri, 10 Jul 2026 11:35:46 -0400
+Received: from mail-yx1-xb12d.google.com ([2607:f8b0:4864:20::b12d])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
+ id 1wiDGS-0005Va-O9
+ for qemu-trivial@nongnu.org; Fri, 10 Jul 2026 11:35:46 -0400
+Received: by mail-yx1-xb12d.google.com with SMTP id
+ 956f58d0204a3-664d78637f8so1604986d50.3
+ for <qemu-trivial@nongnu.org>; Fri, 10 Jul 2026 08:35:44 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1783697743; cv=none;
+ d=google.com; s=arc-20260327;
+ b=SeImSkKZQgObT68z1Y12VNLINqoDSZK8PyWo7+RIYCGl++Bk/dTTIfqgkONhdg7/eg
+ K7GHff/i7Q1SXeOe5866CVSnTHQHtqtregUil26CBhsNLm1vAoeEdUM1L+YMWOI0z1bQ
+ K+aAOrpqLetqDB3p8NOzEpi7U5BhnyczG6Ex0Zrf4qa2x56ne1EJHB5ojPHBLpkZgG0e
+ c78kEsOK8Gm+w5Tpl//uuG8iepe2Gg7YQKPqKbHRvi2EhANx/MtOnhiCEcHXKlgfK4S3
+ 9Ewi+Oup/BDxB/AUllbgcflyKVmGgXccRbHp4nE0Q244py/NsXn5hxXt2ACSDJSfnndc
+ KD2Q==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
+ s=arc-20260327; 
+ h=content-transfer-encoding:cc:to:subject:message-id:date:from
+ :in-reply-to:references:mime-version:dkim-signature;
+ bh=brpid9hA+oeeOPIkA8YZ56T2Mv4J1vcmvdwBvJQdRE4=;
+ fh=d/ZIP1ij3XXNZKGZD6Cn3R/MG1aC6riiITeEPb5wegs=;
+ b=lVHS8Pe3gRFaVEH+1EQDgLAKBzcM/bL5W5XQTFryDCT6bkvOwVBXnYtfPXM2FATV6v
+ c6d/ipMuOVUIQv8WJ+ByU3JHeJt0R0gxS5dItlrOKPxcuxaAVBNBUI4cfhZHAqGlfa3g
+ e+u2kWqlDVMFuRQJt3tVHRzmKqEo2fpHW6sgCsGkvvfesW+1u0k4AvqqHCWo0UzuiYn1
+ n2+mfiMKD0AqlWYgQmcpcSQy8M7pHqjWrGwayMb3nk1o/Ctewn/kfBkA1kXQW4BJLgjU
+ JVFlZMOtWBeJ6KqJlNT//SHt+qtYxRbJ7dRPd+wznLOWtYEpoCg2qgnNzWi9RS5G+665
+ 5DmA==; darn=nongnu.org
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1783697743; x=1784302543; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=brpid9hA+oeeOPIkA8YZ56T2Mv4J1vcmvdwBvJQdRE4=;
+ b=am3UWBxsZ5PsVuFpN9PNcX5NzJ5RLSlUZf1eI0eK8p8KYsc4s9bB5bL+7SnHXr/moP
+ Cx+61Ida0RBR96EKyTaFjMwJZl+Z0mKQBZMhzXKjxSH+GEUyFd24KgUGqsl4FPTrTmMD
+ a2XzF5wLo/kmGXWdREv2qEg5dYc+6UnJdYqugJ6Hv41OSWDJhk4qNQUce41l8v3yvj1i
+ A6KNpk2YcL0W0CldXvjR06JS9OcyONzvbaaXONcNpgh+6dxKBiB9sROB7lliimkQbv+6
+ uUFDbTABI+P9HzqOfcFx8JRiSnTY4gBvkGVHLalrvQSwZyROc5db54TTdyLMcp2t2C8o
+ MYRg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1783697743; x=1784302543;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=brpid9hA+oeeOPIkA8YZ56T2Mv4J1vcmvdwBvJQdRE4=;
+ b=RqjfN7rgC0lfstvCvD7Vy3F8JLHcYqoDh1P3nOjUyOYu3wc25yqAEdLKz8Ypr8HqHC
+ a2rh9E8nfZQ2Y/owAYnIXOCtLzeHbPM7RN3fZ7cSDLNwG0iBsUXD5cj1/tErHhHG/TXn
+ qo3kRD/JuKTdRY2r73e5PRkXIGq2O1BvdCXOL70iPwS27z1T6MkskgktKgdx9b8HXl/5
+ dQxyiO+YS1VlrLy7NpjxC1GbkKGrFo7puS2giw/y1W/2OVHrfAYORRPQJruP4qby8Q8+
+ PzzjV1Ah2+Pi3g9fUGDNnmmH2Iq36UUczc/IF25d/3dllrhsLI1sKdhYojVJCfRkxy/d
+ cnlQ==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RqS2m4i/b7cwl7/dcWtrlj6MUamcQu/09ZjspF00a7+3MWJkYwAUWtKWjF9Hsix/nisvr96A7S5G77HUSA=@nongnu.org
+X-Gm-Message-State: AOJu0YyPUoXxdOzZGbU/L7n/2z5CSbSaszjH7sHumH0VmzmSyf3ApjeS
+ 8ZTBPg/l5l854U+Tn3N2cnLQ+meFk/7Dx8amvlA1T/GRSkrWsKrARkJk0HHx3sIKXIo/E2PZqvx
+ w+C5U8hN9foBtgKH/lIEEPwUucI2IuSh9F/Gy3Gkl7A==
+X-Gm-Gg: AfdE7cn15IxWjSzh10SMsoIt1KiavnxABczVYtj6dvgMdAE9uQFpek4r5prq6to1o7q
+ 4Wl4i7OaXHKYjO3blEqL3QQKmp9jCrSex+qyJB1r68PGYvoh3WG92itF1xXSXsvNLR6z09yy2Ci
+ Vh8f5NxyKjm38lTXQWgMPVA/Rr7G77BHRs9Jrpx6i/SpYTzJ9bQibR+JM6qjp3xEwG6KLixVXgg
+ Lfd+6PXAS4lYrpfSBmMRaJFJsdLqB6O7VVwD4DLxkpxgmhwTGolQNoke8xUuEUXenmva1iiFVjm
+ QuxYRcTyBRr9Sj5VUZIQWOMznGBj+bewlOxP69ZzQkrepT8z/kJ/le1x
+X-Received: by 2002:a05:690e:134a:b0:667:a1d6:9c35 with SMTP id
+ 956f58d0204a3-667a1d6aa47mr7906100d50.33.1783697743431; Fri, 10 Jul 2026
+ 08:35:43 -0700 (PDT)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: bjNA_hnI9cgoCoF7adR_3bWo2wHbN6scn1Xvs9zekvE_1783694611
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
-Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -24
-X-Spam_score: -2.5
+References: <20260710144327.600572-1-thuth@redhat.com>
+In-Reply-To: <20260710144327.600572-1-thuth@redhat.com>
+From: Peter Maydell <peter.maydell@linaro.org>
+Date: Fri, 10 Jul 2026 16:35:32 +0100
+X-Gm-Features: AUfX_mw7fHLpi5yTv0bRGBD6i2tHm-t-Q-wg57oubaJrBAoHFLR0lCCKDrOX-Zs
+Message-ID: <CAFEAcA_aoctX5Cj9dUHSrt_MyzcSfN+bxHxzo+kip88Z-V0YKg@mail.gmail.com>
+Subject: Re: [PATCH v2] hw/usb/hcd-xhci: Turn guest-triggerable abort() into
+ qemu_log_mask()
+To: Thomas Huth <thuth@redhat.com>
+Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, qemu-stable@nongnu.org, 
+ =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=2607:f8b0:4864:20::b12d;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12d.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.5 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.445,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,43 +122,71 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+On Fri, 10 Jul 2026 at 15:44, Thomas Huth <thuth@redhat.com> wrote:
+>
+> From: Thomas Huth <thuth@redhat.com>
+>
+> The FIXME macros in xhci_alloc_device_streams() can be triggered
+> by a (malicious) guest. Since the macro also contains an abort()
+> statement, this terminates QEMU. Turn the FIXME statements into
+> a qemu_log_mask() instead to avoid that a guest can shoot itself
+> this way.
+>
+> Reported-by: Feifan Qian <bea1e@proton.me>
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3784
+> Reviewed-by: Philippe Mathieu-Daud=C3=A9 <philmd@oss.qualcomm.com>
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>  hw/usb/hcd-xhci.c | 6 ++++--
+>  1 file changed, 4 insertions(+), 2 deletions(-)
+>
+> diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
+> index 2cdab3ba0e4..002f801348f 100644
+> --- a/hw/usb/hcd-xhci.c
+> +++ b/hw/usb/hcd-xhci.c
+> @@ -965,11 +965,13 @@ static TRBCCode xhci_alloc_device_streams(XHCIState=
+ *xhci, unsigned int slotid,
+>           * together and make an usb_device_alloc_streams call per group.
+>           */
+>          if (epctxs[i]->nr_pstreams !=3D req_nr_streams) {
+> -            FIXME("guest streams config not identical for all eps");
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "guest streams config not identical for all ep=
+s\n");
+>              return CC_RESOURCE_ERROR;
+>          }
+>          if (eps[i]->max_streams !=3D dev_max_streams) {
+> -            FIXME("device streams config not identical for all eps");
+> +            qemu_log_mask(LOG_GUEST_ERROR,
+> +                          "device streams config not identical for all e=
+ps\n");
+>              return CC_RESOURCE_ERROR;
 
-The FIXME macros in xhci_alloc_device_streams() can be triggered
-by a (malicious) guest. Since the macro also contains an abort()
-statement, this terminates QEMU. Turn the FIXME statements into
-a qemu_log_mask() instead to avoid that a guest can shoot itself
-this way.
+I get the impression from the comment that these cases are not
+guest errors, but unimplemented QEMU support for a corner case
+of the spec, so should be LOG_UNIMP. I had a quick look through
+the XHCI spec, and it seems to define the streams handling
+purely as a per-endpoint thing, making it valid for a device
+to have multiple endpoints with different max streams settings.
+It's just that it doesn't happen in practice so we haven't
+implemented the "group identical endpoints and call
+usb_device_alloc_streams for each group" solution the comment
+sketches out.
 
-Reported-by: Feifan Qian <bea1e@proton.me>
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3784
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- hw/usb/hcd-xhci.c | 6 ++++--
- 1 file changed, 4 insertions(+), 2 deletions(-)
+Incidentally, there is just one remaining use of the FIXME macro
+in this file: the "unhandled USB_RET_*" default case in
+xhci_try_complete_packet(). I think we could (as a separate patch)
+replace that with g_assert_not_reached(), because the function
+handles all the USB_RET_* values except for USB_RET_ADD_TO_QUEUE and
+USB_RET_REMOVE_FROM_QUEUE, which are both internal return
+values for when an async packet needs to be queued or dequeued,
+and which (I believe) shouldn't still be the status by the time we
+get to this function.
 
-diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
-index 2cdab3ba0e4..002f801348f 100644
---- a/hw/usb/hcd-xhci.c
-+++ b/hw/usb/hcd-xhci.c
-@@ -965,11 +965,13 @@ static TRBCCode xhci_alloc_device_streams(XHCIState *xhci, unsigned int slotid,
-          * together and make an usb_device_alloc_streams call per group.
-          */
-         if (epctxs[i]->nr_pstreams != req_nr_streams) {
--            FIXME("guest streams config not identical for all eps");
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "guest streams config not identical for all eps\n");
-             return CC_RESOURCE_ERROR;
-         }
-         if (eps[i]->max_streams != dev_max_streams) {
--            FIXME("device streams config not identical for all eps");
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "device streams config not identical for all eps\n");
-             return CC_RESOURCE_ERROR;
-         }
-     }
--- 
-2.55.0
+There's also one raw printf that should be a LOG_UNIMP:
+        fprintf(stderr, "xhci: FIXME: secondary streams not implemented yet=
+");
 
+thanks
+-- PMM
 
