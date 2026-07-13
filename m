@@ -4,88 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8E646C44507
-	for <qemu-trivial@archiver.kernel.org>; Mon, 13 Jul 2026 10:31:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 758AFC43458
+	for <qemu-trivial@archiver.kernel.org>; Mon, 13 Jul 2026 10:33:07 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wjDwB-00074C-0f; Mon, 13 Jul 2026 06:30:59 -0400
+	id 1wjDxg-00084h-Mc; Mon, 13 Jul 2026 06:32:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wjDw9-00073Q-Ad
- for qemu-trivial@nongnu.org; Mon, 13 Jul 2026 06:30:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wjDxb-00080f-4O
+ for qemu-trivial@nongnu.org; Mon, 13 Jul 2026 06:32:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wjDw7-0000wW-BX
- for qemu-trivial@nongnu.org; Mon, 13 Jul 2026 06:30:57 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wjDxZ-000161-Jq
+ for qemu-trivial@nongnu.org; Mon, 13 Jul 2026 06:32:26 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783938654;
+ s=mimecast20190719; t=1783938743;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=DXRHZsfAapQPGXFOByAdwNsS6K/zYNXLgtamaNoGgoQ=;
- b=DUmSW/cAwaXow+kjAdkAM7cajRh9//bdpIIvhyTEuONOkmdKcGQKbr97EZMnTPokstvKqL
- Yw+G12zHQhV8oemLeTV0M2WSzc7ofN+Zzbe9s2/k3D7ny9LjpYsc512/DylexWjdlc2yDL
- 5EkBxyEw+Fmn9afrygbiGqewGfb0hr4=
-Received: from mail-wr1-f71.google.com (mail-wr1-f71.google.com
- [209.85.221.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=u96zREFqVVRn1UxC/Vx7RwZuddfsts/PtT0uqtC2woQ=;
+ b=OS5WwKdtE1VzjYY5ZfRAzLe2cUU3yyuGo+lVvflssdJk8kNb8lr+649XDtauWVjoaPik4S
+ OwCVlJ2oawqPuX1+NXqFI6xlIaCMrjkaDVKjG8Iy+5J+0CWeG40vVYqIjJ3yvvxq3r6bmz
+ cAJ4ps/iJuWV/XSqtPYphSNYTt+hjnY=
+Received: from mail-wm1-f70.google.com (mail-wm1-f70.google.com
+ [209.85.128.70]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-321-YgWFAhCrOiGAYn36hzLhVA-1; Mon, 13 Jul 2026 06:30:53 -0400
-X-MC-Unique: YgWFAhCrOiGAYn36hzLhVA-1
-X-Mimecast-MFC-AGG-ID: YgWFAhCrOiGAYn36hzLhVA_1783938652
-Received: by mail-wr1-f71.google.com with SMTP id
- ffacd0b85a97d-4784d0fb9cfso2183501f8f.2
- for <qemu-trivial@nongnu.org>; Mon, 13 Jul 2026 03:30:53 -0700 (PDT)
+ us-mta-454-B2YU1nrsPVq4K9ngmiiz9g-1; Mon, 13 Jul 2026 06:32:22 -0400
+X-MC-Unique: B2YU1nrsPVq4K9ngmiiz9g-1
+X-Mimecast-MFC-AGG-ID: B2YU1nrsPVq4K9ngmiiz9g_1783938740
+Received: by mail-wm1-f70.google.com with SMTP id
+ 5b1f17b1804b1-493b21b1fe8so21852865e9.0
+ for <qemu-trivial@nongnu.org>; Mon, 13 Jul 2026 03:32:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1783938652; x=1784543452;
+ d=1e100.net; s=20251104; t=1783938740; x=1784543540;
  h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
  :content-language:references:cc:to:subject:user-agent:mime-version
  :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=DXRHZsfAapQPGXFOByAdwNsS6K/zYNXLgtamaNoGgoQ=;
- b=TYmZ68SV6B9Egv861SDLdM4qd0CDbbRWK1zXDljrJC/2k7IZYU4l0kf0Pi7wXCpv+f
- 4AFxQpVs69/VgZsrXkJy3rMDcxeg+jIUAC2cOf3dtqLHCnLncNhl36a/V1byXIrSGpcF
- o4xiH7D8HOD1SYHuBWjrd6ZDyHDE9kOdDoz6nOvJlFtK1Bgsh0IaK3Gu07BMDDhNRuI4
- brgjuqxNhs1tmshj0YrjdLWPD3I+OhDgNxdoVq5UO6s8lT6QaoTyEOWPijQS/fE7BhUw
- S/JZVBpfoIVBfEHFRUWLC5OmPJPaqaTE5Kjy1CJFFXf7H40B60CUGar13p/QZiLmjvXp
- KZqg==
+ bh=u96zREFqVVRn1UxC/Vx7RwZuddfsts/PtT0uqtC2woQ=;
+ b=SK5fMmHTnxfnFXo83JILmWUBk9lTi2XjhQ+0iwoYrSASxZjV5oPjnEHfmj+OU33TWi
+ iYm+eIiIMv+34VUN0itq7+eh22i5TIRnh6Hi2Tx6Mg5WuG3DpTQ7fz0ry6+LS1AyIaob
+ RX4SJzA1Z5wYBN8AAju8Bg1hNI/9wFnMlr+3Ze5uGz45GRlUFNIzTwkd/ibnLwXbY8mS
+ OB49EBdW2rzD/uCOMBh8gRFhfX9mOzd5EUYPpMrYOvAwHpg7F6dLlFMXlcALYuy+JR0v
+ 0k298Qgn7ttfeWbCjhuxYud+iSONA7xzYNgJxTx4Buw+gAp+OvbvYK7mGE6MqEYj9jNC
+ A43w==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rrmo1+Ryt0sXbDnI9vqNk/FO7SqZdsl0YcoKtIsfQsV0xfh16cJIv25+2/D1iqGYmw8E0fRD3+mr3oXEP4=@nongnu.org
-X-Gm-Message-State: AOJu0YzcRhIfGzXv12FDrucL4XKMThnA7urAAScz8ihNaAsgm04Btlol
- QasahOe5W6fNk+t1Al6s13/Cg/2dC35agtUcLwBlJXCHZY/pG6vIfqgz17TrzRIFtvD47I8ta2s
- r8yDRcU89UE8564WFuTg/3X2cl1FogDMuKW+pg4DtFHXNxHSxauQRXY4qgwM=
-X-Gm-Gg: AfdE7cmIGKNlSJx9N/l/NUE0BCfAGXeRjVN6YRd36wfjMnTOCa5OujK+5umRyke/R7b
- K1ADdW//u/M9BKZLZRUgBfSUdXCH5uIZ+Wyb0mCKdL0+/6UzsQdkPRrMoegsszpcj2Bab3e0ObN
- vr44RPcVLvFTL0abPv0lK97ZZsxfTmwLG20UO/lLQQpVbK39gW80CfLswUMBIhUAn1XdqRl8xdD
- rqW/z3ff5i3ps5SQ6kO0wTo6r2MGB4HI+M/LhnBjFUhDZq8c/7qvYHRvdCw3WbECrUIdJygEhHb
- GNxVuVyvYNSORDYkeoFf+TAqOuYvM0IPqPbwXodbzqym9HZF+RTCRJHUoG2XjJic+mDrGuroEB+
- 3CJcaUadh
-X-Received: by 2002:a05:6000:1841:b0:473:823:1924 with SMTP id
- ffacd0b85a97d-47f2dcd7860mr10545178f8f.39.1783938652108; 
- Mon, 13 Jul 2026 03:30:52 -0700 (PDT)
-X-Received: by 2002:a05:6000:1841:b0:473:823:1924 with SMTP id
- ffacd0b85a97d-47f2dcd7860mr10545128f8f.39.1783938651645; 
- Mon, 13 Jul 2026 03:30:51 -0700 (PDT)
+ AHgh+RqN44dLgkVttzkMeBYT/8NHv2NTk99uu9mosHbvsqlXtMxr8FDinkzg7bHosYjkK0/juEMoS44ESPsc+oc=@nongnu.org
+X-Gm-Message-State: AOJu0Yw+wzG8pbTPyQLAOkhIw/oNeInZsArD/f7pcrZUCMt27j58B/pG
+ jpDkxAy8MpbNP5nLU2PPMCfl312yjQWlJQPcf0yiwl7WPNny+aP6DnHbw/oI/WgvbbRb3uRngiS
+ BxFfVikVsiCndtRKBqhTNVwaQo15pb0KpxO0bzyfPmUJXt6XHrNxwCLbJYSg=
+X-Gm-Gg: AfdE7ck6x1QX1fauKrsZ9UzR1EhjiUT+HvDlbyxd/+VEKxqCj7wsgdnlrRFru9DZV6q
+ k12pAqSxB6VqPvmMq/KwkVsTcRNPdgRK1x229VqmErVbBS5O5I5p3CaTIbBjxaBkE6naMYK4itl
+ 3E9I8hrna82yR2uv875rdpACfwmxpz8NSDbyK249S/3eIpIH/TppLZ0ApdM9Fql/jQVuiOUc9b1
+ TX0bKeHgHOlcJm+oiuBHGaV/uJTN86OEEeJvp6vQosIL2hshlX1y5nGoeoIE718uTBgCSPNo2vw
+ kzOC312Z1Ni8IPPF4gYxPFXc20BKX2TuvOUE4QWdwbrOzN0BSDW8vR/1I8E1cW1NHK7S2rqakJ1
+ qfhMO2m+X
+X-Received: by 2002:a05:600c:4e0b:b0:493:bc4a:c6b4 with SMTP id
+ 5b1f17b1804b1-493f8851d13mr82233735e9.38.1783938740308; 
+ Mon, 13 Jul 2026 03:32:20 -0700 (PDT)
+X-Received: by 2002:a05:600c:4e0b:b0:493:bc4a:c6b4 with SMTP id
+ 5b1f17b1804b1-493f8851d13mr82233405e9.38.1783938739856; 
+ Mon, 13 Jul 2026 03:32:19 -0700 (PDT)
 Received: from [192.168.0.9] ([47.64.114.244])
  by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47a9de1d905sm87270848f8f.2.2026.07.13.03.30.50
+ 5b1f17b1804b1-493eb74835esm379865215e9.14.2026.07.13.03.32.18
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Mon, 13 Jul 2026 03:30:51 -0700 (PDT)
-Message-ID: <4e1ec982-c1c7-47b5-94e8-f775d5add64a@redhat.com>
-Date: Mon, 13 Jul 2026 12:30:49 +0200
+ Mon, 13 Jul 2026 03:32:19 -0700 (PDT)
+Message-ID: <f91767d6-c78e-4a2e-b67e-fc74e07a0930@redhat.com>
+Date: Mon, 13 Jul 2026 12:32:18 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v3 3/3] hw/usb/hcd-xhci: Use qemu_log_mask() instead of
- fprintf() statement
+Subject: Re: [PATCH v3 2/3] hw/usb/hcd-xhci: Remove the FIXME macro
 To: Peter Maydell <peter.maydell@linaro.org>
 Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
  =?UTF-8?Q?Daniel_P_=2E_Berrang=C3=A9?= <berrange@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 References: <20260713100508.123623-1-thuth@redhat.com>
- <20260713100508.123623-4-thuth@redhat.com>
- <CAFEAcA8=_3Ofp3KnOXgfk6OSRHZtvSF6L2pb47XfC8b5TTZo+w@mail.gmail.com>
+ <20260713100508.123623-3-thuth@redhat.com>
+ <CAFEAcA-n-9YVVRr2G3wP0a7sp6arZS4Vmqt35TJY40iGM=DCSQ@mail.gmail.com>
 From: Thomas Huth <thuth@redhat.com>
 Autocrypt: addr=thuth@redhat.com; keydata=
  xsFNBFH7eUwBEACzyOXKU+5Pcs6wNpKzrlJwzRl3VGZt95VCdb+FgoU9g11m7FWcOafrVRwU
@@ -129,21 +128,21 @@ Autocrypt: addr=thuth@redhat.com; keydata=
  oiT+z+/E59qj/EKfyce3sbC9XLjXv3mHMrq1tKX4G7IJGnS989E/fg6crv6NHae9Ckm7+lSs
  IQu4bBP2GxiRQ+NV3iV/KU3ebMRzqIC//DCOxzQNFNJAKldPe/bKZMCxEqtVoRkuJtNdp/5a
  yXFZ6TfE1hGKrDBYAm4vrnZ4CXFSBDllL59cFFOJCkn4Xboj/aVxxJxF30bn
-In-Reply-To: <CAFEAcA8=_3Ofp3KnOXgfk6OSRHZtvSF6L2pb47XfC8b5TTZo+w@mail.gmail.com>
+In-Reply-To: <CAFEAcA-n-9YVVRr2G3wP0a7sp6arZS4Vmqt35TJY40iGM=DCSQ@mail.gmail.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Qy_8iAe-8zOaXN1-f1kV1mK3X7ygj6vARn3jVMoAUVk_1783938652
+X-Mimecast-MFC-PROC-ID: 1lPr-VWkgxux5wzchvtatyesxoHmVZyM3_RBTEK6fgs_1783938740
 X-Mimecast-Originator: redhat.com
 Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: permerror client-ip=170.10.129.124;
+Received-SPF: permerror client-ip=170.10.133.124;
  envelope-from=thuth@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H4=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
  SPF_HELO_PASS=-0.001, T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -160,43 +159,31 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 13/07/2026 12.17, Peter Maydell wrote:
+On 13/07/2026 12.16, Peter Maydell wrote:
 > On Mon, 13 Jul 2026 at 11:05, Thomas Huth <thuth@redhat.com> wrote:
 >>
 >> From: Thomas Huth <thuth@redhat.com>
 >>
->> We've got a proper way for logging unimplemented hardware features,
->> so use qemu_log_mask() instead of the fprintf() here now.
+>> The FIXME macro is only used in one case, which should hopefully
+>> never trigger: The containing function handles all the USB_RET_*
+>> values except for USB_RET_ADD_TO_QUEUE and USB_RET_REMOVE_FROM_QUEUE,
+>> which are both internal return values for when an async packet needs
+>> to be queued or dequeued, and which shouldn't still be the status by
+>> the time we get to this function. Thus let's simplify this spot
+>> and use a g_assert_not_reached() instead.
 >>
 >> Suggested-by: Peter Maydell <peter.maydell@linaro.org>
 >> Signed-off-by: Thomas Huth <thuth@redhat.com>
 >> ---
->>   hw/usb/hcd-xhci.c | 3 ++-
->>   1 file changed, 2 insertions(+), 1 deletion(-)
->>
->> diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
->> index ee913d5c4d5..527910d92d2 100644
->> --- a/hw/usb/hcd-xhci.c
->> +++ b/hw/usb/hcd-xhci.c
->> @@ -1017,7 +1017,8 @@ static XHCIStreamContext *xhci_find_stream(XHCIEPContext *epctx,
->>           }
->>           sctx = epctx->pstreams + streamid;
->>       } else {
->> -        fprintf(stderr, "xhci: FIXME: secondary streams not implemented yet");
->> +        qemu_log_mask(LOG_UNIMP,
->> +                      "xhci: secondary streams not implemented yet");
->>           *cc_error = CC_INVALID_STREAM_TYPE_ERROR;
->>           return NULL;
->>       }
+>>   hw/usb/hcd-xhci.c | 4 +---
+>>   1 file changed, 1 insertion(+), 3 deletions(-)
 > 
-> qemu_log_mask() strings need a trailing "\n" (as of course does
-> printing messages to stderr :-)).
-
-D'oh, I forgot it again! Thanks for spotting it! I'll send an updated version...
-
-> Otherwise
 > Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
-Thanks!
+> 
+> Not sure if some compilers/analyzers would complain about the
+> DPRINTF followed by g_assert_not_reached().
+I hope they don't complain since the macro is disabled by default...? Or 
+shall we play save and remove the DPRINTF here, too?
 
   Thomas
 
