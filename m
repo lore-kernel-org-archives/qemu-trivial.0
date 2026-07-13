@@ -4,62 +4,65 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BA82C43458
-	for <qemu-trivial@archiver.kernel.org>; Mon, 13 Jul 2026 16:05:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96C99C44501
+	for <qemu-trivial@archiver.kernel.org>; Mon, 13 Jul 2026 16:15:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wjJ9f-0004aF-6p; Mon, 13 Jul 2026 12:05:15 -0400
+	id 1wjJJe-0007WV-Cr; Mon, 13 Jul 2026 12:15:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wjJ9c-0004VD-Od
- for qemu-trivial@nongnu.org; Mon, 13 Jul 2026 12:05:12 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wjJJB-0007AN-MP
+ for qemu-trivial@nongnu.org; Mon, 13 Jul 2026 12:15:09 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wjJ9b-0005q8-An
- for qemu-trivial@nongnu.org; Mon, 13 Jul 2026 12:05:12 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wjJJ5-0007Q8-2T
+ for qemu-trivial@nongnu.org; Mon, 13 Jul 2026 12:15:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1783958710;
+ s=mimecast20190719; t=1783959263;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=IPwmvNgzpvqEs2n7dYPiWnQDbwjka8OPTrkMOq5/BEY=;
- b=PkVcQZ90Fpzouy490NXGEtza8F+d5hkAccfj167TitOqDmYfkhdPuEILG3meKwtr3ib9wM
- q3OHzyGbb6WnBDgzuWl2H4Qvq9ymdCnP1g8t4eETEhZLwCUxV3CYAXvruQ2SstdsurxWxm
- HIk/tTIuoxDs3Gcj5bKivsIxvxIyKjU=
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=HTOMK3fcmMCkp4dhDMZgh5tSVKGqnbXYTq2/OhZjHXc=;
+ b=Uu9eLO0szukWa2irrCkFV0+zOBp8I58DECeu2e/aOAbnJ44B6noVqE/aBy/raDUyT4Q9CL
+ PwmdtnDf5fSzm3bAO0XoXQ0cL+jX0SZOyNe6/K/sqgPKJkmJATL1pvL5YRbY1uRd5vaYgf
+ vrJ7s0ud6rwn/xMdVcONlbfRytHw2pg=
 Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-682-aZgzCPb5NMKcvswGzF-Flw-1; Mon,
- 13 Jul 2026 12:05:05 -0400
-X-MC-Unique: aZgzCPb5NMKcvswGzF-Flw-1
-X-Mimecast-MFC-AGG-ID: aZgzCPb5NMKcvswGzF-Flw_1783958704
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-696-w8V0s9PHNxSxcLdb2Zl3Pw-1; Mon,
+ 13 Jul 2026 12:14:19 -0400
+X-MC-Unique: w8V0s9PHNxSxcLdb2Zl3Pw-1
+X-Mimecast-MFC-AGG-ID: w8V0s9PHNxSxcLdb2Zl3Pw_1783959258
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DC6E21955DDE; Mon, 13 Jul 2026 16:05:03 +0000 (UTC)
+ id 951061955D50; Mon, 13 Jul 2026 16:14:18 +0000 (UTC)
 Received: from thuth-p1g4.redhat.com (unknown [10.44.48.15])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 7CB2B3000B52; Mon, 13 Jul 2026 16:04:59 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id E372F765; Mon, 13 Jul 2026 16:14:15 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: qemu-trivial@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
- Munkhbaatar Enkhbaatar <munkhuu0825@gmail.com>,
+To: qemu-devel@nongnu.org,
+	Peter Maydell <peter.maydell@linaro.org>
+Cc: qemu-trivial@nongnu.org,
  =?UTF-8?q?Daniel=20P=20=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- qemu-stable@nongnu.org
-Subject: [PATCH] hw/usb/hcd-ohci: Make sure that ohci_service_ed_list() cannot
- loop forever
-Date: Mon, 13 Jul 2026 18:04:58 +0200
-Message-ID: <20260713160458.343323-1-thuth@redhat.com>
+ Gerd Hoffmann <kraxel@redhat.com>,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Subject: [PATCH v4 2/3] hw/usb/hcd-xhci: Remove the FIXME macro
+Date: Mon, 13 Jul 2026 18:14:05 +0200
+Message-ID: <20260713161406.361197-3-thuth@redhat.com>
+In-Reply-To: <20260713161406.361197-1-thuth@redhat.com>
+References: <20260713161406.361197-1-thuth@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: 4SyevlMQ9Lbn8pI3dzE3EJzC1uNHE7EnMPbuRlTqrEE_1783958704
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: cnUm06bnbWKaPPA1d1CSpdWlyYZlP8APbxefsScg26g_1783959258
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: permerror client-ip=170.10.133.124;
  envelope-from=thuth@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
@@ -87,52 +90,48 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 From: Thomas Huth <thuth@redhat.com>
 
-The inner while loop in ohci_service_ed_list() could theoretically
-loop forever if a malicious guest prepares a set of bad descriptors.
-Add a check to the loop to avoid this situation.
+The FIXME macro is only used in one case, which should hopefully
+never trigger: The containing function handles all the USB_RET_*
+values except for USB_RET_ADD_TO_QUEUE and USB_RET_REMOVE_FROM_QUEUE,
+which are both internal return values for when an async packet needs
+to be queued or dequeued, and which shouldn't still be the status by
+the time we get to this function. Thus let's simplify this spot
+and use a g_assert_not_reached() instead (and remove the DPRINT()
+in front of it to avoid that code analyzers trip over unreachable
+code here).
 
-Reported-by: Feifan Qian <bea1e@proton.me>
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3781
+Suggested-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- hw/usb/hcd-ohci.c | 10 ++++++++++
- 1 file changed, 10 insertions(+)
+ hw/usb/hcd-xhci.c | 6 +-----
+ 1 file changed, 1 insertion(+), 5 deletions(-)
 
-diff --git a/hw/usb/hcd-ohci.c b/hw/usb/hcd-ohci.c
-index 40ebafb4dd9..c4a9741bd42 100644
---- a/hw/usb/hcd-ohci.c
-+++ b/hw/usb/hcd-ohci.c
-@@ -28,6 +28,7 @@
- #include "qemu/osdep.h"
- #include "hw/core/irq.h"
- #include "qapi/error.h"
-+#include "qemu/log.h"
- #include "qemu/module.h"
- #include "qemu/timer.h"
- #include "hw/usb/usb.h"
-@@ -1129,6 +1130,8 @@ static int ohci_service_ed_list(OHCIState *ohci, uint32_t head)
-         return 0;
-     }
-     for (cur = head; cur && link_cnt++ < ED_LINK_LIMIT; cur = next_ed) {
-+        unsigned int ed_cnt = 0;
-+
-         if (ohci_read_ed(ohci, cur, &ed)) {
-             trace_usb_ohci_ed_read_error(cur);
-             ohci_die(ohci);
-@@ -1172,6 +1175,13 @@ static int ohci_service_ed_list(OHCIState *ohci, uint32_t head)
-                     break;
-                 }
-             }
-+
-+            if (ed_cnt++ > ED_LINK_LIMIT) {
-+                qemu_log_mask(LOG_GUEST_ERROR,
-+                              "ohci: Too many endpoint descriptors in loop\n");
-+                ohci_die(ohci);
-+                return 0;
-+            }
-         }
+diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
+index f5bb7d25600..cc61e28d33b 100644
+--- a/hw/usb/hcd-xhci.c
++++ b/hw/usb/hcd-xhci.c
+@@ -39,8 +39,6 @@
+ #else
+ #define DPRINTF(...) do {} while (0)
+ #endif
+-#define FIXME(_msg) do { fprintf(stderr, "FIXME %s:%d %s\n", \
+-                                 __func__, __LINE__, _msg); abort(); } while (0)
  
-         if (ohci_put_ed(ohci, cur, &ed)) {
+ #define TRB_LINK_LIMIT  32
+ #define COMMAND_LIMIT   256
+@@ -1673,9 +1671,7 @@ static int xhci_try_complete_packet(XHCITransfer *xfer)
+         xhci_stall_ep(xfer);
+         break;
+     default:
+-        DPRINTF("%s: FIXME: status = %d\n", __func__,
+-                xfer->packet.status);
+-        FIXME("unhandled USB_RET_*");
++        g_assert_not_reached();
+     }
+     return 0;
+ }
 -- 
 2.55.0
 
