@@ -4,48 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E82DDC44501
-	for <qemu-trivial@archiver.kernel.org>; Thu, 16 Jul 2026 06:35:30 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C2039C4450A
+	for <qemu-trivial@archiver.kernel.org>; Thu, 16 Jul 2026 08:06:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wkFgi-0006Du-H3; Thu, 16 Jul 2026 02:35:16 -0400
+	id 1wkH79-0003Ta-Gw; Thu, 16 Jul 2026 04:06:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wkFgg-0006DF-F6; Thu, 16 Jul 2026 02:35:14 -0400
+ id 1wkH77-0003Sm-EW; Thu, 16 Jul 2026 04:06:37 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wkFgd-0002QX-OO; Thu, 16 Jul 2026 02:35:14 -0400
+ id 1wkH76-0004wU-07; Thu, 16 Jul 2026 04:06:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1784183702; bh=NjlrzohBIu7+43BlB66ySFRfm3d1bfSR5cb2ZatdC7w=;
- h=From:To:Cc:Subject:Date;
- b=xNoovZxgw0WmwdS2zaUS52G3jRU+WkgOYp1hKhZ+HTw+BRYm0ep5u4DqFd/8k8sd4
- p67jgA9A4GxxBOx3qtTL/wJ07ETMCUueKHJpY5M4izTgv3pVdNmNjdjs9wMzeiJcTo
- d6tI+y8nKot+tgTW9l+vZKW8tb9vBn9oAdpT4J+xEvkLkjttZRU/7PqE4d2eqFLuX+
- ZzopGHpNhSLfNrUoC927JVkhP8o6ID/7UcU9U0900vTsk4OdeGoaVhf1FNHqpZwHqj
- Vws2MfgWn8+IHVZlQQUD96YAE2qw9MUAhtj1fXnceou08eBS6VPvMyThLJL2pcfxY5
- TOOTzo8WyGAuQ==
+ t=1784189189; bh=typBFO3KQzOQZWsjp9C2POdB/tvWbc96WPpi4cdqiWE=;
+ h=Date:Subject:To:Cc:References:From:In-Reply-To;
+ b=I4eQoFhdjybAFNQdtHVBrskqZt83k6XAHaKKp97/DR/8nk6VIMjoAVTOv2O/NAyMN
+ +i+ExRGKhp8/HUHcTAgcYhy9dj432z2UHO8zeZPkDuP1nkTfCyXrriKVPNmQALx2qm
+ XyuBX0FHUFqLhzkyj4QIkJNOWPWzbeUSQIv/G6t+CYEwBltZEVHOqzy5s7VXOYHkz6
+ 3m6hGAHCPkAxR1ZQCdzJ0RQrJHhP5fh2fV9Nw1aHANX2/lYRB6J572R+rr7VYzUig8
+ bhwieqZrROex8wa6rYj2/O6Mf9VnZNWdd6CEnKlA4B2VPWQL084N7WesE2xniLalAd
+ gcSp3nta/XK3g==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 0F29C1C21C3;
- Thu, 16 Jul 2026 09:35:02 +0300 (MSK)
-Received: from gandalf.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 092123EFD4B;
- Thu, 16 Jul 2026 09:35:07 +0300 (MSK)
-Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
- id D7E2114216; Thu, 16 Jul 2026 09:35:01 +0300 (MSK)
-From: Michael Tokarev <mjt@tls.msk.ru>
-To: qemu-devel@nongnu.org,
-	qemu-trivial@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>, Peter Xu <peterx@redhat.com>,
- Alistair Francis <alistair.francis@wdc.com>
-Subject: [PATCH trivial] spelling: happend
-Date: Thu, 16 Jul 2026 09:34:54 +0300
-Message-ID: <20260716063457.532035-1-mjt@tls.msk.ru>
-X-Mailer: git-send-email 2.47.3
+ by isrv.corpit.ru (Postfix) with ESMTP id 3FD8B1C2221;
+ Thu, 16 Jul 2026 11:06:29 +0300 (MSK)
+Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id 4E74B3EFDB3;
+ Thu, 16 Jul 2026 11:06:34 +0300 (MSK)
+Message-ID: <78e31bf1-328d-46ba-89db-1e069f21c7db@tls.msk.ru>
+Date: Thu, 16 Jul 2026 11:06:29 +0300
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH trivial] spelling: happend
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: Peter Xu <peterx@redhat.com>, Alistair Francis <alistair.francis@wdc.com>
+References: <20260716063457.532035-1-mjt@tls.msk.ru>
+Content-Language: en-US, ru-RU
+From: Michael Tokarev <mjt@tls.msk.ru>
+Autocrypt: addr=mjt@tls.msk.ru; keydata=
+ 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
+In-Reply-To: <20260716063457.532035-1-mjt@tls.msk.ru>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
 X-Spam_score_int: -19
@@ -69,56 +112,38 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Fixes: 44adb5fcc20d "target/riscv: Remove spike as default machine"
-Fixes: 48814111366b "migration: Always set DEVICE state"
-Fixes: 3345fb3b6d7f "migration/postcopy: Add latency distribution report for blocktime"
-Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
----
- docs/about/removed-features.rst | 2 +-
- migration/migration.c           | 2 +-
- qapi/migration.json             | 2 +-
- 3 files changed, 3 insertions(+), 3 deletions(-)
+On 7/16/26 09:34, Michael Tokarev wrote:
 
-diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index f7a2aa326de..0735b4ea1d5 100644
---- a/docs/about/removed-features.rst
-+++ b/docs/about/removed-features.rst
-@@ -1241,7 +1241,7 @@ RISC-V default machine (removed in 11.1)
- ''''''''''''''''''''''''''''''''''''''''
- 
- RISC-V used to define ``spike`` as the default machine if no machine option
--was given via the command line.  This happend because ``spike`` was the first
-+was given via the command line.  This happened because ``spike`` was the first
- RISC-V machine implemented in QEMU and setting it as default was
- convenient at that time.  Now we have 7 riscv64 and 6 riscv32 machines
- and having ``spike`` as a default is no longer justified.
-diff --git a/migration/migration.c b/migration/migration.c
-index 9736c14458b..9df6da131ce 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -2806,7 +2806,7 @@ static bool migration_switchover_prepare(MigrationState *s)
-     bql_lock();
-     /*
-      * After BQL released and retaken, the state can be CANCELLING if it
--     * happend during sem_wait().. Only change the state if it's still
-+     * happened during sem_wait().. Only change the state if it's still
-      * pre-switchover.
-      */
-     migrate_set_state(&s->state, MIGRATION_STATUS_PRE_SWITCHOVER,
-diff --git a/qapi/migration.json b/qapi/migration.json
-index 66bd900465a..802474750b5 100644
+> diff --git a/qapi/migration.json b/qapi/migration.json
+> index 66bd900465a..802474750b5 100644
+> --- a/qapi/migration.json
+> +++ b/qapi/migration.json
+> @@ -270,7 +270,7 @@
+>   #     (Since 10.1)
+>   #
+>   # @postcopy-non-vcpu-latency: average remote page fault latency for
+> -#     all faults happend in non-vCPU threads (in ns).  It has the same
+> +#     all faults happened in non-vCPU threads (in ns).  It has the same
+>   #     definition of @postcopy-latency but this only provides
+
+This doesn't work, - it fails to build due to too long line, so
+line re-wrapping is also needed.  The correct(ed) version is:
+
 --- a/qapi/migration.json
 +++ b/qapi/migration.json
-@@ -270,7 +270,7 @@
- #     (Since 10.1)
- #
- # @postcopy-non-vcpu-latency: average remote page fault latency for
+@@ -270,8 +270,8 @@
+  #     (Since 10.1)
+  #
+  # @postcopy-non-vcpu-latency: average remote page fault latency for
 -#     all faults happend in non-vCPU threads (in ns).  It has the same
-+#     all faults happened in non-vCPU threads (in ns).  It has the same
- #     definition of @postcopy-latency but this only provides
- #     statistics to non-vCPU faults.  This is only present when the
- #     postcopy-blocktime migration capability is enabled.
--- 
-2.47.3
+-#     definition of @postcopy-latency but this only provides
++#     all faults happened in non-vCPU threads (in ns).  It has the
++#     same definition of @postcopy-latency but this only provides
+  #     statistics to non-vCPU faults.  This is only present when the
+  #     postcopy-blocktime migration capability is enabled.
+  #     (Since 10.1)
 
+Thanks,
+
+/mjt
 
