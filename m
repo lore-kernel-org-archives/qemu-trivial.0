@@ -4,98 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 696CAC44507
-	for <qemu-trivial@archiver.kernel.org>; Fri, 17 Jul 2026 09:54:49 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0395BC44507
+	for <qemu-trivial@archiver.kernel.org>; Fri, 17 Jul 2026 11:05:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wkfH0-0006eV-Kw; Fri, 17 Jul 2026 05:54:26 -0400
+	id 1wkgO3-0008Ci-Gr; Fri, 17 Jul 2026 07:05:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wkfGy-0006do-KZ
- for qemu-trivial@nongnu.org; Fri, 17 Jul 2026 05:54:24 -0400
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
+ id 1wkgO1-0008BJ-8v
+ for qemu-trivial@nongnu.org; Fri, 17 Jul 2026 07:05:45 -0400
+Received: from mail-yw1-x1134.google.com ([2607:f8b0:4864:20::1134])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1wkfGw-0004sW-OG
- for qemu-trivial@nongnu.org; Fri, 17 Jul 2026 05:54:24 -0400
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-664d530fcfdso11657839d50.2
- for <qemu-trivial@nongnu.org>; Fri, 17 Jul 2026 02:54:21 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1784282061; cv=none;
+ id 1wkgNz-0005d1-Gy
+ for qemu-trivial@nongnu.org; Fri, 17 Jul 2026 07:05:45 -0400
+Received: by mail-yw1-x1134.google.com with SMTP id
+ 00721157ae682-81ee6b2da98so16420507b3.3
+ for <qemu-trivial@nongnu.org>; Fri, 17 Jul 2026 04:05:42 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1784286342; cv=none;
  d=google.com; s=arc-20260327;
- b=PffrKckMPZsXc87eWuk7NlbVFFS8lVNWRiolI4XayBf9Jv6AKQmBKZPm1O9omjDPXk
- e+j6I37tq1BYncZZ3fBF7a+uDqqmaa3m7PsWSfRDIxiwRq70k4a010becXtxBUHpVi30
- IchggJNsSOdVfzAOmhcU9DZU3JNekr9D0mvrMdqjjKtjtDZoNsJhlHIOHQiaJYuJIRwS
- +2ozFyAMIpv3hCGVhn8OH+LWUKqMyOeuA3AravryBRKul0NBuDrHXLTTxXDYJXW6XawI
- NO34RvYEPE8y43AaeDkiaQ7i/MgBsXpNcxlVX5SFkEHsWjOHXbr3Zye2aF96jBje5yLM
- dzoQ==
+ b=E+xQspeYfMwp8ZZeqqYY2sPFFP/D+dPpoM8wM02RsLGsKv7OVOnhSTPZQbq7lODCqo
+ EaaDJtU5OLA0wXMdDEpt2D9es6A39lQnoibAvINgryNL5mQMCtvDm8JFBg9ip3kCOA4e
+ HT+Fl/g9o6+fO10HX+DaDFieX0nMYKk4LCoVL78izIUoO2RaxYSz6RA+Yg+/BOeqv6Yy
+ QjdpEe1IQXFTOCT31365mg/8XGWmT2aRwxHEYRgIYRgsnjwLpO2Lken959mX2hdCHgq8
+ SysGKBXWH6ErdziF+uvT9DkzXM2M0pWrIq8EOut54vjgWcC3QCb9+UWF1Tj1nHjayNSN
+ hhqw==
 ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
  s=arc-20260327; 
  h=cc:to:subject:message-id:date:from:in-reply-to:references
  :mime-version:dkim-signature;
- bh=kMuWD0hpErkcQclw4wc9oMq1059iNWYfAJlG9edA6/k=;
- fh=NlCf71AhWyxBya3XB/BacY4gystpaobuBcC/6aR3NlU=;
- b=bypPXqRgoFo1Z+8oitqFeeTa5B1g3bcNMrkDIpmFMvID0s4lZFns4hmQ9Tx4xoc8nB
- wS8+/EStpsQDJ5BZANz3nGr5t3gOE+G3IENqg9bNjjJI/ZuDoWf9mNjx/FeEsyoW6oOG
- 6Nmq9HEjSmAJea4SPT0d9YHagzSbjksRdJKfRBIGD7UcvtK4hVKVCwFyeeWEeIsBFBEe
- uo61Dv7CHkLR6sxSRKsCSoRfNE/uWyJORfCDVv4g2DH58OrIljxWp1etvljA9ef99o6/
- 1I94d2IHWUA5Gfjaw61P8Kk3t1nK0g0NJJ2LSI6+vaI++wBxggmC3Tb5Gy3MvoHBN1zu
- X1YA==; darn=nongnu.org
+ bh=ekVtR/loJxDrA3aerqu3GtkExdV3IdtPovuInh/R/9s=;
+ fh=Kxffzyf0684xacaqcgr+6NY1xyUSmzRXzga2XFKAjhM=;
+ b=O74fr/Y52bV88D1pFJH8D/b4eHVmvqqFH2NjxJC5jcNJFe1Ga03hvMsvTXIowijGTk
+ 6I4wkAGvvT72lw5i6uvsSPL793giuRieg/yTS0e6FAAym5qQTEDGrp6ChbHTbkipQlzf
+ Zw0W6wfoQPfBqjbwhe58+eBscUyIyZ/ljiIMtxNXDNBh3EDxxsahhSkzerRQPxQkU72t
+ XedjbTyNXhh/Xs/kIOnRqVE3L8H/Nch717XJeezWY5mQXpiSUn+XsMwfEwI4uweZQxuM
+ 3+9VEcHrSO6wny5Z2pXzbC8j0VTpFwAgi1XRrIz6Mhxo/Ti3PyDD3/crcbo6HkKaZ5AZ
+ DyxQ==; darn=nongnu.org
 ARC-Authentication-Results: i=1; mx.google.com; arc=none
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1784282061; x=1784886861; darn=nongnu.org;
+ d=linaro.org; s=google; t=1784286342; x=1784891142; darn=nongnu.org;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=kMuWD0hpErkcQclw4wc9oMq1059iNWYfAJlG9edA6/k=;
- b=bHopL9H45DW+6G1xjx/11ZnVmRlgELu71aiqqGAFRy9GURbZgutUsdFrqeFxhb/MPX
- cR6kBXQMVqCx9VSI9VhZ1HR9t6Fn1mj6AUWSVp+W0gdLxYlbWHn13m5Ai0GHOHFg1oTh
- SZm5q2lsZYfrDNYOgC31DSuWWHHIq/jAL/p9SL9bqnhMO6iGLHtctNBvlLRM79CShlQX
- 7fLoqb6xwyjgkcIrzdWUOZvDdPXkPO8Cy9vfDxBSq2rCEbchGZzz8VUJ5wJJKwkQEt8R
- ml+XGv1NJFwkKGLtjxuf6uGIwmWpEmOyhT1nLC238hfAP8HOyTKPPXg+LPqgZHqM8V5l
- GrXg==
+ :content-type; bh=ekVtR/loJxDrA3aerqu3GtkExdV3IdtPovuInh/R/9s=;
+ b=DtgS5lYZz9ps1kprAaDVG2mqrLGLxLY0zW+LD97zEzobIoeOo8VYYbvXUBoDfaW4+Z
+ Tl2NJdZskKYkEEw1a5C1QDT8D3nQRckKtNH+D9P1gWSpgzekdue7+k9/7IPhQUXQLTXV
+ C9rGkW2iRCmBlf86EpbRcSL7qiSKYYrWHR8uOW47sJiMDAyNZ02T/y7ds/ksKWgcBbx3
+ OHyGq/iJs+x7MrA8BzHoQnu6AO8yQWLR1slnMKavxLAqTBru9ln1LxU6CIGH1glWulP4
+ 5TqQoXSSpT8Oe3IJ5X8iVsGB/Q4w9bY3R8U8zg5x4ihPFEdpfQy+L+0YzG58BpDyRRRz
+ Mqbg==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784282061; x=1784886861;
+ d=1e100.net; s=20251104; t=1784286342; x=1784891142;
  h=content-type:cc:to:subject:message-id:date:from:in-reply-to
  :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
  :subject:date:message-id:reply-to:content-type;
- bh=kMuWD0hpErkcQclw4wc9oMq1059iNWYfAJlG9edA6/k=;
- b=Mn5NtwL98zwrdcPiEWb6uOqGcPcU6yvzY81el2Jwm5EFkKyAj5fQtRmVAyV5RgTBXz
- JxAkAM1WwI0549bkTVgkttepQsFvKez0MEDElD1ukFwlm9DdFLxJ8snDLbNKpOwzK3XH
- p/47TU/kRzAdZsO8Ljy5wMzpw1KylAcl2VML9PzqBHPZWw0KsqHqCaVAV8pcZg7j62xK
- 0ynBjKhqpoMMUXSVW3HGBqL91+4pnDcKUdRpdII+7NdxnGQg8RxUKX3GoFaLycjCsscU
- WpwYXdnVW/dIOqaxEHfWDXhhizBOty4GrHdYphWE+lowtMAjx5YAoFM3nDbFcJErY0mN
- iyxQ==
+ bh=ekVtR/loJxDrA3aerqu3GtkExdV3IdtPovuInh/R/9s=;
+ b=kozl5lzUFmN/Wxc19ykbiAcbrKSMsfDcRwfst7MWVnNLu9Lja2gDMDYxnqD4sk/z59
+ XjGwwO+nHy74vBJAenw23f1eMYeME97LO9PUzLwVqo/TST36+WJxa+UDLhGTClqwcZvy
+ RwEcRHkUPLqrntx7Pxc+fbAqcpFEgb1b8fBJlqW47dcJqKM1k8wmNDNXqXs9fIRux4RU
+ BryRsPaCyWgI9ur9Joq7bnrrf8/TjkWmL4TVPbBlBh4bkCijOFP/I2SwQfsnMqY4S1G+
+ 5p3fs5yfw0Kd0RDJ8Hzxpm/MZ3+eSbcCfNVQGtqzkpWn3cd4qZqzleNpr5Fg+BGck5jg
+ yJ0Q==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpORUQ1Ap1gFKb8f5ZbzCD6KmuGZOOg9I+uVF7runIirxSifXGUWnRhERISl1L1xuHXiLrwfL2iSgySVjg=@nongnu.org
-X-Gm-Message-State: AOJu0YwZu5nkjnapg6003PjfM6lP5xZVQomZBoYaLL5H6wC48rqybREt
- VY1IicNQyEznPj87b8mmoA7Oa2m/qmy7irfIwFrYfXPXsdGYdU30Mqt3x7JlbHRiii2rWNyUFH9
- FVbam2z8hs/LSJBt0Sb2z3KREmCr2vIv58es+3iyteA==
-X-Gm-Gg: AfdE7clxNic27SM5xDfdAB/oFY7N4buvXakmD3725fkPzfKiv8dHZNxEH9CmmcarHze
- diCx9I3DUFfLVZ0qyPMDN2hYOtjPYpFZHIiX5L063Vc4CSCIKbrNOXdQgZB0MwoIhesH5F7JQWv
- 0veS5MABgMJGFxmiEmsXGgcs3ALzzVZXTflFACn4xyfmtdnFn7kEmA4sQn3K7qL1tWgkNoZIc48
- K5GShkPDNoWbP6ScelZsx7lFaUkhCGnmMVuhT7o+u6o/DMzxitCTm88B2/GpaOQ/FBuWDVidiPE
- ZgEWaPlEYmdHZJRTze1iBuqpDlv2pP2LLBglQQ1Ngswwoxefv4cDBttF
-X-Received: by 2002:a53:cac2:0:b0:667:e04a:8a42 with SMTP id
- 956f58d0204a3-6683bbe3608mr347422d50.46.1784282061131; Fri, 17 Jul 2026
- 02:54:21 -0700 (PDT)
+ AHgh+Rpv1pbawzS2pjPhx/xBM/rNJHkO2YBO5T/wipYfm2L1xd9IdV7SVZoSoHo3dSnio+OB3aRw0llK8Q0dyS4=@nongnu.org
+X-Gm-Message-State: AOJu0YyClp/6W4XsU2B9xdNszhhpE7He+/D3qJSfNyzJYpLMNdqsSLoH
+ zlMW3WkJyJEr4/AQjY2XSVfJ5FzwprtK2D8ibllC8luYWEWYWtSP0Gg+kc7cZseZhznlOAKDEP7
+ VOPyS8ztpQxqbVhsKN3dkDdz0tPkVckYIY/6yN+ikoA==
+X-Gm-Gg: AfdE7ckLT/GVmZXiPl9qvDtYlATBWKHehlpfOHFiDQonW2N6DCGkTBqZLuCnXB1IUIT
+ pCwY3KqKQ+1E/5AAcJmU6dwDYFfs+Bv2xbMf0VLtVMPD7n50gDuRrpjGmuVYv+d46Z8QLqGlhor
+ pzniTcN8Ii1jBOH2xAi/OugXxMpvK8Tj9tcFriBnATPh9y+j+DFpwMfqBfiJsVn2sHJVUzoXtSN
+ KS0K502rqtDqDctNGs1IEIWdl1z4SXa/i7wlXE73RvxWeovPdQyHaj0KeeukfoJgZzqxN/Rl6f7
+ dt58SVnLCwxM5GyMY5PD1htDW7kdmBGcM6jiwsEPQYANdsR4gUtshCVK
+X-Received: by 2002:a05:690c:e3ec:b0:81e:c972:e8c3 with SMTP id
+ 00721157ae682-81ef252281bmr5824547b3.29.1784286341730; Fri, 17 Jul 2026
+ 04:05:41 -0700 (PDT)
 MIME-Version: 1.0
-References: <20260715203357.424556-1-thuth@redhat.com>
-In-Reply-To: <20260715203357.424556-1-thuth@redhat.com>
+References: <20260716193321.256391-1-thuth@redhat.com>
+In-Reply-To: <20260716193321.256391-1-thuth@redhat.com>
 From: Peter Maydell <peter.maydell@linaro.org>
-Date: Fri, 17 Jul 2026 10:54:09 +0100
-X-Gm-Features: AUfX_mwOvYyWnOXFJt3hoL0HCE_9akmQ34m-yUoa9lrGaRH_aWFYsbye1aMN1YI
-Message-ID: <CAFEAcA_kCY6hZ4Px6E82oLsVKoiZxGbuwCAr1mqrFrZ1FL3wEA@mail.gmail.com>
-Subject: Re: [PATCH] hw/usb/hcd-xhci: Fix guest-triggerable assert() in
- xhci_find_stream()
+Date: Fri, 17 Jul 2026 12:05:29 +0100
+X-Gm-Features: AUfX_mzVAvkMgtpzTvt3oL5b8INESf04TJZp_VHQrGdBZF8IGE9zE_US5SFKiEA
+Message-ID: <CAFEAcA_s8pZmJu9GW5Kqkg=7UZjKcMOGCrQNz=n_z8vY45doaA@mail.gmail.com>
+Subject: Re: [PATCH] hw/usb/dev-uas: Fix guest-triggerable heap OOB access
 To: Thomas Huth <thuth@redhat.com>
 Cc: qemu-devel@nongnu.org, kraxel@redhat.com, 
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
  qemu-trivial@nongnu.org, qemu-stable@nongnu.org
 Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1134;
+ envelope-from=peter.maydell@linaro.org; helo=mail-yw1-x1134.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -118,76 +117,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Wed, 15 Jul 2026 at 21:34, Thomas Huth <thuth@redhat.com> wrote:
+On Thu, 16 Jul 2026 at 20:33, Thomas Huth <thuth@redhat.com> wrote:
 >
 > From: Thomas Huth <thuth@redhat.com>
 >
-> The assert() statement in xhci_find_stream() can be triggered by
-> the guest (see bug tickets #273, #3895 and #3988 on gitlab.com).
-> Turn it into a qemu_log_mask() instead to fix this problem.
+> The stream ID is under control of the guest, so we must not use
+> it for indexing into the status3[] array without checking it for
+> being in range.
 >
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/273
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3612
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3986
 > Signed-off-by: Thomas Huth <thuth@redhat.com>
 > ---
->  hw/usb/hcd-xhci.c | 7 ++++++-
->  1 file changed, 6 insertions(+), 1 deletion(-)
+>  hw/usb/dev-uas.c | 11 +++++++++--
+>  1 file changed, 9 insertions(+), 2 deletions(-)
 >
-> diff --git a/hw/usb/hcd-xhci.c b/hw/usb/hcd-xhci.c
-> index c7e050e38fd..ae8add4227e 100644
-> --- a/hw/usb/hcd-xhci.c
-> +++ b/hw/usb/hcd-xhci.c
-> @@ -1009,7 +1009,12 @@ static XHCIStreamContext *xhci_find_stream(XHCIEPContext *epctx,
->      dma_addr_t base;
->      uint32_t ctx[2], sct;
+> diff --git a/hw/usb/dev-uas.c b/hw/usb/dev-uas.c
+> index 8576dfec96f..7df58cdeee7 100644
+> --- a/hw/usb/dev-uas.c
+> +++ b/hw/usb/dev-uas.c
+> @@ -383,8 +383,15 @@ static void usb_uas_send_status_bh(void *opaque)
 >
-> -    assert(streamid != 0);
-> +    if (!streamid) {
-> +        qemu_log_mask(LOG_GUEST_ERROR, "xhci: stream ID is zero\n");
-> +        *cc_error = CC_INVALID_STREAM_ID_ERROR;
-> +        return NULL;
-> +    }
+>  static void usb_uas_queue_status(UASDevice *uas, UASStatus *st, int length)
+>  {
+> -    USBPacket *p = uas_using_streams(uas) ?
+> -        uas->status3[st->stream] : uas->status2;
+> +    USBPacket *p = NULL;
 > +
+> +    if (!uas_using_streams(uas)) {
+> +        p = uas->status2;
+> +    } else if (st->stream <= UAS_MAX_STREAMS) {
+> +        p = uas->status3[st->stream];
+> +    } else {
+> +        warn_report_once(TYPE_USB_UAS ": bad stream ID 0x%x", st->stream);
+> +    }
+>
+>      st->length += length;
+>      QTAILQ_INSERT_TAIL(&uas->results, st, next);
 
-This matches the error code that we should use for this case
-of zero stream ID when checking the stream IDs in USB packets,
-as per the XHCI spec 4.12.2.1 "Stream Array Bounds Checking",
-which seems to be what the other error codes in the function
-follow. (I'm looking at
-https://www.intel.com/content/dam/www/public/us/en/documents/technical-specifications/extensible-host-controler-interface-usb-xhci.pdf
-as the spec here.)
+Doesn't this just postpone the problem? This function puts the
+UASStatus struct (with the out-of-range stream value) oto the
+uas->results queue. Later on we will end up in the
+usb_uas_send_status_bh function, which picks USBStatus structs
+off the queue and uses the same "assume st->stream is in bounds"
+logic for finding a USBPacket for them.
 
-However, we don't actually seem to use this function for that
-purpose. We call it in three places:
- - xhci_set_ep_dequeue(), which is the handler for the
-   "Set TR Dequeue Pointer Command"
- - xhci_stall_ep, which ignores the error code
- - xhci_kick_epctx, which also ignores the error code
+Also, once we put this UASStatus into the results queue we
+will never take it off again -- the code for handling reads
+on the status pipe will only remove and process UASStatus
+entries where st->stream matches the stream ID used for
+the read on the status pipe (which must be in-bounds, we
+check that).
 
-For the "Set TR Dequeue Pointer" case, the spec states that
-the right error code for all cases of "bogus stream ID" is
-"TRB Error", including "max_pstreams > 0 and stream ID == 0
-(see 4.12.2.1 and 4.6.10.)
+The copy of the USB attached storage spec I found is not very
+clear about error handling. But I think there is no way for us
+to report back the "invalid stream ID" case. So I think:
 
-So:
-(1) as far as this patch goes,
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+(1) in usb_uas_command() we should check the tag for being
+in bounds first, before any other error check; if it is not
+then LOG_GUEST_ERROR and return (do not call
+usb_uas_queue_fake_sense(); have comment about why not)
 
-(2) xhci_set_ep_dequeue() ought to be doing
-
-        sctx = xhci_find_stream(epctx, streamid, &err);
-        if (sctx == NULL) {
-            return CC_TRB_ERROR;
-        }
-rather than "return err;"
-
-(3) xhci_set_ep_dequeue() should reject (CC_TRB_ERROR) a
-non-zero streamid in its "nr_pstreams == 0" case, rather than
-ignoring the streamid value
-
-(4) Somewhere presumably we ought to check the stream ID
-in a USB packet and halt the endpoint if it's out of range,
-i.e. somewhere should be calling xhci_find_stream() and not
-ignoring the error code...
+(2) is usb_uas_queue_status() and usb_uas_send_status_bh(),
+assert() that st->stream is in bounds before using it
 
 thanks
 -- PMM
