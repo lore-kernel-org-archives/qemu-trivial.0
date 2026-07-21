@@ -4,146 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 91D64C44529
-	for <qemu-trivial@archiver.kernel.org>; Tue, 21 Jul 2026 08:47:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F88FC44529
+	for <qemu-trivial@archiver.kernel.org>; Tue, 21 Jul 2026 09:52:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wm68C-00044p-Js; Tue, 21 Jul 2026 04:47:16 -0400
+	id 1wm78z-0007BX-Jp; Tue, 21 Jul 2026 05:52:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wm68A-00043I-2O
- for qemu-trivial@nongnu.org; Tue, 21 Jul 2026 04:47:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wm78v-00079L-Oo
+ for qemu-trivial@nongnu.org; Tue, 21 Jul 2026 05:52:07 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wm688-0005Gg-1w
- for qemu-trivial@nongnu.org; Tue, 21 Jul 2026 04:47:13 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784623630;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
- bh=9oGiPuHPwmUMBCbg7MWlHF1UyJCPQO0OYgFhuqsUsRo=;
- b=cN+ZIqk++SK8s+i0iSdIM7oG15h5XMcIUMBKsL2b+kRL1WFmB2Prru2YB0yNkcDmhIwk/w
- OCbUxebVsll3+foAyN1Oe6wCTZG/AQ9+tvyBG6OuUhyqixxtJrS5QeYqAm7GolhAthOrX8
- t2eVQcsnnAnVxnwx6Jskq92O6Z1qedU=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-94-MHl7avrQN8SdYZUeqYd3bQ-1; Tue, 21 Jul 2026 04:47:09 -0400
-X-MC-Unique: MHl7avrQN8SdYZUeqYd3bQ-1
-X-Mimecast-MFC-AGG-ID: MHl7avrQN8SdYZUeqYd3bQ_1784623628
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4954fe32d6eso16717295e9.1
- for <qemu-trivial@nongnu.org>; Tue, 21 Jul 2026 01:47:09 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wm78r-0004oi-Uh
+ for qemu-trivial@nongnu.org; Tue, 21 Jul 2026 05:52:04 -0400
+Received: from pps.filterd (m0279873.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66L6GQWk3980888
+ for <qemu-trivial@nongnu.org>; Tue, 21 Jul 2026 09:52:00 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ sgCUYdJRD8ZViaLD0ofGlwBCPNlq6SlS05frI5Iuvmk=; b=jwftnejStrZVNul9
+ GVFW8mS8PvcOSNRUJPBAJ72z+Mmfo+WaUPT0SL6JlsWAvqdz1PmvbNAm7/wY+x39
+ sqOWxN2l1zfx23fEf+LNp3Mzj1QTBY/EyxAfZT1aqmHjBzSJmqMoDkBgiIMy46md
+ k3mjU/z0RQFM5yCWNpnWawPLAK4BEsolpby/c22FqmjeVoJGdzkR+F0z2rfR7y7Z
+ 3pxPBzBE4kolMbl1q3bBxpdKMut+WD/p1AX0b47cIGClvvTsxq3Dox5ObCWncmxw
+ zr9deChqBC5v8YA42dW8hx8IpVziYxfc3l7mYaNGAnXQAGoGqOp5D98lFL1kJiTl
+ re5D9Q==
+Received: from mail-qt1-f199.google.com (mail-qt1-f199.google.com
+ [209.85.160.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fhqv43tjr-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-trivial@nongnu.org>; Tue, 21 Jul 2026 09:52:00 +0000 (GMT)
+Received: by mail-qt1-f199.google.com with SMTP id
+ d75a77b69052e-51c0e702df8so162363261cf.2
+ for <qemu-trivial@nongnu.org>; Tue, 21 Jul 2026 02:52:00 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1784627520; x=1785232320; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=sgCUYdJRD8ZViaLD0ofGlwBCPNlq6SlS05frI5Iuvmk=;
+ b=Ol9mqelh6dwY6S1kt8WFmDzEYm0SiatboTiqqBCjbne+E61WvxpsJNdwjxBgspjWPf
+ JSmcOKQ9TXaSX3GViJj5RQYfhgQc+gZFKNMzn7epCobRsv9bvfyS0u96/UfJJW6kyE47
+ tbO/3k8yV1+336ta7zZJXKbprBnMUJPCmb4f8veJV2ytoblLq0E22SK7D8ZRtxDbHj6h
+ B4ZC4jFCCuOfvzTuaGUxBSyTSqlBR9BfeFTfOik0sjf6n6MGoR0hwaPBtPQ8N/RLn3Zl
+ vD1b2cSj9Px7qoCX9bjn+62fFtAEtP4LQJlHZDZVHewOFPPQF/1OSLckoBhyPTFEtG0N
+ 0+oQ==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784623628; x=1785228428;
- h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
- :content-language:references:cc:to:subject:user-agent:mime-version
- :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1784627520; x=1785232320;
+ h=content-transfer-encoding:content-type:in-reply-to:from:references
+ :cc:to:content-language:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=9oGiPuHPwmUMBCbg7MWlHF1UyJCPQO0OYgFhuqsUsRo=;
- b=E0wBdqBDPCekO0t8ICh9jfHUTCvyg1Ue4h/EjQAiOwXpA3Mbvz4BOzeNi75abeLePR
- yx7T+0NYazXVGv063ZBCOlHw3LfQedKqQTw4p/dMYIA2GXZOHStCdKAFBCv+OUhcallK
- 0bnI+I46UmawRMr3H6kQSee/WIennRnPH1JtvEPdCal5XGe1q2Q7YFRz7wXxW2Q0iN2n
- BCT/LCoTcaWFb3TWvpricGKrWV2udmr+OIALxgm1nsOnJm4U81D0EY34A6Py8G6/oolo
- FZVZFgok1XH2+ufBqIHrsfvhLyA9HFI/y6fazbSvvZSQ8xW3kGp6RkBEyXT2c/ALNdpA
- kjxA==
+ bh=sgCUYdJRD8ZViaLD0ofGlwBCPNlq6SlS05frI5Iuvmk=;
+ b=clisWw/hHdqjhXndQMuCwoSdd6hc6Wtl4VQ/1TNl2ZSp5kTJ9J4zWGvx3v095E9Fcr
+ 1DViZir3SCcox6yx4e5fyuKd+F+98+BFDK0eOJcXQCunhNf8oywFYJVSfVk+4FHy+3hy
+ Wsyz6jQz0SX6ehTc8DweUDfJJNtXLfX+RwLapO84UqGOQHPoClbUbY78a5fpkKJDUQE8
+ i/zcNw2A4urwZXi6fAUhW2UDG2ldoOxpD02pIINwaGUS4NmRiT6lcyveDd7lOdVcWsT3
+ XL1KUEjDlOn23/WzA4PWmXY0Soc9v2EZi4+5xw6GNhCm8sdh5BsdKP4EsfO+xFGmrAok
+ aCag==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrX/PZ2Ldp514zHqLiWRZ1GoLqwaZrartugwZVpRbVoJsxm8kmZ6VsyZQrdVmVXcxpmn/9IBrm1aGn9tCI=@nongnu.org
-X-Gm-Message-State: AOJu0YxN1ab+htSXgcBbiIiBND+rQmtQtfTicRHwSxn50oolm8valNvl
- LLkWOpgPKlJTC1PVSE4yW1SmmYxSnxcnyjds/Kf/CH1vNgpXWxa4UxaSCUj5JWr+1KeSVxoooO3
- sAuPEZyDV79n2vQwtDGsgXOxP2imUOwmEG5In+aZ/qbcRBy/l5O40TzoJEEU=
-X-Gm-Gg: AfdE7clxX6uQ43NUbJby0GqQ6z/g0iNrtaX+TVa0wPFxVpUMBRFPbO8AwBrfZg4m97/
- 27vIIOlri7tqCzazg2Ku74ENEJSpXGJeSEvBn9tqirzYU2CBreiM4XLPJyH5ntG7bgc9/kZ297Q
- v6KUuDmuCS4KX+DIk7ycZ6qp18vs+B2J6N7/lL80yLga3x5un7hzFnHntzp4lRHgPX8nyFQ28Ag
- LFRp7sW0a755njBwJAbzSOGAgPG9C25A8i+kQus1bRhpSzyMz469bo/KiK3EeizbQgBKr7AdJda
- UzaFIHy9VKOSffS+1HA0nhwi9z0MO+npDI45AH3ZYp259hfzSXnEnoN3Oz+r5+4L1PNzbLx7JA=
- =
-X-Received: by 2002:a05:600c:4f09:b0:495:5b32:df72 with SMTP id
- 5b1f17b1804b1-4955b32e0c7mr103736645e9.35.1784623627920; 
- Tue, 21 Jul 2026 01:47:07 -0700 (PDT)
-X-Received: by 2002:a05:600c:4f09:b0:495:5b32:df72 with SMTP id
- 5b1f17b1804b1-4955b32e0c7mr103736315e9.35.1784623627468; 
- Tue, 21 Jul 2026 01:47:07 -0700 (PDT)
-Received: from [192.168.0.9] ([47.64.113.188])
- by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-495653bffefsm48909235e9.9.2026.07.21.01.47.06
+ AHgh+RqD4RVGYB1CMopc7KrlpGUoU0CaPY0sZ5Rk9TnfFr7FmE3oDmMIrpglx5rQiiRNlH1Is1osTM0hDTP5uCo=@nongnu.org
+X-Gm-Message-State: AOJu0YzOrR+v+42WmPSgTlziv+HbETwYBYpGIgFI3dCCN0SDuMiwe9i4
+ GjGWBzeAMj7autk6qdN0zzXaOI4uq56bJuNX11Vhk2ggwha2DgJtF8aQLKvC4pjpmbI1nHcynN0
+ vmG9yqmQnTpHqWYzK07am0xfbmsnov8lE8BlqxLwLkoQO1ZCPvzLYiPONhRYn
+X-Gm-Gg: AfdE7cliNj9orhqxWhffvtyC2t7Czv1PsCP22GiPO6sKdQaQqErLZezdrIHtPy4/YCx
+ v0cFTlwod87kSixqCC1/c3STsc55fY1dhM8kOT/560YJviwMlxNDm9FojYIbKMGaZV7YUzbgott
+ YmSFxsruvEIWgapsi3bufMBFpC/qgN7kvNDPuuS/wTeUQWGZbtuQA0GMFUkaRCYjp/IHrcqwRjf
+ 30ugE9NVx5XLFTEGPzJwm+mnVe9VXnqiYPZ2+CvTH2i6OCGW9aZHx2Wp8uf5c19S0ESF32fDl2N
+ VLEFXWvqXQFxG2vyvAjQcGmC0R2GRrNqfCwJAZZw9x+Fv5l6aA9KmdVRwsW50o+g6gowU64Q6qy
+ PKyI2TIenv0c52BwwMKFleaoSDUlwBI+JqT2AxrR/1WDZRfVMUzM=
+X-Received: by 2002:a05:622a:e0cc:10b0:526:f963:2d0f with SMTP id
+ d75a77b69052e-526f96337e7mr4227201cf.53.1784627519769; 
+ Tue, 21 Jul 2026 02:51:59 -0700 (PDT)
+X-Received: by 2002:a05:622a:e0cc:10b0:526:f963:2d0f with SMTP id
+ d75a77b69052e-526f96337e7mr4227031cf.53.1784627519281; 
+ Tue, 21 Jul 2026 02:51:59 -0700 (PDT)
+Received: from [192.168.69.219] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-4956548321asm57437065e9.12.2026.07.21.02.51.57
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Tue, 21 Jul 2026 01:47:06 -0700 (PDT)
-Message-ID: <9196384b-a1d3-477c-9a25-82ba8ee3f82d@redhat.com>
-Date: Tue, 21 Jul 2026 10:47:05 +0200
+ Tue, 21 Jul 2026 02:51:58 -0700 (PDT)
+Message-ID: <563e1a3e-1420-4f6b-9244-9ad4360c207f@oss.qualcomm.com>
+Date: Tue, 21 Jul 2026 11:51:57 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH v2] hw/ide/core: Fix possible crash via NULL pointer in
  ide_cancel_dma_sync()
-To: Mark Cave-Ayland <mark.caveayland@nutanix.com>, qemu-devel@nongnu.org,
- John Snow <jsnow@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Content-Language: en-US
+To: Mark Cave-Ayland <mark.caveayland@nutanix.com>,
+ Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ John Snow <jsnow@redhat.com>
 Cc: Alexander Bulekov <alxndr@bu.edu>, qemu-block@nongnu.org,
  qemu-stable@nongnu.org, qemu-trivial@nongnu.org
 References: <20260721070216.82984-1-thuth@redhat.com>
  <3f8027d5-f7db-4fb5-8386-1d5f93974a10@nutanix.com>
-From: Thomas Huth <thuth@redhat.com>
-Autocrypt: addr=thuth@redhat.com; keydata=
- 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
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
 In-Reply-To: <3f8027d5-f7db-4fb5-8386-1d5f93974a10@nutanix.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: W9A7jhyPtz1qUydhh5Sd538M--a7iBCxLZVJunTJjAY_1784623628
-X-Mimecast-Originator: redhat.com
-Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: permerror client-ip=170.10.133.124;
- envelope-from=thuth@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Proofpoint-ORIG-GUID: dC2EYBt0ToF1nZ2YXbzqSGnYFvPc_7kQ
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzIxMDEwNCBTYWx0ZWRfXzCPSQKtBKtyG
+ aegqZkN9OoBE+Ua6OXlvDLJSUZCdRnhwA78ag5CZd8bbNXyQ6YMJLeANi3O4LxrxAKECSa+A/9n
+ yq5R1X1hGXBZRupjlNC1FsUmcaRSSgD/BqAOom9j3uXAeNPEfFyu60k/HtTxTtFSW9S5oXig4FX
+ byLYGmSBojqHbWNVh4vNbXlN73xHqU4W8IS86/AUmlIF4c1Xxa6gIupewR6aJg0Omi1HN8r40FX
+ Wl5OcCAmKYAmwR9J7CEecukV+lhIcwZ4pYpmQZjbA7vOhwOHrnUDm3Z5liYbmxZSdrn5SqwUlWG
+ pvCxqiFRnL8Teuc+/AIryyHhjW4s+mJ1N3liHQ3He7U9r3zwt9Y9Ixte7A64QnoCkv8lRnFQyIn
+ 1rRvVFOyxo/fAllz4EaY4tH2R+n8hjcWk48Sh/zUgJ2Ng0Rf3d1+8AVqfPctZVXppP58GXU4MuO
+ 58RTyU22E/fJkCaWkJQ==
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzIxMDEwNCBTYWx0ZWRfX3OMNtU4Q7gqo
+ 4Hz/Mu2+hToHeUL/6gsFKOlwSL2/rsgvOK0hI+Xk68z0Y4oSmhs/a5+WkA4up2pfWjTr/Svxnag
+ YIkL8l1tfxOmUYo/z0FxFbLJSZGbOAg=
+X-Authority-Analysis: v=2.4 cv=daawG3Xe c=1 sm=1 tr=0 ts=6a5f4140 cx=c_pps
+ a=WeENfcodrlLV9YRTxbY/uA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=rJkE3RaqiGZ5pbrm-msn:22
+ a=RpNjiQI2AAAA:8 a=20KFwNOVAAAA:8 a=dNiI6ryHRrKgJtV6AdoA:9 a=3ZKOabzyN94A:10
+ a=QEXdDO2ut3YA:10 a=kacYvNCVWA4VmyqE58fU:22
+X-Proofpoint-GUID: dC2EYBt0ToF1nZ2YXbzqSGnYFvPc_7kQ
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-20_06,2026-07-20_03,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ phishscore=0 impostorscore=0 priorityscore=1501 suspectscore=0 malwarescore=0
+ clxscore=1015 adultscore=0 spamscore=0 lowpriorityscore=0 bulkscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607210104
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -159,7 +158,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 21/07/2026 10.29, Mark Cave-Ayland wrote:
+On 21/7/26 10:29, Mark Cave-Ayland wrote:
 > On 21/07/2026 08:02, Thomas Huth wrote:
 > 
 >> From: Thomas Huth <thuth@redhat.com>
@@ -217,21 +216,26 @@ On 21/07/2026 10.29, Mark Cave-Ayland wrote:
 >>       }
 >>   }
 > 
-> Doesn't ide_bus_active_if() do the right thing here for in-flight requests? 
+> Doesn't ide_bus_active_if() do the right thing here for in-flight 
+> requests?
+
+bmdma_cmd_writeb() already calls ide_bus_active_if().
+
+Is the issue in the caller, bmdma_cmd_writeb(), instead of
+here in ide_cancel_dma_sync()?
+
 > I'd expect to be able to do something like:
 > 
 >    if (s->bus->dma->aiocb) {
 >        trace_ide_cancel_dma_sync_remaining();
 >        blk_drain(ide_bus_active_if(s->bus)->blk);
 >    }
-Sounds appealing, so I gave it a try, but it does not seem to work: I can 
-still trigger the problem with this code (both, the NULL pointer dereference 
-and the assert() after the drain). Looks like it is possible to trigger a 
-DMA transfer for the other drive, and then while the transfer is still in 
-flight, switch the current drive and trigger the code path that calls 
-ide_cancel_dma_sync(). So we need indeed to drain both drives, i.e. use this 
-current patch here.
-
-  Thomas
+> 
+> 
+> ATB,
+> 
+> Mark.
+> 
+> 
 
 
