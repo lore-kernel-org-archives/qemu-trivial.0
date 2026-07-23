@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 523FCC4452B
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:52:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 423C9C531CA
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:52:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlPy-0000dW-SB; Thu, 23 Jul 2026 00:52:22 -0400
+	id 1wmlNV-0000e4-Fd; Thu, 23 Jul 2026 00:49:49 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlPx-0000RG-1M
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:52:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlNQ-0000QO-20
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:49:44 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlPu-0004fk-LK
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:52:20 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlNO-00043M-Mf
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:49:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782337;
+ s=mimecast20190719; t=1784782182;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=T5pYNtwR7SG5TiuFxq7Ubuc04yN+erb8vLnytfXqXS8=;
- b=T2FuvaOdFAf0oB4n8tioj7AGgVRDl9guxyKRd5XQKom0CFrEa0cPb1XZU2Q5SdKsYtf+aY
- lPQnikZgJ3JwJK+y/day8/DObCbR6/e1+M+YRHUhuydN6AFhKAh16t3rd0w3ACxf74Hfxd
- XXtbZyMWIQVmGwrjD/uwV01cr+Brcmo=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=Ye3PMO0BcG5/sMMpltL1f7W/lGgNiDmYNE87s2b0G5s=;
+ b=aSDVsIkJzt8H2ueqHRRRBLK2dlJd3kzn1u+smsOGXoRKt+/dr9dHoBDChRkpMDDpVNae6w
+ aLDMPbh7jnE2lQfVzVB8qNVCAsX2jyYngliifxMb9Bhs9sr3DFgJH9ZccndQVuL71SYSRx
+ rOGfyX2/icA0F43WqOE3SjWF59jH3JE=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-207-ZTt86k4uOE2IyN07IoWtvA-1; Thu,
- 23 Jul 2026 00:52:14 -0400
-X-MC-Unique: ZTt86k4uOE2IyN07IoWtvA-1
-X-Mimecast-MFC-AGG-ID: ZTt86k4uOE2IyN07IoWtvA_1784782331
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-564-GsPbBZ2_Ou-Y7VbJ9TXBEA-1; Thu,
+ 23 Jul 2026 00:49:40 -0400
+X-MC-Unique: GsPbBZ2_Ou-Y7VbJ9TXBEA-1
+X-Mimecast-MFC-AGG-ID: GsPbBZ2_Ou-Y7VbJ9TXBEA_1784782177
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 372A61800759; Thu, 23 Jul 2026 04:52:11 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C2C641955DC2; Thu, 23 Jul 2026 04:49:37 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0A5E1180029D; Thu, 23 Jul 2026 04:52:01 +0000 (UTC)
+ id 62CA918002AE; Thu, 23 Jul 2026 04:49:28 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,27 +73,28 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 23/44] qapi: convert trivial intro sections for
- transaction.json
-Date: Thu, 23 Jul 2026 00:47:44 -0400
-Message-ID: <20260723044805.527643-24-jsnow@redhat.com>
+Subject: [PATCH v2 08/44] qapi: convert trivial intro sections for
+ misc-arm.json
+Date: Thu, 23 Jul 2026 00:47:29 -0400
+Message-ID: <20260723044805.527643-9-jsnow@redhat.com>
 In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 5IQO2HaOLbDjEMAFTs6k4QY40vWgeNlcqBOTgI1bM7c_1784782331
+X-Mimecast-MFC-PROC-ID: bRteR5zQgrXZ2KVxZplif-VCEioKVvxhGSe425tSjBw_1784782177
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: permerror client-ip=170.10.129.124;
+Received-SPF: permerror client-ip=170.10.133.124;
  envelope-from=jsnow@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,55 +114,49 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/transaction.json | 14 +++++---------
- 1 file changed, 5 insertions(+), 9 deletions(-)
+ qapi/misc-arm.json | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
 
-diff --git a/qapi/transaction.json b/qapi/transaction.json
-index 4b4eb09bf38..c0dc811ba61 100644
---- a/qapi/transaction.json
-+++ b/qapi/transaction.json
-@@ -12,8 +12,7 @@
+diff --git a/qapi/misc-arm.json b/qapi/misc-arm.json
+index 4dc66d00e5c..8cb2ea77951 100644
+--- a/qapi/misc-arm.json
++++ b/qapi/misc-arm.json
+@@ -5,11 +5,10 @@
  
  ##
- # @Abort:
+ # @GICCapability:
 -#
--# This action can be used to test transaction failure.
-+#     This action can be used to test transaction failure.
+-# The struct describes capability for a specific GIC (Generic
+-# Interrupt Controller) version.  These bits are not only decided by
+-# QEMU/KVM software version, but also decided by the hardware that the
+-# program is running upon.
++#     The struct describes capability for a specific GIC (Generic
++#     Interrupt Controller) version.  These bits are not only decided
++#     by QEMU/KVM software version, but also decided by the hardware
++#     that the program is running upon.
  #
- # Since: 1.6
- ##
-@@ -22,8 +21,7 @@
+ # @version: version of GIC to be described.  Currently, only 2 and 3
+ #     are supported.
+@@ -48,8 +47,7 @@
  
  ##
- # @ActionCompletionMode:
+ # @SsidSizeMode:
 -#
--# An enumeration of transactional completion modes.
-+#     An enumeration of transactional completion modes.
+-# SMMUv3 SubstreamID size configuration mode.
++#     SMMUv3 SubstreamID size configuration mode.
  #
- # @individual: Do not attempt to cancel any other Actions if any
- #     Actions fail after the Transaction request succeeds.  All
-@@ -156,9 +154,8 @@
+ # @auto: derive from host IOMMU capabilities
+ #
+@@ -64,8 +62,7 @@
  
  ##
- # @TransactionAction:
+ # @OasMode:
 -#
--# A discriminated record of operations that can be performed with
--# `transaction`.
-+#     A discriminated record of operations that can be performed with
-+#     `transaction`.
+-# SMMUv3 Output Address Size configuration mode.
++#     SMMUv3 Output Address Size configuration mode.
  #
- # @type: the operation to be performed
+ # @auto: derive from host IOMMU capabilities
  #
-@@ -184,8 +181,7 @@
- 
- ##
- # @TransactionProperties:
--#
--# Optional arguments to modify the behavior of a Transaction.
-+#     Optional arguments to modify the behavior of a Transaction.
- #
- # @completion-mode: Controls how jobs launched asynchronously by
- #     Actions will complete or fail as a group.  See
 -- 
 2.55.0
 
