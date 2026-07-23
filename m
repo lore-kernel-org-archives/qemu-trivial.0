@@ -4,46 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA391C44524
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:49:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1BEA4C4452B
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:50:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlMI-0007BL-Im; Thu, 23 Jul 2026 00:48:34 -0400
+	id 1wmlNc-0001h8-6b; Thu, 23 Jul 2026 00:49:56 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlMH-0007AU-AO
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:48:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlNa-0001V1-QO
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:49:54 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlME-0003w3-HO
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:48:33 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlNZ-00044u-3W
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:49:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782109;
+ s=mimecast20190719; t=1784782192;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=dGgRAyf8YkqROymV/EmTI4vs+Z/0uaTuQevHLTemjt0=;
- b=LT7GRrR1zxGNKMH6LKxOpc3xMf5BZn+i11gH9Cu+IswC9HVHGpmnWiA2kncmq6nWI//SvS
- SNBWHXUPOkMgb8jWHKMhSsalUL7pxFOUUZCDpT8gIrXb6TfbRhy0TcgbHi5P38mmsQiXMc
- UJSMO3u7WjEGsZHa4HYO9KjnA3fjjyk=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=6MfiGs1YvmhhCQ9TR9AVXMB0jZQk3iPwALbaJBp3oPY=;
+ b=O4zpgpErasFCqPQS+3480xE27YY9Avk7Noy/3Q+BlKe8Nfy7nfg65xZCmZg9GBZdFGA+1u
+ s1yEIBaYnUtGNguXgPbuFR1eQu7MtfaYNORtOyIUu17MSIYYbWH5NNvGLbIzvwMGHv4E0S
+ xd33RD2+ucoe5AyjVb3c3IetCa7hWck=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-226-UgicRAdpN1GEard6mXQZZg-1; Thu,
- 23 Jul 2026 00:48:24 -0400
-X-MC-Unique: UgicRAdpN1GEard6mXQZZg-1
-X-Mimecast-MFC-AGG-ID: UgicRAdpN1GEard6mXQZZg_1784782102
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-375-xhXlp8GRPZOFmCouSsprUg-1; Thu,
+ 23 Jul 2026 00:49:49 -0400
+X-MC-Unique: xhXlp8GRPZOFmCouSsprUg-1
+X-Mimecast-MFC-AGG-ID: xhXlp8GRPZOFmCouSsprUg_1784782186
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8B7C318007D2; Thu, 23 Jul 2026 04:48:20 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 55B31195D027; Thu, 23 Jul 2026 04:49:46 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9123918002AE; Thu, 23 Jul 2026 04:48:07 +0000 (UTC)
+ id 031C4180029D; Thu, 23 Jul 2026 04:49:37 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -72,24 +73,26 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 00/44] qapi: convert trivial intro sections
-Date: Thu, 23 Jul 2026 00:47:21 -0400
-Message-ID: <20260723044805.527643-1-jsnow@redhat.com>
+Subject: [PATCH v2 09/44] qapi: convert intro sections for cryptodev.json
+Date: Thu, 23 Jul 2026 00:47:30 -0400
+Message-ID: <20260723044805.527643-10-jsnow@redhat.com>
+In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
+References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: Dj5GdtTqDcUP8X9gIPtisvE5D_zsqRIo7hT0emmV5SM_1784782102
+X-Mimecast-MFC-PROC-ID: ff8Reop_dm_Nqey1X72ATbf5EPEf9Usi2Xk7O6bM-s0_1784782186
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: permerror client-ip=170.10.133.124;
+Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: permerror client-ip=170.10.129.124;
  envelope-from=jsnow@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001, T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -105,127 +108,78 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-GitLab CI: https://gitlab.com/jsnow/qemu/-/pipelines/2699067787=0D
-=0D
-Hi, this patchset converts trivial "introductory" sections in the QAPI=0D
-documentation to use the new, explicit intro section syntax.=0D
-=0D
-This is being done primarily for the benefit of the forthcoming=0D
-"inliner", a feature for the rendered HTML QMP documentation that=0D
-seeks to "inline" QMP command argument documentation into the argument=0D
-list for each command.=0D
-=0D
-There are two main motives here:=0D
-=0D
-(1) We want the split between the "introduction" and "details"=0D
-    sections to be mechanically obvious, so that auto-generated or=0D
-    inlined documentation has a well-defined, obvious spot to go.=0D
-=0D
-(2) We do not want to inline irrelevant, introductory text describing=0D
-    structures to be copied into command documentation.=0D
-=0D
-This patchset tackles "trivial" conversions: cases where the=0D
-introduction is only a single paragraph and is immediately followed by=0D
-a tagged section, the end of the documentation block, or some other=0D
-pre-existing syntactical delineation.=0D
-=0D
-Future patches that may require more scrutiny will handle the=0D
-remaining conversions - I think this is enough for today, don't you?=0D
-=0D
-John Snow (44):=0D
-  qapi: convert intro sections for error.json=0D
-  qapi: convert intro sections for acpi-hest.json=0D
-  qapi: convert intro sections for ebpf.json=0D
-  qapi: convert intro sections for uefi.json=0D
-  qapi: convert trivial intro sections for compat.json=0D
-  qapi: convert intro sections for vfio.json=0D
-  qapi: convert intro sections for trace.json=0D
-  qapi: convert trivial intro sections for misc-arm.json=0D
-  qapi: convert intro sections for cryptodev.json=0D
-  qapi: convert intro sections for machine-common.json=0D
-  qapi: convert intro sections for accelerator.json=0D
-  qapi: convert intro sections for authz.json=0D
-  qapi: convert trivial intro sections for yank.json=0D
-  qapi: convert intro sections for replay.json=0D
-  qapi: convert trivial intro sections for machine-s390x.json=0D
-  qapi: convert trivial intro sections for acpi.json=0D
-  qapi: convert intro sections for tpm.json=0D
-  qapi: convert trivial intro sections for qdev.json=0D
-  qapi: convert trivial intro sections for control.json=0D
-  qapi: convert intro sections for dump.json=0D
-  qapi: convert intro sections for common.json=0D
-  qapi: convert intro sections for sockets.json=0D
-  qapi: convert trivial intro sections for transaction.json=0D
-  qapi: convert trivial intro sections for stats.json=0D
-  qapi: convert trivial intro sections for job.json=0D
-  qapi: convert intro sections for pci.json=0D
-  qapi: convert trivial intro sections for introspect.json=0D
-  qapi: convert intro sections for rocker.json=0D
-  qapi: convert trivial intro sections for misc-i386.json=0D
-  qapi: convert trivial intro sections for block-export.json=0D
-  qapi: convert intro sections for audio.json=0D
-  qapi: convert trivial intro sections for block.json=0D
-  qapi: convert trivial intro sections for misc.json=0D
-  qapi: convert trivial intro sections for crypto.json=0D
-  qapi: convert intro sections for cxl.json=0D
-  qapi: convert trivial intro sections for run-state.json=0D
-  qapi: convert intro sections for char.json=0D
-  qapi: convert intro sections for virtio.json=0D
-  qapi: convert trivial intro sections for net.json=0D
-  qapi: convert trivial intro sections for qom.json=0D
-  qapi: convert trivial intro sections for ui.json=0D
-  qapi: convert trivial intro sections for migration.json=0D
-  qapi: convert trivial intro sections for machine.json=0D
-  qapi: convert trivial intro sections for block-core.json=0D
-=0D
- qapi/accelerator.json    |  18 +-=0D
- qapi/acpi-hest.json      |   4 +-=0D
- qapi/acpi.json           |  15 +-=0D
- qapi/audio.json          |  88 ++----=0D
- qapi/authz.json          |  21 +-=0D
- qapi/block-core.json     | 646 ++++++++++++++++-----------------------=0D
- qapi/block-export.json   |  87 +++---=0D
- qapi/block.json          |  58 ++--=0D
- qapi/char.json           |  90 ++----=0D
- qapi/common.json         |  36 +--=0D
- qapi/compat.json         |   6 +-=0D
- qapi/control.json        |  30 +-=0D
- qapi/crypto.json         | 118 +++----=0D
- qapi/cryptodev.json      |  18 +-=0D
- qapi/cxl.json            | 128 ++++----=0D
- qapi/dump.json           |  24 +-=0D
- qapi/ebpf.json           |  14 +-=0D
- qapi/error.json          |   3 +-=0D
- qapi/introspect.json     |  45 +--=0D
- qapi/job.json            |  18 +-=0D
- qapi/machine-common.json |  19 +-=0D
- qapi/machine-s390x.json  |  20 +-=0D
- qapi/machine.json        | 261 ++++++----------=0D
- qapi/migration.json      | 201 +++++-------=0D
- qapi/misc-arm.json       |  15 +-=0D
- qapi/misc-i386.json      |  52 ++--=0D
- qapi/misc.json           |  74 ++---=0D
- qapi/net.json            | 101 +++---=0D
- qapi/pci.json            |  27 +-=0D
- qapi/qdev.json           |  23 +-=0D
- qapi/qom.json            | 138 +++------=0D
- qapi/replay.json         |  45 ++-=0D
- qapi/rocker.json         |  39 +--=0D
- qapi/run-state.json      | 120 +++-----=0D
- qapi/sockets.json        |  31 +-=0D
- qapi/stats.json          |  34 +--=0D
- qapi/tpm.json            |  29 +-=0D
- qapi/trace.json          |  12 +-=0D
- qapi/transaction.json    |  14 +-=0D
- qapi/uefi.json           |   5 +-=0D
- qapi/ui.json             | 215 +++++--------=0D
- qapi/vfio.json           |  19 +-=0D
- qapi/virtio.json         |  91 +++---=0D
- qapi/yank.json           |  25 +-=0D
- 44 files changed, 1165 insertions(+), 1912 deletions(-)=0D
-=0D
---=20=0D
-2.55.0=0D
-=0D
+(Trivial)
+
+Signed-off-by: John Snow <jsnow@redhat.com>
+---
+ qapi/cryptodev.json | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
+
+diff --git a/qapi/cryptodev.json b/qapi/cryptodev.json
+index eb309c22f86..d0c1e6c8944 100644
+--- a/qapi/cryptodev.json
++++ b/qapi/cryptodev.json
+@@ -12,8 +12,7 @@
+ 
+ ##
+ # @QCryptodevBackendAlgoType:
+-#
+-# The supported algorithm types of a crypto device.
++#     The supported algorithm types of a crypto device.
+ #
+ # @sym: symmetric encryption
+ #
+@@ -26,8 +25,7 @@
+ 
+ ##
+ # @QCryptodevBackendServiceType:
+-#
+-# The supported service types of a crypto device.
++#     The supported service types of a crypto device.
+ #
+ # @cipher: Symmetric Key Cipher service
+ #
+@@ -46,8 +44,7 @@
+ 
+ ##
+ # @QCryptodevBackendType:
+-#
+-# The crypto device backend type
++#     The crypto device backend type
+ #
+ # @builtin: the QEMU builtin support
+ #
+@@ -62,8 +59,7 @@
+ 
+ ##
+ # @QCryptodevBackendClient:
+-#
+-# Information about a queue of crypto device.
++#     Information about a queue of crypto device.
+ #
+ # @queue: the queue index of the crypto device
+ #
+@@ -77,8 +73,7 @@
+ 
+ ##
+ # @QCryptodevInfo:
+-#
+-# Information about a crypto device.
++#     Information about a crypto device.
+ #
+ # @id: the id of the crypto device
+ #
+@@ -95,8 +90,7 @@
+ 
+ ##
+ # @query-cryptodev:
+-#
+-# Return information about current crypto devices.
++#     Return information about current crypto devices.
+ #
+ # Since: 8.0
+ ##
+-- 
+2.55.0
 
 
