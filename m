@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AFB8C4452B
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:56:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1B7B2C531CA
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:57:00 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlU7-0002T4-SA; Thu, 23 Jul 2026 00:56:41 -0400
+	id 1wmlS0-0005G7-6v; Thu, 23 Jul 2026 00:54:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlU0-00026s-E4
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:56:33 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlRh-0004v9-4P
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:54:12 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlTy-0005V9-2J
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:56:32 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlRd-0004z9-47
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:54:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782589;
+ s=mimecast20190719; t=1784782444;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=50CZod/iUePAFwxf+WZghW/YZKa0XPt7IqYHe7UOp5g=;
- b=NejWgOt1U2xwby/AEeJU2oCVVuj+T5/+xdopufSUlY6MWW2FmUmpCkr/hSe4Ao6tcquNm1
- 7qr5Vt9PnwKbKk09rLl79/xKIMaNSmEfS5LhOtO9QuyQtTpwDVtRhngmGprIWHYDZEy5gq
- 5S4YL9a1mcD9gjhADEwOwsRRReFXKvY=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=lCYDP6Hrj8CzePr1mYVT3Ek4VxvkfuHjDMXZ3o0GlI0=;
+ b=CRiHaFejuX8FuOTDQebUS1MZxZ3L3OdQRtTWm5tEQfRrjoXdBD3xbO/I5xklZpMlVPszqD
+ w6tcYeapSWWy8hDgisThYBd2+Zza3tXe/q6AWYvDEmH9Q/3J8CuTpyIF/u+HRwIQxTM5np
+ uXqHzsp1fXL3N+Jdnn9w4fM88eTz9Sk=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-564-6KLshGhfPWKysXqy8wvqgw-1; Thu,
- 23 Jul 2026 00:55:15 -0400
-X-MC-Unique: 6KLshGhfPWKysXqy8wvqgw-1
-X-Mimecast-MFC-AGG-ID: 6KLshGhfPWKysXqy8wvqgw_1784782512
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-186-flsMf9TDOHOS0HUxRx7iBg-1; Thu,
+ 23 Jul 2026 00:53:59 -0400
+X-MC-Unique: flsMf9TDOHOS0HUxRx7iBg-1
+X-Mimecast-MFC-AGG-ID: flsMf9TDOHOS0HUxRx7iBg_1784782436
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 8F355195FE0B; Thu, 23 Jul 2026 04:55:12 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id EE8051955DEA; Thu, 23 Jul 2026 04:53:55 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id EE85918002AE; Thu, 23 Jul 2026 04:55:02 +0000 (UTC)
+ id D62A618002AE; Thu, 23 Jul 2026 04:53:45 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,15 +73,14 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 42/44] qapi: convert trivial intro sections for
- migration.json
-Date: Thu, 23 Jul 2026 00:48:03 -0400
-Message-ID: <20260723044805.527643-43-jsnow@redhat.com>
+Subject: [PATCH v2 34/44] qapi: convert trivial intro sections for crypto.json
+Date: Thu, 23 Jul 2026 00:47:55 -0400
+Message-ID: <20260723044805.527643-35-jsnow@redhat.com>
 In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: HRZVTVJ-WeMoYy89GZOcKDO049MVDhG_fqTZQTsRMrk_1784782512
+X-Mimecast-MFC-PROC-ID: nSCOUktrsBdoDz41yyhx4MyltN6o97scZ4NoPgi7ySs_1784782436
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -114,570 +113,347 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/migration.json | 201 +++++++++++++++++---------------------------
- 1 file changed, 78 insertions(+), 123 deletions(-)
+ qapi/crypto.json | 118 ++++++++++++++++++-----------------------------
+ 1 file changed, 45 insertions(+), 73 deletions(-)
 
-diff --git a/qapi/migration.json b/qapi/migration.json
-index 66bd900465a..f9300c9e329 100644
---- a/qapi/migration.json
-+++ b/qapi/migration.json
-@@ -13,8 +13,7 @@
+diff --git a/qapi/crypto.json b/qapi/crypto.json
+index 2b55befef97..5c821be1a33 100644
+--- a/qapi/crypto.json
++++ b/qapi/crypto.json
+@@ -10,10 +10,10 @@
  
  ##
- # @MigrationRAMStats:
+ # @QCryptoTLSCredsEndpoint:
 -#
--# Detailed migration status.
-+#     Detailed migration status.
+-# The type of network endpoint that will be using the credentials.
+-# Most types of credential require different setup / structures
+-# depending on whether they will be used in a server versus a client.
++#     The type of network endpoint that will be using the credentials.
++#     Most types of credential require different setup / structures
++#     depending on whether they will be used in a server versus a
++#     client.
  #
- # @transferred: amount of bytes already transferred to the target VM
+ # @client: the network endpoint is acting as the client
  #
-@@ -78,8 +77,7 @@
+@@ -26,8 +26,7 @@
  
  ##
- # @XBZRLECacheStats:
+ # @QCryptoSecretFormat:
 -#
--# Detailed XBZRLE migration cache statistics
-+#     Detailed XBZRLE migration cache statistics
+-# The data format that the secret is provided in
++#     The data format that the secret is provided in
  #
- # @cache-size: XBZRLE cache size
- #
-@@ -104,8 +102,7 @@
+ # @raw: raw bytes.  When encoded in JSON only valid UTF-8 sequences
+ #     can be used
+@@ -41,8 +40,7 @@
  
  ##
- # @CompressionStats:
+ # @QCryptoHashAlgo:
 -#
--# Detailed migration compression statistics
-+#     Detailed migration compression statistics
+-# The supported algorithms for computing content digests
++#     The supported algorithms for computing content digests
  #
- # @pages: amount of pages compressed and transferred to the target VM
+ # @md5: MD5.  Should not be used in any new code, legacy compat only
  #
-@@ -126,8 +123,7 @@
+@@ -68,8 +66,7 @@
  
  ##
- # @MigrationStatus:
+ # @QCryptoCipherAlgo:
 -#
--# An enumeration of migration status.
-+#     An enumeration of migration status.
+-# The supported algorithms for content encryption ciphers
++#     The supported algorithms for content encryption ciphers
  #
- # @none: no migration has ever happened.
+ # @aes-128: AES with 128 bit / 16 byte keys
  #
-@@ -189,8 +185,7 @@
+@@ -110,8 +107,7 @@
  
  ##
- # @VfioStats:
+ # @QCryptoCipherMode:
 -#
--# Detailed VFIO devices migration statistics
-+#     Detailed VFIO devices migration statistics
+-# The supported modes for content encryption ciphers
++#     The supported modes for content encryption ciphers
  #
- # @transferred: amount of bytes transferred to the target VM by VFIO
- #     devices
-@@ -202,8 +197,7 @@
+ # @ecb: Electronic Code Book
+ #
+@@ -128,11 +124,11 @@
  
  ##
- # @MigrationInfo:
+ # @QCryptoIVGenAlgo:
 -#
--# Information about current migration process.
-+#     Information about current migration process.
+-# The supported algorithms for generating initialization vectors for
+-# full disk encryption.  The 'plain' generator should not be used for
+-# disks with sector numbers larger than 2^32, except where
+-# compatibility with pre-existing Linux dm-crypt volumes is required.
++#     The supported algorithms for generating initialization vectors
++#     for full disk encryption.  The 'plain' generator should not be
++#     used for disks with sector numbers larger than 2^32, except
++#     where compatibility with pre-existing Linux dm-crypt volumes is
++#     required.
  #
- # @status: `MigrationStatus` describing the current migration status.
- #     If this field is not returned, no migration process has been
-@@ -339,9 +333,9 @@
+ # @plain: 64-bit sector number truncated to 32-bits
+ #
+@@ -148,8 +144,7 @@
  
  ##
- # @query-migrate:
+ # @QCryptoBlockFormat:
 -#
--# Return information about current migration process.  If migration is
--# active there will be another json-object with RAM migration status.
-+#     Return information about current migration process.  If
-+#     migration is active there will be another json-object with RAM
-+#     migration status.
+-# The supported full disk encryption formats
++#     The supported full disk encryption formats
  #
- # Since: 0.14
- #
-@@ -435,8 +429,7 @@
+ # @qcow: QCow/QCow2 built-in AES-CBC encryption.  Use only for
+ #     liberating data from old images.
+@@ -163,8 +158,8 @@
  
  ##
- # @MigrationCapability:
+ # @QCryptoBlockOptionsBase:
 -#
--# Migration capabilities enumeration
-+#     Migration capabilities enumeration
+-# The common options that apply to all full disk encryption formats
++#     The common options that apply to all full disk encryption
++#     formats
  #
- # @xbzrle: Migration supports xbzrle (Xor Based Zero Run Length
- #     Encoding).  This feature allows us to minimize migration traffic
-@@ -545,8 +538,7 @@
+ # @format: the encryption format
+ #
+@@ -175,8 +170,7 @@
  
  ##
- # @MigrationCapabilityStatus:
+ # @QCryptoBlockOptionsQCow:
 -#
--# Migration capability information
-+#     Migration capability information
+-# The options that apply to QCow/QCow2 AES-CBC encryption format
++#     The options that apply to QCow/QCow2 AES-CBC encryption format
  #
- # @capability: capability enum
- #
-@@ -559,8 +551,8 @@
+ # @key-secret: the ID of a QCryptoSecret object providing the
+ #     decryption key.  Mandatory except when probing image for
+@@ -189,8 +183,7 @@
  
  ##
- # @migrate-set-capabilities:
+ # @QCryptoBlockOptionsLUKS:
 -#
--# Enable/Disable the following migration capabilities (like xbzrle)
-+#     Enable/Disable the following migration capabilities (like
-+#     xbzrle)
+-# The options that apply to LUKS encryption format
++#     The options that apply to LUKS encryption format
  #
- # @capabilities: json array of capability modifications to make
- #
-@@ -577,8 +569,8 @@
+ # @key-secret: the ID of a QCryptoSecret object providing the
+ #     decryption key.  Mandatory except when probing image for
+@@ -203,8 +196,7 @@
  
  ##
- # @query-migrate-capabilities:
+ # @QCryptoBlockCreateOptionsLUKS:
 -#
--# Return information about the current migration capabilities status
-+#     Return information about the current migration capabilities
-+#     status
+-# The options that apply to LUKS encryption format initialization
++#     The options that apply to LUKS encryption format initialization
  #
- # Since: 1.2
- #
-@@ -598,8 +590,7 @@
+ # @cipher-alg: the cipher algorithm for data encryption.  Currently
+ #     defaults to 'aes-256'.
+@@ -237,9 +229,8 @@
  
  ##
- # @MultiFDCompression:
+ # @QCryptoBlockOpenOptions:
 -#
--# An enumeration of multifd compression methods.
-+#     An enumeration of multifd compression methods.
+-# The options that are available for all encryption formats when
+-# opening an existing volume
++#     The options that are available for all encryption formats when
++#     opening an existing volume
  #
- # @none: no compression.
- #
-@@ -776,9 +767,8 @@
+ # Since: 2.6
+ ##
+@@ -251,9 +242,8 @@
  
  ##
- # @BitmapMigrationNodeAlias:
+ # @QCryptoBlockCreateOptions:
 -#
--# Maps a block node name and the bitmaps it has to aliases for dirty
--# bitmap migration.
-+#     Maps a block node name and the bitmaps it has to aliases for
-+#     dirty bitmap migration.
+-# The options that are available for all encryption formats when
+-# initializing a new volume
++#     The options that are available for all encryption formats when
++#     initializing a new volume
  #
- # @node-name: A block node name.
- #
-@@ -798,9 +788,8 @@
+ # Since: 2.6
+ ##
+@@ -265,9 +255,8 @@
  
  ##
- # @MigrationParameter:
+ # @QCryptoBlockInfoBase:
 -#
--# Migration parameters enumeration.  The enumeration values mirror the
--# members of @MigrationParameters.
-+#     Migration parameters enumeration.  The enumeration values mirror
-+#     the members of @MigrationParameters.
+-# The common information that applies to all full disk encryption
+-# formats
++#     The common information that applies to all full disk encryption
++#     formats
  #
- # Features:
+ # @format: the encryption format
  #
-@@ -834,8 +823,7 @@
+@@ -278,8 +267,7 @@
  
  ##
- # @migrate-set-parameters:
+ # @QCryptoBlockInfoLUKSSlot:
 -#
--# Set migration parameters.  All arguments are optional.
-+#     Set migration parameters.  All arguments are optional.
+-# Information about the LUKS block encryption key slot options
++#     Information about the LUKS block encryption key slot options
  #
- # Since: 2.4
+ # @active: whether the key slot is currently in use
  #
-@@ -1057,11 +1045,10 @@
+@@ -299,8 +287,7 @@
  
  ##
- # @query-migrate-parameters:
+ # @QCryptoBlockInfoLUKS:
 -#
--# Return information about the current migration parameters.  Optional
--# members of the return value are always present, except
--# @block-bitmap-mapping, which is only present if it has been
--# previously set.
-+#     Return information about the current migration parameters.
-+#     Optional members of the return value are always present, except
-+#     @block-bitmap-mapping, which is only present if it has been
-+#     previously set.
+-# Information about the LUKS block encryption options
++#     Information about the LUKS block encryption options
  #
- # Since: 2.4
+ # @cipher-alg: the cipher algorithm for data encryption
  #
-@@ -1082,10 +1069,9 @@
+@@ -338,8 +325,7 @@
  
  ##
- # @migrate-start-postcopy:
+ # @QCryptoBlockInfo:
 -#
--# Followup to a migration command to switch the migration to postcopy
--# mode.  The postcopy-ram capability must be set on both source and
--# destination before the original migration command.
-+#     Followup to a migration command to switch the migration to
-+#     postcopy mode.  The postcopy-ram capability must be set on both
-+#     source and destination before the original migration command.
+-# Information about the block encryption options
++#     Information about the block encryption options
+ #
+ # Since: 2.7
+ ##
+@@ -350,8 +336,7 @@
+ 
+ ##
+ # @QCryptoBlockLUKSKeyslotState:
+-#
+-# Defines state of keyslots that are affected by the update
++#     Defines state of keyslots that are affected by the update
+ #
+ # @active: The slots contain the given password and marked as active
+ #
+@@ -365,9 +350,8 @@
+ 
+ ##
+ # @QCryptoBlockAmendOptionsLUKS:
+-#
+-# This struct defines the update parameters that activate/de-activate
+-# set of keyslots
++#     This struct defines the update parameters that
++#     activate/de-activate set of keyslots
+ #
+ # @state: the desired state of the keyslots
+ #
+@@ -407,9 +391,8 @@
+ 
+ ##
+ # @QCryptoBlockAmendOptions:
+-#
+-# The options that are available for all encryption formats when
+-# amending encryption settings
++#     The options that are available for all encryption formats when
++#     amending encryption settings
+ #
+ # Since: 5.1
+ ##
+@@ -421,8 +404,7 @@
+ 
+ ##
+ # @SecretCommonProperties:
+-#
+-# Properties for objects of classes derived from secret-common.
++#     Properties for objects of classes derived from secret-common.
+ #
+ # @format: the data format that the secret is provided in
+ #     (default: raw)
+@@ -463,8 +445,7 @@
+ 
+ ##
+ # @SecretKeyringProperties:
+-#
+-# Properties for secret_keyring objects.
++#     Properties for secret_keyring objects.
+ #
+ # @serial: serial number that identifies a key to get from the kernel
+ #
+@@ -477,8 +458,7 @@
+ 
+ ##
+ # @TlsCredsProperties:
+-#
+-# Properties for objects of classes derived from tls-creds.
++#     Properties for objects of classes derived from tls-creds.
+ #
+ # @verify-peer: if true the peer credentials will be verified once the
+ #     handshake is completed.  This is a no-op for anonymous
+@@ -503,8 +483,7 @@
+ 
+ ##
+ # @TlsCredsAnonProperties:
+-#
+-# Properties for tls-creds-anon objects.
++#     Properties for tls-creds-anon objects.
  #
  # Since: 2.5
- #
-@@ -1098,8 +1084,7 @@
+ ##
+@@ -514,8 +493,7 @@
  
  ##
- # @MIGRATION:
+ # @TlsCredsPskProperties:
 -#
--# Emitted when a migration event happens
-+#     Emitted when a migration event happens
+-# Properties for tls-creds-psk objects.
++#     Properties for tls-creds-psk objects.
  #
- # @status: `MigrationStatus` describing the current migration status.
- #
-@@ -1116,9 +1101,8 @@
+ # @username: the username which will be sent to the server.  For
+ #     clients only.  If absent, "qemu" is sent and the property will
+@@ -529,8 +507,7 @@
  
  ##
- # @MIGRATION_PASS:
+ # @TlsCredsX509Properties:
 -#
--# Emitted from the source side of a migration at the start of each
--# pass (when it syncs the dirty bitmap)
-+#     Emitted from the source side of a migration at the start of each
-+#     pass (when it syncs the dirty bitmap)
+-# Properties for tls-creds-x509 objects.
++#     Properties for tls-creds-x509 objects.
  #
- # @pass: An incrementing count (starting at 1 on the first pass)
- #
-@@ -1134,8 +1118,8 @@
+ # @sanity-check: if true, perform some sanity checks before using the
+ #     credentials (default: true)
+@@ -550,8 +527,7 @@
  
  ##
- # @COLOMessage:
+ # @QCryptoAkCipherAlgo:
 -#
--# The message transmission between Primary side and Secondary side.
-+#     The message transmission between Primary side and Secondary
-+#     side.
+-# The supported algorithms for asymmetric encryption ciphers
++#     The supported algorithms for asymmetric encryption ciphers
  #
- # @checkpoint-ready: Secondary VM (SVM) is ready for checkpointing
+ # @rsa: RSA algorithm
  #
-@@ -1161,8 +1145,7 @@
+@@ -562,8 +538,7 @@
  
  ##
- # @COLOMode:
+ # @QCryptoAkCipherKeyType:
 -#
--# The COLO current mode.
-+#     The COLO current mode.
+-# The type of asymmetric keys.
++#     The type of asymmetric keys.
  #
- # @none: COLO is disabled.
+ # @public: public key
  #
-@@ -1177,8 +1160,7 @@
+@@ -576,8 +551,7 @@
  
  ##
- # @FailoverStatus:
+ # @QCryptoRSAPaddingAlgo:
 -#
--# An enumeration of COLO failover status
-+#     An enumeration of COLO failover status
+-# The padding algorithm for RSA.
++#     The padding algorithm for RSA.
  #
- # @none: no failover has ever happened
+ # @raw: no padding used
  #
-@@ -1198,9 +1180,8 @@
+@@ -590,8 +564,7 @@
  
  ##
- # @COLO_EXIT:
+ # @QCryptoAkCipherOptionsRSA:
 -#
--# Emitted when VM finishes COLO mode due to some errors happening or
--# at the request of users.
-+#     Emitted when VM finishes COLO mode due to some errors happening
-+#     or at the request of users.
+-# Specific parameters for RSA algorithm.
++#     Specific parameters for RSA algorithm.
  #
- # @mode: report COLO mode when COLO exited.
+ # @hash-alg: `QCryptoHashAlgo`
  #
-@@ -1218,8 +1199,7 @@
+@@ -605,9 +578,8 @@
  
  ##
- # @COLOExitReason:
+ # @QCryptoAkCipherOptions:
 -#
--# The reason for a COLO exit.
-+#     The reason for a COLO exit.
+-# The options that are available for all asymmetric key algorithms
+-# when creating a new QCryptoAkCipher.
++#     The options that are available for all asymmetric key algorithms
++#     when creating a new QCryptoAkCipher.
  #
- # @none: failover has never happened.  This state does not occur in
- #     the `COLO_EXIT` event, and is only visible in the result of
-@@ -1238,12 +1218,11 @@
- 
- ##
- # @x-colo-lost-heartbeat:
--#
--# Tell QEMU that heartbeat is lost, request it to do takeover
--# procedures.  If this command is sent to the PVM, the Primary side
--# will exit COLO mode.  If sent to the Secondary, the Secondary side
--# will run failover work, then takes over server operation to become
--# the service VM.
-+#     Tell QEMU that heartbeat is lost, request it to do takeover
-+#     procedures.  If this command is sent to the PVM, the Primary
-+#     side will exit COLO mode.  If sent to the Secondary, the
-+#     Secondary side will run failover work, then takes over server
-+#     operation to become the service VM.
- #
- # Features:
- #
-@@ -1281,8 +1260,7 @@
- 
- ##
- # @migrate-continue:
--#
--# Continue migration when it's in a paused state.
-+#     Continue migration when it's in a paused state.
- #
- # @state: The state the migration is currently expected to be in
- #
-@@ -1298,8 +1276,7 @@
- 
- ##
- # @MigrationAddressType:
--#
--# The migration stream transport mechanisms.
-+#     The migration stream transport mechanisms.
- #
- # @socket: Migrate via socket.
- #
-@@ -1339,8 +1316,7 @@
- 
- ##
- # @MigrationAddress:
--#
--# Migration endpoint configuration.
-+#     Migration endpoint configuration.
- #
- # @transport: The migration stream transport mechanism
- #
-@@ -1357,8 +1333,7 @@
- 
- ##
- # @MigrationChannelType:
--#
--# The migration channel-type request options.
-+#     The migration channel-type request options.
- #
- # @main: Main outbound migration channel.
- #
-@@ -1371,8 +1346,7 @@
- 
- ##
- # @MigrationChannel:
--#
--# Migration stream channel parameters.
-+#     Migration stream channel parameters.
- #
- # @channel-type: Channel type for transferring packet information.
- #
-@@ -1387,8 +1361,7 @@
- 
- ##
- # @migrate:
--#
--# Migrates the current running guest to another Virtual Machine.
-+#     Migrates the current running guest to another Virtual Machine.
- #
- # @uri: the Uniform Resource Identifier of the destination VM
- #
-@@ -1464,9 +1437,8 @@
- 
- ##
- # @migrate-incoming:
--#
--# Start an incoming migration.  QEMU must have been started with
--# -incoming defer.
-+#     Start an incoming migration.  QEMU must have been started with
-+#     -incoming defer.
- #
- # @uri: The Uniform Resource Identifier identifying the source or
- #     address to listen on
-@@ -1536,9 +1508,8 @@
- 
- ##
- # @xen-save-devices-state:
--#
--# Save the state of all devices to file.  The RAM and the block
--# devices of the VM are not saved by this command.
-+#     Save the state of all devices to file.  The RAM and the block
-+#     devices of the VM are not saved by this command.
- #
- # @filename: the file to save the state of the devices to as binary
- #     data.  See `xen-save-devices-state`.txt for a description of the
-@@ -1560,8 +1531,7 @@
- 
- ##
- # @xen-set-global-dirty-log:
--#
--# Enable or disable the global dirty log mode.
-+#     Enable or disable the global dirty log mode.
- #
- # @enable: true to enable, false to disable.
- #
-@@ -1577,9 +1547,8 @@
- 
- ##
- # @xen-load-devices-state:
--#
--# Load the state of all devices from file.  The RAM and the block
--# devices of the VM are not loaded by this command.
-+#     Load the state of all devices from file.  The RAM and the block
-+#     devices of the VM are not loaded by this command.
- #
- # @filename: the file to load the state of the devices from as binary
- #     data.  See `xen-save-devices-state`.txt for a description of the
-@@ -1597,8 +1566,7 @@
- 
- ##
- # @xen-set-replication:
--#
--# Enable or disable replication.
-+#     Enable or disable replication.
- #
- # @enable: true to enable, false to disable.
- #
-@@ -1621,8 +1589,7 @@
- 
- ##
- # @ReplicationStatus:
--#
--# The result format for `query-xen-replication-status`.
-+#     The result format for `query-xen-replication-status`.
- #
- # @error: true if an error happened, false if replication is normal.
- #
-@@ -1670,8 +1637,7 @@
- 
- ##
- # @COLOStatus:
--#
--# The result format for `query-colo-status`.
-+#     The result format for `query-colo-status`.
- #
- # @mode: COLO running mode.  If COLO is running, this field will
- #     return 'primary' or 'secondary'.
-@@ -1709,8 +1675,7 @@
- 
- ##
- # @migrate-recover:
--#
--# Provide a recovery migration stream URI.
-+#     Provide a recovery migration stream URI.
- #
- # @uri: the URI to be used for the recovery of migration stream.
- #
-@@ -1742,11 +1707,10 @@
- 
- ##
- # @UNPLUG_PRIMARY:
--#
--# Emitted from source side of a migration when migration state is
--# WAIT_UNPLUG.  Device was unplugged by guest operating system.
--# Device resources in QEMU are kept on standby to be able to re-plug
--# it in case of migration failure.
-+#     Emitted from source side of a migration when migration state is
-+#     WAIT_UNPLUG.  Device was unplugged by guest operating system.
-+#     Device resources in QEMU are kept on standby to be able to
-+#     re-plug it in case of migration failure.
- #
- # @device-id: QEMU device id of the unplugged device
- #
-@@ -1763,8 +1727,7 @@
- 
- ##
- # @DirtyRateVcpu:
--#
--# Dirty rate of vcpu.
-+#     Dirty rate of vcpu.
- #
- # @id: vcpu index.
- #
-@@ -1777,8 +1740,7 @@
- 
- ##
- # @DirtyRateStatus:
--#
--# Dirty page rate measurement status.
-+#     Dirty page rate measurement status.
- #
- # @unstarted: measuring thread has not been started yet
- #
-@@ -1793,9 +1755,8 @@
- 
- ##
- # @DirtyRateMeasureMode:
--#
--# Method used to measure dirty page rate.  Differences between
--# available methods are explained in `calc-dirty-rate`.
-+#     Method used to measure dirty page rate.  Differences between
-+#     available methods are explained in `calc-dirty-rate`.
- #
- # @page-sampling: use page sampling
- #
-@@ -1810,8 +1771,7 @@
- 
- ##
- # @TimeUnit:
--#
--# Specifies unit in which time-related value is specified.
-+#     Specifies unit in which time-related value is specified.
- #
- # @second: value is in seconds
- #
-@@ -1824,8 +1784,7 @@
- 
- ##
- # @DirtyRateInfo:
--#
--# Information about measured dirty page rate.
-+#     Information about measured dirty page rate.
- #
- # @dirty-rate: an estimate of the dirty page rate of the VM in units
- #     of MiB/s.  Value is present only when @status is 'measured'.
-@@ -1935,8 +1894,8 @@
- 
- ##
- # @query-dirty-rate:
--#
--# Query results of the most recent invocation of `calc-dirty-rate`.
-+#     Query results of the most recent invocation of
-+#     `calc-dirty-rate`.
- #
- # @calc-time-unit: time unit in which to report calculation time.
- #     By default it is reported in seconds.  (Since 8.2)
-@@ -1962,8 +1921,7 @@
- 
- ##
- # @DirtyLimitInfo:
--#
--# Dirty page rate limit information of a virtual CPU.
-+#     Dirty page rate limit information of a virtual CPU.
- #
- # @cpu-index: index of a virtual CPU.
- #
-@@ -2029,8 +1987,8 @@
- 
- ##
- # @query-vcpu-dirty-limit:
--#
--# Return information about virtual CPU dirty page rate limits, if any.
-+#     Return information about virtual CPU dirty page rate limits, if
-+#     any.
- #
- # Since: 7.1
- #
-@@ -2046,8 +2004,7 @@
- 
- ##
- # @snapshot-save:
--#
--# Save a VM snapshot
-+#     Save a VM snapshot
- #
- # @job-id: identifier for the newly created job
- #
-@@ -2118,8 +2075,7 @@
- 
- ##
- # @snapshot-load:
--#
--# Load a VM snapshot
-+#     Load a VM snapshot
- #
- # @job-id: identifier for the newly created job
- #
-@@ -2188,8 +2144,7 @@
- 
- ##
- # @snapshot-delete:
--#
--# Delete a VM snapshot
-+#     Delete a VM snapshot
- #
- # @job-id: identifier for the newly created job
+ # @alg: encryption cipher algorithm
  #
 -- 
 2.55.0
