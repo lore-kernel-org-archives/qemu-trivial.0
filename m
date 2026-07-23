@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56888C4452B
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:54:57 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DAC98C4452B
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:55:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlRF-0004Rf-D4; Thu, 23 Jul 2026 00:53:41 -0400
+	id 1wmlSG-00068I-DV; Thu, 23 Jul 2026 00:54:44 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlRB-0004It-MP
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:38 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlSE-00063r-Uf
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:54:42 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlR9-0004wa-T8
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:37 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlSD-00055e-4N
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:54:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782415;
+ s=mimecast20190719; t=1784782480;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=5/2uhrWWVYdwPSV/13kr7Ak4m/dnZp9BNOXlkV3GBQo=;
- b=BlU++eKenq1ZgrRqsAOTCnQ8w8/HU1KnaDJyN5Pvw/noCn72PHQ76XskZwdhFzp9/YDlCB
- 27kaCJgEWu8ql3BPT4kpR0uYyTbo6lRvS5JvIpKWfiKCdIDZP/yDXxWiF3Oa7rkeaQXlS2
- JPr4yYhNLn/kMEtderZ8guHCmU1p7lQ=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=pYJwMcbrtQiolDG35OJu9PXoTbvWWWpVq26QLgHqBgg=;
+ b=Ia8oBkAuyPwpQrhoxw6ZK2/SUh3ksYYDd/JULyYNH9sYhEeM7EtZHm/KbPelZ24icM2abe
+ bBlsI39qD2JqcafNC3ZZzZ6QpR0o/+skpfnmKTfM6sy9IfdLO3HBDccDeQGdRSwRVjvMCo
+ ipAxqv7cK5Vk+3k5LZZAKphusAiq7ow=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-141-yJMV-JLBMomuOkDWls3wDg-1; Thu,
- 23 Jul 2026 00:53:29 -0400
-X-MC-Unique: yJMV-JLBMomuOkDWls3wDg-1
-X-Mimecast-MFC-AGG-ID: yJMV-JLBMomuOkDWls3wDg_1784782406
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-221-olmRqzpzNQO5IiURxRhHVA-1; Thu,
+ 23 Jul 2026 00:54:35 -0400
+X-MC-Unique: olmRqzpzNQO5IiURxRhHVA-1
+X-Mimecast-MFC-AGG-ID: olmRqzpzNQO5IiURxRhHVA_1784782473
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AFAF71800759; Thu, 23 Jul 2026 04:53:26 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0E00118E6A47; Thu, 23 Jul 2026 04:54:33 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5BFBC18002AE; Thu, 23 Jul 2026 04:53:17 +0000 (UTC)
+ id 61D61180029D; Thu, 23 Jul 2026 04:54:24 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,26 +73,26 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 31/44] qapi: convert intro sections for audio.json
-Date: Thu, 23 Jul 2026 00:47:52 -0400
-Message-ID: <20260723044805.527643-32-jsnow@redhat.com>
+Subject: [PATCH v2 38/44] qapi: convert intro sections for virtio.json
+Date: Thu, 23 Jul 2026 00:47:59 -0400
+Message-ID: <20260723044805.527643-39-jsnow@redhat.com>
 In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: uyEdqpFu481Pj92O66ufNrgNknNiAitEfxkgSZj-fag_1784782406
+X-Mimecast-MFC-PROC-ID: HgEkE3dXzOwLLcYH60_mAj389RRuWr2sZVH4MYvSxhQ_1784782473
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: permerror client-ip=170.10.129.124;
  envelope-from=jsnow@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,268 +112,243 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/audio.json | 88 ++++++++++++++++++-------------------------------
- 1 file changed, 32 insertions(+), 56 deletions(-)
+ qapi/virtio.json | 91 +++++++++++++++++++-----------------------------
+ 1 file changed, 36 insertions(+), 55 deletions(-)
 
-diff --git a/qapi/audio.json b/qapi/audio.json
-index 2df87b97101..72190f20993 100644
---- a/qapi/audio.json
-+++ b/qapi/audio.json
-@@ -14,9 +14,8 @@
+diff --git a/qapi/virtio.json b/qapi/virtio.json
+index 1fc4e38a44d..0a4753cc343 100644
+--- a/qapi/virtio.json
++++ b/qapi/virtio.json
+@@ -10,8 +10,7 @@
  
  ##
- # @AudiodevPerDirectionOptions:
+ # @VirtioInfo:
 -#
--# General audio backend options that are used for both playback and
--# recording.
-+#     General audio backend options that are used for both playback
-+#     and recording.
+-# Basic information about a given VirtIODevice
++#     Basic information about a given VirtIODevice
  #
- # @mixing-engine: use QEMU's mixing engine to mix all streams inside
- #     QEMU and convert audio formats when not supported by the
-@@ -53,8 +52,7 @@
+ # @path: The VirtIODevice's canonical QOM path
+ #
+@@ -25,8 +24,7 @@
  
  ##
- # @AudiodevGenericOptions:
+ # @x-query-virtio:
 -#
--# Generic driver-specific options.
-+#     Generic driver-specific options.
+-# Return a list of all realized VirtIODevices
++#     Return a list of all realized VirtIODevices
  #
- # @in: options of the capture stream
+ # Features:
  #
-@@ -69,8 +67,7 @@
+@@ -69,9 +67,8 @@
  
  ##
- # @AudiodevDBusOptions:
+ # @VhostStatus:
 -#
--# Options of the D-Bus audio backend.
-+#     Options of the D-Bus audio backend.
+-# Information about a vhost device.  This information will only be
+-# displayed if the vhost device is active.
++#     Information about a vhost device.  This information will only be
++#     displayed if the vhost device is active.
  #
- # @in: options of the capture stream
+ # @n-mem-sections: vhost_dev n_mem_sections
  #
-@@ -89,9 +86,8 @@
+@@ -112,10 +109,9 @@
  
  ##
- # @AudiodevAlsaPerDirectionOptions:
+ # @VirtioStatus:
 -#
--# Options of the ALSA backend that are used for both playback and
--# recording.
-+#     Options of the ALSA backend that are used for both playback and
-+#     recording.
+-# Full status of the virtio device with most VirtIODevice members.
+-# Also includes the full status of the corresponding vhost device if
+-# the vhost device is active.
++#     Full status of the virtio device with most VirtIODevice members.
++#     Also includes the full status of the corresponding vhost device
++#     if the vhost device is active.
  #
- # @dev: the name of the ALSA device to use (default 'default')
+ # @name: VirtIODevice name
  #
-@@ -111,8 +107,7 @@
+@@ -189,8 +185,7 @@
  
  ##
- # @AudiodevAlsaOptions:
+ # @x-query-virtio-status:
 -#
--# Options of the ALSA audio backend.
-+#     Options of the ALSA audio backend.
+-# Poll for a comprehensive status of a given virtio device
++#     Poll for a comprehensive status of a given virtio device
  #
- # @in: options of the capture stream
+ # @path: Canonical QOM path of the VirtIODevice
  #
-@@ -130,8 +125,7 @@
+@@ -442,9 +437,8 @@
  
  ##
- # @AudiodevSndioOptions:
+ # @VirtioDeviceStatus:
 -#
--# Options of the sndio audio backend.
-+#     Options of the sndio audio backend.
+-# A structure defined to list the configuration statuses of a virtio
+-# device
++#     A structure defined to list the configuration statuses of a
++#     virtio device
  #
- # @in: options of the capture stream
- #
-@@ -152,9 +146,8 @@
+ # @statuses: List of decoded configuration statuses of the virtio
+ #     device
+@@ -460,9 +454,8 @@
  
  ##
- # @AudiodevCoreaudioPerDirectionOptions:
+ # @VhostDeviceProtocols:
 -#
--# Options of the Core Audio backend that are used for both playback
--# and recording.
-+#     Options of the Core Audio backend that are used for both
-+#     playback and recording.
+-# A structure defined to list the vhost user protocol features of a
+-# Vhost User device
++#     A structure defined to list the vhost user protocol features of
++#     a Vhost User device
  #
- # @buffer-count: number of buffers
- #
-@@ -167,8 +160,7 @@
+ # @protocols: List of decoded vhost user protocol features of a vhost
+ #     user device
+@@ -478,9 +471,9 @@
  
  ##
- # @AudiodevCoreaudioOptions:
+ # @VirtioDeviceFeatures:
 -#
--# Options of the coreaudio audio backend.
-+#     Options of the coreaudio audio backend.
+-# The common fields that apply to most Virtio devices.  Some devices
+-# may not have their own device-specific features (e.g. virtio-rng).
++#     The common fields that apply to most Virtio devices.  Some
++#     devices may not have their own device-specific features
++#     (e.g. virtio-rng).
  #
- # @in: options of the capture stream
+ # @transports: List of transport features of the virtio device
  #
-@@ -183,8 +175,7 @@
+@@ -503,9 +496,8 @@
  
  ##
- # @AudiodevDsoundOptions:
+ # @VirtQueueStatus:
 -#
--# Options of the DirectSound audio backend.
-+#     Options of the DirectSound audio backend.
+-# Information of a VirtIODevice VirtQueue, including most members of
+-# the VirtQueue data structure.
++#     Information of a VirtIODevice VirtQueue, including most members
++#     of the VirtQueue data structure.
  #
- # @in: options of the capture stream
+ # @name: Name of the VirtIODevice that uses this VirtQueue
  #
-@@ -203,9 +194,8 @@
+@@ -556,8 +548,7 @@
  
  ##
- # @AudiodevJackPerDirectionOptions:
+ # @x-query-virtio-queue-status:
 -#
--# Options of the JACK backend that are used for both playback and
--# recording.
-+#     Options of the JACK backend that are used for both playback and
-+#     recording.
+-# Return the status of a given VirtIODevice's VirtQueue
++#     Return the status of a given VirtIODevice's VirtQueue
  #
- # @server-name: select from among several possible concurrent server
- #     instances (default: environment variable $JACK_DEFAULT_SERVER if
-@@ -237,8 +227,7 @@
+ # @path: VirtIODevice canonical QOM path
+ #
+@@ -640,9 +631,8 @@
  
  ##
- # @AudiodevJackOptions:
+ # @VirtVhostQueueStatus:
 -#
--# Options of the JACK audio backend.
-+#     Options of the JACK audio backend.
+-# Information of a vhost device's vhost_virtqueue, including most
+-# members of the vhost_dev vhost_virtqueue data structure.
++#     Information of a vhost device's vhost_virtqueue, including most
++#     members of the vhost_dev vhost_virtqueue data structure.
  #
- # @in: options of the capture stream
+ # @name: Name of the VirtIODevice that uses this vhost_virtqueue
  #
-@@ -253,9 +242,8 @@
+@@ -682,8 +672,7 @@
  
  ##
- # @AudiodevOssPerDirectionOptions:
+ # @x-query-virtio-vhost-queue-status:
 -#
--# Options of the OSS backend that are used for both playback and
--# recording.
-+#     Options of the OSS backend that are used for both playback and
-+#     recording.
+-# Return information of a given vhost device's vhost_virtqueue
++#     Return information of a given vhost device's vhost_virtqueue
  #
- # @dev: file name of the OSS device (default '/dev/dsp')
+ # @path: VirtIODevice canonical QOM path
  #
-@@ -275,8 +263,7 @@
+@@ -746,8 +735,7 @@
  
  ##
- # @AudiodevOssOptions:
+ # @VirtioRingDesc:
 -#
--# Options of the OSS audio backend.
-+#     Options of the OSS audio backend.
+-# Information regarding the vring descriptor area
++#     Information regarding the vring descriptor area
  #
- # @in: options of the capture stream
+ # @addr: Guest physical address of the descriptor area
  #
-@@ -305,9 +292,8 @@
+@@ -764,8 +752,7 @@
  
  ##
- # @AudiodevPaPerDirectionOptions:
+ # @VirtioRingAvail:
 -#
--# Options of the Pulseaudio backend that are used for both playback
--# and recording.
-+#     Options of the Pulseaudio backend that are used for both
-+#     playback and recording.
+-# Information regarding the avail vring (a.k.a. driver area)
++#     Information regarding the avail vring (a.k.a. driver area)
  #
- # @name: name of the sink/source to use
+ # @flags: VRingAvail flags
  #
-@@ -330,8 +316,7 @@
+@@ -782,8 +769,7 @@
  
  ##
- # @AudiodevPaOptions:
+ # @VirtioRingUsed:
 -#
--# Options of the PulseAudio audio backend.
-+#     Options of the PulseAudio audio backend.
+-# Information regarding the used vring (a.k.a. device area)
++#     Information regarding the used vring (a.k.a. device area)
  #
- # @in: options of the capture stream
+ # @flags: VRingUsed flags
  #
-@@ -349,9 +334,8 @@
+@@ -797,9 +783,8 @@
  
  ##
- # @AudiodevPipewirePerDirectionOptions:
+ # @VirtioQueueElement:
 -#
--# Options of the PipeWire backend that are used for both playback and
--# recording.
-+#     Options of the PipeWire backend that are used for both playback
-+#     and recording.
+-# Information regarding a VirtQueue's VirtQueueElement including
+-# descriptor, driver, and device areas
++#     Information regarding a VirtQueue's VirtQueueElement including
++#     descriptor, driver, and device areas
  #
- # @name: name of the sink/source to use
+ # @name: Name of the VirtIODevice that uses this VirtQueue
  #
-@@ -374,8 +358,7 @@
+@@ -822,8 +807,7 @@
  
  ##
- # @AudiodevPipewireOptions:
+ # @x-query-virtio-queue-element:
 -#
--# Options of the PipeWire audio backend.
-+#     Options of the PipeWire audio backend.
+-# Return the information about a VirtQueue's VirtQueueElement
++#     Return the information about a VirtQueue's VirtQueueElement
  #
- # @in: options of the capture stream
+ # @path: VirtIODevice canonical QOM path
  #
-@@ -390,9 +373,8 @@
+@@ -933,8 +917,7 @@
  
  ##
- # @AudiodevSdlPerDirectionOptions:
+ # @IOThreadVirtQueueMapping:
 -#
--# Options of the SDL audio backend that are used for both playback and
--# recording.
-+#     Options of the SDL audio backend that are used for both playback
-+#     and recording.
+-# Describes the subset of virtqueues assigned to an IOThread.
++#     Describes the subset of virtqueues assigned to an IOThread.
  #
- # @buffer-count: number of buffers (default 4)
+ # @iothread: the id of IOThread object
  #
-@@ -405,8 +387,7 @@
+@@ -951,13 +934,12 @@
  
  ##
- # @AudiodevSdlOptions:
+ # @VirtIOGPUOutput:
 -#
--# Options of the SDL audio backend.
-+#     Options of the SDL audio backend.
+-# Describes configuration of a VirtIO GPU output.  If both @xres and
+-# @yres are set, they take precedence over root virtio-gpu resolution
+-# configuration and enable the corresponding output.  If none of @xres
+-# and @yres are set, root virtio-gpu resolution configuration takes
+-# precedence and only the first output is enabled.  Only setting one
+-# of @xres or @yres is an error.
++#     Describes configuration of a VirtIO GPU output.  If both @xres
++#     and @yres are set, they take precedence over root virtio-gpu
++#     resolution configuration and enable the corresponding output.
++#     If none of @xres and @yres are set, root virtio-gpu resolution
++#     configuration takes precedence and only the first output is
++#     enabled.  Only setting one of @xres or @yres is an error.
  #
- # @in: options of the recording stream
+ # @name: the name of the output
  #
-@@ -421,8 +402,7 @@
+@@ -973,9 +955,8 @@
  
  ##
- # @AudiodevWavOptions:
+ # @DummyVirtioForceArrays:
 -#
--# Options of the wav audio backend.
-+#     Options of the wav audio backend.
+-# Not used by QMP; hack to let us use IOThreadVirtQueueMappingList and
+-# VirtIOGPUOutputList internally
++#     Not used by QMP; hack to let us use IOThreadVirtQueueMappingList
++#     and VirtIOGPUOutputList internally
  #
- # @in: options of the capture stream
- #
-@@ -440,8 +420,7 @@
- 
- ##
- # @AudioFormat:
--#
--# An enumeration of possible audio formats.
-+#     An enumeration of possible audio formats.
- #
- # @u8: unsigned 8 bit integer
- #
-@@ -464,8 +443,7 @@
- 
- ##
- # @AudiodevDriver:
--#
--# An enumeration of possible audio backend drivers.
-+#     An enumeration of possible audio backend drivers.
- #
- # @jack: JACK audio backend (since 5.1)
- #
-@@ -488,8 +466,7 @@
- 
- ##
- # @Audiodev:
--#
--# Options of an audio backend.
-+#     Options of an audio backend.
- #
- # @id: identifier of the backend
- #
-@@ -534,8 +511,7 @@
- 
- ##
- # @query-audiodevs:
--#
--# Return information about audiodev configuration
-+#     Return information about audiodev configuration
- #
- # Since: 8.0
+ # Since: 9.0
  ##
 -- 
 2.55.0
