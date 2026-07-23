@@ -4,140 +4,142 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A7B73C531CB
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 12:28:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 22003C531CA
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 12:36:31 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmsWi-0004pk-FH; Thu, 23 Jul 2026 08:27:49 -0400
+	id 1wmsek-00077o-IZ; Thu, 23 Jul 2026 08:36:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wmsWe-0004p5-2U
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 08:27:45 -0400
-Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wmsei-00071I-GA
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 08:36:04 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wmsWc-0006pK-1p
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 08:27:43 -0400
-Received: from pps.filterd (m0279862.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66NC6AqH3833705
- for <qemu-trivial@nongnu.org>; Thu, 23 Jul 2026 12:27:40 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- xNphbIzswM9eFwLcfCGZbRoQNelEB99q8hXmKnFIwF0=; b=FpxwZrfBb8LrKrGA
- 839s7w3CeR03Z1WpZ5jK1d7k2M5RXY/nJyr6XyBxRwEYzlea9AYeyyYqJRZGiJl7
- 3rTg5ljK0JG41rZ9LAbtuJMl6aKwM1BJbxWtyV+AAxwhREGFI5bKRyNcsT7ip96v
- HGyisxtikKiIIVzkYYWjeZq1s01dGfZJB+N5tJsiiEUi5scEzdKqn5279nNsv3Pd
- diRyebJgcFqM28yEGT5Ch7TtKoUPgNBPCxn7X6TNF/gUDRstB1dwvw8cyDGGbKVv
- HpqtmEbXxl8mwAu6RLzLun+PMFwdQE5Z50GTtpj5SIK+wPvvv0dI2Maa91muL7Qe
- leXyAg==
-Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
- [209.85.160.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4fkjnu82y2-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-trivial@nongnu.org>; Thu, 23 Jul 2026 12:27:39 +0000 (GMT)
-Received: by mail-qt1-f197.google.com with SMTP id
- d75a77b69052e-5174a236220so11198911cf.3
- for <qemu-trivial@nongnu.org>; Thu, 23 Jul 2026 05:27:39 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1784809659; x=1785414459; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=xNphbIzswM9eFwLcfCGZbRoQNelEB99q8hXmKnFIwF0=;
- b=VjoDK9WE7lSSBqHLHv2RK+Y4wMfJR4pDNft0JFC03o9ApRqHsWEzMg3IuSfDPcLSxe
- /SFfdUVDmMkkZtW6Ax2UjBPzo6ZDb5x7fCccKHA8UJLAm9zHU6yDu9Cu9w3w7IMlBZu8
- PoJKjAj7i8hmzQyYl3ungYVRNHM/lNr6wMgzTNcr9K3RfeQfYXoRwU6BvQOROGQF1nFn
- /s9gOkgPDA793xfZSMhv5gzYpRsRE+V8Mq41L9J/+DRYO6E73AOJMnJJadidcGf5n6X7
- 848LIZ2/uBt3N+tx3cCcMLKHykZmtTbP5n/GzsOVMFb+PCucFn+1s+Gdho9A4c5zHOsW
- XA9g==
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wmsef-0008DR-Vp
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 08:36:04 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1784810160;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references:autocrypt:autocrypt;
+ bh=BVau9WPUbYxRVA7cZE5d3C4eyjM7GlceSeM3jGravfw=;
+ b=dEBzIVLgXGSADSIsoJkZIMS/dfyX+witKHBitaK+QyDDFH/KRDhiKjawBVEXaa5ioM4uV0
+ 1QWJf24zdLvLkMAqF0JNgsvyAY0qc0fACRFH4h5z3qr/30QQnBYxv0ggvBerzDrS4fQ5+1
+ m9ebvL7pRNh8zc1cBKdgtEfb5QCeFjE=
+Received: from mail-wr1-f70.google.com (mail-wr1-f70.google.com
+ [209.85.221.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-139-k7iuVZAHNdmCJdGD1fWnGg-1; Thu, 23 Jul 2026 08:35:56 -0400
+X-MC-Unique: k7iuVZAHNdmCJdGD1fWnGg-1
+X-Mimecast-MFC-AGG-ID: k7iuVZAHNdmCJdGD1fWnGg_1784810156
+Received: by mail-wr1-f70.google.com with SMTP id
+ ffacd0b85a97d-47407691804so485053f8f.1
+ for <qemu-trivial@nongnu.org>; Thu, 23 Jul 2026 05:35:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1784809659; x=1785414459;
- h=content-transfer-encoding:content-type:in-reply-to:from:references
- :cc:to:content-language:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ d=1e100.net; s=20251104; t=1784810155; x=1785414955;
+ h=content-transfer-encoding:content-type:in-reply-to:autocrypt:from
+ :content-language:references:cc:to:subject:user-agent:mime-version
+ :date:message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
  :message-id:reply-to:content-type;
- bh=xNphbIzswM9eFwLcfCGZbRoQNelEB99q8hXmKnFIwF0=;
- b=SFgrhDeuYn1xeIN4Lm1Ihcph/4PyQH6PYGyyRLxqIhmce+Abcfr4wOAl9VoJsMtBVZ
- pxYpdrOWoaPk19rIHWDnUO9BxCSQFz7HrxC+3Dz7KG7CpZa7K8jeb531miBmq5nTMzSB
- wQJTRkdlrd4tuKLEgUhNMdl5SoDrvuuExvTwOZmMRcWAkxMY8zZPIK063HafDI/Z7jsV
- KubNaid9yAma8z2HOD1gS+cNmaBdxnREaPti6yIG++ffGv/k5s0kmtAja6mGWfnwo3ES
- LshVnhreTotuQ+DmG8QzIWOPPI0YpMUwg9SpzoxPHOE2ODQ4PYD0syxMxR1TikO6kUlU
- Upuw==
-X-Gm-Message-State: AOJu0YyQqyE1nv1oBwdsrdEst8W/TV1GPBnjlnIFHabU1HxdMh3dILyh
- pZ/7TAA58So2xbwfQbeLBr+wchgWTgwSzFE/q4uvBma7tvYb/FRR2xz4EYqLD2U6TR0FBAf92ro
- Ocg/EkxbU+5zMKLm1bvmSythHfRWtUAwxzqlmMj/03a8VwvZXIdlhVzsTubk8
-X-Gm-Gg: AR+sD114GiYKxF5Sk50/aSOC846OvJfxsaPGJD4YfjAED18kPBN7UJPj6sI/Z2KAsUe
- 659vw+uKHt/RGCOw+u7ekIDvYf9Uy/sqSKLj7tbjIK09ZLqBKDDfv16wmbY53zfqlIRVEkXbrag
- Hmvlera7D6izMLD3ovHn9snS+8FtUyu3pM450+QetmYpvekjktlt/CrgT6+k67mN9jscPJnSj7L
- YOCBGbxokyWGgY8u6oqpL6PuZurmFHZrjpaIx76Qm5zXxVvvysdEzNzKNAIV9Yiswtv2N3y1AQP
- oDOuZ5jicF3elA5HFe8gvlPiKSh6Qa2ARdQJc06VCfhr/1lfdb2gMDqlfjVLT+lednXZ4RgXUwg
- CmhdR13VhzSnhXGfX1nx08f+NJJ1KLCt6M7c8x9athgADIrqXwWc=
-X-Received: by 2002:a05:622a:14e:b0:521:556:e492 with SMTP id
- d75a77b69052e-5283e02ea57mr25781271cf.88.1784809658676; 
- Thu, 23 Jul 2026 05:27:38 -0700 (PDT)
-X-Received: by 2002:a05:622a:14e:b0:521:556:e492 with SMTP id
- d75a77b69052e-5283e02ea57mr25780841cf.88.1784809658152; 
- Thu, 23 Jul 2026 05:27:38 -0700 (PDT)
-Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-47f85c6f076sm15665397f8f.34.2026.07.23.05.27.37
+ bh=BVau9WPUbYxRVA7cZE5d3C4eyjM7GlceSeM3jGravfw=;
+ b=GrBBhZU3gxh5uD5K5UFMvyP8Pxlm+3RcLapXNxiwAPnj37z1Qp5mJAHf6mtvpmKPEL
+ VbPIqMSYXr2MEDZzqoSqPrKHqFnZ+Lu0r6ofFcVrYHB1zBZKpWr6PjUhw0I0zExuV80L
+ ITNCP2Bw2mX4DxmkOhwUCMw818ITOpBad8y8BeE2eCsiuTW5sNGFPZmB8MrG3/Rc0vVn
+ lI5aGmwmUmpmCD34hPb8JzCFTNJew2L7Off4AcxYxfyMJCHILZ/mrUVnOOIhWTnOhpoF
+ zY//QViISNQb/jwUu0byGEvZUo7OStZiiiS/tU1Mm+gWwhTDtVhq3BaqEScGoi4Bquz1
+ NviQ==
+X-Gm-Message-State: AOJu0YxD4qSpNIvAVQXb1ZRH9WZKCtpwMW2bOY1T91OWvQa1ufbJ0u6M
+ 2a5WGfMkEC8MQRG3Acuf0K/hZeFzOe2MCc6UVwLVjcJ+Bc8e/tphR1SjG6578iDGGCkzt7ZdjV8
+ u+gNIVDl0RC+YE9OeDded2TMseQKPklMeA2ZLHF1PV4lK2OuevfdLBaxb44I=
+X-Gm-Gg: AR+sD13HX0XFwjvb46W6sOk/95KQx4Ut4pIhUbeZFEQgZkNmbCVagKlCIx1VCQ6hut2
+ xD/H6o8IHGF36gQ9ilr6669UjgRqhionLda9NG8zXuyS5YxTxoFdsiNKwTXqFZDV6P6risCbcXQ
+ x5m2inKG9hVF+wMyMWhPrAD9O+3vQ8MsxDD+tGc+us5GqrgM59lCONlI3Z1/qiLqkPQ76oYjTNT
+ 5gbdQApn6B56wNrRGYkvGFNMsAKiIRR0FwuGV21ELtH3o7eoBwPF5zZhBdbrwS5GTOc86ApMqgp
+ mxSWC3zoABbO2g0u7D3ZmmK7ngUhQ0n1nf1RO3CWMektpeJk/9xLO72bFUklqERC2CTKhQBnIw=
+ =
+X-Received: by 2002:a05:6000:2904:b0:46e:624e:3c2f with SMTP id
+ ffacd0b85a97d-47f8dc8565cmr3547022f8f.47.1784810155533; 
+ Thu, 23 Jul 2026 05:35:55 -0700 (PDT)
+X-Received: by 2002:a05:6000:2904:b0:46e:624e:3c2f with SMTP id
+ ffacd0b85a97d-47f8dc8565cmr3546990f8f.47.1784810155110; 
+ Thu, 23 Jul 2026 05:35:55 -0700 (PDT)
+Received: from [192.168.0.9] ([47.64.113.188])
+ by smtp.gmail.com with ESMTPSA id
+ ffacd0b85a97d-47f8635c8d7sm14097799f8f.21.2026.07.23.05.35.53
  (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 23 Jul 2026 05:27:37 -0700 (PDT)
-Message-ID: <d934b1b8-d639-420c-9974-f728fb752bbd@oss.qualcomm.com>
-Date: Thu, 23 Jul 2026 14:27:36 +0200
+ Thu, 23 Jul 2026 05:35:53 -0700 (PDT)
+Message-ID: <a4e46837-e55a-4f9f-8ad5-03f490e39cf8@redhat.com>
+Date: Thu, 23 Jul 2026 14:35:52 +0200
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
 Subject: Re: [PATCH] hw/display/vmware_vga: Don't allow guest to trigger long
  running loop in host
-Content-Language: en-US
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>
+To: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ qemu-devel@nongnu.org, Dmitry Fleytman <dmitry.fleytman@gmail.com>
 Cc: qemu-trivial@nongnu.org, qemu-stable@nongnu.org
 References: <20260723120020.330089-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-In-Reply-To: <20260723120020.330089-1-thuth@redhat.com>
+ <d934b1b8-d639-420c-9974-f728fb752bbd@oss.qualcomm.com>
+From: Thomas Huth <thuth@redhat.com>
+Autocrypt: addr=thuth@redhat.com; keydata=
+ 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
+In-Reply-To: <d934b1b8-d639-420c-9974-f728fb752bbd@oss.qualcomm.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: W6gBS3MzKCOltwkN4x_p3RDC7RSkz2d4MbgNzPRJZ9o_1784810156
+X-Mimecast-Originator: redhat.com
+Content-Language: en-US
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 7bit
-X-Proofpoint-ORIG-GUID: VHH-6AgG7OeiYRiOT7f7LRJSlKUM-Pio
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzIzMDEyMyBTYWx0ZWRfX24VU7rVW/Dfp
- e8sqFZ3LJ4B1JFBPpT8Pt/bHYUycMBlrct0oZnMf6kGMi4ftA+YhsgFtFLYVB1NA6SgRNZcLhkG
- 2JCqb9/LfTCNEt3IbUe/gDzcoKMpWvxeM7EgabnxNYvcDQ+VUAfer8eKT+vG8XZ3g7jZkxXZ9SZ
- nAIC0gYd+Uwxj7rlB2va/4Pxvyuqw/FCVvhAsIqKvgd50k1PslLXeO1PgSZmnyniAFyLqxJJEMD
- zWJOd3Y1Uv1PsZl+WacpSt57//wdCAtAEOPyLAw/ZUBU9HTYQDs2kG07rXT2M3/Osw0m00I2ugY
- PiyK4zzy52fT/4CHqv90k+g+IFYCF3ic103jShV4rOrgHvMXaMQn06q3OxE5i1Wuz83NIIadMh2
- DRWuDShnKHv7OZDrjhc1rGS3S1MRlxOtTbxDL1b1/IWl0EC2eu9PrTubYgCZAJRfpUlonIFXGFf
- IaqhmOARfI9foi0JcPA==
-X-Authority-Analysis: v=2.4 cv=Een4hvmC c=1 sm=1 tr=0 ts=6a6208bb cx=c_pps
- a=EVbN6Ke/fEF3bsl7X48z0g==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=_K5XuSEh1TEqbUxoQ0s3:22
- a=p0WdMEafAAAA:8 a=20KFwNOVAAAA:8 a=J_-Nd1mkAAAA:8 a=AbWGNAM0AYlVCVsMptEA:9
- a=QEXdDO2ut3YA:10 a=a_PwQJl-kcHnX1M80qC6:22 a=n8ForQn92ZFaZtFqRdMw:22
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzIzMDEyMyBTYWx0ZWRfX506sL9hBQFX1
- qI3pghn0ZSE82SLRIVx9BfGUjvUdMOwQ5DKZ7GauQxpjmvjJQ+Z0TDvQZjqS7pyvwvvTrIfkSMb
- M1to/lG8xmVtql0Xrq2eoz8l6ohETP4=
-X-Proofpoint-GUID: VHH-6AgG7OeiYRiOT7f7LRJSlKUM-Pio
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-23_03,2026-07-22_02,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- lowpriorityscore=0 bulkscore=0 spamscore=0 priorityscore=1501 suspectscore=0
- malwarescore=0 impostorscore=0 clxscore=1015 adultscore=0 phishscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607230123
-Received-SPF: pass client-ip=205.220.168.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: permerror client-ip=170.10.129.124;
+ envelope-from=thuth@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.951,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -153,74 +155,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Hi Thomas,
+On 23/07/2026 14.27, Philippe Mathieu-Daudé wrote:
+> Hi Thomas,
+> 
+> On 23/7/26 14:00, Thomas Huth wrote:
+>> From: Thomas Huth <thuth@redhat.com>
+>>
+>> The code in the SVGA_CMD_DEFINE_ALPHA_CURSOR handler in vmsvga_fifo_run()
+>> basically does:
+>>
+>>              x = vmsvga_fifo_read(s);
+>>              y = vmsvga_fifo_read(s);
+>>              args = x * y;
+>>              goto badcmd;
+>>              ...
+>> badcmd:
+>>              len -= args;
+>>              if (len < 0) {
+>>                  goto rewind;
+>>              }
+>>              while (args--) {
+>>                  vmsvga_fifo_read(s);
+>>              }
+>>
+>> Thus by supplying huge values for x and y that overflow the result of
+>> the multiplication, the guest can trigger a long-running loop here
+>> that burns the host's CPU cycles.
+>>
+>> Add some sanity checks so that this cannot happen anymore.
+>>
+>> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3782
+>> Reported-by: Feifan Qian <bea1e@proton.me>
+>> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4026
+>> Reported-by: Tristan Madani <tristan@talencesecurity.com>
+>> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4076
+>> Reported-by: Sunday Jiang
+>> Signed-off-by: Thomas Huth <thuth@redhat.com>
+>> ---
+>>   hw/display/vmware_vga.c | 5 ++++-
+>>   1 file changed, 4 insertions(+), 1 deletion(-)
+>>
+>> diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
+>> index f6f9edfd1d9..04cc438cc02 100644
+>> --- a/hw/display/vmware_vga.c
+>> +++ b/hw/display/vmware_vga.c
+>> @@ -737,6 +737,9 @@ static void vmsvga_fifo_run(struct vmsvga_state_s *s)
+>>               vmsvga_fifo_read(s);
+>>               x = vmsvga_fifo_read(s);
+>>               y = vmsvga_fifo_read(s);
+>> +            if (x < 0 || x >= 32768 || y < 0 || y >= 32768) {
+> 
+> Maybe add a self-decribing definition instead of magic number?
+> 
+>    #define ALPHA_CURSOR_SAFE_LIMIT 32768 /* Arbitrary limit */
+> 
+> Otherwise LGTM.
 
-On 23/7/26 14:00, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
-> 
-> The code in the SVGA_CMD_DEFINE_ALPHA_CURSOR handler in vmsvga_fifo_run()
-> basically does:
-> 
->              x = vmsvga_fifo_read(s);
->              y = vmsvga_fifo_read(s);
->              args = x * y;
->              goto badcmd;
->              ...
-> badcmd:
->              len -= args;
->              if (len < 0) {
->                  goto rewind;
->              }
->              while (args--) {
->                  vmsvga_fifo_read(s);
->              }
-> 
-> Thus by supplying huge values for x and y that overflow the result of
-> the multiplication, the guest can trigger a long-running loop here
-> that burns the host's CPU cycles.
-> 
-> Add some sanity checks so that this cannot happen anymore.
-> 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3782
-> Reported-by: Feifan Qian <bea1e@proton.me>
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4026
-> Reported-by: Tristan Madani <tristan@talencesecurity.com>
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4076
-> Reported-by: Sunday Jiang
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   hw/display/vmware_vga.c | 5 ++++-
->   1 file changed, 4 insertions(+), 1 deletion(-)
-> 
-> diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-> index f6f9edfd1d9..04cc438cc02 100644
-> --- a/hw/display/vmware_vga.c
-> +++ b/hw/display/vmware_vga.c
-> @@ -737,6 +737,9 @@ static void vmsvga_fifo_run(struct vmsvga_state_s *s)
->               vmsvga_fifo_read(s);
->               x = vmsvga_fifo_read(s);
->               y = vmsvga_fifo_read(s);
-> +            if (x < 0 || x >= 32768 || y < 0 || y >= 32768) {
+There is already this in the code:
 
-Maybe add a self-decribing definition instead of magic number?
+#define SVGA_MAX_WIDTH                  2368
+#define SVGA_MAX_HEIGHT                 1770
 
-   #define ALPHA_CURSOR_SAFE_LIMIT 32768 /* Arbitrary limit */
+Shall I use those? WDYT?
 
-Otherwise LGTM.
+  Thomas
 
-> +                goto rewind;
-> +            }
->               args = x * y;
->               goto badcmd;
->           case SVGA_CMD_RECT_ROP_FILL:
-> @@ -776,7 +779,7 @@ static void vmsvga_fifo_run(struct vmsvga_state_s *s)
->               if (len < 0) {
->                   goto rewind;
->               }
-> -            while (args--) {
-> +            while (args-- > 0) {
->                   vmsvga_fifo_read(s);
->               }
->               printf("%s: Unknown command 0x%02x in SVGA command FIFO\n",
+>> +                goto rewind;
+>> +            }
+>>               args = x * y;
+>>               goto badcmd;
+>>           case SVGA_CMD_RECT_ROP_FILL:
+>> @@ -776,7 +779,7 @@ static void vmsvga_fifo_run(struct vmsvga_state_s *s)
+>>               if (len < 0) {
+>>                   goto rewind;
+>>               }
+>> -            while (args--) {
+>> +            while (args-- > 0) {
+>>                   vmsvga_fifo_read(s);
+>>               }
+>>               printf("%s: Unknown command 0x%02x in SVGA command FIFO\n",
+> 
 
 
