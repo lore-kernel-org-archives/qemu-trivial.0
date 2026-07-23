@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9FA38C44524
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:53:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B924EC4452B
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:53:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlQj-0003Tf-KK; Thu, 23 Jul 2026 00:53:09 -0400
+	id 1wmlQ9-0001uP-N1; Thu, 23 Jul 2026 00:52:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQi-0003M9-7y
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:08 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQ7-0001mk-Vb
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:52:32 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQf-0004qL-Cw
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:07 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQ6-0004hP-BM
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:52:31 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782384;
+ s=mimecast20190719; t=1784782349;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=BuLUJmRQbdL+tiBVb/y3st603k+nuJ/NK2BP1mGjFEM=;
- b=IqqoqqASdkQRI+R77welFyEcABVyWOKakwLcxRSUivq8MzaaABYN27IM5ljSDmLJZLaQff
- NOV557AlVHpJwFdesBpRAYUgNkQENS84bfphY7f2bD281xPep4yAYvQURYzRFMyYaTddFS
- 2bqncjWY3s0U8YMsS9589OYwfR0vjww=
+ bh=Qna4Kk34qAEZX+aFniaTwQbeBYZCyqG8FCN8r26Wd5s=;
+ b=Xaw4NX7+M6YHo5Xfi5K2lM4MaBokH+BxZ8r2juQ0rt/fSvFNf8+BJ8+2tXplKa9Ze0iYwD
+ olCcO1HsIkrAMRe3JtPog4dG5z9zjmdKr3qOPi7m894P9Tr50uvL4dUC3XZX4nZ3Wf8sg5
+ A1/QhSTbY8yuiGJrXeTrVXsXOZDRcG0=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-205-CFvqc4DOO3CwZcM_zo-wjQ-1; Thu,
- 23 Jul 2026 00:53:00 -0400
-X-MC-Unique: CFvqc4DOO3CwZcM_zo-wjQ-1
-X-Mimecast-MFC-AGG-ID: CFvqc4DOO3CwZcM_zo-wjQ_1784782377
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-41-SIM3_0RqMgO2nvYLk4Ic4Q-1; Thu,
+ 23 Jul 2026 00:52:24 -0400
+X-MC-Unique: SIM3_0RqMgO2nvYLk4Ic4Q-1
+X-Mimecast-MFC-AGG-ID: SIM3_0RqMgO2nvYLk4Ic4Q_1784782341
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3B2AC1805F18; Thu, 23 Jul 2026 04:52:57 +0000 (UTC)
+ id 12CB8180A8E0; Thu, 23 Jul 2026 04:52:21 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B996F18002B5; Thu, 23 Jul 2026 04:52:47 +0000 (UTC)
+ id 63B04180029D; Thu, 23 Jul 2026 04:52:11 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,14 +73,14 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 28/44] qapi: convert intro sections for rocker.json
-Date: Thu, 23 Jul 2026 00:47:49 -0400
-Message-ID: <20260723044805.527643-29-jsnow@redhat.com>
+Subject: [PATCH v2 24/44] qapi: convert trivial intro sections for stats.json
+Date: Thu, 23 Jul 2026 00:47:45 -0400
+Message-ID: <20260723044805.527643-25-jsnow@redhat.com>
 In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: ZB8y1eQmj9VSx4jBRIZKQTNPOYAWwF47mWn1u0kOI4E_1784782377
+X-Mimecast-MFC-PROC-ID: ubaO4Go911GfJ4LmGxxgt8y9gSIVVVtK10bLkemCBb4_1784782341
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -112,142 +112,109 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/rocker.json | 39 +++++++++++++--------------------------
- 1 file changed, 13 insertions(+), 26 deletions(-)
+ qapi/stats.json | 34 +++++++++++++---------------------
+ 1 file changed, 13 insertions(+), 21 deletions(-)
 
-diff --git a/qapi/rocker.json b/qapi/rocker.json
-index 5d2dbd26034..7eb0a88dafd 100644
---- a/qapi/rocker.json
-+++ b/qapi/rocker.json
-@@ -9,8 +9,7 @@
+diff --git a/qapi/stats.json b/qapi/stats.json
+index a98624531c3..af57ec08546 100644
+--- a/qapi/stats.json
++++ b/qapi/stats.json
+@@ -16,8 +16,7 @@
  
  ##
- # @RockerSwitch:
+ # @StatsType:
 -#
--# Rocker switch information.
-+#     Rocker switch information.
+-# Enumeration of statistics types
++#     Enumeration of statistics types
  #
- # @name: switch name
+ # @cumulative: stat is cumulative; value can only increase.
  #
-@@ -25,8 +24,7 @@
+@@ -38,8 +37,7 @@
  
  ##
- # @query-rocker:
+ # @StatsUnit:
 -#
--# Return rocker switch information.
-+#     Return rocker switch information.
+-# Enumeration of unit of measurement for statistics
++#     Enumeration of unit of measurement for statistics
  #
- # @name: switch name
+ # @bytes: stat reported in bytes.
  #
-@@ -43,8 +41,7 @@
+@@ -56,8 +54,7 @@
  
  ##
- # @RockerPortDuplex:
+ # @StatsProvider:
 -#
--# An enumeration of port duplex states.
-+#     An enumeration of port duplex states.
+-# Enumeration of statistics providers.
++#     Enumeration of statistics providers.
  #
- # @half: half duplex
+ # @kvm: since 7.1
  #
-@@ -56,8 +53,7 @@
+@@ -70,8 +67,7 @@
  
  ##
- # @RockerPortAutoneg:
+ # @StatsTarget:
 -#
--# An enumeration of port autoneg states.
-+#     An enumeration of port autoneg states.
+-# The kinds of objects on which one can request statistics.
++#     The kinds of objects on which one can request statistics.
  #
- # @off: autoneg is off
- #
-@@ -69,8 +65,7 @@
+ # @vm: statistics that apply to the entire virtual machine or the
+ #     entire QEMU process.
+@@ -87,9 +83,8 @@
  
  ##
- # @RockerPort:
+ # @StatsRequest:
 -#
--# Rocker switch port information.
-+#     Rocker switch port information.
+-# Indicates a set of statistics that should be returned by
+-# `query-stats`.
++#     Indicates a set of statistics that should be returned by
++#     `query-stats`.
  #
- # @name: port name
+ # @provider: provider for which to return statistics.
  #
-@@ -93,8 +88,7 @@
+@@ -113,10 +108,9 @@
  
  ##
- # @query-rocker-ports:
+ # @StatsFilter:
 -#
--# Return rocker switch port information.
-+#     Return rocker switch port information.
+-# The arguments to the `query-stats` command; specifies a target for
+-# which to request statistics and optionally the required subset of
+-# information for that target.
++#     The arguments to the `query-stats` command; specifies a target
++#     for which to request statistics and optionally the required
++#     subset of information for that target.
  #
- # @name: port name
- #
-@@ -115,8 +109,7 @@
+ # @target: the kind of objects to query.  Note that each possible
+ #     target may enable additional filtering options
+@@ -200,8 +194,7 @@
  
  ##
- # @RockerOfDpaFlowKey:
+ # @StatsSchemaValue:
 -#
--# Rocker switch OF-DPA flow key
-+#     Rocker switch OF-DPA flow key
+-# Schema for a single statistic.
++#     Schema for a single statistic.
  #
- # @priority: key priority, 0 being lowest priority
- #
-@@ -153,8 +146,7 @@
+ # @name: name of the statistic; each element of the schema is uniquely
+ #     identified by a target, a provider (both available in
+@@ -236,8 +229,7 @@
  
  ##
- # @RockerOfDpaFlowMask:
+ # @StatsSchema:
 -#
--# Rocker switch OF-DPA flow mask
-+#     Rocker switch OF-DPA flow mask
+-# Schema for all available statistics for a provider and target.
++#     Schema for all available statistics for a provider and target.
  #
- # @in-pport: physical input port
+ # @provider: provider for this set of statistics.
  #
-@@ -182,8 +174,7 @@
+@@ -255,8 +247,8 @@
  
  ##
- # @RockerOfDpaFlowAction:
+ # @query-stats-schemas:
 -#
--# Rocker switch OF-DPA flow action
-+#     Rocker switch OF-DPA flow action
+-# Return the schema for all available runtime-collected statistics.
++#     Return the schema for all available runtime-collected
++#     statistics.
  #
- # @goto-tbl: next table ID
- #
-@@ -209,8 +200,7 @@
- 
- ##
- # @RockerOfDpaFlow:
--#
--# Rocker switch OF-DPA flow
-+#     Rocker switch OF-DPA flow
- #
- # @cookie: flow unique cookie ID
- #
-@@ -230,8 +220,7 @@
- 
- ##
- # @query-rocker-of-dpa-flows:
--#
--# Return rocker OF-DPA flow information.
-+#     Return rocker OF-DPA flow information.
- #
- # @name: switch name
- #
-@@ -261,8 +250,7 @@
- 
- ##
- # @RockerOfDpaGroup:
--#
--# Rocker switch OF-DPA group
-+#     Rocker switch OF-DPA group
- #
- # @id: group unique ID
- #
-@@ -305,8 +293,7 @@
- 
- ##
- # @query-rocker-of-dpa-groups:
--#
--# Return rocker OF-DPA group information.
-+#     Return rocker OF-DPA group information.
- #
- # @name: switch name
+ # @provider: a provider to restrict the query to.
  #
 -- 
 2.55.0
