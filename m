@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0048AC531CA
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 13:02:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77535C531CA
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 13:04:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmt46-000157-6B; Thu, 23 Jul 2026 09:02:19 -0400
+	id 1wmt67-0003X9-FO; Thu, 23 Jul 2026 09:04:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wmt3T-0000rD-2W
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 09:01:58 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wmt5z-0003SN-Ul
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 09:04:16 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wmt3R-000447-GE
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 09:01:38 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wmt5y-0004GO-35
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 09:04:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784811694;
+ s=mimecast20190719; t=1784811852;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=Xy+7a6eZK+ojmfMOcpNV21XUG+/7yzFNRjjodlGqMaM=;
- b=TOorvDuLZLv7Xr6Qm782WUGUdrX6IKKkiHgIZAIYgZ78OnDfWz77YZnTaLdf3TlW8TxXAR
- vT1acH1Iap5q4qxs6LB1Q66fcXuC3LJOIEaxpHY1f5jPdoONt8TL3nKOo3vkSogwRB9l/K
- UhhQxy85zzzohIf0DuSyoj0FxgP3j90=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=xh791XMNZ2xgXLQL8lfLW+JBeKd2Y0/8ifrPwfkyRUs=;
+ b=ih+v44VPVNYzRV9kN2woySE8fNMGBCidYpa85R4yaDUnsPNEz0usHUo2PaRQbfV03mMv1J
+ NdD2wJU1PlyRTlUFTkZIiqg/JmzK7qg/I5+q7RcVJv62oYmaf2QmWtKqyKQNtbpdsiT31w
+ 3N10Chonj+LS7x4aBZkWFZMZyf0ZpTQ=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-327-TgHcgvvWPKiI1MiWK14ZGA-1; Thu,
- 23 Jul 2026 09:01:25 -0400
-X-MC-Unique: TgHcgvvWPKiI1MiWK14ZGA-1
-X-Mimecast-MFC-AGG-ID: TgHcgvvWPKiI1MiWK14ZGA_1784811683
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-513-yWYKGLyHPpeB9uaZg_Nlaw-1; Thu,
+ 23 Jul 2026 08:57:52 -0400
+X-MC-Unique: yWYKGLyHPpeB9uaZg_Nlaw-1
+X-Mimecast-MFC-AGG-ID: yWYKGLyHPpeB9uaZg_Nlaw_1784811469
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 47183180A970; Thu, 23 Jul 2026 13:01:22 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0909719540DC; Thu, 23 Jul 2026 12:57:47 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E8C4918002B5; Thu, 23 Jul 2026 13:01:20 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 0B6791956053; Thu, 23 Jul 2026 12:57:44 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 8C1B421E6920; Thu, 23 Jul 2026 15:01:18 +0200 (CEST)
+ id A065821E6920; Thu, 23 Jul 2026 14:57:41 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: John Snow <jsnow@redhat.com>
 Cc: qemu-devel@nongnu.org,  Alex =?utf-8?Q?Benn=C3=A9e?=
@@ -72,29 +72,27 @@ Cc: qemu-devel@nongnu.org,  Alex =?utf-8?Q?Benn=C3=A9e?=
  =?utf-8?Q?C=C3=A9dric?=
  Le Goater <clg@redhat.com>,  Jason Wang <jasowangio@gmail.com>,
  qemu-trivial@nongnu.org,  Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [PATCH v2 44/44] qapi: convert trivial intro sections for
- block-core.json
-In-Reply-To: <20260723044805.527643-45-jsnow@redhat.com> (John Snow's message
- of "Thu, 23 Jul 2026 00:48:05 -0400")
+Subject: Re: [PATCH v2 00/44] qapi: convert trivial intro sections
+In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com> (John Snow's message
+ of "Thu, 23 Jul 2026 00:47:21 -0400")
 References: <20260723044805.527643-1-jsnow@redhat.com>
- <20260723044805.527643-45-jsnow@redhat.com>
-Date: Thu, 23 Jul 2026 15:01:18 +0200
-Message-ID: <87ecgtg8rl.fsf@pond.sub.org>
+Date: Thu, 23 Jul 2026 14:57:41 +0200
+Message-ID: <87ik65g8xm.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: Y-hPlmxg0NXAT4ZdwS-wZfJ4JCWES2pzB-5w8Ss0eO4_1784811683
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: EiuTqcdelEE-N4ZTH555U0OYL3U4xzpkqadC27aLI9I_1784811469
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
 Received-SPF: permerror client-ip=170.10.129.124;
  envelope-from=armbru@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -29
-X-Spam_score: -3.0
-X-Spam_bar: ---
-X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.951,
+X-Spam_score_int: 3
+X-Spam_score: 0.3
+X-Spam_bar: /
+X-Spam_report: (0.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.951,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,28 +110,92 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 John Snow <jsnow@redhat.com> writes:
 
-> (Trivial)
+> GitLab CI: https://gitlab.com/jsnow/qemu/-/pipelines/2699067787
 >
-> Signed-off-by: John Snow <jsnow@redhat.com>
+> Hi, this patchset converts trivial "introductory" sections in the QAPI
+> documentation to use the new, explicit intro section syntax.
+>
+> This is being done primarily for the benefit of the forthcoming
+> "inliner", a feature for the rendered HTML QMP documentation that
+> seeks to "inline" QMP command argument documentation into the argument
+> list for each command.
+>
+> There are two main motives here:
+>
+> (1) We want the split between the "introduction" and "details"
+>     sections to be mechanically obvious, so that auto-generated or
+>     inlined documentation has a well-defined, obvious spot to go.
+>
+> (2) We do not want to inline irrelevant, introductory text describing
+>     structures to be copied into command documentation.
 
-Here's the one single paragraph you didn't convert (as far as I can
-see):
+docs/devel/qapi-code-gen.rst until recently:
 
-diff --git a/qapi/block-core.json b/qapi/block-core.json
-index bd98af2f29..9c30890ae5 100644
---- a/qapi/block-core.json
-+++ b/qapi/block-core.json
-@@ -1563,8 +1563,7 @@
- 
- ##
- # @BlockdevSnapshotSync:
--#
--# Either @device or @node-name must be set but not both.
-+#     Either @device or @node-name must be set but not both.
- #
- # @device: the name of the device to take a snapshot of.
- #
+    Definition documentation starts with a line naming the definition,
+    followed by an optional overview, a description of each argument (for
+    commands and events), member (for structs and unions), branch (for
+    alternates), or value (for enums), a description of each feature (if
+    any), and finally optional tagged sections.
 
-It's not overview.  Worth a mention in the commit message?
+Recent commit ebb49d4bb6 (qapi: add doc comment "Intro" section parsing)
+changed it to
+
+    Definition documentation starts with a description naming the
+    definition with an optional indented overview, a description of each
+    argument (for commands and events), member (for structs and unions),
+    branch (for alternates), or value (for enums), a description of each
+    feature (if any), and finally optional tagged sections.
+
+It didn't actually update the schema for this change.  This series does,
+but only where it's "trivial":
+
+> This patchset tackles "trivial" conversions: cases where the
+> introduction is only a single paragraph and is immediately followed by
+> a tagged section, the end of the documentation block, or some other
+> pre-existing syntactical delineation.
+
+I see the following right after conversions:
+
+* A member description "# @name: ..."
+
+* A "Features:" line
+
+* A tagged section like "Returns: ...", "Since: ..."
+
+End of documentation block ("##") also makes sense, but doesn't actually
+occur, because we always have a Since: somewhere after the first
+paragraph.
+
+Converting single first paragraps is mechanical.  For it to be correct,
+this single paragraph must actually be the overview, and not some other
+crap.  I expect it to be almost always overview.  Not sure how to best
+look for the exceptions.
+
+When there's more than one paragraph, it could still all be overview.
+But the risk of "other crap" is higher.  For instance:
+
+    ##
+    # @SecretProperties:
+    #
+    # Properties for secret objects.
+    #
+    # Either @data or @file must be provided, but not both.
+    #
+    # @data: the associated with the secret from
+    #
+    # @file: the filename to load the data associated with the secret from
+    #
+    # Since: 2.6
+    ##
+
+Two paragraphs, only the first is "overview".
+
+That's why you leave checking and disentangling multiple paragraphs for
+later.  Makes sense.
+
+> Future patches that may require more scrutiny will handle the
+> remaining conversions - I think this is enough for today, don't you?
+
+Oh yes, it is.
 
 
