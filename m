@@ -4,71 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A1541C531CB
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 12:45:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 96CA9C531CA
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 13:00:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmsn8-0006xQ-Jt; Thu, 23 Jul 2026 08:44:46 -0400
+	id 1wmt24-0008Om-Ty; Thu, 23 Jul 2026 09:00:14 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wmsn7-0006wZ-Bo
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 08:44:45 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wmt22-0008IR-GU
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 09:00:10 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wmsn4-0000gY-VQ
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 08:44:45 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wmt20-0003kp-MU
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 09:00:10 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784810682;
+ s=mimecast20190719; t=1784811607;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=PVEgGZD0a4bNOPMUtuuMmfqj8NAr+4M4g6idRABiZhY=;
- b=i8HEmuWH92uhU7HdR19Mxiwyaqx29ln/jxHN36eK8ZtyrFWLjWw4wAkYI1U6pPtTdoF3bd
- BvTezMJmH2fEbm4CaN6TLCRdgnPRC9TnHWOrK1rtG51kTEzee5XHxf3K9Pikb6ZO0SD5vF
- Ob7AfaxANFEvATtmFuhDat8f/QI6Izs=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ in-reply-to:in-reply-to:references:references;
+ bh=GADRi87lplCebx047fRHg6xdjxr7u1cKInWP1QxO6Xs=;
+ b=NXKU7LcliHZoncfHgaQq1ElofArUqszBDYAQP6Ycz5ne7eiaS4cl5ePUgm5tVxjCMurtvb
+ OKxQ7DqjcWYvqZqf43mTWDvB5XskAVms+V0b2YdXwkhOq/RcpDqJYW6PioDi9FBt1ITRPr
+ AZdWvSHPQJELu2EDnWf5ly5ipqG3DrU=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-156-dY4QxEl-MiumwqRmR_3NQA-1; Thu,
- 23 Jul 2026 08:44:38 -0400
-X-MC-Unique: dY4QxEl-MiumwqRmR_3NQA-1
-X-Mimecast-MFC-AGG-ID: dY4QxEl-MiumwqRmR_3NQA_1784810677
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-178-q9E0hjDhNdqBtwrnj90qkQ-1; Thu,
+ 23 Jul 2026 09:00:02 -0400
+X-MC-Unique: q9E0hjDhNdqBtwrnj90qkQ-1
+X-Mimecast-MFC-AGG-ID: q9E0hjDhNdqBtwrnj90qkQ_1784811599
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9AEEF1945CB6; Thu, 23 Jul 2026 12:44:37 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.44.32.74])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1AB721956053; Thu, 23 Jul 2026 12:44:34 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org,
-	Dmitry Fleytman <dmitry.fleytman@gmail.com>
-Cc: qemu-trivial@nongnu.org,
-	qemu-stable@nongnu.org
-Subject: [PATCH v2] hw/display/vmware_vga: Don't allow guest to trigger long
- running loop in host
-Date: Thu, 23 Jul 2026 14:44:32 +0200
-Message-ID: <20260723124432.353969-1-thuth@redhat.com>
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 86EAB182FA2E; Thu, 23 Jul 2026 12:59:57 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 23E95196B0A8; Thu, 23 Jul 2026 12:59:56 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id B4E0A21E6920; Thu, 23 Jul 2026 14:59:53 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel@nongnu.org,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,  Lukas
+ Straub <lukasstraub2@web.de>,  Vladimir Sementsov-Ogievskiy
+ <vsementsov@yandex-team.ru>,  Zhao Liu <zhao1.liu@intel.com>,  Laurent
+ Vivier <laurent@vivier.eu>,  "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,  Alex
+ Williamson
+ <alex@shazbot.org>,  zhenwei pi <zhenwei.pi@linux.dev>,  Hanna Reitz
+ <hreitz@redhat.com>,  Ani Sinha <anisinha@redhat.com>,
+ qemu-block@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Peter Xu
+ <peterx@redhat.com>,  Kevin Wolf <kwolf@redhat.com>,
+ linux-cxl@vger.kernel.org,  Jiri Pirko <jiri@resnulli.us>,  Daniel P.
+ =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Stefan Berger
+ <stefanb@linux.vnet.ibm.com>,  Fabiano Rosas <farosas@suse.de>,  Stefan
+ Hajnoczi <stefanha@redhat.com>,  Michael Tokarev <mjt@tls.msk.ru>,  Igor
+ Mammedov <imammedo@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,  Mauro Carvalho Chehab
+ <mchehab+huawei@kernel.org>,  linux-edac@vger.kernel.org,  =?utf-8?Q?Marc?=
+ =?utf-8?Q?-Andr=C3=A9?=
+ Lureau <marcandre.lureau@redhat.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Eric Blake <eblake@redhat.com>,
+ =?utf-8?Q?C=C3=A9dric?=
+ Le Goater <clg@redhat.com>,  Jason Wang <jasowangio@gmail.com>,
+ qemu-trivial@nongnu.org,  Jonathan Cameron <jic23@kernel.org>
+Subject: Re: [PATCH v2 41/44] qapi: convert trivial intro sections for ui.json
+In-Reply-To: <20260723044805.527643-42-jsnow@redhat.com> (John Snow's message
+ of "Thu, 23 Jul 2026 00:48:02 -0400")
+References: <20260723044805.527643-1-jsnow@redhat.com>
+ <20260723044805.527643-42-jsnow@redhat.com>
+Date: Thu, 23 Jul 2026 14:59:53 +0200
+Message-ID: <87h5lpg8ty.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: g4WIkkE4hnGxnuL1mpcG3uOsGajQNpgoLXwV_NgU1_0_1784810677
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: zDv55cjhrhmggWbbuFV_x4yjuyIBH170REcjH3qbLXo_1784811599
 X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
+Content-Type: text/plain
 Received-SPF: permerror client-ip=170.10.133.124;
- envelope-from=thuth@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 3
-X-Spam_score: 0.3
-X-Spam_bar: /
-X-Spam_report: (0.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.951,
+ envelope-from=armbru@redhat.com; helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -29
+X-Spam_score: -3.0
+X-Spam_bar: ---
+X-Spam_report: (-3.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.951,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -84,69 +110,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+John Snow <jsnow@redhat.com> writes:
 
-The code in the SVGA_CMD_DEFINE_ALPHA_CURSOR handler in vmsvga_fifo_run()
-basically does:
+> (Trivial)
+>
+> Signed-off-by: John Snow <jsnow@redhat.com>
+> ---
+>  qapi/ui.json | 215 ++++++++++++++++++---------------------------------
+>  1 file changed, 75 insertions(+), 140 deletions(-)
+>
+> diff --git a/qapi/ui.json b/qapi/ui.json
+> index b2c42a7f578..b4122b2fa9f 100644
+> --- a/qapi/ui.json
+> +++ b/qapi/ui.json
 
-            x = vmsvga_fifo_read(s);
-            y = vmsvga_fifo_read(s);
-            args = x * y;
-            goto badcmd;
-            ...
-badcmd:
-            len -= args;
-            if (len < 0) {
-                goto rewind;
-            }
-            while (args--) {
-                vmsvga_fifo_read(s);
-            }
+[...]
 
-Thus by supplying huge values for x and y that overflow the result of
-the multiplication, the guest can trigger a long-running loop here
-that burns the host's CPU cycles.
+> @@ -850,10 +814,9 @@
+>  
+>  ##
+>  # @QKeyCode:
+> +#     An enumeration of key name.
+>  #
+> -# An enumeration of key name.
+> -#
+> -# This is used by the `send-key` command.
+> +#     This is used by the `send-key` command.
+>  #
+>  # @unmapped: since 2.0
+>  #
 
-Add some sanity checks so that this cannot happen anymore.
+This one is two paragraphs.
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3782
-Reported-by: Feifan Qian <bea1e@proton.me>
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4026
-Reported-by: Tristan Madani <tristan@talencesecurity.com>
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4076
-Reported-by: Sunday Jiang
-Signed-off-by: Thomas Huth <thuth@redhat.com>
----
- v2: Use SVGA_MAX_WIDTH and SVGA_MAX_HEIGHT instead of an arbitrary value
+Let's drop the hunk to keep the series single paragraph only.
 
- hw/display/vmware_vga.c | 6 +++++-
- 1 file changed, 5 insertions(+), 1 deletion(-)
-
-diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
-index f6f9edfd1d9..567806f0e47 100644
---- a/hw/display/vmware_vga.c
-+++ b/hw/display/vmware_vga.c
-@@ -737,6 +737,10 @@ static void vmsvga_fifo_run(struct vmsvga_state_s *s)
-             vmsvga_fifo_read(s);
-             x = vmsvga_fifo_read(s);
-             y = vmsvga_fifo_read(s);
-+            if (x < 0 || x >= SVGA_MAX_WIDTH ||
-+                y < 0 || y >= SVGA_MAX_HEIGHT) {
-+                goto rewind;
-+            }
-             args = x * y;
-             goto badcmd;
-         case SVGA_CMD_RECT_ROP_FILL:
-@@ -776,7 +780,7 @@ static void vmsvga_fifo_run(struct vmsvga_state_s *s)
-             if (len < 0) {
-                 goto rewind;
-             }
--            while (args--) {
-+            while (args-- > 0) {
-                 vmsvga_fifo_read(s);
-             }
-             printf("%s: Unknown command 0x%02x in SVGA command FIFO\n",
--- 
-2.55.0
+[...]
 
 
