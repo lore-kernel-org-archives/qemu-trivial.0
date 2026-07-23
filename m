@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2457AC531CB
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:55:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5C5A1C44524
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:55:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlRC-0004Jd-71; Thu, 23 Jul 2026 00:53:39 -0400
+	id 1wmlRy-00056V-60; Thu, 23 Jul 2026 00:54:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlR1-0004Ai-2f
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:30 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlRT-0004lP-IF
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQx-0004sf-Lk
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:26 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlRR-0004yC-Qb
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782403;
+ s=mimecast20190719; t=1784782433;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CqpQURYzqagcZw6PUEaGQX94Y2bhPgrE5ybIwr9ASNk=;
- b=fYSOB/gdnWnfBtOmxXw96Lu+HnlEtvUKi8xTsE1aqnmkj+dY04nsOXLRvX8sACxJm4ctIA
- iNOY5uBZhi6we3chf6Ylpb2JlMWl/1U9Iekx0RWZqcgTuFBh1U1TqleZOThXV+r86INVdJ
- HnXx0v1JtP15zWXgYe5+/61p6l0aiR0=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=Y8pqXrIvr/yRTQ3rsO16r+lqlJjBRU1uvUFq6p7chi8=;
+ b=EuNGTzdvRs478rTeleQpsaeAXf98wJLuo1q0NM7y76e05hdXA/w2w4sW4i3mRemtR7XX91
+ mAM3wxgIjr3LTSIISj50CJGHdhF+ETTtVkJWGTgqPtRepsYJ8x1WEW8OBldssiA70p+Du9
+ EGRIMv60M2seLVEcIUQ+0k1NeSkH/6M=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-694-2u3NbkSaOaqH6BtjDhRcyA-1; Thu,
- 23 Jul 2026 00:53:19 -0400
-X-MC-Unique: 2u3NbkSaOaqH6BtjDhRcyA-1
-X-Mimecast-MFC-AGG-ID: 2u3NbkSaOaqH6BtjDhRcyA_1784782396
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-5-lplzGk48Ne-oI1ZVlthRcg-1; Thu,
+ 23 Jul 2026 00:53:48 -0400
+X-MC-Unique: lplzGk48Ne-oI1ZVlthRcg-1
+X-Mimecast-MFC-AGG-ID: lplzGk48Ne-oI1ZVlthRcg_1784782425
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 77ED41805F05; Thu, 23 Jul 2026 04:53:16 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 910711955DC2; Thu, 23 Jul 2026 04:53:45 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id EDD4918002AE; Thu, 23 Jul 2026 04:53:05 +0000 (UTC)
+ id AC9F918002B4; Thu, 23 Jul 2026 04:53:36 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,28 +73,26 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 30/44] qapi: convert trivial intro sections for
- block-export.json
-Date: Thu, 23 Jul 2026 00:47:51 -0400
-Message-ID: <20260723044805.527643-31-jsnow@redhat.com>
+Subject: [PATCH v2 33/44] qapi: convert trivial intro sections for misc.json
+Date: Thu, 23 Jul 2026 00:47:54 -0400
+Message-ID: <20260723044805.527643-34-jsnow@redhat.com>
 In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: Fpi7EtbUP82DT7pnA-wq7zSu9RTrGH-EcDE0d7PDj_I_1784782396
+X-Mimecast-MFC-PROC-ID: p9u84LuHLhydFslhIwDLLPsbY9H6XMBlnGtpFMPbhUE_1784782425
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: permerror client-ip=170.10.133.124;
+Received-SPF: permerror client-ip=170.10.129.124;
  envelope-from=jsnow@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,237 +108,236 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-(Trivial)
-
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/block-export.json | 87 +++++++++++++++++-------------------------
- 1 file changed, 35 insertions(+), 52 deletions(-)
+ qapi/misc.json | 74 ++++++++++++++++++--------------------------------
+ 1 file changed, 27 insertions(+), 47 deletions(-)
 
-diff --git a/qapi/block-export.json b/qapi/block-export.json
-index dd724acf1cb..e9f7e72c8ee 100644
---- a/qapi/block-export.json
-+++ b/qapi/block-export.json
-@@ -37,10 +37,9 @@
+diff --git a/qapi/misc.json b/qapi/misc.json
+index 22b7afed9f6..b3c2a1421f3 100644
+--- a/qapi/misc.json
++++ b/qapi/misc.json
+@@ -44,8 +44,7 @@
  
  ##
- # @NbdServerOptions:
+ # @NameInfo:
 -#
--# Keep this type consistent with the `NbdServerOptionsLegacy` type.
--# The only intended difference is using `SocketAddress` instead of
--# `SocketAddressLegacy`.
-+#     Keep this type consistent with the `NbdServerOptionsLegacy`
-+#     type.  The only intended difference is using `SocketAddress`
-+#     instead of `SocketAddressLegacy`.
+-# Guest name information.
++#     Guest name information.
  #
- # @addr: Address on which to listen (since 4.2).
- ##
-@@ -50,10 +49,9 @@
+ # @name: The name of the guest
+ #
+@@ -55,8 +54,7 @@
  
  ##
- # @NbdServerOptionsLegacy:
+ # @query-name:
 -#
--# Keep this type consistent with the `NbdServerOptions` type.  The
--# only intended difference is using `SocketAddressLegacy` instead of
--# `SocketAddress`.
-+#     Keep this type consistent with the `NbdServerOptions` type.  The
-+#     only intended difference is using `SocketAddressLegacy` instead
-+#     of `SocketAddress`.
+-# Return the name information of a guest.
++#     Return the name information of a guest.
  #
- # @addr: Address on which to listen (since 1.3).
- ##
-@@ -63,11 +61,11 @@
+ # Since: 0.14
+ #
+@@ -69,8 +67,7 @@
  
  ##
- # @nbd-server-start:
+ # @IOThreadInfo:
 -#
--# Start an NBD server listening on the given host and port.  Block
--# devices can then be exported using `nbd-server-add`.  The NBD server
--# will present them as named exports; for example, another QEMU
--# instance could refer to them as "nbd:HOST:PORT:exportname=NAME".
-+#     Start an NBD server listening on the given host and port.  Block
-+#     devices can then be exported using `nbd-server-add`.  The NBD
-+#     server will present them as named exports; for example, another
-+#     QEMU instance could refer to them as
-+#     "nbd:HOST:PORT:exportname=NAME".
+-# Information about an iothread
++#     Information about an iothread
  #
- # Errors:
- #     - if the server is already running
-@@ -80,9 +78,8 @@
+ # @id: the identifier of the iothread
+ #
+@@ -137,8 +134,7 @@
  
  ##
- # @BlockExportOptionsNbdBase:
+ # @stop:
 -#
--# An NBD block export (common options shared between `nbd-server-add`
--# and the NBD branch of `block-export-add`).
-+#     An NBD block export (common options shared between
-+#     `nbd-server-add` and the NBD branch of `block-export-add`).
+-# Stop guest VM execution.
++#     Stop guest VM execution.
  #
- # @name: Export name.  If unspecified, the @device parameter is used
- #     as the export name.  (Since 2.12)
-@@ -97,9 +94,8 @@
+ # Since: 0.14
+ #
+@@ -159,8 +155,7 @@
  
  ##
- # @BlockExportOptionsNbd:
+ # @cont:
 -#
--# An NBD block export (distinct options used in the NBD branch of
--# `block-export-add`).
-+#     An NBD block export (distinct options used in the NBD branch of
-+#     `block-export-add`).
+-# Resume guest VM execution.
++#     Resume guest VM execution.
  #
- # @bitmaps: Also export each of the named dirty bitmaps reachable from
- #     @device, so the NBD client can use NBD_OPT_SET_META_CONTEXT with
-@@ -121,8 +117,7 @@
+ # Since: 0.14
+ #
+@@ -208,8 +203,7 @@
  
  ##
- # @BlockExportOptionsVhostUserBlk:
+ # @human-monitor-command:
 -#
--# A vhost-user-blk block export.
-+#     A vhost-user-blk block export.
+-# Execute a command on the human monitor and return the output.
++#     Execute a command on the human monitor and return the output.
  #
- # @addr: The vhost-user socket on which to listen.  Both 'unix' and
- #     'fd' `SocketAddress` types are supported.  Passed fds must be
-@@ -143,8 +138,7 @@
+ # @command-line: the command to execute in the human monitor
+ #
+@@ -251,8 +245,7 @@
  
  ##
- # @FuseExportAllowOther:
+ # @getfd:
 -#
--# Possible allow_other modes for FUSE exports.
-+#     Possible allow_other modes for FUSE exports.
+-# Receive a file descriptor via SCM rights and assign it a name
++#     Receive a file descriptor via SCM rights and assign it a name
  #
- # @off: Do not pass allow_other as a mount option.
+ # @fdname: file descriptor name
  #
-@@ -195,8 +189,7 @@
+@@ -273,11 +266,10 @@
  
  ##
- # @BlockExportOptionsVduseBlk:
+ # @get-win32-socket:
 -#
--# A vduse-blk block export.
-+#     A vduse-blk block export.
+-# Add a socket that was duplicated to QEMU process with
+-# WSADuplicateSocketW() via WSASocket() & WSAPROTOCOL_INFOW structure
+-# and assign it a name (the SOCKET is associated with a CRT file
+-# descriptor)
++#     Add a socket that was duplicated to QEMU process with
++#     WSADuplicateSocketW() via WSASocket() & WSAPROTOCOL_INFOW
++#     structure and assign it a name (the SOCKET is associated with a
++#     CRT file descriptor)
  #
- # @name: the name of VDUSE device (must be unique across the host).
+ # @info: the WSAPROTOCOL_INFOW structure (encoded in base64)
  #
-@@ -221,8 +214,7 @@
+@@ -301,8 +293,7 @@
  
  ##
- # @NbdServerAddOptions:
+ # @closefd:
 -#
--# An NBD block export, per legacy `nbd-server-add` command.
-+#     An NBD block export, per legacy `nbd-server-add` command.
+-# Close a file descriptor previously passed via SCM rights
++#     Close a file descriptor previously passed via SCM rights
  #
- # @device: The device name or node name of the node to be exported
+ # @fdname: file descriptor name
  #
-@@ -266,8 +258,7 @@
+@@ -317,8 +308,7 @@
  
  ##
- # @BlockExportRemoveMode:
+ # @AddfdInfo:
 -#
--# Mode for removing a block export.
-+#     Mode for removing a block export.
+-# Information about a file descriptor that was added to an fd set.
++#     Information about a file descriptor that was added to an fd set.
  #
- # @safe: Remove export if there are no existing connections, fail
- #     otherwise.
-@@ -289,8 +280,7 @@
+ # @fdset-id: The ID of the fd set that @fd was added to.
+ #
+@@ -331,8 +321,8 @@
  
  ##
- # @nbd-server-remove:
+ # @add-fd:
 -#
--# Remove NBD export by name.
-+#     Remove NBD export by name.
+-# Add a file descriptor, that was passed via SCM rights, to an fd set.
++#     Add a file descriptor, that was passed via SCM rights, to an fd
++#     set.
  #
- # @name: Block export id.
+ # @fdset-id: The ID of the fd set to add the file descriptor to.
  #
-@@ -316,9 +306,8 @@
+@@ -361,8 +351,7 @@
  
  ##
- # @nbd-server-stop:
+ # @remove-fd:
 -#
--# Stop QEMU's embedded NBD server, and unregister all devices
--# previously added via `nbd-server-add`.
-+#     Stop QEMU's embedded NBD server, and unregister all devices
-+#     previously added via `nbd-server-add`.
+-# Remove a file descriptor from an fd set.
++#     Remove a file descriptor from an fd set.
  #
- # Since: 1.3
- ##
-@@ -327,8 +316,7 @@
+ # @fdset-id: The ID of the fd set that the file descriptor belongs to.
+ #
+@@ -387,8 +376,7 @@
  
  ##
- # @BlockExportType:
+ # @FdsetFdInfo:
 -#
--# An enumeration of block export types
-+#     An enumeration of block export types
+-# Information about a file descriptor that belongs to an fd set.
++#     Information about a file descriptor that belongs to an fd set.
  #
- # @nbd: NBD export
+ # @fd: The file descriptor value.
  #
-@@ -349,9 +337,8 @@
+@@ -401,8 +389,7 @@
  
  ##
- # @BlockExportOptions:
+ # @FdsetInfo:
 -#
--# Describes a block export, i.e. how single node should be exported on
--# an external interface.
-+#     Describes a block export, i.e. how single node should be
-+#     exported on an external interface.
+-# Information about an fd set.
++#     Information about an fd set.
  #
- # @type: Block export type
+ # @fdset-id: The ID of the fd set.
  #
-@@ -412,9 +399,8 @@
+@@ -415,8 +402,7 @@
  
  ##
- # @BlockExportIothreads:
+ # @query-fdsets:
 -#
--# Specify a single or multiple I/O threads in which to run a block
--# export's I/O.
-+#     Specify a single or multiple I/O threads in which to run a block
-+#     export's I/O.
+-# Return information describing all fd sets.
++#     Return information describing all fd sets.
  #
- # @single: Run the export's I/O in the given single I/O thread.
+ # Since: 1.2
  #
-@@ -436,8 +422,7 @@
+@@ -457,8 +443,7 @@
  
  ##
- # @block-export-add:
+ # @CommandLineParameterType:
 -#
--# Creates a new block export.
-+#     Creates a new block export.
+-# Possible types for an option parameter.
++#     Possible types for an option parameter.
  #
- # Since: 5.2
- ##
-@@ -447,10 +432,10 @@
+ # @string: accepts a character string
+ #
+@@ -476,8 +461,7 @@
  
  ##
- # @block-export-del:
+ # @CommandLineParameterInfo:
 -#
--# Request to remove a block export.  This drops the user's reference
--# to the export, but the export may still stay around after this
--# command returns until the shutdown of the export has completed.
-+#     Request to remove a block export.  This drops the user's
-+#     reference to the export, but the export may still stay around
-+#     after this command returns until the shutdown of the export has
-+#     completed.
+-# Details about a single parameter of a command line option.
++#     Details about a single parameter of a command line option.
  #
- # @id: Block export id.
+ # @name: parameter name
  #
-@@ -470,8 +455,7 @@
+@@ -497,9 +481,8 @@
  
  ##
- # @BLOCK_EXPORT_DELETED:
+ # @CommandLineOptionInfo:
 -#
--# Emitted when a block export is removed and its id can be reused.
-+#     Emitted when a block export is removed and its id can be reused.
+-# Details about a command line option, including its list of parameter
+-# details
++#     Details about a command line option, including its list of
++#     parameter details
  #
- # @id: Block export id.
+ # @option: option name
  #
-@@ -482,8 +466,7 @@
+@@ -512,8 +495,7 @@
  
  ##
- # @BlockExportInfo:
+ # @query-command-line-options:
 -#
--# Information about a single block export.
-+#     Information about a single block export.
+-# Query command line option schema.
++#     Query command line option schema.
  #
- # @id: The unique identifier for the block export
+ # @option: option name
  #
+@@ -552,8 +534,7 @@
+ 
+ ##
+ # @RTC_CHANGE:
+-#
+-# Emitted when the guest changes the RTC time.
++#     Emitted when the guest changes the RTC time.
+ #
+ # @offset: offset in seconds between base RTC clock (as specified by
+ #     -rtc base), and new RTC clock value
+@@ -577,9 +558,8 @@
+ 
+ ##
+ # @VFU_CLIENT_HANGUP:
+-#
+-# Emitted when the client of a TYPE_VFIO_USER_SERVER closes the
+-# communication channel
++#     Emitted when the client of a TYPE_VFIO_USER_SERVER closes the
++#     communication channel
+ #
+ # @vfu-id: ID of the TYPE_VFIO_USER_SERVER object.  It is the last
+ #     component of @vfu-qom-path referenced below
 -- 
 2.55.0
 
