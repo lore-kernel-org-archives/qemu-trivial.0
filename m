@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7178AC4452B
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:52:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 71B67C531CA
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:52:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlPf-0006pZ-Qy; Thu, 23 Jul 2026 00:52:03 -0400
+	id 1wmlOr-0005dL-FQ; Thu, 23 Jul 2026 00:51:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlPI-0006KE-Nj
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:51:43 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlOn-0005V6-0R
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:51:09 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlPG-0004T2-8B
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:51:40 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlOl-0004Q4-Fn
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:51:08 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782297;
+ s=mimecast20190719; t=1784782265;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=RQBoRfguD8OLDOwj7R7RrWifXT5ev1UlWkcynySt+sw=;
- b=Yf9V3imC+NWWUegObWLPSJ8y4pVR/LWHU4TGOdGBpnxr3ctilMr/lveWtwMqZQ5fWuK1yZ
- CD8qrQTT3USlBulqmuZDET9hIvdZbZ9X1ZHNk4mNPDYOcAHCNR8U5MvzqaJ8tG4g/Dy7DK
- Xc+W6MALzt8sTN4kRsdGEwkKvpLi/lw=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=9YoGAoaYe1zPbiR9886orVUbPO3VRJkQv0eqUa1lksA=;
+ b=fJ10cK6UEHV2F8aeNaOmda1233tMEhVyDseUokpsUR8dMD8akwJlSaFZ1HYrpCPoH7ZCSx
+ huN6uEhYCtu1lU48KwzR6xiMMSR79aNzLX64cK0KG2GnrEy2pS0yKgu6QR5tbdPYAuTIfl
+ +wD9ASF47DAZ9WCzuWvLfHuOcSUACAQ=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-516-bvW1v_QYP0e3J7-uD-0_Kg-1; Thu,
- 23 Jul 2026 00:51:32 -0400
-X-MC-Unique: bvW1v_QYP0e3J7-uD-0_Kg-1
-X-Mimecast-MFC-AGG-ID: bvW1v_QYP0e3J7-uD-0_Kg_1784782290
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-270-4z4sKMMpPoyuzGxko269Sw-1; Thu,
+ 23 Jul 2026 00:51:01 -0400
+X-MC-Unique: 4z4sKMMpPoyuzGxko269Sw-1
+X-Mimecast-MFC-AGG-ID: 4z4sKMMpPoyuzGxko269Sw_1784782259
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id EA0CF18007FB; Thu, 23 Jul 2026 04:51:29 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E5A9F1954B26; Thu, 23 Jul 2026 04:50:58 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id DAFF318002B5; Thu, 23 Jul 2026 04:51:19 +0000 (UTC)
+ id D053618002B5; Thu, 23 Jul 2026 04:50:47 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,27 +73,27 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 19/44] qapi: convert trivial intro sections for control.json
-Date: Thu, 23 Jul 2026 00:47:40 -0400
-Message-ID: <20260723044805.527643-20-jsnow@redhat.com>
+Subject: [PATCH v2 16/44] qapi: convert trivial intro sections for acpi.json
+Date: Thu, 23 Jul 2026 00:47:37 -0400
+Message-ID: <20260723044805.527643-17-jsnow@redhat.com>
 In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: E22wb-NnagIZYuZX95QJ_E-c7q3oRPyttWby2JisIgw_1784782290
+X-Mimecast-MFC-PROC-ID: ev1kP430LwXmTv4Uiy6Qg6gE8E9YUmFsOR4Oodu_jCk_1784782259
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: permerror client-ip=170.10.133.124;
  envelope-from=jsnow@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,105 +113,48 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/control.json | 30 +++++++++++-------------------
- 1 file changed, 11 insertions(+), 19 deletions(-)
+ qapi/acpi.json | 15 ++++++---------
+ 1 file changed, 6 insertions(+), 9 deletions(-)
 
-diff --git a/qapi/control.json b/qapi/control.json
-index 9a5302193d6..0fc465936d8 100644
---- a/qapi/control.json
-+++ b/qapi/control.json
-@@ -10,8 +10,7 @@
+diff --git a/qapi/acpi.json b/qapi/acpi.json
+index 906b3687a55..291a04a7ea4 100644
+--- a/qapi/acpi.json
++++ b/qapi/acpi.json
+@@ -81,10 +81,9 @@
  
  ##
- # @qmp_capabilities:
+ # @ACPIOSTInfo:
 -#
--# Enable QMP capabilities.
-+#     Enable QMP capabilities.
+-# OSPM Status Indication for a device.  For description of possible
+-# values of @source and @status fields see "_OST (OSPM Status
+-# Indication)" chapter of ACPI5.0 spec.
++#     OSPM Status Indication for a device.  For description
++#     of possible values of @source and @status fields see "_OST (OSPM
++#     Status Indication)" chapter of ACPI5.0 spec.
  #
- # @enable: An optional list of `QMPCapability` values to enable.  The
- #     client must not enable any capability that is not mentioned in
-@@ -41,9 +40,9 @@
+ # @device: device ID associated with slot
+ #
+@@ -107,9 +106,8 @@
  
  ##
- # @QMPCapability:
+ # @query-acpi-ospm-status:
 -#
--# Enumeration of capabilities to be advertised during initial client
--# connection, used for agreeing on particular QMP extension behaviors.
-+#     Enumeration of capabilities to be advertised during initial
-+#     client connection, used for agreeing on particular QMP extension
-+#     behaviors.
+-# Return a list of `ACPIOSTInfo` for devices that support status
+-# reporting via ACPI _OST method.
++#     Return a list of `ACPIOSTInfo` for devices
++#     that support status reporting via ACPI _OST method.
  #
- # @oob: QMP ability to support out-of-band requests.  (Please refer to
- #     qmp-spec.rst for more information on OOB)
-@@ -55,8 +54,7 @@
+ # Since: 2.1
+ #
+@@ -126,8 +124,7 @@
  
  ##
- # @VersionTriple:
+ # @ACPI_DEVICE_OST:
 -#
--# A three-part version number.
-+#     A three-part version number.
+-# Emitted when guest executes ACPI _OST method.
++#     Emitted when guest executes ACPI _OST method.
  #
- # @major: The major version number.
- #
-@@ -71,8 +69,7 @@
- 
- ##
- # @VersionInfo:
--#
--# A description of QEMU's version.
-+#     A description of QEMU's version.
- #
- # @qemu: The version of QEMU.  By current convention, a micro version
- #     of 50 signifies a development branch.  A micro version greater
-@@ -92,8 +89,7 @@
- 
- ##
- # @query-version:
--#
--# Return the current version of QEMU.
-+#     Return the current version of QEMU.
- #
- # Returns: An object describing the current version of QEMU.
- #
-@@ -118,8 +114,7 @@
- 
- ##
- # @CommandInfo:
--#
--# Information about a QMP command
-+#     Information about a QMP command
- #
- # @name: The command name
- #
-@@ -129,8 +124,7 @@
- 
- ##
- # @query-commands:
--#
--# Return a list of supported QMP commands by this server
-+#     Return a list of supported QMP commands by this server
- #
- # Returns: A list of all supported commands
- #
-@@ -177,8 +171,7 @@
- 
- ##
- # @MonitorMode:
--#
--# An enumeration of monitor modes.
-+#     An enumeration of monitor modes.
- #
- # @readline: HMP monitor (human-oriented command line interface)
- #
-@@ -190,8 +183,7 @@
- 
- ##
- # @MonitorOptions:
--#
--# Options to be used for adding a new monitor.
-+#     Options to be used for adding a new monitor.
- #
- # @id: Name of the monitor
+ # @info: OSPM Status Indication
  #
 -- 
 2.55.0
