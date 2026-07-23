@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EEAF1C44524
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:54:00 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 56888C4452B
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:54:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlRA-0004Gc-Jt; Thu, 23 Jul 2026 00:53:36 -0400
+	id 1wmlRF-0004Rf-D4; Thu, 23 Jul 2026 00:53:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQr-0003yg-KF
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:21 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlRB-0004It-MP
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:38 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQn-0004rU-NR
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:15 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlR9-0004wa-T8
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782393;
+ s=mimecast20190719; t=1784782415;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=TZNZu5l6HDHHmDozotlg5GKJJCb4xlZSAIjE4YcKWdo=;
- b=cVl1+bFZDfyPCrazde/ChF/x5lPl9B5YeqOZ5HOZzPXosvi3Neih8DjcfWmSJR16Plc8sW
- fJz7/eMgr7Z/lgH9HIJHJ9jvXlHjT90RS89sYU8NtVwim4GLF38jPmXjI+ZuJcXduwRtoX
- 4hxf0dOioxGfWEgiAx6GBamSK8q7Nts=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=5/2uhrWWVYdwPSV/13kr7Ak4m/dnZp9BNOXlkV3GBQo=;
+ b=BlU++eKenq1ZgrRqsAOTCnQ8w8/HU1KnaDJyN5Pvw/noCn72PHQ76XskZwdhFzp9/YDlCB
+ 27kaCJgEWu8ql3BPT4kpR0uYyTbo6lRvS5JvIpKWfiKCdIDZP/yDXxWiF3Oa7rkeaQXlS2
+ JPr4yYhNLn/kMEtderZ8guHCmU1p7lQ=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-634-JDYUe2VaNfGJJkoGCkgShQ-1; Thu,
- 23 Jul 2026 00:53:08 -0400
-X-MC-Unique: JDYUe2VaNfGJJkoGCkgShQ-1
-X-Mimecast-MFC-AGG-ID: JDYUe2VaNfGJJkoGCkgShQ_1784782385
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-141-yJMV-JLBMomuOkDWls3wDg-1; Thu,
+ 23 Jul 2026 00:53:29 -0400
+X-MC-Unique: yJMV-JLBMomuOkDWls3wDg-1
+X-Mimecast-MFC-AGG-ID: yJMV-JLBMomuOkDWls3wDg_1784782406
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CD0971944DCE; Thu, 23 Jul 2026 04:53:05 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AFAF71800759; Thu, 23 Jul 2026 04:53:26 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id A71CC18002AE; Thu, 23 Jul 2026 04:52:57 +0000 (UTC)
+ id 5BFBC18002AE; Thu, 23 Jul 2026 04:53:17 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,28 +73,26 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 29/44] qapi: convert trivial intro sections for
- misc-i386.json
-Date: Thu, 23 Jul 2026 00:47:50 -0400
-Message-ID: <20260723044805.527643-30-jsnow@redhat.com>
+Subject: [PATCH v2 31/44] qapi: convert intro sections for audio.json
+Date: Thu, 23 Jul 2026 00:47:52 -0400
+Message-ID: <20260723044805.527643-32-jsnow@redhat.com>
 In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: fOjxqvqeTYOMJxKc69tswkeoLB9zFeFM1_wEYt6YKW4_1784782385
+X-Mimecast-MFC-PROC-ID: uyEdqpFu481Pj92O66ufNrgNknNiAitEfxkgSZj-fag_1784782406
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: permerror client-ip=170.10.133.124;
+Received-SPF: permerror client-ip=170.10.129.124;
  envelope-from=jsnow@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -114,177 +112,269 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/misc-i386.json | 52 ++++++++++++++++-----------------------------
- 1 file changed, 18 insertions(+), 34 deletions(-)
+ qapi/audio.json | 88 ++++++++++++++++++-------------------------------
+ 1 file changed, 32 insertions(+), 56 deletions(-)
 
-diff --git a/qapi/misc-i386.json b/qapi/misc-i386.json
-index 05a94d6c416..78ec9aec647 100644
---- a/qapi/misc-i386.json
-+++ b/qapi/misc-i386.json
-@@ -25,8 +25,7 @@
+diff --git a/qapi/audio.json b/qapi/audio.json
+index 2df87b97101..72190f20993 100644
+--- a/qapi/audio.json
++++ b/qapi/audio.json
+@@ -14,9 +14,8 @@
  
  ##
- # @SevState:
+ # @AudiodevPerDirectionOptions:
 -#
--# An enumeration of SEV state information used during `query-sev`.
-+#     An enumeration of SEV state information used during `query-sev`.
+-# General audio backend options that are used for both playback and
+-# recording.
++#     General audio backend options that are used for both playback
++#     and recording.
  #
- # @uninit: The guest is uninitialized.
- #
-@@ -52,8 +51,7 @@
+ # @mixing-engine: use QEMU's mixing engine to mix all streams inside
+ #     QEMU and convert audio formats when not supported by the
+@@ -53,8 +52,7 @@
  
  ##
- # @SevGuestType:
+ # @AudiodevGenericOptions:
 -#
--# An enumeration indicating the type of SEV guest being run.
-+#     An enumeration indicating the type of SEV guest being run.
+-# Generic driver-specific options.
++#     Generic driver-specific options.
  #
- # @sev: The guest is a legacy SEV or SEV-ES guest.
+ # @in: options of the capture stream
  #
-@@ -66,8 +64,7 @@
+@@ -69,8 +67,7 @@
  
  ##
- # @SevGuestInfo:
+ # @AudiodevDBusOptions:
 -#
--# Information specific to legacy SEV/SEV-ES guests.
-+#     Information specific to legacy SEV/SEV-ES guests.
+-# Options of the D-Bus audio backend.
++#     Options of the D-Bus audio backend.
  #
- # @policy: SEV policy value
+ # @in: options of the capture stream
  #
-@@ -81,8 +78,7 @@
+@@ -89,9 +86,8 @@
  
  ##
- # @SevSnpGuestInfo:
+ # @AudiodevAlsaPerDirectionOptions:
 -#
--# Information specific to SEV-SNP guests.
-+#     Information specific to SEV-SNP guests.
+-# Options of the ALSA backend that are used for both playback and
+-# recording.
++#     Options of the ALSA backend that are used for both playback and
++#     recording.
  #
- # @snp-policy: SEV-SNP policy value
+ # @dev: the name of the ALSA device to use (default 'default')
  #
-@@ -93,8 +89,7 @@
+@@ -111,8 +107,7 @@
  
  ##
- # @SevInfo:
+ # @AudiodevAlsaOptions:
 -#
--# Information about Secure Encrypted Virtualization (SEV) support
-+#     Information about Secure Encrypted Virtualization (SEV) support
+-# Options of the ALSA audio backend.
++#     Options of the ALSA audio backend.
  #
- # @enabled: true if SEV is active
+ # @in: options of the capture stream
  #
-@@ -144,8 +139,7 @@
+@@ -130,8 +125,7 @@
  
  ##
- # @SevLaunchMeasureInfo:
+ # @AudiodevSndioOptions:
 -#
--# SEV Guest Launch measurement information
-+#     SEV Guest Launch measurement information
+-# Options of the sndio audio backend.
++#     Options of the sndio audio backend.
  #
- # @data: the measurement value encoded in base64
+ # @in: options of the capture stream
  #
-@@ -180,9 +174,8 @@
+@@ -152,9 +146,8 @@
  
  ##
- # @SevCapability:
+ # @AudiodevCoreaudioPerDirectionOptions:
 -#
--# The struct describes capability for a Secure Encrypted
--# Virtualization feature.
-+#     The struct describes capability for a Secure Encrypted
-+#     Virtualization feature.
+-# Options of the Core Audio backend that are used for both playback
+-# and recording.
++#     Options of the Core Audio backend that are used for both
++#     playback and recording.
  #
- # @pdh: Platform Diffie-Hellman key (base64 encoded)
+ # @buffer-count: number of buffers
  #
-@@ -252,9 +245,8 @@
+@@ -167,8 +160,7 @@
  
  ##
- # @SevAttestationReport:
+ # @AudiodevCoreaudioOptions:
 -#
--# The struct describes attestation report for a Secure Encrypted
--# Virtualization feature.
-+#     The struct describes attestation report for a Secure Encrypted
-+#     Virtualization feature.
+-# Options of the coreaudio audio backend.
++#     Options of the coreaudio audio backend.
  #
- # @data: guest attestation report (base64 encoded)
+ # @in: options of the capture stream
  #
-@@ -294,8 +286,7 @@
+@@ -183,8 +175,7 @@
  
  ##
- # @SgxEpcSection:
+ # @AudiodevDsoundOptions:
 -#
--# Information about intel SGX EPC section
-+#     Information about intel SGX EPC section
+-# Options of the DirectSound audio backend.
++#     Options of the DirectSound audio backend.
  #
- # @node: the numa node
+ # @in: options of the capture stream
  #
-@@ -309,8 +300,7 @@
+@@ -203,9 +194,8 @@
  
  ##
- # @SgxInfo:
+ # @AudiodevJackPerDirectionOptions:
 -#
--# Information about intel Safe Guard eXtension (SGX) support
-+#     Information about intel Safe Guard eXtension (SGX) support
+-# Options of the JACK backend that are used for both playback and
+-# recording.
++#     Options of the JACK backend that are used for both playback and
++#     recording.
  #
- # @sgx: true if SGX is supported
- #
-@@ -333,8 +323,7 @@
+ # @server-name: select from among several possible concurrent server
+ #     instances (default: environment variable $JACK_DEFAULT_SERVER if
+@@ -237,8 +227,7 @@
  
  ##
- # @query-sgx:
+ # @AudiodevJackOptions:
 -#
--# Return information about configured SGX capabilities of guest
-+#     Return information about configured SGX capabilities of guest
+-# Options of the JACK audio backend.
++#     Options of the JACK audio backend.
  #
- # Since: 6.2
+ # @in: options of the capture stream
  #
-@@ -350,8 +339,7 @@
+@@ -253,9 +242,8 @@
  
  ##
- # @query-sgx-capabilities:
+ # @AudiodevOssPerDirectionOptions:
 -#
--# Return information about SGX capabilities of host
-+#     Return information about SGX capabilities of host
+-# Options of the OSS backend that are used for both playback and
+-# recording.
++#     Options of the OSS backend that are used for both playback and
++#     recording.
  #
- # Since: 6.2
+ # @dev: file name of the OSS device (default '/dev/dsp')
  #
-@@ -367,8 +355,7 @@
+@@ -275,8 +263,7 @@
  
  ##
- # @EvtchnPortType:
+ # @AudiodevOssOptions:
 -#
--# An enumeration of Xen event channel port types.
-+#     An enumeration of Xen event channel port types.
+-# Options of the OSS audio backend.
++#     Options of the OSS audio backend.
  #
- # @closed: The port is unused.
+ # @in: options of the capture stream
  #
-@@ -389,8 +376,7 @@
+@@ -305,9 +292,8 @@
  
  ##
- # @EvtchnInfo:
+ # @AudiodevPaPerDirectionOptions:
 -#
--# Information about a Xen event channel port
-+#     Information about a Xen event channel port
+-# Options of the Pulseaudio backend that are used for both playback
+-# and recording.
++#     Options of the Pulseaudio backend that are used for both
++#     playback and recording.
  #
- # @port: the port number
+ # @name: name of the sink/source to use
  #
-@@ -419,8 +405,7 @@
+@@ -330,8 +316,7 @@
  
  ##
- # @xen-event-list:
+ # @AudiodevPaOptions:
 -#
--# Query the Xen event channels opened by the guest.
-+#     Query the Xen event channels opened by the guest.
+-# Options of the PulseAudio audio backend.
++#     Options of the PulseAudio audio backend.
  #
- # Returns: list of open event channel ports.
+ # @in: options of the capture stream
  #
-@@ -456,8 +441,7 @@
+@@ -349,9 +334,8 @@
  
  ##
- # @xen-event-inject:
+ # @AudiodevPipewirePerDirectionOptions:
 -#
--# Inject a Xen event channel port (interrupt) to the guest.
-+#     Inject a Xen event channel port (interrupt) to the guest.
+-# Options of the PipeWire backend that are used for both playback and
+-# recording.
++#     Options of the PipeWire backend that are used for both playback
++#     and recording.
  #
- # @port: The port number
+ # @name: name of the sink/source to use
  #
+@@ -374,8 +358,7 @@
+ 
+ ##
+ # @AudiodevPipewireOptions:
+-#
+-# Options of the PipeWire audio backend.
++#     Options of the PipeWire audio backend.
+ #
+ # @in: options of the capture stream
+ #
+@@ -390,9 +373,8 @@
+ 
+ ##
+ # @AudiodevSdlPerDirectionOptions:
+-#
+-# Options of the SDL audio backend that are used for both playback and
+-# recording.
++#     Options of the SDL audio backend that are used for both playback
++#     and recording.
+ #
+ # @buffer-count: number of buffers (default 4)
+ #
+@@ -405,8 +387,7 @@
+ 
+ ##
+ # @AudiodevSdlOptions:
+-#
+-# Options of the SDL audio backend.
++#     Options of the SDL audio backend.
+ #
+ # @in: options of the recording stream
+ #
+@@ -421,8 +402,7 @@
+ 
+ ##
+ # @AudiodevWavOptions:
+-#
+-# Options of the wav audio backend.
++#     Options of the wav audio backend.
+ #
+ # @in: options of the capture stream
+ #
+@@ -440,8 +420,7 @@
+ 
+ ##
+ # @AudioFormat:
+-#
+-# An enumeration of possible audio formats.
++#     An enumeration of possible audio formats.
+ #
+ # @u8: unsigned 8 bit integer
+ #
+@@ -464,8 +443,7 @@
+ 
+ ##
+ # @AudiodevDriver:
+-#
+-# An enumeration of possible audio backend drivers.
++#     An enumeration of possible audio backend drivers.
+ #
+ # @jack: JACK audio backend (since 5.1)
+ #
+@@ -488,8 +466,7 @@
+ 
+ ##
+ # @Audiodev:
+-#
+-# Options of an audio backend.
++#     Options of an audio backend.
+ #
+ # @id: identifier of the backend
+ #
+@@ -534,8 +511,7 @@
+ 
+ ##
+ # @query-audiodevs:
+-#
+-# Return information about audiodev configuration
++#     Return information about audiodev configuration
+ #
+ # Since: 8.0
+ ##
 -- 
 2.55.0
 
