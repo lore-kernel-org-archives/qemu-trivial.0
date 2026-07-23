@@ -4,63 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A37DC4452B
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 11:20:28 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 494C2C531CB
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 11:20:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmrTS-000776-Td; Thu, 23 Jul 2026 07:20:22 -0400
+	id 1wmrTW-0007A3-U5; Thu, 23 Jul 2026 07:20:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1wmnsg-0000Z5-T3; Thu, 23 Jul 2026 03:30:11 -0400
-Received: from sea.source.kernel.org ([172.234.252.31])
+ (Exim 4.90_1) (envelope-from <zhenwei.pi@linux.dev>)
+ id 1wmpTC-0002FC-P0
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 05:11:58 -0400
+Received: from out-172.mta1.migadu.com ([95.215.58.172])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mchehab+huawei@kernel.org>)
- id 1wmnsc-0006pQ-MU; Thu, 23 Jul 2026 03:30:09 -0400
-Received: from smtp.kernel.org (quasi.space.kernel.org [100.103.45.18])
- by sea.source.kernel.org (Postfix) with ESMTP id 8EFC54114E;
- Thu, 23 Jul 2026 07:30:02 +0000 (UTC)
-Received: by smtp.kernel.org (Postfix) with ESMTPSA id 8BA021F000E9;
- Thu, 23 Jul 2026 07:29:55 +0000 (UTC)
-Date: Thu, 23 Jul 2026 09:29:53 +0200
-To: John Snow <jsnow@redhat.com>
-Cc: qemu-devel@nongnu.org, Alex =?UTF-8?B?QmVubsOpZQ==?=
- <alex.bennee@linaro.org>, Lukas Straub <lukasstraub2@web.de>, Vladimir
- Sementsov-Ogievskiy <vsementsov@yandex-team.ru>, Zhao Liu
- <zhao1.liu@intel.com>, Laurent Vivier <laurent@vivier.eu>, Markus
- Armbruster <armbru@redhat.com>, "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@mailo.com>, Alex
- Williamson <alex@shazbot.org>, zhenwei pi <zhenwei.pi@linux.dev>, Hanna
- Reitz <hreitz@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-block@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Peter Xu
- <peterx@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- linux-cxl@vger.kernel.org, Jiri Pirko <jiri@resnulli.us>, "Daniel P.
- =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>, Stefan Berger
- <stefanb@linux.vnet.ibm.com>, Fabiano Rosas <farosas@suse.de>, Stefan
- Hajnoczi <stefanha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, Igor
- Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>, Gerd
- Hoffmann <kraxel@redhat.com>, linux-edac@vger.kernel.org, =?UTF-8?B?TWFy?=
- =?UTF-8?B?Yy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>, Richard
- Henderson <richard.henderson@linaro.org>, Eric Blake <eblake@redhat.com>,
- =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@redhat.com>, Jason Wang
- <jasowangio@gmail.com>, qemu-trivial@nongnu.org, Jonathan Cameron
- <jic23@kernel.org>
-Subject: Re: [PATCH v2 02/44] qapi: convert intro sections for acpi-hest.json
-Message-ID: <20260723092953.1affa5dd@foz.lan>
-In-Reply-To: <20260723044805.527643-3-jsnow@redhat.com>
-References: <20260723044805.527643-1-jsnow@redhat.com>
- <20260723044805.527643-3-jsnow@redhat.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
+ (Exim 4.90_1) (envelope-from <zhenwei.pi@linux.dev>)
+ id 1wmpTA-0004Gj-4z
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 05:11:58 -0400
+Message-ID: <344dd201-27c5-41f5-acb1-a6bb4c7192f8@linux.dev>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=linux.dev; s=key1;
+ t=1784797910;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=Ph7nu7v5ynKoGLeN6brlvQB+6K4JFjnx8hTC6Ek69CM=;
+ b=jQIhRa7d7a71Qb5eYzYKY5rr8fCi3w8825EkGf8oS7fErG4JRkxRoLoMz3cV8Tx2V2vFx6
+ gBSC4JAhHh5Ul0wYdarkwPv7+4HYuu3ucVb9gEALTeFzzLIkTiKn7yTROGN2y1yImohY7U
+ XhqWorSuB8BzCAhpwYZPUbyhyWiYBNo=
+Date: Thu, 23 Jul 2026 17:11:25 +0800
 MIME-Version: 1.0
-Content-Type: text/plain; charset=US-ASCII
+Subject: Re: [PATCH v2 09/44] qapi: convert intro sections for cryptodev.json
+To: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org
+Cc: =?UTF-8?Q?Alex_Benn=C3=A9e?= <alex.bennee@linaro.org>,
+ Lukas Straub <lukasstraub2@web.de>,
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ Zhao Liu <zhao1.liu@intel.com>, Laurent Vivier <laurent@vivier.eu>,
+ Markus Armbruster <armbru@redhat.com>,
+ "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
+ Alex Williamson <alex@shazbot.org>, Hanna Reitz <hreitz@redhat.com>,
+ Ani Sinha <anisinha@redhat.com>, qemu-block@nongnu.org,
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, linux-cxl@vger.kernel.org,
+ Jiri Pirko <jiri@resnulli.us>, =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?=
+ <berrange@redhat.com>, Stefan Berger <stefanb@linux.vnet.ibm.com>,
+ Fabiano Rosas <farosas@suse.de>, Stefan Hajnoczi <stefanha@redhat.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, Igor Mammedov <imammedo@redhat.com>,
+ "Michael S. Tsirkin" <mst@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
+ linux-edac@vger.kernel.org, =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?=
+ <marcandre.lureau@redhat.com>,
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eric Blake <eblake@redhat.com>, =?UTF-8?Q?C=C3=A9dric_Le_Goater?=
+ <clg@redhat.com>, Jason Wang <jasowangio@gmail.com>,
+ qemu-trivial@nongnu.org, Jonathan Cameron <jic23@kernel.org>
+References: <20260723044805.527643-1-jsnow@redhat.com>
+ <20260723044805.527643-10-jsnow@redhat.com>
+Content-Language: en-US
+X-Report-Abuse: Please report any abuse attempt to abuse@migadu.com and
+ include these headers.
+From: zhenwei pi <zhenwei.pi@linux.dev>
+In-Reply-To: <20260723044805.527643-10-jsnow@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=172.234.252.31;
- envelope-from=mchehab+huawei@kernel.org; helo=sea.source.kernel.org
-X-Spam_score_int: -18
-X-Spam_score: -1.9
-X-Spam_bar: -
-X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
+X-Migadu-Flow: FLOW_OUT
+Received-SPF: pass client-ip=95.215.58.172; envelope-from=zhenwei.pi@linux.dev;
+ helo=out-172.mta1.migadu.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-Mailman-Approved-At: Thu, 23 Jul 2026 07:20:21 -0400
@@ -75,41 +89,83 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-Reply-to:  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-From:  Mauro Carvalho Chehab via <qemu-trivial@nongnu.org>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Thu, 23 Jul 2026 00:47:23 -0400
-John Snow <jsnow@redhat.com> wrote:
+LGTM.
+Acked-by: zhenwei pi <zhenwei.pi@linux.dev>
 
+On 7/23/26 12:47, John Snow wrote:
 > (Trivial)
 > 
 > Signed-off-by: John Snow <jsnow@redhat.com>
 > ---
->  qapi/acpi-hest.json | 4 ++--
->  1 file changed, 2 insertions(+), 2 deletions(-)
+>   qapi/cryptodev.json | 18 ++++++------------
+>   1 file changed, 6 insertions(+), 12 deletions(-)
 > 
-> diff --git a/qapi/acpi-hest.json b/qapi/acpi-hest.json
-> index a01f1dee095..8db804df197 100644
-> --- a/qapi/acpi-hest.json
-> +++ b/qapi/acpi-hest.json
-> @@ -13,8 +13,8 @@
->  
->  ##
->  # @inject-ghes-v2-error:
+> diff --git a/qapi/cryptodev.json b/qapi/cryptodev.json
+> index eb309c22f86..d0c1e6c8944 100644
+> --- a/qapi/cryptodev.json
+> +++ b/qapi/cryptodev.json
+> @@ -12,8 +12,7 @@
+>   
+>   ##
+>   # @QCryptodevBackendAlgoType:
 > -#
-> -# Inject an error with additional ACPI 6.1 GHESv2 error information
-> +#     Inject an error with additional ACPI 6.1 GHESv2 error
-> +#     information
->  #
->  # @cper: contains a base64 encoded string with raw data for a single
->  #     CPER record with Generic Error Status Block, Generic Error Data
-LGTM.
+> -# The supported algorithm types of a crypto device.
+> +#     The supported algorithm types of a crypto device.
+>   #
+>   # @sym: symmetric encryption
+>   #
+> @@ -26,8 +25,7 @@
+>   
+>   ##
+>   # @QCryptodevBackendServiceType:
+> -#
+> -# The supported service types of a crypto device.
+> +#     The supported service types of a crypto device.
+>   #
+>   # @cipher: Symmetric Key Cipher service
+>   #
+> @@ -46,8 +44,7 @@
+>   
+>   ##
+>   # @QCryptodevBackendType:
+> -#
+> -# The crypto device backend type
+> +#     The crypto device backend type
+>   #
+>   # @builtin: the QEMU builtin support
+>   #
+> @@ -62,8 +59,7 @@
+>   
+>   ##
+>   # @QCryptodevBackendClient:
+> -#
+> -# Information about a queue of crypto device.
+> +#     Information about a queue of crypto device.
+>   #
+>   # @queue: the queue index of the crypto device
+>   #
+> @@ -77,8 +73,7 @@
+>   
+>   ##
+>   # @QCryptodevInfo:
+> -#
+> -# Information about a crypto device.
+> +#     Information about a crypto device.
+>   #
+>   # @id: the id of the crypto device
+>   #
+> @@ -95,8 +90,7 @@
+>   
+>   ##
+>   # @query-cryptodev:
+> -#
+> -# Return information about current crypto devices.
+> +#     Return information about current crypto devices.
+>   #
+>   # Since: 8.0
+>   ##
 
-Acked-by: Mauro Carvalho Chehab <mchehab+huawei@kernel.org>
-
-
-Thanks,
-Mauro
 
