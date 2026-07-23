@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6B9F3C531CA
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85CC2C4452B
 	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:52:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlPa-0006lt-Rq; Thu, 23 Jul 2026 00:51:59 -0400
+	id 1wmlOV-0004x9-Ix; Thu, 23 Jul 2026 00:50:51 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlPQ-0006Vo-Mw
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:51:50 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlOU-0004tm-64
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:50:51 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlPP-0004U4-8l
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:51:48 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlOS-0004Or-09
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:50:49 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782306;
+ s=mimecast20190719; t=1784782247;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=U2M2DNHzDsbrmW/HGNuaaemkcJAWL2ZJ96wipo50CoA=;
- b=TPncDVxs9AwE9TyTpRz00mM3gk1viWBuw/e7lJc4nd63VHM4zFcj+H3CfN0rZdZvHol+r8
- CbMolnEz/+lVxw8KvekKm2boUlHOfOFbfbd8qkNj3WcDePbKgdrK5RSa/s1/JP0a5fcanc
- RDv+T+NI9sr3p7tShv2wKsmC7Zliq3s=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=TMsbmtwIJsHsJ64Y/awhARhEChYJf52hplBgthhLPFc=;
+ b=AWKWg7jKGXBsdXfNoeGDDqNQXRTHuLDuhgWfz9P4T/pIHN31z7LQBfx/rFIq1nn6mQRePm
+ tZU418Q8P63kCiwxq87Vy79D7ahg0m0kZjLm8lDsUWhs162SMEzycwuyMo4B4ih55VLAca
+ wyIuS3Fql0rwms366VBdFA3Dx7qZ8B4=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-664-DTqSLi1KOLirIKpVr7DHyA-1; Thu,
- 23 Jul 2026 00:51:43 -0400
-X-MC-Unique: DTqSLi1KOLirIKpVr7DHyA-1
-X-Mimecast-MFC-AGG-ID: DTqSLi1KOLirIKpVr7DHyA_1784782300
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-42-H7AG1BgiOSiid6wo1RwJ1A-1; Thu,
+ 23 Jul 2026 00:50:40 -0400
+X-MC-Unique: H7AG1BgiOSiid6wo1RwJ1A-1
+X-Mimecast-MFC-AGG-ID: H7AG1BgiOSiid6wo1RwJ1A_1784782237
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9B5ED1800578; Thu, 23 Jul 2026 04:51:40 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 219EA1954B26; Thu, 23 Jul 2026 04:50:37 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3BB8318002AE; Thu, 23 Jul 2026 04:51:30 +0000 (UTC)
+ id 4599F18002AE; Thu, 23 Jul 2026 04:50:26 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,27 +73,27 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 20/44] qapi: convert intro sections for dump.json
-Date: Thu, 23 Jul 2026 00:47:41 -0400
-Message-ID: <20260723044805.527643-21-jsnow@redhat.com>
+Subject: [PATCH v2 14/44] qapi: convert intro sections for replay.json
+Date: Thu, 23 Jul 2026 00:47:35 -0400
+Message-ID: <20260723044805.527643-15-jsnow@redhat.com>
 In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: IHzyrhoRTdxIL0YnzP3-3YbcvTNKLfJrk83zNM8zQI8_1784782300
+X-Mimecast-MFC-PROC-ID: xuaeUQJUhPEuKndNwOP2WNPvUj6uVL6ub6OmRqF7KHI_1784782237
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: permerror client-ip=170.10.133.124;
  envelope-from=jsnow@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,85 +113,99 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/dump.json | 24 +++++++++---------------
- 1 file changed, 9 insertions(+), 15 deletions(-)
+ qapi/replay.json | 45 ++++++++++++++++++++-------------------------
+ 1 file changed, 20 insertions(+), 25 deletions(-)
 
-diff --git a/qapi/dump.json b/qapi/dump.json
-index 726b5208703..c96dd2364bb 100644
---- a/qapi/dump.json
-+++ b/qapi/dump.json
+diff --git a/qapi/replay.json b/qapi/replay.json
+index ccf84da68ef..db1440c09a6 100644
+--- a/qapi/replay.json
++++ b/qapi/replay.json
 @@ -12,8 +12,7 @@
  
  ##
- # @DumpGuestMemoryFormat:
+ # @ReplayMode:
 -#
--# An enumeration of guest-memory-dump's format.
-+#     An enumeration of guest-memory-dump's format.
+-# Mode of the replay subsystem.
++#     Mode of the replay subsystem.
  #
- # @elf: elf format
+ # @none: normal execution mode.  Replay or record are not enabled.
  #
-@@ -49,9 +48,8 @@
+@@ -30,8 +29,7 @@
  
  ##
- # @dump-guest-memory:
+ # @ReplayInfo:
 -#
--# Dump guest's memory to vmcore.  It is a synchronous operation that
--# can take very long depending on the amount of guest memory.
-+#     Dump guest's memory to vmcore.  It is a synchronous operation
-+#     that can take very long depending on the amount of guest memory.
+-# Record/replay information.
++#     Record/replay information.
  #
- # @paging: if true, do paging to get guest's memory mapping.  This
- #     allows using gdb to process the core file.
-@@ -109,8 +107,8 @@
+ # @mode: current mode.
+ #
+@@ -47,10 +45,9 @@
  
  ##
- # @DumpStatus:
+ # @query-replay:
 -#
--# Describe the status of a long-running background guest memory dump.
-+#     Describe the status of a long-running background guest memory
-+#     dump.
+-# Retrieve the record/replay information.  It includes current
+-# instruction count which may be used for `replay-break` and
+-# `replay-seek` commands.
++#     Retrieve the record/replay information.  It includes current
++#     instruction count which may be used for `replay-break` and
++#     `replay-seek` commands.
  #
- # @none: no `dump-guest-memory` has started yet.
+ # Returns: record/replay information.
  #
-@@ -127,8 +125,7 @@
+@@ -66,13 +63,13 @@
  
  ##
- # @DumpQueryResult:
+ # @replay-break:
 -#
--# The result format for `query-dump`.
-+#     The result format for `query-dump`.
+-# Set replay breakpoint at instruction count @icount.  Execution stops
+-# when the specified instruction is reached.  There can be at most one
+-# breakpoint.  When breakpoint is set, any prior one is removed.  The
+-# breakpoint may be set only in replay mode and only "in the future",
+-# i.e. at instruction counts greater than the current one.  The
+-# current instruction count can be observed with `query-replay`.
++#     Set replay breakpoint at instruction count @icount.  Execution
++#     stops when the specified instruction is reached.  There can be
++#     at most one breakpoint.  When breakpoint is set, any prior one
++#     is removed.  The breakpoint may be set only in replay mode and
++#     only "in the future", i.e. at instruction counts greater than
++#     the current one.  The current instruction count can be observed
++#     with `query-replay`.
  #
- # @status: enum of `DumpStatus`, which shows current dump status
+ # @icount: instruction count to stop at
  #
-@@ -145,8 +142,7 @@
+@@ -87,9 +84,8 @@
  
  ##
- # @query-dump:
+ # @replay-delete-break:
 -#
--# Query latest dump status.
-+#     Query latest dump status.
+-# Remove replay breakpoint which was set with `replay-break`.  The
+-# command is ignored when there are no replay breakpoints.
++#     Remove replay breakpoint which was set with `replay-break`.  The
++#     command is ignored when there are no replay breakpoints.
  #
- # Returns: An object showing the dump status.
+ # Since: 5.2
  #
-@@ -162,8 +158,7 @@
+@@ -102,13 +98,12 @@
  
  ##
- # @DUMP_COMPLETED:
+ # @replay-seek:
 -#
--# Emitted when background dump has completed
-+#     Emitted when background dump has completed
+-# Automatically proceed to the instruction count @icount, when
+-# replaying the execution.  The command automatically loads nearest
+-# snapshot and replays the execution to find the desired instruction.
+-# When there is no preceding snapshot or the execution is not
+-# replayed, then the command fails.  Instruction count can be obtained
+-# with the `query-replay` command.
++#     Automatically proceed to the instruction count @icount, when
++#     replaying the execution.  The command automatically loads
++#     nearest snapshot and replays the execution to find the desired
++#     instruction.  When there is no preceding snapshot or the
++#     execution is not replayed, then the command fails.  Instruction
++#     count can be obtained with the `query-replay` command.
  #
- # @result: final dump status
- #
-@@ -196,8 +191,7 @@
- 
- ##
- # @query-dump-guest-memory-capability:
--#
--# Return the available formats for `dump-guest-memory`
-+#     Return the available formats for `dump-guest-memory`
- #
- # Returns: An object listing available formats for `dump-guest-memory`
+ # @icount: target instruction count
  #
 -- 
 2.55.0
