@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 655FAC4452B
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:53:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8AC15C4452B
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:53:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlQF-0002Vb-6F; Thu, 23 Jul 2026 00:52:39 -0400
+	id 1wmlRD-0004L3-GR; Thu, 23 Jul 2026 00:53:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQC-00029G-TZ
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:52:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQv-00044p-CD
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:24 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQB-0004iC-Ft
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:52:36 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQr-0004rw-Fb
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:53:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782354;
+ s=mimecast20190719; t=1784782395;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=ieD8d7uIFceTxEjKltR0VJrAkmqKTvXxTTZUmuZaZws=;
- b=IZSDpiRCEEAPtHe94sRHPBh6Fls34cnjCE0pORc+JS2O9CLnIlhYPllgKfYIo37qedX8DO
- S8RLWuMnMCSO7rsj+OWmxfv8rC3efxEev/usPst5/A87jemcWp3NTOYX3b0iWULAOhuOVP
- jn86IfL+WzFXQQ12dfEPcbEAFl+87Xo=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=IyTl9kx/Ys42L67iPX5XzMmfFhlEjbDrKuvT6ahrYho=;
+ b=f0ivkctT93aL++qA/qvxG58Q6jhz3i/DhkdZ4sMYRESs0gtpaK74HdyQe4mFtcwP+g3mLg
+ lpsZXkMCc9si7f4kXHmqUnyVZ/xvjafIYMmv97wLD6w/edcdL8uBzaimNqdsvehz4D2/Md
+ bDAKzxtzaYpBpscOvESi3cpRA27Bn+0=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-684-eeCSOB1aOsS8UW4jt6eH7w-1; Thu,
- 23 Jul 2026 00:52:31 -0400
-X-MC-Unique: eeCSOB1aOsS8UW4jt6eH7w-1
-X-Mimecast-MFC-AGG-ID: eeCSOB1aOsS8UW4jt6eH7w_1784782348
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-211-J48cmPRvPPiUaFUWwiqSjA-1; Thu,
+ 23 Jul 2026 00:52:04 -0400
+X-MC-Unique: J48cmPRvPPiUaFUWwiqSjA-1
+X-Mimecast-MFC-AGG-ID: J48cmPRvPPiUaFUWwiqSjA_1784782322
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C89AB19775B0; Thu, 23 Jul 2026 04:52:28 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C16351944EBC; Thu, 23 Jul 2026 04:52:01 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4947318002B5; Thu, 23 Jul 2026 04:52:21 +0000 (UTC)
+ id DD19D180029D; Thu, 23 Jul 2026 04:51:49 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,27 +73,26 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 25/44] qapi: convert trivial intro sections for job.json
-Date: Thu, 23 Jul 2026 00:47:46 -0400
-Message-ID: <20260723044805.527643-26-jsnow@redhat.com>
+Subject: [PATCH v2 22/44] qapi: convert intro sections for sockets.json
+Date: Thu, 23 Jul 2026 00:47:43 -0400
+Message-ID: <20260723044805.527643-23-jsnow@redhat.com>
 In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: NxmZhlvlsUzM7QrHlgaJiQRj3KpgHUiROVNuJIvVwvk_1784782348
+X-Mimecast-MFC-PROC-ID: 12HduOu5TG5gkvV9h-OFya84jN6PDxqy6eQn8-mYrRU_1784782322
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: permerror client-ip=170.10.133.124;
+Received-SPF: permerror client-ip=170.10.129.124;
  envelope-from=jsnow@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
 X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,72 +112,99 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/job.json | 18 ++++++------------
- 1 file changed, 6 insertions(+), 12 deletions(-)
+ qapi/sockets.json | 31 ++++++++++++-------------------
+ 1 file changed, 12 insertions(+), 19 deletions(-)
 
-diff --git a/qapi/job.json b/qapi/job.json
-index 31618e6ebcc..b68d7292423 100644
---- a/qapi/job.json
-+++ b/qapi/job.json
+diff --git a/qapi/sockets.json b/qapi/sockets.json
+index 473be2ac58a..210d07b5ef2 100644
+--- a/qapi/sockets.json
++++ b/qapi/sockets.json
 @@ -9,8 +9,7 @@
  
  ##
- # @JobType:
+ # @NetworkAddressFamily:
 -#
--# Type of a background job.
-+#     Type of a background job.
+-# The network address family
++#     The network address family
  #
- # @commit: block commit job type, see `block-commit`
+ # @ipv4: IPV4 family
  #
-@@ -42,8 +41,7 @@
+@@ -41,9 +40,8 @@
  
  ##
- # @JobStatus:
+ # @InetSocketAddress:
 -#
--# Indicates the present state of a given job in its lifetime.
-+#     Indicates the present state of a given job in its lifetime.
+-# Captures a socket address or address range in the Internet
+-# namespace.
++#     Captures a socket address or address range in the Internet
++#     namespace.
  #
- # @undefined: Erroneous, default state.  Should not ever be visible.
- #
-@@ -90,8 +88,7 @@
+ # @numeric: true if the host/port are guaranteed to be numeric, false
+ #     if name resolution should be attempted.  Defaults to false.
+@@ -98,8 +96,8 @@
  
  ##
- # @JobVerb:
+ # @UnixSocketAddress:
 -#
--# Represents command verbs that can be applied to a job.
-+#     Represents command verbs that can be applied to a job.
+-# Captures a socket address in the local ("Unix socket") namespace.
++#     Captures a socket address in the local ("Unix socket")
++#     namespace.
  #
- # @cancel: see `job-cancel`
+ # @path: filesystem path to use
  #
-@@ -117,8 +114,7 @@
+@@ -121,8 +119,7 @@
  
  ##
- # @JOB_STATUS_CHANGE:
+ # @VsockSocketAddress:
 -#
--# Emitted when a job transitions to a different status.
-+#     Emitted when a job transitions to a different status.
+-# Captures a socket address in the vsock namespace.
++#     Captures a socket address in the vsock namespace.
  #
- # @id: The job identifier
+ # @cid: unique host identifier
  #
-@@ -259,8 +255,7 @@
+@@ -140,8 +137,7 @@
  
  ##
- # @JobInfo:
+ # @FdSocketAddress:
 -#
--# Information about a job.
-+#     Information about a job.
+-# A file descriptor name or number.
++#     A file descriptor name or number.
  #
- # @id: The job identifier
- #
-@@ -294,8 +289,7 @@
+ # @str: decimal is for file descriptor number, otherwise it's a file
+ #     descriptor name.  Named file descriptors are permitted in
+@@ -197,9 +193,8 @@
  
  ##
- # @query-jobs:
+ # @SocketAddressLegacy:
 -#
--# Return information about jobs.
-+#     Return information about jobs.
+-# Captures the address of a socket, which could also be a named file
+-# descriptor
++#     Captures the address of a socket, which could also be a named
++#     file descriptor
  #
- # Returns: a list with info for each active job
+ # @type: Transport type
+ #
+@@ -219,8 +214,7 @@
+ 
+ ##
+ # @SocketAddressType:
+-#
+-# Available `SocketAddress` types
++#     Available `SocketAddress` types
+ #
+ # @inet: Internet address
+ #
+@@ -237,9 +231,8 @@
+ 
+ ##
+ # @SocketAddress:
+-#
+-# Captures the address of a socket, which could also be a socket file
+-# descriptor
++#     Captures the address of a socket, which could also be a socket
++#     file descriptor
+ #
+ # @type: Transport type
  #
 -- 
 2.55.0
