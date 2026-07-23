@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7C730C44524
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:56:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0AFB8C4452B
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:56:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlSA-0005nY-4z; Thu, 23 Jul 2026 00:54:38 -0400
+	id 1wmlU7-0002T4-SA; Thu, 23 Jul 2026 00:56:41 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlS7-0005cj-C1
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:54:35 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlU0-00026s-E4
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:56:33 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlS4-000550-QA
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:54:34 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlTy-0005V9-2J
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:56:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782472;
+ s=mimecast20190719; t=1784782589;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Y2l6GvJOHZN3iItpA5ipqrT2gVM1c+L15Fe47ufdVcE=;
- b=iiO+F3qgUJtiQZr+51Ka/p+0fsnjSE7lrdfKBI4y539bhT4vDEsyNgVSedkhvbEJWXEopk
- mLlt75c2KDmY0In4nnAxByR2+H4U4sWaBfJP0A6w84KQ3spIoN9HkIKYwPWRThkWEZepx3
- e5umBxUnLwG4+1SsdulpiiTKU7KVtAs=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=50CZod/iUePAFwxf+WZghW/YZKa0XPt7IqYHe7UOp5g=;
+ b=NejWgOt1U2xwby/AEeJU2oCVVuj+T5/+xdopufSUlY6MWW2FmUmpCkr/hSe4Ao6tcquNm1
+ 7qr5Vt9PnwKbKk09rLl79/xKIMaNSmEfS5LhOtO9QuyQtTpwDVtRhngmGprIWHYDZEy5gq
+ 5S4YL9a1mcD9gjhADEwOwsRRReFXKvY=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-441-cP_UqyUjPW6VzT4_S0CN1A-1; Thu,
- 23 Jul 2026 00:54:26 -0400
-X-MC-Unique: cP_UqyUjPW6VzT4_S0CN1A-1
-X-Mimecast-MFC-AGG-ID: cP_UqyUjPW6VzT4_S0CN1A_1784782464
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-564-6KLshGhfPWKysXqy8wvqgw-1; Thu,
+ 23 Jul 2026 00:55:15 -0400
+X-MC-Unique: 6KLshGhfPWKysXqy8wvqgw-1
+X-Mimecast-MFC-AGG-ID: 6KLshGhfPWKysXqy8wvqgw_1784782512
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CF1FC1944F10; Thu, 23 Jul 2026 04:54:23 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8F355195FE0B; Thu, 23 Jul 2026 04:55:12 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2B26918002AE; Thu, 23 Jul 2026 04:54:16 +0000 (UTC)
+ id EE85918002AE; Thu, 23 Jul 2026 04:55:02 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,26 +73,28 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 37/44] qapi: convert intro sections for char.json
-Date: Thu, 23 Jul 2026 00:47:58 -0400
-Message-ID: <20260723044805.527643-38-jsnow@redhat.com>
+Subject: [PATCH v2 42/44] qapi: convert trivial intro sections for
+ migration.json
+Date: Thu, 23 Jul 2026 00:48:03 -0400
+Message-ID: <20260723044805.527643-43-jsnow@redhat.com>
 In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 3hHUEzIMDHUkO3xArlwrN-rbYWPaFuwZd-iGi3D5Gew_1784782464
+X-Mimecast-MFC-PROC-ID: HRZVTVJ-WeMoYy89GZOcKDO049MVDhG_fqTZQTsRMrk_1784782512
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: permerror client-ip=170.10.129.124;
+Received-SPF: permerror client-ip=170.10.133.124;
  envelope-from=jsnow@redhat.com; helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
 X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=-0.01, RCVD_IN_MSPIKE_WL=-0.01,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,312 +114,570 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/char.json | 90 +++++++++++++++++---------------------------------
- 1 file changed, 30 insertions(+), 60 deletions(-)
+ qapi/migration.json | 201 +++++++++++++++++---------------------------
+ 1 file changed, 78 insertions(+), 123 deletions(-)
 
-diff --git a/qapi/char.json b/qapi/char.json
-index abaccefa97e..7ae67eedff8 100644
---- a/qapi/char.json
-+++ b/qapi/char.json
-@@ -12,8 +12,7 @@
+diff --git a/qapi/migration.json b/qapi/migration.json
+index 66bd900465a..f9300c9e329 100644
+--- a/qapi/migration.json
++++ b/qapi/migration.json
+@@ -13,8 +13,7 @@
  
  ##
- # @ChardevInfo:
+ # @MigrationRAMStats:
 -#
--# Information about a character device.
-+#     Information about a character device.
+-# Detailed migration status.
++#     Detailed migration status.
  #
- # @label: the label of the character device
+ # @transferred: amount of bytes already transferred to the target VM
  #
-@@ -35,8 +34,7 @@
+@@ -78,8 +77,7 @@
  
  ##
- # @query-chardev:
+ # @XBZRLECacheStats:
 -#
--# Return information about current character devices.
-+#     Return information about current character devices.
+-# Detailed XBZRLE migration cache statistics
++#     Detailed XBZRLE migration cache statistics
+ #
+ # @cache-size: XBZRLE cache size
+ #
+@@ -104,8 +102,7 @@
+ 
+ ##
+ # @CompressionStats:
+-#
+-# Detailed migration compression statistics
++#     Detailed migration compression statistics
+ #
+ # @pages: amount of pages compressed and transferred to the target VM
+ #
+@@ -126,8 +123,7 @@
+ 
+ ##
+ # @MigrationStatus:
+-#
+-# An enumeration of migration status.
++#     An enumeration of migration status.
+ #
+ # @none: no migration has ever happened.
+ #
+@@ -189,8 +185,7 @@
+ 
+ ##
+ # @VfioStats:
+-#
+-# Detailed VFIO devices migration statistics
++#     Detailed VFIO devices migration statistics
+ #
+ # @transferred: amount of bytes transferred to the target VM by VFIO
+ #     devices
+@@ -202,8 +197,7 @@
+ 
+ ##
+ # @MigrationInfo:
+-#
+-# Information about current migration process.
++#     Information about current migration process.
+ #
+ # @status: `MigrationStatus` describing the current migration status.
+ #     If this field is not returned, no migration process has been
+@@ -339,9 +333,9 @@
+ 
+ ##
+ # @query-migrate:
+-#
+-# Return information about current migration process.  If migration is
+-# active there will be another json-object with RAM migration status.
++#     Return information about current migration process.  If
++#     migration is active there will be another json-object with RAM
++#     migration status.
  #
  # Since: 0.14
  #
-@@ -68,8 +66,7 @@
+@@ -435,8 +429,7 @@
  
  ##
- # @ChardevBackendInfo:
+ # @MigrationCapability:
 -#
--# Information about a character device backend
-+#     Information about a character device backend
+-# Migration capabilities enumeration
++#     Migration capabilities enumeration
  #
- # @name: The backend name
- #
-@@ -79,8 +76,7 @@
+ # @xbzrle: Migration supports xbzrle (Xor Based Zero Run Length
+ #     Encoding).  This feature allows us to minimize migration traffic
+@@ -545,8 +538,7 @@
  
  ##
- # @query-chardev-backends:
+ # @MigrationCapabilityStatus:
 -#
--# Return information about character device backends.
-+#     Return information about character device backends.
+-# Migration capability information
++#     Migration capability information
  #
- # Since: 2.0
+ # @capability: capability enum
  #
-@@ -108,8 +104,7 @@
+@@ -559,8 +551,8 @@
  
  ##
- # @DataFormat:
+ # @migrate-set-capabilities:
 -#
--# An enumeration of data format.
-+#     An enumeration of data format.
+-# Enable/Disable the following migration capabilities (like xbzrle)
++#     Enable/Disable the following migration capabilities (like
++#     xbzrle)
  #
- # @utf8: Data is a UTF-8 string (RFC 3629)
+ # @capabilities: json array of capability modifications to make
  #
-@@ -122,8 +117,7 @@
+@@ -577,8 +569,8 @@
  
  ##
- # @ringbuf-write:
+ # @query-migrate-capabilities:
 -#
--# Write to a ring buffer character device.
-+#     Write to a ring buffer character device.
+-# Return information about the current migration capabilities status
++#     Return information about the current migration capabilities
++#     status
  #
- # @device: the ring buffer character device name
+ # Since: 1.2
  #
-@@ -154,8 +148,7 @@
+@@ -598,8 +590,7 @@
  
  ##
- # @ringbuf-read:
+ # @MultiFDCompression:
 -#
--# Read from a ring buffer character device.
-+#     Read from a ring buffer character device.
+-# An enumeration of multifd compression methods.
++#     An enumeration of multifd compression methods.
  #
- # @device: the ring buffer character device name
+ # @none: no compression.
  #
-@@ -189,8 +182,7 @@
+@@ -776,9 +767,8 @@
  
  ##
- # @ChardevCommon:
+ # @BitmapMigrationNodeAlias:
 -#
--# Configuration shared across all chardev backends
-+#     Configuration shared across all chardev backends
+-# Maps a block node name and the bitmaps it has to aliases for dirty
+-# bitmap migration.
++#     Maps a block node name and the bitmaps it has to aliases for
++#     dirty bitmap migration.
  #
- # @logfile: The name of a logfile to save output
+ # @node-name: A block node name.
  #
-@@ -209,8 +201,7 @@
+@@ -798,9 +788,8 @@
  
  ##
- # @ChardevFile:
+ # @MigrationParameter:
 -#
--# Configuration info for file chardevs.
-+#     Configuration info for file chardevs.
+-# Migration parameters enumeration.  The enumeration values mirror the
+-# members of @MigrationParameters.
++#     Migration parameters enumeration.  The enumeration values mirror
++#     the members of @MigrationParameters.
  #
- # @in: The name of the input file
+ # Features:
  #
-@@ -229,8 +220,7 @@
+@@ -834,8 +823,7 @@
  
  ##
- # @ChardevHostdev:
+ # @migrate-set-parameters:
 -#
--# Configuration info for device and pipe chardevs.
-+#     Configuration info for device and pipe chardevs.
+-# Set migration parameters.  All arguments are optional.
++#     Set migration parameters.  All arguments are optional.
  #
- # @device: The name of the special file for the device, i.e.
- #     /dev/ttyS0 on Unix or COM1: on Windows
-@@ -243,8 +233,7 @@
+ # Since: 2.4
+ #
+@@ -1057,11 +1045,10 @@
  
  ##
- # @ChardevSocket:
+ # @query-migrate-parameters:
 -#
--# Configuration info for (stream) socket chardevs.
-+#     Configuration info for (stream) socket chardevs.
+-# Return information about the current migration parameters.  Optional
+-# members of the return value are always present, except
+-# @block-bitmap-mapping, which is only present if it has been
+-# previously set.
++#     Return information about the current migration parameters.
++#     Optional members of the return value are always present, except
++#     @block-bitmap-mapping, which is only present if it has been
++#     previously set.
  #
- # @addr: socket address to listen on (server=true) or connect to
- #     (server=false)
-@@ -295,8 +284,7 @@
+ # Since: 2.4
+ #
+@@ -1082,10 +1069,9 @@
  
  ##
- # @ChardevUdp:
+ # @migrate-start-postcopy:
 -#
--# Configuration info for datagram socket chardevs.
-+#     Configuration info for datagram socket chardevs.
+-# Followup to a migration command to switch the migration to postcopy
+-# mode.  The postcopy-ram capability must be set on both source and
+-# destination before the original migration command.
++#     Followup to a migration command to switch the migration to
++#     postcopy mode.  The postcopy-ram capability must be set on both
++#     source and destination before the original migration command.
  #
- # @remote: remote address
+ # Since: 2.5
  #
-@@ -311,8 +299,7 @@
+@@ -1098,8 +1084,7 @@
  
  ##
- # @ChardevMux:
+ # @MIGRATION:
 -#
--# Configuration info for mux chardevs.
-+#     Configuration info for mux chardevs.
+-# Emitted when a migration event happens
++#     Emitted when a migration event happens
  #
- # @chardev: name of the base chardev.
+ # @status: `MigrationStatus` describing the current migration status.
  #
-@@ -324,8 +311,7 @@
+@@ -1116,9 +1101,8 @@
  
  ##
- # @ChardevHub:
+ # @MIGRATION_PASS:
 -#
--# Configuration info for hub chardevs.
-+#     Configuration info for hub chardevs.
+-# Emitted from the source side of a migration at the start of each
+-# pass (when it syncs the dirty bitmap)
++#     Emitted from the source side of a migration at the start of each
++#     pass (when it syncs the dirty bitmap)
  #
- # @chardevs: IDs to be added to this hub (maximum 4 devices).
+ # @pass: An incrementing count (starting at 1 on the first pass)
  #
-@@ -337,8 +323,7 @@
+@@ -1134,8 +1118,8 @@
  
  ##
- # @ChardevStdio:
+ # @COLOMessage:
 -#
--# Configuration info for stdio chardevs.
-+#     Configuration info for stdio chardevs.
+-# The message transmission between Primary side and Secondary side.
++#     The message transmission between Primary side and Secondary
++#     side.
  #
- # @signal: Allow signals (such as SIGINT triggered by ^C) be delivered
- #     to QEMU.  Default: true.
-@@ -351,8 +336,7 @@
+ # @checkpoint-ready: Secondary VM (SVM) is ready for checkpointing
+ #
+@@ -1161,8 +1145,7 @@
  
  ##
- # @ChardevSpiceChannel:
+ # @COLOMode:
 -#
--# Configuration info for spice vm channel chardevs.
-+#     Configuration info for spice vm channel chardevs.
+-# The COLO current mode.
++#     The COLO current mode.
  #
- # @type: kind of channel (for example vdagent).
+ # @none: COLO is disabled.
  #
-@@ -365,8 +349,7 @@
+@@ -1177,8 +1160,7 @@
  
  ##
- # @ChardevSpicePort:
+ # @FailoverStatus:
 -#
--# Configuration info for spice port chardevs.
-+#     Configuration info for spice port chardevs.
+-# An enumeration of COLO failover status
++#     An enumeration of COLO failover status
  #
- # @fqdn: name of the channel (see docs/spice-port-fqdn.txt)
+ # @none: no failover has ever happened
  #
-@@ -379,8 +362,7 @@
+@@ -1198,9 +1180,8 @@
  
  ##
- # @ChardevVCEncoding:
+ # @COLO_EXIT:
 -#
--# Character encoding expected from the guest on a virtual console.
-+#     Character encoding expected from the guest on a virtual console.
+-# Emitted when VM finishes COLO mode due to some errors happening or
+-# at the request of users.
++#     Emitted when VM finishes COLO mode due to some errors happening
++#     or at the request of users.
  #
- # @cp437: CP437 (8-bit Extended ASCII / VGA).  Every byte maps
- #     directly to a glyph; suitable for DOS or other guests that
-@@ -397,8 +379,7 @@
+ # @mode: report COLO mode when COLO exited.
+ #
+@@ -1218,8 +1199,7 @@
  
  ##
- # @ChardevDBus:
+ # @COLOExitReason:
 -#
--# Configuration info for DBus chardevs.
-+#     Configuration info for DBus chardevs.
+-# The reason for a COLO exit.
++#     The reason for a COLO exit.
  #
- # @name: name of the channel (following docs/spice-port-fqdn.txt)
- #
-@@ -415,8 +396,7 @@
+ # @none: failover has never happened.  This state does not occur in
+ #     the `COLO_EXIT` event, and is only visible in the result of
+@@ -1238,12 +1218,11 @@
  
  ##
- # @ChardevVC:
+ # @x-colo-lost-heartbeat:
 -#
--# Configuration info for virtual console chardevs.
-+#     Configuration info for virtual console chardevs.
+-# Tell QEMU that heartbeat is lost, request it to do takeover
+-# procedures.  If this command is sent to the PVM, the Primary side
+-# will exit COLO mode.  If sent to the Secondary, the Secondary side
+-# will run failover work, then takes over server operation to become
+-# the service VM.
++#     Tell QEMU that heartbeat is lost, request it to do takeover
++#     procedures.  If this command is sent to the PVM, the Primary
++#     side will exit COLO mode.  If sent to the Secondary, the
++#     Secondary side will run failover work, then takes over server
++#     operation to become the service VM.
  #
- # @width: console width, in pixels
+ # Features:
  #
-@@ -445,8 +425,7 @@
+@@ -1281,8 +1260,7 @@
  
  ##
- # @ChardevRingbuf:
+ # @migrate-continue:
 -#
--# Configuration info for ring buffer chardevs.
-+#     Configuration info for ring buffer chardevs.
+-# Continue migration when it's in a paused state.
++#     Continue migration when it's in a paused state.
  #
- # @size: ring buffer size, must be power of two, default is 65536
+ # @state: The state the migration is currently expected to be in
  #
-@@ -458,8 +437,7 @@
+@@ -1298,8 +1276,7 @@
  
  ##
- # @ChardevQemuVDAgent:
+ # @MigrationAddressType:
 -#
--# Configuration info for QEMU vdagent implementation.
-+#     Configuration info for QEMU vdagent implementation.
+-# The migration stream transport mechanisms.
++#     The migration stream transport mechanisms.
  #
- # @mouse: enable/disable mouse, default is enabled.
+ # @socket: Migrate via socket.
  #
-@@ -475,8 +453,7 @@
+@@ -1339,8 +1316,7 @@
  
  ##
- # @ChardevPty:
+ # @MigrationAddress:
 -#
--# Configuration info for pty implementation.
-+#     Configuration info for pty implementation.
+-# Migration endpoint configuration.
++#     Migration endpoint configuration.
  #
- # @path: optional path to create a symbolic link that points to the
- #     allocated PTY
-@@ -723,8 +700,7 @@
+ # @transport: The migration stream transport mechanism
+ #
+@@ -1357,8 +1333,7 @@
  
  ##
- # @ChardevBackend:
+ # @MigrationChannelType:
 -#
--# Configuration info for the new chardev backend.
-+#     Configuration info for the new chardev backend.
+-# The migration channel-type request options.
++#     The migration channel-type request options.
  #
- # @type: backend type
+ # @main: Main outbound migration channel.
  #
-@@ -767,8 +743,7 @@
+@@ -1371,8 +1346,7 @@
  
  ##
- # @ChardevReturn:
+ # @MigrationChannel:
 -#
--# Return info about the chardev backend just created.
-+#     Return info about the chardev backend just created.
+-# Migration stream channel parameters.
++#     Migration stream channel parameters.
  #
- # @pty: name of the slave pseudoterminal device, present if and only
- #     if a chardev of type 'pty' was created
-@@ -780,8 +755,7 @@
+ # @channel-type: Channel type for transferring packet information.
+ #
+@@ -1387,8 +1361,7 @@
  
  ##
- # @chardev-add:
+ # @migrate:
 -#
--# Add a character device backend
-+#     Add a character device backend
+-# Migrates the current running guest to another Virtual Machine.
++#     Migrates the current running guest to another Virtual Machine.
  #
- # @id: the chardev's ID, must be unique
+ # @uri: the Uniform Resource Identifier of the destination VM
  #
-@@ -818,8 +792,7 @@
+@@ -1464,9 +1437,8 @@
  
  ##
- # @chardev-change:
+ # @migrate-incoming:
 -#
--# Change a character device backend
-+#     Change a character device backend
+-# Start an incoming migration.  QEMU must have been started with
+-# -incoming defer.
++#     Start an incoming migration.  QEMU must have been started with
++#     -incoming defer.
  #
- # @id: the chardev's ID
- #
-@@ -859,8 +832,7 @@
+ # @uri: The Uniform Resource Identifier identifying the source or
+ #     address to listen on
+@@ -1536,9 +1508,8 @@
  
  ##
- # @chardev-remove:
+ # @xen-save-devices-state:
 -#
--# Remove a character device backend
-+#     Remove a character device backend
+-# Save the state of all devices to file.  The RAM and the block
+-# devices of the VM are not saved by this command.
++#     Save the state of all devices to file.  The RAM and the block
++#     devices of the VM are not saved by this command.
  #
- # @id: the chardev's ID, must not be in use
- #
-@@ -876,8 +848,7 @@
+ # @filename: the file to save the state of the devices to as binary
+ #     data.  See `xen-save-devices-state`.txt for a description of the
+@@ -1560,8 +1531,7 @@
  
  ##
- # @chardev-send-break:
+ # @xen-set-global-dirty-log:
 -#
--# Send a break to a character device
-+#     Send a break to a character device
+-# Enable or disable the global dirty log mode.
++#     Enable or disable the global dirty log mode.
  #
- # @id: the chardev's ID
+ # @enable: true to enable, false to disable.
  #
-@@ -893,8 +864,7 @@
+@@ -1577,9 +1547,8 @@
  
  ##
- # @VSERPORT_CHANGE:
+ # @xen-load-devices-state:
 -#
--# Emitted when the guest opens or closes a virtio-serial port.
-+#     Emitted when the guest opens or closes a virtio-serial port.
+-# Load the state of all devices from file.  The RAM and the block
+-# devices of the VM are not loaded by this command.
++#     Load the state of all devices from file.  The RAM and the block
++#     devices of the VM are not loaded by this command.
  #
- # @id: device identifier of the virtio-serial port
+ # @filename: the file to load the state of the devices from as binary
+ #     data.  See `xen-save-devices-state`.txt for a description of the
+@@ -1597,8 +1566,7 @@
+ 
+ ##
+ # @xen-set-replication:
+-#
+-# Enable or disable replication.
++#     Enable or disable replication.
+ #
+ # @enable: true to enable, false to disable.
+ #
+@@ -1621,8 +1589,7 @@
+ 
+ ##
+ # @ReplicationStatus:
+-#
+-# The result format for `query-xen-replication-status`.
++#     The result format for `query-xen-replication-status`.
+ #
+ # @error: true if an error happened, false if replication is normal.
+ #
+@@ -1670,8 +1637,7 @@
+ 
+ ##
+ # @COLOStatus:
+-#
+-# The result format for `query-colo-status`.
++#     The result format for `query-colo-status`.
+ #
+ # @mode: COLO running mode.  If COLO is running, this field will
+ #     return 'primary' or 'secondary'.
+@@ -1709,8 +1675,7 @@
+ 
+ ##
+ # @migrate-recover:
+-#
+-# Provide a recovery migration stream URI.
++#     Provide a recovery migration stream URI.
+ #
+ # @uri: the URI to be used for the recovery of migration stream.
+ #
+@@ -1742,11 +1707,10 @@
+ 
+ ##
+ # @UNPLUG_PRIMARY:
+-#
+-# Emitted from source side of a migration when migration state is
+-# WAIT_UNPLUG.  Device was unplugged by guest operating system.
+-# Device resources in QEMU are kept on standby to be able to re-plug
+-# it in case of migration failure.
++#     Emitted from source side of a migration when migration state is
++#     WAIT_UNPLUG.  Device was unplugged by guest operating system.
++#     Device resources in QEMU are kept on standby to be able to
++#     re-plug it in case of migration failure.
+ #
+ # @device-id: QEMU device id of the unplugged device
+ #
+@@ -1763,8 +1727,7 @@
+ 
+ ##
+ # @DirtyRateVcpu:
+-#
+-# Dirty rate of vcpu.
++#     Dirty rate of vcpu.
+ #
+ # @id: vcpu index.
+ #
+@@ -1777,8 +1740,7 @@
+ 
+ ##
+ # @DirtyRateStatus:
+-#
+-# Dirty page rate measurement status.
++#     Dirty page rate measurement status.
+ #
+ # @unstarted: measuring thread has not been started yet
+ #
+@@ -1793,9 +1755,8 @@
+ 
+ ##
+ # @DirtyRateMeasureMode:
+-#
+-# Method used to measure dirty page rate.  Differences between
+-# available methods are explained in `calc-dirty-rate`.
++#     Method used to measure dirty page rate.  Differences between
++#     available methods are explained in `calc-dirty-rate`.
+ #
+ # @page-sampling: use page sampling
+ #
+@@ -1810,8 +1771,7 @@
+ 
+ ##
+ # @TimeUnit:
+-#
+-# Specifies unit in which time-related value is specified.
++#     Specifies unit in which time-related value is specified.
+ #
+ # @second: value is in seconds
+ #
+@@ -1824,8 +1784,7 @@
+ 
+ ##
+ # @DirtyRateInfo:
+-#
+-# Information about measured dirty page rate.
++#     Information about measured dirty page rate.
+ #
+ # @dirty-rate: an estimate of the dirty page rate of the VM in units
+ #     of MiB/s.  Value is present only when @status is 'measured'.
+@@ -1935,8 +1894,8 @@
+ 
+ ##
+ # @query-dirty-rate:
+-#
+-# Query results of the most recent invocation of `calc-dirty-rate`.
++#     Query results of the most recent invocation of
++#     `calc-dirty-rate`.
+ #
+ # @calc-time-unit: time unit in which to report calculation time.
+ #     By default it is reported in seconds.  (Since 8.2)
+@@ -1962,8 +1921,7 @@
+ 
+ ##
+ # @DirtyLimitInfo:
+-#
+-# Dirty page rate limit information of a virtual CPU.
++#     Dirty page rate limit information of a virtual CPU.
+ #
+ # @cpu-index: index of a virtual CPU.
+ #
+@@ -2029,8 +1987,8 @@
+ 
+ ##
+ # @query-vcpu-dirty-limit:
+-#
+-# Return information about virtual CPU dirty page rate limits, if any.
++#     Return information about virtual CPU dirty page rate limits, if
++#     any.
+ #
+ # Since: 7.1
+ #
+@@ -2046,8 +2004,7 @@
+ 
+ ##
+ # @snapshot-save:
+-#
+-# Save a VM snapshot
++#     Save a VM snapshot
+ #
+ # @job-id: identifier for the newly created job
+ #
+@@ -2118,8 +2075,7 @@
+ 
+ ##
+ # @snapshot-load:
+-#
+-# Load a VM snapshot
++#     Load a VM snapshot
+ #
+ # @job-id: identifier for the newly created job
+ #
+@@ -2188,8 +2144,7 @@
+ 
+ ##
+ # @snapshot-delete:
+-#
+-# Delete a VM snapshot
++#     Delete a VM snapshot
+ #
+ # @job-id: identifier for the newly created job
  #
 -- 
 2.55.0
