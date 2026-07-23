@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 644FBC44524
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:51:29 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 89110C44524
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:51:45 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlOg-0005ON-Ph; Thu, 23 Jul 2026 00:51:02 -0400
+	id 1wmlP3-0005lG-BQ; Thu, 23 Jul 2026 00:51:26 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlOb-0005Ay-Lf
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:50:59 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlOw-0005fW-My
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:51:19 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlOZ-0004PL-5t
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:50:56 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlOv-0004R3-3L
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:51:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782254;
+ s=mimecast20190719; t=1784782276;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=XX0MM67l2hTQkl3T1X4vh6I9bh96PpfSjiv2H/lU8Zg=;
- b=La3NxwtKkOiet9vkChN24M+b4pE/lFhf04uBYSwTgV4f7Ct07mwTJxVltZIeuc+uI39pKk
- gQSgW//V3GjnSJh1RWPXfnGD7FMiU1Dn2We9b61cw0WKcF1pJ3GaD4kGfovMFXkMB61wtI
- JN4AgZw1lwdfk26eXDH0PFOsbV2NlF8=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=BLReHKiKZLrcMhTJHEtDrbs61uxUo1HyBJxoZBg4t+Q=;
+ b=fzIwRFAyiNY+Jt39wzDig532s9GRZOGqA6yQQZ9z7lMSQnI8qWsKu78ECbCJSRMtQr9I+O
+ nIbZvKN0Q/EGQGhbFeoigCP84AARDAS/AgFHqV0xr7QFpLTWTGdSOAeLLgWa6SP2V95jPm
+ dUeiIqGhAxqa0fZJXMRUuVd4yUfMHQU=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-589-BCZ7n0D3Ptumtz7syo7Jjw-1; Thu,
- 23 Jul 2026 00:50:50 -0400
-X-MC-Unique: BCZ7n0D3Ptumtz7syo7Jjw-1
-X-Mimecast-MFC-AGG-ID: BCZ7n0D3Ptumtz7syo7Jjw_1784782247
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-593-BZq-vpapOaiUMw0l_FqGng-1; Thu,
+ 23 Jul 2026 00:51:11 -0400
+X-MC-Unique: BZq-vpapOaiUMw0l_FqGng-1
+X-Mimecast-MFC-AGG-ID: BZq-vpapOaiUMw0l_FqGng_1784782269
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6C45F1800759; Thu, 23 Jul 2026 04:50:47 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DD7811944F05; Thu, 23 Jul 2026 04:51:08 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 823A018002AE; Thu, 23 Jul 2026 04:50:37 +0000 (UTC)
+ id 679A6180029D; Thu, 23 Jul 2026 04:50:59 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,27 +73,26 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 15/44] qapi: convert trivial intro sections for
- machine-s390x.json
-Date: Thu, 23 Jul 2026 00:47:36 -0400
-Message-ID: <20260723044805.527643-16-jsnow@redhat.com>
+Subject: [PATCH v2 17/44] qapi: convert intro sections for tpm.json
+Date: Thu, 23 Jul 2026 00:47:38 -0400
+Message-ID: <20260723044805.527643-18-jsnow@redhat.com>
 In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: dKnVlkX7rOxiAGuf6kARISrXGgAuW107a4FQx_2SqeQ_1784782247
+X-Mimecast-MFC-PROC-ID: 8Jpw7bTKTnVZ5L1zevywmbzNxvJ4qg4KzI63K5ateB8_1784782269
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: permerror client-ip=170.10.129.124;
  envelope-from=jsnow@redhat.com; helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, SPF_HELO_PASS=-0.001,
- T_SPF_PERMERROR=0.01 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=-0.01, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, T_SPF_PERMERROR=0.01 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -113,60 +112,104 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/machine-s390x.json | 20 ++++++++------------
- 1 file changed, 8 insertions(+), 12 deletions(-)
+ qapi/tpm.json | 29 ++++++++++-------------------
+ 1 file changed, 10 insertions(+), 19 deletions(-)
 
-diff --git a/qapi/machine-s390x.json b/qapi/machine-s390x.json
-index ea430e1b889..2d40629683f 100644
---- a/qapi/machine-s390x.json
-+++ b/qapi/machine-s390x.json
-@@ -9,9 +9,8 @@
+diff --git a/qapi/tpm.json b/qapi/tpm.json
+index 3f2850a5733..6d94be656ae 100644
+--- a/qapi/tpm.json
++++ b/qapi/tpm.json
+@@ -10,8 +10,7 @@
  
  ##
- # @S390CpuPolarization:
+ # @TpmModel:
 -#
--# An enumeration of CPU polarization that can be assumed by a virtual
--# S390 CPU
-+#     An enumeration of CPU polarization that can be assumed by a
-+#     virtual S390 CPU
+-# An enumeration of TPM models
++#     An enumeration of TPM models
  #
- # Since: 8.2
- ##
-@@ -21,10 +20,9 @@
+ # @tpm-tis: TPM TIS model
+ #
+@@ -26,8 +25,7 @@
  
  ##
- # @set-cpu-topology:
+ # @query-tpm-models:
 -#
--# Modify the topology by moving the CPU inside the topology tree, or
--# by changing a modifier attribute of a CPU.  Absent values will not
--# be modified.
-+#     Modify the topology by moving the CPU inside the topology tree,
-+#     or by changing a modifier attribute of a CPU.  Absent values
-+#     will not be modified.
+-# Return a list of supported TPM models
++#     Return a list of supported TPM models
  #
- # @core-id: the vCPU ID to be moved
+ # Since: 1.5
  #
-@@ -94,8 +92,7 @@
+@@ -41,8 +39,7 @@
  
  ##
- # @CpuPolarizationInfo:
+ # @TpmType:
 -#
--# The result of a CPU polarization query.
-+#     The result of a CPU polarization query.
+-# An enumeration of TPM types
++#     An enumeration of TPM types
  #
- # @polarization: the CPU polarization
+ # @passthrough: TPM passthrough type
  #
-@@ -122,9 +119,8 @@
+@@ -55,8 +52,7 @@
  
  ##
- # @SCLP_CPI_INFO_AVAILABLE:
+ # @query-tpm-types:
 -#
--# Emitted when the Control-Program Identification data is available in
--# the QOM tree.
-+#     Emitted when the Control-Program Identification data is
-+#     available in the QOM tree.
+-# Return a list of supported TPM types
++#     Return a list of supported TPM types
  #
- # Features:
+ # Since: 1.5
+ #
+@@ -70,8 +66,7 @@
+ 
+ ##
+ # @TPMPassthroughOptions:
+-#
+-# Information about the TPM passthrough type
++#     Information about the TPM passthrough type
+ #
+ # @path: string describing the path used for accessing the TPM device
+ #
+@@ -87,8 +82,7 @@
+ 
+ ##
+ # @TPMEmulatorOptions:
+-#
+-# Information about the TPM emulator type
++#     Information about the TPM emulator type
+ #
+ # @chardev: Name of a unix socket chardev
+ #
+@@ -121,9 +115,8 @@
+ 
+ ##
+ # @TpmTypeOptions:
+-#
+-# A union referencing different TPM backend types' configuration
+-# options
++#     A union referencing different TPM backend types' configuration
++#     options
+ #
+ # @type:
+ #     - 'passthrough' The configuration options for the TPM
+@@ -142,8 +135,7 @@
+ 
+ ##
+ # @TPMInfo:
+-#
+-# Information about the TPM
++#     Information about the TPM
+ #
+ # @id: The Id of the TPM
+ #
+@@ -161,8 +153,7 @@
+ 
+ ##
+ # @query-tpm:
+-#
+-# Return information about the TPM device
++#     Return information about the TPM device
+ #
+ # Since: 1.5
  #
 -- 
 2.55.0
