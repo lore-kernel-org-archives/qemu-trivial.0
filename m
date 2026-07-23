@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CA9EBC4452B
-	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:55:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F31A7C531CA
+	for <qemu-trivial@archiver.kernel.org>; Thu, 23 Jul 2026 04:55:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wmlQi-0003Pt-PI; Thu, 23 Jul 2026 00:53:08 -0400
+	id 1wmlSZ-0006lz-Lu; Thu, 23 Jul 2026 00:55:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQW-0002zX-FG
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:52:59 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlSY-0006j1-1U
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:55:02 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlQU-0004md-Vf
- for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:52:56 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wmlSV-00057f-Oj
+ for qemu-trivial@nongnu.org; Thu, 23 Jul 2026 00:55:01 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784782374;
+ s=mimecast20190719; t=1784782499;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=94ztoHJSekPaBu9gQO06nFEY6BVwCOp3ZmuxtD8vWVs=;
- b=WJLeunrMpyhLdsWk2g/i0WkZURgaDj8EVhqDN50YnPvGJYtl3KmRdPQVO+UxTkWorgZzNi
- lJbFi+zHCsLtfCX10iNP9ezPO0vxkyJ11mXkhnQCCQtHWY2/BWryuSVlhLs9d1EUj/2GIX
- vPSBj3nMnLkihtURYzWVWwPEJ6EPJ6o=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=hNmusmT7xnM0b/0JCI4RAh4alzg3iNDUGcYnsg1i8pU=;
+ b=Gqot7f6/EZKp9bJ2urt19bEKHdjUv/mOcAC4qoBCm0YX0HJrvIcWDc5n6FF0JfH06ZCD3j
+ EQYydeDZZ8Ube8qwbvhy18SakQsy1qQ5YvG+keE7/OMu798Pg7zS9eof2BKnW6kOBIY8Fk
+ QY6F6S93PvR0UT8jvCz3uPvqsfTav88=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-28-eyNaZrN6Oli8Es0NTKYNFQ-1; Thu,
- 23 Jul 2026 00:52:50 -0400
-X-MC-Unique: eyNaZrN6Oli8Es0NTKYNFQ-1
-X-Mimecast-MFC-AGG-ID: eyNaZrN6Oli8Es0NTKYNFQ_1784782367
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-262-Myvp0vgVPnu7sFHAcBWdWQ-1; Thu,
+ 23 Jul 2026 00:54:55 -0400
+X-MC-Unique: Myvp0vgVPnu7sFHAcBWdWQ-1
+X-Mimecast-MFC-AGG-ID: Myvp0vgVPnu7sFHAcBWdWQ_1784782492
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3D7A21977517; Thu, 23 Jul 2026 04:52:47 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 89253195D02D; Thu, 23 Jul 2026 04:54:52 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.44])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 528D3180029D; Thu, 23 Jul 2026 04:52:39 +0000 (UTC)
+ id 86D71180029D; Thu, 23 Jul 2026 04:54:42 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
@@ -73,15 +73,14 @@ Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
  Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
  Jonathan Cameron <jic23@kernel.org>
-Subject: [PATCH v2 27/44] qapi: convert trivial intro sections for
- introspect.json
-Date: Thu, 23 Jul 2026 00:47:48 -0400
-Message-ID: <20260723044805.527643-28-jsnow@redhat.com>
+Subject: [PATCH v2 40/44] qapi: convert trivial intro sections for qom.json
+Date: Thu, 23 Jul 2026 00:48:01 -0400
+Message-ID: <20260723044805.527643-41-jsnow@redhat.com>
 In-Reply-To: <20260723044805.527643-1-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: fMEPbz9stIsnkUKbGbhIlHjCyKpMgIS35jEqKBitIU0_1784782367
+X-Mimecast-MFC-PROC-ID: qNq8sStR7H3FCAdkLHdf_dTF6ruy4-r-JznEBbL-NJk_1784782492
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -114,149 +113,459 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/introspect.json | 45 ++++++++++++++++----------------------------
- 1 file changed, 16 insertions(+), 29 deletions(-)
+ qapi/qom.json | 138 +++++++++++++++++---------------------------------
+ 1 file changed, 47 insertions(+), 91 deletions(-)
 
-diff --git a/qapi/introspect.json b/qapi/introspect.json
-index c8432c8ed8e..bd42aac3358 100644
---- a/qapi/introspect.json
-+++ b/qapi/introspect.json
-@@ -55,9 +55,8 @@
+diff --git a/qapi/qom.json b/qapi/qom.json
+index c55776af7d3..79ac8c2add0 100644
+--- a/qapi/qom.json
++++ b/qapi/qom.json
+@@ -77,8 +77,7 @@
  
  ##
- # @SchemaMetaType:
+ # @qom-list:
 -#
--# This is a `SchemaInfo`'s meta type, i.e. the kind of entity it
--# describes.
-+#     This is a `SchemaInfo`'s meta type, i.e. the kind of entity it
-+#     describes.
+-# List properties of a object given a path in the object model.
++#     List properties of a object given a path in the object model.
  #
- # @builtin: a predefined type such as 'int' or 'bool'.
- #
-@@ -112,8 +111,7 @@
+ # @path: the path within the object model.  See `qom-get` for a
+ #     description of this parameter.
+@@ -103,8 +102,7 @@
  
  ##
- # @SchemaInfoBuiltin:
+ # @qom-get:
 -#
--# Additional `SchemaInfo` members for meta-type 'builtin'.
-+#     Additional `SchemaInfo` members for meta-type 'builtin'.
+-# Get a property value.
++#     Get a property value.
  #
- # @json-type: the JSON type used for this type on the wire.
- #
-@@ -124,10 +122,9 @@
+ # @path: The path within the object model.  There are two forms of
+ #     supported paths--absolute and partial paths.
+@@ -154,9 +152,8 @@
  
  ##
- # @JSONType:
+ # @qom-list-get:
 -#
--# The four primitive and two structured types according to RFC 8259
--# section 1, plus 'int' (split off 'number'), plus the obvious top
--# type 'value'.
-+#     The four primitive and two structured types according to RFC
-+#     8259 section 1, plus 'int' (split off 'number'), plus the
-+#     obvious top type 'value'.
+-# List properties and their values for each object path in the input
+-# list.
++#     List properties and their values for each object path in the
++#     input list.
  #
- # @string: JSON string
- #
-@@ -153,8 +150,7 @@
+ # @paths: The absolute or partial path for each object, as described
+ #     in `qom-get`.
+@@ -176,8 +173,7 @@
  
  ##
- # @SchemaInfoEnum:
+ # @qom-set:
 -#
--# Additional `SchemaInfo` members for meta-type 'enum'.
-+#     Additional `SchemaInfo` members for meta-type 'enum'.
+-# Set a property value.
++#     Set a property value.
  #
- # @members: the enum type's members, in no particular order.
- #     (since 6.2)
-@@ -178,8 +174,7 @@
+ # @path: see `qom-get` for a description of this parameter
+ #
+@@ -202,8 +198,7 @@
  
  ##
- # @SchemaInfoEnumMember:
+ # @ObjectTypeInfo:
 -#
--# An object member.
-+#     An object member.
+-# This structure describes a search result from `qom-list-types`
++#     This structure describes a search result from `qom-list-types`
  #
- # @name: the member's name, as defined in the QAPI schema.
+ # @name: the type name found in the search
  #
-@@ -193,8 +188,7 @@
+@@ -219,8 +214,7 @@
  
  ##
- # @SchemaInfoArray:
+ # @qom-list-types:
 -#
--# Additional `SchemaInfo` members for meta-type 'array'.
-+#     Additional `SchemaInfo` members for meta-type 'array'.
+-# Return a list of types given search parameters.
++#     Return a list of types given search parameters.
  #
- # @element-type: the array type's element type.
- #
-@@ -207,8 +201,7 @@
+ # @implements: if specified, only return types that implement this
+ #     type name
+@@ -238,8 +232,7 @@
  
  ##
- # @SchemaInfoObject:
+ # @qom-list-properties:
 -#
--# Additional `SchemaInfo` members for meta-type 'object'.
-+#     Additional `SchemaInfo` members for meta-type 'object'.
+-# List properties associated with a QOM object.
++#     List properties associated with a QOM object.
  #
- # @members: the object type's (non-variant) members, in no particular
- #     order.
-@@ -232,8 +225,7 @@
+ # @typename: the type name of an object
+ #
+@@ -258,8 +251,7 @@
  
  ##
- # @SchemaInfoObjectMember:
+ # @CanHostSocketcanProperties:
 -#
--# An object member.
-+#     An object member.
+-# Properties for can-host-socketcan objects.
++#     Properties for can-host-socketcan objects.
  #
- # @name: the member's name, as defined in the QAPI schema.
+ # @if: interface name of the host system CAN bus to connect to
  #
-@@ -257,8 +249,7 @@
+@@ -275,8 +267,7 @@
  
  ##
- # @SchemaInfoObjectVariant:
+ # @ColoCompareProperties:
 -#
--# The variant members for a value of the type tag.
-+#     The variant members for a value of the type tag.
+-# Properties for colo-compare objects.
++#     Properties for colo-compare objects.
  #
- # @case: a value of the type tag.
- #
-@@ -272,8 +263,7 @@
+ # @primary_in: name of the character device backend to use for the
+ #     primary input (incoming packets are redirected to @outdev)
+@@ -323,9 +314,8 @@
  
  ##
- # @SchemaInfoAlternate:
+ # @CryptodevBackendProperties:
 -#
--# Additional `SchemaInfo` members for meta-type 'alternate'.
-+#     Additional `SchemaInfo` members for meta-type 'alternate'.
+-# Properties for cryptodev-backend and cryptodev-backend-builtin
+-# objects.
++#     Properties for cryptodev-backend and cryptodev-backend-builtin
++#     objects.
  #
- # @members: the alternate type's members, in no particular order.  The
- #     members' wire encoding is distinct, see
-@@ -288,8 +278,7 @@
+ # @queues: the number of queues for the cryptodev backend.  Ignored
+ #     for cryptodev-backend and must be 1 for
+@@ -344,8 +334,7 @@
  
  ##
- # @SchemaInfoAlternateMember:
+ # @CryptodevVhostUserProperties:
 -#
--# An alternate member.
-+#     An alternate member.
+-# Properties for cryptodev-vhost-user objects.
++#     Properties for cryptodev-vhost-user objects.
  #
- # @type: the name of the member's type.
- #
-@@ -300,8 +289,7 @@
+ # @chardev: the name of a Unix domain socket character device that
+ #     connects to the vhost-user server
+@@ -359,8 +348,7 @@
  
  ##
- # @SchemaInfoCommand:
+ # @DBusVMStateProperties:
 -#
--# Additional `SchemaInfo` members for meta-type 'command'.
-+#     Additional `SchemaInfo` members for meta-type 'command'.
+-# Properties for dbus-vmstate objects.
++#     Properties for dbus-vmstate objects.
  #
- # @arg-type: the name of the object type that provides the command's
- #     parameters.
-@@ -322,8 +310,7 @@
+ # @addr: the name of the DBus bus to connect to
+ #
+@@ -375,9 +363,8 @@
  
  ##
- # @SchemaInfoEvent:
+ # @NetfilterInsert:
 -#
--# Additional `SchemaInfo` members for meta-type 'event'.
-+#     Additional `SchemaInfo` members for meta-type 'event'.
+-# Indicates where to insert a netfilter relative to a given other
+-# filter.
++#     Indicates where to insert a netfilter relative to a given other
++#     filter.
  #
- # @arg-type: the name of the object type that provides the event's
- #     parameters.
+ # @before: insert before the specified filter
+ #
+@@ -390,8 +377,7 @@
+ 
+ ##
+ # @NetfilterProperties:
+-#
+-# Properties for objects of classes derived from netfilter.
++#     Properties for objects of classes derived from netfilter.
+ #
+ # @netdev: id of the network device backend to filter
+ #
+@@ -423,8 +409,7 @@
+ 
+ ##
+ # @FilterBufferProperties:
+-#
+-# Properties for filter-buffer objects.
++#     Properties for filter-buffer objects.
+ #
+ # @interval: a non-zero interval in microseconds.  All packets
+ #     arriving in the given interval are delayed until the end of the
+@@ -438,8 +423,7 @@
+ 
+ ##
+ # @FilterDumpProperties:
+-#
+-# Properties for filter-dump objects.
++#     Properties for filter-dump objects.
+ #
+ # @file: the filename where the dumped packets should be stored
+ #
+@@ -455,8 +439,7 @@
+ 
+ ##
+ # @FilterMirrorProperties:
+-#
+-# Properties for filter-mirror objects.
++#     Properties for filter-mirror objects.
+ #
+ # @outdev: the name of a character device backend to which all
+ #     incoming packets are mirrored
+@@ -498,8 +481,7 @@
+ 
+ ##
+ # @FilterRewriterProperties:
+-#
+-# Properties for filter-rewriter objects.
++#     Properties for filter-rewriter objects.
+ #
+ # @vnet_hdr_support: if true, vnet header support is enabled
+ #     (default: false)
+@@ -512,8 +494,7 @@
+ 
+ ##
+ # @InputBarrierProperties:
+-#
+-# Properties for input-barrier objects.
++#     Properties for input-barrier objects.
+ #
+ # @name: the screen name as declared in the screens section of
+ #     barrier.conf
+@@ -545,8 +526,7 @@
+ 
+ ##
+ # @InputLinuxProperties:
+-#
+-# Properties for input-linux objects.
++#     Properties for input-linux objects.
+ #
+ # @evdev: the path of the host evdev device to use
+ #
+@@ -569,8 +549,7 @@
+ 
+ ##
+ # @EventLoopBaseProperties:
+-#
+-# Common properties for event loops
++#     Common properties for event loops
+ #
+ # @aio-max-batch: maximum number of requests in a batch for the AIO
+ #     engine, 0 means that the engine will use its default.
+@@ -591,8 +570,7 @@
+ 
+ ##
+ # @IothreadProperties:
+-#
+-# Properties for iothread objects.
++#     Properties for iothread objects.
+ #
+ # @poll-max-ns: the maximum number of nanoseconds to busy wait for
+ #     events.  0 means polling is disabled (default: 32768 on POSIX
+@@ -626,8 +604,7 @@
+ 
+ ##
+ # @MainLoopProperties:
+-#
+-# Properties for the main-loop object.
++#     Properties for the main-loop object.
+ #
+ # Since: 7.1
+ ##
+@@ -637,8 +614,7 @@
+ 
+ ##
+ # @MemoryBackendProperties:
+-#
+-# Properties for objects of classes derived from memory-backend.
++#     Properties for objects of classes derived from memory-backend.
+ #
+ # @merge: if true, mark the memory as mergeable (default depends on
+ #     the machine type)
+@@ -696,8 +672,7 @@
+ 
+ ##
+ # @MemoryBackendFileProperties:
+-#
+-# Properties for memory-backend-file objects.
++#     Properties for memory-backend-file objects.
+ #
+ # @align: the base address alignment when QEMU mmap(2)s @mem-path.
+ #     Some backend stores specified by @mem-path require an alignment
+@@ -757,8 +732,7 @@
+ 
+ ##
+ # @MemoryBackendMemfdProperties:
+-#
+-# Properties for memory-backend-memfd objects.
++#     Properties for memory-backend-memfd objects.
+ #
+ # @hugetlb: if true, the file to be created resides in the hugetlbfs
+ #     filesystem (default: false)
+@@ -813,8 +787,7 @@
+ 
+ ##
+ # @PrManagerHelperProperties:
+-#
+-# Properties for pr-manager-helper objects.
++#     Properties for pr-manager-helper objects.
+ #
+ # @path: the path to a Unix domain socket for connecting to the
+ #     external helper
+@@ -827,8 +800,7 @@
+ 
+ ##
+ # @QtestProperties:
+-#
+-# Properties for qtest objects.
++#     Properties for qtest objects.
+ #
+ # @chardev: the chardev to be used to receive qtest commands on.
+ #
+@@ -842,8 +814,7 @@
+ 
+ ##
+ # @RemoteObjectProperties:
+-#
+-# Properties for x-remote-object objects.
++#     Properties for x-remote-object objects.
+ #
+ # @fd: file descriptor name previously passed via `getfd` command
+ #
+@@ -857,8 +828,7 @@
+ 
+ ##
+ # @VfioUserServerProperties:
+-#
+-# Properties for x-vfio-user-server objects.
++#     Properties for x-vfio-user-server objects.
+ #
+ # @socket: socket to be used by the libvfio-user library
+ #
+@@ -871,8 +841,7 @@
+ 
+ ##
+ # @IOMMUFDProperties:
+-#
+-# Properties for iommufd objects.
++#     Properties for iommufd objects.
+ #
+ # @fd: file descriptor name previously passed via `getfd` command,
+ #     which represents a pre-opened /dev/iommu.  This allows the
+@@ -887,8 +856,7 @@
+ 
+ ##
+ # @AcpiGenericInitiatorProperties:
+-#
+-# Properties for acpi-generic-initiator objects.
++#     Properties for acpi-generic-initiator objects.
+ #
+ # @pci-dev: PCI device ID to be associated with the node
+ #
+@@ -902,8 +870,7 @@
+ 
+ ##
+ # @AcpiGenericPortProperties:
+-#
+-# Properties for acpi-generic-port objects.
++#     Properties for acpi-generic-port objects.
+ #
+ # @pci-bus: QOM path of the PCI bus of the hostbridge associated with
+ #     this SRAT Generic Port Affinity Structure.  This is the same as
+@@ -941,8 +908,7 @@
+ 
+ ##
+ # @RngProperties:
+-#
+-# Properties for objects of classes derived from rng.
++#     Properties for objects of classes derived from rng.
+ #
+ # @opened: if true, the device is opened immediately when applying
+ #     this option and will probably fail when processing the next
+@@ -961,8 +927,7 @@
+ 
+ ##
+ # @RngEgdProperties:
+-#
+-# Properties for rng-egd objects.
++#     Properties for rng-egd objects.
+ #
+ # @chardev: the name of a character device backend that provides the
+ #     connection to the RNG daemon
+@@ -975,8 +940,7 @@
+ 
+ ##
+ # @RngRandomProperties:
+-#
+-# Properties for rng-random objects.
++#     Properties for rng-random objects.
+ #
+ # @filename: the filename of the device on the host to obtain entropy
+ #     from (default: "/dev/urandom")
+@@ -990,8 +954,7 @@
+ 
+ ##
+ # @IgvmCfgProperties:
+-#
+-# Properties common to objects that handle IGVM files.
++#     Properties common to objects that handle IGVM files.
+ #
+ # @file: IGVM file to use to configure guest
+ #
+@@ -1003,8 +966,7 @@
+ 
+ ##
+ # @SevCommonProperties:
+-#
+-# Properties common to objects that are derivatives of sev-common.
++#     Properties common to objects that are derivatives of sev-common.
+ #
+ # @sev-device: SEV device to use (default: "/dev/sev")
+ #
+@@ -1033,8 +995,7 @@
+ 
+ ##
+ # @SevGuestProperties:
+-#
+-# Properties for sev-guest objects.
++#     Properties for sev-guest objects.
+ #
+ # @dh-cert-file: guest owners DH certificate (encoded with base64)
+ #
+@@ -1123,8 +1084,7 @@
+ 
+ ##
+ # @TdxGuestProperties:
+-#
+-# Properties for tdx-guest objects.
++#     Properties for tdx-guest objects.
+ #
+ # @attributes: The 'attributes' of a TD guest that is passed to
+ #     KVM_TDX_INIT_VM
+@@ -1168,8 +1128,7 @@
+ 
+ ##
+ # @ThreadContextProperties:
+-#
+-# Properties for thread context objects.
++#     Properties for thread context objects.
+ #
+ # @cpu-affinity: the list of host CPU numbers used as CPU affinity for
+ #     all threads created in the thread context (default: QEMU main
+@@ -1325,8 +1284,7 @@
+ 
+ ##
+ # @ObjectOptions:
+-#
+-# Describes the options of a user creatable QOM object.
++#     Describes the options of a user creatable QOM object.
+ #
+ # @qom-type: the class name for the object to be created
+ #
+@@ -1403,8 +1361,7 @@
+ 
+ ##
+ # @object-add:
+-#
+-# Create a QOM object.
++#     Create a QOM object.
+ #
+ # Errors:
+ #     - If @qom-type is not a valid class name
+@@ -1423,8 +1380,7 @@
+ 
+ ##
+ # @object-del:
+-#
+-# Remove a QOM object.
++#     Remove a QOM object.
+ #
+ # @id: the name of the QOM object to remove
+ #
 -- 
 2.55.0
 
