@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F896C531FA
-	for <qemu-trivial@archiver.kernel.org>; Fri, 24 Jul 2026 07:16:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E8344C531F9
+	for <qemu-trivial@archiver.kernel.org>; Fri, 24 Jul 2026 08:05:29 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wnA8H-0008F4-D8; Fri, 24 Jul 2026 03:15:48 -0400
+	id 1wnAtx-0004C0-Me; Fri, 24 Jul 2026 04:05:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wnA87-0008DX-Ez
- for qemu-trivial@nongnu.org; Fri, 24 Jul 2026 03:15:37 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wnAts-0003wf-48
+ for qemu-trivial@nongnu.org; Fri, 24 Jul 2026 04:04:58 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wnA85-0008MU-7V
- for qemu-trivial@nongnu.org; Fri, 24 Jul 2026 03:15:34 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1wnAtk-0007jT-EA
+ for qemu-trivial@nongnu.org; Fri, 24 Jul 2026 04:04:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1784877330;
+ s=mimecast20190719; t=1784880285;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=pD4hNPBnbVlyaDI27xEjniV/Nti+HnCMysNVEa5enNM=;
- b=T+PP4nMmgUkEi0q2wt7IrqcQ3AEhvG3RVQVDnAoV92RhEGmCIN/aCgg40ZBGjccJuh2vk9
- SCcI1BG4Eknn4MObWzWsI6/+5Rqj6cTTY1d3nTPPYb5OAazffqCqJMeFGAQY0MVSmLr7ZH
- +idM0azNzcfjmgxI36k4q2yhn8VWOig=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=iVKEwiRe4suQZ48gcSUJ/fLMBLeVgURcgJ8pJ/tcVok=;
+ b=WZnRKTT+RPpxt86jy0xWBlZnmUsJzcC2uxrPD1PiIaBV3KoST65M9RXL7sgJ61Pxf9uKix
+ Mt2HDvsMfXStwrSnomWfkusjzv6t2jTyN5oAdwKDmpmeQbs3AzQkf6Hgk6QbPRqrJE5XdB
+ RmhkccuEjr4u8in7Rs1cr76uXkvguN0=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-696-6_wwUxgrMZObI4bo3Yz8YQ-1; Fri,
- 24 Jul 2026 03:15:26 -0400
-X-MC-Unique: 6_wwUxgrMZObI4bo3Yz8YQ-1
-X-Mimecast-MFC-AGG-ID: 6_wwUxgrMZObI4bo3Yz8YQ_1784877324
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-14-2Ff3ybS5MdyVE0iWcp73ug-1; Fri,
+ 24 Jul 2026 04:04:40 -0400
+X-MC-Unique: 2Ff3ybS5MdyVE0iWcp73ug-1
+X-Mimecast-MFC-AGG-ID: 2Ff3ybS5MdyVE0iWcp73ug_1784880277
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3E34018301F4; Fri, 24 Jul 2026 07:15:21 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 205961801332; Fri, 24 Jul 2026 08:04:36 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2CAF71954226; Fri, 24 Jul 2026 07:15:18 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id A73B11800240; Fri, 24 Jul 2026 08:04:33 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id B148C21E6920; Fri, 24 Jul 2026 09:15:15 +0200 (CEST)
+ id 4CCD621E6920; Fri, 24 Jul 2026 10:04:31 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: John Snow <jsnow@redhat.com>
 Cc: qemu-devel@nongnu.org,  Alex =?utf-8?Q?Benn=C3=A9e?=
@@ -72,18 +72,17 @@ Cc: qemu-devel@nongnu.org,  Alex =?utf-8?Q?Benn=C3=A9e?=
  =?utf-8?Q?C=C3=A9dric?=
  Le Goater <clg@redhat.com>,  Jason Wang <jasowangio@gmail.com>,
  qemu-trivial@nongnu.org,  Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [PATCH v2 16/44] qapi: convert trivial intro sections for
- acpi.json
-In-Reply-To: <20260723044805.527643-17-jsnow@redhat.com> (John Snow's message
- of "Thu, 23 Jul 2026 00:47:37 -0400")
+Subject: Re: [PATCH v2 00/44] qapi: convert trivial intro sections
+In-Reply-To: <87ik65g8xm.fsf@pond.sub.org> (Markus Armbruster's message of
+ "Thu, 23 Jul 2026 14:57:41 +0200")
 References: <20260723044805.527643-1-jsnow@redhat.com>
- <20260723044805.527643-17-jsnow@redhat.com>
-Date: Fri, 24 Jul 2026 09:15:15 +0200
-Message-ID: <87se58c0zg.fsf@pond.sub.org>
+ <87ik65g8xm.fsf@pond.sub.org>
+Date: Fri, 24 Jul 2026 10:04:31 +0200
+Message-ID: <87h5lobypc.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: jb64KqjSB8f6W1uNrXYsPPeGN9YgyZijh-YpTKcGd4U_1784877324
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: neYPehC-cbny2SwKT9GttYOl4Qbu9AcVLJo74wm2AEk_1784880277
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
@@ -94,7 +93,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.951,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,37 +109,36 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-John Snow <jsnow@redhat.com> writes:
+Markus Armbruster <armbru@redhat.com> writes:
 
-> (Trivial)
->
-> Signed-off-by: John Snow <jsnow@redhat.com>
-> ---
->  qapi/acpi.json | 15 ++++++---------
->  1 file changed, 6 insertions(+), 9 deletions(-)
->
-> diff --git a/qapi/acpi.json b/qapi/acpi.json
-> index 906b3687a55..291a04a7ea4 100644
-> --- a/qapi/acpi.json
-> +++ b/qapi/acpi.json
-> @@ -81,10 +81,9 @@
->  
->  ##
->  # @ACPIOSTInfo:
-> -#
-> -# OSPM Status Indication for a device.  For description of possible
-> -# values of @source and @status fields see "_OST (OSPM Status
-> -# Indication)" chapter of ACPI5.0 spec.
-> +#     OSPM Status Indication for a device.  For description
-> +#     of possible values of @source and @status fields see "_OST (OSPM
-> +#     Status Indication)" chapter of ACPI5.0 spec.
->  #
->  # @device: device ID associated with slot
->  #
+[...]
 
-This one needs to be split, I think.  The first sentence is overview
-we'd want the inliner to drop.  The remainer we'd want the inliner to
-keep.
+> Converting single first paragraps is mechanical.  For it to be correct,
+> this single paragraph must actually be the overview, and not some other
+> crap.  I expect it to be almost always overview.  Not sure how to best
+> look for the exceptions.
+
+The separation truly matters only when the inliner inlines the doc
+comment.  It potentially matters when it would inline it if the type was
+used differently.
+
+If I remember correctly, the inliner inlines doc of struct / union base
+type, union branch type, command / event argument type.
+
+Argument can only be struct or union.  Base and branch can only be
+struct.
+
+We talked about maybe inlining return types some day.  This would be
+struct, union, or array of struct or union.
+
+So, for anything other than struct and union, the inliner doesn't get
+involved, and separating the overview cleanly is just a matter of
+writing style.  I'm not sure we care.  Even if we elect to care,
+cleaning it up is hardly this series' business.  In short, your
+mechanical conversion of single first paragraphs to overview syntax
+should be fine even where a paragraph's contents isn't clearly overview.
+
+Structs and unions, however, could use an eye-over.
 
 [...]
 
