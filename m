@@ -4,48 +4,50 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id A98EAC531F9
-	for <qemu-trivial@archiver.kernel.org>; Fri, 24 Jul 2026 09:48:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 03894C531F9
+	for <qemu-trivial@archiver.kernel.org>; Fri, 24 Jul 2026 09:49:16 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wnCVm-0003Dt-RC; Fri, 24 Jul 2026 05:48:11 -0400
+	id 1wnCVw-0003JN-52; Fri, 24 Jul 2026 05:48:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wnCVl-0003DS-TD; Fri, 24 Jul 2026 05:48:09 -0400
+ id 1wnCVs-0003GY-0N; Fri, 24 Jul 2026 05:48:16 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1wnCVk-00058W-1g; Fri, 24 Jul 2026 05:48:09 -0400
+ id 1wnCVq-00059Q-98; Fri, 24 Jul 2026 05:48:15 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1784886463; bh=7DKwXLqoNYSCKItdII5a3Fp4ks2eieikV51uYNMU7dc=;
+ t=1784886463; bh=cPvw3ePXs8shmBDqHUndvFZx2VzYLNP0c8YSpdRzICk=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=tDqeU4qiisSSG5eXhqJdDSDHnfSiKkuCM646mWHwCaZI2ni1KE3KOGCO7O48AN4mR
- wmrafXzqQlftPFtxwvXvqIHwMVDRAD5lZBcB0gufHwfGi5OEf4FFolBRkz3Dd7acbH
- pfucrDQ25gWeZMvlosVvQi4iiZNf86J9YJ7F25Bz3iLMRQA24HdaXkfY+Ggu/9BOwt
- q5ojss6nq/1qngGO2fUDC49tCrWUBV/fwp6nolVhgtqFXTKgP74uYqRvDHIM0+twHF
- cERsRKxdAsvzigsXWrsY+O0fKyH8FJnBjk56LaCy2mftJGrZ52UG0V0QbRrneiT7RP
- M0PL+nhnlY1OQ==
+ b=HZA6ViqaROs/CSX77FMG5vPDZOTrpZmq9bn08U6rTl3xBLXUHbnrPnOnIptzsWR7r
+ INjzEy+i1kUmbO5gkOXbO4UVq1BGezBkrdniTImIOOAO49Rm9O+TA3yczY1d5yd+3p
+ KsgvacGMLS1T5MmIRBfZAeKuDQ576zuvPqUlnzFRXcKS+UqnGmr3Sf/bxfY7ooklQl
+ xxl041L/E+KQ/2wMT8YFv6Zu2Zmnmlb2pD4mIPDvd0dQMX+7BJK/xdK/WPAKdcVho0
+ sUVqZsq8niqNn6+MFNeOcbYHXsgqhBRb4W6XxoKlB+zJlQXL0Q3psStf7/vM7rjl1d
+ L/80/MfvxKxlQ==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 4B35F1C4572;
+ by isrv.corpit.ru (Postfix) with ESMTP id 5E79B1C4575;
  Fri, 24 Jul 2026 12:47:43 +0300 (MSK)
 Received: from gandalf.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 45F783F46B1;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 59E8A3F46B4;
  Fri, 24 Jul 2026 12:48:04 +0300 (MSK)
 Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
- id 42DC518542; Fri, 24 Jul 2026 12:47:54 +0300 (MSK)
+ id 49B8418548; Fri, 24 Jul 2026 12:47:54 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Michael Tokarev <mjt@tls.msk.ru>,
-	qemu-trivial@nongnu.org
-Subject: [PULL 1/7] spelling: happend
-Date: Fri, 24 Jul 2026 12:47:43 +0300
-Message-ID: <20260724094754.1053970-2-mjt@tls.msk.ru>
+Cc: Thomas Huth <thuth@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 4/7] hw/display/vmware_vga: Don't allow guest to trigger long
+ running loop in host
+Date: Fri, 24 Jul 2026 12:47:46 +0300
+Message-ID: <20260724094754.1053970-5-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260724094754.1053970-1-mjt@tls.msk.ru>
 References: <20260724094754.1053970-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -70,57 +72,69 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Fixes: 44adb5fcc20d "target/riscv: Remove spike as default machine"
-Fixes: 48814111366b "migration: Always set DEVICE state"
-Fixes: 3345fb3b6d7f "migration/postcopy: Add latency distribution report for blocktime"
+From: Thomas Huth <thuth@redhat.com>
+
+The code in the SVGA_CMD_DEFINE_ALPHA_CURSOR handler in vmsvga_fifo_run()
+basically does:
+
+            x = vmsvga_fifo_read(s);
+            y = vmsvga_fifo_read(s);
+            args = x * y;
+            goto badcmd;
+            ...
+badcmd:
+            len -= args;
+            if (len < 0) {
+                goto rewind;
+            }
+            while (args--) {
+                vmsvga_fifo_read(s);
+            }
+
+Thus by supplying huge values for x and y that overflow the result of
+the multiplication, the guest can trigger a long-running loop here
+that burns the host's CPU cycles.
+
+Add some sanity checks so that this cannot happen anymore.
+
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3782
+Reported-by: Feifan Qian <bea1e@proton.me>
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4026
+Reported-by: Tristan Madani <tristan@talencesecurity.com>
+Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/4076
+Reported-by: Sunday Jiang
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- docs/about/removed-features.rst | 2 +-
- migration/migration.c           | 2 +-
- qapi/migration.json             | 4 ++--
- 3 files changed, 4 insertions(+), 4 deletions(-)
+ hw/display/vmware_vga.c | 6 +++++-
+ 1 file changed, 5 insertions(+), 1 deletion(-)
 
-diff --git a/docs/about/removed-features.rst b/docs/about/removed-features.rst
-index f7a2aa326de..0735b4ea1d5 100644
---- a/docs/about/removed-features.rst
-+++ b/docs/about/removed-features.rst
-@@ -1241,7 +1241,7 @@ RISC-V default machine (removed in 11.1)
- ''''''''''''''''''''''''''''''''''''''''
- 
- RISC-V used to define ``spike`` as the default machine if no machine option
--was given via the command line.  This happend because ``spike`` was the first
-+was given via the command line.  This happened because ``spike`` was the first
- RISC-V machine implemented in QEMU and setting it as default was
- convenient at that time.  Now we have 7 riscv64 and 6 riscv32 machines
- and having ``spike`` as a default is no longer justified.
-diff --git a/migration/migration.c b/migration/migration.c
-index 9736c14458b..9df6da131ce 100644
---- a/migration/migration.c
-+++ b/migration/migration.c
-@@ -2806,7 +2806,7 @@ static bool migration_switchover_prepare(MigrationState *s)
-     bql_lock();
-     /*
-      * After BQL released and retaken, the state can be CANCELLING if it
--     * happend during sem_wait().. Only change the state if it's still
-+     * happened during sem_wait().. Only change the state if it's still
-      * pre-switchover.
-      */
-     migrate_set_state(&s->state, MIGRATION_STATUS_PRE_SWITCHOVER,
-diff --git a/qapi/migration.json b/qapi/migration.json
-index 66bd900465a..b1eaf7b0545 100644
---- a/qapi/migration.json
-+++ b/qapi/migration.json
-@@ -270,8 +270,8 @@
- #     (Since 10.1)
- #
- # @postcopy-non-vcpu-latency: average remote page fault latency for
--#     all faults happend in non-vCPU threads (in ns).  It has the same
--#     definition of @postcopy-latency but this only provides
-+#     all faults happened in non-vCPU threads (in ns).  It has the
-+#     same definition of @postcopy-latency but this only provides
- #     statistics to non-vCPU faults.  This is only present when the
- #     postcopy-blocktime migration capability is enabled.
- #     (Since 10.1)
+diff --git a/hw/display/vmware_vga.c b/hw/display/vmware_vga.c
+index f6f9edfd1d9..567806f0e47 100644
+--- a/hw/display/vmware_vga.c
++++ b/hw/display/vmware_vga.c
+@@ -737,6 +737,10 @@ static void vmsvga_fifo_run(struct vmsvga_state_s *s)
+             vmsvga_fifo_read(s);
+             x = vmsvga_fifo_read(s);
+             y = vmsvga_fifo_read(s);
++            if (x < 0 || x >= SVGA_MAX_WIDTH ||
++                y < 0 || y >= SVGA_MAX_HEIGHT) {
++                goto rewind;
++            }
+             args = x * y;
+             goto badcmd;
+         case SVGA_CMD_RECT_ROP_FILL:
+@@ -776,7 +780,7 @@ static void vmsvga_fifo_run(struct vmsvga_state_s *s)
+             if (len < 0) {
+                 goto rewind;
+             }
+-            while (args--) {
++            while (args-- > 0) {
+                 vmsvga_fifo_read(s);
+             }
+             printf("%s: Unknown command 0x%02x in SVGA command FIFO\n",
 -- 
 2.47.3
 
