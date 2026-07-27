@@ -4,111 +4,109 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81AB7C531D0
-	for <qemu-trivial@archiver.kernel.org>; Mon, 27 Jul 2026 12:20:48 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CBE10C53209
+	for <qemu-trivial@archiver.kernel.org>; Mon, 27 Jul 2026 17:16:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1woKK3-0000eC-Qv; Mon, 27 Jul 2026 08:20:43 -0400
+	id 1woOwT-00053D-2K; Mon, 27 Jul 2026 13:16:42 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1woKJz-0000bR-Sy
- for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 08:20:41 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1woOwM-00052R-M7
+ for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 13:16:36 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1woKJy-000098-9Z
- for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 08:20:39 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1woOwK-0000eO-ET
+ for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 13:16:33 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1785154837;
+ s=mimecast20190719; t=1785172587;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=89NzTzSellfW3qMr8dN8sAksaWWUoRY5Hxr3im1aqv4=;
- b=NRQmDa9PWUywXHkit8RUoFykfS+dAQOBL6HZF3dj/jUemTUCP2yS6AdfCVn6vC1F9LNK+0
- BfeMHSU5r5DChMW/MCdXKhVHiI1zBY62H9PRdgMumPMcU4R3YQUVRpOWcyL/jxUiVp0kWF
- vRrzk3r0MOMApGSrbD8wEvtjjXV1RYs=
-Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
- [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=W3mGFXZevARNc878mJv43Auua4IFTv4YphZThywYfhE=;
+ b=CJR5dYLnLcVYHErYGDBAts50/28pD1j53NHXhOjNr0YjdgdiW+5BegcnE86/woW6///wjg
+ Yw4YySq5GFUL/NlQXEvHLNc6FvwdMUDzTjsIOFIqr8D+pcEHFfwiI3JoDkurzhYzTF617q
+ mVmO33KF7lGhUElBOU50gkRefwxvcqU=
+Received: from mail-yw1-f200.google.com (mail-yw1-f200.google.com
+ [209.85.128.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-144-vEDUGeavMei4roMDrwGSsg-1; Mon, 27 Jul 2026 08:20:34 -0400
-X-MC-Unique: vEDUGeavMei4roMDrwGSsg-1
-X-Mimecast-MFC-AGG-ID: vEDUGeavMei4roMDrwGSsg_1785154833
-Received: by mail-ej1-f72.google.com with SMTP id
- a640c23a62f3a-c15ceb17a28so216331166b.3
- for <qemu-trivial@nongnu.org>; Mon, 27 Jul 2026 05:20:33 -0700 (PDT)
+ us-mta-638-pNbItihEP52BR3MVsRzCDA-1; Mon, 27 Jul 2026 13:16:25 -0400
+X-MC-Unique: pNbItihEP52BR3MVsRzCDA-1
+X-Mimecast-MFC-AGG-ID: pNbItihEP52BR3MVsRzCDA_1785172585
+Received: by mail-yw1-f200.google.com with SMTP id
+ 00721157ae682-81eddfe28b4so77349667b3.3
+ for <qemu-trivial@nongnu.org>; Mon, 27 Jul 2026 10:16:25 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785154833; x=1785759633;
- h=content-transfer-encoding:content-type:mime-version:references
- :in-reply-to:message-id:subject:cc:to:from:date:x-gm-gg
+ d=1e100.net; s=20251104; t=1785172585; x=1785777385;
+ h=content-transfer-encoding:content-type:cc:to:subject:message-id
+ :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=89NzTzSellfW3qMr8dN8sAksaWWUoRY5Hxr3im1aqv4=;
- b=ElkSfX8cGmM6P0U+aIFfvHoj5ZItiv/aoswF8uoIsa/+Z1xFuhRPeIztBX5ROL/2xr
- V5vprVwy9af1/W85zxKpCrdLVIf82mQ7WE/ATfhiYdqlJDD4B6e1CwRoRMSKnJsT618r
- PD2dXxks7YFzooChmwt6LmtnfcMHEVl7k3ZvYiyNQLR63H1Xr9ozXsfMaTurNKM3+KC5
- xE/RiSFrkLF4x5EH3os7fanhizdDgk/ASc9hA6btyPuzLBnTM3CP0eAJvdOstYdxoXWO
- yVTegsK3b1P9eM0DR4rdc+va6w8JOwu9e1EjHl0W4AtQ8IXoyhibXPl8NGtJpzGEKn8f
- yAxQ==
+ bh=W3mGFXZevARNc878mJv43Auua4IFTv4YphZThywYfhE=;
+ b=maSh95G9YDjX0iirTl+kOj0VcSHShcLWjR/G0L3yznlJTJh4Tl4AWvko26MfCvMpsq
+ UcXol5tc0bgmD7WP/XRE9RHMe6WhlXXqyil0EW9gGVV2DyGnYNzJrF3X5zBiwAwm9Kx8
+ CihJaj67GhnHoy84i4UpRqqwGdHehDSU16RGIonXaw45hM0X5FPQovAJRMa4Nq1PW61F
+ cO6smvkj7ElRdNvgxXI3cLx6f79hh6EGZ23BuUc5XpMD2RTbo/749fTLyeNj+Eo3L9eI
+ x/BohdTlggpCC4yxm+yG8cZIfLdOzsgg/WRqlIcQd1CWwVJh75QO2F0MUuXnDF5a9Huk
+ /e2w==
 X-Forwarded-Encrypted: i=1;
- AHgh+RpV/mJSmgRMAz6jReP11/+h6KDLMkI3RbsWaNSFdYtkMnjKgJ/CqjNBGWDD8xoPFp/FeAMzY27h8FKabTA=@nongnu.org
-X-Gm-Message-State: AOJu0Ywvm/allWlFlzDeZidhHH6TY2yKOk44IcCM00LqLxYUxCcOGs00
- p92Js+hfTHTULvExhghgTF3mhNE/5kDraOmZ4ybxPBm3aM+Hn3SyDzhe9XGPveKVflRgXI4mE7q
- 8rhkisU9kmF4FmStU1S1ZDNg0IxpeOXQvYmt0rbZI/8yFHvpXSbMZJYOxOgk=
-X-Gm-Gg: AR+sD103aSSXPZ5kYRo6c5To81c8QASGaFt99S/ABjUzvlimczUQE1FnofiNqYJUgzz
- RsrA28kIDKxx0om+icomBWCF/MisPzNB40X4NHzdnpFsIqwIEcFl4qWysg+stZCeGb4SmcHack6
- mgCWiYg+9psVkbL3op1d51e5oaNatMLWi7SLzykg3oc7nP+vo1XlP6u/6+8HdSFxkxHxEf9MRPi
- /Er9+2LJ3YA3bQJiAsXHSZYD3RYhKNw6fnr3t4gYiYf5LIvr2LA32gMMLsKidYY4E/5566b2meU
- tU43M+ZP9Kk4O3TWFE6n0FntxNlQiAFbHtf98sDxNxoI52Ki3Pl9AfumtYq+
-X-Received: by 2002:a17:907:72cb:b0:c16:26c7:6ba8 with SMTP id
- a640c23a62f3a-c1f1ea08253mr325682466b.6.1785154832916; 
- Mon, 27 Jul 2026 05:20:32 -0700 (PDT)
-X-Received: by 2002:a17:907:72cb:b0:c16:26c7:6ba8 with SMTP id
- a640c23a62f3a-c1f1ea08253mr325680866b.6.1785154832520; 
- Mon, 27 Jul 2026 05:20:32 -0700 (PDT)
-Received: from imammedo ([213.175.46.86]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c1c32f19c57sm626106066b.58.2026.07.27.05.20.29
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Jul 2026 05:20:32 -0700 (PDT)
-Date: Mon, 27 Jul 2026 14:20:28 +0200
-From: Igor Mammedov <imammedo@redhat.com>
-To: John Snow <jsnow@redhat.com>
-Cc: qemu-devel@nongnu.org, Alex =?UTF-8?B?QmVubsOpZQ==?=
- <alex.bennee@linaro.org>, Lukas Straub <lukasstraub2@web.de>, Vladimir
- Sementsov-Ogievskiy <vsementsov@yandex-team.ru>, Zhao Liu
- <zhao1.liu@intel.com>, Laurent Vivier <laurent@vivier.eu>, Markus
- Armbruster <armbru@redhat.com>, "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@mailo.com>, Alex
- Williamson <alex@shazbot.org>, zhenwei pi <zhenwei.pi@linux.dev>, Hanna
- Reitz <hreitz@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- qemu-block@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Peter Xu
- <peterx@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- linux-cxl@vger.kernel.org, Jiri Pirko <jiri@resnulli.us>, "Daniel P.
- =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>, Stefan Berger
- <stefanb@linux.vnet.ibm.com>, Fabiano Rosas <farosas@suse.de>, Stefan
- Hajnoczi <stefanha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, "Michael
- S. Tsirkin" <mst@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Mauro
- Carvalho Chehab <mchehab+huawei@kernel.org>, linux-edac@vger.kernel.org,
- =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>, Richard
- Henderson <richard.henderson@linaro.org>, Eric Blake <eblake@redhat.com>,
- =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@redhat.com>, Jason Wang
- <jasowangio@gmail.com>, qemu-trivial@nongnu.org, Jonathan Cameron
- <jic23@kernel.org>
-Subject: Re: [PATCH v2 26/44] qapi: convert intro sections for pci.json
-Message-ID: <20260727142028.3206f9e7@imammedo>
-In-Reply-To: <20260723044805.527643-27-jsnow@redhat.com>
-References: <20260723044805.527643-1-jsnow@redhat.com>
- <20260723044805.527643-27-jsnow@redhat.com>
-X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
+ AHgh+RrXD8ccUctOQBNHirTowHn5nCwnVzBWfJbvL4dISnUAfEnWre4IT3osokme26ChsOq+XjBC5AwWhgzSzdw=@nongnu.org
+X-Gm-Message-State: AOJu0Yw+oCcR9JUr9ZMk5VGr2gahiKE0crwp5icZe38Yl3IQr+UjC4Dy
+ YyRXpCqFfBCXbFkWyrosFxU1+S2ykBey/ncBuNDkDTEf+arB3+fE793SBNSemWBs3rfwBRUOe7e
+ //nUL/bny9j1g7jye2wwFHege1rqZx5IQZZ6L4Q+kziEozkTuvF/buX5rQuoniQaGZ77eva3epl
+ vcChF46tFMCLTuJZ9E/IlgtbJypm4G51AvEA==
+X-Gm-Gg: AR+sD10ndIlarTkKX+c2WIQo4If/aW4bAK2E4FGgiTXvtB/9jHdgxs1K9hssyTycM+r
+ +hJk6nke1dgsvNpnzfn9pRKbPGcvbyvFbS+gRD6SFmUTnC9yQUTvpqGnJvdWWuFI8R1GEmG81ai
+ yFuPmSGAOgNwYHCWBu7LC9VUT9ZG69piV+XmTewSsX+NrAooT9I98Qt4G19fGVYXgITSU+4OE9u
+ /78ZERj1UmTRnXR
+X-Received: by 2002:a53:d94e:0:b0:667:af58:8d68 with SMTP id
+ 956f58d0204a3-668ffdf6f05mr48374d50.61.1785172584873; 
+ Mon, 27 Jul 2026 10:16:24 -0700 (PDT)
+X-Received: by 2002:a53:d94e:0:b0:667:af58:8d68 with SMTP id
+ 956f58d0204a3-668ffdf6f05mr48336d50.61.1785172584382; Mon, 27 Jul 2026
+ 10:16:24 -0700 (PDT)
 MIME-Version: 1.0
+References: <20260723044805.527643-1-jsnow@redhat.com>
+ <87ik65g8xm.fsf@pond.sub.org> <87h5lobypc.fsf@pond.sub.org>
+In-Reply-To: <87h5lobypc.fsf@pond.sub.org>
+From: John Snow <jsnow@redhat.com>
+Date: Mon, 27 Jul 2026 13:16:13 -0400
+X-Gm-Features: AUfX_mxQww8G_sDN4rPtGqGYLANzGPwYtpBIHqm73aQVX56k63-nE7PKd7bUCQA
+Message-ID: <CAFn=p-Z0Ys6FoUqRPY7d5CaN4YfHE4DUN6VLtMeWRJgUk3Khkg@mail.gmail.com>
+Subject: Re: [PATCH v2 00/44] qapi: convert trivial intro sections
+To: Markus Armbruster <armbru@redhat.com>
+Cc: qemu-devel@nongnu.org,
+ =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
+ Lukas Straub <lukasstraub2@web.de>, 
+ Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
+ Zhao Liu <zhao1.liu@intel.com>, 
+ Laurent Vivier <laurent@vivier.eu>, "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>, 
+ Alex Williamson <alex@shazbot.org>, zhenwei pi <zhenwei.pi@linux.dev>,
+ Hanna Reitz <hreitz@redhat.com>, 
+ Ani Sinha <anisinha@redhat.com>, qemu-block@nongnu.org, 
+ Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>, 
+ linux-cxl@vger.kernel.org, Jiri Pirko <jiri@resnulli.us>, 
+ =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Stefan Berger <stefanb@linux.vnet.ibm.com>, Fabiano Rosas <farosas@suse.de>, 
+ Stefan Hajnoczi <stefanha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
+ Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>, 
+ Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, linux-edac@vger.kernel.org, 
+ =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
+ Richard Henderson <richard.henderson@linaro.org>,
+ Eric Blake <eblake@redhat.com>, 
+ =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
+ Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org, 
+ Jonathan Cameron <jic23@kernel.org>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: ehMKh1ZbyHFOLrKussXb6hHtmBuSMJwNVGcTlq2mYCY_1785154833
+X-Mimecast-MFC-PROC-ID: s9YRAT9dMg4u7jt3pMnnkiLrnKnjB4GDKG4k7kGldXo_1785172585
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=US-ASCII
-Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
+Content-Type: text/plain; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -36
 X-Spam_score: -3.7
@@ -132,112 +130,54 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Thu, 23 Jul 2026 00:47:47 -0400
-John Snow <jsnow@redhat.com> wrote:
+On Fri, Jul 24, 2026 at 4:04=E2=80=AFAM Markus Armbruster <armbru@redhat.co=
+m> wrote:
+>
+> Markus Armbruster <armbru@redhat.com> writes:
+>
+> [...]
+>
+> > Converting single first paragraps is mechanical.  For it to be correct,
+> > this single paragraph must actually be the overview, and not some other
+> > crap.  I expect it to be almost always overview.  Not sure how to best
+> > look for the exceptions.
+>
+> The separation truly matters only when the inliner inlines the doc
+> comment.  It potentially matters when it would inline it if the type was
+> used differently.
 
-> (Trivial)
-> 
-> Signed-off-by: John Snow <jsnow@redhat.com>
+It also (potentially) matters for auto-generated docs, such as
+undocumented members, return types, features*, errors*. The break
+point is where these fields get inserted.
 
-Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+(*Not currently performed. Not asserting that it will be performed, or
+that it is necessarily valuable to do so. Just fleshing out the
+category.)
 
-> ---
->  qapi/pci.json | 27 +++++++++------------------
->  1 file changed, 9 insertions(+), 18 deletions(-)
-> 
-> diff --git a/qapi/pci.json b/qapi/pci.json
-> index 694c741e420..a6a79f91afc 100644
-> --- a/qapi/pci.json
-> +++ b/qapi/pci.json
-> @@ -13,8 +13,7 @@
->  
->  ##
->  # @PciMemoryRange:
-> -#
-> -# A PCI device memory region
-> +#     A PCI device memory region
->  #
->  # @base: the starting address (guest physical)
->  #
-> @@ -26,8 +25,7 @@
->  
->  ##
->  # @PciMemoryRegion:
-> -#
-> -# Information about a PCI device I/O region.
-> +#     Information about a PCI device I/O region.
->  #
->  # @bar: the index of the Base Address Register for this region
->  #
-> @@ -51,8 +49,7 @@
->  
->  ##
->  # @PciBusInfo:
-> -#
-> -# Information about a bus of a PCI Bridge device
-> +#     Information about a bus of a PCI Bridge device
->  #
->  # @number: primary bus interface number.  This should be the number of
->  #     the bus the device resides on.
-> @@ -80,8 +77,7 @@
->  
->  ##
->  # @PciBridgeInfo:
-> -#
-> -# Information about a PCI Bridge device
-> +#     Information about a PCI Bridge device
->  #
->  # @bus: information about the bus the device resides on
->  #
-> @@ -94,8 +90,7 @@
->  
->  ##
->  # @PciDeviceClass:
-> -#
-> -# Information about the Class of a PCI device
-> +#     Information about the Class of a PCI device
->  #
->  # @desc: a string description of the device's class (not stable, and
->  #     should only be treated as informational)
-> @@ -109,8 +104,7 @@
->  
->  ##
->  # @PciDeviceId:
-> -#
-> -# Information about the Id of a PCI device
-> +#     Information about the Id of a PCI device
->  #
->  # @device: the PCI device id
->  #
-> @@ -128,8 +122,7 @@
->  
->  ##
->  # @PciDeviceInfo:
-> -#
-> -# Information about a PCI device
-> +#     Information about a PCI device
->  #
->  # @bus: the bus number of the device
->  #
-> @@ -161,8 +154,7 @@
->  
->  ##
->  # @PciInfo:
-> -#
-> -# Information about a PCI bus
-> +#     Information about a PCI bus
->  #
->  # @bus: the bus index
->  #
-> @@ -174,8 +166,7 @@
->  
->  ##
->  # @query-pci:
-> -#
-> -# Return information about the PCI bus topology of the guest.
-> +#     Return information about the PCI bus topology of the guest.
->  #
->  # Returns: a list of info for each PCI bus.  Each bus is
->  #     represented by a json-object, which has a key with a json-array
+>
+> If I remember correctly, the inliner inlines doc of struct / union base
+> type, union branch type, command / event argument type.
+>
+> Argument can only be struct or union.  Base and branch can only be
+> struct.
+>
+> We talked about maybe inlining return types some day.  This would be
+> struct, union, or array of struct or union.
+>
+> So, for anything other than struct and union, the inliner doesn't get
+> involved, and separating the overview cleanly is just a matter of
+> writing style.  I'm not sure we care.  Even if we elect to care,
+> cleaning it up is hardly this series' business.  In short, your
+> mechanical conversion of single first paragraphs to overview syntax
+> should be fine even where a paragraph's contents isn't clearly overview.
+
+Except in cases where stub positioning matters, see also the former
+"TODO:" syntax used to delineate intro/details.
+
+>
+> Structs and unions, however, could use an eye-over.
+>
+> [...]
+>
 
 
