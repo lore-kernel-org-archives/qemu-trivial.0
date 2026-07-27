@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44175C53219
-	for <qemu-trivial@archiver.kernel.org>; Mon, 27 Jul 2026 12:19:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 81AB7C531D0
+	for <qemu-trivial@archiver.kernel.org>; Mon, 27 Jul 2026 12:20:48 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1woKIM-0008IK-U7; Mon, 27 Jul 2026 08:18:58 -0400
+	id 1woKK3-0000eC-Qv; Mon, 27 Jul 2026 08:20:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1woKIL-0008Hy-Dw
- for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 08:18:57 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ id 1woKJz-0000bR-Sy
+ for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 08:20:41 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
- id 1woKIJ-0008AH-W1
- for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 08:18:57 -0400
+ id 1woKJy-000098-9Z
+ for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 08:20:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1785154734;
+ s=mimecast20190719; t=1785154837;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=L5dKeWNXTVrL85tSrPucpBv2NSFt9uxptmhhn9V0Ke0=;
- b=XEm8+oO7AVncKeEfSBHC0NSp/l6PAWJqgNFKTRe5xNe1shKvB5B2ksdSJL5vgKpGrT/TJG
- kokTwU7IfgDn5zHrdhChtsNW2nWOirTRi24eVyXTZkSIGfCsd6OAmOKThvvnjefktS5HMo
- ad5LotK2J7uKl8DRvj8ov4SAAcWZmsg=
-Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
- [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=89NzTzSellfW3qMr8dN8sAksaWWUoRY5Hxr3im1aqv4=;
+ b=NRQmDa9PWUywXHkit8RUoFykfS+dAQOBL6HZF3dj/jUemTUCP2yS6AdfCVn6vC1F9LNK+0
+ BfeMHSU5r5DChMW/MCdXKhVHiI1zBY62H9PRdgMumPMcU4R3YQUVRpOWcyL/jxUiVp0kWF
+ vRrzk3r0MOMApGSrbD8wEvtjjXV1RYs=
+Received: from mail-ej1-f72.google.com (mail-ej1-f72.google.com
+ [209.85.218.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-447-fYyXglc6NailXu7kQIGSfQ-1; Mon, 27 Jul 2026 08:18:53 -0400
-X-MC-Unique: fYyXglc6NailXu7kQIGSfQ-1
-X-Mimecast-MFC-AGG-ID: fYyXglc6NailXu7kQIGSfQ_1785154732
-Received: by mail-wm1-f71.google.com with SMTP id
- 5b1f17b1804b1-4954fd771baso24071285e9.0
- for <qemu-trivial@nongnu.org>; Mon, 27 Jul 2026 05:18:53 -0700 (PDT)
+ us-mta-144-vEDUGeavMei4roMDrwGSsg-1; Mon, 27 Jul 2026 08:20:34 -0400
+X-MC-Unique: vEDUGeavMei4roMDrwGSsg-1
+X-Mimecast-MFC-AGG-ID: vEDUGeavMei4roMDrwGSsg_1785154833
+Received: by mail-ej1-f72.google.com with SMTP id
+ a640c23a62f3a-c15ceb17a28so216331166b.3
+ for <qemu-trivial@nongnu.org>; Mon, 27 Jul 2026 05:20:33 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785154732; x=1785759532;
+ d=1e100.net; s=20251104; t=1785154833; x=1785759633;
  h=content-transfer-encoding:content-type:mime-version:references
  :in-reply-to:message-id:subject:cc:to:from:date:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=L5dKeWNXTVrL85tSrPucpBv2NSFt9uxptmhhn9V0Ke0=;
- b=A2LGcVzw100r9Lg5wNRGn4ErBskqXar9g4vmOAsHah87eJ1MuHKwjiaKpD4XirZrfJ
- udqb42DYxz4AZkHGn2DyRmhRNTTzPbaG50t2+nQ2yefjF+5vrKwr+sbOxZ40N9RYs9vA
- 5btU1Hj/HxnJvFybCO8OC/x8H0eiojAyXBk4t3p6vHIc9+QKgb69Eyv+f/vB2//4/Fou
- QiMr5HM+0lH6YzjyanSaH9rFm9f+CmZra6D+MZS6s/y9YqeIrQCHh3MkmP7Om9jC060S
- Rly+++F1AWz2Q/pR4TWzjwCKesRsDwgGCYr1SV68d0SeKdLNBf42cWbHJplF4HL7rgsW
- GlZQ==
+ bh=89NzTzSellfW3qMr8dN8sAksaWWUoRY5Hxr3im1aqv4=;
+ b=ElkSfX8cGmM6P0U+aIFfvHoj5ZItiv/aoswF8uoIsa/+Z1xFuhRPeIztBX5ROL/2xr
+ V5vprVwy9af1/W85zxKpCrdLVIf82mQ7WE/ATfhiYdqlJDD4B6e1CwRoRMSKnJsT618r
+ PD2dXxks7YFzooChmwt6LmtnfcMHEVl7k3ZvYiyNQLR63H1Xr9ozXsfMaTurNKM3+KC5
+ xE/RiSFrkLF4x5EH3os7fanhizdDgk/ASc9hA6btyPuzLBnTM3CP0eAJvdOstYdxoXWO
+ yVTegsK3b1P9eM0DR4rdc+va6w8JOwu9e1EjHl0W4AtQ8IXoyhibXPl8NGtJpzGEKn8f
+ yAxQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+RqA6tva58EGNlOQKxhj4vTnqiHD2f8ZJkEWFi5uvr8y8AYXYQqXXcEkVfXrvb+yZaPphjC5ah0wLUCBbxs=@nongnu.org
-X-Gm-Message-State: AOJu0Yy2CIKAx3SjlGLPtnMwgb+dajrXfivVP3fA7CPaKNBZ6mHWANxY
- n/R0gNeebHEqg2cSu5e5XBY78iLH9BA9gE5E8gIi3SgPXspzwScNBlqdHGqdMj6WrkZwTWT6Vci
- bg8JgEOOVAtt7cBfXJzkXei5bbTmrD7XTxrSXnG0W660DGAOozqHAgHlZbWE=
-X-Gm-Gg: AR+sD11WHo5GKzZKtmnGiAD4aZSFcbreg4fRtfwEb/f77Pe7AM+3Ey8cfFzIK3TnNNb
- iik8vpAQC7BZ9HfyI20Cha/DsmVW0HbigoFy6kwPJUucuLHOMfJRNGSHvfydEU5dBozD9s7LHr6
- i21SH18L86J6jWZEu7o5QBUnsDJshJgo7DMTLkyEBTR2lfLfxSwr8f4Z+lQgPjSauc8iBoWbyYA
- nPYOUxPUcTeqNuIrXKD1xPjwC56etMy/ImfPaUc02+SnCBN59rNLDVd0sL2OXoV0h0Tw/lYOIJ8
- bIFfiiAwlHy0VmO+vU7+cY3wQ074QrVAb9JSrEhKohaeyfYD93pEtapi0aGl
-X-Received: by 2002:a05:600c:4444:b0:495:6b4c:fccc with SMTP id
- 5b1f17b1804b1-496b5c7182amr99174805e9.10.1785154732044; 
- Mon, 27 Jul 2026 05:18:52 -0700 (PDT)
-X-Received: by 2002:a05:600c:4444:b0:495:6b4c:fccc with SMTP id
- 5b1f17b1804b1-496b5c7182amr99174075e9.10.1785154731608; 
- Mon, 27 Jul 2026 05:18:51 -0700 (PDT)
-Received: from imammedo ([213.175.37.14]) by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-496b388d5b4sm162922435e9.3.2026.07.27.05.18.49
+ AHgh+RpV/mJSmgRMAz6jReP11/+h6KDLMkI3RbsWaNSFdYtkMnjKgJ/CqjNBGWDD8xoPFp/FeAMzY27h8FKabTA=@nongnu.org
+X-Gm-Message-State: AOJu0Ywvm/allWlFlzDeZidhHH6TY2yKOk44IcCM00LqLxYUxCcOGs00
+ p92Js+hfTHTULvExhghgTF3mhNE/5kDraOmZ4ybxPBm3aM+Hn3SyDzhe9XGPveKVflRgXI4mE7q
+ 8rhkisU9kmF4FmStU1S1ZDNg0IxpeOXQvYmt0rbZI/8yFHvpXSbMZJYOxOgk=
+X-Gm-Gg: AR+sD103aSSXPZ5kYRo6c5To81c8QASGaFt99S/ABjUzvlimczUQE1FnofiNqYJUgzz
+ RsrA28kIDKxx0om+icomBWCF/MisPzNB40X4NHzdnpFsIqwIEcFl4qWysg+stZCeGb4SmcHack6
+ mgCWiYg+9psVkbL3op1d51e5oaNatMLWi7SLzykg3oc7nP+vo1XlP6u/6+8HdSFxkxHxEf9MRPi
+ /Er9+2LJ3YA3bQJiAsXHSZYD3RYhKNw6fnr3t4gYiYf5LIvr2LA32gMMLsKidYY4E/5566b2meU
+ tU43M+ZP9Kk4O3TWFE6n0FntxNlQiAFbHtf98sDxNxoI52Ki3Pl9AfumtYq+
+X-Received: by 2002:a17:907:72cb:b0:c16:26c7:6ba8 with SMTP id
+ a640c23a62f3a-c1f1ea08253mr325682466b.6.1785154832916; 
+ Mon, 27 Jul 2026 05:20:32 -0700 (PDT)
+X-Received: by 2002:a17:907:72cb:b0:c16:26c7:6ba8 with SMTP id
+ a640c23a62f3a-c1f1ea08253mr325680866b.6.1785154832520; 
+ Mon, 27 Jul 2026 05:20:32 -0700 (PDT)
+Received: from imammedo ([213.175.46.86]) by smtp.gmail.com with ESMTPSA id
+ a640c23a62f3a-c1c32f19c57sm626106066b.58.2026.07.27.05.20.29
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 27 Jul 2026 05:18:50 -0700 (PDT)
-Date: Mon, 27 Jul 2026 14:18:48 +0200
+ Mon, 27 Jul 2026 05:20:32 -0700 (PDT)
+Date: Mon, 27 Jul 2026 14:20:28 +0200
 From: Igor Mammedov <imammedo@redhat.com>
 To: John Snow <jsnow@redhat.com>
 Cc: qemu-devel@nongnu.org, Alex =?UTF-8?B?QmVubsOpZQ==?=
@@ -96,28 +96,27 @@ Cc: qemu-devel@nongnu.org, Alex =?UTF-8?B?QmVubsOpZQ==?=
  =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@redhat.com>, Jason Wang
  <jasowangio@gmail.com>, qemu-trivial@nongnu.org, Jonathan Cameron
  <jic23@kernel.org>
-Subject: Re: [PATCH v2 16/44] qapi: convert trivial intro sections for
- acpi.json
-Message-ID: <20260727141848.5cc56eb2@imammedo>
-In-Reply-To: <20260723044805.527643-17-jsnow@redhat.com>
+Subject: Re: [PATCH v2 26/44] qapi: convert intro sections for pci.json
+Message-ID: <20260727142028.3206f9e7@imammedo>
+In-Reply-To: <20260723044805.527643-27-jsnow@redhat.com>
 References: <20260723044805.527643-1-jsnow@redhat.com>
- <20260723044805.527643-17-jsnow@redhat.com>
+ <20260723044805.527643-27-jsnow@redhat.com>
 X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: oAMPypirbSebzxCW3KGBRJWZo8GO3QtL9WoAxre7GzU_1785154732
+X-Mimecast-MFC-PROC-ID: ehMKh1ZbyHFOLrKussXb6hHtmBuSMJwNVGcTlq2mYCY_1785154833
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset=US-ASCII
 Content-Transfer-Encoding: 7bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=imammedo@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -36
 X-Spam_score: -3.7
 X-Spam_bar: ---
 X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -133,7 +132,7 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Thu, 23 Jul 2026 00:47:37 -0400
+On Thu, 23 Jul 2026 00:47:47 -0400
 John Snow <jsnow@redhat.com> wrote:
 
 > (Trivial)
@@ -143,48 +142,102 @@ John Snow <jsnow@redhat.com> wrote:
 Reviewed-by: Igor Mammedov <imammedo@redhat.com>
 
 > ---
->  qapi/acpi.json | 15 ++++++---------
->  1 file changed, 6 insertions(+), 9 deletions(-)
+>  qapi/pci.json | 27 +++++++++------------------
+>  1 file changed, 9 insertions(+), 18 deletions(-)
 > 
-> diff --git a/qapi/acpi.json b/qapi/acpi.json
-> index 906b3687a55..291a04a7ea4 100644
-> --- a/qapi/acpi.json
-> +++ b/qapi/acpi.json
-> @@ -81,10 +81,9 @@
+> diff --git a/qapi/pci.json b/qapi/pci.json
+> index 694c741e420..a6a79f91afc 100644
+> --- a/qapi/pci.json
+> +++ b/qapi/pci.json
+> @@ -13,8 +13,7 @@
 >  
 >  ##
->  # @ACPIOSTInfo:
+>  # @PciMemoryRange:
 > -#
-> -# OSPM Status Indication for a device.  For description of possible
-> -# values of @source and @status fields see "_OST (OSPM Status
-> -# Indication)" chapter of ACPI5.0 spec.
-> +#     OSPM Status Indication for a device.  For description
-> +#     of possible values of @source and @status fields see "_OST (OSPM
-> +#     Status Indication)" chapter of ACPI5.0 spec.
+> -# A PCI device memory region
+> +#     A PCI device memory region
 >  #
->  # @device: device ID associated with slot
+>  # @base: the starting address (guest physical)
 >  #
-> @@ -107,9 +106,8 @@
+> @@ -26,8 +25,7 @@
 >  
 >  ##
->  # @query-acpi-ospm-status:
+>  # @PciMemoryRegion:
 > -#
-> -# Return a list of `ACPIOSTInfo` for devices that support status
-> -# reporting via ACPI _OST method.
-> +#     Return a list of `ACPIOSTInfo` for devices
-> +#     that support status reporting via ACPI _OST method.
+> -# Information about a PCI device I/O region.
+> +#     Information about a PCI device I/O region.
 >  #
->  # Since: 2.1
+>  # @bar: the index of the Base Address Register for this region
 >  #
-> @@ -126,8 +124,7 @@
+> @@ -51,8 +49,7 @@
 >  
 >  ##
->  # @ACPI_DEVICE_OST:
+>  # @PciBusInfo:
 > -#
-> -# Emitted when guest executes ACPI _OST method.
-> +#     Emitted when guest executes ACPI _OST method.
+> -# Information about a bus of a PCI Bridge device
+> +#     Information about a bus of a PCI Bridge device
 >  #
->  # @info: OSPM Status Indication
+>  # @number: primary bus interface number.  This should be the number of
+>  #     the bus the device resides on.
+> @@ -80,8 +77,7 @@
+>  
+>  ##
+>  # @PciBridgeInfo:
+> -#
+> -# Information about a PCI Bridge device
+> +#     Information about a PCI Bridge device
 >  #
+>  # @bus: information about the bus the device resides on
+>  #
+> @@ -94,8 +90,7 @@
+>  
+>  ##
+>  # @PciDeviceClass:
+> -#
+> -# Information about the Class of a PCI device
+> +#     Information about the Class of a PCI device
+>  #
+>  # @desc: a string description of the device's class (not stable, and
+>  #     should only be treated as informational)
+> @@ -109,8 +104,7 @@
+>  
+>  ##
+>  # @PciDeviceId:
+> -#
+> -# Information about the Id of a PCI device
+> +#     Information about the Id of a PCI device
+>  #
+>  # @device: the PCI device id
+>  #
+> @@ -128,8 +122,7 @@
+>  
+>  ##
+>  # @PciDeviceInfo:
+> -#
+> -# Information about a PCI device
+> +#     Information about a PCI device
+>  #
+>  # @bus: the bus number of the device
+>  #
+> @@ -161,8 +154,7 @@
+>  
+>  ##
+>  # @PciInfo:
+> -#
+> -# Information about a PCI bus
+> +#     Information about a PCI bus
+>  #
+>  # @bus: the bus index
+>  #
+> @@ -174,8 +166,7 @@
+>  
+>  ##
+>  # @query-pci:
+> -#
+> -# Return information about the PCI bus topology of the guest.
+> +#     Return information about the PCI bus topology of the guest.
+>  #
+>  # Returns: a list of info for each PCI bus.  Each bus is
+>  #     represented by a json-object, which has a key with a json-array
 
 
