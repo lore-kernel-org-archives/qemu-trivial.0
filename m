@@ -4,104 +4,119 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1D22AC531D0
-	for <qemu-trivial@archiver.kernel.org>; Mon, 27 Jul 2026 09:57:43 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 44175C53219
+	for <qemu-trivial@archiver.kernel.org>; Mon, 27 Jul 2026 12:19:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1woI5O-0007Cf-Dp; Mon, 27 Jul 2026 05:57:26 -0400
+	id 1woKIM-0008IK-U7; Mon, 27 Jul 2026 08:18:58 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1woI5F-0007Bu-CH
- for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 05:57:17 -0400
-Received: from mail-yx1-xb12c.google.com ([2607:f8b0:4864:20::b12c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <peter.maydell@linaro.org>)
- id 1woI4z-0005e1-QW
- for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 05:57:08 -0400
-Received: by mail-yx1-xb12c.google.com with SMTP id
- 956f58d0204a3-667923d86a7so3400990d50.0
- for <qemu-trivial@nongnu.org>; Mon, 27 Jul 2026 02:56:59 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785146218; cv=none;
- d=google.com; s=arc-20260327;
- b=d5cRZeyRhcDHuFZhQTkrcZJhK0xKU5Ec/NiKreiYZdB5It5n2SD3CgYrVDYGgCMea+
- yvv8+Lpc9nEu20hxwidTX1N4vC9EMO9qX2Xo8OipDemZs36yqJt9RkxYTmDO2EGPPjME
- GiGu5O5H8eKUzgfSvv4W4EcRLpOn5AVP7BCJt8kgdK1hTLXsAF26yiORKTkAG6IiOALp
- Z1kFHq7bM9pt1pSH+UBPfDKPxs7swOxRZ0RpZ63fsUbermI7VoAQKxdTdncUOhIq+YUu
- hL61SC5G06VVi8/ggBqGHu/AseXclZx3A7MXfA2vuXmwrNc8klDCL1OpVEgu0GQ/jzT5
- UVog==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=cc:to:subject:message-id:date:from:in-reply-to:references
- :mime-version:dkim-signature;
- bh=6DZggg8Z++kZsiW9bFSUYxgoJflfU1TRkOMiNDsIkXw=;
- fh=ldSSgzrk8HEBf95paaKSVSe5WI74yO3888PLnOEfCmg=;
- b=g4RS42nh8VsOKoldGTOA+5jBCRsVnUVn9d4qyOALoPSbGygUCd0s5Xw0zcoeuTN0Cr
- 4wYXiN5/wgmc6OEYECvQdrJmPjXsjhiTze0QmRsyCbpEiJyJDgYqYQtDWa0VKYUl8spk
- gvoapErOw/BLk8aBW2qaa2maGS4BFR3tUCTwMjJxy45OSwA6HYizKs2CrJBPpp9vxixO
- RKDCX6DplOkG9OQfs15vzbfCdaMStvp2ZFJHVxbFdQ/ZeeEa/w6n6qT3cagueITSQKeB
- 4bsMbaBZVsd7eZSejnPWCm4RpekzV/Nru8wsY9OsO97OXUROZtGTn7pueVqbFoNXp8Tx
- pyYA==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=linaro.org; s=google; t=1785146218; x=1785751018; darn=nongnu.org;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=6DZggg8Z++kZsiW9bFSUYxgoJflfU1TRkOMiNDsIkXw=;
- b=fvZ9ITkbq6e7lE/NakqgBeGIsZQtGLJuU+xrr+hRFZAetI+FDa6twC0JXfRjV400EF
- AEfcDtxME+3irPrKd0ThFoKWOiqq30WjMk9rTKdA4QO13gfP21XT+AcWmAk8wlh+au40
- fEGCoAaLySy2f/wTDWV0pMsD3bBj+qc3Kqs/jAc9vXoknJjVUF505/dYZP1GI75QIF+s
- DkdoA92Dbe7TocvO7LquYbLAX/uO0tjnzrh9Ocw9MP+odWuLHCM0l9TH9q8CFKfztyYh
- H+wC6XzNYNejiaw52wf+l/8p5sgHhjrs/1W3rrMtY8Whd+d+SW1skCDgEJyRlOEPJnCs
- BXAA==
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1woKIL-0008Hy-Dw
+ for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 08:18:57 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <imammedo@redhat.com>)
+ id 1woKIJ-0008AH-W1
+ for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 08:18:57 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1785154734;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=L5dKeWNXTVrL85tSrPucpBv2NSFt9uxptmhhn9V0Ke0=;
+ b=XEm8+oO7AVncKeEfSBHC0NSp/l6PAWJqgNFKTRe5xNe1shKvB5B2ksdSJL5vgKpGrT/TJG
+ kokTwU7IfgDn5zHrdhChtsNW2nWOirTRi24eVyXTZkSIGfCsd6OAmOKThvvnjefktS5HMo
+ ad5LotK2J7uKl8DRvj8ov4SAAcWZmsg=
+Received: from mail-wm1-f71.google.com (mail-wm1-f71.google.com
+ [209.85.128.71]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-447-fYyXglc6NailXu7kQIGSfQ-1; Mon, 27 Jul 2026 08:18:53 -0400
+X-MC-Unique: fYyXglc6NailXu7kQIGSfQ-1
+X-Mimecast-MFC-AGG-ID: fYyXglc6NailXu7kQIGSfQ_1785154732
+Received: by mail-wm1-f71.google.com with SMTP id
+ 5b1f17b1804b1-4954fd771baso24071285e9.0
+ for <qemu-trivial@nongnu.org>; Mon, 27 Jul 2026 05:18:53 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785146218; x=1785751018;
- h=content-type:cc:to:subject:message-id:date:from:in-reply-to
- :references:mime-version:x-gm-gg:x-gm-message-state:from:to:cc
- :subject:date:message-id:reply-to:content-type;
- bh=6DZggg8Z++kZsiW9bFSUYxgoJflfU1TRkOMiNDsIkXw=;
- b=dmgTAqy90czCO0gRWnw4bsW8lSZdewa/s/gUNptkwh9/i/rg3hYxTV0M9cZZlYSCvh
- U8Lj2XAL/CEy8uMhZPgtucobc1a++DU0JiyfWJLNm6Gb5RpYlY0gYQ3XOfjLZjcrLV6v
- KeGM50CoYbXPleIv20hg0o2iSS2VEMUk6pM1b6UcUuis3cPmer4PDwpArHd1rD7663VB
- F2IdSBY7/kWl1S7HvHGPpCBz4hMLX+CNmJgLDclh9nfrOedB4VHHw6fsagCxkwY/RwxU
- jV9M+YozLjaVC4Bq/+qRsHqwwvihaXX/1TZrxSP4+cnSkmRa+yCKPndRYeN+12bRZn+O
- eUGA==
+ d=1e100.net; s=20251104; t=1785154732; x=1785759532;
+ h=content-transfer-encoding:content-type:mime-version:references
+ :in-reply-to:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=L5dKeWNXTVrL85tSrPucpBv2NSFt9uxptmhhn9V0Ke0=;
+ b=A2LGcVzw100r9Lg5wNRGn4ErBskqXar9g4vmOAsHah87eJ1MuHKwjiaKpD4XirZrfJ
+ udqb42DYxz4AZkHGn2DyRmhRNTTzPbaG50t2+nQ2yefjF+5vrKwr+sbOxZ40N9RYs9vA
+ 5btU1Hj/HxnJvFybCO8OC/x8H0eiojAyXBk4t3p6vHIc9+QKgb69Eyv+f/vB2//4/Fou
+ QiMr5HM+0lH6YzjyanSaH9rFm9f+CmZra6D+MZS6s/y9YqeIrQCHh3MkmP7Om9jC060S
+ Rly+++F1AWz2Q/pR4TWzjwCKesRsDwgGCYr1SV68d0SeKdLNBf42cWbHJplF4HL7rgsW
+ GlZQ==
 X-Forwarded-Encrypted: i=1;
- AHgh+Rrf4y5iPSXOSa41i8MbEYmF+WsMKNO24L2AYjDSHZVDsLXFtwMRxw8Nkiwpv2FFjvOvY4j1CdPbDLpZYXQ=@nongnu.org
-X-Gm-Message-State: AOJu0Ywnt0chwfQ7IkW6JIwXpPNaCHbsv5H1BdMTEFK+wMctBFALafZY
- tk1YDmcU+tO1HVlZM63L2AkTwCHi3ERmuZ1qXOlrHhs+EHorXW1kyat3TFH47LrwLTaKbBf+ZuN
- Wi2AzkfR/1OIytwGdaXGu26Ocvi+qKrJDXY8uGxbeeA==
-X-Gm-Gg: AR+sD11ye84z8naPzM7FZbAKA20d9CSXXCWL0dOdKD3VZanotyZrQK/JwZEBh9pWnlo
- 6ltP59woQ6Jhx9KnhcHInQ6ZVjMDsXSbM98TG5F9LT5bcTdkm278Ci26SSbroaQton2zNebft6T
- DeJYlKKru4GluCe4fLgk5jWhopTJrLsWmJiXSpV4XfX8M5uh0V4Dg6sffPwK9SBhYqTDSkWo47V
- u2/ZjlVNQGOnEeHdWhritLBqrZf+DqS06csAd4qpH4L1v5kByoHLiNX6hCz1LCYwMnvLqPigYod
- 7jkLTn2ay/Zj73jpmcHORDiTSC+zPO9S11c+Zc7outTdMw==
-X-Received: by 2002:a05:690e:c4d:b0:668:432f:f785 with SMTP id
- 956f58d0204a3-668bfde0394mr3100893d50.22.1785146218419; Mon, 27 Jul 2026
- 02:56:58 -0700 (PDT)
+ AHgh+RqA6tva58EGNlOQKxhj4vTnqiHD2f8ZJkEWFi5uvr8y8AYXYQqXXcEkVfXrvb+yZaPphjC5ah0wLUCBbxs=@nongnu.org
+X-Gm-Message-State: AOJu0Yy2CIKAx3SjlGLPtnMwgb+dajrXfivVP3fA7CPaKNBZ6mHWANxY
+ n/R0gNeebHEqg2cSu5e5XBY78iLH9BA9gE5E8gIi3SgPXspzwScNBlqdHGqdMj6WrkZwTWT6Vci
+ bg8JgEOOVAtt7cBfXJzkXei5bbTmrD7XTxrSXnG0W660DGAOozqHAgHlZbWE=
+X-Gm-Gg: AR+sD11WHo5GKzZKtmnGiAD4aZSFcbreg4fRtfwEb/f77Pe7AM+3Ey8cfFzIK3TnNNb
+ iik8vpAQC7BZ9HfyI20Cha/DsmVW0HbigoFy6kwPJUucuLHOMfJRNGSHvfydEU5dBozD9s7LHr6
+ i21SH18L86J6jWZEu7o5QBUnsDJshJgo7DMTLkyEBTR2lfLfxSwr8f4Z+lQgPjSauc8iBoWbyYA
+ nPYOUxPUcTeqNuIrXKD1xPjwC56etMy/ImfPaUc02+SnCBN59rNLDVd0sL2OXoV0h0Tw/lYOIJ8
+ bIFfiiAwlHy0VmO+vU7+cY3wQ074QrVAb9JSrEhKohaeyfYD93pEtapi0aGl
+X-Received: by 2002:a05:600c:4444:b0:495:6b4c:fccc with SMTP id
+ 5b1f17b1804b1-496b5c7182amr99174805e9.10.1785154732044; 
+ Mon, 27 Jul 2026 05:18:52 -0700 (PDT)
+X-Received: by 2002:a05:600c:4444:b0:495:6b4c:fccc with SMTP id
+ 5b1f17b1804b1-496b5c7182amr99174075e9.10.1785154731608; 
+ Mon, 27 Jul 2026 05:18:51 -0700 (PDT)
+Received: from imammedo ([213.175.37.14]) by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-496b388d5b4sm162922435e9.3.2026.07.27.05.18.49
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Mon, 27 Jul 2026 05:18:50 -0700 (PDT)
+Date: Mon, 27 Jul 2026 14:18:48 +0200
+From: Igor Mammedov <imammedo@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel@nongnu.org, Alex =?UTF-8?B?QmVubsOpZQ==?=
+ <alex.bennee@linaro.org>, Lukas Straub <lukasstraub2@web.de>, Vladimir
+ Sementsov-Ogievskiy <vsementsov@yandex-team.ru>, Zhao Liu
+ <zhao1.liu@intel.com>, Laurent Vivier <laurent@vivier.eu>, Markus
+ Armbruster <armbru@redhat.com>, "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ Philippe =?UTF-8?B?TWF0aGlldS1EYXVkw6k=?= <philmd@mailo.com>, Alex
+ Williamson <alex@shazbot.org>, zhenwei pi <zhenwei.pi@linux.dev>, Hanna
+ Reitz <hreitz@redhat.com>, Ani Sinha <anisinha@redhat.com>,
+ qemu-block@nongnu.org, Paolo Bonzini <pbonzini@redhat.com>, Peter Xu
+ <peterx@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
+ linux-cxl@vger.kernel.org, Jiri Pirko <jiri@resnulli.us>, "Daniel P.
+ =?UTF-8?B?QmVycmFuZ8Op?=" <berrange@redhat.com>, Stefan Berger
+ <stefanb@linux.vnet.ibm.com>, Fabiano Rosas <farosas@suse.de>, Stefan
+ Hajnoczi <stefanha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, "Michael
+ S. Tsirkin" <mst@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>, Mauro
+ Carvalho Chehab <mchehab+huawei@kernel.org>, linux-edac@vger.kernel.org,
+ =?UTF-8?B?TWFyYy1BbmRyw6k=?= Lureau <marcandre.lureau@redhat.com>, Richard
+ Henderson <richard.henderson@linaro.org>, Eric Blake <eblake@redhat.com>,
+ =?UTF-8?B?Q8OpZHJpYw==?= Le Goater <clg@redhat.com>, Jason Wang
+ <jasowangio@gmail.com>, qemu-trivial@nongnu.org, Jonathan Cameron
+ <jic23@kernel.org>
+Subject: Re: [PATCH v2 16/44] qapi: convert trivial intro sections for
+ acpi.json
+Message-ID: <20260727141848.5cc56eb2@imammedo>
+In-Reply-To: <20260723044805.527643-17-jsnow@redhat.com>
+References: <20260723044805.527643-1-jsnow@redhat.com>
+ <20260723044805.527643-17-jsnow@redhat.com>
+X-Mailer: Claws Mail 4.4.0 (GTK 3.24.52; x86_64-redhat-linux-gnu)
 MIME-Version: 1.0
-References: <20260724110933.629791-1-thuth@redhat.com>
-In-Reply-To: <20260724110933.629791-1-thuth@redhat.com>
-From: Peter Maydell <peter.maydell@linaro.org>
-Date: Mon, 27 Jul 2026 10:56:46 +0100
-X-Gm-Features: AUfX_mx4at_lCYWCbKIb-vgnUZU1qSbQtXDVL1gpQjsaZvjMFL2NDjbc3AXD0Mw
-Message-ID: <CAFEAcA8C6vBF_d5VeH23cqU0OjmQNtn9YqALLD_sD+t0YvgG+g@mail.gmail.com>
-Subject: Re: [PATCH] hw/usb/hcd-xhci: Check return value of
- xhci_xfer_create_sgl() for errors
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, Feifan Qian <bea1e@proton.me>, kraxel@redhat.com, 
- qemu-trivial@nongnu.org, qemu-stable@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Type: text/plain; charset="UTF-8"
-Received-SPF: pass client-ip=2607:f8b0:4864:20::b12c;
- envelope-from=peter.maydell@linaro.org; helo=mail-yx1-xb12c.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: oAMPypirbSebzxCW3KGBRJWZo8GO3QtL9WoAxre7GzU_1785154732
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=US-ASCII
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=imammedo@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -118,30 +133,58 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Fri, 24 Jul 2026 at 12:10, Thomas Huth <thuth@redhat.com> wrote:
->
-> From: Thomas Huth <thuth@redhat.com>
->
-> xhci_xfer_create_sgl() can fail if a guest programmed the XHCI in
-> a weird way. The current code ignores this error, and this triggers
-> an assert() shortly afterwards:
->
->  hw/usb/core.c:612: usb_packet_copy:
->   Assertion `p->actual_length + bytes <= iov->size' failed.
->
-> Fix it by handling the error correctly (i.e. return with an error to
-> the caller).
->
-> While we're at it, change the DPRINTF statements in xhci_xfer_create_sgl()
-> into proper qemu_log_mask() statements, so we have a better way to detect
-> this situation.
->
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3786
-> Reported-by: Feifan Qian <bea1e@proton.me>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
+On Thu, 23 Jul 2026 00:47:37 -0400
+John Snow <jsnow@redhat.com> wrote:
 
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+> (Trivial)
+> 
+> Signed-off-by: John Snow <jsnow@redhat.com>
 
-thanks
--- PMM
+Reviewed-by: Igor Mammedov <imammedo@redhat.com>
+
+> ---
+>  qapi/acpi.json | 15 ++++++---------
+>  1 file changed, 6 insertions(+), 9 deletions(-)
+> 
+> diff --git a/qapi/acpi.json b/qapi/acpi.json
+> index 906b3687a55..291a04a7ea4 100644
+> --- a/qapi/acpi.json
+> +++ b/qapi/acpi.json
+> @@ -81,10 +81,9 @@
+>  
+>  ##
+>  # @ACPIOSTInfo:
+> -#
+> -# OSPM Status Indication for a device.  For description of possible
+> -# values of @source and @status fields see "_OST (OSPM Status
+> -# Indication)" chapter of ACPI5.0 spec.
+> +#     OSPM Status Indication for a device.  For description
+> +#     of possible values of @source and @status fields see "_OST (OSPM
+> +#     Status Indication)" chapter of ACPI5.0 spec.
+>  #
+>  # @device: device ID associated with slot
+>  #
+> @@ -107,9 +106,8 @@
+>  
+>  ##
+>  # @query-acpi-ospm-status:
+> -#
+> -# Return a list of `ACPIOSTInfo` for devices that support status
+> -# reporting via ACPI _OST method.
+> +#     Return a list of `ACPIOSTInfo` for devices
+> +#     that support status reporting via ACPI _OST method.
+>  #
+>  # Since: 2.1
+>  #
+> @@ -126,8 +124,7 @@
+>  
+>  ##
+>  # @ACPI_DEVICE_OST:
+> -#
+> -# Emitted when guest executes ACPI _OST method.
+> +#     Emitted when guest executes ACPI _OST method.
+>  #
+>  # @info: OSPM Status Indication
+>  #
+
 
