@@ -4,111 +4,93 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id F21A8C54EFC
-	for <qemu-trivial@archiver.kernel.org>; Mon, 27 Jul 2026 17:21:31 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D2D35C53219
+	for <qemu-trivial@archiver.kernel.org>; Tue, 28 Jul 2026 14:02:20 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1woP10-0006M5-72; Mon, 27 Jul 2026 13:21:27 -0400
+	id 1woiNi-0002iQ-3Z; Tue, 28 Jul 2026 10:02:06 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1woP0F-0006Ha-7B
- for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 13:20:42 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1woiNg-0002hj-GW
+ for qemu-trivial@nongnu.org; Tue, 28 Jul 2026 10:02:04 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1woP04-0001MJ-LV
- for qemu-trivial@nongnu.org; Mon, 27 Jul 2026 13:20:27 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1woiNe-0002ZF-By
+ for qemu-trivial@nongnu.org; Tue, 28 Jul 2026 10:02:04 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1785172823;
+ s=mimecast20190719; t=1785247320;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=u6afx08wKd6RvWFzCzuO54Zssef71NPh6fis+puWjoE=;
- b=FgaTBWG7La4lT30taEHJM2wg08h+fCHNaln4XfUim37AlG5n0kIplfXW/YhjuJkZUTVgdI
- QjtW+c4Eq/7c0N2istFuDAY9h7CIn2+EKSwOdYlinUD8qiCof+Ubr3W0MJdpQpAJcE85E+
- 0OhKPuNMJOFOykY/jst0pb0regn8z80=
-Received: from mail-yx1-f71.google.com (mail-yx1-f71.google.com
- [74.125.224.71]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-39-KidMDzk0MaqehYEOTet_Ag-1; Mon, 27 Jul 2026 13:20:22 -0400
-X-MC-Unique: KidMDzk0MaqehYEOTet_Ag-1
-X-Mimecast-MFC-AGG-ID: KidMDzk0MaqehYEOTet_Ag_1785172821
-Received: by mail-yx1-f71.google.com with SMTP id
- 956f58d0204a3-668a55b1809so4818828d50.3
- for <qemu-trivial@nongnu.org>; Mon, 27 Jul 2026 10:20:21 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785172821; x=1785777621;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=u6afx08wKd6RvWFzCzuO54Zssef71NPh6fis+puWjoE=;
- b=DJmprzs2T9ptLQ8Cl9Ct+rgPl0PDbQ5pPdh4sZDixFjznvIfjXzkN3hVkyqnC2j+29
- DR/Lcoedd7lTBWfKOg/hFUHwJb3Zdw82KE74ItAvNBSNWPm4r7LASPTD7fpPsn2koeVF
- DPlIcuqw6jUvUgGTfmpzAX5PTsyGEqugscOKIiAEJQsoY5QMw8jUP3S5uTXuscuttWDH
- FceqLEx3W4xuDbVRoT89t9DXm9eZMc6A8dLt/rcuyIoOslp8QkmiDCatl67/INEEjfv+
- 4E+9AYnFzRmdDR4M2goSCpAgpj2gnqeXBBxUO4moIGI7HSVq4e8K+hnhXqmQTNAMnqcW
- qWOA==
-X-Forwarded-Encrypted: i=1;
- AHgh+Rqfprqg78MBkS49DafOs/qDYtXMOwOD+r0z/n9c5UoMQrltJUewso9/ylg4pg7SHlQjQZEQAbpeJ1wlYk4=@nongnu.org
-X-Gm-Message-State: AOJu0YzYf3V6gvNkOR7E0v752BoQ5IVBvl7Lg7JCmlrhE4UOIKDpeh3C
- CgMMTBO6TUuV2n9TzJtBUTg1RcqCo60ZXxBKr7nHXKn+LhbEO4sh0t9k78Y3FnTV8LVMb2KmawQ
- lczIc6suipiy/9SvuJ903JLiZn7mzHCgOD2hLxo/0p+g1xCnEEovvC6Xr2RnSclXGMssuoJ5xoE
- 00Y8tCRC3cj1Hdzno0uU1Ntm8IqCqLAIRtPQ==
-X-Gm-Gg: AR+sD12ugAZmkNg0FjXCZiS9PQ6l+pUHit2LZTI/zbKelc+uNS6Zw+wMt/D6+dQV2mj
- 7Jrt9Db2kUb9zNh38JoF+ejwKGAQ9dW1dz/aZxD39ZVNsJDYzgKtWx/2flYhDA+a3RtvMfUdM3q
- 7AQf4bRdiEt9pFoMS85zSVs+7rcl3aiIhrVyhoEAPwZB7P7ZPr4edYpBZw0fawFQCwFAb4N3jgh
- wQ0Wh3bPYKyU1E9
-X-Received: by 2002:a53:cac1:0:b0:667:d5e0:1c69 with SMTP id
- 956f58d0204a3-668c7a13057mr1982238d50.31.1785172821175; 
- Mon, 27 Jul 2026 10:20:21 -0700 (PDT)
-X-Received: by 2002:a53:cac1:0:b0:667:d5e0:1c69 with SMTP id
- 956f58d0204a3-668c7a13057mr1982197d50.31.1785172820614; Mon, 27 Jul 2026
- 10:20:20 -0700 (PDT)
-MIME-Version: 1.0
+ bh=rGC8K64Yob8r2JvUgCNx/wrbN79uNJ24+jQ74+JG3cU=;
+ b=RxlOukUjgIYVmRcpSK6e5osk9SNlc4Rhs5j/obcN9NDgjA+hMNaIdFqhhZIrdFretCH95s
+ f6DspxEOeSIqiIh02y5Zcz9KwP2DqPbmmn94w7SAqqtRr4Iib5oHGpu0msTBccvVWXPNhi
+ lyGlt4P5LitpViSxj+bp6OBh7Gu5ZAU=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-435-m5lm208sPei4GLoitcWCsg-1; Tue,
+ 28 Jul 2026 10:01:55 -0400
+X-MC-Unique: m5lm208sPei4GLoitcWCsg-1
+X-Mimecast-MFC-AGG-ID: m5lm208sPei4GLoitcWCsg_1785247313
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DE54118001EE; Tue, 28 Jul 2026 14:01:50 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8EC9B180044F; Tue, 28 Jul 2026 14:01:47 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 388B921E6920; Tue, 28 Jul 2026 16:01:45 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel@nongnu.org,  Alex =?utf-8?Q?Benn=C3=A9e?=
+ <alex.bennee@linaro.org>,  Lukas
+ Straub <lukasstraub2@web.de>,  Vladimir Sementsov-Ogievskiy
+ <vsementsov@yandex-team.ru>,  Zhao Liu <zhao1.liu@intel.com>,  Laurent
+ Vivier <laurent@vivier.eu>,  "Gonglei (Arei)" <arei.gonglei@huawei.com>,
+ Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,  Alex
+ Williamson
+ <alex@shazbot.org>,  zhenwei pi <zhenwei.pi@linux.dev>,  Hanna Reitz
+ <hreitz@redhat.com>,  Ani Sinha <anisinha@redhat.com>,
+ qemu-block@nongnu.org,  Paolo Bonzini <pbonzini@redhat.com>,  Peter Xu
+ <peterx@redhat.com>,  Kevin Wolf <kwolf@redhat.com>,
+ linux-cxl@vger.kernel.org,  Jiri Pirko <jiri@resnulli.us>,  Daniel P.
+ =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Stefan Berger
+ <stefanb@linux.vnet.ibm.com>,  Fabiano Rosas <farosas@suse.de>,  Stefan
+ Hajnoczi <stefanha@redhat.com>,  Michael Tokarev <mjt@tls.msk.ru>,  Igor
+ Mammedov <imammedo@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
+ Gerd Hoffmann <kraxel@redhat.com>,  Mauro Carvalho Chehab
+ <mchehab+huawei@kernel.org>,  linux-edac@vger.kernel.org,  =?utf-8?Q?Marc?=
+ =?utf-8?Q?-Andr=C3=A9?=
+ Lureau <marcandre.lureau@redhat.com>,  Richard Henderson
+ <richard.henderson@linaro.org>,  Eric Blake <eblake@redhat.com>,
+ =?utf-8?Q?C=C3=A9dric?=
+ Le Goater <clg@redhat.com>,  Jason Wang <jasowangio@gmail.com>,
+ qemu-trivial@nongnu.org,  Jonathan Cameron <jic23@kernel.org>
+Subject: Re: [PATCH v2 44/44] qapi: convert trivial intro sections for
+ block-core.json
+In-Reply-To: <CAFn=p-axhB-ezhfD2F8EoFhWT0h92d6oWP6Li1-JdhiXUGbsdA@mail.gmail.com>
+ (John Snow's message of "Mon, 27 Jul 2026 13:20:09 -0400")
 References: <20260723044805.527643-1-jsnow@redhat.com>
  <20260723044805.527643-45-jsnow@redhat.com>
  <87y0f0aikr.fsf@pond.sub.org>
-In-Reply-To: <87y0f0aikr.fsf@pond.sub.org>
-From: John Snow <jsnow@redhat.com>
-Date: Mon, 27 Jul 2026 13:20:09 -0400
-X-Gm-Features: AUfX_mz_Ii50MiumBfvXVZr6OIQ9ljsx38tHDtxPXG0jyiKi4V8B_BK1TGjrT7g
-Message-ID: <CAFn=p-axhB-ezhfD2F8EoFhWT0h92d6oWP6Li1-JdhiXUGbsdA@mail.gmail.com>
-Subject: Re: [PATCH v2 44/44] qapi: convert trivial intro sections for
- block-core.json
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org,
- =?UTF-8?B?QWxleCBCZW5uw6ll?= <alex.bennee@linaro.org>, 
- Lukas Straub <lukasstraub2@web.de>, 
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Zhao Liu <zhao1.liu@intel.com>, 
- Laurent Vivier <laurent@vivier.eu>, "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@mailo.com>, 
- Alex Williamson <alex@shazbot.org>, zhenwei pi <zhenwei.pi@linux.dev>,
- Hanna Reitz <hreitz@redhat.com>, 
- Ani Sinha <anisinha@redhat.com>, qemu-block@nongnu.org, 
- Paolo Bonzini <pbonzini@redhat.com>, Peter Xu <peterx@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>, 
- linux-cxl@vger.kernel.org, Jiri Pirko <jiri@resnulli.us>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Stefan Berger <stefanb@linux.vnet.ibm.com>, Fabiano Rosas <farosas@suse.de>, 
- Stefan Hajnoczi <stefanha@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>, 
- Igor Mammedov <imammedo@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, 
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, linux-edac@vger.kernel.org, 
- =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>, 
- Richard Henderson <richard.henderson@linaro.org>,
- Eric Blake <eblake@redhat.com>, 
- =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@redhat.com>, 
- Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org, 
- Jonathan Cameron <jic23@kernel.org>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: IpLPNBWANG_LWdb5zZwUCWM79TwJDmrjjTAuEE_1H9E_1785172821
+ <CAFn=p-axhB-ezhfD2F8EoFhWT0h92d6oWP6Li1-JdhiXUGbsdA@mail.gmail.com>
+Date: Tue, 28 Jul 2026 16:01:45 +0200
+Message-ID: <87qzkntdpy.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: _NI4JZSwat56NO2mYQok0a_wcGRQHnU1Mt4p-zjtaUc_1785247313
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
+Content-Type: text/plain; charset=utf-8
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -36
 X-Spam_score: -3.7
@@ -116,7 +98,7 @@ X-Spam_bar: ---
 X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -132,322 +114,26 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Fri, Jul 24, 2026 at 4:38=E2=80=AFAM Markus Armbruster <armbru@redhat.co=
-m> wrote:
->
-> John Snow <jsnow@redhat.com> writes:
->
-> > (Trivial)
-> >
-> > Signed-off-by: John Snow <jsnow@redhat.com>
-> > ---
-> >  qapi/block-core.json | 646 +++++++++++++++++--------------------------
-> >  1 file changed, 255 insertions(+), 391 deletions(-)
-> >
-> > diff --git a/qapi/block-core.json b/qapi/block-core.json
-> > index 1f87b078505..bd98af2f298 100644
-> > --- a/qapi/block-core.json
-> > +++ b/qapi/block-core.json
->
-> [...]
->
-> > @@ -422,10 +417,9 @@
-> >
-> >  ##
-> >  # @BlockGraphInfo:
-> > -#
-> > -# Information about all nodes in a block (sub)graph in the form of
-> > -# `BlockNodeInfo` data.  The base `BlockNodeInfo` struct contains the
-> > -# information for the (sub)graph's root node.
-> > +#     Information about all nodes in a block (sub)graph in the form of
-> > +#     `BlockNodeInfo` data.  The base `BlockNodeInfo` struct contains
-> > +#     the information for the (sub)graph's root node.
-> >  #
-> >  # @children: Array of links to this node's child nodes' information
-> >  #
->
-> The first sentence is clearly overview, but the second caught my eye.
-> What would we want the inliner to do with it?
->
-> Looks like the inliner isn't going to do anything with it right now,
-> because BlockGraphInfo is only used as member type.
->
-> [...]
->
-> > @@ -1378,10 +1355,9 @@
-> >
-> >  ##
-> >  # @BlockdevOnError:
-> > -#
-> > -# An enumeration of possible behaviors for errors on I/O operations.
-> > -# The exact meaning depends on whether the I/O was initiated by a
-> > -# guest or by a block job
-> > +#     An enumeration of possible behaviors for errors on I/O
-> > +#     operations.  The exact meaning depends on whether the I/O was
-> > +#     initiated by a guest or by a block job
-> >  #
-> >  # @report: for guest operations, report the error to the guest; for
-> >  #     jobs, cancel the job
->
-> The first sentence is clearly overview, but the second caught my eye.
->
-> Because this is an enum type, and we're not going to inline these, we
-> can leave it as is.
->
-> [...]
->
-> > @@ -1636,9 +1605,8 @@
-> >
-> >  ##
-> >  # @BackupPerf:
-> > -#
-> > -# Optional parameters for backup.  These parameters don't affect
-> > -# functionality, but may significantly affect performance.
-> > +#     Optional parameters for backup.  These parameters don't affect
-> > +#     functionality, but may significantly affect performance.
->
-> The first sentence is clearly overview.  What would we want the inliner
-> to do with the second?
->
-> Looks like the inliner isn't going to do anything with it right now,
-> because BackupPerf is only used as member type.
->
-> Aside: this only user BackupCommon member x-perf has been @unstable for
-> more than five years.  That's a long time to sit on a fence.
->
-> >  #
-> >  # @use-copy-range: Use copy offloading.  Default false.
-> >  #
->
-> [...]
->
-> > @@ -1845,12 +1812,12 @@
-> >
-> >  ##
-> >  # @change-backing-file:
-> > -#
-> > -# Change the backing file in the image file metadata.  This does not
-> > -# cause QEMU to reopen the image file to reparse the backing filename
-> > -# (it may, however, perform a reopen to change permissions from r/o ->
-> > -# r/w -> r/o, if needed).  The new backing file string is written into
-> > -# the image file metadata, and the QEMU internal strings are updated.
-> > +#     Change the backing file in the image file metadata.  This does
-> > +#     not cause QEMU to reopen the image file to reparse the backing
-> > +#     filename (it may, however, perform a reopen to change
-> > +#     permissions from r/o -> r/w -> r/o, if needed).  The new backing
-> > +#     file string is written into the image file metadata, and the
-> > +#     QEMU internal strings are updated.
->
-> This is an example of a first paragraph I might flag for review if it
-> was a struct or union type.
->
-> >  #
-> >  # @image-node-name: The name of the block driver state node of the
-> >  #     image to modify.  The "device" argument is used to verify
->
-> [...]
->
-> > @@ -2746,11 +2700,10 @@
-> >
-> >  ##
-> >  # @ThrottleLimits:
-> > -#
-> > -# Limit parameters for throttling.  Since some limit combinations are
-> > -# illegal, limits should always be set in one transaction.  All fields
-> > -# are optional.  When setting limits, if a field is missing the
-> > -# current value is not changed.
-> > +#     Limit parameters for throttling.  Since some limit combinations
-> > +#     are illegal, limits should always be set in one transaction.
-> > +#     All fields are optional.  When setting limits, if a field is
-> > +#     missing the current value is not changed.
->
-> The first sentence is clearly overview, but what would we want the
-> inliner to do with the remainder?
->
-> Looks like the inliner isn't going to do anything with it right now,
-> because ThrottleLimits is only used as member type.
->
-> >  #
-> >  # @iops-total: limit total I/O operations per second
-> >  #
->
-> [...]
->
-> > @@ -3548,12 +3486,11 @@
-> >
-> >  ##
-> >  # @Qcow2OverlapCheckFlags:
-> > -#
-> > -# Structure of flags for each metadata structure.  Setting a field to
-> > -# 'true' makes QEMU guard that Qcow2 format structure against
-> > -# unintended overwriting.  See Qcow2 format specification for detailed
-> > -# information on these structures.  The default value is chosen
-> > -# according to the template given.
-> > +#     Structure of flags for each metadata structure.  Setting a field
-> > +#     to 'true' makes QEMU guard that Qcow2 format structure against
-> > +#     unintended overwriting.  See Qcow2 format specification for
-> > +#     detailed information on these structures.  The default value is
-> > +#     chosen according to the template given.
-> >  #
-> >  # @template: Specifies a template mode which can be adjusted using the
-> >  #     other flags, defaults to 'cached'
->
-> The first sentence is clearly overview, but what would we want the
-> inliner to do with the remainder?
->
-> Looks like the inliner isn't going to do anything with it right now,
-> because Qcow2OverlapCheckFlags is only used as member type.
->
->
-> [...]
->
-> > @@ -4550,9 +4460,8 @@
-> >
-> >  ##
-> >  # @BlockdevOptionsCurlHttp:
-> > -#
-> > -# Driver specific block device options for HTTP connections over the
-> > -# curl backend.  URLs must start with "http://".
-> > +#     Driver specific block device options for HTTP connections over
-> > +#     the curl backend.  URLs must start with "http://".
-> >  #
-> >  # @cookie: List of cookies to set; format is "name1=3Dcontent1;
-> >  #     name2=3Dcontent2;" as explained by CURLOPT_COOKIE(3).  Defaults =
-to
->
-> The first sentence is clearly overview, but what about the second?
-> "URLs" are actually member @url of base type BlockdevOptionsCurlBase.
-> What would we want the inliner to do with it?
->
-> BlockdevOptionsCurlBase is the base type of BlockdevOptionsCurlHttps and
-> a branch type of BlockdevOptions, where this will get inlined.
->
-> > @@ -4576,9 +4485,8 @@
-> >
-> >  ##
-> >  # @BlockdevOptionsCurlHttps:
-> > -#
-> > -# Driver specific block device options for HTTPS connections over the
-> > -# curl backend.  URLs must start with "https://".
-> > +#     Driver specific block device options for HTTPS connections over
-> > +#     the curl backend.  URLs must start with "https://".
-> >  #
-> >  # @sslverify: Whether to verify the SSL certificate's validity
-> >  #     (defaults to true)
->
-> Likewise.
->
-> > @@ -4591,9 +4499,8 @@
-> >
-> >  ##
-> >  # @BlockdevOptionsCurlFtp:
-> > -#
-> > -# Driver specific block device options for FTP connections over the
-> > -# curl backend.  URLs must start with "ftp://".
-> > +#     Driver specific block device options for FTP connections over
-> > +#     the curl backend.  URLs must start with "ftp://".
-> >  #
-> >  # Since: 2.9
-> >  ##
->
-> Likewise.
->
-> > @@ -4603,9 +4510,8 @@
-> >
-> >  ##
-> >  # @BlockdevOptionsCurlFtps:
-> > -#
-> > -# Driver specific block device options for FTPS connections over the
-> > -# curl backend.  URLs must start with "ftps://".
-> > +#     Driver specific block device options for FTPS connections over
-> > +#     the curl backend.  URLs must start with "ftps://".
-> >  #
-> >  # @sslverify: Whether to verify the SSL certificate's validity
-> >  #     (defaults to true)
->
-> Likewise.
->
->
-> [...]
->
-> > @@ -4735,14 +4637,13 @@
-> >
-> >  ##
-> >  # @BlockdevOptionsCbw:
-> > -#
-> > -# Driver specific block device options for the copy-before-write
-> > -# driver, which does so called copy-before-write operations: when data
-> > -# is written to the filter, the filter first reads corresponding
-> > -# blocks from its file child and copies them to @target child.  After
-> > -# successfully copying, the write request is propagated to file child.
-> > -# If copying fails, the original write request is failed too and no
-> > -# data is written to file child.
-> > +#     Driver specific block device options for the copy-before-write
-> > +#     driver, which does so called copy-before-write operations: when
-> > +#     data is written to the filter, the filter first reads
-> > +#     corresponding blocks from its file child and copies them to
-> > +#     @target child.  After successfully copying, the write request is
-> > +#     propagated to file child.  If copying fails, the original write
-> > +#     request is failed too and no data is written to file child.
-> >  #
-> >  # @target: The target for copy-before-write operations.
-> >  #
->
-> What would we want the inliner to do with this one?
->
-> BlockdevOptionsCbw is a branch type of BlockdevOptions, where this will
-> get inlined.
->
-> > @@ -4778,9 +4679,8 @@
-> >
-> >  ##
-> >  # @BlockdevOptions:
-> > -#
-> > -# Options for creating a block device.  Many options are available for
-> > -# all block devices, independent of the block driver:
-> > +#     Options for creating a block device.  Many options are available
-> > +#     for all block devices, independent of the block driver:
-> >  #
-> >  # @driver: block driver name
-> >  #
->
-> What would we want the inliner to do with this one?
->
-> BlockdevOptions is used as argument of blockdev-add, where it will be
-> inlined.
->
->
-> [...]
->
-> > @@ -5587,9 +5465,8 @@
-> >
-> >  ##
-> >  # @BlockdevAmendOptionsQcow2:
-> > -#
-> > -# Driver specific image amend options for qcow2.  For now, only
-> > -# encryption options can be amended
-> > +#     Driver specific image amend options for qcow2.  For now, only
-> > +#     encryption options can be amended
-> >  #
-> >  # @encrypt: Encryption options to be amended
-> >  #
->
-> What would we want the inliner to do with this one?
->
-> BlockdevAmendOptionsQcow2 is used as branch of BlockdevAmendOptions,
-> where it will be inlined.
->
-> [...]
->
-> I believe all the problematic first paragraphs consist of more than one
-> sentence.  What about splitting "trivial" into "very trivial" (just one
-> paragraph, no sentence-ending punctuation in the middle) and "hopefully
-> trivial" (just one paragraph, remainder)?
+John Snow <jsnow@redhat.com> writes:
 
-That's tricky to automate, and doing it by hand doesn't sound much fun
-either... can we just power through one-by-one?
+> On Fri, Jul 24, 2026 at 4:38=E2=80=AFAM Markus Armbruster <armbru@redhat.=
+com> wrote:
 
-Unless you have a script or a trick you believe will help, and then I
-am happy to oblige.
+[...]
+
+>> I believe all the problematic first paragraphs consist of more than one
+>> sentence.  What about splitting "trivial" into "very trivial" (just one
+>> paragraph, no sentence-ending punctuation in the middle) and "hopefully
+>> trivial" (just one paragraph, remainder)?
+>
+> That's tricky to automate, and doing it by hand doesn't sound much fun
+> either... can we just power through one-by-one?
+>
+> Unless you have a script or a trick you believe will help, and then I
+> am happy to oblige.
+
+By hand would clearly be a bad use of your time.
+
+I'll look into automating it.
 
 
