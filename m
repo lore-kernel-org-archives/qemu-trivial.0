@@ -4,99 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 54C9FC54F4C
-	for <qemu-trivial@archiver.kernel.org>; Tue, 28 Jul 2026 14:04:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 86A93C54F4C
+	for <qemu-trivial@archiver.kernel.org>; Tue, 28 Jul 2026 14:47:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1woiPU-0003gZ-D2; Tue, 28 Jul 2026 10:03:57 -0400
+	id 1woj5K-0005g1-FK; Tue, 28 Jul 2026 10:47:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1woiPS-0003fl-Nl
- for qemu-trivial@nongnu.org; Tue, 28 Jul 2026 10:03:54 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1woiPR-0002fe-7a
- for qemu-trivial@nongnu.org; Tue, 28 Jul 2026 10:03:54 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1785247432;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=ZTcUYJR3ZkqlI+K293x1cuKvm9R4enTMB4xoVxh0vgg=;
- b=Q0r6vuQ/eL53wzwRW2/WVvAT5c50im6MJrCA3fnTpgjEw+6NQ6rEzGAVii5zH/EXy+8Ar6
- bDLJ578lTXd+eO8ifxG82BqyDVqNl8rvu4myFgHiIMNbq1qYLOdhfk4p5WUa7HEmIKzbPw
- 7vkYy9Bg1dlSP2dt3wfNz6YHfnxcfzk=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-269-JnQILyFeNDG833Mv4P6lVw-1; Tue,
- 28 Jul 2026 10:03:47 -0400
-X-MC-Unique: JnQILyFeNDG833Mv4P6lVw-1
-X-Mimecast-MFC-AGG-ID: JnQILyFeNDG833Mv4P6lVw_1785247423
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CE94019560BE; Tue, 28 Jul 2026 14:03:42 +0000 (UTC)
-Received: from blackfin.pond.sub.org (unknown [10.44.22.4])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D4DF21800480; Tue, 28 Jul 2026 14:03:40 +0000 (UTC)
-Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 6D74D21E6920; Tue, 28 Jul 2026 16:03:38 +0200 (CEST)
-From: Markus Armbruster <armbru@redhat.com>
-To: John Snow <jsnow@redhat.com>
-Cc: Markus Armbruster <armbru@redhat.com>,  qemu-devel@nongnu.org,  Alex
- =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,  Lukas Straub
- <lukasstraub2@web.de>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,  Zhao Liu
- <zhao1.liu@intel.com>,  Laurent Vivier <laurent@vivier.eu>,  "Gonglei
- (Arei)" <arei.gonglei@huawei.com>,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@mailo.com>,  Alex Williamson <alex@shazbot.org>,  zhenwei pi
- <zhenwei.pi@linux.dev>,  Hanna Reitz <hreitz@redhat.com>,  Ani Sinha
- <anisinha@redhat.com>,  qemu-block@nongnu.org,  Paolo Bonzini
- <pbonzini@redhat.com>,  Peter Xu <peterx@redhat.com>,  Kevin Wolf
- <kwolf@redhat.com>,  linux-cxl@vger.kernel.org,  Jiri Pirko
- <jiri@resnulli.us>,  Daniel P. =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Stefan
- Berger <stefanb@linux.vnet.ibm.com>,  Fabiano Rosas <farosas@suse.de>,
- Stefan Hajnoczi <stefanha@redhat.com>,  Michael Tokarev <mjt@tls.msk.ru>,
- Igor Mammedov <imammedo@redhat.com>,  "Michael S. Tsirkin"
- <mst@redhat.com>,  Gerd Hoffmann <kraxel@redhat.com>,  Mauro Carvalho
- Chehab <mchehab+huawei@kernel.org>,  linux-edac@vger.kernel.org,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,  Richard
- Henderson <richard.henderson@linaro.org>,  Eric Blake <eblake@redhat.com>,
- =?utf-8?Q?C=C3=A9dric?=
- Le Goater <clg@redhat.com>,  Jason Wang <jasowangio@gmail.com>,
- qemu-trivial@nongnu.org,  Jonathan Cameron <jic23@kernel.org>
-Subject: Re: [PATCH v2 00/44] qapi: convert trivial intro sections
-In-Reply-To: <CAFn=p-Z0Ys6FoUqRPY7d5CaN4YfHE4DUN6VLtMeWRJgUk3Khkg@mail.gmail.com>
- (John Snow's message of "Mon, 27 Jul 2026 13:16:13 -0400")
-References: <20260723044805.527643-1-jsnow@redhat.com>
- <87ik65g8xm.fsf@pond.sub.org> <87h5lobypc.fsf@pond.sub.org>
- <CAFn=p-Z0Ys6FoUqRPY7d5CaN4YfHE4DUN6VLtMeWRJgUk3Khkg@mail.gmail.com>
-Date: Tue, 28 Jul 2026 16:03:38 +0200
-Message-ID: <87mrvbtdmt.fsf@pond.sub.org>
-User-Agent: Gnus/5.13 (Gnus v5.13)
+ (Exim 4.90_1) (envelope-from <rohit.kuma1313@gmail.com>)
+ id 1woj1u-0004JY-VL
+ for qemu-trivial@nongnu.org; Tue, 28 Jul 2026 10:43:41 -0400
+Received: from mail-wm1-x32e.google.com ([2a00:1450:4864:20::32e])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <rohit.kuma1313@gmail.com>)
+ id 1woj1r-0001jL-DB
+ for qemu-trivial@nongnu.org; Tue, 28 Jul 2026 10:43:36 -0400
+Received: by mail-wm1-x32e.google.com with SMTP id
+ 5b1f17b1804b1-4954dff6536so27746995e9.0
+ for <qemu-trivial@nongnu.org>; Tue, 28 Jul 2026 07:43:34 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1785249814; x=1785854614; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=wCtAzg51hhstS+Gbl8wuHsxX6KoJDd8QSjWjrDQlyaQ=;
+ b=dMGz1fvZKEJLLA5+aJhoTxTXB0EMllwovmHRim1CjFUT5HaYSMw69Y9ImMgAIoDoMa
+ diN2P8crRliIFFzj83TDDc2vfbg3DupFesxr3KQYsCyh+oS59QSUbITKEMaUOXi4Mhiz
+ RuzFMmWAI2jxiqPUtyDjw3Xi0w5Cfyqiqc5jLWRX/42mYUgT2Umzjcg0brCbrwHCIs6q
+ Q6zHCknLXFs+CyMfXwXyz0bJxZlKspCz4cXykmWN4ESocUA6pgrlBhNq5cTdbFPAQxln
+ hvCyuNhugyXVzkqT+yReIudeX/efYv3T5aUhWhiyP+p9sPchUc0qVtcOmDTxyO9OsJoF
+ azWA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1785249814; x=1785854614;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=wCtAzg51hhstS+Gbl8wuHsxX6KoJDd8QSjWjrDQlyaQ=;
+ b=WtviGemkjUzJFvQvCBglZApOjSS8zDNs9uQyvJqDDYzMaBqMHaEMLM2gunagywFC1x
+ PEAlLqiKGxVX+k1dqIWC2/htPUF39aXTXS+0FAXcNm6jVasb0dPGTbTO0pNKEVJXo5Wc
+ w0sUgy5oYrk8VJ7biC9freqrnksGpYCmrrlntaI5I4G9kbhLeOu5nZFSljm8NgYcyf5N
+ YcfVxybwaEkA3OfVNppkSpLGBO5GOrDwFBPg/HtxCUVNiAWyw/rTpYSVOA+QQK52MJka
+ 7Yp+dXtSw9u3mqUMWj1ulWCrqxQYAnPboW7R/zod9yEfZf+jGfVn1xeQQonlMltOaKG/
+ qQew==
+X-Gm-Message-State: AOJu0YxrkUce/mNBWuyswPrt1Mx9uWgjInWQWp6l+SMfMBwo4Odhi8xs
+ rZ4u6r6yrM78XOI8SoqXirooYqWVoEL9Z/TBENlBgsbMluTr6GJS7MPp
+X-Gm-Gg: AR+sD12Op9z3YSrq9uHewGVskLc+W5SHQl97U5bV9kutpm/hKHMOnKpLooFna5FyS25
+ UGUxqfbIu9r/mbmOHMcWkywx9NhvcN8jvcAtQHEsHkTv2OLUFEZJt46ZpIRpTwdyYVjBTK+T1kk
+ kWYqtO0DIMQlcRJoUPqPMhfrrbSATzpIoy5Pu53W0gJlhkhShsDIimNUXWJQPNVMWjPaoqOSN4d
+ nTyen7YEW5yxR5e4SzbZeIZiXf41UfdE+sMsjP5zv8PHjv22zknxEgkG8RzBTOlkwq1hrESApxe
+ +02tl6Zw1N+yIl2Io6rCN7iAOYnUVQl1YPK5iTA+SnqOAxendBTf4JSzmcgXZCMY5o8JI9i0Mie
+ 1ZO424e/BYVmp61nnP13FfA1S1z7yqsc3sVy/VNOrNTh9Ne4viC7gPAdwuEXDw4kMEj7g5XQEtC
+ 0Slc25lMU5C1tXW+0S1eWElYaySYa9aieXVjmucsHqtVTPJWHrvJoF2JD8Xww/7l79BzJEZw54r
+ a5w3vh7JFHNWM1oEMMtl0PRZAdTJmK8Tr/dcZZoUXCscdPljv4=
+X-Received: by 2002:a05:600c:638f:b0:496:bba5:33a9 with SMTP id
+ 5b1f17b1804b1-496c658ef41mr31120935e9.34.1785249813521; 
+ Tue, 28 Jul 2026 07:43:33 -0700 (PDT)
+Received: from ip-172-31-13-20.eu-central-1.compute.internal
+ (ec2-18-198-207-175.eu-central-1.compute.amazonaws.com. [18.198.207.175])
+ by smtp.gmail.com with ESMTPSA id
+ 5b1f17b1804b1-496c444304esm80724215e9.0.2026.07.28.07.43.32
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Tue, 28 Jul 2026 07:43:33 -0700 (PDT)
+From: Rohitashv Kumar <rohit.kuma1313@gmail.com>
+To: Jason Wang <jasowangio@gmail.com>,
+	qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>,
+ Markus Armbruster <armbru@redhat.com>, Rohitashv Kumar <roohiit@amazon.de>
+Subject: [PATCH] qapi/net: gate user/vde/netmap netdev backends behind their
+ CONFIG symbols
+Date: Tue, 28 Jul 2026 14:43:03 +0000
+Message-ID: <20260728144303.223207-1-rohit.kuma1313@gmail.com>
+X-Mailer: git-send-email 2.50.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: cCo2AeO3nuh-fbla2elIHD8y_wfuPzuPHfYaDANonnk_1785247423
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -2
-X-Spam_score: -0.3
-X-Spam_bar: /
-X-Spam_report: (-0.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=2a00:1450:4864:20::32e;
+ envelope-from=rohit.kuma1313@gmail.com; helo=mail-wm1-x32e.google.com
+X-Spam_score_int: -17
+X-Spam_score: -1.8
+X-Spam_bar: -
+X-Spam_report: (-1.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ FREEMAIL_ENVFROM_END_DIGIT=0.25, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Tue, 28 Jul 2026 10:46:47 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -111,60 +103,85 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-John Snow <jsnow@redhat.com> writes:
+From: Rohitashv Kumar <roohiit@amazon.de>
 
-> On Fri, Jul 24, 2026 at 4:04=E2=80=AFAM Markus Armbruster <armbru@redhat.=
-com> wrote:
->>
->> Markus Armbruster <armbru@redhat.com> writes:
->>
->> [...]
->>
->> > Converting single first paragraps is mechanical.  For it to be correct=
-,
->> > this single paragraph must actually be the overview, and not some othe=
-r
->> > crap.  I expect it to be almost always overview.  Not sure how to best
->> > look for the exceptions.
->>
->> The separation truly matters only when the inliner inlines the doc
->> comment.  It potentially matters when it would inline it if the type was
->> used differently.
->
-> It also (potentially) matters for auto-generated docs, such as
-> undocumented members, return types, features*, errors*. The break
-> point is where these fields get inserted.
+Their NetClientDriver enum members and Netdev union branches were
+unconditional, so query-qmp-schema advertised them even when built without
+CONFIG_SLIRP/CONFIG_VDE/CONFIG_NETMAP. Gate them, and guard the matching
+NET_CLIENT_DRIVER_USER/_VDE case labels in net/hub.c.
 
-Right, I forgot about this.  There goes my review shortcut...
+Signed-off-by: Rohitashv Kumar <roohiit@amazon.de>
+---
+ net/hub.c     |  4 ++++
+ qapi/net.json | 19 +++++++++++++------
+ 2 files changed, 17 insertions(+), 6 deletions(-)
 
-> (*Not currently performed. Not asserting that it will be performed, or
-> that it is necessarily valuable to do so. Just fleshing out the
-> category.)
->
->>
->> If I remember correctly, the inliner inlines doc of struct / union base
->> type, union branch type, command / event argument type.
->>
->> Argument can only be struct or union.  Base and branch can only be
->> struct.
->>
->> We talked about maybe inlining return types some day.  This would be
->> struct, union, or array of struct or union.
->>
->> So, for anything other than struct and union, the inliner doesn't get
->> involved, and separating the overview cleanly is just a matter of
->> writing style.  I'm not sure we care.  Even if we elect to care,
->> cleaning it up is hardly this series' business.  In short, your
->> mechanical conversion of single first paragraphs to overview syntax
->> should be fine even where a paragraph's contents isn't clearly overview.
->
-> Except in cases where stub positioning matters, see also the former
-> "TODO:" syntax used to delineate intro/details.
->
->>
->> Structs and unions, however, could use an eye-over.
->>
->> [...]
->>
+diff --git a/net/hub.c b/net/hub.c
+index ee5881f6d5..2a7c2bc6d7 100644
+--- a/net/hub.c
++++ b/net/hub.c
+@@ -294,12 +294,16 @@ void net_hub_check_clients(void)
+ #ifdef CONFIG_PASST
+             case NET_CLIENT_DRIVER_PASST:
+ #endif
++#ifdef CONFIG_SLIRP
+             case NET_CLIENT_DRIVER_USER:
++#endif
+             case NET_CLIENT_DRIVER_TAP:
+             case NET_CLIENT_DRIVER_SOCKET:
+             case NET_CLIENT_DRIVER_STREAM:
+             case NET_CLIENT_DRIVER_DGRAM:
++#ifdef CONFIG_VDE
+             case NET_CLIENT_DRIVER_VDE:
++#endif
+             case NET_CLIENT_DRIVER_VHOST_USER:
+                 has_host_dev = 1;
+                 break;
+diff --git a/qapi/net.json b/qapi/net.json
+index 1a6382825c..e9f1300629 100644
+--- a/qapi/net.json
++++ b/qapi/net.json
+@@ -922,9 +922,13 @@
+ # Since: 2.7
+ ##
+ { 'enum': 'NetClientDriver',
+-  'data': [ 'none', 'nic', 'user', 'tap', 'l2tpv3', 'socket', 'stream',
+-            'dgram', 'vde', 'bridge', 'hubport', 'netmap', 'vhost-user',
+-            'vhost-vdpa',
++  'data': [ 'none', 'nic',
++            { 'name': 'user', 'if': 'CONFIG_SLIRP' },
++            'tap', 'l2tpv3', 'socket', 'stream', 'dgram',
++            { 'name': 'vde', 'if': 'CONFIG_VDE' },
++            'bridge', 'hubport',
++            { 'name': 'netmap', 'if': 'CONFIG_NETMAP' },
++            'vhost-user', 'vhost-vdpa',
+             { 'name': 'passt', 'if': 'CONFIG_PASST' },
+             { 'name': 'af-xdp', 'if': 'CONFIG_AF_XDP' },
+             { 'name': 'vmnet-host', 'if': 'CONFIG_VMNET' },
+@@ -949,16 +953,19 @@
+     'nic':      'NetLegacyNicOptions',
+     'passt':    { 'type': 'NetdevPasstOptions',
+                   'if': 'CONFIG_PASST' },
+-    'user':     'NetdevUserOptions',
++    'user':     { 'type': 'NetdevUserOptions',
++                  'if': 'CONFIG_SLIRP' },
+     'tap':      'NetdevTapOptions',
+     'l2tpv3':   'NetdevL2TPv3Options',
+     'socket':   'NetdevSocketOptions',
+     'stream':   'NetdevStreamOptions',
+     'dgram':    'NetdevDgramOptions',
+-    'vde':      'NetdevVdeOptions',
++    'vde':      { 'type': 'NetdevVdeOptions',
++                  'if': 'CONFIG_VDE' },
+     'bridge':   'NetdevBridgeOptions',
+     'hubport':  'NetdevHubPortOptions',
+-    'netmap':   'NetdevNetmapOptions',
++    'netmap':   { 'type': 'NetdevNetmapOptions',
++                  'if': 'CONFIG_NETMAP' },
+     'af-xdp':   { 'type': 'NetdevAFXDPOptions',
+                   'if': 'CONFIG_AF_XDP' },
+     'vhost-user': 'NetdevVhostUserOptions',
+-- 
+2.50.1
 
 
