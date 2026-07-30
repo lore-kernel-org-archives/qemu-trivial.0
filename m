@@ -4,71 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id BD608C55160
-	for <qemu-trivial@archiver.kernel.org>; Thu, 30 Jul 2026 16:39:46 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 437FDC55165
+	for <qemu-trivial@archiver.kernel.org>; Fri, 31 Jul 2026 00:30:12 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wpTmw-0007Xe-SN; Thu, 30 Jul 2026 12:39:19 -0400
+	id 1wpb8K-0002fl-Df; Thu, 30 Jul 2026 20:29:52 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wpTmu-0007Wl-HZ
- for qemu-trivial@nongnu.org; Thu, 30 Jul 2026 12:39:16 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1wpTms-0008Dg-VF
- for qemu-trivial@nongnu.org; Thu, 30 Jul 2026 12:39:16 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1785429553;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding;
- bh=43P7i+PH3R93Mpl0oa1bgU1c/KBrgka5q7h3ziFXuLQ=;
- b=UF7tuFikw4MEJ2L8mttyKBsbJw4sJs2yBuXTl+rMaDdIOlMXPQMSqWHnRdZ6b/D/3EnO4N
- 462cMrccbSTSoE2c4AF1p30/ANpU3sm1qmnA/xbvM3FiwdNGpN3Gu3kdkyYZEf6UIpLdVg
- nwlQevMmeknBspicUz4DV3miYkrgZ5M=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-266-XUpUsWkAOdit2If3UqEP6w-1; Thu,
- 30 Jul 2026 12:39:10 -0400
-X-MC-Unique: XUpUsWkAOdit2If3UqEP6w-1
-X-Mimecast-MFC-AGG-ID: XUpUsWkAOdit2If3UqEP6w_1785429548
-Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1404E18002C6; Thu, 30 Jul 2026 16:39:08 +0000 (UTC)
-Received: from thuth-p1g4.redhat.com (unknown [10.44.49.70])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 5E15A1956089; Thu, 30 Jul 2026 16:39:03 +0000 (UTC)
-From: Thomas Huth <thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <oliverhenryc@gmail.com>)
+ id 1wpZp2-0008F6-Hl
+ for qemu-trivial@nongnu.org; Thu, 30 Jul 2026 19:05:52 -0400
+Received: from mail-qv1-xf31.google.com ([2607:f8b0:4864:20::f31])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <oliverhenryc@gmail.com>)
+ id 1wpZp1-0000hb-4l
+ for qemu-trivial@nongnu.org; Thu, 30 Jul 2026 19:05:52 -0400
+Received: by mail-qv1-xf31.google.com with SMTP id
+ 6a1803df08f44-907abe5462bso602716d6.1
+ for <qemu-trivial@nongnu.org>; Thu, 30 Jul 2026 16:05:50 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=gmail.com; s=20251104; t=1785452750; x=1786057550; darn=nongnu.org;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=WeoZMFRUcScYUud2h5F047Ygt+CNqlQ41cRVby3nNZ4=;
+ b=O+7x55poI3NUpZGUXU/XT70rYwH0C+uCQFCAybrhYKczVGbl8m/xHauj2moH5GRY/N
+ nmpK3IjUTCGorc7OzZQs41/mHvqCrYWvFPHSa2/xvXTRo78XXpEIWNxpGrzMIh4QXoTe
+ 2ZcXIjY0EE2eTQSIS/YBi1XR/u0938XRzvhAw/fjFvCboBnsIpQ/GOLGzsnmiszobPrP
+ vhajgKMNxqKNsCjz+oisHdD3doaeF5ozB2JibjaDGtyN8wfPvJHc0Y7GKh4Tu+ypQto4
+ NcCZTK0T7B+QlXOLyT2znqUxk1XZJqE0q5k8XMeKwO8UKYnkW+UYtvRJv9BpQY4kmBGg
+ co6g==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1785452750; x=1786057550;
+ h=content-transfer-encoding:mime-version:message-id:date:subject:cc
+ :to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=WeoZMFRUcScYUud2h5F047Ygt+CNqlQ41cRVby3nNZ4=;
+ b=sI4rlL6pDxBssgaRDJ5lqcFkKo3lvDBwzsMaCfSLswBGz2qVssgR3e92HNSpfgC4Wz
+ tOWDCE7y8QReiau5bEK+pLjKI8G/Np+gRPfQyuFWdGggMR+qNF8kAH6NUmwuJm9S2v04
+ tWlhefirRVG36XckMFHHePFd/7fvXZduLISZX5sGIWFHpc0m9V1Me6jxvvuZzssqGhrJ
+ g5NJS4pC2szSjdJ+7D/abDnHoCEBbnSg6/Qd1Fu6fPc/YohAiZaJxvofyFzg/H0JH3ft
+ 3KPUTkGUyAtFKMhqRC4WPnUnDiZ8VDuAMdfrfmLjqNDb49vOfR6YT3CKViVXJ++EbcOn
+ F60g==
+X-Gm-Message-State: AOJu0YzIKsXkIsGncOFVA1HSd8H0IuY4z64Pydi1vE0d+Uf03uwonUVU
+ dak+pIotnziZadJQItyAKKnRW65u8m1tMM7NbwtaPME7kRuvLb7wbRP8
+X-Gm-Gg: AR+sD10rDHJphTG2HIK+6Hjfbg7ZhCP2WnKCHpJJAsu4OMaxaeeu4JxHblzqSlrO2qp
+ PnXTM5eILdV1lqcRfIzt+nt7KQR194IUSQRInVcC84R5JU4q9WHZIdGsL9x/dqXt30MNgIx9RKJ
+ JEueeha1nMjACSd3vxN8RwB8SGSStcRhOt+DxYk317B10a7LC666awbqpxd1eZymmnmbStKTaNY
+ mRX0+8elW2/UOxwDm1da+3wi4dpgEIS8/FE8MUxcH5hwVLT/bpHsaUZrANGzVW10RNKSYuTtJ6F
+ 7b3IGf4wOhU/7m3gAVQyJFjZJTg5uIZKSRmlgTvoCTm3Ej1iC2zVThNzU6o8bFR//HzA9bGve0Z
+ issbD9S+PGYBCpdtquVXWm5YUEYIs9RH8gten5ls4reE2yF9pX6KScZaC08p1PMMhCfcwxE0JYW
+ R+zydkrmxUdkf2yH0Ue1P5c/Nz/9jEPc7V7D5XQcl5tDeTTUEJRapmYmG4fQ5aMyN6MaVINNEJF
+ /scgFxMK7YJKYN8bMI0rCRflPy0mfdOoxsblw==
+X-Received: by 2002:a05:6214:e84:b0:8e9:ee1f:6631 with SMTP id
+ 6a1803df08f44-9083be78c93mr33422606d6.3.1785452749712; 
+ Thu, 30 Jul 2026 16:05:49 -0700 (PDT)
+Received: from DESKTOP-MVROD8J ([147.124.77.95])
+ by smtp.gmail.com with ESMTPSA id
+ 6a1803df08f44-908324f8805sm28111446d6.35.2026.07.30.16.05.48
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 30 Jul 2026 16:05:49 -0700 (PDT)
+From: Oliver Clarke <oliverhenryc@gmail.com>
 To: qemu-devel@nongnu.org
-Cc: Feifan Qian <bea1e@proton.me>, Peter Maydell <peter.maydell@linaro.org>,
- kraxel@redhat.com, qemu-trivial@nongnu.org, qemu-stable@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH] hw/usb/dev-uas: Don't abort if guest provided an undersized
- buffer for status
-Date: Thu, 30 Jul 2026 18:39:01 +0200
-Message-ID: <20260730163901.1154791-1-thuth@redhat.com>
+Cc: qemu-trivial@nongnu.org, marcandre.lureau@redhat.com,
+ Oliver Clarke <oliverhenryc@gmail.com>
+Subject: [PATCH] sdl2: fix HighDPI display scaling
+Date: Thu, 30 Jul 2026 19:04:48 -0400
+Message-ID: <20260730230449.963-1-oliverhenryc@gmail.com>
+X-Mailer: git-send-email 2.51.0.windows.1
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: Z0yZJ-M_ae_oAW2EIfpY0jdUyItqEZHc3m7xHdT_v10_1785429548
-X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=thuth@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -36
-X-Spam_score: -3.7
-X-Spam_bar: ---
-X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+Received-SPF: pass client-ip=2607:f8b0:4864:20::f31;
+ envelope-from=oliverhenryc@gmail.com; helo=mail-qv1-xf31.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 30 Jul 2026 20:29:50 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -83,71 +99,37 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Thomas Huth <thuth@redhat.com>
+This makes sdl2 windows work well with dpi scaling. It fixes the issue of the display surface being stretched to fit the dpi corrected window (which created a blurry result).
 
-QEMU currently aborts if the guest provides an undersized buffer
-for the status packet (8 bytes):
+Note, this does not do any scaling, it just tells the os to not scale the window. Before, when the console requested size 640x480, the logical size of the window was 640x480, and the physical size was scaled by the dpi scaling. Now, both the logical and physical size will be 640x480. This is unlike most dpi aware programs which usually do have the scaled physical size, then also make the render target that scaled size as well. This doesn't make as much sense for QEMU, since the guest is responsible for modesetting, and they should get the exact physical pixels they request (if i modeset to 3840x2160, I wouldn't want this to be scaled in any way).
 
- hw/usb/core.c:623: usb_packet_copy:
-  Assertion `p->actual_length + bytes <= iov->size' failed.
-
-If we hit this situation, log a guest error and continue by simply
-only providing the bytes that the guest asked for.
-(Note: This is e.g. similar to the UAS_PIPE_ID_COMMAND case that
-also clamps the length with: length = MIN(sizeof(iu), p->iov.size))
-
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/3900
-Reported-by: Feifan Qian <bea1e@proton.me>
-Signed-off-by: Thomas Huth <thuth@redhat.com>
+Signed-off-by: Oliver Clarke <oliverhenryc@gmail.com>
 ---
- hw/usb/dev-uas.c | 19 +++++++++++++++++--
- 1 file changed, 17 insertions(+), 2 deletions(-)
+ ui/sdl2.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/hw/usb/dev-uas.c b/hw/usb/dev-uas.c
-index 963c0433b38..be8c3667e83 100644
---- a/hw/usb/dev-uas.c
-+++ b/hw/usb/dev-uas.c
-@@ -359,6 +359,7 @@ static void usb_uas_send_status_bh(void *opaque)
-     UASDevice *uas = opaque;
-     UASStatus *st;
-     USBPacket *p;
-+    uint32_t length;
+diff --git a/ui/sdl2.c b/ui/sdl2.c
+index 1c97d23a47..1910477db4 100644
+--- a/ui/sdl2.c
++++ b/ui/sdl2.c
+@@ -102,7 +102,7 @@ void sdl2_window_create(struct sdl2_console *scon)
+         flags |= SDL_WINDOW_OPENGL;
+     }
+ #endif
+-
++    flags |= SDL_WINDOW_ALLOW_HIGHDPI;
+     scon->real_window = SDL_CreateWindow("", SDL_WINDOWPOS_UNDEFINED,
+                                          SDL_WINDOWPOS_UNDEFINED,
+                                          surface_width(scon->surface),
+@@ -907,6 +907,7 @@ static void sdl2_display_init(DisplayState *ds, DisplayOptions *o)
+     char *dir;
  
-     while ((st = QTAILQ_FIRST(&uas->results)) != NULL) {
-         if (uas_using_streams(uas)) {
-@@ -373,7 +374,14 @@ static void usb_uas_send_status_bh(void *opaque)
-             break;
-         }
+     assert(o->type == DISPLAY_TYPE_SDL);
++    SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
  
--        usb_packet_copy(p, &st->status, st->length);
-+        length = st->length;
-+        if (length > p->iov.size) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "usb uas: packet (%zd) too small for status (%d)\n",
-+                          p->iov.size, length);
-+            length = p->iov.size;
-+        }
-+        usb_packet_copy(p, &st->status, length);
-         QTAILQ_REMOVE(&uas->results, st, next);
-         g_free(st);
- 
-@@ -875,7 +883,14 @@ static void usb_uas_handle_data(USBDevice *dev, USBPacket *p)
-                 break;
-             }
-         }
--        usb_packet_copy(p, &st->status, st->length);
-+        length = st->length;
-+        if (length > p->iov.size) {
-+            qemu_log_mask(LOG_GUEST_ERROR,
-+                          "usb uas: packet (%zd) too small for status (%d)\n",
-+                          p->iov.size, length);
-+            length = p->iov.size;
-+        }
-+        usb_packet_copy(p, &st->status, length);
-         QTAILQ_REMOVE(&uas->results, st, next);
-         g_free(st);
-         break;
+     if (SDL_GetHintBoolean("QEMU_ENABLE_SDL_LOGGING", SDL_FALSE)) {
+         SDL_LogSetAllPriority(SDL_LOG_PRIORITY_VERBOSE);
 -- 
-2.55.0
+2.51.0.windows.1
 
 
