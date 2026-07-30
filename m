@@ -4,114 +4,59 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C138C54F51
-	for <qemu-trivial@archiver.kernel.org>; Wed, 29 Jul 2026 20:56:40 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 645C7C55160
+	for <qemu-trivial@archiver.kernel.org>; Thu, 30 Jul 2026 12:24:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wpBJj-0001Cq-7w; Wed, 29 Jul 2026 16:55:55 -0400
+	id 1wpPnp-0002IN-1v; Thu, 30 Jul 2026 08:23:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <randy.schifflin@gmail.com>)
- id 1wpBJg-0001B7-9K
- for qemu-trivial@nongnu.org; Wed, 29 Jul 2026 16:55:53 -0400
-Received: from mail-pj1-x102b.google.com ([2607:f8b0:4864:20::102b])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <randy.schifflin@gmail.com>)
- id 1wpBJe-0003Dc-CB
- for qemu-trivial@nongnu.org; Wed, 29 Jul 2026 16:55:52 -0400
-Received: by mail-pj1-x102b.google.com with SMTP id
- 98e67ed59e1d1-3856d6fbcb3so1145726a91.2
- for <qemu-trivial@nongnu.org>; Wed, 29 Jul 2026 13:55:48 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1785358547; x=1785963347; darn=nongnu.org;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=EuI3Lte6L+TUx4+qq6+bqLHevoNQdlXy3sbflPLSDh8=;
- b=DTIvq6X8fkxCzJJI3uwyjHxXIsG3ktmfDojrlA+suEJ+5q8WmJN7TjNX1LNLtj9LEI
- lTMlI6iDgBEMSbvRX/zs6dMH+h+1OnXAX9JtATv7kzPX1mY045GhA5IvK5e4g4fd6x5V
- Tf5hyE2bBduFn3osdJmi8ErXuv1uV/463Eczt5Kv8BzrevjVeAncBj2MONVbAMCztg8O
- mQlGDKN2OIEKuMH5x6AyoASFrFGBq6gtpL4l8MvD1P9TPSpdvlSvK/Y7nmmnRScXIHKm
- +c9TKnd1zSYb7Ybz2FilEeoP80pycQSUPcINvKv+F3mXC7hflBS8Nyoip0Ol2+gf2DUI
- FgNw==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785358547; x=1785963347;
- h=cc:to:in-reply-to:references:message-id:content-transfer-encoding
- :content-type:mime-version:subject:date:from:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=EuI3Lte6L+TUx4+qq6+bqLHevoNQdlXy3sbflPLSDh8=;
- b=ShM93Nv9blK4O6xfRKbmyWup3Ac0wX7oa7ZPGSuaO7O9Rxn3e16dp41wRGsi1Cjhvg
- qMG4fR616LYZjHRFYnslc10S9PMhxtMi92bJy7iZV0G8OPt5Nyn/0b1NycHUlZA1qGbW
- hujTHhXrW3YYkJPJrTe4gxF2WQZcY3pWrqXaXnRMpyQzuNw/XglLUjOv82biAUuIpvtc
- HIb/uye7mcXMlRX/IpL7Jf7tFkLfV4puVZJQGA/AG5ZyJTo9LOTP535nMAh6G3WboVJo
- 1RoM0UsLzRMRgQgui/nsL4u/h3L5Br5n8WVOYdX5hV9jCKCJijI5ek/k72VIY/orTvfR
- Z29w==
-X-Forwarded-Encrypted: i=1;
- AHgh+RolOdDCM0YxIxft1AD+/PgabEGLbmi5MQCN9Wbrz/ncs91l3T7oRGiG7mobzsEMbtR2BgNbOq5yFLNw0LQ=@nongnu.org
-X-Gm-Message-State: AOJu0Yxx7gXjCE81/0oRVJDQsal0jCdJEd3rB2oBoCrzcME2+x/Gr8Wn
- TyxFHiyZ0FkSgSzVxW+ghXGkh3oMDf+a1+Aqr7mkxktLne+fuPHnkKTfdOZ7Jyw7
-X-Gm-Gg: AR+sD111ALF3/sAnQSEeHbI3HOLzO1iJQgI7cP9HwNagmKKPg1vd16KM0cYah5FvTdt
- khXJTXXiCybhCeksd7Txs90JEAHVZcC/GnUq46cMMCgytj9/tJSTl8XjumgjRW76PUl32FVpssg
- 2lDGoysuwvBaWbyYVBIz7gpZKpJV5n6HloTsum8UiWLVtvHeMGQYNsaGuUqQwEniPArGQQKQoXG
- GRTsVczqzl4pkvqAWexY+sperTakREdWTuMY0/kUzU5ntQEgprNaD0eB712ybEoG+uC2YJQtvMX
- EKiEDfcumv8ar75NHJE+5vf8pat1lIRfXfE3lXgRpekhdaV4/BEyf3BwrCQ2zYdhgIKzmazXMqC
- MJJ+jyUIZs4iWE+mO/XuiRdyUH2MbDYFkMMOcvgxE9rn/8NSBTZGanoJVEXMbAFtz1kfIr9hhB5
- ugBiK3vUMnEkhlgYpgZt+iH5vOaO9/WF9iOC3ycF6b/axmNNVMNmPqvYlMnA8dpbOwrNmI6OJLZ
- m68vQP91g==
-X-Received: by 2002:a17:90b:5785:b0:36b:77b9:5c8c with SMTP id
- 98e67ed59e1d1-38f98f6c278mr398721a91.17.1785358547306; 
- Wed, 29 Jul 2026 13:55:47 -0700 (PDT)
-Received: from devone.local ([2600:8801:100:1910:66a:cb3f:f6a7:d5f0])
- by smtp.gmail.com with ESMTPSA id
- a92af1059eb24-13e7271f010sm14868879c88.9.2026.07.29.13.55.45
- (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Wed, 29 Jul 2026 13:55:46 -0700 (PDT)
-From: Randy Schifflin <randy.schifflin@gmail.com>
-Date: Wed, 29 Jul 2026 13:55:08 -0700
-Subject: [PATCH 2/2] target/sh4: fixup tcg generation for sh4 `fmov`
- instructions.
-MIME-Version: 1.0
-Content-Type: text/plain; charset="utf-8"
-Content-Transfer-Encoding: 7bit
-Message-Id: <20260729-sh4-fix-fmov-instructions-b4-v1-2-65cc9679025a@gmail.com>
-References: <20260729-sh4-fix-fmov-instructions-b4-v1-0-65cc9679025a@gmail.com>
-In-Reply-To: <20260729-sh4-fix-fmov-instructions-b4-v1-0-65cc9679025a@gmail.com>
-To: qemu-devel@nongnu.org
-Cc: Yoshinori Sato <yoshinori.sato@nifty.com>, qemu-trivial@nongnu.org, 
- Randy Schifflin <randy.schifflin@gmail.com>
-X-Mailer: b4 0.13.0
-X-Developer-Signature: v=1; a=openssh-sha256; t=1785358542; l=7410;
- i=randy.schifflin@gmail.com; s=id_rsa; h=from:subject:message-id;
- bh=08WCZqu/9I1ItEc38de3w3oVAgSe2Jwf4MRVglV4fIA=;
- b=U1NIU0lHAAAAAQAAAZcAAAAHc3NoLXJzYQAAAAMBAAEAAAGBALXHj1ozDvr3TmWcPoueK1kIy
- Q3yQ7HL5bbiu8J+P0QBzcchmw5nwN0avQmreXhYuMhz40g0dhCJPnJqNHg1FBflQPz2cgY7Utm3
- 9lQrK/CQqWsjRwXMinMR7LrmtMFp9+up7MzdXoxmTLgPsKJ/dQmx0rUHx++mUSl8zl7lHO50YVD
- hsw1RHrkrXlxnUjRi+jtjgErRHvoRwSZpKc44yR62wV8chkTMnHtrn8hgL0Hh+jhHteNn4JTQB/
- wme8MghhliXR5oh9xirpeLlS9S4TBY3Vdk6ccgvncSS4uF/y2ZAAV5sNiLZ97OFkBhIQ0bXhVx9
- w1LPMkho650Iu9da5/0koNheHS2KAVC2FdPTyaxvqeFAsAB8fCprfh4lpShdcVpyChdd2KXFS53
- s9MAUQmZjG0pQvS/dqGCCDWqo7cY3J3VTMXwVtdzYkgZt5eMajL7z8VljXQ08ZgAStdizC/rHNg
- wy+fIL+6kgxvL/NhJwoiAWhC4D+xQY7SXjJGTvwAAAAZwYXRhdHQAAAAAAAAABnNoYTUxMgAAAZ
- QAAAAMcnNhLXNoYTItNTEyAAABgJjD4YoyAJVx6YtKFG4DSSZ/lM6zGXP9xkBv7C+WE5SzuSsdd
- LedRuHa39qoKmU6v3H/r/pH8lg0GWUXg5ch8vWkPmCVdNTN9bcOzWz4BrEtvS5GWMx+aPQbTOxI
- ANWgmRIm2zSNBouVhlm0VEJf8MojWDrBEIZI7AtB2BEo2hM/UpSCM4E+U02ymKjasXEL+ykMXZ3
- x64eXVrqHpokqY++awMVml87SO6jQwfM6ek20UqBR3G9cT5Ofd0qitKzfYD3EjX+lvU6IbExt6N
- DSKobS78MkZy7ef4OjVVpn7JMOiYGR+UJMPFsfe74apOk2Uyd48/pUUOgGTqgAFSIPWCDgqpgul
- WCGAkFqjdo+f+Ho5t6I0O9gQBG+THI3lHfcs5EL6ffdCJZdlmgQrfpuXGoOWQpphbNGL7Ecvd6R
- cLoJb5wAPqhOuwYZpY0eZ6nk7CKDp38QB/NZJasW9d5jFWvxJZReIqhkBpt9TrcmebbgUSMZZfv
- hIgcG3no2hgilAA==
-X-Developer-Key: i=randy.schifflin@gmail.com; a=openssh;
- fpr=SHA256:7gww1tlDoVPb7symWGdTNhRWcHyTORA23OcjS8eyd8Y
-Received-SPF: pass client-ip=2607:f8b0:4864:20::102b;
- envelope-from=randy.schifflin@gmail.com; helo=mail-pj1-x102b.google.com
+ (Exim 4.90_1) (envelope-from <yoshinori.sato@nifty.com>)
+ id 1wpPnn-0002I0-Kx; Thu, 30 Jul 2026 08:23:55 -0400
+Received: from mta-snd-e09.mail.nifty.com ([106.153.226.41])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <yoshinori.sato@nifty.com>)
+ id 1wpPnk-00011T-44; Thu, 30 Jul 2026 08:23:55 -0400
+Received: from sakura.ysato.name by mta-snd-e09.mail.nifty.com with ESMTP
+ id <20260730122341580.MOQH.60338.sakura.ysato.name@nifty.com>;
+ Thu, 30 Jul 2026 21:23:41 +0900
+Received: from SIOS1075.ysato.ml (ZM005235.ppp.dion.ne.jp [222.8.5.235])
+ by sakura.ysato.name (Postfix) with ESMTPSA id 141951C022E;
+ Thu, 30 Jul 2026 21:23:41 +0900 (JST)
+Date: Thu, 30 Jul 2026 21:23:38 +0900
+Message-ID: <87bjbod5th.wl-yoshinori.sato@nifty.com>
+From: yoshinori.sato@nifty.com
+To: Randy Schifflin <randy.schifflin@gmail.com>
+Cc: qemu-devel@nongnu.org,
+	qemu-trivial@nongnu.org
+Subject: Re: [PATCH v2 1/2] target/sh4: add tests for sh4 fipr and ftrv
+ instructions
+In-Reply-To: <20260729-fixup-sh4-tcg-fpu-instructions-b4-v2-1-2c1c0fe04672@gmail.com>
+References: <20260729-fixup-sh4-tcg-fpu-instructions-b4-v2-0-2c1c0fe04672@gmail.com>
+ <20260729-fixup-sh4-tcg-fpu-instructions-b4-v2-1-2c1c0fe04672@gmail.com>
+User-Agent: Wanderlust/2.15.9 (Almost Unreal) SEMI-EPG/1.14.7 (Harue)
+ FLIM-LB/1.14.9 (=?ISO-8859-4?Q?Goj=F2?=) APEL-LB/10.8 EasyPG/1.0.0
+ Emacs/30.1 (x86_64-pc-linux-gnu) MULE/6.0 (HANACHIRUSATO)
+MIME-Version: 1.0 (generated by SEMI-EPG 1.14.7 - "Harue")
+Content-Type: text/plain; charset=US-ASCII
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nifty.com;
+ s=default-1th84yt82rvi; t=1785414221; 
+ bh=sCx6KaABSq5Jdmn/uala+um3T/XLqrGKOH4ERKaU+vM=;
+ h=Date:From:To:Cc:Subject:In-Reply-To:References;
+ b=qBCe3JnJQ2GesA9pbzApyuz7kdraY+p9+hbtIyy2hFqyI45/Fb58OOeijEwWVxj5Qoj+TxZT
+ 5F3rpaV4386+ufxYOfT5ohpQcxPy/dxREfF+vfRyGsZ/wjSiuJ7NR+BJna4iQ3ATY2EvkQ8BBp
+ 3nYXgXEY0JOkjIEN4gdNXSKUIOst8U03FA2o7aYzuXC4XR5HevAGoEYc127DK5Y9krCuvsAkOa
+ Ww0OAknEO4o3d66f4mTfjeqH2yIKfw0qn8ffmlCB6GiAZozmjDIMn/JAswm+QPeIub33DO4xJ2
+ y63UsW2LQq38LwRu2/D1NPZxfKczAdM9YJ1LT4bIyqJBQ3HA==
+Received-SPF: pass client-ip=106.153.226.41;
+ envelope-from=yoshinori.sato@nifty.com; helo=mta-snd-e09.mail.nifty.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -127,154 +72,233 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Fixes TCG generation for sh4 `fmov` instructions.
+On Thu, 30 Jul 2026 05:45:05 +0900,
+Randy Schifflin wrote:
+> 
+> Add tests for the TCG generation of the sh4-specific `fipr`
+> and `ftrv` instructions.
+> 
+> Signed-off-by: Randy Schifflin <randy.schifflin@gmail.com>
+> ---
+>  tests/tcg/sh4/Makefile.target |   7 +++
+>  tests/tcg/sh4/test-fpu-fipr.c |  72 ++++++++++++++++++++++++++++
+>  tests/tcg/sh4/test-fpu-ftrv.c | 108 ++++++++++++++++++++++++++++++++++++++++++
+>  3 files changed, 187 insertions(+)
+> 
+> diff --git a/tests/tcg/sh4/Makefile.target b/tests/tcg/sh4/Makefile.target
+> index b7a8737be0..0975fac72d 100644
+> --- a/tests/tcg/sh4/Makefile.target
+> +++ b/tests/tcg/sh4/Makefile.target
+> @@ -16,3 +16,10 @@ TESTS += test-addv
+>  
+>  test-subv: CFLAGS += -O -g
+>  TESTS += test-subv
+> +
+> +test-fpu-fipr: CFLAGS += -O -g
+> +TESTS += test-fpu-fipr
+> +
+> +test-fpu-ftrv: CFLAGS += -O -g
+> +TESTS += test-fpu-ftrv
+> +
+> diff --git a/tests/tcg/sh4/test-fpu-fipr.c b/tests/tcg/sh4/test-fpu-fipr.c
+> new file mode 100644
+> index 0000000000..1bf1a1b4ec
+> --- /dev/null
+> +++ b/tests/tcg/sh4/test-fpu-fipr.c
+> @@ -0,0 +1,72 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +
+> +#include <limits.h>
+> +#include <stdlib.h>
+> +static const unsigned long FPSCR_PR_BIT = 1UL << 19;
+> +
+> +static void single_precision_mode(void)
+> +{
+> +    unsigned long fpscr;
+> +    /* Read FPSCR register */
+> +    asm volatile("sts fpscr, %0" : "=r" (fpscr));
+> +    /* Set precision mode to single-precision */
+> +    fpscr &= ~FPSCR_PR_BIT;
+> +    /* Write FPSCR register */
+> +    asm volatile("lds %0, fpscr" : : "r" (fpscr));
+> +}
+> +
+> +static float fipr(const float v1[4], const float v2[4])
+> +{
+> +    float fout = 0.0;
+> +    /*
+> +     * Perform inner product of fv4 and fv8
+> +     * Result is stored in the last float register of the last vector argument
+> +     */
+> +    asm volatile(
+> +        "fmov %1,fr4\n"
+> +        "fmov %2,fr5\n"
+> +        "fmov %3,fr6\n"
+> +        "fmov %4,fr7\n"
+> +        "fmov %5,fr8\n"
+> +        "fmov %6,fr9\n"
+> +        "fmov %7,fr10\n"
+> +        "fmov %8,fr11\n"
+> +        "fipr fv4,fv8\n" /* (fr4,fr5,fr6,fr7) dot (fr8,fr9,fr10,fr11) */
+> +        "fmov fr11,%0\n" /* Result in fr11 */
+> +        : "=f" (fout)
+> +        : "f" (v1[0]), "f" (v1[1]), "f" (v1[2]), "f" (v1[3]),
+> +          "f" (v2[0]), "f" (v2[1]), "f" (v2[2]), "f" (v2[3]));
+> +    return fout;
+> +}
+> +
+> +int main(void)
+> +{
+> +    /*
+> +     * The SH4 manual specifies `fipr` is only available when
+> +     * FPSCR register precision-mode (PR) bit is 0
+> +     */
+> +    single_precision_mode();
+> +
+> +    float v1[4] = {1.0, 0.0, 0.0, 0.0};
+> +    float mag_sq = 0.0;
+> +    float dot = 0.0;
+> +
+> +    mag_sq = fipr(v1, v1);
+> +    if (mag_sq != 1.0) {
+> +        abort();
+> +    }
+> +
+> +    v1[0] = 2.0;
+> +    mag_sq = fipr(v1, v1);
+> +    if (mag_sq != 4.0) {
+> +        abort();
+> +    }
+> +
+> +    float v2[4] = {1.0, 0.0, 0.0, 0.0};
+> +    dot = fipr(v1, v2);
+> +    if (dot != 2.0) {
+> +        abort();
+> +    }
+> +
+> +    return 0;
+> +}
+> diff --git a/tests/tcg/sh4/test-fpu-ftrv.c b/tests/tcg/sh4/test-fpu-ftrv.c
+> new file mode 100644
+> index 0000000000..041e03120e
+> --- /dev/null
+> +++ b/tests/tcg/sh4/test-fpu-ftrv.c
+> @@ -0,0 +1,108 @@
+> +/* SPDX-License-Identifier: GPL-2.0-or-later */
+> +
+> +#include <limits.h>
+> +#include <stdlib.h>
+> +static const unsigned long FPSCR_PR_BIT = 1UL << 19;
+> +
+> +static void single_precision_mode(void)
+> +{
+> +    unsigned long fpscr;
+> +    /* Read FPSCR register */
+> +    asm volatile("sts fpscr, %0" : "=r" (fpscr));
+> +    /* Set precision mode to single-precision */
+> +    fpscr &= ~FPSCR_PR_BIT;
+> +    /* Write FPSCR register */
+> +    asm volatile("lds %0, fpscr" : : "r" (fpscr));
+> +}
+> +
+> +/* Set XMTRX registers to a doubling scale matrix */
+> +static void xmtrx_scale_2(void)
+> +{
+> +    asm volatile(
+> +        "fldi0 fr0\n" /* Pair dr0 (fr0, fr1) = zero,zero */
+> +        "fldi0 fr1\n"
+> +        "fldi1 fr2\n"
+> +        "fadd fr2,fr2\n" /* Pair dr2 (fr2,fr3) = two,zero */
+> +        "fldi0 fr3\n"
+> +        "fldi0 fr4\n"
+> +        "fmov fr2,fr5\n" /* Pair dr4 (fr4, fr5) = zero,two */
+> +
+> +        /* Enable pair-write */
+> +        "fschg\n"
+> +        /* matrix[0][0] = 2.0 */
+> +        /* matrix[0][1] = 0.0 */
+> +        "fmov dr2,xd0\n"
+> +        /* matrix[0][2] = 0.0 */
+> +        /* matrix[0][3] = 0.0 */
+> +        "fmov dr0,xd2\n"
+> +        /* matrix[1][0] = 0.0 */
+> +        /* matrix[1][1] = 2.0 */
+> +        "fmov dr4,xd4\n"
+> +        /* matrix[1][2] = 0.0 */
+> +        /* matrix[1][3] = 0.0 */
+> +        "fmov dr0,xd6\n"
+> +        /* matrix[2][0] = 0.0 */
+> +        /* matrix[2][1] = 0.0 */
+> +        "fmov dr0,xd8\n"
+> +        /* matrix[2][2] = 2.0 */
+> +        /* matrix[2][3] = 0.0 */
+> +        "fmov dr2,xd10\n"
+> +        /* matrix[3][0] = 0.0 */
+> +        /* matrix[3][1] = 0.0 */
+> +        "fmov dr0,xd12\n"
+> +        /* matrix[3][2] = 0.0 */
+> +        /* matrix[3][3] = 2.0 */
+> +        "fmov dr4,xd14\n"
+> +        /* Disable pair-write */
+> +        "fschg"
+> +        :
+> +        :
+> +        : "fr0", "fr1", "fr2", "fr3", "fr4", "fr5");
+> +}
+> +
+> +/* Transform vector vin by xmtrx; store result in vector vout */
+> +static void ftrv(const float vin[4], float vout[4])
+> +{
+> +    asm volatile("fmov %4,fr0\n"
+> +                 "fmov %5,fr1\n"
+> +                 "fmov %6,fr2\n"
+> +                 "fmov %7,fr3\n"
+> +                 "ftrv xmtrx,fv0\n"
+> +                 "fmov fr0,%0\n"
+> +                 "fmov fr1,%1\n"
+> +                 "fmov fr2,%2\n"
+> +                 "fmov fr3,%3"
+> +                 : "=f" (vout[0]), "=f" (vout[1]),
+> +                   "=f" (vout[2]), "=f" (vout[3])
+> +                 : "f" (vin[0]), "f" (vin[1]),
+> +                   "f" (vin[2]), "f" (vin[3])
+> +                 : "fr0", "fr1", "fr2", "fr3");
+> +}
+> +
+> +int main(void)
+> +{
+> +    /*
+> +     * The SH4 manual specifies `ftrv` is only available when
+> +     * FPSCR register precision-mode (PR) bit is 0
+> +     */
+> +    single_precision_mode();
+> +    xmtrx_scale_2();
+> +    float vin[4] = {1.0, 2.0, 3.0, 4.0};
+> +    float vout[4] = { 0.0, 0.0, 0.0, 0.0};
+> +
+> +    ftrv(vin, vout);
+> +    if (vout[0] != 2.0) {
+> +        abort();
+> +    }
+> +    if (vout[1] != 4.0) {
+> +        abort();
+> +    }
+> +    if (vout[2] != 6.0) {
+> +        abort();
+> +    }
+> +    if (vout[3] != 8.0) {
+> +        abort();
+> +    }
+> +
+> +    return 0;
+> +}
+> 
+> -- 
+> 2.43.0
+> 
 
-Updates the current logic for these instructions to correctly handle
-  SH4 pair single-precision data transfer semantics.
-  According to the SH4 cpu manual, `fmov` between a double-precision
-  register operand and memory requires the precision mode to be
-  single-precision and the transfer size mode to be pairwise f32.
-  The result is reading/writing a pair of two f32 values to/from memory.
-  In little-endian mode, this has slightly different semantics than
-  the current implementation which handles reads/writes as a single
-  f64 value- the first and second words get incorrectly reversed.
-
-Signed-off-by: Randy Schifflin <randy.schifflin@gmail.com>
----
- target/sh4/translate.c | 82 +++++++++++++++++++++++++++++---------------------
- 1 file changed, 47 insertions(+), 35 deletions(-)
-
-diff --git a/target/sh4/translate.c b/target/sh4/translate.c
-index 373950fd66..8fe3b15e50 100644
---- a/target/sh4/translate.c
-+++ b/target/sh4/translate.c
-@@ -962,10 +962,14 @@ static void _decode_opc(DisasContext * ctx)
-     case 0xf00a: /* fmov {F,D,X}Rm,@Rn - FPSCR: Nothing */
-         CHECK_FPU_ENABLED
-         if (ctx->tbflags & FPSCR_SZ) {
--            TCGv_i64 fp = tcg_temp_new_i64();
--            gen_load_fpr64(ctx, fp, XHACK(B7_4));
--            tcg_gen_qemu_st_i64(fp, REG(B11_8), ctx->memidx,
--                                MO_TEUQ | MO_ALIGN);
-+            TCGv addr = tcg_temp_new_i32();
-+            int xsrc = XHACK(B7_4);
-+
-+            tcg_gen_qemu_st_i32(FREG(xsrc), REG(B11_8), ctx->memidx,
-+                                MO_TEUL | MO_ALIGN);
-+            tcg_gen_addi_i32(addr, REG(B11_8), 4);
-+            tcg_gen_qemu_st_i32(FREG(xsrc + 1), addr, ctx->memidx,
-+                                MO_TEUL | MO_ALIGN);
-         } else {
-             tcg_gen_qemu_st_i32(FREG(B7_4), REG(B11_8), ctx->memidx,
-                                 MO_TEUL | MO_ALIGN);
-@@ -974,23 +978,29 @@ static void _decode_opc(DisasContext * ctx)
-     case 0xf008: /* fmov @Rm,{F,D,X}Rn - FPSCR: Nothing */
-         CHECK_FPU_ENABLED
-         if (ctx->tbflags & FPSCR_SZ) {
--            TCGv_i64 fp = tcg_temp_new_i64();
--            tcg_gen_qemu_ld_i64(fp, REG(B7_4), ctx->memidx,
--                                MO_TEUQ | MO_ALIGN);
--            gen_store_fpr64(ctx, fp, XHACK(B11_8));
-+            TCGv addr = tcg_temp_new_i32();
-+            int xdst = XHACK(B11_8);
-+            tcg_gen_qemu_ld_i32(FREG(xdst), REG(B7_4), ctx->memidx,
-+                                MO_TEUL | MO_ALIGN);
-+            tcg_gen_addi_i32(addr, REG(B7_4), 4);
-+            tcg_gen_qemu_ld_i32(FREG(xdst + 1), addr, ctx->memidx,
-+                                MO_TEUL | MO_ALIGN);
-         } else {
-             tcg_gen_qemu_ld_i32(FREG(B11_8), REG(B7_4), ctx->memidx,
-                                 MO_TEUL | MO_ALIGN);
-         }
-         return;
-+
-     case 0xf009: /* fmov @Rm+,{F,D,X}Rn - FPSCR: Nothing */
-         CHECK_FPU_ENABLED
-         if (ctx->tbflags & FPSCR_SZ) {
--            TCGv_i64 fp = tcg_temp_new_i64();
--            tcg_gen_qemu_ld_i64(fp, REG(B7_4), ctx->memidx,
--                                MO_TEUQ | MO_ALIGN);
--            gen_store_fpr64(ctx, fp, XHACK(B11_8));
--            tcg_gen_addi_i32(REG(B7_4), REG(B7_4), 8);
-+            int xdst = XHACK(B11_8);
-+            tcg_gen_qemu_ld_i32(FREG(xdst), REG(B7_4), ctx->memidx,
-+                                MO_TEUL | MO_ALIGN);
-+            tcg_gen_addi_i32(REG(B7_4), REG(B7_4), 4);
-+            tcg_gen_qemu_ld_i32(FREG(xdst + 1), REG(B7_4), ctx->memidx,
-+                                MO_TEUL | MO_ALIGN);
-+            tcg_gen_addi_i32(REG(B7_4), REG(B7_4), 4);
-         } else {
-             tcg_gen_qemu_ld_i32(FREG(B11_8), REG(B7_4), ctx->memidx,
-                                 MO_TEUL | MO_ALIGN);
-@@ -999,20 +1009,18 @@ static void _decode_opc(DisasContext * ctx)
-         return;
-     case 0xf00b: /* fmov {F,D,X}Rm,@-Rn - FPSCR: Nothing */
-         CHECK_FPU_ENABLED
--        {
--            TCGv addr = tcg_temp_new_i32();
--            if (ctx->tbflags & FPSCR_SZ) {
--                TCGv_i64 fp = tcg_temp_new_i64();
--                gen_load_fpr64(ctx, fp, XHACK(B7_4));
--                tcg_gen_subi_i32(addr, REG(B11_8), 8);
--                tcg_gen_qemu_st_i64(fp, addr, ctx->memidx,
--                                    MO_TEUQ | MO_ALIGN);
--            } else {
--                tcg_gen_subi_i32(addr, REG(B11_8), 4);
--                tcg_gen_qemu_st_i32(FREG(B7_4), addr, ctx->memidx,
--                                    MO_TEUL | MO_ALIGN);
--            }
--            tcg_gen_mov_i32(REG(B11_8), addr);
-+        if (ctx->tbflags & FPSCR_SZ) {
-+            int xdst = XHACK(B7_4);
-+            tcg_gen_subi_i32(REG(B11_8), REG(B11_8), 4);
-+            tcg_gen_qemu_st_i32(FREG(xdst + 1), REG(B11_8), ctx->memidx,
-+                                MO_TEUL | MO_ALIGN);
-+            tcg_gen_subi_i32(REG(B11_8), REG(B11_8), 4);
-+            tcg_gen_qemu_st_i32(FREG(xdst), REG(B11_8), ctx->memidx,
-+                                MO_TEUL | MO_ALIGN);
-+        } else {
-+            tcg_gen_subi_i32(REG(B11_8), REG(B11_8), 4);
-+            tcg_gen_qemu_st_i32(FREG(B7_4), REG(B11_8), ctx->memidx,
-+                                MO_TEUL | MO_ALIGN);
-         }
-         return;
-     case 0xf006: /* fmov @(R0,Rm),{F,D,X}Rm - FPSCR: Nothing */
-@@ -1021,10 +1029,12 @@ static void _decode_opc(DisasContext * ctx)
-             TCGv addr = tcg_temp_new_i32();
-             tcg_gen_add_i32(addr, REG(B7_4), REG(0));
-             if (ctx->tbflags & FPSCR_SZ) {
--                TCGv_i64 fp = tcg_temp_new_i64();
--                tcg_gen_qemu_ld_i64(fp, addr, ctx->memidx,
--                                    MO_TEUQ | MO_ALIGN);
--                gen_store_fpr64(ctx, fp, XHACK(B11_8));
-+                int xdst = XHACK(B11_8);
-+                tcg_gen_qemu_ld_i32(FREG(xdst), addr, ctx->memidx,
-+                                    MO_TEUL | MO_ALIGN);
-+                tcg_gen_addi_i32(addr, addr, 4);
-+                tcg_gen_qemu_ld_i32(FREG(xdst + 1), addr, ctx->memidx,
-+                                    MO_TEUL | MO_ALIGN);
-             } else {
-                 tcg_gen_qemu_ld_i32(FREG(B11_8), addr, ctx->memidx,
-                                     MO_TEUL | MO_ALIGN);
-@@ -1037,10 +1047,12 @@ static void _decode_opc(DisasContext * ctx)
-             TCGv addr = tcg_temp_new();
-             tcg_gen_add_i32(addr, REG(B11_8), REG(0));
-             if (ctx->tbflags & FPSCR_SZ) {
--                TCGv_i64 fp = tcg_temp_new_i64();
--                gen_load_fpr64(ctx, fp, XHACK(B7_4));
--                tcg_gen_qemu_st_i64(fp, addr, ctx->memidx,
--                                    MO_TEUQ | MO_ALIGN);
-+                int xsrc = XHACK(B7_4);
-+                tcg_gen_qemu_st_i32(FREG(xsrc), addr, ctx->memidx,
-+                                    MO_TEUL | MO_ALIGN);
-+                tcg_gen_addi_i32(addr, addr, 4);
-+                tcg_gen_qemu_st_i32(FREG(xsrc + 1), addr, ctx->memidx,
-+                                    MO_TEUL | MO_ALIGN);
-             } else {
-                 tcg_gen_qemu_st_i32(FREG(B7_4), addr, ctx->memidx,
-                                     MO_TEUL | MO_ALIGN);
+Reviewed-by: Yoshinori Sato <yoshinori.sato@nifty.com>
 
 -- 
-2.43.0
-
+Yosinori Sato
 
