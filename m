@@ -4,91 +4,145 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 455A2C5516D
-	for <qemu-trivial@archiver.kernel.org>; Fri, 31 Jul 2026 00:30:12 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 50A31C54F54
+	for <qemu-trivial@archiver.kernel.org>; Fri, 31 Jul 2026 06:03:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wpb8K-0002fk-0G; Thu, 30 Jul 2026 20:29:52 -0400
+	id 1wpgKy-0002QX-Dl; Fri, 31 Jul 2026 02:03:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <github@me.samiser.xyz>)
- id 1wpZjn-0006sI-CZ; Thu, 30 Jul 2026 19:00:28 -0400
-Received: from fhigh-b4-smtp.messagingengine.com ([202.12.124.155])
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wpgKw-0002QM-Ed
+ for qemu-trivial@nongnu.org; Fri, 31 Jul 2026 02:03:14 -0400
+Received: from mx0a-0031df01.pphosted.com ([205.220.168.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <github@me.samiser.xyz>)
- id 1wpZjl-00086p-1c; Thu, 30 Jul 2026 19:00:27 -0400
-Received: from phl-compute-01.internal (phl-compute-01.internal [10.202.2.41])
- by mailfhigh.stl.internal (Postfix) with ESMTP id 37F627A00BF;
- Thu, 30 Jul 2026 19:00:22 -0400 (EDT)
-Received: from phl-imap-07 ([10.202.2.97])
- by phl-compute-01.internal (MEProxy); Thu, 30 Jul 2026 19:00:22 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=samiser.xyz; h=
- cc:cc:content-transfer-encoding:content-type:content-type:date
- :date:from:from:in-reply-to:message-id:mime-version:reply-to
- :subject:subject:to:to; s=fm2; t=1785452422; x=1785538822; bh=iv
- 4Oe/AnM0yPB7D4mqPwwlLCYXgJke8vGTKjJD+LGDU=; b=GPhHxFQ9uRuNcoSkMn
- KRmBk3Rj4OokqvVh6QXrff6Uy5psNuGQ3ER+B4Zgax0MBSmPFJvJ6HpD45L6jubS
- OMALIDyfgWqOv0st1SBhzhzLpO5P5ZYoMK4IQdT39TSiB/2iTangv4ddm88WsPp2
- BkHGBajfuEPeNeifEnzUrexLi4m5E9jMp1AIdULcnB0yIq3GqRdxO2hgF13KSrY6
- +XdShZzrrm2Om/939BH//pYIDZ684GMnYjdvSHhJ4gQO7zNqIp2blh49waJ1ChFO
- 50GSDGkW3O7N82q3eF5AkBJX7gmCvdmIbQWsk16Xy6qiUwVJGgOrFtUBR/+lZtxn
- jwUQ==
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=
- messagingengine.com; h=cc:cc:content-transfer-encoding
- :content-type:content-type:date:date:feedback-id:feedback-id
- :from:from:in-reply-to:message-id:mime-version:reply-to:subject
- :subject:to:to:x-me-proxy:x-me-sender:x-me-sender:x-sasl-enc; s=
- fm2; t=1785452422; x=1785538822; bh=iv4Oe/AnM0yPB7D4mqPwwlLCYXgJ
- ke8vGTKjJD+LGDU=; b=LDsNIUMFK4gg6uh6QLx0p/Q+x/CyYJy2ME24Yv1SFi3j
- yRuxA9zpJhnidzAP6ndke7TE4yL5YH9GFMZhpb0XeHMOTiVE+eAU4CCPmQgKmXhE
- vQPmQCri11bwEji1cKbq1jMe7gDnlTbvN4Ob6cBB+bRa6DDKO5edS1mpSbVs+w/T
- ASAlJd8JbUNJBQXTI1acdMOqnNE5/I0RAH6ziX6UO8HRSaRGEUXwOJ83+OEvQRTf
- wZDKmHumGmruKzS8dTlNDgk2+OLR/rBM37GBVOSqOX3UG9RGqQoFakV86vWCQh9n
- 7wC/HGdB1jUnfOjr7jG4zjGnLzCT16iqNijUKAmgzA==
-X-ME-Sender: <xms:hddrasQpPLgWWCharpZ8tssqumb8ihUjzGwywSayjTirrIdpLGHzYA>
- <xme:hddrakm0YtOTEs16BvCAUJEXEfTsxWB4PaYG22_MjGkAEVl-xN9WTGjnmfNy1HFqs
- QZiN9D4EVBWHiogDvEl-uF5Jv9LWG3R7kVyOpx1Kh1cXAILskBq2Txk>
-X-ME-Proxy-Cause: dmFkZTEySoZUukO9JNiKHFlFpVcz1T0J3ydTsJc0bYDgl7U6DDAU1kD+v+81pMVIeCUtyK
- I4qUae06yfblVx/jvmB2mFtCyc7G8IEd4s5CahSvVR2hTZbfiLufz+8QSW9FVRAWNPiFjc
- 55AqfLTUvlTgDLnY7nwfwXF3N2katalpCG+WpW9sFTtIyU9hEGi/qLEm1COk27J6VTEDgg
- yRz/ufKuGUmRHmm4v5EXEEZur1mY//5RhynYRTw9tjnPoFqBXELKfubUpFJjYViOu6/G3W
- Zma/XTM+dkNlWAwRSM7laDnhxGaHgYGbVGwx+BUrQ0W/CbJWH1gH3UZYL8XGPgyfSlMTqc
- 3fRVguKSDdH+w0HjUfylQDldXjsOIUA6kXV9uTSjL8o92kynxx+1vQIpJwjD7U4BWpHhf0
- S5AWOSu+UYtbjsoA5jOILVprZthYjBPz18CqfiQWG3m1eso50AlEeonIeL7umhcknwfnuk
- PZi5BRvXRTxE0h0H33ptgqeHlN4euGukAjrNLkQlItDlyHEBngJxHxm5HEDFtsKsBljp6O
- x0MtmvIdF7TOEwm3K/LHVRqivMY2W7IvcLpfCKh9BIq1htD8j3DDcLu8c4NjO702FGdPrJ
- MtD1osnDPMMeEHJ8Dd2VR2aHYR/CeOs7LDEq+JCJpnsB7mGAzsb8TI8fW9JA
-X-ME-Proxy: <xmx:hddrat3SFvKnQYqly19S3K4OgKmQsXs4G9e32AlgQsjlm-v5iGvjjg>
- <xmx:hddrarEWFQK6TY6FhPiX6umqdpMHMQpTSgV1kYw464IegUD4w3pY4Q>
- <xmx:hddrai69c6yQ_88ugcfrRxWqXCHkhc0sNEwOPY-LweKtpoHKJIoEmg>
- <xmx:hddrapvuxoxTro4DD9461_IlnioQBqIt5-NjkEGGqIcw6BoW6X7nwg>
- <xmx:htdrar8EHKbKuIqmWcbzPmt125GQhb_6X0aN_gMQ_gDwlgCdOTxuQ3XC>
-Feedback-ID: if6a9495e:Fastmail
-Received: by mailuser.phl.internal (Postfix, from userid 501)
- id 9BCB21EA006C; Thu, 30 Jul 2026 19:00:21 -0400 (EDT)
-X-Mailer: MessagingEngine.com Webmail Interface
+ (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
+ id 1wpgKt-0003fP-I6
+ for qemu-trivial@nongnu.org; Fri, 31 Jul 2026 02:03:13 -0400
+Received: from pps.filterd (m0279863.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 66V5HFwY3235179
+ for <qemu-trivial@nongnu.org>; Fri, 31 Jul 2026 06:03:09 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:in-reply-to
+ :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
+ P1+IaPA8THfKbBjIuhq3DCVsUGXqlS4o7feR5cMuVJs=; b=gmN4EtlcG3o5/jQ1
+ xh7ezmJwAIEZ/+mZb9r0cLwOdKBULAPqM17m+HVJ8xv3baakCqNl3hbHO3zn/4aO
+ LbDVlDOS6yHys1oXPBUykkCS+gBRwuV89qMOjWWACd0z9SgRRbBD04KpAcGTiEld
+ uKzeesQuk64J3WpDPEk4L13bRr3dedrvK00jq2RqiXius1bgGgDilgPCspu/pfqm
+ 0tKhrtSzv69ocuzC1P7ZpSUX1X6MukKpBWLsYWAmiW93Nz53ds3FGnY1x5hxCUsT
+ g36NmUMqh3HQ8dFpu3eCB2hovi8eC+XfA552DoEbdS+N7+nPrhw7T6fB3va0sxeV
+ WwQ+kg==
+Received: from mail-qv1-f69.google.com (mail-qv1-f69.google.com
+ [209.85.219.69])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4frne5053p-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-trivial@nongnu.org>; Fri, 31 Jul 2026 06:03:08 +0000 (GMT)
+Received: by mail-qv1-f69.google.com with SMTP id
+ 6a1803df08f44-9077b4c35c5so13200836d6.2
+ for <qemu-trivial@nongnu.org>; Thu, 30 Jul 2026 23:03:08 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1785477788; x=1786082588; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=P1+IaPA8THfKbBjIuhq3DCVsUGXqlS4o7feR5cMuVJs=;
+ b=NH1O4BixUgXDp+jmzkExiQGc6S+HJkSUgHbS6kTt6ZnsXgY2LXDoa/nOMDRWSlzKUt
+ N6TPkQI6P2UuWWZ7jjoTEfQ339md1tazOSERmqt+8cHaD5TNBAPrX9IFH7ePU2H1f8NQ
+ lxv9omxHYrBFVpXnoeBTJmyod5zKFXx9C0JQEOARDcoz5D3kUqfVjkTC1Mev4Po5LOb2
+ pTJy5/jxPeSSmiev3sHGn+MI5bAV6N8jaOsBLg1iQH3oGR0X8p4cTAgN6kuIa/liVOe6
+ MHF9TwW2N74EPDzSKz2EEpsYtA88bFWJ2Gcm7JzS2jo66NBatnVDDbCqXXorvI+3nCkj
+ ffSw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1785477788; x=1786082588;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=P1+IaPA8THfKbBjIuhq3DCVsUGXqlS4o7feR5cMuVJs=;
+ b=MZdtLYIRy42b7EWdN6XaZmIX9PMkCaR0KZMDa/lhtni/aBRt6vopkzDDd4JZiN2ors
+ GSk+Sq8GsEd6PmKOacyxWaMl3AsHdXk9jX3rIV94DAbZYNhnEqnm6tQfoWLj/6MuwtFB
+ Vd1s2/6xQDo2SGOnIx+CaqKdZv+B1ZfiLUeoWvNbIqhe6Lu0GT71hAoL4pUcXJmtMNC5
+ QThoa0TDSnmvcOSdqU6rUzzcYEyOcj+oRojett9OMEeeZdae9SsypxIwq/y0K26bIF01
+ g6MDYjtsOXyiM9ZAT0r9dCqvCuclMYzSx2RosXJM5l8SQpIRldsnacnuTpuI0DctL5xY
+ glyg==
+X-Forwarded-Encrypted: i=1;
+ AHgh+Rqq7tDzKP3vhqzGyD4M7+KIs/8AsHvif2NsKaxckojbgZ94RcqI/ygotdkFh6lEUHI6+0+3+WfF3dQ59ew=@nongnu.org
+X-Gm-Message-State: AOJu0YxAhGAazzYHFBWIwq4YOSaOWN2GhtWQe/UccoeMPbN+MbgnHRJF
+ trWP+rl3ltlQPz51q+RVn440RiEXuHosbqzp/iz4s13FrdH2UEwdp2/DGupQrVRqYI1J8RfNGKK
+ mgJcP0RcJ1VnpXXo23Z2g/vnrfIBiQK2dsqI1P83IF/FvqW7SMGtYsYWfJFSQ
+X-Gm-Gg: AR+sD113hXgoajLXvuzjbZ3+0kPFacvWMmTxU4y0yT7CSifKFnkQ1DfcWLYSiw1DJpU
+ 8TuCXm6cuHjH26WG2E3G6aNA34US1kXvqLS5vUQ0FbR8v5pR3bQ2FylwJl6KwoyIIuru5Xm+qyG
+ GyfMNtBsRyEbwIls2JgGh/gAjZWqMnrG8nXSOHYqrhaREUuESGm0XFe9h54Bi9tcu4XNmF1qmx0
+ LgvvQdjC53Z9wHYQ7Az9rXgUVodEEsiAx68O/66HWr/v43LLnW9LluarTN5ZhP0JNgS83qf34as
+ lxNYmIrG9mHFPp4H7ccsoZaQ/mZhTQL/qlOmUhDXE5c9UzaeXEmndgG1SnltPi15MCqHhJYldV9
+ KPwKUxluDUr75AESluho5XTazaErE9oAGkmzrGR/mjvDLjP0gpeU=
+X-Received: by 2002:a05:622a:647:b0:51c:849b:86b with SMTP id
+ d75a77b69052e-52b4b0e24bdmr7977751cf.43.1785477787879; 
+ Thu, 30 Jul 2026 23:03:07 -0700 (PDT)
+X-Received: by 2002:a05:622a:647:b0:51c:849b:86b with SMTP id
+ d75a77b69052e-52b4b0e24bdmr7977441cf.43.1785477787513; 
+ Thu, 30 Jul 2026 23:03:07 -0700 (PDT)
+Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
+ [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
+ 4fb4d7f45d1cf-6a09c5c6e12sm195780a12.13.2026.07.30.23.03.05
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 30 Jul 2026 23:03:06 -0700 (PDT)
+Message-ID: <976c63a9-4ffd-44e6-b549-1bcb16f7ebb2@oss.qualcomm.com>
+Date: Fri, 31 Jul 2026 08:03:04 +0200
 MIME-Version: 1.0
-Date: Thu, 30 Jul 2026 23:59:44 +0100
-From: "Sam Heney" <github@me.samiser.xyz>
-To: qemu-devel@nongnu.org
-Cc: peterx@redhat.com, farosas@suse.de, qemu-trivial@nongnu.org
-Message-Id: <5f24de0e-49af-45a7-927f-f79b203bb335@app.fastmail.com>
-Subject: [PATCH] tests/qtest/migration: Only build tls_no_hostname test with
- TASN1
-Content-Type: text/plain
-Content-Transfer-Encoding: 7bit
-Received-SPF: none client-ip=202.12.124.155;
- envelope-from=github@me.samiser.xyz; helo=fhigh-b4-smtp.messagingengine.com
-X-Spam_score_int: -1
-X-Spam_score: -0.2
-X-Spam_bar: /
-X-Spam_report: (-0.2 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, FROM_SUSPICIOUS_NTLD=0.5,
- FROM_SUSPICIOUS_NTLD_FP=1.999, PDS_OTHER_BAD_TLD=0.001, RCVD_IN_DNSWL_LOW=-0.7,
- SPF_HELO_PASS=-0.001, SPF_NONE=0.001 autolearn=no autolearn_force=no
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/net/vmxnet3: Do not abort if guest provides bad
+ interrupt numbers
+To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
+ Dmitry Fleytman <dmitry.fleytman@gmail.com>
+Cc: Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
+ qemu-stable@nongnu.org
+References: <20260730143943.1117129-1-thuth@redhat.com>
+From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
+Content-Language: en-US
+In-Reply-To: <20260730143943.1117129-1-thuth@redhat.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8bit
+X-Authority-Analysis: v=2.4 cv=ftzsol4f c=1 sm=1 tr=0 ts=6a6c3a9c cx=c_pps
+ a=wEM5vcRIz55oU/E2lInRtA==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
+ a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yOCtJkima9RkubShWh1s:22
+ a=p0WdMEafAAAA:8 a=20KFwNOVAAAA:8 a=EUspDBNiAAAA:8 a=vdYDXrpWxUw4qL7IyggA:9
+ a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=OIgjcC2v60KrkQgK7BGD:22
+X-Proofpoint-Spam-Info: AW1haW4tMjYwNzMxMDAzOSBTYWx0ZWRfXzbTdrhiHH0Td
+ 2s680f0HDEt6gFlNjaX8xFRgKeI4KaWNXxcxHB8ePlShRFosANNh2zqYVM+/xWixBH6Mw1t3k+c
+ u5wHfiS5r7hYEU4jlyrTtofWTxQUviU=
+X-Proofpoint-ORIG-GUID: EJeEwvOgCt0Wci7eAgbWMKPlFl6oMPDY
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzMxMDAzOSBTYWx0ZWRfX77lgUwoHc7m7
+ B/q+HTnqcNENv4naoPXOXEeSkLLLEl/yTLad+f7KUd2LFnczm2xnqWrLPjBNqvsGFLMEzOkU8+v
+ oGH5Nn7cG4T6S/tQja9QvYKaeK/gHTZ5IDpnt7cvSYrDcdzmtmiMl+i+D3u7eOFCEFzqvvQOs/8
+ jPD+UkdMMUVEASQwHQgr0AP8Z5QZ9dmo3mzXmOJ5rEUaurWZZB+jrp1n0qK8BWbZ7tlfa98nzLn
+ dAjoyH145HbBCmoDWI3IwefISCcc3Hapg15ukiN4TikvXX7ne9K9jO29jzSc+SYQkx7YjKYZkUr
+ hmKSTpht/Izewdse/c1SnWso7TR1ad5/FPCUZBpaQYiGBdjiAFwN/UeGTnwePtpFojRTn5qySY1
+ VnoqXWh5aKksHQ2EBqZ9ijiI/REirvcfx2Sf/x9tUYgsYcusKIGvfh4+3XChaGBAc7FmiURdTKh
+ NHQNxAjkmlvlS9sX/Yg==
+X-Proofpoint-GUID: EJeEwvOgCt0Wci7eAgbWMKPlFl6oMPDY
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-07-31_02,2026-07-30_01,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ spamscore=0 clxscore=1015 lowpriorityscore=0 priorityscore=1501
+ impostorscore=0 malwarescore=0 suspectscore=0 bulkscore=0 adultscore=0
+ phishscore=0 classifier=typeunknown authscore=0 authtc= authcc=
+ route=outbound adjust=0 reason=mlx scancount=1 engine=8.22.0-2606150000
+ definitions=main-2607310039
+Received-SPF: pass client-ip=205.220.168.131;
+ envelope-from=philmd@oss.qualcomm.com; helo=mx0a-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 30 Jul 2026 20:29:50 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -103,51 +157,138 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-The test_precopy_tcp_tls_no_hostname test and its start hook use
-TestMigrateTLSX509 and migrate_hook_start_tls_x509_common(), which
-are only defined when CONFIG_TASN1 is set. This means building with
-gnutls enabled but libtasn1 unavailable fails:
+Hi Thomas,
 
-  ../tests/qtest/migration/tls-tests.c: In function 'migrate_hook_start_tls_x509_no_host':
-  ../tests/qtest/migration/tls-tests.c:510:5: error: unknown type name 'TestMigrateTLSX509'
+On 30/7/26 16:39, Thomas Huth wrote:
+> From: Thomas Huth <thuth@redhat.com>
+> 
+> vmxnet3_validate_interrupts() currently aborts via hw_error() if
+> the guest provided bad interrupt numbers. This should not happen,
+> QEMU should rather refuse to activate the device in this case instead.
+> Thus propagate the error to the callers to handle it more gracefully
+> there.
+> 
+> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/539
+> Signed-off-by: Thomas Huth <thuth@redhat.com>
+> ---
+>   hw/net/vmxnet3.c | 35 +++++++++++++++++++++++++++--------
+>   1 file changed, 27 insertions(+), 8 deletions(-)
+> 
+> diff --git a/hw/net/vmxnet3.c b/hw/net/vmxnet3.c
+> index 8569484b2f2..1c5d1d740cc 100644
+> --- a/hw/net/vmxnet3.c
+> +++ b/hw/net/vmxnet3.c
+> @@ -1336,32 +1336,46 @@ static bool vmxnet3_verify_intx(VMXNET3State *s, int intx)
+>           || intx == pci_get_byte(s->parent_obj.config + PCI_INTERRUPT_PIN) - 1;
+>   }
+>   
+> -static void vmxnet3_validate_interrupt_idx(bool is_msix, int idx)
+> +static bool vmxnet3_validate_irq_idx(const char *type, bool is_msix, int idx)
+>   {
+>       int max_ints = is_msix ? VMXNET3_MAX_INTRS : VMXNET3_MAX_NMSIX_INTRS;
+> +
+>       if (idx >= max_ints) {
+> -        hw_error("Bad interrupt index: %d\n", idx);
+> +        qemu_log_mask(LOG_GUEST_ERROR,
+> +                      "vmxnet3: Bad %s queue interrupt index: %d\n",
+> +                      type, idx);
+> +        return false;
+>       }
+> +
+> +    return true;
+>   }
+>   
+> -static void vmxnet3_validate_interrupts(VMXNET3State *s)
+> +static bool vmxnet3_validate_interrupts(VMXNET3State *s)
+>   {
+>       int i;
+>   
+>       VMW_CFPRN("Verifying event interrupt index (%d)", s->event_int_idx);
+> -    vmxnet3_validate_interrupt_idx(s->msix_used, s->event_int_idx);
+> +    if (!vmxnet3_validate_irq_idx("event", s->msix_used, s->event_int_idx)) {
+> +        return false;
+> +    }
+>   
+>       for (i = 0; i < s->txq_num; i++) {
+>           int idx = s->txq_descr[i].intr_idx;
+>           VMW_CFPRN("Verifying TX queue %d interrupt index (%d)", i, idx);
+> -        vmxnet3_validate_interrupt_idx(s->msix_used, idx);
+> +        if (!vmxnet3_validate_irq_idx("TX", s->msix_used, idx)) {
+> +            return false;
+> +        }
+>       }
+>   
+>       for (i = 0; i < s->rxq_num; i++) {
+>           int idx = s->rxq_descr[i].intr_idx;
+>           VMW_CFPRN("Verifying RX queue %d interrupt index (%d)", i, idx);
+> -        vmxnet3_validate_interrupt_idx(s->msix_used, idx);
+> +        if (!vmxnet3_validate_irq_idx("RX", s->msix_used, idx)) {
+> +            return false;
+> +        }
+>       }
+> +
+> +    return true;
+>   }
+>   
+>   static bool vmxnet3_validate_queues(VMXNET3State *s)
+> @@ -1554,7 +1568,10 @@ static void vmxnet3_activate_device(VMXNET3State *s)
+>                  sizeof(s->rxq_descr[i].rxq_stats));
+>       }
+>   
+> -    vmxnet3_validate_interrupts(s);
+> +    if (!vmxnet3_validate_interrupts(s)) {
+> +        vmxnet3_reset(s);
+> +        return;
 
-Guard the test with CONFIG_TASN1 like the other x509 tests.
+We definitively want to return here to not set s->device_active,
+but calling vmxnet3_reset() in the middle of a command handler is
+surprising. Maybe call it in the caller?
 
-Fixes: df9c38b19af8 ("tests/qtest/migration: Add a NULL parameters test for TLS")
-Signed-off-by: Sam Heney <github@me.samiser.xyz>
+-- >8 --
+@@ -1554,7 +1554,9 @@ static void vmxnet3_activate_device(VMXNET3State *s)
+                 sizeof(s->rxq_descr[i].rxq_stats));
+      }
+
+-    vmxnet3_validate_interrupts(s);
++    if (!vmxnet3_validate_interrupts(s)) {
++        return false;
++    }
+
+      /* Make sure everything is in place before device activation */
+      smp_wmb();
+@@ -1584,7 +1586,9 @@ static void vmxnet3_handle_command(VMXNET3State 
+*s, uint64_t cmd)
+
+      case VMXNET3_CMD_ACTIVATE_DEV:
+          VMW_CBPRN("Set: Activating vmxnet3 device");
+-        vmxnet3_activate_device(s);
++        if (!vmxnet3_activate_device(s)) {
++            vmxnet3_reset(s);
++        }
+          break;
+
+      case VMXNET3_CMD_UPDATE_RX_MODE:
 ---
- tests/qtest/migration/tls-tests.c | 4 +++-
- 1 file changed, 3 insertions(+), 1 deletion(-)
 
-diff --git a/tests/qtest/migration/tls-tests.c b/tests/qtest/migration/tls-tests.c
-index 827cc7bcf8..9bdb1165af 100644
---- a/tests/qtest/migration/tls-tests.c
-+++ b/tests/qtest/migration/tls-tests.c
-@@ -492,6 +492,7 @@ static void test_precopy_tcp_no_tls(char *name, MigrateCommon *args)
-     test_precopy_common(args);
- }
+Regardless this patch fixes what it aims to, and -- while I don't
+have much knowledge of this device -- it looks reasonable.
 
-+#ifdef CONFIG_TASN1
- static void *
- migrate_hook_start_tls_x509_no_host(QTestState *from, QTestState *to)
- {
-@@ -519,7 +520,6 @@ static void test_precopy_tcp_tls_no_hostname(char *name, MigrateCommon *args)
-     test_precopy_common(args);
- }
+Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 
--#ifdef CONFIG_TASN1
- static void test_precopy_tcp_tls_x509_default_host(char *name,
-                                                    MigrateCommon *args)
- {
-@@ -719,8 +719,10 @@ void migration_test_add_tls(MigrationTestEnv *env)
+> +    }
+>   
+>       /* Make sure everything is in place before device activation */
+>       smp_wmb();
+> @@ -2392,7 +2409,9 @@ static int vmxnet3_post_load(void *opaque, int version_id)
+>       if (!vmxnet3_validate_queues(s)) {
+>           return -1;
+>       }
+> -    vmxnet3_validate_interrupts(s);
+> +    if (!vmxnet3_validate_interrupts(s)) {
+> +        return -1;
+> +    }
+>   
+>       return 0;
+>   }
 
-     migration_test_add("/migration/precopy/tcp/no-tls",
-                        test_precopy_tcp_no_tls);
-+#ifdef CONFIG_TASN1
-     migration_test_add("/migration/precopy/tcp/tls/no-hostname",
-                        test_precopy_tcp_tls_no_hostname);
-+#endif /* CONFIG_TASN1 */
-
-     migration_test_add("/migration/precopy/unix/tls/psk",
-                        test_precopy_unix_tls_psk);
 
