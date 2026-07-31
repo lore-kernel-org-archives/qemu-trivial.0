@@ -4,143 +4,96 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 41EB3C54F54
-	for <qemu-trivial@archiver.kernel.org>; Fri, 31 Jul 2026 13:07:14 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 594BFC54F54
+	for <qemu-trivial@archiver.kernel.org>; Fri, 31 Jul 2026 14:18:32 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wpmwd-0002ld-VG; Fri, 31 Jul 2026 09:06:35 -0400
+	id 1wpo3k-0006tS-IE; Fri, 31 Jul 2026 10:18:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wpmwc-0002kw-5F
- for qemu-trivial@nongnu.org; Fri, 31 Jul 2026 09:06:34 -0400
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wpo3f-0006t6-Td
+ for qemu-trivial@nongnu.org; Fri, 31 Jul 2026 10:17:59 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1wpmwZ-0006Y9-MH
- for qemu-trivial@nongnu.org; Fri, 31 Jul 2026 09:06:33 -0400
-Received: from pps.filterd (m0279872.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 66VBa0a43742176
- for <qemu-trivial@nongnu.org>; Fri, 31 Jul 2026 13:06:29 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- VSwV7LTIGbap8owHH2xw1MJU4PQgeevELg+GTAKVFyw=; b=FPexjjKxL3T40Ip3
- TiEU2QaoYHHcny3N4lWeTyYN0t9o07AF11eI169JHIDmVRBZY95rAbU855ZQclQ+
- sw7f3L/Nfy4y0uuXriYsVN1qSljQfHTAEu1Hqibi++IG7DxKGHIFzxJh5zSE3znK
- cBivD6+rmymWQb9dPIsQpmNl7aGY1N2uQy6EnaZbu0lFX6DudAWzxSfJ1SzXtKUG
- tNkddcn6+AyvQCVQXfGadUI89Sqk8mi31+gV4cJVRys/X2wV5Rc96SeHduffEY9v
- Vol4M8Soe7NSqMhNBk99Zp/MhyJQbwy23xa6moUaCb1dp+9YlWTKMXorPlk76CxU
- FOGg2g==
-Received: from mail-ua1-f72.google.com (mail-ua1-f72.google.com
- [209.85.222.72])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4frtyqgbme-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-trivial@nongnu.org>; Fri, 31 Jul 2026 13:06:29 +0000 (GMT)
-Received: by mail-ua1-f72.google.com with SMTP id
- a1e0cc1a2514c-977d89e0647so194879241.1
- for <qemu-trivial@nongnu.org>; Fri, 31 Jul 2026 06:06:29 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1785503188; x=1786107988; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=VSwV7LTIGbap8owHH2xw1MJU4PQgeevELg+GTAKVFyw=;
- b=ZBmGjcsZP0Z1pSWOWiE84GXOP1oGZSnysyypsW1vmrxOXhbVIh192ffQgYyrmu3RNx
- HsR3HF3dj1M1GVnESg11qoCLDf6ZoEVIDeZ2OHWiN8ZgsP0e65nApY7FgAUhvXVyJHgc
- DHD90aqnrEB4yR9GZmwuZ/b0j0p2kr7pHYLsH3sh25rb6H05yopDJjeR9g2PAi1hZmU1
- OUnhVAHuqO+REmsRk4szEn24xOXbxs/Q+knSBGbIwkFgJjuGX0CKxBPiI+cXHSYsmiGu
- JMrR6KSgrmT2dI0Oq4LQqLvsWC1rspXqUIwvCgAUGMHNyncIC9AqhRO/iqXQvscWOisy
- sXuA==
+ (Exim 4.90_1) (envelope-from <peterx@redhat.com>) id 1wpo3e-00021z-2S
+ for qemu-trivial@nongnu.org; Fri, 31 Jul 2026 10:17:55 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1785507471;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ in-reply-to:in-reply-to:references:references;
+ bh=DtnXACq17l5xDCt2ldY2aqbYBGn1HmpqVYkUR8hOa84=;
+ b=P3lXx+R9h98+DBWv2R87CGrhSGGy9/hpT6yA4IGYQECHHzmtb/EqTizNMoPJyM6EFqYMmZ
+ yz7KrZ/e3RQ4iVaJQWG736VgLlwZ8hlBuq+nFCYQeLw7I1Lznxf0ecvQ4xqh946uVFqUyr
+ hVUgeOVDAn141naQP9a5oCjh9oS1fLw=
+Received: from mail-qt1-f197.google.com (mail-qt1-f197.google.com
+ [209.85.160.197]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ us-mta-696-qWLPBEAwOqOXo8AUpa7GGw-1; Fri, 31 Jul 2026 10:17:50 -0400
+X-MC-Unique: qWLPBEAwOqOXo8AUpa7GGw-1
+X-Mimecast-MFC-AGG-ID: qWLPBEAwOqOXo8AUpa7GGw_1785507470
+Received: by mail-qt1-f197.google.com with SMTP id
+ d75a77b69052e-51bff5c7035so19407221cf.2
+ for <qemu-trivial@nongnu.org>; Fri, 31 Jul 2026 07:17:50 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785503188; x=1786107988;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=VSwV7LTIGbap8owHH2xw1MJU4PQgeevELg+GTAKVFyw=;
- b=hK37NxEZy34RtQjbz2w0/y2C3LfpJRU0229OvoxEu7XzmNJqqOCJWQ2M0aTWBoGZS1
- 1yACztAGkWF/mB1nuBwaIv66yv63i2ByiMqwnF7rjTt4L5qTK1SOdfuGKPsqXKlDRTNk
- GVATujQZqmqaipDXY5NEHTQgVKAkG/6HAQOTQeQYjUvPw78Ue7YQilKyS6qelbOUpdgX
- vOy2m3a7yEACihjUlvQDJSkaLuEr6MF6iMHVR3MvQkYqfgdJUtUNyBKMkkFoucBhjlMP
- WcvLEzUKZcmvk22rJKpRFX/OjYc3M/QHvCKLs0tBECbPmtvFQjRu5VXyG/JIgh7mlfml
- ZgnA==
+ d=1e100.net; s=20251104; t=1785507470; x=1786112270;
+ h=in-reply-to:content-disposition:content-type:mime-version
+ :references:message-id:subject:cc:to:from:date:x-gm-gg
+ :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
+ :content-type;
+ bh=DtnXACq17l5xDCt2ldY2aqbYBGn1HmpqVYkUR8hOa84=;
+ b=C53GnBNVBhltf1EnWNpUrLTzv5+cM9VRHrM1p7eOPhfLp1t9oFzG2Xa99J53iGhIHQ
+ C3uovlXUDK6ok3SchSqykBMPZ8nJSOBjOkxX7d3sKaBQ7tyhydALRbXqUz8QRflt5GLL
+ DgTMyNaP0ROBMLuJoj7G8EGE1MkLzrwixyDERDcxg6izgr4/ULFJRBwYTIWaYfDIUbsn
+ u53lLXCI7aAp2GIt1kWs/ixRuU08NGNI+FP8CWCPd1US8XOeU7uR6uO7NFaLa8yywSo4
+ VL7akw+/MWjhTDf/laNRcWUb2H76Oxt7SsVI5A64r7PS4jJ+V+joK7z4SGS8UKW1ZDq2
+ rNVg==
 X-Forwarded-Encrypted: i=1;
- AHgh+RrJcUHA/LzgCVAzasWUBPh0QukCzFxbWHBSgeWSOyOi4I5m1smA9vyjaNIlcVNwPNJWQ41rsqm8hkrp8YI=@nongnu.org
-X-Gm-Message-State: AOJu0YwNCE2UMDnQlilcq9ni01nxqq1rUMDuwmRQetVqNfrmxwb0wDVR
- R16GE+tH7JPZxJToLAny9RK77uw3YAMpnyM+Gl2qvvWX3PnmuN7c++AQWO6aW1j81e8jFH16fyx
- mw3Zuwe+WQkKqAbRKTn+Xnl5FsRzStOAyDnQnOMZt9svN1RrHmEW+r+N+U1Jx
-X-Gm-Gg: AR+sD12/rBy+V8BvzjgV7he8RvPO2RF8Qzc9QHf+K/iWX2jfy0ie83mhNb9TSXY72ch
- bjO1DykTev0sQJDJ0MfuYHImt8Gd73LQfzzf8I8AeNYdMbSmw8a5yThwUlYcaT+D4W+gN4Jfbpq
- oN5pHglJ2HcU3e7nvNh5KY7MVLxYAvCYQ43vZDjfE9vIzUMku4DkhGMDZhIMea/QK9hmg2RD/xR
- mhcW+11ffxggPvLMkKI9ICj1t8dDxRMExgcDI73XtzsoDZbRC8XxH9TXigRfXP6P7Q2o3/PiyzQ
- aMPA4TGPAFBTTwD4bMcOIh0seO1DsKazbYN0VnZ05S/AddjzYYCnleNlAJYregHWBuVKdWa8wvx
- cr0eSCh8fDJJQveB45fDpT9C8zgYyEeK91H6pd95Hj1ljJnEwzPc=
-X-Received: by 2002:a05:6102:4b10:b0:74d:ce65:4739 with SMTP id
- ada2fe7eead31-758f7554264mr899037137.8.1785503187925; 
- Fri, 31 Jul 2026 06:06:27 -0700 (PDT)
-X-Received: by 2002:a05:6102:4b10:b0:74d:ce65:4739 with SMTP id
- ada2fe7eead31-758f7554264mr898907137.8.1785503187407; 
- Fri, 31 Jul 2026 06:06:27 -0700 (PDT)
-Received: from [192.168.69.212] (88-187-86-199.subs.proxad.net.
- [88.187.86.199]) by smtp.gmail.com with ESMTPSA id
- a640c23a62f3a-c1fd4454306sm159195766b.36.2026.07.31.06.06.25
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Fri, 31 Jul 2026 06:06:25 -0700 (PDT)
-Message-ID: <aebdcaeb-efa1-4ab2-b48a-e0a183bb53da@oss.qualcomm.com>
-Date: Fri, 31 Jul 2026 15:06:24 +0200
+ AHgh+RpqnkYFnLxgHieFcrHZcQ+i/1kqNaNeweDKif2jaTbPD6rs8z3fDB/JxKKsX/XW8aADp19PPUb4dGga9A0=@nongnu.org
+X-Gm-Message-State: AOJu0Yy05vVEgvAdUDS0+VaKs3kirnhYAS573mfSo44Wim4oNQOrTa4e
+ /ij1PatwCmGij99rD/25WmJ50NfVjqON2RMvztlDugl5PJjWrQufo5tjEU8SctBKrg6qBWwWYfu
+ a/e6BNTn1AGHx30ogW/+/ENuLHKjr4BR9QAlzKdHaqjcgFyCv83M9DH09Gy8=
+X-Gm-Gg: AR+sD13t7TPuaGmAoNXT4GW/q8sS0UE0N/cM1H1wTJkblDIvD2dV5Csc4+sUQnfMbei
+ h0SDgF+SpkUSEsyx4cOpauOorNpipQm1d96AAU2TBKdCGSrZ+trDny4l/LkQsxFvwZxzSqC3i8B
+ 4psqbXnkfYq1nM3iKIvtKZ/ohnz0oD70bM+VBCsaR5Ic1WZ4nuPSGSRCyQchwcfOti7gOshH/Di
+ jw7yDWsK00Hu2QMxH2Q6qDoiD+8PnkurFB+wojT441TnCnTX0frO1PffYD3vRFdQ5QUD04S1vhR
+ kMVofoIE0vBzx8qePP6MCe3UJrHDqKzrzdTYqnFRCVQrVElJ4pONKI6vXHIcodDez7LOpAXZ
+X-Received: by 2002:a05:622a:4085:b0:527:7521:3f8 with SMTP id
+ d75a77b69052e-52b568070b3mr4544211cf.44.1785507469593; 
+ Fri, 31 Jul 2026 07:17:49 -0700 (PDT)
+X-Received: by 2002:a05:622a:4085:b0:527:7521:3f8 with SMTP id
+ d75a77b69052e-52b568070b3mr4540401cf.44.1785507466883; 
+ Fri, 31 Jul 2026 07:17:46 -0700 (PDT)
+Received: from x1.local ([2605:8d80:6c28:a264:ecff:d5b4:39f6:3dd5])
+ by smtp.gmail.com with ESMTPSA id
+ d75a77b69052e-52b4eb921f5sm8531241cf.21.2026.07.31.07.17.45
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Fri, 31 Jul 2026 07:17:46 -0700 (PDT)
+Date: Fri, 31 Jul 2026 10:17:42 -0400
+From: Peter Xu <peterx@redhat.com>
+To: Sam Heney <github@me.samiser.xyz>
+Cc: qemu-devel@nongnu.org, farosas@suse.de, qemu-trivial@nongnu.org
+Subject: Re: [PATCH] tests/qtest/migration: Only build tls_no_hostname test
+ with TASN1
+Message-ID: <amyuhgeXLH-xXTp8@x1.local>
+References: <5f24de0e-49af-45a7-927f-f79b203bb335@app.fastmail.com>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH v2] hw/net/vmxnet3: Do not abort if guest provides bad
- interrupt numbers
-To: Thomas Huth <thuth@redhat.com>, qemu-devel@nongnu.org,
- Dmitry Fleytman <dmitry.fleytman@gmail.com>
-Cc: Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
- qemu-stable@nongnu.org
-References: <20260731113352.189066-1-thuth@redhat.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20260731113352.189066-1-thuth@redhat.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwNzMxMDA5OSBTYWx0ZWRfX6mz07HWq3G2Q
- hDwz32rlQY7GIYETobtskSgWHw5L6drjhS3euK1Er4IrX3hPdWHplNAcqepeDqmhuYT+9atXDef
- 63tW6vDo6Sut7GeWga1xn3PcBdAW1y62lEjORFIBlTki061kGl1VB5rS6G1R0rsTc+RyWYtly3G
- 7ZoSo61Hp0rtp6E0rPoPT6dTd69LMhrOxIu2oTqZWsdcMVpQ1qKZ5DcMu5C8k93PiKi+ItdyYB7
- EU1qrI3s9418al8BfKETDXfAuQiufMHyEmWutMM+I1CaJIE+fqC5GcOIJedGMH4qAl9sg180bMV
- GxBITGLwJWACGg86TSIcWraNbacwQxJZa2/irO1O8hItp/XPEqw+qI0f5/sbMLbdyNZA5LTTlP2
- 9xdbkB2bC+4zqRR8/BhM1qbJQ5RlLU/NPu1O/c8n/rL2liyTnVi2Bx7TKHO4udT+sUVhuD9vwxm
- 50/XKm78PGDOe5Emamw==
-X-Proofpoint-ORIG-GUID: XI1Ab2YYjy64TnCb5gkOQWzbMEosypwC
-X-Proofpoint-Spam-Info: AW1haW4tMjYwNzMxMDA5OSBTYWx0ZWRfX4pV5yMwrCkka
- GTpXbtHjOtZVMiow0jiNLTMwKpEcWCaf/nq5OlDM3tOsfybsgFkxbkqd+6Aw1iJYACHf4P3axBz
- vO3nkm46o6vaNsGZNxEgI3bL3trwdYM=
-X-Authority-Analysis: v=2.4 cv=YaGNIQRf c=1 sm=1 tr=0 ts=6a6c9dd5 cx=c_pps
- a=ULNsgckmlI/WJG3HAyAuOQ==:117 a=4s3hRJSeHn4rkQlkrse1kQ==:17
- a=IkcTkHD0fZMA:10 a=RAioF0-LDSMA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=yx91gb_oNiZeI1HMLzn7:22
- a=p0WdMEafAAAA:8 a=20KFwNOVAAAA:8 a=EUspDBNiAAAA:8 a=UJx2ctYxQamrb8bvw3MA:9
- a=3ZKOabzyN94A:10 a=QEXdDO2ut3YA:10 a=1WsBpfsz9X-RYQiigVTh:22
-X-Proofpoint-GUID: XI1Ab2YYjy64TnCb5gkOQWzbMEosypwC
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1143,Hydra:6.1.134,FMLib:17.12.100.49
- definitions=2026-07-31_04,2026-07-30_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 phishscore=0 clxscore=1015 lowpriorityscore=0 spamscore=0
- malwarescore=0 priorityscore=1501 suspectscore=0 bulkscore=0 adultscore=0
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2607310099
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
-X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+In-Reply-To: <5f24de0e-49af-45a7-927f-f79b203bb335@app.fastmail.com>
+X-Mimecast-Spam-Score: 0
+X-Mimecast-MFC-PROC-ID: Dwfh1t6vjqRGDMK11W-n26dxJJPxSnG9EbwXSIUpFnA_1785507470
+X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=peterx@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: -36
+X-Spam_score: -3.7
+X-Spam_bar: ---
+X-Spam_report: (-3.7 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-1.58,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -156,40 +109,23 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 31/7/26 13:33, Thomas Huth wrote:
-> From: Thomas Huth <thuth@redhat.com>
+On Thu, Jul 30, 2026 at 11:59:44PM +0100, Sam Heney wrote:
+> The test_precopy_tcp_tls_no_hostname test and its start hook use
+> TestMigrateTLSX509 and migrate_hook_start_tls_x509_common(), which
+> are only defined when CONFIG_TASN1 is set. This means building with
+> gnutls enabled but libtasn1 unavailable fails:
 > 
-> vmxnet3_validate_interrupts() currently aborts via hw_error() if
-> the guest provided bad interrupt numbers. This should not happen,
-> QEMU should rather refuse to activate the device in this case instead.
-> Thus propagate the error to the callers to handle it more gracefully
-> there.
+>   ../tests/qtest/migration/tls-tests.c: In function 'migrate_hook_start_tls_x509_no_host':
+>   ../tests/qtest/migration/tls-tests.c:510:5: error: unknown type name 'TestMigrateTLSX509'
 > 
-> Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/539
-> Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->   v2: Drop the unnecessary vmxnet3_reset()
+> Guard the test with CONFIG_TASN1 like the other x509 tests.
 > 
->   hw/net/vmxnet3.c | 34 ++++++++++++++++++++++++++--------
->   1 file changed, 26 insertions(+), 8 deletions(-)
+> Fixes: df9c38b19af8 ("tests/qtest/migration: Add a NULL parameters test for TLS")
+> Signed-off-by: Sam Heney <github@me.samiser.xyz>
 
+queued, thanks.
 
-> @@ -1554,7 +1568,9 @@ static void vmxnet3_activate_device(VMXNET3State *s)
->                  sizeof(s->rxq_descr[i].rxq_stats));
->       }
->   
-> -    vmxnet3_validate_interrupts(s);
-> +    if (!vmxnet3_validate_interrupts(s)) {
-> +        return;
-> +    }
+-- 
+Peter Xu
 
-Better, thanks.
-
-If nobody queue this patch, I can take it via my hw-misc tree, but
-after the release (since this is a very old issue).
-
-Regards,
-
-Phil.
 
