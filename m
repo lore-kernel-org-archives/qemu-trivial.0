@@ -4,108 +4,53 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 7B5B1C5516F
-	for <qemu-trivial@archiver.kernel.org>; Fri, 31 Jul 2026 18:53:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CC873C55173
+	for <qemu-trivial@archiver.kernel.org>; Fri, 31 Jul 2026 20:29:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wpsLm-0006m1-99; Fri, 31 Jul 2026 14:52:54 -0400
+	id 1wptqj-00084P-EC; Fri, 31 Jul 2026 16:28:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <oliverhenryc@gmail.com>)
- id 1wpsLk-0006lV-Rv
- for qemu-trivial@nongnu.org; Fri, 31 Jul 2026 14:52:52 -0400
-Received: from mail-ej1-x631.google.com ([2a00:1450:4864:20::631])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <oliverhenryc@gmail.com>)
- id 1wpsLj-0001F9-13
- for qemu-trivial@nongnu.org; Fri, 31 Jul 2026 14:52:52 -0400
-Received: by mail-ej1-x631.google.com with SMTP id
- a640c23a62f3a-c16111a9b8dso18003666b.1
- for <qemu-trivial@nongnu.org>; Fri, 31 Jul 2026 11:52:50 -0700 (PDT)
-ARC-Seal: i=1; a=rsa-sha256; t=1785523969; cv=none;
- d=google.com; s=arc-20260327;
- b=WrHaleBAgBHBvnBBngdHwDb3lZkKctbApZYcnh+nliPGdMsEltkMqiCifEcIut3RrK
- ItMRZoA0GoNyXRRy783rm6V3TOe90Dj8m1I0WzIfmWTx30r6DdQpvidBxfnfSNLEAiLO
- bgpjrp+YfMhVt327kmQ/lE10Y9DWAoC0PiRD3dAKId9RI3+o+DqrXcWN+lb5GGxkB+ke
- yisEsb1W3P6+CAqTwKhlxut7n0zaHh5fEasOxSAdtrzOQ77ddgOPg5TXyazlcbvDKqWL
- Gn6oY7KqrhkMPYjLwj4jQDvqo9L63dBo+EDN7xbrukdlyZ1vgvoqej8icoq/d+K9oubF
- 6prA==
-ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com;
- s=arc-20260327; 
- h=content-transfer-encoding:cc:to:subject:message-id:date:from
- :in-reply-to:references:mime-version:dkim-signature;
- bh=OGLYYWq7fwy2M+52CVFM+m3Chs05YhXvvGvDgdhd6Oo=;
- fh=lGaFgXSPX/oX1tchX4rCRCKE5vFpv+bI+tD91ojoNiM=;
- b=LnIHUtT8sTMHHCXw/a8aIadc1+st8Fzdq3F660L3sqSFcNtvo/vM76l9A5hKMD8s5J
- ZV5qg5MocB12eIYWk8KYDx+TBte3mnlvCBggwc4mbEfR2TZyvULXbdd6X3N7bqQYXoIn
- 96USo9gAUmkjYjKIJG+cEZ5AG+SLCyQzoB7Ct8fk7mFL9+On9S1YVB77mtFW60GHu8AA
- rV8FqXQknZW3up1Jq0+yR4yGSagvuG5aTeq3hQRzXunVl/zbfffTju/NxlBib5etsQWf
- +8S11lerendCWHqBg6WersC5bqeA6gVdgNM+ZvHiSdToMG0lV/PohnDslHGSD7Vjiy2+
- OjRg==; darn=nongnu.org
-ARC-Authentication-Results: i=1; mx.google.com; arc=none
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1785523969; x=1786128769; darn=nongnu.org;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=OGLYYWq7fwy2M+52CVFM+m3Chs05YhXvvGvDgdhd6Oo=;
- b=JL4DLa2R80kt7RkaHdt16WY0RLrb8FuOwD70Wgn949eB+HwSc7Z2oKDZhtDu4VF8ZO
- FKv8cB7Lf4vbr8D/RlJ0CWaenetn60AK63Iw287kz38WUBwYHg7fgZJ1TUDHkA4kPRXV
- 7493yQvXWJSutfK+AYE5dcK53OvGQUkD+jvE4X2S4x2sUth4E+NVp/yIEShEFK7EkAiB
- 684Di4Rsa1+4E2ZqOBFliajvc5nh+CQ9j1VwX5dZBtPmzIvypQOSoOGQIhuM/5Sfkp5L
- NBqymzf7wrrcm8WkeTbT7QL6xSyRuTXpzhGxqcdvxAMq1TJ4hcf+Z9KfoWdnW7+kiU5w
- B5iA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785523969; x=1786128769;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=OGLYYWq7fwy2M+52CVFM+m3Chs05YhXvvGvDgdhd6Oo=;
- b=VtKL58BxIQhBm1O8aobKJoYDkERolIQR5WKwY/aosTnxd3XmXa1KSm8R8vwesGho5v
- a28eROrjQ/LeDTWUEgfBBRlmHbDDZ0zLTnSO4+zRTexi+w/9iTuUlb/+nSEsoYzdc70q
- p5arzNlJp2Yq2L0jtfSjarkMzu9B1qonckS1XHSFK1JnAIb9g5K9zf5OJv4KbgA43K/l
- JOMO4XQqGfh5HPuuUGs2Xl0XdYbzbeO2Q1VjcRtC2zfO+cVdjCuP5yo5hLBjbRZeMv39
- 7LIF4YQnd8WxQXZTrgGnoizanz54urerLyeq4/sUFOT8GlTOYc7+7wO6c3P9m4HBc/LH
- AUNg==
-X-Forwarded-Encrypted: i=1;
- AHgh+RpSj6MhTvQEyuG+kx91JOM+Wcf1KaaynE6pfJbsfXfjS4FvzbDfMOLHseQuV5e+UfbUdbRhVNcRADJ0+9s=@nongnu.org
-X-Gm-Message-State: AOJu0YzXY7y6WSunTuDp8eQUFkrhM7FpC+lJqYUl+8fYEz1b0w0xf08i
- gR17ScZHb2NJo1bJwqspPprgavm6aZynD+D+mqbg9E9FMaWawyrAreYKKWflw2dPTafscMGxNC7
- XenpT+KpkKcowfVTAokJEXAPtfdDSNQo=
-X-Gm-Gg: AR+sD130oRoM6X1OKU+qoRYtox8WwVdmIvLXxK4QZvqEXTtNHTUEPsL1eRjpkJIlKv1
- 5i8QvL++KdV86Mcaqser4MXK2v5tw+M4Q1Wa2hbHlJIevqxx0YjNb7AVazjiNnnZAS98dLk8jFk
- K5kB0rYTKLM3vU/vFqnDY7I+rDyjTarUNa1xc/+S/aRjoWqMEkA/NzEC4ugGwXdJXLZsNFOpnHB
- 4rsrWuqTjNYcs+QDNklGqwrWE3dMGu7sMpUBU/4DjIFU4rjIjz/18p79LK6Qm0jFMNqXEhC4C2x
- r1m2x+pB8JuZV/ipJjI0tqL4gBg4pXX6WnO/QRZvmWwgQVauZQ2FD1RrtWaTvim2uZQ7Vd5gGXh
- 7
-X-Received: by 2002:a17:907:3c8a:b0:c16:604a:b2bd with SMTP id
- a640c23a62f3a-c1fe81e28b1mr46802166b.3.1785523969029; Fri, 31 Jul 2026
- 11:52:49 -0700 (PDT)
-MIME-Version: 1.0
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1wptqh-00083j-Mg; Fri, 31 Jul 2026 16:28:55 -0400
+Received: from zero.eik.bme.hu ([152.66.115.2])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <balaton@eik.bme.hu>)
+ id 1wptqf-0000Ob-Il; Fri, 31 Jul 2026 16:28:55 -0400
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id 85D6C5835F5;
+ Fri, 31 Jul 2026 22:28:50 +0200 (CEST)
+X-Virus-Scanned: amavis at eik.bme.hu
+Received: from zero.eik.bme.hu ([127.0.0.1])
+ by localhost (zero.eik.bme.hu [127.0.0.1]) (amavis, port 10028) with ESMTP
+ id g9bc9U_xwkwb; Fri, 31 Jul 2026 22:28:47 +0200 (CEST)
+Received: by zero.eik.bme.hu (Postfix, from userid 432)
+ id EBAE1583224; Fri, 31 Jul 2026 22:28:47 +0200 (CEST)
+Received: from localhost (localhost [127.0.0.1])
+ by zero.eik.bme.hu (Postfix) with ESMTP id EA26A583223;
+ Fri, 31 Jul 2026 22:28:47 +0200 (CEST)
+Date: Fri, 31 Jul 2026 22:28:47 +0200 (CEST)
+From: BALATON Zoltan <balaton@eik.bme.hu>
+To: Oliver C <oliverhenryc@gmail.com>
+cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
+ marcandre.lureau@redhat.com
+Subject: Re: [PATCH] sdl2: fix HighDPI display scaling
+In-Reply-To: <CAGxFFDPnTmeEhVa_sK87W14E=pr=36F+i9OmwQEO5nyh=1Ew+w@mail.gmail.com>
+Message-ID: <b49f367f-e72c-c627-4733-2b2f5362c7b3@eik.bme.hu>
 References: <20260730230449.963-1-oliverhenryc@gmail.com>
  <92c3b7f6-4afa-7a61-1843-fbfe855cb9c4@eik.bme.hu>
  <CAGxFFDP0mL-6fZcMQkJm7V1mDepC64Y+YFN-CcgqP0OrMX3w4A@mail.gmail.com>
-In-Reply-To: <CAGxFFDP0mL-6fZcMQkJm7V1mDepC64Y+YFN-CcgqP0OrMX3w4A@mail.gmail.com>
-From: Oliver C <oliverhenryc@gmail.com>
-Date: Fri, 31 Jul 2026 14:52:34 -0400
-X-Gm-Features: AUfX_mziftBdcNwbbitJEWDgS8cdSxNBfleZgmrjg5rH5EJqvyWfM_vhpUKsP1Y
-Message-ID: <CAGxFFDPnTmeEhVa_sK87W14E=pr=36F+i9OmwQEO5nyh=1Ew+w@mail.gmail.com>
-Subject: Re: [PATCH] sdl2: fix HighDPI display scaling
-To: BALATON Zoltan <balaton@eik.bme.hu>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org, 
- marcandre.lureau@redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=2a00:1450:4864:20::631;
- envelope-from=oliverhenryc@gmail.com; helo=mail-ej1-x631.google.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ <CAGxFFDPnTmeEhVa_sK87W14E=pr=36F+i9OmwQEO5nyh=1Ew+w@mail.gmail.com>
+MIME-Version: 1.0
+Content-Type: multipart/mixed;
+ boundary="3866299591-1858572498-1785529727=:2229"
+Received-SPF: pass client-ip=152.66.115.2; envelope-from=balaton@eik.bme.hu;
+ helo=zero.eik.bme.hu
+X-Spam_score_int: -18
+X-Spam_score: -1.9
+X-Spam_bar: -
+X-Spam_report: (-1.9 / 5.0 requ) BAYES_00=-1.9, SPF_HELO_NONE=0.001,
  SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -122,123 +67,131 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-I added a scale option for sdl that works the same as gtk.
-I said linear filtering in my last response, but I meant point
-filtering. I played around with point filtering,
-but it looks pretty bad with non-integer scaling (e.g. 150% scaling to
-match my setup). It does however
-look quite nice with an integer scale, so maybe this could be
-configurable as well?
+  This message is in MIME format.  The first part should be readable text,
+  while the remaining parts are likely unreadable without MIME-aware tools.
 
-What's the process for amending a patch? Do I reply with the
-additional patches, reply with the whole patch, or create a new
-thread?
+--3866299591-1858572498-1785529727=:2229
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 8BIT
 
-Thanks,
-Oliver
+On Fri, 31 Jul 2026, Oliver C wrote:
+> I added a scale option for sdl that works the same as gtk.
+> I said linear filtering in my last response, but I meant point
+> filtering. I played around with point filtering,
+> but it looks pretty bad with non-integer scaling (e.g. 150% scaling to
+> match my setup). It does however
+> look quite nice with an integer scale, so maybe this could be
+> configurable as well?
 
-On Fri, Jul 31, 2026 at 1:32=E2=80=AFPM Oliver C <oliverhenryc@gmail.com> w=
-rote:
->
-> > Does this mean that on hiDPI displays now a 640x480 guest screen
-> > (like BIOS or legacy guest) shows a tiny unusable window?
->
-> This is correct, but:
->
-> > ...the issue that other ui backends should do the same so just changing
-> > one backend may lead to inconsistency.
->
-> the gtk backend exhibits the same behavior as the sdl backend with my cha=
-nges,
-> i.e. it creates a 640x480 guest screen in physical pixels (my machine has=
- a
-> 4k monitor with 150% scaling), just like the new changes. So these change=
-s
-> in fact make it more consistent. Although, I just noticed that gtk has
-> a 'scale' option,
-> which scales the window size, and stretches the surface to it. I
-> suppose this can
-> be added to sdl. I think it would also be a good idea to enable linear fi=
-ltering
-> when stretching the surface, so it doesn't look as blurry.
->
-> > Despite the patch is just two lines maybe it's not a trivial change.
->
-> Gotcha, sorry this is my first time sending a patch through mailing
-> list, so thanks for bearing with me.
->
+I don't know what other ui backends do but if this makes it more 
+consistent with at least gtk it sounds good and a scale options is useful 
+in itself even without hiDPI. The ui maintainers should do a final review 
+though.
+
+> What's the process for amending a patch? Do I reply with the
+> additional patches, reply with the whole patch, or create a new
+> thread?
+
+You should post a new thread if you revise a patch with v2 for the first 
+revision after initial submission without version and increasing for later 
+revisions but adding a scale option should be in a different patch so this 
+makes it a series with two patches. Series should be submitted as replies 
+to a cover letter with new thread for v2 and so on for revised series as 
+well. This should be explained in 
+https://www.qemu.org/docs/master/devel/submitting-a-patch.html
+
+Thanks for improving QEMU.
+
+Regards,
+BALATON Zoltan
+
+> Thanks,
 > Oliver
 >
-> On Fri, Jul 31, 2026 at 7:05=E2=80=AFAM BALATON Zoltan <balaton@eik.bme.h=
-u> wrote:
-> >
-> > On Thu, 30 Jul 2026, Oliver Clarke wrote:
-> > > This makes sdl2 windows work well with dpi scaling. It fixes the issu=
-e
-> > > of the display surface being stretched to fit the dpi corrected windo=
-w
-> > > (which created a blurry result).
-> > >
-> > > Note, this does not do any scaling, it just tells the os to not scale
-> > > the window. Before, when the console requested size 640x480, the logi=
-cal
-> > > size of the window was 640x480, and the physical size was scaled by t=
-he
-> > > dpi scaling. Now, both the logical and physical size will be 640x480.
-> > > This is unlike most dpi aware programs which usually do have the scal=
-ed
-> > > physical size, then also make the render target that scaled size as
-> > > well. This doesn't make as much sense for QEMU, since the guest is
-> > > responsible for modesetting, and they should get the exact physical
-> > > pixels they request (if i modeset to 3840x2160, I wouldn't want this =
-to
-> > > be scaled in any way).
-> >
-> > Despite the patch is just two lines maybe it's not a trivial change. Do=
-es
-> > this mean that on hiDPI displays now a 640x480 guest screen (like BIOS =
-or
-> > legacy guest) shows a tiny unusable window? In that case maybe this nee=
-ds
-> > to be switchable with a property or turn off scaling of 4k and higher
-> > resolutions but then we get to the issue that other ui backends should =
-do
-> > the same so just changing one backend may lead to inconsistency. Did yo=
-u
-> > check how is this handled in other ui backends?
-> >
-> > Regards,
-> > BALATON Zoltan
-> >
-> > > Signed-off-by: Oliver Clarke <oliverhenryc@gmail.com>
-> > > ---
-> > > ui/sdl2.c | 3 ++-
-> > > 1 file changed, 2 insertions(+), 1 deletion(-)
-> > >
-> > > diff --git a/ui/sdl2.c b/ui/sdl2.c
-> > > index 1c97d23a47..1910477db4 100644
-> > > --- a/ui/sdl2.c
-> > > +++ b/ui/sdl2.c
-> > > @@ -102,7 +102,7 @@ void sdl2_window_create(struct sdl2_console *scon=
-)
-> > >         flags |=3D SDL_WINDOW_OPENGL;
-> > >     }
-> > > #endif
-> > > -
-> > > +    flags |=3D SDL_WINDOW_ALLOW_HIGHDPI;
-> > >     scon->real_window =3D SDL_CreateWindow("", SDL_WINDOWPOS_UNDEFINE=
-D,
-> > >                                          SDL_WINDOWPOS_UNDEFINED,
-> > >                                          surface_width(scon->surface)=
-,
-> > > @@ -907,6 +907,7 @@ static void sdl2_display_init(DisplayState *ds, D=
-isplayOptions *o)
-> > >     char *dir;
-> > >
-> > >     assert(o->type =3D=3D DISPLAY_TYPE_SDL);
-> > > +    SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
-> > >
-> > >     if (SDL_GetHintBoolean("QEMU_ENABLE_SDL_LOGGING", SDL_FALSE)) {
-> > >         SDL_LogSetAllPriority(SDL_LOG_PRIORITY_VERBOSE);
-> > >
+> On Fri, Jul 31, 2026 at 1:32 PM Oliver C <oliverhenryc@gmail.com> wrote:
+>>
+>>> Does this mean that on hiDPI displays now a 640x480 guest screen
+>>> (like BIOS or legacy guest) shows a tiny unusable window?
+>>
+>> This is correct, but:
+>>
+>>> ...the issue that other ui backends should do the same so just changing
+>>> one backend may lead to inconsistency.
+>>
+>> the gtk backend exhibits the same behavior as the sdl backend with my changes,
+>> i.e. it creates a 640x480 guest screen in physical pixels (my machine has a
+>> 4k monitor with 150% scaling), just like the new changes. So these changes
+>> in fact make it more consistent. Although, I just noticed that gtk has
+>> a 'scale' option,
+>> which scales the window size, and stretches the surface to it. I
+>> suppose this can
+>> be added to sdl. I think it would also be a good idea to enable linear filtering
+>> when stretching the surface, so it doesn't look as blurry.
+>>
+>>> Despite the patch is just two lines maybe it's not a trivial change.
+>>
+>> Gotcha, sorry this is my first time sending a patch through mailing
+>> list, so thanks for bearing with me.
+>>
+>> Oliver
+>>
+>> On Fri, Jul 31, 2026 at 7:05 AM BALATON Zoltan <balaton@eik.bme.hu> wrote:
+>>>
+>>> On Thu, 30 Jul 2026, Oliver Clarke wrote:
+>>>> This makes sdl2 windows work well with dpi scaling. It fixes the issue
+>>>> of the display surface being stretched to fit the dpi corrected window
+>>>> (which created a blurry result).
+>>>>
+>>>> Note, this does not do any scaling, it just tells the os to not scale
+>>>> the window. Before, when the console requested size 640x480, the logical
+>>>> size of the window was 640x480, and the physical size was scaled by the
+>>>> dpi scaling. Now, both the logical and physical size will be 640x480.
+>>>> This is unlike most dpi aware programs which usually do have the scaled
+>>>> physical size, then also make the render target that scaled size as
+>>>> well. This doesn't make as much sense for QEMU, since the guest is
+>>>> responsible for modesetting, and they should get the exact physical
+>>>> pixels they request (if i modeset to 3840x2160, I wouldn't want this to
+>>>> be scaled in any way).
+>>>
+>>> Despite the patch is just two lines maybe it's not a trivial change. Does
+>>> this mean that on hiDPI displays now a 640x480 guest screen (like BIOS or
+>>> legacy guest) shows a tiny unusable window? In that case maybe this needs
+>>> to be switchable with a property or turn off scaling of 4k and higher
+>>> resolutions but then we get to the issue that other ui backends should do
+>>> the same so just changing one backend may lead to inconsistency. Did you
+>>> check how is this handled in other ui backends?
+>>>
+>>> Regards,
+>>> BALATON Zoltan
+>>>
+>>>> Signed-off-by: Oliver Clarke <oliverhenryc@gmail.com>
+>>>> ---
+>>>> ui/sdl2.c | 3 ++-
+>>>> 1 file changed, 2 insertions(+), 1 deletion(-)
+>>>>
+>>>> diff --git a/ui/sdl2.c b/ui/sdl2.c
+>>>> index 1c97d23a47..1910477db4 100644
+>>>> --- a/ui/sdl2.c
+>>>> +++ b/ui/sdl2.c
+>>>> @@ -102,7 +102,7 @@ void sdl2_window_create(struct sdl2_console *scon)
+>>>>         flags |= SDL_WINDOW_OPENGL;
+>>>>     }
+>>>> #endif
+>>>> -
+>>>> +    flags |= SDL_WINDOW_ALLOW_HIGHDPI;
+>>>>     scon->real_window = SDL_CreateWindow("", SDL_WINDOWPOS_UNDEFINED,
+>>>>                                          SDL_WINDOWPOS_UNDEFINED,
+>>>>                                          surface_width(scon->surface),
+>>>> @@ -907,6 +907,7 @@ static void sdl2_display_init(DisplayState *ds, DisplayOptions *o)
+>>>>     char *dir;
+>>>>
+>>>>     assert(o->type == DISPLAY_TYPE_SDL);
+>>>> +    SDL_SetHint(SDL_HINT_WINDOWS_DPI_AWARENESS, "permonitorv2");
+>>>>
+>>>>     if (SDL_GetHintBoolean("QEMU_ENABLE_SDL_LOGGING", SDL_FALSE)) {
+>>>>         SDL_LogSetAllPriority(SDL_LOG_PRIORITY_VERBOSE);
+>>>>
+>
+>
+--3866299591-1858572498-1785529727=:2229--
 
