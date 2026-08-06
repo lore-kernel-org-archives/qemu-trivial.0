@@ -4,84 +4,117 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6BC84C55171
-	for <qemu-trivial@archiver.kernel.org>; Sun,  2 Aug 2026 16:29:16 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 80551C56208
+	for <qemu-trivial@archiver.kernel.org>; Thu,  6 Aug 2026 13:00:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wqZ3f-00012l-Mv; Sun, 02 Aug 2026 12:29:06 -0400
+	id 1wrxha-0006jV-Fl; Thu, 06 Aug 2026 09:00:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <carenas@gmail.com>) id 1wqZ3X-00012T-Vc
- for qemu-trivial@nongnu.org; Sun, 02 Aug 2026 12:28:57 -0400
-Received: from mail-pl1-x62c.google.com ([2607:f8b0:4864:20::62c])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
- (Exim 4.90_1) (envelope-from <carenas@gmail.com>) id 1wqZ3U-0007ar-93
- for qemu-trivial@nongnu.org; Sun, 02 Aug 2026 12:28:54 -0400
-Received: by mail-pl1-x62c.google.com with SMTP id
- d9443c01a7336-2cfff5f88dbso28907875ad.3
- for <qemu-trivial@nongnu.org>; Sun, 02 Aug 2026 09:28:50 -0700 (PDT)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1785688129; x=1786292929; darn=nongnu.org;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
- :content-type; bh=wvIV2D9CwTPjq+SLKzWCeXxWYQj/eq+lteTGR6E/cIM=;
- b=C9e6mhIZha61m0CmcvFYKISHpEjbZwwxvJfmkzMotmh/2ofaJZJW6MVt27sQSgO6Q0
- jEnnvV57z/sY6WbG/TyJ05SOK2TQ9MGE1ODz/9wAqMMXTlQxpxBnyA/xgnV65Ag/Z3d+
- +z3kOuTua7Azz9W1OoMxUdBNNl5SOzfucB61CN/ztAsUqFJIIqTDA+gB6ypIPhv/gyxJ
- Z39Qt66s7OXxi4qlf+mUvB2SvcWHAUiQghONyKLVWeetbumz4owov/H/11mZ4G/nK1dt
- mw77N0tVBba1jqEh65bDPV7PoO12e/8hvn0FNvfVGdnnzdGtFraeQl+K+DAYIDcjUUW8
- /uBA==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20251104; t=1785688129; x=1786292929;
- h=content-transfer-encoding:content-type:mime-version:message-id:date
- :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
- :date:message-id:reply-to:content-type;
- bh=wvIV2D9CwTPjq+SLKzWCeXxWYQj/eq+lteTGR6E/cIM=;
- b=KR3SKJICqvGpIWILkUdMLXrR8mofO4c8PhK8qPvE5zfZD8rxnhiD77dVKELqk/bXFU
- jU20y3m9SspnlkfqO4T7m3aM3oZLE/XR+pVRpdZFAVNPT1X6RJdh77rVUZFrcrpO2HeF
- 6jeKV5DpxFYFSJwybv2WMsVynScI59PC2xjwaGq6TMSsIq0wlU9/Q0VtKc/0m5CE/PDL
- cIMZOo5Vmesy3mUnfh5biH6Q1heHRvC92myz0zmgsu4NZIlNX63NVR4WbPINK328dkuu
- x2J/VCxHlyD9lIjHQZ3S9tclL3oVqx7dbc8mtRZumKlBqe+x+tswPzyA3m4FFqKZNBjH
- yLGQ==
-X-Gm-Message-State: AOJu0YzKb91NI50Cbc5NNmCIp2u1KidzkEvXJ9FSnB4v/G4fwHnERpR/
- oCyEsQYStGphkti9+gTCwKs3sQxJnRGKxLQ9EDPEDDYO7vBdtzIqHKWg/QtYCg==
-X-Gm-Gg: AR+sD12/7KPl+ENBScKfrRTMNhVxiSOGfYWSjVhvh3mjSU3y+be0zdlCZIJRXzIlfSM
- Y0mEiR9xa4uAXY/ZK5qFsPd1kRwv/1sNjVqBun3eaeDEXQgIhS5AQs2VBOoDbO/QkelJPjeF6Qo
- iCd7YL5fqnLBjaGd24Z+/ztGi6c75FDma0P45NtkFszrw3WadIMNkDloTezZ8hsBt1QYxTRdKcK
- e0/FILoZJYdWe965LFY49U9OfDt+cFJ7jAdbuFVFcopI+E67EVc5SnPfyKrZuIhaB6TC4ZX69UP
- VHEn20khSlxUpuAIe8tx51RuygP60c0qJtJ+U3LQAttJMDDO+GPeDPbCi3IOVkQxO8CnPZwB/sJ
- nTq+mX9GIdwMBi8y7r2CGTlKlqd4LEym1bei2t5+94xJLr62P3zO38GNoahSjRdmrcgwmvgku5X
- 7g6+iTc1vBwI6jPYgkBx0WPQlba08YcpPS3cTSTfluIMb8tzxk63gCzuRsJKLxpqvc8UShPMkRY
- 4v0Y3oF8mTlglMP94orVFRbFIEP2yjb1xL56oxZNbaBysKXwOGkO4Uy7a5YwcaXRlcdVlhIG6oT
-X-Received: by 2002:a17:903:26c4:b0:2c9:97a8:8c17 with SMTP id
- d9443c01a7336-2d05247261dmr78458095ad.42.1785688129028; 
- Sun, 02 Aug 2026 09:28:49 -0700 (PDT)
-Received: from localhost.localdomain ([135.180.175.184])
- by smtp.gmail.com with ESMTPSA id
- 5a478bee46e88-3153e1886e7sm32462103eec.26.2026.08.02.09.28.48
- (version=TLS1_3 cipher=TLS_CHACHA20_POLY1305_SHA256 bits=256/256);
- Sun, 02 Aug 2026 09:28:48 -0700 (PDT)
-From: =?UTF-8?q?Carlo=20Marcelo=20Arenas=20Bel=C3=B3n?= <carenas@gmail.com>
-To: qemu-trivial@nongnu.org
-Cc: clg@kaod.org,
- =?UTF-8?q?Carlo=20Marcelo=20Arenas=20Bel=C3=B3n?= <carenas@gmail.com>
-Subject: [PATCH] hw/arm/aspeed: avoid sign mismatch on sscanf for uart property
-Date: Sun,  2 Aug 2026 09:28:28 -0700
-Message-ID: <20260802162828.16880-1-carenas@gmail.com>
-X-Mailer: git-send-email 2.50.1
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wrxhT-0006hW-7G
+ for qemu-trivial@nongnu.org; Thu, 06 Aug 2026 08:59:56 -0400
+Received: from smtpout5.mo540.mail-out.ovh.net ([51.210.91.54])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
+ (Exim 4.90_1) (envelope-from <clg@kaod.org>) id 1wrxhO-0001Md-GT
+ for qemu-trivial@nongnu.org; Thu, 06 Aug 2026 08:59:54 -0400
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net [79.137.60.37])
+ by mo540.mail-out.ovh.net (Postfix) with ESMTPS id 4hG6nH2Wb6z3wdN;
+ Thu,  6 Aug 2026 12:59:47 +0000 (UTC)
+Received: from director4.derp.mail-out.ovh.net
+ (director4.derp.mail-out.ovh.net. [127.0.0.1])
+ by director4.derp.mail-out.ovh.net (inspect_sender_mail_agent) with SMTP
+ for <carenas@gmail.com>; Thu,  6 Aug 2026 12:59:47 +0000 (UTC)
+Received: from mta6.priv.ovhmail-u2.ea.mail.ovh.net (unknown [10.110.113.251])
+ by director4.derp.mail-out.ovh.net (Postfix) with ESMTPS id
+ 4hG6nH1kW4z1y6C; Thu,  6 Aug 2026 12:59:47 +0000 (UTC)
+Received: from kaod.org (unknown [10.1.6.3])
+ (Authenticated sender: clg@kaod.org)
+ by mta6.priv.ovhmail-u2.ea.mail.ovh.net (Postfix) with ESMTPSA id ACFA21B43EBC;
+ Thu,  6 Aug 2026 12:59:46 +0000 (UTC)
+Authentication-Results: garm.ovh; auth=pass
+ (GARM-109S003fe95eee0-28f9-46f1-af42-7971aa1a7ff8,
+ 3674F41004D9368A494C832AF9EEF1C5F00DB56D) smtp.auth=clg@kaod.org
+X-OVh-ClientIp: 82.64.250.170
+Message-ID: <6ab74d7d-d962-46c9-9183-6281a0fa2cec@kaod.org>
+Date: Thu, 6 Aug 2026 14:59:46 +0200
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] hw/arm/aspeed: avoid sign mismatch on sscanf for uart
+ property
+To: =?UTF-8?Q?Carlo_Marcelo_Arenas_Bel=C3=B3n?= <carenas@gmail.com>,
+ qemu-trivial@nongnu.org,
+ "open list:All patches CC here" <qemu-devel@nongnu.org>,
+ "'qemu-arm@nongnu.org'" <qemu-arm@nongnu.org>
+References: <20260802162828.16880-1-carenas@gmail.com>
+From: =?UTF-8?Q?C=C3=A9dric_Le_Goater?= <clg@kaod.org>
+Content-Language: en-US, fr
+Autocrypt: addr=clg@kaod.org; keydata=
+ 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
+In-Reply-To: <20260802162828.16880-1-carenas@gmail.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=2607:f8b0:4864:20::62c;
- envelope-from=carenas@gmail.com; helo=mail-pl1-x62c.google.com
+x-ovh-tracer-id: 9602518831953783896
+X-VR-SPAMSTATE: OK
+X-VR-SPAMSCORE: -100
+X-VR-SPAMCAUSE: dmFkZTEuuwlmVkdtrgI2K33GkR1csev/yaLK3UHNtqOgBIO6w7o9+3Az3zuPdz8hqW3FzEyQfZWvEojew/dBwQK81p/Xw9UTpgniG8oaT8D8M8he8xs8m+IVy93Ahh5tpKDf2R94UstW9YP3Du5JCMYizqrOuDW3mCzFwK0fSqZXaWra8zbnUyT5zLC86oQIHcW1CzHewpPg8EVPta2sM61wjRlUc26isK1A0pHsdLeoF+fSTghr/ShzyVybYWaAr19DueZzwWUw/bcG74KiyQZKXAPN37a2kjEdf/n8ta2V4/KhNI3iiaODRHVe4A89dwnk6mlyhdHH1HLKnI+WD59lPrZZZ7Y12VcHGP7mLqkhUgfvoU+Onz3JDCmiCEFL+NcjodUDc58YQ/c9YRJJtvhHd+DrBgAhRWvE4uBTGzONU5kqzWE2m2cg3IlKY/+DsRdRjKg/PuAvVDEiDaN/xQhLwVaGolPREac8t41hb/EgbRiRHp0X4orUWEwbI8WCu5dYNrS6qc3fuQJVMuaxPS3hguQugIU5buIrI5B9dlTIMQDG5xDDFwLgTaLJ0FSYScZfwaZ2cNWhQUohuqjnySWdLDDh+z+ZHgwxbhJ3KR0w6qNDXVI7WQaQ3qjEEmqQG3K8xDNLk46PkLs+0gtsSzWqE4PWbs1VneL9GutymcgxNPKFqg
+DKIM-Signature: a=rsa-sha256; bh=HYy6bpBNudWOKjmob/54ZRkdQZDsaupVHVUG3lgSsOA=; 
+ c=relaxed/relaxed; d=kaod.org; h=From; s=ovhmo393970-selector1;
+ t=1786021187; v=1;
+ b=QbzMnqAVskhbRccNZOAK6Q6MuEOc9901A11TK92pWwHfzR56f4qJkDIbjy7NfNyGxD3cLbH/
+ 80MHTcQ+E9iXAW8f2cX1q+KjFHnd2Ss6s0+OVx3oLK4ZlBdbLoBxII9f/KWkjziG/mPbsEfwLZn
+ cOr/SKsXeErEzyCmtxZ0dZlH6eZj1cZzBalTtrXoUe0At2FbH0WjtHZD46P7z1dsdFCtp3KlhyG
+ G6uPEgvljR/oSjL5pVBwm8Fseb3Ztn39eRVeALUQtO53J0eOTWZ4xBB8Dti8WdQW39C2dbGiPJz
+ KoSBg34wUHRmkvb+cj9CdY0Dh/o9unygIS/h4gxGEwVlg==
+Received-SPF: pass client-ip=51.210.91.54; envelope-from=clg@kaod.org;
+ helo=smtpout5.mo540.mail-out.ovh.net
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, FREEMAIL_FROM=0.001,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -97,31 +130,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-using "%u" with sscanf() was likely meant to indicate that a
-negative value was unexpected, but with a signed variable it
-could result in undefined behaviour.
+On 8/2/26 18:28, Carlo Marcelo Arenas Belón wrote:
+> using "%u" with sscanf() was likely meant to indicate that a
+> negative value was unexpected, but with a signed variable it
+> could result in undefined behaviour.
+> 
+> use "%d" and check for a negative input explicitly.
+> 
+> Signed-off-by: Carlo Marcelo Arenas Belón <carenas@gmail.com>
+> ---
+>   hw/arm/aspeed.c | 2 +-
+>   1 file changed, 1 insertion(+), 1 deletion(-)
+> 
+> diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
+> index a48c442058..a9238e6217 100644
+> --- a/hw/arm/aspeed.c
+> +++ b/hw/arm/aspeed.c
+> @@ -327,7 +327,7 @@ static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
+>       int uart_first = aspeed_uart_first(sc->uarts_base);
+>       int uart_last = aspeed_uart_last(sc->uarts_base, sc->uarts_num);
+>   
+> -    if (sscanf(value, "uart%u", &val) != 1) {
+> +    if (sscanf(value, "uart%d", &val) != 1 || val < 0) {
+>           error_setg(errp, "Bad value for \"uart\" property");
+>           return;
+>       }
 
-use "%d" and check for a negative input explicitly.
+The following test :
 
-Signed-off-by: Carlo Marcelo Arenas Belón <carenas@gmail.com>
----
- hw/arm/aspeed.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+     if (val < uart_first || val > uart_last) {
 
-diff --git a/hw/arm/aspeed.c b/hw/arm/aspeed.c
-index a48c442058..a9238e6217 100644
---- a/hw/arm/aspeed.c
-+++ b/hw/arm/aspeed.c
-@@ -327,7 +327,7 @@ static void aspeed_set_bmc_console(Object *obj, const char *value, Error **errp)
-     int uart_first = aspeed_uart_first(sc->uarts_base);
-     int uart_last = aspeed_uart_last(sc->uarts_base, sc->uarts_num);
- 
--    if (sscanf(value, "uart%u", &val) != 1) {
-+    if (sscanf(value, "uart%d", &val) != 1 || val < 0) {
-         error_setg(errp, "Bad value for \"uart\" property");
-         return;
-     }
--- 
-2.50.1 (Apple Git-155)
+would have caught the bad value but it's better to return early.
+
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
+
+Thanks,
+
+C.
 
 
