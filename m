@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B5459C5DF97
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:42:34 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 004ECC5DF97
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:42:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJVL-0000bl-7N; Wed, 26 Aug 2026 15:41:47 -0400
+	id 1wzJWO-0003qG-6c; Wed, 26 Aug 2026 15:42:53 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJVK-0000Zm-JU
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:46 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJWG-0003dM-P6
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:42:45 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJVJ-0006JJ-46
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:46 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJWE-0006WU-Fo
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:42:43 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773304;
+ s=mimecast20190719; t=1787773361;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Rrr0aq5qW3Bpm6ENGOJu7B6TQXjJHrQBrFBPuknWGuk=;
- b=PO6Ub5Fr+6lKZriwJIPEpiL49mC0vzfv2TbC4pcuJr74KlZHjKE2gD1fCInJ7bpsxifnGN
- dTPFdxm/vH01bejjNt+UGI6DNvhLtYnIzfVjqoYRej+D8k5JOxLUFg73f0DnL16DGDrnEV
- NxBQuqaJ+6bADVug8vR53NFBK+OEVPU=
+ bh=lpkdvipcmAcBa2auSG3J8F5gVm+aKl/kzxuPFWdZfzg=;
+ b=RZLmS6Ycya73OPAklRqhHjhszwnPJ1xgg/hpOgKjSiwwlNxkpl0SeukIrwvpQxQFdZjTYG
+ W0PxX+a8tSXl4UgMH4HxZKr+99Mdhc4Gi/PZwz1GWAU8ixi2TD0REJGXCL6J+iiTKmwR8n
+ 2g1lsfTGt9cMu11d4vS4Ix1+nz3jZbg=
 Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-554-LipqZqKiOHekskGN0UbJ3w-1; Wed,
- 26 Aug 2026 15:41:40 -0400
-X-MC-Unique: LipqZqKiOHekskGN0UbJ3w-1
-X-Mimecast-MFC-AGG-ID: LipqZqKiOHekskGN0UbJ3w_1787773294
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-655-9lU4g2X8NkqLcH-6lngtuw-1; Wed,
+ 26 Aug 2026 15:42:38 -0400
+X-MC-Unique: 9lU4g2X8NkqLcH-6lngtuw-1
+X-Mimecast-MFC-AGG-ID: 9lU4g2X8NkqLcH-6lngtuw_1787773352
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5EB3019540D6; Wed, 26 Aug 2026 19:41:34 +0000 (UTC)
+ id 9382919540D7; Wed, 26 Aug 2026 19:42:32 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id F3DA21800577; Wed, 26 Aug 2026 19:41:26 +0000 (UTC)
+ id 0B9A81800577; Wed, 26 Aug 2026 19:42:24 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,27 +72,26 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 18/43] qapi: convert trivial intro sections for control.json
-Date: Wed, 26 Aug 2026 15:38:15 -0400
-Message-ID: <20260826193840.2152000-19-jsnow@redhat.com>
+Subject: [PATCH v3 25/43] qapi: convert trivial intro sections for pci.json
+Date: Wed, 26 Aug 2026 15:38:22 -0400
+Message-ID: <20260826193840.2152000-26-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: SE0aCi76xR-SXDlzK8R9prB6Wu0hK7zf06-f87F0ZU8_1787773294
+X-Mimecast-MFC-PROC-ID: vnxXF6F9aUhFhb2MWi_8p8hsNyP5yP_43JCg9O5-3eE_1787773352
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
 X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,106 +109,103 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/control.json | 30 +++++++++++-------------------
- 1 file changed, 11 insertions(+), 19 deletions(-)
+ qapi/pci.json | 27 +++++++++------------------
+ 1 file changed, 9 insertions(+), 18 deletions(-)
 
-diff --git a/qapi/control.json b/qapi/control.json
-index 9a5302193d6..0fc465936d8 100644
---- a/qapi/control.json
-+++ b/qapi/control.json
-@@ -10,8 +10,7 @@
+diff --git a/qapi/pci.json b/qapi/pci.json
+index 694c741e420..a6a79f91afc 100644
+--- a/qapi/pci.json
++++ b/qapi/pci.json
+@@ -13,8 +13,7 @@
  
  ##
- # @qmp_capabilities:
+ # @PciMemoryRange:
 -#
--# Enable QMP capabilities.
-+#     Enable QMP capabilities.
+-# A PCI device memory region
++#     A PCI device memory region
  #
- # @enable: An optional list of `QMPCapability` values to enable.  The
- #     client must not enable any capability that is not mentioned in
-@@ -41,9 +40,9 @@
+ # @base: the starting address (guest physical)
+ #
+@@ -26,8 +25,7 @@
  
  ##
- # @QMPCapability:
+ # @PciMemoryRegion:
 -#
--# Enumeration of capabilities to be advertised during initial client
--# connection, used for agreeing on particular QMP extension behaviors.
-+#     Enumeration of capabilities to be advertised during initial
-+#     client connection, used for agreeing on particular QMP extension
-+#     behaviors.
+-# Information about a PCI device I/O region.
++#     Information about a PCI device I/O region.
  #
- # @oob: QMP ability to support out-of-band requests.  (Please refer to
- #     qmp-spec.rst for more information on OOB)
-@@ -55,8 +54,7 @@
+ # @bar: the index of the Base Address Register for this region
+ #
+@@ -51,8 +49,7 @@
  
  ##
- # @VersionTriple:
+ # @PciBusInfo:
 -#
--# A three-part version number.
-+#     A three-part version number.
+-# Information about a bus of a PCI Bridge device
++#     Information about a bus of a PCI Bridge device
  #
- # @major: The major version number.
- #
-@@ -71,8 +69,7 @@
+ # @number: primary bus interface number.  This should be the number of
+ #     the bus the device resides on.
+@@ -80,8 +77,7 @@
  
  ##
- # @VersionInfo:
+ # @PciBridgeInfo:
 -#
--# A description of QEMU's version.
-+#     A description of QEMU's version.
+-# Information about a PCI Bridge device
++#     Information about a PCI Bridge device
  #
- # @qemu: The version of QEMU.  By current convention, a micro version
- #     of 50 signifies a development branch.  A micro version greater
-@@ -92,8 +89,7 @@
+ # @bus: information about the bus the device resides on
+ #
+@@ -94,8 +90,7 @@
  
  ##
- # @query-version:
+ # @PciDeviceClass:
 -#
--# Return the current version of QEMU.
-+#     Return the current version of QEMU.
+-# Information about the Class of a PCI device
++#     Information about the Class of a PCI device
  #
- # Returns: An object describing the current version of QEMU.
- #
-@@ -118,8 +114,7 @@
+ # @desc: a string description of the device's class (not stable, and
+ #     should only be treated as informational)
+@@ -109,8 +104,7 @@
  
  ##
- # @CommandInfo:
+ # @PciDeviceId:
 -#
--# Information about a QMP command
-+#     Information about a QMP command
+-# Information about the Id of a PCI device
++#     Information about the Id of a PCI device
  #
- # @name: The command name
+ # @device: the PCI device id
  #
-@@ -129,8 +124,7 @@
+@@ -128,8 +122,7 @@
  
  ##
- # @query-commands:
+ # @PciDeviceInfo:
 -#
--# Return a list of supported QMP commands by this server
-+#     Return a list of supported QMP commands by this server
+-# Information about a PCI device
++#     Information about a PCI device
  #
- # Returns: A list of all supported commands
+ # @bus: the bus number of the device
  #
-@@ -177,8 +171,7 @@
+@@ -161,8 +154,7 @@
  
  ##
- # @MonitorMode:
+ # @PciInfo:
 -#
--# An enumeration of monitor modes.
-+#     An enumeration of monitor modes.
+-# Information about a PCI bus
++#     Information about a PCI bus
  #
- # @readline: HMP monitor (human-oriented command line interface)
+ # @bus: the bus index
  #
-@@ -190,8 +183,7 @@
+@@ -174,8 +166,7 @@
  
  ##
- # @MonitorOptions:
+ # @query-pci:
 -#
--# Options to be used for adding a new monitor.
-+#     Options to be used for adding a new monitor.
+-# Return information about the PCI bus topology of the guest.
++#     Return information about the PCI bus topology of the guest.
  #
- # @id: Name of the monitor
- #
+ # Returns: a list of info for each PCI bus.  Each bus is
+ #     represented by a json-object, which has a key with a json-array
 -- 
 2.55.0
 
