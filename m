@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E149DC61DBE
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:39:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B83B7C61DBE
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:39:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJT5-0003Fz-MC; Wed, 26 Aug 2026 15:39:27 -0400
+	id 1wzJTL-0003h6-Gm; Wed, 26 Aug 2026 15:39:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJT3-0003FR-JR
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:39:25 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJTK-0003e7-DL
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:39:42 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJT2-0005hU-7n
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:39:25 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJTI-0005io-S1
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:39:42 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773163;
+ s=mimecast20190719; t=1787773180;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=anz2t9BFt0L27a1+w3KFmtX2Yur1ocqcJJFRnKyPZho=;
- b=PNUG+bHU3p5V1wU6Oa1uzAhCS7SG+HZMxCYsQyl3T3LFoRFj60ZXMpm4ynhdIVIEC5edrW
- J3Xuf/nbW5eXjX3JcXLPTXGBH5JBtTXmG644LgN5lvXdcaC8QI7/ukmB9gJ9WkZh+JwmJo
- p0dlZbT9M89xcH2R5Dmt8dVtlUNcObc=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=wffPVCvszX/U31azigwXEqCRZFarXIHCtsWE3o10AB0=;
+ b=fg122fMLaSd4OSM/O0b7zmO3HdQcVzx7zesHntcPiwvvf21R6XXTuW+kXlMFnuWo3jtWgn
+ oRI8pjjPOU31aqKL6xlv3Q/YXOW1p2Xq13ZA78+yVLDhoWDGcYZJh2VVRoCZP0Yfz7n8A6
+ 27qfEOkRuAuJXlt/5zEtWciVwzC10/o=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-330-n-eNOBK0N82FvBwYewdG6A-1; Wed,
- 26 Aug 2026 15:39:20 -0400
-X-MC-Unique: n-eNOBK0N82FvBwYewdG6A-1
-X-Mimecast-MFC-AGG-ID: n-eNOBK0N82FvBwYewdG6A_1787773157
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-214-YO1alSZxMpSiZtjWvD4uzg-1; Wed,
+ 26 Aug 2026 15:39:36 -0400
+X-MC-Unique: YO1alSZxMpSiZtjWvD4uzg-1
+X-Mimecast-MFC-AGG-ID: YO1alSZxMpSiZtjWvD4uzg_1787773173
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2434C18052D9; Wed, 26 Aug 2026 19:39:16 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6EEB219772FA; Wed, 26 Aug 2026 19:39:33 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9820D1800577; Wed, 26 Aug 2026 19:39:04 +0000 (UTC)
+ id 578051800598; Wed, 26 Aug 2026 19:39:24 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,27 +72,27 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 02/43] qapi: convert trivial intro sections for
- acpi-hest.json
-Date: Wed, 26 Aug 2026 15:37:59 -0400
-Message-ID: <20260826193840.2152000-3-jsnow@redhat.com>
+Subject: [PATCH v3 04/43] qapi: convert trivial intro sections for compat.json
+Date: Wed, 26 Aug 2026 15:38:01 -0400
+Message-ID: <20260826193840.2152000-5-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: bdPsd7r_5RkqQiMKjiRCYtlVbn7v5uDQFu81d0Haw0o_1787773157
+X-Mimecast-MFC-PROC-ID: mH4GUWiBQtt0giDT7-HrCi9fbMRoiD_TMOvxyNm8OTk_1787773173
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,24 +110,33 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/acpi-hest.json | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+ qapi/compat.json | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/qapi/acpi-hest.json b/qapi/acpi-hest.json
-index a01f1dee095..8db804df197 100644
---- a/qapi/acpi-hest.json
-+++ b/qapi/acpi-hest.json
-@@ -13,8 +13,8 @@
+diff --git a/qapi/compat.json b/qapi/compat.json
+index 90b8d51cf27..ef1853b9acd 100644
+--- a/qapi/compat.json
++++ b/qapi/compat.json
+@@ -9,8 +9,7 @@
  
  ##
- # @inject-ghes-v2-error:
+ # @CompatPolicyInput:
 -#
--# Inject an error with additional ACPI 6.1 GHESv2 error information
-+#     Inject an error with additional ACPI 6.1 GHESv2 error
-+#     information
+-# Policy for handling "funny" input.
++#     Policy for handling "funny" input.
  #
- # @cper: contains a base64 encoded string with raw data for a single
- #     CPER record with Generic Error Status Block, Generic Error Data
+ # @accept: Accept silently
+ #
+@@ -25,8 +24,7 @@
+ 
+ ##
+ # @CompatPolicyOutput:
+-#
+-# Policy for handling "funny" output.
++#     Policy for handling "funny" output.
+ #
+ # @accept: Pass on unchanged
+ #
 -- 
 2.55.0
 
