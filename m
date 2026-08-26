@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E705C61DBE
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:41:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A8424C5DF97
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:41:51 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJV0-00080T-PT; Wed, 26 Aug 2026 15:41:26 -0400
+	id 1wzJVD-0000Nk-6Z; Wed, 26 Aug 2026 15:41:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJUy-0007ra-KQ
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:24 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJVC-0000MC-Bu
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:38 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJUt-0006GL-Lz
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:24 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJVA-0006IU-UO
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:38 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773279;
+ s=mimecast20190719; t=1787773296;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Q7ddRUc8gUI3lDxdCUKNaV59MC9hJW515QAIptbgtpY=;
- b=OhC2oZb7t1h8/Jj6U4tJKMZfkV+FJ9Tq2ZkIsLosLcbAox/uiJ3E++nExJdfWPK+/ufFn/
- zI5D66eHA8YD2ri/+37n9+qpVGQ3Tpuvn7rJcIJPWtOFJaxraoacgJN8JhiupW2c2LdnoZ
- 97gElnaXh/pH2H3mc0wP6Iw40+qe6Ng=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=p3qZ7ObJ10fIjWrLoNcBYeRFcq0zjPyEFbJju96COWk=;
+ b=e+DzF3S+0D8MLlas/TwzlnEtYoior759ZpWE00Aig1fCI+w0XiX3QLkxKHCoMvYgQypkLK
+ flhv3I7uarx5g6GBjgBmmEDRKDymv1FmIVyxki3kq0N7dFAU8wKvr5gyK67Bk5u7Dq24Io
+ NN0LrKKXuZKv5gYglMOW1tTZA6gUgBg=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-68-jDsxlECiNJ-FPbMmQJzOzw-1; Wed,
- 26 Aug 2026 15:41:15 -0400
-X-MC-Unique: jDsxlECiNJ-FPbMmQJzOzw-1
-X-Mimecast-MFC-AGG-ID: jDsxlECiNJ-FPbMmQJzOzw_1787773269
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-38-REnYno6lOka2pBggAa1h5Q-1; Wed,
+ 26 Aug 2026 15:41:32 -0400
+X-MC-Unique: REnYno6lOka2pBggAa1h5Q-1
+X-Mimecast-MFC-AGG-ID: REnYno6lOka2pBggAa1h5Q_1787773286
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 98FF01955E7E; Wed, 26 Aug 2026 19:41:09 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9B10D195609D; Wed, 26 Aug 2026 19:41:26 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 124DA1800577; Wed, 26 Aug 2026 19:41:00 +0000 (UTC)
+ id 355341800577; Wed, 26 Aug 2026 19:41:18 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,14 +72,14 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 15/43] qapi: convert trivial intro sections for acpi.json
-Date: Wed, 26 Aug 2026 15:38:12 -0400
-Message-ID: <20260826193840.2152000-16-jsnow@redhat.com>
+Subject: [PATCH v3 17/43] qapi: convert trivial intro sections for qdev.json
+Date: Wed, 26 Aug 2026 15:38:14 -0400
+Message-ID: <20260826193840.2152000-18-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 1eWJwgC4RRIhMOhLJU14xwdL4OXf32A3TZh2pfCaNXQ_1787773269
+X-Mimecast-MFC-PROC-ID: GUPlFOthTNKL0fF3En1FQlhl0bpXpL0hkdh_SYzyzMQ_1787773286
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -110,34 +110,54 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/acpi.json | 8 +++-----
- 1 file changed, 3 insertions(+), 5 deletions(-)
+ qapi/qdev.json | 14 +++++---------
+ 1 file changed, 5 insertions(+), 9 deletions(-)
 
-diff --git a/qapi/acpi.json b/qapi/acpi.json
-index 906b3687a55..d2c59df30b2 100644
---- a/qapi/acpi.json
-+++ b/qapi/acpi.json
-@@ -107,9 +107,8 @@
+diff --git a/qapi/qdev.json b/qapi/qdev.json
+index 974cf9c5830..2f951e5ef8d 100644
+--- a/qapi/qdev.json
++++ b/qapi/qdev.json
+@@ -14,8 +14,7 @@
  
  ##
- # @query-acpi-ospm-status:
+ # @device-list-properties:
 -#
--# Return a list of `ACPIOSTInfo` for devices that support status
--# reporting via ACPI _OST method.
-+#     Return a list of `ACPIOSTInfo` for devices
-+#     that support status reporting via ACPI _OST method.
+-# List properties associated with a device.
++#     List properties associated with a device.
  #
- # Since: 2.1
+ # @typename: the type name of a device
  #
-@@ -126,8 +125,7 @@
+@@ -33,8 +32,7 @@
  
  ##
- # @ACPI_DEVICE_OST:
+ # @device_add:
 -#
--# Emitted when guest executes ACPI _OST method.
-+#     Emitted when guest executes ACPI _OST method.
+-# Add a device.
++#     Add a device.
  #
- # @info: OSPM Status Indication
+ # @driver: the name of the new device's driver
+ #
+@@ -85,8 +83,7 @@
+ 
+ ##
+ # @device_del:
+-#
+-# Remove a device from a guest
++#     Remove a device from a guest
+ #
+ # @id: the device's ID or QOM path
+ #
+@@ -145,9 +142,8 @@
+ 
+ ##
+ # @DEVICE_UNPLUG_GUEST_ERROR:
+-#
+-# Emitted when a device hot unplug fails due to a guest reported
+-# error.
++#     Emitted when a device hot unplug fails due to a guest reported
++#     error.
+ #
+ # @device: the device's ID if it has one
  #
 -- 
 2.55.0
