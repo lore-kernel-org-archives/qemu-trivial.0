@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 004ECC5DF97
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 082F5C61DC4
 	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:42:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJWO-0003qG-6c; Wed, 26 Aug 2026 15:42:53 -0400
+	id 1wzJVs-0002CB-Cg; Wed, 26 Aug 2026 15:42:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJWG-0003dM-P6
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:42:45 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJVq-0002Ad-QE
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:42:18 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJWE-0006WU-Fo
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:42:43 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJVo-0006No-9f
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:42:18 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773361;
+ s=mimecast20190719; t=1787773335;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=lpkdvipcmAcBa2auSG3J8F5gVm+aKl/kzxuPFWdZfzg=;
- b=RZLmS6Ycya73OPAklRqhHjhszwnPJ1xgg/hpOgKjSiwwlNxkpl0SeukIrwvpQxQFdZjTYG
- W0PxX+a8tSXl4UgMH4HxZKr+99Mdhc4Gi/PZwz1GWAU8ixi2TD0REJGXCL6J+iiTKmwR8n
- 2g1lsfTGt9cMu11d4vS4Ix1+nz3jZbg=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=K8AG+94F77edoTiPAI8IPsNpOPrIzUtI0R/Rih5SccE=;
+ b=iszn18RpKSDY7P6sHUug8/+vtmrMQbQzEXoVTn0Dolp5c4N09oL59wSvLHo98cPKwmVrGE
+ c3wKix0/bk3swMFS1mriiSxbR7cL5UfKZqFJrLFTIqVOj4XKw5s24rbczZKmLzs3cqYc7o
+ aDsmrIQx/QWj+g5cx2LGC0z2gOjtKpM=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-655-9lU4g2X8NkqLcH-6lngtuw-1; Wed,
- 26 Aug 2026 15:42:38 -0400
-X-MC-Unique: 9lU4g2X8NkqLcH-6lngtuw-1
-X-Mimecast-MFC-AGG-ID: 9lU4g2X8NkqLcH-6lngtuw_1787773352
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-196-sEoSFFzFPkOn52pLKxESyQ-1; Wed,
+ 26 Aug 2026 15:42:11 -0400
+X-MC-Unique: sEoSFFzFPkOn52pLKxESyQ-1
+X-Mimecast-MFC-AGG-ID: sEoSFFzFPkOn52pLKxESyQ_1787773327
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9382919540D7; Wed, 26 Aug 2026 19:42:32 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3F27F1954AE1; Wed, 26 Aug 2026 19:42:07 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0B9A81800577; Wed, 26 Aug 2026 19:42:24 +0000 (UTC)
+ id 89AE41800577; Wed, 26 Aug 2026 19:41:59 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,26 +72,28 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 25/43] qapi: convert trivial intro sections for pci.json
-Date: Wed, 26 Aug 2026 15:38:22 -0400
-Message-ID: <20260826193840.2152000-26-jsnow@redhat.com>
+Subject: [PATCH v3 22/43] qapi: convert trivial intro sections for
+ transaction.json
+Date: Wed, 26 Aug 2026 15:38:19 -0400
+Message-ID: <20260826193840.2152000-23-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: vnxXF6F9aUhFhb2MWi_8p8hsNyP5yP_43JCg9O5-3eE_1787773352
+X-Mimecast-MFC-PROC-ID: 5zF4Y0wtzVfjr1OiTrxERbQII1o2v1Ow_FWjCzG0IuY_1787773327
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
 X-Spam_bar: +
 X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,103 +111,55 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/pci.json | 27 +++++++++------------------
- 1 file changed, 9 insertions(+), 18 deletions(-)
+ qapi/transaction.json | 14 +++++---------
+ 1 file changed, 5 insertions(+), 9 deletions(-)
 
-diff --git a/qapi/pci.json b/qapi/pci.json
-index 694c741e420..a6a79f91afc 100644
---- a/qapi/pci.json
-+++ b/qapi/pci.json
-@@ -13,8 +13,7 @@
+diff --git a/qapi/transaction.json b/qapi/transaction.json
+index 4b4eb09bf38..c0dc811ba61 100644
+--- a/qapi/transaction.json
++++ b/qapi/transaction.json
+@@ -12,8 +12,7 @@
  
  ##
- # @PciMemoryRange:
+ # @Abort:
 -#
--# A PCI device memory region
-+#     A PCI device memory region
+-# This action can be used to test transaction failure.
++#     This action can be used to test transaction failure.
  #
- # @base: the starting address (guest physical)
- #
-@@ -26,8 +25,7 @@
+ # Since: 1.6
+ ##
+@@ -22,8 +21,7 @@
  
  ##
- # @PciMemoryRegion:
+ # @ActionCompletionMode:
 -#
--# Information about a PCI device I/O region.
-+#     Information about a PCI device I/O region.
+-# An enumeration of transactional completion modes.
++#     An enumeration of transactional completion modes.
  #
- # @bar: the index of the Base Address Register for this region
- #
-@@ -51,8 +49,7 @@
+ # @individual: Do not attempt to cancel any other Actions if any
+ #     Actions fail after the Transaction request succeeds.  All
+@@ -156,9 +154,8 @@
  
  ##
- # @PciBusInfo:
+ # @TransactionAction:
 -#
--# Information about a bus of a PCI Bridge device
-+#     Information about a bus of a PCI Bridge device
+-# A discriminated record of operations that can be performed with
+-# `transaction`.
++#     A discriminated record of operations that can be performed with
++#     `transaction`.
  #
- # @number: primary bus interface number.  This should be the number of
- #     the bus the device resides on.
-@@ -80,8 +77,7 @@
+ # @type: the operation to be performed
+ #
+@@ -184,8 +181,7 @@
  
  ##
- # @PciBridgeInfo:
+ # @TransactionProperties:
 -#
--# Information about a PCI Bridge device
-+#     Information about a PCI Bridge device
+-# Optional arguments to modify the behavior of a Transaction.
++#     Optional arguments to modify the behavior of a Transaction.
  #
- # @bus: information about the bus the device resides on
- #
-@@ -94,8 +90,7 @@
- 
- ##
- # @PciDeviceClass:
--#
--# Information about the Class of a PCI device
-+#     Information about the Class of a PCI device
- #
- # @desc: a string description of the device's class (not stable, and
- #     should only be treated as informational)
-@@ -109,8 +104,7 @@
- 
- ##
- # @PciDeviceId:
--#
--# Information about the Id of a PCI device
-+#     Information about the Id of a PCI device
- #
- # @device: the PCI device id
- #
-@@ -128,8 +122,7 @@
- 
- ##
- # @PciDeviceInfo:
--#
--# Information about a PCI device
-+#     Information about a PCI device
- #
- # @bus: the bus number of the device
- #
-@@ -161,8 +154,7 @@
- 
- ##
- # @PciInfo:
--#
--# Information about a PCI bus
-+#     Information about a PCI bus
- #
- # @bus: the bus index
- #
-@@ -174,8 +166,7 @@
- 
- ##
- # @query-pci:
--#
--# Return information about the PCI bus topology of the guest.
-+#     Return information about the PCI bus topology of the guest.
- #
- # Returns: a list of info for each PCI bus.  Each bus is
- #     represented by a json-object, which has a key with a json-array
+ # @completion-mode: Controls how jobs launched asynchronously by
+ #     Actions will complete or fail as a group.  See
 -- 
 2.55.0
 
