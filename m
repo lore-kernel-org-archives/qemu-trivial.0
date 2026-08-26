@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB6EDC61DBE
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:42:09 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 85232C61DBE
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:42:26 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJV2-00086A-P3; Wed, 26 Aug 2026 15:41:28 -0400
+	id 1wzJVS-0000kb-HY; Wed, 26 Aug 2026 15:41:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJV1-00081P-Cc
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:27 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJVR-0000jg-3T
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:53 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJUz-0006H4-Oe
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:27 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJVO-0006KS-FI
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:52 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773285;
+ s=mimecast20190719; t=1787773309;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=53kJeaXAGXWbWgaUWrPPbMnvvgjeb4ogml1Llx3Dmyw=;
- b=eOgB/PS43znMBextdaC8/nUUd2eALHn45P//SFjaP1YWFvBi/idtpy0ExVjz9/eEkYOxeF
- c8Ir2qNt3CqL8IR6RK73iaR7eAO3goyN6yMk/vKPff8A5656VFjd+cA43QN/gGCTnkMyXG
- 2z6m53IH3D+VsH2qmFCrheDXPzEUraQ=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=5E80AYcJQq1AFb1blKcFRy9kxc8JKyis50TCaxBSCf8=;
+ b=GN2oB+v9oBBYT9mAVEw6ZBbfNLcOH+PxNgLRkTxJYOqTCiAt/84K37qDEqDy5X+6dHKbnG
+ 66ROjE+wqsiOgyy5AnlNgJVT3WC6aF3+eQJbYP8GsDzLtctQ21yF/NM8vptYZQKMVQaOHQ
+ 8qhZ72sVGkY4Zt4HMNGurpaKNZ7vGRQ=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-156-QxcOtTN2MnO5K11xoKHofQ-1; Wed,
- 26 Aug 2026 15:41:21 -0400
-X-MC-Unique: QxcOtTN2MnO5K11xoKHofQ-1
-X-Mimecast-MFC-AGG-ID: QxcOtTN2MnO5K11xoKHofQ_1787773277
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-518-7R5lkI-mNZqyK8XjM-t1CA-1; Wed,
+ 26 Aug 2026 15:41:46 -0400
+X-MC-Unique: 7R5lkI-mNZqyK8XjM-t1CA-1
+X-Mimecast-MFC-AGG-ID: 7R5lkI-mNZqyK8XjM-t1CA_1787773303
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C1670191FCFE; Wed, 26 Aug 2026 19:41:17 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 84A0C1802149; Wed, 26 Aug 2026 19:41:43 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 00ECB1800577; Wed, 26 Aug 2026 19:41:09 +0000 (UTC)
+ id A4C591800577; Wed, 26 Aug 2026 19:41:34 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,27 +72,26 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 16/43] qapi: convert trivial intro sections for tpm.json
-Date: Wed, 26 Aug 2026 15:38:13 -0400
-Message-ID: <20260826193840.2152000-17-jsnow@redhat.com>
+Subject: [PATCH v3 19/43] qapi: convert trivial intro sections for dump.json
+Date: Wed, 26 Aug 2026 15:38:16 -0400
+Message-ID: <20260826193840.2152000-20-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 5EB5POup2ad1u99m0XEdPts8v0k94UrjPG86Lta5288_1787773277
+X-Mimecast-MFC-PROC-ID: G3Hqp7s-Tc-iGf6pMPalNSCslsrYnAO5GbjZmJ4twl8_1787773303
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,104 +109,73 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/tpm.json | 29 ++++++++++-------------------
- 1 file changed, 10 insertions(+), 19 deletions(-)
+ qapi/dump.json | 19 +++++++------------
+ 1 file changed, 7 insertions(+), 12 deletions(-)
 
-diff --git a/qapi/tpm.json b/qapi/tpm.json
-index 3f2850a5733..6d94be656ae 100644
---- a/qapi/tpm.json
-+++ b/qapi/tpm.json
-@@ -10,8 +10,7 @@
+diff --git a/qapi/dump.json b/qapi/dump.json
+index 690f3963fe1..520c58cbcd8 100644
+--- a/qapi/dump.json
++++ b/qapi/dump.json
+@@ -12,8 +12,7 @@
  
  ##
- # @TpmModel:
+ # @DumpGuestMemoryFormat:
 -#
--# An enumeration of TPM models
-+#     An enumeration of TPM models
+-# An enumeration of guest-memory-dump's format.
++#     An enumeration of guest-memory-dump's format.
  #
- # @tpm-tis: TPM TIS model
+ # @elf: elf format
  #
-@@ -26,8 +25,7 @@
+@@ -116,8 +115,8 @@
  
  ##
- # @query-tpm-models:
+ # @DumpStatus:
 -#
--# Return a list of supported TPM models
-+#     Return a list of supported TPM models
+-# Describe the status of a long-running background guest memory dump.
++#     Describe the status of a long-running background guest memory
++#     dump.
  #
- # Since: 1.5
+ # @none: no `dump-guest-memory` has started yet.
  #
-@@ -41,8 +39,7 @@
+@@ -134,8 +133,7 @@
  
  ##
- # @TpmType:
+ # @DumpQueryResult:
 -#
--# An enumeration of TPM types
-+#     An enumeration of TPM types
+-# The result format for `query-dump`.
++#     The result format for `query-dump`.
  #
- # @passthrough: TPM passthrough type
+ # @status: enum of `DumpStatus`, which shows current dump status
  #
-@@ -55,8 +52,7 @@
+@@ -152,8 +150,7 @@
  
  ##
- # @query-tpm-types:
+ # @query-dump:
 -#
--# Return a list of supported TPM types
-+#     Return a list of supported TPM types
+-# Query latest dump status.
++#     Query latest dump status.
  #
- # Since: 1.5
+ # Returns: An object showing the dump status.
  #
-@@ -70,8 +66,7 @@
+@@ -169,8 +166,7 @@
  
  ##
- # @TPMPassthroughOptions:
+ # @DUMP_COMPLETED:
 -#
--# Information about the TPM passthrough type
-+#     Information about the TPM passthrough type
+-# Emitted when background dump has completed
++#     Emitted when background dump has completed
  #
- # @path: string describing the path used for accessing the TPM device
+ # @result: final dump status
  #
-@@ -87,8 +82,7 @@
+@@ -203,8 +199,7 @@
  
  ##
- # @TPMEmulatorOptions:
+ # @query-dump-guest-memory-capability:
 -#
--# Information about the TPM emulator type
-+#     Information about the TPM emulator type
+-# Return the available formats for `dump-guest-memory`
++#     Return the available formats for `dump-guest-memory`
  #
- # @chardev: Name of a unix socket chardev
- #
-@@ -121,9 +115,8 @@
- 
- ##
- # @TpmTypeOptions:
--#
--# A union referencing different TPM backend types' configuration
--# options
-+#     A union referencing different TPM backend types' configuration
-+#     options
- #
- # @type:
- #     - 'passthrough' The configuration options for the TPM
-@@ -142,8 +135,7 @@
- 
- ##
- # @TPMInfo:
--#
--# Information about the TPM
-+#     Information about the TPM
- #
- # @id: The Id of the TPM
- #
-@@ -161,8 +153,7 @@
- 
- ##
- # @query-tpm:
--#
--# Return information about the TPM device
-+#     Return information about the TPM device
- #
- # Since: 1.5
+ # Returns: An object listing available formats for `dump-guest-memory`
  #
 -- 
 2.55.0
