@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8B2FFC61DC4
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:39:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id E149DC61DBE
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:39:53 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJSv-0003E9-55; Wed, 26 Aug 2026 15:39:17 -0400
+	id 1wzJT5-0003Fz-MC; Wed, 26 Aug 2026 15:39:27 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJSt-0003DD-LT
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:39:15 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJT3-0003FR-JR
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:39:25 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJSs-0005gr-9m
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:39:15 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJT2-0005hU-7n
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:39:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773153;
+ s=mimecast20190719; t=1787773163;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=A/OW6263CQjLXDYtbi1db4zwKaOEWfAdiemnH4xV/ww=;
- b=bGL2yqlt9Edn2zxN2sO5qS37kOaIHGW4PEmv/yrc+Jf53FpFbZ88yncphvLMyiaDDagBqh
- YaTeNpzKsSdO//7Ai1RJapklrLioJv1B1ju74wdNryk3WMHGrKnDwkyXJrc9yoN/QnbyqU
- wR4fWLiLLcKB3x/xJAbtTMwapcoPLq8=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=anz2t9BFt0L27a1+w3KFmtX2Yur1ocqcJJFRnKyPZho=;
+ b=PNUG+bHU3p5V1wU6Oa1uzAhCS7SG+HZMxCYsQyl3T3LFoRFj60ZXMpm4ynhdIVIEC5edrW
+ J3Xuf/nbW5eXjX3JcXLPTXGBH5JBtTXmG644LgN5lvXdcaC8QI7/ukmB9gJ9WkZh+JwmJo
+ p0dlZbT9M89xcH2R5Dmt8dVtlUNcObc=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-400-77TLEYeuO5eQMH60bBh4jQ-1; Wed,
- 26 Aug 2026 15:39:10 -0400
-X-MC-Unique: 77TLEYeuO5eQMH60bBh4jQ-1
-X-Mimecast-MFC-AGG-ID: 77TLEYeuO5eQMH60bBh4jQ_1787773145
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-330-n-eNOBK0N82FvBwYewdG6A-1; Wed,
+ 26 Aug 2026 15:39:20 -0400
+X-MC-Unique: n-eNOBK0N82FvBwYewdG6A-1
+X-Mimecast-MFC-AGG-ID: n-eNOBK0N82FvBwYewdG6A_1787773157
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0040818009D7; Wed, 26 Aug 2026 19:39:04 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2434C18052D9; Wed, 26 Aug 2026 19:39:16 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 098061800598; Wed, 26 Aug 2026 19:38:54 +0000 (UTC)
+ id 9820D1800577; Wed, 26 Aug 2026 19:39:04 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,14 +72,15 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 01/43] qapi: convert trivial intro sections for error.json
-Date: Wed, 26 Aug 2026 15:37:58 -0400
-Message-ID: <20260826193840.2152000-2-jsnow@redhat.com>
+Subject: [PATCH v3 02/43] qapi: convert trivial intro sections for
+ acpi-hest.json
+Date: Wed, 26 Aug 2026 15:37:59 -0400
+Message-ID: <20260826193840.2152000-3-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 7of7FobFR9wqkoHpMHayxHjeA5I6vnrIz4l6GvzKYKo_1787773145
+X-Mimecast-MFC-PROC-ID: bdPsd7r_5RkqQiMKjiRCYtlVbn7v5uDQFu81d0Haw0o_1787773157
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -109,23 +110,24 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/error.json | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ qapi/acpi-hest.json | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/qapi/error.json b/qapi/error.json
-index 54cb02fb880..a53b13e55c9 100644
---- a/qapi/error.json
-+++ b/qapi/error.json
-@@ -9,8 +9,7 @@
+diff --git a/qapi/acpi-hest.json b/qapi/acpi-hest.json
+index a01f1dee095..8db804df197 100644
+--- a/qapi/acpi-hest.json
++++ b/qapi/acpi-hest.json
+@@ -13,8 +13,8 @@
  
  ##
- # @QapiErrorClass:
+ # @inject-ghes-v2-error:
 -#
--# QEMU error classes
-+#     QEMU error classes
+-# Inject an error with additional ACPI 6.1 GHESv2 error information
++#     Inject an error with additional ACPI 6.1 GHESv2 error
++#     information
  #
- # @GenericError: this is used for errors that don't require a specific
- #     error class.  This should be the default case for most errors
+ # @cper: contains a base64 encoded string with raw data for a single
+ #     CPER record with Generic Error Status Block, Generic Error Data
 -- 
 2.55.0
 
