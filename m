@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 48B98C61DC4
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:44:19 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 874A5C5DF97
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:44:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJXC-0000Jt-Pz; Wed, 26 Aug 2026 15:43:42 -0400
+	id 1wzJXo-00033h-EQ; Wed, 26 Aug 2026 15:44:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJXA-00006V-Ok
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:43:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJXn-0002tq-Ab
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:44:19 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJX8-0006he-Cm
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:43:40 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJXl-0006pj-4i
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:44:19 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773417;
+ s=mimecast20190719; t=1787773456;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UCP7UVj7lY6yPKsok5GRRYDTHAJpEfy9IihCRm+r6Qo=;
- b=A14TZJx9HBTmoiFs9kzQP3mPXpHjz32Pvgi5Ftxdg075JILuoFYpxH8ENMgh49DN6FuyRv
- 8tQFLeCOiCTlCr/NZsfpCgRsET+hUam/XclMismrDxBPMMqHLJOBu+OlOL+dwcKXUG5Bva
- 5nKO6waH79z+Rz9K0poVwur0dtF4y3w=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=U/qXQ7y8j8vRIuhHXNBGEntkR65K80MZ6kjFW8kUyKM=;
+ b=LpHCOYknRRfpkhJUijlhOylvLx/YEW1+9AwoX2ivZG4qrAcrn3Uvz75shwzqVmKUO5F6GK
+ 0JrRzu7LeRYkA3nj/pb0/hQ1lOYz4UsErB9JKG+8DHMhY2HBx1iND/Nlu0bE8hk5Qn2dFR
+ +aHq0MBeqrbj91BKZVcnZit1TMXVubw=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-212-TPhEUAQ-NQGc5-gbFi3Lxg-1; Wed,
- 26 Aug 2026 15:43:33 -0400
-X-MC-Unique: TPhEUAQ-NQGc5-gbFi3Lxg-1
-X-Mimecast-MFC-AGG-ID: TPhEUAQ-NQGc5-gbFi3Lxg_1787773407
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-343-CjURmbsrP5WDfH6GZONnnw-1; Wed,
+ 26 Aug 2026 15:44:12 -0400
+X-MC-Unique: CjURmbsrP5WDfH6GZONnnw-1
+X-Mimecast-MFC-AGG-ID: CjURmbsrP5WDfH6GZONnnw_1787773449
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0EC6F195423F; Wed, 26 Aug 2026 19:43:27 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id DCB231801356; Wed, 26 Aug 2026 19:44:08 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0E3C818005AD; Wed, 26 Aug 2026 19:43:21 +0000 (UTC)
+ id A302A1800577; Wed, 26 Aug 2026 19:43:59 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,27 +72,26 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 33/43] qapi: convert trivial intro sections for crypto.json
-Date: Wed, 26 Aug 2026 15:38:30 -0400
-Message-ID: <20260826193840.2152000-34-jsnow@redhat.com>
+Subject: [PATCH v3 38/43] qapi: convert trivial intro sections for net.json
+Date: Wed, 26 Aug 2026 15:38:35 -0400
+Message-ID: <20260826193840.2152000-39-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: Am0CxNw3Mjm6cpIt2MmqIdPAE5tAq3CLc5MHPL8_sak_1787773407
+X-Mimecast-MFC-PROC-ID: tyw-H55j9Gwm3scrRCmrw9ZlSLnwykIk7hZfHViJvq0_1787773449
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,315 +109,300 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/crypto.json | 100 +++++++++++++++++------------------------------
- 1 file changed, 36 insertions(+), 64 deletions(-)
+ qapi/net.json | 92 ++++++++++++++++++---------------------------------
+ 1 file changed, 33 insertions(+), 59 deletions(-)
 
-diff --git a/qapi/crypto.json b/qapi/crypto.json
-index 6e3a98ff68b..5e395bc10c7 100644
---- a/qapi/crypto.json
-+++ b/qapi/crypto.json
-@@ -26,8 +26,7 @@
+diff --git a/qapi/net.json b/qapi/net.json
+index 1a6382825c5..4ea4bd1bc72 100644
+--- a/qapi/net.json
++++ b/qapi/net.json
+@@ -12,8 +12,7 @@
  
  ##
- # @QCryptoSecretFormat:
+ # @set_link:
 -#
--# The data format that the secret is provided in
-+#     The data format that the secret is provided in
+-# Sets the link status of a virtual network adapter.
++#     Sets the link status of a virtual network adapter.
  #
- # @raw: raw bytes.  When encoded in JSON only valid UTF-8 sequences
- #     can be used
-@@ -41,8 +40,7 @@
+ # @name: the device name of the virtual network adapter
+ #
+@@ -60,8 +59,7 @@
  
  ##
- # @QCryptoHashAlgo:
+ # @netdev_del:
 -#
--# The supported algorithms for computing content digests
-+#     The supported algorithms for computing content digests
+-# Remove a network backend.
++#     Remove a network backend.
  #
- # @md5: MD5.  Should not be used in any new code, legacy compat only
+ # @id: the name of the network backend to remove
  #
-@@ -68,8 +66,7 @@
+@@ -80,8 +78,7 @@
  
  ##
- # @QCryptoCipherAlgo:
+ # @NetLegacyNicOptions:
 -#
--# The supported algorithms for content encryption ciphers
-+#     The supported algorithms for content encryption ciphers
+-# Create a new Network Interface Card.
++#     Create a new Network Interface Card.
  #
- # @aes-128: AES with 128 bit / 16 byte keys
+ # @netdev: id of -netdev to connect to
  #
-@@ -110,8 +107,7 @@
+@@ -140,8 +137,7 @@
  
  ##
- # @QCryptoCipherMode:
+ # @NetdevPasstOptions:
 -#
--# The supported modes for content encryption ciphers
-+#     The supported modes for content encryption ciphers
+-# Unprivileged user-mode network connectivity using passt
++#     Unprivileged user-mode network connectivity using passt
  #
- # @ecb: Electronic Code Book
- #
-@@ -150,8 +146,7 @@
+ # @path: Filename of the passt program to run (by default 'passt', and
+ #     use PATH)
+@@ -301,9 +297,8 @@
  
  ##
- # @QCryptoBlockFormat:
+ # @NetdevUserOptions:
 -#
--# The supported full disk encryption formats
-+#     The supported full disk encryption formats
+-# Use the user mode network stack which requires no administrator
+-# privilege to run.
++#     Use the user mode network stack which requires no administrator
++#     privilege to run.
  #
- # @qcow: QCow/QCow2 built-in AES-CBC encryption.  Use only for
- #     liberating data from old images.
-@@ -165,8 +160,8 @@
+ # @hostname: client hostname reported by the builtin DHCP server
+ #
+@@ -389,8 +384,7 @@
  
  ##
- # @QCryptoBlockOptionsBase:
+ # @NetdevTapOptions:
 -#
--# The common options that apply to all full disk encryption formats
-+#     The common options that apply to all full disk encryption
-+#     formats
+-# Used to configure a host TAP network interface backend.
++#     Used to configure a host TAP network interface backend.
  #
- # @format: the encryption format
+ # @ifname: interface name
  #
-@@ -177,8 +172,7 @@
+@@ -447,9 +441,8 @@
  
  ##
- # @QCryptoBlockOptionsQCow:
+ # @NetdevSocketOptions:
 -#
--# The options that apply to QCow/QCow2 AES-CBC encryption format
-+#     The options that apply to QCow/QCow2 AES-CBC encryption format
+-# Socket netdevs are used to establish a network connection to another
+-# QEMU virtual machine via a TCP socket.
++#     Socket netdevs are used to establish a network connection to
++#     another QEMU virtual machine via a TCP socket.
  #
- # @key-secret: the ID of a QCryptoSecret object providing the
- #     decryption key.  Mandatory except when probing image for
-@@ -191,8 +185,7 @@
+ # @fd: file descriptor of an already opened socket
+ #
+@@ -476,8 +469,7 @@
  
  ##
- # @QCryptoBlockOptionsLUKS:
+ # @NetdevL2TPv3Options:
 -#
--# The options that apply to LUKS encryption format
-+#     The options that apply to LUKS encryption format
+-# Configure an Ethernet over L2TPv3 tunnel.
++#     Configure an Ethernet over L2TPv3 tunnel.
  #
- # @key-secret: the ID of a QCryptoSecret object providing the
- #     decryption key.  Mandatory except when probing image for
-@@ -205,8 +198,7 @@
+ # @src: source address
+ #
+@@ -531,8 +523,7 @@
  
  ##
- # @QCryptoBlockCreateOptionsLUKS:
+ # @NetdevVdeOptions:
 -#
--# The options that apply to LUKS encryption format initialization
-+#     The options that apply to LUKS encryption format initialization
+-# Connect to a vde switch running on the host.
++#     Connect to a vde switch running on the host.
  #
- # @cipher-alg: the cipher algorithm for data encryption.  Currently
- #     defaults to 'aes-256'.
-@@ -239,9 +231,8 @@
+ # @sock: socket path
+ #
+@@ -553,8 +544,7 @@
  
  ##
- # @QCryptoBlockOpenOptions:
+ # @NetdevBridgeOptions:
 -#
--# The options that are available for all encryption formats when
--# opening an existing volume
-+#     The options that are available for all encryption formats when
-+#     opening an existing volume
+-# Connect a host TAP network interface to a host bridge device.
++#     Connect a host TAP network interface to a host bridge device.
  #
- # Since: 2.6
- ##
-@@ -253,9 +244,8 @@
+ # @br: bridge name
+ #
+@@ -569,8 +559,7 @@
  
  ##
- # @QCryptoBlockCreateOptions:
+ # @NetdevHubPortOptions:
 -#
--# The options that are available for all encryption formats when
--# initializing a new volume
-+#     The options that are available for all encryption formats when
-+#     initializing a new volume
+-# Connect two or more net clients through a software hub.
++#     Connect two or more net clients through a software hub.
  #
- # Since: 2.6
- ##
-@@ -267,9 +257,8 @@
+ # @hubid: hub identifier number
+ #
+@@ -586,8 +575,8 @@
  
  ##
- # @QCryptoBlockInfoBase:
+ # @NetdevNetmapOptions:
 -#
--# The common information that applies to all full disk encryption
--# formats
-+#     The common information that applies to all full disk encryption
-+#     formats
+-# Connect a client to a netmap-enabled NIC or to a VALE switch port
++#     Connect a client to a netmap-enabled NIC or to a VALE switch
++#     port
  #
- # @format: the encryption format
- #
-@@ -280,8 +269,7 @@
+ # @ifname: Either the name of an existing network interface supported
+ #     by netmap, or the name of a VALE port (created on the fly).  A
+@@ -607,8 +596,7 @@
  
  ##
- # @QCryptoBlockInfoLUKSSlot:
+ # @AFXDPMode:
 -#
--# Information about the LUKS block encryption key slot options
-+#     Information about the LUKS block encryption key slot options
+-# Attach mode for a default XDP program
++#     Attach mode for a default XDP program
  #
- # @active: whether the key slot is currently in use
+ # @skb: generic mode, no driver support necessary
  #
-@@ -301,8 +289,7 @@
+@@ -623,8 +611,7 @@
  
  ##
- # @QCryptoBlockInfoLUKS:
+ # @NetdevAFXDPOptions:
 -#
--# Information about the LUKS block encryption options
-+#     Information about the LUKS block encryption options
+-# AF_XDP network backend
++#     AF_XDP network backend
  #
- # @cipher-alg: the cipher algorithm for data encryption
+ # @ifname: The name of an existing network interface.
  #
-@@ -340,8 +327,7 @@
+@@ -675,8 +662,7 @@
  
  ##
- # @QCryptoBlockInfo:
+ # @NetdevVhostUserOptions:
 -#
--# Information about the block encryption options
-+#     Information about the block encryption options
+-# Vhost-user network backend
++#     Vhost-user network backend
  #
- # Since: 2.7
- ##
-@@ -352,8 +338,7 @@
+ # @chardev: name of a unix socket chardev
+ #
+@@ -836,8 +822,7 @@
  
  ##
- # @QCryptoBlockLUKSKeyslotState:
+ # @NetdevStreamOptions:
 -#
--# Defines state of keyslots that are affected by the update
-+#     Defines state of keyslots that are affected by the update
+-# Configuration info for stream socket netdev
++#     Configuration info for stream socket netdev
  #
- # @active: The slots contain the given password and marked as active
- #
-@@ -367,9 +352,8 @@
+ # @addr: socket address to listen on (server=true) or connect to
+ #     (server=false)
+@@ -861,8 +846,7 @@
  
  ##
- # @QCryptoBlockAmendOptionsLUKS:
+ # @NetdevDgramOptions:
 -#
--# This struct defines the update parameters that activate/de-activate
--# set of keyslots
-+#     This struct defines the update parameters that
-+#     activate/de-activate set of keyslots
+-# Configuration info for datagram socket netdev.
++#     Configuration info for datagram socket netdev.
  #
- # @state: the desired state of the keyslots
+ # @remote: remote address
  #
-@@ -409,9 +393,8 @@
+@@ -898,8 +882,7 @@
  
  ##
- # @QCryptoBlockAmendOptions:
+ # @NetClientDriver:
 -#
--# The options that are available for all encryption formats when
--# amending encryption settings
-+#     The options that are available for all encryption formats when
-+#     amending encryption settings
+-# Available netdev drivers.
++#     Available netdev drivers.
  #
- # Since: 5.1
- ##
-@@ -423,8 +406,7 @@
+ # @l2tpv3: since 2.1
+ #
+@@ -933,8 +916,7 @@
  
  ##
- # @SecretCommonProperties:
+ # @Netdev:
 -#
--# Properties for objects of classes derived from secret-common.
-+#     Properties for objects of classes derived from secret-common.
+-# Captures the configuration of a network device.
++#     Captures the configuration of a network device.
  #
- # @format: the data format that the secret is provided in
- #     (default: raw)
-@@ -465,8 +447,7 @@
+ # @id: identifier for monitor commands.
+ #
+@@ -972,8 +954,7 @@
  
  ##
- # @SecretKeyringProperties:
+ # @RxState:
 -#
--# Properties for secret_keyring objects.
-+#     Properties for secret_keyring objects.
+-# Packets receiving state
++#     Packets receiving state
  #
- # @serial: serial number that identifies a key to get from the kernel
+ # @normal: filter assigned packets according to the mac-table
  #
-@@ -479,8 +460,7 @@
+@@ -987,8 +968,7 @@
  
  ##
- # @TlsCredsProperties:
+ # @RxFilterInfo:
 -#
--# Properties for objects of classes derived from tls-creds.
-+#     Properties for objects of classes derived from tls-creds.
+-# Rx-filter information for a NIC.
++#     Rx-filter information for a NIC.
  #
- # @verify-peer: if true the peer credentials will be verified once the
- #     handshake is completed.  This is a no-op for anonymous
-@@ -505,8 +485,7 @@
+ # @name: net client name
+ #
+@@ -1033,8 +1013,8 @@
  
  ##
- # @TlsCredsAnonProperties:
+ # @query-rx-filter:
 -#
--# Properties for tls-creds-anon objects.
-+#     Properties for tls-creds-anon objects.
+-# Return rx-filter information for all NICs (or for the given NIC).
++#     Return rx-filter information for all NICs (or for the given
++#     NIC).
  #
- # Since: 2.5
- ##
-@@ -516,8 +495,7 @@
+ # @name: net client name
+ #
+@@ -1082,9 +1062,8 @@
  
  ##
- # @TlsCredsPskProperties:
+ # @NIC_RX_FILTER_CHANGED:
 -#
--# Properties for tls-creds-psk objects.
-+#     Properties for tls-creds-psk objects.
+-# Emitted once until the `query-rx-filter` command is executed, the
+-# first event will always be emitted
++#     Emitted once until the `query-rx-filter` command is executed,
++#     the first event will always be emitted
  #
- # @username: the username which will be sent to the server.  For
- #     clients only.  If absent, "qemu" is sent and the property will
-@@ -531,8 +509,7 @@
+ # @name: net client name
+ #
+@@ -1104,8 +1083,7 @@
  
  ##
- # @TlsCredsX509Properties:
+ # @AnnounceParameters:
 -#
--# Properties for tls-creds-x509 objects.
-+#     Properties for tls-creds-x509 objects.
+-# Parameters for self-announce timers
++#     Parameters for self-announce timers
  #
- # @sanity-check: if true, perform some sanity checks before using the
- #     credentials (default: true)
-@@ -552,8 +529,7 @@
+ # @initial: Initial delay (in ms) before sending the first GARP/RARP
+ #     announcement
+@@ -1178,8 +1156,7 @@
  
  ##
- # @QCryptoAkCipherAlgo:
+ # @NETDEV_STREAM_CONNECTED:
 -#
--# The supported algorithms for asymmetric encryption ciphers
-+#     The supported algorithms for asymmetric encryption ciphers
+-# Emitted when the netdev stream backend is connected
++#     Emitted when the netdev stream backend is connected
  #
- # @rsa: RSA algorithm
+ # @netdev-id: QEMU netdev id that is connected
  #
-@@ -564,8 +540,7 @@
+@@ -1208,8 +1185,7 @@
  
  ##
- # @QCryptoAkCipherKeyType:
+ # @NETDEV_STREAM_DISCONNECTED:
 -#
--# The type of asymmetric keys.
-+#     The type of asymmetric keys.
+-# Emitted when the netdev stream backend is disconnected
++#     Emitted when the netdev stream backend is disconnected
  #
- # @public: public key
+ # @netdev-id: QEMU netdev id that is disconnected
  #
-@@ -578,8 +553,7 @@
+@@ -1226,8 +1202,7 @@
  
  ##
- # @QCryptoRSAPaddingAlgo:
+ # @NETDEV_VHOST_USER_CONNECTED:
 -#
--# The padding algorithm for RSA.
-+#     The padding algorithm for RSA.
+-# Emitted when the vhost-user chardev is connected
++#     Emitted when the vhost-user chardev is connected
  #
- # @raw: no padding used
+ # @netdev-id: QEMU netdev id that is connected
  #
-@@ -592,8 +566,7 @@
+@@ -1246,8 +1221,7 @@
  
  ##
- # @QCryptoAkCipherOptionsRSA:
+ # @NETDEV_VHOST_USER_DISCONNECTED:
 -#
--# Specific parameters for RSA algorithm.
-+#     Specific parameters for RSA algorithm.
+-# Emitted when the vhost-user chardev is disconnected
++#     Emitted when the vhost-user chardev is disconnected
  #
- # @hash-alg: `QCryptoHashAlgo`
- #
-@@ -607,9 +580,8 @@
- 
- ##
- # @QCryptoAkCipherOptions:
--#
--# The options that are available for all asymmetric key algorithms
--# when creating a new QCryptoAkCipher.
-+#     The options that are available for all asymmetric key algorithms
-+#     when creating a new QCryptoAkCipher.
- #
- # @alg: encryption cipher algorithm
+ # @netdev-id: QEMU netdev id that is disconnected
  #
 -- 
 2.55.0
