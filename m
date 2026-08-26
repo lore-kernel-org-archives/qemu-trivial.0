@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 83B2FC5DF97
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:43:01 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id B0488C61DC4
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:43:02 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJWA-0003Vw-BM; Wed, 26 Aug 2026 15:42:38 -0400
+	id 1wzJW0-0002Vu-Ou; Wed, 26 Aug 2026 15:42:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJW8-0003Kp-Sz
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:42:36 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJVz-0002PQ-Pc
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:42:27 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJW7-0006Qy-0E
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:42:36 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJVx-0006PM-W7
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:42:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773354;
+ s=mimecast20190719; t=1787773345;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=FOyryAyUvVmwl4/qZOf0d22k1z8DeAksa2FdV0gP0NE=;
- b=gQDqMy3YLnhbjynfgLorW3amKZemMFEM9hJocSa88ShvY9e9WrfQ1G2x0JiZbtSnzP7P+z
- OSfkmbsbXcwWSwxbl0vg2mRhKdnsye2uOmTVwrTfml4/TEu5oj6pIJctP7/yLUIOe/hFNX
- MG7z4L5SRcGLek0Ve9w+bC8w4eH8JOI=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=+b4OT3j/K4d4s6nmaAGr51pQkyEJxm8NVd9Otcg/Ht8=;
+ b=EaJSw43ye18iKl1JsNUkx6Xqem2v7+9K7AfaqckzU5/4uuhmAwJBQlP1f5KXnzS9ny9fUC
+ ziXz8K/7If8s9z7zoT5V+G68dWUOiYiLAZMs84tHvn2NgO+fmbqKU2xiNuZXxgKMqJCayM
+ chlaeChr5XGK8vCH6mue/j9gXZ+2sqw=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-303-FmEnOKF_NjyVsCIZv0KNOA-1; Wed,
- 26 Aug 2026 15:42:28 -0400
-X-MC-Unique: FmEnOKF_NjyVsCIZv0KNOA-1
-X-Mimecast-MFC-AGG-ID: FmEnOKF_NjyVsCIZv0KNOA_1787773344
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-656-TyFWylgeMi-q5nftPBH_9A-1; Wed,
+ 26 Aug 2026 15:42:20 -0400
+X-MC-Unique: TyFWylgeMi-q5nftPBH_9A-1
+X-Mimecast-MFC-AGG-ID: TyFWylgeMi-q5nftPBH_9A_1787773336
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id B5524184BABD; Wed, 26 Aug 2026 19:42:24 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 4ECC5185513E; Wed, 26 Aug 2026 19:42:16 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8963F1800577; Wed, 26 Aug 2026 19:42:16 +0000 (UTC)
+ id CEA5B18005AC; Wed, 26 Aug 2026 19:42:07 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,26 +72,26 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 24/43] qapi: convert trivial intro sections for job.json
-Date: Wed, 26 Aug 2026 15:38:21 -0400
-Message-ID: <20260826193840.2152000-25-jsnow@redhat.com>
+Subject: [PATCH v3 23/43] qapi: convert trivial intro sections for stats.json
+Date: Wed, 26 Aug 2026 15:38:20 -0400
+Message-ID: <20260826193840.2152000-24-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: _hCeST58nGJAmXcncF4d5aZfDakacVTb3fl_xjzroHs_1787773344
+X-Mimecast-MFC-PROC-ID: JZc7D5wRkXiC_ZiURjs8fi8gguRlE1I6XtVY7U-sGWo_1787773336
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,72 +109,109 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/job.json | 18 ++++++------------
- 1 file changed, 6 insertions(+), 12 deletions(-)
+ qapi/stats.json | 34 +++++++++++++---------------------
+ 1 file changed, 13 insertions(+), 21 deletions(-)
 
-diff --git a/qapi/job.json b/qapi/job.json
-index 31618e6ebcc..b68d7292423 100644
---- a/qapi/job.json
-+++ b/qapi/job.json
-@@ -9,8 +9,7 @@
+diff --git a/qapi/stats.json b/qapi/stats.json
+index a98624531c3..af57ec08546 100644
+--- a/qapi/stats.json
++++ b/qapi/stats.json
+@@ -16,8 +16,7 @@
  
  ##
- # @JobType:
+ # @StatsType:
 -#
--# Type of a background job.
-+#     Type of a background job.
+-# Enumeration of statistics types
++#     Enumeration of statistics types
  #
- # @commit: block commit job type, see `block-commit`
+ # @cumulative: stat is cumulative; value can only increase.
  #
-@@ -42,8 +41,7 @@
+@@ -38,8 +37,7 @@
  
  ##
- # @JobStatus:
+ # @StatsUnit:
 -#
--# Indicates the present state of a given job in its lifetime.
-+#     Indicates the present state of a given job in its lifetime.
+-# Enumeration of unit of measurement for statistics
++#     Enumeration of unit of measurement for statistics
  #
- # @undefined: Erroneous, default state.  Should not ever be visible.
+ # @bytes: stat reported in bytes.
  #
-@@ -90,8 +88,7 @@
+@@ -56,8 +54,7 @@
  
  ##
- # @JobVerb:
+ # @StatsProvider:
 -#
--# Represents command verbs that can be applied to a job.
-+#     Represents command verbs that can be applied to a job.
+-# Enumeration of statistics providers.
++#     Enumeration of statistics providers.
  #
- # @cancel: see `job-cancel`
+ # @kvm: since 7.1
  #
-@@ -117,8 +114,7 @@
+@@ -70,8 +67,7 @@
  
  ##
- # @JOB_STATUS_CHANGE:
+ # @StatsTarget:
 -#
--# Emitted when a job transitions to a different status.
-+#     Emitted when a job transitions to a different status.
+-# The kinds of objects on which one can request statistics.
++#     The kinds of objects on which one can request statistics.
  #
- # @id: The job identifier
- #
-@@ -259,8 +255,7 @@
+ # @vm: statistics that apply to the entire virtual machine or the
+ #     entire QEMU process.
+@@ -87,9 +83,8 @@
  
  ##
- # @JobInfo:
+ # @StatsRequest:
 -#
--# Information about a job.
-+#     Information about a job.
+-# Indicates a set of statistics that should be returned by
+-# `query-stats`.
++#     Indicates a set of statistics that should be returned by
++#     `query-stats`.
  #
- # @id: The job identifier
+ # @provider: provider for which to return statistics.
  #
-@@ -294,8 +289,7 @@
+@@ -113,10 +108,9 @@
  
  ##
- # @query-jobs:
+ # @StatsFilter:
 -#
--# Return information about jobs.
-+#     Return information about jobs.
+-# The arguments to the `query-stats` command; specifies a target for
+-# which to request statistics and optionally the required subset of
+-# information for that target.
++#     The arguments to the `query-stats` command; specifies a target
++#     for which to request statistics and optionally the required
++#     subset of information for that target.
  #
- # Returns: a list with info for each active job
+ # @target: the kind of objects to query.  Note that each possible
+ #     target may enable additional filtering options
+@@ -200,8 +194,7 @@
+ 
+ ##
+ # @StatsSchemaValue:
+-#
+-# Schema for a single statistic.
++#     Schema for a single statistic.
+ #
+ # @name: name of the statistic; each element of the schema is uniquely
+ #     identified by a target, a provider (both available in
+@@ -236,8 +229,7 @@
+ 
+ ##
+ # @StatsSchema:
+-#
+-# Schema for all available statistics for a provider and target.
++#     Schema for all available statistics for a provider and target.
+ #
+ # @provider: provider for this set of statistics.
+ #
+@@ -255,8 +247,8 @@
+ 
+ ##
+ # @query-stats-schemas:
+-#
+-# Return the schema for all available runtime-collected statistics.
++#     Return the schema for all available runtime-collected
++#     statistics.
+ #
+ # @provider: a provider to restrict the query to.
  #
 -- 
 2.55.0
