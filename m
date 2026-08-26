@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 16EABC61DBE
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:41:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id CB6EDC61DBE
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:42:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJUI-0005s3-EI; Wed, 26 Aug 2026 15:40:42 -0400
+	id 1wzJV2-00086A-P3; Wed, 26 Aug 2026 15:41:28 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJUG-0005kX-NJ
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:40:40 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJV1-00081P-Cc
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:27 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJUF-00068U-AA
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:40:40 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJUz-0006H4-Oe
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:27 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773238;
+ s=mimecast20190719; t=1787773285;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=LP0y4v8jmqtQgtGKTsDsubE5wWn5Ceq68Y6ZJT6Kt38=;
- b=F184ZGh051g4OxF38KSNXkdExihs7r/TguFHTw8+z4Fv76D7TDGkbQOrBALGBGuXFg1FkT
- CIMz/EPxGu5A0tagXN5CkiSJOX8SZn/LQkEApP17NR/djN7kebHevlJOn1+SrOE/CUOyhn
- Le4Cx/P1L1Nc6TM14qNXAHq4lfWC1+A=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=53kJeaXAGXWbWgaUWrPPbMnvvgjeb4ogml1Llx3Dmyw=;
+ b=eOgB/PS43znMBextdaC8/nUUd2eALHn45P//SFjaP1YWFvBi/idtpy0ExVjz9/eEkYOxeF
+ c8Ir2qNt3CqL8IR6RK73iaR7eAO3goyN6yMk/vKPff8A5656VFjd+cA43QN/gGCTnkMyXG
+ 2z6m53IH3D+VsH2qmFCrheDXPzEUraQ=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-192-Jlghz7u6NxC2k85RWtN2vw-1; Wed,
- 26 Aug 2026 15:40:32 -0400
-X-MC-Unique: Jlghz7u6NxC2k85RWtN2vw-1
-X-Mimecast-MFC-AGG-ID: Jlghz7u6NxC2k85RWtN2vw_1787773229
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-156-QxcOtTN2MnO5K11xoKHofQ-1; Wed,
+ 26 Aug 2026 15:41:21 -0400
+X-MC-Unique: QxcOtTN2MnO5K11xoKHofQ-1
+X-Mimecast-MFC-AGG-ID: QxcOtTN2MnO5K11xoKHofQ_1787773277
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9B2771955F16; Wed, 26 Aug 2026 19:40:28 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id C1670191FCFE; Wed, 26 Aug 2026 19:41:17 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1739F1800598; Wed, 26 Aug 2026 19:40:18 +0000 (UTC)
+ id 00ECB1800577; Wed, 26 Aug 2026 19:41:09 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,15 +72,14 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 10/43] qapi: convert trivial intro sections for
- accelerator.json
-Date: Wed, 26 Aug 2026 15:38:07 -0400
-Message-ID: <20260826193840.2152000-11-jsnow@redhat.com>
+Subject: [PATCH v3 16/43] qapi: convert trivial intro sections for tpm.json
+Date: Wed, 26 Aug 2026 15:38:13 -0400
+Message-ID: <20260826193840.2152000-17-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 1okMQmQkYZZIRQFxdX61c2Inyi-lZMKh0rQwlj4dcsI_1787773229
+X-Mimecast-MFC-PROC-ID: 5EB5POup2ad1u99m0XEdPts8v0k94UrjPG86Lta5288_1787773277
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -111,72 +110,104 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/accelerator.json | 18 ++++++------------
- 1 file changed, 6 insertions(+), 12 deletions(-)
+ qapi/tpm.json | 29 ++++++++++-------------------
+ 1 file changed, 10 insertions(+), 19 deletions(-)
 
-diff --git a/qapi/accelerator.json b/qapi/accelerator.json
-index b59df378664..efc0fa81418 100644
---- a/qapi/accelerator.json
-+++ b/qapi/accelerator.json
-@@ -13,8 +13,7 @@
+diff --git a/qapi/tpm.json b/qapi/tpm.json
+index 3f2850a5733..6d94be656ae 100644
+--- a/qapi/tpm.json
++++ b/qapi/tpm.json
+@@ -10,8 +10,7 @@
  
  ##
- # @KvmInfo:
+ # @TpmModel:
 -#
--# Information about support for KVM acceleration
-+#     Information about support for KVM acceleration
+-# An enumeration of TPM models
++#     An enumeration of TPM models
  #
- # @enabled: true if KVM acceleration is active
+ # @tpm-tis: TPM TIS model
  #
 @@ -26,8 +25,7 @@
  
  ##
- # @query-kvm:
+ # @query-tpm-models:
 -#
--# Return information about KVM acceleration
-+#     Return information about KVM acceleration
+-# Return a list of supported TPM models
++#     Return a list of supported TPM models
  #
- # Features:
+ # Since: 1.5
  #
-@@ -46,8 +44,7 @@
+@@ -41,8 +39,7 @@
  
  ##
- # @x-accel-stats:
+ # @TpmType:
 -#
--# Query accelerator statistics
-+#     Query accelerator statistics
+-# An enumeration of TPM types
++#     An enumeration of TPM types
  #
- # Features:
+ # @passthrough: TPM passthrough type
  #
-@@ -63,8 +60,7 @@
+@@ -55,8 +52,7 @@
  
  ##
- # @Accelerator:
+ # @query-tpm-types:
 -#
--# Information about support for MSHV acceleration
-+#     Information about support for MSHV acceleration
+-# Return a list of supported TPM types
++#     Return a list of supported TPM types
  #
- # @hvf: Apple Hypervisor.framework
+ # Since: 1.5
  #
-@@ -88,8 +84,7 @@
+@@ -70,8 +66,7 @@
  
  ##
- # @AcceleratorInfo:
+ # @TPMPassthroughOptions:
 -#
--# Information about support for various accelerators
-+#     Information about support for various accelerators
+-# Information about the TPM passthrough type
++#     Information about the TPM passthrough type
  #
- # @enabled: the accelerator that is in use
+ # @path: string describing the path used for accessing the TPM device
  #
-@@ -102,8 +97,7 @@
+@@ -87,8 +82,7 @@
  
  ##
- # @query-accelerators:
+ # @TPMEmulatorOptions:
 -#
--# Return information about accelerators
-+#     Return information about accelerators
+-# Information about the TPM emulator type
++#     Information about the TPM emulator type
  #
- # Returns: @AcceleratorInfo
+ # @chardev: Name of a unix socket chardev
+ #
+@@ -121,9 +115,8 @@
+ 
+ ##
+ # @TpmTypeOptions:
+-#
+-# A union referencing different TPM backend types' configuration
+-# options
++#     A union referencing different TPM backend types' configuration
++#     options
+ #
+ # @type:
+ #     - 'passthrough' The configuration options for the TPM
+@@ -142,8 +135,7 @@
+ 
+ ##
+ # @TPMInfo:
+-#
+-# Information about the TPM
++#     Information about the TPM
+ #
+ # @id: The Id of the TPM
+ #
+@@ -161,8 +153,7 @@
+ 
+ ##
+ # @query-tpm:
+-#
+-# Return information about the TPM device
++#     Return information about the TPM device
+ #
+ # Since: 1.5
  #
 -- 
 2.55.0
