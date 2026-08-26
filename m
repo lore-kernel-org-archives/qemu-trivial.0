@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3A00BC61DBE
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:43:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 59537C61DBE
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:44:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJWm-0006Il-Je; Wed, 26 Aug 2026 15:43:16 -0400
+	id 1wzJXX-0001zU-7O; Wed, 26 Aug 2026 15:44:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJWl-0006BI-SK
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:43:15 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJXV-0001kZ-6n
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:44:01 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJWk-0006cs-0n
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:43:15 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJXS-0006nA-EJ
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:44:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773393;
+ s=mimecast20190719; t=1787773437;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=BCn/Ycwrut66144uUrLT80zpCgg+RoqrOgG6fdXeCGY=;
- b=fScWbsACHFs6oIqM/jJJNs34AvTXkHsyyl6ggMoKTzrc64zVTEJLT4vKqf2+OkeV8wShnZ
- DSWF0cPJYWEolSmjx9GcddlqT7hEjbA6rjcaBcz/3tPmHG4gSxyHQVJWXAnXpnsfwX52fm
- FLkl8do/wnHdLQEGEBDNilD3xTa/VY0=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=gbbbHuvMBl3KhDhnR1d/E0FiTkXcZ8dsOcmbpvowW8U=;
+ b=V83ou7Dc/egziBGHBT5RfT41ilfQG27+yaTUU4tv3gD1FiC9pDA5me0P3cnVBo000MIAXp
+ BCbS03WMt+lTIoR6alatlS9tuU7t+dAZ4OPPyWqd+6xtXG4F6R39VG/d8NWdJLx1S02J8U
+ ChMXcQwswjA5CsEKvI0andv6Ccgpm1s=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-539-hR1ZzfIRMuCbw1ZE2Bpi6A-1; Wed,
- 26 Aug 2026 15:43:08 -0400
-X-MC-Unique: hR1ZzfIRMuCbw1ZE2Bpi6A-1
-X-Mimecast-MFC-AGG-ID: hR1ZzfIRMuCbw1ZE2Bpi6A_1787773384
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-104--VtKelcANUu-UhNUE7x6DA-1; Wed,
+ 26 Aug 2026 15:43:54 -0400
+X-MC-Unique: -VtKelcANUu-UhNUE7x6DA-1
+X-Mimecast-MFC-AGG-ID: -VtKelcANUu-UhNUE7x6DA_1787773431
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id BB5371862D6F; Wed, 26 Aug 2026 19:43:04 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 3658219541B1; Wed, 26 Aug 2026 19:43:51 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 9619D1800577; Wed, 26 Aug 2026 19:42:57 +0000 (UTC)
+ id 845011800577; Wed, 26 Aug 2026 19:43:41 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,27 +72,27 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 29/43] qapi: convert trivial intro sections for
- block-export.json
-Date: Wed, 26 Aug 2026 15:38:26 -0400
-Message-ID: <20260826193840.2152000-30-jsnow@redhat.com>
+Subject: [PATCH v3 36/43] qapi: convert trivial intro sections for char.json
+Date: Wed, 26 Aug 2026 15:38:33 -0400
+Message-ID: <20260826193840.2152000-37-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 1veOhJIWgYBDA1weOhnBKtPJaNXiteLCszV0DyfSi-s_1787773384
+X-Mimecast-MFC-PROC-ID: 12nhFkNudda4J9Q7OO4CqJErOcLxF5oLS2yTYRAHLMA_1787773431
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -110,160 +110,312 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/block-export.json | 50 +++++++++++++++---------------------------
- 1 file changed, 18 insertions(+), 32 deletions(-)
+ qapi/char.json | 90 +++++++++++++++++---------------------------------
+ 1 file changed, 30 insertions(+), 60 deletions(-)
 
-diff --git a/qapi/block-export.json b/qapi/block-export.json
-index dd724acf1cb..154f07b0b95 100644
---- a/qapi/block-export.json
-+++ b/qapi/block-export.json
-@@ -80,9 +80,8 @@
+diff --git a/qapi/char.json b/qapi/char.json
+index abaccefa97e..7ae67eedff8 100644
+--- a/qapi/char.json
++++ b/qapi/char.json
+@@ -12,8 +12,7 @@
  
  ##
- # @BlockExportOptionsNbdBase:
+ # @ChardevInfo:
 -#
--# An NBD block export (common options shared between `nbd-server-add`
--# and the NBD branch of `block-export-add`).
-+#     An NBD block export (common options shared between
-+#     `nbd-server-add` and the NBD branch of `block-export-add`).
+-# Information about a character device.
++#     Information about a character device.
  #
- # @name: Export name.  If unspecified, the @device parameter is used
- #     as the export name.  (Since 2.12)
-@@ -97,9 +96,8 @@
+ # @label: the label of the character device
+ #
+@@ -35,8 +34,7 @@
  
  ##
- # @BlockExportOptionsNbd:
+ # @query-chardev:
 -#
--# An NBD block export (distinct options used in the NBD branch of
--# `block-export-add`).
-+#     An NBD block export (distinct options used in the NBD branch of
-+#     `block-export-add`).
+-# Return information about current character devices.
++#     Return information about current character devices.
  #
- # @bitmaps: Also export each of the named dirty bitmaps reachable from
- #     @device, so the NBD client can use NBD_OPT_SET_META_CONTEXT with
-@@ -121,8 +119,7 @@
+ # Since: 0.14
+ #
+@@ -68,8 +66,7 @@
  
  ##
- # @BlockExportOptionsVhostUserBlk:
+ # @ChardevBackendInfo:
 -#
--# A vhost-user-blk block export.
-+#     A vhost-user-blk block export.
+-# Information about a character device backend
++#     Information about a character device backend
  #
- # @addr: The vhost-user socket on which to listen.  Both 'unix' and
- #     'fd' `SocketAddress` types are supported.  Passed fds must be
-@@ -143,8 +140,7 @@
+ # @name: The backend name
+ #
+@@ -79,8 +76,7 @@
  
  ##
- # @FuseExportAllowOther:
+ # @query-chardev-backends:
 -#
--# Possible allow_other modes for FUSE exports.
-+#     Possible allow_other modes for FUSE exports.
+-# Return information about character device backends.
++#     Return information about character device backends.
  #
- # @off: Do not pass allow_other as a mount option.
+ # Since: 2.0
  #
-@@ -195,8 +191,7 @@
+@@ -108,8 +104,7 @@
  
  ##
- # @BlockExportOptionsVduseBlk:
+ # @DataFormat:
 -#
--# A vduse-blk block export.
-+#     A vduse-blk block export.
+-# An enumeration of data format.
++#     An enumeration of data format.
  #
- # @name: the name of VDUSE device (must be unique across the host).
+ # @utf8: Data is a UTF-8 string (RFC 3629)
  #
-@@ -221,8 +216,7 @@
+@@ -122,8 +117,7 @@
  
  ##
- # @NbdServerAddOptions:
+ # @ringbuf-write:
 -#
--# An NBD block export, per legacy `nbd-server-add` command.
-+#     An NBD block export, per legacy `nbd-server-add` command.
+-# Write to a ring buffer character device.
++#     Write to a ring buffer character device.
  #
- # @device: The device name or node name of the node to be exported
+ # @device: the ring buffer character device name
  #
-@@ -266,8 +260,7 @@
+@@ -154,8 +148,7 @@
  
  ##
- # @BlockExportRemoveMode:
+ # @ringbuf-read:
 -#
--# Mode for removing a block export.
-+#     Mode for removing a block export.
+-# Read from a ring buffer character device.
++#     Read from a ring buffer character device.
  #
- # @safe: Remove export if there are no existing connections, fail
- #     otherwise.
-@@ -289,8 +282,7 @@
+ # @device: the ring buffer character device name
+ #
+@@ -189,8 +182,7 @@
  
  ##
- # @nbd-server-remove:
+ # @ChardevCommon:
 -#
--# Remove NBD export by name.
-+#     Remove NBD export by name.
+-# Configuration shared across all chardev backends
++#     Configuration shared across all chardev backends
  #
- # @name: Block export id.
+ # @logfile: The name of a logfile to save output
  #
-@@ -316,9 +308,8 @@
+@@ -209,8 +201,7 @@
  
  ##
- # @nbd-server-stop:
+ # @ChardevFile:
 -#
--# Stop QEMU's embedded NBD server, and unregister all devices
--# previously added via `nbd-server-add`.
-+#     Stop QEMU's embedded NBD server, and unregister all devices
-+#     previously added via `nbd-server-add`.
+-# Configuration info for file chardevs.
++#     Configuration info for file chardevs.
  #
- # Since: 1.3
- ##
-@@ -327,8 +318,7 @@
+ # @in: The name of the input file
+ #
+@@ -229,8 +220,7 @@
  
  ##
- # @BlockExportType:
+ # @ChardevHostdev:
 -#
--# An enumeration of block export types
-+#     An enumeration of block export types
+-# Configuration info for device and pipe chardevs.
++#     Configuration info for device and pipe chardevs.
  #
- # @nbd: NBD export
- #
-@@ -412,9 +402,8 @@
+ # @device: The name of the special file for the device, i.e.
+ #     /dev/ttyS0 on Unix or COM1: on Windows
+@@ -243,8 +233,7 @@
  
  ##
- # @BlockExportIothreads:
+ # @ChardevSocket:
 -#
--# Specify a single or multiple I/O threads in which to run a block
--# export's I/O.
-+#     Specify a single or multiple I/O threads in which to run a block
-+#     export's I/O.
+-# Configuration info for (stream) socket chardevs.
++#     Configuration info for (stream) socket chardevs.
  #
- # @single: Run the export's I/O in the given single I/O thread.
- #
-@@ -436,8 +425,7 @@
+ # @addr: socket address to listen on (server=true) or connect to
+ #     (server=false)
+@@ -295,8 +284,7 @@
  
  ##
- # @block-export-add:
+ # @ChardevUdp:
 -#
--# Creates a new block export.
-+#     Creates a new block export.
+-# Configuration info for datagram socket chardevs.
++#     Configuration info for datagram socket chardevs.
  #
- # Since: 5.2
- ##
-@@ -470,8 +458,7 @@
+ # @remote: remote address
+ #
+@@ -311,8 +299,7 @@
  
  ##
- # @BLOCK_EXPORT_DELETED:
+ # @ChardevMux:
 -#
--# Emitted when a block export is removed and its id can be reused.
-+#     Emitted when a block export is removed and its id can be reused.
+-# Configuration info for mux chardevs.
++#     Configuration info for mux chardevs.
  #
- # @id: Block export id.
+ # @chardev: name of the base chardev.
  #
-@@ -482,8 +469,7 @@
+@@ -324,8 +311,7 @@
  
  ##
- # @BlockExportInfo:
+ # @ChardevHub:
 -#
--# Information about a single block export.
-+#     Information about a single block export.
+-# Configuration info for hub chardevs.
++#     Configuration info for hub chardevs.
  #
- # @id: The unique identifier for the block export
+ # @chardevs: IDs to be added to this hub (maximum 4 devices).
+ #
+@@ -337,8 +323,7 @@
+ 
+ ##
+ # @ChardevStdio:
+-#
+-# Configuration info for stdio chardevs.
++#     Configuration info for stdio chardevs.
+ #
+ # @signal: Allow signals (such as SIGINT triggered by ^C) be delivered
+ #     to QEMU.  Default: true.
+@@ -351,8 +336,7 @@
+ 
+ ##
+ # @ChardevSpiceChannel:
+-#
+-# Configuration info for spice vm channel chardevs.
++#     Configuration info for spice vm channel chardevs.
+ #
+ # @type: kind of channel (for example vdagent).
+ #
+@@ -365,8 +349,7 @@
+ 
+ ##
+ # @ChardevSpicePort:
+-#
+-# Configuration info for spice port chardevs.
++#     Configuration info for spice port chardevs.
+ #
+ # @fqdn: name of the channel (see docs/spice-port-fqdn.txt)
+ #
+@@ -379,8 +362,7 @@
+ 
+ ##
+ # @ChardevVCEncoding:
+-#
+-# Character encoding expected from the guest on a virtual console.
++#     Character encoding expected from the guest on a virtual console.
+ #
+ # @cp437: CP437 (8-bit Extended ASCII / VGA).  Every byte maps
+ #     directly to a glyph; suitable for DOS or other guests that
+@@ -397,8 +379,7 @@
+ 
+ ##
+ # @ChardevDBus:
+-#
+-# Configuration info for DBus chardevs.
++#     Configuration info for DBus chardevs.
+ #
+ # @name: name of the channel (following docs/spice-port-fqdn.txt)
+ #
+@@ -415,8 +396,7 @@
+ 
+ ##
+ # @ChardevVC:
+-#
+-# Configuration info for virtual console chardevs.
++#     Configuration info for virtual console chardevs.
+ #
+ # @width: console width, in pixels
+ #
+@@ -445,8 +425,7 @@
+ 
+ ##
+ # @ChardevRingbuf:
+-#
+-# Configuration info for ring buffer chardevs.
++#     Configuration info for ring buffer chardevs.
+ #
+ # @size: ring buffer size, must be power of two, default is 65536
+ #
+@@ -458,8 +437,7 @@
+ 
+ ##
+ # @ChardevQemuVDAgent:
+-#
+-# Configuration info for QEMU vdagent implementation.
++#     Configuration info for QEMU vdagent implementation.
+ #
+ # @mouse: enable/disable mouse, default is enabled.
+ #
+@@ -475,8 +453,7 @@
+ 
+ ##
+ # @ChardevPty:
+-#
+-# Configuration info for pty implementation.
++#     Configuration info for pty implementation.
+ #
+ # @path: optional path to create a symbolic link that points to the
+ #     allocated PTY
+@@ -723,8 +700,7 @@
+ 
+ ##
+ # @ChardevBackend:
+-#
+-# Configuration info for the new chardev backend.
++#     Configuration info for the new chardev backend.
+ #
+ # @type: backend type
+ #
+@@ -767,8 +743,7 @@
+ 
+ ##
+ # @ChardevReturn:
+-#
+-# Return info about the chardev backend just created.
++#     Return info about the chardev backend just created.
+ #
+ # @pty: name of the slave pseudoterminal device, present if and only
+ #     if a chardev of type 'pty' was created
+@@ -780,8 +755,7 @@
+ 
+ ##
+ # @chardev-add:
+-#
+-# Add a character device backend
++#     Add a character device backend
+ #
+ # @id: the chardev's ID, must be unique
+ #
+@@ -818,8 +792,7 @@
+ 
+ ##
+ # @chardev-change:
+-#
+-# Change a character device backend
++#     Change a character device backend
+ #
+ # @id: the chardev's ID
+ #
+@@ -859,8 +832,7 @@
+ 
+ ##
+ # @chardev-remove:
+-#
+-# Remove a character device backend
++#     Remove a character device backend
+ #
+ # @id: the chardev's ID, must not be in use
+ #
+@@ -876,8 +848,7 @@
+ 
+ ##
+ # @chardev-send-break:
+-#
+-# Send a break to a character device
++#     Send a break to a character device
+ #
+ # @id: the chardev's ID
+ #
+@@ -893,8 +864,7 @@
+ 
+ ##
+ # @VSERPORT_CHANGE:
+-#
+-# Emitted when the guest opens or closes a virtio-serial port.
++#     Emitted when the guest opens or closes a virtio-serial port.
+ #
+ # @id: device identifier of the virtio-serial port
  #
 -- 
 2.55.0
