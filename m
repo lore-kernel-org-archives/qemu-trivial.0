@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 40B33C5DF97
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:41:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 04FF3C5DF97
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:41:28 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJUp-0007Zt-JH; Wed, 26 Aug 2026 15:41:15 -0400
+	id 1wzJUj-0007Ci-1j; Wed, 26 Aug 2026 15:41:09 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJUo-0007ZI-8W
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:14 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJUh-0007BY-Ph
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:07 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJUm-0006Fl-St
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:14 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJUg-0006Ec-Dw
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:41:07 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773272;
+ s=mimecast20190719; t=1787773265;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=18x22lpIOMgbRbvwNB6lVwCay+xQAMls20hVgm6gsBg=;
- b=PA6JPJh/7Tlj35ggCclYIH4oteZWIRM2kuZ16vDrhBRdpE9xoEYYHc8/hioLCvZFXPfSdz
- 4sJm+wQ3Br9m1wS2B3sLUTdHKK/PcmYUdRz+4We5XamF1v1j4Wg535uS9HjF0njF1AQjmz
- pf6sc9o+V2wbOEvMaCULBaEkwZ7vkek=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=rLnw42K1+V+Fl4KQBW783G0VH8D6uwH+UAZ7SFG2AyA=;
+ b=TIbmKl4FA0niiOM3AnjyQSiXabkXom0Z2Kqfp/iJZ6MmWxAWqdJ9zIjMIwxiWaDkxnc4/x
+ PxADcrvQV89XzFHfENFaCK+dc2LqVRwsbHOv1T5ufl8CA/VyH8UzgtLbZqjlGQ/maPu6j6
+ rv8zNCrsmQ6rJRgyRPEBVV+2YeXL2b0=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-281-7EttIfacMEex8jo2Js2EWg-1; Wed,
- 26 Aug 2026 15:41:04 -0400
-X-MC-Unique: 7EttIfacMEex8jo2Js2EWg-1
-X-Mimecast-MFC-AGG-ID: 7EttIfacMEex8jo2Js2EWg_1787773261
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-539-WuyCK6o6NhyfNeFZLwOn-Q-1; Wed,
+ 26 Aug 2026 15:40:59 -0400
+X-MC-Unique: WuyCK6o6NhyfNeFZLwOn-Q-1
+X-Mimecast-MFC-AGG-ID: WuyCK6o6NhyfNeFZLwOn-Q_1787773252
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id CE4161954239; Wed, 26 Aug 2026 19:41:00 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 94CF5190FF98; Wed, 26 Aug 2026 19:40:52 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 307A21800577; Wed, 26 Aug 2026 19:40:52 +0000 (UTC)
+ id 2A90D1800577; Wed, 26 Aug 2026 19:40:46 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,15 +72,14 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 14/43] qapi: convert trivial intro sections for
- machine-s390x.json
-Date: Wed, 26 Aug 2026 15:38:11 -0400
-Message-ID: <20260826193840.2152000-15-jsnow@redhat.com>
+Subject: [PATCH v3 13/43] qapi: convert trivial intro sections for replay.json
+Date: Wed, 26 Aug 2026 15:38:10 -0400
+Message-ID: <20260826193840.2152000-14-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: zyeXw65zLQcKrNzWjMrar2NAtuKdsl65VXPwy1xGLcE_1787773261
+X-Mimecast-MFC-PROC-ID: uPTVII7aX6F1wlAWKJ4dlMGmRBZuoJWi6TKRCbtBWnk_1787773252
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -110,46 +109,32 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/machine-s390x.json | 13 +++++--------
- 1 file changed, 5 insertions(+), 8 deletions(-)
+ qapi/replay.json | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/qapi/machine-s390x.json b/qapi/machine-s390x.json
-index ea430e1b889..0a3c7eeda9f 100644
---- a/qapi/machine-s390x.json
-+++ b/qapi/machine-s390x.json
-@@ -9,9 +9,8 @@
+diff --git a/qapi/replay.json b/qapi/replay.json
+index ccf84da68ef..66dff797553 100644
+--- a/qapi/replay.json
++++ b/qapi/replay.json
+@@ -12,8 +12,7 @@
  
  ##
- # @S390CpuPolarization:
+ # @ReplayMode:
 -#
--# An enumeration of CPU polarization that can be assumed by a virtual
--# S390 CPU
-+#     An enumeration of CPU polarization that can be assumed by a
-+#     virtual S390 CPU
+-# Mode of the replay subsystem.
++#     Mode of the replay subsystem.
  #
- # Since: 8.2
- ##
-@@ -94,8 +93,7 @@
+ # @none: normal execution mode.  Replay or record are not enabled.
+ #
+@@ -30,8 +29,7 @@
  
  ##
- # @CpuPolarizationInfo:
+ # @ReplayInfo:
 -#
--# The result of a CPU polarization query.
-+#     The result of a CPU polarization query.
+-# Record/replay information.
++#     Record/replay information.
  #
- # @polarization: the CPU polarization
- #
-@@ -122,9 +120,8 @@
- 
- ##
- # @SCLP_CPI_INFO_AVAILABLE:
--#
--# Emitted when the Control-Program Identification data is available in
--# the QOM tree.
-+#     Emitted when the Control-Program Identification data is
-+#     available in the QOM tree.
- #
- # Features:
+ # @mode: current mode.
  #
 -- 
 2.55.0
