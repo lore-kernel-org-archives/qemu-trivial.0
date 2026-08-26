@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id B7FACC5DF97
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:43:41 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 517F3C61DC4
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:43:43 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJUW-0006uW-Ko; Wed, 26 Aug 2026 15:40:56 -0400
+	id 1wzJX3-0007dr-Ke; Wed, 26 Aug 2026 15:43:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJUT-0006lw-Aj
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:40:53 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJX2-0007Un-Bq
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:43:32 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJUS-0006Ak-1W
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:40:53 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJX0-0006gp-Dh
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:43:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773251;
+ s=mimecast20190719; t=1787773409;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=zcTS1HQZTCGQkOmaZVLm63YpWlWjzjsxUTYZiN2QcLg=;
- b=NwG9EIv+mCMP0lgQadxSqicLKrEiB5ujmUAvQaTx9+liyYIkb9qWoSTIun6a/Ft9Do03bx
- jePDtQ8KU2vHbYp25ZYrZ8Q8OiKCRrt/P2yXufu8ya4mFyh1wVTDJ03aCRHSgpwS6dEc6r
- 0OnyZ3NhgtcH223ARtq35AMk+vxIHQU=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=Y8pqXrIvr/yRTQ3rsO16r+lqlJjBRU1uvUFq6p7chi8=;
+ b=M2ZXhc/sxMlEyc1L2EcKXFLXeHkvXiYlUxSBAeJcENFs10mXKaUOCS9/e4dkyWXe3lFyux
+ QRT8TFJPwGrxuj44hnD/m9mVjyqZptpvnqSHTMfH8FBKLouP2eIHjZtUB11PbAv1xChARG
+ 6R3fYDRrPuN4JCYOZDtWnc2I7ibxHFc=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-408-7fb03kEQNdGFuhF_xuRNMw-1; Wed,
- 26 Aug 2026 15:40:50 -0400
-X-MC-Unique: 7fb03kEQNdGFuhF_xuRNMw-1
-X-Mimecast-MFC-AGG-ID: 7fb03kEQNdGFuhF_xuRNMw_1787773246
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-695-zHix_RuNON6iTFVTgm7A-g-1; Wed,
+ 26 Aug 2026 15:43:24 -0400
+X-MC-Unique: zHix_RuNON6iTFVTgm7A-g-1
+X-Mimecast-MFC-AGG-ID: zHix_RuNON6iTFVTgm7A-g_1787773402
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id D24F8180123E; Wed, 26 Aug 2026 19:40:45 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E100819344C6; Wed, 26 Aug 2026 19:43:21 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 2CC4B1800577; Wed, 26 Aug 2026 19:40:37 +0000 (UTC)
+ id 45DCA1800598; Wed, 26 Aug 2026 19:43:16 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,26 +72,26 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 12/43] qapi: convert trivial intro sections for yank.json
-Date: Wed, 26 Aug 2026 15:38:09 -0400
-Message-ID: <20260826193840.2152000-13-jsnow@redhat.com>
+Subject: [PATCH v3 32/43] qapi: convert trivial intro sections for misc.json
+Date: Wed, 26 Aug 2026 15:38:29 -0400
+Message-ID: <20260826193840.2152000-33-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: JieuIC0o45aZMoaYcWe2RWKXdrSfUBVDvqCRq6VVix4_1787773246
+X-Mimecast-MFC-PROC-ID: 8Msy6HMJilYfXQCsNEwPn-Dirz-s4iK8GWk-ASJSBpM_1787773402
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,25 +109,234 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/yank.json | 5 ++---
- 1 file changed, 2 insertions(+), 3 deletions(-)
+ qapi/misc.json | 74 ++++++++++++++++++--------------------------------
+ 1 file changed, 27 insertions(+), 47 deletions(-)
 
-diff --git a/qapi/yank.json b/qapi/yank.json
-index f3cd5c15d60..bc8c52bda74 100644
---- a/qapi/yank.json
-+++ b/qapi/yank.json
-@@ -47,9 +47,8 @@
+diff --git a/qapi/misc.json b/qapi/misc.json
+index 22b7afed9f6..b3c2a1421f3 100644
+--- a/qapi/misc.json
++++ b/qapi/misc.json
+@@ -44,8 +44,7 @@
  
  ##
- # @YankInstance:
+ # @NameInfo:
 -#
--# A yank instance can be yanked with the `yank` qmp command to recover
--# from a hanging QEMU.
-+#     A yank instance can be yanked with the `yank` qmp command to
-+#     recover from a hanging QEMU.
+-# Guest name information.
++#     Guest name information.
  #
- # @type: yank instance type
+ # @name: The name of the guest
  #
+@@ -55,8 +54,7 @@
+ 
+ ##
+ # @query-name:
+-#
+-# Return the name information of a guest.
++#     Return the name information of a guest.
+ #
+ # Since: 0.14
+ #
+@@ -69,8 +67,7 @@
+ 
+ ##
+ # @IOThreadInfo:
+-#
+-# Information about an iothread
++#     Information about an iothread
+ #
+ # @id: the identifier of the iothread
+ #
+@@ -137,8 +134,7 @@
+ 
+ ##
+ # @stop:
+-#
+-# Stop guest VM execution.
++#     Stop guest VM execution.
+ #
+ # Since: 0.14
+ #
+@@ -159,8 +155,7 @@
+ 
+ ##
+ # @cont:
+-#
+-# Resume guest VM execution.
++#     Resume guest VM execution.
+ #
+ # Since: 0.14
+ #
+@@ -208,8 +203,7 @@
+ 
+ ##
+ # @human-monitor-command:
+-#
+-# Execute a command on the human monitor and return the output.
++#     Execute a command on the human monitor and return the output.
+ #
+ # @command-line: the command to execute in the human monitor
+ #
+@@ -251,8 +245,7 @@
+ 
+ ##
+ # @getfd:
+-#
+-# Receive a file descriptor via SCM rights and assign it a name
++#     Receive a file descriptor via SCM rights and assign it a name
+ #
+ # @fdname: file descriptor name
+ #
+@@ -273,11 +266,10 @@
+ 
+ ##
+ # @get-win32-socket:
+-#
+-# Add a socket that was duplicated to QEMU process with
+-# WSADuplicateSocketW() via WSASocket() & WSAPROTOCOL_INFOW structure
+-# and assign it a name (the SOCKET is associated with a CRT file
+-# descriptor)
++#     Add a socket that was duplicated to QEMU process with
++#     WSADuplicateSocketW() via WSASocket() & WSAPROTOCOL_INFOW
++#     structure and assign it a name (the SOCKET is associated with a
++#     CRT file descriptor)
+ #
+ # @info: the WSAPROTOCOL_INFOW structure (encoded in base64)
+ #
+@@ -301,8 +293,7 @@
+ 
+ ##
+ # @closefd:
+-#
+-# Close a file descriptor previously passed via SCM rights
++#     Close a file descriptor previously passed via SCM rights
+ #
+ # @fdname: file descriptor name
+ #
+@@ -317,8 +308,7 @@
+ 
+ ##
+ # @AddfdInfo:
+-#
+-# Information about a file descriptor that was added to an fd set.
++#     Information about a file descriptor that was added to an fd set.
+ #
+ # @fdset-id: The ID of the fd set that @fd was added to.
+ #
+@@ -331,8 +321,8 @@
+ 
+ ##
+ # @add-fd:
+-#
+-# Add a file descriptor, that was passed via SCM rights, to an fd set.
++#     Add a file descriptor, that was passed via SCM rights, to an fd
++#     set.
+ #
+ # @fdset-id: The ID of the fd set to add the file descriptor to.
+ #
+@@ -361,8 +351,7 @@
+ 
+ ##
+ # @remove-fd:
+-#
+-# Remove a file descriptor from an fd set.
++#     Remove a file descriptor from an fd set.
+ #
+ # @fdset-id: The ID of the fd set that the file descriptor belongs to.
+ #
+@@ -387,8 +376,7 @@
+ 
+ ##
+ # @FdsetFdInfo:
+-#
+-# Information about a file descriptor that belongs to an fd set.
++#     Information about a file descriptor that belongs to an fd set.
+ #
+ # @fd: The file descriptor value.
+ #
+@@ -401,8 +389,7 @@
+ 
+ ##
+ # @FdsetInfo:
+-#
+-# Information about an fd set.
++#     Information about an fd set.
+ #
+ # @fdset-id: The ID of the fd set.
+ #
+@@ -415,8 +402,7 @@
+ 
+ ##
+ # @query-fdsets:
+-#
+-# Return information describing all fd sets.
++#     Return information describing all fd sets.
+ #
+ # Since: 1.2
+ #
+@@ -457,8 +443,7 @@
+ 
+ ##
+ # @CommandLineParameterType:
+-#
+-# Possible types for an option parameter.
++#     Possible types for an option parameter.
+ #
+ # @string: accepts a character string
+ #
+@@ -476,8 +461,7 @@
+ 
+ ##
+ # @CommandLineParameterInfo:
+-#
+-# Details about a single parameter of a command line option.
++#     Details about a single parameter of a command line option.
+ #
+ # @name: parameter name
+ #
+@@ -497,9 +481,8 @@
+ 
+ ##
+ # @CommandLineOptionInfo:
+-#
+-# Details about a command line option, including its list of parameter
+-# details
++#     Details about a command line option, including its list of
++#     parameter details
+ #
+ # @option: option name
+ #
+@@ -512,8 +495,7 @@
+ 
+ ##
+ # @query-command-line-options:
+-#
+-# Query command line option schema.
++#     Query command line option schema.
+ #
+ # @option: option name
+ #
+@@ -552,8 +534,7 @@
+ 
+ ##
+ # @RTC_CHANGE:
+-#
+-# Emitted when the guest changes the RTC time.
++#     Emitted when the guest changes the RTC time.
+ #
+ # @offset: offset in seconds between base RTC clock (as specified by
+ #     -rtc base), and new RTC clock value
+@@ -577,9 +558,8 @@
+ 
+ ##
+ # @VFU_CLIENT_HANGUP:
+-#
+-# Emitted when the client of a TYPE_VFIO_USER_SERVER closes the
+-# communication channel
++#     Emitted when the client of a TYPE_VFIO_USER_SERVER closes the
++#     communication channel
+ #
+ # @vfu-id: ID of the TYPE_VFIO_USER_SERVER object.  It is the last
+ #     component of @vfu-qom-path referenced below
 -- 
 2.55.0
 
