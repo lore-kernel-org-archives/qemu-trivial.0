@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1ABC1C61DBE
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:43:27 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 90E87C61DBE
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:43:40 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJWr-0006pR-V5; Wed, 26 Aug 2026 15:43:22 -0400
+	id 1wzJVa-0001Iu-SC; Wed, 26 Aug 2026 15:42:03 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJWq-0006f2-DN
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:43:20 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJVY-00019l-JS
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:42:00 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJWo-0006di-Ck
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:43:20 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJVV-0006Lf-P0
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:42:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773397;
+ s=mimecast20190719; t=1787773317;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Z3E4l/9ZBojjapKTPoc2rkBnvoRHsP4FarABuj8M8OA=;
- b=TEI+tleQ8K340JMEQMMFQUIoz9x0MGD0dJMWyl3GpJYKddzevRQUs7ty9wx/krJ0CMolPh
- FfCl5cGArqyfYahewdUS/ggtiqGbFTvXdL1dJY/Jg0I9Le7i/EprIrmMEnnkfIqXWfg2fY
- 2b1cT3EGY2Xm8rC7JJrU8DK7xarqQE4=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=paUL78gCdpaCrvbsmed4HTHvmj42cb8WXYX01ka0V0s=;
+ b=fSyitxYAgyax3bv2oZu4fFinzqdDdF3oyHbpO9g66QK/YV43pMqJigi4RkEnnUCMplTrXm
+ a1t/PpQvEdJuomFYRe5Fd22IF8dMBz8PiGIRHFIdKKQ4eCA2o6mlZncgzTaceP2k+WwST5
+ jWAdjpoO04lFaBdTv2lzg+knkxAHN10=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-645-JqlXIFKKNV-almMHhD17wQ-1; Wed,
- 26 Aug 2026 15:43:15 -0400
-X-MC-Unique: JqlXIFKKNV-almMHhD17wQ-1
-X-Mimecast-MFC-AGG-ID: JqlXIFKKNV-almMHhD17wQ_1787773390
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-649-39mPIoSKPS2Uc-paTFkwOw-1; Wed,
+ 26 Aug 2026 15:41:53 -0400
+X-MC-Unique: 39mPIoSKPS2Uc-paTFkwOw-1
+X-Mimecast-MFC-AGG-ID: 39mPIoSKPS2Uc-paTFkwOw_1787773311
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 1A434184BAAB; Wed, 26 Aug 2026 19:43:10 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id F09311955DCC; Wed, 26 Aug 2026 19:41:50 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 14F1318005AC; Wed, 26 Aug 2026 19:43:04 +0000 (UTC)
+ id D79B91800577; Wed, 26 Aug 2026 19:41:43 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,26 +72,26 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 30/43] qapi: convert trivial intro sections for audio.json
-Date: Wed, 26 Aug 2026 15:38:27 -0400
-Message-ID: <20260826193840.2152000-31-jsnow@redhat.com>
+Subject: [PATCH v3 20/43] qapi: convert trivial intro sections for common.json
+Date: Wed, 26 Aug 2026 15:38:17 -0400
+Message-ID: <20260826193840.2152000-21-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: wtrcp393i1eS0KROfmjbX0Nx7Lo-W7_Qo4ulBe_ZRfo_1787773390
+X-Mimecast-MFC-PROC-ID: Qcu9O_KNw2QOK-_UHOmY3rmznqUbijUK1ejFEYLu5Cg_1787773311
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,269 +109,105 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/audio.json | 88 ++++++++++++++++++-------------------------------
- 1 file changed, 32 insertions(+), 56 deletions(-)
+ qapi/common.json | 29 ++++++++++-------------------
+ 1 file changed, 10 insertions(+), 19 deletions(-)
 
-diff --git a/qapi/audio.json b/qapi/audio.json
-index 2df87b97101..72190f20993 100644
---- a/qapi/audio.json
-+++ b/qapi/audio.json
-@@ -14,9 +14,8 @@
+diff --git a/qapi/common.json b/qapi/common.json
+index af7e3d618a7..c1bbed21e7f 100644
+--- a/qapi/common.json
++++ b/qapi/common.json
+@@ -9,8 +9,7 @@
  
  ##
- # @AudiodevPerDirectionOptions:
+ # @IoOperationType:
 -#
--# General audio backend options that are used for both playback and
--# recording.
-+#     General audio backend options that are used for both playback
-+#     and recording.
+-# An enumeration of the I/O operation types
++#     An enumeration of the I/O operation types
  #
- # @mixing-engine: use QEMU's mixing engine to mix all streams inside
- #     QEMU and convert audio formats when not supported by the
-@@ -53,8 +52,7 @@
+ # @read: read operation
+ #
+@@ -23,8 +22,7 @@
  
  ##
- # @AudiodevGenericOptions:
+ # @OnOffAuto:
 -#
--# Generic driver-specific options.
-+#     Generic driver-specific options.
+-# An enumeration of three options: on, off, and auto
++#     An enumeration of three options: on, off, and auto
  #
- # @in: options of the capture stream
+ # @auto: QEMU selects the value between on and off
  #
-@@ -69,8 +67,7 @@
+@@ -39,8 +37,7 @@
  
  ##
- # @AudiodevDBusOptions:
+ # @OnOffSplit:
 -#
--# Options of the D-Bus audio backend.
-+#     Options of the D-Bus audio backend.
+-# An enumeration of three values: on, off, and split
++#     An enumeration of three values: on, off, and split
  #
- # @in: options of the capture stream
+ # @on: Enabled
  #
-@@ -89,9 +86,8 @@
+@@ -72,8 +69,7 @@
  
  ##
- # @AudiodevAlsaPerDirectionOptions:
+ # @OffAutoPCIBAR:
 -#
--# Options of the ALSA backend that are used for both playback and
--# recording.
-+#     Options of the ALSA backend that are used for both playback and
-+#     recording.
+-# An enumeration of options for specifying a PCI BAR
++#     An enumeration of options for specifying a PCI BAR
  #
- # @dev: the name of the ALSA device to use (default 'default')
+ # @off: The specified feature is disabled
  #
-@@ -111,8 +107,7 @@
+@@ -98,8 +94,7 @@
  
  ##
- # @AudiodevAlsaOptions:
+ # @PCIELinkSpeed:
 -#
--# Options of the ALSA audio backend.
-+#     Options of the ALSA audio backend.
+-# An enumeration of PCIe link speeds in units of GT/s
++#     An enumeration of PCIe link speeds in units of GT/s
  #
- # @in: options of the capture stream
+ # @2_5: 2.5GT/s
  #
-@@ -130,8 +125,7 @@
+@@ -120,8 +115,7 @@
  
  ##
- # @AudiodevSndioOptions:
+ # @PCIELinkWidth:
 -#
--# Options of the sndio audio backend.
-+#     Options of the sndio audio backend.
+-# An enumeration of PCIe link width
++#     An enumeration of PCIe link width
  #
- # @in: options of the capture stream
+ # @1: x1
  #
-@@ -152,9 +146,8 @@
+@@ -144,8 +138,7 @@
  
  ##
- # @AudiodevCoreaudioPerDirectionOptions:
+ # @HostMemPolicy:
 -#
--# Options of the Core Audio backend that are used for both playback
--# and recording.
-+#     Options of the Core Audio backend that are used for both
-+#     playback and recording.
+-# Host memory policy types
++#     Host memory policy types
  #
- # @buffer-count: number of buffers
+ # @default: restore default policy, remove any nondefault policy
  #
-@@ -167,8 +160,7 @@
+@@ -164,9 +157,8 @@
  
  ##
- # @AudiodevCoreaudioOptions:
+ # @NetFilterDirection:
 -#
--# Options of the coreaudio audio backend.
-+#     Options of the coreaudio audio backend.
+-# Indicates whether a netfilter is attached to a netdev's transmit
+-# queue or receive queue or both.
++#     Indicates whether a netfilter is attached to a netdev's transmit
++#     queue or receive queue or both.
  #
- # @in: options of the capture stream
- #
-@@ -183,8 +175,7 @@
+ # @all: the filter is attached both to the receive and the transmit
+ #     queue of the netdev (default).
+@@ -184,8 +176,7 @@
  
  ##
- # @AudiodevDsoundOptions:
+ # @GrabToggleKeys:
 -#
--# Options of the DirectSound audio backend.
-+#     Options of the DirectSound audio backend.
+-# Key combinations to toggle input-linux between host and guest.
++#     Key combinations to toggle input-linux between host and guest.
  #
- # @in: options of the capture stream
+ # @ctrl-ctrl: left and right control key
  #
-@@ -203,9 +194,8 @@
- 
- ##
- # @AudiodevJackPerDirectionOptions:
--#
--# Options of the JACK backend that are used for both playback and
--# recording.
-+#     Options of the JACK backend that are used for both playback and
-+#     recording.
- #
- # @server-name: select from among several possible concurrent server
- #     instances (default: environment variable $JACK_DEFAULT_SERVER if
-@@ -237,8 +227,7 @@
- 
- ##
- # @AudiodevJackOptions:
--#
--# Options of the JACK audio backend.
-+#     Options of the JACK audio backend.
- #
- # @in: options of the capture stream
- #
-@@ -253,9 +242,8 @@
- 
- ##
- # @AudiodevOssPerDirectionOptions:
--#
--# Options of the OSS backend that are used for both playback and
--# recording.
-+#     Options of the OSS backend that are used for both playback and
-+#     recording.
- #
- # @dev: file name of the OSS device (default '/dev/dsp')
- #
-@@ -275,8 +263,7 @@
- 
- ##
- # @AudiodevOssOptions:
--#
--# Options of the OSS audio backend.
-+#     Options of the OSS audio backend.
- #
- # @in: options of the capture stream
- #
-@@ -305,9 +292,8 @@
- 
- ##
- # @AudiodevPaPerDirectionOptions:
--#
--# Options of the Pulseaudio backend that are used for both playback
--# and recording.
-+#     Options of the Pulseaudio backend that are used for both
-+#     playback and recording.
- #
- # @name: name of the sink/source to use
- #
-@@ -330,8 +316,7 @@
- 
- ##
- # @AudiodevPaOptions:
--#
--# Options of the PulseAudio audio backend.
-+#     Options of the PulseAudio audio backend.
- #
- # @in: options of the capture stream
- #
-@@ -349,9 +334,8 @@
- 
- ##
- # @AudiodevPipewirePerDirectionOptions:
--#
--# Options of the PipeWire backend that are used for both playback and
--# recording.
-+#     Options of the PipeWire backend that are used for both playback
-+#     and recording.
- #
- # @name: name of the sink/source to use
- #
-@@ -374,8 +358,7 @@
- 
- ##
- # @AudiodevPipewireOptions:
--#
--# Options of the PipeWire audio backend.
-+#     Options of the PipeWire audio backend.
- #
- # @in: options of the capture stream
- #
-@@ -390,9 +373,8 @@
- 
- ##
- # @AudiodevSdlPerDirectionOptions:
--#
--# Options of the SDL audio backend that are used for both playback and
--# recording.
-+#     Options of the SDL audio backend that are used for both playback
-+#     and recording.
- #
- # @buffer-count: number of buffers (default 4)
- #
-@@ -405,8 +387,7 @@
- 
- ##
- # @AudiodevSdlOptions:
--#
--# Options of the SDL audio backend.
-+#     Options of the SDL audio backend.
- #
- # @in: options of the recording stream
- #
-@@ -421,8 +402,7 @@
- 
- ##
- # @AudiodevWavOptions:
--#
--# Options of the wav audio backend.
-+#     Options of the wav audio backend.
- #
- # @in: options of the capture stream
- #
-@@ -440,8 +420,7 @@
- 
- ##
- # @AudioFormat:
--#
--# An enumeration of possible audio formats.
-+#     An enumeration of possible audio formats.
- #
- # @u8: unsigned 8 bit integer
- #
-@@ -464,8 +443,7 @@
- 
- ##
- # @AudiodevDriver:
--#
--# An enumeration of possible audio backend drivers.
-+#     An enumeration of possible audio backend drivers.
- #
- # @jack: JACK audio backend (since 5.1)
- #
-@@ -488,8 +466,7 @@
- 
- ##
- # @Audiodev:
--#
--# Options of an audio backend.
-+#     Options of an audio backend.
- #
- # @id: identifier of the backend
- #
-@@ -534,8 +511,7 @@
- 
- ##
- # @query-audiodevs:
--#
--# Return information about audiodev configuration
-+#     Return information about audiodev configuration
- #
- # Since: 8.0
- ##
 -- 
 2.55.0
 
