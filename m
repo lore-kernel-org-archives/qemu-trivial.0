@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 645F9C61DBE
-	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:44:44 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id AF1C2C61DBE
+	for <qemu-trivial@archiver.kernel.org>; Wed, 26 Aug 2026 19:44:59 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzJYA-0004Y1-FA; Wed, 26 Aug 2026 15:44:43 -0400
+	id 1wzJYP-0005D7-UO; Wed, 26 Aug 2026 15:44:57 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJY8-0004Uz-Fq
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:44:40 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJYO-00051W-1g
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:44:56 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJY6-0006yW-6d
- for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:44:40 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1wzJYL-00072x-NB
+ for qemu-trivial@nongnu.org; Wed, 26 Aug 2026 15:44:55 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787773477;
+ s=mimecast20190719; t=1787773493;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=GT4vbniYPu2T0an15X/kc4fJpS4Ogad+KYFFAMad4RM=;
- b=KBv5t1A2C01elWJbOhLyyRBEr5nDgGUjvBOi7Ziw3YJmzkj2QxmlEiqd+4apKs65a/OMkY
- x6kZwHy5i80U+hDDnVKceVQ5JgIfHpw1/HIwiv42lIZgOSSWA8suCDPJv4zod5m/xBedWz
- 9eJ/hr1P0w35Z0JEGej24BWzl4fr7aU=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=zTQIfh/5m9QZH2LXfLdLzWBOA8HLXnnjEI9dA8mmcBM=;
+ b=CqtmM5s63fbR3nOp4wSC3qniDfAmT3cKNWsxp5jQvwR5rRIiLrjEruEwGHjX4joeZbYr9T
+ 5bPYQVICLyegKPSoyLh3pRdL8cK7flEnQVss5NEwX1sDQkEwDjBMNpjIUfnNvqvsksEiTq
+ 8d0waZBzHtKrEFXlEmWdjTqOoabJl7g=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-602-AuyODw-rNaOByQ2n1VZbww-1; Wed,
- 26 Aug 2026 15:44:31 -0400
-X-MC-Unique: AuyODw-rNaOByQ2n1VZbww-1
-X-Mimecast-MFC-AGG-ID: AuyODw-rNaOByQ2n1VZbww_1787773468
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-29-_LXNbdpAOdWgqf6d00sLuw-1; Wed,
+ 26 Aug 2026 15:44:49 -0400
+X-MC-Unique: _LXNbdpAOdWgqf6d00sLuw-1
+X-Mimecast-MFC-AGG-ID: _LXNbdpAOdWgqf6d00sLuw_1787773486
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 153A31862D51; Wed, 26 Aug 2026 19:44:28 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id AB08C19560A7; Wed, 26 Aug 2026 19:44:46 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.99])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 4FA7B1800598; Wed, 26 Aug 2026 19:44:18 +0000 (UTC)
+ id A6AC61800598; Wed, 26 Aug 2026 19:44:38 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: Alex Williamson <alex@shazbot.org>,
@@ -72,26 +72,26 @@ Cc: Alex Williamson <alex@shazbot.org>,
  =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
  Lukas Straub <lukasstraub2@web.de>,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v3 40/43] qapi: convert trivial intro sections for ui.json
-Date: Wed, 26 Aug 2026 15:38:37 -0400
-Message-ID: <20260826193840.2152000-41-jsnow@redhat.com>
+Subject: [PATCH v3 42/43] qapi: convert trivial intro sections for machine.json
+Date: Wed, 26 Aug 2026 15:38:39 -0400
+Message-ID: <20260826193840.2152000-43-jsnow@redhat.com>
 In-Reply-To: <20260826193840.2152000-1-jsnow@redhat.com>
 References: <20260826193840.2152000-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 18jJb59ykb_3vCzuEJUUZkfFsq8IwBnoxlueZQu8NhY_1787773468
+X-Mimecast-MFC-PROC-ID: bQQIyxL_k1_E2c6EcgbX8eB1exTrM-6NKPYXrJ2g6QU_1787773486
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,660 +109,669 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/ui.json | 199 ++++++++++++++++++---------------------------------
- 1 file changed, 68 insertions(+), 131 deletions(-)
+ qapi/machine.json | 208 ++++++++++++++++------------------------------
+ 1 file changed, 73 insertions(+), 135 deletions(-)
 
-diff --git a/qapi/ui.json b/qapi/ui.json
-index b2c42a7f578..960d02d1429 100644
---- a/qapi/ui.json
-+++ b/qapi/ui.json
-@@ -13,8 +13,7 @@
+diff --git a/qapi/machine.json b/qapi/machine.json
+index 2d63c1bac3b..3a5c6df9cff 100644
+--- a/qapi/machine.json
++++ b/qapi/machine.json
+@@ -46,9 +46,8 @@
  
  ##
- # @DisplayProtocol:
+ # @S390CpuState:
 -#
--# Display protocols which support changing password options.
-+#     Display protocols which support changing password options.
+-# An enumeration of cpu states that can be assumed by a virtual S390
+-# CPU
++#     An enumeration of cpu states that can be assumed by a virtual
++#     S390 CPU
  #
- # Since: 7.0
+ # Since: 2.12
  ##
-@@ -23,9 +22,8 @@
+@@ -57,8 +56,7 @@
  
  ##
- # @SetPasswordAction:
+ # @CpuInfoS390:
 -#
--# An action to take on changing a password on a connection with active
--# clients.
-+#     An action to take on changing a password on a connection with
-+#     active clients.
+-# Additional information about a virtual S390 CPU
++#     Additional information about a virtual S390 CPU
  #
- # @keep: maintain existing clients
+ # @cpu-state: the virtual CPU's state
  #
-@@ -40,8 +38,7 @@
+@@ -75,8 +73,7 @@
  
  ##
- # @SetPasswordOptions:
+ # @CpuInfoFast:
 -#
--# Options for `set_password`.
-+#     Options for `set_password`.
+-# Information about a virtual CPU
++#     Information about a virtual CPU
  #
- # @protocol:
- #     - 'vnc' to modify the VNC server password
-@@ -64,8 +61,7 @@
+ # @cpu-index: index of the virtual CPU
+ #
+@@ -105,8 +102,7 @@
  
  ##
- # @SetPasswordOptionsVnc:
+ # @query-cpus-fast:
 -#
--# Options for `set_password` specific to the VNC protocol.
-+#     Options for `set_password` specific to the VNC protocol.
+-# Return information about all virtual CPUs.
++#     Return information about all virtual CPUs.
  #
- # @display: The id of the display where the password should be
- #     changed.  Defaults to the first.
-@@ -77,8 +73,7 @@
+ # Since: 2.12
+ #
+@@ -143,9 +139,8 @@
  
  ##
- # @set_password:
+ # @CompatProperty:
 -#
--# Set the password of a remote display server.
-+#     Set the password of a remote display server.
+-# Property default values specific to a machine type, for use by
+-# scripts/compare-machine-types.
++#     Property default values specific to a machine type, for use by
++#     scripts/compare-machine-types.
  #
- # Errors:
- #     - If Spice is not enabled, DeviceNotFound
-@@ -95,8 +90,7 @@
+ # @qom-type: name of the QOM type to which the default applies
+ #
+@@ -163,8 +158,7 @@
  
  ##
- # @ExpirePasswordOptions:
+ # @MachineInfo:
 -#
--# General options for `expire_password`.
-+#     General options for `expire_password`.
+-# Information describing a machine.
++#     Information describing a machine.
  #
- # @protocol:
- #     - 'vnc' to modify the VNC server expiration
-@@ -125,8 +119,7 @@
+ # @name: the name of the machine
+ #
+@@ -213,8 +207,7 @@
  
  ##
- # @ExpirePasswordOptionsVnc:
+ # @query-machines:
 -#
--# Options for `expire_password` specific to the VNC protocol.
-+#     Options for `expire_password` specific to the VNC protocol.
+-# Return a list of supported machines
++#     Return a list of supported machines
  #
- # @display: The id of the display where the expiration should be
- #     changed.  Defaults to the first.
-@@ -138,8 +131,7 @@
+ # @compat-props: if true, also return compatibility properties.
+ #     (default: false) (since 9.1)
+@@ -255,8 +248,7 @@
  
  ##
- # @expire_password:
+ # @CurrentMachineParams:
 -#
--# Expire the password of a remote display server.
-+#     Expire the password of a remote display server.
+-# Information describing the running machine parameters.
++#     Information describing the running machine parameters.
  #
- # Errors:
- #     - If @protocol is 'spice' and Spice is not active,
-@@ -157,8 +149,7 @@
+ # @wakeup-suspend-support: true if the machine supports wake up from
+ #     suspend
+@@ -268,8 +260,7 @@
  
  ##
- # @ImageFormat:
+ # @query-current-machine:
 -#
--# Supported image format types.
-+#     Supported image format types.
+-# Return information on the current virtual machine.
++#     Return information on the current virtual machine.
  #
- # @png: PNG format
- #
-@@ -171,8 +162,7 @@
+ # Since: 4.0
+ ##
+@@ -277,8 +268,8 @@
  
  ##
- # @screendump:
+ # @QemuTargetInfo:
 -#
--# Capture the contents of a screen and write it to a file.
-+#     Capture the contents of a screen and write it to a file.
+-# Information on the target configuration built into the QEMU binary.
++#     Information on the target configuration built into the QEMU
++#     binary.
  #
- # @filename: the path of a new file to store the image
+ # @arch: the target architecture
  #
-@@ -208,8 +198,7 @@
+@@ -289,8 +280,7 @@
  
  ##
- # @SpiceBasicInfo:
+ # @query-target:
 -#
--# The basic information for SPICE network connection
-+#     The basic information for SPICE network connection
+-# Return information about the target for this QEMU
++#     Return information about the target for this QEMU
  #
- # @host: IP address
- #
-@@ -227,8 +216,7 @@
+ # Since: 1.2
+ ##
+@@ -298,8 +288,7 @@
  
  ##
- # @SpiceServerInfo:
+ # @UuidInfo:
 -#
--# Information about a SPICE server
-+#     Information about a SPICE server
+-# Guest UUID information (Universally Unique Identifier).
++#     Guest UUID information (Universally Unique Identifier).
  #
- # @auth: authentication method
+ # @UUID: the UUID of the guest
  #
-@@ -241,8 +229,7 @@
+@@ -312,8 +301,7 @@
  
  ##
- # @SpiceChannel:
+ # @query-uuid:
 -#
--# Information about a SPICE client channel.
-+#     Information about a SPICE client channel.
- #
- # @connection-id: SPICE connection id number.  All channels with the
- #     same id belong to the same SPICE session.
-@@ -267,8 +254,7 @@
- 
- ##
- # @SpiceQueryMouseMode:
--#
--# An enumeration of Spice mouse states.
-+#     An enumeration of Spice mouse states.
- #
- # @client: Mouse cursor position is determined by the client.
- #
-@@ -285,8 +271,7 @@
- 
- ##
- # @SpiceInfo:
--#
--# Information about the SPICE session.
-+#     Information about the SPICE session.
- #
- # @enabled: true if the SPICE server is enabled, false otherwise
- #
-@@ -325,8 +310,7 @@
- 
- ##
- # @query-spice:
--#
--# Return information about the current SPICE server
-+#     Return information about the current SPICE server
+-# Query the guest UUID information.
++#     Query the guest UUID information.
  #
  # Since: 0.14
  #
-@@ -370,8 +354,7 @@
+@@ -326,8 +314,7 @@
  
  ##
- # @SPICE_CONNECTED:
+ # @GuidInfo:
 -#
--# Emitted when a SPICE client establishes a connection
-+#     Emitted when a SPICE client establishes a connection
+-# GUID information.
++#     GUID information.
  #
- # @server: server information
+ # @guid: the globally unique identifier
  #
-@@ -395,9 +378,8 @@
+@@ -337,8 +324,7 @@
  
  ##
- # @SPICE_INITIALIZED:
+ # @query-vm-generation-id:
 -#
--# Emitted after initial handshake and authentication takes place (if
--# any) and the SPICE channel is up and running
-+#     Emitted after initial handshake and authentication takes place
-+#     (if any) and the SPICE channel is up and running
+-# Show Virtual Machine Generation ID
++#     Show Virtual Machine Generation ID
  #
- # @server: server information
- #
-@@ -423,8 +405,7 @@
+ # Since: 2.9
+ ##
+@@ -346,8 +332,7 @@
  
  ##
- # @SPICE_DISCONNECTED:
+ # @system_reset:
 -#
--# Emitted when the SPICE connection is closed
-+#     Emitted when the SPICE connection is closed
- #
- # @server: server information
- #
-@@ -448,8 +429,7 @@
- 
- ##
- # @SPICE_MIGRATE_COMPLETED:
--#
--# Emitted when SPICE migration has completed
-+#     Emitted when SPICE migration has completed
- #
- # Since: 1.3
- #
-@@ -468,8 +448,7 @@
- 
- ##
- # @VncBasicInfo:
--#
--# The basic information for vnc network connection
-+#     The basic information for vnc network connection
- #
- # @host: IP address
- #
-@@ -492,8 +471,7 @@
- 
- ##
- # @VncServerInfo:
--#
--# The network connection information for server
-+#     The network connection information for server
- #
- # @auth: authentication method used for the plain (non-websocket) VNC
- #     server
-@@ -507,8 +485,7 @@
- 
- ##
- # @VncClientInfo:
--#
--# Information about a connected VNC client.
-+#     Information about a connected VNC client.
- #
- # @x509_dname: If x509 authentication is in use, the Distinguished
- #     Name of the client.
-@@ -525,8 +502,7 @@
- 
- ##
- # @VncInfo:
--#
--# Information about the VNC session.
-+#     Information about the VNC session.
- #
- # @enabled: true if the VNC server is enabled, false otherwise
- #
-@@ -576,8 +552,7 @@
- 
- ##
- # @VncPrimaryAuth:
--#
--# vnc primary authentication method.
-+#     vnc primary authentication method.
- #
- # Since: 2.3
- ##
-@@ -588,8 +563,7 @@
- 
- ##
- # @VncVencryptSubAuth:
--#
--# vnc sub authentication method with vencrypt.
-+#     vnc sub authentication method with vencrypt.
- #
- # Since: 2.3
- ##
-@@ -603,8 +577,7 @@
- 
- ##
- # @VncServerInfo2:
--#
--# The network connection information for server
-+#     The network connection information for server
- #
- # @auth: The current authentication type used by the servers
- #
-@@ -621,8 +594,7 @@
- 
- ##
- # @VncInfo2:
--#
--# Information about a vnc server
-+#     Information about a vnc server
- #
- # @id: vnc server name.
- #
-@@ -655,8 +627,7 @@
- 
- ##
- # @query-vnc:
--#
--# Return information about the current VNC server
-+#     Return information about the current VNC server
+-# Performs a hard reset of a guest.
++#     Performs a hard reset of a guest.
  #
  # Since: 0.14
  #
-@@ -695,8 +666,7 @@
+@@ -360,8 +345,7 @@
  
  ##
- # @change-vnc-password:
+ # @system_powerdown:
 -#
--# Change the VNC server password.
-+#     Change the VNC server password.
+-# Requests that a guest perform a powerdown operation.
++#     Requests that a guest perform a powerdown operation.
  #
- # @password: the new password to use with VNC authentication
+ # Since: 0.14
  #
-@@ -712,8 +682,7 @@
+@@ -469,8 +453,7 @@
  
  ##
- # @VNC_CONNECTED:
+ # @NumaOptions:
 -#
--# Emitted when a VNC client establishes a connection
-+#     Emitted when a VNC client establishes a connection
+-# A discriminated record of NUMA options.  (for OptsVisitor)
++#     A discriminated record of NUMA options.  (for OptsVisitor)
  #
- # @server: server information
+ # @type: NUMA option type
  #
-@@ -741,9 +710,8 @@
+@@ -488,8 +471,7 @@
  
  ##
- # @VNC_INITIALIZED:
+ # @NumaNodeOptions:
 -#
--# Emitted after authentication takes place (if any) and the VNC
--# session is made active
-+#     Emitted after authentication takes place (if any) and the VNC
-+#     session is made active
+-# Create a guest NUMA node.  (for OptsVisitor)
++#     Create a guest NUMA node.  (for OptsVisitor)
  #
- # @server: server information
+ # @nodeid: NUMA node ID (increase by 1 from 0 if omitted)
  #
-@@ -768,8 +736,7 @@
+@@ -521,8 +503,7 @@
  
  ##
- # @VNC_DISCONNECTED:
+ # @NumaDistOptions:
 -#
--# Emitted when the connection is closed
-+#     Emitted when the connection is closed
+-# Set the distance between 2 NUMA nodes.
++#     Set the distance between 2 NUMA nodes.
  #
- # @server: server information
+ # @src: source NUMA node.
  #
-@@ -800,8 +767,7 @@
+@@ -542,8 +523,7 @@
  
  ##
- # @MouseInfo:
+ # @CXLFixedMemoryWindowOptions:
 -#
--# Information about a mouse device.
-+#     Information about a mouse device.
+-# Create a CXL Fixed Memory Window
++#     Create a CXL Fixed Memory Window
  #
- # @name: the name of the mouse device
- #
-@@ -820,8 +786,7 @@
+ # @size: Size of the Fixed Memory Window in bytes.  Must be a multiple
+ #     of 256MiB.
+@@ -565,8 +545,7 @@
  
  ##
- # @query-mice:
+ # @CXLFMWProperties:
 -#
--# Return information about each active mouse device
-+#     Return information about each active mouse device
+-# List of CXL Fixed Memory Windows.
++#     List of CXL Fixed Memory Windows.
  #
- # Returns: a list of info for each device
+ # @cxl-fmw: List of `CXLFixedMemoryWindowOptions`
  #
-@@ -1005,8 +970,7 @@
+@@ -578,8 +557,7 @@
  
  ##
- # @KeyValue:
+ # @X86CPURegister32:
 -#
--# Represents a keyboard key.
-+#     Represents a keyboard key.
+-# A X86 32-bit register
++#     A X86 32-bit register
  #
- # @type: key encoding
- #
-@@ -1021,8 +985,7 @@
+ # Since: 1.5
+ ##
+@@ -588,8 +566,7 @@
  
  ##
- # @send-key:
+ # @X86CPUFeatureWordInfo:
 -#
--# Send keys to guest.
-+#     Send keys to guest.
+-# Information about a X86 CPU feature word
++#     Information about a X86 CPU feature word
  #
- # @keys: An array of `KeyValue` elements.  All @KeyValues in this
- #     array are simultaneously sent to the guest.  A `KeyValue`.number
-@@ -1050,8 +1013,7 @@
+ # @cpuid-input-eax: Input EAX value for CPUID instruction for that
+ #     feature word
+@@ -611,9 +588,8 @@
  
  ##
- # @InputButton:
+ # @DummyForceArrays:
 -#
--# Button of a pointer input device (mouse, tablet).
-+#     Button of a pointer input device (mouse, tablet).
+-# Not used by QMP; hack to let us use X86CPUFeatureWordInfoList
+-# internally
++#     Not used by QMP; hack to let us use X86CPUFeatureWordInfoList
++#     internally
  #
- # @side: front side button of a 5-button mouse (since 2.9)
- #
-@@ -1067,8 +1029,7 @@
+ # Since: 2.5
+ ##
+@@ -795,8 +771,7 @@
  
  ##
- # @InputAxis:
+ # @memsave:
 -#
--# Position axis of a pointer input device (mouse, tablet).
-+#     Position axis of a pointer input device (mouse, tablet).
+-# Save a portion of guest memory to a file.
++#     Save a portion of guest memory to a file.
  #
- # Since: 2.0
- ##
-@@ -1077,8 +1038,7 @@
+ # @val: the virtual address of the guest to start from
+ #
+@@ -828,8 +803,7 @@
  
  ##
- # @InputMultiTouchType:
+ # @pmemsave:
 -#
--# Type of a multi-touch event.
-+#     Type of a multi-touch event.
+-# Save a portion of guest physical memory to a file.
++#     Save a portion of guest physical memory to a file.
  #
- # @begin: A new touch event sequence has just started.
+ # @val: the physical address of the guest to start from
  #
-@@ -1097,8 +1057,7 @@
+@@ -857,8 +831,7 @@
  
  ##
- # @InputKeyEvent:
+ # @Memdev:
 -#
--# Keyboard input event.
-+#     Keyboard input event.
+-# Information about memory backend
++#     Information about memory backend
  #
- # @key: Which key this event is for.
+ # @id: backend's ID if backend has 'id' property (since 2.9)
  #
-@@ -1112,8 +1071,7 @@
+@@ -898,8 +871,7 @@
  
  ##
- # @InputBtnEvent:
+ # @query-memdev:
 -#
--# Pointer button input event.
-+#     Pointer button input event.
+-# Return information for all memory backends.
++#     Return information for all memory backends.
  #
- # @button: Which button this event is for.
+ # Since: 2.1
  #
-@@ -1127,8 +1085,7 @@
+@@ -1074,9 +1046,9 @@
  
  ##
- # @InputMoveEvent:
+ # @set-numa-node:
 -#
--# Pointer motion input event.
-+#     Pointer motion input event.
+-# Runtime equivalent of '-numa' CLI option, available at preconfigure
+-# stage to configure numa mapping before initializing machine.
++#     Runtime equivalent of '-numa' CLI option, available at
++#     preconfigure stage to configure numa mapping before initializing
++#     machine.
  #
- # @axis: Which axis is referenced by @value.
- #
-@@ -1143,8 +1100,7 @@
+ # Since: 3.0
+ ##
+@@ -1087,8 +1059,7 @@
  
  ##
- # @InputMultiTouchEvent:
+ # @balloon:
 -#
--# MultiTouch input event.
-+#     MultiTouch input event.
+-# Request the balloon driver to change its balloon size.
++#     Request the balloon driver to change its balloon size.
  #
- # @type: The type of multi-touch event.
- #
-@@ -1226,8 +1182,7 @@
+ # @value: the target logical size of the VM in bytes.  We can deduce
+ #     the size of the balloon using this formula:
+@@ -1122,8 +1093,7 @@
  
  ##
- # @InputEvent:
+ # @BalloonInfo:
 -#
--# Input event union.
-+#     Input event union.
+-# Information about the guest balloon device.
++#     Information about the guest balloon device.
  #
- # @type: the type of input event
- #
-@@ -1316,8 +1271,7 @@
+ # @actual: the logical size of the VM in bytes.  Formula used:
+ #     logical_vm_size = vm_ram_size - balloon_size
+@@ -1134,8 +1104,7 @@
  
  ##
- # @DisplayGTK:
+ # @query-balloon:
 -#
--# GTK display options.
-+#     GTK display options.
+-# Return information about the balloon device.
++#     Return information about the balloon device.
  #
- # @clipboard: Enable host-guest clipboard sharing.  Defaults to "off".
- #     (Since 11.1)
-@@ -1357,8 +1311,7 @@
+ # Errors:
+ #     - If the balloon driver is enabled but not functional because
+@@ -1156,10 +1125,9 @@
  
  ##
- # @DisplayEGLHeadless:
+ # @BALLOON_CHANGE:
 -#
--# EGL headless display options.
-+#     EGL headless display options.
+-# Emitted when the guest changes the actual BALLOON level.  This value
+-# is equivalent to the @actual field return by the `query-balloon`
+-# command
++#     Emitted when the guest changes the actual BALLOON level.  This
++#     value is equivalent to the @actual field return by the
++#     `query-balloon` command
  #
- # @rendernode: Which DRM render node should be used.  Default is the
- #     first available node on the host.
-@@ -1370,8 +1323,7 @@
+ # @actual: the logical size of the VM in bytes.  Formula used:
+ #     logical_vm_size = vm_ram_size - balloon_size
+@@ -1179,8 +1147,7 @@
  
  ##
- # @DisplayDBus:
+ # @HvBalloonInfo:
 -#
--# DBus display options.
-+#     DBus display options.
+-# hv-balloon guest-provided memory status information.
++#     hv-balloon guest-provided memory status information.
  #
- # @addr: The D-Bus bus address (default to the session bus).
- #
-@@ -1393,8 +1345,7 @@
+ # @committed: the amount of memory in use inside the guest plus the
+ #     amount of the memory unusable inside the guest (ballooned out,
+@@ -1196,9 +1163,8 @@
  
  ##
- # @DisplayGLMode:
+ # @query-hv-balloon-status-report:
 -#
--# Display OpenGL mode.
-+#     Display OpenGL mode.
+-# Return the hv-balloon driver data contained in the last received
+-# "STATUS" message from the guest.
++#     Return the hv-balloon driver data contained in the last received
++#     "STATUS" message from the guest.
  #
- # @off: Disable OpenGL (default).
- #
-@@ -1413,8 +1364,7 @@
+ # Errors:
+ #     - If no hv-balloon device is present, guest memory status
+@@ -1239,8 +1205,7 @@
  
  ##
- # @DisplayCurses:
+ # @MemoryInfo:
 -#
--# Curses display options.
-+#     Curses display options.
+-# Actual memory information in bytes.
++#     Actual memory information in bytes.
  #
- # @charset: Font charset used by guest (default: CP437).
- #
-@@ -1425,8 +1375,7 @@
+ # @base-memory: size of "base" memory specified with command line
+ #     option -m.
+@@ -1273,8 +1238,7 @@
  
  ##
- # @DisplayCocoa:
+ # @PCDIMMDeviceInfo:
 -#
--# Cocoa display options.
-+#     Cocoa display options.
+-# PCDIMMDevice state information
++#     PCDIMMDevice state information
  #
- # @left-command-key: Enable/disable forwarding of left command key to
- #     guest.  Allows command-tab window switching on the host without
-@@ -1461,8 +1410,8 @@
+ # @id: device's ID
+ #
+@@ -1309,8 +1273,7 @@
  
  ##
- # @HotKeyMod:
+ # @VirtioPMEMDeviceInfo:
 -#
--# Set of modifier keys that need to be held for shortcut key actions.
-+#    Set of modifier keys that need to be held for shortcut key
-+#    actions.
+-# VirtioPMEM state information
++#     VirtioPMEM state information
  #
- # Since: 7.1
- ##
-@@ -1471,8 +1420,7 @@
+ # @id: device's ID
+ #
+@@ -1332,8 +1295,7 @@
  
  ##
- # @DisplaySDL:
+ # @VirtioMEMDeviceInfo:
 -#
--# SDL2 display options.
-+#     SDL2 display options.
+-# VirtioMEMDevice state information
++#     VirtioMEMDevice state information
  #
- # @grab-mod: Modifier keys that should be pressed together with the
- #     "G" key to release the mouse grab.
-@@ -1484,8 +1432,7 @@
+ # @id: device's ID
+ #
+@@ -1367,8 +1329,7 @@
  
  ##
- # @DisplayType:
+ # @SgxEPCDeviceInfo:
 -#
--# Display (user interface) type.
-+#     Display (user interface) type.
+-# Sgx EPC state information
++#     Sgx EPC state information
  #
- # @default: The default user interface, selecting from the first
- #     available of gtk, sdl, cocoa, and vnc.
-@@ -1535,8 +1482,7 @@
+ # @id: device's ID
+ #
+@@ -1393,8 +1354,7 @@
  
  ##
- # @DisplayOptions:
+ # @HvBalloonDeviceInfo:
 -#
--# Display (user interface) options.
-+#     Display (user interface) options.
+-# hv-balloon provided memory state information
++#     hv-balloon provided memory state information
  #
- # @type: Which `DisplayType` QEMU should use.
+ # @id: device's ID
  #
-@@ -1573,8 +1519,7 @@
+@@ -1523,8 +1483,7 @@
  
  ##
- # @query-display-options:
+ # @MemoryDeviceInfo:
 -#
--# Return information about display configuration
-+#     Return information about display configuration
+-# Union containing information about a memory device
++#     Union containing information about a memory device
  #
- # Since: 3.1
- ##
-@@ -1583,8 +1528,7 @@
+ # @type: memory device type
+ #
+@@ -1545,8 +1504,7 @@
  
  ##
- # @DisplayReloadType:
+ # @SgxEPC:
 -#
--# Available DisplayReload types.
-+#     Available DisplayReload types.
+-# Sgx EPC cmdline information
++#     Sgx EPC cmdline information
  #
- # @vnc: VNC display
+ # @memdev: memory backend linked with device
  #
-@@ -1595,8 +1539,7 @@
+@@ -1562,8 +1520,7 @@
  
  ##
- # @DisplayReloadOptionsVNC:
+ # @SgxEPCProperties:
 -#
--# Specify the VNC reload options.
-+#     Specify the VNC reload options.
+-# SGX properties of machine types.
++#     SGX properties of machine types.
  #
- # @tls-certs: reload tls certs or not.
+ # @sgx-epc: list of ids of memory-backend-epc objects.
  #
-@@ -1607,8 +1550,7 @@
+@@ -1575,8 +1532,7 @@
  
  ##
- # @DisplayReloadOptions:
+ # @query-memory-devices:
 -#
--# Options of the display configuration reload.
-+#     Options of the display configuration reload.
+-# Lists available memory devices and their state
++#     Lists available memory devices and their state
  #
- # @type: Specify the display type.
+ # Since: 2.1
  #
-@@ -1621,8 +1563,7 @@
+@@ -1626,8 +1582,7 @@
  
  ##
- # @display-reload:
+ # @BootConfiguration:
 -#
--# Reload display configuration.
-+#     Reload display configuration.
+-# Schema for virtual machine boot configuration.
++#     Schema for virtual machine boot configuration.
  #
- # Since: 6.0
+ # @order: Boot order (a=floppy, c=hard disk, d=CD-ROM, n=network)
  #
-@@ -1638,8 +1579,7 @@
+@@ -1711,8 +1666,7 @@
  
  ##
- # @DisplayUpdateType:
+ # @x-query-irq:
 -#
--# Available DisplayUpdate types.
-+#     Available DisplayUpdate types.
+-# Query interrupt statistics
++#     Query interrupt statistics
  #
- # @vnc: VNC display
+ # Features:
  #
-@@ -1650,8 +1590,7 @@
+@@ -1728,8 +1682,7 @@
  
  ##
- # @DisplayUpdateOptionsVNC:
+ # @x-query-jit:
 -#
--# Specify the VNC reload options.
-+#     Specify the VNC reload options.
+-# Query TCG compiler statistics
++#     Query TCG compiler statistics
  #
- # @addresses: If specified, change set of addresses to listen for
- #     connections.  Addresses configured for websockets are not
-@@ -1664,8 +1603,7 @@
+ # Features:
+ #
+@@ -1746,8 +1699,7 @@
  
  ##
- # @DisplayUpdateOptions:
+ # @x-query-numa:
 -#
--# Options of the display configuration reload.
-+#     Options of the display configuration reload.
+-# Query NUMA topology information
++#     Query NUMA topology information
  #
- # @type: Specify the display type.
+ # Features:
  #
-@@ -1678,8 +1616,7 @@
+@@ -1763,8 +1715,7 @@
  
  ##
- # @display-update:
+ # @x-query-ramblock:
 -#
--# Update display configuration.
-+#     Update display configuration.
+-# Query system ramblock information
++#     Query system ramblock information
  #
- # Since: 7.1
+ # Features:
  #
+@@ -1780,8 +1731,7 @@
+ 
+ ##
+ # @x-query-roms:
+-#
+-# Query information on the registered ROMS
++#     Query information on the registered ROMS
+ #
+ # Features:
+ #
+@@ -1797,8 +1747,7 @@
+ 
+ ##
+ # @x-query-usb:
+-#
+-# Query information on the USB devices
++#     Query information on the USB devices
+ #
+ # Features:
+ #
+@@ -1829,8 +1778,7 @@
+ 
+ ##
+ # @MemorySizeConfiguration:
+-#
+-# Schema for memory size configuration.
++#     Schema for memory size configuration.
+ #
+ # @size: memory size in bytes
+ #
+@@ -1847,8 +1795,7 @@
+ 
+ ##
+ # @dumpdtb:
+-#
+-# Save the FDT in dtb format.
++#     Save the FDT in dtb format.
+ #
+ # @filename: name of the dtb file to be created
+ #
+@@ -1866,8 +1813,7 @@
+ 
+ ##
+ # @x-query-interrupt-controllers:
+-#
+-# Query information on interrupt controller devices
++#     Query information on interrupt controller devices
+ #
+ # Features:
+ #
+@@ -1897,8 +1843,7 @@
+ 
+ ##
+ # @query-firmware-log:
+-#
+-# Find firmware memory log buffer in guest memory, return content.
++#     Find firmware memory log buffer in guest memory, return content.
+ #
+ # @max-size: limit the amount of log data returned.  Up to 1 MiB of
+ #     log data is allowed.  In case the amount of log data is larger
+@@ -1912,8 +1857,7 @@
+ 
+ ##
+ # @dump-skeys:
+-#
+-# Dump the storage keys for an s390x guest
++#     Dump the storage keys for an s390x guest
+ #
+ # @filename: the path to the file to dump to
+ #
+@@ -1951,8 +1895,7 @@
+ 
+ ##
+ # @CpuModelExpansionType:
+-#
+-# An enumeration of CPU model expansion types.
++#     An enumeration of CPU model expansion types.
+ #
+ # @static: Expand to a static CPU model, a combination of a static
+ #     base model name and property delta changes.  As the static base
+@@ -2009,8 +1952,7 @@
+ 
+ ##
+ # @CpuModelBaselineInfo:
+-#
+-# The result of a CPU model baseline.
++#     The result of a CPU model baseline.
+ #
+ # @model: the baselined `CpuModelInfo`.
+ #
+@@ -2021,8 +1963,7 @@
+ 
+ ##
+ # @CpuModelCompareInfo:
+-#
+-# The result of a CPU model comparison.
++#     The result of a CPU model comparison.
+ #
+ # @result: The result of the compare operation.
+ #
+@@ -2153,8 +2094,7 @@
+ 
+ ##
+ # @CpuModelExpansionInfo:
+-#
+-# The result of a cpu model expansion.
++#     The result of a cpu model expansion.
+ #
+ # @model: the expanded `CpuModelInfo`.
+ #
+@@ -2223,8 +2163,7 @@
+ 
+ ##
+ # @CpuDefinitionInfo:
+-#
+-# Virtual CPU definition.
++#     Virtual CPU definition.
+ #
+ # @name: the name of the CPU definition
+ #
+@@ -2285,8 +2224,7 @@
+ 
+ ##
+ # @query-cpu-definitions:
+-#
+-# Return a list of supported virtual CPU definitions
++#     Return a list of supported virtual CPU definitions
+ #
+ # Since: 1.2
+ ##
 -- 
 2.55.0
 
