@@ -4,102 +4,139 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFF38C61DC4
-	for <qemu-trivial@archiver.kernel.org>; Thu, 27 Aug 2026 13:40:05 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DF748C61DB9
+	for <qemu-trivial@archiver.kernel.org>; Thu, 27 Aug 2026 22:28:09 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1wzaKf-0007yy-8g; Thu, 27 Aug 2026 09:39:53 -0400
+	id 1wziYL-0005Cx-1d; Thu, 27 Aug 2026 18:26:33 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wzaKe-0007yS-5V
- for qemu-trivial@nongnu.org; Thu, 27 Aug 2026 09:39:52 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <daniel.barboza@oss.qualcomm.com>)
+ id 1wziYC-0005BA-Vs
+ for qemu-trivial@nongnu.org; Thu, 27 Aug 2026 18:26:26 -0400
+Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1wzaKb-0003sM-Jp
- for qemu-trivial@nongnu.org; Thu, 27 Aug 2026 09:39:51 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1787837987;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=qH3mShZB+XOmnEkPOPaAr/PtkuZBNwHw182S/VQMPXc=;
- b=UgQ4JNsyW4w0NJ3ZwsveLHJF6DwNjIrUedN2N0NnF0+mjzTOY2hh1RLzxia3NIpjE4dPdc
- iqslzDuYFur6nPnuda7FgVJsgbs7Qb+TGgPNnuUX3CSNo8R6CUyg3wYiFvjfuMzGXtknaJ
- HVRqk8X3+F2WvPAM3/N0Pr5sM2gOmys=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-369-EVneE2scN0KFRW4rq_rn7A-1; Thu,
- 27 Aug 2026 09:39:44 -0400
-X-MC-Unique: EVneE2scN0KFRW4rq_rn7A-1
-X-Mimecast-MFC-AGG-ID: EVneE2scN0KFRW4rq_rn7A_1787837977
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 0BE93195DE19; Thu, 27 Aug 2026 13:39:36 +0000 (UTC)
-Received: from redhat.com (headnet05.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.117])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 67DC418005AD; Thu, 27 Aug 2026 13:39:26 +0000 (UTC)
-Date: Thu, 27 Aug 2026 14:39:23 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Markus Armbruster <armbru@redhat.com>
-Cc: John Snow <jsnow@redhat.com>, qemu-devel@nongnu.org,
- Alex Williamson <alex@shazbot.org>, linux-cxl@vger.kernel.org,
- Michael Tokarev <mjt@tls.msk.ru>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Peter Xu <peterx@redhat.com>, Eric Blake <eblake@redhat.com>,
- =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
- zhenwei pi <zhenwei.pi@linux.dev>, qemu-trivial@nongnu.org,
- Fabiano Rosas <farosas@suse.de>, Kevin Wolf <kwolf@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, Jiri Pirko <jiri@resnulli.us>,
- qemu-block@nongnu.org, Stefan Hajnoczi <stefanha@redhat.com>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>, linux-edac@vger.kernel.org,
- "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- Igor Mammedov <imammedo@redhat.com>, Gerd Hoffmann <kraxel@redhat.com>,
- Jonathan Cameron <jic23@kernel.org>,
- Alex =?utf-8?Q?Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Zhao Liu <zhao1.liu@intel.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>,
- "Michael S. Tsirkin" <mst@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Jason Wang <jasowangio@gmail.com>,
- Richard Henderson <richard.henderson@linaro.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Ani Sinha <anisinha@redhat.com>,
- Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- Lukas Straub <lukasstraub2@web.de>,
- =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>
-Subject: Re: [PATCH v3 01/43] qapi: convert trivial intro sections for
- error.json
-Message-ID: <apA-CzGqrlFNfjp5@redhat.com>
-References: <20260826193840.2152000-1-jsnow@redhat.com>
- <20260826193840.2152000-2-jsnow@redhat.com>
- <ao_-_38raHK0rWkX@redhat.com> <87jypb90c0.fsf@pond.sub.org>
+ (Exim 4.90_1) (envelope-from <daniel.barboza@oss.qualcomm.com>)
+ id 1wziYB-000193-3I
+ for qemu-trivial@nongnu.org; Thu, 27 Aug 2026 18:26:24 -0400
+Received: from pps.filterd (m0279868.ppops.net [127.0.0.1])
+ by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 67RJLomo547115
+ for <qemu-trivial@nongnu.org>; Thu, 27 Aug 2026 22:26:21 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
+ cc:content-transfer-encoding:content-type:date:from:message-id
+ :mime-version:subject:to; s=qcppdkim1; bh=H9ZC+A1WzsF43avK7KUE91
+ 59B+Vo4VcjNzwETS0M68c=; b=A5+kJ748dXe51UbYbwdsYRY/Ad/rhd2SN8cSTz
+ YYUdF97unC7R3jyt8C+0yq+2TGnr22OVwPXfB7k4b85MiW4Kb2uF8aRkEeZ7A5aj
+ Y2TV2F0Bp3Qs94NccEr0S9wsYlNbyE67yzWiJMJa8GHC/QCPNez/FMg4Ey2bSrOb
+ TBwnievMqSIn9gUDtl/0c/qnuTEhPT+PVfXq4ekBei4/3kqx+CG2EvW7F7fmYbE4
+ DAFOS1WtoiHQ6RgTTPmrGJAjUB198UNrvUXUZyiV9763rM4yGT9Cgm6zGmKu1hnx
+ RgQQXgzZ+ww/rrxw9u7aBP4o41WMgeQCzmt0ju/Ah+eWxKuw==
+Received: from mail-qk1-f199.google.com (mail-qk1-f199.google.com
+ [209.85.222.199])
+ by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4gak562uqd-1
+ (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
+ for <qemu-trivial@nongnu.org>; Thu, 27 Aug 2026 22:26:20 +0000 (GMT)
+Received: by mail-qk1-f199.google.com with SMTP id
+ af79cd13be357-92e4f946461so45711085a.2
+ for <qemu-trivial@nongnu.org>; Thu, 27 Aug 2026 15:26:20 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=oss.qualcomm.com; s=google; t=1787869580; x=1788474380; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:from:to:cc:subject:date:message-id:reply-to
+ :content-type; bh=H9ZC+A1WzsF43avK7KUE9159B+Vo4VcjNzwETS0M68c=;
+ b=Pff4AJroHJuxqTNAXJVSCB/xq+rXH/2erq4RnZYa0+zqZzbOKxrOzNYEx8ypJwEsxK
+ 9bI6z01L3FN4mppXdnu+YZ7Je046ds9dsZM0uEfg1oq6PmiGJTClrSzAzTyBE3f4GlL+
+ +vNIjsVHWBYCFfHJTh59IHyqQ+EZWh6V1Vf5F52lod4ht/WtKjpRmsdrJuxgA/5piXwH
+ r+TQZ/KJSCoWUwAYKryd6gqHsO1m+vnhxHvan6lmRAfIIgBZL1DLY+4J5hCEDc+SgLrN
+ 9PsO4VbK0ce9LjJJPXxhHB0piS+aL4K647A+Z4lmGNcXVhRwaurON942mK5+uiwjJfih
+ JmNA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20251104; t=1787869580; x=1788474380;
+ h=content-transfer-encoding:content-type:mime-version:message-id:date
+ :subject:cc:to:from:x-gm-gg:x-gm-message-state:from:to:cc:subject
+ :date:message-id:reply-to:content-type;
+ bh=H9ZC+A1WzsF43avK7KUE9159B+Vo4VcjNzwETS0M68c=;
+ b=DeGSx6iO1K7EVmUXZ2AQYb3Y6lkNMNaSBenK63vwMYwB1AVPDJfxn/3/NAm9aCbjqB
+ imkxm8I86/GDfBw7S/60U5LfNXHjdQNuHD/F5Lw+K3/llBsuAjtgz/mOYav6nQj8JxOr
+ kOr+KFpccII0C5mbXY1XgilzcvcBTLCKvjg/buvY9ETQUE3AzvOYUhW32leNFEabdb9Y
+ osTmMciz2x65doXK0LgEy2HPsgJtBjTKjwlcQsxXYm7jNDruVIR6nl1y5rcKk+/ga8/y
+ LjVr2yb9EiJ2dyXN5CG0WmbcHPDQb2ltLPd2ugjlRvIZl45Aj+Bn4GTNYgRJIIfTPwLl
+ pURA==
+X-Forwarded-Encrypted: i=1;
+ AHgh+RoYVlOmmELvMtdWMMQ6+1tQCASRwBedDnDg3lfL4lNUTzUpL3+2x8hFZiHjlF7aFjyBpXmWNv7ni0EKtjk=@nongnu.org
+X-Gm-Message-State: AFuF++lVs62OVeEtkX9MrIySet5oxDT5J96/f23dU76u8ibVBRaWZ0lt
+ xloWn2zbX/S6s7apTgwzY3Xxv8V8+i9pARGJJ4IDeTXuJjp+cb/XmI7hkEW60AZmJcrhYILq53r
+ 3sYkxBcBduJ8BweigAeG/Kh1wyuog7cocXA+GPM/YUfCiLDE3KwQmMenJ9k4k
+X-Gm-Gg: AR+sD12pIbVepDzVeg2GX/AtRPwQmDeVOYY+jxAKk6bmWc7dWDD3lKip/80f6pr6BAs
+ 6tJ2QfsUofFvf4J+BreInRUvUXEpu2sG5GR15N1Yg+NdhBB3URBa+Roi7SitVF0uvDSttwK2nGg
+ ISlQvNAag3J1FXGRYDuCVZikqd1SqwKjZ6iHUkvDEVbpRq6nfAqjGZM39Tm+PuJSvG90xzKoNBo
+ aT3DrtUtU9ZChv0Dq3Ufis8+rTavO5S773IvdMzgGXmWLBXBncI/mTCNTMiPFq3PpWCwgin4sCQ
+ wGsMR/MXvr/b+LblYsiiQ52oqO3PWyWgv6ZA3jPqkqYLooHgMkIvZVmadnpBbYYo+wqhaaOfJ+y
+ VjrV8FvuvR+qf5D5kmMqW85W/ySpkJugg1xlDgw==
+X-Received: by 2002:a05:620a:4056:b0:915:c4de:7ac0 with SMTP id
+ af79cd13be357-939139550a7mr258339585a.31.1787869580123; 
+ Thu, 27 Aug 2026 15:26:20 -0700 (PDT)
+X-Received: by 2002:a05:620a:4056:b0:915:c4de:7ac0 with SMTP id
+ af79cd13be357-939139550a7mr258334485a.31.1787869579681; 
+ Thu, 27 Aug 2026 15:26:19 -0700 (PDT)
+Received: from QCOM-UWl2o8bcGT.qualcomm.com ([189.38.141.232])
+ by smtp.gmail.com with ESMTPSA id
+ af79cd13be357-939173a734dsm8924985a.26.2026.08.27.15.26.16
+ (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
+ Thu, 27 Aug 2026 15:26:18 -0700 (PDT)
+From: Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-riscv@nongnu.org, alistair.francis@wdc.com, liwei1518@gmail.com,
+ zhiwei_liu@linux.alibaba.com, chao.liu@processmission.com,
+ Daniel Henrique Barboza <daniel.barboza@oss.qualcomm.com>,
+ Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>,
+ qemu-trivial@nongnu.org (open list:Trivial patches)
+Subject: [PATCH v4 00/14] hw/riscv: trivial code dup work (riscv-server-ref
+ prep)
+Date: Thu, 27 Aug 2026 19:25:53 -0300
+Message-ID: <20260827222608.329788-1-daniel.barboza@oss.qualcomm.com>
+X-Mailer: git-send-email 2.43.0
 MIME-Version: 1.0
-In-Reply-To: <87jypb90c0.fsf@pond.sub.org>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: 43Pc5DYjAKfg5p6rZa4T8hlnBOgO7rbY-wJh5vLWEO4_1787837977
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+X-Proofpoint-Spam-Info: AW1haW4tMjYwODI3MDE5MCBTYWx0ZWRfX/rJx/oqXcw7h
+ APrRTosC020mrUYwTh7dB2XqARDPXGBhv+jKAhI9m+MfjvHXUmG0TKAdUoMcX6r+NtvQ5plpYjf
+ z1raqySJyPFynTHTmhsloawldEaEqZo=
+X-Proofpoint-ORIG-GUID: bghyFYe4VsCVA2BYpBZNP-lGJ2Ym9pf5
+X-Proofpoint-GUID: bghyFYe4VsCVA2BYpBZNP-lGJ2Ym9pf5
+X-Authority-Analysis: v=2.4 cv=G+Ms1dk5 c=1 sm=1 tr=0 ts=6a90b98c cx=c_pps
+ a=HLyN3IcIa5EE8TELMZ618Q==:117 a=MCIxunHWmQOg/5OnbzXZaw==:17
+ a=IkcTkHD0fZMA:10 a=Sv0fKeRqtYgA:10 a=s4-Qcg_JpJYA:10
+ a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=ZpdpYltYx_vBUK5n70dp:22
+ a=VwQbUJbxAAAA:8 a=EUspDBNiAAAA:8 a=GV9jUkj38Kx6g6Zk9FYA:9 a=QEXdDO2ut3YA:10
+ a=bTQJ7kPSJx9SKPbeHEYW:22
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYwODI3MDE5MCBTYWx0ZWRfXzsg7y7WlZMZa
+ KjQXyg2ODmTImFnn+8C+37f0sNXhJKDp5T1+/+AtR9fmDk92OryP1L7YqcOZOg+hWK1EuNWf4Lx
+ Wx78KGWel+yLeDk3g3Ly/WQDxuokWyIauIMGt8qrRdTJGmlmtz8fn5yptu89QK2HLcjsleGIohv
+ 5xZXWLeMqtwbyEbkHs3d0WyVN4UGGGGzLW2cwOt3yKkq7PqV/KTIW5FcCZ8jFORH1OoP0o8MoP0
+ 1FkYHoYZ27EQsq22ExnEdyd3NY5lvAvKiYRXNknuuYeSqzkXjZAeQlE3WOepVQq/HMpQR6XpNFF
+ kkyEGM9bdRpdw/VcnXwZEsTi8XOBhlyQ+31asCzRoFzC/fFXAgFH0TbZOjsMY5UzSGRwAX0jdEf
+ Dx+ST8Snl5YrCxRruz9epTXwlvHJLe2giANMK0n2R0a9Euaxu8E/sIudeP+3aFjK0vMfF+jdhId
+ pnHZpF5Bt6o9nWl57kw==
+X-Proofpoint-Virus-Version: vendor=baseguard
+ engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.134,FMLib:17.12.100.49
+ definitions=2026-08-27_08,2026-08-27_02,2025-10-01_01
+X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
+ priorityscore=1501 lowpriorityscore=0 adultscore=0 clxscore=1015 bulkscore=0
+ phishscore=0 spamscore=0 impostorscore=0 malwarescore=0 suspectscore=0
+ classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
+ reason=mlx scancount=1 engine=8.22.0-2606150000 definitions=main-2608270190
+Received-SPF: pass client-ip=205.220.180.131;
+ envelope-from=daniel.barboza@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
+X-Spam_bar: --
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -112,100 +149,89 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Thu, Aug 27, 2026 at 03:09:35PM +0200, Markus Armbruster wrote:
-> Daniel P. Berrangé <berrange@redhat.com> writes:
-> 
-> > On Wed, Aug 26, 2026 at 03:37:58PM -0400, John Snow wrote:
-> >> Signed-off-by: John Snow <jsnow@redhat.com>
-> >> ---
-> >>  qapi/error.json | 3 +--
-> >>  1 file changed, 1 insertion(+), 2 deletions(-)
-> >> 
-> >> diff --git a/qapi/error.json b/qapi/error.json
-> >> index 54cb02fb880..a53b13e55c9 100644
-> >> --- a/qapi/error.json
-> >> +++ b/qapi/error.json
-> >> @@ -9,8 +9,7 @@
-> >>  
-> >>  ##
-> >>  # @QapiErrorClass:
-> >> -#
-> >> -# QEMU error classes
-> >> +#     QEMU error classes
-> >
-> > Where is this need for indent coming from ?  From the POV of someone
-> > writing comments, the need to indent the introductory text like this
-> > feels very counter-intuitive, an exception from any other inline
-> > docs syntax I've typically used. Is there any way we can avoid this ?
-> 
-> The cover letter explains the need:
+Hello,
 
-Yes, I just didn't see the connection from that, to the use
-of indent.
+In this version the most notable change is in patch 9, where we left the
+tt-atlantis out of the changes being done.  The reason is that the board
+will have UART related changes soon, and the UART FDT will be most
+likely impacted, thus it's better to wait for the DT to stabilize first.
 
-> 
->     This is being done primarily for the benefit of the forthcoming
->     "inliner", a feature for the rendered HTML QMP documentation that
->     seeks to "inline" QMP command argument documentation into the argument
->     list for each command.
-> 
->     There are two main motives here:
-> 
->     (1) We want the split between the "introduction" and "details"
->         sections to be mechanically obvious, so that auto-generated or
->         inlined documentation has a well-defined, obvious spot to go.
-> 
->     (2) We do not want to inline irrelevant, introductory text describing
->         structures to be copied into command documentation.
+Other change done is the "local phandle" handling.  For all helpers that
+receives a 'next_phandle' pointer we'll check if the pointer is valid
+and use its val as next phandle.  Otherwise we'll use
+qemu_fdt_alloc_phandle().
 
-So IIUC, you're saying that we are going to rely on indentation
-to distinguish introduction from details ?
+Other minor changes were also done following the discussions in v3.
 
+Patches based on alistair/riscv-to-apply.next.
 
-> Note that the inliner elided Netdev's Intro "Captures the configuration
-> of a network device."
-> 
-> However, when Intro and Details bleed together, the inliner elides more
-> than it should.  I consider that a fairly serious issue.
-> 
-> I'm afraid forgetting to mark the end of Intro with "Details:" would be
-> a common mistake, easy to miss in review.  So I explored possible
-> alternatives:
-> 
->     Subject: Re: [PATCH v2 00/10] qapi: enforce section ordering
->     Date: Wed, 15 Apr 2026 11:43:45 +0200
->     Message-ID: <87zf341ru6.fsf@pond.sub.org>
->     https://lore.kernel.org/qemu-devel/87zf341ru6.fsf@pond.sub.org/
-> 
-> John is working towards "3. Make the end of intro syntactically obvious"
-> always, specifically "3c. Indent intro like descriptions and tagged
-> sections" with the ultimate goal to reject unindented Intro.  That way,
-> we cannot write an Intro with an unclear end.  John, correct me if I'm
-> accidentally misrepresenting your work.
-> 
-> Questions?  Better ideas?
+Changes from v3:
+- patch 3:
+  - renamed 'phandle' to 'next_phandle'.  If non-null the helper will
+    use (*next_phandle) as the phandle value for the new subnode.
+    Otherwise the helper will retrieve a phandle via qemu_fdt_alloc_phandle().
+- patch 4:
+  - added a new 'next_phandle' optional pointer.  If non-null the helper
+    will use (*next_phandle) as the phandle value for the new subnode.
+    Otherwise the helper will retrieve a phandle via qemu_fdt_alloc_phandle();
+  - removed the iommu_irq_map array;
+  - instead of returning 'void' return the DT iommu phandle.
+- patch 6:
+  - renamed 'phandle' to 'next_phandle'.  If non-null the helper will
+    use (*next_phandle) as the phandle value for the new subnode.
+    Otherwise the helper will retrieve a phandle via qemu_fdt_alloc_phandle().
+- patch 7:
+  - renamed 'phandle' to 'next_phandle'.  If non-null the helper will
+    use (*next_phandle) as the phandle value for the new subnode.
+    Otherwise the helper will retrieve a phandle via qemu_fdt_alloc_phandle().
+- patch 9:
+  - removed all tt-atlantis.c changes;
+  - renamed irq_mmio_phandle to irq_phandle;
+  - removed both bool flags;
+  - "/chosen" and "/alias" are now set manually by the board;
+  - a new riscv_fdt_get_uart_nodename() helper were added;
+  - added an UART_STD_CLOCK_FREQ to hide the magic 3.6864 MHz hardcoded
+    clock value.
+- patch 10:
+  - renamed irq_mmio_phandle to irq_phandle.
+- v3 link: https://lore.kernel.org/qemu-devel/20260826214643.122728-1-daniel.barboza@oss.qualcomm.com/
 
-As an author, how substantive is "Intro" expected to be? I guess on
-QAPI docs I've written I've not ever been aware of there even being
-a distinct concept of Intro vs Details to think about. It is all just
-some lines of prose to me.
+Daniel Henrique Barboza (14):
+  hw/riscv/fdt-common: prepend helpers with "riscv_"
+  hw/riscv/fdt-common, virt.c: add riscv_create_fdt_flash()
+  hw/riscv/fdt-common, virt.c: add riscv_create_fdt_syscon()
+  hw/riscv/fdt-common, virt.c: add riscv_create_fdt_riscv_iommu_sys()
+  hw/riscv/fdt_common, virt.c: add riscv_create_fdt_pcie()
+  hw/riscv/fdt_common, virt.c: add riscv_create_fdt_imsic()
+  hw/riscv/fdt_common, virt.c: add riscv_create_fdt_socket_aplic()
+  hw/riscv/fdt-common, virt.c: add riscv_create_fdt_socket_aclint()
+  hw/riscv/fdt-common, virt.c: add riscv_create_fdt_uart()
+  hw/riscv/fdt-common, virt.c: add riscv_create_fdt_rtc()
+  hw/riscv/device-common, virt.c: add riscv_create_platform_bus()
+  hw/riscv/device-common, virt.c: add flash helpers
+  hw/riscv/device-common, virt.c: add riscv_gpex_pcie_init()
+  hw/riscv/riscv-iommu-sys.c, virt.c: add riscv_create_iommu_sys()
 
-My only alternative idea to indentation would be to declare that the
-"Intro" is always the 1st paragraph of text and anything beyond that
-is the "Details". That might match up with the way that contributors
-naturally write text where the 1st paragraph conveys the key idea,
-such that they dno't need to think about Intro vs Details as a
-concept.
+ hw/riscv/device-common.c         | 168 ++++++
+ hw/riscv/fdt-common.c            | 612 +++++++++++++++++++++-
+ hw/riscv/meson.build             |   1 +
+ hw/riscv/riscv-iommu-sys.c       |  25 +
+ hw/riscv/riscv-iommu.h           |   3 +
+ hw/riscv/sifive_u.c              |  34 +-
+ hw/riscv/spike.c                 |  30 +-
+ hw/riscv/tt_atlantis.c           |  22 +-
+ hw/riscv/virt.c                  | 861 +++++--------------------------
+ include/hw/riscv/device-common.h |  32 ++
+ include/hw/riscv/fdt-common.h    | 146 +++++-
+ include/hw/riscv/virt.h          |  15 -
+ 12 files changed, 1111 insertions(+), 838 deletions(-)
+ create mode 100644 hw/riscv/device-common.c
+ create mode 100644 include/hw/riscv/device-common.h
 
-With regards,
-Daniel
 -- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+2.43.0
 
 
