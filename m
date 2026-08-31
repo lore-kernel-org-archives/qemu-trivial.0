@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E18EEC61DFD
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:22:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0260BC61DD3
+	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:23:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x18Wl-0001yJ-HJ; Mon, 31 Aug 2026 16:22:48 -0400
+	id 1x18XJ-0002o8-S7; Mon, 31 Aug 2026 16:23:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18WB-0001Ft-DG
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:22:14 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Wk-0001y3-Pg
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:22:48 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18W9-0007oU-Vr
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:22:11 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Wf-0007uv-J1
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:22:46 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788207729;
+ s=mimecast20190719; t=1788207760;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=yKAT3AByQqAPEWNoFggUat7b+8Hak/kL/bR6Gv1FXr8=;
- b=d35sqUpKpMYderoFUrQ84CvSANUiZb1S7lFOhAz/NNzhpncUb7t52M8fmJ1WZvHIGfBP3a
- pL0BMQi4uZnBjcsnhMr8SzuZMLYxlzIcxhL0PlsInXXxtZVkM2k/MxglXaGX7hBdFRKjkG
- 1h8olcYbp4+aTzuMbb1duVWORxokz4Q=
-Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ bh=YyMOc6fNO8ZdqDV2gIzSN+VkTBXIJrB1icvyY+sOx3Y=;
+ b=KjvCebGZBWSixF4Pk97WaFiJ7tEvrBc7CTivwE7sirz+cL2gVJVtkB5/L+98kLv+CW2EO8
+ I9su6dFcsW0Q/co6Bm0nPmwLVbmsN/4+AG3+h/8yGL+y8JkBstrdiemWRt1quqAS8vZ1kL
+ +9AAVm6FwvjSsKxyni57OPqPY4xsccQ=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-54-GluYs3xHMN-gr1CQ6mS6dA-1; Mon,
- 31 Aug 2026 16:22:03 -0400
-X-MC-Unique: GluYs3xHMN-gr1CQ6mS6dA-1
-X-Mimecast-MFC-AGG-ID: GluYs3xHMN-gr1CQ6mS6dA_1788207720
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-494-NqWVYzucPsitsaQxtuwhYw-1; Mon,
+ 31 Aug 2026 16:22:37 -0400
+X-MC-Unique: NqWVYzucPsitsaQxtuwhYw-1
+X-Mimecast-MFC-AGG-ID: NqWVYzucPsitsaQxtuwhYw_1788207753
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id E77E5182C496; Mon, 31 Aug 2026 20:21:35 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 064C41863EC8; Mon, 31 Aug 2026 20:21:53 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.63])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 1B0ED1800DB9; Mon, 31 Aug 2026 20:21:20 +0000 (UTC)
+ id 3461F18009BC; Mon, 31 Aug 2026 20:21:42 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -71,15 +71,14 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-trivial@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v4 09/43] qapi: convert trivial intro sections for
- machine-common.json
-Date: Mon, 31 Aug 2026 16:19:11 -0400
-Message-ID: <20260831201945.287730-10-jsnow@redhat.com>
+Subject: [PATCH v4 11/43] qapi: convert trivial intro sections for authz.json
+Date: Mon, 31 Aug 2026 16:19:13 -0400
+Message-ID: <20260831201945.287730-12-jsnow@redhat.com>
 In-Reply-To: <20260831201945.287730-1-jsnow@redhat.com>
 References: <20260831201945.287730-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: jIQ-3aYb9QV1LQs0vAeKgZ3UA1pmDGz1loig5KlY_qM_1788207720
+X-Mimecast-MFC-PROC-ID: IKd_0iyqlFrrWSbW1oQQp0xxRtkYhnC9WdgcDVraEpQ_1788207753
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -110,55 +109,83 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/machine-common.json | 14 +++++---------
- 1 file changed, 5 insertions(+), 9 deletions(-)
+ qapi/authz.json | 21 +++++++--------------
+ 1 file changed, 7 insertions(+), 14 deletions(-)
 
-diff --git a/qapi/machine-common.json b/qapi/machine-common.json
-index aca98e994af..fdb0e68d9e6 100644
---- a/qapi/machine-common.json
-+++ b/qapi/machine-common.json
-@@ -12,9 +12,8 @@
+diff --git a/qapi/authz.json b/qapi/authz.json
+index bc1123cc053..b76c39c53af 100644
+--- a/qapi/authz.json
++++ b/qapi/authz.json
+@@ -9,8 +9,7 @@
  
  ##
- # @S390CpuEntitlement:
+ # @QAuthZListPolicy:
 -#
--# An enumeration of CPU entitlements that can be assumed by a virtual
--# S390 CPU
-+#     An enumeration of CPU entitlements that can be assumed by a
-+#     virtual S390 CPU
+-# The authorization policy result
++#     The authorization policy result
  #
- # Since: 8.2
- ##
-@@ -23,8 +22,7 @@
+ # @deny: deny access
+ #
+@@ -24,8 +23,7 @@
  
  ##
- # @CpuTopologyLevel:
+ # @QAuthZListFormat:
 -#
--# An enumeration of CPU topology levels.
-+#     An enumeration of CPU topology levels.
+-# The authorization policy match format
++#     The authorization policy match format
  #
- # @thread: thread level, which would also be called SMT level or
- #     logical processor level.  The @threads option in
-@@ -84,8 +82,7 @@
+ # @exact: an exact string match
+ #
+@@ -39,8 +37,7 @@
  
  ##
- # @SmpCacheProperties:
+ # @QAuthZListRule:
 -#
--# Cache information for SMP system.
-+#     Cache information for SMP system.
+-# A single authorization rule.
++#     A single authorization rule.
  #
- # @cache: Cache name, which is the combination of cache level and
- #     cache type.
-@@ -103,8 +100,7 @@
+ # @match: a string or glob to match against a user identity
+ #
+@@ -57,8 +54,7 @@
  
  ##
- # @SmpCachePropertiesWrapper:
+ # @AuthZListProperties:
 -#
--# List wrapper of `SmpCacheProperties`.
-+#     List wrapper of `SmpCacheProperties`.
+-# Properties for authz-list objects.
++#     Properties for authz-list objects.
  #
- # @caches: the list of `SmpCacheProperties`.
+ # @policy: Default policy to apply when no rule matches (default:
+ #     deny)
+@@ -73,8 +69,7 @@
+ 
+ ##
+ # @AuthZListFileProperties:
+-#
+-# Properties for authz-listfile objects.
++#     Properties for authz-listfile objects.
  #
+ # @filename: File name to load the configuration from.  The file must
+ #     contain valid JSON for `AuthZListProperties`.
+@@ -93,8 +88,7 @@
+ 
+ ##
+ # @AuthZPAMProperties:
+-#
+-# Properties for authz-pam objects.
++#     Properties for authz-pam objects.
+ #
+ # @service: PAM service name to use for authorization
+ #
+@@ -105,8 +99,7 @@
+ 
+ ##
+ # @AuthZSimpleProperties:
+-#
+-# Properties for authz-simple objects.
++#     Properties for authz-simple objects.
+ #
+ # @identity: Identifies the allowed user.  Its format depends on the
+ #     network service that authorization object is associated with.
 -- 
 2.55.0
 
