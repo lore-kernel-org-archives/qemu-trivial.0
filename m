@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 20930C61DD3
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:25:23 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F007CC624A4
+	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:25:24 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x18YH-0005my-CI; Mon, 31 Aug 2026 16:24:21 -0400
+	id 1x18Xv-0004rH-Oa; Mon, 31 Aug 2026 16:24:01 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18YF-0005gT-F0
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:24:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18XA-0002if-V2
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:23:13 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18YD-0008Ik-Qd
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:24:19 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18X9-0007zm-B3
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:23:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788207857;
+ s=mimecast20190719; t=1788207789;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=y8wW2V1gmq4U2oGifMr03OEbp6q8ZFZvEQ5q6kHXpZc=;
- b=ane3iToFIYSP+OKWpAUixGWP6Y7QK2+yX6yKsEeux7enbVJsPF/OFXJWaU0ZywE727mIm+
- 4yXjQsGx6V71n6AcAkZ4IOiQ+qHT0TZONDsuWvsk1CyI+DDMY2SKm3iz3dg4ILhcenm6/D
- 9QPZDs/l5w+EppxoUTz1dwRfrZw8WRI=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=rLnw42K1+V+Fl4KQBW783G0VH8D6uwH+UAZ7SFG2AyA=;
+ b=PdPr2nHMtqHbCy8fCloOR8ee5yfBihaqVIt934oklZEhF0A9LjdDLMGn736p54JiGuFwxL
+ LOYZT8qvC6dag2PuwDcynTZkV7gvw1Jy9o8y5fKFGHlSO9Je+lXMHEJgnOHxSPBlriS1f5
+ PlVlMkzzMRiPJ6W0wLVrxOrimjOXBos=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-580-g8KQFvfPNuKhBNzurCJSLA-1; Mon,
- 31 Aug 2026 16:24:11 -0400
-X-MC-Unique: g8KQFvfPNuKhBNzurCJSLA-1
-X-Mimecast-MFC-AGG-ID: g8KQFvfPNuKhBNzurCJSLA_1788207848
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-359-TzF6fO6QNbSEh8CEQsUTuQ-1; Mon,
+ 31 Aug 2026 16:23:04 -0400
+X-MC-Unique: TzF6fO6QNbSEh8CEQsUTuQ-1
+X-Mimecast-MFC-AGG-ID: TzF6fO6QNbSEh8CEQsUTuQ_1788207781
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 794B8195FE07; Mon, 31 Aug 2026 20:24:08 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 925FA18E021F; Mon, 31 Aug 2026 20:22:17 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.63])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 3CD0A1800347; Mon, 31 Aug 2026 20:24:00 +0000 (UTC)
+ id 633DD1800577; Mon, 31 Aug 2026 20:22:09 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -71,27 +71,26 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-trivial@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v4 27/43] qapi: convert trivial intro sections for rocker.json
-Date: Mon, 31 Aug 2026 16:19:29 -0400
-Message-ID: <20260831201945.287730-28-jsnow@redhat.com>
+Subject: [PATCH v4 13/43] qapi: convert trivial intro sections for replay.json
+Date: Mon, 31 Aug 2026 16:19:15 -0400
+Message-ID: <20260831201945.287730-14-jsnow@redhat.com>
 In-Reply-To: <20260831201945.287730-1-jsnow@redhat.com>
 References: <20260831201945.287730-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: gyTEupluBmTSgPW3GEh5I80BU2E7lzU3a6OYHgku1eA_1788207848
+X-Mimecast-MFC-PROC-ID: 2BSQx6W0eK1IaQ20XsbHt4cm8D7zGjw1dd1Zu8iX8yM_1788207781
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,142 +108,32 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/rocker.json | 39 +++++++++++++--------------------------
- 1 file changed, 13 insertions(+), 26 deletions(-)
+ qapi/replay.json | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/qapi/rocker.json b/qapi/rocker.json
-index 5d2dbd26034..7eb0a88dafd 100644
---- a/qapi/rocker.json
-+++ b/qapi/rocker.json
-@@ -9,8 +9,7 @@
+diff --git a/qapi/replay.json b/qapi/replay.json
+index ccf84da68ef..66dff797553 100644
+--- a/qapi/replay.json
++++ b/qapi/replay.json
+@@ -12,8 +12,7 @@
  
  ##
- # @RockerSwitch:
+ # @ReplayMode:
 -#
--# Rocker switch information.
-+#     Rocker switch information.
+-# Mode of the replay subsystem.
++#     Mode of the replay subsystem.
  #
- # @name: switch name
+ # @none: normal execution mode.  Replay or record are not enabled.
  #
-@@ -25,8 +24,7 @@
+@@ -30,8 +29,7 @@
  
  ##
- # @query-rocker:
+ # @ReplayInfo:
 -#
--# Return rocker switch information.
-+#     Return rocker switch information.
+-# Record/replay information.
++#     Record/replay information.
  #
- # @name: switch name
- #
-@@ -43,8 +41,7 @@
- 
- ##
- # @RockerPortDuplex:
--#
--# An enumeration of port duplex states.
-+#     An enumeration of port duplex states.
- #
- # @half: half duplex
- #
-@@ -56,8 +53,7 @@
- 
- ##
- # @RockerPortAutoneg:
--#
--# An enumeration of port autoneg states.
-+#     An enumeration of port autoneg states.
- #
- # @off: autoneg is off
- #
-@@ -69,8 +65,7 @@
- 
- ##
- # @RockerPort:
--#
--# Rocker switch port information.
-+#     Rocker switch port information.
- #
- # @name: port name
- #
-@@ -93,8 +88,7 @@
- 
- ##
- # @query-rocker-ports:
--#
--# Return rocker switch port information.
-+#     Return rocker switch port information.
- #
- # @name: port name
- #
-@@ -115,8 +109,7 @@
- 
- ##
- # @RockerOfDpaFlowKey:
--#
--# Rocker switch OF-DPA flow key
-+#     Rocker switch OF-DPA flow key
- #
- # @priority: key priority, 0 being lowest priority
- #
-@@ -153,8 +146,7 @@
- 
- ##
- # @RockerOfDpaFlowMask:
--#
--# Rocker switch OF-DPA flow mask
-+#     Rocker switch OF-DPA flow mask
- #
- # @in-pport: physical input port
- #
-@@ -182,8 +174,7 @@
- 
- ##
- # @RockerOfDpaFlowAction:
--#
--# Rocker switch OF-DPA flow action
-+#     Rocker switch OF-DPA flow action
- #
- # @goto-tbl: next table ID
- #
-@@ -209,8 +200,7 @@
- 
- ##
- # @RockerOfDpaFlow:
--#
--# Rocker switch OF-DPA flow
-+#     Rocker switch OF-DPA flow
- #
- # @cookie: flow unique cookie ID
- #
-@@ -230,8 +220,7 @@
- 
- ##
- # @query-rocker-of-dpa-flows:
--#
--# Return rocker OF-DPA flow information.
-+#     Return rocker OF-DPA flow information.
- #
- # @name: switch name
- #
-@@ -261,8 +250,7 @@
- 
- ##
- # @RockerOfDpaGroup:
--#
--# Rocker switch OF-DPA group
-+#     Rocker switch OF-DPA group
- #
- # @id: group unique ID
- #
-@@ -305,8 +293,7 @@
- 
- ##
- # @query-rocker-of-dpa-groups:
--#
--# Return rocker OF-DPA group information.
-+#     Return rocker OF-DPA group information.
- #
- # @name: switch name
+ # @mode: current mode.
  #
 -- 
 2.55.0
