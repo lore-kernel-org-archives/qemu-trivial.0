@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E4966C624A4
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 13:37:07 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4AABC624C6
+	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 13:50:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x12Bv-0000pw-Cr; Mon, 31 Aug 2026 09:36:51 -0400
+	id 1x12PC-0003cd-0E; Mon, 31 Aug 2026 09:50:34 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x12Bt-0000pX-RE
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 09:36:50 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x12PA-0003bz-VI
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 09:50:33 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x12Bs-00010K-Dy
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 09:36:49 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x12P7-0003iM-I5
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 09:50:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788183407;
+ s=mimecast20190719; t=1788184228;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=WCs2Aq9tg9fBZkM3AoyGj6bTEL9C6nYwd+ohMUtyCFo=;
- b=RkLP37SWvgWrMSm5dxrKS2x0vTrnPeAzaAGtROiENug7Ngc9ZZ0SnaXrcBq08kQvztktxI
- VlveC+sGkG76Z3ZZjiGMfgQfNDkH4HPar828ZM5YZFWM+ZLx8pBNWesftLeQCzdCyor5y9
- s4BjrseROCaxOi+R8jevjV9G8iBa9FE=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=zoTZvmy4jPUbkp6P4GsXHnJjsEPvOhs/+ivdjF0DsTM=;
+ b=HZkTuEYr6EhvGvLqafs7PSC8wVLb10iy3mWqw0z5XXxkN2En+8RKxF5tll8LJHy2rp1tgA
+ 4FFHFBQCckmExnZid4M/h7VzEqFKhMDXJ0bmr18ari5Sbe8hBxSzWEbmgCOlkacvhF9sak
+ EIsm+GMpKNd5dAxMijeqUWPgtQHDR8c=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-160-p2frzGdJOeKlgdYB206L-A-1; Mon,
- 31 Aug 2026 09:36:43 -0400
-X-MC-Unique: p2frzGdJOeKlgdYB206L-A-1
-X-Mimecast-MFC-AGG-ID: p2frzGdJOeKlgdYB206L-A_1788183399
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-264-vkSRe0j1MoqBXm7keiMN6Q-1; Mon,
+ 31 Aug 2026 09:50:24 -0400
+X-MC-Unique: vkSRe0j1MoqBXm7keiMN6Q-1
+X-Mimecast-MFC-AGG-ID: vkSRe0j1MoqBXm7keiMN6Q_1788184220
+Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 75A94183F9DB; Mon, 31 Aug 2026 13:36:38 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 57535195DE5B; Mon, 31 Aug 2026 13:50:19 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.44.22.5])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 9A0FA3000223; Mon, 31 Aug 2026 13:36:36 +0000 (UTC)
+ by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 750891956042; Mon, 31 Aug 2026 13:50:16 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 24F5821E6837; Mon, 31 Aug 2026 15:36:34 +0200 (CEST)
+ id F002421E6837; Mon, 31 Aug 2026 15:50:13 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: John Snow <jsnow@redhat.com>
 Cc: qemu-devel@nongnu.org,  Alex Williamson <alex@shazbot.org>,  Daniel P.
@@ -73,27 +73,29 @@ Cc: qemu-devel@nongnu.org,  Alex Williamson <alex@shazbot.org>,  Daniel P.
  <lukasstraub2@web.de>, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>
 Subject: Re: [PATCH v3 42/43] qapi: convert trivial intro sections for
  machine.json
-In-Reply-To: <20260826193840.2152000-43-jsnow@redhat.com> (John Snow's message
- of "Wed, 26 Aug 2026 15:38:39 -0400")
+In-Reply-To: <87pkyye7j1.fsf@pond.sub.org> (Markus Armbruster's message of
+ "Mon, 31 Aug 2026 15:36:34 +0200")
 References: <20260826193840.2152000-1-jsnow@redhat.com>
  <20260826193840.2152000-43-jsnow@redhat.com>
-Date: Mon, 31 Aug 2026 15:36:34 +0200
-Message-ID: <87pkyye7j1.fsf@pond.sub.org>
+ <87pkyye7j1.fsf@pond.sub.org>
+Date: Mon, 31 Aug 2026 15:50:13 +0200
+Message-ID: <87ecfee6wa.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: Z1PhRlW6UxbHWScxT6Nl6jorGqLQxvBDTPdavI5U6DE_1788183399
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
+X-Mimecast-MFC-PROC-ID: kNGn8_lb_ESATWp8iykGfnaye-wE2QOh13oAh6Bf4pQ_1788184220
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,66 +111,56 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-John Snow <jsnow@redhat.com> writes:
+Markus Armbruster <armbru@redhat.com> writes:
 
-> Signed-off-by: John Snow <jsnow@redhat.com>
-> ---
->  qapi/machine.json | 208 ++++++++++++++++------------------------------
->  1 file changed, 73 insertions(+), 135 deletions(-)
+> John Snow <jsnow@redhat.com> writes:
 >
-> diff --git a/qapi/machine.json b/qapi/machine.json
-> index 2d63c1bac3b..3a5c6df9cff 100644
-> --- a/qapi/machine.json
-> +++ b/qapi/machine.json
+>> Signed-off-by: John Snow <jsnow@redhat.com>
+>> ---
+>>  qapi/machine.json | 208 ++++++++++++++++------------------------------
+>>  1 file changed, 73 insertions(+), 135 deletions(-)
+>>
+>> diff --git a/qapi/machine.json b/qapi/machine.json
+>> index 2d63c1bac3b..3a5c6df9cff 100644
+>> --- a/qapi/machine.json
+>> +++ b/qapi/machine.json
+>
+> [...]
+>
+>> @@ -469,8 +453,7 @@
+>>  
+>>  ##
+>>  # @NumaOptions:
+>> -#
+>> -# A discriminated record of NUMA options.  (for OptsVisitor)
+>> +#     A discriminated record of NUMA options.  (for OptsVisitor)
+>>  #
+>>  # @type: NUMA option type
+>>  #
+>
+> The parenthesis is questionable.  As long as it's there, this isn't
+> "very trivial".
 
-[...]
+Could move it into the sentence, like so
 
-> @@ -469,8 +453,7 @@
->  
->  ##
->  # @NumaOptions:
-> -#
-> -# A discriminated record of NUMA options.  (for OptsVisitor)
-> +#     A discriminated record of NUMA options.  (for OptsVisitor)
->  #
->  # @type: NUMA option type
->  #
+    # A discriminated record of NUMA options (for OptsVisitor).
 
-The parenthesis is questionable.  As long as it's there, this isn't
-"very trivial".
+But I think we can just drop it.
 
-> @@ -488,8 +471,7 @@
->  
->  ##
->  # @NumaNodeOptions:
-> -#
-> -# Create a guest NUMA node.  (for OptsVisitor)
-> +#     Create a guest NUMA node.  (for OptsVisitor)
->  #
->  # @nodeid: NUMA node ID (increase by 1 from 0 if omitted)
->  #
+Neither should be in the "very trivial" jumbo patch.
 
-Likewise.
-
-
-[...]
-
-> @@ -1156,10 +1125,9 @@
->  
->  ##
->  # @BALLOON_CHANGE:
-> -#
-> -# Emitted when the guest changes the actual BALLOON level.  This value
-> -# is equivalent to the @actual field return by the `query-balloon`
-> -# command
-> +#     Emitted when the guest changes the actual BALLOON level.  This
-> +#     value is equivalent to the @actual field return by the
-> +#     `query-balloon` command
->  #
->  # @actual: the logical size of the VM in bytes.  Formula used:
->  #     logical_vm_size = vm_ram_size - balloon_size
-
-Two sentences, i.e. not "very trivial".
+>> @@ -488,8 +471,7 @@
+>>  
+>>  ##
+>>  # @NumaNodeOptions:
+>> -#
+>> -# Create a guest NUMA node.  (for OptsVisitor)
+>> +#     Create a guest NUMA node.  (for OptsVisitor)
+>>  #
+>>  # @nodeid: NUMA node ID (increase by 1 from 0 if omitted)
+>>  #
+>
+> Likewise.
 
 [...]
 
