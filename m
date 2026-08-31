@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 43753C624A4
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:23:52 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DCB36C61DFD
+	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:23:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x18XX-00037t-EC; Mon, 31 Aug 2026 16:23:38 -0400
+	id 1x18Xj-0003WP-8w; Mon, 31 Aug 2026 16:23:47 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18XD-0002kt-G4
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:23:20 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18XA-0002ie-Q3
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:23:13 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18XB-00080N-AG
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:23:15 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18X9-0007zb-4k
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:23:12 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788207792;
+ s=mimecast20190719; t=1788207789;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=53kJeaXAGXWbWgaUWrPPbMnvvgjeb4ogml1Llx3Dmyw=;
- b=cMIKAycsyBqYK7nF3OyHbwGj9jV1/PluR7PnxmO5ol2W1/hWVYndnB/qQMtlQZVxX0eivl
- fdep3Z4331ZU2mB31e1NhmVgazwMYQFxFiT/qPyh+jXsg+oxqCl9nvTu90cNw1cMd93mWi
- QHNFY0eUbsS5o3XLQco/jBt4F3zbVGo=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=zcTS1HQZTCGQkOmaZVLm63YpWlWjzjsxUTYZiN2QcLg=;
+ b=QbojPIikaQxigzF8ijmPQpTP6JHSDps6oX+xz2uCfEILdMbTZtzfXT/SoguRrWl0/AXI9E
+ p8+rlIGQJqBMPPj4282XnJPCIaJ+7NyKofOUPVZTyAzRP2zPfFJ9rSvaMax6zVfH9wHCjk
+ N7c3Lt6tFR6917t8kkFYQjRTmGPoUs4=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-629-DTlpBjCDMkiOuYikMIMyJg-1; Mon,
- 31 Aug 2026 16:23:09 -0400
-X-MC-Unique: DTlpBjCDMkiOuYikMIMyJg-1
-X-Mimecast-MFC-AGG-ID: DTlpBjCDMkiOuYikMIMyJg_1788207787
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-551-8xpiNybIMh6eNQ63wHnIhQ-1; Mon,
+ 31 Aug 2026 16:23:05 -0400
+X-MC-Unique: 8xpiNybIMh6eNQ63wHnIhQ-1
+X-Mimecast-MFC-AGG-ID: 8xpiNybIMh6eNQ63wHnIhQ_1788207781
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 4AE9218D7268; Mon, 31 Aug 2026 20:22:43 +0000 (UTC)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 2C64A1891BAC; Mon, 31 Aug 2026 20:22:09 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.63])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id BB1E61800577; Mon, 31 Aug 2026 20:22:34 +0000 (UTC)
+ id 76C5418005B6; Mon, 31 Aug 2026 20:21:53 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -71,14 +71,14 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-trivial@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v4 16/43] qapi: convert trivial intro sections for tpm.json
-Date: Mon, 31 Aug 2026 16:19:18 -0400
-Message-ID: <20260831201945.287730-17-jsnow@redhat.com>
+Subject: [PATCH v4 12/43] qapi: convert trivial intro sections for yank.json
+Date: Mon, 31 Aug 2026 16:19:14 -0400
+Message-ID: <20260831201945.287730-13-jsnow@redhat.com>
 In-Reply-To: <20260831201945.287730-1-jsnow@redhat.com>
 References: <20260831201945.287730-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: RKFuUy_t9zEPhm-AJsAxWMIFGWQyQICDATH1ENRr2iw_1788207787
+X-Mimecast-MFC-PROC-ID: VykBRnZMfwPFyXk62Z_WWvN8-spWSIq0nlBiyeoMfzY_1788207781
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -108,104 +108,24 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/tpm.json | 29 ++++++++++-------------------
- 1 file changed, 10 insertions(+), 19 deletions(-)
+ qapi/yank.json | 5 ++---
+ 1 file changed, 2 insertions(+), 3 deletions(-)
 
-diff --git a/qapi/tpm.json b/qapi/tpm.json
-index 3f2850a5733..6d94be656ae 100644
---- a/qapi/tpm.json
-+++ b/qapi/tpm.json
-@@ -10,8 +10,7 @@
+diff --git a/qapi/yank.json b/qapi/yank.json
+index f3cd5c15d60..bc8c52bda74 100644
+--- a/qapi/yank.json
++++ b/qapi/yank.json
+@@ -47,9 +47,8 @@
  
  ##
- # @TpmModel:
+ # @YankInstance:
 -#
--# An enumeration of TPM models
-+#     An enumeration of TPM models
+-# A yank instance can be yanked with the `yank` qmp command to recover
+-# from a hanging QEMU.
++#     A yank instance can be yanked with the `yank` qmp command to
++#     recover from a hanging QEMU.
  #
- # @tpm-tis: TPM TIS model
- #
-@@ -26,8 +25,7 @@
- 
- ##
- # @query-tpm-models:
--#
--# Return a list of supported TPM models
-+#     Return a list of supported TPM models
- #
- # Since: 1.5
- #
-@@ -41,8 +39,7 @@
- 
- ##
- # @TpmType:
--#
--# An enumeration of TPM types
-+#     An enumeration of TPM types
- #
- # @passthrough: TPM passthrough type
- #
-@@ -55,8 +52,7 @@
- 
- ##
- # @query-tpm-types:
--#
--# Return a list of supported TPM types
-+#     Return a list of supported TPM types
- #
- # Since: 1.5
- #
-@@ -70,8 +66,7 @@
- 
- ##
- # @TPMPassthroughOptions:
--#
--# Information about the TPM passthrough type
-+#     Information about the TPM passthrough type
- #
- # @path: string describing the path used for accessing the TPM device
- #
-@@ -87,8 +82,7 @@
- 
- ##
- # @TPMEmulatorOptions:
--#
--# Information about the TPM emulator type
-+#     Information about the TPM emulator type
- #
- # @chardev: Name of a unix socket chardev
- #
-@@ -121,9 +115,8 @@
- 
- ##
- # @TpmTypeOptions:
--#
--# A union referencing different TPM backend types' configuration
--# options
-+#     A union referencing different TPM backend types' configuration
-+#     options
- #
- # @type:
- #     - 'passthrough' The configuration options for the TPM
-@@ -142,8 +135,7 @@
- 
- ##
- # @TPMInfo:
--#
--# Information about the TPM
-+#     Information about the TPM
- #
- # @id: The Id of the TPM
- #
-@@ -161,8 +153,7 @@
- 
- ##
- # @query-tpm:
--#
--# Return information about the TPM device
-+#     Return information about the TPM device
- #
- # Since: 1.5
+ # @type: yank instance type
  #
 -- 
 2.55.0
