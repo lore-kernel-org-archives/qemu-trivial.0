@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D091EC624A4
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:20:45 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 15CC1C61DD3
+	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:20:50 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x18UO-0007WV-OU; Mon, 31 Aug 2026 16:20:20 -0400
+	id 1x18Uk-0007j0-G6; Mon, 31 Aug 2026 16:20:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18UN-0007Vk-3W
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:20:19 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Ui-0007hE-7W
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:20:40 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18UL-0007HD-L8
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:20:18 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Ug-0007M5-TO
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:20:39 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788207617;
+ s=mimecast20190719; t=1788207638;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=BMPxC80TfJ3XPuZvHUAm20UCy61t3gJQmqci80rUMX0=;
- b=WOq3PJuWY5oZUF7Nah4mpHVRBQF1MIW/I6JnSmyK0PztTZ8TM/Uzz/W+LiFdrbe8j+rIWM
- inV2o4vwiZH9P8KpgP4o3oi/jRCNi06JRWS3k4IAupfVgC/6GeGOMHS2aQcsl7QA5LDklF
- KIO6aTiEp9Pdrm/q5QXhJbR1AS2O7bU=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=mlhVSIuYfO98pyz9Sq3hbEesOQSLV/LUPwoZZKF//5o=;
+ b=a8Xi0ZqVIQsjfnvr4mHsJAP2x2Aujc1IwGO0iCc+Del2adVcV6dbev1zwGHxa3GSR4PKBz
+ Heg+wDwM3UYrHtHUCmqkkCavUOmk22u6weX6RX2rZwMRi2S0bhTGmobSRllWCovws1DSAG
+ Mvfxmz0/D5NZVOmfrXmkbiGkt6GO//0=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-297-PdZhTx3JNiC0CLDHkissGQ-1; Mon,
- 31 Aug 2026 16:20:13 -0400
-X-MC-Unique: PdZhTx3JNiC0CLDHkissGQ-1
-X-Mimecast-MFC-AGG-ID: PdZhTx3JNiC0CLDHkissGQ_1788207609
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-594-8yp1Es01NOaqFcSoLze1ZQ-1; Mon,
+ 31 Aug 2026 16:20:32 -0400
+X-MC-Unique: 8yp1Es01NOaqFcSoLze1ZQ-1
+X-Mimecast-MFC-AGG-ID: 8yp1Es01NOaqFcSoLze1ZQ_1788207629
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 6F57B187E5CD; Mon, 31 Aug 2026 20:20:08 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 1B5F91921EFB; Mon, 31 Aug 2026 20:20:29 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.63])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6B4721800347; Mon, 31 Aug 2026 20:19:58 +0000 (UTC)
+ id BFFF71800577; Mon, 31 Aug 2026 20:20:19 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -70,28 +70,28 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Eric Blake <eblake@redhat.com>, Peter Xu <peterx@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-trivial@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH v4 01/43] qapi: convert trivial intro sections for error.json
-Date: Mon, 31 Aug 2026 16:19:03 -0400
-Message-ID: <20260831201945.287730-2-jsnow@redhat.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v4 03/43] qapi: convert trivial intro sections for ebpf.json
+Date: Mon, 31 Aug 2026 16:19:05 -0400
+Message-ID: <20260831201945.287730-4-jsnow@redhat.com>
 In-Reply-To: <20260831201945.287730-1-jsnow@redhat.com>
 References: <20260831201945.287730-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: v4SLmH5wqtv4x0mIWv0KnPzw4J35GVG6Io1qWX0BQGw_1788207609
+X-Mimecast-MFC-PROC-ID: o3jSaXrEeNEqZn37lucwqE97_nnWomBXtvfupqBXXeY_1788207629
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -108,25 +108,34 @@ Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- qapi/error.json | 3 +--
- 1 file changed, 1 insertion(+), 2 deletions(-)
+ qapi/ebpf.json | 6 ++----
+ 1 file changed, 2 insertions(+), 4 deletions(-)
 
-diff --git a/qapi/error.json b/qapi/error.json
-index 54cb02fb880..a53b13e55c9 100644
---- a/qapi/error.json
-+++ b/qapi/error.json
-@@ -9,8 +9,7 @@
+diff --git a/qapi/ebpf.json b/qapi/ebpf.json
+index f0257955fa2..951516b121f 100644
+--- a/qapi/ebpf.json
++++ b/qapi/ebpf.json
+@@ -20,8 +20,7 @@
  
  ##
- # @QapiErrorClass:
+ # @EbpfObject:
 -#
--# QEMU error classes
-+#     QEMU error classes
+-# An eBPF ELF object.
++#     An eBPF ELF object.
  #
- # @GenericError: this is used for errors that don't require a specific
- #     error class.  This should be the default case for most errors
+ # @object: the eBPF object encoded in base64
+ #
+@@ -33,8 +32,7 @@
+ 
+ ##
+ # @EbpfProgramID:
+-#
+-# The eBPF programs that can be gotten with `request-ebpf`.
++#     The eBPF programs that can be gotten with `request-ebpf`.
+ #
+ # @rss: Receive side scaling, technology that allows steering traffic
+ #     between queues by calculation hash.  Users may set up
 -- 
 2.55.0
 
