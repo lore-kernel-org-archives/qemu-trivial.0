@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D4AABC624C6
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 13:50:47 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3B3E1C624A4
+	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 13:54:30 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x12PC-0003cd-0E; Mon, 31 Aug 2026 09:50:34 -0400
+	id 1x12RA-0004Et-Lg; Mon, 31 Aug 2026 09:52:36 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x12PA-0003bz-VI
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 09:50:33 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x12R9-0004EE-J1
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 09:52:35 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x12P7-0003iM-I5
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 09:50:32 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x12R8-0003yx-44
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 09:52:35 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788184228;
+ s=mimecast20190719; t=1788184353;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=zoTZvmy4jPUbkp6P4GsXHnJjsEPvOhs/+ivdjF0DsTM=;
- b=HZkTuEYr6EhvGvLqafs7PSC8wVLb10iy3mWqw0z5XXxkN2En+8RKxF5tll8LJHy2rp1tgA
- 4FFHFBQCckmExnZid4M/h7VzEqFKhMDXJ0bmr18ari5Sbe8hBxSzWEbmgCOlkacvhF9sak
- EIsm+GMpKNd5dAxMijeqUWPgtQHDR8c=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ bh=fM/jasSe3RaD7bHRh//RSYuvXakBhQNV9sgzJ5NFReY=;
+ b=gsKLubXdjPI01ZoZ6ULGWseLT9PVLw1jX7079a+Bx0VwRRJZDsxE94HloXyxIcC8kAkph3
+ 4DgSANOArpq1Zd9XvVuQdMwzvzBwMCnOLqjetbr2Fq2kRPhvUoslro0zS9saIdDUx4AaBs
+ JWWr8ywHyGMSLuiHIk1b2dHwRpxfPLc=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-264-vkSRe0j1MoqBXm7keiMN6Q-1; Mon,
- 31 Aug 2026 09:50:24 -0400
-X-MC-Unique: vkSRe0j1MoqBXm7keiMN6Q-1
-X-Mimecast-MFC-AGG-ID: vkSRe0j1MoqBXm7keiMN6Q_1788184220
-Received: from mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.17])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-217-AYkLWFXePkewEoERRKh88g-1; Mon,
+ 31 Aug 2026 09:52:30 -0400
+X-MC-Unique: AYkLWFXePkewEoERRKh88g-1
+X-Mimecast-MFC-AGG-ID: AYkLWFXePkewEoERRKh88g_1788184348
+Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 57535195DE5B; Mon, 31 Aug 2026 13:50:19 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6D772180ACFB; Mon, 31 Aug 2026 13:52:27 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.44.22.5])
- by mx-prod-int-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 750891956042; Mon, 31 Aug 2026 13:50:16 +0000 (UTC)
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9764E1955F04; Mon, 31 Aug 2026 13:52:25 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id F002421E6837; Mon, 31 Aug 2026 15:50:13 +0200 (CEST)
+ id 3C68A21E6837; Mon, 31 Aug 2026 15:52:23 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: John Snow <jsnow@redhat.com>
 Cc: qemu-devel@nongnu.org,  Alex Williamson <alex@shazbot.org>,  Daniel P.
@@ -71,31 +71,29 @@ Cc: qemu-devel@nongnu.org,  Alex Williamson <alex@shazbot.org>,  Daniel P.
  <pbonzini@redhat.com>,  Ani Sinha <anisinha@redhat.com>,  Philippe
  =?utf-8?Q?Mathieu-Daud=C3=A9?= <philmd@mailo.com>,  Lukas Straub
  <lukasstraub2@web.de>, =?utf-8?Q?C=C3=A9dric?= Le Goater <clg@redhat.com>
-Subject: Re: [PATCH v3 42/43] qapi: convert trivial intro sections for
- machine.json
-In-Reply-To: <87pkyye7j1.fsf@pond.sub.org> (Markus Armbruster's message of
- "Mon, 31 Aug 2026 15:36:34 +0200")
+Subject: Re: [PATCH v3 31/43] qapi: convert trivial intro sections for
+ block.json
+In-Reply-To: <20260826193840.2152000-32-jsnow@redhat.com> (John Snow's message
+ of "Wed, 26 Aug 2026 15:38:28 -0400")
 References: <20260826193840.2152000-1-jsnow@redhat.com>
- <20260826193840.2152000-43-jsnow@redhat.com>
- <87pkyye7j1.fsf@pond.sub.org>
-Date: Mon, 31 Aug 2026 15:50:13 +0200
-Message-ID: <87ecfee6wa.fsf@pond.sub.org>
+ <20260826193840.2152000-32-jsnow@redhat.com>
+Date: Mon, 31 Aug 2026 15:52:23 +0200
+Message-ID: <877bl6e6so.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.0 on 10.30.177.17
-X-Mimecast-MFC-PROC-ID: kNGn8_lb_ESATWp8iykGfnaye-wE2QOh13oAh6Bf4pQ_1788184220
+X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
+X-Mimecast-MFC-PROC-ID: yuecC2eauJZm3a84DHWdWhZ0ehSossZ_NTNSOfKqJ3c_1788184348
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: 12
-X-Spam_score: 1.2
-X-Spam_bar: +
-X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,56 +109,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Markus Armbruster <armbru@redhat.com> writes:
+John Snow <jsnow@redhat.com> writes:
 
-> John Snow <jsnow@redhat.com> writes:
+> Signed-off-by: John Snow <jsnow@redhat.com>
+> ---
+>  qapi/block.json | 41 +++++++++++++++++------------------------
+>  1 file changed, 17 insertions(+), 24 deletions(-)
 >
->> Signed-off-by: John Snow <jsnow@redhat.com>
->> ---
->>  qapi/machine.json | 208 ++++++++++++++++------------------------------
->>  1 file changed, 73 insertions(+), 135 deletions(-)
->>
->> diff --git a/qapi/machine.json b/qapi/machine.json
->> index 2d63c1bac3b..3a5c6df9cff 100644
->> --- a/qapi/machine.json
->> +++ b/qapi/machine.json
->
-> [...]
->
->> @@ -469,8 +453,7 @@
->>  
->>  ##
->>  # @NumaOptions:
->> -#
->> -# A discriminated record of NUMA options.  (for OptsVisitor)
->> +#     A discriminated record of NUMA options.  (for OptsVisitor)
->>  #
->>  # @type: NUMA option type
->>  #
->
-> The parenthesis is questionable.  As long as it's there, this isn't
-> "very trivial".
+> diff --git a/qapi/block.json b/qapi/block.json
+> index 46955bbb3e3..189f2e28204 100644
+> --- a/qapi/block.json
+> +++ b/qapi/block.json
 
-Could move it into the sentence, like so
+[...]
 
-    # A discriminated record of NUMA options (for OptsVisitor).
+> @@ -314,12 +310,11 @@
+>  
+>  ##
+>  # @blockdev-change-medium:
+> -#
+> -# Changes the medium inserted into a block device by ejecting the
+> -# current medium and loading a new image file which is inserted as the
+> -# new medium (this command combines `blockdev-open-tray`,
+> -# `blockdev-remove-medium`, `blockdev-insert-medium` and
+> -# `blockdev-close-tray`).
+> +#     Changes the medium inserted into a block device by ejecting the
+> +#     current medium and loading a new image file which is inserted as
+> +#     the new medium (this command combines `blockdev-open-tray`,
+> +#     `blockdev-remove-medium`, `blockdev-insert-medium` and
+> +#     `blockdev-close-tray`).
+>  #
+>  # @device: Block device name
+>  #
 
-But I think we can just drop it.
+Not sure the parenthesis belongs into the intro.
 
-Neither should be in the "very trivial" jumbo patch.
-
->> @@ -488,8 +471,7 @@
->>  
->>  ##
->>  # @NumaNodeOptions:
->> -#
->> -# Create a guest NUMA node.  (for OptsVisitor)
->> +#     Create a guest NUMA node.  (for OptsVisitor)
->>  #
->>  # @nodeid: NUMA node ID (increase by 1 from 0 if omitted)
->>  #
->
-> Likewise.
+I'm okay with keeping this hunk anyway.
 
 [...]
 
