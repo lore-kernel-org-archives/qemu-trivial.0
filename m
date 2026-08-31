@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3F4F5C624D0
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:24:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id DFE20C61DFD
+	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:24:36 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x18Wy-0002LJ-QS; Mon, 31 Aug 2026 16:23:02 -0400
+	id 1x18YJ-0005ux-QM; Mon, 31 Aug 2026 16:24:23 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18WR-0001bA-Hr
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:22:33 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Y5-0005HV-9G
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:24:09 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18WN-0007rg-KJ
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:22:27 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Y3-0008G1-Hy
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:24:09 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788207742;
+ s=mimecast20190719; t=1788207846;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=CJj1tpPE8OM93bqYjizhdyFRUwlcEtSIS5cPqNRF9cY=;
- b=HjqoS1ikpFsR7t/aZw5s1DbGeXAV1kmJ0ceckxWj8hyMrOvb+k6LRADmblxG6pS9GgImNu
- M6CTtnLZ0SDXXviFga34CWiddla8y9XHsaYXS4vE0QSAZ+gMAPS32Sez2ZNdibsDQyDYfZ
- /G1ELo7mlr8ZYGjvx7bgg8v4zF6qOmE=
+ bh=RQLl9Fz/e90VKbZH8iPZEXrmE8EWsrDRt4hVfZ8Hrwo=;
+ b=TRYpURUahODNLrB7OxOB+ym7pSDGfECTKe50bxdxv5Pxgc46QgIsOI06xpf/YAvIpAJkY/
+ oWybehs+Hivw0VrvRgBdQV52RpzpjGfqJAriGoC2Kn9EBkK5x0R8vX2UEfYsVV4BKXBdri
+ uzlAB3aIP6dMJAo0S+AWRugZ4jrK+J4=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-131--hYo-e0KPKGM2YvaRZ_4EQ-1; Mon,
- 31 Aug 2026 16:22:18 -0400
-X-MC-Unique: -hYo-e0KPKGM2YvaRZ_4EQ-1
-X-Mimecast-MFC-AGG-ID: -hYo-e0KPKGM2YvaRZ_4EQ_1788207735
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-31-hiXyKAF_Np2tW4fGQR2WHA-1; Mon,
+ 31 Aug 2026 16:24:02 -0400
+X-MC-Unique: hiXyKAF_Np2tW4fGQR2WHA-1
+X-Mimecast-MFC-AGG-ID: hiXyKAF_Np2tW4fGQR2WHA_1788207840
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 88313192013B; Mon, 31 Aug 2026 20:21:44 +0000 (UTC)
+ id 1CFC1184A08F; Mon, 31 Aug 2026 20:24:00 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.63])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 88D89180176D; Mon, 31 Aug 2026 20:21:29 +0000 (UTC)
+ id A60101800577; Mon, 31 Aug 2026 20:23:52 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -70,20 +70,19 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Eric Blake <eblake@redhat.com>, Peter Xu <peterx@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-trivial@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH v4 10/43] qapi: convert trivial intro sections for
- accelerator.json
-Date: Mon, 31 Aug 2026 16:19:12 -0400
-Message-ID: <20260831201945.287730-11-jsnow@redhat.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v4 26/43] qapi: convert trivial intro sections for
+ introspect.json
+Date: Mon, 31 Aug 2026 16:19:28 -0400
+Message-ID: <20260831201945.287730-27-jsnow@redhat.com>
 In-Reply-To: <20260831201945.287730-1-jsnow@redhat.com>
 References: <20260831201945.287730-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: mFsNqhkv5NohiwKoqxcy95t2ouM-u3ewv2w-QnUKtpQ_1788207735
+X-Mimecast-MFC-PROC-ID: 1XbLJROXLA_02IKCkj5KaPGFSbYmFmpzCpRF4DnwmGw_1788207840
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
+content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -109,75 +108,138 @@ Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- qapi/accelerator.json | 18 ++++++------------
- 1 file changed, 6 insertions(+), 12 deletions(-)
+ qapi/introspect.json | 40 ++++++++++++++--------------------------
+ 1 file changed, 14 insertions(+), 26 deletions(-)
 
-diff --git a/qapi/accelerator.json b/qapi/accelerator.json
-index b59df378664..efc0fa81418 100644
---- a/qapi/accelerator.json
-+++ b/qapi/accelerator.json
-@@ -13,8 +13,7 @@
+diff --git a/qapi/introspect.json b/qapi/introspect.json
+index c8432c8ed8e..172ed389997 100644
+--- a/qapi/introspect.json
++++ b/qapi/introspect.json
+@@ -112,8 +112,7 @@
  
  ##
- # @KvmInfo:
+ # @SchemaInfoBuiltin:
 -#
--# Information about support for KVM acceleration
-+#     Information about support for KVM acceleration
+-# Additional `SchemaInfo` members for meta-type 'builtin'.
++#     Additional `SchemaInfo` members for meta-type 'builtin'.
  #
- # @enabled: true if KVM acceleration is active
+ # @json-type: the JSON type used for this type on the wire.
  #
-@@ -26,8 +25,7 @@
+@@ -124,10 +123,9 @@
  
  ##
- # @query-kvm:
+ # @JSONType:
 -#
--# Return information about KVM acceleration
-+#     Return information about KVM acceleration
+-# The four primitive and two structured types according to RFC 8259
+-# section 1, plus 'int' (split off 'number'), plus the obvious top
+-# type 'value'.
++#     The four primitive and two structured types according to RFC
++#     8259 section 1, plus 'int' (split off 'number'), plus the
++#     obvious top type 'value'.
  #
- # Features:
+ # @string: JSON string
  #
-@@ -46,8 +44,7 @@
+@@ -153,8 +151,7 @@
  
  ##
- # @x-accel-stats:
+ # @SchemaInfoEnum:
 -#
--# Query accelerator statistics
-+#     Query accelerator statistics
+-# Additional `SchemaInfo` members for meta-type 'enum'.
++#     Additional `SchemaInfo` members for meta-type 'enum'.
  #
- # Features:
- #
-@@ -63,8 +60,7 @@
+ # @members: the enum type's members, in no particular order.
+ #     (since 6.2)
+@@ -178,8 +175,7 @@
  
  ##
- # @Accelerator:
+ # @SchemaInfoEnumMember:
 -#
--# Information about support for MSHV acceleration
-+#     Information about support for MSHV acceleration
+-# An object member.
++#     An object member.
  #
- # @hvf: Apple Hypervisor.framework
+ # @name: the member's name, as defined in the QAPI schema.
  #
-@@ -88,8 +84,7 @@
+@@ -193,8 +189,7 @@
  
  ##
- # @AcceleratorInfo:
+ # @SchemaInfoArray:
 -#
--# Information about support for various accelerators
-+#     Information about support for various accelerators
+-# Additional `SchemaInfo` members for meta-type 'array'.
++#     Additional `SchemaInfo` members for meta-type 'array'.
  #
- # @enabled: the accelerator that is in use
+ # @element-type: the array type's element type.
  #
-@@ -102,8 +97,7 @@
+@@ -207,8 +202,7 @@
  
  ##
- # @query-accelerators:
+ # @SchemaInfoObject:
 -#
--# Return information about accelerators
-+#     Return information about accelerators
+-# Additional `SchemaInfo` members for meta-type 'object'.
++#     Additional `SchemaInfo` members for meta-type 'object'.
  #
- # Returns: @AcceleratorInfo
+ # @members: the object type's (non-variant) members, in no particular
+ #     order.
+@@ -232,8 +226,7 @@
+ 
+ ##
+ # @SchemaInfoObjectMember:
+-#
+-# An object member.
++#     An object member.
  #
+ # @name: the member's name, as defined in the QAPI schema.
+ #
+@@ -257,8 +250,7 @@
+ 
+ ##
+ # @SchemaInfoObjectVariant:
+-#
+-# The variant members for a value of the type tag.
++#     The variant members for a value of the type tag.
+ #
+ # @case: a value of the type tag.
+ #
+@@ -272,8 +264,7 @@
+ 
+ ##
+ # @SchemaInfoAlternate:
+-#
+-# Additional `SchemaInfo` members for meta-type 'alternate'.
++#     Additional `SchemaInfo` members for meta-type 'alternate'.
+ #
+ # @members: the alternate type's members, in no particular order.  The
+ #     members' wire encoding is distinct, see
+@@ -288,8 +279,7 @@
+ 
+ ##
+ # @SchemaInfoAlternateMember:
+-#
+-# An alternate member.
++#     An alternate member.
+ #
+ # @type: the name of the member's type.
+ #
+@@ -300,8 +290,7 @@
+ 
+ ##
+ # @SchemaInfoCommand:
+-#
+-# Additional `SchemaInfo` members for meta-type 'command'.
++#     Additional `SchemaInfo` members for meta-type 'command'.
+ #
+ # @arg-type: the name of the object type that provides the command's
+ #     parameters.
+@@ -322,8 +311,7 @@
+ 
+ ##
+ # @SchemaInfoEvent:
+-#
+-# Additional `SchemaInfo` members for meta-type 'event'.
++#     Additional `SchemaInfo` members for meta-type 'event'.
+ #
+ # @arg-type: the name of the object type that provides the event's
+ #     parameters.
 -- 
 2.55.0
 
