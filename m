@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2832EC61DD3
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:25:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3A2DC61DFD
+	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:25:19 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x18YM-00068p-Nz; Mon, 31 Aug 2026 16:24:26 -0400
+	id 1x18YG-0005jS-BO; Mon, 31 Aug 2026 16:24:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18YK-0005vN-1B
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:24:24 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Xq-0004Zs-QD
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:23:57 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18YI-0008Jb-4U
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:24:23 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Xp-0008Cy-65
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:23:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788207861;
+ s=mimecast20190719; t=1788207832;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=cMeGh8F13Z46uyER7y88/d0ISiPeR9CDwXqnRAPj7ik=;
- b=NIBird6lZijEC9dJvpdCznzS5iU1mXkWzELq1rKv5TlG/g2BUGCowpss2/u3+HCgls1saY
- MHDJZnG5ejssC4A9GqDBczbhbdSGnKbUtFGYcJbEG2iMczD2il6EhVPHZOOW403e+CEPrO
- oQL5g9PPslfDCnob4mb9x8NwWzrfkL8=
+ bh=FOyryAyUvVmwl4/qZOf0d22k1z8DeAksa2FdV0gP0NE=;
+ b=jA9Y+JpBMNon/YBRfi2OEGkd+cB6VKWV300ZgNSggMXC0/Q0uJhcqrWt6fYIOdW55nY4LJ
+ xt03I7ZmLEgIplbQP9bz6N+pxVn+erOgQgveSXksowUfAUgjdYv6SMjRUj+dTurf7ZMrCS
+ mMTUU/MSabF9GKCwjyEdmAHqyWaaZ5E=
 Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-690-GwxeO3OwOjOJ7UZHycldOg-1; Mon,
- 31 Aug 2026 16:24:17 -0400
-X-MC-Unique: GwxeO3OwOjOJ7UZHycldOg-1
-X-Mimecast-MFC-AGG-ID: GwxeO3OwOjOJ7UZHycldOg_1788207855
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-686-w-lcO4n8Mj6-CCwfhOzqTw-1; Mon,
+ 31 Aug 2026 16:23:49 -0400
+X-MC-Unique: w-lcO4n8Mj6-CCwfhOzqTw-1
+X-Mimecast-MFC-AGG-ID: w-lcO4n8Mj6-CCwfhOzqTw_1788207826
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 20EE4180131D; Mon, 31 Aug 2026 20:24:15 +0000 (UTC)
+ id 10326184A083; Mon, 31 Aug 2026 20:23:46 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.63])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id EC09B1800347; Mon, 31 Aug 2026 20:24:08 +0000 (UTC)
+ id 470D51800577; Mon, 31 Aug 2026 20:23:39 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -71,15 +71,14 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-trivial@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v4 28/43] qapi: convert trivial intro sections for
- misc-i386.json
-Date: Mon, 31 Aug 2026 16:19:30 -0400
-Message-ID: <20260831201945.287730-29-jsnow@redhat.com>
+Subject: [PATCH v4 24/43] qapi: convert trivial intro sections for job.json
+Date: Mon, 31 Aug 2026 16:19:26 -0400
+Message-ID: <20260831201945.287730-25-jsnow@redhat.com>
 In-Reply-To: <20260831201945.287730-1-jsnow@redhat.com>
 References: <20260831201945.287730-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: ZxSTnO9xmXlmiHhsaybdKtpodzIUmUXVvGBP_9AMTLI_1788207855
+X-Mimecast-MFC-PROC-ID: ylPcMELzK3sB89Y0VfIq7x8sM20RTy-vNcb4hQ-u3Gc_1788207826
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -109,176 +108,72 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/misc-i386.json | 52 ++++++++++++++++-----------------------------
- 1 file changed, 18 insertions(+), 34 deletions(-)
+ qapi/job.json | 18 ++++++------------
+ 1 file changed, 6 insertions(+), 12 deletions(-)
 
-diff --git a/qapi/misc-i386.json b/qapi/misc-i386.json
-index 05a94d6c416..78ec9aec647 100644
---- a/qapi/misc-i386.json
-+++ b/qapi/misc-i386.json
-@@ -25,8 +25,7 @@
+diff --git a/qapi/job.json b/qapi/job.json
+index 31618e6ebcc..b68d7292423 100644
+--- a/qapi/job.json
++++ b/qapi/job.json
+@@ -9,8 +9,7 @@
  
  ##
- # @SevState:
+ # @JobType:
 -#
--# An enumeration of SEV state information used during `query-sev`.
-+#     An enumeration of SEV state information used during `query-sev`.
+-# Type of a background job.
++#     Type of a background job.
  #
- # @uninit: The guest is uninitialized.
+ # @commit: block commit job type, see `block-commit`
  #
-@@ -52,8 +51,7 @@
+@@ -42,8 +41,7 @@
  
  ##
- # @SevGuestType:
+ # @JobStatus:
 -#
--# An enumeration indicating the type of SEV guest being run.
-+#     An enumeration indicating the type of SEV guest being run.
+-# Indicates the present state of a given job in its lifetime.
++#     Indicates the present state of a given job in its lifetime.
  #
- # @sev: The guest is a legacy SEV or SEV-ES guest.
+ # @undefined: Erroneous, default state.  Should not ever be visible.
  #
-@@ -66,8 +64,7 @@
+@@ -90,8 +88,7 @@
  
  ##
- # @SevGuestInfo:
+ # @JobVerb:
 -#
--# Information specific to legacy SEV/SEV-ES guests.
-+#     Information specific to legacy SEV/SEV-ES guests.
+-# Represents command verbs that can be applied to a job.
++#     Represents command verbs that can be applied to a job.
  #
- # @policy: SEV policy value
+ # @cancel: see `job-cancel`
  #
-@@ -81,8 +78,7 @@
+@@ -117,8 +114,7 @@
  
  ##
- # @SevSnpGuestInfo:
+ # @JOB_STATUS_CHANGE:
 -#
--# Information specific to SEV-SNP guests.
-+#     Information specific to SEV-SNP guests.
+-# Emitted when a job transitions to a different status.
++#     Emitted when a job transitions to a different status.
  #
- # @snp-policy: SEV-SNP policy value
+ # @id: The job identifier
  #
-@@ -93,8 +89,7 @@
+@@ -259,8 +255,7 @@
  
  ##
- # @SevInfo:
+ # @JobInfo:
 -#
--# Information about Secure Encrypted Virtualization (SEV) support
-+#     Information about Secure Encrypted Virtualization (SEV) support
+-# Information about a job.
++#     Information about a job.
  #
- # @enabled: true if SEV is active
+ # @id: The job identifier
  #
-@@ -144,8 +139,7 @@
+@@ -294,8 +289,7 @@
  
  ##
- # @SevLaunchMeasureInfo:
+ # @query-jobs:
 -#
--# SEV Guest Launch measurement information
-+#     SEV Guest Launch measurement information
+-# Return information about jobs.
++#     Return information about jobs.
  #
- # @data: the measurement value encoded in base64
- #
-@@ -180,9 +174,8 @@
- 
- ##
- # @SevCapability:
--#
--# The struct describes capability for a Secure Encrypted
--# Virtualization feature.
-+#     The struct describes capability for a Secure Encrypted
-+#     Virtualization feature.
- #
- # @pdh: Platform Diffie-Hellman key (base64 encoded)
- #
-@@ -252,9 +245,8 @@
- 
- ##
- # @SevAttestationReport:
--#
--# The struct describes attestation report for a Secure Encrypted
--# Virtualization feature.
-+#     The struct describes attestation report for a Secure Encrypted
-+#     Virtualization feature.
- #
- # @data: guest attestation report (base64 encoded)
- #
-@@ -294,8 +286,7 @@
- 
- ##
- # @SgxEpcSection:
--#
--# Information about intel SGX EPC section
-+#     Information about intel SGX EPC section
- #
- # @node: the numa node
- #
-@@ -309,8 +300,7 @@
- 
- ##
- # @SgxInfo:
--#
--# Information about intel Safe Guard eXtension (SGX) support
-+#     Information about intel Safe Guard eXtension (SGX) support
- #
- # @sgx: true if SGX is supported
- #
-@@ -333,8 +323,7 @@
- 
- ##
- # @query-sgx:
--#
--# Return information about configured SGX capabilities of guest
-+#     Return information about configured SGX capabilities of guest
- #
- # Since: 6.2
- #
-@@ -350,8 +339,7 @@
- 
- ##
- # @query-sgx-capabilities:
--#
--# Return information about SGX capabilities of host
-+#     Return information about SGX capabilities of host
- #
- # Since: 6.2
- #
-@@ -367,8 +355,7 @@
- 
- ##
- # @EvtchnPortType:
--#
--# An enumeration of Xen event channel port types.
-+#     An enumeration of Xen event channel port types.
- #
- # @closed: The port is unused.
- #
-@@ -389,8 +376,7 @@
- 
- ##
- # @EvtchnInfo:
--#
--# Information about a Xen event channel port
-+#     Information about a Xen event channel port
- #
- # @port: the port number
- #
-@@ -419,8 +405,7 @@
- 
- ##
- # @xen-event-list:
--#
--# Query the Xen event channels opened by the guest.
-+#     Query the Xen event channels opened by the guest.
- #
- # Returns: list of open event channel ports.
- #
-@@ -456,8 +441,7 @@
- 
- ##
- # @xen-event-inject:
--#
--# Inject a Xen event channel port (interrupt) to the guest.
-+#     Inject a Xen event channel port (interrupt) to the guest.
- #
- # @port: The port number
+ # Returns: a list with info for each active job
  #
 -- 
 2.55.0
