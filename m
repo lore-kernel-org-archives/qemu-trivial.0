@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9CA72C624D0
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:25:25 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id A9EE6C61DD3
+	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:25:27 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x18Z4-0002YP-Pd; Mon, 31 Aug 2026 16:25:12 -0400
+	id 1x18YB-0005ah-Nz; Mon, 31 Aug 2026 16:24:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Yw-0002Ls-Cb
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:25:02 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Xc-0003BB-G6
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:23:42 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Ys-0008WM-SB
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:25:02 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18XW-000871-Jw
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:23:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788207898;
+ s=mimecast20190719; t=1788207813;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=UCP7UVj7lY6yPKsok5GRRYDTHAJpEfy9IihCRm+r6Qo=;
- b=WhPLJle/M1b8Ggk/Ip12pySwLlHL4hRfua9KMYVH/9HdV5kGATREgJQz2bEcxyfT55gp3q
- tc8k7IgNy9OSWARXWCfjbXzpR9eV9YX+AgNtb8FpXk8YCkvjmISVYbSbjDaWUzPDW7dJdv
- I7XKet4cK7hDU07bl9oWC0F/++cwt6U=
-Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ bh=paUL78gCdpaCrvbsmed4HTHvmj42cb8WXYX01ka0V0s=;
+ b=ZmGZeXy/VoqdAlszX+feZw3W1jxVaEEKjkxIKXcc8EjjJhHrhIMZ2uRltGUAYA1EtV8Mp9
+ uZ56GBj1W2+P8fo88TcamGk48N8aKtqu9O7LgOoZv9kQYHlt9onGMe6pq1RV8s9lFsm2UW
+ 3CZwR2Qks8M7aTiHCRFPWx4ZvA0mgc4=
+Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-692-RVxOMb3bPMe3ej89Z94FQg-1; Mon,
- 31 Aug 2026 16:24:54 -0400
-X-MC-Unique: RVxOMb3bPMe3ej89Z94FQg-1
-X-Mimecast-MFC-AGG-ID: RVxOMb3bPMe3ej89Z94FQg_1788207891
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-680-1POLMyqEOI2R_KshbGM8_A-1; Mon,
+ 31 Aug 2026 16:23:28 -0400
+X-MC-Unique: 1POLMyqEOI2R_KshbGM8_A-1
+X-Mimecast-MFC-AGG-ID: 1POLMyqEOI2R_KshbGM8_A_1788207804
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id AC9C7191FCCC; Mon, 31 Aug 2026 20:24:51 +0000 (UTC)
+ by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 24F14196F741; Mon, 31 Aug 2026 20:23:16 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.63])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 8290B1800347; Mon, 31 Aug 2026 20:24:44 +0000 (UTC)
+ id 2DA391800347; Mon, 31 Aug 2026 20:23:09 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -71,14 +71,14 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-trivial@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v4 33/43] qapi: convert trivial intro sections for crypto.json
-Date: Mon, 31 Aug 2026 16:19:35 -0400
-Message-ID: <20260831201945.287730-34-jsnow@redhat.com>
+Subject: [PATCH v4 20/43] qapi: convert trivial intro sections for common.json
+Date: Mon, 31 Aug 2026 16:19:22 -0400
+Message-ID: <20260831201945.287730-21-jsnow@redhat.com>
 In-Reply-To: <20260831201945.287730-1-jsnow@redhat.com>
 References: <20260831201945.287730-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: VAKdWjBkD1IfwMoGwjf2ELztMawYU4g7zkSWei1DYUU_1788207891
+X-Mimecast-MFC-PROC-ID: urnKfycXdPh2z9afXy9IYgVj1sXRDDo9IlHUfM5W76c_1788207804
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -109,315 +109,104 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/crypto.json | 100 +++++++++++++++++------------------------------
- 1 file changed, 36 insertions(+), 64 deletions(-)
+ qapi/common.json | 29 ++++++++++-------------------
+ 1 file changed, 10 insertions(+), 19 deletions(-)
 
-diff --git a/qapi/crypto.json b/qapi/crypto.json
-index 6e3a98ff68b..5e395bc10c7 100644
---- a/qapi/crypto.json
-+++ b/qapi/crypto.json
-@@ -26,8 +26,7 @@
+diff --git a/qapi/common.json b/qapi/common.json
+index af7e3d618a7..c1bbed21e7f 100644
+--- a/qapi/common.json
++++ b/qapi/common.json
+@@ -9,8 +9,7 @@
  
  ##
- # @QCryptoSecretFormat:
+ # @IoOperationType:
 -#
--# The data format that the secret is provided in
-+#     The data format that the secret is provided in
+-# An enumeration of the I/O operation types
++#     An enumeration of the I/O operation types
  #
- # @raw: raw bytes.  When encoded in JSON only valid UTF-8 sequences
- #     can be used
-@@ -41,8 +40,7 @@
+ # @read: read operation
+ #
+@@ -23,8 +22,7 @@
  
  ##
- # @QCryptoHashAlgo:
+ # @OnOffAuto:
 -#
--# The supported algorithms for computing content digests
-+#     The supported algorithms for computing content digests
+-# An enumeration of three options: on, off, and auto
++#     An enumeration of three options: on, off, and auto
  #
- # @md5: MD5.  Should not be used in any new code, legacy compat only
+ # @auto: QEMU selects the value between on and off
  #
-@@ -68,8 +66,7 @@
+@@ -39,8 +37,7 @@
  
  ##
- # @QCryptoCipherAlgo:
+ # @OnOffSplit:
 -#
--# The supported algorithms for content encryption ciphers
-+#     The supported algorithms for content encryption ciphers
+-# An enumeration of three values: on, off, and split
++#     An enumeration of three values: on, off, and split
  #
- # @aes-128: AES with 128 bit / 16 byte keys
+ # @on: Enabled
  #
-@@ -110,8 +107,7 @@
+@@ -72,8 +69,7 @@
  
  ##
- # @QCryptoCipherMode:
+ # @OffAutoPCIBAR:
 -#
--# The supported modes for content encryption ciphers
-+#     The supported modes for content encryption ciphers
+-# An enumeration of options for specifying a PCI BAR
++#     An enumeration of options for specifying a PCI BAR
  #
- # @ecb: Electronic Code Book
+ # @off: The specified feature is disabled
  #
-@@ -150,8 +146,7 @@
+@@ -98,8 +94,7 @@
  
  ##
- # @QCryptoBlockFormat:
+ # @PCIELinkSpeed:
 -#
--# The supported full disk encryption formats
-+#     The supported full disk encryption formats
+-# An enumeration of PCIe link speeds in units of GT/s
++#     An enumeration of PCIe link speeds in units of GT/s
  #
- # @qcow: QCow/QCow2 built-in AES-CBC encryption.  Use only for
- #     liberating data from old images.
-@@ -165,8 +160,8 @@
+ # @2_5: 2.5GT/s
+ #
+@@ -120,8 +115,7 @@
  
  ##
- # @QCryptoBlockOptionsBase:
+ # @PCIELinkWidth:
 -#
--# The common options that apply to all full disk encryption formats
-+#     The common options that apply to all full disk encryption
-+#     formats
+-# An enumeration of PCIe link width
++#     An enumeration of PCIe link width
  #
- # @format: the encryption format
+ # @1: x1
  #
-@@ -177,8 +172,7 @@
+@@ -144,8 +138,7 @@
  
  ##
- # @QCryptoBlockOptionsQCow:
+ # @HostMemPolicy:
 -#
--# The options that apply to QCow/QCow2 AES-CBC encryption format
-+#     The options that apply to QCow/QCow2 AES-CBC encryption format
+-# Host memory policy types
++#     Host memory policy types
  #
- # @key-secret: the ID of a QCryptoSecret object providing the
- #     decryption key.  Mandatory except when probing image for
-@@ -191,8 +185,7 @@
+ # @default: restore default policy, remove any nondefault policy
+ #
+@@ -164,9 +157,8 @@
  
  ##
- # @QCryptoBlockOptionsLUKS:
+ # @NetFilterDirection:
 -#
--# The options that apply to LUKS encryption format
-+#     The options that apply to LUKS encryption format
+-# Indicates whether a netfilter is attached to a netdev's transmit
+-# queue or receive queue or both.
++#     Indicates whether a netfilter is attached to a netdev's transmit
++#     queue or receive queue or both.
  #
- # @key-secret: the ID of a QCryptoSecret object providing the
- #     decryption key.  Mandatory except when probing image for
-@@ -205,8 +198,7 @@
+ # @all: the filter is attached both to the receive and the transmit
+ #     queue of the netdev (default).
+@@ -184,8 +176,7 @@
  
  ##
- # @QCryptoBlockCreateOptionsLUKS:
+ # @GrabToggleKeys:
 -#
--# The options that apply to LUKS encryption format initialization
-+#     The options that apply to LUKS encryption format initialization
+-# Key combinations to toggle input-linux between host and guest.
++#     Key combinations to toggle input-linux between host and guest.
  #
- # @cipher-alg: the cipher algorithm for data encryption.  Currently
- #     defaults to 'aes-256'.
-@@ -239,9 +231,8 @@
- 
- ##
- # @QCryptoBlockOpenOptions:
--#
--# The options that are available for all encryption formats when
--# opening an existing volume
-+#     The options that are available for all encryption formats when
-+#     opening an existing volume
- #
- # Since: 2.6
- ##
-@@ -253,9 +244,8 @@
- 
- ##
- # @QCryptoBlockCreateOptions:
--#
--# The options that are available for all encryption formats when
--# initializing a new volume
-+#     The options that are available for all encryption formats when
-+#     initializing a new volume
- #
- # Since: 2.6
- ##
-@@ -267,9 +257,8 @@
- 
- ##
- # @QCryptoBlockInfoBase:
--#
--# The common information that applies to all full disk encryption
--# formats
-+#     The common information that applies to all full disk encryption
-+#     formats
- #
- # @format: the encryption format
- #
-@@ -280,8 +269,7 @@
- 
- ##
- # @QCryptoBlockInfoLUKSSlot:
--#
--# Information about the LUKS block encryption key slot options
-+#     Information about the LUKS block encryption key slot options
- #
- # @active: whether the key slot is currently in use
- #
-@@ -301,8 +289,7 @@
- 
- ##
- # @QCryptoBlockInfoLUKS:
--#
--# Information about the LUKS block encryption options
-+#     Information about the LUKS block encryption options
- #
- # @cipher-alg: the cipher algorithm for data encryption
- #
-@@ -340,8 +327,7 @@
- 
- ##
- # @QCryptoBlockInfo:
--#
--# Information about the block encryption options
-+#     Information about the block encryption options
- #
- # Since: 2.7
- ##
-@@ -352,8 +338,7 @@
- 
- ##
- # @QCryptoBlockLUKSKeyslotState:
--#
--# Defines state of keyslots that are affected by the update
-+#     Defines state of keyslots that are affected by the update
- #
- # @active: The slots contain the given password and marked as active
- #
-@@ -367,9 +352,8 @@
- 
- ##
- # @QCryptoBlockAmendOptionsLUKS:
--#
--# This struct defines the update parameters that activate/de-activate
--# set of keyslots
-+#     This struct defines the update parameters that
-+#     activate/de-activate set of keyslots
- #
- # @state: the desired state of the keyslots
- #
-@@ -409,9 +393,8 @@
- 
- ##
- # @QCryptoBlockAmendOptions:
--#
--# The options that are available for all encryption formats when
--# amending encryption settings
-+#     The options that are available for all encryption formats when
-+#     amending encryption settings
- #
- # Since: 5.1
- ##
-@@ -423,8 +406,7 @@
- 
- ##
- # @SecretCommonProperties:
--#
--# Properties for objects of classes derived from secret-common.
-+#     Properties for objects of classes derived from secret-common.
- #
- # @format: the data format that the secret is provided in
- #     (default: raw)
-@@ -465,8 +447,7 @@
- 
- ##
- # @SecretKeyringProperties:
--#
--# Properties for secret_keyring objects.
-+#     Properties for secret_keyring objects.
- #
- # @serial: serial number that identifies a key to get from the kernel
- #
-@@ -479,8 +460,7 @@
- 
- ##
- # @TlsCredsProperties:
--#
--# Properties for objects of classes derived from tls-creds.
-+#     Properties for objects of classes derived from tls-creds.
- #
- # @verify-peer: if true the peer credentials will be verified once the
- #     handshake is completed.  This is a no-op for anonymous
-@@ -505,8 +485,7 @@
- 
- ##
- # @TlsCredsAnonProperties:
--#
--# Properties for tls-creds-anon objects.
-+#     Properties for tls-creds-anon objects.
- #
- # Since: 2.5
- ##
-@@ -516,8 +495,7 @@
- 
- ##
- # @TlsCredsPskProperties:
--#
--# Properties for tls-creds-psk objects.
-+#     Properties for tls-creds-psk objects.
- #
- # @username: the username which will be sent to the server.  For
- #     clients only.  If absent, "qemu" is sent and the property will
-@@ -531,8 +509,7 @@
- 
- ##
- # @TlsCredsX509Properties:
--#
--# Properties for tls-creds-x509 objects.
-+#     Properties for tls-creds-x509 objects.
- #
- # @sanity-check: if true, perform some sanity checks before using the
- #     credentials (default: true)
-@@ -552,8 +529,7 @@
- 
- ##
- # @QCryptoAkCipherAlgo:
--#
--# The supported algorithms for asymmetric encryption ciphers
-+#     The supported algorithms for asymmetric encryption ciphers
- #
- # @rsa: RSA algorithm
- #
-@@ -564,8 +540,7 @@
- 
- ##
- # @QCryptoAkCipherKeyType:
--#
--# The type of asymmetric keys.
-+#     The type of asymmetric keys.
- #
- # @public: public key
- #
-@@ -578,8 +553,7 @@
- 
- ##
- # @QCryptoRSAPaddingAlgo:
--#
--# The padding algorithm for RSA.
-+#     The padding algorithm for RSA.
- #
- # @raw: no padding used
- #
-@@ -592,8 +566,7 @@
- 
- ##
- # @QCryptoAkCipherOptionsRSA:
--#
--# Specific parameters for RSA algorithm.
-+#     Specific parameters for RSA algorithm.
- #
- # @hash-alg: `QCryptoHashAlgo`
- #
-@@ -607,9 +580,8 @@
- 
- ##
- # @QCryptoAkCipherOptions:
--#
--# The options that are available for all asymmetric key algorithms
--# when creating a new QCryptoAkCipher.
-+#     The options that are available for all asymmetric key algorithms
-+#     when creating a new QCryptoAkCipher.
- #
- # @alg: encryption cipher algorithm
+ # @ctrl-ctrl: left and right control key
  #
 -- 
 2.55.0
