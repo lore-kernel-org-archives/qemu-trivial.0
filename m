@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 3E045C61DFD
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:25:36 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D11AEC61DD3
+	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:25:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x18ZD-0002u0-1T; Mon, 31 Aug 2026 16:25:19 -0400
+	id 1x18YB-0005Z7-7k; Mon, 31 Aug 2026 16:24:15 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Z7-0002cv-R7
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:25:14 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Xk-0003ct-4J
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:23:48 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Z5-00008q-7r
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:25:13 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Xh-0008B3-Se
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:23:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788207910;
+ s=mimecast20190719; t=1788207825;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xv5Hc3Epjp7PUpL8zcU32FN49lioPMZa3oxVmw1Jn+I=;
- b=RgO2amu36TOBBFCRCbEZ4GPlYy5xVEohhahKFe/JuixY+zOf9rRzCa6hx1v5b3FgVqj+Fp
- s6p8KHRmKbggXufJHNmMK1XG0sW3rgASXFpFIl5ax/h9e6M5Dd+FxmOylTahu5WlmFj9Z2
- OBuJxPjPEBjmc35/WVhepEqQePgvmrs=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=+b4OT3j/K4d4s6nmaAGr51pQkyEJxm8NVd9Otcg/Ht8=;
+ b=AQ6ZGP8G1h4JMUexEgTy4mxg9I1R4mi3I6CeE+NCciqb9TLEWMbwh7v9ZafmxSbpb8exPj
+ 3mSsoHDknQiZ52mt2lbKbl7RuXAS4uzUgH5USVoZ1rcH9UH9eSmDc9BtkynJwWPBKCmlgt
+ 7+8wgIwUq4NuARnEVtG17NktlrkrH8Y=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-558-UL8-StDYOTihKjq8V3Pgeg-1; Mon,
- 31 Aug 2026 16:25:08 -0400
-X-MC-Unique: UL8-StDYOTihKjq8V3Pgeg-1
-X-Mimecast-MFC-AGG-ID: UL8-StDYOTihKjq8V3Pgeg_1788207905
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-509-fi7_7dcPOnmEuSBF7Mybhg-1; Mon,
+ 31 Aug 2026 16:23:41 -0400
+X-MC-Unique: fi7_7dcPOnmEuSBF7Mybhg-1
+X-Mimecast-MFC-AGG-ID: fi7_7dcPOnmEuSBF7Mybhg_1788207819
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 653E5184A082; Mon, 31 Aug 2026 20:25:05 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E711F1921EF9; Mon, 31 Aug 2026 20:23:38 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.63])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id B180B1800577; Mon, 31 Aug 2026 20:24:58 +0000 (UTC)
+ id DF5461800347; Mon, 31 Aug 2026 20:23:31 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -70,29 +70,27 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Eric Blake <eblake@redhat.com>, Peter Xu <peterx@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-trivial@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Subject: [PATCH v4 35/43] qapi: convert trivial intro sections for
- run-state.json
-Date: Mon, 31 Aug 2026 16:19:37 -0400
-Message-ID: <20260831201945.287730-36-jsnow@redhat.com>
+ =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
+Subject: [PATCH v4 23/43] qapi: convert trivial intro sections for stats.json
+Date: Mon, 31 Aug 2026 16:19:25 -0400
+Message-ID: <20260831201945.287730-24-jsnow@redhat.com>
 In-Reply-To: <20260831201945.287730-1-jsnow@redhat.com>
 References: <20260831201945.287730-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: kWYx0jR-dCl9QAA4HemwoXIb_TxqqVxZk8lSiobitlU_1788207905
+X-Mimecast-MFC-PROC-ID: z09XYi7Ku6sJg07kMVb50-XvROkvDVcfpLX8DhDv-j8_1788207819
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -109,352 +107,111 @@ Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
 ---
- qapi/run-state.json | 113 ++++++++++++++++----------------------------
- 1 file changed, 42 insertions(+), 71 deletions(-)
+ qapi/stats.json | 34 +++++++++++++---------------------
+ 1 file changed, 13 insertions(+), 21 deletions(-)
 
-diff --git a/qapi/run-state.json b/qapi/run-state.json
-index e4fdead1e0b..2a968a6bc0b 100644
---- a/qapi/run-state.json
-+++ b/qapi/run-state.json
-@@ -10,8 +10,7 @@
+diff --git a/qapi/stats.json b/qapi/stats.json
+index a98624531c3..af57ec08546 100644
+--- a/qapi/stats.json
++++ b/qapi/stats.json
+@@ -16,8 +16,7 @@
  
  ##
- # @RunState:
+ # @StatsType:
 -#
--# An enumeration of VM run states.
-+#     An enumeration of VM run states.
+-# Enumeration of statistics types
++#     Enumeration of statistics types
  #
- # @debug: QEMU is running on a debugger
+ # @cumulative: stat is cumulative; value can only increase.
  #
-@@ -63,8 +62,7 @@
+@@ -38,8 +37,7 @@
  
  ##
- # @ShutdownCause:
+ # @StatsUnit:
 -#
--# An enumeration of reasons for a shutdown.
-+#     An enumeration of reasons for a shutdown.
+-# Enumeration of unit of measurement for statistics
++#     Enumeration of unit of measurement for statistics
  #
- # @none: No shutdown request pending
+ # @bytes: stat reported in bytes.
  #
-@@ -103,8 +101,7 @@
+@@ -56,8 +54,7 @@
  
  ##
- # @StatusInfo:
+ # @StatsProvider:
 -#
--# Information about VM run state
-+#     Information about VM run state
+-# Enumeration of statistics providers.
++#     Enumeration of statistics providers.
  #
- # @running: true if all VCPUs are runnable, false if not runnable
+ # @kvm: since 7.1
  #
-@@ -118,8 +115,7 @@
+@@ -70,8 +67,7 @@
  
  ##
- # @query-status:
+ # @StatsTarget:
 -#
--# Query the run status of the VM
-+#     Query the run status of the VM
+-# The kinds of objects on which one can request statistics.
++#     The kinds of objects on which one can request statistics.
  #
- # Since: 0.14
- #
-@@ -134,9 +130,8 @@
+ # @vm: statistics that apply to the entire virtual machine or the
+ #     entire QEMU process.
+@@ -87,9 +83,8 @@
  
  ##
- # @SHUTDOWN:
+ # @StatsRequest:
 -#
--# Emitted when the virtual machine has shut down, indicating that QEMU
--# is about to exit.
-+#     Emitted when the virtual machine has shut down, indicating that
-+#     QEMU is about to exit.
+-# Indicates a set of statistics that should be returned by
+-# `query-stats`.
++#     Indicates a set of statistics that should be returned by
++#     `query-stats`.
  #
- # @guest: If true, the shutdown was triggered by a guest request (such
- #     as a guest-initiated ACPI shutdown request or other
-@@ -162,9 +157,8 @@
+ # @provider: provider for which to return statistics.
+ #
+@@ -113,10 +108,9 @@
  
  ##
- # @POWERDOWN:
+ # @StatsFilter:
 -#
--# Emitted when the virtual machine is powered down through the power
--# control system, such as via ACPI.
-+#     Emitted when the virtual machine is powered down through the
-+#     power control system, such as via ACPI.
+-# The arguments to the `query-stats` command; specifies a target for
+-# which to request statistics and optionally the required subset of
+-# information for that target.
++#     The arguments to the `query-stats` command; specifies a target
++#     for which to request statistics and optionally the required
++#     subset of information for that target.
  #
- # Since: 0.12
- #
-@@ -177,8 +171,7 @@
+ # @target: the kind of objects to query.  Note that each possible
+ #     target may enable additional filtering options
+@@ -200,8 +194,7 @@
  
  ##
- # @RESET:
+ # @StatsSchemaValue:
 -#
--# Emitted when the virtual machine is reset
-+#     Emitted when the virtual machine is reset
+-# Schema for a single statistic.
++#     Schema for a single statistic.
  #
- # @guest: If true, the reset was triggered by a guest request (such as
- #     a guest-initiated ACPI reboot request or other hardware-specific
-@@ -199,8 +192,7 @@
+ # @name: name of the statistic; each element of the schema is uniquely
+ #     identified by a target, a provider (both available in
+@@ -236,8 +229,7 @@
  
  ##
- # @STOP:
+ # @StatsSchema:
 -#
--# Emitted when the virtual machine is stopped
-+#     Emitted when the virtual machine is stopped
+-# Schema for all available statistics for a provider and target.
++#     Schema for all available statistics for a provider and target.
  #
- # Since: 0.12
+ # @provider: provider for this set of statistics.
  #
-@@ -213,8 +205,7 @@
+@@ -255,8 +247,8 @@
  
  ##
- # @RESUME:
+ # @query-stats-schemas:
 -#
--# Emitted when the virtual machine resumes execution
-+#     Emitted when the virtual machine resumes execution
+-# Return the schema for all available runtime-collected statistics.
++#     Return the schema for all available runtime-collected
++#     statistics.
  #
- # Since: 0.12
+ # @provider: a provider to restrict the query to.
  #
-@@ -227,9 +218,8 @@
- 
- ##
- # @SUSPEND:
--#
--# Emitted when guest enters a hardware suspension state, for example,
--# S3 state, which is sometimes called standby state
-+#     Emitted when guest enters a hardware suspension state, for
-+#     example, S3 state, which is sometimes called standby state
- #
- # Since: 1.1
- #
-@@ -261,9 +251,8 @@
- 
- ##
- # @WAKEUP:
--#
--# Emitted when the guest has woken up from suspend state and is
--# running
-+#     Emitted when the guest has woken up from suspend state and is
-+#     running
- #
- # Since: 1.1
- #
-@@ -276,8 +265,7 @@
- 
- ##
- # @WATCHDOG:
--#
--# Emitted when the watchdog device's timer is expired
-+#     Emitted when the watchdog device's timer is expired
- #
- # @action: action that has been taken
- #
-@@ -300,9 +288,8 @@
- 
- ##
- # @WatchdogAction:
--#
--# An enumeration of the actions taken when the watchdog device's timer
--# is expired
-+#     An enumeration of the actions taken when the watchdog device's
-+#     timer is expired
- #
- # @reset: system resets
- #
-@@ -330,8 +317,7 @@
- 
- ##
- # @RebootAction:
--#
--# Possible QEMU actions upon guest reboot
-+#     Possible QEMU actions upon guest reboot
- #
- # @reset: Reset the VM
- #
-@@ -345,8 +331,7 @@
- 
- ##
- # @ShutdownAction:
--#
--# Possible QEMU actions upon guest shutdown
-+#     Possible QEMU actions upon guest shutdown
- #
- # @poweroff: Shutdown the VM and exit
- #
-@@ -377,8 +362,7 @@
- 
- ##
- # @watchdog-set-action:
--#
--# Set watchdog action.
-+#     Set watchdog action.
- #
- # @action: `WatchdogAction` action taken when watchdog timer expires.
- #
-@@ -394,9 +378,8 @@
- 
- ##
- # @set-action:
--#
--# Set the actions that will be taken by the emulator in response to
--# guest events.
-+#     Set the actions that will be taken by the emulator in response
-+#     to guest events.
- #
- # @reboot: `RebootAction` action taken on guest reboot.
- #
-@@ -427,8 +410,7 @@
- 
- ##
- # @GUEST_PANICKED:
--#
--# Emitted when guest OS panic is detected
-+#     Emitted when guest OS panic is detected
- #
- # @action: action that has been taken, currently always "pause"
- #
-@@ -447,8 +429,7 @@
- 
- ##
- # @GUEST_CRASHLOADED:
--#
--# Emitted when guest OS crash loaded is detected
-+#     Emitted when guest OS crash loaded is detected
- #
- # @action: action that has been taken, currently always "run"
- #
-@@ -467,8 +448,8 @@
- 
- ##
- # @GUEST_PVSHUTDOWN:
--#
--# Emitted when guest submits a shutdown request via pvpanic interface
-+#     Emitted when guest submits a shutdown request via pvpanic
-+#     interface
- #
- # Since: 9.1
- #
-@@ -481,8 +462,8 @@
- 
- ##
- # @GuestPanicAction:
--#
--# An enumeration of the actions taken when guest OS panic is detected
-+#     An enumeration of the actions taken when guest OS panic is
-+#     detected
- #
- # @pause: system pauses
- #
-@@ -497,8 +478,7 @@
- 
- ##
- # @GuestPanicInformationType:
--#
--# An enumeration of the guest panic information types
-+#     An enumeration of the guest panic information types
- #
- # @hyper-v: hyper-v guest panic information type
- #
-@@ -515,8 +495,7 @@
- 
- ##
- # @GuestPanicInformation:
--#
--# Information about a guest panic
-+#     Information about a guest panic
- #
- # @type: Crash type that defines the hypervisor specific information
- #
-@@ -532,8 +511,7 @@
- 
- ##
- # @GuestPanicInformationHyperV:
--#
--# Hyper-V specific guest panic information (HV crash MSRs)
-+#     Hyper-V specific guest panic information (HV crash MSRs)
- #
- # @arg1: for Windows, `STOP` code for the guest crash.  For Linux,
- #     an error code.
-@@ -562,8 +540,7 @@
- 
- ##
- # @S390CrashReason:
--#
--# Reason why the CPU is in a crashed state.
-+#     Reason why the CPU is in a crashed state.
- #
- # @unknown: no crash reason was set
- #
-@@ -588,8 +565,7 @@
- 
- ##
- # @GuestPanicInformationS390:
--#
--# S390 specific guest panic information (PSW)
-+#     S390 specific guest panic information (PSW)
- #
- # @core: core id of the CPU that crashed
- #
-@@ -632,9 +608,8 @@
- 
- ##
- # @GuestPanicInformationSev:
--#
--# Information for AMD SEV-specific termination request (GHCB MSR
--# contents)
-+#     Information for AMD SEV-specific termination request (GHCB MSR
-+#     contents)
- #
- # @set: The reason code set provided by the guest
- #
-@@ -648,8 +623,7 @@
- 
- ##
- # @MEMORY_FAILURE:
--#
--# Emitted when a memory failure occurs on host side.
-+#     Emitted when a memory failure occurs on host side.
- #
- # @recipient: recipient is defined as `MemoryFailureRecipient`.
- #
-@@ -675,8 +649,7 @@
- 
- ##
- # @MemoryFailureRecipient:
--#
--# Hardware memory failure occurs, handled by recipient.
-+#     Hardware memory failure occurs, handled by recipient.
- #
- # @hypervisor: memory failure at QEMU process address space.  (none
- #     guest memory, but used by QEMU itself).
-@@ -691,8 +664,7 @@
- 
- ##
- # @MemoryFailureAction:
--#
--# Actions taken by QEMU in response to a hardware memory failure.
-+#     Actions taken by QEMU in response to a hardware memory failure.
- #
- # @ignore: the memory failure could be ignored.  This will only be the
- #     case for action-optional failures.
-@@ -719,8 +691,7 @@
- 
- ##
- # @MemoryFailureFlags:
--#
--# Additional information on memory failures.
-+#     Additional information on memory failures.
- #
- # @action-required: whether a memory failure event is action-required
- #     or action-optional (e.g. a failure during memory scrub).
-@@ -736,8 +707,8 @@
- 
- ##
- # @NotifyVmexitOption:
--#
--# An enumeration of the options specified when enabling notify VM exit
-+#     An enumeration of the options specified when enabling notify VM
-+#     exit
- #
- # @run: enable the feature, do nothing and continue if the notify VM
- #     exit happens.
 -- 
 2.55.0
 
