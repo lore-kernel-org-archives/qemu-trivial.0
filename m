@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id AFD50C61DD3
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:20:53 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id EC128C61DD3
+	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:21:05 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x18Ub-0007bm-1D; Mon, 31 Aug 2026 16:20:33 -0400
+	id 1x18V4-0007zR-9Z; Mon, 31 Aug 2026 16:21:02 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18UZ-0007ay-9L
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:20:31 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18V2-0007xJ-AX
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:21:00 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18UX-0007Jy-VA
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:20:31 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18V0-0007aj-Hg
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:21:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788207629;
+ s=mimecast20190719; t=1788207657;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=anz2t9BFt0L27a1+w3KFmtX2Yur1ocqcJJFRnKyPZho=;
- b=Iv1rILaguJDwlYKkYTcwAWQXXSgivIQie02siQgZF0RMUUT6KkUxkKm6exRBXCzt6A7Y7g
- dn9GIM9tmiEjOuDII1Yl2RHN7ILMcBhoMPKFvv89koTD1nSeYf0u+uKSBurz5TbFOHRGKp
- zmbdge9E1VuKL0ZjwaBCnPcIptQouOo=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
+ bh=51mw7vepOrhvYl06ZXUhguULRghvJmoF2wY1rlb44PU=;
+ b=LguW3T8BFvr25Lz4KoboxrCz6W0M0Oy4zzyusfN4aXe4RGtuXqYUaSvcRISItcNk7bkh/j
+ JDPxDlyn9OQ9oeuOt0o2kfyn1WUN6Oe74YHm2uegnwLYgfSW9C1P/e1i6D6hLuNR/4DM6T
+ jDuqGDPH8kxKYD7W/H19SbFj7lZ3EH4=
+Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-118-1qSihBPXN2SD3BJRMBBajA-1; Mon,
- 31 Aug 2026 16:20:25 -0400
-X-MC-Unique: 1qSihBPXN2SD3BJRMBBajA-1
-X-Mimecast-MFC-AGG-ID: 1qSihBPXN2SD3BJRMBBajA_1788207621
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-248-5sW6Nih8NgmdFACvicVlww-1; Mon,
+ 31 Aug 2026 16:20:52 -0400
+X-MC-Unique: 5sW6Nih8NgmdFACvicVlww-1
+X-Mimecast-MFC-AGG-ID: 5sW6Nih8NgmdFACvicVlww_1788207649
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 87881184B3BA; Mon, 31 Aug 2026 20:20:19 +0000 (UTC)
+ by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 8181818707B3; Mon, 31 Aug 2026 20:20:48 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.63])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 0822D18005B0; Mon, 31 Aug 2026 20:20:08 +0000 (UTC)
+ id B93751800347; Mon, 31 Aug 2026 20:20:39 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -71,18 +71,17 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-trivial@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v4 02/43] qapi: convert trivial intro sections for
- acpi-hest.json
-Date: Mon, 31 Aug 2026 16:19:04 -0400
-Message-ID: <20260831201945.287730-3-jsnow@redhat.com>
+Subject: [PATCH v4 05/43] qapi: convert trivial intro sections for vfio.json
+Date: Mon, 31 Aug 2026 16:19:07 -0400
+Message-ID: <20260831201945.287730-6-jsnow@redhat.com>
 In-Reply-To: <20260831201945.287730-1-jsnow@redhat.com>
 References: <20260831201945.287730-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: nkfTnoV7I45kOzEwM27vIU-anrWcgXDq-CUod_1M8f8_1788207621
+X-Mimecast-MFC-PROC-ID: bWXStAjwcczpnqUp52WRu81VEimHwVAmqbpqtt0HwmM_1788207649
 X-Mimecast-Originator: redhat.com
+Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: -20
@@ -108,25 +107,26 @@ Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
+Reviewed-by: Cédric Le Goater <clg@redhat.com>
 ---
- qapi/acpi-hest.json | 4 ++--
+ qapi/vfio.json | 4 ++--
  1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/qapi/acpi-hest.json b/qapi/acpi-hest.json
-index a01f1dee095..8db804df197 100644
---- a/qapi/acpi-hest.json
-+++ b/qapi/acpi-hest.json
-@@ -13,8 +13,8 @@
+diff --git a/qapi/vfio.json b/qapi/vfio.json
+index 17b60468712..3d61fc38ecd 100644
+--- a/qapi/vfio.json
++++ b/qapi/vfio.json
+@@ -49,8 +49,8 @@
  
  ##
- # @inject-ghes-v2-error:
+ # @VFIO_MIGRATION:
 -#
--# Inject an error with additional ACPI 6.1 GHESv2 error information
-+#     Inject an error with additional ACPI 6.1 GHESv2 error
-+#     information
+-# This event is emitted when a VFIO device migration state is changed.
++#     This event is emitted when a VFIO device migration state is
++#     changed.
  #
- # @cper: contains a base64 encoded string with raw data for a single
- #     CPER record with Generic Error Status Block, Generic Error Data
+ # @device-id: The device's id, if it has one.
+ #
 -- 
 2.55.0
 
