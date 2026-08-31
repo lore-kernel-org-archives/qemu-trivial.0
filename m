@@ -4,47 +4,47 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C3694C624A4
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:25:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 39AC4C61DFD
+	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:26:21 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x18ZX-0004m3-Rh; Mon, 31 Aug 2026 16:25:39 -0400
+	id 1x18YV-0007IE-BM; Mon, 31 Aug 2026 16:24:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18ZS-0004LG-VI
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:25:35 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18YS-0006rS-NG
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:24:32 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18ZQ-0000VA-Qy
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:25:34 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18YQ-0008M1-Eb
+ for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:24:32 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788207932;
+ s=mimecast20190719; t=1788207869;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=U/qXQ7y8j8vRIuhHXNBGEntkR65K80MZ6kjFW8kUyKM=;
- b=V0dGFw8NGJ8miAuapOuNFupJdFP0MH698/d/LP+WvWbXbIsbylm6dzHC2Xb9nwmZgw/uO/
- IupG0gftHz21xDZOLeum0SRA0vMr3Ye0WkMJzK8dqO8zbeZ82wPNwKNRm+jIDULqebEqhM
- doTg+7wFz+ipUkG3Nq+7uFMsYi7zuFc=
+ bh=BCn/Ycwrut66144uUrLT80zpCgg+RoqrOgG6fdXeCGY=;
+ b=cGiv8Antlj7IPtHmOzm8Fn3dWgANpL/M1I3ulAlEXO5EckvMrb6avge4NW+NmjaYSupRaI
+ Trhd+UysV/dkSP9S9xRQ7xvzBzyviPgDz+09sIH6hlhjNf412jF1rHwVHb/vNSXm1yIrAX
+ PzAb8rH/7KsIGuljlaFmSdjeySkI8yE=
 Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-642-XNahUdQTN_etkX5G4gySqQ-1; Mon,
- 31 Aug 2026 16:25:28 -0400
-X-MC-Unique: XNahUdQTN_etkX5G4gySqQ-1
-X-Mimecast-MFC-AGG-ID: XNahUdQTN_etkX5G4gySqQ_1788207925
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-440-w_h5KMCUOy67bYeZnNAPSA-1; Mon,
+ 31 Aug 2026 16:24:25 -0400
+X-MC-Unique: w_h5KMCUOy67bYeZnNAPSA-1
+X-Mimecast-MFC-AGG-ID: w_h5KMCUOy67bYeZnNAPSA_1788207862
 Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2AAB018E6789; Mon, 31 Aug 2026 20:25:25 +0000 (UTC)
+ id 6427A18E678F; Mon, 31 Aug 2026 20:24:22 +0000 (UTC)
 Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.63])
  by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6064018005AC; Mon, 31 Aug 2026 20:25:18 +0000 (UTC)
+ id 597B21800347; Mon, 31 Aug 2026 20:24:15 +0000 (UTC)
 From: John Snow <jsnow@redhat.com>
 To: qemu-devel@nongnu.org
 Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
@@ -71,14 +71,15 @@ Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
  Gerd Hoffmann <kraxel@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-trivial@nongnu.org,
  =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v4 38/43] qapi: convert trivial intro sections for net.json
-Date: Mon, 31 Aug 2026 16:19:40 -0400
-Message-ID: <20260831201945.287730-39-jsnow@redhat.com>
+Subject: [PATCH v4 29/43] qapi: convert trivial intro sections for
+ block-export.json
+Date: Mon, 31 Aug 2026 16:19:31 -0400
+Message-ID: <20260831201945.287730-30-jsnow@redhat.com>
 In-Reply-To: <20260831201945.287730-1-jsnow@redhat.com>
 References: <20260831201945.287730-1-jsnow@redhat.com>
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: -CCRWwNcEWdfVtUQq_sGNqz_Q2B8J1XGgw3aYqOjF8M_1788207925
+X-Mimecast-MFC-PROC-ID: R2tqSgXlv9xq8nOnSWh6IuxiDMGt3HtwHg4ka6ACcJU_1788207862
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -109,300 +110,160 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 Signed-off-by: John Snow <jsnow@redhat.com>
 ---
- qapi/net.json | 92 ++++++++++++++++++---------------------------------
- 1 file changed, 33 insertions(+), 59 deletions(-)
+ qapi/block-export.json | 50 +++++++++++++++---------------------------
+ 1 file changed, 18 insertions(+), 32 deletions(-)
 
-diff --git a/qapi/net.json b/qapi/net.json
-index 1a6382825c5..4ea4bd1bc72 100644
---- a/qapi/net.json
-+++ b/qapi/net.json
-@@ -12,8 +12,7 @@
+diff --git a/qapi/block-export.json b/qapi/block-export.json
+index dd724acf1cb..154f07b0b95 100644
+--- a/qapi/block-export.json
++++ b/qapi/block-export.json
+@@ -80,9 +80,8 @@
  
  ##
- # @set_link:
+ # @BlockExportOptionsNbdBase:
 -#
--# Sets the link status of a virtual network adapter.
-+#     Sets the link status of a virtual network adapter.
+-# An NBD block export (common options shared between `nbd-server-add`
+-# and the NBD branch of `block-export-add`).
++#     An NBD block export (common options shared between
++#     `nbd-server-add` and the NBD branch of `block-export-add`).
  #
- # @name: the device name of the virtual network adapter
- #
-@@ -60,8 +59,7 @@
+ # @name: Export name.  If unspecified, the @device parameter is used
+ #     as the export name.  (Since 2.12)
+@@ -97,9 +96,8 @@
  
  ##
- # @netdev_del:
+ # @BlockExportOptionsNbd:
 -#
--# Remove a network backend.
-+#     Remove a network backend.
+-# An NBD block export (distinct options used in the NBD branch of
+-# `block-export-add`).
++#     An NBD block export (distinct options used in the NBD branch of
++#     `block-export-add`).
  #
- # @id: the name of the network backend to remove
- #
-@@ -80,8 +78,7 @@
+ # @bitmaps: Also export each of the named dirty bitmaps reachable from
+ #     @device, so the NBD client can use NBD_OPT_SET_META_CONTEXT with
+@@ -121,8 +119,7 @@
  
  ##
- # @NetLegacyNicOptions:
+ # @BlockExportOptionsVhostUserBlk:
 -#
--# Create a new Network Interface Card.
-+#     Create a new Network Interface Card.
+-# A vhost-user-blk block export.
++#     A vhost-user-blk block export.
  #
- # @netdev: id of -netdev to connect to
- #
-@@ -140,8 +137,7 @@
+ # @addr: The vhost-user socket on which to listen.  Both 'unix' and
+ #     'fd' `SocketAddress` types are supported.  Passed fds must be
+@@ -143,8 +140,7 @@
  
  ##
- # @NetdevPasstOptions:
+ # @FuseExportAllowOther:
 -#
--# Unprivileged user-mode network connectivity using passt
-+#     Unprivileged user-mode network connectivity using passt
+-# Possible allow_other modes for FUSE exports.
++#     Possible allow_other modes for FUSE exports.
  #
- # @path: Filename of the passt program to run (by default 'passt', and
- #     use PATH)
-@@ -301,9 +297,8 @@
+ # @off: Do not pass allow_other as a mount option.
+ #
+@@ -195,8 +191,7 @@
  
  ##
- # @NetdevUserOptions:
+ # @BlockExportOptionsVduseBlk:
 -#
--# Use the user mode network stack which requires no administrator
--# privilege to run.
-+#     Use the user mode network stack which requires no administrator
-+#     privilege to run.
+-# A vduse-blk block export.
++#     A vduse-blk block export.
  #
- # @hostname: client hostname reported by the builtin DHCP server
+ # @name: the name of VDUSE device (must be unique across the host).
  #
-@@ -389,8 +384,7 @@
+@@ -221,8 +216,7 @@
  
  ##
- # @NetdevTapOptions:
+ # @NbdServerAddOptions:
 -#
--# Used to configure a host TAP network interface backend.
-+#     Used to configure a host TAP network interface backend.
+-# An NBD block export, per legacy `nbd-server-add` command.
++#     An NBD block export, per legacy `nbd-server-add` command.
  #
- # @ifname: interface name
+ # @device: The device name or node name of the node to be exported
  #
-@@ -447,9 +441,8 @@
+@@ -266,8 +260,7 @@
  
  ##
- # @NetdevSocketOptions:
+ # @BlockExportRemoveMode:
 -#
--# Socket netdevs are used to establish a network connection to another
--# QEMU virtual machine via a TCP socket.
-+#     Socket netdevs are used to establish a network connection to
-+#     another QEMU virtual machine via a TCP socket.
+-# Mode for removing a block export.
++#     Mode for removing a block export.
  #
- # @fd: file descriptor of an already opened socket
- #
-@@ -476,8 +469,7 @@
+ # @safe: Remove export if there are no existing connections, fail
+ #     otherwise.
+@@ -289,8 +282,7 @@
  
  ##
- # @NetdevL2TPv3Options:
+ # @nbd-server-remove:
 -#
--# Configure an Ethernet over L2TPv3 tunnel.
-+#     Configure an Ethernet over L2TPv3 tunnel.
+-# Remove NBD export by name.
++#     Remove NBD export by name.
  #
- # @src: source address
+ # @name: Block export id.
  #
-@@ -531,8 +523,7 @@
+@@ -316,9 +308,8 @@
  
  ##
- # @NetdevVdeOptions:
+ # @nbd-server-stop:
 -#
--# Connect to a vde switch running on the host.
-+#     Connect to a vde switch running on the host.
+-# Stop QEMU's embedded NBD server, and unregister all devices
+-# previously added via `nbd-server-add`.
++#     Stop QEMU's embedded NBD server, and unregister all devices
++#     previously added via `nbd-server-add`.
  #
- # @sock: socket path
- #
-@@ -553,8 +544,7 @@
+ # Since: 1.3
+ ##
+@@ -327,8 +318,7 @@
  
  ##
- # @NetdevBridgeOptions:
+ # @BlockExportType:
 -#
--# Connect a host TAP network interface to a host bridge device.
-+#     Connect a host TAP network interface to a host bridge device.
+-# An enumeration of block export types
++#     An enumeration of block export types
  #
- # @br: bridge name
+ # @nbd: NBD export
  #
-@@ -569,8 +559,7 @@
+@@ -412,9 +402,8 @@
  
  ##
- # @NetdevHubPortOptions:
+ # @BlockExportIothreads:
 -#
--# Connect two or more net clients through a software hub.
-+#     Connect two or more net clients through a software hub.
+-# Specify a single or multiple I/O threads in which to run a block
+-# export's I/O.
++#     Specify a single or multiple I/O threads in which to run a block
++#     export's I/O.
  #
- # @hubid: hub identifier number
+ # @single: Run the export's I/O in the given single I/O thread.
  #
-@@ -586,8 +575,8 @@
+@@ -436,8 +425,7 @@
  
  ##
- # @NetdevNetmapOptions:
+ # @block-export-add:
 -#
--# Connect a client to a netmap-enabled NIC or to a VALE switch port
-+#     Connect a client to a netmap-enabled NIC or to a VALE switch
-+#     port
+-# Creates a new block export.
++#     Creates a new block export.
  #
- # @ifname: Either the name of an existing network interface supported
- #     by netmap, or the name of a VALE port (created on the fly).  A
-@@ -607,8 +596,7 @@
+ # Since: 5.2
+ ##
+@@ -470,8 +458,7 @@
  
  ##
- # @AFXDPMode:
+ # @BLOCK_EXPORT_DELETED:
 -#
--# Attach mode for a default XDP program
-+#     Attach mode for a default XDP program
+-# Emitted when a block export is removed and its id can be reused.
++#     Emitted when a block export is removed and its id can be reused.
  #
- # @skb: generic mode, no driver support necessary
+ # @id: Block export id.
  #
-@@ -623,8 +611,7 @@
+@@ -482,8 +469,7 @@
  
  ##
- # @NetdevAFXDPOptions:
+ # @BlockExportInfo:
 -#
--# AF_XDP network backend
-+#     AF_XDP network backend
+-# Information about a single block export.
++#     Information about a single block export.
  #
- # @ifname: The name of an existing network interface.
- #
-@@ -675,8 +662,7 @@
- 
- ##
- # @NetdevVhostUserOptions:
--#
--# Vhost-user network backend
-+#     Vhost-user network backend
- #
- # @chardev: name of a unix socket chardev
- #
-@@ -836,8 +822,7 @@
- 
- ##
- # @NetdevStreamOptions:
--#
--# Configuration info for stream socket netdev
-+#     Configuration info for stream socket netdev
- #
- # @addr: socket address to listen on (server=true) or connect to
- #     (server=false)
-@@ -861,8 +846,7 @@
- 
- ##
- # @NetdevDgramOptions:
--#
--# Configuration info for datagram socket netdev.
-+#     Configuration info for datagram socket netdev.
- #
- # @remote: remote address
- #
-@@ -898,8 +882,7 @@
- 
- ##
- # @NetClientDriver:
--#
--# Available netdev drivers.
-+#     Available netdev drivers.
- #
- # @l2tpv3: since 2.1
- #
-@@ -933,8 +916,7 @@
- 
- ##
- # @Netdev:
--#
--# Captures the configuration of a network device.
-+#     Captures the configuration of a network device.
- #
- # @id: identifier for monitor commands.
- #
-@@ -972,8 +954,7 @@
- 
- ##
- # @RxState:
--#
--# Packets receiving state
-+#     Packets receiving state
- #
- # @normal: filter assigned packets according to the mac-table
- #
-@@ -987,8 +968,7 @@
- 
- ##
- # @RxFilterInfo:
--#
--# Rx-filter information for a NIC.
-+#     Rx-filter information for a NIC.
- #
- # @name: net client name
- #
-@@ -1033,8 +1013,8 @@
- 
- ##
- # @query-rx-filter:
--#
--# Return rx-filter information for all NICs (or for the given NIC).
-+#     Return rx-filter information for all NICs (or for the given
-+#     NIC).
- #
- # @name: net client name
- #
-@@ -1082,9 +1062,8 @@
- 
- ##
- # @NIC_RX_FILTER_CHANGED:
--#
--# Emitted once until the `query-rx-filter` command is executed, the
--# first event will always be emitted
-+#     Emitted once until the `query-rx-filter` command is executed,
-+#     the first event will always be emitted
- #
- # @name: net client name
- #
-@@ -1104,8 +1083,7 @@
- 
- ##
- # @AnnounceParameters:
--#
--# Parameters for self-announce timers
-+#     Parameters for self-announce timers
- #
- # @initial: Initial delay (in ms) before sending the first GARP/RARP
- #     announcement
-@@ -1178,8 +1156,7 @@
- 
- ##
- # @NETDEV_STREAM_CONNECTED:
--#
--# Emitted when the netdev stream backend is connected
-+#     Emitted when the netdev stream backend is connected
- #
- # @netdev-id: QEMU netdev id that is connected
- #
-@@ -1208,8 +1185,7 @@
- 
- ##
- # @NETDEV_STREAM_DISCONNECTED:
--#
--# Emitted when the netdev stream backend is disconnected
-+#     Emitted when the netdev stream backend is disconnected
- #
- # @netdev-id: QEMU netdev id that is disconnected
- #
-@@ -1226,8 +1202,7 @@
- 
- ##
- # @NETDEV_VHOST_USER_CONNECTED:
--#
--# Emitted when the vhost-user chardev is connected
-+#     Emitted when the vhost-user chardev is connected
- #
- # @netdev-id: QEMU netdev id that is connected
- #
-@@ -1246,8 +1221,7 @@
- 
- ##
- # @NETDEV_VHOST_USER_DISCONNECTED:
--#
--# Emitted when the vhost-user chardev is disconnected
-+#     Emitted when the vhost-user chardev is disconnected
- #
- # @netdev-id: QEMU netdev id that is disconnected
+ # @id: The unique identifier for the block export
  #
 -- 
 2.55.0
