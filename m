@@ -4,93 +4,172 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 77017C624C6
-	for <qemu-trivial@archiver.kernel.org>; Mon, 31 Aug 2026 20:27:06 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 82990C61DE4
+	for <qemu-trivial@archiver.kernel.org>; Tue,  1 Sep 2026 05:32:42 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x18a2-0006oN-EJ; Mon, 31 Aug 2026 16:26:11 -0400
+	id 1x1H6m-0005kP-IY; Tue, 01 Sep 2026 01:32:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Zw-0006dz-LC
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:26:04 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1)
+ (envelope-from <prvs=6977d653a=Alistair.Francis@wdc.com>)
+ id 1x1H6l-0005k8-95; Tue, 01 Sep 2026 01:32:31 -0400
+Received: from esa2.hgst.iphmx.com ([68.232.143.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x18Zt-0000ei-St
- for qemu-trivial@nongnu.org; Mon, 31 Aug 2026 16:26:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1788207961;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=2Qki3202jzB0uNmrJ8G0JeNCMEhWZDtvlbuFVuOEQck=;
- b=DLxtJO7gTVsVb2H8DIPYPmlinGxZ+lRFvXE7lu/xTqLd1NC4x4yXz9rS8u+fMtoH8fGAls
- 6xJcwtyeIK0ZsITGINOaO+R9BX83zDi9iuqnYVyTdDnuE2S6dnRcCnb43XLjZ4S/hMR5MO
- p0ofKN/pvBmI4dzzV9tFffDY9BP6+RU=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-674-MuUPaqfNOUOTxF0dYeKCsQ-1; Mon,
- 31 Aug 2026 16:25:56 -0400
-X-MC-Unique: MuUPaqfNOUOTxF0dYeKCsQ-1
-X-Mimecast-MFC-AGG-ID: MuUPaqfNOUOTxF0dYeKCsQ_1788207953
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 5B299184A09B; Mon, 31 Aug 2026 20:25:53 +0000 (UTC)
-Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.63])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 6340018005AC; Mon, 31 Aug 2026 20:25:46 +0000 (UTC)
-From: John Snow <jsnow@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Marc-Andr=C3=A9=20Lureau?= <marcandre.lureau@redhat.com>,
- Lukas Straub <lukasstraub2@web.de>,
- =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- Richard Henderson <richard.henderson@linaro.org>,
- zhenwei pi <zhenwei.pi@linux.dev>, Jonathan Cameron <jic23@kernel.org>,
- Paolo Bonzini <pbonzini@redhat.com>, Stefan Hajnoczi <stefanha@redhat.com>,
- Markus Armbruster <armbru@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- Jiri Pirko <jiri@resnulli.us>,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@mailo.com>,
- qemu-block@nongnu.org, Ani Sinha <anisinha@redhat.com>,
- Jason Wang <jasowangio@gmail.com>, linux-cxl@vger.kernel.org,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Igor Mammedov <imammedo@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- Alex Williamson <alex@shazbot.org>,
- Stefan Berger <stefanb@linux.vnet.ibm.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Laurent Vivier <laurent@vivier.eu>,
- linux-edac@vger.kernel.org, Michael Tokarev <mjt@tls.msk.ru>,
- John Snow <jsnow@redhat.com>, Fabiano Rosas <farosas@suse.de>,
- Zhao Liu <zhao1.liu@intel.com>, "Gonglei (Arei)" <arei.gonglei@huawei.com>,
- Eric Blake <eblake@redhat.com>, Peter Xu <peterx@redhat.com>,
- Gerd Hoffmann <kraxel@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Mauro Carvalho Chehab <mchehab+huawei@kernel.org>, qemu-trivial@nongnu.org,
- =?UTF-8?q?C=C3=A9dric=20Le=20Goater?= <clg@redhat.com>
-Subject: [PATCH v4 42/43] qapi: convert trivial intro sections for machine.json
-Date: Mon, 31 Aug 2026 16:19:44 -0400
-Message-ID: <20260831201945.287730-43-jsnow@redhat.com>
-In-Reply-To: <20260831201945.287730-1-jsnow@redhat.com>
-References: <20260831201945.287730-1-jsnow@redhat.com>
+ (Exim 4.90_1)
+ (envelope-from <prvs=6977d653a=Alistair.Francis@wdc.com>)
+ id 1x1H6j-0007gT-A9; Tue, 01 Sep 2026 01:32:31 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=simple/simple;
+ d=wdc.com; i=@wdc.com; q=dns/txt; s=dkim.wdc.com;
+ t=1788240749; x=1819776749;
+ h=from:to:cc:subject:date:message-id:references:
+ in-reply-to:content-id:content-transfer-encoding: mime-version;
+ bh=udAB3Emw3mBvsYH0w4vykVU/enVVfyPL8LJKYBz93+8=;
+ b=qYCvloWxR6ZF5xFC8B8aWTPnmOyWwprytPCZTcToTlx703NrE31cWgp1
+ 5oV6Ey7knZKKLkUkztXDnS+wk2sx9Cbw9Ra3yuokgncv+tizSxWvn4XiG
+ T7THiK5dO6XstP7vc5eRcV0P9DagRkNXa7tasDS3xZpleGvNHRdo9VWK8
+ zuVe6deH/awDJHeHJkY+oclodU7qL9dgmh+qqvOKFZ7lj63bAU3kVhvE4
+ afK9fQtLOINMGZz/TEloxpPvAOULrZL/Y1/9lQVjct/tO7OsmCYytLwvR
+ OLabC5+kSfeMItKhTmbV1CJA3k3zRKdRQzM4wycFNt/6DR9Ja4nC/12Jb Q==;
+X-CSE-ConnectionGUID: vlTjUWUxSrK1nJCeuIkmvQ==
+X-CSE-MsgGUID: kjIRMkFeQ2K6PKcdJx7iaw==
+X-IronPort-AV: E=Sophos;i="6.25,255,1779120000"; d="scan'208";a="155594604"
+Received: from mail-westcentralusazon11010067.outbound.protection.outlook.com
+ (HELO CY7PR03CU001.outbound.protection.outlook.com) ([40.93.198.67])
+ by ob1.hgst.iphmx.com with ESMTP/TLS/ECDHE-RSA-AES128-GCM-SHA256;
+ 01 Sep 2026 13:32:26 +0800
+ARC-Seal: i=1; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=none;
+ b=llmAo+2Rj0YNqRfMhQkhJtMKyyoGytjgc+X+vCK3RGPsXUKxSTR9qaESGtfHt4TZPVUM1YKSIp0yHjTbdOhysbJNJLVY7Prnx0TtzdrYr0q2mcQEYck5EAKN/sdG2Aa5A2AmKhwUD9qd3+KU4lm7vzpvAzwywI8ExUQhVCbp6Uioy0lmLyqNbTbdV7bcXwH8Fm2+Vg9raDqbUVQgbVVEDBeIdyyP1gEbQuksO+9j7yF/Hpa7g7dcGxFSz6QMJ5n/7j1nSaNPjSsvWvpC20vRGlURLMc4I5hgBOg9CfkCznyRJAjA7it8BcPbwzpA8VxyRTX3r7YMasU9IG+dKegcZg==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com; 
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=udAB3Emw3mBvsYH0w4vykVU/enVVfyPL8LJKYBz93+8=;
+ b=tt1Yf1a3t1q4sGXWgLHkBgPt5KLIvIGmXTfTCQgFLlEgmywXv0+dRKh8c4wkeB+elQzxu3WEF4bv3jBANBWTsyERrwSGkc0i229F1lqrw0yHJF6mSeXGmkssk584ad6Yjrzd70/cqKeDloUlF6K0x12ENPEx9kLWdxmuB8b2LePrV+knSBdGhfhdBC41ELVlM6jmHOCBDsOKfMeTtj4ZVNOz/IlJIR0V1WXoWj4Q/dHWzg79dzbQykS90EkKxES9YasdWzkKTsNHBIVfwn5rzw0pOLydf33eAKy4hyPk1ErRJRNitCXoOkms+IM+wq1Jy9ul0W7hZVfFmGw8cP3c6A==
+ARC-Authentication-Results: i=1; mx.microsoft.com 1; spf=pass
+ smtp.mailfrom=wdc.com; dmarc=pass action=none header.from=wdc.com; dkim=pass
+ header.d=wdc.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=sharedspace.onmicrosoft.com; s=selector2-sharedspace-onmicrosoft-com;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderADCheck;
+ bh=udAB3Emw3mBvsYH0w4vykVU/enVVfyPL8LJKYBz93+8=;
+ b=y3fkAnL1GUhkQlpjtGb8GpheXvag6jea0PdrLCgOlnwHRxYzVLKyH6MeIx8xrdnAEfvNENMQ7J8C7hpy0RxyZyrnhILhySB/UhM96qRXl2kS+3k6pBiG4KFcCR5fveen2NdbZCX4QViovWM5d0vjOPDc32kfnFVXrAp/v2JAE10=
+Received: from BY1PR04MB9561.namprd04.prod.outlook.com (2603:10b6:a03:5b6::11)
+ by PH0PR04MB7302.namprd04.prod.outlook.com (2603:10b6:510:1d::11)
+ with Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.360.13; Tue, 1 Sep
+ 2026 05:32:23 +0000
+Received: from BY1PR04MB9561.namprd04.prod.outlook.com
+ ([fe80::3869:e494:2fa8:9888]) by BY1PR04MB9561.namprd04.prod.outlook.com
+ ([fe80::3869:e494:2fa8:9888%5]) with mapi id 15.21.0382.007; Tue, 1 Sep 2026
+ 05:32:23 +0000
+From: Alistair Francis <Alistair.Francis@wdc.com>
+To: "daniel.barboza@oss.qualcomm.com" <daniel.barboza@oss.qualcomm.com>,
+ "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
+CC: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>,
+ "qemu-riscv@nongnu.org" <qemu-riscv@nongnu.org>, "mjt@tls.msk.ru"
+ <mjt@tls.msk.ru>, "chao.liu@processmission.com"
+ <chao.liu@processmission.com>, "laurent@vivier.eu" <laurent@vivier.eu>,
+ "liwei1518@gmail.com" <liwei1518@gmail.com>, "zhiwei_liu@linux.alibaba.com"
+ <zhiwei_liu@linux.alibaba.com>
+Subject: Re: [PATCH v5 00/15] hw/riscv: trivial code dup work
+ (riscv-server-ref prep)
+Thread-Topic: [PATCH v5 00/15] hw/riscv: trivial code dup work
+ (riscv-server-ref prep)
+Thread-Index: AQHdNy1V/2XxBALB90aPmTi8n8f1Lba5OCqA
+Date: Tue, 1 Sep 2026 05:32:23 +0000
+Message-ID: <b7aea9677520072668b4da5b0232e73193baa340.camel@wdc.com>
+References: <20260828203918.350131-1-daniel.barboza@oss.qualcomm.com>
+In-Reply-To: <20260828203918.350131-1-daniel.barboza@oss.qualcomm.com>
+Accept-Language: en-US
+Content-Language: en-US
+X-MS-Has-Attach: 
+X-MS-TNEF-Correlator: 
+user-agent: Evolution 3.60.2 (by Flathub.org) 
+authentication-results: dkim=none (message not signed)
+ header.d=none;dmarc=none action=none header.from=wdc.com;
+x-ms-publictraffictype: Email
+x-ms-traffictypediagnostic: BY1PR04MB9561:EE_|PH0PR04MB7302:EE_
+x-ms-office365-filtering-correlation-id: 003c3623-6c8b-40f9-8896-08df07ea6659
+wdcipoutbound: EOP-TRUE
+x-ms-exchange-senderadcheck: 1
+x-ms-exchange-antispam-relay: 0
+x-microsoft-antispam: BCL:0;
+ ARA:13230040|23010399003|376014|1800799024|19092799006|10070799003|366016|38070700021|10067099003|5023799004|11063799006|18002099003|22082099003|56012099006;
+x-microsoft-antispam-message-info: XLS588jRjZPZ8qMbHjdu+mEPS6B5IgMkpqQyBevi1kwCNTHIRenaNh3Vmw65EqLuvuqk3gQ6R/hoWoS+u4tynbdZYmzWCkfvbjU/N8IAvXcXII8Mos01iNQz5KUq0ke+o4yHyDIh4pDG0fa2cumdVz9HY/GsTNcVS/rds7BcezrNmBrkoGE/9ulVTEWx6Kzfq6qkzfVLD95e4/D47gHoXF1DXNyPbM+d7XvwiUs4myZDnREjAxqtEoss/yPL0D8hSw1IUglRSlb6oDgslv2OMmBC4j1WZeemt/KiSnhOJVWvcPcYqMPNgoBVMxqBEIQxDkw9WP3Ixu9+kOsEv6iEULAn8OMOHM64HIR5+1BuljzxadxcJOE8FN9iXeCdg1PZEHCBpKgwHG3mDYzpdtWjzK/uX+UShx5ZhDzoAm5xxgKiSVtLtDfTgRJnAPIA+TOe+5nzLmazwQBZDUL6rlct0T+Y13db1uYL0wLVGTYm7gtMNtsfk4kHX0g5BUDyWHo6Yfvr1gSduPqkPp9oaXjHX+NJjgd3Xc/hQxG7k2gCdEf6sHGOKslCvc2C1mzMRFTamHspOXKSoSp3DvkCLdGr5Lta1ujLxOIWuKgzCdtYHDMvXfXHjIpewfzeJUO/yyXwJLqklq3TTUxm6GfCr/yebk/x2WP5CDblSmFGEyRHyvmbwUHxDEoMYoGLi3YTyYCicbXx1dINf0G1Hbsb3wJ5RZmCXRevFnNDe0s1tRBTtww=
+x-forefront-antispam-report: CIP:255.255.255.255; CTRY:; LANG:en; SCL:1; SRV:;
+ IPV:NLI; SFV:NSPM; H:BY1PR04MB9561.namprd04.prod.outlook.com; PTR:; CAT:NONE;
+ SFS:(13230040)(23010399003)(376014)(1800799024)(19092799006)(10070799003)(366016)(38070700021)(10067099003)(5023799004)(11063799006)(18002099003)(22082099003)(56012099006);
+ DIR:OUT; SFP:1101; 
+x-ms-exchange-antispam-messagedata-chunkcount: 2
+x-ms-exchange-antispam-messagedata-0: =?utf-8?B?U0JnckVad29vMEFkemhCdDdoaDh1cVZlZFFyYkRPUzdKSDVrd0FVQnpjWkZh?=
+ =?utf-8?B?cmdJT0ZiZW9keGZUQm5TWkZiNE9pbGZJMlJNWUJkdU1DeVpEZ2tNZmNKZmxl?=
+ =?utf-8?B?VWttZksyT2ZVSXZYNThaNEtSQ0Q2SGUrdnhVeXA5UmV0OFNvd0xHTlkvSnhL?=
+ =?utf-8?B?emFZNzBFa2JkVlM1UTRQMFZQelhBUzlPUzNIN0J2QkE1Z0RpVzFhVnBCZ1pD?=
+ =?utf-8?B?bmRVeUtRelorVi9WMFhLelk2aVlsWW9aKzZWTmhMVEJVUzB6NDlDeG1Jb1hw?=
+ =?utf-8?B?VkYveW9sZVdET3FlV2V3UEVVTzVjeVhLRExiU2NnNTNmUEI2T1lQYW8rYmxu?=
+ =?utf-8?B?eWRsZHY0bzdOakpGclRsS3prbndwOU00dWpodEJxVkxudEVWV0tUamdtU2xY?=
+ =?utf-8?B?RUkxQmRLeFlGY2R6WUZac3FmR0g4ZElObk9ndGhEQXo5LzFQc2RwZ3c4UzFt?=
+ =?utf-8?B?WTBmdFEzaWVRalNzRk1oQUxuaFQzYW85cHVYc202RGRuMTVUWWNUYjFCR2dy?=
+ =?utf-8?B?Y3p3b3dpSDBuSklYYlRQZzlvaFRDdVZ5cC9ZK3lOQmRYbTJYeEV1amlmcTZy?=
+ =?utf-8?B?M21VdU9jSC9zSW1SK1dKUU4yKzdOUXplamkxbjVVZ1cyQVFXUGgwYWpWcDNo?=
+ =?utf-8?B?MVkxNUlqTVBGdnFWaHZJeUlMMndFeENBemsxMEo3RmZCYzRGN3dYeGtIRkVq?=
+ =?utf-8?B?Y3dsMW1FamJSSkcyVXRYK3h5eGVVbXE5MFFzeDRzSlhPeER2VW12YzdiRytF?=
+ =?utf-8?B?b29RekczeFhseHNjMjV5ekZQUk8xUHZsaHA4V2pVNFd5dFRNSnNLZjFEN0o1?=
+ =?utf-8?B?MEhZVHdJZWhYdVBoenl3WHhtNlA1bTdnRU1aT0JtSmJnRFJZdzVJR3N2ZWpF?=
+ =?utf-8?B?NDFFVzkrU2U5eFNEQy9wQVUrZG53NTZqd1NXSEhyd3lLM2h4UHFmb0phZ2xG?=
+ =?utf-8?B?OVhVUWQ4TWpteFdyY2hXTlAwUTAwaFF1VVlORldyRDV2RFdqTmwzVmF0WlZu?=
+ =?utf-8?B?ZTlCY2xvS3pzNmRRMG1RRWZKS0V0SVdGamlBRnZNRE9mOFFRbWE5R2NVdElN?=
+ =?utf-8?B?QVFreXlGbTdtQkxYNXNrRHQ3VFhONmEzTXhhaU5nN1VZUTd1N2ZMQ3UzOFhl?=
+ =?utf-8?B?bzI4cWZwelIvT0sxWWlDL1ozajlvUXhmUkpWM2hneVBuWTJKOXNNaHRxWjJh?=
+ =?utf-8?B?czlCTWFRWFllVGpDWlF4YVNCOW1EbGJFYVdqbktaMTlGUGhpS291N1RkRFAr?=
+ =?utf-8?B?L25oTmZYc1pRdGtueGZPaGFVL2xockFvUFQ3NERhWDc4N1lvSWVkTmR3bHM1?=
+ =?utf-8?B?MEVVS2pjZ0l6WmkreHBzK210NS9lL0xyZmJqOW5qeTlDZEpxazU1Y2pNTDVx?=
+ =?utf-8?B?Sml5blYrdXdSQmxSRStveHBIZC9FQ0ZJd3dNOWw0eWhkdk9tZGJ2eTQvUnQz?=
+ =?utf-8?B?bEpzVldpSTY4eTVvaEVuejlkMU1YTWxDeSsrSUNwajRCWDgwaXBvZ0tCQ3p6?=
+ =?utf-8?B?VGJxOE5VK0w2NUoyZEk0bzJSTWRJYittY2R4ZUFmSmM2TXZNSlJpcWE4cmpu?=
+ =?utf-8?B?NVREaE9tbWRhM2dnQWVhdzVmTThVNEJBYnMwazRJbnNIM2lmSjRZdXZjQStR?=
+ =?utf-8?B?NXNDQW5PRm9GU1FzKzVjUlhHMHQ4QVNtRTlZQURBNzd5RXlaWHJWN3VDT3Bn?=
+ =?utf-8?B?cytHdThpNU4rQVJEL2d6SEJpR3c2TWVxemV0ajZoOE43WFhNT1NZcndFNmVj?=
+ =?utf-8?B?WWo5dmRjeURWUnNuMjVvNDJGZjRFVGpMMFA5cEVLTDdBKzJDN2NCa0VDN01K?=
+ =?utf-8?B?aUxSWjlscittUTY2ekcxcG5icithUDVXc2Y4bnY3b3Z4ck1oYWFnZ01oOEsv?=
+ =?utf-8?B?MGhYSkl2NituUFBlZTJjNUV5eWx2WVg5YVFjc2UrRy9vR0tRQUsyL0tqQXdr?=
+ =?utf-8?B?YzVSVnRPcmxBYkV1cHNrcHlTZ1NOeWVTazF6VFE0aTZTY3ZKeVY4aUVXZ1Ur?=
+ =?utf-8?B?M2dnTGdvUU1qaEhCcFVtZVVMdGF6YkwrWkkxcUQ2V2NlTGNWbXhaaGpyejQ1?=
+ =?utf-8?B?VWFES254bmluSEFXSCtMR3FpTndnYW9EdDJaOVdyTFNGU3ZIWmZhaC93dHBJ?=
+ =?utf-8?B?WkxlcmtCWHpDMXl3dlVlWTBRUmVRMndjUGtNU2RsOXhpdTBzdmFIN1ZzaGho?=
+ =?utf-8?B?Wm0vNm9YR01mUmVCUGl4Z2VqSlE0N1loMUJHbk1yQkV5QityRmx3R0o1OTNM?=
+ =?utf-8?B?NzVlVEpTUllQb2podmJ6T3dWbnlJMWowa2xxSHgzdWdXNW83a3Uwc1E0R2NW?=
+ =?utf-8?B?Y1dqUFRTUGc4dkcrbjVVZnVUNDZYcUpacFc1ZFBndCtBdDNzczM4NXVmR2d6?=
+ =?utf-8?Q?/RUQZZNr7R0XIF76YFSr4Nhbjx2cd9ASJIwRpv68lXhZM?=
+x-ms-exchange-antispam-messagedata-1: Q5nIAdEIywWsEJ70ZgX/c/XdIlUddfsTMHY=
+Content-Type: text/plain; charset="utf-8"
+Content-ID: <C35A5524E94004468DB2AA8D385B702F@namprd04.prod.outlook.com>
+Content-Transfer-Encoding: base64
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: tP33bcXybAHQ6DB54swe7ln13__OJCRV2RNJyO9D9MU_1788207953
-X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+X-Exchange-RoutingPolicyChecked: JTqRZj/nasBRsQXzAUo8KT+KDzqDXYFwJcSB2hO76wluBl50e2YNUa3nthE816ahEzwZ5oUFVK0ms70sKHFV9n2OR7gPksgsICY4fRXVw4AMui4gGKqi4YB2/RgO+HXK+eQdr/MSZBCvcE0UR/oFcE5SCGRCL2j0eVE65qLq/gtabSiAbZArIDZSI4AzZn70RiuFvcUN2fjtD7XN5OOb/0dn6V6FIrxqKkZzaw6t4iBhgMSQwv78DgtMOZz2bcyRAskfQMdc/4HoxrLio8bWkmBmingZXPqTQtoD5Dkwcbu5odMjqQl500bptoNdTTGGxmOzYi4wDZcllrVZwrb7jQ==
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-ChunkCount: 1
+X-MS-Exchange-AntiSpam-ExternalHop-MessageData-0: U7dCNLTuEKwfKrO1HifWQmpJe5fGbRSF1FS3B2m3tMk7lXH6p/++0q+K+TEtJIhY1Kiwqq5s6Pd97WdPeDkhlFhhFCY0ccDNTBubLHtzc62ScNgx3wn/4+BIr6t6hKDAxNU86O6PT0Zo9J8R620WW1NavQDx2njQL/esDjJPSCpCWSHP8xCglD5FPRK4PPpxu4gm08vBN70FaxVV5FDBlGMZnclfAE4CjUMcpVLXOZG6iwyoih15EppPOqQXaltGuNNI+oGoEc7XGBFHMMCtc6YOGUGbiHteYbQppofkL1OB5HVZuwg4wyPdDcKcfytz6gk/NHxe2IqP6lqy40ZISgscuamhrEBwKZx9eTB2ChcueGKSXCcEn2zgOvcFjrNgXLlRaQUxxx+LeEqeeQJLZNnc0Me8Z0gB78bfqyVj5Ak5dY8ge3mlJrfr6a41fgxFZ4RVPHm16wPP1NvDiGP2piV+VbkoGsh05lAJ0NYSvx5+CtSu2Bqk6evu+tNnJglRS9x4VSeFCUBBFplhng9xruliImvguj+0hBNxTjYia2yMFQZ/MlV1Ic9ajXDIT9LBv76l2ruTEBahFt2fxV+84043isd1R2zrOMOAWctyLObOEviGXjQvTplG3lqJpu9c
+X-OriginatorOrg: wdc.com
+X-MS-Exchange-CrossTenant-AuthAs: Internal
+X-MS-Exchange-CrossTenant-AuthSource: BY1PR04MB9561.namprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-Network-Message-Id: 003c3623-6c8b-40f9-8896-08df07ea6659
+X-MS-Exchange-CrossTenant-originalarrivaltime: 01 Sep 2026 05:32:23.0178 (UTC)
+X-MS-Exchange-CrossTenant-fromentityheader: Hosted
+X-MS-Exchange-CrossTenant-id: b61c8803-16f3-4c35-9b17-6f65f441df86
+X-MS-Exchange-CrossTenant-mailboxtype: HOSTED
+X-MS-Exchange-CrossTenant-userprincipalname: VJSkbLfWOkCmeuZUsFvYU+xYNWVF6W7NP19czt1TOc6QaPXHyjvHjwOaRCXroA+Xy0+nAEmbiwl96DsVN++Q51Asw/ia8cGnOPlKA8dsBTU=
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: PH0PR04MB7302
+Received-SPF: pass client-ip=68.232.143.124;
+ envelope-from=prvs=6977d653a=Alistair.Francis@wdc.com;
+ helo=esa2.hgst.iphmx.com
+X-Spam_score_int: -27
+X-Spam_score: -2.8
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -106,638 +185,51 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Signed-off-by: John Snow <jsnow@redhat.com>
----
- qapi/machine.json | 195 ++++++++++++++++------------------------------
- 1 file changed, 68 insertions(+), 127 deletions(-)
-
-diff --git a/qapi/machine.json b/qapi/machine.json
-index 2d63c1bac3b..8ef12504d65 100644
---- a/qapi/machine.json
-+++ b/qapi/machine.json
-@@ -46,9 +46,8 @@
- 
- ##
- # @S390CpuState:
--#
--# An enumeration of cpu states that can be assumed by a virtual S390
--# CPU
-+#     An enumeration of cpu states that can be assumed by a virtual
-+#     S390 CPU
- #
- # Since: 2.12
- ##
-@@ -57,8 +56,7 @@
- 
- ##
- # @CpuInfoS390:
--#
--# Additional information about a virtual S390 CPU
-+#     Additional information about a virtual S390 CPU
- #
- # @cpu-state: the virtual CPU's state
- #
-@@ -75,8 +73,7 @@
- 
- ##
- # @CpuInfoFast:
--#
--# Information about a virtual CPU
-+#     Information about a virtual CPU
- #
- # @cpu-index: index of the virtual CPU
- #
-@@ -105,8 +102,7 @@
- 
- ##
- # @query-cpus-fast:
--#
--# Return information about all virtual CPUs.
-+#     Return information about all virtual CPUs.
- #
- # Since: 2.12
- #
-@@ -143,9 +139,8 @@
- 
- ##
- # @CompatProperty:
--#
--# Property default values specific to a machine type, for use by
--# scripts/compare-machine-types.
-+#     Property default values specific to a machine type, for use by
-+#     scripts/compare-machine-types.
- #
- # @qom-type: name of the QOM type to which the default applies
- #
-@@ -163,8 +158,7 @@
- 
- ##
- # @MachineInfo:
--#
--# Information describing a machine.
-+#     Information describing a machine.
- #
- # @name: the name of the machine
- #
-@@ -213,8 +207,7 @@
- 
- ##
- # @query-machines:
--#
--# Return a list of supported machines
-+#     Return a list of supported machines
- #
- # @compat-props: if true, also return compatibility properties.
- #     (default: false) (since 9.1)
-@@ -255,8 +248,7 @@
- 
- ##
- # @CurrentMachineParams:
--#
--# Information describing the running machine parameters.
-+#     Information describing the running machine parameters.
- #
- # @wakeup-suspend-support: true if the machine supports wake up from
- #     suspend
-@@ -268,8 +260,7 @@
- 
- ##
- # @query-current-machine:
--#
--# Return information on the current virtual machine.
-+#     Return information on the current virtual machine.
- #
- # Since: 4.0
- ##
-@@ -277,8 +268,8 @@
- 
- ##
- # @QemuTargetInfo:
--#
--# Information on the target configuration built into the QEMU binary.
-+#     Information on the target configuration built into the QEMU
-+#     binary.
- #
- # @arch: the target architecture
- #
-@@ -289,8 +280,7 @@
- 
- ##
- # @query-target:
--#
--# Return information about the target for this QEMU
-+#     Return information about the target for this QEMU
- #
- # Since: 1.2
- ##
-@@ -298,8 +288,7 @@
- 
- ##
- # @UuidInfo:
--#
--# Guest UUID information (Universally Unique Identifier).
-+#     Guest UUID information (Universally Unique Identifier).
- #
- # @UUID: the UUID of the guest
- #
-@@ -312,8 +301,7 @@
- 
- ##
- # @query-uuid:
--#
--# Query the guest UUID information.
-+#     Query the guest UUID information.
- #
- # Since: 0.14
- #
-@@ -326,8 +314,7 @@
- 
- ##
- # @GuidInfo:
--#
--# GUID information.
-+#     GUID information.
- #
- # @guid: the globally unique identifier
- #
-@@ -337,8 +324,7 @@
- 
- ##
- # @query-vm-generation-id:
--#
--# Show Virtual Machine Generation ID
-+#     Show Virtual Machine Generation ID
- #
- # Since: 2.9
- ##
-@@ -346,8 +332,7 @@
- 
- ##
- # @system_reset:
--#
--# Performs a hard reset of a guest.
-+#     Performs a hard reset of a guest.
- #
- # Since: 0.14
- #
-@@ -360,8 +345,7 @@
- 
- ##
- # @system_powerdown:
--#
--# Requests that a guest perform a powerdown operation.
-+#     Requests that a guest perform a powerdown operation.
- #
- # Since: 0.14
- #
-@@ -521,8 +505,7 @@
- 
- ##
- # @NumaDistOptions:
--#
--# Set the distance between 2 NUMA nodes.
-+#     Set the distance between 2 NUMA nodes.
- #
- # @src: source NUMA node.
- #
-@@ -542,8 +525,7 @@
- 
- ##
- # @CXLFixedMemoryWindowOptions:
--#
--# Create a CXL Fixed Memory Window
-+#     Create a CXL Fixed Memory Window
- #
- # @size: Size of the Fixed Memory Window in bytes.  Must be a multiple
- #     of 256MiB.
-@@ -565,8 +547,7 @@
- 
- ##
- # @CXLFMWProperties:
--#
--# List of CXL Fixed Memory Windows.
-+#     List of CXL Fixed Memory Windows.
- #
- # @cxl-fmw: List of `CXLFixedMemoryWindowOptions`
- #
-@@ -578,8 +559,7 @@
- 
- ##
- # @X86CPURegister32:
--#
--# A X86 32-bit register
-+#     A X86 32-bit register
- #
- # Since: 1.5
- ##
-@@ -588,8 +568,7 @@
- 
- ##
- # @X86CPUFeatureWordInfo:
--#
--# Information about a X86 CPU feature word
-+#     Information about a X86 CPU feature word
- #
- # @cpuid-input-eax: Input EAX value for CPUID instruction for that
- #     feature word
-@@ -611,9 +590,8 @@
- 
- ##
- # @DummyForceArrays:
--#
--# Not used by QMP; hack to let us use X86CPUFeatureWordInfoList
--# internally
-+#     Not used by QMP; hack to let us use X86CPUFeatureWordInfoList
-+#     internally
- #
- # Since: 2.5
- ##
-@@ -795,8 +773,7 @@
- 
- ##
- # @memsave:
--#
--# Save a portion of guest memory to a file.
-+#     Save a portion of guest memory to a file.
- #
- # @val: the virtual address of the guest to start from
- #
-@@ -828,8 +805,7 @@
- 
- ##
- # @pmemsave:
--#
--# Save a portion of guest physical memory to a file.
-+#     Save a portion of guest physical memory to a file.
- #
- # @val: the physical address of the guest to start from
- #
-@@ -857,8 +833,7 @@
- 
- ##
- # @Memdev:
--#
--# Information about memory backend
-+#     Information about memory backend
- #
- # @id: backend's ID if backend has 'id' property (since 2.9)
- #
-@@ -898,8 +873,7 @@
- 
- ##
- # @query-memdev:
--#
--# Return information for all memory backends.
-+#     Return information for all memory backends.
- #
- # Since: 2.1
- #
-@@ -1074,9 +1048,9 @@
- 
- ##
- # @set-numa-node:
--#
--# Runtime equivalent of '-numa' CLI option, available at preconfigure
--# stage to configure numa mapping before initializing machine.
-+#     Runtime equivalent of '-numa' CLI option, available at
-+#     preconfigure stage to configure numa mapping before initializing
-+#     machine.
- #
- # Since: 3.0
- ##
-@@ -1087,8 +1061,7 @@
- 
- ##
- # @balloon:
--#
--# Request the balloon driver to change its balloon size.
-+#     Request the balloon driver to change its balloon size.
- #
- # @value: the target logical size of the VM in bytes.  We can deduce
- #     the size of the balloon using this formula:
-@@ -1122,8 +1095,7 @@
- 
- ##
- # @BalloonInfo:
--#
--# Information about the guest balloon device.
-+#     Information about the guest balloon device.
- #
- # @actual: the logical size of the VM in bytes.  Formula used:
- #     logical_vm_size = vm_ram_size - balloon_size
-@@ -1134,8 +1106,7 @@
- 
- ##
- # @query-balloon:
--#
--# Return information about the balloon device.
-+#     Return information about the balloon device.
- #
- # Errors:
- #     - If the balloon driver is enabled but not functional because
-@@ -1179,8 +1150,7 @@
- 
- ##
- # @HvBalloonInfo:
--#
--# hv-balloon guest-provided memory status information.
-+#     hv-balloon guest-provided memory status information.
- #
- # @committed: the amount of memory in use inside the guest plus the
- #     amount of the memory unusable inside the guest (ballooned out,
-@@ -1196,9 +1166,8 @@
- 
- ##
- # @query-hv-balloon-status-report:
--#
--# Return the hv-balloon driver data contained in the last received
--# "STATUS" message from the guest.
-+#     Return the hv-balloon driver data contained in the last received
-+#     "STATUS" message from the guest.
- #
- # Errors:
- #     - If no hv-balloon device is present, guest memory status
-@@ -1239,8 +1208,7 @@
- 
- ##
- # @MemoryInfo:
--#
--# Actual memory information in bytes.
-+#     Actual memory information in bytes.
- #
- # @base-memory: size of "base" memory specified with command line
- #     option -m.
-@@ -1273,8 +1241,7 @@
- 
- ##
- # @PCDIMMDeviceInfo:
--#
--# PCDIMMDevice state information
-+#     PCDIMMDevice state information
- #
- # @id: device's ID
- #
-@@ -1309,8 +1276,7 @@
- 
- ##
- # @VirtioPMEMDeviceInfo:
--#
--# VirtioPMEM state information
-+#     VirtioPMEM state information
- #
- # @id: device's ID
- #
-@@ -1332,8 +1298,7 @@
- 
- ##
- # @VirtioMEMDeviceInfo:
--#
--# VirtioMEMDevice state information
-+#     VirtioMEMDevice state information
- #
- # @id: device's ID
- #
-@@ -1367,8 +1332,7 @@
- 
- ##
- # @SgxEPCDeviceInfo:
--#
--# Sgx EPC state information
-+#     Sgx EPC state information
- #
- # @id: device's ID
- #
-@@ -1393,8 +1357,7 @@
- 
- ##
- # @HvBalloonDeviceInfo:
--#
--# hv-balloon provided memory state information
-+#     hv-balloon provided memory state information
- #
- # @id: device's ID
- #
-@@ -1523,8 +1486,7 @@
- 
- ##
- # @MemoryDeviceInfo:
--#
--# Union containing information about a memory device
-+#     Union containing information about a memory device
- #
- # @type: memory device type
- #
-@@ -1545,8 +1507,7 @@
- 
- ##
- # @SgxEPC:
--#
--# Sgx EPC cmdline information
-+#     Sgx EPC cmdline information
- #
- # @memdev: memory backend linked with device
- #
-@@ -1562,8 +1523,7 @@
- 
- ##
- # @SgxEPCProperties:
--#
--# SGX properties of machine types.
-+#     SGX properties of machine types.
- #
- # @sgx-epc: list of ids of memory-backend-epc objects.
- #
-@@ -1575,8 +1535,7 @@
- 
- ##
- # @query-memory-devices:
--#
--# Lists available memory devices and their state
-+#     Lists available memory devices and their state
- #
- # Since: 2.1
- #
-@@ -1626,8 +1585,7 @@
- 
- ##
- # @BootConfiguration:
--#
--# Schema for virtual machine boot configuration.
-+#     Schema for virtual machine boot configuration.
- #
- # @order: Boot order (a=floppy, c=hard disk, d=CD-ROM, n=network)
- #
-@@ -1711,8 +1669,7 @@
- 
- ##
- # @x-query-irq:
--#
--# Query interrupt statistics
-+#     Query interrupt statistics
- #
- # Features:
- #
-@@ -1728,8 +1685,7 @@
- 
- ##
- # @x-query-jit:
--#
--# Query TCG compiler statistics
-+#     Query TCG compiler statistics
- #
- # Features:
- #
-@@ -1746,8 +1702,7 @@
- 
- ##
- # @x-query-numa:
--#
--# Query NUMA topology information
-+#     Query NUMA topology information
- #
- # Features:
- #
-@@ -1763,8 +1718,7 @@
- 
- ##
- # @x-query-ramblock:
--#
--# Query system ramblock information
-+#     Query system ramblock information
- #
- # Features:
- #
-@@ -1780,8 +1734,7 @@
- 
- ##
- # @x-query-roms:
--#
--# Query information on the registered ROMS
-+#     Query information on the registered ROMS
- #
- # Features:
- #
-@@ -1797,8 +1750,7 @@
- 
- ##
- # @x-query-usb:
--#
--# Query information on the USB devices
-+#     Query information on the USB devices
- #
- # Features:
- #
-@@ -1829,8 +1781,7 @@
- 
- ##
- # @MemorySizeConfiguration:
--#
--# Schema for memory size configuration.
-+#     Schema for memory size configuration.
- #
- # @size: memory size in bytes
- #
-@@ -1847,8 +1798,7 @@
- 
- ##
- # @dumpdtb:
--#
--# Save the FDT in dtb format.
-+#     Save the FDT in dtb format.
- #
- # @filename: name of the dtb file to be created
- #
-@@ -1866,8 +1816,7 @@
- 
- ##
- # @x-query-interrupt-controllers:
--#
--# Query information on interrupt controller devices
-+#     Query information on interrupt controller devices
- #
- # Features:
- #
-@@ -1897,8 +1846,7 @@
- 
- ##
- # @query-firmware-log:
--#
--# Find firmware memory log buffer in guest memory, return content.
-+#     Find firmware memory log buffer in guest memory, return content.
- #
- # @max-size: limit the amount of log data returned.  Up to 1 MiB of
- #     log data is allowed.  In case the amount of log data is larger
-@@ -1912,8 +1860,7 @@
- 
- ##
- # @dump-skeys:
--#
--# Dump the storage keys for an s390x guest
-+#     Dump the storage keys for an s390x guest
- #
- # @filename: the path to the file to dump to
- #
-@@ -1951,8 +1898,7 @@
- 
- ##
- # @CpuModelExpansionType:
--#
--# An enumeration of CPU model expansion types.
-+#     An enumeration of CPU model expansion types.
- #
- # @static: Expand to a static CPU model, a combination of a static
- #     base model name and property delta changes.  As the static base
-@@ -2009,8 +1955,7 @@
- 
- ##
- # @CpuModelBaselineInfo:
--#
--# The result of a CPU model baseline.
-+#     The result of a CPU model baseline.
- #
- # @model: the baselined `CpuModelInfo`.
- #
-@@ -2021,8 +1966,7 @@
- 
- ##
- # @CpuModelCompareInfo:
--#
--# The result of a CPU model comparison.
-+#     The result of a CPU model comparison.
- #
- # @result: The result of the compare operation.
- #
-@@ -2153,8 +2097,7 @@
- 
- ##
- # @CpuModelExpansionInfo:
--#
--# The result of a cpu model expansion.
-+#     The result of a cpu model expansion.
- #
- # @model: the expanded `CpuModelInfo`.
- #
-@@ -2223,8 +2166,7 @@
- 
- ##
- # @CpuDefinitionInfo:
--#
--# Virtual CPU definition.
-+#     Virtual CPU definition.
- #
- # @name: the name of the CPU definition
- #
-@@ -2285,8 +2227,7 @@
- 
- ##
- # @query-cpu-definitions:
--#
--# Return a list of supported virtual CPU definitions
-+#     Return a list of supported virtual CPU definitions
- #
- # Since: 1.2
- ##
--- 
-2.55.0
-
+T24gRnJpLCAyMDI2LTA4LTI4IGF0IDE3OjM5IC0wMzAwLCBEYW5pZWwgSGVucmlxdWUgQmFyYm96
+YSB3cm90ZToNCj4gSGksDQo+IA0KPiBJbiB0aGlzIG5ldyB2ZXJzaW9uIGEgbmV3IHBhdGNoIHdh
+cyBhZGRlZC7CoCBJdCBpcyBhIGZpeCBmb3IgdGhlDQo+IGFjbGludA0KPiBGRFQsIHN1Z2dlc3Rl
+ZCBieSBDaGFvIGluIHRoZSB2NCByZXZpZXcuwqAgV2UncmUgZml4aW5nIHRoZSBGRFQgYmVmb3Jl
+DQo+IG1vdmluZyB0aGUgYWNsaW50IEZEVCB0byB0aGUgaGVscGVyIGluIHRoZSBwYXRjaCB0aGF0
+IGZvbGxvd3MuDQo+IA0KPiBObyBvdGhlciBjaGFuZ2VzIG1hZGUuwqAgUGF0Y2hlcyBiYXNlZCBv
+biBhbGlzdGFpci9yaXNjdi10by0NCj4gYXBwbHkubmV4dC4NCj4gDQo+IENoYW5nZXMgZnJvbSB2
+NDoNCj4gLSBwYXRjaCA4IChuZXcpOiBmaXggYWNsaW50IHNvYy9tdGltZXIgbm9kZQ0KPiAtIHBh
+dGNoIDk6DQo+IMKgIC0gbW92ZSB0aGUgYWNsaW50IEZEVCB0byB0aGUgaGVscGVyIHdpdGhvdXQg
+YW55IGNoYW5nZXMsIGFzIHN0YXRlZA0KPiBpbg0KPiDCoMKgwqAgdGhlIGNvbW1pdCBtc2cuDQo+
+IC0gdjQgbGluazoNCj4gaHR0cHM6Ly9sb3JlLmtlcm5lbC5vcmcvcWVtdS1kZXZlbC8yMDI2MDgy
+NzIyMjYwOC4zMjk3ODgtMS1kYW5pZWwuYmFyYm96YUBvc3MucXVhbGNvbW0uY29tLw0KPiANCj4g
+DQo+IERhbmllbCBIZW5yaXF1ZSBCYXJib3phICgxNSk6DQo+IMKgIGh3L3Jpc2N2L2ZkdC1jb21t
+b246IHByZXBlbmQgaGVscGVycyB3aXRoICJyaXNjdl8iDQo+IMKgIGh3L3Jpc2N2L2ZkdC1jb21t
+b24sIHZpcnQuYzogYWRkIHJpc2N2X2NyZWF0ZV9mZHRfZmxhc2goKQ0KPiDCoCBody9yaXNjdi9m
+ZHQtY29tbW9uLCB2aXJ0LmM6IGFkZCByaXNjdl9jcmVhdGVfZmR0X3N5c2NvbigpDQo+IMKgIGh3
+L3Jpc2N2L2ZkdC1jb21tb24sIHZpcnQuYzogYWRkIHJpc2N2X2NyZWF0ZV9mZHRfcmlzY3ZfaW9t
+bXVfc3lzKCkNCj4gwqAgaHcvcmlzY3YvZmR0X2NvbW1vbiwgdmlydC5jOiBhZGQgcmlzY3ZfY3Jl
+YXRlX2ZkdF9wY2llKCkNCj4gwqAgaHcvcmlzY3YvZmR0X2NvbW1vbiwgdmlydC5jOiBhZGQgcmlz
+Y3ZfY3JlYXRlX2ZkdF9pbXNpYygpDQo+IMKgIGh3L3Jpc2N2L2ZkdF9jb21tb24sIHZpcnQuYzog
+YWRkIHJpc2N2X2NyZWF0ZV9mZHRfc29ja2V0X2FwbGljKCkNCj4gwqAgaHcvcmlzY3YvdmlydC5j
+OiBmaXggYWNsaW50IHNvYy9tdGltZXIgbm9kZW5hbWUNCj4gwqAgaHcvcmlzY3YvZmR0LWNvbW1v
+biwgdmlydC5jOiBhZGQgcmlzY3ZfY3JlYXRlX2ZkdF9zb2NrZXRfYWNsaW50KCkNCj4gwqAgaHcv
+cmlzY3YvZmR0LWNvbW1vbiwgdmlydC5jOiBhZGQgcmlzY3ZfY3JlYXRlX2ZkdF91YXJ0KCkNCj4g
+wqAgaHcvcmlzY3YvZmR0LWNvbW1vbiwgdmlydC5jOiBhZGQgcmlzY3ZfY3JlYXRlX2ZkdF9ydGMo
+KQ0KPiDCoCBody9yaXNjdi9kZXZpY2UtY29tbW9uLCB2aXJ0LmM6IGFkZCByaXNjdl9jcmVhdGVf
+cGxhdGZvcm1fYnVzKCkNCj4gwqAgaHcvcmlzY3YvZGV2aWNlLWNvbW1vbiwgdmlydC5jOiBhZGQg
+Zmxhc2ggaGVscGVycw0KPiDCoCBody9yaXNjdi9kZXZpY2UtY29tbW9uLCB2aXJ0LmM6IGFkZCBy
+aXNjdl9ncGV4X3BjaWVfaW5pdCgpDQo+IMKgIGh3L3Jpc2N2L3Jpc2N2LWlvbW11LXN5cy5jLCB2
+aXJ0LmM6IGFkZCByaXNjdl9jcmVhdGVfaW9tbXVfc3lzKCkNCg0KVGhhbmtzIQ0KDQpBcHBsaWVk
+IHRvIHJpc2N2LXRvLWFwcGx5Lm5leHQNCg0KQWxpc3RhaXINCg0KPiANCj4gwqBody9yaXNjdi9k
+ZXZpY2UtY29tbW9uLmPCoMKgwqDCoMKgwqDCoMKgIHwgMTY4ICsrKysrKw0KPiDCoGh3L3Jpc2N2
+L2ZkdC1jb21tb24uY8KgwqDCoMKgwqDCoMKgwqDCoMKgwqAgfCA2MTMgKysrKysrKysrKysrKysr
+KysrKysrLQ0KPiDCoGh3L3Jpc2N2L21lc29uLmJ1aWxkwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+IHzCoMKgIDEgKw0KPiDCoGh3L3Jpc2N2L3Jpc2N2LWlvbW11LXN5cy5jwqDCoMKgwqDCoMKgIHzC
+oCAyNSArDQo+IMKgaHcvcmlzY3YvcmlzY3YtaW9tbXUuaMKgwqDCoMKgwqDCoMKgwqDCoMKgIHzC
+oMKgIDMgKw0KPiDCoGh3L3Jpc2N2L3NpZml2ZV91LmPCoMKgwqDCoMKgwqDCoMKgwqDCoMKgwqDC
+oCB8wqAgMzQgKy0NCj4gwqBody9yaXNjdi9zcGlrZS5jwqDCoMKgwqDCoMKgwqDCoMKgwqDCoMKg
+wqDCoMKgwqAgfMKgIDMwICstDQo+IMKgaHcvcmlzY3YvdHRfYXRsYW50aXMuY8KgwqDCoMKgwqDC
+oMKgwqDCoMKgIHzCoCAyMiArLQ0KPiDCoGh3L3Jpc2N2L3ZpcnQuY8KgwqDCoMKgwqDCoMKgwqDC
+oMKgwqDCoMKgwqDCoMKgwqAgfCA4NjEgKysrKystLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0NCj4g
+LS0NCj4gwqBpbmNsdWRlL2h3L3Jpc2N2L2RldmljZS1jb21tb24uaCB8wqAgMzIgKysNCj4gwqBp
+bmNsdWRlL2h3L3Jpc2N2L2ZkdC1jb21tb24uaMKgwqDCoCB8IDE0NiArKysrKy0NCj4gwqBpbmNs
+dWRlL2h3L3Jpc2N2L3ZpcnQuaMKgwqDCoMKgwqDCoMKgwqDCoCB8wqAgMTUgLQ0KPiDCoDEyIGZp
+bGVzIGNoYW5nZWQsIDExMTIgaW5zZXJ0aW9ucygrKSwgODM4IGRlbGV0aW9ucygtKQ0KPiDCoGNy
+ZWF0ZSBtb2RlIDEwMDY0NCBody9yaXNjdi9kZXZpY2UtY29tbW9uLmMNCj4gwqBjcmVhdGUgbW9k
+ZSAxMDA2NDQgaW5jbHVkZS9ody9yaXNjdi9kZXZpY2UtY29tbW9uLmgNCg==
 
