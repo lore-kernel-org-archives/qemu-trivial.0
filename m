@@ -4,60 +4,69 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id D1302C79FB9
-	for <qemu-trivial@archiver.kernel.org>; Thu, 10 Sep 2026 07:53:26 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB44C79F9F
+	for <qemu-trivial@archiver.kernel.org>; Thu, 10 Sep 2026 11:21:18 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x4Zan-0008RS-Up; Thu, 10 Sep 2026 03:53:10 -0400
+	id 1x4cq8-0007nY-NF; Thu, 10 Sep 2026 07:21:12 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1x4Zal-0008RA-Nl; Thu, 10 Sep 2026 03:53:07 -0400
-Received: from isrv.corpit.ru ([212.248.84.144])
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1x4cq6-0007nC-Q3
+ for qemu-trivial@nongnu.org; Thu, 10 Sep 2026 07:21:10 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1x4Zai-0000S5-2E; Thu, 10 Sep 2026 03:53:07 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1789026742; bh=eYvDBcDwlRGYF9eyJfK6yKTmyfcGYJ2MuSmE4AhnD68=;
- h=Date:Subject:To:Cc:References:From:In-Reply-To;
- b=e/FYJC6AS/rZz/HIc/rraeK4Q7EdNeFROldjJlYgEN6S0jH1zyBP4QNplS131+k1J
- 6ziYqInoyK9BOY1LR9pzTM+ToqxgdDlLOjBCmGnWXKMiJZCzhnGLJ91GPWkpoTLAXp
- gnTSyZq93z3V4MwGu8ys+gjkfERqcKFpemkjTc9tb95vLHZBTAOn4HfipC2EI0wdQz
- EHHOSSWJE8dMI3j+4ShvpWStk2tkkMZixP22zz78YBCcyKLQTPkS+loedwDLp7tW49
- cQJ3kzeOzabhvyJf6OXU43rbd5wX9pcxd1CEcwJVJophiqzzGR+lAfVLB+RpkU/aBS
- JqHN6dGLZgXJA==
-Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id AC6BC1D35D3;
- Thu, 10 Sep 2026 10:52:22 +0300 (MSK)
-Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 2994A42546B;
- Thu, 10 Sep 2026 10:52:53 +0300 (MSK)
-Message-ID: <610b7674-dac5-4c56-88f9-fc77673155de@tls.msk.ru>
-Date: Thu, 10 Sep 2026 10:52:53 +0300
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1x4cq5-0003JJ-6r
+ for qemu-trivial@nongnu.org; Thu, 10 Sep 2026 07:21:10 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
+ s=mimecast20190719; t=1789039266;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding;
+ bh=75y8fbSSBsVoXXytlvYFVts1fH9wHg2fB8NH5CeU5QI=;
+ b=BOeeeMHnZPWAtjxNNCFBxHHy+okg3VdHgYRxzJ3wBCT8mwXkmtyDuasMvfpYcVmDP9KRr+
+ 8fp4FX7aAKQ0urt1cKml3YvdZjpSTWbx8i4/63jbdKiQoTqmyYurnSdhvEmuteSWMJ8Acp
+ UdcC3pqBajPDNtEXpTXwRsqaCBuBYcU=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-483-TZpbVJ-9OpivN2gHMXVXIQ-1; Thu,
+ 10 Sep 2026 07:21:05 -0400
+X-MC-Unique: TZpbVJ-9OpivN2gHMXVXIQ-1
+X-Mimecast-MFC-AGG-ID: TZpbVJ-9OpivN2gHMXVXIQ_1789039264
+Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 00CE9195411C; Thu, 10 Sep 2026 11:21:04 +0000 (UTC)
+Received: from thuth-p1g4.redhat.corp
+ (headnet03.pony-001.prod.iad2.dc.redhat.com [10.2.32.114])
+ by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 74311180057E; Thu, 10 Sep 2026 11:21:02 +0000 (UTC)
+From: Thomas Huth <thuth@redhat.com>
+To: qemu-devel@nongnu.org
+Cc: qemu-trivial@nongnu.org,
+	Reinoud Zandijk <reinoud@netbsd.org>
+Subject: [PATCH] util/cutils: Use qemu_isdigit() instead of isdigit()
+Date: Thu, 10 Sep 2026 13:21:00 +0200
+Message-ID: <20260910112100.365573-1-thuth@redhat.com>
 MIME-Version: 1.0
-User-Agent: Betterbird (Linux)
-Subject: Re: [PATCH v4 0/2] hw/misc/applesmc: fix GET_KEY_BY_INDEX iteration
- and populate Apple SMC key set
-To: Matthew Jackson <matthew@pq.io>, qemu-devel@nongnu.org
-Cc: kraxel@redhat.com, Peter Maydell <peter.maydell@linaro.org>,
- =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- qemu-trivial@nongnu.org
-References: <20260719152343.69536-1-matthew@pq.io>
- <20260720164930.68383-1-matthew@pq.io>
-Content-Language: en-US, ru-RU
-From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <20260720164930.68383-1-matthew@pq.io>
-Content-Type: text/plain; charset=UTF-8; format=flowed
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
+X-Mimecast-MFC-PROC-ID: C71_GDBmkGzLYJ84oMCLInyb7SBwOsB5u9MfY7XIuhI_1789039264
+X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
- helo=isrv.corpit.ru
-X-Spam_score_int: -19
-X-Spam_score: -2.0
-X-Spam_bar: --
-X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+content-type: text/plain; charset="US-ASCII"; x-default=true
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=thuth@redhat.com;
+ helo=us-smtp-delivery-124.mimecast.com
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+ DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -73,41 +82,40 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On 7/20/26 19:49, Matthew Jackson wrote:
-> The applesmc device only answers APPLESMC_READ_CMD at its command
-> port. Modern macOS guests (x86 10.14+, all 15.x) also issue WRITE,
-> TYPE and GET_KEY_BY_INDEX, and enumerate the SMC key space at boot.
-> The unanswered commands and the near-empty key table drive the
-> AppleSMC kext into a kSMCSpuriousData retry storm (~1800 errors/sec,
-> kernel_task ~70% CPU, WindowServer ~509% CPU on macOS 15).
-> 
-> Patch 1 implements the missing commands. Patch 2 populates the key
-> table with a realistic iMac20,1 profile and the canonical #KEY count,
-> so the guest's boot-time enumeration terminates.
-> 
-> v4:
->    - Regenerated against current master. Drop a stray hunk in patch 2/2
->      that reverted the qdev-properties.h include move (commit 78d45220b4);
->      the include is now left untouched. Reported-by Philippe
->      Mathieu-Daudé. No functional change.
->    - No other changes from v3.
-> 
-> v3: https://lore.kernel.org/qemu-devel/20260719152343.69536-1-matthew@pq.io/
-> v2: addressed Peter Maydell's style review (loop braces, stl_be_p()).
-> v1: https://lore.kernel.org/qemu-devel/20260507040153.14565-1-matthew@pq.io/
-> 
-> Matthew Jackson (2):
->    hw/misc/applesmc: implement GET_KEY_BY_INDEX, WRITE and TYPE commands
->    hw/misc/applesmc: populate Apple SMC key table
-> 
->   hw/misc/applesmc.c | 344 ++++++++++++++++++++++++++++++++++++++++++++-
->   1 file changed, 337 insertions(+), 7 deletions(-)
-Hi!
+When building QEMU for NetBSD ("make vm-build-netbsd"), the compiler
+complains:
 
-This does not look like a series which is "trivial enough" for qemu-trivial
-tree :)
+  In file included from /usr/include/ctype.h:100,
+                 from ../src/include/qemu/osdep.h:123,
+                 from ../src/util/cutils.c:25:
+  ../src/util/cutils.c: In function 'do_strtosz':
+  ../src/util/cutils.c:245:61: warning: array subscript has type 'char' [-Wchar-subscripts]
+  245 |         if (retval == 0 && *endptr == '.' && !isdigit(endptr[1])) {
 
-Thanks,
+isdigit() should not be used with plain "char" variables since these
+can be signed and isdigit() could be implemented as a macro that uses
+its parameter to index into an array. Use our wrapper qemu_isdigit()
+to fix this problem.
 
-/mjt
+Signed-off-by: Thomas Huth <thuth@redhat.com>
+---
+ util/cutils.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/util/cutils.c b/util/cutils.c
+index 96c80d4d429..91ddadfd15a 100644
+--- a/util/cutils.c
++++ b/util/cutils.c
+@@ -242,7 +242,7 @@ static int do_strtosz(const char *nptr, const char **end,
+          */
+         double fraction = 0.0;
+ 
+-        if (retval == 0 && *endptr == '.' && !isdigit(endptr[1])) {
++        if (retval == 0 && *endptr == '.' && !qemu_isdigit(endptr[1])) {
+             /* If we got here, we parsed at least one digit already. */
+             endptr++;
+         } else {
+-- 
+2.55.0
+
 
