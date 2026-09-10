@@ -4,57 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 1CB44C79F9F
-	for <qemu-trivial@archiver.kernel.org>; Thu, 10 Sep 2026 11:21:18 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 793E9C79FB9
+	for <qemu-trivial@archiver.kernel.org>; Thu, 10 Sep 2026 11:51:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x4cq8-0007nY-NF; Thu, 10 Sep 2026 07:21:12 -0400
+	id 1x4dJb-00081z-Nc; Thu, 10 Sep 2026 07:51:39 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1x4cq6-0007nC-Q3
- for qemu-trivial@nongnu.org; Thu, 10 Sep 2026 07:21:10 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1x4dJa-000810-2b
+ for qemu-trivial@nongnu.org; Thu, 10 Sep 2026 07:51:38 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1x4cq5-0003JJ-6r
- for qemu-trivial@nongnu.org; Thu, 10 Sep 2026 07:21:10 -0400
+ (Exim 4.90_1) (envelope-from <thuth@redhat.com>) id 1x4dJY-0001Vo-NV
+ for qemu-trivial@nongnu.org; Thu, 10 Sep 2026 07:51:37 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789039266;
+ s=mimecast20190719; t=1789041096;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding;
- bh=75y8fbSSBsVoXXytlvYFVts1fH9wHg2fB8NH5CeU5QI=;
- b=BOeeeMHnZPWAtjxNNCFBxHHy+okg3VdHgYRxzJ3wBCT8mwXkmtyDuasMvfpYcVmDP9KRr+
- 8fp4FX7aAKQ0urt1cKml3YvdZjpSTWbx8i4/63jbdKiQoTqmyYurnSdhvEmuteSWMJ8Acp
- UdcC3pqBajPDNtEXpTXwRsqaCBuBYcU=
+ bh=PqSXf1rfOOWzmIC8guFB5ahiBpqOIpBETyOPVFJp8Tc=;
+ b=bThXMqvEMMi7RRVaTK6j/9Mt0fa86cNFV2mAwjEJgrfT/rmahR8IHZS8JuBH07CPA1ZY9w
+ PFcah6zvbmUYc7LI8bfNTcQbXMorFcyigHNCWQdmyMWomZ4UdpqBz41jZxQCe7hwgi9zfU
+ opoy1aJrjbGiUcKaOaZL0SbKEZQj/Js=
 Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-483-TZpbVJ-9OpivN2gHMXVXIQ-1; Thu,
- 10 Sep 2026 07:21:05 -0400
-X-MC-Unique: TZpbVJ-9OpivN2gHMXVXIQ-1
-X-Mimecast-MFC-AGG-ID: TZpbVJ-9OpivN2gHMXVXIQ_1789039264
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-687-anLaQeMyPaexN3IStP1S6w-1; Thu,
+ 10 Sep 2026 07:51:31 -0400
+X-MC-Unique: anLaQeMyPaexN3IStP1S6w-1
+X-Mimecast-MFC-AGG-ID: anLaQeMyPaexN3IStP1S6w_1789041090
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
  by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 00CE9195411C; Thu, 10 Sep 2026 11:21:04 +0000 (UTC)
+ id 3A27D19540D6; Thu, 10 Sep 2026 11:51:29 +0000 (UTC)
 Received: from thuth-p1g4.redhat.corp
  (headnet03.pony-001.prod.iad2.dc.redhat.com [10.2.32.114])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 74311180057E; Thu, 10 Sep 2026 11:21:02 +0000 (UTC)
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
+ id 3D435434; Thu, 10 Sep 2026 11:51:26 +0000 (UTC)
 From: Thomas Huth <thuth@redhat.com>
-To: qemu-devel@nongnu.org
+To: qemu-devel@nongnu.org,
+	Alexey Kardashevskiy <aik@ozlabs.ru>
 Cc: qemu-trivial@nongnu.org,
-	Reinoud Zandijk <reinoud@netbsd.org>
-Subject: [PATCH] util/cutils: Use qemu_isdigit() instead of isdigit()
-Date: Thu, 10 Sep 2026 13:21:00 +0200
-Message-ID: <20260910112100.365573-1-thuth@redhat.com>
+	qemu-ppc@nongnu.org
+Subject: [PATCH] hw/ppc/vof: Use qemu_tolower() instead of tolower()
+Date: Thu, 10 Sep 2026 13:51:25 +0200
+Message-ID: <20260910115125.383713-1-thuth@redhat.com>
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: C71_GDBmkGzLYJ84oMCLInyb7SBwOsB5u9MfY7XIuhI_1789039264
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: tCgMBmSD3W0G-gonzPM0lSpkjciwLOQrPQr7VbOKkOA_1789041090
 X-Mimecast-Originator: redhat.com
 Content-Transfer-Encoding: 8bit
 content-type: text/plain; charset="US-ASCII"; x-default=true
@@ -87,34 +88,42 @@ complains:
 
   In file included from /usr/include/ctype.h:100,
                  from ../src/include/qemu/osdep.h:123,
-                 from ../src/util/cutils.c:25:
-  ../src/util/cutils.c: In function 'do_strtosz':
-  ../src/util/cutils.c:245:61: warning: array subscript has type 'char' [-Wchar-subscripts]
-  245 |         if (retval == 0 && *endptr == '.' && !isdigit(endptr[1])) {
+                 from ../src/hw/ppc/vof.c:12:
+  ../src/hw/ppc/vof.c: In function 'path_offset':
+  ../src/hw/ppc/vof.c:150:31: warning: array subscript has type 'char' [-Wchar-subscripts]
+  150 |                 *at = tolower(*at);
 
-isdigit() should not be used with plain "char" variables since these
-can be signed and isdigit() could be implemented as a macro that uses
-its parameter to index into an array. Use our wrapper qemu_isdigit()
+tolower() should not be used with plain "char" variables since these
+can be signed and tolower() could be implemented as a macro that uses
+its parameter to index into an array. Use our wrapper qemu_tolower()
 to fix this problem.
 
 Signed-off-by: Thomas Huth <thuth@redhat.com>
 ---
- util/cutils.c | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/ppc/vof.c | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
 
-diff --git a/util/cutils.c b/util/cutils.c
-index 96c80d4d429..91ddadfd15a 100644
---- a/util/cutils.c
-+++ b/util/cutils.c
-@@ -242,7 +242,7 @@ static int do_strtosz(const char *nptr, const char **end,
-          */
-         double fraction = 0.0;
+diff --git a/hw/ppc/vof.c b/hw/ppc/vof.c
+index fa7b73159a0..873e967f1e4 100644
+--- a/hw/ppc/vof.c
++++ b/hw/ppc/vof.c
+@@ -10,6 +10,7 @@
+  */
  
--        if (retval == 0 && *endptr == '.' && !isdigit(endptr[1])) {
-+        if (retval == 0 && *endptr == '.' && !qemu_isdigit(endptr[1])) {
-             /* If we got here, we parsed at least one digit already. */
-             endptr++;
-         } else {
+ #include "qemu/osdep.h"
++#include "qemu/ctype.h"
+ #include "qemu/timer.h"
+ #include "qemu/range.h"
+ #include "qemu/units.h"
+@@ -147,7 +148,7 @@ static int path_offset(const void *fdt, const char *path)
+             if (*at == '/') {
+                 at = strchr(at, '@');
+             } else {
+-                *at = tolower(*at);
++                *at = qemu_tolower(*at);
+                 ++at;
+             }
+     }
 -- 
 2.55.0
 
