@@ -4,77 +4,58 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 6DFECC79FB9
-	for <qemu-trivial@archiver.kernel.org>; Thu, 10 Sep 2026 12:01:55 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21F87C88E4A
+	for <qemu-trivial@archiver.kernel.org>; Fri, 11 Sep 2026 10:56:58 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x4dTS-0002cg-V0; Thu, 10 Sep 2026 08:01:50 -0400
+	id 1x4yw0-0004XA-GT; Fri, 11 Sep 2026 06:56:46 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x4dTR-0002aq-5V
- for qemu-trivial@nongnu.org; Thu, 10 Sep 2026 08:01:49 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1x4yvx-0004WE-0O; Fri, 11 Sep 2026 06:56:41 -0400
+Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
- id 1x4dTP-0003lj-B4
- for qemu-trivial@nongnu.org; Thu, 10 Sep 2026 08:01:48 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1789041702;
- h=from:from:reply-to:reply-to:subject:subject:date:date:
- message-id:message-id:to:to:cc:cc:mime-version:mime-version:
- content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=sGW7TlvD5t6s8Hr0C547us3y/cGFqx5U9KDZc+p1CmU=;
- b=Z8iV/dALX9a/fqdKhPRSbZWqYZZp664BLk2vGH2lHGUgDwCStQA9uPdsWYfZu52EHnTWls
- cHnRH1baKv1TKAIkCA03jk18hPMzvS2xg+6YJZRf7HMMp2Yy/r/+KYYUuniGGjOOQrkgsF
- 4WXWcYSxcR+eO4wkajT+ZTG68Cd53eU=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
- relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-684-m31_d7F0P96AAP0U-VEYzQ-1; Thu,
- 10 Sep 2026 08:01:39 -0400
-X-MC-Unique: m31_d7F0P96AAP0U-VEYzQ-1
-X-Mimecast-MFC-AGG-ID: m31_d7F0P96AAP0U-VEYzQ_1789041698
-Received: from mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.4])
- (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
- key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
- (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 3CAEE180086F; Thu, 10 Sep 2026 12:01:38 +0000 (UTC)
-Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
- [10.2.32.114])
- by mx-prod-int-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id C1B4030001A2; Thu, 10 Sep 2026 12:01:36 +0000 (UTC)
-Date: Thu, 10 Sep 2026 13:01:33 +0100
-From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
-To: Thomas Huth <thuth@redhat.com>
-Cc: qemu-devel@nongnu.org, qemu-trivial@nongnu.org,
- Reinoud Zandijk <reinoud@netbsd.org>
-Subject: Re: [PATCH] util/cutils: Use qemu_isdigit() instead of isdigit()
-Message-ID: <aqKcHVKiXQoafJ7Z@redhat.com>
-References: <20260910112100.365573-1-thuth@redhat.com>
+ (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
+ id 1x4yvu-0003CT-JV; Fri, 11 Sep 2026 06:56:40 -0400
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
+ t=1789124162; bh=WA+3nlkepq+aZOxTW85cJBlOrW3GGvA+ikUW6COdVzc=;
+ h=From:To:Cc:Subject:Date:In-Reply-To:References;
+ b=PaL1GgG3QL6t4BXcv+0yL7h2rovPxS8zm7okWhXAij2d6DF89jyilZKclmzaIfDFO
+ uyIlBD+AuYs5whVzhHmqmxDsYMwlghRM+Z2ihD+1ciAV9xZ0PUu1KuHark3xrUdKZj
+ gl3jh770wwg87HOQo3wt0l04SwWElFneN1Lb4+pKEAYPG6NBHmDUtkleNY3eKk9IOt
+ P+PMVgSqsfl0b3cSOdLfPU8V2K/ge2IJ0oxoJjdvdZLFP/fFNnbMuJjVqTQfuZeF+e
+ P4tp7gUIVnMQSmfTfusnLoafUKWsmjG1Oovb8ufAk5QHiY0w8DKG+5qqXGLy017brm
+ jmKxz6PKLCV7g==
+Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
+ by isrv.corpit.ru (Postfix) with ESMTP id EE1D81D3B83;
+ Fri, 11 Sep 2026 13:56:02 +0300 (MSK)
+Received: from gandalf.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
+ by tsrv.corpit.ru (Postfix) with ESMTP id B73E9425DFA;
+ Fri, 11 Sep 2026 13:56:35 +0300 (MSK)
+Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
+ id A4EBE40F0B; Fri, 11 Sep 2026 13:56:35 +0300 (MSK)
+From: Michael Tokarev <mjt@tls.msk.ru>
+To: qemu-devel@nongnu.org
+Cc: Rohitashv Kumar <roohiit@amazon.de>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 1/4] qapi/net: gate user/vde/netmap netdev backends behind
+ their CONFIG symbols
+Date: Fri, 11 Sep 2026 13:56:29 +0300
+Message-ID: <20260911105635.955937-2-mjt@tls.msk.ru>
+X-Mailer: git-send-email 2.47.3
+In-Reply-To: <20260911105635.955937-1-mjt@tls.msk.ru>
+References: <20260911105635.955937-1-mjt@tls.msk.ru>
 MIME-Version: 1.0
-In-Reply-To: <20260910112100.365573-1-thuth@redhat.com>
-User-Agent: Mutt/2.4.0 (2026-06-19)
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.4
-X-Mimecast-MFC-PROC-ID: GbKPVMiwsWeyeimRFH9Xd_gIr1jJBfbC_6qShu6vKz8_1789041698
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset=utf-8
-Content-Disposition: inline
 Content-Transfer-Encoding: 8bit
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=berrange@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
+Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
+ helo=isrv.corpit.ru
+X-Spam_score_int: -19
+X-Spam_score: -2.0
 X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.0 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -87,38 +68,91 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
-Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Thu, Sep 10, 2026 at 01:21:00PM +0200, Thomas Huth wrote:
-> When building QEMU for NetBSD ("make vm-build-netbsd"), the compiler
-> complains:
-> 
->   In file included from /usr/include/ctype.h:100,
->                  from ../src/include/qemu/osdep.h:123,
->                  from ../src/util/cutils.c:25:
->   ../src/util/cutils.c: In function 'do_strtosz':
->   ../src/util/cutils.c:245:61: warning: array subscript has type 'char' [-Wchar-subscripts]
->   245 |         if (retval == 0 && *endptr == '.' && !isdigit(endptr[1])) {
-> 
-> isdigit() should not be used with plain "char" variables since these
-> can be signed and isdigit() could be implemented as a macro that uses
-> its parameter to index into an array. Use our wrapper qemu_isdigit()
-> to fix this problem.
-> 
-> Signed-off-by: Thomas Huth <thuth@redhat.com>
-> ---
->  util/cutils.c | 2 +-
->  1 file changed, 1 insertion(+), 1 deletion(-)
+From: Rohitashv Kumar <roohiit@amazon.de>
 
-Reviewed-by: Daniel P. Berrangé <berrange@redhat.com>
+Their NetClientDriver enum members and Netdev union branches were
+unconditional, so query-qmp-schema advertised them even when built without
+CONFIG_SLIRP/CONFIG_VDE/CONFIG_NETMAP. Gate them, and guard the matching
+NET_CLIENT_DRIVER_USER/_VDE case labels in net/hub.c.
 
-With regards,
-Daniel
+Signed-off-by: Rohitashv Kumar <roohiit@amazon.de>
+Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
+Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
+---
+ net/hub.c     |  4 ++++
+ qapi/net.json | 19 +++++++++++++------
+ 2 files changed, 17 insertions(+), 6 deletions(-)
+
+diff --git a/net/hub.c b/net/hub.c
+index b53a4cc872c..1d1710a198b 100644
+--- a/net/hub.c
++++ b/net/hub.c
+@@ -299,12 +299,16 @@ void net_hub_check_clients(void)
+ #ifdef CONFIG_PASST
+             case NET_CLIENT_DRIVER_PASST:
+ #endif
++#ifdef CONFIG_SLIRP
+             case NET_CLIENT_DRIVER_USER:
++#endif
+             case NET_CLIENT_DRIVER_TAP:
+             case NET_CLIENT_DRIVER_SOCKET:
+             case NET_CLIENT_DRIVER_STREAM:
+             case NET_CLIENT_DRIVER_DGRAM:
++#ifdef CONFIG_VDE
+             case NET_CLIENT_DRIVER_VDE:
++#endif
+             case NET_CLIENT_DRIVER_VHOST_USER:
+                 has_host_dev = 1;
+                 break;
+diff --git a/qapi/net.json b/qapi/net.json
+index 85c78710fe8..bb626005a82 100644
+--- a/qapi/net.json
++++ b/qapi/net.json
+@@ -922,9 +922,13 @@
+ # Since: 2.7
+ ##
+ { 'enum': 'NetClientDriver',
+-  'data': [ 'none', 'nic', 'user', 'tap', 'l2tpv3', 'socket', 'stream',
+-            'dgram', 'vde', 'bridge', 'hubport', 'netmap', 'vhost-user',
+-            'vhost-vdpa',
++  'data': [ 'none', 'nic',
++            { 'name': 'user', 'if': 'CONFIG_SLIRP' },
++            'tap', 'l2tpv3', 'socket', 'stream', 'dgram',
++            { 'name': 'vde', 'if': 'CONFIG_VDE' },
++            'bridge', 'hubport',
++            { 'name': 'netmap', 'if': 'CONFIG_NETMAP' },
++            'vhost-user', 'vhost-vdpa',
+             { 'name': 'passt', 'if': 'CONFIG_PASST' },
+             { 'name': 'af-xdp', 'if': 'CONFIG_AF_XDP' },
+             { 'name': 'vmnet-host', 'if': 'CONFIG_VMNET' },
+@@ -949,16 +953,19 @@
+     'nic':      'NetLegacyNicOptions',
+     'passt':    { 'type': 'NetdevPasstOptions',
+                   'if': 'CONFIG_PASST' },
+-    'user':     'NetdevUserOptions',
++    'user':     { 'type': 'NetdevUserOptions',
++                  'if': 'CONFIG_SLIRP' },
+     'tap':      'NetdevTapOptions',
+     'l2tpv3':   'NetdevL2TPv3Options',
+     'socket':   'NetdevSocketOptions',
+     'stream':   'NetdevStreamOptions',
+     'dgram':    'NetdevDgramOptions',
+-    'vde':      'NetdevVdeOptions',
++    'vde':      { 'type': 'NetdevVdeOptions',
++                  'if': 'CONFIG_VDE' },
+     'bridge':   'NetdevBridgeOptions',
+     'hubport':  'NetdevHubPortOptions',
+-    'netmap':   'NetdevNetmapOptions',
++    'netmap':   { 'type': 'NetdevNetmapOptions',
++                  'if': 'CONFIG_NETMAP' },
+     'af-xdp':   { 'type': 'NetdevAFXDPOptions',
+                   'if': 'CONFIG_AF_XDP' },
+     'vhost-user': 'NetdevVhostUserOptions',
 -- 
-|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
-|: https://libvirt.org          ~~          https://entangle-photo.org :|
-|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
+2.47.3
 
 
