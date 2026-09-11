@@ -4,45 +4,44 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 21F87C88E4A
-	for <qemu-trivial@archiver.kernel.org>; Fri, 11 Sep 2026 10:56:58 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id F3981C88E4A
+	for <qemu-trivial@archiver.kernel.org>; Fri, 11 Sep 2026 10:57:06 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x4yw0-0004XA-GT; Fri, 11 Sep 2026 06:56:46 -0400
+	id 1x4ywG-0004gw-Qd; Fri, 11 Sep 2026 06:57:00 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1x4yvx-0004WE-0O; Fri, 11 Sep 2026 06:56:41 -0400
+ id 1x4yw1-0004XC-1F; Fri, 11 Sep 2026 06:56:45 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1x4yvu-0003CT-JV; Fri, 11 Sep 2026 06:56:40 -0400
+ id 1x4yvz-0003DD-IU; Fri, 11 Sep 2026 06:56:44 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1789124162; bh=WA+3nlkepq+aZOxTW85cJBlOrW3GGvA+ikUW6COdVzc=;
+ t=1789124163; bh=hLcmD1nmUPBX5BQlN8Z5O1fvPMOSUinE+2Mp1l7qTuM=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=PaL1GgG3QL6t4BXcv+0yL7h2rovPxS8zm7okWhXAij2d6DF89jyilZKclmzaIfDFO
- uyIlBD+AuYs5whVzhHmqmxDsYMwlghRM+Z2ihD+1ciAV9xZ0PUu1KuHark3xrUdKZj
- gl3jh770wwg87HOQo3wt0l04SwWElFneN1Lb4+pKEAYPG6NBHmDUtkleNY3eKk9IOt
- P+PMVgSqsfl0b3cSOdLfPU8V2K/ge2IJ0oxoJjdvdZLFP/fFNnbMuJjVqTQfuZeF+e
- P4tp7gUIVnMQSmfTfusnLoafUKWsmjG1Oovb8ufAk5QHiY0w8DKG+5qqXGLy017brm
- jmKxz6PKLCV7g==
+ b=bvuKDQkTvCZ8JuDjdGd3/UM/MkKNlmoXwn49E6j4wi/XZwpEJ5Ufb3xHn9O+x7JE2
+ WEssdlL90sG2GiwV6teSlJSNBNwNxDSmtBxHl+l4bKPhM/5GSPQ7cN2TPCLFTKBk2Z
+ JOrW9S4Tivrx17Y9uoylDIDY1wxJiaCg9eItMnO8+J/YcrHmbPK1FI2aBErsGZa+TD
+ nTrgVq+5h56zM2TXPktbz0bq4jvmVx0WVnv9I/sHzZ5s3JFRsicYJB9HQLbHwYhpeL
+ bil1wdSHjrBfF7r+j9coQZswBxd2AIAaEyxf0O0AS1J79Z/3tw30x8wy6DsX49TuLG
+ ULxiBJ0xHmuPg==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id EE1D81D3B83;
- Fri, 11 Sep 2026 13:56:02 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 06F211D3B85;
+ Fri, 11 Sep 2026 13:56:03 +0300 (MSK)
 Received: from gandalf.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id B73E9425DFA;
+ by tsrv.corpit.ru (Postfix) with ESMTP id BBFC2425DFB;
  Fri, 11 Sep 2026 13:56:35 +0300 (MSK)
 Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
- id A4EBE40F0B; Fri, 11 Sep 2026 13:56:35 +0300 (MSK)
+ id A6F2C40F0D; Fri, 11 Sep 2026 13:56:35 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Rohitashv Kumar <roohiit@amazon.de>, qemu-trivial@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 1/4] qapi/net: gate user/vde/netmap netdev backends behind
- their CONFIG symbols
-Date: Fri, 11 Sep 2026 13:56:29 +0300
-Message-ID: <20260911105635.955937-2-mjt@tls.msk.ru>
+Cc: Zhang Chen <zhangckid@gmail.com>, qemu-trivial@nongnu.org,
+ qemu-stable@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 2/4] qapi/misc: Fix missed query-iothreads items
+Date: Fri, 11 Sep 2026 13:56:30 +0300
+Message-ID: <20260911105635.955937-3-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20260911105635.955937-1-mjt@tls.msk.ru>
 References: <20260911105635.955937-1-mjt@tls.msk.ru>
@@ -71,87 +70,49 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-From: Rohitashv Kumar <roohiit@amazon.de>
+From: Zhang Chen <zhangckid@gmail.com>
 
-Their NetClientDriver enum members and Netdev union branches were
-unconditional, so query-qmp-schema advertised them even when built without
-CONFIG_SLIRP/CONFIG_VDE/CONFIG_NETMAP. Gate them, and guard the matching
-NET_CLIENT_DRIVER_USER/_VDE case labels in net/hub.c.
+The example is incomplete: it misses members @poll-max-ns, @poll-grow,
+@poll-shrink, @aio-max-batch.  Messed up in commit 5fc00480ab1
+(monitor: add poll-* properties into query-iothreads result) and
+commit 1793ad0247c (iothread: add aio-max-batch parameter).
 
-Signed-off-by: Rohitashv Kumar <roohiit@amazon.de>
+CC: qemu-stable@nongnu.org
 Reviewed-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Stefan Hajnoczi <stefanha@redhat.com>
+Signed-off-by: Zhang Chen <zhangckid@gmail.com>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- net/hub.c     |  4 ++++
- qapi/net.json | 19 +++++++++++++------
- 2 files changed, 17 insertions(+), 6 deletions(-)
+ qapi/misc.json | 12 ++++++++++--
+ 1 file changed, 10 insertions(+), 2 deletions(-)
 
-diff --git a/net/hub.c b/net/hub.c
-index b53a4cc872c..1d1710a198b 100644
---- a/net/hub.c
-+++ b/net/hub.c
-@@ -299,12 +299,16 @@ void net_hub_check_clients(void)
- #ifdef CONFIG_PASST
-             case NET_CLIENT_DRIVER_PASST:
- #endif
-+#ifdef CONFIG_SLIRP
-             case NET_CLIENT_DRIVER_USER:
-+#endif
-             case NET_CLIENT_DRIVER_TAP:
-             case NET_CLIENT_DRIVER_SOCKET:
-             case NET_CLIENT_DRIVER_STREAM:
-             case NET_CLIENT_DRIVER_DGRAM:
-+#ifdef CONFIG_VDE
-             case NET_CLIENT_DRIVER_VDE:
-+#endif
-             case NET_CLIENT_DRIVER_VHOST_USER:
-                 has_host_dev = 1;
-                 break;
-diff --git a/qapi/net.json b/qapi/net.json
-index 85c78710fe8..bb626005a82 100644
---- a/qapi/net.json
-+++ b/qapi/net.json
-@@ -922,9 +922,13 @@
- # Since: 2.7
- ##
- { 'enum': 'NetClientDriver',
--  'data': [ 'none', 'nic', 'user', 'tap', 'l2tpv3', 'socket', 'stream',
--            'dgram', 'vde', 'bridge', 'hubport', 'netmap', 'vhost-user',
--            'vhost-vdpa',
-+  'data': [ 'none', 'nic',
-+            { 'name': 'user', 'if': 'CONFIG_SLIRP' },
-+            'tap', 'l2tpv3', 'socket', 'stream', 'dgram',
-+            { 'name': 'vde', 'if': 'CONFIG_VDE' },
-+            'bridge', 'hubport',
-+            { 'name': 'netmap', 'if': 'CONFIG_NETMAP' },
-+            'vhost-user', 'vhost-vdpa',
-             { 'name': 'passt', 'if': 'CONFIG_PASST' },
-             { 'name': 'af-xdp', 'if': 'CONFIG_AF_XDP' },
-             { 'name': 'vmnet-host', 'if': 'CONFIG_VMNET' },
-@@ -949,16 +953,19 @@
-     'nic':      'NetLegacyNicOptions',
-     'passt':    { 'type': 'NetdevPasstOptions',
-                   'if': 'CONFIG_PASST' },
--    'user':     'NetdevUserOptions',
-+    'user':     { 'type': 'NetdevUserOptions',
-+                  'if': 'CONFIG_SLIRP' },
-     'tap':      'NetdevTapOptions',
-     'l2tpv3':   'NetdevL2TPv3Options',
-     'socket':   'NetdevSocketOptions',
-     'stream':   'NetdevStreamOptions',
-     'dgram':    'NetdevDgramOptions',
--    'vde':      'NetdevVdeOptions',
-+    'vde':      { 'type': 'NetdevVdeOptions',
-+                  'if': 'CONFIG_VDE' },
-     'bridge':   'NetdevBridgeOptions',
-     'hubport':  'NetdevHubPortOptions',
--    'netmap':   'NetdevNetmapOptions',
-+    'netmap':   { 'type': 'NetdevNetmapOptions',
-+                  'if': 'CONFIG_NETMAP' },
-     'af-xdp':   { 'type': 'NetdevAFXDPOptions',
-                   'if': 'CONFIG_AF_XDP' },
-     'vhost-user': 'NetdevVhostUserOptions',
+diff --git a/qapi/misc.json b/qapi/misc.json
+index a21ba61b96e..baa50cc8449 100644
+--- a/qapi/misc.json
++++ b/qapi/misc.json
+@@ -123,11 +123,19 @@
+ #     <- { "return": [
+ #              {
+ #                 "id":"iothread0",
+-#                 "thread-id":3134
++#                 "thread-id":3134,
++#                 "poll-max-ns":32768,
++#                 "poll-grow":0,
++#                 "poll-shrink":0,
++#                 "aio-max-batch":0
+ #              },
+ #              {
+ #                 "id":"iothread1",
+-#                 "thread-id":3135
++#                 "thread-id":3135,
++#                 "poll-max-ns":32768,
++#                 "poll-grow":0,
++#                 "poll-shrink":0,
++#                 "aio-max-batch":0
+ #              }
+ #           ]
+ #        }
 -- 
 2.47.3
 
