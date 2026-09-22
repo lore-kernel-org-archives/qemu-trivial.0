@@ -4,103 +4,83 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E68DC98302
-	for <qemu-trivial@archiver.kernel.org>; Tue, 22 Sep 2026 17:48:04 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5D090C982FA
+	for <qemu-trivial@archiver.kernel.org>; Tue, 22 Sep 2026 19:48:47 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x94ak-0002TU-50; Tue, 22 Sep 2026 13:47:43 -0400
+	id 1x96Te-0002cY-Gj; Tue, 22 Sep 2026 15:48:32 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x94aT-0002B0-UF
- for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 13:47:26 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x96Td-0002cL-BP
+ for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 15:48:29 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x94aR-0008K1-4x
- for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 13:47:25 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x96Ta-0004uJ-A4
+ for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 15:48:28 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790099242;
+ s=mimecast20190719; t=1790106504;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=Au1S03sZuhKhQA7TY1/gr8SPznpnyCN3Z0wO3TBERwA=;
- b=UqywXuAQlwsCZu2qoAHoTzRsb247KMRXa5WYzVbsqhC7D0y1T6q4yRuOiFr+YIB9cHu9/j
- Qpj25WWgHafF1n44OWEuao/iXDZCJsEXJxUZ75Zv7qSPhAccwYpePXRUn4S9IcS7XY1cdc
- 3KhR9I1+ZM4nt6vaZUmFe5eEw9iU06A=
-Received: from mail-yx1-f72.google.com (mail-yx1-f72.google.com
- [74.125.224.72]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-199-z8ixvtixMKCXhDQd960HLA-1; Tue, 22 Sep 2026 13:47:21 -0400
-X-MC-Unique: z8ixvtixMKCXhDQd960HLA-1
-X-Mimecast-MFC-AGG-ID: z8ixvtixMKCXhDQd960HLA_1790099240
-Received: by mail-yx1-f72.google.com with SMTP id
- 956f58d0204a3-67109c1b071so77112d50.3
- for <qemu-trivial@nongnu.org>; Tue, 22 Sep 2026 10:47:21 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790099240; x=1790704040;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=Au1S03sZuhKhQA7TY1/gr8SPznpnyCN3Z0wO3TBERwA=;
- b=Ic2sahHTToD5kWu7JBO8BLotoa1Zpm10v0wOzCzRyWIyIbeQWfobzUsjj2g7GveXGH
- DSA1v5+v2y4B/hwOWWOM/oN7DeefdCTCtQdnXBXcjv5bBnHIETA6/3+ZTbcOIq9/2UFs
- 08kvdULFEgArNkeQR6xu2ExPrHgvF8Qv21+K2eyS9p7yY14HqGbRqDSApqgZ1EdfnXFm
- B8ZosnyXc5cMv4s3xzeefWbNpksrNryTEkneDux/Uunnh0kmaWnzaFUGbPRb6Hm/3Q7I
- JxCJrsahj5BA4CPkdqxv95yVHx1zUtYzRmToeGUkZ8qiAoFoAuhhSLlKcZvLff0yLwuZ
- n/Pw==
-X-Forwarded-Encrypted: i=1;
- AKwUvBzD+S8prYJjt2QIO5nz1pi2WFUsw21E64P7JyuS5kS7d6frvgC8FOjmghO0mfzXQMBYZ18f4ZatkqeIli8=@nongnu.org
-X-Gm-Message-State: AFuF++mrivziDd57Upudh/vrdxG0ETLGI46Vd1loIO1lLZ3hFLbG24FL
- NCTV7Ru2/pjVAcupENiQ2X0ot5c8Bidl0VHpmOfAEURbWJe5UBmE0bUasg9ZTzHM1Y7aQRBeAaz
- xjbHnjsKFhcJg3hw/Qg04gzYEF9xYVeQVDwFlg8uyVUTvDFsVf37LrzwIkI4vk4ZfJtinSEEStz
- d9+nV9EFVv2Qo2gV5ZFPUy1Ij1OTwJkPYjrQ==
-X-Gm-Gg: AYBFou3OtxD93/KqQG4sRD9fXZoASG+2orC0hG7dbxcDtfxWn9+113xXNAUKWMjRHsu
- 1fc1XIHqVO/Tqpg8XTXEPxH9dl56Ltii1WyNxu4Z9UF4DhO8ZfYUfqubhHS7h13ztTiwtV4d2gX
- 8LF/WGYHYUmH9YSX8flyskSe+m26IayuBpwWwcIigsst/X73Eyaqj98Fx/ZRgSnV5UssOebpSTA
- VkX5XwGJDiGr0I4
-X-Received: by 2002:a05:690e:454f:20b0:671:203c:2fce with SMTP id
- 956f58d0204a3-672d5751276mr146676d50.17.1790099240431; 
- Tue, 22 Sep 2026 10:47:20 -0700 (PDT)
-X-Received: by 2002:a05:690e:454f:20b0:671:203c:2fce with SMTP id
- 956f58d0204a3-672d5751276mr146649d50.17.1790099240021; Tue, 22 Sep 2026
- 10:47:20 -0700 (PDT)
-MIME-Version: 1.0
-References: <20260921205147.1857168-1-jsnow@redhat.com>
-In-Reply-To: <20260921205147.1857168-1-jsnow@redhat.com>
-From: John Snow <jsnow@redhat.com>
-Date: Tue, 22 Sep 2026 13:47:06 -0400
-X-Gm-Features: AcwNN1VWMem5c6zZaljL-lEPK92qlepT5HJ0RAuuYZABnkXPAvzGq3TYMRYqcPg
-Message-ID: <CAFn=p-Z+UCaZKo8RBnmRECSUHU+jnYe-5K9CyLeoNn2-1s=Zjg@mail.gmail.com>
+ bh=FhMU1zqjjLv79eB39oINyMe4H3HxLrWzYVlY2JarkvA=;
+ b=CcKAQqR4sKHodGnKDBs8bD2598iwIcuIZfWBADMAfpOm85HgZaTgjPoP+CoUAkSkjBPBEI
+ +25qvsmbCXM4LV4kgP+lyfhwAihsxTGGIEx1sov28+AISyUkpQB4stJBHa6VwRVBiFJGRh
+ Oc3ZXxgf/g4uP2jwW/nhPYET8UcmFVI=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-286-nBT7izANOUuappr_Gb89Kw-1; Tue,
+ 22 Sep 2026 15:48:20 -0400
+X-MC-Unique: nBT7izANOUuappr_Gb89Kw-1
+X-Mimecast-MFC-AGG-ID: nBT7izANOUuappr_Gb89Kw_1790106499
+Received: from mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.95])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9A8A6195BDF3; Tue, 22 Sep 2026 19:48:18 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.5])
+ by mx-prod-int-10.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9EF1641D; Tue, 22 Sep 2026 19:48:17 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 2074621E6A04; Tue, 22 Sep 2026 21:48:15 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel@nongnu.org,  Michael Roth <michael.roth@amd.com>,  Daniel P.
+ =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Kashyap Chamarthy
+ <kchamart@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>,  Michael Tokarev <mjt@tls.msk.ru>,  Hanna
+ Reitz <hreitz@redhat.com>,  Stefano Garzarella <sgarzare@redhat.com>,
+ Jason Wang <jasowangio@gmail.com>,  Zhao Liu <zhao1.liu@intel.com>,
+ Kostiantyn Kostiuk <kkostiuk@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Da?=
+ =?utf-8?Q?ud=C3=A9?= <philmd@oss.qualcomm.com>,  qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org,  Laurent Vivier <laurent@vivier.eu>,  Eric Blake
+ <eblake@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Pierrick
+ Bouvier <pierrick.bouvier@oss.qualcomm.com>
 Subject: Re: [PATCH 0/9] qapi: convert intros for qga, firmware, etc
-To: qemu-devel@nongnu.org
-Cc: Michael Roth <michael.roth@amd.com>,
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Kashyap Chamarthy <kchamart@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
- Michael Tokarev <mjt@tls.msk.ru>, 
- Hanna Reitz <hreitz@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>, 
- Jason Wang <jasowangio@gmail.com>, Zhao Liu <zhao1.liu@intel.com>, 
- Kostiantyn Kostiuk <kkostiuk@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- qemu-block@nongnu.org, qemu-trivial@nongnu.org, 
- Laurent Vivier <laurent@vivier.eu>, Eric Blake <eblake@redhat.com>, 
- "Michael S. Tsirkin" <mst@redhat.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: BDNDBt62lEI6fAMSRje6tV1pz7DZP3nExlcA0KtCCcA_1790099240
+In-Reply-To: <CAFn=p-Z+UCaZKo8RBnmRECSUHU+jnYe-5K9CyLeoNn2-1s=Zjg@mail.gmail.com>
+ (John Snow's message of "Tue, 22 Sep 2026 13:47:06 -0400")
+References: <20260921205147.1857168-1-jsnow@redhat.com>
+ <CAFn=p-Z+UCaZKo8RBnmRECSUHU+jnYe-5K9CyLeoNn2-1s=Zjg@mail.gmail.com>
+Date: Tue, 22 Sep 2026 21:48:15 +0200
+Message-ID: <87cxu5130g.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
+MIME-Version: 1.0
+X-Scanned-By: MIMEDefang 3.6 on 10.30.177.95
+X-Mimecast-MFC-PROC-ID: QQW3MZ309rBndWZL9DxZBOYKOAhUhI6rYMLZepmFF20_1790106499
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -7
-X-Spam_score: -0.8
-X-Spam_bar: /
-X-Spam_report: (-0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_BL_SPAMCOP_NET=1.347, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
  SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
@@ -117,42 +97,11 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Mon, Sep 21, 2026 at 4:52=E2=80=AFPM John Snow <jsnow@redhat.com> wrote:
->
-> One day I will send patches that do something else.
-> Today is not that day.
->
-> John Snow (9):
->   qapi: convert remaining simple sections
->   qapi: convert intro sections for unit tests
->   qapi: convert trivial intros for qga/qapi-schema.json
->   qapi: convert simple intros for qga/qapi-schema.json
->   qapi: split intros at natural cutoff points for qga/qapi-schema.json
->   qapi: split intros for qga/qapi-schema.json
->   qapi: convert intro sections for docs/interop/firmware.json
->   qapi: convert intro sections for docs/interop/vhost-user.json
->   tests/qapi: generate output in source order
->
->  docs/interop/firmware.json                    |  76 +++---
->  docs/interop/vhost-user.json                  |  27 +-
->  qapi/block.json                               |   5 +-
->  qapi/machine-s390x.json                       |   3 +-
->  qapi/machine.json                             |   3 +-
->  qapi/net.json                                 |  24 +-
->  qga/qapi-schema.json                          | 249 +++++++-----------
->  tests/qapi-schema/doc-good.json               |  10 +-
->  tests/qapi-schema/doc-good.out                |  95 ++++---
->  tests/qapi-schema/doc-interleaved-section.err |   2 +-
->  .../qapi-schema/doc-interleaved-section.json  |   3 +-
->  tests/qapi-schema/test-qapi.py                |   9 +-
->  12 files changed, 206 insertions(+), 300 deletions(-)
->
-> --
-> 2.55.0
+John Snow <jsnow@redhat.com> writes:
 
-Markus: assuming I should wait for your reviews on 3, 4, and 8 before
-I send a revision.
+> Markus: assuming I should wait for your reviews on 3, 4, and 8 before
+> I send a revision.
 
---js
+Go ahead and send!
 
 
