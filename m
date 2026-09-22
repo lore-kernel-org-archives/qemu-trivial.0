@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 75879C982FE
-	for <qemu-trivial@archiver.kernel.org>; Tue, 22 Sep 2026 14:35:15 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id C81F5C982FA
+	for <qemu-trivial@archiver.kernel.org>; Tue, 22 Sep 2026 14:53:41 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x91aL-00024p-IC; Tue, 22 Sep 2026 10:35:05 -0400
+	id 1x91s0-0006aM-BZ; Tue, 22 Sep 2026 10:53:20 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x91aJ-00023x-OP
- for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 10:35:03 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x91rw-0006Zh-8z
+ for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 10:53:16 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x91aH-0004vG-FG
- for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 10:35:03 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x91ru-0007Qz-J1
+ for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 10:53:16 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790087699;
+ s=mimecast20190719; t=1790088793;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=0yIBs0EhSWG51Xo7KOe5igClSHIoH+7ZqR4piHgpV3U=;
- b=hF5vw6V7rK4MDmt96uGA3IBu0L1wmVql/KZ7rG0dNmnKdTD5hUmWDKhHuk29aLFVDWhGjq
- GDFq2TsSzc3w3rZylMXh/WKZvX51rf6uaWV8L7vpbv5/EyNk8HUCkTSymZfp8X9kVC8oBZ
- JHIR5QQ4pyJJcEqADg0JmDOeviYqPAo=
-Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=GRgY7b85SMA2xtvaORMx+VgkTHClIbLwwCIZxZkir1c=;
+ b=hLwDW4NctsLsM9wyLYDsZacd+/5j5dofSYU32bGqShZvSW51Doh/4UT3nI3AmEC+uqE8s5
+ 33gp2MF/sMBfHTNMiIGGR1WS6rLWv9oSks6MtUTZqf3rgeYh/2yizHdO5bJPFe9ikcq91j
+ gzSy4KJcDcGfKrUqYkTt589YLa8xIIk=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-466-5TdOxV8mPqm6Naz_Nz1bFg-1; Tue,
- 22 Sep 2026 10:34:55 -0400
-X-MC-Unique: 5TdOxV8mPqm6Naz_Nz1bFg-1
-X-Mimecast-MFC-AGG-ID: 5TdOxV8mPqm6Naz_Nz1bFg_1790087694
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-274--H4qSRQKMvGzCIYTkHhiCw-1; Tue,
+ 22 Sep 2026 10:53:09 -0400
+X-MC-Unique: -H4qSRQKMvGzCIYTkHhiCw-1
+X-Mimecast-MFC-AGG-ID: -H4qSRQKMvGzCIYTkHhiCw_1790088787
 Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id F3175185BE99; Tue, 22 Sep 2026 14:34:52 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 6977B195C244; Tue, 22 Sep 2026 14:53:05 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.44.22.5])
  by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 00CC91800446; Tue, 22 Sep 2026 14:34:52 +0000 (UTC)
+ id 82F79180034C; Tue, 22 Sep 2026 14:53:04 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 9809021E6A04; Tue, 22 Sep 2026 16:34:49 +0200 (CEST)
+ id 3084E21E6A04; Tue, 22 Sep 2026 16:53:02 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: John Snow <jsnow@redhat.com>
 Cc: qemu-devel@nongnu.org,  Michael Roth <michael.roth@amd.com>,  Daniel P.
@@ -59,28 +59,30 @@ Cc: qemu-devel@nongnu.org,  Michael Roth <michael.roth@amd.com>,  Daniel P.
  qemu-trivial@nongnu.org,  Laurent Vivier <laurent@vivier.eu>,  Eric Blake
  <eblake@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Pierrick
  Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: Re: [PATCH 1/9] qapi: convert remaining simple sections
-In-Reply-To: <20260921205147.1857168-2-jsnow@redhat.com> (John Snow's message
- of "Mon, 21 Sep 2026 16:51:39 -0400")
+Subject: Re: [PATCH 5/9] qapi: split intros at natural cutoff points for
+ qga/qapi-schema.json
+In-Reply-To: <20260921205147.1857168-6-jsnow@redhat.com> (John Snow's message
+ of "Mon, 21 Sep 2026 16:51:43 -0400")
 References: <20260921205147.1857168-1-jsnow@redhat.com>
- <20260921205147.1857168-2-jsnow@redhat.com>
-Date: Tue, 22 Sep 2026 16:34:49 +0200
-Message-ID: <87ecel4anq.fsf@pond.sub.org>
+ <20260921205147.1857168-6-jsnow@redhat.com>
+Date: Tue, 22 Sep 2026 16:53:02 +0200
+Message-ID: <87a4p949td.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
-X-Mimecast-MFC-PROC-ID: XfpqB0QjBEXtU-3TOjJ1CzLZ41tCfJrsqhWpHhnV_0I_1790087694
+X-Mimecast-MFC-PROC-ID: ngARHygbe3uxN1unEI6JGXwJaZRxOZOySYMj2LKsQiA_1790088787
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,37 +100,64 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 John Snow <jsnow@redhat.com> writes:
 
-> A few slipped in during the mass conversion, get those too.
+> Note that these intro conversions introduce a new intro/details split
+> point. This new split point may or may not change the rendered output
+> depending on if any documentation is generated for this definition.
+
+Uh, we generate documentation for *all* definitions.
+
 >
 > Signed-off-by: John Snow <jsnow@redhat.com>
 > ---
->  qapi/block.json         |  5 ++---
->  qapi/machine-s390x.json |  3 +--
->  qapi/machine.json       |  3 +--
->  qapi/net.json           | 24 ++++++++----------------
->  4 files changed, 12 insertions(+), 23 deletions(-)
+>  qga/qapi-schema.json | 11 ++++-------
+>  1 file changed, 4 insertions(+), 7 deletions(-)
 >
-> diff --git a/qapi/block.json b/qapi/block.json
-> index 13c47e1eb44..68d4e47d911 100644
-> --- a/qapi/block.json
-> +++ b/qapi/block.json
-> @@ -597,9 +597,8 @@
+> diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
+> index b592b14a011..19b0958b84e 100644
+> --- a/qga/qapi-schema.json
+> +++ b/qga/qapi-schema.json
+> @@ -401,8 +401,7 @@
 >  
 >  ##
->  # @x-qemu-io:
+>  # @guest-fsfreeze-status:
 > -#
-> -# Run a qemu-io command on a block device.  Take either a block
-> -# backend name or a qdev ID to identify the device.
-> +#     Run a qemu-io command on a block device.  Take either a block
-> +#     backend name or a qdev ID to identify the device.
-
-The second sentence is not intro, it's a constraint on arguments @device
-and @qdev.
-
+> -# Get guest fsfreeze state.
+> +#     Get guest fsfreeze state.
 >  #
->  # @device: the block backend name, node-name to run the
->  #     command on.
+>  # .. note:: This may fail to properly report the current state as a
+>  #    result of some other guest processes having issued an fs
 
-[...]
+This one does affect rendered docs: the auto-generated Returns moves
+from below the note to above, where it belongs.
+
+> @@ -925,9 +924,8 @@
+>  
+>  ##
+>  # @GuestNVMeSmart:
+> -#
+> -# NVMe smart information, based on NVMe specification, section
+> -# <SMART / Health Information (Log Identifier 02h)>
+> +#     NVMe smart information, based on NVMe specification, section
+> +#     <SMART / Health Information (Log Identifier 02h)>
+>  #
+>  # TODO: document members briefly
+>  #
+> @@ -1816,8 +1814,7 @@
+>  
+>  ##
+>  # @guest-get-load:
+> -#
+> -# Retrieve CPU process load information
+> +#     Retrieve CPU process load information
+>  #
+>  # .. note:: Windows does not have load average API, so QGA emulates it
+>  #    by calculating the average CPU usage in the last 1, 5, 15 minutes
+
+These don't.
+
+A possible commit message correction:
+
+  Note that these intro conversions introduce a new intro/details split
+  point. Only the first one affects the rendered output.
 
 
