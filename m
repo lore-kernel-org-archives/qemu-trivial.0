@@ -4,93 +4,91 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 0ACF1C98302
-	for <qemu-trivial@archiver.kernel.org>; Tue, 22 Sep 2026 17:47:59 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 5E68DC98302
+	for <qemu-trivial@archiver.kernel.org>; Tue, 22 Sep 2026 17:48:04 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x94a1-0001yy-JF; Tue, 22 Sep 2026 13:47:04 -0400
+	id 1x94ak-0002TU-50; Tue, 22 Sep 2026 13:47:43 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x94ZV-0001p4-5F
- for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 13:46:27 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x94aT-0002B0-UF
+ for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 13:47:26 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x94ZS-0008Fl-RC
- for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 13:46:24 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x94aR-0008K1-4x
+ for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 13:47:25 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790099180;
+ s=mimecast20190719; t=1790099242;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=xB0VdGjmuHuXZmi+LIdPZNLU9gjo6gQ/lH1Fp/WLkM8=;
- b=dw3J9U7Qnabb/4qKK44Uo1nHwQakpQG/9Cu7TskzfYD0/0cIi3FgPaOodkzu3Y7qhD+G/R
- DEy4GXL94bkfPCSY/c/EW9OVwBPEskTHbTNpXwOK+OizOpGekxZHg6bKiSeUASZo6XBBcN
- 36e5dVht/eWLQ9XKHHY8uBCJ5BGYRVs=
+ bh=Au1S03sZuhKhQA7TY1/gr8SPznpnyCN3Z0wO3TBERwA=;
+ b=UqywXuAQlwsCZu2qoAHoTzRsb247KMRXa5WYzVbsqhC7D0y1T6q4yRuOiFr+YIB9cHu9/j
+ Qpj25WWgHafF1n44OWEuao/iXDZCJsEXJxUZ75Zv7qSPhAccwYpePXRUn4S9IcS7XY1cdc
+ 3KhR9I1+ZM4nt6vaZUmFe5eEw9iU06A=
 Received: from mail-yx1-f72.google.com (mail-yx1-f72.google.com
  [74.125.224.72]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-217-CY15mRq9OgObUjniWmNhFQ-1; Tue, 22 Sep 2026 13:46:19 -0400
-X-MC-Unique: CY15mRq9OgObUjniWmNhFQ-1
-X-Mimecast-MFC-AGG-ID: CY15mRq9OgObUjniWmNhFQ_1790099179
+ us-mta-199-z8ixvtixMKCXhDQd960HLA-1; Tue, 22 Sep 2026 13:47:21 -0400
+X-MC-Unique: z8ixvtixMKCXhDQd960HLA-1
+X-Mimecast-MFC-AGG-ID: z8ixvtixMKCXhDQd960HLA_1790099240
 Received: by mail-yx1-f72.google.com with SMTP id
- 956f58d0204a3-66e5862a158so44783d50.2
- for <qemu-trivial@nongnu.org>; Tue, 22 Sep 2026 10:46:19 -0700 (PDT)
+ 956f58d0204a3-67109c1b071so77112d50.3
+ for <qemu-trivial@nongnu.org>; Tue, 22 Sep 2026 10:47:21 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790099178; x=1790703978;
+ d=1e100.net; s=20260707; t=1790099240; x=1790704040;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=xB0VdGjmuHuXZmi+LIdPZNLU9gjo6gQ/lH1Fp/WLkM8=;
- b=ZU5PtbPlqRA1TGzoAzkEuEbxg+XNHkPuVhGGW39h793uzc68ZCCcx5xf6XvxZXEDVX
- RLKOypN2ydEq0xrMVOAa+z54is4vcVk4Nctd3xL/vz2IV4WaOswj/pCVtXgN3Kpcg1W6
- HjunEUKe18DwTMVw9gb6X7sOhbjihEqR681wmVMQjomoQ3h0ZiG7Y4WE5KhQtpBeMPTP
- 0SWwiZ67P7DuJ26rm85CbXGlKRI9w+8Q7t+8RUqKo16hx4ymfDsXCFo8yNCw0RnyWCDm
- oMnBbIOlYQ+3TbqiwGcFXsPvmWRw/yuMeA/9P9lZHRhPLczzzk8M3d5vTJCyevz/6XuS
- cbZQ==
+ bh=Au1S03sZuhKhQA7TY1/gr8SPznpnyCN3Z0wO3TBERwA=;
+ b=Ic2sahHTToD5kWu7JBO8BLotoa1Zpm10v0wOzCzRyWIyIbeQWfobzUsjj2g7GveXGH
+ DSA1v5+v2y4B/hwOWWOM/oN7DeefdCTCtQdnXBXcjv5bBnHIETA6/3+ZTbcOIq9/2UFs
+ 08kvdULFEgArNkeQR6xu2ExPrHgvF8Qv21+K2eyS9p7yY14HqGbRqDSApqgZ1EdfnXFm
+ B8ZosnyXc5cMv4s3xzeefWbNpksrNryTEkneDux/Uunnh0kmaWnzaFUGbPRb6Hm/3Q7I
+ JxCJrsahj5BA4CPkdqxv95yVHx1zUtYzRmToeGUkZ8qiAoFoAuhhSLlKcZvLff0yLwuZ
+ n/Pw==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwR44cPB63FiZUyJbyEWJVKjoDkLq1EWql3JUvfQlFqeK3V/fqSMyDbWnpR7m/F9j0zg8I9T+fubBSuYrk=@nongnu.org
-X-Gm-Message-State: AFuF++nfhnmEyVnAQgl8JoBIn1ogbH0rmQsWFz9pF7TKAEefnnWHZBp6
- DK7okaKH1k0p35vIxlDN1Aecxz+rY74rCbt6ceyK+tnEV4o/sgtVt+hQpOTbLJvffOlu62l/YR/
- ZqLSkw0XXEQ4KdPn3s7JYZmuz3uOoDyYqVhPH0mdhE9UvzNJ8gYZgPvl79QYiN+87hW7/yAeaox
- 4yE6NglA44g6X2d+N0mxMp9ZQFg6GUsuXuAw==
-X-Gm-Gg: AYBFou3qxWhVVtZxd3ineAqcO9VfWeJMVrO1jWzaDp0QAhXIQkpVrXdxuEkqaJEBsXt
- tOFLTAjOCLYfXRs/7/cerKGqE7J9ODH0pXD38K60ijViSx3tVbbv84EZKlVZQSdibyRqtWxQibm
- EaTYd0AYq9QsyNxxH+iQAdLMvjPa/Q/+ydek1nayZSzywWgdbwarSdMAoj3e5QYJ1Olmo5CLIGF
- OaXbZ4duMWVdWqI
-X-Received: by 2002:a05:690e:458a:20b0:670:f743:6ec2 with SMTP id
- 956f58d0204a3-672d5897536mr98774d50.60.1790099178580; 
- Tue, 22 Sep 2026 10:46:18 -0700 (PDT)
-X-Received: by 2002:a05:690e:458a:20b0:670:f743:6ec2 with SMTP id
- 956f58d0204a3-672d5897536mr98760d50.60.1790099178154; Tue, 22 Sep 2026
- 10:46:18 -0700 (PDT)
+ AKwUvBzD+S8prYJjt2QIO5nz1pi2WFUsw21E64P7JyuS5kS7d6frvgC8FOjmghO0mfzXQMBYZ18f4ZatkqeIli8=@nongnu.org
+X-Gm-Message-State: AFuF++mrivziDd57Upudh/vrdxG0ETLGI46Vd1loIO1lLZ3hFLbG24FL
+ NCTV7Ru2/pjVAcupENiQ2X0ot5c8Bidl0VHpmOfAEURbWJe5UBmE0bUasg9ZTzHM1Y7aQRBeAaz
+ xjbHnjsKFhcJg3hw/Qg04gzYEF9xYVeQVDwFlg8uyVUTvDFsVf37LrzwIkI4vk4ZfJtinSEEStz
+ d9+nV9EFVv2Qo2gV5ZFPUy1Ij1OTwJkPYjrQ==
+X-Gm-Gg: AYBFou3OtxD93/KqQG4sRD9fXZoASG+2orC0hG7dbxcDtfxWn9+113xXNAUKWMjRHsu
+ 1fc1XIHqVO/Tqpg8XTXEPxH9dl56Ltii1WyNxu4Z9UF4DhO8ZfYUfqubhHS7h13ztTiwtV4d2gX
+ 8LF/WGYHYUmH9YSX8flyskSe+m26IayuBpwWwcIigsst/X73Eyaqj98Fx/ZRgSnV5UssOebpSTA
+ VkX5XwGJDiGr0I4
+X-Received: by 2002:a05:690e:454f:20b0:671:203c:2fce with SMTP id
+ 956f58d0204a3-672d5751276mr146676d50.17.1790099240431; 
+ Tue, 22 Sep 2026 10:47:20 -0700 (PDT)
+X-Received: by 2002:a05:690e:454f:20b0:671:203c:2fce with SMTP id
+ 956f58d0204a3-672d5751276mr146649d50.17.1790099240021; Tue, 22 Sep 2026
+ 10:47:20 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260921205147.1857168-1-jsnow@redhat.com>
- <20260921205147.1857168-10-jsnow@redhat.com>
- <875wzx2ovl.fsf@pond.sub.org>
-In-Reply-To: <875wzx2ovl.fsf@pond.sub.org>
+In-Reply-To: <20260921205147.1857168-1-jsnow@redhat.com>
 From: John Snow <jsnow@redhat.com>
-Date: Tue, 22 Sep 2026 13:46:05 -0400
-X-Gm-Features: AcwNN1X3clkubVPauZPhIEb3CKA1FY04S8lLG-_q_3Twr1zVAF7I0w5qamCIzHo
-Message-ID: <CAFn=p-bhYcWQq8qxi-STh4wDwvNigKWYpZ2Ac+apU27s-89c0g@mail.gmail.com>
-Subject: Re: [PATCH 9/9] tests/qapi: generate output in source order
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, Michael Roth <michael.roth@amd.com>, 
+Date: Tue, 22 Sep 2026 13:47:06 -0400
+X-Gm-Features: AcwNN1VWMem5c6zZaljL-lEPK92qlepT5HJ0RAuuYZABnkXPAvzGq3TYMRYqcPg
+Message-ID: <CAFn=p-Z+UCaZKo8RBnmRECSUHU+jnYe-5K9CyLeoNn2-1s=Zjg@mail.gmail.com>
+Subject: Re: [PATCH 0/9] qapi: convert intros for qga, firmware, etc
+To: qemu-devel@nongnu.org
+Cc: Michael Roth <michael.roth@amd.com>,
  =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
  Kashyap Chamarthy <kchamart@redhat.com>, Kevin Wolf <kwolf@redhat.com>,
  Michael Tokarev <mjt@tls.msk.ru>, 
  Hanna Reitz <hreitz@redhat.com>, Stefano Garzarella <sgarzare@redhat.com>, 
  Jason Wang <jasowangio@gmail.com>, Zhao Liu <zhao1.liu@intel.com>, 
- Kostiantyn Kostiuk <kkostiuk@redhat.com>,
+ Kostiantyn Kostiuk <kkostiuk@redhat.com>, Markus Armbruster <armbru@redhat.com>,
  =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
  qemu-block@nongnu.org, qemu-trivial@nongnu.org, 
  Laurent Vivier <laurent@vivier.eu>, Eric Blake <eblake@redhat.com>, 
  "Michael S. Tsirkin" <mst@redhat.com>,
  Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 8G559kuEd_c9WCujFuAF0nx2X9sCBxOPIQKto-dcNGo_1790099179
+X-Mimecast-MFC-PROC-ID: BDNDBt62lEI6fAMSRje6tV1pz7DZP3nExlcA0KtCCcA_1790099240
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
@@ -119,28 +117,42 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Tue, Sep 22, 2026 at 1:10=E2=80=AFPM Markus Armbruster <armbru@redhat.co=
-m> wrote:
+On Mon, Sep 21, 2026 at 4:52=E2=80=AFPM John Snow <jsnow@redhat.com> wrote:
 >
-> John Snow <jsnow@redhat.com> writes:
+> One day I will send patches that do something else.
+> Today is not that day.
 >
-> > Rewrite the test doc generator to produce output in source order,
-> > instead of arbitrarily.
+> John Snow (9):
+>   qapi: convert remaining simple sections
+>   qapi: convert intro sections for unit tests
+>   qapi: convert trivial intros for qga/qapi-schema.json
+>   qapi: convert simple intros for qga/qapi-schema.json
+>   qapi: split intros at natural cutoff points for qga/qapi-schema.json
+>   qapi: split intros for qga/qapi-schema.json
+>   qapi: convert intro sections for docs/interop/firmware.json
+>   qapi: convert intro sections for docs/interop/vhost-user.json
+>   tests/qapi: generate output in source order
 >
-> Really?  As far as I can tell, the patch changes format, but not order.
+>  docs/interop/firmware.json                    |  76 +++---
+>  docs/interop/vhost-user.json                  |  27 +-
+>  qapi/block.json                               |   5 +-
+>  qapi/machine-s390x.json                       |   3 +-
+>  qapi/machine.json                             |   3 +-
+>  qapi/net.json                                 |  24 +-
+>  qga/qapi-schema.json                          | 249 +++++++-----------
+>  tests/qapi-schema/doc-good.json               |  10 +-
+>  tests/qapi-schema/doc-good.out                |  95 ++++---
+>  tests/qapi-schema/doc-interleaved-section.err |   2 +-
+>  .../qapi-schema/doc-interleaved-section.json  |   3 +-
+>  tests/qapi-schema/test-qapi.py                |   9 +-
+>  12 files changed, 206 insertions(+), 300 deletions(-)
 >
-> Dig, dig, ...  you already switched it to source order in commit
-> 9606414d46 (tests/qapi: generate output in source order, 2026-06-11).
+> --
+> 2.55.0
 
-Ah, funny! This is probably the leftover bits we didn't agree on at
-the time and I didn't notice that this patch became anemic. Well, this
-is just a preference patch now and not really strictly necessary. I
-like seeing the "section=3D" text because it's a clue for me as I read
-the text, but it's not really important, I'll scrap it unless you also
-like the formatting change.
+Markus: assuming I should wait for your reviews on 3, 4, and 8 before
+I send a revision.
 
->
-> > Signed-off-by: John Snow <jsnow@redhat.com>
->
+--js
 
 
