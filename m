@@ -4,48 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id C4F3DC982FA
-	for <qemu-trivial@archiver.kernel.org>; Tue, 22 Sep 2026 15:22:22 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id D7D70C982FA
+	for <qemu-trivial@archiver.kernel.org>; Tue, 22 Sep 2026 17:06:34 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x92Jk-0002gJ-QS; Tue, 22 Sep 2026 11:22:00 -0400
+	id 1x93wY-0007F5-9R; Tue, 22 Sep 2026 13:06:10 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x92Jk-0002fv-0m
- for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 11:22:00 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x93wQ-0007Dw-TS
+ for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 13:06:04 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x92Jh-00023q-KY
- for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 11:21:59 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x93wP-0004Bc-8j
+ for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 13:06:02 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790090516;
+ s=mimecast20190719; t=1790096760;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  in-reply-to:in-reply-to:references:references;
- bh=VIYHZArNfFwX+T5MM5k6jYfnlC7ChnSFULrG05SpifI=;
- b=Wyh3AoYtLBK41ho5PwhhNTDQAlrgEZA8rZTlstZuy2v3NT8Dt4Jh9zrkWtVr7I9D1m0tQn
- auYf9FyLFuvl01s/MqZVCBrHI8PaIwXKFH4sKQXc30nTc3j0O+5ThIbA1sflwNjzwDGYaR
- u59g2y7FfRGIywJaDFEFDOYmOSpsxlU=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
+ bh=HYAuJYMHVKECvw4I1vaX7j/jcHTP5akScR7OEdaB7Rg=;
+ b=XiQctiBXxjvoLBbKp2QdRzoQyHYr09SO0SYDw3AYJ3GlvkrizSmU8F6xYT0B4Uo47RmoC5
+ AvvsvBvrlNILzVvh4VWoH5908tGUZITXtL8rGBem9wQzE97AJilPCluM3FkWKA3h9FAPeK
+ lB0GuH8JYfcVjImIKxt7d3efSzpVCaM=
+Received: from mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-142-UbKa-tZVMUOnDEB_TNI-sw-1; Tue,
- 22 Sep 2026 11:21:52 -0400
-X-MC-Unique: UbKa-tZVMUOnDEB_TNI-sw-1
-X-Mimecast-MFC-AGG-ID: UbKa-tZVMUOnDEB_TNI-sw_1790090511
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-678-26QJ3aK1Pa6JWhlFMxHoBQ-1; Tue,
+ 22 Sep 2026 13:05:57 -0400
+X-MC-Unique: 26QJ3aK1Pa6JWhlFMxHoBQ-1
+X-Mimecast-MFC-AGG-ID: 26QJ3aK1Pa6JWhlFMxHoBQ_1790096755
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DA31D18007FD; Tue, 22 Sep 2026 15:21:50 +0000 (UTC)
+ by mx-prod-mc-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id F04401805A1B; Tue, 22 Sep 2026 17:05:54 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.44.22.5])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 77CEE180056E; Tue, 22 Sep 2026 15:21:49 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 40B431800351; Tue, 22 Sep 2026 17:05:54 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id 24CDC21E6A04; Tue, 22 Sep 2026 17:21:47 +0200 (CEST)
+ id B75C121E6A04; Tue, 22 Sep 2026 19:05:51 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: John Snow <jsnow@redhat.com>
 Cc: qemu-devel@nongnu.org,  Michael Roth <michael.roth@amd.com>,  Daniel P.
@@ -59,17 +59,17 @@ Cc: qemu-devel@nongnu.org,  Michael Roth <michael.roth@amd.com>,  Daniel P.
  qemu-trivial@nongnu.org,  Laurent Vivier <laurent@vivier.eu>,  Eric Blake
  <eblake@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Pierrick
  Bouvier <pierrick.bouvier@oss.qualcomm.com>
-Subject: Re: [PATCH 6/9] qapi: split intros for qga/qapi-schema.json
-In-Reply-To: <20260921205147.1857168-7-jsnow@redhat.com> (John Snow's message
- of "Mon, 21 Sep 2026 16:51:44 -0400")
+Subject: Re: [PATCH 2/9] qapi: convert intro sections for unit tests
+In-Reply-To: <20260921205147.1857168-3-jsnow@redhat.com> (John Snow's message
+ of "Mon, 21 Sep 2026 16:51:40 -0400")
 References: <20260921205147.1857168-1-jsnow@redhat.com>
- <20260921205147.1857168-7-jsnow@redhat.com>
-Date: Tue, 22 Sep 2026 17:21:47 +0200
-Message-ID: <87mrt92tx0.fsf@pond.sub.org>
+ <20260921205147.1857168-3-jsnow@redhat.com>
+Date: Tue, 22 Sep 2026 19:05:51 +0200
+Message-ID: <87a4p92p3k.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: CNi5pSNWc8TMeIC6PImAB17pm_XmDb8cHeASwg9o1Kg_1790090511
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: pkp-2O1TdkCVnYOWe060r5QtH_vaT5i05MXE_QLhdZg_1790096755
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain
 Received-SPF: pass client-ip=170.10.133.124; envelope-from=armbru@redhat.com;
@@ -80,7 +80,7 @@ X-Spam_bar: --
 X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
  RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -98,186 +98,106 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 John Snow <jsnow@redhat.com> writes:
 
-> These intro section conversions all create a new insertion point that
-> follow the introduction, but precede what now constitutes the details
-> text. Like other intro section conversions, the details text will be
-> moved en-masse in a later patch.
->
 > Signed-off-by: John Snow <jsnow@redhat.com>
 > ---
->  qga/qapi-schema.json | 61 +++++++++++++++++++-------------------------
->  1 file changed, 26 insertions(+), 35 deletions(-)
+>  tests/qapi-schema/doc-good.json                | 10 +++++-----
+>  tests/qapi-schema/doc-good.out                 | 13 +++++--------
+>  tests/qapi-schema/doc-interleaved-section.err  |  2 +-
+>  tests/qapi-schema/doc-interleaved-section.json |  3 +--
+>  4 files changed, 12 insertions(+), 16 deletions(-)
 >
-> diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
-> index 19b0958b84e..05fe4ea484d 100644
-> --- a/qga/qapi-schema.json
-> +++ b/qga/qapi-schema.json
-> @@ -48,9 +48,8 @@
+> diff --git a/tests/qapi-schema/doc-good.json b/tests/qapi-schema/doc-good.json
+> index fac13425b72..00721d5c522 100644
+> --- a/tests/qapi-schema/doc-good.json
+> +++ b/tests/qapi-schema/doc-good.json
+> @@ -94,12 +94,11 @@
 >  
 >  ##
->  # @guest-sync-delimited:
-> -#
-> -# Echo back a unique integer value, and prepend to response a leading
-> -# sentinel byte (0xFF) the client can check scan for.
-> +#     Echo back a unique integer value, and prepend to response a
-> +#     leading sentinel byte (0xFF) the client can check scan for.
+>  # @Variant1:
+> +#     A paragraph
 >  #
->  # This is used by clients talking to the guest agent over the wire to
->  # ensure the stream is in sync and doesn't contain stale data from
-> @@ -83,8 +82,7 @@
+> -# A paragraph
+> +#     Another paragraph
+>  #
+> -# Another paragraph
+> -#
+> -# @var1 is undocumented
+> +#     @var1 is undocumented
+
+Let's keep '@var1 is undocumented' plain.  That way, it stays close to
+"author forgot the colon after the member name", which I find useful.
+
+>  #
+>  # Features:
+>  # @variant1-feat: a feature
+> @@ -206,7 +205,8 @@
 >  
 >  ##
->  # @guest-sync:
-> -#
-> -# Echo back a unique integer value
-> +#     Echo back a unique integer value
+>  # @cmd-boxed:
+> -# If you're bored enough to read this, go see a video of boxed cats
+> +#     If you're bored enough to read this, go see a video of boxed
+> +#     cats
 >  #
->  # This is used by clients talking to the guest agent over the wire to
->  # ensure the stream is in sync and doesn't contain stale data from
-> @@ -140,8 +138,7 @@
+>  # Features:
+>  # @cmd-feat1: a feature
+> diff --git a/tests/qapi-schema/doc-good.out b/tests/qapi-schema/doc-good.out
+> index 371dd25ffc7..8c0818a3f0d 100644
+> --- a/tests/qapi-schema/doc-good.out
+> +++ b/tests/qapi-schema/doc-good.out
+> @@ -126,13 +126,11 @@ doc symbol=Base
+>   minimally indented
+>  doc symbol=Variant1
+>      Intro
+> +    A paragraph
+>  
+> -    Plain
+> -A paragraph
+> +    Another paragraph
+>  
+> -Another paragraph
+> -
+> -@var1 is undocumented
+> +    @var1 is undocumented
+>      Member=var1
+>  
+>      Feature=variant1-feat
+> @@ -213,9 +211,8 @@ Note::
+>  2.10
+>  doc symbol=cmd-boxed
+>      Intro
+> -
+> -    Plain
+> -If you're bored enough to read this, go see a video of boxed cats
+> +    If you're bored enough to read this, go see a video of boxed
+> +    cats
+>      Feature=cmd-feat1
+>  a feature
+>      Feature=cmd-feat2
+
+I'm mildly surprised that the intro's indentation isn't stripped.  Maybe
+we discussed that already, and I forgot.  Anyway, it works, and changing
+it is way out of scope right now.
+
+> diff --git a/tests/qapi-schema/doc-interleaved-section.err b/tests/qapi-schema/doc-interleaved-section.err
+> index e5d1ef54c1b..85f01fa57a7 100644
+> --- a/tests/qapi-schema/doc-interleaved-section.err
+> +++ b/tests/qapi-schema/doc-interleaved-section.err
+> @@ -1 +1 @@
+> -doc-interleaved-section.json:15:1: description of '@foobar:' follows a section
+> +doc-interleaved-section.json:14:1: description of '@foobar:' follows a section
+> diff --git a/tests/qapi-schema/doc-interleaved-section.json b/tests/qapi-schema/doc-interleaved-section.json
+> index eec01ed5650..bc0937b8601 100644
+> --- a/tests/qapi-schema/doc-interleaved-section.json
+> +++ b/tests/qapi-schema/doc-interleaved-section.json
+> @@ -2,8 +2,7 @@
 >  
 >  ##
->  # @guest-set-time:
+>  # @TestStruct:
 > -#
-> -# Set guest time.
-> +#     Set guest time.
+> -# body
+> +#     body
 >  #
->  # When a guest is paused or migrated to a file then loaded from that
->  # file, the guest OS has no idea that there was a big gap in the time.
-> @@ -415,14 +412,14 @@
->  
->  ##
->  # @guest-fsfreeze-freeze:
-> +#     Sync and freeze all freezable, local guest filesystems.  If this
-> +#     command succeeded, you may call `guest-fsfreeze-thaw` later to
-> +#     unfreeze.
->  #
-> -# Sync and freeze all freezable, local guest filesystems.  If this
-> -# command succeeded, you may call `guest-fsfreeze-thaw` later to
-> -# unfreeze.
-> -#
-> -# On error, all filesystems will be thawed.  If no filesystems are
-> -# frozen as a result of this call, then `guest-fsfreeze-status` will
-> -# remain "thawed" and calling `guest-fsfreeze-thaw` is not necessary.
-> +#     On error, all filesystems will be thawed.  If no filesystems are
-> +#     frozen as a result of this call, then `guest-fsfreeze-status`
-> +#     will remain "thawed" and calling `guest-fsfreeze-thaw` is not
-> +#     necessary.
-
-More of what I noted in earlier series:
-
-3. Review and improve doc comments where the intro talks about failure
-modes.
-
-Moving on.
-
->  #
->  # Returns: Number of file systems currently frozen.
->  #
-> @@ -438,11 +435,10 @@
->  
->  ##
->  # @guest-fsfreeze-freeze-list:
-> +#     Sync and freeze specified guest filesystems.  See also
-> +#     `guest-fsfreeze-freeze`.
->  #
-> -# Sync and freeze specified guest filesystems.  See also
-> -# `guest-fsfreeze-freeze`.
-> -#
-> -# On error, all filesystems will be thawed.
-> +#     On error, all filesystems will be thawed.
-
-Likewise.
-
->  #
->  # @mountpoints: an array of mountpoints of filesystems to be frozen.
->  #     If omitted, every mounted filesystem is frozen.  Invalid mount
-> @@ -528,8 +524,7 @@
->  
->  ##
->  # @guest-suspend-disk:
-> -#
-> -# Suspend guest to disk.
-> +#     Suspend guest to disk.
->  #
->  # This command attempts to suspend the guest using three strategies,
->  # in this order:
-> @@ -558,8 +553,7 @@
->  
->  ##
->  # @guest-suspend-ram:
-> -#
-> -# Suspend guest to ram.
-> +#     Suspend guest to ram.
->  #
->  # This command attempts to suspend the guest using three strategies,
->  # in this order:
-> @@ -595,8 +589,7 @@
->  
->  ##
->  # @guest-suspend-hybrid:
-> -#
-> -# Save guest state to disk and suspend to ram.
-> +#     Save guest state to disk and suspend to ram.
->  #
->  # This command attempts to suspend the guest by executing, in this
->  # order:
-> @@ -746,10 +739,9 @@
->  
->  ##
->  # @guest-get-vcpus:
-> +#     Retrieve the list of the guest's logical processors.
->  #
-> -# Retrieve the list of the guest's logical processors.
-> -#
-> -# This is a read-only operation.
-> +#     This is a read-only operation.
-
-If a command is called "get something", it's certainly not supposed to
-change something!
-
-Not this patch's problem, moving on...
-
->  #
->  # Returns: The list of all VCPUs the guest knows about.  Each VCPU is
->  #     put on the list exactly once, but their order is unspecified.
-> @@ -1106,10 +1098,9 @@
->  
->  ##
->  # @guest-get-memory-blocks:
-> +#     Retrieve the list of the guest's memory blocks.
->  #
-> -# Retrieve the list of the guest's memory blocks.
-> -#
-> -# This is a read-only operation.
-> +#     This is a read-only operation.
-
-Likewise.
-
->  #
->  # Returns: The list of all memory blocks the guest knows about.  Each
->  #     memory block is put on the list exactly once, but their order is
-> @@ -1346,12 +1337,12 @@
->  
->  ##
->  # @guest-get-host-name:
-> +#     Return a name for the machine.
->  #
-> -# Return a name for the machine.
-> -#
-> -# The returned name is not necessarily a fully-qualified domain name,
-> -# or even present in DNS or some other name service at all.  It need
-> -# not even be unique on your local network or site, but usually it is.
-> +#     The returned name is not necessarily a fully-qualified domain
-> +#     name, or even present in DNS or some other name service at all.
-> +#     It need not even be unique on your local network or site, but
-> +#     usually it is.
-
-This should perhaps be worked into Returns: ...  Not this patch's
-problem, moving on...
-
->  #
->  # Returns: the host name of the machine
->  #
+>  # @integer: foo
+>  #           blah
 
 
