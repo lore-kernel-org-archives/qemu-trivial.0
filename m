@@ -4,75 +4,75 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 917AEC98309
-	for <qemu-trivial@archiver.kernel.org>; Tue, 22 Sep 2026 20:58:33 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9D8BEC98302
+	for <qemu-trivial@archiver.kernel.org>; Wed, 23 Sep 2026 06:07:57 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x97Z0-00013J-6M; Tue, 22 Sep 2026 16:58:06 -0400
+	id 1x9G8y-0004g1-7R; Wed, 23 Sep 2026 02:07:48 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x97Xd-0000LF-RI
- for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 16:56:42 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x9G8x-0004fU-CF
+ for qemu-trivial@nongnu.org; Wed, 23 Sep 2026 02:07:47 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x97Xb-000474-Ji
- for qemu-trivial@nongnu.org; Tue, 22 Sep 2026 16:56:41 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x9G8v-0008Py-GR
+ for qemu-trivial@nongnu.org; Wed, 23 Sep 2026 02:07:47 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790110598;
+ s=mimecast20190719; t=1790143663;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=SVKoXCiUlqOAS/0KYnSHA7TIvXWU/E1ZDQu+rckw7oo=;
- b=ShNokQU1UcSFzg+xy4C5ALd8fLut8L6hpIHu29wvTsKbVgnHL4rZsUqNfpUCC1olO04iKJ
- fAF5eN6t7zg7BfkyRzf/2xCJRCRCQ5f4+SsAsM6S1EiewmccXb/t0V82Xl8pPar9Qsws/V
- 2BJdogxAX/625HVqHgTVnfstHOYuCKM=
-Received: from mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com
+ bh=Qc5Ksbd8VC+u/l7GdxEB+vQ8nL5ovASQUasaKRjx9tY=;
+ b=OAVvShHOB6RyIESvGWhmjkRxnP/O0nY1ESv2PR7fHr0pFlXo75JUhmObgjYs0efdCF2mdc
+ Xy/VpRdqqcBeXiDsf2iOeBR6lYwhD71wzKeR4WheyCt/w6gfm4PUjbsQxTmKp7DTteaoBp
+ /1X56bFVMAUfLHYBGHHUrUEuMlTjpLE=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
  (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-133-U2zqS24VMxqYKiZdIqknXA-1; Tue,
- 22 Sep 2026 16:56:34 -0400
-X-MC-Unique: U2zqS24VMxqYKiZdIqknXA-1
-X-Mimecast-MFC-AGG-ID: U2zqS24VMxqYKiZdIqknXA_1790110593
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-587-nBjYN0D_PCWG9eSwkysIJQ-1; Wed,
+ 23 Sep 2026 02:07:41 -0400
+X-MC-Unique: nBjYN0D_PCWG9eSwkysIJQ-1
+X-Mimecast-MFC-AGG-ID: nBjYN0D_PCWG9eSwkysIJQ_1790143660
 Received: from mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com
  (mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.12])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-01.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id DCB35195DE4F; Tue, 22 Sep 2026 20:56:32 +0000 (UTC)
-Received: from jsnow-thinkpadp16vgen1.westford.csb (unknown [10.22.88.125])
- by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTP
- id 94CE01956086; Tue, 22 Sep 2026 20:56:29 +0000 (UTC)
-From: John Snow <jsnow@redhat.com>
-To: qemu-devel@nongnu.org
-Cc: Laurent Vivier <laurent@vivier.eu>,
- Kostiantyn Kostiuk <kkostiuk@redhat.com>,
- "Michael S. Tsirkin" <mst@redhat.com>, Zhao Liu <zhao1.liu@intel.com>,
- Michael Roth <michael.roth@amd.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,
- =?UTF-8?q?Daniel=20P=2E=20Berrang=C3=A9?= <berrange@redhat.com>,
- Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org,
- =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
- Stefano Garzarella <sgarzare@redhat.com>,
- Kashyap Chamarthy <kchamart@redhat.com>, Eric Blake <eblake@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>, Markus Armbruster <armbru@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>, qemu-block@nongnu.org,
- Michael Tokarev <mjt@tls.msk.ru>, John Snow <jsnow@redhat.com>
-Subject: [PATCH v2 5/8] qapi: split intros at natural cutoff points for
- qga/qapi-schema.json
-Date: Tue, 22 Sep 2026 16:56:02 -0400
-Message-ID: <20260922205605.501602-6-jsnow@redhat.com>
-In-Reply-To: <20260922205605.501602-1-jsnow@redhat.com>
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 9CF331955DE1; Wed, 23 Sep 2026 06:07:39 +0000 (UTC)
+Received: from blackfin.pond.sub.org (unknown [10.44.22.5])
+ by mx-prod-int-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E599B1956041; Wed, 23 Sep 2026 06:07:38 +0000 (UTC)
+Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
+ id 7E5D821E6A04; Wed, 23 Sep 2026 08:07:36 +0200 (CEST)
+From: Markus Armbruster <armbru@redhat.com>
+To: John Snow <jsnow@redhat.com>
+Cc: qemu-devel@nongnu.org,  Laurent Vivier <laurent@vivier.eu>,  Kostiantyn
+ Kostiuk <kkostiuk@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
+ Zhao Liu <zhao1.liu@intel.com>,  Michael Roth <michael.roth@amd.com>,
+ Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,  Daniel P.
+ =?utf-8?Q?Berrang=C3=A9?=
+ <berrange@redhat.com>,  Jason Wang <jasowangio@gmail.com>,
+ qemu-trivial@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
+ <philmd@oss.qualcomm.com>,  Stefano Garzarella <sgarzare@redhat.com>,
+ Kashyap Chamarthy <kchamart@redhat.com>,  Eric Blake <eblake@redhat.com>,
+ Hanna Reitz <hreitz@redhat.com>,  Kevin Wolf <kwolf@redhat.com>,
+ qemu-block@nongnu.org,  Michael Tokarev <mjt@tls.msk.ru>
+Subject: Re: [PATCH v2 2/8] qapi: convert intro sections for unit tests
+In-Reply-To: <20260922205605.501602-3-jsnow@redhat.com> (John Snow's message
+ of "Tue, 22 Sep 2026 16:55:59 -0400")
 References: <20260922205605.501602-1-jsnow@redhat.com>
+ <20260922205605.501602-3-jsnow@redhat.com>
+Date: Wed, 23 Sep 2026 08:07:36 +0200
+Message-ID: <87ld8szejb.fsf@pond.sub.org>
+User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
 X-Scanned-By: MIMEDefang 3.0 on 10.30.177.12
-X-Mimecast-MFC-PROC-ID: Z_MT2Oy9K6_pNu-wJlOdkX8zxFisKnEPj4thhnyBbQQ_1790110593
+X-Mimecast-MFC-PROC-ID: lJM4oGefgac2_JwPqDglN63kNqTvXtH3fN78gCsifRQ_1790143660
 X-Mimecast-Originator: redhat.com
-Content-Transfer-Encoding: 8bit
-content-type: text/plain; charset="US-ASCII"; x-default=true
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
+Content-Type: text/plain
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
 X-Spam_score_int: 12
 X-Spam_score: 1.2
@@ -96,56 +96,123 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Note that these intro conversions introduce a new intro/details split
-point. This new split point may or may not change the rendered output
-depending on if any documentation is auto-generated and inserted for
-this definition.
+John Snow <jsnow@redhat.com> writes:
 
-This has tangible effects on how @guest-fsfreeze-status documentation
-is rendered, while the other two appear unchanged.
+> Signed-off-by: John Snow <jsnow@redhat.com>
+> ---
+>  tests/qapi-schema/doc-good.json                |  8 ++++----
+>  tests/qapi-schema/doc-good.out                 | 15 ++++++---------
+>  tests/qapi-schema/doc-interleaved-section.err  |  2 +-
+>  tests/qapi-schema/doc-interleaved-section.json |  3 +--
+>  4 files changed, 12 insertions(+), 16 deletions(-)
+>
+> diff --git a/tests/qapi-schema/doc-good.json b/tests/qapi-schema/doc-good.json
+> index fac13425b72..d9a84ccd729 100644
+> --- a/tests/qapi-schema/doc-good.json
+> +++ b/tests/qapi-schema/doc-good.json
+> @@ -94,10 +94,9 @@
+>  
+>  ##
+>  # @Variant1:
+> +#     A paragraph
+>  #
+> -# A paragraph
+> -#
+> -# Another paragraph
+> +#     Another paragraph
+>  #
+>  # @var1 is undocumented
+>  #
 
-Signed-off-by: John Snow <jsnow@redhat.com>
----
- qga/qapi-schema.json | 11 ++++-------
- 1 file changed, 4 insertions(+), 7 deletions(-)
+This creates a split.  doc-good.out and doc-good.txt need an update.
+You got the former and missed the latter (appended) Happy to fix up in
+my tree.
 
-diff --git a/qga/qapi-schema.json b/qga/qapi-schema.json
-index b592b14a011..19b0958b84e 100644
---- a/qga/qapi-schema.json
-+++ b/qga/qapi-schema.json
-@@ -401,8 +401,7 @@
+> @@ -206,7 +205,8 @@
+>  
+>  ##
+>  # @cmd-boxed:
+> -# If you're bored enough to read this, go see a video of boxed cats
+> +#     If you're bored enough to read this, go see a video of boxed
+> +#     cats
+>  #
+>  # Features:
+>  # @cmd-feat1: a feature
+> diff --git a/tests/qapi-schema/doc-good.out b/tests/qapi-schema/doc-good.out
+> index 371dd25ffc7..eaaf119dea8 100644
+> --- a/tests/qapi-schema/doc-good.out
+> +++ b/tests/qapi-schema/doc-good.out
+> @@ -126,15 +126,13 @@ doc symbol=Base
+>   minimally indented
+>  doc symbol=Variant1
+>      Intro
+> +    A paragraph
+>  
+> -    Plain
+> -A paragraph
+> -
+> -Another paragraph
+> -
+> -@var1 is undocumented
+> +    Another paragraph
+>      Member=var1
+>  
+> +    Plain
+> +@var1 is undocumented
+>      Feature=variant1-feat
+>  a feature
+>      Feature=member-feat
+> @@ -213,9 +211,8 @@ Note::
+>  2.10
+>  doc symbol=cmd-boxed
+>      Intro
+> -
+> -    Plain
+> -If you're bored enough to read this, go see a video of boxed cats
+> +    If you're bored enough to read this, go see a video of boxed
+> +    cats
+>      Feature=cmd-feat1
+>  a feature
+>      Feature=cmd-feat2
+> diff --git a/tests/qapi-schema/doc-interleaved-section.err b/tests/qapi-schema/doc-interleaved-section.err
+> index e5d1ef54c1b..85f01fa57a7 100644
+> --- a/tests/qapi-schema/doc-interleaved-section.err
+> +++ b/tests/qapi-schema/doc-interleaved-section.err
+> @@ -1 +1 @@
+> -doc-interleaved-section.json:15:1: description of '@foobar:' follows a section
+> +doc-interleaved-section.json:14:1: description of '@foobar:' follows a section
+> diff --git a/tests/qapi-schema/doc-interleaved-section.json b/tests/qapi-schema/doc-interleaved-section.json
+> index eec01ed5650..bc0937b8601 100644
+> --- a/tests/qapi-schema/doc-interleaved-section.json
+> +++ b/tests/qapi-schema/doc-interleaved-section.json
+> @@ -2,8 +2,7 @@
+>  
+>  ##
+>  # @TestStruct:
+> -#
+> -# body
+> +#     body
+>  #
+>  # @integer: foo
+>  #           blah
+
+diff --git a/tests/qapi-schema/doc-good.txt b/tests/qapi-schema/doc-good.txt
+index 74b73681d3..ba089a7f94 100644
+--- a/tests/qapi-schema/doc-good.txt
++++ b/tests/qapi-schema/doc-good.txt
+@@ -65,11 +65,11 @@ Object Variant1
  
- ##
- # @guest-fsfreeze-status:
--#
--# Get guest fsfreeze state.
-+#     Get guest fsfreeze state.
- #
- # .. note:: This may fail to properly report the current state as a
- #    result of some other guest processes having issued an fs
-@@ -925,9 +924,8 @@
+    Another paragraph
  
- ##
- # @GuestNVMeSmart:
--#
--# NVMe smart information, based on NVMe specification, section
--# <SMART / Health Information (Log Identifier 02h)>
-+#     NVMe smart information, based on NVMe specification, section
-+#     <SMART / Health Information (Log Identifier 02h)>
- #
- # TODO: document members briefly
- #
-@@ -1816,8 +1814,7 @@
+-   "var1" is undocumented
+-
+    Members:
+       * **var1** ("string") -- Not documented
  
- ##
- # @guest-get-load:
--#
--# Retrieve CPU process load information
-+#     Retrieve CPU process load information
- #
- # .. note:: Windows does not have load average API, so QGA emulates it
- #    by calculating the average CPU usage in the last 1, 5, 15 minutes
--- 
-2.55.0
++   "var1" is undocumented
++
+    Features:
+       * **variant1-feat** -- a feature
+ 
 
 
