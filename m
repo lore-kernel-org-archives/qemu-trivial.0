@@ -4,78 +4,77 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id E6E81C9830B
-	for <qemu-trivial@archiver.kernel.org>; Wed, 23 Sep 2026 17:19:20 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49031C98302
+	for <qemu-trivial@archiver.kernel.org>; Wed, 23 Sep 2026 17:21:08 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x9QcE-0005Tj-GM; Wed, 23 Sep 2026 13:18:43 -0400
+	id 1x9Qdy-0000yX-0f; Wed, 23 Sep 2026 13:20:38 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x9Qbc-0004yC-GK
- for qemu-trivial@nongnu.org; Wed, 23 Sep 2026 13:18:06 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x9QdU-0000Vw-H8
+ for qemu-trivial@nongnu.org; Wed, 23 Sep 2026 13:20:02 -0400
+Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x9Qba-00027n-PB
- for qemu-trivial@nongnu.org; Wed, 23 Sep 2026 13:18:04 -0400
+ (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x9QdT-0002Sn-53
+ for qemu-trivial@nongnu.org; Wed, 23 Sep 2026 13:20:00 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790183878;
+ s=mimecast20190719; t=1790183997;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=NnVGbdJFRNsIzpT51J8U87RxPVZBnAnsPpNNjUAZhOg=;
- b=Aj7MS23Bt2Pqp/G4Uw0la95N2UVi3tdEwBmrK20C4ht168zBwnbbPEPKL/KPJ7b5fcDoXX
- PxvDpM3Np2wncttzxu7PvvQR9wxXnoIYKNooMvBDzQMtkfJE/WS2GP1Ch36PGvtTToOkXv
- EKO/RU6LGJaISppXHBKZ+GGoqNMoX8Q=
-Received: from mail-yx1-f70.google.com (mail-yx1-f70.google.com
- [74.125.224.70]) by relay.mimecast.com with ESMTP with STARTTLS
+ bh=DqCoiyetJCiNXCm1ENnKql5Uq9D63xlELsxdyd41qe8=;
+ b=LfGowUvSiXjM5CtlxNfE6h3yboo3i2BrbZUisiEL1XD/Shxr+A+pO14WfmRp5aujTXkbOq
+ SR+otyT2tkz3KtlTpSt2l670oSvBvxnnvWmpLWNgZa2+DrHW5gzhdw8X9q6FihqWTbO4WU
+ WoA+X3kwnKCzVOxrosdhcphXZHXPliM=
+Received: from mail-yw1-f200.google.com (mail-yw1-f200.google.com
+ [209.85.128.200]) by relay.mimecast.com with ESMTP with STARTTLS
  (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-263-_H5Bt7h5NVOs2fuquITCTQ-1; Wed, 23 Sep 2026 13:17:57 -0400
-X-MC-Unique: _H5Bt7h5NVOs2fuquITCTQ-1
-X-Mimecast-MFC-AGG-ID: _H5Bt7h5NVOs2fuquITCTQ_1790183877
-Received: by mail-yx1-f70.google.com with SMTP id
- 956f58d0204a3-66cdb701595so1408593d50.1
- for <qemu-trivial@nongnu.org>; Wed, 23 Sep 2026 10:17:57 -0700 (PDT)
+ us-mta-352-wv1bv9LBMiqehb-n2ah-3A-1; Wed, 23 Sep 2026 13:19:56 -0400
+X-MC-Unique: wv1bv9LBMiqehb-n2ah-3A-1
+X-Mimecast-MFC-AGG-ID: wv1bv9LBMiqehb-n2ah-3A_1790183996
+Received: by mail-yw1-f200.google.com with SMTP id
+ 00721157ae682-88e06764219so24873917b3.1
+ for <qemu-trivial@nongnu.org>; Wed, 23 Sep 2026 10:19:56 -0700 (PDT)
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790183877; x=1790788677;
+ d=1e100.net; s=20260707; t=1790183996; x=1790788796;
  h=content-transfer-encoding:content-type:cc:to:subject:message-id
  :date:from:in-reply-to:references:mime-version:x-gm-gg
  :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
  :content-type;
- bh=NnVGbdJFRNsIzpT51J8U87RxPVZBnAnsPpNNjUAZhOg=;
- b=ALpKdcuNjrknSfoO0Bj39jKI3oeQpU8I0QmuFxERO/9dlGQ4oCMDdlREMUxin3jmBd
- ZckYTJmXdV9yEbXv81VMxLHArawwx2W/uF9fhg4GkkZLRb8beE2PDgTqr+nclYXXOQVl
- Pp8SIqZsL4EcjROFD+bdwfzqrpp2LXPOIgZ9SC/Zy5IEIK4vtTB31+Qo9YXTzyZLGd4l
- 2w3e0YzJ4Yveki2ywmlbU2DXm8SG8yxndmbBG04kxf85plwlkoXaLu5p9lumkN+0WdGD
- iowYmr9/a6ue0JSyzvqHnPr1F2Ih2uSglHgRybJxgiVOMBpIOT8pIg0s7w83sijGs6EI
- kpHw==
+ bh=DqCoiyetJCiNXCm1ENnKql5Uq9D63xlELsxdyd41qe8=;
+ b=d/B4gXePiUYUX5paa09jFU1daXmvUug8rX2xU/GVuW8p7yIupTNWScK2WXywcful7P
+ o+TFhOypFCGwAARO8IBl6Zcb4pAu4edEcj6TY4D1aOHjTdMNdJ7fn8JOwPT0MFpM710y
+ 6xpzLFZT2lPDbBByMLe0vEhqd4k9sg0yO/tILi4tvMGaDcnWRb6dt5SuN6Qc8uNMoaaM
+ T8u8om1jZf1yWTaV0bZIpvV/yShampZrknz3WRd44yd0gKI2wHDuWB2K8udaiEetOF7U
+ kelT1R3wMp+NCKqlClOQye1a6Dv2HzS/UpR+2HrCVVTbbBrm1JOF40r/hNqtvX1Mbbok
+ 2ALA==
 X-Forwarded-Encrypted: i=1;
- AKwUvBx2wbYiQ1BfLZzwOKBKs2KbxbLOn//Vs5Q7ydqWMESghNIpDhhg+XGzvZhQjBZqsp6hkgFG2ezhqV4xJoI=@nongnu.org
-X-Gm-Message-State: AFuF++kAYl3etxjDYBvL5LzQ1D9J6mHA9USzbyareTNZzStpI2GQE9AB
- XO6nT/j0pm8Wh0nD9uGS3ivsuAAahNaLs++9MLnlgIrvTsEvaJzg9PL8z3T2V4d+t+5Ep7AoB0u
- MRTxWstOa09sfMFqApl3LiN0FdYxU5zU07+mztof6GOHWGyVco3S3lQ6WrNyPVUz1YFTq87JPKp
- d8UAPJLTWxs40t4FZsJUWodd20E4/mOA8oqg==
-X-Gm-Gg: AYBFou0gCRntVFkbfJTYnXcxq1jEA+cHo+zDxiadpNJwSBe9mXxKZGx1V913TcwOLPV
- S48DIYVWWNAj6V6bhcHxg4F2bzAZ1IE1597ErjR0v3wBNrwtNOxlzFCrFMItzzBLZ2yNPPgRSHK
- ePfr263xK73P7NxePZI3NfshL7x33XmBEwCkNeziLDKrcCaKH9XaZxGgtXVtBmT7GFYZLUKn5DM
- g4qqAdM8l0GSGtw
-X-Received: by 2002:a53:d88c:0:b0:671:3b1b:997d with SMTP id
- 956f58d0204a3-672d591ad75mr1362626d50.88.1790183876655; 
- Wed, 23 Sep 2026 10:17:56 -0700 (PDT)
-X-Received: by 2002:a53:d88c:0:b0:671:3b1b:997d with SMTP id
- 956f58d0204a3-672d591ad75mr1362615d50.88.1790183876201; Wed, 23 Sep 2026
- 10:17:56 -0700 (PDT)
+ AKwUvBwScXxXFase/UiAGNCdurXRQ42LMN6VUOKaws5TlHhe/saepPUXjeZjg/IVQJT0uqlmUkyxjHqqPIUozjo=@nongnu.org
+X-Gm-Message-State: AFuF++kNZAwdV7NvUQC3+a5C4MpMkglR0GxiODurWYjHZiBDZE5H/G/S
+ Fho/OYWsskshc3k83/qtDkQ8oVJO1k/YUvNfqd2+0lgIsfKsosBMGJDtLN54zilZI5nlZInrjXi
+ Q18OedhwZ5LVyIROAdJRXOjtTq8d5SrwPvYKVIowPQ5UC+pBiT4pOUWgo1qo9Jk2QopPEqzl7P2
+ stuQqsOwx4fKW1sHjhUKSvRAchiOPC1dg4Uw==
+X-Gm-Gg: AYBFou3SWvlqWxm+vyEakDfUiQ4zxUgdHmQcpBAzfWIP9F+tWeuuT1EiG7H21kQNSaS
+ YcaH6OdJ06V1K414FK6eKJMNyjdKDl+0LXITUKa9L4KpQPv0yU7esBYTjlJwg+sueWK4HdQp2eZ
+ 3jF8EnsktgIV4h3E0H+fbXpSJVjdfqP54CIPETdstHi8Rf3fXD3DlsokflYUQfx1MW0fkC4s0yR
+ KtBc/1JtgvGfvyF
+X-Received: by 2002:a05:690e:4553:10b0:672:99e1:11e0 with SMTP id
+ 956f58d0204a3-672d591dbaemr1140885d50.125.1790183996030; 
+ Wed, 23 Sep 2026 10:19:56 -0700 (PDT)
+X-Received: by 2002:a05:690e:4553:10b0:672:99e1:11e0 with SMTP id
+ 956f58d0204a3-672d591dbaemr1140866d50.125.1790183995662; Wed, 23 Sep 2026
+ 10:19:55 -0700 (PDT)
 MIME-Version: 1.0
 References: <20260922205605.501602-1-jsnow@redhat.com>
- <20260922205605.501602-3-jsnow@redhat.com>
- <87ld8szejb.fsf@pond.sub.org>
-In-Reply-To: <87ld8szejb.fsf@pond.sub.org>
+ <8733v0zcsm.fsf@pond.sub.org> <87jyocxy0p.fsf@pond.sub.org>
+In-Reply-To: <87jyocxy0p.fsf@pond.sub.org>
 From: John Snow <jsnow@redhat.com>
-Date: Wed, 23 Sep 2026 13:17:45 -0400
-X-Gm-Features: AcwNN1WDT9Q9xOW5TYsqq5_ZiWp72fYt1__M5_1gmx4Yldz5hvx04PYHYAKMq3Q
-Message-ID: <CAFn=p-ZKVsdkNbuxqnzhqUn4vSkJw1J9QqMB13LdjoMPYo9PJA@mail.gmail.com>
-Subject: Re: [PATCH v2 2/8] qapi: convert intro sections for unit tests
+Date: Wed, 23 Sep 2026 13:19:44 -0400
+X-Gm-Features: AclHuK_ze6zfAffM4QDcVLsXj-18mpNU7S_ok6e6QdEQjIS1oEE6AWyizU-z2qE
+Message-ID: <CAFn=p-bjeCtgY0Jr47P0czwKBeB6xv6YCR_S8PU65wH59hdrtg@mail.gmail.com>
+Subject: Re: [PATCH v2 0/8] qapi: convert intros for qga, firmware, etc
 To: Markus Armbruster <armbru@redhat.com>
 Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>, 
  Kostiantyn Kostiuk <kkostiuk@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
@@ -90,20 +89,19 @@ Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>,
  Kevin Wolf <kwolf@redhat.com>, 
  qemu-block@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
 X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: jStTZ6QaUUsHJmcdt5hCaMUk9egEUuIrdf7EnKfNtGQ_1790183877
+X-Mimecast-MFC-PROC-ID: 5VEhqQqmmNqeFd-KHAlrYMG2LpwYsi6EIzB-8Ju02vE_1790183996
 X-Mimecast-Originator: redhat.com
 Content-Type: text/plain; charset="UTF-8"
 Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=jsnow@redhat.com;
+Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -7
-X-Spam_score: -0.8
-X-Spam_bar: /
-X-Spam_report: (-0.8 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_BL_SPAMCOP_NET=1.347, RCVD_IN_DNSWL_NONE=-0.0001,
- RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=no autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -119,138 +117,18 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Wed, Sep 23, 2026 at 2:07=E2=80=AFAM Markus Armbruster <armbru@redhat.co=
+On Wed, Sep 23, 2026 at 2:49=E2=80=AFAM Markus Armbruster <armbru@redhat.co=
 m> wrote:
 >
-> John Snow <jsnow@redhat.com> writes:
+> Markus Armbruster <armbru@redhat.com> writes:
 >
-> > Signed-off-by: John Snow <jsnow@redhat.com>
-> > ---
-> >  tests/qapi-schema/doc-good.json                |  8 ++++----
-> >  tests/qapi-schema/doc-good.out                 | 15 ++++++---------
-> >  tests/qapi-schema/doc-interleaved-section.err  |  2 +-
-> >  tests/qapi-schema/doc-interleaved-section.json |  3 +--
-> >  4 files changed, 12 insertions(+), 16 deletions(-)
-> >
-> > diff --git a/tests/qapi-schema/doc-good.json b/tests/qapi-schema/doc-go=
-od.json
-> > index fac13425b72..d9a84ccd729 100644
-> > --- a/tests/qapi-schema/doc-good.json
-> > +++ b/tests/qapi-schema/doc-good.json
-> > @@ -94,10 +94,9 @@
-> >
-> >  ##
-> >  # @Variant1:
-> > +#     A paragraph
-> >  #
-> > -# A paragraph
-> > -#
-> > -# Another paragraph
-> > +#     Another paragraph
-> >  #
-> >  # @var1 is undocumented
-> >  #
+> > Series
+> > Reviewed-by: Markus Armbruster <armbru@redhat.com>
 >
-> This creates a split.  doc-good.out and doc-good.txt need an update.
-> You got the former and missed the latter (appended) Happy to fix up in
-> my tree.
+> With the update to tests/qapi-schema/doc-good.txt squashed into PATCH 2,
+> of course.  I'll also make the commit message tweak for PATCH 5 if you
+> like it.
 
-Yes, please. I think I updated the wrong file (build system copy and
-not the source file) and didn't notice.
-
->
-> > @@ -206,7 +205,8 @@
-> >
-> >  ##
-> >  # @cmd-boxed:
-> > -# If you're bored enough to read this, go see a video of boxed cats
-> > +#     If you're bored enough to read this, go see a video of boxed
-> > +#     cats
-> >  #
-> >  # Features:
-> >  # @cmd-feat1: a feature
-> > diff --git a/tests/qapi-schema/doc-good.out b/tests/qapi-schema/doc-goo=
-d.out
-> > index 371dd25ffc7..eaaf119dea8 100644
-> > --- a/tests/qapi-schema/doc-good.out
-> > +++ b/tests/qapi-schema/doc-good.out
-> > @@ -126,15 +126,13 @@ doc symbol=3DBase
-> >   minimally indented
-> >  doc symbol=3DVariant1
-> >      Intro
-> > +    A paragraph
-> >
-> > -    Plain
-> > -A paragraph
-> > -
-> > -Another paragraph
-> > -
-> > -@var1 is undocumented
-> > +    Another paragraph
-> >      Member=3Dvar1
-> >
-> > +    Plain
-> > +@var1 is undocumented
-> >      Feature=3Dvariant1-feat
-> >  a feature
-> >      Feature=3Dmember-feat
-> > @@ -213,9 +211,8 @@ Note::
-> >  2.10
-> >  doc symbol=3Dcmd-boxed
-> >      Intro
-> > -
-> > -    Plain
-> > -If you're bored enough to read this, go see a video of boxed cats
-> > +    If you're bored enough to read this, go see a video of boxed
-> > +    cats
-> >      Feature=3Dcmd-feat1
-> >  a feature
-> >      Feature=3Dcmd-feat2
-> > diff --git a/tests/qapi-schema/doc-interleaved-section.err b/tests/qapi=
--schema/doc-interleaved-section.err
-> > index e5d1ef54c1b..85f01fa57a7 100644
-> > --- a/tests/qapi-schema/doc-interleaved-section.err
-> > +++ b/tests/qapi-schema/doc-interleaved-section.err
-> > @@ -1 +1 @@
-> > -doc-interleaved-section.json:15:1: description of '@foobar:' follows a=
- section
-> > +doc-interleaved-section.json:14:1: description of '@foobar:' follows a=
- section
-> > diff --git a/tests/qapi-schema/doc-interleaved-section.json b/tests/qap=
-i-schema/doc-interleaved-section.json
-> > index eec01ed5650..bc0937b8601 100644
-> > --- a/tests/qapi-schema/doc-interleaved-section.json
-> > +++ b/tests/qapi-schema/doc-interleaved-section.json
-> > @@ -2,8 +2,7 @@
-> >
-> >  ##
-> >  # @TestStruct:
-> > -#
-> > -# body
-> > +#     body
-> >  #
-> >  # @integer: foo
-> >  #           blah
->
-> diff --git a/tests/qapi-schema/doc-good.txt b/tests/qapi-schema/doc-good.=
-txt
-> index 74b73681d3..ba089a7f94 100644
-> --- a/tests/qapi-schema/doc-good.txt
-> +++ b/tests/qapi-schema/doc-good.txt
-> @@ -65,11 +65,11 @@ Object Variant1
->
->     Another paragraph
->
-> -   "var1" is undocumented
-> -
->     Members:
->        * **var1** ("string") -- Not documented
->
-> +   "var1" is undocumented
-> +
->     Features:
->        * **variant1-feat** -- a feature
->
->
+Yes, please!
 
 
