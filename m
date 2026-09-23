@@ -4,84 +4,87 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 28667C98302
-	for <qemu-trivial@archiver.kernel.org>; Wed, 23 Sep 2026 06:26:37 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 8BF31C982EA
+	for <qemu-trivial@archiver.kernel.org>; Wed, 23 Sep 2026 06:33:17 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x9GQX-0000wv-Gr; Wed, 23 Sep 2026 02:25:57 -0400
+	id 1x9GXO-000373-OK; Wed, 23 Sep 2026 02:33:05 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x9GQW-0000wO-5S
- for qemu-trivial@nongnu.org; Wed, 23 Sep 2026 02:25:56 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x9GXH-00034b-1q
+ for qemu-trivial@nongnu.org; Wed, 23 Sep 2026 02:32:56 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x9GQT-0001XK-JT
- for qemu-trivial@nongnu.org; Wed, 23 Sep 2026 02:25:55 -0400
+ (Exim 4.90_1) (envelope-from <armbru@redhat.com>) id 1x9GXF-00029V-87
+ for qemu-trivial@nongnu.org; Wed, 23 Sep 2026 02:32:54 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790144751;
+ s=mimecast20190719; t=1790145172;
  h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
  to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=H6+F4+jUQoClXz48M732OtJ/zHWlIztkbGrIr7jsg7Q=;
- b=YppGB4SxZsNfazm9jJnulIlJVt7zX2j8jrjn+ybrILyetjExs5I5GUtT0gZSdobDBEdBi6
- CIejcNZkBctz2ZIC//nradv1MXdlG6h3kIkzPao49KTEh/rHfzVmf8pKCibsLDo4/lRqNx
- I+qK+f5AjATkadxvvYpz1xwXqN/Nz/o=
-Received: from mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com
- (ec2-35-165-154-97.us-west-2.compute.amazonaws.com [35.165.154.97]) by
+ bh=NG4TDSpOCMrz5fwUtQd8tIoZ5KegNaWGwNVz00nahFI=;
+ b=TG7TEZ1rI9VvD3dtEFzyke5yhseQ9QP9BmDKReoyo1CeC9sKEPHiD31vUs4cly9fEBlh3E
+ 2gjGJOg5o3gCIv2nvm3FHrcbvXg1AxMN7QImt6sgP+EuSPQxU+aC/qNvGE/vA6IhTU7oLQ
+ seTBeZ0DZW7FyBqJG5atvnS/y4ilS/Q=
+Received: from mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
  relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
- cipher=TLS_AES_256_GCM_SHA384) id us-mta-461-ajqx_LPgN1GDDogCIJ-BHQ-1; Wed,
- 23 Sep 2026 02:25:45 -0400
-X-MC-Unique: ajqx_LPgN1GDDogCIJ-BHQ-1
-X-Mimecast-MFC-AGG-ID: ajqx_LPgN1GDDogCIJ-BHQ_1790144744
-Received: from mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com
- (mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.93])
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-231-C4Op_Gt2PXeH7i58oiLwEw-1; Wed,
+ 23 Sep 2026 02:32:48 -0400
+X-MC-Unique: C4Op_Gt2PXeH7i58oiLwEw-1
+X-Mimecast-MFC-AGG-ID: C4Op_Gt2PXeH7i58oiLwEw_1790145167
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
  (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
  key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
  (No client certificate requested)
- by mx-prod-mc-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 2114A180130E; Wed, 23 Sep 2026 06:25:44 +0000 (UTC)
+ by mx-prod-mc-05.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id E9CBD19772F7; Wed, 23 Sep 2026 06:32:46 +0000 (UTC)
 Received: from blackfin.pond.sub.org (unknown [10.44.22.5])
- by mx-prod-int-06.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
- id 20B7318002B7; Wed, 23 Sep 2026 06:25:43 +0000 (UTC)
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 5AFBE18005B8; Wed, 23 Sep 2026 06:32:46 +0000 (UTC)
 Received: by blackfin.pond.sub.org (Postfix, from userid 1000)
- id AACC721E6A04; Wed, 23 Sep 2026 08:25:40 +0200 (CEST)
+ id E4E6921E6A04; Wed, 23 Sep 2026 08:32:43 +0200 (CEST)
 From: Markus Armbruster <armbru@redhat.com>
 To: John Snow <jsnow@redhat.com>
-Cc: qemu-devel@nongnu.org,  Laurent Vivier <laurent@vivier.eu>,  Kostiantyn
- Kostiuk <kkostiuk@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>,  Michael Roth <michael.roth@amd.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>,  Daniel P.
- =?utf-8?Q?Berrang=C3=A9?=
- <berrange@redhat.com>,  Jason Wang <jasowangio@gmail.com>,
- qemu-trivial@nongnu.org,  Philippe =?utf-8?Q?Mathieu-Daud=C3=A9?=
- <philmd@oss.qualcomm.com>,  Stefano Garzarella <sgarzare@redhat.com>,
- Kashyap Chamarthy <kchamart@redhat.com>,  Eric Blake <eblake@redhat.com>,
- Hanna Reitz <hreitz@redhat.com>,  Kevin Wolf <kwolf@redhat.com>,
- qemu-block@nongnu.org,  Michael Tokarev <mjt@tls.msk.ru>
-Subject: Re: [PATCH v2 5/8] qapi: split intros at natural cutoff points for
- qga/qapi-schema.json
-In-Reply-To: <20260922205605.501602-6-jsnow@redhat.com> (John Snow's message
- of "Tue, 22 Sep 2026 16:56:02 -0400")
-References: <20260922205605.501602-1-jsnow@redhat.com>
- <20260922205605.501602-6-jsnow@redhat.com>
-Date: Wed, 23 Sep 2026 08:25:40 +0200
-Message-ID: <87h5jgzdp7.fsf@pond.sub.org>
+Cc: qemu-devel@nongnu.org,  Michael Roth <michael.roth@amd.com>,  Daniel P.
+ =?utf-8?Q?Berrang=C3=A9?= <berrange@redhat.com>,  Kashyap Chamarthy
+ <kchamart@redhat.com>,
+ Kevin Wolf <kwolf@redhat.com>,  Michael Tokarev <mjt@tls.msk.ru>,  Hanna
+ Reitz <hreitz@redhat.com>,  Stefano Garzarella <sgarzare@redhat.com>,
+ Jason Wang <jasowangio@gmail.com>,  Zhao Liu <zhao1.liu@intel.com>,
+ Kostiantyn Kostiuk <kkostiuk@redhat.com>,  Philippe =?utf-8?Q?Mathieu-Da?=
+ =?utf-8?Q?ud=C3=A9?= <philmd@oss.qualcomm.com>,  qemu-block@nongnu.org,
+ qemu-trivial@nongnu.org,  Laurent Vivier <laurent@vivier.eu>,  Eric Blake
+ <eblake@redhat.com>,  "Michael S. Tsirkin" <mst@redhat.com>,  Pierrick
+ Bouvier <pierrick.bouvier@oss.qualcomm.com>
+Subject: Re: [PATCH 9/9] tests/qapi: generate output in source order
+In-Reply-To: <CAFn=p-bhYcWQq8qxi-STh4wDwvNigKWYpZ2Ac+apU27s-89c0g@mail.gmail.com>
+ (John Snow's message of "Tue, 22 Sep 2026 13:46:05 -0400")
+References: <20260921205147.1857168-1-jsnow@redhat.com>
+ <20260921205147.1857168-10-jsnow@redhat.com>
+ <875wzx2ovl.fsf@pond.sub.org>
+ <CAFn=p-bhYcWQq8qxi-STh4wDwvNigKWYpZ2Ac+apU27s-89c0g@mail.gmail.com>
+Date: Wed, 23 Sep 2026 08:32:43 +0200
+Message-ID: <87cxu4zddg.fsf@pond.sub.org>
 User-Agent: Gnus/5.13 (Gnus v5.13)
 MIME-Version: 1.0
-X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.93
-X-Mimecast-MFC-PROC-ID: prBJ9DdS3qOCvMVhLVfwZt1jrJeLNA3IWqAqElehhmk_1790144744
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: PTKyga0u-QaU5jnZMOEeU6_-8CiigA_1x_SNMz4a_HI_1790145167
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
 Received-SPF: pass client-ip=170.10.129.124; envelope-from=armbru@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
+X-Spam_score_int: 12
+X-Spam_score: 1.2
+X-Spam_bar: +
+X-Spam_report: (1.2 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H2=0.001, RCVD_IN_SBL_CSS=3.335,
+ SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -99,21 +102,29 @@ Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
 John Snow <jsnow@redhat.com> writes:
 
-> Note that these intro conversions introduce a new intro/details split
-> point. This new split point may or may not change the rendered output
-> depending on if any documentation is auto-generated and inserted for
-> this definition.
+> On Tue, Sep 22, 2026 at 1:10=E2=80=AFPM Markus Armbruster <armbru@redhat.=
+com> wrote:
+>>
+>> John Snow <jsnow@redhat.com> writes:
+>>
+>> > Rewrite the test doc generator to produce output in source order,
+>> > instead of arbitrarily.
+>>
+>> Really?  As far as I can tell, the patch changes format, but not order.
+>>
+>> Dig, dig, ...  you already switched it to source order in commit
+>> 9606414d46 (tests/qapi: generate output in source order, 2026-06-11).
 >
-> This has tangible effects on how @guest-fsfreeze-status documentation
-> is rendered, while the other two appear unchanged.
+> Ah, funny! This is probably the leftover bits we didn't agree on at
+> the time and I didn't notice that this patch became anemic. Well, this
+> is just a preference patch now and not really strictly necessary. I
+> like seeing the "section=3D" text because it's a clue for me as I read
+> the text, but it's not really important, I'll scrap it unless you also
+> like the formatting change.
 
-Doesn't say how it changes, and it's not visible in the patch.  Suggest
+Let's stay focused on finishing the syntax conversion.  I'm willing to
+review it later.
 
-  How @guest-fsfreeze-status documentation is rendered improves
-  slightly: "Note:" moves from above "Return" to below.  The other
-  conversions don't change rendered documentation.
-
->
-> Signed-off-by: John Snow <jsnow@redhat.com>
+>> > Signed-off-by: John Snow <jsnow@redhat.com>
 
 
