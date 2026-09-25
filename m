@@ -4,105 +4,48 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 49031C98302
-	for <qemu-trivial@archiver.kernel.org>; Wed, 23 Sep 2026 17:21:08 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 9B36AC9830D
+	for <qemu-trivial@archiver.kernel.org>; Fri, 25 Sep 2026 11:55:46 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1x9Qdy-0000yX-0f; Wed, 23 Sep 2026 13:20:38 -0400
+	id 1xA4Wc-00089P-Vd; Fri, 25 Sep 2026 07:55:35 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x9QdU-0000Vw-H8
- for qemu-trivial@nongnu.org; Wed, 23 Sep 2026 13:20:02 -0400
-Received: from us-smtp-delivery-124.mimecast.com ([170.10.133.124])
+ (Exim 4.90_1) (envelope-from <logic@deltaq.org>)
+ id 1xA2qB-0006mO-Jh; Fri, 25 Sep 2026 06:07:39 -0400
+Received: from pmg-auth-smtp2.teksavvy.com ([76.10.175.140])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <jsnow@redhat.com>) id 1x9QdT-0002Sn-53
- for qemu-trivial@nongnu.org; Wed, 23 Sep 2026 13:20:00 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1790183997;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
- content-transfer-encoding:content-transfer-encoding:
- in-reply-to:in-reply-to:references:references;
- bh=DqCoiyetJCiNXCm1ENnKql5Uq9D63xlELsxdyd41qe8=;
- b=LfGowUvSiXjM5CtlxNfE6h3yboo3i2BrbZUisiEL1XD/Shxr+A+pO14WfmRp5aujTXkbOq
- SR+otyT2tkz3KtlTpSt2l670oSvBvxnnvWmpLWNgZa2+DrHW5gzhdw8X9q6FihqWTbO4WU
- WoA+X3kwnKCzVOxrosdhcphXZHXPliM=
-Received: from mail-yw1-f200.google.com (mail-yw1-f200.google.com
- [209.85.128.200]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-352-wv1bv9LBMiqehb-n2ah-3A-1; Wed, 23 Sep 2026 13:19:56 -0400
-X-MC-Unique: wv1bv9LBMiqehb-n2ah-3A-1
-X-Mimecast-MFC-AGG-ID: wv1bv9LBMiqehb-n2ah-3A_1790183996
-Received: by mail-yw1-f200.google.com with SMTP id
- 00721157ae682-88e06764219so24873917b3.1
- for <qemu-trivial@nongnu.org>; Wed, 23 Sep 2026 10:19:56 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1790183996; x=1790788796;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=DqCoiyetJCiNXCm1ENnKql5Uq9D63xlELsxdyd41qe8=;
- b=d/B4gXePiUYUX5paa09jFU1daXmvUug8rX2xU/GVuW8p7yIupTNWScK2WXywcful7P
- o+TFhOypFCGwAARO8IBl6Zcb4pAu4edEcj6TY4D1aOHjTdMNdJ7fn8JOwPT0MFpM710y
- 6xpzLFZT2lPDbBByMLe0vEhqd4k9sg0yO/tILi4tvMGaDcnWRb6dt5SuN6Qc8uNMoaaM
- T8u8om1jZf1yWTaV0bZIpvV/yShampZrknz3WRd44yd0gKI2wHDuWB2K8udaiEetOF7U
- kelT1R3wMp+NCKqlClOQye1a6Dv2HzS/UpR+2HrCVVTbbBrm1JOF40r/hNqtvX1Mbbok
- 2ALA==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwScXxXFase/UiAGNCdurXRQ42LMN6VUOKaws5TlHhe/saepPUXjeZjg/IVQJT0uqlmUkyxjHqqPIUozjo=@nongnu.org
-X-Gm-Message-State: AFuF++kNZAwdV7NvUQC3+a5C4MpMkglR0GxiODurWYjHZiBDZE5H/G/S
- Fho/OYWsskshc3k83/qtDkQ8oVJO1k/YUvNfqd2+0lgIsfKsosBMGJDtLN54zilZI5nlZInrjXi
- Q18OedhwZ5LVyIROAdJRXOjtTq8d5SrwPvYKVIowPQ5UC+pBiT4pOUWgo1qo9Jk2QopPEqzl7P2
- stuQqsOwx4fKW1sHjhUKSvRAchiOPC1dg4Uw==
-X-Gm-Gg: AYBFou3SWvlqWxm+vyEakDfUiQ4zxUgdHmQcpBAzfWIP9F+tWeuuT1EiG7H21kQNSaS
- YcaH6OdJ06V1K414FK6eKJMNyjdKDl+0LXITUKa9L4KpQPv0yU7esBYTjlJwg+sueWK4HdQp2eZ
- 3jF8EnsktgIV4h3E0H+fbXpSJVjdfqP54CIPETdstHi8Rf3fXD3DlsokflYUQfx1MW0fkC4s0yR
- KtBc/1JtgvGfvyF
-X-Received: by 2002:a05:690e:4553:10b0:672:99e1:11e0 with SMTP id
- 956f58d0204a3-672d591dbaemr1140885d50.125.1790183996030; 
- Wed, 23 Sep 2026 10:19:56 -0700 (PDT)
-X-Received: by 2002:a05:690e:4553:10b0:672:99e1:11e0 with SMTP id
- 956f58d0204a3-672d591dbaemr1140866d50.125.1790183995662; Wed, 23 Sep 2026
- 10:19:55 -0700 (PDT)
+ (Exim 4.90_1) (envelope-from <logic@deltaq.org>)
+ id 1xA2qA-0000HH-0h; Fri, 25 Sep 2026 06:07:39 -0400
+Received: from pmg-auth-smtp2.teksavvy.com (localhost.localdomain [127.0.0.1])
+ by pmg-auth-smtp2.teksavvy.com (Proxmox) with ESMTP id C84F6813AA;
+ Fri, 25 Sep 2026 06:07:34 -0400 (EDT)
+Received: from visor.logiclrd.cx (unknown [104.246.135.111])
+ by pmg-auth-smtp2.teksavvy.com (Proxmox) with ESMTPSA;
+ Fri, 25 Sep 2026 06:07:33 -0400 (EDT)
+From: Jonathan Gilbert <logic@deltaq.org>
+To: qemu-devel@nongnu.org
+Cc: qemu-arm@nongnu.org, Peter Maydell <peter.maydell@linaro.org>,
+ qemu-trivial@nongnu.org,
+ =?UTF-8?q?Philippe=20Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>,
+ Jonathan Gilbert <logic@deltaq.org>
+Subject: [PATCH] hw/misc/bcm2835_cprman: correct register index in test for
+ mux update
+Date: Fri, 25 Sep 2026 05:07:26 -0500
+Message-ID: <20260925100726.1546566-1-logic@deltaq.org>
+X-Mailer: git-send-email 2.53.0
 MIME-Version: 1.0
-References: <20260922205605.501602-1-jsnow@redhat.com>
- <8733v0zcsm.fsf@pond.sub.org> <87jyocxy0p.fsf@pond.sub.org>
-In-Reply-To: <87jyocxy0p.fsf@pond.sub.org>
-From: John Snow <jsnow@redhat.com>
-Date: Wed, 23 Sep 2026 13:19:44 -0400
-X-Gm-Features: AclHuK_ze6zfAffM4QDcVLsXj-18mpNU7S_ok6e6QdEQjIS1oEE6AWyizU-z2qE
-Message-ID: <CAFn=p-bjeCtgY0Jr47P0czwKBeB6xv6YCR_S8PU65wH59hdrtg@mail.gmail.com>
-Subject: Re: [PATCH v2 0/8] qapi: convert intros for qga, firmware, etc
-To: Markus Armbruster <armbru@redhat.com>
-Cc: qemu-devel@nongnu.org, Laurent Vivier <laurent@vivier.eu>, 
- Kostiantyn Kostiuk <kkostiuk@redhat.com>, "Michael S. Tsirkin" <mst@redhat.com>,
- Zhao Liu <zhao1.liu@intel.com>, Michael Roth <michael.roth@amd.com>,
- Pierrick Bouvier <pierrick.bouvier@oss.qualcomm.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
- Jason Wang <jasowangio@gmail.com>, qemu-trivial@nongnu.org, 
- =?UTF-8?Q?Philippe_Mathieu=2DDaud=C3=A9?= <philmd@oss.qualcomm.com>, 
- Stefano Garzarella <sgarzare@redhat.com>,
- Kashyap Chamarthy <kchamart@redhat.com>, 
- Eric Blake <eblake@redhat.com>, Hanna Reitz <hreitz@redhat.com>,
- Kevin Wolf <kwolf@redhat.com>, 
- qemu-block@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: 5VEhqQqmmNqeFd-KHAlrYMG2LpwYsi6EIzB-8Ju02vE_1790183996
-X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.133.124; envelope-from=jsnow@redhat.com;
- helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -20
-X-Spam_score: -2.1
-X-Spam_bar: --
-X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.001,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_MSPIKE_H3=0.001, RCVD_IN_MSPIKE_WL=0.001,
- SPF_HELO_PASS=-0.001, SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+Content-Transfer-Encoding: 8bit
+Received-SPF: softfail client-ip=76.10.175.140; envelope-from=logic@deltaq.org;
+ helo=pmg-auth-smtp2.teksavvy.com
+X-Spam_score_int: -11
+X-Spam_score: -1.2
+X-Spam_bar: -
+X-Spam_report: (-1.2 / 5.0 requ) BAYES_00=-1.9, RCVD_IN_DNSWL_NONE=-0.0001,
+ SPF_HELO_NONE=0.001, SPF_SOFTFAIL=0.665 autolearn=no autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Fri, 25 Sep 2026 07:55:34 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -117,18 +60,33 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Wed, Sep 23, 2026 at 2:49=E2=80=AFAM Markus Armbruster <armbru@redhat.co=
-m> wrote:
->
-> Markus Armbruster <armbru@redhat.com> writes:
->
-> > Series
-> > Reviewed-by: Markus Armbruster <armbru@redhat.com>
->
-> With the update to tests/qapi-schema/doc-good.txt squashed into PATCH 2,
-> of course.  I'll also make the commit message tweak for PATCH 5 if you
-> like it.
+After each register write handled by cprman_write, function update_mux
+checks each of the clocks to see whether the supplied register index
+applies to it, calling clock_mux_update if so. Each clock has two
+registers, so it needs to check the base cm_offset for CM_CTL and then
+the next slot for CM_DIV. But, it was checking for cm_offset plus 4, as
+though it were a byte offset when it's a logical index.
 
-Yes, please!
+Signed-off-by: Jonathan Gilbert <logic@deltaq.org>
+---
+ hw/misc/bcm2835_cprman.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/hw/misc/bcm2835_cprman.c b/hw/misc/bcm2835_cprman.c
+index 8220f7a6b4..f9a77ff9bb 100644
+--- a/hw/misc/bcm2835_cprman.c
++++ b/hw/misc/bcm2835_cprman.c
+@@ -508,7 +508,7 @@ static inline void update_mux_from_cm(BCM2835CprmanState *s, size_t idx)
+ 
+     for (i = 0; i < CPRMAN_NUM_CLOCK_MUX; i++) {
+         if ((CLOCK_MUX_INIT_INFO[i].cm_offset == idx) ||
+-            (CLOCK_MUX_INIT_INFO[i].cm_offset + 4 == idx)) {
++            (CLOCK_MUX_INIT_INFO[i].cm_offset + 1 == idx)) {
+             /* matches CM_CTL or CM_DIV mux register */
+             clock_mux_update(&s->clock_muxes[i]);
+             return;
+-- 
+2.53.0
+
 
 
