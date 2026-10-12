@@ -4,95 +4,97 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id 4C97ACA9EDE
-	for <qemu-trivial@archiver.kernel.org>; Mon, 12 Oct 2026 17:39:11 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2E82BCA9ED0
+	for <qemu-trivial@archiver.kernel.org>; Mon, 12 Oct 2026 19:44:35 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1xGJyx-00029L-DV; Mon, 12 Oct 2026 13:38:39 -0400
+	id 1xGLwd-0002xD-SH; Mon, 12 Oct 2026 15:44:24 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <filip.hejsek@gmail.com>)
- id 1xGJys-00027F-MF
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2026 13:38:36 -0400
-Received: from mail-wm1-x331.google.com ([2a00:1450:4864:20::331])
+ id 1xGLwb-0002wp-2X
+ for qemu-trivial@nongnu.org; Mon, 12 Oct 2026 15:44:21 -0400
+Received: from mail-wm1-x335.google.com ([2a00:1450:4864:20::335])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
  (Exim 4.90_1) (envelope-from <filip.hejsek@gmail.com>)
- id 1xGJyq-0003e9-8q
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2026 13:38:33 -0400
-Received: by mail-wm1-x331.google.com with SMTP id
- 5b1f17b1804b1-4a1880e1bf1so20038015e9.1
- for <qemu-trivial@nongnu.org>; Mon, 12 Oct 2026 10:38:31 -0700 (PDT)
+ id 1xGLwZ-0004yA-6F
+ for qemu-trivial@nongnu.org; Mon, 12 Oct 2026 15:44:20 -0400
+Received: by mail-wm1-x335.google.com with SMTP id
+ 5b1f17b1804b1-49fbb2acc90so17984525e9.2
+ for <qemu-trivial@nongnu.org>; Mon, 12 Oct 2026 12:44:18 -0700 (PDT)
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=gmail.com; s=20251104; t=1791826710; x=1792431510; darn=nongnu.org;
+ d=gmail.com; s=20251104; t=1791834257; x=1792439057; darn=nongnu.org;
  h=cc:to:message-id:content-transfer-encoding:content-type
  :mime-version:subject:date:from:from:to:cc:subject:date:message-id
  :reply-to:content-type;
- bh=usZFRkws+j7TzH9xq3wKZiKiY9W93M5uvsiD1aeslcY=;
- b=Y3E+LyLPzaoAU0AceUM76NubHnfbK2pW9g4XAKJ8F8QQCbvDfj9EJy3gG6uzXklaHz
- ib/x6KYhiZcTDYO5QAeZXZHEosmuUy2bLFE5/fkytD+kop9YfCAeROyfoc4B+qe4DaJs
- ep4ziroAPc4LWchJB9XU2B6qfpY3C/7igHHdD7ZMggKO+tSTrM12tktVHdgeskGMj1sX
- D2HCurGojoC5yHKn6GyUm3VEp+ocecYmV0NtC8UnasNGE1NubZmdz3qQVdog7MfTpawI
- jjxnZ8u4rSxwKkws0jOOiwHTTvsAfqx8snOPYIRnMYGJQMSGikuF5JrtzWCo0wd9Mmk+
- oDqQ==
+ bh=MKxlNH4cn62tbjHpbAVipSp6/2MkIgb/v80lcWlBQqs=;
+ b=GywyD1XKIQXYoV78rdc5UPwPaIdv7DDDooTI5IdP30UGxI4Wr0f+PrJVoIMGsaKD4Z
+ uju2d2p2ouRXmIjOckXc1p47R0rf1O/YEHBpHzQbGgAUaIZMzhe5g9HNrQBoKPO3VfT0
+ gBpqZAVbId4NlSckQzmO4C+hOaizhfMM3afLjd3HEcY8ExhW4AvZD4kWwZv2ahvaRk07
+ /8tyZ/+yftYv+1l7JbDTsi1YgRS5GH65u+sKEBlQY8Kh4wlUQMV6AtwsThFQAgW18Ksr
+ MrtR2q86JQlsu0V4zpe4P6lI1ZiN0wm1NOYytsn8+/QCCC8PCYWm+9TSfB4LE6KR5wG/
+ B9hw==
 X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791826710; x=1792431510;
+ d=1e100.net; s=20260707; t=1791834257; x=1792439057;
  h=cc:to:message-id:content-transfer-encoding:content-type
  :mime-version:subject:date:from:x-gm-gg:x-gm-message-state:from:to
  :cc:subject:date:message-id:reply-to:content-type;
- bh=usZFRkws+j7TzH9xq3wKZiKiY9W93M5uvsiD1aeslcY=;
- b=EBLw7Qwf+x2XkfL+U98x+JXIpikeADy3YG3WZmsnQv3PrA+xwIGFQOSvrxqC18dkuw
- PTAXQbW9GtPOdPG4LdAHhwcW1CShhVJNbBp5UVmkp6LgMvrmMbJo8dcs4leG+opu6C2d
- ge57vi5X3v0QNnwoJ3IFSmNKMm14NVu9vOrJJGw9fwOhxNE0vk9JyC6gTpuF9yxHtjPi
- /K2rEKO1x/ZCxdt+srTxzTPrjJLGfgdF647i/HuxCwI29Gi2JMSseXifKRRPYC+pUMSU
- Gvi7ydZn8nm++suHd3oNaoc4G92am0tIhcB4rWc/LhSLLv0KdnDOU5J1ke2cLEFHgKiv
- EKDw==
+ bh=MKxlNH4cn62tbjHpbAVipSp6/2MkIgb/v80lcWlBQqs=;
+ b=IAve4yoejm0brAKXVEZZi0JOurnuGnEng3D6/bYr9ZUPdE2z3bgGOSOknYFDc5cXIY
+ ny/ixXrTBs4DHcX+E66TyaIUop1c7zS5xxLP5bcFYjooCQ6gJQUas32sTy362LumjCJu
+ wKSWsT9wuLrCGOnDtJeE09bJtGqWYibyqs/f0bczVqpzmvW/SMV1qu4NbVGkp+ELX+ED
+ VI8d/WDk/KRD7BY9EC92mIOqA72JVDUCsMQxA8UETG/XymJpD1s+P4ICqDcrd0F9ceZN
+ kRrQNsB1IdkFTtDuirOar1Nr6ba93GoDJ6V84WbHwMYQG7HvGdDsO7hxQ2hESlNWXQ8Y
+ bcNg==
 X-Forwarded-Encrypted: i=1;
- AKwUvBwC7vht9hCzgsj9MWIL1vgAapnZAqlFZv0oXTzYM/5x0+fFT94JFmxNsXkvqBJula5Febl5Urh0GujA1G0=@nongnu.org
-X-Gm-Message-State: AFq9FYLkftE4eqAXtpFvTZnzhyXfvm5XhQlDgntEXI4lzrW7XKnhlaFz
- JU5pGjUBdTi7LlcQhqJPxMAKqKDAsABNcFhY8OhDDfM3i6Nr8Yyz5kOZ
-X-Gm-Gg: AYBFou0S6Vq1C4GCmFjJDG3mVLUyWUzJd3+ClVVBuzU5Om/xpd+u/uwUrnOU8FoPIYl
- h6SAH7hmuzNwX51/xKOMMP0CWuAmGVlWkYdDMdlTm/595rlufoYxj/TNIpQxphTNvto3EIVPD4A
- U5rKaMwa5dJk3jVQaqXaXoG6qpWEAFP/w6mKOrw4B4cYTYa5UHZcHq7r3M6R9w2nplSBowZ9Hq+
- Jv6fquPhMNvkty0SKrKp6eq0f7KOfX9apF0+xp2tXB7/9JmYP8ZVXEA4Y//TGp4LA+/Tw4FQE8b
- lfy6qawNTBO4sQQxGC4gCQLVaDT6wtX4Imo0+Oc+9P2ByUIseX542Jlvel4WYn7GchyAot7dskh
- vmBdSN2fpdkrM+sQ36+tWHEJmRjNI5vhgYUaeDwMVrBeOzO5L1wGxaZ+sde6sDwODyxnLqEHiUb
- 6ym0sdS1d4wza1NCJDQao8Wrt9S52TnUz6Gb4599g1xqPzqzuLMQs78fYjb48maLcVChIflCdkk
- Dn9gRl5paJIWmeyOGx6jw8IXbY=
-X-Received: by 2002:a05:600c:348f:b0:49c:fc6e:8caf with SMTP id
- 5b1f17b1804b1-4a18e4c05e5mr200478805e9.19.1791826710489; 
- Mon, 12 Oct 2026 10:38:30 -0700 (PDT)
+ AKwUvBxzZE0soFpaxM6KkFfd0avL5amRSZO1dUKc+S3eGoicO+huqKkDBG92ayTwV7jmiZXNBvAjYwM4SguRpfM=@nongnu.org
+X-Gm-Message-State: AFq9FYKT6bqY5P7bs8zL5L367CPm1XGKsf/cbewRaozLtdDcN37FO5Sg
+ B2+cyoTF4RAootK2oWMfi1sSd6ypCwc307VRWuQOfGkuJNexc234C0Jp
+X-Gm-Gg: AYBFou1Kde4vYkQZWaIj3C77OGS5FIEiCn0FKPGH2RoA4Sw1MUWK7GQs/ltZWur/4UB
+ A6mDxTaMqXs3tK/5gbZSYRZ4iNvSeFbAizDe6TboW6Jb2U8+T6/CMt6HGoF37bEG7UcDhBpdOip
+ /XXDbG2uPcugczAz0Xu4TJocq27pk5pSv0olgi79yANP0+4kCC2Y+jRgDbo7P5Kfu2wDzsusrxr
+ WRyxkidHbpho5gxrDDOGfTT5JklOM9FQNgHL9v/BZ9FGDYOrer/GSlb3LkxVq3+7meBqcblU4q9
+ 9hI/gEQRsjeGwFCP9Iu2eEsQsHTWXL4+fBS5pqmqbhvKBd0039gBwONOV2qDtkx64FSZCpaT/DK
+ Ur9XP3VEuK6yLzNazR08SF2L3JOdVndwh4VJn6jCAYNNlUnZGeNGGl01VyZBCU/y9vVynJcLdKA
+ 2iXOVOirxpOd+iIixnKkj6VwlrZcW6jJbURjCovExlCxyXOewtVpIuH2qvu8HRRU7rdFAb/PANO
+ sJRvvTrPOCxWHZE7ZCcRTEg7qQ=
+X-Received: by 2002:a05:600c:8b0a:b0:4a1:6992:f861 with SMTP id
+ 5b1f17b1804b1-4a18e446db6mr179997655e9.1.1791834257372; 
+ Mon, 12 Oct 2026 12:44:17 -0700 (PDT)
 Received: from localhost (mem-185.47.220.165.jmnet.cz. [185.47.220.165])
  by smtp.gmail.com with ESMTPSA id
- 5b1f17b1804b1-4a18bf1358asm307493095e9.4.2026.10.12.10.38.29
+ 5b1f17b1804b1-4a18beabbd0sm358895615e9.12.2026.10.12.12.44.16
  (version=TLS1_3 cipher=TLS_AES_256_GCM_SHA384 bits=256/256);
- Mon, 12 Oct 2026 10:38:29 -0700 (PDT)
+ Mon, 12 Oct 2026 12:44:16 -0700 (PDT)
 From: Filip Hejsek <filip.hejsek@gmail.com>
-Date: Mon, 12 Oct 2026 19:38:14 +0200
-Subject: [PATCH TRIVIAL] io: avoid potential double close of
- qio_channel_file's fd
+Date: Mon, 12 Oct 2026 21:44:06 +0200
+Subject: [PATCH TRIVIAL] treewide: use qemu_dup() instead of dup()
 MIME-Version: 1.0
 Content-Type: text/plain; charset="utf-8"
 Content-Transfer-Encoding: 7bit
-Message-Id: <20261012-fix-double-close-v1-1-d37f2224dcb0@gmail.com>
+Message-Id: <20261012-use-qemu-dup-v1-1-03d94852a6c8@gmail.com>
 X-B4-Tracking: v=1; b=H4sIAAAAAAAC/6tWKk4tykwtVrJSqFYqSi3LLM7MzwNyDHUUlJIzE
- vPSU3UzU4B8JSMDIzNDA0Mj3bTMCt2U/NKknFTd5Jz84lRd86Rk0yRDE5PkZEsTJaC2gqJUoBq
- wkdFKIUGeYZ6OPkqxEIni0qSs1OQSkIFKtbUAQdbsh30AAAA=
-X-Change-ID: 20261012-fix-double-close-7bc5b144cc94
+ vPSU3UzU4B8JSMDIzNDA0Mj3dLiVN3C1NxS3ZTSAl1jCzMji5SkxGTj1FQloJaCotS0zAqwcdF
+ KIUGeYZ6OPkqxEIni0qSs1OQSkGFKtbUAT5OspXkAAAA=
+X-Change-ID: 20261012-use-qemu-dup-38628dbac3ee
 To: qemu-devel@nongnu.org
-Cc: =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+Cc: "Michael S. Tsirkin" <mst@redhat.com>, 
+ =?utf-8?q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+ Paolo Bonzini <pbonzini@redhat.com>, 
+ =?utf-8?q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>, 
  Michael Tokarev <mjt@tls.msk.ru>, Laurent Vivier <laurent@vivier.eu>, 
  qemu-trivial@nongnu.org
 X-Mailer: b4 0.15.2
-X-Developer-Signature: v=1; a=ed25519-sha256; t=1791826708; l=1494;
+X-Developer-Signature: v=1; a=ed25519-sha256; t=1791834256; l=2370;
  i=filip.hejsek@gmail.com; s=20250912; h=from:subject:message-id;
- bh=5dvrwQ9mqfHO4Xa7PXXmIvECRDsR2GyNuRN5/WgwZ5g=;
- b=taQ/jvVmUm682R0Usl8bWtHO2OWnlAbyhnPdRoKkyxjuIP3FTh5/AVG5udufnr0uAcwtwNmij
- fYTApx2gPZ7B1t9n5vGMM8ELsPEjnZ1lEZO6YozdjJ4heeo5oWnVqoT
+ bh=G+K4qSCyk2jVmpDx/lFGJGU5YT4XwhwRPz1nn1hkr+A=;
+ b=y2EQEFW37dLB6aCv9U/wm4eQmTN9ikflc+vgYQKJiAwSNPv2/YpBMyxxl2zTHITJeuYzVOZsu
+ qHq1kkcTKPhBjhAE0D2bwnAAfiLjt78iRLtDayPeK8zOMnfVyoCBHnz
 X-Developer-Key: i=filip.hejsek@gmail.com; a=ed25519;
  pk=nakB8gEK3oi+Q/5dBTMCy/LgZL47NP60z1jeDR6O/WU=
-Received-SPF: pass client-ip=2a00:1450:4864:20::331;
- envelope-from=filip.hejsek@gmail.com; helo=mail-wm1-x331.google.com
+Received-SPF: pass client-ip=2a00:1450:4864:20::335;
+ envelope-from=filip.hejsek@gmail.com; helo=mail-wm1-x335.google.com
 X-Spam_score_int: -20
 X-Spam_score: -2.1
 X-Spam_bar: --
@@ -115,48 +117,80 @@ List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-Make qio_channel_file_close() set fd to -1 even if qemu_close() returns
-an error so that qio_channel_file_finalize() doesn't call close again.
-
-On Linux, close() always closes the fd, even when it returns an error.
-Because the fd can be reused after it is closed, the close must not
-be retried.
+Make the use of qemu_dup() more consistent and eliminate the possibility
+of accidentally creating non-cloexec fds.
 
 Signed-off-by: Filip Hejsek <filip.hejsek@gmail.com>
 ---
- io/channel-file.c | 12 +++++++++---
- 1 file changed, 9 insertions(+), 3 deletions(-)
+ hw/virtio/virtio.c | 2 +-
+ io/channel-file.c  | 2 +-
+ system/vl.c        | 9 +--------
+ ui/dmabuf.c        | 2 +-
+ 4 files changed, 4 insertions(+), 11 deletions(-)
 
+diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
+index c9f9e5b511..70779fbd56 100644
+--- a/hw/virtio/virtio.c
++++ b/hw/virtio/virtio.c
+@@ -3204,7 +3204,7 @@ VirtioSharedMemoryMapping *virtio_shared_memory_mapping_new(uint8_t shmid,
+         return NULL;
+     }
+ 
+-    fd = dup(fd);
++    fd = qemu_dup(fd);
+     if (fd < 0) {
+         error_report("Failed to duplicate fd: %s", strerror(errno));
+         return NULL;
 diff --git a/io/channel-file.c b/io/channel-file.c
-index 5cef75a67c..afc9640518 100644
+index 5cef75a67c..3f707e80c9 100644
 --- a/io/channel-file.c
 +++ b/io/channel-file.c
-@@ -255,12 +255,18 @@ static int qio_channel_file_close(QIOChannel *ioc,
+@@ -48,7 +48,7 @@ qio_channel_file_new_fd(int fd)
+ QIOChannelFile *
+ qio_channel_file_new_dupfd(int fd, Error **errp)
  {
-     QIOChannelFile *fioc = QIO_CHANNEL_FILE(ioc);
+-    int newfd = dup(fd);
++    int newfd = qemu_dup(fd);
  
--    if (qemu_close(fioc->fd) < 0) {
-+    int ret = qemu_close(fioc->fd);
-+    /*
-+     * The fd should now have been closed even if we got an error. There are
-+     * obscure systems where this isn't always the case, but an fd leak on
-+     * obscure systems is less bad than double close on common systems.
-+     */
-+    fioc->fd = -1;
-+    if (ret < 0) {
-         error_setg_errno(errp, errno,
--                         "Unable to close file");
-+                         "Got an error while closing file");
+     if (newfd < 0) {
+         error_setg_errno(errp, errno, "Could not dup FD %d", fd);
+diff --git a/system/vl.c b/system/vl.c
+index 468a9fc247..9381e3d7f7 100644
+--- a/system/vl.c
++++ b/system/vl.c
+@@ -614,14 +614,7 @@ static int parse_add_fd(void *opaque, QemuOpts *opts, Error **errp)
          return -1;
      }
--    fioc->fd = -1;
-     return 0;
+ 
+-#ifdef F_DUPFD_CLOEXEC
+-    dupfd = fcntl(fd, F_DUPFD_CLOEXEC, 0);
+-#else
+-    dupfd = dup(fd);
+-    if (dupfd != -1) {
+-        qemu_set_cloexec(dupfd);
+-    }
+-#endif
++    dupfd = qemu_dup(fd);
+     if (dupfd == -1) {
+         error_setg_errno(errp, errno, "error duplicating fd");
+         return -1;
+diff --git a/ui/dmabuf.c b/ui/dmabuf.c
+index 497f82cc61..6d5dffdf84 100644
+--- a/ui/dmabuf.c
++++ b/ui/dmabuf.c
+@@ -95,7 +95,7 @@ void qemu_dmabuf_dup_fds(QemuDmaBuf *dmabuf, int *fds, int nfds)
+     assert(nfds >= dmabuf->num_planes);
+ 
+     for (i = 0; i < dmabuf->num_planes; i++) {
+-        fds[i] = dmabuf->fd[i] >= 0 ? dup(dmabuf->fd[i]) : -1;
++        fds[i] = dmabuf->fd[i] >= 0 ? qemu_dup(dmabuf->fd[i]) : -1;
+     }
  }
  
 
 ---
 base-commit: 615ece3c406b262996e569f29ea6eed0d81c4d8d
-change-id: 20261012-fix-double-close-7bc5b144cc94
+change-id: 20261012-use-qemu-dup-38628dbac3ee
 
 Best regards,
 --  
