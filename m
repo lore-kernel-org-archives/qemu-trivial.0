@@ -4,101 +4,81 @@ X-Spam-Checker-Version: SpamAssassin 3.4.0 (2014-02-07) on
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-RSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.lore.kernel.org (Postfix) with ESMTPS id EA7FDCA9EC5
-	for <qemu-trivial@archiver.kernel.org>; Mon, 12 Oct 2026 22:23:56 +0000 (UTC)
+	by smtp.lore.kernel.org (Postfix) with ESMTPS id 2B3C2CC6B10
+	for <qemu-trivial@archiver.kernel.org>; Tue, 13 Oct 2026 07:53:44 +0000 (UTC)
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1xGOQW-00085a-Eu; Mon, 12 Oct 2026 18:23:24 -0400
+	id 1xGXK1-00021i-PW; Tue, 13 Oct 2026 03:53:17 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1xGOQO-000842-JJ
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2026 18:23:19 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xGXK1-00021X-AX
+ for qemu-trivial@nongnu.org; Tue, 13 Oct 2026 03:53:17 -0400
 Received: from us-smtp-delivery-124.mimecast.com ([170.10.129.124])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mlureau@redhat.com>)
- id 1xGOQM-0002I3-B9
- for qemu-trivial@nongnu.org; Mon, 12 Oct 2026 18:23:16 -0400
+ (Exim 4.90_1) (envelope-from <berrange@redhat.com>)
+ id 1xGXJz-0002YA-Nf
+ for qemu-trivial@nongnu.org; Tue, 13 Oct 2026 03:53:17 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=redhat.com;
- s=mimecast20190719; t=1791843792;
- h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
- to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ s=mimecast20190719; t=1791877995;
+ h=from:from:reply-to:reply-to:subject:subject:date:date:
+ message-id:message-id:to:to:cc:cc:mime-version:mime-version:
+ content-type:content-type:
  content-transfer-encoding:content-transfer-encoding:
  in-reply-to:in-reply-to:references:references;
- bh=q/5bAVXgT4MJMSlxcV/bD/Bu8AfHONRXh44KXr2H1ZY=;
- b=ZkYcVNsDHx4WhPImvNpnSOGrKc7iFWaFUhL9nMVPwQAZ3ZwdJGJmXGts0lsxpOdPmmbOzi
- HO4jWGVHfe0mEZONNvCsFXDXPzej5Kaj3oWKX4P3612oDnusrg0145BHh4/cI4+2RgjIzR
- jXXZ60UToP+eOvBG1RgoHINwSe4rdfI=
-Received: from mail-pj1-f69.google.com (mail-pj1-f69.google.com
- [209.85.216.69]) by relay.mimecast.com with ESMTP with STARTTLS
- (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
- us-mta-651-xFHEq6MNPzazL1r9vmgkLA-1; Mon, 12 Oct 2026 22:23:11 +0000
-X-MC-Unique: xFHEq6MNPzazL1r9vmgkLA-1
-X-Mimecast-MFC-AGG-ID: xFHEq6MNPzazL1r9vmgkLA_1791843790
-Received: by mail-pj1-f69.google.com with SMTP id
- 98e67ed59e1d1-3abfcf726dcso1579373a91.2
- for <qemu-trivial@nongnu.org>; Mon, 12 Oct 2026 15:23:11 -0700 (PDT)
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1791843790; x=1792448590;
- h=content-transfer-encoding:content-type:cc:to:subject:message-id
- :date:from:in-reply-to:references:mime-version:x-gm-gg
- :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to
- :content-type;
- bh=q/5bAVXgT4MJMSlxcV/bD/Bu8AfHONRXh44KXr2H1ZY=;
- b=vIyK8BbpOHUWgPKBeqXvuSFTzjtqF1okQA0tiVDtERTHLSPeWkrVa4j6JmtjFCweKU
- oSclFtx3VRLBEwZNnTenFY6Kfsa9XZBDTZyhwwoOnK4Hsiy0irqQGmrzEBfjMuBZYTuu
- IB54dvr83rsl8njsgMv6v9f2XaTkWoQqV7KcxvYh4dtTUahNeTwISspVLq3yC4xhYLht
- RpNxr/KsobGXeybruZDkKE0Hk6zOO1XMUqGkXQEUWj/bXeSppr5kY8qOhxLamRc50hJc
- RptXoKZb3npXQ0MWKeR7FgdudMYkw94RJBAnzvK9HLrMAL0RNeAc7bUkM12Cwnm4xJty
- 2o1Q==
-X-Forwarded-Encrypted: i=1;
- AKwUvBwMi40q5T+lDIktEceg91UigNRDSn19MOBB4+EnF6gyCV4jV3OQKyNigFlX+1KVu3XrthCMWx5s9upW8r0=@nongnu.org
-X-Gm-Message-State: AFq9FYLEJO9U8N1tBj/Qu1TmpO4gdtAcXmosWc5hVdwL+2Yrrkx4GgH5
- ZzXZw+GlQJa1gc4tKitYvOFKW0+tHN/2VN8YTWKdNOhtfSVr1xceh3wFWZemYFmm1C7Mcv2JSyU
- FEAloixg8+ejAVMYvoHFnDI5PFBM9fKSoaLubkDhfF5NGH2t2a7eRi99/e9SW6bY1gECcsYRmF+
- Yj77+S7xGO6umMhnasu2kf1A1VcHbpj8BM3Q==
-X-Gm-Gg: AYBFou2tcOLMfe0v94iQjTztGwL83f7G2E9EtMk9HjUxQePV3kyOv+KemFL6tzqXlAe
- sJJo3vEH4d0h6XHJ5bzp0Itqb3JTnAlEweo8Kq0g76guECrcPzS80S9F4xHpOqn6iQ81OhPacox
- b1HYSkG9H2Zoaclyt6sYjH01xdkhof0puDIFgCKmS/2jHNaIEy0tonOs649xCTpGxMYqsMTMfj0
- YyZkp485UycSIUUe6y+9ohGIOI4jG3Z/Yi3YPz/qOhRLv6wSqAQYGjP2c5gMzivzMADxWMOyhWo
- lw==
-X-Received: by 2002:a17:90b:3946:b0:3a8:7fa3:fd6e with SMTP id
- 98e67ed59e1d1-3ab3ace0294mr9347401a91.47.1791843790293; 
- Mon, 12 Oct 2026 15:23:10 -0700 (PDT)
-X-Received: by 2002:a17:90b:3946:b0:3a8:7fa3:fd6e with SMTP id
- 98e67ed59e1d1-3ab3ace0294mr9347390a91.47.1791843789905; Mon, 12 Oct 2026
- 15:23:09 -0700 (PDT)
-MIME-Version: 1.0
-References: <20261013-use-qemu-dup-v2-1-12ecd94263b7@gmail.com>
-In-Reply-To: <20261013-use-qemu-dup-v2-1-12ecd94263b7@gmail.com>
-From: =?UTF-8?B?TWFyYy1BbmRyw6kgTHVyZWF1?= <marcandre.lureau@redhat.com>
-Date: Tue, 13 Oct 2026 02:22:57 +0400
-X-Gm-Features: AclHuK_7F-NYJKyNgvhAHbH3_FdHawYKE7OIpl6_ufaVBEQtSekG2nG99GKkNMM
-Message-ID: <CAMxuvayw0=C5jbB7KZsU=BNixtrFLv8dLO6JEmDG=DgLgW5U=w@mail.gmail.com>
-Subject: Re: [PATCH not-so-trivial v2] treewide: use qemu_dup() instead of
- dup()
+ bh=XLB3L+I+q9Qod+AMzEBwjRytE8KoH0VDpmVYMWPuBdE=;
+ b=aH9OWUHKsxUwL3nkG0wkN0rdR752xlNARyanycGpKiTYVWC9rAS7AKJyBGxpAtKNvkGIXX
+ gGGRvpwiQNSIPgMkf2WUsQbIyNOqGq93X2Ba+HTGeBsH4vtAyrP13EhrzV5Ej8vu34idzL
+ l4rrvT+Fp/qV1D+eqSjUe6q+ALEPqi0=
+Received: from mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com
+ (ec2-54-186-198-63.us-west-2.compute.amazonaws.com [54.186.198.63]) by
+ relay.mimecast.com with ESMTP with STARTTLS (version=TLSv1.3,
+ cipher=TLS_AES_256_GCM_SHA384) id us-mta-259-EjmdCesiOXKiDzuovxM_0g-1; Tue,
+ 13 Oct 2026 07:53:04 +0000
+X-MC-Unique: EjmdCesiOXKiDzuovxM_0g-1
+X-Mimecast-MFC-AGG-ID: EjmdCesiOXKiDzuovxM_0g_1791877983
+Received: from mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com
+ (mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com [10.30.177.111])
+ (using TLSv1.3 with cipher TLS_AES_256_GCM_SHA384 (256/256 bits)
+ key-exchange X25519 server-signature RSA-PSS (2048 bits) server-digest SHA256)
+ (No client certificate requested)
+ by mx-prod-mc-03.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7AF9C195422F; Tue, 13 Oct 2026 07:53:02 +0000 (UTC)
+Received: from redhat.com (headnet03.pony-001.prod.iad2.dc.redhat.com
+ [10.2.32.114])
+ by mx-prod-int-08.mail-002.prod.us-west-2.aws.redhat.com (Postfix) with ESMTPS
+ id 7ADF9180034F; Tue, 13 Oct 2026 07:52:59 +0000 (UTC)
+Date: Tue, 13 Oct 2026 08:52:56 +0100
+From: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 To: Filip Hejsek <filip.hejsek@gmail.com>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>, 
- =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>, 
+Cc: =?utf-8?Q?Marc-Andr=C3=A9?= Lureau <marcandre.lureau@redhat.com>,
+ qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
  Paolo Bonzini <pbonzini@redhat.com>, Michael Tokarev <mjt@tls.msk.ru>,
- Laurent Vivier <laurent@vivier.eu>, 
- qemu-trivial@nongnu.org, Eric Blake <eblake@redhat.com>, 
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>, qemu-block@nongnu.org
-X-Mimecast-Spam-Score: 0
-X-Mimecast-MFC-PROC-ID: Bkb4kr9jyUnIhou5ruE-Se3FhEKbpADKomQ-dD-C6tE_1791843790
+ Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org
+Subject: Re: [PATCH TRIVIAL] treewide: use qemu_dup() instead of dup()
+Message-ID: <as3jWHX-ukeyaR6j@redhat.com>
+References: <20261012-use-qemu-dup-v1-1-03d94852a6c8@gmail.com>
+ <CAMxuvazc5iHk=GDysFHVFN0xtf-g75AobhoKdPXaR6_Qz=dDNg@mail.gmail.com>
+ <90fe897aa35405fbada7a440c3fab848d81ea2b0.camel@gmail.com>
+MIME-Version: 1.0
+In-Reply-To: <90fe897aa35405fbada7a440c3fab848d81ea2b0.camel@gmail.com>
+User-Agent: Mutt/2.4.2 (2026-08-30)
+X-Scanned-By: MIMEDefang 3.4.1 on 10.30.177.111
+X-Mimecast-MFC-PROC-ID: RQVMKuCt0c1YWqWC8tXIR4DbcZ8y29qy4SJwpUpor7A_1791877983
 X-Mimecast-Originator: redhat.com
-Content-Type: text/plain; charset="UTF-8"
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=170.10.129.124; envelope-from=mlureau@redhat.com;
+Content-Type: text/plain; charset=utf-8
+Content-Disposition: inline
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=170.10.129.124; envelope-from=berrange@redhat.com;
  helo=us-smtp-delivery-124.mimecast.com
-X-Spam_score_int: -22
-X-Spam_score: -2.3
-X-Spam_bar: --
-X-Spam_report: (-2.3 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
+X-Spam_score_int: 10
+X-Spam_score: 1.0
+X-Spam_bar: +
+X-Spam_report: (1.0 / 5.0 requ) BAYES_00=-1.9, DKIMWL_WL_HIGH=-0.24,
  DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_PASS=-0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+ RCVD_IN_DNSWL_NONE=-0.0001, RCVD_IN_SBL_CSS=3.335, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=no autolearn_force=no
 X-Spam_action: no action
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
@@ -111,144 +91,59 @@ List-Post: <mailto:qemu-trivial@nongnu.org>
 List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
+Reply-To: Daniel =?utf-8?B?UC4gQmVycmFuZ8Op?= <berrange@redhat.com>
 Errors-To: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
 
-On Tue, Oct 13, 2026 at 2:02=E2=80=AFAM Filip Hejsek <filip.hejsek@gmail.co=
-m> wrote:
->
-> Use qemu_dup() to ensure the cloexec flag is set on dup'd fds.
->
-> The following dup() instances were left unchanged:
->
->     FILE                     REASON
->     util/osdep.c             implementation of qemu_dup
->     migration/cpr-exec.c     fd is intentionally kept across exec
->     {linux,bsd}-user/*       guest syscalls
->     tests/*                  left for future work
->
-> Signed-off-by: Filip Hejsek <filip.hejsek@gmail.com>
+On Mon, Oct 12, 2026 at 10:12:34PM +0200, Filip Hejsek wrote:
+> Hello,
+> 
+> On Mon, 2026-10-12 at 23:54 +0400, Marc-André Lureau wrote:
+> > Hi
+> > 
+> > On Mon, Oct 12, 2026 at 11:44 PM Filip Hejsek <filip.hejsek@gmail.com> wrote:
+> > > 
+> > > Make the use of qemu_dup() more consistent and eliminate the possibility
+> > > of accidentally creating non-cloexec fds.
+> > > 
+> > 
+> > Not so trivial, in my humble opinion, as there might have been some
+> > reason it was avoided.
+> > 
+> 
+> You're right, I shouldn't have tagged this as TRIVIAL.
+> 
+> I've actually intentionally left some dup()s unchanged for exactly this
+> reason. They are the ones in qemu-nbd.c, migration/cpr-exec.c, and
+> under linux-user/ and bsd-user/. I also didn't touch the tests, as I
+> didn't consider evaluating them to be worth the effort.
 
-Reviewed-by: Marc-Andr=C3=A9 Lureau <marcandre.lureau@redhat.com>
+IMHO, everything must be switched to use qemu_dup.  If a few callers
+actually want the FD to remain open across execve, then they should
+explicitly call qemu_clear_cloexec().  THis makes the intended
+behaviour clear, as opposed to looking like a potential mistake.
 
-> ---
-> For each call I replaced, I checked how the resulting fd is used
-> afterwards. In summary:
->
-> hw/virtio/virtio.c:
->     the fd is passed to memory_region_init_ram_from_fd, used for mmaping
->
-> io/channel-file.c:
->     the fd is passed to qio_channel_file_new_fd, used for reading/writing
->
-> qemu-nbd.c:
->     the fd is stored into old_stderr, then dup2'd back to STDERR_FILENO
->
-> system/vl.c:
->     no change in behavior, the code was already setting the cloexec flag
->
-> ui/dmabuf.c:
->     the function is called by qemu_spice_gl_update, which passes the fds
->     to SPICE server
->
-> These uses shouldn't require keeping the fd open across exec.
->
-> Changes in v2:
-> - Replace the use in qemu-nbd.c too
-> - Changed commit message
-> - Link to v1: https://lore.kernel.org/qemu-devel/20261012-use-qemu-dup-v1=
--1-03d94852a6c8@gmail.com
-> ---
->  hw/virtio/virtio.c | 2 +-
->  io/channel-file.c  | 2 +-
->  qemu-nbd.c         | 2 +-
->  system/vl.c        | 9 +--------
->  ui/dmabuf.c        | 2 +-
->  5 files changed, 5 insertions(+), 12 deletions(-)
->
-> diff --git a/hw/virtio/virtio.c b/hw/virtio/virtio.c
-> index c9f9e5b511..70779fbd56 100644
-> --- a/hw/virtio/virtio.c
-> +++ b/hw/virtio/virtio.c
-> @@ -3204,7 +3204,7 @@ VirtioSharedMemoryMapping *virtio_shared_memory_map=
-ping_new(uint8_t shmid,
->          return NULL;
->      }
->
-> -    fd =3D dup(fd);
-> +    fd =3D qemu_dup(fd);
->      if (fd < 0) {
->          error_report("Failed to duplicate fd: %s", strerror(errno));
->          return NULL;
-> diff --git a/io/channel-file.c b/io/channel-file.c
-> index 5cef75a67c..3f707e80c9 100644
-> --- a/io/channel-file.c
-> +++ b/io/channel-file.c
-> @@ -48,7 +48,7 @@ qio_channel_file_new_fd(int fd)
->  QIOChannelFile *
->  qio_channel_file_new_dupfd(int fd, Error **errp)
->  {
-> -    int newfd =3D dup(fd);
-> +    int newfd =3D qemu_dup(fd);
->
->      if (newfd < 0) {
->          error_setg_errno(errp, errno, "Could not dup FD %d", fd);
-> diff --git a/qemu-nbd.c b/qemu-nbd.c
-> index ed5895861b..db1a70b008 100644
-> --- a/qemu-nbd.c
-> +++ b/qemu-nbd.c
-> @@ -975,7 +975,7 @@ int main(int argc, char **argv)
->
->              /* Remember parent's stderr if we will be restoring it. */
->              if (opts.verbose /* fork_process is set */) {
-> -                opts.old_stderr =3D dup(STDERR_FILENO);
-> +                opts.old_stderr =3D qemu_dup(STDERR_FILENO);
->                  if (opts.old_stderr < 0) {
->                      error_report("Could not dup original stderr: %s",
->                                   strerror(errno));
-> diff --git a/system/vl.c b/system/vl.c
-> index 468a9fc247..9381e3d7f7 100644
-> --- a/system/vl.c
-> +++ b/system/vl.c
-> @@ -614,14 +614,7 @@ static int parse_add_fd(void *opaque, QemuOpts *opts=
-, Error **errp)
->          return -1;
->      }
->
-> -#ifdef F_DUPFD_CLOEXEC
-> -    dupfd =3D fcntl(fd, F_DUPFD_CLOEXEC, 0);
-> -#else
-> -    dupfd =3D dup(fd);
-> -    if (dupfd !=3D -1) {
-> -        qemu_set_cloexec(dupfd);
-> -    }
-> -#endif
-> +    dupfd =3D qemu_dup(fd);
->      if (dupfd =3D=3D -1) {
->          error_setg_errno(errp, errno, "error duplicating fd");
->          return -1;
-> diff --git a/ui/dmabuf.c b/ui/dmabuf.c
-> index 497f82cc61..6d5dffdf84 100644
-> --- a/ui/dmabuf.c
-> +++ b/ui/dmabuf.c
-> @@ -95,7 +95,7 @@ void qemu_dmabuf_dup_fds(QemuDmaBuf *dmabuf, int *fds, =
-int nfds)
->      assert(nfds >=3D dmabuf->num_planes);
->
->      for (i =3D 0; i < dmabuf->num_planes; i++) {
-> -        fds[i] =3D dmabuf->fd[i] >=3D 0 ? dup(dmabuf->fd[i]) : -1;
-> +        fds[i] =3D dmabuf->fd[i] >=3D 0 ? qemu_dup(dmabuf->fd[i]) : -1;
->      }
->  }
->
->
-> ---
-> base-commit: 615ece3c406b262996e569f29ea6eed0d81c4d8d
-> change-id: 20261012-use-qemu-dup-38628dbac3ee
->
-> Best regards,
-> --
-> Filip Hejsek <filip.hejsek@gmail.com>
->
+> 
+> I should have put this info in the commit message...
+> 
+> > > [...]
+> > 
+> > After review I think these changes are valid. These changes shouldn't
+> > impact the exec() code paths in qemu.
+> > 
+> > Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
+> > 
+> 
+> Thanks for reviewing this.
+> 
+> Filip
+> 
+
+With regards,
+Daniel
+-- 
+|: https://berrange.com       ~~        https://hachyderm.io/@berrange :|
+|: https://libvirt.org          ~~          https://entangle-photo.org :|
+|: https://pixelfed.art/berrange   ~~    https://fstop138.berrange.com :|
 
 
