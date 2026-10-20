@@ -1,60 +1,55 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0610960A2621
-	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Oct 2026 15:38:57 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 7FE2E606A32A
+	for <qemu-trivial@archiver.kernel.org>; Tue, 20 Oct 2026 15:43:00 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=tls.msk.ru header.i=@tls.msk.ru header.a=rsa-sha256 header.s=202602 header.b=gvu0rvSR
+	dkim=pass (2048-bit key, unprotected) header.d=tls.msk.ru header.i=@tls.msk.ru header.a=rsa-sha256 header.s=202602 header.b=bLqe4ocb
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1xJBuz-0006ua-90; Tue, 20 Oct 2026 11:38:25 -0400
+	id 1xJBzJ-0000ct-J7; Tue, 20 Oct 2026 11:42:54 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1xJBuw-0006pQ-JA; Tue, 20 Oct 2026 11:38:22 -0400
+ id 1xJBzF-0000c6-4H; Tue, 20 Oct 2026 11:42:49 -0400
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1xJBut-0007D2-OL; Tue, 20 Oct 2026 11:38:22 -0400
+ id 1xJBzC-0007ja-RV; Tue, 20 Oct 2026 11:42:48 -0400
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1792510687; bh=VSn8KT5xjc2UznQXqt09K3q8P+O29mz1YertO15/uzg=;
+ t=1792510962; bh=83ydbAwjL+omjB+1IVKaQlsD3ZjP2neSu73yMLyApFk=;
  h=Date:Subject:To:Cc:References:From:In-Reply-To;
- b=gvu0rvSRSIsrmHQVlxL5XHm5JxK2fcZ/miox0R+c2BGMZNDumPChNummCIu9KxwPZ
- Z5zb72D7d9cUxHWY3tb0z/4bkLbNstgEjcs5gpENct6wo6NgCVpSvPiGZj9fOjPN1t
- ToV9/PzM0cb9kp64eFoyO0V62a6DZkb4mjud2iUli87GTq943QBjUfBmXGagh6tiBD
- OUDiVD6IOEMUd6ihXjS3SOkTh2eM5cJaYlG+V1D7Kc/TnllSWgeG39X127QWDrUxp/
- 1+FwxF4HNVI67tiIP4VrO/gGNJB/PAYP7J04COqc1DySujsT4wnQ2A/Tky7/6rteN+
- EDIc2x8953UiQ==
+ b=bLqe4ocb6qBMUqBbPC5aT+cRjBpTJyQlGgY4VZknEteNtZnFOB9e815T3NB0ZTvK4
+ wlLvx4xXe/plyuESw83EpswRmM7gGLWJ6aHFn0tC1L00zCFqmVP5D/gPse/4LtGPPt
+ VO7hcEq4qOYxEwxDv3HffJhEOQRuBgZyJaMsC7FQMZHdMpi4EgyFVqh2r/uj3q324P
+ aD0Sw1VWq5zc5jetJwIIgH+NvzMQk0VCv+lyhj+0PvkqHwP9hDPF6JIy7At0DJkK6y
+ Kw3ECLTkC+U9F1Ic6gRdD69z+ylB3xZK5qSTlpBgd4YYBreBRPZWixoxbJg2pUOffg
+ OoBS9vu4H90oA==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 1E0691DF3B5;
- Tue, 20 Oct 2026 18:38:07 +0300 (MSK)
+ by isrv.corpit.ru (Postfix) with ESMTP id 106F21DF3BB;
+ Tue, 20 Oct 2026 18:42:42 +0300 (MSK)
 Received: from [192.168.177.130] (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 92003446579;
- Tue, 20 Oct 2026 18:38:06 +0300 (MSK)
-Message-ID: <d70fcc30-a9f7-4615-95de-610be38f9274@tls.msk.ru>
-Date: Tue, 20 Oct 2026 18:38:06 +0300
+ by tsrv.corpit.ru (Postfix) with ESMTP id BC3AC446580;
+ Tue, 20 Oct 2026 18:42:41 +0300 (MSK)
+Message-ID: <623429ea-d915-480c-bd76-3052d85bea7d@tls.msk.ru>
+Date: Tue, 20 Oct 2026 18:42:41 +0300
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
 User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH not-so-trivial v2] treewide: use qemu_dup() instead of
- dup()
-To: =?UTF-8?Q?Daniel_P=2E_Berrang=C3=A9?= <berrange@redhat.com>,
- Filip Hejsek <filip.hejsek@gmail.com>
-Cc: qemu-devel@nongnu.org, "Michael S. Tsirkin" <mst@redhat.com>,
- Paolo Bonzini <pbonzini@redhat.com>,
- =?UTF-8?Q?Marc-Andr=C3=A9_Lureau?= <marcandre.lureau@redhat.com>,
- Laurent Vivier <laurent@vivier.eu>, qemu-trivial@nongnu.org,
- Eric Blake <eblake@redhat.com>,
- Vladimir Sementsov-Ogievskiy <vsementsov@yandex-team.ru>,
- qemu-block@nongnu.org
-References: <20261013-use-qemu-dup-v2-1-12ecd94263b7@gmail.com>
- <as3lliIKDs6aTRnS@redhat.com>
+Subject: Re: [PATCH v2] hw/audio/fmopl.c: Convert malloc, free to g_malloc0,
+ g_new and g_free
+To: Peter Maydell <peter.maydell@linaro.org>,
+ Lucas Cardoso <luc.fast2004@gmail.com>
+Cc: qemu-devel@nongnu.org, kraxel@redhat.com, qemu-trivial@nongnu.org,
+ marcandre.lureau@redhat.com
+References: <20260428162048.2995097-1-luc.fast2004@gmail.com>
+ <CAFEAcA_77=_28DvN7R=ARg2ysW1UjSMnUSVYqZN8-Ge2ucY2vw@mail.gmail.com>
 Content-Language: en-US, ru-RU
 From: Michael Tokarev <mjt@tls.msk.ru>
-In-Reply-To: <as3lliIKDs6aTRnS@redhat.com>
+In-Reply-To: <CAFEAcA_77=_28DvN7R=ARg2ysW1UjSMnUSVYqZN8-Ge2ucY2vw@mail.gmail.com>
 Content-Type: text/plain; charset=UTF-8; format=flowed
-Content-Transfer-Encoding: 8bit
+Content-Transfer-Encoding: 7bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
 X-Spam_score_int: -19
@@ -81,29 +76,13 @@ X-Spam-Status: No, score=-7.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 10/13/26 11:02, Daniel P. Berrangé wrote:
-> On Tue, Oct 13, 2026 at 12:01:58AM +0200, Filip Hejsek wrote:
->> Use qemu_dup() to ensure the cloexec flag is set on dup'd fds.
->>
->> The following dup() instances were left unchanged:
->>
->>      FILE                     REASON
->>      util/osdep.c             implementation of qemu_dup
->>      migration/cpr-exec.c     fd is intentionally kept across exec
-> 
-> IMHO that should use qemu_dup() too, and then explicitly
-> clear the O_CLOEXEC flag so intended behaviour is clear.
-> Right now it looks like a mistaken failure to use qemu_dup.
-> 
->>      tests/*                  left for future work
-> 
-> Why not fix them now ? There are only a few uses which look suitable
-> to change.
+On 10/20/26 13:41, Peter Maydell wrote:
+[..]
+> MJT: are you OK with picking it up for -trivial ?
 
-I'd say let's apply this one and fix the rest later.
-
-I don't see a big need to do that in tests/ - if not only for
-consistency.
+I picked it up yesterday (now updated it with your R-b).
+There are just 3 patches in the trivial-patches queue, so
+it dunno when it'll reach the master branch ;)
 
 Thanks,
 
