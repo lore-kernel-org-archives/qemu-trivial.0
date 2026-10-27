@@ -1,58 +1,60 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E1B3B606A31A
-	for <qemu-trivial@archiver.kernel.org>; Sat, 24 Oct 2026 12:33:43 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0E412606A31A
+	for <qemu-trivial@archiver.kernel.org>; Tue, 27 Oct 2026 02:55:46 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key, unprotected) header.d=proton.me header.i=@proton.me header.a=rsa-sha256 header.s=protonmail2 header.b=i3crrRq1
+	dkim=pass (2048-bit key, unprotected) header.d=nh2.me header.i=@nh2.me header.a=rsa-sha256 header.s=mail header.b=pm1gg0+a
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1xKaw1-0007js-UA; Sat, 24 Oct 2026 08:33:28 -0400
+	id 1xLXLV-0004cE-Rz; Mon, 26 Oct 2026 22:55:30 -0400
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mehw.is.me@proton.me>)
- id 1xKSAu-00016J-PT
- for qemu-trivial@nongnu.org; Fri, 23 Oct 2026 23:12:04 -0400
-Received: from mail-06.mail-europe.com ([85.9.210.45])
+ (Exim 4.90_1) (envelope-from <mail@nh2.me>)
+ id 1xLXLE-0004az-Ob; Mon, 26 Oct 2026 22:55:14 -0400
+Received: from mail.nh2.me ([116.202.188.98])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <mehw.is.me@proton.me>)
- id 1xKSAs-0007Rh-3Q
- for qemu-trivial@nongnu.org; Fri, 23 Oct 2026 23:12:04 -0400
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=proton.me;
- s=protonmail2; t=1792811509; x=1793070709;
- bh=SeAEWKtYXttCKoeOd7H9vO6ZiMUsTaI2ix3/lxMEldw=;
- h=Date:To:From:Cc:Subject:Message-ID:Feedback-ID:From:To:Cc:Date:
- Subject:Reply-To:Feedback-ID:Message-ID:BIMI-Selector;
- b=i3crrRq11mgo3M470Pk/cUsIWJdpoQ9nTn56gJo1uW5xpxHwwLBjZJy1NP7Yif7WQ
- Ve0Yc3ofnXftFGx8M25rItsNBVYtTdrPh81i+jKtmggxChmfDGDYr6pCpAm3t7D931
- jPQ+PV4+i2tngpB8afGAxMoXP/hAF4EOHpfgNNA0rDqNTreDlcE8bG9JN+ZHcfuYtf
- kPz1en8e42uqAmWqeseSIoTzXLEsMrF4jp4rrRlqTJjQOA9rBBE5dIRzFMjP8+VOiY
- 79Tg0F0/LwLTTKmR7JJCK+AI5ZEYGEoW3SsYpRG2vdqMI3hRGl+V7/KnXxPlMViwmc
- by7GYhiaa8c4Q==
-Date: Sat, 24 Oct 2026 03:11:46 +0000
-To: "qemu-devel@nongnu.org" <qemu-devel@nongnu.org>
-From: Matthew White <mehw.is.me@proton.me>
-Cc: "qemu-trivial@nongnu.org" <qemu-trivial@nongnu.org>
-Subject: [PATCH] configure: --disable-containers should prevent `docker.py
- probe`
-Message-ID: <hKx77zqhBpdBpNwknGTIJKnuItYep_9IN8RxpWG8PpKt02ncFgkx1HX0VE24agoa31lYrMB8g_y5C6pqW-1nu2oQiwyepSe3eWDsescwVSM=@proton.me>
-Feedback-ID: 220061500:user:proton
-X-Pm-Message-ID: f6825025b288e8b9d7e5e56125b3c75b82184434
+ (Exim 4.90_1) (envelope-from <mail@nh2.me>)
+ id 1xLXLC-0005HS-LM; Mon, 26 Oct 2026 22:55:12 -0400
+Message-ID: <4ddf5981-4748-4519-b367-98d2a528b99b@nh2.me>
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=nh2.me; s=mail;
+ t=1793069704;
+ h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+ to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+ content-transfer-encoding:content-transfer-encoding:
+ in-reply-to:in-reply-to:references:references;
+ bh=3EqrxicweeIB9trcEaBw8JyxDP8w6nP8GfyykeE069Y=;
+ b=pm1gg0+aS83SH6iMthlMiprKaJs/ZvPwdreaUIKbb0Sro/Rzpz8Mlj9HUHeMObUMpS7eET
+ xSsOiY462X1RBkrrgAbjoAIiNGfXYLzF/nUB1uiUulu4RSGqfdGNcU73XsDtZCrWzscxrm
+ 025o6OroThB2/mx+w1ONbu+nzuUlz8lp93MAujpijc1X/KAZqmqgwXyUWxCddDSqDyENsi
+ c8nCxMtZ4Pc1r9+E68/UtfP1C3s5r42pNZVYAzhAqvWRTa59EEeU6Hj25wTkWlRTd5L1YM
+ 8FGgz0BhKIzz1hn2hPNGyk2n65mEUyxfxt7hIfIdUAHEtP9zRnqz4qSsZBubmQ==
+Date: Tue, 27 Oct 2026 03:55:03 +0100
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=utf-8
-Content-Transfer-Encoding: quoted-printable
-Received-SPF: pass client-ip=85.9.210.45; envelope-from=mehw.is.me@proton.me;
- helo=mail-06.mail-europe.com
-X-Spam_score_int: -9
-X-Spam_score: -1.0
-X-Spam_bar: -
-X-Spam_report: (-1.0 / 5.0 requ) AC_FROM_MANY_DOTS=1.123, BAYES_00=-1.9,
- DKIM_SIGNED=0.1, DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- SPF_HELO_NONE=0.001, SPF_PASS=-0.001 autolearn=no autolearn_force=no
+Subject: Re: [PATCH] net/slirp: Fix incorrect permissions on samba >= 2.0.5
+From: =?UTF-8?Q?Niklas_Hamb=C3=BCchen?= <mail@nh2.me>
+To: QEMU Developers <qemu-devel@nongnu.org>,
+ qemu-stable <qemu-stable@nongnu.org>, QEMU Trivial <qemu-trivial@nongnu.org>
+Cc: Peter Maydell <peter.maydell@linaro.org>
+References: <c2b98872-4649-c291-bfb2-0fd5b3d40ac4@nh2.me>
+ <CAFEAcA-TxOys5d=SAqwqU749j3-UoBf+WsWpMYZW_35w1r2ypQ@mail.gmail.com>
+ <55c9d253-8f4c-cd06-77b4-fbbb26cda619@nh2.me>
+ <c1c454bb-bf22-c985-5aba-0c7ffb3cb759@nh2.me>
+Content-Language: en-US
+In-Reply-To: <c1c454bb-bf22-c985-5aba-0c7ffb3cb759@nh2.me>
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+Received-SPF: pass client-ip=116.202.188.98; envelope-from=mail@nh2.me;
+ helo=mail.nh2.me
+X-Spam_score_int: -20
+X-Spam_score: -2.1
+X-Spam_bar: --
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1, SPF_HELO_PASS=-0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Sat, 24 Oct 2026 08:33:02 -0400
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -63,77 +65,26 @@ List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-15.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-5.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS autolearn=unavailable autolearn_force=no version=4.0.1
+	MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS autolearn=no
+	autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From bfd8cd877b563bc27263f1384843fb669baae509 Mon Sep 17 00:00:00 2001
-From: Matthew White <mehw.is.me@proton.me>
-Date: Fri, 23 Oct 2026 23:24:14 +0000
-Subject: [PATCH] configure: --disable-containers should prevent `docker.py
- probe`
+Hello,
 
-Upstream commit c4ce04cfb7460d46c0262d437a7f35bb5c5fc449 changed the
-configure file to set container_command regardless of use_containers.
-As a result, it runs `docker.py probe` to detect a Docker-compatible
-application, such as Podman, even when --disable-containers is used.
+I would like to follow up on my 5-years old 2-line patch that so far hasn't seen much review and fixes the QEMU + Samba integration.
 
-On Gentoo, this reopens https://bugs.gentoo.org/732972.  As reported
-in https://bugs.gentoo.org/984747, the `docker.py probe` command can
-trigger SANDBOX ACCESS VIOLATION errors under QEMU v11.1.2:
+Much appreciated!
+Niklas
 
- * ACCESS DENIED:  open_wr_creat: /var/lib/rpm/rpmdb.sqlite-wal
- * ACCESS DENIED:  fchown:        /var/lib/rpm/rpmdb.sqlite-wal
- ...
-
-This patch is to prevent `docker.py probe` from running and to clear
-container_command when --disable-containers is used.
-
-Buglink: https://bugs.gentoo.org/984747
-Signed-off-by: Matthew White <mehw.is.me@proton.me>
----
- configure | 17 +++++++++++------
- 1 file changed, 11 insertions(+), 6 deletions(-)
-
-diff --git a/configure b/configure
-index af14a9c23e..d38268e340 100755
---- a/configure
-+++ b/configure
-@@ -1277,12 +1277,17 @@ fi
- ##########################################
- # functions to probe cross compilers
-
--if test "$container_command" =3D ""; then
--    container_command=3D$($python "$source_path"/tests/docker/docker.py pr=
-obe)
--    test "$container_command" =3D "no" && container_command=3D""
--fi
--if test $use_containers =3D "yes" && test "$container_command" !=3D ""; th=
-en
--    docker_py=3D"$python $source_path/tests/docker/docker.py --command $co=
-ntainer_command"
-+if test $use_containers =3D "yes"; then
-+    if test "$container_command" =3D ""; then
-+        container_command=3D$($python "$source_path"/tests/docker/docker.p=
-y probe)
-+        test "$container_command" =3D "no" && container_command=3D""
-+    fi
-+    if test "$container_command" !=3D ""; then
-+        docker_py=3D"$python $source_path/tests/docker/docker.py --command=
- $container_command"
-+    fi
-+else
-+    # the option --disable-containers should override and disable --contai=
-ner-command
-+    container_command=3D""
- fi
-
- # cross compilers defaults, can be overridden with --cross-cc-ARCH
---
-2.56.0
-
+On 2021-12-06 19:25, Niklas Hambüchen wrote:
+> Hey all,
+> 
+> just checking on an update. It would be great if this could be included in the coming/next QEMU release.
+> 
+> Cheers!
+> Niklas
 
 
