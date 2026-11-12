@@ -1,53 +1,52 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E806B606A321
-	for <qemu-trivial@archiver.kernel.org>; Thu, 12 Nov 2026 18:47:48 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 9D9DD606A321
+	for <qemu-trivial@archiver.kernel.org>; Thu, 12 Nov 2026 18:47:52 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=tls.msk.ru header.i=@tls.msk.ru header.a=rsa-sha256 header.s=202602 header.b=ur1e9dyx
+	dkim=pass (2048-bit key) header.d=tls.msk.ru header.i=@tls.msk.ru header.a=rsa-sha256 header.s=202602 header.b=QYi3YX0c
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1xRZnr-0006AQ-Ap; Thu, 12 Nov 2026 13:45:43 -0500
+	id 1xRZnu-0006Ek-LF; Thu, 12 Nov 2026 13:45:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1xRZne-0005ye-1q; Thu, 12 Nov 2026 13:45:31 -0500
+ id 1xRZnl-00064X-SM; Thu, 12 Nov 2026 13:45:37 -0500
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1xRZna-0003Ql-AT; Thu, 12 Nov 2026 13:45:29 -0500
+ id 1xRZnk-0003eK-1k; Thu, 12 Nov 2026 13:45:37 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1794509113; bh=aBEhcjk6o/6oQ4ewrGXzqDuryr/LtYKBeu3C+MTnkjs=;
+ t=1794509113; bh=hcOYx8NlulQA7fYgRuOQMjk3eBYQiUUNtmBCNBNgsAU=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=ur1e9dyxW7aq3+azCRopoQogMaxwZ6GpH+jeWxSzgybQ7wegLby7/B0DbeU/ob/5N
- zDEfXhjBnPibXXRjOkI+3D00X/THlzf4wk3SZgEvqzC7y4yCVtAeVPEfy8/pl6umgD
- mbY088YmapQ5S4mv2dtAZzh0Krw4RxrsUaBEciUcVrYjb0egiP+5Rm3yJNv7r8jQkn
- MQOeZETE3NlQpCLgf679l5Oe4g2LnHKTZiTmffSMHxOHz1RLKbxCZsrvhscdC+9Mw+
- qVIEcz5ljKtJZVsTZawRw442hZX+UvGJXET347+YMRHvIqkZn4VJMbOwL4ZJ4k0SwS
- zW3DSfgUGgzAw==
+ b=QYi3YX0chnEW0052OHULNmQcu84O3DvSvoVydJxVXl7PCq6obk4HUYQ5uDqQGoBrV
+ kUDp1DYhLZ4iiXtNQQ51HivZs41+TzEiXhLUixbIX8taj0E9NuaPpBHuAGBTVgClJ3
+ 6IdZ4nZ64AGPzz22NPdPGoAyT8tz0S7tuGzqY6U/iuQUi4ZT/7706EKSRNqVLh77cX
+ 9SISsZL4evwdbsOj9DnB9rXj2vHvdZ+6udKZJsxf+kdRcPnTAPx9RORBknfbl/+RSR
+ Nct4oLHuCzRMGVo59glPdJbLzxQSfbhNpjnZQ+ikxQxOuhtgqeof5fHEifupVV328n
+ 6ATijkds1RIAQ==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 80D1E1E5D1D;
+ by isrv.corpit.ru (Postfix) with ESMTP id 8D75A1E5D21;
  Thu, 12 Nov 2026 21:45:13 +0300 (MSK)
 Received: from gandalf.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 7043C45AAD7;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 8BC7245AADB;
  Thu, 12 Nov 2026 21:45:13 +0300 (MSK)
 Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
- id 50F14B7C50; Thu, 12 Nov 2026 21:45:13 +0300 (MSK)
+ id 5A457B7C58; Thu, 12 Nov 2026 21:45:13 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: Lucas Cardoso <luc.fast2004@gmail.com>, qemu-trivial@nongnu.org,
+Cc: Matthew White <mehw.is.me@proton.me>, qemu-trivial@nongnu.org,
  Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 2/6] hw/audio/fmopl.c: Convert malloc, free to g_malloc0,
- g_new and g_free
-Date: Thu, 12 Nov 2026 21:45:05 +0300
-Message-ID: <20261112184513.2324634-3-mjt@tls.msk.ru>
+Subject: [PULL 6/6] configure: --disable-containers should prevent `docker.py
+ probe`
+Date: Thu, 12 Nov 2026 21:45:09 +0300
+Message-ID: <20261112184513.2324634-7-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20261112184513.2324634-1-mjt@tls.msk.ru>
 References: <20261112184513.2324634-1-mjt@tls.msk.ru>
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Type: text/plain; charset=UTF-8
 Content-Transfer-Encoding: 8bit
 Received-SPF: pass client-ip=212.248.84.144; envelope-from=mjt@tls.msk.ru;
  helo=isrv.corpit.ru
@@ -68,109 +67,68 @@ List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-23.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,
-	MENTIONS_GIT_HOSTING,SPF_HELO_PASS,SPF_PASS,USER_AGENT_GIT
-	autolearn=ham autolearn_force=no version=4.0.1
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_GIT autolearn=unavailable autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Lucas Cardoso <luc.fast2004@gmail.com>
+From: Matthew White <mehw.is.me@proton.me>
 
-In accordance with QEMU's coding style guidelines, replace raw memory
-allocation functions (malloc/free) with their GLib equivalents
-(g_new/g_malloc0/g_free/g_clear_pointer).
+Upstream commit c4ce04cfb7460d46c0262d437a7f35bb5c5fc449 changed the
+configure file to set container_command regardless of use_containers.
+As a result, it runs `docker.py probe` to detect a Docker-compatible
+application, such as Podman, even when --disable-containers is used.
 
-Also removes the old generic error-handling code from
-OPLOpenTable(), since the Glib functions abort the program automatically
-if memory is exhausted.
+On Gentoo, this reopens https://bugs.gentoo.org/732972.  As reported
+in https://bugs.gentoo.org/984747, the `docker.py probe` command can
+trigger SANDBOX ACCESS VIOLATION errors under QEMU v11.1.2:
 
-Resolves: https://gitlab.com/qemu-project/qemu/-/work_items/1798
-Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
-Signed-off-by: Lucas Cardoso <luc.fast2004@gmail.com>
-Reviewed-by: Peter Maydell <peter.maydell@linaro.org>
+ * ACCESS DENIED:  open_wr_creat: /var/lib/rpm/rpmdb.sqlite-wal
+ * ACCESS DENIED:  fchown:        /var/lib/rpm/rpmdb.sqlite-wal
+ ...
+
+This patch is to prevent `docker.py probe` from running and to clear
+container_command when --disable-containers is used.
+
+Buglink: https://bugs.gentoo.org/984747
+Signed-off-by: Matthew White <mehw.is.me@proton.me>
 Reviewed-by: Michael Tokarev <mjt@tls.msk.ru>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- hw/audio/fmopl.c | 43 ++++++++++++-------------------------------
- 1 file changed, 12 insertions(+), 31 deletions(-)
+ configure | 17 +++++++++++------
+ 1 file changed, 11 insertions(+), 6 deletions(-)
 
-diff --git a/hw/audio/fmopl.c b/hw/audio/fmopl.c
-index a63ad0f04d5..91fe806fd66 100644
---- a/hw/audio/fmopl.c
-+++ b/hw/audio/fmopl.c
-@@ -607,26 +607,10 @@ static int OPLOpenTable( void )
- 	double pom;
+diff --git a/configure b/configure
+index af14a9c23ef..d38268e340f 100755
+--- a/configure
++++ b/configure
+@@ -1277,12 +1277,17 @@ fi
+ ##########################################
+ # functions to probe cross compilers
  
- 	/* allocate dynamic tables */
--	if( (TL_TABLE = malloc(TL_MAX*2*sizeof(int32_t))) == NULL)
--		return 0;
--	if( (SIN_TABLE = malloc(SIN_ENT*4 *sizeof(int32_t *))) == NULL)
--	{
--		free(TL_TABLE);
--		return 0;
--	}
--	if( (AMS_TABLE = malloc(AMS_ENT*2 *sizeof(int32_t))) == NULL)
--	{
--		free(TL_TABLE);
--		free(SIN_TABLE);
--		return 0;
--	}
--	if( (VIB_TABLE = malloc(VIB_ENT*2 *sizeof(int32_t))) == NULL)
--	{
--		free(TL_TABLE);
--		free(SIN_TABLE);
--		free(AMS_TABLE);
--		return 0;
--	}
-+    TL_TABLE = g_new(int32_t, TL_MAX * 2);
-+    SIN_TABLE = g_new(int32_t *, SIN_ENT * 4);
-+    AMS_TABLE = g_new(int32_t, AMS_ENT * 2);
-+    VIB_TABLE = g_new(int32_t, VIB_ENT * 2);
-     ENV_CURVE = g_new(int32_t, 2 * EG_ENT + 1);
- 	/* make total level table */
- 	for (t = 0;t < EG_ENT-1 ;t++){
-@@ -695,11 +679,11 @@ static int OPLOpenTable( void )
+-if test "$container_command" = ""; then
+-    container_command=$($python "$source_path"/tests/docker/docker.py probe)
+-    test "$container_command" = "no" && container_command=""
+-fi
+-if test $use_containers = "yes" && test "$container_command" != ""; then
+-    docker_py="$python $source_path/tests/docker/docker.py --command $container_command"
++if test $use_containers = "yes"; then
++    if test "$container_command" = ""; then
++        container_command=$($python "$source_path"/tests/docker/docker.py probe)
++        test "$container_command" = "no" && container_command=""
++    fi
++    if test "$container_command" != ""; then
++        docker_py="$python $source_path/tests/docker/docker.py --command $container_command"
++    fi
++else
++    # the option --disable-containers should override and disable --container-command
++    container_command=""
+ fi
  
- static void OPLCloseTable( void )
- {
--    g_free(ENV_CURVE);
--	free(TL_TABLE);
--	free(SIN_TABLE);
--	free(AMS_TABLE);
--	free(VIB_TABLE);
-+    g_clear_pointer(&ENV_CURVE, g_free);
-+    g_clear_pointer(&TL_TABLE, g_free);
-+    g_clear_pointer(&SIN_TABLE, g_free);
-+    g_clear_pointer(&AMS_TABLE, g_free);
-+    g_clear_pointer(&VIB_TABLE, g_free);
- }
- 
- /* CSM Key Control */
-@@ -1081,11 +1065,8 @@ FM_OPL *OPLCreate(int clock, int rate)
- 	/* allocate OPL state space */
- 	state_size  = sizeof(FM_OPL);
- 	state_size += sizeof(OPL_CH)*max_ch;
--	/* allocate memory block */
--	ptr = malloc(state_size);
--	if(ptr==NULL) return NULL;
--	/* clear */
--	memset(ptr,0,state_size);
-+    /* allocate memory block and zero-initialize */
-+    ptr = g_malloc0(state_size);
- 	OPL        = (FM_OPL *)ptr; ptr+=sizeof(FM_OPL);
- 	OPL->P_CH  = (OPL_CH *)ptr; ptr+=sizeof(OPL_CH)*max_ch;
- 	/* set channel state pointer */
-@@ -1128,7 +1109,7 @@ void OPLDestroy(FM_OPL *OPL)
- 	}
- #endif
- 	OPL_UnLockTable();
--	free(OPL);
-+    g_free(OPL);
- }
- 
- /* ----------  Option handlers ----------       */
+ # cross compilers defaults, can be overridden with --cross-cc-ARCH
 -- 
 2.47.3
 
