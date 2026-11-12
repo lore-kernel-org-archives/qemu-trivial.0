@@ -1,46 +1,47 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 85121606A31C
-	for <qemu-trivial@archiver.kernel.org>; Thu, 12 Nov 2026 18:47:09 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 0DFC4606A321
+	for <qemu-trivial@archiver.kernel.org>; Thu, 12 Nov 2026 18:47:23 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=tls.msk.ru header.i=@tls.msk.ru header.a=rsa-sha256 header.s=202602 header.b=iddOgLV2
+	dkim=pass (2048-bit key) header.d=tls.msk.ru header.i=@tls.msk.ru header.a=rsa-sha256 header.s=202602 header.b=wAd0SCVk
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1xRZns-0006Co-Om; Thu, 12 Nov 2026 13:45:44 -0500
+	id 1xRZnt-0006DY-UE; Thu, 12 Nov 2026 13:45:46 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1xRZni-000639-3c; Thu, 12 Nov 2026 13:45:34 -0500
+ id 1xRZnk-00063t-0I; Thu, 12 Nov 2026 13:45:36 -0500
 Received: from isrv.corpit.ru ([212.248.84.144])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
  (Exim 4.90_1) (envelope-from <mjt@tls.msk.ru>)
- id 1xRZne-0003dh-3Z; Thu, 12 Nov 2026 13:45:32 -0500
+ id 1xRZnf-0003dv-Sy; Thu, 12 Nov 2026 13:45:34 -0500
 DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/simple; d=tls.msk.ru; s=202602;
- t=1794509113; bh=BE51UgrGdVo4lbgb4ETKy4l1u2NvIZGz/w1s6R7MEjI=;
+ t=1794509113; bh=vHn8K/EoqgaPkMjjbpymL1EIGb5873t1DRVvitevql0=;
  h=From:To:Cc:Subject:Date:In-Reply-To:References;
- b=iddOgLV2Rrt+aFEM3kRgnK4g3Y6oWECTxhWSJiNsXkziV3XhEgdhnCOM17fitjBKz
- K3Ygne3KRKYOdrjQ7cuuN8CTniepswxgDdYMnII5dEW6tIXDxZxbVFNi4JyC5RhwsQ
- iipaGKY5Uy9c5r8EYlnguuoqOnuFldv/Cl+hPuvfeXCLQ/aE1CrEWq4NpzhKBflWit
- AfZvMK8S85K/8I9YcXW8q2bArNGJfsLJhDakCB6vmtnVBMnveN6e3iC2Apch+qfNYh
- GJqKQhSY5pGWldYXHHMY5vXemQKdWnymkZDNLRqEqXwV0iio9w0MD8cPMuCw14pyl0
- 6F9ESGd5vfD5A==
+ b=wAd0SCVkS2fEvq4/fd0WNitFsexFRCWoHa8x6KIoJNvcAqPMHCy2cUH0J5BK2A9KC
+ RxGM4BrV6iunL9U6OnNb33ZP+y8Vpf6Q4duQuER5bQbaKjsyM7HkoI9g/cs3KVyePn
+ TBULFvicaaNUeIwdcBUgtdAyxSJRSCGpT9Lj/hMnRh2s5YBODdDrzqMsA04lvydGQI
+ 5esptvhq6PlKIddNkv1z16MlK+2b1yuCZJyEu3arX1MLVrc74X0wBi4rSa2MC+juWF
+ QWvKqCj54uDrH6IDvMDJidtZbO58C9FOfjgTMsF2+g2RyDfK2L2a3uCOJXsVRqo7ss
+ 2Cie0Q58f7VaA==
 Received: from tsrv.corpit.ru (tsrv.tls.msk.ru [192.168.177.2])
- by isrv.corpit.ru (Postfix) with ESMTP id 859841E5D1F;
+ by isrv.corpit.ru (Postfix) with ESMTP id 89C811E5D20;
  Thu, 12 Nov 2026 21:45:13 +0300 (MSK)
 Received: from gandalf.tls.msk.ru (mjt.wg.tls.msk.ru [192.168.177.130])
- by tsrv.corpit.ru (Postfix) with ESMTP id 7ED5745AAD9;
+ by tsrv.corpit.ru (Postfix) with ESMTP id 855DA45AADA;
  Thu, 12 Nov 2026 21:45:13 +0300 (MSK)
 Received: by gandalf.tls.msk.ru (Postfix, from userid 1000)
- id 55B03B7C54; Thu, 12 Nov 2026 21:45:13 +0300 (MSK)
+ id 57F3FB7C56; Thu, 12 Nov 2026 21:45:13 +0300 (MSK)
 From: Michael Tokarev <mjt@tls.msk.ru>
 To: qemu-devel@nongnu.org
-Cc: =?UTF-8?q?Alex=20Benn=C3=A9e?= <alex.bennee@linaro.org>,
- qemu-trivial@nongnu.org, Michael Tokarev <mjt@tls.msk.ru>
-Subject: [PULL 4/6] MAINTAINERS: fix typo in Gerd's name
-Date: Thu, 12 Nov 2026 21:45:07 +0300
-Message-ID: <20261112184513.2324634-5-mjt@tls.msk.ru>
+Cc: Markus Armbruster <armbru@redhat.com>, qemu-trivial@nongnu.org,
+ Michael Tokarev <mjt@tls.msk.ru>
+Subject: [PULL 5/6] hw/audio/intel-hda: Belatedly update comment for removal
+ of -soundhw
+Date: Thu, 12 Nov 2026 21:45:08 +0300
+Message-ID: <20261112184513.2324634-6-mjt@tls.msk.ru>
 X-Mailer: git-send-email 2.47.3
 In-Reply-To: <20261112184513.2324634-1-mjt@tls.msk.ru>
 References: <20261112184513.2324634-1-mjt@tls.msk.ru>
@@ -75,28 +76,33 @@ X-Spam-Status: No, score=-18.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-From: Alex Bennée <alex.bennee@linaro.org>
+From: Markus Armbruster <armbru@redhat.com>
 
-Signed-off-by: Alex Bennée <alex.bennee@linaro.org>
-Reviewed-by: Gustavo Romero <gromero@redhat.com>
+Comment is stale since commit 039a68373c4 (introduce -audio as a
+replacement for -soundhw).
+
+Signed-off-by: Markus Armbruster <armbru@redhat.com>
+Reviewed-by: Marc-André Lureau <marcandre.lureau@redhat.com>
 Signed-off-by: Michael Tokarev <mjt@tls.msk.ru>
 ---
- MAINTAINERS | 2 +-
- 1 file changed, 1 insertion(+), 1 deletion(-)
+ hw/audio/intel-hda.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
 
-diff --git a/MAINTAINERS b/MAINTAINERS
-index fa0c6d0c9bc..3d53e104c5b 100644
---- a/MAINTAINERS
-+++ b/MAINTAINERS
-@@ -2945,7 +2945,7 @@ F: tests/qtest/vmgenid-test.c
+diff --git a/hw/audio/intel-hda.c b/hw/audio/intel-hda.c
+index 3d361a4976c..431deb22113 100644
+--- a/hw/audio/intel-hda.c
++++ b/hw/audio/intel-hda.c
+@@ -1303,8 +1303,8 @@ static const TypeInfo hda_codec_device_type_info = {
+ };
  
- VM Launch Update
- M: Ani Sinha <anisinha@redhat.com>
--M: Gerd Hoffman <kraxel@redhat.com>
-+M: Gerd Hoffmann <kraxel@redhat.com>
- S: Maintained
- F: hw/misc/vmlaunchupdate.c
- F: include/hw/misc/vmlaunchupdate.h
+ /*
+- * create intel hda controller with codec attached to it,
+- * so '-soundhw hda' works.
++ * Create intel hda controller with codec attached to it,
++ * so '-audio model=hda' works.
+  */
+ static void intel_hda_and_codec_init(const char *audiodev)
+ {
 -- 
 2.47.3
 
