@@ -1,147 +1,111 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 2CDA7606A320
-	for <qemu-trivial@archiver.kernel.org>; Thu, 19 Nov 2026 11:52:49 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E5F77606A32C
+	for <qemu-trivial@archiver.kernel.org>; Thu, 19 Nov 2026 12:57:44 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=qualcomm.com header.i=@qualcomm.com header.a=rsa-sha256 header.s=qcppdkim1 header.b=Haa4NNvC;
-	dkim=pass (2048-bit key) header.d=oss.qualcomm.com header.i=@oss.qualcomm.com header.a=rsa-sha256 header.s=google header.b=dCHCZ/sk
+	dkim=pass (2048-bit key) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256 header.s=pp1 header.b=kmRCEhzC
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1xU0gZ-00043L-Jz; Thu, 19 Nov 2026 06:52:15 -0500
+	id 1xU1hq-00031L-Vq; Thu, 19 Nov 2026 07:57:39 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xU0gV-00042X-OR
- for qemu-trivial@nongnu.org; Thu, 19 Nov 2026 06:52:12 -0500
-Received: from mx0b-0031df01.pphosted.com ([205.220.180.131])
+ (Exim 4.90_1) (envelope-from <rathc@linux.ibm.com>)
+ id 1xTzIs-0006BR-76; Thu, 19 Nov 2026 05:23:42 -0500
+Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
  by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <philmd@oss.qualcomm.com>)
- id 1xU0gS-0002WK-KC
- for qemu-trivial@nongnu.org; Thu, 19 Nov 2026 06:52:10 -0500
-Received: from pps.filterd (m0279870.ppops.net [127.0.0.1])
- by mx0a-0031df01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AJBkujw2685438
- for <qemu-trivial@nongnu.org>; Thu, 19 Nov 2026 11:52:06 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=qualcomm.com; h=
- cc:content-transfer-encoding:content-type:date:from:in-reply-to
- :message-id:mime-version:references:subject:to; s=qcppdkim1; bh=
- 6L1awVFHnc47newONQa9idSQGjI5CKhtHK/3iZ74hS0=; b=Haa4NNvCIH6TagGF
- SqzLFMd9SkBiJf+8VXJ5CcjHdjCZdanIi5psFGeZMRXqePVCsAbs5wZsDVSrBQCz
- TbIqV3H/RY8i7RPgIDkbhBP5ia6l2oJ4oH00VQMgEnr3p/zhQyCVFvn851R6qJUi
- nrQK2BSYYO3OY7vNI0V70b4HZ/X3505AOWREReVgYRPaeKdaY8ZZfeHFT9zg/JU4
- bUGIu9+dy51WoLXRSS/U9hybdCTg6C3L66EozAwbFad2jmuIqgeCwTpgxFlQzux6
- WFGWT2hH9VmcwYYJ6rfkBGQGz+Fb8vyKV+8NeSrZ5NpBGFSiS4ohofPi3gak2Xza
- BgMisA==
-Received: from mail-qk1-f197.google.com (mail-qk1-f197.google.com
- [209.85.222.197])
- by mx0a-0031df01.pphosted.com (PPS) with ESMTPS id 4j20gu80u7-1
- (version=TLSv1.3 cipher=TLS_AES_128_GCM_SHA256 bits=128 verify=NOT)
- for <qemu-trivial@nongnu.org>; Thu, 19 Nov 2026 11:52:06 +0000 (GMT)
-Received: by mail-qk1-f197.google.com with SMTP id
- af79cd13be357-93f2373e9b4so272083885a.1
- for <qemu-trivial@nongnu.org>; Thu, 19 Nov 2026 03:52:06 -0800 (PST)
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=oss.qualcomm.com; s=google; t=1795089126; x=1795693926; darn=nongnu.org;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
- bh=6L1awVFHnc47newONQa9idSQGjI5CKhtHK/3iZ74hS0=;
- b=dCHCZ/skZArs0lanDNLDHHXR4KxKplivM4rKa0EOjSp5f2q9A7EyuJzNbk6tzACjDN
- T3BEuFVeY6a6BXJvvTgp+jaSbldf47Yvco6dw5q4Tr72Hv0CLvfnbqrz+nf8vJQNwOg+
- SCtL2fTel36jfKdbBPwOTkT8mNhXzYXZaI62SV06R+hCFjtLkrdvDoloPmDgFtcxtFvc
- zGX5XcntKPl2Z+zYcdabRMxuvv8EtqM5FRgknT0jCdZdB9kZbo32ZbcojG8sfC4ofQ2R
- SWAaGBjgPHFW+WgGRot3ixzLIk4zmbWVXABeU8cm+Qp8ruN7QlAHQPZo53SEkFYsgJcu
- J25Q==
-X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
- d=1e100.net; s=20260707; t=1795089126; x=1795693926;
- h=content-transfer-encoding:content-type:in-reply-to:content-language
- :from:references:cc:to:subject:user-agent:mime-version:date
- :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
- :message-id:reply-to:content-type;
- bh=6L1awVFHnc47newONQa9idSQGjI5CKhtHK/3iZ74hS0=;
- b=BnOeUB7x2FIaJAE2zuP2cQoc4U7bDMWOEeUTBNIkLkHf7lQ1Aq4Etk8v02ILYcns7p
- DMvabBcOLgDg1vsuw0a9cz9it0Hk3lWEJlj2VlITzci6LqwDVhK55/ArH7PKPFtCKUfB
- aiacGP/lbYUFSzld4XMDxM2l+KhbGElh3m7QHFNI3fE3X5zs9a7WsroQtX7Hu47V8417
- 3exmQXxr/0Y4hCmFQjglsBNTa7sm342rJGCBJ+QZX2HDRhHfJeXbVio5PbrwHYQ0EZ4s
- qsb6Rl6xzrO+RFJjhWt/zcSHPTutw+0cBbxa2kgh0uQJ4e1AsAwYdV51bdy7by4UyPVD
- BHZA==
-X-Forwarded-Encrypted: i=1;
- AL+hErGv3JpaMp9ofosBh6WArDogsnf5rn/+nEJA2WKZ/lLVE9dhXRZafsdUPKZ9lvEEz1tBxJuymqEXEncQqNQ=@nongnu.org
-X-Gm-Message-State: APuU4Z9ZF5OL+gjvtQOLayk4XKf3u9IWUVeRKBOWr7yU5LmZCwVmk7Md
- 71MBnYmkJ6hbXRfs8UMzyYieFZVHdRHp7VffRnu5OcztK+d6qLkIHwUQOUNiApjxC1A5zAdtDbH
- BNCckXveWCFBE9L3nmqghMpghv3NhhGv9kK1Mtf60MoGDn/vgo238321E1Lj+
-X-Gm-Gg: AYBFou1ntBSjOeGQccjEfBm5j0ZUdBKubJCzrpoLtEbRVmYRM6wKlekdBue/znSH721
- lzW/WuX11Dpe+1w+3lcFImkpFCXcg68GTj64EL4AoE5KO4b9O1Qg87GozmqUBjZvmOM/ql/y9F4
- ibk6php6T08Q7Um/RmekiNNcKJseZKMObAODR0vUD75uegSCdToCV/lIYxSMCN7U5VdPL34dX64
- XfKsorWgAtHzXOPcboOk5Ah20JvdpzswasH1m8QWNJojsMHShN6Sy8K5neOXXFizJ/aJRheFkla
- 2EYzXHRsaUIXNITqqc3dVAnDKMM5St+CHaTTFDzOmUCpTQ4Wts2+Ob8uL+ulTUIE9lLB7FuNKm+
- lMpElIcdPGWsYuhvDDm5kj7TbM4mt7SK+CNTkRDSbAi4/YAuLy64n2jKZyMYhJI4kSNnz
-X-Received: by 2002:a05:620a:710b:b0:93e:c12c:fbcd with SMTP id
- af79cd13be357-949996676d3mr1021738185a.73.1795089125983; 
- Thu, 19 Nov 2026 03:52:05 -0800 (PST)
-X-Received: by 2002:a05:620a:710b:b0:93e:c12c:fbcd with SMTP id
- af79cd13be357-949996676d3mr1021735285a.73.1795089125539; 
- Thu, 19 Nov 2026 03:52:05 -0800 (PST)
-Received: from [192.168.0.4] ([79.127.134.54])
- by smtp.gmail.com with ESMTPSA id
- ffacd0b85a97d-4a6573baa9fsm10936066f8f.57.2026.11.19.03.52.03
- (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
- Thu, 19 Nov 2026 03:52:04 -0800 (PST)
-Message-ID: <73a21e12-6d5c-4a81-8e7d-c7e8be8004ca@oss.qualcomm.com>
-Date: Thu, 19 Nov 2026 12:52:02 +0100
+ (Exim 4.90_1) (envelope-from <rathc@linux.ibm.com>)
+ id 1xTzIq-0004Rp-IL; Thu, 19 Nov 2026 05:23:41 -0500
+Received: from pps.filterd (m0356517.ppops.net [127.0.0.1])
+ by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6AJ6uQPS3436183; Thu, 19 Nov 2026 10:23:35 GMT
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
+ :content-transfer-encoding:date:from:message-id:mime-version
+ :subject:to; s=pp1; bh=XmV9mBwXrxEQ9JGlUA7QXUjM+y6+hay+hfdvWwqo6
+ uQ=; b=kmRCEhzC1y48yx3q4V86ROjgyYFfGjiYHWYMA3eFKIMJla5RC0s9EPvT0
+ 33FVygeoC+kO8y7S+MJSkCMjB8axKA+4O7s6HP0Y5/bvWkoKAbaym8jpISDUDOPA
+ Qn8/vmJZYbykYgTl6cXPv4PknIxPr3oHAdO/WggSe5pSMRUI4WKSI9xUlukoC35P
+ CXs10wZo1Je36FDcRwsekiXHito4qoa/71ANxs6Zn6G7b54DLMxqXUotuGcMkaLn
+ zc3VrhHWTtTAAerIDDNWEBjTOPu869i05m+B5zG1dbxedJ1/FB+5z9q6ZGzdr9y3
+ 4vs6i0jVNrmEGYcS4YLr6sty47QCQ==
+Received: from ppma13.dal12v.mail.ibm.com
+ (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
+ by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4j105t89px-1
+ (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
+ Thu, 19 Nov 2026 10:23:35 +0000 (GMT)
+Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
+ by ppma13.dal12v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
+ 6AJA9Jmc2161163; Thu, 19 Nov 2026 10:23:34 GMT
+Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
+ by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 4j1v9x8ybh-1
+ (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
+ Thu, 19 Nov 2026 10:23:34 +0000 (GMT)
+Received: from smtpav02.fra02v.mail.ibm.com (smtpav02.fra02v.mail.ibm.com
+ [10.20.54.101])
+ by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
+ 6AJANUSE44499242
+ (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
+ Thu, 19 Nov 2026 10:23:30 GMT
+Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id AC1282006B;
+ Thu, 19 Nov 2026 10:23:30 +0000 (GMT)
+Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
+ by IMSVA (Postfix) with ESMTP id B0AC720071;
+ Thu, 19 Nov 2026 10:23:28 +0000 (GMT)
+Received: from li-18a0a34c-33fc-11b2-a85c-d9f1631c5692.bl1-in.ibm.com (unknown
+ [9.123.8.229]) by smtpav02.fra02v.mail.ibm.com (Postfix) with ESMTP;
+ Thu, 19 Nov 2026 10:23:28 +0000 (GMT)
+From: Chinmay Rath <rathc@linux.ibm.com>
+To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
+Cc: richard.henderson@linaro.org, pbonzini@redhat.com,
+ pierrick.bouvier@oss.qualcomm.com, harshpb@linux.ibm.com,
+ philmd@oss.qualcomm.com, Chinmay Rath <rathc@linux.ibm.com>
+Subject: [PATCH] docs/tcg-ops: Rename cpu_env to tcg_env
+Date: Thu, 19 Nov 2026 15:53:19 +0530
+Message-ID: <20261119102319.2618086-1-rathc@linux.ibm.com>
+X-Mailer: git-send-email 2.55.0
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-User-Agent: Mozilla Thunderbird
-Subject: Re: [PATCH] docs/tcg-ops: Rename cpu_env to tcg_env
-To: Chinmay Rath <rathc@linux.ibm.com>, qemu-devel@nongnu.org,
- qemu-trivial@nongnu.org
-Cc: richard.henderson@linaro.org, pbonzini@redhat.com,
- pierrick.bouvier@oss.qualcomm.com, harshpb@linux.ibm.com
-References: <20261119102319.2618086-1-rathc@linux.ibm.com>
-From: =?UTF-8?Q?Philippe_Mathieu-Daud=C3=A9?= <philmd@oss.qualcomm.com>
-Content-Language: en-US
-In-Reply-To: <20261119102319.2618086-1-rathc@linux.ibm.com>
-Content-Type: text/plain; charset=UTF-8; format=flowed
 Content-Transfer-Encoding: 8bit
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTE5MDA0NyBTYWx0ZWRfXznakasu8QoKH
- nolOB3EfZX7QMeN1oMd9C0Bu1ySuk2Q8EwL0Y8L/6Ke7u1NJd+YVTtABvgFY4oFeu7odwlTTYSR
- JMUFdWyteolSAGqUUqyvXVDHbVi311A=
-X-Proofpoint-ORIG-GUID: jwWzZpt9gg321L9qrGmoUsl2KPkw6i3A
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTE5MDA0NyBTYWx0ZWRfX+MIJndOL19Sr
- +csoTU0xFehNISxXDhqodr+hNTIU+X+ve/IM+yz40rUe1aDaPO/+BP2P82xKppPXw7GO9pFyoOT
- Hlo6Kffj807aN3cqn6hE90QSfTeXyecFP3LYtfSxzWTXlclifcOzmFnrf5611K/DygNXMhvZaJc
- GhV9+aYYFj+6umxcYIqopJMXv6VOPdEtq4lmWhKvZTKpUlCzMab9BKvFrcWE8uA4KBjp8ZrSGEi
- aB3PTUlWByfIkLJYnyZpQO5DquQaE5niWmHoh4dV4ftt7Ec5hXQ50rxOQid31Vb3YdSCR5Yso1v
- vLUOdFk+BLz4N3fPLgseMej8sAqyvp2Ncc2FMB4IMxHEVRXWZ/166RiEpn+4HS2Nv4/aeRyICy1
- 44P7d2VuGBCBN/S4yXcp8n6mcWjHw68Dl1RZXxEc3sA5sPzYze7cQr4FJVn6TzkC7/duvaZUyWo
- PGob9SGLCBjrxamyTXw==
-X-Proofpoint-GUID: jwWzZpt9gg321L9qrGmoUsl2KPkw6i3A
-X-Authority-Analysis: v=2.4 cv=XutvqlF9 c=1 sm=1 tr=0 ts=6afee2e6 cx=c_pps
- a=50t2pK5VMbmlHzFWWp8p/g==:117 a=dMDxPF1GtEdq01UuaR/ERg==:17
- a=IkcTkHD0fZMA:10 a=zJRp6_cAMcgA:10 a=M51BFTxLslgA:10 a=s4-Qcg_JpJYA:10
- a=VkNPw1HP01LnGYTKEx00:22 a=u7WPNUs3qKkmUXheDGA7:22 a=gowsoOTTUOVcmtlkKump:22
- a=VnNF1IyMAAAA:8 a=EUspDBNiAAAA:8 a=1tSEMpTH9XP_W59IOagA:9 a=3ZKOabzyN94A:10
- a=QEXdDO2ut3YA:10 a=IoWCM6iH3mJn3m4BftBB:22
+X-TM-AS-GCONF: 00
+X-Authority-Analysis: v=2.4 cv=IouL47/g c=1 sm=1 tr=0 ts=6afece27 cx=c_pps
+ a=AfN7/Ok6k8XGzOShvHwTGQ==:117 a=AfN7/Ok6k8XGzOShvHwTGQ==:17
+ a=zJRp6_cAMcgA:10 a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22
+ a=U7nrCbtTmkRpXpFmAIza:22 a=VnNF1IyMAAAA:8 a=u-eO6-5vl9_8RLgDY4QA:9
+X-Proofpoint-ORIG-GUID: asKFt_ScTLfbBSncjgw85lsdMsc27_lw
+X-Proofpoint-GUID: asKFt_ScTLfbBSncjgw85lsdMsc27_lw
+X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTE5MDAzOSBTYWx0ZWRfXzAERSTw/Ww9F
+ 63PwCdfEPdEdEQBVye2p3uEsM3O4xc8htTOn3umk46Paa+pnvg1Tu8usaz84jxC8xLfFPfYerKE
+ YTP+Dm20MJF6aJfCzRQ/4h6i3XCjoWpcG9EOVyZZ0FQI6P/GyI9ilpTMpjkfd2YD4/aGFHEBuAU
+ IMssARbzbJRqg1bRqImnVoSY0Rgox5oupVXLrrHFCYjyg5l7pgK9wXoVEWAGdMba7EToVDYK/oO
+ 937CmPX0MxxHrTjo5E/xgbF45eFE6ccaLiXTdvt81ks81ZgZGbBQm6/kV4o/R0z/SuOS5ztpQV4
+ pHdxmduwtDHz4r8cTuZImrWbGZPX0hoYK3hqui8rTf+6s3PjQFz0y+PmLWf50Wlsz1JMW2Qs8/P
+ MC69bJiy2T5gttesh4JNBR/O9w2pKUm/mhdT5s2xqpVNQ8YWd1g3SFqFNBi49cxaR4+vuboV8yA
+ VmJMqc1ievGbHELPIyQ==
+X-Proofpoint-Spam-Info: AW1haW4tMjYxMTE5MDAzOSBTYWx0ZWRfXy3DqL4+ayxzj
+ 0dmSyj5xrFytMhcaV/Tbu4OLZsocvVo2od+XTxuvF2C5enbpT96Y9HqhPgmVnR3GcmE/IUx7TfX
+ 2NhgIs/iyVe1bLDQKroX2RWrww/lU5M=
 X-Proofpoint-Virus-Version: vendor=baseguard
  engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-19_03,2026-11-19_01,2025-10-01_01
+ definitions=2026-11-19_02,2026-11-16_01,2025-10-01_01
 X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- bulkscore=0 phishscore=0 spamscore=0 priorityscore=1501 suspectscore=0
- malwarescore=0 impostorscore=0 lowpriorityscore=0 adultscore=0 clxscore=1011
- classifier=typeunknown authscore=0 authtc= authcc= route=outbound adjust=0
- reason=mlx scancount=1 engine=8.22.0-2611040001 definitions=main-2611190047
-Received-SPF: pass client-ip=205.220.180.131;
- envelope-from=philmd@oss.qualcomm.com; helo=mx0b-0031df01.pphosted.com
-X-Spam_score_int: -27
-X-Spam_score: -2.8
+ impostorscore=0 spamscore=0 adultscore=0 priorityscore=1501
+ lowpriorityscore=0 suspectscore=0 phishscore=0 clxscore=1011 malwarescore=0
+ bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
+ adjust=0 reason=mlx scancount=1 engine=8.22.0-2611040001
+ definitions=main-2611190039
+Received-SPF: pass client-ip=148.163.156.1; envelope-from=rathc@linux.ibm.com;
+ helo=mx0a-001b2d01.pphosted.com
+X-Spam_score_int: -26
+X-Spam_score: -2.7
 X-Spam_bar: --
-X-Spam_report: (-2.8 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
- RCVD_IN_DNSWL_LOW=-0.7, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
+X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
+ RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=ham autolearn_force=no
 X-Spam_action: no action
+X-Mailman-Approved-At: Thu, 19 Nov 2026 07:57:37 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -152,23 +116,45 @@ List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
-	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
-	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
-	version=4.0.1
+X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
+	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
+	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-On 2026-11-19 11:23, Chinmay Rath wrote:
-> Commit ad75a51e (tcg: Rename cpu_env to tcg_env) from 2023, renamed
-> cpu_env to tcg_env. However the same was never done in the docs.
-> Updating docs with the necessary renaming.
-> 
-> Signed-off-by: Chinmay Rath <rathc@linux.ibm.com>
-> ---
->   docs/devel/tcg-ops.rst | 4 ++--
->   1 file changed, 2 insertions(+), 2 deletions(-)
+Commit ad75a51e (tcg: Rename cpu_env to tcg_env) from 2023, renamed
+cpu_env to tcg_env. However the same was never done in the docs.
+Updating docs with the necessary renaming.
 
-Reviewed-by: Philippe Mathieu-Daudé <philmd@oss.qualcomm.com>
+Signed-off-by: Chinmay Rath <rathc@linux.ibm.com>
+---
+ docs/devel/tcg-ops.rst | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/docs/devel/tcg-ops.rst b/docs/devel/tcg-ops.rst
+index 51fa183e91..7ee419f959 100644
+--- a/docs/devel/tcg-ops.rst
++++ b/docs/devel/tcg-ops.rst
+@@ -66,7 +66,7 @@ Variables
+ 
+ * ``TEMP_FIXED``
+ 
+-  There is one TCG *fixed global* variable, ``cpu_env``, which is
++  There is one TCG *fixed global* variable, ``tcg_env``, which is
+   live in all translation blocks, and holds a pointer to ``CPUArchState``.
+   This variable is held in a host cpu register at all times in all
+   translation blocks.
+@@ -75,7 +75,7 @@ Variables
+ 
+   A TCG *global* is a variable which is live in all translation blocks,
+   and corresponds to memory location that is within ``CPUArchState``.
+-  These may be specified as an offset from ``cpu_env``, in which case
++  These may be specified as an offset from ``tcg_env``, in which case
+   they are called *direct globals*, or may be specified as an offset
+   from a direct global, in which case they are called *indirect globals*.
+   Even indirect globals should still reference memory within
+-- 
+2.55.0
+
 
