@@ -1,111 +1,99 @@
 Received: from lists1p.gnu.org (lists1p.gnu.org [209.51.188.17])
 	(using TLSv1.2 with cipher ECDHE-ECDSA-AES256-GCM-SHA384 (256/256 bits))
 	(No client certificate requested)
-	by smtp.subspace.kernel.org (Postfix) with ESMTPS id E5F77606A32C
-	for <qemu-trivial@archiver.kernel.org>; Thu, 19 Nov 2026 12:57:44 +0000 (UTC)
+	by smtp.subspace.kernel.org (Postfix) with ESMTPS id 8F321606A32C
+	for <qemu-trivial@archiver.kernel.org>; Thu, 19 Nov 2026 19:57:56 +0000 (UTC)
 Authentication-Results: smtp.subspace.kernel.org;
-	dkim=pass (2048-bit key) header.d=ibm.com header.i=@ibm.com header.a=rsa-sha256 header.s=pp1 header.b=kmRCEhzC
+	dkim=pass (2048-bit key, unprotected) header.d=linaro.org header.i=@linaro.org header.a=rsa-sha256 header.s=google header.b=jjP9EckQ
 Received: from localhost ([::1] helo=lists1p.gnu.org)
 	by lists1p.gnu.org with esmtp (Exim 4.90_1)
 	(envelope-from <qemu-trivial-bounces@nongnu.org>)
-	id 1xU1hq-00031L-Vq; Thu, 19 Nov 2026 07:57:39 -0500
+	id 1xU8GF-0008JS-UX; Thu, 19 Nov 2026 14:57:35 -0500
 Received: from eggs.gnu.org ([2001:470:142:3::10])
  by lists1p.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rathc@linux.ibm.com>)
- id 1xTzIs-0006BR-76; Thu, 19 Nov 2026 05:23:42 -0500
-Received: from mx0a-001b2d01.pphosted.com ([148.163.156.1])
- by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_256_GCM_SHA384:256)
- (Exim 4.90_1) (envelope-from <rathc@linux.ibm.com>)
- id 1xTzIq-0004Rp-IL; Thu, 19 Nov 2026 05:23:41 -0500
-Received: from pps.filterd (m0356517.ppops.net [127.0.0.1])
- by mx0a-001b2d01.pphosted.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AJ6uQPS3436183; Thu, 19 Nov 2026 10:23:35 GMT
-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=ibm.com; h=cc
- :content-transfer-encoding:date:from:message-id:mime-version
- :subject:to; s=pp1; bh=XmV9mBwXrxEQ9JGlUA7QXUjM+y6+hay+hfdvWwqo6
- uQ=; b=kmRCEhzC1y48yx3q4V86ROjgyYFfGjiYHWYMA3eFKIMJla5RC0s9EPvT0
- 33FVygeoC+kO8y7S+MJSkCMjB8axKA+4O7s6HP0Y5/bvWkoKAbaym8jpISDUDOPA
- Qn8/vmJZYbykYgTl6cXPv4PknIxPr3oHAdO/WggSe5pSMRUI4WKSI9xUlukoC35P
- CXs10wZo1Je36FDcRwsekiXHito4qoa/71ANxs6Zn6G7b54DLMxqXUotuGcMkaLn
- zc3VrhHWTtTAAerIDDNWEBjTOPu869i05m+B5zG1dbxedJ1/FB+5z9q6ZGzdr9y3
- 4vs6i0jVNrmEGYcS4YLr6sty47QCQ==
-Received: from ppma13.dal12v.mail.ibm.com
- (dd.9e.1632.ip4.static.sl-reverse.com [50.22.158.221])
- by mx0a-001b2d01.pphosted.com (PPS) with ESMTPS id 4j105t89px-1
- (version=TLSv1.3 cipher=TLS_AES_256_GCM_SHA384 bits=256 verify=NOT);
- Thu, 19 Nov 2026 10:23:35 +0000 (GMT)
-Received: from pps.filterd (ppma13.dal12v.mail.ibm.com [127.0.0.1])
- by ppma13.dal12v.mail.ibm.com (8.18.1.11/8.18.1.11) with ESMTP id
- 6AJA9Jmc2161163; Thu, 19 Nov 2026 10:23:34 GMT
-Received: from smtprelay01.fra02v.mail.ibm.com ([9.218.2.227])
- by ppma13.dal12v.mail.ibm.com (PPS) with ESMTPS id 4j1v9x8ybh-1
- (version=TLSv1.2 cipher=ECDHE-RSA-AES256-GCM-SHA384 bits=256 verify=NOT);
- Thu, 19 Nov 2026 10:23:34 +0000 (GMT)
-Received: from smtpav02.fra02v.mail.ibm.com (smtpav02.fra02v.mail.ibm.com
- [10.20.54.101])
- by smtprelay01.fra02v.mail.ibm.com (8.14.9/8.14.9/NCO v10.0) with ESMTP id
- 6AJANUSE44499242
- (version=TLSv1/SSLv3 cipher=DHE-RSA-AES256-GCM-SHA384 bits=256 verify=OK);
- Thu, 19 Nov 2026 10:23:30 GMT
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id AC1282006B;
- Thu, 19 Nov 2026 10:23:30 +0000 (GMT)
-Received: from smtpav02.fra02v.mail.ibm.com (unknown [127.0.0.1])
- by IMSVA (Postfix) with ESMTP id B0AC720071;
- Thu, 19 Nov 2026 10:23:28 +0000 (GMT)
-Received: from li-18a0a34c-33fc-11b2-a85c-d9f1631c5692.bl1-in.ibm.com (unknown
- [9.123.8.229]) by smtpav02.fra02v.mail.ibm.com (Postfix) with ESMTP;
- Thu, 19 Nov 2026 10:23:28 +0000 (GMT)
-From: Chinmay Rath <rathc@linux.ibm.com>
-To: qemu-devel@nongnu.org, qemu-trivial@nongnu.org
-Cc: richard.henderson@linaro.org, pbonzini@redhat.com,
- pierrick.bouvier@oss.qualcomm.com, harshpb@linux.ibm.com,
- philmd@oss.qualcomm.com, Chinmay Rath <rathc@linux.ibm.com>
-Subject: [PATCH] docs/tcg-ops: Rename cpu_env to tcg_env
-Date: Thu, 19 Nov 2026 15:53:19 +0530
-Message-ID: <20261119102319.2618086-1-rathc@linux.ibm.com>
-X-Mailer: git-send-email 2.55.0
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1xU8GE-0008Ia-H9
+ for qemu-trivial@nongnu.org; Thu, 19 Nov 2026 14:57:34 -0500
+Received: from mail-pj1-x1032.google.com ([2607:f8b0:4864:20::1032])
+ by eggs.gnu.org with esmtps (TLS1.2:ECDHE_RSA_AES_128_GCM_SHA256:128)
+ (Exim 4.90_1) (envelope-from <richard.henderson@linaro.org>)
+ id 1xU8GC-0001qL-WB
+ for qemu-trivial@nongnu.org; Thu, 19 Nov 2026 14:57:34 -0500
+Received: by mail-pj1-x1032.google.com with SMTP id
+ 98e67ed59e1d1-3b40470fdd8so82250a91.1
+ for <qemu-trivial@nongnu.org>; Thu, 19 Nov 2026 11:57:32 -0800 (PST)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=linaro.org; s=google; t=1795118251; x=1795723051; darn=nongnu.org;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:from:to:cc:subject:date:message-id:reply-to:content-type;
+ bh=CqK6/5UtrHn2Jd5D38VgHA5J3v46X+Rgo/j00yFhdgg=;
+ b=jjP9EckQzh2Tn7c3E1uoXjR8coxocznBDxxGT52QUz/WmcxDdy3EHEyDFR4N45y2E9
+ FjMkt0pLsCx/C59LyIi7xd9tl9uyb2PFuSph149AVA0amlnAPKg/yHxJbtBmNwGG/Uwq
+ L3LOHAolIgw8wNjkQ+fHBwcE9HYewyumLIr/eSIcEITB8yDKhBSZeK6aJjPvq5UH7sFR
+ PZCN83Gsoet17Lg7XfimxQHUDVHRg80VTp/67HFq4hMzdq/If14EECt9rpfzeR4wfofi
+ JCzAH34xp1oqt11cXfnqQEJc+qLKdVflA34BnuM/eGhikqXDmwF/bFO/MtBbMymTpNJj
+ 5v3w==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+ d=1e100.net; s=20260707; t=1795118251; x=1795723051;
+ h=content-transfer-encoding:content-type:in-reply-to:content-language
+ :from:references:cc:to:subject:user-agent:mime-version:date
+ :message-id:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+ :message-id:reply-to:content-type;
+ bh=CqK6/5UtrHn2Jd5D38VgHA5J3v46X+Rgo/j00yFhdgg=;
+ b=HLthkBnQsI/LE99XWM2VErGclforHxBKhy4mdNrWOgvnsktvuhBtGD91Tj61X1/oro
+ zZvz0NSTgsC2IlmviiRtqcEiTuQ0JIl2UBUMqE4zff1ABL67pBMF8EZO4846hZnalML+
+ 2Q1qebtPaUlgG9nJb5rP6J/VWP8JaZjr7V0H0mEDndCvfq+c+tOfFWYeqoVlW1yjV4U8
+ gtq3nq/OSzBo/Wot2hipJ0o25OQ8NyjibaONJ30a3R1FPM2zSqKT3UNl7sRXHQKPpxs1
+ +KiJiFwS3o3VGQSctGtGtuhbBX5oxwx+LWGdmrOZscXfKW8d8c4tdLhSa+KF4wyE90Y3
+ O3eQ==
+X-Forwarded-Encrypted: i=1;
+ AL+hErEFBtAKgQkVY70Huzqj494JfzBYbEv+5pOtJCq9+D83sIp9ReW3cqSaQXM4tGM2hiTpi+oWbqRikjlqOXE=@nongnu.org
+X-Gm-Message-State: APuU4Z987WB5AX4ULq4eZpKBVcon4XXalEoUWRU1uxtnmW9d9m1T7YPr
+ xKKhqodgFW7O/FS1jWW1UgpbHIQsBNmcrrqjHmnwEZwrzkGmwNax+rOzbRxPaFMk3iI=
+X-Gm-Gg: AZFdTZcZ7E2IxxvhjiQuUH0m714SWRpFthT7jNHhhmPBboUITslnpwbzc/TYVswMkow
+ dXT/WMVPh75KFx1cKJ2AzIWHfzfR/zgCVAwDizRS9e+RbK+JHvjeQ/09WTB+EeYFXINtExIgBP1
+ 1zF0maNjz0hLVECAkOhdUQfWft05vHSve1QcFGktXppVye6+vKkFkfBrRwKMdcKN4OnowtfR8DO
+ zzJASKLXkNd/T4fTdH5eulhSIS6CzzIUNvPV2T1CcIMzu+iDUVFPSBwF0FrazLCN5y60J26wFpf
+ lZOVhaMGUg1XAcCkFb1tzpkhtFVwYTyVraUd1UTssDqQpShxHiRrzu/0mD2KWpuGywQN58jUiIl
+ xPfFScZlc7QQ0sBi0Ins8qK8/gxfgSGTu1J9aZqAk/RF7JlbW2aGi3PKCPNagE1UycVVlEuOpGD
+ 1Shj+jlE1TCIPqsDb4aOK/0+i/Ie0wmJpPszHI5CMUL35erJ3IK25h6PhpjdGQRiP7e+lW7Yl4t
+ MNgqEQJI5cTy+rxwuskppyqWOARaLBtaWBSZmrmK6BX4ksRYf01oIV02JBoVzcF4XZcYT8INDN0
+ sEaa3VlPK/EYhEy7fqpfMY9kVJKU74jMeGK2mREyz5SYIrT/r8kbz58L5IjXt/MOEg8tJPM=
+X-Received: by 2002:a17:90b:442d:b0:3b4:eb3:a363 with SMTP id
+ 98e67ed59e1d1-3b41c98a32cmr396266a91.17.1795118251289; 
+ Thu, 19 Nov 2026 11:57:31 -0800 (PST)
+Received: from [192.168.0.4] (174-21-68-150.tukw.qwest.net. [174.21.68.150])
+ by smtp.gmail.com with ESMTPSA id
+ 98e67ed59e1d1-3b41cfbaf2bsm182107a91.2.2026.11.19.11.57.30
+ (version=TLS1_3 cipher=TLS_AES_128_GCM_SHA256 bits=128/128);
+ Thu, 19 Nov 2026 11:57:30 -0800 (PST)
+Message-ID: <5288ce59-a250-40a2-8f87-7a35d130b60d@linaro.org>
+Date: Thu, 19 Nov 2026 11:57:29 -0800
 X-Archived-By: <archiver.kernel.org>
 MIME-Version: 1.0
-Content-Transfer-Encoding: 8bit
-X-TM-AS-GCONF: 00
-X-Authority-Analysis: v=2.4 cv=IouL47/g c=1 sm=1 tr=0 ts=6afece27 cx=c_pps
- a=AfN7/Ok6k8XGzOShvHwTGQ==:117 a=AfN7/Ok6k8XGzOShvHwTGQ==:17
- a=zJRp6_cAMcgA:10 a=VkNPw1HP01LnGYTKEx00:22 a=RnoormkPH1_aCDwRdu11:22
- a=U7nrCbtTmkRpXpFmAIza:22 a=VnNF1IyMAAAA:8 a=u-eO6-5vl9_8RLgDY4QA:9
-X-Proofpoint-ORIG-GUID: asKFt_ScTLfbBSncjgw85lsdMsc27_lw
-X-Proofpoint-GUID: asKFt_ScTLfbBSncjgw85lsdMsc27_lw
-X-Proofpoint-Spam-Details-Enc: AW1haW4tMjYxMTE5MDAzOSBTYWx0ZWRfXzAERSTw/Ww9F
- 63PwCdfEPdEdEQBVye2p3uEsM3O4xc8htTOn3umk46Paa+pnvg1Tu8usaz84jxC8xLfFPfYerKE
- YTP+Dm20MJF6aJfCzRQ/4h6i3XCjoWpcG9EOVyZZ0FQI6P/GyI9ilpTMpjkfd2YD4/aGFHEBuAU
- IMssARbzbJRqg1bRqImnVoSY0Rgox5oupVXLrrHFCYjyg5l7pgK9wXoVEWAGdMba7EToVDYK/oO
- 937CmPX0MxxHrTjo5E/xgbF45eFE6ccaLiXTdvt81ks81ZgZGbBQm6/kV4o/R0z/SuOS5ztpQV4
- pHdxmduwtDHz4r8cTuZImrWbGZPX0hoYK3hqui8rTf+6s3PjQFz0y+PmLWf50Wlsz1JMW2Qs8/P
- MC69bJiy2T5gttesh4JNBR/O9w2pKUm/mhdT5s2xqpVNQ8YWd1g3SFqFNBi49cxaR4+vuboV8yA
- VmJMqc1ievGbHELPIyQ==
-X-Proofpoint-Spam-Info: AW1haW4tMjYxMTE5MDAzOSBTYWx0ZWRfXy3DqL4+ayxzj
- 0dmSyj5xrFytMhcaV/Tbu4OLZsocvVo2od+XTxuvF2C5enbpT96Y9HqhPgmVnR3GcmE/IUx7TfX
- 2NhgIs/iyVe1bLDQKroX2RWrww/lU5M=
-X-Proofpoint-Virus-Version: vendor=baseguard
- engine=ICAP:2.0.293,Aquarius:18.0.1176,Hydra:6.1.138,FMLib:17.12.100.49
- definitions=2026-11-19_02,2026-11-16_01,2025-10-01_01
-X-Proofpoint-Spam-Details: rule=outbound_notspam policy=outbound score=0
- impostorscore=0 spamscore=0 adultscore=0 priorityscore=1501
- lowpriorityscore=0 suspectscore=0 phishscore=0 clxscore=1011 malwarescore=0
- bulkscore=0 classifier=typeunknown authscore=0 authtc= authcc= route=outbound
- adjust=0 reason=mlx scancount=1 engine=8.22.0-2611040001
- definitions=main-2611190039
-Received-SPF: pass client-ip=148.163.156.1; envelope-from=rathc@linux.ibm.com;
- helo=mx0a-001b2d01.pphosted.com
-X-Spam_score_int: -26
-X-Spam_score: -2.7
+User-Agent: Mozilla Thunderbird
+Subject: Re: [PATCH] docs/tcg-ops: Rename cpu_env to tcg_env
+To: Chinmay Rath <rathc@linux.ibm.com>, qemu-devel@nongnu.org,
+ qemu-trivial@nongnu.org
+Cc: pbonzini@redhat.com, pierrick.bouvier@oss.qualcomm.com,
+ harshpb@linux.ibm.com, philmd@oss.qualcomm.com
+References: <20261119102319.2618086-1-rathc@linux.ibm.com>
+From: Richard Henderson <richard.henderson@linaro.org>
+Content-Language: en-US
+In-Reply-To: <20261119102319.2618086-1-rathc@linux.ibm.com>
+Content-Type: text/plain; charset=UTF-8; format=flowed
+Content-Transfer-Encoding: 7bit
+Received-SPF: pass client-ip=2607:f8b0:4864:20::1032;
+ envelope-from=richard.henderson@linaro.org; helo=mail-pj1-x1032.google.com
+X-Spam_score_int: -20
+X-Spam_score: -2.1
 X-Spam_bar: --
-X-Spam_report: (-2.7 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
- DKIM_VALID=-0.1, DKIM_VALID_EF=-0.1, RCVD_IN_DNSWL_LOW=-0.7,
- RCVD_IN_MSPIKE_H4=0.001, RCVD_IN_MSPIKE_WL=0.001, SPF_HELO_NONE=0.001,
- SPF_PASS=-0.001 autolearn=ham autolearn_force=no
+X-Spam_report: (-2.1 / 5.0 requ) BAYES_00=-1.9, DKIM_SIGNED=0.1,
+ DKIM_VALID=-0.1, DKIM_VALID_AU=-0.1, DKIM_VALID_EF=-0.1,
+ RCVD_IN_DNSWL_NONE=-0.0001, SPF_HELO_NONE=0.001,
+ SPF_PASS=-0.001 autolearn=unavailable autolearn_force=no
 X-Spam_action: no action
-X-Mailman-Approved-At: Thu, 19 Nov 2026 07:57:37 -0500
 X-BeenThere: qemu-trivial@nongnu.org
 X-Mailman-Version: 2.1.29
 Precedence: list
@@ -116,45 +104,48 @@ List-Help: <mailto:qemu-trivial-request@nongnu.org?subject=help>
 List-Subscribe: <https://lists.nongnu.org/mailman/listinfo/qemu-trivial>,
  <mailto:qemu-trivial-request@nongnu.org?subject=subscribe>
 Sender: qemu-trivial-bounces+qemu-trivial=archiver.kernel.org@nongnu.org
-X-Spam-Status: No, score=-16.8 required=3.0 tests=BAYES_00,DKIM_SIGNED,
-	DKIM_VALID,HEADER_FROM_DIFFERENT_DOMAINS,INCLUDES_CR_TRAILER,
-	INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,SPF_PASS,
-	USER_AGENT_GIT autolearn=unavailable autolearn_force=no version=4.0.1
+X-Spam-Status: No, score=-17.3 required=3.0 tests=BAYES_00,DKIM_SIGNED,
+	DKIM_VALID,DKIM_VALID_AU,HEADER_FROM_DIFFERENT_DOMAINS,
+	INCLUDES_CR_TRAILER,INCLUDES_PATCH,MAILING_LIST_MULTI,SPF_HELO_PASS,
+	SPF_PASS,USER_AGENT_SANE_1 autolearn=ham autolearn_force=no
+	version=4.0.1
 X-Spam-Checker-Version: SpamAssassin 4.0.1 (2024-03-26) on
 	aws-us-west-2-korg-listserv-alma10-1
 
-Commit ad75a51e (tcg: Rename cpu_env to tcg_env) from 2023, renamed
-cpu_env to tcg_env. However the same was never done in the docs.
-Updating docs with the necessary renaming.
+On 11/19/26 02:23, Chinmay Rath wrote:
+> Commit ad75a51e (tcg: Rename cpu_env to tcg_env) from 2023, renamed
+> cpu_env to tcg_env. However the same was never done in the docs.
+> Updating docs with the necessary renaming.
+> 
+> Signed-off-by: Chinmay Rath <rathc@linux.ibm.com>
+> ---
+>   docs/devel/tcg-ops.rst | 4 ++--
+>   1 file changed, 2 insertions(+), 2 deletions(-)
+> 
+> diff --git a/docs/devel/tcg-ops.rst b/docs/devel/tcg-ops.rst
+> index 51fa183e91..7ee419f959 100644
+> --- a/docs/devel/tcg-ops.rst
+> +++ b/docs/devel/tcg-ops.rst
+> @@ -66,7 +66,7 @@ Variables
+>   
+>   * ``TEMP_FIXED``
+>   
+> -  There is one TCG *fixed global* variable, ``cpu_env``, which is
+> +  There is one TCG *fixed global* variable, ``tcg_env``, which is
+>     live in all translation blocks, and holds a pointer to ``CPUArchState``.
+>     This variable is held in a host cpu register at all times in all
+>     translation blocks.
+> @@ -75,7 +75,7 @@ Variables
+>   
+>     A TCG *global* is a variable which is live in all translation blocks,
+>     and corresponds to memory location that is within ``CPUArchState``.
+> -  These may be specified as an offset from ``cpu_env``, in which case
+> +  These may be specified as an offset from ``tcg_env``, in which case
+>     they are called *direct globals*, or may be specified as an offset
+>     from a direct global, in which case they are called *indirect globals*.
+>     Even indirect globals should still reference memory within
 
-Signed-off-by: Chinmay Rath <rathc@linux.ibm.com>
----
- docs/devel/tcg-ops.rst | 4 ++--
- 1 file changed, 2 insertions(+), 2 deletions(-)
+Oops.  Queued.
 
-diff --git a/docs/devel/tcg-ops.rst b/docs/devel/tcg-ops.rst
-index 51fa183e91..7ee419f959 100644
---- a/docs/devel/tcg-ops.rst
-+++ b/docs/devel/tcg-ops.rst
-@@ -66,7 +66,7 @@ Variables
- 
- * ``TEMP_FIXED``
- 
--  There is one TCG *fixed global* variable, ``cpu_env``, which is
-+  There is one TCG *fixed global* variable, ``tcg_env``, which is
-   live in all translation blocks, and holds a pointer to ``CPUArchState``.
-   This variable is held in a host cpu register at all times in all
-   translation blocks.
-@@ -75,7 +75,7 @@ Variables
- 
-   A TCG *global* is a variable which is live in all translation blocks,
-   and corresponds to memory location that is within ``CPUArchState``.
--  These may be specified as an offset from ``cpu_env``, in which case
-+  These may be specified as an offset from ``tcg_env``, in which case
-   they are called *direct globals*, or may be specified as an offset
-   from a direct global, in which case they are called *indirect globals*.
-   Even indirect globals should still reference memory within
--- 
-2.55.0
-
+r~
 
